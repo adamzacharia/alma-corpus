@@ -1,0 +1,166 @@
+{
+ "bibcode": "2025ApJ...992..103Z",
+ "title": "Impact of Gravity on Changing Magnetic Field Orientations in a Sample of Massive Protostellar Clusters Observed with ALMA",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adfdcb",
+ "arxiv_id": "2508.18538",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do magnetic field orientations at 0.01 pc core scale and 10^3 au envelope scale relate in massive protostellar clumps, and what role does gravity play in changing them?",
+ "alma_project_codes": [
+  "2017.1.00793.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA main array, C43-1 and C43-4",
+  "angular_resolution": "~1\" (C43-1) and 0.4\" (C43-4)",
+  "sensitivity": "1 sigma rms 30 to 70 uJy in Stokes Q and U"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gas temperatures (~100 K, >300 K locally) from CH3OH in NGC 6334, used as dust temperature",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The dust temperature is approximated by the gas temperature reported in (cite: liu_J2023a)"
+     }
+    ]
+   },
+   "citation": "(cite: liu_J2023a)"
+  },
+  {
+   "what": {
+    "value": "Dust emissivity index beta=1.5",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "a dust emissivity spectral index $\\beta$ of 1.5 (cite: beuther2007b)"
+     }
+    ]
+   },
+   "citation": "(cite: beuther2007b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum Stokes I, Q, U",
+   "method": "Calibration by ARC, phase self-cal on Stokes I, tclean of line-free continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive magnetic field position angles",
+   "method": "theta = 0.5 arctan(U/Q), 3 sigma cutoff on Q and U, rotate by 90 deg",
+   "software": [],
+   "key_parameters": [
+    "3 sigma cutoff"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Relative orientation between scales",
+   "method": "Compare PA from C43-1 and C43-4 (>250 m), absolute differences folded to 0-90 deg; sources convolved to common linear resolution; G28 and I18360 excluded; K-S test vs random 3D angles",
+   "software": [],
+   "key_parameters": [
+    "Sampling at 0.5 of the C43-4-restricted beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Column density map and projected Rayleigh statistic vs density",
+   "method": "1.3 mm continuum to N_H with kappa=1 cm2/g at 230 GHz, beta=1.5, T from CH3OH; normalized PRS (alignment measure) vs column density; RO with local gravity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta=1.5; dust opacity 1 cm2/g at 230 GHz; dust temperature = gas temperature (~100 K)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "K-S probability, entire sample RO vs random",
+   "value": "6e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We find a probability of $6 \\times 10^{-6}$ that the two are drawn from the same population."
+    }
+   ]
+  },
+  {
+   "quantity": "K-S probability, NGC 6334 combined",
+   "value": "2e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We find a probability of $2 \\times 10^{-9}$ that the two are drawn from the same population."
+    }
+   ]
+  },
+  {
+   "quantity": "K-S probability for NGC 6334 I, In, IV, V",
+   "value": "0.07, 0.002, 6e-5, 0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "0.07, 0.002, $6 \\times 10^{-5}$, and 0.4 for NGC 6334 I, In, IV and V, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "K-S probability, G14",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We found a probability of 0.6 that the two are drawn from the same population."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of self-calibration iterations/solints per target and which targets were self-calibrated",
+  "Line-free channel selection",
+  "Image sizes, cell sizes, clean thresholds and masks",
+  "CASA version",
+  "Flux calibration accuracy",
+  "Pixel sampling details and beams used for RO maps for each source",
+  "Exact mosaicking procedure",
+  "Whether the K-S comparison random distribution was simulated or analytic",
+  "Column density map construction details (gas-to-dust ratio, mean molecular weight)"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Full self-cal parameters",
+  "Column density map recipe details",
+  "Code for RO/PRS/K-S"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Project code, robust, baseline cut and equations given; but versions, self-cal, mask and map details missing.",
+ "rediscovery_reason": "Archival data, numeric K-S probabilities, reasonably complete recipe, though some settings unstated.",
+ "source_card": "cards/2025ApJ...992..103Z/sonnet/card.md"
+}

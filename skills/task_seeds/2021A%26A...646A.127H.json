@@ -1,0 +1,257 @@
+{
+ "bibcode": "2021A&A...646A.127H",
+ "title": "Multiwavelength dissection of a massive heavily dust-obscured galaxy and its blue companion at z∼2",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039577",
+ "arxiv_id": "2101.07724",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is the ultra-massive dusty galaxy Astarte quenching or has it always been on the main sequence, using SED modelling and its ALMA CO(3-2) gas mass?",
+ "alma_project_codes": [
+  "2013.1.00914.S"
+ ],
+ "data": {
+  "bands": "Band 3 (2.7 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.78'' x 0.56''",
+  "sensitivity": "rms 0.47 mJy/beam km/s per channel; 3-sigma continuum limit 0.117 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS2015 catalog photometry and photometric redshift",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "with original COSMOS2015 catalog (cite: laigle16) IDs: 647980 and 648299"
+     }
+    ]
+   },
+   "citation": "(cite: laigle16)"
+  },
+  {
+   "what": {
+    "value": "VLA 3 GHz radio continuum",
+    "evidence": [
+     {
+      "loc": "2.1 NUV-IR observations",
+      "quote": "The radio continuum of Astarte is tentatively detected with the Karl G. Jansky Very Large Array (VLA) in the S band at $\\nu=$3 GHz (cite: Smolcic2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Smolcic2017)"
+  },
+  {
+   "what": {
+    "value": "CO excitation ratio r31=0.42±0.07 (lowest 0.27±0.07)",
+    "evidence": [
+     {
+      "loc": "3.1.3 Deriving the molecular gas mass",
+      "quote": "We use $r_{31}=0.42\\pm0.07$, which is the average ratio found for $z=1.5$ SFGs by (cite: Daddi2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Daddi2015)"
+  },
+  {
+   "what": {
+    "value": "zCOSMOS spectroscopic redshift 2.140",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "found z$_{spec}=2.140$"
+     }
+    ]
+   },
+   "citation": "(cite: Lilly2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA band 3 cube",
+   "method": "CASA reduction, CLEAN with natural weighting, 0.1'' cells, no continuum subtraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract CO(3-2) line and flux",
+   "method": "Gaussian fit to spectrum; moment-0 map with 2D Gaussian fit used for adopted flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive line luminosity and H2 mass",
+   "method": "Solomon 1997 L' formula; r31 to CO(1-0); M_H2 = alpha_CO L'",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "r31=0.42±0.07 (or 0.27±0.07); alpha_CO=0.8 or 4.36"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Dynamical mass",
+   "method": "M_dyn = 4e4 dV^2 R / sin^2 i for rotating disk, i=57.3 deg",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "rotating disk origin of line"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "SED fitting for SFR, M*, Ldust",
+   "method": "CIGALE with BC03, Ciesla17 SFH, Draine&Li 2014 dust, synchrotron, three attenuation laws (C00, CF00, LF17); model choice by BIC",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF, solar-like metallicity (Z=0.02)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) FWHM",
+   "value": "152.74",
+   "uncertainty": "33.21",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 Line extraction",
+     "quote": "152.74$\\pm$33.21 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "I_CO(3-2) moment-0",
+   "value": "0.328",
+   "uncertainty": "0.047",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.328\\pm0.047$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'_CO(3-2)",
+   "value": "8.508e9",
+   "uncertainty": "1.219e9",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$8.508\\pm1.219$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 (alpha=0.8)",
+   "value": "1.62e10",
+   "uncertainty": "0.47e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3 Deriving the molecular gas mass",
+     "quote": "$$M_{H_2 (\\alpha=0.8)} = (1.62\\pm0.47) \\times 10^{10}\\ M_{\\odot}.$$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 (alpha=4.36)",
+   "value": "8.85e10",
+   "uncertainty": "2.57e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3 Deriving the molecular gas mass",
+     "quote": "$M_{H_2} = (8.85\\pm2.57)\\times 10^{10}\\ M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Astarte SFR",
+   "value": "395",
+   "uncertainty": "20",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$395\\pm20$"
+    }
+   ]
+  },
+  {
+   "quantity": "Astarte stellar mass",
+   "value": "3.74e11",
+   "uncertainty": "0.19e11",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$(3.74\\pm0.19)\\times10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Astarte depletion time",
+   "value": "0.22",
+   "uncertainty": "0.07",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "a rather small depletion time of $0.22\\pm0.07$ Gyrs"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dyn",
+   "value": "1.11e11",
+   "uncertainty": "0.23e11",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.4 Dynamical mass",
+     "quote": "(1.11 $\\pm$0.23) $\\times 10^{11}\\,$M$_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which spectral window and channels used for the line and for the continuum map",
+  "Disk radius R used for the dynamical mass (CO size ~74 kpc seems inconsistent)",
+  "CIGALE version and exact module set/priors",
+  "Channel range summed for the moment-0 map",
+  "Self-calibration and flux calibrator not stated"
+ ],
+ "missing_for_reproduction": [
+  "Spectral window and channel selection",
+  "CIGALE version and full priors",
+  "Disk radius used for M_dyn"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and moderate recipe, but some imaging and fitting details missing.",
+ "rediscovery_reason": "Public archival data with numeric CO flux and luminosity results from a simple recipe.",
+ "source_card": "cards/2021A%26A...646A.127H/sonnet/card.md"
+}

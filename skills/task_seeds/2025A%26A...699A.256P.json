@@ -1,0 +1,280 @@
+{
+ "bibcode": "2025A&A...699A.256P",
+ "title": "The ALMA-CRISTAL survey: Extended [CII] emission in an interacting galaxy system at z ∼ 5.5",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202449843",
+ "arxiv_id": "2403.03379",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the morphology and kinematics of the cold gas, star-forming and stellar components of CRISTAL-05/HZ3 at z=5.54, and what is the origin of its extended [CII] emission?",
+ "alma_project_codes": [
+  "2017.1.00428.L",
+  "2018.1.01359.S",
+  "2021.1.00280.L"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.33x0.27\" (robust 2); 0.21x0.18\" (robust 0.5)",
+  "sensitivity": "continuum rms 8.8 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust continuum flux density S158um = 0.118 ± 0.021 mJy; dust effective radius 1.4 ± 0.6 kpc; HST/F160W circularized radius 0.36 ± 0.02 kpc",
+    "evidence": [
+     {
+      "loc": "4.1 [CII] line and dust emission",
+      "quote": "The dust emission was measured by (cite: 2023Mitsuhashi), yielding a flux density of S$_{158\\mu m}$ = 0.118 $\\pm$ 0.021 mJy."
+     }
+    ]
+   },
+   "citation": "(cite: 2023Mitsuhashi)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass log M*=10.27",
+    "evidence": [
+     {
+      "loc": "4.3 Kinematic modeling of C05-NW",
+      "quote": "the stellar mass log M$_{*}$/M$_{\\odot}$ = 10.27 obtained by (cite: 2015capak)"
+     }
+    ]
+   },
+   "citation": "(cite: 2015capak)"
+  },
+  {
+   "what": {
+    "value": "FIR conversion factor nuLnu(158um)/L_FIR = 0.185 and SED scaling for Td=45 K, beta=1.5",
+    "evidence": [
+     {
+      "loc": "5.3 Shock heating",
+      "quote": "the conversion factor is $\\nu$L$_{\\nu}$(158 $\\mu$m)/L$\\rm_{FIR}$ = 0.185 (cite: 2024solimano)"
+     }
+    ]
+   },
+   "citation": "(cite: 2020bethermin); (cite: 2024solimano)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, combine and image ALMA data",
+   "method": "Pipeline calibration per program, concat, uvcontsub, tclean with auto-multithresh down to nsigma=1, JvM correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 2 and 0.5; pixel 0.0245\"; nsigma=1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure integrated [CII] line",
+   "method": "Spectrum in 1.5\" aperture, single-Gaussian fit (also two-Gaussian)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Moment maps and position-velocity diagram",
+   "method": "Moment-0/1/2 from natural-weighted cube over [-280,+280] km/s with 3 rms clip; PV slit along major axis 10 pixels wide",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare sizes and radial profiles across wavelengths",
+   "method": "Degrade HST/JWST PSF to ALMA beam; elliptical annuli 0.3\" wide with q=0.6; Sersic n=1 visibility-fit radius",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Decompose system into clumps",
+   "method": "Fellwalker on non-JvM cubes; MINPIX=16, FLATSLOPE=2 rms, MINDIP in [1,2,3] sigma, MAXJUMP in [4,6,8] pixels",
+   "software": [
+    "Fellwalker"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Kinematic model of C05-NW",
+   "method": "1D DYSMALpy with disk (n=1)+bulge (n=4, B/T=30%)+NFW halo (c=3) fit to symmetrized rotation and dispersion curves",
+   "software": [
+    "DYSMALpy"
+   ],
+   "key_parameters": [
+    "1000 walkers, 50 burn-in steps, 200 run steps; inclination 60 deg; free: fdm, disk r_eff, sigma0"
+   ],
+   "assumptions": [
+    "gas-mass ratio log Mgas/M* = 0.75; isotropic constant dispersion; no adiabatic contraction"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Dynamical masses",
+   "method": "Mdyn = gamma R v^2 / G using circularized Gaussian radii",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gamma = 5 and v~sigma for C05-SE; v=120 km/s at R=1.5 kpc for NW"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Resolved [CII]/FIR ratios",
+   "method": "Beam-sized apertures (0.33\"), dust flux converted to L_FIR with factor 0.185 for Td=45 K, beta=1.5; compare with local and ALPINE galaxies",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 45 K, beta=1.5, uncertainty from Td 40-60 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] line flux",
+   "value": "1.00",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 [CII] line and dust emission",
+     "quote": "line flux of 1.00 $\\pm$ 0.07 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] FWHM",
+   "value": "238",
+   "uncertainty": "25",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 [CII] line and dust emission",
+     "quote": "FWHM = 238 $\\pm$ 25 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] circularized effective radius",
+   "value": "1.6",
+   "uncertainty": "0.3",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Radial profiles",
+     "quote": "$r_{{{\\rm [C}{\\rm \\scriptstyle II}]}}^{\\rm cir} = 1.6 \\pm 0.3$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux fraction C05-NW / C05-SE / extended",
+   "value": "46% / 13% / 41%",
+   "uncertainty": "extended is upper limit",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Clumpiness",
+     "quote": "46%, 13%, and 41% of the total emission of the system, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "dark matter fraction within r_eff",
+   "value": "0.06",
+   "uncertainty": "+0.27/-0.06",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Kinematic modeling of C05-NW",
+     "quote": "fdm = 0.06$^{+0.27}_{-0.06}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log baryonic mass",
+   "value": "9.83",
+   "uncertainty": "+0.11/-0.17",
+   "units": "log Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Kinematic modeling of C05-NW",
+     "quote": "log M$_{bar} = 9.83^{+0.11}_{-0.17}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "intrinsic dispersion sigma0",
+   "value": "35",
+   "uncertainty": "+6/-7",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Kinematic modeling of C05-NW",
+     "quote": "$\\sigma_{0} =$ 35$_{-7}^{+6}$ kms$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "dynamical mass C05-NW / C05-SE",
+   "value": "5e9 / 9.1e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 On the nature of CRISTAL-05",
+     "quote": "M$_{\\rm dyn}^{\\rm NW} = 5 \\times 10^{9}$ M$_{\\odot}$, M$_{\\rm dyn}^{\\rm SE} = 9.1 \\times 10^{8}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "mean velocity dispersion (moment-2)",
+   "value": "79",
+   "uncertainty": "21",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Gas motion",
+     "quote": "notably high average value of $79\\pm 21$ kms$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum subtraction and uv-range of continuum",
+  "Exact JvM epsilon per product and the channel used",
+  "Fellwalker NOISE and MINDIP-specific values for final clump definitions beyond ranges; MINDIP/MAXJUMP baseline",
+  "DYSMALpy settings: PA, kinematic centre values, spectral/instrumental line broadening, PSF",
+  "Moment map 0 integration limits (FW tenth max channels)",
+  "Task cube velocity grid and phase centre",
+  "Flux calibrators and flux scale uncertainty",
+  "Exact aperture positions for the 11 regions and conversion for upper limits"
+ ],
+ "missing_for_reproduction": [
+  "Gonzalez-Lopez et al. in prep reduction details",
+  "Ikeda et al. in prep visibility fits",
+  "Line-free channels, Fellwalker baseline parameters, aperture definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging recipe and modeling priors are well specified, but several key methods rely on in-prep papers and some parameters are unstated.",
+ "rediscovery_reason": "Data are public, imaging and modeling are largely specified, and results are numeric (fluxes, sizes, fractions, DM fraction).",
+ "source_card": "cards/2025A%26A...699A.256P/sonnet/card.md"
+}

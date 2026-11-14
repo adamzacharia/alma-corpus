@@ -1,0 +1,408 @@
+{
+ "bibcode": "2023A&A...679A.117G",
+ "title": "MINDS. Abundant water and varying C/O across the disk of Sz 98 as seen by JWST/MIRI",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202347005",
+ "arxiv_id": "2307.09301",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Explain the JWST MIRI/MRS observations of the Sz 98 inner disk, put it in context with other disks focusing on H2O ro-vibrational and pure rotational emission, and compare the chemical findings with outer disk ALMA observations.",
+ "alma_project_codes": [
+  "2018.1.01458.S",
+  "2018.0.01458.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.079\" x 0.063\" (-27.135 deg)",
+  "sensitivity": "0.071 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination (47.1 deg) and position angle (111.6 deg)",
+    "evidence": [
+     {
+      "loc": "Sz 98 from ALMA data",
+      "quote": "The inclination of the disk is 47.1$\\degree$ with a position angle of 111.6$\\degree$ (cite: ref:17TaTeNa)."
+     }
+    ]
+   },
+   "citation": "Tazzari et al. 2017 (cite: ref:17TaTeNa)"
+  },
+  {
+   "what": {
+    "value": "Outer disk volatile C/O ratio > 1 and depletion in volatile gaseous carbon and oxygen",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: ref:19MiFaVa) suggest that the outer disk is depleted in volatile gaseous carbon and oxygen, and find signs for a gaseous C/O ratio larger than unity based on bright and faint emission seen in Atacama Large Millimeter/submillimeter Array (ALMA) observations."
+     }
+    ]
+   },
+   "citation": "Miotello et al. 2019 (cite: ref:19MiFaVa)"
+  },
+  {
+   "what": {
+    "value": "Spitzer/IRS H2O and OH line fluxes of a comparison sample of disks",
+    "evidence": [
+     {
+      "loc": "H2O and OH line fluxes",
+      "quote": "(cite: ref:17BaPoSa) examine the line fluxes of the 12.52 \\mu m and the tentatively detected 12.6 \\mu m and lines, respectively, of a sample of disks observed with *Spitzer*."
+     }
+    ]
+   },
+   "citation": "Banzatti et al. 2017 (cite: ref:17BaPoSa)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST MIRI/MRS data and extract 1D spectrum",
+   "method": "Process exposure of all twelve bands with JWST pipeline, defringe and flux calibrate using on-sky reference A star HD 163466, sum signal in a 2.5xFWHM aperture with background estimated from an annulus, skip spec3 outlier detection, and mask spurious artefacts.",
+   "software": [
+    "JWST pipeline"
+   ],
+   "key_parameters": [
+    "Aperture = 2.5 x FWHM; background annulus = 5xFWHM to 7.5xFWHM (shortest wavelengths) to 3xFWHM to 3.75xFWHM (longest wavelengths)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Subtract continuum and fit LTE slab models to molecular emission across four spectral regions",
+   "method": "Subtract continuum by fitting a cubic spline through iteratively selected line-free sections; divide spectrum into 4 wavelength regions; convolve LTE slab models to constant MRS resolution per region and resample with spectres; iteratively fit column density N, excitation temperature T, and emitting radius R per molecule via reduced chi^2 minimization.",
+   "software": [
+    "spectres"
+   ],
+   "key_parameters": [
+    "Spectral regions: 5-6.5 um (R~3500), 13.6-16.3 um (R~2500), 17-23 um (R~1500), 23 um onwards (R~1500)",
+    "Grid spacing: Delta T = 25 K, Delta log10(N) = 0.16 cm^-2, Delta log10(R) = 0.02 au"
+   ],
+   "assumptions": [
+    "LTE excitation; Gaussian line profiles with broadening Delta V = 4.7 km s^-1 (sigma = 2 km s^-1); mutual line shielding for CO2 and HCN Q-branches; ISM H2(16)O/H2(18)O ratio of 550"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Image ALMA continuum, extract radial profile to locate rings and gaps, and model snowline locations",
+   "method": "Calibrate ALMA archival data set 2018.1.01458.S with pipeline scripts, image continuum at 232.984 GHz with CASA TCLEAN, extract deprojected azimuthally averaged radial profile to locate rings and gaps, and run a radiative transfer model fitting SED, mm dust radial profiles, and JWST continuum to find snowlines.",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "Briggs robust = +1.0; clean threshold ~ 1x RMS of dirty image; radial profile bin size = half the width of beam minor axis"
+   ],
+   "assumptions": [
+    "Disk inclination = 47.1 deg, position angle = 111.6 deg; freeze-out temperatures of 150 K (H2O), 72 K (CO2), and 20 K (CO)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H2O column density N (5-6.5 um, Region 1)",
+   "value": "3.7e18",
+   "uncertainty": "+3.1/-1.5 (log-space)",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3.7$\\times$10$^{18}$ $_{-1.5}^{+3.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O excitation temperature T (5-6.5 um, Region 1)",
+   "value": "950",
+   "uncertainty": "+513/-620",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "950 $_{-620}^{+513}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O emitting radius R (5-6.5 um, Region 1)",
+   "value": "0.07",
+   "uncertainty": "+0.46/-0.03",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.07 $_{-0.03}^{+0.46}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N (13.6-16.3 um, Region 2)",
+   "value": "7.9e18",
+   "uncertainty": "+0.8/-0.5 (log-space)",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "7.9$\\times$10$^{18}$ $_{-0.5}^{+0.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O excitation temperature T (13.6-16.3 um, Region 2)",
+   "value": "650",
+   "uncertainty": "+88/-91",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "650 $_{-91}^{+88}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O emitting radius R (13.6-16.3 um, Region 2)",
+   "value": "0.28",
+   "uncertainty": "+0.07/-0.04",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.28 $_{-0.04}^{+0.07}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N (17-23 um, Region 3)",
+   "value": "7.5e19",
+   "uncertainty": "+1.1/-4.2 (log-space)",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "7.5$\\times$10$^{19}$ $_{-4.2}^{+1.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O excitation temperature T (17-23 um, Region 3)",
+   "value": "300",
+   "uncertainty": "+182/-41",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "300 $_{-41}^{+182}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O emitting radius R (17-23 um, Region 3)",
+   "value": "1.00",
+   "uncertainty": "+8.33/-0.39",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.00 $_{-0.39}^{+8.33}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N (23 um onwards, Region 4)",
+   "value": "1.7e19",
+   "uncertainty": "+0.1/-2.0 (log-space)",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.7$\\times$10$^{19}$ $_{-2.0}^{+0.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O excitation temperature T (23 um onwards, Region 4)",
+   "value": "250",
+   "uncertainty": "+147/-44",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "250 $_{-44}^{+147}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O emitting radius R (23 um onwards, Region 4)",
+   "value": "1.42",
+   "uncertainty": "+2.9/-0.66",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.42 $_{-0.66}^{+2.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO best-fit column density, temperature, and radius (Region 1)",
+   "value": "1.4e15 cm^-2, 1675 K, 1.00 au",
+   "uncertainty": "not stated",
+   "units": "cm^-2, K, au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO",
+     "quote": "The best-fit parameters for the emission in the disk are 1675 K, with a radius of 1.00 au, and a column density of 1.4$\\times$10$^{15}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO2 best-fit column density, temperature, and radius (Region 2, including hot band)",
+   "value": "2.4e19 cm^-2, 125 K, 1.63 au",
+   "uncertainty": "not stated",
+   "units": "cm^-2, K, au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO2",
+     "quote": "The best-fit temperature when including the hot band around 13.8 \\mu m is relatively cold, with 125 K from an emitting radius of 1.63 au, and a column density of $\\sim$2.4$\\times 10^{19}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN best-fit column density, temperature, and radius (Region 2)",
+   "value": "4.3e16 cm^-2, 1075 K, 0.76 au",
+   "uncertainty": "not stated",
+   "units": "cm^-2, K, au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "HCN",
+     "quote": "While can be fit with both an optically thin and optically thick solution, we find a best fit for a temperature of 1075 K, with a radius of 0.76 au, and a column density of 4.3$\\times$10$^{16}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum H2O column density from H2(18)O non-detection",
+   "value": "3.5e19",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "H2O",
+     "quote": "Assuming the integrated flux of the H$_\\text{2}^{\\text{18}}$O feature is in this upper limit on the line flux, the maximum column density of is 3.5$\\times$10$^{19}$ cm$^{-2}$ when assuming the ISM H$_\\text{2}^{\\text{16}}$O/H$_\\text{2}^{\\text{18}}$O ratio of 550."
+    }
+   ]
+  },
+  {
+   "quantity": "C2H2 line flux upper limit (13.65-13.72 um, normalised to 140 pc)",
+   "value": "0.3e-14",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Lack of other organics",
+     "quote": "After subtracting the best-fit slab models, we find an upper limit for in the 13.65-13.72 \\mu m region of $\\sim$0.3$\\times 10^{-14}$ erg s$^{-1}$ cm$^{-2}$ normalised to a distance of 140 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (13.9 um) to H2O (17.23 um) line flux ratio",
+   "value": "1.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Lack of other organics",
+     "quote": "After subtracting the slab model fits presented in Fig. 2 to get a ‘clean’ feature, the flux ratio is $\\sim$1.7."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 232.984 GHz continuum peak emission",
+   "value": "2.167",
+   "uncertainty": "0.071",
+   "units": "mJy beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Sz 98 from ALMA data",
+     "quote": "The emission peaks at 2.167 mJy beam$^{-1}$ and the image has a root mean square of 0.071 mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA millimeter dust ring locations",
+   "value": "27, 103",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Sz 98 from ALMA data",
+     "quote": "As displayed in Fig. 6, we infer the millimetre emission to consist of an inner compact core, surrounded by two rings at approximately 27 and 103 au, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA millimeter dust gap locations",
+   "value": "16, 88",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Sz 98 from ALMA data",
+     "quote": "The gaps are expected to be located at approximately 16 and 88 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated snowline locations (H2O, CO2, CO)",
+   "value": "1.05-1.11 (H2O), 2.17-2.29 (CO2), 20.64-21.40 (CO)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Sz 98 from ALMA data",
+     "quote": "Assuming that these molecules freeze-out at temperatures of, respectively, 150 K, 72 K, and 20 K (cite: ref:04CoAnCh), the model suggests that the H$_2$O snowline is located between approximately 1.05 and 1.11 au, the CO$_2$ snowline between approximately 2.17 and 2.29 au, and the CO snowline between approximately 20.64 and 21.40 au."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact code/software and molecular spectroscopic databases (e.g., HITRAN) used to generate the LTE slab models",
+  "Specific radiative transfer code and dust opacity parameters used to model the SED, mm radial profiles, and snowline locations in Appendix D",
+  "Exact wavelength knot positions used for the cubic spline continuum subtraction in the MIRI/MRS spectrum",
+  "Cell size, image size, and masking parameters used in CASA TCLEAN for the ALMA continuum image"
+ ],
+ "missing_for_reproduction": [
+  "Exact spline knot wavelengths used for continuum subtraction of the MIRI/MRS spectrum",
+  "Specific LTE slab modeling code and molecular line list database version",
+  "Details and parameters of the radiative transfer code used in Appendix D to compute snowline radii",
+  "Exact wavelength windows used to compute reduced chi^2 for each molecule within the 4 broader spectral regions"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Both JWST and ALMA datasets are publicly identified in archives, CASA/JWST pipeline versions and masked wavelength intervals are explicitly listed, and slab model grid spacings are given, but continuum spline knots, exact fitting windows, slab code identity, and radiative transfer model details are omitted.",
+ "rediscovery_reason": "Public archival JWST and ALMA data with quantitative, well-defined numeric results (ALMA continuum peak, RMS, ring/gap radii, and MIRI/MRS LTE slab parameters per region).",
+ "source_card": "cards/2023A%26A...679A.117G/sonnet/card.md"
+}

@@ -1,0 +1,242 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "2.2 ALMA", "quote": "as the PI science project 2021.1.00341.S targeting a high-redshift galaxy"},
+{"loc": "abstract", "quote": "The Atacama Large Millimeter/submillimeter Array (ALMA) serendipitously detected H$_2$O"}
+],
+"fields": ["agn_and_quasars", "nearby_galaxies"],
+"question": {
+"value": "Is there 321 GHz H2O maser emission in the radio galaxy NGC 1052, and how do its profile and location compare with the known 22 GHz maser?",
+"evidence": [
+{"loc": "Introduction", "quote": "So far, no radio-loud AGN has been identified as a 321-GHz maser source."},
+{"loc": "Introduction", "quote": "In this letter we present the first discovery of the 321-GHz maser in NGC 1052"}
+]
+},
+"targets": [
+{
+"name": "NGC 1052",
+"details": [
+{"loc": "Introduction", "quote": "We employ the systemic velocity of $V_{\\rm sys} = 1492$ km s$^{-1}$ and the luminosity distance of $D_L = 17.6$ Mpc."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "V_sys = 1492 km/s; D_L = 17.6 Mpc",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2021.1.00341.S", "evidence": [{"loc": "2.2 ALMA", "quote": "as the PI science project 2021.1.00341.S targeting a high-redshift galaxy"}]}
+],
+"data_settings": [
+{"field": "arrays", "value": "41 12-m antennas", "evidence": [{"loc": "2.2 ALMA", "quote": "The Atacama Large Millimeter/submillimeter Array (ALMA) observations with 41 12-m antennas were carried out on 2022-05-12"}]},
+{"field": "observing_dates", "value": "2022-05-12", "evidence": [{"loc": "2.2 ALMA", "quote": "observations with 41 12-m antennas were carried out on 2022-05-12"}]},
+{"field": "baselines", "value": "array configuration compact, <500.2 m", "evidence": [{"loc": "3.1 Justification for maser emission", "quote": "The ALMA array configuration was too compact ($<500.2$ m) to rule out the possibility of thermal emission."}]},
+{"field": "frequencies_and_spectral_setup", "value": "Four SPWs of 1875 MHz bandwidth centred at 306.4, 308.2, 318.4 and 320.2 GHz; spectral resolution 7.8125 MHz (7.3 km/s)", "evidence": [
+{"loc": "2.2 ALMA", "quote": "Four spectral windows (SPWs) with a 1875-MHz bandwidth were centered at 306.4, 308.2, 318.4 and 320.2 GHz."},
+{"loc": "2.2 ALMA", "quote": "The spectral resolution was 7.8125 MHz corresponding to 7.3 km s$^{-1}$."}]},
+{"field": "time_on_source", "value": "30 s x 4 scans and a 912 s scan (stated for the phase and bandpass calibrators, 'respectively')", "evidence": [{"loc": "2.2 ALMA", "quote": "On-source integration were 30 s $\\times 4$ scans and a 912 s scan, respectively."}]},
+{"field": "sensitivity", "value": "image rms 3.3 mJy/beam/ch", "evidence": [{"loc": "2.2 ALMA", "quote": "The image rms was 3.3 mJy/beam/ch"}]},
+{"field": "angular_resolution", "value": "synthesized beam 0.68\" x 0.56\", PA = 79 deg", "evidence": [{"loc": "2.2 ALMA", "quote": "with the synthesized beam of $0^{\\prime \\prime}.68 \\times 0^{\\prime \\prime}.56$ with PA$=79^{\\circ}$"}]},
+{"field": "pi_or_archival_as_stated", "value": "PI science project 2021.1.00341.S targeting a high-redshift galaxy; NGC 1052 was the phase calibrator", "evidence": [
+{"loc": "2.2 ALMA", "quote": "as the PI science project 2021.1.00341.S targeting a high-redshift galaxy"},
+{"loc": "2.2 ALMA", "quote": "The operations software selected NGC 1052 as a phase calibrator"}]}
+],
+"lines_targeted": [
+{"species": "H2O", "transition": "J(Ka,Kc) = 10(2,9) - 9(3,6)", "rest_frequency": "321.225677 GHz", "evidence": [{"loc": "Introduction", "quote": "maser at 321.225677 GHz is a new probe for AGNs."}]},
+{"species": "H2O (GBT, comparison)", "transition": "J(Ka,Kc) = 6(1,6) - 5(2,3)", "rest_frequency": "22 GHz (exact value not stated)", "evidence": [{"loc": "Introduction", "quote": "To date 150 AGNs are known to harbor the"}]}
+],
+"other_facilities": [
+{"name": "Green Bank Telescope (GBT)", "provided": {"value": "22-GHz H2O maser spectra at 6 epochs (2005-11-18 to 2006-01-13), program GBT 05C-034, spectral resolution 0.33 km/s", "evidence": [
+{"loc": "2.1 GBT", "quote": "We observed the 22-GHz maser at 6 epochs; 2005-11-18, 2005-11-28, 2005-12-07, 2005-12-20, 2005-12-27, and 2006-01-13 using the Green Bank Telescope (GBT)"},
+{"loc": "Summary", "quote": "GBT 05C-034 and ADS/JAO.ALMA#2021.1.00341.S"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Absorption-line spectra (H2O 5(5,0)-6(4,3) v2=1, HCN 1-0 and 4-3) overplotted in Figure 1", "evidence": [{"loc": "3 Results", "quote": "together with absorption lines of H$_2$O $5_{5,0}-6_{4,3}$, $v_2=1$, HCN $1-0$, and $4-3$ (cite: 2020ApJ...895...73K; 2023ApJsubmitted)"}]}, "citation": "(cite: 2020ApJ...895...73K; 2023ApJsubmitted)"},
+{"what": {"value": "Continuum brightness temperature of NGC 1052 exceeding 1e8 K", "evidence": [{"loc": "3.1 Justification for maser emission", "quote": "Since the brightness temperature of the continuum emission exceeds $10^8$ K (cite: 2004A&A...426..481K)"}]}, "citation": "(cite: 2004A&A...426..481K)"},
+{"what": {"value": "Maser excitation condition: 321-GHz maser needs T_k > 1000 K and n(H2O) > 1e4 cm^-3", "evidence": [{"loc": "Introduction", "quote": "calculated the excitation condition of possible H$_2$O maser transitions for evolved star environments"}]}, "citation": "(cite: 2016MNRAS.456..374G)"},
+{"what": {"value": "321 GHz maser properties of Circinus galaxy and NGC 4945 used for comparison (peak-to-continuum ratios 3.2 and 37 for Circinus, 0.29 for NGC 4945)", "evidence": [
+{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "In this subsection we compare the properties of the H$_2$O maser in NGC 1052 with those in NGC 4945 and the Circinus galaxy referring to"},
+{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "The ratio in NGC 4945 was 0.29 on 2012-06-03 and there was a non detection on 2017-05-06."}]}, "citation": "(cite: 2021ApJ...923..251H)"},
+{"what": {"value": "SO absorption temperatures 26 +/- 4 K (mm) and 344 +/- 43 K (sub-mm)", "evidence": [{"loc": "3.2 Spectral profiles and location of masers", "quote": "found mm (86 – 130 GHz) molecular absorption features and identified different line profiles from sub-mm ones"}]}, "citation": "(cite: 2023ApJsubmitted)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [
+{"field": "continuum_subtraction", "value": "spectra are continuum-subtracted (method not stated)", "evidence": [{"loc": "3 Results", "quote": "Continuum-subtracted spectra are shown in"}]},
+{"field": "final_beam", "value": "0.68\" x 0.56\", PA = 79 deg", "evidence": [{"loc": "2.2 ALMA", "quote": "with the synthesized beam of $0^{\\prime \\prime}.68 \\times 0^{\\prime \\prime}.56$ with PA$=79^{\\circ}$"}]},
+{"field": "final_rms", "value": "3.3 mJy/beam/ch", "evidence": [{"loc": "2.2 ALMA", "quote": "The image rms was 3.3 mJy/beam/ch"}]}
+],
+"inherited": [
+{"what": {"value": "Comparison framework and numbers for the Circinus galaxy and NGC 4945 maser properties", "evidence": [{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "referring to"}]}, "from_reference": "(cite: 2021ApJ...923..251H)"},
+{"what": {"value": "GBT spectra reduced with the standard spectral calibration procedure in GBTIDL", "evidence": [{"loc": "2.1 GBT", "quote": "We followed the standard spectral calibration procedure using GBTIDL to obtain spectra with a velocity resolution of 0.33 km s$^{-1}$."}]}, "from_reference": "standard GBTIDL procedure (no citation given)"}
+],
+"unstated_but_needed": [
+"ALMA band number, pipeline vs manual calibration, CASA/pipeline version, and flux calibrator (only the bandpass calibrator J0423-0120 and phase calibrator NGC 1052 are named)",
+"Imaging task and parameters: weighting/robust, cell and image size, deconvolver, masking, primary-beam correction",
+"How the continuum was subtracted and which line-free channels were used",
+"Whether the line spectrum was extracted at a peak pixel or from an aperture, and the fitting code and initial guesses for the two-Gaussian fit",
+"How the integrated flux density (10.5 Jy km/s) and the 99% confidence size limits from the uv-plot were computed (fit model, uv bins)",
+"Source coordinates and the origin of the systemic velocity and D_L = 17.6 Mpc",
+"Whether the GitHub scripts contain the exact calibration and imaging choices (the paper only points to them)"
+],
+"analysis_steps": [
+{"order": 1, "goal": "reduce GBT 22 GHz spectra",
+"method": {"value": "Standard spectral calibration in GBTIDL; spectra at 0.33 km/s resolution for six epochs", "evidence": [{"loc": "2.1 GBT", "quote": "We followed the standard spectral calibration procedure using GBTIDL to obtain spectra with a velocity resolution of 0.33 km s$^{-1}$."}]},
+"software": ["GBTIDL"],
+"key_parameters": [{"value": "rms per epoch 2.3, 2.7, 2.1, 1.4, 4.6, 2.5 mJy; ~10% systematic flux error", "evidence": [{"loc": "2.1 GBT", "quote": "The rms noise of the spectrum at each epoch was 2.3, 2.7, 2.1, 1.4, 4.6, and, 2.5 mJy, respectively."}]}],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "extract and fit the 321 GHz line profile",
+"method": {"value": "Continuum-subtracted ALMA spectrum fitted with two Gaussian components (broad and narrow)", "evidence": [
+{"loc": "3 Results", "quote": "The 321-GHz H$_2$O emission profile was biased blueward, which was fitted by two Gaussian components"}]},
+"software": [],
+"key_parameters": [{"value": "Broad: centre 1467 +/- 5 km/s, FWHM 208 +/- 12 km/s; narrow: centre 1333 +/- 1 km/s, FWHM 44 +/- 3 km/s", "evidence": [{"loc": "3 Results", "quote": "(b) a narrow component with the center velocity of $1333 \\pm 1$ km s$^{-1}$ with FWHM of $44 \\pm 3$ km s$^{-1}$."}]}],
+"assumptions": [{"value": "Systemic velocity 1492 km/s", "evidence": [{"loc": "Introduction", "quote": "We employ the systemic velocity of $V_{\\rm sys} = 1492$ km s$^{-1}$"}]}],
+"fitting": {"value": "Two-Gaussian fit; sampler, priors and likelihood not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "locate the maser emission relative to the continuum",
+"method": {"value": "Channel maps in 20 km/s slices over 1280-1580 km/s; position measured by 2-D Gaussian fitting in each channel map and registered on the continuum image", "evidence": [
+{"loc": "3 Results", "quote": "We produced channel maps of the 321-GHz H$_2$O line with a velocity slice of 20 km s$^{-1}$"},
+{"loc": "3 Results", "quote": "and measured the position by 2-D Gaussian fitting in the channel maps."}]},
+"software": [],
+"key_parameters": [{"value": "velocity slice 20 km/s", "evidence": [{"loc": "3 Results", "quote": "with a velocity slice of 20 km s$^{-1}$"}]}],
+"assumptions": [],
+"fitting": {"value": "2-D Gaussian fit per channel", "evidence": [{"loc": "3 Results", "quote": "and measured the position by 2-D Gaussian fitting in the channel maps."}]},
+"validation": {"value": "Outlier channel at 1560 km/s with S/N 4.3 noted separately; no velocity gradient found", "evidence": [{"loc": "3 Results", "quote": "except one outlier offset by $0^{\\prime \\prime}.29 \\pm 0^{\\prime \\prime}.03$ at 1560 km s$^{-1}$ with a signal-to-noise ratio as low as 4.3."}]}},
+{"order": 4, "goal": "constrain source sizes from the uv plane",
+"method": {"value": "uv-plot analysis of continuum and continuum-subtracted velocity-integrated line emission giving 99% confidence upper limits on FWHM size", "evidence": [{"loc": "3 Results", "quote": "The upper limits (99% confidence) of the FWHM size were $0^{\\prime \\prime}.024$ and $0^{\\prime \\prime}.12$ for the continuum and the continuum-subtracted velocity-integrated emission line"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "test thermal versus maser origin via brightness temperature",
+"method": {"value": "Brightness temperature lower limit from size upper limit and peak flux density, plus ancillary arguments (absorption against the core, compactness vs CND)", "evidence": [
+{"loc": "3.1 Justification for maser emission", "quote": "Nevertheless, ancillary evidence indicates that the emission is non-thermal maser."},
+{"loc": "3.1 Justification for maser emission", "quote": "yields a brightness temperature of $T_{\\rm B} \\geq 43$ K."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [{"value": "Thermal molecular gas covering the bright continuum core would appear in absorption", "evidence": [{"loc": "3.1 Justification for maser emission", "quote": "molecular gas covering the continuum source must be seen in absorption except non-thermal emission."}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with CO 2-1 and 3-2 emission fluxes and CND extent", "evidence": [{"loc": "3.1 Justification for maser emission", "quote": "The CND cannot harbor the 321-GHz H$_2$O emission."}]}},
+{"order": 6, "goal": "derive isotropic maser luminosities and compare with Circinus and NGC 4945",
+"method": {"value": "Isotropic luminosity L = 1.04e-3 nu_rest D_L^2 integral S(v) dv for 22 and 321 GHz masers; compare peak-to-continuum ratios", "evidence": [{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "for 22-GHz and 321-GHz masers, respectively, using the formula"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [{"value": "D_L = 17.6 Mpc", "evidence": [{"loc": "Introduction", "quote": "the luminosity distance of $D_L = 17.6$ Mpc"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "GBTIDL", "version": "not stated", "used_for": {"value": "standard spectral calibration of GBT 22 GHz data", "evidence": [{"loc": "2.1 GBT", "quote": "We followed the standard spectral calibration procedure using GBTIDL"}]}}
+],
+"results_numeric": [
+{"quantity": "321 GHz H2O isotropic luminosity", "value": "1090", "uncertainty": "not stated", "units": "L_sun", "from_step": 6, "evidence": [{"loc": "abstract", "quote": "the isotropic luminosity of 1090 $L_{\\Sol}$."}]},
+{"quantity": "22 GHz H2O isotropic luminosity", "value": "176", "uncertainty": "not stated", "units": "L_sun", "from_step": 6, "evidence": [{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "The isotropic luminosity is estimated to be 176 $L_{\\Sol}$ and 1090 $L_{\\Sol}$ for 22-GHz and 321-GHz masers"}]},
+{"quantity": "321 GHz broad component FWHM", "value": "208", "uncertainty": "+/-12", "units": "km/s", "from_step": 2, "evidence": [{"loc": "3 Results", "quote": "(a) a broad component with the center velocity of $1467 \\pm 5$ km s$^{-1}$ and FWHM of $208 \\pm 12$ km s$^{-1}$"}]},
+{"quantity": "321 GHz broad component centre velocity", "value": "1467", "uncertainty": "+/-5", "units": "km/s", "from_step": 2, "evidence": [{"loc": "3 Results", "quote": "(a) a broad component with the center velocity of $1467 \\pm 5$ km s$^{-1}$"}]},
+{"quantity": "321 GHz narrow component FWHM", "value": "44", "uncertainty": "+/-3", "units": "km/s", "from_step": 2, "evidence": [{"loc": "3 Results", "quote": "(b) a narrow component with the center velocity of $1333 \\pm 1$ km s$^{-1}$ with FWHM of $44 \\pm 3$ km s$^{-1}$."}]},
+{"quantity": "321 GHz narrow component centre velocity", "value": "1333", "uncertainty": "+/-1", "units": "km/s", "from_step": 2, "evidence": [{"loc": "3 Results", "quote": "(b) a narrow component with the center velocity of $1333 \\pm 1$ km s$^{-1}$"}]},
+{"quantity": "321 GHz peak flux density", "value": "0.07 at 1334 km/s", "uncertainty": "not stated", "units": "Jy", "from_step": 2, "evidence": [{"loc": "3 Results", "quote": "The peak flux density was 0.07 Jy at 1334 km s$^{-1}$."}]},
+{"quantity": "22 GHz maser centroid velocity", "value": "1685", "uncertainty": "+/-4", "units": "km/s", "from_step": 1, "evidence": [{"loc": "3 Results", "quote": "The centroid of the 22-GHz emission remained at $1685 \\pm 4$ km s$^{-1}$"}]},
+{"quantity": "22 GHz maser redshift relative to systemic velocity", "value": "193", "uncertainty": "not stated", "units": "km/s", "from_step": 1, "evidence": [{"loc": "3 Results", "quote": "which was redshifted with respect to the systemic velocity by 193 km s$^{-1}$."}]},
+{"quantity": "Continuum flux density at 307.3 GHz and 319.3 GHz", "value": "0.401 and 0.380", "uncertainty": "not stated", "units": "Jy", "from_step": 0, "evidence": [{"loc": "3 Results", "quote": "The continuum component was unresolved with flux densities of 0.401 Jy and 0.380 Jy at 307.3 GHz and 319.3 GHz, respectively."}]},
+{"quantity": "Upper limit (99%) on FWHM size of continuum", "value": "0.024", "uncertainty": "99% confidence upper limit", "units": "arcsec", "from_step": 4, "evidence": [{"loc": "3 Results", "quote": "The upper limits (99% confidence) of the FWHM size were $0^{\\prime \\prime}.024$ and $0^{\\prime \\prime}.12$ for the continuum"}]},
+{"quantity": "Upper limit (99%) on FWHM size of velocity-integrated line emission", "value": "0.12", "uncertainty": "99% confidence upper limit", "units": "arcsec", "from_step": 4, "evidence": [{"loc": "3 Results", "quote": "The upper limits (99% confidence) of the FWHM size were $0^{\\prime \\prime}.024$ and $0^{\\prime \\prime}.12$ for the continuum"}]},
+{"quantity": "Offset of channel maser positions from the continuum position (upper limit)", "value": "0.14 arcsec (12 pc)", "uncertainty": "upper limit", "units": "arcsec", "from_step": 3, "evidence": [{"loc": "3 Results", "quote": "These coincided with the continuum position with an upper limit of $0^{\\prime \\prime}.14$ corresponding to 12 pc"}]},
+{"quantity": "Brightness temperature of the 321 GHz emission (lower limit)", "value": ">=43", "uncertainty": "lower limit", "units": "K", "from_step": 5, "evidence": [{"loc": "3.1 Justification for maser emission", "quote": "yields a brightness temperature of $T_{\\rm B} \\geq 43$ K."}]},
+{"quantity": "Integrated flux density of 321 GHz H2O emission", "value": "10.5", "uncertainty": "not stated", "units": "Jy km/s", "from_step": 2, "evidence": [{"loc": "3.1 Justification for maser emission", "quote": "The integrated flux density of the 321-GHz H$_2$O emission was 10.5 Jy km s$^{-1}$"}]},
+{"quantity": "Ratio of 321 GHz maser peak flux to continuum flux", "value": "0.19", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "The ratio of the 321-GHz maser peak flux to continuum flux in NGC 1052 is 0.19"}]},
+{"quantity": "Image rms", "value": "3.3", "uncertainty": "not stated", "units": "mJy/beam/channel", "from_step": 0, "evidence": [{"loc": "2.2 ALMA", "quote": "The image rms was 3.3 mJy/beam/ch"}]}
+],
+"findings_qualitative": [
+{"value": "First submillimeter maser detection in a radio galaxy and the most luminous 321 GHz H2O maser known to date", "evidence": [{"loc": "abstract", "quote": "This is the first submillimeter maser detection in a radio galaxy and the most luminous 321-GHz H$_2$O maser known to date"}]},
+{"value": "The 321 GHz profile straddles the systemic velocity, unlike the redshifted 22 GHz maser profile", "evidence": [{"loc": "Summary", "quote": "The sub-mm maser profile straddles the systemic velocity of the galaxy, similar to sub-mm molecular absorption lines, unlike the redshifted profile of the 22-GHz maser."}]},
+{"value": "The 321 GHz maser is unresolved and coincides with the continuum core within 12 pc", "evidence": [{"loc": "abstract", "quote": "coincides with the continuum core position within 12 pc"}]},
+{"value": "No high-velocity components (~1000 km/s offset) are seen in NGC 1052, unlike Circinus and NGC 4945", "evidence": [{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "such components are not identified in NGC 1052."}]}
+],
+"claims": [
+{"hypothesis": "Does NGC 1052 host 321 GHz H2O emission, and is it a maser?",
+"experiment": "ALMA spectra of a serendipitously observed phase calibrator, with brightness temperature and ancillary arguments",
+"result": "Emission at 321 GHz with peak 0.07 Jy and T_B >= 43 K; compact array cannot rule out thermal emission, but thermal lines appear in absorption at the core",
+"finding": "The emission is probably a non-thermal maser",
+"support": "partially",
+"evidence": [
+{"loc": "3.1 Justification for maser emission", "quote": "Thus, the 321-GHz H$_2$O emission at the same position of the core is probably non-thermal maser."},
+{"loc": "3.1 Justification for maser emission", "quote": "The ALMA array configuration was too compact ($<500.2$ m) to rule out the possibility of thermal emission."}]},
+{"hypothesis": "Where is the 321 GHz maser located relative to the continuum core?",
+"experiment": "2-D Gaussian positions in 20 km/s channel maps registered on the continuum image, plus uv-plane size limits",
+"result": "Positions coincide with the continuum within 0.14 arcsec (12 pc); line size <= 0.12 arcsec; no velocity gradient",
+"finding": "The maser is unresolved and located at the compact continuum core",
+"support": "supported",
+"evidence": [
+{"loc": "3 Results", "quote": "No significant velocity gradient was found."},
+{"loc": "abstract", "quote": "coincides with the continuum core position within 12 pc"}]},
+{"hypothesis": "How does the 321 GHz profile compare with the 22 GHz maser?",
+"experiment": "Two-Gaussian fit of the ALMA profile compared with GBT 22 GHz spectra taken 16 years earlier",
+"result": "321 GHz: broad component FWHM 208 km/s near systemic plus narrow 44 km/s component blueshifted by 160 km/s; 22 GHz: broad profile redshifted by 193 km/s",
+"finding": "The two masers trace different gas; 321 GHz amplifies the core continuum through hot dense gas in front of it, while 22 GHz is redshifted inflow in the near side of the torus",
+"support": "partially",
+"evidence": [
+{"loc": "abstract", "quote": "These results indicate amplification of the continuum emission through high-temperature"},
+{"loc": "Introduction", "quote": "Since the monitoring was taken 16 years earlier than the 321-GHz observation, we do not attempt to perform a detailed comparison however."}]},
+{"hypothesis": "Why is NGC 1052 so luminous at 321 GHz compared with Circinus and NGC 4945?",
+"experiment": "Isotropic luminosity and peak-to-continuum ratio compared with Circinus and NGC 4945 values from the literature",
+"result": "Luminosities 5.5 and 17 times those of Circinus (22 and 321 GHz); peak/continuum ratio 0.19 versus 3.2 and 37 in Circinus",
+"finding": "High luminosity is ascribed to the brighter continuum with lower amplification gain",
+"support": "partially",
+"evidence": [
+{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "the high isotropic luminosity in NGC 1052 is ascribed to the brighter continuum."},
+{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "It is difficult to establish the degree of blending of multiple narrower features making up the spectrum in these observations however."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Detection was serendipitous: NGC 1052 was selected as a phase calibrator by the operations software in a project targeting a high-redshift galaxy; submillimeter observations are needed to probe inside the obscuring torus", "evidence": [
+{"loc": "abstract", "quote": "The Atacama Large Millimeter/submillimeter Array (ALMA) serendipitously detected H$_2$O"},
+{"loc": "Introduction", "quote": "In this context, submillimeter (sub-mm) observations are crucial to probe inside the obscuring torus."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Thermal emission from the circum-nuclear disk was rejected because the 321 GHz emission is within 12 pc and much more compact than the CND, and its flux exceeds the CO emission", "evidence": [
+{"loc": "3.1 Justification for maser emission", "quote": "The 321-GHz emission locates within 12 pc from the radio continuum, much more compact than the CND."},
+{"loc": "3.1 Justification for maser emission", "quote": "The CND cannot harbor the 321-GHz H$_2$O emission."}]},
+{"value": "Downstream of the jets as the maser site is considered unlikely because the mm SO absorber is too cold", "evidence": [{"loc": "3.2 Spectral profiles and location of masers", "quote": "Since the mm SO absorber is too cold to excite the maser, downstream of the jets is unlikely to harbor the 321-GHz maser."}]}
+],
+"limitations_admitted": [
+{"value": "Array too compact to rule out thermal emission; longer baselines needed for brightness temperature constraint", "evidence": [
+{"loc": "3.1 Justification for maser emission", "quote": "The ALMA array configuration was too compact ($<500.2$ m) to rule out the possibility of thermal emission."},
+{"loc": "3.1 Justification for maser emission", "quote": "Longer-baseline ($> 3500$ m) observations would provide more concrete constraints on the brightness temperature $> 2000$ K."}]},
+{"value": "22 GHz monitoring is 16 years older than the ALMA observation so only a qualitative profile comparison is made", "evidence": [{"loc": "Introduction", "quote": "Since the monitoring was taken 16 years earlier than the 321-GHz observation, we do not attempt to perform a detailed comparison however."}]},
+{"value": "Blending of multiple narrower features in the spectrum cannot be established", "evidence": [{"loc": "3.3 Comparison with the Circinus galaxy and NGC 4945", "quote": "It is difficult to establish the degree of blending of multiple narrower features making up the spectrum in these observations however."}]}
+],
+"referee_caveats_inferred": [
+"Maser identification rests on indirect arguments; no brightness temperature above thermal values is measured (T_B >= 43 K only)",
+"Single-epoch ALMA observation with no variability or polarization test",
+"The 22 GHz comparison uses data 16 years older than the ALMA epoch",
+"Calibration, imaging and line-fitting details are not given in the paper; reliability of the 3.3 mJy/beam/ch rms and flux scale (no ALMA flux uncertainty stated) cannot be judged without the scripts",
+"Torus layer temperatures rely on a submitted companion paper"
+],
+"reproducibility": [],
+"code_released": [
+{"value": "Reduction scripts and reduced data in GitHub repository kameno seiji/ALMA-2021.1.00341.S", "evidence": [
+{"loc": "2 Observations", "quote": "Reduction scripts and reduced data are available in the GitHub repository"},
+{"loc": "Footnote 1", "quote": "https://github.com/kamenoseiji/ALMA-2021.1.00341.S"}]}
+],
+"missing_for_reproduction": [
+"ALMA calibration and imaging parameters are not given in the paper (see unstated_but_needed); must be taken from the GitHub scripts",
+"Source coordinates and the origin of the systemic velocity and luminosity distance",
+"Two-Gaussian fit and uv-plane size-limit procedures are not described in detail"
+],
+"estimated_data_volume_inferred": "Small: one 4-SPW, 41-antenna compact-configuration execution block, likely tens of GB raw; pipeline products smaller",
+"score_inferred": 4,
+"score_reason": "ALMA project code, observing date, spectral setup, beam, rms and all main numbers are given, and reduction scripts plus reduced data are on GitHub; but calibration, imaging and fitting settings are only in the repository, not in the paper.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Single ALMA project (2021.1.00341.S, observed 2022-05-12) with scripts on GitHub and numeric line parameters (FWHM, centre velocities, luminosity) that can be re-derived; public availability of the ALMA data is not stated in the paper and is assumed from the archive link.",
+"methods_papers": [
+{"citation": "(cite: 2020ApJ...895...73K)", "why": "Earlier ALMA study of NGC 1052 submillimeter molecular absorption lines and CND emission used for the absorption-line comparison"},
+{"citation": "(cite: 2021ApJ...923..251H)", "why": "Circinus galaxy and NGC 4945 321 GHz maser properties used for the comparison"}
+],
+"companion_papers": [
+{"citation": "(cite: 2023ApJsubmitted)", "why": "Millimeter (86-130 GHz) molecular absorption features in NGC 1052 and SO temperatures, shown in Figure 1"}
+],
+"related_projects_or_surveys": ["GBT 05C-034 (22 GHz maser monitoring)"]
+}

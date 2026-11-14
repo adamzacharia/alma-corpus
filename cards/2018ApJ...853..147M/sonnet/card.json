@@ -1,0 +1,1212 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...853..147M",
+  "title": "Molecular Reconnaissance of the β Pictoris Gas Disk with the SMA: A Low HCN/(CO+CO<SUB>2</SUB>) Outgassing Ratio and Predictions for Future Surveys",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Matrà, L.",
+  "n_authors": 7,
+  "arxiv_id": "1801.03945",
+  "doi": "10.3847/1538-4357/aaa42a",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00142.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We here present a molecular survey of the $\\beta$ Pictoris belt with the Submillimeter Array (SMA), reporting upper limits for CN, HCN, HCO$^+$, N$_2$H$^+$ and H$_2$CO, as well as for H$_2$S, CH$_3$OH, SiO and DCN from archival ALMA data."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "beta Pictoris",
+     "coordinates": {
+      "value": "R.A. 05h47m17.0877s, Dec. -51 03 59.44 (J2000) (SMA pointing center)",
+      "evidence": [
+       {
+        "loc": "Table 1 (SMA Observational Parameters)",
+        "quote": "Pointing center             | R.A. $05^{h}47^{m}17.0877s$, Dec. $-51^{h}03^{m}59.44s$ (J2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Which molecules other than CO are present in the exocometary gas disk of beta Pictoris, and what do the upper limits imply for the HCN/(CO+CO2) outgassing ratio and for future surveys?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "use it to turn the SMA CN/CO flux ratio constraint into an upper limit of $<2.5$% on the HCN/(CO+CO$_2$) ratio of outgassing rates."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00142.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We extracted ALMA Band 6 observations of $\\beta$ Pictoris from the archive (project number 2012.1.00142.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Band 6; SMA 222 and 274 GHz (1.35 and 1.09 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "We extracted ALMA Band 6 observations of $\\beta$ Pictoris from the archive"
+     },
+     {
+      "loc": "3.1 SMA continuum and CO J=2-1 detections",
+      "quote": "detected in both SMA datasets at 222 and 274 GHz (1.35 and 1.09 mm)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "SMA ASIC 128 channels x 48 chunks, 0.8125 MHz spacing, LO 273.732 and 221.654 GHz; SWARM on second track; ALMA native channel 488.281 kHz",
+    "evidence": [
+     {
+      "loc": "2.1 SMA",
+      "quote": "The ASIC correlator was configured with 128 channels (0.8125 MHz spacing) in each of 48 chunks"
+     },
+     {
+      "loc": "2.2 ALMA",
+      "quote": "native channel spacing of 488.281 kHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "|      CO      |         J=2-1         | 230.538 |      4.5$\\pm$0.5       |  ALMA  |  2   |"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "N=2-1, J=5/2-3/2",
+     "rest_frequency": "226.875 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "CN      |         N=2-1         | 226.875"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=3-2",
+     "rest_frequency": "265.886 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "HCN      |         J=3-2         | 265.886"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=3-2",
+     "rest_frequency": "267.558 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "|  HCO$^{+}$   |         J=3-2         | 267.558"
+      }
+     ]
+    },
+    {
+     "species": "N2H+",
+     "transition": "J=3-2",
+     "rest_frequency": "279.512 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| N$_2$H$^{+}$ |         J=3-2         | 279.512"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "4_14-3_13",
+     "rest_frequency": "281.527 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "H$_2$CO    | J=4$_{1,4}$-$3_{1,3}$ | 281.527"
+      }
+     ]
+    },
+    {
+     "species": "H2S",
+     "transition": "2_2,0-2_1,1",
+     "rest_frequency": "216.710 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "H$_2$S (2$_{2,0}$-2$_{1,1}$, 216.710 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "5_1,4-4_2,2",
+     "rest_frequency": "216.946 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "CH$_3$OH (5$_{1,4}$-4$_{2,2}$, 216.946 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "J=5-4",
+     "rest_frequency": "217.105 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "SiO (J=5-4, 217.105 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "DCN",
+     "transition": "J=3-2",
+     "rest_frequency": "217.239 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "DCN (J=3-2, 217.239 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12-m array (compact and extended) plus ACA; SMA compact configuration",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "observations were performed between 2013 and 2015 with the 12-m array in a compact and extended configuration, as well as with the Atacama Compact Array (ACA)"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "SMA 6 to 67 m",
+    "evidence": [
+     {
+      "loc": "Table 1 (SMA Observational Parameters)",
+      "quote": "Min/Max baseline            | 6 to 67 meters"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "ALMA tapered beam 0.30'' x 0.26'' (p.a. -83.9 deg); SMA 7.7''x3.3'' and 8.7''x3.7''",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "$0.30\\ensuremath{''}\\times0.26\\ensuremath{''}$, or 13.4$\\times$10.7 au at the distance of $\\beta$ Pictoris"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "SMA line rms 0.09 and 0.06 Jy/beam; continuum rms 1.4 and 0.57 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Table 1 (SMA Observational Parameters)",
+      "quote": "rms noise (continuum image) | 1.4 mJy beam$^{-1}$                                               | 0.57 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "ALMA 28, 114 and 50 min (compact, extended, ACA)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "with total on-source times of 28, 114, and 50 mins, respectively"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "SMA 2014 Nov 11 and 2015 Dec 15; ALMA 2013-2015",
+    "evidence": [
+     {
+      "loc": "2.1 SMA",
+      "quote": "The first track was obtained on 2014 November 11 using 7 antennas."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "New 222 and 274 GHz continuum and CO, CN, HCN, HCO+, N2H+, H2CO line data",
+      "evidence": [
+       {
+        "loc": "2.1 SMA",
+        "quote": "We observed the $\\beta$ Pictoris debris disk with the Submillimeter Array (SMA) on Mauna Kea, Hawaii in two tracks"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel PACS",
+     "provided": {
+      "value": "Archival spectrum covering the OH 2.51 THz line, giving an upper limit",
+      "evidence": [
+       {
+        "loc": "5.2 Predictions",
+        "quote": "we found unpublished PACS observations of $\\beta$ Pictoris covering the OH line"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Solar System comet HCN/CO and HCN/(CO+CO2) abundance values",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "compared to HCN/(CO+CO$_2$) and HCN/CO values measured in Solar System comets from (cite: LeRoy2015) and references therein"
+       }
+      ]
+     },
+     "citation": "(cite: LeRoy2015)"
+    },
+    {
+     "what": {
+      "value": "Photodissociation cross sections",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "Photodissociation timescales for all molecules were calculated using photodissociation cross sections from (cite: Heays2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Heays2017)"
+    },
+    {
+     "what": {
+      "value": "Stellar UV spectrum from HST/STIS and FUSE plus photospheric model",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "obtained by superimposing observed spectra from HST/STIS (cite: Roberge2000) and FUSE (cite: Bouret2002; Roberge2006) on the photospheric model spectrum of (cite: Fernandez2006)"
+       }
+      ]
+     },
+     "citation": "(cite: Roberge2000; Bouret2002; Roberge2006; Fernandez2006)"
+    },
+    {
+     "what": {
+      "value": "CO rate matrix incl. vibrational/electronic levels",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "For CO, we obtain radiative transition rates from (cite: Thi2013) and references therein."
+       }
+      ]
+     },
+     "citation": "(cite: Thi2013)"
+    },
+    {
+     "what": {
+      "value": "ALMA CO J=3-2/J=2-1 column density and ALMA CO line fluxes",
+      "evidence": [
+       {
+        "loc": "5.2 Predictions",
+        "quote": "we first take the CO column density at the clump location as determined through J=3-2/J=2-1 line ratio observations (cite: Matra2017a)"
+       }
+      ]
+     },
+     "citation": "(cite: Matra2017a)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "SMA calibrated with MIR; ALMA calibration deferred to Matra2017a",
+     "evidence": [
+      {
+       "loc": "2.1 SMA",
+       "quote": "All of the calibration was performed using the `MIR`[^1] software package."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Callisto and Uranus (SMA)",
+     "evidence": [
+      {
+       "loc": "2.1 SMA",
+       "quote": "The absolute flux scale for the two tracks were set using observations of Callisto and Uranus, with an estimated accuracy of 20%."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "20% (SMA)",
+     "evidence": [
+      {
+       "loc": "2.1 SMA",
+       "quote": "with an estimated accuracy of 20%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "SMA imaging and clean in miriad",
+     "evidence": [
+      {
+       "loc": "2.1 SMA",
+       "quote": "Continuum and spectral line imaging and clean deconvolution were done in the `miriad` package."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "SMA: natural weighting plus 3'' Gaussian taper east-west; ALMA: taper to match CO beam",
+     "evidence": [
+      {
+       "loc": "Table 1 notes",
+       "quote": "for natural weighting plus a $3''$ Gaussian taper in the east-west direction"
+      },
+      {
+       "loc": "2.2 ALMA",
+       "quote": "we applied a taper to the visibilities in order to produce datacubes with exactly the same synthesized beam size"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "ALMA 0.30'' x 0.26'', p.a. -83.9 deg",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "position angle (p.a., -83$\\ensuremath{^\\circ}$9) as the CO dataset"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA calibration and CO imaging procedures",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA",
+        "quote": "We direct the reader to (cite: Matra2017a) for a detailed description of the calibration and CO imaging procedures."
+       }
+      ]
+     },
+     "from_reference": "(cite: Matra2017a)"
+    },
+    {
+     "what": {
+      "value": "Spectro-spatial filtering technique",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "we implement a spectro-spatial filtering technique similar to that introduced in (cite: Matra2015)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Matra2015)"
+    },
+    {
+     "what": {
+      "value": "Steady-state exocometary release model and NLTE excitation details",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "use the steady state exocometary gas release model of (cite: Matra2015; Matra2017b) and expand it"
+       }
+      ]
+     },
+     "from_reference": "(cite: Matra2015; Matra2017b)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact ALMA calibration scripts and CASA version",
+    "Clean parameters (weighting, thresholds, masks, taper values) for SMA and ALMA",
+    "Taper values to match ALMA CO beam",
+    "Mask definition and number of independent channels in filtering",
+    "Electron density and temperature adopted for the final 2.5% limit",
+    "Stellar spectrum from private communication",
+    "Distance to beta Pic"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure continuum and CO J=2-1 with SMA",
+    "method": {
+     "value": "Gaussian fit to visibilities at baselines <30 kλ; moment 0 and moment 1 maps",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "obtained by fitting a Gaussian to the visibilities at baselines shorter than 30 k$\\lambda$"
+      }
+     ]
+    },
+    "software": [
+     "miriad"
+    ],
+    "key_parameters": [
+     {
+      "value": "moment 0 integrated within ±7 km/s of stellar velocity",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "spectrally integrating the datacube within $\\pm 7$ km/s of the stellar velocity"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussians fit to spectra at every spatial location for moment 1",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "This centroid was obtained by fitting Gaussians to spectra at all spatial locations."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with previous ALMA CO and continuum measurements",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "the CO J=2-1 line shape and integrated line flux are consistent with the previous ALMA measurements"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive upper limits on non-CO molecules",
+    "method": {
+     "value": "Shift spectra by CO moment 1 velocity, integrate over CO spatial mask, 3σ limit = RMS × independent channels across CO line width; also unfiltered limits over continuum region within ±5 km/s",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We measure the filtered integrated flux upper limits by multiplying the filtered spectrum’s root mean square (RMS, measured away from the line frequency) by the number of independent spectral channels"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "All molecules share CO's spectro-spatial distribution",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "we here assume emission from all molecules to have similar spectro-spatial distributions of emission as observed for the CO molecule"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Filtering demonstrated on detected CO; agnostic unfiltered limits computed",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we also calculate upper limits in a more agnostic way by spatially integrating the unfiltered data cubes over regions where the mm continuum is detected"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compute photodissociation timescales",
+    "method": {
+     "value": "Unshielded rates from Heays2017 cross sections in stellar spectrum plus ISRF; CO self-shielding included",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "The radiation field includes both the observed spectrum of the $\\beta$ Pic star and the interstellar radiation field (ISRF)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Destruction dominated by photodissociation; CN from HCN photodissociation; no shielding for non-CO species",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "We neglect self-shielding and shielding by CO for all other molecules"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "NLTE excitation including fluorescence for CO and CN",
+    "method": {
+     "value": "Statistical equilibrium over rotational, vibrational and electronic levels with collisions from electrons, CMB, stellar and dust radiation",
+     "evidence": [
+      {
+       "loc": "Appendix A",
+       "quote": "the total rate of radiative and collisional transitions populating each of N$_{\\rm lev}$ energy levels is equated to the total rate of transitions depopulating the level."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Collisional excitation of vibrational/electronic levels neglected; hyperfine splitting neglected",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "We neglect hyperfine splitting of the lines"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "LTE limit matches Boltzmann distribution",
+     "evidence": [
+      {
+       "loc": "Appendix A",
+       "quote": "our statistical equilibrium results match the analytical calculation from the Boltzmann distribution"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Convert CN/CO flux limit to HCN/(CO+CO2) outgassing ratio",
+    "method": {
+     "value": "Apply steady-state line flux ratio equation with Einstein A, upper level populations and photodissociation timescales",
+     "evidence": [
+      {
+       "loc": "Deriving the HCN/(CO+CO$_2$) ratio of outgassing rates",
+       "quote": "Plugging CN/CO ratios of upper level populations, photodissociation timescales and observed fluxes into Eq. [\\[eq:releaseratetoflux\\]](#eq:releaseratetoflux) allows us to derive an upper limit on the HCN/CO ratio of outgassing rates"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO2 released with CO and photodissociates to CO",
+      "evidence": [
+       {
+        "loc": "4.4",
+        "quote": "CO gas is also produced via rapid photodissociation of CO$_2$ gas."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Predict line fluxes for future surveys",
+    "method": {
+     "value": "LTE line flux ratios relative to CO for Solar System comet abundances, best transition by effective S/N, optical depth correction",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "We select the best observable transition for each temperature and molecule to be that with the highest ‘effective S/N’."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "gas kinetic temperature 52 K to 210 K; stellar field at 85 AU",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "We vary the gas kinetic temperature between 52 K (cite: Kral2016) and 210 K (cite: Matra2017a)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "All species co-located with CO; LTE excitation",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "First, we assume all species are co-located with CO, leading to similar spatial distributions and excitation conditions."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MIR",
+    "version": "not stated",
+    "used_for": {
+     "value": "SMA calibration",
+     "evidence": [
+      {
+       "loc": "2.1 SMA",
+       "quote": "All of the calibration was performed using the `MIR`[^1] software package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "miriad",
+    "version": "not stated",
+    "used_for": {
+     "value": "SMA continuum and line imaging and clean",
+     "evidence": [
+      {
+       "loc": "2.1 SMA",
+       "quote": "Continuum and spectral line imaging and clean deconvolution were done in the `miriad` package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in software section; ALMA processing",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "MIR, miriad (cite: Sault1995), CASA (cite: McMullin2007), Matplotlib (cite: Hunter2007)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "SMA 222 GHz continuum flux",
+    "value": "21.0",
+    "uncertainty": "3.0",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "Flux density measurements from the SMA observations at 222 and 274 GHz are $21.0\\pm3.0$ mJy and $25.9\\pm6.4$ mJy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "SMA 274 GHz continuum flux",
+    "value": "25.9",
+    "uncertainty": "6.4",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "Flux density measurements from the SMA observations at 222 and 274 GHz are $21.0\\pm3.0$ mJy and $25.9\\pm6.4$ mJy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "SMA CO J=2-1 line flux",
+    "value": "3.9",
+    "uncertainty": "0.8",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "|              |                       |         |      3.9$\\pm$0.8       |  SMA   |  1   |"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA CO J=2-1 line flux",
+    "value": "4.5",
+    "uncertainty": "0.5",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "4.5$\\pm$0.5       |  ALMA  |  2"
+     }
+    ]
+   },
+   {
+    "quantity": "CN N=2-1 3σ upper limit",
+    "value": "<=1.0 (1.2 unfiltered)",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\leqslant$1.0 (1.2)  |  SMA"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=3-2 3σ upper limit",
+    "value": "<=2.0 (1.4)",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\leqslant$2.0 (1.4)  |  SMA"
+     }
+    ]
+   },
+   {
+    "quantity": "Unshielded CO photodissociation lifetime",
+    "value": "42",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "We therefore revise the unshielded CO photodissociation lifetime from 120 yrs (cite: Kamp2000; Dent2014) down to 42 yrs."
+     }
+    ]
+   },
+   {
+    "quantity": "CO lifetime with self-shielding",
+    "value": "~105",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "the CO lifetime increases from 42 to $\\sim$105 yrs"
+     }
+    ]
+   },
+   {
+    "quantity": "CN unshielded photodissociation timescale",
+    "value": "16",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "unshielded photodissociation timescales of 96, 42 and 16 years"
+     }
+    ]
+   },
+   {
+    "quantity": "CN/CO upper level population ratio",
+    "value": "0.49 to 0.71",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "the ratio in fractional upper level populations between CN and CO varies between 0.49 and 0.71"
+     }
+    ]
+   },
+   {
+    "quantity": "Updated total CO mass",
+    "value": "3.6e-5",
+    "uncertainty": "+0.9/-0.6 e-5",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "we report an updated value of $3.6^{+0.9}_{-0.6}\\times10^{-5}$ M$_{\\oplus}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/(CO+CO2) outgassing rate ratio upper limit",
+    "value": "<2.5",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "sets the most conservative upper limit of 2.5% on the HCN/CO ratio of outgassing rates"
+     }
+    ]
+   },
+   {
+    "quantity": "Herschel PACS OH 3σ upper limit",
+    "value": "2.1e2",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "set a 3$\\sigma$ upper limit on the integrated line flux of 2.1$\\times$10$^2$ Jy km/s"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Only CO is detected; non-detections of other molecules are explained by rapid photodissociation in the strong UV field; CN is the longest-lived after CO.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "CN is the longest-lasting and most easily detectable molecule after CO in this environment."
+     }
+    ]
+   },
+   {
+    "value": "UV fluorescence plays a key role in CO and CN excitation in the low-density regime.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "finding it plays a key role in CO and CN excitation"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can molecules other than CO be detected in the beta Pic gas disk?",
+    "experiment": "SMA and archival ALMA line searches with CO-template spectro-spatial filtering",
+    "result": "No detections other than CO; 3σ limits e.g. CN <=1.0 Jy km/s",
+    "finding": "Non-detections attributable to rapid photodissociation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "There are no significant detections of any molecular lines other than CO."
+     }
+    ]
+   },
+   {
+    "hypothesis": "How does the HCN/(CO+CO2) outgassing ratio compare to Solar System comets?",
+    "experiment": "Convert CN/CO limit using NLTE+fluorescence populations and photodissociation timescales",
+    "result": "Upper limit of 2.5%",
+    "finding": "Consistent with but at the low end of comet range",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This value is consistent with, but at the low end of, the broad range observed in Solar System comets."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Will future ALMA surveys detect CN and HCN around beta Pic?",
+    "experiment": "LTE line flux predictions for Solar System comet abundances vs facility sensitivities",
+    "result": "CN, HCN and OH are promising",
+    "finding": "CN and HCN should be readily detectable with ALMA",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "we expect CN and HCN to be readily detectable with ALMA around $\\beta$ Pictoris."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Spectro-spatial filtering with CO template maximizes S/N by removing noise-dominated pixels/channels",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "This maximizes the signal-to-noise ratio by effectively removing noise-dominated pixels/channels."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "CN destruction by atomic oxygen (timescale ~3 yr) neglected due to uncertain O abundance",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "Given the uncertainty on the oxygen abundance, however, we opt to neglect this destruction pathway of CN in this work."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Predictions assume LTE and CO-like distribution; OH prediction sensitive to temperature and spatial distribution.",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "our prediction is very sensitive to the choice of OH temperature or spatial distribution, which may be oversimplified here"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Upper limits rely on assumption that all molecules follow CO distribution, though CN daughter products would be more compact",
+    "Neglecting CN destruction by O could change the limit by a factor of a few",
+    "Electron density and HCN-only origin of CN are assumed",
+    "Final limit is conservative and not tied to a stated uncertainty budget"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data from archive project 2012.1.00142.S; SMA data availability not stated",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "We extracted ALMA Band 6 observations of $\\beta$ Pictoris from the archive (project number 2012.1.00142.S)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "SMA data archive location",
+    "Stellar spectrum (private communication)",
+    "Full imaging parameters",
+    "NLTE code not released"
+   ],
+   "estimated_data_volume_inferred": "ALMA Band 6 12m+ACA, tens of GB; SMA small",
+   "score_inferred": 4,
+   "score_reason": "ALMA data public and the filtering and flux ratio steps are described, but heavy reliance on prior papers, SMA data and a custom NLTE code limit reproduction.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are non-detections and model-dependent limits requiring SMA data and unreleased NLTE code."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Matra2015)",
+     "why": "Spectro-spatial filtering and NLTE excitation model"
+    },
+    {
+     "citation": "(cite: Matra2017a)",
+     "why": "ALMA calibration and CO imaging of beta Pic"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Dent2014)",
+     "why": "Original ALMA CO detection in beta Pic"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-582240f32b991060c9aaf4f9060fa685",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:58",
+  "usage": {
+   "input_tokens": 28184,
+   "output_tokens": 10423,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.080906,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 83,
+  "quotes_ok": 83,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 85,
+   "stated": 52,
+   "rate": 0.612
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:07",
+  "custom_id": "repair-sonnet-ce73d216b7cf44385713a528d6bcbb3e",
+  "fixed": [
+   {
+    "path": "data.lines_targeted[0].evidence[0]",
+    "old": "CO         J=2-1         | 230.538",
+    "new": "|      CO      |         J=2-1         | 230.538 |      4.5$\\pm$0.5       |  ALMA  |  2   |"
+   },
+   {
+    "path": "analysis_steps[4].method.evidence[0]",
+    "old": "Plugging CN/CO ratios of upper level populations, photodissociation timescales and observed fluxes into Eq. allows us to derive an upper limit on the HCN/CO ratio of outgassing rates",
+    "new": "Plugging CN/CO ratios of upper level populations, photodissociation timescales and observed fluxes into Eq. [\\[eq:releaseratetoflux\\]](#eq:releaseratetoflux) allows us to derive an upper limit on the HCN/CO ratio of outgassing rates"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

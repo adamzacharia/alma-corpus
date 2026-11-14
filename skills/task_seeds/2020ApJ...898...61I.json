@@ -1,0 +1,231 @@
+{
+ "bibcode": "2020ApJ...898...61I",
+ "title": "Circumnuclear Molecular Gas in Low-redshift Quasars and Matched Star-forming Galaxies",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab99a8",
+ "arxiv_id": "2006.03072",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Is the circumnuclear molecular gas mass surface density systematically enhanced in luminous low-z quasars relative to matched inactive star-forming galaxies?",
+ "alma_project_codes": [
+  "2015.1.00872.S"
+ ],
+ "data": {
+  "bands": "Band 6, redshifted 12CO(2-1) and ~1.3 mm rest continuum",
+  "arrays": "not stated",
+  "angular_resolution": "synthesized beam major axes ~0.34-0.74 arcsec",
+  "sensitivity": "1 sigma 0.26-0.41 mJy/beam (quasars), 0.16-0.56 mJy/beam (galaxies) in CO cubes"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Quasar sample properties (PG/HE quasars) and galaxy M*/SFR from MPA-JHU",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "SFRs are measured with H$\\alpha$ line emission for the SDSS galaxies (cite: 2004MNRAS.351.1151B)"
+     }
+    ]
+   },
+   "citation": "(cite: 2004MNRAS.351.1151B)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 2.6 average, halved for centers",
+    "evidence": [
+     {
+      "loc": "3.4 Estimates of molecular gas mass",
+      "quote": "$\\alpha_{\\rm CO} = 2.6~M_\\odot$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$ is recommended, which has 0.4 dex standard deviation"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...777....5S)"
+  },
+  {
+   "what": {
+    "value": "Single-dish CO(2-1) flux of PG1126-041",
+    "evidence": [
+     {
+      "loc": "3.1 CO(2-1) emission",
+      "quote": "$\\sim 12\\%$ of the total flux measured with the IRAM 30 m telescope (cite: 2007A&A...470..571B)"
+     }
+    ]
+   },
+   "citation": "(cite: 2007A&A...470..571B)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO(2-1) cubes",
+   "method": "CASA clean with natural weighting after uv continuum subtraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "df = 62.5 MHz (quasars), 31.25 MHz (galaxies)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO line luminosity in 700 pc and 2 kpc apertures",
+   "method": "Convolve cubes to common physical aperture, integrate line flux, convert to L'CO(2-1)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "H0=70, OmegaM=0.3, OmegaL=0.7"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Convert to molecular gas mass",
+   "method": "M_mol = alpha_CO * L'CO(1-0) with L'CO(1-0)=L'CO(2-1)/R21",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "R21 = 1; alpha_CO = 1.3 Msun pc^-2 (K km/s)^-1 (~0.4 dex uncertainty) for both samples"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Radial Sigma_mol profiles",
+   "method": "Azimuthally averaged CO integrated intensity at matched physical resolution, rings with step theta_maj/2",
+   "software": [
+    "MIRIAD ellint"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Sky projection, no inclination correction (cos i ~ factor 2 possible)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test XDR temperature effect on CO(2-1)",
+   "method": "RADEX non-LTE models at T_kin = 30-500 K",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "n_H2 = 1e5 cm^-3; N_CO/dV = 2.5e16 cm^-2 (km/s)^-1; background 2.73 K"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L'CO(2-1) within 700 pc, quasars",
+   "value": "(2-7)e7",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "CO line luminosities are $\\sim (2-7) \\times 10^7$ K km s$^{-1}$ pc$^2$ for the quasar sample"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol within 700 pc, quasars",
+   "value": "(2.7-9.5)e7",
+   "uncertainty": "~0.4 dex (alpha_CO)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4 Estimates of molecular gas mass",
+     "quote": "we obtained $M_{\\rm mol} = (2.7-9.5) \\times 10^7~M_\\odot$ for the quasar sample"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol within 700 pc, comparison galaxies",
+   "value": "(3.9-24.3)e7",
+   "uncertainty": "~0.4 dex (alpha_CO)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4 Estimates of molecular gas mass",
+     "quote": "$(3.9-24.3) \\times 10^7~M_\\odot$ for the galaxy sample"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO(2-1) within 2 kpc, quasars vs galaxies",
+   "value": "(4.5-11.6)e7 vs (12.0-45.2)e7",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.5 Molecular gas mass surface density profiles",
+     "quote": "$L'_{\\rm CO(2-1)} = (4.5-11.6) \\times 10^7$ K km s$^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "f_0.7/2.0 average, quasars",
+   "value": "52.6",
+   "uncertainty": "7.1",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "average = 52.6 $\\pm$ 7.1%"
+    }
+   ]
+  },
+  {
+   "quantity": "f_0.7/2.0 average, comparison",
+   "value": "27.0",
+   "uncertainty": "1.6",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "average = 27.0 $\\pm$ 1.6%"
+    }
+   ]
+  },
+  {
+   "quantity": "CO FWZI of quasars",
+   "value": "~400-500",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "full-width at zero intensity (FWZI) $\\sim 400-500$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for uv continuum subtraction",
+  "Clean threshold, masking, cell and image size",
+  "Velocity ranges used to integrate CO maps (except PG1149-110)",
+  "Aperture photometry method and centering for 700 pc and 2 kpc fluxes",
+  "Flux/bandpass/phase calibrators",
+  "Exact ellint parameters (center, inclination, position angle)",
+  "Primary beam correction details",
+  "How the uncertainties on S_CO were derived"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters, masks and line-free channels",
+  "Aperture/integration procedure details",
+  "Sample matching catalog query details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis, but imaging and flux extraction parameters are not given.",
+ "rediscovery_reason": "Data public (single project), recipe simple, results numeric (Table 3 fluxes, masses).",
+ "source_card": "cards/2020ApJ...898...61I/sonnet/card.md"
+}

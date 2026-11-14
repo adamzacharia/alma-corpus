@@ -1,0 +1,545 @@
+{
+ "bibcode": "2021ApJ...923..121Y",
+ "title": "ALMA Super-resolution Imaging of T Tau: r = 12 au Gap in the Compact Dust Disk around T Tau N",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac2bfd",
+ "arxiv_id": "2110.00974",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Explore several au-scale substructures in the compact protoplanetary disks around the T Tau triple star system using sparse modeling super-resolution imaging of ALMA 1.3 mm continuum data.",
+ "alma_project_codes": [
+  "2016.1.01164.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12-m array (forty-three 12-m antennas)",
+  "angular_resolution": "CLEAN: 0''.14 x 0''.10 (17 au); SpM effective resolution: 0''.038 x 0''.027 (5 x 4 au)",
+  "sensitivity": "CLEAN RMS: 41 uJy beam^-1; SpM detection threshold I_DT: 272 mJy asec^-2 (152 uJy beam^-1 when convolved with CLEAN beam); SpM DIFMAP residual RMS: 31 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of 143.7 +/- 1.2 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "This system consists of a star (T Tau N) in the north and a close binary (T Tau Sa and Sb) in the south (cite: Dyck1982; Koresko2000), located in the Taurus star-forming region at a distance of $143.7\\pm 1.2$ pc, as measured by Gaia DR2 (cite: Gaia2016; Gaia2018)."
+     }
+    ]
+   },
+   "citation": "Gaia DR2 (cite: Gaia2016; Gaia2018)"
+  },
+  {
+   "what": {
+    "value": "Mass of T Tau Sa (2.1 M_sun) and Sb (0.4 M_sun)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The mass of T Tau Sa and Sb are $2.1~M_{\\odot}$ and $0.4~M_{\\odot}$, respectively (cite: Schaefer2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Schaefer2020)"
+  },
+  {
+   "what": {
+    "value": "Stellar bolometric luminosity of 6.82 L_sun and stellar mass of 2.19 M_sun for T Tau N",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The stellar properties of T Tau N have been calculated using optical spectral types combined with stellar evolutionary models in several studies, and we adopted a stellar bolometric luminosity of $6.82~L_{\\odot}$ and a stellar mass of $2.19~M_{\\odot}$ (cite: Herczeg2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Herczeg2014)"
+  },
+  {
+   "what": {
+    "value": "Predicted stellar positions from the stellar orbit model of the T Tau S binary",
+    "evidence": [
+     {
+      "loc": "Dust Emissions from T Tau Sa and Sb",
+      "quote": "To confirm whether each of the two emissions originated from T Tau Sa or Sb, Figure 2 compares the image with stellar positions predicted by the stellar orbit model of the T Tau S binary in (cite: Kohler2016), based on observational data spanning approximately 18 years."
+     }
+    ]
+   },
+   "citation": "(cite: Kohler2016)"
+  },
+  {
+   "what": {
+    "value": "DSHARP dust opacity model kappa_nu,I and conventional dust opacity model kappa_nu,II",
+    "evidence": [
+     {
+      "loc": "Physical Properties of T Tau N Disk",
+      "quote": "One is DSHARP opacity model $\\kappa_{\\nu,\\rm I}$ (cite: Birnstiel2018) assuming a maximum grain size of 0.1 mm supported by recent (sub)mm polarization measurements of other Class II PPDs in the Taurus region (cite: Bacciotti2018)."
+     },
+     {
+      "loc": "Physical Properties of T Tau N Disk",
+      "quote": "Another is a conventional model $\\kappa_{\\nu,\\rm II}$ (cite: beckwith1991), which can be expressed as $\\kappa_{\\nu} = 2.3 (\\nu/230~\\rm GHz)^{0.4} [cm^{2}~g^{-1}]$ and being simply parameterized because of the large uncertainties in the opacity."
+     }
+    ]
+   },
+   "citation": "(cite: Birnstiel2018), (cite: beckwith1991)"
+  },
+  {
+   "what": {
+    "value": "Constant parameters A = 1.11, B = 0.29, C = 0.0478, D = 1.23 and gas-to-dust surface density relation for planet mass estimation",
+    "evidence": [
+     {
+      "loc": "Planetary Origin and Planet Mass Estimates",
+      "quote": "Finally, the four parameters ($A = 1.11$, $B = 0.29$, $C = 0.0478$, and $D = 1.23$) are selected from Table 1 and 2 of (cite: zhang2018), when considering the estimated $\\Sigma_{\\rm g} (> 100~\\rm g~cm^{-2})$ and the maximum dust particle size (cite: Bacciotti2018) in the disk."
+     }
+    ]
+   },
+   "citation": "(cite: zhang2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate raw ALMA data, self-calibrate, and produce CLEAN continuum image",
+   "method": "Initial calibration via ALMA pipeline in CASA 5.1.1, phase center adjustment to T Tau N peak using fixvis, imaging with tclean (Briggs robust = 0.5), two rounds of phase self-calibration and one round of amplitude+phase self-calibration.",
+   "software": [
+    "CASA",
+    "tclean",
+    "fixvis"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "self-cal solution intervals: 98 s (1st phase), 49 s (2nd phase), 98 s (amp+phase)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Super-resolution image reconstruction with Sparse Modeling (SpM) and evaluation of effective resolution and noise",
+   "method": "Reconstruct image from self-calibrated visibilities using PRIISM ver.0.3.0 by minimizing cost function with chi-squared, l1-norm, and TSV regularizers; select optimal (Lambda_l, Lambda_tsv) via 10-fold cross-validation over 5x5 grid; evaluate effective resolution and detection threshold by injecting artificial point sources at 0''.4 north and measuring off-source noise statistics and DIFMAP residual map.",
+   "software": [
+    "PRIISM",
+    "CASA",
+    "DIFMAP"
+   ],
+   "key_parameters": [
+    "Lambda_l = 10^5, Lambda_tsv = 10^9 (optimal from 5x5 grid)",
+    "N_iter = 1000, 10-fold CV"
+   ],
+   "assumptions": [
+    "Non-negative brightness distribution constraint"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure dust continuum positions, sizes, and fluxes of T Tau Sa and Sb",
+   "method": "Apply 2D Gaussian fitting to each resolved component of T Tau S on the SpM image using CASA task imfit, and compare peak positions with stellar orbit model predictions from Kohler et al. (2016).",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Determine T Tau N disk geometry, radius, and radial intensity gap properties",
+   "method": "Fit an ellipse to the radial peak positions of the outer ring (sampled every 1 deg, averaged in 20 deg bins, excluding PA 165-220 deg) with 5000 Monte Carlo iterations to get PA and inclination; deproject image and use curve-of-growth to find 95% flux radius r_d; azimuthally average radial intensity profile I_nu(r) and measure gap location r_gap, outer peak r_peak, gap width Delta_I, and gap depth delta_I following Zhang et al. (2018).",
+   "software": [
+    "least-squares fitting"
+   ],
+   "key_parameters": [
+    "Delta_theta = 20 deg azimuthal bin; PA = 165 - 220 deg excluded; 5000 Monte Carlo iterations",
+    "95% total flux threshold for r_d"
+   ],
+   "assumptions": [
+    "Outer ring is a perfect circle when viewed face-on"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive spectral index, brightness temperature, optical depth, dust surface density, outer ring mass, and Toomre Q of T Tau N disk",
+   "method": "Calculate spectral index alpha_mm from CLEAN total fluxes at 218 and 233 GHz restored to the same beam; compute brightness temperature T_br(r) via full Planck function; fit power-law dust temperature T_d(r) = 360 (r/1 au)^-0.5 K smoothed with theta_eff to match T_br(r) at r < 5 au; calculate optical depth tau_nu(r), dust surface density Sigma_d(r) = tau_nu(r)/kappa_nu for two opacity models (kappa_nu,I and kappa_nu,II), integrate Sigma_d from r_gap to r_d for outer ring dust mass, and compute Toomre Q.",
+   "software": [],
+   "key_parameters": [
+    "T_d(r) = 360 (r / 1 au)^-0.5 K",
+    "nu_1 = 218 GHz, nu_2 = 233 GHz"
+   ],
+   "assumptions": [
+    "T_d(r) = T_br(r) in optically thick inner region (r < 5 au) with power-law index -0.5",
+    "Two dust opacity models: DSHARP kappa_nu,I with s_max = 0.1 mm (Birnstiel et al. 2018) and conventional kappa_nu,II = 2.3 (nu/230 GHz)^0.4 cm^2 g^-1 (Beckwith & Sargent 1991)",
+    "Gas-to-dust ratio Sigma_gas / Sigma_dust = 100 and stellar mass M_* = 2.19 M_sun for Toomre Q"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate mass of putative gap-opening planet in T Tau N disk",
+   "method": "Fit a Gaussian to Sigma_d(r) in the gap region (r = 8-16 au) using SciPy optimize.leastsq to measure Delta_Sigma and delta_Sigma; apply two analytical planet-mass frameworks: (1) Kanagawa et al. (2015, 2016) on Sigma_d gap width and depth, and (2) Zhang et al. (2018) on intensity gap width Delta_I and depth delta_I, both combined with the Nomura et al. (2016) beam-smearing conservation relation (gap width inversely proportional to gap depth).",
+   "software": [
+    "SciPy"
+   ],
+   "key_parameters": [
+    "h_gap / r_gap = 0.05; alpha_vis = 10^-3 (also varied across 10^-2 to 10^-4)",
+    "Zhang et al. (2018) constants: A = 1.11, B = 0.29, C = 0.0478, D = 1.23"
+   ],
+   "assumptions": [
+    "Dust is well coupled to gas; planet is at r_Sigma,gap; product of gap depth and gap width is conserved against beam smearing; M_* = 2.19 M_sun; s_max = 0.1 mm"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Effective spatial resolution of optimal SpM image (theta_eff)",
+   "value": "0''.038 x 0''.027 (5 x 4 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Imaging with Sparse Modeling",
+     "quote": "The reconstructed image for the optimal parameter provides the FWHM size (i.e., effective spatial resolution) of the point source, $\\theta_{\\rm eff} = 0''.038 \\times 0''.027$ (or $5\\times 4$ au) with a PA of $45.3^{\\circ}$ and recovers a total flux of $7.9$ mJy ($\\sim10\\%$ higher than the input value)."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N 1.3 mm total flux density (SpM, >I_DT)",
+   "value": "174.4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau N            | 175.0                | 4.0                  | 174.4                   | 9.1                  | $(04^{h}21^{m}59^{s}.4475$, $+19^{d}32^{m}06^{s}.1731)$   |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N 1.3 mm total flux density (CLEAN, >5sigma)",
+   "value": "175.0",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau N            | 175.0                | 4.0                  | 174.4                   | 9.1                  | $(04^{h}21^{m}59^{s}.4475$, $+19^{d}32^{m}06^{s}.1731)$   |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau Sa 1.3 mm flux density (SpM, >I_DT)",
+   "value": "7.1",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau Sa           | $-$                  | $-$                  | 7.1                     | 5.1                  | $(04^{h}21^{m}59^{s}.4362$, $+19^{d}.32^{m}.05^{s}.5131)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau Sb 1.3 mm flux density (SpM, >I_DT)",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau Sb           | $-$                  | $-$                  | 0.8                     | 0.8                  | $(04^{h}21^{m}59^{s}.4365$, $+19^{d}.32^{m}.05^{s}.6131)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau Sa Gaussian fit major x minor axis FWHM",
+   "value": "6.4 x 3.9",
+   "uncertainty": "0.1 x 0.1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau Sa | 44.7 $\\pm$ 0.7 | 6.4 $\\pm$ 0.1 | 27.1 $\\pm$ 0.4 | 3.9 $\\pm$ 0.1 | 25.2 $\\pm$ 1.1 | 52.8 $\\pm$ 0.6 | 5.6 $\\pm$ 0.1 | 7.7 $\\pm$ 0.1 |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau Sa Gaussian fit flux density",
+   "value": "7.7",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau Sa | 44.7 $\\pm$ 0.7 | 6.4 $\\pm$ 0.1 | 27.1 $\\pm$ 0.4 | 3.9 $\\pm$ 0.1 | 25.2 $\\pm$ 1.1 | 52.8 $\\pm$ 0.6 | 5.6 $\\pm$ 0.1 | 7.7 $\\pm$ 0.1 |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau Sb Gaussian fit major x minor axis FWHM",
+   "value": "7.2 x 3.2",
+   "uncertainty": "0.7 x 0.3",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau Sb | 49.7 $\\pm$ 5.0 | 7.2 $\\pm$ 0.7 | 22.4 $\\pm$ 2.3 | 3.2 $\\pm$ 0.3 | 64.9 $\\pm$ 4.6 | 63.2 $\\pm$ 2.9 | 0.9 $\\pm$ 0.1 | 1.1 $\\pm$ 0.1 |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau Sb Gaussian fit flux density",
+   "value": "1.1",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| T Tau Sb | 49.7 $\\pm$ 5.0 | 7.2 $\\pm$ 0.7 | 22.4 $\\pm$ 2.3 | 3.2 $\\pm$ 0.3 | 64.9 $\\pm$ 4.6 | 63.2 $\\pm$ 2.9 | 0.9 $\\pm$ 0.1 | 1.1 $\\pm$ 0.1 |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N disk position angle",
+   "value": "91.4",
+   "uncertainty": "3.0",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| position angle | $91.4\\pm3.0~(^{\\circ})$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N disk inclination",
+   "value": "25.2",
+   "uncertainty": "1.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| inclination | $25.2\\pm1.1~(^{\\circ})$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N disk 95% radius (r_d)",
+   "value": "24",
+   "uncertainty": "4",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| disk radius: $r_{\\rm d}$ | $166\\pm 25$ (mas), $24\\pm 4$ (au) |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N outer ring peak location (r_peak)",
+   "value": "15.7",
+   "uncertainty": "0.1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| outer ring peak: $r_{\\rm peak}$ | $109\\pm 1$ (mas), $15.7\\pm 0.1$ (au) |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N intensity gap location (r_gap)",
+   "value": "11.6",
+   "uncertainty": "0.3",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| gap location: $r_{\\rm gap}$ | $81 \\pm 2$ (mas), $11.6 \\pm 0.3$ (au) |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N intensity gap width (Delta_I)",
+   "value": "0.28",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| gap width: $\\Delta_{\\rm I}$ | $0.28\\pm 0.02$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N intensity gap depth (delta_I)",
+   "value": "1.22",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Structure of T Tau N",
+     "quote": "| gap depth: $\\delta_{\\rm I}$ | $1.22\\pm 0.06$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N peak brightness temperature (T_br)",
+   "value": "257",
+   "uncertainty": "1",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of T Tau N Disk",
+     "quote": "Figure 4 (top panel) shows that $T_{\\mathrm{br}}(r)$ reaches $257\\pm 1$ K at the peak, and the average $T_{\\mathrm{br}}(r)$ over the disk ($=\\int T_{\\rm br}(r)r dr / \\int r dr$, where $r \\leq 24$ au) is calculated to be $97\\pm 1$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N disk average brightness temperature (r <= 24 au)",
+   "value": "97",
+   "uncertainty": "1",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of T Tau N Disk",
+     "quote": "Figure 4 (top panel) shows that $T_{\\mathrm{br}}(r)$ reaches $257\\pm 1$ K at the peak, and the average $T_{\\mathrm{br}}(r)$ over the disk ($=\\int T_{\\rm br}(r)r dr / \\int r dr$, where $r \\leq 24$ au) is calculated to be $97\\pm 1$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N spectral index (alpha_mm)",
+   "value": "1.9",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of T Tau N Disk",
+     "quote": "Moreover, the average spectral index over the disk is estimated to be $\\alpha_{\\rm mm} = 1.9 \\pm 0.1$ (see Appendix.10)."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N outer ring dust mass (M_dust, for kappa_nu,I)",
+   "value": "104",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of T Tau N Disk",
+     "quote": "The dust ring mass results in a wide range of values depending on the dust opacity; $\\sim 104~M_{\\oplus}$ for $\\kappa_{\\nu, \\rm I}$ and $\\sim 20~M_{\\oplus}$ for $\\kappa_{\\nu, \\rm II}$."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N outer ring dust mass (M_dust, for kappa_nu,II)",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of T Tau N Disk",
+     "quote": "The dust ring mass results in a wide range of values depending on the dust opacity; $\\sim 104~M_{\\oplus}$ for $\\kappa_{\\nu, \\rm I}$ and $\\sim 20~M_{\\oplus}$ for $\\kappa_{\\nu, \\rm II}$."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N dust surface density gap FWHM width (Delta_Sigma)",
+   "value": "8.3",
+   "uncertainty": "0.1",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Planetary Origin and Planet Mass Estimates",
+     "quote": "The FWHM gap width $\\Delta_{\\Sigma}$ is derived as $8.3 \\pm 0.1$ au at a gap location of $r_{\\Sigma,\\rm gap} = 10.89 \\pm 0.02$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N dust surface density gap location (r_Sigma,gap)",
+   "value": "10.89",
+   "uncertainty": "0.02",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Planetary Origin and Planet Mass Estimates",
+     "quote": "The FWHM gap width $\\Delta_{\\Sigma}$ is derived as $8.3 \\pm 0.1$ au at a gap location of $r_{\\Sigma,\\rm gap} = 10.89 \\pm 0.02$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "T Tau N dust surface density gap depth (delta_Sigma)",
+   "value": "2.1",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Planetary Origin and Planet Mass Estimates",
+     "quote": "The gap depth was calculated to be $\\delta_{\\Sigma} = 2.1 \\pm 0.3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated planet mass in T Tau N gap (Kanagawa et al. formula, alpha_vis = 10^-3)",
+   "value": "1.4",
+   "uncertainty": "0.2",
+   "units": "M_Saturn",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion, Planetary Origin and Planet Mass Estimates",
+     "quote": "give the planetary mass of $1.4 \\pm {0.2}$ $\\rm M_{Saturn}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated planet mass in T Tau N gap (Zhang et al. formula, alpha_vis = 10^-3)",
+   "value": "1.2",
+   "uncertainty": "0.1",
+   "units": "M_Saturn",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Planetary Origin and Planet Mass Estimates",
+     "quote": "The crossing point between the two curves gives a planetary mass of $1.2 \\pm 0.1~\\rm M_{Saturn}$, which agrees well with $1.4 \\pm 0.2~\\rm M_{Saturn}$ derived from the analytic formula by (cite: Kanagawa2015; Kanagawa2016) within the uncertainties involved."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel size (cell size) and image dimensions (number of pixels) used in PRIISM SpM reconstruction and tclean",
+  "Spectral window bandwidths and channel averaging applied to the continuum visibilities prior to PRIISM and tclean",
+  "Exact numerical value of the DSHARP dust opacity kappa_nu,I at 225.5 GHz used in the surface density calculation",
+  "Clean threshold and masking strategy used during tclean and self-calibration rounds",
+  "Exact coordinates shifted to in CASA fixvis"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel size (cell size) and field of view (image size in pixels) used in PRIISM and tclean",
+  "Details of spectral averaging or channel flagging applied to the two continuum spws before running PRIISM",
+  "Exact numerical value of kappa_nu,I (DSHARP opacity) adopted at 225.5 GHz"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Archival ALMA dataset is public, software versions (CASA 5.1.1, PRIISM 0.3.0) and key calibration/regularization parameters (self-cal intervals, Lambda_l = 10^5, Lambda_tsv = 10^9, 10-fold CV, N_iter = 1000) and analytical equations are explicitly stated; only minor imaging grid parameters (pixel size, image dimensions) and the exact numerical value of kappa_nu,I are omitted.",
+ "rediscovery_reason": "The dataset (2016.1.01164.S) and the core super-resolution imaging package (PRIISM) are both publicly available, the self-calibration and SpM regularization parameters are fully specified, and all main results (fluxes, disk geometry, gap location/width/depth, and planet mass estimates) are quantitative.",
+ "source_card": "cards/2021ApJ...923..121Y/sonnet/card.md"
+}

@@ -1,0 +1,441 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present the results of our mosaic observations of a single Class 0 protostar IRAS 15398"},
+{"loc": "ACA 7-m array Observations", "quote": "We have conducted mosaic observations of IRAS 15398 using the 7-m array of Atacama Compact Array (ACA) on 2019 December 19 during ALMA Cycle 7 with 10 antennae in Band 6."}
+],
+"fields": ["star_formation"],
+"question": {
+"value": "Are there additional, misaligned outflows around the single Class 0 protostar IRAS 15398, and what causes the multiple outflow directions (turbulence vs magnetic-field misalignment)?",
+"evidence": [
+{"loc": "Introduction", "quote": "In this paper, we report the discovery of a third outflow around IRAS 15398, which is misaligned with the known primary and secondary outflows, and discuss the possible origins of the misaligned, multiple outflows."}
+]
+},
+"targets": [
+{
+"name": "IRAS 15398-3359 (Class 0 protostar, Lupus I)",
+"details": [
+{"loc": "ACA 7-m array Observations", "quote": "We adopted the source position of ($\\alpha_\\mathrm{J2000}$, $\\delta_\\mathrm{J2000}$)$=$(15:43:02.24, $-34$:09:06.8)"},
+{"loc": "Introduction", "quote": "at a distance of $155~\\pc$ (cite: Zucker:2020aa; Santamaria-Miranda:2021aa; Thieme:2023aa)"}
+],
+"coordinates": "RA, Dec (J2000) = 15:43:02.24, -34:09:06.8 (cite: Yen:2017aa)",
+"redshift_or_distance": "155 pc",
+"distance_source": "(cite: Zucker:2020aa; Santamaria-Miranda:2021aa; Thieme:2023aa)"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.01063.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper used the following ALMA data: ADS/JAO.ALMA #2019.1.01063.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "on 2019 December 19 during ALMA Cycle 7 with 10 antennae in Band 6."}]},
+{"field": "frequencies_and_spectral_setup", "value": "CO J=2-1 (230.538000 GHz); one FDM spectral window, 62.5 MHz bandwidth, 61.0 kHz resolution, ~0.080 km/s velocity resolution", "evidence": [
+{"loc": "ACA 7-m array Observations", "quote": "The observations were carried out in the frequency division mode (FDM)."},
+{"loc": "ACA 7-m array Observations", "quote": "A spectral window with a bandwidth of 62.5 MHz and a spectral resolution of 61.0 kHz was assigned to the CO"},
+{"loc": "ACA 7-m array Observations", "quote": "which provided a velocity resolution of $\\sim$0.080 $\\kmps$."}
+]},
+{"field": "arrays", "value": "ACA 7-m array, 10 antennae, mosaic of 28 pointings covering ~2' square", "evidence": [
+{"loc": "ACA 7-m array Observations", "quote": "using the 7-m array of Atacama Compact Array (ACA) on 2019 December 19 during ALMA Cycle 7 with 10 antennae in Band 6."},
+{"loc": "ACA 7-m array Observations", "quote": "The mosaic observations with 28 pointings covered"}
+]},
+{"field": "baselines", "value": "6.5 to 37 k-lambda at 230 GHz (projected)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The projected baseline lengths ranged from 6.5 to 37 k$\\lambda$ at 230 GHz."}]},
+{"field": "angular_resolution", "value": "7.7'' x 4.1'' (PA 87 deg)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The angular resolution and root-mean-square (rms) noise level are $7.7\\ensuremath{''}\\times 4.1\\ensuremath{''}$ (87$^\\circ$) and $0.13~\\jypbm$, respectively."}]},
+{"field": "sensitivity", "value": "rms 0.13 Jy/beam (final 0.16 km/s cube)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The angular resolution and root-mean-square (rms) noise level are $7.7\\ensuremath{''}\\times 4.1\\ensuremath{''}$ (87$^\\circ$) and $0.13~\\jypbm$, respectively."}]},
+{"field": "observing_dates", "value": "2019 December 19", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "on 2019 December 19 during ALMA Cycle 7"}]},
+{"field": "pi_or_archival_as_stated", "value": "Authors' own observations ('We have conducted mosaic observations')", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "We have conducted mosaic observations of IRAS 15398 using the 7-m array"}]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=2-1", "rest_frequency": "230.538000 GHz", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "In this paper, we present the CO $J=$2–1 (230.538000 GHz) results of the observations."}]}
+],
+"other_facilities": [
+{"name": "JCMT (850 micron continuum)", "provided": {"value": "850 micron flux (2.9 Jy) and 3-sigma core radius used for the core mass; from the in-preparation eDisk paper", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "The core mass is estimated from the JCMT $850~\\ensuremath{\\mu}m$ flux, which is presented by (cite: Yen:inprep)"}
+]}},
+{"name": "SOFIA", "provided": {"value": "Magnetic field orientation on ~9000 au scales, mean position angle ~225 deg (previous work)", "evidence": [
+{"loc": "5.2.2 Misalignment Scenario", "quote": "providing a mean position angle of the magnetic field is $\\rtsim225^\\circ$ (cite: Redaelli:2019aa)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "JCMT 850 micron flux and 3-sigma core radius of the IRAS 15398 core (F = 2.9 Jy; R_core = 6700+-800 au)", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "The core mass is estimated from the JCMT $850~\\ensuremath{\\mu}m$ flux, which is presented by (cite: Yen:inprep)"}
+]}, "citation": "(cite: Yen:inprep)"},
+{"what": {"value": "C18O J=2-1 2' square map of IRAS 15398 used to measure turbulent velocity", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "presented by (cite: Sai:2023aa) to measure the turbulent velocity in two ways."}
+]}, "citation": "(cite: Sai:2023aa)"},
+{"what": {"value": "Velocity-deviation vs spatial-scale scaling relation used to get turbulent velocity across the core", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "(cite: Sai:2023aa) provide a scaling relation between the velocity deviation"}
+]}, "citation": "(cite: Sai:2023aa)"},
+{"what": {"value": "Perseus dense-core catalog (850 micron fluxes, core radii, C18O and N2H+ line widths) used for comparison", "evidence": [
+{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "from the catalog provided by (cite: Kirk:2007aa)"}
+]}, "citation": "(cite: Kirk:2007aa)"},
+{"what": {"value": "Perseus distance 282+-28 pc from Gaia distances", "evidence": [
+{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "derived from the mean and standard deviation of Gaia distances to different regions of the Perseus star-froming region (cite: Zucker:2022aa)"}
+]}, "citation": "(cite: Zucker:2022aa)"},
+{"what": {"value": "Primary-outflow dynamical timescale ~5e2 yr (inclination-corrected)", "evidence": [
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "A previous work estimated the dynamical timescale of the primary outflow to be $\\rtsim 5 \\times 10^2~\\yr$ with correction of the inclination angle in the same manner (cite: Bjerkeli:2016ab)"}
+]}, "citation": "(cite: Bjerkeli:2016ab)"},
+{"what": {"value": "Systemic velocity of 5.4 km/s", "evidence": [
+{"loc": "3 Results", "quote": "with respect to the systemic velocity of 5.4 $\\kmps$ (cite: Thieme:2023aa)"}
+]}, "citation": "(cite: Thieme:2023aa)"},
+{"what": {"value": "Dust opacity kappa = 0.02 g^-1 cm^2", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "We adopt the dust opacity $\\kappa_\\nu = 0.02~\\mathrm{g^{-1} cm^2}$ (cite: Ossenkopf:1994aa), and the dust temperature of $15\\pm5~\\kelv$."}
+]}, "citation": "(cite: Ossenkopf:1994aa)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Literature simulations: disk orientation changes with time when turbulent-to-gravitational energy ratio is ~0.06-0.09 (used as comparison threshold)", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "($\\beturb$) is $\\rtsim0.06$–$0.09$ (cite: Seifried:2013aa; Matsumoto:2017aa)"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The data were calibrated with the pipeline version 42866M (Pipeline-CASA56-P1-B)"}]},
+{"field": "pipeline_version", "value": "42866M (Pipeline-CASA56-P1-B)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The data were calibrated with the pipeline version 42866M (Pipeline-CASA56-P1-B)"}]},
+{"field": "casa_version", "value": "CASA 5.6.1", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "We produced images from the visibility data using CASA 5.6.1 with the"}]},
+{"field": "flux_calibrator", "value": "J1337-1257 (bandpass and flux); J1534-3526 (phase)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "J1534$-$3526 and J1337$-$1257 were observed for the phase calibration and for the bandpass and flux calibrations, respectively."}]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "We produced images from the visibility data using CASA 5.6.1 with the"}]},
+{"field": "deconvolver", "value": "multiscale clean", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "Multiscale clean was used with the scale parameters of zero and 10, which correspond to the point source and about one beam size, respectively."}]},
+{"field": "weighting_robust", "value": "Briggs, robust = 0.5", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "We adopted the Briggs style weighting with the robust parameter of 0.5 and the velocity resolution of"}]},
+{"field": "multiscale_scales", "value": "0 and 10 (point source and ~one beam)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "Multiscale clean was used with the scale parameters of zero and 10, which correspond to the point source and about one beam size, respectively."}]},
+{"field": "primary_beam_correction", "value": "applied to the cleaned image", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The primary beam correction was applied to the cleaned image."}]},
+{"field": "smoothing", "value": "Two velocity channels binned (0.08 to 0.16 km/s) for the analysis cube", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "for analysis by binning two velocity channels."}]},
+{"field": "final_beam", "value": "7.7'' x 4.1'' (PA 87 deg)", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The angular resolution and root-mean-square (rms) noise level are $7.7\\ensuremath{''}\\times 4.1\\ensuremath{''}$ (87$^\\circ$) and $0.13~\\jypbm$, respectively."}]},
+{"field": "final_rms", "value": "0.13 Jy/beam", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "The angular resolution and root-mean-square (rms) noise level are $7.7\\ensuremath{''}\\times 4.1\\ensuremath{''}$ (87$^\\circ$) and $0.13~\\jypbm$, respectively."}]}
+],
+"inherited": [
+{"what": {"value": "Source position adopted for figures and analyses", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "We adopted the source position of ($\\alpha_\\mathrm{J2000}$, $\\delta_\\mathrm{J2000}$)$=$(15:43:02.24, $-34$:09:06.8) for the figures and analyses in this paper (cite: Yen:2017aa)."}]}, "from_reference": "(cite: Yen:2017aa)"},
+{"what": {"value": "Wind-driven shell model of the outflow cavity", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "we perform fitting with a wind-driven shell model (cite: Shu:1991aa; Lee:2000aa)"}]}, "from_reference": "(cite: Shu:1991aa; Lee:2000aa)"},
+{"what": {"value": "Dynamical-timescale method (length / maximum velocity)", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "following the method used in previous works (cite: Yildiz:2015aa; Okoda:2021aa)."}]}, "from_reference": "(cite: Yildiz:2015aa; Okoda:2021aa)"},
+{"what": {"value": "Outflow dissipation timescale from momentum vs drag force, C_D = 1", "evidence": [{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "The dissipation timescale of the observed outflows can be estimated by equating their momentum and the drag force that the outflows experience (cite: Codella:1999aa)."}]}, "from_reference": "(cite: Codella:1999aa)"},
+{"what": {"value": "Core mass, radius and 850 micron flux taken from the eDisk paper", "evidence": [{"loc": "5.2.1 Turbulence Scenario", "quote": "The core mass is estimated from the JCMT $850~\\ensuremath{\\mu}m$ flux, which is presented by (cite: Yen:inprep)"}]}, "from_reference": "(cite: Yen:inprep)"},
+{"what": {"value": "Perseus core definition (3-sigma contour) matched to Kirk et al.", "evidence": [{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "Our definition of the core radius for IRAS 15398 is almost identical with theirs"}]}, "from_reference": "(cite: Kirk:2007aa)"}
+],
+"unstated_but_needed": [
+"tclean threshold, masking strategy, niter and gridder/mosaic settings (only robust, scales and velocity resolution are given)",
+"Weblog or QA outcome of the pipeline run, and whether any manual flagging was added",
+"Which channels/velocity range were used to define each moment map and the integration limits for the moment 0 maps in Figure 2",
+"Continuum subtraction or absence thereof for the CO cube",
+"Priors, walker count, burn-in and likelihood for the emcee fits of the shell model",
+"Exact selection of PV cut widths and offsets sampling beyond 'half the beam size'",
+"The JCMT 850 micron flux map, core radius and POL-2 data come from an unpublished in-preparation paper",
+"C18O map and velocity-deviation relation come from Sai et al. 2023 (data not described here)",
+"How the outflow length and maximum velocity values in the dynamical-timescale table were measured (edge of map? threshold?)",
+"Excitation temperature choice within 50-200 K and how the CO mass was computed from the mean integrated flux"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image the ACA CO 2-1 mosaic",
+"method": {"value": "Pipeline calibration in CASA 5.6.1, then tclean with Briggs weighting (robust 0.5), multiscale clean, primary beam correction, 0.08 km/s channels binned to 0.16 km/s", "evidence": [
+{"loc": "ACA 7-m array Observations", "quote": "The data were calibrated with the pipeline version 42866M (Pipeline-CASA56-P1-B)"},
+{"loc": "ACA 7-m array Observations", "quote": "We adopted the Briggs style weighting with the robust parameter of 0.5 and the velocity resolution of"},
+{"loc": "ACA 7-m array Observations", "quote": "The primary beam correction was applied to the cleaned image."}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "robust = 0.5", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "We adopted the Briggs style weighting with the robust parameter of 0.5 and the velocity resolution of"}]},
+{"value": "multiscale scales 0 and 10", "evidence": [{"loc": "ACA 7-m array Observations", "quote": "Multiscale clean was used with the scale parameters of zero and 10, which correspond to the point source and about one beam size, respectively."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Make moment maps and velocity-component moment 0 maps",
+"method": {"value": "Moment 0 and 1 maps, then moment 0 maps of separate velocity ranges and channel maps to identify outflow components (primary, SB, NR1, NR2, SEB, WB, WR)", "evidence": [
+{"loc": "3 Results", "quote": "In order to probe further details of the velocity structures of the CO emission, moment 0 maps of different velocity components are presented in Figure"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Measure position-velocity structure of the lobes",
+"method": {"value": "PV diagrams cut along each component at its position angle; PA from a Gaussian fit to the emission peak position through the protostar", "evidence": [
+{"loc": "4.1 Velocity Structure", "quote": "The position angle of each component is measured as an angle from north to the line passing through the protostellar position and the peak position of the emission, which is determined by a Gaussian fit."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "P.A. 355 deg (NR1), 182 deg (SB), 332 deg (NR2), 155 deg (SEB)", "evidence": [
+{"loc": "4.1 Velocity Structure", "quote": "Figure [3](#fig:pvds-3rdoutflow) presents position-velocity (PV) diagrams cut toward the NR1 (P.A.$=355^\\circ$) and SB (P.A.$=182^\\circ$) components."}
+]}
+],
+"assumptions": [
+{"value": "Absence of emission near the systemic velocity attributed to resolved-out optically thick foreground CO", "evidence": [
+{"loc": "4.1 Velocity Structure", "quote": "This would be because the optically thick, extended foreground CO emission is resolved out."}
+]}
+],
+"fitting": {"value": "Gaussian fit for peak position and PA only", "evidence": [
+{"loc": "4.1 Velocity Structure", "quote": "the peak position of the emission, which is determined by a Gaussian fit."}
+]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Fit wind-driven shell model to outflow lobes",
+"method": {"value": "Two-step fit: first morphology from moment 0 maps (5 sigma contours) to constrain C sin i; then velocity structure from PV diagrams (5+-1 sigma contours) for v0 and i, with MCMC", "evidence": [
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "First, we fit the outflow shell morphology to constrain $C\\sin i$ using the moment 0 maps presented in Figure [2](#fig:maps_diffvel)."},
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "Then, adopting the constrained $C\\sin i$, we fit the velocity structure using the PV diagrams."}
+]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "5 sigma contours define morphology and velocity structure; data sampled at half-beam offsets", "evidence": [
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "In both steps, $5\\sigma$ contours of the emission are used to define morphologies and velocity structures of the observed outflows."}
+]},
+{"value": "Velocity data points below 4.4 km/s (SB), above 6.34 km/s (NR1) and 6.25 km/s (NR2) excluded", "evidence": [
+{"loc": "8 Wind-driven Shell Model Fitting", "quote": "data points at velocities less than $4.4~\\kmps$ are removed from the fitting for the SB lobe"}
+]}
+],
+"assumptions": [
+{"value": "R0 and z0 fixed at 1 arcsec", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "The constants $R_0$ and $z_0$ are fixed at $1''$"}]},
+{"value": "Inclination angle defined between line of sight and outflow axis", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "Here, we define the inclination angle as an angle between the line-of-sight and the outflow axis"}]}
+],
+"fitting": {"value": "MCMC with emcee; uncertainties are standard deviation of the posteriors; priors and likelihood not stated", "evidence": [
+{"loc": "8 Wind-driven Shell Model Fitting", "quote": "by fitting the data points with the Markov-Chain Monte Carlo (MCMC) code"},
+{"loc": "8 Wind-driven Shell Model Fitting", "quote": "Uncertainties of the fitting parameters are calculated as the standard deviation of the posterior distributions."}
+]},
+"validation": {"value": "Refit including all data points (cloud-contaminated velocities) gives similar results; systematic errors ~10% (v0) and ~1% (i)", "evidence": [
+{"loc": "8 Wind-driven Shell Model Fitting", "quote": "Note that these fitting results do not change significantly even if we include the data points that are likely affected by the cloud contamination."}
+]}
+},
+{
+"order": 5,
+"goal": "Estimate lobe dynamical timescales",
+"method": {"value": "Dynamical timescale from lobe length and maximum velocity (lengths are lower limits as lobes reach the map edge); inclination correction tau_dyn = tau_dyn'/tan i", "evidence": [
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "We use their lengths and the maximum velocities to calculate the dynamical timescales, following the method used in previous works (cite: Yildiz:2015aa; Okoda:2021aa)."},
+{"loc": "Table 2", "quote": "$\\tau_\\mathrm{dyn} = \\tau_\\mathrm{dyn}'/\\tan i$"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Lobe lengths are lower limits because lobes extend to the map edge", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "Note that all these lobes are extended to the map edge, and thus, the outflow lengths represent lower limits."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Compute turbulent-to-gravitational energy ratio of the IRAS 15398 core",
+"method": {"value": "beta_turb = E_turb/E_grav for a uniform-density core; core mass from 850 micron flux, turbulent velocity from C18O FWHM (non-thermal) or from the velocity-deviation scaling relation", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "we calculate $\\beturb$ in the dense core of IRAS 15398 assuming the uniform density distribution"},
+{"loc": "5.2.1 Turbulence Scenario", "quote": "One way is to measure the full width at half maximum (FWHM) of a spectrum and subtract the thermal line width."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "F_850 = 2.9 Jy (10% uncertainty); dust temperature 15+-5 K; kappa = 0.02 g^-1 cm^2", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "$F_\\nu$ is measured to be $2.9~\\Jy$ with a typical flux uncertainty of 10%."},
+{"loc": "5.2.1 Turbulence Scenario", "quote": "We adopt the dust opacity $\\kappa_\\nu = 0.02~\\mathrm{g^{-1} cm^2}$ (cite: Ossenkopf:1994aa), and the dust temperature of $15\\pm5~\\kelv$."}
+]},
+{"value": "C18O FWHM measured within 8'' radius circle at an off position 40'' north of the protostar", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "within a circle with a radius of $8''$ at an off position, $40''$ north of the protostellar position"}
+]}
+],
+"assumptions": [
+{"value": "Uniform density core; gas temperature equals dust temperature", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "By assuming the gas temperature same as the dust temperature above"},
+{"loc": "5.2.1 Turbulence Scenario", "quote": "assuming the uniform density distribution"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Two independent turbulent-velocity estimates (C18O line width: upper limit; scaling relation) bracket beta_turb", "evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "This would give an upper limit of the turbulent velocity of the dense core, as the C$^{18}$O $J=2$–1 emission may include the surrounding cloud component."}
+]}
+},
+{
+"order": 7,
+"goal": "Compare core turbulence with Perseus dense cores",
+"method": {"value": "Recompute core mass, non-thermal velocity and beta_turb for Perseus cores from the Kirk et al. catalog with the same dust opacity and temperature; compare histograms (C18O and N2H+ line widths)", "evidence": [
+{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "Then, we calculated the core masses and non-thermal velocities assuming the same dust opacity and temperature as for IRAS 15398."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Perseus distance 282+-28 pc", "evidence": [{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "We adopted the distance of $282 \\pm28~\\pc$ for the Perseus dense cores"}]}
+],
+"assumptions": [
+{"value": "Same dust opacity and temperature as for IRAS 15398", "evidence": [{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "assuming the same dust opacity and temperature as for IRAS 15398."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Core radius definition and 850 micron rms for IRAS 15398 checked to be comparable to the Perseus catalog", "evidence": [
+{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "Our definition of the core radius for IRAS 15398 is almost identical with theirs"}
+]}
+},
+{
+"order": 8,
+"goal": "Estimate outflow dissipation timescale",
+"method": {"value": "t_diss = P_out/F_D ~ 2 (rho_out/rho_core)(l_out/v_out), with outflow mass from CO integrated flux in LTE", "evidence": [
+{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "The dissipation timescale of the observed outflows can be estimated by equating their momentum and the drag force that the outflows experience (cite: Codella:1999aa)."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "core density 1.0e4 cm^-3 (rho_core ~4.7e-20 g cm^-3); outflow length ~8500 au, width ~1600 au; v_out ~3 km/s; i ~70 deg", "evidence": [
+{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "By adopting outflow lengths of $\\rtsim8500~\\au$ (or $\\rtsim55''$) and widths of $\\rtsim1600~\\au$ (or $\\rtsim10''$) based on Figure"}
+]}
+],
+"assumptions": [
+{"value": "C_D = 1; CO abundance 1e-4; mean molecular weight 2.8; LTE; T_ex = 50-200 K; outflow mass scaled up to ~1e-2 Msun to account for missing low-velocity gas", "evidence": [
+{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "a CO molecular abundance of $10^{-4}$, the mean molecular weight of 2.8 and the local thermal equilibrium (LTE)"},
+{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "Hence, we adopt an outflow mass of $\\rtsim 1 \\times10^{-2}~\\Msun$ for an order of magnitude estimate."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Density ratio ~2 compared with ratio in numerical simulations", "evidence": [
+{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "is roughly consistent with the density ratio found in numerical simulations (cite: Machida:2012aa)"}
+]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.6.1 (pipeline 42866M, Pipeline-CASA56-P1-B)", "used_for": {"value": "Pipeline calibration and tclean imaging", "evidence": [
+{"loc": "ACA 7-m array Observations", "quote": "The data were calibrated with the pipeline version 42866M (Pipeline-CASA56-P1-B) of the Common Astronomy Software Applications package"},
+{"loc": "ACA 7-m array Observations", "quote": "We produced images from the visibility data using CASA 5.6.1 with the"}
+]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Imaging with Briggs weighting and multiscale clean", "evidence": [
+{"loc": "ACA 7-m array Observations", "quote": "Multiscale clean was used with the scale parameters of zero and 10, which correspond to the point source and about one beam size, respectively."}
+]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC fitting of the wind-driven shell model morphology and velocity structure", "evidence": [
+{"loc": "8 Wind-driven Shell Model Fitting", "quote": "by fitting the data points with the Markov-Chain Monte Carlo (MCMC) code"}
+]}},
+{"name": "Numpy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Scipy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Clumpfind", "version": "not stated", "used_for": {"value": "Identified the Perseus dense cores in the Kirk et al. catalog (not run by the authors)", "evidence": [
+{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "identified the dense cores using the `Clumpfind` algorithm"}
+]}}
+],
+"results_numeric": [
+{"quantity": "SB lobe C sin i", "value": "0.81", "uncertainty": "0.02", "units": "arcsec^-1", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "SB    |  $0.81\\pm0.02$  | $0.1129\\pm0.0004$ | $71.83 \\pm 0.05$"}]},
+{"quantity": "SB lobe v0", "value": "0.1129", "uncertainty": "0.0004", "units": "km/s", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "SB    |  $0.81\\pm0.02$  | $0.1129\\pm0.0004$ | $71.83 \\pm 0.05$"}]},
+{"quantity": "SB lobe inclination i", "value": "71.83", "uncertainty": "0.05", "units": "deg", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "SB    |  $0.81\\pm0.02$  | $0.1129\\pm0.0004$ | $71.83 \\pm 0.05$"}]},
+{"quantity": "NR1 lobe C sin i", "value": "1.24", "uncertainty": "0.02", "units": "arcsec^-1", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "NR1   | $1.24 \\pm 0.02$ | $0.1017\\pm0.0006$ | $74.24 \\pm 0.12$"}]},
+{"quantity": "NR1 lobe v0", "value": "0.1017", "uncertainty": "0.0006", "units": "km/s", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "NR1   | $1.24 \\pm 0.02$ | $0.1017\\pm0.0006$ | $74.24 \\pm 0.12$"}]},
+{"quantity": "NR1 lobe inclination i", "value": "74.24", "uncertainty": "0.12", "units": "deg", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "NR1   | $1.24 \\pm 0.02$ | $0.1017\\pm0.0006$ | $74.24 \\pm 0.12$"}]},
+{"quantity": "NR2 lobe C sin i", "value": "0.89", "uncertainty": "0.02", "units": "arcsec^-1", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "NR2   | $0.89\\pm 0.02$  | $0.0542\\pm0.0016$ | $69.75 \\pm 0.71$"}]},
+{"quantity": "NR2 lobe v0", "value": "0.0542", "uncertainty": "0.0016", "units": "km/s", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "NR2   | $0.89\\pm 0.02$  | $0.0542\\pm0.0016$ | $69.75 \\pm 0.71$"}]},
+{"quantity": "NR2 lobe inclination i", "value": "69.75", "uncertainty": "0.71", "units": "deg", "from_step": 4, "evidence": [{"loc": "Table 1", "quote": "NR2   | $0.89\\pm 0.02$  | $0.0542\\pm0.0016$ | $69.75 \\pm 0.71$"}]},
+{"quantity": "SB lobe dynamical timescale (inclination corrected)", "value": ">=0.49e4", "uncertainty": "lower limit", "units": "yr", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "SB | $\\gtrsim12,000$ | 1.72 | 3.68 | $\\gtrsim1.5$ | $\\gtrsim0.49$ |"}]},
+{"quantity": "NR1 lobe dynamical timescale (inclination corrected)", "value": ">=0.59e4", "uncertainty": "lower limit", "units": "yr", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "NR1 | $\\gtrsim12,000$ | 8.12 | 2.72 | $\\gtrsim2.1$ | $\\gtrsim0.59$ |"}]},
+{"quantity": "NR2 lobe dynamical timescale (inclination corrected)", "value": ">=1.1e4", "uncertainty": "lower limit", "units": "yr", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "NR2 | $\\gtrsim12,000$ | 7.32 | 1.92 | $\\gtrsim3.0$ | $\\gtrsim1.1$ |"}]},
+{"quantity": "Misalignment angle between the three outflows on the plane of the sky", "value": "~20-90", "uncertainty": "not stated", "units": "deg", "from_step": 3, "evidence": [{"loc": "abstract", "quote": "The three outflows are all misaligned by $\\rtsim20$–$90^\\circ$"}]},
+{"quantity": "C18O FWHM at off position (40'' north)", "value": "0.50", "uncertainty": "0.02", "units": "km/s", "from_step": 6, "evidence": [{"loc": "5.2.1 Turbulence Scenario", "quote": "The FWHM of the spectrum is measured to be $0.50\\pm0.02~\\kmps$"}]},
+{"quantity": "Non-thermal velocity from C18O line width", "value": "0.20", "uncertainty": "0.02", "units": "km/s", "from_step": 6, "evidence": [{"loc": "5.2.1 Turbulence Scenario", "quote": "is estimated to be $0.20 \\pm 0.02~\\kmps$"}]},
+{"quantity": "beta_turb from C18O non-thermal velocity", "value": "~1.4", "uncertainty": "0.9", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "5.2.1 Turbulence Scenario", "quote": "These parameters yield $\\beturb \\tsim 1.4\\pm0.9$"}]},
+{"quantity": "Turbulent velocity across the core from scaling relation", "value": "0.10", "uncertainty": "0.01", "units": "km/s", "from_step": 6, "evidence": [{"loc": "5.2.1 Turbulence Scenario", "quote": "the turbulent velocity across the dense core is estimated to be $0.10 \\pm 0.01~\\kmps$"}]},
+{"quantity": "beta_turb from scaling-relation turbulent velocity", "value": "~0.33", "uncertainty": "0.20", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "5.2.1 Turbulence Scenario", "quote": "This estimate results in $\\beturb \\tsim 0.33 \\pm 0.20$"}]},
+{"quantity": "Average outflow mass from CO", "value": "~(0.32-1.1)e-3", "uncertainty": "not stated", "units": "Msun", "from_step": 8, "evidence": [{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "An averaged mass of the outflows are estimated to be $\\rtsim(0.32\\mbox{--}1.1)\\times10^{-3}~\\Msun$"}]},
+{"quantity": "Outflow dissipation timescale", "value": "~2e4", "uncertainty": "not stated", "units": "yr", "from_step": 8, "evidence": [{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "yield the dissipation timescale of $\\rtsim 2 \\times 10^4~\\yr$"}]}
+],
+"findings_qualitative": [
+{"value": "New elongated redshifted and blueshifted components at ~30''-75'' show Hubble-law like velocity structures, interpreted as a third outflow", "evidence": [{"loc": "abstract", "quote": "These elongated components exhibit Hubble-law like velocity structures, i.e., an increase of velocity with increasing distance from the protostar, suggesting that it is the third outflow associated with the protostar."}]},
+{"value": "NR2 redshifted component likely the counterpart of the previously blueshifted-only secondary outflow", "evidence": [{"loc": "abstract", "quote": "This redshifted component also exhibits a Hubble-law like velocity profile, which could be the counterpart of the secondary outflow mostly detected at blueshifted velocities in a previous study."}]},
+{"value": "Authors favor turbulence in the dense core over field/rotation misalignment as origin of the multiple outflows", "evidence": [{"loc": "abstract", "quote": "We favor the second scenario as the origin of the multiple outflows in IRAS 15398"}]}
+],
+"claims": [
+{
+"hypothesis": "Do the NR1 and SB components trace a third outflow from IRAS 15398?",
+"experiment": "ACA CO 2-1 mosaic; PV diagrams along NR1 and SB; wind-driven shell fits",
+"result": "NR1 and SB are symmetric about the protostar with Hubble-law like velocity profiles; v0 ~0.10-0.11 km/s and i ~72-74 deg",
+"finding": "NR1 and SB are two lobes of a third outflow misaligned with the primary and secondary outflows",
+"support": "supported",
+"evidence": [
+{"loc": "4.1 Velocity Structure", "quote": "They exhibit the so-called Hubble-law like velocity profiles, i.e., an increase in the relative velocity with respect to the systemic velocity with increasing distance from the protostar."},
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "The NR1 and SB components are likely a pair of lobes of the third outflow because of their symmetric morphology and velocity structures with the Hubble-law like velocity profiles."}
+]
+},
+{
+"hypothesis": "Is the NR2 component part of the secondary outflow?",
+"experiment": "PV diagram and shell fit of NR2, comparison of its direction with SEB and the known secondary outflow",
+"result": "NR2 has a Hubble-law like profile, v0 about half that of NR1/SB, and is aligned with SEB and the secondary outflow",
+"finding": "NR2 is a separate ejection event and probably the redshifted counterpart of the secondary outflow",
+"support": "partially",
+"evidence": [
+{"loc": "5.1 Configurations of the Multiple Outflows", "quote": "The NR2 lobe appears aligned with the direction of the SEB lobe and the secondary outflow, suggesting that the NR2 lobe is the counterpart of the secondary outflow."},
+{"loc": "4.2 Physical Properties of the Outflows", "quote": "This suggests that the NR2 lobe is tracing a different ejection event than the third outflow."}
+]
+},
+{
+"hypothesis": "Has the outflow launch direction changed with time?",
+"experiment": "Compare position angles and dynamical timescales of primary, secondary and third outflows",
+"result": "Outflows misaligned by ~20-90 deg; dynamical timescales differ by about an order of magnitude (lower limits >=0.49-1.1e4 yr vs ~5e2 yr for the primary)",
+"finding": "The outflow launch direction has significantly changed with time",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "These facts hint that the outflow launch direction has significantly changed with time."},
+{"loc": "5.2 Origin of the Multiple Outflows", "quote": "Indeed, the dynamical timescales of the outflows are different by an order of magnitude, as discussed above."}
+]
+},
+{
+"hypothesis": "Is the time-varying outflow direction due to core turbulence or to a magnetic-field/rotation-axis misalignment?",
+"experiment": "Compute beta_turb for the core from JCMT 850 micron flux and C18O line widths; estimate probability of large 3D misalignment from SOFIA/JCMT field and C18O velocity gradient directions",
+"result": "beta_turb ~0.33-1.4, above the ~0.06-0.09 in simulations; projected field/angular-momentum misalignment 20-35 deg, probability of >80 deg in 3D less than 10%",
+"finding": "Turbulence could cause the changing outflow direction; large field misalignment is less likely but not ruled out",
+"support": "partially",
+"evidence": [
+{"loc": "5.2.1 Turbulence Scenario", "quote": "Hence, considering the strength of the turbulence in the dense core, turbulence could cause the dynamical time variation of the outflow direction in the dense core of IRAS 15398."},
+{"loc": "5.2.2 Misalignment Scenario", "quote": "Thus, the magnetic field is less likely largely misaligned with the rotational axis of the dense core of IRAS 15398"}
+]
+},
+{
+"hypothesis": "Is the IRAS 15398 core unusually turbulent compared with other dense cores?",
+"experiment": "Compare core mass, turbulent velocity and beta_turb with Perseus dense cores (Kirk et al. catalog)",
+"result": "Core mass, turbulent velocity and beta_turb of IRAS 15398 are comparable to or lower than typical Perseus values",
+"finding": "Turbulence in the IRAS 15398 core is not notably stronger than in other cores, so multiple outflows may be common but short-lived",
+"support": "supported",
+"evidence": [
+{"loc": "5.3.1 Is IRAS 15398 a Peculiar Source?", "quote": "These comparisons suggest that turbulence of the dense core of IRAS 15398 is not notably stronger compared to other dense cores."}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "A wind-driven shell model is used to characterize outflow lobe geometry and velocity structure", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "To characterize their geometry and velocity structures, we perform fitting with a wind-driven shell model (cite: Shu:1991aa; Lee:2000aa)."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Unresolved close binary driving the multiple outflows: rejected as unlikely", "evidence": [{"loc": "5.2 Origin of the Multiple Outflows", "quote": "Thus, these multiple outflows would not be likely driven by unresolved very close binary protostars."}]},
+{"value": "NR1 and NR2 as two sides of a single outflow cavity: rejected because of distinct expansion velocities", "evidence": [{"loc": "5.1 Configurations of the Multiple Outflows", "quote": "Hence, the NR1 and NR2 lobes are most likely two different outflows but not different sides of the same outflow cavity."}]},
+{"value": "WB and WR filaments treated as ambient cloud rather than outflow", "evidence": [{"loc": "4.1 Velocity Structure", "quote": "The constant velocities close to the cloud velocity suggest that the WB and WR filamentary structures are part of the ambient cloud."}]}
+],
+"limitations_admitted": [
+{"value": "Lobe lengths and dynamical timescales are only lower limits because lobes reach the map edge", "evidence": [{"loc": "4.2 Physical Properties of the Outflows", "quote": "Note that all these lobes are extended to the map edge, and thus, the outflow lengths represent lower limits."}]},
+{"value": "SEB velocity structure not well resolved at the ACA resolution", "evidence": [{"loc": "4.1 Velocity Structure", "quote": "Its velocity structures are not well resolved with our limited spatial resolution."}]},
+{"value": "Fit uncertainties exclude systematic errors of the fitting method", "evidence": [{"loc": "8 Wind-driven Shell Model Fitting", "quote": "do not take into account systemic errors of the fitting method itself."}]},
+{"value": "Inclination (cos i) does not converge in the morphology fit, so it is left free in the velocity fit", "evidence": [{"loc": "8 Wind-driven Shell Model Fitting", "quote": "The cavity shape, $C \\sin i$, is well constrained, while the cosine of the inclination angle, $\\cos i$, does not converge."}]},
+{"value": "Outflow mass likely underestimated because low-velocity gas is hidden by optically thick foreground gas", "evidence": [{"loc": "5.3.2 Age of the System and Outflow Dissipation Timescale", "quote": "Note that the mass of the outflows is likely underestimated, because we do not take into account low-velocity components obscured by the optically thick, extended foreground gas."}]}
+],
+"referee_caveats_inferred": [
+"Only a single-execution ACA 7-m dataset with a ~8'' beam: lobe and PV measurements near the systemic velocity are dominated by resolved-out foreground CO",
+"Hubble-law identification of the third outflow rests on low-velocity (1-3.5 km/s relative) emission that can be confused with ambient cloud; no total-power data are mentioned",
+"Turbulence-vs-misalignment comparison uses inputs from an unpublished paper and a C18O map from another paper, and beta_turb is compared with only two simulation studies",
+"Inclination from the fit is poorly constrained in the morphology step and shell-model priors are not described",
+"Dynamical timescales are lower limits so the ordering of the secondary and third outflows is not established"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Imaging mask, threshold and niter, and moment-map velocity limits",
+"emcee priors, likelihood and walker settings",
+"The JCMT 850 micron flux/radius and POL-2 results (unpublished eDisk paper), and the C18O data of Sai et al. 2023",
+"Exact lengths and maximum velocities behind the dynamical-timescale table",
+"Statement of data availability or archive products"
+],
+"estimated_data_volume_inferred": "Small: one ACA 7-m Band 6 mosaic execution (28 pointings, one 62.5 MHz window); a few GB of raw data, under 1 GB of image products",
+"score_inferred": 3,
+"score_reason": "ALMA project and calibration/imaging recipe are largely given with numeric fit results, but masks, priors and the core-mass inputs (unpublished paper) are missing, and data availability is not stated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public availability of the data is not stated in the paper, and key inputs (core mass/radius from in-preparation work, fit priors, masks) are missing, so the main numeric results cannot be redone from the text alone.",
+"methods_papers": [
+{"citation": "(cite: Shu:1991aa; Lee:2000aa)", "why": "Wind-driven shell model used to fit the outflow lobes"},
+{"citation": "(cite: Yildiz:2015aa; Okoda:2021aa)", "why": "Dynamical timescale method"},
+{"citation": "(cite: Codella:1999aa)", "why": "Outflow dissipation timescale from momentum and drag force"},
+{"citation": "(cite: Sai:2023aa)", "why": "C18O data and velocity-deviation scaling relation for turbulent velocity"}
+],
+"companion_papers": [
+{"citation": "(cite: Okoda:2021aa)", "why": "Earlier ALMA detection of the monopolar blueshifted secondary outflow"},
+{"citation": "(cite: Thieme:2023aa)", "why": "Disk/protostellar mass and systemic velocity of IRAS 15398"},
+{"citation": "(cite: Yen:inprep)", "why": "eDisk paper providing JCMT 850 micron flux and core radius"},
+{"citation": "(cite: Yen:2017aa)", "why": "Source position and primary outflow position angles"}
+],
+"related_projects_or_surveys": ["eDisk (cited as the eDisk team in the Yen in-preparation reference)", "Perseus dense-core surveys (Kirk et al.)"]
+}

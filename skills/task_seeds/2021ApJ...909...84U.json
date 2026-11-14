@@ -1,0 +1,624 @@
+{
+ "bibcode": "2021ApJ...909...84U",
+ "title": "Internal Structure of Molecular Gas in a Main-sequence Galaxy With a UV Clump at z = 1.45",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abdd1f",
+ "arxiv_id": "2101.08396",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Internal distribution and properties of molecular gas (CO(2-1), CO(5-4), R52 ratio, rotation, gas fraction profile) in a massive main-sequence galaxy with a UV clump at z = 1.45, compared with the stellar distribution",
+ "alma_project_codes": [
+  "2015.1.01129.S",
+  "2011.0.00648.S"
+ ],
+ "data": {
+  "bands": "CO(2-1): Band 3; CO(5-4): Band 6",
+  "arrays": "12 m array, 41 antennas (CO(2-1) data)",
+  "angular_resolution": "CO(2-1): ~0.55 arcsec; CO(5-4): ~0.7 arcsec (as stated for the observations)",
+  "sensitivity": "0.18 mJy/beam (CO(2-1)) and 0.91 mJy/beam (CO(5-4)) per 25 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass (SED fitting, Bruzual03 models, Salpeter IMF corrected with factor 0.58) and SFR from rest-UV luminosity for SXDS1_13015",
+    "evidence": [
+     {
+      "loc": "2 Sample Galaxy",
+      "quote": "The stellar masses were derived by spectral energy distribution (SED) fittings with optical to mid-infrared data, adopting the stellar population synthesis model by (cite: Bruzual03) and the IMF by (cite: Salpeter55)."
+     },
+     {
+      "loc": "2 Sample Galaxy",
+      "quote": "After correcting the difference of the adopted IMF with the factor of 0.58 (cite: Speagle14)"
+     }
+    ]
+   },
+   "citation": "Yabe12 (cite: Yabe12); Speagle14 (cite: Speagle14) for the IMF factor"
+  },
+  {
+   "what": {
+    "value": "Gas-phase metallicity 12+log(O/H) = 8.85 from the N2 method (Pettini04 calibration)",
+    "evidence": [
+     {
+      "loc": "2 Sample Galaxy",
+      "quote": "the gas metallicities were derived based on N2 method (cite: Pettini04)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "$8.85 \\pm 0.04$"
+     }
+    ]
+   },
+   "citation": "Yabe12 (cite: Yabe12); Pettini04 (cite: Pettini04)"
+  },
+  {
+   "what": {
+    "value": "Metallicity-dependent CO-to-H2 conversion factor, Equation (7) of Genzel15",
+    "evidence": [
+     {
+      "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+      "quote": "we adopt the Equation (7) of (cite: Genzel15)"
+     }
+    ]
+   },
+   "citation": "Genzel15 (cite: Genzel15)"
+  },
+  {
+   "what": {
+    "value": "CO(5-4) ALMA Cycle 0 data and its calibration (CASA 4.2)",
+    "evidence": [
+     {
+      "loc": "3.1 CO Data",
+      "quote": "The raw visibility data of CO(5-4) was calibrated with CASA version 4.2 by (cite: Seko16)."
+     }
+    ]
+   },
+   "citation": "Seko16 (cite: Seko16)"
+  },
+  {
+   "what": {
+    "value": "Median stellar mass surface density profiles of galaxies at different redshifts for comparison",
+    "evidence": [
+     {
+      "loc": "4.2 Stellar Distribution",
+      "quote": "the derived profile of SXDS1_13015 is plotted with the median profiles of galaxies at different redshifts by (cite: Patel13)"
+     }
+    ]
+   },
+   "citation": "Patel13 (cite: Patel13)"
+  },
+  {
+   "what": {
+    "value": "CO and optical half-light radii of field main-sequence and sBzK galaxies",
+    "evidence": [
+     {
+      "loc": "4.3.2 CO and Optical Half-light Radii",
+      "quote": "The field sample includes 12 main sequence galaxies at $z \\sim 1 - 1.5$ by (cite: Tacconi13) and 3 sBzK galaxies by (cite: Daddi10)."
+     }
+    ]
+   },
+   "citation": "Tacconi13 (cite: Tacconi13); Daddi10 (cite: Daddi10)"
+  },
+  {
+   "what": {
+    "value": "CO and optical half-light radii of 4 cluster galaxies at z ~ 1.6",
+    "evidence": [
+     {
+      "loc": "4.3.2 CO and Optical Half-light Radii",
+      "quote": "The cluster sample consists of 4 cluster galaxies at $z \\sim 1.6$ by (cite: Noble19)"
+     }
+    ]
+   },
+   "citation": "Noble19 (cite: Noble19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the CO cubes",
+   "method": "Calibrate with observatory script (CO(2-1)) and Seko16 calibration (CO(5-4)); continuum-subtract CO(5-4) with uvcontsub; 3 sigma-clean tclean channel maps at 25 km/s",
+   "software": [
+    "CASA 4.7.2",
+    "CASA 4.2",
+    "CASA 5.4.0",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs weighting robust = 0.5; channel width 25 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure total CO(2-1) and CO(5-4) fluxes",
+   "method": "Fit an elliptical Gaussian to the integrated intensity maps within a 1.5 arcsec diameter circle centred on the CO(2-1) peak",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive CO(1-0) luminosity, molecular gas mass, gas fraction and depletion time",
+   "method": "L'CO(1-0) from CO(2-1) flux with R21 = 2; M_mol = alpha_CO L'CO(1-0) with metallicity-dependent alpha_CO; f_gas = M_mol/(M_mol+M_star); depletion time = M_mol/SFR",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO from Equation (7) of Genzel15 using 12+log(O/H) on the Pettini04 scale",
+    "alpha_CO = 2.58 Msun (K km/s pc^2)^-1"
+   ],
+   "assumptions": [
+    "R21 = CO(2-1)/CO(1-0) flux ratio of 2 (Milky Way like)",
+    "alpha_CO includes a 36% mass contribution of helium",
+    "Flat cosmology with Omega_M = 0.3, Omega_Lambda = 0.7, H0 = 70 km/s/Mpc; Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Build the CO(5-4)/CO(2-1) ratio (R52) map",
+   "method": "Divide CO(5-4) 0th moment map by CO(2-1) map convolved to the CO(5-4) beam, in pixels with S/N > 2.5 in CO(5-4)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "S/N > 2.5 threshold in the CO(5-4) map; also a map in the velocity range -250 to 0 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Test significance of CO(5-4) peak offset and velocity shift; align HST to ALMA",
+   "method": "Simulate CO(5-4) observations with simobserve of a Gaussian mimicking the CO(5-4) distribution and line profile to get 1-sigma uncertainties on peak position and velocity; shift HST astrometry assuming the J125 peak coincides with the CO(2-1) moment-0 peak",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "HST offset (dRA, dDec) = (+0.058, -0.198) arcsec"
+   ],
+   "assumptions": [
+    "J125 peak coincides with CO(2-1) peak because CO(2-1) has a symmetric profile and high S/N"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit a rotating disk to the CO(2-1) cube",
+   "method": "GalPaK3D disk model (exponential flux profile n=1, hyperbolic tangent rotation curve) convolved with PSF and LSF fit to the CO(2-1) channel cube; uncertainties from 100 simulated cubes with random noise seeds, combined in quadrature with systematic error",
+   "software": [
+    "GalPaK3D",
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "PSF = synthesized beam 0.61 x 0.53 arcsec, PA = 79 deg; LSF = 25 km/s channel",
+    "Free parameters: central position, central frequency, total flux, r1/2, inclination, PA, turnover radius, Vmax, constant sigma0"
+   ],
+   "assumptions": [
+    "Velocity dispersion constant over the disk; sigma0 poorly constrained because of beam smearing"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit Sersic models to HST J125 and H160 images",
+   "method": "GALFIT single-component Sersic fit and two-component fit with bulge n=4 and disk n=1 (disk position, PA and axis ratio fixed to the single-component values) in a ~2.5 x 2.5 arcsec region with PSFs from stacked stars",
+   "software": [
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "PSF from stacking four (J125) or six (H160) unsaturated stars; ~2.5 x 2.5 arcsec boxy fitting region; neighbours masked"
+   ],
+   "assumptions": [
+    "Bulge n=4 and disk n=1 fixed because the galaxy has a rotating gas disk and appears to have a bulge and disk in HST"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare gas and stellar radial profiles, f_gas(r) and dynamical masses",
+   "method": "Combine GalPaK3D gas model and GALFIT stellar model into intrinsic radial surface profiles and f_gas at each radius; Mdyn(r) ~ r v_rot^2 / G at r1/2, 2 r1/2, 3 r1/2; inner gas and stellar masses scaled by J125 luminosity within r",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Constant mass-to-luminosity ratio for the stellar mass surface density"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Compare CO and optical half-light radii with literature samples",
+   "method": "Place the target on the optical versus CO half-light radius plane with field and cluster galaxies at z ~ 1-1.6 from the literature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(2-1) flux",
+   "value": "1.03",
+   "uncertainty": "0.05",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "The total CO(2-1) and CO(5-4) flux of SXDS1_13015 are estimated to be $(1.03 \\pm 0.05) \\ \\rm Jy \\, km \\, s^{-1}$ and $(1.16 \\pm 0.17) \\ \\rm Jy \\, km \\, s^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(5-4) flux",
+   "value": "1.16",
+   "uncertainty": "0.17",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "The total CO(2-1) and CO(5-4) flux of SXDS1_13015 are estimated to be $(1.03 \\pm 0.05) \\ \\rm Jy \\, km \\, s^{-1}$ and $(1.16 \\pm 0.17) \\ \\rm Jy \\, km \\, s^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-deconvolved FWHM of CO(2-1) source",
+   "value": "4.0",
+   "uncertainty": "0.5",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "The beam-deconvolved FWHM of the CO(2-1) source is $4.0 \\pm 0.5 \\ \\rm kpc$."
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy-integrated R52 (CO(5-4)/CO(2-1) flux ratio)",
+   "value": "1.1",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5 Summary",
+     "quote": "$R_{52}$ of the galaxy is $1.1 \\pm 0.2$, which suggests the CO excitation ladder of the galaxy is similar to that of the Milky Way rather than sBzK galaxies at $z \\sim 1.5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) luminosity L'CO(1-0)",
+   "value": "5.62e10",
+   "uncertainty": "0.27e10",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "The calculated total CO(1-0) luminosity of SXDS1_13015 is $(5.62 \\pm 0.27) \\times 10^{10} \\ {\\rm K\\, km\\,s^{-1} \\, pc^2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO-to-H2 conversion factor alpha_CO",
+   "value": "2.58",
+   "uncertainty": "not stated",
+   "units": "Msun (K km/s pc^2)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "The $\\alpha_{\\rm CO}$ of SXDS1_13015 is calculated to be $2.58\\ M_{\\ensuremath{\\odot}} \\rm (K\\, km\\,s^{-1}\\, pc^2)^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "1.45e11",
+   "uncertainty": "0.07e11",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "The resulting total molecular gas mass is $(1.45 \\pm 0.07) \\times 10^{11} \\ M_{\\ensuremath{\\odot}}$ and the gas mass fraction is $f_{\\rm gas} = 0.55 \\pm 0.08$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass fraction f_gas (galaxy total)",
+   "value": "0.55",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "the gas mass fraction is $f_{\\rm gas} = 0.55 \\pm 0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion time",
+   "value": "1.1",
+   "uncertainty": "0.3",
+   "units": "Gyr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total Flux and Molecular Gas Mass",
+     "quote": "of the galaxy is estimated to be $= 1.1 \\pm 0.3 \\ \\rm Gyr$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak R52 in the UV clump",
+   "value": "~2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.2 Spatial Distribution of R52",
+     "quote": "The peak of the CO(5-4)/CO(2-1) flux ratio ($R_{52} \\sim 2.2$) is significantly larger than the $R_{52}$ averaged over SXDS1_13015 and that of the Milky Way."
+    }
+   ]
+  },
+  {
+   "quantity": "Offset between CO(5-4) and CO(2-1) peaks",
+   "value": "~0.15",
+   "uncertainty": "1-sigma position uncertainty ~0.04 arcsec (~3.8 sigma)",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Spatial Distribution of R52",
+     "quote": "observed offset between the peak positions of CO(5-4) and CO(2-1) is $\\sim 0.15 \\ \\rm arcsec$ which corresponds to $\\sim 3.8 \\sigma$."
+    },
+    {
+     "loc": "4.1.2 Spatial Distribution of R52",
+     "quote": "the 1-$\\sigma$ uncertainty of the peak position of CO(5-4) is $\\sim 0.04 \\ \\rm arcsec$"
+    }
+   ]
+  },
+  {
+   "quantity": "GalPaK3D total CO(2-1) flux",
+   "value": "1.10",
+   "uncertainty": "0.05",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.3 Fitting a Rotating Disk Model",
+     "quote": "The best-fit flux ($1.10 \\pm 0.05 \\ \\rm Jy \\, km \\, s^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) half-light radius r1/2 (GalPaK3D)",
+   "value": "2.30",
+   "uncertainty": "0.12",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.3 Fitting a Rotating Disk Model",
+     "quote": "The best-fit $r_{1/2} = 2.30 \\pm 0.12 \\ \\rm kpc$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination (GalPaK3D)",
+   "value": "47.6",
+   "uncertainty": "6.5",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$47.6 \\pm 6.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle (GalPaK3D)",
+   "value": "42.8",
+   "uncertainty": "2.0",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$42.8 \\pm 2.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Turnover radius r_t (GalPaK3D)",
+   "value": "0.48",
+   "uncertainty": "0.22",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.48 \\pm 0.22$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination-corrected maximum rotational velocity Vmax",
+   "value": "350",
+   "uncertainty": "30",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.3 Fitting a Rotating Disk Model",
+     "quote": "The best-fit $V_{\\rm max}$ and $\\sigma_0$ are $350 \\pm 30 \\ \\rm km \\, s^{-1}$ and $2.7 \\pm 8.7 \\ \\rm km \\, s^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion sigma0 (GalPaK3D, judged unreliable)",
+   "value": "2.7",
+   "uncertainty": "8.7",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.3 Fitting a Rotating Disk Model",
+     "quote": "The best-fit $V_{\\rm max}$ and $\\sigma_0$ are $350 \\pm 30 \\ \\rm km \\, s^{-1}$ and $2.7 \\pm 8.7 \\ \\rm km \\, s^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "J125 single Sersic index n",
+   "value": "2.04",
+   "uncertainty": "0.19",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$2.04 \\pm 0.19$"
+    }
+   ]
+  },
+  {
+   "quantity": "J125 single Sersic half-light radius R1/2",
+   "value": "3.54",
+   "uncertainty": "0.15",
+   "units": "kpc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$3.54 \\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "H160 single Sersic index n",
+   "value": "1.76",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$1.76 \\pm 0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "H160 single Sersic half-light radius R1/2",
+   "value": "3.22",
+   "uncertainty": "0.07",
+   "units": "kpc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$3.22 \\pm 0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "J125 bulge-to-disk luminosity ratio",
+   "value": "0.38",
+   "uncertainty": "+0.11/-0.08",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$0.38^{+0.11}_{-0.08}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H160 bulge-to-disk luminosity ratio",
+   "value": "0.36",
+   "uncertainty": "+0.11/-0.08",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$0.36^{+0.11}_{-0.08}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial f_gas from centre to 3 r1/2",
+   "value": "~0.6 at centre to ~0.2 at ~3 r1/2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.1 Modeled Gas and Stellar Distributions",
+     "quote": "decreases with increasing galactocentric radius from $\\sim 0.6$ at the central region to $\\sim 0.2$ at $\\sim 3 \\times r_{1/2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within r1/2, 2 r1/2, 3 r1/2",
+   "value": "~(0.7, 1.3, 2.0)e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.1 Modeled Gas and Stellar Distributions",
+     "quote": "are estimated to be $\\sim (0.7,\\ 1.3,\\ 2.0) \\times 10^{11} \\ M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Baryon fraction within r1/2, 2 r1/2, 3 r1/2",
+   "value": "~0.61, 0.59, 0.53",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.1 Modeled Gas and Stellar Distributions",
+     "quote": "are estimated to be $\\sim 0.61,\\ 0.59,\\ 0.53$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-to-optical half-light radius ratios (F125W, F160W)",
+   "value": "0.65 (F125W); 0.71 (F160W)",
+   "uncertainty": "0.04 each",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.3.2 CO and Optical Half-light Radii",
+     "quote": "$R_{1/2,\\rm CO}/R_{1/2,\\rm F125W} = 0.65 \\pm 0.04$, $R_{1/2,\\rm CO}/R_{1/2,\\rm F160W} = 0.71 \\pm 0.04$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for uvcontsub in the CO(5-4) data, and whether any continuum subtraction was done for CO(2-1)",
+  "Image size, cell size, tclean niter/threshold and the clean mask beyond '3 sigma'",
+  "Primary-beam correction and flux-scale handling for the two datasets, and the CASA 4.2 calibration choices for CO(5-4) (only in Seko16)",
+  "Velocity range and masking used to build the CO(2-1) and CO(5-4) integrated-intensity (0th moment) maps",
+  "GalPaK3D settings: version, priors, sampler/chain length, initial guesses, and the systematic error added in quadrature",
+  "simobserve configuration (array configs, integration times, noise model) for the 100 simulated cubes and the R52 position/velocity uncertainty tests",
+  "GALFIT details: initial guesses, sky values, masks, the PSF stars and the M/L conversion to mass surface density",
+  "Exact source of the stellar mass (1.2e11 Msun) and SFR used in f_gas and depletion time (value after IMF correction is given in rounded form in the text)",
+  "Declination of the target (printed incompletely in Table 1) and exact HST-ALMA astrometric shift procedure",
+  "How the CO(5-4) flux was measured differently from Seko16 (velocity width and reduction details)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges for uvcontsub, clean mask, niter, threshold, image and cell sizes",
+  "GalPaK3D and GALFIT run configurations (priors, initial guesses, PSF star choices, masks)",
+  "Moment-map velocity windows and primary-beam handling",
+  "simobserve inputs for the 100 simulated cubes",
+  "Definition of the systematic error added to GalPaK3D uncertainties",
+  "Whether the data are in the public ALMA archive (not stated by the paper)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Both projects are named and a good part of the recipe is given (CASA versions, robust, channel width, GalPaK3D and GALFIT set-up, numeric tables), but imaging masks, line-free channels, fitting priors and the CO(5-4) calibration (in Seko16) are missing, and the R21 value is internally inconsistent",
+ "rediscovery_reason": "ALMA Cycle 0 and Cycle 3 data of named projects are normally in the public archive, the key results (fluxes, R52, GalPaK3D parameters, f_gas) are numeric, and the recipe is mostly complete, although the paper does not itself state public availability",
+ "source_card": "cards/2021ApJ...909...84U/sonnet/card.md"
+}

@@ -1,0 +1,310 @@
+{
+ "bibcode": "2026A&A...712A.244H",
+ "title": "Multiband ALMA polarimetry of the jet base and kiloparsec-scale jet of 3C 273: A multicomponent Faraday structure in the nucleus",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202660869",
+ "arxiv_id": "2607.07362",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Determine the polarization and Faraday rotation structure of the nucleus (multiple polarized components versus internal Faraday rotation) and the magnetic field structure of the kiloparsec-scale jet in the quasar 3C 273 using multiband ALMA polarimetry.",
+ "alma_project_codes": [
+  "2018.1.00357.S"
+ ],
+ "data": {
+  "bands": "Bands 4, 6, and 7",
+  "arrays": "Main Array (12-m antennas)",
+  "angular_resolution": "Band 4: 0.64'' x 0.51''; Band 6: 0.38'' x 0.31''; Band 7: 0.25'' x 0.22'' (Nov 15), 0.23'' x 0.22'' (Nov 23), 0.26'' x 0.22'' (concatenated)",
+  "sensitivity": "Theoretical continuum sensitivity: 0.16 mJy (Band 4), 0.44 mJy (Band 6), 0.14 mJy (Band 7 Nov 15), 0.075 mJy (Band 7 Nov 23)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "EVPA measurements in band 6 from April 2017 EHT campaign and earlier ALMA observations",
+    "evidence": [
+     {
+      "loc": "Variability in the core RM",
+      "quote": "Figure 8 shows the EVPA measurements from and this paper along with the data from (cite: goddi21) that were taken during the EHT campaign in April 2017."
+     }
+    ]
+   },
+   "citation": "(cite: hovatta19), (cite: goddi21)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass estimate M_BH = 10^9.1 M_sun",
+    "evidence": [
+     {
+      "loc": "Polarization and Faraday rotation in the core",
+      "quote": "Adopting the latest black hole mass estimate for 3C 273, $M_\\mathrm{BH} = 10^{9.1}$ M$_\\odot$ by (cite: li22) gives us the scale $r_g = 6\\times10^{-5}$ pc."
+     }
+    ]
+   },
+   "citation": "(cite: li22)"
+  },
+  {
+   "what": {
+    "value": "Jet magnetic field strength (~2 G at <=0.06 mas and >=6 G) and thermal electron density (6 x 10^-2 cm^-3)",
+    "evidence": [
+     {
+      "loc": "Polarization and Faraday rotation in the core",
+      "quote": "From VLBI studies of 3C 273 up to 86 GHz (cite: attridge05), we can consider a jet magnetic field strength of at least 6 G (cite: savolainen2008) and jet size of order 1 pc at these frequencies."
+     },
+     {
+      "loc": "Polarization and Faraday rotation in the core",
+      "quote": "Along with a thermal electron density of $6\\times10^{-2}$ cm$^{-3}$ (cite: roeser00), these parameters can provide mean RMs and dispersions of order $10^5$ rad m$^{-2}$ that can readily account for the high-RM component properties."
+     }
+    ]
+   },
+   "citation": "(cite: attridge05), (cite: savolainen2008), (cite: roeser00)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities and perform self-calibration",
+   "method": "Standard ALMA calibration and polarization calibration using 3C 279, with Spw-independent polarization modeling and self-bandpass calibration in Band 6, D-term copying from Nov 23 to Nov 15 in Band 7, and two rounds of phase-only and amplitude+phase self-calibration using 3C 273.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Phase-only self-cal solint = int; phase and amplitude self-cal solint = 10 s (Bands 4 and 6) and 30 s (Band 7)"
+   ],
+   "assumptions": [
+    "Stokes V vanishes at 232.86 GHz for Band 6 self-bandpass model (I = 4.35 Jy, alpha = -0.85, Q = 0.0238 Jy, U = -0.1212 Jy); similar D-terms between Nov 15 and Nov 23 in Band 7"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract channel-wise Stokes parameters and uncertainties of the nucleus",
+   "method": "Fit visibility data with a delta component at the phase center in each 31.25 MHz channel independently using UVMULTIFIT, and run 1000 Monte Carlo simulations to propagate thermal and systematic calibration uncertainties; fit power-law spectral index to total intensity.",
+   "software": [
+    "CASA",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "1000 Monte Carlo realizations; noise std devs: X-Y Phase = 2 deg, X-Y Bandpass amp = 0.1% (B4, B6) / 0.2% (B7), X-Y Bandpass phase = 0.5 deg, D-terms = 0.5% (B4, B7 Nov 23) / 2% (B6) / 1% (B7 Nov 15)"
+   ],
+   "assumptions": [
+    "Single point source dominates emission at phase center"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model wavelength-dependent core polarization via QU-fitting",
+   "method": "Fit complex fractional polarization p(lambda^2) = q(lambda^2) + i u(lambda^2) across Bands 4, 6, and 7 (Nov 15) against four parametric Faraday rotation models (S, T_inv, S2, T2) using a nested-sampling backend.",
+   "software": [],
+   "key_parameters": [
+    "Four models: S (3 params), T_inv (5 params), S2 (6 params), T2 (8 params)"
+   ],
+   "assumptions": [
+    "External Faraday dispersion or thin screens parameterized by mean RM, dispersion sigma_RM, intrinsic fractional polarization p_0, and intrinsic angle psi_0"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Image kiloparsec-scale jet polarization and map spectral index",
+   "method": "Image aggregated bandwidth and individual Spws with tclean, extract Stokes I, Q, U with immath, compute fractional polarization and EVPA along ridge lines and transverse slices, smooth single-Spw images to common beam with imsmooth, align using QA2 images, and fit pixel-by-pixel power-law spectral index across 12 Spws.",
+   "software": [
+    "CASA",
+    "tclean",
+    "immath",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Polarization cutoff: I > 5*rms and polarized flux > 3*rms; Spectral index cutoff: I > 3*rms in each Spw, 10% calibration uncertainty added in quadrature, accepted fits with chi^2 < 18.307 (95% confidence for 10 dof); common beam 0.54'' x 0.44''; Band 6 declination shift -0.043''"
+   ],
+   "assumptions": [
+    "Power-law spectrum I proportional to nu^+alpha across 138-350 GHz"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Core spectral index (alpha_core, using Nov 15 Band 7)",
+   "value": "-0.7915",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Extracting Stokes parameters of the nucleus",
+     "quote": "The emission over all the bands is optically thin with a spectral index of $\\alpha_{\\rm core}=-0.7915\\pm0.0003$ and a reduced $\\chi^2=2.76$ of the fit when using the 15 November epoch in band 7."
+    }
+   ]
+  },
+  {
+   "quantity": "Core spectral index (using Nov 23 Band 7)",
+   "value": "-0.905",
+   "uncertainty": "0.002",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Extracting Stokes parameters of the nucleus",
+     "quote": "If we use the 23 November epoch instead, the spectral index would be $-0.905\\pm0.002$ with a significantly higher reduced $\\chi^2=123.0$, further supporting our decision to use only the 15 November epoch in the modeling of the core polarization."
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model intrinsic polarization fraction 1 (p_1)",
+   "value": "2.03",
+   "uncertainty": "+0.05/-0.06",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $p_1$ (%) | $2.03^{+0.05}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model intrinsic polarization fraction 2 (p_2)",
+   "value": "4.31",
+   "uncertainty": "+0.02/-0.02",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $p_2$ (%) | $4.31^{+0.02}_{-0.02}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model intrinsic polarization angle 1 (psi_0,1)",
+   "value": "20.5",
+   "uncertainty": "+1.1/-1.1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\psi_{0,1}$ (deg) | $20.5^{+1.1}_{-1.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model intrinsic polarization angle 2 (psi_0,2)",
+   "value": "138.05",
+   "uncertainty": "+0.59/-0.57",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\psi_{0,2}$ (deg) | $138.05^{+0.59}_{-0.57}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model rotation measure 1 (RM_1)",
+   "value": "2.58e5",
+   "uncertainty": "+0.08e5/-0.08e5",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| RM$_1$ (rad m$^{-2}$) | $(2.58^{+0.08}_{-0.08})\\times 10^{5}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model rotation measure 2 (RM_2)",
+   "value": "1.48e4",
+   "uncertainty": "+0.18e4/-0.18e4",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| RM$_2$ (rad m$^{-2}$) | $(1.48^{+0.18}_{-0.18})\\times 10^{4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model Faraday dispersion 1 (sigma_RM,1)",
+   "value": "2.36e5",
+   "uncertainty": "+0.07e5/-0.07e5",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\sigma_{\\mathrm{RM},1}$ (rad m$^{-2}$) | $(2.36^{+0.07}_{-0.07})\\times 10^{5}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core T2 model Faraday dispersion 2 (sigma_RM,2)",
+   "value": "2.30e3",
+   "uncertainty": "+2.52e3/-1.63e3",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\sigma_{\\mathrm{RM},2}$ (rad m$^{-2}$) | $(2.30^{+2.52}_{-1.63})\\times 10^{3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nominal single-band RM in Band 6 (linear fit)",
+   "value": "-8.4e4",
+   "uncertainty": "not stated",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Variability in the core RM",
+     "quote": "Our new data taken over 1.5 years later show very different behavior with a nearly flat polarization angle over the 1.3 mm band, resulting in a much smaller nominal RM of $\\sim-8.4\\times10^4$ rad m$^−2$ if a simple linear fit as shown in Fig. 8 is performed."
+    }
+   ]
+  },
+  {
+   "quantity": "Hotspot H2 fractional polarization",
+   "value": "20-30",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Polarization of the kiloparsec-scale jet",
+     "quote": "In all the ALMA bands the brightest hotspot H2 where our images are centered is highly polarized with a fractional polarization of 20-30%."
+    }
+   ]
+  },
+  {
+   "quantity": "Kiloparsec-scale jet ridge spectral index (138-350 GHz)",
+   "value": "-0.9 to -0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Polarization and spectral index of the kiloparsec-scale jet",
+     "quote": "The spectral index distribution is relatively steep, around $-0.9$, but several flatter portions of $-0.8$ are seen along the ridge."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Weighting scheme and Briggs robust parameter used in tclean",
+  "Image size and pixel cell sizes for Bands 4 and 7",
+  "Stopping threshold and masking strategy in tclean",
+  "Primary beam correction status for the kiloparsec-scale jet images (especially for spectral index mapping across bands)",
+  "Specific nested-sampling software package, number of live points, and prior distributions used for the QU-fitting"
+ ],
+ "missing_for_reproduction": [
+  "Prior bounds and specific nested sampling algorithm/package used for QU-fitting",
+  "Custom Monte Carlo CASA script used to perturb calibration tables and compute parallactic angle",
+  "Exact tclean weighting (e.g., Briggs robust parameter), cell sizes for Bands 4 and 7, and stopping criteria"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "High reproducibility: raw ALMA data are public, the intermediate channel-by-channel Stokes table (poldata.dat) and FITS images are deposited at CDS, the calibration overrides (flux scales, self-cal intervals, Band 6 self-bandpass model, MC noise amplitudes) and QU-fitting analytic equations are explicitly given. Minor deductions for omitting the nested-sampling priors/software name and tclean weighting parameters.",
+ "rediscovery_reason": "Both raw ALMA visibilities (2018.1.00357.S) and the intermediate extracted core polarization spectrum (poldata.dat at CDS) are public, and the main results are exact numeric Bayesian QU-fitting parameters (RM, sigma_RM, p_0, psi_0, ln Z) and core spectral index.",
+ "source_card": "cards/2026A%26A...712A.244H/sonnet/card.md"
+}

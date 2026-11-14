@@ -1,0 +1,274 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "We obtained data for the same OH $\\SI{119}{\\um}$ observations presented in and , along with data from ancillary observations covering the \\[CII\\] $\\SI{158}{\\um}$ line of each target, from the ALMA archive."}
+],
+"fields": ["high_z_galaxies"],
+"question": {
+"value": "Is the evidence for molecular outflows (OH 119 um absorption more blueshifted than [CII] emission) in five lensed high-z DSFGs robust once atmospheric-correction precision and per-channel noise are properly accounted for, and does searching channel maps reveal separate kinematic components?",
+"evidence": [
+{"loc": "abstract", "quote": "Taking these factors into consideration, we re-analyze OH and \\[CII\\] data taken with ALMA for the five sources where such data is available, of which four were categorised as exhibiting outflows."}
+]
+},
+"targets": [
+{"name": "SPT0202-61", "details": [{"loc": "Table 1", "quote": "SPT0202-61 | 5.0180 | 43 | 54"}], "coordinates": "not stated", "redshift_or_distance": "z = 5.0180", "distance_source": "not stated"},
+{"name": "SPT0418-47", "details": [{"loc": "Table 1", "quote": "SPT0418-47 | 4.2248 | 87 | 19"}], "coordinates": "not stated", "redshift_or_distance": "z = 4.2248", "distance_source": "not stated"},
+{"name": "SPT0441-46", "details": [{"loc": "Table 1", "quote": "SPT0441-46 | 4.4770 | 28 | 29"}], "coordinates": "not stated", "redshift_or_distance": "z = 4.4770", "distance_source": "not stated"},
+{"name": "SPT2132-58", "details": [{"loc": "Table 1", "quote": "SPT2132-58 | 4.7677 | 17 | 25"}], "coordinates": "not stated", "redshift_or_distance": "z = 4.7677", "distance_source": "not stated"},
+{"name": "SPT2319-55", "details": [{"loc": "Table 1", "quote": "SPT2319-55 | 5.2943 | 30 | 21"}], "coordinates": "not stated", "redshift_or_distance": "z = 5.2943", "distance_source": "not stated"}
+],
+"alma_project_codes": [
+{"code": "2018.1.00191.S", "evidence": [{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.00191.S, ADS/JAO.ALMA#2016.1.01499.S."}]},
+{"code": "2016.1.01499.S", "evidence": [{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.00191.S, ADS/JAO.ALMA#2016.1.01499.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 8 for the OH 119 um observations (band of the [CII] observations not stated)", "evidence": [
+{"loc": "1 INTRODUCTION", "quote": "ALMA band 8, the band in which all the OH observations in and were made"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "OH: one sideband with two partially-overlapping SPWs on the OH lines, other sideband with two partially-overlapping continuum SPWs; [CII]: two SPWs on the line in one sideband, two continuum SPWs in the other; each SPW at 1.875 GHz bandwidth; sidebands offset by 12 GHz", "evidence": [
+{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "The OH observations were made with one sideband containing two partially-overlapping spectral windows covering the OH lines at the source redshift, and an alternate sideband containing two partially-overlapping spectral windows covering only the dust continuum."},
+{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "In both the OH and \\[CII\\] observations, each spectral window is configured at its maximal possible bandwidth of $\\SI{1.875}{GHz}$."},
+{"loc": "4.3 Improving observing strategies", "quote": "which has a fixed offset of 12 GHz with respect to the OH sideband"}
+]},
+{"field": "continuum_bandwidth", "value": "continuum-only sideband made of two SPWs of 1.875 GHz each; for SPT2132-58 no usable continuum sideband data", "evidence": [
+{"loc": "2.2 Self-calibration", "quote": "The sole exception is the OH observations of SPT2132-58, for which infer OH absorption to cover nearly the entire bandpass, and which has no useable data in the continuum sidebands due to low atmospheric transmission."}
+]},
+{"field": "angular_resolution", "value": "Final common beams after convolution (BMAJ x BMIN, BPA): SPT0202-61 0.48 x 0.42 arcsec, 63 deg; SPT0418-47 0.55 x 0.35, 89; SPT0441-46 0.35 x 0.26, 79; SPT2132-58 0.43 x 0.36, 114; SPT2319-55 0.40 x 0.32, 64", "evidence": [
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "we convolved the OH channel maps, continuum-subtracted \\[CII\\] channel maps, and dust continuum maps of each target source to the smallest possible common angular resolution (synthesised beam)"},
+{"loc": "Table 2", "quote": "SPT0418-47 | 70 | 0.55 | 0.35 | 89"}
+]},
+{"field": "time_on_source", "value": "Integration time (min), OH / [CII]: SPT0202-61 43/54; SPT0418-47 87/19; SPT0441-46 28/29; SPT2132-58 17/25; SPT2319-55 30/21", "evidence": [
+{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "lists the redshifts and integration times of the observations in OH and \\[CII\\] for each source."},
+{"loc": "Table 1", "quote": "SPT0418-47 | 4.2248 | 87 | 19"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Archival data from the ALMA archive (the OH data of the two earlier papers plus ancillary [CII] observations)", "evidence": [
+{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "We obtained data for the same OH $\\SI{119}{\\um}$ observations presented in and , along with data from ancillary observations covering the \\[CII\\] $\\SI{158}{\\um}$ line of each target, from the ALMA archive."}
+]}
+],
+"lines_targeted": [
+{"species": "OH", "transition": "119 um doublet (absorption)", "rest_frequency": "not stated", "evidence": [{"loc": "1 INTRODUCTION", "quote": "to search for spectral signatures of outflowing molecular gas traced in OH $\\SI{119}{\\um}$ doublet absorption"}]},
+{"species": "[CII]", "transition": "158 um (emission)", "rest_frequency": "not stated", "evidence": [{"loc": "1 INTRODUCTION", "quote": "for which high-resolution \\[CII\\] $\\SI{158}{\\um}$ observations have been made with ALMA"}]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Continuum estimate for SPT2132-58 used to judge that the low-frequency (high-velocity) channels are absorption-free", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "These channels are absorption-free according to the continuum estimate provided in ."}]}, "citation": "reference stripped in the paper text (earlier OH papers, Spilker et al. 2018 / 2020a)"},
+{"what": {"value": "Published OH and [CII] spectra used as a guide to select line-free frequency ranges", "evidence": [{"loc": "2.2 Self-calibration", "quote": "We therefore selected frequency ranges free from any OH absorption or \\[CII\\] emission, using the spectra shown in and as a guide"}]}, "citation": "reference stripped in the paper text (Spilker et al. 2018 / 2020a)"},
+{"what": {"value": "Mass outflow rate method (OH abundance from Sgr B2, thin shell, optical-depth correction from a 14-object sample) discussed from earlier work, not re-derived", "evidence": [{"loc": "4.2 Outflow properties", "quote": "the mass outflow rate for each object thought to host an outflow is estimated using the depth of the blueshifted OH absorption."}]}, "citation": "Spilker et al. 2020b (cite: spilker20b); (cite: gc02); (cite: rupke05); (cite: ga17)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Archive calibration scripts (pipeline of the observing cycle), run by authors or by the East Asia ALMA helpdesk; OH data of SPT0441-46 and [CII] data of SPT2132-58 re-calibrated manually", "evidence": [
+{"loc": "2.1 Calibration", "quote": "We calibrated each visibility set in the same manner as reported in and , using the calibration script either executed by us (for SPT0418-47 and SPT2132-58) or by the East Asia ALMA helpdesk"},
+{"loc": "2.1 Calibration", "quote": "which we re-calibrated manually, though excluding the data flagged in the initial automatic pipeline as for the other sources"}
+]},
+{"field": "self_calibration", "value": "Phase-only self-calibration on a continuum image CLEANed to 3x thermal noise; no amplitude self-calibration", "evidence": [
+{"loc": "2.2 Self-calibration", "quote": "We then used these CLEAN continuum maps to perform phase-only self-calibration of the target visibilities"},
+{"loc": "2.2 Self-calibration", "quote": "we did not perform any self-calibration in amplitude, as deriving robust amplitude corrections would require images having much higher signal-to-noise ratios."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CLEAN deconvolution (task name not stated); continuum maps CLEANed to 3x thermal noise, channel maps to 1.5x thermal noise", "evidence": [
+{"loc": "2.2 Self-calibration", "quote": "the resulting continuum maps to three times the thermal noise level"},
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "For each source, we CLEANed the channel maps to $1.5$ times the thermal noise level as measured in the channel map corresponding to the central velocity of the higher-frequency (lower-velocity) component of the OH doublet."}
+]},
+{"field": "continuum_subtraction", "value": "uv-plane continuum subtraction using the same line-free channels as used for the continuum maps (applied to [CII] and OH visibilities for the channel maps; continuum retained in integrated OH spectra)", "evidence": [
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "we performed continuum subtraction on the \\[CII\\] visibilities in the uv-plane, fitting the continuum level using the same channels in the \\[CII\\]-containing spectral windows as were used to make continuum maps"},
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "when presenting the spatially-integrated spectra in OH, however, we retain the continuum"}
+]},
+{"field": "line_free_channels", "value": "Chosen by eye from the earlier papers' spectra as free of OH absorption or [CII] emission (ranges not listed); SPT2132-58 OH: all channels of both OH SPWs used for the continuum image", "evidence": [
+{"loc": "2.2 Self-calibration", "quote": "We therefore selected frequency ranges free from any OH absorption or \\[CII\\] emission, using the spectra shown in and as a guide"},
+{"loc": "2.2 Self-calibration", "quote": "we used all channels in both OH-containing spectral windows to make the continuum image"}
+]},
+{"field": "smoothing", "value": "OH channel maps, continuum-subtracted [CII] channel maps and continuum maps convolved to the smallest possible common beam; [CII] channel maps made with the same channel widths as OH (50, 70, 75, 150, 75 km/s)", "evidence": [
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "To make a proper comparison of the OH and \\[CII\\] spectral profiles, we used the same widths when making \\[CII\\] channel maps for each source."},
+{"loc": "Table 2", "quote": "SPT2132-58 | 150 | 0.43 | 0.36 | 114"}
+]},
+{"field": "final_beam", "value": "SPT0202-61 0.48 x 0.42 arcsec PA 63; SPT0418-47 0.55 x 0.35 PA 89; SPT0441-46 0.35 x 0.26 PA 79; SPT2132-58 0.43 x 0.36 PA 114; SPT2319-55 0.40 x 0.32 PA 64", "evidence": [
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "After convolution, the final beam sizes are only slightly larger than the beam sizes reported in and for the OH observations."},
+{"loc": "Table 2", "quote": "SPT0441-46 | 75 | 0.35 | 0.26 | 79"}
+]}
+],
+"inherited": [
+{"what": {"value": "Calibration performed in the same manner as the earlier OH papers", "evidence": [{"loc": "2.1 Calibration", "quote": "We calibrated each visibility set in the same manner as reported in and"}]}, "from_reference": "Spilker et al. 2018 (cite: spilker18) and Spilker et al. 2020a (cite: spilker20a), as written 'in and '"},
+{"what": {"value": "Further details of the OH observations (setup) are in the earlier papers", "evidence": [{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "Further details of the OH observations can be found in and ."}]}, "from_reference": "Spilker et al. 2018 (cite: spilker18) and Spilker et al. 2020a (cite: spilker20a)"},
+{"what": {"value": "Continuum subtraction approach follows the earlier papers", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "like in and , we performed continuum subtraction on the \\[CII\\] visibilities in the uv-plane"}]}, "from_reference": "Spilker et al. 2018 (cite: spilker18) and Spilker et al. 2020a (cite: spilker20a)"},
+{"what": {"value": "Integration region for spatially-integrated spectra (continuum above 3 sigma) follows the earlier papers", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "integrating over regions where continuum is detected above $3\\sigma$ following the same procedure as used in and"}]}, "from_reference": "Spilker et al. 2018 (cite: spilker18) and Spilker et al. 2020a (cite: spilker20a)"},
+{"what": {"value": "SPT2132-58 OH continuum image made from all channels in both OH SPWs", "evidence": [{"loc": "2.2 Self-calibration", "quote": "following , we used all channels in both OH-containing spectral windows to make the continuum image"}]}, "from_reference": "earlier OH paper (reference stripped in text)"},
+{"what": {"value": "Channel widths chosen to be approximately the same as in the earlier papers", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "chosen to be approximately the same as those in and"}]}, "from_reference": "Spilker et al. 2018 (cite: spilker18) and Spilker et al. 2020a (cite: spilker20a)"},
+{"what": {"value": "No amplitude self-calibration, as in the earlier papers", "evidence": [{"loc": "2.2 Self-calibration", "quote": "Like and , we did not perform any self-calibration in amplitude"}]}, "from_reference": "Spilker et al. 2018 (cite: spilker18) and Spilker et al. 2020a (cite: spilker20a)"}
+],
+"unstated_but_needed": [
+"CASA version and ALMA pipeline version for each project",
+"Flux, bandpass and phase calibrator names used for each execution block, and the flux-scale accuracy",
+"Exact flagging applied in the manual re-calibrations of SPT0441-46 (OH) and SPT2132-58 ([CII])",
+"CASA imaging task and parameters: weighting and robust, cell size, image size, masks, deconvolver, uv-range, primary-beam correction",
+"Explicit line-free channel ranges (velocity or frequency) used for continuum images, continuum subtraction and continuum level for each source",
+"Self-calibration solution intervals, number of iterations, reference antenna and the S/N reached",
+"Integration regions (continuum above 3 sigma mask) and the exact continuum image used to define them",
+"Procedure for finding the S/N-maximising velocity range, and the lowest detectable [CII] velocity per source",
+"ESSENCE configuration (masking of the source when measuring the noise autocorrelation function) and version",
+"Definition of the annulus used for the rms check and of the spatial-pattern criteria used to call a separate kinematic component",
+"Archive MOUS identifiers or execution blocks mapped to each source and line"
+],
+"analysis_steps": [
+{"order": 1, "goal": "calibrate archive visibilities",
+"method": {"value": "Archive pipeline calibration scripts run by the authors or the East Asia ALMA helpdesk, with manual re-calibration for OH of SPT0441-46 and [CII] of SPT2132-58", "evidence": [
+{"loc": "2.1 Calibration", "quote": "We calibrated each visibility set in the same manner as reported in and , using the calibration script either executed by us (for SPT0418-47 and SPT2132-58) or by the East Asia ALMA helpdesk"},
+{"loc": "2.1 Calibration", "quote": "which we re-calibrated manually, though excluding the data flagged in the initial automatic pipeline as for the other sources"}]},
+"software": ["ALMA calibration pipeline", "CASA"],
+"key_parameters": [
+{"value": "Re-calibration of SPT0441-46 OH motivated by high noise in images from the original calibration; for SPT2132-58 [CII], a discontinuous noise jump between adjacent SPWs from an issue in the original script", "evidence": [{"loc": "footnote 2", "quote": "Our re-calibration of the OH observations of SPT0441-46 was motivated by concerns about the high noise level found in the images made with the original calibration"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Continuum maps and integrated OH spectra compared with the earlier papers and found consistent within noise", "evidence": [{"loc": "2.1 Calibration", "quote": "the dust continuum maps that we produced for all sources have morphologies and signal-to-noise ratios in close agreement with those reported in and"}]}},
+{"order": 2, "goal": "continuum imaging and phase-only self-calibration",
+"method": {"value": "Line-free frequency ranges of the line SPWs combined with the continuum sideband to image the continuum; CLEAN to 3x thermal noise; phase-only self-calibration applied to target visibilities", "evidence": [
+{"loc": "2.2 Self-calibration", "quote": "combined these with the continuum-only sidebands when making continuum images."},
+{"loc": "2.2 Self-calibration", "quote": "We then used these CLEAN continuum maps to perform phase-only self-calibration of the target visibilities"}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Thermal noise determined from maps with large phase-center shifts relative to the source positions", "evidence": [{"loc": "footnote 4", "quote": "We determined the thermal noise level by making maps with large shifts in phase center relative to the source positions."}]},
+{"value": "SPT2132-58 OH: all channels of both OH SPWs used for the continuum image", "evidence": [{"loc": "2.2 Self-calibration", "quote": "we used all channels in both OH-containing spectral windows to make the continuum image"}]}
+],
+"assumptions": [
+{"value": "No amplitude self-calibration because robust amplitude corrections would need higher S/N images", "evidence": [{"loc": "2.2 Self-calibration", "quote": "we did not perform any self-calibration in amplitude, as deriving robust amplitude corrections would require images having much higher signal-to-noise ratios."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Self-calibration gave smaller residual phase errors and improved S/N in final continuum maps, which agree with earlier papers", "evidence": [{"loc": "2.2 Self-calibration", "quote": "which resulted in smaller residual phase errors and hence significantly improved signal-to-noise in the final CLEAN continuum maps."}]}},
+{"order": 3, "goal": "make continuum-subtracted channel maps at a common resolution",
+"method": {"value": "Channel maps CLEANed to 1.5x thermal noise from the self-calibrated visibilities, uv-plane continuum subtraction, convolution of OH, [CII] and continuum maps to a common beam", "evidence": [
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "The channel maps used in our study as presented in Section [3.2](#section:chanmaps) were generated from the self-calibrated visibilites."},
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "we convolved the OH channel maps, continuum-subtracted \\[CII\\] channel maps, and dust continuum maps of each target source to the smallest possible common angular resolution (synthesised beam)"}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Channel widths (km/s): SPT0202-61 50, SPT0418-47 70, SPT0441-46 75, SPT2132-58 150, SPT2319-55 75; same widths for [CII]", "evidence": [{"loc": "Table 2", "quote": "SPT0202-61 | 50 | 0.48 | 0.42 | 63"}, {"loc": "Table 2", "quote": "SPT2319-55 | 75 | 0.40 | 0.32 | 64"}]},
+{"value": "CLEAN threshold 1.5x thermal noise measured in the channel map at the central velocity of the higher-frequency OH doublet component", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "we CLEANed the channel maps to $1.5$ times the thermal noise level as measured in the channel map corresponding to the central velocity of the higher-frequency (lower-velocity) component of the OH doublet."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "rms in an annulus around the source in each channel map is only about 10% to 30% above thermal noise", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "finding it to be only $\\sim 10\\%$ to $30\\%$ higher than the thermal noise level"}]}},
+{"order": 4, "goal": "extract spatially-integrated spectra with per-channel uncertainties",
+"method": {"value": "Integrate OH and [CII] over regions with continuum above 3 sigma; per-channel 1 sigma uncertainty from the noise autocorrelation function of each channel map with the source masked, using ESSENCE; continuum level and uncertainty from line-free channels (SPT2132-58: channels at the low-frequency end of the bandpass)", "evidence": [
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "ESSENCE derives uncertainties in spatially-integrated flux density using the noise autocorrelation function, as measured from each channel map with the target source masked out."},
+{"loc": "2.3 Channel maps and integrated spectra", "quote": "we estimated the continuum level using the channels at the low-frequency (i.e. high-velocity) end of the bandpass."}]},
+"software": ["ESSENCE"],
+"key_parameters": [
+{"value": "Integration regions where continuum is detected above 3 sigma", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "integrating over regions where continuum is detected above $3\\sigma$ following the same procedure as used in and"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Noise agrees with the rms times square root of number of beams approximation to within 5 to 15%", "evidence": [{"loc": "footnote 5", "quote": "(to within 5 – 15%, varying from source to source and channel to channel)"}]}},
+{"order": 5, "goal": "measure significance of blueshifted OH absorption",
+"method": {"value": "Integrate the OH spectrum bluewards of the lowest detectable [CII] velocity over the range that maximises the S/N of the putative absorption; divide by the per-channel uncertainties", "evidence": [
+{"loc": "3.1 Integrated spectra", "quote": "we integrate the OH spectrum of each source over velocities bluewards of the lowest detectable \\[CII\\] velocity until the signal-to-noise level of this putative absorption is maximised"}]},
+"software": ["ESSENCE"],
+"key_parameters": [
+{"value": "3 sigma threshold for a statistically significant detection", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "we find statistically significant ($\\geq 3 \\sigma$) evidence for blueshifted absorption in the spatially-integrated spectrum of only one source, SPT2319-55, at $6.1 \\sigma$."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Nominal absorption depths agree with the earlier papers within measurement uncertainties", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "the nominal absorption depth in these channels is the same as that in and to within measurement uncertainties"}]}},
+{"order": 6, "goal": "bound residual atmospheric and bandpass errors",
+"method": {"value": "Apply each target's blueshifted velocity range to its secondary-calibrator spectrum (after atmospheric and bandpass calibration) and compute 3 sigma upper bounds on residual features as a fraction of continuum; compare with the OH absorption strength", "evidence": [
+{"loc": "3.1 Integrated spectra", "quote": "we compute $3\\sigma$ upper bounds for any residual bandpass features as a fraction of the continuum"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Secondary calibrators observed at similar elevation to the target and with higher continuum S/N, so their residuals bound those in the target", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "These calibrators were observed at a similar elevation but have a higher signal-to-noise in the continuum compared to the target sources."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "None of the secondary-calibrator spectra show statistically significant residual features; absorption is about an order of magnitude above the bound in most sources, except SPT0418-47", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "none of the secondary calibrator spectra exhibit statistically significant residual features."}]}},
+{"order": 7, "goal": "compare OH and [CII] spatio-kinematics in channel maps",
+"method": {"value": "Inspect OH and [CII] channel maps and velocity-integrated maps for OH more blueshifted than [CII], and for OH features moving in a different direction around the Einstein ring than [CII]", "evidence": [
+{"loc": "3.2 Channel maps", "quote": "we searched the channel maps for features in OH absorption that show a different spatio-kinematic pattern than \\[CII\\] emission."}]},
+"software": [],
+"key_parameters": [
+{"value": "Absorption patches counted as genuine only if coincident with dust continuum and deeper than any patch not coincident with the continuum (spurious patches seen at 4 sigma or more)", "evidence": [{"loc": "3.2 Channel maps", "quote": "We therefore only consider as genuine those absorption patches that are not only spatially-coincident with the dust continuum, but that are also deeper than any apparent absorption patches that are not spatially-coincident with the dust continuum."}]}
+],
+"assumptions": [
+{"value": "[CII] emission traces the rotating disc; OH absorption strength also depends on the background continuum brightness, so morphologies need not match exactly", "evidence": [{"loc": "3.2 Channel maps", "quote": "we should not expect the morphology of the OH absorption to perfectly match that of the \\[CII\\] emission in individual channels even if both lines trace the same gas in the disc."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Qualitative visual comparison; no formal statistical test stated", "evidence": []}}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Calibration and imaging of ALMA data (specific tasks not named); listed in the Software section", "evidence": [{"loc": "Software", "quote": "CASA (cite: casaref), Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Matplotlib (cite: mplref), ESSENCE (cite: tsukui23)"}]}},
+{"name": "ALMA calibration pipeline", "version": "not stated", "used_for": {"value": "Archive pipeline for the corresponding ALMA cycle used for calibration scripts", "evidence": [{"loc": "2.1 Calibration", "quote": "The ALMA Science Archive provides uncalibrated visibilities along with scripts that allow users to calibrate the visibilities using the corresponding pipeline for the ALMA cycle in which the observations were made."}]}},
+{"name": "ESSENCE", "version": "not stated", "used_for": {"value": "Per-channel 1 sigma uncertainties of spatially-integrated spectra from the noise autocorrelation function", "evidence": [{"loc": "2.3 Channel maps and integrated spectra", "quote": "To determine the $1\\sigma$ uncertainties in individual channels of the integrated OH or \\[CII\\] spectra, we use the ESSENCE software package"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "CASA (cite: casaref), Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Matplotlib (cite: mplref), ESSENCE (cite: tsukui23)"}]}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated (presumably plotting)", "evidence": [{"loc": "Software", "quote": "CASA (cite: casaref), Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Matplotlib (cite: mplref), ESSENCE (cite: tsukui23)"}]}}
+],
+"results_numeric": [
+{"quantity": "SPT2319-55 blueshifted OH absorption strength (velocity range -712 to -262 km/s)", "value": "2890", "uncertainty": "470 (6.1 sigma)", "units": "mJy km/s", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "SPT2319-55 | 75 | 0.40 | 0.32 | 64 | $[-712, -262]$ | $2890 \\pm 470$ ($6.1 \\sigma$) | 130"}]},
+{"quantity": "SPT0441-46 blueshifted OH absorption strength (velocity range -462 to -187 km/s)", "value": "1690", "uncertainty": "620 (2.7 sigma)", "units": "mJy km/s", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "SPT0441-46 | 75 | 0.35 | 0.26 | 79 | $[-462, -187]$ | $1690 \\pm 620$ ($2.7 \\sigma$) | 200"}]},
+{"quantity": "SPT0418-47 blueshifted OH absorption strength (velocity range -525 to -245 km/s)", "value": "2320", "uncertainty": "980 (2.4 sigma)", "units": "mJy km/s", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "SPT0418-47 | 70 | 0.55 | 0.35 | 89 | $[-525, -245]$ | $2320 \\pm 980$ ($2.4 \\sigma$) | 890"}]},
+{"quantity": "SPT2132-58 blueshifted OH absorption strength (velocity range -675 to -375 km/s)", "value": "2820", "uncertainty": "1170 (2.2 sigma)", "units": "mJy km/s", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "SPT2132-58 | 150 | 0.43 | 0.36 | 114 | $[-675, -375]$ | $2820 \\pm 1170$ ($2.2 \\sigma$) | 380"}]},
+{"quantity": "Bandpass/atmospheric correction accuracy (3 sigma upper bound), SPT2319-55", "value": "130", "uncertainty": "not stated", "units": "mJy km/s", "from_step": 6, "evidence": [{"loc": "Table 2", "quote": "SPT2319-55 | 75 | 0.40 | 0.32 | 64 | $[-712, -262]$ | $2890 \\pm 470$ ($6.1 \\sigma$) | 130"}]},
+{"quantity": "Bandpass/atmospheric correction accuracy (3 sigma upper bound), SPT0441-46", "value": "200", "uncertainty": "not stated", "units": "mJy km/s", "from_step": 6, "evidence": [{"loc": "Table 2", "quote": "SPT0441-46 | 75 | 0.35 | 0.26 | 79 | $[-462, -187]$ | $1690 \\pm 620$ ($2.7 \\sigma$) | 200"}]},
+{"quantity": "Bandpass/atmospheric correction accuracy (3 sigma upper bound), SPT0418-47", "value": "890", "uncertainty": "not stated", "units": "mJy km/s", "from_step": 6, "evidence": [{"loc": "Table 2", "quote": "SPT0418-47 | 70 | 0.55 | 0.35 | 89 | $[-525, -245]$ | $2320 \\pm 980$ ($2.4 \\sigma$) | 890"}]},
+{"quantity": "Bandpass/atmospheric correction accuracy (3 sigma upper bound), SPT2132-58", "value": "380", "uncertainty": "not stated", "units": "mJy km/s", "from_step": 6, "evidence": [{"loc": "Table 2", "quote": "SPT2132-58 | 150 | 0.43 | 0.36 | 114 | $[-675, -375]$ | $2820 \\pm 1170$ ($2.2 \\sigma$) | 380"}]},
+{"quantity": "Bandpass correction precision relative to measurement uncertainty", "value": "within about 0.3 sigma for all sources except SPT0418-47 (about 1 sigma)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "5 SUMMARY AND CONCLUSION", "quote": "we found the bandpass to have been corrected to within $\\lesssim 0.3 \\sigma$ for all sources except SPT0418-47, for which the bandpass is corrected to $\\sim 1\\sigma$."}]},
+{"quantity": "Number of sources with significant (>= 3 sigma) blueshifted OH absorption in integrated spectra", "value": "1 of 5 (SPT2319-55); the others 2.7, 2.4, 2.2 sigma, SPT0202-61 none", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "3.1 Integrated spectra", "quote": "The source that shows the next strongest putative blueshifted OH absortion is SPT0441-46, at a significance level of $2.7 \\sigma$, followed by SPT0418-47 at $2.4 \\sigma$ and SPT2132-58 at $2.2 \\sigma$."}]},
+{"quantity": "Sources with OH more blueshifted than [CII] in channel maps vs integrated spectra", "value": "3 in channel maps vs 1 in integrated spectra", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "3.2 Channel maps", "quote": "three sources exhibit more blueshifted OH absorption than \\[CII\\] emission in channel maps, compared with only one (of the same three) in spatially-integrated spectra"}]}
+],
+"findings_qualitative": [
+{"value": "SPT2319-55 shows the strongest evidence for an outflow: OH moves clockwise at the most blueshifted velocities while [CII] does not", "evidence": [{"loc": "3.2 Channel maps", "quote": "making a strong case for a molecular outflow in SPT2319-55"}]},
+{"value": "All five sources show evidence for a separate OH kinematic component plausibly associated with outflows", "evidence": [{"loc": "5 SUMMARY AND CONCLUSION", "quote": "In brief, we find evidence of separate kinematic components plausibly associated with molecular outflows in all five of the sources included in our study."}]},
+{"value": "Mass outflow rates of the earlier work have substantially higher uncertainties, in some cases consistent with zero", "evidence": [{"loc": "4.2 Outflow properties", "quote": "the putative mass-outflow rates – derived solely from the spatially-integrated spectra – must have substantially higher uncertainties than presented in"}]}
+],
+"claims": [
+{"hypothesis": "Do spatially-integrated OH and [CII] spectra show statistically significant OH absorption blueshifted beyond [CII] in the sources previously classed as outflows?", "experiment": "Recomputed per-channel uncertainties with ESSENCE and integrated OH over the S/N-maximising blueshifted range", "result": "Only SPT2319-55 exceeds 3 sigma (6.1 sigma); the other three tentative sources are 2.2 to 2.7 sigma", "finding": "The integrated-spectrum evidence for outflows is significant in 1 of 5 sources, not 4", "support": "supported", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "we find statistically significant ($\\geq 3 \\sigma$) evidence for blueshifted absorption in the spatially-integrated spectrum of only one source, SPT2319-55, at $6.1 \\sigma$."}]},
+{"hypothesis": "Could residual atmospheric or bandpass errors produce the apparent blueshifted OH absorption?", "experiment": "Applied each target's velocity range to its secondary-calibrator spectrum and computed 3 sigma upper bounds", "result": "Absorption is roughly an order of magnitude above the bound in most sources; SPT0418-47 bound is comparable to the 1 sigma uncertainty", "finding": "Calibration residuals cannot explain the absorption in most sources, but may contribute in SPT0418-47", "support": "partially", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "we cannot rule out the possibility that residual calibration errors contribute in part to the measured absorption."}]},
+{"hypothesis": "Do channel maps reveal outflow evidence diluted in the integrated spectra?", "experiment": "Compared OH and [CII] channel maps for blueshifted extent and spatio-kinematic pattern", "result": "Three sources show OH more blueshifted than [CII] in channel maps (vs one in integrated spectra); all five show an OH component with a different spatio-kinematic pattern", "finding": "All five sources show evidence for a separate kinematic component plausibly tied to outflows", "support": "supported", "evidence": [{"loc": "4.1 Outflow inferences", "quote": "we find all five sources to exhibit evidence for a component in OH absorption different from that in \\[CII\\] emission in their channel maps"}]},
+{"hypothesis": "Are the earlier mass outflow rates reliable given the significance of the OH absorption?", "experiment": "Compared nominal absorption depths with the earlier work and assessed their significance", "result": "Nominal depths match the earlier results within uncertainties but significance is low", "finding": "Mass outflow rates derived solely from integrated spectra have larger uncertainties, in some cases consistent with zero", "support": "supported", "evidence": [{"loc": "4.2 Outflow properties", "quote": "the putative mass-outflow rates – derived solely from the spatially-integrated spectra – must have substantially higher uncertainties than presented in"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Sources with high-resolution [CII] data as well as OH data (five of eleven) permit the channel-map checks", "evidence": [{"loc": "1 INTRODUCTION", "quote": "for which high-resolution \\[CII\\] $\\SI{158}{\\um}$ observations have been made with ALMA – five out of eleven in total"}]},
+{"field": "why_this_method", "value": "Check bandpass precision to define the minimum level at which OH absorption can be considered genuine, and compute per-channel uncertainties", "evidence": [{"loc": "1 INTRODUCTION", "quote": "we check the precision of the overall bandpass calibration to define the minimum level whereby OH absorption features can be considered genuine."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Remaining six sources excluded because only low-resolution CO data exist for the checks", "evidence": [{"loc": "1 INTRODUCTION", "quote": "only have available observations in CO at angular resolutions far too low to permit the checks described above, and are therefore excluded from our study."}]}
+],
+"limitations_admitted": [
+{"value": "For SPT0418-47 a nearby atmospheric O3 line means residual calibration errors may contribute to the measured absorption", "evidence": [{"loc": "3.1 Integrated spectra", "quote": "we cannot rule out the possibility that residual calibration errors contribute in part to the measured absorption."}]},
+{"value": "For SPT2132-58 no usable continuum sideband data exist, so the continuum level is uncertain", "evidence": [{"loc": "4.3 Improving observing strategies", "quote": "so no useable continuum spectrum can be produced at all given the restrictions on the ALMA correlator set-up."}]}
+],
+"referee_caveats_inferred": [
+"The 'different spatio-kinematic pattern' criterion is assessed by eye in channel maps with no quantitative test or false-positive rate",
+"Significance of the integrated absorption depends on the velocity range chosen to maximise S/N, which biases it upward without a trials correction",
+"Continuum level uncertainty, especially for SPT2132-58, may affect absorption depths and significances",
+"Secondary-calibrator test assumes similar elevation and atmosphere to the target, which is not quantified",
+"No simulations or injection tests are used to validate the channel-map evidence"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Data obtained from the public ALMA archive; project codes 2016.1.01499.S and 2018.1.00191.S", "evidence": [{"loc": "2 ARCHIVAL OBSERVATIONS AND DATA REDUCTION", "quote": "from the ALMA archive."}]},
+{"field": "products_in_archive", "value": "Archive provides uncalibrated visibilities and calibration scripts", "evidence": [{"loc": "2.1 Calibration", "quote": "The ALMA Science Archive provides uncalibrated visibilities along with scripts that allow users to calibrate the visibilities using the corresponding pipeline for the ALMA cycle in which the observations were made."}]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Imaging parameters (weighting, cell, image size, masks) and CASA version",
+"Line-free channel ranges and the exact integration regions",
+"Details of the manual re-calibrations",
+"ESSENCE settings and the velocity-range selection procedure",
+"Quantitative criteria behind the channel-map judgements"
+],
+"estimated_data_volume_inferred": "Ten archive datasets (OH and [CII] for five sources) with four 1.875 GHz SPWs each plus calibrators; likely tens to a few hundred GB raw",
+"score_inferred": 3,
+"score_reason": "Data are public and the analysis outline plus Table 2 numbers are given, but imaging parameters, channel selections, regions and the ESSENCE setup are missing, and channel-map conclusions are qualitative.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public data and numeric absorption strengths exist, but key imaging, region and line-free choices are unstated and the main channel-map claims are qualitative.",
+"methods_papers": [
+{"citation": "Spilker et al. 2018 (cite: spilker18)", "why": "Original Band 8 OH survey whose data and calibration/analysis are followed"},
+{"citation": "Spilker et al. 2020a (cite: spilker20a)", "why": "Companion OH survey paper whose data and calibration/analysis are followed"},
+{"citation": "(cite: tsukui23)", "why": "ESSENCE software for per-channel uncertainties of integrated spectra"},
+{"citation": "(cite: he22)", "why": "Description of ALMA atmospheric (T_atm) calibration"}
+],
+"companion_papers": [
+{"citation": "Spilker et al. 2020b (cite: spilker20b)", "why": "Derived mass outflow rates from the OH absorption depths discussed here"}
+],
+"related_projects_or_surveys": [
+"Band 8 OH 119 um survey of eleven lensed DSFGs of Spilker et al. 2018 and 2020a"
+]
+}

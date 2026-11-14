@@ -1,0 +1,615 @@
+{
+ "bibcode": "2021ApJ...914...36I",
+ "title": "Subaru High-z Exploration of Low-luminosity Quasars (SHELLQs). XIII. Large-scale Feedback and Star Formation in a Low-luminosity Quasar at z = 7.07 on the Local Black Hole to Host Mass Relation",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abf6dc",
+ "arxiv_id": "2104.05738",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the star formation, feedback/outflow, gas dynamical, and black hole-host co-evolution properties of the low-luminosity quasar J1243+0100 at z = 7.07?",
+ "alma_project_codes": [
+  "2019.1.00074.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12m array (41-43 antennas)",
+  "angular_resolution": "0''.70 x 0''.56",
+  "sensitivity": "0.10 mJy beam^-1 per 75 km s^-1 channel ([C II] cube); 13.6 uJy beam^-1 (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical-to-NIR properties of J1243+0100: z_MgII = 7.07 +/- 0.01, M_1450 = -24.13 +/- 0.08 mag, L_Bol = (1.4 +/- 0.1) x 10^46 erg s^-1, M_BH = (3.3 +/- 2.0) x 10^8 M_sun, lambda_Edd = 0.34 +/- 0.20, C IV blueshift of -2400 km s^-1",
+    "evidence": [
+     {
+      "loc": "Our target: J1243+0100",
+      "quote": "Optical-to-near infrared spectroscopy allowed determination of the redshift ($z_{\\rm MgII} = 7.07 \\pm 0.01$), UV absolute magnitude ($M_{\\rm 1450} = -24.13 \\pm 0.08$ mag) and bolometric luminosity ($L_{\\rm Bol} = (1.4 \\pm 0.1) \\times 10^{46}$ erg s$^{-1}$)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...872L...2M)"
+  },
+  {
+   "what": {
+    "value": "Compilation of properties of z > 7 quasars and z >= 6 HSC and optically luminous quasars for comparison",
+    "evidence": [
+     {
+      "loc": "Comparison of the star-forming nature",
+      "quote": "As a reference for future higher redshift observations, we summarize the observational properties of the currently known $z > 7$ quasars in Table 5."
+     },
+     {
+      "loc": "Early co-evolution at z ~ 7",
+      "quote": "Figure 13 shows this relation for $z \\gtrsim 6$ quasars using data compiled in (cite: 2019PASJ...71..111I)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019PASJ...71..111I; 2018ApJ...854...97D) and references in Table 5"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure FIR continuum properties in the image and uv planes and derive IR luminosities, dust mass, and SFR",
+   "method": "2D Gaussian fit to continuum map in image plane using CASA imfit; visibility fitting in uv plane with a point source plus extended circular Gaussian after annularly averaging in 20 klambda bins using MIRIAD uvamp; modified blackbody integration with CMB corrections",
+   "software": [
+    "CASA",
+    "imfit",
+    "MIRIAD",
+    "uvamp"
+   ],
+   "key_parameters": [
+    "20 klambda uv bins; FIR range 42.5-122.5 um; TIR range 8-1000 um"
+   ],
+   "assumptions": [
+    "Optically thin modified blackbody with T_dust = 47 K, beta = 1.6, kappa_lambda = 0.77 (850 um / lambda)^beta cm^2 g^-1, CMB temperature T_CMB,z = 22.0 K at z = 7.07, Kroupa IMF SFR_TIR = 1.49 x 10^-10 L_TIR / L_sun"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract area-integrated [C II] spectrum, fit core and broad wing line profiles, and derive [C II] luminosities, EWs, and SFRs",
+   "method": "Integrate cube over +/- 900 km s^-1 to make moment-0 map; extract spectrum within 2 sigma contour of moment-0 map; fit single and concentric double Gaussian profiles to the spectrum",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Moment-0 velocity integration range +/- 900 km s^-1; aperture 2 sigma contour of moment-0 map; chi^2 evaluated over +/- 1000 km s^-1; wing center fixed to core center"
+   ],
+   "assumptions": [
+    "[C II] excited primarily by star formation; De Looze et al. (2014) local H II/starburst calibration log(SFR_[CII]) = -7.06 + 1.0 * log(L_[CII]/L_sun)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure spatial extents of the [C II] core and wing components in image and uv planes",
+   "method": "Separate moment-0 maps for core (within 235 km s^-1 FWHM) and wing (+/- 250 to 900 km s^-1); 2D Gaussian fit to core moment-0 with imfit; uv visibility fitting for core (point source + circular Gaussian over 235.270-235.455 GHz) and wing (single circular Gaussian in 50 klambda bins over +/- 250-500 km s^-1 for <300 klambda)",
+   "software": [
+    "CASA",
+    "imfit",
+    "MIRIAD",
+    "uvamp"
+   ],
+   "key_parameters": [
+    "Core frequency range 235.270-235.455 GHz; Wing uv fit frequency ranges 234.970-235.166 GHz and 235.559-235.756 GHz (+/- 250-500 km s^-1), 50 klambda bins, <300 klambda"
+   ],
+   "assumptions": [
+    "Circular Gaussian geometry for uv visibility models"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct velocity moment maps and estimate thin-disk dynamical mass",
+   "method": "Create intensity-weighted mean velocity (moment-1) and velocity dispersion (moment-2) maps using CASA immoments with 5 sigma clipping; calculate M_dyn from core deconvolved major axis and FWHM assuming thin rotating disk",
+   "software": [
+    "CASA",
+    "immoments",
+    "imfit"
+   ],
+   "key_parameters": [
+    "5 sigma clipping threshold in immoments; inclination i = 20.5 deg from axis ratio; D = 1.5 x a_maj; v_circ = 0.75 FWHM / sin(i)"
+   ],
+   "assumptions": [
+    "Thin rotating disk geometry with inclination determined from deconvolved axis ratio"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Search for companion continuum and [C II] line emitters in the FoV",
+   "method": "Search continuum S/N map and [C II] data cube within +/- 1000 km s^-1 across the ~0.13 arcmin^2 FoV above a 5 sigma detection threshold",
+   "software": [],
+   "key_parameters": [
+    "5 sigma detection threshold for continuum; >5 sigma peak and >=2 contiguous channels with >3 sigma for line emitters; velocity range +/- 1000 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Calculate neutral atomic and total outflow mass, mass outflow rate, kinetic power, and momentum load",
+   "method": "Derive neutral hydrogen outflow mass from broad [C II] wing luminosity in PDR high-density limit; compute outflow rate, kinetic power, and momentum load assuming constant flow",
+   "software": [],
+   "key_parameters": [
+    "v_out = FWHM_wing / 2 = 499 +/- 113 km s^-1; R_out < 1.3 kpc (half of 3 sigma wing FWHM limit)"
+   ],
+   "assumptions": [
+    "Constant outflow; high-density limit (n >> n_crit ~ 3 x 10^3 cm^-3); PDR fraction = 0.7; X_C+ = 1.4 x 10^-4; T_ex = 200 K; total multi-phase outflow rate ~3x (~0.5 dex) higher than atomic-only value"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Model 3D gas kinematics of the host galaxy and fit the rotation curve to derive bulge and halo masses",
+   "method": "Fit six concentric rings of 0''.1 width to the [C II] data cube using 3DBarolo to extract V_rot and sigma_disp profiles; fit V_rot(r) with a spherical Plummer potential; estimate halo mass from V_rot at scale length",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "6 concentric rings with 0''.1 width; 5 sigma clipping; fixed dynamical center to quasar position and V_sys = 0 km s^-1; best-fit i = 25 deg and PA = 87 deg; initial guesses V_rot = 120 km s^-1, sigma_disp = 40 km s^-1, V_rad = 0 km s^-1"
+   ],
+   "assumptions": [
+    "Concentric tilted rings with uniform inclination and PA; spherical Plummer gravitational potential for bulge; V_rot at scale length (~220 km s^-1) equals halo circular velocity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum peak flux density",
+   "value": "1.15",
+   "uncertainty": "0.0136",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "It is very bright with a peak flux density of 1.15 mJy beam$^{-1}$, detected at $\\sim 85\\sigma$ ($1\\sigma$ = 13.6 $\\mu$Jy beam$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total 1.3 mm continuum flux density (imfit)",
+   "value": "1.52",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "The area-integrated (= total) flux density of this component is $1.52 \\pm 0.03$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Extended 1.3 mm continuum flux density (uv-plot)",
+   "value": "0.63",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "The flux density of this component is $0.63 \\pm 0.04$ mJy, which is equivalent to ${\\rm SFR_{TIR}} = 307 \\pm 20~M_\\odot$ yr$^{-1}$ ($T_{\\rm dust} = 47$ K, $\\beta = 1.6$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Point source 1.3 mm continuum flux density (uv-plot)",
+   "value": "0.85",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "The point source has a higher flux density ($0.85 \\pm 0.04$ mJy) than the Gaussian component, resulting in ${\\rm SFR_{TIR}}$ of $414 \\pm 20~M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic continuum size (image-plane deconvolved FWHM)",
+   "value": "0.38 x 0.36 (2.0 x 1.8 kpc)",
+   "uncertainty": "0.03 x 0.04 (0.2 x 0.2 kpc)",
+   "units": "arcsec (kpc)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "After deconvolving by the beam, we obtain an intrinsic size of $(0\\ensuremath{''}.38 \\pm 0\\ensuremath{''}.03) \\times (0\\ensuremath{''}.36 \\pm 0\\ensuremath{''}.04)$ or $(2.0 \\pm 0.2)$ kpc $\\times$ $(1.8 \\pm 0.2)$ kpc at $z = 7.07$ (Table 3)."
+    }
+   ]
+  },
+  {
+   "quantity": "Extended continuum Gaussian size (uv-plane FWHM)",
+   "value": "0.66 (3.4 kpc)",
+   "uncertainty": "0.06 (0.3 kpc)",
+   "units": "arcsec (kpc)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "The Gaussian component has a FWHM of $0\\ensuremath{''}.66 \\pm 0\\ensuremath{''}.06$ ($3.4 \\pm 0.3$ kpc), likely tracing the star-forming region of this galaxy."
+    }
+   ]
+  },
+  {
+   "quantity": "Total FIR luminosity (L_FIR)",
+   "value": "3.5",
+   "uncertainty": "0.1",
+   "units": "10^12 L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "With these corrections, we find $L_{\\rm FIR} = (3.5 \\pm 0.1) \\times 10^{12}~L_\\odot$ and $L_{\\rm TIR} = (5.0 \\pm 0.1) \\times 10^{12}~L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity (L_TIR)",
+   "value": "5.0",
+   "uncertainty": "0.1",
+   "units": "10^12 L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "With these corrections, we find $L_{\\rm FIR} = (3.5 \\pm 0.1) \\times 10^{12}~L_\\odot$ and $L_{\\rm TIR} = (5.0 \\pm 0.1) \\times 10^{12}~L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass (M_dust)",
+   "value": "2.5",
+   "uncertainty": "0.1",
+   "units": "10^8 M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "We also find a dust mass of $M_{\\rm dust} = (2.5 \\pm 0.1) \\times 10^8~M_\\odot$ by adopting a rest-frame mass absorption coefficient of $\\kappa_\\lambda = 0.77 ({\\rm 850 \\ensuremath{\\mu}m}/\\lambda)^\\beta$ cm$^2$ g$^{-1}$ (cite: 2000MNRAS.315..115D)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total TIR star formation rate (SFR_TIR)",
+   "value": "742",
+   "uncertainty": "16",
+   "units": "M_sun yr^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "We use the conversion ${\\rm SFR_{TIR}} = 1.49 \\times 10^{-10} L_{\\rm TIR}/L_\\odot$ (cite: 2011ApJ...737...67M), and obtain ${\\rm SFR_{TIR}} = (742 \\pm 16)~M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Conservative extended TIR star formation rate (SFR_cons_TIR)",
+   "value": "307",
+   "uncertainty": "20",
+   "units": "M_sun yr^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum properties",
+     "quote": "The flux density of this component is $0.63 \\pm 0.04$ mJy, which is equivalent to ${\\rm SFR_{TIR}} = 307 \\pm 20~M_\\odot$ yr$^{-1}$ ($T_{\\rm dust} = 47$ K, $\\beta = 1.6$)."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] systemic redshift (z_[CII])",
+   "value": "7.0749",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "The line center redshift is $z_{\\rm [CII]} = 7.0749 \\pm 0.0001$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] core line width (FWHM_core)",
+   "value": "235",
+   "uncertainty": "17",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "The line width (${\\rm FWHM^{core}} = 235 \\pm 17$ km s$^{-1}$) is on the small end of values found for $z > 6$ quasars of all luminosities"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] core integrated flux (S_[CII] Delta V)",
+   "value": "1.59",
+   "uncertainty": "0.17",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$S_{\\rm [CII]}\\Delta V$ (Jy km s$^{-1}$) | 2.11 $\\pm$ 0.08 | 1.59 $\\pm$ 0.17 | 1.03 $\\pm$ 0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] core luminosity (L_core_[CII])",
+   "value": "1.90",
+   "uncertainty": "0.20",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "The \\[C II\\] line luminosity of this component, following (cite: 2005ARA&A..43..677S), is $L^{\\rm core}_{\\rm [CII]} = (1.90 \\pm 0.20) \\times 10^9~L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] core star formation rate (SFR_core_[CII])",
+   "value": "165",
+   "uncertainty": "17",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "We obtain ${\\rm SFR^{core}_{[CII]}} = 165 \\pm 17~M_\\odot$ yr$^{-1}$, which is consistent within the calibration uncertainty with the result we found from the spatially extended continuum component ${\\rm SFR^{cons}_{TIR}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] broad wing line width (FWHM_wing)",
+   "value": "997",
+   "uncertainty": "227",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "The broad wing component has ${\\rm FWHM^{wing}} = 997 \\pm 227$ km s$^{-1}$, with a brightness of $65 \\pm 15\\%$ of the core component."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] broad wing integrated flux (S_[CII] Delta V)",
+   "value": "1.03",
+   "uncertainty": "0.21",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$S_{\\rm [CII]}\\Delta V$ (Jy km s$^{-1}$) | 2.11 $\\pm$ 0.08 | 1.59 $\\pm$ 0.17 | 1.03 $\\pm$ 0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] broad wing luminosity (L_wing_[CII])",
+   "value": "1.23",
+   "uncertainty": "0.25",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$L_{\\rm [CII]}$ (10$^9$ $L_\\odot$) | 2.52 $\\pm$ 0.10 | 1.90 $\\pm$ 0.20 | 1.23 $\\pm$ 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] equivalent width (total continuum)",
+   "value": "0.55",
+   "uncertainty": "0.06",
+   "units": "um",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "If we use the imfit-based total continuum flux density, we obtain ${\\rm EW_{[CII]}} = 0.55 \\pm 0.06$ $\\ensuremath{\\mu}m$, a value only a factor of $\\sim 2$ smaller than the median ${\\rm EW_{[CII]}}$ of local starburst galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] equivalent width (extended continuum)",
+   "value": "1.33",
+   "uncertainty": "0.17",
+   "units": "um",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line spectrum",
+     "quote": "If we instead use the decomposed extended flux density, we find ${\\rm EW_{[CII]}} = 1.33 \\pm 0.17$ $\\ensuremath{\\mu}m$, fully consistent with local starbursts."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] core spatial extent (image-plane deconvolved FWHM)",
+   "value": "0.66 x 0.58 (3.4 x 3.0 kpc)",
+   "uncertainty": "0.04 x 0.03 (0.2 x 0.2 kpc)",
+   "units": "arcsec (kpc)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Moment-0 | $(0\\ensuremath{''}.66 \\pm 0\\ensuremath{''}.04) \\times (0\\ensuremath{''}.58 \\pm 0\\ensuremath{''}.03)$"
+    },
+    {
+     "loc": "Decomposed [C II] spatial extent",
+     "quote": "We first used `imfit` to perform a 2D elliptical Gaussian fit to this image which returned its beam-deconvolved size (FWHM) of $(3.4 \\pm 0.2) \\times (3.0 \\pm 0.2)$ kpc$^2$ (Table 4)."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] core spatial extent (uv-plane Model-1 FWHM)",
+   "value": "0.81 (4.2 kpc)",
+   "uncertainty": "0.04 (0.2 kpc)",
+   "units": "arcsec (kpc)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Model-1 | $0\\ensuremath{''}.81 \\pm 0\\ensuremath{''}.04$ or $4.2 \\pm 0.2$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] wing spatial extent (uv-plane Model-2 FWHM)",
+   "value": "0.29 (1.5 kpc); 3 sigma limit < 0.52 (< 2.7 kpc)",
+   "uncertainty": "0.17 (0.9 kpc)",
+   "units": "arcsec (kpc)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Decomposed [C II] spatial extent",
+     "quote": "We inferred a spatial extent of ${\\rm FWHM} = 0\\ensuremath{''}.29 \\pm 0\\ensuremath{''}.17$ or $1.5 \\pm 0.9$ kpc. This extent is only $1.7\\sigma$ from zero, so Table 4 also lists the $3\\sigma$ limit of the extent (2.7 kpc)."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "3\\sigma$ limit $< 0\\ensuremath{''}.52$ or $< 2.7$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy dynamical mass (M_dyn)",
+   "value": "7.6",
+   "uncertainty": "0.9",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamical mass",
+     "quote": "With the values determined above, we find $M_{\\rm dyn} = (7.6 \\pm 0.9) \\times 10^{10}~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow velocity (v_out)",
+   "value": "499",
+   "uncertainty": "113",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Nature of the broad wing component",
+     "quote": "From the values in Table 2, we find $v_{\\rm out} = 499 \\pm 113$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Neutral atomic outflow mass (M_out)",
+   "value": "> 1.2",
+   "uncertainty": "0.2",
+   "units": "10^9 M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$M_{\\rm out}$ ($10^9~M_\\odot$) | $> 1.2 \\pm 0.2$"
+    },
+    {
+     "loc": "Nature of the broad wing component",
+     "quote": "Using the measurements in Table 2, we obtain $M_{\\rm out} = (1.2 \\pm 0.2) \\times 10^9~M_\\odot$ and $\\dot{M}_{\\rm out} > 447 \\pm 137~M_\\odot$ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Neutral atomic mass outflow rate (dM_out/dt)",
+   "value": "> 447",
+   "uncertainty": "137",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Nature of the broad wing component",
+     "quote": "Using the measurements in Table 2, we obtain $M_{\\rm out} = (1.2 \\pm 0.2) \\times 10^9~M_\\odot$ and $\\dot{M}_{\\rm out} > 447 \\pm 137~M_\\odot$ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total multi-phase mass outflow rate (dM_tot_out/dt)",
+   "value": ">= 1410",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Nature of the broad wing component",
+     "quote": "This suggests that the total outflow rate for J1243$+$0100 is $\\dot{M}^{\\rm tot}_{\\rm out} \\gtrsim 1410~M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic power (dE_out/dt)",
+   "value": "> 3.5",
+   "uncertainty": "1.6",
+   "units": "10^43 erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$\\dot{E}_{\\rm out}$ ($10^{43}$ erg s$^{-1}$) | $> 3.5 \\pm 1.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Bulge mass from Plummer fit (M_bulge)",
+   "value": "3.3",
+   "uncertainty": "0.2",
+   "units": "10^10 M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas dynamical modeling",
+     "quote": "The best-fit parameters are $M_{\\rm bulge} = (3.3 \\pm 0.2) \\times 10^{10}~M_\\odot$ and $a = 0.36 \\pm 0.03$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic Plummer bulge radius (a)",
+   "value": "0.36",
+   "uncertainty": "0.03",
+   "units": "kpc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas dynamical modeling",
+     "quote": "The best-fit parameters are $M_{\\rm bulge} = (3.3 \\pm 0.2) \\times 10^{10}~M_\\odot$ and $a = 0.36 \\pm 0.03$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole-to-dynamical (and bulge) mass ratio",
+   "value": "~0.4% (~1%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Finally, we found that J1243$+$0100 has a black hole mass-to-dynamical mass ratio (and -to-bulge mass ratio) of $\\sim 0.4\\%$ ($\\sim 1\\%$), consistent with the local value within uncertainties."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of the line-free channels used for continuum imaging and uvcontsub",
+  "Pixel cell size and image dimensions used in tclean",
+  "Deconvolver algorithm and clean stopping threshold for the final continuum map and continuum-subtracted [C II] cube",
+  "Whether primary beam correction was applied before flux measurements",
+  "Whether calibration was done via the standard ALMA pipeline or manual scripts, and whether self-calibration was attempted",
+  "3DBarolo version and specific settings such as ring scale height z0 and normalization mode"
+ ],
+ "missing_for_reproduction": [
+  "Exact frequency intervals used for line-free continuum channels and uvcontsub",
+  "tclean imaging parameters (cell size, image size, clean threshold for final cube and continuum)",
+  "Exact 2 sigma moment-0 contour mask used to extract the area-integrated [C II] spectrum",
+  "Complete 3DBarolo parameter file (e.g., scale height z0, weighting, normalization)"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Single ALMA Cycle 7 dataset (2019.1.00074.S) with clear description of calibration/imaging software (CASA 5.6, MIRIAD, 3DBarolo), channel averaging (75 km/s), uv-plane binning and frequency ranges, and explicit equations for all derived physical quantities. Minor imaging and 3DBarolo parameters are omitted.",
+ "rediscovery_reason": "Public single-pointing ALMA dataset with straightforward continuum and [C II] line reductions, explicit analytical formulas, and well-defined numeric answer keys for fluxes, sizes, line widths, outflow rate, and dynamical/bulge masses.",
+ "source_card": "cards/2021ApJ...914...36I/sonnet/card.md"
+}

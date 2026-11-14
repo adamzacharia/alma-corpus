@@ -1,0 +1,2604 @@
+{
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+    {
+      "loc": "Abstract",
+      "quote": "The exoALMA large program offers a unique opportunity to investigate the fundamental properties of protoplanetary disks, such as their masses and sizes"
+    }
+  ],
+  "fields": ["protoplanetary_disks"],
+  "question": {
+    "value": "Constrain stellar masses, disk masses and density scale radii from rotation curves, then investigate gas-to-dust ratios, gravitational stability and angular momentum transport.",
+    "evidence": [
+      {
+        "loc": "Abstract",
+        "quote": "we constrain the stellar mass, the disk mass and the density scale radius through precise characterization of the pressure gradient and disk self gravity."
+      },
+      {
+        "loc": "Conclusions",
+        "quote": "We evaluated the Toomre parameter to assess gravitational stability and found that all sources are gravitationally stable, consistent with the absence of prominent spiral structures."
+      },
+      {
+        "loc": "Gas to dust ratio",
+        "quote": "We use the fiducial values for the disk masses to compute the gas-to-dust ratio, employing the dust masses obtained by (cite: Curone_exoALMA)."
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "AA Tau",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "DM Tau",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "HD 34282",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "J1615",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "J1842",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "J1852",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "LkCa15",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "PDS66",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "SY Cha",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    },
+    {
+      "name": "V4046 Sgr",
+      "details": [],
+      "coordinates": "not stated",
+      "redshift_or_distance": "not stated",
+      "distance_source": "not stated"
+    }
+  ],
+  "alma_project_codes": [
+    {
+      "code": "2021.1.01123.L",
+      "evidence": [
+        {
+          "loc": "Acknowledgments",
+          "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.1.01123.L."
+        }
+      ]
+    }
+  ],
+  "data_settings": [],
+  "lines_targeted": [
+    {
+      "species": "12CO",
+      "transition": "J=3-2",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$^{12}$CO $J=3-2$"
+        }
+      ]
+    },
+    {
+      "species": "13CO",
+      "transition": "J=3-2",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$^{13}$CO $J=3-2$"
+        }
+      ]
+    }
+  ],
+  "other_facilities": [],
+  "external_data_from_literature": [
+    {
+      "what": {
+        "value": "DISCMINER rotation curves extracted using the default cubes.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The rotation curves used in this work have been extracted with DISCMINER and thoroughly discussed in (cite: Stadler_exoALMA) using the default cubes."
+          }
+        ]
+      },
+      "citation": "(cite: Stadler_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "Emitting-layer heights and geometrical parameters used in the fits; Table 4.",
+        "evidence": [
+          {
+            "loc": "Geometrical and thermal parameters of the sources",
+            "quote": "The heights of the emitting layers have been obtained with DISCMINER (cite: Izquierdo_exoALMA) and the thermal parameters with DISKSURF (cite: Galloway_exoALMA)."
+          },
+          {
+            "loc": "Geometrical and thermal parameters of the sources",
+            "quote": "Tables [4](#tab:discminer_parameters) and [5](#tab:temperature_profiles) show the emitting layer and the thermal parameters used for the fitting procedure, respectively."
+          }
+        ]
+      },
+      "citation": "(cite: Izquierdo_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "Dartois thermal-structure best fits, Table 5, and thermal-parameter posterior distributions.",
+        "evidence": [
+          {
+            "loc": "2D temperature structure",
+            "quote": "In this work, we will use the Dartois prescription with the best fit values for the thermal parameters obtained by (cite: Galloway_exoALMA)"
+          },
+          {
+            "loc": "Systematic uncertainties",
+            "quote": "To incorporate the systematic, we decided to run each EMCEE fit 100 times, drawing the thermal parameters from the posterior distribution of (cite: Galloway_exoALMA)."
+          }
+        ]
+      },
+      "citation": "(cite: Galloway_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "DISCMINER stellar masses for comparison with dynamical stellar masses.",
+        "evidence": [
+          {
+            "loc": "Stellar masses",
+            "quote": "The dynamical stellar masses generally deviate from the best fit values provided by DISCMINER (cite: Teague_exoALMA; Izquierdo_exoALMA)."
+          }
+        ]
+      },
+      "citation": "(cite: Teague_exoALMA; Izquierdo_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "Dust masses and dust flux-based radii.",
+        "evidence": [
+          {
+            "loc": "Gas to dust ratio",
+            "quote": "We use the fiducial values for the disk masses to compute the gas-to-dust ratio, employing the dust masses obtained by (cite: Curone_exoALMA)."
+          },
+          {
+            "loc": "Scale radii",
+            "quote": "the radii enclosing the 68% of the $^{12}$CO, $^{13}$CO (cite: Galloway_exoALMA) and dust emission (cite: Curone_exoALMA)"
+          }
+        ]
+      },
+      "citation": "(cite: Curone_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "CO flux-based radii.",
+        "evidence": [
+          {
+            "loc": "Scale radii",
+            "quote": "the radii enclosing the 68% of the $^{12}$CO, $^{13}$CO (cite: Galloway_exoALMA) and dust emission (cite: Curone_exoALMA)"
+          }
+        ]
+      },
+      "citation": "(cite: Galloway_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "MAPS source masses and scale radii.",
+        "evidence": [
+          {
+            "loc": "Scale radii",
+            "quote": "The masses and scale radii of the MAPS sources are taken from (cite: martire24), and the flux based radii from (cite: MAPSIV)."
+          }
+        ]
+      },
+      "citation": "(cite: martire24)"
+    },
+    {
+      "what": {
+        "value": "MAPS flux-based radii.",
+        "evidence": [
+          {
+            "loc": "Scale radii",
+            "quote": "The masses and scale radii of the MAPS sources are taken from (cite: martire24), and the flux based radii from (cite: MAPSIV)."
+          }
+        ]
+      },
+      "citation": "(cite: MAPSIV)"
+    },
+    {
+      "what": {
+        "value": "CO abundances used to recompute theoretical CO radii.",
+        "evidence": [
+          {
+            "loc": "Gas based measurement",
+            "quote": "The grey crosses in Fig. [5](#radii_comparison_plot) represent the values of $R_{\\rm CO}$ calculated using the CO abundance derived by (cite: Trapman_exoALMA)."
+          }
+        ]
+      },
+      "citation": "(cite: Trapman_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "CO-depletion inference used for comparison; not entirely independent of the dynamical masses.",
+        "evidence": [
+          {
+            "loc": "Gas based measurement",
+            "quote": "(cite: Rosotti_exoALMA) derived the CO depletion required to reconcile their estimated disk masses with the dynamical values presented in this paper, meaning their method is not entirely independent of our estimates."
+          }
+        ]
+      },
+      "citation": "(cite: Rosotti_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "AA Tau and SY Cha stellar accretion rates; adopted individual accretion-rate uncertainty of 0.35 dex.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**AA Tau** | $-7.35 \\pm 0.35$ | (cite: manara23)"
+          },
+          {
+            "loc": "Table 3",
+            "quote": "**SY Cha** | $-9.89 \\pm 0.35$ | (cite: manara23)"
+          },
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "As reported by (cite: manara23), the fractional uncertainty in individual accretion rate measurements at any given time is approximately 0.35 dex, a value which we have adopted for our analysis."
+          }
+        ]
+      },
+      "citation": "(cite: manara23)"
+    },
+    {
+      "what": {
+        "value": "Stellar accretion rates used in Table 3.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**DM Tau** | $-8.2 \\pm 0.35$ | (cite: manara14)"
+          },
+          {
+            "loc": "Table 3",
+            "quote": "**J1615** | $-8.25 \\pm 0.35$ | (cite: manara14)"
+          },
+          {
+            "loc": "Table 3",
+            "quote": "**LkCa15** | $-8.7 \\pm 0.35$ | (cite: manara14)"
+          }
+        ]
+      },
+      "citation": "(cite: manara14)"
+    },
+    {
+      "what": {
+        "value": "HD 34282 stellar accretion rate.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**HD 34282** | $-7.69 \\pm 0.35$ | (cite: fairlamb15)"
+          }
+        ]
+      },
+      "citation": "(cite: fairlamb15)"
+    },
+    {
+      "what": {
+        "value": "PDS66 stellar accretion rate.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**PDS66** | $-9.18 \\pm 0.35$ | (cite: ingleby13)"
+          }
+        ]
+      },
+      "citation": "(cite: ingleby13)"
+    },
+    {
+      "what": {
+        "value": "V4046 Sgr stellar accretion rate.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**V4046 Sgr** | $-9.3 \\pm 0.35$ | (cite: donati11)"
+          }
+        ]
+      },
+      "citation": "(cite: donati11)"
+    },
+    {
+      "what": {
+        "value": "MAPS stellar accretion rates.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**AS 209** | $-7.3 \\pm 0.35$ | (cite: oberg21)"
+          },
+          {
+            "loc": "Table 3",
+            "quote": "**GM Aur** | $-8.1 \\pm 0.35$ | (cite: oberg21)"
+          },
+          {
+            "loc": "Table 3",
+            "quote": "**MWC 480** | $-6.9 \\pm 0.35$ | (cite: oberg21)"
+          }
+        ]
+      },
+      "citation": "(cite: oberg21)"
+    },
+    {
+      "what": {
+        "value": "DM Tau HD-based disk-mass measurement.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "Its mass was estimated from observation of hydrogen deuteride HD by (cite: mcclure16)."
+          }
+        ]
+      },
+      "citation": "(cite: mcclure16)"
+    },
+    {
+      "what": {
+        "value": "DM Tau N2H+ and HD-based disk-mass measurements.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "The value we obtained in our study is consistent with both N$_2$H$^+$ and HD based measurements of (cite: trapman22)."
+          }
+        ]
+      },
+      "citation": "(cite: trapman22)"
+    },
+    {
+      "what": {
+        "value": "HD 34282 CO-isotopologue gas-mass estimate.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "(cite: stapper24) constrained gas masses of Herbig disks using CO isotopologues, and HD 34282 is within their sample."
+          }
+        ]
+      },
+      "citation": "(cite: stapper24)"
+    },
+    {
+      "what": {
+        "value": "LkCa15 radiative-transfer disk-mass estimate.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "(cite: jin19) constrain gas and dust distribution in the LkCa15 disk by comparing radiative transfer models with the $^{12}$CO and dust emission from ALMA."
+          }
+        ]
+      },
+      "citation": "(cite: jin19)"
+    },
+    {
+      "what": {
+        "value": "LkCa15 thermochemical gas-mass estimate.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "Conversely, (cite: sturm23) measured LkCa15 gas mass using CO, $^{13}$CO, C$^{18}$O and C$^{17}$O lines and modeling them with thermochemical models."
+          }
+        ]
+      },
+      "citation": "(cite: sturm23)"
+    },
+    {
+      "what": {
+        "value": "PDS66 CO-isotopologue disk-mass estimate.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "(cite: ribas23) estimated the disk mass of PDS 66 comparing the CO isotopologues’ fluxes with models of (cite: williams14) and (cite: miotello16)"
+          }
+        ]
+      },
+      "citation": "(cite: ribas23)"
+    },
+    {
+      "what": {
+        "value": "V4046 Sgr CO-isotopologue disk-mass estimate.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "(cite: miotello16) presented chemical models to infer the disk mass from CO isotopologues emission."
+          },
+          {
+            "loc": "Disk masses",
+            "quote": "In that work, they gave an estimate of V4046 Sgr disk mass being $\\sim10^{-3}\\rm M_\\odot$."
+          }
+        ]
+      },
+      "citation": "(cite: miotello16)"
+    },
+    {
+      "what": {
+        "value": "V4046 Sgr spectroscopic-binary period and mass ratio.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "V4046 Sgr is a known spectroscopic binary with a period of 2.4 days and a mass ratio $q\\simeq0.94$ (cite: stempels04)."
+          }
+        ]
+      },
+      "citation": "(cite: stempels04)"
+    },
+    {
+      "what": {
+        "value": "Independent angular momentum transport constraints from molecular line broadening.",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "**DM Tau** | $-8.2 \\pm 0.35$ | (cite: manara14) | $2.19^{+2.72}_{-1.21}\\times10^{-3}$ | $0.08 \\pm 0.02$ | (cite: flaherty20)"
+          },
+          {
+            "loc": "Table 3",
+            "quote": "**HD 163296** | $-7.4 \\pm 0.35$ | (cite: oberg21) | $4.31^{+5.35}_{-2.38}\\times10^{-3}$ | $<0.003$ | (cite: flaherty15; flaherty17)"
+          }
+        ]
+      },
+      "citation": "(cite: flaherty15; flaherty17; flaherty20)"
+    },
+    {
+      "what": {
+        "value": "IM Lup angular momentum transport constraint from dust emission modelling.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "Finally, for IM Lup (cite: franceschi23) modeled dust emission with different $\\alpha_S$ values, post-processed the models with radiative transfer codes and compared with the actual data."
+          }
+        ]
+      },
+      "citation": "(cite: franceschi23)"
+    },
+    {
+      "what": {
+        "value": "IM Lup turbulence constraint from CN and C2H.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "By contrast, (cite: paneque23) estimate the viscosity through the characterization of CN and C$_2$H."
+          },
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "Leveraging on the optical depth properties of these two tracers, they measured the turbulence from the non-thermal broadening of the line, at the location of the emitting layer."
+          }
+        ]
+      },
+      "citation": "(cite: paneque23)"
+    },
+    {
+      "what": {
+        "value": "IM Lup molecular-line-broadening angular momentum transport constraint.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "Recently, also (cite: flaherty24) estimated the $\\alpha$ for IM Lup by molecular line broadening model, showing a good agreement with (cite: paneque23)."
+          }
+        ]
+      },
+      "citation": "(cite: flaherty24)"
+    }
+  ],
+  "simulations_or_models_as_data": [
+    {
+      "value": "Thermochemical relation between CO 90%-flux radius, scale radius and disk mass from (cite: toci23; trapman23).",
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "This issue was addressed by (cite: toci23; trapman23), who found a relationship between $R_{12\\rm CO}^{90}$ and $R_c$ and $M_d$"
+        },
+        {
+          "loc": "Gas based measurement",
+          "quote": "(cite: trapman23) obtain Eq. [\\[trap_rad\\]](#trap_rad) using thermochemical models, fixing the CO abundance at $X_{\\rm CO}=10^{-4}$."
+        }
+      ]
+    },
+    {
+      "value": "Viscosity, grain-growth and radial-drift disk-evolution models from (cite: toci21).",
+      "evidence": [
+        {
+          "loc": "Dust based measurement",
+          "quote": "(cite: toci21) presented theoretical models of protoplanetary disk evolution influenced by viscosity, grain growth, and radial drift, and studied the ratio between the scale radius and the dust."
+        }
+      ]
+    }
+  ],
+  "calibration": [],
+  "imaging": [],
+  "inherited": [
+    {
+      "what": {
+        "value": "Rotation-curve model including thermal stratification.",
+        "evidence": [
+          {
+            "loc": "Physical model",
+            "quote": "The model we adopt to describe the rotation curve of a protoplanetary disk is the one presented in (cite: Lodato23), then generalized by (cite: martire24) including the disk thermal stratification."
+          }
+        ]
+      },
+      "from_reference": "(cite: Lodato23; martire24)"
+    },
+    {
+      "what": {
+        "value": "Self-similar surface-density solution.",
+        "evidence": [
+          {
+            "loc": "Model for the rotation curve",
+            "quote": "Although the calculations are valid for an arbitrary surface density $\\Sigma$, in this work we assume that it is described by the self-similar solution of (cite: Lyndenbell74)"
+          }
+        ]
+      },
+      "from_reference": "(cite: Lyndenbell74)"
+    },
+    {
+      "what": {
+        "value": "Dartois temperature prescription and best-fit thermal parameters.",
+        "evidence": [
+          {
+            "loc": "2D temperature structure",
+            "quote": "(cite: Galloway_exoALMA) obtained the 2D thermal structures of exoALMA disks from $^{12}$CO and $^{13}$CO datacubes, adopting the Dartois (cite: Dartois03) prescription"
+          },
+          {
+            "loc": "2D temperature structure",
+            "quote": "In this work, we will use the Dartois prescription with the best fit values for the thermal parameters obtained by (cite: Galloway_exoALMA)"
+          }
+        ]
+      },
+      "from_reference": "(cite: Dartois03); (cite: Galloway_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "DISCMINER rotation curves from the default cubes and exclusion of the first two major beam sizes in radius.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The rotation curves used in this work have been extracted with DISCMINER and thoroughly discussed in (cite: Stadler_exoALMA) using the default cubes."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "In our analysis we excluded the first two major beam sizes in radius, as discussed in (cite: Stadler_exoALMA)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Stadler_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "DISCMINER emitting-layer geometry.",
+        "evidence": [
+          {
+            "loc": "Geometrical and thermal parameters of the sources",
+            "quote": "The heights of the emitting layers have been obtained with DISCMINER (cite: Izquierdo_exoALMA) and the thermal parameters with DISKSURF (cite: Galloway_exoALMA)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Izquierdo_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "Gas-image centering procedure.",
+        "evidence": [
+          {
+            "loc": "Systematic uncertainties",
+            "quote": "for more information on how the center of the images is found we refer to (cite: Izquierdo_exoALMA) for the gas and (cite: Curone_exoALMA) for the continuum."
+          }
+        ]
+      },
+      "from_reference": "(cite: Izquierdo_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "Continuum-image centering procedure and dust-substructure characterization.",
+        "evidence": [
+          {
+            "loc": "Systematic uncertainties",
+            "quote": "for more information on how the center of the images is found we refer to (cite: Izquierdo_exoALMA) for the gas and (cite: Curone_exoALMA) for the continuum."
+          },
+          {
+            "loc": "Dust based measurement",
+            "quote": "for a detailed characterization of dust substructures, we refer to (cite: Curone_exoALMA)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Curone_exoALMA)"
+    },
+    {
+      "what": {
+        "value": "Linear dependence of the Lambert-function argument on CO abundance.",
+        "evidence": [
+          {
+            "loc": "Gas based measurement",
+            "quote": "Assuming a linear relationship between the CO abundance and the argument of the Lambert function in Eq. [\\[trap_rad\\]](#trap_rad), as done in (cite: toci23)"
+          }
+        ]
+      },
+      "from_reference": "(cite: toci23)"
+    },
+    {
+      "what": {
+        "value": "AS 209 disk-mass upper limit of 0.05 times the stellar mass for the effective-alpha calculation.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "for AS 209 we use $M_d=0.05M_\\star$ as an upper limit, as commented in (cite: martire24)."
+          }
+        ]
+      },
+      "from_reference": "(cite: martire24)"
+    },
+    {
+      "what": {
+        "value": "Accretion-rate uncertainty of 0.35 dex.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "As reported by (cite: manara23), the fractional uncertainty in individual accretion rate measurements at any given time is approximately 0.35 dex, a value which we have adopted for our analysis."
+          }
+        ]
+      },
+      "from_reference": "(cite: manara23)"
+    },
+    {
+      "what": {
+        "value": "Effective-alpha relation within a self-similar evolution framework.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "By measuring the accretion rates, we can in principle constrain the instantaneous $\\alpha_S$ using (i.e. (cite: hartmann98))"
+          }
+        ]
+      },
+      "from_reference": "(cite: hartmann98)"
+    }
+  ],
+  "unstated_but_needed": [
+    "Exact default-cube files, calibration history, imaging settings, beam sizes and spectral sampling.",
+    "Machine-readable rotation curves, velocity uncertainties, radial sampling and full radial masks for each isotopologue.",
+    "Target distances used to convert angular measurements to au.",
+    "Explicit emitting-height function associated with the Table 4 parameters.",
+    "Thermal-parameter posterior samples, including their joint covariance, and the treatment of Table 5 Z0 in arcsec.",
+    "How the 100 thermal-realization posteriors are combined into the final estimates and asymmetric intervals.",
+    "Posterior point-estimate convention, interval probability, convergence criteria and random seeds.",
+    "Explicit adopted mean molecular weight; the text only describes 2.35 as usually assumed.",
+    "Exact numerical integration and differentiation settings for the stratified rotation model.",
+    "Dust-mass opacity and temperature assumptions inherited through the continuum analysis.",
+    "Source-by-source 90%-flux CO radii and CO-depletion factors used for the thermochemical comparison."
+  ],
+  "analysis_steps": [
+    {
+      "order": 1,
+      "goal": "Assemble rotation curves and disk structures",
+      "method": {
+        "value": "Use DISCMINER rotation curves and emitting layers, with DISKSURF thermal structures; adopt the tabulated geometrical and thermal parameters.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The rotation curves used in this work have been extracted with DISCMINER and thoroughly discussed in (cite: Stadler_exoALMA) using the default cubes."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The emitting layers of $^{12}$CO and $^{13}$CO are an output of DISCMINER as well."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "Finally the thermal structure are extracted with DISKSURF and thoroughly discussed in (cite: Galloway_exoALMA)."
+          }
+        ]
+      },
+      "software": ["DISCMINER", "DISKSURF"],
+      "key_parameters": [
+        {
+          "value": "Emitting-layer and thermal parameters in Tables 4 and 5.",
+          "evidence": [
+            {
+              "loc": "Geometrical and thermal parameters of the sources",
+              "quote": "Tables [4](#tab:discminer_parameters) and [5](#tab:temperature_profiles) show the emitting layer and the thermal parameters used for the fitting procedure, respectively."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Dartois prescription with inherited best-fit thermal parameters.",
+          "evidence": [
+            {
+              "loc": "2D temperature structure",
+              "quote": "In this work, we will use the Dartois prescription with the best fit values for the thermal parameters obtained by (cite: Galloway_exoALMA)"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "not stated",
+        "evidence": []
+      }
+    },
+    {
+      "order": 2,
+      "goal": "Select sources and usable radial regions",
+      "method": {
+        "value": "Require well-defined CO surfaces and no strong non-axisymmetric features; exclude the first two major beam sizes, truncate AA Tau 12CO at 250 au and exclude AA Tau from statistical analyses.",
+        "evidence": [
+          {
+            "loc": "Sample",
+            "quote": "We discarded sources that show strong non-axisymmetric features (MWC 758, CQ Tau) and low inclination ones (HD 135344B, HD 143006, J1604), for which the extraction of the emitting layer is not well defined."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "In our analysis we excluded the first two major beam sizes in radius, as discussed in (cite: Stadler_exoALMA)."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "Consequently, for the statistical analysis in this paper, we exclude AA Tau from the sample"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "AA Tau 12CO outer fitting radius: 250 au.",
+          "evidence": [
+            {
+              "loc": "Rotation curve fits",
+              "quote": "When fitting AA Tau, we limited our analysis out to 250au for the $^{12}$CO"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Azimuthal averaging and centrifugal balance.",
+          "evidence": [
+            {
+              "loc": "Sample",
+              "quote": "the absence of non-axisymmetric features, which may affect the azimuthal averaging, intrinsic to the definition of rotation curve, and the very assumption of centrifugal balance."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Include and exclude diffuse-backside regions in SY Cha and LkCa15; results remain consistent.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The issue of the diffuse backside is also observed in SY Cha at $R>400$ au and in the $^{13}$CO data of LkCa15 (cite: Galloway_exoALMA)."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "We tested the robustness of the fits by including and excluding these regions, demonstrating that the results remain consistent for these disks."
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "goal": "Fit stellar mass, disk mass and scale radius",
+      "method": {
+        "value": "Simultaneously fit 12CO and 13CO rotation curves with the thermally stratified model including stellar gravity, pressure gradient and disk self-gravity.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "For each disk, both the $^{12}$CO and $^{13}$CO rotation curves are fitted simultaneously."
+          },
+          {
+            "loc": "Physical model",
+            "quote": "The model we adopt to describe the rotation curve of a protoplanetary disk is the one presented in (cite: Lodato23), then generalized by (cite: martire24) including the disk thermal stratification."
+          },
+          {
+            "loc": "Abstract",
+            "quote": "we constrain the stellar mass, the disk mass and the density scale radius through precise characterization of the pressure gradient and disk self gravity."
+          }
+        ]
+      },
+      "software": ["DYSC", "EMCEE"],
+      "key_parameters": [
+        {
+          "value": "10 walkers; 5000 burnin steps; 5000 steps; walkers initially uniform within prior intervals.",
+          "evidence": [
+            {
+              "loc": "Rotation curve fits",
+              "quote": "All the DYSC fits were performed using $10$ walkers, $5000$ steps of burnin and $5000$ steps."
+            },
+            {
+              "loc": "Rotation curve fits",
+              "quote": "Initially, the walkers are uniformly distributed within their prior intervals."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Self-similar surface density with gamma=1.",
+          "evidence": [
+            {
+              "loc": "Model for the rotation curve",
+              "quote": "in this work we assume that it is described by the self-similar solution of (cite: Lyndenbell74)"
+            },
+            {
+              "loc": "DySc Code and statistical framework",
+              "quote": "All the fits are performed fixing the power law coefficient of the surface density $\\gamma=1$, underestimating the true uncertainties."
+            }
+          ]
+        },
+        {
+          "value": "Gaussian, uncorrelated velocity measurements with standard deviation sigma_v.",
+          "evidence": [
+            {
+              "loc": "DySc Code and statistical framework",
+              "quote": "Here, we make the standard assumption that the data are distributed around the true value following a Gaussian distribution, with standard deviation $\\sigma_v$, and that they are not correlated."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "EMCEE MCMC; Gaussian likelihood; uniform priors M_star=[0,5] M_sun, M_d=[0,1] M_sun and R_c=[10,1000] au.",
+        "evidence": [
+          {
+            "loc": "DySc Code and statistical framework",
+            "quote": "The code implements Markov-Chain-Monte-Carlo through the EMCEE library (cite: emcee)."
+          },
+          {
+            "loc": "DySc Code and statistical framework",
+            "quote": "Here, we make the standard assumption that the data are distributed around the true value following a Gaussian distribution, with standard deviation $\\sigma_v$, and that they are not correlated."
+          },
+          {
+            "loc": "DySc Code and statistical framework",
+            "quote": "The chosen priors for the model parameters are uniform distributions respectively centred on $M_\\star \\in \\mathcal{U} [0,5]\\text{M}_\\odot$, $M_d \\in \\mathcal{U}  [0,1]\\text{M}_\\odot$ and $R_c \\in \\mathcal{U}  [10, 1000]\\text{au}$"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Inspect best-fit rotation curves, residuals and posterior corner plots; test Gaussian gaps and rings on LkCa15.",
+        "evidence": [
+          {
+            "loc": "Best fit models and corner plots",
+            "quote": "Figures [8](#rcurves1), [9](#rcurves2) and [10](#rcurves3) show the best fit rotation curves with the model residuals."
+          },
+          {
+            "loc": "Best fit models and corner plots",
+            "quote": "Figures [11](#c1), [12](#c3) and [13](#c5) show the corner plots and the posterior distributions for stellar mass, disc mass and scale radius."
+          },
+          {
+            "loc": "Model for the rotation curve",
+            "quote": "We applied this approach to the rotation curve of a reference disc, LkCa 15, fitting the data both with and without the inclusion of substructures."
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "goal": "Propagate thermal-structure uncertainty",
+      "method": {
+        "value": "Repeat each EMCEE fit 100 times with thermal parameters drawn from the inherited posterior distribution; report dynamical parameters and uncertainties.",
+        "evidence": [
+          {
+            "loc": "Systematic uncertainties",
+            "quote": "To incorporate the systematic, we decided to run each EMCEE fit 100 times, drawing the thermal parameters from the posterior distribution of (cite: Galloway_exoALMA)."
+          },
+          {
+            "loc": "Systematic uncertainties",
+            "quote": "This procedure allows us to take into account the systematic errors driven by the thermal structure, returning a realistic uncertainty for the best fit parameters, listed in table [1](#table_results)."
+          }
+        ]
+      },
+      "software": ["DYSC", "EMCEE"],
+      "key_parameters": [
+        {
+          "value": "100 fits per disk.",
+          "evidence": [
+            {
+              "loc": "Systematic uncertainties",
+              "quote": "To incorporate the systematic, we decided to run each EMCEE fit 100 times, drawing the thermal parameters from the posterior distribution of (cite: Galloway_exoALMA)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Thermal structure dominates systematic uncertainties.",
+          "evidence": [
+            {
+              "loc": "Systematic uncertainties",
+              "quote": "However, the thermal structure dominates the systematic uncertainties, since it directly impacts the pressure gradient characterization."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Repeat the EMCEE fitting procedure with draws from the thermal posterior.",
+        "evidence": [
+          {
+            "loc": "Systematic uncertainties",
+            "quote": "To incorporate the systematic, we decided to run each EMCEE fit 100 times, drawing the thermal parameters from the posterior distribution of (cite: Galloway_exoALMA)."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compare disk masses against independent literature measurements.",
+        "evidence": [
+          {
+            "loc": "Disk masses",
+            "quote": "In Figure [2](#comparison_masses_plot), we compare the dynamical disk mass estimated in this paper to these independently estimates."
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "goal": "Calculate mass ratios",
+      "method": {
+        "value": "Calculate disk-to-star and gas-to-dust ratios from the dynamical masses and inherited dust masses; propagate posterior distributions; exclude AA Tau from the average gas-to-dust ratio.",
+        "evidence": [
+          {
+            "loc": "Gas to dust ratio",
+            "quote": "We use the fiducial values for the disk masses to compute the gas-to-dust ratio, employing the dust masses obtained by (cite: Curone_exoALMA)."
+          },
+          {
+            "loc": "Table 1",
+            "quote": "The errors on the disk to star mass ratio and on the gas to dust ratio have been computed using the posterior distributions for the relevant quantities."
+          },
+          {
+            "loc": "Gas to dust ratio",
+            "quote": "To compute the average gas-to-dust ratio, we have excluded AA Tau."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [],
+      "assumptions": [
+        {
+          "value": "Optically thin continuum emission for the inherited dust masses.",
+          "evidence": [
+            {
+              "loc": "Conclusions",
+              "quote": "We compared the dynamical disk masses with the dust based ones (cite: Curone_exoALMA), with the assumption of optically thin continuum emission, to determine the gas to dust ratio."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "not stated",
+        "evidence": []
+      }
+    },
+    {
+      "order": 6,
+      "goal": "Assess gravitational stability",
+      "method": {
+        "value": "Compute surface-density and Toomre-Q profiles from the fitted disk structure and midplane temperature; exclude AA Tau.",
+        "evidence": [
+          {
+            "loc": "Gravitational instability?",
+            "quote": "To investigate the likelihood of a disk to be gravitationally unstable, we compute the Toomre Q parameter"
+          },
+          {
+            "loc": "Gravitational instability?",
+            "quote": "Figure [4](#ToomreQ_plot) shows the surface density profiles and the Toomre parameter profiles for the disks within our sample."
+          },
+          {
+            "loc": "Gravitational instability?",
+            "quote": "We are excluding AA Tau because of the large uncertainties"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [],
+      "assumptions": [
+        {
+          "value": "Midplane temperature extrapolated from inherited 2D thermal structures.",
+          "evidence": [
+            {
+              "loc": "Gravitational instability?",
+              "quote": "We underline that the temperature at the midplane is extrapolated from the 2D thermal structures (cite: Galloway_exoALMA)."
+            }
+          ]
+        },
+        {
+          "value": "Instability onset at Q approximately 1 under the WKB quadratic dispersion relation.",
+          "evidence": [
+            {
+              "loc": "Gravitational instability?",
+              "quote": "According to the WKB (Wentzel–Kramers–Brillouin) quadratic dispersion relation (cite: linshu64; toomre64), the onset of the instability occur when $Q \\sim 1$."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Stability is consistent with the absence of prominent spiral structures.",
+        "evidence": [
+          {
+            "loc": "Conclusions",
+            "quote": "We evaluated the Toomre parameter to assess gravitational stability and found that all sources are gravitationally stable, consistent with the absence of prominent spiral structures."
+          }
+        ]
+      }
+    },
+    {
+      "order": 7,
+      "goal": "Compare dynamical and emission radii",
+      "method": {
+        "value": "Compare R_c with 68%-flux gas and dust radii; predict 90%-flux 12CO radii from M_d and R_c; recompute with inherited CO depletion.",
+        "evidence": [
+          {
+            "loc": "Scale radii",
+            "quote": "the radii enclosing the 68% of the $^{12}$CO, $^{13}$CO (cite: Galloway_exoALMA) and dust emission (cite: Curone_exoALMA), and the scale radii $R_c$ we find by modeling the rotation curve."
+          },
+          {
+            "loc": "Gas based measurement",
+            "quote": "Figure [6](#trapman_radii) shows the comparison between the radius enclosing the 90% of the $^{12}$CO emission and the theoretical expectation according to Eq. [\\[trap_rad\\]](#trap_rad)."
+          },
+          {
+            "loc": "Conclusions",
+            "quote": "We recomputed the CO radii using the CO depletion factor derived by (cite: Trapman_exoALMA) through forward-modeling N$_2$H$^+$ and C$^{18}$O emissions."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "68%-flux radii for gas/dust comparison; 90%-flux 12CO radii for thermochemical comparison.",
+          "evidence": [
+            {
+              "loc": "Scale radii",
+              "quote": "the radii enclosing the 68% of the $^{12}$CO, $^{13}$CO (cite: Galloway_exoALMA) and dust emission (cite: Curone_exoALMA)"
+            },
+            {
+              "loc": "Gas based measurement",
+              "quote": "Figure [6](#trapman_radii) shows the comparison between the radius enclosing the 90% of the $^{12}$CO emission and the theoretical expectation according to Eq. [\\[trap_rad\\]](#trap_rad)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Initial thermochemical relation assumes X_CO=10^-4.",
+          "evidence": [
+            {
+              "loc": "Gas based measurement",
+              "quote": "(cite: trapman23) obtain Eq. [\\[trap_rad\\]](#trap_rad) using thermochemical models, fixing the CO abundance at $X_{\\rm CO}=10^{-4}$."
+            }
+          ]
+        },
+        {
+          "value": "CO abundance scales linearly with the Lambert-function argument.",
+          "evidence": [
+            {
+              "loc": "Gas based measurement",
+              "quote": "Assuming a linear relationship between the CO abundance and the argument of the Lambert function in Eq. [\\[trap_rad\\]](#trap_rad), as done in (cite: toci23)"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Propagate disk-mass and scale-radius uncertainties; compare predictions with observed CO radii.",
+        "evidence": [
+          {
+            "loc": "Gas based measurement",
+            "quote": "The error bars take into account the uncertainty on the disk mass and scale radius."
+          },
+          {
+            "loc": "Gas based measurement",
+            "quote": "For most of the sources, using these CO abundances result in a better agreement with the observed values."
+          }
+        ]
+      }
+    },
+    {
+      "order": 8,
+      "goal": "Infer effective angular momentum transport",
+      "method": {
+        "value": "Calculate alpha_S=(2/3)[Mdot_star/(M_d Omega_c)](H_c/R_c)^-2 using fitted disk properties and literature accretion rates, evaluated at R_c.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "\\alpha_S = \\frac{2}{3} \\frac{\\dot{M}_\\star}{M_d\\Omega_c}\\left(\\frac{H_{c}}{R_{c}}\\right)^{-2},"
+          },
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "where the subscript $c$ denotes that the corresponding quantity is evaluated at the scale radius."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Adopt 0.35 dex uncertainty in individual accretion rates.",
+          "evidence": [
+            {
+              "loc": "Transport of angular momentum - effective $\\alpha_S$",
+              "quote": "As reported by (cite: manara23), the fractional uncertainty in individual accretion rate measurements at any given time is approximately 0.35 dex, a value which we have adopted for our analysis."
+            }
+          ]
+        },
+        {
+          "value": "AS 209: use M_d=0.05 M_star as an upper limit.",
+          "evidence": [
+            {
+              "loc": "Transport of angular momentum - effective $\\alpha_S$",
+              "quote": "for AS 209 we use $M_d=0.05M_\\star$ as an upper limit, as commented in (cite: martire24)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Self-similar surface-density evolution.",
+          "evidence": [
+            {
+              "loc": "Abstract",
+              "quote": "assuming self-similar evolution of the surface density, we constrain the effective $\\alpha_S$ for these systems."
+            }
+          ]
+        },
+        {
+          "value": "Stellar accretion at less than 1 au equals disk accretion at the scale radius.",
+          "evidence": [
+            {
+              "loc": "Transport of angular momentum - effective $\\alpha_S$",
+              "quote": "We point out that here we are assuming that stellar accretion, which happens in the $<1$au region of the disk is equal to the disk accretion, measured at the scale radius."
+            }
+          ]
+        },
+        {
+          "value": "Interpret alpha_S as effective angular momentum transport efficiency, without requiring turbulence.",
+          "evidence": [
+            {
+              "loc": "Transport of angular momentum - effective $\\alpha_S$",
+              "quote": "Additionally, the formula does not imply that accretion is driven by turbulence; the values it returns should be interpreted as an effective $\\alpha_S$, i.e. the amount of transported angular momentum."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Compare with independent line-broadening and dust-profile constraints.",
+        "evidence": [
+          {
+            "loc": "Transport of angular momentum - effective $\\alpha_S$",
+            "quote": "there are independent $\\alpha_S$ constraints, obtained by modeling the non-thermal molecular line broadening (cite: flaherty15; flaherty17; flaherty20) or by determining the dust emission radial profile with radiative transfer models (cite: franceschi23)."
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "DISCMINER",
+      "version": "not stated",
+      "used_for": {
+        "value": "Extract rotation curves and emitting layers; provide comparison stellar masses.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The rotation curves used in this work have been extracted with DISCMINER and thoroughly discussed in (cite: Stadler_exoALMA) using the default cubes."
+          },
+          {
+            "loc": "Rotation curve fits",
+            "quote": "The emitting layers of $^{12}$CO and $^{13}$CO are an output of DISCMINER as well."
+          },
+          {
+            "loc": "Stellar masses",
+            "quote": "The dynamical stellar masses generally deviate from the best fit values provided by DISCMINER (cite: Teague_exoALMA; Izquierdo_exoALMA)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "DISKSURF",
+      "version": "not stated",
+      "used_for": {
+        "value": "Extract thermal structures and non-parametric emitting surfaces.",
+        "evidence": [
+          {
+            "loc": "Rotation curve fits",
+            "quote": "Finally the thermal structure are extracted with DISKSURF and thoroughly discussed in (cite: Galloway_exoALMA)."
+          },
+          {
+            "loc": "The case of AA Tau",
+            "quote": "As a result, the non-parametric emitting surface extracted by DISKSURF differs from the parametric one used by DISCMINER."
+          }
+        ]
+      }
+    },
+    {
+      "name": "DYSC",
+      "version": "not stated",
+      "used_for": {
+        "value": "Fit stellar mass, disk mass and scale radius using the stratified rotation-curve model.",
+        "evidence": [
+          {
+            "loc": "DySc Code and statistical framework",
+            "quote": "We implemented the fitting procedure for stellar mass, disk mass and scale radius based on the model of Eq. [\\[rotationcurve_strat\\]](#rotationcurve_strat) in the code DYSC"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EMCEE",
+      "version": "not stated",
+      "used_for": {
+        "value": "Markov-Chain-Monte-Carlo fitting within DYSC.",
+        "evidence": [
+          {
+            "loc": "DySc Code and statistical framework",
+            "quote": "The code implements Markov-Chain-Monte-Carlo through the EMCEE library (cite: emcee)."
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "AA Tau stellar mass",
+      "value": "0.624",
+      "uncertainty": "+0.033/-0.035",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**AA Tau** | $0.624^{+0.033}_{-0.035}$ | $0.155^{+0.036}_{-0.036}$ | $156^{+106}_{-41}$"
+        }
+      ]
+    },
+    {
+      "quantity": "AA Tau disk mass",
+      "value": "0.155",
+      "uncertainty": "+0.036/-0.036",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**AA Tau** | $0.624^{+0.033}_{-0.035}$ | $0.155^{+0.036}_{-0.036}$ | $156^{+106}_{-41}$"
+        }
+      ]
+    },
+    {
+      "quantity": "AA Tau scale radius",
+      "value": "156",
+      "uncertainty": "+106/-41",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**AA Tau** | $0.624^{+0.033}_{-0.035}$ | $0.155^{+0.036}_{-0.036}$ | $156^{+106}_{-41}$"
+        }
+      ]
+    },
+    {
+      "quantity": "DM Tau stellar mass",
+      "value": "0.468",
+      "uncertainty": "+0.014/-0.015",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**DM Tau** | $0.468^{+0.014}_{-0.015}$ | $0.057^{+0.019}_{-0.020}$ | $240^{+42}_{-27}$"
+        }
+      ]
+    },
+    {
+      "quantity": "DM Tau disk mass",
+      "value": "0.057",
+      "uncertainty": "+0.019/-0.020",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**DM Tau** | $0.468^{+0.014}_{-0.015}$ | $0.057^{+0.019}_{-0.020}$ | $240^{+42}_{-27}$"
+        }
+      ]
+    },
+    {
+      "quantity": "DM Tau scale radius",
+      "value": "240",
+      "uncertainty": "+42/-27",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**DM Tau** | $0.468^{+0.014}_{-0.015}$ | $0.057^{+0.019}_{-0.020}$ | $240^{+42}_{-27}$"
+        }
+      ]
+    },
+    {
+      "quantity": "HD 34282 stellar mass",
+      "value": "1.520",
+      "uncertainty": "+0.025/-0.031",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**HD 34282** | $1.520^{+0.025}_{-0.031}$ | $0.143^{+0.045}_{-0.041}$ | $370^{+109}_{-78}$"
+        }
+      ]
+    },
+    {
+      "quantity": "HD 34282 disk mass",
+      "value": "0.143",
+      "uncertainty": "+0.045/-0.041",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**HD 34282** | $1.520^{+0.025}_{-0.031}$ | $0.143^{+0.045}_{-0.041}$ | $370^{+109}_{-78}$"
+        }
+      ]
+    },
+    {
+      "quantity": "HD 34282 scale radius",
+      "value": "370",
+      "uncertainty": "+109/-78",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**HD 34282** | $1.520^{+0.025}_{-0.031}$ | $0.143^{+0.045}_{-0.041}$ | $370^{+109}_{-78}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1615 stellar mass",
+      "value": "1.105",
+      "uncertainty": "+0.011/-0.012",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1615** | $1.105^{+0.011}_{-0.012}$ | $0.082^{+0.014}_{-0.014}$ | $167^{+20}_{-15}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1615 disk mass",
+      "value": "0.082",
+      "uncertainty": "+0.014/-0.014",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1615** | $1.105^{+0.011}_{-0.012}$ | $0.082^{+0.014}_{-0.014}$ | $167^{+20}_{-15}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1615 scale radius",
+      "value": "167",
+      "uncertainty": "+20/-15",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1615** | $1.105^{+0.011}_{-0.012}$ | $0.082^{+0.014}_{-0.014}$ | $167^{+20}_{-15}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1842 stellar mass",
+      "value": "1.042",
+      "uncertainty": "+0.010/-0.011",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1842** | $1.042^{+0.010}_{-0.011}$ | $0.078^{+0.013}_{-0.014}$ | $231^{+102}_{-50}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1842 disk mass",
+      "value": "0.078",
+      "uncertainty": "+0.013/-0.014",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1842** | $1.042^{+0.010}_{-0.011}$ | $0.078^{+0.013}_{-0.014}$ | $231^{+102}_{-50}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1842 scale radius",
+      "value": "231",
+      "uncertainty": "+102/-50",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1842** | $1.042^{+0.010}_{-0.011}$ | $0.078^{+0.013}_{-0.014}$ | $231^{+102}_{-50}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1852 stellar mass",
+      "value": "1.022",
+      "uncertainty": "+0.021/-0.021",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1852**$^{\\dagger}$ | $1.022^{+0.021}_{-0.021}$ | $0.044^{+0.024}_{-0.032}$ | $87^{+69}_{-16}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1852 disk mass; below measurability threshold",
+      "value": "0.044",
+      "uncertainty": "+0.024/-0.032",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1852**$^{\\dagger}$ | $1.022^{+0.021}_{-0.021}$ | $0.044^{+0.024}_{-0.032}$ | $87^{+69}_{-16}$"
+        },
+        {
+          "loc": "Disk masses",
+          "quote": "In our sample, only three sources —J1852, PDS66, and V4046— have best-fit disk mass values below this threshold."
+        }
+      ]
+    },
+    {
+      "quantity": "J1852 scale radius",
+      "value": "87",
+      "uncertainty": "+69/-16",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**J1852**$^{\\dagger}$ | $1.022^{+0.021}_{-0.021}$ | $0.044^{+0.024}_{-0.032}$ | $87^{+69}_{-16}$"
+        }
+      ]
+    },
+    {
+      "quantity": "LkCa15 stellar mass",
+      "value": "1.118",
+      "uncertainty": "+0.013/-0.015",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**LkCa15** | $1.118^{+0.013}_{-0.015}$ | $0.108^{+0.016}_{-0.016}$ | $150^{+12}_{-16}$"
+        }
+      ]
+    },
+    {
+      "quantity": "LkCa15 disk mass",
+      "value": "0.108",
+      "uncertainty": "+0.016/-0.016",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**LkCa15** | $1.118^{+0.013}_{-0.015}$ | $0.108^{+0.016}_{-0.016}$ | $150^{+12}_{-16}$"
+        }
+      ]
+    },
+    {
+      "quantity": "LkCa15 scale radius",
+      "value": "150",
+      "uncertainty": "+12/-16",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**LkCa15** | $1.118^{+0.013}_{-0.015}$ | $0.108^{+0.016}_{-0.016}$ | $150^{+12}_{-16}$"
+        }
+      ]
+    },
+    {
+      "quantity": "PDS66 stellar mass",
+      "value": "1.299",
+      "uncertainty": "+0.036/-0.101",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**PDS66**$^{\\dagger}$ | $1.299^{+0.036}_{-0.101}$ | $0.038^{+0.099}_{-0.035}$ | $28^{+12}_{-5}$"
+        }
+      ]
+    },
+    {
+      "quantity": "PDS66 disk mass; below measurability threshold",
+      "value": "0.038",
+      "uncertainty": "+0.099/-0.035",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**PDS66**$^{\\dagger}$ | $1.299^{+0.036}_{-0.101}$ | $0.038^{+0.099}_{-0.035}$ | $28^{+12}_{-5}$"
+        },
+        {
+          "loc": "Disk masses",
+          "quote": "In our sample, only three sources —J1852, PDS66, and V4046— have best-fit disk mass values below this threshold."
+        }
+      ]
+    },
+    {
+      "quantity": "PDS66 scale radius",
+      "value": "28",
+      "uncertainty": "+12/-5",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**PDS66**$^{\\dagger}$ | $1.299^{+0.036}_{-0.101}$ | $0.038^{+0.099}_{-0.035}$ | $28^{+12}_{-5}$"
+        }
+      ]
+    },
+    {
+      "quantity": "SY Cha stellar mass",
+      "value": "0.812",
+      "uncertainty": "+0.037/-0.041",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**SY Cha** | $0.812^{+0.037}_{-0.041}$ | $0.084^{+0.044}_{-0.043}$ | $112^{+21}_{-15}$"
+        }
+      ]
+    },
+    {
+      "quantity": "SY Cha disk mass",
+      "value": "0.084",
+      "uncertainty": "+0.044/-0.043",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**SY Cha** | $0.812^{+0.037}_{-0.041}$ | $0.084^{+0.044}_{-0.043}$ | $112^{+21}_{-15}$"
+        }
+      ]
+    },
+    {
+      "quantity": "SY Cha scale radius",
+      "value": "112",
+      "uncertainty": "+21/-15",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**SY Cha** | $0.812^{+0.037}_{-0.041}$ | $0.084^{+0.044}_{-0.043}$ | $112^{+21}_{-15}$"
+        }
+      ]
+    },
+    {
+      "quantity": "V4046 Sgr stellar mass",
+      "value": "1.777",
+      "uncertainty": "+0.005/-0.006",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**V4046 Sgr**$^{\\dagger}$ | $1.777^{+0.005}_{-0.006}$ | $0.058^{+0.006}_{-0.006}$ | $99^{+5}_{-5}$"
+        }
+      ]
+    },
+    {
+      "quantity": "V4046 Sgr disk mass; below measurability threshold",
+      "value": "0.058",
+      "uncertainty": "+0.006/-0.006",
+      "units": "M_\\odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**V4046 Sgr**$^{\\dagger}$ | $1.777^{+0.005}_{-0.006}$ | $0.058^{+0.006}_{-0.006}$ | $99^{+5}_{-5}$"
+        },
+        {
+          "loc": "Disk masses",
+          "quote": "In our sample, only three sources —J1852, PDS66, and V4046— have best-fit disk mass values below this threshold."
+        }
+      ]
+    },
+    {
+      "quantity": "V4046 Sgr scale radius",
+      "value": "99",
+      "uncertainty": "+5/-5",
+      "units": "au",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "**V4046 Sgr**$^{\\dagger}$ | $1.777^{+0.005}_{-0.006}$ | $0.058^{+0.006}_{-0.006}$ | $99^{+5}_{-5}$"
+        }
+      ]
+    },
+    {
+      "quantity": "AA Tau gas-to-dust ratio",
+      "value": "1417",
+      "uncertainty": "+326/-330",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "0.791 | 26.7% | 0.115 | $1417^{+326}_{-330}$"
+        }
+      ]
+    },
+    {
+      "quantity": "DM Tau gas-to-dust ratio",
+      "value": "367",
+      "uncertainty": "+131/-121",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "0.453 | -3.1% | 0.162 | $367^{+131}_{-121}$"
+        }
+      ]
+    },
+    {
+      "quantity": "HD 34282 gas-to-dust ratio",
+      "value": "137",
+      "uncertainty": "+40/-43",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.620 | 6.6% | 1.091 | $137^{+40}_{-43}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1615 gas-to-dust ratio",
+      "value": "279",
+      "uncertainty": "+49/-49",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.140 | 3.1% | 0.308 | $279^{+49}_{-49}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1842 gas-to-dust ratio",
+      "value": "759",
+      "uncertainty": "+134/-129",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.068 | 2.5% | 0.108 | $759^{+134}_{-129}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1852 gas-to-dust ratio",
+      "value": "420",
+      "uncertainty": "+300/-301",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.028 | 0.6% | 0.110 | $420^{+300}_{-301}$"
+        }
+      ]
+    },
+    {
+      "quantity": "LkCa15 gas-to-dust ratio",
+      "value": "339",
+      "uncertainty": "+49/-50",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.028 | -8.0% | 0.333 | $339^{+49}_{-50}$"
+        }
+      ]
+    },
+    {
+      "quantity": "PDS66 gas-to-dust ratio",
+      "value": "364",
+      "uncertainty": "+342/-357",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.277 | -1.7% | 0.108 | $364^{+342}_{-357}$"
+        }
+      ]
+    },
+    {
+      "quantity": "SY Cha gas-to-dust ratio",
+      "value": "517",
+      "uncertainty": "+266/-273",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "0.813 | 0.1% | 0.170 | $517^{+266}_{-273}$"
+        }
+      ]
+    },
+    {
+      "quantity": "V4046 Sgr gas-to-dust ratio",
+      "value": "540",
+      "uncertainty": "+60/-59",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "1.763 | -0.8% | 0.112 | $540^{+60}_{-59}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Average gas-to-dust ratio excluding AA Tau",
+      "value": "~400",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Gas to dust ratio",
+          "quote": "Overall, the gas-to-dust ratios are above the standard value of 100, with an average value of $\\sim 400$."
+        },
+        {
+          "loc": "Gas to dust ratio",
+          "quote": "To compute the average gas-to-dust ratio, we have excluded AA Tau."
+        }
+      ]
+    },
+    {
+      "quantity": "Massive-disk Toomre Q",
+      "value": ">1",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Gravitational instability?",
+          "quote": "The massive disks in our sample show $Q>1$, meaning that they all are gravitationally stable."
+        }
+      ]
+    },
+    {
+      "quantity": "Average 12CO 68%-flux radius / dynamical scale radius",
+      "value": "2.5",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "As expected, the flux-based radii are larger compared to the dynamical scale radius, showing an average ratio of $2.5$ for the $^{12}$CO and $1.75$ for the $^{13}$CO."
+        }
+      ]
+    },
+    {
+      "quantity": "Average 13CO 68%-flux radius / dynamical scale radius",
+      "value": "1.75",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "As expected, the flux-based radii are larger compared to the dynamical scale radius, showing an average ratio of $2.5$ for the $^{12}$CO and $1.75$ for the $^{13}$CO."
+        }
+      ]
+    },
+    {
+      "quantity": "Average dust 68%-flux radius / dynamical scale radius",
+      "value": "0.75",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Dust based measurement",
+          "quote": "On average, the dust radii are smaller than the scale radii, showing an average ratio of $0.75$."
+        }
+      ]
+    },
+    {
+      "quantity": "AA Tau effective alpha_S",
+      "value": "6.54×10^-3",
+      "uncertainty": "+8.11/-3.62 ×10^-3",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**AA Tau** | $-7.35 \\pm 0.35$ | (cite: manara23) | $6.54^{+8.11}_{-3.62}\\times10^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "DM Tau effective alpha_S",
+      "value": "2.19×10^-3",
+      "uncertainty": "+2.72/-1.21 ×10^-3",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**DM Tau** | $-8.2 \\pm 0.35$ | (cite: manara14) | $2.19^{+2.72}_{-1.21}\\times10^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "HD 34282 effective alpha_S",
+      "value": "3.86×10^-3",
+      "uncertainty": "+4.79/-2.14 ×10^-3",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**HD 34282** | $-7.69 \\pm 0.35$ | (cite: fairlamb15) | $3.86^{+4.79}_{-2.14}\\times10^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1615 effective alpha_S",
+      "value": "1.20×10^-3",
+      "uncertainty": "+1.48/-0.66 ×10^-3",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**J1615** | $-8.25 \\pm 0.35$ | (cite: manara14) | $1.20^{+1.48}_{-0.66}\\times10^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1842 effective alpha_S",
+      "value": "4.03×10^-4",
+      "uncertainty": "+4.99/-2.23 ×10^-4",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**J1842** | $-8.8 \\pm 0.35$ | (cite: manara14) | $4.03^{+4.99}_{-2.23}\\times10^{-4}$"
+        }
+      ]
+    },
+    {
+      "quantity": "J1852 effective alpha_S",
+      "value": "3.62×10^-4",
+      "uncertainty": "+4.49/-2.01 ×10^-4",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**J1852** | $-8.7 \\pm 0.35$ | (cite: manara14) | $3.62^{+4.49}_{-2.01}\\times10^{-4}$"
+        }
+      ]
+    },
+    {
+      "quantity": "LkCa15 effective alpha_S",
+      "value": "1.74×10^-4",
+      "uncertainty": "+2.16/-0.97 ×10^-4",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**LkCa15** | $-8.7 \\pm 0.35$ | (cite: manara14) | $1.74^{+2.16}_{-0.97}\\times10^{-4}$"
+        }
+      ]
+    },
+    {
+      "quantity": "PDS66 effective alpha_S",
+      "value": "8.06×10^-5",
+      "uncertainty": "+9.99/-4.46 ×10^-5",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**PDS66** | $-9.18 \\pm 0.35$ | (cite: ingleby13) | $8.06^{+9.99}_{-4.46}\\times10^{-5}$"
+        }
+      ]
+    },
+    {
+      "quantity": "SY Cha effective alpha_S",
+      "value": "1.66×10^-5",
+      "uncertainty": "+2.05/-0.92 ×10^-5",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**SY Cha** | $-9.89 \\pm 0.35$ | (cite: manara23) | $1.66^{+2.05}_{-0.92}\\times10^{-5}$"
+        }
+      ]
+    },
+    {
+      "quantity": "V4046 Sgr effective alpha_S",
+      "value": "1.11×10^-4",
+      "uncertainty": "+1.38/-0.61 ×10^-4",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**V4046 Sgr** | $-9.3 \\pm 0.35$ | (cite: donati11) | $1.11^{+1.38}_{-0.61}\\times10^{-4}$"
+        }
+      ]
+    },
+    {
+      "quantity": "AS 209 effective alpha_S lower limit",
+      "value": ">1.11×10^-2",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**AS 209** | $-7.3 \\pm 0.35$ | (cite: oberg21) | $>1.11\\times10^{-2}$"
+        }
+      ]
+    },
+    {
+      "quantity": "GM Aur effective alpha_S",
+      "value": "9.32×10^-4",
+      "uncertainty": "+11.1/-5.16 ×10^-4",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**GM Aur** | $-8.1 \\pm 0.35$ | (cite: oberg21) | $9.32^{+11.1}_{-5.16}\\times10^{-4}$"
+        }
+      ]
+    },
+    {
+      "quantity": "HD 163296 effective alpha_S",
+      "value": "4.31×10^-3",
+      "uncertainty": "+5.35/-2.38 ×10^-3",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**HD 163296** | $-7.4 \\pm 0.35$ | (cite: oberg21) | $4.31^{+5.35}_{-2.38}\\times10^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "IM Lup effective alpha_S",
+      "value": "1.48×10^-3",
+      "uncertainty": "+1.18/-0.82 ×10^-3",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**IM Lup** | $-7.9 \\pm 0.35$ | (cite: oberg21) | $1.48^{+1.18}_{-0.82}\\times10^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "MWC 480 effective alpha_S",
+      "value": "1.41×10^-2",
+      "uncertainty": "+1.17/-0.78 ×10^-2",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "**MWC 480** | $-6.9 \\pm 0.35$ | (cite: oberg21) | $1.41^{+1.17}_{-0.78}\\times10^{-2}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Effective alpha_S range",
+      "value": "10^-5 to 10^-2",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "We find a broad range of $\\alpha_S$ values ranging between $10^{-5}$ and $10^{-2}$."
+        }
+      ]
+    },
+    {
+      "quantity": "Typical stellar-mass difference from DISCMINER excluding AA Tau",
+      "value": "~5%",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Stellar masses",
+          "quote": "In general, excluding AA Tau as discussed before, we note that the percentage difference between dynamical masses and the DISCMINER ones is of the order of $\\sim 5\\%$."
+        }
+      ]
+    },
+    {
+      "quantity": "Substructure-model velocity perturbations",
+      "value": "50-70",
+      "uncertainty": "not stated",
+      "units": "m/s",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Model for the rotation curve",
+          "quote": "The corresponding velocity perturbations are of the order of 50-70 m/s."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "The massive disks are gravitationally stable.",
+      "evidence": [
+        {
+          "loc": "Gravitational instability?",
+          "quote": "The massive disks in our sample show $Q>1$, meaning that they all are gravitationally stable."
+        }
+      ]
+    },
+    {
+      "value": "AA Tau is an outlier requiring caution.",
+      "evidence": [
+        {
+          "loc": "Rotation curve fits",
+          "quote": "Despite excluding the outer region, the results for AA Tau still appear unusual, with the derived mass of the disk significantly high, marking AA Tau as an outlier in our sample."
+        },
+        {
+          "loc": "Rotation curve fits",
+          "quote": "While we include the results for completeness, they should be interpreted with caution due to these reasons."
+        }
+      ]
+    },
+    {
+      "value": "Substructures affect scale radius most; the tested correction stays within typical uncertainties and the dynamical-mass impact is minimal.",
+      "evidence": [
+        {
+          "loc": "Model for the rotation curve",
+          "quote": "Our results show that the most affected parameter is the scale radius, as it is directly influenced by the pressure gradient."
+        },
+        {
+          "loc": "Model for the rotation curve",
+          "quote": "However, the correction remains within the typical uncertainties."
+        },
+        {
+          "loc": "Model for the rotation curve",
+          "quote": "In contrast, the impact of substructures on the dynamical mass estimates is minimal."
+        }
+      ]
+    },
+    {
+      "value": "Theoretical CO radii are systematically too large; inherited depleted CO abundances improve agreement for most sources.",
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "We observe that the theoretical expectations systematically overestimate the CO radius."
+        },
+        {
+          "loc": "Gas based measurement",
+          "quote": "For most of the sources, using these CO abundances result in a better agreement with the observed values."
+        }
+      ]
+    },
+    {
+      "value": "Dust substructures may mitigate radial drift.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "This suggests that pressure-modulated substructures may mitigate radial drift."
+        }
+      ]
+    },
+    {
+      "value": "Effective-alpha uncertainty is dominated by accretion-rate uncertainty.",
+      "evidence": [
+        {
+          "loc": "Transport of angular momentum - effective $\\alpha_S$",
+          "quote": "Our analysis indicates that the uncertainties in $\\alpha_S$ are predominantly influenced by the uncertainties in the accretion rate, $\\dot{M}_{\\star}$."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Rotation curves can constrain disk masses and assess gravitational stability.",
+      "experiment": "Fit thermally stratified rotation curves including self-gravity and compute Toomre Q.",
+      "result": "Ten dynamical disk-mass estimates; seven disk-to-star mass ratios above 5%; massive disks have Q>1.",
+      "finding": "The analyzed disks are gravitationally stable, with three masses below the method's reliable detection threshold.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "We constrained the dynamical disk mass for 10 sources within the exoALMA sample."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "Among the 10 sources analyzed in the exoALMA sample, 7 exhibit a disc-to-star mass ratio exceeding 5%."
+        },
+        {
+          "loc": "Gravitational instability?",
+          "quote": "The massive disks in our sample show $Q>1$, meaning that they all are gravitationally stable."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Dynamical gas masses and continuum dust masses imply the standard gas-to-dust ratio.",
+      "experiment": "Divide dynamical disk masses by inherited optically thin continuum dust masses.",
+      "result": "Average gas-to-dust ratio approximately 400.",
+      "finding": "Ratios exceed 100; underestimated dust masses are a likely explanation.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "We compared the dynamical disk masses with the dust based ones (cite: Curone_exoALMA), with the assumption of optically thin continuum emission, to determine the gas to dust ratio."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "We found values consistently above the standard 100, with an average of approximately 400."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "These large ratios likely result from the underestimation of dust masses due to the assumption of optically thin emission."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Dust radii relative to dynamical scale radii reveal the influence of radial drift and substructures.",
+      "experiment": "Compare dust 68%-flux radii with fitted scale radii and disk-evolution expectations.",
+      "result": "Average dust-radius to scale-radius ratio is 0.75.",
+      "finding": "Pressure-modulated substructures may mitigate radial drift.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Dust based measurement",
+          "quote": "On average, the dust radii are smaller than the scale radii, showing an average ratio of $0.75$."
+        },
+        {
+          "loc": "Dust based measurement",
+          "quote": "One possible reason may be the role of substructures, that slow down radial drift."
+        }
+      ]
+    },
+    {
+      "hypothesis": "CO depletion can explain the discrepancy between predicted and observed CO radii.",
+      "experiment": "Predict CO radii from dynamical mass and scale radius, then apply independently inferred CO abundances.",
+      "result": "Initial predictions overestimate CO radii; depletion improves agreement for most sources.",
+      "finding": "The discrepancy may indicate CO depletion.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "We observe that the theoretical expectations systematically overestimate the CO radius."
+        },
+        {
+          "loc": "Gas based measurement",
+          "quote": "A possible explanation is CO depletion."
+        },
+        {
+          "loc": "Gas based measurement",
+          "quote": "For most of the sources, using these CO abundances result in a better agreement with the observed values."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Non-Keplerian contributions materially affect stellar-mass estimates.",
+      "experiment": "Compare dynamical stellar masses with DISCMINER masses based on stellar gravity alone.",
+      "result": "Typical differences are approximately 5%, excluding AA Tau, with deviations in both directions.",
+      "finding": "Including pressure gradients and disk self-gravity provides more accurate stellar-mass estimates.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Stellar masses",
+          "quote": "DISCMINER operates under the assumption that the azimuthal velocity is solely dictated by the stellar gravity, disregarding the pressure gradient and disk self-gravity."
+        },
+        {
+          "loc": "Stellar masses",
+          "quote": "In general, excluding AA Tau as discussed before, we note that the percentage difference between dynamical masses and the DISCMINER ones is of the order of $\\sim 5\\%$."
+        },
+        {
+          "loc": "Stellar masses",
+          "quote": "Consequently, the dynamical masses obtained in this work are a more accurate estimate, as all the relevant non-Keplerian contributions are considered."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Dynamical disk properties and stellar accretion rates constrain effective angular momentum transport.",
+      "experiment": "Calculate effective alpha_S assuming self-similar evolution.",
+      "result": "Effective alpha_S spans 10^-5 to 10^-2.",
+      "finding": "Transport efficiencies span a broad range; different mechanisms or accretion variability are possible explanations.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "assuming self-similar evolution of the surface density, we constrain the effective $\\alpha_S$ for these systems."
+        },
+        {
+          "loc": "Abstract",
+          "quote": "We find a broad range of $\\alpha_S$ values ranging between $10^{-5}$ and $10^{-2}$."
+        },
+        {
+          "loc": "Transport of angular momentum - effective $\\alpha_S$",
+          "quote": "possibly pointing to different mechanisms driving angular momentum transport, or even accretion rate variability."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Well-defined emitting surfaces and absence of non-axisymmetric features are required for rotation-curve extraction and centrifugal balance.",
+      "evidence": [
+        {
+          "loc": "Sample",
+          "quote": "the crucial criteria are the availability of well-defined and precisely measured CO emitting surfaces along which to appropriately sample the rotation curve"
+        },
+        {
+          "loc": "Sample",
+          "quote": "the absence of non-axisymmetric features, which may affect the azimuthal averaging, intrinsic to the definition of rotation curve, and the very assumption of centrifugal balance."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Thermal stratification is needed because a vertically isothermal model cannot explain the shift between the two isotopologue rotation curves.",
+      "evidence": [
+        {
+          "loc": "Physical model",
+          "quote": "The need for including thermal stratification is justified in (cite: Stadler_exoALMA), showing that the shift between $^{12}$CO and $^{13}$CO rotation curves can not be explained by a vertical isothermal model."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Vertically isothermal model rejected for explaining the isotopologue rotation-curve shift.",
+      "evidence": [
+        {
+          "loc": "Physical model",
+          "quote": "the shift between $^{12}$CO and $^{13}$CO rotation curves can not be explained by a vertical isothermal model."
+        }
+      ]
+    },
+    {
+      "value": "Gaussian density gaps and rings tested in LkCa15 with self-consistent pressure gradient and self-gravity.",
+      "evidence": [
+        {
+          "loc": "Model for the rotation curve",
+          "quote": "Specifically, we modelled the density variations associated with gaps and rings as Gaussians and then computed the pressure gradient and disc self-gravity self-consistently."
+        },
+        {
+          "loc": "Model for the rotation curve",
+          "quote": "We applied this approach to the rotation curve of a reference disc, LkCa 15, fitting the data both with and without the inclusion of substructures."
+        }
+      ]
+    },
+    {
+      "value": "For below-threshold disk masses, use the fitted value or M_d=0.05 M_star as an upper limit.",
+      "evidence": [
+        {
+          "loc": "Disk masses",
+          "quote": "One can decide whether to employ the best fit value we report, or to use $M_d=0.05M_\\star$ as an upper limit."
+        }
+      ]
+    },
+    {
+      "value": "Reduced CO abundance considered to reconcile theoretical and observed CO radii.",
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "we see that reducing the CO abundance brings the theoretical values closer to the observed ones."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Velocity data are treated as uncorrelated despite finite-beam and extraction-induced correlations.",
+      "evidence": [
+        {
+          "loc": "DySc Code and statistical framework",
+          "quote": "Although this is not entirely true because of the finite beam size and of the rotation curve extraction procedure, quantifying the correlation between the data is beyond the scope of the paper."
+        }
+      ]
+    },
+    {
+      "value": "Fixing gamma=1 underestimates uncertainties and can bias the scale radius.",
+      "evidence": [
+        {
+          "loc": "DySc Code and statistical framework",
+          "quote": "All the fits are performed fixing the power law coefficient of the surface density $\\gamma=1$, underestimating the true uncertainties."
+        },
+        {
+          "loc": "DySc Code and statistical framework",
+          "quote": "In addition, this choice introduces a potential bias on the scale radius, that is the parameter most affected by the choice of $\\gamma$, while the disk and stellar masses are not (cite: Andrews24)."
+        }
+      ]
+    },
+    {
+      "value": "Geometrical parameters, emitting-layer heights and disk centering can contribute systematic uncertainty.",
+      "evidence": [
+        {
+          "loc": "Systematic uncertainties",
+          "quote": "In principle, the geometric parameters (inclination $i$ and position angle PA) and the height of the emitting layer can contribute to the systematic uncertainties."
+        },
+        {
+          "loc": "Systematic uncertainties",
+          "quote": "Additionally, as pointed out in (cite: Andrews24), the position of the center of the disk may induce significant uncertainties"
+        }
+      ]
+    },
+    {
+      "value": "J1852, PDS66 and V4046 have fitted disk masses below the approximately 5% disk-to-star measurability threshold.",
+      "evidence": [
+        {
+          "loc": "Disk masses",
+          "quote": "As outlined by (cite: veronesi24; Andrews24), the minimum detectable disk-to-star mass ratio with this method is approximately 5%."
+        },
+        {
+          "loc": "Disk masses",
+          "quote": "In our sample, only three sources —J1852, PDS66, and V4046— have best-fit disk mass values below this threshold."
+        }
+      ]
+    },
+    {
+      "value": "AA Tau outer emission is contaminated by diffuse backside emission; the model cannot account for the emitting-height drop.",
+      "evidence": [
+        {
+          "loc": "The case of AA Tau",
+          "quote": "the signal coming from the outer disk of AA Tau is contaminated by the backside diffuse emission."
+        },
+        {
+          "loc": "Rotation curve fits",
+          "quote": "leads to a systematic shift of the best fit parameters, since our model can not take this into account."
+        }
+      ]
+    },
+    {
+      "value": "Optically thin continuum assumptions can underestimate dust masses.",
+      "evidence": [
+        {
+          "loc": "Gas to dust ratio",
+          "quote": "dust masses computed in (cite: Curone_exoALMA) underestimate the total dust mass, because of the optically thin emission hypothesis."
+        }
+      ]
+    },
+    {
+      "value": "Toomre-Q inference uses extrapolated midplane temperatures.",
+      "evidence": [
+        {
+          "loc": "Gravitational instability?",
+          "quote": "We underline that the temperature at the midplane is extrapolated from the 2D thermal structures (cite: Galloway_exoALMA)."
+        }
+      ]
+    },
+    {
+      "value": "The adopted thermochemical radius relation does not explicitly state its CO-abundance dependence.",
+      "evidence": [
+        {
+          "loc": "Gas based measurement",
+          "quote": "There, the dependence on CO abundance is not explicitly stated."
+        }
+      ]
+    },
+    {
+      "value": "Effective alpha_S does not uniquely imply turbulence-driven accretion.",
+      "evidence": [
+        {
+          "loc": "Transport of angular momentum - effective $\\alpha_S$",
+          "quote": "Additionally, the formula does not imply that accretion is driven by turbulence; the values it returns should be interpreted as an effective $\\alpha_S$, i.e. the amount of transported angular momentum."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Table 1 gives DM Tau M_star=0.468 M_sun, while the angular-momentum discussion calls 0.456 M_sun its best fit; use Table 1 as the primary answer key and retain the discrepancy.",
+    "The printed likelihood has ambiguous summation and normalization placement; verify the implementation before reproducing it.",
+    "The geometric and thermal uncertainty treatment should be distinguished from a complete propagation of all systematic errors.",
+    "Below-threshold disk masses and derived ratios should not be treated as secure mass detections solely because their fitted intervals are narrow.",
+    "The substructure robustness experiment is described for one reference disk, limiting generalization across the sample.",
+    "The reported average gas-to-dust ratio lacks an explicit averaging prescription and uncertainty.",
+    "The manuscript uses different figure references for the depleted-CO comparison; identify the plotted data directly.",
+    "Table 3 cites ingleby13, whereas the reference-list key is ingleby13 spelled with an initial i followed by n in the author name Ingleby but indexed as ingleby13 only in the table citation; the supplied reference marker is ingleby13's differing form ingleby13 in prose conversion and should be resolved from the actual bibliography."
+  ],
+  "reproducibility": [],
+  "code_released": [
+    {
+      "value": "DYSC repository: https://github.com/crislong/DySc; version not stated.",
+      "evidence": [
+        {
+          "loc": "Rotation curve fits",
+          "quote": "https://github.com/crislong/DySc"
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "Explicit public-data statement or product-access instructions.",
+    "Calibrated/default cubes and the calibration/imaging recipe.",
+    "Machine-readable rotation curves, uncertainties, masks and adopted distances.",
+    "Joint thermal posterior samples from the companion analysis.",
+    "DYSC version or commit, execution configuration and numerical model settings.",
+    "Posterior aggregation and interval conventions for the 100 repeated fits.",
+    "Continuum dust-mass assumptions, source-specific CO depletion and 90%-flux-radius inputs from companion papers.",
+    "Resolution of the DM Tau stellar-mass inconsistency and printed-likelihood ambiguity."
+  ],
+  "estimated_data_volume_inferred": "Cannot estimate bytes from the supplied text; cube dimensions, channel counts and visibility volume are absent.",
+  "score_inferred": 5,
+  "score_reason": "5/10: project code, model, priors, sampler lengths and numeric outputs are supplied, but processing and several essential inputs are delegated to companion papers.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Numeric answer keys are available, but public availability is not stated and the supplied text does not provide a complete executable recipe or all required input products.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Lodato23)",
+      "why": "Rotation-curve model including pressure gradients and disk self-gravity."
+    },
+    {
+      "citation": "(cite: martire24)",
+      "why": "Thermally stratified rotation-curve model and earlier DYSC application."
+    },
+    {
+      "citation": "(cite: Lyndenbell74)",
+      "why": "Self-similar surface-density solution."
+    },
+    {
+      "citation": "(cite: Dartois03)",
+      "why": "Vertical temperature prescription."
+    },
+    {
+      "citation": "(cite: emcee)",
+      "why": "MCMC library used by DYSC."
+    },
+    {
+      "citation": "(cite: discminer1; discminer2)",
+      "why": "Rotation-curve extraction methods."
+    },
+    {
+      "citation": "(cite: veronesi24; Andrews24)",
+      "why": "Dynamical-mass uncertainties and disk-to-star detection threshold."
+    },
+    {
+      "citation": "(cite: toomre64; linshu64)",
+      "why": "Gravitational-stability criterion."
+    },
+    {
+      "citation": "(cite: toci23; trapman23)",
+      "why": "Thermochemical CO-radius relation."
+    },
+    {
+      "citation": "(cite: hartmann98)",
+      "why": "Effective-alpha relation using accretion and disk properties."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: Stadler_exoALMA)",
+      "why": "Rotation curves, default cubes, thermal-stratification motivation and inner radial exclusion."
+    },
+    {
+      "citation": "(cite: Izquierdo_exoALMA)",
+      "why": "DISCMINER emitting surfaces, geometrical inputs and gas centering."
+    },
+    {
+      "citation": "(cite: Galloway_exoALMA)",
+      "why": "Thermal parameters, posterior distributions, gas radii and backside-emission diagnostics."
+    },
+    {
+      "citation": "(cite: Curone_exoALMA)",
+      "why": "Dust masses, dust radii, continuum centering and substructures."
+    },
+    {
+      "citation": "(cite: Teague_exoALMA)",
+      "why": "DISCMINER stellar-mass comparison."
+    },
+    {
+      "citation": "(cite: Trapman_exoALMA)",
+      "why": "Independent chemical masses and CO-depletion estimates."
+    },
+    {
+      "citation": "(cite: Rosotti_exoALMA)",
+      "why": "CO-depletion inference tied to the dynamical masses."
+    }
+  ],
+  "related_projects_or_surveys": ["exoALMA", "MAPS"]
+}

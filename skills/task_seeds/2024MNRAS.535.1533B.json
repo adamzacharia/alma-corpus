@@ -1,0 +1,531 @@
+{
+ "bibcode": "2024MNRAS.535.1533B",
+ "title": "A novel high-z submm galaxy efficient line survey in ALMA Bands 3 through 8 - an ANGELS pilot",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae2409",
+ "arxiv_id": "2410.16351",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Test the viability of a rapid snapshot-style line survey with ALMA across Bands 3 through 8 with tunings optimized to cover as many spectral lines as possible in high-redshift dusty star-forming galaxies.",
+ "alma_project_codes": [
+  "2016.2.00133.S",
+  "2018.1.00804.S",
+  "2019.1.01477.S",
+  "2021.1.01628.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 5, 6, 7, and 8",
+  "arrays": "not stated",
+  "angular_resolution": "0''.5 - 0''.1 (Band 3: 0.51 × 0.30''; Band 4: 0.38 × 0.34''; Band 5: 0.31 × 0.26''; Band 6: 0.20 × 0.18''; Band 7: 0.17 × 0.12''; Band 8: 0.17 × 0.16'')",
+  "sensitivity": "Continuum / 35 km/s [mJy/beam]: Band 3: 0.051 / 1.25; Band 4: 0.049 / 1.04; Band 5: 0.051 / 0.92; Band 6: 0.069 / 1.89; Band 7: 0.102 / 1.52; Band 8: 0.210 / 2.61"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic redshifts, unresolved velocity widths, and Band 3/4 CO and [CI] line fluxes and surface densities from BEARS",
+    "evidence": [
+     {
+      "loc": "2.1 Target selection",
+      "quote": "The Bright Extragalactic ALMA Redshift Survey (BEARS) provided the bulk of the spectroscopic redshifts across 62 Herschel sources (Urquhart et al. 2022)"
+     },
+     {
+      "loc": "Figure 8 caption",
+      "quote": "The CO SLEDs of all sources including the new CO line observations from the ANGELS survey and previous values from the BEARS survey (Urquhart et al. 2022; Hagimoto et al. 2023)"
+     }
+    ]
+   },
+   "citation": "Urquhart et al. (2022); Hagimoto et al. (2023); Bendo et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "Herschel photometry and infrared luminosity templates for HerBS sources",
+    "evidence": [
+     {
+      "loc": "2.1 Target selection",
+      "quote": "The average infrared luminosities of these sixteen fields are on average 𝜇L_IR = 4.2×10^13 L_⊙ based on the luminosities documented in (Bakx et al. 2018, 2020b)"
+     }
+    ]
+   },
+   "citation": "Bakx et al. (2018, 2020b); Pearson et al. (2013)"
+  },
+  {
+   "what": {
+    "value": "Average CO SLED template for normalization",
+    "evidence": [
+     {
+      "loc": "5.1 CO Spectral Line Energy Distributions",
+      "quote": "we use the average CO SLED template of Harrington et al. (2021) to translate from the lowest-available J transition to CO(4–3)"
+     }
+    ]
+   },
+   "citation": "Harrington et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Cosmic Eyelash galaxy SED template",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum snapshots",
+      "quote": "we use the Herschel-photometry to re-derive the luminosity by fixing the redshift to the z_spec (Bakx et al. 2018, 2020b) assuming the spectrum of the famous Eyelash galaxy (see e.g. Ivison et al. 2016)."
+     }
+    ]
+   },
+   "citation": "Ivison et al. (2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibility data, subtract continuum, and image continuum and spectral cubes",
+   "method": "Restore pipeline calibration in CASA, bin channels by 16 to locate lines, subtract continuum from visibilities using line-free channels, and image continuum and cubes with tclean using Hogbom deconvolver and 0.05 arcsec uv-taper (plus 0.5 arcsec taper for HerBS-159A/B).",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Channel binning factor = 16 for initial line search; line exclusion window = 0.4 GHz for undetected expected lines",
+    "Natural weighting for continuum; briggsbwtaper with robust = 2 for cubes; uv-taper = 0.05 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectral line profiles and measure integrated line fluxes, widths, and velocity offsets",
+   "method": "Define apertures by matching Band 7 2-sigma continuum contours (and 2-sigma moment-0 contours for large sources) to the cube resolution and extending by up to 3 beams; extract spectra and fit single Gaussian profiles.",
+   "software": [],
+   "key_parameters": [
+    "2-sigma continuum and moment-0 contour thresholds, extended by up to 3 beams (no spatial smoothing for absorption lines)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model gravitational lensing and measure intrinsic source sizes and magnifications",
+   "method": "Two-phase visibility-plane (uv-plane) lens modelling of Band 7 data using PyAutoLens (SIE lens + external shear; Phase 1: Sersic source, Phase 2: pixelated Voronoi mesh with constant regularization). For unlensed sources, fit Sersic profile in image plane using CASA IMFIT.",
+   "software": [
+    "PyAutoLens",
+    "CASA",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "Sersic index n free between 0.5 and 5 for lensed sources; n = 0.5 fixed in IMFIT for unlensed sources"
+   ],
+   "assumptions": [
+    "Singular Isothermal Ellipsoid (SIE) lens mass profile with external shear; flat Lambda-CDM Planck 2020 cosmology (Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.674)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive infrared luminosities, dust temperatures, and dust masses",
+   "method": "Fit Herschel photometry at fixed spectroscopic redshift using (1) Cosmic Eyelash template, (2) Bakx et al. (2018, 2020b) template, and (3) single-temperature modified black-body with beta_dust = 2.0; distribute multi-component luminosity by Band 7 flux ratios. For resolved luminosity, fit Band 7 flux with T_d = 35 K, beta_dust = 2 MBB.",
+   "software": [],
+   "key_parameters": [
+    "T_d = 35 K, beta_dust = 2.0 for resolved Band 7 MBB; beta_dust = 2.0 for Herschel MBB fit"
+   ],
+   "assumptions": [
+    "Multiple components in a field have the same colour temperature and redshift; beta_dust = 2.0"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Construct CO SLEDs, analyze absorption line velocity offsets, and build a stacked composite spectrum",
+   "method": "Combine ANGELS and BEARS CO fluxes normalized to CO(4-3) (using Harrington et al. 2021 template when CO(4-3) is absent); compare absorption line velocities to systemic CO velocities; stack spectra extracted from >2-sigma Band 7 regions (smoothed by 1 beam) normalized to z = 2.5 and L_IR = 10^13 L_sun using variance weighting.",
+   "software": [],
+   "key_parameters": [
+    "z_common = 2.5, L_IR = 10^13 L_sun, variance weighting"
+   ],
+   "assumptions": [
+    "Harrington et al. (2021) average CO SLED template is representative for translating lowest-J CO to CO(4-3)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Evaluate the resolved Schmidt-Kennicutt star-formation law and intrinsic star-formation surface densities",
+   "method": "Smooth Band 7 dust continuum to the beam size of the lowest-J ANGELS CO transition; compare pixel-by-pixel (>3-sigma in one map and >1-sigma in the other) and downsample for beam independence to derive Sigma_SFR and Sigma_H2.",
+   "software": [],
+   "key_parameters": [
+    "Pixel thresholds: > 3 sigma in CO or dust and > 1 sigma in the other"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.0 M_sun (K km s^-1 pc^2)^-1; IR luminosity-to-SFR conversion factor = 1.73 x 10^-10 M_sun yr^-1 / L_sun (Salpeter 1-100 M_sun IMF)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total spectral lines targeted",
+   "value": "94",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "8.2 Efficiency compared to overhead-limited surveys",
+     "quote": "In total, 94 spectral lines were targeted across 28 different line transitions."
+    }
+   ]
+  },
+  {
+   "quantity": "Total spectral lines detected",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "With only six and a half hours of observations, we reveal 66 spectral lines in 17 galaxies."
+    },
+    {
+     "loc": "8.2 Efficiency compared to overhead-limited surveys",
+     "quote": "66 lines were detected, resulting in a detection ratio of 70%."
+    }
+   ]
+  },
+  {
+   "quantity": "Emission lines detected",
+   "value": "54",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5 SPECTRAL LINE PROPERTIES",
+     "quote": "The ANGELS observations have revealed a multitude of lines, consisting of 54 emission and 12 absorption lines, summarized in Table 4."
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption lines detected",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5 SPECTRAL LINE PROPERTIES",
+     "quote": "The ANGELS observations have revealed a multitude of lines, consisting of 54 emission and 12 absorption lines, summarized in Table 4."
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-21",
+   "value": "9.0",
+   "uncertainty": "± 1.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-21 9.0 ± 1.8 121^+13_-10 0.924^+0.100_-0.080"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic source radius of HerBS-21",
+   "value": "0.924",
+   "uncertainty": "+0.100/-0.080",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-21 9.0 ± 1.8 121^+13_-10 0.924^+0.100_-0.080"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-22",
+   "value": "18.8",
+   "uncertainty": "± 3.7",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-22 18.8 ± 3.7 38^+1_-1 0.301^+0.009_-0.009"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic source radius of HerBS-22",
+   "value": "0.301",
+   "uncertainty": "+0.009/-0.009",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-22 18.8 ± 3.7 38^+1_-1 0.301^+0.009_-0.009"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-25",
+   "value": "9.2",
+   "uncertainty": "± 1.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-25 9.2 ± 1.8 279^+46_-27 2.217^+0.368_-0.222"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic source radius of HerBS-25",
+   "value": "2.217",
+   "uncertainty": "+0.368/-0.222",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-25 9.2 ± 1.8 279^+46_-27 2.217^+0.368_-0.222"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-36",
+   "value": "4.1",
+   "uncertainty": "± 0.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-36 4.1 ± 0.8 86^+3_-3 0.672^+0.027_-0.023"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic source radius of HerBS-36",
+   "value": "0.672",
+   "uncertainty": "+0.027/-0.023",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-36 4.1 ± 0.8 86^+3_-3 0.672^+0.027_-0.023"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-41A",
+   "value": "2.6",
+   "uncertainty": "± 0.5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-41 2.6 ± 0.5 90^+2_-2 0.633^+0.018_-0.018"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic source radius of HerBS-41A",
+   "value": "0.633",
+   "uncertainty": "+0.018/-0.018",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-41 2.6 ± 0.5 90^+2_-2 0.633^+0.018_-0.018"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-87",
+   "value": "8.7",
+   "uncertainty": "± 1.7",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-87 8.7 ± 1.7 49^+3_-2 0.417^+0.024_-0.021"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-104",
+   "value": "6.3",
+   "uncertainty": "± 1.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-104 6.3 ± 1.2 83^+5_-2 0.721^+0.046_-0.024"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-106",
+   "value": "2.3",
+   "uncertainty": "± 0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-106 2.3 ± 0.4 239^+16_-15 2.001^+0.131_-0.129"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification of HerBS-155",
+   "value": "28.3",
+   "uncertainty": "± 5.6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-155 28.3 ± 5.6 71^4_-3 0.553^+0.030_-0.027"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic source radius of HerBS-170",
+   "value": "6.64",
+   "uncertainty": "± 0.47",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HerBS-170∗ 1.0 952 ± 67 6.64 ± 0.47"
+    }
+   ]
+  },
+  {
+   "quantity": "Strong lensing fraction in ANGELS sample",
+   "value": "56",
+   "uncertainty": "± 13",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "7.1 Lensing among the HerBS sources",
+     "quote": "The lensing fraction of\n56 ± 13 per cent (assuming a binomial distribution; Gehrels 1986) is"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of sources with dense, warm gas from high-J CO SLEDs",
+   "value": "36",
+   "uncertainty": "± 13",
+   "units": "per cent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 CO Spectral Line Energy Distributions",
+     "quote": "The prevalence of dense, warm gas thus appears diverse across distant dusty galaxies, with ∼ 36 ± 13 per cent (using a binomial distribution; Gehrels 1986) of sources showing such evidence"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-41A CO(18-17) velocity-integrated flux",
+   "value": "3.15",
+   "uncertainty": "± 1.11",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C1",
+     "quote": "CO (18–17) 406.999 band 8 3.15 ± 1.11 941 ± 4 -173 ± 299"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-41A [OI] 145 um velocity-integrated flux",
+   "value": "10.27",
+   "uncertainty": "± 2.72",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C1",
+     "quote": "[O i] 145 𝜇𝑚 404.081 band 8 10.27 ± 2.72 941 ± 135 -481 ± 106"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-170 [NII] 205 um velocity-integrated flux",
+   "value": "4.36",
+   "uncertainty": "± 1.93",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C1",
+     "quote": "[N ii] 205 𝜇𝑚 281.873 band 7 4.36 ± 1.93 304 ± 102 51 ± 43"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-184 [NII] 205 um velocity-integrated flux",
+   "value": "4.15",
+   "uncertainty": "± 2.94",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C1",
+     "quote": "[N ii] 205 𝜇𝑚 416.629 band 8 4.15 ± 2.94 362 ± 194 4 ± 82"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-36 CH+(2-1) absorption velocity-integrated flux",
+   "value": "-5.21",
+   "uncertainty": "± 2.03",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C1",
+     "quote": "CH+ (2−1) 407.638 band 8 -5.21 ± 2.03 128 ± 43 64 ± 16"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-21 OH+(1_2-0_1) velocity offset relative to CO",
+   "value": "189",
+   "uncertainty": "± 33",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C1",
+     "quote": "OH+ (12 − 01) 224.799 band 6 -6.1 ± 1.45 439 ± 78 189 ± 33"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Stopping criteria (threshold, niter) and masking strategy in CASA tclean for continuum and cube imaging",
+  "Exact final channel widths chosen for each individual spectral line cube after optimization",
+  "Polynomial order (fitorder) used in CASA uvcontsub for visibility continuum subtraction",
+  "Flux calibrator name(s) used in the ALMA observations",
+  "Non-linear sampler and priors used in PyAutoLens for the parametric and pixelated lensing reconstructions"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean stopping criteria (niter, threshold) and masking parameters",
+  "Final velocity channel widths used for each individual line cube",
+  "Custom aperture-generation and Gaussian line-fitting scripts",
+  "PyAutoLens configuration scripts, priors, and sampler settings for the 9 lensed galaxies"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project codes, exact frequency tunings, CASA versions, weighting, deconvolver, uv-taper, pixel sizes, beam sizes, and per-line aperture thresholds (in Figure C1) are thoroughly documented; minor deductions for unstated tclean stopping thresholds, final cube channel widths, and PyAutoLens priors.",
+ "rediscovery_reason": "Public ALMA archive data (2021.1.01628.S and BEARS programmes) with explicit spectral setups, target coordinates, redshifts, and rich numeric tables of 66 line fluxes (Table C1), lensing magnifications and sizes (Table 3), and IR luminosities (Table D1).",
+ "source_card": "cards/2024MNRAS.535.1533B/sonnet/card.md"
+}

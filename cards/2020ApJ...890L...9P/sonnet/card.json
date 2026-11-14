@@ -1,0 +1,760 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...890L...9P",
+  "title": "Nine Localized Deviations from Keplerian Rotation in the DSHARP Circumstellar Disks: Kinematic Evidence for Protoplanets Carving the Gaps",
+  "year": 2020,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Pinte, C.",
+  "n_authors": 15,
+  "arxiv_id": "2001.07720",
+  "doi": "10.3847/2041-8213/ab6dda",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00484.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations and imaging",
+    "quote": "We detected the velocity kinks by manually inspecting the publicly available, science ready DSHARP $^{12}$CO J=2-1 data cubes"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "DSHARP disks (DoAr 25, Elias 2-27, GW Lup, HD 143006, HD 163296, IM Lup, Sz 129, WaOph 6)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "101-165 pc (e.g. HD 163296: 101 ± 2 pc; HD 143006: 165 ± 5 pc)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| IM Lup | 0.70 | 69 | 14 | $<700$ | $<0.24$ | 117 | 0.13 | 1.12 | 158 $\\pm$ 3 | blue-shifted near side |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Do DSHARP disks show localised velocity kinks in 12CO channel maps indicating embedded protoplanets, and do they coincide with continuum gaps?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "To answer this question, we have searched through existing ALMA archival data for kinks."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00484.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.­ALMA#2016.1.00484.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "12CO J=2-1; channel width 244 kHz, velocity resolution 640 m/s after Hanning smoothing",
+    "evidence": [
+     {
+      "loc": "Observations and imaging",
+      "quote": "The channel width of the DSHARP data is 244 kHz. Due to Hanning smoothing, the velocity resolution is 640 m.s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "DSHARP $^{12}$CO J=2-1 data cubes"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "CO imaged at 0.1\"",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "were imaged at 0.1” spatial resolution due to the low signal-to-noise ratio"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Publicly available DSHARP large program data",
+    "evidence": [
+     {
+      "loc": "Observations and imaging",
+      "quote": "publicly available, science ready DSHARP $^{12}$CO J=2-1 data cubes"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Gap radii/widths, stellar masses, distances and spiral detections for the DSHARP sample",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the protoplanet would also lie at the tip of a spiral arm detected in the dust continuum emission (cite: Huang2018b)"
+       }
+      ]
+     },
+     "citation": "Huang2018b; Andrews2018b"
+    },
+    {
+     "what": {
+      "value": "HD 163296 disk model with a 3 MJup planet at 260 au used for synthetic models",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "We used the disk model presented in (cite: Pinte2018b) for HD 163296, with a 3 M$_\\mathrm{Jup}$ planet at 260 au."
+       }
+      ]
+     },
+     "citation": "Pinte2018b"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "SPH simulation (phantom) plus radiative transfer (mcfost) of a 3 MJup planet at 260 au in HD 163296 disk, at various planet azimuths",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "implemented by rotating each particle in the smoothed particle hydrodynamics simulation by a random angle in the disk plane prior to performing the radiative transfer"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Released calibrated visibilities and scripts used",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "we used the released non-continuum-subtracted visibilities, and adapted the released scripts to re-image with the same parameters as the fiducial"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "auto-masking in all cases",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "Here we used auto-masking in all cases"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Re-imaged without continuum subtraction and compared with subtracted cubes",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "we re-imaged all the CO data without continuum subtraction."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Channel spacing 350 m/s (320 m/s for HD 163296 and HD 143006)",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "350 m.s$^{-1}$, except for HD 163296 and HD 143006 which were imaged with a velocity spacing of 320 m.s$^{-1}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging parameters of fiducial DSHARP CO images",
+      "evidence": [
+       {
+        "loc": "Observations and imaging",
+        "quote": "re-image with the same parameters as the fiducial (continuum subtracted) DSHARP images (see Table 5 in (cite: Andrews2018b))"
+       }
+      ]
+     },
+     "from_reference": "Andrews2018b"
+    },
+    {
+     "what": {
+      "value": "Method for deprojecting kinks to midplane using CO emitting layer altitude",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "using the method described in (cite: Pinte2018a) to measure the CO emitting layer altitude"
+       }
+      ]
+     },
+     "from_reference": "Pinte2018a"
+    }
+   ],
+   "unstated_but_needed": [
+    "Robust, taper, clean threshold and scales of the re-imaging (only in Andrews2018b Table 5)",
+    "Exact quantitative procedure for deprojection and emitting-layer heights per disk",
+    "Inclination, PA and systemic velocity per disk for isovelocity curves",
+    "Model parameters of the mcfost/phantom simulations",
+    "CASA version"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Re-image CO cubes without continuum subtraction",
+    "method": {
+     "value": "Re-imaged released non-continuum-subtracted visibilities with DSHARP parameters and auto-masking",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "adapted the released scripts to re-image with the same parameters as the fiducial (continuum subtracted) DSHARP images"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Kinks must appear in both subtracted and non-subtracted cubes",
+     "evidence": [
+      {
+       "loc": "Observations and imaging",
+       "quote": "The kinks we present below are detected in both the continuum subtracted and non-continuum subtracted cubes in each case."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify velocity kinks",
+    "method": {
+     "value": "Visual inspection of channel maps with isovelocity curves at ±0.2 vKep",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The kinks were identified by visual inspection of the CO cubes."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Opposite-velocity channel checked to show non-axisymmetry",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "demonstrating that the kink is not an axisymmetric feature"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Deproject kink to planet location",
+    "method": {
+     "value": "Deprojection to midplane using CO emitting layer altitude, blind to continuum gaps",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "this deprojection was performed blind in the continuum subtracted channel maps, i.e. without reference to the dust gap locations"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Imaging robustness tests",
+    "method": {
+     "value": "Deeper CLEAN, different uv taper, robust, scales, velocity binning, half-channel offset, beam-area-matched clean model",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "We also imaged the cubes with deeper CLEANing, as well as different choices of *uv* taper, robust parameters, CLEANing scales and velocity binning."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Kinks remain detected in all tests",
+     "evidence": [
+      {
+       "loc": "Imaging tests",
+       "quote": "In all cases, the velocity kink remains detected."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Synthetic kink detectability vs planet azimuth",
+    "method": {
+     "value": "SPH + radiative transfer models, moment 1 minus azimuthally averaged model",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "we computed the moment 1 map and subtracted an azimuthally averaged model"
+      }
+     ]
+    },
+    "software": [
+     "phantom",
+     "mcfost"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Re-imaging of CO cubes",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (cite: McMullin07), phantom (cite: Price2018), mcfost (cite: Pinte06; Pinte09)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "phantom",
+    "version": "not stated",
+    "used_for": {
+     "value": "SPH simulation of planet-disk",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (cite: McMullin07), phantom (cite: Price2018), mcfost (cite: Pinte06; Pinte09)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "mcfost",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer for synthetic channel maps",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (cite: McMullin07), phantom (cite: Price2018), mcfost (cite: Pinte06; Pinte09)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of kinks detected",
+    "value": "9 kinks in 8 of 18 disks",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We detect 9 velocity kinks in 8 of 18 selected DSHARP objects."
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity deviation relative to local Keplerian",
+    "value": "10-15%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we estimate the observed perturbations to be of order 10-15% of the local Keplerian velocity"
+     }
+    ]
+   },
+   {
+    "quantity": "Maximal Doppler flip amplitude in synthetic models",
+    "value": "about 150",
+    "uncertainty": "not stated",
+    "units": "m/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the amplitude is small, with maximal deviations of about 150 m/s"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All deprojected candidate planets lie in continuum gaps; two (IM Lup, WaOph 6) also at spiral tips",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "In every case the candidate protoplanet would lie within a gap in the dust continuum emission."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do DSHARP disks show planet-induced velocity kinks?",
+    "experiment": "Visual search of 12CO cubes, with and without continuum subtraction",
+    "result": "9 kinks in 8 of 18 disks",
+    "finding": "Candidate protoplanets, requiring confirmation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the kinks are usually detected in only one spectral channel, and will require confirmation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are kinks associated with dust gaps?",
+    "experiment": "Deprojection of kinks to disk midplane",
+    "result": "All lie in a gap and/or at a spiral end",
+    "finding": "Many dust gaps likely carved by protoplanets",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find that *all* of the candidate planets lie within a gap and/or at the end of a spiral detected in dust continuum emission"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are kinks imaging artefacts?",
+    "experiment": "Re-imaging variants and no continuum subtraction",
+    "result": "Kinks persist",
+    "finding": "Not artefacts of tested imaging choices",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Imaging tests",
+      "quote": "In all cases, the velocity kink remains detected."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Continuum subtraction, optical depth/emitting layer gaps, massive companions, pressure gradients considered as alternatives",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Several observational effects and physical mechanisms may produce features in the channel maps that look like velocity kinks."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "No quantitative detection confidence; limited S/N and spectral resolution; cloud contamination",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "There is currently no quantitative means of assessing confidence in a detection"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Detection by visual inspection is subjective and without false-positive estimate",
+    "Single-channel detections at S/N ~7-14 may be noise or cloud structure",
+    "Gap association could be partly coincidence given many gaps per disk"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public DSHARP data and scripts",
+    "evidence": [
+     {
+      "loc": "Observations and imaging",
+      "quote": "publicly available, science ready DSHARP $^{12}$CO J=2-1 data cubes"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters only by reference to Andrews2018b",
+    "No objective kink-detection criterion",
+    "Deprojection details by reference"
+   ],
+   "estimated_data_volume_inferred": "tens to ~100 GB for 18 disks' CO visibilities/cubes",
+   "score_inferred": 3,
+   "score_reason": "Public data and scripts, but detection is visual and key parameters are inherited.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are qualitative visual detections, not numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Pinte2018a",
+     "why": "Emitting layer altitude / deprojection method"
+    },
+    {
+     "citation": "Pinte2018b",
+     "why": "Kink technique and HD 163296 model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Andrews2018b",
+     "why": "DSHARP overview and imaging parameters"
+    },
+    {
+     "citation": "Perez_DSHARP",
+     "why": "HD 143006 kink"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DSHARP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-5d78bf20ea3ef89033b3e3ccc1ad9a19",
+  "batch_id": "msgbatch_012UviaDL888tR5UUnc1ND6B",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T21:46:10",
+  "usage": {
+   "input_tokens": 15297,
+   "output_tokens": 5293,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042369,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 38,
+  "quotes_ok": 38,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 29,
+   "rate": 0.42
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:33",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].validation",
+    "old_value": "Compared with continuum gaps and spirals"
+   }
+  ],
+  "dropped_items": []
+ }
+}

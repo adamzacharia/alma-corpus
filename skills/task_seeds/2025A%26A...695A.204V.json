@@ -1,0 +1,329 @@
+{
+ "bibcode": "2025A&A...695A.204V",
+ "title": "Quantifying the detection likelihood of faint peaks in interferometric data through jackknifing: Test application on finding z &gt; 10 galaxy candidates",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202451927",
+ "arxiv_id": "2501.03150",
+ "fields": [
+  "high_z_galaxies",
+  "instrumentation"
+ ],
+ "question": "How to quantify the detection likelihood of faint line peaks in interferometric data by jackknifing visibilities, tested on tentative [O III] 88 um detections toward three z>10 galaxy candidates",
+ "alma_project_codes": [
+  "2021.A.00020.S",
+  "2021.A.00023.S",
+  "2021.A.00031.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Reported 5.8 sigma [O III] peak for GLASS-z12",
+    "evidence": [
+     {
+      "loc": "5.2 Results on blind line searches",
+      "quote": "which differs from their reported $5.8\\sigma$ peak over 400 km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Bakx2023)"
+  },
+  {
+   "what": {
+    "value": "Reported 5.1 sigma peak for S5-z17-1",
+    "evidence": [
+     {
+      "loc": "5.2 Results on blind line searches",
+      "quote": "We recover the peak reported in (cite: Fujimoto2023), albeit with a significance of $3.9\\sigma$ instead of the reported $5.1\\sigma$."
+     }
+    ]
+   },
+   "citation": "(cite: Fujimoto2023)"
+  },
+  {
+   "what": {
+    "value": "JWST/MRS redshift of GLASS-z12, z_spec = 12.33 +/- 0.02",
+    "evidence": [
+     {
+      "loc": "5.3 Quantifying detection significance with known redshifts",
+      "quote": "(cite: Zavala2024) detected bright nebular emission lines of GLASS-z12 with JWST, constraining the redshift to be $z_{\\rm spec} = 12.33 \\pm 0.02$."
+     }
+    ]
+   },
+   "citation": "(cite: Zavala2024)"
+  },
+  {
+   "what": {
+    "value": "Deeper GLASS-z12 observations reporting a ~4.5-5.2 sigma [O III] detection (not used in this work)",
+    "evidence": [
+     {
+      "loc": "5.3 Quantifying detection significance with known redshifts",
+      "quote": "That work showed a $\\approx 4.5-5.2\\sigma$ detection of the"
+     }
+    ]
+   },
+   "citation": "(cite: Zavala2024b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Prepare calibrated visibilities",
+   "method": "Average calibrated visibilities in time and frequency, subtract a first-order continuum with uvcontsub, then image with tclean",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "time averaging 30 s; spectral averaging ~30 MHz bins without interpolation on the frequency axis",
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Generate jackknife noise realizations",
+   "method": "Randomly flip the sign of half of the visibilities in the visibility plane with different random seeds, then re-image each realization with the same imaging as the real data",
+   "software": [
+    "jackknify",
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "50 jackknife realizations per observation, ~9 min per iteration on a 2019 MacBook Pro"
+   ],
+   "assumptions": [
+    "Visibility noise is additive, Gaussian, uncorrelated and zero-mean for well-calibrated data"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Find peaks in real and jackknifed cubes",
+   "method": "Run FindClump (interferopy, SExtractor-based) on the real cube and each jackknifed cube, keep positive peaks within 0.6 arcsec of the optical centre, to build P_D and P_FD",
+   "software": [
+    "FindClump",
+    "interferopy",
+    "SExtractor"
+   ],
+   "key_parameters": [
+    "line widths 100-500 km/s (3-11 channel widths)",
+    "peaks above S/N of 0 retained; duplicates merged within 0.2 arcsec and 0.2 GHz",
+    "SExtractor analysis and detection thresholds both set to 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Likelihood ratio test for blind line detection",
+   "method": "Compute false-detection likelihood L_FD(gamma) from jackknifed peak PDF, multiply by number of real peaks for expected noise count, and form Lambda = L_D/L_FD; significant if Lambda >= k = 3",
+   "software": [
+    "jackknify",
+    "FindClump"
+   ],
+   "key_parameters": [
+    "detection threshold gamma = 4 sigma, critical value k = 3"
+   ],
+   "assumptions": [
+    "Jackknifed peaks sample the false-detection distribution; peak distribution is a subset of the pixel-value distribution of a smoothed random Gaussian field"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Apply JWST redshift prior to GLASS-z12",
+   "method": "Multiply the PDFs by Gaussian prior on redshift, uniform prior on radial distance and uniform prior on peak S/N in post-processing with Bayes theorem, then renormalise",
+   "software": [
+    "jackknify",
+    "FindClump"
+   ],
+   "key_parameters": [
+    "Gaussian redshift prior mu = 12.33, sigma = 0.02 (+/-0.4 GHz at 254.54 GHz); uniform radial prior 0 to 0.6 arcsec; uniform S/N prior from 2.5; only peaks with S/N > 2.5 counted"
+   ],
+   "assumptions": [
+    "No correlation between peak S/N and its RA, Dec or frequency position for non-primary-beam-corrected maps"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "GLASS-z12 expected noise peaks above S/N 4 (L_FD x N_peaks, N_peaks = 1150)",
+   "value": "1.3",
+   "uncertainty": "1.1",
+   "units": "peaks",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "= 0.0011 \\times 1150 = 1.3 \\pm 1.1"
+    }
+   ]
+  },
+  {
+   "quantity": "GLASS-z12 likelihood ratio Lambda(4 sigma)",
+   "value": "0.80",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "which results in $\\Lambda(4\\sigma) = \\mathcal{L}_{\\rm D}(4\\sigma) / \\mathcal{L}_{\\rm FD}(4\\sigma) = 0.80$"
+    }
+   ]
+  },
+  {
+   "quantity": "GLASS-z12 reported 5.8 sigma peak recovered at lower significance",
+   "value": "2.9 sigma, linewidth 280 km/s",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "We recover a peak at the same location but at a lower significance of $2.9\\sigma$ for a linewidth of 280 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GLASS-z10 expected noise peaks at gamma > 4 sigma (N_peaks = 271)",
+   "value": "1.5",
+   "uncertainty": "1.2",
+   "units": "peaks",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "we expect to find $1.5 \\pm 1.2$ peaks at $\\gamma > 4\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "GLASS-z10 likelihood ratio Lambda(4 sigma)",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "The likelihood ratio resulted in $\\Lambda(\\gamma = 4\\sigma) = 1.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "GLASS-z10 previously reported 2.7 sigma line: L_FD and Lambda",
+   "value": "L_FD = 0.19, Lambda = 0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "This line has a false detection likelihood of $\\mathcal{L}_{\\rm FD}(\\gamma=2.7\\sigma) = 0.19$ and a likelihood ratio test resulting in $\\Lambda(\\gamma = 2.7\\sigma) = 0.9$."
+    }
+   ]
+  },
+  {
+   "quantity": "S5-z17-1 expected noise peaks above S/N 4 (N_peaks = 221)",
+   "value": "0.7",
+   "uncertainty": "0.8",
+   "units": "peaks",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "= 0.0032 \\times 221= 0.7 \\pm 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "S5-z17-1 likelihood ratio Lambda(4 sigma)",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "since $\\Lambda(\\gamma=4\\sigma) = 1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "S5-z17-1 reported peak recovered: S/N and Lambda",
+   "value": "3.9 sigma, L_FD = 0.0060, Lambda = 2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Results on blind line searches",
+     "quote": "This line has a false detection likelihood of $\\mathcal{L}_{\\rm FD}(\\gamma=3.9\\sigma) = 0.0060$ and a likelihood ratio test resulting in $\\Lambda(\\gamma = 3.9\\sigma) = 2.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "GLASS-z12 Lambda with JWST redshift prior (gamma = 2.5 sigma)",
+   "value": "1.64",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 Quantifying detection significance with known redshifts",
+     "quote": "the likelihood ratio test results in $\\Lambda(\\gamma=2.5\\sigma)= 1.64$."
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated data Lambda(gamma = 4.0)",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Application to simulated ALMA data",
+     "quote": "the likelihood ratio tests yield $\\Lambda(\\gamma = 4.0) = 13$."
+    }
+   ]
+  },
+  {
+   "quantity": "Expected spurious line features at S/N ~4-5 in broad ALMA line scans",
+   "value": "~3",
+   "uncertainty": "2",
+   "units": "features",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 Summary & Implications",
+     "quote": "we expect to find approximately $3 \\pm 2$ line features with $S/N \\sim 4-5$ in broad ALMA line scans"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free channel ranges excluded before uvcontsub for each of the three sources",
+  "tclean parameters other than natural weighting: cell size, image size, deconvolver, niter, threshold, mask, channel width per source (only 46 km/s given for GLASS-z12)",
+  "Optical/JWST centre coordinates used for the 0.6 arcsec mask for GLASS-z10 and S5-z17-1 (only a table, not text)",
+  "Random seeds used for the 50 jackknife realizations",
+  "Full FindClump/interferopy parameter settings beyond width range, S/N cut and duplicate-cropping radii",
+  "How the peak PDFs are binned in S/N and how the L_FD integral and its uncertainty are computed",
+  "Whether any bright sources were removed from the visibilities before jackknifing (S/N>50 advice)",
+  "Flux calibrators and whether the archive calMS calibration was used unchanged for each project"
+ ],
+ "missing_for_reproduction": [
+  "Exact line-free channel selection, tclean cell/image size and channel widths per source",
+  "Random seeds and FindClump parameter file",
+  "Coordinates of the optical centres used for the 0.6 arcsec mask for two of the sources"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public archival data, public code and a clear step-by-step recipe with numeric tables; some imaging and line-finder settings are unstated.",
+ "rediscovery_reason": "Data are archival and calibrated MS are available, the tool is public, and main results are numeric (Lambda, L_FD, expected peak counts).",
+ "source_card": "cards/2025A%26A...695A.204V/sonnet/card.md"
+}

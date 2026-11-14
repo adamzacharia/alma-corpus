@@ -1,0 +1,376 @@
+{
+ "bibcode": "2022ApJ...927..169N",
+ "title": "Mira Ceti, Atypical Archetype",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac4f61",
+ "arxiv_id": "2109.10730",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry",
+  "stellar_physics"
+ ],
+ "question": "Unravel the complexity of the morpho-kinematics and nascent wind generation mechanisms of the circumstellar envelope (CSE) of Mira Ceti.",
+ "alma_project_codes": [
+  "2011.0.00014.SV",
+  "2013.1.00047.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "39 antennas (SiO); 34/36 antennas (CO)",
+  "angular_resolution": "60x30 mas^2 (SiO); 390x360 mas^2 (12CO); 400x370 mas^2 (13CO); ~0.38 arcsec HPBW for 13CO",
+  "sensitivity": "0.66 mJy beam^-1 (SiO); 14 mJy beam^-1 (12CO); 5 mJy beam^-1 (13CO)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "12CO/13CO abundance ratio of 12+-2 and mean brightness ratio ~7.3",
+    "evidence": [
+     {
+      "loc": "13CO(3-2) emission",
+      "quote": "where the mean brightness ratio between $^{12}$CO and $^{13}$CO emissions is $\\sim$7.3. Correcting for the different opacity in $^{12}$CO and $^{13}$CO data boosts this ratio to $\\sim$10.5 and accounting for the different excitation energies and frequencies translates into a $^{12}$CO/$^{13}$CO abundance ratio of 12$\\pm$2."
+     }
+    ]
+   },
+   "citation": "HTN20 (cite: Hoai2020)"
+  },
+  {
+   "what": {
+    "value": "Einstein coefficients and upper level energies for 12CO(3-2), 13CO(3-2), CO(2-1), and SiO(5-4)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The values are taken from Leiden Atomic and Molecular Database (LAMDA; (cite: Schoier2005))."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "Table notes: $^a$ The values are taken from Leiden Atomic and Molecular Database (LAMDA; (cite: Schoier2005))."
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2005)"
+  },
+  {
+   "what": {
+    "value": "Radial temperature profile T[K] = 109 / r[arcsec]",
+    "evidence": [
+     {
+      "loc": "Mass loss rate",
+      "quote": "To obtain the relation between $F_R$ and $M_R$ we assume a radial dependence of the temperature of the form $T$\\[K\\]$=$109/$r$\\[arcsec\\] (cite: Ryde2001)"
+     }
+    ]
+   },
+   "citation": "(cite: Ryde2001)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) and SiO(5-4) observational parameters and radial profiles for RS Cnc and EP Aqr",
+    "evidence": [
+     {
+      "loc": "Confinement at short distances of the SiO emissions outside the south-western quadrant",
+      "quote": "Figure 12 compares Mira, excluding the south-western quadrant (200$^\\circ$$<\\omega<$315$^\\circ$), with RS Cnc and EP Aqr, two oxygen-rich AGB stars having mass loss rates of $\\sim$3$\\times$10$^{-7}$ (cite: Winters2021) and $\\sim$1.6$\\times$10$^{-7}$ (cite: Hoai2019) M$_\\odot$yr$^{-1}$, respectively"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "(this work) | (cite: Winters2021) | (cite: TuanAnh2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Winters2021; Hoai2019; TuanAnh2019)"
+  },
+  {
+   "what": {
+    "value": "SO(N_J=8_8-7_7) line emission map of Mira A",
+    "evidence": [
+     {
+      "loc": "Peculiar morphology of the SiO(5-4) emission",
+      "quote": "As illustrated in the left panel of Figure 9, (cite: Khouri2018; Khouri2019) have shown that similar confinement affects the emissions of the SO($N_J$$=$8$_8$-7$_7$)"
+     }
+    ]
+   },
+   "citation": "(cite: Khouri2018; Khouri2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Analyze SiO(5-4) line width and test for inner CSE rotation (5 to 15 au)",
+   "method": "Extract Doppler velocity spectra averaged in 30 mas broad annular rings centered on Mira A (from 25 to 215 mas in 10 mas steps) with a 3-sigma cut; measure full-width at 1/5 maximum; test velocity gradient impact by re-centering spectra in 30x30 mas^2 pixels; fit sine waves to mean Doppler velocity <V_z> vs position angle omega in ring 30<R<100 mas.",
+   "software": [],
+   "key_parameters": [
+    "3-sigma cut; 30 mas annular rings from 25 to 215 mas in 10 mas steps; 30 < R < 100 mas ring; V_z intervals of +-10 and +-17 km s^-1"
+   ],
+   "assumptions": [
+    "Distance of 100 pc (10 mas = 1 au); systemic velocity V_LSR = 47.7 km s^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Map and compare 13CO(3-2), 12CO(3-2), and SiO(5-4) morpho-kinematics in the central region (region C)",
+   "method": "Select region C where |V_z| < 4 km s^-1 and 12CO(3-2) intensity exceeds 10 Jy arcsec^-2 km s^-1; extrapolate radial intensity in 1<R<2 arcsec to R=0 to measure central concentration; rotate coordinates (x,y) clockwise by 35 deg to (x',y'); construct integrated PV maps along x' and y' and measure integrated fluxes and ratios for 5 kinematic fragments (NEA, SWO, NEO, SWS, SEO).",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "|V_z| < 4 km s^-1; 12CO intensity > 10 Jy arcsec^-2 km s^-1; coordinate rotation angle 35 deg; fragment boundaries in x', y', V_z from Table 3"
+   ],
+   "assumptions": [
+    "Unresolved central continuum contribution of ~2.7 Jy km s^-1 excluded from central radial extrapolation"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive mass loss rates for the SEO and NEO fragments from 13CO(3-2) flux",
+   "method": "Calculate mass per unit radius M_R from optically thin 13CO(3-2) flux per unit radius F_R using level population and molecular constants, then multiply by projected radial wind velocity V_R: M_dot = M_R * V_R.",
+   "software": [],
+   "key_parameters": [
+    "A_ji = 2.18e-6 s^-1, E_u = 31.7 K for 13CO(3-2); V_R(SEO) = 3.0+-0.5 km s^-1; V_R(NEO) = 2.9+-0.8 km s^-1; radial extension 1.0+-0.2 arcsec (SEO) and 1.5+-0.3 arcsec (NEO)"
+   ],
+   "assumptions": [
+    "Optically thin 13CO(3-2) emission; temperature profile T[K] = 109 / r[arcsec] (~50 to 200 K); 12C/13C isotopic ratio = 12; 12CO/H2 abundance = 4e-4; distance = 100 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Determine SiO/CO abundance ratio outside the south-western quadrant and compare with RS Cnc and EP Aqr",
+   "method": "Measure SiO(5-4) to 13CO(3-2) intensity ratios in fragments outside the south-western quadrant; convert emissivity ratio to column density and abundance ratio in the optically thin limit; compare radial profiles of SiO(5-4) and CO(3-2) (scaling CO(2-1) to CO(3-2) for RS Cnc and EP Aqr) beyond 100 au.",
+   "software": [],
+   "key_parameters": [
+    "Excluded south-western quadrant: 200 deg < omega < 315 deg; A_21 = 6.91e-7 s^-1, A_32 = 2.50e-6 s^-1, E_u21 = 16.6 K, E_u32 = 33.2 K, A_SiO(5-4) = 5.2e-4 s^-1, E_u,SiO = 31.3 K",
+    "SiO/13CO column density to emissivity ratio factor ~7.5e-3; SiO(5-4)/13CO(3-2) intensity ratio ~0.1"
+   ],
+   "assumptions": [
+    "Optically thin approximation for SiO(5-4) and 13CO(3-2) outside the central region; 12CO/13CO abundance ratio = 12; temperature law T[K] = 109 / r[arcsec]"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SiO(5-4) line full-width at 1/5 maximum (from R ~ 50 to 150 mas)",
+   "value": "21 to 7",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SiO(5-4) line width in the 5 to 15 au range",
+     "quote": "it shows that the line width decreases from 21 to 7 km s$^{-1}$ when $R$ spans from $\\sim$50 to $\\sim$150 mas."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected rotation velocity within ~15 au",
+   "value": "0.7",
+   "uncertainty": "+-0.2",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SiO(5-4) line width in the 5 to 15 au range",
+     "quote": "The sine wave fits suggest the presence of rotation within some 15 au from the center of the star with a projected velocity of 0.7$\\pm$0.2 km s$^{-1}$ about an axis projecting 40$^\\circ$$\\pm$15$^\\circ$ east of north."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of projected rotation axis within ~15 au (east of north)",
+   "value": "40",
+   "uncertainty": "+-15",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SiO(5-4) line width in the 5 to 15 au range",
+     "quote": "The sine wave fits suggest the presence of rotation within some 15 au from the center of the star with a projected velocity of 0.7$\\pm$0.2 km s$^{-1}$ about an axis projecting 40$^\\circ$$\\pm$15$^\\circ$ east of north."
+    }
+   ]
+  },
+  {
+   "quantity": "Central emission excess extrapolated to R=0 for 12CO(3-2)",
+   "value": "28.9",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparing 13CO(3-2) and 12CO(3-2) emissions",
+     "quote": "Extrapolation to $R$=0 of the intensity observed in the ring 1$<$$R$$<$2 arcsec gives excesses of 28.9 and 6.4 Jy km s$^{-1}$ for $^{12}$CO(3-2) and $^{13}$CO(3-2) respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Central emission excess extrapolated to R=0 for 13CO(3-2)",
+   "value": "6.4",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparing 13CO(3-2) and 12CO(3-2) emissions",
+     "quote": "Extrapolation to $R$=0 of the intensity observed in the ring 1$<$$R$$<$2 arcsec gives excesses of 28.9 and 6.4 Jy km s$^{-1}$ for $^{12}$CO(3-2) and $^{13}$CO(3-2) respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 12CO(3-2)/13CO(3-2) emission ratio across region C fragments",
+   "value": "7.7",
+   "uncertainty": "+-1.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparing 13CO(3-2) and 12CO(3-2) emissions",
+     "quote": "The $^{12}$CO/$^{13}$CO emission ratios vary between 6.6 and 10.0 with mean$\\pm$rms values of 7.7$\\pm$1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(3-2) integrated flux in NEA",
+   "value": "3.4",
+   "uncertainty": "+-0.8",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NEA | $>$0.8 | \\- | $>$1.0 | 25$\\pm$2 | 3.4$\\pm$0.8 | 7.4$\\pm$1.7 | 0.07$\\pm$0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(3-2) integrated flux in SWO",
+   "value": "6.5",
+   "uncertainty": "+-0.9",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SWO | $<-$1.2 | \\- | $>-$1.0 | 65$\\pm$3 | 6.5$\\pm$0.9 | 10.0$\\pm$1.4 | 11.2$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(3-2) integrated flux in NEO",
+   "value": "6.7",
+   "uncertainty": "+-0.8",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NEO | $>$0.5 | \\- | $<-$1.3 | 45$\\pm$2 | 6.7$\\pm$0.8 | 6.7$\\pm$1.2 | 0.65$\\pm$0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(3-2) integrated flux in SWS",
+   "value": "3.7",
+   "uncertainty": "+-0.7",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SWS | \\- | $>$0.7 | $<-$1.5 | 29$\\pm$2 | 3.7$\\pm$0.7 | 7.8$\\pm$1.5 | 4.65$\\pm$0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(3-2) integrated flux in SEO",
+   "value": "8.2",
+   "uncertainty": "+-0.8",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SEO | \\- | $>-$1.7,$<-$0.7 | $>-$3,$<$1 | 54$\\pm$2 | 8.2$\\pm$0.8 | 6.6$\\pm$0.7 | 0.88$\\pm$0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loss rate of South-Eastern Outflow (SEO)",
+   "value": "3.9e-8",
+   "uncertainty": "+-1.7e-8",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass loss rate",
+     "quote": "On average, $F_R$ is (6.2$\\pm$1.4)$\\times$10$^{-6}$ solar masses per arcsec, giving a mass loss rate of (6.2$\\pm$1.4)$\\times$10$^{-6}$$\\times$(6.3$\\pm$1.0)$\\times$10$^{-3}$$=$(3.9$\\pm$1.7)$\\times$10$^{-8}$ M$_\\odot$yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loss rate of North-Eastern Outflow (NEO)",
+   "value": "2.7e-8",
+   "uncertainty": "+-1.0e-8",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass loss rate",
+     "quote": "We estimate the values of its projected radial velocity and of its radial extension (HTN20) to be 2.9$\\pm$0.8 km s$^{-1}$ and 1.5$\\pm$0.3 arcsec, respectively, giving a mass loss rate of (2.7$\\pm$1.0)$\\times$10$^{-8}$ M$_\\odot$yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined mass loss rate of SEO and NEO",
+   "value": "6.6e-8",
+   "uncertainty": "+-2.0e-8",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass loss rate",
+     "quote": "Adding together the contributions of the SEO and NEO, we obtain a mass loss rate of (6.6$\\pm$2.0)$\\times$10$^{-8}$ M$_\\odot$yr$^{-1}$, accounting for $\\sim$30% of the mass loss rate obtained from single dish observations"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO/12CO abundance ratio outside the south-western quadrant",
+   "value": "6.3e-5",
+   "uncertainty": "0.5-1.0e-4 range",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Confinement at short distances of the SiO emissions outside the south-western quadrant",
+     "quote": "Using a typical SiO(5-4)/$^{13}$CO(3-2) intensity ratio of $\\sim$0.1 outside the south-western quadrant and a $^{12}$CO/$^{13}$CO abundance ratio of 12 gives an SiO/$^{12}$CO abundance ratio of 6.3 10$^{-5}$."
+    },
+    {
+     "loc": "Summary and conclusion",
+     "quote": "an evaluation of the SiO/CO abundance ratio at the level of 0.5-1$\\times$10$^{-4}$ when excluding the south-western quadrant"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4)/12CO(3-2) intensity ratio beyond 100 au (excluding SW quadrant)",
+   "value": "0.005",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Confinement at short distances of the SiO emissions outside the south-western quadrant",
+     "quote": "The ratio between the SiO(5-4) and $^{12}$CO(3-2) intensities beyond 100 au and excluding the south-western quadrant is therefore $\\sim$0.005"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA calibration version and calibration procedure prior to exporting to GILDAS",
+  "Exact GILDAS version and deconvolution parameters (e.g. cleaning thresholds, number of iterations, masking)",
+  "Exact continuum subtraction procedure (uv-plane vs image-plane, line-free frequency channels)",
+  "Weighting scheme used for SiO(5-4) and 12CO(3-2) imaging",
+  "Exact RAs and Decs adopted for the phase center / continuum peak of Mira A in June and November 2014"
+ ],
+ "missing_for_reproduction": [
+  "Exact GILDAS imaging and deconvolution scripts and parameters (referred to HTN20)",
+  "Exact polygon/intensity mask boundary of 'region C' (defined by 12CO(3-2) intensity > 10 Jy arcsec^-2 km s^-1, which depends on the exact 12CO cube)",
+  "Exact spatial/velocity selection criteria for the two SEO flux evaluations in Figure 8 (only shown in figure panel labels/captions, which are absent from the main text)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Archival ALMA project codes are explicitly stated and public, and the coordinate transformations, kinematic cuts (Table 3), and analytical formulas for mass loss rate and abundance ratios are clearly given in the text. However, calibration and imaging details are delegated to an earlier paper (HTN20) and custom analysis scripts are not released.",
+ "rediscovery_reason": "Public archival ALMA datasets (2011.0.00014.SV and 2013.1.00047.S) with explicit kinematic bounding boxes in Table 3 and closed-form equations for mass-loss rates, line widths, and sine-wave rotation fits.",
+ "source_card": "cards/2022ApJ...927..169N/sonnet/card.md"
+}

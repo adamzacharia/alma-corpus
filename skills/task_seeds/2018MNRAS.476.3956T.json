@@ -1,0 +1,200 @@
+{
+ "bibcode": "2018MNRAS.476.3956T",
+ "title": "ALMA view of a massive spheroid progenitor: a compact rotating core of molecular gas in an AGN host at z = 2.226",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty481",
+ "arxiv_id": "1802.06083",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the size, gas content, ISM conditions and kinematics of the dust and molecular gas in GMASS 0953, a proposed progenitor of compact quiescent galaxies?",
+ "alma_project_codes": [
+  "2015.1.01379.S",
+  "2015.1.00228.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.6 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Archival ALMA band 3 data and CO(3-2), CO(4-3), [CI] results, dust mass/temperature consistency",
+    "evidence": [
+     {
+      "loc": "3 ALMA observations",
+      "quote": "We also combined our band 3 continuum data with those from (cite: popping2017) taken from the ALMA archive"
+     }
+    ]
+   },
+   "citation": "(cite: popping2017)"
+  },
+  {
+   "what": {
+    "value": "Photometric and kinematic Halpha PAs and rotation curve",
+    "evidence": [
+     {
+      "loc": "4 Kinematics",
+      "quote": "This value is consistent with both the photometric and kinematic H$\\alpha$ PAs as determined by HST imaging and KMOS data"
+     }
+    ]
+   },
+   "citation": "(cite: vanderwel2014; wisnioski2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes",
+   "method": "Interactive clean with Briggs weighting; moment 0 over -1000 to 1000 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure sizes and fluxes",
+   "method": "Elliptical Gaussian fit to visibilities",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive gas mass",
+   "method": "Extrapolate CO(1-0) from CO(3-2) using average BzK and ULIRG SLEDs, then L'CO and alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=0.8 Msun/(K km/s pc^2)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain ISM density and radiation field",
+   "method": "Grid of 1-D slab PDR models compared to [CI]/CO(6-5) and CO(6-5)/CO(4-3) ratios",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit rotation kinematics",
+   "method": "3D tilted-ring model, two rings of 0.2 arcsec, PA fixed at 95 deg, free Vrot and sigma, inclination varied",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination range 60-90 deg from residual maps"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(6-5) deconvolved FWHM",
+   "value": "0.18",
+   "uncertainty": "0.06",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 ALMA observations",
+     "quote": "we measure a deconvolved $FWHM$=0.18$\\ensuremath{''}$$\\pm$0.06$\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "1.4 mm continuum flux",
+   "value": "378",
+   "uncertainty": "65",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 ALMA observations",
+     "quote": "1.4 mm continuum flux $S_{\\rm 1.4mm}$=378$\\pm$65 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) line flux",
+   "value": "1.21",
+   "uncertainty": "0.13",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 ALMA observations",
+     "quote": "$I_{\\rm CO(6-5)}$=1.21$\\pm$0.13 Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass",
+   "value": "3.24e10",
+   "uncertainty": "0.6e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 ISM MODELING",
+     "quote": "$M_{\\rm H_{\\rm 2}}$=(3.24$\\pm$0.6)$\\times$10$^{10}$$M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation velocity",
+   "value": "320",
+   "uncertainty": "+92/-53",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 Kinematics",
+     "quote": "a best-fit $V_{rot}$=320$^{+92}_{-53}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion time",
+   "value": "~150",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "$\\tau_{\\rm depl}$=$M_{\\rm H_{\\rm2}}$/$SFR$$\\sim$150 Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum",
+  "Image size and cell size",
+  "uvmodelfit starting parameters",
+  "Exact BAROLO settings (mask, normalization, fit mode)",
+  "CLOUDY grid ranges and cosmic-ray scaling",
+  "Which CO SLED templates and flux ratios were used",
+  "CASA version"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond robust",
+  "BAROLO configuration",
+  "SLED templates"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and main steps described, but many parameters missing.",
+ "rediscovery_reason": "Public data, numeric results (size, flux, Vrot) with a reasonably described recipe.",
+ "source_card": "cards/2018MNRAS.476.3956T/sonnet/card.md"
+}

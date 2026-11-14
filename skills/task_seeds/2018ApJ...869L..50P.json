@@ -1,0 +1,230 @@
+{
+ "bibcode": "2018ApJ...869L..50P",
+ "title": "The Disk Substructures at High Angular Resolution Project (DSHARP). X. Multiple Rings, a Misaligned Inner Disk, and a Bright Arc in the Disk around the T Tauri star HD 143006",
+ "year": 2018,
+ "doi": "10.3847/2041-8213/aaf745",
+ "arxiv_id": "1812.04049",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What substructures (rings, gaps, arc, inner-disk depletion, misalignment) are present in the HD 143006 disk in 1.25 mm continuum and 12CO, and how do they compare with VLT/SPHERE scattered light?",
+ "alma_project_codes": [
+  "2016.1.00484.L",
+  "2015.1.00964.S"
+ ],
+ "data": {
+  "bands": "1.25 mm continuum and 12CO J=2-1",
+  "arrays": "not stated",
+  "angular_resolution": "46x45 mas continuum beam; 66x49 mas CO beam",
+  "sensitivity": "continuum rms 14.3 uJy/beam; CO rms 1.04 mJy/beam km/s at 0.32 km/s channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SPHERE scattered-light image and shadow analysis",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Recent scattered light observations of HD 143006 show multiple brightness asymmetries"
+     }
+    ]
+   },
+   "citation": "(cite: benisty2018)"
+  },
+  {
+   "what": {
+    "value": "Midplane temperature profile and optically thin continuum",
+    "evidence": [
+     {
+      "loc": "4.1 Substructures in the ALMA images",
+      "quote": "From the midplane temperature profile ($T_{mid}$) assumed in (cite: rings)"
+     }
+    ]
+   },
+   "citation": "(cite: rings)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO",
+   "method": "Imaging with DSHARP parameters; CO with robust 0.8 and 20 mas taper",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit Keplerian velocity field to CO moment 1",
+   "method": "Razor-thin Keplerian disk model around 1.8 Msun star, convolved with beam, compared pixel by pixel to moment 1",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Free: i, PA, vsys, x0, y0; inner/outer radius fixed 0.3 and 250 au"
+   ],
+   "assumptions": [
+    "Stellar mass 1.8 Msun; distance 165 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit continuum visibilities with ring and arc models",
+   "method": "Three radial Gaussian rings plus a 2D Gaussian arc; B40, B64, arc share geometry, B8 separate; 22 free parameters; model Fourier-transformed and sampled at observed uv",
+   "software": [
+    "Galario",
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Arc follows steady-state vortex prescription (Lyra & Lin 2013)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate inner/outer disk misalignment and compare with SPHERE shadows",
+   "method": "Angle between disk normals from fitted i and PA for two near-side configurations; scattering surface height from Min et al. 2017 equations compared with Hp/R",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Hp smaller than scattering surface by factor ~2-4; Hp/R~0.04 at 18 au from standard temperature profile of Huang et al."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum rms",
+   "value": "14.3",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The RMS noise in the continuum image is 14.3 $\\mu$Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Global CO Keplerian fit inclination",
+   "value": "16.2",
+   "uncertainty": "±0.3",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$16.2\\degree\\pm0.3\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk inclination from CO (r<0.15\")",
+   "value": "22.84",
+   "uncertainty": "±0.05",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Modeling CO kinematics",
+     "quote": "we find $i = 22.84\\degree \\pm 0.05\\degree$ and PA $= 165.6\\degree\\pm0.1\\degree$ for the inner disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk inclination from CO",
+   "value": "14.59",
+   "uncertainty": "±0.02",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Modeling CO kinematics",
+     "quote": "an inclination of $14.59\\degree\\pm0.02\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "7.71",
+   "uncertainty": "±0.02",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$7.71\\pm0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum inner disk (B8) inclination",
+   "value": "24.1",
+   "uncertainty": "±1.0",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$24.1\\pm1.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum outer disk inclination",
+   "value": "17.02",
+   "uncertainty": "±0.14",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$17.02\\pm0.14$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radii B8, B40, B64, arc",
+   "value": "7.67, 39.95, 63.6, 74.2",
+   "uncertainty": "±0.04, 0.03, 0.1, 0.1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$7.67\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Misalignment angle (same near side / opposite near side)",
+   "value": "8 / 41",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 A misalignment between inner and outer disk",
+     "quote": "we find a small misalignment of 8$^\\circ$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters for continuum (in survey paper Table 4)",
+  "Calibration details, CASA version and self-calibration",
+  "Exact continuum model initial conditions and any visibility weighting/averaging",
+  "How moment 1 map was made (clipping, tool)",
+  "Stellar mass origin of 1.8 Msun",
+  "Details of the min2017 scattering surface calculation"
+ ],
+ "missing_for_reproduction": [
+  "Survey paper imaging parameters and calibration",
+  "Continuum model priors and initial values",
+  "Moment map generation details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and fits well specified but calibration/imaging defer to survey paper and priors/moment-map details missing.",
+ "rediscovery_reason": "Public data, numeric model fits with stated sampler setups, though inherited imaging details are needed.",
+ "source_card": "cards/2018ApJ...869L..50P/sonnet/card.md"
+}

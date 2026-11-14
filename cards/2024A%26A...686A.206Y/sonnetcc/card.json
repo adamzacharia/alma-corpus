@@ -1,0 +1,1769 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...686A.206Y",
+  "title": "First ALMA observations of the HD 105211 debris disc: A warm dust component close to a gigayear-old star",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Yang, Qiancheng",
+  "n_authors": 7,
+  "arxiv_id": "2404.04508",
+  "doi": "10.1051/0004-6361/202449280",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00637.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this work, we study the disc structure of HD105211 through Atacama Large Millimeter/submillimeter Array (ALMA) 1.3 mm continuum observations."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks"
+   ],
+   "targets": [
+    {
+     "name": "HD 105211 (eta Cru, HIP 59072)",
+     "coordinates": {
+      "value": "J2000 R.A. 12h06m52.99s, Dec -64d36m50.11s (OB1 phase centre, Table 1)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "and is located at a distance of 19.76 pc (cite: 2007A&A...474..653V)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "12h06m52.99s"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "19.76 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "and is located at a distance of 19.76 pc (cite: 2007A&A...474..653V)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "12h06m52.99s"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "van Leeuwen 2007 (cite: 2007A&A...474..653V)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "and is located at a distance of 19.76 pc (cite: 2007A&A...474..653V)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "12h06m52.99s"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the structure (radius, width, eccentricity, asymmetry) of the HD 105211 debris disc at ALMA 1.3 mm, and is there a warm dust component near the star?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we investigate the structure of the disc surrounding the nearby F2V star HD 105211"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "Our fit sets an upper limit on the eccentricity of the disc and identifies a flux excess from the stellar position."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00637.S",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "The star HD 105211 was observed with ALMA Band 6 (1.3 mm) under the Cycle 4 project 2016.1.00637.S (PI: Dodson-Robinson, Sarah)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "The star HD 105211 was observed with ALMA Band 6 (1.3 mm) under the Cycle 4 project 2016.1.00637.S (PI: Dodson-Robinson, Sarah)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four spectral windows centred at 223, 225, 239 and 241 GHz; 2 GHz bandwidth each; 15.625 MHz channel width",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "The correlator was set up to study the dust continuum emission with four spectral windows centred at 223 GHz, 225 GHz, 239 GHz, and 241 GHz; a bandwidth of 2 GHz; and a channel width of 15.625 MHz."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "8.0 GHz total",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "In combination, the four windows provided a total bandwidth of 8.0 GHz to study the target emission."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12m array (44 antennas in OB1, 45 in OB2)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Array | 12m | 12m"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "No. antennas | 44 | 45"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-1",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "The observation block was executed in configuration C43-1 with a minimum baseline of 15.1 m and a maximum baseline of 455.6 m."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15.1-455.6 m overall; OB1 15.1-160.7 m, OB2 15.0-455.6 m",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "The observation block was executed in configuration C43-1 with a minimum baseline of 15.1 m and a maximum baseline of 455.6 m."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Baseline (m) | 15.1-160.7 | 15.0-455.6"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "combined-image beam 1.62'' x 1.57'' (32 au x 31 au), PA 40.2 deg; OB1 beam 2.25 x 1.85 arcsec, OB2 beam 1.41 x 1.11 arcsec",
+    "evidence": [
+     {
+      "loc": "2.2 Results",
+      "quote": "The synthesised beam has dimensions of $1.62\\ensuremath{''} \\times 1.57\\ensuremath{''}$ (32 au $\\times$ 31 au)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "2.25 $\\times$ 1.85"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "1.41 $\\times$ 1.11"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 16 uJy/beam (combined image)",
+    "evidence": [
+     {
+      "loc": "2.2 Results",
+      "quote": "as well as an rms sensitivity of 16 $\\mu$Jy $\\rm beam^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "30.17 min (OB1), 30.11 min (OB2)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$t_{sci}$(min) | 30.17 | 30.11"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "OB1 2017 March 28; OB2 2018 May 9",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "Hereafter, we refer to the observation block conducted on 2017 March 28 as OB1 and the one from 2018 May 9 as OB2."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 4 project 2016.1.00637.S, PI Dodson-Robinson, Sarah",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "under the Cycle 4 project 2016.1.00637.S (PI: Dodson-Robinson, Sarah)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel/PACS",
+     "provided": {
+      "value": "70, 100, 160 um resolved images and deconvolved images (from Hengst et al. 2017) used for comparison with the ALMA model",
+      "evidence": [
+       {
+        "loc": "4.1 Comparison with Herschel",
+        "quote": "These images revealed extended emission from a disc with a width of 100 $\\pm$ 20 au starting at an inner edge of 87 $\\pm$ 2.5 au."
+       },
+       {
+        "loc": "Acknowledgements",
+        "quote": "for providing the *Herschel* original and deconvolved images"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer/IRS (CASSIS archive)",
+     "provided": {
+      "value": "low-resolution spectrum 7.5 to 38 um used in the SED fit",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral energy distribution",
+        "quote": "low-resolution spectrum spanning 7.5 to 38 $\\mu$m, which was obtained from the CASSIS archive (cite: 2011ApJS..196....8L)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Literature photometry (optical to millimetre, incl. Spitzer/MIPS 24 um)",
+     "provided": {
+      "value": "photometry collected from literature to build the SED (Table 2)",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral energy distribution",
+        "quote": "we collected observational data from literature papers, including photometric measurements from optical to millimetre wavelengths"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SED photometry from optical to millimetre (Table 2, references numbered 1-13 in the table)",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral energy distribution",
+        "quote": "we collected observational data from literature papers, including photometric measurements from optical to millimetre wavelengths"
+       }
+      ]
+     },
+     "citation": "Table 2 reference numbers 1-13 (numbered list not given in the text provided)"
+    },
+    {
+     "what": {
+      "value": "Stellar age 1.34-1.92 Gyr",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "has an estimated age of 1.34-1.92 Gyr (cite: 2022yCat.1355....0G)"
+       }
+      ]
+     },
+     "citation": "(cite: 2022yCat.1355....0G)"
+    },
+    {
+     "what": {
+      "value": "Distance 19.76 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "and is located at a distance of 19.76 pc (cite: 2007A&A...474..653V)"
+       }
+      ]
+     },
+     "citation": "(cite: 2007A&A...474..653V)"
+    },
+    {
+     "what": {
+      "value": "Herschel-based disc model: width 100 +/- 20 au, inner edge 87 +/- 2.5 au, inclination 71 +/- 2, PA 30 +/- 1, dust mass 2.45e-2 Mearth",
+      "evidence": [
+       {
+        "loc": "4.1 Comparison with Herschel",
+        "quote": "These images revealed extended emission from a disc with a width of 100 $\\pm$ 20 au starting at an inner edge of 87 $\\pm$ 2.5 au."
+       },
+       {
+        "loc": "4.2 Collisional status of the disc",
+        "quote": "The dust mass obtained in the model results by (cite: 2017MNRAS.468.4725H) is $2.45\\times10^{-2} M_{\\oplus}$"
+       }
+      ]
+     },
+     "citation": "Hengst et al. 2017 (cite: 2017MNRAS.468.4725H)"
+    },
+    {
+     "what": {
+      "value": "Proper motion of the star 0.034 arcsec/yr toward the southeast",
+      "evidence": [
+       {
+        "loc": "3.3 Variability",
+        "quote": "While the star is moving in the southeast direction at a rate of 0.034 arcsec/yr (cite: 2007A&A...474..653V)"
+       }
+      ]
+     },
+     "citation": "(cite: 2007A&A...474..653V)"
+    },
+    {
+     "what": {
+      "value": "Expected radius ratio Gamma = 2.8 +/- 0.1 for this stellar luminosity",
+      "evidence": [
+       {
+        "loc": "4.2 Collisional status of the disc",
+        "quote": "significantly lower than the expected value of $2.8\\pm0.1$ according to the model proposed by (cite: 2015MNRAS.454.3207P)"
+       }
+      ]
+     },
+     "citation": "Pawellek & Krivov 2015 (cite: 2015MNRAS.454.3207P)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "PHOENIX model grid used for the stellar photosphere in the SED fit",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "The stellar photospheric radiation was fitted using the PHOENIX model grid (cite: 2013A&A...553A...6H)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard ALMA pipeline",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "The data were calibrated using the standard ALMA pipeline in"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "The data were calibrated using the standard ALMA pipeline in `CASA5.1.1`"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "We carried out continuum imaging and deconvolution using the \"tclean\" task in CASA."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "To obtain the greatest signal-to-noise ratio, we reconstructed the image using natural weighing."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "OB2 image smoothed with UV tapering to match the OB1 beam (taper value not given)",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "We first created a version of the OB2 image with the same beam size as OB1 by smoothing the OB2 image with UV tapering."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "visibilities of both observation blocks combined for the main image",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "The image was synthesised by combining the visibilities from both observation blocks using natural weighting."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "OB2 smoothed to OB1 beam via UV tapering",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "We first created a version of the OB2 image with the same beam size as OB1 by smoothing the OB2 image with UV tapering."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.62'' x 1.57'' (32 au x 31 au), PA 40.2 deg",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "The synthesised beam has dimensions of $1.62\\ensuremath{''} \\times 1.57\\ensuremath{''}$ (32 au $\\times$ 31 au)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "16 uJy/beam",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "as well as an rms sensitivity of 16 $\\mu$Jy $\\rm beam^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Modified-blackbody SED modelling method with MultiNest",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral energy distribution",
+        "quote": "We employed the method described in (cite: 2019MNRAS.488.3588Y) to model the dust as a modified blackbody"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2019MNRAS.488.3588Y)"
+    },
+    {
+     "what": {
+      "value": "Parametric disc structure and visibility-space MCMC modelling code",
+      "evidence": [
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "We used the parametric structure and modelling code described in (cite: 2018MNRAS.475.4924K)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2018MNRAS.475.4924K)"
+    },
+    {
+     "what": {
+      "value": "Eccentric-model density and radius formulas (rho_c, r_c)",
+      "evidence": [
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "with formulas of (cite: 2017MNRAS.465.2595M)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017MNRAS.465.2595M)"
+    },
+    {
+     "what": {
+      "value": "Mass-loss rate of smallest grains equation",
+      "evidence": [
+       {
+        "loc": "4.2 Collisional status of the disc",
+        "quote": "using a simple equation provided by (cite: 2017ApJ...842....9M)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017ApJ...842....9M)"
+    },
+    {
+     "what": {
+      "value": "Millimetre dust mass formula",
+      "evidence": [
+       {
+        "loc": "4.2 Collisional status of the disc",
+        "quote": "the mass of millimetre-sized dust can be calculated using equation (5) of (cite: 2008ARA&A..46..339W)"
+       }
+      ]
+     },
+     "from_reference": "equation (5) of (cite: 2008ARA&A..46..339W)"
+    },
+    {
+     "what": {
+      "value": "Maximum fractional luminosity of a steady-state collisional cascade",
+      "evidence": [
+       {
+        "loc": "4.3 Warm inner dust component",
+        "quote": "Using equation (20) in (cite: 2007ApJ...658..569W)"
+       }
+      ]
+     },
+     "from_reference": "equation (20) of (cite: 2007ApJ...658..569W)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean parameters: cell size, image size, niter, threshold, masking, deconvolver",
+    "Which channels/spectral windows were used for the continuum image and whether any line-free selection was applied",
+    "UV-taper value used to smooth OB2 to the OB1 beam",
+    "How the combined image was made (concat of the two EBs, any phase-centre alignment) and whether proper motion was accounted for",
+    "Flux calibrator and flux-scale uncertainty",
+    "Whether the archive-delivered pipeline products or a re-run of the pipeline were used",
+    "Prior ranges for each MCMC parameter and the initial walker positions ('prior testing runs')",
+    "Model image grid size / pixel scale and number of particles/pixels in the geometric model",
+    "Primary-beam correction in the images and the visibility fit",
+    "MultiNest settings, priors and the stellar-photosphere parameter handling in the SED fit",
+    "Numbered reference list for the Table 2 photometry (sources 1-13) and how the unresolved photometry was extracted",
+    "Dust temperature and distance adopted in the millimetre dust-mass calculation",
+    "How the central point source was modelled (point source of flux F_c at the stellar position) and how the star-position offset was set",
+    "Availability and version of the modelling code of Kennedy et al. (2018)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image the 1.3 mm continuum",
+    "method": {
+     "value": "Standard ALMA pipeline calibration in CASA, 10 s time averaging, tclean continuum imaging with natural weighting",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "The data were calibrated using the standard ALMA pipeline in"
+      },
+      {
+       "loc": "2.1 Observational information",
+       "quote": "We carried out continuum imaging and deconvolution using the \"tclean\" task in CASA."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "visibilities time-averaged in 10 s intervals",
+      "evidence": [
+       {
+        "loc": "2.1 Observational information",
+        "quote": "To reduce the data volume, the calibrated visibilities were time-averaged in intervals of 10s."
+       }
+      ]
+     },
+     {
+      "value": "natural weighting",
+      "evidence": [
+       {
+        "loc": "2.1 Observational information",
+        "quote": "To obtain the greatest signal-to-noise ratio, we reconstructed the image using natural weighing."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure surface brightness profiles and ansa asymmetry",
+    "method": {
+     "value": "Radial profiles along major and minor axes with radial averaging in 10 deg-wide swaths; compare peak fluxes of the two ansae",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "we analysed the surface brightness profiles along both the major and minor axes with radial averaging using $10\\deg$-wide swaths."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "SW ansa peak 158 +/- 16 uJy/beam, about 2 sigma above the opposite ansa",
+      "evidence": [
+       {
+        "loc": "2.2 Results",
+        "quote": "the peak flux of SW ($158 \\pm 16$ $\\mu$Jy $\\rm beam^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image the two observation blocks separately and measure central flux",
+    "method": {
+     "value": "Individual OB1 and OB2 images; OB2 smoothed to OB1 beam with UV tapering; peak pixel near the stellar position taken as central emission",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "We first created a version of the OB2 image with the same beam size as OB1 by smoothing the OB2 image with UV tapering."
+      },
+      {
+       "loc": "2.2 Results",
+       "quote": "We also find the pixel with peak flux near the stellar position and report this flux as a measure of the central emission in the three images shown in Fig."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Two epochs used to confirm the authenticity of each signal",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "The existence of two epochs helps in identifying any time evolution in the HD 105211 system whilst confirming the authenticity of each signal."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit parametric disc models to the ALMA visibilities",
+    "method": {
+     "value": "Axisymmetric Gaussian ring and eccentric ring models, Fourier transformed and sampled at the observed uv points, chi2 against the visibilities; stellar-position point-source flux F_c added",
+     "evidence": [
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "The image generated was then Fourier transformed to the visibility plane and sampled at the same UV points as our continuum observations"
+      },
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "so we added another parameter: the flux density at stellar position"
+      }
+     ]
+    },
+    "software": [
+     "emcee",
+     "zodipic-like geometric model",
+     "CASA statwt"
+    ],
+    "key_parameters": [
+     {
+      "value": "data averaged to 10 s and four channels per spectral window, weights recomputed with statwt",
+      "evidence": [
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "We averaged the data into 10-second long chunks and spectrally averaged the four spectral windows down to four channels per spectral window."
+       },
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "Then we used the CASA \"statwt\" task to recompute the visibility weighting following the averaging process."
+       }
+      ]
+     },
+     {
+      "value": "100 walkers, 1000 steps, first 900 discarded as burn-in",
+      "evidence": [
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "We used 100 walkers and chains with 1000 steps and discard the first 900 steps as a"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "optically thin torus; uniform posterior distribution functions for all parameters",
+      "evidence": [
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "We assumed posterior distribution functions are uniform for all parameters."
+       },
+       {
+        "loc": "3.2.1 Parametric model",
+        "quote": "to place more constraints on the disc as an optically thin torus"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Ensemble MCMC (emcee), chi2 goodness of fit in visibility space; model initialised near the optimal solution from prior testing runs",
+     "evidence": [
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "The model was initialised near the optimal solution based on prior testing runs."
+      },
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "computing the $\\chi^{2}$ between the model and the data to quantify the goodness-of-fit"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residual maps of the Gaussian model; posterior distributions show little degeneracy",
+     "evidence": [
+      {
+       "loc": "3.2.2 Results",
+       "quote": "we only computed the residual maps of the Gaussian model at the same observational resolution"
+      },
+      {
+       "loc": "6 Posterior probability distributions of disc parameters",
+       "quote": "The distributions show that the parameters are well constrained and show little degeneracy."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit OB1 and OB2 separately to test variability and asymmetry",
+    "method": {
+     "value": "Same Gaussian and eccentric models fitted to each observation block",
+     "evidence": [
+      {
+       "loc": "3.3 Variability",
+       "quote": "we perform parameter model fitting on the data of the two observations (OB1 and OB2) separately to quantify the impacts of noise and variability on the results"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Same as step 4",
+     "evidence": [
+      {
+       "loc": "3.3 Variability",
+       "quote": "We used both the Gaussian and eccentric models and show the results in Table"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Fitted stellar fluxes compared with the SED-expected 100 uJy (about 4 sigma and 5 sigma excess) to rule out noise or variability",
+     "evidence": [
+      {
+       "loc": "3.3 Variability",
+       "quote": "confirming that the excess flux obtained in Sect."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Fit the SED with a two-temperature model",
+    "method": {
+     "value": "PHOENIX stellar photosphere plus modified blackbody disc components; ALMA 1.3 mm flux taken from the visibility fit; warm component forced to near pure blackbody to match the ALMA central flux",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "Hence, we adopted a two-temperature model to characterise the infrared excesses."
+      },
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "the ALMA Band 6 flux was obtained from our best-fit parameters including the disc flux"
+      }
+     ]
+    },
+    "software": [
+     "MultiNest",
+     "PHOENIX model grid"
+    ],
+    "key_parameters": [
+     {
+      "value": "modified blackbody: lambda0 = 380 um, beta = 2.3 (cold); lambda0 = 160 um, beta ~ 0 (warm)",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral energy distribution",
+        "quote": "$\\lambda_{0} = 380\\mu$m, $\\beta = 2.3$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "blackbody multiplied by (lambda0/lambda)^beta for lambda >= lambda0",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral energy distribution",
+        "quote": "the blackbody function was multiplied by a factor $(\\lambda_{0}/\\lambda)^{\\beta}$ for wavelengths $\\lambda \\geq \\lambda_{0}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MultiNest MCMC fit across all photometric and spectral points",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "Markov Chain Monte Carlo (MCMC) algorithm (cite: 2009MNRAS.398.1601F)"
+      },
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "minimisation was done across all photometric and spectral points"
+      }
+     ]
+    },
+    "validation": {
+     "value": "A single-temperature model could not fit the mid-IR shape, motivating the second component",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "We found that a single temperature model cannot fit the shape of the mid-IR emission in our SED, so an additional warm component was needed to fit the IRS spectrum."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Derive disc mass loss, dust mass and radius ratio",
+    "method": {
+     "value": "Mass-loss rate from steady-state collisional cascade equation; mm dust mass from Wyatt 2008 eq. 5 with kappa = 2.3 cm^2/g; Gamma = actual radius / blackbody radius",
+     "evidence": [
+      {
+       "loc": "4.2 Collisional status of the disc",
+       "quote": "By assuming a steady-state collisional cascade model, we could estimate the mass-loss rate of the smallest grains"
+      },
+      {
+       "loc": "4.2 Collisional status of the disc",
+       "quote": "the mass of millimetre-sized dust can be calculated using equation (5) of (cite: 2008ARA&A..46..339W) and the best-fitting flux"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "millimetre dust opacity 2.3 cm^2 g^-1",
+      "evidence": [
+       {
+        "loc": "4.2 Collisional status of the disc",
+        "quote": "Assuming a millimetre dust opacity of $\\kappa=2.3$ $cm^{2}$ $g^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Dust mass compared with Hengst et al. (2017) value",
+     "evidence": [
+      {
+       "loc": "4.2 Collisional status of the disc",
+       "quote": "The dust mass obtained in the model results by (cite: 2017MNRAS.468.4725H) is $2.45\\times10^{-2} M_{\\oplus}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Constrain the warm inner dust component",
+    "method": {
+     "value": "Compare the observed warm fractional luminosity with the maximum steady-state collisional value at the blackbody radius, and compare the blackbody-like spectrum with cascade expectations",
+     "evidence": [
+      {
+       "loc": "4.3 Warm inner dust component",
+       "quote": "Using equation (20) in (cite: 2007ApJ...658..569W) and assuming the warm component blackbody radius $R_{bb}$ = $7\\pm1$ au"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "two origin scenarios considered: in situ planetesimal belt or comet delivery",
+      "evidence": [
+       {
+        "loc": "4.3 Warm inner dust component",
+        "quote": "we considered two potential processes for this dust component."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Compare ALMA model with Herschel 70 um profile",
+    "method": {
+     "value": "Best-fit ALMA model radial profile convolved with the ALMA and Herschel 70 um beams, compared with the Herschel 70 um image profile",
+     "evidence": [
+      {
+       "loc": "4.1 Comparison with Herschel",
+       "quote": "We also compared the radial profiles between ALMA and the *Herschel* 70 $\\mu$m original image in Fig."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1",
+    "used_for": {
+     "value": "pipeline calibration, tclean continuum imaging, statwt weight recomputation",
+     "evidence": [
+      {
+       "loc": "2.1 Observational information",
+       "quote": "We carried out continuum imaging and deconvolution using the \"tclean\" task in CASA."
+      },
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "Then we used the CASA \"statwt\" task to recompute the visibility weighting following the averaging process."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "ensemble MCMC fit of the visibility models",
+     "evidence": [
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "To find the best-fitting model and explore the parameter space for posterior probabilities, we used the ensemble MCMC method proposed by (cite: 2010CAMCS...5...65G)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MultiNest",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fit of the SED (modified blackbody, following Yelverton et al. 2019)",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "We employed the method described in (cite: 2019MNRAS.488.3588Y) to model the dust as a modified blackbody"
+      },
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "Markov Chain Monte Carlo (MCMC) algorithm (cite: 2009MNRAS.398.1601F)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "zodipic",
+    "version": "not stated",
+    "used_for": {
+     "value": "the geometric disc model is described as similar to zodipic",
+     "evidence": [
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "a simple geometrical model similar to \"zodipic\""
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHOENIX model grid",
+    "version": "not stated",
+    "used_for": {
+     "value": "stellar photosphere model in SED fit",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "The stellar photospheric radiation was fitted using the PHOENIX model grid (cite: 2013A&A...553A...6H)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASSIS archive",
+    "version": "not stated",
+    "used_for": {
+     "value": "source of the Spitzer IRS low-resolution spectrum",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "which was obtained from the CASSIS archive (cite: 2011ApJS..196....8L)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Python packages (APLpy, Astropy, corner, matplotlib, pandas, NumPy, SciPy)",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed as used in this research; specific purposes not stated",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research use the"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disc radius r0 (Gaussian model, combined data)",
+    "value": "133.7",
+    "uncertainty": "1.6",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "The Gaussian model yields a disc radius of $133.7 \\pm 1.6$ au, with a width of $23.6 \\pm 4.6$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc width (Gaussian model)",
+    "value": "23.6",
+    "uncertainty": "4.6",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "The Gaussian model yields a disc radius of $133.7 \\pm 1.6$ au, with a width of $23.6 \\pm 4.6$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc inclination (Gaussian model)",
+    "value": "67.0",
+    "uncertainty": "0.7",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "an inclination of $67.0 \\pm 0.7\\ensuremath{^\\circ}$, and a position angle of $28.3 \\pm 0.7\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc position angle (Gaussian model)",
+    "value": "28.3",
+    "uncertainty": "0.7",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "an inclination of $67.0 \\pm 0.7\\ensuremath{^\\circ}$, and a position angle of $28.3 \\pm 0.7\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc radius, eccentric model",
+    "value": "133.3",
+    "uncertainty": "1.4",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "yielding a disc radius of $133.3 \\pm1.4$ au with a width of $24.1 \\pm 5.1$ au and an inclination of $66.9 \\pm 0.7\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc width, eccentric model",
+    "value": "24.1",
+    "uncertainty": "5.1",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "yielding a disc radius of $133.3 \\pm1.4$ au with a width of $24.1 \\pm 5.1$ au and an inclination of $66.9 \\pm 0.7\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc eccentricity e (eccentric model, combined data)",
+    "value": "0.014",
+    "uncertainty": "0.007",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3 (variability)",
+      "quote": "$0.014\\pm 0.007$"
+     }
+    ]
+   },
+   {
+    "quantity": "Eccentricity upper limit",
+    "value": "<= 0.03",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with low eccentricity ($e\\leq0.03$) positioned at a distance of 133.7$\\pm$1.6 au from the central star"
+     }
+    ]
+   },
+   {
+    "quantity": "Vertical aspect ratio sigma_h",
+    "value": "0.07",
+    "uncertainty": "0.02",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "both models obtained the same vertical aspect ratio of 0.07"
+     },
+     {
+      "loc": "Table 3 (variability)",
+      "quote": "$0.07\\pm 0.02$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc flux density F (Gaussian model)",
+    "value": "2.34",
+    "uncertainty": "0.13",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3 (variability)",
+      "quote": "$2.34\\pm 0.13$"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux at stellar position F_c (Gaussian model)",
+    "value": "183",
+    "uncertainty": "14",
+    "units": "uJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "the stellar fluxes of the two models are $183\\pm 14$ $\\mu$Jy and $183\\pm 15$ $\\mu$Jy"
+     }
+    ]
+   },
+   {
+    "quantity": "Fitted stellar-position flux OB1",
+    "value": "198",
+    "uncertainty": "30",
+    "units": "uJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Variability",
+      "quote": "the stellar fluxes obtained from the fitting of OB1 and OB2 are $198\\pm 30$ $\\mu$Jy and $184\\pm 16$ $\\mu$Jy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Fitted stellar-position flux OB2",
+    "value": "184",
+    "uncertainty": "16",
+    "units": "uJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Variability",
+      "quote": "the stellar fluxes obtained from the fitting of OB1 and OB2 are $198\\pm 30$ $\\mu$Jy and $184\\pm 16$ $\\mu$Jy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Combined-image central point-source peak flux and S/N",
+    "value": "168 uJy/beam, S/N 10.5",
+    "uncertainty": "16 uJy/beam (from 'measured flux 168 +/- 16' in Sect. 3.2.2)",
+    "units": "uJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Results",
+      "quote": "with a peak S/N of 10.5 and a flux of approximately 168 $\\mu$Jy $\\rm beam^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Combined-image rms",
+    "value": "16",
+    "uncertainty": "not stated",
+    "units": "uJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Results",
+      "quote": "as well as an rms sensitivity of 16 $\\mu$Jy $\\rm beam^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar effective temperature (SED)",
+    "value": "6990",
+    "uncertainty": "100",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "The model fit yielded the effective temperature of the star ($T_{eff}$) as $6990\\pm100$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar luminosity (SED)",
+    "value": "6.8",
+    "uncertainty": "0.05",
+    "units": "Lsun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "stellar luminosity ($L_{\\star}$) as $6.8\\pm0.05$ $L_{\\ensuremath{\\odot}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold disc blackbody temperature",
+    "value": "43",
+    "uncertainty": "1",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "we derived $T_{bb}$ = $43\\pm1$ K, $R_{bb}$ = $110\\pm5$ au and $L_{disc}$/$L_{\\star}$ = $6.3\\pm0.3\\times10^{-5}$ for the cold disc"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold disc blackbody radius",
+    "value": "110",
+    "uncertainty": "5",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "we derived $T_{bb}$ = $43\\pm1$ K, $R_{bb}$ = $110\\pm5$ au and $L_{disc}$/$L_{\\star}$ = $6.3\\pm0.3\\times10^{-5}$ for the cold disc"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold disc fractional luminosity",
+    "value": "6.3e-5",
+    "uncertainty": "0.3e-5",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "we derived $T_{bb}$ = $43\\pm1$ K, $R_{bb}$ = $110\\pm5$ au and $L_{disc}$/$L_{\\star}$ = $6.3\\pm0.3\\times10^{-5}$ for the cold disc"
+     }
+    ]
+   },
+   {
+    "quantity": "Warm disc blackbody temperature",
+    "value": "170",
+    "uncertainty": "20",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "$T_{bb}$ = $170\\pm20$ K, $R_{bb}$ = $7\\pm1$ au and $L_{disc}$/$L_{\\star}$ = $9\\pm1\\times10^{-6}$ for the warm disc"
+     }
+    ]
+   },
+   {
+    "quantity": "Warm disc blackbody radius",
+    "value": "7",
+    "uncertainty": "1",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "$T_{bb}$ = $170\\pm20$ K, $R_{bb}$ = $7\\pm1$ au and $L_{disc}$/$L_{\\star}$ = $9\\pm1\\times10^{-6}$ for the warm disc"
+     }
+    ]
+   },
+   {
+    "quantity": "Warm disc fractional luminosity",
+    "value": "9e-6",
+    "uncertainty": "1e-6",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "$T_{bb}$ = $170\\pm20$ K, $R_{bb}$ = $7\\pm1$ au and $L_{disc}$/$L_{\\star}$ = $9\\pm1\\times10^{-6}$ for the warm disc"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar flux at ALMA 1.3 mm (from SED)",
+    "value": "100",
+    "uncertainty": "2.5",
+    "units": "uJy",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral energy distribution",
+      "quote": "the estimated stellar flux at ALMA 1.3 mm is $100\\pm2.5 \\mu$Jy"
+     }
+    ]
+   },
+   {
+    "quantity": "Minimum grain size mass-loss rate",
+    "value": "1.7e-3",
+    "uncertainty": "not stated",
+    "units": "Mearth/Myr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Collisional status of the disc",
+      "quote": "we could derive a minimum grain size mass-loss rate of $\\dot{M}_{D_{min}}=1.7\\times10^{-3}$ $M_{\\oplus}$ $Myr^{-1}$ for the disc."
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative mass loss over system age",
+    "value": "2.2 to 3.2",
+    "uncertainty": "not stated",
+    "units": "Mearth",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Collisional status of the disc",
+      "quote": "the cumulative loss of mass remains limited, ranging from 2.2 $M_{\\oplus}$ to 3.2 $M_{\\oplus}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass of millimetre-sized dust",
+    "value": "1.1e-2",
+    "uncertainty": "not stated",
+    "units": "Mearth",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Collisional status of the disc",
+      "quote": "The calculated mass of millimetre-sized dust in the debris disc is $1.1\\times10^{-2}$ $M_{\\oplus}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Ratio of actual to blackbody radius Gamma",
+    "value": "1.2",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Collisional status of the disc",
+      "quote": "to be $1.2\\pm0.2$, significantly lower than the expected value of $2.8\\pm0.1$"
+     }
+    ]
+   },
+   {
+    "quantity": "Maximum steady-state fractional luminosity at the warm blackbody radius",
+    "value": "2.4e-6",
+    "uncertainty": "1.3e-6",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "4.3 Warm inner dust component",
+      "quote": "yields the maximum fractional luminosity of $(2.4\\pm1.3)\\times10^{-6}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Warm belt radius needed to retain observed fractional luminosity",
+    "value": "13",
+    "uncertainty": "2",
+    "units": "au",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "4.3 Warm inner dust component",
+      "quote": "closer to $13\\pm2$au"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The ALMA disc is a narrow ring, unlike the broad disc inferred from Herschel; the Herschel breadth is attributed to small grains modified by radiation forces",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "The structure distribution in the ALMA images displays a narrow ring, different to the broad structure of Herschel images"
+     }
+    ]
+   },
+   {
+    "value": "Both observation blocks show excess emission at the stellar position above the stellar flux, suggesting a warm millimetre-sized dust component",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The excess emission from the stellar position suggests that there should be a warm millimetre-sized dust component close to the star"
+     }
+    ]
+   },
+   {
+    "value": "Brightness asymmetries between OB1 and OB2 are not explained by eccentricity; possible transient collision or noise",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "The different brightness distributions between the two observation blocks suggest the presence of potential transient collision events"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the HD 105211 disc a broad belt (Herschel) or a narrow ring at mm wavelengths?",
+    "experiment": "Visibility-space MCMC fit of a Gaussian ring to the ALMA 1.3 mm data and comparison with Herschel",
+    "result": "r0 = 133.7 +/- 1.6 au, width 23.6 +/- 4.6 au, vs Herschel width 100 +/- 20 au",
+    "finding": "The disc is a narrow ring; the ALMA result better describes the underlying planetesimal belt",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our modelling reveals that the disc around HD105211 is a narrow ring"
+     },
+     {
+      "loc": "4.1 Comparison with Herschel",
+      "quote": "the new ALMA results provide a more accurate description of the underlying planetesimal belt structure"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the disc eccentric, explaining the apparent brightness asymmetry?",
+    "experiment": "Fit eccentric and Gaussian models to the combined data and to each OB",
+    "result": "Eccentric model e = 0.014 +/- 0.007; e <= 0.03 in the abstract",
+    "finding": "The asymmetries cannot be attributed to eccentricity",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2.2 Results",
+      "quote": "Any asymmetry seen in the disc images cannot be attributed to the eccentricity."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there warm dust near the star at 1.3 mm?",
+    "experiment": "Fit a flux F_c at the stellar position in the visibility models and compare with the SED-predicted stellar flux of 100 uJy",
+    "result": "F_c = 183 +/- 14 uJy, about 5 sigma above the stellar flux; excess seen in OB1, OB2 and the combined image",
+    "finding": "A warm millimetre-sized dust component close to the star is suggested, with in situ belt or comet delivery as possible origins",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3 Warm inner dust component",
+      "quote": "exhibit excess emissions at the stellar location higher than expected from the star at greater than $3\\sigma$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the disc depleted in small grains?",
+    "experiment": "Compare actual disc radius from ALMA with SED blackbody radius",
+    "result": "Gamma = 1.2 +/- 0.2 vs expected 2.8 +/- 0.1",
+    "finding": "The disc is depleted in small grains and may be dynamically cold",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The relatively low ratio of actual radius to blackbody radius of the HD105211 debris disc indicates that this system is depleted in small grains"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do the OB1 and OB2 images show real time variability?",
+    "experiment": "Compare individual-OB images, ansa fluxes and residuals",
+    "result": "OB2 shows a ~4 sigma intensity difference between ansae and ~2 sigma clumps; OB1 shows a ~0.3 arcsec stellar offset from the phase centre",
+    "finding": "Variation may be a transient collision or noise; needs further observations",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison with Herschel",
+      "quote": "may be caused by a transient collision event or noise that needs further observations."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Two epochs allow checking time evolution and confirming the authenticity of signals",
+    "evidence": [
+     {
+      "loc": "2.1 Observational information",
+      "quote": "The existence of two epochs helps in identifying any time evolution in the HD 105211 system whilst confirming the authenticity of each signal."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Parametric optically thin torus fit to visibilities is common for mm-resolved debris discs; natural weighting for best S/N",
+    "evidence": [
+     {
+      "loc": "3.2.1 Parametric model",
+      "quote": "We fit a parametric disc model to place more constraints on the disc as an optically thin torus using observed visibilities, which is commonly used for describing millimetre-resolved debris discs."
+     },
+     {
+      "loc": "2.1 Observational information",
+      "quote": "To obtain the greatest signal-to-noise ratio, we reconstructed the image using natural weighing."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Eccentric ring model tested because the profile suggested eccentricity; rejected in favour of the Gaussian ring",
+     "evidence": [
+      {
+       "loc": "3.2.1 Parametric model",
+       "quote": "Since the surface brightness profile indicates that the disc might be eccentric, we also considered an eccentric model"
+      },
+      {
+       "loc": "3.3 Variability",
+       "quote": "Therefore, we have chosen the Gaussian model parameters as our result."
+      }
+     ]
+    },
+    {
+     "value": "Single-temperature SED model rejected; two-temperature model adopted",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral energy distribution",
+       "quote": "We found that a single temperature model cannot fit the shape of the mid-IR emission in our SED"
+      }
+     ]
+    },
+    {
+     "value": "Warm dust origin: in situ asteroid belt vs comet delivery, not decisively separated",
+     "evidence": [
+      {
+       "loc": "4.3 Warm inner dust component",
+       "quote": "we considered two potential processes for this dust component."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Vertical structure may be unresolved",
+     "evidence": [
+      {
+       "loc": "3.2.2 Results",
+       "quote": "Considering the shape of the disc and the size of the beam, the vertical direction may not be resolved."
+      }
+     ]
+    },
+    {
+     "value": "Origin of central-source extension (inner component or noise) unresolved",
+     "evidence": [
+      {
+       "loc": "2.2 Results",
+       "quote": "Whether these emissions come from an inner component or just noise needs to be investigated further."
+      }
+     ]
+    },
+    {
+     "value": "Dust mass strongly depends on assumed opacity",
+     "evidence": [
+      {
+       "loc": "4.2 Collisional status of the disc",
+       "quote": "However, the estimation of dust mass is strongly dependent on the assumption about the opacity"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The beam (~1.6 arcsec) is comparable to the ring width, so the 23.6 au width is poorly resolved and depends on the model shape.",
+    "Central excess of ~5 sigma relies on the SED-predicted stellar flux; the paper reports an unresolved spectroscopic binary and residuals around the star below 2 sigma.",
+    "Eccentricity upper limit is quoted as e <= 0.03 in the abstract but e <= 0.02 in Sect. 3.2.2, while the combined fit gives 0.014 +/- 0.007; the text is inconsistent.",
+    "Width quoted as 24.6 au in Sect. 4.1 but 23.6 au elsewhere.",
+    "Absolute pointing offset of ~0.15 arcsec in OB1 is attributed to ALMA pointing precision without verification."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "tclean imaging parameters and uv-taper value",
+    "MCMC prior bounds and model grid settings; modelling code availability",
+    "Numbered literature references for the SED photometry",
+    "Dust temperature used in mass estimate"
+   ],
+   "estimated_data_volume_inferred": "One project with two 12 m EBs, 4 x 2 GHz spws at 15.625 MHz: raw ~5-15 GB; calibrated MS after averaging a few GB",
+   "score_inferred": 3,
+   "score_reason": "Project code, CASA version, array configurations and MCMC settings are given, and results are numeric, but tclean parameters, priors and the modelling-code details are missing and the SED photometry sources are not itemised.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "ALMA Cycle 4 data from 2017-2018 are public in the archive; the recipe (natural-weighted continuum, Gaussian ring visibility fit with emcee, two-temperature SED) can be redone and the main results are numeric, though some imaging and prior settings must be assumed."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Kennedy et al. 2018 (cite: 2018MNRAS.475.4924K)",
+     "why": "parametric ring model and visibility-space MCMC code"
+    },
+    {
+     "citation": "Yelverton et al. 2019 (cite: 2019MNRAS.488.3588Y)",
+     "why": "modified-blackbody SED fitting method"
+    },
+    {
+     "citation": "Marino et al. 2017 (cite: 2017MNRAS.465.2595M)",
+     "why": "eccentric disc density and radius formulas"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Hengst et al. 2017 (cite: 2017MNRAS.468.4725H)",
+     "why": "Herschel/PACS images and disc model for HD 105211 compared with the ALMA result"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 4 project 2016.1.00637.S (PI Dodson-Robinson)",
+    "JWST proposal ID 5650 (PI Matra), mentioned as future observations"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024A%26A...686A.206Y",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:27:45",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 148,
+  "quotes_ok": 148,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 30,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 112,
+   "stated": 85,
+   "rate": 0.759
+  },
+  "evidence_ok": true
+ }
+}

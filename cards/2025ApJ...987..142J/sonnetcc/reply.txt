@@ -1,0 +1,299 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "5.3 A Massive, Obscured Point Source", "quote": "CO(2-1) emission (ALMA pID 2013.1.01161.S, PI Sakamoto)"},
+{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "While a direct comparison of pixel-level gas masses between our MRS observations and CO data from ALMA is beyond the scope of this work"}
+],
+"fields": ["nearby_galaxies", "star_formation"],
+"question": {
+"value": "Distribution, kinematics and excitation of warm H2 in the nuclear starburst of M83 at ~3 pc per spaxel from JWST/MIRI MRS, with [Ne II]/[Ne III] as SFR and hardness tracers, and links to molecular gas mass and cluster ages; ALMA CO(2-1) is used only as a qualitative comparison",
+"evidence": [
+{"loc": "abstract", "quote": "IFU spectroscopy reveals a clumpy reservoir of warm"},
+{"loc": "Introduction", "quote": "In this work, we return to the same dataset to inspect the properties of the warm"}
+]
+},
+"targets": [
+{
+"name": "M83 nuclear starburst region (four MRS pointings, central ~200x200 pc)",
+"details": [
+{"loc": "Introduction", "quote": "As the nearest face-on spiral galaxy with a nuclear starburst ($D$ = 4.6 Mpc, (cite: Saha06))"},
+{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We began by assuming a systemic redshift of $z$ = 0.001733 (cite: MeyerHipass)"},
+{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "($\\alpha$, $\\delta$) = (13:17:0.887, -29:51:55.921) as measured from our MRS data"}
+],
+"coordinates": "optical nucleus (RA, Dec) = (13:17:0.887, -29:51:55.921) as measured from MRS data (the paper later prints RA 13:37:00.5 for sources in the same field)",
+"redshift_or_distance": "D = 4.6 Mpc; z = 0.001733",
+"distance_source": "Saha06 (distance); MeyerHipass (redshift)"
+}
+],
+"alma_project_codes": [
+{"code": "2013.1.01161.S", "evidence": [{"loc": "5.3 A Massive, Obscured Point Source", "quote": "CO(2-1) emission (ALMA pID 2013.1.01161.S, PI Sakamoto)"}]}
+],
+"data_settings": [
+{"field": "pi_or_archival_as_stated", "value": "ALMA project 2013.1.01161.S, PI Sakamoto (CO(2-1) used for qualitative comparison)", "evidence": [{"loc": "5.3 A Massive, Obscured Point Source", "quote": "CO(2-1) emission (ALMA pID 2013.1.01161.S, PI Sakamoto)"}]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=2-1", "rest_frequency": "not stated", "evidence": [{"loc": "5.3 A Massive, Obscured Point Source", "quote": "CO(2-1) emission (ALMA pID 2013.1.01161.S, PI Sakamoto)"}]}
+],
+"other_facilities": [
+{"name": "JWST/MIRI MRS (GO 02219)", "provided": {"value": "Four-pointing 2x2 MRS IFU mosaic of the M83 nucleus, the primary dataset", "evidence": [{"loc": "2 Observations", "quote": "We use the MIRI/MRS observations from program GO 02219 (PI: Hernandez), which were obtained between 2022 July 5 – 9."}]}},
+{"name": "JWST/NIRCam and MIRI imaging (FEAST, GO 1783)", "provided": {"value": "Imaging of stellar populations, embedded star formation and PAH emission used for qualitative comparison", "evidence": [{"loc": "Introduction", "quote": "as part of the FEAST program (GO 1783, PI A. Adamo; Adamo et al., in prep.)"}]}},
+{"name": "HST/COS archival FUV spectroscopy (programs 11579, 14681, 15193)", "provided": {"value": "Integrated FUV spectra of four cluster groupings used to estimate cluster ages and mass", "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "To further investigate the possible age gradient, we have analyzed archival"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "H2 power-law temperature excitation model used for warm H2 mass", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "we use the H$_2$ excitation model of (cite: Togi16) (hereafter TS16)"}]}, "citation": "Togi & Smith 2016 (cite: Togi16)"},
+{"what": {"value": "Starburst99 SSP templates (2, 10, 100 Myr) for the stellar continuum in CAFE", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "The stellar model consists of a mixture of 2, 10, and 100 Myr-old single stellar population (SSP) templates from Starburst99 (cite: starburst99)."}]}, "citation": "(cite: starburst99)"},
+{"what": {"value": "Ossenkopf et al. extinction curve", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "we assumed the (cite: Ossenkopf92) extinction curve"}]}, "citation": "(cite: Ossenkopf92)"},
+{"what": {"value": "Metallicity-dependent [Ne II]/[Ne III] to SFR relation", "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "derive SFRs per spaxel using the relation presented in (cite: Zhuang19)"}]}, "citation": "(cite: Zhuang19)"},
+{"what": {"value": "Gas-phase metallicity Z = 2 Zsun adopted for the SFR relation", "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "We use the extinction-corrected line luminosities and an assumed gas-phase metallicity of $Z = 2\\times Z_{\\odot}$ (cite: Hernandez21)"}]}, "citation": "(cite: Hernandez21)"},
+{"what": {"value": "CO(1-0) observations used to derive M_H2(CO) for comparison", "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "Using the CO(1-0) observations of (cite: Hirota18)"}]}, "citation": "(cite: Hirota18)"},
+{"what": {"value": "Galactic alpha_CO = 3.2 Msun (K km/s pc^2)^-1 adopted for M_H2(CO)", "evidence": [{"loc": "5.1 Molecular Gas Contents of M83's Nuclear Region", "quote": "In that work they assume a Galactic $\\alpha_{\\mathrm{CO}}$ = 3.2 $M_{\\odot}$"}]}, "citation": "TS16 (cite: Togi16), also adopted in H23 (cite: Hernandez23)"},
+{"what": {"value": "Systemic redshift z = 0.001733 (519 km/s)", "evidence": [{"loc": "4 Analysis", "quote": "corresponding to a recession velocity of 519 km s$^{-1}$ (cite: MeyerHipass)"}]}, "citation": "(cite: MeyerHipass)"},
+{"what": {"value": "MRS PSF FWHM versus wavelength (Equation 1) used for the common-resolution smoothing", "evidence": [{"loc": "2 Observations", "quote": "which is the PSF FWHM of MRS at our long-wavelength cutoff of 20.68 $\\mu$m (see Equation 1 of (cite: Law23))"}]}, "citation": "(cite: Law23)"},
+{"what": {"value": "MRS spectral resolution (Equation 1) used for instrumental broadening correction", "evidence": [{"loc": "4 Analysis", "quote": "using Equation 1 of (cite: OJones23) to determine the spectral resolution at the wavelength of each line except for S(1)"}]}, "citation": "(cite: OJones23)"},
+{"what": {"value": "Stellar age 8.6 Myr for the faint Region 3 area", "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "8.6 Myr in the photometric analysis from (cite: Knapen10)"}]}, "citation": "(cite: Knapen10)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Observation strategy and program details taken from the earlier H23 paper", "evidence": [{"loc": "2 Observations", "quote": "Additional details on the observation strategy are given in H23, though we summarize the most important points below."}]}, "from_reference": "H23 (cite: Hernandez23)"},
+{"what": {"value": "Fixed upper temperature T_u = 2000 K for the H2 power-law model", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "thus assume a fixed $T_u$ = 2000 K, which we also adopt in this work"}]}, "from_reference": "TS16 (cite: Togi16)"},
+{"what": {"value": "Galactic alpha_CO = 3.2 adopted for M_H2(CO)", "evidence": [{"loc": "5.1 Molecular Gas Contents of M83's Nuclear Region", "quote": "which we also adopted in H23 and the present work"}]}, "from_reference": "TS16 (cite: Togi16) and H23 (cite: Hernandez23)"},
+{"what": {"value": "Line S/N noise estimate method", "evidence": [{"loc": "3.2 Emission Line Maps", "quote": "in a manner similar to that used in (cite: DelPino23)"}]}, "from_reference": "(cite: DelPino23)"},
+{"what": {"value": "F-test used to choose one or two Gaussian components", "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "we compare the reduced-$\\chi^2$ of the two fits in a statistical $F$-test, following (cite: Westmoquette07)"}]}, "from_reference": "(cite: Westmoquette07)"},
+{"what": {"value": "Starting CAFE parameter file (MIRI-optimized starburst) that the authors then modified", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We used a modified version of the MIRI-optimized starburst parameter file in"}]}, "from_reference": "CAFE (cite: cafe; Diaz-Santos et al., in prep.)"}
+],
+"unstated_but_needed": [
+"The modified CAFE parameter file (which parameters were changed from the MIRI-optimized starburst file) and the CAFE version",
+"The Python TS16 implementation (footnote link is TBD)",
+"Exact local continuum windows and fit bounds used for the specutils Gaussian line fits, and initial guesses",
+"Which of the three reduced channel-1 cube products and any bad-pixel or background-subtraction options were used in the JWST pipeline, beyond the version number",
+"Reduction and imaging details of the ALMA CO(2-1) cube from 2013.1.01161.S (it is shown but its processing, beam and sensitivity are not given)",
+"How the CO-based total gas mass M_H2(CO) = 1.715e7 Msun over the FOV was computed from the Hirota et al. CO(1-0) map (aperture, mask, line ratio if any)",
+"Which spaxels were included in the integrated-light spectrum fit versus resolved sum, and the exact FOV mask"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "reduce MRS cubes and match resolution",
+"method": {"value": "Standard JWST pipeline reduction of MRS data with a dedicated background pointing, residual fringe correction, wavelength axis truncated at 20.68 um, and convolution of every slice to a common 0.788 arcsec FWHM", "evidence": [
+{"loc": "2 Observations", "quote": "We also applied residual fringe corrections available in the"},
+{"loc": "2 Observations", "quote": "We opted to truncate the wavelength axis of our combined data cube at 20.68 $\\mu$m (the blue limit of band 4B)"},
+{"loc": "2 Observations", "quote": "we spatially smoothed our data cube to a common resolution of 0.788$''$ FWHM"}]},
+"software": ["JWST calibration pipeline"],
+"key_parameters": [
+{"value": "pipeline version 1.10.2, spatial pixels gridded to 0.13 arcsec", "evidence": [{"loc": "2 Observations", "quote": "pipeline (version 1.10.2), with the spatial pixels gridded to a common scale of"}]},
+{"value": "Only the channel 1 field of view is retained", "evidence": [{"loc": "2 Observations", "quote": "we also restrict ourselves only to the parts of our IFU data cube covered by MRS channel 1"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "model PAHs, dust continuum and attenuation per spaxel",
+"method": {"value": "CAFE fits of stellar, cool and warm dust continua and PAH Drude profiles per spaxel, giving a wavelength-dependent attenuation curve", "evidence": [
+{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We use the Continuum and Feature Extraction software"},
+{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "Our primary dust model includes emission and absorption from cool (40 – 100 K) and warm (100 – 400 K) dust and assumes a screen geometry."}]},
+"software": ["CAFE"],
+"key_parameters": [
+{"value": "~70 highly obscured Region 2 spaxels fit with a single 40 - 100 K dust component", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "For these $\\sim$70 spaxels, we instead fitted the spectra with a single dust component with temperatures between 40 – 100 K."}]},
+{"value": "PAH Drude centroids vary up to 500 km/s; widths vary up to +/-20% of the default", "evidence": [
+{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We allow the centroid of the Drude profiles to vary by up to 500 km s$^{-1}$"},
+{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We also allow the width of each component to vary by up to $\\pm$20% of their default value in"}]}
+],
+"assumptions": [
+{"value": "Systemic redshift z = 0.001733", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We began by assuming a systemic redshift of $z$ = 0.001733 (cite: MeyerHipass)"}]},
+{"value": "Ossenkopf et al. extinction curve", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "we assumed the (cite: Ossenkopf92) extinction curve"}]},
+{"value": "Galactic interstellar radiation field illuminates all dust components", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "we assume a Galactic interstellar radiation field as the illuminating source for all model dust components"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Residuals of +/-5% in line-free regions, with failures in the 6 - 6.6 and 11 - 13 um PAH complexes", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "produces acceptable model fits across the wavelength range we consider in this work (with residuals of $\\pm$5% in line-free regions)"}]}
+},
+{
+"order": 3,
+"goal": "fit emission lines and de-redden",
+"method": {"value": "Subtract the CAFE dust+PAH model, fit local continuum, fit one Gaussian per H2 line and one or two Gaussians to [Ne II] 12.81 and [Ne III] 15.56 um, integrate the Gaussian for flux, divide by the CAFE attenuation fraction", "evidence": [
+{"loc": "3.2 Emission Line Maps", "quote": "We perform a local continuum fitting and subtraction in the vicinity of the lines analyzed in this work."},
+{"loc": "3.2 Emission Line Maps", "quote": "multiply the observed flux and flux uncertainty by (1/$A$) to recover the intrinsic, de-reddened line flux"}]},
+"software": ["specutils"],
+"key_parameters": [
+{"value": "S/N > 3 for all lines and components; noise from RMS in 0.03 um windows times 2x FWHM", "evidence": [
+{"loc": "3.2 Emission Line Maps", "quote": "we measure the RMS flux density in 0.03 $\\mu$m-wide windows in the pseudo-continuum around each line, then multiply this value by 2$\\times$ the FWHM of the line"},
+{"loc": "3.2 Emission Line Maps", "quote": "Unless otherwise specified, we adopt a threshold of S/N $>3$ for all lines and line components"}]},
+{"value": "Resolving power R = 3300 adopted for S(1) and lines at ~15 - 17 um", "evidence": [{"loc": "4 Analysis", "quote": "leading us to adopt $R$ = 3300 for the S(1) transition and other lines in this wavelength interval"}]}
+],
+"assumptions": [
+{"value": "H2 line kinematics are not tied between lines", "evidence": [{"loc": "3.2 Emission Line Maps", "quote": "All fits were allowed to vary independently (i.e., the kinematics of the H$_2$ lines are not tied)."}]}
+],
+"fitting": {"value": "Gaussian line fits via specutils; no sampler or priors stated", "evidence": [{"loc": "3.2 Emission Line Maps", "quote": "to fit a single Gaussian to each of the H$_2$ transitions listed in Table"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "fit the H2 power-law excitation model",
+"method": {"value": "TS16 power-law temperature distribution fit to S(1)-normalised upper-level column densities for slope n and lower bound T_l, with T_u fixed at 2000 K", "evidence": [
+{"loc": "4.1 H2 Excitation Modeling", "quote": "the model assumes that the rotational temperatures of H$_2$ gas follow a power-law distribution"},
+{"loc": "4.1 H2 Excitation Modeling", "quote": "Both the observed and predicted columns are normalized to the S(1) line for the fitting procedure."}]},
+"software": ["Python adaptation of TS16", "scipy curve_fit"],
+"key_parameters": [
+{"value": "Only pixels with four or more H2 line detections and delta n / n < 25% retained", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "we consider only those pixels with four or more H$_2$ line detections"}]},
+{"value": "T_u = 2000 K", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "thus assume a fixed $T_u$ = 2000 K, which we also adopt in this work"}]}
+],
+"assumptions": [],
+"fitting": {"value": "Trust Region Reflective least squares via scipy curve_fit (IDL original used Levenberg-Marquardt); priors not stated", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "the choice of minimization algorithm (the Levenberg-Marquardt algorithm in IDL vs. the Trust Region Reflective algorithm in"}]},
+"validation": {"value": "Python version reproduces the IDL n, T_l and masses to within 1% on the TS16 sample", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "yields best-fit values of $n$, $T_l$, and H$_2$ masses $M (T > T_l)$ that are identical to the original implementation in IDL"}]}
+},
+{
+"order": 5,
+"goal": "derive H2 masses and compare with CO",
+"method": {"value": "Use TS16 Equations 9 and 14 per spaxel with three lower-bound definitions (best-fit T_l, 200 K, 80 K), also 50 K, repeated on the integrated spectrum; then find T_cal where M_H2 equals M_H2(CO)", "evidence": [
+{"loc": "4.2 Warm H2 Mass Estimates", "quote": "we can then use Equations 9 and 14 in TS16 to derive total H$_2$ column densities and masses per spaxel"},
+{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "We iterated over values of $T_{l}^{'}$ to find a range of temperatures that satisfy"}]},
+"software": ["Python adaptation of TS16"],
+"key_parameters": [
+{"value": "Only the uncertainty on n (not T_l) is propagated to the mass", "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "Unless otherwise specified, we propagate only the uncertainty on $n$ (and not $T_l$) to the gas mass estimates."}]}
+],
+"assumptions": [
+{"value": "Galactic alpha_CO = 3.2 Msun (K km/s pc^2)^-1 for M_H2(CO)", "evidence": [{"loc": "5.1 Molecular Gas Contents of M83's Nuclear Region", "quote": "In that work they assume a Galactic $\\alpha_{\\mathrm{CO}}$ = 3.2 $M_{\\odot}$"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Resolved and integrated-spectrum masses compared; they agree for the best-fit T_l but only marginally for 200 K and 80 K", "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "the H$_2$ masses estimated from our integrated spectrum are at best only marginally consistent within uncertainties with those from our resolved analysis"}]}
+},
+{
+"order": 6,
+"goal": "derive star formation rates from neon lines",
+"method": {"value": "F-test chooses single or double Gaussian per line, then the Zhuang et al. 2019 relation converts extinction-corrected [Ne II] and [Ne III] luminosities to SFR and Sigma_SFR", "evidence": [
+{"loc": "4.3 Star Formation Rates", "quote": "we adopt the two-component fit if the reduced-$\\chi^2$ is lowered by a factor of at least 3.289 compared to the one-component fit"},
+{"loc": "4.3 Star Formation Rates", "quote": "derive SFRs per spaxel using the relation presented in (cite: Zhuang19)"}]},
+"software": [],
+"key_parameters": [
+{"value": "F-test significance alpha = 0.10; S/N > 3 applied after the F-test", "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "Only after application of the $F$-test do we then apply our detection threshold of S/N $>$ 3"}]}
+],
+"assumptions": [
+{"value": "Z = 2 Zsun; distance of M83 from Saha06", "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "We use the extinction-corrected line luminosities and an assumed gas-phase metallicity of $Z = 2\\times Z_{\\odot}$ (cite: Hernandez21)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "estimate cluster ages from HST/COS spectra",
+"method": {"value": "Full-spectrum fitting of the four archival COS pointings with SESAMME, assuming one dominant stellar population per spectrum", "evidence": [
+{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "uses Markov Chain Monte Carlo methods to obtain estimates of the cluster age, metallicity, E(B-V) values"}]},
+"software": ["SESAMME"],
+"key_parameters": [
+{"value": "COS aperture of 2.5 arcsec encompassing multiple clusters", "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "which encompass multiple star clusters in a single 2$''$.5 aperture"}]}
+],
+"assumptions": [
+{"value": "Single dominant stellar population per input spectrum", "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "this means that our analysis then assumes a single dominant stellar population when inferring the stellar properties of the FUV integrated-light spectra"}]}
+],
+"fitting": {"value": "MCMC (sampler and priors not stated)", "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "uses Markov Chain Monte Carlo methods to obtain estimates of the cluster age, metallicity, E(B-V) values"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 8,
+"goal": "qualitative comparison with ALMA CO(2-1)",
+"method": {"value": "ALMA CO(2-1) emission from project 2013.1.01161.S is shown beside the H2 S(1) FWHM map and JWST imaging to relate the H2 point source and warm H2 to cold gas; no reduction or measurement from the ALMA data is described", "evidence": [
+{"loc": "5.3 A Massive, Obscured Point Source", "quote": "including the FWHM map of the H$_2$ S(1) line; CO(2-1) emission (ALMA pID 2013.1.01161.S, PI Sakamoto)"},
+{"loc": "5.3 A Massive, Obscured Point Source", "quote": "the spatial coincidence of the H$_2$ source with CO-emitting gas"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "JWST calibration pipeline", "version": "1.10.2", "used_for": {"value": "Reducing MRS observations to cubes, stitched with output type multi", "evidence": [{"loc": "2 Observations", "quote": "pipeline (version 1.10.2), with the spatial pixels gridded to a common scale of"}]}},
+{"name": "CAFE", "version": "not stated", "used_for": {"value": "Modelling PAH features, dust continuum and extinction per spaxel", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We use the Continuum and Feature Extraction software"}]}},
+{"name": "Starburst99", "version": "not stated", "used_for": {"value": "SSP templates for the stellar component in CAFE", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "single stellar population (SSP) templates from Starburst99 (cite: starburst99)"}]}},
+{"name": "specutils", "version": "not stated", "used_for": {"value": "Fitting Gaussian profiles to H2 and neon lines", "evidence": [{"loc": "3.2 Emission Line Maps", "quote": "to fit a single Gaussian to each of the H$_2$ transitions listed in Table"}]}},
+{"name": "scipy curve_fit", "version": "not stated", "used_for": {"value": "Trust Region Reflective minimisation in the Python TS16 implementation", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "the choice of minimization algorithm (the Levenberg-Marquardt algorithm in IDL vs. the Trust Region Reflective algorithm in"}]}},
+{"name": "SESAMME", "version": "not stated", "used_for": {"value": "Full-spectrum fitting of HST/COS cluster spectra for age, metallicity, E(B-V), mass", "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "uses Markov Chain Monte Carlo methods to obtain estimates of the cluster age, metallicity, E(B-V) values"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "General analysis (named in the software acknowledgment)", "evidence": [{"loc": "Acknowledgments", "quote": "and Astropy (cite: Astropy13; Astropy18; Astropy22) in our analyses"}]}}
+],
+"results_numeric": [
+{"quantity": "Warm H2 mass, T_l' = best-fit T_l (resolved sum)", "value": "1.50e5", "uncertainty": "+0.09/-0.09 e5", "units": "Msun", "from_step": 5, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "(1) $1.50^{+0.09}_{-0.09} \\times 10^5 M_{\\odot}$ for a variable $T_{l}^{'}$"}]},
+{"quantity": "H2 mass, T_l' = 200 K (resolved sum)", "value": "2.26e5", "uncertainty": "+0.17/-0.19 e5", "units": "Msun", "from_step": 5, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "$2.26^{+0.17}_{-0.19} \\times 10^5 M_{\\odot}$ for $T_{l}^{'}$ = 200 K"}]},
+{"quantity": "H2 mass, T_l' = 80 K (resolved sum)", "value": "7.93e6", "uncertainty": "+3.52/-2.59 e6", "units": "Msun", "from_step": 5, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "yields (3) $7.93^{+3.52}_{-2.59} \\times 10^6 M_{\\odot}$"}]},
+{"quantity": "H2 mass, T_l' = 50 K (resolved sum)", "value": "8.17e7", "uncertainty": "+8.67/-4.04 e7", "units": "Msun", "from_step": 5, "evidence": [{"loc": "5.1 Molecular Gas Contents of M83's Nuclear Region", "quote": "we obtain $M_{H2}(T > 50$ K) = $8.17^{+8.67}_{-4.04} \\times 10^7 M_{\\odot}$"}]},
+{"quantity": "Median power-law slope n across FOV", "value": "5.75", "uncertainty": "0.64 (1 sigma range)", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "The median slope and 1$\\sigma$ range across our FOV, $n = 5.75 \\pm 0.64$,"}]},
+{"quantity": "Best-fit T_l range across FOV", "value": "130 - 343 K, median 247 K", "uncertainty": "not stated", "units": "K", "from_step": 4, "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "vary from $\\sim$130 – 343 K (median 247 K)"}]},
+{"quantity": "Integrated spectrum best-fit T_l", "value": "215.2", "uncertainty": "26.2", "units": "K", "from_step": 4, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "the best-fit value of $T_l$ (215.2 $\\pm$ 26.2 K)"}]},
+{"quantity": "Integrated spectrum power-law slope n", "value": "5.10", "uncertainty": "0.26", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "the power-law slope $n$ = 5.10 $\\pm$ 0.26"}]},
+{"quantity": "Integrated spectrum H2 mass, T_l' = 215.2 K", "value": "1.54e5", "uncertainty": "+0.06/-0.07 e5", "units": "Msun", "from_step": 5, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "$1.54^{+0.06}_{-0.07} \\times 10^5 M_{\\odot}$ for $T_{l}^{'}$ = 215.2 K"}]},
+{"quantity": "Integrated spectrum H2 mass, T_l' = 200 K", "value": "1.84e5", "uncertainty": "+0.09/-0.09 e5", "units": "Msun", "from_step": 5, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "(2) $1.84^{+0.09}_{-0.09} \\times 10^5 M_{\\odot}$ for $T_{l}^{'}$ = 200 K"}]},
+{"quantity": "Integrated spectrum H2 mass, T_l' = 80 K", "value": "4.47e6", "uncertainty": "+0.98/-0.84 e6", "units": "Msun", "from_step": 5, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "(3) $4.47^{+0.98}_{-0.84} \\times 10^6 M_{\\odot}$ for $T_{l}^{'}$ = 80 K."}]},
+{"quantity": "CO-based molecular gas mass in the FOV", "value": "1.715e7", "uncertainty": "not stated", "units": "Msun", "from_step": 5, "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "consistent with $M_{H2}$(CO) = 1.715$\\times 10^7 M_{\\odot}$ within the uncertainties"}]},
+{"quantity": "Calibration temperature T_cal, resolved analysis", "value": "60 - 70", "uncertainty": "range consistent within uncertainties", "units": "K", "from_step": 5, "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "a range of temperatures $T_{cal}$ (60 – 70 K) yield an H$_2$ mass estimate"}]},
+{"quantity": "Calibration temperature T_cal, integrated spectrum", "value": "57", "uncertainty": "not stated", "units": "K", "from_step": 5, "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "we find that $T_{cal}$ = 57 K provides the best match to $M_{H2}$(CO)"}]},
+{"quantity": "Total H2 mass at T_l' = 50 K relative to M_H2(CO)", "value": "~4.7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "At $T_{l}^{'}$ = 50 K, the total $M_{H2}$ mass is a factor of $\\sim$4.7 higher than that inferred from CO observations"}]},
+{"quantity": "Median tau_warm at 14 um across FOV", "value": "0.64", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "the median optical depth across our FOV is fairly low ($\\tau_{warm} \\sim$ 0.64)"}]},
+{"quantity": "tau_warm in the integrated spectrum", "value": "0.49", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "modest attenuation ($\\tau_{warm}$ = 0.49) inferred by"}]},
+{"quantity": "Fraction of [Ne II] flux in the secondary component", "value": "~23% on average", "uncertainty": "not stated", "units": "%", "from_step": 6, "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "The secondary component contributes $\\sim$23% of the total"}]},
+{"quantity": "Peak Sigma_SFR in Region 2", "value": "~75", "uncertainty": "not stated", "units": "Msun yr^-1 kpc^-2", "from_step": 6, "evidence": [{"loc": "6 Conclusions", "quote": "reaching up to 75 $M_{\\odot}$ yr$^{-1}$ kpc$^{-2}$ in $3\\times3$ pc$^2$ pixels"}]},
+{"quantity": "Lowest Sigma_SFR", "value": "~1", "uncertainty": "not stated", "units": "Msun yr^-1 kpc^-2", "from_step": 6, "evidence": [{"loc": "4.3 Star Formation Rates", "quote": "with SFR densities as low as $\\sim$1 $M_{\\odot}$ yr$^{-1}$ kpc$^{-2}$"}]},
+{"quantity": "Cluster age and mass of most massive COS population (Region 2)", "value": "age 2 Myr; mass 1.13e6 Msun", "uncertainty": "age +/-1 Myr; mass +/-0.02e6", "units": "Myr; Msun", "from_step": 7, "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "with a mass estimate of 1.13 ($\\pm$ 0.02) $\\times$ 10$^{6}$ M$_\\odot$ and an age of 2 $\\pm$ 1 Myr"}]},
+{"quantity": "H2 S(1) point source core FWHM", "value": ">150", "uncertainty": "not stated", "units": "km/s", "from_step": 3, "evidence": [{"loc": "5.3 A Massive, Obscured Point Source", "quote": "with a FWHM of $>$150 km s$^{-1}$ at its core"}]}
+],
+"findings_qualitative": [
+{"value": "Warm H2 (>200 K) is a clumpy reservoir, with the most excited H2 near the optical nucleus and groupings of young massive clusters", "evidence": [{"loc": "6 Conclusions", "quote": "with the most excited emission coincident with the optical nucleus and with groupings of young, massive star clusters"}]},
+{"value": "A kinematically distinct H2 S(1) point source near CO(2-1) emission is proposed to be a forming or fully embedded star cluster", "evidence": [{"loc": "6 Conclusions", "quote": "which we propose is a forming or fully-embedded star cluster given its location with respect to the CO (2-1) emission"}]}
+],
+"claims": [
+{"hypothesis": "How much warm H2 is in the M83 nuclear region and how is it excited at ~3 pc scale?", "experiment": "TS16 power-law fits per spaxel to MRS H2 S(1)-S(7) lines, mass integrated down to several T_l'", "result": "Warm H2 (T > 200 K) ~2.26e5 Msun, median n = 5.75, T_l 130 - 343 K", "finding": "The warm H2 reservoir is a ~1% fraction of the CO-based molecular gas mass and most excited near the nucleus and young clusters", "support": "supported", "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "$2.26^{+0.17}_{-0.19} \\times 10^5 M_{\\odot}$ for $T_{l}^{'}$ = 200 K"}, {"loc": "6 Conclusions", "quote": "accounts for $\\sim$1% of the total molecular gas mass in our FOV as inferred from CO observations"}]},
+{"hypothesis": "Does extrapolating the H2 power law to cold temperatures imply CO-dark gas?", "experiment": "Compare M_H2(T > T_l') with M_H2(CO) from Hirota et al. CO(1-0) with Galactic alpha_CO", "result": "T_l' = 50 K gives ~4.7 times the CO-based mass; T_cal ~57 - 70 K matches CO", "finding": "About 79% of molecular gas could be CO-dark, or alpha_CO is higher than Galactic, depending on the extrapolation", "support": "partially", "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "At $T_{l}^{'}$ = 50 K, the total $M_{H2}$ mass is a factor of $\\sim$4.7 higher than that inferred from CO observations"}, {"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "we find that $T_{cal}$ = 57 K provides the best match to $M_{H2}$(CO)"}]},
+{"hypothesis": "Does the inferred H2 mass depend on the physical scale probed?", "experiment": "Same CAFE plus TS16 analysis on spaxels and on the integrated spectrum", "result": "Equal for the best-fit T_l, lower in the integrated case for T_l' = 200 and 80 K", "finding": "Hints of scale dependence within the TS16 framework", "support": "partially", "evidence": [{"loc": "4.2 Warm H2 Mass Estimates", "quote": "the H$_2$ masses estimated from our integrated spectrum are at best only marginally consistent within uncertainties with those from our resolved analysis"}]},
+{"hypothesis": "Is the H2 S(1) kinematic point source an embedded star cluster?", "experiment": "Compare S(1) FWHM and velocity maps with ALMA CO(2-1) and JWST FEAST imaging", "result": "Compact (<~5 pc) source with FWHM >150 km/s, coincident with CO-emitting gas and young cluster ages", "finding": "Speculated to be a forming or fully embedded cluster", "support": "partially", "evidence": [{"loc": "5.3 A Massive, Obscured Point Source", "quote": "leads us to speculate that the kinematically-distinct H$_2$ point source may be a forming or fully-embedded star cluster"}]},
+{"hypothesis": "Do SFR maps and cluster ages support an age gradient in the nuclear ringlet?", "experiment": "[Ne II] and [Ne III] SFR maps plus SESAMME fits to four HST/COS pointings", "result": "Sigma_SFR up to ~75 in Region 2 with 2 +/- 1 Myr clusters; lowest SFR in Region 3 with older populations", "finding": "Supports a star-forming ringlet with a mild age gradient", "support": "supported", "evidence": [{"loc": "6 Conclusions", "quote": "this supports the notion of a star-forming ringlet with a mild age gradient as first proposed by"}]}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "Emission lines were not fit together with PAHs and continuum to save computation", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "We did not fit emission lines simultaneously with PAHs and mid-IR continua for the sake of computational efficiency"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Two-component dust model rejected for ~70 obscured Region 2 spaxels because of physically implausible fits", "evidence": [{"loc": "3.1 PAHs, Dust Continuum, and Attenuation", "quote": "we found that the two-component dust model produced physically implausible fits"}]}
+],
+"limitations_admitted": [
+{"value": "No S(0) line, so the sensitivity temperature cannot be constrained as in TS16", "evidence": [{"loc": "5.1 Molecular Gas Contents of M83's Nuclear Region", "quote": "We therefore cannot directly constrain a sensitivity temperature comparable to that in TS16 for the observations presented here."}]},
+{"value": "COS ages assume a single dominant stellar population per aperture", "evidence": [{"loc": "5.4 Gaseous Confirmation of a Stellar Age Gradient?", "quote": "this means that our analysis then assumes a single dominant stellar population when inferring the stellar properties of the FUV integrated-light spectra"}]},
+{"value": "Flux calibration discontinuities across MRS bands forced truncation at 20.68 um", "evidence": [{"loc": "2 Observations", "quote": "which we attribute to issues with flux calibration across bands within the MRS pipeline"}]},
+{"value": "A direct pixel-level comparison with ALMA CO data is not done", "evidence": [{"loc": "5.2 Potential CO-dark Molecular Gas", "quote": "While a direct comparison of pixel-level gas masses between our MRS observations and CO data from ALMA is beyond the scope of this work"}]}
+],
+"referee_caveats_inferred": [
+"ALMA data are used only qualitatively; M_H2(CO) comes from Hirota et al. CO(1-0), so the CO-dark fraction rests on a Galactic alpha_CO the authors argue is probably too high",
+"CO-dark claim depends strongly on extrapolating the power law below T_l, with large uncertainties at 50 K",
+"The median tau_warm is given as 0.64 in Section 3.1 and 0.60 in Section 4.2, and RA is printed as 13:17 and 13:37 for sources in the same field",
+"H2 mass uncertainty propagates only n, not T_l",
+"The Zhuang et al. SFR calibration covers ages up to 2.5 Myr while parts of the field are older"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "JWST data are in MAST; ALMA public status not stated", "evidence": [{"loc": "2 Observations", "quote": "all JWST data used in this paper can be found in MAST:10.17909/a61h-f081"}]}
+],
+"code_released": [
+{"value": "Python adaptation of the TS16 model released for community use, but link is TBD", "evidence": [{"loc": "4.1 H2 Excitation Modeling", "quote": "For this work we created a Python adaptation of the TS16 model, which we release for community use"}, {"loc": "Footnotes", "quote": "Link TBD"}]}
+],
+"missing_for_reproduction": [
+"Modified CAFE parameter file and CAFE version",
+"Working link to the Python TS16 code",
+"ALMA CO(2-1) data processing and the CO-based mass computation"
+],
+"estimated_data_volume_inferred": "JWST MRS cubes for four pointings and three gratings, likely several GB to tens of GB; ALMA CO(2-1) cube is not needed for the numeric results",
+"score_inferred": 3,
+"score_reason": "JWST data are public and the TS16 analysis is described with numeric results, but the modified CAFE setup and code link are missing and ALMA plays only a qualitative role",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The ALMA data are not central, and the modified CAFE configuration and TS16 code link are not given, so the main numbers cannot be redone from the paper alone",
+"methods_papers": [
+{"citation": "Togi & Smith 2016 (cite: Togi16)", "why": "H2 power-law excitation model"},
+{"citation": "(cite: cafe)", "why": "CAFE continuum and PAH fitting"},
+{"citation": "Jones et al. 2023a (cite: Jones2023)", "why": "SESAMME full-spectrum cluster fitting"},
+{"citation": "Zhuang et al. 2019 (cite: Zhuang19)", "why": "Neon-line SFR relation"}
+],
+"companion_papers": [
+{"citation": "Hernandez et al. 2023 (cite: Hernandez23)", "why": "First paper on the same MRS dataset, with integrated regional spectra"},
+{"citation": "Hirota et al. 2018 (cite: Hirota18)", "why": "CO(1-0) data used for M_H2(CO)"},
+{"citation": "Adamo et al., in prep.", "why": "JWST FEAST imaging of M83"}
+],
+"related_projects_or_surveys": ["JWST GO 02219", "JWST FEAST (GO 1783)", "ALMA 2013.1.01161.S", "HST/COS programs 11579, 14681, 15193"]
+}

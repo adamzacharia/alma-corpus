@@ -1,0 +1,438 @@
+{
+ "bibcode": "2020ApJ...903..119L",
+ "title": "The ALMA Survey of 70 μm Dark High-mass Clumps in Early Stages (ASHES). II. Molecular Outflows in the Extreme Early Stages of Protocluster Formation",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abb81f",
+ "arxiv_id": "2009.05506",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Identify molecular outflows and study their properties, episodicity, accretion history, and feedback impact in extremely early evolutionary stages of high-mass star and protocluster formation.",
+ "alma_project_codes": [
+  "2015.1.01539.S"
+ ],
+ "data": {
+  "bands": "Band 6 (224 GHz; 1.34 mm)",
+  "arrays": "12 m array, ACA (7 m), TP",
+  "angular_resolution": "1''.2 (~4000-7500 AU)",
+  "sensitivity": "~0.1 mJy beam^-1 (continuum); ~0.06 K per 0.17 km s^-1 channel (first six lines); ~0.02 K per 1.3 km s^-1 channel (last four lines)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "High-mass clumps outflow mechanical forces and L_bol/M_clump comparison sample",
+    "evidence": [
+     {
+      "loc": "4.2.1. Accretion Rate and Outflow Mechanical Force",
+      "quote": "Figure 5 shows the luminosity-to-mass ratio ( _L_ bol _/M_ clump ) versus the total outflow mechanical forces ( _F_ out _,_ tot ), for our 70 _µ_ m dark clumps, together with high-mass clumps from Yang et al. (2018)."
+     }
+    ]
+   },
+   "citation": "Yang et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Identified dust continuum dense cores and their masses",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "Clump fragmentation, based on the dust continuum emission, is presented in Sanhueza et al. (2019)."
+     },
+     {
+      "loc": "Figure 6 caption",
+      "quote": "The error bars of _M_ core correspond to its uncertainty of 50% (Sanhueza et al. 2017, 2019)."
+     }
+    ]
+   },
+   "citation": "Sanhueza et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify molecular outflows and determine core systemic velocities",
+   "method": "Visual inspection of 12m-only CO PPV data cubes in DS9 to determine blue/red-shifted velocity ranges, followed by moment-0 maps, channel maps, line profiles, and PV diagrams along outflow axes to refine velocity ranges and lobes. Core systemic velocities measured from centroid velocity of N2D+ 3-2 (or DCO+ 3-2, C18O 2-1).",
+   "software": [
+    "DS9"
+   ],
+   "key_parameters": [
+    "Velocity range threshold > 2 sigma (rms in line-free channels); outflow lobe contour threshold > 4 sigma (rms of integrated intensity map)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute outflow physical parameters and protostellar accretion rates",
+   "method": "Calculate CO column density, outflow mass, momentum, energy, dynamical timescale, outflow rate, luminosity, and mechanical force from combined (12m+7m+TP) primary-beam-corrected CO 2-1 data using Equations A1-A8. Derive protostellar accretion rate from mechanical force assuming momentum conservation in a wind-driven outflow.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE and optically thin CO line wing emission; excitation temperature approximated by dust temperature",
+    "CO-to-H2 abundance = 10^-4; mean molecular mass m_H2 = 2.72 m_H; uncorrected for inclination",
+    "Ratio of mass accretion rate to wind mass ejection rate k = 3; wind velocity v_w = 500 km s^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure episodic ejection knot dynamical timescales",
+   "method": "Visually follow contours in CO PV diagrams along outflow axes to define projected distance (lambda_knot) and velocity (v_knot) of emission knots, and compute dynamical timescales t_knot = lambda_knot / v_knot and inter-knot time spans Delta t_knot.",
+   "software": [],
+   "key_parameters": [
+    "Uncertainties estimated as 2 km s^-1 for velocities (3x channel width) and 0''.5 for lengths (half angular resolution)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Evaluate outflow-driven turbulence and cloud gravitational binding energy",
+   "method": "Compute clump turbulent energy E_turb (Equations 1-2), turbulent dissipation time t_diss using two approaches (Equation 4 from McKee & Ostriker 2007 and Equation 5 from Mac Low 1999), turbulent dissipation rate E_dot_turb (Equation 3), ratio r_L = L_out / E_dot_turb, and gravitational binding energy E_grav = G M_cl^2 / R_cl.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Average volume density rho = 3 M_cl / (4 pi R_cl^3); outflow lobe length approximates turbulence driving wavelength lambda_d"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze SiO 5-4 column densities, abundances, and shock origins",
+   "method": "Compute SiO column densities assuming optically thin LTE emission, derive SiO abundances using H2 column densities from CO, and inspect CO and SiO spectra and PV diagrams across SiO emission regions.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin and LTE conditions for SiO 5-4 emission"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of identified CO outflows",
+   "value": "43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Forty-three outflows are identified toward 41 out of 301 dense cores using the CO and SiO emission lines, yielding a detection rate of 14%."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow detection rate in dense cores (CO)",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. Outflow Detection",
+     "quote": "Using the CO line, we have identified 43 molecular outflows toward 41 out of 301 dense cores (Table 2), with a detection rate of 14% (41/301)."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO detection rate in dense cores",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. Outflow Detection",
+     "quote": "Among these 41 cores, 28 are associated with SiO emission (detection rate of 9%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum outflow velocity (v_max) range",
+   "value": "9 to 95",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. Outflow Detection",
+     "quote": "The maximum detected velocities (e.g., _v_ max(r) = max( _v_ r ), where _v_ r = _|v_ CO _−_ _v_ lsr _|_ is a variable representing the red-shifted outflow velocity with respect to the core systemic velocity) of the CO red- and blue-shifted lobes with respect to the core systemic velocity range from 9 to up to 95 km s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean maximum outflow velocity (v_max)",
+   "value": "28",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. Outflow Detection",
+     "quote": "The mean and median of _v_ max are 28 and 21 km s _[−]_ [1], respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum projected outflow lobe length (lambda_max) range",
+   "value": "0.04 to 0.45",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. Outflow Detection",
+     "quote": "The maximum lengths of the CO outflow red-/blue-shifted lobes projected on the plane of the sky ( _λ_ max ) are in the range of 0.04 and 0.45 pc (Figure 3), with the mean and median values of 0.25 and 0.23 pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass (M_out) range",
+   "value": "0.001 to 0.32",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The outflow masses range from 0.001 to 0.32 _M_ _⊙_, with a mean mass of 0.044 _M_ _⊙_ (Figure 4 and Table 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean outflow mass (M_out)",
+   "value": "0.044",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The outflow masses range from 0.001 to 0.32 _M_ _⊙_, with a mean mass of 0.044 _M_ _⊙_ (Figure 4 and Table 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical timescale (t_dyn) range",
+   "value": "0.1e4 to 3.2e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The estimated outflow dynamical timescales range from 0.1 _×_ 10 [4] to 3.2 _×_ 10 [4] yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow ejection rate (M_dot_out) range",
+   "value": "2.4e-7 to 5.0e-5",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "We used the outflow mass and dynamical time to estimate the outflow ejection rates, which are between 2.4 _×_ 10 _[−]_ [7] and 5.0 _×_ 10 _[−]_ [5] _M_ _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow momentum (P_out) range",
+   "value": "0.2e-2 to 3.4",
+   "uncertainty": "not stated",
+   "units": "M_sun km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The outflow momenta range from 0.2 _×_ 10 _[−]_ [2] to 3.4 _M_ _⊙_ km s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow energy (E_out) range",
+   "value": "0.4e42 to 1.2e45",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The outflow energies are between 0.4 _×_ 10 [42] and 1.2 _×_ 10 [45] erg."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow luminosity (L_out) range",
+   "value": "0.2e31 to 2.1e34",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The outflow luminosity can be estimated by dividing the outflow energy by the outflow dynamical timescale, _L_ out = _E_ out _/t_ dyn, which are in the range of 0.2 _×_ 10 [31] and 2.1 _×_ 10 [34] erg s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mechanical force (F_out) range",
+   "value": "0.3e-6 to 9.8e-4",
+   "uncertainty": "not stated",
+   "units": "M_sun km s^-1 yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The outflow mechanical force is computed using the outflow momentum and dynamical timescale, _F_ out = _P_ out _/t_ dyn, which is between 0.3 _×_ 10 _[−]_ [6] and 9.8 _×_ 10 _[−]_ [4] _M_ _⊙_ km s _[−]_ [1] yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar accretion rate (M_dot_acc) range",
+   "value": "2.0e-9 to 3.8e-6",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The derived accretion rate ranges from 2.0 _×_ 10 _[−]_ [9] to 3.8 _×_ 10 _[−]_ [6] _M_ _⊙_ yr _[−]_ [1], with a mean value of 4.9 _×_ 10 _[−]_ [7] _M_ _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean protostellar accretion rate (M_dot_acc)",
+   "value": "4.9e-7",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Outflow Parameters",
+     "quote": "The derived accretion rate ranges from 2.0 _×_ 10 _[−]_ [9] to 3.8 _×_ 10 _[−]_ [6] _M_ _⊙_ yr _[−]_ [1], with a mean value of 4.9 _×_ 10 _[−]_ [7] _M_ _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Knot dynamical timescale (t_knot) range",
+   "value": "6e2 to 2.5e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.3. Episodic Ejection",
+     "quote": "The estimated dynamical timescales of knot range from 6 _×_ 10 [2] to 2.5 _×_ 10 [4] yr, with the mean and median value of 8.6 _×_ 10 [3] and 6.6 _×_ 10 [3] yr, respectively (see Table 4)."
+    }
+   ]
+  },
+  {
+   "quantity": "Time span between consecutive knots (Delta t_knot) range",
+   "value": "3.6e2 to 7.2e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.3. Episodic Ejection",
+     "quote": "To study the time span between consecutive ejection events, we compute the timescale difference between knots, _△t_ knot = _t_ knot _,i_ +1 - _t_ knot _,i_, which ranges from 3.6 _×_ 10 [2] to 7.2 _×_ 10 [3] yr, with a mean value of 4.4 _×_ 10 [3] yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean time span between consecutive knots (Delta t_knot)",
+   "value": "4.4e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.3. Episodic Ejection",
+     "quote": "To study the time span between consecutive ejection events, we compute the timescale difference between knots, _△t_ knot = _t_ knot _,i_ +1 - _t_ knot _,i_, which ranges from 3.6 _×_ 10 [2] to 7.2 _×_ 10 [3] yr, with a mean value of 4.4 _×_ 10 [3] yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of outflow luminosity to turbulent dissipation rate (r_L, first approach) median",
+   "value": "0.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Outflow-driven turbulence",
+     "quote": "The _r_ _L_ lies in the range of 0.004–4.05, with a median value of 0.08 (Table 3)."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of outflow luminosity to turbulent dissipation rate (r_L, second approach) median",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Outflow-driven turbulence",
+     "quote": "Using the derived _E_ [˙] turb, we find that the _r_ _L_ is between 0.001 and 0.54, with a median value of 0.02."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of outflow energy to cloud gravitational binding energy (E_out/E_grav) range",
+   "value": "2e-5 to 8e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3. Outflow Impact on the Clumps",
+     "quote": "The ratio of _E_ out _/E_ grav is between 2 _×_ 10 _[−]_ [5] and 8 _×_ 10 _[−]_ [3], which indicates that the disruptive impact of these outflows on their parent clouds is, for now, negligible for all the clump sample."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO column density N(SiO) range",
+   "value": "8.1e11 to 5.9e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4. SiO Emission Unrelated to CO Outflows",
+     "quote": "Assuming optically thin and local thermodynamic equilibrium (LTE) condition for the SiO emission, the SiO column densities estimated to be _N_ (SiO) = 8 _._ 1 _×_ 10 [11] _−_ 5 _._ 9 _×_ 10 [13] cm _[−]_ [2], with a median value of 4 _._ 7 _×_ 10 [12] cm _[−]_ [2] ."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO abundance X(SiO) range",
+   "value": "1.1e-9 to 1.6e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4. SiO Emission Unrelated to CO Outflows",
+     "quote": "The SiO abundance is found to be _X_ (SiO) = 1 _._ 1 _×_ 10 _[−]_ [9] _−_ 1 _._ 6 _×_ 10 _[−]_ [7] with a median value of 1 _._ 0 _×_ 10 _[−]_ [8] ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Tables 1, 2, and 3 (clump properties, beam sizes, dust temperatures, distances, core masses, and individual outflow parameters), which are referenced in the text but omitted from the provided manuscript",
+  "Exact rest frequencies of the 10 targeted molecular transitions and spectral window setups",
+  "Exact tclean parameters (deconvolver, cell size, image size, stopping threshold, masking, multiscale scales)",
+  "Line-free channel ranges used for continuum imaging and continuum subtraction",
+  "Specific molecular transition used to measure clump velocity dispersion (Delta v_FWHM) in Equation 2"
+ ],
+ "missing_for_reproduction": [
+  "Tables 1, 2, and 3 containing clump properties, distances, dust temperatures, core masses, and per-outflow velocity integration ranges and derived parameters",
+  "Polygon/spatial masks used to define the 43 outflow lobes",
+  "Exact PV cut coordinates and position angles for knot measurements",
+  "Detailed CASA calibration and tclean imaging scripts"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "The ALMA project code, CASA versions, weighting, and analytic equations for outflow and turbulence parameters are clearly stated, and Paper I (Sanhueza et al. 2019) provides the core catalog and observational setup; however, visual outflow boundary definitions in DS9 and the omission of Tables 1-3 in the provided text prevent exact numerical reproduction without external tables and spatial masks.",
+ "rediscovery_reason": "Public ALMA dataset (2015.1.01539.S) with clear physical equations and quantitative summary distributions/correlations for outflow detection rates, masses, energetics, and turbulence ratios.",
+ "source_card": "cards/2020ApJ...903..119L/sonnet/card.md"
+}

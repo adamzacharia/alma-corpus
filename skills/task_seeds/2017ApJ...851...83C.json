@@ -1,0 +1,260 @@
+{
+ "bibcode": "2017ApJ...851...83C",
+ "title": "Protoplanetary Disks in ρ Ophiuchus as Seen from ALMA",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa97e2",
+ "arxiv_id": "1711.03974",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What are the 870 um dust continuum fluxes and radii of disks in rho Oph, how do they differ between singles, binaries, triples and transition disks and compare with Taurus, and are binary disks tidally truncated?",
+ "alma_project_codes": [
+  "2013.1.00157.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um)",
+  "arrays": "not stated",
+  "angular_resolution": "0.21'' by 0.18'' (combined, natural weighting)",
+  "sensitivity": "sigma ~ 0.2 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Multiplicity data for targets",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Reference key: \\[a\\] (cite: ra05), \\[b\\] (cite: du04) , \\[c\\] (cite: ch15), \\[d\\] (cite: rr16)"
+     }
+    ]
+   },
+   "citation": "(cite: ra05); (cite: du04); (cite: ch15); (cite: rr16)"
+  },
+  {
+   "what": {
+    "value": "Taurus comparison sample from Spitzer survey plus literature (sub)mm fluxes",
+    "evidence": [
+     {
+      "loc": "6.1 Comparison with Taurus",
+      "quote": "we used the results of the *Spitzer* survey performed by (cite: re10)."
+     }
+    ]
+   },
+   "citation": "(cite: re10)"
+  },
+  {
+   "what": {
+    "value": "Transition disk classification from IR colors",
+    "evidence": [
+     {
+      "loc": "2 Sample Selection",
+      "quote": "were identified by (cite: ci10) to be candidate transitional disks on the basis of *Spitzer* near-/mid-infrared colors"
+     }
+    ]
+   },
+   "citation": "(cite: ci10); (cite: re15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the data",
+   "method": "ALMA pipeline calibration per configuration, split fields, phase-only selfcal for C34-1, combine, CLEAN (multi-scale for extended)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure disk sizes and fluxes",
+   "method": "Gaussian fit in the image plane",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 137 pc to convert to radii"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive disk dust+gas masses",
+   "method": "Optically thin isothermal: M = F d^2 / (kappa B(Td))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 20 K, kappa = 0.03 cm2/g at 870 um (Hildebrand), gas-to-dust 100:1, d=137 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare sub-population flux and radius distributions",
+   "method": "Kaplan-Meier estimators with upper limits for flux (detections only for radius) and pairwise log-rank test; significance p<~0.05",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [
+    "3 sigma map value used as upper limit for non-detections"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare with Taurus",
+   "method": "Same KM method on Taurus sample from Rebull et al. 2010 with 870 um fluxes inferred from spectral index (assume 3 if unavailable)",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Test tidal truncation of binary disks",
+   "method": "Pichardo et al. 2005 truncation radius with statistical deprojection of a, e from projected separation, uniform e in [0,1], mass ratio q=1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "mass ratio unity"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Search for gaps via radial profiles",
+   "method": "Deproject using fit center, inclination and PA; azimuthally average surface brightness",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Singles vs binaries flux p-value",
+   "value": "0.06946",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "$p_{flux}=0.06946$ and $p_{radius}=0.01766$"
+    }
+   ]
+  },
+  {
+   "quantity": "Singles vs binaries (no circumbinary) flux p-value",
+   "value": "0.00876",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "we get $p_{flux}=0.00876$ and $p_{radius}=0.00075$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux singles",
+   "value": "46.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Singles | 46.3 | 17.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux binaries",
+   "value": "27.74",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Binaries | 27.74 | 7.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux transition disks",
+   "value": "262",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Transition Disks | 262 | 62.34 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Singles Oph vs Taurus flux p-value",
+   "value": "0.00434",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "|           Singles |           0.00434 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of disks with gaps/cavities",
+   "value": "0.122 (6 of 49)",
+   "uncertainty": "95% CI 0.031<f<0.21",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.3 Transition and Gapped Disks",
+     "quote": "This yields an estimate of $f = 0.122$ with a 95% confidence interval of $0.031 < f < 0.21$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gap radii in ROph 9 and ROph 38",
+   "value": "~65 and ~170",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.3 Transition and Gapped Disks",
+     "quote": "there are obvious deficits of emission observed at approximately 65 and 170 au, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, mask, niter and multiscale scale values",
+  "CASA self-calibration solint and reference antenna details",
+  "Which sources were imaged multi-scale individually",
+  "Details of how disk radius is defined from imfit (e.g. deconvolved FWHM vs. other)",
+  "Taurus 870 um flux inference details and source list",
+  "How 6/49 planet-forming fraction confidence interval was computed",
+  "Data volume and mapping of fields to pipeline products"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters and masks",
+  "multiscale scales",
+  "Taurus sample list and fluxes",
+  "KM treatment details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are single project and methods are simple, but CLEAN settings and Taurus comparison details are missing.",
+ "rediscovery_reason": "Single ALMA project, simple imfit fluxes and tabulated numeric results can be checked.",
+ "source_card": "cards/2017ApJ...851...83C/sonnet/card.md"
+}

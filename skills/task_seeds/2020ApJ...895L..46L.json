@@ -1,0 +1,229 @@
+{
+ "bibcode": "2020ApJ...895L..46L",
+ "title": "Hints of a Population of Solar System Analog Planets from ALMA",
+ "year": 2020,
+ "doi": "10.3847/2041-8213/ab94a8",
+ "arxiv_id": "2005.09730",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the compact disk around GQ Lup A show DSHARP-like substructures (gaps/rings), and what planet masses would they imply?",
+ "alma_project_codes": [
+  "2015.1.00773.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "41 12-m antennas",
+  "angular_resolution": "0.057\" x 0.032\"",
+  "sensitivity": "rms 56 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total dust mass 5.9 Earth masses, r_in=1.5 au, r_out=23.8 au, gamma=0.1 (Model A)",
+    "evidence": [
+     {
+      "loc": "Masses of Hidden Planets",
+      "quote": "we begin with a total dust mass of 5.9$M_{\\Earth}$ from Model A in (cite: Wu_2017), one of their best-fit models."
+     }
+    ]
+   },
+   "citation": "(cite: Wu_2017)"
+  },
+  {
+   "what": {
+    "value": "Lower total gas mass from simple parametric disk model",
+    "evidence": [
+     {
+      "loc": "Masses of Hidden Planets",
+      "quote": "We also use a second, lower value of total gas mass that (cite: MacGregor_2017) retrieved using a simple parametric model of disk structure."
+     }
+    ]
+   },
+   "citation": "(cite: MacGregor_2017)"
+  },
+  {
+   "what": {
+    "value": "Inclination 60 deg, PA 346 deg",
+    "evidence": [
+     {
+      "loc": "Deriving the surface brightness profile of the 1.3 mm continuum",
+      "quote": "The data are deprojected using an inclination angle $i = 60\\degree$ and a position angle $\\phi = 346\\degree$ (cite: MacGregor_2017)."
+     }
+    ]
+   },
+   "citation": "(cite: MacGregor_2017)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass of GQ Lup A 1.05 Msun",
+    "evidence": [
+     {
+      "loc": "Masses of Hidden Planets",
+      "quote": "using the mass of GQ Lup A, 1.05$M_{\\odot}$ (cite: Wu_2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Wu_2017)"
+  },
+  {
+   "what": {
+    "value": "Gap width/depth to planet-mass-ratio fitting relations (Tables 1 and 2)",
+    "evidence": [
+     {
+      "loc": "Masses of Hidden Planets",
+      "quote": "we select related models from Tables 1 and 2 in (cite: Zhang_2018) to perform our subsequent calculations of planet-star mass ratios."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang_2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum",
+   "method": "CASA reduction following Wu et al. 2017, three rounds phase-only self-cal, tclean natural weighting, recentred with fixvis",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit radial brightness profile in visibility domain",
+   "method": "Deproject visibilities, fit Gaussians modulated by sinusoids to real visibilities via Hankel transform",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [
+    "i = 60 deg, PA = 346 deg, d = 152 pc; two Gaussians"
+   ],
+   "assumptions": [
+    "Axisymmetric disk"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify and measure gaps and rings",
+   "method": "Find local minima/maxima following Huang et al. 2018; plateau via normalized gradient > -0.05; depth by fitting function on either side",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Infer hidden planet masses",
+   "method": "Convert disk mass to gas surface density, compute Stokes number, use Zhang et al. 2018 width and depth relations to get q, then planet mass",
+   "software": [],
+   "key_parameters": [
+    "h/r = 0.07, alpha = 1e-3 and 1e-4"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; gamma = 0.1; max particle size 0.1 mm"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated flux of GQ Lup A disk",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Data Reduction",
+     "quote": "we retrieve an integrated flux of 26 mJy for the GQ Lup A disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian 2 ring location",
+   "value": "1615",
+   "uncertainty": "28",
+   "units": "kλ",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results & Analysis",
+     "quote": "$1615\\pm{28}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Effective radius",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Introduction",
+     "quote": "with an effective radius of 19 au as compared to the average DSHARP size of 50 au"
+    }
+   ]
+  },
+  {
+   "quantity": "D2* gap width",
+   "value": "2.25",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Characterizing Substructures",
+     "quote": "The gap at 32 au (D2[^1]) has a width of 2.25 au and a depth of 0.957."
+    }
+   ]
+  },
+  {
+   "quantity": "D1 planet mass range (alpha=1e-4)",
+   "value": "3.07-355",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Masses of Hidden Planets",
+     "quote": "we present a mass range of 3.07-355 $M_{\\Earth}$ for D1"
+    }
+   ]
+  },
+  {
+   "quantity": "D2* planet mass range (alpha=1e-4)",
+   "value": "0.62-2.44",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Masses of Hidden Planets",
+     "quote": "a range of 0.62-2.44 $M_{\\Earth}$ for D2\\*"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Initial guesses for MPFIT parameters",
+  "Cleaning threshold, masks, image size and cell size",
+  "Flux calibrator and calibration details (taken from Wu et al. 2017)",
+  "Visibility binning used for the profile",
+  "Exact fixvis phase center",
+  "Which self-cal solints were used",
+  "Data/model details for the 3-Gaussian fit (parameters not tabulated)",
+  "Depth fitting function form for plateau feature"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solints",
+  "Clean parameters",
+  "MPFIT initial guesses",
+  "3-Gaussian fit parameters",
+  "Exact depth-fitting function"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple model, but imaging, self-cal and 3-Gaussian fit details are unspecified.",
+ "rediscovery_reason": "Public archival data, a visibility fit with a published model and numeric table results.",
+ "source_card": "cards/2020ApJ...895L..46L/sonnet/card.md"
+}

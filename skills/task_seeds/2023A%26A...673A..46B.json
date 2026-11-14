@@ -1,0 +1,652 @@
+{
+ "bibcode": "2023A&A...673A..46B",
+ "title": "Another X-ray UFO without a momentum-boosted molecular outflow. ALMA CO(1-0) observations of the galaxy pair IRAS 05054+1718",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245630",
+ "arxiv_id": "2303.00770",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Investigate the presence of a large-scale molecular outflow in the galaxy pair IRAS 05054+1718 (NED01 and NED02) and test the AGN feedback blast-wave scenario by comparing molecular outflow and X-ray ultra-fast outflow energetics.",
+ "alma_project_codes": [
+  "2016.1.00694.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84.0-116.0 GHz)",
+  "arrays": "40 ALMA 12m antennas",
+  "angular_resolution": "2.59'' x 2.25'' (0.97 kpc x 0.84 kpc)",
+  "sensitivity": "2.2 mJy beam^-1 (NED01) and 4.0 mJy beam^-1 (NED02) per 5.2 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Swift-XRT spectrum of NED01 from 2014 monitoring",
+    "evidence": [
+     {
+      "loc": "6.1 Observations and data reduction",
+      "quote": "while for the *Swift* monitoring we consider the spectrum extracted by (cite: 2015Ballo)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015Ballo)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor for molecular outflows alpha_CO = 2.1 ± 1.2 M_sun (K km s^-1 pc^2)^-1",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work we assume that molecular outflows have an $\\alpha_{\\rm CO}$=2.1$\\pm$1.2 M$_\\odot$ (K km s$^{-1}$ pc$^2$), which is the value measured by (cite: 2018Cicone2) on the molecular outflow of the well-studied local ULIRG NGC 6240."
+     }
+    ]
+   },
+   "citation": "(cite: 2018Cicone2)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor for galaxy disks alpha_CO = 4.3 ± 1.3 M_sun (K km s^-1 pc^2)^-1",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We use $\\alpha_{\\rm CO}$=4.3$\\pm$1.3 M$_\\odot$ (K km s$^{-1}$ pc$^2$), a value typically assumed when treating the molecular ISM of isolated galaxies like the Milky Way (cite: 2013Bolatto), to evaluate the molecular mass of the galaxy disk."
+     }
+    ]
+   },
+   "citation": "(cite: 2013Bolatto)"
+  },
+  {
+   "what": {
+    "value": "Galactic H I column density in the direction of NED01 (N_H = 1.93 x 10^21 cm^-2)",
+    "evidence": [
+     {
+      "loc": "X-ray spectral analysis",
+      "quote": "in all the models we included the galactic absorption in the direction of NED01 ($N_{\\mbox{\\scriptsize H}}=1.93\\times 10^{21}$ cm$^{-2}$, (cite: nhHI4PICollaboration))"
+     }
+    ]
+   },
+   "citation": "(cite: nhHI4PICollaboration)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass of NED01 (~10^8 M_sun)",
+    "evidence": [
+     {
+      "loc": "The X-ray disk wind energetics of NED01",
+      "quote": "Considering a BH mass of $\\sim 10^8 M_\\odot$, as estimated by (cite: Alonso13) in NED01"
+     }
+    ]
+   },
+   "citation": "(cite: Alonso13)"
+  },
+  {
+   "what": {
+    "value": "Previous redshift estimate of NED01 (z = 0.0184) from HyperLeda catalogue",
+    "evidence": [
+     {
+      "loc": "4.1.1 NED01",
+      "quote": "expected from a previous redshift estimate of this source ($z=0.0184$), derived from the heliocentric velocity (error-weighted average of the optical and radio velocities) reported in the HyperLeda catalogue (cite: 2014Makarov)."
+     }
+    ]
+   },
+   "citation": "(cite: 2014Makarov)"
+  },
+  {
+   "what": {
+    "value": "Previous redshift estimate of NED02 (z = 0.016842) from 2MASS Redshift Survey",
+    "evidence": [
+     {
+      "loc": "4.1.2 NED02",
+      "quote": "The previous redshift estimate for this source, $z=0.016842$, derived from the heliocentric velocity reported in the 2MASS *Redshift Survey* (cite: 2012Huchra)"
+     }
+    ]
+   },
+   "citation": "(cite: 2012Huchra)"
+  },
+  {
+   "what": {
+    "value": "Sample of objects with observed X-ray UFOs and large-scale galactic outflows for comparison plots",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: 2019Smith) recently summarised the momentum rate versus the wind velocity for a sample of ten objects with observed X-ray UFOs and large-scale galactic outflows (see also Fig. 16, this work)."
+     },
+     {
+      "loc": "Hypothesis I: Molecular outflows",
+      "quote": "Following (cite: 2020Marasco; 2021Tozzi), we extended this analysis including our targets and some sources from (cite: 2019Mizumoto)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019Smith; 2020Marasco; 2021Tozzi; 2019Mizumoto)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and measure 3 mm continuum emission",
+   "method": "Combine the two low-resolution line-free spectral windows (4 GHz bandwidth) and fit 2D Gaussians on the primary-beam corrected map.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Spectral windows centred at 101.190 GHz and 99.387 GHz, total bandwidth = 4 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract total CO(1-0) spectra, fit Gaussian profiles, refine systemic redshifts, and derive total molecular gas masses",
+   "method": "Fit single and double Gaussian functions to continuum-subtracted CO(1-0) spectra to determine central sky frequencies and systemic redshifts, then compute line luminosities and molecular gas masses from redshift-corrected cubes.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "PV diagram slit sizes ~30'' and ~9'' aligned with major and minor axes of NED01"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.3 ± 1.3 M_sun (K km s^-1 pc^2)^-1 for galaxy disks",
+    "Systematic flux calibration error of 5% included in integrated flux uncertainties"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct CO(1-0) moment maps and characterize disk substructures",
+   "method": "Compute zeroth, first, and second moment maps for NED01 (PB-corrected cube) and NED02 (non-PB-corrected cube), and fit spectra of extended components B and C.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Intensity threshold of 0.01 Jy beam^-1 and box size 30'' for NED01 moment maps"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.3 ± 1.3 M_sun (K km s^-1 pc^2)^-1 for components B and C"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model rotating CO(1-0) disk kinematics and extract non-rotational residuals",
+   "method": "Crop continuum-subtracted datacubes with imsubimage, export with exportfits, fit concentric tilted-ring rotating disk models with 3D-BAROLO, subtract best-fit model cubes from data, and fit double-Gaussian functions to residual spectra.",
+   "software": [
+    "CASA",
+    "3D-BAROLO"
+   ],
+   "key_parameters": [
+    "NED01: v in [-600, +600] km s^-1, PA = 95° ± 10° (fixed), inclination = 45° ± 15° (fixed), S/N > 2.3; Big region = 35''x35'' (7 rings of 2'' width), Medium = 16''x15'' (7 rings of 2''), Small = 10''x8'' (3 rings of 2''); residual box 8.4''x8.4''",
+    "NED02: non-PB-corrected cube, box 27.4''x25.4'', v in [-1000, +1000] km s^-1, PA = 120° ± 10°, inclination = 70° ± 15°, S/N > 3, 5 rings of 2'' width; residual box 8''x8''"
+   ],
+   "assumptions": [
+    "Line emission is distributed in a geometrically thin disk dominated by pure rotational motion",
+    "alpha_CO = 2.1 ± 1.2 M_sun (K km s^-1 pc^2)^-1 for residual/outflow gas mass"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Reduce X-ray observations and fit X-ray spectra to characterize the nuclear UFO",
+   "method": "Reduce XMM-Newton (SAS) and NuSTAR (NUSTARDAS) data, extract source and background spectra, and perform joint spectral fits in XSPEC for 2012-2014 (NuSTAR+Swift) and 2021 (XMM+NuSTAR) epochs using baseline continuum plus XSTAR photoionised absorber grids.",
+   "software": [
+    "SAS",
+    "FTOOLS",
+    "XSPEC",
+    "HEASOFT",
+    "NUSTARDAS",
+    "XSTAR"
+   ],
+   "key_parameters": [
+    "XMM extraction: 20'' radius circular regions, binned to >= 100 counts/bin; NuSTAR extraction: 50'' radius circular regions, CALDB 20220426, NUCALSAA mode 'optimised', binned to >= 100 counts/bin (50 counts/bin for strictly simultaneous 2021 GTI); Swift binned to >= 20 counts/bin",
+    "XSTAR grid: v_turb = 5000 km s^-1, N_H = 10^21 - 3x10^24 cm^-2, log xi = 1 - 6"
+   ],
+   "assumptions": [
+    "Galactic absorption N_H = 1.93 x 10^21 cm^-2 modelled with tbabs; distant reflection modelled with XILLVER; ionisation parameter log xi tied between 2012 NuSTAR and 2014 Swift"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compute X-ray wind and putative molecular outflow energetics and test feedback scenarios",
+   "method": "Compute X-ray wind mass outflow rate, kinetic power, and momentum rate assuming biconical escape-radius launch; compute putative molecular outflow dynamical timescale, mass outflow rate, momentum rate, and kinetic power from CO residual components; compare momentum rate ratios and CO-derived SFRs.",
+   "software": [],
+   "key_parameters": [
+    "X-ray wind: mu = 1.2, Omega/4pi = 0.5, R_min = 2 G M_BH / v^2, accretion efficiency eta = 0.1, M_BH ~ 10^8 M_sun",
+    "Molecular outflow: tau_dyn = R / v_out; alpha_CO = 2.1 ± 1.2 M_sun (K km s^-1 pc^2)^-1 (and 0.8 ± 1.2 for Fig. 17 comparison)"
+   ],
+   "assumptions": [
+    "Cosmology: H0 = 67.8 km s^-1 Mpc^-1, Omega_Lambda = 0.692, Omega_M = 0.308",
+    "Maximum coupling efficiency of ~10% for star formation feedback"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Systemic redshift of NED01",
+   "value": "0.0178",
+   "uncertainty": "0.0004",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 NED01",
+     "quote": "We obtained $z=0.0178\\pm0.0004$, which is offset by $v\\sim-210 \\ kms^{-1}$ with respect to the previously known redshift."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic redshift of NED02",
+   "value": "0.016812",
+   "uncertainty": "0.000003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.2 NED02",
+     "quote": "We used this value and its associated uncertainty to compute a new systemic redshift of NED02 equal to $z=0.016812\\pm0.000003$, which is offset by $\\sim50$ km s$^{-1}$ with respect to the previously known redshift."
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum peak flux density of NED01",
+   "value": "0.71",
+   "uncertainty": "0.03",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA CO(1-0) observations",
+     "quote": "with respective continuum peak flux densities equal to $S_{cont}^{NED01} = 0.71\\pm0.03$ mJy beam$^{-1}$ and $S_{cont}^{NED02} = 2.26\\pm0.05$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum integrated flux of NED01",
+   "value": "0.76",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA map of the 3mm continuum",
+     "quote": "The source-integrated continuum flux obtained through the fit is $S_{3mm}=0.76$ mJy for NED01 and $S_{3mm}=2.4$ mJy for NED02."
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum peak flux density of NED02",
+   "value": "2.26",
+   "uncertainty": "0.05",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA CO(1-0) observations",
+     "quote": "with respective continuum peak flux densities equal to $S_{cont}^{NED01} = 0.71\\pm0.03$ mJy beam$^{-1}$ and $S_{cont}^{NED02} = 2.26\\pm0.05$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum integrated flux of NED02",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA map of the 3mm continuum",
+     "quote": "The source-integrated continuum flux obtained through the fit is $S_{3mm}=0.76$ mJy for NED01 and $S_{3mm}=2.4$ mJy for NED02."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) integrated flux of NED01",
+   "value": "33.1",
+   "uncertainty": "1.4",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NED01 | 33.1 (1.4) | 5.1 (0.2) | 2.1 (0.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) luminosity L'_CO(1-0) of NED01",
+   "value": "5.1",
+   "uncertainty": "0.2",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NED01 | 33.1 (1.4) | 5.1 (0.2) | 2.1 (0.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol of NED01",
+   "value": "2.1",
+   "uncertainty": "0.7",
+   "units": "10^9 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NED01 | 33.1 (1.4) | 5.1 (0.2) | 2.1 (0.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) integrated flux of NED02",
+   "value": "59",
+   "uncertainty": "3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NED02 | 59 (3) | 8.0 (0.4) | 3.4 (1.1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) luminosity L'_CO(1-0) of NED02",
+   "value": "8.0",
+   "uncertainty": "0.4",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NED02 | 59 (3) | 8.0 (0.4) | 3.4 (1.1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol of NED02",
+   "value": "3.4",
+   "uncertainty": "1.1",
+   "units": "10^9 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NED02 | 59 (3) | 8.0 (0.4) | 3.4 (1.1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "NED01 CO residual Component 1 integrated flux (Big region)",
+   "value": "1.63",
+   "uncertainty": "0.14",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $S_{\\rm CO(1-0)}dv$ \\[Jy km s$^{-1}$\\] | 1.63 (0.14) | 0.98 (0.11) |"
+    }
+   ]
+  },
+  {
+   "quantity": "NED01 CO residual Component 1 molecular mass (Big region)",
+   "value": "0.5",
+   "uncertainty": "0.3",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $M_{mol}$$^{\\dag}$ \\[10$^8$ M$_{\\odot}$\\] | 0.5 (0.3) | 0.31 (0.18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "NED01 CO residual Component 2 integrated flux (Big region)",
+   "value": "0.98",
+   "uncertainty": "0.11",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $S_{\\rm CO(1-0)}dv$ \\[Jy km s$^{-1}$\\] | 1.63 (0.14) | 0.98 (0.11) |"
+    }
+   ]
+  },
+  {
+   "quantity": "NED01 CO residual Component 2 molecular mass (Big region)",
+   "value": "0.31",
+   "uncertainty": "0.18",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $M_{mol}$$^{\\dag}$ \\[10$^8$ M$_{\\odot}$\\] | 0.5 (0.3) | 0.31 (0.18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "NED02 CO residual Component 1 integrated flux",
+   "value": "2.4",
+   "uncertainty": "0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $S_{\\rm CO(1-0)}dv$ \\[Jy km s$^{-1}$\\] | 2.4 (0.2) | 1.8 (0.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "NED02 CO residual Component 2 integrated flux",
+   "value": "1.8",
+   "uncertainty": "0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $S_{\\rm CO(1-0)}dv$ \\[Jy km s$^{-1}$\\] | 2.4 (0.2) | 1.8 (0.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative molecular outflow total mass-loss rate in NED01 (upper limit)",
+   "value": "19",
+   "uncertainty": "14",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "The total properties of the putative outflow in NED01 were computed by summing the contribution of all the residual components obtaining a total mass-loss rate of $\\dot M^{mol}_{out}=\\sum_{i} M^{mol}_{out,i}=19\\pm14$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative molecular outflow total momentum rate in NED01 (upper limit)",
+   "value": "2.7",
+   "uncertainty": "2.4",
+   "units": "10^34 g cm s^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "| $\\dot{p}^{mol}_{out}$ \\[$10^{34}g~cm~s^{-2}$\\] | 2.4 (2.2) | 0.3 (0.2) | 2.7 (2.4) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative molecular outflow total kinetic power in NED01 (upper limit)",
+   "value": "3.2",
+   "uncertainty": "2.2",
+   "units": "10^41 erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "| $\\dot{E}^{mol}_{out}$ \\[$10^{41}~erg~s^{-1}$\\] | 3 (2) | 0.22 (0.15) | 3.2 (2.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative molecular outflow total mass-loss rate in NED02",
+   "value": "20",
+   "uncertainty": "16",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "| $\\dot{M}^{mol}_{out}$$^{\\dag}$ \\[$M_{\\odot}~yr^{-1}$\\] | 17 (15) | 3 (2) | 20 (16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative molecular outflow total momentum rate in NED02",
+   "value": "2.0",
+   "uncertainty": "1.7",
+   "units": "10^34 g cm s^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "| $\\dot{p}^{mol}_{out}$ \\[$10^{34}~g~cm~s^{-2}$\\] | 1.8 (1.6) | 0.13 (0.09) | 2.0 (1.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative molecular outflow total kinetic power in NED02",
+   "value": "1.6",
+   "uncertainty": "1.3",
+   "units": "10^41 erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "| $\\dot{E}^{mol}_{out}$ \\[$10^{41}~erg~s^{-1}$\\] | 1.5 (1.3) | 0.05 (0.04) | 1.6 (1.3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray disk wind velocity in NED01 (2014 Swift)",
+   "value": "-0.12",
+   "uncertainty": "+0.02/-0.05",
+   "units": "c",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7.1 2012 NuSTAR and 2014 Swift observations",
+     "quote": "For the *Swift* observation we found $N_{\\rm H, SW}=1.3_{-0.9}^{+1.7}\\times10^{23}$ cm$^{-2}$ and $v_{\\rm{out}}/c=- 0.12_{-0.05}^{+0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray disk wind column density in NED01 (2014 Swift)",
+   "value": "1.3",
+   "uncertainty": "+1.7/-0.9",
+   "units": "10^23 cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7.1 2012 NuSTAR and 2014 Swift observations",
+     "quote": "For the *Swift* observation we found $N_{\\rm H, SW}=1.3_{-0.9}^{+1.7}\\times10^{23}$ cm$^{-2}$ and $v_{\\rm{out}}/c=- 0.12_{-0.05}^{+0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray disk wind velocity in NED01 (2012 NuSTAR)",
+   "value": "-0.23",
+   "uncertainty": "0.02",
+   "units": "c",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7.1 2012 NuSTAR and 2014 Swift observations",
+     "quote": "while for the *NuSTAR* spectrum we found $N_{\\rm H, NU}=1.1\\pm 0.6\\times10^{23}$ cm$^{-2}$ and $v_{\\rm{out}}/c= -0.23\\pm 0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray disk wind column density in NED01 (2012 NuSTAR)",
+   "value": "1.1",
+   "uncertainty": "0.6",
+   "units": "10^23 cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7.1 2012 NuSTAR and 2014 Swift observations",
+     "quote": "while for the *NuSTAR* spectrum we found $N_{\\rm H, NU}=1.1\\pm 0.6\\times10^{23}$ cm$^{-2}$ and $v_{\\rm{out}}/c= -0.23\\pm 0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray disk wind momentum rate in NED01 (NuSTAR)",
+   "value": "4",
+   "uncertainty": "2",
+   "units": "10^34 g cm s^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The X-ray disk wind energetics of NED01",
+     "quote": "The momentum rate of the X-ray wind is $\\dot p_{out}^{X-ray}\\sim (4\\pm2)\\times 10^{34}$ g cm s$^{-2}$ from *NuSTAR*"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of molecular to X-ray wind momentum rates in NED01",
+   "value": "0.67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "The corresponding ratio of the momentum rates of the molecular and X-ray winds is $\\dot{p}^{mol}_{out}/\\dot{p}^{X-ray}_{out}\\sim0.67$, consistent with unity within the large uncertainties."
+    }
+   ]
+  },
+  {
+   "quantity": "CO-derived star formation rate of NED01",
+   "value": "2.5",
+   "uncertainty": "0.3",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "we estimate a SFR$_{NED01}$($L^{\\prime}_{CO}$)=$2.5\\pm0.3$ M$_{\\odot}$ yr$^{-1}$ for NED01"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-derived star formation rate of NED02",
+   "value": "3.6",
+   "uncertainty": "0.5",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hypothesis I: Molecular outflows",
+     "quote": "For NED02, using the same procedure, we estimate from the total CO(1-0) luminosity SFR$_{NED02}$($L^{\\prime}_{CO}$) = $3.6\\pm0.5$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact sub-parameters of CASA tclean auto-multithresh (e.g., sidelobethreshold, noisethreshold, lownoisethreshold, minbeamfrac)",
+  "Deconvolver algorithm used in tclean (e.g., hogbom, clark, multiscale) and imaging parameters for the 3mm continuum map (weighting, robust, threshold)",
+  "Exact aperture sizes and shapes used to extract the total CO(1-0) spectra of NED01 and NED02 in Fig. 2",
+  "Exact free vs. fixed parameter flags in 3D-BAROLO (e.g., whether vrot, vdisp, z0, xpos, ypos were fitted simultaneously or in two stages, and assumed disk scale height z0)",
+  "rms noise level of the 3mm continuum map"
+ ],
+ "missing_for_reproduction": [
+  "Exact 3D-BAROLO parameter input files (.par) specifying free vs. fixed ring parameters, regularization, and vertical thickness z0",
+  "Exact spatial apertures used to extract the total galaxy CO(1-0) spectra in Sect. 4.1",
+  "Whether the NED02 CO fluxes in Tables 2 and 4 were corrected for primary beam attenuation after extraction from the non-PB-corrected cube",
+  "Custom XSTAR photoionisation grid file used in the XSPEC analysis"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The ALMA data reduction, continuum subtraction (including exact frequency ranges), imaging parameters (CASA versions, robust=0, cell size, threshold, automasking), and 3D-BAROLO ring geometry (number of rings, ring width, PA, inclination, S/N cut, cropping boxes, velocity integration ranges) are well documented and all key numeric outputs are tabulated. Minor deductions for unstated 3D-BAROLO secondary parameters, total spectrum extraction apertures, and custom XSTAR grid files.",
+ "rediscovery_reason": "The ALMA dataset (2016.1.00694.S) is public in the ALMA archive, the CASA imaging and 3D-BAROLO kinematic modelling recipe is detailed enough to re-execute, and the main results (redshifts, continuum and CO fluxes, molecular masses, residual component parameters, and upper limits on outflow energetics) are concrete numeric values.",
+ "source_card": "cards/2023A%26A...673A..46B/sonnet/card.md"
+}

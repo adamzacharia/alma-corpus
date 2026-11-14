@@ -1,0 +1,259 @@
+{
+ "bibcode": "2013ApJ...764L..14Z",
+ "title": "ALMA 690 GHz Observations of IRAS 16293-2422B: Infall in a Highly Optically Thick Disk",
+ "year": 2013,
+ "doi": "10.1088/2041-8205/764/1/L14",
+ "arxiv_id": "1301.3105",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the continuum structure, line morphology and infall kinematics of IRAS 16293-2422B at 690 GHz, and is its dust optically thick?",
+ "alma_project_codes": [
+  "2011.0.00007.SV"
+ ],
+ "data": {
+  "bands": "690 GHz (0.45 mm)",
+  "arrays": "15 12-m antennas",
+  "angular_resolution": "not stated",
+  "sensitivity": "line rms ~50 mJy/beam per 0.4 km/s; continuum rms 20 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass opacity extrapolated to 0.45 mm for coagulated grains without ice mantles (2.2 cm2/g)",
+    "evidence": [
+     {
+      "loc": "0.45 mm continuum emission",
+      "quote": "obtained extrapolating at these wavelenghts the value obtained by (cite: Oss1994) for coagulated dust particles with no ice mantles"
+     }
+    ]
+   },
+   "citation": "(cite: Oss1994)"
+  },
+  {
+   "what": {
+    "value": "Opacity index beta = 0.6",
+    "evidence": [
+     {
+      "loc": "0.45 mm continuum emission",
+      "quote": "Assuming also an opacity power-law index $\\beta$ = 0.6 (cite: Rod2005)"
+     }
+    ]
+   },
+   "citation": "(cite: Rod2005)"
+  },
+  {
+   "what": {
+    "value": "Pineda et al. two-layer fit results at 220 GHz (Tx = 40 K) used to set Tx",
+    "evidence": [
+     {
+      "loc": "Modeling",
+      "quote": "From the fits of Pineda et al. (2012) to lines at lower frequencies (220 GHz) they estimate $T_x$ = 40 K."
+     }
+    ]
+   },
+   "citation": "Pineda et al. (2012) (cite: Pin2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and lines",
+   "method": "CASA calibration and CLEAN imaging, robust 0.5",
+   "software": [
+    "CASA",
+    "KARMA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Brightness temperature and lower-limit dust mass",
+   "method": "Planck-equation Tb from flux and Gaussian beam; optically thin isothermal dust mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 2.2 cm2/g, beta = 0.6, Td = 160 K, d = 120 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Moment maps and velocity gradient / dynamical mass",
+   "method": "Moment 0 and 1 maps; Keplerian mass from east-west gradient, corrected by sin(i) with i=5 deg",
+   "software": [
+    "CASA",
+    "KARMA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Keplerian rotation, inclination 5 deg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit inverse P-Cygni profiles with two-layer infall model",
+   "method": "Modified two-layer model with fixed Tc=160 K, Phi=0.37, Tx=50 K, Tf=3 K; fit Vin, sigma_v, tau0, VLSR",
+   "software": [],
+   "key_parameters": [
+    "Tc = 160 K, Phi = 0.37, Tx = 50 K"
+   ],
+   "assumptions": [
+    "Tx decreases as sqrt of distance; Pineda gas 50% more distant"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum deconvolved size",
+   "value": "400",
+   "uncertainty": "±55",
+   "units": "milli-arcsec (~50 AU)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "0.45 mm continuum emission",
+     "quote": "The dust compact source has a deconvolved size of about 400 $\\pm$ 55 *milli-arcseconds* or a spatial size of 50 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density",
+   "value": "12.5",
+   "uncertainty": "±0.5",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "0.45 mm continuum emission",
+     "quote": "The flux density of IRAS 16293$-$2422B at these wavelengths is 12.5 $\\pm$ 0.5 Jy and has a peak flux of 3.2 $\\pm$ 0.2 Jy Beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak flux",
+   "value": "3.2",
+   "uncertainty": "±0.2",
+   "units": "Jy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "0.45 mm continuum emission",
+     "quote": "has a peak flux of 3.2 $\\pm$ 0.2 Jy Beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature",
+   "value": "160",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "0.45 mm continuum emission",
+     "quote": "we estimated a brigthness temperature at these wavelengths for IRAS16293$-$2422B of 160 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass lower limit",
+   "value": "0.03",
+   "uncertainty": "factor of five",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "0.45 mm continuum emission",
+     "quote": "we estimated a lower limit for the mass for the disk of about 0.03 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular ring outer diameter",
+   "value": "850",
+   "uncertainty": "±50",
+   "units": "milli-arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular line emission",
+     "quote": "The molecular ring like structure has a diameter of 850 $\\pm$ 50 *milli-arcseconds* and an inner diameter of 300 $\\pm$ 50 *milli-arcseconds*"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient",
+   "value": "1.3 over 60 AU",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular line emission",
+     "quote": "a clear east-west velocity gradient of approximately 1.3 km s$^{-1}$ over 60 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Infall velocity",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling",
+     "quote": "$V_{in}$ = 0.7 km s$^{-1}$, $\\sigma_v$ = 0.6 km s$^{-1}$, and $\\tau_0$ =0.17"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling",
+     "quote": "$\\sigma_v$ = 0.6 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Line-center opacity tau0",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling",
+     "quote": "$\\tau_0$ =0.17"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration procedure (SV calibrated data vs. own reduction)",
+  "Gain, bandpass calibrator assignment per execution and flux scale uncertainty",
+  "Line-free channels and continuum subtraction method",
+  "Cell size, image size, clean threshold, masks",
+  "Grid ranges and fit statistic for the two-layer model",
+  "Continuum position/coordinates and deconvolution method for size",
+  "Velocity range for moment maps"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibration script",
+  "Imaging parameters beyond robust",
+  "Model grid details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public SV data and simple analysis, but many processing details and model grid specifics missing.",
+ "rediscovery_reason": "Public SV data; numeric results (size, flux, Tb, model parameters) are checkable, though recipe is incomplete.",
+ "source_card": "cards/2013ApJ...764L..14Z/sonnet/card.md"
+}

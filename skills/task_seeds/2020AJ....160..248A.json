@@ -1,0 +1,270 @@
+{
+ "bibcode": "2020AJ....160..248A",
+ "title": "An ALMA Survey of λ Orionis Disks: From Supernovae to Planet Formation",
+ "year": 2020,
+ "doi": "10.3847/1538-3881/abb9af",
+ "arxiv_id": "2010.00012",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do massive OB stars, in particular a possible supernova ~1 Myr ago, reduce the planet-forming material in the evolved λ Orionis cluster, and why do some massive outlier disks persist in evolved regions?",
+ "alma_project_codes": [
+  "2017.1.00466.S",
+  "2016.1.00447.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.25 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "median beam 0.31″ × 0.29″",
+  "sensitivity": "median continuum rms 34 µJy; 3σ dust mass ~0.4 M_earth"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectral types, radial velocities of host stars",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "References for stellar spectral types (SpT) and radial velocities ( v LSR ): (1) Bayo et al. (2011), (2) Hern´andez et al. (2010)"
+     }
+    ]
+   },
+   "citation": "Bayo et al. (2011); Hernández et al. (2010); Kounkel et al. (2018) etc."
+  },
+  {
+   "what": {
+    "value": "Comparison disk dust masses/fluxes for Lupus, σ Ori, Upper Sco, OMC-2",
+    "evidence": [
+     {
+      "loc": "5.2 Comparisons to Other Regions",
+      "quote": "compares the M dust cumulative distribution for λ Orionis (this work) to that of OMC-2 (van Terwisga et al. 2019a), Lupus (Ansdell et al. 2018)"
+     }
+    ]
+   },
+   "citation": "van Terwisga et al. 2019a; Ansdell et al. 2018; Ansdell et al. 2017; Barenfeld et al. 2016"
+  },
+  {
+   "what": {
+    "value": "Upper Sco stellar masses for two-sample tests",
+    "evidence": [
+     {
+      "loc": "5.2 Comparisons to Other Regions",
+      "quote": "Using the M ⋆ values from Table 1 for λ Orionis and those from Barenfeld et al. (2016) for Upper Sco"
+     }
+    ]
+   },
+   "citation": "Barenfeld et al. (2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Define sample and remove interlopers",
+   "method": "Spitzer disk census minus debris disks; remove Gaia DR2 background sources and non-member",
+   "software": [],
+   "key_parameters": [
+    "Gaia DR2 lower distance bound >480 pc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate stellar masses",
+   "method": "Spectral type and J-band to HR diagram, compare to Baraffe et al. 2015 (Siess et al. 2000 for HD 245185)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 400 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure continuum flux densities",
+   "method": "split + tclean images; uvmodelfit point source (or elliptical Gaussian for 3 resolved); errors rescaled to reduced chi2=1; stack non-detections",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "non-detections: position offsets fixed to zero",
+    "resolved if a/σ_a > 5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Search for and measure 12CO",
+   "method": "uvcontsub, spectrum extraction (>3x channel rms), tclean, zero-moment ±3 km/s, curve-of-growth photometry",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "cluster v_LSR 12 km/s if source value unknown"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive dust masses",
+   "method": "optically thin isothermal relation M_dust ≈ 4.1 × F_1.25mm (M_earth, mJy)",
+   "software": [],
+   "key_parameters": [
+    "kappa = 2.3 cm2/g at 230 GHz, beta_d = 1.0"
+   ],
+   "assumptions": [
+    "T_dust = 20 K, d = 400 pc, optically thin",
+    "gas-to-dust ratio 100 for disk mass"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare dust-mass distributions with other regions",
+   "method": "Kaplan-Meier cumulative distributions; T-test and Wilcoxon rank-sum on stellar masses vs Upper Sco",
+   "software": [
+    "lifelines",
+    "scipy.stats"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Gaia DR2 distances ~150 pc (Lupus, Upper Sco), ~400 pc (σ Ori, OMC-2)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum detections",
+   "value": "14 of 44",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 ALMA Continuum Results",
+     "quote": "Only 14 of the 44 sources are detected at ≥ 3 σ significance and only 3 of the detections are marginally resolved."
+    }
+   ]
+  },
+  {
+   "quantity": "Median continuum rms",
+   "value": "34",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 ALMA Continuum Results",
+     "quote": "This results in a median continuum rms of 34 µJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked flux of 30 non-detections",
+   "value": "0.019",
+   "uncertainty": "0.006",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 ALMA Continuum Results",
+     "quote": "finding a tentative detection of 0.019 ± 0.006 mJy (3.2 σ) in the stacked image"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO detections",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 ALMA CO Results",
+     "quote": "Only five sources (HD 245185, LO 4155, LO 4187, LO 4407, LO 6866) are detected"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 245185 1.25 mm flux",
+   "value": "33.955",
+   "uncertainty": "0.056",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HD 245185 33.955 ± 0.056 1915 ± 51"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust mass of detections",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Dust Masses",
+     "quote": "the median M dust of the continuum detections in our λ Orionis survey is only ∼ 2 M ⊕ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Median 3σ dust mass upper limit",
+   "value": "~0.4",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Dust Masses",
+     "quote": "median 3 σ upper limit of ∼ 0.4 M ⊕ for the individual non-detections"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 245185 dust mass",
+   "value": "≈140",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 HD 245185",
+     "quote": "Equation 1 yields M dust ≈ 140 M ⊕"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass test p-values vs Upper Sco",
+   "value": "0.77 (T-test), 0.11 (Wilcoxon)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Comparisons to Other Regions",
+     "quote": "we find p -values of 0.77 and 0.11 for the T-test and Wilcoxon rank-sum test, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum channel selection / line-free channels used in split",
+  "tclean image size, cell size, masking, niter/threshold",
+  "Number of channels and velocity width for CO imaging; clean threshold",
+  "Which sources used elliptical Gaussian beyond the three named, and uvmodelfit starting guesses",
+  "Stacking procedure details (weights, positions)",
+  "Kaplan-Meier details and two-sample test on dust mass (statistic/p-value for Upper Sco comparison not given)",
+  "Curve-of-growth aperture sizes"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters (imaging size, cell, masks, continuum channels)",
+  "Role of project 2016.1.00447.S not described in text",
+  "Exact Kaplan-Meier comparison test results for dust masses"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Recipe is simple (point-source fits, standard dust mass formula) and data are ALMA archive, but imaging settings are partly unspecified.",
+ "rediscovery_reason": "Public ALMA data, simple numeric recipe (fluxes, dust masses), though some imaging details are missing.",
+ "source_card": "cards/2020AJ....160..248A/sonnet/card.md"
+}

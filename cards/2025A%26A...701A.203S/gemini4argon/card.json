@@ -1,0 +1,1494 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025A&A...701A.203S",
+  "title": "Multi-scale radiative-transfer model of the protoplanetary disc DoAr 44",
+  "year": 2025,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Souza de Joode, M.",
+  "n_authors": 2,
+  "arxiv_id": "2507.18185",
+  "doi": "10.1051/0004-6361/202453498",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2012.1.00158.S",
+   "2018.1.00028.S",
+   "2019.1.00532.S",
+   "2019.1.01111.S",
+   "2021.1.00378.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Archival observations",
+    "quote": "Several archival observations of DoAr 44 are available, including H$\\alpha$ spectra, VLTI interferometry, ALMA visibilities, and spectral energy distribution measurements."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "DoAr 44 (Haro 1-16, V2062 Oph)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Construct a comprehensive global multi-scale kinematic equilibrium radiative-transfer model for the pre-transitional disc of DoAr 44, spanning from the accretion region to the outer disc.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We aim to construct a comprehensive global multi-scale kinematic equilibrium radiative-transfer model for the pre-transitional disc of DoAr 44 (Haro 1-16, V2062 Oph) in the Ophiuchus star-forming region."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00532.S",
+     "evidence": [
+      {
+       "loc": "ALMA interferometry",
+       "quote": "To constrain the dimensions and temperature of the outer disc, the newest continuum Band 7 (870 μm) ALMA interferometric data was used (project code 2019.1.00532.S, observation date 2021-08-19, (cite: arce2023radio))."
+      },
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data sets: ADS/JAO.ALMA#2019.1.00532.S, ADS/JAO.ALMA#2019.1.01111.S."
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00028.S",
+     "evidence": [
+      {
+       "loc": "ALMA interferometry",
+       "quote": "A second high-resolution observation in ALMA Band 6 (project code 2018.1.00028.S, observation date 2020-11-30, (cite: cieza2021ophiuchus)) was also taken in consideration when modelling the intermediary disc."
+      }
+     ]
+    },
+    {
+     "code": "2019.1.01111.S",
+     "evidence": [
+      {
+       "loc": "ALMA interferometry",
+       "quote": "| 2019.1.01111.S | 3 | 89.533 – 105.476 | 2022-08-13 | 0.251\" | 3.80\" | 490 | |"
+      },
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data sets: ADS/JAO.ALMA#2019.1.00532.S, ADS/JAO.ALMA#2019.1.01111.S."
+      }
+     ]
+    },
+    {
+     "code": "2021.1.00378.S",
+     "evidence": [
+      {
+       "loc": "ALMA interferometry",
+       "quote": "| 2021.1.00378.S | 4 | 137.034 – 152.977 | 2023-08-16 | 0.210\" | 3.94\" | 73 | |"
+      },
+      {
+       "loc": "ALMA interferometry",
+       "quote": "| 2021.1.00378.S | 8 | 397.050 – 412.995 | 2023-09-01 | 0.154\" | 2.36\" | 113 | |"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00158.S",
+     "evidence": [
+      {
+       "loc": "ALMA interferometry",
+       "quote": "| 2012.1.00158.S | 7 | 329.093 – 343.083 | 2015-08-19 | 0.229\" | 1.98\" | 2056 | |"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 3, 4, 6, 7, 8",
+    "evidence": [
+     {
+      "loc": "ALMA interferometry",
+      "quote": "To constrain the dimensions and temperature of the outer disc, the newest continuum Band 7 (870 μm) ALMA interferometric data was used (project code 2019.1.00532.S, observation date 2021-08-19, (cite: arce2023radio))."
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2019.1.01111.S | 3 | 89.533 – 105.476 | 2022-08-13 | 0.251\" | 3.80\" | 490 | |"
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2021.1.00378.S | 8 | 397.050 – 412.995 | 2023-09-01 | 0.154\" | 2.36\" | 113 | |"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "89.533–105.476 GHz (Band 3), 137.034–152.977 GHz (Band 4), 216.008–233.992 GHz (Band 6), 329.093–343.083 GHz and 342.417–356.969 GHz and 342.423–356.969 GHz (Band 7), 397.050–412.995 GHz (Band 8)",
+    "evidence": [
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2019.1.01111.S | 3 | 89.533 – 105.476 | 2022-08-13 | 0.251\" | 3.80\" | 490 | |"
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2018.1.00028.S | 6 | 216.008 – 233.992 | 2020-11-30 | 0.026\" | 0.64\" | 2830 | |"
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2019.1.00532.S | 7 | 342.423 – 356.969 | 2023-09-06 | 0.023\" | 0.56\" | 4391 | |"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.023\" to 0.251\" (0.023\" for Band 7 2019.1.00532.S, 0.026\" for Band 6 2018.1.00028.S)",
+    "evidence": [
+     {
+      "loc": "ALMA interferometry",
+      "quote": "The minimum and maximum recoverable scales of the observations are 0.023\" and 0.56\" respectively, with a total 4390 s of integration time."
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "The value of minRS corresponds to the minimum recoverable scale, i.e., the angular resolution, and the value maxRS denotes the maximum recoverable scale."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "0.56\" to 3.94\" (0.56\" for Band 7 2019.1.00532.S, 0.64\" for Band 6 2018.1.00028.S)",
+    "evidence": [
+     {
+      "loc": "ALMA interferometry",
+      "quote": "The minimum and maximum recoverable scales of the observations are 0.023\" and 0.56\" respectively, with a total 4390 s of integration time."
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2021.1.00378.S | 4 | 137.034 – 152.977 | 2023-08-16 | 0.210\" | 3.94\" | 73 | |"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "4390 s (or 4391 s) for Band 7 (2019.1.00532.S), 2830 s for Band 6 (2018.1.00028.S), 490 s (Band 3), 73 s (Band 4), 2056 s and 2570 s (other Band 7), 113 s (Band 8)",
+    "evidence": [
+     {
+      "loc": "ALMA interferometry",
+      "quote": "The minimum and maximum recoverable scales of the observations are 0.023\" and 0.56\" respectively, with a total 4390 s of integration time."
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "| 2018.1.00028.S | 6 | 216.008 – 233.992 | 2020-11-30 | 0.026\" | 0.64\" | 2830 | |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2021-08-19 (2019.1.00532.S Band 7), 2020-11-30 (2018.1.00028.S Band 6)",
+    "evidence": [
+     {
+      "loc": "ALMA interferometry",
+      "quote": "To constrain the dimensions and temperature of the outer disc, the newest continuum Band 7 (870 μm) ALMA interferometric data was used (project code 2019.1.00532.S, observation date 2021-08-19, (cite: arce2023radio))."
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "A second high-resolution observation in ALMA Band 6 (project code 2018.1.00028.S, observation date 2020-11-30, (cite: cieza2021ophiuchus)) was also taken in consideration when modelling the intermediary disc."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "archival",
+    "evidence": [
+     {
+      "loc": "Archival observations",
+      "quote": "Several archival observations of DoAr 44 are available, including H$\\alpha$ spectra, VLTI interferometry, ALMA visibilities, and spectral energy distribution measurements."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLT/ESPRESSO",
+     "provided": {
+      "value": "11 Halpha spectra (program ID 111.250K) at R = 140000 from the ESO Archive",
+      "evidence": [
+       {
+        "loc": "H$\\alpha$ spectroscopy",
+        "quote": "This includes 11 spectra from the VLT/ESPRESSO (program ID 111.250K), 3 spectra from VLT/UVES (program ID 69.C-0481) and a single spectrum taken by VLT/X-shooter (program ID 085.C-0764)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/UVES",
+     "provided": {
+      "value": "3 Halpha spectra (program ID 69.C-0481) from the ESO Archive",
+      "evidence": [
+       {
+        "loc": "H$\\alpha$ spectroscopy",
+        "quote": "This includes 11 spectra from the VLT/ESPRESSO (program ID 111.250K), 3 spectra from VLT/UVES (program ID 69.C-0481) and a single spectrum taken by VLT/X-shooter (program ID 085.C-0764)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/X-shooter",
+     "provided": {
+      "value": "1 Halpha spectrum (program ID 085.C-0764) from the ESO Archive",
+      "evidence": [
+       {
+        "loc": "H$\\alpha$ spectroscopy",
+        "quote": "This includes 11 spectra from the VLT/ESPRESSO (program ID 111.250K), 3 spectra from VLT/UVES (program ID 69.C-0481) and a single spectrum taken by VLT/X-shooter (program ID 085.C-0764)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLTI/GRAVITY",
+     "provided": {
+      "value": "Archival K-band (~2 um) interferometric squared visibilities, closure phases, and triple product amplitudes",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "Our analysis utilises a large set of observational data, including ALMA continuum complex visibilities, VLTI/GRAVITY continuum squared visibilities, closure phases, and triple products, as well as VLT/UVES and VLT/X-shooter H$\\alpha$ spectra."
+       },
+       {
+        "loc": "VLTI interferometry",
+        "quote": "To constrain the spatial extent of the inner accretion region, we utilized archival VLTI/GRAVITY interferometric data of DoAr 44 (cite: bouvier2020probing)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SED measurements from XMM-Newton, ASAS-SN, SkyMapper, Gaia, APASS, SDSS, Pan-STARRS, 2MASS, WISE, Spitzer/IRAC, Spitzer/MIPS, IRAS, AKARI, Herschel/PACS, Herschel/SPIRE, JCMT, and ATCA via VizieR",
+      "evidence": [
+       {
+        "loc": "Spectral energy distribution",
+        "quote": "The measurements of the SED were taken from the following surveys, publications and catalogues, using mostly Vizier (cite: ochsenbein2000vizier):"
+       },
+       {
+        "loc": "Spectral energy distribution",
+        "quote": "- ATCA, $\\SI{3}{\\milli\\meter}$ (cite: ricci2010dust)."
+       }
+      ]
+     },
+     "citation": "(cite: ochsenbein2000vizier; page2012xmm; jayasinghe2018asas; SkyMapper; gaia2018vizier; gaia2020; 2016yCat.2336....0H; york2000sloan; kaiser2002pan; skrutskie2006two; wright2010wide; fazio2004infrared; rieke2004multiband; neugebauer1984infrared; 2010A&A...519A..83T; billot2006herschel; griffin2010herschel; 2013ApJ...773..168M; ricci2010dust)"
+    },
+    {
+     "what": {
+      "value": "Stellar parameters: r_* = 2.0 R_sun, T_* = 4750 K, M_* = 1.4 M_sun",
+      "evidence": [
+       {
+        "loc": "The central star",
+        "quote": "The stellar parameters were set according to previously published works (cite: andrews2009protoplanetary; bouvier2020probing), $r_\\star = 2.0\\,R_\\odot$, $T_\\star = 4750\\,{\\rm K}$, $M_\\star = 1.4\\,M_\\odot$."
+       }
+      ]
+     },
+     "citation": "(cite: andrews2009protoplanetary; bouvier2020probing)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "PHOENIX stellar spectrum grid interpolated in T_eff, log g, and Z",
+     "evidence": [
+      {
+       "loc": "The central star",
+       "quote": "This stellar spectrum was obtained by interpolation in the PHOENIX grid (cite: husser2013new), similarly to that in (cite: nemravova2016xitauri)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Interpolation of synthetic stellar spectrum in the PHOENIX grid",
+      "evidence": [
+       {
+        "loc": "The central star",
+        "quote": "This stellar spectrum was obtained by interpolation in the PHOENIX grid (cite: husser2013new), similarly to that in (cite: nemravova2016xitauri)."
+       }
+      ]
+     },
+     "from_reference": "(cite: nemravova2016xitauri)"
+    },
+    {
+     "what": {
+      "value": "Stellar parameters r_*, T_*, M_*",
+      "evidence": [
+       {
+        "loc": "The central star",
+        "quote": "The stellar parameters were set according to previously published works (cite: andrews2009protoplanetary; bouvier2020probing), $r_\\star = 2.0\\,R_\\odot$, $T_\\star = 4750\\,{\\rm K}$, $M_\\star = 1.4\\,M_\\odot$."
+       }
+      ]
+     },
+     "from_reference": "(cite: andrews2009protoplanetary; bouvier2020probing)"
+    },
+    {
+     "what": {
+      "value": "Solar metallicity Z = 0.0122 linking dust density to gas density",
+      "evidence": [
+       {
+        "loc": "The `DISC` object",
+        "quote": "$\\varrho_{\\rm dstnb}$ represents the dust density in the protoplanetary disc, linked to the gas density $\\varrho_{\\rm nb}$ through a constant (solar) metallicity $Z = 0.0122$ (cite: ASPLUND20061)."
+       }
+      ]
+     },
+     "from_reference": "(cite: ASPLUND20061)"
+    },
+    {
+     "what": {
+      "value": "Analytic interferometric visibility models including a halo component",
+      "evidence": [
+       {
+        "loc": "Simple analytic models",
+        "quote": "Similar models were used by (cite: Lazareff) to model VLTI/PIONIER visibilities of about 50 Herbig AeBe discs."
+       }
+      ]
+     },
+     "from_reference": "(cite: Lazareff)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact distance to DoAr 44 used to convert angular scales (mas) to physical scales (au and R_sun)",
+    "ALMA data calibration, continuum channel selection, spectral averaging, and visibility weighting procedures",
+    "Details of how CLEANed ALMA images were generated or if archival products/published images were used directly",
+    "Exact dust optical constants (refractive indices) used for the 90% water ice and 10% forsterite mixture in Shellspec",
+    "Spatial grid resolution and ray-tracing settings in Shellspec/Pyshellspec"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Construct mean Halpha spectrum and reduce VLTI visibilities",
+    "method": {
+     "value": "Piece-wise linear interpolation of 15 archival VLT Halpha spectra onto 200 equidistant points between 654.5 and 658.0 nm to compute a point-wise mean and standard deviation; reduce VLTI/GRAVITY data using Gravity Pipeline in EsoReflex.",
+     "evidence": [
+      {
+       "loc": "H$\\alpha$ spectroscopy",
+       "quote": "A piece-wise linear interpolation has been performed in 200 equidistant points in the range 654.5 to 658.0 nm for all the datasets, and a point-wise average and standard deviation from this average has been computed."
+      },
+      {
+       "loc": "VLTI interferometry",
+       "quote": "The reduction was performed using the Gravity Pipeline in EsoReflex (cite: freudling2013automated), to obtain the calibrated squared visibilities $V^2$ and closure phases arg$T^3$."
+      }
+     ]
+    },
+    "software": [
+     "Gravity Pipeline",
+     "EsoReflex"
+    ],
+    "key_parameters": [
+     {
+      "value": "200 equidistant points in 654.5 to 658.0 nm",
+      "evidence": [
+       {
+        "loc": "H$\\alpha$ spectroscopy",
+        "quote": "A piece-wise linear interpolation has been performed in 200 equidistant points in the range 654.5 to 658.0 nm for all the datasets, and a point-wise average and standard deviation from this average has been computed."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Mean Halpha profile corresponds approximately to an axially-symmetric mean state of the system",
+      "evidence": [
+       {
+        "loc": "H$\\alpha$ spectroscopy",
+        "quote": "For this reason, a mean profile was computed (see Fig. 1), corresponding approximately to an axially-symmetric mean state of the system."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit simple analytic visibility models to VLTI and ALMA data",
+    "method": {
+     "value": "Fit a homogeneous ellipse + point source + halo model to VLTI/GRAVITY visibilities, and a narrow elliptical delta-ring + halo model to ALMA Band 7 visibilities using MCMC, then rescale VLTI and ALMA visibilities into unit-less quantities.",
+     "evidence": [
+      {
+       "loc": "Simple analytic models",
+       "quote": "1. A homogeneous ellipse described by $\\alpha, \\beta, \\omega$, together with a point source and a background halo for the VLTI/GRAVITY visibilities, to model the inner disc."
+      },
+      {
+       "loc": "Simple analytic models",
+       "quote": "2. A narrow elliptical ring with a background halo for the ALMA visibilities, to model the outer disc."
+      },
+      {
+       "loc": "Simple analytic models",
+       "quote": "The $A$ and $B$ parameters were used to rescale the visibilities in physical units (Jy) into a unit-less quantity for further analysis."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Initial MCMC: 32 walkers, 10^4 steps; second iteration: 64 walkers, 10^5 steps, 30% burn-in; omega < 180 deg",
+      "evidence": [
+       {
+        "loc": "Simple analytic models",
+        "quote": "Initial simulations were performed with 32 walkers and $10^4$ steps."
+       },
+       {
+        "loc": "Simple analytic models",
+        "quote": "The marginalized posteriors were used as a starting value for the next iteration: these new simulations ran with 64 walkers for a total of $10^5$ steps, with a $30\\%$ burn-in phase."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Uninformative prior; infinitely thin elliptical ring (delta-ring) for outer disc; homogeneous ellipse for inner disc",
+      "evidence": [
+       {
+        "loc": "Simple analytic models",
+        "quote": "The best-fit parameters and their uncertainties (68% confidence intervals of the marginalized posterior distributions) were obtained via a MCMC simulation with an uninformative prior."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC simulation with uninformative prior using emcee (32 walkers x 10^4 steps, then 64 walkers x 10^5 steps with 30% burn-in); 68% confidence intervals of marginalized posteriors.",
+     "evidence": [
+      {
+       "loc": "Simple analytic models",
+       "quote": "The best-fit parameters and their uncertainties (68% confidence intervals of the marginalized posterior distributions) were obtained via a MCMC simulation with an uninformative prior."
+      },
+      {
+       "loc": "Simple analytic models",
+       "quote": "All simulations were implemented using the `emcee` package (cite: foreman2013emcee)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Comparison of derived inclinations and misalignment angle with literature values (1 sigma agreement for outer inclination and misalignment).",
+     "evidence": [
+      {
+       "loc": "Simple analytic models",
+       "quote": "In conclusion, our results are in agreement for the outer inclination (1 sigma), as well as for the new value of misalignment."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Model the accretion region and innermost disc with radiative transfer",
+    "method": {
+     "value": "Use Pyshellspec/Shellspec with a central STAR (interpolated PHOENIX spectrum), a spherical SHELL of hot gas, and an innermost DISC to fit VLT Halpha spectra and VLTI/GRAVITY visibilities, and derive the mass accretion rate.",
+     "evidence": [
+      {
+       "loc": "Accretion region model",
+       "quote": "The geometry that best replicates the observables is the following: a central star, surrounded by a spherical shell of hot gas, surrounded by a disc."
+      },
+      {
+       "loc": "Accretion region model",
+       "quote": "The model was fitted to the VLTI/Gravity observations, the VLT $H\\alpha$ spectra."
+      },
+      {
+       "loc": "Accretion region model",
+       "quote": "From the density and velocity of the gas in the accretion envelope shell, we derive an accretion rate of:"
+      }
+     ]
+    },
+    "software": [
+     "Pyshellspec",
+     "Shellspec"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fixed inner disc inclination i = 40 deg and position angle = 147 deg; stellar parameters r_* = 2.0 R_sun, T_* = 4750 K, M_* = 1.4 M_sun",
+      "evidence": [
+       {
+        "loc": "Accretion region model",
+        "quote": "The geometry of the disc was taken from the MCMC analysis of the analytic models, the inclination of $i = 40^\\circ$ is fixed, together with the position angle of 147$^\\circ$."
+       },
+       {
+        "loc": "The central star",
+        "quote": "$r_\\star = 2.0\\,R_\\odot$, $T_\\star = 4750\\,{\\rm K}$, $M_\\star = 1.4\\,M_\\odot$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE (Saha equation for electron density), single-scattering radiative transfer, constant shell temperature, spherical shell geometry",
+      "evidence": [
+       {
+        "loc": "`Pyshellspec` radiative-transfer models",
+        "quote": "One limitation is that `Pyshellspec` is a single-scattering radiative-transfer tool."
+       },
+       {
+        "loc": "The `SHELL` object",
+        "quote": "To obtain a contribution to the opacity due to Thompson scattering, the electron number density is computed using the Saha equation based on the local densities and the temperature, with the assumption of LTE."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Sub-space parameter scan over R_outsh, v(R_insh), e_velsh, T_sh, and rho_sh minimizing chi^2_SPE and chi^2_V2.",
+     "evidence": [
+      {
+       "loc": "Accretion region model",
+       "quote": "A search for the best-fit was performed on a sub-space of the parameter space that was identified (via trial and error) as being spanned by the most relevant parameters:"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Normalized chi^2 values: chi^2_SPE / N_SPE = 0.98 and chi^2_V2 / N_V2 = 1.5; comparison of accretion rate with Bouvier et al. (2020a).",
+     "evidence": [
+      {
+       "loc": "Accretion region model",
+       "quote": "The respective normalized $\\chi^2$ contributions are $\\chi^2_{\\rm SPE} / N_{\\rm SPE} = 0.98$ and $\\chi^2_{\\rm V2} / N_{\\rm V2} = 1.5$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Model the outer disc and intermediate disc with radiative transfer and derive dust mass",
+    "method": {
+     "value": "Scan parameters of outer DISC (40-60 au) to fit ALMA Band 7 visibilities and SED, add warm intermediate DISC (0.2-1 au) to fit mid-IR SED deficit, and integrate vertical and radial density profiles to obtain outer disc dust mass.",
+     "evidence": [
+      {
+       "loc": "Outer disc model",
+       "quote": "A scan over a variety of parameters (particle size, temperature, density, inner radius, outer radius) fitting the $\\chi_{\\rm V2}^2 + \\chi^2_{\\rm SED}$ was performed."
+      },
+      {
+       "loc": "Outer disc model",
+       "quote": "By integrating over the radial direction, we obtain the dust mass of"
+      },
+      {
+       "loc": "Intermediate disc model",
+       "quote": "However, a deficit in the SED is present in the mid-IR, which has to be compensated for by introducing a warm intermediary region in the 0.2 – 1 au range."
+      }
+     ]
+    },
+    "software": [
+     "Pyshellspec",
+     "Shellspec"
+    ],
+    "key_parameters": [
+     {
+      "value": "Outer disc 40 to 60 au (8600 to 12900 R_sun), dust grain size a = 1 um, 90% water ice + 10% forsterite, intermediate disc 43 to 215 R_sun (0.2 to 1 au)",
+      "evidence": [
+       {
+        "loc": "Outer disc model",
+        "quote": "In our model, the outer disc extends from 40 au to 60 au, with the mid-plane dust density of $\\SI{1e-14}{\\gram \\per \\cubic \\centi \\meter}$ at the inner boundary."
+       },
+       {
+        "loc": "Outer disc model",
+        "quote": "The dust is given by a mix of water ice and forsterite, in a ratio of 90 % and 10 %, with particle sizes of $a = \\SI{1}{\\micro \\meter}$."
+       },
+       {
+        "loc": "Intermediate disc model",
+        "quote": "| $r_{\\rm innb2}$ | `DISC` | 43 | 10 | $R_\\odot$ |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Power-law density and temperature profiles, vertically isothermal disc, solar metallicity Z = 0.0122, dust composition of 90% water ice and 10% forsterite",
+      "evidence": [
+       {
+        "loc": "The `DISC` object",
+        "quote": "$\\varrho_{\\rm dstnb}$ represents the dust density in the protoplanetary disc, linked to the gas density $\\varrho_{\\rm nb}$ through a constant (solar) metallicity $Z = 0.0122$ (cite: ASPLUND20061)."
+       },
+       {
+        "loc": "The `DISC` object",
+        "quote": "A mix of 90% water ice and 10% forsterite is used as a proxy for the actual mineralogical composition."
+       },
+       {
+        "loc": "Outer disc model",
+        "quote": "On the contrary, our model is vertically isothermal, and requires about 50 – 60 K in the outer regions, in order to account for the Spitzer/MIPS ($\\SI{70}{\\micro \\meter}$) and Herschel/PACS ($\\SI{100}{\\micro \\meter}$) far infrared fluxes."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Parameter scan fitting chi^2_V2 + chi^2_SED for outer disc; global optimization of chi^2_SED.",
+     "evidence": [
+      {
+       "loc": "`Pyshellspec` radiative-transfer models",
+       "quote": "The only contribution optimised globally was $\\chi^2_{\\rm SED}$, while the other contributions were optimised separately for the accretion region, the inner disc, and the outer disc."
+      },
+      {
+       "loc": "Outer disc model",
+       "quote": "A scan over a variety of parameters (particle size, temperature, density, inner radius, outer radius) fitting the $\\chi_{\\rm V2}^2 + \\chi^2_{\\rm SED}$ was performed."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested models with and without scattering opacity; compared synthetic SED, visibilities, and images across wavelengths with multi-instrument observations.",
+     "evidence": [
+      {
+       "loc": "`Pyshellspec` radiative-transfer models",
+       "quote": "We tested models with and without scattering opacity."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "EsoReflex",
+    "version": "not stated",
+    "used_for": {
+     "value": "Environment used to run the Gravity Pipeline for VLTI/GRAVITY data reduction",
+     "evidence": [
+      {
+       "loc": "VLTI interferometry",
+       "quote": "The reduction was performed using the Gravity Pipeline in EsoReflex (cite: freudling2013automated), to obtain the calibrated squared visibilities $V^2$ and closure phases arg$T^3$."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Gravity Pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reduction of archival VLTI/GRAVITY interferometric data",
+     "evidence": [
+      {
+       "loc": "VLTI interferometry",
+       "quote": "The reduction was performed using the Gravity Pipeline in EsoReflex (cite: freudling2013automated), to obtain the calibrated squared visibilities $V^2$ and closure phases arg$T^3$."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC parameter estimation for the analytic interferometric visibility models",
+     "evidence": [
+      {
+       "loc": "Simple analytic models",
+       "quote": "All simulations were implemented using the `emcee` package (cite: foreman2013emcee)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Pyshellspec",
+    "version": "not stated",
+    "used_for": {
+     "value": "Generating synthetic observables (visibilities, closure phases, spectra, SED) and chi^2 evaluation from Shellspec radiative-transfer images",
+     "evidence": [
+      {
+       "loc": "`Pyshellspec` radiative-transfer models",
+       "quote": "`Pyshellspec` generates various observables, such as interferometric visibilities and closure phases, based on synthetic images generated by `Shellspec`, a long-characteristics radiative-transfer code by (cite: shellspec2004)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Shellspec",
+    "version": "not stated",
+    "used_for": {
+     "value": "Long-characteristics 3D radiative-transfer modelling of the star, gas shell, and discs",
+     "evidence": [
+      {
+       "loc": "`Pyshellspec` radiative-transfer models",
+       "quote": "`Pyshellspec` generates various observables, such as interferometric visibilities and closure phases, based on synthetic images generated by `Shellspec`, a long-characteristics radiative-transfer code by (cite: shellspec2004)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Inner accretion region inclination (i_in)",
+    "value": "40",
+    "uncertainty": "3",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "From all these models, we infer an inclination of the inner accretion region at $i_{\\rm in} = 40^\\circ\\pm 3 ^\\circ$ and of the outer disc at $i_{\\rm out} = 22^\\circ\\pm 1^\\circ$."
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc inclination (i_out)",
+    "value": "22",
+    "uncertainty": "1",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "From all these models, we infer an inclination of the inner accretion region at $i_{\\rm in} = 40^\\circ\\pm 3 ^\\circ$ and of the outer disc at $i_{\\rm out} = 22^\\circ\\pm 1^\\circ$."
+     }
+    ]
+   },
+   {
+    "quantity": "Inner accretion region position angle (omega_in)",
+    "value": "147",
+    "uncertainty": "2",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "The positions angles seem to be somewhat aligned, at $\\omega_{\\rm in} = 147^\\circ\\pm 2^\\circ$ for the inner accretion region and $\\omega_{\\rm out} = 156^\\circ\\pm 2^\\circ$ for the outer disc."
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc position angle (omega_out)",
+    "value": "156",
+    "uncertainty": "2",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "The positions angles seem to be somewhat aligned, at $\\omega_{\\rm in} = 147^\\circ\\pm 2^\\circ$ for the inner accretion region and $\\omega_{\\rm out} = 156^\\circ\\pm 2^\\circ$ for the outer disc."
+     }
+    ]
+   },
+   {
+    "quantity": "Inner-outer disc misalignment angle (xi)",
+    "value": "18.5",
+    "uncertainty": "4",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "$$\\cos \\xi = \\cos i_{\\rm in} \\cos i_{\\rm out} + \\sin i_{\\rm in} \\sin i_{\\rm out} \\cos(\\Delta \\omega) = 18.5 ^\\circ\\pm 4 ^\\circ\\,.$$"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc delta-ring semi-major axis (alpha)",
+    "value": "329",
+    "uncertainty": "1",
+    "units": "mas",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "| $\\alpha$ (mas) | 329 | 1 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc delta-ring semi-minor axis (beta)",
+    "value": "304",
+    "uncertainty": "1",
+    "units": "mas",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Simple analytic models",
+      "quote": "| $\\beta$ (mas) | 304 | 1 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Accretion shell gas velocity (v_sh)",
+    "value": "385",
+    "uncertainty": "5",
+    "units": "km s^-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $v_{\\rm sh}$ | `SHELL` | 385 | 5 | km s^−1^ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Accretion shell temperature (T_sh)",
+    "value": "9100",
+    "uncertainty": "200",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $T_{\\rm sh}$ | `SHELL` | 9100 | 200 | K |"
+     }
+    ]
+   },
+   {
+    "quantity": "Accretion shell inner density (rho_sh)",
+    "value": "1.8e-13",
+    "uncertainty": "3e-14",
+    "units": "g cm^-3",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $\\varrho_{\\rm sh}$ | `SHELL` | $1.8\\cdot10^{-13}$ | $3\\cdot10^{-14}$ | $\\si{ \\gram \\per \\centi \\meter \\cubed}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass accretion rate (M_dot)",
+    "value": "6.1e-8",
+    "uncertainty": "0.2e-8",
+    "units": "M_sun yr^-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Accretion region model",
+      "quote": "From the density and velocity of the gas in the accretion envelope shell, we derive an accretion rate of: $$\\begin{equation} \\dot{M} = (6.1\\pm 0.2)\\cdot10^{-8}\\,M_\\odot\\, {\\rm yr}^{-1}\\,, \\end{equation}$$"
+     }
+    ]
+   },
+   {
+    "quantity": "Innermost disc inner radius (r_innb1)",
+    "value": "16.5",
+    "uncertainty": "3",
+    "units": "R_sun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $r_{\\rm innb1}$ | `DISC` | 16.5 | 3 | $R_\\odot$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Innermost disc outer radius (r_outnb1)",
+    "value": "35",
+    "uncertainty": "5",
+    "units": "R_sun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $r_{\\rm outnb1}$ | `DISC` | 35 | 5 | $R_\\odot$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Intermediate disc inner radius (r_innb2)",
+    "value": "43",
+    "uncertainty": "10",
+    "units": "R_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $r_{\\rm innb2}$ | `DISC` | 43 | 10 | $R_\\odot$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Intermediate disc outer radius (r_outnb2)",
+    "value": "215",
+    "uncertainty": "20",
+    "units": "R_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $r_{\\rm outnb2}$ | `DISC` | 215 | 20 | $R_\\odot$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc inner radius (r_innb3)",
+    "value": "8600",
+    "uncertainty": "200",
+    "units": "R_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $r_{\\rm innb3}$ | `DISC` | 8600 | 200 | $R_\\odot$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc outer radius (r_outnb3)",
+    "value": "12900",
+    "uncertainty": "200",
+    "units": "R_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $r_{\\rm outnb3}$ | `DISC` | 12900 | 200 | $R_\\odot$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc inner boundary temperature (T_nb3)",
+    "value": "60",
+    "uncertainty": "10",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "| $T_{\\rm nb3}$ | `DISC` | 60 | 10 | K |"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc dust mass lower limit (M_dust)",
+    "value": ">100",
+    "uncertainty": "not stated",
+    "units": "M_Earth",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Outer disc model",
+      "quote": "By integrating over the radial direction, we obtain the dust mass of $$\\begin{multline} M_{\\rm dust} = \\int_{R_{\\rm in nb}} ^{R_{\\rm outnb}} 2 \\pi r \\Sigma_{\\rm dust}(r) {\\rm d} r= \\\\ = \\int_{R_{\\rm in nb}} ^{R_{\\rm outnb}} 2 \\pi r \\varrho_{\\rm dstnb} r \\sqrt{\\frac{r}{GM}} \\sqrt{\\frac{\\gamma k_{\\rm B} T(r)}{\\mu}} {\\rm d} r \\gtrsim 100 M_{\\rm Earth}\\,. \\end{multline}$$"
+     },
+     {
+      "loc": "The planet formation mass budget",
+      "quote": "According to the outer disc model, depending mainly on the representative particle size, ranging from fine $\\SI{1e-2}{\\micro \\meter}$ to coarser $\\SI{1e2}{\\micro \\meter}$, we obtain the lower limit of dust mass, $M_{\\rm dust} > 100\\, M_{\\rm Earth}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc continuum emission inner extent",
+    "value": "36",
+    "uncertainty": "1",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "3. The continuum dust emission in the outer disc extends from about ($36\\pm1$) au to about $(60\\pm4)$ au."
+     }
+    ]
+   },
+   {
+    "quantity": "Outer disc continuum emission outer extent",
+    "value": "60",
+    "uncertainty": "4",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "3. The continuum dust emission in the outer disc extends from about ($36\\pm1$) au to about $(60\\pm4)$ au."
+     }
+    ]
+   },
+   {
+    "quantity": "Outer dust ring center radius",
+    "value": "48",
+    "uncertainty": "1",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "A large part of the emission is localized in a narrow ring centered at ($48\\pm1$) au."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The inner accretion region is described by an optically thin spherical shell of gas at ~9100 K with velocities up to 385 km/s, surrounded by an innermost disc (0.07 to 0.16 au) that accounts for the VLTI/GRAVITY K-band visibilities.",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "1. The geometry of the inner accretion region can be described using a shell of gas, heated to about 9 000 K, surrounding the young star. This gas is moving at speeds up to $\\SI{385}{\\kilo \\meter\\,\\second^{-1}}$."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "This shell is surrounded by an innermost disc ($16\\,R_\\odot$ to $35\\,R_\\odot$, i.e., 0.07 to 0.16 au), which is responsible for the VLTI/GRAVITY K-band visibilities."
+     }
+    ]
+   },
+   {
+    "value": "An unresolved warm intermediate disc (0.2 to 1 au, 1000 K to 380 K) is required to account for the mid-infrared SED and is the probable origin of the observed water vapour emission.",
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "However, a deficit in the SED is present in the mid-IR, which has to be compensated for by introducing a warm intermediary region in the 0.2 – 1 au range."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "6. An intermediate disc, for the moment unresolved by ALMA, extending from 0.2 to 1 au or beyond, must be present, according to the SED constraints. From this region, the observed water vapour emission probably originates."
+     }
+    ]
+   },
+   {
+    "value": "The outer dust ring at ~48 au has temperatures of 50-60 K, which is too warm for H2O or CO condensation lines in the emitting layers, leaving CO2 as the only candidate volatile condensation line.",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "4. The ring at ($48\\pm1$) au does not correspond to the condensation line of water ice or carbon monoxide due to high temperature (50 – 60 K). The only possible condensation line that could cause such a ring is carbon dioxide."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The mean Halpha line profile and VLTI/GRAVITY K-band interferometry of DoAr 44 can be explained by a spherical gas inflow/outflow shell within an innermost disc.",
+    "experiment": "Fit Pyshellspec/Shellspec radiative-transfer models (central star + spherical gas shell + innermost disc) to the mean VLT Halpha profile and VLTI/GRAVITY visibilities.",
+    "result": "Best-fit model has a shell extending from 3 to 22 R_sun at T = 9100 K and v = 385 km/s (giving M_dot = 6.1e-8 M_sun/yr), surrounded by a disc from 16.5 to 35 R_sun, with normalized chi^2_SPE = 0.98 and chi^2_V2 = 1.5.",
+    "finding": "The inner accretion region is well described by an optically thin hot gas shell moving at up to 385 km/s surrounded by an innermost disc at 0.07-0.16 au.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Accretion region model",
+      "quote": "The model was fitted to the VLTI/Gravity observations, the VLT $H\\alpha$ spectra. The respective normalized $\\chi^2$ contributions are $\\chi^2_{\\rm SPE} / N_{\\rm SPE} = 0.98$ and $\\chi^2_{\\rm V2} / N_{\\rm V2} = 1.5$."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "1. The geometry of the inner accretion region can be described using a shell of gas, heated to about 9 000 K, surrounding the young star. This gas is moving at speeds up to $\\SI{385}{\\kilo \\meter\\,\\second^{-1}}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "An intermediate disc in the terrestrial planet-forming zone is required to explain the mid-infrared SED and water vapour emission of DoAr 44.",
+    "experiment": "Compare a two-component model (innermost accretion region + outer disc) to the broad-band SED and add an intermediate DISC object in Pyshellspec.",
+    "result": "A warm intermediate disc extending from 0.2 to 1 au (43 to 215 R_sun) with temperatures from 1000 K to 380 K resolves the mid-IR SED deficit and matches the ~450 K water vapour temperature.",
+    "finding": "An unresolved intermediate disc at 0.2-1 au must be present and is the likely source of the observed water vapour luminosity.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Intermediate disc model",
+      "quote": "However, a deficit in the SED is present in the mid-IR, which has to be compensated for by introducing a warm intermediary region in the 0.2 – 1 au range."
+     },
+     {
+      "loc": "Intermediate disc model",
+      "quote": "(cite: salyk2015detection) detected a large water-vapour luminosity originating from DoAr 44 using the Gemini-North telescope, and deduced the temperature of this water vapour to $T \\approx \\SI{450}{\\kelvin}$. In our model, these temperatures are reached precisely in this intermediate disc."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The outer dust ring observed by ALMA around 48 au coincides with a volatile condensation line.",
+    "experiment": "Fit the outer disc radiative-transfer model to ALMA Band 7 visibilities and far-IR/sub-mm SED fluxes to determine the dust temperature and mass at the ring location.",
+    "result": "The model requires an optically thick outer disc (40-60 au) with dust mass > 100 M_Earth and temperatures of 50-60 K to match the 70-100 um far-IR fluxes and sub-mm spectral index.",
+    "finding": "Water ice (condensing at 4-6 au) and CO (condensing at 23-28 K) cannot explain the ring at 48 au in the emitting layers; only CO2 could be transitioning to solid state there, though mid-plane CO condensation cannot be excluded due to optical thickness.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Does the observed ring coincide with a condensation line of a volatile, or must it be caused by an exoplanet?",
+      "quote": "However, we cannot exclude the possibility that CO is condensed in the mid-plane, which could be colder than 50 to 60 K, but the mid-plane is inaccessible due to optical thickness."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "4. The ring at ($48\\pm1$) au does not correspond to the condensation line of water ice or carbon monoxide due to high temperature (50 – 60 K). The only possible condensation line that could cause such a ring is carbon dioxide."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Archival VLT Halpha spectra constrain the inner accretion region kinematics, VLTI/GRAVITY K-band interferometry constrains the spatial extent of the inner accretion region, ALMA high-resolution Band 6/7 interferometry constrains the outer and intermediate disc dimensions and temperature, and multi-wavelength SED photometry constrains the global temperature and density structure.",
+    "evidence": [
+     {
+      "loc": "H$\\alpha$ spectroscopy",
+      "quote": "To constrain the physical properties of the accretion region around the star, all available H$\\alpha$ datasets from the ESO Archive were utilized."
+     },
+     {
+      "loc": "VLTI interferometry",
+      "quote": "To constrain the spatial extent of the inner accretion region, we utilized archival VLTI/GRAVITY interferometric data of DoAr 44 (cite: bouvier2020probing)."
+     },
+     {
+      "loc": "ALMA interferometry",
+      "quote": "To constrain the dimensions and temperature of the outer disc, the newest continuum Band 7 (870 μm) ALMA interferometric data was used (project code 2019.1.00532.S, observation date 2021-08-19, (cite: arce2023radio))."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Simple analytic visibility models provide a benchmark, angular scales, and visibility rescaling factors; a mean Halpha profile approximates an axially-symmetric state since the 3D equilibrium radiative-transfer code Pyshellspec/Shellspec does not capture temporal variability; chi^2 contributions were optimized separately per region because global optimization is exceedingly difficult.",
+    "evidence": [
+     {
+      "loc": "H$\\alpha$ spectroscopy",
+      "quote": "This standard deviation from the mean spectrum has been treated as the denominator in the $\\chi^2$ minimization, as our model will not capture the temporal variability of the system."
+     },
+     {
+      "loc": "Simple analytic models",
+      "quote": "These analytic models were used as a benchmark for the more complex radiative-transfer models, providing the angular extent of the observed structures as a guide."
+     },
+     {
+      "loc": "`Pyshellspec` radiative-transfer models",
+      "quote": "However, the total $\\chi^2$ was not optimised globally, as this is exceedingly difficult."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "X-ray data from Montmerle et al. (1983) were rejected because X-ray emission forms under non-LTE conditions outside the model approximations.",
+     "evidence": [
+      {
+       "loc": "Spectral energy distribution",
+       "quote": "The X-ray data from (cite: montmerle1983einstein) were not used, as the X-ray emission is formed under non-LTE conditions, which is outside the approximations of our models."
+      }
+     ]
+    },
+    {
+     "value": "Axially symmetric conical shapes for the inner optically thin Halpha-emitting gas were tested, but optimization always converged to large opening angles or a spherically symmetric shell.",
+     "evidence": [
+      {
+       "loc": "What is the geometry of the accretion region?",
+       "quote": "We have modelled the inner optically thin matter responsible for the averaged H$\\alpha$ emission using axially symmetric conical shapes, but optimising always resulted in large opening angles, or a spherically symmetric shell of gas."
+      }
+     ]
+    },
+    {
+     "value": "Monotonic density profile without a central cavity was rejected as incompatible with ALMA visibilities and CLEANed images.",
+     "evidence": [
+      {
+       "loc": "Outer disc model",
+       "quote": "To account for the ALMA visibilities and CLEANed images, we were forced to introduce a cavity."
+      },
+      {
+       "loc": "Conclusions",
+       "quote": "The observations are not compatible with a monotonic density profile, and a large central cavity must be present."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "The radiative-transfer model is static/axially-symmetric and does not capture the strong temporal variability of the Halpha profile.",
+     "evidence": [
+      {
+       "loc": "H$\\alpha$ spectroscopy",
+       "quote": "This standard deviation from the mean spectrum has been treated as the denominator in the $\\chi^2$ minimization, as our model will not capture the temporal variability of the system."
+      }
+     ]
+    },
+    {
+     "value": "Pyshellspec is a single-scattering radiative-transfer tool and does not compute full multiple scattering.",
+     "evidence": [
+      {
+       "loc": "`Pyshellspec` radiative-transfer models",
+       "quote": "One limitation is that `Pyshellspec` is a single-scattering radiative-transfer tool."
+      }
+     ]
+    },
+    {
+     "value": "Total chi^2 was not optimized globally across all observables simultaneously.",
+     "evidence": [
+      {
+       "loc": "`Pyshellspec` radiative-transfer models",
+       "quote": "However, the total $\\chi^2$ was not optimised globally, as this is exceedingly difficult."
+      }
+     ]
+    },
+    {
+     "value": "The outer disc is vertically isothermal in the model and the complex ring-within-a-ring morphology seen in ALMA images was simplified to a single power-law ring.",
+     "evidence": [
+      {
+       "loc": "Outer disc model",
+       "quote": "The density profile was simplified to a power-law, and the complex “ring-within-a-ring\" morphology was not fitted in detail."
+      },
+      {
+       "loc": "Outer disc model",
+       "quote": "On the contrary, our model is vertically isothermal, and requires about 50 – 60 K in the outer regions, in order to account for the Spitzer/MIPS ($\\SI{70}{\\micro \\meter}$) and Herschel/PACS ($\\SI{100}{\\micro \\meter}$) far infrared fluxes."
+      }
+     ]
+    },
+    {
+     "value": "The outer disc is optically thick, so the dust density and dust mass only have a lower bound and the mid-plane temperature is inaccessible.",
+     "evidence": [
+      {
+       "loc": "Outer disc model",
+       "quote": "This is still a lower limit though, as the outer disc in our model is optically thick: the best-fit dust density estimations do not have a clear upper limit from fitting the SED, as various optically thick solutions appear very similar; see Fig. 6)."
+      },
+      {
+       "loc": "Does the observed ring coincide with a condensation line of a volatile, or must it be caused by an exoplanet?",
+       "quote": "However, we cannot exclude the possibility that CO is condensed in the mid-plane, which could be colder than 50 to 60 K, but the mid-plane is inaccessible due to optical thickness."
+      }
+     ]
+    },
+    {
+     "value": "The intermediate disc is spatially unresolved by current interferometry, leaving a large degeneracy in its outer extent (up to 5-7 au).",
+     "evidence": [
+      {
+       "loc": "Intermediate disc model",
+       "quote": "However, the dimensions of this intermediate disc are not constrained by interferometry or other spatially resolved methods. This means that there exists a large set of acceptable models of this region, extending up to 5 – 7 au."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Shellspec imposes parametric power-law temperature profiles and vertical isothermality rather than solving self-consistent Monte Carlo dust thermal radiative equilibrium, which likely drives the high 50-60 K mid-plane temperature needed to fit the far-IR SED.",
+    "There is a factor of 10 discrepancy between the accretion rate in the text/Conclusions (6.1e-8 M_sun/yr) and the statement that it is 'surprisingly similar' to Bouvier et al. 2020a (quoted in the Introduction as 6.5e-9 M_sun/yr), suggesting a possible typo in the exponent.",
+    "Fitting the inner, intermediate, and outer regions separately rather than globally may miss radiative shadowing effects from the misaligned inner disc onto the outer ring."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public archival data from the ALMA Science Archive, ESO Science Archive Facility (with DOIs provided), Gaia, and VizieR.",
+    "evidence": [
+     {
+      "loc": "Archival observations",
+      "quote": "To constrain the physical properties of the accretion region around the star, all available H$\\alpha$ datasets from the ESO Archive were utilized."
+     },
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data sets: ADS/JAO.ALMA#2019.1.00532.S, ADS/JAO.ALMA#2019.1.01111.S."
+     },
+     {
+      "loc": "Acknowledgements",
+      "quote": "Based on data obtained from the ESO Science Archive Facility with DOI(s): <https://doi.eso.org/10.18727/archive/21>, <https://doi.eso.org/10.18727/archive/50>, <https://doi.eso.org/10.18727/archive/71>."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Exact distance to DoAr 44 assumed in the conversion between angular and linear sizes",
+    "Visibility calibration, spectral averaging, and weighting scheme applied to the raw ALMA Band 7 measurement set (2019.1.00532.S) before fitting",
+    "Integrated flux table for the 128 SED data points (and the exact fluxes extracted from the multi-band ALMA datasets)",
+    "Shellspec/Pyshellspec input configuration files, grid resolution, and dust refractive index tables"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB (dominated by high-resolution ALMA Band 6 and Band 7 archival visibility datasets)",
+   "score_inferred": 55,
+   "score_reason": "All raw observational data (ALMA, VLT, VLTI, VizieR SED) and the core modelling codes (Shellspec/Pyshellspec, emcee) are public, and best-fit model parameters are tabulated. However, the ALMA visibility extraction/averaging steps, exact SED flux table, assumed source distance, and trial-and-error parameter scan grids are not fully specified.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "All ALMA and ESO/VLTI datasets are publicly available in archives, and the analytic MCMC visibility fitting (step 2) as well as the parametric radiative transfer fits produce concrete numerical values for disc inclinations, ring radii, and accretion rates."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: pyshellspec2018; pyshellspec)",
+     "why": "Describes the Pyshellspec tool used to compute synthetic interferometric, spectroscopic, and photometric observables and chi^2."
+    },
+    {
+     "citation": "(cite: shellspec2004)",
+     "why": "Describes the underlying Shellspec 3D long-characteristics radiative-transfer code."
+    },
+    {
+     "citation": "(cite: Lazareff)",
+     "why": "Provides the analytic visibility models (ellipse/ring with star and halo) used to fit VLTI and ALMA visibilities."
+    },
+    {
+     "citation": "(cite: foreman2013emcee)",
+     "why": "MCMC sampler used for fitting the analytic visibility models."
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: arce2023radio)",
+     "why": "Published and analysed the high-resolution ALMA Band 7 (2019.1.00532.S) and Band 6 observations of DoAr 44 reused here."
+    },
+    {
+     "citation": "(cite: cieza2021ophiuchus)",
+     "why": "ODISEA survey paper that published the high-resolution ALMA Band 6 dataset (2018.1.00028.S) of DoAr 44."
+    },
+    {
+     "citation": "(cite: bouvier2020probing; bouvier2020investigating)",
+     "why": "Published the VLTI/GRAVITY data and optical spectroscopy/photometry of DoAr 44 reused and compared in this work."
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ODISEA",
+    "DARTTS-S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2025A%26A...701A.203S",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-29T22:31:14",
+  "usage": {
+   "input": 24136,
+   "output": 13508,
+   "thoughts": 0
+  },
+  "usd": 0.183352,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "thinking": "low",
+  "seconds": 163.1,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 132,
+  "quotes_ok": 132,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 4,
+  "unsupported_facts": 0,
+  "project_codes": 5,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 22,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 91,
+   "stated": 57,
+   "rate": 0.626
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-30T03:03:33",
+  "custom_id": "gemini4argon-repair-claude-code",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].method.evidence[2]",
+    "old": "From the density and velocity of the gas in the accretion envelope shell, we derive an accretion rate of: $\\dot{M} = (6.1\\pm 0.2)\\cdot10^{-8}\\,M_\\odot\\, {\\rm yr}^{-1}\\,,$",
+    "new": "From the density and velocity of the gas in the accretion envelope shell, we derive an accretion rate of:"
+   },
+   {
+    "path": "analysis_steps[3].method.evidence[1]",
+    "old": "By integrating over the radial direction, we obtain the dust mass of $M_{\\rm dust} = \\int_{R_{\\rm in nb}} ^{R_{\\rm outnb}} 2 \\pi r \\Sigma_{\\rm dust}(r) {\\rm d} r= \\dots \\gtrsim 100 M_{\\rm Earth}\\,.$",
+    "new": "By integrating over the radial direction, we obtain the dust mass of"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

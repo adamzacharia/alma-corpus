@@ -1,0 +1,291 @@
+{
+"depth": "light",
+"paper_type": "theory_or_simulation_compared_to_alma",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "In this work, we compile the continuum fluxes, dust disk sizes and spectral indexes for a sample of disks from different star forming regions"},
+{"loc": "Introduction", "quote": "We show that the bouncing barrier can be used to explain two key observational properties of protoplanetary disks."}
+],
+"fields": ["protoplanetary_disks"],
+"question": {
+"value": "How can protoplanetary disks, including old Upper Scorpius disks, stay optically thick and bright at mm wavelengths for millions of years despite grain growth and radial drift? Proposed answer: the bouncing barrier stalls grain growth at about 100 micron.",
+"evidence": [
+{"loc": "abstract", "quote": "How can disks shine brightly for so long, when grain growth and subsequent radial drift should have quickly depleted their solid reservoir?"},
+{"loc": "Introduction", "quote": "We show that the bouncing barrier can be used to explain two key observational properties of protoplanetary disks."}
+]
+},
+"targets": [
+{
+"name": "24 Upper Scorpius (USco) disks observed at 2.86 mm (2MASS J-designations listed in the spectral-index table)",
+"details": [
+{"loc": "A Sample of Proto-planetary Disks", "quote": "This leads us to perform our own data reduction on the archival $2.86$mm observations (2015.1.00819.S, PI: Ricci, Luca) of 24 USco disks."},
+{"loc": "A Sample of Proto-planetary Disks", "quote": "The former corresponds to $\\sim 54$AU at a distance of $145$pc."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "145 pc quoted for USco (resolution conversion); fluxes normalised to 140 pc",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2015.1.00819.S", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "This leads us to perform our own data reduction on the archival $2.86$mm observations (2015.1.00819.S, PI: Ricci, Luca) of 24 USco disks."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "2.86 mm (archival)", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "This leads us to perform our own data reduction on the archival $2.86$mm observations (2015.1.00819.S, PI: Ricci, Luca) of 24 USco disks."}]},
+{"field": "angular_resolution", "value": "2.1 arcsec", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "This survey also has a relatively low angular resolution ($2.1''$) but its flux measurements allow us to measure $\\alpha_{1-3}$."}]},
+{"field": "pi_or_archival_as_stated", "value": "archival, PI: Ricci, Luca", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "This leads us to perform our own data reduction on the archival $2.86$mm observations (2015.1.00819.S, PI: Ricci, Luca) of 24 USco disks."}]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "Literature ALMA surveys of Lupus, ONC and Ophiuchus (and USco 0.88 mm surveys)", "provided": {"value": "Published continuum fluxes, dust disk sizes and spectral indexes used as the comparison sample", "evidence": [
+{"loc": "A Sample of Proto-planetary Disks", "quote": "The high-resolution survey of (cite: Guerra2025) measured fluxes and sizes for 73 disks"},
+{"loc": "A Sample of Proto-planetary Disks", "quote": "Fig. [1](#fig:sizel observation) also displays the ONC (cite: Otter2021) and Ophiuchus (cite: Dasgupta2025) disks for comparison."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Lupus 1.3 mm fluxes and sizes for 73 disks", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "The high-resolution survey of (cite: Guerra2025) measured fluxes and sizes for 73 disks"}]}, "citation": "(cite: Guerra2025)"},
+{"what": {"value": "Lupus spectral indexes between 0.89 and 3.07 mm for 36 disks", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "Spectral indexes between $0.89$mm and $3.07$mm are provided for 36 disks in (cite: Tazzari2021)."}]}, "citation": "(cite: Tazzari2021)"},
+{"what": {"value": "Lupus stellar parameters (Gaia DR2 distance correction)", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "Stellar parameters are adopted from (cite: Alcala2017) with later correction using Gaia DR2 distance as in (cite: Alcala2019)."}]}, "citation": "(cite: Alcala2017); (cite: Alcala2019)"},
+{"what": {"value": "USco stellar parameters", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "We further adopt stellar parameters for these disks from (cite: Barenfeld2016) and present the scaled fluxes in Fig. [2](#fig:sizel revised)."}]}, "citation": "(cite: Barenfeld2016)"},
+{"what": {"value": "USco R68% radii from earlier surveys (B17, H20 columns of the table)", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "a re-analysis by (cite: Hendler2020) assuming a different surface density profile obtained different radii for many of these disks"}]}, "citation": "(cite: Barenfeld2017); (cite: Hendler2020)"},
+{"what": {"value": "ONC and Ophiuchus disk fluxes and sizes for comparison", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "Fig. [1](#fig:sizel observation) also displays the ONC (cite: Otter2021) and Ophiuchus (cite: Dasgupta2025) disks for comparison."}]}, "citation": "(cite: Otter2021); (cite: Dasgupta2025)"},
+{"what": {"value": "DIANA standard dust opacities", "evidence": [{"loc": "Opacity", "quote": "These are from grains with a porosity of $25\\%$ and a composition of $60\\%$ silicates and $15\\%$ amorphous carbon (in volume)."}]}, "citation": "(cite: Woitke2016)"}
+],
+"simulations_or_models_as_data": [
+{"value": "DustPy 1D dust-evolution simulations with and without a bouncing barrier, used to compare predicted flux, size and spectral index evolution with observed disks", "evidence": [
+{"loc": "DustPy Simulations", "quote": "This code models the growth of dust grains, as they move under a number of processes: Brownian motion, radial drift, vertical settling, and turbulence."},
+{"loc": "DustPy Simulations", "quote": "To implement inelastic bouncing into the code, we follow the procedure outlined in Appendix D of (cite: Dominik2024)"}
+]}
+],
+"calibration": [
+{"field": "archive_products_used_as_is", "value": "Archive image products calibrated by the ARI-L project were used", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "The publicly available image products from the ALMA archive have been calibrated by the Additional Representative Images for Legacy (ARI-L) Project (cite: ari_l)."}]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Stellar parameters for USco disks", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "We further adopt stellar parameters for these disks from (cite: Barenfeld2016) and present the scaled fluxes in Fig. [2](#fig:sizel revised)."}]}, "from_reference": "(cite: Barenfeld2016)"},
+{"what": {"value": "Two-stream continuum emission expression simplified for face-on, vertically isothermal disk", "evidence": [{"loc": "A simple Model for Dust Continuum Emission", "quote": "Here, we follow (cite: Sierra2020) where they further simplify the expression assuming the disk is faced-on and vertically isothermal"}]}, "from_reference": "(cite: Sierra2020); (cite: Miyake1993)"},
+{"what": {"value": "Inelastic bouncing implemented in DustPy following the procedure of Appendix D of Dominik et al., with a minor modification", "evidence": [{"loc": "DustPy Simulations", "quote": "To implement inelastic bouncing into the code, we follow the procedure outlined in Appendix D of (cite: Dominik2024)"}]}, "from_reference": "(cite: Dominik2024)"},
+{"what": {"value": "Fragmentation speed adopted from earlier literature", "evidence": [{"loc": "Order-of-magnitude Estimates", "quote": "We follow previous literature (cite: Blum1993; Guttler2010; Dominik2024) and adopt a constant fragmentation speed of"}]}, "from_reference": "(cite: Blum1993; Guttler2010; Dominik2024)"},
+{"what": {"value": "Passively irradiated disk temperature model for DustPy runs", "evidence": [{"loc": "DustPy Simulations", "quote": "The temperature profile follows the (cite: Chiang1997) model of a passively irradiated disk"}]}, "from_reference": "(cite: Chiang1997)"}
+],
+"unstated_but_needed": [
+"Source and exact values of the 0.88 mm (L_7) fluxes listed in the spectral-index table (not said whether taken from Barenfeld 2016/2017, Carpenter 2024 or others)",
+"Aperture shapes, sizes and centres for the 2.86 mm flux measurement, the off-field region used for the rms, and the specific ARI-L image products/MOUS",
+"How R_d and tau_3mm(R_d) were fitted to the two fluxes (optimiser, priors, error treatment) and how the model R68% uncertainties were derived beyond the inclination range",
+"Whether any flux-scale or ARI-L calibration uncertainty was added to the flux errors",
+"DustPy version, simulation radial grid, run settings and the exact bouncing-implementation modification (Appendix text is partial)",
+"Treatment of primary-beam response or free-free contamination in the 2.86 mm fluxes"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "compile comparison sample and put fluxes on a common scale",
+"method": {"value": "Collect literature fluxes, R68% radii and spectral indexes for Lupus, USco, ONC and Ophiuchus, convert to 0.88 mm, normalise to 140 pc and scale by stellar luminosity", "evidence": [{"loc": "Introduction", "quote": "In this work, we compile the continuum fluxes, dust disk sizes and spectral indexes for a sample of disks from different star forming regions"}]},
+"software": [],
+"key_parameters": [
+{"value": "1.3 mm fluxes converted to 0.88 mm assuming spectral index 2; fluxes normalised to 140 pc", "evidence": [
+{"loc": "A Sample of Proto-planetary Disks", "quote": "For disks where only $1.3$mm fluxes are available, we convert them to $0.88$mm assuming a spectral index $2$."},
+{"loc": "A Sample of Proto-planetary Disks", "quote": "All fluxes are also normalized to be at a distance of 140pc."}
+]},
+{"value": "Fluxes scaled by (L*/Lsun)^(1/4)", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "So to reduce scatter introduced by stars of different spectral types, one should scale the observed disk fluxes by $(L_*/L_\\odot)^{1/4}$."}]}
+],
+"assumptions": [
+{"value": "Passively illuminated disks, T scales as L*^0.25 and Rayleigh-Jeans emission scales as T", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "In passively illuminated disks (cite: Chiang1997), disk temperatures scale as $T\\propto L_*^{0.25}$, where $L_*$ is the central star luminosity."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "measure USco 2.86 mm disk fluxes",
+"method": {"value": "Aperture photometry on archive ARI-L images with growing apertures until the enclosed flux is constant at 3 sigma; uncertainty from off-field rms integrated over the aperture area", "evidence": [
+{"loc": "A Sample of Proto-planetary Disks", "quote": "To measure the disk flux, we apply successively larger apertures until the enclosed flux is constant at a $3\\sigma$ level."},
+{"loc": "A Sample of Proto-planetary Disks", "quote": "The uncertainty in the total flux is taken to be the rms of the flux density in the off-field, then integrated over the area enclosed by the aperture."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with AGE-PRO band 6 spectral indexes for 4 overlapping disks; largely consistent except one disk", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "Their values for the spectral indexes (between 1-1.3mm, a narrower range than ours) are largely consistent with our results"}]}
+},
+{
+"order": 3,
+"goal": "derive USco spectral indexes",
+"method": {"value": "Spectral index between 0.88 and 2.86 mm from the two fluxes", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "The resulting spectral indexes (between $0.88$ and $2.86$mm) are presented in Table [\\[tab:spectral\\]](#tab:spectral)."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "infer model disk radii from fluxes and spectral index",
+"method": {"value": "Analytic two-stream continuum model with absorption plus scattering, searching R_d and tau_3mm(R_d) that reproduce both 0.88 mm and 2.86 mm fluxes, for a truncated power-law surface density", "evidence": [{"loc": "A study of USco disk sizes", "quote": "to search for values of $R_d$ and $\\tau_{\\rm 3mm}(r=R_d)$ that best reproduce both the observed fluxes in $0.88$mm and $2.86$mm."}]},
+"software": ["OpacityTool"],
+"key_parameters": [
+{"value": "DIANA opacities with a_max = 100 micron and apow = 3.5", "evidence": [{"loc": "A study of USco disk sizes", "quote": "we adopt DIANA opacities with $a_{\\rm max} = 100\\mu$m and $\\mathrm{apow}=3.5$."}]},
+{"value": "Surface density with p = 1 and q = 5", "evidence": [{"loc": "A study of USco disk sizes", "quote": "where we restrict ourselves to $p=1$ and $q=5$."}]},
+{"value": "Inclination 60 deg, varied 33 to 81 deg for the uncertainty", "evidence": [{"loc": "A study of USco disk sizes", "quote": "The disks are assumed to be viewed at $60^\\circ$ inclination but we vary the inclination from $33^\\circ$ to $81^\\circ$ ($1-\\sigma$ away from $60^\\circ$) to obtain a fiducial uncertainty on disk sizes."}]}
+],
+"assumptions": [
+{"value": "Common distance of 140 pc", "evidence": [{"loc": "A simple Model for Dust Continuum Emission", "quote": "where adopt a common distance of $d=140$ pc."}]},
+{"value": "Grain size distribution dlnN/dlna = -3.5, minimum grain size 1 micron; DIANA porosity 25%", "evidence": [{"loc": "Opacity", "quote": "Throughout the paper, we adopt a grain size distribution with $d\\ln N/d\\ln a=-3.5$ and a fixed minimum grain size of $1\\mu m$."}]},
+{"value": "Disk temperature follows a simple power law with L* scaling", "evidence": [{"loc": "A simple Model for Dust Continuum Emission", "quote": "We assume the disk temperature follows a simple power law:"}]},
+{"value": "Disks radially smooth; model radii are not true measurements and are opacity dependent", "evidence": [
+{"loc": "A study of USco disk sizes", "quote": "Our model radii are not meant to be actual measurements."},
+{"loc": "A study of USco disk sizes", "quote": "They are somewhat opacity-dependent and should be replaced when observations with higher spatial resolutions are conducted."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Revised radii place USco disks on the same SLR as Lupus", "evidence": [{"loc": "A study of USco disk sizes", "quote": "These disks now lie on the same SLR as defined by the Lupus disks."}]}
+},
+{
+"order": 5,
+"goal": "simulate dust evolution with and without bouncing",
+"method": {"value": "1D DustPy simulations for initial disk sizes 5, 20, 50, 100 au and alpha = 1e-4 and 1e-3, with and without inelastic bouncing; opacity-weighted fluxes computed with the continuum model", "evidence": [
+{"loc": "DustPy Simulations", "quote": "and initial disk sizes $R_d=[5, 20, 50 , 100]$ au."},
+{"loc": "DustPy Simulations", "quote": "We explore turbulent parameters $\\alpha = 10^{-4}$ and $10^{-3}$."}
+]},
+"software": ["DustPy", "OpacityTool"],
+"key_parameters": [
+{"value": "Dust-to-gas 1%, all grains initially 1 micron", "evidence": [{"loc": "DustPy Simulations", "quote": "The dust to gas ratio is initially 1% everywhere, and all grains initially $1\\mu$m in size."}]},
+{"value": "Grain mass grid [1e-12, 1e6] g with 99 grids, logarithmic radial bins", "evidence": [{"loc": "DustPy Simulations", "quote": "The latter spans a range $[10^{-12},10^6]$ g and is covered by 99 grids."}]},
+{"value": "Host star 1 Lsun, grazing angle 0.05 rad (Chiang & Goldreich passive disk)", "evidence": [{"loc": "DustPy Simulations", "quote": "model of a passively irradiated disk with a host star luminosity of $1L_\\odot$ and a constant grazing angle of 0.05 radian."}]},
+{"value": "Constant fragmentation speed of 1 m/s", "evidence": [{"loc": "Order-of-magnitude Estimates", "quote": "We follow previous literature (cite: Blum1993; Guttler2010; Dominik2024) and adopt a constant fragmentation speed of"}]}
+],
+"assumptions": [
+{"value": "Smooth disks in density and temperature, no sub-structure", "evidence": [{"loc": "Modelling the Evolution of Dusty Disks", "quote": "In this work, we assume that all disks have smooth profiles in density and temperature."}]},
+{"value": "Initial Sigma_0 chosen so that even the largest disks start optically thick and on the observed SLR; inclination 60 deg", "evidence": [{"loc": "DustPy Simulations", "quote": "Our choice of $\\Sigma_0$ ensures that even the largest disks are initially optically thick and located on the observed SLR."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Simulated flux, R68% and spectral index evolution compared qualitatively with the observed SLR and low spectral indexes", "evidence": [{"loc": "No bouncing", "quote": "Both, especially the latter, are in violation of the observed disks."}]}
+},
+{
+"order": 6,
+"goal": "analytic estimates of barrier sizes and timescales",
+"method": {"value": "Order-of-magnitude estimates of turbulent collision speeds, fragmentation and bouncing barrier sizes, radial drift timescales and streaming-instability constraints", "evidence": [{"loc": "Order-of-magnitude Estimates", "quote": "When dust grains collide, the outcome is determined by their relative velocity, $\\Delta v$."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Bouncing threshold from the rolling-motion criterion of Dominik and Tielens", "evidence": [{"loc": "More on the Bouncing Barrier", "quote": "This criterion sets a maximum velocity for sticking as (cite: Dominik1997)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "DustPy", "version": "not stated", "used_for": {"value": "1D dust growth and transport simulations with a bouncing barrier", "evidence": [{"loc": "DustPy Simulations", "quote": "This code models the growth of dust grains, as they move under a number of processes: Brownian motion, radial drift, vertical settling, and turbulence."}]}},
+{"name": "OpacityTool", "version": "not stated", "used_for": {"value": "Computing DIANA standard dust opacities as a function of maximum grain size", "evidence": [{"loc": "Opacity", "quote": "to compute the DIANA standard dust opacities (cite: Woitke2016)"}]}}
+],
+"results_numeric": [
+{"quantity": "Average USco spectral index alpha_1-3 (0.88 to 2.86 mm)", "value": "2.2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "showing an average $\\alpha_{1-3} \\approx 2.2$, with some disks falling below the blackbody value to $\\alpha_{1-3} \\sim 1.6$."}]},
+{"quantity": "Lowest USco spectral indexes", "value": "about 1.6", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "showing an average $\\alpha_{1-3} \\approx 2.2$, with some disks falling below the blackbody value to $\\alpha_{1-3} \\sim 1.6$."}]},
+{"quantity": "alpha_1-3 of J16082324-1930009 (this work)", "value": "2.3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "except for disk J16082324-1930009 for which they reported $\\alpha_{1-1.3} = 3.2$, compared to our value of $\\alpha_{1-3}=2.3$."}]},
+{"quantity": "Optical depth at disk outer edge for USco model fits", "value": "typically >= 0.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "A study of USco disk sizes", "quote": "our choice of opacity yields large optical depths, typically $\\tau_{3mm}(r=R_d) \\geq 0.5$."}]},
+{"quantity": "Grain size at which bouncing stalls growth in the simulations", "value": "about 100 micron", "uncertainty": "not stated", "units": "micron", "from_step": 5, "evidence": [{"loc": "Bouncing included", "quote": "As expected, the introduction of a bouncing barrier stalls the dust growth at $\\sim 100\\mu$m (eq. [\\[eq:abounce2\\]](#eq:abounce2)), after just a few hundred orbits."}]},
+{"quantity": "Time for disks without bouncing to become substantially optically thin", "value": "within 1 Myr", "uncertainty": "not stated", "units": "Myr", "from_step": 5, "evidence": [{"loc": "No bouncing", "quote": "In any case, all disks become substantially optically thin within 1 Myrs."}]},
+{"quantity": "Dust loss time for compact (1-10 au) disks without bouncing", "value": "about 1e4 yr", "uncertainty": "not stated", "units": "yr", "from_step": 6, "evidence": [{"loc": "Conclusion", "quote": "Without bouncing, compact (1-10au) disks would have lost all its dust within $\\sim 10^4$ yrs"}]},
+{"quantity": "Stokes number of 100 micron grains at the bouncing barrier", "value": "about 1e-4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Life After Bounce?", "quote": "With a Stokes number of order $St \\sim 10^{-4}$, they experience very small radial drifts."}]}
+],
+"findings_qualitative": [
+{"value": "USco disks have spectral indexes similar to Lupus and ONC, implying many are optically thick, so the earlier Hendler radii are likely over-estimated", "evidence": [
+{"loc": "A study of USco disk sizes", "quote": "This suggests that many USco disks are optically thick, at variance with their purported departure from the SLR."},
+{"loc": "A study of USco disk sizes", "quote": "We therefore hypothesize that the (cite: Hendler2020) radii are over-estimated."}
+]},
+{"value": "With model radii, disks across all ages follow a single SLR with optically thick normalisation, except the largest disks which may become optically thinner", "evidence": [{"loc": "Final Sample and Trends", "quote": "If correct, disks across all ages follow a single SLR that has a normalization and slope broadly expected of optically thick emission"}]},
+{"value": "With bouncing, disks stay optically thick for Myr with roughly constant size and spectral index", "evidence": [{"loc": "Bouncing included", "quote": "The disks remain optically thick throughout even after a few Myrs."}]}
+],
+"claims": [
+{
+"hypothesis": "USco disks are on the same size-luminosity relation as younger regions and are optically thick",
+"experiment": "Measured 2.86 mm fluxes of 24 USco disks from archival ALMA data, derived alpha_1-3 and fit model radii to the 0.88 and 2.86 mm fluxes",
+"result": "Average alpha_1-3 about 2.2; model radii are small and place the disks on the Lupus SLR",
+"finding": "USco disks are mostly optically thick and the earlier larger radii are likely over-estimated; model radii are indicative, not true measurements",
+"support": "partially",
+"evidence": [
+{"loc": "A study of USco disk sizes", "quote": "These disks now lie on the same SLR as defined by the Lupus disks."},
+{"loc": "A study of USco disk sizes", "quote": "Our model radii are not meant to be actual measurements."}
+]
+},
+{
+"hypothesis": "Without a bouncing barrier, smooth disks cannot stay bright and optically thick for Myr",
+"experiment": "DustPy runs without bouncing for several initial radii and alpha values",
+"result": "Dust drains by drift, disks become optically thin within 1 Myr, flux falls below the SLR and spectral indexes rise well above 2",
+"finding": "The fragmentation-limited picture contradicts the observed bright, low-index disks",
+"support": "supported",
+"evidence": [{"loc": "No bouncing", "quote": "In any case, all disks become substantially optically thin within 1 Myrs."}]
+},
+{
+"hypothesis": "A bouncing barrier keeps disks bright",
+"experiment": "DustPy runs with inelastic bouncing included",
+"result": "Growth stalls near 100 micron after a few hundred orbits; disks remain optically thick for Myr with nearly constant size and spectral index",
+"finding": "The bouncing barrier keeps disks bright, especially compact ones, and is supported by the presence of compact bright disks in old USco",
+"support": "supported",
+"evidence": [
+{"loc": "Bouncing included", "quote": "The disks remain optically thick throughout even after a few Myrs."},
+{"loc": "Bouncing included", "quote": "In other words, the bouncing barrier keeps the disks bright."}
+]
+},
+{
+"hypothesis": "Planetesimal formation by streaming instability is impeded when grains are bounce-limited",
+"experiment": "Analytic estimate of the turbulence level allowed for midplane settling of 100 micron grains",
+"result": "Required alpha of order 1e-8 for St about 1e-4",
+"finding": "Streaming instability is unlikely to be effective with the bouncing barrier; this is a brief speculation",
+"support": "partially",
+"evidence": [{"loc": "Life After Bounce?", "quote": "This stringent condition leads us to suggest that the streaming instability is unlikely to be effective in the presence of the bouncing barrier."}]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "No published spectral indexes existed for USco disks and the region offers old, compact disks", "evidence": [
+{"loc": "A Sample of Proto-planetary Disks", "quote": "We find no published measurements of spectral indexes for USco disks."},
+{"loc": "Introduction", "quote": "To resolve it, we analyze archival ALMA observations at $2.86$mm"}
+]},
+{"field": "why_this_method", "value": "Scale fluxes by stellar luminosity to reduce scatter from different stellar types", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "So to reduce scatter introduced by stars of different spectral types, one should scale the observed disk fluxes by $(L_*/L_\\odot)^{1/4}$."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Optically thin disks dominated by large grains (a_max >= 1 mm, top-heavy size distribution) as an explanation of the low spectral index; rejected because such disks drain quickly and conflict with small grains seen in scattered light", "evidence": [
+{"loc": "A study of USco disk sizes", "quote": "However, we suggest the latter explanation may be incorrect."},
+{"loc": "A study of USco disk sizes", "quote": "Third, a very top-heavy size distribution seems hard to square with the presence of abundant small grains one observes in scattered light."}
+]},
+{"value": "Sub-structure with pressure maxima as the alternative way to keep disks bright; deferred to a later study", "evidence": [{"loc": "Previous Works on Disk SLR", "quote": "To fully support this hypothesis, we will return to consider gapped disks in a subsequent study."}]}
+],
+"limitations_admitted": [
+{"value": "Model radii are constraints from spectral indexes, not measurements, and depend on the adopted opacity", "evidence": [{"loc": "A study of USco disk sizes", "quote": "They are somewhat opacity-dependent and should be replaced when observations with higher spatial resolutions are conducted."}]},
+{"value": "Models assume smooth disks without sub-structures", "evidence": [{"loc": "Modelling the Evolution of Dusty Disks", "quote": "In this work, we assume that all disks have smooth profiles in density and temperature. This may be problematic."}]},
+{"value": "USco disks are only marginally resolved at low resolution, so radii have margins for error", "evidence": [{"loc": "A study of USco disk sizes", "quote": "There are margins for error in such a situation."}]}
+],
+"referee_caveats_inferred": [
+"Model radii come from two fluxes plus assumed opacity (a_max = 100 micron), inclination 60 deg and temperature law, so the SLR placement of USco disks is partly circular with the bouncing hypothesis",
+"Low spectral indexes can also come from scattering, free-free contamination or flux errors; no free-free or flux-scale uncertainty treatment is described",
+"The 100 micron bouncing size depends on the assumed porosity, monomer size and composition; no fit to data was done, only qualitative comparison",
+"The comparison between observation and DustPy models is qualitative and for smooth disks only"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Archive image products for 2015.1.00819.S are publicly available", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "The publicly available image products from the ALMA archive have been calibrated by the Additional Representative Images for Legacy (ARI-L) Project (cite: ari_l)."}]},
+{"field": "products_in_archive", "value": "ARI-L image products used for flux measurement", "evidence": [{"loc": "A Sample of Proto-planetary Disks", "quote": "The publicly available image products from the ALMA archive have been calibrated by the Additional Representative Images for Legacy (ARI-L) Project (cite: ari_l)."}]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Aperture definitions and image products for the 2.86 mm fluxes",
+"Source of the 0.88 mm fluxes in the table",
+"Radius-fit procedure and errors",
+"DustPy version and full bouncing-implementation details"
+],
+"estimated_data_volume_inferred": "Small (about 24 archive image products, likely under 1 GB); no visibility reprocessing needed",
+"score_inferred": 3,
+"score_reason": "Public archive image products and a clear model with many parameters, but aperture photometry details, 0.88 mm flux sources, the radius-fit method and DustPy setup details are not fully given",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are public, but the recipe is incomplete (flux sources, fit method) and the main conclusions rest on qualitative model comparison",
+"methods_papers": [
+{"citation": "(cite: Sierra2020)", "why": "Analytic scattering continuum model followed for disk intensity"},
+{"citation": "(cite: Woitke2016)", "why": "DIANA standard dust opacities"},
+{"citation": "(cite: Dominik2024)", "why": "Procedure for implementing inelastic bouncing in the dust code"},
+{"citation": "(cite: dustpy)", "why": "Dust evolution code used"}
+],
+"companion_papers": [
+{"citation": "(cite: Guerra2025)", "why": "Lupus 1.3 mm fluxes and sizes"},
+{"citation": "(cite: Tazzari2021)", "why": "Lupus spectral indexes"},
+{"citation": "(cite: Hendler2020)", "why": "USco R68% radii compared with"},
+{"citation": "(cite: Barenfeld2017)", "why": "USco radii and stellar-parameter sources"}
+],
+"related_projects_or_surveys": ["ARI-L (Additional Representative Images for Legacy)", "AGE-PRO", "2015.1.00819.S (PI: Ricci, Luca)"]
+}

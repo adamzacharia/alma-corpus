@@ -1,0 +1,206 @@
+{
+ "bibcode": "2024ApJ...970...56P",
+ "title": "Radio Emission from the Magnetically Active M Dwarf UV Ceti from 1 to 105 GHz",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad4356",
+ "arxiv_id": "2406.17280",
+ "fields": [
+  "stellar_physics"
+ ],
+ "question": "What are the radio emission components (flares, auroral ECME, persistent) of UV Ceti across 1–105 GHz, and which emission mechanisms explain them given its strong large-scale field?",
+ "alma_project_codes": [
+  "2012.1.00993.S"
+ ],
+ "data": {
+  "bands": "VLA L, S, C, Ku, K, Ka; ALMA band 3",
+  "arrays": "not stated",
+  "angular_resolution": "ALMA beam 1.3x0.5 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Orbital parameters and masses of the binary; stellar radius 0.159±0.006 Rsun",
+    "evidence": [
+     {
+      "loc": "2.5 Astrometry",
+      "quote": "using masses and orbital parameters from (cite: Kervella2016) as input to the ephemeris calculator tool"
+     }
+    ]
+   },
+   "citation": "(cite: Kervella2016)"
+  },
+  {
+   "what": {
+    "value": "Eight earlier VLA spectra for comparison",
+    "evidence": [
+     {
+      "loc": "3.1 Spectrum",
+      "quote": "Figure [3](#fig:flux) also shows eight other VLA observations, from (cite: gudelbenz1996radiospectra) and (cite: Gudel1989)."
+     }
+    ]
+   },
+   "citation": "(cite: gudelbenz1996radiospectra); (cite: Gudel1989)"
+  },
+  {
+   "what": {
+    "value": "Rotation period 5.45 hours",
+    "evidence": [
+     {
+      "loc": "3.1 Spectrum",
+      "quote": "Since UV Ceti rotates with a period of 5.45 hours (cite: Barnes2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Barnes2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and measure flux densities",
+   "method": "tclean images; Gaussian fit and peak pixel flux with off-source RMS",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs 0 weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Build light curves",
+   "method": "Shift phase center with fixvis, subtract other sources' model, average visibilities over channels, spws and baselines; ALMA light curve from five per-scan images",
+   "software": [
+    "CASA fixvis"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Astrometric identification of the emitting binary component",
+   "method": "Gaussian position fits compared to Gaia-based predicted positions of UV and BL Ceti",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Spectral indices and polarization",
+   "method": "Image sidebands separately; power law fit; uncertainties by Monte Carlo propagation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Brightness temperatures and emission mechanism",
+   "method": "Brightness temperature assuming source size equal to stellar disk; compare cyclotron harmonic field strengths with dipole field",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Emitting region equals stellar disk; dipole field 2 kG at pole; radius 0.159 Rsun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA millimeter spectral index",
+   "value": "-0.81",
+   "uncertainty": "0.36",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Spectrum",
+     "quote": "The millimeter emission has a spectral index $-0.81\\pm0.36$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ka band spectral index",
+   "value": "0.63",
+   "uncertainty": "0.27",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Spectrum",
+     "quote": "with a spectral index of $0.63 \\pm 0.27$"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA brightening during observation",
+   "value": "36%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Temporal Variability: ALMA",
+     "quote": "UV Ceti gradually brightened by 36% during the ALMA observation"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA position offset from UV Ceti",
+   "value": "0.09",
+   "uncertainty": "0.41",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.5 Astrometry",
+     "quote": "$0.09\\pm0.41$ arcseconds from the expected position of UV Ceti"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimeter brightness temperature (disk-size source)",
+   "value": "6.5e5",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.2 Millimeter emission",
+     "quote": "the flux density implies a brightness temperature of $6.5\\times 10^5$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "K band spectral index Jan 8 flare",
+   "value": "0.56",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Temporal Variability: VLA",
+     "quote": "the K band emission from UV Ceti has a spectral index $0.56\\pm0.17$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used",
+  "tclean cell size, image size, niter, thresholds and masks",
+  "ALMA field and spectral-window selection and any channel averaging",
+  "Method for flux density at each ALMA scan, and Monte Carlo details for the spectral index",
+  "Stellar disk size and distance used for the brightness temperatures"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "tclean parameters beyond weighting",
+  "Flux extraction details for ALMA per-scan images"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public archival data and simple workflow, but imaging parameters and CASA version are missing.",
+ "rediscovery_reason": "Public data, stated calibrators and weighting, numeric results such as the ALMA spectral index and 36% brightening.",
+ "source_card": "cards/2024ApJ...970...56P/sonnet/card.md"
+}

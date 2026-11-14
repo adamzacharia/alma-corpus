@@ -1,0 +1,244 @@
+{
+ "bibcode": "2019MNRAS.483.4586F",
+ "title": "Cold molecular outflows in the local Universe and their feedback effect on galaxies",
+ "year": 2019,
+ "doi": "10.1093/mnras/sty3449",
+ "arxiv_id": "1805.05352",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "How do molecular outflow properties in local star-forming and AGN galaxies scale with SFR, AGN luminosity and stellar mass, and can outflows clear galaxies of gas?",
+ "alma_project_codes": [
+  "2013.1.00659.S",
+  "2012.1.00377.S",
+  "2015.1.00102.S",
+  "2015.1.00263.S",
+  "2013.1.00379.S",
+  "2016.1.01279.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "Most archival observations >0.3 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular outflow properties for 31 literature galaxies (CO)",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "We have compiled a total of 31 galaxies with published molecular outflows (five of which are upper limits)."
+     }
+    ]
+   },
+   "citation": "Cicone et al. (2014) and others, see Table 2"
+  },
+  {
+   "what": {
+    "value": "Ionized outflow masses/radii",
+    "evidence": [
+     {
+      "loc": "2.5 Ionized Outflows",
+      "quote": "Rupke & Veilleux (2013) provide ionized gas masses for four galaxies"
+     }
+    ]
+   },
+   "citation": "Rupke & Veilleux (2013); Greene et al. (2012); Arribas et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Neutral outflows from NaI D and [CII]",
+    "evidence": [
+     {
+      "loc": "2.6 Neutral Outflows from Na I D",
+      "quote": "We crossmatch our sample with Rupke & Veilleux (2013) and Cazzoli et al. (2016)"
+     }
+    ]
+   },
+   "citation": "Rupke & Veilleux (2013); Cazzoli et al. (2016); Janssen et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "X-ray AGN luminosities and mid-IR AGN fractions",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "AGN luminosity/X-ray luminosity: A: Cicone et al. (2014) and references therein"
+     }
+    ]
+   },
+   "citation": "Table 1 references; Veilleux et al. (2009); Nardini et al. (2009, 2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Detect outflow signature in integrated CO spectrum",
+   "method": "Fit single vs double Gaussian; two Gaussians preferred if reduced chi2 drops by >=10 per cent, plus visual check of narrow/broad components",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "sigma_narrow <~100 km/s; sigma_broad ~100 to several 100 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive outflow mass, velocity, radius, rate",
+   "method": "Broad-component flux to L'CO then M = alpha_CO L'CO; v_outf = FWHM_broad/2 + |v_broad - v_narrow|; radius = deconvolved major-axis FWHM/2 of 2D Gaussian fit to wing map; Mdot = v M / r",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 0.8 Msun/(K km/s pc^2); CO thermalised and optically thick so L'CO(3-2)=L'CO(2-1)=L'CO(1-0)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Homogenise host galaxy properties",
+   "method": "AGN luminosity from X-ray via Marconi+04 bolometric correction, or [OIII], or mid-IR alpha_bol; SFR from LIR (Kennicutt & Evans 2012, AGN-corrected); stellar masses from K/J/H-band with colour M/L (Bell+03); gas masses from CO(1-0) with alpha_CO 0.8/1.2/4.4",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO: 0.8 ULIRGs, 1.2 LIRGs, 4.4 others"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit scaling relations",
+   "method": "Linear regression with linmix including x/y errors and upper limits; multi-parameter fit of Mdot vs SFR, L_AGN, M* minimising dispersion",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Candidate fossil outflows excluded from the multi-parameter fit"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Escape fraction from galaxy and halo",
+   "method": "McIntosh+05 size-mass relation, Hernquist profile escape velocity; NFW halo with Moster+13 and Duffy+08; fraction of broad wing above v_esc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Ballistic motions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SF galaxies fit: log Mdot vs log SFR slope and intercept",
+   "value": "slope 1.19, intercept -0.59",
+   "uncertainty": "slope +0.16/-0.16; intercept +0.28/-0.28",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "= 1.19 [+0] −0 [.] . [16] 16 [log(SFR/(M] [⊙] [yr] [−][1] [))] [–] [0.59] [+0] −0 [.] . [28] 28"
+    }
+   ]
+  },
+  {
+   "quantity": "Multi-parameter fit exponent on stellar mass (molecular)",
+   "value": "-0.41",
+   "uncertainty": "0.25 (1 sigma)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3",
+     "quote": "(x,α,β,y) = (0.12,0.19,0.25,0.25)"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined SFR/AGN power-law index (molecular)",
+   "value": "1.14",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Equation 5",
+     "quote": "log( _M_ [�] outf (H 2 )/(M ⊙ yr [−][1] )) = 1.14 log 0.52"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic power / L_AGN range",
+   "value": "0.1 to 5",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "spanning from 0.1 to 5 per cent of _L_ AGN"
+    }
+   ]
+  },
+  {
+   "quantity": "Momentum rate / (L_AGN/c)",
+   "value": "1 to 30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the momentum rate ranges from 1 to 30 times _L_ AGN / _c_"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape fraction of outflowing gas",
+   "value": "<5",
+   "uncertainty": "about 50 per cent",
+   "units": "per cent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Conclusions",
+     "quote": "the fraction of outflowing gas with a high enough velocity to escape the galaxy and the dark matter halo is less than 5 per cent"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdot_outf(H2) of IRAS 20100-4156",
+   "value": "1457",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "IRAS 20100-4156 9.31 663 456 1457 6.78"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Per-galaxy mapping of the eight ALMA project codes to targets",
+  "Imaging parameters (weighting, robust, cell, image size, beam, rms) for the cubes",
+  "Line-free channels and continuum subtraction",
+  "Velocity ranges used to integrate wing maps",
+  "Fitting method/software for Gaussian decomposition and 2D Gaussian",
+  "How upper limits for three non-detections were derived",
+  "Monte Carlo details for escape fraction",
+  "Whether pipeline or manual calibration scripts were used"
+ ],
+ "missing_for_reproduction": [
+  "Per-source ALMA project assignment and imaging parameters",
+  "Velocity windows for wing maps and Gaussian fit initialisation",
+  "Exact priors/settings of linmix and multi-parameter minimisation"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data and clear formulas, but imaging details and per-source mapping missing; numbers largely in tables.",
+ "rediscovery_reason": "Public archival data, stated outflow formulas and tabulated numeric results for the ALMA subsample.",
+ "source_card": "cards/2019MNRAS.483.4586F/sonnet/card.md"
+}

@@ -1,0 +1,2712 @@
+# Evidence pack (workflow): Reproducing a published ALMA analysis (`paper-reproduction`)
+
+Scope: what a reproduction needs that the paper does not say: inherited conventions, literature inputs, archive products, calibration provenance, unstated settings, data volume, answer keys and tolerances
+
+Built from 3225 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (quoted strings are verbatim from the paper). Years 2012-2026.
+Aggregates come from card fields the technique packs do not show. Lines marked (card) are the card author's inference about the paper, not the paper's own words.
+
+## Aggregates over all member papers
+
+### Science fields (first field per paper)
+- high_z_galaxies: 645
+- star_formation: 633
+- protoplanetary_disks: 566
+- nearby_galaxies: 496
+- agn_and_quasars: 198
+- evolved_stars: 149
+- astrochemistry: 139
+- debris_disks: 87
+- milky_way_ism: 72
+- solar_system: 56
+- stellar_physics: 49
+- galaxy_clusters_and_sz: 38
+- transients: 36
+- sun: 30
+- instrumentation: 16
+- cosmology: 8
+- exoplanets: 4
+- other: 3
+
+### Reproducibility score the card inferred (1 = not reproducible, 5 = straightforward)
+- 1: 5
+- 2: 230
+- 3: 2014
+- 4: 197
+- 40: 1
+- 45: 7
+- 5: 212
+- 50: 2
+- 55: 24
+- 6: 131
+- 60: 12
+- 62: 2
+- 65: 56
+- 68: 7
+- 7: 54
+- 70: 7
+- 72: 17
+- 75: 68
+- 78: 67
+- 8: 22
+- 80: 19
+- 82: 39
+- 85: 17
+- 88: 1
+- 9: 11
+- 90: 2
+- 95: 1
+
+### What a reproduction would be missing (normalised phrasing, count)
+- imaging parameters: 156
+- casa version: 105
+- line-free channels: 101
+- clean parameters: 67
+- casa version and imaging parameters: 60
+- line-free channel selection: 56
+- clean parameters and masks: 54
+- line-free channel ranges: 44
+- imaging parameters beyond robust: 34
+- self-calibration parameters: 34
+- self-cal parameters: 33
+- casa version and clean parameters: 32
+- self-calibration details: 26
+- imaging parameters and casa version: 26
+- self-cal details: 21
+- casa version and calibration details: 16
+- alma imaging parameters: 15
+- mcmc priors: 14
+- mcmc settings: 12
+- calibration details: 12
+- aperture definitions: 12
+- region definitions: 12
+- calibration and imaging parameters: 11
+- casa version and calibration scripts: 11
+- software versions: 11
+- casa/pipeline versions: 11
+- imaging parameters (cell, size, masks): 11
+- alma processing details: 10
+- casa version and tclean parameters: 10
+- fitting code: 9
+- stacking details: 9
+- clean parameters and line-free channels: 9
+- imaging parameters (cell, size, masks, thresholds): 9
+- tclean parameters: 9
+- tclean imaging parameters: 9
+- model code: 8
+- alma reduction details: 8
+- calibration/imaging parameters: 7
+- calibration and imaging details: 7
+- magphys configuration: 7
+- continuum subtraction details: 7
+- self-cal solints: 7
+- no code released: 7
+- imaging parameters and masks: 6
+- casa version and scripts: 6
+- detailed imaging parameters: 6
+- line-free channels and clean parameters: 6
+- shape model files: 6
+- mcmc configuration: 6
+- sed fit details: 6
+- model code not released: 6
+- line-free channel selections: 6
+- clean masks and thresholds: 6
+- casa version and exact imaging parameters: 6
+- analysis code: 6
+- pipeline version: 6
+- no analysis code released: 6
+- fit procedure details: 5
+- calibrator details: 5
+- clean settings: 5
+- line-free channel list: 5
+- flux extraction method: 5
+- exact imaging parameters: 5
+- line-free channel choices: 5
+- 3dbarolo configuration: 5
+- alma calibration/imaging parameters: 5
+- mcmc settings and priors: 5
+- casa imaging parameters: 5
+- cloudy input files: 5
+- line-free channel lists: 5
+- cleaning parameters: 5
+- full clean parameters: 5
+- line-free channels for continuum subtraction: 5
+- self-calibration solints: 5
+- imaging parameters (cell, size, mask, threshold): 5
+- polarization calibration details: 5
+- feathering details: 5
+- mcmc priors and settings: 5
+- casa and pipeline versions: 5
+- source coordinates: 4
+
+### Settings needed but not stated (count)
+- casa version: 164
+- self-calibration solution intervals: 78
+- continuum subtraction and line-free channels: 70
+- line-free channels and continuum subtraction method: 61
+- flux scale uncertainty: 54
+- image size and cell size: 54
+- self-calibration solution intervals and number of iterations: 53
+- casa version and pipeline version: 51
+- line-free channels used for continuum subtraction: 48
+- line-free channels used for continuum: 46
+- line-free channels for continuum subtraction: 45
+- flux calibrator and flux scale uncertainty: 43
+- continuum subtraction method and line-free channels: 40
+- primary beam correction details: 33
+- self-calibration solution intervals and number of rounds: 23
+- line-free channel ranges: 23
+- line-free channel ranges for continuum subtraction: 22
+- flux calibration uncertainty: 22
+- line-free channels used for uvcontsub: 21
+- line-free channel ranges for continuum: 21
+- flux calibrators and flux scale uncertainty: 21
+- source coordinates: 19
+- line-free channels for uvcontsub: 19
+- line-free channel ranges for uvcontsub: 19
+- self-calibration solution intervals and reference antenna: 18
+- primary-beam correction details: 18
+- cell size and image size: 16
+- flux calibrator and flux-scale uncertainty: 16
+- cell and image size: 15
+- casa/pipeline version: 15
+- clean threshold, masks, cell and image size: 15
+- casa version and whether the pipeline or manual calibration was used: 15
+- pipeline version: 15
+- casa version used for calibration and imaging: 14
+- line-free channels and continuum subtraction: 14
+- primary beam correction: 12
+- casa version and calibration procedure: 12
+- casa version used: 12
+- self-calibration solution interval: 12
+- line-free channel selection: 12
+- image size, cell size, clean threshold and masks: 12
+- self-calibration usage: 12
+- clean threshold, mask, cell and image size: 12
+- whether self-calibration was applied: 12
+- cell size, image size, clean threshold and masks: 11
+- casa version and calibration details: 11
+- line-free channel selection for continuum: 11
+- uvmodelfit starting parameters: 11
+- continuum-subtraction and line-free channels: 11
+- self-calibration, if any: 11
+- self-calibration status: 10
+- clean mask, threshold, cell and image size: 10
+- moment map clipping thresholds: 10
+- coordinates of targets: 10
+- moment-map clipping thresholds: 10
+- casa version and whether pipeline or manual calibration: 10
+- line-free channels for continuum: 9
+- line-free channels and continuum subtraction details: 9
+- target coordinates: 9
+- self-calibration solution intervals and reference: 8
+- briggs robust value: 8
+- clean threshold, masks and iterations: 8
+- clean threshold, masks, image size and cell size: 8
+- casa version and pipeline version used for calibration and imaging: 8
+- casa version and alma pipeline version used for calibration and imaging: 8
+- clean threshold, cell and image size: 7
+- line-free channel ranges used for continuum: 7
+- pipeline vs manual calibration: 7
+- flux calibrators and flux-scale uncertainty: 7
+- whether primary beam correction was applied: 7
+- line-free channel ranges used for uvcontsub: 7
+- casa and pipeline versions: 7
+- casa version and pipeline/manual calibration details: 6
+- casa version and calibrators: 6
+- flux calibration scale uncertainty: 6
+- line-free channel ranges for continuum and uvcontsub: 6
+- casa version and whether the pipeline or manual scripts were used: 6
+- clean masks and thresholds: 6
+- flux, bandpass and phase calibrators: 6
+- phase center coordinates: 6
+
+### Conventions inherited from earlier papers (bibcode: what (from which reference))
+- 2012A&A...538A..44D: Full analysis of GRB 110715A afterglow deferred to companion paper (from Sanchez-Ramirez et al. (2012))
+- 2012A&A...538L...9H: SINFONI reduction of the additional fields done similarly to SGMC 2 in earlier work (from H11 (cite: herrera11))
+- 2012A&A...538L...9H: Xco = 3e20 same as previous study (from (cite: wilson00))
+- 2012A&A...542L..34N: Cloudy model calculation details (from Nagao et al. 2011 (cite: 2011A&A...526A.149N))
+- 2012A&A...542L..34N: Cloud stopping depth A_V=100 mag (from Abel et al. 2005 (cite: 2005ApJS..161...65A))
+- 2012A&A...544L...7P: Two-slab infall line profile model (from Myers et al. 1996 (cite: Myers_1996-Line_Profile_Model_Infa…)
+- 2012A&A...544L...7P: Beam filling fraction Phi = 0.3 (from Di Francesco et al. 2001 (cite: DiFrancesco_2001-NGC1333IRA…)
+- 2012ApJ...749..162O: Disk modeling method and chi2 visibility fitting (from (cite: Qi08))
+- 2012ApJ...749..162O: Disk physical structure (from (cite: Qi04; Qi06))
+- 2012ApJ...752L..30W: L_FIR for North and South adopted from Iono et al. fits with Yun & Carilli templates (from Iono et al. (2006))
+- 2012ApJ...752L..30W: Line luminosity definition (from Solomon & Vanden Bout 2005)
+- 2012ApJ...757..129R: Calibration steps and reference datasets from the ALMA SV team (from ALMA science verification team scripts)
+- 2012ApJ...757..129R: Fiducial model parameterization motivated by previous TW Hya CO analyses (from (cite: qi04; qi06; hughes08; hughes11; andrews12))
+- 2012ApJ...757..129R: Dust grain properties for scattered-light model (from (cite: andrews12))
+- 2012ApJ...757L...1H: Further details of Cycle 0 continuum data deferred to a forthcoming paper (from T. Hirota et al., in preparation)
+- 2012ApJ...760L..25E: Calibration and imaging steps similar to the CASA guide for Antennae CO(3-2) SV data (from CASA guide AntennaeBand7)
+- 2012ApJ...760L..25E: SFR surface density formula from FUV and 24 micron (from (cite: 2008AJ....136.2782L))
+- 2012ApJ...760L..25E: I(2-1)/I(1-0)=1.0 and X=3.0e20 cm^-2 (K km/s)^-1 (from (cite: 2012ApJ...750..136W))
+- 2012ApJ...760L..25E: virial geometric factor alpha_g = 5/3 (from (cite: 2012ApJ...750..136W))
+- 2012ApJ...761L..20R: Unresolved-disk photometry modeling procedure, adapted for BDs (from (cite: Testi:2001))
+- 2012ApJ...761L..20R: Two-layer flared disk model (from (cite: Chiang:1997; Dullemond:2001))
+- 2012ApJ...761L..20R: Sub-stellar photospheric properties and dust model described in Figure 4 caption (not in text) (from Figure 4 caption)
+- 2012ApJ...761L..32W: SFR conversion SFR = 1.7e-10 L_IR/Lsun (from (cite: kennicutt98))
+- 2012ApJ...761L..32W: Main-sequence relation SFR = 200 M11^0.9 for z~2 (from (cite: daddi07))
+- 2013A&A...549L...3P: SMA HDO observation details (from (cite: jorgensen11))
+- 2013A&A...549L...3P: Tex of 300 K tested, from earlier work (from (cite: jorgensen12))
+- 2013A&A...549L...6K: Calibration and self-calibration following CASA guide (from CASA guides website (casaguides.nrao.edu))
+- 2013A&A...549L...6K: JCMT spectrum similar to earlier published one (from (cite: stark04))
+- 2013A&A...554A..78P: PdBI continuum images and H2 column densities (from (cite: Favre2011a))
+- 2013A&A...555A..73K: Largest angular scale formula from the ALMA Cycle 1 Technical Handbook Sec 6.2 (from ALMA Cycle 1 Technical Handbook)
+- 2013A&A...555A..73K: HCO+ J=4-3 and disk gas results presented elsewhere (from Mathews et al. (Submitted) (cite: HDDCOp))
+- 2013A&A...555A..73K: CO abundance 1e-4 and mean molecular mass 2.8 (from Kauffmann08)
+- 2013A&A...555A.112P: Herschel data reduction with ROMAGAL map making (from (cite: traficante2011))
+- 2013A&A...555A.112P: Dust opacity law kappa=0.1(lambda/0.3mm)^-beta cm2/g with beta=2 (from (cite: hildebrand1983; beckwith1990))
+- 2013A&A...556L...1V: 12CO(3-2) observations and results from same dataset (from Maercker et al. 2012 (M+12))
+- 2013A&A...556L...1V: Radiative transfer code (from (cite: Schoeier01))
+- 2013A&A...556L...1V: Conversion of intensity ratio to 12C/13C (from (cite: Schoeier00))
+- 2013A&A...557A.132M: Physical disk model structure and parameters adopted from Q11 (from Qi et al. 2011 (cite: Qi:2011))
+- 2013A&A...557A.132M: 12C/13C = 75 for H13CO+/HCO+ abundance ratio (from (cite: Frerking:1982))
+- 2013A&A...557A.132M: Surface density profile form (from (cite: 2009ApJ...700.1502A))
+- 2013A&A...557A.132M: Flaring index psi = 0.066 (from (cite: Tilling:2012))
+- 2013A&A...557A.133D: Initial MCFOST disk model and parameters (from Tilling et al. 2012 (cite: Til12))
+- 2013A&A...557A.133D: MCFOST code description (from Pinte et al. 2006, 2009 (cite: Pin06; Pin09))
+- 2013A&A...557A.133D: Tapered-edge surface density prescription (from Andrews et al. 2009 (cite: And09))
+- 2013A&A...557L..11B: Disk model (and parameters) adopted from Paper I (from Paper I (cite: bujal13))
+- 2013A&A...557L..11B: Modeling code similar to earlier code, LTE excitation (from Bujarrabal et al. (2005) (cite: bujetal05))
+- 2013A&A...558A.123M: Details of the ALMA project and absorption-line data (from Muller et al., in preparation)
+- 2013A&A...558A.123M: uvmultifit visibility fitting software (from Martí-Vidal et al., in preparation)
+- 2013A&A...558A.123M: Jet model implementation (from (cite: mar80))
+- 2013A&A...558A.124C: Adopted H-alpha rotation curve and mass model used as the regular velocity field (from Buta etal. 2001)
+- 2013A&A...558A.124C: Dust absorption cross section (Draine & Lee) as in Dumke et al. for N(H2) from continuum (from Draine & Lee (1984); Dumke etal. (1997))
+- 2013A&A...558A.124C: Jet power from radio luminosity formula (from Birzan etal. 2008)
+- 2013A&A...559A..29C: PV slit extraction following CO analysis (from (cite: salome:2012))
+- 2013A&A...559A..29C: Kinematical disk model (from (cite: gnerucci:2011a))
+- 2013A&A...559A..29C: Spectroastrometric mass calibration (from (cite: gnerucci:2011))
+- 2013A&A...559A..29C: BH virial calibration (from Marconi et al. 2013, in preparation)
+- 2013A&A...560A.103M: UV-space PV diagram method (channel-by-channel visibility fitting) (from (cite: lommen2008; jorgensen2009))
+- 2013A&A...560A.103M: centrifugal radius vs time equation (from (cite: belloche2013))
+- 2013ApJ...762L..21M: Parametric modeling approach for resolved mm debris disk emission (from Wilner et al. 2011, 2012 (cite: wil11; wil12))
+- 2013ApJ...762L..21M: MCMC affine-invariant ensemble sampler, parallel implementation (from Goodman & Weare 2010; Foreman-Mackey et al. 2012)
+- 2013ApJ...763..120C: Flux scale and observation details (from Wagg et al. 2012)
+- 2013ApJ...763..120C: Outflow rate method (from Maiolino et al. (2012))
+- 2013ApJ...763..120C: Optical-radio astrometry alignment (from Carilli et al. (2002))
+- 2013ApJ...764L..14Z: Modified two-layer infall model as described by Pineda et al. (2012) (from Pineda et al. (2012) (cite: Pin2012))
+- 2013ApJ...765L..14Q: Disk physical model and parameters (from Qi et al. 2011 (cite: Qi11))
+- 2013ApJ...765L..14Q: Calibration and imaging scripts (from ALMA SV team)
+- 2013ApJ...765L..14Q: Vertical layer assumption for molecule (from Qi08; Oberg12)
+- 2013ApJ...767...88W: Greybody SED fit (beta=2, optically thin/thick transition 100 um, exclude lambda_rest<50 um) (from (cite: greve12))
+- 2013ApJ...767...88W: LABOCA observing strategy and data processing (from (cite: greve12))
+- 2013ApJ...767...88W: Selection details, flux de-boosting (from (cite: vieira10; crawford10))
+- 2013ApJ...767..132H: LABOCA data analysis (from (cite: greve12))
+- 2013ApJ...767..132H: Herschel data reduction (from (cite: weiss12))
+- 2013ApJ...767..132H: Greybody SED model for luminosities (from (cite: greve12))
+- 2013ApJ...768...91H: Completeness, spurious fraction and reliability of source extraction (from Karim et al. 2012 (cite: Karim_aless))
+- 2013ApJ...768...91H: Error estimation for elliptical Gaussian fits in correlated noise (from Condon 1997 (cite: 1997PASP..109..166C))
+- 2013ApJ...768L..38H: Relative positional error formula (beam/(2×S/N)) (from (cite: hagi03b))
+- 2013ApJ...768L..38H: Positional accuracy ~10% of beam from Cycle 0 capabilities (from ALMA Cycle 0 Capabilities)
+- 2013ApJ...769L..27H: Flux scaling to 1.3 mm uses modified blackbody with beta=1.5, T=35 K at z=2.5 (from kova06; copp08; chap05; yun12)
+- 2013ApJ...770...13W: Greybody SED (Td=47 K, beta=1.6) adopted for comparison with earlier work (from Wang et al. 2008; 2011a, Omont et al. 2013)
+- 2013ApJ...770...13W: Bolometric correction of 4.4 from 1450 Å luminosity (from Richards et al. 2006)
+- 2013ApJ...770...13W: SFR from L_FIR with Kennicutt relation and Salpeter IMF (from Kennicutt 1998; Salpeter 1955)
+- 2013ApJ...770..142N: HIFI survey observing strategy and deconvolution procedure (from (cite: bergin10))
+- 2013ApJ...770..142N: Absorption line profile equation (from (cite: melnick10))
+- 2013ApJ...770L..27F: All ALMA data specifications described elsewhere (from (cite: i13) Izumi et al. 2013)
+- 2013ApJ...770L..27F: Fourier decomposition prescription for velocity field (from vdVF)
+- 2013ApJ...770L..27F: Inflow rate prescription (from vdVF; (cite: npf11))
+- 2013ApJ...772..149C: Heating rate formulation and loop-length distribution N(L) ∝ L^-ε (from (cite: Cr09))
+- 2013ApJ...772..149C: Loop energy balance scaling laws (from (cite: Ma10))
+- 2013ApJ...772..149C: Mean atomic weight parameterization and B* equipartition constant (from (cite: CS11))
+- 2013ApJ...773...44W: Sources selected from earlier bright mm continuum and CO (6-5) detections (from (cite: petric03; priddey03; priddey08; wang08; wang10; wang…)
+- 2013ApJ...773...44W: CO excitation ladder like J1148+5251 to get CO(1-0) (from (cite: riechers09))
+- 2013ApJ...773...44W: Bolometric correction Lbol=4.2 L1450 (from (cite: runnoe12a; runnoe12b))
+- 2013ApJ...773...44W: Bayesian line search algorithm (from Lentati et al. 2012)
+- 2013ApJ...774...16R: Calibration and imaging scripts/reference maps from ALMA SV team (from ALMA SV team)
+- 2013ApJ...774...16R: Disk density/temperature formalism (from (cite: andrews12))
+- 2013ApJ...774...16R: Temperature parameterization modified from Dartois et al. (from (cite: dartois03))
+- 2013ApJ...774...16R: Hanning smoothing to mimic ALMA pipeline (from (cite: lundgren12))
+- 2013ApJ...774...39A: Envelope mass method from continuum (from (cite: Schnee+10); (cite: Dunham+12))
+- 2013ApJ...774...39A: Outflow mass/momentum/energy method and CO abundance (from (cite: Bourke+97); abundance as in (cite: Olberg+92))
+- 2013ApJ...774...39A: Wide-angle wind analytic model (from (cite: Lee+00))
+- 2013ApJ...774...73I: Column density via LTE method with common assumptions (from (cite: rohlfs))
+- 2013ApJ...774...73I: Clump radius convention r=1.91 sigma_x (from (cite: srby); (cite: bolatto_araa))
+- 2013ApJ...774...73I: Local-maxima selection criteria of cprops in hybrid decomposition (from (cite: cprops_pasp))
+- 2013ApJ...774...73I: CO 1-0/2-1 ratio 0.7 (from (cite: sandstrom))
+- 2013ApJ...775L..31S: Continuum mass derived using the same method as Rathborne et al. (2006) (from Rathborne et al. (2006) (cite: rat06))
+- 2013ApJ...775L..31S: Keck data analysis details deferred (from Foster et al. (in preparation))
+- 2013ApJ...776...77K: Continuum observations and dust model presented separately (from Paper I (cite: moor2013))
+- 2013ApJ...776...77K: CO lifetime UV treatment done the same way as earlier (from (cite: moor2011b))
+- 2013ApJ...777...85N: ALMA observation details and HIFI data reduction (from (cite: fortman12b; neill13); Crockett et al. (2013b, in pre…)
+- 2013ApJ...777...92S: Distance of 1.5 kpc, systemic velocity ~-10 km/s, kinetic temperature profile and shell model taken from SN97 (from Sahai & Nyman 1997: SN97)
+- 2013ApJ...777...92S: Photoelectric heating rate k_pe=1e-26 and dust-optical-depth formula (from Huggins et al. 1988; Morris & Jura 1983)
+- 2013ApJ...777..126S: SMA 12CO 2-1/3-2 observations, calibration and processing (from Wilson et al. (2008; Paper I))
+- 2013ApJ...777..126S: Short-spacing feathering method (from Sliwa et al. 2012 (Paper III))
+- 2013ApJ...777L..25M: FDM line-observation details and CO analysis (from (cite: kospal2013))
+- 2013ApJ...777L..25M: IRS spectra binned in 11 bins as before (from (cite: moor2010))
+- 2013ApJ...778..179W: X-ray spectral extraction with ACIS Extract for CDF-S sources (from (cite: Xue2011))
+- 2013ApJ...778..179W: Gamma_eff derivation from hardness ratio and fixed values (1.4, 1.8) (from L05 and X11)
+- 2013ApJ...778..179W: Likelihood-ratio matching details (from (cite: Luo2010))
+- 2013ApJ...778..179W: Stacking procedure (from (cite: Luo2011))
+- 2013ApJ...778..179W: AGN fraction method (from (cite: Lehmer2007); (cite: Silverman2008))
+- 2013ApJ...778..179W: Variability analysis (from (cite: Young2012))
+- 2013ApJ...779...67B: ALMA observation and processing details (from (cite: hezaveh13))
+- 2013ApJ...779...67B: Lens modeling technique (from (cite: hezaveh13))
+- 2013ApJ...779...96T: Annulus choice for clump surface density (Rc to 2Rc) (from BT12)
+- 2013ApJ...779...96T: Turbulent Core virial equations (from MT03)
+- 2013ApJ...779L..22J: Radiative transfer approach (abundances constant in temperature-separated regions, fit to brightness profiles) (from (cite: l483art))
+- 2013ApJ...779L..22J: Steady-state HCO+ chemistry calculation based on more detailed models (from (cite: visser12))
+- 2013MNRAS.430L..10L: Other spectral lines in these ALMA data described elsewhere (from Jørgensen et al. 2012)
+- 2013MNRAS.432....2K: Raw data calibration, imaging, source extraction details and full catalogue (from (cite: HODG13))
+- 2013MNRAS.432....2K: Uncertainty recipes for elliptical Gaussian fits with correlated noise (from (cite: COND97))
+- 2013Natur.493..191C: Non-parametric least-squares MEM modeling technique (from (cite: 2006ApJ...639..951C))
+- 2013PASJ...65..100I: Systemic velocity of 1271 km/s used to compute sky frequencies (from Koribalski et al. 2004)
+- 2013PASJ...65..100I: Luminosity calculation equations (from Solomon & Vanden Bout 2005)
+- 2013PASJ...65..100I: Rotation diagram method (from Goldsmith & Langer 1999)
+- 2013PASJ...65..100I: XCO conversion factor 5.0e20 for N_H2 estimate (from Piñol-Ferrer et al. 2011)
+- 2013PASJ...65..100I: Fixed [HCO+]/[H2] = 5e-9 (from Blake et al. 1987)
+- 2013PASJ...65..100I: High-temperature chemistry model (from Harada et al. 2010, 2013)
+- 2013PASJ...65L..14F: Dust opacity relation kappa=0.1(nu/1e12 Hz)^beta, beta=1 (from (cite: bec90); V11)
+- 2013PASJ...65L..14F: 1+1D vertical radiative transfer modeling (from (cite: nom09))
+- 2013PhRvL.111w1101B: Low-frequency Effelsberg data from Dec 2011-Apr 2012 and the preliminary four-line analysis (from (cite: Bagdonaite2013))
+- 2013PhRvL.111w1101B: H2 density and kinetic temperature for RADEX (from (cite: Henkel2009); (cite: Menten2008); (cite: Muller2013))
+- 2013Sci...341..630Q: Disk model adopted from Qi08, updated for accretion rate and grain settling (from (cite: Qi08))
+- 2013Sci...341..630Q: Vertical-layer molecular abundance model (from (cite: Qi08; Qi11))
+- 2013Sci...341..630Q: Self-calibration procedure (from TW Hya SV Band 7 CASA Guides)
+- 2014A&A...561A..49H: Nebular continuum correction of 1-10 um photometry via SFR (from (cite: hunt12))
+- 2014A&A...561A..49H: DUSTY fit normalization and interpolation (from (cite: nikutta12))
+- 2014A&A...562A..67G: Modified blackbody form (from (cite: rangwala11))
+- 2014A&A...562A..67G: X-ray data reduction and spectral analysis (from (cite: gilli11))
+- 2014A&A...562A..67G: SFR calibration (from (cite: kennicutt98))
+- 2014A&A...563A.113V: Data reduction details (from (cite: vanderMarel2013))
+- 2014A&A...563A.113V: Physical disk model (from (cite: BruderervdM))
+- 2014A&A...563A.136M: Fitting strategy for PKS 1830-211 absorption spectra copied from the simulation (from Sect. 3.1.4 of this paper)
+- 2014A&A...563A.136M: Further PKS 1830-211 results deferred to a companion paper (from Muller et al. in prep.)
+- 2014A&A...565A..59D: Disk model with beam smearing (from (cite: gnerucci10; gnerucci11))
+- 2014A&A...565A..59D: Intrinsic velocity dispersion correction method (from (cite: swinbank12a))
+- 2014A&A...565A..59D: PDR atomic gas mass parameters (from (cite: debreuck11))
+- 2014A&A...566A..74L: Disc mass from continuum using optically thin method, T_dust=30 K (from (cite: jorgensen07))
+- 2014A&A...566A..74L: Position-velocity construction via weighted least-squares fit of velocity gradient (from (cite: goodman93))
+- 2014A&A...566A..74L: Envelope model for CH3OH RATRAN modelling (from (cite: lindberg12))
+- 2014A&A...566A.112M: Relative positions of NE and SW point sources fixed from VLBI (from VLBI observations (no specific citation))
+- 2014A&A...566A.112M: Physical conditions of SW gas (n_H2~1000-2000 cm-3, Tkin~80 K) (from (cite: hen08; hen09; mul13))
+- 2014A&A...566L...6M: Observations and data reduction (from (cite: mul14) Paper I)
+- 2014A&A...566L...6M: SW covering factor ~95% from 557 GHz water saturation (from Paper I)
+- 2014A&A...567A.119S: Calibrated ALMA data and outflow interpretation (from (cite: combes_ALMA_2013))
+- 2014A&A...567A.119S: Continuum decomposition method (from (cite: smajic_unveiling_2012))
+- 2014A&A...567A.119S: Fourier decomposition of the potential (from (cite: combes_ALMA_2014))
+- 2014A&A...567A.119S: Torque computation (from (cite: garcia-burillo_molecular_2005))
+- 2014A&A...567A.125G: Distance D=14 Mpc adopted (from Bland-Hawthorn et al. (cite: Bla97))
+- 2014A&A...567A.125G: Scaling factor for Pa-alpha continuum subtraction determined following earlier method (from Thompson et al. (cite: Tho01))
+- 2014A&A...567A.125G: Chandra X-ray adaptive smoothing procedure (from Usero et al. (cite: Use04))
+- 2014A&A...567A.125G: Outflow rate formula for multi-conical uniformly filled outflow (from Maiolino et al. 2012; Cicone et al. 2014)
+- 2014A&A...567A.125G: Torus size/prior setup and viewing angle prior following earlier CLUMPY fitting (from Alonso-Herrero et al. (cite: Alo11))
+- 2014A&A...568A..40G: NACO PDI data reduction procedure (from (cite: Avenhaus2014))
+- 2014A&A...568A..40G: Photometric calibration method (from (cite: Quanz2011))
+- 2014A&A...568A..92M: Lens modelling code (enhanced semi-linear inversion) (from (cite: Warren03); (cite: Dye14))
+- 2014A&A...568A..92M: Herschel data reduction and source extraction (from (cite: Pascale11); (cite: Rigby11))
+- 2014A&A...568A..92M: ISM mass from submm continuum (from (cite: Scoville14))
+- 2014A&A...568L...5C: Centroid-from-elliptical-Gaussian-fit-in-uv approach as in other Class 0 disk studies (from Murillo et al. 2013)
+- 2014A&A...569L...5M: Full ALMA data reduction and data set to be presented elsewhere (from not stated)
+- 2014A&A...569L...5M: IRAM 30 m Orion Bar line survey (from (cite: Cua14))
+- 2014A&A...570A..28V: ALMA data and their reduction (from Paper I (cite: Garc14))
+- 2014A&A...570A..28V: Definition of CND sub-regions from the ALMA observations (from Paper I (cite: Garc14))
+- 2014A&A...570A..28V: Phase tracking center (from Paper I (cite: Garc14))
+- 2014A&A...570A..28V: Version of UCL_CHEM with parametric C-shock treatment (from (cite: Viti04; Viti11); shocks (cite: Jim08))
+- 2014A&A...570A..28V: Selection of a representative SB ring knot based on 12 star-forming knots (from Section 5 of Paper I (cite: Garc14))
+- 2014A&A...570L..14R: Continuum positions and fluxes determined by uv fitting (from (cite: martetal14))
+- 2014A&A...572L...9R: Centre of expansion estimation by maximising maser separation near V* (from Richards12)
+- 2014A&A...572L...9R: Grouping maser components into features (from Richards et al. (2012))
+- 2014A&A...572L...9R: Continuum analysis in companion paper (from OGorman14)
+- 2014AJ....148....9I: Observation and analysis details of NGC 1614 and IRAS 20551-4250 (from (cite: ima13a; ima13b))
+- 2014AJ....148....9I: Line luminosity equations (from (cite: sol05))
+- 2014ApJ...780..115D: ALMA survey design, data reduction and cleaning (from (cite: hodge13))
+- 2014ApJ...780..115D: Good-quality map selection (rms<0.6 mJy/beam, axis ratio<2) (from (cite: hodge13))
+- 2014ApJ...780..115D: K<20 selection and color cuts following G10/Daddi04 (from (cite: greve10))
+- 2014ApJ...781L..39T: Observations of VV114 described in earlier work (from Iono et al. 2013; T. Saito et al. 2014, in preparation)
+- 2014ApJ...781L..39T: AGN bolometric luminosity method (from Tamura et al. (2010))
+- 2014ApJ...781L..39T: Star formation rate calibration (from Kennicutt (1998))
+- 2014ApJ...782...19S: Full details of the ALMA program and data processing (from Simpson et al. (in prep))
+- 2014ApJ...782...19S: SPIRE deblending algorithm (from Swinbank et al. (2014))
+- 2014ApJ...782...62R: ALMA data reduction and imaging taken from Casassus et al. 2013 observations (from (cite: casassus13))
+- 2014ApJ...783...71W: SED model: linear relations between SFR and synchrotron, free-free and dust components (from Yun & Carilli 2002; Condon 1992)
+- 2014ApJ...783...71W: Line luminosity definition (from Solomon et al. 1992)
+- 2014ApJ...783...84S: Photometric redshifts and stellar masses (from Ilbert et al. (2013))
+- 2014ApJ...783...84S: SFR derivation (from Scoville et al. (2013))
+- 2014ApJ...784...62A: Disk mass constants: d=140 pc, dust-to-gas 0.01, kappa=2.3 cm2/g at 1.3 mm, Td=25 (L/Lsun)^-1/4 K (from (cite: and13))
+- 2014ApJ...784...62A: Survival analysis methods via ASURV (from (cite: fei85); (cite: iso86); (cite: lav92))
+- 2014ApJ...784...82M: Optically thin isothermal mass relation and opacity 0.034 cm2/g at 856 um (from (cite: beckwith90))
+- 2014ApJ...784...82M: Disk temperature 20 K for comparison with earlier surveys (from (cite: andrews05; andrews07; mann09a; mann10))
+- 2014ApJ...784...82M: Censored correlation tests (from (cite: isobe))
+- 2014ApJ...785...44M: Star formation rate and X-ray cavity power taken from earlier work (from McNamara et al. 2006 (M06))
+- 2014ApJ...785...44M: Galactic XCO adopted (from Bolatto et al. 2013)
+- 2014ApJ...785..111W: ALMA data reduction, flux and positions taken from the ALMA LESS survey (from Hodge et al. (2013))
+- 2014ApJ...785..111W: SED fitting algorithm is updated version of earlier code (from Wiklind et al (2008))
+- 2014ApJ...785..111W: Photometry via PSF matching and TFIT (from Guo et al. 2013)
+- 2014ApJ...785..149S: Target selection, observations and redshift determinations (from (cite: weiss13))
+- 2014ApJ...785..149S: Exclusion of photometric points at rest wavelength <50 um in SED fits (from (cite: greve12))
+- 2014ApJ...785..149S: Virial parameter K_vir prior parameterization (from (cite: bradford09))
+- 2014ApJ...785L..12C: Instrumental setup and calibration (from Perez2014 (Band 6); Casassus2013 (Band 7))
+- 2014ApJ...786..114L: Systemic velocity 1.7+-0.1 km/s LSR (from (cite: Lee2007))
+- 2014ApJ...786..114L: Two-Gaussian uv-plane fit of the continuum (extended envelope plus compact disk) (from (cite: Lee2008))
+- 2014ApJ...786..114L: Model inspired by the HH 111 envelope-to-Keplerian-disk rotation change (from (cite: Lee2010))
+- 2014ApJ...787..112C: ALMA SV map production and data product (from (cite: neill13a))
+- 2014ApJ...787..112C: HIFI data reduction procedure (from (cite: crockett14))
+- 2014ApJ...788..125S: ALMA data reduction, source extraction and catalog (from (cite: Hodge13))
+- 2014ApJ...788..125S: Lyman-alpha absorption handling in hyperz (from (cite: Wardlow11))
+- 2014ApJ...788L..34P: Disk model for radiative transfer taken from earlier work and modified (from Mulders et al. 2011 (cite: Mulders_2011-HD100546_Model))
+- 2014ApJ...789L...4T: Dust opacity 0.01 cm2/g at 231 GHz and beta=1 (from (cite: Oss1994; Kau2008))
+- 2014ApJ...790..160S: Two-temperature modified blackbody SED decomposition procedure, Tcold=35 K (from (cite: 2012ApJ...759..139K))
+- 2014ApJ...790..160S: ULIRG XCO = 0.4e20 with 0.5 dex error (from (cite: 1998ApJ...507..615D; 2013ARA&A..51..207B))
+- 2014ApJ...790..160S: Volume-filling continuous outflow geometry (from (cite: 2012MNRAS.425L..66M; 2014A&A...562A..21C))
+- 2014ApJ...791...20R: Visibility modeling procedure (two-layer disk models, MCMC fit) (from (cite: Isella:2009); (cite: Ricci:2013))
+- 2014ApJ...791...20R: Dust opacity model (from (cite: Ricci:2010a))
+- 2014ApJ...791...42Z: Three-region dust surface density model (from (cite: Mathews12))
+- 2014ApJ...791...42Z: Fourier-domain fitting procedure (from (cite: Isella09))
+- 2014ApJ...791...42Z: CO model (from (cite: Isella07))
+- 2014ApJ...791...42Z: gamma=1 adopted for comparison with prior work (from (cite: Andrews07; Andrews11))
+- 2014ApJ...791...42Z: Hybrid LM + MCMC approach; Hessian-based uncertainties for CO (from (cite: Pitu07; Isella09))
+- 2014ApJ...791...42Z: Dust composition and opacity (from (cite: Draine03; Zubko96; Pollack94; Miyake93))
+- 2014ApJ...791...95A: Receiver and observing mode of Itapetinga 43 GHz data (from (cite: abr05))
+- 2014ApJ...791..123W: Infall velocity from absorption peak vs systemic velocity (from (cite: wel87))
+- 2014ApJ...791..123W: Blue profile asymmetry parameter definition (from (cite: mar97))
+- 2014ApJ...791..123W: Infall velocity model for MM1 (from (cite: mye96))
+- 2014ApJ...791L...6W: Gaussian ring brightness profile (from (cite: perez14))
+- 2014ApJ...791L...6W: Dust temperature and dust opacity assumptions (from (cite: andrews11; bruderer12))
+- 2014ApJ...791L...6W: Dust evolution model (from (cite: birnstiel10; pinilla12))
+- 2014ApJ...792...34O: CMB correction applied following da Cunha et al. formalism, with M_nu computed per González-López prescription (from (cite: daCunha13); (cite: Gonzalez-Lopez14))
+- 2014ApJ...792...34O: Dust mass absorption coefficient kappa=0.77 (850um/lambda)^beta cm2/g (from Dunne et al. (2000))
+- 2014ApJ...792...34O: Line luminosity formula (from (cite: Walter12b))
+- 2014ApJ...792...68S: Gas temperature parameterization above tau=1 surface (from (cite: Zhang13))
+- 2014ApJ...792...68S: Wind model parameters similar to earlier work (from (cite: Pontoppidan11); (cite: Kurosawa06))
+- 2014ApJ...792...94D: Molecular mass relation and Xco = 2e20 (from Bolatto et al. (2013))
+- 2014ApJ...792...94D: Linewidth-size relation for absorber size (from Solomon et al. (1987))
+- 2014ApJ...792L...2C: Visibility-amplitude modelling method with uniform isotropic outflow (from (cite: boi07; boi14))
+- 2014ApJ...792L...2C: Haser parent-daughter paradigm (from (cite: has57))
+- 2014ApJ...792L..25V: Observing strategy and data reduction (from (cite: 2013Natur.493..191C))
+- 2014ApJ...792L..25V: Disk inclination 28 deg adopted (from (cite: seba-paper))
+- 2014ApJ...793....1Y: Standard Cycle 0 reduction script for calibration (from ALMA Cycle 0 standard script)
+- 2014ApJ...793....1Y: Disk power-law indices p=-1.5, q=-0.4 initial values (from Guilloteau & Dutrey 1994; Dutrey et al. 1998; Guilloteau et…)
+- 2014ApJ...793....1Y: Dust opacity law kappa=0.1(0.3mm/lambda)^beta cm2/g, beta=1 (from Beckwith et al. 1990; Jørgensen et al. 2007)
+- 2014ApJ...793....1Y: Parabolic infall trajectories and velocity/density field (from Ulrich 1976; Mendoza et al. 2004)
+- 2014ApJ...794L..10Y: Observation and calibration details (from Sakai et al. (2013) (cite: sak13); T. Sakai et al. 2014 in …)
+- 2014ApJ...795....5O: Number-count method (extraction, completeness, flux boosting, spurious fraction) (from (cite: hatsukade2013))
+- 2014ApJ...795....5O: Scaling to 1.2 mm via modified blackbody (from (cite: hatsukade2013))
+- 2014ApJ...795....5O: Map 1 and Map 2 data details/calibration (from (cite: ouchi2013); R. Momose et al. in preparation)
+- 2014ApJ...795...28B: Full observation details and data reduction, including zero-spacing restoration (from Rathborne et al. 2014a (ApJ, submitted))
+- 2014ApJ...795..152O: Infalling rotating envelope toy model applied as in L1527 (from Sakai et al. 2014a, 2014b)
+- 2014ApJ...795..152O: Parabolic outflow cavity model (from Lee et al. (2000))
+- 2014ApJ...795..156W: Continuum and HCN/HCO+ analysis deferred to Paper 3; CO cloud catalog from Paper 2 (from Brogan et al. 2014 (Paper 3); Leroy et al. 2014 (Paper 2))
+- 2014ApJ...795..156W: Standard Cycle 0 CASA reduction (from standard Cycle 0 procedures)
+- 2014ApJ...795L..25R: Combination of ALMA and Herschel data details (from (cite: Rathborne-overview))
+- 2014ApJ...795L..25R: Molecular line cubes and kinematics (from (cite: Rathborne-overview))
+- 2014ApJ...795L..30C: Flux scale model for Titan (from ALMA Memo #594)
+- 2014ApJ...795L..30C: Nitrogen/methane isotope abundances and aerosols in model (from (cite: tea13))
+- 2014ApJ...796....1T: Keplerian model of circumbinary disk (M=0.8 Msun, i=62 deg, PA=167 deg, mass ratio 0.19, separation 145 AU, centrifugal radius 300 AU) from SMA fits (from Takakuwa et al. 2012 (cite: tak12); Takakuwa et al. 2013 (c…)
+- 2014ApJ...796....1T: Sink particle accretion method (from Krumholz et al. 2004)
+- 2014ApJ...796...82Z: Position-shift procedure after self-calibration and 44 GHz alignment with VLBI (from (cite: zan13))
+- 2014ApJ...796...82Z: Flux scaling of ATCA data to day 9280 via exponential fit parameters (from Zanardo et al., in preparation)
+- 2014ApJ...796...82Z: B9 dust template and SED (from (cite: ind14))
+- 2014ApJ...796...84R: MCMC modified blackbody SED fitting method (from Riechers et al. (cite: rie13); Dowell et al. (cite: dow14))
+- 2014ApJ...796...84R: UV SFR via SED fitting methods (from C11)
+- 2014ApJ...796...84R: Source size errors determined following Condon (from Condon (cite: con97))
+- 2014ApJ...796...84R: Isotropic virial estimator for dynamical mass (from Engel et al. (cite: eng10))
+- 2014ApJ...796..117G: Jet source position, inclination, momentum rate and lobe naming taken from earlier work (from (cite: Guzman2010ApJ))
+- 2014ApJ...796..117G: Jet model parameterization (from (cite: Reynolds1986ApJ))
+- 2014ApJ...796..117G: Weighted least-squares fitting procedure (from (cite: Lampton1976ApJ))
+- 2014ApJ...796..117G: Dynamical mass formula (from (cite: Franco-Hernandez2009ApJ))
+- 2014ApJ...796..120W: Data acquisition and reduction (from (cite: 2014ApJ...784...82M))
+- 2014ApJ...796..120W: Fitting elliptical gaussians to channel maps (from (cite: 2012Natur.492...83T))
+- 2014ApJ...796..120W: Angle between rotation axes formula (from (cite: 2014Natur.511..567J))
+- 2014ApJ...796..131O: Method for fitting the rotation power-law from PV diagram (from Yen et al. (2013) (cite: yen13))
+- 2014ApJ...796..131O: Dust mass opacity 0.1 cm2/g at 220 GHz extrapolated with beta=0 (from (cite: beckwith90); (cite: tobin13))
+- 2014ApJ...796..131O: Keplerian disk model (from (cite: kitamura02))
+- 2014ApJ...796L..15S: Bayesian likelihood code (from Kamenetzky et al. (2012))
+- 2014ApJ...796L..15S: three priors (from Sliwa et al. (2013))
+- 2014ApJ...796L..15S: feathering of JCMT and SMA (from Sliwa et al. (2012))
+- 2014ApJ...797...27F: NH3 hyperfine fitting for kinetic temperature (from (cite: friesen09))
+- 2014ApJ...797...27F: H2D+ column density method (from (cite: friesen10))
+- 2014ApJ...797...27F: Two-level partition function approximation (from (cite: caselli08))
+- 2014ApJ...797...90S: SMA data reduced with same steps as the earlier SMA paper using MIR (from (cite: Sakamoto06))
+- 2014ApJ...797...90S: Systemic velocity 2775 km/s adopted (from (cite: Sakamoto06))
+- 2014ApJS..214....1U: SMA archival CO data (NGC 1614, NGC 2623, UGC 5101, UGC 8058, Arp 193) taken as published (from (cite: Wilson08))
+- 2014ApJS..214....1U: Gas mass equations for CO luminosity (from (cite: Carilli13; Casey14))
+- 2014ApJS..214....1U: alpha_CO = 4.8 for L_FIR<1e11, 0.8 for U/LIRGs (from (cite: Solomon91; Downes98))
+- 2014ApJS..215...25F: Initial XCLASS parameters for ALMA-SV Orion-KL from earlier PdBI results (from Favre et al. 2011 (cite: Favre et al. 2011))
+- 2014ApJS..215...25F: MF line assignments as in earlier work (from Favre et al. 2011)
+- 2014ApJS..215...25F: Hamiltonian parameters for 13C-MF predictions (from Carvajal et al. 2009, 2010)
+- 2014MNRAS.438.1267S: ALMA observations, reduction and source catalog (from (cite: Hodge13); (cite: Karim13))
+- 2014MNRAS.438.1267S: Photometric redshifts (from Simpson et al. (2013))
+- 2014MNRAS.438.1267S: Detection limit and upper-limit definitions for deblending (from (cite: Magnelli13))
+- 2014MNRAS.439.2096W: [CII]-to-SFR conversion factor (from (cite: sargsyan_aug12))
+- 2014MNRAS.442..577T: ALMA data reduction and imaging (from Hodge et al. (2013))
+- 2014MNRAS.442..577T: Bandwidth smearing map technique (from Arumugam et al. (2014, in prep))
+- 2014MNRAS.444.1821F: Fractional luminosity limits computed following Wyatt (2008) formalism (from (cite: wya08))
+- 2014MNRAS.444.1821F: Fractional luminosity evolution of grains following Bonsor & Wyatt 2010 (from (cite: bon10))
+- 2014MNRAS.445.1412Z: Science Verification data description (from (cite: 2012A&A...538L...9H))
+- 2014MNRAS.445.1412Z: Fabry-Perot data processing (from (cite: 2010MNRAS.407.2519B))
+- 2014MNRAS.445.1412Z: Molecular mass from CO luminosity and alpha_CO=4.8, as in Wei et al. (from (cite: 2012ApJ...750..136W))
+- 2014MNRAS.445.1412Z: Bootstrap error method (from (cite: 2006PASP..118..590R))
+- 2014MNRAS.445.1412Z: Luminosity-sigma envelope method (from (cite: 2005A&A...431..235R))
+- 2014Natur.511..567J: Disk model: self-similarity solution, specific parameterization of Rosenfeld et al. 2013 (from Hartmann et al. 1998 (cite: 33); Rosenfeld et al. 2013 (cit…)
+- 2014Natur.511..567J: HK Tau B PA and inclination adopted from scattered-light work (from McCabe et al. 2011 (cite: 18))
+- 2014Natur.514..600D: Dust model fitting with Diskfit and Levenberg-Marquardt (from Boehler et al. 2013 (ref 36); Pietu et al. 2007 (ref 37))
+- 2014Natur.514..600D: Velocity offset corrected using IRAM CO 2-1 data (from existing IRAM data)
+- 2014PASJ...66...75T: Phase center and systemic velocity (1150 km/s) (from (cite: schinn2000))
+- 2014PASJ...66..106H: VERA observation and AIPS calibration/imaging procedure (from (cite: hirota2007; hirota2011))
+- 2014PASJ...66..106H: ALMA observation and processing details (from (cite: hirota2014a; hirota2014b))
+- 2014Sci...343.1490D: Dust radial distribution annulus method (from Telesco et al. 2005 (ref 12))
+- 2014Sci...343.1490D: Dust mass opacity and 85 K temperature (from Dent et al. 2000 (ref 10))
+- 2014Sci...345.1584B: Line identification strategy follows the IRAM 30m survey (from Belloche et al. 2013 (cite: Belloche13))
+- 2014Sci...345.1584B: Chemical model as described by Garrod 2013; n-PrCN mechanisms from Belloche09 (from Garrod 2013 (cite: Garrod13); Belloche et al. 2009 (cite: B…)
+- 2014Sci...345.1584B: Contaminating-molecule subtraction in population diagrams as in previous n-PrCN detection (from Belloche et al. 2009 (cite: Belloche09))
+- 2015A&A...573A.116M: Excitation temperature ~8 K for HCN/HCO+ taken from earlier ALMA analysis (from (cite: Izumi2013))
+- 2015A&A...573A.116M: Kinematics and linewidth discussion deferred to earlier paper (from (cite: Hsieh2011))
+- 2015A&A...573A.116M: MADCUBA_IJ modelling tool (from Martín et al in prep.)
+- 2015A&A...573L...1O: Observation details and data processing (from (cite: richards_2014))
+- 2015A&A...573L...4L: Brightness temperature formula (from (cite: liseau2013))
+- 2015A&A...574A...5D: Phase of observations (0.98 ALMA, 0.46 Herschel) from pulsation ephemeris (from (cite: Jenness2002MNRAS.336...14J))
+- 2015A&A...574A...5D: Spiral pattern prescription and arm spacing/period relation (from (cite: Kim2012ApJ...759L..22K))
+- 2015A&A...574A...5D: Detailed hydrodynamical/radiative transfer modeling deferred (from Homan et al., in prep.)
+- 2015A&A...574A..19S: CMB correction to dust heating (from da Cunha et al. (2013a))
+- 2015A&A...574A..19S: SED fitting code and ingredients (from Schaerer & de Barros (2009, 2010); Schaerer et al. (2013))
+- 2015A&A...575L...5H: MCFOST model parameter ranges and SED data (from Cieza2011)
+- 2015A&A...575L...5H: Tapered-edge prescription to reconcile gas and dust extents (from Hughes2008)
+- 2015A&A...576A..41B: FRED function for light-curve fitting (from (cite: Bhat1994))
+- 2015A&A...576A..41B: Adiabatically expanding plasma cloud model, initial radius 3 Schwarzschild radii (from (cite: YZ2008))
+- 2015A&A...576A.129B: N(H2) derived from the continuum map as in Favre et al. 2011 (from (cite: Favre:2011a))
+- 2015A&A...576A.129B: Rotational diagram equation (from (cite: Goldsmith:1999))
+- 2015A&A...576L...2S: Magnification µ=49 from updated lens model (from Richard et al. (2011))
+- 2015A&A...576L...2S: CO(3-2) to CO(1-0) conversion r31 = 0.57 (from Dessauges-Zavadsky et al. (2014))
+- 2015A&A...576L..15O: Flux calibrator models (from Butler-JPL-Horizons 2012, ALMA Memo 594)
+- 2015A&A...576L..15O: Rotational temperature and abundance assumptions for mass and energy (from Bujarrabal et al. 2001)
+- 2015A&A...577A.129B: Observation and calibration details of IRAS 16293-2422 SV data given in CASA guide (from CASA guide IRAS16293Band9 (casaguides.nrao.edu))
+- 2015A&A...577L...4V: Data products and observations from the ALMA long-baseline science verification campaign (from ALMA partnership, Fomalont et al. 2015 (cite: alma15))
+- 2015A&A...577L...4V: uv-fitting method (from (cite: Marti14))
+- 2015A&A...579A.106V: Physical disk structure and dust opacities (small/large populations, f_ls, chi) (from (cite: Andrews2011); (cite: Bruderer2013))
+- 2015A&A...579A.106V: Manual by-eye fitting approach (from (cite: Bruderer2014))
+- 2015A&A...579A.106V: J1604-2130 data and observational details (from (cite: Zhang2014))
+- 2015A&A...579A.114M: Calibration details of the Cycle 0 data (from (cite: murillo2013b))
+- 2015A&A...579A.114M: Radiative transfer disk+envelope methods (from (cite: harsono2013))
+- 2015A&A...579A.114M: CO abundance profile (Constant/Drop) models (from (cite: jorgensen2005); (cite: yildiz2010))
+- 2015A&A...580A...1M: L'CO(2-1)/L'CO(1-0)=1 assumption for H2 masses (from (cite: Morganti2013b))
+- 2015A&A...580A...1M: Kinetic power formula including radial and turbulent components (from (cite: Holt2006))
+- 2015A&A...580A...1M: Geometrical ring-based kinematic modelling technique (from (cite: Jozsa2007))
+- 2015A&A...580A...1M: Jet power formulae with normalisation factor f=10 (from (cite: Willot1999), (cite: Wu2009), (cite: Cavagnolo2010))
+- 2015A&A...580A.105P: Dust evolution model formulation (from Birnstiel et al. 2010 (cite: birnstiel2010))
+- 2015A&A...580A.105P: Viscosity alpha values (from Mulders et al. 2013 (cite: mulders2013))
+- 2015A&A...581A..48G: Same source size for all molecules with same origin; source sizes from Table 2 of Crockett et al. (from (cite: 2013ApJ...777...85N; 2014ApJ...787..112C))
+- 2015A&A...581A..48G: Likelihood threshold L>0.6 for chi2 analysis (from (cite: 2014A&A...568A.122Z))
+- 2015A&A...581A..91S: Observation details, calibration and data reduction (from Murillo et al. 2013b (cite: murillo2013b))
+- 2015A&A...581A..97S: ALMA data reduction approach (from (cite: MacGregor2013))
+- 2015A&A...581A..97S: Profile extraction adopted from Herschel DUNES approach (from (cite: Loehne2012; Eiroa2013; Ertel2014))
+- 2015A&A...581A..97S: Fragmentation strength parameters (from (cite: Loehne2012))
+- 2015A&A...581L...3V: ADAM shape/spin reconstruction algorithm (from Viikinkoski & Kaasalainen 2014; Viikinkoski et al. 2015)
+- 2015A&A...581L...3V: ALMA data reduction and self-calibration of the SV data (from ALMA Partnership et al. 2015)
+- 2015A&A...581L...3V: Averaging of literature diameters by sigma rejection (from Carry et al. 2012)
+- 2015A&A...582A..91C: Combined LTE/NLTE fitting method of whole spectrum and LTE synthetic spectra (from (cite: martin2011))
+- 2015A&A...582A..91C: Population diagram and opacity correction formalism (from (cite: popdiag))
+- 2015A&A...582A..91C: PCA procedure (from (cite: costagliola11))
+- 2015A&A...582A..91C: Fiducial excitation temperature 80 K for synthetic spectra (from (cite: costagliola2013))
+- 2015A&A...582L...1T: IRAM 30m survey data and previous data set (from Tercero2010; Lopez2014)
+- 2015A&A...582L...1T: Comparison maps of MF, DME, methanol, ethanol from SMA+IRAM 30m (from Feng2015)
+- 2015A&A...582L...4M: Presentation of ALMA Cycle 0 survey toward PKS 1830-211 and overall results (from (cite: NH2_in_pks_etc_2014))
+- 2015A&A...582L...4M: Isotopic invariant fit of spectroscopic data similar to earlier work (from (cite: ArD+\_rot_1999))
+- 2015A&A...582L...5R: Parametric Keplerian line profile fit (from (cite: Kastner:2008a))
+- 2015A&A...582L...5R: Gas mass prescription (from (cite: Zuckerman:2008), (cite: Kastner:2008a), (cite: Rodri…)
+- 2015A&A...583A..66H: Dust mass conversion with 0.566 Mearth per mJy at 140 pc (from (cite: Cieza2008a))
+- 2015A&A...583A..66H: Gas-mass constraints from CO using model grid (from (cite: Williams2014))
+- 2015A&A...583A.104S: ALMA observational setup, calibration, imaging and quality (from (cite: combes_ALMA_2014))
+- 2015A&A...583A.104S: SINFONI reduction details and NIR continuum decomposition (from (cite: smajic_ALMA-backed_2014); (cite: smajic_unveiling_20…)
+- 2015A&A...584A..16P: Calibration of the data (from (cite: perez2014); van der Marel et al. (submitted))
+- 2015A&A...584A..16P: Ring and ring+vortex morphological models and MCMC fitting approach (from (cite: perez2014))
+- 2015A&A...584A..16P: Inclination and PA fixed to Pérez et al. values in MCMC (from (cite: perez2014))
+- 2015A&A...584A..32M: VLA 3 GHz observations, reduction and imaging (from Novak et al. (2015), Smolčić et al. (2015a))
+- 2015A&A...584A..42A: Arp220W continuum values taken from a companion paper (from Martín et al. (in prep.))
+- 2015A&A...584A..78C: Further details of the archival ALMA observations are in the original papers (from (cite: Willott:2013); (cite: Ota:2014); (cite: MacGregor:20…)
+- 2015A&A...584A..78C: Number counts estimated at two wavelengths following prior ALMA count work (from (cite: Hatsukade:2013); (cite: Ono:2014))
+- 2015A&A...584A..78C: Alternative flux-boosting correction from Hogg & Turner Eq. 4 (from (cite: Hogg:1998))
+- 2015A&A...584A..99E: CO(1-0) data, redshift, and gas depletion time (from EM11, EM15)
+- 2015A&A...584A..99E: Dust mass method (from (cite: gil14))
+- 2015A&A...584A..99E: Outflow rate formula (from (cite: arr14))
+- ... 11934 more (all member papers are listed in references/sources.md)
+
+### Data or numbers taken from the literature (bibcode: what)
+- 2012A&A...538A..44D: Catalogue of published mm/submm GRB observations (Table 1) from 102 GRBs
+- 2012A&A...538A..44D: X-ray flux densities at 0.5 and 1 day from the Swift burst analyser
+- 2012A&A...538L...9H: Single-dish CO(3-2) (JCMT, HHT) for missing flux comparison
+- 2012A&A...538L...9H: R3-2/1-0 = 0.59 scaling
+- 2012A&A...538L...9H: Embedded stellar mass of PCC 4e4 Msun and H2/Brgamma>15
+- 2012A&A...542L..34N: [C II] 158 um flux 14.7±2.2 Jy km/s, z, FWHM and spectrum
+- 2012A&A...542L..34N: CO(2-1) flux 0.09±0.02 Jy km/s, redshift and width
+- 2012A&A...542L..34N: Lyα redshift 4.762±0.002
+- 2012A&A...544L...7P: Dust opacity per dust mass kappa_1.3mm = 0.86 cm2/g
+- 2012ApJ...749..162O: Disk density and temperature structure
+- 2012ApJ...749..162O: HCN best-fit vertical boundaries and radial profile (alpha~-1)
+- 2012ApJ...749..162O: DCO+/HCO+ abundance ratio 0.035
+- 2012ApJ...752L..30W: FIR luminosities of North (1.2e13 Lsun) and South (2.6e13 Lsun)
+- 2012ApJ...752L..30W: 1.4 GHz 3-sigma upper limit of 48 uJy for SW source
+- 2012ApJ...752L..30W: SCUBA 850 um flux 42 +/- 2 mJy for comparison
+- 2012ApJ...757..129R: Scattered-light azimuthal modulation of TW Hya (peak near PA 234, trough near 54 deg)
+- 2012ApJ...757..129R: Stellar mass 0.8 Msun fixed for fiducial model
+- 2012ApJ...757..129R: CO molecular data from LAMBDA database
+- 2012ApJ...757L...1H: 22 GHz H2O shell maser spectrum compared with the 232 GHz feature
+- 2012ApJ...757L...1H: 43 GHz SiO (v=1) maser spectrum
+- 2012ApJ...757L...1H: Line frequencies from Splatalogue (JPL, CDMS, Lovas/NIST)
+- 2012ApJ...760L..25E: 24 micron Spitzer MIPS map of the Antennae
+- 2012ApJ...760L..25E: HI map of the Antennae
+- 2012ApJ...760L..25E: E(B-V) = 0.046 mag foreground extinction
+- 2012ApJ...761L..20R: SMA 1.3 mm flux density 7±3 mJy and CO(2-1) map
+- 2012ApJ...761L..20R: Dust opacity kappa(0.89 mm) for beta 0.4-0.6
+- 2012ApJ...761L..20R: Visual extinction A_V ~ 3
+- 2012ApJ...761L..32W: Infrared SED template library (105 templates) used to derive L_IR
+- 2012ApJ...761L..32W: Stellar masses of hosts and optical photometry/SFRs for comparison
+- 2013A&A...549L...3P: SMA HDO 225.89672 GHz observations
+- 2013A&A...549L...3P: 16O/18O = 560 in local ISM
+- 2013A&A...554A..78P: 1.3 mm continuum-based H2 column densities at acetone positions
+- 2013A&A...554A..78P: Acetone spectroscopy from JPL database
+- 2013A&A...555A..73K: HH knot A proper motion 0.49'' /yr and PA 42 deg
+- 2013A&A...555A..73K: Ambient density 1.9e3 cm^-3
+- 2013A&A...555A..73K: Mass accretion rate ~1e-7 Msun/yr
+- 2013A&A...555A.112P: 6cm free-free non-detection limit of 0.2 mJy
+- 2013A&A...555A.112P: 8um extinction mass map of SDC335
+- 2013A&A...556L...1V: Photospheric 12C/13C ratio of ~19
+- 2013A&A...556L...1V: Correlation I(12CO)/I(13CO) = (0.6±0.2) x 12C/13C
+- 2013A&A...556L...1V: Present-day mass-loss density, velocity, temperature and stellar parameters
+- 2013A&A...557A.132M: Best-fit physical disk model of HD 163296 (mass, radii, gas-to-dust, dust properties, stellar parameters)
+- 2013A&A...557A.132M: Observed CO-isotopologue line fluxes used to tune the gas structure
+- 2013A&A...557A.132M: Molecular energy levels, frequencies and Einstein A coefficients
+- 2013A&A...557A.133D: Initial disk model (favored model 3, Table 6) and photospheric parameters (Teff 9250 K, M*=2.47 Msun, L*=37.7 Lsun, LUV/L*=0.097)
+- 2013A&A...557A.133D: Dust mass of 7e-4 Msun assumed
+- 2013A&A...557A.133D: Initial CO freeze-out temperature of 19 K
+- 2013A&A...557L..11B: Disk model parameters adopted from Paper I
+- 2013A&A...557L..11B: Proper motion of the Red Rectangle from Hipparcos
+- 2013A&A...558A.123M: Lens time delay of 27.1±0.6 days (NE leading)
+- 2013A&A...558A.123M: Jet viewing angle 3 deg
+- 2013A&A...558A.123M: Core size of ~0.5 mas at 43 GHz
+- 2013A&A...558A.124C: Ionized gas (H-alpha) rotation curve and mass model, used for velocity residuals
+- 2013A&A...558A.124C: CO(1-0) SEST spectrum and central flux for comparison
+- 2013A&A...558A.124C: Central 21 cm flux 3.4 mJy
+- 2013A&A...559A..29C: L'CO(5-4) used for molecular gas masses
+- 2013A&A...559A..29C: alpha_CO = 0.6±0.2
+- 2013A&A...559A..29C: Fluxes for FIR-radio SED compiled from literature
+- 2013A&A...560A.103M: JCMT C18O (2-1) flux 12.1 K km/s (174 Jy km/s)
+- 2013A&A...560A.103M: systemic velocity 3.4-3.8 km/s
+- 2013A&A...560A.103M: 84 deg misalignment between magnetic field and rotation axis
+- 2013AJ....146...47I: HCN J=1-0 flux of 7.2 Jy km/s from single dish
+- 2013AJ....146...47I: Inclination i = 51 deg
+- 2013AJ....146...91I: IRAS FSC fluxes at 12, 25, 60, 100 um for IR luminosities
+- 2013AJ....146...91I: NGC 1614 HCN/HCO+ and HCN/HNC J=4-3 ratios for comparison
+- 2013AJ....146...91I: HCN v2=1 to v=0 ratio in NGC 4418
+- 2013ApJ...762L..21M: NextGen stellar model photosphere (Teff=3720 K, L=0.11 Lsun) giving F*=52 uJy at 1.3 mm, fitted to 0.4–25 um photometry
+- 2013ApJ...762L..21M: Astrosilicate opacity composition used for dust
+- 2013ApJ...763..120C: 3C279 flux density at 340 GHz of 17 Jy
+- 2013ApJ...763..120C: Lya image used for overlay
+- 2013ApJ...764L..14Z: Dust mass opacity extrapolated to 0.45 mm for coagulated grains without ice mantles (2.2 cm2/g)
+- 2013ApJ...764L..14Z: Opacity index beta = 0.6
+- 2013ApJ...764L..14Z: Pineda et al. two-layer fit results at 220 GHz (Tx = 40 K) used to set Tx
+- 2013ApJ...765L..14Q: Disk physical structure model (temperature, density, geometry; Table 3)
+- 2013ApJ...765L..14Q: Collisional rates
+- 2013ApJ...765L..14Q: Molecular data file (LAMDA), Einstein A
+- 2013ApJ...767...88W: Redshifts for two SPT sources (SPT0538-50, SPT2332-53) added to the sample
+- 2013ApJ...767...88W: Redshift distribution of radio-identified DSFGs for comparison
+- 2013ApJ...767...88W: Model dn/dz predictions
+- 2013ApJ...767..132H: Photometry (SPT, LABOCA, Herschel) provided in Weiss et al.
+- 2013ApJ...768...91H: LESS source positions and deboosted LABOCA flux densities
+- 2013ApJ...768...91H: Radio/MIR counterpart catalog (robust/tentative)
+- 2013ApJ...768...91H: Photometric redshift and SFR for ALESS 007.1
+- 2013ApJ...768L..38H: Enclosed mass 1.7e6 Msun and Keplerian disk model for 22 GHz maser
+- 2013ApJ...768L..38H: Optical nucleus position from NED
+- 2013ApJ...769L..27H: Literature number counts (SCUBA 850um, LABOCA 870um, AzTEC 1.1mm, ALMA 870um) for comparison
+- 2013ApJ...769L..27H: EBL at 1.3 mm of 14-18 Jy deg^-2 from COBE
+- 2013ApJ...770...13W: Quasar Mg II redshifts and black hole masses
+- 2013ApJ...770...13W: Comparison [CII]/FIR vs L_FIR compilation of low and high redshift galaxies
+- 2013ApJ...770...13W: Stacked L_FIR and L_Bol of z~6 quasars and L_FIR-L_Bol relation
+- 2013ApJ...770..142N: 16O/18O = 250 ± 135
+- 2013ApJ...770..142N: 18O/17O = 3.6 ± 0.7
+- 2013ApJ...770..142N: HDO collisional rates
+- 2013ApJ...770L..27F: Halpha Fourier terms and analytic spiral model (pitch angle 52±4 deg) from ionized gas
+- 2013ApJ...770L..27F: CO gas inflow of 0.3 Msun/yr at 100 pc
+- 2013ApJ...770L..27F: SMBH mass 1.2e8 Msun
+- 2013ApJ...772..149C: ALMA 1.3 mm central peak flux 320 ± 60 μJy
+- 2013ApJ...772..149C: Radio upper limits 210 μJy at 2.0 cm and 120 μJy at 3.7 cm
+- 2013ApJ...772..149C: Observed log L_X = 29.74
+- 2013ApJ...773...44W: Previous MAMBO 250 GHz continuum and PdBI CO (6-5) measurements for four other quasars
+- 2013ApJ...773...44W: Mean dust temperature 47 K and beta=1.6 for FIR fits
+- 2013ApJ...773...44W: Rest-frame 1450 A magnitudes from discovery papers
+- 2013ApJ...774...16R: ISM isotopologue ratios 12CO/13CO=69±6 and 12CO/C18O=557±30
+- 2013ApJ...774...16R: Stellar mass fixed from literature
+- 2013ApJ...774...16R: Molecular data for CO from LAMDA
+- 2013ApJ...774...39A: Dust opacity at 1.3 mm extrapolated to 3 mm (0.9 cm2/g)
+- 2013ApJ...774...39A: Jet mass loss rate 4e-7 Msun/yr
+- 2013ApJ...774...39A: Dynamic age of 9000 yr for the parsec-scale HH flow
+- 2013ApJ...774...73I: 6 cm and 3 cm ATCA continuum images
+- 2013ApJ...774...73I: Galactic cloud and clump comparison data (Heyer 2009, Orion, CMZ, IRDC clumps)
+- 2013ApJ...774...73I: Dust opacity 0.62 cm2/g and gas-to-dust ratio from LMC
+- 2013ApJ...775L..31S: Distance 1.56 kpc
+- 2013ApJ...775L..31S: Dust temperature of 29 K from SED fit
+- 2013ApJ...775L..31S: 1.2 mm flux 1.02 Jy over 24 arcsec diameter
+- 2013ApJ...776...77K: Dust continuum results: dust disk inner radius ~55 AU, dust mass 0.09 Earth masses within ~150 AU
+- 2013ApJ...776...77K: ISM isotopic abundance ratios (tau12=560 tau18, tau13=7.4 tau18)
+- 2013ApJ...776...77K: Dust temperature 64 K from SED fitting
+- 2013ApJ...777...85N: HDO/H2O ratios in Hot Core and Compact Ridge
+- 2013ApJ...777...85N: NH3 centimeter inversion line data for column density
+- 2013ApJ...777...92S: SN97 two-shell model (inner 2.5-6" at 35 km/s; outer 6-33" at 164 km/s), T_kin(r) profile, distance
+- 2013ApJ...777...92S: SEST CO(1-0) single-dish observations
+- 2013ApJ...777..126S: OVRO 12CO J=1-0 map
+- 2013ApJ...777..126S: SMA 12CO 2-1, 3-2 and 13CO 2-1 uv-data
+- 2013ApJ...777..126S: Herschel FTS 12CO 6-5 flux 1390 +/- 100 Jy km/s
+- 2013ApJ...777L..25M: Stellar photosphere model, L=11.3 Lsun
+- 2013ApJ...777L..25M: SCUBA 850 um flux 8.3±2.3 mJy
+- 2013ApJ...777L..25M: CO gas disk radii (<26 AU, 138±20 AU) and CO mass 0.04-0.08 Mearth
+- 2013ApJ...778..179W: ALESS main-source catalog of 99 SMGs (positions, 870 um fluxes)
+- 2013ApJ...778..179W: Photometric redshifts and stellar masses
+- 2013ApJ...778..179W: L_IR and L_FIR from SED fitting
+- 2013ApJ...779...67B: ALMA lens model, magnification mu=21±4
+- 2013ApJ...779...67B: CO(1-0) flux and luminosity from ATCA
+- 2013ApJ...779...67B: APEX SABOCA/LABOCA fluxes
+- 2013ApJ...779...96T: Core/clump V_LSR and deuteration fractions
+- 2013ApJ...779...96T: MIREX mass surface density maps
+- 2013ApJ...779...96T: Kinematic distances
+- 2013ApJ...779L..22J: Envelope luminosity, Tbol and mass from SED/submm reanalysis; Lbol=1.8 Lsun, Tbol=44 K, Menv≈1.2 Msun
+- 2013ApJ...779L..22J: Median compact-continuum mass for Class 0 protostars, 0.089 Msun
+- 2013MNRAS.430L..10L: Source Ab flux 0.5 Jy at 305 GHz
+- 2013MNRAS.430L..10L: Systemic velocity of source B about 3 km/s
+- 2013MNRAS.432....2K: LESS source catalogue, deboosted fluxes and single-dish counts
+- 2013MNRAS.432....2K: SHADES counts scaled to LESS
+- 2013MNRAS.432....2K: Model counts of Baugh et al. for comparison
+- 2013Natur.493..191C: Stellar accretion rate of 7e-8 Msun/yr
+- 2013Natur.493..191C: Disk inclination ~20 deg from multi-wavelength data
+- 2013PASJ...65..100I: SMA HCN/HCO+ J=3-2 intensities
+- 2013PASJ...65..100I: ALMA band 3 J=1-0 HCN/HCO+ data
+- 2013PASJ...65..100I: NGC 1068 excitation values from Aladro et al.
+- 2013PASJ...65L...7I: HCN (1-0) = 7 Jy km/s
+- 2013PASJ...65L...7I: Pa-alpha star formation map
+- 2013PASJ...65L..14F: Stellar mass 2.2±0.3 Msun
+- 2013PASJ...65L..14F: Abundance ratio X(C13O)/X(C18O) ~ 7
+- 2013PhRvL.111w1101B: Laboratory rest frequencies of methanol transitions
+- 2013PhRvL.111w1101B: Sensitivity coefficients K_mu
+- 2013PhRvL.111w1101B: ATCA line positions for 2_-1-1_0E and 3_-1-2_0E
+- 2013Sci...341..630Q: Disk accretion rate 2e-9 Msun/yr
+- 2013Sci...341..630Q: N2H+ collisional rate coefficients from LAMDA
+- 2013Sci...341..630Q: Disk geometric and kinematic parameters (inclination, PA, Vlsr, turbulent width)
+- 2014A&A...561A..49H: Optical-NIR-MIR photometry of SBS 0335-052
+- 2014A&A...561A..49H: cm radio fluxes
+- 2014A&A...561A..49H: HI mass and column density
+- 2014A&A...562A..67G: ALMA Band 7 872 um flux 6.1±0.5 mJy
+- 2014A&A...562A..67G: ALMA 1181 um flux 3.5±0.1 mJy
+- 2014A&A...562A..67G: Gas masses M_H2 and M_HI
+- 2014A&A...563A.113V: Best-fitting DALI physical disk model (gas/dust structure, temperature, CO abundance) for IRS 48
+- 2014A&A...563A.113V: Molecular line parameters from CDMS
+- 2014A&A...563A.113V: Collisional rate coefficients from LAMDA
+- 2014A&A...563A.136M: Relative NE-SW positions of PKS 1830-211 images from VLBI astrometry
+- 2014A&A...563A.136M: Inner/outer shell radius ratio of 0.7 for SN 1993J
+- 2014A&A...565A..59D: H2 gas mass 1.6e10 Msun from CO(2-1), alpha_CO=0.8
+- 2014A&A...565A..59D: L(8-1000um) = 5.6e12 Lsun used to derive SFR
+- 2014A&A...565A..59D: [NII] 205 um data for velocity structure comparison and metallicity
+- 2014A&A...566A..74L: Envelope model (r^-1.5 density, 2.2 Msun mass) adopted for CH3OH modelling
+- 2014A&A...566A..74L: CH3OH collision rates from LAMDA
+- 2014A&A...566A..74L: Bolometric temperature 89 K and Lbol/Lsmm 48 for IRS7B
+- 2014A&A...566A.112M: H I absorption spectrum from WSRT
+- 2014A&A...566A.112M: [CH]/[H2]=3.5e-8 abundance
+- 2014A&A...566L...6M: Chloronium frequencies and hyperfine relative intensities
+- 2014A&A...566L...6M: Dipole moment 1.89 D (ab initio)
+- 2014A&A...566L...6M: Total H2 column densities 2e22 (SW) and 1e21 cm-2 (NE)
+- 2014A&A...567A.119S: Calibrated 350 GHz ALMA data of NGC 1433 (line cube, continuum)
+- 2014A&A...567A.119S: Cold-to-warm H2 mass ratio (0.3-1.6)e6
+- 2014A&A...567A.119S: M-sigma relation for black hole mass
+- 2014A&A...567A.125G: NIR/MIR nuclear SED and MIR spectroscopy of NGC 1068
+- 2014A&A...567A.125G: Herschel PACS 70 and 160 micron fluxes for dust SED
+- 2014A&A...567A.125G: CO(1-0) PdBI map used for CO(1-0) flux and line ratios
+- 2014A&A...568A..40G: DCO+ ALMA emission map of HD163296 (shared ALMA data)
+- 2014A&A...568A..40G: Mid-IR photometry used for flaring-angle correlation
+- 2014A&A...568A..92M: Alternative lens model (SIE, galfit+gravlens) for comparison
+- 2014A&A...568A..92M: SED models for extreme star-forming systems used in magphys
+- 2014A&A...568L...5C: Spectroscopic parameters from JPL and CDMS databases
+- 2014A&A...568L...5C: C34S collisional rates used for critical density
+- 2014A&A...569L...5M: Previous laboratory SH+ frequency near 346 GHz and 526 GHz lines
+- 2014A&A...569L...5M: LMR rotational data, extrapolated to zero field, and rovibrational data used in the fit
+- 2014A&A...570A..28V: PdBI CO(1-0) and CO(2-1) maps
+- 2014A&A...570A..28V: PdBI HCO+(1-0) and HCN(1-0) maps
+- 2014A&A...570A..28V: PdBI CS(2-1) map
+- 2014A&A...570L..14R: Orbit of Mira AB: inclination 112 deg, period ~500 yr, expected separation ~0.5'' at PA ~100 deg
+- 2014A&A...570L..14R: Single-dish CO spectrum used to estimate recovered flux
+- 2014A&A...570L..14R: VLA radio continuum spectral index S ∝ nu^1.5 for Mira A
+- 2014A&A...572L...9R: Dust and wind density/velocity profiles for VY CMa used in maser excitation model
+- 2014A&A...572L...9R: Collisional rate coefficients for H2O-H2
+- 2014A&A...572L...9R: Literature continuum flux densities for comparison
+- 2014AJ....148....9I: IRAS fluxes and optical classes in Table 1
+- 2014AJ....148....9I: NGC 1614 and IRAS 20551-4250 ALMA results
+- 2014AJ....148....9I: HCN J=1-0 data of (U)LIRGs
+- 2014ApJ...780..115D: Photometric catalog, SED fits and photometric redshifts of ECDFS
+- 2014ApJ...780..115D: Deblended SPIRE maps
+- 2014ApJ...780..115D: LABOCA stacking fluxes for comparison
+- 2014ApJ...781L..39T: SMA 1.3 mm flux density of 5.2±1.3 mJy
+- 2014ApJ...781L..39T: SED templates: Arp 220, M82, SMM J2135, composite SMG
+- 2014ApJ...781L..39T: CO excitation ladders of M82 and BR1202-0725 SE
+- 2014ApJ...782...19S: Photometric redshifts for UDS
+- 2014ApJ...782...19S: [OII] emitter catalog
+- 2014ApJ...782...19S: Cluster mass 7.7e13 Msun
+- 2014ApJ...782...62R: Stellar mass of HD 142527
+- 2014ApJ...782...62R: Outer disk viewing geometry (inclination, PA)
+- 2014ApJ...783...71W: ALMA 340 GHz continuum and [CII] line profiles of BR1202-0725 (ALMA commissioning data)
+- 2014ApJ...783...84S: SCUBA 450/850 um fluxes and ISM masses for 12 local galaxies
+- 2014ApJ...783...84S: SMG 850um fluxes and CO(1-0) data
+- 2014ApJ...783...84S: Photometric redshifts and stellar masses
+- 2014ApJ...783L..13P: H-band polarized intensity images of SAO 206462 and SR 21
+- 2014ApJ...783L..13P: Dust surface density at cavity edge ~0.1 g cm^-2 from 850 um observations
+- 2014ApJ...783L..13P: Dust opacity 10 cm^2/g at 450 um
+- 2014ApJ...784...62A: Stellar luminosities and masses (Siess et al. 2000 grid) for sources
+- 2014ApJ...784...62A: Single-dish 850 um fluxes for sample (Table 1)
+- 2014ApJ...784...62A: Comparison sample of single Taurus stars, with known multiples removed
+- 2014ApJ...784...78R: U-band star formation rate ~20 Msun/yr
+- 2014ApJ...784...78R: Infrared SFR 15 Msun/yr
+- 2014ApJ...784...78R: FUV luminosity 1.7e43 erg/s
+- 2014ApJ...784...82M: VLA centimeter flux densities used for free-free extrapolation
+- 2014ApJ...784...82M: SMA disk masses at intermediate distances
+- 2014ApJ...784...82M: Positions and names of non-proplyd targets from HST ACS and CTIO surveys
+- 2014ApJ...785...44M: Far-UV luminosity L_FUV=1.85e43 erg/s
+- 2014ApJ...785...44M: Star formation rate 100-180 Msun/yr
+- 2014ApJ...785...44M: Emission-line redshift z=0.252
+- 2014ApJ...785..111W: ALMA 870um fluxes and positions of LESS sources
+- 2014ApJ...785..111W: CANDELS GOODS-S F160W-selected photometric catalog (18 bands)
+- 2014ApJ...785..111W: Sample of local galaxies and z~2 LBGs for Gini-M20 comparison
+- 2014ApJ...785..149S: Redshifts, dust temperatures and SED data of the SPT sources, and the 3 mm ALMA observations
+- 2014ApJ...785..149S: Average ATCA 12CO(1-0) and (2-1) luminosities
+- 2014ApJ...785..149S: CN(4-3)/HNC(5-4) line ratio from APM 0827+5255 used to deblend (36%/64%)
+- 2014ApJ...785L..12C: LIME model of HD 142527 used for flux-loss estimate
+- 2014ApJ...785L..12C: Gas temperature in the gap ~41-43 K
+- 2014ApJ...785L..12C: Disk mass 0.1 Msun
+- 2014ApJ...786..114L: Envelope temperature, density, infall and rotation power-law profiles from C18O modeling
+- 2014ApJ...786..114L: Dust opacity law kappa=0.1 (nu/1e12 Hz)^beta cm2/g with beta=1 from SED fit
+- 2014ApJ...786..114L: Jet velocity ~150 km/s and jet diameter ~0.2 arcsec
+- 2014ApJ...787..112C: H2 column densities per component from C18O
+- 2014ApJ...787..112C: Isotopic ratios C, S, O from OCS/H2CS modeling
+- ... 8637 more (all member papers are listed in references/sources.md)
+
+### Archive products used as delivered (bibcode: what)
+- 2012A&A...538L...9H: Publicly available reduced SV data cubes, corrected for primary beam attenuation
+- 2012ApJ...749..162O: Released calibrated visibilities used
+- 2012ApJ...757L...1H: Calibrated SV data used
+- 2012ApJ...761L..32W: Delivered data already bandpass, flux and gain calibrated by JAO
+- 2013A&A...549L...3P: Yes, calibrated SV uv-data
+- 2013A&A...549L...6K: Calibrated data taken from CASA guides website
+- 2013A&A...554A..78P: Calibrated ALMA-SV data retrieved from ESO archive
+- 2013A&A...560A.103M: no; recalibrated, consistent with delivered continuum flux
+- 2013AJ....146...47I: Calibrated data from JAO used
+- 2013AJ....146...91I: Started from calibrated data provided by JAO
+- 2013ApJ...765L..14Q: Public calibrated measurement sets and scripts
+- 2013ApJ...770..142N: Calibrated measurement set from SV website
+- 2013ApJ...774...16R: Calibrated SV measurement set used as starting point
+- 2013ApJ...777...85N: Full calibrated measurement set from the ALMA science verification site used
+- 2013ApJ...777..126S: Calibrated ALMA uv-data obtained from the archive
+- 2013PASJ...65L...7I: delivered calibrated data product used
+- 2014A&A...567A.119S: calibrated ALMA data taken from Combes et al. 2013
+- 2014AJ....148....9I: delivered calibrated data used except IRAS 22491-1808 HNC
+- 2014ApJ...791..123W: Calibrated SV data used
+- 2014ApJ...792...94D: Delivered calibrated data used, but own continuum subtraction and imaging performed
+- 2014ApJ...796L..15S: calibrated uv-datasets from ALMA archive
+- 2014ApJS..215...25F: Public release calibrated SV data used
+- 2014MNRAS.445.1412Z: Used reduced Early Science mosaic from the archive
+- 2014PASJ...66...75T: Continuum-subtracted calibrated data and cubes provided by the ARC
+- 2015A&A...577L...4V: ALMA observatory data products used, but epochs treated separately
+- 2015A&A...581L...3V: Calibrated visibility data used directly (not CLEAN images)
+- 2015A&A...583A.104S: Calibrated final-product ALMA data from archive used
+- 2015ApJ...798...31A: calibrated measurement set product used
+- 2015ApJ...799..204C: Publicly available calibrated Science Verification data used; flux extracted from an 8'' region
+- 2015ApJ...803...60S: Delivered calibrated data used
+- 2015ApJ...806L...7Z: Started from calibrated measurements (calibration described in APR)
+- 2015ApJ...806L..15K: Publicly available FITS image from ALMA archive site used
+- 2015ApJ...810..112O: Delivered calibration used without changes
+- 2015ApJ...811..115W: Archival calibrated uv data and archival tapered images used
+- 2015ApJ...813...99F: Calibrated Science Verification data used
+- 2015ApJ...815...64W: Examined, no lingering problems found; re-imaged
+- 2015MNRAS.450L..80B: No; reprocessed
+- 2015MNRAS.451.1141M: archive calibrated data used, no re-calibration
+- 2015MNRAS.451L..40R: Refers to ALMA Partnership 2015 for observation and data processing; no re-calibration described
+- 2015MNRAS.452.2258D: ASP calibrated data/cubes used; own imaging found ASP data already optimal
+- 2015RAA....15.2213A: Data used in the form provided by ALMA staff
+- 2016A&A...586A..69P: SV band 3/6 images used without recalibration
+- 2016A&A...589A..20V: Map not corrected for the primary beam; calibration details not given
+- 2016ApJ...816...25P: Calibrated continuum data and CLEANed images downloaded from the ALMA Science portal, with self-calibration tables applied
+- 2016ApJ...817..168H: Calibrated visibilities delivered by EA-ARC
+- 2016ApJ...820L..25Y: calibrated visibilities from the SV release
+- 2016ApJ...822L..10I: Calibrated data from JAO
+- 2016ApJ...823...37H: Used the calibrated continuum data provided
+- 2016ApJ...828..100F: Calibrated ALMA data downloaded from archive
+- 2016ApJ...829L..23B: yes, apart from extra flagging
+- 2016ApJ...830L..16B: Used ALMA-delivered calibration; recalibration gave no significant improvement
+- 2016ApJ...832..178V: Calibration as in earlier paper; not detailed here
+- 2016ApJ...833..103H: yes
+- 2016ApJ...833..112S: ALMA-provided calibrated data products used
+- 2016ApJ...833..238H: Used calibrated data delivered by EA-ARC
+- 2016MNRAS.457.2936I: Processed archival science-verification images used
+- 2016MNRAS.460..627K: Unmodified released reference images used
+- 2016MNRAS.460..673N: yes, ALMA-staff reduced clean maps
+- 2016MNRAS.461..385B: Used self-calibrated and cleaned SV data from ALMA Portal
+- 2016MNRAS.462L...6K: pipeline products used as delivered
+- 2016PASJ...68...20S: Delivered calibrated uv data for Bands 3 and 6; calibrated archival uv data for the others
+- 2016PASJ...68...88K: QA2 products used
+- 2016PASJ...68..103F: Used reduced image products from JVO, calibrated by Garcia-Burillo et al.
+- 2016RAA....16..111N: Data reduced by ALMA staff
+- 2017A&A...600A...8D: ALMA calibrated products used to regenerate images
+- 2017A&A...600A.139H: Data retrieved fully reduced by the ALMA team
+- 2017A&A...604A...2S: Delivered once phase-only self-calibrated ALMA SV visibilities used
+- 2017AJ....154..148T: Fully calibrated visibilities provided by ALMA
+- 2017ApJ...838..114K: Used pipeline calibrated data for Cycle 2
+- 2017ApJ...839..133P: Processed archival SV data (12-m+7-m+TP), reduction per CASA 4.3 guide
+- 2017ApJ...840...23L: Delivered calibrated data used, with flux correction
+- 2017ApJ...843...18V: pipeline-calibrated visibilities delivered by ALMA
+- 2017ApJ...844..123F: Yes, calibrated measurement sets downloaded and imaged
+- 2017ApJ...845..108Y: Started from calibrated measurement sets
+- 2017ApJ...849...14S: No; re-calibrated
+- 2017ApJ...849...29I: ALMA-provided calibration (phase calibrators) used
+- 2017ApJ...849...68S: No; raw data recalibrated for weighting
+- 2017ApJ...850...35L: Interferometric and single-dish data combined via feathering, as in Paper I
+- 2017ApJ...851...55S: Delivered calibrated uv-data used
+- 2017MNRAS.465.3461Z: Arp 298: archive reduced data at 20 km/s, but reduction repeated at 10 km/s; Arp 236 reduced data provided by T. Saito
+- 2017MNRAS.467.3513T: Data processed by ALMA staff; clean map used; quality checked
+- 2017MNRAS.468.1769F: QA2 delivered data downloaded from JVO
+- 2017MNRAS.468.4205K: calibrated data products as delivered
+- 2017MNRAS.469.4726N: Yes, products from JVO portal
+- 2017NatAs...1E.146H: Used calibrated data delivered by EA-ARC, then self-calibrated
+- 2017SoPh..292...87S: SV data released by JAO 18 Jan 2017 were calibrated and imaged by the authors in CASA
+- 2018A&A...610A..49L: Spectra extracted from continuum-subtracted pipeline cubes
+- 2018A&A...616A.127R: No; reprocessed because new flux model libraries gave more reliable flux calibration
+- 2018A&A...616L..10F: Used ALMA-delivered (pipeline) products
+- 2018A&A...617A..54L: delivered pipeline products used
+- 2018ApJ...853..111J: Delivered ACA calibration script and imaged TP SPWs used, except SWBarN SPW 17 baseline modification
+- 2018ApJ...853L..25I: Started from calibrated data provided by ALMA
+- 2018ApJ...854...83T: No; data re-processed with natural weighting instead of NAASC early processing
+- 2018ApJ...856..143I: Calibrated data used as delivered
+- 2018ApJ...858...17T: ACA data: products provided by ALMA pipeline
+- 2018ApJ...859...12G: pipeline product adopted without modification
+- 2018ApJ...860..119G: ALMA QA2 calibrated data imaged directly
+- 2018ApJ...862...94L: pipeline products imaged with CASA
+- 2018ApJ...863..106K: Initially calibrated by ALMA/NAASC staff, then additional calibration
+- 2018ApJ...866L..12G: pipeline-calibrated MS used
+- 2018ApJ...868...95M: Calibrated visibility data used
+- 2018ApJ...869...59W: ALMA calibrated data retrieved from public archive
+- 2018ApJ...869...71Z: Archive continuum maps used for the blind search; maps with detections re-reduced with CASA
+- 2018ApJ...869..126L: Observatory-provided calibrated visibilities used
+- 2018MNRAS.474.4988S: QA2-produced visibilities and images
+- 2018MNRAS.475L..52S: delivered calibrated uv data
+- 2018MNRAS.476.4383D: calibrated visibilities from ALMA science archive used
+- 2018MNRAS.477.4380S: Calibrated Science Verification data used
+- 2018MNRAS.478.3120A: Pipeline products from observatory used
+- 2019A&A...621L...5K: ALMA data used as published by Zhao et al. 2016; no astrometric calibration needed
+- 2019A&A...623A..68T: Calibration and deconvolution deferred to Belloche et al. (2016)
+- 2019A&A...627A..95L: Delivered pipeline products used; no further baselining
+- 2019ApJ...870...65I: yes, delivered calibrated uv data
+- 2019ApJ...871...37H: pipeline-calibrated visibilities delivered by ALMA used
+- 2019ApJ...871...45S: Released SV fast-scan maps described by White et al. 2017 used
+- 2019ApJ...872....2R: Used calibrated archival dataset, then self-calibrated
+- 2019ApJ...872...69P: ALMA archive continuum Stokes I maps used
+- 2019ApJ...872..179K: Published images from Tsukagoshi2016, Andrews homepage, and JVO archive Band 9 data used
+- 2019ApJ...874...53B: SG1 delivered calibrated data used as is
+- 2019ApJ...875...94H: ALMA 227–453 GHz images downloaded from JVO, not self-calibrated
+- 2019ApJ...875...96N: Band 6 calibrated archival data used
+- 2019ApJ...876..130H: Delivered pipeline-calibrated uv-data used as is
+- 2019ApJ...879...54L: AS2UDS/ALESS images from published works; AzTEC images from A3COSMOS cleaned archive images
+- 2019ApJ...879..117K: Pipeline-provided continuum maps used
+- 2019ApJ...881...85S: yes, pipeline product
+- 2019ApJ...887...37U: Used ASPECS team visibility data and imaging from D19
+- 2019ApJ...887...49S: Used PHANGS-ALMA internal data release v3.3 integrated intensity maps
+- 2019ApJ...887...74F: Calibration used as delivered; visibilities re-imaged
+- 2019ApJS..244...40L: no, raw data recalibrated using scriptForPI.py and re-imaged
+- 2019MNRAS.485..229R: Calibrated data produced by the ALMA observatory
+- 2019MNRAS.486.4114R: Used calibrated data delivered by the EU-ARC
+- 2019MNRAS.488.3904L: Calibrated and imaged datasets downloaded from the archive, primary-beam corrected
+- 2019MNRAS.489..349R: Calibrated data delivered by ALMA; channel maps made at maximal spectral resolution
+- 2019MNRAS.490.1570B: QA2 products (four cubes and a continuum map)
+- 2019MNRAS.490.3329N: Archive-reduced data used; continuum subtracted in uv plane
+- 2019Natur.570...83M: Data re-reduced after delivery
+- 2019Natur.574..643R: yes, pipeline-calibrated products concatenated
+- 2020A&A...634A..56D: Calibrated data downloaded from ALMA Archive
+- 2020A&A...635A..71W: Calibrated data downloaded from ALMA Archive
+- 2020A&A...640A.133R: No; reprocessed data are better than archive products
+- 2020A&A...641A..97V: No; reprocessed from raw data
+- 2020A&A...642A.165R: Published DSHARP data products used
+- 2020A&A...643A...2B: For half of the observations no problems found and observatory-calibrated data used directly
+- 2020AJ....160..205N: 2015.1.00423.S provided calibrated, then post-processed
+- 2020ApJ...889..172K: ALMA uv data calibrated by ARC used
+- 2020ApJ...890L...9P: Released calibrated visibilities and scripts used
+- 2020ApJ...896...36T: Observatory system calibration unchanged; data reprocessed in CASA only for imaging
+- 2020ApJ...896...43W: Yes
+- 2020ApJ...902...99I: Starting point was calibrated data provided by ALMA
+- 2020ApJ...902..141S: Calibrated MS used without modification for most sources
+- 2020ApJ...903...50E: observatory-calibrated visibilities used; 1 km configuration continuum image taken from the observatory pipeline
+- 2020ApJ...904...78S: No; data reduced manually to account for variation of the flux calibrator quasar J0510+1800
+- 2020ApJ...904..131N: Calibrated visibilities from default restoration scripts used, except Pallas/Ceres datasets
+- 2020ApJ...905..122H: HD 21997: reduced cube data reused, then beam adjusted
+- 2020ApJ...905..152D: Band 8 pipeline-restored calibrated measurement set used
+- 2020CPhy...30...85D: Standard ALMA pipeline calibrations and deconvolution used for continuum-subtracted data; raw data re-calibrated and deconvolved without continuum su…
+- 2020MNRAS.492.3194S: Pipeline-calibrated measurement sets were used after manual checks of calibration and flagging
+- 2020MNRAS.492.5121D: CO(3-2) cube used without any further treatment
+- 2020MNRAS.495.3409S: No: archival measurement sets were re-calibrated with the pipeline
+- 2020MNRAS.496..943D: ALMA archive CO(3-2) cube used without further treatment
+- 2020MNRAS.496.1834L: No; delivered images under-cleaned, re-imaged
+- 2020MNRAS.496.4405H: Reduced data provided by the ALMA Science Center used as is; no own calibration described
+- 2020MNRAS.498.4109J: For archival continuum measurements in the SED, ALMA-staff calibrated continuum images used with no further calibration
+- 2020MNRAS.499.3909Y: Started from calibrated archival datasets, then applied self-calibration and spw flux equalization
+- 2020PASJ...72...33K: QA2 visibility data used
+- 2021A&A...646A...3L: Band 6 HCO+ J=3-2: azimuthal average made from the archive product data
+- 2021A&A...646A.178S: Pipeline-reduced data used with no or little additional flagging/calibration
+- 2021A&A...648A..38G: Spectra extracted directly from the standard pipeline products
+- 2021A&A...648A..41V: Archival 12m continuum: pipeline-delivered images used (self-cal did not improve); TP images delivered by ALMA used directly
+- 2021A&A...650A..37D: Archive calibrated products were examined first, then all datasets were re-calibrated
+- 2021A&A...650A.153D: Calibrated measurement sets provided by the European ALMA Regional Centre
+- 2021A&A...650A.172J: L483: ALMA pipeline product used (self-cal gave no improvement); B335: self-calibrated data used
+- 2021A&A...652A..99A: Uses fully reduced ALMA maps produced by GB21 (MSR data sets), no reprocessing described
+- 2021A&A...653A.111R: yes: ALPINE DR1 products (maps and cubes) used
+- 2021A&A...653A.166C: Delivered product images used only for a preliminary check; final images made from calibrated visibilities
+- 2021A&A...654A..35B: DSHARP calibrated visibilities used
+- 2021A&A...655A.113M: JVO first-look images were used directly for Gaussian flux measurement
+- 2021A&A...656A.133Q: PHANGS-ALMA public data cubes version 4.0 used
+- 2021AJ....161..185W: Uses PHANGS-ALMA internal DR v3.4 cubes and moment maps (survey products, not raw archive data)
+- 2021AJ....162..235Y: No: calibrated visibilities were regenerated by executing the delivered reduction scripts
+- 2021ApJ...907L..27A: No; data re-reduced with archive-provided revised scripts, modified only to remove baselines shorter than 33 m
+- 2021ApJ...909...98Y: No: calibrated visibilities re-imaged by the authors
+- 2021ApJ...910..148M: Calibration was done by the ALMA observatory; whether delivered products were used unchanged is not explicit
+- 2021ApJ...912...21E: yes
+- 2021ApJ...915...46C: Yes, for continuum observations of reference GRB samples except GRB 050709
+- 2021ApJ...918...76C: No; calibrated visibilities restored with delivered scripts and re-imaged in CASA 5.6.1-8
+- 2021ApJ...919...30D: calibrated visibilities used as delivered by ALMA
+- 2021ApJ...921...97J: Calibrated data products from the ALMA data reduction pipeline used directly
+- 2021MNRAS.506..562P: Used ALMA pipeline-generated beam-corrected data cube from archive
+- 2021MNRAS.507.3998P: Used science-ready public ALMA Science Archive products and ARI-L re-imaged maps (for 2015.1.01074.S and 2015.1.00098.S); rebinned line channels for …
+- 2022A&A...661A.125W: ALMA primary beam corrected image files available online were used directly; EVLA calibrated with CASA pipeline; VLBI and historical VLA calibrated i…
+- 2022A&A...663A..61P: Used PHANGS-ALMA version 4.0 internal distribution (first public data release) integrated intensity and statistical uncertainty maps
+- 2022A&A...665A...3J: 1mm and 870 um ALMA measurements for ID9316 directly adopted from the A3COSMOS catalog
+- 2022A&A...668A.109N: yes (pipeline calibrated product data publicly available by 19 June 2021)
+- 2022A&A...668A.130C: Used PHANGS 15'' broad-masked integrated intensity map for NGC 3621 and ALMA Science Archive map for NGC 1365
+- 2022ApJ...941...47S: yes
+- 2022BAAA...63..140M: used calibrated data passing QA2
+- 2022FrASS...9.1118D: Science Verification fast-scan single-dish maps used directly and resized to match HMI magnetogram
+- 2022JApA...43...83M: No, raw data re-reduced
+- 2022MNRAS.511..877M: yes, FITS files extracted from ALMA science verification and science archive pages
+- ... 182 more (all member papers are listed in references/sources.md)
+
+### Estimated data volume the card inferred (bibcode: volume)
+- 2012A&A...538A..44D: small (<1 GB for one short commissioning observation)
+- 2012A&A...538L...9H: ~10-50 GB (reduced SV cubes) plus SINFONI cubes
+- 2012A&A...542L..34N: ~10-30 GB raw (3 cycle 0 execution blocks)
+- 2012A&A...544L...7P: ~tens of GB
+- 2012ApJ...749..162O: ~1-5 GB (SV calibrated visibilities)
+- 2012ApJ...752L..30W: ~ few GB (single 25 min SV execution)
+- 2012ApJ...757..129R: ~10-50 GB (SV calibrated measurement sets, two bands)
+- 2012ApJ...757L...1H: Tens of GB (SV Orion KL band 6 line survey)
+- 2012ApJ...760L..25E: ~tens of GB
+- 2012ApJ...761L..20R: ~10-30 GB raw
+- 2012ApJ...761L..32W: ~10-30 GB
+- 2013A&A...549L...3P: ~10-30 GB (SV band 9 mosaic, calibrated uv-data)
+- 2013A&A...549L...6K: ~tens of GB (SV band 9 mosaic, four executions; CASA guide calibrated set smaller)
+- 2013A&A...554A..78P: ~10-50 GB for ALMA-SV
+- 2013A&A...555A..73K: ~10-50 GB
+- 2013A&A...555A.112P: ~10-50 GB
+- 2013A&A...556L...1V: ~20-50 GB (Cycle 0 Band 7 mosaic, 4 spws)
+- 2013A&A...557A.132M: ~10-50 GB (four execution blocks of Band 7 SV data)
+- 2013A&A...557A.133D: ~tens of GB (SV data, 5 execution blocks, 4 spw)
+- 2013A&A...557L..11B: ~50-100 GB
+- 2013A&A...558A.123M: tens of GB (Cycle 0, 12 short epochs, 4 spws of 3840 channels)
+- 2013A&A...558A.124C: ~5-20 GB raw
+- 2013A&A...559A..29C: ~ few GB
+- 2013A&A...560A.103M: ~10-50 GB
+- 2013AJ....146...47I: ~ a few GB
+- 2013AJ....146...91I: ~20-50 GB raw for four Cycle 0 execution blocks
+- 2013ApJ...762L..21M: ~10-30 GB raw for four Cycle 0 SBs
+- 2013ApJ...763..120C: Small, a few GB
+- 2013ApJ...764L..14Z: ~10-50 GB
+- 2013ApJ...765L..14Q: ~10-30 GB for the SV calibrated measurement set
+- 2013ApJ...767...88W: ~tens of GB for Cycle 0 compact data on 26 sources
+- 2013ApJ...767..132H: ~ few GB
+- 2013ApJ...768...91H: ~10-30 GB raw (8 SBs, Cycle 0 continuum)
+- 2013ApJ...768L..38H: ~1-5 GB
+- 2013ApJ...769L..27H: ~20-50 GB (Cycle 0, 20 short pointings)
+- 2013ApJ...770...13W: ~10-30 GB raw
+- 2013ApJ...770..142N: Tens of GB for ALMA SV Orion KL Band 6 measurement set; plus HIFI spectra
+- 2013ApJ...770L..27F: ~10-50 GB
+- 2013ApJ...772..149C: none (no ALMA data reprocessed)
+- 2013ApJ...773...44W: Tens of GB (five Cycle 0 fields, four 2 GHz windows)
+- 2013ApJ...774...16R: ~10-50 GB (SV datasets, multiple EBs, Bands 6 and 7)
+- 2013ApJ...774...39A: ~50-100 GB raw for 11 execution blocks
+- 2013ApJ...774...73I: ~50-100 GB raw (4 EBs, Cycle 0) plus APEX cubes
+- 2013ApJ...775L..31S: ~10-50 GB (Cycle 0, three EBs)
+- 2013ApJ...776...77K: ~10-30 GB raw (Cycle 0, 5 short executions)
+- 2013ApJ...777...85N: ALMA SV ms tens of GB; HIFI spectra small
+- 2013ApJ...777...92S: ~10-30 GB raw (Cycle 0, three EBs, 3840-channel spws)
+- 2013ApJ...777..126S: <10 GB for ALMA part
+- 2013ApJ...777L..25M: ~10-20 GB (Cycle 0 TDM+FDM)
+- 2013ApJ...778..179W: Small if using published ALESS catalog; Chandra 4 Ms data tens of GB
+- 2013ApJ...779...67B: Small ALMA Cycle 0 dataset (~ few GB)
+- 2013ApJ...779...96T: ~ few GB
+- 2013ApJ...779L..22J: tens of GB raw (Cycle 0 Band 7, 4 spectral windows, ~4 hours)
+- 2013MNRAS.430L..10L: ~50-100 GB for ALMA SV plus VLA
+- 2013MNRAS.432....2K: ~10-50 GB (Cycle 0, 8 MSs, 122 short fields)
+- 2013Natur.493..191C: ~10-50 GB (single Cycle 0 Band 7 execution)
+- 2013PASJ...65..100I: ~10-30 GB raw for a Cycle 0 compact-config band 7 dataset
+- 2013PASJ...65L...7I: ~10-30 GB
+- 2013PASJ...65L..14F: ~50-100 GB raw (4 SBs, Band 7, 4 spws x 3840 channels)
+- 2013PhRvL.111w1101B: small (<10 GB for ALMA)
+- 2013Sci...341..630Q: ~10-30 GB
+- 2014A&A...561A..49H: ~10-50 GB for ALMA Cycle 0 raw data
+- 2014A&A...562A..67G: ~1-2 GB
+- 2014A&A...563A.113V: ~50-100 GB raw
+- 2014A&A...563A.136M: ~10-50 GB for the ALMA Cycle 0 PKS 1830-211 data
+- 2014A&A...565A..59D: ~10-50 GB raw
+- 2014A&A...566A..74L: ~20-50 GB (Cycle 0, three execution blocks, 4 spws x 3840 channels)
+- 2014A&A...566A.112M: ~100-300 GB raw for 13 Cycle 0 execution blocks
+- 2014A&A...566L...6M: ~10-50 GB
+- 2014A&A...567A.119S: ALMA cycle 0 band 7 data of one target, a few GB; SINFONI cubes small
+- 2014A&A...567A.125G: ~10-50 GB of Cycle 0 raw data (7 tracks Band 7/9); products smaller
+- 2014A&A...568A..40G: small (ALMA part ~ <50 GB)
+- 2014A&A...568A..92M: ~50-100 GB for two ALMA Cycle 0 execution sets (raw)
+- 2014A&A...568L...5C: ~10-20 GB
+- 2014A&A...569L...5M: ~10-50 GB for ALMA+ACA band 7 mosaics
+- 2014A&A...570A..28V: Not given; two Cycle 0 ALMA spectral-line datasets (Bands 7 and 9), likely tens of GB raw, plus archival PdBI maps
+- 2014A&A...570L..14R: ~50-100 GB (Cycle 1 12m mosaic plus ACA, 4 spws)
+- 2014A&A...572L...9R: Tens of GB (three SBs, 3840-channel spws)
+- 2014AJ....148....9I: tens of GB
+- 2014ApJ...780..115D: ~tens of GB raw for 86 Cycle 0 pointings; much smaller if calibrated maps used
+- 2014ApJ...781L..39T: ~50-100 GB for the Band 3 and Band 7 raw data plus ~few GB of Chandra
+- 2014ApJ...782...19S: small for ALMA part (one field)
+- 2014ApJ...782...62R: ~10-50 GB
+- 2014ApJ...783...71W: VLA ~100s GB; ALMA SV small
+- 2014ApJ...783...84S: ~tens of GB (Cycle 0 Band 7, ~5 hr, 107 short pointings)
+- 2014ApJ...783L..13P: ~20-50 GB for two Cycle 0 Band 9 datasets
+- 2014ApJ...784...62A: ~50-100 GB raw (7 Cycle 0 execution blocks)
+- 2014ApJ...784...78R: ~10-30 GB
+- 2014ApJ...784...82M: ~10-50 GB (Cycle 0, 5 fields, 4 spws)
+- 2014ApJ...785...44M: ~10-30 GB raw for two bands in Cycle 0
+- 2014ApJ...785..111W: Small if using published ALMA fluxes and CANDELS catalog (~GB); raw ALMA ~tens of GB
+- 2014ApJ...785..149S: Small: 26 sources x 5 tunings of ~2 min Cycle 0 Band 3 data, likely tens of GB
+- 2014ApJ...785L..12C: ~50-100 GB
+- 2014ApJ...786..114L: ~20-50 GB (two Cycle 0 Band 7 scheduling blocks, 9-pointing mosaic)
+- 2014ApJ...787..112C: HIFI products tens of MB; ALMA SV dataset tens of GB
+- 2014ApJ...788..125S: small for ALMA (catalog from Hodge+13); tens of GB for ancillary imaging
+- 2014ApJ...788L..34P: ~10-30 GB for Cycle 0 Band 7 single execution
+- 2014ApJ...789L...4T: ~10-50 GB
+- 2014ApJ...790..160S: ~10-50 GB raw for two small Cycle 0/1 datasets
+- 2014ApJ...791...20R: ~10-30 GB raw
+- 2014ApJ...791...42Z: ~10-30 GB raw Cycle 0 single-execution data
+- 2014ApJ...791...95A: ~10-50 GB (Cycle 0, four bands)
+- 2014ApJ...791..123W: ~50-100 GB (SV Band 6 spectral-line dataset, 20 SPWs)
+- 2014ApJ...791L...6W: ~10-30 GB raw
+- 2014ApJ...792...34O: ~20-50 GB raw for four Cycle 0 execution blocks
+- 2014ApJ...792...68S: ~10-50 GB
+- 2014ApJ...792...94D: ~10-20 GB (single Cycle 0 execution, 4 spw x 3840 channels)
+- 2014ApJ...792L...2C: Tens of GB raw
+- 2014ApJ...792L..25V: tens of GB (Cycle 0 Band 7 dataset)
+- 2014ApJ...793....1Y: ~10-20 GB raw (single Cycle 0 execution, 4 spws x 3840 channels)
+- 2014ApJ...794L..10Y: ~50-100 GB
+- 2014ApJ...795....5O: ~100-300 GB raw for 10 datasets
+- 2014ApJ...795...28B: ~50-200 GB raw for six Band 3 mosaic execution blocks
+- 2014ApJ...795..152O: ~10-50 GB raw for two Cycle 0 projects
+- 2014ApJ...795..156W: ~50-200 GB raw for ten executions of 13-field mosaic
+- 2014ApJ...795L..25R: ~50-100 GB (six Cycle 0 execution blocks, mosaic with 4 wide spectral windows)
+- 2014ApJ...795L..30C: ~5-20 GB
+- 2014ApJ...796....1T: ~10-30 GB (single Cycle 0 execution, four 468 MHz spws)
+- 2014ApJ...796...82Z: tens of GB for ALMA Cycle 0 raw data in four bands
+- 2014ApJ...796...84R: ~50-100 GB raw for 5 Cycle 0 tracks
+- 2014ApJ...796..117G: ~10-50 GB raw (Cycle 0, 5 SBs); small if using released cubes
+- 2014ApJ...796..120W: ~10-50 GB for the Cycle 0 dataset
+- 2014ApJ...796..131O: ~10-30 GB raw single-EB cycle 0 data
+- 2014ApJ...796L..15S: tens of GB
+- 2014ApJ...797...27F: ~10-30 GB raw (two Cycle 0 Band 7 execution blocks)
+- 2014ApJ...797...90S: Tens to ~100 GB raw for Cycle 0 B3+B7 plus CSV
+- 2014ApJS..214....1U: ~100-300 GB for ALMA Cycle 0 raw data of 20 sources plus SV
+- 2014ApJS..215...25F: ~tens of GB (20 spw cubes of 3840 channels)
+- 2014MNRAS.438.1267S: ~10-50 GB (Cycle 0 ALMA plus Herschel/Spitzer maps)
+- 2014MNRAS.439.2096W: Small; ALMA data used only from literature, FORS2 spectra small
+- 2014MNRAS.442..577T: Radio map analysis dominates; ALMA maps from the earlier release are small (~tens of GB raw)
+- 2014MNRAS.444.1821F: ~ few GB (Cycle 0 continuum TDM)
+- 2014MNRAS.445.1412Z: ~10-50 GB
+- 2014Natur.510..247H: ~10-30 GB raw
+- 2014Natur.511..567J: ~10-30 GB
+- 2014Natur.514..600D: ~10-50 GB
+- 2014PASJ...66...75T: ~10-50 GB
+- 2014PASJ...66..106H: ~10-50 GB (ALMA cycle 0 band 7, 3 executions)
+- 2014Sci...343.1490D: ~5-20 GB
+- 2014Sci...345.1584B: Large: four setups x 4 spectral windows, a few hundred GB raw
+- 2015A&A...573A.116M: ~10-50 GB raw (two Cycle 0 executions)
+- 2015A&A...573L...1O: tens of GB
+- 2015A&A...573L...4L: ~10-50 GB raw
+- 2015A&A...574A...5D: ~10-30 GB raw Cycle 0 Band 9 data
+- 2015A&A...574A..19S: small (<~10 GB for ALMA data of two sources)
+- 2015A&A...575L...5H: ~20-50 GB raw for three Cycle 0 execution blocks
+- 2015A&A...576A..41B: ~10-50 GB (Cycle 0 ALMA plus VLA)
+- 2015A&A...576A.129B: ~100-300 GB
+- 2015A&A...576L...2S: ~5-20 GB
+- 2015A&A...576L..15O: ~20-50 GB
+- ... 3075 more (all member papers are listed in references/sources.md)
+
+### CASA versions stated (count)
+- casa 4.7.2: 50
+- casa 4.7.0: 40
+- casa 5.4.0: 29
+- casa 4.5.3: 28
+- casa 4.2.2: 27
+- casa 4.3.1: 27
+- casa 5.1.1: 27
+- casa 5.4.1: 24
+- casa 4.7: 23
+- casa 4.4.0: 16
+- casa 5.6: 16
+- casa 4.5.0: 15
+- casa 4.2.1: 13
+- casa 4.2: 12
+- casa 5.6.1-8: 12
+- 5.6.1-8: 12
+- 5.1.1: 9
+- 5.4.0: 9
+- 5.4.0-70: 9
+- 5.6.1: 9
+- casa 6.4.1.12: 9
+- casa 4.1: 8
+- casa 4.5: 8
+- casa 5.4: 8
+- casa 6.2.1.7: 8
+- casa 3.4: 7
+- casa 4.6.0: 7
+- casa 5.1: 7
+- casa 6.2.1: 7
+- casa v4.4: 6
+
+### Calibration: pipeline or manual, as stated (count)
+- alma pipeline: 44
+- casa pipeline: 44
+- pipeline: 35
+- standard alma pipeline: 27
+- alma pipeline in casa: 14
+- alma science pipeline: 8
+- standard procedures in casa: 7
+- standard pipeline: 7
+- alma calibration pipeline: 6
+- standard casa pipeline: 6
+- pipeline-calibrated: 6
+- standard procedures: 5
+- casa, standard procedures: 5
+- standard alma pipeline in casa: 5
+- observatory pipeline: 5
+- casa, standard procedure: 4
+- calibrated with casa (details not given): 4
+- calibrated with casa; details not given: 4
+- standard alma calibration script in casa: 4
+- alma pipeline reduction scripts: 4
+- alma data reduction pipeline: 4
+- pipeline calibrated: 4
+- casa, standard manner: 3
+- standard casa procedures: 3
+- standard routines in casa: 3
+- calibrated by nrao staff: 3
+- alma reduction pipeline scripts: 3
+- manual: 3
+- alma calibration pipeline in casa: 3
+- manual calibration: 3
+
+### Absolute flux-scale uncertainty, as stated (count)
+- 10%: 103
+- ~10%: 82
+- 5%: 25
+- ~5%: 16
+- 15%: 15
+- about 10%: 12
+- <10%: 11
+- better than 10%: 11
+- 10% absolute flux calibration: 8
+- ~15%: 6
+- 10% systematic: 5
+- 20%: 5
+- better than 5%: 5
+- 5-10%: 5
+- ~10% systematic: 4
+- within 5%: 4
+- within 15%: 4
+- 10 %: 4
+- ≲10%: 4
+- ~20%: 3
+- ≈10%: 3
+- 10% flux calibration uncertainty: 3
+- about 7%: 3
+- about 15%: 3
+- 5% in band 3: 3
+
+### Code released (bibcode: what)
+- 2014A&A...563A.136M: Downloadable from nordic-alma.se/support/software-tools
+- 2014ApJ...796...84R: SED fitting code mbb_emcee on GitHub
+- 2014ApJS..215...25F: BELGI source code available online
+- 2014Sci...345.1584B: Chemical model input files available online
+- 2015ApJ...802...69B: not stated
+- 2015ApJ...806..154C: Analysis code open source (MIT) at github.com/iancze/JudithExcalibur
+- 2015ApJ...812...43B: uvmcmcfit at https://github.com/sbussmann/uvmcmcfit
+- 2015Natur.519..327W: ALMA reduction scripts at dark.nbi.ku.dk
+- 2015PASJ...67...72T: GLAFIC model files released online
+- 2016ApJ...816...27S: not stated
+- 2016ApJ...818..156C: Open-source MIT code at github.com/iancze/JudithExcalibur
+- 2016ApJ...823...37H: not stated
+- 2016ApJ...823L..18H: VIS_SAMPLE and PWKIT are public on GitHub; toy model scripts not released
+- 2016ApJ...826..112S: visilens at https://github.com/jspilker/visilens
+- 2016ApJ...828...46A: not stated
+- 2016ApJ...828...56W: KMOS reduction scripts at github.com/cschreib/kmos-scripts
+- 2016ApJ...828..113M: vis_sample on GitHub (AstroChem/vis_sample)
+- 2016ApJ...829L..23B: not stated
+- 2016ApJ...832..110C: vis_sample available on github
+- 2016Natur.534..218T: https://github.com/granttremblay/Tremblay_Nature_ALMA_Abell2597
+- 2016Natur.538..483T: No new code; thin-disk model code of Maret 2015 is public
+- 2016Natur.540..406B: RADMC-3D public; non-LTE excitation code not released
+- 2017A&A...597A..27S: SHAPE-format model file provided as online supporting data
+- 2017A&A...597A..41G: uvmcmcfit public on GitHub (third party); analysis scripts not stated
+- 2017A&A...599A.134S: phy++ library is open source; analysis scripts not stated
+- 2017A&A...602A..59C: STATCONT freely accessible
+- 2017A&A...604A...2S: MCMC code of Kamenetzky available on github (pyradexnest)
+- 2017A&A...604A...6S: STATCONT available at a URL
+- 2017A&A...605A..21C: vis_sample is publicly available on GitHub
+- 2017A&A...605A..28D: SHAPEMOL described as publicly available
+- 2017A&A...605A.121M: Python code at alma-allegro.nl WVR scaling page
+- 2017AJ....154...24R: DiskJockey freely available on GitHub (MIT license)
+- 2017ApJ...835...17M: DiskJockey open source under MIT license
+- 2017ApJ...835..278S: CPROPS available at github cpropstoo
+- 2017ApJ...839...43O: vis_sample publicly available on GitHub
+- 2017ApJ...840....8S: pyradexnest at github (third-party code)
+- 2017ApJ...840...23L: vis_sample publicly available on GitHub
+- 2017ApJ...841..130A: RHOCUBE is described as public
+- 2017ApJ...842....8M: vissample is public on GitHub; the eccentric-ring model code is not stated as released
+- 2017ApJ...842...92G: https://github.com/adamginsburg/W51_ALMA_2013.1.00308.S
+- 2017ApJ...846L..22G: uvmcmcfit public on GitHub; modified version not stated as released
+- 2017ApJ...846L..26W: not stated
+- 2017ApJ...848L..21A: pwkit available at github
+- 2017ApJ...849...14S: not stated
+- 2017ApJ...851..132C: DiskJockey released under MIT license
+- 2017Icar..286..289L: not stated
+- 2017MNRAS.466..213A: RHOCUBE and analysis scripts at github.com/rnikutta/rhocube and s61-supplements
+- 2017MNRAS.468..685Q: GASS is freely available upon request (website under construction at http://quenarddavid.wixsite.com/astrophysics/gass-code) as a standalon…
+- 2017MNRAS.468.1769F: cpropstoo is public; the custom mass-fitting code is not mentioned
+- 2017MNRAS.468.4675D: KinMS is public on GitHub; KINMS_MCMC is not released (in prep.)
+- 2017MNRAS.469.2230M: UCL_CHEM available at uclchem.github.io
+- 2017MNRAS.469.3200B: not stated
+- 2017NatAs...1E.130Z: Only VIS_SAMPLE is linked; the disk model/fitting code is not stated as released
+- 2018A&A...609A.101S: STATCONT available from GitHub and the author's webpage
+- 2018A&A...610A..44M: Fit files and prediction (.lin, .par, .cat) at CDS
+- 2018A&A...611A..16B: vis_sample matched filter code publicly available on GitHub
+- 2018A&A...611A..22S: FAST++ and gbkfit linked on GitHub; FAST++ to be described in a separate paper
+- 2018A&A...614A.106C: vis_sample publicly available on GitHub
+- 2018A&A...617A..28S: ALCHEMIC code is public
+- 2018A&A...618A..85S: FAST++ and slinefit are on GitHub; phy++ library
+- 2018AJ....155...54W: Example reduction/analysis scripts at osf.io/9dyx4
+- 2018ApJ...852..122H: vis_sample version used is available on GitHub
+- 2018ApJ...853..171G: GitHub repository SgrB2_ALMA_3mm_Mosaic, hash e26ce0f
+- 2018ApJ...853..195W: Python port of Chary & Elbaz IDL routine at github.com/jwuphysics/chary_elbaz_python
+- 2018ApJ...856..117F: not stated
+- 2018ApJ...857...19F: not stated
+- 2018ApJ...859..131L: VISIBLE public on GitHub
+- 2018ApJ...859..150R: vis_sample publicly available on GitHub
+- 2018ApJ...859L..28K: not stated
+- 2018ApJ...860..119G: GitHub keflavich/Orion_ALMA_2016.1.00165.S, hash 68a49ad
+- 2018ApJ...861...14C: yclean frozen version on Zenodo (10.5281/zenodo.1216881)
+- 2018ApJ...861...72C: pythonradex on GitHub
+- 2018ApJ...864L..17G: Code is on GitHub: keflavich/SgrB2_ALMA_3mm_Mosaic and keflavich/SgrB2_CFE
+- 2018ApJ...865...13T: Python codes/notebooks at Zenodo doi 10.5281/zenodo.1233825 and GitHub
+- 2018ApJ...867..165B: not stated
+- 2018ApJ...868..113T: eddy on GitHub and Zenodo v1.0
+- 2018ApJ...868L...5K: vis_sample is public; no custom code released
+- 2018ApJ...869...75M: vis_sample publicly available on GitHub
+- 2018ApJ...869..126L: CPROPS version at github.com/akleroy/cpropstoo
+- 2018ApJ...869L..41A: CASA scripts and python modules used to calibrate and image the data are released
+- 2018ApJ...869L..49I: DSHARP CASA calibration/imaging script online
+- 2018MNRAS.473.3818D: KinMS public on GitHub; KinMS_MCMC not yet released
+- 2018MNRAS.475.3004S: Masked-moment code is public (Davis makeplots)
+- 2018MNRAS.475.4924K: not stated
+- 2018MNRAS.476..122V: KinMS on GitHub
+- 2018MNRAS.478.2505I: Model library at github.com/andizq/star-forming-regions
+- 2018NatAs...2..646H: Hyperion public; line radiative transfer code not public
+- 2018NatAs...2..778K: Spectroscopic data for AlF available online (goo.gl link)
+- 2018Natur.553...51M: visilens public; pixellated lens code proprietary and not released; rareness code public
+- 2018Natur.553..178S: Kinematic models available on request only
+- 2018Natur.557..392H: SED code KENSFIT available online
+- 2018Sci...361.1016S: Lens tool data files and reconstructions released; tool itself not stated as released
+- 2019A&A...621A..27F: https://github.com/gdrouart/MrMoose
+- 2019A&A...623A..68T: not stated
+- 2019A&A...623A..96Y: not stated
+- 2019A&A...623A.124C: vis_sample publicly available (GitHub)
+- 2019A&A...625A.118K: eddy publicly available on GitHub
+- 2019A&A...629A..75B: Keplerian mask script on GitHub (not the authors' own models)
+- 2019A&A...631A..78S: Line Stacker is 'Jolly et al. in prep'; no release stated
+- 2019A&A...631A..91G: not stated
+- 2019A&A...632A..38A: SEAC and SERPent are on GitHub
+- 2019A&A...632L...7J: https://github.com/gcjones2/SphOut
+- 2019AJ....157..251T: Radio-BEAR code available on GitHub
+- 2019AJ....158...15P: GPUVMEM public on GitHub; FARGO-ADSG public; Dusty version on request
+- 2019AJ....158..139D: Radio-BEAR on GitHub
+- 2019AJ....158..162F: Disk model code public at github.com/kevin-flaherty/disk_model
+- 2019ApJ...871...73H: https://github.com/annayqho/AT2018cow
+- 2019ApJ...871..170M: CubeLineMoment and gaussfit_catalog available on GitHub
+- 2019ApJ...872...54G: GitHub repository with analysis scripts
+- 2019ApJ...872..117G: MF3D available on GitHub
+- 2019ApJ...872..176Z: Thin disk model documented at a URL (Estalella); no code released otherwise
+- 2019ApJ...874..136S: pdspy publicly available at github.com/psheehan/pdspy
+- 2019ApJ...875...24C: Own spectral fitting code not released; FilFinder and RadFil are public
+- 2019ApJ...875...96N: VISIBLE is publicly available (github); the authors' modified RATRAN/disk model code not stated as released
+- 2019ApJ...875L...3E: eat available on GitHub
+- 2019ApJ...875L...4E: eht-imaging and SMILI are open source; DIFMAP public
+- 2019ApJ...877L..32M: vis_sample is public on GitHub
+- 2019ApJ...879L..25I: CASA 5.1.1 self-calibration script at obelix.rice.edu/~ai14/PDS70/
+- 2019ApJ...881..147S: not stated
+- 2019ApJ...882..139G: LineSeeker released at github.com/jigonzal/LineSeeker
+- 2019ApJ...882..168P: Visibility disk-modeling code at github.com/pavesiriccardo/UVmodeldisk
+- 2019ApJ...882L..31B: VISIBLE matched filter code is public
+- 2019ApJ...883...22C: DiskJockey available on GitHub
+- 2019ApJ...884L..56T: bettermoments and eddy on GitHub
+- 2019ApJ...887...74F: bayesed URL footnoted, but the version used is forthcoming
+- 2019ApJS..244...40L: Experimental multi-component SED fitting code Crab.Toolkit.michi2 released on GitHub (http://github.com/1054/Crab.Toolkit.michi2); A3COSMOS…
+- 2019MNRAS.482.4617S: makeplots IDL on GitHub (https://github.com/TimothyADavis/makeplots)
+- 2019MNRAS.483.1624B: Auto-masking code listed in author's MSc thesis appendix
+- 2019MNRAS.483.2251Z: Data reduction scripts at github.com/NikkiZabel/AlFoCS_data_reduction_scripts
+- 2019MNRAS.485.2457H: scousepy and acorns on GitHub
+- 2019MNRAS.485.4359S: KinMS, KinMS_MCMC and SkySampler available on GitHub
+- 2019MNRAS.489.1770L: not stated
+- 2019MNRAS.489.3739R: KinMS_MCMC on GitHub
+- 2019MNRAS.490..319N: KinMS, KinMS_MCMC and SkySampler on GitHub
+- 2019MNRAS.490.5860S: not stated
+- 2019NatAs...3..230K: Scripts on github (drgmk)
+- 2019NatAs...3..278K: Post-processing and modelling scripts on github (drgmk)
+- 2019NatAs...3..408D: Python script and ballistic code only on request
+- 2019NatAs...3..614L: On request only
+- 2019NatAs...3.1109P: phantom public; mcfost available on request; splash and pymcfost open-source
+- 2019NatAs...3.1115D: Standard public codes only; no custom code released
+- 2019Natur.569..519K: Available from corresponding author on reasonable request; dedicated publication in preparation
+- 2019Natur.570...83M: CARAMEL not released
+- 2019Natur.572..211W: SED modeling and stacking codes on github.com/cschreib
+- 2019Natur.574..378T: bettermoments and eddy are on GitHub
+- 2019Natur.575..459M: Proprietary MAGIC codes; information available on request
+- 2019PASP..131f4301W: Model setup files released; the codes themselves are not stated as released
+- 2020A&A...633A.160C: Individual properties for remaining targets available online; FAST++ public on GitHub
+- 2020A&A...634A...9M: MeerKAT pipeline repository linked (meerkathi/stimela); SYNAGE++ not released in paper
+- 2020A&A...634A..56D: STiC publicly available on GitHub
+- ... 459 more (all member papers are listed in references/sources.md)
+
+### Why the card judged the paper a good rediscovery task (bibcode: reason)
+- 2012A&A...544L...7P: Public data, explicit model with fixed parameters, numeric results in Table 1.
+- 2012ApJ...757L...1H: The data are public and the main results are numeric (Gaussian peaks), though imaging settings are not given.
+- 2012ApJ...761L..32W: Cycle 0 data are likely public, the recipe is short, and results are numeric fluxes.
+- 2013AJ....146...47I: Archive data, simple moment/Gaussian analysis with numeric results, though settings need guessing.
+- 2013AJ....146...91I: Public data, simple recipe, and numeric line fluxes can be checked, though details are sparse.
+- 2013ApJ...762L..21M: Data are an ALMA Cycle 0 project (public per archive link), the model is described, and results are numeric, though public status is not stated in the paper.
+- 2013ApJ...764L..14Z: Public SV data; numeric results (size, flux, Tb, model parameters) are checkable, though recipe is incomplete.
+- 2013ApJ...765L..14Q: Public SV data and a stated ring-model recipe with numeric results, though requires the Qi11 model.
+- 2013ApJ...768...91H: Public data, simple imaging recipe, numeric results (rms, source counts, fluxes).
+- 2013ApJ...768L..38H: Public Cycle 0 data, simple recipe, numeric line and continuum results.
+- 2013ApJ...769L..27H: Single known project, simple numeric counts, though imaging details are missing.
+- 2013ApJ...770...13W: Data are public, analysis is simple, and the results are numeric (flux, FWHM, line flux), though imaging details are missing.
+- 2013ApJ...776...77K: Public Cycle 0 data, clear grid fit recipe and numeric results (rout, M*, i, fluxes), though imaging details are missing.
+- 2013PASJ...65L...7I: Data are in the archive, and the main results are numeric integrated fluxes and line widths. Imaging is simple, though some settings are missing.
+- 2013PASJ...65L..14F: Cycle 0 data are likely public, the recipe is short and results are numeric, though some settings must be guessed.
+- 2014A&A...562A..67G: Public Cycle 0 data, simple continuum and SED fit with numeric results.
+- 2014A&A...566A..74L: Public Cycle 0 data, with numeric results (disc radius, stellar mass, disc mass) obtainable by a straightforward PV analysis.
+- 2014A&A...572L...9R: Public SV data, numeric positions and separations can be checked, though recipe is partly incomplete.
+- 2014ApJ...780..115D: Public data, simple stacking recipe, numeric results in tables; depends on companion catalogs.
+- 2014ApJ...783L..13P: Data are public, the model is simple and results are numeric, though some details must be guessed.
+- 2014ApJ...784...62A: Cycle 0 data are archival, recipe largely complete, and results are numeric tables of fluxes and masses.
+- 2014ApJ...784...78R: Public data, simple recipe, numeric Gaussian-fit and mass results.
+- 2014ApJ...784...82M: Public Cycle 0 data; fluxes and masses in tables with a simple mass formula.
+- 2014ApJ...785...44M: Data are public and the key results (CO flux, gas mass, FWHM) are numeric and recoverable with CASA, though the outflow requires care.
+- 2014ApJ...788L..34P: Public data; uvmodelfit and visibility results are numeric and redoable, though imaging details are missing.
+- 2014ApJ...790..160S: ALMA project codes are given, recipe mostly complete, and results (fluxes, masses) are numeric.
+- 2014ApJ...791L...6W: Public Cycle 0 data, numeric ring radii and fluxes can be redone via visibility fitting.
+- 2014ApJ...792...34O: Data public, results numeric limits derived from formulae; reasonably redoable.
+- 2014ApJ...792...94D: Data public, a single short execution, and numeric results (masses, linewidths, flux density) are tabulated, though imaging details need reconstruction.
+- 2014ApJ...795....5O: Public data, numeric counts, but imaging details are partly missing.
+- 2014ApJ...795L..30C: Data are public, imaging parameters are largely given, and results are numeric, though the NEMESIS modeling needs unstated inputs.
+- 2014ApJ...796..117G: Public Cycle 0 data and released products; main results (Voigt widths, densities, dynamical mass) are numeric with described recipe.
+- 2014ApJ...797...27F: A single Cycle 0 project; the uvmodelfit and mass recipe is simple and the results are numeric.
+- 2014MNRAS.445.1412Z: Public ALMA data, clear recipe, numeric results (slopes, breaks), though some parameters missing.
+- 2014Natur.510..247H: Public data, numeric results, formula-based derivations; some imaging details are missing.
+- 2014PASJ...66...75T: Data are archival ALMA Cycle 0, and the flux ratios and line parameters are numeric tables that can be redone.
+- 2014Sci...343.1490D: Public single-execution data; numeric flux, dust and CO masses are checkable.
+- 2015A&A...573L...4L: Public data, simple numeric fluxes, though details missing.
+- 2015A&A...576A..41B: Public data, simple visibility-based light curves and FRED fits with numeric results in Table 1.
+- 2015A&A...576L...2S: Cycle 0 data likely public, single integrated flux and luminosity are numeric; recipe is simple though lacking some details.
+- 2015A&A...576L..15O: A single archival project; the main results are numeric and the analysis is simple, although some details are missing.
+- 2015A&A...577L...4V: Data are public, uv-fitting with UVMULTIFIT is straightforward, and results are numeric in Table 1.
+- 2015A&A...582L...5R: Data are from a Cycle 2 project and flux/dust-mass/CO results are numeric and simple to redo.
+- 2015A&A...584A..78C: Data public, the pipeline is described and results are numeric, though some imaging settings are missing.
+- 2015ApJ...798..124R: Public data, explicit model parameterization, numeric results (gap radius/width, chi2).
+- 2015ApJ...798L..23K: Data are from a Cycle 1 project and the simple flux measurement is numeric, though public status is not stated by the paper.
+- 2015ApJ...799...81S: Public ALMA data, simple Gaussian-fit recipe and numeric size results; redshifts need external catalog.
+- 2015ApJ...800L..14C: Public data, a mostly specified recipe and numeric results (column densities and abundances).
+- 2015ApJ...803...60S: Public Cycle 0 data, tabulated numeric results (line ratios, masses), mostly standard recipe.
+- 2015ApJ...803...97S: Public data, line tables with measured values, and numeric temperatures/column densities; recipe moderately complete.
+- 2015ApJ...806...39O: Public Cycle 0 data, a numeric answer (M_BH, M/L), and a mostly described recipe.
+- 2015ApJ...806..154C: Public ALMA data, open code, numeric headline result (M*=2.49 Msun).
+- 2015ApJ...806L...7Z: Public SV data, numeric dip parameters in Table 1 can be checked, though some imaging details are missing.
+- 2015ApJ...806L..15K: Public HL Tau images and a short analytic recipe with numeric results.
+- 2015ApJ...807..180W: Cycle 2 data likely public, key results (line fluxes, redshifts, continuum) are numeric and recipe mostly sufficient.
+- 2015ApJ...808...36M: Public SV data, numeric results in tables, fairly complete recipe for ALMA part.
+- 2015ApJ...808...69B: Public data and simple numeric results (flux, mass, absorption depths), though imaging details must come from Mann et al. 2014.
+- 2015ApJ...811...39I: Single ALMA project, numeric line ratios and masses, reasonably simple recipe.
+- 2015ApJ...815...64W: Public data, a single point-source flux measurement with numeric results; recipe is simple though some settings are missing.
+- 2015MNRAS.447.3936M: Public archival data, stated procedure and numeric flux/mass limits; some imaging details need inference.
+- 2015MNRAS.450L..80B: Public data, numeric results from explicit equations, though some inputs are not given.
+- 2015MNRAS.452...88K: Single archival dataset, numeric results (flux, FWHM, sizes) are recoverable with standard CASA steps.
+- 2015Natur.522..455C: Public data with numeric tables of fluxes, though processing details are incomplete.
+- 2015RAA....15.2213A: Public data, numeric results, and well-specified model equations.
+- 2015Sci...348..311M: Rpol per epoch is tabulated and the cosine fit is simple, so RM values can be reproduced from the tables, though the archive data reprocessing needs missing de…
+- 2016A&A...586A..69P: Public data, numeric fluxes and spectral indices from simple imaging and Gaussian fits.
+- 2016A&A...586A..99H: Data are public, model is explicit and results are numeric (slopes, break radius).
+- 2016A&A...586A.124G: Short single-track public ALMA dataset with numeric flux and CO line results that can be redone.
+- 2016A&A...589L...5M: Public ALMA data, short recipe (extract spectrum, integrate opacity, compute column), numeric results.
+- 2016A&A...590A..25M: Public data and numeric Gaussian-fit results, though imaging details must be reconstructed.
+- 2016A&A...590A.127W: Public data, continuum fits and imaging recipe are numeric and redoable; the radiative transfer part is only partly reproducible.
+- 2016A&A...591A..73G: Single-project data likely public, with numeric fluxes and masses to compare, though imaging details are sparse.
+- 2016A&A...593A..61M: The SV data are public, the recipe is mostly clear, and the results are numeric (p and phi of 3C 286).
+- 2016A&A...596A..75S: Public archival data, simple uvmodelfit flux and size measurement gives numeric result 3.90+-0.41 mJy.
+- 2016AJ....152...42M: Data are public, the recipe is mostly described and the results are numeric.
+- 2016AJ....152..218I: Projects listed, tabulated numeric fluxes provide answer keys, recipe is simple (uvcontsub, clean, moments, Gaussians), though parameters are loosely specified.
+- 2016ApJ...816...37V: Public Cycle 1 data, simple Gaussian fits and numeric results (line fluxes, continuum, redshifts) can be redone.
+- 2016ApJ...818..156C: Data are public in the ALMA archive, code is released and the results are numeric.
+- 2016ApJ...819L...7N: Public data, numeric gap parameters, mostly specified recipe.
+- 2016ApJ...820L..25Y: Public data, a fairly clear recipe, and numeric results.
+- 2016ApJ...820L..39N: Data are public, the recipe is short, and the results (flux, M_mol, v_rot) are numeric, though the MCMC model needs reimplementation.
+- 2016ApJ...820L..40A: Public data, a recoverable imaging recipe, and numeric ring radii and geometry results.
+- 2016ApJ...822L..10I: Data public, simple CASA workflow, numeric results (fluxes, size, ratios) available.
+- 2016ApJ...823..160D: Public data and numeric detections/flux densities with a simple mass formula; synthetic part is harder.
+- 2016ApJ...823L..10W: Public data; stacked detection with numeric S/N and abundances is redoable, though modeling needs external disk structure.
+- 2016ApJ...824..132N: Public SV data, CASA guide recipe, numeric results (flux, polarization fraction, EVPA).
+- 2016ApJ...825...44I: Public ALMA data; line fluxes in tables are checkable via simple imaging and Gaussian fits.
+- 2016ApJ...825L..16M: Cycle 3 data likely public, short recipe, numeric fluxes and masses.
+- 2016ApJ...826..112S: Data and code are public and results are numeric (magnifications, sizes), though some settings are missing.
+- 2016ApJ...827...68P: Public data; numeric fluxes and masses can be rechecked.
+- 2016ApJ...827...69H: Public data, numeric results (peak fluxes, velocities), but recipe details partly missing.
+- 2016ApJ...827...72S: Public data, Gaussian line fits and rotation diagrams with numeric results are redoable from Table 1 recipes.
+- 2016ApJ...827..142B: Public archival data, clear recipe for flux fits and dust masses, numeric results.
+- 2016ApJ...828...50K: Public ALMA data, numeric results such as alpha_CO and dust mass; recipe mostly stated.
+- 2016ApJ...828..113M: Public data, specified model and priors, numeric results (Rin, Rout, Fcen); some settings must be inferred.
+- 2016ApJ...829....6W: Public archival data, simple analysis with numeric tabulated results (flux, CO flux, Keplerian parameters).
+- 2016ApJ...829L..35T: Public data, fairly complete imaging recipe, numeric results (alpha, beta, gap positions).
+- 2016ApJ...830L..37I: Public data, numeric abundances from a straightforward LTE recipe, though imaging details must be reconstructed.
+- 2016ApJ...831..161K: Public data and numeric tables (Table 2, regression) allow redoing the analysis, though some steps are loosely described.
+- 2016ApJ...831..200W: Public data, numeric results (flux, geometry, V_LSRK, CO radius), mostly reproducible recipe.
+- 2016ApJ...832..148V: Public data, numeric masses and Gaussian fits are redoable.
+- 2016ApJ...832..187B: Data are archival, recipe is mostly described, results (fluxes, sizes, Tb) are numeric.
+- 2016ApJ...832..204Y: Public data, explicit algorithm, and numeric fluxes and S/N gains to compare.
+- 2016ApJ...833..103H: Public data, clear imaging recipe, numeric size/index results.
+- 2016ApJ...833..209O: Public data, core table in the paper gives numeric answer keys, continuum recipe largely stated.
+- 2016MNRAS.455.2745K: ALMA data are archival-public after proprietary period and the main results (gas mass limits, fluxes) are numeric and computable from described steps.
+- 2016MNRAS.458.3134R: Public data, simple Gaussian fits and mass formula, numeric results such as the 4.6e9 Msun mass and line ratios.
+- 2016MNRAS.458L..29C: Public Band 7 data, numeric results (ring radius, width, flux, inclination), fairly simple recipe.
+- 2016MNRAS.460..627K: Public data, simple recipe, numeric results.
+- 2016MNRAS.461.2944A: Data are public, recipe is simple (clean, detect, flux to SFR) and results are numeric.
+- 2016MNRAS.462L.101A: Public data, simple fits, numeric results.
+- 2016MNRAS.463..252B: Public single-EB dataset, described imaging, numeric results (Te, SFR, scale length) can be checked.
+- 2016Natur.534..218T: Public data, code released, numeric results (mass, line centres, tau) reproducible.
+- 2016Natur.538..483T: Public data, numeric results (inclination, masses, flux densities) reproducible with described steps.
+- 2016Natur.540..406B: Public data, numeric footpoint radii, simple fitting recipe.
+- 2016PASJ...68....6A: Public archival data, simple recipe, numeric ratios.
+- 2016PASJ...68...88K: Public ALMA and Chandra data, detailed imaging recipe, numeric results (flux, y, c1).
+- 2016PASJ...68..103F: Public image products and numeric results derivable from stated assumptions.
+- 2016Sci...352.1559I: Public ALMA data, clear imaging recipe, numeric results (flux, redshift).
+- 2016Sci...353.1519P: Public data, numeric geometry results, moderately complete recipe.
+- 2017A&A...597A..17H: Archive data, simple recipe, numeric fluxes and masses in tables.
+- 2017A&A...597A..41G: Data are public, the recipe is mostly complete, and results are numeric (rms, fluxes, sizes).
+- 2017A&A...600A...8D: Public ALMA data, simple point-source flux measurements with numeric results.
+- 2017A&A...600A.141K: Public data, a core catalog table and stated gaussclumps settings, and numeric results (43 cores, 2-pt scales) that can be redone.
+- 2017A&A...600L..10C: Data from a single public project; the recipe is simple and the results are numeric (mass table, slope).
+- 2017A&A...602A..11P: Archival-quality data with numeric line fluxes and derived quantities, simple analysis chain.
+- 2017A&A...602A..49H: Table 1 gives fluxes and the PDR grid is public, so the PDR fitting can be redone; the data are public after the proprietary period.
+- 2017A&A...602L..10O: Data are public, recipe is mostly clear, and results are numeric (Table 1).
+- 2017A&A...603A..10B: Public data with numeric continuum and infall results; the recipe is reasonably clear.
+- 2017A&A...603A..92V: Public SV data, numeric results (fluxes, EVPA, polarization fractions, B estimates) with described recipe.
+- 2017A&A...605A.121M: Public data, released code, numeric results in tables.
+- 2017A&A...607A.114W: Public Cycle 0 data, analytic grid models with stated ranges and numeric best fits in tables.
+- 2017AJ....153..240A: Public ALMA project, clear photometry and mass formulae, numeric results (detections, dust masses, stacks) can be reproduced.
+- 2017AJ....154...24R: Public data, a numeric continuum flux and mass limits are reproducible; the CO model is partly specified.
+- 2017AJ....154..225S: Public data, recipe mostly specified, numeric disk parameters; some details missing.
+- 2017ApJ...834L..16U: Public data, short recipe, numeric results (flux, luminosity, redshift) can be redone.
+- 2017ApJ...835...17M: Public data, numerical results (flux, mass, inclination) and a mostly complete recipe with open code.
+- 2017ApJ...835...98U: ALMA project code given, recipe largely described, results numeric (source catalog, counts, sizes).
+- 2017ApJ...835..213P: Public data, numeric line fluxes, ratios and continuum size can be redone with standard imaging.
+- 2017ApJ...836....8T: Data are public, the recipe is mostly clear, and the main results (fluxes, FWHM, SFR, M_dyn) are numeric.
+- 2017ApJ...836..130R: Public archival dataset, numeric results (flux, mass), moderately complete recipe.
+- 2017ApJ...836..223W: Public ALMA data, an explicit recipe for imaging and disk fitting, and numeric results in Table 2.
+- 2017ApJ...837..146V: Data from a single project, simple analysis, numeric results; imaging parameters are partly given (robust 0.5, taper 1.9 arcsec).
+- 2017ApJ...838..146L: Public ALMA data, simple flux and mass derivation with numeric results.
+- 2017ApJ...839...99P: ALMA data are archival projects, fitting recipe and priors are given, and main results are numeric (ring parameters, fluxes, alpha_mm).
+- 2017ApJ...839..133P: Public data, standard CPROPS recipe and numeric results (slopes, counts, masses) available.
+- 2017ApJ...840...23L: Data are ALMA archive projects, the recipe is moderately complete, and results are numeric ring parameters.
+- 2017ApJ...841L..11B: Single-project continuum detection with a simple mass formula and numeric results, though imaging details are missing.
+- 2017ApJ...841L..21H: Public data, line search recipe and a numeric line table give a checkable answer key.
+- 2017ApJ...842...55L: Public data, formulae stated, results numeric; Mstar/SFR taken from Table 1.
+- ... 925 more (all member papers are listed in references/sources.md)
+
+## Paper excerpts (40 of 3225, chosen for detail and spread over fields/years)
+
+### 2018MNRAS.481.1976Z: The [C II] emission as a molecular gas mass tracer in galaxies at low and high redshifts (2018; high_z_galaxies; observational_alma_primary)
+- question: Are z~2 main-sequence galaxies [C II] deficient, and what physical parameter drives [C II] luminosity (is [C II] an empirical molecular gas mass tracer)?
+- ALMA projects: 2012.1.00775.S
+- data.bands: Band 9 ([C II] line plus ~450 um continuum) and Band 7 (850 um continuum)
+- data.angular_resolution: Band 9 synthesized beam 0.3" x 0.2"; Band 7 synthesised beam 1" x 0.5"
+- data.sensitivity: Band 9 target 1.5-2 mJy/beam over a 350 km/s bandwidth; Band 7 continuum 140 uJy/beam
+- data.pi_or_archival_as_stated: Own Cycle 1 program (PI: E. Daddi)
+- calibration.pipeline_or_manual: Standard ALMA pipeline based on CASA [2.3 [C II] emission line measurements: "The data were reduced with the standard ALMA pipeline based on the CASA software"]
+- imaging.final_beam: Band 9: 0.3" x 0.2" synthesized beam; Band 7: 1" x 0.5"
+- imaging.final_rms: Band 7 continuum 140 uJy/beam; Band 9 noise r.m.s. per source in Table 1 (about 11.6-51 mJy/beam)
+- imaging.smoothing: Data binned to much lower velocity resolution than 0.45 km/s; line maps averaged over 719 km/s for non-detections
+- inherited: Iterative uv-plane spectral extraction / line search procedure (from Daddi et al. (2015 and in preparation) and (cite: Coogan201…) [2.3 [C II] emission line measurements: "similar to what described in Daddi et al. (2015 and in preparation) and (cite: Coogan2017)"]
+- inherited: Reliability of redshift uncertainties from the line detection procedure (from (cite: Coogan2017)) [2.3.1 Individual [C II] detections: "Following (cite: Coogan2017) simulations of a similar line detection procedure"]
+- inherited: Resolved stellar mass and SFR maps from pixel-by-pixel SED fitting (from (cite: Cibinel2015)) [2.1 Sample selection and ancillary data: "following the method described by (cite: Cibinel2015)"]
+- inherited: Redshift refinement of optical spectra with Lyman break galaxy templates (from (cite: Gobat2017), templates from (cite: Shapley2003)) [2.1 Sample selection and ancillary data: "we applied to our VLT/FORS2 and Keck UV rest-frame spectra the same approach described in (cite: Gobat2017)"]
+- inherited: IR SED fitting with Draine & Li models plus modified black body (from (cite: Magdis2012)) [2.4 Continuum emission: "Following the method presented in (cite: Magdis2012), we fitted the IR photometry with (cite: Draine2007) models"]
+- inherited: Monte Carlo estimation of L_IR and M_dust uncertainties (from (cite: Magdis2012)) [2.4 Continuum emission: "were quantified using Monte Carlo simulations, as described by (cite: Magdis2012)"]
+- literature input: Spitzer/Herschel IR photometry (deblended)
+- literature input: Spectroscopic redshifts for most targets
+- literature input: Global-SED stellar masses used in the analysis
+- literature input: Main-sequence definition used to select targets and compute sSFR/sSFR_MS
+- missing for reproduction (card): CASA/pipeline versions, calibrators and flux scale uncertainty; Exact channel ranges, GILDAS fit settings and HST-derived sizes/positions per galaxy (only R_e listed); HST, Spitzer and Herschel inputs and SED-fit settings needed to reproduce L_IR and M_dust; Full literature compilation table (stated to be online)
+- not stated (card): CASA and pipeline version used for the Band 9 and Band 7 reductions, and whether the archive-delivered calibration was used as is; Flux, bandpass and phase calibrators and the Band 9 flux scale uncertainty; Whether any self-calibration was done; Which array (12-m / 7-m) and antenna numbers were used; Exact channel ranges (optimal channel range) us…
+- data volume (card estimate): Roughly 10-50 GB raw for 10 Band 9 fields plus Band 7 (inferred; two Cycle 1 observing nights)
+- reproducibility (card): score 5: ALMA data and main procedure are described and the GILDAS uv-fitting approach is documented, but calibration details, per-source fit inputs and the literature compilation are incomplete.
+- answer-key example: [C II] luminosity, ID9347 (detection) = 0.95 ± 0.30 1e9 Lsun
+- answer-key example: [C II] luminosity, ID6515 (detection) = 1.23 ± 0.33 1e9 Lsun
+- answer-key example: [C II] luminosity, ID10076 (detection) = 2.40 ± 0.76 1e9 Lsun
+
+### 2017ApJ...847...92H: ALMA Observations of Dust Polarization and Molecular Line Emission from the Class 0 Protostellar Source Serpens SMM1 (2017; star_formation, milky_way_ism; observational_alma_primary)
+- question: How does the magnetic field in the Class 0 protostar Serpens SMM1 change with spatial scale, and do the outflow and jet shape it?
+- ALMA projects: 2013.1.00726.S, 2015.1.00354.S
+- data.bands: Band 7 (870 um) polarization; Band 6 (1.3 mm) lines and continuum
+- data.angular_resolution: ~0.33'' (~140 AU) for 870 um polarization
+- data.sensitivity: sigma_I = 0.5 mJy/beam; sigma_Q≈sigma_U≈sigma_P = 0.06 mJy/beam
+- calibration.flux_scale_uncertainty: ~10% in Band 6 and 7 [2.1 ALMA observations: "The ALMA flux accuracy in Band 6 (1.3 mm) and Band 7 (870 $\mu$m) is $\sim$ 10%"]
+- calibration.self_calibration: four rounds of phase-only self-calibration using Stokes I model [2.1 ALMA observations: "The image was improved iteratively by four rounds of phase-only self-calibration using the total intensity (Stokes $I$) image as a model."]
+- imaging.weighting_robust: robust = 1
+- imaging.final_beam: 0.35'' x 0.32''
+- imaging.smoothing: ALMA tapered and smoothed to CARMA resolution for comparison
+- inherited: Polarization debiasing (from Vaillancourt2006; Hull2015b) [2.1 ALMA observations: "We thus debias the polarized intensity map as described in (cite: Vaillancourt2006) and (cite: Hull2015b)."]
+- inherited: ALMA polarization system details (from Nagai2016) [2.1 ALMA observations: "For a detailed discussion of the ALMA polarization system, see (cite: Nagai2016)."]
+- inherited: Magnetic field strength procedure (from Houde2016) [4.3.2: "Our calculations for the magnetic field strength follow the procedure outlined in (cite: Houde2016)."]
+- inherited: Outflow energetics method (from Zhang2001; Zhang2005) [4.3.3: "Following the methods outlined in (cite: Zhang2001; Zhang2005)"]
+- inherited: CARMA reduction (from Hull2014) [2.3: "for descriptions of the observational setup and the data reduction procedure, see Section 3 of (cite: Hull2014)"]
+- inherited: 1.3 mm 0.1'' continuum data (from Pokhrel et al., in prep.) [2.1 ALMA observations: "we present 1.3 mm ALMA continuum data with $\sim$ $0.1\ensuremath{''}$ resolution (Pokhrel et al., in prep.)"]
+- literature input: JCMT polarization map reduction
+- literature input: CARMA polarization data
+- literature input: Dust opacity 2 cm2/g
+- literature input: Dust temperature ~20 K from Herschel SED map (private communication)
+- missing for reproduction (card): CASA version and detailed imaging parameters; Self-calibration solution intervals; Unpublished 13CS data; Pokhrel et al. 0.1'' data; Private-communication dust temperature
+- not stated (card): CASA version and whether the pipeline or manual calibration was used; Clean masks, threshold, cell and image size; Imaging parameters for the Band 6 line cubes (channel width, robust, continuum subtraction); Polarization leakage calibration details for ALMA; Debiasing and S/N cutoffs for the vectors; Velocity ranges used for the CO and SiO moment …
+- data volume (card estimate): tens to hundreds of GB
+- reproducibility (card): score 4: Imaging basics given but many parameters missing; polarization table is provided online.
+- answer-key example: Stokes I rms = 0.5 ± not stated mJy/beam
+- answer-key example: Stokes Q/U rms = 0.06 ± not stated mJy/beam
+- answer-key example: Total gas mass = 3.8 ± not stated Msun
+
+### 2017ApJ...848L..11K: Dust-trapping Vortices and a Potentially Planet-triggered Spiral Wake in the Pre-transitional Disk of V1247 Orionis (2017; protoplanetary_disks, exoplanets; observational_alma_primary)
+- question: Whether the crescent is a planet-induced spiral-arm over-density or a dust trap, and whether a planet-triggered spiral wake explains the scattered-light structure.
+- ALMA projects: 2015.1.00986.S
+- data.bands: ALMA band 7
+- data.arrays: 47 antennas of ALMA’s 12 m array
+- data.angular_resolution: 0.04''
+- calibration.casa_version: CASA 4.5.1-REL [Observations: "The image reconstructions were carried out using CASA version 4.5.1-REL and phase self-calibration."]
+- calibration.self_calibration: Phase self-calibration [Observations: "The image reconstructions were carried out using CASA version 4.5.1-REL and phase self-calibration."]
+- imaging.weighting_robust: briggs weighting, robust parameter 0.6
+- inherited: Adopt GAIA distance and adjust literature physical scales to it (from (cite: gaia1a; gaia1b)) [Introduction: "at a distance of $320\pm30$ pc"]
+- inherited: Differential Evolution optimisation for the geometric model (from (cite: sto97)) [Continuum imaging: "We explore the parameter space with a Differential Evolution optimisation algorithm (cite: sto97) and report best-fit parameters in Table"]
+- inherited: Analytic planet-triggered spiral-arm prescription (from (cite: ogi02)) [The crescent structure and ring asymmet…: "we deproject the ALMA image using the ring inclination/PA and overplot the analytic description of a planet-triggered spiral-arm (cite: ogi02)"]
+- inherited: Adopt earlier disk direction of motion to classify the spiral arm as tailing (from (cite: wil17)) [Planet-triggered dust traps and a spira…: "This scenario is consistent with the disk-rotation direction determined by (cite: wil17)"]
+- inherited: Hydrodynamics code previously adopted for modelling embedded protoplanets (from (cite: ben90), (cite: bat95), (cite: pri07); (cite: ayl09; …) [Radiation Hydrodynamics Simulation: "Our simulations were performed using the code by (cite: ben90), (cite: bat95) and (cite: pri07) that was adopted for modelling embedded protoplanets by (cite: ayl09; ayl10)."]
+- inherited: TORUS Monte-Carlo radiative transfer (from (cite: har00)) [Radiation Hydrodynamics Simulation: "We used the Monte-Carlo radiative transfer code TORUS (cite: har00) to create synthetic images"]
+- literature input: GAIA distance 320±30 pc
+- literature input: NIR optically-thick inner disk at 0.15-0.22 au
+- literature input: MIR optically-thick disk at 38-70 au and inner optically thin carbonaceous dust
+- literature input: Subaru/HiCIAO one-sided south-eastern spiral arm from 0.14'' to ∼0.3''; approximately 3× azimuthal brightness contrast
+- missing for reproduction (card): Explicit public-data status and identification of any released calibrated products.; Calibration and self-calibration scripts, including calibrator identities missing from the supplied text.; Exact continuum channel selection and complete continuum/line imaging settings.; Geometric fitting code, objective, parameter bounds and uncertainty calculation.; Procedures behind elongation and gap density-depletion estimates.; Earlier scattered-light and…
+- not stated (card): Calibration script or pipeline provenance, calibrator identities, flagging decisions, and flux-scale uncertainty.; Spectral-window frequencies and channel ranges excluded for continuum construction; effective continuum bandwidth after exclusion.; Phase self-calibration solution intervals, reference antenna, solution selection, iteration count, and…
+- data volume (card estimate): Cannot estimate reliably from the stated bandwidth, antennas and observing durations; correlator channel counts, integration sampling and r…
+- reproducibility (card): score 5: Project code, dates, array, CASA version, principal continuum settings, model structure and numeric fit results are supplied. Calibration, self-calibration, line processing, fit statistics and simulation inputs remain incomplete; public availability is not st…
+- answer-key example: Central peak uniform disk radius = ≲0.003 ± not stated ''
+- answer-key example: Central peak integrated flux = 0.10 ± ±0.01 mJy
+- answer-key example: Ring inclination = 30.0 ± ±1.0 °
+
+### 2024ApJS..270....9X: The ALMA Survey of Star Formation and Evolution in Massive Protoclusters with Blue Profiles (ASSEMBLE): Core Growth, Cluster Contraction, and Primordial Mass S… (2024; star_formation; large_program_or_survey)
+- question: Mass assembly, fragmentation, accretion, and the evolution of cores and massive protoclusters
+- ALMA projects: 2017.1.00545.S, 2019.1.00685.S, 2015.1.01539.S, 2017.1.00716.S, 2018.1.00192.S
+- data.bands: Band 7; 350 GHz (870 μm)
+- data.arrays: 12-m array only; 48 antennas
+- data.angular_resolution: ~0.8–1.2 arcsec; ~2200–5500 au, median 3500 au
+- data.sensitivity: 1σ mass sensitivity: 0.014–0.372 M_sun
+- data.pi_or_archival_as_stated: PI: Tie Liu
+- calibration.pipeline_or_manual: ALMA observatory pipeline [ALMA Data Calibration and Imaging: "The pipeline provided by the ALMA observatory was utilized to perform data calibration in CASA (cite: McMullin2007CASA) version 5.1.15."]
+- calibration.casa_version: 5.1.15 for calibration; 5.3 for imaging [ALMA Data Calibration and Imaging: "The pipeline provided by the ALMA observatory was utilized to perform data calibration in CASA (cite: McMullin2007CASA) version 5.1.15."]
+- calibration.self_calibration: Three phase rounds and one amplitude round; reference antenna DA47 [ALMA Data Calibration and Imaging: "A total of three rounds of phase self-calibration and one round of amplitude self-calibration were run to enhance the dynamic range of the image."]
+- imaging.weighting_robust: briggs; robust = 0.5
+- imaging.final_rms: Text: 0.5–1.7 mJy beam−1, mean ~1 mJy beam−1; observing table also lists 2.5 mJy beam−1 for I16060-5146
+- imaging.smoothing: Before extraction, circular beam equal to original beam major axis
+- inherited: Kinematic-distance model (from (cite: Reid2019Distance)) [Physical Properties of Selected Sample: "estimated using the latest rotation curve model of the Milky Way (cite: Reid2019Distance)"]
+- inherited: 2D Gaussian clump-radius method for comparison with ASHES (from (cite: Sanhueza2019ASHES)) [Physical Properties of Selected Sample: "The radius is derived from the 2D Gaussian fitting, the same method as adopted in (cite: Sanhueza2019ASHES) to better compare with."]
+- inherited: Choice of getsf over astrodendro (from (cite: Xu2023SDC335)) [Core Extraction and Catalog: "As suggested by (cite: Xu2023SDC335), the `getsf` algorithm is a better choice than `astrodendro` in the case study of SDC335"]
+- inherited: getsf significant-source criteria (from (cite: Men2021getsf)) [Core Extraction and Catalog: "As suggested by (cite: Men2021getsf), significantly detected sources are defined as"]
+- inherited: Target spectral-line summary deferred to Table A1 (from (cite: Xu2023SDC335)) [ALMA Band-7 Observing Strategy: "A summary of the target spectral lines can be found in Table A1 of (cite: Xu2023SDC335)."]
+- inherited: Outflow catalog used as the starting point for updated core associations (from (cite: Baug2020Outflow)) [Core Classification and Evolutionary St…: "(cite: Baug2020Outflow) used CO (3-2), HCN (4-3), and SiO (2-1) emission lines to confirm the presence of 32 bipolar and 41 unipolar outflows"]
+- literature input: CS (2-1) survey parent sample
+- literature input: 1.2 mm follow-up survey of 146 high-mass star-forming candidates
+- literature input: ASTE HCN (4-3)/CS (7-6) infall-candidate survey
+- literature input: APEX CO (4-3) and C17O (3-2) clump kinematics
+- missing for reproduction (card): A continuum-data download location and exact product identifiers are not supplied in the provided text.; Only excerpts of the machine-readable core measurement and physical-property tables are included in the provided text.; Exact continuum-channel selections, self-calibration commands, and complete imaging parameters are absent.; The rotation-temperature fitting procedure and complete per-core transition selections are absent.; The updated outf…
+- not stated (card): Exact line-free channel selections for each target and execution.; Self-calibration solution intervals, solution-combination settings, acceptance thresholds, and imaging models for each round.; TCLEAN cell size, image dimensions, mosaic gridder settings, masks, stopping threshold, and iteration limits.; Named 12-m configuration and exact execution…
+- data volume (card estimate): Substantial: 11 mosaicked fields and four spectral windows; bytes cannot be estimated reliably from the supplied text.
+- reproducibility (card): score 6: Major datasets, software versions, extraction cuts, physical assumptions, and statistical recipes are described, but temperature fitting, calibration details, exact comparison products, and MSI normalization prevent an exact end-to-end reproduction.
+- answer-key example: Extracted cores = 248 ± not stated cores
+- answer-key example: Prestellar core candidates = 142 ± not stated cores
+- answer-key example: Protostellar cores = 106 ± not stated cores
+
+### 2019MNRAS.485.4359S: WISDOM project - IV. A molecular gas dynamical measurement of the supermassive black hole mass in NGC 524 (2019; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the SMBH mass of NGC 524 from forward-modelling the ALMA CO(2-1) molecular gas kinematics, and how do it compare with the stellar dynamical value and the M-sigma relation?
+- ALMA projects: 2015.1.00466.S, 2016.2.00053.S, 2017.1.00391.S
+- data.arrays: 12-m array and 7-m ACA
+- data.angular_resolution: 0.35" x 0.3" at PA 64 deg (line cube)
+- data.sensitivity: 0.5 mJy/beam in 15 km/s channels; 1.1 mJy/beam in 2 km/s channels; 0.1 mJy/beam continuum
+- calibration.pipeline_or_manual: Standard ALMA pipeline; combined with CASA [3.1 Observations and data reduction: "The data were calibrated using the standard ALMA pipeline, and combined using the `Common Astronomy Software Applications` (cite: McMullin+2007ASPC376.127) package."]
+- imaging.weighting_robust: Briggs robust = -1 (line); robust = -2 (continuum)
+- imaging.final_beam: 0.35"x0.3" (line); 0.3"x0.2" (continuum)
+- imaging.final_rms: 0.5 mJy/beam (15 km/s); 1.0-1.1 mJy/beam (2 km/s); 0.1 mJy/beam continuum
+- inherited: Modelling procedure (KinMS MCMC forward modelling, covariance matrix of pixel correlations) (from (cite: Davis+2017MNRAS468.4675)) [4 Model fitting: "This procedure is discussed in detail in (cite: Davis+2017MNRAS468.4675), so we provide only a brief outline here."]
+- inherited: Chi-squared rescaling of log-likelihood (from (cite: Mitzkus+2017MNRAS464.4789), (cite: vandenBosch+2009M…) [4.3.2 Chi-squared uncertainties: "to achieve the same effect we need to scale the log-likelihood, as done by (cite: Mitzkus+2017MNRAS464.4789)."]
+- inherited: Smooth-masking method for moment maps (from (cite: Dame2011arXiv1101.1499)) [3.2 Line data: "These were made using the smooth-masking method (cite: Dame2011arXiv1101.1499)"]
+- inherited: First-order extinction correction prescription (from (cite: Cappellari+2002ApJ578.787)) [4.7.3 Mass model: "we can make a first-order correction using the prescription of (cite: Cappellari+2002ApJ578.787)."]
+- literature input: MGE stellar light model of NGC 524 (Table 3)
+- literature input: Distance 23.3 Mpc
+- literature input: Dust disc inclination 20±5 deg
+- literature input: Previous stellar dynamical SMBH mass 8.3e8 Msun, M/L_I=5.8
+- missing for reproduction (card): Line-free channel ranges; CLEAN parameters; Mask for fitting region; Initial MCMC settings; Software versions
+- not stated (card): Smooth-masking clip threshold and cube-smoothing details for moment maps; Line-free channel ranges for uvcontsub; CLEAN threshold, niter, and deconvolver used; Flux calibrator and flux-scale uncertainty; CASA/pipeline versions; Initial values, adaptive step settings and acceptance fraction for KinMS_MCMC; Mask used to define the fitted region in t…
+- data volume (card estimate): ~50-100 GB raw for 12-m plus ACA execution blocks across three projects; imaged cubes are ~2 GB
+- reproducibility (card): score 4: Public data, open code, and detailed model description, but imaging and calibration details are partly omitted.
+- answer-key example: SMBH mass (fixed inclination, formal 3 sigma) = 4.0e8 ± +1.6/-1.5 e8 Msun
+- answer-key example: SMBH mass including inclination uncertainty (3 sigma) = 4.0e8 ± +3.5/-2.0 e8 Msun
+- answer-key example: Stellar M/L_I (fixed inclination) = 5.7 ± ±0.3 (3 sigma) Msun/Lsun,I
+
+### 2021ApJ...908..192S: ALMA 1.3 mm Survey of Lensed Submillimeter Galaxies Selected by Herschel: Discovery of Spatially Extended SMGs and Implications (2021; high_z_galaxies; observational_alma_primary)
+- question: Compare stellar and dust structures in cluster-lensed SMGs and investigate their evolutionary connection to compact quiescent galaxies.
+- ALMA projects: 2017.1.01658.S
+- data.bands: Band 6; 1.3 mm
+- data.angular_resolution: median 0.26 arcsec
+- data.sensitivity: 0.11 +0.04/-0.05 mJy beam−1 with a 1 arcsec-tapered beam
+- data.pi_or_archival_as_stated: PI: Egami
+- calibration.pipeline_or_manual: CASA pipelines [ALMA: "All the ALMA data were reduced with CASA (cite: casa) with the pipelines v4.7.2 and v5.4.1 for observations obtained in different cycles."]
+- imaging.weighting_robust: Briggs ROBUST=0.5; natural ROBUST=2
+- imaging.final_beam: 1 arcsec-tapered products for most photometry; 2 arcsec-tapered detection for HLS0840
+- imaging.final_rms: 0.11 +0.04/-0.05 mJy beam−1
+- inherited: SPIRE processing details (from (cite: rawle16)) [Herschel: "the processing routine was detailed in (cite: rawle16)"]
+- inherited: PACS UNIMAP processing details (from (cite: rawle16)) [Herschel: "HLS-deep PACS images were generated with UNIMAP (cite: piazzo15) with a pixel scale of 1.0$''$ at 100 m and 2.0$''$ at 160 m, also detailed in (cite: rawle16)."]
+- inherited: PACS aperture correction factors (from PACS data handbook) [Herschel: "We adopted the aperture correction factors suggested in PACS data handbook."]
+- inherited: IRAC warm-mission PSFs for model convolution (from (cite: hora12)) [Spitzer/IRAC: "The IRAC warm-mission PSFs released by (cite: hora12) for Channel 1 and 2 were used for model convolution."]
+- inherited: Gaussian ALMA surface-brightness models (from (cite: puglisi19) and (cite: tadaki20)) [Quantitative morphological modeling: "We assumed Gaussian models for the surface brightness profile of all sources, consistent with the modeling procedure applied by (cite: puglisi19) and (cite: tadaki20)."]
+- inherited: Additional MAGPHYS model assumptions (from (cite: martis19)) [SED fitting and photometric redshift: "Other key components of the model assumptions in MAGPHYS have been detailed in (cite: martis19)."]
+- literature input: RASS X-ray-luminous cluster sample used in HLS target selection
+- literature input: CODEX cluster sample used in HLS target selection
+- literature input: SPT-SZ cluster sample used in HLS target selection
+- literature input: GAIA DR2 astrometric reference
+- missing for reproduction (card): Reduction/imaging scripts and full source-extraction configurations.; Per-source visibility-fit models, fitting controls and covariance/error outputs.; Exact IRAC PSFs, rotated templates and MCMC setup.; Complete machine-readable SED input photometry, including ancillary fluxes and upper limits.; MAGPHYS library/configuration details and MBB fitting implementation.; Numerical inherited PACS corrections, gas conversion and main-sequence formula i…
+- not stated (card): Per-target spectral-window definitions, channel widths, continuum bandwidths and channels excluded for line emission.; Exact ALMA imaging task, deconvolver, pixel sizes, image dimensions, cleaning masks and stopping thresholds.; Weighting and exact taper arguments used together for each tapered product.; Per-target CASA/pipeline version assignment…
+- data volume (card estimate): not stated
+- reproducibility (card): score 6: Strong numerical tables, identifiable observations, named tools and substantial simulation checks; exact imaging, extraction, SED and MCMC settings and released analysis code are missing.
+- answer-key example: ALMA detections at S/N > 4.0 = 29 ± not stated sources
+- answer-key example: Point-source completeness at S/N=4.0 = 47 ± ±5 %
+- answer-key example: Point-source completeness at S/N=5.0 = 80 ± ±4 %
+
+### 2024A&A...685A..52G: The SPHERE view of the Chamaeleon I star-forming region. The full census of planet-forming disks with GTO and DESTINYS programs (2024; protoplanetary_disks; multi_facility_alma_minor)
+- question: Disk evolutionary trends in scattered light; connections with system age, dust mass and spectral energy distributions.
+- ALMA projects: 2018.1.00689.S
+- data.bands: SY Cha: Band 6; dust-mass estimates, CS Cha and WW Cha: Band 7
+- data.pi_or_archival_as_stated: archival ALMA continuum data
+- imaging.final_beam: SY Cha 225 GHz continuum: 0.145 × 0.109 arcsec
+- imaging.final_rms: SY Cha 225 GHz continuum: 0.0175 mJy/beam
+- inherited: SY Cha ALMA observing and reduction details delegated to earlier work (from (cite: Orihara2023)) [Observations and data reduction: "The details of the observations and data reduction are presented in (cite: Orihara2023)."]
+- inherited: Dust opacity for optically thin 20 K dust-mass estimates (from (cite: Beckwith1991)) [Sample and stellar properties: "optically thin emission, dust temperature of 20 K, and dust opacity by (cite: Beckwith1991)"]
+- inherited: Stellar masses and ages from PMS tracks; luminosities from a scaled Phoenix photosphere (from (cite: Siess2000; Bressan2012; Baraffe2015; Choi2016); (cit…) [Sample and stellar properties: "The stellar masses and ages were computed through a set of PMS tracks (cite: Siess2000; Bressan2012; Baraffe2015; Choi2016)"]
+- inherited: Accretion-rate conversion from accretion luminosity (from (cite: 1998ApJ...495..385H)) [Sample and stellar properties: "using the usual relation of $\dot{M}_{acc} = 1.25 \frac{L_{acc}R_{*}}{GM_{*}}$ (for example, (cite: 1998ApJ...495..385H))."]
+- inherited: IRDAP reduction package and full Mueller Matrix instrumental-polarization correction (from (cite: 2020A&A...633A..64V); (cite: 2020A&A...633A..63D)) [Observations and data reduction: "The data reduction package is described in detail in (cite: 2020A&A...633A..64V) and will thus only be briefly summarized here."]
+- inherited: Residual astrophysical stellar-polarization removal (from (cite: 2011A&A...531A.102C)) [Observations and data reduction: "After this step residual (astrophysical) stellar polarization could be measured and removed, using the method described by (cite: 2011A&A...531A.102C)."]
+- literature input: ALMA 887 μm fluxes used to derive disk dust masses
+- literature input: Gaia DR3 parallaxes
+- literature input: PMS tracks for stellar masses and ages
+- literature input: Phoenix stellar-photosphere model
+- missing for reproduction (card): Orihara2023 observing, calibration and imaging recipe for the SY Cha ALMA data.; ALMA dataset identifiers for the literature inputs beyond the single printed SY Cha project code.; Pascucci2016 flux table, numerical opacity prescription and complete mass-conversion implementation.; Exact contrast measurements, uncertainties and statistical treatment of upper limits.; Unpublished Hagelberg et al. SZ Cha geometry inputs and Ginski et al. astrometri…
+- not stated (card): SY Cha ALMA calibration software, versions, calibrators, flux-scale uncertainty and any self-calibration settings.; SY Cha continuum spectral windows, bandwidth and line-free channel selection.; SY Cha imaging weighting, robust value, taper, pixel size, image size, masks, deconvolution stopping criterion and configuration-combination procedure.; N…
+- data volume (card estimate): Not estimable from the supplied text; ALMA bandwidth, channel counts and visibility sampling are absent.
+- reproducibility (card): score 4: On a 0–10 completeness scale: useful ALMA provenance, final image specifications and several detailed analysis recipes, but reduction, modeling and unpublished calibration dependencies prevent a self-contained reproduction.
+- answer-key example: Systems with resolved scattered-light signals = 13 of the 20 ± not stated systems
+- answer-key example: Nondetections located in binary systems = five of our seven ± not stated systems
+- answer-key example: Dust-mass versus polarized-contrast Kendall coefficient = 0.65 ± not stated dimensionless
+
+### 2024ApJ...965..108U: ALMA Lensing Cluster Survey: Full Spectral Energy Distribution Analysis of z ∼ 0.5─6 Lensed Galaxies Detected with millimeter Observations (2024; high_z_galaxies, agn_and_quasars; large_program_or_survey)
+- question: UV-to-millimeter properties, dust properties, and obscured AGNs in the ALCS sample
+- ALMA projects: 2018.1.00035.L, 2013.1.00999.S, 2015.1.01425.S
+- data.bands: Band 6; 1.2 mm continuum
+- data.angular_resolution: ∼1 arcsec
+- data.sensitivity: Image-plane flux limit ∼0.2 mJy; source-plane flux limit ∼7 μJy at 1.2 mm
+- data.pi_or_archival_as_stated: 2018.1.00035.L: PI K. Kohno; existing 2013.1.00999S and 2015.1.01425.S data: PI Bauer
+- calibration.casa_version: CASA v5.4.0 [Software: "CASA v5.4.0 (cite: 2007ASPC..376..127M)"]
+- imaging.weighting_robust: natural weighting
+- imaging.final_beam: Native FWHM∼1 arcsec; tapered FWHM∼2 arcsec
+- inherited: ALCS continuum catalog and underlying observations/data reduction (from (cite: 2023arXiv230301658F)) [Observations and source detection with …: "The 1.2 mm continuum source catalog was built by (cite: 2023arXiv230301658F). Here we briefly explain the observations and the data reduction."]
+- inherited: Reprocessed optical/near-infrared photometry and HST-based deblending (from (cite: 2022ApJS..263...38K)) [HST, Spitzer, and Herschel counterparts: "The images and photometric catalogs of optical and near-infrared bands were built by (cite: 2022ApJS..263...38K) by reprocessing the best-available archival data from HST and Spitzer/IRAC channels 1 and 2."]
+- inherited: Herschel far-infrared images and catalogs (from (cite: 2022ApJ...932...77S)) [HST, Spitzer, and Herschel counterparts: "(cite: 2022ApJ...932...77S) produced the far-infrared images and catalogs, utilizing the best-available data of Herschel/PACS and SPIRE."]
+- inherited: BCG classification (from (cite: 2022ApJ...932...77S)) [Data quality, sample selection, and mag…: "We follow the classification in (cite: 2022ApJ...932...77S)."]
+- inherited: Magnification factors and fiducial GLAFIC lens model (from (cite: 2023arXiv230301658F); (cite: 2010PASJ...62.1017O)) [Data quality, sample selection, and mag…: "The magnification factors are extracted from (cite: 2023arXiv230301658F), where the lens model of `GLAFIC` (cite: 2010PASJ...62.1017O) is adopted as a fiducial."]
+- inherited: Fixed redshifts and multiple-image identifications (from (cite: 2023arXiv230301658F)) [SED modeling with `CIGALE`: "The redshifts are fixed at the values reported in (cite: 2023arXiv230301658F) (69/180 sources have spectroscopic redshifts)."]
+- literature input: ALCS 1.2 mm continuum source catalog
+- literature input: HST and Spitzer/IRAC channels 1 and 2 images and photometric catalogs
+- literature input: Herschel/PACS and SPIRE images and catalogs
+- literature input: SEIP photometric data
+- missing for reproduction (card): The cited source catalogs, photometric measurements/errors/upper limits, redshifts, magnifications, and previous ALCS-XAGN SED results.; The referenced literature comparison tables and infrared luminosity-function parameters.; Executable EThemis model files, CIGALE configuration, and the exact mapping of grids and AGN restrictions to individual sources.; Source-extraction configuration and per-field ALMA calibration/imaging recipes.; Per-source …
+- not stated (card): ALMA pipeline/manual calibration procedure, calibration tables, calibrators, and flux-scale uncertainty.; Per-field measurement-set inventory, array configurations, baselines, observing times, and spectral-window/channel details.; Imaging task, deconvolution settings, cell and image sizes, masks, stopping thresholds, exact taper, and primary-beam …
+- data volume (card estimate): Cannot estimate reliably: visibility sizes, integration times, and per-field observation inventories are absent.
+- reproducibility (card): score 6: 6/10: software versions, SED grids, selection rules, model assumptions, and validation tests are described, but execution depends on external catalogs, custom EThemis files, and unspecified reduction and uncertainty details.
+- answer-key example: Main-sequence sources within a factor of four above or below the sequence = 82/162 [51%] ± not stated dimensionless
+- answer-key example: Starburst sources = 69/162 [43%] ± not stated dimensionless
+- answer-key example: Sources below the main sequence = 11/162 [7%] ± not stated dimensionless
+
+### 2020ApJ...904..181L: ALMA View of the Infalling Envelope around a Massive Protostar in S255IR SMA1 (2020; star_formation, astrochemistry; observational_alma_primary)
+- question: Characterize the gas around S255IR NIRS3/SMA1 and distinguish a Keplerian disc from a rotating infalling envelope.
+- ALMA projects: 2015.1.00500.S
+- data.bands: Band 7; 900 μm continuum
+- data.arrays: ALMA; at least 39 antennas online
+- data.angular_resolution: 0.14 arcsec; ∼250 au
+- data.sensitivity: Line cube: 3 mJy Beam^-1 at 0.42 km s^-1; continuum: ∼1 mJy Beam^-1
+- data.pi_or_archival_as_stated: Our observations; Cycle 4
+- calibration.pipeline_or_manual: Initial calibration and reduction with CASA, delivered by the observatory [Observations: "The initial calibration and reduction of the obtained data were carried out with the Common Astronomy Software Applications (CASA) (cite: McMullin07) and delivered by the observatory."]
+- calibration.self_calibration: Separate epochs self-calibrated as in (cite: Zinchenko17); antenna gains applied to continuum and 349.0 GHz spectral window [Observations: "We then employed self-calibration for different observational epochs as described in (cite: Zinchenko17) to improve the imaging quality and dynamical range."]
+- imaging.weighting_robust: Briggs weighting; robust parameter 0.5
+- imaging.final_beam: 0.14 arcsec
+- imaging.final_rms: Line cube: 3 mJy Beam^-1 at 0.42 km s^-1; continuum: ∼1 mJy Beam^-1
+- imaging.smoothing: Online Hanning-smooth; spectral resolution 0.488 MHz (0.42 km s^-1)
+- inherited: First two observing epochs and four FDM spectral windows (from (cite: Zinchenko17)) [Observations: "with the first two (2016 April 21 and 2016 September 09) being introduced in (cite: Zinchenko17)"]
+- inherited: Third observing epoch and previously reported continuum images and variability (from (cite: Liu18)) [Observations: "the third one (2017 July 20) in (cite: Liu18)."]
+- inherited: Calibrator setups (from (cite: Zinchenko17) and (cite: Liu18)) [Observations: "The calibrator setups have been detailed in (cite: Zinchenko17) and (cite: Liu18)."]
+- inherited: Self-calibration procedure (from (cite: Zinchenko17)) [Observations: "We then employed self-calibration for different observational epochs as described in (cite: Zinchenko17) to improve the imaging quality and dynamical range."]
+- inherited: Briggs robust 0.5 imaging followed by tapering to 0.14 arcsec (from (cite: Liu18)) [Observations: "As done in (cite: Liu18), the resulting images were first made through Briggs weighting with a robust parameter of 0.5 and then tapered to an angular resolution of 0.14$''$."]
+- inherited: Distance 1.78 kpc (from (cite: Burns16)) [Introduction: "The S255IR region, at a distance of 1.78 kpc (cite: Burns16)"]
+- literature input: S255IR distance: 1.78 kpc
+- literature input: Jet Propulsion Laboratory Molecular Spectroscopy catalog for line identification
+- literature input: Cologne Database for Molecular Spectroscopy catalog for line identification
+- literature input: Opacity normalization κ250 μm = 0.1 cm^2 g^-1
+- missing for reproduction (card): The prior-paper calibrator and self-calibration procedures and the actual calibration scripts.; Exact continuum channel selection and line-cube continuum treatment.; Complete imaging commands and P-V extraction settings.; The pixel-fitting code, spectral weights, blend handling and fit uncertainty products.; SPARX input models, grid and vertical structure, molecular inputs and executable configuration.; PLUTO setup files, boundary conditions and…
+- not stated (card): CASA version and the observatory calibration script or pipeline version.; Calibrator identities, adopted flux models and flux-scale uncertainty; these are deferred to earlier papers.; Self-calibration solution intervals, phase/amplitude sequence, reference antenna, masks and acceptance criteria.; Continuum spectral windows, usable bandwidth and li…
+- data volume (card estimate): Cannot estimate reliably: observing duration, visibility count, integration sampling and image dimensions are absent.
+- reproducibility (card): score 3: 3/5: project code, epoch, weighting, resolution, spectral-fitting bounds and physical models are supplied, but calibration and imaging details, analysis code and simulation setup remain incomplete.
+- answer-key example: Peak 900 μm continuum intensity = 0.237 ± not stated Jy Beam^-1
+- answer-key example: Peak continuum brightness temperature = 121 ± not stated K
+- answer-key example: Peak H2 column density from continuum at assumed 300 K = 9.75 × 10^24 ± not stated cm^-2
+
+### 2025A&A...699L..11V: The CHIMERA Survey: The first CO detection in Leo T, the lowest mass known galaxy still hosting cold molecular gas (2025; nearby_galaxies, star_formation; observational_alma_primary)
+- question: Presence, physical properties, and dynamics of molecular clouds in Leo T
+- ALMA projects: 2024.1.00951.S
+- data.arrays: ACA
+- data.angular_resolution: ∼26 pc; 1 arcsec = 1.98 pc
+- data.sensitivity: Designed rms ∼12 mJy/beam at 3 km s−1
+- data.pi_or_archival_as_stated: New data; P.I. V. Villanueva; ALMA Cycle 11
+- calibration.pipeline_or_manual: Observatory pipeline [Observational data and products: "Our ALMA data were calibrated by the observatory pipeline (cite: Hunter2023)."]
+- calibration.casa_version: 6.6.1.17 [Observational data and products: "Both calibration and imaging used `CASA` 6.6.1.17 (cite: CASA2022)."]
+- calibration.flux_scale_uncertainty: Flux calibrator accuracy ∼3 mJy [ACA-CO(1-0) and WSRT-HI data products: "These calculations also considered the accuracy of the flux calibrator (J0854+2006), which is $\sim$3 mJy."]
+- imaging.weighting_robust: Briggs; robust=0.5
+- imaging.final_beam: θmin×θmaj = 9.45×13.18 arcsec; PA=−75°
+- imaging.final_rms: Median ∼20 mJy beam−1; channel width 0.62 km s−1
+- inherited: Observatory calibration pipeline (from (cite: Hunter2023)) [Observational data and products: "Our ALMA data were calibrated by the observatory pipeline (cite: Hunter2023)."]
+- inherited: Briggs weighting (from (cite: Briggs1995)) [Observational data and products: "The cleaning routine considered a Briggs weighting (`robust`=$0.5$; (cite: Briggs1995))"]
+- inherited: CO luminosity conversion from Eq. 1 (from (cite: Solomon&VandenBout2005)) [Results and discussion: "Then we used Eq. 1 from (cite: Solomon&VandenBout2005), after replacing the relevant terms with those of the CO(1-0) emission line"]
+- inherited: Virial mass estimator with a 1/r density law (from (cite: MacLaren1988)) [Results and discussion: "we computed the virial mass ($M_{\rm vir}$) of each molecular cloud assuming a $1/r$ density law (cite: MacLaren1988)"]
+- inherited: Moment 1 calculation using Eq. (2) (from (cite: Villanueva2024a)) [ACA-CO(1-0) and WSRT-HI data products: "Finally, we compute the moment 1 maps ($M_1$) using Eq. (2) in (cite: Villanueva2024a)"]
+- inherited: HI data details delegated to earlier work (from (cite: Adams2018)) [ACA-CO(1-0) and WSRT-HI data products: "A detailed description of the data can be found in (cite: Adams2018)."]
+- literature input: Leo T stellar mass ∼1.4×10^5 M⊙
+- literature input: Leo T [M/H] ∼−1.7
+- literature input: Leo T [Fe/H] = −1.53±0.05; σFe/H = 0.21
+- literature input: Atomic gas plus helium mass ∼5.2×10^5 M⊙
+- missing for reproduction (card): Public-access status and exact ALMA and HI product identifiers.; Complete imaging and continuum-subtraction commands.; Detection-search velocity coverage and statistical treatment of correlated pixels.; Exact aperture-fitting inputs and Gaussian fitting implementation.; Full error propagation for spectral fits, virial masses, surface densities, and αCO.; Distance reference and uncertainty.; HI-to-total-gas corrections and extraction details.; DE…
+- not stated (card): Complete spectral-window setup and the spectral reference frame used for imaging and heliocentric velocity conversion.; Continuum-subtraction task, fit order, and line-free channels.; tclean deconvolver, cell size, image dimensions, cleaning masks, and primary-beam treatment.; Resampling or smoothing operation producing the final 0.62 km s−1 chann…
+- data volume (card estimate): not stated
+- reproducibility (card): score 5: Project code, CASA version, detection criteria, apertures, equations, and numeric targets are supplied. Missing imaging settings, fit implementation, uncertainty propagation, orbit inputs, and data-access status prevent a complete reproduction.
+- answer-key example: CO cloud candidates = three ± not stated dimensionless
+- answer-key example: Validated spaxels, north / west / south = 9 / 3 / 4 ± not stated dimensionless
+- answer-key example: North rCO = 5.7 ± ±0.25 arcsec
+
+### 2021ApJ...907...80O: Ring Formation by Coagulation of Dust Aggregates in the Early Phase of Disk Evolution around a Protostar (2021; protoplanetary_disks, star_formation; theory_or_simulation_compared_to_alma)
+- question: Whether dust evolution by coagulation can be observed as a ring structure during grain growth.
+- ALMA projects: 2017.1.00509.S
+- data.bands: ALMA Band 3 (3 mm) continuum toward L1527
+- inherited: Dust surface-density and particle-size evolution method (from (cite: sat16)) [Disk Model: "A simple method for calculating dust surface density and particle size distribution is adopted according to (cite: sat16), who investigated the water composition of planets due to ice pebble accretion across the snow line."]
+- inherited: Initial gas surface density based on the MMSN model (from (cite: hay81)) [Disk Model: "based on the minimum mass solar nebula (MMSN) model of (cite: hay81)."]
+- inherited: Particle radial-drift velocity prescription (from (cite: ada76; wei77)) [Disk Model: "The radial drift velocity of particles is given by (cite: ada76; wei77)"]
+- inherited: Dust scale height from the balance of vertical settling and turbulent diffusion (from (cite: dub95; sch04; you07)) [Disk Model: "The dust scale height is determined by a balance between vertical settling and turbulent diffusion and is written as (cite: dub95; sch04; you07)"]
+- inherited: Aggregate growth-rate expression (from (cite: tan05)) [Dust Evolution: "The growth rate of the aggregate mass $m$ at the midplane is given (cite: tan05)"]
+- inherited: Millimeter-grain scale-height and turbulent-collision-velocity approximations (from (cite: bra08)) [Dust Evolution: "For millimeter-sized dust grains, $h_{\rm d} \sim \sqrt{\alpha_{\rm D}/ {\rm St}} h_{\rm g}$ and $\Delta v \sim \Delta v_{\rm t} \sim \sqrt{\alpha_{\rm D} {\rm St}} c_{\rm s}$ (cite: bra08)."]
+- literature input: Dust-ring positions for the 18 DSHARP disks
+- literature input: DSHARP stellar-age errors; average factor-two error adopted for all sources
+- literature input: L1527 observed ring position, 15 AU; continuum morphology and free–free-contamination analysis
+- literature input: L1527 stellar mass, 0.5 solar masses
+- missing for reproduction (card): Public availability and exact ALMA/VLA product identifiers are not stated.; No ALMA calibration or imaging recipe is given.; L1527 distance and the image-matching procedure for the spectral-index map are absent.; Spectral-index extraction settings, uncertainty calculations and the inherited free-free correction require additional material.; Dust-evolution implementation, numerical domain, boundary conditions and convergence information are absen…
+- not stated (card): ALMA spectral windows, continuum bandwidth and channel selection for the L1527 Band 3 image.; ALMA calibration procedure, software version, flux scale and self-calibration history.; ALMA imaging weighting, deconvolution, mask, beam, pixel scale and noise.; ALMA–VLA image registration, common resolution, common spatial-frequency coverage and flux-s…
+- data volume (card estimate): Cannot estimate raw-data volume from the stated information; the observational analysis uses continuum images and literature measurements.
+- reproducibility (card): score 3: 3/10: the project code, model equations, principal assumptions and numeric outputs are supplied, but observational processing and numerical implementation details are insufficient for an exact reproduction.
+- answer-key example: Growth-front radius at t = 6.4 × 10^3 yr = ∼10 ± not stated au
+- answer-key example: Growth-front radius at t = 2.6 × 10^4 yr = ∼24 ± not stated au
+- answer-key example: Model 0.87 mm–7 mm spectral index inside the growth front = ∼2.9 ± not stated dimensionless
+
+### 2021A&A...645A..21G: Multiphase feedback processes in the Sy2 galaxy NGC 5643 (2021; nearby_galaxies, agn_and_quasars; archival_reuse)
+- question: Investigate the AGN-driven outflow in the cold molecular and ionized gas phases of NGC 5643.
+- ALMA projects: 2016.1.00254.S
+- data.bands: Band 6
+- data.arrays: 12-m ALMA array
+- data.angular_resolution: 0.26″ × 0.17″; PA_beam = -69.6°
+- data.pi_or_archival_as_stated: PI: A. Alonso-Herrero; fully reduced cube from (cite: Herrero18)
+- imaging.weighting_robust: natural weight
+- imaging.final_beam: 0.26″ × 0.17″; PA_beam = -69.6°
+- inherited: ALMA calibration, reduction and cleaning inherited through the supplied CO(2-1) cube. (from (cite: Herrero18)) [ALMA data: "The fully reduced and clean CO(2-1) natural weight data cube was taken from (cite: Herrero18)."]
+- inherited: Rotating-disk modelling approach and fixed inclination, PA and systemic velocity. (from (cite: Herrero18)) [Rotating disk model: "Following (cite: Herrero18), we fitted a rotating disk model to the CO(2-1) kinematics using the $^{3D}$BAROLO code (cite: Teodoro15) but covering a larger FoV."]
+- inherited: Stellar-continuum modelling using STARLIGHT and STELIB. (from (cite: Cid05); (cite: Bruzual03)) [Archival VLT/MUSE integral field spectr…: "We used STARLIGHT (cite: Cid05) to model the stellar continuum."]
+- inherited: pPXF stellar kinematics and Voronoi binning. (from (cite: Cappellari04; Cappellari17); (cite: Cappellari03)) [Stellar kinematics: "We derived the stellar kinematics from the Ca II triplet lines using MUSE data at $\lambda>$8000$\AA$ and the penalised pixel fitting (pPXF) method (cite: Cappellari04; Cappellari17)."]
+- inherited: [O iii] doublet ratio 1/3; theoretical [N II] ratios and [S II] density diagnostic. (from (cite: Osterbrock06)) [MUSE data — Individual regions: "We also fixed the \[O iii\] doublet to its theoretical value (1/3; (cite: Osterbrock06))."]
+- inherited: Calzetti attenuation law; R_V = 3.12. (from (cite: Calzetti00)) [MUSE data — Radial profile along the ou…: "For the extinction correction, we assumed an intrinsic ratio of H$\alpha$/H$\beta=$2.86 and the (cite: Calzetti00) attenuation law (R$_V=$3.12)."]
+- literature input: Fully reduced and clean, natural-weight CO(2-1) cube.
+- literature input: Distance ~16.9 Mpc.
+- literature input: Disk inclination 35°, major-axis PA 320°, systemic velocity 1994 km s^-1.
+- literature input: STELIB library spectra of various ages and metallicities.
+- missing for reproduction (card): The ALMA reduced cube location and its inherited reduction/imaging recipe from Herrero18.; Machine-readable extraction masks and spatial registration details for ALMA, MUSE and HST.; Software versions and executable scripts/configurations for continuum fitting, disk modelling and spectral decomposition.; Full optimizer settings, uncertainty propagation and treatment of low-density limits.; Unambiguous velocity zero points and per-component depro…
+- not stated (card): ALMA calibration software/version, calibrators, flux-scale uncertainty and any self-calibration inherited from Herrero18.; Exact reduced ALMA cube identifier or download location; calibration and imaging scripts if starting from visibilities.; ALMA image pixel size, dimensions, cleaning thresholds/masks, primary-beam treatment and compact/extended…
+- data volume (card estimate): Cannot estimate reliably: pixel dimensions, channel count, visibility sizes and file sizes are not stated.
+- reproducibility (card): score 5: 5/10: project code, named methods, key assumptions, component tables and integrated answer keys are provided; inherited ALMA processing, exact masks, versions and fitting details are missing, with internal numerical inconsistencies.
+- answer-key example: Median narrow [O iii] velocity dispersion, instrument-corrected = 97 ± ±20 km s^-1
+- answer-key example: Median broad [O iii] velocity dispersion, instrument-corrected = 233 ± ±75 km s^-1
+- answer-key example: Median projected central velocity of molecular non-circular motions = 44 ± ±29 km s^-1
+
+### 2024A&A...690A.232S: Joint ALMA/X-ray monitoring of the radio-quiet type 1 active galactic nucleus IC 4329A (2024; agn_and_quasars; observational_alma_primary)
+- question: Investigate the origin of compact mm emission and correlated daily X-ray/mm variability in IC 4329A.
+- ALMA projects: 2019.1.01181.S
+- data.bands: band-3
+- data.angular_resolution: typical beam 0″.04–0″.09 (~13–29 pc)
+- data.pi_or_archival_as_stated: PI C. Ricci
+- calibration.pipeline_or_manual: ALMA Pipeline [mm: "Data are processed using `CASA` version 6.1.1.15 and the ALMA Pipeline version 2020.1.0.40 (cite: alma_pipeline)."]
+- calibration.casa_version: 6.1.1.15 [mm: "Data are processed using `CASA` version 6.1.1.15 and the ALMA Pipeline version 2020.1.0.40 (cite: alma_pipeline)."]
+- calibration.flux_scale_uncertainty: 5%; checked using phase calibrator J1351-2912 [mm: "According to the ALMA proposer’s guide, the statistical flux error for band-3 observations is 5%."]
+- imaging.final_beam: typical beam 0″.04–0″.09 (~13–29 pc)
+- imaging.final_rms: σ = 0.0216–0.0280 mJy/beam across the listed epochs
+- inherited: Iterative source/background extraction-region selection maximising SNR. (from (cite: Piconcelli2004)) [XMM-Newton: "performed an iterative process that maximises the signal-to-noise ratio (SNR) as in (cite: Piconcelli2004)."]
+- inherited: NICER data-reduction procedure. (from (cite: Ricci21)) [NICER: "was performed following the same procedure reported in (cite: Ricci21)."]
+- inherited: Swift/XRT analysis guidelines. (from (cite: Evans09)) [Swift: "We performed the *Swift*/XRT data analysis using the XRTPIPELINE following the standard guidelines (cite: Evans09)."]
+- inherited: Fractional variability accounting for measurement uncertainties. (from (cite: vaughan03)) [X-ray variability: "To quantify the intensity of the variability taking into account the measurement uncertainties we calculated the fractional variability of the light curve $F_{\rm var}$ (cite: vaughan03)"]
+- inherited: Lomb-Scargle periodogram using least-squares fitting of unevenly sampled data. (from (cite: lomb; scargle)) [X-ray variability: "we calculated the Lomb-Scargle periodogram (cite: lomb; scargle) used for the analysis of unevenly sampled data employing a least-squares fitting procedure."]
+- inherited: Wavelet analysis and cone-of-influence assessment. (from (cite: Morlet1983); (cite: wavelet_prac)) [X-ray variability: "wavelet analysis (cite: Morlet1983) is more efficient than the periodogram."]
+- literature input: SMBH reverberation-mapping mass: 6.8 +1.2/-1.1 × 10^7 M⊙.
+- literature input: Comoving distance D = 69.3 Mpc.
+- literature input: 100 GHz/2–10 keV correlation; scatter 0.22 dex; typical log flux ratio −4.63 ± 0.06.
+- literature input: 230 GHz/14–150 keV luminosity correlation for 98 AGN; scatter ~0.36 dex.
+- missing for reproduction (card): A statement establishing public availability of the ALMA data and associated archive products.; ALMA imaging scripts and exact compact-source flux extraction settings.; Per-spectral-window flux tables and covariance information for spectral-index fitting.; X-ray spectral-fitting and flux-conversion details, plus inherited NICER and Swift reduction choices.; Period-search, interpolation, lag-analysis configuration files, and uncertainty/significa…
+- not stated (card): ALMA visibility flagging, imaging task, weighting/robust, pixel size, image size, deconvolver, masking, and stopping threshold.; Whether self-calibration was applied and, if so, its solution intervals and acceptance criteria.; Core and diffuse-component flux extraction procedure, apertures or fitted source models, and uncertainty propagation.; Per…
+- data volume (card estimate): Raw data volume cannot be estimated reliably from the stated setup; the campaign contains ten short ALMA continuum epochs plus X-ray observ…
+- reproducibility (card): score 5: 5/10: project code, observing setup, processing versions, light-curve tables, and many numeric results are supplied. Imaging, flux extraction, timing configurations, and corona-fitting implementation are incomplete or inherited.
+- answer-key example: X-ray fractional variability = 17.5 ± ±0.5 %
+- answer-key example: mm fractional variability = 37.1 ± ±0.5 %
+- answer-key example: X-ray fractional variability in sliding 10-day windows = 6.5–18.5 ± not stated %
+
+### 2019A&A...623A.153O: HD 101584: circumstellar characteristics and evolutionary status (2019; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What are the circumstellar characteristics of the binary HD 101584 and what do they imply for its evolutionary status (post-RGB vs post-AGB, common-envelope evolution)?
+- ALMA projects: 2012.1.00248.S, 2015.1.00078.S
+- data.bands: Band 6, 12CO and 13CO J=2-1 settings
+- data.arrays: 12 m main array, 35 to 39 antennas
+- data.angular_resolution: Best 0.025"; line beams ~0.65"x0.55" (cycle 1) and 0.09"x0.08" (combined); continuum beam 0.15"x0.14"
+- data.sensitivity: channel rms ~2 mJy/beam (cycle 1) and ~0.7 mJy/beam (combined) at 1.5 km/s
+- calibration.pipeline_or_manual: Manual-style reduction: Tsys/WVR corrections, bandpass and gain calibration, then self-calibration [3.1 ALMA: "After corrections for the time and frequency dependence of the system temperatures, and rapid atmospheric variations at each antenna using water vapour radiometer data, bandpass and gain calibration were done."]
+- calibration.casa_version: various versions, last one 4.7.3 [3.1 ALMA: "The data were reduced using various versions of CASA over the years, the last one being 4.7.3."]
+- calibration.flux_scale_uncertainty: 5% absolute; real flux uncertainties at least ~20% [3.1 ALMA: "Based on the calibrator fluxes, we estimate the absolute flux calibration to be accurate to within 5%."]
+- calibration.self_calibration: Self-calibration on strong continuum for each tuning [3.1 ALMA: "Subsequently, for each individual tuning, self-calibration was performed on the strong continuum."]
+- imaging.weighting_robust: Briggs robust weighting (value not given)
+- imaging.final_beam: 0.65"x0.55" (cycle 1), 0.09"x0.08" (combined), continuum 0.15"x0.14"
+- imaging.final_rms: ~2 and ~0.7 mJy/beam per 1.5 km/s channel
+- inherited: Energetics analysis repeated from earlier paper (from (cite: olofetal15)) [5.3 The energetics of the outflowing ma…: "We repeat here essentially the analysis in (cite: olofetal15) since it is based on the same C$^{18}$O(2–1) data."]
+- inherited: EVS radiative transfer model and assumptions (from (cite: olofetal17)) [5.2.5 The EVSs: "We will use the same method, although simplified to only one component, and assumptions here."]
+- inherited: Orbital characteristics via same procedure (from (cite: olofetal15)) [7.2 The energetics and common-envelope …: "Following the same procedure as in (cite: olofetal15) we estimate the orbital characteristics from the mass function"]
+- inherited: Dust density distribution from simplified analytic expression (from (cite: meixetal02)) [6.4 SED modelling: "The dust density distribution is given by a simplified version of the analytical expression provided by (cite: meixetal02)"]
+- literature input: CO isotopologue ratios (12C/13C ~13, 17O/18O ~0.2) used for evolutionary status
+- literature input: Orbital period 144 d from radial velocities
+- literature input: Velocity semi-amplitude K_ps = 3 km/s
+- literature input: Dust opacity 0.5 cm2/g at 1.3 mm
+- missing for reproduction (card): Imaging parameters (robust, cell, masks, thresholds); Line-free channel selection and self-cal settings; Aperture and velocity-range definitions for each component; SED photometry table and MCMax fit grid; SHAPE model files
+- not stated (card): Briggs robust value, cell size, image size, masks and clean thresholds; Line-free channels used for continuum subtraction and continuum imaging; Self-calibration solution intervals and number of iterations; Which ALMA execution blocks/configurations make up TA1-TA3; Exact velocity and spatial integration regions for the component decomposition; SH…
+- data volume (card estimate): Large: long-baseline Band 6 12CO setting across three configurations plus cycle 1, hundreds of GB raw
+- reproducibility (card): score 3: Data identifiable and many numbers given, but imaging settings are largely missing and several analyses (SHAPE, SED, e-EVS) are by eye or loosely specified.
+- answer-key example: HVO inclination angle = 10 ± -5/+10 (2 sigma) deg
+- answer-key example: Total circumstellar gas mass = 0.5 [D/1 kpc]^2 ± not stated Msun
+- answer-key example: EDE gas mass = 0.24 [D/1 kpc]^2 ± not stated Msun
+
+### 2020ApJS..247...15S: An ALMA CO(2-1) Survey of Nearby Palomar-Green Quasars (2020; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Cold molecular gas properties, excitation, star formation efficiency, and CO-to-H2 conversion factor in nearby quasar host galaxies.
+- ALMA projects: 2017.1.00297.S
+- data.bands: Band-6
+- data.arrays: ALMA Compact Array (ACA)
+- data.angular_resolution: FWHM ≈6″
+- data.sensitivity: Typically 1.5–5 mJy per beam per channel (1σ); within ∼30% of theoretical noise.
+- data.pi_or_archival_as_stated: New Cycle 5 observations; PI: F. Bauer; 103.1 hours in total.
+- calibration.pipeline_or_manual: Standard pipeline after minor flagging of problematic antennae and sky-absorption channels. [Sample and Observations: "The data were calibrated using the standard pipeline after minor flaggings of some problematic antennae and channels with sky absorption lines; this process did not affect the final results significantly."]
+- calibration.flux_scale_uncertainty: ∼5%–10%; excluded from final flux uncertainties. [CO Luminosity: "The uncertainty of the absolute flux scale, $\sim 5\%-10\%$ (cite: Fomalont2014Msngr; Bonato2018MNRAS), is not included in our final flux uncertainty."]
+- imaging.weighting_robust: Robust weighting; robust = 0.5.
+- imaging.final_rms: Typically 1.5–5 mJy per beam per channel (1σ).
+- imaging.smoothing: Hanning-smoothed spectral resolution ∼5 km s−1.
+- inherited: UV/optically selected PG parent sample; quasars defined by MB <−23 mag irrespective of radio-loudness. (from (cite: Schmidt1983ApJ)) [Introduction: "quasars selected from the Palomar-Green (PG; (cite: Schmidt1983ApJ)) survey."]
+- inherited: Ωm = 0.308, ΩΛ = 0.692, H0 = 67.8 km s−1 Mpc−1. (from (cite: Planck2016AA)) [Introduction: "We adopt the following cosmological parameters: $\Omega_m = 0.308$, $\Omega_\Lambda = 0.692$, and $H_{0}=67.8$ km s$^{-1}$ Mpc$^{-1}$ (cite: Planck2016AA)."]
+- inherited: AGN-decomposed IR luminosities for observing-time estimates; LIR,host and dust-derived total gas masses for analysis. (from (cite: Shangguan2018ApJ)) [Sample and Observations: "Integration times were estimated based on the CO(2–1) brightness expected from the AGN-decomposed IR luminosity of (cite: Shangguan2018ApJ)"]
+- inherited: Equation (1) starburst IR–CO relation for integration-time estimates. (from (cite: Sargent2014ApJ)) [Sample and Observations: "relation is given by Equation (1) of (cite: Sargent2014ApJ) for starburst galaxies"]
+- inherited: R21 = 0.5 for integration-time estimates. (from (cite: Xia2012ApJ)) [Sample and Observations: "adopting a CO line luminosity ratio $R_{21}\equiv L^\prime_\mathrm{CO(2-1)}/L^\prime_\mathrm{CO(1-0)} = 0.5$ (cite: Xia2012ApJ)."]
+- inherited: Flux-to-CO-luminosity conversion. (from (cite: Solomon2005ARAA)) [CO Luminosity: "Following (cite: Solomon2005ARAA), the CO line luminosity is"]
+- literature input: Host dust masses, total gas masses, AGN-decomposed 8–1000 μm IR luminosities, mean radiation-field intensities, and dust temperatures.
+- literature input: 5100 Å AGN continuum luminosities, BH masses, and host stellar masses.
+- literature input: Stellar masses from high-resolution optical/near-IR images with nuclear emission decomposed.
+- literature input: Host-galaxy axis ratios from GALFIT decomposition.
+- missing for reproduction (card): Executable reduction and analysis scripts, software versions, and calibration provenance.; Exact flags, continuum-fit channels, image grids, masks, primary-beam treatment, and per-source cube settings.; Upper-limit calculation recipe for nondetections.; Full profile-fitting likelihood, priors, sampler configuration, and convergence diagnostics.; Exact censored-data inputs and estimator settings for R21 and gas fractions.; Linmix settings and the…
+- not stated (card): CASA and calibration-pipeline versions, and exact antenna/channel flag selections.; Per-source uvcontsub channel selections and polynomial fit order.; Image cell size, image size, CLEAN masks, deconvolution settings, and final cube channel binning.; Primary-beam correction procedure and per-source synthesized beams.; Detection criterion and assume…
+- data volume (card estimate): Cannot estimate bytes from the supplied observing and spectral information.
+- reproducibility (card): score 6: Project identification, targets, key imaging thresholds, extraction rules, conversions, and main numeric results are supplied. Exact imaging, censoring, sampler settings, software versions, and inherited dust-analysis details remain incomplete.
+- answer-key example: ALMA CO(2–1) detection rate = 91% (21/23) ± not stated %
+- answer-key example: First-time CO detections = 13 ± not stated objects
+- answer-key example: Combined CO-measured sample = 40 ± not stated quasars
+
+### 2014ApJ...796...84R: ALMA Imaging of Gas and Dust in a Galaxy Protocluster at Redshift 5.3: [C II] Emission in "Typical" Galaxies and Dusty Starbursts ≈1 Billion Years after the Bi… (2014; high_z_galaxies; observational_alma_primary)
+- question: What are the gas (CII, OH) and dust properties of the SMG AzTEC-3 and of 'typical' Lyman-break galaxies in the z=5.3 protocluster?
+- ALMA projects: 2011.0.00064.S
+- data.bands: ~994 µm (301.72 GHz), 870 µm weather conditions
+- data.arrays: 12 m antennas, 16-24 usable
+- data.angular_resolution: 0.63" x 0.55" at [CII]
+- data.sensitivity: ~50 µJy/beam over 7.5 GHz
+- calibration.pipeline_or_manual: AIPS and CASA used independently for reduction [Observations: "The Astronomical Image Processing System (AIPS) and Common Astronomy Software Applications (CASA) packages were used independently for data reduction and analysis"]
+- calibration.flux_scale_uncertainty: ~20% [Observations: "We estimate the overall accuracy of the calibration to be accurate within $\sim$20%."]
+- imaging.weighting_robust: natural weighting
+- imaging.final_beam: 0.63" x 0.55" ([CII]); 0.63" x 0.56" line-free continuum
+- imaging.final_rms: ~50 µJy/beam over 7.5 GHz
+- inherited: MCMC modified blackbody SED fitting method (from Riechers et al. (cite: rie13); Dowell et al. (cite: dow14)) [3.4 SED, AzTEC-3: "employing the method described by Riechers et al. ((cite: rie13)) and Dowell et al. ((cite: dow14))"]
+- inherited: UV SFR via SED fitting methods (from C11) [4.2 LBGs: "using the SED fitting methods outlined by C11"]
+- inherited: Source size errors determined following Condon (from Condon (cite: con97)) [3.1 Continuum: "Errors are determined as described by Condon ((cite: con97))."]
+- inherited: Isotropic virial estimator for dynamical mass (from Engel et al. (cite: eng10)) [3.5 Derivation of Further Galaxy Proper…: "we then use an isotropic virial estimator (e.g., Engel et al. (cite: eng10)) to derive dynamical masses"]
+- literature input: AzTEC-3 continuum photometry 100 µm-8.2 mm used in SED fit
+- literature input: CO(2-1), (5-4), (6-5) line fluxes of AzTEC-3
+- literature input: COSMOS photometry and photometric/spectroscopic redshifts, UV SED fitting of LBGs
+- missing for reproduction (card): Imaging parameters (mask, threshold, cell, size); Software versions; Details of spectral extraction regions; SED templates and photometry tables not included; MCMC settings
+- not stated (card): CASA/AIPS versions; CLEAN mask, threshold, cell and image size; Line-free channels and continuum subtraction method; Which processing (AIPS vs CASA) produced the final maps and fluxes; Aperture/extraction regions for spectra of LBG components; MCMC priors on T_dust, alpha, lambda0 and run settings beyond beta prior; Which dwarf templates were used…
+- data volume (card estimate): ~50-100 GB raw for 5 Cycle 0 tracks
+- reproducibility (card): score 3: Data are public and the analysis is moderately described, but imaging and fitting details are missing and photometry comes from other papers.
+- answer-key example: AzTEC-3 1.0 mm continuum flux density = 6.20 ± 0.25 mJy
+- answer-key example: AzTEC-3 [CII] integrated flux = 8.21 ± 0.29 Jy km/s
+- answer-key example: AzTEC-3 [CII] FWHM = 421 ± 19 km/s
+
+### 2017ApJ...836....8T: ALMA Observations Show Major Mergers Among the Host Galaxies of Fast-growing, High-redshift Supermassive Black Holes (2017; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Are major mergers important drivers of rapid early SMBH growth, as tested with ALMA continuum and [C II] observations of six z≃4.8 quasar hosts, three FIR-bright and three FIR-faint?
+- ALMA projects: 2013.1.01153.S
+- data.bands: Band 7
+- data.arrays: 12m antennas, 29-38 per execution
+- data.angular_resolution: ~0.3 arcsec at 330 GHz (~2 kpc); beams 0.38-0.54 x 0.29-0.31 arcsec
+- data.sensitivity: (4.2-9.2)x10^-2 mJy/beam rms
+- calibration.pipeline_or_manual: Observatory-provided scripts used to generate visibilities [2.2.2 Data Reduction and Spectral Measu…: "The scripts provided by the observatory were used to generate the visibilities."]
+- calibration.casa_version: CASA 4.5.0 [2.2.2 Data Reduction and Spectral Measu…: "Data reduction was performed using CASA package, version 4.5.0 (Mcmullin et al. 2007)."]
+- calibration.self_calibration: Not implemented; did not improve S/N for brightest sources [2.2.2 Data Reduction and Spectral Measu…: "We note that self calibration for the brightest sources did not improve the signal-to-noise ratios and therefore was not implemented."]
+- imaging.weighting_robust: Natural for noise estimates; Briggs robust = 0.5 for science images
+- inherited: Sample selection and ancillary data details (from T11, M12, N14) [2.1 Sample Selection and Properties: "refer the reader to our previous papers (T11, M12, N14) for additional details."]
+- inherited: Gray-body SED (Td = 47 K, beta = 1.6) following other high-z quasar host studies (from Willott et al. 2015; Venemans et al. 2016) [3.3.1 FIR SEDs and SFRs: "we adopted the procedure used in several recent studies of FIR emission in high-redshift quasar hosts (e.g., Willott et al. 2015; Venemans et al. 2016, and references therein)"]
+- inherited: Dynamical mass prescription for an inclined rotating disk (from Wang et al. 2013; Willott et al. 2015; Venemans et al. 2016) [3.3.2 Host and companion galaxy masses: "we employ the same prescription as used in several recent studies of [C II ] (and CO) emission in high-redshift sources"]
+- inherited: Dust opacity kappa = 0.77 (850 µm/λ)^β (from Dunne et al. 2000) [3.3.2 Host and companion galaxy masses: "following Dunne et al. 2000, for consistency with Venemans et al. 2016"]
+- inherited: BH masses with McLure & Dunlop (2004) calibration (from T11; McLure & Dunlop 2004) [3.3.3 SMBH-host galaxy relations: "These M BH estimates used the calibration by McLure & Dunlop (2004)."]
+- literature input: Mg II-based redshifts, BH masses and bolometric luminosities
+- literature input: SDSS-based redshifts
+- literature input: Herschel/SPIRE measurements and stacking
+- literature input: [C II]/FIR comparison compilation
+- missing for reproduction (card): Full CLEAN parameters and masks; Line-free channel ranges; Fitting uncertainty treatment; Herschel and T11 data tables from other papers
+- not stated (card): CLEAN parameters: deconvolver, threshold, masks, iterations, image size; Line-free channels and exact spectral windows used for continuum subtraction; Flux calibrator and flux scale uncertainty; Whether pipeline or manual calibration scripts were used and which pipeline version; Aperture and fitting details for the 2D Gaussian fits; How inclinatio…
+- data volume (card estimate): ~50-150 GB for six Band 7 TDM datasets
+- reproducibility (card): score 3: Data are public and the main steps are described, but CLEAN settings and flux calibration are missing, and some inputs come from earlier papers.
+- answer-key example: Companion SMGs detected = 3 of 6 quasars (separations ~14-45 kpc) ± not stated count
+- answer-key example: [C II] FWHM of quasar hosts = 240-510 ± ~10% km/s
+- answer-key example: L[CII]/LFIR of quasar hosts = (2.1-9.4)e-4 ± not stated dimensionless
+
+### 2014ApJ...791...42Z: Comparison of the Dust and Gas Radial Structure in the Transition Disk [PZ99] J160421.7-213028 (2014; protoplanetary_disks; observational_alma_primary)
+- question: How do the radial structures of mm-sized dust and CO gas compare in the transition disk J1604-2130, and what do they imply for the cavity formation mechanism?
+- ALMA projects: 2011.0.00526.S
+- data.bands: ~880 um (Band 7), cycle 0
+- data.arrays: 28 12-m antennas
+- data.angular_resolution: 0.73"x0.46" (106x67 AU), PA 105 deg
+- data.sensitivity: continuum rms 0.18 mJy/beam
+- data.pi_or_archival_as_stated: Cycle 0 project; Carpenter et al. 2014 cited
+- calibration.pipeline_or_manual: Manual-style CASA reduction with self-calibration on continuum [2 Observations: "Reduction and calibration of the data were performed using the Common Astronomy Software Application (CASA) version 4.1 (cite: McMullin07)."]
+- calibration.casa_version: CASA 4.1 [2 Observations: "Common Astronomy Software Application (CASA) version 4.1"]
+- calibration.flux_scale_uncertainty: ~10% [2 Observations: "calibrated from observations of Titan with an estimated uncertainty of $\sim$10%"]
+- calibration.self_calibration: self-calibrated on continuum of science source [2 Observations: "the visibilities were self-calibrated on the continuum emission of the science source to reduce atmospheric decoherence"]
+- imaging.weighting_robust: natural weighting
+- imaging.final_beam: 0.73"x0.46", PA 105 deg
+- imaging.final_rms: 0.18 mJy/beam
+- inherited: Three-region dust surface density model (from (cite: Mathews12)) [4.1 Dust emission: model description: "We adopt a model for the mass surface density of the dusty disk similar to that presented in (cite: Mathews12)"]
+- inherited: Fourier-domain fitting procedure (from (cite: Isella09)) [4.2 Dust emission: fitting procedure an…: "The model fitting is performed in the Fourier domain adopting the procedure discussed in (cite: Isella09)."]
+- inherited: CO model (from (cite: Isella07)) [4.3 CO emission: model description: "The model used to analyze the ALMA $^{12}$CO $J$= 3-2 spectral line observations is similar to that presented in (cite: Isella07)."]
+- inherited: gamma=1 adopted for comparison with prior work (from (cite: Andrews07; Andrews11)) [4.2 Dust emission: fitting procedure an…: "we adopt $\gamma=1$ (cite: Andrews07; Andrews11)"]
+- inherited: Hybrid LM + MCMC approach; Hessian-based uncertainties for CO (from (cite: Pitu07; Isella09)) [4.4 CO emission: fitting procedure and …: "we use the Hessian matrix to derive the the uncertainties on the model free parameters following the method presented in (cite: Pitu07)"]
+- inherited: Dust composition and opacity (from (cite: Draine03; Zubko96; Pollack94; Miyake93)) [4.1 Dust emission: model description: "optical constants as in (cite: Draine03) and (cite: Zubko96), respectively, and at relative abundances as in (cite: Pollack94)"]
+- literature input: Broadband SED (1-200 um; IRAC, IRS, WISE photometry) used for dust model
+- literature input: Millimeter SED slope alpha=3.2+-0.2, beta=1.2
+- literature input: Stellar parameters Teff=4550 K, R*=1.41 Rsun, M*=1 Msun
+- literature input: Disk inclination of 6 deg
+- missing for reproduction (card): Custom Fourier-domain LM/MCMC fitting code (Isella09) not released; SED photometry table not given; Priors and parameter bounds
+- not stated (card): Archive/pipeline version and calibration scripts beyond CASA 4.1; Self-calibration solution intervals and number of iterations; Line-free channel ranges for continuum and CO continuum subtraction; CLEAN mask, threshold, cell and image size; Parameter priors/bounds for LM and MCMC; MCMC step settings, burn-in; Model grid setup (RADMC/RADLite resolu…
+- data volume (card estimate): ~10-30 GB raw Cycle 0 single-execution data
+- reproducibility (card): score 3: Data public and models described, but fitting code, priors, SED data and imaging details missing.
+- answer-key example: Continuum flux density (4" box) = 226 ± ±1 mJy (10% absolute) mJy
+- answer-key example: CO 3-2 integrated intensity (6" box) = 21.4 ± ±0.2 Jy km/s
+- answer-key example: Dust cavity radius Rcav = 78.8 ± ±0.1 AU
+
+### 2023MNRAS.523.2887M: Rotation-tunnelling spectrum and astrochemical modelling of dimethylamine, CH<SUB>3</SUB>NHCH<SUB>3</SUB>, and searches for it in space (2023; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: Improve DMA spectroscopic predictions, search for DMA toward Sgr B2(N) and G+0.693–0.027, and compare abundance limits with astrochemical models.
+- ALMA projects: 2016.1.00074.S
+- data.angular_resolution: HPBW ∼0.3″–∼0.8″; median 0.6″
+- data.sensitivity: 0.35–1.1 mJy beam−1 rms per spectral channel; median 0.8 mJy beam−1
+- inherited: ReMoCA data reduction and analysis method (from (cite: Belloche19)) [Search for dimethylamine toward Sgr B2(…: "The data reduction and the method of analysis of this survey were described in (cite: Belloche19)."]
+- inherited: LTE spectral comparison with Weeds (from (cite: Belloche19; Belloche22)) [Search for dimethylamine toward Sgr B2(…: "Like in our previous ReMoCA studies (cite: Belloche19; Belloche22), we compared the observed spectra to synthetic spectra computed under the assumption of LTE with the astronomical software Weeds (cite: Maret11)."]
+- inherited: Sgr B2(N1S) emission size 2″ (from (cite: Belloche19)) [Search for dimethylamine toward Sgr B2(…: "For the LTE modeling, we assumed like in (cite: Belloche19) an emission size of 2$\ensuremath{''}$"]
+- inherited: Dimethyl ether excited-state predictions supplied by C. Endres (from (cite: Belloche13)) [Search for DMA toward Sgr B2(N1S) and S…: "For the vibrationally excited states $\upsilon_{11}=1$ and $\upsilon_{15}=1$, we used like in (cite: Belloche13) predictions provided by C. Endres."]
+- inherited: Detailed G+0.693 observational survey procedure (from (cite: rivilla2022c)) [Search for dimethylamine toward G+0.693…: "For more detailed information of the observational survey we refer to (cite: rivilla2022c)."]
+- inherited: Laboratory spectrometer details (from (cite: n-BuCN_rot_2012); (cite: OSSO_rot_2015); (cite: CH3S…) [Experimental details: "Additional information on these spectrometers is available in (cite: n-BuCN_rot_2012) and (cite: OSSO_rot_2015), respectively."]
+- literature input: 48 earlier DMA transition frequencies; assigned uncertainty 100 kHz
+- literature input: 88 Fourier transform microwave transition frequencies; final uncertainties 1.5 kHz
+- literature input: DMA dipole moments μb = 0.295 D; μc = 0.967 D
+- literature input: Gas-phase infrared and Raman measurements of DMA fundamental vibrations
+- missing for reproduction (card): Belloche19 reduction details and the exact modified continuum-separation inputs.; Calibrated-data or image product identifiers and precise spectral extraction instructions.; Machine-readable ALMA upper-limit line/channel selections, baseline treatment and blend models.; Weeds version and saved spectral-model configurations.; Executable chemical model, complete network and initial-condition files.; Public access statement or product location for …
+- not stated (card): ALMA calibration software, version, pipeline/manual procedure, calibrators and flux-scale uncertainty.; ALMA imaging task, weighting/robust, cell size, image dimensions, deconvolution masks and stopping criteria.; Exact line/continuum separation frequency ranges and identities/coordinates of the two added reference positions.; Exact spectral extra…
+- data volume (card estimate): Cannot estimate reliably from the stated frequency coverage and resolution without spatial dimensions, visibility counts or product sizes.
+- reproducibility (card): score 5: 5/10: public ALMA data, released spectroscopy and numerical LTE parameters support partial replication; reduction is inherited, upper limits are subjective, and chemical execution files are unspecified.
+- answer-key example: DMA spectroscopic fit normalized rms = 0.952 ± not stated dimensionless
+- answer-key example: DMA spectroscopic fit rms = 28.7 ± not stated kHz
+- answer-key example: Dimethyl ether population-diagram temperature, Sgr B2(N1S) = 174 ± 7; statistical standard deviation, possibly underestimated K
+
+### 2014ApJ...796..117G: The Slow Ionized Wind and Rotating Disklike System that are Associated with the High-mass Young Stellar Object G345.4938+01.4677 (2014; star_formation, astrochemistry; observational_alma_primary)
+- question: Is the ionized gas around the high-mass YSO G345.49+1.47 a slow photo-ionized wind rather than a fast jet, as probed by 3 mm continuum and hydrogen recombination lines, and do sulfur-bearing molecule…
+- ALMA projects: 2011.0.00351.S
+- data.bands: Band 3 (3 mm)
+- data.arrays: 12-m antennas, 17 (two SBs) and 25 (three SBs)
+- data.angular_resolution: typically 2.3" x 1.3", PA 97 deg
+- data.sensitivity: continuum ~50 uJy/beam; lines 1-2 mJy/beam per channel
+- calibration.pipeline_or_manual: Recalibrated with CASA [2 Observations: "We recalibrated the data using the Common Astronomy Software Applications (CASA) (cite: Petry2012ASPC)."]
+- calibration.self_calibration: one additional phase self-calibration iteration [2 Observations: "which allowed us to perform an additional phase self-calibration iteration."]
+- imaging.weighting_robust: Briggs robust = 0
+- imaging.final_rms: ~50 uJy/beam continuum; 1-2 mJy/beam per channel
+- inherited: Jet source position, inclination, momentum rate and lobe naming taken from earlier work (from (cite: Guzman2010ApJ)) [4.2 The ionized jet observed at 92 GHz: "Following the (cite: Guzman2010ApJ) naming convention, the two outermost lobes are referred to as outer-east (O-E) and outer-west (O-W) lobes"]
+- inherited: Jet model parameterization (from (cite: Reynolds1986ApJ)) [4.4.1 Collimated ionized jet model: "A useful parameterization of the jet structure is given in (cite: Reynolds1986ApJ)."]
+- inherited: Weighted least-squares fitting procedure (from (cite: Lampton1976ApJ)) [3.1 Continuum emission: "obtained by weighted least-squares (or $\chi^2$) minimization using the procedure described in (cite: Lampton1976ApJ)"]
+- inherited: Dynamical mass formula (from (cite: Franco-Hernandez2009ApJ)) [4.5.3 Dynamics of the molecular emission: "simplified version of Equation (1) from (cite: Franco-Hernandez2009ApJ)"]
+- literature input: Centimeter continuum jet/lobe fluxes and spectral index below 10 GHz (0.85+-0.15), inclination ~45 deg, momentum rate
+- literature input: Distance 1.7 kpc
+- literature input: Line frequencies and Eu from JPL and CDMS via Splatalogue
+- missing for reproduction (card): Cm-wavelength flux densities for 1-100 GHz SED; Clean parameters and line-free channels; Exact CASA version
+- not stated (card): Line-free channel ranges used for continuum fitting and uvcontsub; Clean masks, thresholds and iteration counts; Self-calibration solution interval; Hanning smoothing details; Exact CASA version; Box/aperture used to extract HRL spectra at peak; Fit optimizer for Voigt and SET models; Pixel/channel selection for PV diagram and moment maps (clippin…
+- data volume (card estimate): ~10-50 GB raw (Cycle 0, 5 SBs); small if using released cubes
+- reproducibility (card): score 3: Public data and detailed equations, but imaging details and model fitting are partly heuristic and some inputs come from earlier work.
+- answer-key example: Source 10 flux density at 85.4 GHz = 103.8 ± 0.90 mJy
+- answer-key example: In-band spectral index of Source 10 = 1.01 ± 0.1 dimensionless
+- answer-key example: 1-100 GHz spectral index of jet = 0.92 ± 0.01 dimensionless
+
+### 2019A&A...623A..69M: The ALMA-PILS survey: the first detection of doubly deuterated methyl formate (CHD<SUB>2</SUB>OCHO) in the ISM (2019; astrochemistry, star_formation; archival_reuse)
+- question: Can doubly-deuterated methyl formate (CHD2OCHO) be detected towards IRAS16293 A and B, and how do its D/H ratios compare with singly-deuterated forms and with a gas-grain chemical model?
+- ALMA projects: 2013.1.00278.S
+- data.angular_resolution: restoring beam 0.5 arcsec
+- data.sensitivity: ~5-7 mJy/beam km/s
+- inherited: Data reduction and continuum subtraction (from Jorgensen-2016) [Observations & spectroscopic data: "Further details of the data reduction and continuum subtraction can be found in (cite: Jorgensen-2016)."]
+- inherited: Offset positions for spectral extraction (from Lykke-2017; Ligterink-2017; Calcutt-2018a) [Observations & spectroscopic data: "The offset positions are the same as those used in previous PILS studies (cite: Lykke-2017; Ligterink-2017; Calcutt-2018a)."]
+- inherited: Source size 0.5 arcsec adopted for all models (from Jorgensen-2016) [Results & Analysis: "This source size was also adopted in all previous studies using the PILS dataset."]
+- inherited: Continuum correction factor method (from Calcutt-2018b) [Results & Analysis: "a correction factor was determined to correct the derived column density, based on the excitation temperature and the continuum flux (cite: Calcutt-2018b)"]
+- inherited: VINE map method (from Calcutt-2018a) [Results & Analysis: "(cite: Calcutt-2018a) developed a new method to analyse the spatial emission of such velocity structures, called ‘*Velocity-corrected INtegrated Emission maps*’"]
+- literature input: Spectroscopic data and partition function for CHD2OCHO
+- literature input: CH2DOCHO spectroscopy and partition function
+- literature input: CH3OCDO spectroscopy
+- literature input: CH3OCHO from JPL catalog, 13C isotopologue from CDMS
+- missing for reproduction (card): Reduced PILS cubes and reduction details (Jørgensen et al. 2016); Fit code and chi2 weighting details; Reference spectrum of other species for blending; Model outputs from Taquet et al. 2014
+- not stated (card): Exact chi2 grid step sizes and the weighting scheme details for blending; Details of the reference spectrum used to reduce blending; Line-free channels and continuum subtraction settings (deferred to Jørgensen et al. 2016); Imaging parameters (robust weighting, cell size) from PILS; Definition of the chi2 and uncertainty derivation for column dens…
+- data volume (card estimate): ~100s GB for raw PILS data; the reduced cubes are tens of GB
+- reproducibility (card): score 3: Public data and a clear LTE grid approach, but the reduction is deferred, the weighting/blending treatment is vague and the fit code is not released.
+- answer-key example: N_tot CHD2OCHO, IRAS16293A = 5.3e15 ± ±1.6e15 cm^-2
+- answer-key example: N_tot CHD2OCHO, IRAS16293B = 1.1e16 ± ±0.2e16 cm^-2
+- answer-key example: N_tot CH3OCHO, IRAS16293A = 2.7e17 ± ±0.8e17 cm^-2
+
+### 2014A&A...570A..28V: Molecular line emission in NGC 1068 imaged with ALMA. II. The chemistry of the dense molecular gas (2014; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Are the different line intensity ratios within the CND, and between the CND and the SB ring, due to excitation effects (density, temperature) or to a different chemistry?
+- ALMA projects: 2011.0.00083.S
+- data.bands: ALMA Band 7 and Band 9 (Cycle 0)
+- data.angular_resolution: ~0.3"-0.5" (20-35 pc) at full resolution; maps degraded to the common lowest resolution of each ratio
+- imaging.smoothing: All maps referred to the same tracking center and degraded to the lower/common resolution of each ratio with a Gaussian convolution kernel
+- inherited: ALMA data and their reduction (from Paper I (cite: Garc14)) [1.1 Summary of Paper I and aims of this…: "The data and their reduction are detailed in Paper I."]
+- inherited: Definition of CND sub-regions from the ALMA observations (from Paper I (cite: Garc14)) [1.1 Summary of Paper I and aims of this…: "we report the molecular line ratios and briefly describe the sub-regions of the CND, as determined by our ALMA observations in Paper I"]
+- inherited: Phase tracking center (from Paper I (cite: Garc14)) [2.1 Methodology: "the same nominal position of the phase tracking center adopted in Paper I"]
+- inherited: Version of UCL_CHEM with parametric C-shock treatment (from (cite: Viti04; Viti11); shocks (cite: Jim08)) [4 Chemical modelling: "Details of this version of UCL_CHEM can be found in (cite: Viti11)."]
+- inherited: Selection of a representative SB ring knot based on 12 star-forming knots (from Section 5 of Paper I (cite: Garc14)) [2.2 The ALMA 'topology' of NGC1068: "based on similar line ratios measured in an ensemble of 12 molecular star-forming knots detected in the dense gas tracers of the SB ring"]
+- literature input: PdBI CO(1-0) and CO(2-1) maps
+- literature input: PdBI HCO+(1-0) and HCN(1-0) maps
+- literature input: PdBI CS(2-1) map
+- literature input: 12CO/13CO line intensity ratios of 14, 10 and 14 for CO(1-0), (2-1), (3-2)
+- missing for reproduction (card): Calibrated ALMA Band 7 and 9 data and imaging recipe are only in Paper I; PdBI maps from earlier papers; Per-region aperture definitions, rms and line widths; UCL_CHEM model files and exact network; Fit selection criteria for best RADEX sets
+- not stated (card): ALMA calibration, imaging and reduction details (CASA version, calibrators, weighting, cleaning, continuum subtraction) are only in Paper I; Exact aperture sizes and positions used to extract the line intensities per sub-region; Rms noise levels, beam sizes and the sigma value used for the 3-sigma clipping; Spectroscopic constants and partition fu…
+- data volume (card estimate): Not given; two Cycle 0 ALMA spectral-line datasets (Bands 7 and 9), likely tens of GB raw, plus archival PdBI maps
+- reproducibility (card): score 2: The ALMA project code is printed, but reduction and imaging are deferred to Paper I, PdBI data come from earlier papers, RADEX and UCL_CHEM inputs are only partly specified, and the main results are qualitative.
+- answer-key example: CO rotational temperature, E Knot / W Knot / AGN / CND-N / CND-S = 58 / 41 / 50 / 52 / 37 ± 5-7 K K
+- answer-key example: Two-component CO rotational temperatures, AGN and CND-S = AGN 25 and 67; CND-S 15 and 54 ± not stated K
+- answer-key example: CO column density from rotation diagram, AGN / W Knot / E Knot = 3e16 / 5e16 / 7e16 ± not stated cm^-2
+
+### 2016ApJ...829....6W: ALMA Observations of HD 141569’s Circumstellar Disk (2016; debris_disks, protoplanetary_disks; observational_alma_primary)
+- question: What are the dust and CO gas structure, kinematics and masses of the HD141569 disk, and is the gas primordial or second-generation (debris-related)?
+- ALMA projects: 2012.1.00698.S
+- data.bands: Band 7 (~345 GHz)
+- data.angular_resolution: 0.38" (continuum)
+- data.sensitivity: 0.070 mJy/beam continuum; 0.028 Jy/beam CO
+- calibration.pipeline_or_manual: CASA reduction: WVR, Tsys, bandpass, flux, phase calibration [2 Observations: "The data reduction in CASA included WVR calibration; system temperature corrections; and bandpass, flux, and phase calibrations with Titan and quasar J1550+0527."]
+- calibration.flux_scale_uncertainty: ~10% [3 Results: "an absolute flux calibration uncertainty of $\sim10\%$ added in quadrature"]
+- imaging.weighting_robust: natural weighting
+- imaging.final_beam: continuum 0.42x0.34" PA -61.1 deg; CO 0.34x0.31" PA -77.1 deg
+- imaging.final_rms: 0.070 mJy/beam continuum; 0.028 Jy/beam CO moment 0
+- inherited: MCMC Metropolis-Hastings algorithm (from Ford 2005 (cite: ford)) [5.2 MCMC Modeling: "Parameter space is explored through a random walk directed by Metropolis-Hastings MCMC (cite: ford)."]
+- inherited: Gas mass formalism for optically thin LTE CO (from Perez et al. 2015 (cite: perez)) [5.3 Gas Mass: "The mass of an optically thin gas disk near LTE can be calculated from the integrated line intensity (cite: perez)."]
+- inherited: Grain temperature and Q_nu emission treatment (from Wyatt & Dent 2002 (cite: wyatt)) [5.1 Debris/Dust Mass: "The grain temperature (cite: wyatt) is"]
+- inherited: Collisional cascade size distribution (from Dohnanyi 1969 (cite: dohnayi)) [5.1 Debris/Dust Mass: "we use a collisional cascade such that the mass per size increment $M_s\propto s^{-0.5}$ (cite: dohnayi)"]
+- inherited: H2/CO abundance ratio of 1e4 (from Flaherty et al. 2016) [5.3 Gas Mass: "If we assume the $10^4$ ISM number density abundance ratio for H$_{2}$ to CO (as in Flaherty et al.)"]
+- literature input: Previous continuum/total-system flux densities (Keck, IRAS, HST, APEX, JCMT) in Table 1
+- literature input: CARMA CO(1-0) flux 1.6 ± 0.2 Jy km/s and gas mass 13 (+50/-9) Earth masses, SMA 870um flux 8.2 ± 2.4 mJy
+- literature input: Distance 116 ± 8 pc
+- literature input: CO spectroscopic data (A32, Be) from Splatalogue
+- missing for reproduction (card): CASA version and scripts; CLEAN parameters and masks; MCMC code; moment-map thresholds and flagged channel ranges
+- not stated (card): CASA version; Number of clean iterations and mask used for CLEAN; image size and cell size; Which channels were treated as CO-free for the continuum and uvcontsub fit order; Velocity-axis reference/ rest frequency used for moment maps; moment-map clipping thresholds; uvmodelfit starting parameters; How the first moment map was sampled (pixels, mas…
+- data volume (card estimate): ~10-30 GB raw for one cycle 1 band 7 EB
+- reproducibility (card): score 3: Data public and recipe fairly simple with numeric results, but imaging and MCMC details and code are missing.
+- answer-key example: Continuum flux density (870 um) = 3.8 ± 0.4 mJy
+- answer-key example: Continuum peak intensity = 1.74 ± 0.24 mJy/beam
+- answer-key example: CO(3-2) integrated flux = 15.7 ± 1.6 Jy km/s
+
+### 2016ApJ...832..143F: The Link between Turbulence, Magnetic Fields, Filaments, and Star Formation in the Central Molecular Zone Cloud G0.253+0.016 (2016; milky_way_ism, star_formation; archival_reuse)
+- question: What are the turbulence, magnetic field, filament structure and turbulence driving mode of the CMZ cloud G0.253+0.016, and how do they affect its star formation rate?
+- ALMA projects: 2011.0.00217.S
+- data.bands: 3 mm (90 GHz), Cycle 0
+- data.arrays: 25 antennas
+- data.angular_resolution: 1.7 arcsec (~0.07 pc) in column density map
+- data.sensitivity: 10 sigma ~0.25 mJy/beam; HNCO ~1 mJy/beam per 3.4 km/s channel
+- calibration.pipeline_or_manual: each data set independently calibrated before merging; CASA and Miriad [2 Observational data: "Each data set was independently calibrated before being merged. All data reduction was performed using CASA (cite: casa) and Miriad (cite: Miriad)."]
+- inherited: Conversion of dust emission to column density and ALMA+Herschel combination (from (cite: RathborneEtAl2014)) [2.1: "converted to gas column densities with the techniques and assumptions explained in detail in (cite: RathborneEtAl2014)"]
+- inherited: Filament profile procedure (from (cite: ArzoumanianEtAl2011; Federrath2016)) [3.1.1: "The procedure is similar to that applied in previous studies (cite: ArzoumanianEtAl2011; Federrath2016)."]
+- inherited: 2D-to-3D density dispersion method (from (cite: BruntFederrathPrice2010a)) [3.1.2: "Here we apply the technique by (cite: BruntFederrathPrice2010a) in order to reconstruct the 3D density dispersion of G0.253+0.016."]
+- inherited: MHD simulation methods (from (cite: FederrathDuvalKlessenSchmidtMacLow2010; FederrathEtA…) [3.3: "running magnetohydrodynamical turbulence simulations following the methods in (cite: FederrathDuvalKlessenSchmidtMacLow2010; FederrathEtAl2011PRL)"]
+- inherited: SFR theory and parameters phi_x, 1/phi_t (from (cite: FederrathKlessen2012)) [6.2: "best-fit theory parameter $\phi_x=0.17\pm0.02$ (cite: FederrathKlessen2012)"]
+- literature input: ALMA+Herschel column density map, log-normal column density PDF (N0=9e22, sigma_eta=0.34)
+- literature input: Herschel-only column density map
+- literature input: HNCO data cubes
+- literature input: Ordered magnetic field B_tot = 5.4 mG and polarization angle dispersion 9.3 deg, adjusted to 2.2 mG
+- missing for reproduction (card): Calibrated maps (column density, HNCO) rely on earlier papers; Simulation setup details; Velocity-map fitting details
+- not stated (card): Exact CASA version and calibration/imaging parameters (all inherited from Rathborne et al.); Archive project/member IDs and flux calibrators; Mopra/ALMA combination details for HNCO; Plane-fit method and masks for the velocity gradient; Fit ranges, binning and optimizer for filament profile fits; Simulation code setup details (FLASH version, drivi…
+- data volume (card estimate): tens of GB (Cycle 0 mosaic, four spectral windows)
+- reproducibility (card): score 3: Analysis recipe is mostly given with equations and table, but input maps and calibration are inherited and simulation details are thin.
+- answer-key example: Filament width = 0.17 ± 0.08 pc
+- answer-key example: Plummer exponent p = 2.1 ± 1.0 dimensionless
+- answer-key example: Sonic scale = 0.15 ± 0.11 pc
+
+### 2020MNRAS.491.1174M: Circumstellar CO J = 3→2 detected around the evolving metal-poor ([Fe/H] ≈ -1.15 dex) AGB star RU Vulpeculae (2020; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Explore the properties of RU Vul and its wind in the context of other metal-poor stars.
+- ALMA projects: 2016.1.00079.S
+- data.bands: Bands 6 and 7 (230 and 345 GHz)
+- data.angular_resolution: 2.1″ × 1.7″ at J=2→1; 1.6″ × 1.0″ at J=3→2
+- data.sensitivity: Line σ: 2.2 and 4.1 mJy beam−1 channel−1 for J=2→1 and 3→2; continuum: 0.05 and 0.15 mJy beam−1 for Bands 6 and 7
+- data.pi_or_archival_as_stated: New observations; archived data products inspected without re-reduction
+- calibration.pipeline_or_manual: Automated pipeline [Observational setup: "Data were reduced using the automated pipeline (CASA version 4.7)"]
+- calibration.casa_version: 4.7 [Observational setup: "Data were reduced using the automated pipeline (CASA version 4.7)"]
+- imaging.final_beam: J=2→1: 2.1″ × 1.7″; J=3→2: 1.6″ × 1.0″
+- imaging.final_rms: Lines: 2.2/4.1 mJy beam−1 channel−1; continuum: 0.05/0.15 mJy beam−1, Bands 6/7
+- inherited: Optical spectral-synthesis and abundance-analysis methodology and line lists (from (cite: JP10)) [Spectral synthesis: "This followed the methodology of (cite: JP10), which is outlined in the next paragraph. We also used their line lists"]
+- inherited: Line-list log(gf) adjustments (from (cite: JMP+15) and (cite: JRP+15)) [Spectral synthesis: "with the adjustments to log($gf$) included in (cite: JMP+15) and (cite: JRP+15)."]
+- inherited: Period–radius relation used to estimate radius decline (from (cite: Wood90)) [Discovery, infrared brightening and the…: "Taking at face value the relation of (cite: Wood90), $\log P \propto 1.94 \log R$"]
+- inherited: Stellar SED-fitting code and additions (from (cite: MvLD+09), (cite: MZB12) and (cite: MZW17)) [SED fitting: "the spectral energy distribution (SED) of RU Vul (Figure [1](#SEDFig)) was fit with the code of (cite: MvLD+09), with the additions of (cite: MZB12) and (cite: MZW17)."]
+- inherited: Reddening law for stellar SED fitting (from (cite: Draine03)) [SED fitting: "We also assumed $E(B-V) = 0.096$ mag (cite: SF11) and a (cite: Draine03) reddening law."]
+- inherited: Previously computed mesa tracks and calibrated mass-loss formulism (from (cite: MZ15b)) [Stellar evolution modelling: "we compared our observed properties of RU Vul to mesa (cite: PBD+11; PCA+13) stellar evolution models computed for (cite: MZ15b)."]
+- literature input: Optical spectrum re-analysed for stellar parameters
+- literature input: Spectral line lists
+- literature input: Adjustments to line-list log(gf)
+- literature input: Solar abundances for relative abundance conversion
+- missing for reproduction (card): Explicit public-access statement and exact archive product identifiers.; Imaging and extraction settings needed to reproduce fluxes from calibrated visibilities.; Executable scripts for spectral integration, uncertainty calculation and modified-parabola fitting.; The stellar SED code and complete adopted photometric inputs.; Original optical spectrum, adopted line list and all log(gf) adjustments.; Complete dusty inputs and the inherited globula…
+- not stated (card): ALMA imaging task, deconvolver, weighting and robust value, pixel size, masks and stopping threshold.; Exact archived image-cube and continuum-product identifiers.; Spatial aperture or pixel selection used to extract each CO spectrum and continuum flux.; Treatment of line-containing channels when combining all four spectral windows into continuum …
+- data volume (card estimate): Cannot estimate bytes from the text; two ALMA band observations with four spectral windows each, plus optical, infrared and model inputs.
+- reproducibility (card): score 6: The project code, CASA version, spectral setup, integration range, profile equation and principal dust parameters are given. Extraction details, imaging settings, executable workflows and several inherited model inputs are missing.
+- answer-key example: Adopted distance = 2000 ± ± 165 pc
+- answer-key example: Adopted effective temperature = 3620 ± ± ∼100 K
+- answer-key example: Adopted metallicity [Fe/H] = –1.15 ± ± ∼0.15 dex
+
+### 2026ApJ..1004L...6D: First Interstellar Detection of Methyl Carbamate: A New Observational Anchor for Glycine Chemistry (2026; astrochemistry, star_formation; observational_alma_primary)
+- question: Detect methyl carbamate and test thermodynamic stability versus pathway-specific chemistry in the C2H5O2N isomer family.
+- ALMA projects: 2019.1.00768.S
+- data.bands: ~1 mm
+- data.angular_resolution: ~0.12″
+- data.sensitivity: Typical rms 0.5 K per 0.5 km s^-1 channel
+- data.pi_or_archival_as_stated: PI: Crystal Brogan
+- calibration.flux_scale_uncertainty: ~10% [Observation and data reduction: "The absolute flux calibration uncertainty is estimated to be $\sim$10%."]
+- inherited: Additional observational setup and data reduction details (from (cite: Duan26)) [Observation and data reduction: "Additional details of the observational setup and data reduction are described in (cite: Duan26)."]
+- inherited: Previously reported molecules included in the full source spectral model (from previous studies) [Results: "we constructed a full source model including the molecules reported in previous studies and the species identified in this work, in order to assess potential blends and overlaps in the candidate MC lines."]
+- inherited: Dust-continuum H2 column-density equation (from (cite: Mar11; Bon19)) [$\rm H_{2}$ Column Density from Dust Co…: "The beam-averaged column density is derived by the following equation (cite: Mar11; Bon19):"]
+- inherited: Dust opacity (from (cite: Bon19)) [$\rm H_{2}$ Column Density from Dust Co…: "${{\kappa}_{\nu}}$ is the dust opacity (cite: Bon19)"]
+- inherited: Mean molecular weight per H2 molecule: 2.8 (from (cite: Kau08)) [$\rm H_{2}$ Column Density from Dust Co…: "$\mu$ = 2.8 is the mean molecular weight per $\rm H_{2}$ molecule (cite: Kau08)"]
+- inherited: Dust temperature: 150 K (from (cite: 2020NatAs...4.1170C)) [$\rm H_{2}$ Column Density from Dust Co…: "$T_{\rm dust}$ = 150 K, following (cite: 2020NatAs...4.1170C)."]
+- literature input: MC spectroscopic predictions and underlying laboratory measurements
+- literature input: Rotational spectroscopic data for glycine conformers I and II
+- literature input: Rotational spectroscopic data for anti-glycolamide
+- literature input: Rotational spectroscopic data for Z- and E-acetohydroxamic acid
+- missing for reproduction (card): Duan26 observational setup and reduction details.; Exact extraction coordinates, aperture, source size and complete contaminant model.; Calibration and imaging scripts or equivalent parameter records.; LTE model inputs, objective function, bounds and nondetection-limit assumptions.; Measured continuum flux, beam solid angle and adopted numerical dust opacity.; Methanol line list, fitting inputs and numerical isotopic-ratio calculation.; Numerica…
+- not stated (card): Calibration and imaging recipe deferred to Duan26, including software versions, calibrators and any self-calibration.; Array configuration, baseline range and recoverable angular scales.; Imaging weighting and robust value, pixel size, deconvolution settings, masks, exact synthesized beam and primary-beam treatment.; Continuum construction and sub…
+- data volume (card estimate): not stated
+- reproducibility (card): score 4: On an inferred 0–10 scale: project, spectral setup, main fitting approach and numeric results are documented, but reduction is deferred and extraction, dust, upper-limit and optimization inputs are incomplete.
+- answer-key example: Unblended MC transitions identified = 10 ± not stated dimensionless
+- answer-key example: MC transitions exceeding 3σ peak intensity = 7 ± not stated dimensionless
+- answer-key example: MC column density = 4.21×10^15 ± ±0.84×10^15 cm^-2
+
+### 2025Galax..13...82Z: Molecules and Chemistry in Red Supergiants (2025; evolved_stars, astrochemistry; archival_reuse)
+- question: Molecular content, spatial differentiation, chemical formation and nucleosynthesis in RSG envelopes.
+- ALMA projects: 2001.0.00011.SV, 2019.1.00659.L, 2021.1.01054.S
+- data.bands: VY CMa: Band 6
+- data.angular_resolution: VY CMa Band 6 images: 0.2''–1.5''
+- inherited: VY CMa molecular images and single-dish flux recovery taken from earlier ALMA studies (from (cite: 2023ApJ...954L...1S; 2024ApJ...971L..43R; Ravi2025a)) [The Surprising Variation in Spatial Dis…: "This issue is overcome in new ALMA images of VY CMa, conducted in Band 6 with 0.2$^{''}$–1.5$^{''}$ resolution (cite: 2023ApJ...954L...1S; 2024ApJ...971L..43R; Ravi2025a)."]
+- inherited: Same-scale VY CMa molecular maps (from (cite: 2024ApJ...971L..43R; Ravi2025b)) [The Surprising Variation in Spatial Dis…: "plotted on the same spatial scale (cite: 2024ApJ...971L..43R; Ravi2025b)."]
+- inherited: Most VY CMa and NML Cyg abundances from ESCAPADE radiative-transfer modeling of spherical and asymmetric outflows (from (cite: 2013ApJ...778...22A)) [An Overview of Abundances: "a radiative transfer code, ESCAPADE, that considers both spherical and asymmetric outflows, as described in (cite: 2013ApJ...778...22A)."]
+- inherited: IRC+10420 LTE rotational-diagram abundances; source sizes 11” for CO and 3” otherwise (from (cite: 2016A&A...592A..51Q)) [An Overview of Abundances: "The abundances for IRC+10420 are from a rotational diagram analysis, which assumes LTE and source sizes of 11” for CO and 3” for all other molecules (cite: 2016A&A...592A..51Q)."]
+- inherited: LTE aluminum chemistry calculations (from (cite: 2009ApJ...694L..59T)) [The Role of LTE Formation: "from (cite: 2009ApJ...694L..59T), plotting fractional abundances $f$ relative to hydrogen (H$_2$ + H + H$^+$), vs. temperature, for aluminum-bearing molecules."]
+- inherited: Tsuji thermochemical model with revised cosmic abundances and C/O ~0.5 (from Tsuji (cite: 1973A&A....23..411T); (cite: 2003ApJ...591.122…) [The Role of LTE Formation: "Here, the model from Tsuji (cite: 1973A&A....23..411T) has been updated with revised cosmic abundances (cite: 2003ApJ...591.1220L) and assumes oxygen-rich gas (C/O$\sim$0.5)."]
+- literature input: VY CMa SMT survey: 214.5–285.5 GHz, 128 emission features, 18 molecules
+- literature input: HIFI sub-mm spectra of four RSG/YHG envelopes
+- literature input: VY CMa SMA survey: 279–355 GHz, 223 features, 19 molecules
+- literature input: NML Cyg 1 mm spectral surveys
+- missing for reproduction (card): A standalone calibration and imaging recipe for the reused ALMA observations.; Verified project-to-target, transition and figure associations.; Single-dish input products, flux scaling and combination settings.; Per-map channel selections, velocity integration limits, beams, noise and detection criteria.; Registration, matching-resolution procedures and spatial extraction regions.; ESCAPADE version, input models, molecular data and fitting confi…
+- not stated (card): Mapping from each printed ALMA project code to targets, executions, spectral windows and displayed figures.; Calibration software versions, calibrators, flux uncertainties and any self-calibration applied to the reused ALMA data.; Channel widths, velocity reference frames and integration ranges for the molecular maps and spectra.; Visibility weigh…
+- data volume (card estimate): Cannot estimate: execution counts, visibility sizes, channel counts and image dimensions are not stated.
+- reproducibility (card): score 2: Named projects, transitions, source papers and some archive products help locate inputs, but calibration, imaging, single-dish combination and quantitative fitting settings are largely absent.
+- answer-key example: Compiled molecular inventory in RSG circumstellar gas = 29 ± not stated chemical compounds
+
+### 2017Icar..286..289L: Detection of CO and HCN in Pluto's atmosphere with ALMA (2017; solar_system; observational_alma_primary)
+- question: Detect CO and HCN (and search for HC3N, HC15N) in Pluto's atmosphere with ALMA and constrain the CO abundance, the thermal structure and the HCN distribution.
+- ALMA projects: 2013.1.00446.S
+- data.bands: Band 7 (~350 GHz)
+- data.arrays: 12-m array, 39 antennas
+- data.angular_resolution: ~0.35 arcsec
+- data.sensitivity: rms 3.28 mJy (CO, 141 kHz), 2.85 mJy (HCN, 282 kHz), 1.88 mJy (HC15N, 488 kHz)
+- calibration.pipeline_or_manual: Initial calibration provided by the ALMA observatory in CASA; then self-calibration in AIPS [Observations and data reduction: "Initial calibration of the data was provided by the ALMA observatory, and done in the CASA reduction package, version 4.3.1 (cite: muders14)."]
+- calibration.casa_version: CASA 4.3.1 [Observations and data reduction: "done in the CASA reduction package, version 4.3.1"]
+- calibration.flux_scale_uncertainty: 5% [Observations and data reduction: "The expected overall flux density scale accuracy is 5%, using a standard model for Titan"]
+- calibration.self_calibration: Phase self-cal on continuum window with solution intervals of 5, 2, 1 min; solutions applied to line windows [Observations and data reduction: "We did this iteratively with solution intervals of 5, 2, and 1 minute."]
+- imaging.final_beam: ~0.35 arcsec HPBW
+- inherited: Continuum subtraction technique (from (cite: vanlange90)) [Observations and data reduction: "using an average of spectral channels that were far outside the line emission region (cite: vanlange90)"]
+- inherited: Temperature retrieval algorithm (constrained, regularized inversion) (from (cite: conrath98), (cite: rodgers00), (cite: fouchet16)) [4.1.1 Method: "we used a constrained and regularized algorithm following methods detailed in (cite: conrath98) and (cite: rodgers00)"]
+- inherited: Diffusion model formalism for CH4-N2 (from (cite: yelle06)) [5.1.1 New Horizons/Alice: "using the formalism of (cite: yelle06) for two gases in comparable abundance"]
+- inherited: Continuum measurements to be described in a future publication (from (cite: butler15)) [Observations and data reduction: "Continuum measurements have been briefly presented (cite: butler15) and will be described in detail in a future publication."]
+- literature input: A priori temperature profile from stellar occultations
+- literature input: New Horizons standard temperature profile (Alice + REX) used as a priori
+- literature input: HCN vapor pressure law
+- literature input: Line parameters for CO and HCN including hyperfine structure
+- missing for reproduction (card): Radiative transfer/inversion code; A priori profile details and the 'mixed' profile; AIPS imaging and line-free channel selection; Lavvas et al. HCN model profile; Alice LOS data provided privately
+- not stated (card): The radiative transfer and inversion code is custom and not released; reproduction requires reimplementation.; Which channels were treated as line-free and the AIPS imaging parameters for the continuum self-calibration (weighting, cell size) are not given.; Calibration scheduling-block names or pipeline script versions and flagging are not specifi…
+- data volume (card estimate): ~10-50 GB (two ~1.7 h execution blocks, Band 7, four spectral windows)
+- reproducibility (card): score 3: Data identified and calibration/analysis described in good detail, but the custom retrieval code and several settings are unavailable.
+- answer-key example: CO(3-2) peak S/N (averaged) = 19 ± not stated dimensionless
+- answer-key example: CO mole fraction at 12 μbar = 515 ± ±40 ppm
+- answer-key example: CO surface-referred column density at 12 μbar = 0.100 ± ±0.008 cm-am
+
+### 2016ApJ...829L..23B: ALMA-SZ Detection of a Galaxy Cluster Merger Shock at Half the Age of the Universe (2016; galaxy_clusters_and_sz; observational_alma_primary)
+- question: Can ALMA SZ measurements detect the pressure discontinuity of a merger shock at the NW radio relic of El Gordo, and what Mach number and relic magnetic field result when combined with Chandra and ATC…
+- ALMA projects: 2015.1.01187.S
+- data.bands: ~100 GHz continuum; four bands centered at 93, 95, 105 and 107 GHz
+- data.arrays: ALMA main array, thirty-five 12-m antennas
+- data.angular_resolution: 3.6"x2.7" (P.A. 88°) synthesized beam
+- data.sensitivity: 6 µJy/beam rms at phase center
+- data.pi_or_archival_as_stated: PI: K. Basu (own program)
+- calibration.pipeline_or_manual: ALMA-provided calibrated products with a few additional flaggings [2.3 ALMA-SZ data: "We used the calibrated data products obtained with the CASA software as provided by the ALMA project, with a few additional flaggings."]
+- calibration.archive_products_used_as_is: yes, apart from extra flagging [2.3 ALMA-SZ data: "We used the calibrated data products obtained with the CASA software as provided by the ALMA project, with a few additional flaggings."]
+- imaging.weighting_robust: natural weighting
+- imaging.final_beam: 3.6"x2.7", P.A. 88°
+- imaging.final_rms: 6 µJy/beam
+- inherited: Radio data analysis of ATCA image (from Lindner et al. 2014 (L14)) [2.1 ATCA 2.1 GHz radio data: "The radio data analysis is described in , we use a high-resolution total intensity image"]
+- inherited: Lognormal emissivity model for relic (from (cite: szrelic)) [2.1 ATCA 2.1 GHz radio data: "We use a lognormal emissivity model ((cite: szrelic)) that is projected from a 3D cone and smoothed to the ATCA resolution."]
+- inherited: Broken power-law density model for X-ray (from (cite: Eck16)) [2.2 Chandra X-Ray data: "The X-ray brightness is modeled with a standard broken power law in density (cite: Eck16)"]
+- inherited: GNFW pressure model with shallow outer slope (from (cite: Say13)) [2.3 ALMA-SZ data: "we choose GNFW model parameters with a shallow outer pressure slope (cite: Say13) and marginalize its value within 30% uncertainty"]
+- inherited: Relativistic SZ spectrum corrections (from (cite: Ito04)) [2.3 ALMA-SZ data: "The $93-107$ GHz SZ spectrum is computed with relativistic corrections ((cite: Ito04))"]
+- literature input: Weak-lensing total mass M500,c = 1.80±0.34e15 Msun used as prior
+- literature input: ATCA 2.1 GHz radio image, analysis described in Lindner et al. 2014
+- missing for reproduction (card): uv-fitting MCMC code and priors; ATCA image; additional flagging list; GNFW parameters
+- not stated (card): Additional flagging details for the ALMA data; Specifics of the MCMC-in-CASA uv-fitting code, sampler and priors; CASA and CIAO versions (only CALDB 4.7.1 given); CLEAN parameters (cell, size, masking, threshold); GNFW parameter values and priors on amplitude, shock radius, Mach number; Binning of Chandra profile and X-ray temperature fitting deta…
+- data volume (card estimate): ~50-100 GB for ALMA plus ~few GB Chandra
+- reproducibility (card): score 3: Data public and numeric results, but custom uv-MCMC code and priors not given.
+- answer-key example: SZ shock radius = 870 ± +14/-13 kpc
+- answer-key example: Mach number from SZ alone = 1.4 ± +1.2/-0.2 dimensionless
+- answer-key example: Mach number SZ with weak-lensing mass prior = 1.5 ± +0.5/-0.2 dimensionless
+
+### 2026A&A...705A.197Z: The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): III. The vertical structure of debris disks (2026; debris_disks; large_program_or_survey)
+- question: Uniformly extract the vertical dust distributions of highly inclined, well-resolved ARKS debris disks.
+- ALMA projects: 2022.1.00338.L, 2012.1.00142.S, 2012.1.00198.S, 2015.1.01260.S, 2016.1.00104.S, 2016.1.00195.S, 2016.1.00907.S, 2017.1.00167.S, 2017.1.00825.S, 2018.1.01222.S, 2019.1.00189.S
+- data.bands: New Band 7 (0.89 mm); archival Band 6 (1.3 mm) for HD 39060, HD 107146, HD 197481, HD 206893.
+- data.angular_resolution: Examples: HD 109573 0.08''; HD 14055 0.23''; HD 32297 0.06''.
+- data.pi_or_archival_as_stated: ARKS PI: S. Marino; six archival observations of well-resolved debris disks.
+- inherited: Target selection, observing strategy and calibration details; corrected visibility weights, phase centers and execution-block flux offsets. (from (cite: Marino_2026)) [Observations: "The full target selection and observing strategy is justified in (cite: Marino_2026), as well as further details about the observations and data calibration."]
+- inherited: Parametric code adapted from the publicly available disk modeling code. (from (cite: Flaherty_2015)) [Parametric modeling: "We use a parametric debris disk modeling code adapted from the publicly available code described in (cite: Flaherty_2015)"]
+- inherited: Detailed parametric modeling framework. (from (cite: Fehr_2023)) [Parametric modeling: "is described in detail in (cite: Fehr_2023) and summarized below."]
+- inherited: Radial functional forms informed by ARKS radial structure analysis. (from (cite: Han_2026)) [Parametric modeling: "Thus, the set of radial functional forms applied for the vertical parametric modeling presented here was informed by the ARKS radial structure analysis (cite: Han_2026)."]
+- inherited: Dust opacity 1.9 cm² g⁻¹ at 0.89 mm and 1.3 cm² g⁻¹ at 1.3 mm; grain-size slope -3.5 and adopted composition. (from (cite: Marino_2026); (cite: Draine_2003; Li_1998)) [Radiative transfer: "We adopted $\kappa_\nu=$1.9 cm$^{2}$ g$^{-1}$ at 0.89 mm and $\kappa_\nu=$1.3 cm$^{2}$ g$^{-1}$ at 1.3 mm as in (cite: Marino_2026)"]
+- inherited: Imaging parameters for fiducial images and residuals. (from (cite: Marino_2026)) [Analysis: "The fiducial images and residuals for each disk are shown in Figure [1](#fig:dmr_gallery) using the same imaging parameters as in (cite: Marino_2026)."]
+- literature input: Corrected data accounting for weights, phase center and flux offsets between execution blocks.
+- literature input: Position angle, inclination, RA and declination offsets for frank; stellar masses for dynamical calculations.
+- literature input: Radial structure analysis, fractional belt widths and upper limits on rms eccentricities.
+- literature input: Scattered light vertical profiles and scale heights for comparison with thermal emission.
+- missing for reproduction (card): Companion-paper calibration corrections, imaging recipes, geometry, stellar properties and radial-profile inputs.; Exact adapted parametric model code, software revisions and numerical rendering configuration.; Priors, bounds, chain initialization and exact convergence/burn-in decisions.; Source-specific frank and rave fit configurations and input images.; Executable collisional-cascade and stirring-timescale calculations with uncertainty propag…
+- not stated (card): Per-target mapping of project codes, execution blocks and corrected visibility files.; Correction factors and procedures for visibility weights, phase centers and flux offsets inherited from Marino_2026.; Calibration software versions, calibrators, flux uncertainty and any self-calibration procedure.; Continuum spectral windows, averaging, flagged…
+- data volume (card estimate): Not quantifiable from the text; multiple continuum visibility datasets for 24 disks, including archival observations.
+- reproducibility (card): score 6: Public data and numeric results, explicit likelihoods and substantial modeling detail; exact reproduction still depends on companion papers, unstated numerical settings and unreleased adapted code.
+- answer-key example: Minimum best-fit parametric h_HWHM = 0.0026 ± not stated dimensionless
+- answer-key example: Maximum best-fit parametric h_HWHM = 0.193 ± not stated dimensionless
+- answer-key example: Median best-fit parametric h_HWHM = 0.021 ± not stated dimensionless
+
+### 2020MNRAS.499.5915M: Polarimetric and radiative transfer modelling of HD 172555 (2020; debris_disks; multi_facility_alma_minor)
+- question: Constrain the disc dust grain size and composition using aperture polarimetry and continuum emission.
+- ALMA projects: 2013.1.01147.S
+- data.bands: Band 6; 1300 μm
+- data.pi_or_archival_as_stated: Archival; P.I. S. Perez
+- calibration.pipeline_or_manual: Pipeline reduced imaging data. [Ancilliary data: "using the pipeline reduced imaging data obtained from the Japanese Virtual Observatory"]
+- inherited: Modulator performance eras and characteristics. (from (cite: 2020Bailey) and the supplementary materials of (cite…) [HIPPI/-2 aperture polarimetry: "Our use of the modulator has therefore been broken down into performance eras, the characteristics of which are described in (cite: 2020Bailey) and the supplementary materials of (cite: 2019Bailey)."]
+- inherited: High-polarisation calibration standards. (from (cite: 2020Bailey)) [HIPPI/-2 aperture polarimetry: "The standards, of which details are given in (cite: 2020Bailey), have uncertainties of about a degree."]
+- inherited: Full-bandpass fitting procedure for control-star interstellar polarisation. (from (cite: 2019bCotton)) [Wavelength dependence: "The same methods and procedure as followed in (cite: 2019bCotton) were adopted for this purpose."]
+- inherited: Serkowski Law and Serkowski-Wilking K–λmax relation. (from (cite: 1975Serkowski); (cite: 1980wilking); (cite: 1992Whit…) [Wavelength dependence: "The wavelength dependence of interstellar (linear) polarisation is given by the empirically determined Serkowski Law (cite: 1975Serkowski)"]
+- inherited: Disc orientation and density distribution from scattered-light imaging. (from (cite: 2018Engler)) [Spectral energy distribution: "We again adopt the best-fit parameters for the scattered light disc imaged in (cite: 2018Engler) as the parameters for the disc density distribution."]
+- inherited: Single power-law dust size distribution, exponent 3.95. (from (cite: 2006Chen; 2009Lisse; 2012Johnson)) [Spectral energy distribution: "We have used a single dust grain size distribution with a power law exponent of 3.95 as has been previously found to reproduce the SED for HD 172555’s disc (cite: 2006Chen; 2009Lisse; 2012Johnson)."]
+- literature input: Stellar luminosity, effective temperature, radius and distance.
+- literature input: Stellar spectral type, surface gravity, metallicity and projected rotation.
+- literature input: System age.
+- literature input: Johnson B and V photometry.
+- missing for reproduction (card): ALMA product identifier and upper-limit extraction recipe.; Author modelling scripts, software versions and full bandpass implementation.; Exact optical-constant input files, densities and mixture construction.; Hyperion numerical configuration.; Likelihood, prior definitions, upper-limit handling and convergence diagnostics.; Exact grain-size grid and fit-uncertainty procedure.
+- not stated (card): Exact JVO ALMA image product identifier and whether the image used was primary-beam corrected.; ALMA image beam, rms measurement region and statistical multiplier used to obtain the <0.240 mJy upper limit.; Treatment of the ALMA upper limit in the SED fitting objective.; Exact Jena optical-constant files, material densities and component optical-c…
+- data volume (card estimate): Not quantifiable from the text; reuse centres on an ALMA image product, tabulated polarimetry, photometry and model SEDs.
+- reproducibility (card): score 5: Detailed scientific workflow and MCMC settings, with tabulated observations and numeric results; exact ALMA limit extraction and several modelling inputs remain unspecified.
+- answer-key example: ALMA flux-density upper limit at 1300 μm = <0.240 ± not stated mJy
+- answer-key example: Combined control-star Serkowski-Wilking λmax = 472.6 ± ± 79.0 nm
+- answer-key example: Interstellar subtraction pmax = 176.6 ± ± 12.1 ppm
+
+### 2025A&A...694A..86Y: ALMA observations of massive clouds in the central molecular zone: slim filaments tracing parsec-scale shocks (2025; milky_way_ism, astrochemistry, star_formation; observational_alma_primary)
+- question: What is the origin of the widespread SiO and COM emission in the CMZ, and what are the newly found narrow SiO filaments (slim filaments) in two massive CMZ clouds
+- ALMA projects: 2016.1.00243.S, 2016.1.00875.S
+- data.bands: 1.3 mm
+- data.angular_resolution: high-resolution data: 0.28 x 0.19 arcsec on average (2200 AU x 1500 AU); low-resolution data (2016.1.00875.S): ~1.9 arcsec
+- data.sensitivity: continuum rms 40 uJy/beam (no primary beam correction); line rms 1.6-2.0 mJy/beam (0.8-1.0 K) per 0.976 MHz channel
+- imaging.final_beam: 0.28 x 0.19 arcsec on average, varies between lines
+- imaging.final_rms: line rms 1.6-2.0 mJy/beam per 0.976 MHz channel; continuum rms 40 uJy/beam
+- inherited: ALMA observations and data reduction (from (cite: lu2020) and (cite: lu2021)) [Observations: "The ALMA observations and data reduction were detailed in (cite: lu2020) and (cite: lu2021)"]
+- inherited: Imaging procedures for the tclean cubes (from citation marker missing in the paper text) [Observations: "following the procedures outlined in ."]
+- inherited: Identification of 43 protostellar outflows from six shock tracers (from citation marker missing in the paper text (outflow work of …) [2.1 Identification of the slim filaments: "identified 43 protostellar outflows from emissions of six potential shock tracers"]
+- inherited: Typical gas temperature of about 70 K (from citation marker missing in the paper text) [3.2.2 Velocity dispersions: "The typical gas temperature is approximately 70 K adopted from ."]
+- inherited: Excitation temperature of 70 K for column densities (from citation marker missing in the paper text) [Calculation of Molecular Column Densiti…: "The excitation temperature is adopted to be 70 K following ."]
+- inherited: LTE column-density method similar to that used for protostellar outflows in the CMZ (from citation marker missing in the paper text) [3.3 Relative Abundances of the Molecule…: "Similar method has been used in for calculating column densities of six molecules toward protostellar outflows in the CMZ."]
+- literature input: Magnetic field strength of 0.48 mG used for the magnetic pressure
+- literature input: External gas density 4.4e5 cm-3 and external velocity dispersion 1.43 km/s (median values) used for the external pressure
+- literature input: Magnetic field orientations at 19.6 arcsec resolution
+- literature input: Distance to the CMZ of 8.1 kpc
+- missing for reproduction (card): Calibration and tclean parameters live in Lu et al. 2020 and 2021 (not in this paper); FilFinder pixel scale and unlisted parameters, plus the filament selection masks and cut positions; Line integration velocity ranges and the SiO peak positions' selection rule; Outflow and dense-core abundance tables used for the KS tests (from earlier papers); Citation for the 70 K temperature is missing in the text; Derived SiO masses per filament and the CM…
+- not stated (card): Exact CASA version and calibration/pipeline route (only in Lu et al. 2020, 2021); tclean parameters: weighting/robust, cell size, image size, deconvolver, masks, line-free channels and continuum subtraction (inherited from earlier papers); Whether SiO integrated-intensity maps were primary-beam corrected, and the velocity range and moment-0 clippi…
+- data volume (card estimate): Roughly 100-300 GB for the two ALMA projects' raw data, guessed from multi-cloud mosaics; a few GB for the line cubes alone
+- reproducibility (card): score 3: Project codes and many numeric results are given, but calibration and imaging are inherited, filaments are chosen by eye, and key temperature and comparison data are missing.
+- answer-key example: Overall best-fit FWHM width of slim filaments (SiO 5-4) = 0.026 ± not stated pc
+- answer-key example: Best-fit FWHM per region (50 km/s cloud; 20 km/s A, B, C) = 0.025, 0.025, 0.026, 0.028 ± not stated pc
+- answer-key example: Beam-deconvolved filament FWHM = 0.024 ± not stated pc
+
+### 2023PSJ.....4..206R: ALMA Observations of the DART Impact: Characterizing the Ejecta at Submillimeter Wavelengths (2023; solar_system; observational_alma_primary)
+- question: Measure Didymos-Dimorphos' millimeter spectral emissivity pre-impact, then isolate the DART impact ejecta post-impact to derive dust mass and gas-phase upper limits
+- ALMA projects: 2021.A.00013.S
+- data.bands: Band 7 (343.5 GHz pre-impact; 344.25-347.45 GHz post-impact)
+- data.arrays: ALMA 12 m array pre-impact; simultaneous 12 m array and ACA post-impact
+- data.angular_resolution: Pre-impact 0.38''-0.56''; post-impact 12 m 0.48''-1.11''; ACA 2.79''-6.95''
+- data.pi_or_archival_as_stated: Director's Discretionary Time
+- calibration.pipeline_or_manual: Standard routines in CASA for flagging and calibration; automated ALMA pipeline flux scale checked and corrected for one execution [Pre-Impact 12m Observations: "The data were flagged and calibrated using standard routines in Common Astronomy Software Applications (CASA) package version 6.5.2 (cite: CASA2022)."]
+- calibration.casa_version: CASA 6.5.2 [Self Calibration: "Self-calibration was performed using CASA 6.5.2 and an automated self-calibration procedure"]
+- calibration.flux_scale_uncertainty: 10% absolute flux uncertainty adopted; J0238+1636 set to 1.11 Jy (not pipeline 1.22 Jy) for 12 m Execution 3 [Post Impact 12m and ACA Observations: "We instead applied the value of 1.11 Jy (measured for J0238+1636 on 2022 September 23) to our 12 m Execution 3 observations"]
+- calibration.self_calibration: Automated phase-only self-cal (inf_EB, then per-scan 'inf', shorter intervals where possible) then amplitude (inf_ap) where phase succeeded; combine='scan,spw'… [Self Calibration: "The first solution interval performed was a single solution over an entire execution block for each polarization independently, using gaincal parameters gaintype=‘G’ and combine=‘scan’, and solint=‘inf’"]
+- imaging.weighting_robust: Briggs, robust = 0.5 (continuum); natural weighting (spectral-line cubes)
+- imaging.final_beam: Table 1 synthesized beams: pre-impact 0.56x0.38''; post-impact 12 m 1.11x0.48'' to 0.63x0.50''; ACA 2.95x6.95'' to 2.71x4.39''
+- imaging.final_rms: Post-self-cal image RMS (mJy/beam): pre-impact 12 m 0.061; post-impact 12 m 0.067, 0.049, 0.048, 0.040; ACA 0.706, 0.447, 0.379, 0.424
+- inherited: Auto-masking and threshold parameters for imaging follow the ALMA imaging pipeline standard (from (cite: Kepley2020)) [Pre-Impact 12m Observations: "auto-masking using the standard pipeline threshold parameters specified for continuum measurements with a compact 12 m array (cite: Kepley2020)"]
+- inherited: Post-impact tracking and calibration (including continuum self-calibration) follow the pre-impact procedure (from pre-impact epoch, this paper) [Post Impact 12m and ACA Observations: "Tracking and calibration were performed as in our pre-impact epoch, including the application of self-calibration to continuum measurements."]
+- inherited: Self-calibration follows best practices and tclean auto-masking heuristics (from (cite: Brogan2018); (cite: Kepley2020)) [Self Calibration: "The automated self-calibration procedure utilizes best practices (cite: Brogan2018) and the auto-masking heuristics built into tclean (cite: Kepley2020)."]
+- inherited: Dust mass calculation method (from (cite: Jewitt1990); (cite: Boissier2012)) [Calculation of the Dust Ejecta Masses: "Dust masses were calculated for each execution following the methods of (cite: Jewitt1990) and (cite: Boissier2012)."]
+- inherited: Thermal emission model (NEATM) (from (cite: Harris1998; Delbo2002)) [Didymos-Dimorphos' Spectral Emissivity: "The Near Earth Asteroid Thermal model (cite: Harris1998; Delbo2002) was used to analyze thermal emission from the asteroids."]
+- inherited: Column density relation to integrated intensity (from (cite: Bockelee1994)) [Upper Limits on Gas-Phase Ejecta: "can be related to the integrated intensity as (cite: Bockelee1994):"]
+- literature input: Volume equivalent sphere diameters: Didymos 761 m, Dimorphos 151 m
+- literature input: Dimorphos total mass 4.3e9 kg
+- literature input: Piece-wise ejecta particle size distribution a^-2.7 (0.5 um to 2 mm), a^-3.7 (to 2.5 cm)
+- literature input: Optical constants of low-Fe crystalline olivine
+- missing for reproduction (card): Imaging cell size, image size, niter and thresholds; Continuum spectral-window selection and line-free channel handling; Auto_selfcal version and parameters; Exact aperture centers and flux summation procedure; Epsilon (infrared emissivity) value and size split used in NEATM; Mie and Maxwell-Garnett implementation settings; No public statement of data availability or product location in the paper text
+- not stated (card): Image cell size and image size for continuum and line imaging; tclean niter, thresholds and any mask edits beyond the 'standard pipeline' auto-mask parameters; Which spectral windows/channels were used for the continuum and whether any continuum subtraction was applied to line cubes; Line-cube channel width and velocity grid used for the 3 sigma u…
+- data volume (card estimate): Roughly 20-100 GB for nine short Band 7 executions (1 pre-impact 12 m, 4 post-impact 12 m, 4 ACA); estimate
+- reproducibility (card): score 4: Project code, CASA version, calibrators, weighting and nearly all model parameters, equations and numeric results are given; imaging grid, masks, auto_selfcal settings and flux-summation details are missing.
+- answer-key example: Pre-impact point-source flux density (uvmodelfit, 343.5 GHz) = 1.79 ± 0.18 mJy
+- answer-key example: Reduced chi-squared of point-source fit = 1.31 ± not stated dimensionless
+- answer-key example: Pre-impact image flux density = 1.73 ± 0.18 mJy
+
+### 2020PASJ...72...36T: Sub-millimeter detection of a Galactic center cool star IRS 7 by ALMA (2020; stellar_physics, evolved_stars, milky_way_ism; observational_alma_primary)
+- question: Can the 340 GHz continuum of the red supergiant IRS 7 and the H30alpha ionized gas around it be detected, and what do they say about photosphere size, electron temperature and density, mass loss and …
+- ALMA projects: 2015.1.01080.S, 2015.A.00021.S
+- data.angular_resolution: 340 GHz continuum: 0.107 x 0.101 arcsec, PA=-78 deg; H30alpha cube: 0.41 x 0.30 arcsec, PA=-77 deg (FWHM)
+- data.sensitivity: continuum 1 sigma = 45 uJy/beam in emission-free area; H30alpha cube 0.2 mJy/beam at a line-free channel
+- data.pi_or_archival_as_stated: 340 GHz: own ALMA Cy.3 program (PI M. Tsuboi); H30alpha: ALMA Director's Discretionary Time (DDT) observation
+- calibration.casa_version: CASA 5.4 for the 340 GHz continuum; CASA 5.0 for the H30alpha cube [340 GHz Observation: "The imaging to obtain the maps was done using CASA 5.4 with `clean` task."]
+- calibration.self_calibration: self-calibration in CASA 5.4 to minimise complex gain errors (340 GHz continuum data) [340 GHz Observation: "The complex gain errors of the data were minimized using the"]
+- imaging.weighting_robust: Briggs, robust = 0.2 (continuum); Briggs, robust = 0.5 (H30alpha cube)
+- imaging.final_beam: continuum 0.107 x 0.101 arcsec, PA=-78 deg; H30alpha cube 0.41 x 0.30 arcsec, PA=-77 deg
+- imaging.final_rms: continuum 45 uJy/beam; H30alpha cube 0.2 mJy/beam (line-free channel)
+- inherited: 340 GHz observation and data reduction, summarised from the earlier IRS 13E study of the same data (from (cite: Tsuboi2017b)) [340 GHz Observation: "The data has been published already in the previous paper, specifically for the study of IRS 13E ((cite: Tsuboi2017b))."]
+- inherited: H30alpha DDT data analysis, summarised from the earlier IRS 13E gas-motion study (from (cite: Tsuboi2017b)) [H30alpha recombination line: "The analysis also has been published already in the previous paper, specifically for the study of gas motions around IRS 13E ((cite: Tsuboi2017b))."]
+- inherited: SiO v=2 J=2-1 maser spectrum of IRS 7 taken from earlier ALMA data (from (cite: Tsuboi2017)) [Kinematics of the Surrounding Structure…: "This spectrum is extracted from the ALMA data shown in the previous paper ((cite: Tsuboi2017))."]
+- literature input: 34.5 GHz flux density of IRS 7, S < 15 uJy (used for spectral index limit)
+- literature input: Effective temperature of the photosphere, Teff = 3600 +/- 200 K (M1) or 3600 +/- 230 K (M2)
+- literature input: VLTI H-band uniform-disk radius of IRS 7, R = 960 +/- 92 Rsun in 2013 (comparison value)
+- literature input: Transverse velocity of IRS 7 from SiO maser proper motion (V_perp = 136 km/s, PA = -170.6 deg)
+- missing for reproduction (card): Execution block list and spectral window setup for both projects; Imaging parameters for the continuum clean (cell, image size, threshold, masks) and self-calibration settings; Exact flux extraction procedure for IRS 7 in the presence of Sgr A* sidelobes; Integration region and velocity range definitions used for the line integral and Gaussian fit; Error propagation for R, Te, ne
+- not stated (card): Spectral windows, channel widths and total continuum bandwidth used for the 340 GHz map and for the H30alpha cube; Cell size, image size, clean threshold, niter, deconvolver and masks for the 340 GHz continuum clean; Self-calibration solution intervals, number of rounds, reference model and which execution blocks were self-calibrated; Which execut…
+- data volume (card estimate): Three 340 GHz execution blocks plus one DDT dataset, roughly tens of GB raw; the calibrated cubes needed here are a few GB
+- reproducibility (card): score 3: Both project codes are printed and the formulae and results are numeric, but imaging, self-calibration and flux extraction details are missing and the details sit in an earlier paper.
+- answer-key example: 340 GHz continuum synthesized beam = 0.107 x 0.101 arcsec, PA=-78 deg ± not stated arcsec
+- answer-key example: 340 GHz continuum 1 sigma noise = 45 ± not stated uJy/beam
+- answer-key example: H30alpha cube synthesized beam = 0.41 x 0.30 arcsec, PA=-77 deg ± not stated arcsec
+
+### 2015A&A...576L..15O: ALMA view of the circumstellar environment of the post-common-envelope-evolution binary system HD 101584 (2015; evolved_stars; observational_alma_primary)
+- question: What are the morphology, kinematics, masses and energetics of the circumstellar environment of the post-AGB binary HD 101584, and does it match common-envelope scenarios?
+- ALMA projects: 2012.1.00248.S
+- data.bands: Band 6 (cycle 1)
+- data.arrays: ALMA 12 m array, 35 antennas
+- data.angular_resolution: 0.65×0.57 arcsec (12CO), 0.65×0.54 arcsec (13CO, C18O); continuum 0.56×0.49 arcsec
+- calibration.pipeline_or_manual: Manual CASA reduction with WVR and Tsys corrections, bandpass and gain calibration [2. Observations: "After corrections for the time and frequency dependence of the system temperatures and rapid atmospheric variations at each antenna using WVR data, bandpass and gain calibration were made."]
+- calibration.casa_version: CASA 4.2.2 [2. Observations: "The data were reduced using CASA 4.2.2."]
+- calibration.flux_scale_uncertainty: within 5% [2. Observations: "we estimate the absolute flux calibration to be accurate to within 5%."]
+- calibration.self_calibration: Self-calibration on strong continuum, per tuning [2. Observations: "for each individual tuning, self-calibration was performed on the strong continuum."]
+- imaging.weighting_robust: natural weighting
+- imaging.final_rms: Line channel rms 1.8 mJy/beam (12CO), 0.8 (13CO/C18O); continuum 0.14 mJy/beam
+- inherited: Flux calibrator models (from Butler-JPL-Horizons 2012, ALMA Memo 594) [2. Observations: "(Butler-JPL-Horizons 2012, ALMA Memo 594)"]
+- inherited: Rotational temperature and abundance assumptions for mass and energy (from Bujarrabal et al. 2001) [3.3 Mass, energy, and momentum estimates: "and _T_ rot =30 K (Bujarrabal et al. 2001)"]
+- literature input: Single-dish 12CO(2-1) flux 850 Jy km/s
+- literature input: SED model and dust temperature 45 K, mass 0.6 Msun, distance 0.7 kpc
+- literature input: Dust opacity kappa_230 = 0.5 cm2/g
+- literature input: Orbital period 218 d and K1 = 3 km/s
+- missing for reproduction (card): clean parameters and masks; aperture for global profiles; precise energy/momentum calculation details
+- not stated (card): clean threshold, number of iterations and masks; image size and cell size; line-free channels for continuum subtraction; self-calibration solution intervals; flagging details beyond the antennas mentioned; how the global line profiles were extracted (aperture); details of the kinetic energy and momentum calculation; spectral resolution/velocity bi…
+- data volume (card estimate): ~20-50 GB
+- reproducibility (card): score 3: Single project and simple estimates with given equations, but imaging and extraction details are missing.
+- answer-key example: Continuum flux density at 230 GHz = 112 ± not stated mJy
+- answer-key example: Systemic velocity = 42 ± 1 km/s (LSR)
+- answer-key example: Dust mass = 0.007 ± at least a factor of four Msun
+
+### 2019A&A...626A.126A: A massive nebula around the luminous blue variable star RMC 143 revealed by ALMA (2019; stellar_physics, evolved_stars; observational_alma_primary)
+- question: Is RMC 143 an LBV, and what are the dust content, mass and ionization of its circumstellar nebula, using ALMA Band 7 together with ATCA, X-shooter and IR data?
+- ALMA projects: 2013.1.00450.S
+- data.bands: Band 7 continuum
+- data.arrays: forty 12 m antennas
+- data.angular_resolution: HPBW 1.23x0.95 arcsec, PA 78.7 deg
+- data.sensitivity: rms 72 uJy/beam (40 uJy/beam desired, not achieved)
+- data.pi_or_archival_as_stated: Cycle-2 project, PI Agliozzo (authors' own)
+- calibration.pipeline_or_manual: Non-standard calibration steps (phase smearing, flux calibration, shadowed antennas included) [3.1 ALMA: "Non-standard calibration steps were required to minimize image degradation due to phase smearing, to provide correct flux calibration, and to maximize sensitivity by allowing inclusion of shadowed antennas."]
+- calibration.flux_scale_uncertainty: 10% flux uncertainty included in ALMA flux error [6 Ionized matter: "$2.5\pm0.4\,\rm mJy$ (the error also includes 10% flux uncertainty)"]
+- imaging.weighting_robust: natural weighting
+- imaging.final_beam: 1.23x0.95 arcsec, PA 78.7 deg
+- imaging.final_rms: 72 uJy/beam
+- inherited: ALMA non-standard calibration and data reduction techniques (from (cite: 2017AgliozzoB)) [3.1 ALMA: "Further discussion of these techniques and general aspects of observations and data reduction can be found in (cite: 2017AgliozzoB)."]
+- inherited: ATCA observing strategy and data reduction (from (cite: 2017AgliozzoA; 2017AgliozzoB)) [3.2 ATCA: "Details on the observing strategy and data reduction can be found in (cite: 2017AgliozzoA; 2017AgliozzoB)."]
+- inherited: Extinction map procedure (from (cite: 2017AgliozzoA)) [6 Spatial distribution of dust: "We follow the procedure described in (cite: 2017AgliozzoA)."]
+- inherited: HST image combination and astrometric recalibration (from (cite: 2012Agliozzo)) [3.4 HST: "The images were retrieved from the STScI data archive, combined, and astrometrically recalibrated as described in (cite: 2012Agliozzo)."]
+- inherited: CMFGEN diagnostics similar to earlier work (from (cite: 2017A&A...608A.124M)) [4 Stellar parameters: "The diagnostics to find the best-fitting stellar model for RMC$\,$143 are similar to those described in (cite: 2017A&A...608A.124M), except for the effective temperature."]
+- literature input: ATCA 5.5 and 9 GHz 2011 data (reprocessed here)
+- literature input: Electron temperature of 12,200 K for extinction map
+- literature input: Gas-to-dust ratio ~400 (diffuse), ~200 (dense) in LMC
+- literature input: Ionizing photon luminosities of 30 Dor stars for Stromgren radius
+- missing for reproduction (card): Exact ALMA calibration scripts (non-standard) in cited paper; Imaging parameters; Greybody fit implementation; CMFGEN model grid
+- not stated (card): CASA version and calibration scripts for the non-standard ALMA calibration; Calibrators used for ALMA bandpass, flux and phase; Cell size, image size, deconvolution and clean masking for the ALMA image; Primary beam correction details and aperture used to integrate the 2.5 mJy flux; Greybody fit code, priors and optimizer settings; Exact ATCA repr…
+- data volume (card estimate): ~10-30 GB raw ALMA data (single short Band 7 execution)
+- reproducibility (card): score 3: ALMA data are public and the analysis is simple, but the non-standard calibration is deferred to another paper and imaging and fit settings are unstated.
+- answer-key example: ALMA 343 GHz integrated flux density = 2.5 ± 0.4 mJy
+- answer-key example: Extrapolated free-free flux at 343 GHz = ~0.8 ± not stated mJy
+- answer-key example: Mean radio spectral index = -0.2 ± 0.2 dimensionless
+
+### 2024ApJ...970...74P: The Evaporating Massive Embedded Stellar Cluster IRS 13 Close to Sgr A*. II. Kinematic Structure (2024; stellar_physics, star_formation, milky_way_ism; multi_facility_alma_minor)
+- question: Kinematic structure and inspiral of IRS 13; whether H30α gas kinematics and the E3 broadband SED support an IMBH
+- ALMA projects: 2016.1.00870.S, 2015.1.01080.S
+- data.bands: Band 7
+- data.pi_or_archival_as_stated: Archival observations listed in Paper I; ALMA wavelength coverage attributed to PI Lena Murchikova
+- inherited: Data selection, reduction, and detailed analysis (from Paper I (cite: peissker2023c)) [Data and Tools: "The analysis presented in this work is solely based on the data listed in Paper I."]
+- inherited: Crowding discussion for source astrometry (from Paper I; (cite: peissker2020a; Peissker2020d)) [Keplerian fit: "We refer to Paper I for a detailed discussion about crowding problems (cite: peissker2020a; Peissker2020d)."]
+- inherited: Proper-motion conversion using an assumed distance of 8 kpc (from Paper I (cite: peissker2023c)) [3d distance of IRS 13 to Sgr A\*: "For the conversion from mas/year to km/s, we assumed a distance of 8 kpc."]
+- inherited: Inclination and LOAN used to characterize 3D source distribution (from (cite: Witzel2017), (cite: Ali2020), and (cite: Fellenberg2…) [Cluster analysis: "Following the analysis of (cite: Witzel2017), (cite: Ali2020), and (cite: Fellenberg2022), we use the inclination and the LOAN as reliable quantities for estimating the distribution of the investigated sources in the 3-dimensional space."]
+- inherited: Position angle defined using atan2 (from (cite: Ali2020)) [Cluster analysis: "With the definition of the PA using atan2, which is the 2nd argument of the arctangent (cite: Ali2020), we estimate the orientation of all the dusty sources including the E-stars."]
+- inherited: Two-population table adapted and extended with N1/N2 grouping (from Paper I (cite: peissker2023c)) [Table 3: "We adapt this table from Paper I and extend it with the proposed grouping of the two populations."]
+- literature input: Archival observations and data reduction underlying this work
+- literature input: H-, K-, L-, and M-band E3 flux densities; peak intensity
+- literature input: 2–10 keV X-ray luminosity constraint
+- literature input: 340, 232, and 42 GHz mm/radio flux densities
+- missing for reproduction (card): Paper I and its observation appendix and reduction details.; ALMA calibrated-data/product identification and the complete imaging recipe.; H30α radius and velocity extraction instructions and uncertainty propagation.; Numerical SED measurements and complete ADAF configuration.; Orbit-fitting and MCMC implementation and convergence information.; N-body initial conditions, integration settings, and velocity-rescaling implementation.; Clarification…
+- not stated (card): ALMA execution blocks, spectral windows, H30α rest frequency, channel width, and velocity reference frame.; ALMA calibration software/version, flagging, calibrators, and flux-scale uncertainty; reduction is deferred to Paper I.; Whether the ALMA inputs were raw visibilities, calibrated visibilities, or existing image products.; ALMA imaging weight…
+- data volume (card estimate): Cannot estimate from the supplied text; ALMA execution count, visibility sizes, and cube dimensions are absent.
+- reproducibility (card): score 3: 3/10: project codes, key gas measurements, model cases, and derived orbit products are identified, but reduction is inherited and essential extraction, fitting, and simulation settings are missing.
+- answer-key example: IRS 13 LOS velocity = -346.24 ± ±27.5 km/s
+- answer-key example: IRS 13 distance from Sgr A*, circular bound case = 0.12 ± not stated pc
+- answer-key example: IRS 13 distance from Sgr A*, parabolic case = 0.25 ± not stated pc
+
+### 2021ApJ...910...77M: The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA (2021; sun; observational_alma_primary)
+- question: Measure equatorial and polar subterahertz solar radii and investigate their relationship with the solar activity cycle.
+- ALMA projects: 2011.0.00020.SV, 2016.1.00050.S, 2016.1.00070.S, 2016.1.00156.S, 2016.1.00166.S, 2016.1.00182.S, 2016.1.00201.S, 2016.1.00202.S, 2016.1.00423.S, 2016.1.00572.S, 2016.1.00788.S, 2016.1.01129.S, 2016.1.01408.S, 2016.1.01532.S, 2017.1.00009.S, 2017.1.00870.S, 2017.1.01138.S
+- data.bands: 100 GHz (Band 3); 230 GHz (Band 6)
+- data.arrays: ALMA single-dish observations
+- data.angular_resolution: ALMA nominal HPBW: 58 arcsec at 100 GHz and 25 arcsec at 230 GHz; SST nominal HPBW: 4 arcminutes at 212 GHz and 2 arcminutes at 405 GHz
+- inherited: Improved version of the earlier solar-radius methodology, with a new approach and different analysis (from (cite: menezes17)) [INTRODUCTION: "The methodology used for that is an improved version of the methodology presented in (cite: menezes17) with a new approach and different analysis."]
+- inherited: Inflection point method selected from the comparison of radius-measurement methods (from (cite: menezes21b)) [Radius Determination: "(cite: menezes21b) showed that the inflection point method is less susceptible to the irregularities of the telescope beams and to the variations of the brightness temperature profiles of the Sun"]
+- inherited: ALMA full-disk double-circle scanning pattern with 2400-arcsec field diameter (from (cite: white17)) [OBSERVATIONS AND DATA: "These maps are derived from full-disk solar observations, which consist of a circular field of view of diameter ${2400}^{\prime\prime}$ using a “double-circle” scanning pattern (cite: white17)."]
+- inherited: SST azimuth-elevation scans over 60×60 arcminutes, separated by 2 arcminutes, at 0.1–0.2 degrees per second (from (cite: gimenez20)) [OBSERVATIONS AND DATA: "Most of the maps are obtained from azimuth and elevation scans from a ${60}^{\prime}$$\times$ ${60}^{\prime}$ area, with a ${2}^{\prime}$ separation between scans"]
+- inherited: SSC 2-D solar atmospheric model for predicted radius comparisons (from (cite: selhorst05)) [Subterahertz Radii: "Next, we used a 2-D solar atmospheric model developed by (cite: selhorst05) (hereafter referred to as the SSC model) to generate profiles of temperature brightness, $T_B$, at 100, 212, 230, and 405 GHz"]
+- literature input: Table 1 compilation of solar radii and altitudes at radio frequencies
+- literature input: 48-GHz radius evolution from 1990 to 1993 and its relation to solar activity
+- literature input: 37-GHz radius time series from 1989 to 2015; correlation coefficient 0.44 with 10.7-cm solar flux
+- literature input: 17-GHz radius correlations with the sunspot cycle: 0.88 for solar radius and -0.64 for polar radius
+- missing for reproduction (card): An exact manifest of the ALMA and SST maps used, including rejection outcomes and input calibration state.; Analysis code or explicit numerical specifications for derivatives, coordinate corrections, circle fitting, clipping, and averaging.; Definitions and propagation of the reported radius and altitude uncertainties.; SST beam matrices, simulation settings, and the SSC model implementation and inputs.; The exact solar-proxy data extracts and t…
+- not stated (card): Exact ALMA map identifiers, campaign dates, and selection within each listed project.; ALMA and SST calibration procedures and the processing state of the input maps.; ALMA map pixel scale and the interpolation method used for SST maps.; Numerical differentiation scheme, any profile smoothing, and treatment of multiple derivative extrema.; Solar r…
+- data volume (card estimate): Map-level analysis involving hundreds of ALMA maps and tens of thousands of SST maps; byte volume cannot be estimated reliably from the sup…
+- reproducibility (card): score 5: 5/10: project codes, sample counts, latitude cuts, rejection thresholds, smoothing windows, and numeric results are given, but exact inputs, calibration, software, uncertainty definitions, and several numerical implementation details are missing.
+- answer-key example: 100-GHz equatorial angular radius = 968 ± ±3 arcsec
+- answer-key example: 100-GHz polar angular radius = 968.4 ± ±2.3 arcsec
+- answer-key example: 212-GHz equatorial angular radius = 963 ± ±4 arcsec
+
+### 2025PSJ.....6..107N: Improved Carbon and Nitrogen Isotopic Ratios for CH<SUB>3</SUB>CN in Titan's Atmosphere Using ALMA (2025; solar_system, astrochemistry; observational_alma_primary)
+- question: Measure CH3CN nitrogen and carbon isotopic ratios in Titan’s stratosphere to test nitrogen chemistry and fractionation.
+- ALMA projects: 2019.1.00783.S
+- data.bands: Band 6 (211-275 GHz; ~1.1-1.4 mm)
+- data.angular_resolution: 1.54'' × 1.14'' at 256-257 GHz; 1.56'' × 1.11'' at 267-268 GHz
+- data.sensitivity: Full-width integrated line SNRs: CH3CN 1450; (13)CH3CN 13; CH3(13)CN 15; CH3C(15)N 16
+- calibration.pipeline_or_manual: CASA pipeline; standard JAO scripts; additional bandpass calibration smoothing [Observations: "The data were processed and calibrated using version 5.6.1-8 of the Common Astronomy Software Applications (CASA) pipeline using standard scripts provided by the Joint ALMA Observatory (JAO)."]
+- calibration.casa_version: 5.6.1-8 [Observations: "version 5.6.1-8 of the Common Astronomy Software Applications (CASA) pipeline"]
+- calibration.flux_scale_uncertainty: May be as much as ≈10%, due to amplitude calibrator flux uncertainty [Radiative Transfer Modeling: "errors on the ALMA flux scale (which may be as much as $\approx10$%, due to uncertainty in the amplitude calibrator flux)"]
+- imaging.final_beam: 1.54'' × 1.14'' at 256-257 GHz; 1.56'' × 1.11'' at 267-268 GHz
+- inherited: Spectral settings, observing details and complete data processing (from (cite: thelen_2020)) [Observations: "Three spectral settings were observed (see (cite: thelen_2020) for details)"]
+- inherited: Disk integration geometry: 35 annuli, emission angles 3-75 degrees, top altitude 1200 km (from (cite: teanby_2013)) [Radiative Transfer Modeling: "Titan’s disk was divided into 35 annuli corresponding to different emission angles from 3-75 degrees covering the center of Titan up to a tangential altitude of 1200 km (cite: teanby_2013)"]
+- inherited: NEMESIS line-by-line radiative transfer and retrieval method (from (cite: irwin_2008)) [Radiative Transfer Modeling: "Spectral models were generated using the line-by-line module of the Nonlinear optimal Estimator for MultivariatE spectral analySIS (NEMESIS) radiative transfer and retrieval tool (cite: irwin_2008)."]
+- inherited: GEISA 211 line-database format (from (cite: geisa_2003)) [Radiative Transfer Modeling: "The NEMESIS line database was updated to the GEISA 211 format (cite: geisa_2003) for additional precision on the rest frequencies and intensities."]
+- inherited: Major-isotopologue a priori profile below 500 km (from (cite: marten_2002)) [Radiative Transfer Modeling: "we used an a priori profile based on the disk-averaged measurements from (cite: marten_2002) up to 500 km"]
+- inherited: Major-isotopologue a priori extension to 1200 km (from (cite: loison_2015)) [Radiative Transfer Modeling: "supplemented by data from the model of (cite: loison_2015) up to 1200 km."]
+- literature input: CDMS CH3CN frequency predictions and initial line data
+- literature input: Disk-averaged CH3CN measurements used for the a priori profile up to 500 km
+- literature input: CH3CN model profile supplementing the a priori up to 1200 km
+- literature input: CH3CN N2-broadening coefficients; adopted average Γ = 0.158 cm^-1 atm^-1 and α = 0.60
+- missing for reproduction (card): Complete observing and reduction procedure deferred to (cite: thelen_2020), including the additional bandpass smoothing.; Full imaging commands and selected calibrated inputs.; NEMESIS version, executable configuration and complete atmospheric input profiles.; Machine-readable final spectroscopy and partition-function polynomial coefficients.; Modified wind-broadening code and numerical line-spread functions.; Exact continuum scaling, fit channe…
+- not stated (card): Exact execution-block and spectral-window selections, channel flags and spectral averaging.; Bandpass smoothing kernel and width.; tclean weighting/robust value, deconvolver, cell size, image size, masks, stopping threshold and primary-beam treatment.; Combination procedure for execution blocks and configurations.; Exact continuum flux scaling fac…
+- data volume (card estimate): not stated
+- reproducibility (card): score 6: 6/10: project, transitions, core retrieval assumptions, numerical ratios and sensitivity tests are supplied; reduction details and several numerical model inputs remain external or unspecified.
+- answer-key example: CH3CN/CH3C(15)N isotopic ratio = 68.9 ± ± 4.2 dimensionless
+- answer-key example: CH3CN/(13)CH3CN isotopic ratio = 89.2 ± ± 7.0 dimensionless
+- answer-key example: CH3CN/CH3(13)CN isotopic ratio = 91.2 ± ± 6.0 dimensionless
+
+### 2019ApJ...871...45S: Solar Polar Brightening and Radius at 100 and 230 GHz Observed by ALMA (2019; sun; archival_reuse)
+- question: Is polar brightening present in ALMA single-dish solar maps at 100 and 230 GHz, how large is it, and how does it (and the solar radius) compare with the FAL-C and SSC atmospheric models?
+- ALMA projects: 2011.0.00020.SV
+- data.bands: Band 3 (84-116 GHz), six maps; Band 6 (211-275 GHz), three maps; reference 100 and 230 GHz
+- data.arrays: single-dish 12 m antenna, fast-scan maps
+- data.angular_resolution: 58" at 100 GHz and 25" at 230 GHz (nominal)
+- calibration.archive_products_used_as_is: Released SV fast-scan maps described by White et al. 2017 used [ALMA solar maps: "We analysed ALMA fast-scan single-dish maps described by (cite: White2017)."]
+- imaging.smoothing: Band 6 maps convolved with a 54" (18 pixel) Gaussian to match 100 GHz resolution
+- inherited: Quiet Sun Tb taken as mean of 120"x120" area at disc center (from (cite: White2017)) [Data analysis and results: "Following the method used by (cite: White2017), the $T_{qS}$ of each map was assumed to be the mean brightness temperature of a small area at disc center"]
+- inherited: Polar brightening from average of 61 radial profiles (from (cite: Selhorst2003; Selhorst2011)) [Data analysis and results: "Following (cite: Selhorst2003; Selhorst2011), the polar brightening was estimated from the average of 61 radial profiles"]
+- inherited: Radius defined at 50% of T_qS (from (cite: Costa1999)) [Data analysis and results: "Following (cite: Costa1999), the radius was determined at the point in which the brightness temperature drops to 50% of the $T_{qS}$ value."]
+- literature input: Quiet-Sun brightness temperatures 7280±250 K (100 GHz) and 5900±190 K (230 GHz) for comparison
+- literature input: FAL-C atmospheric model
+- literature input: SSC atmospheric model with extended chromosphere
+- literature input: Historical radio solar radius compilations
+- missing for reproduction (card): Map file details and pixel scale; Model atmosphere tables in numeric form
+- not stated (card): Location/format of the SV single-dish maps and calibration details (brightness scale, pointing); Pixel size of maps; How uncertainty on polar brightening was exactly propagated; Details of polynomial fit to radius vs frequency data; Exact radius values from literature used in Fig 6
+- data volume (card estimate): small, ~1 GB (nine single-dish maps)
+- reproducibility (card): score 3: Data public and method simple, but several settings unstated and models require external tables.
+- answer-key example: Mean polar brightening 100 GHz South = 6.1 ± 2.8 %
+- answer-key example: Mean polar brightening 100 GHz North = 5.1 ± 2.7 %
+- answer-key example: Mean polar brightening 230 GHz South = 9.2 ± 4.7 %
+

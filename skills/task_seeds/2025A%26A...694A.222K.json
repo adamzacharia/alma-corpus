@@ -1,0 +1,413 @@
+{
+ "bibcode": "2025A&A...694A.222K",
+ "title": "ALMA observations of CO isotopologues towards six obscured post-asymptotic giant branch stars",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202452500",
+ "arxiv_id": "2501.04492",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "Constrain the circumstellar envelope properties, recent mass-loss histories and initial masses (via 17O/18O) of six obscured post-AGB stars from CO isotopologue J=2-1 lines",
+ "alma_project_codes": [
+  "2021.1.01259.S"
+ ],
+ "data": {
+  "bands": "Band 6 (continuum representative wavelength 1.31 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.63 to 0.78 arcsec across sources (beams 0.93-1.22 x 0.63-0.78 arcsec in Table 1)",
+  "sensitivity": "1.6 to 2.5 mJy/beam in continuum-subtracted maps for ~1 MHz (~1.4 km/s) channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distances (Vickers et al. 2015; Riera et al. 1995 for Hen 3-1475)",
+    "evidence": [
+     {
+      "loc": "2.2 Relevant information on individual sources",
+      "quote": "We adopt distances to each object from (cite: Vickers2015), with the exception of Hen 3-1475, for which we adopt the value from (cite: Riera1995)."
+     }
+    ]
+   },
+   "citation": "(cite: Vickers2015); (cite: Riera1995)"
+  },
+  {
+   "what": {
+    "value": "C18O abundance f = 8.5e-7 relative to H nuclei (2.1e-7 for low-metallicity HD 187885, Z=0.0035) from stellar models",
+    "evidence": [
+     {
+      "loc": "5.2 Circumstellar gas masses, recent mass-loss rates, and 13CO abundances",
+      "quote": "relative to the number of hydrogen nuclei (cite: Karakas2016)"
+     },
+     {
+      "loc": "5.2 Circumstellar gas masses, recent mass-loss rates, and 13CO abundances",
+      "quote": "also based on the models presented by (cite: Karakas2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Karakas2016)"
+  },
+  {
+   "what": {
+    "value": "MONASH and FRUITY stellar evolution model predictions of 17O/18O versus initial mass",
+    "evidence": [
+     {
+      "loc": "6.1.2 Derived initial masses",
+      "quote": "We compare the isotopic ratios derived in this work to stellar evolution models using the MONASH code (cite: Karakas2016; Karakas2018) and the FRUITY database (cite: Cristallo2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Karakas2016; Karakas2018); (cite: Cristallo2015)"
+  },
+  {
+   "what": {
+    "value": "Maximum post-AGB luminosities and post-AGB timescales from evolutionary models",
+    "evidence": [
+     {
+      "loc": "6.1.3 Implications for luminosities and distances",
+      "quote": "we determine the maximum expected post-AGB luminosity for each source from evolutionary models presented by (cite: MillerBertolami2016) given the inferred initial masses."
+     }
+    ]
+   },
+   "citation": "(cite: MillerBertolami2016)"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosities (and chemical/spectral types) adopted from the literature",
+    "evidence": [
+     {
+      "loc": "6.1.3 Implications for luminosities and distances",
+      "quote": "we scaled the distance for each sources based on the luminosities adopted from the literature"
+     }
+    ]
+   },
+   "citation": "as listed in Table 1 notes (Lagadec et al. 2011 etc., not individually resolved in the text)"
+  },
+  {
+   "what": {
+    "value": "Metallicity Z=0.0035 for HD 187885",
+    "evidence": [
+     {
+      "loc": "6.1.2 Derived initial masses",
+      "quote": "with the exception of HD 187885 for which we consider a metallicity"
+     }
+    ]
+   },
+   "citation": "(cite: vanWinckel2000)"
+  },
+  {
+   "what": {
+    "value": "353 GHz flux density of GLMP 953 of 0.32 Jy",
+    "evidence": [
+     {
+      "loc": "6.7 Comparison between GLMP 950 and GLMP 953",
+      "quote": "the flux density of this source at 353 GHz of 0.32 Jy (cite: Eden2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Eden2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Define apertures and measure line profiles and moment-0 maps",
+   "method": "Extract profiles in 5 arcsec circles, measure zero-intensity line widths of C17O/C18O, build 13CO moment-0 maps over C18O velocity range, choose 5 or 7 arcsec circular apertures (non-circular 3-sigma contour for M1-92; rectangular for Hen 3-1475 high-velocity gas)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Aperture diameters 5 arcsec (GLMP 950, Hen 3-1475) and 7 arcsec (GLMP 953, AFGL 5385, HD 187885)"
+   ],
+   "assumptions": [
+    "Circular apertures adequate because sources are nearly circular"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux density, size and position",
+   "method": "Integrate continuum within the same apertures; fit 2D Gaussian convolved with beam in the image plane to get beam-deconvolved FWHM",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive 17O/18O ratios from C17O/C18O line fluxes",
+   "method": "Convert flux ratio to abundance ratio accounting for Einstein A, frequency, partition functions and level energies at Tex = 10 K (ratio ~0.95 times the flux ratio)",
+   "software": [],
+   "key_parameters": [
+    "Tex = 10 K, optically thin emission"
+   ],
+   "assumptions": [
+    "Same excitation for both molecules; ratio virtually independent of Tex"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive circumstellar gas masses from C18O",
+   "method": "M_gas = M_H/0.7 with M_H from C18O J=2-1 flux, optically thin LTE at Tex=10 K, f(C18O)=8.5e-7 (2.1e-7 for HD 187885)",
+   "software": [],
+   "key_parameters": [
+    "f(C18O) = 8.5e-7 relative to H nuclei; hydrogen mass fraction 0.7"
+   ],
+   "assumptions": [
+    "Tex = 10 K; adopted distances; C18O abundance from Karakas & Lugaro 2016 models"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive kinematic ages and recent mass-loss rates",
+   "method": "Use 3-sigma C18O contours for size and gas mass; kinematic age from region size, adopted distance and expansion velocity from zero-intensity C18O width; mass-loss rate = mass within the contour / kinematic age",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive 13CO abundances consistent with C18O masses",
+   "method": "Analogous expression to the mass equation to find the 13CO abundance relative to H that reproduces the C18O-based gas mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Infer initial masses from 17O/18O with stellar evolution models",
+   "method": "Compare measured ratios with MONASH and FRUITY model predictions at solar (and Z=0.0035/0.0028 for HD 187885) metallicity",
+   "software": [
+    "MONASH",
+    "FRUITY"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Check luminosities and distances implied by initial masses",
+   "method": "Take maximum post-AGB luminosity from Miller Bertolami (2016) models for the inferred initial mass and rescale distances from adopted luminosities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Compare kinematic ages with post-AGB evolution timescales",
+   "method": "Compare C18O kinematic ages with tau_tr from Miller Bertolami (2016) and Vassiliadis & Wood (1994) for the four sources with spectral types",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Kinematic ages are upper limits to post-AGB duration"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "17O/18O ratio, GLMP 950",
+   "value": "1.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 1.7 (0.2) | 1.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "17O/18O ratio, GLMP 953",
+   "value": "1.3",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 1.3 (0.2) | 1.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "17O/18O ratio, AFGL 5385",
+   "value": "0.61",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.1.1 Comparison to other sources",
+     "quote": "Hence, the values we obtain for AFGL 5385 (0.61) and HD 187885 (0.59) do occur in AGB stars as well, but are relatively rare."
+    },
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 0.61 (0.10) | 1.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "17O/18O ratio, HD 187885",
+   "value": "0.59",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.1.1 Comparison to other sources",
+     "quote": "Hence, the values we obtain for AFGL 5385 (0.61) and HD 187885 (0.59) do occur in AGB stars as well, but are relatively rare."
+    },
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 0.59 (0.12) |"
+    }
+   ]
+  },
+  {
+   "quantity": "17O/18O ratio, Hen 3-1475",
+   "value": "1.29",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.1.1 Comparison to other sources",
+     "quote": "Hence, the values we obtain for Hen 3-1475 (1.29) and M1-92 (1.8) are typical for O-rich AGB stars."
+    },
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 1.29 (0.15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "17O/18O ratio, M1-92",
+   "value": "1.8",
+   "uncertainty": "0.2 (Table); text in 6.1.2 quotes 0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.1.1 Comparison to other sources",
+     "quote": "Hence, the values we obtain for Hen 3-1475 (1.29) and M1-92 (1.8) are typical for O-rich AGB stars."
+    },
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 1.8 (0.2) | 1.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar gas mass, GLMP 950 (C18O emission size 9360 au, kinematic age 1085 yr)",
+   "value": "0.10",
+   "uncertainty": "factor of 1.7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "GLMP 950 | 9360 | 0.10 | 1.1 | 1085"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar gas mass, GLMP 953 (kinematic age 1460 yr)",
+   "value": "0.17",
+   "uncertainty": "factor of 1.7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "GLMP 953 | 11400 | 0.17 | 0.9 | 1460"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar gas mass, AFGL 5385",
+   "value": "0.24",
+   "uncertainty": "factor of 1.7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "AFGL 5385 | 14280 | 0.24"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar gas mass, HD 187885",
+   "value": "0.35",
+   "uncertainty": "factor of 1.7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "| 8000 | 0.35 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar gas mass, Hen 3-1475 (kinematic age 770 yr)",
+   "value": "0.42",
+   "uncertainty": "factor of 1.7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "Hen 3-1475 | 16240 | 0.42 | 1.5 | 770"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar gas mass, M1-92 (kinematic age 1190 yr)",
+   "value": "0.35",
+   "uncertainty": "factor of 1.7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of derived quantities",
+     "quote": "M1-92 | 22360 | 0.35 | 2.0 | 1190"
+    }
+   ]
+  },
+  {
+   "quantity": "Initial masses of sample stars from 17O/18O",
+   "value": "between 1.15 and 1.8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "7 Summary and conclusions",
+     "quote": "We inferred initial masses between 1.15 and 1.8 for the stars in our sample using the"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters of the archive pipeline cubes (tclean weighting/robust, cell size, image size, deconvolver, masks) and whether cubes were re-imaged",
+  "Continuum subtraction method and line-free channels (done by pipeline or by authors?)",
+  "Array configurations, baselines, observing dates, time on source, flux/bandpass/phase calibrators",
+  "Primary-beam correction convention for fluxes integrated over 5-7 arcsec apertures and 3-sigma contour apertures",
+  "Exact aperture centres, the rectangular aperture position angle for Hen 3-1475 and how the 3-sigma contours were built (moment-0 velocity ranges per source)",
+  "Rest frequencies, Einstein A, partition functions and level energies used in the mass and ratio equations",
+  "Uncertainty propagation for flux integrals, expansion velocities used for kinematic ages (derived from zero-intensity line widths) per source",
+  "How 17O/18O model-to-initial-mass interpolation (MONASH/FRUITY, metallicity) was done numerically"
+ ],
+ "missing_for_reproduction": [
+  "Imaging/continuum-subtraction details and line-free channels",
+  "Exact aperture definitions, moment-0 velocity ranges and expansion velocities per source",
+  "Numerical constants and values used in the mass and ratio equations",
+  "Model tables and interpolation used to infer initial masses"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public archive pipeline cubes, simple aperture photometry and closed-form equations with stated assumptions; missing imaging details and some constants",
+ "rediscovery_reason": "Data stated to come from the ALMA archive (2021.1.01259.S), recipe is a short aperture-photometry plus analytic-equation chain, and main results are numeric (17O/18O, gas masses, kinematic ages).",
+ "source_card": "cards/2025A%26A...694A.222K/sonnet/card.md"
+}

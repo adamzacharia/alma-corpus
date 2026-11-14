@@ -1,0 +1,564 @@
+{
+ "bibcode": "2023MNRAS.522.6123Z",
+ "title": "Revisiting the Dragonfly galaxy - I. High-resolution ALMA and VLA observations of the radio hotspots in a hyper-luminous infrared galaxy at z = 1.92",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad1428",
+ "arxiv_id": "2305.03979",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Investigate the radio properties, structure, evolution stage, lifetime of hotspots, and geometry of radio jets of the Dragonfly galaxy (MRC 0152-209) at z = 1.92 using high-resolution ALMA 237 GHz and VLA 44 GHz continuum observations.",
+ "alma_project_codes": [
+  "2016.1.01417.S",
+  "2018.1.00293.S"
+ ],
+ "data": {
+  "bands": "Band 6 (237 GHz)",
+  "arrays": "45 antennas (Cycle 4); 48 antennas (Cycle 6)",
+  "angular_resolution": "0.11'' x 0.08'' (Cycle 4); 0.026'' x 0.023'' (Cycle 6)",
+  "sensitivity": "0.011 mJy beam^-1 (Cycle 4); 0.0065 mJy beam^-1 (Cycle 6)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total flux densities at 74 MHz (3100 +/- 620 mJy), 365 MHz (1580 +/- 30 mJy), and 1.4 GHz (453 +/- 91 mJy)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 74 | Total | $3100\\pm620$ | \\- | $(2.9\\pm0.6)\\times10^{28}{}^a$ | $(2.2\\pm0.4)\\times10^{43}$ | $80\\ensuremath{''}$ | 1 |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "| 365 | Total | $1580\\pm30$ | $-0.56\\pm0.02$ | $(2.7\\pm0.1)\\times10^{28}$ | $(9.9\\pm0.3)\\times10^{43}$ | $6\\ensuremath{''}$ | 1 |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "| $1.4\\times10^3$ | Total | $453\\pm91$ | $-0.93\\pm0.15$ | $(1.2\\pm0.3)\\times10^{28}$ | $(1.6\\pm0.4)\\times10^{44}$ | $45\\ensuremath{''}$ | 1 |"
+     }
+    ]
+   },
+   "citation": "(cite: 2010AA...511A..53V)"
+  },
+  {
+   "what": {
+    "value": "Total flux density at 147 MHz (2620 +/- 10 mJy)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 147 | Total | $2620\\pm10$ | $-0.25\\pm0.29$ | $(3.2\\pm1.0)\\times10^{28}$ | $(4.7\\pm1.5)\\times10^{43}$ | $25\\ensuremath{''}$ | 2 |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Column (8): references to flux measurements. 1: (cite: 2010AA...511A..53V); 2: (cite: 2018MNRAS.474.5008D); 3: (cite: 2000AAS..145..121P); 4: this work."
+     }
+    ]
+   },
+   "citation": "(cite: 2018MNRAS.474.5008D)"
+  },
+  {
+   "what": {
+    "value": "VLA 4.7 GHz and 8.2 GHz flux densities for Total, NW, and SE components, and equipartition magnetic field limit B_eq = 160 uG",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $4.7\\times10^3$ | Total | $115\\pm12$ | $-1.13\\pm0.19$ | $(3.6\\pm0.8)\\times10^{27}$ | $(1.7\\pm0.4)\\times10^{44}$ | \\- | 3 |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "| $8.2\\times10^3$ | Total | $47\\pm4.7$ | $-1.61\\pm0.25$ | $(2.5\\pm0.6)\\times10^{27}$ | $(2.0\\pm0.4)\\times10^{44}$ | \\- | 3 |"
+     },
+     {
+      "loc": "Synchrotron Ageing",
+      "quote": "However, in the SE hotspot, adopting a lower limit of the magnetic field in energy equipartition $B\\mathrm{_{eq}}$, (cite: 2000AAS..145..121P) gives $B\\mathrm{_{eq}}=160\\ \\mu$G, which is much higher than the expected $B_\\mathrm{CMB}$ (see §[\\[sec:fitting\\]](#sec:fitting))."
+     }
+    ]
+   },
+   "citation": "(cite: 2000AAS..145..121P)"
+  },
+  {
+   "what": {
+    "value": "ATCA continuum total flux density at 40 GHz (S_nu = 5.1 +/- 1.5 mJy)",
+    "evidence": [
+     {
+      "loc": "Bi-modal Flux Ratios",
+      "quote": "This is supported by the low-resolution Australia Telescope Compact Array continuum observation at 40 GHz that has a total flux density $S_\\nu=5.1\\pm1.5$ mJy (cite: 2011ApJ...734L..25E)"
+     }
+    ]
+   },
+   "citation": "(cite: 2011ApJ...734L..25E)"
+  },
+  {
+   "what": {
+    "value": "Star formation rate (~3000 M_sun yr^-1) and stellar mass (~5x10^11 M_sun) of the Dragonfly galaxy, and Giant Molecular Cloud (Companion) offset",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work, we have studied a HzRG – MRC 0152-209, named Dragonfly galaxy, which has a star formation rate (SFR) of $\\mathrm{\\sim3000\\ M_\\odot\\ yr^{-1}}$ and $M_\\star\\sim\\mathrm{5\\times10^{11}\\ M_\\odot}$ (cite: 2015A&A...584A..99E; 2015MNRAS.451.1025E)."
+     },
+     {
+      "loc": "The Possible Jet-ISM Interaction",
+      "quote": "Furthermore, (cite: 2015A&A...584A..99E) has found a giant molecular cloud lying close to the propagation direction of the SE jet, offset from the jet propagation axis by $\\sim0.3\\ensuremath{''}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2015A&A...584A..99E; 2015MNRAS.451.1025E)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image VLA 44 GHz and ALMA 237 GHz continuum data and align images",
+   "method": "Calibrate raw data using CASA pipelines, flag CO(6-5) line and atmospheric absorption channels in ALMA data, compute dirty image RMS, clean down to 3 sigma using hogbom and Briggs robust +0.5 in tclean, and overlay contours in CARTA (shifting VLA 8.2 GHz WCS to match the VLA 44 GHz SE peak pixel).",
+   "software": [
+    "CASA",
+    "tclean",
+    "CARTA"
+   ],
+   "key_parameters": [
+    "robustness parameter +0.5; clean stop threshold 3 sigma; hogbom deconvolver"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure component flux densities, deconvolved hotspot size, spectral indices, and radio luminosities/powers",
+   "method": "Integrate flux densities over specified apertures for NW, SE, and Core components, fit a single Gaussian component to the image plane to measure the deconvolved size of the SE hotspot, and calculate spectral indices, spectral luminosities, and radio powers.",
+   "software": [],
+   "key_parameters": [
+    "Apertures: 0.4'' x 0.2'' (NW at 44 GHz), 0.5'' x 0.4'' (SE at 44 GHz), 0.07'' x 0.12'' (SE at 237 GHz), 0.4'' x 0.3'' (Core at 44 GHz)"
+   ],
+   "assumptions": [
+    "At 4.7 and 8.2 GHz, peak flux densities equal integrated flux densities (S_peak = S_total); at 237 GHz, SE sub-component is dominated by AGN synchrotron radiation; 3 sigma upper limit assumed for NW at 237 GHz."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit low-frequency curved SED and classify as Compact-Steep-Spectrum (CSS) source",
+   "method": "Fit observed total flux densities at <= 8.2 GHz with a curved power-law model S_nu = a * nu^alpha * exp(q * (ln nu)^2) and compare the derived turnover frequency with the empirical size-turnover frequency relation for CSS sources.",
+   "software": [],
+   "key_parameters": [
+    "Frequencies <= 8.2 GHz; projected linear size l ~ 13 kpc"
+   ],
+   "assumptions": [
+    "Observations at <= 1.4 GHz represent the sum of all three components (core, SE, NW)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit synchrotron ageing models and derive equipartition magnetic fields and synchrotron ages",
+   "method": "Fit the radio SEDs of NW and SE hotspots (>= 147 MHz) using SYNCHROFIT with continuous injection (CI), JP, and KP models to obtain break frequency nu_br, injection index s (alpha_inj = (1-s)/2), and remnant fraction T; compute equipartition magnetic field B_eq and synchrotron age t_s.",
+   "software": [
+    "SYNCHROFIT"
+   ],
+   "key_parameters": [
+    "Frequencies >= 147 MHz; proton-to-electron energy ratio k = 1; Doppler boosting factor delta = 2-4; B_CMB = 3.25(1+z)^2 uG"
+   ],
+   "assumptions": [
+    "Unresolved flux densities at <= 1.4 GHz emanate only from NW and SE hotspots with flux ratio S_SE : S_NW = 15 : 1; hotspot occupies an elliptical cylinder volume."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate jet advance speed, Doppler boosting factor, jet kinetic power, and potential molecular outflow mass",
+   "method": "Use the SE-to-NW flux density ratio R = ((1 + beta cos(theta))/(1 - beta cos(theta)))^(3 - alpha) to constrain the jet advance speed beta and Doppler factor delta; derive intrinsic 1.4 GHz radio power, compute jet kinetic power P_jet via empirical correlation, and estimate outflow mass M_out from energy conservation.",
+   "software": [],
+   "key_parameters": [
+    "Flux ratios R ~ 15 (at 4.7 and 8.2 GHz) and R ~ 6 (at 44 and 237 GHz); outflow velocity ~1000 km s^-1"
+   ],
+   "assumptions": [
+    "SE hotspot contributes ~90% of total observed 1.4 GHz flux density and is Doppler boosted by factor delta = 2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SE hotspot integrated flux density at 237 GHz",
+   "value": "0.12",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $237\\times10^3$ | SE | $0.12\\pm0.01$ | $-1.64\\pm0.06$ | $(6.6\\pm0.7)\\times10^{24}$ | $(1.6\\pm0.2)\\times10^{43}$ | $0.07\\ensuremath{''}\\times0.12\\ensuremath{''}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot spectral index between 44 and 237 GHz",
+   "value": "-1.64",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $237\\times10^3$ | SE | $0.12\\pm0.01$ | $-1.64\\pm0.06$ | $(6.6\\pm0.7)\\times10^{24}$ | $(1.6\\pm0.2)\\times10^{43}$ | $0.07\\ensuremath{''}\\times0.12\\ensuremath{''}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot integrated flux density at 44 GHz",
+   "value": "1.88",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $44\\times10^3$ | SE | $1.88\\pm0.09$ | $-1.87\\pm0.07$ | $(1.3\\pm0.1)\\times10^{26}$ | $(5.9\\pm0.3)\\times10^{43}$ | $0.5\\ensuremath{''}\\times0.4\\ensuremath{''}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot integrated flux density at 44 GHz",
+   "value": "0.29",
+   "uncertainty": "0.07",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $44\\times10^3$ | NW | $0.29\\pm0.07$ | $-1.35\\pm0.16$ | $(1.2\\pm0.3)\\times10^{25}$ | $(5.1\\pm1.5)\\times10^{42}$ | $0.4\\ensuremath{''}\\times0.2\\ensuremath{''}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio core integrated flux density at 44 GHz",
+   "value": "0.23",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $44\\times10^3$ | Core | $0.23\\pm0.06$ | \\- | \\- | \\- | $0.4\\ensuremath{''}\\times0.3\\ensuremath{''}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total integrated flux density at 44 GHz",
+   "value": "2.42",
+   "uncertainty": "0.32",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $44\\times10^3$ | Total | $2.42\\pm0.32$ | $-1.77\\pm0.08$ | $(1.5\\pm0.2)\\times10^{26}$ | $(6.7\\pm1.1)\\times10^{43}$ | \\- | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot 3 sigma upper limit flux density at 237 GHz",
+   "value": "0.0194",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Bi-modal Flux Ratios",
+     "quote": "We assumed an upper limit of the NW component based on $3\\sigma$ level to estimate the flux ratio at 237 GHz, which gives $S\\mathrm{_{NW,237GHz}=0.0194\\ mJy}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected linear separation between SE and NW hotspots",
+   "value": "~13",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The projected linear distance between the two hotspots is $\\sim13$ kpc, yielding a linear size ($\\leq20$ kpc) of a Compact-Steep-Spectrum (CSS) source."
+    },
+    {
+     "loc": "Compact-Steep-Source",
+     "quote": "Since the projected linear separation of the two hotspots is only $\\sim1.5\\ensuremath{''}$ ($\\sim13$ kpc at $z=1.92$), the Dragonfly galaxy can be classified as a CSS source"
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot deconvolved size",
+   "value": "0.054'' x 0.033''",
+   "uncertainty": "0.015'' x 0.01''",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Compact-Steep-Source",
+     "quote": "By fitting a single Gaussian component to the image plane, the size of the SE hotspot deconvolved from the beam is $(0.054\\ensuremath{''}\\pm0.015\\ensuremath{''})\\times(0.033\\ensuremath{''}\\pm0.01\\ensuremath{''})$, corresponding to a radius of $r\\sim~0.47$ kpc at $z=1.92$"
+    }
+   ]
+  },
+  {
+   "quantity": "Curved power-law curvature parameter (q) at <= 8.2 GHz",
+   "value": "-0.175",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Compact-Steep-Source",
+     "quote": "The best-fitting result of the sum of integrated flux densities is shown in Fig. [2](#fig:sed) by the green dashed line with $q=-0.175\\pm0.01$ and $\\alpha=-1.05\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Curved power-law spectral index (alpha) at <= 8.2 GHz",
+   "value": "-1.05",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Compact-Steep-Source",
+     "quote": "The best-fitting result of the sum of integrated flux densities is shown in Fig. [2](#fig:sed) by the green dashed line with $q=-0.175\\pm0.01$ and $\\alpha=-1.05\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot equipartition magnetic field (B_eq)",
+   "value": "175-213",
+   "uncertainty": "not stated",
+   "units": "uG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "The estimated $B_\\text{eq}$, taking a Doppler boosting factor $\\delta=2-4$ (see the discussion in §[\\[jet-ism\\]](#jet-ism)), is $175-213\\ \\mu$G for the SE and $214-261\\ \\mu$G for the NW hotspot, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot equipartition magnetic field (B_eq)",
+   "value": "214-261",
+   "uncertainty": "not stated",
+   "units": "uG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "The estimated $B_\\text{eq}$, taking a Doppler boosting factor $\\delta=2-4$ (see the discussion in §[\\[jet-ism\\]](#jet-ism)), is $175-213\\ \\mu$G for the SE and $214-261\\ \\mu$G for the NW hotspot, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot break frequency (nu_br)",
+   "value": "980",
+   "uncertainty": "180",
+   "units": "MHz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "The NW hotspot is fitted without 237 GHz data, and the fitting result is $\\nu_\\mathrm{br}=980\\pm180$ MHz, $\\alpha_\\mathrm{inj}=-0.59\\pm0.01$, and $T=0.08\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot injection spectral index (alpha_inj)",
+   "value": "-0.59",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "The NW hotspot is fitted without 237 GHz data, and the fitting result is $\\nu_\\mathrm{br}=980\\pm180$ MHz, $\\alpha_\\mathrm{inj}=-0.59\\pm0.01$, and $T=0.08\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot remnant fraction (T)",
+   "value": "0.08",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "The NW hotspot is fitted without 237 GHz data, and the fitting result is $\\nu_\\mathrm{br}=980\\pm180$ MHz, $\\alpha_\\mathrm{inj}=-0.59\\pm0.01$, and $T=0.08\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "NW hotspot synchrotron age (t_s)",
+   "value": "2-3 x 10^5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "Considering a quiescent phase during the continuous acceleration, the above fitting gives $t_\\mathrm{s}\\sim2-3\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot break frequency without 237 GHz data (nu_br)",
+   "value": "760",
+   "uncertainty": "140",
+   "units": "MHz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "Without ALMA 237 GHz data, the SE hotspot has $\\nu_\\mathrm{br}=760\\pm140$ MHz, $\\alpha_\\mathrm{inj}=-0.51\\pm0.01$, $T=0.13\\pm0.03$, and $t_\\mathrm{s}\\sim3-4\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot injection spectral index without 237 GHz data (alpha_inj)",
+   "value": "-0.51",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "Without ALMA 237 GHz data, the SE hotspot has $\\nu_\\mathrm{br}=760\\pm140$ MHz, $\\alpha_\\mathrm{inj}=-0.51\\pm0.01$, $T=0.13\\pm0.03$, and $t_\\mathrm{s}\\sim3-4\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot remnant fraction without 237 GHz data (T)",
+   "value": "0.13",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "Without ALMA 237 GHz data, the SE hotspot has $\\nu_\\mathrm{br}=760\\pm140$ MHz, $\\alpha_\\mathrm{inj}=-0.51\\pm0.01$, $T=0.13\\pm0.03$, and $t_\\mathrm{s}\\sim3-4\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot synchrotron age without 237 GHz data (t_s)",
+   "value": "3-4 x 10^5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "Without ALMA 237 GHz data, the SE hotspot has $\\nu_\\mathrm{br}=760\\pm140$ MHz, $\\alpha_\\mathrm{inj}=-0.51\\pm0.01$, $T=0.13\\pm0.03$, and $t_\\mathrm{s}\\sim3-4\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot break frequency with 237 GHz data (nu_br)",
+   "value": "2.95",
+   "uncertainty": "0.5",
+   "units": "GHz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "With ALMA 237 GHz data, i.e., under the assumption that the sub-component observed at 237 GHz has synchrotron-dominance, the SE hotspot then has $\\nu_\\mathrm{br}=2.95\\pm0.5$ GHz, $\\alpha_\\mathrm{inj}=-0.82\\pm0.02$, $T=0.08\\pm0.02$, and $t_\\mathrm{s}\\sim2\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot injection spectral index with 237 GHz data (alpha_inj)",
+   "value": "-0.82",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "With ALMA 237 GHz data, i.e., under the assumption that the sub-component observed at 237 GHz has synchrotron-dominance, the SE hotspot then has $\\nu_\\mathrm{br}=2.95\\pm0.5$ GHz, $\\alpha_\\mathrm{inj}=-0.82\\pm0.02$, $T=0.08\\pm0.02$, and $t_\\mathrm{s}\\sim2\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot remnant fraction with 237 GHz data (T)",
+   "value": "0.08",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "With ALMA 237 GHz data, i.e., under the assumption that the sub-component observed at 237 GHz has synchrotron-dominance, the SE hotspot then has $\\nu_\\mathrm{br}=2.95\\pm0.5$ GHz, $\\alpha_\\mathrm{inj}=-0.82\\pm0.02$, $T=0.08\\pm0.02$, and $t_\\mathrm{s}\\sim2\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SE hotspot synchrotron age with 237 GHz data (t_s)",
+   "value": "~2 x 10^5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "With ALMA 237 GHz data, i.e., under the assumption that the sub-component observed at 237 GHz has synchrotron-dominance, the SE hotspot then has $\\nu_\\mathrm{br}=2.95\\pm0.5$ GHz, $\\alpha_\\mathrm{inj}=-0.82\\pm0.02$, $T=0.08\\pm0.02$, and $t_\\mathrm{s}\\sim2\\times10^5$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Advance speed of jet head (beta)",
+   "value": "0.1c - 0.3c",
+   "uncertainty": "not stated",
+   "units": "c",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In this scenario, we estimate the advance speed of the jet head, ranging from $\\sim$0.1c – 0.3c, which yields a mildly relativistic case."
+    },
+    {
+     "loc": "Doppler Boosting?",
+     "quote": "we find two ranges for $\\beta$: $\\sim0.2$c$-0.3$c for $R\\sim15$ and $\\sim0.1$c$-0.2$c for $R\\sim6$."
+    }
+   ]
+  },
+  {
+   "quantity": "Approaching jet total kinetic power (P_jet)",
+   "value": "7 x 10^46",
+   "uncertainty": "9 x 10^46",
+   "units": "erg s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Possible Jet-ISM Interaction",
+     "quote": "Adopting an empirical correlation between the radio power at 1.4 GHz and the kinetic power of the jet $P_\\mathrm{jet}$ (cite: 2010ApJ...720.1066C), the approaching jet associated with the SE hotspot has a total jet kinetic power $P\\mathrm{_{jet}=(7\\pm9)\\times10^{46}\\ erg\\ s^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Potential jet-driven molecular gas outflow mass (M_out)",
+   "value": "~7 x 10^9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Possible Jet-ISM Interaction",
+     "quote": "Even taking a lower limit on the SE jet lifetime, the total energy injection is $E\\sim1\\times10^{59}$ erg, suggesting that the jet kinetic energy can result in a significant molecular gas outflow of $M_\\mathrm{out}\\sim7\\times10^9 \\ \\mathrm{M_\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges flagged for CO(6-5) line emission and atmospheric pseudo-lines in ALMA Band 6",
+  "Cell size and image size (imsize) used in CASA tclean for ALMA and VLA imaging",
+  "Exact spatial coordinates and shape/orientation of the masks used during tclean and the apertures used to extract component flux densities",
+  "Whether primary beam correction was applied to the continuum images before flux measurement",
+  "ALMA Band 6 calibrator names and flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel/frequency ranges flagged for CO(6-5) line emission and atmospheric absorption in ALMA Band 6",
+  "Exact aperture centers and position angles used for flux integration in Table 2",
+  "Image pixel size (cell) and dimensions (imsize) used in CASA tclean"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "Public archival data, explicit CASA and pipeline versions, standard non-interactive tclean settings (hogbom, Briggs robust 0.5, 3-sigma threshold), complete flux table (Table 2), and public SED-fitting software (SYNCHROFIT), with only minor imaging/aperture geometry parameters omitted.",
+ "rediscovery_reason": "All ALMA and VLA raw datasets are public, the calibration and continuum imaging follow a straightforward pipeline + standard tclean recipe without self-calibration, and the main results are quantitative flux densities, spectral indices, and SYNCHROFIT parameters.",
+ "source_card": "cards/2023MNRAS.522.6123Z/sonnet/card.md"
+}

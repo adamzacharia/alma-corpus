@@ -1,0 +1,328 @@
+{
+ "bibcode": "2025ApJS..278...45F",
+ "title": "DUALZ—Deep UNCOVER-ALMA Legacy High-Z Survey",
+ "year": 2025,
+ "doi": "10.3847/1538-4365/adc677",
+ "arxiv_id": "2309.07834",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Establish a joint ALMA and JWST legacy field in Abell 2744 and, through a blind 1.2-mm survey with NIRCam/NIRSpec counterparts, characterize the faint dust continuum sources, HST-/JWST-dark galaxies, a z=6.33 [CII] emitter, z>9 galaxies, and the infrared luminosity function",
+ "alma_project_codes": [
+  "2022.1.00073.S",
+  "2018.1.00035.L",
+  "2013.1.00999.S",
+  "2023.1.00626.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "1.02x0.77 arcsec (Wide-natural); 1.81x1.60 (tapered)",
+  "sensitivity": "32.7 uJy/beam (Wide-natural); 27.7 (Deep-natural)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens mass model of A2744 for magnifications",
+    "evidence": [
+     {
+      "loc": "2.3 Survey Area",
+      "quote": "using the lens model presented in (cite: furtak2023a)"
+     }
+    ]
+   },
+   "citation": "(cite: furtak2023a)"
+  },
+  {
+   "what": {
+    "value": "NIRCam DR2 source catalog and photometry",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "cross-match our ALMA continuum source catalog with the DR2 NIRCam source catalog presented in (cite: weaver2023)"
+     }
+    ]
+   },
+   "citation": "(cite: weaver2023)"
+  },
+  {
+   "what": {
+    "value": "SED-fit physical parameter catalog (Prospector) and photo-z",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "physical parameter catalog constrained with all available *HST* and *JWST* data in A2744 and the ALMA photometry obtained from the DUALZ survey (cite: bwang2024)"
+     }
+    ]
+   },
+   "citation": "(cite: bwang2024)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift compilation in A2744",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "spectroscopic redshift ($z_{\\rm spec}$) compilation in A2744 from the literature (cite: fujimoto2023b)"
+     }
+    ]
+   },
+   "citation": "(cite: fujimoto2023b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA mosaics",
+   "method": "tclean on pipeline-calibrated visibilities, natural and uv-tapered, Wide and Deep (concat with ALMA-HFF/ALCS)",
+   "software": [
+    "CASA",
+    "tclean",
+    "concat"
+   ],
+   "key_parameters": [
+    "pixel 0.1 arcsec, natural weighting, taper 1.5 arcsec, automask"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Blind source extraction with purity estimate",
+   "method": "sextractor positive peaks above 2 sigma; negative-peak analysis on inverted maps; SNR thresholds chosen where positives exceed negatives",
+   "software": [
+    "SExtractor 2.5.0"
+   ],
+   "key_parameters": [
+    "Deep thresholds 4.8 (natural), 4.2 (tapered); regions down to 20% relative sensitivity"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure 1.2-mm flux densities",
+   "method": "Peak pixel, 1.0'' aperture, or imfit Gaussian; imfit adopted if SNR>10 else best SNR; PB correction afterwards",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Identify NIRCam counterparts",
+   "method": "Cross-match with NIRCam DR2 catalog within 1.0'' radius, nearest taken; chance projection probability estimated",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Redshifts and physical properties",
+   "method": "Prospector-beta SED fitting (dynesty, parrot) and EAZY; use zspec if available, else zphot; EAZY adopted if estimates differ by >1.0; magnification from Furtak lens model",
+   "software": [
+    "Prospector",
+    "dynesty",
+    "parrot",
+    "EAZY",
+    "FSPS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "AID20 assumed z=2.0; AID60 assumed z=9.0"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Search for [CII] emitter with NIRCam priors",
+   "method": "Extract beam-aperture ALMA spectra at positions of 150 NIRCam galaxies (F150W<27.5, zphot=6-7); detect line, derive z, L_CII, L_IR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Modified blackbody Td=45 K, beta=1.8 for L_IR; FWHM=200 km/s and 5 sigma for LF"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Search for dust at z>9 and stack",
+   "method": "Inspect Wide-natural cutouts for 16 z>=9 galaxies; stack maps; chance probability from marginal-source density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Infrared luminosity function",
+   "method": "IRLF at z=1-5 and z=8-11 following ALCS method; modified blackbody Td=35 K, beta=1.8; Gehrels Poisson errors; no completeness correction",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=35 K, beta=1.8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Wide-natural continuum rms",
+   "value": "32.7",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "*Wide*-natural | 32.7 | $1.02\\times0.77$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of continuum sources",
+   "value": "69 (65 Wide + 4 Deep)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we identify 65 ALMA sources from the *Wide* maps and an additional 4 ALMA sources from the deep maps"
+    }
+   ]
+  },
+  {
+   "quantity": "Purity",
+   "value": ">0.97",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "high purity $p>0.97$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift, magnification, intrinsic flux",
+   "value": "z=2.30, mu=1.7, S_int=0.24 mJy",
+   "uncertainty": "not stated",
+   "units": "mixed",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "median values of $z=2.30$, $\\mu=1.7$, and $S_{\\rm 1.2mm}^{\\rm int}=0.24$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "NIRCam counterparts",
+   "value": "67/69",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we identify 67 ALMA sources with NIRCam counterparts"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopically confirmed sources",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "This yields 27 sources whose redshifts have been spectroscopically determined."
+    }
+   ]
+  },
+  {
+   "quantity": "HST-dark galaxies",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "We identify eight ALMA sources (AID2, AID3, AID5, AID10, AID27, AID31, AID48, and AID52)"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line frequency",
+   "value": "259.445",
+   "uncertainty": "0.015",
+   "units": "GHz",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "The line feature is detected at $259.445\\pm 0.015$ GHz with the line width of $220\\pm40$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] redshift",
+   "value": "6.3254",
+   "uncertainty": "0.0004",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "resulting in the \\[C ii\\]-based redshift estimate of $z=6.3254\\pm0.0004$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] LF lower limit",
+   "value": "3.2e-5",
+   "uncertainty": "not stated",
+   "units": "Mpc^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "we infer the lower limit of $3.2\\times10^{-5}$ Mpc$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked intrinsic 1.2-mm flux of z>~9 galaxies",
+   "value": "14.0",
+   "uncertainty": "6.2",
+   "units": "uJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "inferring an intrinsic (lens-corrected) 1.2-mm flux density of $14.0\\pm6.2$ $\\mu$Jy"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Flux calibrator and flux-scale uncertainty",
+  "Which channels/spectral windows used for continuum maps",
+  "Cube-based line search method and S/N criteria (only prior-based [CII] search described)",
+  "Details of aperture photometry for the [CII] line optimized extraction",
+  "Final Wide/Deep PB-corrected noise maps and mosaic phase centers",
+  "Full SED fitting and NIRSpec reduction details (deferred to Wang et al. and Price et al. in prep)",
+  "Survey volume computation details for IRLF and completeness",
+  "ALMA continuum imaging uses all channels?; self-calibration not mentioned"
+ ],
+ "missing_for_reproduction": [
+  "Flux calibrator and weights details",
+  "SED catalog and NIRSpec redshifts in unpublished companion papers",
+  "Completeness/volume calculation for IRLF"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and clear imaging/extraction recipe, but SED, NIRSpec and IRLF details depend on companion papers.",
+ "rediscovery_reason": "Data are public, imaging and source extraction are specified, and results include numeric counts, fluxes and a line detection.",
+ "source_card": "cards/2025ApJS..278...45F/sonnet/card.md"
+}

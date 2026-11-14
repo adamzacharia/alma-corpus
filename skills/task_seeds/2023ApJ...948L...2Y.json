@@ -1,0 +1,484 @@
+{
+ "bibcode": "2023ApJ...948L...2Y",
+ "title": "Eccentric Dust Ring in the IRS 48 Transition Disk",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/acccf8",
+ "arxiv_id": "2304.02937",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What is the detailed structure of the dust ring and central cavity in the Oph IRS 48 transition disk, and what are the implications for its inner disk, orbital eccentricity, and proper motion of the crescent-shaped structure?",
+ "alma_project_codes": [
+  "2019.1.01059.S",
+  "2011.0.00635.SSB",
+  "2013.1.00100.S",
+  "2017.1.00834.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm); archival Band 9 (440 um) and Band 7 (870 um)",
+  "arrays": "12m array (42-46 antennas)",
+  "angular_resolution": "0.11'' x 0.072'', PA = -73 deg",
+  "sensitivity": "14 uJy/beam (Stokes I); 12 uJy/beam (Stokes QUV)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar parallax, proper motion (-8.72 mas/yr in RA, -24.4 mas/yr in Dec), and 2016 position of IRS 48",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We use the parallax, the proper motion, and the location of the IRS 48 star from Gaia DR3 (cite: GaiaDR3)."
+     },
+     {
+      "loc": "Observations",
+      "quote": "According the Gaia DR3, in the year 2016, the star is at ($16^{\\rm h}27^{\\rm m}37\\mbox{$^{\\rm s}\\mskip-7.6mu.\\,$}180$,$-24^{\\circ}30'35\\mbox{$''\\mskip-7.6mu.\\,$}416$). It has an proper motion of $-8.72\\rm\\, mas/yr$ in RA and $-24.4\\rm\\, mas/yr$ in Dec."
+     }
+    ]
+   },
+   "citation": "Gaia DR3 (cite: GaiaDR3)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination angle of 50 deg, position angle of 100 deg, and counter-clockwise rotation direction",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "with respect to the counter-clockwise rotation of the disk (cite: Bruderer2014)"
+     },
+     {
+      "loc": "Eccentric ring",
+      "quote": "Assuming an inclination angle of $50^\\circ$ and a position angle of $100^\\circ$ (cite: Bruderer2014), we deproject the image to the disk plane."
+     }
+    ]
+   },
+   "citation": "(cite: Bruderer2014)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass (2 M_sun), effective temperature (9520 K), and bolometric luminosity (17.8 L_sun)",
+    "evidence": [
+     {
+      "loc": "Detection of central emission",
+      "quote": "The star IRS 48 was estimated as a $2\\rm\\, M_\\odot$ star using kinematic modeling (cite: Brown2012). The effective temperature and the bolometric luminosity was estimated as $9520$ K and $17.8\\rm\\, L_\\odot$ ((cite: Brown2012); rescaled by (cite: Francis2020) using new distance from Gaia DR2 data (cite: GaiaDR2))."
+     }
+    ]
+   },
+   "citation": "(cite: Brown2012); (cite: Francis2020); (cite: GaiaDR2)"
+  },
+  {
+   "what": {
+    "value": "34 GHz flux of the central source (36 uJy)",
+    "evidence": [
+     {
+      "loc": "Detection of central emission",
+      "quote": "Taking the flux of the central source at 34 GHz ($36\\rm\\, \\mu$Jy, (cite: vanderMarel2015)) and the flux derived in our 2D-Gaussian fit at 343.5 GHz ($221\\rm\\, \\mu$Jy), we obtain a spectral index of $0.78\\pm0.20$."
+     }
+    ]
+   },
+   "citation": "(cite: vanderMarel2015)"
+  },
+  {
+   "what": {
+    "value": "Archival high-resolution ALMA observations from 2012, 2014, 2015, and 2018",
+    "evidence": [
+     {
+      "loc": "Proper motion",
+      "quote": "Since (cite: vanderMarel2013), the IRS 48 has been observed with ALMA at high resolution multiple times ((cite: vanderMarel2015; Francis2020; vanderMarel2021_IRS48); 2021 observations in this study)."
+     }
+    ]
+   },
+   "citation": "(cite: vanderMarel2013); (cite: vanderMarel2015; Francis2020; vanderMarel2021_IRS48)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity of 4.55 km/s",
+    "evidence": [
+     {
+      "loc": "Velocity maps of line emissions",
+      "quote": "We adopt a systemic velocity of 4.55 km/s as in (cite: vanderMarel2021_IRS48) and the resulting velocity map is similar to their Fig. 1."
+     }
+    ]
+   },
+   "citation": "(cite: vanderMarel2021_IRS48)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image the Band 7 dust continuum",
+   "method": "Combine the four continuum basebands while excluding channels with potential line emission, perform two iterations of phase-only self-calibration on Stokes I, and clean using CASA tclean with the Hogbom algorithm and Briggs weighting",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Self-calibration solution intervals: infinite (1st iteration) and 25 seconds (2nd iteration)",
+    "Briggs robust = 0.5, Hogbom algorithm"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine the stellar center at the epoch of observation",
+   "method": "Propagate the Gaia DR3 2016 stellar coordinates to the 2021.5 observation epoch using Gaia DR3 proper motions",
+   "software": [],
+   "key_parameters": [
+    "Time difference = 5.5 years"
+   ],
+   "assumptions": [
+    "Distance = 136 pc from Gaia DR3 parallax"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Deproject continuum image and fit elliptical ring",
+   "method": "Deproject the continuum image to the disk plane and fit an ellipse parameterized by semi-major axis, eccentricity, and major-axis position angle (First with focus fixed at the star, then with free focus location) by minimizing a custom asymmetric loss function",
+   "software": [],
+   "key_parameters": [
+    "delta_p = 0.02'', asymmetric loss weighting factor 1.5 for dr > 0"
+   ],
+   "assumptions": [
+    "Inclination angle = 50 deg, position angle = 100 deg",
+    "One focus fixed on the central star (in the baseline fit)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit central source and estimate inner disk dust mass",
+   "method": "Fit a 2D Gaussian to the central continuum emission, evaluate stellar photosphere and ionized wind contributions, and calculate optically thin thermal dust mass from the 3-sigma contour mean flux density and area",
+   "software": [],
+   "key_parameters": [
+    "Area within 3-sigma contour = 291 au^2; mean flux density = 8.65e-5 Jy/beam"
+   ],
+   "assumptions": [
+    "Dust temperature = 100 K",
+    "Dust opacity = 3.5 cm^2/g at 870 um",
+    "Optically thin thermal dust emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure multi-epoch proper motion of the crescent peak",
+   "method": "Use CASA imfit to fit a 2D Gaussian to the crescent across 5 ALMA epochs spanning 9 years (2012-2021) and perform a linear fit to the peak positions after subtracting the Gaia stellar proper motion",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "5 epochs (2012.50, 2014.45, 2015.58, 2018.63, 2021.50); epoch uncertainty = 0.1 yr; astrometric error doubled for resolution < 0.15''"
+   ],
+   "assumptions": [
+    "Keplerian velocity v_K = 5.438 km/s at r = 60 au; distance = 136 pc; negligible azimuthal offset between Band 9 and Band 7 peaks; Gaia astrometric error ignored"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model line-of-sight velocity map of the eccentric orbit",
+   "method": "Compute the line-of-sight velocity map and iso-velocity contours for the best-fit e = 0.27 elliptical orbit and compare with a circular Keplerian rotation model",
+   "software": [],
+   "key_parameters": [
+    "Eccentricity e = 0.27, systemic velocity = 4.55 km/s"
+   ],
+   "assumptions": [
+    "Gas is co-moving with the dust"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Crescent continuum peak flux density",
+   "value": "18.00",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The peak of the emission has $1285$ S/N or $18.00\\rm\\, mJy/beam$."
+    }
+   ]
+  },
+  {
+   "quantity": "Crescent continuum peak signal-to-noise ratio",
+   "value": "1285",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The peak of the emission has $1285$ S/N or $18.00\\rm\\, mJy/beam$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of dust ring traced",
+   "value": "95",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For the first time, we are able to significantly trace and detect emission along $95\\%$ of the ring crossing the crescent-shaped structure."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring eccentricity",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The ring is highly eccentric with an eccentricity of $0.27$."
+    },
+    {
+     "loc": "Eccentric ring",
+     "quote": "The best fit has a semi-major axis $a=0.57''$, or $78$ au, and an eccentricity $e=0.27$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring semi-major axis (angular)",
+   "value": "0.57",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Eccentric ring",
+     "quote": "The best fit has a semi-major axis $a=0.57''$, or $78$ au, and an eccentricity $e=0.27$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring semi-major axis (physical)",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Eccentric ring",
+     "quote": "The best fit has a semi-major axis $a=0.57''$, or $78$ au, and an eccentricity $e=0.27$."
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital velocity to Keplerian velocity ratio at perihelion",
+   "value": "1.13",
+   "uncertainty": "not stated",
+   "units": "v_K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Eccentric ring",
+     "quote": "At the perihelion, the velocity is about $1.13v_K$, which is slightly super Keplerian."
+    }
+   ]
+  },
+  {
+   "quantity": "Aphelion to perihelion distance ratio",
+   "value": "1.78",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Eccentric ring",
+     "quote": "Our fitted ellipse is very eccentric with an aphelion to perihelion distance ratio of $1.78$."
+    }
+   ]
+  },
+  {
+   "quantity": "Flux density contrast between peak and opposite side of ring (180 deg PA difference)",
+   "value": "271",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Eccentric ring",
+     "quote": "As a reference for interested readers, the flux density contrast of the peak with the point along the ring with $180^\\circ$ position angle difference is $271$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum to minimum intensity ratio along the ring",
+   "value": ">=400",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Eccentric ring",
+     "quote": "Since the emission along part of the ellipse is not robustly detected, the ratio of the maximum intensity is at least 400 times the minimum."
+    }
+   ]
+  },
+  {
+   "quantity": "Central source peak flux density",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Detection of central emission",
+     "quote": "This source has a peak flux density of $0.21\\rm\\, mJy/beam$, at a signal-to-noise level $15\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Central source 2D-Gaussian integrated flux at 343.5 GHz",
+   "value": "221",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Detection of central emission",
+     "quote": "Taking the flux of the central source at 34 GHz ($36\\rm\\, \\mu$Jy, (cite: vanderMarel2015)) and the flux derived in our 2D-Gaussian fit at 343.5 GHz ($221\\rm\\, \\mu$Jy), we obtain a spectral index of $0.78\\pm0.20$."
+    }
+   ]
+  },
+  {
+   "quantity": "Central source 2D-Gaussian fitted size",
+   "value": "0.095 x 0.052",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Detection of central emission",
+     "quote": "The major and minor axis of the 2D-Gaussian fit is $0.095''\\times 0.052''$, which is smaller than our beam size."
+    }
+   ]
+  },
+  {
+   "quantity": "Central source spectral index (34 to 343.5 GHz)",
+   "value": "0.78",
+   "uncertainty": "0.20",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Detection of central emission",
+     "quote": "Taking the flux of the central source at 34 GHz ($36\\rm\\, \\mu$Jy, (cite: vanderMarel2015)) and the flux derived in our 2D-Gaussian fit at 343.5 GHz ($221\\rm\\, \\mu$Jy), we obtain a spectral index of $0.78\\pm0.20$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk dust mass (in solar masses)",
+   "value": "1.5e-8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "If the emission is an inner circumstellar disk inside the cavity, it has a radius of at most a couple of astronomical units with a dust mass of $1.5\\times 10^{-8}\\rm\\, M_\\odot$, or $0.005\\rm\\, M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk dust mass (in Earth masses)",
+   "value": "0.005",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "If the emission is an inner circumstellar disk inside the cavity, it has a radius of at most a couple of astronomical units with a dust mass of $1.5\\times 10^{-8}\\rm\\, M_\\odot$, or $0.005\\rm\\, M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Crescent peak proper motion in RA (star-subtracted)",
+   "value": "-3.0",
+   "uncertainty": "1.9",
+   "units": "mas/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motion",
+     "quote": "With these caveats in mind, we fit the proper motion of the peak after subtracting the stellar proper motion as $(-3.0\\pm1.9, 3.0\\pm 2.5)\\rm\\, mas/yr$."
+    }
+   ]
+  },
+  {
+   "quantity": "Crescent peak proper motion in Dec (star-subtracted)",
+   "value": "3.0",
+   "uncertainty": "2.5",
+   "units": "mas/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motion",
+     "quote": "With these caveats in mind, we fit the proper motion of the peak after subtracting the stellar proper motion as $(-3.0\\pm1.9, 3.0\\pm 2.5)\\rm\\, mas/yr$."
+    }
+   ]
+  },
+  {
+   "quantity": "Crescent peak velocity in RA",
+   "value": "-1.9",
+   "uncertainty": "1.2",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motion",
+     "quote": "This is $(-1.9\\pm 1.2, 1.9\\pm 1.6)\\rm\\, km/s$ at a distance of $136\\rm\\, pc$"
+    }
+   ]
+  },
+  {
+   "quantity": "Crescent peak velocity in Dec",
+   "value": "1.9",
+   "uncertainty": "1.6",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motion",
+     "quote": "This is $(-1.9\\pm 1.2, 1.9\\pm 1.6)\\rm\\, km/s$ at a distance of $136\\rm\\, pc$"
+    }
+   ]
+  },
+  {
+   "quantity": "Crescent peak proper motion magnitude",
+   "value": "0.49",
+   "uncertainty": "0.26",
+   "units": "v_K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motion",
+     "quote": "The magnitude of the proper motion is $0.49\\pm 0.26\\, v_K$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges flagged to avoid C17O (3-2) and CH3OH line emission",
+  "Image dimensions (imsize), cleaning threshold, and masking strategy in CASA tclean",
+  "Optimization algorithm or sampler used to minimize the custom loss function L for the ellipse fitting",
+  "Spatial region/box over which the pixel intensity sum is evaluated during the ellipse fitting (e.g., whether the central source or noise pixels are masked)",
+  "Whether archival ALMA images for the proper motion analysis were taken directly as archive products or re-imaged, and the bounding box used in CASA imfit"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel/frequency flagging ranges used to exclude C17O (3-2) and CH3OH lines before continuum imaging",
+  "CASA tclean stopping threshold, niter, and masking parameters",
+  "Spatial domain/mask over which the pixel sum in the ellipse loss function L is computed (specifically whether the central point source and background noise are masked out)",
+  "Details of how the archival datasets (2011.0.00635.SSB, 2013.1.00100.S, 2017.1.00834.S) were imaged or which specific FITS products were passed to CASA imfit"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Calibration, self-calibration intervals, imaging algorithm/weighting, deprojection angles, dust mass assumptions, and the analytic form of the ellipse-fitting loss function are all explicitly stated. Minor gaps remain in the exact line-flagging channel ranges, tclean stopping criteria, and pixel-masking boundaries for the ellipse loss function and imfit.",
+ "rediscovery_reason": "All four ALMA project codes are public in the archive, the core data processing uses standard CASA tasks (self-calibration, tclean, imfit) with well-specified parameters, and the main scientific findings are concrete numerical values (eccentricity, semi-major axis, central source flux/mass, and multi-epoch proper motion).",
+ "source_card": "cards/2023ApJ...948L...2Y/sonnet/card.md"
+}

@@ -1,0 +1,413 @@
+{
+ "bibcode": "2026A&A...705A.209L",
+ "title": "A search for cold molecular outflows in cosmic-noon galaxies",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202554297",
+ "arxiv_id": "2511.16733",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Do typical main-sequence star-forming galaxies at cosmic noon (z_med~1.3) show cold molecular gas extended to CGM scales or broad CO(2-1) wings indicating molecular outflows, via stacking of ALMA Band 3 CO(2-1) data compared with Ks-band stellar emission",
+ "alma_project_codes": [
+  "2016.1.00171.S"
+ ],
+ "data": {
+  "bands": "Band 3, CO(2-1)",
+  "arrays": "not stated",
+  "angular_resolution": "homogeneous ~1.5 arcsec",
+  "sensitivity": "average 0.60 mJy/beam per 30 km/s channel (0.73 mJy/beam for the 5 multi-execution galaxies)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(2-1) observations description and per-galaxy stellar mass, infrared luminosity and SFR measurements for the sample",
+    "evidence": [
+     {
+      "loc": "Observations and sample description",
+      "quote": "for a complete report of the observations"
+     },
+     {
+      "loc": "Observations and sample description",
+      "quote": "stellar mass and infrared luminosity measurements"
+     }
+    ]
+   },
+   "citation": "Valentino et al. 2020 (cite: Valentino2020)"
+  },
+  {
+   "what": {
+    "value": "Ks-band PSF information used to build the 2D Moffat PSF model (UltraVISTA / ESO programme 179.A-2005)",
+    "evidence": [
+     {
+      "loc": "Comparison to the stellar component",
+      "quote": "to compute a 2D PSF Moffat model with FWHM"
+     }
+    ]
+   },
+   "citation": "McCracken et al. 2012 (cite: McCracken2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select the sample",
+   "method": "Take the S/N>=3 CO(2-1) detections from the 75-SFG ALMA programme, remove a merger and galaxies without stellar mass, leaving 26 galaxies",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make continuum-subtracted CO(2-1) cubes",
+   "method": "uv-plane continuum subtraction then tclean imaging with natural weighting and 30 km/s channels, homogeneously for all galaxies",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "continuum polynomial order 0; natural weighting; 30 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract each galaxy spectrum and fit a Gaussian",
+   "method": "Extract spectrum in a 2 arcsec radius aperture at the cube centre, perturb it by its 1 sigma noise, fit a Gaussian, repeat 500 times and take the median fit",
+   "software": [],
+   "key_parameters": [
+    "2 arcsec radius aperture; 500 noise perturbations"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Build moment-0 maps and stack them",
+   "method": "Make intensity maps over +/-FWHM of the best Gaussian with immoments, realign each map to its emission peak, and take the uniform (unweighted) mean; the stacked synthesised beam is computed the same way",
+   "software": [
+    "CASA",
+    "immoments"
+   ],
+   "key_parameters": [
+    "uniform weights w_n=1; noise-weighted stack gave very similar results",
+    "no position-angle alignment performed"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure surface-brightness radial profiles of the stack",
+   "method": "Mean flux normalised by the peak in annuli of 4 pixels width (~0.4 arcsec) out to 4 arcsec; error is the standard deviation within each annulus; same for the stacked beam",
+   "software": [],
+   "key_parameters": [
+    "annulus width 4 pixels; profile out to 4 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Deconvolve the beam and get intrinsic CO extent",
+   "method": "Fit Sersic profiles to the CO and beam radial profiles (Re, Ie, n free); since n~0.5 for both, subtract the beam half-light radius in quadrature from the CO one",
+   "software": [],
+   "key_parameters": [
+    "Re, Ie and Sersic index n free parameters"
+   ],
+   "assumptions": [
+    "Gaussian (n~0.5) profiles so analytical 1D Gaussian deconvolution applies",
+    "Cosmology H0=70, Om=0.3, OL=0.7 for converting arcsec to kpc"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Repeat with cube stacking",
+   "method": "Align each cube in velocity to the Gaussian-fit peak and in position to the intensity-map peak, stack cubes (and beam cubes), then image moment 0 and compute radial profiles as before",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Stack subsamples by galaxy properties",
+   "method": "Bin the sample by stellar mass, L_IR, sSFR (split at sample medians) and MS vs starburst (3.5 times above MS), stack radial profiles and spectra per bin",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Stack Ks-band images and compare with CO",
+   "method": "Richardson-Lucy PSF deconvolution of each Ks image with a Moffat PSF, segmentation maps for source isolation and background subtraction, uniform stack, then compare radial profile with the intrinsic CO profile",
+   "software": [
+    "scikit-image",
+    "photutils"
+   ],
+   "key_parameters": [
+    "Moffat PSF FWHM = 0.78 arcsec, beta = 3.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "Stack the CO(2-1) spectra",
+   "method": "Extract spectrum in a 2 arcsec aperture, fit a Gaussian, realign spectra to the fitted line centre, rebin to 60 km/s and uniformly stack",
+   "software": [],
+   "key_parameters": [
+    "2 arcsec aperture; 60 km/s rebinned channels (30 km/s version in appendix)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 11,
+   "goal": "Test for broad outflow wings",
+   "method": "Fit single- and two-Gaussian models to the stacked spectrum and compare reduced chi-squared; a significantly better two-Gaussian fit would indicate outflowing material",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Noise level of stacked CO(2-1) intensity map",
+   "value": "0.029",
+   "uncertainty": "not stated",
+   "units": "Jy/beam km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Intensity map stacking",
+     "quote": "The stacked intensity map has a noise level of 0.029 Jy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak S/N of stacked intensity map",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Intensity map stacking",
+     "quote": "a CO(2–1) peak detection with $S/N=27$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed CO(2-1) emission extent in stack (r_max)",
+   "value": "~1.9 arcsec (~16 kpc at z=1.3)",
+   "uncertainty": "not stated",
+   "units": "arcsec / kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Surface brightness radial profiles",
+     "quote": "$r_{max}\\sim1.9\\ensuremath{''}$ ($\\sim16$ kpc at $z=1.3$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Sersic index of CO radial profile (n_CO)",
+   "value": "0.50",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Surface brightness radial profiles",
+     "quote": "$n_{\\text{CO}}=0.50\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed half-light radius of stacked CO (R_e,CO)",
+   "value": "1.02",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Surface brightness radial profiles",
+     "quote": "$R_{e,\\text{CO}}=1.02\\ensuremath{''} \\pm 0.04\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Half-light radius of stacked synthesised beam (R_e,beam)",
+   "value": "0.84",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Surface brightness radial profiles",
+     "quote": "$R_{e,\\text{beam}}=0.84\\ensuremath{''} \\pm 0.04\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-corrected CO half-light radius (R_e,CO_i)",
+   "value": "0.6",
+   "uncertainty": "0.06",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Surface brightness radial profiles",
+     "quote": "$R_{e,\\text{CO}_i}=0.6\\ensuremath{''} \\pm 0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic CO(2-1) half-light radius",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Surface brightness radial profiles",
+     "quote": "with a half-light radius of $R_e=5$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic CO(2-1) extent (R_CO)",
+   "value": "~12",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "spatially extends to scales of $R_{\\text{CO}}\\sim12$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Ks-band (stellar) extent (R_Ks)",
+   "value": "~13",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "($R_{\\text{Ks}}\\sim13$ kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked spectrum peak flux",
+   "value": "1.36",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Spectrum stacking",
+     "quote": "a peak flux of 1.36 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked spectrum noise level",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Spectrum stacking",
+     "quote": "and a noise level of 0.11 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked CO(2-1) line FWHM (spectrum stack)",
+   "value": "393",
+   "uncertainty": "18",
+   "units": "km/s",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Spectrum stacking",
+     "quote": "a line width FWHM$=393\\pm18$ km$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi-squared, single vs two-Gaussian fit of stacked spectrum",
+   "value": "0.832 (single) vs 0.830 (two-Gaussian)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Spectrum stacking",
+     "quote": "$\\tilde{\\chi}^2=0.832$ and in the two-Gaussian fit, $\\tilde{\\chi}^2=0.830$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked CO(2-1) line FWHM (cube stack)",
+   "value": "399",
+   "uncertainty": "19",
+   "units": "km/s",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "CO cube stacking",
+     "quote": "line width FWHM $=399 \\pm 19$ km$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) FWHM in MS bin",
+   "value": "478",
+   "uncertainty": "27",
+   "units": "km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Subsample spectrum stacks",
+     "quote": "FWHM $= 478 \\pm 27 \\text{km\\,s}^{-1}$ and FWHM$= 249 \\pm 18 \\text{km\\,s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) FWHM in SB bin",
+   "value": "249",
+   "uncertainty": "18",
+   "units": "km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Subsample spectrum stacks",
+     "quote": "FWHM $= 478 \\pm 27 \\text{km\\,s}^{-1}$ and FWHM$= 249 \\pm 18 \\text{km\\,s}^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration route (pipeline vs manual), CASA pipeline version and flux calibrator/flux-scale handling for the 2016.1.00171.S data",
+  "tclean parameters: image size, cell size, deconvolver, niter/threshold, masking, restoring beam handling and whether maps are primary-beam corrected",
+  "Spectral window, rest frequency and line-free channel ranges used for uvcontsub and the cube frequency range",
+  "Which phase centre or position defines the 'centre of the cube' for the 2 arcsec aperture and how the peak is re-centred",
+  "Gaussian fit details (initial guesses, bounds, fit routine) and how the 1 sigma noise used for perturbations is measured",
+  "Two-Gaussian fit constraints (width and centre bounds, initial guesses) and the degrees of freedom used for reduced chi-squared",
+  "Sersic fit routine and weighting; how the normalisation by the peak and radial-profile centring are done",
+  "Richardson-Lucy iteration count and Ks cutout size, and the sigma-clipping/segmentation thresholds used in photutils",
+  "Number of galaxies per bin in the subsample stacks, and the exact IDs of the 5 multi-execution galaxies"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters (image size, cell, masks, threshold, primary-beam handling)",
+  "Calibration route and pipeline version",
+  "Line-free channel selection and spectral setup used for uvcontsub",
+  "Fit initial guesses/bounds for single and two-Gaussian models and Sersic fits",
+  "Ks cutout size and Richardson-Lucy settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA project and numeric results with a clear stacking recipe, but imaging, calibration and fit settings are not given and no code is released",
+ "rediscovery_reason": "Data are public, the stacking and radial-profile recipe is mostly stated, and the main results (extent in kpc, Sersic parameters, line FWHM, chi-squared) are numeric",
+ "source_card": "cards/2026A%26A...705A.209L/sonnet/card.md"
+}

@@ -1,0 +1,2793 @@
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+6. **Contamination and team lessons.** If a WRITER CONTEXT section is present: flag any mention of, or hint at,
+   the held-out evaluation targets it names (objects, papers, or their numbers). Team lessons may appear only as
+   labelled team experience in general form; flag any that is presented as literature practice or carries
+   numbers not in the context.
+
+Some skills are *workflow* skills (paper reproduction, claim verification, archival reuse, software map). Their
+packs aggregate card fields such as inherited conventions, missing-for-reproduction items, validation checks and
+software used. Lines marked "(card)" in the pack are the card author's inference; the skill should say so when it
+leans on one. Review them with the same rules.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (claim-verification) ===
+---
+name: alma-claim-verification
+description: "Decide whether a finding from ALMA data is real, how far it can be pushed, and how to word it: the validation checks ALMA papers run (inverted-image and injection tests, flux recovery, assumption sweeps, information criteria, convergence, null and resampling tests), how they rule out alternative explanations, the support levels they reach (supported, partially supported, refuted) and how they decide they have done enough. Use when a worker, verifier or editor agent must accept, downgrade, reject or extend a draft finding, write it in a claim template, or decide to stop and record a question as open. Built from 3455 ALMA papers (2012-2026)."
+---
+
+# Claim verification and stopping rules
+
+A finding is a claim about the sky that survived specific tests. ALMA papers rarely run a generic checklist:
+they pick the check that answers the failure most likely for that claim type (noise peak, filtered flux,
+degenerate model, rival mechanism, selection effect). Of 11,155 claims the cards rated, 7101 were supported,
+3526 partially supported and 528 refuted (pack aggregate), so roughly one claim in three in published ALMA work
+is stated as partial. The two mistakes that matter most: stating a conclusion more confidently than the checks
+allow, and stopping on the bright obvious component before the faint signal that carried the result was tested.
+
+## Agent checklist
+
+1. Write the draft finding in the claim template below before judging it. If the experiment, the uncertainty or
+   the code location is missing, the claim is not ready for a support level.
+2. Confirm it was executed: the code ran, the output files exist and their numbers are the ones in the claim
+   (in CosmicCoder agent runs, judges approved code that was written but never run).
+3. Classify it (detection, measurement, model preference, interpretation, population trend, non-detection) and
+   run the matching first check from the Steps table. Default detection rule when nothing else is set: the
+   threshold where an inverted image or cube shows no peaks and fewer than 1 false detection is expected over
+   the searched volume (2021ApJ...907..122M, 2021ApJ...908..192S, 2026A&A...706A.236M).
+4. List at least two alternative explanations, including one instrumental or imaging one, and the test that
+   separates each. If no test with the data in hand separates them, the claim is at most partially supported.
+5. For a model preference, require a fixed threshold decided before fitting (Delta BIC > 10 in
+   2025ApJ...985..243B and 2024ApJ...965..108U; ln evidence ratio >= 5 in 2024ApJ...971...17F) plus clean
+   residuals; for MCMC, N/tau > 50 (2021AJ....162..235Y, 2025ApJ...988..106H).
+6. Sweep the one or two assumptions that drive the number (temperature, opacity, alpha_CO, distance, collision
+   rates) and report how far the result moves (2020NatAs...4..861C, 2021A&A...645A..21G).
+7. Assign the support level with the wording rules below; never upgrade a claim because the story is nicer.
+8. Stop when the claim's own decision criterion is met; record the question as open when the next separating
+   test needs data you do not have (2025A&A...699A...5T, 2025ApJ...992L..18S). Do not loop on speculation.
+9. Write down: the claim tuple, the check that backs it, every alternative and its status, and the open items.
+10. Weak line claims (general practice): before any interpretation, check the identification (rest frequency
+    and velocity against the source's systemic velocity, blends with nearby transitions, spw edges, atmospheric
+    lines, continuum subtraction), count the channels, positions and lines searched (look-elsewhere), and get the
+    false-alarm rate from the same search run on random positions or the inverted cube. Use enough null trials to
+    resolve the tail you claim (a one-sided 3.5 sigma tail is p ~ 2e-4, so thousands of trials, not tens); with
+    fewer, quote the empirical p as a bound. Integrated-intensity error for independent channels:
+    sigma_I = rms_channel x dv x sqrt(N_channels). Channels are correlated when Hanning-smoothed or narrower than
+    the spectral resolution; then measure sigma_I directly by integrating line-free windows of the same width, or
+    scale by the correlation factor. Masking or seed thresholds (e.g. 4 sigma in 3 channels) are recipes for
+    building moment maps, not detection criteria. If those checks are done and the data cannot go deeper,
+    stop: report "tentative (local X sigma)" or a 3 sigma upper limit, no physical interpretation, and name the
+    observation that would settle it (deeper integration, a second transition, another instrument).
+
+## When to use
+
+- A worker posts a finding and a verifier or editor must accept, downgrade or reject it.
+- A reproduction disagrees with a paper and you must decide whether your number or theirs is the robust one.
+- A faint feature (tentative line, compact component, residual arc) is about to be reported or dropped.
+- A model was chosen among several and the claim depends on that choice (components, profiles, geometries).
+- A correlation or population difference is being turned into a physical statement.
+- An open-ended run needs a rule for when the evidence is enough.
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| Designing the injection or null test itself (mock sources, completeness curves) | the injection-null-tests skill, then return here to judge the result |
+| Building the answer key and tolerances for reproducing a paper | the paper-reproduction skill |
+| Choosing which package does the fit | the analysis-software-map skill; do not reimplement a standard fitter to verify a claim |
+| Checking whether archive data from several projects can be combined | the archival-data-reuse skill |
+| The claim is about method behaviour (imaging, self-calibration) rather than the source | the imaging-choices or self-calibration skill |
+
+## Claim template
+
+Fill every field. A missing field is itself a finding for the editor.
+
+```
+CLAIM <id>
+Hypothesis:   <one sentence, testable with this data>
+Experiment:   <data (project/MOUS, band, array), product used, method and package, key settings>
+Result:       <number with uncertainty and units; S/N; what the uncertainty includes (statistical,
+               flux scale, model systematics)>
+Finding:      <what the result means physically, in one sentence>
+Support:      supported | partially supported | tentative | refuted | open
+Backed by:    <the check(s) that make it trustworthy, with their outcome, e.g. "no peaks beyond -5.2 sigma
+               in inverted cube; injected lines recovered at 95% above X">
+Alternatives: <each rival explanation -> ruled out by <test> | not excluded because <reason>>
+Open items:   <what would change the support level and what data it needs>
+Code:         <path:function or notebook cell; output file paths>
+```
+
+This mirrors how the cards decompose papers (hypothesis, experiment, result, finding, with a support level),
+e.g. 2018MNRAS.481.1976Z and 2024AJ....167..232T in the pack excerpts.
+
+## Steps
+
+1. **Pin the claim and its type.** Goal: know which failure to test first. Write the template. Split compound
+   claims: 2017ApJ...849...25L separates "five massive starless core candidates" (partially supported) from
+   "fragmentation is thermal" (supported); 2020ApJ...905...25G separates vigorous accretion (supported) from
+   absent disks (partially). Closing check: each sub-claim has one result and one uncertainty.
+
+2. **Gate on execution.** Goal: no claim from unrun code. Rerun or open the outputs; confirm the plotted or
+   tabled number matches the claim. Cards repeatedly flag papers whose prose and tables disagree
+   (2021A&A...645A..21G kinetic powers; 2024AJ....167..232T mass priors and rms), so verify against the
+   output file, not a summary. Closing check: the number in the claim is reproduced from a file.
+
+3. **Run the first check for the claim type.**
+
+   | Claim type | First check | Corpus example |
+   |---|---|---|
+   | Detection (blind) | Inverted image or cube, threshold at no negatives or <1 expected false source | 2021ApJ...907..122M, 2023ApJ...953...75H, 2019ApJS..244...40L |
+   | Detection (known position or line) | 3 sigma at the fixed position, plus consecutive channels or a second line | 2024PSJ.....5..221C, 2024AJ....168..151J |
+   | Molecular detection | Several unblended transitions match one LTE model; no predicted line missing | 2025A&A...702A..35D, 2024A&A...687A...8M, 2026ApJ..1004L...6D |
+   | Flux, size, mass | Single-dish or ACA recovery, curve of growth, second estimator | 2018ApJ...857...19F, 2020ApJ...903...34A, 2018MNRAS.481.1976Z |
+   | Model preference | Information criterion with a fixed threshold, residual maps, convergence | 2025ApJ...985..243B, 2025ApJ...995..108J, 2024ApJ...974..145S |
+   | Physical interpretation | Alternatives table with a separating test for each | 2017ApJ...848L..11K, 2019AJ....157..251T |
+   | Population trend or correlation | Shared-variable mock test, partial correlation, null and resampling tests | 2021ApJ...908..192S, 2025ApJ...995..108J, 2020ApJ...903..124B |
+   | Non-detection | Several search methods, then an injection showing the signal would be seen | 2020MNRAS.498.4109J, 2025A&A...702A..18D |
+
+   Closing check: the first check passed, or the claim is downgraded now. Full list with what each check
+   protects against: `references/checks-catalogue.md`.
+
+4. **Test robustness of the number.** Goal: the result does not hinge on one choice. Sweep the driving
+   assumption (2020NatAs...4..861C: collision rates x0.1-10 changed HCN production by 2%; 2021A&A...645A..21G:
+   a ULIRG alpha_CO left the main results unchanged); compare against an independent estimator or another
+   sampler (2024A&A...688A.130H repeated inference with another sampler and without its contamination
+   correction); match resolution before comparing with other samples (2018ApJ...857...19F smoothed to 40 pc and
+   showed the difference with M51 was not a resolution artefact); for low S/N sizes, run injection-recovery
+   (2024A&A...690A.197M, 1500 mock sources). Closing check: the sweep range and the shift are written into the
+   Result field.
+
+5. **Rule out the alternatives.** Goal: the interpretation is the best one, not the first one. Of 300 listed
+   alternative lines, 189 use reject, rule-out or disfavour language and at least 15 explicitly keep the
+   alternative open (my keyword count). Arguments papers used:
+
+   | Argument | Example |
+   |---|---|
+   | Kinematics | outflow rejected because most emission is below escape velocity (2015ApJ...812...27A); gradient orientation differs from the jet (2013A&A...552L..10S) |
+   | Energetics, temperature, timescale | a bubble would need ~1e7 supernovae (2012ApJ...760L..25E); a wind would imply 1e5 K gas (2013A&A...555A..73K); collect-and-collapse predicts 0.52 pc spacing vs ~0.1 pc observed (2017ApJ...849...25L) |
+   | Predicted lines or counterparts | alternative redshifts rejected by missing companion lines (2013ApJ...767...88W, 2014ApJ...781L..39T); lensing rejected for lack of a counterpart (2016ApJ...827...34O) |
+   | Persistence | a flare origin unlikely because the peak persists over four observations (2013ApJ...762L..21M) |
+   | Instrument and imaging | beam squint, gain drift and decoherence tested (2016A&A...593A..44L); band-incoherent clumps rejected as phase artefacts (2015PASJ...67...72T); sidelobes removed (2014ApJ...795....5O) |
+   | Spatial filtering | resolved-out emission tested as the cause of a deficit (2015ApJ...803...70S, 2015ApJ...810L...7V) |
+   | Model fit | single-component source rejected with >6 sigma residuals (2013ApJ...779...67B); eccentricity explored and ruled out (2015ApJ...806..154C) |
+
+   When no test separates them, say so: inflow vs warp "practically degenerate" (2014ApJ...782...62R),
+   rotation vs free fall "cannot separate with current data" (2015ApJ...804...37L), a retrograde disk solution
+   retained (2024AJ....167..232T). Closing check: every alternative in the template has a status.
+
+6. **For population claims, attack the statistics.** Test whether both axes share a variable
+   (2021ApJ...908..192S mock-data test); control for third variables with partial correlations and aperture
+   expectations (2025ApJ...995..108J); normalise and see if the trend survives (2018ApJ...853..195W: the radius
+   trend vanished per unit mass); run null tests (2020ApJ...903..124B: two 10,000-realisation tests, ~1% false
+   positives) and resampling (2026A&A...705A.209L: drop 30% of the sample 500 times; 2022A&A...660A..14R:
+   jackknife dropping 20%); bin only on physically motivated parameters to avoid p-hacking
+   (2026MNRAS.546f2284B); degrade S/N to see whether the conclusion depends on depth (2024MNRAS.528.6768H).
+   Closing check: the trend survives the null, the resampling and the shared-variable test.
+
+7. **Assign the support level and word it** (rules below). Closing check: an editor reading only the Finding
+   and Support fields would not overstate the result.
+
+8. **Decide: stop, one more test, or open.** Use the stopping rules below. Closing check: the decision and its
+   reason are in Open items.
+
+## Support levels and how to word them
+
+| Level | Use when | Wording seen in the pack |
+|---|---|---|
+| Supported | Primary check passed, the main alternative was tested and rejected, number robust to the assumption sweep | "not an artifact of resolution" (2018ApJ...857...19F); "first robust interstellar detection" after ten clean lines and 70 positions (2026ApJ..1004L...6D) |
+| Partially supported | Result is real but the interpretation keeps a live alternative, or rests on one assumption, small numbers or marginal resolution | "evidence favors alignment, but does not uniquely establish it" (2024AJ....167..232T); "a disc origin is plausible but outflow/merger origins cannot be excluded at this resolution" (2015MNRAS.452...88K); "consistent with inflow but degenerate with a warp" (2014ApJ...782...62R) |
+| Tentative | Detection or trend near threshold, one line, one epoch, or a p-value short of 3 sigma | "tentative outflow, to be confirmed with higher resolution" (2013A&A...558A.124C); "lower on average but not significant at 3 sigma" (2014ApJ...787...42C); "hint of phased flare, not significant" with p ~7% (2015ApJ...815...64W) |
+| Refuted | The test was run and the hypothesis failed | flattening of counts disfavoured by the fitted slope (2024ApJS..275...36F); gas exhaustion "not the reason" (2024MNRAS.528.6768H); 12CO not optically thin (2020ApJ...905..122H) |
+| Open | No available test separates the options | gap vs ring left open when the AIC difference is small (2024A&A...689L...5M); evidence "insufficient to confirm" shock-triggered star formation (2025A&A...693A.199C) |
+
+In the 250 listed partially supported or refuted claims, the hedges are "possibly/may/could" (60),
+"consistent with" (25), "likely" (23), "tentative" (14), "cannot be excluded/distinguished" (13),
+"suggest" (10) and "plausible" (8) (my count). Rules: say which alternative survives and why ("cannot
+exclude X because Y"); give the significance and number of independent elements; keep tentative sources out
+of downstream figures and statistics as 2021A&A...654A..37D did; "consistent with" means the test did not
+reject, not that it confirmed.
+
+## Parameter defaults and ranges
+
+| Decision | Common choice | Range seen | Examples |
+|---|---|---|---|
+| Blind continuum or line detection | S/N where inverted maps give no peaks and <1 false source | 4.0-6.2 peak S/N; purity 0.7-0.99 | 2021ApJ...908..192S (4), 2025A&A...699A.324H (4.2), 2023ApJ...953...75H (5.2), 2019ApJS..244...40L (5.40), 2021ApJ...907..122M (6.2), 2024MNRAS.528.5019H (purity 0.7 at S/N 3.6), 2024ApJS..275...36F (purity > 0.99) |
+| Prior-position detection | 3 sigma | 3-4.35 | 2024PSJ.....5..221C, 2023ApJ...956..135W, 2019ApJS..244...40L |
+| Non-detection | 3 sigma upper limit after several search methods | 3 sigma | 2021A&A...646A..26B, 2023MNRAS.523.2887M |
+| Robust vs tentative line | robust at SNR >= 20 in one sample; 5 sigma for redshifts | 5-20 | 2021A&A...654A..37D, 2022MNRAS.511.3017U |
+| Molecular detection | several unblended transitions >= 3 sigma | 5-35 lines | 2025A&A...702A..35D (>=5), 2026ApJ..1004L...6D (10), 2024MNRAS.533.1143M (35 above 5 sigma) |
+| Resolved size or shape | peak S/N 8-10 | 4.5-10 | 2021A&A...654A..90L, 2015ApJ...799...81S, 2024A&A...686A.187P (4.5), 2024MNRAS.533.3098A (8) |
+| Resolution for kinematics | >= 3-4 beams across the structure | 2-5 beams | 2020ApJ...904...77G (~3), 2025A&A...699A..80H (~4 per effective radius), 2025A&A...699A...5T (~5), 2026ApJ..1005...94N (zeta >= 2 for M_BH) |
+| Model selection | Delta BIC > 10 | Delta AIC >~ 10; ln evidence >= 5; DIC > 10 | 2025ApJ...985..243B, 2024A&A...689L...5M, 2024ApJ...971...17F, 2021PSJ.....2..105T |
+| Add a component | residual > 5 sigma | 3-5 sigma | 2022PASJ...74.1429T, 2021A&A...645A..21G, 2021MNRAS.503.1174K (3.5) |
+| MCMC length | N/tau > 50 | 50-100 tau; R-hat < 1.01, ESS > 300 | 2021AJ....162..235Y, 2023ApJ...950...75I (100), 2024ApJ...974..145S |
+| Monte Carlo or noise realisations | 100-1000 | 50-10,000 | 2021MNRAS.500.3667S (100), 2024ApJ...976..201F (1000), 2025A&A...695A.204V (50), 2020ApJ...903..124B (10,000) |
+| Model-data agreement to stop iterating | within 10% | 5-10%; within 3 sigma; factor 2-3 for chemistry | 2023A&A...677A..76P, 2024ApJ...973..135H, 2021A&A...656A.150P, 2024A&A...687A.299L |
+| Correlation significance | p < 0.05 with the coefficient quoted | p < 0.05 to 3 sigma | 2025ApJ...995..108J, 2014ApJ...787...42C |
+| Statistics per bin | stated minimum | >= 40 independent measurements; >= 50 peaks; constraints > free parameters | 2024ApJ...974..257Z, 2020MNRAS.493.2872C, 2026A&A...712A.201J |
+
+### Stopping rules
+
+- Stop when the claim's own criterion is met and stated: self-calibration stops when peak S/N gains less than
+  5% (2018ApJ...869L..41A, 2025MNRAS.538.2358S); fits stop when parameters are stable (2020ApJ...904...78S,
+  150-200 steps); iterative models stop at 10% agreement (2023A&A...677A..76P).
+- Stop extending a model when the aim does not need it, and say so: 2024ApJ...970..114T aimed only at an
+  axisymmetric match; 2020ApJ...904...77G judged further sophistication unnecessary at ~3 beams;
+  2024ApJ...969...56M stopped when the best fit was no better than zero signal.
+- Get more data when the test needs range or epochs you lack: 2021MNRAS.502..521D added archival outbursts
+  because one outburst spanned less than the 2 dex needed for a slope.
+- Record open when the separating observation is not in hand: more epochs for time-dependent modelling
+  (2025ApJ...992L..18S), kinematics for stronger physical conclusions (2025A&A...693L..17S), higher S/N for
+  outflows (2020MNRAS.496..598C), no temperature claim beyond 120 au (2021ApJ...906..111T).
+- In CosmicCoder agent runs, open-ended loops that re-verified claims the data could not settle cost most of
+  the budget; apply one more test only if its outcome would change the support level.
+
+## Software
+
+The workflow pack has no software aggregate; counts below are my keyword counts over the pack. For job-by-job
+routing use the analysis-software-map skill.
+
+| Job | Packages named in the pack | Count / examples |
+|---|---|---|
+| Posterior sampling and convergence | MCMC (35 mentions), emcee (3), dynesty (1), MultiNest (1) | 2021Sci...371..713L, 2023MNRAS.520.1613M (dlogz 0.8), 2020Natur.584..201R (evidences flatten with prior volume) |
+| Independent flux and size estimates | CASA uvmodelfit (visibilities) and imfit (images) (2 each), GILDAS (5) | 2018MNRAS.481.1976Z, 2014A&A...562A..67G |
+| Source finding and purity | PyBDSF (1), GALFIT (2) | 2022MNRAS.515.3126I, 2021MNRAS.503.1174K |
+| Cloud decomposition robustness | CPROPS / PYCPROPS (3) | 2018ApJ...857...19F (SIGDISCONT 0-999 tested), 2023ApJ...953..164M (10,000 bootstraps) |
+| Kinematic model checks | KinMS (5), 3DBarolo (2), eddy, DISCMINER | 2025ApJ...995..108J, 2021A&A...645A..21G, 2022A&A...662A.121R, 2025ApJ...984L..13H |
+| Excitation sensitivity | RADEX (26) | 2014A&A...570A..28V (three escape-probability geometries), 2020ApJ...905..122H |
+| Nonparametric cross-checks | frank (6), rave | 2026A&A...705A.197Z, 2026A&A...705A.196H |
+| Line identification | MADEX, CDMS, JPL, CASSIS | 2014A&A...569L...5M, 2024A&A...682A.127S |
+
+## Pitfalls
+
+- **A posteriori detections.** Signals called real after looking (2.3 sigma in 2018MNRAS.481.1976Z, card);
+  choosing the extraction position with the most clean lines (2026ApJ..1004L...6D, card). Fix the rule first.
+- **Correlations built into the axes.** Both axes containing the fitted radius (2021ApJ...908..192S, card);
+  apertures that scale with the quantity being correlated (2025ApJ...995..108J, card).
+- **Circular tuning.** Abundance factors tuned to match another tracer and then used as agreement
+  (2017ApJ...849...25L, card).
+- **Absence of evidence.** Missing rotation under high continuum opacity does not show disks are absent
+  (2020ApJ...905...25G, card); a failed disk fit does not show the gas is non-rotating (2025ApJ...995..108J).
+- **Formal errors as total errors.** MCMC errors do not cover flux calibration, binning or the profile family
+  (2021ApJ...909..212K, card); visual convergence checks need sensitivity tests (2026A&A...705A.197Z, card).
+- **Non-independent checks.** Two measurements from one session are not independent calibration checks
+  (2020NatAs...4..861C, card); spectral indices mixing beams and epochs of a variable star
+  (2017ApJ...841..130A, card).
+- **Selection in stacks and samples.** Excluding non-detections from a stack can bias the mean
+  (2018MNRAS.481.1976Z, card). Referee caveats most often cite a single object or galaxy (5 + 5) and
+  qualitative model comparison (3) (pack aggregate).
+- **The usual limitations.** In the 200 listed author limitations: resolution or beam (51), small sample or
+  single source (24), missing flux or filtering (21), limits only (20), degeneracy (12), temperature (11),
+  optical depth (10), S/N (10) (my count). Check each before upgrading a claim.
+- **Recoverable scale.** A size larger than the maximum recoverable scale carries a large, model-dependent
+  uncertainty (2021ApJ...908..192S flags its one such source); a missing-flux estimate that assumes smooth emission fails for compact filtered
+  structure (2025ApJ...995..108J, card).
+- **Team lessons (CosmicCoder runs).** Overconfident conclusions; stopping after the bright component and
+  missing a faint compact signal; "novel" questions already answered with other datasets. A verifier asking
+  "what is the most important question?" improved results.
+
+## Verification checks
+
+Before an agent reports a claim:
+
+- The template is complete, including uncertainty, the backing check and a code path whose outputs exist.
+- Detections quote the threshold rule and its false-detection basis (inverted map, mock sources or trial
+  count), not just "5 sigma".
+- Fluxes and masses state what fraction of single-dish or compact-array flux was recovered, or say it is
+  unknown.
+- Model preferences quote the criterion value and the residual check; posteriors quote the convergence
+  statistic.
+- Every alternative has a status; partial claims name the surviving alternative.
+- Population claims list the null, resampling and shared-variable tests and their outcome.
+- Open items are recorded with the data that would settle them.
+
+What a referee or evaluator will check: whether each experiment is correct and traceable to code, whether the
+conclusion follows at the stated support level, whether the error budget includes the flux scale and the
+driving assumption, and whether internal numbers agree between tables and text (a common card caveat, e.g.
+2021A&A...654A..37D velocity offsets, 2024AJ....167..232T rms values).
+
+## Source cards
+
+All member papers are in `references/sources.md`; the check table is in `references/checks-catalogue.md`.
+Most informative for this workflow:
+
+- Detection reliability: 2019ApJS..244...40L, 2021ApJ...907..122M, 2023ApJ...953...75H, 2021NatAs...5..319P,
+  2022MNRAS.515.3126I, 2026ApJ...999...47L, 2024ApJS..275...36F
+- Molecular detection and line identification: 2025A&A...702A..35D, 2026ApJ..1004L...6D, 2024A&A...687A...8M,
+  2023MNRAS.523.2887M
+- Measurement robustness: 2018MNRAS.481.1976Z, 2018ApJ...857...19F, 2020NatAs...4..861C, 2024A&A...690A.197M,
+  2021A&A...645A..21G
+- Model selection and convergence: 2025ApJ...985..243B, 2024ApJ...971...17F, 2024ApJ...974..145S,
+  2026A&A...705A.197Z, 2021MNRAS.504.4123N
+- Alternatives and interpretation: 2017ApJ...848L..11K, 2017ApJ...849...25L, 2015ApJ...812...27A,
+  2016A&A...593A..44L, 2024AJ....167..232T
+- Population statistics: 2021ApJ...908..192S, 2025ApJ...995..108J, 2020ApJ...903..124B, 2026A&A...705A.209L,
+  2024MNRAS.528.6768H
+
+=== references/checks-catalogue.md ===
+# Checks catalogue (claim-verification)
+
+Long form of the checks in `SKILL.md`, grouped by the kind of claim they protect. Every row is a practice seen
+in the evidence pack; bibcodes are examples, not a complete list. "Pack count" figures are my keyword counts
+over the 545 listed validation and stopping lines of the pack (lines are normalised card phrasings, so a count
+is a floor on how often the idea appears, not a census of 3455 papers).
+
+## A. Is the signal real? (detections, tentative lines, faint compact sources)
+
+| Check | Protects against | How papers ran it | Bibcodes |
+|---|---|---|---|
+| Inverted (negative) image or cube search | Noise peaks counted as sources; non-Gaussian noise tails | Run the same finder on the data multiplied by -1; set the threshold where negatives vanish or where the positive/negative excess implies a stated purity | 2018ApJ...853..195W, 2021ApJ...907..122M (zero negatives beyond -6.2 sigma in 184 inverted cubes), 2023ApJ...953...75H (S/N 5.2, purity 83%), 2025A&A...699A.324H (peak S/N > 4.2), 2020MNRAS.495.3124H (positive peaks above the most significant negative peak) |
+| Spurious-fraction curve | A threshold chosen by habit rather than by the data | Differential spurious fraction vs S/N; pick the S/N where it reaches 50% and quote the cumulative spurious fraction | 2019ApJS..244...40L (5.40 blind, 4.35 with prior positions, cumulative spurious 8-12%) |
+| Expected-false-detection target | Many independent beams or channels producing chance peaks | Choose S/N so the expected number of false detections over the whole survey is below 1 | 2021ApJ...908..192S (S/N 4), 2026A&A...706A.236M (lowest negative peak and <1 expected false detection), 2026ApJ...999...47L (pixel S/N normal to 5 sigma; 100 mock noise maps give 0.7 false detections) |
+| Look-elsewhere trial count | Quoting a local significance after scanning many channels or line widths | Count independent trials in the spectral scan and convert to a global spurious probability | 2021NatAs...5..319P (47 trials, 1.7e-4 for an integrated S/N 6.2 broad component) |
+| Mock or bootstrap sources | Finder thresholds whose purity is unknown | Inject thousands of mock sources or bootstrap visibilities; classify a source only at a stated confidence | 2022MNRAS.515.3126I (PyBDSF pSNR 3.3, iSNR 2.0 for 95% purity; 20,000 mocks), 2021MNRAS.508.5259M (2000 visibility bootstraps; >4.2 sigma reliable) |
+| Repeat per execution block or epoch | Single-EB artefacts, calibration glitches | Require the source in every EB, or in independent epochs or instruments | 2020MNRAS.498.4635D (all EBs plus negative-image checks), 2025MNRAS.543..862V (both ALMA images plus a NOEMA detection near 4 sigma), 2013ApJ...762L..21M (central peak persists in four observations) |
+| Consecutive channels | Single-channel spikes | Require several adjacent significant channels | 2013AJ....146...91I (feature spans several consecutive spectral elements), 2024AJ....168..151J (five consecutive channels), 2025A&A...699L..11V (>=5 rms channels with adjacent spaxels) |
+| Side-lobe screening | Sidelobes of a bright source read as companions | Drop candidates in the sidelobe pattern of a bright source; check residuals for dirty-beam patterns | 2014ApJ...795....5O, 2021A&A...654A..37D |
+| Known-position threshold | Using a blind threshold where a prior position exists, or the reverse | Lower threshold only when the position is fixed in advance | 2024PSJ.....5..221C (3 sigma at a known location), 2023ApJ...956..135W (3 sigma in imaging or matched filtering), 2019ApJS..244...40L (prior vs blind thresholds) |
+| Multiple transitions (molecules) | Misidentified or blended single lines | Require several unblended transitions matching a model; reject models that predict lines not seen | 2025A&A...702A..35D (>=5 unblended lines >=3 sigma), 2026ApJ..1004L...6D (ten unblended, seven >3 sigma), 2024MNRAS.533.1143M (35 lines >5 sigma, no missing strong lines), 2024A&A...687A...8M (300 K model rejected by missing lines) |
+| Alternative carriers and line IDs | Wrong molecule or wrong redshift | Search catalogues for other carriers; test other line IDs with companion lines | 2014A&A...569L...5M (MADEX, CDMS, JPL), 2016A&A...589L...5M, 2014ApJ...781L..39T, 2013ApJ...767...88W, 2024A&A...690L..16J (three lines for an unambiguous redshift) |
+| Extraction position test | A detection that exists only at the chosen pixel | Repeat the fit at many nearby positions | 2026ApJ..1004L...6D (70 offset positions, columns within an order of magnitude) |
+
+## B. Is the number right? (fluxes, sizes, masses, temperatures)
+
+| Check | Protects against | How papers ran it | Bibcodes |
+|---|---|---|---|
+| Single-dish or compact-array flux comparison | Interferometric spatial filtering | Ratio of ALMA to single-dish or ACA flux over matched coverage | 2018ApJ...857...19F (median 0.63 vs APEX), 2024NatAs...8..308D (CO 66% resolved out, SiN fully recovered), 2025ApJ...995..108J (only after checking both cover the full line width), 2021ApJ...908L..43N (near-unity ACA ratio, 12 m alone kept) |
+| Curve of growth | Aperture too small or too big | Grow the aperture or taper until flux plateaus | 2020ApJ...903...34A, 2023MNRAS.524.1775H, 2021A&A...654L...8C, 2026A&A...709A.216U, 2025ApJ...993L..40S |
+| Independent estimator | Method-specific bias | Same quantity from two tools or domains | 2018MNRAS.481.1976Z (CASA uvmodelfit vs main fit; PSF model underestimates extended flux), 2014A&A...562A..67G (GILDAS cross-check of a ~3.4 sigma extension), 2017MNRAS.469.3200B (visibility refit, flux 0.6% higher), 2016ApJ...832..143F (Fourier vs beam-in-fit widths) |
+| Injection-recovery of sizes and fluxes | Flux boosting, size bias at low S/N | Simulated visibilities with matched noise; quote the S/N where recovery is reliable | 2021ApJ...908..192S (10-15 sets per source), 2024A&A...690A.197M (1500 sources for 4.4-5.5 sigma sizes), 2015ApJ...808...36M (artificial disks injected into visibilities), 2024ApJS..275...36F (photometry agrees with input down to SNR 8) |
+| S/N floor for resolved quantities | Sizes from barely detected sources | Set the floor from simulations | 2015ApJ...799...81S (SNR >= 10), 2021A&A...654A..90L (peak S/N 8-10), 2024MNRAS.533.3098A (mock S/N 8 because 4 is too low), 2025A&A...696A.202S (S/N > 9) |
+| Noise vs expectation | Hidden artefacts or bad weighting | Compare image rms to the sensitivity calculator or theoretical noise | 2020ApJ...905...25G, 2020ApJS..247...15S |
+| Assumption sweep | One adopted Tex, beta, alpha_CO or rate driving the result | Re-run with alternatives and report the change | 2021A&A...645A..21G (ULIRG alpha_CO), 2020NatAs...4..861C (collision rates x0.1-10 change Q by 2%; Tkin 20-70 K by <8%), 2017ApJ...849...25L (flux errors 5-20%, beta 1-2), 2014A&A...570A..28V (12C/13C), 2013A&A...557A.132M (alternative disk model) |
+| Resolution matching | Differences that are resolution artefacts | Smooth to the comparison sample's resolution and redo | 2018ApJ...857...19F (to 40 pc, 2 km/s), 2021A&A...654A..37D (common 0.5 arcsec taper) |
+| Flux-scale consistency between datasets | Calibration offsets mimicking variability | Flux ratio between datasets, calibrator monitoring | 2024AJ....167..232T (0.999 +/- 0.006), 2018A&A...617A.129K (2.2% between days; 18% drop over 11 months put on calibration), 2025A&A...703A.110S (calibrators vs AMAPOLA) |
+
+## C. Is this model preferred, and is it unique?
+
+| Check | Protects against | How papers ran it | Bibcodes |
+|---|---|---|---|
+| Information criterion with a fixed threshold | Adding components because they lower chi2 | Delta BIC > 10, AIC difference >~ 10, ln evidence ratio >= 5, DIC difference > 10 | 2025ApJ...985..243B, 2024ApJ...965..108U, 2024A&A...689L...5M, 2024ApJ...971...17F, 2021PSJ.....2..105T |
+| Criteria agreement | Criterion-dependent choices | Require agreement of 2 of 3 statistics, or report when AIC and BIC differ | 2025MNRAS.538.3001T, 2026A&A...705A.197Z |
+| Residual-driven component adding | Under- or over-fitting | Add a component when residuals exceed 5 sigma, stop below 3 sigma | 2022PASJ...74.1429T, 2024MNRAS.533..771R, 2021MNRAS.503.1174K (>=3.5 sigma residuals), 2021A&A...645A..21G (>3 sigma residuals) |
+| Overfitting signs | Fits tuned to noise | Reduced chi2 well below 1; negative residual features | 2020MNRAS.496.4405H, 2025ApJ...995..108J |
+| Prior and data-subset robustness | A component carried by priors or a subset | Refit with other priors and data subsets | 2021A&A...650A.153D, 2021A&A...652A..66P (varied priors and starting points) |
+| Sampler convergence | Unconverged posteriors | N/tau > 50 or > 100, R-hat < 1.01 and ESS > 300, seed change, longer run | 2021AJ....162..235Y, 2023ApJ...950...75I, 2024ApJ...974..145S, 2023MNRAS.525.6146W |
+| Correlated-noise likelihood | Uncertainties too small from correlated visibilities or pixels | Rescale the likelihood | 2021MNRAS.504.4123N (by sqrt(2N)) |
+| Second sampler or method | Sampler-specific answers | Repeat with another sampler or nonparametric tool | 2024A&A...688A.130H, 2026A&A...705A.197Z (parametric vs frank and rave), 2025A&A...700L...5G (multiple starts) |
+| Cross-validation for regularised imaging | Hand-tuned hyperparameters | k-fold CV on a parameter grid | 2021ApJ...923..121Y (10-fold, 5x5 grid), 2025ApJ...984L..14Z |
+| Simulated recovery of the structure | Structures created by the method | Recover a known synthetic model | 2024A&A...685A.142Y, 2025A&A...699A.279D, 2026ApJ..1000L..14B |
+
+## D. Is the interpretation the only one? (alternatives, populations)
+
+| Check | Protects against | How papers ran it | Bibcodes |
+|---|---|---|---|
+| Kinematic argument | Outflow vs rotation vs infall confusion | Gradient orientation vs jet; speeds vs escape velocity | 2013A&A...552L..10S, 2015ApJ...812...27A, 2021A&A...645A..21G |
+| Energetics or timescale argument | Mechanisms that cannot supply the energy | Required energy, temperature or mass vs available | 2012ApJ...760L..25E, 2013A&A...555A..73K, 2015MNRAS.447.1826Z, 2017ApJ...849...25L |
+| Instrumental alternatives | Calibration or imaging artefacts read as physics | List and test instrument effects | 2016A&A...593A..44L (beam squint, gain drift, decoherence), 2015PASJ...67...72T (band-incoherent clumps as phase artefacts), 2021A&A...645A..21G (instrumental line wings) |
+| Filtering vs absence | Missing flux read as missing gas | Test resolved-out explanations | 2015ApJ...803...70S, 2015ApJ...810L...7V, 2015A&A...584A..42A |
+| Shared-variable or aperture test for correlations | Correlations built into the axes | Mock data with the same selection; partial correlations | 2021ApJ...908..192S, 2025ApJ...995..108J, 2018ApJ...857...19F (1e4 random clouds) |
+| Normalisation test | Trends driven by a third variable | Normalise and see if the trend survives | 2018ApJ...853..195W (radius trend vanishes per unit mass) |
+| Null and resampling tests | Correlations from a few objects or chance | 10,000-realisation nulls; jackknife; drop 30% 500 times | 2020ApJ...903..124B, 2022A&A...660A..14R, 2026A&A...705A.209L |
+| Pre-registered binning | p-hacking through bin choice | Bin only on physically motivated parameters | 2026MNRAS.546f2284B |
+| S/N degradation | Conclusions that hinge on data depth | Degrade the cubes and rerun | 2024MNRAS.528.6768H |
+
+=== WRITER CONTEXT (readers, team lessons, contamination rule; not a literature source) ===
+# Who reads these skills, and what went wrong in their runs (CosmicCoder meeting notes, Oct-Nov 2026)
+
+Distilled from the CosmicCoder agent meeting notes (all pages) for skill writers. This file is for YOU, the writer.
+Do not quote it as a literature source. Lessons below may appear in a skill only as clearly labelled team experience
+("in CosmicCoder agent runs ...") and only in general form.
+
+## The readers
+
+The skills are read by research agents working on ALMA data: single Claude Code agents, research frameworks
+(Denario, AutoResearch) and teams of agents (questioner, worker, reviewer/validator, editor) that post findings to a
+shared forum and are graded against published papers or by astronomers. Tasks come in two shapes:
+
+- **Bottom-up / reproduction**: given an ALMA dataset (and maybe a literature summary), find what the paper found.
+- **Top-down / novel**: given a research question, pick the method and the data, then answer it.
+
+Evaluation decomposes a paper into (hypothesis, experiment, result, finding) tuples and asks: are the individual
+experiments correct, are the final conclusions correct, are the findings significant, are they novel. Experts want
+each experiment traceable to code.
+
+## Lessons from the runs (write skills that prevent these)
+
+1. **Agents reimplemented a naive version of a standard package** (a cube kinematics fitter) and got a worse
+   measurement than the paper. Agents need to know which established tool does the job and reach for it.
+2. **One dataset is rarely enough.** Good projects needed several datasets to clear up inconsistencies and to check
+   earlier literature claims, plus tables and numbers from other papers. One framework gave up when a table from
+   another paper was needed.
+3. **Downloading whole projects is a trap.** An agent tried to fetch about 4 TB of raw data by project code; the
+   analysis needed only specific products, which astroquery could fetch. Older-cycle data that needed
+   reprocessing could not be processed in that environment (CASA/tclean was not installable on one HPC system).
+   Archive image products were often usable as delivered.
+4. **Unstated and inherited conventions break reproductions.** A paper in a series reused corrections (for
+   example flux and number recovery from artificial source insertion) and design choices from its earlier
+   papers without restating them. Reproduced images were noisier than the paper's and nobody could tell what
+   extra preprocessing the authors had done.
+5. **"Done" must mean executed and checked.** A framework's judge approved tasks when code had been written but
+   not run. Stricter gates (the file ran, outputs exist and look sane) fixed it.
+6. **Context flooding.** Agents printed huge raw tables into their context, costing millions of input tokens.
+   Summarise; write tables to files.
+7. **Overconfident conclusions.** One system's conclusions were "more confident than its evidence supports".
+   Single agents stopped after minutes having characterised the obvious bright component and missed the faint
+   compact signal that was the real finding.
+8. **No stopping criterion.** Open-ended runs became a money pit, agents going back and forth verifying claims
+   they could only speculate about given the data. Agents need a rule for when the evidence is enough and when a
+   question cannot be settled with the data in hand (and should be written down as open).
+9. **Verifiers and editors help.** Adding a verifier/editor that asked "what is the most important question?"
+   raised scores; teams with worker and validate roles beat strict pipelines; adaptive iterative loops beat
+   heavy fixed pipelines. Staged work (each stage with tests and an answer key, stop or retry by stage) worked for
+   model reproductions; open items needing expert confirmation were recorded rather than forced.
+10. **Novelty is easy to fake.** Ideation agents treated unpublished data as proof of a novel question without
+    checking whether the same question had been answered with other datasets, and repackaged an observing
+    proposal into analysis tasks instead of distinct hypotheses.
+11. **Results need tolerances.** Reproductions reported agreement to stated precision (for example within 0.3% or
+    "within reading precision" of a figure) and explained each remaining mismatch (smoothing of a published
+    figure, a possible table typo) instead of declaring success or failure overall.
+
+## Contamination rule (critical)
+
+The team's evaluation tasks are held out of the corpus. Never name, describe or hint at their targets or results
+in a skill: no L1521F / L1521F-IRS, no "CMF across Galactic environments" protocluster series, no z~6 quasar-host
+[CII] kinematics sample results, no SZ quasar-feedback detection in HE 0515-4414, no specific numbers from those
+papers. Write general practice from the pack. If a lesson above came from one of those tasks, state it only in
+general form (as it is phrased above).
+
+=== EVIDENCE PACK (claim-verification) ===
+# Evidence pack (workflow): Verifying claims and deciding when the evidence is enough (`claim-verification`)
+
+Scope: the validation checks, alternative explanations, support levels, admitted limitations and stopping decisions ALMA papers use before they state a finding
+
+Built from 3455 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (quoted strings are verbatim from the paper). Years 2012-2026.
+Aggregates come from card fields the technique packs do not show. Lines marked (card) are the card author's inference about the paper, not the paper's own words.
+
+## Aggregates over all member papers
+
+### Science fields (first field per paper)
+- star_formation: 687
+- high_z_galaxies: 682
+- protoplanetary_disks: 603
+- nearby_galaxies: 531
+- agn_and_quasars: 222
+- evolved_stars: 159
+- astrochemistry: 140
+- debris_disks: 96
+- milky_way_ism: 76
+- solar_system: 62
+- stellar_physics: 52
+- galaxy_clusters_and_sz: 41
+- transients: 38
+- sun: 33
+- instrumentation: 16
+- cosmology: 9
+- exoplanets: 5
+- other: 3
+
+### Claim support levels the cards assigned (count)
+- supported: 7101
+- partially: 3526
+- refuted: 528
+
+### Validation checks papers ran (normalised phrasing, count)
+- residual image inspection: 2
+- continuum well subtracted in spectra: 2
+- agreement with previous observations: 2
+- visual comparison of model and observed p-v diagrams: 2
+- residuals inspected: 2
+- 3 sigma upper limits for non-detections: 2
+- convergence checked by comparing consecutive iterations: 2
+- compared to dust-based masses: 2
+- qualitative only: 2
+- three methods consistent: 2
+- visual comparison: 2
+- visual inspection of residuals: 2
+- qualitative comparison of simulated and observed pv diagrams: 2
+- bic criterion for number of gaussian components: 2
+- about half the single-dish flux recovered; sgmc total flux agrees with sma: 1
+- comparable to wilson et al. 2000 masses: 1
+- 2d gaussian fits show sources unresolved, consistent with beam: 1
+- tested higher phi and tc: vin and sigma_v unchanged: 1
+- further self-cal steps tested, no significant improvement: 1
+- compared with j=1-0 maser structure of matthews10: 1
+- compared with carma j=2-1 and j=8-7 sio features to exclude contaminants: 1
+- compared channel maps and chi2 among models: 1
+- varying power-law indices by ±2 changes ratio by <30%: 1
+- flux scale checked against earlier full-calibration observations of 14 jan 2012: 1
+- total 43 mjy agrees with scuba 850 um 42 mjy: 1
+- compared with co line widths and sma [cii] of iono et al.: 1
+- reproduces combined 350 um flux density of the pair: 1
+- compared with sma sio 8-7 maps and prior carma results: 1
+- tested atmospheric co, flat tsys re-calibration, and continuum subtraction variations; wings persist: 1
+- compare model and data channel maps: 1
+- all reproduce wings but fail near systemic velocity: 1
+- compare channel maps and pv diagrams: 1
+- compared to roberge et al. azimuthal modulation: 1
+- compared with five other unblended hcooch3 lines, none peaking at source i: 1
+- compared with 22 ghz h2o and 43 ghz sio maser spectra: 1
+- compared with sma spectra; bright line fluxes agree to 10-20%: 1
+- model reproduces line profiles including vibrationally excited lines; predicts band 9 optically thick lines t…: 1
+- compared total flux with wei et al. 2012 and co(3-2) maps: 1
+- estimated 24 micron psf airy ring contamination (~0.1 dex) and excluded pixels within 11'' of bright peaks: 1
+- rms noise consistent with theoretical expectations: 1
+- co brightness temperature argument gives lower limit ~15 au on radius: 1
+- pixel brightness histogram fitted with gaussian (sigma=0.096 mjy/beam); spurious-peak probability between 5e-…: 1
+- compared seds with optical/nir photometry and with optical sfrs: 1
+- model brightness distribution compared visually with observed intensities: 1
+- line identification with jpl and cdms via splatalogue: 1
+- halving 692 ghz intensity gives tex=107±9 k: 1
+- tested tex = 80 k and 300 k; ratio changes little: 1
+- cross-checked between execution blocks observed ~24 h apart: 1
+- same pattern seen in several lines and species: 1
+- comparison of model velocity map with observed peaks; no uniqueness test: 1
+- compared with central mass for keplerian condition: 1
+- missing flux vs iram 30m estimated 10-20% for alma-sv: 1
+- phase coherence offset from zero in visibilities indicates emission offset from phase center: 1
+- using radex column density the mass drops by almost an order of magnitude: 1
+- independent 8um extinction mass confirms herschel filament masses: 1
+- free-free contamination upper limits estimated, up to 30% for mm1: 1
+- [hco+]/[h13co+] compared with expected 12c/13c: 1
+- h13co+ predictions compared in appendix b: 1
+- comparison to mhd simulation: 1
+- similar ~25% recovery for both lines implies ratios unaffected: 1
+- model compared to alma (5") and apex (19") spectra: 1
+- consistent with previous inclination: 1
+- sed and co line fluxes compared with literature: 1
+- compared model and observed fluxes (table 1) and channel maps: 1
+- sensitivity tests: bounds shifted -3 k/+4 k, width doubled, abundance x3 up/down; alternative disk model of d…: 1
+- compared with isella et al. 2007 and qi et al. 2011 values: 1
+- model total flux within 5% (continuum) and 1% (co) of observed: 1
+- convolved profile matches observed profile: 1
+- refined model checked against co radial profile and sed; sed degraded in mid/far-ir: 1
+- visual comparison of synthetic maps with observations: 1
+- compared model flux ratios and spectrum with data; conical model fails to reproduce spectrum (alpha=0.7): 1
+- comparison with sest co(1-0) flux: 1
+- compared with h-alpha kinematics; inflow and black hole rotation alternatives argued against: 1
+- compared with released data products; consistent fluxes: 1
+- [cii] sfrs used as confirmation: 1
+- residual structure consistent with rotating disk: 1
+- spectroastrometric mass consistent; inclination check assuming symmetric flux gives i=6±3 (smg), 2±2 (qso): 1
+- alma vla1623b 96.3 mjy vs sma 96.8 mjy consistent: 1
+- fits for any vlsr within error: 1
+- channel-map residuals for each model: 1
+- compared with previous estimates: 1
+- vib. hcn judged real because several consecutive channels exceed 4 mjy (1 sigma ~1.2 mjy), at expected freque…: 1
+- image from all 4 sbs consistent but noisier than sb-4: 1
+- reduced chi^2 = 1.37; no significant residuals; fits to each sb individually consistent: 1
+- predicted uv lines compared to upper limits of ohyama et al. (2004): 1
+- mass uncertainty factor of five from range of opacities in ossenkopf & henning: 1
+- compared with pineda et al. 2012 parameters at 220 ghz: 1
+- continuum flux and 13co/c18o compared with sma: 1
+- v_lsr and position angle compared with 13co: 1
+- residual channel maps show no significant emission; reduced chi2 = 1.07: 1
+- confirmation with apex [cii], atca, sma, z-spec, vlt for five sources: 1
+- check sources with icrf positions used to verify astrometry and calibration: 1
+- simulated observations recover input antenna phases; extended-array data compared with predictions: 1
+- laboca 870 um flux agrees with modeled alma flux within ~10%: 1
+- checked amplitude/phase at edge channels when combining first two basebands: 1
+- calibrated calibrators inspected; process repeated if inadequate: 1
+- compared with casa imfit for >4 sigma sources: (s_imfit - s_source)/s_source = 0.001 +/- 0.09: 1
+- flux ratio consistent with unity at 3 sigma threshold: 1
+- 100 random simulations of separations: 1
+- compared with 22 ghz tidbinbilla spectrum: 1
+- footnote test adding a faint diffuse co component to paws m51 lowers c from ~6 to ~5.1: 1
+- compared counts from 4.0 sigma subsample; consistent: 1
+- fitted constant consistent with 120 ujy continuum from line-free basebands: 1
+- 80-90% of flux recovered versus iram 30m after smoothing to 10.5'': 1
+- gaussian fits cross-check, no significant non-gaussianity: 1
+- beam smoothing by factor two leaves fourier terms unchanged; comparison with gmos halpha: 1
+- compared with <3.0e7 msun from line flux (gao & solomon 2004): 1
+- compared with chandra temperatures, densities, uv pressure and radio upper limits: 1
+- continuum flux densities compared with mambo values: 1
+- sensitivity to tdust=50 k (+20%) and tdust=41 k, beta=1.95 (-8%): 1
+- uncertainties from fwhm and size errors, 10-40%: 1
+- critical densities compared to modeled clump density: 1
+- snr per channel improves by ~2-3 vs sv reference maps; intensities agree with sma within 10%: 1
+- visual overlay on channel maps: 1
+- residual channel maps and integrated line profiles; admits models are degenerate: 1
+- differences significant at >=3 sigma across many channels: 1
+- compared spectrum smoothed to 44" with olberg et al. single-dish spectrum to assess recovered flux: 1
+- variations of assumptions change mass by factor 2-3: 1
+- using olberg et al. tex and velocity ranges gives 3.6e-2 msun, similar to their 0.03 msun: 1
+- predicted shells compared to velocity-integrated maps: 1
+- varied relative flux calibration; <10% uncertainty in 12co clump properties, <5% in 13co: 1
+- repeated with 3 cm image, quantitatively similar: 1
+- checked against dust and virial masses: 1
+- compared with herschel dust t of 55 k and literature masses: 1
+- trends robust over range of decomposition parameters: 1
+- sio alma spectrum compared to apex; differences <10%: 1
+- axis uncertainty from varying channels and s/n levels: 1
+- point source removed test gave 3.9 jy: 1
+- cs data give almost the same results: 1
+- compared with apex fluxes; no significant flux loss: 1
+- isotopic ratio uncertainty gives factor 2 lower to 5 higher mass: 1
+- model reproduces all five lines; outer radius, inclination, stellar mass consistent with independent estimates: 1
+- compared with lime disk-model prediction and 12co peak beam temperature: 1
+- alma nh2d map compared against hifi population diagram trend: 1
+- consistent structure recovered across cleaning runs, so not missing-spacing artifacts: 1
+- alma emission peak (5 jy) within ~20% of alma+sest value: 1
+- compared with observed outer emission radius ~25": 1
+- compared grid 1 and grid 2 solutions: 1
+- compared with downes & solomon 1998 and dynamical-mass upper limit: 1
+- compared azimuthal scatter with noise and with emission-free ellipses: 1
+- model seds compared with observations; smin=4 um excluded: 1
+- convolved models with pacs psfs compared to images: 1
+- false matches estimated by shifting catalogs by 10-60'' in 10'' steps: 1
+- low-count l_corr typically agrees within ~30% with spectral fits (per x11): 1
+- cross-check between independent methods; 3.6um threshold calibrated on x11 sources (~95% agn): 1
+- compared with previous studies; repeated with s870>3.5 mjy flux-limited sample: 1
+- 1000 fake catalogs of 49 random positions: 1
+- tested sensitivity to rate scaling factor and ir pumping: 1
+- ring residuals recovered with cruder normalization methods: 1
+- compared with greybody ir luminosity of greve12: 1
+
+### How authors decided they had done enough (bibcode: as stated)
+- 2015ApJ...799...81S: SNR>=10 cut set by simulations of size recovery precision
+- 2017ApJ...848L..11K: Choose the lowest-RMS reconstruction; take simulation snapshots after quasi-steady state at 10 orbits; restrict model comparison to qualitative morphology.
+- 2018ApJ...860...77E: uv cut chosen to minimize mosaic rms
+- 2018ApJ...869L..41A: Self-calibration stopped when peak SNR did not improve by >5% (and map quality did not visually improve)
+- 2018MNRAS.477.2926W: Iterated until R_i close to R_i+1
+- 2018MNRAS.478.1170C: Sample limited to SFR≲100 Msun/yr, unlensed, spectroscopically confirmed
+- 2019ApJS..244...40L: S/N_peak thresholds (5.40 for blind, 4.35 for prior) were chosen where the differential spurious fraction reaches 50%, keeping cumulative spurious fractions below 8-12% and cumulative completeness ab…
+- 2020ApJ...902...37D: Cleaning to 5 sigma globally then 1.5 sigma in manual regions; no extra weighting needed because of good map quality
+- 2020ApJ...902..113I: Finer 0.5 dex low-mass bins tried in case emission was diluted; flux-loss from redshift errors judged negligible so no correction applied
+- 2020ApJ...903...34A: Aperture radius of 1.5'' set where no more [C II] flux is recovered
+- 2020ApJ...903..124B: Lines >3σ; correlations |ρ̂| ≥0.4; two 10,000-realization null tests give ~1% false positives
+- 2020ApJ...903..138A: Bins require stacked SNR >~ 10 so integrated fluxes are reliable
+- 2020ApJ...904...77G: About three beams resolve the velocity gradient; avoid further model sophistication; full simulated-observation optimization too costly
+- 2020ApJ...904...78S: Fits stopped when best-fit values stay constant for ~150-200 steps
+- 2020ApJ...904..181L: Restrict spectral fitting to K=3 detections above 3σ; assess model agreement through P-V morphology and consistency across K components.
+- 2020ApJ...904L...6A: Stopped after just over 100 models once a reasonable fit was reached
+- 2020ApJ...905...86S: Number of PLS components chosen by minimizing mean squared error in the reference sample
+- 2020ApJ...905..122H: Judge fits by peak-intensity agreement and residuals; use the lowest fixed H2 density yielding successful fitting.
+- 2020ApJ...905L..23M: The model without millimeter dust emission is the maximum likelihood solution and is adopted as default
+- 2020ApJS..247...15S: CLEAN stopped at 2.5× rms; achieved noise checked against theoretical limits and recovered flux checked with a tapered beam.
+- 2020MNRAS.491.1174M: Visual inspection found no need to re-reduce archived ALMA products.
+- 2020MNRAS.491.2506D: Training converged before epoch 300 without a turnover in test MSE.
+- 2020MNRAS.493.2872C: Each radial bin needs at least 50 peaks per tracer for adequate statistics
+- 2020MNRAS.493L..39E: Stability of ANN checked with five random 50% training samples
+- 2020MNRAS.494.4090C: Apertures did not increase flux; bright-source curves of growth show >95% line-flux recovery.
+- 2020MNRAS.495.3124H: Detections are positive peaks exceeding the most significant negative peak in each cube
+- 2020MNRAS.495L...1I: Residuals lack mirroring and have no reliable positive-peak candidates; brightest-peak fidelity never exceeds 50 per cent
+- 2020MNRAS.496..169L: Judged by a broad visual match of major-axis profiles; no formal fit statistic is stated
+- 2020MNRAS.496..598C: Three-Gaussian fits considered statistically acceptable; outflow detections and continuum morphology need higher-S/N data
+- 2020MNRAS.496.2155Z: Diffuse-filter convergence: λ within 5% for four iterations; peak-count and spatial-resolution checks for lifecycle fits
+- 2020MNRAS.496.2790L: 12-m data alone judged sufficient for the tracer-distribution analysis
+- 2020MNRAS.496.4405H: Best template picked by reduced chi2 closest to 1; chi2 well below 1 treated as over-fitting
+- 2020MNRAS.496.5308S: Stop opacity iterations when Cτ ≈ 1 leaves rotational diagrams unchanged.
+- 2020MNRAS.498.4109J: Concluded non-detection after cube inspection, wide channel collapse and a large-area spectrum all showed no definite emission
+- 2020MNRAS.498.4192F: Plan for S/N=10; achieved Band 8 S/N~8–25; select 18 000 MCMC samples and target acceptance 0.99 for best performance.
+- 2020MNRAS.498.4635D: Robust detections in all EBs and negative-image checks; significant over-density under both background-count comparisons
+- 2020MNRAS.499.5136C: Retain detections above 3.6σ and select the highest-confidence candidate; check size agreement and mock-data agreement with observations
+- 2020MNRAS.499.5915M: Accept continuum agreement within uncertainties, consistency with the millimetre limit and an adequate polarisation match.
+- 2020NatAs...4..861C: Detection significance, reduced chi-squared, interferometric/autocorrelation agreement, and excitation sensitivity tests.
+- 2020NatAs...4.1064H: Limit 1-D lags to half crest length; restrict GMC fits between beam and turnover; require cross-correlation significance >3.
+- 2020Natur.584..201R: checked that the MULTINEST evidences flatten with prior volume
+- 2020PASP..132i4501H: Three executions spaced ~1 hr give enough parallactic angle coverage to solve D-terms and XY-phase
+- 2020RSOS....700063K: Extra parameters kept for Fomalhaut because BIC improved; not justified for HD 202628
+- 2021A&A...645A..21G: AoN >3; add components for >3σ residuals and retain multicomponent fits when residuals improve considerably.
+- 2021A&A...645A..49G: Three components yield reduced chi-squared 1.0–1.4, versus a minimum 2.3 for two; more complex nuclear velocity fields were limited by resolution and beam smearing.
+- 2021A&A...645A.142A: Excluded velocity-range factor of 2.5 sigma chosen to remove all self-absorption and missing-flux features in the MM1 outflows
+- 2021A&A...646A..26B: Non-detection declared after visual and systematic searches found nothing above 3 sigma at the target; 3 sigma adopted for upper limits
+- 2021A&A...646A..59R: Measure heights only above 3 sigma; model only resolved outer-disk HF spectra; select lowest chi-square model.
+- 2021A&A...647A.118L: Thermochemical iterations stop at a self-consistent solution
+- 2021A&A...647A.194F: Checked that residual channel maps and p-v diagrams showed minimal deviations, tested inclination via total-flux map residual minimisation, explored the 2D (v_rot, sigma_gas) parameter space with spa…
+- 2021A&A...648A..33M: Self-calibration stopped when peak S/N stopped improving or solution intervals reached the integration time.
+- 2021A&A...649A..31H: Single-Gaussian preference and residual inspection distinguish non-outflow apertures; exponential profile fits have R²≳0.95; halo detected above 4σ outside stellar disk.
+- 2021A&A...649A.105F: Three sub-LIRGs with existing HCN-vib 4-3 nondetections were not reobserved in 3-2
+- 2021A&A...649A.122P: MCMC run for more than 250000 steps after convergence
+- 2021A&A...650A.142M: Use the 20%-of-peak contour to retain ≳3σ even for the weakest molecular lines
+- 2021A&A...650A.153D: Two components survive prior/data-subset checks and are preferred over one by the reported model-evidence significance.
+- 2021A&A...650A.202R: Dendrogram parameters chosen after multiple tests and visual inspection
+- 2021A&A...651A..35O: reference model chosen as the midpoint of the polygon of acceptable solutions
+- 2021A&A...651A..90F: stop simulation after 50 Torb ~10^5 yr, considered sufficient for driven spirals and disk-planet interactions
+- 2021A&A...652A...5M: Two-Gaussian model kept because residuals were small; no additional components added
+- 2021A&A...652A..66P: Cleaning stopped at ~1 sigma residual; low-S/N lines accepted as detected when fits with varied priors and starting points give self-consistent solutions
+- 2021A&A...653A..53A: Tested cleaning iteration counts and residual flux; additional molecular analysis limited to confident detections at the chosen resolution and aperture.
+- 2021A&A...654A..37D: Robust line detections have SNR ≥20; W0236+0528 remains tentative after tapered imaging; residual dirty-beam patterns motivate deeper cleaning
+- 2021A&A...654A..90L: Adopted a peak S/N >= 8 - 10 threshold in ALMA maps for reliable size measurements (excluding cid_1057 and cid_451 from resolved analyses), BIC to select the preferred visibility profile and Type 2 s…
+- 2021A&A...654L...8C: The halo extent is set where the aperture flux curve of growth plateaus
+- 2021A&A...655A..42S: Number of Gaussian components chosen by information criteria
+- 2021A&A...655A.113M: The sample is explicitly an initial starting point, complete only for public data to 31 December 2020
+- 2021A&A...656A.150P: Iterated model setups until normalised radial profiles were within 3 sigma and the outer ring was azimuthally symmetric
+- 2021AJ....161...33V: Simple intensity modeling judged sufficient to reproduce the trend; HD142527 fit accepted despite weak constraints.
+- 2021AJ....161...98H: Five suitable points defined each ellipse; the residual agreement was judged satisfactory given fuzzy positions.
+- 2021AJ....161..185W: Slits as long as possible since measured pattern speeds converge with slit length; slit width 1 arcsec to match resolution
+- 2021AJ....162...99F: Imaging parameters chosen per line as a compromise among resolution, intensity and channel spacing after multiple imaging runs
+- 2021AJ....162..235Y: MCMC chains run for at least 50 autocorrelation times to approximate convergence
+- 2021ApJ...906..111T: Stop CLEAN at three times line-free noise; accept the OPR trend after fixed-temperature and omitted-line tests; do not claim meaningful temperature constraints beyond 120 au.
+- 2021ApJ...907..122M: Adopted peak SNR > 6.2 threshold because zero negative peaks exceed -6.2σ in the 184 inverted cubes; injection of 1.2 x 10^7 simulated lines showed ~100% completeness above L_[C II] = 3 x 10^9 L_sun.
+- 2021ApJ...907L..10R: Radiative-transfer MCMC stopped when the ensemble of walkers reached a steady state around a median with statistical variance.
+- 2021ApJ...908..192S: S/N=4 selected to keep expected false detections ≲1; simulated fluxes and sizes check low-S/N and extended-source reliability.
+- 2021ApJ...908L..43N: Stop deconvolution at ∼1σ residual noise; use 12 m data alone after finding an almost-unity ACA comparison ratio.
+- 2021ApJ...909..204F: Archived Herschel image quality was adequate; selected SOFIA cube-projection parameters preserve instrumental resolution.
+- 2021ApJ...909..212K: Restrict fitting to visibilities above the effective noise limit; iterate radiative transfer to temperature convergence.
+- 2021ApJ...909..214L: Continuum subtraction judged adequate by visual inspection, so no more sophisticated method was used
+- 2021ApJ...909L..29D: Observations designed for a constant gas mass depth; low-z objects were observed longer than necessary because of ALMA's minimum integration time
+- 2021ApJ...910...77M: Map acceptance requires at least 35% of limb points, radius between 800 and 1300 arcsec, and standard deviation below 20 arcsec.
+- 2021ApJ...917...73W: Ran ABC iterations until the total distance reached D_tot < 0.09 at an acceptance rate of 5e-5 with 5,000 accepted particles, yielding well-constrained, peaked posterior distributions.
+- 2021ApJ...923..121Y: Used 10-fold cross-validation across a 5x5 grid of regularization parameters to select the image with minimal cross-validation error, verified that the gap and binary components appear robustly acros…
+- 2021ApJS..257...43L: Target sensitivity of 7.5 mJy beam^-1 per 5 km s^-1 channel was chosen to detect individual GMCs with characteristic mass M_mol >= 10^5 M_sun at >= 2-3 sigma out to 17 Mpc; mosaic field of view was s…
+- 2021Galax...9..115D: Selected 42 MHz IF bandwidths for JVLA polarization imaging after testing 5, 10, 50, and 100 MHz bandwidths and finding that bandwidth depolarization only begins reducing S/N between 50 and 100 MHz.
+- 2021MNRAS.500.3667S: 100 noise realisations were found sufficient to produce a smooth Gaussian error distribution, and visibility model residuals were below 4 sigma.
+- 2021MNRAS.502..521D: Because the 2017-2018 outburst alone spanned less than the >2 orders of magnitude in L_X needed for a reliable correlation slope, archival hard-only outbursts from 2008, 2009, and 2012 were added to …
+- 2021MNRAS.503.1174K: In GALFIT point-source extraction, the list of fitted sources was incrementally expanded until no detectable (>=3.5\sigma) residual emission remained in the cluster core.
+- 2021MNRAS.503.1459B: Selected N up to 128k to match the ~10^5 clouds required by radiative transfer SED models for obscuration, and chose integration parameter tau = 0.01 by testing 6 values on an N=8k model to balance c…
+- 2021MNRAS.504.4123N: Ran MCMC for 3 x 10^5 iterations (excluding the first 20% as burn-in) to ensure convergence, and rescaled log-likelihood by sqrt(2N) to prevent underestimation of uncertainties from correlated ALMA s…
+- 2021MNRAS.506.1978L: Used 120-180 MCMC walkers and 600-2000 steps (with 250-1200 burn-in steps) to ensure parameter convergence, and generated N = 3000 simulated beam-convolved noise maps to test whether residual map red…
+- 2021MNRAS.507.3998P: Selected the highest spatial resolution archival maps currently available and emphasized that higher spatial and spectral resolution observations are still needed to disentangle rotating discs from o…
+- 2021MNRAS.508.5259M: Used N=2000 visibility bootstrap simulations and counts of negative 3-4.2 sigma features to establish that > 4.2 sigma continuum detections are reliable and that 3-4.2 sigma detections are reliable w…
+- 2021NatAs...5..319P: A spectral scan accounting for 47 independent trials yielded a 1.7x10^-4 spurious probability for the CO(2-1) broad component (integrated SNR = 6.2), and independent detection of consistent broad kin…
+- 2021PSJ.....2..105T: 30 walkers run for 4000-5000 steps ensured the autocorrelation time was sufficiently shorter than the number of steps, with 50% discarded as burn-in; DIC differences > 10 used for model selection.
+- 2021Sci...371..713L: In GALFIT, iterative 5 sigma residual masking was repeated until PA converged (5th iteration); in EMCEE, 200 walkers with 1000 burn-in and 2000 production steps and a=2 gave ~50% acceptance fractions…
+- 2022A&A...657A..25N: Computed convergence radii (r_conv) and verified they are below about half of the detection radii (r_det), and checked that convolving maps and changing ring widths altered scale lengths by at most 2…
+- 2022A&A...658A.127I: The spectroscopic fit achieved an overall weighted rms deviation of 0.81 with all data groups fit within experimental uncertainties; calculation extrapolations were truncated at v_t <= 1, J <= 60, |K…
+- 2022A&A...660A..14R: 1000 Monte Carlo realizations satisfying FWHM <= 400 km s^-1 for the stack, and 500 delete-d jackknife realizations removing 20% of the sample as a compromise between error estimation and maintaining…
+- 2022A&A...662A...8M: Sample of 15 protoclusters (~53 pc^2) yields ~700 cores in cleanest images (up to ~1500 with bsens/MnGSeg), providing sufficient statistical power to build individual CMFs per protocluster and test v…
+- 2022A&A...662A.121R: Stopped phase-only self-calibration rounds when no significant SNR improvement occurred from one step to the next; ran eddy MCMC chains for ~1000-2000 steps with 200 walkers until convergence.
+- 2022A&A...663A..61P: MCMC sampling used 4 chains with 2000 iterations + 2000 burn-in and converged at R_hat ~ 1; 60% detection fraction threshold selected via sensitivity tests in Appendix 8 showing 70% drops ~22,000 mor…
+- 2022A&A...664A..63X: Checked MCMC convergence over 20,000 iterations, verified consistency between 30 km/s and native ~12 km/s channel cubes, and ran 100 injection-recovery simulations per galaxy to calibrate parameter u…
+- 2022A&A...665A..82O: Fast snapshot observations (~1 hour total on-source time for 22 stars) were sufficient to detect all 22 targets in at least one CO line, though the authors note more CO transitions and larger samples…
+- 2022ApJ...926..159I: Comparing ~1 kpc and 2 kpc beam spectra showed that most ULIRGs have small flux increases beyond ~1 kpc, whereas increasing the beam size further adds substantial noise and hampers faint line detecti…
+- 2022ApJ...930...32C: Achieved median rms of 0.08 mJy beam^-1 (better than requested 0.1 mJy) detecting 35/39 sources; SSA22 subsample of 39 targets (~9% of full S2CLS bright sample) is large enough to generalize conclusi…
+- 2022FrASS...9.1118D: The GA was run for 10 generations of 100 children because chi-squared typically stabilizes by about the 7th generation, stopping when chi-squared ceases to reduce further.
+- 2022MNRAS.511.3017U: Required > 5 sigma line detections for robust redshifts; stopped requesting Cycle 6 ACA tunings once line emission was detected in Cycle 4; simulated 10% of the sky in LensPop so Poisson errors would…
+- 2022MNRAS.512.1012C: Images cleaned until residuals matched rms noise; 6 of 13 galaxies kept after excluding 6 for insufficient SNR and 1 (NGC 4632) for group environment/tidal interaction; MCMC run for 300 walkers x 300…
+- 2022MNRAS.512.1522D: In Sequential Feature Selection, adding parameters beyond the top three (mu_*, Sigma_H2,1kpc, SFE) did not substantially improve the RMS scatter of the prediction (0.25 for 3 features vs 0.24 for all…
+- 2022MNRAS.512.2426M: External shear was included when it improved the Bayesian evidence; optical/near-IR imaging and residuals showed no need for more than two lens mass profiles; 100 random pixelisations were averaged f…
+- 2022MNRAS.513.5790C: Self-calibration iterations were stopped when the peak signal-to-noise ratio (PSNR) decreased, reverting to the calibration tables that yielded the highest PSNR.
+- 2022MNRAS.514..578W: Stopped interactive manual clean for spectral lines when all emission was cleaned and residuals looked like noise with no remaining structure.
+- 2022MNRAS.515.3126I: Adopted PyBDSF thresholds of (pSNR, iSNR) = (3.3, 2.0) where detection purity reaches 95% within r = 1.5 arcsec, and required 95% confidence from 20,000 Monte Carlo mock sources to classify a source …
+- 2022PASJ...74..738T: Self-calibration was stopped after 7-8 iterations when sidelobe features disappeared even around weak objects (< 1 mJy/beam) and dynamic range reached >= 200,000.
+- 2022PASJ...74.1429T: A second Gaussian source was added in the +100 km s^-1 channel of [O III] 88 um when a single source left > 5 sigma residuals, reducing residuals to < 3 sigma; a second RADEX gas component was added …
+- 2023A&A...674A.101M: 10 min on-source per visit was chosen to reach <1% continuum rms to track percent-level line variations; Gaussian components were added to CH and water isotopolog fits until residuals/reduced chi-squ…
+- 2023A&A...674A.125B: Compared spectra extracted across increasing aperture sizes (0.08, 0.4, 4.0 arcsec and ACA 18 arcsec) to verify that no additional flux was resolved out.
+- 2023A&A...675A..85M: Counts are presented down to 0.024 mJy because it is the faintest bin where at least one cluster has non-zero combined differential counts at the 84th percentile; redshift grids were precomputed with…
+- 2023A&A...675A.145L: Selected a flux-limited sample to achieve a minimum signal-to-noise ratio on the weakest source, plus 50% additional targets at lower flux and higher E_B-V/S_nu that could be serendipitously observed…
+- 2023A&A...676A...4C: Collected almost every available archival ALMA/ACA dataset to maximize S/N; stopped self-calibration at 10s intervals when shorter intervals gave no further S/N improvement; tested temperature profil…
+- 2023A&A...676A..67W: Restricted quantitative energetics analysis to the 88 peer-reviewed Closed Ring superbubbles because Broken Rings may have lost unknown amounts of CO to destruction or inhomogeneous expansion, preven…
+- 2023A&A...677A..65G: In the spectroscopic fit, J was limited to <= 40 to keep matrix sizes and computation time reasonable; in the astronomical analysis, 5 uncontaminated v_t = 1 lines matching the pre-existing v = 0 LTE…
+- 2023A&A...677A..76P: Iterations on the gas column density were stopped once the relative difference between the modelled and observed C18O radial intensity profiles was below 10% (achieved after 5 iterations).
+- 2023A&A...678A.137C: The upper tuning alone covers ~70% of the COM lines found in both tunings, making results from the 14 completed sources in the upper tuning robust without waiting for the lower tuning reduction.
+- 2023A&A...678A.194C: Cleaning stopped at 5 sigma (10 sigma for G351.77) because cleaning to <=4 sigma caused divergence and stippling; core detections required S/N > 4 sigma and velocity dispersion > 0.2 km s^-1, with vi…
+- 2023ApJ...944...49F: Targets were grouped by single-dish APEX 870 μm flux and integration times were chosen to achieve at least a 5-sigma detection for the faintest source in each group assuming a factor of 4–5 flux decr…
+- 2023ApJ...950...75I: In MCMC analysis, chains were lengthened while monitoring the integrated autocorrelation time tau and terminated when N/tau exceeded 100 (twice the emcee recommended minimum of 50)
+- 2023ApJ...953...75H: Set line detection threshold at S/N = 5.2 where no negative peaks are found and detection purity reaches 83%; tested filter widths from 100 to 500 km s^-1 and found no additional detections.
+- 2023ApJ...953..164M: Continued tclean deconvolution until residual intensity reached ~1 sigma; used 10,000 bootstrap iterations per cloud in PYCPROPS to evaluate uncertainties.
+- 2023ApJ...954..197I: Number of Fourier modes N^2 = 36 was chosen so that N^2 is smaller than the number of source-plane pixels, the boundary is at least half the shortest wavelength away from the lensed cores, and the sq…
+- 2023ApJ...956..135W: Detection criterion of a 3 sigma response in imaging or matched filtering
+- 2023JMoSp.39411777M: In the laboratory spectrum, 1289 transition frequencies up to J=58 determined a full eighth-order parameter set accurate enough for all radio astronomical observations; in ALMA data, only a handful o…
+- 2023MNRAS.518...13H: Best-fit surface brightness and radial-flow models were selected by minimising the Bayesian Information Criterion (BIC) across 100,000 MCMC runs.
+- 2023MNRAS.518.6092L: Surface density iteration stopped after ~12 iterations when adjacent iterations changed by <5% at all radii; 32 radial bins of 2.5 AU (1/8 of the ALMA beam) were chosen because finer bins require mor…
+- 2023MNRAS.520.1613M: Used dynesty stopping criteria dlogz = 10 in Ph1-Ph2 to locate the physical parameter space and dlogz = 0.8 in Ph3-Ph5 with 180 live points (100 in Ph2) and 300 K-means seed evaluations for the Ph5 l…
+- 2023MNRAS.520.3669G: The survey was scaled back from 1sigma ~ 2 mJy beam^-1 to 1sigma ~ 4 mJy beam^-1 due to bad weather on Mauna Kea, which still achieves the primary goal of uncovering the bright end; the 5sigma detect…
+- 2023MNRAS.521.1045R: Chose imaging weights and channel widths to reach an average SNR >= 4 per channel across at least 10 channels, set ring spacing close to the beam size to avoid oversampling, and ran 20 MCMC walkers i…
+- 2023MNRAS.523.2887M: ALMA upper limits guided by 3σ, blends and baseline uncertainty; G+0.693 limit uses brightest unblended predicted emission.
+- 2023MNRAS.523.5703J: Number of flares chosen at the BIC minimum
+- 2023MNRAS.523.6061L: Colour consistency was judged sufficient for a proof of concept; Hα supplied an independent check.
+- 2023MNRAS.524.1775H: Aperture radius set where recovered [CII] flux plateaus
+- 2023MNRAS.525.6146W: MCMC convergence checked by a different random seed and a longer production run
+- 2023MNRAS.526.5401C: Sample judged sufficient despite later growth of known BPMG membership
+- 2023NatAs...7...49C: Models run to 1 Myr, when CH3CN and HC3N chemistry reaches equilibrium
+- 2023Natur.623..705S: Adopted parameters broadly reproduce the observations; uniqueness is explicitly not established.
+- 2023PASP..135f4503Z: Run enough iterations for the loss to converge
+- 2023PASP..135g4501H: Thresholds and bin factors set empirically from tests
+- 2024A&A...681A.104B: Molecular identification requires prediction of each observed transition; population diagrams support temperatures and columns; overly opaque lines are excluded
+- 2024A&A...681A.110W: Most low-mass/ΔMS stacks reached S/N > 4; use an upper limit for the lowest-mass, lowest-ΔMS nondetection.
+- 2024A&A...681A.117P: Highest J in the single-component fit is chosen where chi2 stops rising when a ratio is added
+- 2024A&A...682A..61C: Self-calibration stopped when shorter solution intervals gave no appreciable improvement
+- 2024A&A...682A..78V: Exclude higher grid temperatures/columns by visual inspection; omit MIRI outlier rejection because it did not significantly improve quality.
+- 2024A&A...682A.127S: Accept H2 shock models agreeing with the detected ratio within 5σ and lying below all ratio upper limits.
+- 2024A&A...683A..62M: Judged C2H3+ most likely carrier after matching frequency, being the sole low-energy candidate, and plausibility in a hydrocarbon-rich absorber
+- 2024A&A...684A..33K: 4-sigma detection threshold; the two sources below it get upper limits
+- 2024A&A...684A.174P: Self-calibration iterated until the S/N stopped improving; a 50 m/s linewidth error adopted as the largest plausible deviation
+- 2024A&A...685A..18L: Used the smallest number of components able to approximate the observed flux densities
+- 2024A&A...685A..52G: Trace ring peaks or the 3σ disk edge; omit height-refinement fits for faint disks lacking sufficiently constrained geometry or complementary ALMA data.
+- 2024A&A...685A.142Y: Log-evidence stopping change 0.01; synthetic recovery; resolution differences below the adopted error level
+- 2024A&A...686A..64M: Choose bins using predicted fluxes and σ ∝ 1/√N for SNR > 3; report upper limits below that threshold.
+- 2024A&A...686A.156D: Clean to 2.5×RMS; choose line ranges and aperture radii by maximum S/N; require at least 60% fidelity for component detections.
+- 2024A&A...686A.187P: Applied a continuum threshold of S/N > 4.5 (leaving 12 galaxies) to ensure meaningful size measurements, excluded 3 multi-component sources, visually checked residual maps, and verified 1-sigma consi…
+- 2024A&A...686A.235P: Long-baseline Monte Carlo tests give below-1% false-detection probability for an S-cluster-sized population.
+- 2024A&A...686A.281B: Only 1.3 mm modeled because the 3.1 mm chi-square distribution stays flat, even with a uv-taper
+- 2024A&A...686A.298G: Self-calibration stopped when S/N no longer improved
+- 2024A&A...687A...8M: Reject the 300 K model using missing predicted lines; accept the molecular detection after seven additional lines agree with the model.
+- 2024A&A...687A..35R: a Sersic index of 1 was adopted because most converged free-n fits gave n < 2
+- 2024A&A...687A..43B: Require per-channel 3σ detections; check missing flux against single-dish measurements.
+- 2024A&A...687A.112M: An average radius suffices for this analysis; model agreement is described qualitatively.
+- 2024A&A...687A.188K: Nesting level chosen so that flux loss is below single-channel sensitivity
+- 2024A&A...687A.217D: Iterations monitored with an a posteriori chi-square test to stop before over-fitting artifacts grow
+- 2024A&A...687A.299L: A model is accepted if it reproduces the data within a factor of about 2-3
+- 2024A&A...687A.311A: Self-cal stopped when RMS stopped decreasing; simulations deemed long enough when bulk disc size was stable over the last 20 orbits
+- 2024A&A...688A...8W: Check the time step against a shorter interval; recalculate good SED fits with more photon packets; retain ten models because of degeneracies.
+- 2024A&A...688A.110S: Self-calibration iterated until dynamic range stopped improving
+- 2024A&A...688A.130H: Check posterior-predicted intensities against observations, test another sampler and repeat inference without the contamination correction
+- 2024A&A...688A.149D: Both images cleaned to the 4 sigma noise level before JvM correction
+- 2024A&A...689A.101C: Fits stopped at first-order combinations because higher order did not converge
+- 2024A&A...689A.145S: Cubes are cleaned down to 1 sigma in all cases
+- 2024A&A...689A.220T: For J2054-0005, chose per band the observation with best continuum sensitivity and resolution closest to B9; tapering tested until no flux gain
+- 2024A&A...689A.339G: Combined morphology, kinematics, energetics, and lack of a central protostar match explosive-outflow signatures
+- 2024A&A...689A.347G: L_X bins sized to hold a similar number of independent data sets per bin
+- 2024A&A...689L...5M: AIC difference >~10 taken as significant to exclude the smooth model; gap vs ring left open when difference is small
+- 2024A&A...690A..33L: Injected ~3800 synthetic cores across 4 draws per field to cover ~80% of the background area for completeness; verified that the 330-core sample above 1.64 M_sun far exceeds the ~40-50 core threshold…
+- 2024A&A...690A.197M: Validated low-S/N (4.4 <= S/N <= 5.5) visibility size measurements using a 1500-source Monte Carlo injection simulation and uv-plane stacking, and tested companion blending by degrading HST PSF and S…
+- 2024A&A...690L..16J: Three consistent line detections taken as unambiguous redshift confirmation
+- 2024A&A...691A..58D: Sample size set by data availability
+- 2024A&A...691A..70N: HNCO cube kept at 0.5 km/s because full 0.2 km/s resolution is not needed for large-scale structure
+- 2024A&A...691A.121N: MARS accepts an extra split point only if chi^2 improves by more than 0.01, with a maximum of two segments
+- 2024A&A...691A.351R: Strict masks preferred to limit noise spikes; QF validated by visual inspection
+- 2024A&A...692A..22Z: above 5 sigma sources treated as real; the analysis was repeated with >5 sigma sources only to test robustness
+- 2024A&A...692A..34C: Clean stopped at residual RMS of 12 uJy/beam
+- 2024A&A...692A..86H: NOEMA spatial reliability was tested with artificial discs; inner-CSE conclusions were checked using merged A+B data.
+- 2024A&A...692A.151S: model parameters were adjusted until a reasonable match with the data was reached, keeping the parameter count low
+- 2024A&A...692A.155K: MCMC stopped once the probability density from all walkers was stable, although individual walkers had not converged
+- 2024AJ....167...75H: Tilt angle was iterated until good visual agreement with the HST image
+- 2024AJ....167..164B: Self-calibration iterated until continuum S/N plateaued
+- 2024AJ....167..232T: Self-calibration stops at SNR plateau, >20% flagged solutions or 6 s integration; expensive visibility fits use visual chain convergence and final chain segments
+- 2024AJ....168..130R: Detections accepted at S/N above 7
+- 2024AJ....168..142L: Limit SED model complexity because four constraining photometric points already support three free parameters.
+- 2024AJ....168..151J: Require core detections in both bands and at least five consecutive significant channels for N2H+/N2D+ spectra
+- 2024AN....34530149M: Model modified iteratively until best agreement with measured brightness temperatures
+- 2024ApJ...961....4B: Self-calibration stopped at the step where noise stopped improving; extra step added only for Sgr B2 N Band 6
+- 2024ApJ...961...28H: Autocorrelation-based burn-in and 1–3σ model residuals; BIC does not conclusively favor GR2ARC
+- 2024ApJ...961L..35M: Fragmentation judged reliable because detection is ~10 sigma and fragments are well separated
+- 2024ApJ...963..103G: Stopped tclean when the maximum residual reached 2 sigma; restricted line ratio analysis to CO (1-0) and CO (3-2) because HCN/HCO+ (1-0) had large beams and HCO+ (3-2) had low S/N.
+- 2024ApJ...963..115L: S/N thresholds chosen by balancing uncertainty and number of spaxels
+- 2024ApJ...963..163I: Require all three H2CO transitions above 5σ for temperature derivation
+- 2024ApJ...964...95S: Observatory pipeline data deemed sufficient without further flagging or calibration; use deeper W1248–2154 project data.
+- 2024ApJ...964..190L: Choose imaging parameters for surface extraction; visually check extraction at each step.
+- 2024ApJ...965..108U: SED fit quality χ²/dof<5; require ΔBIC>10 for an AGN component
+- 2024ApJ...966...32E: Self-calibration stopped when further iterations gave no improvement
+- 2024ApJ...966..132K: Fit region extended to nearly the whole disk because of the small number of resolution elements; best-fit (lowest chi^2) dust-corrected models adopted as fiducial
+- 2024ApJ...967..164X: Used 100 walkers with 10,000 samples each for MS2 (and 50,000 samples each for MS1 where RADEX convergence slowed down at high Ncol) until parameters converged to well-defined peaks.
+- 2024ApJ...968...97L: Conservative mask flux check, S/N>3 selection retaining 95% of pixels, and consistency of the two fitting methods.
+- 2024ApJ...968L..11G: Consistent detections of overlapping lines in the 2012 data gave confidence the ACES detections are real
+- 2024ApJ...969...27B: Validate empirical PSFs with signal-to-noise maps and the isolated field star; finer spatial PSF modeling exceeds available star counts.
+- 2024ApJ...969...56M: Best-fit chi-square similar to zero signal, so no further fitting
+- 2024ApJ...970..114T: Stopped optimizing the disk model because only an axisymmetric continuum match was aimed for
+- 2024ApJ...971...17F: Additional Gaussian components require ln evidence ratio ≥ 5; optimal bicone maximizes the average weighted velocity fraction.
+- 2024ApJ...971..178S: FIR and dust-model agreement validate the proxy; 1 kpc regions contain both gas classes and permit sSFR measurements
+- 2024ApJ...971L...7M: Disk inclination chosen by visual examination of model results
+- 2024ApJ...971L..15Y: Detection checked with matched filtering and map SNR; MCMC reported well-converged and trajectory consistent with morphology
+- 2024ApJ...971L..33K: Self-calibration stopped when no further improvement in image or residuals; final cube chosen on sensitivity/S/N versus resolution
+- 2024ApJ...972...88L: Chemistry evolved to pseudo-steady state at 1 Myr; global fitting restricted to <500 au where emission disappears.
+- 2024ApJ...973..135H: Iteration stopped when model and observed CS profiles agreed within 10% inside 200 au
+- 2024ApJ...974..145S: Structural sampling checked with r-hat < 1.01 and effective sample size > 300 for all variables.
+- 2024ApJ...974..257Z: More than 40 independent Nyquist-sampled measurements per region taken as sufficient statistics
+- 2024ApJ...976..201F: N = 1000 realizations judged sufficient for the error
+- 2024ApJ...976..258K: Best chemical model is the one with the lowest reduced chi-square
+- 2024ApJ...977...38B: Training stops after 20 non-improving epochs; inference stops after sampling the majority of probability density.
+- 2024ApJ...977..161V: Only C1-C7 modelled; C8-C11 and C13 too compact relative to the beam
+- 2024ApJ...977L...9Z: Matching Band 6 sensitivity in Band 8 would have needed more time than a DDT proposal allows
+- 2024ApJS..270....9X: ASHES pilots adequately represent total-sample separations and have a comparable sample size to ASSEMBLE
+- 2024ApJS..275...36F: Purity > 0.99; positive/negative count consistency; injection recovery; agreement among sample and assumption tests.
+- 2024JApA...45....3M: Described MCMC solution criterion: variation between groups of states less than the variance within each group; achieved diagnostics are not stated.
+- 2024MNRAS.527.5808B: Mean/median stack agreement, SED-fit checks and a 1σ beam-size criterion for choosing peak versus Gaussian flux.
+- 2024MNRAS.527.6867A: Iterative line fits reach a stable solution; MCMC sampling exceeds 50× autocorrelation time and is checked with acceptance fractions and trace plots.
+- 2024MNRAS.527.8865B: Integration times were scaled to be 50% deeper than a Cycle 2 ALMA program of 16 bright Herschel lenses (Amvrosiadis et al. 2018; Dye et al. 2018) where 2-minute integrations at ~0.15 arcsec resoluti…
+- 2024MNRAS.528..843L: 100 au balances beam-convolution effects and signal-to-noise; radial fits require at least eight points and sufficient 3σ azimuthal detections
+- 2024MNRAS.528.5019H: Detection threshold set at purity 0.7 (S/N 3.6) as a compromise, similar to but slightly more conservative than previous catalogues
+- 2024MNRAS.528.6768H: Integration chosen for S/N >3 in >50% of spaxels having MaNGA Hα S/N >3
+- 2024MNRAS.532.1752R: MCMC run until chains exceeded 100 autocorrelation times
+- 2024MNRAS.533..771R: Gaussian components were incrementally added until no channel contained >5 sigma emission and the fitting region RMS was <1.5 times the remainder of the spectrum.
+- 2024MNRAS.533.1143M: 35 non-blended lines above 5σ and no missing high-intensity transitions
+- 2024MNRAS.533.3098A: Select the first taper with converged peak flux; check peak/integrated agreement and alternative photometry; mock S/N = 8 adopted because S/N = 4 is insufficient.
+- 2024MNRAS.535.1052B: Cluster evolution time (2 Myr) was set by the maximum dynamical relaxation time of the gas; SPH particle mass (1.5 M_sun) was chosen by convergence testing of cluster evolution runs; impact parameter…
+- 2024MNRAS.535.1364Z: Dendrogram parameters and N/F overlap thresholds chosen after tests
+- 2024NatAs...8..256O: Bandpass line-subtraction iterations stopped after two rounds when quality no longer improved
+- 2024NewA..10902199M: Detection accepted when non-blended lines exceed 5 sigma and the LTE model matches the observed spectrum
+- 2024PASJ...76...54L: Nine lines considered enough to detect and model a molecule in Sgr B2
+- 2024PASJ...76..437Y: Hyper-parameters chosen at the cross-validation error minimum, with visual inspection when images are patchy
+- 2024PSJ.....5..221C: Detection criterion of 3 sigma for a source with known location, met by HC15N and H13CN
+- 2024RAA....24b5009L: Stop line-forest flagging when no additional channels are found; tune cleaning thresholds manually to avoid divergence and improve sensitivity; weak I08448-4343 approaches proposed 3σ sensitivity wit…
+- 2024RAA....24c5009N: Cross-checked TM0 against combined data and simulated discs to ensure TM0 analysis was restricted to R < 0.6-0.7 arcsec where short-spacing distortions are negligible, while admitting that higher sen…
+- 2024RAA....24f5008M: Lines counted as detections when above 5 sigma and non-blended in the LTE model
+- 2024RAA....24g5014M: Lines counted as detected when non-blended and above the quoted sigma significance
+- 2024Sci...383..988B: Apply an H2 intensity threshold and blend/shock exclusions; constrain acceptable PDR models with the observed emitting-layer thickness.
+- 2025A&A...693A.160M: Number of k-means clusters chosen at the elbow of the within-cluster sum of squares curve
+- 2025A&A...693A.199C: Flux recovery checked against IRAM-30m and insignificant leaves rejected; evidence remains insufficient to confirm shock-triggered star formation
+- 2025A&A...693A.286S: Self-calibration rounds continued until peak S/N no longer improved
+- 2025A&A...693L..17S: Agreement across reconstructions, source-noise analysis and recovered-flux comparison support the morphology; kinematics remain necessary for stronger physical conclusions.
+- 2025A&A...694A.108P: Added molecules one at a time and tracked reduced chi2 and parameter changes
+- 2025A&A...694A.147G: Minimum number of extra Gaussians that fits all visible features in the visibilities
+- 2025A&A...694A.171M: Aperture radius chosen where concentric-aperture flux plateaus; companion candidates require fidelity>0.9 and SNR>4
+- 2025A&A...695A.163B: Select sensitivity consistent with theory, reject zero-completeness cubes, and fit only above luminosity limits.
+- 2025A&A...695A.204V: 50 realizations chosen as trade-off between tail sampling and computation time
+- 2025A&A...696A..18C: Check full-window models, residuals near 3σ, burn-in sensitivity and isotope consistency; choose constrained models by visual comparison.
+- 2025A&A...696A..33P: Fiducial sample limited to high-fidelity (F >= 90%) candidates, since lower-fidelity candidates had no HST counterparts
+- 2025A&A...696A.151C: 5 sigma peak-flux threshold chosen as conservative to avoid spurious detections, judged by visual inspection
+- 2025A&A...696A.202S: S/N > 9 chosen from synthetic fitting experiments; fit guesses iterated until averages stop changing
+- 2025A&A...696A.232G: MCMC chains judged converged after discarding 1,000 burn-in steps and inspecting corner plots
+- 2025A&A...697A..87G: Galaxies are kept only if the convergence factor R is at least 0.7, to avoid over-reliance on extrapolation
+- 2025A&A...697A.164X: Maximum measured source size lies below the extraction cutoff; image-noise clipping continued to convergence.
+- 2025A&A...698A.145B: Analyse four ≥5σ [C II] detections; exclude the ∼3σ, spatially offset J1022+2252 detection.
+- 2025A&A...698A.165A: Compact configurations were dropped for continuum because they gave no improvement in rms or image quality
+- 2025A&A...698A.231P: Convergence of the hydrostatic solver reached after a couple of iterations; sixth iteration adopted
+- 2025A&A...698L..16S: Use >3 signal-to-noise in both bands for the spectral-index map; use 3σ upper limits at 3.0 mm for index lower limits.
+- 2025A&A...699A...5T: About five independent beams across HZ10-C permit detailed kinematic analysis; the observations still cannot distinguish all proposed scenarios.
+- 2025A&A...699A..17L: Stopped observing CS in the Galactic anticenter after failing to detect CS along all 13 sight lines in Chamaeleon within the integration times that sufficed for HCO+ and C2H.
+- 2025A&A...699A..34M: Significance threshold for V_N set from noise-only pairs
+- 2025A&A...699A..80H: Plan ≥4σ resolved detections with approximately four independent beams inside one [C ii] effective radius; clean to 1σ and check noise statistics.
+- 2025A&A...699A.187G: Self-calibration stopped after one phase-only round; averaging time chosen by lowest gain-solution failure rate
+- 2025A&A...699A.279D: Top Set cross-correlation cutoff 0.75; synthetic-model recovery judged within each method's resolution limit.
+- 2025A&A...699A.324H: Adopt peak S/N>4.2 based on the reversed-image false-detection test
+- 2025A&A...699L..11V: ≥5 rms channel detections with adjacent qualifying spaxels; positive/negative peak-S/N comparison
+- 2025A&A...700A.235H: Eight-disk windows balance sampling across temperature and detection-rate space.
+- 2025A&A...700L...5G: Check agreement across deconvolutions and parameter explorations, and use multiple starts to avoid local minima.
+- 2025A&A...701A..85K: Number of components chosen by data complexity and S/N; judged adequate from the recovered emission fraction and residual maps
+- 2025A&A...701A.120P: Iterate spectral extraction until convergence; cleaning masks cover observable emission; three annuli cover the line-emitting region.
+- 2025A&A...701A.191V: Used all available usable archival data from the 2017 GMVA campaign (~2 hr after excluding 30 minutes of unusable data) and set the S/N threshold to 6 based on noise floor analysis of pulse-free regi…
+- 2025A&A...702A..18D: Self-calibration iterations were stopped when peak S/N decreased; point-source injection tests in the uv plane confirmed that an optically thick extrapolation from Band 7 would have been detectable i…
+- 2025A&A...702A..35D: Required at least five unblended transitions with S/N >= 3sigma matching modeled rest frequencies and intensities for a confident detection of CH3CONH2, and at least three unblended transitions spann…
+- 2025A&A...702A.133K: Stopped adding multiscale scales above five in tclean because no flux improvement was observed and processes sometimes diverged; masked pixels with SNR < 10 in Gausspy+ because F1 accuracy dropped be…
+- 2025A&A...702A.276P: Supplemental observations in Bands 1 and 7 were requested after the 10 August 2024 analysis revealed the unexpected faintness of T CrB, and a Band 1 re-observation was granted due to disabled Walsh s…
+- 2025A&A...703A.110S: Consistency of calibrator polarization degrees and angles with the AMAPOLA monitoring database at both S1 and S2 confirmed S1 reliability, and persistent detection across S1, S2, and the 2019 archiva…
+- 2025ApJ...980..126K: A 20 sigma cut (10 sigma for NGC 1512 and NGC 4579) on CO 10 PV diagrams ensures S/N > 10 over most of CO 21 to detect r21 variations <= 0.05; disk/outlier boundary tested by varying model contour th…
+- 2025ApJ...984L..13H: 10-20 cube samples were enough for stable DISCMINER medians and quantiles
+- 2025ApJ...984L..14Z: Hyperparameters fixed strictly at the CV minimum, without hand tuning, to treat all disks uniformly
+- 2025ApJ...984L..16G: Choose robust for signal-to-noise/resolution balance; evolve to quasi-steady state; choose thermal photon count for time/noise balance.
+- 2025ApJ...985..124L: Longer runs (225,000 iterations) used when the standard 75,000-iteration chains did not appear converged
+- 2025ApJ...985..243B: Delta BIC > 10 required to reject a single Gaussian, chosen for comparability with other studies
+- 2025ApJ...985..259J: Sensitivity judged sufficient by showing known CON outflows would be detected at 3-28 sigma
+- 2025ApJ...986L...9B: Mask size assessed to capture line flux while minimizing noise; selected rotational-diagram lines have optical depths below 0.09.
+- 2025ApJ...987...11A: Five-sigma detections and common three-band apertures support the selected IMF sample.
+- 2025ApJ...987...69N: The 50 km s−1 threshold separates HVCs from most clouds, which have |Δv| < 40 km s−1.
+- 2025ApJ...988...19S: Observations stopped when the requested sensitivity was reached in 2.8 h; the scan covers 98% of the P(z)
+- 2025ApJ...988...48N: Integration times set to give a 5.2 sigma line detection for 90% of sources
+- 2025ApJ...988...95D: Iteratively adjust spectral parameters until simulated spectra closely match observed lines.
+- 2025ApJ...988..106H: MCMC chain length chosen to exceed 50x the autocorrelation time
+- 2025ApJ...988L..44F: Chi-squared evaluated at frequencies with emission above 5 sigma at known transitions
+- 2025ApJ...989....7T: Iterations stopped within stated tolerances (10% on accretion rate, 6% on disk fraction)
+- 2025ApJ...989...41A: Stopped when the model rims agreed well with the observed bubble.
+- 2025ApJ...989...66V: GP length scales chosen by testing several and visual inspection
+- 2025ApJ...989L..22B: ALMA ephemeris precision ∼2 mas compared with the ∼10 mas coronagraph-centering requirement.
+- 2025ApJ...989L..43Y: Inner-disk asymmetry saturates at H/R ≥ 0.15; first-ring models at 0.15 and 0.2 resemble 0.1; use 1.6 × 10^9 photons for high signal-to-noise
+- 2025ApJ...990L..61C: Choose 60 sources to achieve stacked flux-density uncertainty <5 μJy, corresponding to dust-mass uncertainty 2×10^6 M⊙ at ~100 K.
+- 2025ApJ...990L..70L: Number of combined frames chosen at 50 to 200 for efficiency and PARANG diversity
+- 2025ApJ...991...59B: 300 Monte Carlo iterations judged sufficient for well-sampled Gaussian parameter distributions
+- 2025ApJ...992L..18S: Time-dependent modelling of the second flare was not done because more epochs are needed
+- 2025ApJ...992L..31C: Choose 1 arcsec dispersion window for ~6-degree statistical error while keeping central artificial dispersion away from the streamer
+- 2025ApJ...993..111W: Clean to 2σ; choose USB threshold where FDR is zero for most grids; adopt total-flux correction where mean/median growth curves converge.
+- 2025ApJ...993..166J: MCMC chains run until autocorrelation time converges
+- 2025ApJ...993..200C: Synthetic-model comparison judged by similarity of the general observed features to the density-enhanced or temperature-enhanced model
+- 2025ApJ...993..204H: Adopt two-zone metallicities because the model reproduces optical and FIR luminosities simultaneously.
+- 2025ApJ...993L..40S: Photometry remains consistent with larger apertures and more aggressive uv tapers.
+- 2025ApJ...994..214T: Fits stopped when log(M*) mean and median slopes over the last 1000 steps were below 1% of the value (minimum 2500 steps)
+- 2025ApJ...995...98D: Iterate to converged radial profiles; typically three dust and five gas iterations; validate against unfitted Band 3 data.
+- 2025ApJ...995..108J: At least 30,000 and up to 65,000 fitting iterations to obtain reasonable 1σ errors; inspect residuals for overfitting.
+- 2025ApJ...995L...7L: Adopted the model once residuals were small and the density/temperature simplifications did not affect the velocity structure
+- 2025ApJS..280...33Y: Each clump has enough cores (4 to 33, with two exceptions of 3) for fragmentation analysis
+- 2025MNRAS.537.2232Z: Similar results within 4 and 5 effective radii justify neglecting more distant material
+- 2025MNRAS.538.2358S: Self-calibration iterations were continued only if the SNR improved by at least 5%.
+- 2025MNRAS.538.2421S: The 3σ polarised area was only ∼1.1 times the beam; lowering to 2.5σ expanded it to ∼1.4 times the beam for approximate orientation analysis.
+- 2025MNRAS.538.3001T: Single vs double-peaked Gaussian chosen by lower AIC, BIC and reduced chi-square on at least two of three
+- 2025MNRAS.543..862V: Detection threshold of 3 times local RMS; 4U 1907+09 claimed on a faint point source at the right position in both ALMA images plus a NOEMA detection near 4 sigma
+- 2025NatAs...9.1240P: Resolved-population selection captures >90% of total flux; ALMA imaging cleaned to 3×RMS
+- 2025NatAs...9.1486L: Cleaning continued to 1 sigma to capture all flux
+- 2025NatAs...9.1672Y: Disk-centre offsets iterated four times until the offset parameters converged
+- 2025Natur.641..861H: Integrate inflow across the whole radial range with detected [CI](1-0), R=13 kpc.
+- 2025PASJ...77....1K: M = 5 chosen following the PCA study and checked against the reconstruction error
+- 2025PASJ...77..834O: Lines kept only if detected over a sufficiently large part of the map (60 grid points at S/N > 4)
+- 2025PSJ.....6..107N: Fits match continuum, cores and wings within noise; SNR 16 does not support altitude-dependent ratios.
+- 2025PSJ.....6..183C: self-calibration stopped at 2 s when SNR no longer improved
+- 2025PSJ.....6..286M: Seven latitude points balance Doppler-map fit quality and constrained wind-profile errors
+- 2026A&A...705A..49Z: Fit stopped when median parameter change was small over the last 500 steps
+- 2026A&A...705A..96M: Retain shortest self-calibration interval improving S/N and reducing artifacts; accept amplitude solutions only without adverse flux or image changes.
+- 2026A&A...705A.196H: frank and rave hyperparameters chosen to avoid oscillatory artefacts; parametric forms added until AIC and BIC no longer justified extra complexity
+- 2026A&A...705A.197Z: Observations designed for at least two vertical-FWHM resolution elements at h_sigma=0.05; MCMC required at least 10^5 post-convergence samples; most residuals clean at 5 sigma.
+- 2026A&A...705A.201B: Optically thin model adjusted until qualitative agreement; MCMC convergence for fits judged visually
+- 2026A&A...705A.209L: Resampling by removing 30% of the sample 500 times was used to check that a handful of galaxies do not drive the result
+- 2026A&A...705L..16C: The simulation snapshot with the highest resemblance to the observations across wavelengths and tracers was selected
+- 2026A&A...706A...4R: Visual check of MCMC convergence
+- 2026A&A...706A..16C: Walker distributions appeared stable after the first hundred steps; first 500 steps discarded
+- 2026A&A...706A.236M: Continuum threshold set by the lowest negative peak and <1 expected false detection; line significance >5 mad.
+- 2026A&A...706A.256A: Integrated emission above 3σ defines detection; density scenarios are rejected when they cannot contain the observed SO ratios.
+- 2026A&A...706A.365M: Number of Gaussian components was increased until residuals were featureless and reduced chi2 was near unity
+- 2026A&A...707A..77H: Added Gaussian components until the lowest number sufficient to model the prominent line-profile features; best solution chosen by lowest AIC
+- 2026A&A...707A.121G: Require resolved ring substructure and identifiable shape; bracket aperture uncertainty by at least half a beam
+- 2026A&A...708A.146P: Exposure times (2.4 to 7.9 hr) were set to reach a 5-sigma molecular gas mass limit of log M_H2 > 9 M_sun at z=0.5 assuming a Milky Way SLED and alpha_CO = 4.6.
+- 2026A&A...709A..14Z: Did not refine continuum stacking (e.g., assuming a spectral slope across frequencies) because neither single-band nor multi-band continuum averaging yielded detections.
+- 2026A&A...709A.216U: Convolved ALMA cubes to larger beams until the integrated line flux reached a plateau (indicating all emission was recovered), and manually refined the (f0, Re) parameter grids until the 1-sigma (or …
+- 2026A&A...710A.238D: Stopped self-calibration rounds when S/N no longer improved; verified MCMC convergence via integrated autocorrelation times of 60-80 steps over 5000 steps.
+- 2026A&A...711A.118A: Adopted a 5 sigma (~1.35 K) threshold for line identification, a 3 sigma threshold in moment 0 maps for pixel-by-pixel fitting, and truncated the EG T_ex map at r = 0.9'' where uncertainties became t…
+- 2026A&A...711A.239S: S/N threshold of 12 for N2H+ selected by testing various signal_cut values to exclude noisy/unresolved spectra; velocity uncertainty cut of 0.3 km s^-1 chosen because it is conservative relative to t…
+- 2026A&A...712A.201J: Restricted analysis to hexagons with S/N >= 3 and >5 detected transitions so the number of observational constraints exceeds the 4 free model parameters; halted neural network training via 20-epoch e…
+- 2026A&A...712A.244H: Stopped at the two-component external-dispersion model (T2) because it achieved reduced chi^2 = 0.35 and decisive Bayes factors over alternatives, while non-simultaneity across bands and lack of cont…
+- 2026A&A...713A.149V: Included all cores with at least 20 polarization semi-vectors above 3 sigma_P after Monte Carlo subsampling tests on cores #1 and #14 showed that reducing from 45 to 20 semi-vectors changes angle dis…
+- 2026ApJ...997..218A: Integration times were calculated by scaling measured black hole masses to host bulge masses using local relations, converting to CO luminosities, and scaling down by a conservative factor.
+- 2026ApJ...997L..19Q: A single representative annulus at 1.5'' was deemed sufficient because the optically thin zone is in the outer disk where rare lines are weak and no significant radial trend is detected in either rat…
+- 2026ApJ...999...47L: Map pixel SNRs follow a standard normal distribution centered at 0 with sigma = 1 up to 5 sigma, where positive peaks diverge, and 100 mock noise simulations yield only 0.7 (+0.7/-0.5) false detectio…
+- 2026ApJ...999L..32R: For radial temperature profiles, model complexity (number of segments n) was increased incrementally from a constant temperature until an acceptable fit was obtained without large-amplitude ripples; …
+- 2026ApJ..1000..144T: Restrict comparative analysis to regions meeting data-quality and completeness criteria.
+- 2026ApJ..1000..231B: Downsample synthetic images beyond their approximate correlation timescale to obtain independent observations.
+- 2026ApJ..1000L..14B: Benchmark against known simulation velocities; assess azimuthal dispersion and reject radial extrema consistent with zero.
+- 2026ApJ..1001...33L: Cleaning accepted when residual within mask reached ~0.1 sigma
+- 2026ApJ..1001...67K: Adopt regional significance ≥10 for significant and obvious outliers; check flux-ratio cuts from 8 to 12
+- 2026ApJ..1001..170P: Use two components containing approximately 97% of variance and 10 histogram bins to balance resolution against small-number statistics.
+- 2026ApJ..1002..170S: Check PSF residuals and use a conservative common angle uncertainty after noise-realization tests.
+- 2026ApJ..1003..219W: Composite model reproduces large-scale velocities; pure models fail; PV masses agree with PPV modeling.
+- 2026ApJ..1004...39I: Require >25 top-decile spaxels in any available transition; tested resolution and viewing-angle changes leave overall patterns stable.
+- 2026ApJ..1004..171U: Filled-Rosette integration extended to 10^8 yrs to remove coverage gaps and initialization sensitivity
+- 2026ApJ..1004..194F: Clean threshold and iteration limit judged not to matter because no bright sources are in the fields
+- 2026ApJ..1004L...6D: Ten clean transitions, seven above 3σ, and nearby-position checks support the detection and abundance interpretation.
+- 2026ApJ..1005...94N: Achieved resolving power zeta = 2 r_soi / theta_FWHM ~ 2 (matching the criterion zeta >= 2 for precise M_BH measurements), verified Gaussian-like MCMC posterior convergence over 10^5 iterations, conf…
+- 2026MNRAS.546f2284B: Restricted sub-sample binning to three physically motivated parameters (redshift, stellar mass, and beta_UV) to avoid false positives from p-hacking.
+- 2026MNRAS.549ag781K: Used the Bayesian Information Criterion (BIC) to decide whether to add Gaussian components for H2, CO(2-1), and optical emission lines; cleaned ALMA cube to 3 sigma_RMS with multi-scale and 1 sigma_R…
+- 2026MNRAS.551g1411H: Selected all archival VLA and ALMA observations with angular resolution sufficient to resolve A and B (<1.1 arcsec for ALMA), and adjusted systematic astrometric uncertainties so that linear proper m…
+- 2026MNRAS.551g1639M: An integration time of 8 Myr was chosen based on literature lifetimes for Class 0/I (~1 Myr), Class II/III (2-3 Myr), and main sequence (4-5 Myr) stages.
+- 2026MNRAS.552g1573L: Visual correspondence with core-scale emission and converged Gaussian fits
+- 2026MNRAS.552g1700S: Stopped self-calibration when shorter solution intervals and amplitude self-cal gave no significant SNR improvement; selected fiducial line cubes from a grid of robust/velocity resolutions to optimiz…
+- 2026PASP..138h4104C: Required a minimum SNR of ~7 for robust VLBI fringe detection alongside low probability of false detection (PFD) and physical consistency of delay and rate solutions across polarizations and adjacent…
+
+### Alternatives considered or rejected (bibcode: alternative)
+- 2012A&A...538L...9H: PDR heating and protostellar winds rejected as H2 energy sources
+- 2012A&A...542L..34N: Inferring [NII] 205 from [NII] 122 rejected as risking large systematic errors due to density dependence
+- 2012A&A...544L...7P: Absorption from ambient cloud/envelope rejected since complex organics trace hot corino
+- 2012A&A...548A..69N: Two bipolar outflows, rotation, and precession rejected to explain velocity structure
+- 2012ApJ...749..162O: Dynamics, photochemistry, freeze-out and ice photodesorption judged unlikely to dominate
+- 2012ApJ...750L..21B: Collision remnant of two planets and single-planet plus stellar flyby considered; ring seems too cold for flyby.
+- 2012ApJ...754L..17Z: Ballistic ejection from a rotating disk rejected
+- 2012ApJ...757..129R: Radially varying turbulent width tested with sound-speed scaling; little effect on wings
+- 2012ApJ...757L...1H: Blending HCOOCH3 line and other lines (13CH3CH2CN, 13CH3CCH, acetone) considered; the Source I wide-velocity emission is not explained by them
+- 2012ApJ...757L...4J: c-C3H2 and vinyl cyanide assignments rejected for lines near 220.204 and 220.196 GHz
+- 2012ApJ...760L..25E: Bubble from massive star formation rejected: would need ~1e7 supernovae
+- 2012ApJ...761L..20R: Small (<5 AU) optically thick disk rejected since it would need gas temperature >400 K
+- 2013A&A...549L...6K: Loinard et al. interpretation of B as first hydrostatic core origin of arch rejected since B is not at apex
+- 2013A&A...552L..10S: Bipolar outflow root rejected because velocity gradient orientation differs from the radio jet on the same scale
+- 2013A&A...555A..73K: Photoevaporative wind rejected: 18.6 km/s sound speed implies 1e5 K, too hot for molecular gas
+- 2013A&A...555A.112P: Rotation and expansion ruled out by blue-shifted asymmetry
+- 2013A&A...556L...1V: Third dredge-up during thermal pulse rejected as explanation for ratio increase
+- 2013A&A...557A.132M: Alternative disk structure (de Gregorio-Monsalvo et al.) with lower temperatures and higher densities tested
+- 2013A&A...557A.133D: gamma near 1.0 from earlier studies ruled out for continuum by the new data
+- 2013A&A...558A.123M: Conical jet model rejected as unable to reproduce the steep spectrum; high-energy cutoff scenario also failed
+- 2013A&A...558A.124C: Inflow, streaming motions in the bar, and a massive BH rotation (M_BH 5.6e8 Msun) rejected as explanations of the high-velocity gas
+- 2013A&A...559A..29C: Sargsyan et al. [CII] SFR calibration rejected as not applicable
+- 2013A&A...560A.103M: Free fall, free fall+Keplerian (small Rcrit), conserved AM models rejected
+- 2013AJ....146...91I: Spike noise rejected as explanation for the feature since it spans several consecutive spectral elements
+- 2013ApJ...762L..21M: Stellar corona/flare emission for the central peak considered unlikely because it persists at consistent intensity across all four observations
+- 2013ApJ...763..120C: SMG velocity gradient may not be rotation; could be end-stage merger
+- 2013ApJ...767...88W: Alternative line IDs (e.g. CO(2-1), CO(5-4)) rejected via T_dust or missing companion lines
+- 2013ApJ...767..132H: Single-component source for SPT0538-50 rejected; two components needed
+- 2013ApJ...767L..32Y: Interaction of molecular clumps with N-arm ionized gas considered but kinematics inconsistent
+- 2013ApJ...768L..38H: Thermal origin cannot be excluded by brightness temperature; maser favoured from small size and narrow lines
+- 2013ApJ...770..142N: Observed continuum with higher density (1e9 cm-3) fits HDO equally well as enhanced continuum
+- 2013ApJ...772..149C: Inner asteroid belt within ~3 AU (MacGregor et al. 2013) cannot be ruled out
+- 2013ApJ...773L..34K: Dust remains the most viable explanation for the FIR excess rather than CO
+- 2013ApJ...774...16R: Vertically isothermal disk fails to reproduce asymmetry
+- 2013ApJ...774...39A: Jet precession alone cannot produce the wide cavity
+- 2013ApJ...774...73I: clumpfind and gaussclumps considered; hybrid cprops-style approach chosen
+- 2013ApJ...774L...7M: H13CO+ blue-profile dip could be infall or resolved-out ambient emission
+- 2013ApJ...775L..31S: Large hot core size could be higher accretion rate or a multiple system of hot corinos
+- 2013ApJ...776...77K: Secondary-gas scenario rejected due to high production rate and non co-location
+- 2013ApJ...776L..38F: Freeze-out, photodissociation and different emitting regions considered and judged unlikely to explain low chi(CO)
+- 2013ApJ...777...92S: Projection effect from high-velocity material near center rejected as explanation of low-velocity absorption
+- 2013ApJ...777..126S: Grid 1 solution (hot 390 K, diffuse) rejected because abundance ratio hit grid upper limit
+- 2013ApJ...777L..25M: Self-stirring cannot explain extent beyond ~90 AU; planetary stirring proposed
+- 2013ApJ...779...67B: Single-component source model rejected (>6 sigma residuals)
+- 2013ApJ...779...96T: DCO+ not used for kinematics since it traces extended envelopes
+- 2013ApJ...779L..22J: Outflow-shock water and H2CO or carbon-chain destroyers considered less likely
+- 2013MNRAS.430L..10L: NE extension of A argued to be circumbinary envelope emission rather than a new protostar
+- 2013Natur.493..191C: Central outflow, slow disk wind, and orthogonal inner disk rejected on kinematic grounds
+- 2013Natur.493..191C: Differential stellar heating cannot explain the N-S contrast
+- 2013Natur.493..644B: Low-mass model of 0.003 Msun rejected because it predicts HD flux over an order of magnitude too low
+- 2013PASJ...65..100I: UV (PDR), X-ray (XDR) chemistry and cosmic-ray heating rejected; mechanical heating by jet considered possible
+- 2013PASJ...65L..14F: Eccentric dust orbits rejected as cause of asymmetry
+- 2013PhRvL.111w1101B: E/A segregation rejected: 2D regression increased chi2_nu
+- 2013Sci...340.1199V: Photoevaporation, dead zone, gravitational instability, planet collision remnants and debris-disk clumps considered and judged less likely
+- 2013Sci...341..630Q: Lack of ions in inner disk rejected using HCO+ observations
+- 2014A&A...561A..49H: Single-temperature MBB gives 10x lower dust mass and misses warm and cool dust
+- 2014A&A...562A..26B: Photoevaporation (X-ray and EUV) rejected as sole mechanism
+- 2014A&A...562A..67G: Optically thin greybody rejected as it would underestimate Td (~33 K)
+- 2014A&A...562A..70M: Submillimetre excess explained by very cold dust or by shallow beta=1 dust slope
+- 2014A&A...562A..96I: Single-phase LVG models gave no satisfactory fit
+- 2014A&A...565A..59D: Stellar-dominated SED excluded due to light-to-mass ratio
+- 2014A&A...565A..97C: Distance 17.8 Mpc rejected as gas-to-dynamical mass ratio unrealistically high
+- 2014A&A...566A..74L: Infall with angular momentum conservation considered, deemed unlikely due to sharp disc edge
+- 2014A&A...566A.112M: Wide velocity spread may arise from disk inclination, extraplanar gas, thick molecular disk, or a merger; not discriminated
+- 2014A&A...567A.119S: Star formation as outflow driver rejected due to very low SFR
+- 2014A&A...567A.125G: Nuclear warp and non-coplanar lopsided instability (minor merger or internal trigger) considered; warp and minor-merger judged unsatisfactory/implausible
+- 2014A&A...567A.125G: Star formation as driver of outflow rejected based on SFR an order of magnitude lower
+- 2014A&A...568A..92M: Variability, micro-lensing and non-standard halo scenarios for the knot brightness discrepancy dismissed or not addressed; variability ruled out by similar JVLA/ALMA mor…
+- 2014A&A...568L...5C: r^-1 rotation curve (angular momentum conservation) not ruled out
+- 2014A&A...569A..11S: Rotating edge-on 'pancake' disfavoured: counter-rotation of core B, inconsistent core velocities, regular spacing, B-field direction.
+- 2014A&A...569L...5M: Lines checked against other carriers in MADEX, CDMS and JPL catalogs; none found
+- 2014A&A...570A..28V: All three RADEX escape probability geometries (uniform sphere, LVG, slab) tried; no significant difference, uniform sphere reported
+- 2014A&A...570A..28V: Time spent at constant density in Phase I (S versus L models) not discussed further because solutions were very similar
+- 2014A&A...570L..14R: Interaction with the ISM cannot explain inner structures, since the bow shock lies much further out
+- 2014A&A...572A..40E: Edge-on rotating disk/ring rejected (Mgas/Mdyn too low, unstable); tidal features disfavored
+- 2014AJ....147..141H: Winds or supernova shells as shell origin disfavoured due to no evidence of external effects
+- 2014AJ....148....9I: Band 6 J=3-2 lines considered but J=4-3 chosen
+- 2014ApJ...780..115D: Discrepancy as artifact of single-dish deblending judged unlikely
+- 2014ApJ...781L..39T: J=7-6 CO (z=7.087) ruled out by no [CI](2-1); H2O lines imply z=6.54/8.90, outside the photo-z range; [CI](1-0) at z=3.93 less likely
+- 2014ApJ...782...62R: Warp, outflow, envelope infall, vertical structure and eccentricity considered as contaminants; eccentricity found not degenerate; warp is practically degenerate
+- 2014ApJ...782L...2I: Pulsar wind nebula emission rejected for the ejecta spectrum
+- 2014ApJ...782L..28H: NW-SE outflow rejected: would need ~20 km/s expansion giving proper motion inconsistent with stable 43 GHz continuum
+- 2014ApJ...783...71W: Flat-spectrum embedded AGN as 44 GHz source not modelled
+- 2014ApJ...783...84S: SED fitting for dust temperature rejected as unreliable for mass
+- 2014ApJ...783L..13P: Spiral-arm fit to residuals not attempted due to many parameters and low signal.
+- 2014ApJ...784...78R: Merger origin considered unlikely
+- 2014ApJ...784...82M: Projection effects, stellar mass segregation, optical depth and tidal stripping rejected as explanations
+- 2014ApJ...785...44M: Inflow from the cooling flow was considered but disfavored since the highest speed gas avoids the nucleus
+- 2014ApJ...785..111W: Low masses of LESS 10 and 34 not due to power-law subtraction or obscured stars; may be background source
+- 2014ApJ...785..149S: CMB temperature effects, outlier domination, mid-IR pumping and differential magnification considered as alternatives to pure collisional excitation; CMB and pumping rej…
+- 2014ApJ...785L..12C: Tidal interaction and gravitational instability considered for S2 and S3; no companion detected, disk stable but close to instability
+- 2014ApJ...787...42C: Grain growth (max size 1 mm to 1 cm) could explain the flux decrease without a mass change
+- 2014ApJ...787...48X: H13CN line versus outflow explanation for the red wing; both retained
+- 2014ApJ...787..112C: Automated fitting algorithms rejected as primary method
+- 2014ApJ...788L..34P: Infall versus warp for twisted velocity field; warp preferred since twist is seen outside the gap
+- 2014ApJ...789L..36W: Uniform elliptical disk model gives lower temperatures (55 K east, 79 K west)
+- 2014ApJ...790..160S: Accretion of tidal-arm material onto the disk considered as alternative to outflow
+- 2014ApJ...791...20R: Small optically thick disks (R_out <~10 AU) cannot explain the low spectral indices
+- 2014ApJ...791...42Z: Grain growth, photoevaporation and brown dwarf companions disfavored; planet-disk interaction favored
+- 2014ApJ...791...95A: Turbulence added to thermal velocity could not reproduce line profiles
+- 2014ApJ...791..108F: VERA parallax distance 1.56 kpc rejected in favor of 3.9 kpc
+- 2014ApJ...791..123W: Absorption dips attributed to missing flux or instrument effects rejected
+- 2014ApJ...791L...6W: Overlapping rings excluded in favour of two distinct rings
+- 2014ApJ...792...34O: 3σ feature at 238.805 GHz treated as non-detection because marginal
+- 2014ApJ...792...68S: Molecular cloud emission, envelope remnant, circumbinary accretion, and flyby encounters considered and disfavored
+- 2014ApJ...792...94D: Dust thermal emission as source of 230 GHz continuum rejected (<1 mJy predicted)
+- 2014ApJ...792L...2C: Excitation differences rejected as cause of HCN/HNC difference because of near-identical upper-state energies
+- 2014ApJ...792L..25V: Inner-rim line-of-sight projection rejected
+- 2014ApJ...793....1Y: Protrusions as outflow or optical depth effects or coplanar Keplerian rotation were disfavored
+- 2014ApJ...794L..10Y: Radiative heating by embedded protostars rejected for M5 due to no continuum sources
+- 2014ApJ...795....5O: Two extra SNR>4 sources in Map 9 removed as possible side-lobes of bright quasar
+- 2014ApJ...795...28B: Photo-ablation judged an unlikely source of expansion (mass-loss ~1e-3 Msun/yr, an order of magnitude too low)
+- 2014ApJ...795..152O: Dense gas mostly in the outflow rejected since outflow model cannot explain velocity gradient
+- 2014ApJ...795L..25R: ALMA-only N-PDF considered but not used for comparison since it misses large-scale emission
+- 2014ApJ...795L..30C: Diurnal chemical differentiation judged unlikely for HNC asymmetry because zonal winds mix longitudes in ~45 hr versus 382 hr day
+- 2014ApJ...796....1T: Rotation plus infall alone cannot explain the differing signs of velocity gradients along and parallel to the minor axis.
+- 2014ApJ...796...82Z: Free-free emission and very cold dust (T<~5 K, implausible mass ~50 Msun) considered as alternatives
+- 2014ApJ...796...84R: Optically thin SED fit rejected in favour of optically thick (better chi2)
+- 2014ApJ...796..117G: High-velocity outflowing gas producing the wings was disfavored because a Lorentz-like symmetric shape would be fortuitous and no red/blue peak shift >0.2" was found
+- 2014ApJ...796..131O: Tobin et al. 2012 Keplerian (-0.5) rotation curve is inconsistent with this data
+- 2014ApJ...797...27F: Grain size distribution and ionization-rate changes rejected as causes of the H2D+ offset
+- 2014ApJ...797...90S: Rotation around S nucleus, and tidal feature, rejected as origin of the S high-velocity gas
+- 2014ApJS..214....1U: Exponential disk fits to radial profiles were unsuccessful
+- 2014MNRAS.439.2096W: Tidal shearing and starburst superwinds considered but judged unlikely
+- 2014MNRAS.445.1412Z: Age evolution as explanation of the two populations rejected using Halpha equivalent width
+- 2014Natur.510..247H: Background galaxy and synchrotron origins of continuum rejected
+- 2014Natur.514..600D: GG Tau B perturbation judged unlikely to cause the hot spot
+- 2014PASJ...66..106H: 13-year periodicity considered unconvincing given weaker current burst and no 1973 burst
+- 2014Sci...343.1490D: Photodesorption of mm-sized ice grains gives CO ~10 times lower than observed
+- 2015A&A...573A.116M: CS as reference species instead of HCN rejected because all ring species appear underabundant
+- 2015A&A...574A...5D: Localized radial ejections and rotating latitudinal bands need heavy fine-tuning compared with a spiral
+- 2015A&A...575L...5H: Power-law surface density models fail to reproduce CO and continuum together
+- 2015A&A...576A..41B: ZDCF rejected for lag estimates due to zero-lag peaks
+- 2015A&A...576A.129B: PdBI lines discarded because of blending and different resolution
+- 2015A&A...577A..30A: Collimated jet interpretation for MM1b and MM2 cannot be excluded
+- 2015A&A...577L...4V: Mira B wind contribution ruled out as too faint by 4 orders of magnitude
+- 2015A&A...579A.106V: Photoevaporation and dead-zone trapping disfavoured by large cavities, high accretion and gas drop depth
+- 2015A&A...579A.114M: VeLLO/episodic accretion relic rejected because heating timescales are short and luminosity 0.4-2 Lsun is too high
+- 2015A&A...580A...1M: Radial expansion from the centre (AGN-driven) did not reproduce the pv diagram
+- 2015A&A...581A..85P: Line broadening due to conical jet geometry versus internal jet shock/bowshock; bowshock favoured by earlier work
+- 2015A&A...581A..91S: Precessing A jet scenario, not firmly excluded but disfavoured by the alignment of secondary [OI] peaks with the A disk perpendicular
+- 2015A&A...581A..97S: Mie spheres may be inadequate; HG phase function tested
+- 2015A&A...581L...3V: Mt. Wilson features not fully accommodated; occultation data used only as check
+- 2015A&A...582A..91C: Best power-law continuum fit overestimates 1 mm emission by >20%, so polynomial used instead
+- 2015A&A...582L...5R: Dust temperature from Andrews 2013 relation (~8 K) would give 5x higher dust masses; not adopted
+- 2015A&A...584A..16P: Optically thick emission alone rejected: would require ring ≲3 AU wide
+- 2015A&A...584A..32M: Cosmic-ray diffusion (Simpson et al. 2015a) rejected in favour of merger-induced extended synchrotron emission or two-component ISM
+- 2015A&A...584A..42A: Real absence of dense gas in nucleus rejected in favour of self-absorption
+- 2015A&A...584A..78C: Scaling all maps to a common 1.15 mm wavelength rejected because flux errors approach 30%
+- 2015A&A...584A..99E: Interacting discs versus starburst/AGN-driven outflow; driver undetermined
+- 2015ApJ...798...31A: Photon momentum driving of outflow rejected (zeta ~65)
+- 2015ApJ...798..124R: Photoelectric instability rejected as gap origin due to CO limit
+- 2015ApJ...798L..33H: Single precessing jet vs. multiple driving sources; not distinguished
+- 2015ApJ...799...11X: CR-dominated region models fit the data poorly compared with PDR models with mechanical heating
+- 2015ApJ...799..204C: Higher CR rates reproduce the broad N2H+ emission but not the observed narrow ring
+- 2015ApJ...800...70S: Using the weaker phase calibrator for passband calibration was attempted and abandoned.
+- 2015ApJ...800L..14C: Temperature variation as the cause of asymmetry judged unlikely
+- 2015ApJ...801...82H: Proton-electron free-free from compact HII region ruled out as main opacity from size and brightness temperature ~1500 K at 43 GHz
+- 2015ApJ...801..123W: Low L_FIR could be due to low dust content rather than low SFR; judged not main factor
+- 2015ApJ...801L..26Y: An isolated molecular globule as the mass reservoir is deemed improbable, since a dense, massive globule would collapse
+- 2015ApJ...803...70S: HN13C resolved out by interferometer rejected as main cause
+- 2015ApJ...804...37L: Rotation vs free-fall for the parsec-scale gradient; cannot separate with current data
+- 2015ApJ...804..141Z: Three explanations for missing low-mass cores; first two discounted, third (not yet formed) favored
+- 2015ApJ...805...21C: Photoevaporation and grain growth alone excluded; a low-mass stellar companion cannot be excluded.
+- 2015ApJ...805..186L: Jet precession from a binary companion rejected because it predicts amplitude growing with distance
+- 2015ApJ...806...17R: Rotation plus outflow (V_out~100 km/s) also fits acceptably but matches the IWMV curve and profiles less well
+- 2015ApJ...806..154C: Eccentric disk model explored; significant eccentricity ruled out
+- 2015ApJ...806..260F: Poor calibration of ALMA or ZEUS-1 considered; ALMA calibration trusted, ZEUS-1 checked via free-free
+- 2015ApJ...806L...7Z: Optically thick inner disk with optically thin dips rejected: requires massive disk and brightness temperature conflicts with SED-derived temperature
+- 2015ApJ...806L...7Z: Single dust size distribution with beta~0 disfavored
+- 2015ApJ...806L..22C: Stellar masses ruled out for the edge-on case if coeval with binary
+- 2015ApJ...807L..25K: Younger age, top-heavy IMF, larger cluster, more concentrated distribution could raise model flux
+- 2015ApJ...808...36M: Tidal distortion by Mira B insufficient to explain ellipticity (~5e-6)
+- 2015ApJ...808...69B: Large (~250 AU) inner hole with ~1 Msun star also allowed by model
+- 2015ApJ...808..102K: Center positions from manual intensity peaks tested; Gaussian-fit offsets chosen for higher posteriors
+- 2015ApJ...808L...4A: nterms=2 combined Band 6&7 imaging rejected as S/N too low; tapered image approach used
+- 2015ApJ...810...91H: Non-detection in K may be due to spurious ALMA source, dust obscuration, higher redshift or larger offset
+- 2015ApJ...810..112O: A radial thermal inversion in the outer disk was considered but the non-thermal desorption scenario is favored
+- 2015ApJ...810L...7V: Spatial filtering and sensitivity effects ruled out; low temperature hiding narrow mm concentration considered unlikely.
+- 2015ApJ...811...39I: A molecular bar between CND and ring disfavoured in favour of spiral-like structures
+- 2015ApJ...811...92C: Outflowing disk wind ruled out because it would twist kinematics the opposite way
+- 2015ApJ...811..115W: Sérsic fit disfavored; two power-law preferred
+- 2015ApJ...811L...3T: Point source model rejected in favour of Gaussian
+- 2015ApJ...811L..23K: A much higher N(H2) (Muller & Guélin 2008) appears ruled out by X-ray data.
+- 2015ApJ...812...27A: Spherical envelope with bipolar cavities cannot explain observations better than flattened envelope
+- 2015ApJ...812...27A: Outflow-only explanation of minor-axis gradient rejected because most emission is slower than escape velocity
+- 2015ApJ...812...43B: Alternative HXMM30 model with sub-mm luminous lens deemed unlikely
+- 2015ApJ...812...59O: Extinction of L' light by dense gas, or non-perpendicular outflow axis/precession, as explanations for the conflict with infrared asymmetry
+- 2015ApJ...812...88M: Two-component SFH rejected as poorly constrained
+- 2015ApJ...812..126C: Combining all band 7 scheduling blocks rejected due to pointing offsets and image-synthesis-limited dynamic range
+- 2015ApJ...812..129Y: Geometrically thin model with 30 deg cavity fit worse than 60 deg cavity
+- 2015ApJ...812..134H: Single-component Gaussian fit rejected in favour of two components
+- 2015ApJ...813...45L: Synchrotron contribution to 345 GHz flux judged <10% for most steep-spectrum sources; blazar explanation rejected
+- 2015ApJ...813...76M: Temperature asymmetry from shadowing, or an accreting companion, as alternative to dust trapping
+- 2015ApJ...813...99F: Reported upper limit rather than detection because unmodeled features (asymmetry, eccentricity) may be absorbed by turbulence
+- 2015ApJ...813L..19J: MIDI mid-IR PA mismatch reconciled if MIDI traces heated dust in outflow cavity
+- 2015ApJ...814...22E: Unrelated foreground layer as the absorber is rejected given B335's isolation and high lower-state energies
+- 2015ApJ...814..143A: Clumpy envelope scenario gives a compact distribution rather than a hollow shell; higher CR ionization rate is constrained by HCO+
+- 2015ApJ...814L...1H: Gas depletion and a brief CO-faint phase rejected as sole explanations
+- 2015ApJ...815...64W: Thermal, free-free and ECMI origins rejected; UKR-like spectrum excluded by ALMA data
+- 2015ApJ...815..106H: CH3OCHO assignment of the 72 km/s feature judged unlikely; gravitationally bound circular motion for the wings rejected
+- 2015MNRAS.447.1826Z: SO2 gradient as rotation rejected since it gives 60 Msun, inconsistent with luminosity
+- 2015MNRAS.447.3936M: Primordial H2-dominated origin considered but disfavoured due to short CO photodissociation timescale
+- 2015MNRAS.449.2883G: Equal excitation temperatures ruled out since they need Tex>~180 K versus CO Tex<~50 K
+- 2015MNRAS.450L..80B: Program 2011.0.00061.S not used because of different spectral settings
+- 2015MNRAS.451.1141M: 5.5 sigma threshold rejected as too aggressive given negative-tail noise
+- 2015MNRAS.451L..40R: uv-taper rejected in favour of a uv-cut to limit visibilities
+- 2015MNRAS.452...54M: Line being low-z CO from a foreground galaxy: rejected on probability and counterpart brightness
+- 2015MNRAS.452...54M: Dust-obscured star formation in the clump: not fully excluded
+- 2015MNRAS.452...88K: Bulge origin, outflow and merger origins of the [C II] velocity gradient considered
+- 2015MNRAS.452.2258D: Pure SIE model fit the ring but had lower evidence
+- 2015MNRAS.453.4324M: Episodic mass loss, stellar self-destruction of CO, encounters, tidal disruption and halo-gas sweeping were considered and judged unlikely
+- 2015Natur.520..198O: Inheritance from protostars rejected as sole explanation
+- 2015Natur.522..455C: Changes in dust properties and geometry considered less likely than a lower dust-to-gas ratio, but geometry cannot be fully excluded
+- 2015Natur.527...70P: Southern knot velocity deficit could be from denser medium, intrinsic variability or different inclination
+- 2015PASJ...67....8N: 13CO/C18O difference attributed to isotopic ratios or isotope-selective photodissociation rather than excitation
+- 2015PASJ...67...72T: Clumps not coherent among bands rejected as phase calibration artifacts
+- 2015PASJ...67..122M: Gaussian gas profiles and exponential taper rejected: Gaussian falls too fast; exponential gives too much moment 0 at large radii
+- 2015RAA....15.2213A: Radial outflow gave worse results than parabolic flow
+- 2015Sci...348..311M: External spherically symmetric accreting screen or external clouds rejected as the origin of the RM
+- 2016A&A...585A..58V: Gradual increasing profile as alternative to double drop
+- 2016A&A...586A..70L: Synchrotron origin of the perpendicular feature disfavoured by non-detection at 15 GHz.
+- 2016A&A...586A..99H: Exponentially tapered surface density cannot fit the profile
+- 2016A&A...586A.124G: Tapering ALMA data to ATCA beam to find extended CO(8-7) gave no useful result
+- 2016A&A...586L...1G: Tapered-edge viscous profiles rejected for poorer fit
+- 2016A&A...586L...3C: Disk and infalling envelope origins of HDO rejected based on asymmetry and resolved extent
+- 2016A&A...587A..44P: ULIRG-like alpha_CO rejected as it would make IC 4687 an extreme starburst
+- 2016A&A...587A.145B: Pure infall (M1) and pure outflow (M2) cannot explain the line profiles
+- 2016A&A...588A.112G: Dust trapping in zonal flows or vortices as alternative to snowline origin
+- 2016A&A...589L...5M: 13CN N=1-0 at z=0 as alternative identification rejected (expected narrow, hyperfine pattern, very weak)
+- 2016A&A...590A..25M: Collisional excitation and hot ISM without IR pumping rejected
+- 2016A&A...590A..33P: Single power-law envelope fit rejected as it cannot match large-scale emission
+- 2016A&A...590A..73A: Orbiting SMBH, jet shocks and a projected bicone were considered and judged less likely than a precessing jet
+- 2016A&A...590A.127W: Infall-only Models 1 and 2 rejected because of excess blueshifted emission
+- 2016A&A...590A.127W: Extended shock-heated layer (~4000 K) from non-equilibrium models rejected
+- 2016A&A...591A..73G: Entrainment of dense gas by the jet judged unlikely given near-systemic velocities and short cooling time.
+- 2016A&A...592A..76D: Photodesorption by stellar FUV photons rejected as explanation for SW gaseous NaCl
+- 2016A&A...593A..44L: Instrumental causes (beam squint, gain drift, phase decoherence, primary beam polarization, DA/DV heterogeneity) were considered and judged unable to explain the XX/YY d…
+- 2016A&A...593A..92B: Density increase by 100 or 1000 in the inner 60 AU rejected because it overpredicts C17O emission at high velocities
+- 2016A&A...593A.111T: Alternative temperature law T_vdP=22 (L)^0.16 considered; T_A kept as most conservative
+- 2016A&A...593L...2N: Wind explanation disfavoured relative to overlapping clouds or merger
+- 2016A&A...593L..14F: Clumpfind-type decomposition rejected
+- 2016A&A...594A..70K: Shocks and high gas temperature as the cause of the high ratio considered unlikely
+- 2016A&A...594A..81P: Blue/red regions could be coplanar non-circular (radial) motions, rejected since velocity is too high for density-wave-driven flows
+- 2016A&A...594A.109L: Companion star, planet at alpha Cen, and Pluto-like body for U rejected
+- 2016A&A...595A..39B: Spherical envelope sublimation and outflow transport of water rejected
+- 2016A&A...595A..72M: Low metallicity, end of star formation episode, and minor merger considered less likely
+- 2016A&A...595A.113S: Gravitational instability only marginal (Toomre Q ~10 min)
+- 2016A&A...595L...4L: Association of CH3OH with outflow cavities traced by C17O is ruled out by its smaller size
+- 2016A&A...595L...7D: Infrared pumping rejected as unlikely
+- 2016A&A...596A..75S: Singular isothermal ellipsoid considered as more realistic lens model than SIS
+- 2016A&A...596A..88L: Inner-disk rotation reversal or warp considered unlikely given matching inclination and PA
+- 2016A&A...596A..92K: Very low-mass star excluded at 4 sigma; dense coreless aggregate disfavoured by persistence over one year
+- 2016AJ....152..218I: IC 4329 A non-detection: synchrotron-dominated L-band, extended IR, sub-thermal excitation and broad lines considered unlikely
+- 2016ApJ...816...25P: Steeper p=-4.5 gives matching outer ring but mismatching central regions
+- 2016ApJ...816...27S: One vs two-component disk for HD 104860; two-component preferred
+- 2016ApJ...816...37V: Alternative [C II]-SFR relations (de Looze 2011, Sargsyan 2014, Herrera-Camus 2015) give SFRs lower by factors 2–6
+- 2016ApJ...818...42I: Systematically higher gas density in AGNs not discarded
+- 2016ApJ...818...45S: Stellar wind free-free origin (Acke et al.) and Lebreton et al. models compared and disfavored
+- 2016ApJ...818..158A: Hill radius method judged over-simplified
+- 2016ApJ...818L..16Z: Tapered edge, sharp edge, and sharp cavity models fail to reproduce visibility features
+- 2016ApJ...819..134B: S2 as primary arm requires 15 MJ at 120 au and no spiral-vortex boost
+- 2016ApJ...819L...7N: Gap origin: planet below super-Neptune mass or CO ice sintering
+- 2016ApJ...820...19T: Stellar illumination variation and tidal disturbance by GG Tau B rejected as hot spot cause.
+- 2016ApJ...820...54K: amax = 350 um ruled out since it underestimates SMA 0.89 mm polarization
+- 2016ApJ...820...83S: Variable dust temperature from SED fitting rejected since it is luminosity-weighted
+- 2016ApJ...820L..25Y: CO snow line origin of the outer gap is possible but needs detailed calculations; less likely for the inner gap.
+- 2016ApJ...820L..34S: Keplerian disk cannot explain CS features
+- 2016ApJ...820L..39N: Component 2 could be CGM, outflow, or a faint dwarf; outflow speeds are very modest so it blurs with CGM
+- 2016ApJ...820L..40A: H2O snowline as cause of 1-3 AU substructure judged unlikely
+- 2016ApJ...821...94K: Tex=10 K rejected as inconsistent with NRO N2D+(1-0)
+- 2016ApJ...821..112K: Clump finder (Stutzki & Guesten) attempted but gave no meaningful results
+- 2016ApJ...821L...3T: Elongated CO filament interpreted as ambient gas rather than a collimated outflow, based on narrow velocity dispersion and lack of gradient
+- 2016ApJ...821L..16C: NE knot brightening from jet free-free emission considered but disfavored
+- 2016ApJ...822...80S: Sources without lines are dropped rather than placed in the redshift desert as in Weiss+13
+- 2016ApJ...823...26E: Different XCO or inclination (including warp) do not remove the HI-rich peculiarity
+- 2016ApJ...823...37H: Gradient and curvature source priors compared on mock data; DC mode removed from the clump power-spectrum prior to avoid magnification bias
+- 2016ApJ...823...51B: Covariance-matrix chi2 attempted but numerically unstable, so used 4x4 block averaging
+- 2016ApJ...823...51B: HST I-band mass profile rejected due to dust extinction
+- 2016ApJ...823...68S: Inflow in the disk rejected in favor of outflow for blueshifted NE gas
+- 2016ApJ...823...91S: Isotopologue-specific photodissociation and HD self-shielding cannot fully explain low CO abundance
+- 2016ApJ...823..160D: Protostars viewed face-on rejected as explanation for Class II SEDs (no double-peaked SEDs)
+- 2016ApJ...823L..12G: Outflow entrainment as alternative to PPI for minor-axis velocity gradient
+- 2016ApJ...823L..18H: Selective photodissociation rejected as less likely because it lowers outer C18O intensity
+- 2016ApJ...823L..27H: Wide-angle wind shocks considered but not detected; discussed qualitatively
+- 2016ApJ...824...88O: Pure Keplerian motion rejected for OCS since the outflow-direction velocity gradient is not reproduced
+- 2016ApJ...824..132N: Faraday rotation rejected since EVPA does not change at cm bands; bent-jet beamed model deemed unlikely
+- 2016ApJ...825...79S: Distance and temperature differences rejected as explanations
+- 2016ApJ...825L..10O: Disk size smaller than tidal truncation; eccentric orbit disfavored by >20 yr of relative positions
+- 2016ApJ...826...16E: Unusually compact disks as explanation for CO non-detections judged unlikely
+- 2016ApJ...826..213L: SO shock could alternatively come from ambipolar-diffusion heating in the post-AD-shock region
+- 2016ApJ...827...34O: Lensing considered and rejected from lack of VIKING counterpart and no lensing signature in dust morphology
+- 2016ApJ...827...69H: Star-formation origin of the maser cannot be ruled out
+- 2016ApJ...827...72S: Pure gas-phase chemistry judged insufficient to explain high NO abundance
+- 2016ApJ...827...81I: Mass loss from evolved stars noted as an alternative not tested
+- 2016ApJ...827..142B: Lower Upper Sco dust mass could instead reflect grain growth (opacity change) with unchanged dust mass; cannot be excluded
+- 2016ApJ...828...46A: Scaling T_dust with L* rejected due to missing L* values and survey inconsistency
+- 2016ApJ...828...56W: X-ray emission from star formation (at most ~14%) or inverse Compton from central radio source judged unlikely
+- 2016ApJ...828..100F: Cloud-cloud collision or grain-grain collisions as SiO sources not supported by observations
+- 2016ApJ...828..113M: Ignored the beta-dependence of dust temperature because it is smaller than fit uncertainties
+- ... 4104 more (all member papers are listed in references/sources.md)
+
+### Claims the cards did not rate fully supported (bibcode: [support] finding | result)
+- 2012A&A...538L...9H: [partially] PCC is likely a pre-cluster cloud in a short ~1 Myr phase | result: Highest H2/CO, steepest velocity gradient, Mvir ~5e7 Msun, size 50 pc
+- 2012A&A...542L..34N: [partially] Possibly an unmixed merger of metal-rich and metal-poor components | result: 0.086 vs 0.020
+- 2012A&A...544L...7P: [partially] Consistent with near edge-on rotation, though a close binary is not excluded | result: ~5.5 km/s gradient
+- 2012A&A...548A..69N: [partially] First evidence of >200 GHz SiO maser at Source I | result: Narrow peaks (~3.5 km/s), distribution like J=1-0 maser, Tb>=580 K
+- 2012ApJ...750L..21B: [partially] Shepherd planets favored | result: Shepherd planets reproduce narrow ring; ring too cold for flyby truncation
+- 2012ApJ...752L..30W: [partially] Significant overdensity at z=4.7 | result: Two SMG-like galaxies within 25 kpc; faint third source detected
+- 2012ApJ...754L..17Z: [refuted] Ruled out | result: Predicted largest velocities overlapping at center, not observed
+- 2012ApJ...757..129R: [partially] Qualitative support for a modest warp, though not unique | result: Sinusoidal azimuthal modulation resembling observations
+- 2012ApJ...757L...1H: [partially] Likely associated with outflow/jet root or disk around Source I | result: Double peaks at similar velocities; closer to 22 GHz H2O masers
+- 2012ApJ...757L...4J: [partially] Tentative detection | result: ~18 sigma line, EG/glycolaldehyde 0.3–0.5
+- 2012ApJ...757L...4J: [partially] UV photochemistry of moderately CO-rich methanol ice with mild heating fits best | result: Ratios consistent with CH3OH:CO ice with mild heating
+- 2012ApJ...760L..25E: [partially] Likely tidal, but simulated morphology does not match | result: Continuous velocity link to NGC 4039 arm; no HI; morphology differs from simulation
+- 2013A&A...552L..10S: [partially] Possibly an HII region ionized by a binary at the disk center | result: A single 18 Msun star would dominate the luminosity; a binary lowers it
+- 2013A&A...555A..73K: [partially] The star disperses the disk faster than it accretes | result: Mass loss rate 2e-7 Msun/yr vs accretion ~1e-7
+- 2013A&A...556L...1V: [partially] Fractionation in clumpy cold gas likely dominates | result: Low ratios anti-correlated with 12CO peaks
+- 2013A&A...558A.123M: [partially] Concave jet with a narrow dense plasmon near the jet base is favored | result: Both reproduce the general trend; concave also reproduces the spectrum; 300 GHz May intra-day ratios need an extra flare
+- 2013A&A...558A.124C: [partially] Tentative outflow, to be confirmed with higher resolution | result: Red and blue components deviating by ~100 km/s projected at ~100 pc from the centre, ~7% of nuclear emission (3.6e6 Msu…
+- 2013A&A...558A.124C: [partially] AGN (probably radio jet) helps drive the outflow | result: Outflow rate ~40 times SFR; jet power ~2 orders above outflow kinetic luminosity
+- 2013A&A...559A..29C: [partially] Comparable to massive local galaxies | result: MBH/Mdyn ~0.05, above local relation by ~10 but within upper envelope given inclination uncertainty
+- 2013A&A...560A.103M: [partially] Consistent with Krumholz et al. predictions | result: Field misaligned by 84 deg and weak
+- 2013AJ....146...91I: [partially] Tentative second extragalactic detection; vibrational excitation of HCN may be common in AGN-hosting galaxies | result: Weak feature at 341.51-341.58 GHz, peak ~4.8 mJy, ~5 sigma, flux 0.39±0.07 Jy km/s
+- 2013ApJ...762L..21M: [partially] Central peak exists; possibly an inner planetesimal belt, though stellar emission not excluded | result: F_cen = 0.32 mJy, unresolved, ~6x photosphere
+- 2013ApJ...763..120C: [partially] Possible outflow, not dominating gas depletion; energetics cannot distinguish quasar vs starburst | result: Rate >80 Msun/yr, modest
+- 2013ApJ...764L..14Z: [partially] Disk plane close to plane of the sky | result: 1.3 km/s over 60 AU gives 0.1 Msun unless inclination ~5 deg
+- 2013ApJ...765L..14Q: [partially] Consistent with 3 but too uncertain | result: o/p = 2.7±1.7
+- 2013ApJ...767...88W: [partially] Lensing unlikely to dominate | result: Differences <~20% at z=2-4 unless extreme size evolution
+- 2013ApJ...767L..32Y: [partially] Supports in-situ star formation | result: Two YSO candidates with masses ~34 and ~19 Msun
+- 2013ApJ...767L..32Y: [partially] Both possible; collisions struggle with the number of sources | result: Radiation pressure gives n~4e8 cm^-3; collisions need ~60 clumps
+- 2013ApJ...768L..38H: [partially] Tentative highest velocity feature | result: Radius ~0.018 pc
+- 2013ApJ...769L..12L: [partially] No good evidence for a fixed value, though not conclusive | result: Spans two orders of magnitude
+- 2013ApJ...770...13W: [partially] J2329-0301 may be in a rare phase where quasar feedback has shut down star formation | result: J0210 L_FIR ~3x below stacked relation; J2329 undetected with SFR<40 Msun/yr
+- 2013ApJ...770...13W: [partially] Offset may be partly due to previous sensitivity limits | result: J0210 falls in region of low-z galaxies
+- 2013ApJ...770..142N: [partially] Gas-phase shock chemistry may modify the ratio | result: Outflow HDO/H2O lower, absorption component lowest
+- 2013ApJ...773...44W: [partially] Volume too small to constrain the luminosity function | result: No candidates above 25% probability
+- 2013ApJ...773L..34K: [partially] Lower limits only; lines optically thick | result: M>=0.01 Msun, T>14 K, f<0.35
+- 2013ApJ...774...73I: [partially] Dense clumps not strongly affected by external radiation | result: No strong trends; modest trend to wider clump separation deeper in cloud
+- 2013ApJ...774L...7M: [partially] Likely a molecular bullet | result: Emission at -59<v<-29 km/s, 2.5"x1.4"
+- 2013ApJ...775L..31S: [partially] Past low-mass star formation occurred | result: Extended outflow-like emission unassociated with Peak A
+- 2013ApJ...776...77K: [partially] Proposed hybrid disk with primordial gas and secondary dust | result: Dust-free inner gas disk; dust debris-like
+- 2013ApJ...777...92S: [partially] Photoelectric heating is a viable mechanism | result: r_pe~1e18 cm vs observed 0.56e18 cm, within a factor 2
+- 2013ApJ...777L..25M: [partially] Probably a dust-poor inner hole with co-located gas and dust only between ~55 and ~140 AU | result: Rin dust 55±16 AU vs gas <26 AU, 1.8 sigma difference
+- 2013ApJ...777L..25M: [partially] Cold extended component exists but is weakly constrained | result: Extended model with Rout>490 AU fits long wavelength data
+- 2013ApJ...778..179W: [partially] 4 potential SMG-AGNs in stacking sample | result: Significant soft-band stack; 4 radio-excess SMGs hard (Gamma_eff=0.8) with excess over SF expectation
+- 2013ApJ...779...67B: [partially] High excitation, but cause (starburst, AGN, differential lensing) is uncertain | result: 0.44 vs 0.12 Eyelash and 0.18 DSFG average
+- 2013ApJ...779...96T: [partially] Moderately enhanced B fields may be needed | result: m_A,vir ~0.26-0.4 for C1 cores, B up to ~1 mG
+- 2013ApJ...779L..22J: [partially] A burst in the last 100–1000 yr is proposed, which also explains CH3OH, extended warm carbon-chain chemistry and weak compact continuum | result: H2O abundance of 1e-6 reduces HCO+ by two orders of magnitude; luminosity ~100x higher needed to sublimate water at 175…
+- 2013MNRAS.431L..88H: [partially] Extended star formation more likely than low metallicity | result: G0≳1e3, [CII]/CO≳2700
+- 2013MNRAS.432....2K: [partially] Natural limit to SMG SFR | result: SFR <~1e3 Msun/yr; gas mass >5e10 Msun space density <1e-5 Mpc^-3
+- 2013Natur.493..191C: [partially] Interpreted as gap-crossing bridges | result: Non-Keplerian, low-velocity filaments at systemic velocity
+- 2013PASJ...65..100I: [partially] Tentatively higher in AGN hosts | result: R_HCN/CS > 12.7 in NGC 1097
+- 2013PASJ...65..100I: [partially] High temperature chemistry more plausible; heating source unclear | result: SFR and X-ray flux too low for PDR/XDR
+- 2013PASJ...65L..14F: [partially] Alternatively dust accumulation, possible rocky core formation | result: g/d lower by >=10 gives Q>>1
+- 2013Sci...340.1199V: [partially] Companion-triggered vortex is the most viable scenario | result: 10 MJup planet at 20 AU yields long-lived vortex and high azimuthal dust contrast, but peak is higher and trap narrower…
+- 2013Sci...341..630Q: [partially] Ice giant carbon enrichment likely not from CO ice accretion | result: Consistent with comets, too large for ice giants
+- 2014A&A...561A..49H: [partially] Large undetected molecular component tentatively inferred | result: Missing ~342 Msun/pc^2, alpha_CO >~130
+- 2014A&A...562A..26B: [partially] Gas hole at 20 AU, only a limit on depth | result: Drop of factor >=110; inner radius 20+-5 AU
+- 2014A&A...562A..26B: [partially] Points to one or more massive planets or companions | result: Drops moderate, accretion rate too high for photoevaporation
+- 2014A&A...562A..67G: [partially] A pc-scale torus may not be required | result: N_H~0.3-1.1e24 cm^-2 vs 1.4e24 from X-rays
+- 2014A&A...562A..67G: [partially] Outflow likely but speculative | result: 350 km/s shift; C>5; 2 sigma Fe line
+- 2014A&A...562A..70M: [partially] high density likely responsible | result: WR region dense and old enough to build dust
+- 2014A&A...563A.113V: [partially] Both ice and gas-phase routes plausible | result: H2CO/CH3OH > 0.3
+- 2014A&A...563A.113V: [partially] No firm claim possible due to low S/N | result: H2CO is south but offset from continuum peak
+- 2014A&A...565A..59D: [partially] First major burst of star formation | result: M_dyn=3e10 Msun, M*<3.1e10 Msun, alpha_CO<2.3
+- 2014A&A...565A..59D: [partially] Close to solar, but PDR truncation may allow subsolar | result: Z=0.6-3 Zsun
+- 2014A&A...566A..74L: [partially] Disc dominates small-scale chemistry | result: Flat inner density with abundance 1e-8 reproduces faint emission
+- 2014A&A...567A.125G: [partially] Outflow is the simplest explanation | result: No edge-on disk, no S-shaped distortion, no warp-line match; no secondary nucleus
+- 2014A&A...567A.125G: [partially] Torus size poorly constrained; cold dust not from torus likely contaminates ALMA fluxes | result: Outer radius 20 pc (+6/-10), ~10 times larger than previous fit; ALMA fluxes above model
+- 2014A&A...568A..92M: [partially] Intermediate-to-major merger | result: Mass ratio 1:2.8
+- 2014A&A...568L...5C: [partially] Possible Keplerian disk of ~90 AU radius | result: Centroids lie on equatorial plane, consistent with Keplerian rotation to 0.2" (90 AU) around 0.3±0.1 Msun
+- 2014A&A...568L...5C: [partially] Wide-angle flow suggests disk winds; warp may indicate misaligned B and rotation axes | result: Nested, rotating biconical structure becoming more collimated at higher velocity, with S-shaped warp
+- 2014A&A...569A..11S: [partially] Consistent with Keplerian disks around 4 (A) and 18 (B) Msun, A less certain | result: Coherent velocity gradients, butterfly PV pattern in B; weaker in A
+- 2014A&A...569A..11S: [partially] Favours a fragmenting 1D filament | result: Both unstable; regular spacing and B-field parallel to structure
+- 2014A&A...570A..28V: [partially] SB ring is much colder and less dense than the CND | result: SB ring knot is colder (~40 K) and less dense than CND
+- 2014A&A...570A..28V: [refuted] Multi-gas-phase components are suggested | result: No single model matches all ratios in a region
+- 2014A&A...570L..14R: [partially] Tentative explanation; timescale somewhat longer than orbital half-period | result: ~800 AU bubble, expansion >=5 km/s, timescale ~380 yr
+- 2014A&A...572A..40E: [partially] Hidden Compton-thick AGN may contribute, starburst also possible | result: eta~10; Compton-thick AGN or starburst energetics sufficient; jet insufficient
+- 2014AJ....147..141H: [partially] G0.25 may have formed through cloud-cloud collision | result: Observed filaments, shells and velocities resemble simulations; velocity gradient is an order of magnitude above litera…
+- 2014AJ....148....9I: [refuted] HCN/HNC not diagnostic here | result: No clear difference
+- 2014AJ....148....9I: [partially] May be turbulence-induced heating | result: High HCN/HCO+ ratio with very large line widths
+- 2014ApJ...780..115D: [partially] Tentative evidence that galaxies associated with SMGs are brighter than average | result: 1.4 GHz fluxes also higher in ALESS fields; clustering consistent with field
+- 2014ApJ...781L..39T: [partially] ALMA is sensitive enough but such detections are rare (~1 in 1000 FOVs) | result: ~0.011 per FOV and 7.5 GHz bandwidth (~10^-3 for z>1)
+- 2014ApJ...782...62R: [partially] Consistent with inflow but degenerate with a warp | result: Variable-chi inflow fits as well as a warp
+- 2014ApJ...783L..13P: [partially] If vortices, turbulence must be large | result: Turbulent velocity ~16-22% of sound speed
+- 2014ApJ...783L..13P: [partially] SR 21 scattered light differs from submm; SAO 206462 residuals suggest spiral-like structure | result: SR 21 differs; some overlap for SAO 206462 spirals
+- 2014ApJ...784...78R: [partially] Outflow most likely AGN-driven, though inflow cannot be excluded | result: Outflow needs ~35% of AGN mechanical energy; radiation and SNe insufficient
+- 2014ApJ...785...44M: [partially] Consistent with bipolar outflow driven by radio jets or buoyant cavities, although inflow is not excluded | result: ~1e10 Msun at -250 to +480 km/s, 3-10 kpc N-NW and E-SE, velocity rising with radius
+- 2014ApJ...785...44M: [partially] Gas may be supported in a rotating turbulent disk, marginally unstable | result: 4.9e10 Msun, FWHM 130 km/s, Q≈0.43
+- 2014ApJ...785L..12C: [partially] S1 consistent with a planet; S2 and S3 likely have other causes | result: S1 fit well, S2 and S3 poorly
+- 2014ApJ...786..114L: [partially] Disk is rotating and can be rotationally supported, though it is unresolved and Keplerian rotation needs confirmation | result: Compact disk radius ~120 AU with Keplerian-like rotation; Keplerian radius equals model disk radius
+- 2014ApJ...787...42C: [partially] marginal evidence dust mass rises with stellar mass | result: p of no correlation 0.017-0.044; slope 1.01±0.60
+- 2014ApJ...787...42C: [partially] lower on average but not significant at 3 sigma | result: Delta log Mdust=0.44±0.26; probabilities 0.03-0.21 (high mass), 0.064-0.086 (low mass)
+- 2014ApJ...787...48X: [partially] Cannot distinguish the two | result: Ratio 0.018±0.002 consistent with prediction; outflow rate 32 Msun/yr consistent with upper limit
+- 2014ApJ...787..112C: [partially] Higher Trot may result from LVF-compact ridge interaction | result: OCS and CS peaks offset from MF1 and MF3 nearer LVF
+- 2014ApJ...788..125S: [partially] Faint SMGs exist but do not explain all missing flux | result: 0.76+/-0.19 mJy per blank map
+- 2014ApJ...788L..34P: [partially] Underlying dust distribution is asymmetric | result: 6-sigma asymmetric residuals, SE brighter
+- 2014ApJ...788L..34P: [partially] Possible warp, though unresolved substructure could mimic it | result: Inclination 40 deg outside 2 arcsec, ~30 deg inside; twisted velocity field
+- 2014ApJ...789L...4T: [partially] Initial conditions are highly dynamical, possibly turbulent fragmentation | result: ~2000 AU arc-like structure at ~7 km/s
+- 2014ApJ...789L..36W: [partially] AGN or hot starburst needed, though uncertain | result: log = 14.3, excludes ordinary starburst at ~3 sigma but depends on geometry
+- 2014ApJ...790..160S: [partially] Candidate AGN-driven molecular outflow; accretion not ruled out | result: Compact red-shifted 300-500 km/s feature deviating from rotation, M~7e7 Msun
+- 2014ApJ...790..160S: [partially] Massive tidal feature from elliptical/disk merger | result: 5e8 Msun in 4 kpc tidal arm
+- 2014ApJ...791...20R: [partially] Stellar-like collapse favored, with caveat on simulations and selection bias | result: Radii larger than predicted
+- 2014ApJ...791...42Z: [partially] Consistent with planet-induced pressure bump | result: 80% of dust mass in 79-114 AU; most compact among 13 disks
+- 2014ApJ...791...95A: [partially] Shell ejected ~1941 and includes Weigelt blobs | result: Matching velocity, density, temperature; ejection ~1941
+- 2014ApJ...791..108F: [partially] Qualitative suggestion only | result: High-mass protostars at alpha < 0.2
+- 2014ApJ...791..123W: [partially] Explosive origin centered on BN, age <=1300 yr | result: Multiple lobes overlapping JPCs; Source I and MM1 outside or not the center; four IR bubbles around BN
+- 2014ApJ...791L...6W: [partially] Evidence for close-in companion and protoplanet in outer disk | result: Two companions reproduce inner ring and weaker outer ring; one alone cannot explain outer ring
+- 2014ApJ...792...34O: [partially] LAEs at reionization have lower gas/dust enrichment than local star-forming galaxies, or different PDR/ISM | result: L_[CII] limit implies SFR~2.5 vs 23.9–33.8
+- 2014ApJ...792...68S: [partially] Neither fully explains; a combination remains possible | result: Wind models give a curved velocity field but no extended emission unless modified; tidal resonance problematic
+- 2014ApJ...792...94D: [partially] Cooling flow origin | result: No disks; dispersion below stellar; mass deposition 5.1 Msun/yr
+- 2014ApJ...792...94D: [partially] Probably a recent accretion event | result: 230 GHz luminosity at least 500 times the 610 MHz luminosity
+- 2014ApJ...792L..25V: [partially] Two possible mechanisms are suggested, not tested quantitatively | result: Lower dust/gas temperature and optically thick continuum are plausible
+- 2014ApJ...793....1Y: [partially] Infalling flows feed the disk | result: Infall model reproduces velocities better than coplanar Keplerian; rate ~5e-7 Msun/yr
+- 2014ApJ...793....1Y: [partially] SO enhanced at accretion shock near centrifugal radius | result: Reproduces linear velocity gradient for 250-390 AU
+- 2014ApJ...794L..10Y: [partially] Traces relatively old or weak shocks | result: SiO very weak
+- 2014ApJ...795....5O: [partially] Faint SMG halos are less massive, consistent with sBzKs/LBGs/LAEs | result: b_g < 4, Mh ≲ 7e12 Msun
+- 2014ApJ...795....5O: [partially] [CII] at z=6.60 or [OIII] at z=12.6 if real | result: CO and [CI](2-1), H2O, [OI] excluded
+- 2014ApJ...795...28B: [partially] Cloud surface layers are expanding, perhaps driven by stored magnetic energy | result: NLAs mostly blueshifted, some in HCN, some in emission at cloud edges
+- 2014ApJ...795...28B: [partially] Either foreground magnetic structures or edge-on shock sheets; not decided | result: BLAs parallel to nonthermal filaments, PA ~125-140 deg
+- 2014ApJ...795..152O: [partially] Higher resolution needed | result: No clear rotation; weak high-velocity H2CO
+- 2014ApJ...795..156W: [partially] Reasonable agreement, uncertain | result: Agreement only if '1?' regions are reclassified as stage 2
+- 2014ApJ...796...82Z: [partially] Best fit by a second flat-spectrum synchrotron component, implying a possible PWN; free-free and cold dust disfavoured | result: Excess ~3 mJy at 102-345 GHz
+- 2014ApJ...796...82Z: [partially] Pulsar may be offset westward from SN position | result: -0.4<alpha<-0.1 in west, alpha~0 near center
+- 2014ApJ...796...84R: [partially] May indicate molecular outflow; better data needed | result: OH shifted by -109±19 km/s
+- 2014ApJ...796..117G: [partially] Rotating compact core aligned with jet; likely multiple companions | result: Velocity gradient perpendicular to jet; dynamical mass 56 Msun in ~3000 AU
+- 2014ApJ...796..131O: [partially] Possible Keplerian disk of ~54 AU around ~0.3 Msun protostar | result: Index ~-1 overall; break at 53.7 AU with inner index -0.41±0.24
+- 2014ApJ...796..131O: [partially] SO traces a ring in the infalling envelope with local abundance enhancement likely from shock | result: Tkin ~32 K; ring 70-120 AU
+- 2014ApJ...797...27F: [partially] SM1 is protostellar with a warm disk | result: High density, warm T, X-ray and radio detections
+- 2014ApJ...797...27F: [partially] Either heating by a hidden source/FHSC or HD depletion in the cold centre | result: Abundance drops by factor >=2 toward continuum peak
+- 2014ApJ...797...90S: [partially] Outflows compare to or exceed total SFR, though dependent on X_CO | result: 60 and 50 Msun/yr (X20=1) versus SFR ~50
+- 2014ApJ...797...90S: [partially] Plausibly an AGN radio jet from a recently dimmed AGN, not proven | result: CO tips coincide with radio spurs; no bright submm core
+- 2014ApJS..215...25F: [partially] Lower limits consistent with CO gradient; higher sensitivity needed | result: Tentative detections of HCOO13CH3 in four sources; lower limits on the ratio
+- 2014MNRAS.439.2096W: [partially] Broad Lyα may indicate positive-feedback induced star formation | result: Lyα much broader (~1100-1400 km/s) than [CII]
+- 2014MNRAS.442..577T: [refuted] No compelling evidence for evolution | result: γ = -0.15 ± 0.17
+- 2014MNRAS.442..577T: [partially] Tentative support for the models | result: weak correlations of M* and Mdust with age
+- 2014MNRAS.445.1412Z: [partially] Gravity dominates at high mass, external pressure at low mass | result: alpha_vir decreases with mass
+- 2014PASJ...66...75T: [partially] No strong correlation between methanol and SFR | result: SFR 1.40±0.54 vs 1.26±0.46 for all regions
+- 2014PASJ...66..106H: [partially] Consistent with unsaturated maser, saturation not ruled out | result: Rising and falling timescales of 2-7 months, symmetric; flux-linewidth anti-correlation
+- 2014Sci...343.1490D: [partially] Resonance with a giant planet or a Mars-mass collision | result: compact clump at 85 AU with ~30% of the flux
+- 2014Sci...345.1584B: [partially] Mechanism reproduces temperatures but overpredicts i-PrCN, possibly due to uncertain surface rates | result: Both isomers form at 55-75 K in ices; peak gas phase at 160 K; model ratio 2.2:1 vs observed 0.4:1
+- 2015A&A...573A.116M: [partially] Combination of small CS underabundance and excitation effects | result: CS underabundant ~2 in AGN plus excitation differences
+- 2015A&A...573A.116M: [partially] Stratified disk structure | result: HNCO traces disk; HC3N and SiO concentrated within unresolved center
+- 2015A&A...573A.116M: [partially] CCH may trace obscured/early star formation | result: CCH abundance varies 20% below to 70% above center
+- 2015A&A...573L...1O: [partially] A localized, stable (possibly magnetic) mechanism is needed | result: Continuous directed dust loss over 30-50 yr
+- 2015A&A...574A...5D: [partially] A binary-induced spiral seen nearly edge-on explains the data | result: Spiral at i=60-80 deg reproduces the S-shape and PA asymmetry; shell models do not
+- 2015A&A...576L...2S: [partially] Cold ISM of typical high-z galaxies resembles normal local star-forming galaxies; larger samples needed | result: L_CII/L_FIR ≈ (1.2-2.4)e-3 and L_CII/L_CO = 2.3e3, similar to nearby galaxies
+- 2015A&A...576L..15O: [partially] Much material is in an unresolved equatorial region | result: About 55% of integrated flux within ±10 km/s; ≈0.3 Msun gas
+- 2015A&A...577A..30A: [partially] Accretion luminosity is limited, by swollen/contracting protostars or lower accretion onto stars | result: Ltot exceeds Lbol by ~20
+- 2015A&A...577L...4V: [partially] Hotspot likely due to magnetic activity, possibly related to X-ray outburst | result: Compact component ~10 mJy, ~4.7 mas, Tb ~10000 K
+- 2015A&A...579A.106V: [partially] Radial variation of dust size consistent with trapping | result: Cavities 5-10 AU smaller
+- 2015A&A...580A...1M: [partially] Both can power it; kinematics favour the jet | result: Required efficiency >0.6% for AGN, 0.05-0.1 for jet
+- 2015A&A...581A..48G: [partially] Favors external heating of HC | result: Denser solutions have lower Tkin
+- 2015A&A...581A..85P: [partially] Emission from both the disk and the jet base, with SO abundance 1e-8 to 1e-7 in the disk | result: Peaks displaced along disk axis at 1.9-3.5 km/s; PV across jet shows rotation-like lobes
+- 2015A&A...581A..85P: [partially] Accretion shock or spiral shocks possible but not distinguished | result: 3-4 orders of magnitude above evolved disks
+- 2015A&A...581A..91S: [partially] Source B likely younger than A and drives a faster, more compact jet | result: Collimated red/blue knots aligned with B and with closest [OI] peaks, misaligned with A disk perpendicular
+- 2015A&A...581A..91S: [partially] W may be older, or its outflow is filtered out | result: No compact outflow emission
+- 2015A&A...582L...1T: [partially] Tentative detection of tEME | result: 46 unblended lines at expected velocity; N<=4e15 cm-2
+- 2015A&A...584A..16P: [partially] Does not exclude trapping; could be older trap or finer structure | result: No significant radial variation
+- 2015A&A...584A..42A: [partially] HCN-VIB may peak before onset of strong feedback (tentative) | result: fast-outflow galaxies show fainter HCN-VIB
+- 2015A&A...584A..78C: [partially] Fits observed range but extrapolation to fainter fluxes is not trustworthy | result: alpha≈-1.8 and -2.1, reduced chi2 0.9 and 1.1
+- 2015A&A...584A..99E: [partially] Gas redistribution comparable to depletion timescale; gas stays bound | result: ~1e10 Msun with enhanced excitation; rate >= 1200 Msun/yr
+- 2015ApJ...798...31A: [partially] Turbulent injection is a reasonable explanation | result: Dissipation 1.3e41 erg/s can power warm H2
+- 2015ApJ...798..124R: [partially] A few-Earth-mass planet at ~80 AU is a possible explanation if the gap is confirmed | result: Planet mass ~1-6 Earth masses
+- 2015ApJ...798L..23K: [partially] Nature remains unclear | result: Ambiguous
+- 2015ApJ...798L..33H: [partially] Shocked gas from outflow interaction; precessing jet or multiple sources both possible | result: Walls lie at outflow lobe edges, correlate with maser spots
+- 2015ApJ...799...11X: [partially] Likely magnetic field–density correlation rather than CR heating | result: rho=0.81 for nonthermal; PDR with mechanical heating fits best
+- 2015ApJ...799...81S: [partially] Radio excess attributed to cosmic-ray diffusion | result: CO consistent; 1.4 GHz ~2x larger
+- 2015ApJ...799...81S: [partially] Compact starburst may transform SMGs into compact quiescent galaxies | result: optical sizes ~4x larger; sub-mm Re 1.2 vs quiescent 1.5 kpc
+- 2015ApJ...799..194C: [partially] A major structural transformation, likely via mergers, is needed | result: SMGs larger with lower n
+- 2015ApJ...799..204C: [partially] Coincides with the large-grain region | result: Dead zone out to 50-65 AU
+- 2015ApJ...800L..14C: [partially] Suggests short chemical lifetime | result: 7 sigma southern enhancement
+- 2015ApJ...801...63M: [partially] Shock signatures of HNCO erased by radiation fields in the centre | result: HNCO/SiO drops to ~0.17 in inner disk while SiO stays high
+- 2015ApJ...801...82H: [partially] H- free-free fits with caveats; size/temperature degenerate and fit deviates from data | result: q=1.97 single power law; 1.60 with dust graybody
+- 2015ApJ...801..123W: [partially] Bias hypothesis of lower scatter at low M_BH not supported | result: No significant offset but marked increased scatter, also at 1e8 Msun
+- 2015ApJ...801L..26Y: [partially] They are a proplyd candidate population, implying in-situ low-mass star formation | result: 44 bow-shock sources facing Sgr A*, no near-IR counterparts, SiO sources coincident
+- 2015ApJ...803...60S: [partially] Overlap region dominated by large-scale shocks | result: High CH3OH abundance, similar to NGC 253
+- 2015ApJ...803...60S: [partially] R38 is a candidate forming TDG | result: MH2 ~3.8e7, SFR 0.10, tgas 0.40 Gyr
+- 2015ApJ...803...97S: [partially] Single-dish difference not reproduced; likely beam dilution/narrow Eu range | result: T_rot and T_vib agree for Hot Core and CR 9.1; T_rot > T_vib for CR 7.3
+- 2015ApJ...804...37L: [partially] Cores likely unstable and may collapse to form high-mass stars | result: v_vir generally larger than sigma_v
+- 2015ApJ...804..141Z: [partially] Not in virial equilibrium unless magnetic fields of mG are present | result: alpha < 0.47 at all scales without magnetic fields
+- 2015ApJ...805...21C: [partially] Three-zone model required, though Region 1/2 details are degenerate | result: Two-region model could not match data
+- 2015ApJ...805..186L: [partially] Precession has difficulty; kink instability is a possible origin | result: Amplitude rises then stays constant (~0.1 arcsec)
+- 2015ApJ...805L..13V: [partially] Discrepancy may be due to optically thick lines and beam dilution | result: Tvib agrees, column densities differ by ~2
+- 2015ApJ...806...17R: [partially] Absorption favored, absorber mass comparable to warm gas mass | result: Both fit acceptably; absorption matches IWMV and profiles better
+- 2015ApJ...806..154C: [partially] Models are marginally consistent but systematically high by 7-10% | result: Models give 2.60-2.71 Msun, 1.5-2 sigma above dynamical mass, age 18+/-1 Myr
+- 2015ApJ...806..154C: [partially] Minor tension, possibly from warp or ring model simplicity | result: Their M*=2.80+/-0.11 Msun is a 2 sigma discrepancy
+- 2015ApJ...806..260F: [partially] Star formation dominates [NII] | result: ≥75-80% from star formation
+- 2015ApJ...806L...7Z: [partially] Most dust mass resides in decimeter-size pebbles inside the dips | result: alpha ~2 inside 48 AU with increases at the 13 and 32 AU dips; model with decimeter-size second population reproduces t…
+- 2015ApJ...806L..22C: [partially] also consistent; cannot discriminate | result: SED and single-peaked line reproduced, with weak CO needing low gas mass
+- 2015ApJ...807..128S: [partially] Counts decline steeply; the break implies SFR~10^3 Msun/yr and ~100 Msun/yr/kpc^2 | result: break at 8.4 mJy but no sharp cut-off
+- 2015ApJ...807..128S: [partially] Many secondaries are likely physically associated | result: 80 +/- 30 times excess
+- 2015ApJ...807L...4F: [partially] Filament collision plausibly triggered formation of a ~37 Msun star | result: Two filaments intersect at N159W-S with velocity span enhanced to 8 km/s; collision ~6e4 yr ago; accretion ~6e-4 Msun/yr
+- 2015ApJ...807L..25K: [partially] About 50% of cluster flux arises from low-mass outflows | result: Model 30–50% weaker than observed beyond 2''; overlaps if no rms cut applied
+- 2015ApJ...808...36M: [partially] More complex model needed | result: Higher frequencies lie above prior relation
+- 2015ApJ...808...69B: [partially] May indicate evolved disk, but only suggestive | result: Non-detections
+- 2015ApJ...808..102K: [partially] large grains in less massive disks with steeper midplane gradients | result: beta correlates with mass (0.84), anticorrelates with s (-0.77)
+- 2015ApJ...808..102K: [partially] no strong support for instability | result: CI Tau and DL Tau have no Q<1.5 region; DL Tau near 1.5 at ~100 AU
+- 2015ApJ...808L...1A: [refuted] Go/noGo short observation of a strong quasar is recommended | result: Not reliably predictable
+- 2015ApJ...808L...2A: [partially] Suggests lower thermal inertia at those longitudes, possibly linked to a crater | result: Warmest point at subsolar point in later images
+- 2015ApJ...808L...3A: [partially] Dark rings are likely gaps from planet formation | result: Center offsets increase with radius; near-integer resonances
+- 2015ApJ...808L...3A: [partially] M*~1.3 Msun, needs radiative transfer refinement | result: Roughly Keplerian pattern 2-12 km/s, absorption at low blue velocities
+- 2015ApJ...808L...4A: [partially] Emission consistent with the core of the foreground lensing galaxy | result: Spectral index -0.49±0.13
+- 2015ApJ...809...93D: [partially] Planet gap scenario is promising | result: H-band contrast 3.5 and 6.0 vs observed ~3.3-4.2
+- 2015ApJ...809L..25L: [partially] The earlier ring may be partly due to excitation and sensitivity | result: ALMA shows centrally peaked emission
+- 2015ApJ...810...91H: [partially] Faint ALMA sources resemble normal star-forming galaxies | result: Serendipitous source lies on the main sequence while over half of ALESS SMGs lie above
+- 2015ApJ...810...91H: [partially] Possible pre-merging system | result: Five K-band sources, two ALMA, z~1.3-1.6; expected 0.3-0.7 K-band and 0.1-0.2 submm
+- 2015ApJ...810..112O: [partially] Inner ring is associated with the balance of freeze-out and thermal desorption, with caveats | result: Inner ring may coincide with onset of CO freeze-out, but multiple formation pathways complicate this
+- 2015ApJ...810..112O: [partially] Origin unresolved | result: Gas depletion and cloud absorption disfavoured; chemistry alone insufficient; optical depth requires strong beam diluti…
+- 2015ApJ...810L...7V: [partially] Supports dust trapping of cm-sized grains, subject to optical depth and temperature assumptions | result: Azimuthal width ratio 2.3±0.9
+- 2015ApJ...811...39I: [partially] Other heating, e.g. mechanical, may matter in NGC 1097 | result: 1.11 vs 2.0 despite >100x higher L_X
+- 2015ApJ...811...92C: [partially] Plausible but needs targeted simulations | result: Estimated a~15 AU consistent with 30 AU breaking radius
+- 2015ApJ...811..115W: [partially] M_BH >~ 10^8.5 Msun preferred for large-core model | result: Only the R_core=0.15'' power-law model gives a sharp rise at log M_BH ~8.5; others unconstrained
+- 2015ApJ...811L...3T: [partially] Non-detections explained by uncertain dust properties | result: Upper limits <290 uJy individually, <100 uJy stacked
+- 2015ApJ...811L...4Z: [partially] The molecular structure is expanding and rotating | result: Expansion at about +5 and +7 km/s and a SE-NW velocity gradient
+- 2015ApJ...811L..19W: [partially] The candidate is either a planet or a disk clump, since it is resolved along the disk | result: 50% complete for 4 MJup at 4 AU; one compact candidate at 544 mas
+- 2015ApJ...811L..23K: [partially] High C abundance and translucent clouds may explain low O2 | result: N(C)/N(H2) ≈ 1e-4 and diffuse/translucent clouds
+- 2015ApJ...812...27A: [partially] Plausible given mG fields at high density | result: B ~ 2 mG required
+- 2015ApJ...812...27A: [partially] Consistent with inside-out collapse; small sample | result: Correlation coefficients 0.97, 0.95, 0.91
+- 2015ApJ...812...43B: [partially] Favors interactions/mergers, though blending not excluded | result: Excess ~10x at 0.5 arcsec; models under-predict small separations
+- 2015ApJ...812...43B: [partially] Tentatively favors steep fall off above 8 mJy | result: ALESS counts (steep fall off above 8 mJy) match better
+- 2015ApJ...812...59O: [partially] Outflow parameters can be derived from a narrow central region | result: C=0.05 arcsec^-1, v0=0.10 km/s explain PV diagrams
+- 2015ApJ...812...59O: [partially] C/D appears to decrease exponentially with t_dyn | result: Correlation coefficient -0.94
+- 2015ApJ...812...88M: [partially] Sources are starbursts, possibly major mergers | result: sSFRs above the MS for all six
+- 2015ApJ...812..129Y: [partially] Both scenarios remain viable | result: j is a factor 2-3 lower than expected for 4000 AU infall radius; consistent if radius 2700 AU
+- 2015ApJ...812..134H: [partially] Most massive disk orbits the less massive star, under equal-temperature assumptions | result: Two unresolved sources; north 2e-4, south 8e-5 Msun
+- 2015ApJ...812..134H: [partially] South component embedded in denser material | result: HCO+ peaks near south, HCN near north
+- 2015ApJ...812L..23S: [partially] Suggests continuous SFE distribution | result: Sample follows a continuation of the MS trend
+- 2015ApJ...813...45L: [partially] Sources are AGN-dominated, with star formation uncertain and dependent on dust temperature | result: Large MIR/submm ratios; SFR from hundreds to thousands Msun/yr possible but AGN-only fits also possible
+- 2015ApJ...813...76M: [partially] Single standard vortex insufficient | result: Required artificially extended vortex (r_s=3); second vortex needed for southern extension
+- 2015ApJ...813...99F: [partially] Incompatible; alpha radially dependent or angular momentum removed otherwise | result: alpha<9.6e-4 vs 0.06-0.3 implied
+- 2015ApJ...813..118M: [partially] Dynamical state of dense gas matters more than abundance | result: Both decrease with increasing SFE
+- 2015ApJ...813..128Q: [refuted] Relationship is complex | result: Edges at 40 and 290 AU
+- 2015ApJ...814...53G: [partially] Comparable to comets and cold cores; inheritance and/or efficient fractionation | result: 14N/15N = 200±100
+- 2015ApJ...814L...1H: [partially] Peculiar SF law, possibly due to CO-faint H2 | result: Outer ring SF independent of gas surface density
+- 2015ApJ...815...64W: [partially] Hint of phased flare, not significant | result: p-value ~7%; constant model not rejected
+- 2015ApJ...815..106H: [partially] Possible maser, needs confirmation | result: Point-like narrow 2 Jy line at K2
+- 2015ApJ...815L...8U: [partially] coexist in a few cases; majority lack giant nebulae | result: Two SMGs associated with LABs
+- 2015MNRAS.447.1826Z: [partially] Candidate disk, central mass ~20 Msun | result: Gradient perpendicular to jet, ~1000 AU
+- 2015MNRAS.447.3936M: [partially] Comet-like composition remains consistent with non-detection | result: CO/H2O ice <~55% (~3% if LTE)
+- 2015MNRAS.448.2224C: [partially] Not conclusive in ruling out the AGB scenario | result: Consistent with D08 for short SF timescales; less extreme parameters would give detectable gas
+- 2015MNRAS.450L..80B: [partially] Attenuation too low by ~3 dex in sheet scenario | result: A higher than Engelbracht values
+- 2015MNRAS.451.1141M: [partially] An ALMA Patchy Deep Survey is feasible | result: Expected to reach predicted LF
+- 2015MNRAS.451L..40R: [partially] Tentative variation in temperature/opacity | result: 0.51, 0.41, 0.45 vs 0.56 whole
+- 2015MNRAS.452...54M: [partially] lensing suggested but speculative | result: all within 0.4 arcsec of foreground galaxies; chance 1e-6
+- 2015MNRAS.452...88K: [partially] A disc origin is plausible but outflow/merger origins cannot be excluded at this resolution | result: Gradient and flat-topped/double-peaked profile consistent with disc; v0 sin i ~480 km/s
+- 2015MNRAS.452.2258D: [partially] Disk is collapsing, consistent with merger-induced starburst | result: Q≈0.3
+- 2015MNRAS.453L..26R: [partially] Image-plane results need caution | result: More extended structure found
+- 2015Natur.525..218R: [partially] Lack of massive clusters could have a physical origin, e.g. lack of massive CO clouds | result: CO cores are small
+- 2015Natur.527...70P: [partially] Consistent with rotation plus infall on a slightly inclined disk, with some deviations | result: Velocity gradient east-west with PV peaks offset
+- 2015PASJ...67....8N: [partially] CN enhancement can be explained by XDRs | result: CND CN abundance closer to XDR and L1157(B1) values
+- 2015PASJ...67..122M: [partially] Gas depletion may already be under way | result: Overall gas-to-dust ratio ~10-30 with factor 2-3 uncertainty
+- ... 3804 more (all member papers are listed in references/sources.md)
+
+### Referee caveats the cards inferred (normalised, count)
+- single object: 5
+- single galaxy: 5
+- model comparison is qualitative: 3
+- lte assumed: 2
+- imaging parameters not given: 2
+- mass depends on assumed temperature and opacity: 2
+- no uncertainties on most derived quantities: 2
+- photometric redshifts uncertain for several sources: 2
+- small sample: 2
+- single galaxy limits generality: 2
+- dust mass depends on assumed t and beta: 2
+- alma processing details sparse: 2
+- single disk: 2
+- alpha_co assumed: 2
+- constant alpha_co assumed: 2
+- masses depend on xco and r3-2/1-0 assumptions and missing flux: 1
+- pcc size taken from sinfoni, not resolved by alma: 1
+- shock interpretation relies on line ratios and literature: 1
+- metallicity relies on a handful of cloudy models with degenerate density/u: 1
+- [cii] data are from a different instrument with low s/n and different beam/aperture, so component ratios are …: 1
+- red/blue component ratios given without uncertainties: 1
+- infall rate relies on free-fall and uniform-sphere assumptions: 1
+- fixed phi, tc, tf arbitrary; tr and tau0 degenerate: 1
+- rotation inference limited by beam; binary alternative open: 1
+- brightness temperatures depend on unspecified source sizes: 1
+- line contamination identification is qualitative: 1
+- maser claim rests on indirect arguments: 1
+- no flux uncertainty given: 1
+- only three power-law indices tested; no uncertainties on n10 or alpha: 1
+- beam ~3'' (~150 au) barely resolves dcn, so radial inference is model dependent: 1
+- disk structure and vertical layer fixed from earlier work: 1
+- chemical pathway inference is qualitative: 1
+- model fitting is unspecified (no likelihood/priors, no visibility-domain fitting): 1
+- mass estimate depends on assumed grain size and no opacity: 1
+- shepherd planet conclusion is not unique: 1
+- l_fir mostly adopted from literature with assumed dust temperatures: 1
+- single 25-minute sv dataset without tsys/wvr: 1
+- overdensity claim rests on sw source with unknown redshift: 1
+- purely qualitative interpretation; no quantitative kinematic modeling: 1
+- imaging parameters and calibration not documented: 1
+- contamination of the high-velocity gas by other bn/kl objects not quantified: 1
+- no quantitative fit or uncertainties on model parameters: 1
+- degeneracy among temperature, velocity and warp models unresolved: 1
+- low angular resolution (~2") limits spatial constraints: 1
+- scattered-light comparison is qualitative and depends on dust assumptions: 1
+- identification rests on the assumption that the pure hcooch3 line predicts the blended line's thermal emission: 1
+- flux-scale uncertainty not given: 1
+- no lte or non-lte modelling to confirm maser nature: 1
+- simple isothermal lte model with no uncertainties on t and n: 1
+- blending/line confusion possible at 2.5'' beam in band 6: 1
+- early sv data calibration with 13-16 antennae: 1
+- abundances relative to h2 rely on a continuum lower limit: 1
+- emission is dynamic range limited near bright regions; missing short spacings may bias fluxes: 1
+- single fixed x factor and i21/i10 for a merger: 1
+- clump identification subjective and unresolved: 1
+- pixel sfe comparison at 6'' limited by 24 micron psf contamination: 1
+- tidal origin argued qualitatively: 1
+- only two continuum points; beta depends on assumed disk model and opacity: 1
+- assumed gas-to-dust 100 and co optically thick/temperature argument are uncertain: 1
+- detection at 3.3 sigma with a second unassociated spike suggests noise may be non-gaussian: 1
+- l_ir relies on a single band and local templates: 1
+- only two targets: 1
+- binary companion not directly detected: 1
+- model is not uniquely fitted, no formal parameter search or uncertainties: 1
+- mass-loss rates depend on unstated co abundance and distance: 1
+- tex from only two lines with different beams and assumed same source size: 1
+- possible blending and velocity offset at 692 ghz: 1
+- hdo and h2o from different instruments and resolutions: 1
+- flagging two baselines changes spectra near blue arch; result sensitivity to flagging only shown qualitatively: 1
+- equal tau and source-function assumption for a and b is strong: 1
+- no uncertainties on recovered fractions: 1
+- imaging parameters incomplete: 1
+- gradient could be infall/outflow rather than keplerian; no intensity modeling: 1
+- fit uncertainties are not described; peak selection ad hoc: 1
+- mass estimate depends on assumed opacity and 100 k: 1
+- binary hypothesis is speculative: 1
+- alma is minor; main results rely on pdbi data not reproduced here: 1
+- missing-flux estimates rely on private-communication 30m data: 1
+- temperature of 960 k and density assumed from literature drive the masses; very uncertain: 1
+- wind age of 400 yr is crude: 1
+
+### Limitations the authors admit (bibcode: limitation)
+- 2012A&A...538L...9H: Missing short spacings lose about half of single-dish flux; errors exclude this
+- 2012A&A...542L..34N: Metallicity constraint is loose due to degeneracy with density and ionization parameter
+- 2012A&A...542L..34N: Velocity offset between [NII] and [CII] may reflect modest S/N
+- 2012A&A...544L...7P: Model has more parameters than can be constrained due to degeneracies
+- 2012A&A...548A..69N: Vibrationally excited emission unresolved at ~1.7"x1.2"; maser nature needs confirmation
+- 2012ApJ...749..162O: Resolution too low to characterize profile shape; more centrally peaked profiles not excluded
+- 2012ApJ...750L..21B: Only half of the ring is observed so the ellipse cannot be reliably determined.
+- 2012ApJ...752L..30W: Lack of Tsys and WVR in the data adds 15% flux uncertainty; SW redshift unknown; outflow needs higher resolution
+- 2012ApJ...754L..17Z: All hypotheses need further high-resolution sensitive observations
+- 2012ApJ...757..129R: Model parameters are not unique nor optimized; limited resolution
+- 2012ApJ...757L...1H: Could not perfectly separate HCOOCH3 and H2O contributions due to insufficient spatial resolution
+- 2012ApJ...757L...4J: Identifications depend on completeness and accuracy of spectroscopic catalogs; a third of lines unidentified; some frequencies not measured in the lab
+- 2012ApJ...760L..25E: Clumps mostly unresolved; higher resolution needed; short spacings needed
+- 2012ApJ...760L..25E: Inclination of the arm is uncertain
+- 2012ApJ...761L..20R: Disk unresolved so radius and inclination poorly constrained; CO extended emission affected by missing flux
+- 2012ApJ...761L..32W: GRB 080607 detection is marginal (3.3 sigma) with possible non-Gaussian noise; single-band photometry requires template dust temperature
+- 2012Natur.490..232M: Intensity contrast between spiral windings and interwinding material indicates a more complicated mass-loss-rate variation than modelled
+- 2013A&A...549L...3P: 692 GHz line toward A may be blended, so Tex is an upper limit; if HDO is more extended the ratio is an upper limit
+- 2013A&A...549L...6K: Large-scale emission filtered out; full ALMA with ACA and TP needed
+- 2013A&A...552L..10S: Kinematic fit only, uniqueness not demonstrated
+- 2013A&A...554A..78P: Column density uncertainties from missing flux likely below a factor of two; beam filling factor uncertain.
+- 2013A&A...555A..73K: Band 7 data heavily spatially filtered, redshifted wind not detected, wind age may be underestimated
+- 2013A&A...555A.112P: Dust opacity, temperature uncertainties; 1D model cannot describe filaments
+- 2013A&A...556L...1V: Shell temperature poorly constrained; derived ratios ignore optical depth and chemistry
+- 2013A&A...557A.132M: Only large-scale structure modeled; the northwest emission peak not modeled
+- 2013A&A...557A.132M: Results depend on adopted physical model, since CO constrains mainly surface layers
+- 2013A&A...557A.133D: Thicker disk fitting CO degrades SED in mid/far-IR
+- 2013A&A...557L..11B: Model is preliminary, LTE only, symmetric, and applied to 12CO 3-2 only
+- 2013A&A...558A.123M: Many parameters with few data points prevent a statistically robust constraint of parameter space
+- 2013A&A...558A.123M: Sparse, irregular time sampling
+- 2013A&A...558A.124C: Missing short spacings filter extended emission above ~3"
+- 2013A&A...558A.124C: Outflow estimate uncertain because the angle alpha is unknown
+- 2013A&A...559A..29C: Inclination poorly constrained, so mass is poorly constrained
+- 2013A&A...560A.103M: Cannot distinguish infall+Keplerian from pure Keplerian in outer 30 AU due to low S/N; foreground absorption
+- 2013AJ....146...47I: Missing flux for emission >6''; HCN 4-3 sub-thermal conclusion depends on it
+- 2013ApJ...762L..21M: Spectral index of central peak poorly constrained; inner belt interpretation needs higher resolution
+- 2013ApJ...763..120C: Lya-2 line truncated by spectral coverage; luminosity and redshift uncertain
+- 2013ApJ...763..120C: Resolution insufficient to distinguish bridge from blending
+- 2013ApJ...764L..14Z: Disk mass is only a lower limit with factor of five uncertainty
+- 2013ApJ...765L..14Q: Low S/N prevents constraining the vertical distribution; weak lines unresolved
+- 2013ApJ...765L..14Q: 3-2 and 5-4 lines lie at the edge of the spectral window
+- 2013ApJ...767...88W: Eight ambiguous redshifts hamper determination of the distribution shape; small sample
+- 2013ApJ...767...88W: Dust temperatures not physical; lensing size-evolution bias cannot be excluded
+- 2013ApJ...767..132H: Only compact-configuration data used; SPT0529-54 posterior bimodal
+- 2013ApJ...767L..32Y: Synthesized beam highly elongated, so a filling factor of 0.5 was chosen
+- 2013ApJ...768...91H: Some reliability estimates are lower limits; several maps are poor quality due to low elevation observations.
+- 2013ApJ...768L..38H: Beam too large to measure brightness temperature or resolve kinematics
+- 2013ApJ...769L..12L: CO data are scarce and heterogeneous; masking removes faint diffuse emission
+- 2013ApJ...769L..27H: Counts from targeted fields may show excess; comparison with 870 um counts not quantitative
+- 2013ApJ...770...13W: Source only marginally resolved; intrinsic size poorly constrained and inclination unknown
+- 2013ApJ...770...13W: L_FIR uncertainties exclude dust temperature uncertainty
+- 2013ApJ...770..142N: ALMA data lack zero-spacing; HDO collision rates only up to 450 K so highest HDO lines cannot be modeled; vibrational pumping excluded
+- 2013ApJ...770L..27F: Mass estimates not corrected for non-circular motions; likely lower limits; beam smears out SMBH effect
+- 2013ApJ...770L..27F: Unclear how much HCN is radiatively excited
+- 2013ApJ...772..149C: Only time-steady heating modeled; no flares, nonthermal emission, or 3D geometry
+- 2013ApJ...773...44W: Limited resolution gives only constraints on size; morphology uncertain, large errors on minor axis and PA affect inclination and Mdyn.
+- 2013ApJ...773...44W: [C II] may trace only the central starburst, underestimating bulge mass.
+- 2013ApJ...773L..34K: Collision rates unknown; LTE SLEDs for J>3-2 are upper limits; SPIRE limits cannot constrain model
+- 2013ApJ...774...16R: Models are degenerate, not unique or optimal; systematic residuals at large radii
+- 2013ApJ...774...16R: Band 7 sky frequency in SV measurement set incorrect
+- 2013ApJ...774...39A: Masses are lower limits (optically thin, Tex uncertain, missing large-scale flux)
+- 2013ApJ...774...73I: Clumps are approximately beam-sized; higher resolution will break them up
+- 2013ApJ...774L...7M: Continuum may be contaminated by line emission; noise higher in strong lines
+- 2013ApJ...775L..31S: Most continuum flux resolved out; mass subject to missing flux
+- 2013ApJ...776...77K: Inner radius only an upper limit; brightness exponent ill-determined; full radiative transfer model postponed
+- 2013ApJ...776L..38F: HD may be optically thick, so chi(CO) would be an upper limit
+- 2013ApJ...777...85N: NH3 collisional rates used as proxy for NH2D; approximate
+- 2013ApJ...777...92S: 1.3 mm data S/N modest with sparse uv coverage; large fraction of CO(1-0) absorption resolved out
+- 2013ApJ...777..126S: Missing flux in 6-5 SMA map ~89%; no high-resolution short-spacing data
+- 2013ApJ...777L..25M: Details of grain migration cannot be constrained by the data
+- 2013ApJ...778..179W: Small sample of matched sources limits statistics; stacking results tentative
+- 2013ApJ...778L..25C: Emitting region unresolved; higher resolution and 2D/3D modeling needed
+- 2013ApJ...779...96T: Mass uncertain by a factor of about 2; core size definition arbitrary; kinematic distance to F uncertain
+- 2013MNRAS.430L..10L: Ambient CO emission poorly recovered, so fluxes are underestimated
+- 2013MNRAS.431L..88H: Single-phase ISM assumed; atomic mass very uncertain
+- 2013MNRAS.432....2K: Counts below the LESS flux limit are biased because fields were targeted near brighter sources
+- 2013Natur.493..191C: CO(3-2) is likely optically thick, so it does not trace density; embedded protoplanets would be obscured
+- 2013Natur.493..644B: Main uncertainty is the gas temperature structure of the disk
+- 2013Natur.495..344V: 3 mm beam too large to resolve velocity structure
+- 2013Natur.499..450B: Outflow rate is uncertain due to alpha_CO and geometry
+- 2013PASJ...65..100I: Dynamical mass is simple Keplerian estimate and lower limit
+- 2013PASJ...65..100I: Submm-HCN diagram is tentative, few samples
+- 2013PASJ...65L..14F: Q is an upper limit and g/d assumption is a caveat; optical thickness of C18O uncertain, so derived g/d is a limit
+- 2013PhRvL.111w1101B: Core-shift effect cannot be estimated from current data; K_mu and 1/nu correlated
+- 2013Sci...340.1199V: Azimuthal gas density variations cannot be constrained by current data
+- 2013Sci...341..630Q: Vertical disk structure is uncertain; vertical N2H+ boundaries fixed
+- 2014A&A...561A..49H: Diffuse emission at scales >3" may be missed; dust detection marginal
+- 2014A&A...561A..49H: Missing molecular gas estimates highly uncertain
+- 2014A&A...562A..26B: 12CO is optically thick so surface density is not directly constrained; profiles accurate only to a factor of a few
+- 2014A&A...562A..26B: Beam comparable to 20 AU hole, so only limits inside 20 AU
+- 2014A&A...562A..67G: Size measurement needs confirmation at higher resolution; sparse uv sampling
+- 2014A&A...562A..70M: ALMA flux has large free-free contamination; dust-only detection is ~2.5 sigma
+- 2014A&A...562A..96I: PDR/XDR fits not unique; high-J CND excitation not constrained
+- 2014A&A...563A.113V: Low S/N prevents distinguishing the radial abundance profiles
+- 2014A&A...563A.136M: Mosaic fits require components small relative to the primary beam; no line-profile kinematics in the models
+- 2014A&A...565A..59D: Disk barely resolved so flux distribution and dynamical mass uncertain
+- 2014A&A...565A..97C: Missing flux up to a factor ~2 due to missing short spacings and primary beam
+- 2014A&A...566A..74L: Higher sensitivity and resolution needed to verify the Keplerian disc
+- 2014A&A...566A.112M: CO and C I column densities highly uncertain in SW wings and NE
+- 2014A&A...567A.119S: Disk and outflow models cannot be distinguished at the available resolution
+- 2014A&A...567A.125G: Outflow rate is a lower limit due to limited velocity coverage
+- 2014A&A...567A.125G: Resolution does not resolve kinematics of inner r~50 pc
+- 2014A&A...568A..92M: Knot C in rest-frame optical poorly fitted by the lens model
+- 2014A&A...568L...5C: Higher spatial and spectral resolution needed to confirm disk size and Keplerian nature
+- 2014A&A...569A..11S: Extended emission resolved out; H13CO+ linewidths are lower limits; missing flux affects abundances.
+- 2014A&A...569L...5M: Uncertainty in v_LSR due to complex Orion kinematics
+- 2014A&A...570A..28V: RADEX assumes all transitions sample the same gas, and several ratios use degraded or low-resolution data
+- 2014A&A...570A..28V: Chemical modelling is preliminary and compares time-dependent models only at one time step
+- 2014A&A...570L..14R: Only ~50% of extended flux recovered even with ACA; dynamic range limited to ~50
+- 2014A&A...572A..40E: Cold mass and outflow rate are lower limits; H2 excitation more complex than single-T LTE
+- 2014A&A...572L...9R: Experimental SV observations with phase ambiguities and atmospheric phase errors; single epoch
+- 2014AJ....147..141H: Interferometer-only data resolves out structure larger than 9.1"
+- 2014AJ....148....9I: Marginal 3.6 sigma HNC detection in IRAS 00183-7111 needs confirmation
+- 2014AJ....148....9I: Unconstrained clump physical properties cause largest uncertainty
+- 2014ApJ...780..115D: Photometric redshift uncertainties large; physical association flag may be a by-product of similar redshift distributions
+- 2014ApJ...781L..39T: Redshift remains ambiguous; further CO transitions needed
+- 2014ApJ...781L..39T: Simulation not verified at high z for bright CO emitters
+- 2014ApJ...782...19S: Only one source covered by ALMA; blending of multiple SMGs possible
+- 2014ApJ...782...62R: Large beam precludes measuring systemic-velocity twist; first-cut analysis without extensive modeling
+- 2014ApJ...782L...2I: Silicate dust mass not strongly constrained
+- 2014ApJ...782L..28H: Parameters degenerate and uncertain with single transition at limited resolution
+- 2014ApJ...783...71W: Large SFR uncertainties and possible broad wings need more sensitive data
+- 2014ApJ...783...84S: Pathfinder, small samples, only most massive galaxies; results preliminary
+- 2014ApJ...783L..13P: Emission may be partly optically thick so asymmetries may not trace mass; masses are lower limits.
+- 2014ApJ...784...62A: Primary/secondary comparison may be biased by lower stellar mass of secondaries; observations not designed to characterize disk physical parameters or extended emission
+- 2014ApJ...784...78R: Cannot tell whether gas lies in front of or behind the BCG
+- 2014ApJ...784...82M: Disk masses may be underestimated for brighter disks due to optical depth
+- 2014ApJ...784...82M: Selection effects in incomplete ONC disk census
+- 2014ApJ...785...44M: Emission-only data cannot distinguish inflow from outflow
+- 2014ApJ...785...44M: XCO is the prime mass uncertainty
+- 2014ApJ...785..111W: Single-component SFH cannot model multiple bursts; ages and masses uncertain
+- 2014ApJ...785..149S: Single-component modelling of a heterogeneous sample; no single model fits (chi2 min 10.4 for 3 dof); degeneracies remain; differential magnification not accounted
+- 2014ApJ...785L..12C: Chi2 depends on non-independent error bars; fits degenerate with h_c
+- 2014ApJ...786..114L: Disk is not well resolved, so its radius is an upper limit and the temperature index is rough; model is simple and symmetric and excludes outflow, jet and extended envel…
+- 2014ApJ...787...42C: Dust mass errors exclude opacity uncertainty; upper limits treated inconsistently between samples; multiplicity unknown for most stars
+- 2014ApJ...787...48X: Good map quality only in the central ~3'' due to uv-coverage; astrometric accuracy ~0.1''
+- 2014ApJ...787..112C: LTE, no radiative pumping, constant source size assumed; some species optically thick
+- 2014ApJ...788..125S: Stellar masses have systematic uncertainties up to 5x because SFHs are unconstrained
+- 2014ApJ...788L..34P: Simple model and short baselines; R_in unconstrained; Rout errors underestimated
+- 2014ApJ...789L...4T: H13CO+ nearly optically thick (~7 K peak), so rarer species are needed
+- 2014ApJ...789L..36W: Western nucleus poorly resolved along beam major axis; minor axis unknown
+- 2014ApJ...790..160S: Outflow quantities order-of-magnitude; XCO and line ratio uncertain
+- 2014ApJ...791...20R: Sample biased toward brightest disks; dust opacity absolute values unconstrained
+- 2014ApJ...791...42Z: Fit uncertainties underestimate true uncertainty due to gamma degeneracy
+- 2014ApJ...791...95A: Departure from spherical symmetry would make the solution degenerate; finer resolution needed
+- 2014ApJ...791...95A: Wind parameters during eruption cannot be strictly constrained
+- 2014ApJ...791..108F: Mass uncertain by at least a factor of two from opacity; distance conflict; no magnetic or external pressure
+- 2014ApJ...791..123W: Explosive-center identification needs more theory and observation
+- 2014ApJ...791L...6W: Disk size near largest recoverable scale; imaginary scatter at long baselines may indicate asymmetry needing higher resolution
+- 2014ApJ...792...34O: Single object; may not be representative of LAE population
+- 2014ApJ...792...68S: Model degeneracies; fluxes scaled by hand; mass of AS 205 S uncertain
+- 2014ApJ...792...94D: Diffuse CO resolved out; ALMA flux in blueshifted part only 20% of IRAM 30m; GMA count likely a lower limit
+- 2014ApJ...792L...2C: Lack of short baselines prevents ruling out additional H2CO sources with sizes >= 5 arcsec
+- 2014ApJ...792L..25V: Dust-trap effect on gas temperature not modelled
+- 2014ApJ...793....1Y: Missing flux (~80% of C18O) hinders outer disk radius; p, q, T0, vturb poorly constrained
+- 2014ApJ...794L..10Y: Unclear whether maser can persist after shock ended; driving source unclear
+- 2014ApJ...795....5O: Small number of fields and unknown redshift distribution of faint SMGs give large bias uncertainties; SLE-1 could be systematic noise
+- 2014ApJ...795...28B: Mass-loss rate is poorly constrained; density is an upper bound, column a lower bound, layer thickness unknown
+- 2014ApJ...795..152O: Mass estimate depends on inclination; emission >12" unreliable
+- 2014ApJ...795..156W: Small sample, selection effects, superposition and low-number statistics
+- 2014ApJ...795L..25R: Core unresolved so density is a lower limit; deviation may be from temperature
+- 2014ApJ...795L..30C: Single line per species insufficient to constrain the true HNC distribution
+- 2014ApJ...796....1T: Missing flux and outflow complicate other lines near systemic velocity; temperatures in hydrodynamics (isothermal 13.5 K) and radiative transfer (power law) are inconsis…
+- 2014ApJ...796...82Z: Equipartition estimates may be inaccurate for flat spectra; double-subtracted images unusable due to errors
+- 2014ApJ...796...84R: Spatial resolution insufficient to resolve structure; higher resolution needed
+- 2014ApJ...796...84R: Photometric uncertainties near the SED peak are large
+- 2014ApJ...796..117G: Model parameters not tightly constrained; selection heuristic
+- 2014ApJ...796..117G: Spectral resolution gives only two samples per FWHM so line profile modeling not attempted
+- 2014ApJ...796..120W: Resolution and S/N insufficient for detailed modeling; CO fluxes unreliable due to cloud confusion; B inclination unknown
+- 2014ApJ...796..131O: Missing flux on large scales biases rotation velocities at large radii
+- 2014ApJ...796..131O: SO is optically thick so density and abundance unconstrained
+- 2014ApJ...796L..15S: x_CO is the biggest uncertainty; may not apply to the hole
+- 2014ApJ...797...27F: Masses uncertain to factors of a few
+- 2014ApJ...797...90S: Mass estimates depend on uncertain X_CO; may be an order of magnitude lower if optically thin
+- 2014ApJS..214....1U: Assumed uniform CO line ratio and alpha_CO give uncertain masses; interferometric masses sometimes exceed single-dish
+- 2014ApJS..215...25F: APEX data lack sensitivity for definitive 13C-MF detection; ~10% sub-band calibration differences
+- 2014MNRAS.438.1267S: Deblending requiring 250um detection for 350um priors may bias against 250um-faint sources
+- 2014MNRAS.439.2096W: Lyα-2 constraints on high-ionisation lines are much looser, so AGN photoionisation cannot be excluded from those lines
+- 2014MNRAS.442..577T: Small number of SMGs per age bin makes correlations weak; upper-limit spectral indices boost L1.4GHz and lower q_IR
+- 2014MNRAS.445.1412Z: Lack of short and zero spacings; alpha_CO uncertain; no low-mass GMCs detected
+- 2014Natur.510..247H: GRB 051022 host is unresolved so site-vs-nucleus is uncertain
+- 2014Natur.511..567J: Modest resolution, compact disks and cloud absorption prevent tight stellar mass constraints; inclination ambiguity for HK Tau A unresolved
+- 2014Natur.514..600D: Missing short baselines cause flux loss, precluding quantitative large-scale CO 6-5 analysis
+- 2014PASJ...66...75T: Low S/N and limited resolution hinder precise classification
+- 2014PASJ...66..106H: Model assumes a saturated maser and collisional pumping only, with superseded collision rates
+- 2014Sci...343.1490D: Deprojection has near/far ambiguity; clump motion not confirmed
+- 2014Sci...345.1584B: Preliminary LTE model not fully optimized for ALMA; abundance uncertainties exclude free-free contamination and dust property uncertainties
+- 2015A&A...573A.116M: Tex and source size fixed; HCN opacity uncertain in center; H13CO+ and SO at edge of detection
+- 2015A&A...573L...1O: Dust mass of C is a lower limit as it may not be optically thin; much flux is resolved out
+- 2015A&A...574A...5D: Short observation and sparse uv coverage hamper interpretation
+- 2015A&A...575L...5H: Disk barely resolved; best model does not perfectly fit CO profiles
+- 2015A&A...576A..41B: Results from a single track; ALMA cadence coarse
+- 2015A&A...576A.129B: Hypotheses for gGg' upper limit admittedly questionable; lines too few and weak to dispel confusion
+- 2015A&A...576L...2S: Delivered data did not meet requested sensitivity; ~25% flux calibration uncertainty
+- 2015A&A...576L..15O: Flux lost to missing short spacings; large uncertainties in masses and orbital estimates
+- 2015A&A...577A..30A: MM1a free-free fit least robust as turnover may be above 25 GHz
+- 2015A&A...577L...4V: Band 3 resolution too poor to confirm the hotspot there; 25 Oct Band 3 epoch affected by resolved calibrator
+- 2015A&A...579A.106V: Model not unique; no uncertainties derivable; 12CO optically thick
+- 2015A&A...579A.114M: C18O emission too weak for further kinematical analysis
+- 2015A&A...580A...1M: Only one molecular line, so excitation mechanisms cannot be discriminated; X_CO uncertain
+- ... 4924 more (all member papers are listed in references/sources.md)
+
+## Paper excerpts (40 of 3455, chosen for detail and spread over fields/years)
+
+### 2018MNRAS.481.1976Z: The [C II] emission as a molecular gas mass tracer in galaxies at low and high redshifts (2018; high_z_galaxies; observational_alma_primary)
+- question: Are z~2 main-sequence galaxies [C II] deficient, and what physical parameter drives [C II] luminosity (is [C II] an empirical molecular gas mass tracer)?
+- claim [supported]: H: z~2 main-sequence galaxies are [C II] deficient like local (U)LIRGs given their SFRs and radiation fields | E: Measured [C II] fluxes with uv-plane fits and compared L_[CII]/L_IR with literature compilations | R: L_[CII]/L_IR ~ 2e-3 for the stack, similar to local main-sequence galaxies and ~10x higher than starbursts | F: High-z main-sequence galaxies are not [C II] deficient; the ratio is not set by L_IR, dust temperature or <U> alone [abstract: "is similar to that of local main-sequence galaxies ($\sim2\times10^{-3}$), and $\sim$ 10 times higher than that of starbursts"]
+- claim [supported]: H: [C II] emission in these galaxies has an extent comparable to the optical disk | E: uv-plane stack of the four detections fitted with a free-size exponential profile | R: Exponential scale length 0.65 +/- 0.15 arcsec (~4-7 kpc), ~4 sigma significance in size | F: [C II] extent is consistent with the optical size [abstract: "has an average spatial extent of 4 – 7 kpc, consistent with the optical size"]
+- claim [supported]: H: [C II] luminosity is a tracer of molecular gas mass | E: Combined the sample with literature [C II] and M_mol data and fitted L_[CII] versus M_mol | R: Linear relation, slope 0.98 +/- 0.02, dispersion 0.3 dex, rho = 0.97 | F: [C II] luminosity correlates with molecular gas mass with a mean absolute deviation of 0.2 dex [abstract: "luminosity correlates with galaxies’ molecular gas mass, with a mean absolute deviation of 0.2 dex"]
+- claim [supported]: H: alpha_[CII] is independent of depletion time, metallicity and redshift | E: Compared alpha_[CII] medians for main-sequence, starburst, low- and high-z samples and fitted alpha_[CII] against metallicity | R: Median alpha_[CII] ~ 30 Msun/Lsun; metallicity slope -0.2 +/- 0.2, consistent with zero | F: [C II] is a convenient molecular gas tracer regardless of starburst or main-sequence nature and for metal-poor galaxies [abstract: "is largely independent of galaxies’ depletion time, metallicity, and redshift"]
+- step 2 (Quantify flux and size recovery and noise penalty for resolved sources) validation: Fluxes and sizes well recovered for large galaxies given enough S/N; similar results with GILDAS simulations [A. Resolution: "Both sizes and fluxes are very well recovered even for large galaxies provided the data had large enough S/N."]
+- step 4 (Search for [C II] emission by iterative uv-plane spectral extraction) validation: Detections robust against the model used for the 1D spectrum extraction; positions consistent with HST peaks [2.3.1 Individual [C II] detections: "The detections are robust against the model used for the extraction of the 1D spectra"]
+- step 5 (Measure [C II] redshifts of detections) validation: Compared with optical redshifts: no systematic difference, MAD of 200 km/s [2.3.1 Individual [C II] detections: "They generally agree, with no significant systematic difference and a median absolute deviation (MAD) of 200 km s$^{-1}$"]
+- step 6 (Measure total [C II] fluxes of the four detections) validation: CASA uvmodelfit gives consistent fluxes; Gaussian model also consistent; channel-to-channel scatter consistent with errors [2.3.1 Individual [C II] detections: "We checked that fluxes and uncertainties determined with the `uvmodelfit` task provided by CASA would give consistent results."]
+- step 7 (Stack the four detections to measure the average [C II] size) validation: Size uncertainty from GILDAS checked against amplitude versus uv range; unresolved-source probability < 1e-5 [2.3.1 Individual [C II] detections: "The reported size uncertainty was estimated by GILDAS in the fit and the modelling of the signal amplitude versus *uv* range signal shows that it is reliable"]
+- step 8 (Tentative detections, upper limits and average [C II] stack) validation: Expected false detections < 0.1 among the six sources for the 2.3 sigma tentative signals; average ratio from stacking agrees with the mean of individual ratios [2.3.2 Tentative and non detections: "Furthermore, when considering the six sources discussed above, we expect to find $<0.1$ false detections."]
+- step 9 (Measure continuum fluxes and fit IR SEDs for L_IR, M_dust and <U>) validation: Conclusions unchanged if upper limits are used in the fits; median L_IR and M_dust agree with literature MS values [2.4 Continuum emission: "If we were to use upper limits in these fits instead our conclusions would not have changed."]
+- step 10 (Estimate molecular gas masses of the sample) validation: Dust-based and Schmidt-Kennicutt gas masses consistent for galaxies with 850 um detections [2.4 Continuum emission: "we concluded that both methods give consistent results"]
+- step 11 (Compile literature samples and fit L_[CII] versus M_mol and alpha_[CII]) validation: Scatter of L_[CII]-L'_CO relation compared with that of alpha_[CII]; starburst (SPT) and local samples compared [3.2 [C II] as a tracer of molecular gas: "The mean absolute deviation of the relation is $\sim$ 0.2 dex, similar to that of the $L_{\rm [C~{\small II}]}$ - $M_{\rm mol}$ relation."]
+- step 12 (Compare L_[CII]/L_IR versus sSFR/sSFR_MS with depletion-time models) validation: Rescaled [CII]/CO ratio compared with the 2000-10000 range in the literature [3.3 The dependence of the [C II]-to-IR …: "This is in good agreement with the typical values reported in the literature and ranging between 2000 – 10000"]
+- alternative considered: PSF model for total fluxes rejected because it underestimates fluxes of extended sources [2.3.1 Individual [C II] detections: "whereas by using a PSF model instead we would have underestimated the fluxes"]
+- alternative considered: Gaussian profile instead of exponential gives consistent [C II] fluxes [2.3.1 Individual [C II] detections: "fitting the data with a Gaussian profile instead of an exponential would give consistent"]
+- alternative considered: Dust-based gas masses not adopted; Schmidt-Kennicutt masses used as more robust for galaxies without 850 um detections [2.4 Continuum emission: "In the following we use the $M_{\mathrm{mol}}$ obtained from the Schmit-Kennicutt relation"]
+- referee caveat (card): Total [C II] fluxes rest on optical-size exponential models; a different size changes flux linearly, so L_[CII] and alpha_[CII] are model dependent
+- referee caveat (card): Detections at 2.3 sigma are called real from a posteriori reasoning; small numbers (4 secure, 2 tentative)
+- referee caveat (card): Stack excludes three non-detections (incl. an AGN and two poor-weather sources), which may bias the average ratio high
+- limitation (authors): Fluxes depend critically on the assumed model size taken from optical images [2.3.1 Individual [C II] detections: "However, the returned fluxes critically depend on the model size that we used and that we determined from the optical images."]
+- limitation (authors): Source size cannot be constrained from individual sources because of low S/N [2.3.1 Individual [C II] detections: "Unfortunately, the size of the emission cannot be constrained from the data on individual sources, given the limited S/N ratio."]
+
+### 2017ApJ...849...25L: ALMA Reveals Sequential High-mass Star Formation in the G9.62+0.19 Complex (2017; star_formation; observational_alma_primary)
+- question: Does stellar feedback from evolved Hii regions trigger or shape sequential high-mass star formation in the adjacent G9.62 clump, based on its cores, outflows and fragmentation?
+- claim [partially]: H: Are there massive starless cores in the G9.62 clump? | E: Core classification from CH3OH, SiO, outflows and cm continuum; masses at 20 K | R: Five cores (MM1, MM3, MM5, MM9, MM10) have M>25 Msun at Td<=20 K and no protostellar indicators | F: They are massive starless core candidates needing confirmation [abstract: "Five cores (MM1, MM3, MM5, MM9, MM10) are massive starless core candidates whose masses are estimated to be larger than 25 M$_{\ensuremath{\odot}}$"]
+- claim [supported]: H: Is fragmentation governed by thermal or turbulent Jeans instability? | E: Compare observed spacing/mass with predicted values | R: Thermal spacing ~0.1 pc matches observed ~0.08 pc; turbulent gives 0.4-0.6 pc | F: Fragmentation is governed by thermal instability [4.2 Fragmentation analysis: "in thermal Jeans fragmentation or thermal Cylindrical fragmentation, the predicted dense core spacing ($\sim$0.1 pc) is very consistent with the observed value ($\sim$0.08 pc)"]
+- claim [partially]: H: Do Hii region shocks drive sequential star formation in the clump? | E: Pressure comparison, [Ne II] velocities, PDR morphology, core evolutionary ordering | R: Ionized pressure ~4e7 comparable to molecular ~6e7 K cm-3; ~5 km/s velocity offset | F: Hii shocks likely compress the clump and induce sequential collapse; collect-and-collapse rejected [4.2 Fragmentation analysis: "the sequential high-mass star formation in the G9.62 clump is very likely caused by Hii region shocks as also suggested by (cite: hof94)"]
+- claim [partially]: H: Do SiO and CO outflows differ in mass-velocity break? | E: Broken power law fits to MM7/G and MM8/F outflows | R: SiO breaks at 12-18 km/s, CO at 31-33 km/s | F: SiO traces newly shocked gas while CO traces entrained ambient gas [4.3 Mass-velocity diagrams of outflows: "It seems plausibly that SiO traces newly shocked gas while the other molecular lines (e.g., CO, SO, CS, HCN) mainly trace the ambient gas continuously entrained by outflow jets."]
+- step 1 (Extract continuum cores) validation: Residual images checked [4.1 ALMA 1.3 mm continuum: "point-like source emission remains in the residual images"]
+- step 2 (Clump SED and core masses) validation: Varying flux errors 5-20% and beta 1-2 changes little [Appendix A: "The change (from 5% to 20%) of uncertainties does not affect the SED fit too much."]
+- step 3 (Virial analysis with C18O) validation: Optical depths ~0.3 and ~0.7 [4.2.1 JCMT C18O (3-2) line and virial a…: "the optical depths of blueshifted component and redshifted component are $\sim$0.3 and $\sim$0.7, respectively"]
+- step 4 (Outflow mass, momentum, energy and accretion rates) validation: Optical-depth corrected CO mass agrees with SiO mass with abundance enhancement and with earlier SO/CS/HCN [3.3 Molecular outflows: "The outflow mass of MM8/F derived from SiO (5-4) is now consistent with outflow mass derived from CO (2-1) by applying optical depth correction."]
+- step 5 (Fragmentation analysis) validation: Collect-and-collapse model tested and rejected [Appendix C: "These inconsistences indicate that the formation and fragmentation of the G9.62 clump was not determined by the “Collect and Collapse" process."]
+- step 6 (Mass-velocity diagrams) validation: R^2 of fits in Table 5 [Table 5: "Flow Velocity intervals | a or $\gamma$ | R$^{2}$"]
+- alternative considered: Collect-and-collapse origin rejected: fragment separation 0.52 pc vs observed ~0.1 pc and tfrag longer than Hii age [Appendix C: "the separation (2r$_{frag}\sim$0.52 pc) is about five times larger than the averaged separation ($\sim$0.1 pc) of the ALMA dense cores"]
+- referee caveat (card): Core masses depend on assumed Td (35/100/20 K) without resolved temperature data
+- referee caveat (card): Causal link to Hii region triggering is circumstantial; no direct kinematic proof
+- referee caveat (card): SiO abundance enhancement factors are tuned to match CO, so partly circular
+- limitation (authors): Core dust temperatures poorly known; masses uncertain mainly through Td [4.1 ALMA 1.3 mm continuum: "The main uncertainties of masses come from the determination of T$_{d}$."]
+
+### 2017ApJ...848L..11K: Dust-trapping Vortices and a Potentially Planet-triggered Spiral Wake in the Pre-transitional Disk of V1247 Orionis (2017; protoplanetary_disks, exoplanets; observational_alma_primary)
+- question: Whether the crescent is a planet-induced spiral-arm over-density or a dust trap, and whether a planet-triggered spiral wake explains the scattered-light structure.
+- claim [supported]: H: High-resolution continuum imaging can resolve the disk structures relevant to dust trapping. | E: Obtain ALMA 0.04'' imaging and fit geometric continuum components. | R: An asymmetric ring and sharply-confined crescent are resolved. | F: The image reveals morphology resembling theoretical vortex-formation models. [Abstract: "Here, we present ALMA 0.04$''$-resolution imaging of the pre-transitional disk of V1247 Orionis that reveals an asymmetric ring as well as a sharply-confined crescent structure, resembling morphologies seen in theoretical models of vortex formation."]
+- claim [partially]: H: The crescent is a dust-trapping vortex rather than a planet-induced spiral-arm over-density. | E: Compare deprojected continuum morphology with coplanar and inclined analytic spiral models. | R: The crescent appears co-radial; an inclined spiral gives a better match than a coplanar spiral. | F: A dust-trapping vortex is the most likely interpretation, while an inclined spiral remains an alternative. [The crescent structure and ring asymmet…: "shows that the crescent does not follow the pitch angle of the spiral-arm model and seems to be co-radial, instead."]
+- claim [partially]: H: A planet near 100 au clears the gap and triggers dust traps on both edges. | E: Compare ALMA structures, the scattered-light arm, bridge emission and disk rotation. | R: The ring and crescent appear connected through the scattered-light feature; the arm is tailing under the adopted rotation direction. | F: A planet-triggered gap and two dust traps provide a proposed explanation; the planet remains undetected. [Planet-triggered dust traps and a spira…: "The crescent (C1+C2) and the ring (R1) appear to be smoothly connected through a spiral-arm-like scattered-light feature (S1)."]
+- claim [supported]: H: Scale-height variations in a planet-induced spiral wake can produce the scattered-light signature. | E: Run embedded-planet hydrodynamics and TORUS radiative transfer, then compare synthetic scattered light with HiCIAO. | R: A prominent inward-facing spiral arm appears, with PA and pitch angle roughly matching HiCIAO. | F: The simulations support qualitative detectability of a planet-triggered spiral in polarised light. [Radiation Hydrodynamics Simulation: "shows a spiral-arm-like structure that appears most prominently in the inwards-facing spiral arm triggered by the planet."]
+- step 1 (Reconstruct the continuum image) validation: Choose the image with the lowest root-mean-square noise across reconstruction parameters and weighting schemes. [Observations: "We computed a grid with different reconstruction parameters and weighting schemes and selected the image with the lowest root-mean-square noise"]
+- step 3 (Inspect gas rotation and local line excess) validation: H12CO+-emitting gas also appears to follow disk rotation; south-eastern excess is seen in both lines. [Line imaging: "suggest that the H$^{12}$CO$^{+}$-emitting gas also follows the disk rotation."]
+- step 4 (Associate structures across wavelengths) validation: Earlier MIR component size matches the ALMA ring size. [Multi-wavelength constraints on the dis…: "The size of this component matches with the ring-shaped emission detected in the ALMA image ($41-65$ au)."]
+- step 5 (Compare spiral and vortex interpretations) validation: Crescent appears co-radial rather than following the coplanar spiral pitch angle; inclined spiral gives a better shape match; gas-vortex stability values cannot be compared directly. [The crescent structure and ring asymmet…: "shows that the crescent does not follow the pitch angle of the spiral-arm model and seems to be co-radial, instead."]
+- step 6 (Construct the planet-triggered interpretation) validation: Adopted rotation makes the arm tailing, as expected for a planet-triggered wake; compare relative scattered-light and ALMA positions with the alternative inner-planet scenario. [Planet-triggered dust traps and a spira…: "we find that the spiral-arm is tailing, as expected for planet-triggered spiral wakes."]
+- step 7 (Simulate the embedded-planet disk) validation: Snapshots taken after reaching a quasi-steady state at 10 planet orbits. [Radiation Hydrodynamics Simulation: "Snapshots were taken once the simulation reached a quasi-steady state after 10 orbits (at the planet location)."]
+- step 8 (Generate and compare synthetic images) validation: Synthetic inward-facing spiral arm is prominent; PA and pitch angle roughly match HiCIAO. [Radiation Hydrodynamics Simulation: "shows a spiral-arm-like structure that appears most prominently in the inwards-facing spiral arm triggered by the planet."]
+- alternative considered: Coplanar planet-induced spiral interpretation of the crescent is disfavoured by its pitch angle and co-radial morphology. [The crescent structure and ring asymmet…: "shows that the crescent does not follow the pitch angle of the spiral-arm model and seems to be co-radial, instead."]
+- alternative considered: A spiral misaligned by 17° gives a better crescent shape match and might explain the C1/C2 brightness drop through shadowing. [The crescent structure and ring asymmet…: "where we adopted a misalignment angle of $17^{\circ}$."]
+- alternative considered: An inner planet at ≲30 au could produce a dissipating primary vortex and an outer second-generation vortex; relative scattered-light/ALMA positions favour direct planet triggering instead. [Planet-triggered dust traps and a spira…: "we also considered an alternative scenario, where a planet orbits at $\lesssim30$ au and clears the region inside the ALMA ring."]
+- decided enough: Choose the lowest-RMS reconstruction; take simulation snapshots after quasi-steady state at 10 orbits; restrict model comparison to qualitative morphology. [Observations: "We computed a grid with different reconstruction parameters and weighting schemes and selected the image with the lowest root-mean-square noise"]
+- referee caveat (card): Morphology supports a vortex interpretation but does not uniquely establish dust trapping or identify its trigger.
+- referee caveat (card): The simulation tests spiral visibility rather than formation of either proposed vortex.
+- referee caveat (card): The 3 MJup simulation planet is an assumed input, not a measured planet mass.
+- limitation (authors): Line data have relatively low signal-to-noise and permit only basic conclusions. [Line imaging: "Despite the relatively low signal-to-noise, we are able to draw the following basic conclusions:"]
+- limitation (authors): Fixed gas-to-dust ratio and high viscosity make the simulation unsuitable for vortex formation itself. [Radiation Hydrodynamics Simulation: "Our simulation adopts a fixed gas-to-dust ratio and a relatively high viscosity ($\alpha\approx0.01$) and is therefore not suited to simulate the vortex formation itself, which will require further dedicated theoretical work."]
+
+### 2024ApJS..270....9X: The ALMA Survey of Star Formation and Evolution in Massive Protoclusters with Blue Profiles (ASSEMBLE): Core Growth, Cluster Contraction, and Primordial Mass S… (2024; star_formation; large_program_or_survey)
+- question: Mass assembly, fragmentation, accretion, and the evolution of cores and massive protoclusters
+- claim [partially]: H: Cores grow as massive protoclusters evolve | E: Compare core masses and surface densities in ASSEMBLE and early-stage ASHES | R: Average and maximum core masses and surface densities increase in ASSEMBLE | F: Ongoing accretion is inferred to build both protostellar and prestellar cores [Conclusion: "the more evolved ASSEMBLE protoclusters show systematic increases in the average and maximum mass as well as in the surface density of both protostellar and prestellar cores."]
+- claim [partially]: H: The natal clump and its most massive core become coupled during evolution | E: Measure maximum-core-mass versus clump-mass correlations in ASSEMBLE and ASHES | R: ASSEMBLE slope 0.75(0.08), Spearman 0.73; ASHES Spearman 0.04 with p=0.90 | F: Coevolution is suggested to arise through multiscale gas accretion [Coevolution of Clump and Most Massive C…: "with a power law index of 0.75(0.08)."]
+- claim [partially]: H: Core clusters and stellar clusters have different maximum-member mass scaling | E: Fit maximum core mass versus summed core mass and compare with stellar-cluster relations | R: Direct power-law index 0.9; first-order approximation 0.88; core relation is steeper | F: Stellar multiplicity can reconcile the slope difference [Implications of the $M_{\rm max}$ versu…: "we directly perform the linear regression to derive a power-law index of 0.9, validating our first-order approximation of 0.88."]
+- claim [partially]: H: Protoclusters become more compact through gravitational contraction | E: Compare MST separations and estimate free-fall contraction | R: ASSEMBLE separation peak ~0.035 pc; predicted tightening 0.04--0.18 pc | F: Gravitational contraction matches the separation shift, but hierarchical fragmentation remains possible [Core Separation: "the ASSEMBLE core separation exhibits a significant peak at $\sim0.035$ pc."]
+- step 1 (Form continuum images) validation: Improved sensitivity and dynamic range after self-calibration [ALMA Data Calibration and Imaging: "Following self-calibration, the sensitivity and dynamic range of the final continuum image were significantly improved"]
+- step 2 (Extract cores and measure continuum properties) validation: Compare recovered flux with ATLASGAL; test core counts against mass sensitivity and physical resolution [Core Extraction and Catalog: "we integrate the ATLASGAL 870 $\mu$m flux over the field of view of the ASSEMBLE clumps."]
+- step 3 (Classify core evolutionary stages) validation: Band-3 cross-match for absent hot cores in I14382-6017 and I17204-3636 [Core Classification and Evolutionary St…: "two massive star-forming clumps, namely I14382-6017 and I17204-3636, do not exhibit any detection of hot cores."]
+- step 4 (Assign core dust temperatures) validation: Compare temperatures from CH3OCHO and H2CS [Core Physical Properties: "Temperatures obtained from CH$_3$OCHO (mean value of 110 K) are consistently higher than those derived from H$_2$CS (mean value of 95 K)"]
+- step 5 (Derive core masses, radii, and densities) validation: Monte Carlo uncertainty estimation; 1σ confidence intervals [Core Physical Properties: "Monte Carlo methods are adopted for uncertainty estimation and $1\sigma$ confidence intervals are given for core mass, volume density, surface density and peak column density"]
+- step 6 (Build a comparison sample and test core growth) validation: Check mass-sensitivity differences and getsf extraction on ASHES 12m-alone data [Core Growth and Mass Concentration: "The slightly worse sensitivity ($\bar\sigma=0.089$ $M_\odot$) of the ASSEMBLE compared to the ASHES ($\bar\sigma=0.078$ $M_\odot$)"]
+- step 7 (Measure the clump–most-massive-core relation) validation: Both correlation p-values <0.05; compare with ASHES pilot relation [Coevolution of Clump and Most Massive C…: "both correlation coefficients exhibit p-values below 0.05"]
+- step 8 (Measure the core-cluster–most-massive-core relation) validation: Polynomial correlation coefficient 0.68; direct regression slope 0.9 agrees with first-order approximation 0.88 [Implications of the $M_{\rm max}$ versu…: "with a correlation coefficient of 0.68"]
+- step 9 (Measure core separations) validation: KS test for ASHES pilot representativeness; Mann–Whitney U comparison; distance perturbations; compare peak with resolution [Core Separation: "the Kolmogorov–Smirnov test between the distributions of the ASHES Totals and Pilots give a p-value of 0.57"]
+- step 10 (Quantify central concentration) validation: Mann–Whitney U sample comparison; Pearson and Spearman correlations with p-values [Evolution of the $\mathcal{Q}$ Parameter: "The Mann–Whitney U test between the $\mathcal{Q}$ parameters of the ASSEMBLE and ASHES samples has a p-value of 0.03 ($<$0.05)"]
+- step 11 (Measure mass segregation) validation: Mann–Whitney U comparisons with ASHES and the random reference [Origin of Mass Segregation: "The Mann-Whitney U test reveals significant differences between the ASSEMBLE and the ASHES protoclusters"]
+- step 12 (Test gravitational contraction) validation: Predicted tightening compared numerically with separation-distribution shift [Gravitational Contraction: Protocluster…: "numerically consistent with the shift from extended tail (0.06–0.3 pc) to the observed separation (peaked at 0.035 pc)."]
+- step 13 (Test dynamical relaxation as the segregation origin) validation: Two gas-mass estimates give 200–400 M_sun and q=2–4; compare relaxation time with massive-star-formation lifetime [Origin of Mass Segregation: "Two independent methods yield $M_{\rm gas}$ within the range of 200–400 $M_\odot$."]
+- alternative considered: astrodendro considered less suitable than getsf for SDC335-like source extraction [Core Extraction and Catalog: "the `getsf` algorithm is a better choice than `astrodendro` in the case study of SDC335"]
+- alternative considered: CH3OCHO preferred over potentially optically thick H2CS for hot-core dust temperatures [Core Physical Properties: "H$_2$CS lines could be optically thick towards massive hot cores, therefore only tracing the core envelope."]
+- alternative considered: Hierarchical fragmentation remains an alternative to contraction for close core separations [Gravitational Contraction: Protocluster…: "we are still unable to rule out another possibility that the closer separation is due to hierarchical fragmentation to produce a series of condensations inside a massive core."]
+- decided enough: ASHES pilots adequately represent total-sample separations and have a comparable sample size to ASSEMBLE [Core Separation: "the Kolmogorov–Smirnov test between the distributions of the ASHES Totals and Pilots give a p-value of 0.57"]
+- referee caveat (card): Cross-sectional ASHES–ASSEMBLE differences do not uniquely establish time evolution or accretion as the cause.
+- referee caveat (card): The MSI formula averages Λ, whose no-segregation baseline is 1, but the simulated no-segregation reference is centered on 0; the required transformation is unexplained.
+- referee caveat (card): The Conclusion's 18.6 M_sun average for the most massive prestellar cores conflicts with the discussion's maximum of 18.3 M_sun.
+- limitation (authors): Weak outflows from low-mass objects can be missed, especially in more distant regions [Core Classification and Evolutionary St…: "the method will miss those weak outflows associated with the lowest mass objects, especially for the more distant regions, naturally yielding a lower limit in the number of protostellar objects."]
+- limitation (authors): External heating can cause starless cores to meet warm-core criteria [Core Classification and Evolutionary St…: "external heating by hot cores in the vicinity can also excite H$_2$CS lines in some prestellar cores, so some warm cores can have no stars form inside"]
+
+### 2018ApJ...857...19F: The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution (2018; nearby_galaxies, milky_way_ism, star_formation; observational_alma_primary)
+- question: Do GMCs in NGC 300, resolved at 10 pc and 1 km/s, follow the Milky Way scaling relations and mass spectrum, and what sets GMC properties (global vs local environment such as pressure)?
+- claim [supported]: H: Do NGC 300 GMCs obey the Milky Way Larson relations? | E: ODR fits of size-linewidth, virial and mass-size relations for 121 resolved clouds | R: Slopes 0.48±0.05, 1.00±0.05, 2.00±0.12; median Sigma 60.6 Msun/pc^2 | F: GMCs resemble Milky Way disk clouds, mostly virialized with near-constant surface density [abstract: "they show an identical scaling relationship between size $R$ and linewidth $\Delta V$ ($\Delta V \propto R^{0.48\pm0.05}$), appear to be mostly in virial equilibrium"]
+- claim [supported]: H: Is the NGC 300 GMC mass spectrum like that of inner disks? | E: Maximum-likelihood fit of cumulative mass function above 8e3 Msun | R: gamma=-1.76±0.07 with truncation at ~9e5 Msun | F: Similar to inner Milky Way and spiral disks, shallower than outer disks [abstract: "The GMC mass spectrum is similar to those in the inner disks of spiral galaxies (including the Milky Way)."]
+- claim [supported]: H: Are differences between NGC 300 and M51 GMCs due to resolution? | E: Smoothed NGC 300 cubes to 40 pc, 2 km/s and reanalyzed | R: C_RdV preserved at 0.43; median Sigma lower (45 Msun/pc^2) | F: Differences are not resolution artifacts; likely environmental [7 Summary and Conclusions: "the observed difference in size-linewidth coefficient and median surface density between NGC 300 and M51 is not an artifact of resolution"]
+- claim [partially]: H: Does midplane pressure explain GMC property differences? | E: Computed P_ISM for NGC 300, Milky Way, compared to literature M51 | R: NGC 300 and MW ~1e4 K cm^-3; M51 >=10x higher | F: Pressure plausibly a key environmental variable [6.4 Midplane disk pressure: "This provides a plausible explanation for the notable differences in GMC populations"]
+- step 1 (Calibrate and image CO(2-1) cubes) validation: Convergence tests on DCL88-126 (CLEANed flux plateau, residuals look like noise); single vs per-channel boxes gave no significant difference [2.3 Imaging and deconvolution: "We found no significant difference in either RMS noise or cloud properties in comparing these approaches"]
+- step 2 (Check flux recovery vs APEX) validation: Median F_rec 0.63 consistent with SMA pilot [2.5 Comparison to APEX single dish obse…: "We find a median $\mathcal{F_{\rm rec}}$ of 0.63 with typical uncertainties of about 0.2"]
+- step 3 (Identify and decompose GMCs) validation: SIGDISCONT experiments (0,1,2,5,999), added-noise experiments, duplicate-cloud comparison [8 CPROPS parameter experiments: "We systematically tested `SIGDISCONT` values of 0, 1, 2, 5, and 999."]
+- step 4 (Derive cloud properties) validation: Sizes below 5 pc discarded; final sample 121 clouds [4 Results: "We thus exclude all clouds with $R<5$ pc (approximately half our spatial resolution) from the majority of the remaining analysis presented here."]
+- step 5 (Fit mass spectrum) validation: Truncated fit significantly better than untruncated [5.1 GMC Mass Spectrum: "The truncated power law is a significantly better fit to this cloud population than the standard form"]
+- step 6 (Fit Larson relations) validation: Monte Carlo of 10^4 random model clouds shows slope 0.27, r=0.37 for covariance test [5.3 The size-linewidth coefficient and …: "We fit this model population as described above, and now find a slope of 0.27 with a correlation coefficient of 0.37."]
+- step 7 (Resolution test vs M51) validation: Flux preserved in convolution [6.3 The effects of resolution: "Basic tests demonstrated that the flux in the original data was fully preserved in the convolution."]
+- step 8 (Estimate midplane ISM pressure) validation: Milky Way value consistent with Boulares & Cox 1990 [6.4 Midplane disk pressure: "Our result is consistent with the modeled estimate of the kinetic pressure at the solar radius by (cite: 1990ApJ...365..544B)"]
+- alternative considered: Channel-by-channel CLEAN boxes tested and found equivalent, so single box used [2.3 Imaging and deconvolution: "thus utilized the far less time-intensive method of a single `CLEAN` box for each data cube"]
+- alternative considered: SIGDISCONT of 0,1,2,999 rejected in favor of 5 as over-decomposing or not decomposing [8 CPROPS parameter experiments: "we select the most conservative value for `SIGDISCONT` of 5 which still separates clearly different clouds that happen to overlap in space or velocity"]
+- referee caveat (card): Results depend on alpha_CO prescription and 1.2 size factor, which affect masses and surface densities
+- referee caveat (card): Decomposition choices (SIGDISCONT) influence mass spectrum and mass-size slopes
+- referee caveat (card): Pressure comparison relies on many literature inputs and assumed scale heights
+- limitation (authors): Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission [2.5 Comparison to APEX single dish obse…: "This means there may be low surface brightness CO emission we are unable to detect in the ALMA data."]
+- limitation (authors): Sampled range of environments limited to inner rising rotation curve [4.2 The GMC distribution across NGC 300: "so the range of environments sampled in this study is somewhat limited"]
+
+### 2021ApJ...908..192S: ALMA 1.3 mm Survey of Lensed Submillimeter Galaxies Selected by Herschel: Discovery of Spatially Extended SMGs and Implications (2021; high_z_galaxies; observational_alma_primary)
+- question: Compare stellar and dust structures in cluster-lensed SMGs and investigate their evolutionary connection to compact quiescent galaxies.
+- claim [supported]: H: Some SMGs have galaxy-wide rather than centrally concentrated star formation. | E: Compare tapered ALMA dust-continuum sizes with IRAC stellar sizes. | R: HLS0840 and HLS0546 have extended dust emission and 1.3 mm surface brightness ≲0.1 mJy arcsec−2. | F: Spatially extended main-sequence SMGs exist and are recovered by uv-tapering. [Summary: "Two sources (HLS0840 and HLS0546) are discovered as spatially extended main-sequence SMGs with low surface brightness ($\lesssim 0.1$ mJy arcsec^−2^ at 1.3 mm) and only detectable in *uv*-tapered ALMA maps."]
+- claim [supported]: H: Dust-to-stellar size ratio is physically related to IR surface luminosity. | E: Fit the 26-source and combined 46-source samples; compare bootstrap fits and selected mock data. | R: HLS slope −0.23±0.03; combined slope −0.19±0.04; combined scatter 0.21 dex. | F: A tight anti-correlation is present and the tested shared-variable explanation is disfavored. [Dust-to-stellar size ratio versus IR su…: "\log(\frac{R_\mathrm{e,dust}}{R_\mathrm{e,star}}) = (-0.23 \pm 0.03) \cdot \log(\frac{\Sigma_\mathrm{IR}}{10^{10}}) - (0.10 \pm 0.04)"]
+- claim [partially]: H: SMG structural diversity traces central starburst followed by inside-out quenching. | E: Compare size-ratio/surface-luminosity and main-sequence-offset distributions with a two-component model and cosmological profiles. | R: The two-component model matches the surface-luminosity trend but fails the main-sequence plots; simulated evolutionary tracks generally mat… | F: Compaction and potentially subsequent inside-out quenching are consistent interpretations, requiring further tests. [Central starburst vs. galaxy-wide star …: "this simple two-component model reproduces the observed trend well."]
+- claim [partially]: H: The LIRG IR-surface-luminosity–temperature relation changes with redshift. | E: Compare fitted SMG dust temperatures and surface luminosities with local LIRGs and higher-redshift samples. | R: At Sigma_IR < 10^11.5 L kpc−2, lensed SMGs have comparable temperatures to local LIRGs. | F: The relation may not evolve up to z approximately 2; the high-surface-luminosity comparison is sample-limited. [IR surface luminosity and dust temperat…: "At $\Sigma_\mathrm{IR} < 10^{11.5}$ L kpc^−2^, the lensed SMGs exhibits comparable dust temperature as local LIRGs (cite: ds17)."]
+- step 2 (Detect sources and measure ALMA fluxes) validation: Random source-free apertures validate errors; mock noise maps estimate false detections; injected point sources estimate completeness. [ALMA detection and photometry: "We also evaluated the photometric uncertainty by directly applying random apertures on source-free regions in ALMA primary-beam-uncorrected maps."]
+- step 4 (Measure IRAC light profiles and deblend fluxes) validation: Gaussian versus Sérsic comparison; summed HLS1314 clumps recover total IRAC magnitudes [Spitzer/IRAC: "Gaussian fits do not show significant deviations in magnitude or source size from Sérsic fits"]
+- step 5 (Fit dust-continuum sizes) validation: 10–15 simulated visibility sets per low-S/N/extended source; recovered median sizes within 1 sigma; no conspicuous flux boosting [ALMA detection and photometry: "we simulated the visibility data for these sources 10–15 times per each with CASA, and the RMS noise of mock data was controlled to match with that of our observations."]
+- step 6 (Fit SEDs and photometric redshifts) validation: Independent FIR redshifts from Rieke LIRG templates agree within approximately 1 sigma [SED fitting and photometric redshift: "We also evaluate the far-IR $z_\mathrm{phot}$ by matching with the LIRG templates in (cite: rieke09), and the derived redshifts are consistent with those by MAGPHYS within $\sim 1\sigma$ confidence interval."]
+- step 7 (Fit dust temperatures) validation: MBB dust masses agree with MAGPHYS with 0.08 dex dispersion [SED fitting and photometric redshift: "The dust masses derived from this MBB fitting are consistent with those from MAGPHYS, listed in Table [1](#tab:04_prop), with a $1\sigma$ dispersion of 0.08 dex."]
+- step 8 (Fit FIR color relations) validation: Compare to the unlensed Ikarashi sample after a 0.53 flux conversion [Multi-wavelength color and redshift: "This is consistent with the unlensed SMG sample presented in (cite: ikarashi15), for which we apply a conversion from 1.1 mm flux densities to 1.3 mm by a factor of 0.53."]
+- step 9 (Derive mass ratios and gas timescales) validation: Compare depletion times to AS2UDS recomputed with a similar method [Dust to stellar mass ratio: "This is consistent with the median value of AS2UDS sample ($\sim 320$ Myr) recomputed with similar method (cite: dudzevic19)."]
+- step 10 (Construct size ratios and surface densities) validation: Compare 3.6/4.5 radii; ratio consistent with unity [Dust-to-stellar continuum size ratio: "We measure the effective radius ratio between 3.6 and 4.5 m as $0.99^{+0.14}_{-0.19}$ for our sample"]
+- step 11 (Fit structural correlations) validation: Compare MCMC and bootstrap slopes; mock selected data test shared-variable correlations [Dust-to-stellar size ratio versus IR su…: "The derived relation and its uncertainty are consistent with those by MCMC (slope is $-0.27 \pm 0.04$)."]
+- step 12 (Classify main-sequence offsets) validation: Magnification sensitivity test: 0.5 dex in mu causes 0.12 dex DeltaMS error for the stated example [Main sequence offset: "an uncertainty of $0.5$ dex (i.e., a factor of $\sim 3$) with a lensing magnification factor would lead to an error of only 0.12 dex with $\Delta\mathrm{MS}$."]
+- step 13 (Compare evolutionary models) validation: Toy model matches size-ratio–surface-luminosity trend but fails main-sequence plots; simulated tracks generally match observed distribution [Central starburst vs. galaxy-wide star …: "this simple two-component model reproduces the observed trend well."]
+- step 14 (Test centroid offsets and companion incidence) validation: IRAC error reduced to 0.15 arcsec without changing centroid conclusion; compare unlensed catalogs [Spatial offset between ALMA and IRAC co…: "Assuming a slightly lower IRAC astrometric error (e.g., 0.15$''$) will not change the conclusion."]
+- alternative considered: Gaussian IRAC fits checked against Sérsic fits; no significant magnitude/size deviations. [Spitzer/IRAC: "We also applied a 2D Gaussian model for all the SMGs."]
+- alternative considered: PSF models replace divergent Gaussian/Sérsic fits for HLS0043-B and HLS0307-B. [Spitzer/IRAC: "HLS0043-B and HLS0307-B were fit with PSF models, since their faintness ($\sim$ 21 mag) and heavy blending with bright foreground sources ($\sim$ 17 mag) led to a divergence in the Gaussian/Sérsic modeling."]
+- alternative considered: Exponential ALMA profiles compared with Gaussian profiles. [Quantitative morphological modeling: "There is no clear difference between the $\chi^2$ of the best-fit circular Gaussian and exponential models for HLS0546 and HLS0553-C, and the Gaussian profile fits HLS0612 better."]
+- decided enough: S/N=4 selected to keep expected false detections ≲1; simulated fluxes and sizes check low-S/N and extended-source reliability. [False detection rate and Completeness o…: "we applied an S/N cut of our detections at S/N=4. This ensures the total false detection number to be $\lesssim1$ in all of our ALMA maps."]
+- referee caveat (card): The 26 fitted components include multiple images and HLS1314 clumps; independence and repeated-source weighting need explicit treatment in correlation errors.
+- referee caveat (card): Both axes of the main structural correlation contain the fitted dust radius; reproducing the stated mock-data test is essential.
+- referee caveat (card): The largest dust source is also the one exceeding its recoverable angular scale.
+- limitation (authors): Incomplete lens models prevent accurate intrinsic masses and luminosities. [SED fitting and photometric redshift: "This is due to a lack of detailed lens models for several of the clusters in this study."]
+- limitation (authors): HLS0840 radius exceeds its maximum recoverable angular scale and has a large uncertainty. [Quantitative morphological modeling: "All of our measured effective radii at 1.3 mm are smaller than their corresponding maximum recoverable angular scales for given ALMA antenna configurations, except for HLS0840"]
+
+### 2024ApJS..275...36F: ALMA Lensing Cluster Survey: Deep 1.2 mm Number Counts and Infrared Luminosity Functions at z ≃ 1─8 (2024; high_z_galaxies, galaxy_clusters_and_sz, cosmology; large_program_or_survey)
+- question: Origins of the CIB; faint 1.2-mm number counts, IR luminosity functions, and cosmic SFRD.
+- claim [supported]: H: Individual faint mm sources account for most of the 1.2-mm CIB. | E: Integrate lens-corrected, completeness-corrected Schechter counts to 7 μJy and compare with COBE/FIRAS. | R: 20.7+8.5/-6.5 Jy deg^-2; 76.5+31.4/-24.0% of the CIB. | F: Most of the CIB is resolved, with substantial source-size and foreground uncertainties. [Resolving CIB: "We calculate the integrated flux density to be 20.7$^{+8.5}_{-6.5}$ Jy deg$^{-2}$ at 1.2 mm."]
+- claim [refuted]: H: The 1.2-mm number counts flatten around 0.1 mJy. | E: Direct lensed-source counts to approximately 7 μJy, with MC errors and robustness tests. | R: Fiducial alpha = -2.05+0.12/-0.10; conservative alpha approximately -2.0+0.2/-0.3. | F: Flattening beginning around 0.1 mJy is disfavored. [Summary: "We estimate a faint-end slope of $\alpha=-2.05^{+0.12}_{-0.10}$ for our fiducial model."]
+- claim [partially]: H: A turnover below the ALCS limit is required by the CIB constraint. | E: Extrapolate fitted counts and compare integrated emission with the CIB upper limit. | R: The fiducial extrapolation exceeds the CIB upper limit at 0.2 μJy, but alpha approximately -1.8 remains allowed. | F: Turnover or flattening is possible but not required by all allowed slopes. [Resolving CIB: "our best-fit shape of the number counts ($\alpha\sim-2.0$) indicates that integration exceeds the upper limit of the CIB from $0.2\mu$Jy"]
+- claim [supported]: H: IR LFs evolve toward brighter characteristic luminosities and lower characteristic densities. | E: Fit DPL IR LFs in six redshift bins spanning z = 0.6–7.5. | R: L_star increases and Phi_star decreases; L_star evolution may flatten around z ∼ 4. | F: Positive luminosity and negative density evolution are supported. [Redshift Evolution of IR LF: "We find that $\Phi_{\star}$ and $L_{\star}$ decrease and increase towards high redshifts, respectively."]
+- step 1 (Build reliable continuum catalogs) validation: Visual inspection removes one chance projection; 180 reliable sources agree with the positive-minus-negative expectation. [Catalog: "In fact, from visual inspection, we find that one source is likely caused by the chance projection, and we do not include the source in the following analysis."]
+- step 2 (Measure continuum fluxes) validation: Aperture growth curves and comparison among flux estimators. [Flux Measurement: "We analyze the enclosed flux density growth curve as a function of aperture radius for our ALCS sources to confirm that the $2.0\ensuremath{''}$ radius sufficiently exceeds the peak of the growth curve for the majority of our ALCS sources."]
+- step 3 (Correct line contamination and identify spectroscopic redshifts) validation: Secondary lines and multiple-image consistency used where available; some single-line interpretations remain provisional. [Serendipitous and follow-up line detect…: "Based on the frequencies of these two lines, we regard them as CO(8-7) in Band 6 and CO(3-2) in Band 3 at $z=$2.391."]
+- step 4 (Assign photometric redshifts) validation: AS2UDS-template P(z) agrees with the two-line spectroscopic redshift of M0417-C121. [$z_{\rm phot}$ estimate by template fit…: "the peak of $P(z)$ with the AS2UDS template shows an excellent agreement with $z_{\rm spec}$ of M0417-C121."]
+- step 5 (Correct lensing and remove duplicate images) validation: Compare magnifications among independent lens models; tabulate image-position residuals. [Lens Models Uncertainty: "We compare the magnification factors between our fiducial and other lens models at random pixel positions of the maps and evaluate the systematic uncertainty from the choice of the lens model."]
+- step 6 (Calibrate flux bias and completeness) validation: Adopted photometry agrees with injected flux down to SNR = 8; predicted sizes agree with resolved imfit sizes within approximately 40%. [Simulations for flux measurements and c…: "We find that $S_{\rm use}$ is in excellent agreement with the input value down to SNR $=8$."]
+- step 7 (Calculate effective survey areas) validation: Compare z = 2 and 6 areas and alternative lens models. [Survey Area: "the total survey areas show a negligible change between redshifts $z=2$ and $z=6$."]
+- step 8 (Derive and fit 1.2-mm number counts) validation: Blind and blind+prior counts agree within 1σ; assess fitted shapes through χ²/dof. [Number counts at 1.2 mm: "We find that our number-count estimates based on the blind and blind+prior samples are consistent within the 1$\sigma$ uncertainties in the wide flux range."]
+- step 9 (Measure the resolved CIB fraction) validation: Check extrapolation against the CIB upper limit; test alternative continuum-size assumptions. [Resolving CIB: "our best-fit shape of the number counts ($\alpha\sim-2.0$) indicates that integration exceeds the upper limit of the CIB from $0.2\mu$Jy"]
+- step 10 (Test count systematics) validation: All tested faint-end slopes consistent within approximately 1–2σ. [Potential Caveats: "We find that all these $\alpha$ measurements are consistent within the $\sim1$–2$\sigma$ errors, regardless of the subsample and the FIR size assumptions."]
+- step 12 (Derive and fit IR luminosity functions) validation: Compare with previous IR LFs and simulations. [IR Luminosity Function at $z\simeq$ 1–8: "We also find that our IR LF estimates are generally consistent with the previous studies within the 1$\sigma$ uncertainties."]
+- step 13 (Derive obscured and total cosmic SFRD) validation: Test deeper LF integration and compare with previous SFRD measurements; retain 1–2σ consistency caveat. [Cosmic SFRD: "We find that the integrated values are not increased more than a factor of $\sim2$ in the entire redshift range, and at $z>4$, the increase is almost negligible."]
+- step 14 (Construct simulation comparisons) validation: Compare individual count points and fitted faint-end shapes with predictions. [Comparison with simulations: "Apart from the underestimate of the EAGLE simulation, these simulations show overall good agreement within 1–2$\sigma$ errors with the individual data points of our 1.2-mm number counts."]
+- alternative considered: Median magnification maps rejected because they smear high-magnification regions and underestimate effective area. [Lens Models Uncertainty: "if we create the median magnification map from these 7 different lens models, the survey area is underestimated at high magnifications ($\mu\gtrsim10$)."]
+- alternative considered: Schechter and DPL both fit counts; Schechter chosen as fiducial. [Number counts at 1.2 mm: "the $\chi^{2}$/dof values indicate that the number counts are well represented by Schechter and DPL."]
+- alternative considered: Constant, positive, and negative FIR size–luminosity relations tested. [Impact from the dust continuum size dis…: "the size assumptions of constant, negative, and positive correlations, respectively."]
+- decided enough: Purity > 0.99; positive/negative count consistency; injection recovery; agreement among sample and assumption tests. [Catalog: "yielding 141 ALMA sources that achieve a purity of $p>0.99$."]
+- referee caveat (card): Main-text line apertures use diameter while the appendix uses radius; line detections and contamination corrections need an authoritative aperture definition.
+- referee caveat (card): The text reports 13 line emitters but applies corrections to 15 sources; the exact corrected-source list needs reconciliation.
+- referee caveat (card): The photometric-redshift appendix switches between 26 sources and 23 (=27-4); category membership needs a machine-readable audit.
+- limitation (authors): Lens-model quality may leave systematic high-magnification area errors. [Potential Caveats: "we caution that there may remain further systematic uncertainties related to the different qualities of the lens models among the clusters."]
+- limitation (authors): CIB measurements depend on subtraction of CMB and Galactic dust emission. [Resolving CIB: "the uncertainty of the CIB itself is large due to the model dependence of the CMB and Galactic dust emission, which are subtracted from the observations to estimate the CIB."]
+
+### 2024AJ....167..232T: Sites of Planet Formation in Binary Systems. I. Evidence for Disk−Orbit Alignment in the Close Binary FO Tau (2024; protoplanetary_disks, stellar_physics; observational_alma_primary)
+- question: Link circumstellar disk properties and disk-orbit alignment to the precisely known binary orbit of FO Tau.
+- claim [partially]: H: The circumstellar disk planes align with the binary orbital plane. | E: Compare continuum and CO visibility-fit orientations with the astrometric and RV orbital solution; compute both obliquity branches. | R: Projected inclinations and ascending nodes agree within uncertainty; a retrograde branch remains possible. | F: Evidence favors alignment, but does not uniquely establish it. [Summary & Conclusions: "Measuring inclinations of the gas and dust disks with fits made in the $uv$ plane, we find evidence for alignment between both protoplanetary disks and the binary orbit."]
+- claim [partially]: H: Binary truncation explains the compact circumstellar disks. | E: Compare fitted dust and gas radii with truncation predictions using measured orbital parameters. | R: Predicted truncation radii are 5–6 AU; dust radii are approximately 4 AU; CO fits favor approximately 8–10 AU. | F: Dust sizes are compatible with truncation and radial drift; gas sizes or emission complexity remain ambiguous. [Disk Truncation: "Using the range of $b$ and $c$ coefficient values compiled by (cite: Manaraetal2019), we compute disk truncation radii of 5–6 AU for FO Tau’s orbital parameters."]
+- claim [refuted]: H: FO Tau contains detectable circumbinary dust or CO emission. | E: Inspect continuum and CO emission on larger spatial scales. | R: No emission beyond the binary orbit is detected at the stated sensitivities. | F: No evidence for a circumbinary disk at these detection limits. [Summary & Conclusions: "We do not find evidence for a circumbinary disk or extended emission detected beyond the binary orbit in dust or CO above an RMS of 0.02 and 0.9 mJy/beam, respectively."]
+- claim [partially]: H: Two isolated Keplerian disks fully describe the detected CO emission. | E: Fit two parametric disks and examine channel residuals. | R: An eastern arc remains at 10.51 km s^{-1}; its entire extent exceeds 3 sigma and its peak exceeds 4 sigma. | F: The model describes the bulk emission but misses extended structure. [Modeling the CO Gas Disk: "the model is able to describe the bulk of the CO emission, however, there is extended emission, particularly in the 10.51 km s$^{-1}$ channel that is not described by a Keplerian disk model."]
+- step 1 (Prepare self-calibrated continuum and CO data) validation: Check flux scaling and astrometric alignment; stop when SNR fails to improve, flagged solutions exceed 20%, or native 6 s integration is reached [Calibration and Imaging: "The flux scaling between the data sets was consistent within the uncertainty (flux ratio of $0.999\pm0.006$)."]
+- step 2 (Measure continuum fluxes and binary astrometry) validation: Vary initial guesses; image-plane sizes and projections are not robust [1.3 mm Continuum: "Depending on the initial guess provided to the function, the profiles are either narrowly resolved or consistent with point sources, indicating that we cannot robustly measure disk radii or their projections"]
+- step 3 (Infer dust disk sizes and orientations) validation: Inspect chains for convergence; compare data, model, residual maps and visibilities [1.3 mm Continuum: "inspection of the parameter chains shows clear convergence."]
+- step 4 (Estimate dust mass lower limits) validation: Integrated fluxes agree with lower-resolution measurements [1.3 mm Continuum: "The integrated 1.3 mm fluxes are consistent with those from (cite: Akesonetal2019) that were observed with lower angular resolution."]
+- step 5 (Characterize the stars spectroscopically) validation: Calibrate synthetic spectra against the Sun and 61 Cyg B; adjust oscillator strengths and van der Waals broadening constants [Modeling High-Resolution NIR Spectra: "The synthetic spectra are then calibrated against the Solar spectrum (cite: Livingston&Wallace1991) and the spectrum of 61 Cyg B (cite: Wallace&Hinkle1996)."]
+- step 6 (Derive stellar radii, luminosities and mass priors) validation: Check coevality; compare seven other stellar evolution models; broaden temperature-radius/luminosity posteriors for systematic uncertainty [Modeling the Spectral Energy Distributi…: "We confirm that the output component ages are coeval within observed ranges"]
+- step 7 (Measure the NIR relative radial velocity) validation: Use scatter among four regions for internal uncertainty [Relative Stellar Radial Velocity: "we take the mean and standard deviation of these measurements as our relative RV and its internal RV uncertainty:"]
+- step 8 (Measure AO binary astrometry and flux ratios) validation: Use image-to-image standard deviations; construct effective PSFs for variable 2016 image shapes [High-Angular Resolution Imaging: "The positions are averaged over the measurements from individual images, and uncertainties are computed from the standard deviation."]
+- step 9 (Obtain an initial binary orbit) validation: Assess convergence using the SED fit autocorrelation procedure [Binary Orbital Solution: "chain convergence is assessed following the method outlined in Section [3.1.2](#model_flux)."]
+- step 10 (Map CO emission and inspect extended structures) validation: Mask removes no emission on the resolution-element scale or larger [$^{12}$CO J = 2–1: "No emission on the scale of the resolution element or larger is removed by the mask."]
+- step 11 (Fit gas disk orientations and systemic velocities) validation: Inspect chains and stability in backward 100-step increments; inspect residual maps; repeat fits with radius upper bounds 8 and 5.5 AU [Modeling the CO Gas Disk: "we assess convergence by visually inspecting the parameter chains and confirming that parameter values are constant in 100 step increments moving backward from the last step."]
+- step 12 (Refine the binary orbit with ALMA velocities) validation: Autocorrelation convergence assessment; compare orbit with astrometry and RV measurements [Binary Orbital Solution: "chain convergence is assessed following the method outlined in Section [3.1.2](#model_flux)."]
+- step 13 (Evaluate disk-orbit alignment) validation: Compare projected inclinations, ascending nodes and random-orientation obliquity distributions [Disk-Orbit Alignment: "The right panel also includes the distributions of obliquities for random disk orientations in grey, for reference."]
+- step 14 (Compare disk sizes and alignment with dynamical theory) validation: Discuss resolution and non-Keplerian emission as alternatives to oversized gas disks; alignment timescale depends on viscosity and aspect ratio [Disk Truncation: "they do not have the angular resolution to distinguish whether the fit radii are indeed larger than truncation models predict, or whether our simple model is not capturing more complex emission."]
+- step 15 (Search for stellar rotation in photometry) validation: Require consistent dominant periodogram peaks with positive autocorrelation across temporal subsets; no reliable rotation period recovered [Photometric Variability: "We do not find a single period across the temporal regions analyzed that has a consistently dominant LSP peak with positive auto-correlation, regardless of the reduction."]
+- alternative considered: Combined amplitude-only self-calibration rejected because it did not significantly improve data quality [Calibration and Imaging: "An iteration of amplitude-only self-calibration did not significantly improve the data quality, leaving the last iteration of phase-only self-calibration as our fiducial continuum data set."]
+- alternative considered: CO radius priors capped at 8 and 5.5 AU tested; parameters agree within 68% intervals, but constrained fits miss outer emission [Modeling the CO Gas Disk: "we perform two additional MCMC fits that limit the upper bound of the radius priors to 8 and 5.5 AU."]
+- alternative considered: Retrograde misaligned disk solution retained as an unresolved alternative [Disk-Orbit Alignment: "Although we cannot strictly rule out the pathological misaligned scenario,"]
+- decided enough: Self-calibration stops at SNR plateau, >20% flagged solutions or 6 s integration; expensive visibility fits use visual chain convergence and final chain segments [Calibration and Imaging: "the SNR does not improve from the previous iteration, the number of flagged solutions for any time interval exceeds 20%, or we reach the native integration step (6 s)."]
+- referee caveat (card): Resolve conflicting mass priors: text gives total mass N(0.58,0.12) and q uncertainty 0.1; Table 4 gives N(0.57,0.11) and q uncertainty 0.05.
+- referee caveat (card): Resolve the continuum RMS discrepancy: 0.03 mJy/beam in calibration versus 0.02 mJy/beam in the summary.
+- referee caveat (card): The continuum section prints the primary dust radius in pc; Tables 3 and 5 give AU. Use explicitly identified table values for answer keys.
+- limitation (authors): Dust image-plane radii and projections are not robust [1.3 mm Continuum: "we cannot robustly measure disk radii or their projections (e.g., inclination, position angle) in the image plane."]
+- limitation (authors): Cloud absorption excludes CO channels between 5 and 8 km s^{-1} [Modeling the CO Gas Disk: "ignoring channels between 5 and 8 km s$^{-1}$ that have foreground cloud absorption."]
+
+### 2020ApJ...905...25G: Multidirectional Mass Accretion and Collimated Outflows on Scales of 100-2000 au in Early Stages of High-mass Protostars (2020; star_formation; observational_alma_primary)
+- question: How the highest-mass proto-O-stars gather their mass
+- claim [partially]: H: Dusty streamers channel accretion onto the central HMYSOs | E: Inspect continuum morphology, search for gas kinematics, and compare magnetic-field orientations | R: Multiple dusty lanes converge on compact cores; clear infall signatures are absent | F: Accretion filaments are the simplest explanation, supported indirectly [Summary and Conclusions: "The observed small-scale dusty streamers are imprints of accretion columns towards the central HMYSOs."]
+- claim [partially]: H: Large rotating disks can be identified around the three HMYSOs | E: Examine dense-gas velocity fields and measure optically thick continuum extents | R: No clear rotation or infall; disk-radius upper limits <75, <350, and <500 au | F: Disks are not directly detected; compact disks remain plausible because dust opacity obscures kinematics [Abstract: "Molecular emission shows no clear signs of rotation nor infall on scales from 150 to 2000 au: we do not detect disks."]
+- claim [supported]: H: The HMYSOs are vigorously accreting | E: Derive SiO outflow momentum, primary-jet ejection rates, and model-scaled accretion rates | R: Accretion rates 1.7-4.3×10^-3 and 1.0-2.4×10^-3 M_sun yr^-1 for W51e2e and W51north | F: Powerful young outflows indicate vigorous ongoing accretion [Outflow and accretion rate: "accretion rates of $1.7-4.3\ensuremath{\times 10^{-3}}$ and $1.0-2.4\ensuremath{\times 10^{-3}}$ $M_{\odot}$ yr$^{-1}$, onto the W51e2e and W51north protostars, respectively"]
+- claim [partially]: H: A major accretion event redirected the W51north disk and outflow | E: Compare small- and large-scale outflow axes, infer transition history, and calculate angular-momentum transfer | R: Transition duration 175 years; inferred dumped mass 0.25–0.5 M_sun; modeled flip 41-61° | F: Accretion-driven disk reorientation is plausible and preferred over the considered alternatives [W51-North: "Assuming a constant velocity of 30 km s$^{-1}$, the outflow turn occurred over just 175 years."]
+- step 1 (Make continuum images) validation: Noise away from bright sources near thermal noise expected from ALMA sensitivity calculator [Continuum emission: "near the thermal noise level, as expected from the ALMA sensitivity calculator"]
+- step 2 (Measure continuum structure and brightness) validation: Consistent deconvolved sizes in uniform and Briggs maps [W51e8.: "in both the uniform and Briggs maps provides a consistent deconvolved FWHM size"]
+- step 3 (Estimate core and filament masses) validation: Compare thin/thick estimates and two temperature lower limits; check flux recovery against Cycle 2 [Masses: "we use these two approaches (assuming thin and thick emission) and these two independent $T_d$ lower limits to obtain mass estimates"]
+- step 4 (Derive luminosity lower limits) validation: Compare with higher luminosity lower limits from coarser Cycle 2 observations [Protostellar luminosities: "the coarser-resolution observations carried out with ALMA in cycle 2 recovered more flux"]
+- step 5 (Test for rotation and infall) validation: Compare tracers, excitation levels, and spatial scales; consider radiative transfer and spatial filtering as explanations for absent kinematics [Kinematics of dense molecular gas: "This result does not depend on the molecular tracers or the probed scales"]
+- step 6 (Constrain disk sizes) validation: Compare upper limits with previous ALMA disk measurements and simulation predictions [Compact accretion disks.: "These upper limits are consistent with predictions from recent (M)HD simulations."]
+- step 7 (Trace outflow morphology across scales) validation: Check consistency of thermal-line morphology and kinematics with maser proper motions [W51-e2e: "water masers, which also show a picture consistent with the thermal $^{12}$CO and SiO emission."]
+- step 8 (Estimate outflow dynamical ages) validation: Method justified by highest speeds occurring at largest separations; W51e8 age flagged as unreliable [Physical properties of massive protoste…: "This method is adequate since the highest speeds are observed at the largest separations"]
+- step 9 (Calculate outflow mass and momentum rates) validation: Analyze red and blue lobes independently; red masses 4–10 times lower, attributed to obscuration and complex structure [Momentum rate: "we treated the blueshifted and the redshifted lobes independently, but the latter provided mass values 4 to 10 times lower."]
+- step 10 (Infer primary-jet ejection rates) validation: Compare jet-speed normalization with published radio-jet proper-motion measurements [Momentum and ejection rates of outflows: "a handful of proper-motion studies of the radio continuum jets provide speeds of about 500 km s$^{-1}$ (cite: Marti1995)."]
+- step 12 (Test W51north disk reorientation) validation: Check intermediate-angle emission and missing extended flow on current axis; assess obstacle, multiple-source, precession, and fly-by alternatives [Outflow from W51n: a single outflow cha…: "there is emission detected in both the red and blue lobes at intermediate position angles"]
+- alternative considered: Dust lanes as outflow-heated dust disfavored by multiple orientations, asymmetric mass distribution, and high surface brightness [Are the dust lanes outflow rather than …: "there are at least four dust lanes with similar sizes and brightness, which appear elongated in several random directions relative to the SiO outflows"]
+- alternative considered: All accretion in the plane of the sky considered implausible [Why do not we see kinematical signature…: "All gas is accreting in the plane of the sky."]
+- alternative considered: Spatial filtering may also suppress line emission; radiative transfer favored [Why do not we see kinematical signature…: "Because we are observing with an interferometer with low spatial dynamic range, these smoother features are suppressed."]
+- referee caveat (card): Missing rotation signatures under high continuum opacity do not establish that large disks are physically absent.
+- referee caveat (card): Streamer accretion and a disk-flipping burst are indirect interpretations; the magnetic-field-directed outflow alternative remains relevant.
+- referee caveat (card): The accretion-rate ranges reflect adopted model fractions rather than a full observational uncertainty budget.
+- limitation (authors): Emission extended over scales larger than 2000 au is filtered out [Data Reduction and Imaging: "This implies that we do not detect any emission that is extended over scales larger than 2000 au."]
+- limitation (authors): Only 12–23 percent of Cycle 2 continuum flux recovered [Masses: "In the robust 0.5 maps, in W51e2e, 13% of the flux is recovered, in W51e8, 12%, and in W51north, 23%."]
+
+### 2024MNRAS.528.6768H: The ALMaQUEST Survey XIV: do radial molecular gas flows affect the star-forming ability of barred galaxies? (2024; nearby_galaxies; archival_reuse)
+- question: Are optical bars associated with radial molecular gas motions, and how do these motions affect star-formation efficiencies and global properties?
+- claim [supported]: H: Optical bars are associated with radial molecular gas motions | E: Compare KINMS radial-flow detections among morphological subsamples | R: Flow fractions: barred 0.60 ±0.15; un-barred 0.30 ±0.10; edge-on 0.38 ±0.13 | F: Barred galaxies are more likely to host kinematics resembling radial bar-driven flows [Statistical presence of radial bar-driv…: "We find that $0.60 \pm 0.15$ of the objects in the barred sub-sample are also in the radial bar-driven flow subset"]
+- claim [partially]: H: Bars organize molecular gas into resonant structures | E: Select one- versus two-component surface-brightness models using BIC | R: 0.90 ±0.09 of barred galaxies prefer two-component models | F: Multiple components likely trace resonance systems; longer-lived structures may outlast transient flows [Statistical presence of radial bar-driv…: "the barred sub-sample is dominated by 2-component models ($0.90 \pm 0.09$)"]
+- claim [partially]: H: Radial flows in barred galaxies are associated with reduced SFE | E: Compare main-sequence-corrected global and disc SFE distributions with two-sided KS tests | R: Barred + radial flow versus un-barred gives p <0.05 globally and in discs | F: The barred + radial flow subset appears SFE-suppressed; small samples limit interpretation [Effect of radial bar-driven flows on th…: "the p-value of the “barred + radial flow” subset is \< 0.05."]
+- claim [refuted]: H: Gas depletion explains the suppressed star formation | E: Compare central gas fractions, gas surface densities and CO concentration among subsets | R: Central gas-fraction KS p-values >0.05; barred flow galaxies have higher median central gas surface density | F: Exhaustion of central molecular gas is not the reason for the observed suppression [Effect of radial bar-driven flows on th…: "We find that the p-value in each case is $>0.05$, suggesting that both barred radial flow subsets have central gas fractions drawn from the same distribution as that of the un-barred sub-sample."]
+- step 1 (Measure CO luminosities and molecular masses) validation: Near-solar metallicities support the constant Galactic conversion factor [ALMaQUEST: "All galaxies in the sample have near-solar metallicities"]
+- step 2 (Construct resolved optical SFR maps) validation: Compare resolved-disc SFE patterns with independent global-SFR results [Do radial bar-driven flows affect the S…: "finding a comparable result by an independent method does add credence to our interpretation of SFE suppression of the “barred + radial flow” subset galaxies."]
+- step 4 (Classify optical morphology) validation: Visual assessment supports classifications using the lower count threshold [Morphological sub-samples: "However, after a visual assessment, we still find these classifications reliable with the lower count threshold."]
+- step 5 (Select circular kinematic models) validation: Reject parameters whose 16th–84th percentile uncertainty width exceeds half the explored range; converged best-fit model found for every object [Kinematic models: "We reject models that have fit parameters with uncertainties (defined as the width between the $\rm 16^{th}$ and $\rm 84^{th}$ percentiles of the probability distribution function) larger than half the size of the parameter range explored"]
+- step 6 (Detect radial bar-driven flows) validation: Inspect spectra, PVDs and residuals; most barred flow detections align projected φ_b with the optical bar [Kinematic models: "Both the shape of the PVD extracted from the model and the residuals when compared to the data are improved by including radial bar-driven flows."]
+- step 7 (Compare morphology and flow statistics) validation: Compare predicted edge-on flow fraction ≈0.39 with measured 0.38 ±0.13 [Statistical presence of radial bar-driv…: "we would expect $\approx 0.39$ of the edge-on sub-sample to be in the radial bar-driven flow subset, very close to our measured edge-on radial bar-driven flows fraction of $0.38 \pm 0.13$."]
+- step 8 (Compare global and resolved SFE offsets) validation: Similar relative SFE patterns using global GSWLC-X2/WISE SFRs and independent MaNGA disc SFRs [Do radial bar-driven flows affect the S…: "We find a similar distribution to that of Figure [11](#fig: del_sfe) in terms of the relative enhancement/suppression between the morphological sub-samples and radial flow subsets."]
+- step 9 (Measure gas concentration and central reservoirs) validation: Repeat gas-density comparisons after degrading cube S/N below 30; repeat gas-fraction analysis using total fractions [Effect of radial bar-driven flows on th…: "the results from the 2-sided KS test remain consistent with those calculated in the left hand side panel."]
+- step 11 (Test sensitivity to cube S/N) validation: Flow detections and preferred profiles change, but SFE suppression and overall conclusions persist [SNR degradation: "The S/N of the datacubes, therefore, do affect the detection of radial bar-driven flows and the best-fit model."]
+- alternative considered: Pure inclination cuts for edge-on classification can hide visibly discernible bars; GZ2 preferred when counts suffice [Morphological sub-samples: "Applying an arbitrary inclination cut led to some galaxies being classified as edge-on when their features were still discernible (e.g. a central bar was visible)."]
+- alternative considered: Compare six single-/double-component brightness profiles and models with/without radial flows [Kinematic models: "For each object in ALMaQUEST, we fit six different surface brightness profiles"]
+- alternative considered: Gas exhaustion disfavoured as the explanation of suppressed SFE [Summary & conclusions: "Exhaustion of the central molecular gas reservoirs is, therefore, not the reason for the SFR suppression observed in this subset."]
+- decided enough: Integration chosen for S/N >3 in >50% of spaxels having MaNGA Hα S/N >3 [ALMaQUEST: "to ensure a signal-to-noise ratio greater than 3 for more than 50% of the spatial pixels (spaxels) where the MaNGA H$\upalpha$ signal-to-noise ratio is also greater than 3."]
+- referee caveat (card): The acknowledgements print 2011.0.01234.S, inconsistent with the four programmes listed in the data section; its role requires clarification.
+- referee caveat (card): The supplied text contains image links but no readable flowchart contents or per-galaxy model table, limiting reconstruction of classifications.
+- referee caveat (card): The text reports 19 flow detections, while its rounded morphological fractions and counts do not transparently reproduce that total.
+- limitation (authors): Small morphological and flow subsets limit SFE comparisons [Effect of radial bar-driven flows on th…: "We note that these subsets are small, particularly the “barred + no radial flow” subset, so our analysis is once again limited by the small number of galaxies available in this work."]
+- limitation (authors): Central resolved SFR analysis is limited by AGN contamination and low S/N [Effect of radial bar-driven flows on th…: "spatially-resolved analyses of SFRs in ALMaQUEST are limited by AGN contamination and/or low S/N in the central regions of some of the galaxies in the sample."]
+
+### 2021ApJ...909..212K: ALMA Observation of the Protoplanetary Disk around WW Cha: Faint Double-peaked Ring and Asymmetric Structure (2021; protoplanetary_disks; observational_alma_primary)
+- question: Resolve disk substructures and constrain dust density, temperature, and grain-size distribution around WW Cha.
+- claim [supported]: H: Does WW Cha contain a large cavity, gaps, or radial dust substructure? | E: Image the continuum and fit an axisymmetric visibility model. | R: No large cavity or gap; a faint bump has peaks near 40 and 70 au. | F: The disk has a low-contrast double-peaked bump without a gap. [Abstract: "The dust continuum image shows a smooth disk structure with a faint (low-contrast) dust ring, extending from $\sim 40$ au to $\sim 70$ au, not accompanied by any gap."]
+- claim [supported]: H: Are the apparent disk asymmetries robust? | E: Compare axisymmetric-model residuals with imaginary-visibility images. | R: Both methods recover central and outer asymmetric structures. | F: The asymmetries are supported independently of the radial intensity model. [Abstract: "The residual map between the model and observation indicates asymmetric structures at the center and the outer region of the disk."]
+- claim [partially]: H: Could snowlines and sintering produce the double-peaked bump? | E: Use radiative-transfer temperatures at the fitted peak locations. | R: Outer and inner peak temperatures are about 30 K and 50 K. | F: Snowlines and sintering may explain the bump. [Ring: "the temperature around the outer peak is about $30$ K, which is close to the freezeout temperature of CO at water ice (cite: Huang_DSHARP)."]
+- claim [partially]: H: Does the characteristic large-grain size vary radially? | E: Compare observed within-band spectral indices with radiative-transfer grain-size models. | R: Outer indices agree with 1.0 mm grains; inner indices below 2 agree with 0.5 mm grains. | F: Larger grains in the outer disk are suggested, pending multi-wavelength observations. [Spectral index: "the observational feature that the spectral index increases in the outer region is consistent with the radiative transfer calculations when $s_{\rm d,large}=1.0 \mbox{ mm}$."]
+- step 1 (Determine geometry and recenter visibilities) validation: Compare C43-8 and C43-4 geometry fits; test the adopted center using imaginary-image RMS in step 6. [Observations and results: "The fitted inclination and position angle are slightly different in the C43-8 (sparse configuration) and C43-4 (compact configuration) data."]
+- step 2 (Image the continuum) validation: Final beam and RMS reported. [Observations and results: "with the beam size of $89.6\times 60.0\mbox{ mas}$ ($17.0 \times 11.4$ au) with PA=$168.8^{\circ}$ and with the $1\sigma$ RMS noise level of $0.029\mbox{ mJy/Beam}$."]
+- step 3 (Measure continuum structure and optical-depth diagnostics) validation: Compare brightness and passive-disk midplane temperatures with the spectral-index optical-depth interpretation. [Observations and results: "The brightness temperature is close to the midplane temperature within $0.25$ arcsec from the center, which indicate the optically thick emission."]
+- step 4 (Fit the axisymmetric intensity profile) validation: Compare observed and model visibilities; reduced χ² = 1.58 (upper) and 1.28 (lower); inspect posterior plots. [fitting result: "the reduced $\chi^2$ for the model of the upper band data is $1.58$ and that of the lower band data is $1.28$, respectively."]
+- step 5 (Validate models and map residuals) validation: Compare major-axis profiles and residual maps; check agreement of residual patterns between upper and lower bands. [fitting result: "we show the intensity distributions along the major axis in the mock observational image (model) and the observed image."]
+- step 6 (Test asymmetry without an intensity model) validation: Central and upper-left features agree with model-subtracted images; fiducial Gaussian center has minimum RMS among tested centers. [Asymmetric structure: "which is consistent with the difference btween the observed image and the axisymmetric model"]
+- step 7 (Construct physical radiative-transfer models) validation: Temperature converges after 2–3 iterations; changing s from 0 to 0.5 affects midplane temperature by only a few Kelvin. [Setup and model description: "In our case, the temperature distribution is converged after 2–3 iterations."]
+- step 8 (Constrain mass, temperature, and gravitational stability) validation: Compare SEDs beyond band 6 and test consistency of predicted instability with the absence of fragments. [Intensity and spectral energy distribut…: "For fluxes at the longer wavelengths, namely $3$ mm $<\lambda < 1$ cm, simulations agree with the observation."]
+- step 9 (Constrain grain sizes with spectral indices) validation: Test luminosity/surface-density degeneracy, alternative grain-size distributions, and the dependence of spectral index on band choice. [Spectral index: "With the power-law distribution, the spectral index does not become below 2, even if the maximum size of the dust grains is 0.5 mm."]
+- step 10 (Test dust evolution and turbulence interpretations) validation: Compare drift/growth times with the young stellar age and inferred turbulence with the published high accretion rate. [Dust size distribution: "WW Cha is young and the age is about $\lesssim 1$ Myr, which is shorter than the drift timescale of $1$ mm-sized dust and longer than the growth timescale of the dust"]
+- step 11 (Interpret the possible small cavity) validation: Separation roughly agrees with published binary motion, but fitting also permits no cavity. [Inner cavity and binary: "This separation is roughly consistent with the binary motion observed by (cite: Anthonioz2015)."]
+- alternative considered: Combined-configuration MCMC fitting gives reduced χ² ∼6, mainly from data around 200 kλ; compact-only data cannot resolve the substructures. [fitting result: "When both the C43-4 and C43-8 data are used, the reduced $\chi^2$ is $\sim 6$"]
+- alternative considered: A pressure bump or planetary-gap dust trap is disfavored by the double peak and absence of an interior gap. [Ring: "However, the bump that is formed by the above mechanisms likely has a single peak, while the bump of our model has double peaks."]
+- alternative considered: L* = 11 L⊙ needs an envelope contribution to infrared flux; L* = 22 L⊙ reproduces infrared-to-radio fluxes without that contribution. [Intensity and spectral energy distribut…: "In the case with $L_{\ast}=11L_{\odot}$, the flux at far infrared wavelengths is about a factor of two smaller than the observed values."]
+- decided enough: Restrict fitting to visibilities above the effective noise limit; iterate radiative transfer to temperature convergence. [Fitting approach: "Since the amplitude of the visibility is comparable with the noise level in $\rho>2000k\lambda$, we used the visibility in the range of $\rho < 2000k\lambda$ in this modeling."]
+- referee caveat (card): The observations and fitting sections reverse the 10/20 kλ bin assignments around 1200 kλ.
+- referee caveat (card): The paper names vis_simple once and vis_sample elsewhere; the exact model-sampling call needs clarification.
+- referee caveat (card): Formal MCMC errors do not establish robustness to flux calibration, binning, or the adopted radial-profile family.
+- limitation (authors): The ∼1 au cavity is far below the effective spatial resolution; no cavity remains allowed. [Inner cavity and binary: "further observations are required to confirm the small cavity, because it is much smaller than the angular resolution with the baselines of $<2000k\lambda$."]
+- limitation (authors): Spectral-index and grain-size conclusions use a very narrow frequency interval within band 6. [Spectral index: "We should note that the spectral index discussed in this paper is provided from the very narrow range of the observed frequency within band 6."]
+
+### 2021A&A...645A..21G: Multiphase feedback processes in the Sy2 galaxy NGC 5643 (2021; nearby_galaxies, agn_and_quasars; archival_reuse)
+- question: Investigate the AGN-driven outflow in the cold molecular and ionized gas phases of NGC 5643.
+- claim [partially]: H: The molecular gas is entrained by the AGN wind. | E: Separate rotation from non-circular components and compare molecular/ionized outflow velocity profiles. | R: Median molecular deprojected velocity ~189 km s^-1; ionized velocities reach ~750 km s^-1. | F: Molecular gas in the host disk is likely entrained by the wind. [Spatially resolved outflow properties: "The median deprojected outflowing velocities of the cold molecular gas is $\sim$189 km s$^{-1}$."]
+- claim [supported]: H: The molecular phase dominates the outflow mass budget. | E: Derive masses and mass rates from CO(2-1) and extinction-corrected [O iii], with two CO conversion factors. | R: Molecular/ionized mass ratios 600 (110); mass-rate ratios 360 (70). | F: Molecular gas dominates both mass and mass outflow rate. [Spatially resolved outflow properties: "For the outflowing molecular gas mass we use the CO(2-1) fluxes."]
+- claim [supported]: H: The molecular and ionized phases have different momentum-conservation behaviour. | E: Compare derived outflow momentum rates with the AGN radiation momentum rate L_bol/c. | R: Molecular momentum load ~27 (~5 for ULIRG α_CO); ionized load <1. | F: The molecular phase is interpreted as not momentum conserving; the ionized phase as momentum conserving. [Integrated Outflow Properties: "the radiation momentum rate expected for the AGN in NGC 5643 ($\dot{P}_{AGN}=$L$_{bol}$/c$=$2.72$\times$10$^{33}$ dyne)."]
+- claim [partially]: H: The AGN wind clears or destroys molecular gas in the eastern spiral arm. | E: Compare CO-derived spiral-arm masses using symmetric regions and a selection including additional clumps. | R: Eastern mass ~(1.5-2.0)×10^7 M_⊙, 50–70% of the western content. | F: The deficit is interpreted as mild negative feedback, subject to intrinsic arm asymmetry. [Spiral arms molecular gas mass: "For both approaches, we find that the molecular gas mass of the eastern spiral arm is M$_{east}\sim$(1.5-2.0)$\times$10$^7$ M$_\ensuremath{\odot}$."]
+- step 2 (Measure stellar rotation) validation: Stellar kinematics agree within errors with the CO(2-1) rotating-disk model. [Stellar kinematics: "the stellar kinematics is in fairly good agreement within the errors with the CO(2-1) rotating disk model"]
+- step 3 (Model molecular disk rotation) validation: Predicted disk velocity agrees with the brightest CO component where modelled. [CO(2-1) data — Individual regions: "In the region modelled by the rotating galaxy disk, there is a good agreement between the predicted velocity from the model and the brightest CO(2-1) component."]
+- step 4 (Fit regional molecular and ionized spectra) validation: Inspect residuals and require substantial improvement for multicomponent [O iii] fits. [MUSE data — Individual regions: "Finally, we only considered for the analysis those fits using two/three components when the residuals improved considerably"]
+- step 5 (Separate rotation, inflow and outflow) validation: Check rotation-component velocities against stellar kinematics and major-axis position–velocity diagrams. [Stacking regions: "we check that the identified rotation disk component is in agreement within the errors with those of the stellar kinematics derived from the MUSE data"]
+- step 6 (Measure faint outflow components in stacked slices) validation: Compare [O iii] profiles with NGC 7009 instrumental profiles; broad wings cannot be explained by the instrumental response. [Stacking regions: "To characterize it we use VLT/MUSE data of the planetary nebula NGC 7009, which is an unresolved source"]
+- step 7 (Correct extinction and estimate electron density) validation: Density increases toward the AGN, in agreement with previous Seyfert studies. [MUSE data — Radial profile along the ou…: "In agreement with previous works on Seyfert galaxies (e.g. (cite: Bennert06a; Bennert06b)), the observed gas density of the NLR gas in NGC 5643 increases with decreasing distance from the AGN."]
+- step 9 (Derive molecular outflow masses) validation: Repeat with ULIRG conversion factor; main results do not change significantly. [CO-to-H$_2$ conversion factor: "We find that the main results of this work do not change significantly by using different CO-to-H$_2$ conversion factors."]
+- step 10 (Derive ionized outflow masses) validation: Also derive outflow properties without extinction correction. [Observed outflow properties: "Here we also derived the various outflow properties profiles (see Fig. [19](#c1)) without taking into account the extinction correction."]
+- step 11 (Calculate outflow rates, power and momentum) validation: Evaluate both CO conversion factors and extinction-corrected/uncorrected ionized properties. [CO-to-H$_2$ conversion factor: "we also estimate the molecular gas outflow properties using a lower CO-to-H$_2$ conversion factor"]
+- step 13 (Assess AGN and jet driving) validation: Compare total derived properties with other AGN and theoretical kinetic powers. [Integrated Outflow Properties: "a comparison between the total derived properties for NGC 5643 and the properties for other AGN (e.g. (cite: Fiore17) and (cite: Baron19))."]
+- step 14 (Measure the spiral-arm molecular deficit) validation: Two region-selection approaches both give eastern mass ~50–70% of western mass. [Spiral arms molecular gas mass: "For both approaches, we find that the molecular gas mass of the eastern spiral arm is M$_{east}\sim$(1.5-2.0)$\times$10$^7$ M$_\ensuremath{\odot}$."]
+- step 15 (Compare ionized velocities with an analytic wind model) validation: Model profiles reproduce ionized-phase observations and the ~2 kpc outflow scale. [Outlfow Wind Analytic Model: "which reproduce well the ionized phase observations"]
+- alternative considered: Bar streaming explains selected local inflows, but not all east–west non-circular CO components. [Spatially resolved kinematics: "we interpret the CO(2-1) blueshifted (reshifted) non-circular motions in the northern (southern) part of the spiral arms as local inflow."]
+- alternative considered: An extraplanar molecular component is disfavoured because non-circular velocities generally lie below escape velocity. [Position-velocity diagrams: "it is not expected an extra-planar outflow component since generally the non-circular velocity is below the escape velocity ($\sim$200 km/s at 5$''$), and any extra-planar component would fall back onto the disk."]
+- alternative considered: Instrumental wings cannot explain the detected broad optical lines. [Stacking regions: "We find that the MUSE/VLT instrumental profile at $\lambda$5007$\AA$ is slightly asymmetry, but the detected broad lines in our work cannot be explained by an instrumental effect."]
+- decided enough: AoN >3; add components for >3σ residuals and retain multicomponent fits when residuals improve considerably. [MUSE data — Individual regions: "For those fits with single Gaussians which show residuals in the \[O iii\] region above 3 times the standard deviation, we included a second kinematic component."]
+- referee caveat (card): The abstract/conclusions call the phase kinetic powers similar, but the main integrated table gives 1.0×10^42 versus 1.2×10^40 erg s^-1; use the table for numeric answer keys.
+- referee caveat (card): The integrated-results prose gives eastern ionized mass ~5.1×10^4 M_⊙, whereas the main table gives 4.2×10^4 M_⊙.
+- referee caveat (card): The stated systemic velocity of 1994 km s^-1 and CO table disk velocities near 1198 km s^-1 require clarification of velocity conventions.
+- limitation (authors): Large-scale faint CO emission could not be modelled with BAROLO; velocity extrapolation and brightness-based identification were used. [CO(2-1) data — Individual regions: "Since we could not model the large-scale faint emission with BAROLO, we extrapolated the velocity field when possible to identify the galaxy disk emission line in the fitted kinematic components."]
+- limitation (authors): CO conversion factor poorly constrained; molecular masses depend on α_CO and line ratio. [CO-to-H$_2$ conversion factor: "the CO-to-H$_2$ conversion factor is poorly constrained for Seyfert galaxies."]
+
+### 2025ApJ...995..108J: Molecular Gas in Major Mergers Hosting Dual and Single AGNs at &lt;10 kpc Nuclear Separations (2025; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Measure molecular gas within SMBH spheres of influence, separate rotating and non-rotating gas, relate it to SMBH growth, and compare single and dual AGN.
+- claim [supported]: H: Late merger evolution increases nuclear gas concentration without substantially changing the global gas supply. | E: Compare global gas masses and SoI gas fractions with projected nuclear separation. | R: Global mass has τ = -0.05, p = 0.4; median upper-bound SoI fraction is 8% below 1.5 kpc versus <1% at 1.5–4 kpc. | F: Molecular gas becomes more centrally concentrated toward smaller nuclear separations. [Molecular gas across merger stage: "with a Kendall’s tau correlation coefficient of $\tau = -0.05$ and a $p$-value of 0.4."]
+- claim [supported]: H: AGN can be displaced from molecular emission peaks and gas kinematic centers in major mergers. | E: Compare continuum AGN positions with CO peaks and KinMS rotating-disk centers. | R: ∼67% (8/12) are offset from CO peaks; 44% (4/9) have kinematic offsets ≳200 pc. | F: Spatial displacements are common; merger-driven gravitational interactions could displace SMBHs. [Spatial misalignment with $^{12}$CO pea…: "we find that $\sim67\%$ (8/12) of the AGN are spatially offset from their $^{12}$CO emission line peaks"]
+- claim [supported]: H: Non-rotating nuclear gas concentration is linked to SMBH mass beyond aperture-size and host-property effects. | E: Correlate non-rotating gas mass and surface density with SMBH mass; test aperture expectations and partial correlations. | R: Surface-density Kendall τ = 0.5, p = 0.02; partial Spearman r = 0.8 controlling for σ* and M*. | F: The nuclear distribution of non-rotating molecular gas is linked to SMBH mass. [Feeding the Supermassive Black Holes: "a correlation between the $M_{\text{BH}}$ and the surface densities of the non-rotating molecular gas within the SoI ($\tau = 0.5$ and $p$-value = 0.02)."]
+- claim [refuted]: H: The amount of non-rotating SoI gas alone determines current AGN accretion efficiency. | E: Compare non-rotating gas masses with Eddington ratios and AGN bolometric luminosities. | R: Eddington ratio: τ = -0.4, p = 0.05; AGN luminosity: τ = -0.08, p = 0.5. | F: The available non-rotating gas does not significantly elevate current accretion efficiency; only a fraction may presently reach the SMBH. [Feeding the Supermassive Black Holes: "the non-rotating molecular gas mass and the Eddington ratio (Figure [14](#fig:Edd_NR); $\tau = -0.4$ and $p$-value = 0.05)"]
+- step 2 (Define SMBH masses and aperture bounds) validation: Repeat the analysis at both SoI extrema to address methodology and definition uncertainty. [Black Hole Masses & Sphere of Influences: "To account for this uncertainty, we define upper- and lower-bound estimates of $r_{\text{SoI}}$ and conduct the same analysis at both extrema."]
+- step 3 (Measure CO maps and integrated fluxes) validation: Compare global fluxes with single-dish measurements after checking that both observations cover the full line width. [CO Maps and Properties: "We calculate these percentages by dividing the ALMA-observed global $^{12}$CO flux by the unresolved single dish measurements, after confirming that both observations had spectral coverage greater than the observed line width of the emission line."]
+- step 4 (Convert CO fluxes to molecular gas masses) validation: Adopted r21 compared with the published NGC 6240 global line ratio. [CO Maps and Properties: "This is also consistent with previous studies of NGC 6240, a dual AGN system in our sample, which has a mean global $^{12}$CO line ratio of $r_{21} = 1.17 \pm 0.19$ (cite: Cicone2018)."]
+- step 5 (Fit rotating molecular gas components) validation: Inspect residuals for significant negative features and require fitted components to coincide with optical disks; inspect posterior corner plots. [Kinematics: "we examined the model-subtracted residual images to confirm that significant negative features, a common indicator of overfitting or a poor choice of model, are not present."]
+- step 6 (Measure total and non-rotating gas within the SoI) validation: Estimate missing SoI flux assuming a smooth distribution over a ∼20–28 arcsec single-dish beam; inferred loss is below the cube 1σ RMS. [Kinematics: "We estimated a maximum impact on the SoI gas measurements by assuming that the lost flux has a smooth distribution across the single-dish primary beam ($\sim20-28”$ diameters)."]
+- step 7 (Derive AGN luminosities and Eddington ratios) validation: Check consistency with luminosity-dependent bolometric corrections over the sample luminosity range. [Bolometric Luminosities: "While other studies have reported a luminosity dependence of the bolometric correction (cite: Duras2020), in the luminosity range covered by our sample"]
+- step 8 (Measure spatial offsets and gas concentration) validation: Offset errors use KinMS 1σ uncertainties; Gaia–ALMA alignment checked with ALMA check calibrators. [Table 7: "The uncertainties in columns (2) and (3) were determined from the KinMS $1\sigma$ errors reported in Table [5](#tab:mcmc)."]
+- step 9 (Estimate potential short-term SMBH growth) validation: Repeat the upper-bound growth estimate omitting the NGC 6240S outlier. [Feeding the Supermassive Black Holes: "Omitting this outlier, the expected SMBH growth at upper-bounds range from a $\sim0-23\%$ mass increase, with the median remaining at 3%."]
+- step 10 (Test gas correlations and compare AGN classes) validation: Compare gas masses against aperture-size expectations, test surface densities, omit NGC 985E, and control for stellar dispersion and stellar mass. [Feeding the Supermassive Black Holes: "The plotted dashed line represents a uniform $3\sigma$ mass distribution, taking the median properties of the observed sample (e.g., beam size, RMS noise, luminosity distance)."]
+- alternative considered: For multiply observed systems generally use the newest data; use ESO 253-G003 CO(1-0) instead of CO(2-1) to avoid r21. [Data Description: "Generally, for systems that have been observed during multiple ALMA observing cycles, we analyzed the most recent data set."]
+- alternative considered: Centrally peaked analytic brightness profiles rejected for ring-like and clumpy systems in favor of fixed moment 0 morphology. [Kinematics: "the standard analytic models available in `KinMS_fitter` (e.g., exponential disks, Gaussians) were not suitable because they assumed a centrally-peaked brightness profile."]
+- alternative considered: Single- and two-component rotating disks rejected for NGC 6240 and NGC 985. [Kinematics: "we attempted to model the emission using both a single-component and a two-component rotating disk model."]
+- decided enough: At least 30,000 and up to 65,000 fitting iterations to obtain reasonable 1σ errors; inspect residuals for overfitting. [Kinematics: "At least 30,000 iterations were performed for each fitting, with some models having up to 65,000 iterations to obtain reasonable $1\sigma$ errors."]
+- referee caveat (card): Failed disk fits do not by themselves establish that all enclosed gas is non-rotating.
+- referee caveat (card): The SoI aperture depends on SMBH mass, so residual coupling may remain despite the aperture and partial-correlation checks.
+- referee caveat (card): The missing-flux test assumes a smooth distribution; more concentrated filtered emission would behave differently.
+- limitation (authors): Only two single-AGN systems provide an incomplete, preliminary comparison sample. [Sample Selection: "Though not a complete comparison sample, the inclusion of these two single AGN will serve as a preliminary point of comparison"]
+- limitation (authors): SMBH masses and SoI radii depend on methodology; merger systems may depart from the MBH–σ* relation. [Black Hole Masses & Sphere of Influences: "SMBH mass measurements can be highly uncertain, and vary substantially based on the method followed"]
+
+### 2017ApJ...841..130A: The Luminous Blue Variable RMC 127 as Seen with ALMA and ATCA (2017; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the nature of the radio/sub-mm emission from the LBV RMC 127's central object and outer nebula, and what does it imply for wind geometry, mass-loss rate and nebular shaping?
+- claim [supported]: H: Is the central object's emission thermal wind emission and is the wind spherical? | E: Fit power law to 9-349.5 GHz flux densities of central object | R: alpha=0.78+-0.05, steeper than spherical wind value of 0.6 | F: Thermal emission from an aspherical (bipolar/collimated) ionized wind [abstract: "The rising flux density distribution ($S_{\nu}\sim \nu^{0.78\pm0.05}$) of this object suggests thermal emission from the ionized stellar wind and indicates a departure from spherical symmetry"]
+- claim [supported]: H: Does a collimated wind change the mass-loss rate? | E: Reynolds models 1 and 2 | R: Mdot ~ (8.5-9.4)e-6 Msun/yr vs 2.1e-5 spherical | F: Mass-loss rate factor of two or more smaller than spherical [abstract: "we find that the mass-loss rate can be a factor of two or more smaller than in the spherical case."]
+- claim [supported]: H: What is the outer nebula emission mechanism? | E: Integrated spectral index and spectral index map 5.5-17 GHz | R: alpha=-0.03+-0.08, no non-thermal component | F: Optically thin free-free [3.3 Spectral index of the outer nebula: "There is no evidence of a non-thermal component, at least at the resolution and sensitivity achieved by these observations."]
+- claim [supported]: H: Where does mid- to far-IR emission arise? | E: Grey-body SED fit | R: T~80 K, beta~2 | F: Cool dust in the outer ionized nebula [abstract: "the mid- to far-IR emission must arise from extended, cool ($\sim80\,\rm K$) dust within the outer ionized nebula."]
+- step 1 (calibrate and image ALMA Band 7 data) validation: calibrator source structure of the gain calibrator checked via clean-component self-calibration; sideband images as cross-check [Appendix: "The maximum in the residual self-calibration phases of QSO$\,$J0635-7516 was around $3^\circ$, and there was no significant effect on the image of RMC$\,$127"]
+- step 3 (fit radio-sub-mm spectral index) validation: large frequency coverage deemed robust against systematics [3.2 Spectral index of the central object: "given the large frequency coverage (9 to 349.5 GHz) we are confident of the derived spectral index."]
+- step 4 (nebula spectral index and index map) validation: 17 GHz excluded from index maps due to artifacts [3.3 Spectral index of the outer nebula: "We prefer not to use the map at 17 GHz to derive spectral index maps"]
+- step 6 (collimated ionized wind models and mass-loss rate) validation: compared with spherical-wind Panagia & Felli Mdot [4.1 Collimated stellar wind models: "The mass-loss rate can be a factor of two or more smaller than in the spherical case"]
+- step 8 (precessing-jet nebula simulation and binary toy model) validation: qualitative similarity to 17 GHz morphology; X-ray archival limits [5 precessing jet model: "We find a remarkable similarity of panel (2) in the figure with the 17-GHz morphology of RMC$\,$127."]
+- alternative considered: Spherical wind and clumpy/porous wind models rejected for the central-object SED [4 central object: "These results make unsuitable all the models based on spherical symmetry."]
+- referee caveat (card): Spectral index fit mixes beams from 1.5 arcsec to 0.6 arcsec and observations separated by 3 years of a variable star
+- referee caveat (card): nu_max and inclination are assumed, driving Mdot
+- referee caveat (card): Only a single ALMA band so little leverage within ALMA alone
+- limitation (authors): Planned ALMA sensitivity not reached, so nebula undetected [2.1 ALMA observation and data reduction: "The proposed sensitivity of $40\,\mu{\rm Jy}\,{\rm beam^{-1}}$ could not be achieved"]
+- limitation (authors): Central-object size is an upper limit; flux systematics from differing beams and nebular contamination [3.1 The ATCA and ALMA maps: "Hence, the size provided above must be considered an upper limit."]
+
+### 2019ApJ...880..157D: ALMA and HST Kiloparsec-scale Imaging of a Quasar-galaxy Merger at Z ≈ 6.2 (2019; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: What are the morphology, kinematics and ISM/star-formation properties of the z=6.23 quasar PJ308-21 and its extended companion components, and are they a merger or an outflow?
+- claim [supported]: H: Are E and W components physically associated with the quasar rather than foreground objects? | E: Compared ALMA [CII]/dust maps with PSF-subtracted HST image | R: Morphological match of UV, dust and [CII] | F: Extended emission is associated with the quasar environment [3.1 Morphology of the system: "This unambiguously associates the latter with young stars at the redshift of the quasar"]
+- claim [supported]: H: Is the system an outflow? | E: Examined velocity structure and dispersion | R: Opposite velocity signs/gradients and low dispersion in E | F: Outflow not supported [3.4 Dynamics of the system: "appear inconsistent with an interpretation in terms of gas expanding from the center outward"]
+- claim [partially]: H: Can tidal disruption of one satellite explain the kinematics? | E: Toy escape-velocity model | R: Reproduces velocity range and ~11 kpc extent for reasonable parameters | F: Merger scenario consistent [3.4 Dynamics of the system: "A single satellite scenario is thus consistent with the observations"]
+- claim [supported]: H: Are ISM properties typical of high-z star-forming galaxies? | E: [CII]/IR, IRX, Sigma_SFR vs Sigma_gas | R: In line with main-sequence galaxies | F: Typical star-forming properties [abstract: "are typical of high–redshift star–forming galaxies"]
+- step 2 (PSF-subtract HST image) validation: Diffraction spikes well subtracted [2.2 HST: "our empirical PSF model appears to work well in subtracting the color-sensitive diffraction spikes"]
+- step 3 (Derive gas and dust masses, IR luminosities) validation: Compared the [CII]-based and gas-to-dust gas masses [3.2 Gas and dust masses: "a typical gas–to–dust ratio of 100 (cite: berta16) would yield a significantly lower gas mass"]
+- step 4 (Derive SFRs and surface densities) validation: Compared to Eddington limit and main-sequence galaxies [3.3 Star formation rate surface density: "are in line with the values typically observed in global observations of main sequence galaxies at $z$=1–3"]
+- step 5 (Toy tidal-disruption model) validation: Compared predicted velocity and extent with observations [3.4 Dynamics of the system: "we test whether the proposed dynamical description of PJ308–21 succeeds in predicting the observed range of line–of–sight gas velocity, and the spatial extent"]
+- alternative considered: Outflow interpretation rejected [abstract: "An outflow interpretation of the unique features in PJ308–21 is not supported by the data."]
+- alternative considered: Dust-scattered quasar light could contribute to UV; cannot be distinguished [Footnote 3: "At present, we cannot unambiguously distinguish between the two scenarios"]
+- referee caveat (card): Dust temperature assumed, not measured
+- referee caveat (card): Single alpha_[CII] applied across components
+- referee caveat (card): Toy model is not fitted and has degenerate parameters
+- limitation (authors): Gas masses are lower limits/order-of-magnitude; PSF color systematics; Q UV is a lower limit [3.2 Gas and dust masses: "These are lower limits in that the estimated gas mass would increase"]
+
+### 2015ApJ...812...27A: ALMA Observations of the Transition from Infall Motion to Keplerian Rotation around the Late-phase Protostar TMC-1A (2015; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: How does infall motion in the envelope of the Class I protostar TMC-1A transition to Keplerian rotation in the disk, and what does this imply for Keplerian disk formation?
+- claim [supported]: H: The high-velocity C18O emission traces Keplerian rotation around TMC-1A | E: Double power-law fit to major-axis PV mean positions and 3D disk-model fit to channel maps | R: p_in=0.54±0.14 and v=0.53 with M*=0.68 Msun | F: Inner part is Keplerian rotation [abstract: "This indicates that the rotation at higher velocities can be explained as Keplerian rotation orbiting a protostar with a dynamical mass of $0.68\ M_{\odot}$"]
+- claim [supported]: H: The envelope is infalling at free-fall speed | E: Compare FE/SE model PV diagrams with observations | R: Best alpha=0.3; free-fall model D fails | F: Infall is ~0.3 times free fall [abstract: "the observed infall velocity is $\sim$0.3 times smaller than free fall velocity yielded by the dynamical mass of the protostar"]
+- claim [partially]: H: Magnetic fields can explain slow infall | E: Equation of motion estimate with pressure and tension at 200 AU | R: B ~ 2 mG required | F: Plausible given mG fields at high density [5.3 Magnetic Pressure and Tension: "These observations (cite: fa2008; st2013) suggest that the magnetic field strength around TMC-1A can be possibly on the order of mG."]
+- claim [partially]: H: Disk radii and protostellar masses grow with evolution | E: Correlations in sources with infall-to-Keplerian transitions (Table 3) | R: Correlation coefficients 0.97, 0.95, 0.91 | F: Consistent with inside-out collapse; small sample [5.4 A Possible scenario: "although statistical significance are not high because the number of sample is small"]
+- step 2 (Measure rotation profile from major-axis PV diagram) validation: reduced chi2 1.6 (double) vs 2.0 (single); resolution bias analysed in Appendix [4.2 Rotation Profile: "giving reduced $\chi^{2}=1.6$"]
+- step 3 (Fit Keplerian disk model to high-velocity C18O channel maps) validation: reduced chi2=0.72; inclination scan 5-85 deg [4.3 Rotating Disk Models: "Reduced $\chi^{2}=0.72$"]
+- step 4 (Model infalling envelope plus disk and compare with PV diagrams) validation: spherical envelope (SE) models compared in Appendix; q=-0.5 tested [5.2 Nature of the infall motion: "It is found that models with a spherical envelope cannot explain the observations better than FE models."]
+- step 5 (Estimate magnetic field required for slow infall) validation: same estimate at 100 and 300 AU gives similar results [5.3 Magnetic Pressure and Tension: "The same estimations are also done at radii of 100 AU and 300 AU, providing results similar to that at 200 AU."]
+- alternative considered: Spherical envelope with bipolar cavities cannot explain observations better than flattened envelope [Appendix: Comparison between the flatte…: "we, therefore, conclude that SE models cannot explain the observations better than FE models"]
+- alternative considered: Outflow-only explanation of minor-axis gradient rejected because most emission is slower than escape velocity [5.1 Velocity gradient along the disk mi…: "This suggests that the major part of the velocity gradient along the minor axis cannot be explained by outflow motions."]
+- referee caveat (card): Single ~1 arcsec resolution observation; disk (~100 AU) barely resolved
+- referee caveat (card): Inclination degenerate, so M* and infall factor depend on assumed 65 deg
+- referee caveat (card): Flattened-envelope model fit by eye with no uncertainties on alpha
+- limitation (authors): Inclination poorly constrained by the disk model; mass estimates are uncertain by optical depth, temperature, abundance [4.3 Rotating Disk Models: "it is difficult to give a constraint on the inclination angle in this model fitting"]
+- limitation (authors): PV mean-position method underestimates break radius at limited resolution [4.2 Rotation Profile: "may systematically underestimate $R_{b}$ when the spatial resolution is not high enough"]
+
+### 2021A&A...654A..37D: Kinematics and star formation of high-redshift hot dust-obscured quasars as seen by ALMA (2021; agn_and_quasars, high_z_galaxies, star_formation; observational_alma_primary)
+- question: Characterize the ISM conditions, kinematics, morphology and star formation of seven extremely luminous Hot DOGs.
+- claim [supported]: H: Extremely luminous Hot DOG hosts share a distinctive gas-kinematic signature. | E: Measure integrated [C ii] widths and resolved moment maps; compare width distributions with other quasars. | R: FWHM ≳ 500 km s−1; combined-sample KS D = 0.95 and p ≃ 1 × 10−4. | F: Large ISM turbulence is common despite diverse rotation properties. [Summary: "all Hot DOGs are characterized by large line-velocity dispersions, FWHM$_{\rm [CII]}$ $\gtrsim$ 500 km$\,$s$^{-1}$"]
+- claim [refuted]: H: The [C ii] and far-IR continuum emission have the same spatial distribution. | E: Fit deconvolved Gaussian cores and subtract scaled PSFs. | R: Line-to-continuum core size ratios ≃1.35–1.85, mean 1.61 ± 0.10; continuum extended fractions are smaller. | F: [C ii] emission extends farther than the dust continuum. [[C ii] equivalent widths, Σ_[CII], and …: "the ratio of line-to-continuum sizes in Hot DOGs is very narrow, $\simeq$ 1.35–1.85, with a mean of 1.61 $\pm$ 0.10"]
+- claim [supported]: H: EL Hot DOGs occupy extreme [C ii]-deficit and luminosity-surface-density regimes. | E: Compare [C ii]/IR ratios and luminosity surface densities with nearby IR galaxies and high-redshift quasars. | R: Σ_IR commonly ≥10^13 L⊙ kpc−2, [C ii]/IR ≲10−4; Σ_[CII] = 1–2 × 10^9 L⊙ kpc−2. | F: Hot DOGs extend the local deficit–surface-density relation while retaining high [C ii] surface brightness. [Summary: "with values commonly $\geq$ 10$^{13}$ $L{_\odot}\,$kpc$^{-2}$ and $\lesssim$ 10$^{-4}$, respectively."]
+- claim [partially]: H: The extreme SMBH activity is accompanied by systematically enhanced host star formation. | E: Estimate stellar masses from SED decomposition and SFRs from extended far-IR and [C ii] emission; compare with the redshift-dependent main … | R: Hosts span a broad SFR–stellar-mass region, with sources above, near and below the main sequence. | F: The population is not systematically displaced from the main sequence; individual placements remain uncertain. [Hot DOGs on the main sequence: "when considered as a whole population, they do not all seem to be lying systematically below or above the star-formation MS."]
+- step 1 (Make line and continuum images) validation: Inspect residuals for dirty-beam patterns; deeper cleaning required for two sources [ALMA observations and data processing: "patterns from the dirty beam were still clearly identifiable in the residual images when cleaning down to 2.0 $\sigma_{\rm rms}$."]
+- step 2 (Measure integrated line and continuum emission) validation: Two continuum measurements agree within uncertainties; re-derived W2246–0526 quantities agree with earlier work [Measurement of line and continuum fluxes: "These measurements can be found in Table"]
+- step 3 (Measure core sizes and extended emission) validation: Repeat extended-continuum comparison at a common 0.5″ tapered resolution [Spatial distribution and extended emiss…: "if we use a *uv*-tapering of 0.5$''$ to place all the cubes on a common beam size"]
+- step 4 (Map velocities and assess rotation support) validation: Compare map-based velocities with modeled velocities; map estimates appear underestimated by approximately a factor of 2 [Rotation or dispersion supported?: "the projected $|V_{\rm max}|$ measured in the moment 1 maps seem to be systematically underestimated with respect to the modeled rotation velocities by a factor of $\sim$ 2."]
+- step 5 (Fit resolved gas kinematics) validation: Inspect moment maps, spectra and position–velocity diagrams; W0220+0137 fits well, while W2246–0526 retains large residuals [Kinematic modeling: "the model is able to reproduce the kinematic properties of W0220+0137 to an excellent level, with very small moment 0 residuals."]
+- step 6 (Derive dynamical masses) validation: W2246–0526 dispersion-supported mass agrees within uncertainties with DS2018; compare dynamical, stellar and literature black-hole masses [Dynamical masses from modeling: "This value is within the uncertainties of the $M_{\rm dyn}$ obtained by (cite: DS2018)"]
+- step 7 (Compare ISM diagnostics and velocity distributions) validation: Test Hot DOG line widths against both combined and individual quasar comparison samples [Velocity fields and dispersion maps: "Individual tests comparing the Hot DOGs with each OpQ and IRQ sample also provide *D* $\geq$ 0.9 and *p* $\leq$ 3 $\times$ 10$^{-4}$."]
+- step 8 (Separate stellar and AGN photometric emission) validation: Host H-band uncertainty from standard deviation of Monte Carlo realizations; inspect imaging for photometric contamination [SED modeling: "The uncertainty is obtained as the standard deviation of the simulated results."]
+- step 9 (Convert host luminosity to stellar mass) validation: Report the full range across assumed histories; compare with dynamical masses [Hot DOGs on the main sequence: "the error bars around the average values (displayed as big solid squares) represent the full extent of the range of estimates and not the standard deviation."]
+- step 10 (Estimate host star-formation rates) validation: Retain full spread among estimates as uncertainty rather than standard deviation [Dynamical masses from modeling: "The errors quoted in the SFR and $M_{\star}$ are not standard deviations, but refer to the entire range of values spanned by the individual estimates used to calculate the averages."]
+- step 11 (Locate hosts relative to the main sequence) validation: Assess sensitivity to the full range of stellar-mass and SFR assumptions; individual placements remain uncertain [Hot DOGs on the main sequence: "Given the small number of sources and the large uncertainties inherited from the wide range of $M_{\star}$ and SFR values obtained from the SED modeling and far-IR scaling relations, respectively"]
+- alternative considered: W0236+0528: test expected-frequency and redder-SPW candidate lines; retain only a tentative expected-frequency detection [Line detection, velocity shifts and lum…: "We attempted to create an image of the line using two velocity ranges encompassing the frequencies of the two possible feature identifications, but no source could be found in either."]
+- alternative considered: Reject detailed tilted-ring interpretation for W0134–2922 and W0831+0140 [Rotation or dispersion supported?: "the analysis resulted in an unconstrained morphological inclination and position angle for the former"]
+- alternative considered: Calculate both rotation- and dispersion-supported masses; favor the dispersion-supported W2246–0526 value [Dynamical masses from modeling: "Since the modeling of W2246–0526 strongly favors a dispersion-supported system, we refer from here on to the value derived from this assumption as the most likely $M_{\rm dyn}$."]
+- decided enough: Robust line detections have SNR ≥20; W0236+0528 remains tentative after tapered imaging; residual dirty-beam patterns motivate deeper cleaning [Line detection, velocity shifts and lum…: "The \[C ii\] line is robustly detected (SNR $\geq$ 20) in four out of the seven Hot DOGs in the sample"]
+- referee caveat (card): Resolve internal numerical inconsistencies before constructing strict answer keys: several velocity offsets differ between tables and prose.
+- referee caveat (card): The summary extended-[C ii] fraction range does not include the approximately 95–96% value reported for W0831+0140 elsewhere.
+- referee caveat (card): W2246–0526 dynamical mass depends strongly on the support assumption despite substantial model residuals.
+- limitation (authors): W0116–0505 misses [C ii] entirely; W0410–0913 samples only its blue wing [Line detection, velocity shifts and lum…: "for two sources, W0116–0505 and W0410–0913, the line is redshifted completely and partially, respectively, out of the frequency range covered by the reference SPW"]
+- limitation (authors): W0236+0528 is tentative and excluded from later figures and discussion [Line detection, velocity shifts and lum…: "refrain from including this source in the figures or discussion throughout the remainder of the paper."]
+
+### 2014A&A...562A..67G: ALMA reveals a warm and compact starburst around a heavily obscured supermassive black hole at z = 4.75 (2014; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: How compact, warm and dusty is the starburst around the Compton-thick QSO XID403 at z=4.75, and can it explain the X-ray obscuration and outflows?
+- claim [supported]: H: Is the dust in XID403 warm and the starburst compact? | E: Modified blackbody fit to ALMA+Herschel SED and size from uv-plane | R: Td=58.5±5.3 K, SFR=1020±150, r_half<2.5 kpc (0.9±0.3 kpc) | F: Warm, compact starburst similar to other SMGs [abstract: "For the first time, we measure the dust temperature $T_d=58.5\pm5.3$ K in this system"]
+- claim [partially]: H: Can galaxy-scale gas explain the X-ray column density? | E: Co-spatial gas mass within r_half | R: N_H~0.3-1.1e24 cm^-2 vs 1.4e24 from X-rays | F: A pc-scale torus may not be required [abstract: "this would be sufficient to produce the observed X-ray column density without any need of a pc-scale absorber"]
+- claim [partially]: H: Is there an outflow? | E: Lya shift, N V, tentative Fe 6.9 keV line, blow-out criterion | R: 350 km/s shift; C>5; 2 sigma Fe line | F: Outflow likely but speculative [abstract: "We speculate that the high compactness of star formation, together with the presence of a powerful AGN, likely produce an outflowing wind."]
+- step 1 (Measure continuum flux and source size) validation: Cross-check with Gildas mapping [2 ALMA observations: "This $\sim3.4\sigma$ indication of source extension has been cross checked with the package "mapping" in the Gildas environment, which provided similar results."]
+- step 2 (Fit FIR SED for dust temperature) validation: Compared with optically thin fit (T~33 K) and literature SMGs [7.2 Dusty Star Formation: "we would measure a colder dust temperature $T_d\sim33$ K"]
+- step 3 (Derive dust mass) validation: Agreement with full dust models (Bianchi 2013) [3 Far-IR SED: "The dust masses determined with Eq.3 using these prescriptions are in excellent agreement with those determined by full dust models (cite: bianchi13)."]
+- step 4 (Derive L_IR, SFR and SFR surface density) validation: Agreement with Coppin09 and Gilli11 [Star formation rate and compactness: "These values are in excellent agreement with those previously derived by (cite: coppin09) and (cite: gilli11) and have significantly smaller uncertainties."]
+- step 5 (Broad-band SED decomposition) validation: Compared SFR with FIR-derived value [SED decomposition: "Once corrected for this contribution, the far-IR luminosity can be used to derive a star-formation rate of $\sim$1040 M$_{\odot}$/yr, in excellent agreement with what has been estimated in Section 4."]
+- step 6 (Reanalyse X-ray spectrum for Fe line) validation: Confirmed on Vito et al. spectrum; background checked [6 X-ray emission: "The same feature is confirmed when we consider the Chandra spectrum obtained by (cite: vito13)"]
+- alternative considered: Optically thin greybody rejected as it would underestimate Td (~33 K) [3 Far-IR SED: "the optically-thin grey-body approximation $S_{\nu_{obs}} \propto B_{\nu}\tau_{\nu}$, which is often used in the literature to fit FIR SEDs, cannot be utilized in this case"]
+- referee caveat (card): Size is only ~3 sigma and from a single Gaussian fit
+- referee caveat (card): Few FIR points with fixed beta and lambda0; Td uncertainty is model dependent
+- referee caveat (card): Gas co-spatiality with dust is assumed
+- limitation (authors): Size measurement needs confirmation at higher resolution; sparse uv sampling [2 ALMA observations: "this measurement needs to be confirmed by data at even higher resolution"]
+
+### 2013A&A...557A.132M: ALMA imaging of the CO snowline of the HD 163296 disk with DCO<SUP>+</SUP> (2013; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Can DCO+ J=5-4 emission resolve the CO snowline in the HD 163296 disk and constrain the temperature range and abundance of DCO+ (and HCO+) relative to a disk physical model?
+- claim [supported]: H: DCO+ emission traces the CO snowline in the HD 163296 disk | E: Image DCO+ J=5-4 with ALMA and compare to a disk model with 19 K midplane isotherm | R: DCO+ ring from ~110 to 160 AU; outer edge near the 155 AU snowline | F: ALMA DCO+ data directly resolve and image the CO snowline [abstract: "The ALMA DCO$^+$ data now resolve and image the CO snowline directly."]
+- claim [supported]: H: DCO+ is abundant only in a narrow temperature range near CO freezeout | E: Manual model grid varying T_low, T_high and abundance, compared with channel maps | R: Best fit 19-21 K, chi = 1e-10, DCO+/HCO+ = 0.3 | F: ~1e4 enhancement of DCO+ in a narrow region [abstract: "DCO$^+$ exists within the 19–21 K region of the disk with an abundance ratio \[DCO$^+$\] / \[HCO$^+$\] = 0.3."]
+- claim [supported]: H: HCO+ and DCO+ abundances constrain the midplane ionization fraction | E: Sum of modeled abundances | R: Ionization fraction >= 4e-10 | F: Lower limit far above the dead-zone threshold [abstract: "The inferred abundances provide a lower limit to the ionization fraction in the midplane of the cold outer disk ($\gtrsim4\times10^{-10}$)"]
+- claim [supported]: H: Results depend on the adopted disk structure | E: Refit using the de Gregorio-Monsalvo et al. model | R: 16-20 K, DCO+ abundance ~7e-11, ratio ~0.3 | F: General characteristics unchanged [Dependence on physical models: "Although the details of the best-fit model clearly depend on the adopted disk structure, the general characteristics remain unchanged"]
+- step 2 (Measure morphology and fluxes) validation: Consistent with previous inclination [Morphology: "comparable to previous inclination determinations"]
+- step 4 (Build disk physical model) validation: SED and CO line fluxes compared with literature [Modeling details: "we adjust parameters to match the SED and CO line fluxes in the literature for HD 163296."]
+- step 5 (Fit HCO+ and H13CO+ abundances) validation: Compared model and observed fluxes (Table 1) and channel maps [Modeling, Molecular abundances: "provides the best fit to both the total flux and to channel maps. We compare fluxes from our adopted model to the observed fluxes in Table [1](#tab:results)."]
+- step 6 (Fit DCO+ abundance and temperature range) validation: Sensitivity tests: bounds shifted -3 K/+4 K, width doubled, abundance x3 up/down; alternative disk model of de Gregorio-Monsalvo et al. gives 16-20 K [Dependence on physical models: "we find that our observations are best described if DCO$^+$ is enhanced between temperatures of 16 and 20 K (compared to 19–21 K found using the Q11 model)"]
+- alternative considered: Alternative disk structure (de Gregorio-Monsalvo et al.) with lower temperatures and higher densities tested [Dependence on physical models: "the best-fit disk structure of de Gregorio-Monsalvo et al. (in press) has 1–3 K lower temperatures and factor $\sim1.5$ higher densities in the 100 – 150 AU midplane region"]
+- referee caveat (card): Manual by-eye model fits with no uncertainties or goodness-of-fit statistics
+- referee caveat (card): Parameter degeneracy between temperature bounds, abundance and gas density
+- referee caveat (card): Model overpredicts HCO+ flux (26.0 vs 18.7 Jy km/s) and CO J=3-2 underpredicted
+- limitation (authors): Only large-scale structure modeled; the northwest emission peak not modeled [Morphology: "However, in this work we address the large scale structure, and do not attempt to model variations within that structure."]
+- limitation (authors): Results depend on adopted physical model, since CO constrains mainly surface layers [Dependence on physical models: "it is appropriate to investigate the dependence of our results on the details of the adopted physical model"]
+
+### 2023MNRAS.523.2887M: Rotation-tunnelling spectrum and astrochemical modelling of dimethylamine, CH<SUB>3</SUB>NHCH<SUB>3</SUB>, and searches for it in space (2023; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: Improve DMA spectroscopic predictions, search for DMA toward Sgr B2(N) and G+0.693–0.027, and compare abundance limits with astrochemical models.
+- claim [supported]: H: Improved spectroscopy can support reliable astronomical DMA searches. | E: Measure millimeter/submillimeter rotation-tunneling transitions and fit spectroscopic parameters. | R: 1294 transitions reproduced with normalized rms 0.952. | F: The spectroscopic parameters are suitable for almost all astronomical searches, with an internal-rotation exception. [Spectroscopic results and determination…: "Our 1294 transitions were reproduced to an rms error, also known as weighted or normalized rms, of 0.952."]
+- claim [refuted]: H: DMA is detectable in the ReMoCA spectra toward Sgr B2(N1S) and Sgr B2(N2b). | E: Compare synthetic LTE DMA spectra with ALMA observations. | R: Nondetections; DMA at least 14 and 4.5 times less abundant than methylamine. | F: The survey yields upper limits rather than DMA detections. [Conclusion and outlook: "We report nondetections of dimethylamine with ALMA toward Sgr B2(N1S) and Sgr B2(N2b)."]
+- claim [refuted]: H: DMA is detectable toward G+0.693 in the available spectral survey. | E: Compare an LTE synthetic spectrum with the brightest unblended Q-band HFS group. | R: N(DMA) < 7.6 × 10^13 cm−2; methylamine/DMA >39. | F: DMA is not detected; more sensitive observations are needed. [Nondetection of dimethylamine toward G+…: "The molecule is not detected in the observational survey."]
+- claim [supported]: H: Grain-surface and bulk-ice chemistry produces DMA abundances compatible with the observations. | E: Run hot-core and low-density collapse models and compare molecular ratios with observational limits. | R: DMA model ratios satisfy the nondetection limits; low-density methylamine/DMA ratios are 56–60. | F: The modeled DMA abundances are consistent with the nondetections. [Comparison of chemical models with obse…: "Either way, the chemical models are consistent with the non-detection of DMA toward Sgr B2(N)."]
+- step 1 (Construct DMA spectroscopic predictions) validation: 1294 new transitions reproduced with normalized rms 0.952; rms 28.7 kHz [Spectroscopic results and determination…: "Our 1294 transitions were reproduced to an rms error, also known as weighted or normalized rms, of 0.952."]
+- step 2 (Calculate DMA partition functions) validation: Compare calculated fundamentals with isolated, sufficiently strong experimental fundamentals. [Spectroscopic results and determination…: "Wherever fundamentals are isolated and not too weak, there is usually good to reasonable agreement between experimental and calculated values."]
+- step 4 (Fit dimethyl ether as the DMA template) validation: Dozens of ground-state lines identified at both positions; excited-state lines also detected. [Search for DMA toward Sgr B2(N1S) and S…: "Dimethyl ether is well detected toward both Sgr B2(N1S) and Sgr B2(N2b), with dozens of lines in its vibrational ground state easily identified"]
+- step 5 (Estimate methylamine toward Sgr B2(N2b)) validation: Only two relatively uncontaminated transitions, at 84306 and 112273 MHz; detection classed as tentative. [Search for DMA toward Sgr B2(N1S) and S…: "Only two transitions are relatively free of contamination (at 84 306 and 112 273 MHz)."]
+- step 6 (Set ALMA DMA column-density limits) validation: Synthetic upper-limit spectra shown against observations; no DMA evidence at either position. [Search for DMA toward Sgr B2(N1S) and S…: "We did not find any evidence for dimethylamine in either source."]
+- step 7 (Set the G+0.693 DMA limit) validation: Selected region appears uncontaminated; local baseline uncertainty changes the column limit by less than a factor of two. [Nondetection of dimethylamine toward G+…: "The upper limit to the column density of DMA could be affected by the local baseline by less than a factor of two when the local baseline uncertainty is considered."]
+- step 8 (Run DMA chemical models) validation: Compare molecular abundance ratios with observational detections and upper limits. [Comparison of chemical models with obse…: "As with the observational data themselves, molecular abundance ratios may be the most useful means of comparison between models and observations."]
+- step 9 (Compare abundance ratios and assess chemical consistency) validation: DMA models satisfy nondetection limits, but ethylamine and the G+0.693 methanol/dimethyl ether ratio expose model discrepancies. [Comparison of chemical models with obse…: "Either way, the chemical models are consistent with the non-detection of DMA toward Sgr B2(N)."]
+- alternative considered: Including internal-rotation splitting in the spectroscopic fit was attempted and failed. [Spectroscopic results and determination…: "attempts to introduce internal rotation into the treatment of the rotation-tunneling spectrum of DMA failed."]
+- alternative considered: Explicit G+0.693 shock modeling was recognized as preferable but replaced with a simpler pre-shock collapse comparison. [Astrochemical modeling: "the most appropriate modeling approach would include an explicit treatment of the passage of a shock"]
+- alternative considered: DMA proton transfer to ammonia excluded because DMA has greater proton affinity. [Astrochemical modeling: "the proton affinity of DMA is greater than that of ammonia (cite: Hunter98), meaning that protonated DMA cannot transfer its proton in this way; such a mechanism is therefore not included in the present chemical network."]
+- decided enough: ALMA upper limits guided by 3σ, blends and baseline uncertainty; G+0.693 limit uses brightest unblended predicted emission. [Search for DMA toward Sgr B2(N1S) and S…: "using the 3 $\sigma$ level (dashed lines in Figs. [9](#f:remoca_ch3nhch3_n1s) and [10](#f:remoca_ch3nhch3_n2b)) as a guide, but also accounting for the blends with other species and the uncertainties on the baseline level."]
+- referee caveat (card): By-eye upper limits lack a deterministic acceptance rule, limiting exact numerical replication.
+- referee caveat (card): DMA limits depend on adopting dimethyl ether’s temperature and emission size.
+- referee caveat (card): The N2b methylamine/DMA ratio inherits uncertainty from a tentative methylamine detection.
+- limitation (authors): ALMA limits do not constrain whether the analogous formation routes operate differently. [Sgr B2(N): "This limit is not constraining enough to infer whether or not the formation routes that possibly relate methanol to dimethyl ether and methylamine to dimethylamine operate differently."]
+- limitation (authors): Methylamine toward N2b is only tentatively detected. [Search for DMA toward Sgr B2(N1S) and S…: "As a result, we only claim a tentative detection of methylamine toward Sgr B2(N2b)."]
+
+### 2014A&A...570A..28V: Molecular line emission in NGC 1068 imaged with ALMA. II. The chemistry of the dense molecular gas (2014; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Are the different line intensity ratios within the CND, and between the CND and the SB ring, due to excitation effects (density, temperature) or to a different chemistry?
+- claim [supported]: H: A single gas phase per CND region can explain all observed molecular ratios | E: LTE rotation diagrams, three RADEX grids and UCL_CHEM comparison | R: Rotation diagrams, RADEX fits and chemical models give multiple, degenerate solutions and no single model fits all ratios | F: More than one gas-phase component is needed within the CND [abstract: "The LTE, RADEX and chemical analyses all indicate that more than one gas-phase component is necessary to uniquely fit all the available molecular ratios within the CND."]
+- claim [supported]: H: The CND gas is dense and hot, with temperature differences across the CND | E: RADEX grids fitted to ALMA and PdBI ratios | R: Densities above 10^4-10^5 cm^-3, Tk > 150 K in most regions, E Knot coolest | F: CND gas is very dense and hot with temperature differences [abstract: "We find that in general the gas in the CND is very dense ($>$ 10$^5$ cm$^{-3}$) and hot (T$>$ 150K), with differences especially in the temperature across the CND."]
+- claim [supported]: H: The AGN position differs chemically from other CND regions | E: LTE and ALMA-only RADEX column density ratios | R: AGN has the lowest CO/HCO+, CO/HCN and CO/CS column density ratios | F: AGN region shows distinct chemistry [abstract: "The AGN position has the lowest CO/HCO$^+$, CO/HCN and CO/CS column density ratios."]
+- claim [partially]: H: The SB ring differs from the CND by excitation as well as chemistry | E: RADEX analysis of one SB ring knot with six independent ratios | R: SB ring knot is colder (~40 K) and less dense than CND | F: SB ring is much colder and less dense than the CND [abstract: "the SB ring is also much colder and less dense than the CND."]
+- step 1 (Build matched-resolution line intensity ratios) validation: Flux lost to missing short spacings estimated to matter only above 6 arcsec; single apertures of ~0.5 to ~5 arcsec used [2.1 Methodology: "we estimate that the amount of flux filtered in the interferometric images used in this work starts to be significant only on scales"]
+- step 2 (LTE column densities per transition and region) validation: Comparison of column densities from different transitions of the same species shows inconsistencies [3.1 LTE analysis: "then the same total column density at a specific temperature should be obtainable from each transition. This is clearly not the case"]
+- step 3 (CO rotation diagram per CND region) validation: Rotational temperatures treated as lower limits to kinetic temperature [3.1.1 CO rotation diagram: "The rotational temperatures derived from the rotation diagrams ought to be considered as lower limits of the excitation and kinetic temperatures (cite: Gold99)."]
+- step 4 (RADEX grid fit to CO ratios only) validation: Varied 12C/13C for a subset of the grid without substantially changing conclusions [3.2.1 CO fitting: "We did vary this ratio for a subset of our RADEX grid and did not find large enough differences to substantially change our conclusions."]
+- step 5 (RADEX grid with multi-species ratios) validation: Density lower limit of 10^4 cm^-3 from the CO analysis used to discard sets [3.2.2 A RADEX grid computed with multi-…: "we therefore use this lower limit as a further constraint and we are left with Sets 1 and 7"]
+- step 6 (RADEX using ALMA-resolution data only) validation: CND-S could not be analysed because CS(7-6) was too weak at its original resolution [3.2.3 RADEX analysis of ALMA data only: "For the CND-S we could not perform this analysis as the CS(7-6) line intensity was too weak at its original spatial resolution."]
+- step 8 (Chemical modelling and comparison with RADEX column density ratios) validation: RADEX density limit (>10^4 cm^-3) used to exclude models; ratios compared only at one time step [4 Chemical modelling: "we shall exclude *a priori* all models with a gas density of 10$^4$ cm$^{-3}$ to start with"]
+- alternative considered: All three RADEX escape probability geometries (uniform sphere, LVG, slab) tried; no significant difference, uniform sphere reported [3.2 RADEX analysis of the CND: "We used all three methods but, as (cite: Krip11), we did not find significant differences for the best fits"]
+- alternative considered: Time spent at constant density in Phase I (S versus L models) not discussed further because solutions were very similar [4 Chemical modelling: "since models differing only in this parameter gave very similar solutions we shall not discuss this parameter any further"]
+- referee caveat (card): Multiple degenerate RADEX solutions mean the headline conclusion is qualitative, with no uncertainties on fitted densities and temperatures
+- referee caveat (card): Fixed 15%/30%/10% flux errors are assumed, not measured, and drive the chi2 weighting
+- referee caveat (card): Single-transition ALMA coverage per molecule (apart from CO) and a degraded-resolution comparison limit the physical inferences
+- limitation (authors): RADEX assumes all transitions sample the same gas, and several ratios use degraded or low-resolution data [3.2 RADEX analysis of the CND: "Of course such modelling is limited by the assumption that all the molecular transitions sample the same gas."]
+- limitation (authors): Chemical modelling is preliminary and compares time-dependent models only at one time step [4 Chemical modelling: "This attempt at chemical modelling was preliminary"]
+
+### 2017ApJ...851L..46M: ALMA Detection of Interstellar Methoxymethanol (CH<SUB>3</SUB>OCH<SUB>2</SUB>OH) (2017; astrochemistry, star_formation; observational_alma_primary)
+- question: Is methoxymethanol (CH3OCH2OH) present in the ISM toward NGC 6334I MM1, at what abundance, and what does it imply for formation routes?
+- claim [supported]: H: CH3OCH2OH is detectable in NGC 6334I MM1 | E: Spectral simulation against Band 6/7 ALMA data | R: More than two dozen unblended transitions above 10 sigma | F: First interstellar detection of methoxymethanol [Conclusions: "More than two dozen unblended transitions above 10$\sigma$ were identified."]
+- claim [supported]: H: Current models reproduce the observed abundance | E: MAGICKAL runs with three warm-up timescales | R: Model peak ~1e-12 vs observed ratio 1:34 to CH3OH | F: Models significantly underproduce CH3OCH2OH [6.5 Comparison to Models: "current models using only Reaction [\[association\]](#association) are significantly under-producing ."]
+- claim [partially]: H: CH3OCH2OH chemistry is tied to CH3OH | E: Integrated intensity maps | R: Similar distribution to CH3OH, different from other COMs | F: Suggestive of CH3O + CH2OH formation; not definitive [6.5 Comparison to Models: "While not definitive, this is highly suggestive of a closely-tied chemistry between these two species"]
+- step 2 (Column density by spectral simulation) validation: Simulations compared to Band 6 and 1'' Band 7 data [4 Results and Analysis: "Because these profiles show remarkably good agreement even at twice the spatial resolution"]
+- step 4 (Methanol column density for ratio) validation: Viewed as an estimate and lower limit [Appendix Column Density: "this value should be viewed as an estimate and as a lower limit."]
+- step 5 (Chemical modeling) validation: Compared with observed ratio [4.2 Chemical Modeling: "The observed ratio of : is estimated to be 1:34"]
+- alternative considered: Rotation diagram analysis rejected due to non-Gaussian line profiles [4 Results and Analysis: "made it difficult to extract physically-meaningful quantitative results from a rotation diagram analysis"]
+- referee caveat (card): Tex fixed at 200 K, not fitted
+- referee caveat (card): Source assumed to fill the beam while MM1 is structured
+- referee caveat (card): Methanol column from optically thin 13CH3OH with assumed Tex and 12C/13C
+- limitation (authors): Uncertainty from continuum subtraction due to lack of line-free channels; Tex assumed; abundance uncertain [4 Results and Analysis: "the somewhat significant uncertainty introduced by the continuum subtraction due to the lack of line-free channels"]
+
+### 2017MNRAS.469.3200B: The Northern arc of ∊ Eridani's Debris Ring as seen by ALMA (2017; debris_disks, exoplanets; observational_alma_primary)
+- question: What are the geometry, width and structure of the epsilon Eri debris ring at 1.3 mm, what do they imply for planets, and is there emission at the star, interior dust or CO gas?
+- claim [supported]: H: Is the epsilon Eri ring narrow? | E: Image-plane MCMC fits of sharp-edged and Gaussian ring models | R: Width 11-13 AU, ΔR/R=0.17 | F: One of the narrowest known debris discs, similar to the Kuiper belt [abstract: "makes this one of the narrowest debris discs known"]
+- claim [partially]: H: Are the ring edges set by resonances with a planet? | E: Compared edges to 3:2 and 2:1 resonances | R: Both match a planet at ~47.8 AU | F: A planet at ~48 AU is possible, mass 0.4-1.2 MJ, though possibly coincidence [Radial profile: "perfectly matching and suggesting the chance of a planet at this distance. However, it may just be coincidence"]
+- claim [partially]: H: Is there dust interior to the main ring or clumps in the ring? | E: Multi-component fits and residual analysis | R: Narrow 20 AU belt limited to <0.8 mJy; tentative 2σ emission just interior; residuals likely contain a background galaxy | F: Tentative evidence only; follow-up needed [Conclusions: "We do find tentative evidence for a faint, extra component just interior to the main disc, peaking at around 55 AU."]
+- claim [supported]: H: Is the central emission above the photosphere due to the chromosphere? | E: Compared measured flux to photosphere plus alpha Cen B-based chromospheric estimate | R: Excess 290±55 uJy; expected total ~900 uJy | F: Entire excess consistent with chromosphere [Stellar flux: "suggesting that the entirety of excess we see is due to the chromosphere"]
+- step 1 (Image continuum and measure noise and stellar peak) validation: CLEAN image with 2.5'' taper used to check the northern peak is not due to sensitivity [Observations: "This also shows that the peak at the northern ansa is not simply due to the higher sensitivity near to the phase centre."]
+- step 2 (Forward-model the ring in the image plane (single component, runs A, B, C)) validation: Reduced chi2 comparison among runs; radial profiles of restored images; visibility-plane refit in appendix [Appendix: "here we re-run run A but this time fitting to the visibilities."]
+- step 3 (Test for interior dust components (runs D, E, F)) validation: chi2_red compared (1.086 for run F) [Multiple components: "it offers just a very slight improvement on the single component models with a $\chi^2_{red}=1.086$"]
+- step 4 (CO gas upper limit) validation: Compared with Kral et al. 2017 predicted ~1e-9 Earth masses [CO mass limit: "(cite: kral17) show that $\epsilon$ Eri should have roughly 10$^{-9}$ M$_\oplus$ of CO."]
+- step 5 (Planet constraints from ring edges) validation: Compared to Janson et al. imaging limits [Radial profile: "(cite: janson15) provide the most constraining limits on planets in the system, which are shown by the grey region in figure [6](#fplloc)."]
+- alternative considered: Visibility-plane fit of run A gave consistent results (flux 0.6% higher) [Appendix: "In particular, the total disc flux density is only 0.6% higher."]
+- referee caveat (card): Ring flux depends on assumption of azimuthal symmetry from a partial arc
+- referee caveat (card): Gaussian primary beam model and dirty-image fitting may bias results
+- referee caveat (card): Clump significance low (≤5σ) with high background galaxy probability
+- limitation (authors): Only part of ring observed; flux density may be underestimated, and lack of short baselines limits sensitivity to extended emission [Disc flux density: "we have only observed part of the ring and assumed there to be no large variations around the ring."]
+- limitation (authors): Models cannot be distinguished from the image alone [Single component: "from the images alone it is not possible to distinguish between these models"]
+
+### 2016ApJ...832..143F: The Link between Turbulence, Magnetic Fields, Filaments, and Star Formation in the Central Molecular Zone Cloud G0.253+0.016 (2016; milky_way_ism, star_formation; archival_reuse)
+- question: What are the turbulence, magnetic field, filament structure and turbulence driving mode of the CMZ cloud G0.253+0.016, and how do they affect its star formation rate?
+- claim [supported]: H: Filament width equals the sonic scale in the CMZ cloud | E: Fit filament profiles; compute sonic scale from measured parameters | R: W_fil=0.17±0.08 pc vs lambda_sonic=0.15±0.11 pc | F: Sonic scale may control filament width in CMZ as in nearby clouds [5: "This is in excellent agreement with the filament width that we measured for G0.253+0.016"]
+- claim [supported]: H: Turbulence in G0.253+0.016 is driven differently than spiral-arm clouds | E: Combine density dispersion, Mach number and plasma beta | R: b=0.22±0.12 | F: Solenoidal driving, likely by shear [6: "This result means that turbulence in G0.253+0.016 is primarily caused by a solenoidal driving mechanism."]
+- claim [partially]: H: Solenoidal driving reduces the SFR | E: Federrath & Klessen SFR model with b=0.22 vs 0.5 | R: SFR lower by factor 6.9 | F: Driving mode is critical for the low SFR [6.2: "This demonstrates that the driving of the turbulence is a critical parameter for the SFR of G0.253+0.016."]
+- claim [supported]: H: Turbulent field is small relative to ordered field | E: MHD simulations | R: B_turb=130±50 microG, ≲1/10 of B_tot | F: Ordered field dominates [3.3: "$B_\mathrm{turb}$ only fluctuates within $100$–$200\,\mu\mbox{G}$ in all simulations"]
+- step 1 (identify filaments) validation: Varying threshold by factor of two did not change filaments or properties [3.1: "Decreasing or increasing the threshold by a factor of two neither significantly affects the number of identified filaments nor their average properties."]
+- step 2 (measure filament width) validation: Fourier deconvolution and beam-in-fit agree; analytic deconvolution 0.17 pc [3.1.1: "Both techniques yield consistent results."]
+- step 3 (reconstruct 3D density dispersion) validation: consistent with R^1/2 = 0.27 from simulations [3.1.2: "consistent with the average dispersion ratio of $0.27\pm0.05$ obtained from numerical simulations"]
+- step 4 (measure turbulent velocity dispersion) validation: Gaussian fit and direct standard deviation agree [3.2.2 Velocity PDF: "the Gaussian fit in Figure 4 and the standard deviation of the velocity data (without fitting) yield a consistent 1D *turbulent* velocity dispersion"]
+- step 5 (derive turbulent magnetic field) validation: Re-ran with 512^3 and compressive driving; no significant difference [3.3: "We find no significant difference in $B_\mathrm{turb}$ for either resolution or different driving of the turbulence."]
+- step 6 (derive physical parameters, sonic scale, driving parameter and SFR) validation: SFR compared to b=0.5 case [6.2: "predicts $\mathrm{SFR}=7.6\times10^{-2}\,\mbox{$M_{\ensuremath{\odot}}$}\,\mathrm{yr}^{-1}$ if a turbulence driving parameter $b=0.5$ is used"]
+- alternative considered: Hydrostatic filaments (p=4) ruled out by observed p≈2 [3.1.1: "which gives significantly steeper profiles, $p=4$, ruled out by our observations of G0.253+0.016"]
+- referee caveat (card): Sonic scale formula is valid for turbulence-dominated field, but ordered field dominates
+- referee caveat (card): B_turb from simulations with assumed relative uncertainty
+- referee caveat (card): Single-tracer velocity from HNCO centroid maps; planar gradient subtraction assumed
+- limitation (authors): Column density absolute calibration uncertain by factor 2; poor local dust-line correlation; projection effects on filaments [7.1: "actually introduced uncertainties by a factor of 2 in the average column density $N_0$"]
+
+### 2020MNRAS.491.1174M: Circumstellar CO J = 3→2 detected around the evolving metal-poor ([Fe/H] ≈ -1.15 dex) AGB star RU Vulpeculae (2020; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Explore the properties of RU Vul and its wind in the context of other metal-poor stars.
+- claim [supported]: H: Can circumstellar CO be detected around RU Vul? | E: Observe CO J=3→2 and J=2→1 with ALMA and integrate the spectra. | R: CO J=3→2: 102 ± 15 mJy km s−1, 6.7σ; J=2→1 has no clear narrow-line detection. | F: A CO envelope is detected around a truly metal-poor evolved star. [Line detections: "The integrated intensity over the range –66 to –60 km s$^{-1}$ is $I_{CO(3 \rightarrow 2)}$ = 102 $\pm$ 15 mJy km s$^{-1}$, providing a 6.7$\sigma$ detection."]
+- claim [partially]: H: Does the narrow CO profile establish an outflow velocity? | E: Measure the CO profile widths and fit a modified parabola. | R: Half-width half-maximum 1.8 km s−1; fitted vexp = 3.55 km s−1. | F: A slow outflow is likely, but turbulence, inflow or orbiting material remain possible. [Line detections: "with a half-width half-maximum of 1.8 km s$^{-1}$ and a half-width at zero power of $\sim$3 km s$^{-1}$."]
+- claim [supported]: H: Does the infrared brightening indicate new dust rather than only warming existing dust? | E: Compare IRAS and WISE flux changes near 12 and 25 μm. | R: 2010/1983 flux ratios approximately 1.85 and 2.13, respectively. | F: The infrared increase represents significant and rapid dust condensation. [Discovery, infrared brightening and the…: "$F_{2010} / F_{1983} \approx 1.85$ at $\sim$12 $\mu$m and $\approx$2.13 at $\sim$25 $\mu$m."]
+- claim [supported]: H: Can the infrared-emitting dust be a uniformly obscuring spherical envelope? | E: Compare dusty model absorption and reddening with independent photometric and spectroscopic temperatures. | R: Mixed-model V-band absorption approximately 0.37 mag, versus SED τV < 0.1 mag. | F: An aspherical or clumpy geometry provides a clear line of sight. [Optical dust absorption and dust inhomo…: "our dusty fits indicate a $V$-band absorption of $\sim$0.37 mag for our adopted mixed-dust wind, while SED fitting (Section [2.3.1](#SEDSect)) indicates $\tau_V < 0.1$ mag."]
+- step 1 (Set the distance) validation: Pulsation and parallax distances agree within uncertainties. [The distance to RU Vul: "the distances from the pre-decline pulsation period ($2070 \pm 130$ pc; Section [2.1.1](#PropBackDiscSect); (cite: UGT16)) and parallax (*Gaia*) agree within uncertainties"]
+- step 2 (Derive spectroscopic stellar parameters) validation: Test higher log(g), inspect Fe I abundance scatter and visually compare bt-settl TiO spectra; visual comparison disagrees. [Spectral synthesis: "These values are relatively stable against excursions to higher log($g$)"]
+- step 3 (Fit the stellar SED) validation: Vary metallicity, mass and reddening; compare photometric and spectroscopic temperatures. [SED fitting: "assuming \[Fe/H\] = –1.0 dex raises the fitted parameters by 27 K and 13 L$_\odot$"]
+- step 4 (Constrain the evolutionary state and mass) validation: Compare track metallicities with spectroscopy; retain the spectroscopic metallicity. [Stellar evolution modelling: "Nevertheless, due to the strongly out-of-equilibrium nature of this star, we retain the spectroscopic estimate as the likely more-accurate answer."]
+- step 5 (Measure historical infrared brightening) validation: Compare brightening at short and long wavelengths to distinguish warming from new dust. [Discovery, infrared brightening and the…: "If existing material has warmed, the increase in flux at short wavelengths should be greater than at longer wavelengths."]
+- step 6 (Measure ALMA lines and continuum) validation: Compare line velocity with Gaia DR2; treat J=2→1 as a probable non-detection because its width differs. [Line detections: "This is consistent with the *Gaia* Data Release 2 (cite: GaiaDR2) velocity of $v_{\rm LSR} = -62.38 \pm 0.64$ km s$^{-1}$."]
+- step 7 (Fit the CO velocity profile) validation: Fit compared with the spectrum; formal errors considered incomplete. [Wind properties: "This fit is also shown in Figure [4](#ALMAFig)."]
+- step 8 (Estimate an order-of-magnitude mass-loss rate) validation: Scaling relations give widely different rates outside their calibrated regime. [Wind properties: "Different scaling relations (e.g. (cite: RSOL08; DBDdK+10)) provide wildly different mass-loss rates"]
+- step 9 (Calibrate and inspect the mid-infrared spectrum) validation: Identify residual terrestrial water and ozone contamination. [VISIR observations: "The VISIR spectrum still shows remnant noise from narrow terrestrial water features ($<$8 and $>$12 $\mu$m) and ozone absorption (9.5 $\mu$m)"]
+- step 10 (Isolate the cold-dust continuum) validation: Compare inferred dust flux with R Dor scaled to RU Vul's distance. [ALMA continuum observations: "would be $\sim$58 $\mu$Jy at the distance of RU Vul (cite: DRD+18)."]
+- step 11 (Fit dust composition and shell parameters) validation: Mixed model improves longer-wavelength agreement but under-predicts 2–10 μm flux. [Fitting the SED: "The model still under-predicts the flux between 2 and 10 $\mu$m but performs better when reproducing the longer-wavelength data."]
+- step 12 (Infer radial extent and dust geometry) validation: Compare expected reddening with agreement of spectroscopic and photometric temperatures. [Optical dust absorption and dust inhomo…: "these temperatures agree to within uncertainties ($\lesssim$100 K; Section [2.2](#SpecAtmosSect) & [2.3](#PhotAtmosSect))."]
+- step 13 (Compare RU Vul and T UMi's evolution) validation: Interpolation uncertainty approximately 0.1 mag, small compared with observed changes; T UMi clear of background emission. [RU Vul in a class of period-changing st…: "While not exact, the uncertainties this imparts ($\sim$0.1 mag) are small compared to the observed changes."]
+- alternative considered: Warming of pre-existing dust disfavoured by stronger brightening at longer wavelengths [Discovery, infrared brightening and the…: "If existing material has warmed, the increase in flux at short wavelengths should be greater than at longer wavelengths."]
+- alternative considered: Amorphous carbon chemically difficult around RU Vul [Dust mineralogy: "On balance, we consider it chemically difficult to form amorphous carbon dust around RU Vul."]
+- alternative considered: Silicates alone cannot reproduce the 3–8 μm emission and flat N-band spectrum [Dust mineralogy: "a silicate wind cannot alone reproduce the strong dust emission in the 3–8 $\mu$m range, nor the comparative flatness of the $N$-band spectrum longwards of 10 $\mu$m."]
+- decided enough: Visual inspection found no need to re-reduce archived ALMA products. [Observational setup: "Visual inspection of the archived data products indicated no re-reduction of the data was necessary."]
+- referee caveat (card): The residual cold-dust flux is consistent with zero within the stated uncertainties and depends on an assumed radio photosphere.
+- referee caveat (card): The CO ratio depends strongly on how the uncertain J=2→1 signal is treated.
+- referee caveat (card): Unresolved data cannot uniquely distinguish a clumpy wind, disc, inflow or outflow.
+- limitation (authors): Non-LTE effects may introduce uncharacterised spectroscopic errors [Spectral synthesis: "Out-of-local-thermodynamic-equilibrium (non-LTE) effects were seen in the spectrum, including line doubling and emission in chromospherically active lines, which may cause uncharacterised errors in the final fit."]
+- limitation (authors): Only three Fe II lines; no unique stable positive-log(g) solution [Spectral synthesis: "only three Fe ii lines were measurable in the data, and it was not possible to find a unique, stable solution with positive log($g$)."]
+
+### 2026ApJ..1004L...6D: First Interstellar Detection of Methyl Carbamate: A New Observational Anchor for Glycine Chemistry (2026; astrochemistry, star_formation; observational_alma_primary)
+- question: Detect methyl carbamate and test thermodynamic stability versus pathway-specific chemistry in the C2H5O2N isomer family.
+- claim [supported]: H: MC is detectable toward G358.93 MM1. | E: Identify unblended transitions and fit an LTE spectrum accounting for other species. | R: Ten unblended transitions; seven exceed 3σ; Nt = (4.21±0.84)×10^15 cm^-2. | F: First robust interstellar MC detection. [Results: "We identified ten unblended MC transitions toward G358.93 MM1, spanning upper-level energies $E_{\rm u}$ = 103-333 K."]
+- claim [refuted]: H: Thermodynamic equilibrium explains the C2H5O2N abundance pattern. | E: Compare abundances and upper limits with thermodynamic expectations in G358.93 MM1 and G+0.693-0.027. | R: Both environments deviate strongly from thermodynamic trends. | F: The family is governed primarily by pathway-specific kinetics. [Detectability of several key isomers in…: "The observed abundance patterns in both G358.93 MM1 and G+0.693-0.027 deviate strongly from the trends expected under thermodynamic equilibrium"]
+- claim [refuted]: H: The offset extraction position creates the apparent departure from thermodynamic expectations. | E: Examine 70 nearby positions and representative LTE fits, including positions closer to the continuum peak. | R: Nearby MC column densities remain within one order of magnitude of the adopted value. | F: The kinetic interpretation is unlikely to be an extraction-position artifact. [Spectrum Extraction Position And Spatia…: "We examined spectra extracted from 70 offset positions around the continuum peak."]
+- claim [partially]: H: Grain-surface CH3O + NH2CO recombination can explain MC formation. | E: Compare MC abundance and precursor ratios with grain-surface model predictions and other environments. | R: CH3OH/MC ≈513 and NH2CHO/MC ≈4; measured MC abundance agrees with prediction within one order of magnitude. | F: A linked grain-surface formation scenario is plausible but not uniquely confirmed. [Formation of methyl carbamate in space: "yielding $\rm CH_{3}OH$/MC $\approx$ 513"]
+- step 1 (Choose a reliable extraction position) validation: MC detected at most positions; representative nearby LTE fits yield column densities within one order of magnitude. [Spectrum Extraction Position And Spatia…: "MC emission is detectable at most of these positions, demonstrating that the detection is not confined to the single position adopted for LTE fitting."]
+- step 2 (Identify MC and constrain line profiles) validation: Assess candidate-line blends and overlaps using the full source model. [Results: "we constructed a full source model including the molecules reported in previous studies and the species identified in this work, in order to assess potential blends and overlaps in the candidate MC lines."]
+- step 3 (Fit MC excitation and column density) validation: Compare observed spectra with MC and full spectral models; test nearby extraction positions. [Results: "Figure [1](#fig:1) compares the observed spectra with the best-fit MC LTE model, as well as with the full spectral model that accounts for emission from other identified species."]
+- step 5 (Check MC spatial distribution) validation: Compare MC emission with the 1 mm continuum peak. [Spectrum Extraction Position And Spatia…: "As shown in Figure [4](#fig:4), the MC emission is nearly co-spatial with the 1 mm continuum peak of G358.93 MM1."]
+- step 9 (Test chemical control and formation scenarios) validation: Nearby-position column variations do not remove the thermodynamic discrepancy; MC abundance agrees with the model within an order of magnitude. [Detectability of several key isomers in…: "Such variations do not remove the discrepancy between the observed $\rm C_{2}H_{5}O_{2}N$ abundance pattern and the MEP-based expectation shown in Figure [2](#fig:2)."]
+- alternative considered: Continuum-peak extraction rejected because absorption, line crowding and blending prevent reliable fits. [Spectrum Extraction Position And Spatia…: "To mitigate absorption and severe line confusion at the continuum peak, we extracted spectra at a position offset from the 1 mm continuum maximum."]
+- alternative considered: Main-isotopologue methanol avoided for column-density derivation because its lines are optically thick. [Identification of CH$_{3}$OH and $^{13}…: "Because the main-isotopologue CH$_{3}$OH lines are optically thick in this dataset, we derived the methanol column density from the optically thin $^{13}$CH$_{3}$OH emission"]
+- alternative considered: Spectroscopic favorability alone cannot explain the observed isomer detectability pattern. [Detectability of several key isomers in…: "spectroscopic favorability alone cannot account for the observed pattern, pointing instead to chemical abundance differences as the dominant factor."]
+- decided enough: Ten clean transitions, seven above 3σ, and nearby-position checks support the detection and abundance interpretation. [Results: "We identified ten unblended MC transitions toward G358.93 MM1, spanning upper-level energies $E_{\rm u}$ = 103-333 K."]
+- referee caveat (card): Choosing the position with the most clean transitions introduces selection dependence; the 70-position results are not tabulated.
+- referee caveat (card): The adopted 20% column-density uncertainty is not a documented statistical confidence interval.
+- referee caveat (card): Unstated excitation and source-size assumptions prevent independent assessment of nondetection limits.
+- limitation (authors): Line blending and simplifying LTE assumptions contribute to column-density uncertainties. [Results: "the uncertainties are dominated not only by the fitting procedure, but also by line blending and the simplifying assumptions of the LTE model"]
+- limitation (authors): Local abundance variations may exist despite extraction-position robustness checks. [Spectrum Extraction Position And Spatia…: "although local abundance variations may exist"]
+
+### 2024NatAs...8..308D: Chemical tracers of a highly eccentric AGB-main-sequence star binary (2024; evolved_stars, astrochemistry; observational_alma_primary)
+- question: Can anisotropic molecular emission (SiN, SiC, NS), photodissociation signatures and CO density structures around the AGB star W Aql constrain the orbit of its F9 main-sequence companion?
+- claim [supported]: H: Anisotropic SiN, SiC and NS emission traces molecules formed when an F9 companion passed periastron close to the AGB star | E: Moment maps and PV diagrams of SiN, SiC and NS compared with published chemical kinetics predictions with and without a companion; SiN abun… | R: SiN forms a one-sided arc with peak abundance 1.5e-7 relative to H2; SiC and NS show similar asymmetric emission at lower SNR | F: These species formed during a periastron passage in a highly eccentric, nearly edge-on orbit [abstract: "These features are all interpreted as having formed during periastron interactions."]
+- claim [supported]: H: Circular offset CO structures arise from the periastron passage of a highly eccentric binary rather than from variable mass loss | E: Angle-radius analysis of ALMA CO channels compared with Phantom SPH models post-processed with MCFOST | R: Black and white circles (1.35 and 10.75 arcsec) match near-spherical shocks in models with e >~ 0.8 seen edge-on; red and pink circles are … | F: Black and white circles formed at the last two periastron passages and give a period of 1082 yr and a time since periastron of 172 yr [Results: "we found that highly elliptical orbits ($e \gtrsim 0.8$) result in almost spherical structures in the wind"]
+- claim [supported]: H: The ALMA-derived period, time since periastron and inclination plus HST/SPHERE astrometry constrain the orbit | E: Grid search in e and r_p for orbits matching period, time since periastron and the HST-to-SPHERE separation change | R: Compatible solutions have e > 0.9, r_p <= 2e14 cm (13 au) and periods of about 1100 yr | F: W Aql is a long-period, very eccentric binary; only a family of solutions is constrained, not a single orbit [Orbital parameters: "have high eccentricities ($e>0.9$) and small periastron distances ($r_p \leq 2\times 10^{14}$ cm $=13$ au), with long periods $\sim 1100$ years"]
+- claim [supported]: H: The F9 star photodissociates common species (SiO, SiS, CS, HCN) on its side of the envelope | E: Zeroth moment maps, central-channel images and spectra centred on the F9 star compared with the AGB star and the opposite side; CN versus H… | R: Emission is truncated toward the F9 star (e.g. CS 0.33 vs 0.71 arcsec), few lines are detected at the F9 position, and 13CN appears where H… | F: Companion UV drives extra photodissociation near its present position [Results: "we see evidence of the F9 star driving additional photodissociation in the zeroth moment maps of SiO, SiS, CS and HCN"]
+- step 1 (combine configurations and make spectral cubes) validation: Interferometric noise artefacts at >=5 sigma judged negligible; relative astrometry ~0.002 arcsec (extended) and ~0.005 arcsec (combined) [3.4.1 Data reduction: "The chances of interferometric noise causing artefacts $\geq 5 \sigma$ in these images is negligible."]
+- step 2 (make moment-zero maps and position-velocity diagrams) validation: Independently chosen slit angle passes through the present position of the F9 star [3.4.3 SiN and SiC: "Even though the slit angle was determined independently, we find that it passes through the present position of the F9 star"]
+- step 4 (fit line profiles for central velocities) validation: Central velocities generally agree with the stellar LSR velocity of -23 km/s [3.4.1 Data reduction: "The central velocities of the lines were generally in agreement with the previously measured stellar LSR velocity"]
+- step 5 (measure the AGB continuum diameter) validation: SNR > 100 implies sub-mas formal precision; result compared with optical diameter [3.4.2 AGB angular diameter: "The SNR is $>100$, suggesting sub-mas precision, based on the nominal uncertainty of beam size divided by SNR"]
+- step 6 (check resolved-out flux against APEX) validation: SiN fully recovered; CO 66% lost; H12CN about 28% lost; SiO, SiS, CS 10-20% lost [3.4.1 Data reduction: "For CO we found 66% of the flux was resolved out, whereas all the flux was recovered by ALMA for SiN."]
+- step 7 (extract spectra around the F9 star) validation: Opposite-side profile resembles the AGB-centred profile, unlike the F9-centred one [3.4.8 Molecular emission around F9 star: "found that those line profiles were more similar to the AGB-centred line profiles than those centred on the F9 star"]
+- step 8 (measure stellar separation in HST and SPHERE images) validation: SPHERE uncertainty includes orientation, distortion, plate-scale stability and statistical position error [3.3 Spatially resolved imaging: "For SPHERE, the astrometric uncertainty includes the orientation with respect to north, the distortion, the plate scale stability and the statistical position uncertainty"]
+- step 9 (model the SiN abundance in the arc) validation: Best-fit profile spans the H2 overdensity; model line profiles plotted against the spectra; peak abundance agrees with chemical models for a carbon-rich star [3.5 Radiative transfer modelling: "the extended peak of the SiN abundance spans the region of the $\mathrm{H}_2$ overdensity"]
+- step 10 (identify circular structures in the CO emission) validation: Black circle coincides with the outer edge of the SiN emission and matches earlier lower-resolution ALMA CO arcs [Results: "The fact that the outer edge of the SiN emission overlaps with the inner circular structure"]
+- step 11 (simulate an eccentric binary wind and compare with CO) validation: Qualitative match of near-circular offset shells, blue/red channel asymmetry and sinusoids in the angle-radius plot [3.7 Hydrodynamic simulations: "Although the model is not a perfect reproduction of the observed CO emission (expected in light of the missing physics mentioned above), there are many qualitative similarities."]
+- step 12 (derive orbital period and time since periastron) validation: Period uncertainty from circle widths in the angle-radius plot [3.8 Orbital parameters from ALMA observ…: "The uncertainty is based on the width of the circles as fit from the angle-radius plot"]
+- step 13 (search a grid of orbital solutions) validation: Solutions checked against the known time between HST and SPHERE epochs and plotted on both images; periastron distances exceed the Roche limit [3.9 Orbital solutions: "We also check the possible solution against the known time between the HST and SPHERE observations"]
+- step 14 (interpret molecular distributions with chemical models) validation: Observed peak SiN abundance compared with the model prediction for a carbon-rich star [3.6.1 SiN and SiC: "is in good agreement with that predicted for a carbon-rich star"]
+- alternative considered: Gaia-derived distances were not adopted; 395 pc kept [3.1 Distance: "In this work, we continue to use a distance of 395 pc because this value falls within the uncertainties of both Gaia-derived values"]
+- alternative considered: 1993 HST WFPC image rejected as unusable [3.3 Spatially resolved imaging: "the degraded angular resolution makes it unusable for our study"]
+- alternative considered: Narrow 0.3 arcsec PV slit rejected for lower SNR [3.4.3 SiN and SiC: "Using a narrower slit (such as $0.3^{\prime\prime}$) resulted in a lower SNR in the PV diagram, making an analysis more troublesome."]
+- referee caveat (card): The orbit is a family of solutions from a grid with no formal likelihood; the period depends on a hand-read circle radius and an assumed wind velocity law
+- referee caveat (card): Distance (395 pc) is adopted and scales the projected separation and period
+- referee caveat (card): The SiN abundance is a 1D model of a wedge, fitted without stated goodness-of-fit or uncertainties
+- limitation (authors): SPH model is simplified and used for qualitative comparison, not a fit [3.7 Hydrodynamic simulations: "Hence we aim for a qualitative understanding rather than a direct fit to the data."]
+- limitation (authors): NS detection is tentative [3.6.2 NS: "The detection of NS is tentative"]
+
+### 2019AJ....157..251T: Neptune's Latitudinal Variations as Viewed with ALMA (2019; solar_system; observational_alma_primary)
+- question: How do Neptune's latitudinal brightness temperature variations at 1-3 mm constrain H2S, CH4 and ortho/para H2 abundances and the global circulation?
+- claim [supported]: H: Do ALMA maps show discrete latitudinal brightness variations in Neptune? | E: Subtract nominal beam-convolved model from scaled ALMA maps | R: Seven latitude bands with 0.5-3 K variations in all bands | F: Neptune has banded millimeter structure [abstract: "We identify seven well-resolved latitudinal bands of discrete brightness temperature variations, on the order of $0.5-3$K in all three observed ALMA spectral bands."]
+- claim [supported]: H: Can varying H2S, CH4, or H2 alone explain the variations? | E: Single-constituent model grids compared via reduced chi2 | R: Varying one constituent fails in several bins; combined H2S+CH4 gives chi2 below 15.5 everywhere | F: H2S variations from sub- to super-saturation plus CH4 changes near equator are needed [abstract: "variations in the H$_2$S profile that range from sub- to super-saturations at altitudes above the 10-bar pressure level, while variations in CH$_4$ improve the quality of fit near the equator."]
+- claim [refuted]: H: Are the data consistent with the Karkoschka & Tomasko methane distribution? | E: Fit H2S with their CH4 profiles | R: Fits only at 90S-50S and north of 20N, requiring ~10xS H2S disk-average | F: Not consistent [4.6 Comparison to Karkoschka2011: "We can find H$_2$S profiles which result in generally good agreement between the model and data only from $90^{\circ}$S$-50^{\circ}$S and northward of $20^{\circ}$N."]
+- claim [partially]: H: Do the bands imply a more complex circulation than earlier models? | E: Interpret enriched/depleted regions as upwelling/downwelling | R: Upwelling at 32-12S and 2-20N, downwelling at poles and 12S-2N | F: More complex equatorial structure than prior circulation models [abstract: "Our analysis finds more complex structure near the equator than accounted for in previous circulation models."]
+- step 2 (Image Neptune per spectral window) validation: Tested uniform and intermediate weightings, which produced artificial speckles [2.2 Calibration and Imaging: "we found that uniform and intermediate weightings produced artificial speckles on the disk and large scale structures in the sky."]
+- step 3 (Measure disk-averaged brightness temperature and noise) validation: Two methods agree within absolute calibration errors [4.1 Disk-Averaged Brightness Temperatur…: "Both results agree to well within the absolute calibration errors."]
+- step 4 (Build nominal Radio-BEAR model and residual maps) validation: Nominal model compared with ALMA and 2003 VLA disk-averaged data [4 Results: "which fits both our ALMA and 2003 VLA disk-averaged temperatures simultaneously."]
+- step 5 (Fit H2S, CH4 and ortho/para H2 profiles per latitude bin) validation: South pole fit tested against VLA and CARMA models; comparison with Karkoschka & Tomasko 2011 methane profiles [4 Results: "This provides a good litmus test for our model and fitting routine."]
+- alternative considered: Wet adiabat models rejected as too cold [4.1 Disk-Averaged Brightness Temperatur…: "Models with temperatures following wet lapse rates are too cold relative to these data."]
+- alternative considered: Normal H2 admixture rejected for best fit since other bands fail [4.4.3 Varying ortho/para H2: "For the best fit model, we therefore do not consider normal hydrogen."]
+- referee caveat (card): Residuals depend on assuming the disk average matches the nominal model, which rescales each band
+- referee caveat (card): Chi2 with 8 degrees of freedom and per-window independence is questionable given shared calibration
+- referee caveat (card): Latitudinal temperature variations ignored and may mimic opacity changes
+- limitation (authors): Models are highly degenerate and omit latitudinal temperature variations and adiabatic heating/cooling [4.1 Disk-Averaged Brightness Temperatur…: "First, these models are highly degenerate."]
+
+### 2018ApJ...853..195W: Herschel and ALMA Observations of Massive SZE-selected Clusters (2018; galaxy_clusters_and_sz, high_z_galaxies; observational_alma_primary)
+- question: How do star formation, cold gas and dust, and AGN content of galaxies in massive SZE-selected clusters at 0.3<z<1.1 depend on redshift and clustercentric radius, and compare to field galaxies?
+- claim [supported]: H: Is the [C I]/CO ratio in cluster galaxies like that in field galaxies? | E: Measured [C I] and CO(4-3) fluxes in ALMA detections | R: L'[CI]/L'CO(1-0) = 0.19 +/- 0.07 | F: Consistent with field samples [abstract: "consistent with previous results for field samples"]
+- claim [supported]: H: Do IR-bright galaxy fraction and sSFR evolve with redshift in massive clusters? | E: Binomial fractions and emcee fits across four clusters | R: p<0.005 for IRBG evolution; slope of sSFR positive at p<0.001 | F: Both rise with redshift [5.4 Redshift evolution of infrared-brig…: "we find that $p < 0.005$ for a zero or negative slope"]
+- claim [supported]: H: Does L_IR depend on clustercentric radius due to environment? | E: Compared L_IR and sSFR vs radius | R: L_IR trend vanishes when normalized by mass | F: Trend driven by SFR-M* relation [5.6 Star formation rate as a function o…: "The relationship between star formation and radius seen in Figure [2](#fig:L_IR with environment) has completely vanished once we normalize the SFR by mass."]
+- claim [partially]: H: Do cluster members host a high AGN fraction? | E: q_IR from Herschel and ATCA | R: Four of 19 have q_IR<1.8 | F: f_AGN >~ 0.2 [5.5 The FIR-radio correlation and AGN f…: "Four out of the 19 *Herschel* detections in our study have $q_{\rm IR} < 1.8$"]
+- step 1 (Calibrate and image ALMA data) validation: ALMA positions compared with HST counterparts (offset 0.34 arcsec for CO, 0.26 arcsec for continuum) [2.5.3 Astrometry: "we find offsets of $0\ensuremath{''}{}34$ (six sources)."]
+- step 2 (Detect line sources and measure fluxes) validation: Searched negative (-1x) cubes to estimate false detections [3.2 Millimeter line detections: "we roughly estimate the number of false detections by extracting “sources” from versions of each data cube that have been multiplied by $-1$."]
+- step 4 (Fit IR SEDs for L_IR and SFR) validation: Compared with Chary & Elbaz templates and ALMA continuum predictions; PACS negative-map fidelity test [3.3 Far-infrared continuum sources: "Only a single 4 $\sigma$ detection is found in the negative J0438 100 $\mu$m map"]
+- step 5 (Stack non-detections) validation: Blank-sky stacks and p-values [4.1 Herschel/PACS continuum stacking: "In every case, $p > 0.1$"]
+- alternative considered: Chary & Elbaz templates rejected because they underestimate cold dust (0.3 dex lower L_IR) [3.3 Far-infrared continuum sources: "$L_{\rm IR}$ derived using (cite: 2001ApJ...556..562C) templates is systematically 0.3 dex lower"]
+- referee caveat (card): Galactic X_CO and fixed r41=0.4 dominate mass uncertainty; alternatives change masses by factors of several
+- referee caveat (card): Single-band (160 um) SED fits give large L_IR and q_IR uncertainties
+- referee caveat (card): Small number statistics (6 CO detections; IRBG counts)
+- limitation (authors): Optical selection of members may bias the star-forming census; small samples of CO detections. [5.3 Biases from optical selection of cl…: "we have grounds for concern that our optical selection induces a general bias in our search for dust-obscured galaxies"]
+
+### 2020ApJ...905..122H: Physical Conditions of Gas Components in Debris Disks of 49 Ceti and HD 21997 (2020; debris_disks; archival_reuse)
+- question: Constrain the gas kinetic temperature and CO column density, and test CO excitation with H2 or electron collisions.
+- claim [refuted]: H: Are the faint 12CO lines optically thin? | E: Measure 13CO/12CO peak ratios and fit multiple isotopologue lines including opacity. | R: Peak ratios 0.46±0.03 and 0.48±0.04; large fitted 12CO optical depths. | F: 12CO emission is optically thick, including the first such determination for 49 Ceti. [LTE analysis: "the peak intensity ratio of $^{13}$CO(2–1)/$^{12}$CO(2–1) is calculated to be 0.46$\pm$0.03 and 0.48$\pm$0.04 for 49 Ceti and HD 21997, respectively."]
+- claim [supported]: H: Does the low rotational temperature reflect genuinely cold gas when non-LTE excitation is considered? | E: Fit CO and rare-isotopologue intensities with LTE and non-LTE LVG analyses over collision-partner densities. | R: Non-LTE gas temperatures are 8–11 K for 49 Ceti and 8–12 K for HD 21997 in the reported main ranges. | F: The gas remains cold and the rotational populations are almost thermalized. [Summary: "The gas kinetic temperature is derived from the non-LTE analyses to be 8–11 K for 49 Ceti for the first time, which is significantly lower than the dust temperature."]
+- claim [supported]: H: Can CO excitation be explained with little or no H2? | E: Test H2-rate effective-density models and separate electron-collision LVG models. | R: Observed line intensities can be reproduced without H2; electron excitation is possible above 30 cm^-3. | F: Low-H2 and H2-free environments are permitted, while abundant H2 remains permitted. [The case of H$_{2}$ collision: "the observed line intensities can be reproduced even without H$_{2}$."]
+- claim [partially]: H: Does inefficient photoelectric heating explain the low gas temperature? | E: Interpret the excitation-derived temperatures in the context of UV heating and the scarcity of small grains. | R: Gas temperatures near 10 K persist in the non-LTE analysis. | F: Inefficient photoelectric heating is a suggested explanation. [Nature of gas components in debris disks: "its gas temperature is quite low ($\sim$10 K)."]
+- step 3 (Make maps and extract spectra) validation: 49 Ceti integration ranges checked against the spectra [Overall data / 49 Ceti: "The velocity range for the integrated intensity maps mentioned above is justified by these spectra."]
+- step 4 (Measure line components) validation: Inspect residuals; HD 21997 isotopologue spectra retain small residuals near systemic velocity. [Overall data / HD 21997: "there seem to be small residuals"]
+- step 5 (Fit LTE excitation and opacity) validation: Compare calculated peak intensities and residuals with measurement uncertainties [LTE analysis: "The observed peak intensities are well reproduced within the measurement uncertainties for both sources."]
+- step 6 (Check beam filling factors) validation: Source-size estimates approximately agree with fitted filling factors; HD 21997 fitted factors have large errors. [LTE analysis: "These values are almost consistent with those determined in the fit"]
+- step 7 (Fit non-LTE excitation with H2 collisions) validation: Code tested against published results and RADEX; inspect calculated intensities and residuals. [Non-LTE analysis: "We employ the non-LTE code prepared by ourselves in the analysis, which is tested by using the results reported by (cite: gol74) and also those derived from the RADEX code."]
+- step 8 (Test electron excitation) validation: Compare column densities, temperatures and filling factors with the H2-collision solutions. [The case of electron collision: "These values resemble those found in the H$_{2}$ collision case, except for the electron density of 30 cm$^{-3}$ where the optical depth of the CO lines is very high due to insufficient excitation."]
+- step 9 (Derive CO densities and abundance ratios) validation: Compare inferred ratios with the canonical interstellar value 10^4. [The case of H$_{2}$ collision: "If the gas density is lower than 10$^{6}$ cm$^{-3}$, the H$_{2}$/CO ratio is lower than the canonical interstellar value of 10$^{4}$."]
+- step 10 (Estimate CO masses) validation: High-density solutions roughly agree with earlier CO mass estimates. [Nature of gas components in debris disks: "Our results at the H$_{2}$ density of 1.0$\times$10$^{6}$ to 1.0$\times$10$^{7}$ cm$^{-3}$ and electron density of 1.0$\times$10$^{3}$ to 1.0$\times$10$^{4}$ cm$^{-3}$ are roughly consistent with the mass estimate by (cite: kos13) and (cite: moo19)."]
+- alternative considered: Simultaneously fitting all four non-LTE parameters was unsuccessful; collision-partner density was fixed instead. [The case of H$_{2}$ collision: "However, all the four parameters cannot be determined simultaneously in the fit. Specifically, the H$_{2}$ density is not well constrained."]
+- alternative considered: H2 densities below 10^3 cm^-3 did not produce convergent fits. [The case of H$_{2}$ collision: "The least-squares fit does not converge for any of the two sources for the H$_{2}$ density below 10$^{3}$ cm$^{-3}$."]
+- alternative considered: Both H2 and electron collision cases were tested. [Non-LTE analysis: "Thus, we conduct the non-LTE analysis for the two distinct cases, where the major collision partner is H$_{2}$ or an electron."]
+- decided enough: Judge fits by peak-intensity agreement and residuals; use the lowest fixed H2 density yielding successful fitting. [LTE analysis: "The observed peak intensities are well reproduced within the measurement uncertainties for both sources."]
+- referee caveat (card): Summary column-density and number-density ranges do not cover all low-electron-density solutions in Tables 8–9; preserve the collision case and density when constructing answer keys.
+- referee caveat (card): The narrow summary temperature range omits the HD 21997 red-component central value of 14 K at the lowest electron density.
+- referee caveat (card): Derived number densities and abundance ratios depend directly on assumed line-of-sight lengths.
+- limitation (authors): H2 density is not independently constrained by the fits. [The case of H$_{2}$ collision: "Specifically, the H$_{2}$ density is not well constrained."]
+- limitation (authors): High optical depths can violate the simple LVG approximation; more rigorous radiative transfer including dust opacity is deferred. [The case of H$_{2}$ collision: "the simple approximation by the LVG model (cite: gol74) employed here does not perfectly describe the radiation transfer."]
+
+### 2026A&A...705A.197Z: The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): III. The vertical structure of debris disks (2026; debris_disks; large_program_or_survey)
+- question: Uniformly extract the vertical dust distributions of highly inclined, well-resolved ARKS debris disks.
+- claim [supported]: H: Highly inclined ARKS disks exhibit diverse vertical thicknesses. | E: Fit parametric vertical distributions and compare with frank and rave. | R: Best-fit h_HWHM spans 0.0026–0.193, with median 0.021. | F: The sample has a wide diversity of vertical structure. [abstract: "We employed both parametric and nonparametric methods to constrain the vertical dust distributions for the most highly inclined ARKS targets."]
+- claim [refuted]: H: A single Gaussian adequately describes debris disk vertical profiles. | E: Compare Gaussian, exponential, Lorentzian and double Gaussian parameterizations with AIC and BIC. | R: 10/13 disks are significantly better fit by thick-tailed profiles. | F: Non-Gaussian profiles are common; multiple dynamical populations are a possible interpretation. [Model comparison: "We compared different model parameterizations using the Akaike and Bayesian Information Criteria (AIC and BIC, respectively)"]
+- claim [supported]: H: Vertical thickness can constrain total disk solids mass under internal stirring and damping. | E: Use fiducial aspect ratios and dust masses in the Pan_2012 cascade model. | R: 5/13 disks have inferred masses below Neptune; thicker and wider belts tend to be more massive. | F: Disk masses span sub-Neptune to several Neptune masses under the adopted internal-process model. [Constraints on the disk mass: "We also estimated the total mass of each disk using the collisional cascade model of (cite: Pan_2012)."]
+- claim [refuted]: H: The adopted self-stirring scenario can excite every disk within its system age. | E: Calculate stirring timescales with Krivov_2018 Eqn. 28 and compare with ages. | R: HD 32297, HD 131488 and HD 197481 fail the timescale comparison. | F: Self-stirring alone is insufficient for these three disks under the adopted assumptions. [Constraints on the disk mass: "we compute the stirring timescale $T_{\rm stir}$ using Eqn. 28 in (cite: Krivov_2018)."]
+- step 1 (Define disk density and temperature) validation: Radial forms informed by the independent ARKS radial structure analysis. [Parametric modeling: "Thus, the set of radial functional forms applied for the vertical parametric modeling presented here was informed by the ARKS radial structure analysis (cite: Han_2026)."]
+- step 3 (Fit parametric disk models) validation: Visual walker and likelihood inspection; discard burn-in and walkers at least 5 sigma below maximum log-likelihood. [Model parameters: "Convergence was determined by visually inspecting the evolution of all walkers in both parameter space and log-likelihood space."]
+- step 4 (Select fiducial models and assess resolved heights) validation: Most fiducial residuals have no positive or negative features at 5 sigma; compare with frank and rave. [Analysis: "For most sources the fiducial models closely match the observations, with no positive or negative features in the residuals at the 5$\sigma$ level."]
+- step 5 (Infer vertical aspect ratios with frank) validation: Inspect height PDFs and compare with parametric and rave estimates. [frank: "the PDFs are shown in Fig [10](#fig:frank_h)."]
+- step 6 (Infer vertical aspect ratios with rave) validation: Inspect PDFs and compare with other modeling methods. [rave: "the PDFs are shown in Fig [11](#fig:rave_h)."]
+- step 7 (Infer stirring bodies and total disk masses) validation: Compare with minimum cascade masses rescaled to the same millimeter dust masses: four compatible and three incompatible. [Constraints on the disk mass: "finding that the estimates of $M_{\rm disk}^{\rm min}$ are compatible with the estimates of $M_{\rm{disk}}$ found using the (cite: Pan_2012) model for four disks, and incompatible for the remaining three disks."]
+- step 8 (Check whether self-stirring is fast enough) validation: All except HD 32297, HD 131488 and HD 197481 could self-stir within system age. [Constraints on the disk mass: "We find that all but three disks (HD 32297, HD 131488, and HD 197481) could have been self-stirred within the age of the system."]
+- step 9 (Compare radial and vertical dynamical excitation) validation: Treat ratios as estimates; eccentricity is degenerate with semimajor-axis distribution. [Theoretical implications: "there is a degeneracy between the semi-major axis distribution and the eccentricity distribution in the disk."]
+- step 10 (Compare heights across studies and wavelengths) validation: Differences in methods and resolution prevent firm multiwavelength conclusions. [Theoretical implications: "The predictions come with the caveat that results are difficult to directly compare if the $h$ measurements were obtained with different methods or with different data resolutions."]
+- alternative considered: AIC and BIC can select different models because BIC penalizes additional parameters more strongly. [Non-Gaussian vertical distributions as …: "four of the 13 sources (HD 9672, HD 10647, HD 39060, and HD 161868) have a vertical double Gaussian model which is most strongly favored by the AIC, while no sources have a vertical double Gaussian model which is most strongly favored by the BIC."]
+- alternative considered: Planet migration and secular planet–disk interactions are alternative explanations for thick-tailed profiles. [Conclusions: "This could hint at Neptune-like migration histories in these systems or could be a remnant of long-term planet-disk interactions in general."]
+- alternative considered: Wavelength-dependent vertical grain distributions can produce non-Gaussian emission even for Gaussian solids. [Non-Gaussian vertical distributions as …: "if the vertical distribution of solids changes with observing wavelength, then even a Gaussian vertical distribution of solids could produce a non-Gaussian emission profile (cite: Terrill_2023)."]
+- decided enough: Observations designed for at least two vertical-FWHM resolution elements at h_sigma=0.05; MCMC required at least 10^5 post-convergence samples; most residuals clean at 5 sigma. [Observations: "The new Band 7 observations were configured to resolve the vertical FWHM of the disks with at least two resolution elements, assuming a vertical aspect ratio"]
+- referee caveat (card): Injection-and-recovery tests would better establish the smallest recoverable heights than extrapolating non-Gaussian posteriors toward zero.
+- referee caveat (card): Visual convergence checks and removal of low-likelihood walkers need sensitivity tests against initialization, priors and multimodality.
+- referee caveat (card): Model-dependent mass uncertainties should include vertical-profile choice and uncertain inclination–height conversions.
+- limitation (authors): Axisymmetric, midplane-peaked models can obscure asymmetric structures and inflate heights in warped disks. [Limitations: "First, we consider only axisymmetric disks with vertical distributions that peak at the disk midplane."]
+- limitation (authors): Constant aspect ratio excludes radial variation supported by some other studies. [Limitations: "Second, in this work we assume that aspect ratio is constant with radius."]
+
+### 2020NatAs...4..861C: Unusually high CO abundance of the first active interstellar comet (2020; solar_system, astrochemistry; observational_alma_primary)
+- question: Parent volatile composition of 2I/Borisov and implications for its natal environment.
+- claim [supported]: H: Parent volatiles can reveal the composition of the active interstellar comet. | E: Observe HCN and CO rotational emission with ALMA and fit radiative transfer models. | R: Q(HCN) = (7.0±1.1)×10^23 s^-1; Q(CO) = (4.4±0.7)×10^26 s^-1. | F: Simple carbon-, nitrogen- and oxygen-bearing molecular ices were abundant in the natal environment. [abstract: "with production rates $Q({\rm HCN})=(7.0\pm1.1)\times10^{23}$ s$^{-1}$ and $Q({\rm CO})=(4.4\pm0.7)\times10^{26}$ s$^{-1}$."]
+- claim [supported]: H: 2I/Borisov has an unusual volatile composition compared with Solar System comets. | E: Derive abundance ratios, vary temperature and electron abundance, and compare with comets at similar heliocentric distances. | R: HCN/H2O = 0.06%-0.16%; CO/H2O = 35%-105%; CO/HCN = 630 with +200/-340 maximum error margin. | F: HCN is ordinary but 2I/Borisov is among the most CO-rich comets observed. [Unusually High CO Abundance of the Firs…: "we find that the HCN abundance (relative to H$_2$O) was 0.06%-0.16% and the CO abundance was 35%-105%."]
+- claim [supported]: H: CO outgassing is asymmetric along the Sun-comet direction. | E: Compare isotropic and two-hemisphere fits to the CO autocorrelation spectrum. | R: Sunward/anti-sunward production ratio 3.3; asymmetric χr² = 1.01 and P = 0.45 versus isotropic χr² = 1.21 and P = 0.02. | F: The asymmetric model is statistically favoured, consistent with enhanced sunward sublimation. [Radiative Transfer Modeling: "an asymmetry factor (ratio of sunward to anti-sunward production rates) of 3.3."]
+- claim [partially]: H: CO-rich coma abundances indicate formation in a cold, CO-rich outer disk. | E: Interpret measured abundance ratios using comet comparisons and ice-line formation scenarios. | R: Unusually CO-rich coma; inferred interior temperature ≲25 K during interstellar travel. | F: A cold outer-disk origin is probable, but coma abundances may not equal bulk nucleus composition. [Unusually High CO Abundance of the Firs…: "While it is difficult to be sure that the observed coma abundances represent the bulk composition of volatiles in 2I/Borisov’s nucleus"]
+- step 1 (Image the interferometric data) validation: Combined-cube RMS: 2.6 mJy for CO and 2.9 mJy for HCN. [Observations: "with $\sigma_c=2.6$ mJy for CO and 2.9 mJy for HCN."]
+- step 2 (Measure maps, spectra and continuum limits) validation: Integrated-flux significance: HCN 5.2σ; CO 5.9σ. [Unusually High CO Abundance of the Firs…: "Spectrally integrated fluxes are given in Table 1, and correspond to a statistical significance of $5.2\sigma$ for HCN and $5.9\sigma$ for CO."]
+- step 5 (Construct molecular excitation models) validation: Scaling H2 collision rates by 0.1-10 changed HCN production rates by only 2%. [Radiative Transfer Modeling: "The impact of this assumption was tested by scaling the H$_2$ collision rates by a factor of 0.1-10, but the resulting HCN production rates changed by only 2%."]
+- step 7 (Fit molecular production and outflow) validation: CO interferometric χr² = 1.03; HCN χr² changes 1.07 to 1.13 when velocity is fixed; autocorrelation CO production agrees within errors. [Radiative Transfer Modeling: "resulting in $\chi_r^2=1.03$ for our best fit to the CO interferometric data (Figure 2)."]
+- step 8 (Test excitation uncertainties) validation: At nominal electron scaling, production rates change by less than 8%; even the low-temperature, low-electron case remains CO-rich. [Radiative Transfer Modeling: "For $x_{n_e}=1.0$, the CO and HCN production rates are relatively insensitive to the assumed kinetic temperature, changing by less than 8% across the range $T_{kin}=$ 20–70 K."]
+- step 9 (Test hemispheric CO outgassing) validation: Asymmetric model favoured; production rate unchanged from the isotropic model because CO emission is optically thin. [Radiative Transfer Modeling: "Statistically, the 2-component, asymmetric model is therefore favoured."]
+- step 10 (Bound undetected molecular production) validation: Limits consistent with previously observed Solar System comet abundances. [Radiative Transfer Modeling: "These correspond to mixing ratios of $<0.1$% for CS and $<68$% for CH$_3$OH, which are consistent with the values previously observed in other Solar System comets"]
+- step 11 (Measure optical CN production) validation: December 15 CN production consistent within uncertainties with ALMA HCN production. [Unusually High CO Abundance of the Firs…: "Observations of near-UV CN fluorescence using the TRAPPIST-South telescope on UT 2019-12-15 gave $Q({\rm CN})=(9.5\pm1.8)\times10^{23}$ s$^{-1}$, which is consistent (within uncertainties) with our derived HCN production rate."]
+- step 12 (Compare volatile abundances and infer origin) validation: Compare against comets at similar heliocentric distances; consider differential sublimation and insulating surface layers. [Unusually High CO Abundance of the Firs…: "Supplementary Table 1 provides literature data for CO and HCN in five comets observed at $r_H=1.7$–$2.4$ au, including several CO-rich comets."]
+- alternative considered: HCN conical jet versus isotropic outgassing: both fit; jet production rate is 13% higher. [Radiative Transfer Modeling: "An excellent fit to the HCN spectrum was also obtained using a conical jet model"]
+- alternative considered: Low temperature and electron collision rates reduce the inferred CO/HCN ratio but preserve unusually high CO. [Radiative Transfer Modeling: "2I/Borisov’s CO/HCN ratio could plausibly be as low as $370\pm80$, but this is still higher than the range of values (1.25–238) observed in previous Solar System comets"]
+- alternative considered: Differential sublimation may affect whether coma abundance ratios represent nucleus composition. [Unusually High CO Abundance of the Firs…: "whether the differential sublimation rates as a function of temperature for CO, HCN and H$_2$O could play a role."]
+- decided enough: Detection significance, reduced chi-squared, interferometric/autocorrelation agreement, and excitation sensitivity tests. [Unusually High CO Abundance of the Firs…: "Spectrally integrated fluxes are given in Table 1, and correspond to a statistical significance of $5.2\sigma$ for HCN and $5.9\sigma$ for CO."]
+- referee caveat (card): Detection significance supports integrated emission more strongly than detailed morphology.
+- referee caveat (card): The two CO measurements share an observing session and are not fully independent calibration checks.
+- referee caveat (card): Water-relative abundances depend on observations bracketing the ALMA epoch rather than simultaneous water measurements.
+- limitation (authors): Detailed coma morphology largely hidden by noise. [Unusually High CO Abundance of the Firs…: "Our HCN and CO detections are robust, but the detailed coma morphology in Figure 1 is largely hidden by noise"]
+- limitation (authors): HCN signal-to-noise cannot distinguish a jet from isotropic outgassing. [Unusually High CO Abundance of the Firs…: "However, the signal-to-noise is too low to conclusively distinguish this scenario from isotropic outgassing."]
+
+### 2015ApJ...808...36M: New Measurements of the Radio Photosphere of Mira Based on Data from the JVLA and ALMA (2015; evolved_stars; observational_alma_primary)
+- question: Do JVLA and ALMA continuum data at 46, 96 and 229 GHz match the radio photosphere model of Mira A (size, shape, flux, brightness structure), and what are the properties of Mira B?
+- claim [supported]: H: Mira A flux densities follow the RM97 radio photosphere model | E: Measure fluxes at 46, 96, 229 GHz and compare to S∝nu^1.86 at 110 pc | R: Excellent match | F: RM97 model supported and extended to higher frequencies [5 Discussion: "We have found excellent agreement between the newly observed millimeter wavelength flux densities for Mira A and the radio photosphere model of RM97"]
+- claim [supported]: H: Mira A radio photosphere is resolved, with size decreasing at higher frequency and elongated | E: Uniform elliptical disk fits | R: Radii 3.0, 2.6, 2.4 AU; ellipticity 0.8-0.9 | F: Resolved, frequency-dependent size, flattening 10-20% [abstract: "The shape of the radio photosphere is found to be slightly elongated, with a flattening of $\sim$10-20%."]
+- claim [supported]: H: Mira A surface is uniformly bright | E: Visibility fits and residual images | R: Uniform disk inadequate; disk+Gaussian fits best at 229 GHz | F: Evidence for brightness non-uniformities [4.2: "the observed visibilities point to a nonuniform, asymmetric brightness distribution"]
+- claim [partially]: H: Mira B emission follows simple free-free spectrum | E: Flux measurement at three frequencies | R: Higher frequencies lie above prior relation | F: More complex model needed [4.1.2 Mira B: "imply that a more complex model is needed to fully describe the observed short-wavelength radio emission"]
+- step 1 (Calibrate JVLA data) validation: amplitude scale change from self-cal <0.5% [3.1 JVLA Data: "the resulting change in the amplitude scale was measured to be less than 0.5%"]
+- step 2 (Self-calibrate ALMA pipeline data) validation: amplitude change <0.7% [3.2 ALMA Data: "were measured to be $<$0.7%"]
+- step 4 (Fit size, shape, flux of Mira A and B) validation: Monte Carlo and artificial source injection tests for systematic errors [Appendix: "we introduced into our actual visibility data at each frequency a series of artificial elliptical Gaussians and uniform elliptical disks"]
+- step 5 (Test brightness non-uniformity) validation: Residual image from visibility subtraction compared to image-plane differencing [4.2: "the result is virtually indistinguishable, suggesting that the image residuals are not solely artifacts of the deconvolution process"]
+- alternative considered: Tidal distortion by Mira B insufficient to explain ellipticity (~5e-6) [5 Discussion: "This implies an ellipticity $\epsilon\sim5\times10^{-6}$, several orders of magnitude smaller than observed."]
+- referee caveat (card): Band 3 size and PA conflict with an independent analysis, indicating sensitivity to calibration and phase noise
+- referee caveat (card): Stellar variability and non-simultaneous observations complicate the spectrum
+- referee caveat (card): Disk+Gaussian model is non-unique
+- limitation (authors): Mira A size and PA uncertainties dominated by systematics; disagreements with Vlemmings et al. 2015 in Band 3 [Appendix: "the uncertainties on the source size and position angle reported in this work are dominated by systematic uncertainties"]
+
+### 2018A&A...617A.129K: Submillimeter-wave emission of three Galactic red novae: cool molecular outflows produced by stellar mergers (2018; stellar_physics, astrochemistry, evolved_stars; observational_alma_primary)
+- question: What are the physical, kinematic and chemical properties of the cool molecular remnants of three Galactic red novae (V4332 Sgr, V1309 Sco, V838 Mon), and how do they compare with post-AGB/pre-PN obje…
+- claim [supported]: H: Molecular gas in red-nova remnants was ejected in the merger eruptions | E: ALMA/SMA line widths and kinetic energies | R: Line widths ~200-400 km/s; kinetic energies ~1e46 erg (V4332 Sgr, V838 Mon), ~1e44 erg (V1309 Sco) | F: The molecular gas was ejected in the outbursts [6.1 The origin of the molecular material: "The extremely large widths of the lines observed in the remnants of the three objects indicate that the molecular material was ejected during their recent explosions as red novae."]
+- claim [supported]: H: Ejected masses of cool molecular gas in red novae | E: LTE CO excitation analysis with CO/H2=3e-4 | R: 0.05, 0.01, 1e-4 Msun for V838 Mon, V4332 Sgr, V1309 Sco | F: Lower-limit ejecta masses span two orders of magnitude, larger than classical novae [6.2 Masses dispersed in the merger even…: "The ejecta masses derived here, of 0.05, 0.01, 10$^{-4}$ M$_{\ensuremath{\odot}}$ for V838 Mon, V4332 Sgr, and V1309 Sco, respectively, range over two orders of magnitude."]
+- claim [partially]: H: Morphology of V4332 Sgr ejecta | E: Maps, PV diagrams and Shape modelling of CO 3–2 | R: Biconical outflow, opening angle ~60 deg, low inclination, homologous velocity field, optically thin | F: Wide-angle bipolar outflow, consistent with Pejcha et al. 2017 scenario; jets only tentative [3.6 A 3-dimensional model of the CO emi…: "the presence of the jets is only a tentative result"]
+- claim [supported]: H: Red novae chemistry resembles that of O-rich evolved stars | E: Compare source-averaged abundances with VY CMa and OH231.8 | R: Relative abundances similar in all three red novae; SO2 about three times SO | F: AlO abundance not extraordinary [6.3 Astro-chemistry of red novae: "The relative abundances are within uncertainties very similar in all three red novae."]
+- step 1 (Calibrate and image ALMA/SMA data) validation: Line fluxes on consecutive days consistent within 2.2%; flux drop of 18% over 11 months attributed to calibration [3.1 ALMA observations: "The line fluxes determined from data taken in the two consecutive days are consistent within 2.2%."]
+- step 2 (Identify spectral lines) validation: Velocity match and earlier optical identifications [3.2 Identification of spectral features: "Because of a very close match in velocity and previous identifications in visual spectra of V4332 Sgr"]
+- step 4 (Model 3D structure of V4332 Sgr CO emission) validation: Degeneracy between velocity field and density noted [3.6 A 3-dimensional model of the CO emi…: "There is strong degeneracy between the velocity field and the density distribution which could not be broken with the current observations."]
+- step 5 (LTE excitation analysis for column densities and masses) validation: 34SO2 non-detection consistent with solar isotope ratio; Herschel CO column density compared for V838 Mon [3.7 Column densities, excitation, and t…: "It is consistent with the solar isotopic abundance ratio, $^{34}$S/$^{32}$S=1/22.35."]
+- alternative considered: Hollow-shell bipolar models rejected for CO in V4332 Sgr [3.6 A 3-dimensional model of the CO emi…: "Models in which the bipolar structure is a hollow shell do not reproduce observations well"]
+- referee caveat (card): LTE single-component assumptions with saturated CO/SiO lines make column densities and masses highly uncertain
+- referee caveat (card): Shape model is hand-tuned without formal fit statistics
+- referee caveat (card): Distances are uncertain and propagate into masses
+- limitation (authors): Masses are lower limits, accurate to about a factor of ~2 at best owing to the CO/H2 conversion; line saturation uncertain [6.2 Masses dispersed in the merger even…: "The minimum masses we derive are accurate to within a factor of about $\sim$2, at best, owing to uncertain conversion factor"]
+- limitation (authors): Velocity field and density degenerate in the Shape model [3.6 A 3-dimensional model of the CO emi…: "There is strong degeneracy between the velocity field and the density distribution which could not be broken with the current observations."]
+
+### 2020MNRAS.499.2493A: η Carinae: high angular resolution continuum, H30α and He30α ALMA images (2020; stellar_physics, evolved_stars; observational_alma_primary)
+- question: Resolve the 230 GHz continuum and H30alpha/He30alpha recombination-line emission around eta Carinae at 50 mas to map the extended NW ionized region, its compact components, and the recent mass-loss h…
+- claim [supported]: H: Is the 230 GHz continuum and H30alpha emission resolved into compact structure at 50 mas resolution? | E: Imaging ALMA Band 6 extended-configuration data | R: Compact core at the binary position plus NW extended emission; 16 unresolved H30alpha components | F: Extended NW emission contains many compact ionized sources [Conclusions: "Sixteen compact sources with well defined velocities were identified"]
+- claim [supported]: H: Are the compact sources compatible with dense photoionized gas? | E: NLTE homogeneous-sphere models of L1 and L14 matched to continuum and H30alpha line | R: Densities about 1e7 cm-3 and temperatures about 1e4 K reproduce both | F: Compact sources are likely the Weigelt Complex blobs [Conclusions: "were reproduced assuming homogeneous spheres of ionized gas in NLTE"]
+- claim [supported]: H: When were Weigelt blobs D, C and B ejected? | E: Linear fits of earlier positions plus ALMA positions of L1-L3 | R: Proper motions about 6 mas/yr, ejection epochs 1952.6, 1957.1, 1967.6 | F: Ejections occurred near periastron passage [Conclusions: "their ejection epochs 1952.6, 1957.1 and 1967.6, respectively, close to the epochs of periastron passage."]
+- claim [partially]: H: Is the central continuum partly non-thermal? | E: Compare line-derived and continuum-derived emission measures | R: EM from lines 2.59e11 vs 2.46e11 cm-6 pc for the continuum | F: Continuum is explained by thermal emission at the observed orbital phase [4.1 The Central Source: "showing that all the continuum emission can be explained by thermal processes, at least during the orbital phases in which the stars are farther apart."]
+- step 2 (Measure continuum flux densities and compare with 2012 data) validation: Lower flux relative to 2012 attributed possibly to emission beyond the maximum recoverable scale [3.1 Continuum emission: "the lower flux density obtained in the present observations can be due to the existence of emission outside the maximum recovery scale of the ALMA configuration."]
+- step 3 (Extract spectra and identify compact line components L1-L16) validation: Table 1 estimated errors given (e.g. S(cont) = 0.04 Jy/beam) [Table 1: "Estimated errors: S(cont) = 0.04 Jy/beam"]
+- step 4 (Decompose compact-source spectrum and derive thermal contribution) validation: Observed spectrum, fitted Gaussians and residuals shown in Figure 14 [4.1 The Central Source: "shows the observed spectrum, the fitted Gaussians and the residuals of the fitting"]
+- step 5 (Compare the wind emission with an ionized wind model) validation: Predicted wind flux 3.2 Jy agrees with 3.7 Jy derived from observations [4.2 The high velocity winds: "resulting in an expected flux density from the wind of 3.2 Jy, in agreement with the 3.7 Jy derived from the observations."]
+- step 6 (NLTE model of compact ionized sources L1 and L14) validation: ne compatible with earlier ALMA Cycle 0 modelling; turnover frequency close to observing frequency [4.3 The physical parameters of the NW c…: "The values of $n_e$ are compatible with what was found in"]
+- step 7 (Test Pfgamma emission versus dust in the infrared blobs) validation: Predicted Pfgamma flux of 190 Jy for the IR blob compared with observed IR emission [4.4 Comparison with observations at oth…: "showing that the observed IR emission can be explained by H line emission, and that the presence of dust emission is not required."]
+- step 8 (Derive proper motions and ejection epochs of Weigelt blobs) validation: Ejection epochs compared with periastron epochs; only L1-L3 have compatible PA and distances [4.5 The Weigelt blobs: "the only sources in the data with position angles and distances compatible with those of the blobs are L1, L2 and L3."]
+- step 9 (Test whether the 356.7 GHz line is H40delta rather than HCO+) validation: Superposed profiles of compact sources can explain the previously detected line profile [4.6 HCO+ or H40delta emission line?: "the profile of the line detected by (cite: bor19) can be explained by the superposition of the line profiles of the compact sources"]
+- alternative considered: Considered whether the 356.7 GHz line reported as HCO+(4-3) is instead a hydrogen recombination line (H40delta) and concluded it is [4.6 HCO+ or H40delta emission line?: "and see if it could be instead a hydrogen recombination line"]
+- referee caveat (card): Single 30-minute execution block; no uv-coverage or imaging parameters (robust, threshold, masks) given
+- referee caveat (card): Cell size of 0.1 mas looks inconsistent with a 2048-pixel image covering 0.8 arcsec
+- referee caveat (card): Proper-motion fits rest on three tentative blob identifications with scarce earlier-epoch positions
+- limitation (authors): Lower flux than in 2012 may be due to emission outside the maximum recoverable scale [3.1 Continuum emission: "the lower flux density obtained in the present observations can be due to the existence of emission outside the maximum recovery scale of the ALMA configuration."]
+- limitation (authors): Unclear whether the narrow line in the compact-source spectrum belongs to the compact source [3.2 The H30alpha spectrum: "It is not clear if the narrow line belongs to the compact source or if it only represents the contribution of the superimposed extended NW region."]
+
+### 2021ApJ...910...77M: The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA (2021; sun; observational_alma_primary)
+- question: Measure equatorial and polar subterahertz solar radii and investigate their relationship with the solar activity cycle.
+- claim [supported]: H: Subterahertz radii follow the literature radius-frequency trend. | E: Measure equatorial and polar radii from SST and ALMA maps and compare with the literature compilation. | R: Measured radii appear consistent with the trend within uncertainties. | F: The subterahertz measurements broadly follow the radio radius-frequency trend. [INTRODUCTION: "In this work we determine the mean equatorial and mean polar radii of the Sun at 100, 212, 230, and 405 GHz using single-dish observations from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA)."]
+- claim [partially]: H: The SSC atmospheric model reproduces the measured subterahertz solar radii. | E: Generate SSC brightness-temperature profiles at 100, 212, 230, and 405 GHz and compare their radii with measurements. | R: Measured radii at 212, 230, and 405 GHz are close to the model; 100-GHz radii are about 4 arcsec larger. | F: Model agreement holds at three frequencies, with a 100-GHz discrepancy. [Subterahertz Radii: "Next, we used a 2-D solar atmospheric model developed by (cite: selhorst05) (hereafter referred to as the SSC model) to generate profiles of temperature brightness, $T_B$, at 100, 212, 230, and 405 GHz"]
+- claim [partially]: H: Equatorial and polar subterahertz radii vary with solar activity with opposite correlation signs. | E: Compare SST radius time series from 2007–2019 with F10.7 and |B| and calculate linear correlations. | R: Equatorial correlations range from 0.05 to 0.64; polar correlations range from -0.39 to -0.23. | F: The signs follow the proposed latitude dependence, but correlations are weak or moderate. [Correlation with Solar Activity: "The correlation coefficients between equatorial radius, $R_{212}^{equat.}$, and solar proxies are very low (0.05 and 0.16, respectively)."]
+- claim [partially]: H: ALMA radius time series show behavior analogous to the SST series and opposite latitude-dependent responses to solar activity. | E: Compare six-month radius averages and qualitatively inspect ALMA variations during 2015–2018. | R: SST and ALMA averages and temporal behavior are close; ALMA equatorial radii fall then rise, while polar radii rise. | F: The shorter ALMA series is qualitatively consistent with the SST behavior. [Correlation with Solar Activity: "The radii derived from SST’s maps are found to have both average values and behavior over time very close to ALMA’s"]
+- step 1 (Orient maps and extract limb points) validation: Limb-point filtering intended to reject active-region, instrumental-error, and high-opacity contamination [Radius Determination: "During the limb points extraction, some criteria are adopted to avoid extracting limb points associated with active regions, instrumental errors or high atmospheric opacity"]
+- step 2 (Fit equatorial and polar radii for each map) validation: Compare SST 212-GHz and ALMA 230-GHz radius determinations [Radius Determination: "The same method is applied to both telescopes, so that a comparison between the 212 GHz radius of SST and the 230 GHz radius of ALMA could be made."]
+- step 5 (Assess beam-induced radius uncertainty) validation: Simulations show increased radius uncertainty perpendicular to azimuth-elevation scans [Radius Determination: "The results show that azimuth-elevation maps increase the uncertainty of radius determination in the direction perpendicular to scans."]
+- step 6 (Compare radii with the literature frequency trend) validation: SST and ALMA radii appear consistent within uncertainties with the radius-frequency trend [Subterahertz Radii: "SST and ALMA radii seem to agree within uncertainties with the trend"]
+- step 7 (Compare measured radii with the SSC model) validation: 212-, 230-, and 405-GHz radii are close to model radii; 100-GHz radii are about 4 arcsec larger [Subterahertz Radii: "Our results at 212, 230 and 405 GHz are very close to the radii derived from the model, whereas the 100-GHz radii are about ${4}^{\prime\prime}$ bigger, not agreeing with the model."]
+- step 8 (Construct radius and solar-proxy time series) validation: Compare six-month SST 212-GHz and ALMA 230-GHz equatorial and polar radius series [Correlation with Solar Activity: "We compared the equatorial and polar radius time series at 212 GHz (SST) with the time series of the equatorial and polar radii at 230 GHz (ALMA), with 6-month averages."]
+- step 9 (Assess relationships with solar activity) validation: Compare behavior across frequencies, latitude regions, and both solar proxies [Correlation with Solar Activity: "the calculated correlation coefficients, $\rho$, are organized by frequency, solar latitude regions and solar proxies."]
+- alternative considered: Half-power radius measurement considered; inflection point method selected for lower susceptibility to beam and brightness-profile effects. [Radius Determination: "Two widely used methods for measuring the radio solar radius are the inflection point method (cite: alissan17) and the the half-power method (cite: costa99; selhorst11; menezes17)."]
+- decided enough: Map acceptance requires at least 35% of limb points, radius between 800 and 1300 arcsec, and standard deviation below 20 arcsec. [Radius Determination: "This process is repeated until there are at least 35% of the points, usually 6 out of 16 depending on the map and the latitude region – polar or equatorial."]
+- referee caveat (card): The statement that all four radii correlate more strongly with |B| than with F10.7 conflicts with Table 3: only the 212-GHz equatorial coefficient is larger in absolute value for |B|.
+- referee caveat (card): No correlation uncertainties, significance estimates, or correction for dependence introduced by smoothing are provided.
+- referee caveat (card): The iterative circle-fit stopping rule is ambiguous because the stated minimum retained fraction does not specify convergence.
+- limitation (authors): Large scatter remains in SST radius values despite strict selection. [Radius Determination: "Even with the strict criteria adopted in the mean radius determination, there is still a large scattering in the distribution of SST radius values."]
+- limitation (authors): Azimuth-elevation scanning increases radius uncertainty perpendicular to the scan direction. [Radius Determination: "The results show that azimuth-elevation maps increase the uncertainty of radius determination in the direction perpendicular to scans."]
+
+### 2026ApJ..1004..171U: Modeling the Milky Way Circumnuclear Disk: Rosettes and Rings (2026; milky_way_ism; theory_or_simulation_compared_to_alma)
+- question: Which circular-disk or non-Keplerian rosette models best reproduce the CND velocity field and spatial coverage?
+- claim [supported]: H: A circular disk or a rosette model can reproduce the CND velocity field and spatial distribution. | E: Compare beam-smeared mock observations over the parameter grids using velocity agreement and spatial coverage. | R: All three classes fit; Circular Disk has W = 0.37 and P = 1.61. | F: Circular Disk provides the best moment-1 model. [Conclusion: "We find that all three classes of models can provide a good fit to the observational data"]
+- claim [partially]: H: Rosette trajectories can capture CND velocity substructure and dispersion properties. | E: Construct rosette mock moment maps and compare their structure and dispersion ranges with observations. | R: Million-Years-Rosette reproduces several velocity substructures and has moment-2 values of 0–53 km s−1. | F: Million-Years-Rosette is the closest dispersion match, although its velocity predictions are less accurate than Circular Disk. [The Million-Years-Rosette Model: "this model correctly captures the spatial profile of the CND and reproduces the broad blue-to-redshift gradient as well as several substructures seen in its velocity field."]
+- claim [partially]: H: The preference for Circular Disk indicates that most CND gas is nearly circularized. | E: Compare circular and rosette model fits to the observed moment-1 map. | R: Circular Disk is favored over the two rosette classes. | F: A majority of the gas may be nearly circularized. [Conclusion: "Since the Circular Disk model is favored, our results suggest that a majority of the gas in the CND may be nearly circularized."]
+- claim [supported]: H: The southwest anomaly accounts for a substantial shared mismatch without changing the preferred model. | E: Estimate southwest contributions to W and compare the metrics after subtraction. | R: W−ΔW_SW ≃0.15, ≃0.21, and ≃0.23 for Circular Disk, Filled-Rosette, and Million-Years-Rosette. | F: Circular Disk remains favored; southwest dynamics likely include unmodeled non-gravitational processes. [Table 2: "| Circular Disk | 1.0 | 2.9 | 35 | 60 | — | — | — | 12.4 | 0.37 | 1.61 | $\simeq 0.15$ |"]
+- step 2 (Construct the central gravitational potential) validation: Using the values from (cite: Do2019) would change estimations by ∼5%. [Gravitational Potential in the Galactic…: "If we use the values from (cite: Do2019) instead, our estimations would change by $\sim5\%$."]
+- step 4 (Generate rosette models) validation: Longer Filled-Rosette integration makes the final velocity profile insensitive to initialization and removes gaps in on-sky coverage. [Rosette Models: "The longer integration period ensures that the final velocity profile is insensitive to where the orbit is initialized and there are no gaps in the model’s on-sky area."]
+- step 5 (Construct mock-observational moment maps) validation: Mock observations match the observational sampling and beam FWHM [Mock Observations: "After transforming the model onto the plane of the sky, we bin the model data onto a uniform position-velocity grid, whose sampling exactly matches that of the observational data."]
+- step 6 (Rank models by velocity agreement and coverage) validation: Compare against the shortcomings of unweighted velocity RMS: thin-ring bias, patchy data, and equal weighting of weak and strong emission [Issues with an Unweighted Fit Metric: "First, an unweighted velocity RMS is strongly biased toward thin-ring models that fail to capture a majority of the CND’s gas distribution"]
+- step 7 (Evaluate residuals and velocity dispersions) validation: Compare model dispersion ranges with the literature observed range of 5–40 km s−1 [The Filled-Rosette Model: "the observed dispersion value of $5{-}40\,\mathrm{km\,s^{-1}}$ (cite: Hsieh_2021; Oka_2011; Ferriere_2012; SW_2014; Genzel_2010)."]
+- step 8 (Assess the southwest residual contribution) validation: Circular Disk remains favored after subtracting southwest residual contributions [Conclusion: "It outperforms both rosette models by about 50% according to the fit metric without the residuals from the southwest region"]
+- alternative considered: Unweighted velocity RMS without coverage penalties rejected because it favors thin rings, fits small features, and weights all residuals equally [Issues with an Unweighted Fit Metric: "First, an unweighted velocity RMS is strongly biased toward thin-ring models that fail to capture a majority of the CND’s gas distribution"]
+- alternative considered: Removing the southwest feature before fitting considered but rejected because its exact boundaries are not well defined [Residuals in the Southwest Region: "It is possible to remove this feature from the observational map prior to comparison with the models. However, its exact boundaries are not well defined."]
+- alternative considered: Axisymmetric cluster and fitted CND tilt deferred to future work [On the NSC Potential: "In future work, we intend to model the CND in an axisymmetric cluster and fit for its tilt relative to the GP."]
+- decided enough: Filled-Rosette integration extended to 10^8 yrs to remove coverage gaps and initialization sensitivity [Rosette Models: "It is constructed by evolving a single rosette trajectory for $10^{8}$ yrs."]
+- referee caveat (card): No parameter uncertainties, likelihood, or statistical significance for model preference are supplied.
+- referee caveat (card): Ranking sensitivity to the adopted spatial-weight scale, coverage radii, S/N cut, and grid limits is not demonstrated.
+- referee caveat (card): The dispersion preference is based on reported map properties and ranges; no quantitative joint moment-1/moment-2 fit is specified.
+- limitation (authors): Rosettes omit shocks at self-intersections and do not describe CND time evolution [Motivating the Models: "We note that neither rosette models account for the shocks that would be produced at points of self-intersection along the planar trajectory."]
+- limitation (authors): Spherical potential and Galactic-plane-aligned orbits simplify the flattened NSC and tilted CND [On the NSC Potential: "Therefore, we presently adopt a spherical central potential and consider orbits that are aligned with the GP."]
+
+### 2024A&A...682A.127S: A bipolar structure and shocks surrounding the stellar-merger remnant V1309 Scorpii (2024; stellar_physics, evolved_stars, astrochemistry; observational_alma_primary)
+- question: Spatio-kinematic and chemical properties, physical conditions, and origins of the circumstellar components of V1309 Sco.
+- claim [partially]: H: The remnant has a bipolar circumstellar structure. | E: Map CO and 29SiO emission and velocities; fit molecular line components. | R: Slight elongation and an aligned velocity gradient in marginally resolved emission. | F: The features are consistent with bipolar outflows, but detailed geometry remains unresolved. [CSE structure: "Our ALMA maps only marginally resolve the cool component of the V1309 Sco remnant."]
+- claim [partially]: H: Active shocks heat and chemically alter the circumstellar gas. | E: Detect H2 and HCO+ and compare their velocity profiles. | R: H2 is extremely blueshifted while HCO+ is extremely redshifted. | F: Active shocks are a plausible heating and chemistry mechanism; opposite lobes interact differently. [Role of shocks: "the detection of NIR H$_2$ and sub-mm HCO$^+$ emission suggests that the material may be heated by active shocks propagating through the CSE, subsequently changing its molecular composition."]
+- claim [supported]: H: The circumstellar gas contains physically distinct cold molecular and hot atomic regions. | E: Fit sub-mm SO2 emission and optical forbidden-line diagnostics. | R: Sub-mm molecular temperatures 35–113 K; atomic electron temperatures 5000–15000 K. | F: The remnant contains cold molecular material and much hotter, partly ionised gas. [Summary: "Using sub-mm SO$_2$ emission as a thermometer, we derive the excitation temperature of the molecular gas to be 35–113 K."]
+- claim [partially]: H: H2 emission constrains the shock type and pre-shock density. | E: Filter the published shock grid with detected line ratios and upper limits. | R: 139 of 14364 models agree; accepted models imply nH≥10^7 cm−3 and mostly J-type shocks. | F: The blueshifted H2 shocks can be classified as J-type, with a density limit constrained by the grid boundary. [H$_2$: "Using the conditions described above, we find that 139 out of 14364 models are in agreement."]
+- step 1 (Identify sub-mm lines and compare epochs) validation: Comparison with the mostly unchanged 2016 spectrum; HCO+ partially resolved in 2019. [Line identification: "the majority of lines seen in the 2019 spectrum could be identified without major effort."]
+- step 2 (Measure the angular source size) validation: Natural/uniform results agree within 1σ; smoothing preserves epoch 2 size. [Source size and distance: "As a sanity check, the images were cleaned using natural and uniform weightings to compare the results, with the different weightings providing the same results per epoch within 1$\sigma$ errors."]
+- step 3 (Derive the kinematical distance) validation: Distance consistent with (cite: mason2022). [Source size and distance: "The kinematic distance we determine is therefore 5.6 kpc, which is consistent with the distance estimate presented in (cite: mason2022)."]
+- step 4 (Map the velocity structure) validation: Velocity gradient aligns approximately with CO elongation; 29SiO structure matches 2016 28SiO. [Moment maps: "The gradient axis approximately matches the direction of a slight elongation seen in the CO (3–2) moment-0 maps."]
+- step 5 (Fit molecular gas conditions) validation: Red-wing excess in CO and 29SiO remains unmodelled; component assignments are inconsistent between epochs. [CSE structure: "the line profiles of CO and $^{29}$SiO representing the entire source show an excess within the red wings of the lines that is not replicated in our CASSIS model"]
+- step 6 (Check line optical depths) validation: Line centres are optically thick; line wings are judged optically thin enough to represent source structure. [Optical depth: "The determined values of $\tau$ indicate optically thick emission."]
+- step 7 (Recover the HCO+ velocity profile) validation: Compare recovered HCO+ profile with other sub-mm and optical profiles. [HCO$^+$: "The recovered HCO$^+$ profile has a peak velocity of –53 km s$^{-1}$, and its profile partially overlaps in velocity with the profiles of other sub-mm and optical lines."]
+- step 8 (Measure optical/NIR lines and remove TiO contamination) validation: Check uncertain atomic identifications with NIST multiplets and relative intensities. [Line identification and analysis: "In order to confirm uncertain lines, the NIST database[^4] was used to look for lines of the same multiplet, as well as compare relative intensities."]
+- step 9 (Constrain atomic gas temperature and density) validation: Fe I LTE ratios show poor consistency; varying E(B–V) to 0.6 and 1.0 mag has no significant diagnostic effect; density range conservatively expanded. [Atomic line diagnostics: "The poor consistency between the 3500 K model and the observed line ratios for the 4376 Åand 5166 Ålines may indicate a non-LTE environment."]
+- step 10 (Fit optical molecular temperatures) validation: Extend failed grids to higher temperatures and inspect residuals visually; reject unrealistic solutions. [Molecule identification and modelling: "We extended the model grids to higher temperatures, but only achieved convergence at unrealistic temperatures of $\sim$5000 K."]
+- step 11 (Test atomic shock models) validation: Flux errors too large and density dependence insufficiently resolved to constrain density or shock velocity. [Atomic line diagnostics: "However, the errors on the line fluxes proved too large to constrain either the gas density or shock velocity."]
+- step 12 (Constrain shocks using H2 ratios and upper limits) validation: 139 of 14364 models agree; PAH abundance has no real effect on the reported statistics. [H$_2$: "Using the conditions described above, we find that 139 out of 14364 models are in agreement."]
+- step 13 (Interpret the outflow geometry and dust obscuration) validation: Proposed geometry is consistent with ALMA velocity maps; asymmetric shock chemistry remains unexplained. [Effects of dust obscuration: "Such a geometry is consistent with the ALMA velocity maps"]
+- alternative considered: Apparent source contraction rejected as unlikely; epoch 1 size errors considered underestimated. [Source size and distance: "At face value, comparing the source size in each epoch would indicate that the source has contracted between 2016 and 2019."]
+- alternative considered: Rotating-sphere interpretation inconsistent with the 29SiO velocity pattern. [Moment maps: "The velocity structure of the $^{29}$SiO (8–7) emission shows a redshifted lobe in the north-east, with less extreme velocities at extended distances."]
+- alternative considered: UV/X-ray-driven HCO+ formation considered; shocks preferred because UV/X-ray sources are lacking. [HCO$^+$: "Alternatively, ultraviolet and X-ray fluxes can influence HCO$^+$ abundances through photo-dissociation (cite: kimura2012; cleeves2017)."]
+- decided enough: Accept H2 shock models agreeing with the detected ratio within 5σ and lying below all ratio upper limits. [H$_2$: "in agreement with the observed ratios to 5$\sigma$ accuracy for the detected line ratio"]
+- referee caveat (card): Epoch-to-epoch CO flux comparison needs matched imaging and calibration-error treatment before attributing the reported 26% increase to variability.
+- referee caveat (card): The distance requires uncertain velocity geometry, ejection timing, and a 5σ Gaussian radius; the stated upper-limit direction needs checking against the supplied distance formula.
+- referee caveat (card): Optical-depth inputs are internally inconsistent: the prose uses LTE-fit quantities, Table 3 specifies peak brightness temperatures, and its 28SiO column differs from Table 2.
+- limitation (authors): Spatially unresolved asymmetry and only marginal resolution of the molecular remnant. [CSE structure: "Our ALMA maps only marginally resolve the cool component of the V1309 Sco remnant."]
+- limitation (authors): Overlapping components and moderate/high optical depths undermine detailed component fits. [CSE structure: "It is unlikely to be a real change in the physical parameters of the flow and rather reflects the large uncertainties in modelling the multiple overlapping components."]
+
+### 2025PSJ.....6..286M: Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics (2025; solar_system; observational_alma_primary)
+- question: Which ALMA-derived or GCM zonal wind profiles reproduce the resolved occultation light distributions around Titan?
+- claim [supported]: H: Titan has stronger southern-hemisphere winds during late northern summer | E: Compare observed occultation limb light with wind-distorted forward models and inspect the mid-event geometry | R: Best-matching profiles have southern wind peaks; the mid-event geometry is consistent with stronger southern winds | F: The data support stronger southern-hemisphere winds [On the better model match to the ingres…: "In both original magnitude and half-magnitude cases, the best-matching profiles had the same shape (peak winds at southern latitudes)."]
+- claim [supported]: H: A seasonal GCM profile can match the resolved occultation data | E: Rank original-amplitude GCM and ALMA forward models by combined ingress/egress SSE | R: L_s 120 degrees gives combined SSE 570.5 | F: L_s 120 degrees is the best original-amplitude profile, with nearby seasonal profiles close behind [Data versus model: overall: "the overall best match to the occultation data was for the input GCM atmosphere corresponding to $L_s = 120^{\circ}$, closely followed by those corresponding to $L_s = 110^{\circ}$, $L_s = 130^{\circ}$, and $L_s = 100^{\circ}$."]
+- claim [partially]: H: Lower peak GCM wind speeds improve agreement with the occultation | E: Repeat forward models with halved and doubled wind magnitudes | R: Halved profiles slightly improve combined matches; doubled profiles give poorer combined matches | F: Lower winds are favored by egress and combined comparisons, but not by ingress alone [Data versus model: overall: "When evaluated across all residuals (ingress and egress lightspots, all frames), it was apparent that doubled wind speeds led to poorer matches across all simulations."]
+- claim [partially]: H: Near-concurrent ALMA winds predict the occultation lightspot behavior | E: Use the ALMA wind profile as an occultation forward-model atmosphere | R: ALMA is the best original-profile ingress match, but has poorer egress agreement | F: The techniques are complementary, with agreement dependent on the lightspot considered [Abstract: "The ALMA wind profile provides the best match to the occultation data when only the ingress data were considered, but is not the best match when data from ingress and egress are combined."]
+- step 1 (Isolate occultation starlight) validation: Compare PSFs on pre- and post-occultation frames; choose the sharpest deconvolved disks [Occultation data reduction and processi…: "To find the best PSF for deconvolution, we studied the effectiveness of different PSFs in frames before and after occultation, when the occulted star was in the frame alongside Titan."]
+- step 2 (Determine the occultation trajectory) validation: Choose subframe widths and centroid method with the lowest variability [Occultation data reduction and processi…: "These star subframe widths were selected based on which led to the lowest variability in centroid fitting."]
+- step 3 (Measure ALMA Doppler shifts) validation: Moffat functions reproduce observed line profiles within the noise [ALMA wind retrieval: "We found that the Moffat function was able to fully reproduce our observed line profiles (within the noise), resulting in a more accurate determination of the line Doppler shift than the conventional Gaussian fitting method."]
+- step 5 (Determine ALMA altitude sensitivity) validation: Continuum matching after the 0.982 scaling [ALMA wind retrieval: "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."]
+- step 6 (Retrieve intrinsic latitudinal winds) validation: Experiment with point counts; seven points give a good Doppler-map fit while remaining constrained by the data [ALMA wind retrieval: "To maximize the information content in the $v(l)$ retrieval, we experimented in fitting the observations with profiles incorporating different numbers of variable latitudinal points $i$."]
+- step 7 (Construct wind-distorted atmospheres) validation: Scaling HASI temperatures by TAM latitude differences produced negligible changes [Forward modeling of a stellar occultati…: "We also considered scaling the HASI profile by the latitudinal temperature differences simulated in the TAM GCM, but found the differences in the results to be negligible when compared to using the HASI profile without GCM scaling."]
+- step 8 (Simulate resolved occultation images) validation: 2-D screen approximation justified by bending angles of about 2 μrad [Forward modeling of a stellar occultati…: "the bending angles we detect are only about 2 $\mu$rad, so that each detectable ray essentially travels straight through Titan’s atmosphere."]
+- step 9 (Compare observed and simulated lightspots) validation: Compare ingress and egress separately and test doubled/halved wind magnitudes [Data versus model: overall: "After determining the combined best match, we probed each individual lightspot to see what distinct trends appeared at ingress and egress."]
+- alternative considered: Frame-dependent stellar PSFs and Gaussian PSFs considered; universal sharpest-star PSF selected [Occultation data reduction and processi…: "a frame-to-frame PSF of the star (where the PSF varied by frame), a universal PSF where the sharpest star (as determined by the lowest width of distributed light) was used as PSF for all frames"]
+- alternative considered: Two-dimensional Gaussian, center of mass and quadratic centroid methods considered; two one-dimensional Gaussians selected [Occultation data reduction and processi…: "including two one-dimensional Gaussians, a two-dimensional Gaussian, center of mass, and a quadratic polynomial."]
+- alternative considered: HASI temperature scaling by TAM latitude differences had negligible effects [Forward modeling of a stellar occultati…: "We also considered scaling the HASI profile by the latitudinal temperature differences simulated in the TAM GCM, but found the differences in the results to be negligible when compared to using the HASI profile without GCM scaling."]
+- decided enough: Seven latitude points balance Doppler-map fit quality and constrained wind-profile errors [ALMA wind retrieval: "Seven latitudinal points (with $\Delta{(l)}=30^{\circ}$ separation) were found to produce a good fit to the observed Doppler map, while still allowing the retrieved profile to be well constrained by the data"]
+- referee caveat (card): The approximate Doppler zero-point correction has no stated uncertainty propagation into the retrieved wind profile.
+- referee caveat (card): Angular SSE ranks models without a stated error-weighted likelihood or significance test.
+- referee caveat (card): The preferred original-amplitude profile differs from the preferred profile across all tested amplitudes; answer keys must distinguish those searches.
+- limitation (authors): ALMA rubidium-maser cable-routing error likely introduced an unknown frequency shift and slight spectral broadening [ALMA wind retrieval: "an error in the cable routing of the ALMA rubidium maser at the time of our observations, which is likely to have introduced an erroneous and unknown frequency shift in our observations"]
+- limitation (authors): ALMA winds are not vertically resolved; equatorial-jet contributions cannot be isolated [Comparison between GCM, occultation, an…: "As the ALMA wind profile is not vertically resolved, isolating the contribution of the equatorial jet from the contributions of winds at lower altitudes that contribute more heavily to the CH$_3$CN profile is not possible."]
+
+### 2017PASJ...69...20H: ALMA and RATIR observations of GRB 131030A (2017; transients, high_z_galaxies; multi_facility_alma_minor)
+- question: Constrain the late-time 345 GHz afterglow/host emission of GRB131030A, model the forward shock with RATIR and Swift data, and assess the host galaxy and the nearby submm source
+- claim [supported]: H: Is any afterglow or host emission detected at 345 GHz at the GRB position? | E: ALMA Cycle 1 observation at 17.1 d | R: 3-sigma limit 0.12 mJy; L_IR<1.11e11 Lsun, SFR<18.7 Msun/yr | F: Host is not a luminous submm galaxy; deep limit benchmarks ALMA afterglow follow-up [abstract: "The ALMA observation constrained a deep limit at 17.1 d for the afterglow and host galaxy."]
+- claim [supported]: H: Can SSC explain the X-ray excess? | E: Boxfit forward shock model plus analytic SSC estimate | R: SSC does not reproduce late temporal evolution or spectrum | F: SSC is unlikely; another component such as late prompt emission is needed [3.1 Forward Shock Radiation and X-Ray E…: "Hence, SSC is unlikely to explain the observational properties."]
+- claim [partially]: H: Is ALMAJ2300-0522 part of the host galaxy? | E: Compare offset 3.5" with host companions in the literature | R: Offset 30.2 kpc; Rc=24.48 counterpart | F: May be a host component; redshift needed [Conclusion and Summary: "Although the separation is rather large, the source may be one component of the host galaxy"]
+- step 2 (Fit afterglow light curves and SEDs) validation: chi2/nu reported [2.4 Afterglow Spectrum: "$\beta=-0.57\pm0.09$ ($\chi^{2}/\nu=1.9$ with $\nu=8$)"]
+- step 3 (Forward shock modeling) validation: Compared SSC analytic prediction with X-ray data [3.1 Forward Shock Radiation and X-Ray E…: "On the basis of the analytic solution described by (cite: fan08), we calculated the expected flux density of synchrotron self-inverse-Compton radiation"]
+- step 4 (Host IR luminosity and SFR limits) validation: Compared with TOUGH sample SFR [4.2 Host Galaxy and ALMAJ2300-0522: "The upper limit of SFR was consistent with those of the TOUGH samples"]
+- alternative considered: SSC rejected for X-ray excess; late prompt emission and magnetar spin-down proposed [3.1 Forward Shock Radiation and X-Ray E…: "A spinning-down magnetar as the central engine is one of the explanations for the X-ray excess"]
+- referee caveat (card): Astrometry bugs raise doubt on the ALMA source position and association
+- referee caveat (card): Association of ALMAJ2300-0522 with the host rests on analogy without a redshift
+- referee caveat (card): Host L_IR limit depends on a single template SED
+- limitation (authors): ALMA astrometry bugs reported; large offset not explained [2.1 ALMA Submillimeter Follow-up Observ…: "Although several astrometry-related bugs (e.g. phase calibrator coordinate inconsistency) were reported from the ALMA ARC after data delivery"]
+

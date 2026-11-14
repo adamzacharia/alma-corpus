@@ -1,0 +1,975 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...835...17M",
+  "title": "ALMA Measurements of Circumstellar Material in the GQ Lup System",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "MacGregor, Meredith A.",
+  "n_authors": 10,
+  "arxiv_id": "1611.06229",
+  "doi": "10.3847/1538-4357/835/1/17",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00374.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA observations of the GQ Lup system, a young Sun-like star with a substellar mass companion in a wide-separation orbit."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "exoplanets"
+   ],
+   "targets": [
+    {
+     "name": "GQ Lup",
+     "coordinates": {
+      "value": "RA 15h49m12.082861, Dec -35d39m05.48071 (J2000, June phase center)",
+      "evidence": [
+       {
+        "loc": "2 The GQ Lup System",
+        "quote": "The GQ Lup system is located in the $3\\pm2$ Myr-old (cite: alc14) Lupus I cloud (cite: tac96) at a distance of $156\\pm50$ pc (cite: neu08)."
+       },
+       {
+        "loc": "3 Observations",
+        "quote": "The phase center for the June observations was specified at $\\alpha=15^\\text{h}49^\\text{m}12.082861$, $\\delta=-35\\ensuremath{^\\circ}39\\ensuremath{'}05.48071\\ensuremath{''}$ (J2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "156±50 pc (Gaia DR1 Lupus I: 156.3±7.3 pc)",
+      "evidence": [
+       {
+        "loc": "2 The GQ Lup System",
+        "quote": "The GQ Lup system is located in the $3\\pm2$ Myr-old (cite: alc14) Lupus I cloud (cite: tac96) at a distance of $156\\pm50$ pc (cite: neu08)."
+       },
+       {
+        "loc": "3 Observations",
+        "quote": "The phase center for the June observations was specified at $\\alpha=15^\\text{h}49^\\text{m}12.082861$, $\\delta=-35\\ensuremath{^\\circ}39\\ensuremath{'}05.48071\\ensuremath{''}$ (J2000)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Neuhauser et al. 2008; Gaia DR1 Lindegren et al. 2016",
+      "evidence": [
+       {
+        "loc": "2 The GQ Lup System",
+        "quote": "The GQ Lup system is located in the $3\\pm2$ Myr-old (cite: alc14) Lupus I cloud (cite: tac96) at a distance of $156\\pm50$ pc (cite: neu08)."
+       },
+       {
+        "loc": "3 Observations",
+        "quote": "The phase center for the June observations was specified at $\\alpha=15^\\text{h}49^\\text{m}12.082861$, $\\delta=-35\\ensuremath{^\\circ}39\\ensuremath{'}05.48071\\ensuremath{''}$ (J2000)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the properties of the circumprimary disk of GQ Lup A (size, geometry, stellar mass) and is there a circumplanetary disk around the companion GQ Lup b?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "resolve the disk of dust and gas surrounding the primary star, GQ Lup A, and provide deep limits on any circumplanetary disk surrounding the companion, GQ Lup b."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00374.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2013.1.00374.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (870 um)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The GQ Lup system was observed with ALMA in Band 7 (870 $\\mu$m)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four basebands centered 331, 333, 343, 345 GHz; 331 and 345 GHz have 3840 channels over 1.875 GHz; other two 128 channels over 2 GHz",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The basebands with the targeted spectral lines, centered at 331 and 345 GHz, each have 3840 channels over a bandwidth of 1.875 GHz, while the other two basebands each have only 128 channels over a bandwidth of 2 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "345.79599 GHz",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "including both the $^{12}$CO and $^{13}$CO J $=3-2$ transitions at 345.79599 and 330.58797 GHz, respectively"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "330.58797 GHz",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "including both the $^{12}$CO and $^{13}$CO J $=3-2$ transitions at 345.79599 and 330.58797 GHz, respectively"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15 to 1574 m",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2015 Aug 28  |    40    |   $15-1574$"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.3 arcsec (~45 AU)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "beam size $\\sim0.3\\ensuremath{''}$ ($\\sim45$ AU)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms 50 uJy/beam",
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "the rms noise level is 50 $\\mu$Jy/beam"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~30 min per SB (31.3, 31.1, 35.0 min)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2015 June 14 |    41    |   $16-784$    |  0.6   |     31.3"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2015 June 14, June 15, August 28",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "on 2015 June 14 with 41 operational antennas and on 2015 June 15 with 37 operational antennas"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust temperature-luminosity relation T_dust=25(L/Lsun)^{1/4}",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "we use the dust temperature-stellar luminosity relationship of (cite: and13): $T_\\text{dust}=25(L/L_\\odot)^{1/4}$."
+       }
+      ]
+     },
+     "citation": "(cite: and13)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity kappa_nu = 10(nu/1e12 Hz) cm2/g",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "we adopt the frequency-dependent dust opacity $\\kappa_\\nu = 10(\\nu/10^{12}\\text{ Hz})$ cm$^{2}$ g$^{-1}$ from (cite: beck90)"
+       }
+      ]
+     },
+     "citation": "(cite: beck90)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA-delivered calibration scripts run for each SB",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The raw datasets were delivered with calibration scripts provided by ALMA staff."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.5.0",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "using the `CASA` package (version 4.5.0) to generate calibrated visibilities"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan and Ceres",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The absolute flux calibration was derived from observations of Titan and Ceres"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "<10%",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "with a systematic uncertainty estimated at less than $10\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "single iteration of phase-only self-calibration, then averaged to 30 s",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "A single iteration of phase-only self-calibration was employed, after which the visibilities were averaged into 30 second intervals."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "multi-frequency synthesis CLEAN in CASA",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "We generated both continuum and CO line images using the multi-frequency synthesis `CLEAN` algorithm in `CASA`."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 0.5",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "With robust $=0.5$ weighting, the synthesized beam size is $0.37\\ensuremath{''}\\times0.23\\ensuremath{''}$"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum subtracted from spectral windows with lines",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "For spectral line imaging, the continuum level was subtracted from the spectral windows containing emission lines."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.37\" x 0.23\" (58x36 AU), PA -87 deg",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "the synthesized beam size is $0.37\\ensuremath{''}\\times0.23\\ensuremath{''}$ ($58\\times36$ AU at 156 pc) with a position angle of $-87\\ensuremath{^\\circ}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum 50 uJy/beam; 12CO 11 mJy/beam per channel; 13CO 6.5 mJy/beam",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "For the $^{13}$CO image, the typical rms noise is 6.5 mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Disk forward-modeling framework (DiskJockey) details",
+      "evidence": [
+       {
+        "loc": "4.2 CO Emission",
+        "quote": "Further details of the modeling framework can be found in (cite: cze15)."
+       }
+      ]
+     },
+     "from_reference": "(cite: cze15)"
+    },
+    {
+     "what": {
+      "value": "Opacity choice for consistency with earlier papers",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "For consistency with (cite: bow15) and (cite: ans16), we adopt the frequency-dependent dust opacity"
+       }
+      ]
+     },
+     "from_reference": "(cite: bow15); (cite: ans16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels and clean thresholds/masks for continuum and CO imaging",
+    "Channel width and velocity resolution of CO cubes",
+    "Image size and cell size",
+    "MCMC sampler, priors, and model grid/inner and outer radii settings for DiskJockey",
+    "Which spectral windows/channels were used in visibility fits",
+    "Self-calibration solution interval"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and measure flux/size, companion limit",
+    "method": {
+     "value": "CLEAN imaging; 2D Gaussian fit to the image; 3 sigma upper limit at GQ Lup b position assuming point source",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "By fitting a simple two dimensional Gaussian to the continuum image, we obtain a total flux density for the circumprimary disk of $77.8\\pm0.2$ mJy"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "With robust $=0.5$ weighting, the synthesized beam size is $0.37\\ensuremath{''}\\times0.23\\ensuremath{''}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to SMA and SEST fluxes via spectral index 2.4",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "we obtain a flux density at 1.3 mm of $29.7\\pm5.4$ mJy, in good agreement with both previous flux density measurements"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive dust masses and CPD limits",
+    "method": {
+     "value": "Optically thin mass M=F D^2/(kappa B(T)); optically thick size limit",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "For optically thin emission, we can make a simple estimate of the total dust mass ($M_\\text{dust}$)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "kappa=3.4 cm2/g at 870 um; T_dust=24 K (disk A), 18 K (at GQ Lup b); gas-to-dust 100 for total CPD mass",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "At 870 $\\mu$m, the dust opacity is $\\kappa_\\nu=3.4$ cm$^{2}$ g$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested alternative T_dust=10 K from van der Plas et al.",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "If we take $T_\\text{dust}=10$ K, instead, then $M_\\text{dust}<0.14$ $M_\\oplus$ and $M_\\text{tot}<14$ $M_\\oplus$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Forward-model CO velocity field",
+    "method": {
+     "value": "Parametric disk model (self-similar surface density, power-law temperature, Keplerian) with RADMC-3D images, Fourier transformed and sampled at data uv points, chi2 likelihood",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "the model visibilities are then evaluated using a $\\chi^2$ likelihood function which incorporates the statistical weights on each visibility measurement."
+      }
+     ]
+    },
+    "software": [
+     "DiskJockey",
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free parameters: M*, i, PA, r_c, T10, q, Mgas, xi, vsys, RA/Dec offsets",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| $r_c$ | Characteristic radius (AU) | $97.6\\pm3.7$ | $46.5\\pm1.8$ |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant CO abundance ~1e-4 (ISM-like); vertically isothermal, hydrostatic equilibrium; Keplerian rotation",
+      "evidence": [
+       {
+        "loc": "4.2 CO Emission",
+        "quote": "A significant caveat to our derived gas mass is that it depends inversely on the CO/H$_2$ abundance ratio, which we assume to be ISM-like $\\sim10^{-4}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Posterior evaluated with chi2 likelihood; sampler and priors not stated",
+     "evidence": [
+      {
+       "loc": "Results and Analysis, $^{12}$CO and $^{13}$CO Emission",
+       "quote": "the model visibilities are then evaluated using a $\\chi^2$ likelihood function which incorporates the statistical weights on each visibility measurement."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared 12CO and 13CO fits; focus on 13CO due to cloud contamination; method validated on spectroscopic binaries; compared to Williams & Best grids",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "As a result, we focus on the best-fit parameters from the $^{13}$CO modeling."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Gas-to-dust ratio",
+    "method": {
+     "value": "Combine 13CO gas mass with dust mass",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "we can calculate the gas-to-dust ratio for the circumstellar disk around GQ Lup A to be $4.7\\pm0.5$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to Lupus disks of Ansdell et al.",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "but is comparable to measurements made by (cite: ans16) for circumstellar disks around other T Tauri stars in Lupus"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.0",
+    "used_for": {
+     "value": "Calibration scripts, CLEAN imaging",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "using the `CASA` package (version 4.5.0) to generate calibrated visibilities"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DiskJockey",
+    "version": "not stated",
+    "used_for": {
+     "value": "Forward-modeling CO visibilities",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "we forward-model the ${}^{12}$CO and ${}^{13}$CO molecular line emission using the `DiskJockey` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Generating sky images of disk models",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "sky-images of a given disk structure are generated using the `RADMC-3D` radiative transfer program"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum flux density of GQ Lup A disk",
+    "value": "77.8",
+    "uncertainty": "0.2",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "we obtain a total flux density for the circumprimary disk of $77.8\\pm0.2$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust disk FWHM",
+    "value": "59",
+    "uncertainty": "12",
+    "units": "AU",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The circumprimary dust disk is compact with a FWHM of $59\\pm12$ AU"
+     }
+    ]
+   },
+   {
+    "quantity": "3 sigma flux limit on CPD",
+    "value": "<0.15",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "we determine a $3\\sigma$ upper limit on the flux density of any circumplanetary disk surrounding the secondary of $<0.15$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Circumprimary dust mass",
+    "value": "15.10",
+    "uncertainty": "0.04",
+    "units": "Earth masses",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "The resulting dust mass is $15.10\\pm0.04$ $M_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "CPD dust mass limit",
+    "value": "<0.04",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "the resulting $3\\sigma$ upper limit on the dust mass is $M_\\text{dust}<0.04$ $M_\\oplus$"
+     }
+    ]
+   },
+   {
+    "quantity": "CPD optically thick radius limit",
+    "value": "<1.1",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "$R_\\text{dust}$ must be $<1.1$ AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar mass GQ Lup A (13CO fit)",
+    "value": "1.03",
+    "uncertainty": "0.15 (0.05 at known distance)",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 CO Emission",
+      "quote": "The models imply a stellar mass, $M_*$, for GQ Lup A of $1.03\\pm0.15$ $M_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Disk inclination",
+    "value": "60.5",
+    "uncertainty": "0.5",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.1 Circumprimary Disk Geometry",
+      "quote": "the best-fit inclination is $i = 60.5\\ensuremath{^\\circ}\\pm0.5\\ensuremath{^\\circ}$ and position angle is $PA=346\\ensuremath{^\\circ} \\pm1\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk position angle",
+    "value": "346",
+    "uncertainty": "1",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $PA$ | Disk position angle ($\\ensuremath{^\\circ}$) | $346\\pm1$ | $346\\pm1$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "13CO characteristic radius",
+    "value": "46.5",
+    "uncertainty": "1.8",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 CO Emission",
+      "quote": "are $46.5\\pm1.8$ AU and log$M_\\text{gas}/M_\\odot = -3.67\\pm0.05$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-to-dust ratio",
+    "value": "4.7",
+    "uncertainty": "0.5",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 CO Emission",
+      "quote": "gas-to-dust ratio for the circumstellar disk around GQ Lup A to be $4.7\\pm0.5$"
+     }
+    ]
+   },
+   {
+    "quantity": "Systemic velocity (LSRK)",
+    "value": "3.00",
+    "uncertainty": "0.01",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 CO Emission",
+      "quote": "The systemic velocity in the LSRK frame is $3.00\\pm0.01$ km s$^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No evidence of truncation of the CO gas disk by GQ Lup b; gas disk more extended than dust",
+    "evidence": [
+     {
+      "loc": "4.2 CO Emission",
+      "quote": "The CO emission morphology does not show any indication of truncation of the circumprimary gas disk due to the companion, GQ Lup b."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "GQ Lup b hosts a detectable circumplanetary disk",
+    "experiment": "870 um continuum imaging at GQ Lup b position",
+    "result": "No detection; 3 sigma <0.15 mJy, M_dust<0.04 Mearth",
+    "finding": "Deep limit disfavors in situ formation via fragmentation/GI with massive long-lived CPDs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "the lack of detections of such massive disks disfavors these formation scenarios."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Constrain stellar mass and disk geometry of GQ Lup A",
+    "experiment": "Forward-model 13CO/12CO Keplerian velocity field",
+    "result": "M*=1.03±0.15 Msun, i=60.5±0.5 deg, PA=346±1 deg",
+    "finding": "Disk inclination much higher than stellar rotation axis estimates; does not exclude in situ formation of companion",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Circumprimary Disk Geometry",
+      "quote": "Our new robust measurement of the circumstellar disk inclination relieves some of this tension and does not exclude an *in situ* formation"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Used 13CO rather than 12CO fit because 12CO may be biased by cloud contamination",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "the $^{12}$CO fits may be biased by the cloud contamination evident in the residuals"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Gas mass depends inversely on assumed CO/H2 abundance",
+     "evidence": [
+      {
+       "loc": "4.2 CO Emission",
+       "quote": "it depends inversely on the CO/H$_2$ abundance ratio, which we assume to be ISM-like $\\sim10^{-4}$"
+      }
+     ]
+    },
+    {
+     "value": "Higher angular resolution needed to constrain dust edges and substructure",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "Longer baseline observations with higher angular resolution are needed to better constrain the location and sharpness of the dust disk edges"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dust and gas masses depend strongly on assumed temperature and opacity",
+    "Simple parametric disk model; gas-to-dust ratio of 4.7 mixes models with differing assumptions",
+    "12CO and 13CO radii differ by factor two, indicating model degeneracy",
+    "Distance uncertainty dominates mass error"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2013.1.00374.S cited; code DiskJockey open source",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2013.1.00374.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "DiskJockey open source under MIT license",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "Open source and freely available at <https://github.com/iancze/DiskJockey> under an MIT license."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Sampler/priors and model setup details for DiskJockey",
+    "Clean parameters, masks, channel widths"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB for three SBs (raw), moderate",
+   "score_inferred": 3,
+   "score_reason": "Public data, scripts and open-source modeling code, but imaging and fit settings are partly missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, numerical results (flux, mass, inclination) and a mostly complete recipe with open code."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Czekala et al. 2015 (cite: cze15)",
+     "why": "DiskJockey forward modeling framework"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Schwarz et al. 2016 (cite: sch16)",
+     "why": "Orbit and spin of GQ Lup b"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Lupus ALMA survey (Ansdell et al. 2016)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-78fbd7c78a375a07ba6aa12738f5dd3e",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:37",
+  "usage": {
+   "input_tokens": 20655,
+   "output_tokens": 8578,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064152,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 1
+ },
+ "checks": {
+  "quotes": 68,
+  "quotes_ok": 68,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 47,
+   "rate": 0.662
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:54",
+  "custom_id": "repair-sonnet-66efb4a66711e8a55cd5601b4630d809",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "the model visibilities are then evaluated using a $\\chi^2$ likelihood function which incorporates the statistical weights on each visibility measurement."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,283 @@
+{
+ "bibcode": "2018A&A...609A..47P",
+ "title": "Direct mapping of the temperature and velocity gradients in discs. Imaging the vertical CO snow line around IM Lupi",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201731377",
+ "arxiv_id": "1710.06450",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Can the altitude, velocity and temperature of the CO emitting layers of the IM Lupi disc be measured directly from ALMA channel maps, locating the vertical CO snow line?",
+ "alma_project_codes": [
+  "2013.1.00798.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "about 0.36\" x 0.55\" (continuum)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 161±10 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "distance of $161\\pm10$ pc, (cite: Gaia16)"
+     }
+    ]
+   },
+   "citation": "(cite: Gaia16)"
+  },
+  {
+   "what": {
+    "value": "Disc inclination 48±3 deg",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "inclination of $48^\\circ\\pm3^\\circ$ (cite: Pinte08; Cleeves16)"
+     }
+    ]
+   },
+   "citation": "(cite: Pinte08; Cleeves16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "CASA calibration, self-calibration on continuum applied to lines, CLEAN with manual masks, with and without uvcontsub",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Locate emission maxima along isovelocity curves and derive r, h",
+   "method": "In each channel map, for x sampled every 0.08\", find near/far-side maxima y_n,y_f; y_c=(y_f+y_n)/2; r from ellipse geometry; h=(y_c-y_star)/sin i",
+   "software": [],
+   "key_parameters": [
+    "x sampled every 0.08\" (~1/4 beam); star at continuum peak"
+   ],
+   "assumptions": [
+    "Circular Keplerian orbits parallel to midplane; inclination 48 deg; no radial or vertical flows"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive gas velocity",
+   "method": "v=(v_obs-v_syst) r/((x-x_star) sin i); compare with altitude-dependent Keplerian and pressure-gradient terms",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Central mass 1 Msun (PV fit), distance 161 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gas temperature from brightness temperature",
+   "method": "Peak brightness temperature of optically thick 12CO and 13CO taken as kinetic temperature (LTE); central 12CO channels within ±0.7 km/s excluded",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_ex = T_kin (LTE)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Illustrative MCFOST model of CO depletion",
+   "method": "MCFOST radiative transfer with simple CO chemistry, parameters fitted by genetic algorithm on Band 6 channel maps; test depletion scenarios",
+   "software": [
+    "MCFOST"
+   ],
+   "key_parameters": [
+    "Freezeout at T<21 K with factor epsilon=8e-5"
+   ],
+   "assumptions": [
+    "Gas temperature equals dust temperature; CO in LTE"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Continuum optical depth",
+   "method": "Deconvolve major-axis profile, convert to surface density, iterate MCFOST until profile changes <1%",
+   "software": [
+    "MCFOST"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Initial temperature power-law exponent -0.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CO altitude at 200 au",
+   "value": "~65",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 CO layers",
+     "quote": "At a distance of 200 au, the $^{12}$CO emission originates from an altitude of $\\approx$65 au, while the $^{13}$CO originates from $\\approx$25 au."
+    }
+   ]
+  },
+  {
+   "quantity": "13CO altitude at 200 au",
+   "value": "~25",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 CO layers",
+     "quote": "the $^{13}$CO originates from $\\approx$25 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law exponent of 12CO layer altitude (r<300 au)",
+   "value": "1.8",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 CO layers",
+     "quote": "power-law exponent of 1.8$\\pm$0.2 and 2.1$\\pm$0.4 for the altitude of $^{12}$CO and $^{13}$CO"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law exponent of 13CO layer altitude (r<300 au)",
+   "value": "2.1",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 CO layers",
+     "quote": "power-law exponent of 1.8$\\pm$0.2 and 2.1$\\pm$0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO lower-surface temperature (130-300 au)",
+   "value": "~21",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Two-dimensional temperature structure and vertical CO snow line",
+     "quote": "the $^{12}$CO temperature is virtually constant at $\\approx$ 21 K, between 130 and 300 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Temperature at 400 au above snow line",
+   "value": "~15",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Two-dimensional temperature structure and vertical CO snow line",
+     "quote": "down to $\\approx$15 K at 400 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Deviation from altitude-dependent Keplerian at 400 au",
+   "value": "~0.15",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Vertical velocity gradient and sub-Keplerian rotation",
+     "quote": "the measured deviations from the altitude dependent Keplerian rotation are of the order of $0.15$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Central stellar mass",
+   "value": "1",
+   "uncertainty": "0.1",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "C18O observational results",
+     "quote": "central mass of $1\\pm0.1$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum flux",
+   "value": "225",
+   "uncertainty": "23",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "225 $\\pm$ 23 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (2-1) integrated flux",
+   "value": "24.1",
+   "uncertainty": "2.4",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "24.1 $\\pm$ 2.4 Jy.km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum continuum optical depth outside 100 au",
+   "value": "~0.03",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Continuum optical depth",
+     "quote": "the maximum optical depth is $\\approx 0.03$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN robust/weighting, cell size, image size, deconvolver and thresholds",
+  "Line-free channels for continuum subtraction",
+  "Rest frequencies and LSR velocity reference",
+  "Systemic velocity value",
+  "Peak-finding algorithm details and uncertainty estimation for h, v, T",
+  "Self-calibration solution intervals and reference antenna",
+  "Stellar position (continuum peak) coordinates",
+  "Genetic algorithm fitness function and parameter bounds",
+  "Whether pipeline or manual calibration scripts were used"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (robust, cell, image size)",
+  "Peak-finding code and procedure",
+  "Systemic velocity and stellar position values",
+  "Genetic algorithm details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and clear geometric method, but imaging parameters, code and uncertainty estimation are not given.",
+ "rediscovery_reason": "Public archival data, geometric method fully described by equations, numeric results (21 K plateau, altitudes, exponents).",
+ "source_card": "cards/2018A%26A...609A..47P/sonnet/card.md"
+}

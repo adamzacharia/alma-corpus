@@ -1,0 +1,397 @@
+{
+ "bibcode": "2023MNRAS.520.1613M",
+ "title": "Probing general relativity in galactic scales at z 0.3",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad162",
+ "arxiv_id": "2212.08463",
+ "fields": [
+  "cosmology",
+  "high_z_galaxies",
+  "nearby_galaxies"
+ ],
+ "question": "What is the constraint on the gravitational slip parameter eta_PPN at galactic scales at z = 0.299 when combining strong gravitational lensing and galactic dynamics for the SDP.81 lens system?",
+ "alma_project_codes": [
+  "2011.0.00016.SV"
+ ],
+ "data": {
+  "bands": "Band 4 (~2 mm), Band 6 (~1.3 mm), and Band 7 (~1.0 mm); only Band 7 continuum used for lens modelling",
+  "arrays": "23 to 36 antennas",
+  "angular_resolution": "0.0308'' x 0.0235'' (~141 pc x 108 pc at lens redshift), PA = 15 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cosmological parameters H_0 = 67.7 km s^-1 Mpc^-1, Omega_Lambda = 0.6911, Omega_m = 0.3089",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Throughout the paper, unless otherwise stated, the cosmological parameters assumed are: $H_0 = 67.7$ km s$^{-1}$ Mpc$^{-1}$, $\\Omega_{\\Lambda} = 0.6911$, $\\Omega_{m} = 0.3089$ (cite: Planck_2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Planck_2015)"
+  },
+  {
+   "what": {
+    "value": "Indo-US stellar library templates in the optical region 3460-9464 A (FWHM = 1.35 A)",
+    "evidence": [
+     {
+      "loc": "MUSE data",
+      "quote": "Each Voronoi bin is modelled using `pPXF` as a combination of a select set of templates from the Indo-US stellar library (cite: Indo-US) in the optical region $3460-9464$ Å."
+     }
+    ]
+   },
+   "citation": "(cite: Indo-US)"
+  },
+  {
+   "what": {
+    "value": "Vega zero-point and absolute solar magnitude for MGE counts-to-physical conversion",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "We use the Vega zero-point and the absolute solar magnitude from (cite: Willmer_2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Willmer_2018)"
+  },
+  {
+   "what": {
+    "value": "Medium resolution INT Library of Empirical Spectra (MILES) stellar templates",
+    "evidence": [
+     {
+      "loc": "Kinematics",
+      "quote": "re-deriving the kinematic map using the Medium resolution INT Library of Empirical Spectra (cite: Miles_models) and the X-Shooter Spectral Library (cite: XSL)."
+     }
+    ]
+   },
+   "citation": "(cite: Miles_models)"
+  },
+  {
+   "what": {
+    "value": "X-Shooter Spectral Library (XSL) DR2 stellar templates",
+    "evidence": [
+     {
+      "loc": "Kinematics",
+      "quote": "re-deriving the kinematic map using the Medium resolution INT Library of Empirical Spectra (cite: Miles_models) and the X-Shooter Spectral Library (cite: XSL)."
+     }
+    ]
+   },
+   "citation": "(cite: XSL)"
+  },
+  {
+   "what": {
+    "value": "Time-delay cosmography Hubble constant H_0 = 74.2 +- 2 km s^-1 Mpc^-1",
+    "evidence": [
+     {
+      "loc": "Cosmology",
+      "quote": "however using values of $H_0$ consistent with those determined by time-delay cosmographic (cite: Millon_2020; Shajib_2020), namely $H_0 = 74.2 \\pm 2$ km s$^{-1}$ Mpc$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: Millon_2020; Shajib_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Decompose lens galaxy surface brightness profile into Multi-Gaussian Expansion (MGE) components",
+   "method": "Fit PSF from unsaturated field stars with IRAF/DAOPHOT, subtract lensed arcs from HST image and interpolate across excluded regions, then fit a sum of 9 concentric 2D elliptical Gaussians using MgeFit and FIND_GALAXY.",
+   "software": [
+    "IRAF",
+    "DAOPHOT",
+    "PyRAF",
+    "MgeFit",
+    "FIND_GALAXY"
+   ],
+   "key_parameters": [
+    "Pixel scale = 0.09'', PSF FWHM = 0.108'', PA = 11.9 deg, N = 9 Gaussian components, R_eff = 1.14''"
+   ],
+   "assumptions": [
+    "Oblate axisymmetric geometry; stellar mass follows light modulated by a Gaussian M/L profile"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spatially-resolved stellar kinematics (V_rms map) from VLT/MUSE data",
+   "method": "Remove telluric lines with ZAP, align astrometry to HST by 0.18'' with ASTROALIGN, exclude spaxels contaminated by strong lensed source emission, select spaxels with SNR > 2.0 in 5000-7000 A rest-frame, Voronoi-bin with VorBin to SNR >= 10, fit V and sigma_V with pPXF using Indo-US stellar templates, and compute V_rms = sqrt(V^2 + sigma_V^2).",
+   "software": [
+    "ZAP",
+    "ASTROALIGN",
+    "VorBin",
+    "pPXF",
+    "MPDAF"
+   ],
+   "key_parameters": [
+    "MUSE pixel scale = 0.2'', PSF FWHM = 0.421'', astrometric shift = 0.18'', SNR > 2.0 threshold in 5000-7000 A rest-frame, Voronoi bin target SNR >= 10, additive polynomial of order 4, Indo-US template FWHM = 1.35 A"
+   ],
+   "assumptions": [
+    "Central bin velocity represents galaxy systemic velocity and is subtracted from all bins"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Prepare ALMA Band 7 continuum image and error map for image-plane lens modelling",
+   "method": "Bin the ALMA Band 7 continuum image from 0.005'' to 0.01'' pixels, rotate by PA = 11.9 deg, and build an error map from the background rms measured in CASA plus 10% of each pixel value added in quadrature.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Binned pixel scale = 0.01'', synthesised beam = 0.0308'' x 0.0235'' at PA = 15 deg, rotation PA = 11.9 deg, calibration error = 10%"
+   ],
+   "assumptions": [
+    "Image-plane pixel covariance errors are small due to dense uv-plane coverage; lens galaxy light contamination is negligible in Band 7."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Perform 5-phase joint Bayesian modelling of ALMA gravitational lensing and MUSE stellar dynamics",
+   "method": "Simultaneously fit ALMA Band 7 lensing (via PyAutoLens with custom MGE deflection angles + elliptical NFW + external shear, scaled by (1 + eta_PPN)/2) and MUSE V_rms kinematics (via JAM with MGE stellar + MGE-parametrized NFW potential) across a 5-phase pipeline (Ph1: Sersic source; Ph2: Voronoi pixelization hyperparameters; Ph3: lens+JAM refinement I; Ph4: brightness-based Voronoi K-means hyperparameters; Ph5: lens+JAM refinement II with 300-seed bootstrap likelihood cap), then compute Einstein radius and dark matter fraction.",
+   "software": [
+    "PyAutoLens",
+    "JAM",
+    "MgeFit",
+    "dynesty",
+    "MGETOOLS"
+   ],
+   "key_parameters": [
+    "10 free parameters in Ph5 (Upsilon_0, delta, upsilon_0, kappa_s, q_DM, i, beta_z, shear_mag, shear_phi, eta_PPN); fixed NFW scale radius r_s = 10 * R_eff = 11.4''; 300 K-means seed evaluations for Ph5 lens likelihood cap"
+   ],
+   "assumptions": [
+    "Planck 2015 LCDM cosmology (H_0 = 67.7 km s^-1 Mpc^-1, Omega_Lambda = 0.6911, Omega_m = 0.3089); dark matter halo centre and orientation aligned with stellar component; constant orbital anisotropy beta_z; no SMBH in fiducial model."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Quantify systematic uncertainties from mass profile, cosmology, and stellar kinematics",
+   "method": "Re-run the 5-phase pipeline for 3 alternative mass models (r_s = 5 R_eff, free r_s, and Wong et al. 2015 composite model with spherical NFW + constant M/L + SMBH) and 5 alternative H_0 values (67.28, 68.20, 74.2, 72.2, 76.2 km s^-1 Mpc^-1), combine with the kinematic template dispersion difference (XSL vs MILES), and add systematic uncertainties in quadrature.",
+   "software": [
+    "PyAutoLens",
+    "JAM",
+    "dynesty",
+    "pPXF"
+   ],
+   "key_parameters": [
+    "Alternative mass models: r_s = 5 R_eff, r_s free, Wong2015-like; alternative H_0 = 67.28, 68.20, 72.2, 74.2, 76.2 km s^-1 Mpc^-1; stellar libraries: MILES and XSL DR2"
+   ],
+   "assumptions": [
+    "Systematic uncertainties from mass model, cosmology, and kinematics are independent and can be summed in quadrature."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Gravitational slip parameter eta_PPN (final inference with systematics)",
+   "value": "1.13",
+   "uncertainty": "+0.03/-0.03 (stat) +- 0.20 (sys)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We infer, after accounting for systematic uncertainties related to the mass model, cosmology and kinematics, $\\eta_{\\text{PPN}} = 1.13^{+0.03}_{-0.03}\\pm0.20\\,(\\text{sys})$, which is in accordance with GR predictions."
+    }
+   ]
+  },
+  {
+   "quantity": "Central stellar mass-to-light ratio Upsilon_0 (fiducial model)",
+   "value": "4.63",
+   "uncertainty": "+0.06/-0.09",
+   "units": "M_sun/L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\Upsilon_0$ | $4.63^{+0.06}_{-0.09}$ | M$_\\odot$/L$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "M/L gradient parameter delta (fiducial model)",
+   "value": "1.78",
+   "uncertainty": "+0.09/-0.09",
+   "units": "arcsec^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\delta$ | $1.78^{+0.09}_{-0.09}$ | arcsec$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central-to-outermost M/L ratio upsilon_0 (fiducial model)",
+   "value": "0.88",
+   "uncertainty": "+0.07/-0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\upsilon_0$ | $0.88^{+0.07}_{-0.05}$ | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy inclination i (fiducial model)",
+   "value": "82",
+   "uncertainty": "+4/-4",
+   "units": "degree",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$i$ | $82^{+4}_{-4}$ | degree"
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital anisotropy beta_z (fiducial model)",
+   "value": "-0.53",
+   "uncertainty": "+0.03/-0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\beta_z$ | $-0.53^{+0.03}_{-0.04}$ | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "NFW halo amplitude kappa_s (fiducial model)",
+   "value": "0.086",
+   "uncertainty": "+0.002/-0.003",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\kappa_s$ | $0.086^{+0.002}_{-0.003}$ | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark matter halo 3D axial ratio q_DM (fiducial model)",
+   "value": "0.49",
+   "uncertainty": "+0.02/-0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$q_\\text{DM}$ | $0.49^{+0.02}_{-0.01}$ | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "External shear magnitude shear_mag (fiducial model)",
+   "value": "0.022",
+   "uncertainty": "+0.001/-0.001",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\text{shear}_{\\text{mag}}$ | $0.022^{+0.001}_{-0.001}$ | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "External shear orientation shear_phi (fiducial model)",
+   "value": "55",
+   "uncertainty": "+2/-3",
+   "units": "degree",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\text{shear}_{\\phi}$ | $55^{+2}_{-3}$ | degree"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius R_Ein (fiducial model)",
+   "value": "1.61",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Main Results",
+     "quote": "We found $R_{\\text{Ein}}  = 1.61\\ensuremath{''}$, which agrees with previous studies (cite: Dye2014; Vlahakis_2015; Wong2015)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dark matter fraction inside R_Ein f_DM (fiducial model)",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Main Results",
+     "quote": "We have found that the dark matter fraction, $f_{\\text{DM}}$, is of the order of $\\sim 35\\%$, showing that the galaxy is baryonic dominated in the inner regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Systematic uncertainty on eta_PPN from mass model",
+   "value": "0.017",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Alternative Mass Profiles",
+     "quote": "Taking the standard deviation between the different values of $\\eta_{\\text{PPN}}$ for these alternative mass models, we can estimate an additional systematic uncertainty of the order of $0.017$ on the slip parameter."
+    }
+   ]
+  },
+  {
+   "quantity": "Systematic uncertainty on eta_PPN from cosmology (H_0)",
+   "value": "0.043",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Cosmology",
+     "quote": "Considering the standard deviation of the values of $\\eta_{\\text{PPN}}$ inferred for this six values of $H_0$, we infer an additional uncertainty of the order of $0.043$ on the slip parameter, related to the uncertainty on the Hubble constant."
+    }
+   ]
+  },
+  {
+   "quantity": "Systematic uncertainty on eta_PPN from kinematic fit",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Final inference on \\eta_{\\text{PPN}}",
+     "quote": "We now can combine in quadrature all the systematic uncertainties to estimate our final inference on the slip parameter: $0.017$ due to the effects related to the mass model adopted, $0.043$ related to the uncertainty on the cosmology, and $0.19$ uncertainty from the kinematic fit."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact numeric value of the rms background measured in CASA for the ALMA Band 7 continuum image",
+  "Exact spatial mask definition applied to the ALMA Band 7 image during PyAutoLens fitting",
+  "Note on Table 1 vs text discrepancy: section 'Combined modelling' states MGE describes the HST/F160W image, whereas Table 1 caption states 'MGE components of the HST/F110W image of SDP.81 lens galaxy'",
+  "Exact wavelength masks used in pPXF to exclude emission lines and high-variance regions in MUSE spectra",
+  "Exact MGE Gaussian decomposition parameters for the HST PSF, MUSE PSF, and elliptical NFW dark matter halo"
+ ],
+ "missing_for_reproduction": [
+  "Custom implementation code for the MGE deflection angle integrated into PyAutoLens is not released in a public repository",
+  "Exact rms background value measured in CASA for the ALMA Band 7 continuum image error map",
+  "Exact spatial mask used on the ALMA Band 7 image and exact arc-interpolation mask used on the HST image",
+  "Exact Voronoi bin coordinates and spaxel mask for the MUSE data"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All raw and reduced datasets (ALMA SV, HST, MUSE) are publicly available, MGE components are tabulated in Table 1, priors and sampler settings are explicitly tabulated in Appendix A, and all alternative model outputs are in Appendix B; however, the custom MGE deflection module for PyAutoLens, spatial masks, and exact ALMA noise floor value are not released.",
+ "rediscovery_reason": "All archival datasets (ALMA SV 2011.0.00016.SV, HST 12194, MUSE 294.B-5042) are public, open-source packages (PyAutoLens, JAM, MgeFit, pPXF, VorBin, dynesty) are named with explicit equations and prior tables, and the primary goal is a clear numeric inference (eta_PPN = 1.13 +- 0.03 +- 0.20).",
+ "source_card": "cards/2023MNRAS.520.1613M/sonnet/card.md"
+}

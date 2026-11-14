@@ -1,0 +1,608 @@
+{
+ "bibcode": "2023A&A...678A.146B",
+ "title": "Tracing snowlines and C/O ratio in a planet-hosting disk. ALMA molecular line observations towards the HD 169142 disk",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346974",
+ "arxiv_id": "2308.07910",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry",
+  "exoplanets"
+ ],
+ "question": "What are the elemental make-up (specifically the C/O ratio) of the gas and the locations of the CO and H2O snowlines in the planet-hosting HD 169142 disk in relation to its forming planets?",
+ "alma_project_codes": [
+  "2012.1.00799.S",
+  "2015.1.00806.S",
+  "2016.1.00344.S",
+  "2016.1.00346.S",
+  "2018.1.01237.S"
+ ],
+ "data": {
+  "bands": "Bands 6, 7 and 8",
+  "arrays": "not stated",
+  "angular_resolution": "~0.03\" to ~1.0\" across projects (synthesized beams from 0.19\"x0.14\" to 1.07\"x0.51\")",
+  "sensitivity": "0.23 to 130.7 mJy beam^-1 per channel (depending on line and channel width)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular spectroscopic data (frequencies, upper state energies, Einstein A coefficients, degeneracies)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "All of the molecular data are taken from the Cologne Database for Molecular Spectroscopy (cite: 2005JMoSt.742..215M)."
+     }
+    ]
+   },
+   "citation": "Cologne Database for Molecular Spectroscopy (cite: 2005JMoSt.742..215M)"
+  },
+  {
+   "what": {
+    "value": "C18O J=2-1 disk-integrated flux of 3.9 +/- 0.5 Jy km s^-1",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "For reference, the $J=2-1$ disk integrated flux from (cite: 2017A&A...600A..72F) is 3.9$\\pm$0.5 Jy km s$^{-1}$."
+     },
+     {
+      "loc": "Organic content",
+      "quote": "We take the HD169142 $J=2-1$ line flux of 3.9 Jy km s$^{-1}$ from (cite: 2017A&A...600A..72F)."
+     }
+    ]
+   },
+   "citation": "(cite: 2017A&A...600A..72F)"
+  },
+  {
+   "what": {
+    "value": "0.9 mm continuum image, 12CO map, and SO column density of (2.1 +/- 0.3) x 10^13 cm^-2 at 100 K",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "For comparison, we also include the 0.9 mm continuum image and map from (cite: Law2023)."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "| | \\- | \\- | (2.1$\\pm$0.3)$\\times10^{13*}$ |"
+     },
+     {
+      "loc": "Results",
+      "quote": "$^{*}$ taken from (cite: Law2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Law2023)"
+  },
+  {
+   "what": {
+    "value": "Fiducial disk dust temperature model of HD 169142",
+    "evidence": [
+     {
+      "loc": "Locating the CO and snowlines",
+      "quote": "The dust temperature in the fiducial model of this disk from (cite: 2018A&A...614A.106C) only reaches the freeze-out temperature of CO ($\\approx$20 K) in the midplane of the very outer disk at $\\approx$150 au"
+     },
+     {
+      "loc": "Locating the CO and snowlines",
+      "quote": "This is also consistent with the model from (cite: 2018A&A...614A.106C) which places the midplane snowline at $\\approx$20 au, which is at the edge of the inner dust ring (shown in Figure E1)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018A&A...614A.106C)"
+  },
+  {
+   "what": {
+    "value": "ISM sulfur isotope ratios (32S/34S = 22, 12C/13C = 69)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "This is done for SO, CS (using the optically thinner and assuming = 22, e.g.; (cite: 1999RPPh...62..143W)),"
+     },
+     {
+      "loc": "Volatile sulphur and C/O",
+      "quote": "compared to the ISM isotope ratios ( = 22, /=69, e.g.; (cite: 1999RPPh...62..143W))"
+     }
+    ]
+   },
+   "citation": "(cite: 1999RPPh...62..143W)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibration, iterative continuum subtraction, and line imaging",
+   "method": "Phase-only self-calibration on continuum after flagging lines; iterative line identification in continuum windows followed by uvcontsub (fit order 1); imaging with tCLEAN using Keplerian masks (<2 km/s resolution) or hand-drawn elliptical masks, applying uv-tapers and imsmooth where needed.",
+   "software": [
+    "CASA",
+    "tCLEAN",
+    "uvcontsub",
+    "imsmooth",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "uvcontsub fit order = 1; Briggs robust = 0.5 or 2.0; 0.4\" uv-taper for 2016.1.00344.S lines (except HC3N); 0.25\" uv-taper and 0.2\" imsmooth kernel for CS J=7-6"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Confirm weak N2H+ line detection",
+   "method": "Matched filtering and spectral stacking using GoFish",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Generate integrated intensity maps, radial profiles, and disk-integrated fluxes",
+   "method": "Generated moment 0 maps using the same Keplerian or elliptical masks as imaging with no flux clipping; extracted azimuthally-averaged radial profiles and measured disk-integrated fluxes.",
+   "software": [],
+   "key_parameters": [
+    "No flux clipping; 10% absolute flux calibration uncertainty adopted for flux errors"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compute disk-averaged and radial column densities and abundance ratios",
+   "method": "Calculated disk-averaged column densities from integrated fluxes and radial column density profiles from azimuthally-averaged emission profiles using standard optically thin LTE methods; convolved SO and CH3OH images with imsmooth to match C34S and H2CO resolution for radial ratios.",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Circular emitting area of 2\" for disk-averaged column densities (0.3\" for CH3OH and SO); T_ex = 30 K and 60 K for cooler gas species, 100 K for SO and CH3OH; fixed T_ex = 60 K for radial column densities"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), optically thin emission, and ISM isotope ratios (32S/34S = 22, 12C/13C = 69)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CI] 3P1-3P0 disk-integrated flux",
+   "value": "7.4e3",
+   "uncertainty": "0.7e3",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $^{3}P_1-^3P_0$ | 492.160651 | 24 | 7.994$\\times10^{-4}$ | 3 | 2.0 | 1.07\"$\\times$0.51\" (81) | 0.15 | 71.9 | (7.4$\\pm$0.7)$\\times10^{3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DCO+ J=4-3 (288.143858 GHz) disk-integrated flux",
+   "value": "970",
+   "uncertainty": "100",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=4-3$ | 288.143858 | 35 | 5.858$\\times10^{-3}$ | 9 | 0.5 | 0.72\"$\\times$0.46\" (89) | 0.26 | 2.64 | 970$\\pm$100 |"
+    }
+   ]
+  },
+  {
+   "quantity": "DCN J=3-2 (217.238539 GHz) disk-integrated flux",
+   "value": "93.0",
+   "uncertainty": "10",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=3-2$ | 217.238539 | 21 | 4.575$\\times10^{-4}$ | 21 | 2.0, taper | 0.41\"$\\times$0.37\" (86) | 2.7 | 0.67 | 93.0.0$\\pm$10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "DCN J=4-3 (289.644917 GHz) disk-integrated flux",
+   "value": "240.0",
+   "uncertainty": "20",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=4-3$ | 289.644917 | 35 | 1.124$\\times10^{-3}$ | 27 | 0.5 | 0.73\"$\\times$0.46\" (89) | 16.2 | 0.24 | 240.0$\\pm$20 |"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ J=3-2 (279.511701 GHz) disk-integrated flux",
+   "value": "55.0",
+   "uncertainty": "6",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=3-2$ | 279.511701 | 27 | 1.259$\\times10^{-3}$ | 63 | 2.0 | 0.91\"$\\times$0.58\" (85) | 0.14 | 2.95 | 55.0$\\pm$6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CS J=7-6 (342.882850 GHz) disk-integrated flux",
+   "value": ">=7e3",
+   "uncertainty": "not stated",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\dagger$ | $J=7-6$ | 342.882850 | 66 | 8.368$\\times10^{-4}$ | 15 | 0.5 | 0.29\"$\\times$0.26\"(37) | 0.85 | 11.7 | ${\\gtrsim}$7$\\times10^{3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CS J=10-9 (489.750921 GHz) disk-integrated flux",
+   "value": "4.3e3",
+   "uncertainty": "0.4e3",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=10-9$ | 489.750921 | 129 | 2.489$\\times10^{-3}$ | 21 | 0.5 | 0.94\"x0.40\" (83) | 0.15 | 130.7 | (4.3$\\pm$0.4)$\\times10^{3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C34S J=6-5 (289.209066 GHz) disk-integrated flux",
+   "value": "261.0",
+   "uncertainty": "30",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=6-5$ | 289.209066 | 38 | 4.812$\\times10^{-4}$ | 13 | 0.5 | 0.73\"$\\times$0.46\" (89) | 16.2 | 0.23 | 261.0$\\pm$30 |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CS J=6-5 (277.455405 GHz) disk-integrated flux",
+   "value": "51",
+   "uncertainty": "5",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=6-5$ | 277.455405 | 47 | 4.399$\\times10^{-4}$ | 26 | 0.5 | 0.73\"$\\times$0.46\" (89) | 1.10 | 1.1 | 51$\\pm$5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO J=8_8-7_7 (344.310612 GHz) disk-integrated flux",
+   "value": "120",
+   "uncertainty": "10",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=8_8-7_7$ | 344.310612 | 88 | 5.186$\\times10^{-4}$ | 17 | 2.0 | 0.19\"$\\times$0.14\" (84) | 0.46 | 1.50 | 120$\\pm$10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS J=8_(1,7)-7_(1,6) (278.887661 GHz) disk-integrated flux",
+   "value": "140",
+   "uncertainty": "10",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=8_{(1,7)}-7_{1,6}$ | 278.887661 | 73 | 3.181$\\times10^{-4}$ | 51 | 0.5 | 0.73\"$\\times$0.46\" (89) | 1.10 | 1.07 | 140$\\pm$10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO J=3_0,3-2_0,2 (218.222192 GHz) disk-integrated flux",
+   "value": "480",
+   "uncertainty": "50",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=3_{0,3}-2_{0,2}$ | 218.222192 | 21 | 2.818$\\times10^{-4}$ | 7 | 2.0, taper | 0.41\"$\\times$0.37\" (86) | 2.7 | 0.52 | 480$\\pm$50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO J=3_2,2-3_2,1 (218.475632 GHz) disk-integrated flux",
+   "value": "55",
+   "uncertainty": "6",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=3_{2,2}-3_{2,1}$ | 218.475632 | 68 | 1.571$\\times10^{-4}$ | 7 | 2.0, taper | 0.41\"$\\times$0.37\" (86) | 2.7 | 0.51 | 55$\\pm$6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO J=4_0,4-3_0,3 (290.623405 GHz) disk-integrated flux",
+   "value": "900",
+   "uncertainty": "90",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=4_{0,4}-3_{0,3}$ | 290.623405 | 35 | 6.902$\\times10^{-4}$ | 9 | 0.5 | 0.73\"$\\times$0.46\" (89) | 16.2 | 0.26 | 900$\\pm$90 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH J=4_2,2-3_1,2 (218.440050 GHz) disk-integrated flux",
+   "value": "65",
+   "uncertainty": "7",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=4_{2,2}-3_{1,2}$ | 218.440050 | 45 | 4.687$\\times10^{-5}$ | 36 | 2.0 | 0.20\"$\\times$0.15\" (88) | 0.46 | 1.44 | 65$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH J=9_(-1,9)-8_(0,8) (278.304510 GHz) disk-integrated flux",
+   "value": "13",
+   "uncertainty": "1",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=9_{(-1,9)}-8_{(0,8)}$ | 278.304510 | 110 | 7.685$\\times10^{-5}$ | 76 | 0.5 | 0.73\"$\\times$0.46\" (89) | 1.10 | 1.05 | 13$\\pm$1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH J=6-5 blend (290.209700 GHz) disk-integrated flux",
+   "value": "104",
+   "uncertainty": "10",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | blend$^*$ | 290.209700 | 112 | 7.994$\\times10^{-5}$ | 52 | 0.5 | 0.73\"$\\times$0.46\" (89) | 16.2 | 0.24 | 104$\\pm$10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH J=11_(1,10)-11_(0,11) (331.502370 GHz) disk-integrated flux",
+   "value": "44",
+   "uncertainty": "10",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=11_{(1,10)}-11_{(0,11)}$ | 331.502370 | 169 | 3.929$\\times10^{-4}$ | 92 | 2.0 | 0.20\"$\\times$0.15\" (88) | 0.46 | 1.44 | 44$\\pm$10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N J=24-23 (218.324723 GHz) disk-integrated flux",
+   "value": "171",
+   "uncertainty": "20",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=24-23$ | 218.324723 | 131 | 8.261$\\times10^{-4}$ | 49 | 2.0 | 0.26\"$\\times$0.21\" (74) | 2.7 | 0.45 | 171$\\pm$20 |"
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2 J=6_(0,6)-5_(1,5) and J=6_(1,6)-5_(0,5) blended (217.822148 GHz) disk-integrated flux",
+   "value": "59",
+   "uncertainty": "6",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | $J=6_{(0,6)}-5_{(1,5)}$ | 217.822148 | 39 | 5.934$\\times10^{-4}$ | 13 | 2.0, taper | 0.41\"$\\times$0.37\" (86) | 2.7 | 0.59 | 59$\\pm$6$\\dagger$$\\dagger$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI] disk-averaged column density (T_ex = 60 K)",
+   "value": "5.0e16",
+   "uncertainty": "0.5e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | (5.1$\\pm$0.5)$\\times10^{16}$ | (5.0$\\pm$0.5)$\\times10^{16}$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH disk-averaged column density (T_ex = 100 K)",
+   "value": "3.3e14",
+   "uncertainty": "0.3e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | \\- | \\- | (3.3$\\pm$0.3)$\\times10^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CS / C34S column density ratio (T_ex = 30 K)",
+   "value": "44",
+   "uncertainty": "10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "The inferred column density ratios of / (44$\\pm$10 at 30 K, 10$\\pm$5 at 60 K) and / (150$\\pm$30 at 30 K, 36$\\pm$8 at 60 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "CS / C34S column density ratio (T_ex = 60 K)",
+   "value": "10",
+   "uncertainty": "5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "The inferred column density ratios of / (44$\\pm$10 at 30 K, 10$\\pm$5 at 60 K) and / (150$\\pm$30 at 30 K, 36$\\pm$8 at 60 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "CS / 13CS column density ratio (T_ex = 30 K)",
+   "value": "150",
+   "uncertainty": "30",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "The inferred column density ratios of / (44$\\pm$10 at 30 K, 10$\\pm$5 at 60 K) and / (150$\\pm$30 at 30 K, 36$\\pm$8 at 60 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "CS / 13CS column density ratio (T_ex = 60 K)",
+   "value": "36",
+   "uncertainty": "8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "The inferred column density ratios of / (44$\\pm$10 at 30 K, 10$\\pm$5 at 60 K) and / (150$\\pm$30 at 30 K, 36$\\pm$8 at 60 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS / CS column density ratio (T_ex = 30 K)",
+   "value": "0.22",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "The CS is ringed and the follows this same spatial distribution with a / ratio of 0.22$\\pm$0.04 at 30 K and 0.18$\\pm$0.04 at 60 K"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS / CS column density ratio (T_ex = 60 K)",
+   "value": "0.18",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "The CS is ringed and the follows this same spatial distribution with a / ratio of 0.22$\\pm$0.04 at 30 K and 0.18$\\pm$0.04 at 60 K"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CS)/N(SO) radial column density ratio at 10 au",
+   "value": "1.0",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "From Figure 3 the N(CS)/N(SO) ratio is $1.0\\pm$0.2 at 10 au and then increases radially to $>10$ by 100 au."
+    }
+   ]
+  },
+  {
+   "quantity": "N(CS)/N(SO) radial column density ratio at 100 au",
+   "value": ">10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Volatile sulphur and C/O",
+     "quote": "From Figure 3 the N(CS)/N(SO) ratio is $1.0\\pm$0.2 at 10 au and then increases radially to $>10$ by 100 au."
+    }
+   ]
+  },
+  {
+   "quantity": "N(CS)/N(SO) radial column density ratio at 37 au (location of HD 169142 b)",
+   "value": "2.0",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Connections to planet composition",
+     "quote": "From Figure 3 the N(CS)/N(SO) ratio at the location of HD 169142 b is 2.0$\\pm$0.4."
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH)/N(H2CO) radial column density ratio at 10 au",
+   "value": "140",
+   "uncertainty": "40",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Organic content",
+     "quote": "Within the snowline line at 10 au this ratio is 140$\\pm$40 which decreases sharply to $<$3 beyond $\\approx$60 au."
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH)/N(H2CO) radial column density ratio beyond ~60 au",
+   "value": "<3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Organic content",
+     "quote": "Within the snowline line at 10 au this ratio is 140$\\pm$40 which decreases sharply to $<$3 beyond $\\approx$60 au."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Deconvolver algorithm (e.g., hogbom, multiscale) and stopping threshold/niter used in CASA tCLEAN",
+  "Pixel cell size and image dimensions used during tCLEAN imaging",
+  "Exact parameters used to generate the Keplerian masks (stellar mass, systemic velocity, spatial/velocity buffer widths) and dimensions of the hand-drawn elliptical masks",
+  "Specific channel ranges flagged for line emission prior to self-calibration and continuum subtraction"
+ ],
+ "missing_for_reproduction": [
+  "Exact tCLEAN stopping criteria (threshold, niter) and deconvolver choice",
+  "Exact Keplerian mask parameters (stellar mass, systemic velocity, target radius, line width parameters) and hand-drawn elliptical mask regions",
+  "Specific channel ranges flagged during iterative continuum subtraction in the continuum spectral windows",
+  "Image pixel cell size and grid dimensions"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "All five ALMA project codes and execution dates are explicitly tabulated, self-calibration solution intervals and SNR improvements are given per project, uvcontsub order is stated, and Table 1 provides exact rest frequencies, spectroscopic constants, robust parameters, tapers, synthesized beams, channel widths, rms values, and integrated fluxes, along with clear LTE column density assumptions (emitting areas and excitation temperatures). Only minor imaging and mask parameters (tCLEAN threshold, cell size, Keplerian mask inputs) are omitted.",
+ "rediscovery_reason": "All archival ALMA datasets are public, the imaging and optically thin LTE column density recipes are straightforward and well-specified, and the main results (integrated line fluxes, disk-averaged column densities, and radial column density ratios) are explicitly tabulated numeric values.",
+ "source_card": "cards/2023A%26A...678A.146B/sonnet/card.md"
+}

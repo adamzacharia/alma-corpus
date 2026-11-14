@@ -1,0 +1,556 @@
+{
+ "bibcode": "2021MNRAS.507.3998P",
+ "title": "An ALMA view of 11 dusty star-forming galaxies at the peak of cosmic star formation history",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab2346",
+ "arxiv_id": "2108.05596",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "agn_and_quasars"
+ ],
+ "question": "What are the spatially-resolved sizes, morphologies, molecular gas masses, and kinematics of 11 dusty star-forming galaxies at z~2 in the GOODS-S field, and how do dusty, gaseous, and stellar components and AGN activity drive their evolution?",
+ "alma_project_codes": [
+  "2017.1.00001.S",
+  "2012.1.00173.S",
+  "2015.1.01074.S",
+  "2012.1.00307.S",
+  "2012.1.00983.S",
+  "2015.1.00098.S",
+  "2017.1.01347.S",
+  "2017.1.00270.S",
+  "2016.1.00324.L",
+  "2016.1.00564.S",
+  "2019.2.00246.S",
+  "2016.1.01079.S",
+  "2015.1.00948.S"
+ ],
+ "data": {
+  "bands": "B3, B4, B6, B7, B9",
+  "arrays": "not stated",
+  "angular_resolution": "Continuum: <= 1 arcsec (from 0.08x0.07 arcsec to 0.62x0.52 arcsec); CO cubes: from 0.662x0.440 arcsec to 8.330x4.363 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass, SFR, dust mass, IR luminosity, burst age, gas mass from dust continuum, and AGN fraction from SED fitting",
+    "evidence": [
+     {
+      "loc": "The sample",
+      "quote": "; stellar mass (M$_\\star$), star formation rate (SFR) and dust mass (M$_{\\rm dust}$) by (cite: Pantoni2021:2021MNRAS.504..928P)."
+     }
+    ]
+   },
+   "citation": "(cite: Pantoni2021:2021MNRAS.504..928P)"
+  },
+  {
+   "what": {
+    "value": "Optical (H160) galaxy sizes (r_H)",
+    "evidence": [
+     {
+      "loc": "The sample",
+      "quote": "Source IDs are listed in Tab. [\\[tab:galaxy_properties\\]](#tab:galaxy_properties), along with their spectroscopic redshift, their optical size (cite: vanderWel2012:2012ApJS..203...24V; Rujopakarn2019:2019ApJ...882..107R)"
+     }
+    ]
+   },
+   "citation": "(cite: vanderWel2012:2012ApJS..203...24V; Rujopakarn2019:2019ApJ...882..107R)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 6 continuum flux densities for UDF5, UDF8, UDF10, UDF11",
+    "evidence": [
+     {
+      "loc": "Continuum emission",
+      "quote": "Flux densities labelled with the apex $D$ are taken from (cite: Dunlop2017:2017MNRAS.466..861D)."
+     }
+    ]
+   },
+   "citation": "(cite: Dunlop2017:2017MNRAS.466..861D)"
+  },
+  {
+   "what": {
+    "value": "Chandra 7 Ms X-ray luminosities and AGN classifications",
+    "evidence": [
+     {
+      "loc": "The sample",
+      "quote": "Nine objects out of eleven have an X-ray luminous (L$_{2-10 {\\rm keV}}\\gtrsim10^{42}$ erg s$^{-1}$) counterpart in the *Chandra* $\\simeq7$ Ms catalog by (cite: Luo2017:2017ApJS..228....2L)"
+     }
+    ]
+   },
+   "citation": "(cite: Luo2017:2017ApJS..228....2L)"
+  },
+  {
+   "what": {
+    "value": "ATCA CO(1-0) line luminosity for ALESS067.1",
+    "evidence": [
+     {
+      "loc": "Molecular gas mass",
+      "quote": "We note that ALESS067.1 $H_2$ content (M$_{H_2}\\sim1.7\\times10^{11}$ M$_\\odot$; see Tab. [1](#tab:CO_gas_mol)) is consistent with the molecular hydrogen mass derived from the CO(1-0) line luminosity measured with the Australian Telescope Compact Array (ATCA) by (cite: Huynh2017:2017MNRAS.467.1222H), i.e. $L'_{\\rm CO(1-0)}=(9.9\\pm1.8)\\time10^{10}$ K km s$^{-1}$ pc$^2$"
+     }
+    ]
+   },
+   "citation": "(cite: Huynh2017:2017MNRAS.467.1222H)"
+  },
+  {
+   "what": {
+    "value": "Comparison reference properties and sizes for UDF2",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "For reference we list the same available information for UDF2 by (cite: Boogaard2019:2019ApJ...882..140B)$^{(a)}$, (cite: Rujopakarn2019:2019ApJ...882..107R)$^{(b)}$ and (cite: Kaasinen2020:2020ApJ...899...37K)$^{(c)}$."
+     }
+    ]
+   },
+   "citation": "(cite: Boogaard2019:2019ApJ...882..140B); (cite: Rujopakarn2019:2019ApJ...882..107R); (cite: Kaasinen2020:2020ApJ...899...37K)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select archival ALMA continuum maps and measure continuum flux densities and dust sizes",
+   "method": "Select public ALMA archival maps with highest spatial resolution (<= 1 arcsec), perform 2D Gaussian fit using CASA task imfit to measure flux densities and angular axes, and convert to circularized physical radii using Eq. 2.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Delta theta <= 1 arcsec; flux error eS_nu = sqrt(rms^2 + (0.1 * S_nu)^2)"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with Omega_M = 0.32, Omega_Lambda = 0.63, h = 0.67; 10% flux calibration uncertainty; synthesized beam size as upper limit for unresolved sources"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Correct HST astrometry and compare optical and ALMA continuum morphology and sizes",
+   "method": "Correct HST H160 image astrometry using Gaia source positions in the field, overlay ALMA continuum contours, and compute circularized optical-to-ALMA size ratios r_H / r_ALMA.",
+   "software": [],
+   "key_parameters": [
+    "Mean astrometric offset: [+2, -10] x 10^-5 deg (Delta_RA ~ 70 mas, Delta_DEC ~ -360 mas); AzTEC.GS22 offset: [+15, +5] x 10^-5 deg; AzTEC.GS25: no correction"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract CO line profiles, redshifts, moment maps, intensities, and CO sizes",
+   "method": "Rebin spectral channels of noisy ALMA cubes with CASA task imrebin, fit Gaussian profiles to 1D CO spectra, compute moment 0, 1, and 2 maps (and pv diagram for ALESS067.1), measure I_CO on mom0 maps, and measure CO sizes from peak separation of double-peaked components or beam upper limits.",
+   "software": [
+    "CASA",
+    "imrebin"
+   ],
+   "key_parameters": [
+    "Rebin factor x15 for UDF1, x5 for ALESS067.1 (2016.1.00564.S); pv diagram axis inclination ~70 degrees for ALESS067.1"
+   ],
+   "assumptions": [
+    "Distance between the peaks of the two spectral line components represents the CO emission size for unresolved double-peaked sources"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO luminosities, excitation ratios, molecular gas masses, and depletion timescales",
+   "method": "Compute L'_CO from I_CO using Solomon et al. (1997) relation (Eq. 3), convert to L'_CO(1-0) using excitation ratios r_J1 (Eq. 4), multiply by alpha_CO to obtain M_H2 (Eq. 5), and compute depletion timescales.",
+   "software": [],
+   "key_parameters": [
+    "r_31 = 0.42 +- 0.07, r_21 = 0.76 +- 0.09, alpha_CO = 3.6 M_sun (K km s^-1 pc^2)^-1"
+   ],
+   "assumptions": [
+    "CO excitation ladder of Daddi et al. (2015) and conversion factor alpha_CO = 3.6 M_sun (K km s^-1 pc^2)^-1 (with alternative alpha_CO = 1.8 giving a 0.5 scaling factor)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Update broad-band SED fit of ALESS067.1 including radio and ALMA continuum fluxes",
+   "method": "Fit multi-wavelength optical-to-radio SED of ALESS067.1 using CIGALE including synchrotron and free-free radio modules.",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "not stated"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF, Bruzual & Charlot (2003) stellar libraries, Lo Faro et al. (2017) double power-law attenuation, Casey (2012) IR dust model, almost constant SFH"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median ALMA continuum radius (r_ALMA)",
+   "value": "1.15",
+   "uncertainty": "first quartile 0.6, third quartile 3.4",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The 11 DSFGs are very compact in the (sub-)millimeter (median r$_{\\rm ALMA}=1.15$ kpc), while the optical emission extends to larger radii (median r$_{\\rm H}/$r$_{\\rm ALMA}=2.05$)."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "| r$_{\\rm ALMA}$ | \\[kpc\\] | 1.15 | 0.6 | 3.4 | 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median optical-to-ALMA size ratio (r_H / r_ALMA)",
+   "value": "2.05",
+   "uncertainty": "first quartile 1.4, third quartile 5.7",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The 11 DSFGs are very compact in the (sub-)millimeter (median r$_{\\rm ALMA}=1.15$ kpc), while the optical emission extends to larger radii (median r$_{\\rm H}/$r$_{\\rm ALMA}=2.05$)."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "| r$_{\\rm H}/$r$_{\\rm ALMA}$ |  | 2.05 | 1.4 | 5.7 | 4.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median CO emission radius (r_CO)",
+   "value": "3.45",
+   "uncertainty": "first quartile 1.35, third quartile 3.6",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "| r$_{\\rm CO}$ | \\[kpc\\] | 3.45 | 1.35 | 3.6 | 2.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF1 B7 continuum flux density",
+   "value": "2900",
+   "uncertainty": "300",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF1 | 2017.1.00001.S | A001/X1288/X4c3 | B7 ($335.50-351.48$) | $0.10\\times0.09$ | $2900\\pm300$ | $0.123\\pm0.006 \\times 0.103\\pm0.005$ | 0.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF1 ALMA continuum circularized radius (r_ALMA)",
+   "value": "0.46",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF1 | 2017.1.00001.S | A001/X1288/X4c3 | B7 ($335.50-351.48$) | $0.10\\times0.09$ | $2900\\pm300$ | $0.123\\pm0.006 \\times 0.103\\pm0.005$ | 0.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF3 B7 continuum flux density",
+   "value": "1600",
+   "uncertainty": "200",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF3 | 2017.1.00001.S | A001/X1288/X4c7 | B7 ($335.50-351.48$) | $0.08\\times0.07$ | $1600\\pm200$ | $0.203\\pm0.014\\times0.111\\pm0.009$ | 0.62 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF3 ALMA continuum circularized radius (r_ALMA)",
+   "value": "0.62",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF3 | 2017.1.00001.S | A001/X1288/X4c7 | B7 ($335.50-351.48$) | $0.08\\times0.07$ | $1600\\pm200$ | $0.203\\pm0.014\\times0.111\\pm0.009$ | 0.62 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF8 ALMA continuum circularized radius (r_ALMA)",
+   "value": "4.1",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF8 | 2012.1.00173.S | A002/X5a9a13/X7e0 | B6 ($211.21-231.20$) | $0.62\\times0.52$ | $208\\pm46^D$ | $1.42\\pm0.35\\times0.66\\pm0.19$ | 4.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF11 ALMA continuum circularized radius (r_ALMA)",
+   "value": "3.4",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF11 | 2012.1.00173.S | A002/X5a9a13/X7e0 | B6 ($211.21-231.20$) | $0.62\\times0.52$ | $186\\pm46^D$ | $1.02\\pm0.28\\times0.61\\pm0.21$ | 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF13 B7 continuum flux density",
+   "value": "910",
+   "uncertainty": "170",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF13 | 2015.1.01074.S$^A$ | A001/X2d8/Xfd | B7 ($335.50-351.48$) | $0.17\\times0.15$ | $910\\pm170$ | $0.17\\times0.15^{sb}$ | $< 0.65$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 B7 continuum flux density",
+   "value": "4500",
+   "uncertainty": "400",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| ALESS067.1 | 2012.1.00307.S | A002/X7d1738/X103 | B7 ($336.00-351.98$) | $0.14\\times0.12$ | $4500\\pm 400$ | $0.35\\pm0.05 \\times 0.18\\pm0.03$ | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 ALMA continuum circularized radius (r_ALMA)",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| ALESS067.1 | 2012.1.00307.S | A002/X7d1738/X103 | B7 ($336.00-351.98$) | $0.14\\times0.12$ | $4500\\pm 400$ | $0.35\\pm0.05 \\times 0.18\\pm0.03$ | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "AzTEC.GS25 B7 continuum flux density",
+   "value": "5900",
+   "uncertainty": "500",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| AzTEC.GS25 | 2012.1.00983.S | A002/X7d1738/X169 | B7 ($336.00-351.98$) | $0.20\\times0.16$ | $5900\\pm500$ | $0.38\\pm0.03 \\times 0.22\\pm0.02$ | 1.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "AzTEC.GS25 ALMA continuum circularized radius (r_ALMA)",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| AzTEC.GS25 | 2012.1.00983.S | A002/X7d1738/X169 | B7 ($336.00-351.98$) | $0.20\\times0.16$ | $5900\\pm500$ | $0.38\\pm0.03 \\times 0.22\\pm0.02$ | 1.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "AzTEC.GS21 B6 continuum flux density",
+   "value": "954",
+   "uncertainty": "74",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| AzTEC.GS21 | 2015.1.00098.S$^A$ | A001/X2fe/Xaea | B6 ($244.13-262.99$) | $0.18\\times0.16$ | $954\\pm74$ | $0.18\\times0.16^{sb}$ | $< 0.7$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "AzTEC.GS22 B9 continuum flux density",
+   "value": "6400",
+   "uncertainty": "880",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| AzTEC.GS22 | 2017.1.01347.S | A001/X12a3/X80e | B9 ($662.53-685.56$) | $0.49\\times 0.33$ | $6400\\pm880$ | $0.49\\times 0.33^{sb}$ | $<1.7$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF1 CO(3-2) line intensity (I_CO)",
+   "value": "79.9",
+   "uncertainty": "7.4",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF1 | 2017.1.00270.S | A001/X1288/X484 | 0.85 | $0.662\\times0.440$ | 3 | 93.5 | 170 | $79.9\\pm7.4$ | $<0.812$ | $<3.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF1 molecular hydrogen mass (M_H2)",
+   "value": "2.6",
+   "uncertainty": "0.7",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "| UDF1 | 2.698 | 3 | $31\\pm3$ | $2.6\\pm0.7$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF3 CO(3-2) line intensity (I_CO)",
+   "value": "492",
+   "uncertainty": "28",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF3 | 2016.1.00324.L | A001/X87c/X20a | 59.4 | $1.34\\times1.171$ | 3 | 97.6 | 190; 390 | $492\\pm28$ | 0.326 | 1.35 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF3 molecular hydrogen mass (M_H2)",
+   "value": "15",
+   "uncertainty": "3",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "| UDF3 | 2.543 | 3 | $170\\pm10$ | $15\\pm3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF8 CO(2-1) line intensity (I_CO)",
+   "value": "378",
+   "uncertainty": "25",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| UDF8 | 2016.1.00324.L | A001/X87c/X20e | 64.1 | $2.002\\times1.648$ | 2 | 90.4 | 148; 379 | $378\\pm25$ | 0.800 | 3.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "UDF8 molecular hydrogen mass (M_H2)",
+   "value": "5.8",
+   "uncertainty": "1.1",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "| UDF8 | 1.5490 | 2 | $122\\pm9$ | $5.8\\pm1.1$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 CO(3-2) line intensity (I_CO)",
+   "value": "774",
+   "uncertainty": "120",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "| ALESS067.1 | 2016.1.00564.S | A001/X879/Xd9 | 21.2 | $2.004\\times1.286$ | 3 | 110.8 | 115; 314 | $774\\pm120$ | 0.842 | 3.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 CO(6-5) line intensity (I_CO)",
+   "value": "620",
+   "uncertainty": "70",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "|  | 2019.2.00246.S | A001/X14c3/Xaf4 | 21.0 | $8.330\\times4.363$ | 6 | 221.6 | 45 | $620\\pm70$ | $<3$ | $<26$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 molecular hydrogen mass (M_H2)",
+   "value": "16.8",
+   "uncertainty": "5.4",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "| ALESS067.1 | 2.1212 | 3 | $196\\pm31$ | $16.8\\pm5.4$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 CO excitation ratio r_31",
+   "value": "0.20",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "We calculate a line luminosity ratio of $r_{31}=L'_{\\rm CO(3-2)}/L'_{\\rm CO(1-0)}=0.20\\pm0.07$ and $r_{61}=L'_{\\rm CO(6-5)}/L'_{\\rm CO(1-0)}=0.12\\pm0.07$."
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS067.1 CO excitation ratio r_61",
+   "value": "0.12",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "We calculate a line luminosity ratio of $r_{31}=L'_{\\rm CO(3-2)}/L'_{\\rm CO(1-0)}=0.20\\pm0.07$ and $r_{61}=L'_{\\rm CO(6-5)}/L'_{\\rm CO(1-0)}=0.12\\pm0.07$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/velocity ranges and sigma thresholds used to generate the CO moment 0, 1, and 2 maps",
+  "Apertures or spatial regions used to extract the 1D CO spectra and measure I_CO on moment 0 maps",
+  "Whether the reported continuum and CO sizes from CASA imfit are deconvolved from the synthesized beam or convolved",
+  "The exact rms noise values of each individual ALMA continuum map used in Equation 1",
+  "Width of the spatial extraction slit used to construct the position-velocity diagram of ALESS067.1"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral channel/velocity ranges and clipping thresholds used to create the CO moment 0, 1, and 2 maps",
+  "Spatial apertures or regions used to extract the 1D CO spectra and integrated CO intensities (I_CO)",
+  "Clarification on whether major/minor axes reported from CASA imfit in Table 2 are deconvolved from the beam or image-plane convolved FWHMs",
+  "Map rms values for each continuum image used in Eq. 1"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All ALMA project codes and exact Member OUS identifiers are explicitly tabulated, data are public science-ready archive products, and analytical equations and CASA tasks (imfit, imrebin) are clearly stated; minor deductions for unstated moment-map velocity windows, spectral extraction apertures, and minor text-table inconsistencies.",
+ "rediscovery_reason": "Uses public science-ready ALMA archive products with exact Member OUS IDs given in Tables 2 and 3, standard CASA tasks (imfit, imrebin), and clear analytical equations to produce numeric continuum fluxes, sizes, CO line intensities, and molecular gas masses.",
+ "source_card": "cards/2021MNRAS.507.3998P/sonnet/card.md"
+}

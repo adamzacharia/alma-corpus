@@ -1,0 +1,406 @@
+{
+"depth": "full",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present new radio and millimeter observations of the molecular gas toward the central"},
+{"loc": "3.2 ALMA data", "quote": "In addition to the larger VLA mosaic, we have both pointings and small mosaics observed toward the CND at millimeter wavelengths with the Atacama Large Millimeter/submillimeter Array (ALMA)."}
+],
+"fields": ["milky_way_ism", "astrochemistry"],
+"question": {
+"value": "Where along the line of sight do the 50 and 20 km/s clouds, Sgr A East and the CND lie relative to Sgr A*; build a 3D model of the central 10 pc consistent with radio observations and CMZ orbital kinematics",
+"evidence": [
+{"loc": "abstract", "quote": "The construction of an accurate 3D model of the Milky Way center is necessary to understand inflow processes that drive its overall evolution"},
+{"loc": "2.3 Tensions between models and observations", "quote": "This paper seeks to resolve the tension between models of the central 10 parsecs and the entire CMZ by presenting an alternative model of the inner 10 parsecs"}
+]
+},
+"targets": [
+{
+"name": "Sgr A* (ALMA Band 3 12CO pointing)",
+"details": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "centered at $\\alpha=17^h45^m40^s$, $\\delta=-29\\ensuremath{^\\circ}00'28''$"},
+{"loc": "3.1.1 VLA observations", "quote": "at the assumed Galactocentric distance of 8.3 kpc (cite: Gravity21)"}
+],
+"coordinates": "alpha = 17h45m40s, delta = -29deg00'28'' (pointing center)",
+"redshift_or_distance": "8.3 kpc (assumed Galactocentric distance)",
+"distance_source": "(cite: Gravity21)"
+},
+{
+"name": "CND mosaic (ALMA Band 3 and Band 6)",
+"details": [
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The Band 3 observations analyzed here consist of an 11-pointing mosaic covering a $75''\\times100''$ (3$\\times$4 pc) field of view."},
+{"loc": "1 Introduction", "quote": "Our edge-on view of the Milky Way Galaxy can cause components to appear to align along the 8.3 kpc (cite: Gravity19; Gravity21) line of sight to the center."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "8.3 kpc",
+"distance_source": "(cite: Gravity19; Gravity21)"
+},
+{
+"name": "50 and 20 km/s clouds (GCM-0.02-0.07 and GCM-0.13-0.08), VLA/GBT NH3",
+"details": [
+{"loc": "3.1.1 VLA observations", "quote": "In this paper we focus on GCM-0.02-0.07 and GCM-0.13-0.08"}
+],
+"coordinates": "not stated (Galactic-coordinate names only)",
+"redshift_or_distance": "8.3 kpc (assumed Galactocentric distance)",
+"distance_source": "(cite: Gravity21)"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.01240.S", "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "ALMA in Cycle 7 (Project code 2019.1.01240.S; PI: E.A.C. Mills)"}]},
+{"code": "2013.1.00857.S", "evidence": [{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "We also analyze a data set from ALMA in Cycle 2 (project code 2013.1.00857.S; PI: E.A.C. Mills)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (3 mm) for 2019.1.01240.S; Band 3 and Band 6 for 2013.1.00857.S", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The observations were made using two frequency settings, both at 3 mm (ALMA Band 3), over a total of eight spectral windows."},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "which made observations towards the CND in both Band 3 and Band 6"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "2019.1.01240.S: 8 spws (5 narrow, 234 MHz wide, 141 kHz resolution, CO isotopologues + H40alpha; 3 continuum, 1875 MHz wide). 2013.1.00857.S Band 3: 4 spws at 90.7, 92.6, 102.75, 104.6 GHz. Band 6: 8 spws at 252.55-273.5 GHz", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "Five of these had bandwidths of 234 MHz ($\\sim$640 km s$^{-1}$) and resolutions of 141 kHz (0.37 km s$^{-1}$)"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "Observations were made in a single frequency setting covering four spectral windows centered at 90.7 GHz, 92.6 GHz, 102.75 GHz, and 104.6 GHz."},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "Observations were made at two frequency settings, covering eight spectral windows centered at 252.55 GHz, 254.72 GHz, 256.7 GHz, 258.7 GHz, 266.72 GHz, 269.70 GHz, 271.5 GHz, and 273.5 GHz."}
+]},
+{"field": "continuum_bandwidth", "value": "2019.1.01240.S: three continuum spws of 1875 MHz each; 2013.1.00857.S: all spws 1.875 GHz bandwidth", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "while the remaining three had bandwidths of 1875 MHz"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "All spectral windows were configured with bandwidths of 1.875 GHz and channel widths of 1.13 MHz"}
+]},
+{"field": "arrays", "value": "2019.1.01240.S: 12m array (average 45 antennas); 2013.1.00857.S: 12m array combined with 7m array (ACA) and total power", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The observations were completed over eight sessions, with an average of 45 antennas"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The 12m observations were combined with observations from the 7m array (ALMA Compact Array) and total power dishes in order to recover emission at all spatial scales."}
+]},
+{"field": "configurations", "value": "2019.1.01240.S: C43-2, baselines 15-697 m. 2013.1.00857.S Band 3: C34-2/1 (14-348 m) and C34-4/5 (17-783 m); Band 6: C34-1 (14-327 m)", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The observations were made in the C43-2 configuration, with baselines ranging between 15 and 697 m."},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "C34-2/1 with minimum baselines of 14m and maximum baselines of 348 m and C34-4/5 with minimum baselines of 17 m and maximum baselines of 783 m"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "C34-1, with minimum baselines of 14 m and maximum baselines of 327 m"}
+]},
+{"field": "angular_resolution", "value": "12CO 1-0 cube beam 2.4'' x 1.4'' (0.09 x 0.06 pc); CND mosaic lines 0.88-1.95'' (Table 1)", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The imaged cube for this line has 0.28$''$ pixels (0.011 pc) and a beam size of $2.4'' \\times 1.4''$ or $0.09 \\times 0.06$ pc."},
+{"loc": "Table 1", "quote": "HC$_3$N | $10-9$ | 24.0 | $1.2\\times10^6$ | 90.97902 | 1.95 $\\times$ 1.39 | 3.4 | 0.23"}
+]},
+{"field": "max_recoverable_scale", "value": "21'' (0.84 pc) for the Band 3 12CO pointing", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "It is sensitive to emission on size scales up to 21$''$ (0.84 pc)."}
+]},
+{"field": "sensitivity", "value": "12CO cube per-channel noise 13.3 mJy/beam (0.395 K); CND mosaic per-channel line sensitivity 0.10-0.27 K (Table 1)", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The per-channel noise in this cube is 13.3 mJy/beam (0.395 K)."},
+{"loc": "Table 1", "quote": "SO | $6_6-5_5$ | 56.5 | $3.8\\times10^6$ | 258.25583 | 1.42 $\\times$ 0.97 | 1.2 | 0.10"}
+]},
+{"field": "observing_dates", "value": "2019.1.01240.S: 2019 Oct 31 - Nov 24 (eight sessions); 2013.1.00857.S: Band 3 on 2014 Jul 21 and Dec 6; Band 6 on 2015 Apr 6", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "between 2019 October 31 and November 24"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "Observations were conducted on July 21, 2014 and December 6, 2014."},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "Observations were conducted on April 6, 2015."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Both projects have PI E.A.C. Mills (first author); not described as archival", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "(Project code 2019.1.01240.S; PI: E.A.C. Mills)"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "(project code 2013.1.00857.S; PI: E.A.C. Mills)"}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=1-0", "rest_frequency": "115.2712018 GHz", "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "This paper focuses its analysis just on the $^{12}$CO $J=1-0$ transition, which has a rest frequency of $115.2712018$ GHz."}]},
+{"species": "H40alpha recombination line and other CO isotopologues", "transition": "not stated", "rest_frequency": "not stated", "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "targeted multiple carbon monoxide (CO) isotopologues as well as the H40 $\\alpha$ recombination line"}]},
+{"species": "HC3N", "transition": "10-9", "rest_frequency": "90.97902 GHz", "evidence": [{"loc": "Table 1", "quote": "HC$_3$N | $10-9$ | 24.0 | $1.2\\times10^6$ | 90.97902"}]},
+{"species": "N2H+", "transition": "1-0", "rest_frequency": "93.17340 GHz", "evidence": [{"loc": "Table 1", "quote": "N$_2$H$^+$ | $1-0$ | 4.5 | $1.9\\times10^5$ | 93.17340"}]},
+{"species": "SO", "transition": "6_6-5_5", "rest_frequency": "258.25583 GHz", "evidence": [{"loc": "Table 1", "quote": "SO | $6_6-5_5$ | 56.5 | $3.8\\times10^6$ | 258.25583"}]},
+{"species": "H13CN", "transition": "3-2", "rest_frequency": "259.01179 GHz", "evidence": [{"loc": "Table 1", "quote": "H$^{13}$CN | $3-2$ | 24.9 | $7.0\\times10^7$ | 259.01179"}]},
+{"species": "CH3OH", "transition": "5_2,3-4_1,3", "rest_frequency": "266.83813 GHz", "evidence": [{"loc": "Table 1", "quote": "CH$_3$OH | $5_{2,3}-4_{1,3}$ | 57.1 | $5.2\\times10^7$ | 266.83813"}]},
+{"species": "HNC", "transition": "3-2", "rest_frequency": "271.98111 GHz", "evidence": [{"loc": "Table 1", "quote": "HNC | $3-2$ | 26.1 | $8.5\\times10^6$ | 271.98111"}]},
+{"species": "NH3 (VLA/GBT, not ALMA)", "transition": "(3,3)", "rest_frequency": "23.87013 GHz", "evidence": [{"loc": "3.1.1 VLA observations", "quote": "the (3,3) line at 23.87013 GHz"}]}
+],
+"other_facilities": [
+{"name": "VLA (K band, WIDAR; hybrid DnC)", "provided": {"value": "Seven-pointing NH3 mosaic of the 50 and 20 km/s clouds and CND, ~3'' resolution", "evidence": [
+{"loc": "3.1.1 VLA observations", "quote": "All three clouds were observed as part of a seven-pointing mosaic covering an area of 4.5$'$ by 9$'$ (11$\\times$22 pc)"},
+{"loc": "3.1.1 VLA observations", "quote": "The data were taken in the hybrid DnC array configuration of the VLA"}
+]}},
+{"name": "GBT (K-band Focal Plane Array, VEGAS)", "provided": {"value": "Single-dish NH3 mosaic combined with VLA to recover extended structure", "evidence": [
+{"loc": "3.1.2 GBT observations", "quote": "The GBT data consist of a dual-polarization on-the-fly mosaic using four beams of the K-band Focal Plane Array"},
+{"loc": "3.1.2 GBT observations", "quote": "The (1,1) through (6,6) NH$_{3}$  lines were observed simultaneously with the VEGAS spectrometer"}
+]}},
+{"name": "MeerKAT (literature)", "provided": {"value": "20 cm spectral-index map used as supporting evidence (Figure 14 of Heywood22)", "evidence": [
+{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "A spatially-extended region of positive spectral index can also be seen toward the minispiral in MeerKat images, e.g. Figure 14 of (cite: Heywood22)."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "1720 MHz OH maser positions and velocities overlaid on the NH3 peak-velocity map", "evidence": [{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "we also overlay the 1720 MHz OH masers from (cite: Sjouwerman08)"}]}, "citation": "(cite: Sjouwerman08)"},
+{"what": {"value": "Galactocentric distance 8.3 kpc", "evidence": [{"loc": "3.1.1 VLA observations", "quote": "at the assumed Galactocentric distance of 8.3 kpc (cite: Gravity21)"}]}, "citation": "(cite: Gravity21)"},
+{"what": {"value": "Initial mass function slope and young-cluster mass range used for supernova rate", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Following (cite: Lu13), we assume an initial mass function with a slope of 1.7"}]}, "citation": "(cite: Lu13)"},
+{"what": {"value": "Magnetic field strengths and synchrotron lifetimes", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Field strengths of 1-5 mG observed toward the central parsec (cite: Killeen92; Plante95; Guerra23) correspond to a synchrotron lifetime of 10,000 - 100,000 years (cite: Condon92)."}]}, "citation": "(cite: Killeen92; Plante95; Guerra23); (cite: Condon92)"},
+{"what": {"value": "Cloud areas, masses, densities and column densities of the 50 and 20 km/s clouds", "evidence": [{"loc": "5.5.3 Molecular Cloud Lifetimes in the CMZ", "quote": "From the analysis presented in (cite: Battersby25b), the 50 km/s cloud is physically smaller than the 20 km/s cloud"}]}, "citation": "(cite: Battersby25b)"},
+{"what": {"value": "CMZ orbital models and cloud distances (Table of models)", "evidence": [{"loc": "Table 2", "quote": "Open Stream | rosette | 100-200 | 50-100 | $\\sim$ 50 (in front) | (cite: Kruijssen15)"}]}, "citation": "(cite: Sofue95; Sofue25; Molinari11; Walker25; Kruijssen15); Lipman et al. (submitted)"},
+{"what": {"value": "90 cm continuum image of Sgr A (source of the image not stated in the text)", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "we place three representative apertures (the size of the 90 cm beam) on the 90 cm image"}]}, "citation": "not stated"}
+],
+"simulations_or_models_as_data": [
+{"value": "pySTARBURST99 population-synthesis model used for the nuclear-cluster supernova rate", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "by using pySTARBURST99 (cite: Hawcroft25) to estimate the average supernova rate for the young nuclear cluster"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "2019.1.01240.S: ALMA pipeline; 2013.1.00857.S: manual calibration by the North American ALMA Science Center", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The calibration of the data was performed in the Common Astronomy Software Applications package (CASA versions 5.6.1–8) with the ALMA pipeline."},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The data were calibrated manually by North American Science Center."}
+]},
+{"field": "casa_version", "value": "CASA 5.6.1-8 (2019.1.01240.S)", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "(CASA versions 5.6.1–8)"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean for line and continuum (2019.1.01240.S); CASA joint imaging of 7m and 12m data for 2013.1.00857.S", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The imaging of both line and continuum emission was performed in CASA, using the `tclean` task"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The 7m and 12m data were then jointly imaged using CASA"}
+]},
+{"field": "weighting_robust", "value": "robust = 1.0", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "with a robust weighting of 1.0, so that the observations were sensitive to a combination of both point source emission and extended emission"}
+]},
+{"field": "cell_size", "value": "0.28'' pixels (0.011 pc) for the 12CO cube", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The imaged cube for this line has 0.28$''$ pixels (0.011 pc)"}
+]},
+{"field": "array_combination", "value": "12m + 7m jointly imaged in CASA, then feathered with total power (2013.1.00857.S)", "evidence": [
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The 7m and 12m data were then jointly imaged using CASA, and the images were then feathered with the total power data."}
+]},
+{"field": "final_beam", "value": "12CO 1-0: 2.4'' x 1.4'' (0.09 x 0.06 pc); NH3 (3,3) VLA+GBT: 2.9'' x 3.7''", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "a beam size of $2.4'' \\times 1.4''$ or $0.09 \\times 0.06$ pc"},
+{"loc": "3.1.2 GBT observations", "quote": "The resulting NH$_{3}$(3,3) image has a beam size of $2.9''\\times3.7''$"}
+]},
+{"field": "final_rms", "value": "12CO 1-0: 13.3 mJy/beam (0.395 K) per channel; NH3 (3,3): 1.3 mJy/beam (0.26 K) per channel", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The per-channel noise in this cube is 13.3 mJy/beam (0.395 K)."},
+{"loc": "3.1.2 GBT observations", "quote": "a per-channel noise of 1.3 mJy/beam (0.26 K)"}
+]}
+],
+"inherited": [
+{"what": {"value": "VLA NH3 calibration", "evidence": [{"loc": "3.1.1 VLA observations", "quote": "The calibration of these data is the same as described in (cite: Mills15), and additional details of this procedure can be found there."}]}, "from_reference": "(cite: Mills15)"},
+{"what": {"value": "VLA survey observations described in separate papers", "evidence": [{"loc": "3.1.1 VLA observations", "quote": "These observations are described further in separate papers (cite: Mills15; Ludovici16; Butterfield18; Mills18b; Butterfield22)."}]}, "from_reference": "(cite: Mills15; Ludovici16; Butterfield18; Mills18b; Butterfield22)"},
+{"what": {"value": "GBT NH3 data calibration", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "additional details of the data calibration can be found there"}]}, "from_reference": "(cite: Minh13)"},
+{"what": {"value": "GBT+VLA combination procedure", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "Combination of the GBT and VLA data was performed using a procedure that is similar to that used in (cite: Liu13) (see their Appendix A)"}]}, "from_reference": "(cite: Liu13), Appendix A"},
+{"what": {"value": "IMF slope and cluster mass for the supernova-rate estimate", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Following (cite: Lu13), we assume an initial mass function with a slope of 1.7"}]}, "from_reference": "(cite: Lu13)"}
+],
+"unstated_but_needed": [
+"ALMA flux calibrator and flux-scale uncertainty for either project",
+"ALMA pipeline version and whether archive products were used as is; pipeline vs manual for each execution block",
+"Whether any self-calibration was done",
+"tclean parameters other than robust = 1.0: deconvolver, niter/threshold, masks, image size, uv-taper, and the spectral channelization of the 12CO cube (stated only as 141 kHz native resolution)",
+"Continuum subtraction method and line-free channels for the CND mosaic line cubes",
+"Total-power data processing and feather parameters (scaling, uv cut) for 2013.1.00857.S, and the 7m/12m weights used in joint imaging",
+"Method for the 12CO absorption spectrum: aperture or pixel used, continuum level, baseline treatment, any optical-depth conversion",
+"Exact calibration (flagging, flux scale) of the VLA data (only referred to Mills15) and of the GBT data (Minh13)",
+"Source, frequency and resolution of the 90 cm image, and the exact aperture positions and sizes",
+"PV slit width and averaging, and how velocity gradients were measured from the PV diagram",
+"Units of the supernova rate (stated without units)",
+"How moment-0, peak-intensity and peak-velocity maps were made (velocity ranges, clipping)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image ALMA data",
+"method": {"value": "ALMA pipeline calibration (2019.1.01240.S) and manual calibration (2013.1.00857.S); tclean imaging with robust 1.0; 7m+12m joint imaging feathered with total power for 2013.1.00857.S", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The imaging of both line and continuum emission was performed in CASA, using the `tclean` task, with a robust weighting of 1.0"},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The 7m and 12m data were then jointly imaged using CASA, and the images were then feathered with the total power data."}
+]},
+"software": ["CASA", "tclean", "ALMA pipeline"],
+"key_parameters": [
+{"value": "robust = 1.0", "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "with a robust weighting of 1.0"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Combine VLA and GBT NH3 data",
+"method": {"value": "Miriad-based combination: GBT cubes smoothed and regridded, deconvolved, converted to visibilities and jointly imaged with VLA; final linear combination of joint and GBT cubes with immerge", "evidence": [
+{"loc": "3.1.2 GBT observations", "quote": "We then jointly imaged the GBT and VLA visibilities using the Miriad-`invert` and `mossdi` tasks."},
+{"loc": "3.1.2 GBT observations", "quote": "we used the Miriad-`immerge` task to linearly combine the GBT+VLA joint image cubes we produced and the spectrally smoothed and regridded GBT image cubes"}
+]},
+"software": ["Miriad", "ALMICA", "CASA feather"],
+"key_parameters": [
+{"value": "relative VLA/GBT weights set manually by resetting system temperature columns", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "the relative weights between the GBT and VLA visibilities were manually optimized by artificially resetting the system temperature columns"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Residual systematic intensity errors <~1% stated to be negligible compared with thermal noise", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "which is negligible as compared to the thermal noises in our present study"}]}
+},
+{
+"order": 3,
+"goal": "Map NH3 (3,3) velocity structure and build PV diagram",
+"method": {"value": "Integrated intensity map, brightest-pixel velocity map and a PV slice parallel to the Galactic plane from the NH3 (3,3) cube; velocity gradients read from the PV diagram and compared to features of the Herrnstein05 model", "evidence": [
+{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "The right panel of Figure [3](#fig:Fig-velocity) shows the velocity that corresponds to the brightest pixel in the cube at each position."},
+{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "The slit runs parallel to the Galactic plane."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Distance 8.3 kpc", "evidence": [{"loc": "3.1.1 VLA observations", "quote": "at the assumed Galactocentric distance of 8.3 kpc (cite: Gravity21)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Gradients compared with Henshaw16 values", "evidence": [{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "consistent with measurements by (cite: Henshaw16)"}]}
+},
+{
+"order": 4,
+"goal": "Map ALMA molecular lines of the CND region",
+"method": {"value": "Integrated intensity, peak intensity and peak-velocity maps of six lines from the Band 3/6 mosaics, compared qualitatively between CND and surrounding gas", "evidence": [
+{"loc": "4.2 Chemistry of the CND and surrounding gas", "quote": "we show the peak intensities (the brightest pixel in the cube at each position) from all of the lines"}
+]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [
+{"value": "Critical densities given at a temperature of 60 K", "evidence": [{"loc": "Footnote 4", "quote": "At a temperature of 60 K"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Chemical differentiation compared with Martin12 and not attributed to excitation alone because CH3OH and SO have similar upper level energies", "evidence": [{"loc": "4.2 Chemistry of the CND and surrounding gas", "quote": "as the observed transitions of CH$_3$OH and SO have similar upper level energies $E_{upper}$"}]}
+},
+{
+"order": 5,
+"goal": "Measure 12CO absorption toward Sgr A*",
+"method": {"value": "12CO J=1-0 spectrum toward the unresolved Sgr A* point source; narrow (FWHM ~1-2 km/s) absorption features identified on a broad trough and compared with channel maps", "evidence": [
+{"loc": "4.3 CO absorption toward Sgr A*", "quote": "toward the unresolved bright (90 K / 3.3 Jy at 115 GHz) point source Sgr A\\*"},
+{"loc": "4.3 CO absorption toward Sgr A*", "quote": "absorption features superposed on the broader absorption trough"}
+]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [
+{"value": "Absorption only arises from gas in front of Sgr A*; gas behind Sgr A* is not seen", "evidence": [{"loc": "4.3 CO absorption toward Sgr A*", "quote": "Gas behind Sgr A\\* (in the back half of the CMZ) will not be present in absorption in this spectrum."}]},
+{"value": "Narrow linewidths (1-2 km/s) vs CND clump widths (11-55 km/s) used to assign features to the 50 and 20 km/s clouds rather than the CND", "evidence": [{"loc": "4.3 CO absorption toward Sgr A*", "quote": "Ultimately, based on their linewidth and velocity, we then identify these four absorption features as being associated with the 50 and 20 km/s clouds"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with a saturated -5 km/s feature and an 87 km/s feature in channel maps", "evidence": [{"loc": "4.3 CO absorption toward Sgr A*", "quote": "We also compare these features to two other features in the spectra"}]}
+},
+{
+"order": 6,
+"goal": "Measure 90 cm intensities toward Sgr A East and the minispiral",
+"method": {"value": "Mean intensity in three beam-sized apertures on a 90 cm image: Sgr A East interior, minispiral, and west of both", "evidence": [
+{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "we place three representative apertures (the size of the 90 cm beam) on the 90 cm image"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Bright northeast edge of Sgr A East is not representative of the shell brightness where it overlaps Sgr A West", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Assuming that the bright edge emission observed in the northeast part of Sgr A East is not representative of the brightness of the shell where it overlaps with Sgr A West"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with 6 cm emission at higher resolution and MeerKAT spectral index map", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "our comparison of these apertures with 6 cm emission (from an image with much higher spatial resolution) shows this is unlikely to be the case"}]}
+},
+{
+"order": 7,
+"goal": "Estimate nuclear-cluster supernova rate and synchrotron sustainability",
+"method": {"value": "pySTARBURST99 average supernova rate between 3 and 5.8 Myr for the young cluster, converted to mean time between supernovae and compared with synchrotron lifetimes", "evidence": [
+{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "by using pySTARBURST99 (cite: Hawcroft25) to estimate the average supernova rate for the young nuclear cluster"},
+{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "This corresponds to an average time between supernovae of 11,000-30,000 years"}
+]},
+"software": ["pySTARBURST99"],
+"key_parameters": [
+{"value": "IMF slope 1.7; cluster mass above 1 Msun 14,000-37,000 Msun; Z = 0.02; upper mass 120 Msun", "evidence": [
+{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Following (cite: Lu13), we assume an initial mass function with a slope of 1.7"},
+{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "We also adopt a Galactic center metallicity of $Z=0.02$"}
+]}
+],
+"assumptions": [
+{"value": "Magnetic field 1-5 mG gives synchrotron lifetime 10,000-100,000 years", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Field strengths of 1-5 mG observed toward the central parsec (cite: Killeen92; Plante95; Guerra23) correspond to a synchrotron lifetime of 10,000 - 100,000 years (cite: Condon92)."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 8,
+"goal": "Compare kinematics with CMZ orbital models and construct the alternative 3D model",
+"method": {"value": "Compare observed velocity gradients of the clouds and CND with those required by the Kruijssen15 orbit and other models; combine with absorption evidence to place structures in two groups along the line of sight", "evidence": [
+{"loc": "5.2 Revisiting Orbital Constraints", "quote": "Assuming the potential adopted by (cite: Kruijssen15) is broadly correct for the inner 10 parsecs"},
+{"loc": "5.5 An Updated Model of the Inner 10 Parsecs", "quote": "Our main goal with this model is not to provide an exact placement of all of the structures in three dimensions relative to Sgr A\\*"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Potential of Kruijssen15 broadly correct for inner 10 pc", "evidence": [{"loc": "5.2 Revisiting Orbital Constraints", "quote": "Assuming the potential adopted by (cite: Kruijssen15) is broadly correct for the inner 10 parsecs"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Consistency with prior radio constraints and CMZ orbital fits", "evidence": [{"loc": "6 Conclusions", "quote": "we are able to create a model of the central 10 pc that is consistent with the existing observational constraints of this region"}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.6.1-8", "used_for": {"value": "ALMA calibration and imaging (tclean), 7m+12m joint imaging, feathering with total power", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The calibration of the data was performed in the Common Astronomy Software Applications package (CASA versions 5.6.1–8) with the ALMA pipeline."},
+{"loc": "3.2.2 Band 3 and 6 CND Mosaic", "quote": "The 7m and 12m data were then jointly imaged using CASA"}
+]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Line and continuum imaging of 2019.1.01240.S", "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "using the `tclean` task, with a robust weighting of 1.0"}]}},
+{"name": "ALMA pipeline", "version": "not stated", "used_for": {"value": "Calibration of 2019.1.01240.S", "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "(CASA versions 5.6.1–8) with the ALMA pipeline"}]}},
+{"name": "Miriad", "version": "not stated", "used_for": {"value": "GBT+VLA NH3 combination (clean, demos, uvrandom, uvmodel, invert, mossdi, immerge)", "evidence": [
+{"loc": "3.1.2 GBT observations", "quote": "The procedure was based on the Miriad software package, which has now been re-organized as a comprehensive tool, ALMICA"},
+{"loc": "3.1.2 GBT observations", "quote": "we used the Miriad-`uvrandom` and `uvmodel` tasks to convert the deconvolved and VLA-primary-beam attenuated GBT image cubes to visibilities"}
+]}},
+{"name": "ALMICA", "version": "not stated", "used_for": {"value": "Comprehensive tool reorganizing the Miriad-based combination procedure", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "which has now been re-organized as a comprehensive tool, ALMICA"}]}},
+{"name": "pySTARBURST99", "version": "not stated", "used_for": {"value": "Average supernova rate of the young nuclear cluster", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "by using pySTARBURST99 (cite: Hawcroft25) to estimate the average supernova rate for the young nuclear cluster"}]}}
+],
+"results_numeric": [
+{"quantity": "12CO cube per-channel noise (ALMA Band 3)", "value": "13.3 mJy/beam (0.395 K)", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 1, "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "The per-channel noise in this cube is 13.3 mJy/beam (0.395 K)."}]},
+{"quantity": "12CO cube maximum recoverable scale", "value": "21'' (0.84 pc)", "uncertainty": "not stated", "units": "arcsec", "from_step": 1, "evidence": [{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "It is sensitive to emission on size scales up to 21$''$ (0.84 pc)."}]},
+{"quantity": "NH3 (3,3) per-channel noise (VLA+GBT)", "value": "1.3 mJy/beam (0.26 K)", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 2, "evidence": [{"loc": "3.1.2 GBT observations", "quote": "a per-channel noise of 1.3 mJy/beam (0.26 K)"}]},
+{"quantity": "Velocity gradient connecting 50 and 20 km/s clouds", "value": "2.5", "uncertainty": "not stated", "units": "km/s/pc", "from_step": 3, "evidence": [{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "we see a smooth and continuous velocity structure connecting the 20 and 50 km/s clouds, with an average velocity gradient of 2.5 km s$^{-1}$ pc$^{-1}$"}]},
+{"quantity": "Maximum velocity gradient of the Molecular Ridge", "value": "5", "uncertainty": "not stated", "units": "km/s/pc", "from_step": 3, "evidence": [{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "the connecting ‘Molecular Ridge’ has a maximum velocity gradient of 5 km s$^{-1}$ pc$^{-1}$"}]},
+{"quantity": "CND velocity gradient (PV diagram)", "value": "150", "uncertainty": "not stated", "units": "km/s/pc", "from_step": 3, "evidence": [{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "In contrast, the CND has a velocity gradient of 150 km s$^{-1}$ pc$^{-1}$."}]},
+{"quantity": "Sgr A* brightness at 115 GHz", "value": "90 K / 3.3 Jy", "uncertainty": "not stated", "units": "K / Jy", "from_step": 5, "evidence": [{"loc": "4.3 CO absorption toward Sgr A*", "quote": "toward the unresolved bright (90 K / 3.3 Jy at 115 GHz) point source Sgr A\\*"}]},
+{"quantity": "Velocity range of 12CO absorption components in front of Sgr A*", "value": "-200 to 63", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [{"loc": "4.3 CO absorption toward Sgr A*", "quote": "shows dozens of velocity components ranging from -200 km/s to 63 km/s that lie in front of Sgr A\\*"}]},
+{"quantity": "Narrow absorption features in 50/20 km/s cloud velocity range (32, 43, 50, 63 km/s), FWHM", "value": "4 features; FWHM ~1-2", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [{"loc": "4.3 CO absorption toward Sgr A*", "quote": "We identify 4 narrow (FWHM $\\sim 1-2$ km/s) absorption features superposed on the broader absorption trough"}]},
+{"quantity": "90 cm mean intensity, Aperture 1 (Sgr A East interior)", "value": "6.13", "uncertainty": "not stated", "units": "Jy", "from_step": 6, "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "For Aperture 1, we measure a mean intensity of 6.13 Jy."}]},
+{"quantity": "90 cm mean intensity, Aperture 2 (minispiral)", "value": "3.27", "uncertainty": "not stated", "units": "Jy", "from_step": 6, "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "For Aperture 2, we measure a mean intensity of 3.27 Jy."}]},
+{"quantity": "90 cm mean intensity, Aperture 3 (west of Sgr A East and minispiral)", "value": "3.44", "uncertainty": "not stated", "units": "Jy", "from_step": 6, "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "For Aperture 3, we measure a mean intensity of 3.44 Jy."}]},
+{"quantity": "Average supernova rate of the young nuclear cluster (3-5.8 Myr)", "value": "3.4e-5 to 8.9e-5", "uncertainty": "range set by adopted cluster mass", "units": "not stated", "from_step": 7, "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "ranges from 3.4$\\times10^{-5}$ - $8.9\\times10^{-5}$, depending on the adopted cluster mass"}]},
+{"quantity": "Average time between supernovae", "value": "11,000-30,000", "uncertainty": "not stated", "units": "years", "from_step": 7, "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "This corresponds to an average time between supernovae of 11,000-30,000 years"}]},
+{"quantity": "Observed velocity change of the 50/20 km/s clouds over 10 pc", "value": "33", "uncertainty": "not stated", "units": "km/s", "from_step": 8, "evidence": [{"loc": "5.2 Revisiting Orbital Constraints", "quote": "The observed velocity change of the clouds over the same distance is 33 km/s"}]},
+{"quantity": "Line-of-sight distance of 20 km/s cloud, 50 km/s cloud and Sgr A East in front of Sgr A*", "value": "more than 10", "uncertainty": "lower limit", "units": "pc", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "Our model places the 20 km/s cloud, 50 km/s cloud, and Sgr A East more than 10 pc in front of Sgr A\\*."}]}
+],
+"findings_qualitative": [
+{"value": "The Northern Ridge, Western Streamer and Southern Streamer do not link the 50 and 20 km/s clouds to the CND in position-velocity space", "evidence": [{"loc": "4.1 A New NH3 map of the central 10 parsecs", "quote": "The 50 km/s cloud is not feeding the CND through this feature."}]},
+{"value": "ALMA lines show chemical differentiation: H13CN and SO strongest in the inner CND; CH3OH, HC3N and N2H+ strongest in the Southern Streamer and 50/20 km/s cloud gas", "evidence": [{"loc": "4.2 Chemistry of the CND and surrounding gas", "quote": "the strongest emission from the inner CND is seen in H$^{13}$CN (3-2) and SO ($6_5-5_5$)"}]},
+{"value": "The 80 km/s cloud lies at a velocity distinct from CND gas and appears subject to a weaker radiation field", "evidence": [{"loc": "4.2 Chemistry of the CND and surrounding gas", "quote": "indicates the 80 km/s cloud is clearly subject to a less intense radiation field than the CND"}]}
+],
+"claims": [
+{"hypothesis": "Are the 50 and 20 km/s clouds kinematically connected to the CND?", "experiment": "VLA+GBT NH3 (3,3) map and PV diagram compared with features of the Herrnstein05 model", "result": "Velocities of the proposed connecting features are discontinuous with the CND; the clouds show a shallow ~2.5 km/s/pc gradient versus 150 km/s/pc for the CND", "finding": "No evidence for a connection between the CND and the 50 or 20 km/s clouds", "support": "supported", "evidence": [{"loc": "5 Discussion", "quote": "We do not observe any connections in position-velocity space between the CND and either the 50 km/s or 20 km/s clouds."}]},
+{"hypothesis": "Is the molecular gas of the CND chemically distinct from the 50/20 km/s cloud gas and Southern Streamer?", "experiment": "Maps of six ALMA lines (HC3N, N2H+, SO, H13CN, CH3OH, HNC) over the CND mosaic", "result": "H13CN and SO bright in the CND; CH3OH, HC3N and N2H+ faint in the CND and bright in surrounding cloud gas", "finding": "Clear chemical difference between inner CND gas and gas at the velocities of the 50 and 20 km/s clouds", "support": "supported", "evidence": [{"loc": "5 Discussion", "quote": "We see a clear chemical difference for gas associated with the inner CND and gas at velocities of the 50 and 20 km/s clouds"}]},
+{"hypothesis": "Do the 50 and 20 km/s clouds lie in front of Sgr A*?", "experiment": "12CO J=1-0 absorption spectrum toward Sgr A* (ALMA Band 3)", "result": "Four narrow (FWHM ~1-2 km/s) absorption features at 32, 43, 50 and 63 km/s", "finding": "Features attributed to the 50 and 20 km/s clouds, which therefore lie in front of Sgr A*; the distance in front is not set by absorption alone", "support": "supported", "evidence": [{"loc": "5 Discussion", "quote": "which strongly suggests that both lie in front of Sgr A\\*"}]},
+{"hypothesis": "Can the 90 cm morphology of Sgr A be explained with Sgr A West behind Sgr A East?", "experiment": "Three beam-sized aperture intensities at 90 cm, MeerKAT spectral index, supernova-rate and synchrotron-lifetime estimate", "result": "Non-zero 90 cm emission toward the minispiral (3.27 Jy) interpreted as a local synchrotron background", "finding": "An alternative explanation with an extra synchrotron background is viable but requires further testing", "support": "partially", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "Such a scenario should be testable with future, higher-resolution radio observations at low frequencies"}]},
+{"hypothesis": "Can a 3D model of the central 10 pc be reconciled with both radio constraints and CMZ orbital kinematics?", "experiment": "Combine NH3 kinematics, ALMA chemistry, CO absorption and a re-examination of prior constraints", "result": "Minispiral, CND and Western Streamer near Sgr A*; 50 and 20 km/s clouds and Sgr A East more than 10 pc in front", "finding": "Alternative model proposed; connection of the clouds to the CND is not conclusively ruled out", "support": "partially", "evidence": [{"loc": "abstract", "quote": "While this model does not conclusively rule out a connection between the 50 and 20 km/s clouds and the circumnuclear disk"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "GBT data added to the VLA NH3 data to recover spatially extended structure", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "In order to increase sensitivity to spatially-extended structure"}]},
+{"field": "why_this_method", "value": "Robust 1.0 weighting chosen for sensitivity to both point-source and extended emission; NH3 (3,3) chosen as the brightest transition with the simplest hyperfine structure", "evidence": [
+{"loc": "3.2.1 Band 3 CO pointing toward Sgr A*", "quote": "so that the observations were sensitive to a combination of both point source emission and extended emission"},
+{"loc": "3.1.1 VLA observations", "quote": "we focus on observations of the (3,3) line, as it is the brightest of these six transitions"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Option that the minispiral lies in front of Sgr A East and absorbs all its emission, with a partly filled aperture: judged unlikely because the minispiral fills most of the aperture at 6 cm", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "the minispiral emission appears to take up the majority of this aperture"}]},
+{"value": "Option that the minispiral is inside the Sgr A East shell: judged incompatible with the geometric constraints", "evidence": [{"loc": "5.3 Revisiting Radio Absorption Measurements", "quote": "we find that this is incompatible with the geometric constraints discussed previously"}]}
+],
+"limitations_admitted": [
+{"value": "Deconvolution does not conserve integrated flux, leading to underestimates of extended emission in the NH3 combination", "evidence": [{"loc": "3.1.2 GBT observations", "quote": "The deconvolution algorithms used throughout this procedure do not conserve integrated flux densities."}]},
+{"value": "CO absorption cannot set how far in front the clouds are", "evidence": [{"loc": "5 Discussion", "quote": "While our absorption measurements alone cannot determine how far in front the 20 and 50 km/s clouds lie"}]},
+{"value": "Exact line-of-sight distances remain hard to determine", "evidence": [{"loc": "6 Conclusions", "quote": "their exact distance along the line of sight still remains difficult to determine"}]}
+],
+"referee_caveats_inferred": [
+"Main result (cloud placement) rests on kinematic and absorption arguments rather than a quantitative fit; no uncertainties on velocity gradients",
+"CO absorption features are assigned to the clouds by linewidth and velocity alone, and the spectrum extraction is not described",
+"90 cm aperture analysis uses an image of unstated origin and three hand-placed apertures, so the alternative synchrotron-background picture is weakly constrained",
+"ALMA data play a supporting role; much of the ALMA processing (self-cal, masks, line-free channels) is unspecified"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"tclean parameters beyond robust, masks and image sizes",
+"Continuum subtraction and line-free channels for CND mosaic cubes",
+"Aperture and extraction recipe for the 12CO absorption spectrum",
+"Total-power and feather settings for 2013.1.00857.S",
+"VLA and GBT NH3 data access and processing details (only referred to other papers)",
+"Identity and location of the 90 cm image"
+],
+"estimated_data_volume_inferred": "Roughly 100-500 GB of raw ALMA data across the two projects (11-pointing Band 3 and 68-pointing Band 6 mosaics with 12m+ACA+TP, plus eight sessions of the 2019 survey); estimate only",
+"score_inferred": 2,
+"score_reason": "ALMA project codes and observation properties are given, but key imaging and extraction settings are missing, the VLA/GBT data and 90 cm image are not tied to public products, and the main conclusions are largely qualitative kinematic and chemical arguments.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state data are public, many processing settings are missing, and the headline results (3D placement of clouds) are qualitative rather than numeric.",
+"methods_papers": [
+{"citation": "(cite: Mills15)", "why": "VLA calibration procedure used for the NH3 data"},
+{"citation": "(cite: Minh13)", "why": "GBT NH3 data calibration details"},
+{"citation": "(cite: Liu13)", "why": "GBT+VLA combination procedure (Appendix A)"},
+{"citation": "(cite: Sault95)", "why": "Miriad software reference"}
+],
+"companion_papers": [
+{"citation": "(cite: Wallace22)", "why": "Observations toward Sgr E from the same 2019.1.01240.S survey"},
+{"citation": "Mai et al. in prep.", "why": "More thorough ALMA study of chemistry and kinematics of the CND and surrounding gas"},
+{"citation": "(cite: Lipman25); (cite: Walker25)", "why": "Independent absorption-based constraints on the cloud line-of-sight positions"}
+],
+"related_projects_or_surveys": [
+"2019.1.01240.S: ALMA Cycle 7 survey of 25 pointings within the central 5 degrees of the Galaxy",
+"VLA K-band NH3 survey of Galactic center clouds (Mills15 and related papers)"
+]
+}

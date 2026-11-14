@@ -1,0 +1,555 @@
+{
+ "bibcode": "2020ApJ...901...71S",
+ "title": "Low-level Carbon Monoxide Line Polarization in Two Protoplanetary Disks: HD 142527 and IM Lup",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abaef7",
+ "arxiv_id": "2008.04952",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Can CO, 13CO and C18O (J=2-1) line polarization from the Goldreich-Kylafis effect be detected, or tightly limited, in the protoplanetary disks HD 142527 and IM Lup, and how does 1.3 mm continuum polarization compare with 870 um?",
+ "alma_project_codes": [
+  "2018.1.01172.S",
+  "2015.1.00425.S",
+  "2016.1.00712.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' (~80 au); 1.3 mm continuum beam 0.51'' x 0.45'' (HD 142527), 0.51'' x 0.44'' (IM Lup); line beams ~0.56-0.60''; re-imaged 870 um HD 142527 data 0.27'' x 0.24''",
+  "sensitivity": "CO(2-1) Stokes QUV noise 3.3 mJy per channel; continuum Stokes I rms 0.037 (HD 142527) and 0.022 (IM Lup) mJy/beam; QUV continuum 0.022 mJy/beam (Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "870 um ALMA polarization images of IM Lup (0.50'' x 0.40''), downloaded from the online version of the paper, used for the continuum comparison",
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "we downloaded the polarization images provided in the online version of (cite: Hull2018), which have a resolution of 0.50$''$ $\\times$ 0.40$''$."
+     }
+    ]
+   },
+   "citation": "Hull2018"
+  },
+  {
+   "what": {
+    "value": "Disk models (stellar mass, inclination, position angle, characteristic radius) used as GoFish and morphological-model inputs",
+    "evidence": [
+     {
+      "loc": "Stacking via `GoFish`",
+      "quote": "We find estimates for most these parameters from disk models from (cite: PerezS2015) and (cite: Cleeves2016)."
+     }
+    ]
+   },
+   "citation": "PerezS2015; Cleeves2016"
+  },
+  {
+   "what": {
+    "value": "HD 142527 distance 157 pc",
+    "evidence": [
+     {
+      "loc": "Targets",
+      "quote": "HD 142527 is a close binary system located 157 pc away (cite: Arun2019)."
+     }
+    ]
+   },
+   "citation": "Arun2019"
+  },
+  {
+   "what": {
+    "value": "IM Lup distance 158 pc",
+    "evidence": [
+     {
+      "loc": "Targets",
+      "quote": "IM Lup is a K5 Class II T Tauri star located 158 pc away (cite: Alcala2017; Gaia2018)."
+     }
+    ]
+   },
+   "citation": "Alcala2017; Gaia2018"
+  },
+  {
+   "what": {
+    "value": "Surface density profile form for the morphological model",
+    "evidence": [
+     {
+      "loc": "Morphological Model",
+      "quote": "We assume a surface density profile that follows the form in (cite: Andrews2011)"
+     }
+    ]
+   },
+   "citation": "Andrews2011"
+  },
+  {
+   "what": {
+    "value": "Predicted GK line polarization of disks (PORTAL, CO(3-2)), compared with the observed limits",
+    "evidence": [
+     {
+      "loc": "Summary and Discussion",
+      "quote": "So far, (cite: Lankhaar2020) has the only model that predicts line polarization for a disk."
+     }
+    ]
+   },
+   "citation": "Lankhaar2020"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate on continuum and transfer solutions",
+   "method": "Three phase-only self-calibration iterations on continuum Stokes I, with solutions applied to continuum Stokes QUV and line Stokes IQUV",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Solution intervals: infinite, 25 s, 10 s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and line cubes",
+   "method": "tclean with Briggs weighting robust 0.5; continuum made from continuum baseband plus line-free channels; line continuum subtracted; primary-beam corrected",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Robust = 0.5; pixel size 0.11''; continuum bandwidth 2.150 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Build polarization maps (P_I, Pfrac, chi)",
+   "method": "Compute polarized intensity, polarization fraction and position angle from Stokes IQU, with de-biasing following Hull et al. 2015",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Characterise Stokes QUV noise",
+   "method": "Gaussian fit of CO(2-1) QUV cube noise before primary-beam correction, moment 6 (rms) maps for spatial variation, and autocorrelation along the spectral axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare 1.3 mm and 870 um continuum polarization",
+   "method": "Re-image archival 870 um HD 142527 data (calibrated by helpdesk) the same way, regrid and smooth to the common resolution; use published 870 um IM Lup images; compare polarized intensity, Pfrac ratio and angle difference",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "HD 142527 regridded to 0.06'' pixels; IM Lup to 0.1'' pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Estimate line optical depths",
+   "method": "Solve numerically the line-ratio equation R = F1/F2 for tau, per channel and from integrated intensity maps, using isotopic ratios",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "[12CO]/[13CO] = 70 and [12CO]/[C18O] = 500",
+    "Flux-to-brightness-temperature conversion roughly identical for the lines (varies <1%), so flux ratio is used"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Model expected Q and U morphology",
+   "method": "Build elliptical-polarization Q and U maps with Stokes I following a surface-density profile, smoothed to the beam and normalised to U_max, to choose stacking quadrants",
+   "software": [],
+   "key_parameters": [
+    "HD 142527: PA = 160 deg, i = 28 deg, Rc = 200 au; IM Lup: PA = 144 deg, i = 48 deg, Rc = 100 au; gamma = 1"
+   ],
+   "assumptions": [
+    "Pfrac constant across the disk; surface density proportional to Stokes I"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Stack Stokes parameters along Keplerian rotation",
+   "method": "Use GoFish to align spectra to deprojected Keplerian centroid velocities, stacking over the whole disk and over 90 deg quadrants (two starting angles, alternating rmin), for CO, 13CO, C18O",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "HD 142527: M* = 2.8 Msun, PA_red = 160 deg, i = 28 deg, d = 157 pc; IM Lup: M* = 1 Msun, PA_red = 144 deg, i = 48 deg, d = 158 pc; z0 = 0.1'' for both; IM Lup x-offset 0.8''",
+    "rmax where Stokes I drops to 90% of peak moment 0 value, rounded to 3'' (HD 142527) and 4'' (IM Lup); rmin alternates 0 and 0.17'' (HD 142527) or 0 and 0.5'' (IM Lup)",
+    "Other GoFish inputs left at defaults"
+   ],
+   "assumptions": [
+    "Keplerian rotation with inputs from published disk models"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Search for Q signal in optimised circular apertures",
+   "method": "Inspect average spectra in circular apertures, then a custom script varying aperture size and position to maximise SNR_Q = |sum Q| / sigma over N consecutive channels, with channel covariance included",
+   "software": [],
+   "key_parameters": [
+    "Aperture centred on a pixel with integer radii"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "Monte Carlo test of aperture-search false-signal rate",
+   "method": "Run the same SNR_Q maximisation at each 0.11'' pixel within 15'' of the map centre over a range of aperture radii and channel windows, to obtain the expected maximum SNR distribution",
+   "software": [],
+   "key_parameters": [
+    "Aperture radii 1 to 27 pixels; 2 to 32 consecutive channels (~0.16 to 2.5 km/s)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 11,
+   "goal": "Derive pixel-by-pixel 3 sigma Pfrac upper limits",
+   "method": "For each unmasked pixel find the channel sum maximising sum I over N channels and compute 3 sigma_PI sqrt(1.6N-0.6)/sum I, for several velocity intervals",
+   "software": [],
+   "key_parameters": [
+    "Velocity intervals 0.5, 1, 1.5 km/s shown; sigma_PI = sigma_Q = sigma_U; pixels with moment 0 SNR < 10 masked"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 12,
+   "goal": "Derive upper limits from stacked spectra and test robustness",
+   "method": "Apply the same upper-limit equation to GoFish stacked spectra (whole disk and quadrants) using the noise of the Stokes V stacked spectrum; one thousand Monte Carlo runs perturbing mass, inclination and PA",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Gaussian sigma of 15% for mass and 5 deg for inclination and PA"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(2-1) polarization fraction, HD 142527 (abstract)",
+   "value": "1.57",
+   "uncertainty": "0.18",
+   "units": "%",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The total CO(2–1) polarization fractions are 1.57 $\\pm$ 0.18% and 1.01 $\\pm$ 0.10% for HD 142527 and IM Lup, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "De-biased CO(2-1) Pfrac at max-SNR_Q aperture, HD 142527 (text/summary value)",
+   "value": "1.56",
+   "uncertainty": "0.18",
+   "units": "%",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "the de-biased $P_{\\text{frac}}$ is 1.56 $\\pm$ 0.18% and 1.01 $\\pm$ 0.10%, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "De-biased CO(2-1) Pfrac at max-SNR_Q aperture, IM Lup",
+   "value": "1.01",
+   "uncertainty": "0.10",
+   "units": "%",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "the de-biased $P_{\\text{frac}}$ is 1.56 $\\pm$ 0.18% and 1.01 $\\pm$ 0.10%, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Sum of Stokes Q over pink channels, HD 142527 and IM Lup",
+   "value": "10.8 and 9.9 (SNR_Q = 8.7 and 9.6)",
+   "uncertainty": "1.2 and 1.0",
+   "units": "mJy/beam",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "10.8 $\\pm$ 1.2 mJy bm$^{-1}$ (SNR$_Q$ = 8.7) and 9.9 $\\pm$ 1.0 mJy bm$^{-1}$ (SNR$_Q$ = 9.6), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Sum of Stokes U over the same channels, HD 142527 and IM Lup",
+   "value": "2.7 and 3.7",
+   "uncertainty": "1.5 and 1.2",
+   "units": "mJy/beam",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "are 2.7 $\\pm$ 1.5 mJy bm$^{-1}$ and 3.7 $\\pm$ 1.2 mJy bm$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle chi at max-SNR_Q aperture, HD 142527 and IM Lup",
+   "value": "6.9 and 10.1",
+   "uncertainty": "3.9 and 3.2",
+   "units": "deg",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "The position angles $\\chi$ are 6.9$^\\circ$ $\\pm$ 3.9$^\\circ$ and 10.1$^\\circ$ $\\pm$ 3.2$^\\circ$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Monte Carlo mean maximum SNR_Q per pixel, HD 142527",
+   "value": "4.7",
+   "uncertainty": "standard deviation 0.9",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "For HD 142527, the mean SNR$_Q$ for each pixel is 4.7 with a standard deviation of 0.9."
+    }
+   ]
+  },
+  {
+   "quantity": "Monte Carlo mean maximum SNR_Q per pixel, IM Lup",
+   "value": "5.0",
+   "uncertainty": "standard deviation 1.0",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "For IM Lup, the mean SNR$_Q$ for each pixel is 5.0 with a standard deviation of 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Highest Stokes U SNR within the gaseous disks (Monte Carlo), HD 142527 and IM Lup",
+   "value": "6.9 and 8.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "the highest values of SNR$_U$ within the areas of the gaseous disks are 6.9 and 8.0 for HD 142527 and IM Lup respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Moment 0 QUV sensitivity, HD 142527",
+   "value": "0.78",
+   "uncertainty": "not stated",
+   "units": "mJy/beam km/s",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Searching for Signal within an Aperture",
+     "quote": "given the sensitivity in the $QUV$ moment 0 maps is $\\sigma$ = 0.78 mJy bm$^{-1}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) Stokes QUV cube noise",
+   "value": "0.0 mean, 3.3 rms",
+   "uncertainty": "3.3",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stokes $QUV$ Noise Characterization",
+     "quote": "with an average value of 0.0 $\\pm$ 3.3 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Self-calibration SNR gain, HD 142527 and IM Lup",
+   "value": "6 and 3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observing Details and Data Reduction",
+     "quote": "Self-calibration improved the continuum Stokes $I$ signal-to-noise ratio for HD 142527 and IM Lup by a factor of 6 and 3, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) optical depth, HD 142527",
+   "value": ">30 almost everywhere, as low as 14 at disk center",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical Depth",
+     "quote": "We find that CO(2–1) optical depths are $>$30 for all locations except the center of the disk, where the optical depth is as low as 14."
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(2-1) optical depth range, HD 142527",
+   "value": "~1 to 7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical Depth",
+     "quote": "range from $\\sim$1 to 7, and the optical depth for C$^{18}$O(2–1) is between 0.1 and 1."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O(2-1) optical depth range, HD 142527",
+   "value": "0.1 to 1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical Depth",
+     "quote": "range from $\\sim$1 to 7, and the optical depth for C$^{18}$O(2–1) is between 0.1 and 1."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) optical depth, IM Lup",
+   "value": "typically ~40, range ~10-100",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical Depth",
+     "quote": "we find that CO(2–1) optical depths are typically about 40, but range from about 10–100."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum Pfrac ratio 1.3 mm / 870 um and angle difference in northern HD 142527",
+   "value": "ratio up to ~5; angle difference up to 90 deg",
+   "uncertainty": "not stated",
+   "units": "dimensionless (ratio); deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "reaching values as high as $\\sim$5, and the difference in polarization angle is as large as $90^\\circ$ (i.e., perpendicular)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixel-wise 3 sigma Pfrac upper limits at brightest continuum spots, HD 142527",
+   "value": "<3% CO(2-1) and 13CO(2-1); <4% C18O(2-1)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Constraining the Polarization Percentage of the Observations",
+     "quote": "the polarization 3$\\sigma$ upper limits are typically less than 3% for CO(2–1) and $^{13}$CO(2–1), and 4% for C$^{18}$O(2–1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixel-wise 3 sigma Pfrac upper limits at brightest continuum spots, IM Lup",
+   "value": "<3% CO(2-1); <4% 13CO(2-1); <12% C18O(2-1)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Constraining the Polarization Percentage of the Observations",
+     "quote": "the polarization 3$\\sigma$ upper limits are typically less than 3% for CO(2–1), 4% for $^{13}$CO(2–1), and 12% for C$^{18}$O(2–1)."
+    }
+   ]
+  },
+  {
+   "quantity": "GoFish stacked 3 sigma Pfrac limits, CO(2-1) (HD 142527 whole disk, quadrants; IM Lup whole disk, quadrants)",
+   "value": "0.2-0.3%; 0.3-0.9%; 0.2-0.3%; 0.3-0.5%",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.2% – 0.3% | 0.3% – 0.9% | 0.2% – 0.3% | 0.3% – 0.5%"
+    }
+   ]
+  },
+  {
+   "quantity": "GoFish stacked 3 sigma Pfrac limits, 13CO(2-1) (HD 142527 whole disk, quadrants; IM Lup whole disk, quadrants)",
+   "value": "0.3-0.4%; 0.4-0.9%; 0.3-0.5%; 0.6-1.0%",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.3% – 0.4% | 0.4% – 0.9% | 0.3% – 0.5% | 0.6% – 1.0%"
+    }
+   ]
+  },
+  {
+   "quantity": "GoFish stacked 3 sigma Pfrac limits, C18O(2-1) (HD 142527 whole disk, quadrants; IM Lup whole disk, quadrants)",
+   "value": "0.4-0.5%; 0.5-1.1%; 1.1-1.4%; 1.9-3.3%",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.4% – 0.5% | 0.5% – 1.1% | 1.1% – 1.4% | 1.9% – 3.3%"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacking limit improvement over pixel-by-pixel analysis",
+   "value": "up to a factor of ~10 lower",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Constraining the Polarization Percentage of the Observations",
+     "quote": "the stacking method performs better, having lower 3$\\sigma$ upper limits by a factor of up to $\\sim$10."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters other than weighting and robust: niter, threshold, deconvolver, masks, image size, uv-taper, spectral grid and rest frequencies",
+  "Which channels were treated as line-free for continuum subtraction and the fit order",
+  "Reference antenna, gain tables and spw/channel selections used in the three self-calibration rounds",
+  "CASA version used by the ARC for manual calibration and the delivered calibration scripts",
+  "Velocity ranges used for the moment 0 maps and for the 90% peak r_max definition details",
+  "GoFish version and the 'default' stacking options (e.g. resample, method, centroid handling)",
+  "Exact aperture-search script (channel start range, aperture centering grid, tie-breaking), only described in words",
+  "How the 870 um HD 142527 data were calibrated and which imaging settings were used (referred to as the same as the 1.3 mm data)",
+  "Position-dependent upper-limit map settings beyond velocity intervals (masks, smoothing)"
+ ],
+ "missing_for_reproduction": [
+  "The custom aperture-search script and its exact search grid",
+  "Full tclean parameters (niter, threshold, masks, image size, spectral grid) and line-free channel definitions",
+  "Calibration scripts and CASA version for the ARC manual calibration",
+  "Velocity ranges for the moment 0 maps and the pink integrated channels",
+  "GoFish version and non-default options"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data (project 2018.1.01172.S) are archival and results are numeric, but imaging details, channel selections and the custom aperture-search script are not given, and the detection significance depends on those choices.",
+ "rediscovery_reason": "Data come from a single archived ALMA project, the main results are numeric (Pfrac, SNR_Q, upper limits) and the analysis algorithm (aperture SNR maximisation, GoFish stacking, upper-limit equation) is described in enough detail to redo approximately.",
+ "source_card": "cards/2020ApJ...901...71S/sonnet/card.md"
+}

@@ -1,0 +1,440 @@
+{
+ "bibcode": "2026MNRAS.549ag931B",
+ "title": "ALMA Band 2 line survey of a z = 3.44 clumpy strongly lensed submillimetre galaxy",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag931",
+ "arxiv_id": "2604.01089",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the molecular and dense gas inventory and ISM conditions of the strongly lensed z = 3.44 submillimetre galaxy SPT-S J002706-5007.4 using the new ALMA Band 2 receivers, and how will Band 2 perform for future high-redshift spectroscopic surveys?",
+ "alma_project_codes": [
+  "2011.0.00025.SV",
+  "2015.1.00504.S",
+  "2022.1.00172.S",
+  "2022.1.00526.S",
+  "2023.1.01585.S"
+ ],
+ "data": {
+  "bands": "Band 2 (67-116 GHz), Band 3 (~100 GHz), Band 7 (~343 GHz)",
+  "arrays": "25 telescopes (Band 2)",
+  "angular_resolution": "Band 2 cubes: 0.62x0.47 arcsec to 0.87x0.76 arcsec; Band 2 continuum: 0.72x0.60 arcsec; Band 3: 4.85x4.52 arcsec, 1.25x1.02 arcsec, 1.5x1.4 arcsec; Band 7: 50x44 mas",
+  "sensitivity": "Band 2 cubes: 0.73-1.33 mJy/beam per 35 km/s bin (~0.63 mJy/beam in 0.2 GHz overlaps); Band 2 continuum: 5.6 uJy/beam; Band 3: 1.7-1.0 mJy/beam, 0.4 mJy/beam (10 km/s), 0.25 mJy/beam (35 km/s); Band 7 continuum: 38 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshift z_spec = 3.44, lensing magnification factor mu ~ 5.5, intrinsic FIR luminosity L_FIR ~ 8.5 x 10^13 L_sun, and SPT redshift distribution",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The source is among the brightest of these lensed sources, with a lensing magnification factor of $\\mu \\simeq 5.5$ (cite: Spilker2016; reuter20) and an intrinsic far-infrared (FIR) luminosity of $L_{\rm FIR} \\simeq 8.5 \times{}10^{13}$ $L_{\\odot}$, corresponding to a SFR of 3200 $M_{\\odot}$ yr$^{-1}$."
+     },
+     {
+      "loc": "Prospects of redshift surveys in the Band 2 and WSU era",
+      "quote": "Evaluated against the HerBS (cite: bakx18; Bakx2020Erratum) and SPT (cite: reuter20) redshift distributions"
+     }
+    ]
+   },
+   "citation": "(cite: Spilker2016; reuter20)"
+  },
+  {
+   "what": {
+    "value": "Catalogue of bright lines expected for DSFGs and CO spectral line energy distribution (SLED) scaling",
+    "evidence": [
+     {
+      "loc": "Observations, Data Reduction, and Fluxes",
+      "quote": "Using the catalogue of bright lines expected for DSFGs from (cite: Spilker2014; Hagimoto2023) and (cite: Reuter2023), I investigate all lines within the observed wavelengths."
+     },
+     {
+      "loc": "Prospects of redshift surveys in the Band 2 and WSU era",
+      "quote": "I assume the line brightnesses following the CO spectral line energy distribution (SLED) scaling from (cite: Hagimoto2023) for transitions from CO(1–0) up to CO(7–6)."
+     }
+    ]
+   },
+   "citation": "(cite: Spilker2014; Hagimoto2023; Reuter2023)"
+  },
+  {
+   "what": {
+    "value": "Assumed values of the ALMA receivers, current and in the WSU (Table 2)",
+    "evidence": [
+     {
+      "loc": "Prospects of redshift surveys in the Band 2 and WSU era",
+      "quote": "while the receiver upgrade is expected to double or quadruple present-day bandwidths, approaching the capabilities of NOEMA (Table 2; from (cite: Carpenter2023))."
+     }
+    ]
+   },
+   "citation": "(cite: Carpenter2023)"
+  },
+  {
+   "what": {
+    "value": "HerBS redshift distribution",
+    "evidence": [
+     {
+      "loc": "Prospects of redshift surveys in the Band 2 and WSU era",
+      "quote": "Evaluated against the HerBS (cite: bakx18; Bakx2020Erratum) and SPT (cite: reuter20) redshift distributions"
+     }
+    ]
+   },
+   "citation": "(cite: bakx18; Bakx2020Erratum)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA Band 2, Band 3, and Band 7 datasets",
+   "method": "Calibrate data using the ALMA Pipeline / SCRIPTFORPI.PY (or retrieve archive cubes for 2015.1.00504.S), then image cubes and continuum using CASA TCLEAN with natural weighting (robust = 2) and auto-masking; average line-free channels for Band 2 continuum.",
+   "software": [
+    "CASA",
+    "ALMA Pipeline",
+    "TCLEAN",
+    "SCRIPTFORPI.PY"
+   ],
+   "key_parameters": [
+    "robust = 2 (natural weighting); 35 km/s bins (Band 2 and 2022.1.00526.S), 10 km/s bins (2022.1.00172.S); auto-masking"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract full spectra and velocity-integrated line fluxes",
+   "method": "Extract full spectra using a single wide aperture extending down to 2-sigma in Band 2 dust continuum widened by two beams. Extract individual continuum-subtracted line fluxes using the Band 2 continuum image smoothed to the cube resolution and widened by up to five beams depending on SNR.",
+   "software": [],
+   "key_parameters": [
+    "2-sigma Band 2 continuum contour widened by 2 beams (for full spectrum) or up to 5 beams (for individual line fluxes); >4-sigma detection in moment-0 map"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive line luminosity ratios, ISM conditions, and dense gas fraction",
+   "method": "Calculate CO(4-3)/CO(3-2) flux ratio, [C I]/CO(4-3) and HCN(5-4)/CO(4-3) line luminosity ratios using Solomon (2005) equations, compare [C I] ratios to PDR models, and compute dense-to-molecular gas mass fraction using conversion factors and excitation ratios.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat Lambda-CDM cosmology with Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.674",
+    "alpha_HCN = 10 M_sun (K km s^-1 pc^2)^-1, alpha_CO = 1 M_sun (K km s^-1 pc^2)^-1, r_4,1 = 1 for CO, r_5,1 = 0.25 for HCN"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure clump flux contribution from high-resolution Band 7 continuum",
+   "method": "Measure the flux of the clumpy extended emission between the four lensed images in Band 7 and compare to the total emission of the source.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Evaluate redshift search efficiency of ALMA Band 2 and WSU configurations",
+   "method": "Use public redshift search optimisation tool to compute redshift identification probability as a function of redshift for filled Band 3 vs Band 2 WSU setups (8 GHz and 14 GHz bandwidths), and compare Band 2 vs Band 4 observing time efficiency for a fiducial DSFG.",
+   "software": [
+    "redshift-search-graphs"
+   ],
+   "key_parameters": [
+    "WSU candidate instantaneous sideband bandwidths of 8 GHz (3 tunings) and 14 GHz (2 tunings covering 67-115 GHz)"
+   ],
+   "assumptions": [
+    "Fiducial DSFG with L_IR = 10^12 L_sun, CO SLED scaling from Hagimoto et al. (2023), HerBS and SPT redshift distributions, and analytical sensitivity equation from ALMA Technical Handbook"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 2 integrated continuum flux density (S_Band 2 at 93.935 GHz)",
+   "value": "147",
+   "uncertainty": "23",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations, Data Reduction, and Fluxes",
+     "quote": "The integrated continuum flux density is $S_{\rm Band\\ 2} = 147 \\pm 23$ $\\mu$Jy, corresponding to an observed average frequency of 93.935 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) velocity-integrated flux density (Band 2)",
+   "value": "12.35",
+   "uncertainty": "1.45",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO(3–2) | 345.7960 | 77.8293 | 12.35 $\\pm$ 1.45$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3) velocity-integrated flux density (Band 2)",
+   "value": "21.05",
+   "uncertainty": "1.57",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO(4–3) | 461.0408 | 103.7679 | 21.05 $\\pm$ 1.57$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(4-3) velocity-integrated flux density upper limit (Band 2)",
+   "value": "<0.84",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$^{13}$CO(4–3) | 440.7652 | 99.2044 | $<$0.84$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O(4-3) velocity-integrated flux density upper limit (Band 2)",
+   "value": "<2.01",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C$^{18}$O(4–3) | 439.0888 | 98.8270 | $<$2.01$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] 609 um velocity-integrated flux density (Band 2)",
+   "value": "5.96",
+   "uncertainty": "1.26",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "609 $\\mu$m | 492.1606 | 110.7721 | 5.96 $\\pm$ 1.26$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3) velocity-integrated flux density upper limit (Band 2)",
+   "value": "<2.01",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCN(4–3) | 354.5055 | 79.7896 | $<$2.01$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(5-4) velocity-integrated flux density (Band 2)",
+   "value": "1.30",
+   "uncertainty": "0.69",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCN(5–4) | 443.1161 | 99.7335 | 1.30 $\\pm$ 0.69$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC(4-3) velocity-integrated flux density (Band 2)",
+   "value": "1.45",
+   "uncertainty": "0.82",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HNC(4–3) | 362.6303 | 81.6183 | 1.45 $\\pm$ 0.82$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC(5-4) velocity-integrated flux density (Band 2)",
+   "value": "1.32",
+   "uncertainty": "0.63",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HNC(5–4) | 453.2699 | 102.0188 | 1.32 $\\pm$ 0.63$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3) velocity-integrated flux density upper limit (Band 2)",
+   "value": "<1.23",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCO$^+$(4–3) | 356.7342 | 80.2912 | $<$1.23$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(5-4) velocity-integrated flux density (Band 2)",
+   "value": "1.73",
+   "uncertainty": "0.89",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCO$^+$(5–4) | 445.9029 | 100.3607 | 1.73 $\\pm$ 0.89$^{\\dagger}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3)/CO(3-2) flux ratio",
+   "value": "1.7",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ISM conditions from the Band 2 window",
+     "quote": "The flux ratio between CO($J$ = 3–2) and CO($J$ = 4–3) find a ratio of $1.7 \\pm 0.3$, where I note that the Band 2 data allows us to compare these values directly through a singly-defined aperture."
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](3P1-3P0)/CO(4-3) line luminosity ratio",
+   "value": "0.30",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion: ISM conditions from the Band 2 window",
+     "quote": "the line luminosity ratio of \\[C i\\]($^{3}P_{1}$–$^{3}P_{0}$)/CO($J$ = 4–3) is 0.30 $\\pm$ 0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] line luminosity (L_[CI])",
+   "value": "6.5e8",
+   "uncertainty": "1.4e8",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ISM conditions from the Band 2 window",
+     "quote": "The line luminosity of $L_{\rm [C_I]}$ is (6.5 $\\pm$ 1.4) $\times 10^8$ L$_{\\odot}$, for a [C i] line-to-infrared luminosity of $(1.38 \\pm 0.27) \times 10^{-6}$, suggesting a relatively strong far-ultraviolet radiation intensity field of 10$^{3.8}$ Habing."
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] line-to-infrared luminosity ratio",
+   "value": "1.38e-6",
+   "uncertainty": "0.27e-6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ISM conditions from the Band 2 window",
+     "quote": "The line luminosity of $L_{\rm [C_I]}$ is (6.5 $\\pm$ 1.4) $\times 10^8$ L$_{\\odot}$, for a [C i] line-to-infrared luminosity of $(1.38 \\pm 0.27) \times 10^{-6}$, suggesting a relatively strong far-ultraviolet radiation intensity field of 10$^{3.8}$ Habing."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred gas density (n_H)",
+   "value": "10^4.5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion: ISM conditions from the Band 2 window",
+     "quote": "which is in line with gas densities ($n_{\\rm H}$) of $10^{4.5}$ (cite: Kaufman2006; Hagimoto2023)"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred far-ultraviolet radiation intensity",
+   "value": "10^3.8",
+   "uncertainty": "not stated",
+   "units": "Habing",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion: ISM conditions from the Band 2 window",
+     "quote": "suggesting a relatively strong far-ultraviolet radiation intensity field of 10$^{3.8}$ Habing"
+    }
+   ]
+  },
+  {
+   "quantity": "L'_HCN(5-4) / L'_CO(4-3) line luminosity ratio",
+   "value": "0.067",
+   "uncertainty": "0.036",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ISM conditions from the Band 2 window",
+     "quote": "The line luminosity ratio of $L'_{\rm HCN(5-4)} / L'_{\rm CO(4-3)} = 0.067 \\pm 0.036$ is relatively high when compared to stacks (cite: Spilker2014; Hagimoto2023; Reuter2023)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dense to total molecular gas fraction",
+   "value": "17",
+   "uncertainty": "9",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The dense gas fraction is estimated at $17 \\pm 9$ per cent, consistent with other dusty star-forming galaxies selected from wide-area surveys."
+    },
+    {
+     "loc": "ISM conditions from the Band 2 window",
+     "quote": "The subsequent ratio of dense to total molecular gas is thus $17 \\pm 9$ per cent"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-forming clump flux contribution to total Band 7 emission",
+   "value": "30-50",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "High-resolution Band 7 continuum imaging reveals a clumpy lensed morphology, with star-forming clumps contributing 30–50 per cent of the total emission."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges or channel indices defined as line-free for Band 2 continuum averaging and continuum subtraction",
+  "Method used for continuum subtraction (e.g., uvcontsub in visibility domain vs image-plane polynomial baseline subtraction)",
+  "TCLEAN imaging parameters: cell size, image size, deconvolver, stopping threshold, and niter",
+  "Exact number of beams (N_beam) used to widen the extraction aperture for each individual spectral line, and velocity integration windows for moment-0 and flux integration",
+  "Exact spatial aperture or segmentation method used to separate clump flux from total emission in the Band 7 continuum map"
+ ],
+ "missing_for_reproduction": [
+  "Exact aperture dilation factor (N_beam) and velocity integration range used for each individual line in Table 1",
+  "Exact TCLEAN cell size, image size, and stopping criteria",
+  "Definition of line-free frequency channels and continuum subtraction method",
+  "Exact spatial regions used to measure the 30-50% clump flux fraction in Band 7"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "All ALMA datasets (including pre-calibrated Band 2 Science Verification files) and the redshift optimisation code are publicly available, CASA version and weighting are specified, and the analysis relies on straightforward aperture photometry and analytical equations, with only minor imaging and aperture parameters left unstated.",
+ "rediscovery_reason": "All data are publicly available on the ALMA Science Archive / SV portal, the data reduction uses standard pipeline scripts and natural weighting (robust=2), and the main results are concrete numeric line fluxes, continuum flux, and line luminosity ratios.",
+ "source_card": "cards/2026MNRAS.549ag931B/sonnet/card.md"
+}

@@ -1,0 +1,474 @@
+{
+ "bibcode": "2021ApJ...915...46C",
+ "title": "ALMA Host Galaxy Observation of the Off-axis Gamma-Ray Burst XRF 020903",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac00b4",
+ "arxiv_id": "2105.05508",
+ "fields": [
+  "transients",
+  "high_z_galaxies"
+ ],
+ "question": "Whether the submillimeter/millimeter radio properties (dust continuum, CO emission, molecular gas mass, and gas depletion timescale) of the off-axis GRB XRF 020903 host galaxy resemble those of classical GRB host galaxies, supporting an identical origin.",
+ "alma_project_codes": [
+  "2015.1.01254.S",
+  "2016.1.01333.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0\".38 x 0\".33 (Band 3), 0\".27 x 0\".23 (Band 6), 0\".42 x 0\".36 (CO velocity-integrated map)",
+  "sensitivity": "3-sigma upper limits: 0.032 mJy at 113 GHz, 0.061 mJy at 224 GHz, 0.57 mJy for 180 km/s CO velocity-integrated map"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshift z=0.251 and HST optical measurements of XRF 020903 host galaxy",
+    "evidence": [
+     {
+      "loc": "Off-Axis GRB, X-Ray Flash 020903",
+      "quote": "The redshift of $z=0.251$ (cite: soderberg2004) was measured via optical spectroscopic observation observations."
+     },
+     {
+      "loc": "IR Luminosity and Star Formation Rate (SFR) with GRB Host Galaxies",
+      "quote": "In terms of the SED for describing optical measurements, we primarily used the HST measurement (cite: soderberg2004), because the ground-based multicolor measurements were affected by the nearby galaxies, as reported by (cite: bersier06)."
+     }
+    ]
+   },
+   "citation": "(cite: soderberg2004)"
+  },
+  {
+   "what": {
+    "value": "Spatially resolved metallicities of four regions in XRF 020903 host galaxy (8.1 +/- 0.1 for burst site and ~8.2 for remaining regions)",
+    "evidence": [
+     {
+      "loc": "Off-Axis GRB, X-Ray Flash 020903",
+      "quote": "Using line diagnostics (cite: thorp2018), the low metallicities for all of four regions were measured to be $8.1\\pm0.1$ for the burst site and $\\sim$8.2 for the remaining regions."
+     }
+    ]
+   },
+   "citation": "(cite: thorp2018)"
+  },
+  {
+   "what": {
+    "value": "H-alpha, [O II], or UV SFR measurements for XRF 020903 (2.65 M_sun yr^-1) and reference GRB host galaxies",
+    "evidence": [
+     {
+      "loc": "IR Luminosity and Star Formation Rate (SFR) with GRB Host Galaxies",
+      "quote": "This estimation is consistent with the measurement (2.65$M_{\\ensuremath{\\odot}}$ yr$^{-1}$) using $H_{\\alpha}$ or rather small (cite: ghost)."
+     },
+     {
+      "loc": "IR Luminosity and Star Formation Rate (SFR) with GRB Host Galaxies",
+      "quote": "Figure [4](#sfr) shows a comparison between the estimated SFRs and those measured based on $H_{\\alpha}$, \\[\\$\\rm O_{II}\\$\\] or UV fluxes (cite: ghost)."
+     }
+    ]
+   },
+   "citation": "(cite: ghost)"
+  },
+  {
+   "what": {
+    "value": "Luminosity-dependent IR SED template library",
+    "evidence": [
+     {
+      "loc": "IR Luminosity and Star Formation Rate (SFR) with GRB Host Galaxies",
+      "quote": "We referred to the SED library provided by (cite: chary01), which is luminosity-dependent ($2\\times10^8$ to $4\\times10^{13} L_\\ensuremath{\\odot}$) based on a locally calibrated luminosity-dust temperature relation and does not enable SED scaling."
+     }
+    ]
+   },
+   "citation": "(cite: chary01)"
+  },
+  {
+   "what": {
+    "value": "Physical properties and millimeter/CO measurements of reference GRB and SLSN host galaxies in Table 1",
+    "evidence": [
+     {
+      "loc": "GRB Host Galaxy Samples",
+      "quote": "For Table [1](#tab), we referred to the detailed measurements made by (cite: endo07), (cite: hatsukade11), (cite: wang12), (cite: berger14), (cite: hatsukade14), (cite: stanway15), (cite: huang17), (cite: michalowski18), (cite: ptf10tpz), (cite: hashimoto19), (cite: hatsukade19), (cite: postigo20), (cite: hatsukade20), and (cite: hatsukade20egm)."
+     }
+    ]
+   },
+   "citation": "(cite: endo07), (cite: hatsukade11), (cite: wang12), (cite: berger14), (cite: hatsukade14), (cite: stanway15), (cite: huang17), (cite: michalowski18), (cite: ptf10tpz), (cite: hashimoto19), (cite: hatsukade19), (cite: postigo20), (cite: hatsukade20), and (cite: hatsukade20egm)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples of local star-forming galaxies and main-sequence galaxies at z~1-2",
+    "evidence": [
+     {
+      "loc": "Molecular Gas Mass",
+      "quote": "Additionally, we compared the local star-forming galaxies (cite: both14; saintonge) and main-sequence galaxies at $z\\sim1-2$ (cite: daddi10; magdis12; magnelli12; tacconi13; seko16)."
+     },
+     {
+      "loc": "Molecular Gas Mass-SFR, Gas Fraction, and Depletion Timescale",
+      "quote": "The lines in Figure [7](#tuz) indicate the best-fit function of star-forming galaxies derived by (cite: tacconi18)."
+     }
+    ]
+   },
+   "citation": "(cite: both14; saintonge; daddi10; magdis12; magnelli12; tacconi13; seko16; tacconi18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA continuum and CO(1-0) observations",
+   "method": "Run ALMA Science Pipeline calibration, merge execution blocks where needed (GRB 050709), and image continuum and a 180 km s^-1 CO(1-0) velocity-integrated map using TCLEAN with Briggs weighting",
+   "software": [
+    "CASA",
+    "ALMA Science Pipeline Software",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "Briggs weighting with robust = 0.5",
+    "CO(1-0) velocity integration width = 180 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum fluxes, upper limits, and extract CO spectrum",
+   "method": "Measure total flux for detections using CASA imfit, estimate RMS noise for nondetections using CASA imstat, and extract CO(1-0) spectrum within a 0\".8 radius aperture centered on the host galaxy",
+   "software": [
+    "CASA",
+    "imfit",
+    "imstat"
+   ],
+   "key_parameters": [
+    "Spectral extraction aperture centered at R.A. = 22h48m42s.37, decl. = -20d46'08\".72 with radius 0\".8"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive IR luminosity and star formation rate from dust continuum",
+   "method": "Apply target redshift to luminosity-dependent IR SED templates from Chary & Elbaz (2001) to constrain L_IR from continuum flux/limits, then convert L_IR to SFR using Kennicutt (1998)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Cosmological parameters H0 = 70 km s^-1, Omega_0 = 0.3, Omega_lambda = 0.7",
+    "Chary & Elbaz (2001) luminosity-dependent IR SED templates without scaling",
+    "Kennicutt (1998) conversion SFR(M_sun yr^-1) = 1.7 x 10^-10 L_IR / L_sun"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO luminosity, molecular gas mass, gas fraction, and gas depletion timescale",
+   "method": "Calculate L'_CO upper limit using Solomon & Vanden Bout (2005) equation, convert to M_gas using metallicity-dependent and Galactic alpha_CO factors, and compute gas depletion timescale t_depl = M_gas / SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CO velocity width = 180 km s^-1",
+    "Metallicity-dependent alpha_CO from harmonic mean of Genzel et al. (2012) and Bolatto et al. (2013): alpha_CO = 15 M_sun (K km s^-1 pc^2)^-1 for region A (12+log(O/H) = 8.1) and alpha_CO = 9.6 for regions B, C, D (12+log(O/H) ~ 8.2); Galactic alpha_CO = 4.4",
+    "H-alpha SFR = 2.65 M_sun yr^-1 used for M_gas-SFR and depletion timescale comparison"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "XRF 020903 Band 3 continuum flux density (3-sigma upper limit)",
+   "value": "<0.032",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "XRF 020903",
+     "quote": "By resolving the four optical host galaxy components, the 3$\\sigma$ upper limits of 0.032 mJy at 113 GHz and 0.061 mJy at 224 GHz were estimated."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\\times10^{11}$ | $<$21.7 | $<2.6\\times10^{8}$ | $<1.1\\times10^{9}$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 Band 6 continuum flux density (3-sigma upper limit)",
+   "value": "<0.061",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "XRF 020903",
+     "quote": "By resolving the four optical host galaxy components, the 3$\\sigma$ upper limits of 0.032 mJy at 113 GHz and 0.061 mJy at 224 GHz were estimated."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "|  |  | 233.0 | $<$0.061 | $<1.30\\times10^{10}$ | $<$2.21 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 CO(1-0) velocity-integrated map 3-sigma limit (180 km/s)",
+   "value": "0.57",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "XRF 020903",
+     "quote": "The 3$\\sigma$ limit of the CO velocity-integrated map with 180 km/s was 0.57 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 IR luminosity from Band 6 (3-sigma upper limit)",
+   "value": "<1.3e10",
+   "uncertainty": "3sigma upper limit",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "IR Luminosity and Star Formation Rate (SFR) with GRB Host Galaxies",
+     "quote": "As shown in Figure [3](#020903temp), we constrained the 3$\\sigma$ upper limits of IR luminosity for the XRF 020903 host galaxy with the Band 6 observation as $L_{\\rm IR} <1.3\\times10^{10} L_\\ensuremath{\\odot}$."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "|  |  | 233.0 | $<$0.061 | $<1.30\\times10^{10}$ | $<$2.21 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 SFR from Band 6 IR luminosity (3-sigma upper limit)",
+   "value": "<2.2",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "IR Luminosity and Star Formation Rate (SFR) with GRB Host Galaxies",
+     "quote": "Using the SFR conversion of star-forming galaxies, SFR($M_\\ensuremath{\\odot}$ yr$^{-1})=1.7\\times10^{-10} L_{\\rm IR}/L_\\ensuremath{\\odot}$ (cite: kennicutt98), we obtained the 3$\\sigma$ upper limit of the SFR as $<2.2$ ($M_\\ensuremath{\\odot}$ yr$^{-1}$)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "|  |  | 233.0 | $<$0.061 | $<1.30\\times10^{10}$ | $<$2.21 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 IR luminosity from Band 3 (3-sigma upper limit)",
+   "value": "<1.28e11",
+   "uncertainty": "3sigma upper limit",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\\times10^{11}$ | $<$21.7 | $<2.6\\times10^{8}$ | $<1.1\\times10^{9}$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 SFR from Band 3 IR luminosity (3-sigma upper limit)",
+   "value": "<21.7",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\\times10^{11}$ | $<$21.7 | $<2.6\\times10^{8}$ | $<1.1\\times10^{9}$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 CO(1-0) luminosity (upper limit)",
+   "value": "<2.6e8",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\\times10^{11}$ | $<$21.7 | $<2.6\\times10^{8}$ | $<1.1\\times10^{9}$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 molecular gas mass for burst site region A (alpha_CO = 15)",
+   "value": "<3.9e9",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "The converted upper limits of the gas mass were $M_{\\rm gas}<3.9\\times10^{9}$ $M_{\\ensuremath{\\odot}}$ with $\\alpha_{\\rm CO}=15$ $M_\\ensuremath{\\odot}$ (K km s$^{-1}$ pc$^2$) for region A and $M_{\\rm gas}<2.5\\times10^{9}$ $M_{\\ensuremath{\\odot}}$ with $\\alpha_{\\rm CO}=9.6$ (K km s$^{-1}$ pc$^2$) for regions B, C, and D."
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 molecular gas mass for regions B, C, and D (alpha_CO = 9.6)",
+   "value": "<2.5e9",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "The converted upper limits of the gas mass were $M_{\\rm gas}<3.9\\times10^{9}$ $M_{\\ensuremath{\\odot}}$ with $\\alpha_{\\rm CO}=15$ $M_\\ensuremath{\\odot}$ (K km s$^{-1}$ pc$^2$) for region A and $M_{\\rm gas}<2.5\\times10^{9}$ $M_{\\ensuremath{\\odot}}$ with $\\alpha_{\\rm CO}=9.6$ (K km s$^{-1}$ pc$^2$) for regions B, C, and D."
+    }
+   ]
+  },
+  {
+   "quantity": "XRF 020903 molecular gas mass for Galactic conversion factor (alpha_CO = 4.4)",
+   "value": "<1.1e9",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "The smaller upper limit of $M_{\\rm gas}<1.1\\times10^{9}$ was estimated by applying the galactic conversion factor of $\\alpha_{\\rm CO}$=4.4 (cite: bolatto13b)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\\times10^{11}$ | $<$21.7 | $<2.6\\times10^{8}$ | $<1.1\\times10^{9}$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 050709 233.0 GHz continuum flux density",
+   "value": "<0.05",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 050709 | 0.1606 | 233.0 | $<$0.05 | $<5.97\\times10^{9}$ | $<$1.0 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 050709 IR luminosity",
+   "value": "<5.97e9",
+   "uncertainty": "3sigma upper limit",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 050709 | 0.1606 | 233.0 | $<$0.05 | $<5.97\\times10^{9}$ | $<$1.0 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 050709 SFR",
+   "value": "<1.0",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 050709 | 0.1606 | 233.0 | $<$0.05 | $<5.97\\times10^{9}$ | $<$1.0 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 050401 343.5 GHz continuum flux density",
+   "value": "<0.67",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 050401 | 2.900 | 343.5 | $<$0.67 | $<7.30\\times10^{11}$ | $<$124.2 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 050915A 343.5 GHz continuum flux density",
+   "value": "0.37",
+   "uncertainty": "0.13",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 050915A | 2.527 | 343.5 | 0.37$\\pm$0.13 | $4.09\\times10^{11}$ | 69.5 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 070802 343.5 GHz continuum flux density",
+   "value": "0.30",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 070802 | 2.450 | 343.5 | 0.30$\\pm$0.11 | $2.88\\times10^{11}$ | 49.0 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 081221 343.5 GHz continuum flux density",
+   "value": "0.88",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 081221 | 2.260 | 343.5 | 0.88$\\pm$0.09 | $1.13\\times10^{12}$ | 192.5 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 111123A 343.5 GHz continuum flux density",
+   "value": "0.96",
+   "uncertainty": "0.10",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 111123A | 3.152 | 343.5 | 0.96$\\pm$0.10 | $1.13\\times10^{12}$ | 192.5 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 120624B 343.5 GHz continuum flux density",
+   "value": "0.35",
+   "uncertainty": "0.12",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 120624B | 2.197 | 343.5 | 0.35$\\pm$0.12 | $3.68\\times10^{11}$ | 62.5 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRB 130606A 265.0 GHz continuum flux density",
+   "value": "<0.354",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRB 130606A | 5.913 | 265.0 | $<$0.354 | $<5.69\\times10^{11}$ | $<$96.8 | $-$ | $-$ | This work |  |  |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA project codes for the archival GRB host galaxy continuum observations re-evaluated in Table 1 (GRB 050401, GRB 050915A, GRB 070802, GRB 081221, GRB 111123A, GRB 120624B, GRB 130606A)",
+  "Exact cell size, image size, and cleaning thresholds/masking used in TCLEAN for XRF 020903 and GRB 050709",
+  "Continuum subtraction procedure (if any) before creating the CO(1-0) velocity-integrated map",
+  "Reason for discrepancy in stated frequencies for XRF 020903 between text (113 GHz and 224 GHz) and Table 1 / Abstract (97.2 GHz and 233.0 GHz)",
+  "Adopted stellar mass value and its source for the XRF 020903 host galaxy used to compute gas fraction mu_gas and plot Figure 5"
+ ],
+ "missing_for_reproduction": [
+  "ALMA project codes for the archival GRB host galaxies marked 'This work' in Table 1 other than XRF 020903 and GRB 050709",
+  "Exact TCLEAN imaging parameters (cell size, image size, stopping threshold, spectral channel selection for the 180 km s^-1 CO map)",
+  "Exact stellar mass adopted for XRF 020903 to compute mu_gas"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Standard ALMA pipeline calibration and TCLEAN imaging with stated robust parameter (0.5), beam sizes, velocity integration width (180 km/s), and explicit analytic equations for L'_CO, M_gas, and SFR, though some archival project codes and minor TCLEAN parameters are omitted.",
+ "rediscovery_reason": "Public ALMA data with explicit project codes for XRF 020903 (2015.1.01254.S) and GRB 050709 (2016.1.01333.S), standard pipeline calibration, standard Briggs r=0.5 imaging, and straightforward upper limit and analytical luminosity/mass derivations.",
+ "source_card": "cards/2021ApJ...915...46C/sonnet/card.md"
+}

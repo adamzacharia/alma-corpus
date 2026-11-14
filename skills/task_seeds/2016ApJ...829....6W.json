@@ -1,0 +1,339 @@
+{
+ "bibcode": "2016ApJ...829....6W",
+ "title": "ALMA Observations of HD 141569’s Circumstellar Disk",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/829/1/6",
+ "arxiv_id": "1606.00442",
+ "fields": [
+  "debris_disks",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the dust and CO gas structure, kinematics and masses of the HD141569 disk, and is the gas primordial or second-generation (debris-related)?",
+ "alma_project_codes": [
+  "2012.1.00698.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~345 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.38\" (continuum)",
+  "sensitivity": "0.070 mJy/beam continuum; 0.028 Jy/beam CO"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previous continuum/total-system flux densities (Keck, IRAS, HST, APEX, JCMT) in Table 1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Summary of select previous HD 141569 debris disk observations."
+     }
+    ]
+   },
+   "citation": "Fisher 2000; Walker 1988; Marsh 2002; Mouillet 2001; Augereau 1999; Nilsson 2010; Sylvester 2001"
+  },
+  {
+   "what": {
+    "value": "CARMA CO(1-0) flux 1.6 ± 0.2 Jy km/s and gas mass 13 (+50/-9) Earth masses, SMA 870um flux 8.2 ± 2.4 mJy",
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "The (cite: flaherty) CARMA observations found an integrated line flux for CO(1-0) of $1.6\\pm 0.2\\rm~Jy~km~s^{-1}$"
+     }
+    ]
+   },
+   "citation": "Flaherty et al. 2016 (cite: flaherty)"
+  },
+  {
+   "what": {
+    "value": "Distance 116 ± 8 pc",
+    "evidence": [
+     {
+      "loc": "5.2 MCMC Modeling",
+      "quote": "The re-analyzed *Hipparcos* Catalog distance with 1-$\\sigma$ uncertainty is $116\\pm8$ pc (cite: van)."
+     }
+    ]
+   },
+   "citation": "van Leeuwen 2007"
+  },
+  {
+   "what": {
+    "value": "CO spectroscopic data (A32, Be) from Splatalogue",
+    "evidence": [
+     {
+      "loc": "footnote 4",
+      "quote": "The spectral information for the CO molecule was obtained from the Splatalogue database"
+     }
+    ]
+   },
+   "citation": "Remijan 2010 (cite: splat)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and flag ALMA data",
+   "method": "CASA calibration with WVR, Tsys, bandpass, flux, phase; flag antenna 14 and 120 bad channels in SPW 1 and 3; split",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and fit uniform disk to visibilities",
+   "method": "CLEAN image of line-free data; uvmodelfit uniform disk with chi^2 minimization",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting; threshold 1/2 sigma_RMS"
+   ],
+   "assumptions": [
+    "Flux uncertainty dominated by 10% absolute flux scale"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Make CO moment and channel maps and measure line flux",
+   "method": "uvcontsub, zeroth/first moments; flux from summing zeroth moment above 3 sigma times number of beams",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "channel spacing 0.5 km/s for channel maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit Keplerian disk model to CO velocity field",
+   "method": "Uniform Keplerian disk projected, convolved with beam, compared to first moment map in image domain",
+   "software": [
+    "custom MCMC code"
+   ],
+   "key_parameters": [
+    "3 chains, 100 thousand links each, ~1000 burn-in; sigma = 0.5 km/s"
+   ],
+   "assumptions": [
+    "No inner cavity, temperature profile or line broadening in model"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate mm dust and debris masses",
+   "method": "Optically thin single-size grain ring estimate; then 100-ring collisional cascade model 10-50 au, r^-1 surface density, s<50 km, matched to 3.8 mJy",
+   "software": [],
+   "key_parameters": [
+    "grain density 2.5 g/cm3, size 1 mm, T_star 10500 K, size distribution M_s ∝ s^-0.5"
+   ],
+   "assumptions": [
+    "Black-body grains, albedo 0, emissivity 1 (Q_nu=2s/lambda for large wavelengths); kappa=3 cm2/g equivalent"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive CO gas mass",
+   "method": "Optically thin LTE CO(3-2) mass from integrated flux with partition function",
+   "software": [],
+   "key_parameters": [
+    "T = 33 K; A32 = 2.497e-6 Hz; Be = 57.635; distance 116 pc"
+   ],
+   "assumptions": [
+    "Optically thin, LTE; H2/CO = 1e4 for total gas"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density (870 um)",
+   "value": "3.8",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$3.8 \\pm 0.4$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity",
+   "value": "1.74",
+   "uncertainty": "0.24",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1.74 \\pm 0.24$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated flux",
+   "value": "15.7",
+   "uncertainty": "1.6",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$15.7 \\pm 1.6$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (MCMC)",
+   "value": "2.39",
+   "uncertainty": "95% interval [2.34, 2.43]",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Mass \\[M$_{\\odot}$\\]            | $2.39$        | $[2.34,2.43]$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination (MCMC)",
+   "value": "53.4",
+   "uncertainty": "95% interval [52.5, 54.6]",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Inclination \\[$^{\\circ}$\\]      | $53.4$        | $[52.5, 54.6]$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle (MCMC)",
+   "value": "-3.36",
+   "uncertainty": "95% interval [-3.78, -2.71]",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Position Angle \\[$^{\\circ}$\\]   | \\-$3.36$      | $[-3.78,-2.71]$"
+    }
+   ]
+  },
+  {
+   "quantity": "System velocity (LSRK)",
+   "value": "6.04",
+   "uncertainty": "95% interval [6.01, 6.06]",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "System Velocity \\[km s$^{-1}$\\] | $6.04$        | $[6.01, 6.06]$"
+    }
+   ]
+  },
+  {
+   "quantity": "M sin(i)",
+   "value": "1.92",
+   "uncertainty": "95% interval [1.89, 1.95]",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Mass \\[M$_{\\odot}$sin(i)\\]      | $1.92$        | $[1.89,1.95]$"
+    }
+   ]
+  },
+  {
+   "quantity": "mm grain mass lower limit (R=10 au)",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Debris/Dust Mass",
+     "quote": "which yields a mm grain mass[^3] of $0.04~\\rm M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Debris mass s<50 km (10-50 au)",
+   "value": "~160",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Debris/Dust Mass",
+     "quote": "we find that $M(s<{\\rm 50~km})\\sim 160~M_{\\oplus}\\frac{\\rho_i}{\\rm 2.5~g~cm^{-3}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas mass",
+   "value": "1.9e-3",
+   "uncertainty": "0.2e-3",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Gas Mass",
+     "quote": "gives M$_{\\rm{CO}} =1.9 \\pm 0.2 \\times 10^{-3}~\\rm M_{\\bigoplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO column density",
+   "value": "1.2e16",
+   "uncertainty": "0.1e16",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Gas Mass",
+     "quote": "is $1.2 \\pm 0.1 \\times 10^{16} ~\\rm cm^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Uniform-disk fit flux (uvmodelfit)",
+   "value": "3.78",
+   "uncertainty": "0.23",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$3.78 \\pm 0.23 ~\\rm mJy$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Number of clean iterations and mask used for CLEAN; image size and cell size",
+  "Which channels were treated as CO-free for the continuum and uvcontsub fit order",
+  "Velocity-axis reference/ rest frequency used for moment maps; moment-map clipping thresholds",
+  "uvmodelfit starting parameters",
+  "How the first moment map was sampled (pixels, masking) for chi^2 and how the model was projected",
+  "Details on how the 1/32 flagged channels were chosen",
+  "Phase calibrator and gain solution intervals",
+  "Treatment of correlated noise between moment-map pixels in chi^2"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and scripts",
+  "CLEAN parameters and masks",
+  "MCMC code",
+  "moment-map thresholds and flagged channel ranges"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and recipe fairly simple with numeric results, but imaging and MCMC details and code are missing.",
+ "rediscovery_reason": "Public archival data, simple analysis with numeric tabulated results (flux, CO flux, Keplerian parameters).",
+ "source_card": "cards/2016ApJ...829....6W/sonnet/card.md"
+}

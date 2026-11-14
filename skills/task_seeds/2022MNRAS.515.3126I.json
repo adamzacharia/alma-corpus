@@ -1,0 +1,412 @@
+{
+ "bibcode": "2022MNRAS.515.3126I",
+ "title": "The ALMA REBELS Survey: dust continuum detections at z &gt; 6.5",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1779",
+ "arxiv_id": "2203.15136",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "To present dust continuum detections and flux extractions of 49 UV-selected luminous galaxies at z > 6.5 from the ALMA REBELS survey and its pilot programs, and investigate their IR luminosities, obscured star formation fractions, and spatial offsets between rest-UV and far-IR emission.",
+ "alma_project_codes": [
+  "2019.1.01634.L",
+  "2017.1.01217.S",
+  "2017.1.00604.S",
+  "2018.1.00236.S",
+  "2018.1.00085.S",
+  "2018.A.00022.S"
+ ],
+ "data": {
+  "bands": "Band 5, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~1.2-1.6 arcsec FWHM",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Literature continuum flux measurements and upper limits for pilot and overlapping targets",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "REBELS-18 | UVISTA-Y-001 | $7.6750$ | 204.72 | $53 \\pm     10$ | 5.3 | $3.5\\,^{+ 2.0}_{-1.3}$ | $73.0 \\pm      20.0$ | S22"
+     }
+    ]
+   },
+   "citation": "(cite: Smit18; Scho21; Bowl21b)"
+  },
+  {
+   "what": {
+    "value": "UV spectral slope (beta_UV) and molecular index (I_m) values for dust-detected sources",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Measured offset between the UV and dust peak emission, listed together with $\\beta_{\\rm UV}$ (cite: Bouw21b) and $I_m$ (cite: Ferr22)."
+     }
+    ]
+   },
+   "citation": "(cite: Bouw21b; Ferr22)"
+  },
+  {
+   "what": {
+    "value": "Median dust temperature (T_d = 46 K) and L_IR conversion factors from infrared SED models",
+    "evidence": [
+     {
+      "loc": "Dust Continuum Flux Measurements",
+      "quote": "This is the median $T_{\\rm d}$ of the REBELS sources with both dust and \\[C ii\\] detections, calculated based on the method proposed by (cite: Somm21)"
+     },
+     {
+      "loc": "Total Infrared Luminosity",
+      "quote": "The conversion factor was computed from the infrared SEDs predicted by (cite: Somm22)."
+     }
+    ]
+   },
+   "citation": "(cite: Somm21; Somm22)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create dust continuum images from calibrated datacubes",
+   "method": "Image calibrated datacubes with TCLEAN and collapse to continuum maps by excluding channels within 2 x FWHM around any detected [C II] or [O III] emission line.",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "cell size = 0.15 arcsec, natural weighting, automasking threshold = 2 sigma, line exclusion = 2 x FWHM"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify dust continuum sources and determine purity threshold",
+   "method": "Run PyBDSF on non-primary-beam-corrected science images (within r = 1.5 arcsec of phase centre) and negative (-1 x science) images (over full primary beam, scaled to r = 1.5 arcsec area) across a grid of iSNR and pSNR to select thresholds giving 95% purity.",
+   "software": [
+    "PyBDSF"
+   ],
+   "key_parameters": [
+    "pSNR = 3.3, iSNR = 2.0, search radius = 1.5 arcsec, minimum island size = 1/3 of beam area pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure dust continuum flux densities and upper limits",
+   "method": "Fit 2D Gaussian components using CASA imfit in a 3x3 arcsec box around PyBDSF positions; test whether sources are resolved via Monte Carlo point-source injection simulations; adopt integrated flux for resolved sources (REBELS-25) and peak flux for unresolved sources; compute 3 sigma upper limits for non-detections from dirty image RMS multiplied by 3 and by a 1.33 flux boosting factor.",
+   "software": [
+    "CASA",
+    "PyBDSF"
+   ],
+   "key_parameters": [
+    "Fitting region = 3 x 3 arcsec (1.5 x 1.8 arcsec for REBELS-40); 20,000 mock point sources (100 simulations per image x 5 sources); flux boosting factor = 1.33 at S/N = 3"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Apply CMB correction and calculate total infrared luminosities (L_IR) and SFRs",
+   "method": "Correct continuum fluxes for the CMB effect (~4-18%), then convert rest-frame 158 um or 88 um monochromatic luminosity to total L_IR (8-1000 um) using median conversion factors from Sommovigo et al. (2022), and compute SFR_UV and SFR_IR.",
+   "software": [],
+   "key_parameters": [
+    "L_IR = 14 (+8/-5) nu L_nu,158um; L_IR = 8 (+1/-4) nu L_nu,88um; SFR_UV = 7.1e-29 L_nu; SFR_IR = 1.2e-10 L_IR"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with H = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7; Chabrier (2003) IMF",
+    "Single-temperature modified blackbody dust SED with dust emissivity spectral index beta = 2.0 and median dust temperature T_d = 46 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive rest-UV and optical galaxy properties via SED fitting",
+   "method": "Fit rest-UV/optical/NIR photometry using the BEAGLE code (excluding ALMA dust continuum measurements) to derive M_UV, beta_UV, A_V, stellar mass, stellar age, and [O III]+Hbeta EW; compare dust-detected and undetected distributions with two-sample KS tests.",
+   "software": [
+    "BEAGLE",
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "IMF mass cutoff = 0.1 - 300 M_sun"
+   ],
+   "assumptions": [
+    "Constant star formation history, sub-solar metallicity, Chabrier (2003) IMF, Calzetti et al. (2000) dust extinction curve"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Align NIR astrometry and measure spatial offsets between rest-UV and dust emission peaks",
+   "method": "Align NIR/HST images to Gaia DR3 using 3-sigma-clipped mean separations of crossmatched stars (corrected for proper motion and excluding parallax > 10 mas); fit 2D Gaussians to rest-UV (JHK-stacked) and dust continuum images to find emission peaks and compute angular and physical spatial separations; test correlation with I_m using Spearman rank correlation.",
+   "software": [],
+   "key_parameters": [
+    "Cropped image size = 6 x 6 arcmin for XMM fields; parallax cutoff <= 10 mas; 3-sigma clipping for mean Gaia offset; 2D Gaussian peak fit with xy width fixed to 1 pixel and background fixed to 0"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dust continuum detections in REBELS and pilot programs",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We report 18 dust continuum detections ($\\geq 3.3\\sigma$) at $\\sim88$$\\mu$m and 158$\\mu$m out of 49 ultraviolet(UV)-bright galaxies ($M_{\\rm UV} < -21.3$ mag) at $z>6.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust continuum detection rate in main REBELS survey",
+   "value": ">= 40",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Identifying Dust Emission",
+     "quote": "In total we detected dust continuum emission with $\\geq 3.3\\sigma$ in 16 out of the 40 REBELS targets ($\\geq 40\\%$) in the central $r=1.5\\ensuremath{''}$ of the images."
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-25 continuum flux density at 227.28 GHz",
+   "value": "260",
+   "uncertainty": "+/- 22",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-25 | UVISTA-Y-003 | $7.3065$ | 227.28 | $260 \\pm     22$ | 11.7 | $15.4\\,^{+ 8.4}_{-5.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-25 total infrared luminosity (L_IR)",
+   "value": "15.4",
+   "uncertainty": "+8.4/-5.2",
+   "units": "10^11 L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-25 | UVISTA-Y-003 | $7.3065$ | 227.28 | $260 \\pm     22$ | 11.7 | $15.4\\,^{+ 8.4}_{-5.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-25 infrared star formation rate (SFR_IR)",
+   "value": "185",
+   "uncertainty": "+101/-63",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "REBELS-25 | $14\\,^{+ 3}_{- 3}$ | $185\\,^{+101}_{- 63}$ | $199\\,^{+101}_{- 63}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-38 continuum flux density at 246.57 GHz",
+   "value": "163",
+   "uncertainty": "+/- 23",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-38 | UVISTA-Z-349 | $6.5770$ | 246.57 | $163 \\pm     23$ | 7.1 | $8.0\\,^{+ 4.5}_{-2.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-38 total infrared luminosity (L_IR)",
+   "value": "8.0",
+   "uncertainty": "+4.5/-2.9",
+   "units": "10^11 L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-38 | UVISTA-Z-349 | $6.5770$ | 246.57 | $163 \\pm     23$ | 7.1 | $8.0\\,^{+ 4.5}_{-2.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-08 continuum flux density at 246.24 GHz",
+   "value": "101",
+   "uncertainty": "+/- 20",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-08 | XMM1-67420 | $6.7495$ | 246.24 | $101 \\pm     20$ | 5.1 | $5.2\\,^{+ 3.0}_{-2.0}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-37 continuum flux density at 349.66 GHz",
+   "value": "97",
+   "uncertainty": "+/- 16",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-37 | UVISTA-J-1212 | $7.75^\\dag$ | 349.66 | $97 \\pm     16$ | 6.1 | $5.6\\,^{+ 1.4}_{-3.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-04 continuum flux density at 347.77 GHz",
+   "value": "68",
+   "uncertainty": "+/- 20",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-04 | XMM-J-355 | $8.57^\\dag$ | 347.77 | $68 \\pm     20$ | 3.4 | $4.5\\,^{+ 1.6}_{-2.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-12 total continuum flux density at 228.12 GHz",
+   "value": "87",
+   "uncertainty": "+/- 24",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-12 | XMM3-Z-110958 | $7.3459$ | 228.12 | $87 \\pm     24$ | 3.6 | $5.2\\,^{+ 3.1}_{-2.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-19 total continuum flux density at 227.42 GHz",
+   "value": "71",
+   "uncertainty": "+/- 20",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "REBELS-19 | UVISTA-Y-879 | $7.3701$ | 227.42 | $71 \\pm     20$ | 3.5 | $4.3\\,^{+ 2.6}_{-1.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of obscured star formation (SFR_IR / SFR_UV+IR) in dust-detected targets",
+   "value": "50-90",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Despite being UV-selected targets, the dust continuum detected galaxies have a high fraction of obscured star formation ($\\sim 50-90\\%$)."
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-25 deconvolved dust continuum angular size",
+   "value": "0.74 x 0.69",
+   "uncertainty": "+/- 0.17 x +/- 0.22",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust Morphology",
+     "quote": "The deconvolved size reported by `imfit` is $(0.74\\ensuremath{''}\\pm0.17\\ensuremath{''}) \\times (0.69\\ensuremath{''}\\pm0.22\\ensuremath{''})$, corresponding to $(3.75\\pm0.89)\\,{\\rm kpc} \\times (3.53\\pm1.10) \\,{\\rm kpc}$."
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-25 deconvolved dust continuum physical size",
+   "value": "3.75 x 3.53",
+   "uncertainty": "+/- 0.89 x +/- 1.10",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust Morphology",
+     "quote": "The deconvolved size reported by `imfit` is $(0.74\\ensuremath{''}\\pm0.17\\ensuremath{''}) \\times (0.69\\ensuremath{''}\\pm0.22\\ensuremath{''})$, corresponding to $(3.75\\pm0.89)\\,{\\rm kpc} \\times (3.53\\pm1.10) \\,{\\rm kpc}$."
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-19 spatial offset between UV and dust peak emission",
+   "value": "1.50",
+   "uncertainty": "+/- 0.06",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "REBELS-19 | $1.50 \\pm  0.06$ | $-2.33\\,^{+0.45}_{-0.64}$ | $3870\\,^{+1544}_{-1719}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-12 spatial offset between UV and dust peak emission",
+   "value": "0.65",
+   "uncertainty": "+/- 0.25",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "REBELS-12 | $0.65 \\pm  0.25$ | $-1.99\\,^{+0.48}_{-0.76}$ | $384\\,^{+ 161}_{- 197}$"
+    }
+   ]
+  },
+  {
+   "quantity": "REBELS-38 spatial offset between UV and dust peak emission",
+   "value": "0.57",
+   "uncertainty": "+/- 0.25",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "REBELS-38 | $0.57 \\pm  0.25$ | $-2.18\\,^{+0.45}_{-0.42}$ | $1786\\,^{+ 571}_{- 555}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between I_m and UV-IR spatial separation",
+   "value": "0.65",
+   "uncertainty": "p-value = 0.44",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Spatial Offset between rest-UV and IR",
+     "quote": "No statistically significant correlation is seen between $I_m$ and the UV-IR separation, given the Spearman rank correlation coefficient is 0.65 with a $p$-value of 0.44."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and pipeline versions used for calibration and imaging",
+  "TCLEAN image size (in pixels) and deconvolver algorithm",
+  "Exact target coordinates (RA, Dec) for all 49 sources (deferred to companion/survey papers)",
+  "Exact frequency channel widths and line FWHMs excluded when creating continuum maps for each line-detected target",
+  "Whether primary beam correction was applied to the continuum maps prior to CASA imfit flux extraction for off-center components"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates (RA, Dec) of all 49 REBELS and pilot targets (published in Bouwens et al. 2022)",
+  "Exact frequency ranges excluded around [C II] / [O III] lines for each line-detected target (deferred to Schouws et al. in prep.)",
+  "Calibrated and Gaia-aligned ground-based JHK and HST images required to reproduce the UV-dust spatial offset measurements and BEAGLE SED fits",
+  "Exact CASA version used for pipeline calibration and TCLEAN/imfit"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA continuum imaging (TCLEAN, natural weighting, 0.15 arcsec cell, 2 sigma automasking), source detection (PyBDSF with pSNR=3.3, iSNR=2.0 in r=1.5 arcsec), flux extraction (CASA imfit in 3x3 arcsec box, peak vs integrated rules), and L_IR/SFR conversion formulas are clearly and quantitatively specified. Deductions are due to target coordinates, line-exclusion windows, and NIR imaging/SED details being deferred to companion papers.",
+ "rediscovery_reason": "All six ALMA project codes are public in the archive, the continuum imaging and PyBDSF/imfit flux extraction workflow is well-defined and scriptable, and Table 1 provides a complete numeric answer key (frequencies, flux densities, SNRs, upper limits, and L_IR) for all 49 targets.",
+ "source_card": "cards/2022MNRAS.515.3126I/sonnet/card.md"
+}

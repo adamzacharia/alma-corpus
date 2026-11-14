@@ -1,0 +1,1093 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020MNRAS.492.1180R",
+  "title": "ALMA and ROSINA detections of phosphorus-bearing molecules: the interstellar thread between star-forming regions and comets",
+  "year": 2020,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Rivilla, V. M.",
+  "n_authors": 23,
+  "arxiv_id": "1911.11647",
+  "doi": "10.1093/mnras/stz3336",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01071.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we have analysed ALMA observations of PN and PO towards the massive star-forming region AFGL 5142, combined with a new analysis of the data of the comet 67P/Churyumov-Gerasimenko taken with the ROSINA instrument"
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "AFGL 5142",
+     "coordinates": {
+      "value": "phase center 05:30:48.0 +33:47:54.0 (J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "It is located at a relatively close distance, 2.14 kpc ((cite: burns2017))"
+       },
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The phase center was RA= 5h 30m 48.0s, DEC=33$^{\\circ}$ 47$^{\\prime}$ 54.0$^{\\prime\\prime}$."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "2.14 kpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "It is located at a relatively close distance, 2.14 kpc ((cite: burns2017))"
+       },
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The phase center was RA= 5h 30m 48.0s, DEC=33$^{\\circ}$ 47$^{\\prime}$ 54.0$^{\\prime\\prime}$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Burns et al. 2017 (cite: burns2017)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "It is located at a relatively close distance, 2.14 kpc ((cite: burns2017))"
+       },
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The phase center was RA= 5h 30m 48.0s, DEC=33$^{\\circ}$ 47$^{\\prime}$ 54.0$^{\\prime\\prime}$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How are P-bearing molecules (PN, PO) formed in star-forming regions, and is the comet 67P/C-G P reservoir inherited from such environments?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "To understand how Phosphorus-bearing molecules are formed in star-forming regions, we have analysed ALMA observations of PN and PO towards the massive star-forming region AFGL 5142"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01071.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "as part of the project 2016.1.01071.S (PI: Rivilla)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The observations were performed in Band 3 with the array in the C40$-$3 configuration with baselines ranging from 15 to 460 m."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "12 spectral windows, 122 kHz channels (~0.35 km/s), covering PN(2-1), PO J=5/2-3/2 quadruplet, SO 2_3-1_2",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The digital correlator was configured in 12 different spectral windows (spw’s) with channel widths of 122 kHz ($\\sim$0.35 km s$^{-1}$)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "PN",
+     "transition": "N=2-1 (hyperfine)",
+     "rest_frequency": "93.9782-93.9823 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| PN | N=2$-$1, J=3$-$2 | 93.9799 | -4.53516 | 6.8 |"
+      }
+     ]
+    },
+    {
+     "species": "PO",
+     "transition": "J=5/2-3/2, Omega=1/2 quadruplet",
+     "rest_frequency": "108.9984-109.2812 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| PO | J=5/2$-$3/2, $\\Omega$=1/2, F=3$-$2, l=e | 108.9984 | -4.67162 | 8.4 |"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "N=2-1, J=3-2",
+     "rest_frequency": "109.2522 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| SO | N=2$-$1, J=3$-$2 | 109.2522 | -4.95802 | 21.1 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-3, 40 antennas, Cycle 4",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "using 40 antennas of the Atacama Large Millimeter/Submillimeter Array (ALMA) in Cycle 4 between January and April of 2017"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15 to 460 m",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "baselines ranging from 15 to 460 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "2.5\"x1.8\" (PN); 2.1\"x1.6\" (PO, SO)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The synthesized beams are 2.5$\\ensuremath{''}\\times$1.8$\\ensuremath{''}$ for the PN map, and 2.1$\\ensuremath{''}\\times$1.6$\\ensuremath{''}$ for the PO and SO maps."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "~2 mJy/beam per channel",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The root mean square (*rms*) of the noise of the maps is $\\sim$2 mJy beam$^{-1}$ per channel."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "about 2.5 hr",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The on-source observing time was about 2.5 hr."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "January-April 2017",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "in Cycle 4 between January and April of 2017"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI: Rivilla",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "as part of the project 2016.1.01071.S (PI: Rivilla)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Rosetta/ROSINA DFMS",
+     "provided": {
+      "value": "Mass spectra of comet 67P/C-G coma used to derive PO abundance and PO/PN, PO/PH3 limits",
+      "evidence": [
+       {
+        "loc": "2.2 ROSINA measurements",
+        "quote": "the densities measured in the coma by ROSINA DFMS (Double Focusing Mass Spectrometer) were relatively high allowing the detection of low-abundance species"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer IRAC2",
+     "provided": {
+      "value": "4.5 micron image compared with outflow direction",
+      "evidence": [
+       {
+        "loc": "3.1.1",
+        "quote": "elongated morphology of the Spitzer-IRAC2[^4] emission at 4.5 $\\mu$m"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "PN collisional coefficients (PN-He, scaled by 1.385 for H2)",
+      "evidence": [
+       {
+        "loc": "3.1.4 Non-LTE analysis",
+        "quote": "we implemented in RADEX the collisional coefficients from (cite: tobola2007)"
+       }
+      ]
+     },
+     "citation": "(cite: tobola2007)"
+    },
+    {
+     "what": {
+      "value": "PO-He cross-sections used to compute collisional rates (scaled by 1.4)",
+      "evidence": [
+       {
+        "loc": "3.1.4 Non-LTE analysis",
+        "quote": "we used the cross-sections derived by (cite: lique2018) to calculate the collisional rates"
+       }
+      ]
+     },
+     "citation": "(cite: lique2018)"
+    },
+    {
+     "what": {
+      "value": "SO/H2O nucleus bulk abundance 7e-4 used to scale PO/H2O",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "(cite: calmonte2016) have deduced a nucleus bulk abundance for SO/H$_2$O of 7$\\times$10$^{-4}$"
+       }
+      ]
+     },
+     "citation": "(cite: calmonte2016)"
+    },
+    {
+     "what": {
+      "value": "Photodestruction rates and photochemical models for P species",
+      "evidence": [
+       {
+        "loc": "4.1.1",
+        "quote": "using the photodestruction rates proposed by (cite: jimenez-serra2018), 3$\\times$10$^{-10}$ s$^{-1}$ and 5$\\times$10$^{-12}$ s$^{-1}$ for PO and PN"
+       }
+      ]
+     },
+     "citation": "(cite: jimenez-serra2018)"
+    },
+    {
+     "what": {
+      "value": "Tex=5 K for PN in this region",
+      "evidence": [
+       {
+        "loc": "3.1.3 LTE analysis",
+        "quote": "we used the value found by (cite: mininni2018) in this region using several transitions of PN, namely $T_{\\rm ex}$=5 K"
+       }
+      ]
+     },
+     "citation": "(cite: mininni2018)"
+    },
+    {
+     "what": {
+      "value": "Kinetic temperature 34 K from NH3 used as Tex for SO",
+      "evidence": [
+       {
+        "loc": "3.1.3 LTE analysis",
+        "quote": "we used the kinetic temperature derived from observations of NH$_3$ ((cite: busquet2011)) of 34 K"
+       }
+      ]
+     },
+     "citation": "(cite: busquet2011)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard ALMA calibration scripts of CASA",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The data were calibrated and imaged using standard ALMA calibration scripts of the Common Astronomy Software Applications package (CASA)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0510+1800 (flux and bandpass)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Flux and bandpass calibration were obtained through observations of J0510+1800."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "standard ALMA scripts in CASA",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The data were calibrated and imaged using standard ALMA calibration scripts of the Common Astronomy Software Applications package (CASA)"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "2.5\"x1.8\" (PN); 2.1\"x1.6\" (PO, SO)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The synthesized beams are 2.5$\\ensuremath{''}\\times$1.8$\\ensuremath{''}$ for the PN map"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~2 mJy/beam per channel",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The root mean square (*rms*) of the noise of the maps is $\\sim$2 mJy beam$^{-1}$ per channel."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data analysis details of ROSINA spectra",
+      "evidence": [
+       {
+        "loc": "2.2 ROSINA measurements",
+        "quote": "Details on the data analysis can be found in (cite: leRoy2015) and (cite: calmonte2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: leRoy2015), (cite: calmonte2016)"
+    },
+    {
+     "what": {
+      "value": "LTE analysis approach with MADCUBA as in previous studies",
+      "evidence": [
+       {
+        "loc": "3.1.3 LTE analysis",
+        "quote": "we have assumed Local Thermodynamic Equilibrium conditions (LTE), as we did in previous studies ((cite: fontani2016; rivilla2016; rivilla2018; mininni2018))"
+       }
+      ]
+     },
+     "from_reference": "(cite: fontani2016; rivilla2016; rivilla2018; mininni2018)"
+    },
+    {
+     "what": {
+      "value": "Tex = 5 K for P-bearing species",
+      "evidence": [
+       {
+        "loc": "3.1.3 LTE analysis",
+        "quote": "we used the value found by (cite: mininni2018) in this region using several transitions of PN, namely $T_{\\rm ex}$=5 K"
+       }
+      ]
+     },
+     "from_reference": "(cite: mininni2018)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging parameters (weighting/robust, cell, image size, deconvolver, masking)",
+    "CASA version and pipeline version",
+    "Continuum subtraction and line-free channels",
+    "Flux calibration accuracy and self-calibration",
+    "Details of P-spot selection and spectra extraction beyond 3\" circle",
+    "ROSINA spectra reduction details and ion counts",
+    "Per-spot Tex handling for second velocity components"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Map SO, PN, PO emission and identify P-spots",
+    "method": {
+     "value": "Integrated maps in velocity ranges; seven P-spots identified visually in PN map",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "peaking towards several visually-identified spots (P-spots, hereafter) located along the cavities of the bipolar outflow"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "MADCUBA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Velocity ranges [-6.5,-4.5], [-4.5,-2.0], [-2.0,0] km/s",
+      "evidence": [
+       {
+        "loc": "3.1.2",
+        "quote": "three different velocity ranges (\\[-6.5,-4.5\\], \\[-4.5,-2.0\\] and \\[-2.0, 0\\] km s$^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract spectra",
+    "method": {
+     "value": "Spectra from circular regions at P-spot, MM, HV positions",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "The spectra extracted in a circular region of 3$^{\\prime\\prime}$ diameter centered on the positions of the P-spots"
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "LTE fit of column densities, velocities, linewidths",
+    "method": {
+     "value": "MADCUBA-AUTOFIT synthetic LTE spectra with CDMS entries incl. 14N hyperfine",
+     "evidence": [
+      {
+       "loc": "3.1.3 LTE analysis",
+       "quote": "we have used the MADCUBA-AUTOFIT tool that compares the observed spectra with the LTE synthetic spectra of the different species"
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA",
+     "SLIM",
+     "AUTOFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tex fixed: 5 K for PN/PO, 34 K for SO; free N, v, FWHM",
+      "evidence": [
+       {
+        "loc": "3.1.3 LTE analysis",
+        "quote": "Then, fixing $T_{\\rm ex}$, we run MADCUBA-AUTOFIT leaving $N$, $\\varv$, and $FWHM$ as free parameters."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, single transition so Tex cannot be derived",
+      "evidence": [
+       {
+        "loc": "3.1.3 LTE analysis",
+        "quote": "Since our data contain only a single rotational transition of the three species (PN, PO and SO), the excitation temperature cannot be derived, and hence we assumed fixed values."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Levenberg-Marquardt least squares; errors from covariance matrix",
+     "evidence": [
+      {
+       "loc": "3.1.3 LTE analysis",
+       "quote": "This tool provides the best non-linear least-squared fit using the Levenberg-Marquardt algorithm."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tex sensitivity: column densities vary by factor 2.5 (PN), 2.1 (PO) over 5-50 K",
+     "evidence": [
+      {
+       "loc": "3.1.3 LTE analysis",
+       "quote": "the column densities of PN and PO can vary by a factor of 2.5 and 2.1, respectively, assuming different values of $T_{\\rm ex}$ in the range of 5$-$50 K"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Non-LTE test of PO/PN ratio",
+    "method": {
+     "value": "RADEX with n(H2)=1e4,1e5,1e6 cm-3 deriving column densities matching line fluxes",
+     "evidence": [
+      {
+       "loc": "3.1.4 Non-LTE analysis",
+       "quote": "we have run RADEX assuming three different values: $n$(H$_2$) = 1$\\times$10$^{4}$, 1$\\times$10$^{5}$ and 1$\\times$10$^{6}$ cm$^{-3}$."
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tkin = 20 K, background 2.73 K",
+      "evidence": [
+       {
+        "loc": "3.1.4 Non-LTE analysis",
+        "quote": "The calculations assume a kinetic temperature of $T_{\\rm kin}$ = 20 K and a background temperature of 2.73 K."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "He collision rates scaled to H2 (x1.385 PN, x1.4 PO)",
+      "evidence": [
+       {
+        "loc": "3.1.4 Non-LTE analysis",
+        "quote": "For PO, the recent collision data with He (described in Appendix [7](#appendix-PO-collision-rates)) were scaled by 1.4 to mimic H$_2$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with LTE ratios",
+     "evidence": [
+      {
+       "loc": "Discussion, Hints from molecular abundance ratios",
+       "quote": "In all cases, the PO/PN ratio clearly increases with increasing distance from the central protostar, supporting the role of photochemistry to explain the observed relative abundances of PN and PO."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Analyse ROSINA masses for P-bearing species",
+    "method": {
+     "value": "Peak analysis at masses 31, 34, 43, 45, 47 Da; correlation of m46.696 with P and 35Cl; PO vs SO correlation",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we checked the correlation of the ratio of this peak with the P peak on mass 31 Da and with the $^{35}$Cl peak on mass 35 Da."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "PO ionization cross section equal to NO; same sensitivity for SO and PO",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "we assume that the ionization cross section of PO is the same as for NO"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CCl excluded because ratio to 35Cl not constant while ratio to P is",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "This is the case for P, but not for $^{35}$Cl."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The data were calibrated and imaged using standard ALMA calibration scripts of the Common Astronomy Software Applications package (CASA)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MADCUBA (SLIM, AUTOFIT)",
+    "version": "not stated",
+    "used_for": {
+     "value": "LTE spectral fitting",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Further analysis was done with MADCUBA[^3] software package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE radiative transfer",
+     "evidence": [
+      {
+       "loc": "3.1.4 Non-LTE analysis",
+       "quote": "we used the non-LTE radiative transfer program RADEX"
+      }
+     ]
+    }
+   },
+   {
+    "name": "HIBRIDON",
+    "version": "4.4",
+    "used_for": {
+     "value": "close-coupling scattering for PO-He cross sections",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "Close-coupling quantum scattering calculations were carried out using the HIBRIDON[^9] program"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MOLPRO",
+    "version": "2010",
+    "used_for": {
+     "value": "PO-He potential energy surface",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "using the `MOLPRO` 2010 package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "PO/PN ratio at P2",
+    "value": "0.6",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| P2         | 0.6$\\pm$0.2 | 170$\\pm$11   | 309$\\pm$107 |"
+     }
+    ]
+   },
+   {
+    "quantity": "PO/PN ratio at P3",
+    "value": "1.4",
+    "uncertainty": "0.3",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| P3         | 1.4$\\pm$0.3 | 151$\\pm$14   | 112$\\pm$17  |"
+     }
+    ]
+   },
+   {
+    "quantity": "PO/PN ratio at P5",
+    "value": "2.6",
+    "uncertainty": "0.6",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| P5         | 2.6$\\pm$0.6 | 72$\\pm$9     | 27$\\pm$5    |"
+     }
+    ]
+   },
+   {
+    "quantity": "N(PN) at P4 (LTE)",
+    "value": "5.5",
+    "uncertainty": "0.2",
+    "units": "1e12 cm-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| P4     | 5.5$\\pm$0.2                   | -5.14$\\pm$0.03 | 1.50$\\pm$0.05 | 0.24$\\pm$0.01   |"
+     }
+    ]
+   },
+   {
+    "quantity": "PN-PO velocity differences in P3-P6",
+    "value": "0.4, 0.46, 0.24, 0.5",
+    "uncertainty": "0.1, 0.07, 0.09, 0.1",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1.3 LTE analysis",
+      "quote": "the differences are 0.4$\\pm$0.1, 0.46$\\pm$0.07, 0.24$\\pm$0.09 and 0.5$\\pm$0.1 km s$^{-1}$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Max non-LTE PO/PN (P5)",
+    "value": "7.6 (n=1e6)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| P5     | 17.0         | 2.5          | 2.1          |   | 82           | 16           | 16           |   | 4.8          | 6.4          | 7.6          |"
+     }
+    ]
+   },
+   {
+    "quantity": "PO/PN in comet 67P",
+    "value": ">10",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "The signal on mass 45 Da gives an abundance ratio of PO/PN$>$10."
+     }
+    ]
+   },
+   {
+    "quantity": "PO relative to SO in comet",
+    "value": "16%",
+    "uncertainty": "factor of 2",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "This yields, finally, an abundance of PO relative to SO of 16$\\%$ with a probable uncertainty of a factor of 2"
+     }
+    ]
+   },
+   {
+    "quantity": "PO/H2O in comet nucleus bulk",
+    "value": "1.1e-4",
+    "uncertainty": "factor of 2",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "this would yield a relative abundance for PO/H$_2$O of 1.1$\\times$10$^{-4}$ for the nucleus bulk within a factor of 2."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "PN and PO arise in low-velocity, narrow-line gas in outflow cavity walls, not at high-velocity outflow axis, hot core or starless core",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The ALMA maps show that the emission of PN and PO arises from several spots associated with low-velocity gas with narrow linewidths in the cavity walls of a bipolar outflow."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Shocks alone drive P chemistry",
+    "experiment": "Map PN/PO vs SO high-velocity gas",
+    "result": "No PN/PO at high-velocity SO positions; present in cavity walls",
+    "finding": "Shocks plus UV photochemistry needed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "This indicates that the mere presence of shocked material does not guarantee the detection of PO and PN."
+     }
+    ]
+   },
+   {
+    "hypothesis": "PO/PN ratio depends on UV exposure",
+    "experiment": "PO/PN versus distance from protostar via LTE and non-LTE",
+    "result": "Ratio increases with distance",
+    "finding": "Supports photochemistry",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "In all cases, the PO/PN ratio clearly increases with increasing distance from the central protostar"
+     }
+    ]
+   },
+   {
+    "hypothesis": "PO is main P carrier in comet 67P",
+    "experiment": "ROSINA mass peak analysis",
+    "result": "PO/PN>10, PO/PH3>3.3",
+    "finding": "PO is main carrier of P",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "PO is indeed the main carrier of P in the comet, with PO/PN$>$10 and PO/PH$_3>$3.3."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Hot chemistry and high cosmic-ray ionization rate rejected for PO/PN ratios",
+     "evidence": [
+      {
+       "loc": "4.1.2",
+       "quote": "However, a high cosmic-ray ionisation rate is unlikely to be the reason of the PO/PN ratios observed."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution too low to resolve cavity wall layers; speculative conclusions",
+     "evidence": [
+      {
+       "loc": "4.1.3",
+       "quote": "the current data only allows to draw some speculative conclusions, and higher angular resolution observations are needed"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-transition Tex assumed; column densities uncertain by factor ~2",
+    "Seven spots selected visually; PO/PN vs distance trend based on few points",
+    "Comet PO assignment relies on mass peak, ionization cross section assumed equal to NO",
+    "Photochemistry scenario qualitative, no source model"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2016.1.01071.S acknowledged",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.01071.S"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "CASA version",
+    "ROSINA raw data processing",
+    "Exact spot extraction positions beyond Table 2 coordinates are given but fitting component choices partly manual"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB",
+   "score_inferred": 3,
+   "score_reason": "ALMA data public, MADCUBA fits described, but imaging parameters missing and ROSINA part not reproducible from the paper.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe incomplete and ROSINA analysis not reproducible from the text."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: martin2019)",
+     "why": "MADCUBA"
+    },
+    {
+     "citation": "(cite: jimenez-serra2018)",
+     "why": "P chemistry models used for interpretation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: rivilla2016)",
+     "why": "PO detections in W51 and W3(OH)"
+    },
+    {
+     "citation": "(cite: mininni2018)",
+     "why": "single-dish PN in AFGL 5142"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Rosetta ROSINA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-3f7acbe9b7071aaf53e9a97ff345a588",
+  "batch_id": "msgbatch_01AGJmWoowxdzxrBuhezyUD3",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:18:45",
+  "usage": {
+   "input_tokens": 35490,
+   "output_tokens": 9362,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.082906,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 73,
+  "quotes_ok": 73,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 83,
+   "stated": 53,
+   "rate": 0.639
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:07",
+  "custom_id": "repair-sonnet-c0b8b4412ff985acffb23aaedcd8f86f",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "In all cases, the PO/PN ratio clearly increases with increasing distance from the central protostar, supporting the role of photochemistry to explain the observed relative abundances of PN and PO."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

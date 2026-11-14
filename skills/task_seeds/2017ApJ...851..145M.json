@@ -1,0 +1,316 @@
+{
+ "bibcode": "2017ApJ...851..145M",
+ "title": "ALMA Reveals Metals yet No Dust within Multiple Components in CR7",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa9931",
+ "arxiv_id": "1709.06569",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Are there metals and dust in CR7 (z=6.6 Lyα emitter), and do metallicity and dust content vary between its UV clumps?",
+ "alma_project_codes": [
+  "2015.1.00122.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "beam 0.82x0.77'' FWHM, PA -49.5 deg (after 0.7'' taper)",
+  "sensitivity": "rms 0.06 mJy/beam per 38.8 km/s channel; continuum rms 7 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST F110W/F160W photometry of clumps A, B, C",
+    "evidence": [
+     {
+      "loc": "2 UV properties of CR7",
+      "quote": "The latest photometry on the *HST*/WFC3 imaging in the F110W and F160W filters has been performed by (cite: Bowler2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Bowler2016)"
+  },
+  {
+   "what": {
+    "value": "COSMOS2015 catalog IDs/photo-z of foreground galaxies",
+    "evidence": [
+     {
+      "loc": "4.1 Blind detections",
+      "quote": "associated with ID number 339509 in the catalog from (cite: Laigle2016), photo$-z=0.84$"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle2016)"
+  },
+  {
+   "what": {
+    "value": "Literature [CII]/SFR/UV-slope samples and local SFR-L[CII] relation",
+    "evidence": [
+     {
+      "loc": "5 The SFR-L[CII] relation",
+      "quote": "we show how our [Cii] measurements of the UV components of CR7, their sum, and the integrated CR7 measurements compare to samples at $z\\sim5-7$ and to the local relation."
+     }
+    ]
+   },
+   "citation": "(cite: DeLooze2014); (cite: Barisic2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image ALMA data",
+   "method": "CASA reduction, natural weighting, channel averaging to 38.8 km/s, uv taper 0.7''",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "taper FWHM 0.7''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Astrometric alignment to HST",
+   "method": "Shift ALMA by 0.25'' west to align [CII] clumps with UV clumps A and B; consistent with foreground continuum sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Offset is due to astrometry errors, not physical"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Noise and significance estimation",
+   "method": "Integrate flux in 100,000 random circular apertures on collapsed image, r=0.35''",
+   "software": [],
+   "key_parameters": [
+    "1 sigma = 16.9 mJy/beam km/s for beam-sized apertures"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure [CII] luminosities and line profiles of clumps",
+   "method": "Aperture photometry (0.35'' radius; 0.55'' for A, 0.50'' for C-2) and Gaussian line fits; L_CII from Solomon/Carilli-Walter formula",
+   "software": [],
+   "key_parameters": [
+    "L_CII/Lsun = 1.04e-3 x S dv x nu_obs x D_L^2, D_L = 64457.8 Mpc"
+   ],
+   "assumptions": [
+    "LCDM with Om=0.70, OL=0.30, H0=70"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Sizes and dynamical masses",
+   "method": "2D Gaussian fits with fixed beam shape and positions, noise added from random cutouts, 5000 repeats; deconvolve; M_dyn formula",
+   "software": [],
+   "key_parameters": [
+    "M_dyn/Msun (sin i)^2 = 1.94e5 v_FWHM^2 r_1/2"
+   ],
+   "assumptions": [
+    "Not corrected for inclination"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "UV slopes and UV SFRs",
+   "method": "Correct F110W for Lyα, compute beta, SFR_UV with Meurer1999 attenuation, 10,000 Monte Carlo perturbations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Salpeter IMF 0.1-100 Msun; Meurer attenuation law"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "IR continuum limits, dust mass and SFR_IR",
+   "method": "3 sigma limit from 7 uJy/beam rms; modified blackbody at T_d=35 K (also 25, 45 K); dust mass with kappa=1.875(nu/239.84)^beta m2/kg; Kennicutt SFR_IR",
+   "software": [],
+   "key_parameters": [
+    "T_d = 35 K, beta_IR = 1.5"
+   ],
+   "assumptions": [
+    "CMB contribution removed; [CII] line contamination negligible"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Combine UV and IR for SFR_UV+IR",
+   "method": "Require dust-corrected minus dust-free SFR < 5.4 Msun/yr in each of 10,000 realisations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Place clumps on SFR-L[CII] relation and infer metallicity",
+   "method": "Compare with local relation and literature, and Vallini2015 metallicity models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total L[CII]",
+   "value": "2.17e8",
+   "uncertainty": "0.36e8",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Total luminosity",
+     "quote": "we measure L$_{\\rm [CII]}$ = $2.17\\pm0.36\\times10^8$ L$_{\\odot}$ in the collapsed image"
+    }
+   ]
+  },
+  {
+   "quantity": "Total [CII] FWHM",
+   "value": "299",
+   "uncertainty": "27",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Total luminosity",
+     "quote": "best-fitted with a line-width of $v_{\\rm FWHM}=299\\pm27$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump A L[CII] (aperture)",
+   "value": "0.96e8",
+   "uncertainty": "0.20e8",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 Measurements of individual clumps",
+     "quote": "L$_{\\rm [CII]} = (0.96\\pm0.20) \\times 10^8$ L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump A [CII] offset from Lya",
+   "value": "-146",
+   "uncertainty": "27",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\Delta$v$_{\\rm Ly\\alpha}$/km s$^{-1}$ | $-146\\pm27$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump A dynamical mass/sin^2 i",
+   "value": "3.9e10",
+   "uncertainty": "1.7e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Sizes and dynamical masses",
+     "quote": "$(3.9\\pm1.7)\\times10^{10}$ M$_{\\odot}$ for component A"
+    }
+   ]
+  },
+  {
+   "quantity": "3sigma L_IR (T_d=35 K)",
+   "value": "<3.14e10",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Upper limits for CR7",
+     "quote": "L$_{\\rm IR} < 3.14\\times10^{10}$ L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass limit (T_d=35 K)",
+   "value": "<8.1e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Upper limits for CR7",
+     "quote": "M$_{\\rm dust} < 8.1 (27.5)\\times10^6$ M$_{\\odot}$ if the dust temperature is 35 (25) K"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_IR limit",
+   "value": "<5.4",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Upper limits for CR7",
+     "quote": "dust obscured SFR$_{\\rm IR} < 5.4$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_UV+IR clumps A, B, C",
+   "value": "28, 5, 7",
+   "uncertainty": "+1/-1, +2/-1, +1/-1",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Upper limits for CR7",
+     "quote": "SFR$_{\\rm UV+IR} = 28^{+1}_{-1},  5^{+2}_{-1},  7^{+1}_{-1}$ M$_{\\odot}$ yr$^{-1}$ for clump A, B and C"
+    }
+   ]
+  },
+  {
+   "quantity": "log10(L[CII]/L_IR) lower limit",
+   "value": ">-2.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Upper limits for CR7",
+     "quote": "log$_{10}$(L$_{\\rm [CII]}$/L$_{\\rm IR}$)$>-2.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas metallicity",
+   "value": "0.1<Z/Zsun<0.2",
+   "uncertainty": "not stated",
+   "units": "Zsun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5 The SFR-L[CII] relation",
+     "quote": "we find that the components in CR7 would have gas-metallicities $0.1<$ Z/Z$_{\\odot}<0.2$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction (none applied to [CII]; the continuum image includes the line)",
+  "Cleaning parameters (deconvolver, threshold, masks, cell size) for tclean",
+  "Exact velocity range/channel selection for the collapsed images and velocity slices",
+  "Conversion constants for UV SFR (UV luminosity to SFR calibration)",
+  "Whether archive pipeline or manual calibration was used",
+  "The Lyα redshift reference used for velocity zero point"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "Exact velocity ranges for collapsed maps",
+  "Aperture centres and UV SFR calibration constant"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear measurement recipe, but imaging parameters are missing and the conclusions quote different limits than the body.",
+ "rediscovery_reason": "Public data, moderately complete recipe, numeric main results (L[CII], limits).",
+ "source_card": "cards/2017ApJ...851..145M/sonnet/card.md"
+}

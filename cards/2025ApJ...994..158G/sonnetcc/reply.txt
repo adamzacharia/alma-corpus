@@ -1,0 +1,333 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "Therefore, we performed new ALMA observations toward a molecular cloud in SMC, LIRS 36 (aka N12A), to measure the C$^{18}$O and C$^{17}$O emission and their abundance ratios."}
+],
+"fields": ["astrochemistry", "nearby_galaxies", "star_formation"],
+"question": {
+"value": "Can the oxygen isotope ratios (especially 18O/17O) of molecular gas in the low-metallicity SMC be measured via C18O and C17O J=2-1 and what do they say about stellar enrichment and the galaxy-wide IMF",
+"evidence": [
+{"loc": "abstract", "quote": "Oxygen isotope abundances and their ratios are fingerprints of stellar evolution and therefore provide a powerful tool in tracing the enrichment history of galaxies."},
+{"loc": "Introduction", "quote": "Precise measurements of the gas-phase $^{18}$O/$^{17}$O isotope ratios in the SMC will yield important insight into its chemical evolution"}
+]
+},
+"targets": [
+{
+"name": "LIRS 36 (aka N12A), SMC southwest bar",
+"details": [
+{"loc": "Observations and data reduction", "quote": "00$^{\\rm h}$46$^{\\rm m}$40$^{\\rm s}$8, $-$73$^{\\circ}$06$^{\\prime}$14$^{\\prime\\prime}$4"},
+{"loc": "Introduction", "quote": "The Small Magellanic Cloud (SMC), at a distance of 62.1$\\pm$1.9 kpc (cite: 2014ApJ...780...59G)"}
+],
+"coordinates": "ACA phase center (J2000) 00h46m40.8s, -73d06m14.4s",
+"redshift_or_distance": "SMC distance 62.1+/-1.9 kpc",
+"distance_source": "(cite: 2014ApJ...780...59G) Graczyk et al. 2014"
+}
+],
+"alma_project_codes": [
+{"code": "2023.1.01576.S", "evidence": [{"loc": "Observations and data reduction", "quote": "(project code: 2023.1.01576.S, PI: Yan Gong)"}]},
+{"code": "2015.1.00196.S", "evidence": [{"loc": "Observations and data reduction", "quote": "(project code: 2015.1.00196.S; PI: Julia Roman-Duval)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6, two frequency setups, 16 spectral windows in total (four used here)", "evidence": [{"loc": "Observations and data reduction", "quote": "Observations were performed using the ALMA Band 6 receivers, covering both spectral line and continuum emission with two frequency setups comprising 16 spectral windows in total."}]},
+{"field": "frequencies_and_spectral_setup", "value": "Four windows on 12CO, 13CO, C18O, C17O J=2-1; 244 kHz channels (~0.3 km/s); first three observed simultaneously, C17O separately", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The spectral channel width was 244 kHz, corresponding to a velocity spacing of $\\sim$0.3 km s$^{-1}$ for the four transitions."},
+{"loc": "Observations and data reduction", "quote": "The former three transitions were observed simultaneously, while the last line was observed independently."}]},
+{"field": "arrays", "value": "Atacama Compact Array (ACA) for the main data; total-power (TP) data from 2015.1.00196.S", "evidence": [
+{"loc": "Observations and data reduction", "quote": "were conducted between 2024 June 24 and August 23 using the Atacama Compact Array"},
+{"loc": "Observations and data reduction", "quote": "Total-power (TP) $^{12}$CO"}]},
+{"field": "baselines", "value": "8.9-48.9 m, 7-10 antennas", "evidence": [{"loc": "Observations and data reduction", "quote": "The observations employed 7–10 antennas with baseline lengths of 8.9–48.9 m"}]},
+{"field": "angular_resolution", "value": "Restoring beams 6.5x5.7 to 7.0x6.1 arcsec (Table 1); all data convolved to a common circular 7.5 arcsec beam", "evidence": [
+{"loc": "Table 1", "quote": "6.5$\\times$5.7, $-$86"},
+{"loc": "Observations and data reduction", "quote": "all data were convolved to a common circular beam of 7$''$5 for subsequent analysis"}]},
+{"field": "max_recoverable_scale", "value": "29.0-30.5 arcsec (MRS column of Table 1)", "evidence": [
+{"loc": "Table 1", "quote": "(6) Maximum recoverable scale."},
+{"loc": "Table 1", "quote": "29.0"}]},
+{"field": "sensitivity", "value": "ACA noise 11, 10, 8, 4 mJy/beam at ~0.3 km/s channel width for 12CO, 13CO, C18O, C17O; TP ~0.5 Jy/beam (12CO, 13CO), ~0.4 Jy/beam (C18O) per 244 kHz channel", "evidence": [
+{"loc": "Table 1", "quote": "(7) Noise level at the corresponding channel width."},
+{"loc": "Observations and data reduction", "quote": "are $\\sim$0.5 Jy beam$^{-1}$ for both"}]},
+{"field": "time_on_source", "value": "~60 hours of telescope time", "evidence": [{"loc": "Observations and data reduction", "quote": "a total of $\\sim$60 hours of telescope time"}]},
+{"field": "observing_dates", "value": "ACA 2024 June 24 to August 23; TP 2016 June and August", "evidence": [
+{"loc": "Observations and data reduction", "quote": "were conducted between 2024 June 24 and August 23"},
+{"loc": "Observations and data reduction", "quote": "observations were conducted in 2016 June and August"}]},
+{"field": "pi_or_archival_as_stated", "value": "ACA project PI Yan Gong (new observations); TP project PI Julia Roman-Duval (2015.1.00196.S)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "(project code: 2023.1.01576.S, PI: Yan Gong)"},
+{"loc": "Observations and data reduction", "quote": "PI: Julia Roman-Duval"}]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "230538.0000(5) MHz", "evidence": [{"loc": "Table 1", "quote": "230538.0000(5)"}]},
+{"species": "13CO", "transition": "J=2-1", "rest_frequency": "220398.6842(1) MHz", "evidence": [{"loc": "Table 1", "quote": "220398.6842(1)"}]},
+{"species": "C18O", "transition": "J=2-1", "rest_frequency": "219560.3577(3) MHz", "evidence": [{"loc": "Table 1", "quote": "219560.3577(3)"}]},
+{"species": "C17O", "transition": "J=2-1", "rest_frequency": "224714.3858(3) MHz", "evidence": [{"loc": "Table 1", "quote": "224714.3858(3)"}]}
+],
+"other_facilities": [
+{"name": "APEX 12CO and 13CO J=3-2 survey (in prep.)", "provided": {"value": "Identified LIRS 36 as the brightest 13CO J=3-2 position, used to select the target", "evidence": [{"loc": "Observations and data reduction", "quote": "LIRS 36 in the southwest bar is identified as the brightest position in $^{13}$CO $J=3\\to 2$ emission"}]}},
+{"name": "ALMA total power (project 2015.1.00196.S)", "provided": {"value": "TP 12CO and 13CO J=2-1 data used to recover missing flux via feathering with the ACA data", "evidence": [{"loc": "Observations and data reduction", "quote": "to recover the missing flux in our ACA observations"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "SMC distance of 62.1+/-1.9 kpc", "evidence": [{"loc": "Introduction", "quote": "at a distance of 62.1$\\pm$1.9 kpc (cite: 2014ApJ...780...59G)"}]}, "citation": "(cite: 2014ApJ...780...59G)"},
+{"what": {"value": "Line rest frequencies from the Cologne Database for Molecular Spectroscopy", "evidence": [{"loc": "Table 1", "quote": "suggested by the Cologne Database for Molecular Spectroscopy (cite: 2016JMoSp.327...95E)"}]}, "citation": "(cite: 2016JMoSp.327...95E)"},
+{"what": {"value": "Background temperature 2.73 K", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "the background temperature, which is set to be 2.73 K (cite: 2009ApJ...707..916F)"}]}, "citation": "(cite: 2009ApJ...707..916F)"},
+{"what": {"value": "SMC star formation history and low star formation rate (<0.3 Msun/yr over >~10 Gyr)", "evidence": [{"loc": "Discussion", "quote": "the overall star formation rates were low, of order $<$0.3  M$_{\\odot}$yr$^{-1}$ over the past $\\gtrsim$10 Gyr (cite: 2004AJ....127.1531H)"}]}, "citation": "(cite: 2009AJ....138.1243H); (cite: 2004AJ....127.1531H)"},
+{"what": {"value": "Gaia census: number of high-mass stars lower by a factor of 3-7 than expected from the low-mass population", "evidence": [{"loc": "Discussion", "quote": "finds the number of high-mass stars to be lower by a factor of 3–7 than expected from the low-mass population (cite: 2021A&A...646A.106S)"}]}, "citation": "(cite: 2021A&A...646A.106S)"},
+{"what": {"value": "Literature oxygen isotope ratios for LMC, NGC 253, NGC 4945, M82, PKS 1830-211, NGC 3256, Arp 220, M83 and Milky Way regions (comparison table)", "evidence": [{"loc": "Table 3", "quote": "Table notes: $^a$This work; $^b$(cite: 2009ApJ...690..580W); $^c$(cite: 2021AA...656A..46M)"}]}, "citation": "(cite: 2009ApJ...690..580W); (cite: 2021AA...656A..46M); (cite: 2004AA...422..883W); (cite: 1993AA...274..730H); (cite: 2010AA...522A..62M); (cite: 2023AA...674A.101M); (cite: 2018ApJ...855...49H); (cite: 2015AA...579A.101A); (cite: 2023AA...670A..98Y); (cite: 1989GeCoA..53..197A)"},
+{"what": {"value": "13CO/C18O intensity ratio of ~100 in N83C (comparison)", "evidence": [{"loc": "Results", "quote": "consistent with the high intensity ratios reported for N83C in the SMC (cite: 2017ApJ...844...98M)"}]}, "citation": "(cite: 2017ApJ...844...98M)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline in CASA for the ACA data; standard CASA pipeline for the TP data", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The raw data were calibrated using the ALMA pipeline of the Common Astronomy Software Applications (CASA) package (cite: 2022PASP..134k4501C)."},
+{"loc": "Observations and data reduction", "quote": "The single-dish data were reduced using the standard CASA pipeline."}]},
+{"field": "casa_version", "value": "CASA 6.5.4 (stated for imaging; calibration version not stated)", "evidence": [{"loc": "Observations and data reduction", "quote": "Subsequent imaging of the calibrated data was performed manually with CASA version 6.5.4."}]},
+{"field": "flux_calibrator", "value": "J2258-2758 (also bandpass); phase calibrator J0102-7546", "evidence": [{"loc": "Observations and data reduction", "quote": "The bandpass and flux calibrator was J2258$-$2758, while the phase calibrator was J0102$-$7546."}]},
+{"field": "flux_scale_uncertainty", "value": "better than 10%", "evidence": [{"loc": "Observations and data reduction", "quote": "Based on the measurements of the calibrators, the flux calibration accuracy is estimated to be better than 10%."}]}
+],
+"imaging": [
+{"field": "task", "value": "tclean (manual imaging in CASA 6.5.4)", "evidence": [{"loc": "Observations and data reduction", "quote": "The image reconstruction was carried out using the"}]},
+{"field": "deconvolver", "value": "Hogbom", "evidence": [{"loc": "Observations and data reduction", "quote": "employing the Högbom algorithm"}]},
+{"field": "weighting_robust", "value": "Briggs, robust = 0.5", "evidence": [{"loc": "Observations and data reduction", "quote": "Briggs weighting with a robust parameter of 0.5"}]},
+{"field": "cell_size", "value": "1.1 arcsec (~1/5 of the synthesized beams)", "evidence": [{"loc": "Observations and data reduction", "quote": "All cleaned images have a pixel size of 1$''$1, corresponding linearly to approximately 1/5 of their synthesized beams."}]},
+{"field": "masking", "value": "AUTO-MULTITHRESH with parameters as in Table 2 of Kepley et al. 2020", "evidence": [{"loc": "Observations and data reduction", "quote": "with parameters set identically to those listed in Table 2 of (cite: 2020PASP..132b4505K)"}]},
+{"field": "primary_beam_correction", "value": "applied to all cleaned data", "evidence": [{"loc": "Observations and data reduction", "quote": "A primary beam correction was applied to all cleaned data."}]},
+{"field": "array_combination", "value": "ACA and TP combined with CASA feather (12CO and 13CO only)", "evidence": [{"loc": "Observations and data reduction", "quote": "The combination of the single-dish and ACA datasets was performed using the"}]},
+{"field": "smoothing", "value": "all data convolved to a common circular 7.5 arcsec beam", "evidence": [{"loc": "Observations and data reduction", "quote": "all data were convolved to a common circular beam of 7$''$5 for subsequent analysis"}]},
+{"field": "final_beam", "value": "common circular beam of 7.5 arcsec", "evidence": [{"loc": "Observations and data reduction", "quote": "all data were convolved to a common circular beam of 7$''$5 for subsequent analysis"}]},
+{"field": "final_rms", "value": "ACA-only noise 11, 10, 8, 4 mJy/beam per ~0.3 km/s channel (before convolution to 7.5 arcsec)", "evidence": [{"loc": "Table 1", "quote": "(7) Noise level at the corresponding channel width."}]}
+],
+"inherited": [
+{"what": {"value": "AUTO-MULTITHRESH masking parameters", "evidence": [{"loc": "Observations and data reduction", "quote": "with parameters set identically to those listed in Table 2 of (cite: 2020PASP..132b4505K)"}]}, "from_reference": "(cite: 2020PASP..132b4505K) Kepley et al. 2020, Table 2"},
+{"what": {"value": "LTE radiative transfer equation for the peak brightness temperature", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "According to the radiative transfer equation (cite: 2015PASP..127..266M)"}]}, "from_reference": "(cite: 2015PASP..127..266M)"},
+{"what": {"value": "Weeds LTE spectral modelling approach", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "we use the CLASS extension Weeds for the LTE spectral modeling (cite: 2011A&A...526A..47M)"}]}, "from_reference": "(cite: 2011A&A...526A..47M)"}
+],
+"unstated_but_needed": [
+"Image size / field of view and tclean threshold, niter, mask parameter values (only given by reference to Kepley et al. 2020)",
+"Whether and how continuum was subtracted, and which channels were line-free",
+"CASA version and pipeline version used for calibration (only the imaging version is given)",
+"Feather settings (sdfactor, TP scaling, units conversion from Jy/beam to K) and TP imaging/gridding details",
+"Which software did the Gaussian line fits and how the Table 2 uncertainties were derived",
+"Prior ranges for Tex and column densities, burn-in length, and how the noise sigma_i entering chi-square was set (spectral channels vs peak value)",
+"How the C17O hyperfine structure was handled in the Weeds model and whether per-channel spectra or only peak values were fit",
+"Pixel/aperture used for the 'emission peak' spectrum extraction beyond the quoted peak coordinates",
+"Details of the self-calibration, if any, and of the antenna flagging"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image the ACA data",
+"method": {"value": "ALMA pipeline calibration in CASA, then manual tclean imaging", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The raw data were calibrated using the ALMA pipeline of the Common Astronomy Software Applications (CASA) package (cite: 2022PASP..134k4501C)."}]},
+"software": ["CASA 6.5.4", "tclean"],
+"key_parameters": [
+{"value": "Hogbom deconvolver, Briggs robust 0.5", "evidence": [{"loc": "Observations and data reduction", "quote": "Briggs weighting with a robust parameter of 0.5"}]},
+{"value": "AUTO-MULTITHRESH masking, parameters as Kepley et al. 2020 Table 2", "evidence": [{"loc": "Observations and data reduction", "quote": "The automated masking algorithm"}]},
+{"value": "pixel size 1.1 arcsec, primary beam correction applied", "evidence": [{"loc": "Observations and data reduction", "quote": "A primary beam correction was applied to all cleaned data."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Flux calibration accuracy estimated to be better than 10% from the calibrators", "evidence": [{"loc": "Observations and data reduction", "quote": "the flux calibration accuracy is estimated to be better than 10%"}]}
+},
+{
+"order": 2,
+"goal": "Add short spacings and match resolution",
+"method": {"value": "Feather TP 12CO and 13CO data with the ACA data, then convolve all lines to a common 7.5 arcsec beam; C18O and C17O stay ACA-only", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The combination of the single-dish and ACA datasets was performed using the"},
+{"loc": "Observations and data reduction", "quote": "all data were convolved to a common circular beam of 7$''$5 for subsequent analysis"}]},
+"software": ["CASA feather"],
+"key_parameters": [
+{"value": "common circular beam 7.5 arcsec", "evidence": [{"loc": "Observations and data reduction", "quote": "all data were convolved to a common circular beam of 7$''$5 for subsequent analysis"}]}
+],
+"assumptions": [
+{"value": "C18O and C17O ACA-only spectra have negligible missing flux at the peak position because they are compact", "evidence": [{"loc": "Short spacing", "quote": "we conclude that the missing flux in the ACA-only data is negligible for the C$^{18}$O $J=2 \\to 1$ and C$^{17}$O $J=2 \\to 1$ spectra at the peak position"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "ACA-only vs ACA+TP flux comparison: ACA-only recovers 70% (12CO) and 82% (13CO) of total flux, 83% and 97% at the peak position", "evidence": [{"loc": "Short spacing", "quote": "the ACA-only data account for only 70% and 82% of the total flux densities in the ACA+TP combined data"}]}
+},
+{
+"order": 3,
+"goal": "Extract peak spectra and fit Gaussians",
+"method": {"value": "Extract spectra at the emission peak (13CO peak) and fit a Gaussian to each to get velocity, peak Tb, FWHM and integrated intensity", "evidence": [
+{"loc": "Results", "quote": "we extracted spectra at the emission peak and used them to derive the isotopic ratios."},
+{"loc": "Results", "quote": "We performed a Gaussian fitting to each spectrum"}]},
+"software": [],
+"key_parameters": [
+{"value": "Integration velocity range 105-145 km/s for 12CO and 122-129 km/s for the other three lines", "evidence": [{"loc": "Table 2", "quote": "The values are obtained by integrating the velocity range of 105–145 km s$^{-1}$ for"}]}
+],
+"assumptions": [
+{"value": "12CO and 13CO from ACA+TP; C18O and C17O from ACA-only", "evidence": [{"loc": "Table 2", "quote": "whereas those of C$^{18}$O ($2 \\to 1$) and C$^{17}$O ($2 \\to 1$) are derived from the ACA-only datasets"}]}
+],
+"fitting": {"value": "Single-Gaussian fit to each line profile; software not stated", "evidence": [{"loc": "Results", "quote": "We performed a Gaussian fitting to each spectrum"}]},
+"validation": {"value": "Velocity centroids of the four lines agree within the uncertainties and with earlier studies", "evidence": [{"loc": "Results", "quote": "The velocity centroids of the four transitions are consistent within the uncertainties"}]}
+},
+{
+"order": 4,
+"goal": "Derive excitation temperature and optical depths",
+"method": {"value": "LTE radiative transfer with optically thick 12CO J=2-1: Tex from the 12CO peak brightness temperature, then optical depths of the isotopologues assuming the same Tex", "evidence": [
+{"loc": "Local thermodynamic equilibrium", "quote": "we can derive excitation temperatures from the peak brightness temperatures of $^{12}$CO $J=2\\to 1$ using Eqs."},
+{"loc": "Results", "quote": "Assuming that the four $J=2\\to 1$ transitions have the same excitation temperature, we derive a peak optical depth of 0.34$\\pm$0.02 for $^{13}$CO $J=2\\to 1$."}]},
+"software": [],
+"key_parameters": [
+{"value": "Background temperature 2.73 K", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "the background temperature, which is set to be 2.73 K (cite: 2009ApJ...707..916F)"}]},
+{"value": "Beam dilution factor f=1 (fiducial) or f=0.34 (source size 5.4 arcsec)", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "For the fiducial case, we neglect the beam dilution effects by assuming $f\\sim 1$."}]}
+],
+"assumptions": [
+{"value": "LTE, 12CO optically thick, same Tex for all four lines", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "Assuming that $^{12}$CO $J=2\\to 1$ is optically thick and neglecting the beam dilution effects"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Optical depths of 13CO, C18O, C17O stay almost unchanged when f=0.34 is assumed, so the three lines are treated as optically thin", "evidence": [{"loc": "Results", "quote": "the optical depths of $^{13}$CO $J=2\\to 1$, C$^{18}$O $J=2\\to 1$, and C$^{17}$O $J=2\\to 1$ stay almost unchanged"}]}
+},
+{
+"order": 5,
+"goal": "Fit Tex and column densities with LTE MCMC",
+"method": {"value": "Weeds LTE spectral model fitted to the observed spectra with emcee; Tex and the 13CO, C18O, C17O column densities are fit", "evidence": [
+{"loc": "Local thermodynamic equilibrium", "quote": "we use the CLASS extension Weeds for the LTE spectral modeling (cite: 2011A&A...526A..47M)"},
+{"loc": "Local thermodynamic equilibrium", "quote": "To fit the observed spectra, we employed the"}]},
+"software": ["Weeds (CLASS/GILDAS)", "emcee"],
+"key_parameters": [
+{"value": "10 walkers, 4500 iterations after burn-in", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "The MCMC sampling was carried out with 10 walkers over 4500 iterations, following an initial burn-in phase to ensure convergence."}]},
+{"value": "Velocities and FWHM fixed to Table 2 values; C17O FWHM set equal to C18O", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "The systemic velocities and FWHM line widths are based on Table"}]},
+{"value": "10% flux density uncertainty adopted", "evidence": [{"loc": "Results", "quote": "adopting a 10% uncertainty in flux density"}]}
+],
+"assumptions": [
+{"value": "Single Gaussian component for all molecules", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "we assume a single Gaussian component for all molecules for simplicity"}]},
+{"value": "Same source size for all four lines", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "we assume the same source size for the four lines"}]},
+{"value": "C17O line width set equal to C18O because Gaussian fit overestimates it owing to hyperfine splitting", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "The FWHM line width of C$^{17}$O $J=2\\to 1$ is set to be identical to C$^{18}$O $J=2\\to 1$"}]}
+],
+"fitting": {"value": "emcee affine-invariant ensemble sampler; uniform priors on Tex and the three column densities; Gaussian likelihood exp(-chi2/2); errors from 16th and 84th percentiles", "evidence": [
+{"loc": "Local thermodynamic equilibrium", "quote": "We assumed uniform priors for the excitation temperature"},
+{"loc": "Local thermodynamic equilibrium", "quote": "the likelihood was taken to be Gaussian"},
+{"loc": "Local thermodynamic equilibrium", "quote": "The reported best-fit values and associated 1$\\sigma$ errors correspond to the 16th and 84th percentiles of the posterior distributions."}]},
+"validation": {"value": "Posterior parameters reported as well constrained (corner plot, Fig. 3)", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "where the four parameters are well constrained"}]}
+},
+{
+"order": 6,
+"goal": "Compute isotope abundance ratios",
+"method": {"value": "Isotope ratios taken directly from the fitted column densities; 12CO integrated intensity ratios give only lower limits on 16O/18O and 16O/17O", "evidence": [
+{"loc": "Results", "quote": "The corresponding isotope ratios were directly determined from these column densities."},
+{"loc": "Results", "quote": "Because the $^{12}$CO $J=2\\to1$ transition is optically thick"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Oxygen isotopes not chemically fractionated; C18O and C17O optically thin", "evidence": [{"loc": "Introduction", "quote": "oxygen isotopes are not subject to chemical fractionation (cite: 1984ApJ...277..581L)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Ratios compared with values for the LMC, other galaxies and the Milky Way (Table 3)", "evidence": [{"loc": "Discussion", "quote": "compares oxygen isotope ratios with those measured in various environments"}]}
+},
+{
+"order": 7,
+"goal": "Test sensitivity to the assumed source size",
+"method": {"value": "Repeat the MCMC fit with source size 5.4 arcsec (beam dilution factor 0.34) inferred from the compact C17O component", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "In order to test the impact of the assumed source size on the derived isotope ratios, the MCMC approach was performed again by assuming"}]},
+"software": ["emcee", "Weeds"],
+"key_parameters": [
+{"value": "source size 5.4 arcsec, f=0.34", "evidence": [{"loc": "Results", "quote": "a beam dilution factor of 0.34 (i.e., a source size of 5$''$4;"}]}
+],
+"assumptions": [],
+"fitting": {"value": "Same as step 5", "evidence": []},
+"validation": {"value": "Isotope ratios essentially unchanged (18O/17O 0.88+/-0.29), so ratios are robust although Tex and N change", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "but the isotope ratios remain almost identical"}]}
+},
+{
+"order": 8,
+"goal": "Interpret ratios in terms of stellar enrichment and IGIMF",
+"method": {"value": "Compare the low 18O/17O and high 13CO/C18O with nucleosynthesis sources, SMC carbon-star fraction, Gaia high-mass star census and IGIMF predictions", "evidence": [{"loc": "Discussion", "quote": "an unusually low $^{18}$O/$^{17}$O ratio indicates chemical enrichment dominated by low- and intermediate-mass stellar populations, with little contribution from massive stars"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "SMC ISM is well mixed so LIRS 36 may be representative (not established)", "evidence": [{"loc": "Discussion", "quote": "In the SMC, large-scale mixing of nucleosynthetic products may also be expected, although this remains less well constrained."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Consistency with Gaia high-mass-star deficit and low SMC star formation history", "evidence": [{"loc": "Discussion", "quote": "The low $^{18}$O/$^{17}$O ratio that we measure is in line with this prediction"}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.5.4 (imaging)", "used_for": {"value": "ALMA pipeline calibration, tclean imaging, feather combination", "evidence": [{"loc": "Observations and data reduction", "quote": "Subsequent imaging of the calibrated data was performed manually with CASA version 6.5.4."}]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "image reconstruction (Hogbom, Briggs, auto-multithresh)", "evidence": [{"loc": "Observations and data reduction", "quote": "The image reconstruction was carried out using the"}]}},
+{"name": "feather", "version": "not stated", "used_for": {"value": "combining TP and ACA data", "evidence": [{"loc": "Observations and data reduction", "quote": "The combination of the single-dish and ACA datasets was performed using the"}]}},
+{"name": "Weeds (CLASS extension of GILDAS)", "version": "not stated", "used_for": {"value": "LTE spectral modelling", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "we use the CLASS extension Weeds for the LTE spectral modeling (cite: 2011A&A...526A..47M)"}]}},
+{"name": "GILDAS", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC fitting of Tex and column densities", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "which applies the affine-invariant ensemble sampler (cite: 2010CAMCS...5...65G) within a Markov chain Monte Carlo (MCMC) framework."}]}},
+{"name": "astropy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "SciPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+{"quantity": "18O/17O abundance ratio in LIRS 36 (SMC)", "value": "0.87", "uncertainty": "+/-0.26", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Results", "quote": "Neglecting the beam dilution effects, we obtain $^{13}$C/$^{18}$O=109.3$\\pm$35.6, $^{13}$C/$^{17}$O=95.2$\\pm$31.4, and $^{18}$O/$^{17}$O=0.87$\\pm$0.26."}]},
+{"quantity": "13C/18O abundance ratio", "value": "109.3", "uncertainty": "+/-35.6", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Results", "quote": "Neglecting the beam dilution effects, we obtain $^{13}$C/$^{18}$O=109.3$\\pm$35.6, $^{13}$C/$^{17}$O=95.2$\\pm$31.4, and $^{18}$O/$^{17}$O=0.87$\\pm$0.26."}]},
+{"quantity": "13C/17O abundance ratio", "value": "95.2", "uncertainty": "+/-31.4", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Results", "quote": "Neglecting the beam dilution effects, we obtain $^{13}$C/$^{18}$O=109.3$\\pm$35.6, $^{13}$C/$^{17}$O=95.2$\\pm$31.4, and $^{18}$O/$^{17}$O=0.87$\\pm$0.26."}]},
+{"quantity": "16O/18O lower limit", "value": ">~444", "uncertainty": "lower limit", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Results", "quote": "yield only lower limits of $^{16}$O/$^{18}$O$\\gtrsim$444 and $^{16}$O/$^{17}$O$\\gtrsim$386, respectively."}]},
+{"quantity": "16O/17O lower limit", "value": ">~386", "uncertainty": "lower limit", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Results", "quote": "yield only lower limits of $^{16}$O/$^{18}$O$\\gtrsim$444 and $^{16}$O/$^{17}$O$\\gtrsim$386, respectively."}]},
+{"quantity": "13CO/C18O integrated intensity ratio", "value": "90", "uncertainty": "+/-5", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Results", "quote": "The integrated intensity ratio of $^{13}$CO/C$^{18}$O is 90$\\pm$5"}]},
+{"quantity": "Excitation temperature (f=1)", "value": "18.4", "uncertainty": "+/-3.0", "units": "K", "from_step": 5, "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "Our approach results in $T_{\\rm ex}$=18.4$\\pm$3.0 K"}]},
+{"quantity": "13CO column density (f=1)", "value": "5.9e15", "uncertainty": "+/-1.5e15", "units": "cm^-2", "from_step": 5, "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "$N_{^{13}{\\rm CO}}$=(5.9$\\pm$1.5)$\\times 10^{15}$ cm$^{-2}$"}]},
+{"quantity": "C18O column density (f=1)", "value": "5.4e13", "uncertainty": "+/-1.1e13", "units": "cm^-2", "from_step": 5, "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "$N_{{\\rm C^{18}O}}$=(5.4$\\pm$1.1)$\\times 10^{13}$ cm$^{-2}$"}]},
+{"quantity": "C17O column density (f=1)", "value": "6.2e13", "uncertainty": "+/-1.3e13 (appendix text) or +/-1.5e13 (Table 2)", "units": "cm^-2", "from_step": 5, "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "$N_{{\\rm C^{17}O}}$=(6.2$\\pm$1.3)$\\times 10^{13}$ cm$^{-2}$"}]},
+{"quantity": "13CO peak optical depth", "value": "0.34", "uncertainty": "+/-0.02", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Results", "quote": "we derive a peak optical depth of 0.34$\\pm$0.02 for $^{13}$CO $J=2\\to 1$"}]},
+{"quantity": "Excitation temperature (f=0.34, source size 5.4 arcsec)", "value": "46.5", "uncertainty": "+/-8.2", "units": "K", "from_step": 7, "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "The physical parameters change to $T_{\\rm ex}$=46.5$\\pm$8.2 K"}]},
+{"quantity": "18O/17O ratio with source size 5.4 arcsec", "value": "0.88", "uncertainty": "+/-0.29", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "0.88$\\pm$0.29"}]},
+{"quantity": "C18O J=2-1 integrated intensity", "value": "0.099", "uncertainty": "+/-0.005", "units": "K km/s", "from_step": 3, "evidence": [{"loc": "Table 2", "quote": "0.099$\\pm$0.005"}]},
+{"quantity": "C17O J=2-1 integrated intensity", "value": "0.114", "uncertainty": "+/-0.002", "units": "K km/s", "from_step": 3, "evidence": [{"loc": "Table 2", "quote": "0.114$\\pm$0.002"}]},
+{"quantity": "C17O J=2-1 detection significance", "value": ">10", "uncertainty": "not stated", "units": "dimensionless (S/N)", "from_step": 1, "evidence": [{"loc": "Results", "quote": "the C$^{17}$O $J=2\\to1$ transition is detected with a signal-to-noise ratio of $>$10"}]}
+],
+"findings_qualitative": [
+{"value": "First detection of C17O in the SMC; first instance of C17O integrated intensity exceeding C18O in molecular clouds", "evidence": [{"loc": "Results", "quote": "To our knowledge, this is the first instance in which C$^{17}$O emission exhibits a higher integrated intensity than C$^{18}$O emission in molecular clouds."}]},
+{"value": "SMC 18O/17O is lower than all literature values for molecular clouds in the Milky Way and other galaxies", "evidence": [{"loc": "Discussion", "quote": "The $^{18}$O/$^{17}$O isotope ratio in the SMC is markedly lower than all previously reported values for molecular clouds"}]},
+{"value": "Top-light IGIMF in the SMC suggested, possibly a general feature of low-metallicity dwarf galaxies", "evidence": [{"loc": "Summary and conclusion", "quote": "Our findings imply that such a top-light IGIMF may be a general feature of low-metallicity dwarf galaxies."}]}
+],
+"claims": [
+{"hypothesis": "C17O can be detected in the SMC, allowing a direct 18O/17O measurement", "experiment": "ACA Band 6 observations of 12CO, 13CO, C18O, C17O J=2-1 toward LIRS 36, spectra at the 13CO peak", "result": "C17O detected at S/N >10; 18O/17O = 0.87+/-0.26", "finding": "First solid C17O detection and first direct 18O/17O in the SMC", "support": "supported", "evidence": [{"loc": "Results", "quote": "marking the first solid detection of C$^{17}$O in the SMC"}]},
+{"hypothesis": "The SMC 18O/17O ratio differs from other galaxies and Milky Way clouds", "experiment": "Compare the measured ratio with literature values (Table 3)", "result": "0.87+/-0.26 vs 1.7 (LMC), 3.4-5.5 (Milky Way), >=6.4 (other galaxies in table)", "finding": "SMC ratio is lower than all previous molecular-cloud values", "support": "supported", "evidence": [{"loc": "Discussion", "quote": "markedly lower than all previously reported values for molecular clouds in both extragalactic sources and the Milky Way"}]},
+{"hypothesis": "Chemical enrichment in the SMC is dominated by low-mass stars, consistent with a top-light IGIMF", "experiment": "Interpret low 18O/17O and high 13CO/C18O with nucleosynthesis, Gaia high-mass star census and low SFR history", "result": "Low 18O/17O together with high 13CO/C18O", "finding": "Enrichment dominated by low-mass stars; SMC governed by a top-light IGIMF", "support": "partially", "evidence": [{"loc": "abstract", "quote": "indicates chemical enrichment dominated by low-mass stars, consistent with the observed paucity of high-mass stars in the SMC"}]},
+{"hypothesis": "The derived isotope ratios are robust against assumed source size and missing flux", "experiment": "Re-run MCMC with source size 5.4 arcsec; compare ACA-only vs ACA+TP flux", "result": "Ratios unchanged (18O/17O 0.88 vs 0.87) while Tex and N change; C18O and C17O missing flux negligible at the peak", "finding": "Isotope ratios are robust", "support": "supported", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "Therefore, the derived isotope ratios in the SMC are robust."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "LIRS 36 is the brightest 13CO J=3-2 position in the APEX SMC survey, so it has the highest 13CO column density on the surveyed scale, making it best for rare isotopologues", "evidence": [{"loc": "Observations and data reduction", "quote": "Therefore, we selected LIRS 36 as the target to search for rare CO isotopologues."}]},
+{"field": "why_this_method", "value": "Optically thin C18O and C17O transitions give 18O/17O directly; oxygen isotopes are not fractionated and isotope-selective photodissociation affects both similarly", "evidence": [{"loc": "Introduction", "quote": "the $^{18}$O/$^{17}$O isotope ratios can be directly determined by the optically thin transitions of C$^{18}$O and C$^{17}$O"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Isotope-selective photodissociation dismissed as unlikely to affect the ratios significantly", "evidence": [{"loc": "Introduction", "quote": "Isotope-selective photodissociation is unlikely to significantly affect these ratios"}]},
+{"value": "Beam dilution f=0.34 tested as an alternative to f=1; isotope ratios unchanged", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "In order to test the impact of the assumed source size on the derived isotope ratios, the MCMC approach was performed again by assuming"}]}
+],
+"limitations_admitted": [
+{"value": "Single sightline/cloud; representativeness for the whole SMC unknown", "evidence": [{"loc": "Discussion", "quote": "but establishing whether it is representative on a global scale will require future studies with larger samples."}]},
+{"value": "12CO shows moderate missing flux in ACA-only data", "evidence": [{"loc": "Short spacing", "quote": "emphasizing the need for total power data to accurately determine its brightness temperatures"}]},
+{"value": "Single Gaussian component assumed for simplicity; 12CO optical depth leads only to lower limits on 16O/18O and 16O/17O", "evidence": [{"loc": "Local thermodynamic equilibrium", "quote": "we assume a single Gaussian component for all molecules for simplicity"}]}
+],
+"referee_caveats_inferred": [
+"Single source and single sightline; 18O/17O result rests on one C17O line with hyperfine blending and an ad hoc FWHM assumption",
+"Equal Tex for all isotopologues and a single-component LTE model are assumed; 12CO-derived Tex may not apply to the optically thin lines",
+"Inconsistencies in the text: Tex 18.6 K (Results) vs 18.4 K (Table 2 and appendix); C17O column uncertainty 1.5e13 (Table 2) vs 1.3e13 (appendix)",
+"C18O and C17O taken from ACA-only data; missing flux for them is argued, not measured (TP did not detect C18O)",
+"Interpretation to a galaxy-wide IGIMF extrapolates from one cloud; alternative sources (novae, AGB yields at low Z) not quantitatively tested"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Explicit statement that the ACA and TP data are public; no data-release or product link is given",
+"tclean threshold, niter, image size and auto-multithresh parameter values (given only by citation)",
+"Continuum subtraction and line-free channel choice",
+"Feather parameters and TP processing details",
+"MCMC prior ranges, burn-in length, how sigma_i was set, hyperfine treatment of C17O in Weeds",
+"No code or fitting scripts released"
+],
+"estimated_data_volume_inferred": "Roughly 20-60 GB of raw ACA Band 6 data (~60 h, 16 spws, two setups) plus a few GB of TP data, if the archive products are re-imaged; the derived spectra themselves are tiny",
+"score_inferred": 3,
+"score_reason": "ALMA project codes, calibrators, CASA version, robust and key imaging choices and the MCMC recipe are given with numeric results, but masking parameters are by reference, there is no line-free/continuum-subtraction or feather detail, and no code is released.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Both project codes are given and the main results are numeric (18O/17O = 0.87+/-0.26) from peak spectra and a simple LTE MCMC; public availability is not stated in the paper (inferred from ALMA archive norms), and some imaging and fit details would need to be reconstructed.",
+"methods_papers": [
+{"citation": "(cite: 2020PASP..132b4505K)", "why": "AUTO-MULTITHRESH masking parameters used in tclean"},
+{"citation": "(cite: 2011A&A...526A..47M)", "why": "Weeds extension of CLASS used for LTE modelling"},
+{"citation": "(cite: 2013PASP..125..306F)", "why": "emcee sampler"},
+{"citation": "(cite: 2015PASP..127..266M)", "why": "Radiative transfer equation used for LTE column densities"},
+{"citation": "(cite: 2022PASP..134k4501C)", "why": "CASA and its ALMA pipeline"}
+],
+"companion_papers": [
+{"citation": "(cite: 2017ApJ...844...98M)", "why": "ALMA 13CO/C18O ratios in SMC N83C, compared with this work"},
+{"citation": "(cite: 2018Natur.558..260Z)", "why": "ALMA detection of high 13CO/C18O intensity ratios in the SMC and related IGIMF work"},
+{"citation": "(cite: 2009ApJ...690..580W)", "why": "LMC 18O/17O ratio used for comparison"},
+{"citation": "(cite: 2023AA...670A..98Y)", "why": "Milky Way oxygen isotope ratio gradient used for comparison"}
+],
+"related_projects_or_surveys": [
+"APEX 12CO and 13CO J=3-2 SMC survey (C.-H. Rosie Chen, in prep.)",
+"ALMA project 2015.1.00196.S (TP observations, PI Julia Roman-Duval)"
+]
+}

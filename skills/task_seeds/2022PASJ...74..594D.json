@@ -1,0 +1,189 @@
+{
+ "bibcode": "2022PASJ...74..594D",
+ "title": "The symbiotic and bipolar nebula M 2-9: Morphological variability of the collimated ionized wind arising from the core",
+ "year": 2022,
+ "doi": "10.1093/pasj/psac020",
+ "arxiv_id": "2203.00881",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "Investigate the presence and morphological variability of the collimated fast wind and surrounding disk-like dust ring in the central region of the symbiotic and bipolar nebula M 2-9.",
+ "alma_project_codes": [
+  "2013.1.00458.S",
+  "2015.1.01539.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~345-350 GHz, ~0.9 mm)",
+  "arrays": "12 m array (42, 46, and 45 antennas)",
+  "angular_resolution": "0.09 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "JVLA radio-continuum flux density, size, and SED measurements at 4.86, 8.46, 14.94, and 22.46 GHz, and ~23 GHz image",
+    "evidence": [
+     {
+      "loc": "Results and discussion",
+      "quote": "We present the $\\sim$ 43 GHz image in Fig. 3, with an overlay of the $\\sim$ 23 GHz RC emission adapted from (cite: Lim2003)."
+     },
+     {
+      "loc": "Results and discussion",
+      "quote": "(cite: Lim2003) report flux density (S$_{\\nu}$) and size ($\\Theta$) plots as function of the frequency at 4.86, 8.46, 14.94, and 22.46 GHz (see Tab. 1), indicating that S$_{\\nu}$ $\\propto$ $\\nu^{0.67}$ and $\\Theta$ $\\propto$ $\\nu^{<-0.86>}$."
+     }
+    ]
+   },
+   "citation": "(cite: Lim2003)"
+  },
+  {
+   "what": {
+    "value": "Orbital period of 86 years for the binary system",
+    "evidence": [
+     {
+      "loc": "Results and discussion",
+      "quote": "Although our observations do not have sufficient angular resolution to determine dynamical parameters like the orbital period, we can say that since the time interval between the two observations is around 7 years and taking into account an orbital period of 86 years (cite: Doyle2000; Corradi2011), the angle subtended by the white dwarf in those epochs, as seen from the red giant star, is around 30 degrees."
+     }
+    ]
+   },
+   "citation": "(cite: Doyle2000; Corradi2011)"
+  },
+  {
+   "what": {
+    "value": "SED of M 2-9 for comparison at 345 GHz",
+    "evidence": [
+     {
+      "loc": "Results and discussion",
+      "quote": "In agreement with (cite: SC2017), and comparing this to the SED presented by them for M2-9 (see their Figure 1), the 345 GHz emission could be a dust ring produced by the WD during its AGB phase (AGB wind; see (cite: Ferrarotti2006; Kwok2000; Kwok1993; Kwok1980) and references therein) in a binary system."
+     }
+    ]
+   },
+   "citation": "(cite: SC2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image JVLA and ALMA continuum observations",
+   "method": "Calibrate JVLA data in AIPS including phase self-calibration and image with robust = 0; calibrate ALMA Band 7 data with the ALMA pipeline in CASA and produce continuum maps.",
+   "software": [
+    "AIPS",
+    "CASA",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "robust weighting parameter of 0 for JVLA Set II"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compare multi-wavelength and multi-epoch continuum morphologies",
+   "method": "Overlay the JVLA ~43 GHz continuum map with the ALMA 345 GHz continuum contours and with the 1999 ~23 GHz JVLA continuum contours to compare the orientation of the jet and dust ring and identify morphological variability between 1999 and 2006.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Orbital period of 86 years for the binary system"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Analyze the Spectral Energy Distribution (SED) and source size dependence on frequency",
+   "method": "Combine the new ~43 GHz flux density, major/minor axes, and PA measurements with the 4.86-22.46 GHz measurements from Lim & Kwok (2003) to evaluate the spectral indices of flux density and angular size.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Isothermal wind with constant expansion velocity (theoretical spectral indices of 0.6 for flux density and -0.7 for angular size from Reynolds 1986)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Flux density at ~43.34 GHz",
+   "value": "0.04707",
+   "uncertainty": "0.00376",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 0.04707 | 0.00376 | 99.1 | 4.5 | 27.8 | 1.5 | 176.7 | 1.1 |"
+    },
+    {
+     "loc": "Results and discussion",
+     "quote": "We confirm the RC emission from 4.86 to 43.34 GHz as a jet, where the free-free emission is also traced at $\\sim$ 43 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Major axis at ~43.34 GHz",
+   "value": "99.1",
+   "uncertainty": "4.5",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 0.04707 | 0.00376 | 99.1 | 4.5 | 27.8 | 1.5 | 176.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Minor axis at ~43.34 GHz",
+   "value": "27.8",
+   "uncertainty": "1.5",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 0.04707 | 0.00376 | 99.1 | 4.5 | 27.8 | 1.5 | 176.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle (PA) at ~43.34 GHz",
+   "value": "176.7",
+   "uncertainty": "1.1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 0.04707 | 0.00376 | 99.1 | 4.5 | 27.8 | 1.5 | 176.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Angle subtended by the white dwarf between 1999 and 2006 epochs",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results and discussion",
+     "quote": "Although our observations do not have sufficient angular resolution to determine dynamical parameters like the orbital period, we can say that since the time interval between the two observations is around 7 years and taking into account an orbital period of 86 years (cite: Doyle2000; Corradi2011), the angle subtended by the white dwarf in those epochs, as seen from the red giant star, is around 30 degrees."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA continuum imaging parameters (deconvolver, weighting/robust parameter, cell size, image size, masking, stopping threshold)",
+  "ALMA line-free channel selection and continuum subtraction method for the 345 GHz continuum image",
+  "Final synthesized beam size, position angle, and rms noise of the ALMA 345 GHz continuum image",
+  "Whether self-calibration was applied to the ALMA 345 GHz data",
+  "Resolution of the discrepancy between the ALMA project code in the text (2013.1.00458.S) and in the acknowledgments (2015.1.01539.S)",
+  "Exact method/task used to measure the 43 GHz flux density, major/minor axes, and position angle in Table 1 (e.g., 2D Gaussian fitting via AIPS JMFIT or CASA imfit)",
+  "Clarification of the JVLA Set II spectral window central frequencies (text states 4885.1 MHz and 4835.1 MHz, which are C-band ~4.8 GHz, whereas Set II is described as ~43 GHz / 43.34 GHz)"
+ ],
+ "missing_for_reproduction": [
+  "ALMA tclean / imaging parameters (weighting, robust, cell size, thresholds, continuum window/channel selection)",
+  "Exact contour levels plotted in Figures 2 and 3 for both ALMA 345 GHz and JVLA 23 GHz overlays",
+  "Method and task used to measure the 43.34 GHz flux density and Gaussian deconvolved source size in Table 1"
+ ],
+ "reproducibility_score": 50,
+ "score_reason": "Archival project codes, calibration software versions (CASA 6.1.1.15, pipeline 2020.1.0.40), and calibrator fluxes are clearly stated, and the quantitative JVLA 43 GHz results are tabulated. However, ALMA imaging details are completely omitted, no quantitative ALMA measurements are reported, and there are typographical inconsistencies in the project codes and JVLA frequencies.",
+ "rediscovery_reason": "Both the JVLA (AL0675) and ALMA (2013.1.00458.S) datasets are public in their respective archives, and the main quantitative results (43 GHz flux density, major/minor axes, PA, and the perpendicular morphology relative to the 345 GHz ring) can be reproduced from standard continuum imaging and 2D Gaussian fitting.",
+ "source_card": "cards/2022PASJ...74..594D/sonnet/card.md"
+}

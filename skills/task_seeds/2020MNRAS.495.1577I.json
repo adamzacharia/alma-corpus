@@ -1,0 +1,270 @@
+{
+ "bibcode": "2020MNRAS.495.1577I",
+ "title": "Radiative equilibrium estimates of dust temperature and mass in high-redshift galaxies",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1203",
+ "arxiv_id": "2004.12612",
+ "fields": [
+  "high_z_galaxies",
+  "milky_way_ism"
+ ],
+ "question": "Can dust temperature and mass of a high-z galaxy be derived by assuming dust radiative equilibrium, even from sparse IR data?",
+ "alma_project_codes": [
+  "2016.1.00954.S"
+ ],
+ "data": {
+  "bands": "Band 8 (0.73 mm), new; Band 7 and Band 6 from literature",
+  "arrays": "not stated",
+  "angular_resolution": "0.61 x 0.53 arcsec, PA 65 deg",
+  "sensitivity": "77 uJy/beam continuum rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Band 6 flux 0.56±0.10 mJy at 1.33 mm",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$0.56\\pm0.10$"
+     }
+    ]
+   },
+   "citation": "Watson et al. (2015) (cite: Watson15)"
+  },
+  {
+   "what": {
+    "value": "Band 7 flux 1.33±0.14 mJy at 0.873 mm",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$1.33\\pm0.14$"
+     }
+    ]
+   },
+   "citation": "Knudsen et al. (2017) (cite: Knudsen17)"
+  },
+  {
+   "what": {
+    "value": "Redshift, H140 magnitude and lensing magnification",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Watson et al. (2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Watson15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure Band 8 continuum flux and size",
+   "method": "Gaussian fit to the continuum image with imfit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Modified black-body fit",
+   "method": "2D chi^2 minimisation in (T_d, M_d) to the three band fluxes with CMB correction",
+   "software": [],
+   "key_parameters": [
+    "beta = 1, 1.5, 2; kappa_IR,0 = 30 cm2/g at 100 um"
+   ],
+   "assumptions": [
+    "fiducial kappa_UV = 5.0e4 cm2/g, kappa_IR,0 = 30 cm2/g, beta = 2.0"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Radiative-equilibrium fits for shell and homogeneous spheres",
+   "method": "1D chi^2 minimisation in M_d, T_d fixed by radiative equilibrium; Monte Carlo over R and fluxes",
+   "software": [],
+   "key_parameters": [
+    "R = 0.46±0.06 arcsec from Band 7; L_UV^esc = (8.0±1.0)e43 erg/s"
+   ],
+   "assumptions": [
+    "Single dust temperature, uniform ISM, no scattering, optically thin IR, H0=70, Om=0.3, OL=0.7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Clumpy-sphere fit (mega-grain)",
+   "method": "2D chi^2 minimisation in (M_d, xi_cl) with Monte Carlo errors",
+   "software": [],
+   "key_parameters": [
+    "lowest xi_cl limit: log10 xi_cl = -3"
+   ],
+   "assumptions": [
+    "High-contrast limit C_cl >> 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 8 continuum flux density",
+   "value": "1.67",
+   "uncertainty": "0.36",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA Band 8 observations",
+     "quote": "we estimate the continuum flux density to be $1.67 \\pm 0.36$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Modified BB T_d (beta=2, 3 bands)",
+   "value": "37.7",
+   "uncertainty": "68% range 31.6–46.5",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "37.7 (31.6–46.5)"
+    }
+   ]
+  },
+  {
+   "quantity": "Modified BB log10 M_d (beta=2)",
+   "value": "7.30",
+   "uncertainty": "68% range 6.96–7.66",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "7.30 (6.96–7.66)"
+    }
+   ]
+  },
+  {
+   "quantity": "Shell T_d",
+   "value": "70.3",
+   "uncertainty": "68% range 65.2–76.7",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "70.3 (65.2–76.7)"
+    }
+   ]
+  },
+  {
+   "quantity": "Shell log10 M_d",
+   "value": "6.45",
+   "uncertainty": "68% range 6.36–6.53",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "6.45 (6.36–6.53)"
+    }
+   ]
+  },
+  {
+   "quantity": "Homogeneous T_d",
+   "value": "57.3",
+   "uncertainty": "68% range 54.7–60.3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "57.3 (54.7–60.3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Homogeneous log10 M_d",
+   "value": "6.69",
+   "uncertainty": "68% range 6.61–6.75",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "6.69 (6.61–6.75)"
+    }
+   ]
+  },
+  {
+   "quantity": "Clumpy T_d",
+   "value": "37.8",
+   "uncertainty": "68% range 31.5–46.7",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "37.8 (31.5–46.7)"
+    }
+   ]
+  },
+  {
+   "quantity": "Clumpy log10 M_d",
+   "value": "7.29",
+   "uncertainty": "68% range 6.96–7.67",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "7.29 (6.96–7.67)"
+    }
+   ]
+  },
+  {
+   "quantity": "Clumpiness log10 xi_cl",
+   "value": "-0.97",
+   "uncertainty": "68% range -1.24 to -0.82",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$-0.97$ ($-1.24$–$-0.82$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Escaping UV luminosity",
+   "value": "8.0e43 x (9/mu)",
+   "uncertainty": "1.0e43",
+   "units": "erg/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 A normal, dusty star-forming galaxy, A1689zD1",
+     "quote": "we obtain $L_{\\rm UV}^{\\rm esc}=(8.0\\pm1.0)\\times(9/\\mu_{\\rm GL})\\times10^{43}$ erg s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters (threshold, mask, cell size, image size, niter)",
+  "line-free channel selection for the Band 8 continuum",
+  "exact lines of sight and imfit region",
+  "Band 7 archival project code and its reduction",
+  "grid ranges for T_d, M_d, xi_cl in chi2 search",
+  "number of Monte Carlo realizations beyond '>10,000'",
+  "bounds of xi_cl grid other than lower limit of 10^-3"
+ ],
+ "missing_for_reproduction": [
+  "Fit codes not released",
+  "imaging parameters beyond taper and weighting",
+  "Band 7 project code"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Analytic formulae are fully given and inputs tabulated, so the fits are reproducible from the table; the ALMA imaging details are sparse.",
+ "rediscovery_reason": "Public data, tabulated fluxes and analytic equations give numeric results that can be recomputed.",
+ "source_card": "cards/2020MNRAS.495.1577I/sonnet/card.md"
+}

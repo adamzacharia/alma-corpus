@@ -1,0 +1,324 @@
+{
+ "bibcode": "2020A&A...636A..37D",
+ "title": "Dust and gas content of high-redshift galaxies hosting obscured AGN in the Chandra Deep Field-South",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/201936175",
+ "arxiv_id": "2003.08631",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "How much do the dust and gas of the host ISM contribute to the nuclear obscuration of X-ray selected, FIR-detected obscured AGN at z>2.5 in the CDF-S, and what are their sizes and kinematics?",
+ "alma_project_codes": [
+  "2015.1.01205.S"
+ ],
+ "data": {
+  "bands": "Band 4, continuum ~2.1 mm (142.78 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "requested ~180 uJy/beam line (200 km/s), 20 uJy/beam continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "X-ray column densities, SED-derived gas masses, stellar masses, SFRs",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "(9) (10) (11) Gas mass, infrared SED-fitting column density, and X-ray spectral fitting column density, respectively, derived by (cite: circosta_2019)."
+     }
+    ]
+   },
+   "citation": "(cite: circosta_2019)"
+  },
+  {
+   "what": {
+    "value": "CO SLED line ratios for SMG and QSO",
+    "evidence": [
+     {
+      "loc": "5.3 Gas mass",
+      "quote": "We use ratios between the observed and CO(1-0) lines reported in Table 2 of (cite: carilli_2013)"
+     }
+    ]
+   },
+   "citation": "(cite: carilli_2013)"
+  },
+  {
+   "what": {
+    "value": "L'1-0 vs L850um relation and alpha_850",
+    "evidence": [
+     {
+      "loc": "5.3 Gas mass",
+      "quote": "$L'_{1-0} = 3.02\\times 10^{-21} ~L_{850\\mu m}~\\mathrm{K ~km ~s^{-1} ~pc^2}$"
+     }
+    ]
+   },
+   "citation": "(cite: scoville_2016)"
+  },
+  {
+   "what": {
+    "value": "UV-to-MIR photometry used in SED fit",
+    "evidence": [
+     {
+      "loc": "5.2 Dust mass",
+      "quote": "taken from the UV-to mid-IR (MIR) provided by (cite: hsu_2014)"
+     }
+    ]
+   },
+   "citation": "(cite: hsu_2014); (cite: magnelli_2013); (cite: oliver_2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate data",
+   "method": "ALMA pipeline in CASA 4.7.0-1 with manual inspection",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image CO line and dust continuum",
+   "method": "Continuum-subtract line spw, image with velocity-mode and mfs, robust weighting chosen as tradeoff of sensitivity and resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "channel width 40/120/40 km/s for XID 42/539/666"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Spectra and moment maps",
+   "method": "Gaussian fits of line spectrum; moments 0,1,2 over v0±FWHM with 3 sigma threshold",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "moment threshold 3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit sizes and flux densities",
+   "method": "2-D elliptical Gaussian fit to images, then to visibilities with image fit as starting values; position fixed in second fit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Dust mass",
+   "method": "Optically thin dust emission with Td from single MBB SED fit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "k_nu=4[nu/1.2THz]^beta, beta=2.0; Td error ~5 K; upper limit 3 rms"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Gas mass from CO and continuum",
+   "method": "L'CO from Solomon 1992; convert to L'1-0 with SMG/QSO CO SLED; M_H2=alpha_CO L'1-0 (0.8 and 6.5), add HI = H2/5; continuum via Scoville L850 relation with RJ MBB scaling",
+   "software": [],
+   "key_parameters": [
+    "CO(7-6)/CO(1-0)=0.16 SMG, 0.48 QSO; CO(6-5)/CO(1-0)=0.34 SMG, 0.64 QSO"
+   ],
+   "assumptions": [
+    "alpha_CO=0.8 (and 6.5), M_H2/M_HI=5, beta=2, nu0=1.5 THz, undetected line width 400 km/s"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Column density",
+   "method": "Uniform sphere: density=Mgas/V, divide by proton mass, path length = radius, diameter = mean of major and minor axes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Undetected sources assumed mean sizes of detected ones"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Dynamical mass",
+   "method": "Thin disk relation from Wang 2013 using FWHM (XID 42, 539) or vc,proj (XID 666)",
+   "software": [],
+   "key_parameters": [
+    "i = 32, 37, 27 deg for XID 42, 539, 666"
+   ],
+   "assumptions": [
+    "v_c,proj = 0.75 Δv"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust mass XID 42",
+   "value": "4.0",
+   "uncertainty": "0.5",
+   "units": "1e8 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 42  |  65   |   $4.0 \\pm 0.5$    |     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass XID 539",
+   "value": "4.8",
+   "uncertainty": "0.5",
+   "units": "1e8 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 539 |  65   |   $4.8 \\pm 0.5$    |     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass XID 666",
+   "value": "4.2",
+   "uncertainty": "0.5",
+   "units": "1e8 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 666 |  69   |   $4.2 \\pm 0.5$    |     |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO flux density XID 42",
+   "value": "1.5",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "42 & $1.5 \\pm 0.1$ & $03^h 31^m 52^s.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density XID 539",
+   "value": "0.41",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "539 & $0.41 \\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass XID 42 (SMG CO-SLED, alpha=0.8)",
+   "value": "2.1",
+   "uncertainty": "0.2",
+   "units": "1e10 Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| SMG CO–SLED | $2.2 \\pm 0.2$ | $2.1 \\pm 0.2$ | 5.2$^{+1.6}_{-2.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass XID 666 (SMG CO-SLED)",
+   "value": "2.7",
+   "uncertainty": "0.3",
+   "units": "1e10 Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| SMG CO–SLED | $2.8 \\pm 0.4$ | $2.7 \\pm 0.3$ | 14.6$^{+5.2}_{-7.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density XID 666 (SMG CO-SLED)",
+   "value": "14.6",
+   "uncertainty": "+5.2/-7.9",
+   "units": "1e23 cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| SMG CO–SLED | $2.8 \\pm 0.4$ | $2.7 \\pm 0.3$ | 14.6$^{+5.2}_{-7.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass XID 42",
+   "value": "3.7",
+   "uncertainty": "+0.8/-0.7",
+   "units": "1e10 Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.6 Dynamical mass",
+     "quote": "We found $M_{dyn} = 3.7_{-0.7}^{+0.8} \\times 10^{10}~ M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas major axis XID 42",
+   "value": "3.0",
+   "uncertainty": "0.3",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4 (physical sizes)",
+     "quote": "| 42    | $3.0 \\pm 0.3$ | $1.8 \\pm 0.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO redshift XID 42",
+   "value": "2.94355",
+   "uncertainty": "0.00001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 CO-line imaging",
+     "quote": "From the CO(5–4) line we derived a redshift $z$ = 2.94355 $\\pm$ 0.00001"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA task parameters: cell size, image size, deconvolver, masks, cleaning threshold",
+  "Line-free channel choice for the continuum image and polynomial order",
+  "Exact spw/channel selections for the continuum images",
+  "Primary-beam correction",
+  "SED photometric fluxes and fitting priors for MBB",
+  "Details of the HeII redshift re-analysis",
+  "Inclination derivation details beyond axial ratios"
+ ],
+ "missing_for_reproduction": [
+  "CASA clean parameters (cell, imsize, masks, thresholds)",
+  "SED photometry and fit priors",
+  "Line-free channel selection"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and recipe largely described, but imaging parameters and SED fitting inputs are incomplete.",
+ "rediscovery_reason": "Data from a single public project; recipe mostly clear with numeric results (fluxes, sizes, masses), though some imaging details are missing.",
+ "source_card": "cards/2020A%26A...636A..37D/sonnet/card.md"
+}

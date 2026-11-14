@@ -1,0 +1,274 @@
+{
+ "bibcode": "2018ApJ...864..133T",
+ "title": "Temperature, Mass, and Turbulence: A Spatially Resolved Multiband Non-LTE Analysis of CS in TW Hya",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aad80e",
+ "arxiv_id": "1808.01768",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What are the temperature, CS column density, H2 density and non-thermal broadening in the TW Hya disk, derived from three CS transitions, and what minimum disk mass do they imply?",
+ "alma_project_codes": [
+  "2016.1.00440.S",
+  "2013.1.00387.S"
+ ],
+ "data": {
+  "bands": "Band 4, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5-0.6 arcsec beams (0.57x0.50, 0.59x0.47, 0.57x0.51)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Collisional rate coefficients for CS-H2",
+    "evidence": [
+     {
+      "loc": "Non-LTE Modelling",
+      "quote": "We use the collision rates from (cite: Denis-Alpizar_ea_2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Denis-Alpizar_ea_2018)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass fixed at 0.65 Msun",
+    "evidence": [
+     {
+      "loc": "Observational Results",
+      "quote": "The stellar mass was fixed at $0.65~M_{\\rm sun}$ (cite: Qi_ea_2004)"
+     }
+    ]
+   },
+   "citation": "(cite: Qi_ea_2004)"
+  },
+  {
+   "what": {
+    "value": "Literature continuum fluxes for flux-scale check",
+    "evidence": [
+     {
+      "loc": "Flux Calibration",
+      "quote": "using flux measurements from (cite: Qi_ea_2004; Qi_ea_2006; Hughes_ea_2009; Tsukagoshi_ea_2016) and (cite: Zhang_ea_2016)."
+     }
+    ]
+   },
+   "citation": "Qi 2004, 2006; Hughes 2009; Tsukagoshi 2016; Zhang 2016"
+  },
+  {
+   "what": {
+    "value": "Surface density profiles compared with minimum-mass result",
+    "evidence": [
+     {
+      "loc": "Minimum Disk Mass",
+      "quote": "we additionally plot surface density profiles from (cite: Gorti_ea_2011), used in (cite: Bergin_ea_2013) to model the HD flux"
+     }
+    ]
+   },
+   "citation": "Gorti 2011; Trapman 2017; van Boekel 2017"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CS cubes",
+   "method": "Provided scripts, phase self-cal, CLEAN with Keplerian mask, different weighting/taper per band to match beams",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Beams ~0.57x0.5 arcsec; robust 0.5 for B6"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit disk geometry",
+   "method": "Fit Keplerian pattern to first moment maps",
+   "software": [],
+   "key_parameters": [
+    "Free: centre, i, PA, vLSR"
+   ],
+   "assumptions": [
+    "M* fixed at 0.65 Msun"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Deproject and azimuthally average spectra",
+   "method": "Shift each pixel by projected Keplerian velocity to common velocity, bin into 4 au annuli, average; fit Gaussian per annulus",
+   "software": [],
+   "key_parameters": [
+    "4 au annuli"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "LTE fit of Tex and N(CS)",
+   "method": "Rotation-diagram style fit of integrated fluxes with optical depth correction, pixel-by-pixel and on annuli",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "256 walkers, 200 burn-in, 100 sampling steps; 10% flux systematic"
+   ],
+   "assumptions": [
+    "LTE; thermal broadening only for tau"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Non-LTE slab fit of spectra",
+   "method": "Isothermal slab with RADEX grid (pyradex, 40 samples per axis, interpolated), sampled at fine resolution then Hanning smoothed; Gaussian-process noise",
+   "software": [
+    "RADEX",
+    "pyradex",
+    "emcee",
+    "celerite"
+   ],
+   "key_parameters": [
+    "13 free params per radius; 256 walkers, 1500 burn-in, 250 sampling steps"
+   ],
+   "assumptions": [
+    "Thermal H2 ortho-para ratio; slab geometry; no beam-smear correction"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive minimum gas surface density and disk mass",
+   "method": "Convert minimum midplane n(H2) to Sigma_gas with Gaussian vertical structure and pressure scale height, integrate",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CS emission from <~1 H_mid; M*=0.65 Msun; mu in H_mid"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk inclination",
+   "value": "6.8",
+   "uncertainty": "±0.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observational Results",
+     "quote": "yielding an inclination $i = 6.8 \\pm 0.1\\ensuremath{^\\circ}$, ${\\rm PA} = 151 \\pm 1\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle",
+   "value": "151",
+   "uncertainty": "±1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observational Results",
+     "quote": "${\\rm PA} = 151 \\pm 1\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "2842",
+   "uncertainty": "±2",
+   "units": "m/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observational Results",
+     "quote": "$v_{\\rm LSR} = 2842 \\pm 2~{\\rm ms^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum disk mass",
+   "value": "3e-4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Minimum Disk Mass",
+     "quote": "we find an average minimum disk mass of $3\\times10^{-4}~M_{\\rm sun}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulence Mach number upper limit",
+   "value": "≲0.1",
+   "uncertainty": "2sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "finding $\\mathcal{M} \\lesssim 0.1$ across the disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Tkin at 100 au",
+   "value": "28",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Turbulence",
+     "quote": "$T_{\\rm kin} = 28$ K at 100 au compared to 12 K as in (cite: Teague_ea_2016)"
+    }
+   ]
+  },
+  {
+   "quantity": "Tex inner 30 au (LTE)",
+   "value": "≈40, dropping to 20 K at 200 au",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE Analysis",
+     "quote": "Within the inner 30 au a constant temperature of $T_{\\rm ex} \\approx 40$ K is found, slowly dropping to 20 K at 200 au."
+    }
+   ]
+  },
+  {
+   "quantity": "CS desorption temperature",
+   "value": "≈31",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Disk Physical Structure",
+     "quote": "The binding energy of CS is 1900 K resulting in a desorption temperature of $T_{\\rm desorb} \\approx 31$ K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Keplerian mask parameters and clean thresholds/iterations",
+  "Robust value for Bands 4/7 (table says 2.0, text says natural) and exact Gaussian taper definitions",
+  "Line-free channels and continuum subtraction method",
+  "Self-calibration solution intervals and number of iterations",
+  "Image cell and size",
+  "Initial walker positions and prior on line centres/noise parameters",
+  "Number of spws/execution blocks combined and pipeline version",
+  "Hanning smoothing implementation details"
+ ],
+ "missing_for_reproduction": [
+  "Mask and clean parameters",
+  "Self-calibration details",
+  "Analysis code not released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and detailed fitting recipe, but imaging, self-cal and mask details are missing and no code is released.",
+ "rediscovery_reason": "Public data, numeric results and a mostly complete recipe.",
+ "source_card": "cards/2018ApJ...864..133T/sonnet/card.md"
+}

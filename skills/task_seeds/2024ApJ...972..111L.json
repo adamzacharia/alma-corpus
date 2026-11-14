@@ -1,0 +1,346 @@
+{
+ "bibcode": "2024ApJ...972..111L",
+ "title": "Ongoing and Fossil Large-scale Outflows Detected in a High-redshift Radio Galaxy: [C II] Observations of TN J0924-2201 at z = 5.174",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad5be5",
+ "arxiv_id": "2407.00977",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the kinematics of the [C II] gas in the z=5.17 radio galaxy TN J0924-2201, and are the three CO(1-0) companions outflows from the host or unrelated dwarf galaxies?",
+ "alma_project_codes": [
+  "2021.1.00219.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "Continuum beam 0.38\"x0.28\"; cube beam 0.48\"x0.36\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ly-alpha and C IV redshifts/spectra",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "The detection of Ly$\\alpha$ line ($z_{\\rm Ly\\alpha}=5.195$) and C iv 1549 Å emission line ($z_{\\rm C\\,{\\sc IV}}=5.184$)"
+     }
+    ]
+   },
+   "citation": "(cite: Matsuoka11)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) detections, ALMA Band 6 photometry, radio fluxes",
+    "evidence": [
+     {
+      "loc": "3.1 1-mm continuum emission",
+      "quote": "ALMA Band 6 (cite: Falkendal19; Lee23) and ALMA Band 7 (this work)."
+     }
+    ]
+   },
+   "citation": "(cite: Lee23)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass M*=1.3e11 Msun from SED fitting",
+    "evidence": [
+     {
+      "loc": "3.2 [C II] line emission",
+      "quote": "consistent with the SED-derived stellar mass $M_{*}=1.3\\times10^{11}\\,M_{\\odot}$ (cite: DeBreuck10)"
+     }
+    ]
+   },
+   "citation": "(cite: DeBreuck10)"
+  },
+  {
+   "what": {
+    "value": "Lya emitters velocities in overdense region",
+    "evidence": [
+     {
+      "loc": "3.2 [C II] line emission",
+      "quote": "the velocities of six Ly$\\alpha$ emitters in the overdense region around TN J0924$-$2201 reported by (cite: Venemans04)"
+     }
+    ]
+   },
+   "citation": "(cite: Venemans04)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging and flux measurement",
+   "method": "tclean mtmfs on line-free channels; peak and integrated flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust=0.5, cell 0.1\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Modified blackbody SED fit for T_dust, beta, L_IR",
+   "method": "Graybody fit to ALMA Band 6 and 7 data",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin above nu_0 = 1.5 THz; synchrotron negligible at 1 mm"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Build [C II] cube and fit line",
+   "method": "uvcontsub, tclean hogbom; spectra; single and double 1-D Gaussian fits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "~0.8\" aperture and peak pixel 0.1\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Moment maps, flux, luminosity, inclination, dynamical mass",
+   "method": "Moment 0/1/2; 2-D Gaussian fit on moment-0; virial mass M=1.56e6 sigma^2 R",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Symmetric circular disk for inclination; virialized system"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test companions with PDR model and escape velocity",
+   "method": "Upper limits on L_[CII] (500 km/s width) and L_IR (scaled gray-body); PDRT density/G0; escape velocity of 1e13 Msun halo",
+   "software": [
+    "PDRT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Companions at 12–33 kpc projected distance with ~1500 km/s velocity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum integrated flux of TN J0924-2201",
+   "value": "829",
+   "uncertainty": "57",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 1-mm continuum emission",
+     "quote": "The peak flux of TN J0924$-$2201 is $392\\pm19\\,\\mu$Jy and the integrated flux is $829\\pm57\\,\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust",
+   "value": "29.3",
+   "uncertainty": "0.4",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 1-mm continuum emission",
+     "quote": "We obtained $T_{\\rm dust}=29.3\\pm0.4\\,\\rm K$ and $\\beta=1.51\\pm0.46$."
+    }
+   ]
+  },
+  {
+   "quantity": "beta",
+   "value": "1.51",
+   "uncertainty": "0.46",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 1-mm continuum emission",
+     "quote": "We obtained $T_{\\rm dust}=29.3\\pm0.4\\,\\rm K$ and $\\beta=1.51\\pm0.46$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR (8–1000 um)",
+   "value": "1.72e12",
+   "uncertainty": "+0.13/-0.14 e12",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 1-mm continuum emission",
+     "quote": "$L_{\\rm IR}=1.72^{+0.13}_{-0.14}\\times10^{12}\\,L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] systemic redshift",
+   "value": "5.1736",
+   "uncertainty": "0.0002",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$z_{\\rm [C\\,{\\sc II}]}=5.1736\\pm0.0002$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ly-alpha velocity offset from [C II]",
+   "value": "1035",
+   "uncertainty": "10",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "redshifted by a velocity of $1035\\pm10$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Redshifted [C II] component velocity",
+   "value": "702",
+   "uncertainty": "17",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Mean (km$\\,$s$^{-1}$) | $\\pm6$$\\ensuremath{^{a}}$ | $702\\pm17$"
+    }
+   ]
+  },
+  {
+   "quantity": "C IV velocity offset",
+   "value": "500",
+   "uncertainty": "10",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "C iv line with a velocity of $500\\pm10$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Main component velocity dispersion",
+   "value": "270",
+   "uncertainty": "6",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Velocity dispersion (km$\\,$s$^{-1}$) | $270\\pm6$ | $47\\pm16$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] integrated flux",
+   "value": "3.34",
+   "uncertainty": "0.31",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 [C II] line emission",
+     "quote": "the integrated flux of [C ii] is $3.34\\pm0.31\\,\\rm Jy\\,km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]",
+   "value": "2.52e9",
+   "uncertainty": "0.23e9",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 [C II] line emission",
+     "quote": "$L_{\\rm [C\\,{\\sc II}]}=(2.52\\pm0.23)\\times10^{9}\\,L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "52.8",
+   "uncertainty": "7.6",
+   "units": "degree",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 [C II] line emission",
+     "quote": "we derived its inclination angle of $52.8\\pm7.6$ degree."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial dynamical mass",
+   "value": "1.9e11",
+   "uncertainty": "0.2e11",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 [C II] line emission",
+     "quote": "we derived $M_{\\rm dyn}^{\\rm vir}=(1.9\\pm0.2)\\times10^{11}\\,M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 3-sigma upper limit at companions",
+   "value": "57",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 1-mm continuum emission",
+     "quote": "The $3\\sigma$ upper limit of non-detection is $57\\,\\mu$Jy with beam $\\sim0''.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic power (ULIRG alpha_CO)",
+   "value": "3.3e45",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Kinetic power of radio jets",
+     "quote": "we estimated $\\dot{E_{\\rm out}}\\sim3.3\\times10^{45}\\,\\rm erg\\,s^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum-fit channel selection for uvcontsub exactly",
+  "Clean mask, threshold and iteration settings",
+  "Image size and spectral-line fitting method details",
+  "Aperture centre for the ~0.8\" spectrum and how the deconvolved sizes were measured",
+  "Spectral cube channel start/frequency and rest frequency used",
+  "Gray-body fitting method, priors/fitter and photometry used",
+  "Inputs to PDR model and L_IR scaling",
+  "M_out inputs for outflow power",
+  "Pipeline version"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN masks and thresholds",
+  "Exact gray-body fitting procedure and input photometry",
+  "PDR model inputs and companion line ratio details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Imaging parameters and many numbers given, but fitting, masks, and several model inputs are not specified.",
+ "rediscovery_reason": "Single ALMA project, clear imaging settings and numeric results (flux, redshift, Gaussian fit).",
+ "source_card": "cards/2024ApJ...972..111L/sonnet/card.md"
+}

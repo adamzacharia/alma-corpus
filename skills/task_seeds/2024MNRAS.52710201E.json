@@ -1,0 +1,521 @@
+{
+ "bibcode": "2024MNRAS.52710201E",
+ "title": "The ALMaQUEST Survey XI: a strong but non-linear relationship between star formation and dynamical equilibrium pressure",
+ "year": 2024,
+ "doi": "10.1093/mnras/stad3778",
+ "arxiv_id": "2312.03132",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Does the resolved dynamical equilibrium pressure (P_DE) vs Sigma_SFR relation hold, and agree with the PRFM model, across a diverse sample of 66 galaxies including mergers and central starbursts, and is P_DE a more fundamental predictor of Sigma_SFR than Sigma_H2 or Sigma_star?",
+ "alma_project_codes": [
+  "2015.1.01225.S",
+  "2017.1.01093.S",
+  "2018.1.00558.S",
+  "2018.1.00541.S",
+  "2019.1.00260.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA 12m array, C43-2 configuration (array type itself not named)",
+  "angular_resolution": "~2.5 arcsec (primary beam ~50 arcsec)",
+  "sensitivity": "channel width 11 km/s; RMS 0.2 - 2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PIPE3D optical emission-line data cubes and surface densities (Sigma_star)",
+    "evidence": [
+     {
+      "loc": "3.1 MaNGA data",
+      "quote": "Optical emission line fluxes are taken from the public PIPE3D data cubes (Sánchez et al. 2016a,b, 2018)"
+     }
+    ]
+   },
+   "citation": "Sánchez et al. 2016a,b, 2018"
+  },
+  {
+   "what": {
+    "value": "Integrated stellar masses and SFRs from the PIPE3D value-added catalog (sample table)",
+    "evidence": [
+     {
+      "loc": "2 The extended ALMaQUEST sample",
+      "quote": "presents their integrated stellar masses and SFRs taken from the PIPE3D (Sánchez et al., 2016a, 2016b) value-added catalog (VAC, Sánchez et al. 2018)"
+     }
+    ]
+   },
+   "citation": "Sánchez et al. 2016a,b; 2018"
+  },
+  {
+   "what": {
+    "value": "PRFM theoretical rPDE relation fitted to TIGRESS simulation output",
+    "evidence": [
+     {
+      "loc": "4.4 The Resolved Dynamical Equilibrium Pressure Relation",
+      "quote": "the theoretical prediction of the PRFM model of Ostriker & Kim (2022), derived by fitting to the output of the high resolution TIGRESS simulation (their Equation 26c)"
+     }
+    ]
+   },
+   "citation": "Ostriker & Kim (2022)"
+  },
+  {
+   "what": {
+    "value": "EDGE-CALIFA and PHANGS rPDE data overplotted for comparison",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "we overplot the EDGE-CALIFA dataset (blue crosses; Barrera-Ballesteros et al. 2021a) as well as the PHANGS data (purple points, taken from Sun et al. 2020a)"
+     }
+    ]
+   },
+   "citation": "Barrera-Ballesteros et al. 2021a; Sun et al. 2020a"
+  },
+  {
+   "what": {
+    "value": "Krumholz et al. (2018) star formation model equations used to predict the rPDE relation",
+    "evidence": [
+     {
+      "loc": "5.4 What causes the discrepancy",
+      "quote": "Our starting point is Equation 30 of Krumholz et al. (2018) who express the star formation rate as"
+     }
+    ]
+   },
+   "citation": "Krumholz et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Alternative P_DE formulation for starbursts (unpublished)",
+    "evidence": [
+     {
+      "loc": "5.4 What causes the discrepancy",
+      "quote": "Hassan, Ostriker & Kim (in prep) have recently presented a new analytic expression for $P_{DE}$ specifically designed to account for ISM conditions in starburst galaxies"
+     }
+    ]
+   },
+   "citation": "Hassan, Ostriker & Kim (in prep)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Regrid ALMA CO cubes to MaNGA sampling",
+   "method": "Trim ALMA cubes to MaNGA cube size, apply fixed 2.5 arcsec restoring beam with 0.5 arcsec pixels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "beam 2.5 arcsec, pixel 0.5 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Convert CO luminosity to molecular gas surface density",
+   "method": "Per-pixel L'(CO) converted to Sigma_H2 with a fixed alpha_CO, inclination corrected with b/a",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO = 4.3 Msun pc^-2 (K km/s)^-1 including helium",
+    "Alternative metallicity-dependent alpha_CO (Sun et al. 2020b) used only where 12+log(O/H) is available"
+   ],
+   "assumptions": [
+    "Milky Way-like fixed alpha_CO"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive Sigma_SFR and Sigma_star from MaNGA/PIPE3D",
+   "method": "Halpha luminosities (extinction corrected) converted to Sigma_SFR with Kennicutt (1998) Eq. 2; Sigma_star from PIPE3D; Salpeter to Chabrier IMF conversion",
+   "software": [
+    "PIPE3D"
+   ],
+   "key_parameters": [
+    "Intrinsic Halpha/Hbeta = 2.85 with Milky Way extinction curve",
+    "Salpeter to Chabrier factor 0.61"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Select star-forming spaxels with CO detections",
+   "method": "S/N>2 in four BPT lines, below Kauffmann et al. (2003) line, Halpha EW>6 A, and CO S/N>3",
+   "software": [],
+   "key_parameters": [
+    "Halpha EW cut > 6 A"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute dynamical equilibrium pressure P_DE per spaxel",
+   "method": "Sun et al. (2020a) P_DE formula with gas self-gravity and stellar gravity terms, using Sigma_gas = Sigma_H2 + Sigma_HI, stellar volume density from Sigma_star and R_star",
+   "software": [],
+   "key_parameters": [
+    "Sigma_HI = 7 Msun pc^-2 fixed",
+    "sigma_gas,z = 11 km/s fixed",
+    "Disk flattening R_star/H_star = 7.3"
+   ],
+   "assumptions": [
+    "Isothermal plane-parallel gas and stellar disks; smooth disk (no clumping)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit the four scaling relations (rSK, rMGMS, rSFMS, rPDE) and compare scatter",
+   "method": "Orthogonal distance regression fits per sample, scatter around fit compared, and a free broken power law fitted to rPDE",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compare rPDE with the PRFM prediction",
+   "method": "Overplot the Ostriker & Kim (2022) PRFM relation on the spaxel data in the full, control, central starburst and merger samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Split by offset from the global SFMS (Delta SFR)",
+   "method": "Compute Delta SFR vs a control sample matched in stellar mass, 5th nearest neighbour density and redshift; bin galaxies and compare rPDE per bin; median per-galaxy offset from the PRFM relation vs Delta SFR",
+   "software": [],
+   "key_parameters": [
+    "Control matching tolerances: 0.1 dex mass, 0.1 dex 5th-NN density, 0.005 redshift"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Random forest ranking of predictors of Sigma_SFR",
+   "method": "Random forest with Sigma_SFR as target and Sigma_H2, Sigma_star, P_DE (plus two combination variables and a random variable) as features; importances over 100 realizations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Relative importances are only valid for the fixed feature set (sum to one)"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Test whether P_DE assumptions explain the PRFM discrepancy",
+   "method": "Vary Sigma_HI, alpha_CO prescriptions, use measured CO velocity dispersion, remove extreme spaxels, and use the Hassan et al. (in prep) P_DE formula",
+   "software": [],
+   "key_parameters": [
+    "Spaxel purges: line width > 20 km/s, Sigma_tot > 300 Msun pc^-2, within 2 kpc of galaxy centre"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 11,
+   "goal": "Compare rPDE with the Krumholz et al. (2018) turbulence-driven model",
+   "method": "Evaluate Sigma_SFR(P_DE) from the Krumholz et al. (2018) Toomre-timescale model with KMT+ molecular fraction for three orbital times and overplot on data",
+   "software": [],
+   "key_parameters": [
+    "epsilon_ff = 0.015",
+    "f_g,P = 0.33 (median in extended ALMaQUEST)",
+    "clumping factor 5"
+   ],
+   "assumptions": [
+    "Flat rotation curve (beta = 0)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of galaxies in extended ALMaQUEST sample",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2 The extended ALMaQUEST sample",
+     "quote": "The extended ALMaQUEST sample consists of a total of 66 galaxies, all of which were drawn from the MaNGA DR15."
+    }
+   ]
+  },
+  {
+   "quantity": "Control sample size",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2 The extended ALMaQUEST sample",
+     "quote": "consists of 16 galaxies which have axial ratios"
+    }
+   ]
+  },
+  {
+   "quantity": "Central starburst sample size",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2 The extended ALMaQUEST sample",
+     "quote": "there are 11 central starburst galaxies in our sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Merger sample size",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2 The extended ALMaQUEST sample",
+     "quote": "19 galaxies fulfill this requirement"
+    }
+   ]
+  },
+  {
+   "quantity": "Full star-forming CO-detected spaxel sample",
+   "value": "19,999",
+   "uncertainty": "not stated",
+   "units": "spaxels",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 ALMA data",
+     "quote": "There is a total of 19,999 spaxels that fulfill both the star-forming criteria"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-forming spaxels in control, central starburst, merger samples",
+   "value": "8321, 5357, 4176",
+   "uncertainty": "not stated",
+   "units": "spaxels",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 ALMA data",
+     "quote": "The control, central starburst and merger samples contain 8321, 5357 and 4176 star-forming spaxels respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Spaxels with metallicity measurements",
+   "value": "16,254",
+   "uncertainty": "not stated",
+   "units": "spaxels",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 ALMA data",
+     "quote": "only 16,254 have metallicity measurements"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical uncertainty in Sigma_H2",
+   "value": "< 0.1",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 ALMA data",
+     "quote": "Typical uncertainties in $\\Sigma_{\\rm H_2}$ are $<$ 0.1 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of rSK relation across sub-samples",
+   "value": "0.2-0.3",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 The Resolved Schmidt-Kennicutt Relation",
+     "quote": "A strong rSK exists for all of these galaxy sub-samples with scatter of 0.2–0.3 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum scatter of rSFMS",
+   "value": "0.34",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 The Resolved Star Forming Main Sequence",
+     "quote": "the scatter is larger than the previous two relations, up to 0.34 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "rSFMS scatter in central starbursts (ODR)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 The Resolved Star Forming Main Sequence",
+     "quote": "only 0.21 dex in the ODR fit"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of rSFMS best-fit slopes across samples",
+   "value": "0.65 to 1.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 The Resolved Star Forming Main Sequence",
+     "quote": "ranging between 0.65 and 1.55"
+    }
+   ]
+  },
+  {
+   "quantity": "rPDE scatter across the samples",
+   "value": "~0.2-0.3",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 The Resolved Dynamical Equilibrium Pressure Relation",
+     "quote": "with a scatter whose magnitude of $\\sim$ 0.2 – 0.3 dex is broadly consistent with that of the other three star formation scaling relations"
+    }
+   ]
+  },
+  {
+   "quantity": "Break pressure of rPDE broken power law",
+   "value": "log P_DE/k_B = 4.528",
+   "uncertainty": "not stated",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 The Resolved Dynamical Equilibrium Pressure Relation",
+     "quote": "for values of log $P_{DE}/k_B$ below and above 4.528 K cm$^{-3}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Broken power law, below break: intercept and slope",
+   "value": "log Sigma_SFR = -7.09 + 1.12 log(P_DE/k_B)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 The Resolved Dynamical Equilibrium Pressure Relation",
+     "quote": "-7.09 + 1.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Broken power law, above break: intercept and slope",
+   "value": "log Sigma_SFR = -4.87 + 0.63 log(P_DE/k_B)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 The Resolved Dynamical Equilibrium Pressure Relation",
+     "quote": "-4.87 + 0.63"
+    }
+   ]
+  },
+  {
+   "quantity": "Improvement in residual scatter, broken vs single power law",
+   "value": "0.01",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 The Resolved Dynamical Equilibrium Pressure Relation",
+     "quote": "the residuals of the best fit broken power law are only 0.01 dex smaller than the single power law fit"
+    }
+   ]
+  },
+  {
+   "quantity": "Spaxels in galaxies with Delta SFR > +0.3 dex",
+   "value": "over 11,000",
+   "uncertainty": "not stated",
+   "units": "spaxels",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Is the rPDE relation universal?",
+     "quote": "Containing over 11,000 spaxels"
+    }
+   ]
+  },
+  {
+   "quantity": "Median CO line-of-sight velocity dispersion",
+   "value": "~11 (tail to 80)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.3.3 Assumption of a fixed gas velocity dispersion",
+     "quote": "Although the median value in the data is $\\sim$ 11 km s$^{-1}$ (which is also the spectral resolution of the ALMaQUEST data), there is a tail to values as large as 80 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_HI needed to match model at low P_DE",
+   "value": "~14",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.3.1 Assumption of a fixed Sigma_HI",
+     "quote": "We have to increase the atomic contribution to $\\Sigma_{\\rm HI}$ $\\sim$ 14 M$_{\\odot}$ pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduction in P_DE with Hassan et al. formulation",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.4 What causes the discrepancy",
+     "quote": "find that $P_{DE}$ is typically reduced by $\\sim$ 5% compared with the fiducial calculation"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Band, spectral window frequencies, and number of execution blocks per project for the CO(1-0) data",
+  "CASA version, pipeline vs manual calibration, flux calibrator and flux scale uncertainty",
+  "tclean parameters (weighting/robust, deconvolver, masking, cleaning threshold) and continuum subtraction / line-free channels",
+  "Primary beam correction and how the integrated CO flux/moment maps were made (clipping, masks)",
+  "Conversion from Jy km/s to L'(CO) per pixel, including the distances/redshifts used",
+  "Random forest hyperparameters (number of trees, depth, train/validation/test split) and software",
+  "ODR fitting setup (software, errors/weights used) for the scaling relations",
+  "Broken power-law fitting method and uncertainties on its parameters",
+  "Orbital times, Toomre Q and other inputs used for the Krumholz et al. (2018) curves",
+  "Whether the integrated gas masses use alpha_CO = 4.3 or 4.35 (both values appear)"
+ ],
+ "missing_for_reproduction": [
+  "Raw ALMA calibration and imaging recipe (deferred to Lin et al. 2020 and Thorp et al. 2022)",
+  "Random forest hyperparameters and code",
+  "ODR and broken power-law fitting code and error treatment",
+  "Inputs for the Krumholz et al. (2018) curves (orbital times, Q)",
+  "Per-spaxel velocity dispersions and metallicities used in robustness tests are not stated as released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Spaxel-level table is public and the P_DE, fitting and comparison recipe is mostly given, but ALMA processing is inherited from earlier papers and random forest and fitting details are missing.",
+ "rediscovery_reason": "The derived spaxel table is released and the main results (ODR fits, scatter, broken power law break at 4.528, P_DE formula with fixed Sigma_HI and sigma) are numeric; the random forest ranking is only reproducible qualitatively.",
+ "source_card": "cards/2024MNRAS.52710201E/sonnet/card.md"
+}

@@ -1,0 +1,423 @@
+{
+ "bibcode": "2023ApJ...944...49F",
+ "title": "300: An ACA 870 μm Continuum Survey of Orion Protostars and Their Evolution",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/ac9f4b",
+ "arxiv_id": "2210.07925",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "Characterize the evolution of protostellar envelopes and test whether the ALMA 12 m to ACA 870 μm continuum flux ratio serves as an evolutionary indicator that avoids inclination and foreground extinction degeneracies affecting SED-based classifications.",
+ "alma_project_codes": [
+  "2018.1.01284.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 μm)",
+  "arrays": "ACA (7 m) and 12 m array (from VANDAM:Orion)",
+  "angular_resolution": "~4\" (1600 au) for ACA; ~0.1\" (40 au) for 12 m",
+  "sensitivity": "I_nu rms: 0.2–23.9 mJy beam^-1 (median 3.3 mJy beam^-1); integrated F_nu rms: 0.3–56.4 mJy (median 6.2 mJy)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source positions, SED classes, bolometric luminosities (L_bol), bolometric temperatures (T_bol), APEX 870 μm single-dish fluxes, and SED radiative transfer model envelope masses",
+    "evidence": [
+     {
+      "loc": "2. Observations and Data Reduction",
+      "quote": "The positions of the sources were those identified in Furlan et al. (2016; see Table 1)."
+     },
+     {
+      "loc": "3. The 300: ACA Sample Characteristics and Flux Analysis",
+      "quote": "use of the SED-based classes, bolometric luminosity (L bol ), and bolometric temperature (T bol ) for each source."
+     },
+     {
+      "loc": "Appendix A Comparison to Single-dish Flux Densities",
+      "quote": "Furlan et al. (2016) calculated envelope masses using radiative transfer model fits to observed SEDs with the APEX flux as the 870 μm flux point."
+     }
+    ]
+   },
+   "citation": "Furlan et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "ALMA 12 m 870 μm disk positions, continuum fluxes, and multiplicity identifications",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "For the 12 m data, we use the results of the Very Large Array (VLA)/ALMA Nascent Disk and Multiplicity survey in Orion (VANDAM:Orion; Tobin et al. 2020)."
+     },
+     {
+      "loc": "3.2. Observed Morphologies",
+      "quote": "This is distinguished from the multiple systems resolved by the high-resolution 12 m data within an envelope (Tobin et al. 2022), which can occur even in the compact morphology or more often in the extended morphology."
+     }
+    ]
+   },
+   "citation": "Tobin et al. (2020); Tobin et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Detailed integrated disk fluxes from analytic fits for disks with resolved inner substructure",
+    "evidence": [
+     {
+      "loc": "4.2. The 12 m to ACA Flux Ratio",
+      "quote": "For disks with resolved inner substructure, we adopt the more detailed integrated disk fluxes from Sheehan et al. (2020) that used analytic fits to individual ring, asymmetry, point, and Gaussian components of the disks."
+     }
+    ]
+   },
+   "citation": "Sheehan et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "1.6 μm HST scattered-light morphological classifications",
+    "evidence": [
+     {
+      "loc": "5.3. Comparison to Near-IR Morphology",
+      "quote": "Habel et al. (2021) examined 304 protostars in scattered light in the near-IR (NIR) using NICMOS or WFC3/IR on the Hubble Space Telescope (HST)."
+     }
+    ]
+   },
+   "citation": "Habel et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Average distance to the HOPS sample (400 pc)",
+    "evidence": [
+     {
+      "loc": "2. Observations and Data Reduction",
+      "quote": "The sources were observed between 2018 October and 2019 March, with an angular resolution of ∼4″, which corresponds to a size of roughly 1600 au at the average distance of the HOPS sample (400 pc; Kounkel et al. 2018)."
+     }
+    ]
+   },
+   "citation": "Kounkel et al. (2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create 870 μm continuum maps and measure image noise (I_nu rms and F_nu rms)",
+   "method": "Clean combined continuum windows with tclean using Briggs robust=0.5 and automasking. Measure I_nu rms as the mean rms in three off-source 6\" radius circular apertures. Measure integrated F_nu rms using sixteen 6\" radius circular apertures in a ring on the residual image with iterative 2-sigma clipping.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5, pixel size = 0.55\", aperture radius = 6\", iterative 2-sigma rejection for F_nu rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine source centroids and classify ACA envelope morphologies",
+   "method": "Find emission centroid using photutils centroid_quadratic (fallback to centroid_2dg, then manual selection). Compare the area of the half-maximum contour of the central 9x9 pixels to the restoring beam area, and check if the 12 m disk position falls inside the contour or if multiple peaks share a contour.",
+   "software": [
+    "astropy",
+    "photutils"
+   ],
+   "key_parameters": [
+    "Area ratio < 1.3: unresolved; 1.3 to 2.4: compact; > 2.4: extended; shared continuous half-max contour: multiple; 12 m disk outside half-max contour: offset"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure ACA 870 μm continuum flux densities",
+   "method": "Measure flux in three ways: beam flux at peak pixel in central 9x9 pixels, beam flux at 12 m disk position, and integrated flux using photutils aperture_photometry within a 6\" radius circle convolved with the beam FWHM. Adopt convolved aperture flux for non-offset sources and beam flux at 12 m disk position for offset sources. Apply 5-sigma upper limits for non-detections.",
+   "software": [
+    "astropy",
+    "photutils"
+   ],
+   "key_parameters": [
+    "6\" (~2500 au) aperture radius convolved with beam FWHM; 5-sigma detection threshold"
+   ],
+   "assumptions": [
+    "Average distance to Orion of 400 pc (6\" corresponds to ~2500 au)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate 12 m/ACA flux ratios (R), envelope fluxes, and statistical comparisons across SED classes",
+   "method": "Calculate R = F_nu(12 m) / F_nu(ACA) and envelope flux = F_nu(ACA) - F_nu(12 m), summing 12 m disk fluxes when multiple 12 m sources fall within the ACA half-max contour. Perform Kolmogorov-Smirnov (K-S), Anderson-Darling (A-D), Spearman rank, and Kendall's Tau tests across SED classes and T_bol.",
+   "software": [],
+   "key_parameters": [
+    "R = 0.5 threshold separating envelope-dominated (R < 0.5) from disk-dominated (R > 0.5) sources"
+   ],
+   "assumptions": [
+    "12 m flux traces the disk while ACA flux traces combined disk plus inner envelope"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate envelope masses, mass infall rates, and fraction of stellar mass accreted as a function of R",
+   "method": "Convert envelope flux (ACA - 12 m difference) to envelope mass M_ACA using Eq. (2), compute freefall time t_ff via Eq. (3), and estimate infall rate M_dot = M_env / t_ff. Fit a 4th-degree polynomial to log10(M_dot) vs. R and a power law to cumulative N_proto vs. R using scipy.optimize.curve_fit, then integrate Eq. (7) to get fraction of mass accreted f_acc(R).",
+   "software": [
+    "scipy"
+   ],
+   "key_parameters": [
+    "R bin width = 0.0055 for median infall rate fit"
+   ],
+   "assumptions": [
+    "Distance D = 400 pc, dust temperature T = 15 K, dust opacity = 2.57 cm^2 g^-1 at 700 μm scaled to 870 μm with beta = 1.8, dust-to-gas ratio = 0.01",
+    "Spherically symmetric freefall with total mass M = 0.25 M_sun, outer envelope radius r_outer = 2500 au, constant star formation rate, and protostellar lifetime of 500,000 yr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ACA 870 μm 5-sigma detection rate (total sample)",
+   "value": "82 (247/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Detection Rates",
+     "quote": "A total of 247 sources out of 300 (82%) are detected by the ACA at the 5σ level, where the peak flux in the central region is greater than five times the mean I ν rms level for the image."
+    }
+   ]
+  },
+  {
+   "quantity": "ACA 870 μm 5-sigma detection rate for Class 0 protostars",
+   "value": "90 (80/89)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Detection Rates",
+     "quote": "Using the SED classes from Furlan et al. (2016), we detected 80/89 Class 0 protostars (90%), 94/114 Class I protostars (83%), 67/89 FS protostars (75%), and 6/8 Class II objects (75%)."
+    }
+   ]
+  },
+  {
+   "quantity": "ACA 870 μm 5-sigma detection rate for Class I protostars",
+   "value": "83 (94/114)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Detection Rates",
+     "quote": "Using the SED classes from Furlan et al. (2016), we detected 80/89 Class 0 protostars (90%), 94/114 Class I protostars (83%), 67/89 FS protostars (75%), and 6/8 Class II objects (75%)."
+    }
+   ]
+  },
+  {
+   "quantity": "ACA 870 μm 5-sigma detection rate for Flat Spectrum protostars",
+   "value": "75 (67/89)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Detection Rates",
+     "quote": "Using the SED classes from Furlan et al. (2016), we detected 80/89 Class 0 protostars (90%), 94/114 Class I protostars (83%), 67/89 FS protostars (75%), and 6/8 Class II objects (75%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of unresolved ACA sources",
+   "value": "36 (108/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Observed Morphologies",
+     "quote": "A total of 108/300 (36%) sources are unresolved; this is the most common morphology."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of compact ACA sources",
+   "value": "24.3 (73/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Observed Morphologies",
+     "quote": "In comparison, a total of 73/300 (24.3%) of the sources have compact morphologies."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of extended ACA sources",
+   "value": "21 (63/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Observed Morphologies",
+     "quote": "Extended sources make up 63/300 (21%) of the sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of multiple morphology ACA sources",
+   "value": "5.3 (16/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Observed Morphologies",
+     "quote": "Only 5.3% (16 objects) of the entire sample show a multiple morphology."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of offset morphology ACA sources",
+   "value": "13.3 (40/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Observed Morphologies",
+     "quote": "A total of 40/300 (13.3%) of our sources exhibit an offset morphology."
+    }
+   ]
+  },
+  {
+   "quantity": "Median 12 m/ACA flux ratio for Class 0 protostars",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. The 12 m to ACA Flux Ratio",
+     "quote": "The flux ratio distribution for Class 0 has a median of 0.25, demonstrating that they are indeed deeply embedded sources with their envelopes dominating the submillimeter flux."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of envelope-dominated protostars (R < 0.5) in total sample",
+   "value": "60 (180/300)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6. Conclusions",
+     "quote": "In total, 60% (180/300) of the protostars are envelope-dominated, with flux ratios less than 0.5, while the remainder are disk-dominated."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of Class 0 protostars that are envelope-dominated (R < 0.5)",
+   "value": "81 (72/89)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. The 12 m to ACA Flux Ratio",
+     "quote": "In summary, we find that Class 0 protostars are envelope-dominated, with 72/89 (81%) having R < 0.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of Flat Spectrum protostars that are disk-dominated (R > 0.5)",
+   "value": "61 (54/89)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. The 12 m to ACA Flux Ratio",
+     "quote": "In contrast, FS protostars are disk-dominated, with 54/89 (61%) having R > 0.5; however, that means 39% of FS protostars appear to be envelope-dominated."
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of log(disk flux) vs. log(envelope flux)",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4. The Evolution of the Disk Flux",
+     "quote": "We find that disk flux increases with increasing flux difference, with the log of the disk flux scaling as 0.68 times the log of the envelope flux."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation between disk flux and envelope flux",
+   "value": "0.58",
+   "uncertainty": "p-value = 1.8e-13",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4. The Evolution of the Disk Flux",
+     "quote": "The test returned a correlation rank of 0.58 on a scale from −1 to 1 and a p-value of 1.8 × 10−13, indicating that there is indeed a correlation between the variables."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of stellar mass accreted during the envelope-dominated phase",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We estimate that 80% of the mass is accreted during the envelope-dominated phase."
+    },
+    {
+     "loc": "5.2. The Evolution of Envelope Infall",
+     "quote": "While these approaches are approximate and make simplifying assumptions, we find that f acc = M acc /M final = 0.8 when R = 0.3."
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall's Tau correlation between 12 m/ACA flux ratio R and T_bol",
+   "value": "0.33",
+   "uncertainty": "p-value = 1.9e-13",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4. Flux Ratio as an Evolutionary Diagnostic",
+     "quote": "For the ratio R versus T bol, the test returns τ = 0.33 with a p-value of 1.9 × 10−13 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall's Tau correlation between envelope flux and T_bol",
+   "value": "-0.48",
+   "uncertainty": "p-value = 2.5e-26",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4. Flux Ratio as an Evolutionary Diagnostic",
+     "quote": "For the envelope flux versus T bol, the test returns τ = −0.48 with a p-value of 2.5 × 10−26 ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean stopping threshold, niter, deconvolver type, and automasking parameters",
+  "Whether primary beam correction was applied before aperture photometry on the 7-pointing mosaics",
+  "Exact coordinates of the three off-source 6\" apertures used for I_nu rms calculation for each target",
+  "Radius of the ring around the image center used to place the sixteen 6\" apertures for F_nu rms calculation",
+  "Which specific sources required manual centroid selection when centroid_quadratic and centroid_2dg failed",
+  "Exact list of the 30 HOPS sources excluded from the 330 HOPS catalog due to being faint or noisy"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean automasking and stopping parameters",
+  "Exact coordinates of the off-source noise apertures for each of the 300 fields",
+  "List of sources where manual centroiding was used and the exact manually chosen coordinates",
+  "Exact definition of how the 6\" circular aperture was convolved with the elliptical restoring beam FWHM for aperture_photometry"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Raw ACA data are public under a single project code (2018.1.01284.S), calibration used standard CASA pipelines, external 12 m and HOPS tables are published, and machine-readable tables give per-source measurements; minor deductions for unstated tclean automasking thresholds, manual centroid fallbacks, and off-source noise aperture positions.",
+ "rediscovery_reason": "Public ALMA dataset (2018.1.01284.S) combined with published VANDAM/HOPS catalogs and clear quantitative targets (detection rates, flux ratios, correlation statistics, and per-source fluxes in Table 2).",
+ "source_card": "cards/2023ApJ...944...49F/sonnet/card.md"
+}

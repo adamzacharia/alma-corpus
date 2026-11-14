@@ -1,0 +1,538 @@
+{
+ "bibcode": "2024MNRAS.533.2966Q",
+ "title": "ALMA follow-up of  3000 red-Herschel galaxies: the nature of extreme submillimetre galaxies",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae1974",
+ "arxiv_id": "2406.15729",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Quantify the relative abundance of single, multiple and potentially lensed galaxies among red-Herschel sources and characterize their redshifts and physical properties",
+ "alma_project_codes": [
+  "2018.1.00526.S",
+  "2016.1.00087.S",
+  "2018.1.00489.S",
+  "2011.0.00017.SV",
+  "2016.1.00139.S",
+  "2021.1.01628.S",
+  "2022.1.00432.S",
+  "2017.1.00510.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, 233 GHz) analysed; other bands exist in archive but excluded",
+  "arrays": "not stated",
+  "angular_resolution": "beam sizes 0.8 to 1.6 arcsec, mean 1 arcsec",
+  "sensitivity": "clean-map noise 0.1 to 3.6 mJy/beam, median 0.17 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "H-ATLAS data release catalogues used to select red-Herschel sources",
+    "evidence": [
+     {
+      "loc": "2.1 Red H-ATLAS galaxies observed with ALMA",
+      "quote": "using the data release catalogs from"
+     }
+    ]
+   },
+   "citation": "Valiante et al. 2016; Maddox et al. 2018 (cite: Valiante_2016; Maddox_2018)"
+  },
+  {
+   "what": {
+    "value": "SPIRE confusion noise (5.8, 6.3, 6.8 mJy/beam) and 5.5 per cent calibration uncertainty",
+    "evidence": [
+     {
+      "loc": "2.6 Flux density estimation in SPIRE maps",
+      "quote": "The SPIRE maps have a confusion noise of 5.8, 6.3 and 6.8 mJy/beam, respectively and a calibration uncertainty of 5.5 per cent"
+     }
+    ]
+   },
+   "citation": "(cite: Valiante_2016)"
+  },
+  {
+   "what": {
+    "value": "ALMA absolute calibration uncertainty of 6 to 10 per cent",
+    "evidence": [
+     {
+      "loc": "2.4 Flux density measurements",
+      "quote": "that is a around 6 to 10 per cent of the flux density measurement"
+     }
+    ]
+   },
+   "citation": "(cite: cycle7technical)"
+  },
+  {
+   "what": {
+    "value": "lambda_peak-L_IR relation with lambda_0 = 102.8 um, L_t = 1e12 Lsun, eta = -0.068",
+    "evidence": [
+     {
+      "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+      "quote": "where $\\lambda_0=102.8\\ \\pm\\ 0.4\\ \\mu$m, $L_t=10^{12}$ L$_\\odot$ and $\\eta=-0.068\\ \\pm\\ 0.001$."
+     }
+    ]
+   },
+   "citation": "(cite: Casey_2018)"
+  },
+  {
+   "what": {
+    "value": "SFR = 1.48e-10 L_IR (Kroupa IMF)",
+    "evidence": [
+     {
+      "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+      "quote": "$\\mathrm{SFR \\,[M_{\\odot}\\,yr^{-1}]}= 1.48\\times 10^{-10} \\ L_{\\mathrm{IR} }\\mathrm{\\,[L_{\\odot}]}$"
+     }
+    ]
+   },
+   "citation": "(cite: kennicutt_2012); IMF (cite: Kroupa_2001)"
+  },
+  {
+   "what": {
+    "value": "Gas-mass relation calibrated on CO plus Rayleigh-Jeans dust continuum, with alpha_850 = (6.17+-1.7)e19 erg/s/Hz/Msun",
+    "evidence": [
+     {
+      "loc": "3.3 Gas and Dust Masses",
+      "quote": "To infer the gas mass content of the galaxies in our sample, we use the relation given by"
+     }
+    ]
+   },
+   "citation": "(cite: Scoville_2016)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient k_0 = 0.07 m^2 kg^-1 at 850 um",
+    "evidence": [
+     {
+      "loc": "3.3 Gas and Dust Masses",
+      "quote": "assuming $k_0=0.07\\,\\mathrm{m^2\\,kg^{-1} }$"
+     }
+    ]
+   },
+   "citation": "(cite: James_2002)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts from literature used to test photometric redshifts",
+    "evidence": [
+     {
+      "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+      "quote": "we compare the photometric redshifts estimated for sources in our samples with available spectroscopic measurements in the literature"
+     }
+    ]
+   },
+   "citation": "not stated (individual references not given in the text)"
+  },
+  {
+   "what": {
+    "value": "Mid-J CO luminosities for 21 sources used to check gas masses",
+    "evidence": [
+     {
+      "loc": "3.3 Gas and Dust Masses",
+      "quote": "For the 21 sources with available (mid-J) CO luminosities"
+     }
+    ]
+   },
+   "citation": "(cite: Fudamoto_2017; Montaña_2021; Berta_2023; Hagimoto_2023)"
+  },
+  {
+   "what": {
+    "value": "Literature-confirmed robust lenses among PLUM-Fields",
+    "evidence": [
+     {
+      "loc": "3.1.2 PLUM - Fields",
+      "quote": "we identified 12 fields that are robust lenses confirmed in the literature"
+     }
+    ]
+   },
+   "citation": "(cite: Bussmann_2013; Negrello+2016; Fudamoto_2017; Lewis_2018; Majon+2019; urquhart+2022)"
+  },
+  {
+   "what": {
+    "value": "Expected depletion-time evolution for main-sequence and starburst galaxies",
+    "evidence": [
+     {
+      "loc": "4.6 Depletion times and Star formation efficiencies",
+      "quote": "along with the expected evolution for main-sequence star-forming galaxies and starburst type galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: tacconi_2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select red-Herschel sources and cross-match with ALMA archive",
+   "method": "Select S250<S350<S500 in H-ATLAS catalogues, cross-match to ALMA archive within 5 arcsec using PyVO",
+   "software": [
+    "PyVO"
+   ],
+   "key_parameters": [
+    "5 arcsec search radius; PyVO v1.5.1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image the calibrated visibilities",
+   "method": "Combine MS per field; make dirty maps, estimate global rms with sigma clipping, then clean with tclean to 3 sigma using natural weighting",
+   "software": [
+    "CASA",
+    "tclean",
+    "Astropy sigma clip"
+   ],
+   "key_parameters": [
+    "sigma clip at +-5 sigma",
+    "natural weighting; 216 x 216 pixels; 0.14-0.25 arcsec pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Detect sources and set threshold from false detection rate",
+   "method": "Iterative pixel search above threshold within 16.6 arcsec of map centre, masking 1.5 times the beam around each detection; FDR from detections in sign-flipped maps; adopt 5 sigma",
+   "software": [],
+   "key_parameters": [
+    "FDR from D_F/D_P with maps multiplied by -1; minimum threshold 3 sigma in the test; adopted 5 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure 1.3 mm flux densities",
+   "method": "Peak pixel flux (PB corrected) and aperture flux from growth curve with apertures 1.5 to 3 beam sizes, divided by the synthesized beam; calibration error added in quadrature",
+   "software": [],
+   "key_parameters": [
+    "adopt flux where aperture growth curve becomes constant; sigma_ca = 0.1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Remove AGN and low-redshift interlopers",
+   "method": "Discard ALMA detections within 2 arcsec of a MILLIQUAS or SDSS DR17 source",
+   "software": [],
+   "key_parameters": [
+    "43 sources removed"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Re-estimate deblended SPIRE flux densities",
+   "method": "Simultaneous 2D Gaussian fits in 120x120 arcsec postage stamps, with fixed FWHM from Neptune PSF and fixed positions from ALMA and 250 um sources; free amplitude and background",
+   "software": [],
+   "key_parameters": [
+    "250 um neighbours found at 4 sigma outside the 16.6 arcsec ALMA radius"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Classify fields into S, PLUM, M and N",
+   "method": "By number and separation of 5 sigma detections within 16.6 arcsec; 3 arcsec separation separates PLUM from M; visual inspection for arcs",
+   "software": [],
+   "key_parameters": [
+    "visual inspection of whole sample for arc-like or extended structures larger than the synthesized beam found 46 cases"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Derive photometric redshift, L_IR and SFR from SPIRE+ALMA photometry",
+   "method": "Fit modified black bodies to deblended SPIRE and ALMA 1.3 mm photometry with MMPz, pick best set via lambda_peak-L_IR relation; SFR from L_IR via Kennicutt relation; for PLUM-Fields total ALMA flux is sum of components",
+   "software": [
+    "Millimeter Photometric Redshift (MMPz)"
+   ],
+   "key_parameters": [
+    "lambda_0 = 102.8 um, L_t = 1e12 Lsun, eta = -0.068",
+    "SFR = 1.48e-10 L_IR"
+   ],
+   "assumptions": [
+    "Kroupa IMF",
+    "LambdaCDM with H0 = 70, Omega_M = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Derive gas and dust masses",
+   "method": "Gas mass from the Scoville et al. 2016 relation using 1.3 mm flux density; dust mass from optically thin Rayleigh-Jeans emission with k(nu)=k0 (nu/nu850)^beta",
+   "software": [],
+   "key_parameters": [
+    "alpha_850 = (6.17 +- 1.7)e19 erg/s/Hz/Msun",
+    "k0 = 0.07 m^2 kg^-1"
+   ],
+   "assumptions": [
+    "T = 25 K mass-weighted cold gas temperature, beta = 1.8",
+    "T_dust = 25 K for dust masses"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Test 1.3 mm flux density as a lensing criterion and derive multiplicity and depletion times",
+   "method": "Compare S(1.3mm) with PLUM/S-Field class and archival higher-resolution data; count multiples; tau_dep = M_gas/SFR compared with main-sequence and starburst relations",
+   "software": [],
+   "key_parameters": [
+    "S(1.3mm) >= 13.0 mJy threshold"
+   ],
+   "assumptions": [
+    "alpha_CO = 1 alternative scaling for gas masses"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Red-Herschel sources in H-ATLAS catalogues",
+   "value": "6,194",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Red H-ATLAS galaxies observed with ALMA",
+     "quote": "We find 6,194 sources that meet the criterion, representing only 1.4 per cent of all the"
+    }
+   ]
+  },
+  {
+   "quantity": "Red-Herschel sources observed in public ALMA projects",
+   "value": "3,187 (41 projects); 3,089 in Band 6",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Red H-ATLAS galaxies observed with ALMA",
+     "quote": "We find that 3,187 of these red-*Herschel* sources have been observed in 41 public ALMA projects"
+    }
+   ]
+  },
+  {
+   "quantity": "Median clean-map rms",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA data",
+     "quote": "with median of 0.17 mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fields with no detection / at least one detection at 5 sigma",
+   "value": "673 / 2,416",
+   "uncertainty": "not stated",
+   "units": "fields",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 Source Detection and False Detection Rate",
+     "quote": "Using this 5$\\sigma$ threshold, we identify 673 fields with non detections (same number at 4.5$\\sigma$) and 2,416 fields with at least one detection."
+    }
+   ]
+  },
+  {
+   "quantity": "S-Fields count",
+   "value": "1,762",
+   "uncertainty": "not stated",
+   "units": "fields",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1.1 S - Fields",
+     "quote": "These are the dominant class with a total of 1,762 sources"
+    }
+   ]
+  },
+  {
+   "quantity": "PLUM-Fields count",
+   "value": "137",
+   "uncertainty": "not stated",
+   "units": "fields",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1.2 PLUM - Fields",
+     "quote": "In total, this category contains 137 fields (149 at $>4.5\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Sources classified as AGN or z<1 galaxies",
+   "value": "43",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.5 Sample cleaning",
+     "quote": "We classified 43 ALMA sources as AGN or galaxies at $z<1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of detections that are multiple systems",
+   "value": "475 of 2,416 fields (~20 per cent); 87 per cent doubles, 11 per cent triples, 2 per cent four components",
+   "uncertainty": "not stated",
+   "units": "fields",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.2 Multiplicity",
+     "quote": "we find that 475 out of 2,416 fields ($\\sim 20$ per cent) are multiple systems with apparent separations $\\geq 3$ arc-seconds between components"
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift S-Fields / PLUM-Fields",
+   "value": "2.78 / 3.28",
+   "uncertainty": "+-0.03 / +-0.12",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+     "quote": "which have a median redshift of $2.78 \\pm\\ 0.03$ and $3.28 \\pm\\ 0.12$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median L_IR S-Fields / PLUM-Fields",
+   "value": "8.9e12 / 13.5e12",
+   "uncertainty": "+-0.2e12 / +-1.2e12",
+   "units": "Lsun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+     "quote": "The median $L_{\\mathrm{IR}}$ of the S - Fields is $8.9\\pm0.2\\times 10^{12}$ L$_\\odot$ and for the PLUM - Fields is $13.5\\pm1.2\\times 10^{12}$ L$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFR S-Fields / PLUM-Fields",
+   "value": "1300 / 2000",
+   "uncertainty": "+-30 / +-170",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+     "quote": "We find a median SFR of $1300\\pm30$ $\\mathrm{M_{\\odot}\\,yr ^{-1}}$ for the S - Fields and $2000\\pm170$ $\\mathrm{M_{\\odot}\\,yr ^{-1}}$ for the PLUM - Fields."
+    }
+   ]
+  },
+  {
+   "quantity": "Photometric versus spectroscopic redshift relative difference",
+   "value": "~8 per cent",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.2 Redshifts, Luminosities and Star Formation Rates",
+     "quote": "is $\\sim$8 per cent. Thus, our photometric redshifts are accurate enough for a statistical characterization"
+    }
+   ]
+  },
+  {
+   "quantity": "Median M_gas S-Fields / PLUM-Fields",
+   "value": "4.1e11 / 5.7e11",
+   "uncertainty": "+-0.1e11 / +-0.3e11",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.3 Gas and Dust Masses",
+     "quote": "We estimate a median $M_{\\mathrm{gas}}$ of $(4.1\\pm0.1)\\times10^{11}$ M$_{\\odot}$ for the S - Fields and $(5.7\\pm0.3)\\times10^{11}$ M$_{\\odot}$ for the PLUM - Fields."
+    }
+   ]
+  },
+  {
+   "quantity": "Median M_dust S-Fields / PLUM-Fields",
+   "value": "2.20e9 / 3.00e9",
+   "uncertainty": "+-0.04e9 / +-0.20e9",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.3 Gas and Dust Masses",
+     "quote": "We find median dust masses of $(2.20\\pm0.04)$$\\times10^{9}$ M$_{\\odot}$ for the S - Fields and $(3.00\\pm0.20)$$\\times10^{9}$ M$_{\\odot}$ for the PLUM-Fields."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ratio of this-work gas mass to CO-based gas mass (21 sources)",
+   "value": "~0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.3 Gas and Dust Masses",
+     "quote": "we find a mean ratio of $\\sim 0.8$ between the gas masses estimated in this work and those inferred from the CO line detections."
+    }
+   ]
+  },
+  {
+   "quantity": "Average depletion time",
+   "value": "0.30",
+   "uncertainty": "+-0.03",
+   "units": "Gyr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Summary and Conclusions",
+     "quote": "we found average depletion times of $\\tau_{\\mathrm{dep}}=0.30\\pm0.03$ Gyr"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm flux density above which sources are lensed",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "all galaxies with $S_{\\mathrm{1.3mm}}\\geq13$ mJy are gravitationally amplified"
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift-independent SFR upper limit for SMGs",
+   "value": "~6,000",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.4 Infrared Luminosities and Star Formation Rates",
+     "quote": "there seems to exist a redshift independent SFR upper limit for SMG around (or below) $\\sim6,000$ M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for imaging",
+  "tclean parameters beyond the 3 sigma threshold: niter, deconvolver, cleaning mask, uv range, spectral mode (continuum mfs or per-SPW) and which spectral windows were used for continuum",
+  "Whether line-free channels were selected or all channels were collapsed",
+  "Exact list of ALMA project codes and member OUSs for the 41 projects and 3,187 sources (only seven project codes printed)",
+  "How the cut-off of the aperture growth curve was chosen per source",
+  "MMPz configuration: parameter grids, priors, treatment of upper limits, template details",
+  "Criteria and per-source list for the 46 visually identified arc-like cases",
+  "Source list and final catalogues are only in supplementary data, not in the text"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and full tclean parameters",
+  "Full list of the 41 project/member OUS identifiers",
+  "MMPz settings and priors",
+  "Per-source aperture choices and arc visual-inspection list"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the pipeline is described step by step with numeric thresholds, but CASA and tclean details, MMPz configuration and the exact list of observations are missing",
+ "rediscovery_reason": "Public data, a mostly complete algorithmic recipe and numeric medians (z, L_IR, SFR, M_gas) to compare against; large data volume is the main cost",
+ "source_card": "cards/2024MNRAS.533.2966Q/sonnet/card.md"
+}

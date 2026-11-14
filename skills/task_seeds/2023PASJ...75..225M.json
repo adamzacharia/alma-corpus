@@ -1,0 +1,244 @@
+{
+ "bibcode": "2023PASJ...75..225M",
+ "title": "An expanding ring of the hypercompact H II region W 49 N:A2",
+ "year": 2023,
+ "doi": "10.1093/pasj/psac105",
+ "arxiv_id": "2212.01999",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What is the structure and kinematics of the ionized ring in the hypercompact HII region W49N:A2, and what does it imply for how a massive star ends accretion?",
+ "alma_project_codes": [
+  "2018.1.00520.S",
+  "2018.1.00589.S",
+  "2016.1.00620.S",
+  "2015.1.01535.S",
+  "2017.1.00318.S",
+  "2017.1.01499.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m, 43–48 antennas",
+  "angular_resolution": "continuum 0.046'' x 0.032'' (PA 70.3); H29α 0.052'' x 0.033''",
+  "sensitivity": "0.7 mJy/beam continuum; 2.0 mJy/beam line"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "45 GHz continuum map of W49N:A2 (contours, flux 0.47 Jy)",
+    "evidence": [
+     {
+      "loc": "Continuum and H29α Rings",
+      "quote": "This feature was first noted by (cite: DePree2000) in their 45 GHz continuum map"
+     }
+    ]
+   },
+   "citation": "(cite: DePree2000)"
+  },
+  {
+   "what": {
+    "value": "Ionizing photon luminosity equivalent to O9 ZAMS and ionized gas mass 0.12 Msun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "has the total ionized gas mass of 0.12 M$_\\odot$ (cite: DePree2020)"
+     }
+    ]
+   },
+   "citation": "(cite: DePree2020)"
+  },
+  {
+   "what": {
+    "value": "O9 star mass 20±7 Msun",
+    "evidence": [
+     {
+      "loc": "Expanding ring of ionized gas and its implication",
+      "quote": "which should have a mass of 20$\\pm$7 M$_\\odot$[^4] (cite: Hohle2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Hohle2010)"
+  },
+  {
+   "what": {
+    "value": "Distance 11.11 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We assume the distance to W49N to be 11.11$^{+0.79}_{-0.69}$ kpc (cite: Zhang2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Zhang2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make continuum and H29α images",
+   "method": "uvcontsub, then tclean with Briggs weighting; continuum averaged across four windows; cube at 2 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5; width 2 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure ring geometry and fluxes",
+   "method": "2D Gaussian fits for component size, flux, inclination; double Gaussian fits to profiles for ring size and width",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Ring is intrinsically circular, tilted, symmetric about polar axis and equatorial plane"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate ring scale height",
+   "method": "Elliptical cross-section model with beta^2 = a^2 cos^2 i + b^2 sin^2 i; 2σ upper limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Ionized gas 10000 K around 20 Msun star for pressure scale height"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive expansion and rotation velocities",
+   "method": "Gaussian fits to line profiles on PV diagrams along major and minor axes; velocity difference between ridges corrected for inclination 50",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Minor-axis velocity gives radial motion only; major-axis gives rotation only"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Interpret dynamics",
+   "method": "Compare with free-fall and Keplerian masses for 20 Msun star; angular momentum conservation to infer origin radius ~170 au",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Star mass 20±7 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "250 GHz continuum total flux density of A2",
+   "value": "1.11",
+   "uncertainty": "0.03",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.11 $\\pm$0.03 (Jy)"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 45–250 GHz",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum and H29α Rings",
+     "quote": "to give a spectral index $\\alpha$ = 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring inclination (250 GHz)",
+   "value": "50",
+   "uncertainty": "2",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum and H29α Rings",
+     "quote": "suggests an inclination of 50$\\pm$2"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring expansion velocity",
+   "value": "13.2",
+   "uncertainty": "1.0",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Velocity structure of the ring",
+     "quote": "expansion or contraction velocity of 13.2$\\pm$1.0 km s$^{-1}$ at the radius of 706 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring rotation velocity",
+   "value": "2.7",
+   "uncertainty": "1.0",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Velocity structure of the ring",
+     "quote": "rotation velocity of 2.7$\\pm$1.0 km s$^{-1}$ at the radius of 642 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale height upper limit 250 GHz / H29α",
+   "value": "<410 / <690",
+   "uncertainty": "2σ",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum and H29α Rings",
+     "quote": "The results are $b<$410 au and $b<$ 690 au for the 250 GHz and H29$\\alpha$ rings, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Origin radius of ring gas",
+   "value": "~170",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Expanding ring of ionized gas and its implication",
+     "quote": "specifically from $R \\sim$ 170 au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for uvcontsub",
+  "Image size and cell size",
+  "Cleaning threshold, masks, niter",
+  "Which execution blocks were used and how the second set was identified",
+  "Calibration pipeline and CASA version",
+  "Exact procedure for double-Gaussian fits to ring profiles and PV slice widths",
+  "Rest frequency of H29α used for velocity axis",
+  "Details of the 100–450 GHz archival flux measurements"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks, threshold)",
+  "CASA version",
+  "Line-free channels",
+  "Fit procedure details for ring widths and PV Gaussians"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and key tclean settings given, but many imaging and fitting details missing.",
+ "rediscovery_reason": "Public data, numeric results, and a moderately complete recipe.",
+ "source_card": "cards/2023PASJ...75..225M/sonnet/card.md"
+}

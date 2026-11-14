@@ -1,0 +1,459 @@
+10^-4",
+      "uncertainty": "not stated",
+      "units": "M⊙",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "SPH results: Surface density evolution",
+          "quote": "The final gas and total dust masses are 2.8$\\times 10^{-2}$ M$_{\\odot}$ and 4$\\times 10^{-4}$ M$_{\\odot}$, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "synthetic outer-ring flux overestimate",
+      "value": "an order of magnitude",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Simulation caveats",
+          "quote": "While the synthetic dust continuum images reproduce several of the observational results, the actual flux level of the outer ring is not recovered as it is overestimated by an order of magnitude."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "outer ring is azimuthally inhomogeneous, with northwestern S1 and southeastern S2 arm-like structures",
+      "evidence": [
+        {
+          "loc": "Image inspection",
+          "quote": "the continuum emission is stronger in two arm-like structures in the northwestern (substructure “S1”) and southeastern (“S2”) direction, respectively."
+        }
+      ]
+    },
+    {
+      "value": "inner ring and HST-traced outer disk have the same inclination and position angle",
+      "evidence": [
+        {
+          "loc": "Geometrical properties",
+          "quote": "This implies that the inner ring and the outer disk (traced by the HST images) have the same inclination and position angle."
+        }
+      ]
+    },
+    {
+      "value": "near-infrared disk is radially more extended; inner dark lane coincides with ALMA inner ring",
+      "evidence": [
+        {
+          "loc": "Comparison to near-infrared observations",
+          "quote": "At near-infrared wavelengths, the disk appears radially more extended than at millimeter wavelengths."
+        },
+        {
+          "loc": "Comparison to near-infrared observations",
+          "quote": "The inner dark lane is spatially coincident with the ALMA inner ring."
+        }
+      ]
+    },
+    {
+      "value": "two giant protoplanets are suggested by observations and simulations",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "The observational findings and the comparison with hydrodynamical simulations hint at the presence of two giant protoplanets at nearly 15 au and 110 au, with masses of $\\sim 3.1\\,M_{\\rm J}$ and 8.5$\\,M_{\\rm J}$, respectively."
+        }
+      ]
+    },
+    {
+      "value": "outer planet induces spiral patterns inward and outward of its orbit",
+      "evidence": [
+        {
+          "loc": "SPH results: Surface density evolution",
+          "quote": "The interaction between the outer planet and the disk gives rise to a spiral pattern inward and outward of the planetary orbit."
+        }
+      ]
+    },
+    {
+      "value": "wide-orbit massive planet challenges core-accretion formation",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "The massive outer planet challenges current formation models via core accretion."
+        }
+      ]
+    },
+    {
+      "value": "dust gap may permit UV photo-desorption of water and must retain small grains",
+      "evidence": [
+        {
+          "loc": "Dust gap and water emission",
+          "quote": "Because of the lower dust extinction in the dust gap, the stellar UV photons can reach the colder layers and evaporate water molecules via UV photo-desorption."
+        },
+        {
+          "loc": "Dust gap and water emission",
+          "quote": "This implies that the dust gap is not fully void of dust, that there must be a residual of small dust grains."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "The disk contains a resolved outer dust ring separated from the inner ring by a wide gap.",
+      "experiment": "Recalibrate, self-calibrate and combine archival band 7 observations covering different spatial scales.",
+      "result": "Inner ring ~20-40 au, gap ~40-150 au and outer ring ~150-250 au.",
+      "finding": "The previously postulated outer ring is detected and spatially resolved.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Image inspection",
+          "quote": "The ALMA band 7 continuum emission of HD 100546 shows two prominent structures: an inner ring located between $r \\sim 20$ and $40\\,$au and an outer ring-like structure between $r \\sim 150$ and 250 au."
+        },
+        {
+          "loc": "Image inspection",
+          "quote": "A gap between $r \\sim 40$ and $150$ au separates the two rings."
+        },
+        {
+          "loc": "Image inspection",
+          "quote": "The merged data set allows us to detect and spatially resolve the outer ring that was postulated by (cite: Walsh14) based on low-resolution ($\\sim 0.95\\ensuremath{''} \\times 0.42\\ensuremath{''}$) ALMA cycle 0 data."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Outer-ring azimuthal asymmetry reflects an eccentric ring.",
+      "experiment": "Deproject the continuum image, subtract a Gaussian ring and fit residual positions.",
+      "result": "Eccentricity e = 0.07 ± 0.01.",
+      "finding": "An eccentric ring is a likely explanation of the asymmetric emission.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Eccentric ring",
+          "quote": "after de-projection and subtraction of a Gaussian ring centered at $r=199.5\\,$au with a width of 23.32 au"
+        },
+        {
+          "loc": "Eccentric ring",
+          "quote": "Fitting the position of these residuals with an eccentric ring gives an eccentricity $e = 0.07\\pm0.01$."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "The azimuthally asymmetric emission is likely caused by an eccentric ring with eccentricity $e = 0.07\\pm 0.01$."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Two embedded giant planets can produce the double-ring structure and outer-disk asymmetry.",
+      "experiment": "Run PHANTOM disk-planet simulations and make MCFOST/CASA synthetic continuum images.",
+      "result": "Final simulated planets: 3.1 MJ near 15 au and 8.5 MJ near 110 au; morphology reproduced, but outer-ring flux too bright by an order of magnitude.",
+      "finding": "The observations and simulations hint at two giant protoplanets.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "SPH results: Synthetic images",
+          "quote": "such as the double ring-like structure with the inner ring ($\\sim$ 20-40 au) much brighter than the outer one ($\\sim$ 150-250 au), the wide dust gap ($\\sim$ 40-150 au), and the asymmetry in the outer disk."
+        },
+        {
+          "loc": "Simulation caveats",
+          "quote": "While the synthetic dust continuum images reproduce several of the observational results, the actual flux level of the outer ring is not recovered as it is overestimated by an order of magnitude."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "The observational findings and the comparison with hydrodynamical simulations hint at the presence of two giant protoplanets at nearly 15 au and 110 au, with masses of $\\sim 3.1\\,M_{\\rm J}$ and 8.5$\\,M_{\\rm J}$, respectively."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Outer-planet-driven spirals can explain perturbed inner gas dynamics.",
+      "experiment": "Compare simulated gas structure with literature observations of gas dynamics and near-infrared spirals.",
+      "result": "The outer planet drives spirals inward and outward of its orbit; no substantial inner/outer disk misalignment is found.",
+      "finding": "Gas spirals can explain the observed gas dynamics inward of 100 au.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "SPH results: Surface density evolution",
+          "quote": "The interaction between the outer planet and the disk gives rise to a spiral pattern inward and outward of the planetary orbit."
+        },
+        {
+          "loc": "Disk-planet interaction",
+          "quote": "No substantial misalignment has been found between the inner and outer disk (Sect. [4](#sec:results))."
+        },
+        {
+          "loc": "Disk-planet interaction",
+          "quote": "The gas spiral arms in the inner disk can also explain the gas dynamics inward of 100 au observed by (cite: Pineda14), (cite: Walsh15), and (cite: Pineda19)."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The dust gap helps explain the locations of water ice and water vapor.",
+      "experiment": "Compare the ALMA dust gap with published water-ice absorption and Herschel water-line constraints.",
+      "result": "Spatial coincidence between the millimeter gap, water-ice absorption and ground-state water emission.",
+      "finding": "Reduced extinction permits UV photo-desorption; residual small dust grains remain in the gap.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Dust gap and water emission",
+          "quote": "The spatial coincidence between the millimeter dust gap, the water ice absorption, and the ground-state water vapor emission is striking"
+        },
+        {
+          "loc": "Dust gap and water emission",
+          "quote": "Because of the lower dust extinction in the dust gap, the stellar UV photons can reach the colder layers and evaporate water molecules via UV photo-desorption."
+        },
+        {
+          "loc": "Dust gap and water emission",
+          "quote": "This implies that the dust gap is not fully void of dust, that there must be a residual of small dust grains."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "combine projects covering different spatial scales; B increases sensitivity to large angular scales",
+      "evidence": [
+        {
+          "loc": "Observations and data reduction",
+          "quote": "The two projects cover a different range of spatial scales."
+        },
+        {
+          "loc": "Observations and data reduction",
+          "quote": "With the aim of increasing the sensitivity toward the large angular scales, four EBs from the most extended array configuration ($\\sim$15-1124 m)"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "SPH tests whether a massive outer planet produces observed structures; one-fluid method suited to St < 1",
+      "evidence": [
+        {
+          "loc": "Comparison to hydrodynamical simulations",
+          "quote": "To answer the question of whether a single massive planet at 100-110 au is capable of producing the structures in the outer disk described above"
+        },
+        {
+          "loc": "Physical setup",
+          "quote": "This method is best suited for small values of the Stokes number ($St < 1$)."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "stop simulation after 50 Torb ~10^5 yr, considered sufficient for driven spirals and disk-planet interactions",
+      "evidence": [
+        {
+          "loc": "Physical setup",
+          "quote": "The simulation was stopped after 50 T$_{\\rm orb}\\sim 10^5$ yr."
+        },
+        {
+          "loc": "Physical setup",
+          "quote": "This timescale is large enough to investigate the spiral structures driven by the outer planet (cite: Dong2016; Rosotti19) and the interactions between the planets and the disk."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "PSF origin of S3 rejected",
+      "evidence": [
+        {
+          "loc": "Image inspection",
+          "quote": "From the inspection of the point spread function (PSF) we can rule out S3 being an artificial feature inherited from the PSF."
+        }
+      ]
+    },
+    {
+      "value": "S4 may be extended emission such as a spiral arm",
+      "evidence": [
+        {
+          "loc": "Image inspection",
+          "quote": "Nevertheless, the presence of low level flux in its proximity may suggest that S4 is part of a spatially extended emission, such as a spiral arm."
+        }
+      ]
+    },
+    {
+      "value": "initially circular outer-planet simulations develop eccentricity 0.05 and 0.1 at 50 Torb",
+      "evidence": [
+        {
+          "loc": "SPH results: Surface density evolution",
+          "quote": "when the initial eccentricity of the planet is set to zero (not shown here), the eccentricity of the outer planet grows to 0.05 and 0.1 at $t=50~T_{\\rm orb}$."
+        }
+      ]
+    },
+    {
+      "value": "larger maximum grain size or pure-silicate dust could reduce synthetic 870 μm emission",
+      "evidence": [
+        {
+          "loc": "Simulation caveats",
+          "quote": "the emission at 870 ${\\mu}$m becomes fainter for higher values of $a_{\\rm max}$ or for dust composed of silicates only."
+        }
+      ]
+    },
+    {
+      "value": "Rout > 300 au and p > 1 could produce a fainter outer disk",
+      "evidence": [
+        {
+          "loc": "Simulation caveats",
+          "quote": "On the other hand, a larger initial disk size ($R_{\\rm out} > 300$ au) and a steeper surface density profile ($p$ \\> 1) could produce a fainter outer disk."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "outer-ring synthetic flux overestimated by an order of magnitude",
+      "evidence": [
+        {
+          "loc": "Simulation caveats",
+          "quote": "While the synthetic dust continuum images reproduce several of the observational results, the actual flux level of the outer ring is not recovered as it is overestimated by an order of magnitude."
+        }
+      ]
+    },
+    {
+      "value": "flux mismatch may reflect surface-density profile or uncertain radiative-transfer dust parameters",
+      "evidence": [
+        {
+          "loc": "Simulation caveats",
+          "quote": "This may be due to the assumptions on the physical disk setup and, in particular, to the slope of the surface density profile"
+        },
+        {
+          "loc": "Simulation caveats",
+          "quote": "or to the uncertainties on the radiative transfer parameters, such as the opacity of the dust, its chemical composition, and the boundary values of the grain size distribution"
+        }
+      ]
+    },
+    {
+      "value": "S4 detection tentative and nature unclear; further observations required",
+      "evidence": [
+        {
+          "loc": "Image inspection",
+          "quote": "The nature of S4 is unclear as its position is symmetrical to that of S3."
+        },
+        {
+          "loc": "SPH results: Synthetic images",
+          "quote": "Further observations are needed to confirm the detection and unveil the nature of such emission."
+        }
+      ]
+    },
+    {
+      "value": "second high-resolution EB classed semi-pass because observation incomplete",
+      "evidence": [
+        {
+          "loc": "Observations and data reduction",
+          "quote": "was classed as “semi-pass” data due to not being a fully complete observation, achieving only 18 minutes of an expected 29 minutes of on-source time for HD 100546."
+        }
+      ]
+    },
+    {
+      "value": "water-emission outer radius poorly constrained by spatially unresolved HIFI spectra",
+      "evidence": [
+        {
+          "loc": "Dust gap and water emission",
+          "quote": "the outer radius is poorly constrained as the HIFI spectra are spatially unresolved."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The planet masses are model-dependent simulation outcomes, not direct planet-mass measurements.",
+    "Qualitative morphology matching and a tenfold outer-ring flux mismatch limit uniqueness of the proposed planet configuration.",
+    "The eccentric-ring uncertainty lacks a stated fitting likelihood or residual-selection procedure.",
+    "Shared geometry is imposed on the two Gaussian rings, limiting an independent test of their mutual alignment.",
+    "MCMC convergence and sensitivity to visibility weights or calibration systematics are not demonstrated.",
+    "The printed intrinsic grain-density unit is dimensionally ambiguous, and the converted surface-density equation is malformed.",
+    "Synthetic-image geometry uses rounded values different from the precise visibility-fit geometry."
+  ],
+  "reproducibility": [
+    {
+      "field": "products_in_archive",
+      "value": "high-resolution project contains one fully reduced EB; archive reduction scripts used for B",
+      "evidence": [
+        {
+          "loc": "Observations and data reduction",
+          "quote": "The high-resolution observations from project 2015.1.00806 in the ALMA archive consist of one fully reduced execution block (EB)"
+        },
+        {
+          "loc": "Observations and data reduction",
+          "quote": "were recalibrated using the archive reduction scripts in CASA version 5.4.0."
+        }
+      ]
+    }
+  ],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Exact continuum spectral setup and channel flags.",
+    "Complete calibration, phase-alignment, self-calibration and imaging commands.",
+    "Geometric-model code, chains, burn-in and convergence checks.",
+    "Eccentric-ring fitting code and uncertainty recipe.",
+    "PHANTOM initial-condition files and complete explored simulation grid.",
+    "Unambiguous surface-density prescription and grain-density units.",
+    "MCFOST stellar model, input files and synthetic-observation settings.",
+    "Explicit public-access statement and release links for analysis code and simulation products."
+  ],
+  "estimated_data_volume_inferred": "Not reliably estimable: six execution blocks are identified, but bandwidth, channelization and correlator integration times are absent.",
+  "score_inferred": 3,
+  "score_reason": "Projects, execution blocks, CASA version, broad self-calibration procedure, visibility-fit priors and many simulation parameters are provided; exact imaging, eccentricity fitting and simulation inputs remain incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric and archival data are identified, but public access is not explicitly stated and missing processing and model inputs prevent a complete reproduction recipe.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Mcmullin07)",
+      "why": "CASA recalibration."
+    },
+    {
+      "citation": "(cite: Tazzari18)",
+      "why": "GALARIO visibility modeling."
+    },
+    {
+      "citation": "(cite: Foreman13)",
+      "why": "EMCEE MCMC sampling."
+    },
+    {
+      "citation": "(cite: Rosotti16); (cite: Lodato2019)",
+      "why": "Dust-gap width to Hill-radius relation."
+    },
+    {
+      "citation": "(cite: Price18)",
+      "why": "PHANTOM SPH simulations."
+    },
+    {
+      "citation": "(cite: Hutchison18)",
+      "why": "Multigrain one-fluid dust-gas method."
+    },
+    {
+      "citation": "(cite: Laibe14)",
+      "why": "Terminal velocity approximation."
+    },
+    {
+      "citation": "(cite: Toci20)",
+      "why": "Inherited disk setup."
+    },
+    {
+      "citation": "(cite: Fromang2009)",
+      "why": "Settled dust-layer thickness prescription."
+    },
+    {
+      "citation": "(cite: Bate95)",
+      "why": "Sink particles."
+    },
+    {
+      "citation": "(cite: ShaSun77)",
+      "why": "Viscosity prescription."
+    },
+    {
+      "citation": "(cite: Pinte06; Pinte09)",
+      "why": "MCFOST synthetic observations."
+    },
+    {
+      "citation": "(cite: Woitke16)",
+      "why": "DIANA dust opacity."
+    },
+    {
+      "citation": "(cite: Siess2010)",
+      "why": "Stellar isochrones supplying the spectral model."
+    },
+    {
+      "citation": "(cite: Dong2016; Rosotti19)",
+      "why": "Justification for simulation duration."
+    }
+  ],
+  "companion_papers": [],
+  "related_projects_or_surveys": []
+}
+tokens used
+28,977

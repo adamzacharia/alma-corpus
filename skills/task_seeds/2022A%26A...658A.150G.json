@@ -1,0 +1,433 @@
+{
+ "bibcode": "2022A&A...658A.150G",
+ "title": "The trans/cis ratio of formic (HCOOH) and thioformic (HC(O)SH) acids in the interstellar medium",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142287",
+ "arxiv_id": "2111.10842",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Whether the prevalence of one isomer over the other for formic acid (HCOOH) and thioformic acid (HC(O)SH) in the interstellar medium is due to a cis-trans isomerization transformation via quantum tunneling, and how predicted ratios compare with ALMA observations toward G31.41+0.31.",
+ "alma_project_codes": [
+  "2017.1.00501.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3mm)",
+  "arrays": "not stated",
+  "angular_resolution": "1.2\" x 1.2\" (~4500 au)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopy of t-HCOOH and c-HCOOH",
+    "evidence": [
+     {
+      "loc": "Comparison with observations from the GUAPOS spectral survey",
+      "quote": "The spectroscopy of t-HCOOH and c-HCOOH is taken from (cite: winnewisser2002) and their dipole moments were measured by (cite: kuze1982) for t-HCOOH and (cite: hocking1976a) for c-HCOOH."
+     }
+    ]
+   },
+   "citation": "(cite: winnewisser2002)"
+  },
+  {
+   "what": {
+    "value": "Dipole moment of t-HCOOH",
+    "evidence": [
+     {
+      "loc": "Comparison with observations from the GUAPOS spectral survey",
+      "quote": "The spectroscopy of t-HCOOH and c-HCOOH is taken from (cite: winnewisser2002) and their dipole moments were measured by (cite: kuze1982) for t-HCOOH and (cite: hocking1976a) for c-HCOOH."
+     }
+    ]
+   },
+   "citation": "(cite: kuze1982)"
+  },
+  {
+   "what": {
+    "value": "Dipole moment of c-HCOOH",
+    "evidence": [
+     {
+      "loc": "Comparison with observations from the GUAPOS spectral survey",
+      "quote": "The spectroscopy of t-HCOOH and c-HCOOH is taken from (cite: winnewisser2002) and their dipole moments were measured by (cite: kuze1982) for t-HCOOH and (cite: hocking1976a) for c-HCOOH."
+     }
+    ]
+   },
+   "citation": "(cite: hocking1976a)"
+  },
+  {
+   "what": {
+    "value": "H2 column density toward G31 at 3mm: N_H2 = (1.0 +/- 0.2) x 10^25 cm^-2",
+    "evidence": [
+     {
+      "loc": "Comparison with observations from the GUAPOS spectral survey",
+      "quote": "This implies an abundance of $X$ = (1.4$\\pm$0.7)$\\times$10$^{-8}$ for the H$_2$ column density of $N_{\\rm H_{2}}$ = (1.0 $\\pm$ 0.2) $\\times$10$^{25}$ cm$^{-2}$ measured by (cite: mininni2020) at 3mm."
+     }
+    ]
+   },
+   "citation": "(cite: mininni2020)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic information of t-HC(O)SH and c-HC(O)SH",
+    "evidence": [
+     {
+      "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+      "quote": "For this, we used the spectroscopic information of t-HC(O)SH and c-HC(O)SH obtained by (cite: hocking1976b) and the dipole moments measured by (cite: hocking1976c)."
+     }
+    ]
+   },
+   "citation": "(cite: hocking1976b)"
+  },
+  {
+   "what": {
+    "value": "Dipole moments of t-HC(O)SH and c-HC(O)SH",
+    "evidence": [
+     {
+      "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+      "quote": "For this, we used the spectroscopic information of t-HC(O)SH and c-HC(O)SH obtained by (cite: hocking1976b) and the dipole moments measured by (cite: hocking1976c)."
+     }
+    ]
+   },
+   "citation": "(cite: hocking1976c)"
+  },
+  {
+   "what": {
+    "value": "Observed trans/cis ratios of HCOOH and HC(O)SH toward Barnard 5, L483, G+0.693-0.027, and W51 e2",
+    "evidence": [
+     {
+      "loc": "Isomerization of formic acid, HCOOH, in the ISM",
+      "quote": "These sources range from cold cores such as B5 and L483 (cite: taquet17; agundez19), to massive hot cores (cite: rivilla2017b), and the quiescent giant molecular cloud, G+0.693-0.027, located in the Galactic center (cite: lucas21)."
+     }
+    ]
+   },
+   "citation": "(cite: taquet17); (cite: agundez19); (cite: rivilla2017b); (cite: lucas21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compute ab initio electronic structures and energies for cis, trans, and transition state geometries of HCOOH and HC(O)SH",
+   "method": "Unconstrained geometry optimization and frequency calculation at B2PLYP-D3(BJ)/aug-cc-pVTZ level, followed by single-point energy correction with CCSD(T)-F12 and anharmonic ZPE correction via second-order vibrational perturbative theory; orbital interactions studied via second-order perturbation theory and solvation test in water with SMD.",
+   "software": [
+    "Gaussian 16",
+    "ORCA",
+    "Cylview",
+    "Chimera"
+   ],
+   "key_parameters": [
+    "Basis sets: aug-cc-pVTZ for B2PLYP-D3(BJ); cc-pVTZ-F12-CABS, cc-pVTZ-F12, and aug-cc-pVQZ for CCSD(T)-F12"
+   ],
+   "assumptions": [
+    "Vacuum (gas-phase) conditions for ISM isomerization"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Calculate unimolecular cis-trans isomerization rate constants and equilibrium ratios across 10-400 K",
+   "method": "Canonical variational transition state theory (CVT) with multidimensional small curvature tunneling (SCT) approximation; minimum energy path (MEP) energies corrected with CCSD(T)-F12 using interpolated single-point energies (ISPE) algorithm.",
+   "software": [
+    "Pilgrim"
+   ],
+   "key_parameters": [
+    "Temperature range T = 10-400 K; ZPE scaling factors 0.948 for HCOOH and 0.949 for HC(O)SH"
+   ],
+   "assumptions": [
+    "High-frequency anharmonicities accounted for via constant ZPE scaling factor along reaction path"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify transitions and derive column densities, abundances, and trans/cis ratios of HCOOH and HC(O)SH toward G31.41+0.31",
+   "method": "Synthetic LTE spectrum generation and automated line fitting using SLIM and MADCUBA-AUTOFIT on the GUAPOS 3mm spectrum, accounting for line opacity and contamination from all previously modeled species in the survey.",
+   "software": [
+    "MADCUBA",
+    "SLIM",
+    "MADCUBA-AUTOFIT"
+   ],
+   "key_parameters": [
+    "Four LTE parameters: column density (N), excitation temperature (T_ex), peak radial velocity (v_LSR), and FWHM; for t-HCOOH, v_LSR fixed to 96.5 km s^-1; for c-HCOOH, t-HC(O)SH, and c-HC(O)SH, T_ex = 152 K, v_LSR = 96.5 km s^-1, and FWHM = 8.0 km s^-1 fixed to t-HCOOH values"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), justified by high volume density n(H2) ~ 10^8 cm^-3; H2 column density N_H2 = (1.0 +/- 0.2) x 10^25 cm^-2; distance 3.75 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Energy barrier (with anharmonic ZPE) relative to cis isomer for HC(O)SH",
+   "value": "7.94",
+   "uncertainty": "not stated",
+   "units": "kcal/mol",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Stationary points and stereoelectronic effects",
+     "quote": "The energy barrier (with inclusive anharmonic ZPE) relative to the cis isomer is 7.94 and 7.33 kcal/mol for HC(O)SH and HCOOH, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Energy barrier (with anharmonic ZPE) relative to cis isomer for HCOOH",
+   "value": "7.33",
+   "uncertainty": "not stated",
+   "units": "kcal/mol",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Stationary points and stereoelectronic effects",
+     "quote": "The energy barrier (with inclusive anharmonic ZPE) relative to the cis isomer is 7.94 and 7.33 kcal/mol for HC(O)SH and HCOOH, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Relative electronic energy between isomers of HC(O)SH",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "kcal/mol",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Stationary points and stereoelectronic effects",
+     "quote": "The relative electronic energy between the two isomers of HC(O)SH is 0.68 kcal/mol, which is notably smaller than that found for HCOOH (4.04 kcal/mol)."
+    }
+   ]
+  },
+  {
+   "quantity": "Relative electronic energy between isomers of HCOOH",
+   "value": "4.04",
+   "uncertainty": "not stated",
+   "units": "kcal/mol",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Stationary points and stereoelectronic effects",
+     "quote": "The relative electronic energy between the two isomers of HC(O)SH is 0.68 kcal/mol, which is notably smaller than that found for HCOOH (4.04 kcal/mol)."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted equilibrium ratio K1/K-1 for HCOOH at 10 K",
+   "value": "2.09E+88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinetic results of the isomerizations",
+     "quote": "This means that the ratio between the forward and backward rate constants is 2.09x10$^{88}$ for HCOOH and 1.17x10$^{14}$ for HC(O)SH at 10 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted equilibrium ratio K1/K-1 for HC(O)SH at 10 K",
+   "value": "1.17E+14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinetic results of the isomerizations",
+     "quote": "This means that the ratio between the forward and backward rate constants is 2.09x10$^{88}$ for HCOOH and 1.17x10$^{14}$ for HC(O)SH at 10 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted equilibrium ratio K1/K-1 for HC(O)SH at 150 K",
+   "value": "8.64E+00",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 150 | 3.20E+01 | 3.71E+00 | 8.64E+00 | 4.45E+03 | 5.60E-03 | 7.94E+05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted equilibrium ratio K1/K-1 for HCOOH at 150 K",
+   "value": "7.94E+05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 150 | 3.20E+01 | 3.71E+00 | 8.64E+00 | 4.45E+03 | 5.60E-03 | 7.94E+05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "t-HCOOH excitation temperature (T_ex) toward G31",
+   "value": "152",
+   "uncertainty": "45",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "The best-fit parameters obtained with MADCUBA are $T_{\\rm ex}$ = 152$\\pm$45 K, $FWHM$ = 8.0$\\pm$0.3 km s$^{-1}$, and $N$ = (1.4$\\pm$0.6)$\\times$10$^{17}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "t-HCOOH line FWHM toward G31",
+   "value": "8.0",
+   "uncertainty": "0.3",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "The best-fit parameters obtained with MADCUBA are $T_{\\rm ex}$ = 152$\\pm$45 K, $FWHM$ = 8.0$\\pm$0.3 km s$^{-1}$, and $N$ = (1.4$\\pm$0.6)$\\times$10$^{17}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "t-HCOOH column density (N) toward G31",
+   "value": "1.4E17",
+   "uncertainty": "0.6E17",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "The best-fit parameters obtained with MADCUBA are $T_{\\rm ex}$ = 152$\\pm$45 K, $FWHM$ = 8.0$\\pm$0.3 km s$^{-1}$, and $N$ = (1.4$\\pm$0.6)$\\times$10$^{17}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "t-HCOOH fractional abundance (X) toward G31",
+   "value": "1.4E-8",
+   "uncertainty": "0.7E-8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "This implies an abundance of $X$ = (1.4$\\pm$0.7)$\\times$10$^{-8}$ for the H$_2$ column density of $N_{\\rm H_{2}}$ = (1.0 $\\pm$ 0.2) $\\times$10$^{25}$ cm$^{-2}$ measured by (cite: mininni2020) at 3mm."
+    }
+   ]
+  },
+  {
+   "quantity": "c-HCOOH column density (N) upper limit toward G31",
+   "value": "<=1.6E15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "Finally, we obtained $N$ $\\le$1.6$\\times$10$^{15}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "c-HCOOH fractional abundance (X) upper limit toward G31",
+   "value": "<=1.6E-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "This column density translates into an upper limit to the molecular abundance of c-HCOOH of $X\\le$1.6$\\times$10$^{-10}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOH trans/cis abundance ratio toward G31",
+   "value": ">=90",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with observations from the GUAPOS spectral survey",
+     "quote": "The trans/cis ratio measured toward G31 is thus $\\ge$90."
+    }
+   ]
+  },
+  {
+   "quantity": "t-HC(O)SH column density (N) toward G31",
+   "value": "2.0E16",
+   "uncertainty": "0.5E16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+     "quote": "We fixed $T_{\\rm ex}$, v$_{\\rm LSR}$, and $FWHM$ to those inferred for t-HCOOH and we obtained a $N$ = (2.0$\\pm$0.5)$\\times$10$^{16}$ cm$^{-2}$ and an abundance of $X$ = (2.0$\\pm$0.6)$\\times$10$^{-9}$ for t-HC(O)SH"
+    }
+   ]
+  },
+  {
+   "quantity": "t-HC(O)SH fractional abundance (X) toward G31",
+   "value": "2.0E-9",
+   "uncertainty": "0.6E-9",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+     "quote": "We fixed $T_{\\rm ex}$, v$_{\\rm LSR}$, and $FWHM$ to those inferred for t-HCOOH and we obtained a $N$ = (2.0$\\pm$0.5)$\\times$10$^{16}$ cm$^{-2}$ and an abundance of $X$ = (2.0$\\pm$0.6)$\\times$10$^{-9}$ for t-HC(O)SH"
+    }
+   ]
+  },
+  {
+   "quantity": "c-HC(O)SH column density (N) toward G31",
+   "value": "5.4E15",
+   "uncertainty": "1.5E15",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+     "quote": "and a column density of $N$ = (5.4$\\pm$1.5)$\\times$10$^{15}$ cm$^{-2}$ and an abundance of $X$ = (5.4$\\pm$1.8)$\\times$10$^{-10}$ for c-HC(O)SH."
+    }
+   ]
+  },
+  {
+   "quantity": "c-HC(O)SH fractional abundance (X) toward G31",
+   "value": "5.4E-10",
+   "uncertainty": "1.8E-10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+     "quote": "and a column density of $N$ = (5.4$\\pm$1.5)$\\times$10$^{15}$ cm$^{-2}$ and an abundance of $X$ = (5.4$\\pm$1.8)$\\times$10$^{-10}$ for c-HC(O)SH."
+    }
+   ]
+  },
+  {
+   "quantity": "HC(O)SH trans/cis abundance ratio toward G31",
+   "value": "3.7",
+   "uncertainty": "1.5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Isomerization of thioformic acid, HC(O)SH, in the ISM",
+     "quote": "The resulting trans/cis ratio for HC(O)SH acid is 3.7$\\pm$1.5."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration pipeline details, imaging parameters (weighting, robust, cleaning, continuum subtraction method) — all deferred to Mininni et al. (2020) and Colzi et al. (2021)",
+  "Exact spatial aperture or pixel position used to extract the 1D GUAPOS spectrum of G31.41+0.31",
+  "Assumed source size / beam filling factor used in MADCUBA-SLIM LTE modeling",
+  "Complete background LTE model parameters of all blending species from Appendix E of Colzi et al. (2021)"
+ ],
+ "missing_for_reproduction": [
+  "The extracted 1D GUAPOS spectrum of G31.41+0.31 and the complete MADCUBA-SLIM background model of contaminating species from Colzi et al. (2021)",
+  "Exact source size assumed in MADCUBA-SLIM to convert brightness temperature to column density",
+  "Cartesian coordinates of the optimized stationary points for HC(O)SH (only HCOOH internal coordinates are tabulated in Appendix A)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Quantum chemical and kinetic methods, software versions, basis sets, scaling factors, and target transitions (Table 2) are thoroughly documented, and the ALMA project code is provided. However, reproducing the spectral fits requires the pre-reduced GUAPOS 1D spectrum and the multi-species background LTE model from companion papers (Mininni et al. 2020; Colzi et al. 2021).",
+ "rediscovery_reason": "The ALMA dataset (2017.1.00501.S) is public, the exact fitted transitions and frequencies are listed in Table 2, and the main observational and theoretical outputs are clear numeric values (column densities, T_ex, FWHM, rate constants, and trans/cis ratios).",
+ "source_card": "cards/2022A%26A...658A.150G/sonnet/card.md"
+}

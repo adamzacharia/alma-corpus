@@ -1,0 +1,436 @@
+{
+ "bibcode": "2022ApJ...925...39T",
+ "title": "The VLA/ALMA Nascent Disk And Multiplicity (VANDAM) Survey of Orion Protostars. V. A Characterization of Protostellar Multiplicity",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac36d2",
+ "arxiv_id": "2111.05801",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the multiplicity fractions, companion fractions, and companion separation distributions of protostars in the Orion and Perseus molecular clouds, and what do they imply for the formation and evolution of multiple systems?",
+ "alma_project_codes": [
+  "2015.1.00041.S"
+ ],
+ "data": {
+  "bands": "0.87 mm",
+  "arrays": "not stated",
+  "angular_resolution": "0.1'' (~40 au)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HOPS catalog of Orion protostars (classifications, L_bol, T_bol)",
+    "evidence": [
+     {
+      "loc": "The Orion Sample",
+      "quote": "The sample of Orion protostars is drawn from the HOPS Survey (cite: fischer2010; stutz2013; furlan2016)."
+     }
+    ]
+   },
+   "citation": "(cite: fischer2010; stutz2013; furlan2016)"
+  },
+  {
+   "what": {
+    "value": "Perseus protostar sample and catalog of positions",
+    "evidence": [
+     {
+      "loc": "The Perseus Sample",
+      "quote": "The sample of protostars in the Perseus molecular cloud was selected from (cite: enoch2009), but we also included additional protostars that were identified from the millimeter continuum (cite: looney2000) and Herschel observations of the region (cite: sadavoy2014)."
+     },
+     {
+      "loc": "Data Analysis",
+      "quote": "For the protostars in Perseus, we make use of the previously generated catalog from (cite: tobin2016a), which used similar methods to derive protostar positions with an earlier version of CASA."
+     }
+    ]
+   },
+   "citation": "(cite: enoch2009), (cite: looney2000), (cite: sadavoy2014), (cite: tobin2016a)"
+  },
+  {
+   "what": {
+    "value": "Catalog of probable YSOs in Orion and completeness corrections using X-ray catalogs",
+    "evidence": [
+     {
+      "loc": "Probability of a Detected Source being a Companion",
+      "quote": "For the protostars in Orion, we used the catalog of probable YSOs from (cite: megeath2012), and then for Perseus we used the YSO catalog of Perseus from the Spitzer Extended Solar Neighborhood Archive (SESNA) catalog (cite: pokhrel2020)."
+     },
+     {
+      "loc": "Probability of a Detected Source being a Companion",
+      "quote": "The YSO surface densities of Orion were corrected for completeness using X-ray catalogs when available (cite: megeath2016); the Perseus catalog did not undergo such a correction."
+     }
+    ]
+   },
+   "citation": "(cite: megeath2012), (cite: megeath2016)"
+  },
+  {
+   "what": {
+    "value": "SESNA YSO catalog of Perseus",
+    "evidence": [
+     {
+      "loc": "Probability of a Detected Source being a Companion",
+      "quote": "For the protostars in Orion, we used the catalog of probable YSOs from (cite: megeath2012), and then for Perseus we used the YSO catalog of Perseus from the Spitzer Extended Solar Neighborhood Archive (SESNA) catalog (cite: pokhrel2020)."
+     }
+    ]
+   },
+   "citation": "(cite: pokhrel2020)"
+  },
+  {
+   "what": {
+    "value": "Separation distribution and multiplicity data for field solar-type stars",
+    "evidence": [
+     {
+      "loc": "Comparison Field Solar-type Multiples",
+      "quote": "We make use of the observed separation distribution from 24 to 10$^4$ au from (cite: raghavan2010), sampling the same range of separations for which we have detections."
+     },
+     {
+      "loc": "Overall Multiplicity Statistics",
+      "quote": "Using the data from (cite: raghavan2010), we calculate the field star MFs and CFs for system separations of 20 to 10$^4$ au (0.28$\\pm$0.02 and 0.32$\\pm$0.02, respectively), 20 to 10$^3$ au (0.22$\\pm$0.02 and 0.23$\\pm$0.02), and 20 to 500 au (0.19$\\pm$0.02 and 0.20$\\pm$0.02)."
+     }
+    ]
+   },
+   "citation": "(cite: raghavan2010)"
+  },
+  {
+   "what": {
+    "value": "HST 1.6 micron companion detections toward HOPS protostars",
+    "evidence": [
+     {
+      "loc": "Near-infrared vs. ALMA/VLA Detections",
+      "quote": "There were a total of 274 HOPS protostars observed by both ALMA/VLA and HST at 1.6 $\\mu$m (cite: kounkel2016)."
+     }
+    ]
+   },
+   "citation": "(cite: kounkel2016; habel2021)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1.3 mm continuum image of NGC 2024 FIR-3",
+    "evidence": [
+     {
+      "loc": "Close Multiples Not Detected By Both ALMA and VLA",
+      "quote": "Given the association with a bonafide protostar system, we include this detection in our multiplicity statistics with a separation of 1.46$''$ ($\\sim$586 au) and show the ALMA 1.3 mm image from (cite: vanterwisga2020) and the VLA images in Figure 5."
+     }
+    ]
+   },
+   "citation": "(cite: vanterwisga2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure source positions, flux densities, and sizes from continuum images",
+   "method": "Fit elliptical Gaussians to detected sources in ALMA and VLA continuum images and merge the ALMA and VLA catalogs",
+   "software": [
+    "CASA 4.7.2 (imfit)"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate local YSO surface density around each protostar",
+   "method": "Compute local YSO surface density using the 11th nearest neighbor distance in infrared YSO catalogs (corrected with X-ray catalogs in Orion), adding ALMA/VLA detections if no catalog source is within 2.5''",
+   "software": [],
+   "key_parameters": [
+    "11th nearest neighbor; 2.5'' matching radius; 30 pc^-2 boundary between high and low YSO density"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Associate multiple systems hierarchically",
+   "method": "Iterative inside-out nearest-neighbor search in 100 logarithmically spaced radial bins from 15 au to 10^4 au, replacing paired sources with their unweighted geometric midpoint",
+   "software": [],
+   "key_parameters": [
+    "Search radius: 15 au to 10^4 au in 100 logarithmically spaced radial bins"
+   ],
+   "assumptions": [
+    "Spatial association in projected separation alone assigns multiplicity; unweighted geometric midpoint represents paired position"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate companion probabilities and multiplicity/companion fractions (MF and CF)",
+   "method": "Compute Bayesian probability P(companion|detection) using Poisson expectation of unassociated YSOs, iteratively updating P(companion) with CF until convergence; round sum of component probabilities to assign system order and compute MF and CF with Wilson score or Poisson uncertainties",
+   "software": [],
+   "key_parameters": [
+    "P(detection|companion) = 0.75; probability cutoff = 0.001; 3 iterations for convergence (< 0.005 change); P(companion) = 0.14 (<500 au), 0.19 (<10^3 au), 0.46 (<10^4 au); z = 1.0 for Wilson interval; Poisson uncertainty for CF > 0.5"
+   ],
+   "assumptions": [
+    "Survey sensitivity of ~1 M_earth detects 75% of disk-bearing YSOs and protostellar companions"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Construct and statistically compare companion separation distributions and luminosity distributions",
+   "method": "Generate separation histograms (bin size 0.25 in log10(au)) and probability-weighted CDFs; randomly sample CDFs 1000 times according to companion probabilities and perform one-sided or two-sided Kolmogorov-Smirnov (KS) tests",
+   "software": [
+    "scipy"
+   ],
+   "key_parameters": [
+    "Histogram bin size = 0.25 dex; 1000 Monte Carlo CDF realizations; significance threshold p <= 0.01"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Orion overall Multiplicity Fraction (MF, 20 to 10^4 au, no unclassified)",
+   "value": "0.30",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The overall multiplicity fraction (MF) and companion fraction (CF) for the Orion protostars are 0.30$\\pm$0.03 and 0.44$\\pm$0.03, respectively, considering separations from 20 to 10$^4$ au."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "Orion All - no Unclassified | 20 - 10000 | 195:68:9:2:4:1:0:0:0:1:0:0 | 0.30$_{-0.03}^{+0.03}$ | 0.44$_{-0.03}^{+0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Orion overall Companion Fraction (CF, 20 to 10^4 au, no unclassified)",
+   "value": "0.44",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The overall multiplicity fraction (MF) and companion fraction (CF) for the Orion protostars are 0.30$\\pm$0.03 and 0.44$\\pm$0.03, respectively, considering separations from 20 to 10$^4$ au."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "Orion All - no Unclassified | 20 - 10000 | 195:68:9:2:4:1:0:0:0:1:0:0 | 0.30$_{-0.03}^{+0.03}$ | 0.44$_{-0.03}^{+0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Perseus overall Multiplicity Fraction (MF, 20 to 10^4 au, no unclassified)",
+   "value": "0.38",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Overall Multiplicity Statistics",
+     "quote": "The Orion and Perseus samples on scales from 20 au to 10$^4$ au have MFs of 0.30$\\pm$0.03 and 0.38$\\pm$0.07, respectively."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "Perseus All - no Unclassified | 20 - 10000 | 37:16:4:2:1:0:0:0:0:0:0:0 | 0.38$_{-0.07}^{+0.07}$ | 0.57$_{-0.12}^{+0.12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Perseus overall Companion Fraction (CF, 20 to 10^4 au, no unclassified)",
+   "value": "0.57",
+   "uncertainty": "0.07 (text) / 0.12 (Table 5)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Overall Multiplicity Statistics",
+     "quote": "The respective CFs are then 0.44$\\pm$0.03 and 0.57$\\pm$0.07."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "Perseus All - no Unclassified | 20 - 10000 | 37:16:4:2:1:0:0:0:0:0:0:0 | 0.38$_{-0.07}^{+0.07}$ | 0.57$_{-0.12}^{+0.12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined Orion+Perseus Multiplicity Fraction (MF, 20 to 10^4 au, no unclassified)",
+   "value": "0.32",
+   "uncertainty": "0.02 (text) / 0.03 (Table 6)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The combined MF and CF within the same separation range are 0.32$\\pm$0.02 and 0.46$\\pm$0.03, respectively."
+    },
+    {
+     "loc": "Table 6",
+     "quote": "Combined All - no Unclassified | 20 - 10000 | 232:84:13:4:5:1:0:0:0:1:0:0 | 0.32$_{-0.03}^{+0.03}$ | 0.46$_{-0.03}^{+0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined Orion+Perseus Companion Fraction (CF, 20 to 10^4 au, no unclassified)",
+   "value": "0.46",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The combined MF and CF within the same separation range are 0.32$\\pm$0.02 and 0.46$\\pm$0.03, respectively."
+    },
+    {
+     "loc": "Table 6",
+     "quote": "Combined All - no Unclassified | 20 - 10000 | 232:84:13:4:5:1:0:0:0:1:0:0 | 0.32$_{-0.03}^{+0.03}$ | 0.46$_{-0.03}^{+0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Orion Multiplicity Fraction (MF, 20 to 10^3 au, no unclassified)",
+   "value": "0.17",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Overall Multiplicity Statistics",
+     "quote": "For the separation range from 20 au to 10$^3$ au, the MFs drop to 0.17$\\pm$0.02 and 0.26$^{+0.06}_{-0.05}$, and the CFs drop to 0.19$\\pm$0.02 and 0.28$\\pm$0.06, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Orion Companion Fraction (CF, 20 to 10^3 au, no unclassified)",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Overall Multiplicity Statistics",
+     "quote": "For the separation range from 20 au to 10$^3$ au, the MFs drop to 0.17$\\pm$0.02 and 0.26$^{+0.06}_{-0.05}$, and the CFs drop to 0.19$\\pm$0.02 and 0.28$\\pm$0.06, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Perseus Multiplicity Fraction (MF, 20 to 10^3 au, no unclassified)",
+   "value": "0.26",
+   "uncertainty": "+0.06/-0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Overall Multiplicity Statistics",
+     "quote": "For the separation range from 20 au to 10$^3$ au, the MFs drop to 0.17$\\pm$0.02 and 0.26$^{+0.06}_{-0.05}$, and the CFs drop to 0.19$\\pm$0.02 and 0.28$\\pm$0.06, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Perseus Companion Fraction (CF, 20 to 10^3 au, no unclassified)",
+   "value": "0.28",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Overall Multiplicity Statistics",
+     "quote": "For the separation range from 20 au to 10$^3$ au, the MFs drop to 0.17$\\pm$0.02 and 0.26$^{+0.06}_{-0.05}$, and the CFs drop to 0.19$\\pm$0.02 and 0.28$\\pm$0.06, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Orion Class 0 - (Class 0, Class I, Flat) MF and CF (20 to 10^4 au)",
+   "value": "0.38 (MF), 0.62 (CF)",
+   "uncertainty": "+0.06/-0.05 (MF), 0.10 (CF)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Orion Class 0 - (Class 0, Class I, Flat) | 20 - 10000 | 58:27:5:1:1:1:0:0:0:1:0:0 | 0.38$_{-0.05}^{+0.06}$ | 0.62$_{-0.10}^{+0.10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Orion Class I - (Class 0, Class I, Flat) MF and CF (20 to 10^4 au)",
+   "value": "0.23 (MF), 0.32 (CF)",
+   "uncertainty": "+0.05/-0.04 (MF), 0.05 (CF)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Orion Class I - (Class 0, Class I, Flat) | 20 - 10000 | 78:18:3:0:2:0:0:0:0:0:0:0 | 0.23$_{-0.04}^{+0.05}$ | 0.32$_{-0.05}^{+0.05}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Orion Flat - (Class 0, Class I, Flat) MF and CF (20 to 10^4 au)",
+   "value": "0.31 (MF), 0.38 (CF)",
+   "uncertainty": "+0.06/-0.05 (MF), 0.06 (CF)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Orion Flat - (Class 0, Class I, Flat) | 20 - 10000 | 59:23:1:1:1:0:0:0:0:0:0:0 | 0.31$_{-0.05}^{+0.06}$ | 0.38$_{-0.06}^{+0.06}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median bolometric luminosity of single vs multiple systems in Orion",
+   "value": "0.96 (singles), 3.27 (multiples)",
+   "uncertainty": "not stated",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Bolometric Luminosities and Temperatures",
+     "quote": "The median luminosities for singles and multiples in Orion are 0.96 and 3.27 L$_{\\ensuremath{\\odot}}$, respectively, and for Perseus they are 0.97 and 3.06 L$_{\\ensuremath{\\odot}}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median bolometric luminosity of single vs multiple systems in Perseus",
+   "value": "0.97 (singles), 3.06 (multiples)",
+   "uncertainty": "not stated",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Bolometric Luminosities and Temperatures",
+     "quote": "The median luminosities for singles and multiples in Orion are 0.96 and 3.27 L$_{\\ensuremath{\\odot}}$, respectively, and for Perseus they are 0.97 and 3.06 L$_{\\ensuremath{\\odot}}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Submillimeter/centimeter companion detection incompleteness (100 to 10^3 au)",
+   "value": "20 (all classes), 29 (Class I and Flat Spectrum)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Near-infrared vs. ALMA/VLA Detections",
+     "quote": "Between $10^2$ and $10^3$ au, we estimate a submillimeter/centimeter incompleteness of $\\sim$20% (as given by 1-[Number of detected companions/Total companions]; Total companions is the millimeter plus infrared companions). Considering only Class I and Flat Spectrum protostars, the incompleteness rises to 29%."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of non-coeval multiple systems in Orion",
+   "value": "25 (total), 42 (Class 0), 22 (Class I), 4 (Flat Spectrum)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Coevality of Multiples",
+     "quote": "Of the multiple systems identified, 42% of Class 0 multiple systems have a non-coeval member compared to 22% of Class I systems, and just 4% of Flat Spectrum systems have a non-coeval member. In total, the number of systems with a non-coveal member is 25%, which is comparable to results from Perseus."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA spectral window setup, continuum bandwidth, array configurations, baselines, sensitivity, and calibration/imaging parameters (all deferred to Paper I, Tobin et al. 2020a)",
+  "Exact tie-breaking rule in the inside-out neighbor pairing algorithm if two pairs fall into the same logarithmic radial bin"
+ ],
+ "missing_for_reproduction": [
+  "Custom scripts implementing the inside-out hierarchical pairing algorithm, Bayesian probability iteration, system splitting logic for low-probability components, and Monte Carlo KS testing.",
+  "Full machine-readable Tables 1 and 2 (only 5-row stubs are printed in the article text, though full tables are available in the journal supplement/Dataverse)."
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "The paper provides a remarkably detailed, step-by-step mathematical and algorithmic description of the catalog pairing, Bayesian contamination correction, and statistical testing in Section 2.4 and Appendix A, and hosts reduced continuum images on Harvard Dataverse as well as full machine-readable input catalogs. Minor deductions are due to custom analysis scripts not being released and calibration/imaging details being deferred to Paper I.",
+ "rediscovery_reason": "All reduced continuum images are public on Harvard Dataverse, the complete input source catalogs (positions, classes, L_bol, T_bol, YSO surface densities, distances) are published as machine-readable tables, and the pairing/probability recipe is fully specified with extensive numeric answer keys (Tables 3-9).",
+ "source_card": "cards/2022ApJ...925...39T/sonnet/card.md"
+}

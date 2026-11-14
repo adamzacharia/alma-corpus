@@ -1,0 +1,959 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...849..101T",
+  "title": "A Detached Protostellar Disk around a ∼0.2 M <SUB>☉</SUB> Protostar in a Possible Site of a Multiple Star Formation in a Dynamical Environment in Taurus",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Tokuda, Kazuki",
+  "n_authors": 12,
+  "arxiv_id": "1709.07113",
+  "doi": "10.3847/1538-4357/aa8e9e",
+  "heldout": true,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00340.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report ALMA observations in 0.87 mm continuum and $^{12}$CO ($J$ = 3–2) toward a very low-luminosity ($<$0.1 $L_{\\odot}$) protostar"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "MC27/L1521F (MMS-1)",
+     "coordinates": {
+      "value": "RA 4h28m38.96s, Dec +26d51m35.0s (J2000, field center)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "toward MC27/L1521F with a center position of ($\\alpha_{J2000.0}$, $\\delta_{J2000.0}$) = (4$^{\\rm h}$28$^{\\rm m}$38.96s, +26$^\\circ$51$''$35.0$''$)"
+       },
+       {
+        "loc": "Observations",
+        "quote": "at a distance of Taurus (cite: Elias78)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "Taurus distance (value not given; 0.18'' = 25 au)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "toward MC27/L1521F with a center position of ($\\alpha_{J2000.0}$, $\\delta_{J2000.0}$) = (4$^{\\rm h}$28$^{\\rm m}$38.96s, +26$^\\circ$51$''$35.0$''$)"
+       },
+       {
+        "loc": "Observations",
+        "quote": "at a distance of Taurus (cite: Elias78)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Elias78",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "toward MC27/L1521F with a center position of ($\\alpha_{J2000.0}$, $\\delta_{J2000.0}$) = (4$^{\\rm h}$28$^{\\rm m}$38.96s, +26$^\\circ$51$''$35.0$''$)"
+       },
+       {
+        "loc": "Observations",
+        "quote": "at a distance of Taurus (cite: Elias78)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Does the very low-luminosity protostar MMS-1 in MC27/L1521F host a Keplerian disk, what are the protostellar and disk masses, and how can its low luminosity be explained?",
+    "evidence": [
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "we estimate the dynamical mass of the central protostar, $M_{*}$, and the physical properties of the disk by comparing the observed $^{12}$CO spatial/velocity distributions with those of simulated models."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00340.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/ JAO.ALMA#2015.1.00340.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (0.87 mm), Cycle 3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We carried out ALMA Cycle 3 Band 7 (0.87 mm) continuum and molecular line observations"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spectral windows, 1875 MHz each; two FDM with 0.9765 MHz (1920 channels, ~0.85 km/s), rest TDM with 128 channels",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Two of them have a frequency resolution of 0.9765 MHz (1920 channels), corresponding to the velocity resolution of $\\sim$0.85 km s$^{-1}$ with the frequency domain mode (FDM)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$^{12}$CO ($J$ = 3–2), H$^{13}$CO$^{+}$ ($J$ = 4–3), and C$^{17}$O ($J$ = 3–2)"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "J=4-3",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$^{12}$CO ($J$ = 3–2), H$^{13}$CO$^{+}$ ($J$ = 4–3), and C$^{17}$O ($J$ = 3–2)"
+      }
+     ]
+    },
+    {
+     "species": "C17O",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$^{12}$CO ($J$ = 3–2), H$^{13}$CO$^{+}$ ($J$ = 4–3), and C$^{17}$O ($J$ = 3–2)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "aggregate bandwidth 7.5 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The aggregate bandwidth is thus 7.5 GHz."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ALMA 12 m array",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with the ALMA 12 m array"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C40-6",
+    "evidence": [
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "with the C40-6 configuration, which is the same as in our present observations"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "UV range 15-2800 kλ",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The UV range is 15-2800 $k\\lambda$."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.18'' x 0.1'' (25 au x 14 au)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The synthesized beam is $\\sim$0.18$''$ $\\times$ 0.1$''$ = 25 au $\\times$ 14 au"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1σ rms ~1.6 mJy/beam (12CO, 0.85 km/s) and ~35 μJy/beam (continuum)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "$\\sim$1.6 mJy beam$^{-1}$ at a velocity resolution of $\\sim$0.85 km s$^{-1}$ and $\\sim$35 $\\mu$Jy beam$^{-1}$, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "September 2016",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out in September 2016."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer",
+     "provided": {
+      "value": "Scattered-light inclination and luminosity constraints (from literature)",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "inclination angle = 70$\\ensuremath{^\\circ}$ derived from the scattered light seen in the $Spitzer$ (cite: Terebey09)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Inclination 70 deg from Spitzer scattered light",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "inclination angle = 70$\\ensuremath{^\\circ}$ derived from the scattered light seen in the $Spitzer$ (cite: Terebey09)"
+       }
+      ]
+     },
+     "citation": "(cite: Terebey09)"
+    },
+    {
+     "what": {
+      "value": "Systemic velocity of dense core from single-dish",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "consistent with the systemic velocity of the dense core observed with the single-dish observations (cite: Onishi99)"
+       }
+      ]
+     },
+     "citation": "(cite: Onishi99)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity kappa_345GHz = 1.2e-2 cm2/g",
+      "evidence": [
+       {
+        "loc": "Gas/dust distributions toward MMS-1",
+        "quote": "$\\kappa_{345 GHz}$ = 1.2 $\\times$ 10$^{-2}$ cm$^2$ g$^{-1}$ ((cite: Hildebrand83; Oss94; Kauffmann08); Paper I)"
+       }
+      ]
+     },
+     "citation": "(cite: Hildebrand83; Oss94; Kauffmann08)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Keplerian disk models (T∝r^-0.5, density∝r^-1, LTE) radiative transfer, simulated with simobserve/simanalyze in C40-6",
+     "evidence": [
+      {
+       "loc": "Physical quantities of disk of MMS-1",
+       "quote": "we simulated the ALMA observations in $^{12}$CO ($J$ = 3–2) and 0.87 mm continuum with the C40-6 configuration"
+      }
+     ]
+    },
+    {
+     "value": "Cold-accretion protostellar evolution calculation (Hosokawa code), 1e-5 Msun/yr to 0.2 Msun, initial radius 0.65 Rsun",
+     "evidence": [
+      {
+       "loc": "6.2 cold accretion",
+       "quote": "We used a fixed accretion rate of 10$^{-5}$ $M_{\\odot}$ yr$^{-1}$ until the star has reached the mass of 0.2 $M_{\\odot}$"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were processed with the CASA (Common Astronomy Software Application) package (cite: McMullin07) version 4.7.2."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0510+1800 (gain/flux); J0433+2905 phase",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The calibrations of the complex gains and the flux were carried out through observations of a quasar, J0510+1800, and the phase calibrations were performed using J0433+2905."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We used the briggs weighting with the robust parameter of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~0.18'' x 0.1''",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The synthesized beam is $\\sim$0.18$''$ $\\times$ 0.1$''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~1.6 mJy/beam (CO, 0.85 km/s); ~35 μJy/beam (continuum)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$\\sim$1.6 mJy beam$^{-1}$ at a velocity resolution of $\\sim$0.85 km s$^{-1}$ and $\\sim$35 $\\mu$Jy beam$^{-1}$, respectively."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Dust opacity and gas-to-dust ratio of 100 for mass",
+      "evidence": [
+       {
+        "loc": "Gas/dust distributions toward MMS-1",
+        "quote": "which means that gas-to-dust ratio is assumed to be 100"
+       }
+      ]
+     },
+     "from_reference": "Paper I (cite: Tokuda14)"
+    },
+    {
+     "what": {
+      "value": "LTE radiative transfer for Keplerian disk model",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "assuming the local thermal equilibrium (cite: Ohashi14)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Ohashi14)"
+    },
+    {
+     "what": {
+      "value": "Peak-position vs velocity analysis of channel maps",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "Similar data analysis was carried out in (cite: Tobin12)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Tobin12)"
+    },
+    {
+     "what": {
+      "value": "Stellar evolution code for cold accretion",
+      "evidence": [
+       {
+        "loc": "6.2 cold accretion",
+        "quote": "by using the numerical code described by (cite: Hosokawa09) and (cite: Hosokawa10; Hosokawa11)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hosokawa09; Hosokawa10; Hosokawa11)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image size, cell size, deconvolver, masking and clean threshold",
+    "Continuum subtraction and line-free channels",
+    "Self-calibration, flux scale uncertainty and pipeline vs manual calibration",
+    "Number of ALMA execution blocks and time on source",
+    "Adopted Taurus distance value",
+    "Model grid ranges, fitting criterion (fit by eye?), and model disk geometry/scale height details",
+    "Primary beam correction details",
+    "Initial entropy/model setup of the cold accretion calculation"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure continuum size, flux and mass of MMS-1",
+    "method": {
+     "value": "Image-plane deconvolution of source using beam PSF; mass from optically thin dust emission",
+     "evidence": [
+      {
+       "loc": "Gas/dust distributions toward MMS-1",
+       "quote": "We deconvolved the source in the image plane by using the point spread function (PSF) of the synthesized beam."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "optically thin, dust T = 100 K, kappa_345GHz = 1.2e-2 cm2/g per gas+dust mass, gas-to-dust 100",
+      "evidence": [
+       {
+        "loc": "Gas/dust distributions toward MMS-1",
+        "quote": "with the assumptions of the optically thin emission, the uniform dust temperature of 100 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit Keplerian disk model to 12CO kinematics",
+    "method": {
+     "value": "Compare 12CO peak positions per channel (2D Gaussian fits) vs projected distance with synthetic ALMA observations of Keplerian models; adjust M*, Rdisk, T1au, then Mdisk from continuum",
+     "evidence": [
+      {
+       "loc": "Physical quantities of disk of MMS-1",
+       "quote": "The peak positions of the $^{12}$CO ($J$ = 3–2) in each channel (Figure [2](#fig:chanmap)) with both the ALMA observations and the synthetic observations of Keplerian models are derived by 2D Gaussian fitting."
+      }
+     ]
+    },
+    "software": [
+     "CASA simobserve",
+     "CASA simanalyze"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fixed Vsys = 6.75 km/s, i = 70 deg, PA = -17 deg; initial Mdisk 8e-5 Msun, T1au 200 K",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "We initially assumed $M_{\\rm disk}$ of 8 $\\times$ 10$^{-5}$ $M_{\\odot}$ and $T_{\\rm 1au}$ of 200 K for the simulation"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Keplerian rotation; T∝r^-0.5, density∝r^-1; LTE; symmetric disk only, no envelope",
+      "evidence": [
+       {
+        "loc": "Physical quantities of disk of MMS-1",
+        "quote": "The temperature and density profiles of the simulated models are assumed to be $\\propto$ $r^{-0.5}$ and $\\propto$ $r^{-1}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Manual tuning of parameters to match high-velocity part",
+     "evidence": [
+      {
+       "loc": "Physical quantities of disk of MMS-1",
+       "quote": "We tuned the parameters to reproduce the $^{12}$CO profile at the high-velocity parts"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with channel maps and P-V diagram; models with M*=0.13, 0.23 Msun plotted for comparison",
+     "evidence": [
+      {
+       "loc": "Physical quantities of disk of MMS-1",
+       "quote": "Our observation and model agree reasonably well (see also the channel maps in Figure [2](#fig:chanmap) and the P-V diagram in Figure [4](#fig:PV))."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Test cold-accretion evolution for low luminosity",
+    "method": {
+     "value": "Protostellar evolution calculation with accretion at 1e-5 Msun/yr to 0.2 Msun then stopped; vary initial radius",
+     "evidence": [
+      {
+       "loc": "6.2 cold accretion",
+       "quote": "Our calculation starting with a 0.01 $M_{\\odot}$ star with the initial radius of 0.65 $R_{\\odot}$ reproduces the observed luminosity"
+      }
+     ]
+    },
+    "software": [
+     "Hosokawa et al. stellar evolution code"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "cold accretion (very low entropy gas)",
+      "evidence": [
+       {
+        "loc": "6.2 cold accretion",
+        "quote": "The stellar luminosity can be very low even just after the accretion ceases when the accreting gas provides very low entropy"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with observed luminosity ~0.07 Lsun",
+     "evidence": [
+      {
+       "loc": "6.2 cold accretion",
+       "quote": "reproduces the observed luminosity ($\\sim$0.07 $L_{\\odot}$) in $<$10$^5$ years after we stop the mass accretion"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Data processing, imaging, simobserve/simanalyze simulations",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were processed with the CASA (Common Astronomy Software Application) package (cite: McMullin07) version 4.7.2."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Deconvolved size of MMS-1",
+    "value": "91.1 x 55.8 mas (12.9 x 7.8 au)",
+    "uncertainty": "±10.1, ±4.2 mas (±1.4, ±0.6 au)",
+    "units": "mas / au",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Gas/dust distributions toward MMS-1",
+      "quote": "The deconvolved size of MMS-1 is (91.1$\\pm$10.1 mas)$\\times$(55.8$\\pm$4.2 mas), corresponding to (12.9$\\pm$1.4 au)$\\times$(7.8$\\pm$0.6 au)."
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum peak and total flux",
+    "value": "2.8 mJy/beam; 3.6 mJy",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Gas/dust distributions toward MMS-1",
+      "quote": "The peak flux and the total flux are 2.8 mJy beam$^{-1}$ and 3.6 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass (total) from continuum",
+    "value": "8.3e-5",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Gas/dust distributions toward MMS-1",
+      "quote": "the peak H$_2$ column density and the total mass of 3.1 $\\times$ 10$^{23}$ cm$^{-2}$ and 8.3 $\\times$ 10$^{-5}$ $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak H2 column density",
+    "value": "3.1e23",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Gas/dust distributions toward MMS-1",
+      "quote": "3.1 $\\times$ 10$^{23}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central stellar mass",
+    "value": "0.18",
+    "uncertainty": "±0.05",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "$M_{*}$ = 0.18 $M_{\\odot}$, $R_{\\rm disk}$ = 9 AU, $M_{\\rm disk}$ = 8 $\\times$ 10$^{-5}$ $M_{\\odot}$ and $T_{\\rm 1au}$ = 180 K"
+     },
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "The uncertainty of the $M_{*}$ in this analysis is roughly $\\pm$0.05 $M_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Disk radius",
+    "value": "9",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "$R_{\\rm disk}$ = 9 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk mass",
+    "value": "8e-5",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "$M_{\\rm disk}$ = 8 $\\times$ 10$^{-5}$ $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Temperature at 1 au",
+    "value": "180",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Physical quantities of disk of MMS-1",
+      "quote": "$T_{\\rm 1au}$ = 180 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle of CO emission peaks",
+    "value": "-17",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Gas/dust distributions toward MMS-1",
+      "quote": "A position angle of the line passing through the emission peaks in each velocity channel is $-$17$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass accretion rate upper limit",
+    "value": "<2e-8",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "6.1 detached disk",
+      "quote": "the mass accretion rate is estimated to be quite low as $<$ 2 $\\times$ 10$^{-8}$ $M_{\\odot}$ yr$^{-1}$ with the assumption of a stellar radius of 1.5 $R_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Initial stellar radius for cold accretion reproducing luminosity",
+    "value": "0.65",
+    "uncertainty": "not stated",
+    "units": "Rsun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6.2 cold accretion",
+      "quote": "initial radius of 0.65 $R_{\\odot}$ reproduces the observed luminosity"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "MMS-1 disk appears detached from the surrounding dense gas: H13CO+ and C17O not detected",
+    "evidence": [
+     {
+      "loc": "Gas/dust distributions toward MMS-1",
+      "quote": "we cannot detect high-density tracers, H$^{13}$CO$^{+}$ ($J$ = 3–2) and C$^{17}$O ($J$ = 3–2), toward MMS-1"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does MMS-1 host a rotating Keplerian disk and what is the stellar mass?",
+    "experiment": "12CO(3-2) 0.18'' channel maps and model fitting with simulated Keplerian disks",
+    "result": "M*=0.18±0.05 Msun, Rdisk=9 au, Mdisk=8e-5 Msun",
+    "finding": "A small rotating disk around a ~0.2 Msun protostar",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "there is a rotating disk with a size scale of $\\sim$10 AU, a disk mass of $\\sim$10$^{-4}$ $M_{\\odot}$ and a central stellar mass of $\\sim$0.2 $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the disk connected to the dense envelope?",
+    "experiment": "Continuum and dense-gas tracer observations",
+    "result": "No extended envelope, H13CO+ and C17O not detected",
+    "finding": "Disk seems detached from surrounding gas",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The observed disk seems to be detached from the surrounding dense gas"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can the low luminosity be explained by standard PMS tracks or cold accretion?",
+    "experiment": "Evolution calculations",
+    "result": "Standard tracks fail; cold accretion with initial radius 0.65 Rsun works",
+    "finding": "Cold accretion with extremely small initial radius required",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we cannot explain the observed low luminosity with the standard pre-main-sequence evolutionary track unless we assume cold accretion"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Inside-out collapse with higher accretion rate (1e-5) cannot reach breaking radius in time",
+     "evidence": [
+      {
+       "loc": "6.1 detached disk",
+       "quote": "the expansion wave cannot reach the slope breaking radius of 3000 au."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Disk not spatially resolved; only the disk component modeled, not the surrounding core",
+     "evidence": [
+      {
+       "loc": "Physical quantities of disk of MMS-1",
+       "quote": "since the present ALMA observations do not have a sufficient resolution to spatially resolve the disk structure"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Free parameters tuned by eye without formal fit or uncertainties except M*",
+    "Inclination and PA fixed; disk mass depends on assumed 100 K dust temperature and opacity",
+    "Disk unresolved so the Keplerian interpretation is degenerate with beam dilution and envelope contamination",
+    "Luminosity uncertain, cold accretion conclusion model dependent"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given in acknowledgments",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/ JAO.ALMA#2015.1.00340.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Model grid and fit procedure details",
+    "Imaging parameters beyond robust",
+    "Stellar evolution code and settings"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB raw",
+   "score_inferred": 4,
+   "score_reason": "Data public and key settings partly given, but imaging and model-fitting details are sparse and fitting is manual.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe is incomplete (manual model tuning, missing imaging parameters)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Ohashi14)",
+     "why": "LTE radiative transfer disk model"
+    },
+    {
+     "citation": "(cite: Tobin12)",
+     "why": "peak position vs velocity analysis"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Tokuda14) Paper I",
+     "why": "Earlier ALMA Cycle 0/1 observations of same target"
+    },
+    {
+     "citation": "(cite: Tokuda16) Paper II",
+     "why": "Earlier ALMA observations of same target"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-fbeeccc88a5aee95e945362879cff772",
+  "batch_id": "msgbatch_01Wqx8zKsXeudsaRDPY1S9JC",
+  "run": "pilot",
+  "collected_at": "2026-10-27T23:21:20",
+  "usage": {
+   "input_tokens": 13358,
+   "output_tokens": 8979,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.05886,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 66,
+  "quotes_ok": 66,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 43,
+   "rate": 0.614
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,23 @@
+# Reconciliation: source-extraction-counts
+- SR-01 | FIXED | Step 7 now says the ALESS SED converts faint 1.2/1.3 mm counts to 870 um with S870 = 2.4 S1.2mm and S870 = 3.1 S1.3mm (pack line 519, step 6 of 2015ApJ...807..128S).
+- SR-02 | FIXED | Pitfall now says "unresolved" (pack line 316/1024); the agreement-within-errors claim is restricted to 2016ApJ...833...68A, and 2020A&A...643A..53F is described as a flux-boosting bias check.
+- SR-03 | FIXED | Gehrels count errors now cite only 2015A&A...584A..78C; 2025ApJS..278...45F is labelled as using Gehrels errors for its IRLF (pack step 8).
+- SR-04 | FIXED | Natural plus tapered thresholds now cite only 2020ApJ...897...91G and 2025ApJS..278...45F; 2018A&A...620A.152F (one 0.60'' mosaic) removed.
+- SR-05 | FIXED | SEAC 5/3 sigma relabelled as an ATCA, Galactic, non-ALMA methodological example in SKILL.md and parameters.md (pack line 805-810).
+- SR-06 | FIXED | parameters.md: completeness flux range for 2020ApJ...897...91G marked not stated; 0.03-2 mJy kept only under the P(D) fit row; SKILL step 4 says the same.
+- SR-07 | FIXED | parameters.md injection table split into sources per realization / realizations / total; SKILL table now has separate "Total injected sources" (100 to 20,000; 30,000 per flux value for 2018A&A...620A.152F) and "Simulated maps / realizations" rows, recounted from the pack lines.
+- SR-08 | FIXED | Software row now uses the aggregate's exact labels and counts: casa 11, casa imfit 4, casa simobserve 2, casa uvmodelfit 2, tclean 1, casa tclean 1.
+- SR-09 | FIXED | Split into per-source fidelity (0.5) and catalog purity (>= 0.8, > 0.97, 98% at S/N >= 4.3 for 2018ApJ...860..161S), keeping the inequalities.
+- SR-10 | FIXED | Step 6 now gives two separate weight forms: (1 - f_c)/(C A_geom) or P/(C A), versus (1 - f_c)/A_survey with A_survey = sum C_i A_i (2015A&A...584A..78C), with an explicit "do not divide by C twice".
+- SR-11 | FIXED | Step 6 defines dN/dS (mJy^-1 deg^-2, divide by Delta S), dN/dlog10S (deg^-2 dex^-1, divide by Delta logS, as 2014ApJ...795....5O does), and N(>S) (no division).
+- SR-12 | FIXED | Single shared DPL formula replaced by per-paper conventions and units (897...91G differential mJy^-1 deg^-2; 807..128S deg^-2; 835...98U/70...65U written N(>S)=N'/S'[...]^-1 per aggregate and card; 869...71Z cumulative), with a no-transfer rule and integrate-to-cumulative advice.
+- SR-13 | FIXED | 68th-percentile estimator quoted verbatim and flagged as ambiguous (~0.47 sigma for signed Gaussian pixels); general alternative (q84 - q16)/2 or 1.4826 MAD after source masking added.
+- SR-14 | FIXED | Flat noise is now a checked special case for single pointings; build and check a local noise map for mosaics and archival coverage.
+- SR-15 | FIXED | Search area now keeps each paper's quantity: PB FWHM contour (radius FWHM/2), "radius 1.3 x PB FWHM" flagged as ambiguous, PB >= 0.1, and 20% relative sensitivity (not PB response) for 2025ApJS..278...45F; explicit mask advised.
+- SR-16 | FIXED | Intro mistake (1) now requires a validated false-positive calibration with the inverted map as one method; step 3 adds the noise-symmetry / no-negative-signal assumption (2016ApJ...833...67W, pack line 246) and how to check it.
+- SR-17 | FIXED | Step 7 adds the Rayleigh-Jeans, optically thin conditions for nu^(2+beta) (general practice), notes 2018ApJ...869...71Z's own optically thick assumption, and advises a full SED where it fails.
+- SR-18 | FIXED | Pitfall now says masking does not remove targeting bias (2013MNRAS.432....2K quote); model the selection or restrict counts to a valid regime (2015ApJ...807..128S used S870 > 7.5 mJy).
+- SR-19 | FIXED | New overdensity pitfall: angular excess vs physical association, the stated limits of 2018ApJ...867..153C and 2018PASJ...70...65U (pack lines 341, 358-359), and a null model through the same coverage and extraction.
+- SR-20 | FIXED | Step 6, referee checks and parameters.md now require propagating correlated flux-scale error, citing 2017ApJ...835...98U's omitted 20% (pack line 323).
+- SR-21 | FIXED | EBL step now says to state integration limits, separate measured and extrapolated/stacked parts, and propagate background uncertainty, quoting 2015A&A...584A..78C's limitation.
+- SR-22 | FIXED | Step 3 adds a merge rule for natural/tapered (Wide/Deep) lists (match within ~1 beam, one entry per source, stated flux rule, purity/completeness measured on the full procedure), noting the cards rarely state it and citing DUALZ 65 + 4.

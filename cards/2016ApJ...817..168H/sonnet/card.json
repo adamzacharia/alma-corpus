@@ -1,0 +1,894 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...817..168H",
+  "title": "ALMA Observation of the 658 GHz Vibrationally Excited H2O Maser in Orion KL Source I",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Hirota, Tomoya",
+  "n_authors": 3,
+  "arxiv_id": "1512.04148",
+  "doi": "10.3847/0004-637X/817/2/168",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00199.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "Because the original target of our ALMA Cycle 0 project was the supermaser, Source I was detected serendipitously."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Orion KL Source I",
+     "coordinates": {
+      "value": "Source I ~ RA 05h35m14s.518, Dec -05d22'30\".54 (band 9 continuum)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Orion Kleinmann-Low (cite: kleinmann1967) region is known as the nearest site of active massive-star formation at a distance of 420 pc (cite: menten2007; kim2008)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "05h35m14s.5182(4)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "420 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Orion Kleinmann-Low (cite: kleinmann1967) region is known as the nearest site of active massive-star formation at a distance of 420 pc (cite: menten2007; kim2008)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "05h35m14s.5182(4)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Menten et al. 2007; Kim et al. 2008",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Orion Kleinmann-Low (cite: kleinmann1967) region is known as the nearest site of active massive-star formation at a distance of 420 pc (cite: menten2007; kim2008)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "05h35m14s.5182(4)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the 658 GHz vibrationally excited H2O line detected toward Orion KL Source I, what are its spatial and velocity structure, and does it arise from maser action at the base of the outflow/disk?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This line is clearly detected at the position of the massive protostar candidate, the Source I."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00199.S",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00199.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 9, Cycle 0",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Observations with ALMA at band 9 were carried out during Cycle 0 at five epochs"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spws, 938 MHz bandwidth; line spws at 658.2 and 646.8 GHz, continuum spws at 640.6 and 662.2 GHz; 244 kHz, 3840 channels, 0.11 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We observed four spectral windows (spw) in band 9 with bandwidths of 938 MHz for both of the linear polarizations."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The spectral resolution and number of spectral channels were 244 kHz and 3840 channels, respectively."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H2O",
+     "transition": "v2=1, 1(1,0)-1(0,1)",
+     "rest_frequency": "658.006550 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "at a rest frequency of 658.006550 GHz"
+      }
+     ]
+    },
+    {
+     "species": "H2O",
+     "transition": "9(7,3)-8(8,0)",
+     "rest_frequency": "645.766010 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "645.766010 GHz (9$_{7, 3}$-8$_{8, 0}$)"
+      }
+     ]
+    },
+    {
+     "species": "H2O",
+     "transition": "9(7,2)-8(8,1)",
+     "rest_frequency": "645.950620 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "645.950620 GHz (9$_{7, 2}$-8$_{8, 1}$)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "21-385 m (45-845 kλ)",
+    "evidence": [
+     {
+      "loc": "Data analysis",
+      "quote": "Because the baseline length ranged from 21-385 m (45-845 k$\\lambda$), extended structures of $>$5$''$  are resolved out."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.28\"x0.25\", PA -64 deg (natural weighting)",
+    "evidence": [
+     {
+      "loc": "Data analysis",
+      "quote": "The synthesized beam size was 0.28$''$$\\times$0.25$''$  at a position angle of -64 degrees using natural weighting."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "structures >5\" resolved out",
+    "evidence": [
+     {
+      "loc": "Data analysis",
+      "quote": "extended structures of $>$5$''$  are resolved out."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "1.2 Jy/beam per line-free channel (1σ)",
+    "evidence": [
+     {
+      "loc": "Data analysis",
+      "quote": "The resultant rms noise level for each line-free channel was 1.2 Jy beam$^{-1}$ (1$\\sigma$) at 658 GHz"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "350 s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Total on-source time was 350 seconds"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012 Aug 25 (one of five epochs)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we selected the Aug. 25, 2012 observation for analysis in the present paper"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "CSO 10.4 m",
+     "provided": {
+      "value": "Single-dish 658 GHz line flux (300 Jy) for comparison",
+      "evidence": [
+       {
+        "loc": "Spectral profile",
+        "quote": "corresponding to the total flux denity of 300 Jy"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "VLA 43 GHz continuum position of Source I, corrected for proper motion",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "the absolute position is calculated from that in 2009 January 12 and corrected for the measured proper motion to the epoch of the ALMA data"
+       }
+      ]
+     },
+     "citation": "(cite: goddi2011)"
+    },
+    {
+     "what": {
+      "value": "Rest frequencies and lower-state energies of H2O lines",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "at a rest frequency of 658.006550 GHz (cite: chen2000)"
+       }
+      ]
+     },
+     "citation": "(cite: chen2000)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Calibrated visibilities delivered by EA-ARC",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "We used the calibrated visibility data delivered by the East Asia ALMA Regional Center (EA-ARC) to make synthesized images."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "Callisto (flux); J0423-013 bandpass; J0607-085 gain",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Bandpass, flux, and gain calibrators were J0423-013, Callisto, and J0607-085, respectively."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~50% total; J0607-085 flux fixed to 0.64 Jy, 658 GHz spw scaled by 0.42",
+     "evidence": [
+      {
+       "loc": "Flux density scale",
+       "quote": "In summary, the total flux calibration uncertainty is $\\sim$50% for both of the 658 GHz H$_{2}$O line and continuum data"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "On peak channel (13.0 km/s): phase-only 5 s, then phase+amp 30/72 s; applied to all channels/spws",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "First we solved only for phase solutions, with a short integration time of 5 seconds."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "with the CASA task `clean` and `gaincal`"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "using natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "CASA uvcontsub3 after cvel Doppler tracking",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "subtracted the continuum emission from the calibrated visibility data using the CASA task `uvcontsub3`"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "channel map made by integrating 9 channels (~1 km/s)",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "we also made a lower-resolution channel map by integrating 9 velocity channels ($\\sim$1 km s$^{-1}$)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.28\"x0.25\", PA -64 deg",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Convolved with a synthesized beam of 0.28$''$$\\times$0.25$''$  with a position angle of -64 deg."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "1.2 Jy/beam (1.6 in emission channels)",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "although it increases to 1.6 Jy beam$^{-1}$ (1$\\sigma$) at the channels with significant emission"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Primary beam pointing error 0.6\" taken from ALMA Cycle 0 Technical Handbook",
+      "evidence": [
+       {
+        "loc": "Flux density scale",
+        "quote": "If we consider a possible pointing error of 0.6$''$  as described in the ALMA Cycle 0 Technical Handbook"
+       }
+      ]
+     },
+     "from_reference": "ALMA Cycle 0 Technical Handbook"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for uvcontsub3",
+    "Clean masks, iterations, threshold, cell and image size",
+    "Polynomial order of continuum fit",
+    "Moment-map clipping thresholds",
+    "Exact brightness-temperature calculation and beam used",
+    "Which flux scaling was applied before reported flux densities"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Doppler tracking and continuum subtraction",
+    "method": {
+     "value": "cvel to rest frequency, then uvcontsub3 on line-free channels",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "We first conducted Doppler tracking with the CASA task `cvel`, setting the rest frequency to 658.006550 GHz."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Self-calibration",
+    "method": {
+     "value": "Solve on peak channel, phase then amp+phase, apply to all",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "These phase and amplitude solutions were applied to rest of the spectral channels, including other spws for continuum data by using the CASA task `applycal`."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "solint 5 s then 30/72 s",
+      "evidence": [
+       {
+        "loc": "Data analysis",
+        "quote": "We then self-calibrated the data with longer integration times (30 or 72 seconds)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image cube, moment maps, continuum",
+    "method": {
+     "value": "clean cube at 0.11 km/s; immoments for moment 0/1; continuum from line-free channels",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "The moment 0 and 1 maps were made using the CASA task `immoments`"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure positions and sizes",
+    "method": {
+     "value": "Single Gaussian fits with imfit to continuum and moment 0; AIPS SAD per channel for centroids",
+     "evidence": [
+      {
+       "loc": "Absolute and relative positional accuracy",
+       "quote": "we performed a two dimensional Gaussian fit to determine peak positions using the AIPS task SAD"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "AIPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Single 2D Gaussian",
+     "evidence": [
+      {
+       "loc": "Results and discussion, Spectral profile",
+       "quote": "The source size of the 658 GHz H$_{2}$O channel map at 13.0 km s$^{-1}$ is derived to be 0.42$''$$\\times$0.31$''$  by the two-dimensional Gaussian fitting of the image."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with VLA 43 GHz position: offsets 40 and 20 mas",
+     "evidence": [
+      {
+       "loc": "Absolute and relative positional accuracy",
+       "quote": "We find that the position offset of the band 9 continuum relative to the VLA 43 GHz data are 40 mas and 20 mas in right ascension and declination"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Flux scale correction and brightness temperature",
+    "method": {
+     "value": "Primary beam correction 8.6; spw flux rescaled by 0.64/1.51; Tb from peak flux and fitted source size",
+     "evidence": [
+      {
+       "loc": "Spectral profile",
+       "quote": "The brightness temperature of the 658 GHz H$_{2}$O line is calculated to be 2$\\times$10$^{4}$ K or higher, as the emission region is unresolved with the ALMA beam."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "J0607-085 flux density 0.64 Jy",
+      "evidence": [
+       {
+        "loc": "Flux density scale",
+        "quote": "In this paper, we employ the absolute flux density of J0607-085 to be 0.64 Jy."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Synthesis imaging, self-calibration, cvel, uvcontsub3, imfit, immoments",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "Synthesis imaging and self-calibration were done using the Common Astronomy Software Applications (CASA) package in a standard manner."
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Plotting, image analysis, SAD Gaussian fits per channel",
+     "evidence": [
+      {
+       "loc": "Data analysis",
+       "quote": "Part of the data plotting and image analysis were made by using the Astronomical Image Processing System (AIPS) package."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Peak flux density of 658 GHz line",
+    "value": "940",
+    "uncertainty": "~50%",
+    "units": "Jy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Spectral profile",
+      "quote": "The peak flux density is 940 Jy at the LSR velocity of 13.0 km s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Brightness temperature lower limit",
+    "value": ">2e4",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Spectral profile",
+      "quote": "The brightness temperature of the 658 GHz H$_{2}$O line is calculated to be 2$\\times$10$^{4}$ K or higher"
+     }
+    ]
+   },
+   {
+    "quantity": "Moment 0 size (FWHM)",
+    "value": "0.525x0.384",
+    "uncertainty": "0.010, 0.009",
+    "units": "arcsec",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "0.525(10)$\\times$0.384(9)"
+     }
+    ]
+   },
+   {
+    "quantity": "Moment 0 position angle",
+    "value": "44.6",
+    "uncertainty": "1.2",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results and discussion",
+      "quote": "44.6$\\pm$1.2 degrees"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 9 continuum flux density of Source I (observed)",
+    "value": "1.04",
+    "uncertainty": "0.04",
+    "units": "Jy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Continuum emission at ALMA band 9",
+      "quote": "1.04$\\pm$0.04 Jy and 0.77$\\pm$0.03 Jy beam$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Primary-beam-corrected continuum flux density",
+    "value": "8.9",
+    "uncertainty": "50%",
+    "units": "Jy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Continuum emission at ALMA band 9",
+      "quote": "the absolute flux density is calculated to be 8.9 Jy, with an uncertainty of 50%"
+     }
+    ]
+   },
+   {
+    "quantity": "Absolute position uncertainty",
+    "value": "~50",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Absolute and relative positional accuracy",
+      "quote": "the absolute position uncertainty of Source I in the present ALMA band 9 continuum observations is $\\sim$50 mas"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Line is not related to the 22 GHz supermaser; no emission at the Compact Ridge",
+    "evidence": [
+     {
+      "loc": "Relationship between the 22 GHz H$_{2}$O supermaser",
+      "quote": "Thus, the 658 GHz H$_{2}$O line is not related to the 22 GHz supermaser phenomenon"
+     }
+    ]
+   },
+   {
+    "value": "The 646 GHz lines are not detected",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "but they are not detected in Orion KL"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the 658 GHz H2O line a maser from the base of the Source I outflow/disk?",
+    "experiment": "Imaging at 0.26\" and measuring Tb, morphology, and velocity gradient",
+    "result": "Compact ~100 AU, elongated NE-SW, perpendicular velocity gradient, Tb>2e4 K",
+    "finding": "Maser emission from the base of the outflow in a rotating, expanding disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our results suggest that the 658 GHz H$_{2}$O maser line is emitted from the base of the outflow"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the ALMA flux different from the CSO flux?",
+    "experiment": "Compare ALMA flux with CSO 300 Jy",
+    "result": "ALMA is a factor of 3 higher",
+    "finding": "May indicate variability; monitoring needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Spectral profile",
+      "quote": "It may suggest a flux variation of the 658 GHz H$_{2}$O maser line"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Source I is outside the primary beam, giving ~50% flux uncertainty; limited resolution",
+     "evidence": [
+      {
+       "loc": "Continuum emission at ALMA band 9",
+       "quote": "Due to the large ($\\sim$50%) flux uncertainty of Source I (which is outside the primary beam)"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Primary beam correction of 8.6 at the beam edge is very uncertain",
+    "Possible flux calibration problem at 658 GHz in this epoch",
+    "Centroid structure may be a resolution artifact"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Cycle 0 project data cited; archive-delivered calibrated data used",
+    "evidence": [
+     {
+      "loc": "Data analysis",
+      "quote": "We used the calibrated visibility data delivered by the East Asia ALMA Regional Center (EA-ARC) to make synthesized images."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Line-free channel ranges",
+    "Clean parameters and masks",
+    "CASA version"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for the single epoch",
+   "score_inferred": 3,
+   "score_reason": "Data are public and the recipe is outlined, but many imaging parameters and the flux treatment are unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Many imaging parameters are missing and the flux scale is ambiguous, though the data are public."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "Hirota et al. 2014a (cite: hirota2014a)",
+     "why": "321 and 336 GHz H2O lines in Source I with ALMA"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-b9dacca1f7a2922f38fc99dec11c8a20",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:20",
+  "usage": {
+   "input_tokens": 18366,
+   "output_tokens": 6787,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.052908,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 41,
+   "rate": 0.594
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:53",
+  "custom_id": "repair-sonnet-73684e776e754f46a501fed8a7ea5136",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "The source size of the 658 GHz H$_{2}$O channel map at 13.0 km s$^{-1}$ is derived to be 0.42$''$$\\times$0.31$''$  by the two-dimensional Gaussian fitting of the image."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "quote": "This value is smaller than our ALMA results by a factor of 3."
+   }
+  ],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].validation",
+    "old_value": "Compared with CSO single-dish flux"
+   }
+  ],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,542 @@
+{
+ "bibcode": "2026ApJ...999...62H",
+ "title": "HOPS-288: A Laboratory for Complex Organics in Proto-binary/Proto-multiple Systems",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae38e1",
+ "arxiv_id": "2601.08948",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "protoplanetary_disks"
+ ],
+ "question": "What is the origin of complex organic molecule (COM) emission in the hierarchical proto-triple system HOPS-288, and how do COM compositions compare between its members?",
+ "alma_project_codes": [
+  "2018.1.01038.S",
+  "2018.1.00302.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, 230 GHz)",
+  "arrays": "12-m array",
+  "angular_resolution": "~0.21\" (2018.1.01038.S); ~0.37\" (2018.1.00302.S)",
+  "sensitivity": "2018.1.01038.S: ~0.19 mJy beam^-1 continuum, 1.5–7.3 mJy beam^-1 per channel; 2018.1.00302.S: ~0.64 mJy beam^-1 continuum, ~3.6 mJy beam^-1 per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COM column densities for HH 212",
+    "evidence": [
+     {
+      "loc": "Hot corinos exhibiting rotation motion in the Orion",
+      "quote": "We adopt column densities from (cite: 2019Lee_HH212_COM_atm) for HH 212, (cite: 2022Hsu_ALMASOP) for G192.12-11.10, and (cite: 2025Jeong_V883Ori_COM) for V883 Ori."
+     }
+    ]
+   },
+   "citation": "(cite: 2019Lee_HH212_COM_atm)"
+  },
+  {
+   "what": {
+    "value": "COM column densities for G192.12-11.10",
+    "evidence": [
+     {
+      "loc": "Hot corinos exhibiting rotation motion in the Orion",
+      "quote": "We adopt column densities from (cite: 2019Lee_HH212_COM_atm) for HH 212, (cite: 2022Hsu_ALMASOP) for G192.12-11.10, and (cite: 2025Jeong_V883Ori_COM) for V883 Ori."
+     }
+    ]
+   },
+   "citation": "(cite: 2022Hsu_ALMASOP)"
+  },
+  {
+   "what": {
+    "value": "COM column densities for V883 Ori",
+    "evidence": [
+     {
+      "loc": "Hot corinos exhibiting rotation motion in the Orion",
+      "quote": "We adopt column densities from (cite: 2019Lee_HH212_COM_atm) for HH 212, (cite: 2022Hsu_ALMASOP) for G192.12-11.10, and (cite: 2025Jeong_V883Ori_COM) for V883 Ori."
+     }
+    ]
+   },
+   "citation": "(cite: 2025Jeong_V883Ori_COM)"
+  },
+  {
+   "what": {
+    "value": "Distance of 400 pc",
+    "evidence": [
+     {
+      "loc": "Kinematics Revealed by Methanol",
+      "quote": "Given a distance of 400 pc (cite: 2011Lombardi_2MASS_extinction_IV) and adopting the outer boundaries of the PV diagrams as the sizes of the rotating features"
+     }
+    ]
+   },
+   "citation": "(cite: 2011Lombardi_2MASS_extinction_IV)"
+  },
+  {
+   "what": {
+    "value": "12C/13C ratio of 68",
+    "evidence": [
+     {
+      "loc": "Column Densities of COMs",
+      "quote": "Adopting the column density of $^{13}$CH$_3$OH with a $^{12}$C/$^{13}$C ratio of 68 (cite: 2005Milam_12C13C), the D/H ratios become 0.05 and 0.02 for source A and source B, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: 2005Milam_12C13C)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure dust continuum properties of HOPS-288-A and HOPS-288-B",
+   "method": "2D Gaussian fitting on the 1.3 mm dust continuum image from the high-resolution dataset (#2018.1.01038.S)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Source A treated as a single system since neither dataset resolves its local binarity"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model circumbinary disk rotation and estimate central mass",
+   "method": "Extract C18O position-velocity diagram along cut penetrating source A and B (PA = 127 deg) and fit Keplerian rotation model",
+   "software": [],
+   "key_parameters": [
+    "PA = 127 deg; systemic velocity v_CBD = 5.0 km s^-1; outer radius = 1.25\" (500 au)"
+   ],
+   "assumptions": [
+    "Keplerian rotation around a central mass M_cen; distance of 400 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Analyze COM morphology and kinematics and derive individual stellar masses",
+   "method": "Generate moment 0 maps and extract PV diagrams of CH3OH and stacked COM transitions along major axes; fit linear velocity-position relation to Keplerian rotation",
+   "software": [],
+   "key_parameters": [
+    "Reference velocities: 3.5 km s^-1 (source A), 6.5 km s^-1 (source B); outer rotation radii: 200 au (0.50\", source A), 40 au (0.1\", source B)"
+   ],
+   "assumptions": [
+    "Disk mass much smaller than stellar mass; edge-on geometry; Keplerian rotation; distance = 400 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Synthesize molecular spectra and derive excitation temperatures and column densities",
+   "method": "Extract spectra at dust continuum peaks of source A and B from wide-bandwidth data (#2018.1.00302.S) and fit synthetic LTE spectra using XCLASS",
+   "software": [
+    "XCLASS"
+   ],
+   "key_parameters": [
+    "Fixed source size = 0.37\"; fixed FWHM line width = 5 km s^-1; fixed velocity offsets = 2.0 km s^-1 (source A) and 6.5 km s^-1 (source B)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE); fixed T_ex = 200 K for species with insufficient transitions (DCN, H2S, HCCCN, and CH3OH v12=1 in source B)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare COM column density ratios and isotopic ratios",
+   "method": "Compute 12C/13C and D/H ratios of CH3OH and compare COM column density ratios between source B and source A and with literature Orion hot corinos",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "ISM 12C/13C ratio of 68 adopted when deriving adjusted D/H ratios from 13CH3OH"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum flux density of HOPS-288-A",
+   "value": "278",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Physical Structure of the Multiple System",
+     "quote": "| HOPS-288-A | 05:39:56.00 | $-$07:30:27.6 | 0$.\\!\\!^{\\prime\\prime}$44, 0$.\\!\\!^{\\prime\\prime}$25, 141$^\\circ$ | 0$.\\!\\!^{\\prime\\prime}$40, 0$.\\!\\!^{\\prime\\prime}$19, 144$^\\circ$ | 278 | 78 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak intensity of HOPS-288-A",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Physical Structure of the Multiple System",
+     "quote": "| HOPS-288-A | 05:39:56.00 | $-$07:30:27.6 | 0$.\\!\\!^{\\prime\\prime}$44, 0$.\\!\\!^{\\prime\\prime}$25, 141$^\\circ$ | 0$.\\!\\!^{\\prime\\prime}$40, 0$.\\!\\!^{\\prime\\prime}$19, 144$^\\circ$ | 278 | 78 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved continuum size of HOPS-288-A (MAJ, MIN, PA)",
+   "value": "0.40\", 0.19\", 144 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec, arcsec, deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Physical Structure of the Multiple System",
+     "quote": "| HOPS-288-A | 05:39:56.00 | $-$07:30:27.6 | 0$.\\!\\!^{\\prime\\prime}$44, 0$.\\!\\!^{\\prime\\prime}$25, 141$^\\circ$ | 0$.\\!\\!^{\\prime\\prime}$40, 0$.\\!\\!^{\\prime\\prime}$19, 144$^\\circ$ | 278 | 78 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum flux density of HOPS-288-B",
+   "value": "51",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Physical Structure of the Multiple System",
+     "quote": "| HOPS-288-B | 05:39:56.03 | $-$07:30:28.0 | 0$.\\!\\!^{\\prime\\prime}$34, 0$.\\!\\!^{\\prime\\prime}$20, 116$^\\circ$ | 0$.\\!\\!^{\\prime\\prime}$27, 0$.\\!\\!^{\\prime\\prime}$13, 116$^\\circ$ | 51 | 23 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak intensity of HOPS-288-B",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Physical Structure of the Multiple System",
+     "quote": "| HOPS-288-B | 05:39:56.03 | $-$07:30:28.0 | 0$.\\!\\!^{\\prime\\prime}$34, 0$.\\!\\!^{\\prime\\prime}$20, 116$^\\circ$ | 0$.\\!\\!^{\\prime\\prime}$27, 0$.\\!\\!^{\\prime\\prime}$13, 116$^\\circ$ | 51 | 23 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved continuum size of HOPS-288-B (MAJ, MIN, PA)",
+   "value": "0.27\", 0.13\", 116 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec, arcsec, deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Physical Structure of the Multiple System",
+     "quote": "| HOPS-288-B | 05:39:56.03 | $-$07:30:28.0 | 0$.\\!\\!^{\\prime\\prime}$34, 0$.\\!\\!^{\\prime\\prime}$20, 116$^\\circ$ | 0$.\\!\\!^{\\prime\\prime}$27, 0$.\\!\\!^{\\prime\\prime}$13, 116$^\\circ$ | 51 | 23 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disk central mass M_cen (edge-on, phi = 90 deg)",
+   "value": "5.00",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Circumbinary Disk",
+     "quote": "The best-fit central mass ($M_\\mathrm{cen}$) is 5.00 $M_\\odot$ for an edge-on orientation ($\\varphi = 90^\\circ$), 5.25 $M_\\odot$ for a tilt of $5^\\circ$ and $10^\\circ$, and 5.50 $M_\\odot$ for a tilt of $15^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred stellar mass of HOPS-288-A",
+   "value": "2.9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematics Revealed by Methanol",
+     "quote": "Given a distance of 400 pc (cite: 2011Lombardi_2MASS_extinction_IV) and adopting the outer boundaries of the PV diagrams as the sizes of the rotating features, 200 au (0$.\\!\\!^{\\prime\\prime}$50) for source A and 40 au (0$.\\!\\!^{\\prime\\prime}$1) for source B, the inferred stellar masses are 2.9 $M_\\odot$ for source A and 1.1 $M_\\odot$ for source B."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred stellar mass of HOPS-288-B",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematics Revealed by Methanol",
+     "quote": "Given a distance of 400 pc (cite: 2011Lombardi_2MASS_extinction_IV) and adopting the outer boundaries of the PV diagrams as the sizes of the rotating features, 200 au (0$.\\!\\!^{\\prime\\prime}$50) for source A and 40 au (0$.\\!\\!^{\\prime\\prime}$1) for source B, the inferred stellar masses are 2.9 $M_\\odot$ for source A and 1.1 $M_\\odot$ for source B."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH;v=0; column density in HOPS-288-A",
+   "value": "2.3e18",
+   "uncertainty": "+0.4e18/-0.3e18",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_3$OH;v=0; | 2.3$^{+0.4}_{-0.3}\\times$ 10$^{18}$ | 8.4$^{+0.4}_{-0.3}\\times$ 10$^{17}$ | 218$^{+11}_{-9}$ | 227$^{+8}_{-7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH;v=0; column density in HOPS-288-B",
+   "value": "8.4e17",
+   "uncertainty": "+0.4e17/-0.3e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_3$OH;v=0; | 2.3$^{+0.4}_{-0.3}\\times$ 10$^{18}$ | 8.4$^{+0.4}_{-0.3}\\times$ 10$^{17}$ | 218$^{+11}_{-9}$ | 227$^{+8}_{-7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH;v=0; excitation temperature in HOPS-288-A",
+   "value": "218",
+   "uncertainty": "+11/-9",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_3$OH;v=0; | 2.3$^{+0.4}_{-0.3}\\times$ 10$^{18}$ | 8.4$^{+0.4}_{-0.3}\\times$ 10$^{17}$ | 218$^{+11}_{-9}$ | 227$^{+8}_{-7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH;v=0; excitation temperature in HOPS-288-B",
+   "value": "227",
+   "uncertainty": "+8/-7",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_3$OH;v=0; | 2.3$^{+0.4}_{-0.3}\\times$ 10$^{18}$ | 8.4$^{+0.4}_{-0.3}\\times$ 10$^{17}$ | 218$^{+11}_{-9}$ | 227$^{+8}_{-7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH;v=0; column density in HOPS-288-A",
+   "value": "2.9e17",
+   "uncertainty": "+0.6e17/-0.4e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| $^{13}$CH$_3$OH;v=0; | 2.9$^{+0.6}_{-0.4}\\times$ 10$^{17}$ | 6.0$^{+1.7}_{-0.8}\\times$ 10$^{16}$ | 205$^{+8}_{-8}$ | 178$^{+18}_{-10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH;v=0; column density in HOPS-288-B",
+   "value": "6.0e16",
+   "uncertainty": "+1.7e16/-0.8e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| $^{13}$CH$_3$OH;v=0; | 2.9$^{+0.6}_{-0.4}\\times$ 10$^{17}$ | 6.0$^{+1.7}_{-0.8}\\times$ 10$^{16}$ | 205$^{+8}_{-8}$ | 178$^{+18}_{-10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2DOH;v=0; column density in HOPS-288-A",
+   "value": "1.0e18",
+   "uncertainty": "+0.2e18/-0.1e18",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_2$DOH;v=0; | 1.0$^{+0.2}_{-0.1}\\times$ 10$^{18}$ | 1.0$^{+0.3}_{-0.1}\\times$ 10$^{17}$ | 119$^{+6}_{-8}$ | 122$^{+10}_{-16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2DOH;v=0; column density in HOPS-288-B",
+   "value": "1.0e17",
+   "uncertainty": "+0.3e17/-0.1e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_2$DOH;v=0; | 1.0$^{+0.2}_{-0.1}\\times$ 10$^{18}$ | 1.0$^{+0.3}_{-0.1}\\times$ 10$^{17}$ | 119$^{+6}_{-8}$ | 122$^{+10}_{-16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CHO;v=0; column density in HOPS-288-A",
+   "value": "1.2e17",
+   "uncertainty": "+0.1e17/-0.0",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_3$CHO;v=0; | 1.2$^{+0.1}_{-0.0}\\times$ 10$^{17}$ | 2.1$^{+0.2}_{-0.2}\\times$ 10$^{16}$ | 214$^{+10}_{-7}$ | 296$^{+11}_{-17}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CHO;v=0; column density in HOPS-288-B",
+   "value": "2.1e16",
+   "uncertainty": "+0.2e16/-0.2e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| CH$_3$CHO;v=0; | 1.2$^{+0.1}_{-0.0}\\times$ 10$^{17}$ | 2.1$^{+0.2}_{-0.2}\\times$ 10$^{16}$ | 214$^{+10}_{-7}$ | 296$^{+11}_{-17}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO;v=0; column density in HOPS-288-A",
+   "value": "2.2e16",
+   "uncertainty": "+0.4e16/-0.3e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| NH$_2$CHO;v=0; | 2.2$^{+0.4}_{-0.3}\\times$ 10$^{16}$ | 3.3$^{+0.7}_{-0.3}\\times$ 10$^{15}$ | 261$^{+14}_{-12}$ | 317$^{+9}_{-13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO;v=0; column density in HOPS-288-B",
+   "value": "3.3e15",
+   "uncertainty": "+0.7e15/-0.3e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| NH$_2$CHO;v=0; | 2.2$^{+0.4}_{-0.3}\\times$ 10$^{16}$ | 3.3$^{+0.7}_{-0.3}\\times$ 10$^{15}$ | 261$^{+14}_{-12}$ | 317$^{+9}_{-13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOCH3;v=0; column density in HOPS-288-A",
+   "value": "5.1e17",
+   "uncertainty": "+0.4e17/-0.4e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| HCOOCH$_3$;v=0; | 5.1$^{+0.4}_{-0.4}\\times$ 10$^{17}$ | 6.3$^{+1.0}_{-0.5}\\times$ 10$^{16}$ | 291$^{+11}_{-11}$ | 262$^{+17}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOCH3;v=0; column density in HOPS-288-B",
+   "value": "6.3e16",
+   "uncertainty": "+1.0e16/-0.5e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| HCOOCH$_3$;v=0; | 5.1$^{+0.4}_{-0.4}\\times$ 10$^{17}$ | 6.3$^{+1.0}_{-0.5}\\times$ 10$^{16}$ | 291$^{+11}_{-11}$ | 262$^{+17}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH;v=0; column density in HOPS-288-A",
+   "value": "4.3e17",
+   "uncertainty": "+0.4e17/-0.4e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| C$_2$H$_5$OH;v=0; | 4.3$^{+0.4}_{-0.4}\\times$ 10$^{17}$ | 1.2$^{+0.1}_{-0.2}\\times$ 10$^{17}$ | 335$^{+12}_{-12}$ | 306$^{+12}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH;v=0; column density in HOPS-288-B",
+   "value": "1.2e17",
+   "uncertainty": "+0.1e17/-0.2e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| C$_2$H$_5$OH;v=0; | 4.3$^{+0.4}_{-0.4}\\times$ 10$^{17}$ | 1.2$^{+0.1}_{-0.2}\\times$ 10$^{17}$ | 335$^{+12}_{-12}$ | 306$^{+12}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3CN;v=0; column density in HOPS-288-A",
+   "value": "2.3e15",
+   "uncertainty": "+0.3e15/-0.2e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| $^{13}$CH$_3$CN;v=0; | 2.3$^{+0.3}_{-0.2}\\times$ 10$^{15}$ | 6.1$^{+1.1}_{-1.1}\\times$ 10$^{14}$ | 297$^{+12}_{-10}$ | 309$^{+9}_{-10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3CN;v=0; column density in HOPS-288-B",
+   "value": "6.1e14",
+   "uncertainty": "+1.1e14/-1.1e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Diversities and Similarities between Complex Organics",
+     "quote": "| $^{13}$CH$_3$CN;v=0; | 2.3$^{+0.3}_{-0.2}\\times$ 10$^{15}$ | 6.1$^{+1.1}_{-1.1}\\times$ 10$^{14}$ | 297$^{+12}_{-10}$ | 309$^{+9}_{-10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "D/H ratio of CH3OH (using 13CH3OH and 12C/13C = 68) in HOPS-288-A",
+   "value": "0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column Densities of COMs",
+     "quote": "Adopting the column density of $^{13}$CH$_3$OH with a $^{12}$C/$^{13}$C ratio of 68 (cite: 2005Milam_12C13C), the D/H ratios become 0.05 and 0.02 for source A and source B, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "D/H ratio of CH3OH (using 13CH3OH and 12C/13C = 68) in HOPS-288-B",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column Densities of COMs",
+     "quote": "Adopting the column density of $^{13}$CH$_3$OH with a $^{12}$C/$^{13}$C ratio of 68 (cite: 2005Milam_12C13C), the D/H ratios become 0.05 and 0.02 for source A and source B, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Line-free channel ranges and uvcontsub polynomial order used for continuum subtraction",
+  "tclean cell size, image size, deconvolver, masking, and stopping threshold",
+  "Exact position angles and slit widths for the PV cuts 'Maj. of A', 'Maj. of B', and 'Tail'",
+  "Velocity integration ranges used for moment 0 and moment 1 maps",
+  "Number of iterations in phase self-calibration"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and tclean imaging parameters (cell size, image size, clean threshold, masking)",
+  "Self-calibration iteration details and SNR thresholds",
+  "Exact position angles and averaging widths of the PV diagram cuts ('Maj. of A', 'Maj. of B', 'Tail')",
+  "Velocity integration windows for moment 0 and moment 1 maps"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Both ALMA project codes are public, transitions and XCLASS fitting steps/priors are thoroughly tabulated, and numeric results are clearly reported, though some imaging and PV cut parameters are omitted.",
+ "rediscovery_reason": "Public archival ALMA data (#2018.1.01038.S and #2018.1.00302.S) with a well-specified 4-step XCLASS spectral fitting recipe and quantitative continuum, kinematic mass, and column density tables.",
+ "source_card": "cards/2026ApJ...999...62H/sonnet/card.md"
+}

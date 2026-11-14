@@ -1,0 +1,437 @@
+{
+ "bibcode": "2026ApJ..1005...94N",
+ "title": "Dynamical Evidence for a Billion Solar-mass Black Hole in Galaxy NGC 4061 from ALMA <SUP>12</SUP>CO(2─1) Kinematics",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae771c",
+ "arxiv_id": "2601.19842",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the dynamical mass of the supermassive black hole in the massive early-type galaxy NGC 4061, and does it resolve the discrepancy between previous indirect estimates based on conflicting velocity dispersion measurements?",
+ "alma_project_codes": [
+  "2018.1.00397.S",
+  "2019.1.00036.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12-m array",
+  "angular_resolution": "0.16'' x 0.13'' (combined); 0.112'' (C43-7); 0.317'' (C43-5)",
+  "sensitivity": "CO cube: 0.4 mJy beam^-1 per 10 km s^-1; continuum: 120 uJy beam^-1 (text) or 0.02 mJy per beam (Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance D = 107.2 Mpc, effective radius Re ~ 4.2-9.1 kpc, and K-band absolute magnitude M_K = -25.3 mag",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "NGC 4061 is a massive early-type galaxy (ETG) at a distance of $D = 107.2$ Mpc, with an effective radius estimated in the range $R_e \\sim 4.2$–$9.1$ kpc and a $K$-band absolute magnitude of $M_K=-25.3$ mag (cite: Ma14)."
+     }
+    ]
+   },
+   "citation": "(cite: Ma14)"
+  },
+  {
+   "what": {
+    "value": "Central stellar velocity dispersion sigma ~ 290 km s^-1",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "However, (cite: Pinkney2005) reported a much lower central dispersion of $\\sigma\\approx290$ km s$^{-1}$, based on stellar kinematics derived long slit on the LDSS-3 instrument at the Magellan Clay telescope"
+     }
+    ]
+   },
+   "citation": "(cite: Pinkney2005)"
+  },
+  {
+   "what": {
+    "value": "Stellar/ionized-gas velocity dispersion sigma ~ 459 km s^-1",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The Hypercat catalog lists an exceptionally large stellar velocity dispersion of $\\sigma\\approx459$ km s$^{-1}$, implying an extremely massive BH ($M_{\\rm BH} \\approx 1.2\\times10^{10}$ M$_{\\odot}$) from the (cite: Kormendy13) relation."
+     }
+    ]
+   },
+   "citation": "Hypercat catalog"
+  },
+  {
+   "what": {
+    "value": "Redshift z ~ 0.024450 and distance range 68-112 Mpc",
+    "evidence": [
+     {
+      "loc": "2.4 $^{12}$CO(2$-$1) Emission Moment Maps",
+      "quote": "For NGC 4061 ($z \\approx 0.024450$; NASA/IPAC Extragalactic Database), we adopted a luminosity distance of $D_L = 107.2$ Mpc (cite: Ma14)"
+     },
+     {
+      "loc": "4.5.1 Distances",
+      "quote": "Since the inferred $M_{\\rm BH}$ scales linearly with the assumed distance ($M_{\\rm BH} \\propto D$), the wide range of distance estimates for NGC 4061 (68–112 Mpc; NED)"
+     }
+    ]
+   },
+   "citation": "NASA/IPAC Extragalactic Database (NED)"
+  },
+  {
+   "what": {
+    "value": "Compilation of 34 previous molecular-gas-based SMBH masses and galaxy K-band magnitudes for scaling relation fits",
+    "evidence": [
+     {
+      "loc": "NGC 4061 Positions on the Molecular Gas Alone M_BH-sigma and M_BH-M_star Scaling Relations",
+      "quote": "an additional 34 SMBH masses have been measured using ALMA."
+     },
+     {
+      "loc": "4.7 NGC 4061 Positions on the Molecular Gas Alone $M_{\\rm BH}$–$\\sigma$ and $M_{\\rm BH}$–$M_\\star$ Scaling Relations",
+      "quote": "Galaxy $K$-band magnitudes were obtained from the HyperLeda database."
+     }
+    ]
+   },
+   "citation": "Table [tab:mbh-compile] references; HyperLeda database"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, combine, and image 1.3 mm continuum and 12CO(2-1) line cube",
+   "method": "Calibrate Cycle 6 and Cycle 7 execution blocks with the ALMA Science Pipeline, combine the three measurement sets with CASA concat using visweightscale, image the 1.3 mm continuum with tclean (MFS) and fit source with imfit, subtract continuum in the uv plane with uvcontsub, and image the 12CO(2-1) cube with tclean (Högbom deconvolver)",
+   "software": [
+    "CASA",
+    "ALMA Science Pipeline",
+    "concat",
+    "tclean",
+    "imfit",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "visweightscale = 0.6 (2019.1.00036.S) and 0.2 for each of the two 2018.1.00397.S tracks",
+    "Briggs robust = 0.5, pixel scale = 0.04'', image size = 512 x 512 pixels^2, channel width = 10 km s^-1, clean threshold = 1.5 sigma_RMS"
+   ],
+   "assumptions": [
+    "Rest frequency of 12CO(2-1) = 230.538 GHz"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create moment maps, extract integrated spectrum and PVDs, and derive molecular gas mass and ISM MGE model",
+   "method": "Generate moment 0, 1, and 2 maps using the masked-moment technique (spatial Gaussian smoothing with sigma = 1.5 x theta_FWHM and Hanning spectral smoothing of 4 channels on a copy of the cube to build a mask), compute total molecular gas mass from integrated CO flux, and fit an MGE model to the molecular gas mass surface density map",
+   "software": [
+    "MgeFit",
+    "mge_fit_sectors_regularized"
+   ],
+   "key_parameters": [
+    "Mask threshold = 0.5 sigma_RMS in unsmoothed cube (8 sigma_RMS in smoothed cube); integrated spectrum aperture = 6'' x 6''; PVD pseudo-slit width = 2 pixels (0.158'') along PA ~ 175 deg"
+   ],
+   "assumptions": [
+    "X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1, D_L = 107.2 Mpc, z = 0.024450, 12CO(2-1)/12CO(1-0) flux density ratio = 1, dust mass neglected"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct 3D stellar light and mass MGE model from HST/WFPC2 imaging",
+   "method": "Subtract sky background from HST/WFPC2 F814W and F555W images, generate TINYTIM PSFs and combine/resample with AstroDrizzle, mask dust lane and point sources using SExtractor, decompose PSF with mge_fit_sectors, and fit deconvolved galaxy light MGE with mge_fit_sectors_regularized",
+   "software": [
+    "TinyTim",
+    "Drizzlepac/AstroDrizzle",
+    "SExtractor",
+    "MgeFit",
+    "mge_fit_sectors",
+    "mge_fit_sectors_regularized"
+   ],
+   "key_parameters": [
+    "PSF resampled pixel scale = 0.1''; F814W zero point = 24.204 mag, M_sun,I = 4.52 mag (AB); F555W zero point = 24.683 mag, M_sun,V = 4.82 mag"
+   ],
+   "assumptions": [
+    "Axisymmetric 3D light distribution, spatially constant mass-to-light ratio (in fiducial model), dark matter neglected in the central region"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit 3D ALMA 12CO(2-1) data cube kinematics with KinMS and MCMC to measure SMBH mass and M/L",
+   "method": "Forward-model the 3D CO data cube using KinMS with circular velocities computed via JamPy mge_vcirc from the combined SMBH + stellar MGE + ISM MGE potential, using both SkySampler CLEAN-component clouds and an analytic Gaussian disk profile, and fit via Bayesian MCMC using AdaMet",
+   "software": [
+    "KinMS",
+    "SkySampler",
+    "sampleClouds",
+    "transformClouds",
+    "JamPy",
+    "mge_vcirc",
+    "AdaMet"
+   ],
+   "key_parameters": [
+    "9 free parameters: log(M_BH), M/L_F814W, f, i, Gamma, sigma_gas, x_c, y_c, v_off; 10^6 SkySampler particles; Gaussian disk mu = 0.09'', sigma = 0.79''; N = 78,100 constraints; noise rescaling factor (2N)^0.25 ~ 20"
+   ],
+   "assumptions": [
+    "Circular orbits in a razor-thin disk (scale height d = 0''), constant intrinsic velocity dispersion sigma_gas, distance D = 107.2 Mpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit molecular-gas-only SMBH scaling relations (M_BH-sigma and M_BH-M_K,bulge)",
+   "method": "Compile 35 molecular-gas-based SMBH mass measurements (1 CARMA + 34 ALMA including NGC 4061) and perform linear regression in log-linear space using SciPy linregress",
+   "software": [
+    "SciPy",
+    "linregress"
+   ],
+   "key_parameters": [
+    "Sample size = 35 galaxies; 95% confidence-level uncertainties"
+   ],
+   "assumptions": [
+    "Log-linear scaling relations with flat priors on fitting parameters"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SMBH mass (M_BH, fiducial)",
+   "value": "1.17e9",
+   "uncertainty": "+0.08e9/-0.10e9 (stat.) +/- 0.43e9 (syst.)",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our Bayesian analysis yields a best-fitting SMBH mass of $M_{\\rm BH} = (1.17^{+0.08}_{-0.10}\\,[{\\rm stat.}] \\pm 0.43\\,[{\\rm syst.}]) \\times 10^{9}$ M$_{\\odot}$ and an $I$-band stellar mass-to-light ratio of $M/L_{\\rm F814W} = 3.46^{+0.07}_{-0.06}\\,[{\\rm stat.}] \\pm 0.10\\,[{\\rm syst.}]$ M$_{\\odot}$/L$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "log(M_BH / M_odot) (SkySampler model)",
+   "value": "9.07",
+   "uncertainty": "+0.03/-0.04 (1 sigma), +0.10/-0.11 (3 sigma)",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4 (mcmc-results)",
+     "quote": "| $\\lg(M_{\\rm BH}$/M$_{\\odot}$) | 7 $\\rightarrow$ 11 | 9 | 9.07 | +0.03,$-$0.04 | +0.10,$-$0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "I-band stellar mass-to-light ratio (M/L_F814W, SkySampler / fiducial)",
+   "value": "3.46",
+   "uncertainty": "+0.07/-0.06 (stat.) +/- 0.10 (syst.)",
+   "units": "M_odot/L_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our Bayesian analysis yields a best-fitting SMBH mass of $M_{\\rm BH} = (1.17^{+0.08}_{-0.10}\\,[{\\rm stat.}] \\pm 0.43\\,[{\\rm syst.}]) \\times 10^{9}$ M$_{\\odot}$ and an $I$-band stellar mass-to-light ratio of $M/L_{\\rm F814W} = 3.46^{+0.07}_{-0.06}\\,[{\\rm stat.}] \\pm 0.10\\,[{\\rm syst.}]$ M$_{\\odot}$/L$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass (M_BH, Gaussian gas model)",
+   "value": "1.17e9",
+   "uncertainty": "+0.11e9/-0.10e9",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Results",
+     "quote": "A comparable model employing a Gaussian disk provides $M_{\\rm BH}$ $=(1.17^{+0.11}_{-0.10})\\times10^9$ M$_{\\odot}$ and $M/L_{\\rm F814W}=3.31\\pm0.06$ (M$_{\\odot}$/L$_\\odot$)."
+    }
+   ]
+  },
+  {
+   "quantity": "I-band stellar mass-to-light ratio (M/L_F814W, Gaussian gas model)",
+   "value": "3.31",
+   "uncertainty": "+/-0.06 (1 sigma), +0.18/-0.16 (3 sigma)",
+   "units": "M_odot/L_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4 (mcmc-results)",
+     "quote": "| $M/L_{\\rm F814W}$ (M$_{\\odot}$/L$_\\odot$) | 0 $\\rightarrow$ 5 | 3.5 | 3.31 | +0.06,$-$0.06 | +0.18,$-$0.16 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CND inclination (i, SkySampler model)",
+   "value": "60.41",
+   "uncertainty": "+1.03/-1.11 (1 sigma), +2.80/-3.36 (3 sigma)",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4 (mcmc-results)",
+     "quote": "| $i$ ($^\\circ$) | 42 $\\rightarrow$ 90 | 60 | 60.41 | +1.03,$-$1.11 | +2.80,$-$3.36 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CND position angle (Gamma, SkySampler model)",
+   "value": "174.62",
+   "uncertainty": "+0.50/-0.50 (1 sigma), +1.44/-1.47 (3 sigma)",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4 (mcmc-results)",
+     "quote": "| $\\Gamma$ ($^\\circ$) | 150$\\rightarrow$ 200 | 175 | 174.62 | +0.50,$-$0.50 | +1.44,$-$1.47 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas turbulent velocity dispersion (sigma_gas, SkySampler model)",
+   "value": "13.91",
+   "uncertainty": "+1.98/-1.93 (1 sigma), +5.71/-5.29 (3 sigma)",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4 (mcmc-results)",
+     "quote": "| $\\sigma_{\\rm gas}$(km s$^{-1}$) | 0 $\\rightarrow$ 50 | 20 | 13.91 | +1.98,$-$1.93 | +5.71,$-$5.29 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum integrated flux density",
+   "value": "3.48",
+   "uncertainty": "+/-0.18",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1 (continuum)",
+     "quote": "| Integrated flux (mJy) | $3.48\\pm0.18$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum deconvolved source size",
+   "value": "0.26 x 0.22",
+   "uncertainty": "+/-0.03 x +/-0.03",
+   "units": "arcsec^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1 (continuum)",
+     "quote": "| Deconvolved size (arcsec$^2$) | $(0.26\\pm0.03)\\times(0.22\\pm0.03)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(2-1) integrated flux density (S_CO Delta v)",
+   "value": "4.2",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.4 $^{12}$CO(2$-$1) Emission Moment Maps",
+     "quote": "where $S_{\\rm CO} \\Delta v = 4.2$ Jy km s$^{-1}$ is the integrated flux density derived from our data cube."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass (M_gas)",
+   "value": "4.95e8",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.4 $^{12}$CO(2$-$1) Emission Moment Maps",
+     "quote": "Under these assumptions, the total molecular gas mass is $M_{\\rm gas} \\approx 4.95 \\times 10^8$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (v_sys)",
+   "value": "7190",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.4 $^{12}$CO(2$-$1) Emission Moment Maps",
+     "quote": "The $^{12}$CO(2$-$1) emission spans in a velocity range of 6815–7550 km s$^{-1}$, with a systemic velocity of $v_{\\rm sys}\\approx 7190$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated SMBH sphere of influence radius (r_soi)",
+   "value": "0.12",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Results",
+     "quote": "Moreover, the synthesized beam of the combined ALMA data cube ($\\theta_{\\rm beam} \\approx 0.13\\ensuremath{''}$) closely matches the estimated SOI radius of the SMBH ($r_{\\rm soi} \\approx 0.12\\ensuremath{''}$), calculated using our best-fit black hole mass and an assumed stellar velocity dispersion of $\\sigma \\approx 290$ km s$^{-1}$ (cite: Pinkney2005)."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular-gas M_BH-sigma relation slope",
+   "value": "4.20",
+   "uncertainty": "+/-0.38",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.7 NGC 4061 Positions on the Molecular Gas Alone $M_{\\rm BH}$–$\\sigma$ and $M_{\\rm BH}$–$M_\\star$ Scaling Relations",
+     "quote": "\\log\\left(\\frac{M_{\\rm BH}}{M_\\odot}\\right) = -(1.25 \\pm 0.94) + (4.20 \\pm 0.38)\\log \\left( \\frac{\\sigma_e}{\\rm km\\ s^{-1}}\\right),"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular-gas M_BH-sigma relation intercept",
+   "value": "-1.25",
+   "uncertainty": "+/-0.94",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.7 NGC 4061 Positions on the Molecular Gas Alone $M_{\\rm BH}$–$\\sigma$ and $M_{\\rm BH}$–$M_\\star$ Scaling Relations",
+     "quote": "\\log\\left(\\frac{M_{\\rm BH}}{M_\\odot}\\right) = -(1.25 \\pm 0.94) + (4.20 \\pm 0.38)\\log \\left( \\frac{\\sigma_e}{\\rm km\\ s^{-1}}\\right),"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular-gas M_BH-M_K,bulge relation slope",
+   "value": "-0.52",
+   "uncertainty": "+/-0.09",
+   "units": "mag^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.7 NGC 4061 Positions on the Molecular Gas Alone $M_{\\rm BH}$–$\\sigma$ and $M_{\\rm BH}$–$M_\\star$ Scaling Relations",
+     "quote": "\\log\\left(\\frac{M_{\\rm BH}}{M_\\odot}\\right) = -(4.46 \\pm 0.30) - (0.52 \\pm 0.09) \\times M_{K,{\\rm bulge}}"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular-gas M_BH-M_K,bulge relation intercept",
+   "value": "-4.46",
+   "uncertainty": "+/-0.30",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.7 NGC 4061 Positions on the Molecular Gas Alone $M_{\\rm BH}$–$\\sigma$ and $M_{\\rm BH}$–$M_\\star$ Scaling Relations",
+     "quote": "\\log\\left(\\frac{M_{\\rm BH}}{M_\\odot}\\right) = -(4.46 \\pm 0.30) - (0.52 \\pm 0.09) \\times M_{K,{\\rm bulge}}"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges identified as line-free for continuum imaging and uvcontsub",
+  "Self-calibration details (Section 2.3 refers to the 'final self-calibrated, cleaned cube', but no self-calibration procedure, solution intervals, or calibration modes are described)",
+  "Resolution of the discrepancy in reported continuum RMS noise (Section 2.2 text states 120 uJy beam^-1, while Table 1 lists 0.02 mJy per beam)",
+  "Flux calibrators used in the ALMA pipeline runs for the three execution blocks",
+  "Whether primary beam correction was applied to the continuum image and CO cube before flux and mass measurements",
+  "MGE table parameters for the dust-unmasked F814W model and the alternative F555W stellar mass model"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel/frequency ranges used as line-free channels in uvcontsub and continuum imaging",
+  "Clarification of whether self-calibration was actually applied and with what parameters",
+  "Exact spatial dust mask polygon/region used on the HST/WFPC2 F814W and F555W images",
+  "MGE component tables for the dust-unmasked F814W and F555W stellar mass models"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The paper provides complete ALMA track IDs, CASA versions, concat weights, imaging parameters, explicit MGE tables for the ISM, PSF, and fiducial F814W stellar model, and full MCMC priors and posteriors. Minor deductions for unstated line-free channel ranges, an unexplained mention of self-calibration, and missing dust-mask coordinates.",
+ "rediscovery_reason": "Both ALMA datasets (2018.1.00397.S and 2019.1.00036.S) and the HST WFPC2 data (PID 9106) are public, the MGE tables and KinMS/AdaMet modeling parameters are explicitly tabulated, and the primary goal is a clear numeric measurement of M_BH and M/L_F814W.",
+ "source_card": "cards/2026ApJ..1005...94N/sonnet/card.md"
+}

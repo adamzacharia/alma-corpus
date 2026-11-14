@@ -1,0 +1,170 @@
+{
+ "bibcode": "2024ApJ...977..238B",
+ "title": "SAUNAS. II. Discovery of Cross-shaped X-Ray Emission and a Rotating Circumnuclear Disk in the Supermassive S0 Galaxy NGC 5084",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad7c4b",
+ "arxiv_id": "2408.10449",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the multi-wavelength structure of the S0 galaxy NGC 5084 (X-ray halo, circumnuclear disk, radio lobes) and what formation scenario explains it?",
+ "alma_project_codes": [
+  "2015.1.00598.S"
+ ],
+ "data": {
+  "bands": "Band 6 (228.273 - 248.12 GHz)",
+  "arrays": "12m",
+  "angular_resolution": "0.508 arcsec (83 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 29.91 +/- 2.12 Mpc",
+    "evidence": [
+     {
+      "loc": "2.2 Hubble Space Telescope Imaging",
+      "quote": "At a distance of $D=  29.91\\pm2.12$ Mpc (cite: koribalski+2004aj128_16)"
+     }
+    ]
+   },
+   "citation": "(cite: koribalski+2004aj128_16)"
+  },
+  {
+   "what": {
+    "value": "M_BH-W50-inclination relation (Eq. 6)",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA CO(2-1) emission line observations",
+      "quote": "we use the definition in (cite: smith+2021mnras500_1933) to measure the mass of the central SMBH based on their fitted relation with the line width at the half-maximum W$_{50}$"
+     }
+    ]
+   },
+   "citation": "(cite: smith+2021mnras500_1933)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit disk geometry from HST dust lane",
+   "method": "Reference points along the F702W dust arc defined in SAODS9 and fit with an ellipse, with 1000 bootstrap/Monte Carlo realisations displacing points within the PSF FWHM",
+   "software": [
+    "SAODS9"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance 29.9 Mpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Detect CO(2-1) and make moment maps",
+   "method": "Spectral rebinning to 12.9 km/s, per-pixel Gaussian fits for intensity, centroid and dispersion; pixels below 95% confidence masked",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure rotation velocity from summed spectrum",
+   "method": "Sum spectra of significant pixels, measure half-maximum velocities by interpolation, 1000 Monte Carlo realisations displacing points by noise",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive SMBH mass",
+   "method": "Apply Smith et al. 2021 W50-inclination relation, propagating uncertainties of relation, inclination and spectra with Monte Carlo",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination from HST ellipse fit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) rotation velocity",
+   "value": "249.1",
+   "uncertainty": "+12.8/-9.6",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 ALMA CO(2-1) emission line observations",
+     "quote": "V$_{\\rm rot} = 249.1^{+12.8}_{-9.6}$ km s$^{-1}$ (W$_{50}=498^{+26}_{-19}$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "W50",
+   "value": "498",
+   "uncertainty": "+26/-19",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 ALMA CO(2-1) emission line observations",
+     "quote": "W$_{50}=498^{+26}_{-19}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_BH/Msun",
+   "value": "7.66",
+   "uncertainty": "+0.21/-0.15",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 ALMA CO(2-1) emission line observations",
+     "quote": "A total mass of $\\log_{10}\\left( \\frac{M_{\\rm BH}}{M_{\\odot}} \\right) = 7.66^{+0.21}_{-0.15}$ is determined for the SMBH of NGC 5084."
+    }
+   ]
+  },
+  {
+   "quantity": "Circumnuclear disk inclination",
+   "value": "71.2",
+   "uncertainty": "+1.8/-1.7",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2 Hubble Space Telescope imaging",
+     "quote": "with a median inclination of $i=71.2^{+1.8}_{-1.7}$ degrees"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumnuclear disk diameter",
+   "value": "304",
+   "uncertainty": "+10/-11",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2 Hubble Space Telescope imaging",
+     "quote": "The disk diameter is $D=304^{+10}_{-11}$ pc"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA CASA/pipeline version and whether the archive or ARI-L cube was used for the quoted numbers",
+  "Beam, rms, image size and cell size of the cube",
+  "Continuum subtraction and line-free channels",
+  "Exact region and mask used when summing spectra, and what the 95% confidence masking threshold is relative to",
+  "Distance of the HST ellipse reference points (SAODS9 selection) not reproducible exactly",
+  "Inclination assumed in the M_BH formula (HST-derived) and how W50 was corrected for instrumental broadening"
+ ],
+ "missing_for_reproduction": [
+  "Moment-map masking details and summed-region definition",
+  "Cube imaging parameters and rms"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "ALMA part is simple and archival with explicit method, but key settings are unstated.",
+ "rediscovery_reason": "Public archival data, short recipe, numeric results (V_rot, W50, M_BH).",
+ "source_card": "cards/2024ApJ...977..238B/sonnet/card.md"
+}

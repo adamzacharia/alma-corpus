@@ -1,0 +1,272 @@
+{
+ "bibcode": "2015ApJ...799...81S",
+ "title": "The SCUBA-2 Cosmology Legacy Survey: ALMA Resolves the Rest-frame Far-infrared Emission of Sub-millimeter Galaxies",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/799/1/81",
+ "arxiv_id": "1411.5025",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the size and morphology of the 870 um dust continuum emission of bright SMGs on 2-10 kpc scales, and how do they compare with sizes at other wavelengths and with quiescent galaxies?",
+ "alma_project_codes": [
+  "2012.1.00090.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um)",
+  "arrays": "26 12-m antennae",
+  "angular_resolution": "0.35''x0.25'' (robust 0.5); detection maps 0.8''x0.65''",
+  "sensitivity": "median rms 0.21 mJy/beam (0.19–0.24) in high-res maps; 0.26 mJy/beam in 0.8'' maps"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST H-band sizes of ALESS SMGs (17 selected)",
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "we have restricted their sample to the 17 SMGs with an apparent $H$–band magnitude $<$ $24$ mag"
+     }
+    ]
+   },
+   "citation": "Chen et al. 2014 (cite: Chen14)"
+  },
+  {
+   "what": {
+    "value": "1.4 GHz VLA sizes of 12 SMGs",
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "a sample of 12 SMGs (median $S_{850}$ = 6.8 $\\pm$ 0.6 mJy) with deconvolved sizes measured from $0.5''$ resolution 1.4 GHz/VLA imaging (cite: Biggs08)"
+     }
+    ]
+   },
+   "citation": "(cite: Biggs08)"
+  },
+  {
+   "what": {
+    "value": "12CO sizes of SMGs",
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "present a compilation (including new observations) of the sizes of SMGs measured from resolved $^{12}$ CO"
+     }
+    ]
+   },
+   "citation": "(cite: Engel10)"
+  },
+  {
+   "what": {
+    "value": "local merger-remnant CO sizes",
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "presented a compilation of $<1$ kpc resolution interferometric imaging (new and archival) of $^{12}$CO"
+     }
+    ]
+   },
+   "citation": "(cite: Ueda14)"
+  },
+  {
+   "what": {
+    "value": "quiescent z~2 galaxy sizes",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "by combining the samples presented by (cite: vandokkum08) and (cite: Krogager13)"
+     }
+    ]
+   },
+   "citation": "(cite: vandokkum08; Krogager13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and build catalog",
+   "method": "Clean to produce 0.3'' high-res and 0.8'' detection maps; select >4σ sources; measure peak and 0.8'' aperture flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Test robustness of resolved sizes",
+   "method": "Split-in-time imaging of UDS 204.0, phase calibrator size test, and 20,000 injected Gaussian simulations",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "SNR>=10 required for 68% of sources recovered with fractional size error <30%"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure sizes of SMGs",
+   "method": "imfit elliptical Gaussian per SMG in 0.3'' maps; uv-plane amplitude fits for 8 isolated SMGs; stacking of faint SMGs with bootstrap errors",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "free parameters: position, peak flux, major/minor axis, PA"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Convert to physical sizes and compare with other wavelengths",
+   "method": "Use photometric redshifts to convert; compare with radio, CO, HST, local U/LIRG sizes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Cosmology OmegaL=0.73, Om=0.27, H0=71"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit Sérsic profile to stack",
+   "method": "Test galfit recovery on 4000 injected models; stack 23 SMGs and fit Sérsic",
+   "software": [
+    "galfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive SFR surface density",
+   "method": "SFR from L_FIR (Salpeter IMF), halved for half-light radius, divided by area of uniform disc; compare to Eddington limit of Andrews & Thompson",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas fraction 1, dust-to-gas 1/90, uniform disc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "median intrinsic angular FWHM, SNR>10 SMGs",
+   "value": "0.30",
+   "uncertainty": "±0.04",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "median intrinsic angular size of FWHM = $0.30 \\pm 0.04''$ for the 23 SMGs"
+    }
+   ]
+  },
+  {
+   "quantity": "median physical FWHM",
+   "value": "2.4",
+   "uncertainty": "±0.2",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Physical size of SMGs",
+     "quote": "the median physical size of the SMGs is $2.4 \\pm 0.2$ kpc (FWHM of the major axis)"
+    }
+   ]
+  },
+  {
+   "quantity": "stacked size SNR 5–10",
+   "value": "0.30",
+   "uncertainty": "±0.07",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Resolved dust emission",
+     "quote": "We derive sizes of 0.30 $\\pm$ 0.07$''$ and 0.35$_{-0.10}^{+0.17}$$''$ for the two sub-samples respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "peak flux ratio 0.3''/0.8''",
+   "value": "0.65",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Resolved dust emission",
+     "quote": "$S^{0.3}_{\\rm pk}$ / $S^{0.8}_{\\rm pk} =$ 0.65 $\\pm$ 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "stacked Sérsic index",
+   "value": "2.5",
+   "uncertainty": "±0.4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Sérsic index",
+     "quote": "Sérsic index of $n$ = 2.5 $\\pm$ 0.4 and a half-light radius of $R_{\\rm e}$ = 0.17 $\\pm$ 0.03$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "median half-light radius at 870 um",
+   "value": "1.2",
+   "uncertainty": "±0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.1",
+     "quote": "the SMGs have a median $R_{\\rm e} = 1.2 \\pm 0.1$ kpc in the sub–millimeter"
+    }
+   ]
+  },
+  {
+   "quantity": "median SFR surface density",
+   "value": "90",
+   "uncertainty": "±30",
+   "units": "Msun/yr/kpc^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "the median star formation rate surface density of the SMGs is $90 \\pm 30$ $\\mathrel{\\rm M_{\\odot}}$ yr$^{-1}$ kpc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "median L_FIR",
+   "value": "5.7e12",
+   "uncertainty": "±0.7e12",
+   "units": "Lsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.3",
+     "quote": "$L_{\\rm FIR} =$ (5.7 $\\pm$  0.7) $\\times$10$^{12}$ L$_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Gaussian taper width/uv-range for detection maps",
+  "clean threshold values, cell and image size, niter",
+  "bandpass calibrator and flux-scale uncertainty",
+  "photometric redshifts and L_FIR values per SMG (from Ma et al. in prep.)",
+  "bootstrap iteration counts",
+  "exact conversion from FWHM to half-light radius and R80",
+  "details of stacking (centering, weighting)"
+ ],
+ "missing_for_reproduction": [
+  "Photometric redshifts and L_FIR tables (Ma et al. in prep.)",
+  "full reduction details deferred to Simpson et al. in prep.",
+  "taper and clean parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear imfit-based method, but reduction details deferred to unpublished paper and redshifts/luminosities come from in-prep work.",
+ "rediscovery_reason": "Public ALMA data, simple Gaussian-fit recipe and numeric size results; redshifts need external catalog.",
+ "source_card": "cards/2015ApJ...799...81S/sonnet/card.md"
+}

@@ -1,0 +1,296 @@
+{
+ "bibcode": "2014ApJ...796..117G",
+ "title": "The Slow Ionized Wind and Rotating Disklike System that are Associated with the High-mass Young Stellar Object G345.4938+01.4677",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/796/2/117",
+ "arxiv_id": "1410.0233",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Is the ionized gas around the high-mass YSO G345.49+1.47 a slow photo-ionized wind rather than a fast jet, as probed by 3 mm continuum and hydrogen recombination lines, and do sulfur-bearing molecules trace a rotating disklike core?",
+ "alma_project_codes": [
+  "2011.0.00351.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12-m antennas, 17 (two SBs) and 25 (three SBs)",
+  "angular_resolution": "typically 2.3\" x 1.3\", PA 97 deg",
+  "sensitivity": "continuum ~50 uJy/beam; lines 1-2 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Centimeter continuum jet/lobe fluxes and spectral index below 10 GHz (0.85+-0.15), inclination ~45 deg, momentum rate",
+    "evidence": [
+     {
+      "loc": "4.4.1 Collimated ionized jet model",
+      "quote": "The inclination angle $i$ was estimated as $\\sim45$$^\\circ$ by (cite: Guzman2010ApJ), based on the appearance of the 2 $\\mu$m image of the inner cavity"
+     }
+    ]
+   },
+   "citation": "(cite: Guzman2010ApJ)"
+  },
+  {
+   "what": {
+    "value": "Distance 1.7 kpc",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "we adopt a distance to IRAS 16562$-$3959 of 1.7 kpc (cite: Lopez2011AA)."
+     }
+    ]
+   },
+   "citation": "(cite: Lopez2011AA)"
+  },
+  {
+   "what": {
+    "value": "Line frequencies and Eu from JPL and CDMS via Splatalogue",
+    "evidence": [
+     {
+      "loc": "3.3 Sulfuretted molecules",
+      "quote": "obtained from the JPL (cite: Pickett1998JQSRT) and CDMS (cite: Muller2001AA) databases consulted through the Splatalogue"
+     }
+    ]
+   },
+   "citation": "(cite: Pickett1998JQSRT; Muller2001AA; Remijan2007AAS)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and image continuum and cubes",
+   "method": "CASA recalibration, phase self-cal, clean with robust 0, uvcontsub",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum sources and spectral indices",
+   "method": "maxfit peak positions, imfit 2D Gaussians for sources 10 and 13, box-integrated fluxes, weighted least-squares spectral index",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "detection threshold 0.75 mJy; boxes of two times beam size; flux uncertainty 2 sigma ~0.1 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit Voigt profiles to HRLs and derive electron density",
+   "method": "Joint chi2 minimization of Voigt functions over three HRLs between -80 and 100 km/s with shared T; Gaussian width 0.22 sqrt(T); Ne from Griem/Walmsley relation",
+   "software": [],
+   "key_parameters": [
+    "sigma = 1 mJy per channel; T fixed at 7000 K after fit"
+   ],
+   "assumptions": [
+    "Te = 7000 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model continuum and HRLs with ionized wind model",
+   "method": "Reynolds-type isothermal power-law jet model; LTE line flux from integral over continuum opacity",
+   "software": [],
+   "key_parameters": [
+    "i=45 deg, r0=100 AU, S100GHz=120.6 mJy, alpha_op=0.92, T0=7000 K; conical eps=1, theta0=0.33, Ne0=2.19e7 cm-3"
+   ],
+   "assumptions": [
+    "Hydrogen only, constant ionization fraction, isothermal, negligible bulk motions"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Excitation temperatures of sulfur species",
+   "method": "Boltzmann diagram with optically thin single excitation temperature models, two-component fit for SO2 and 34SO; opacity from 32SO/34SO ratios",
+   "software": [],
+   "key_parameters": [
+    "line fluxes within 5\"x5\" box, V -30 to 0 km/s; uncertainty 15 mJy km/s"
+   ],
+   "assumptions": [
+    "d=1.7 kpc; [32S/34S]=22.5; rate coefficient 1e-11 cm3/s for high-energy SO2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Dynamical mass of rotating core",
+   "method": "PV diagram of SO2 8(3,5)-9(2,8) perpendicular to jet; 50% contour size and velocity breadth in simplified Franco-Hernandez formula",
+   "software": [],
+   "key_parameters": [
+    "theta_b=1.7\", d=1.7 kpc, i=45 deg"
+   ],
+   "assumptions": [
+    "Centrifugal support against central mass"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Source 10 flux density at 85.4 GHz",
+   "value": "103.8",
+   "uncertainty": "0.90",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 10$^{b}$ | 16 59 41.63                    | $-$40 03 43.6              | 103.8(0.90) | 105.7(1.0) | 118.5(1.1)  | 120.8(1.2)  | 1.01(0.1)   | 0.0        |"
+    }
+   ]
+  },
+  {
+   "quantity": "In-band spectral index of Source 10",
+   "value": "1.01",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 10$^{b}$ | 16 59 41.63                    | $-$40 03 43.6              | 103.8(0.90) | 105.7(1.0) | 118.5(1.1)  | 120.8(1.2)  | 1.01(0.1)   | 0.0        |"
+    }
+   ]
+  },
+  {
+   "quantity": "1-100 GHz spectral index of jet",
+   "value": "0.92",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 The ionized jet observed at 92 GHz",
+     "quote": "power law in frequency with an spectral index of $0.92\\pm0.01$ over the entire frequency range"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust flux of Source 10 at 92 GHz",
+   "value": "~11",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 The ionized jet observed at 92 GHz",
+     "quote": "we find that the flux attributable to dust is $\\sim11$ mJy at 92 GHz, that is, $\\sim$10% of the total flux"
+    }
+   ]
+  },
+  {
+   "quantity": "Voigt Lorentzian HWHM H40alpha",
+   "value": "18.6",
+   "uncertainty": "1.0",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| H40$\\alpha$ | $41.4\\pm0.8$ | $-14.8\\pm0.5$ | $18.6\\pm1.0$  |     $9.7\\pm0.5$     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron density from H40alpha",
+   "value": "9.7e7",
+   "uncertainty": "0.5e7",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| H40$\\alpha$ | $41.4\\pm0.8$ | $-14.8\\pm0.5$ | $18.6\\pm1.0$  |     $9.7\\pm0.5$     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic electron density",
+   "value": "5e7",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3.2 Electron density",
+     "quote": "We find a characteristic value for the electron density of $5\\times10^7$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit gas temperature (free)",
+   "value": "2000",
+   "uncertainty": "+6000/-1000",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3.1 Voigt profile fitting",
+     "quote": "Our best-fit model indicates that this temperature is $T=2000^{+6000}_{-1000}$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Warm and hot SET temperatures",
+   "value": "140 and 35",
+   "uncertainty": "+60/-20 and +25/-20",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5.2 Excitation temperatures",
+     "quote": "with temperatures of $140^{+60}_{-20}$ and $35^{+25}_{-20}$ K, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "56",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5.3 Dynamics of the molecular emission",
+     "quote": "we derive a dynamical mass of $56\\mbox{$\\,M_{\\ensuremath{\\odot}}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Size of rotating core",
+   "value": "3000",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5.3 Dynamics of the molecular emission",
+     "quote": "is $3000$ AU"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum fitting and uvcontsub",
+  "Clean masks, thresholds and iteration counts",
+  "Self-calibration solution interval",
+  "Hanning smoothing details",
+  "Exact CASA version",
+  "Box/aperture used to extract HRL spectra at peak",
+  "Fit optimizer for Voigt and SET models",
+  "Pixel/channel selection for PV diagram and moment maps (clipping)",
+  "Cm-wavelength flux data used for 1-100 GHz spectrum"
+ ],
+ "missing_for_reproduction": [
+  "Cm-wavelength flux densities for 1-100 GHz SED",
+  "Clean parameters and line-free channels",
+  "Exact CASA version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and detailed equations, but imaging details and model fitting are partly heuristic and some inputs come from earlier work.",
+ "rediscovery_reason": "Public Cycle 0 data and released products; main results (Voigt widths, densities, dynamical mass) are numeric with described recipe.",
+ "source_card": "cards/2014ApJ...796..117G/sonnet/card.md"
+}

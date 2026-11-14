@@ -1,0 +1,1100 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...683A.133G",
+  "title": "TIPSY: Trajectory of Infalling Particles in Streamers around Young stars. Dynamical analysis of the streamers around S CrA and HL Tau",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Gupta, Aashish",
+  "n_authors": 6,
+  "arxiv_id": "2401.10403",
+  "doi": "10.1051/0004-6361/202348007",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2016.1.00366.S",
+   "2019.1.01792.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We used TIPSY to fit molecular-line ALMA observations of streamers around a Class II binary system, S CrA, and a Class I/II protostar, HL Tau."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "S CrA",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "160 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Distance \\[pc\\]               | 160   | 147    |"
+       },
+       {
+        "loc": "Stellar parameters for S CrA and HL Tau",
+        "quote": "Distance estimate for S CrA is based on *Gaia* DR3 parallax value (cite: gaiadr3)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 parallax",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Distance \\[pc\\]               | 160   | 147    |"
+       },
+       {
+        "loc": "Stellar parameters for S CrA and HL Tau",
+        "quote": "Distance estimate for S CrA is based on *Gaia* DR3 parallax value (cite: gaiadr3)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "HL Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "147 pc",
+      "evidence": [
+       {
+        "loc": "Stellar parameters for S CrA and HL Tau",
+        "quote": "*Gaia* measurements were unavailable for HL Tau, so we used the estimate of the distance to its surrounding cloud, Lynds 155 (cite: Galli2018)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "distance to Lynds 155 cloud (Galli2018)",
+      "evidence": [
+       {
+        "loc": "Stellar parameters for S CrA and HL Tau",
+        "quote": "*Gaia* measurements were unavailable for HL Tau, so we used the estimate of the distance to its surrounding cloud, Lynds 155 (cite: Galli2018)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Are observed streamer-like structures around S CrA and HL Tau consistent with infalling motion, and what are their dynamical parameters (energy, angular momentum, infall time, mass infall rate)?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In order to ascertain the infalling nature of observed streamer-like structures and then systematically characterize their dynamics, we developed the code TIPSY"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.01792.S",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "taken as a part of the same ALMA project (Project Id.: 2019.1.01792.S)"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00366.S",
+     "evidence": [
+      {
+       "loc": "3.2 HL Tau",
+       "quote": "HCO$^{+}$ (3–2) ALMA observations (Project Id.: 2016.1.00366.S) of HL Tau"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "13CO (2–1) for S CrA; HCO+ (3–2) for HL Tau",
+    "evidence": [
+     {
+      "loc": "3 Applications",
+      "quote": "We present the fitting results for $^{13}$CO (2–1) data of S CrA and HCO$^{+}$ (3–2) data of HL Tau"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "channel width ~0.1 km/s for both datasets",
+    "evidence": [
+     {
+      "loc": "4.1 Data requirements",
+      "quote": "The channel width (velocity resolution) for both the S CrA and HL Tau observations is $\\sim0.1$ km s$^{-1}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "2–1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "we used the $^{13}$CO (2–1) observations"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "3–2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.2 HL Tau",
+       "quote": "same self-calibrated HCO$^{+}$ (3–2) ALMA observations"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "2–1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Stellar parameters for S CrA and HL Tau",
+       "quote": "using the peak of Gaussian fits to C$^{18}$O (2–1) disk spectra"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "HL Tau data reveal only ~300 au of streamer, limited by largest recoverable scale",
+    "evidence": [
+     {
+      "loc": "4.1 Data requirements",
+      "quote": "limited by the largest recoverable scale, reveal only a $\\sim300$ au part of streamer"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "S CrA stellar mass (2 Msun total, 1 Msun each)",
+      "evidence": [
+       {
+        "loc": "Stellar parameters for S CrA and HL Tau",
+        "quote": "Stellar mass estimates for S CrA and HL Tau were taken from (cite: Gahm2018) and (cite: Yen2019), respectively."
+       }
+      ]
+     },
+     "citation": "(cite: Gahm2018)"
+    },
+    {
+     "what": {
+      "value": "HL Tau stellar mass and systemic velocity",
+      "evidence": [
+       {
+        "loc": "Stellar parameters for S CrA and HL Tau",
+        "quote": "For HL Tau, the systemic velocity derived by (cite: Yen2019) was used."
+       }
+      ]
+     },
+     "citation": "(cite: Yen2019)"
+    },
+    {
+     "what": {
+      "value": "Einstein A and Eu from LAMDA; partition function from CDMS",
+      "evidence": [
+       {
+        "loc": "4.2 Physical parameters",
+        "quote": "from the Leiden Atomic and Molecular Database (cite: lamda)"
+       }
+      ]
+     },
+     "citation": "(cite: lamda); (cite: cdms)"
+    },
+    {
+     "what": {
+      "value": "13CO abundance 1.45e-6; HCO+ abundance 1e-9",
+      "evidence": [
+       {
+        "loc": "4.2 Physical parameters",
+        "quote": "$1.45\\times10^{-6}$ for $^{13}$CO (cite: Huang2020) and $10^{-9}$ for HCO$^{+}$ (cite: jorgensen04)"
+       }
+      ]
+     },
+     "citation": "(cite: Huang2020); (cite: jorgensen04)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "S CrA: standard pipeline calibrated data; HL Tau: self-calibrated data as in Yen2019",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "We used the standard pipeline calibrated data"
+      },
+      {
+       "loc": "3.2 HL Tau",
+       "quote": "we used the same self-calibrated HCO$^{+}$ (3–2) ALMA observations"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust=0.5 (S CrA)",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "the imaging was done using \"Briggs\" weighting with robust=0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.05 arcsec (S CrA)",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "a cell size of 0.05$''$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "auto-multithresh with default parameters (S CrA)",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "\"auto-multithresh\" masking with default parameters"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "HL Tau HCO+ (3–2) data reduction and self-calibration as in Yen2019",
+      "evidence": [
+       {
+        "loc": "3.2 HL Tau",
+        "quote": "we used the same self-calibrated HCO$^{+}$ (3–2) ALMA observations (Project Id.: 2016.1.00366.S) of HL Tau as described in (cite: Yen2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Yen2019)"
+    },
+    {
+     "what": {
+      "value": "Infall trajectory model",
+      "evidence": [
+       {
+        "loc": "2 Fitting methodology",
+        "quote": "TIPSY fits theoretical trajectories expected for infalling gas, following the model given in (cite: Mendoza2009)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Mendoza2009)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging details for HL Tau (beam, robust, cell, rms) and for S CrA beam/rms/image size",
+    "Observing configurations, dates, integration times, beams",
+    "Exact OPTICS parameters (min_samples, xi) and the default distance bin definition",
+    "Parameter grid ranges and resolutions for LOS distance, POS speed, direction",
+    "Continuum subtraction and line-free channels",
+    "Streamer region definition beyond Table 1 limits",
+    "CASA version"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Isolate streamer emission",
+    "method": {
+     "value": "Visually define sub-cube in RA, Decl., RV; remove pixels below sigma threshold; OPTICS clustering keeps biggest cluster",
+     "evidence": [
+      {
+       "loc": "2.2 Fitting procedure",
+       "quote": "we visually examine the emission maps and define a boundary for a sub-cube that encompasses the streamer emission using RA, Decl., and RV limits."
+      },
+      {
+       "loc": "2.2 Fitting procedure",
+       "quote": "The biggest coherent cluster of emission in the selected sub-cube is identified as the streamer"
+      }
+     ]
+    },
+    "software": [
+     "TIPSY",
+     "scikit-learn"
+    ],
+    "key_parameters": [
+     {
+      "value": "Significance level 3 sigma (S CrA), 4 sigma (HL Tau); limits in Table 1",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Significance ($\\sigma$) level | 3     | 4      |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Reduce point cloud to curve",
+    "method": {
+     "value": "Bin points by distance metric d=sqrt(r^2+(w r theta)^2) into ten bins; intensity-weighted means and standard deviations of RA, Decl., RV",
+     "evidence": [
+      {
+       "loc": "2.2 Fitting procedure",
+       "quote": "we first divide the streamer points into several bins, set to ten by default, based on a distance metric."
+      }
+     ]
+    },
+    "software": [
+     "TIPSY"
+    ],
+    "key_parameters": [
+     {
+      "value": "w=1 by default, 10 bins",
+      "evidence": [
+       {
+        "loc": "2.2 Fitting procedure",
+        "quote": "is by default equal to one"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit infall trajectories",
+    "method": {
+     "value": "Grid over 3 free parameters (LOS separation, POS speed, POS direction) with Mendoza2009 trajectories; spline interpolation at distance metric; best fit = highest fraction within error bars, tie broken by lowest chi-squared",
+     "evidence": [
+      {
+       "loc": "2.2 Fitting procedure",
+       "quote": "We consider the best-fit trajectory as the one that can accommodate the highest fraction of mean values representing the observed streamer, within their error bars."
+      }
+     ]
+    },
+    "software": [
+     "TIPSY",
+     "scipy"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Only point-mass gravity of the protostar; stellar mass, distance, systemic velocity fixed",
+      "evidence": [
+       {
+        "loc": "2.4 Caveats",
+        "quote": "we consider only one force acting on the infalling material: the gravitational force of a point mass (protostar)."
+       }
+      ]
+     },
+     {
+      "value": "Line intensity traces gas density",
+      "evidence": [
+       {
+        "loc": "2.4 Caveats",
+        "quote": "we also assume that the observed intensity of molecular-line emission represents the actual density distribution of gas."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Grid search, no sampler; goodness = fitting fraction and chi-squared",
+     "evidence": [
+      {
+       "loc": "Fitting procedure",
+       "quote": "We consider the best-fit trajectory as the one that can accommodate the highest fraction of mean values representing the observed streamer, within their error bars. In cases where multiple trajectories fit the same fraction of values, we choose the trajectory with the lowest chi-squared deviation"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Implementation compared with two-body REBOUND simulations",
+     "evidence": [
+      {
+       "loc": "2.1 Physical model",
+       "quote": "were also validated through two-body simulations using the REBOUND framework"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate uncertainties",
+    "method": {
+     "value": "Std of parameters among trajectories with fitting fraction >=0.9, floored at grid resolution; propagated to derived quantities",
+     "evidence": [
+      {
+       "loc": "2.3 Error estimation",
+       "quote": "the errors are estimated as the standard deviations of each parameter for these parameter combinations with sufficiently good fits (fitting fraction greater $\\geq 0.9$)."
+      }
+     ]
+    },
+    "software": [
+     "TIPSY"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive energies, angular momentum, infall time",
+    "method": {
+     "value": "Specific kinetic and potential energy, r0 x v0, infall time to closest approach from best-fit trajectory",
+     "evidence": [
+      {
+       "loc": "4.2 Physical parameters",
+       "quote": "specific (per unit mass) kinetic energy can be estimated as $0.5\\times(v_{RA}^{2}+v_{Decl.}^{2}+v_{LOS}^{2})$."
+      }
+     ]
+    },
+    "software": [
+     "TIPSY"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Estimate streamer mass and infall rate",
+    "method": {
+     "value": "Optically thin lower-limit mass from integrated flux (Bergin2013 formula); Mdot = M_streamer / T_inf",
+     "evidence": [
+      {
+       "loc": "4.2 Physical parameters",
+       "quote": "estimate mass infall rates as $\\dot{M}_{inf}=M_{streamer}/T_{inf}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "A=6.038e-7 s^-1, Eu=15.87 K (13CO); A=1.453e-3 s^-1, Eu=25.68 K (HCO+); Q=19.6, 12.0 at 25 K",
+      "evidence": [
+       {
+        "loc": "4.2 Physical parameters",
+        "quote": "were 19.6 and 12.0 for $^{13}$CO and HCO$^{+}$, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "T=25 K, abundances 1.45e-6 (13CO), 1e-9 (HCO+), optically thin",
+      "evidence": [
+       {
+        "loc": "4.2 Physical parameters",
+        "quote": "For both sources, we assumed a representative temperature of 25 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Treated as order-of-magnitude estimates",
+     "evidence": [
+      {
+       "loc": "4.2 Physical parameters",
+       "quote": "these values should be treated as an order of magnitude estimates"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "TIPSY",
+    "version": "not stated",
+    "used_for": {
+     "value": "fit infall trajectories to streamers",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "we have developed the code Trajectory of Infalling Particles in Streamers around Young Stars (TIPSY)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scikit-learn (OPTICS)",
+    "version": "not stated",
+    "used_for": {
+     "value": "cluster removal of unrelated emission",
+     "evidence": [
+      {
+       "loc": "2.2 Fitting procedure",
+       "quote": "we use the sklearn (cite: scikit-learn) implementation of the Ordering Points To Identify the Clustering Structure"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy",
+    "version": "not stated",
+    "used_for": {
+     "value": "first-order spline interpolation",
+     "evidence": [
+      {
+       "loc": "2.2 Fitting procedure",
+       "quote": "We use the first-order spline interpolation, as implemented in scipy (cite: scipy)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "REBOUND",
+    "version": "not stated",
+    "used_for": {
+     "value": "two-body validation of trajectories",
+     "evidence": [
+      {
+       "loc": "2.1 Physical model",
+       "quote": "validated through two-body simulations using the REBOUND framework"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA tclean (auto-multithresh)",
+    "version": "not stated",
+    "used_for": {
+     "value": "imaging of S CrA with auto-multithresh masking",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "\"auto-multithresh\" masking with default parameters"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "general analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This work made use of Astropy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TRIVIA and Plotly",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D plots",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "The three-dimensional plots were made using TRIVIA"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "S CrA specific total energy",
+    "value": "-1.1",
+    "uncertainty": "0.1",
+    "units": "km^2 s^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.1 S CrA",
+      "quote": "of $-1.1\\pm0.1$ km$^{2}$ s$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "S CrA specific angular momentum",
+    "value": "791",
+    "uncertainty": "218",
+    "units": "AU km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Specific angular momentum \\[AU km / s\\] | 791$\\pm$218 | 606$\\pm$1803 |"
+     }
+    ]
+   },
+   {
+    "quantity": "HL Tau specific angular momentum",
+    "value": "606",
+    "uncertainty": "1803",
+    "units": "AU km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Specific angular momentum \\[AU km / s\\] | 791$\\pm$218 | 606$\\pm$1803 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Infall time S CrA",
+    "value": "8301",
+    "uncertainty": "1358",
+    "units": "yr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "We found infall timescales of $8301\\pm1358$ yr and $2724\\pm1237$ yr"
+     }
+    ]
+   },
+   {
+    "quantity": "Infall time HL Tau",
+    "value": "2724",
+    "uncertainty": "1237",
+    "units": "yr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "We found infall timescales of $8301\\pm1358$ yr and $2724\\pm1237$ yr"
+     }
+    ]
+   },
+   {
+    "quantity": "Streamer mass S CrA (lower limit)",
+    "value": ">=2.1e-4",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "$\\gtrsim2.1\\times10^{-4}$ M$_{\\odot}$ and $\\gtrsim1.2\\times10^{-5}$ M$_{\\odot}$ for S CrA and HL Tau"
+     }
+    ]
+   },
+   {
+    "quantity": "Streamer mass HL Tau (lower limit)",
+    "value": ">=1.2e-5",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "$\\gtrsim2.1\\times10^{-4}$ M$_{\\odot}$ and $\\gtrsim1.2\\times10^{-5}$ M$_{\\odot}$ for S CrA and HL Tau"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass infall rate S CrA",
+    "value": ">=2.5e-8 (>=27 MJup/Myr)",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "$\\gtrsim2.5\\times10^{-8}$ M$_{\\odot}$ yr$^{-1}$ (or $\\gtrsim27$ M$_{jupiter}$ Myr$^{-1}$) for S CrA"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass infall rate HL Tau",
+    "value": ">=4.5e-9 (>=4.7 MJup/Myr)",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "$\\gtrsim4.5\\times10^{-9}$ M$_{\\odot}$ yr$^{-1}$ (or $\\gtrsim4.7$ M$_{jupiter}$ Myr$^{-1}$) for HL Tau"
+     }
+    ]
+   },
+   {
+    "quantity": "Integrated streamer flux S CrA",
+    "value": "1.3e-20",
+    "uncertainty": "not stated",
+    "units": "W m^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Physical parameters",
+      "quote": "$1.3\\times10^{-20}$ W m$^{-2}$ for S CrA and $4.2\\times10^{-21}$ W m$^{-2}$ for HL Tau"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HL Tau fit is poorly constrained because only ~300 au of streamer is covered; recoverable scales >~1000 au are better",
+    "evidence": [
+     {
+      "loc": "4.1 Data requirements",
+      "quote": "This suggests that observations with higher recoverable scales ($\\gtrsim$1000 au) are better for constraining streamer dynamics."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "S CrA streamer is infalling gas on a bound trajectory",
+    "experiment": "TIPSY fit to 13CO (2–1) PPV streamer",
+    "result": "All ten curve points fit; total energy -1.1±0.1 km^2/s^2",
+    "finding": "Bound elliptical infall, not ejection or disk spiral",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 S CrA",
+      "quote": "the material is strongly bound to the protostars"
+     }
+    ]
+   },
+   {
+    "hypothesis": "HL Tau streamer is consistent with infall",
+    "experiment": "TIPSY fit to HCO+ (3–2)",
+    "result": "All points fit; kinetic ≈ potential energy but large uncertainties",
+    "finding": "Consistent with roughly parabolic infall, poorly constrained",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.2 HL Tau",
+      "quote": "TIPSY could not constrain the trajectory of infalling particles for HL Tau well"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Streamers can add significantly to planet-forming mass budget",
+    "experiment": "Lower-limit streamer masses divided by infall times",
+    "result": "≳27 and ≳5 MJup/Myr",
+    "finding": "Could increase mass budget significantly if sustained",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "If sustained for long enough ($\\gtrsim$ 0.1 Myr), such mass infall rates can significantly increase the mass budget"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "13CO chosen over 12CO because 12CO suffers cloud absorption and contamination",
+    "evidence": [
+     {
+      "loc": "3 Applications",
+      "quote": "most of the streamers have been serendipitously observed in bright $^{12}$CO emission and generally suffer from significant cloud absorption and contamination."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Ejection and gravitational-instability spiral rejected for S CrA via negative energy and large size",
+     "evidence": [
+      {
+       "loc": "3.1 S CrA",
+       "quote": "further indicate that this is not a spiral arm induced by gravitationally unstable disk."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Errors in fixed parameters not propagated; mass estimates are lower limits and order of magnitude",
+     "evidence": [
+      {
+       "loc": "2.3 Error estimation",
+       "quote": "TIPSY does not currently propagate errors in the fixed parameters to the errors of fitted parameters."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Uncertainties from the std of good-fit grid points are not formal confidence intervals",
+    "S CrA binary tidal forces ignored although the inner velocity profile is not reproduced",
+    "Fixed mass and distance errors not propagated; mass rate relies on assumed T and abundances"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project codes given; code on GitHub",
+    "evidence": [
+     {
+      "loc": "footnote",
+      "quote": "https://github.com/AashishGpta/TIPSY"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "TIPSY at https://github.com/AashishGpta/TIPSY",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "https://github.com/AashishGpta/TIPSY"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Grid ranges/resolution and OPTICS settings",
+    "HL Tau imaging/self-cal products from Yen2019",
+    "Beam and rms values"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB raw for two projects; small if using calibrated cubes",
+   "score_inferred": 3,
+   "score_reason": "Code is public and method well described, but imaging details and grid settings are partly missing, and HL Tau data are self-calibrated products from another paper.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "HL Tau data depend on Yen2019 self-calibration, and the grid parameters are unstated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Mendoza2009)",
+     "why": "Infall trajectory equations"
+    },
+    {
+     "citation": "(cite: Ulrich1976)",
+     "why": "UCM model basis"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Gupta2023)",
+     "why": "Original S CrA streamer detection in 12CO"
+    },
+    {
+     "citation": "(cite: Yen2019)",
+     "why": "HL Tau streamer analysis and data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-13635078f6d223f136f2c3420b8720ed",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:45",
+  "usage": {
+   "input_tokens": 25846,
+   "output_tokens": 8680,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.069852,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 69,
+  "quotes_ok": 69,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 1,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 87,
+   "stated": 46,
+   "rate": 0.529
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:04",
+  "custom_id": "repair-sonnet-2b47f9e593af19f1b5e163cad1d54d2c",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "We consider the best-fit trajectory as the one that can accommodate the highest fraction of mean values representing the observed streamer, within their error bars. In cases where multiple trajectories fit the same fraction of values, we choose the trajectory with the lowest chi-squared deviation"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,549 @@
+{
+ "bibcode": "2019ApJS..244...40L",
+ "title": "Automated Mining of the ALMA Archive in the COSMOS Field (A<SUP>3</SUP>COSMOS). I. Robust ALMA Continuum Photometry Catalogs and Stellar Mass and Star Formation Properties for ∼700 Galaxies at z = 0.5-6",
+ "year": 2019,
+ "doi": "10.3847/1538-4365/ab42da",
+ "arxiv_id": "1910.12872",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "How to systematically mine inhomogeneous public ALMA archival data in the COSMOS field to produce robust continuum photometry catalogs and derive stellar mass and star formation properties for high-redshift galaxies.",
+ "alma_project_codes": [
+  "2011.0.00064.S",
+  "2011.0.00539.S",
+  "2011.0.00742.S",
+  "2012.1.00323.S",
+  "2012.1.00523.S",
+  "2012.1.00536.S",
+  "2012.1.00919.S",
+  "2012.1.00978.S",
+  "2013.1.00034.S",
+  "2013.1.00118.S",
+  "2013.1.00151.S",
+  "2013.1.00171.S",
+  "2013.1.00208.S",
+  "2013.1.00668.S",
+  "2013.1.00815.S",
+  "2013.1.00914.S",
+  "2013.1.01258.S",
+  "2013.1.01292.S",
+  "2015.1.00026.S",
+  "2015.1.00122.S",
+  "2015.1.00137.S",
+  "2015.1.00299.S",
+  "2015.1.00379.S",
+  "2015.1.00388.S",
+  "2015.1.00540.S",
+  "2015.1.00664.S",
+  "2015.1.00704.S",
+  "2015.1.00861.S",
+  "2015.1.00862.S",
+  "2015.1.00928.S",
+  "2015.1.01074.S",
+  "2015.1.01111.S",
+  "2015.1.01171.S",
+  "2015.1.01495.S",
+  "2015.1.01590.S",
+  "2015.A.00026.S",
+  "2016.1.00478.S",
+  "2016.1.00735.S",
+  "2016.1.01208.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 5, Band 6, Band 7, Band 8, Band 9",
+  "arrays": "12m array",
+  "angular_resolution": ">= 0.1 arcsec (mean beam size 0.305 to 2.164 arcsec across Bands 3-9; <0.1 arcsec excluded)",
+  "sensitivity": "Mean RMS noise 0.025 to 1.757 mJy/beam across Bands 3-9 (0.077 in Band 6, 0.160 in Band 7)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS2015 optical/near-IR prior catalog, 3 arcsec aperture photometry, and photometric redshifts",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "COSMOS2015 catalog 1 _._ 8 1182108 1182108 738420 VISTA _z Y JHK_ _s_ 24.0 (3 _σ_, 3 _[′′]_, _K_ _s_ ) _∼_ 1 _[′′]_ (Laigle et al. 2016)"
+     },
+     {
+      "loc": "4.3 Combining multi-wavelength photometry and prior",
+      "quote": "(2016) catalog, and use the 3 _[′′]_ diameter aperture fluxes to be consistent with Laigle et al. (2016)"
+     }
+    ]
+   },
+   "citation": "Laigle et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Ks-band prior catalog",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "_K_ _s_ -band catalog 1 _._ 6 _[f]_ 263229 18536 10799 VISTA _K_ _s_ 24.35 (3 _σ_, 2 _[′′]_ _._ 1) _∼_ 1 _[′′]_ (Muzzin et al. 2013) _[f]_"
+     }
+    ]
+   },
+   "citation": "Muzzin et al. (2013)"
+  },
+  {
+   "what": {
+    "value": "i-band prior catalog and HST ACS i-band image",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "_i_ -band catalog 1 _._ 8 386125 31159 30146 CFHT _i_ _[⋆]_ + 26.2 (5 _σ_, 3 _[′′]_ ) _∼_ 0 _[′′]_ _._ 5 (Capak et al. 2007) _Subaru_ _i_ [+]"
+     }
+    ]
+   },
+   "citation": "Capak et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "SPLASH IRAC supplementary prior catalog",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "SPLASH IRAC 1 _._ 6 5390 4685 3690 _Spitzer_ /IRAC 25.5 (3 _σ_ ) _∼_ 1 _[′′]_ _._ 6 supplementary catalog _[g]_ 3.6 + 4.5 _µ_ m"
+     }
+    ]
+   },
+   "citation": "SPLASH (PI: P. Capak; I. Davidzon; priv. comm.)"
+  },
+  {
+   "what": {
+    "value": "VLA 3 GHz prior catalog and image",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "VLA catalog 2 10922 1042 644 VLA 3 GHz 2 _._ 3 _µ_ Jy (1 _σ_ ) _∼_ 0 _[′′]_ _._ 75 (Smolčić et al. 2017)"
+     }
+    ]
+   },
+   "citation": "Smolčić et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Spitzer/IRAC prior catalog",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "IRAC catalog 2 _._ 3 347332 55346 54642 _Spitzer_ /IRAC 24.01 (5 _σ_, _∼_ 1 _[′′]_ _._ 6 (Sanders et al. 2007) 3 _._ 6 _−_ 8 _._ 0 _µ_ m 3.6 _µ_ m)"
+     }
+    ]
+   },
+   "citation": "Sanders et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "Super-deblended far-IR/(sub-)mm/radio photometry and photo-z catalog",
+    "evidence": [
+     {
+      "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+      "quote": "Further, we adopt the far-IR/(sub-)mm/radio photometry from Jin et al. (2018)."
+     }
+    ]
+   },
+   "citation": "Jin et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift compilation in COSMOS",
+    "evidence": [
+     {
+      "loc": "2. DATA AND PHOTOMETRY",
+      "quote": "Spectroscopic redshifts also exist for _∼_ 7 _._ 1 _×_ 10 [4] galaxies, from the latest compilation by M. Salvato et al. (version Sept. 1st, 2017; available internally in the COSMOS collaboration)"
+     }
+    ]
+   },
+   "citation": "M. Salvato et al. (version Sept. 1st, 2017)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshifts and stellar mass functions for z > 2.5 galaxies",
+    "evidence": [
+     {
+      "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+      "quote": "the Davidzon et al. (2017) photometric catalog for the same UltraVISTA galaxies as Laigle et al. (2016) but with optimized SED fitting for _z_ _>_ 2 _._ 5 sources;"
+     }
+    ]
+   },
+   "citation": "Davidzon et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshifts, AGN classifications, and SED3FIT stellar masses for radio-detected galaxies",
+    "evidence": [
+     {
+      "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+      "quote": "the Delvecchio et al. (2017) photometric catalog for radio-detected galaxies;"
+     },
+     {
+      "loc": "4.6. Obtaining galaxy properties from SED fitting",
+      "quote": "In Fig. 24 we further compare our final _M_ _∗_ to the Delvecchio et al. (2017) SED3FIT fitted _M_ _∗_ for 396 sources in common"
+     }
+    ]
+   },
+   "citation": "Delvecchio et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshifts for X-ray-detected AGNs",
+    "evidence": [
+     {
+      "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+      "quote": "and the Salvato et al. (2011) photometric catalog for X-ray-detected active galactic nuclei (AGNs)."
+     }
+    ]
+   },
+   "citation": "Salvato et al. (2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Query archive, calibrate visibilities, and create continuum images",
+   "method": "Query ALMA archive within 2 deg of COSMOS center, calibrate raw visibilities with scriptForPI.py, and image/clean all spectral windows into continuum maps using MFS (nterms=2) and Briggs weighting (robust=2), excluding beam < 0.1 arcsec.",
+   "software": [
+    "astroquery",
+    "CASA",
+    "CASA imaging pipeline",
+    "clean"
+   ],
+   "key_parameters": [
+    "search radius = 2 degrees, weighting = Briggs with robust=2 (or 0.5 for artifacts), MFS nterms=2, stopping criterion S/N = 4, 5 pixels per beam, PBA >= 0.2, beam >= 0.1 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Blind source extraction on PBA-uncorrected continuum images",
+   "method": "Identify emission islands and fit multiple 2D Gaussians on PBA-uncorrected images using PyBDSF, grouping Gaussians of the same island into one source.",
+   "software": [
+    "PyBDSF",
+    "AIPS DECONV.FOR"
+   ],
+   "key_parameters": [
+    "thresh_pix = 4, thresh_isl = 3"
+   ],
+   "assumptions": [
+    "Constant noise across the PBA-uncorrected field of view; single PBA factor at source central position"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compile prior source master catalog and perform prior source fitting",
+   "method": "Cross-match 6 multi-wavelength COSMOS catalogs with 1 arcsec radius, correct mean astrometric offsets, pre-select candidates via aperture photometry (getpix), and iteratively fit point-source, circular Gaussian, and Sersic profiles using GALFIT.",
+   "software": [
+    "getpix",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "master catalog matching radius = 1 arcsec; getpix apertures = 0.25'' to 2'' in 0.25'' steps; pre-selection S/N_total > 2 or S/N_peak > 3.6; position variation limit = 0.7 arcsec; size upper boundary = 3.0 arcsec"
+   ],
+   "assumptions": [
+    "Image background is zero"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Monte Carlo simulations for flux bias correction, error re-estimation, and completeness",
+   "method": "Run FULL and PHYS Monte Carlo simulations by injecting Gaussian mock sources into PyBDSF residual images of 150+ representative pointings, recovering them with PyBDSF and GALFIT, and deriving 2D lookup corrections as functions of S/N_peak and Theta_beam.",
+   "software": [
+    "PyBDSF",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "150+ representative images; 4225 realizations per image for FULL, 273 for PHYS; cross-match radius = 1.5 arcsec for PyBDSF completeness"
+   ],
+   "assumptions": [
+    "Gaussian source morphology with axis ratio 0.2 to 1.0; PHYS simulation assumes 2SFM, Davidzon et al. (2017) SMF, Sargent et al. (2014) MS, van der Wel et al. (2014) and Fujimoto et al. (2017) sizes"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Catalog merging and machine-learning counterpart association",
+   "method": "Select blind detections with S/N_peak > 5.40 and prior detections with S/N_peak > 4.35, cross-match within 1.0 arcsec, and classify counterpart reliability using a Gaussian Process classifier trained on visual inspection and multi-wavelength cutout parameters.",
+   "software": [
+    "scikit-learn"
+   ],
+   "key_parameters": [
+    "S/N_peak > 5.40 (blind), S/N_peak > 4.35 (prior); cross-match radius = 1.0 arcsec; training/validation split = 60%/40%; features = Sep., S/N_ALMA, S/N_Ref., S./Ref., Ext., crowdedness, clean"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Predict and subtract strong (sub-)mm emission line contamination",
+   "method": "Predict CO, [C I], [C II], and [N II] line luminosities from empirical line-L_IR relations using source redshift and SFR, check whether lines fall into the ALMA spectral windows, and subtract predicted line flux contribution from continuum.",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "lines predicted: CO (2 <= J_upper <= 10), [C I] (370, 609 um), [N II] (122, 205 um), [C II] (158 um)"
+   ],
+   "assumptions": [
+    "Empirical line-L_IR correlations from De Looze et al. (2011), Zhao et al. (2013, 2016), Sargent et al. (2014), Liu et al. (2015), Valentino et al. (2018)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Multi-wavelength SED fitting to derive stellar masses, IR luminosities, and SFRs",
+   "method": "Fit UV-to-mm/radio SEDs with MAGPHYS at fixed prior redshifts (iterating over inconsistent prior-z values and with/without 24 um data) and with MAGPHYS+photo-z to obtain uncertainties, flagging >5 sigma ALMA SED-excess outliers.",
+   "software": [
+    "MAGPHYS",
+    "MAGPHYS+photo-z",
+    "Crab.Toolkit.michi2"
+   ],
+   "key_parameters": [
+    "inconsistent prior-z threshold Delta z > 0.15 * (1+z); SED-excess outlier threshold S_OBS / S_SED > 1.77 (5 sigma); photo-z range z = 0 to 8"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology (H_0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_0 = 0.7), Chabrier (2003) IMF, energy balance between UV/optical dust attenuation and IR/mm dust emission, Kennicutt (1998) SFR_IR calibration"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of ALMA continuum images processed (v20180102)",
+   "value": "1534",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.7. Final Galaxy Catalog and Properties",
+     "quote": "from a parent sample 823 galaxies with at least one ALMA detection in 1534 ALMA archive images (from 142 ALMA projects) available for the COSMOS field"
+    },
+    {
+     "loc": "6. SUMMARY",
+     "quote": "for the COSMOS field 1534 pointings covering an area of 164 arcmin [2] have been publicly available since Jan. 2nd, 2018"
+    }
+   ]
+  },
+  {
+   "quantity": "Total primary beam area covered (v20180102)",
+   "value": "164",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. DATA AND PHOTOMETRY",
+     "quote": "The sum of primary beam area of these observations reaches 164 arcmin [2] as of Jan. 2nd, 2018"
+    }
+   ]
+  },
+  {
+   "quantity": "Blind source extraction catalog detections (S/N_peak > 5.40)",
+   "value": "939",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Blind-photometry catalog 939 _· · ·_"
+    },
+    {
+     "loc": "6. SUMMARY",
+     "quote": "the final catalogs (version `v20180201` ) contain 939 sources above a peak flux S _/_ N peak = 5 _._ 40 for the blindly detected sources (with a cumulative spurious fraction of _∼_ 8%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Prior source fitting catalog detections (S/N_peak > 4.35)",
+   "value": "1027",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Prior-photometry catalog 1027 _· · ·_"
+    },
+    {
+     "loc": "6. SUMMARY",
+     "quote": "and 1027 sources above a peak flux S _/_ N peak = 4 _._ 35 for the prior selected sources (with a cumulative spurious fraction of _∼_ 12%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative spurious fraction for blind catalog (S/N_peak > 5.40)",
+   "value": "<8",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Combining the two photometric catalogs",
+     "quote": "and the cumulative spurious fractions are _<_ 8% and _<_ 12% for the blind- and prior-selected samples, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative spurious fraction for prior catalog (S/N_peak > 4.35)",
+   "value": "<12",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1. Combining the two photometric catalogs",
+     "quote": "and the cumulative spurious fractions are _<_ 8% and _<_ 12% for the blind- and prior-selected samples, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative completeness for blind catalog (S/N_peak > 5.40)",
+   "value": ">92",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Combining the two photometric catalogs",
+     "quote": "The corresponding differential completenesses at those thresholds are 57% and 98%, and the cumulative ones are as high as _>_ 92% and _>_ 99%, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative completeness for prior catalog (S/N_peak > 4.35)",
+   "value": ">99",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Combining the two photometric catalogs",
+     "quote": "The corresponding differential completenesses at those thresholds are 57% and 98%, and the cumulative ones are as high as _>_ 92% and _>_ 99%, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log10(S_PyBDSF / S_GALFIT) flux difference",
+   "value": "-0.013",
+   "uncertainty": "0.10",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 7 caption",
+     "quote": "Histogram of the flux difference on a logarithmic scale, log 10 ( _S_ PyBDSF _/S_ GALFIT ). The mean is _−_ 0 _._ 013 with a standard deviation of 0.10 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10 difference between blind photometry and uv_fit flux densities",
+   "value": "0.015",
+   "uncertainty": "0.08",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.6 Comparison to uv-plane Source Fitting Results",
+     "quote": "a logarithmic scale) has a median of 0.015 dex and scatter of 0.08 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10 difference between prior photometry and uv_fit flux densities",
+   "value": "-0.005",
+   "uncertainty": "0.13",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+     "quote": "The difference between prior photometry and `uv_fit` flux densities has a median of -0.005 dex and scatter of 0.13 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian Process counterpart association validation accuracy",
+   "value": "96.5",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Examining counterpart association",
+     "quote": "Running our trained model on the validation sample gave an accuracy of _∼_ 96 _._ 5%."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of galaxies in final robust galaxy catalog",
+   "value": "676",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Final galaxy catalog (Sect. 5) _[d]_ 676 _· · ·_"
+    },
+    {
+     "loc": "6. SUMMARY",
+     "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift range of final galaxy catalog",
+   "value": "0.25-5.67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6. SUMMARY",
+     "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass range of final galaxy catalog",
+   "value": "3e7-1.9e12",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6. SUMMARY",
+     "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate range of final galaxy catalog",
+   "value": "0.02-4000",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6. SUMMARY",
+     "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA versions used to run scriptForPI.py for calibrating each archival dataset",
+  "List of the <10% of images where corrupted baselines were flagged or robust=0.5 was adopted instead of robust=2",
+  "Exact tabulated values or polynomial coefficients for the PHYS simulation 2D flux bias (eta_bias) and flux error (eta_error) lookup grids",
+  "Access to the internal COSMOS spectroscopic redshift compilation by M. Salvato et al. (version Sept. 1st, 2017)",
+  "Hyperparameters and trained weights of the scikit-learn Gaussian Process classifier used for counterpart association"
+ ],
+ "missing_for_reproduction": [
+  "Internal COSMOS spectroscopic redshift compilation catalog by M. Salvato et al. (version Sept. 1st, 2017) and unpublished SPLASH IRAC supplementary catalog (I. Davidzon, priv. comm.)",
+  "Automated A3COSMOS wrapper scripts for running GALFIT, getpix, and the 2D flux bias/error lookup tables from the PHYS simulation",
+  "Trained scikit-learn Gaussian Process model file and visual classification training labels for counterpart association",
+  "Exact list of <10% continuum pointings where manual baseline flagging or robust=0.5 was applied during imaging"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All raw ALMA data, calibrated continuum FITS images, and final photometry/property catalogs are publicly archived at IRSA, and the imaging, source extraction, simulation, and SED fitting recipes are thoroughly documented; however, full end-to-end reproduction from scratch is hindered by reliance on two internal COSMOS catalogs (Salvato spec-z compilation and SPLASH supplementary catalog), unstated per-image manual flagging choices (<10% of maps), and unreleased pipeline wrapper scripts/lookup tables.",
+ "rediscovery_reason": "Both the raw ALMA archival visibilities and the released continuum FITS images are public, the core software tools (CASA, PyBDSF, GALFIT, MAGPHYS) are standard and explicitly parameterized, and the catalog summary statistics and cross-method comparisons provide clear quantitative benchmarks.",
+ "source_card": "cards/2019ApJS..244...40L/sonnet/card.md"
+}

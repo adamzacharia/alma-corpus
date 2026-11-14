@@ -1,0 +1,207 @@
+{
+ "bibcode": "2014ApJ...795L..30C",
+ "title": "ALMA Measurements of the HNC and HC<SUB>3</SUB>N Distributions in Titan's Atmosphere",
+ "year": 2014,
+ "doi": "10.1088/2041-8205/795/2/L30",
+ "arxiv_id": "1408.6461",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "What are the spatial distributions and vertical abundance profiles of HNC and HC3N in Titan's atmosphere as seen by ALMA?",
+ "alma_project_codes": [
+  "2012.A.00033.S"
+ ],
+ "data": {
+  "bands": "Band 7, dual-sideband",
+  "arrays": "not stated",
+  "angular_resolution": "0.54''x0.31''",
+  "sensitivity": "RMS per channel 31 mJy (HNC), 38 mJy (HC3N)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Titan temperature profile from Cassini CIRS and HASI",
+    "evidence": [
+     {
+      "loc": "Results and spectral line modeling",
+      "quote": "The atmospheric temperature profile was generated from a combination of Cassini CIRS and HASI measurements"
+     }
+    ]
+   },
+   "citation": "(cite: fla05; ful05)"
+  },
+  {
+   "what": {
+    "value": "Line parameters and partition functions from JPL catalog; frequencies from Okabayashi & Tanimoto (HNC), Thorwirth et al. (HC3N)",
+    "evidence": [
+     {
+      "loc": "Results and spectral line modeling",
+      "quote": "Spectral line parameters and partition functions were taken from the JPL catalog"
+     }
+    ]
+   },
+   "citation": "(cite: oka93), (cite: tho00)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image data cubes",
+   "method": "Standard ALMA calibration, flux scaling to Titan model, continuum subtraction, Hogbom cleaning",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make integrated emission maps in Titan frame",
+   "method": "Transform to projected distances and Titan rest frame; integrate ±1 km/s (HNC), ±5 km/s (HC3N)",
+   "software": [],
+   "key_parameters": [
+    "Topocentric radial velocity -0.91 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract disk-integrated spectra",
+   "method": "Integrate cubes over 1.5'' diameter circular aperture centered on Titan",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Retrieve VMR profiles",
+   "method": "NEMESIS line-by-line radiative transfer with two-parameter gradient model (abundance at z_r=293 km, slope as fraction of scale height); HNC step model above 400 km",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [
+    "10-point trapezium-rule integration to model top at 782 km"
+   ],
+   "assumptions": [
+    "Profiles do not vary with latitude/longitude; HC3N condenses below ~71 km; Lorentz half-widths 1.290 (HNC), 0.1 (HC3N) cm-1/bar, exponents 0.69, 0.75"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Map HC3N line core vs wings",
+   "method": "Integrate core (-0.5 to 0.5 km/s) and wings (2.0-5.0 km/s) separately to probe altitude",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HC3N abundance at 293 km",
+   "value": "0.62",
+   "uncertainty": "0.04",
+   "units": "ppb",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and spectral line modeling",
+     "quote": "$0.62 \\pm 0.04$ ppb for HC$_3$N"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC abundance at 293 km (gradient model)",
+   "value": "0.063",
+   "uncertainty": "0.025",
+   "units": "ppb",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and spectral line modeling",
+     "quote": "$0.063 \\pm 0.025$ ppb for HNC"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC column density (gradient)",
+   "value": "1.9e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and spectral line modeling",
+     "quote": "$1.9\\times10^{13}$ cm$^{-2}$ for HNC"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N column density",
+   "value": "2.3e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and spectral line modeling",
+     "quote": "$2.3\\times10^{14}$ cm$^{-2}$ for HC$_3$N"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC step-model abundance above 400 km",
+   "value": "4.85",
+   "uncertainty": "0.28",
+   "units": "ppb",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and spectral line modeling",
+     "quote": "The best-fitting abundance above 400 km was found to be $4.85\\pm0.28$ ppb"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC line FWHM",
+   "value": "0.76",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results and spectral line modeling",
+     "quote": "(FWHM $= 0.76$ km $\\rm{s}^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC peak clockwise offset",
+   "value": "40",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "are offset clockwise by $40\\pm5^{\\circ}$ in the plane of the sky"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels for continuum subtraction",
+  "Self-calibration solution interval",
+  "Exact CASA task parameters and clean mask",
+  "Temperature/aerosol profile files used in NEMESIS",
+  "Aperture centering details and HC3N/HNC profile grids"
+ ],
+ "missing_for_reproduction": [
+  "NEMESIS input profiles and configuration",
+  "CASA scripts and masks",
+  "Line-free channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging is described but the radiative-transfer inputs and scripts are not provided.",
+ "rediscovery_reason": "Data are public, imaging parameters are largely given, and results are numeric, though the NEMESIS modeling needs unstated inputs.",
+ "source_card": "cards/2014ApJ...795L..30C/sonnet/card.md"
+}

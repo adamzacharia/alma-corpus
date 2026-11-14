@@ -1,0 +1,2585 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJS..244...40L",
+  "title": "Automated Mining of the ALMA Archive in the COSMOS Field (A<SUP>3</SUP>COSMOS). I. Robust ALMA Continuum Photometry Catalogs and Stellar Mass and Star Formation Properties for ∼700 Galaxies at z = 0.5-6",
+  "year": 2019,
+  "journal": "The Astrophysical Journal Supplement Series",
+  "first_author": "Liu, Daizhong",
+  "n_authors": 24,
+  "arxiv_id": "1910.12872",
+  "doi": "10.3847/1538-4365/ab42da",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00064.S",
+   "2011.0.00097.S",
+   "2011.0.00539.S",
+   "2011.0.00742.S",
+   "2012.1.00076.S",
+   "2012.1.00323.S",
+   "2012.1.00523.S",
+   "2012.1.00536.S",
+   "2012.1.00919.S",
+   "2012.1.00952.S",
+   "2012.1.00978.S",
+   "2013.1.00034.S",
+   "2013.1.00092.S",
+   "2013.1.00118.S",
+   "2013.1.00151.S",
+   "2013.1.00171.S",
+   "2013.1.00208.S",
+   "2013.1.00276.S",
+   "2013.1.00668.S",
+   "2013.1.00815.S",
+   "2013.1.00884.S",
+   "2013.1.00914.S",
+   "2013.1.01258.S",
+   "2013.1.01292.S",
+   "2015.1.00026.S",
+   "2015.1.00055.S",
+   "2015.1.00122.S",
+   "2015.1.00137.S",
+   "2015.1.00260.S",
+   "2015.1.00299.S",
+   "2015.1.00379.S",
+   "2015.1.00388.S",
+   "2015.1.00540.S",
+   "2015.1.00568.S",
+   "2015.1.00664.S",
+   "2015.1.00704.S",
+   "2015.1.00853.S",
+   "2015.1.00861.S",
+   "2015.1.00862.S",
+   "2015.1.00928.S",
+   "2015.1.01074.S",
+   "2015.1.01105.S",
+   "2015.1.01111.S",
+   "2015.1.01171.S",
+   "2015.1.01212.S",
+   "2015.1.01495.S",
+   "2015.1.01590.S",
+   "2015.A.00026.S",
+   "2016.1.00478.S",
+   "2016.1.00624.S",
+   "2016.1.00735.S",
+   "2016.1.01208.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "data_release_or_catalog",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we have developed automated mining pipelines for the ALMA archive in the COSMOS field (A3COSMOS) which efficiently exploit the available information for large numbers of galaxies across cosmic time"
+   },
+   {
+    "loc": "abstract",
+    "quote": "The ALMA photometric measurements and galaxy properties are released publicly within our blind-extraction, prior-fitting and galaxy property catalogs, plus the images."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "COSMOS field",
+     "coordinates": {
+      "value": "R.A. = 10:00:28.6, decl. = +02:12:21.0 (J2000)",
+      "evidence": [
+       {
+        "loc": "2. DATA AND PHOTOMETRY",
+        "quote": "We limit our selection to within the COSMOS field (R.A. = 10:00:28.6, decl. = +02:12:21.0, J2000; Scoville et al. 2007)"
+       },
+       {
+        "loc": "6. SUMMARY",
+        "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.25-5.67",
+      "evidence": [
+       {
+        "loc": "2. DATA AND PHOTOMETRY",
+        "quote": "We limit our selection to within the COSMOS field (R.A. = 10:00:28.6, decl. = +02:12:21.0, J2000; Scoville et al. 2007)"
+       },
+       {
+        "loc": "6. SUMMARY",
+        "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Multi-wavelength spectroscopic and photometric redshift compilations in the COSMOS field",
+      "evidence": [
+       {
+        "loc": "2. DATA AND PHOTOMETRY",
+        "quote": "We limit our selection to within the COSMOS field (R.A. = 10:00:28.6, decl. = +02:12:21.0, J2000; Scoville et al. 2007)"
+       },
+       {
+        "loc": "6. SUMMARY",
+        "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How to systematically mine inhomogeneous public ALMA archival data in the COSMOS field to produce robust continuum photometry catalogs and derive stellar mass and star formation properties for high-redshift galaxies.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "To increase the usability of these data for studies deepening our understanding of galaxy evolution, we have developed automated mining pipelines for the ALMA archive in the COSMOS field (A3COSMOS)"
+     },
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "This work provides the foundation for a systematic exploitation of the (sub-)mm continuum as a proxy for cold dust and gas for a diverse and large sample of high-redshift galaxies."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00064.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "This paper makes use of the following ALMA data: `ADS/JAO.ALMA#2011.0.00064.S`"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00539.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2011.0.00539.S`"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00742.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.` `ALMA#2011.0.00742.S`"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00323.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2012.1.00323.S`"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00523.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#` `2012.1.00523.S`"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00536.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2012.1.00536.S`"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00919.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2012.1.00919.S`"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00978.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2012.1.00978.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00034.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.` `ALMA#2013.1.00034.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00118.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00118.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00151.S",
+     "evidence": [
+      {
+       "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+       "quote": "In total we ran the _uv_ -fitting for 301 pointings from four representative ALMA projects: 2015.1.00137.S, 2013.1.00151.S, 2015.1.00379.S, and 2016.1.01208.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00171.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00171.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00208.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00208.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00668.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00668.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00815.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.` `ALMA#2013.1.00815.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00914.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00914.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.01258.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#` `2013.1.01258.S`"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.01292.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.01292.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00026.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00026.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00122.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00122.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00137.S",
+     "evidence": [
+      {
+       "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+       "quote": "In total we ran the _uv_ -fitting for 301 pointings from four representative ALMA projects: 2015.1.00137.S, 2013.1.00151.S, 2015.1.00379.S, and 2016.1.01208.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00299.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00299.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00379.S",
+     "evidence": [
+      {
+       "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+       "quote": "In total we ran the _uv_ -fitting for 301 pointings from four representative ALMA projects: 2015.1.00137.S, 2013.1.00151.S, 2015.1.00379.S, and 2016.1.01208.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00388.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00388.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00540.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00540.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00664.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00664.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00704.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.` `ALMA#2015.1.00704.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00861.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00861.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00862.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#` `2015.1.00862.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00928.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00928.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01074.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.01074.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01111.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.01111.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01171.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.` `ALMA#2015.1.01171.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01495.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.01495.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01590.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#` `2015.1.01590.S`"
+      }
+     ]
+    },
+    {
+     "code": "2015.A.00026.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.A.00026.S`"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00478.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2016.1.00478.S`"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00735.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2016.1.00735.S`"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.01208.S",
+     "evidence": [
+      {
+       "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+       "quote": "In total we ran the _uv_ -fitting for 301 pointings from four representative ALMA projects: 2015.1.00137.S, 2013.1.00151.S, 2015.1.00379.S, and 2016.1.01208.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3, Band 4, Band 5, Band 6, Band 7, Band 8, Band 9",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Info Type Band 3 Band 4 Band 5 Band 6 Band 7 Band 8 Band 9"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "44% at ~870 um, 49% at ~1.0-1.5 mm, ~1% at ~1.9-2.3 mm, ~6% at ~2.5-3.4 mm; spectral windows aggregated into continuum",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Continuum Images",
+      "quote": "the spectral windows (SpWs) of each target are aggregated into a single continuum image calculated at the central frequencies of these SpWs"
+     },
+     {
+      "loc": "3.1.5. Final Corrections",
+      "quote": "about 44% of the data are at _∼_ 870 _µ_ m, about 49% at _∼_ 1 _._ 0 _−_ 1 _._ 5 mm (mostly 1 _._ 25 mm), _∼_ 1% at _∼_ 1 _._ 9 _−_ 2 _._ 3 mm and _∼_ 6% at _∼_ 2 _._ 5 _−_ 3 _._ 4 mm."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "~8 GHz",
+    "evidence": [
+     {
+      "loc": "4.5. Correcting significant contribution from emission lines",
+      "quote": "In special cases, these lines will dominate the emission from the whole bandwidth, e.g., mostly _∼_ 8 GHz of the current ALMA receiver."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12m array",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Continuum Images",
+      "quote": "Given the large number of antennas in the 12m array, the instantaneous dirty beam for a short integration ( _∼_ 30 seconds) as used for many programs has very low sidelobes"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": ">= 0.1 arcsec (mean beam size 0.305 to 2.164 arcsec across Bands 3-9; <0.1 arcsec excluded)",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Continuum Images",
+      "quote": "Therefore, these ≲ 1% very high resolution ( _θ_ Maj _,_ beam _<_ 0 _._ 1 _[′′]_ ) images are excluded from our analysis."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Mean Beam Size [arcsec] 2.164 1.098 1.548 1.202 0.772 0.526 0.305"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Mean RMS noise 0.025 to 1.757 mJy/beam across Bands 3-9 (0.077 in Band 6, 0.160 in Band 7)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Mean RMS Noise [mJy/beam] 0.039 0.025 0.090 0.077 0.160 0.034 1.757"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~30 seconds for many programs",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Continuum Images",
+      "quote": "the instantaneous dirty beam for a short integration ( _∼_ 30 seconds) as used for many programs has very low sidelobes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "public before Jan. 2nd, 2018",
+    "evidence": [
+     {
+      "loc": "2. DATA AND PHOTOMETRY",
+      "quote": "We show the pointings of all public ALMA data for the COSMOS field as of Jan. 2nd, 2018 in Fig. 2"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "archival",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we have developed automated mining pipelines for the ALMA archive in the COSMOS field (A3COSMOS)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "HST/ACS",
+     "provided": {
+      "value": "i-band image cutouts for counterpart association",
+      "evidence": [
+       {
+        "loc": "4.2. Examining counterpart association",
+        "quote": "_Hubble_ _Space_ _Telescope_ ( _HST_ ) ACS _i_ -band image from Capak et al. (2007);"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VISTA / UltraVISTA",
+     "provided": {
+      "value": "Ks-band image cutouts for counterpart association",
+      "evidence": [
+       {
+        "loc": "4.2. Examining counterpart association",
+        "quote": "UltraVISTA _K_ _s_ -band image from McCracken et al. (2010, 2012);"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer/IRAC (SPLASH)",
+     "provided": {
+      "value": "3.6 um image cutouts for counterpart association",
+      "evidence": [
+       {
+        "loc": "4.2. Examining counterpart association",
+        "quote": "_Spitzer_ IRAC 3.6 _µ_ m image from the SPLASH survey (PI: P. Capak);"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "3 GHz image cutouts for counterpart association",
+      "evidence": [
+       {
+        "loc": "4.2. Examining counterpart association",
+        "quote": "and VLA 3 GHz image from Smolčić et al. (2017)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel/PACS",
+     "provided": {
+      "value": "100 um background image for pointing map",
+      "evidence": [
+       {
+        "loc": "Figure 2 caption",
+        "quote": "The background image is the _Herschel_ PACS 100 _µ_ m data from the PACS Evolutionary Probe survey (PEP; Lutz et al. 2011)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "COSMOS2015 optical/near-IR prior catalog, 3 arcsec aperture photometry, and photometric redshifts",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "COSMOS2015 catalog 1 _._ 8 1182108 1182108 738420 VISTA _z Y JHK_ _s_ 24.0 (3 _σ_, 3 _[′′]_, _K_ _s_ ) _∼_ 1 _[′′]_ (Laigle et al. 2016)"
+       },
+       {
+        "loc": "4.3 Combining multi-wavelength photometry and prior",
+        "quote": "(2016) catalog, and use the 3 _[′′]_ diameter aperture fluxes to be consistent with Laigle et al. (2016)"
+       }
+      ]
+     },
+     "citation": "Laigle et al. (2016)"
+    },
+    {
+     "what": {
+      "value": "Ks-band prior catalog",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "_K_ _s_ -band catalog 1 _._ 6 _[f]_ 263229 18536 10799 VISTA _K_ _s_ 24.35 (3 _σ_, 2 _[′′]_ _._ 1) _∼_ 1 _[′′]_ (Muzzin et al. 2013) _[f]_"
+       }
+      ]
+     },
+     "citation": "Muzzin et al. (2013)"
+    },
+    {
+     "what": {
+      "value": "i-band prior catalog and HST ACS i-band image",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "_i_ -band catalog 1 _._ 8 386125 31159 30146 CFHT _i_ _[⋆]_ + 26.2 (5 _σ_, 3 _[′′]_ ) _∼_ 0 _[′′]_ _._ 5 (Capak et al. 2007) _Subaru_ _i_ [+]"
+       }
+      ]
+     },
+     "citation": "Capak et al. (2007)"
+    },
+    {
+     "what": {
+      "value": "SPLASH IRAC supplementary prior catalog",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "SPLASH IRAC 1 _._ 6 5390 4685 3690 _Spitzer_ /IRAC 25.5 (3 _σ_ ) _∼_ 1 _[′′]_ _._ 6 supplementary catalog _[g]_ 3.6 + 4.5 _µ_ m"
+       }
+      ]
+     },
+     "citation": "SPLASH (PI: P. Capak; I. Davidzon; priv. comm.)"
+    },
+    {
+     "what": {
+      "value": "VLA 3 GHz prior catalog and image",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "VLA catalog 2 10922 1042 644 VLA 3 GHz 2 _._ 3 _µ_ Jy (1 _σ_ ) _∼_ 0 _[′′]_ _._ 75 (Smolčić et al. 2017)"
+       }
+      ]
+     },
+     "citation": "Smolčić et al. (2017)"
+    },
+    {
+     "what": {
+      "value": "Spitzer/IRAC prior catalog",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "IRAC catalog 2 _._ 3 347332 55346 54642 _Spitzer_ /IRAC 24.01 (5 _σ_, _∼_ 1 _[′′]_ _._ 6 (Sanders et al. 2007) 3 _._ 6 _−_ 8 _._ 0 _µ_ m 3.6 _µ_ m)"
+       }
+      ]
+     },
+     "citation": "Sanders et al. (2007)"
+    },
+    {
+     "what": {
+      "value": "Super-deblended far-IR/(sub-)mm/radio photometry and photo-z catalog",
+      "evidence": [
+       {
+        "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+        "quote": "Further, we adopt the far-IR/(sub-)mm/radio photometry from Jin et al. (2018)."
+       }
+      ]
+     },
+     "citation": "Jin et al. (2018)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic redshift compilation in COSMOS",
+      "evidence": [
+       {
+        "loc": "2. DATA AND PHOTOMETRY",
+        "quote": "Spectroscopic redshifts also exist for _∼_ 7 _._ 1 _×_ 10 [4] galaxies, from the latest compilation by M. Salvato et al. (version Sept. 1st, 2017; available internally in the COSMOS collaboration)"
+       }
+      ]
+     },
+     "citation": "M. Salvato et al. (version Sept. 1st, 2017)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshifts and stellar mass functions for z > 2.5 galaxies",
+      "evidence": [
+       {
+        "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+        "quote": "the Davidzon et al. (2017) photometric catalog for the same UltraVISTA galaxies as Laigle et al. (2016) but with optimized SED fitting for _z_ _>_ 2 _._ 5 sources;"
+       }
+      ]
+     },
+     "citation": "Davidzon et al. (2017)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshifts, AGN classifications, and SED3FIT stellar masses for radio-detected galaxies",
+      "evidence": [
+       {
+        "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+        "quote": "the Delvecchio et al. (2017) photometric catalog for radio-detected galaxies;"
+       },
+       {
+        "loc": "4.6. Obtaining galaxy properties from SED fitting",
+        "quote": "In Fig. 24 we further compare our final _M_ _∗_ to the Delvecchio et al. (2017) SED3FIT fitted _M_ _∗_ for 396 sources in common"
+       }
+      ]
+     },
+     "citation": "Delvecchio et al. (2017)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshifts for X-ray-detected AGNs",
+      "evidence": [
+       {
+        "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+        "quote": "and the Salvato et al. (2011) photometric catalog for X-ray-detected active galactic nuclei (AGNs)."
+       }
+      ]
+     },
+     "citation": "Salvato et al. (2011)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Full-parameter-space (FULL) Monte Carlo simulation uniformly sampling S/N_peak from 2.5 to 100 and source-to-beam size ratio from 0.1 to 6",
+     "evidence": [
+      {
+       "loc": "3. MONTE CARLO SIMULATIONS",
+       "quote": "We start with a full-parameter-space simulation (hereafter “FULL” simulation) in which the full parameter space of flux density and size is uniformly sampled: S _/_ N peak ranges from 2.5 to 100 in logarithmic intervals, and source major-axis size to beam major-axis size ratio ranges from 0.1 to 6."
+      }
+     ]
+    },
+    {
+     "value": "Physically-motivated (PHYS) Monte Carlo simulation mimicking observed galaxy stellar mass functions, star-forming main sequence, 2SFM starburst/MS classification, and size evolution",
+     "evidence": [
+      {
+       "loc": "3. MONTE CARLO SIMULATIONS",
+       "quote": "We create another physically-motivated MC simulation, hereafter “PHYS” simulation, where we simulate sources mimicking observed galaxy stellar mass functions (SMFs; e.g., Davidzon et al. 2017), star-forming MS relation (MS; e.g., Sargent et al. 2014)"
+      }
+     ]
+    },
+    {
+     "value": "Simulated 2 deg^2 galaxy catalog with strong- and weak-lensing magnification from Bethermin et al. (2017)",
+     "evidence": [
+      {
+       "loc": "4.9. The effect of galaxy-galaxy gravitational lensing",
+       "quote": "Lastly, our low number of strongly lensed sources is consistent with the analytic galaxy modeling of Béthermin et al. (2017; see also Béthermin et al. 2012b)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "scriptForPI.py",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "These datasets are calibrated with the Common Astronomy Software Applications (CASA; McMullin et al. 2007) using the `scriptForPI.py` scripts provided by the Joint ALMA Observatory together with the archived raw data."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "no, raw data recalibrated using scriptForPI.py and re-imaged",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "These datasets are calibrated with the Common Astronomy Software Applications (CASA; McMullin et al. 2007) using the `scriptForPI.py` scripts provided by the Joint ALMA Observatory together with the archived raw data."
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Calibrated visibilities are imaged and “cleaned” — i.e., deconvolved with the “dirty” beam — with the CASA imaging pipeline version `4.7.2` ."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA imaging pipeline version 4.7.2 in continuum + automatic mode (manual CASA task clean for a few Cycle 0 projects)",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Calibrated visibilities are imaged and “cleaned” — i.e., deconvolved with the “dirty” beam — with the CASA imaging pipeline version `4.7.2` ."
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "These projects are thus imaged with the CASA task `clean` with input parameters manually set using a similar imaging and “cleaning” strategy to the CASA imaging pipeline"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multi-frequency synthesis (MFS) with nterms=2",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "the spectral windows (SpWs) of each target are aggregated into a single continuum image calculated at the central frequencies of these SpWs using the multi-frequency synthesis ( `MFS` ) algorithm with `nterms=2` ."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs with robust=2 (robust=0.5 in <10% of images with obvious artifacts)",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "The pipeline is operated in “continuum” + “automatic” mode, leaving all but the weight parameters (set to “Briggs” with `robust=2` ) to their default values."
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "In case of obvious image artifacts in the cleaned images (as found by visual inspection, _<_ 10%), we rerun the CASA imaging pipeline flagging corrupted baselines and/or adopting `robust=0.5` ."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "5 pixels per synthesized beam",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "The output images sample the synthesized beam with 5 pixels and are masked where the PBA is _<_ 0 _._ 2."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "automatic pipeline masking based on dirty image noise and dynamic range, stopping criterion S/N = 4; primary beam attenuation masked where PBA < 0.2",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "The parameters controlling the deconvolution process (i.e., masked pixels, maximum number of iterations and stopping threshold) are automatically and homogeneously set by the pipeline based on the noise properties and dynamic range of the “dirty” images"
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "The imaging pipeline uses masks to identify regions of bright emission prior to cleaning and the stopping criterion is set to a signal-to-noise ratio (S/N) = 4."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "none during imaging (all SpWs aggregated; strong line contribution corrected post-facto in catalog)",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Note that although the aggregation of all SpWs available for a given target optimizes the sensitivities of our continuum images, it does not consider any possible line contamination."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "both PBA-corrected and uncorrected images released; photometry performed on uncorrected images and PBA correction applied to cataloged fluxes at source central position (masked for PBA < 0.2)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Continuum Images",
+       "quote": "The data products released here include all “clean” continuum images corrected and uncorrected for pri"
+      },
+      {
+       "loc": "2.2. Blind Source Extraction",
+       "quote": "We use the primary-beam-attenuation-uncorrected images because they have the advantage of a constant noise across the field of view, and thus source extraction can be run with uniform parameters across them."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "data from different projects for the same source are not combined",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Currently, data for the same source taken at the same frequency arising from different projects are not combined."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "mean beam size per band: 2.164'' (Band 3), 1.098'' (Band 4), 1.548'' (Band 5), 1.202'' (Band 6), 0.772'' (Band 7), 0.526'' (Band 8), 0.305'' (Band 9)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Mean Beam Size [arcsec] 2.164 1.098 1.548 1.202 0.772 0.526 0.305"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "mean RMS noise per band: 0.039 (Band 3), 0.025 (Band 4), 0.090 (Band 5), 0.077 (Band 6), 0.160 (Band 7), 0.034 (Band 8), 1.757 (Band 9) mJy/beam",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Mean RMS Noise [mJy/beam] 0.039 0.025 0.090 0.077 0.160 0.034 1.757"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Aperture photometry (getpix) method measuring peak and integrated flux densities in concentric apertures from 0.25'' to 2'' in steps of 0.25'' and pre-selection thresholds (S/N_total > 2 or S/N_peak > 3.6)",
+      "evidence": [
+       {
+        "loc": "2.4. Prior Source Fitting",
+        "quote": "Following Scoville et al. (2014, 2016, 2017), we measure both flux densities in a series of apertures with radii from 0 _[′′]_ _._ 25 to 2 _[′′]_ in steps of 0 _[′′]_ _._ 25."
+       },
+       {
+        "loc": "2.4 Prior Source Fitting",
+        "quote": "S _/_ N peak _>_ 3 _._ 6 sources (same as Scoville et al. 2017) as valid detections."
+       }
+      ]
+     },
+     "from_reference": "Scoville et al. (2014, 2016, 2017)"
+    },
+    {
+     "what": {
+      "value": "Gaussian fitting parameter error formulae",
+      "evidence": [
+       {
+        "loc": "2.2. Blind Source Extraction",
+        "quote": "Finally, the errors of each fitted parameter (peak flux, total flux, and each size parameter) are computed using the formulae of Gaussian fitting errors calibrated by Condon (1997)."
+       }
+      ]
+     },
+     "from_reference": "Condon (1997)"
+    },
+    {
+     "what": {
+      "value": "2D parameterization of flux bias and error as functions of S/N_peak and Theta_beam",
+      "evidence": [
+       {
+        "loc": "3.1. Analyses of the “FULL” and “PHYS” Simulations",
+        "quote": "we bin all simulated and recovered sources in the 2D parameter space of S _/_ N peak and Θ beam, and consider flux bias and error to be functions of these two parameters (Condon 1997; Bondi et al. 2003, 2008; Schinnerer et al. 2010; Jiménez-Andrade et al. 2019)."
+       }
+      ]
+     },
+     "from_reference": "Condon (1997); Bondi et al. (2003, 2008); Schinnerer et al. (2010); Jiménez-Andrade et al. (2019)"
+    },
+    {
+     "what": {
+      "value": "2-star-formation-mode (2SFM) recipe for simulating main-sequence and starburst galaxies",
+      "evidence": [
+       {
+        "loc": "C.2.1. Source simulation",
+        "quote": "In detail, we follow the two-star-formation-mode (2SFM) recipe (Sargent et al. 2012, 2014; Béthermin et al. 2012a)"
+       }
+      ]
+     },
+     "from_reference": "Sargent et al. (2012, 2014); Béthermin et al. (2012a)"
+    },
+    {
+     "what": {
+      "value": "IR-to-radio SED modeling for simulated galaxies in PHYS simulation",
+      "evidence": [
+       {
+        "loc": "C.2.1. Source simulation",
+        "quote": "Then we generate an IR-to-radio SED for each model galaxy according to the redshift, stellar mass and SFR, following the SED modeling in Liu et al. (2018), which is based on Magdis et al. (2012)"
+       }
+      ]
+     },
+     "from_reference": "Liu et al. (2018); Magdis et al. (2012)"
+    },
+    {
+     "what": {
+      "value": "uv-plane spectral line search methodology",
+      "evidence": [
+       {
+        "loc": "4.5. Correcting significant contribution from emission lines",
+        "quote": "The line search is done in the _uv_ -plane adapting the methodology of Silverman et al. (2015b) and D. Liu et al. (2019, in preparation), with CASA and GILDAS."
+       }
+      ]
+     },
+     "from_reference": "Silverman et al. (2015b); D. Liu et al. (2019, in preparation)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact CASA versions used to run scriptForPI.py for calibrating each archival dataset",
+    "List of the <10% of images where corrupted baselines were flagged or robust=0.5 was adopted instead of robust=2",
+    "Exact tabulated values or polynomial coefficients for the PHYS simulation 2D flux bias (eta_bias) and flux error (eta_error) lookup grids",
+    "Access to the internal COSMOS spectroscopic redshift compilation by M. Salvato et al. (version Sept. 1st, 2017)",
+    "Hyperparameters and trained weights of the scikit-learn Gaussian Process classifier used for counterpart association"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Query archive, calibrate visibilities, and create continuum images",
+    "method": {
+     "value": "Query ALMA archive within 2 deg of COSMOS center, calibrate raw visibilities with scriptForPI.py, and image/clean all spectral windows into continuum maps using MFS (nterms=2) and Briggs weighting (robust=2), excluding beam < 0.1 arcsec.",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "We start by querying the ALMA archive with the `Python` package `astroquery` Ginsburg et al. 2019, retrieving all projects publicly available within a search radius of 2 degrees centered on the COSMOS field."
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Calibrated visibilities are imaged and “cleaned” — i.e., deconvolved with the “dirty” beam — with the CASA imaging pipeline version `4.7.2` ."
+      }
+     ]
+    },
+    "software": [
+     "astroquery",
+     "CASA",
+     "CASA imaging pipeline",
+     "clean"
+    ],
+    "key_parameters": [
+     {
+      "value": "search radius = 2 degrees, weighting = Briggs with robust=2 (or 0.5 for artifacts), MFS nterms=2, stopping criterion S/N = 4, 5 pixels per beam, PBA >= 0.2, beam >= 0.1 arcsec",
+      "evidence": [
+       {
+        "loc": "2.1. ALMA Continuum Images",
+        "quote": "The pipeline is operated in “continuum” + “automatic” mode, leaving all but the weight parameters (set to “Briggs” with `robust=2` ) to their default values."
+       },
+       {
+        "loc": "2.1. ALMA Continuum Images",
+        "quote": "The output images sample the synthesized beam with 5 pixels and are masked where the PBA is _<_ 0 _._ 2."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection for artifacts (<10% re-imaged) and comparison of 1-sigma rms noise against ALMA archive QA2 continuum images.",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "As a test, we measure the 1 _σ_ sensitivities (rms noise) of our images ( _σ_ A 3 ) and compare with those measured in the continuum images available in the ALMA archive"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Blind source extraction on PBA-uncorrected continuum images",
+    "method": {
+     "value": "Identify emission islands and fit multiple 2D Gaussians on PBA-uncorrected images using PyBDSF, grouping Gaussians of the same island into one source.",
+     "evidence": [
+      {
+       "loc": "2.2 Blind Source Extraction",
+       "quote": "Next, PyBDSF fits multiple two-dimensional Gaussians to each “island” depending on the number of peaks identified within it. Thirdly, all Gaussians of the same “island” are grouped into one source"
+      },
+      {
+       "loc": "2.2. Blind Source Extraction",
+       "quote": "all Gaussians of the same “island” are grouped into one source, with the summed flux being the integrated source flux"
+      }
+     ]
+    },
+    "software": [
+     "PyBDSF",
+     "AIPS DECONV.FOR"
+    ],
+    "key_parameters": [
+     {
+      "value": "thresh_pix = 4, thresh_isl = 3",
+      "evidence": [
+       {
+        "loc": "2.2. Blind Source Extraction",
+        "quote": "First, the code identifies “islands” of emission, i.e., with the peak pixel emission above 4 times the rms noise ( `thresh_pix` = 4), and surrounded by contiguous pixels with values all greater than 3 times the rms noise ( `thresh_isl` = 3)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant noise across the PBA-uncorrected field of view; single PBA factor at source central position",
+      "evidence": [
+       {
+        "loc": "2.2. Blind Source Extraction",
+        "quote": "We use the primary-beam-attenuation-uncorrected images because they have the advantage of a constant noise across the field of view"
+       },
+       {
+        "loc": "2.2 Blind Source Extraction",
+        "quote": "Given that each source represents a high-redshift galaxy with a typical size of 0.5–2 _[′′]_, much smaller than the primary beam"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "2D Gaussian fitting with parameter errors initially from Condon (1997) formulae",
+     "evidence": [
+      {
+       "loc": "2.2. Blind Source Extraction",
+       "quote": "Next, PyBDSF fits multiple two-dimensional Gaussians to each “island” depending on the number of peaks identified within it."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Thresholds tested via mock source injection and recovery; inverted-image fitting for spurious fraction.",
+     "evidence": [
+      {
+       "loc": "2.2. Blind Source Extraction",
+       "quote": "These thresholds are obtained from a series of tests by introducing mock sources into the ALMA images and recovering them with PyBDSF."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compile prior source master catalog and perform prior source fitting",
+    "method": {
+     "value": "Cross-match 6 multi-wavelength COSMOS catalogs with 1 arcsec radius, correct mean astrometric offsets, pre-select candidates via aperture photometry (getpix), and iteratively fit point-source, circular Gaussian, and Sersic profiles using GALFIT.",
+     "evidence": [
+      {
+       "loc": "2.3. Prior Source Master Catalog",
+       "quote": "we find out each uniquely-matched group among the prior catalogs (with matching radius 1 _[′′]_ ) and add into the master catalog only the source coming from the highest-quality"
+      },
+      {
+       "loc": "2.4. Prior Source Fitting",
+       "quote": "This first getpix step also provides guidance for the prior source fitting using galfit (Peng et al. 2002, 2010) in the next step."
+      }
+     ]
+    },
+    "software": [
+     "getpix",
+     "GALFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "master catalog matching radius = 1 arcsec; getpix apertures = 0.25'' to 2'' in 0.25'' steps; pre-selection S/N_total > 2 or S/N_peak > 3.6; position variation limit = 0.7 arcsec; size upper boundary = 3.0 arcsec",
+      "evidence": [
+       {
+        "loc": "2.4 Prior Source Fitting",
+        "quote": "S _/_ N peak _>_ 3 _._ 6 sources (same as Scoville et al. 2017) as valid detections."
+       },
+       {
+        "loc": "2.4 Prior Source Fitting",
+        "quote": "and allow their positions to vary by at most 0 _[′′]_ _._ 7"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Image background is zero",
+      "evidence": [
+       {
+        "loc": "2.4. Prior Source Fitting",
+        "quote": "For each fit, we ensure that the image background is zero (as already verified by the close-to-zero means of the distributions of the pixel values from the ALMA images)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Iterative GALFIT chi-square minimization (pass 1: fixed-position point source; pass 2: position varied up to 0.7''; pass 3: circular Gaussian / Sersic profile)",
+     "evidence": [
+      {
+       "loc": "2.4 Prior Source Fitting",
+       "quote": "To optimize the galfit fitting for source fluxes as well as sizes, an iterative approach is adopted: After the first-pass fitting with point-source models to all galfit priors fixed at their original positions,"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared against PyBDSF blind extraction, GILDAS uv_fit on 301 pointings, getpix aperture photometry, and inverted-image fitting.",
+     "evidence": [
+      {
+       "loc": "2.6 Comparison to uv-plane Source Fitting Results",
+       "quote": "task to fit Gaussian and/or point-source models then compare the total flux with those measured from the image-plane galfit and PyBDSF fitting."
+      },
+      {
+       "loc": "2.8. Inverted-image Fitting and the Fraction of Spurious Detection",
+       "quote": "We run our photometry tools (based on PyBDSF and galfit) on the inverted images (i.e., the sign of each pixel value is inverted) to estimate the fraction (and probability) of spurious detections"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Monte Carlo simulations for flux bias correction, error re-estimation, and completeness",
+    "method": {
+     "value": "Run FULL and PHYS Monte Carlo simulations by injecting Gaussian mock sources into PyBDSF residual images of 150+ representative pointings, recovering them with PyBDSF and GALFIT, and deriving 2D lookup corrections as functions of S/N_peak and Theta_beam.",
+     "evidence": [
+      {
+       "loc": "3. MONTE CARLO SIMULATIONS",
+       "quote": "In our simulations, we create artificial sources (of Gaussian shape), insert them into residual images (after blind extraction photometry), and recover them with our photometry pipelines."
+      },
+      {
+       "loc": "3.1.5. Final Corrections",
+       "quote": "We choose the “PHYS” simulation for the final correction, considering the discussion in the previous sections, i.e., “PHYS” simulation is more representative of our real data."
+      }
+     ]
+    },
+    "software": [
+     "PyBDSF",
+     "GALFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "150+ representative images; 4225 realizations per image for FULL, 273 for PHYS; cross-match radius = 1.5 arcsec for PyBDSF completeness",
+      "evidence": [
+       {
+        "loc": "3. MONTE CARLO SIMULATIONS",
+        "quote": "For each selected image, we perform the “FULL” and “PHYS” type simulations 4225 and 273 times respectively"
+       },
+       {
+        "loc": "3.2. Completeness",
+        "quote": "We cross-match the PyBDSF source recovery catalog to the simulated catalog for each image by coordinate using a search radius of 1.5 _[′′]_"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gaussian source morphology with axis ratio 0.2 to 1.0; PHYS simulation assumes 2SFM, Davidzon et al. (2017) SMF, Sargent et al. (2014) MS, van der Wel et al. (2014) and Fujimoto et al. (2017) sizes",
+      "evidence": [
+       {
+        "loc": "3. MONTE CARLO SIMULATIONS",
+        "quote": "where we simulate sources mimicking observed galaxy stellar mass functions (SMFs; e.g., Davidzon et al. 2017), star-forming MS relation (MS; e.g., Sargent et al. 2014) and starburst/MS classification"
+       },
+       {
+        "loc": "C.1.1. Source simulation and injection",
+        "quote": "The simulated source is assumed to be of Gaussian shape (the minor-axis FWHM is generated with an axis ratio randomly picked between 0.2 to 1.0)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Function fitting of the form a * S/N_peak^m + b * S/N_peak^n and interpolation in (S/N_peak, Theta_beam) bins",
+     "evidence": [
+      {
+       "loc": "Figure 11 caption",
+       "quote": "Solid red lines are function fitting (with the form _a_ S _/_ N peak _[m]_ [+] _[ b]_ [ S] _[/]_ [N] peak _[n]_ [)] [to] [the] [flux] [bias] [data] [points]"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Verified that normalized flux difference histograms (S_sim - S_rec^corr)/sigma_S_rec^corr follow a mean=0, sigma=1 Gaussian distribution.",
+     "evidence": [
+      {
+       "loc": "C.3. Final statistical behaviour of corrected fluxes and errors",
+       "quote": "The final histograms nicely agree with the mean = 0, sigma = 1 1D Gaussian."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Catalog merging and machine-learning counterpart association",
+    "method": {
+     "value": "Select blind detections with S/N_peak > 5.40 and prior detections with S/N_peak > 4.35, cross-match within 1.0 arcsec, and classify counterpart reliability using a Gaussian Process classifier trained on visual inspection and multi-wavelength cutout parameters.",
+     "evidence": [
+      {
+       "loc": "4.1. Combining the two photometric catalogs",
+       "quote": "We apply an S _/_ N peak cut at 5.40 to our blind source extraction catalog (Sect. 2.2) and an S _/_ N peak cut at 4.35 to our prior source fitting catalog (Sect. 2.4)."
+      },
+      {
+       "loc": "4.2. Examining counterpart association",
+       "quote": "After testing a number of different classifiers available in scikit-learn, we decide to use the Gaussian Process (GP) classifier, which implements Gaussian Processes for probabilistic classification."
+      }
+     ]
+    },
+    "software": [
+     "scikit-learn"
+    ],
+    "key_parameters": [
+     {
+      "value": "S/N_peak > 5.40 (blind), S/N_peak > 4.35 (prior); cross-match radius = 1.0 arcsec; training/validation split = 60%/40%; features = Sep., S/N_ALMA, S/N_Ref., S./Ref., Ext., crowdedness, clean",
+      "evidence": [
+       {
+        "loc": "4.1. Combining the two photometric catalogs",
+        "quote": "To merge the two photometric catalogs, we spatially cross-match their sources with a radius of 1.0 _[′′]_"
+       },
+       {
+        "loc": "4.2. Examining counterpart association",
+        "quote": "Then, we randomly select 60% of the sample with visual classifications for training, leaving the final 40% for model validation."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Supervised Gaussian Process probabilistic classification",
+     "evidence": [
+      {
+       "loc": "4.2. Examining counterpart association",
+       "quote": "we decide to use the Gaussian Process (GP) classifier, which implements Gaussian Processes for probabilistic classification."
+      }
+     ]
+    },
+    "validation": {
+     "value": "40% validation sample achieved ~96.5% accuracy (97% overall agreement with median of three visual inspectors).",
+     "evidence": [
+      {
+       "loc": "4.2. Examining counterpart association",
+       "quote": "Running our trained model on the validation sample gave an accuracy of _∼_ 96 _._ 5%."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Predict and subtract strong (sub-)mm emission line contamination",
+    "method": {
+     "value": "Predict CO, [C I], [C II], and [N II] line luminosities from empirical line-L_IR relations using source redshift and SFR, check whether lines fall into the ALMA spectral windows, and subtract predicted line flux contribution from continuum.",
+     "evidence": [
+      {
+       "loc": "4.5. Correcting significant contribution from emission lines",
+       "quote": "Meanwhile, we obtain the exact frequency setups for each ALMA observation from the ALMA archive, and identify the predicted strong (sub-)mm lines within the frequency setups."
+      },
+      {
+       "loc": "4.5. Correcting significant contribution from emission lines",
+       "quote": "We estimate the line contribution to the measured continuum by dividing the predicted line flux by the total bandwidth and compare that to the measured continuum."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "GILDAS"
+    ],
+    "key_parameters": [
+     {
+      "value": "lines predicted: CO (2 <= J_upper <= 10), [C I] (370, 609 um), [N II] (122, 205 um), [C II] (158 um)",
+      "evidence": [
+       {
+        "loc": "4.5. Correcting significant contribution from emission lines",
+        "quote": "Our pipeline uses the redshift and SFR (and IR color, e.g., rest-frame _S_ 70 _µ_ m _/S_ 160 _µ_ m from SEDs, when necessary) to predict for each source the low- to high- _J_ CO (upper level quantum number 2 _≤_ _J_ upper _≤_ 10)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Empirical line-L_IR correlations from De Looze et al. (2011), Zhao et al. (2013, 2016), Sargent et al. (2014), Liu et al. (2015), Valentino et al. (2018)",
+      "evidence": [
+       {
+        "loc": "4.5. Correcting significant contribution from emission lines",
+        "quote": "The line prediction follows empirical luminosity–luminosity correlations: [C ii]– _L_ IR correlation from De Looze et al. (2011)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Extracted lines in data cubes for ~50 sources with >20% predicted contamination and compared against 234 literature line detections.",
+     "evidence": [
+      {
+       "loc": "4.5. Correcting significant contribution from emission lines",
+       "quote": "Our prediction suggests that _∼_ 50 ( _∼_ 7%) sources have (sub-)mm lines contributing more than 20% to the measured continuum. We looked into their data cubes and found that most of them do have line emission as predicted"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Multi-wavelength SED fitting to derive stellar masses, IR luminosities, and SFRs",
+    "method": {
+     "value": "Fit UV-to-mm/radio SEDs with MAGPHYS at fixed prior redshifts (iterating over inconsistent prior-z values and with/without 24 um data) and with MAGPHYS+photo-z to obtain uncertainties, flagging >5 sigma ALMA SED-excess outliers.",
+     "evidence": [
+      {
+       "loc": "4.4 SED fitting",
+       "quote": "We use MAGPHYS (da Cunha et al. 2008, 2015) [22] for the SED fitting, as it has rich stellar SED libraries"
+      },
+      {
+       "loc": "4.4. SED fitting",
+       "quote": "for log _M_ _∗_ and log SFR in our final galaxy catalog, we take the uncertainties from the photo- _z_ SED fitting which includes the redshift uncertainty, while keep the best-fit values still from the best prior- _z_ fit."
+      }
+     ]
+    },
+    "software": [
+     "MAGPHYS",
+     "MAGPHYS+photo-z",
+     "Crab.Toolkit.michi2"
+    ],
+    "key_parameters": [
+     {
+      "value": "inconsistent prior-z threshold Delta z > 0.15 * (1+z); SED-excess outlier threshold S_OBS / S_SED > 1.77 (5 sigma); photo-z range z = 0 to 8",
+      "evidence": [
+       {
+        "loc": "4.3. Combining multi-wavelength photometry and prior redshifts in the literature",
+        "quote": "for galaxies with inconsistent prior- _z_ (∆ _z_ _>_ 0 _._ 15 _×_ (1+ _z_ )) from the above catalogs, we run SED fitting for each inconsistent prior- _z_ and take the one with minimum- _χ_ [2] at the ALMA bands as our best fit."
+       },
+       {
+        "loc": "4.4. SED fitting",
+        "quote": "Its upper 5- _σ_ envelope corresponds to _S_ OBS _/S_ SED = 1 _._ 77, above which we do find 3% outliers."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Flat LambdaCDM cosmology (H_0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_0 = 0.7), Chabrier (2003) IMF, energy balance between UV/optical dust attenuation and IR/mm dust emission, Kennicutt (1998) SFR_IR calibration",
+      "evidence": [
+       {
+        "loc": "1. INTRODUCTION",
+        "quote": "Throughout the paper, we adopt a flat ΛCDM cosmology with _H_ 0 = 70 km s _[−]_ [1] Mpc _[−]_ [1], Ω M = 0 _._ 3, Ω 0 = 0 _._ 7, and a Chabrier (2003) initial mass function (IMF)."
+       },
+       {
+        "loc": "4.4. SED fitting",
+        "quote": "It assumes an energy balance between the energy attenuated by dust in the UV/optical and that radiated by dust at IR/mm wavelengths."
+       },
+       {
+        "loc": "4.6. Obtaining galaxy properties from SED fitting",
+        "quote": "Our final SFRs are computed from the IR luminosity with the Kennicutt (1998) calibration and assuming a Chabrier (2003) IMF:"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Chi-square template library fitting with PDF marginalization (68th percentiles)",
+     "evidence": [
+      {
+       "loc": "4.6. Obtaining galaxy properties from SED fitting",
+       "quote": "For each property, MAGPHYS gives a minimum- _χ_ [2] (i.e., best-fit) value, as well as the median and the lower and upper 68 [th] percentiles of the PDF."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared derived M_* against Delvecchio et al. (2017) SED3FIT (with AGN templates) for 396 sources, tested two-component stellar+AGN fits with michi2, and compared MAGPHYS+photo-z against spec-z.",
+     "evidence": [
+      {
+       "loc": "4.6. Obtaining galaxy properties from SED fitting",
+       "quote": "In Fig. 24 we further compare our final _M_ _∗_ to the Delvecchio et al. (2017) SED3FIT fitted _M_ _∗_ for 396 sources in common (with consistent redshifts and coordinates)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "astroquery",
+    "version": "not stated",
+    "used_for": {
+     "value": "Querying the ALMA archive for publicly available projects in the COSMOS field",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "We start by querying the ALMA archive with the `Python` package `astroquery` Ginsburg et al. 2019"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Calibrating raw ALMA visibilities with scriptForPI.py, continuum imaging via the imaging pipeline and clean task, uvmodelfit testing, and uv-plane line searches",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "These datasets are calibrated with the Common Astronomy Software Applications (CASA; McMullin et al. 2007) using the `scriptForPI.py` scripts"
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Calibrated visibilities are imaged and “cleaned” — i.e., deconvolved with the “dirty” beam — with the CASA imaging pipeline version `4.7.2` ."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyBDSF",
+    "version": "not stated",
+    "used_for": {
+     "value": "Blind source extraction and 2D Gaussian fitting on ALMA continuum images",
+     "evidence": [
+      {
+       "loc": "2.2 Blind Source Extraction",
+       "quote": "We use the Python Blob Detector and Source Finder (aka PyBDSM or PyBDSF; hereafter PyBDSF; Mohan & Rafferty 2015) [5] to find sources blindly and extract their flux and size information."
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Deconvolving Gaussian component sizes with the clean beam via the DECONV.FOR module in PyBDSF",
+     "evidence": [
+      {
+       "loc": "2.2. Blind Source Extraction",
+       "quote": "the deconvolution follows the Astronomical Image Processing System (AIPS; Greisen 2002) `DECONV.FOR` module"
+      }
+     ]
+    }
+   },
+   {
+    "name": "getpix",
+    "version": "not stated",
+    "used_for": {
+     "value": "Aperture photometry and pre-selecting candidate prior sources for GALFIT fitting",
+     "evidence": [
+      {
+       "loc": "2.4. Prior Source Fitting",
+       "quote": "We refer to this aperture photometry as the getpix method hereafter"
+      },
+      {
+       "loc": "2.4. Prior Source Fitting",
+       "quote": "This first getpix step also provides guidance for the prior source fitting using galfit (Peng et al. 2002, 2010) in the next step."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Iterative prior-based source fitting on ALMA continuum images",
+     "evidence": [
+      {
+       "loc": "2.4. Prior Source Fitting",
+       "quote": "This first getpix step also provides guidance for the prior source fitting using galfit (Peng et al. 2002, 2010) in the next step."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "uv-plane source fitting with uv_fit and uv-plane spectral line extraction",
+     "evidence": [
+      {
+       "loc": "2.6 Comparison to uv-plane Source Fitting Results",
+       "quote": "task to fit Gaussian and/or point-source models then compare the total flux with those measured from the image-plane galfit and PyBDSF fitting."
+      },
+      {
+       "loc": "4.5. Correcting significant contribution from emission lines",
+       "quote": "The line search is done in the _uv_ -plane adapting the methodology of Silverman et al. (2015b) and D. Liu et al. (2019, in preparation), with CASA and GILDAS."
+      }
+     ]
+    }
+   },
+   {
+    "name": "scikit-learn",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian Process supervised machine-learning classification of multi-wavelength counterpart associations",
+     "evidence": [
+      {
+       "loc": "4.2. Examining counterpart association",
+       "quote": "For this supervised machine learning task, we use the Python scikit-learn package (Pedregosa et al. 2011)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGPHYS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Multi-wavelength UV-to-mm/radio SED fitting at fixed prior redshift to derive galaxy physical properties",
+     "evidence": [
+      {
+       "loc": "4.4 SED fitting",
+       "quote": "We use MAGPHYS (da Cunha et al. 2008, 2015) [22] for the SED fitting, as it has rich stellar SED libraries"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGPHYS+photo-z",
+    "version": "not stated",
+    "used_for": {
+     "value": "Photometric redshift SED fitting to validate prior redshifts and estimate M_* and SFR uncertainties including redshift errors",
+     "evidence": [
+      {
+       "loc": "4.4. SED fitting",
+       "quote": "we adopt the recently developed photo- _z_ version of the MAGPHYS code (MAGPHYS+photo-z; A. Battisti et al. in prep.)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Crab.Toolkit.michi2",
+    "version": "not stated",
+    "used_for": {
+     "value": "Experimental multi-component stellar+AGN chi-square SED fitting for problematic AGN outliers",
+     "evidence": [
+      {
+       "loc": "E. PROBLEMATIC SED FITTING CASES",
+       "quote": "To verify the degeneracy between age and attenuation, we ran some additional SED fitting with our multi-component _χ_ [2] fitting code under development"
+      },
+      {
+       "loc": "E. PROBLEMATIC SED FITTING CASES",
+       "quote": "It is still in the experimental phase but is available at http://github.com/1054/Crab.Toolkit.michi2."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total number of ALMA continuum images processed (v20180102)",
+    "value": "1534",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.7. Final Galaxy Catalog and Properties",
+      "quote": "from a parent sample 823 galaxies with at least one ALMA detection in 1534 ALMA archive images (from 142 ALMA projects) available for the COSMOS field"
+     },
+     {
+      "loc": "6. SUMMARY",
+      "quote": "for the COSMOS field 1534 pointings covering an area of 164 arcmin [2] have been publicly available since Jan. 2nd, 2018"
+     }
+    ]
+   },
+   {
+    "quantity": "Total primary beam area covered (v20180102)",
+    "value": "164",
+    "uncertainty": "not stated",
+    "units": "arcmin^2",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2. DATA AND PHOTOMETRY",
+      "quote": "The sum of primary beam area of these observations reaches 164 arcmin [2] as of Jan. 2nd, 2018"
+     }
+    ]
+   },
+   {
+    "quantity": "Blind source extraction catalog detections (S/N_peak > 5.40)",
+    "value": "939",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Blind-photometry catalog 939 _· · ·_"
+     },
+     {
+      "loc": "6. SUMMARY",
+      "quote": "the final catalogs (version `v20180201` ) contain 939 sources above a peak flux S _/_ N peak = 5 _._ 40 for the blindly detected sources (with a cumulative spurious fraction of _∼_ 8%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Prior source fitting catalog detections (S/N_peak > 4.35)",
+    "value": "1027",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Prior-photometry catalog 1027 _· · ·_"
+     },
+     {
+      "loc": "6. SUMMARY",
+      "quote": "and 1027 sources above a peak flux S _/_ N peak = 4 _._ 35 for the prior selected sources (with a cumulative spurious fraction of _∼_ 12%)."
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative spurious fraction for blind catalog (S/N_peak > 5.40)",
+    "value": "<8",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1. Combining the two photometric catalogs",
+      "quote": "and the cumulative spurious fractions are _<_ 8% and _<_ 12% for the blind- and prior-selected samples, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative spurious fraction for prior catalog (S/N_peak > 4.35)",
+    "value": "<12",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1. Combining the two photometric catalogs",
+      "quote": "and the cumulative spurious fractions are _<_ 8% and _<_ 12% for the blind- and prior-selected samples, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative completeness for blind catalog (S/N_peak > 5.40)",
+    "value": ">92",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1. Combining the two photometric catalogs",
+      "quote": "The corresponding differential completenesses at those thresholds are 57% and 98%, and the cumulative ones are as high as _>_ 92% and _>_ 99%, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative completeness for prior catalog (S/N_peak > 4.35)",
+    "value": ">99",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1. Combining the two photometric catalogs",
+      "quote": "The corresponding differential completenesses at those thresholds are 57% and 98%, and the cumulative ones are as high as _>_ 92% and _>_ 99%, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean log10(S_PyBDSF / S_GALFIT) flux difference",
+    "value": "-0.013",
+    "uncertainty": "0.10",
+    "units": "dex",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Figure 7 caption",
+      "quote": "Histogram of the flux difference on a logarithmic scale, log 10 ( _S_ PyBDSF _/S_ GALFIT ). The mean is _−_ 0 _._ 013 with a standard deviation of 0.10 dex."
+     }
+    ]
+   },
+   {
+    "quantity": "Median log10 difference between blind photometry and uv_fit flux densities",
+    "value": "0.015",
+    "uncertainty": "0.08",
+    "units": "dex",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.6 Comparison to uv-plane Source Fitting Results",
+      "quote": "a logarithmic scale) has a median of 0.015 dex and scatter of 0.08 dex."
+     }
+    ]
+   },
+   {
+    "quantity": "Median log10 difference between prior photometry and uv_fit flux densities",
+    "value": "-0.005",
+    "uncertainty": "0.13",
+    "units": "dex",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+      "quote": "The difference between prior photometry and `uv_fit` flux densities has a median of -0.005 dex and scatter of 0.13 dex"
+     }
+    ]
+   },
+   {
+    "quantity": "Gaussian Process counterpart association validation accuracy",
+    "value": "96.5",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2. Examining counterpart association",
+      "quote": "Running our trained model on the validation sample gave an accuracy of _∼_ 96 _._ 5%."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of galaxies in final robust galaxy catalog",
+    "value": "676",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Final galaxy catalog (Sect. 5) _[d]_ 676 _· · ·_"
+     },
+     {
+      "loc": "6. SUMMARY",
+      "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+     }
+    ]
+   },
+   {
+    "quantity": "Redshift range of final galaxy catalog",
+    "value": "0.25-5.67",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6. SUMMARY",
+      "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar mass range of final galaxy catalog",
+    "value": "3e7-1.9e12",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6. SUMMARY",
+      "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+     }
+    ]
+   },
+   {
+    "quantity": "Star formation rate range of final galaxy catalog",
+    "value": "0.02-4000",
+    "uncertainty": "not stated",
+    "units": "M_sun yr^-1",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6. SUMMARY",
+      "quote": "The final galaxy catalog (version `20180201` ) contains 676 galaxies in the range of _z_ = 0 _._ 25 _−_ 5 _._ 67, _M_ _∗_ = 3 _×_ 10 [7] _−_ 1 _._ 9 _×_ 10 [12] M _⊙_ and SFR = 0 _._ 02 _−_ 4000 M _⊙_ yr _[−]_ [1] ."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Flux bias parameterization at low S/N depends strongly on the input mock source population of Monte Carlo simulations due to resolution bias, making physically motivated (PHYS) simulations more realistic than uniform full-parameter-space (FULL) simulations.",
+    "evidence": [
+     {
+      "loc": "3.1.1. Flux bias in the PyBDSF photometry",
+      "quote": "Here, we also found that the flux bias parameterization strongly depends on the input mock source populations of the MC simulation as demonstrated below."
+     },
+     {
+      "loc": "3.1.1. Flux bias in the PyBDSF photometry",
+      "quote": "Therefore, in our ALMA (sub-)mm data, the real galaxy angular size distribution should be dominated by small sources, i.e., it is better described by the “PHYS” simulation rather than the “FULL” simulation."
+     }
+    ]
+   },
+   {
+    "value": "Condon (1997) Gaussian fit error prescriptions capture the primary dependence on Theta_beam but miss a weak dependence on S/N_peak, overestimating errors by ~40% for large high-S/N sources in FULL simulations and underestimating by ~15% for small high-S/N sources in PHYS simulations.",
+    "evidence": [
+     {
+      "loc": "3.1.3. Flux error estimation for PyBDSF photometry",
+      "quote": "Fig. 13 indeed shows a strong dependency on Θ beam but also indicates a weak dependency on S _/_ N peak ."
+     },
+     {
+      "loc": "3.1.3. Flux error estimation for PyBDSF photometry",
+      "quote": "However, the “FULL” simulation panel indicates that Condon (1997) errors are overestimated by about 40% for large, high-S _/_ N peak sources; while the “PHYS” simulation panel indicates that Condon (1997) errors are underestimated by about 15% for small, high-S _/_ N peak sources."
+     }
+    ]
+   },
+   {
+    "value": "Iterative MAGPHYS SED fitting without an AGN component yields stellar masses in good agreement with SED3FIT (which includes an AGN component), even for classified AGNs, except for a few extreme mid-IR AGN outliers.",
+    "evidence": [
+     {
+      "loc": "4.6. Obtaining galaxy properties from SED fitting",
+      "quote": "Our current multi-run, iterative MAGPHYS SED fitting, although without an AGN component, achieves in general good agreement with SED fitting that includes an AGN component."
+     }
+    ]
+   },
+   {
+    "value": "Galaxy-galaxy strong gravitational lensing (magnification > 2) is negligible in the A3COSMOS sample, affecting only ~3 expected sources.",
+    "evidence": [
+     {
+      "loc": "4.9. The effect of galaxy-galaxy gravitational lensing",
+      "quote": "Scaling to our galaxy catalog source number of 823, only three strongly ( _µ_ _>_ 2) lensed sources are expected."
+     },
+     {
+      "loc": "4.9. The effect of galaxy-galaxy gravitational lensing",
+      "quote": "Therefore, we conclude that strong lensing is not affecting the properties of most of our galaxies."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Public PI-led ALMA archival observations in the COSMOS field can be homogeneously imaged and mined with complementary blind and prior-based photometry pipelines to produce consistent, accurate continuum flux densities.",
+    "experiment": "Imaged 1534 archival pointings with CASA (robust=2), extracted sources using PyBDSF (blind) and GALFIT (prior-based), and compared fluxes against each other, GILDAS uv_fit on 301 pointings, and getpix aperture photometry.",
+    "result": "96% of common sources between PyBDSF and GALFIT agree within 3 sigma (mean log10 ratio -0.013 +/- 0.10 dex), and median offsets relative to uv_fit are 0.015 dex (blind) and -0.005 dex (prior).",
+    "finding": "Image-plane blind and prior-based continuum photometries are mutually consistent and agree well with uv-plane fitting and aperture photometry.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "2.5. Comparing Blind Extraction and Prior Fitting Results",
+      "quote": "96% of sources have fluxes agreeing within 3 _σ_ ."
+     },
+     {
+      "loc": "2.6. Comparison to uv-plane Source Fitting Results",
+      "quote": "The `uv_fit` flux densities and the prior-based and blind (sub-)mm photometries agree very well."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The prior distribution of source flux densities and sizes assumed in Monte Carlo simulations significantly impacts derived flux bias corrections and error estimates.",
+    "experiment": "Performed two MC simulations on 150+ representative ALMA residual maps: a uniform grid simulation (FULL) and a physically motivated simulation (PHYS) based on empirical SMFs, MS relations, and galaxy size evolution.",
+    "result": "At low S/N_peak and small recovered sizes, the FULL simulation shows much smaller flux boosting than the PHYS simulation due to resolution bias from abundant simulated large, low-S/N sources; applying PHYS corrections yields normalized residual histograms matching a unit Gaussian.",
+    "finding": "Realistic input galaxy distributions (PHYS) are required to properly correct flux biases and re-estimate flux errors in ALMA continuum photometry.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1.1. Flux bias in the PyBDSF photometry",
+      "quote": "The flux bias in the “FULL” simulation is much smaller than compared to the “PHYS” simulation. This is due to the difference of the input populations of the two simulations."
+     },
+     {
+      "loc": "C.3. Final statistical behaviour of corrected fluxes and errors",
+      "quote": "The final histograms nicely agree with the mean = 0, sigma = 1 1D Gaussian."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Multi-wavelength counterpart association for ALMA detections can be automated using supervised machine learning to replace manual visual inspection.",
+    "experiment": "Measured positional separation, S/N, surface brightness extension (Ext.), crowdedness, and clean parameters on HST i-band, UltraVISTA Ks, IRAC 3.6 um, and VLA 3 GHz cutouts for 1027 sources, training a scikit-learn Gaussian Process classifier on 60% of visually classified sources.",
+    "result": "The GP classifier achieved ~96.5% accuracy on the 40% validation set and 97% overall agreement with visual classifications, flagging 36 unreliable counterpart outliers.",
+    "finding": "The trained Gaussian Process classifier reliably automates counterpart association quality assessment for ALMA detections.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2. Examining counterpart association",
+      "quote": "Running our trained model on the validation sample gave an accuracy of _∼_ 96 _._ 5%."
+     },
+     {
+      "loc": "4.2. Examining counterpart association",
+      "quote": "After this automated counterpart association step, 36 sources are flagged as spurious sources"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Iterative MAGPHYS SED fitting (with energy balance and ALMA continuum constraints, iterating with and without 24 um data) provides reliable stellar masses even without an explicit AGN template component.",
+    "experiment": "Compared MAGPHYS stellar masses against SED3FIT stellar masses (which include an AGN component) from Delvecchio et al. (2017) for 396 common galaxies, including 158 classified AGNs.",
+    "result": "391 of 396 galaxies agree within 3 sigma, with only 5 outliers outside the 3 sigma envelope.",
+    "finding": "Multi-run MAGPHYS SED fitting with ALMA continuum constraints yields robust stellar masses for the vast majority of galaxies, including AGN hosts.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.6. Obtaining galaxy properties from SED fitting",
+      "quote": "In Fig. 24 we further compare our final _M_ _∗_ to the Delvecchio et al. (2017) SED3FIT fitted _M_ _∗_ for 396 sources in common (with consistent redshifts and coordinates). AGNs are highlighted in red. This demonstrates a good agreement (within 3 _σ_ )."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "The COSMOS field has the richest, deepest multi-wavelength datasets over 2 deg^2, and accumulated public PI-led ALMA observations cover 164 arcmin^2, exceeding the areal coverage of any contiguous ALMA deep field survey at all sensitivities.",
+    "evidence": [
+     {
+      "loc": "2. DATA AND PHOTOMETRY",
+      "quote": "We limit our selection to within the COSMOS field (R.A. = 10:00:28.6, decl. = +02:12:21.0, J2000; Scoville et al. 2007) because it is one of the deep fields with the richest, deepest multiwavelength datasets"
+     },
+     {
+      "loc": "2. DATA AND PHOTOMETRY",
+      "quote": "Given that the ALMA archival data in the COSMOS field alone cover a larger cumulative area at all sensitivities, a systematic mining of the ALMA archive is strongly motivated."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Combining blind source extraction (PyBDSF) and prior-based fitting (GALFIT) reaches deeper detection limits while identifying blended/inconsistent sources; physically-motivated MC simulations properly account for resolution and flux boosting biases.",
+    "evidence": [
+     {
+      "loc": "2.3. Prior Source Master Catalog",
+      "quote": "In addition to the blind source extraction, we utilize known source positions as a prior for the source fitting. This technique allows for deeper detection limits and lowers the spurious source fraction."
+     },
+     {
+      "loc": "2.5 Comparing Blind Extraction and Prior Fitting",
+      "quote": "With both PyBDSF and prior-based galfit photometry, we not only obtain accurate independent fluxes which agree very well but also identify those few (0.5% [12] ) sources which suffer from source multiplicity/blending issues."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Selecting the final sample with a total flux S/N threshold was rejected in favor of a constant S/N_peak threshold because completeness depends strongly on source size for total flux S/N.",
+     "evidence": [
+      {
+       "loc": "3.2. Completeness",
+       "quote": "Given our finding that completeness shows an obvious dependency on source sizes, if selecting a sample with a total flux S _/_ N threshold, the sample will have different completeness for different sizes. But when selecting with a constant S _/_ N peak threshold, the sample will have a homogeneous completeness."
+      }
+     ]
+    },
+    {
+     "value": "Using the uniform full-parameter-space (FULL) simulation for final flux bias correction was rejected in favor of the physically-motivated (PHYS) simulation because FULL underestimates flux boosting at low S/N.",
+     "evidence": [
+      {
+       "loc": "3.1.5. Final Corrections",
+       "quote": "We choose the “PHYS” simulation for the final correction, considering the discussion in the previous sections, i.e., “PHYS” simulation is more representative of our real data. Note that using “FULL” simulation would underestimate the flux bias correction"
+      }
+     ]
+    },
+    {
+     "value": "Direct blanking of line-contaminated channels before continuum imaging was rejected in favor of post-facto empirical line prediction and subtraction to avoid massive data volume, analysis time, and dataset inhomogeneity.",
+     "evidence": [
+      {
+       "loc": "4.5. Correcting significant contribution from emission lines",
+       "quote": "Direct blanking of channels affected by line emission before construction of the continuum image would require either a good a-priori knowledge of the redshift or dedicated line searches (that are not part of this project) as well as special treatment of each source present in a single pointing."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "S/N_peak thresholds (5.40 for blind, 4.35 for prior) were chosen where the differential spurious fraction reaches 50%, keeping cumulative spurious fractions below 8-12% and cumulative completeness above 92-99%.",
+    "evidence": [
+     {
+      "loc": "4.1. Combining the two photometric catalogs",
+      "quote": "These thresholds are selected such that the differential spurious fractions are both 50% at the applied S _/_ N peak cut level, and the cumulative spurious fractions are _<_ 8% and _<_ 12% for the blind- and prior-selected samples, respectively"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "The final galaxy catalog has an undetermined selection function and is not complete in cosmic comoving volume, stellar mass, or SFR due to inhomogeneous PI-led targets.",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "we provide robust information on redshift, stellar mass and star formation rate for _∼_ 700 galaxies at redshifts 0.5-6 in the COSMOS field (with undetermined selection function)."
+      },
+      {
+       "loc": "6. Summary",
+       "quote": "we caution that this catalog is not complete in cosmic comoving volume, stellar mass or SFR."
+      }
+     ]
+    },
+    {
+     "value": "Very high angular resolution ALMA images (synthesized beam < 0.1 arcsec, <=1% of data) and the AzTEC-3 mosaic project are excluded because the photometry pipelines are optimized for marginally resolved sources.",
+     "evidence": [
+      {
+       "loc": "2. DATA AND PHOTOMETRY",
+       "quote": "(but excluded very long baseline data with a synthesized beam _<_ 0 _._ 1 _[′′]_ ; see Sect. 2.1; and the only one mosaic project on the AzTEC-3 protocluster)."
+      },
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Therefore, these ≲ 1% very high resolution ( _θ_ Maj _,_ beam _<_ 0 _._ 1 _[′′]_ ) images are excluded from our analysis."
+      }
+     ]
+    },
+    {
+     "value": "Visibility data for the same source taken at the same frequency across different ALMA projects are not combined.",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Continuum Images",
+       "quote": "Currently, data for the same source taken at the same frequency arising from different projects are not combined."
+      }
+     ]
+    },
+    {
+     "value": "26% of ALMA detections (215 galaxies, including 119 blind-only sources and Ks-dropouts without optical/near-IR prior redshifts) are excluded from the final galaxy property catalog due to insufficient optical/near-IR constraints.",
+     "evidence": [
+      {
+       "loc": "4.1. Combining the two photometric catalogs",
+       "quote": "As 26% of these galaxies do not have sufficient optical/near-IR data, i.e., not in the Laigle et al. (2016) catalog, it is not possible to obtain reliable stellar masses for them."
+      }
+     ]
+    },
+    {
+     "value": "Dust masses are omitted from the released catalog because MAGPHYS can underestimate dust masses in post-starburst galaxy mergers.",
+     "evidence": [
+      {
+       "loc": "4.6. Obtaining galaxy properties from SED fitting",
+       "quote": "Therefore, we do not provide dust masses in our final catalog and defer this to later work (our Paper II)."
+      }
+     ]
+    },
+    {
+     "value": "At primary beam attenuation < 0.3, Gaussian primary beam approximations and frequency dependence across the 16 GHz sideband span introduce instrumental systematics.",
+     "evidence": [
+      {
+       "loc": "2.8. Inverted-image Fitting and the Fraction of Spurious Detection",
+       "quote": "We attribute the slight drop below _∼_ 0 _._ 3 to the fact that instrumental systematics are likely becoming more prominent"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Aggregating all spectral windows into continuum images without prior line flagging means any unpredicted or anomalously bright emission line (or line in a source with an inaccurate photo-z) directly biases the continuum flux density.",
+    "Using a single scalar primary beam attenuation factor evaluated at the source center can bias total flux measurements for extended sources located far from the phase center where the primary beam gradient is steep.",
+    "Training and validating the Gaussian Process counterpart classifier on visual inspections of the same 1027-source dataset risks overfitting to the specific depth and resolution distribution of v20180102."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Yes, raw ALMA data are from the public ALMA archive and processed continuum images and catalogs are publicly released at IPAC/IRSA.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The ALMA photometric measurements and galaxy properties are released publicly within our blind-extraction, prior-fitting and galaxy property catalogs, plus the images."
+     },
+     {
+      "loc": "5. Data Products",
+      "quote": "The catalogs are available from the COSMOS archive at IPAC/IRSA and in electronic form from the journal."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "All PBA-corrected and uncorrected continuum images and three catalogs (blind photometry, prior photometry, galaxy properties) are hosted on the COSMOS archive at IPAC/IRSA.",
+    "evidence": [
+     {
+      "loc": "5. DATA PRODUCTS",
+      "quote": "The catalogs are available from the COSMOS archive at IPAC/IRSA and in electronic form from the journal. Further, the ALMA continuum images are also provided via the COSMOS archive."
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "Experimental multi-component SED fitting code Crab.Toolkit.michi2 released on GitHub (http://github.com/1054/Crab.Toolkit.michi2); A3COSMOS project page at https://sites.google.com/view/a3cosmos.",
+     "evidence": [
+      {
+       "loc": "1. INTRODUCTION",
+       "quote": "https://sites.google.com/view/a3cosmos"
+      },
+      {
+       "loc": "E. PROBLEMATIC SED FITTING CASES",
+       "quote": "It is still in the experimental phase but is available at http://github.com/1054/Crab.Toolkit.michi2."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Internal COSMOS spectroscopic redshift compilation catalog by M. Salvato et al. (version Sept. 1st, 2017) and unpublished SPLASH IRAC supplementary catalog (I. Davidzon, priv. comm.)",
+    "Automated A3COSMOS wrapper scripts for running GALFIT, getpix, and the 2D flux bias/error lookup tables from the PHYS simulation",
+    "Trained scikit-learn Gaussian Process model file and visual classification training labels for counterpart association",
+    "Exact list of <10% continuum pointings where manual baseline flagging or robust=0.5 was applied during imaging"
+   ],
+   "estimated_data_volume_inferred": "~5-15 TB for raw/calibrated Measurement Sets of 52 ALMA projects (1534 pointings); ~10-50 GB for the released continuum FITS images and catalogs",
+   "score_inferred": 78,
+   "score_reason": "All raw ALMA data, calibrated continuum FITS images, and final photometry/property catalogs are publicly archived at IRSA, and the imaging, source extraction, simulation, and SED fitting recipes are thoroughly documented; however, full end-to-end reproduction from scratch is hindered by reliance on two internal COSMOS catalogs (Salvato spec-z compilation and SPLASH supplementary catalog), unstated per-image manual flagging choices (<10% of maps), and unreleased pipeline wrapper scripts/lookup tables.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Both the raw ALMA archival visibilities and the released continuum FITS images are public, the core software tools (CASA, PyBDSF, GALFIT, MAGPHYS) are standard and explicitly parameterized, and the catalog summary statistics and cross-method comparisons provide clear quantitative benchmarks."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Condon (1997)",
+     "why": "Mathematical prescription for 2D Gaussian fitting parameter uncertainties in correlated noise"
+    },
+    {
+     "citation": "Mohan & Rafferty (2015)",
+     "why": "PyBDSF blind source extraction and Gaussian fitting code"
+    },
+    {
+     "citation": "Peng et al. (2002, 2010)",
+     "why": "GALFIT 2D image fitting code used for prior-based photometry"
+    },
+    {
+     "citation": "Scoville et al. (2014, 2016, 2017)",
+     "why": "Concentric aperture photometry (getpix) method and detection thresholds"
+    },
+    {
+     "citation": "da Cunha et al. (2008, 2015)",
+     "why": "MAGPHYS UV-to-mm energy-balance SED fitting code"
+    },
+    {
+     "citation": "Liu et al. (2018); Jin et al. (2018)",
+     "why": "Super-deblended FIR/mm photometry and IR SED modeling used in PHYS simulations"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Paper II; D. Liu et al. 2019, submitted to ApJ.",
+     "why": "Companion paper using the A3COSMOS catalog to study the cosmic evolution of molecular gas fraction and gas depletion time"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "COSMOS",
+    "A3COSMOS",
+    "UltraVISTA",
+    "SPLASH",
+    "VLA-COSMOS",
+    "PEP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2019ApJS..244...40L",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-30T00:27:35",
+  "usage": {
+   "input": 98678,
+   "output": 22634,
+   "thoughts": 0
+  },
+  "usd": 0.423696,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0,
+  "thinking": "low",
+  "seconds": 307.8,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 223,
+  "quotes_ok": 223,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 15,
+  "unsupported_facts": 0,
+  "project_codes": 39,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00097.S",
+   "2012.1.00076.S",
+   "2012.1.00952.S",
+   "2013.1.00092.S",
+   "2013.1.00276.S",
+   "2013.1.00884.S",
+   "2015.1.00055.S",
+   "2015.1.00260.S",
+   "2015.1.00568.S",
+   "2015.1.00853.S",
+   "2015.1.01105.S",
+   "2015.1.01212.S",
+   "2016.1.00624.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 16,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 126,
+   "stated": 111,
+   "rate": 0.881
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-30T02:46:27",
+  "custom_id": "gemini4argon-repair-claude-code",
+  "fixed": [
+   {
+    "path": "data.external_data_from_literature[0].what.evidence[1]",
+    "old": "we adopt the optical/near-IR photometry from the Laigle et al. (2016) catalog, and use the 3 _[′′]_ diameter aperture fluxes to be consistent with Laigle et al. (2016)",
+    "new": "(2016) catalog, and use the 3 _[′′]_ diameter aperture fluxes to be consistent with Laigle et al. (2016)"
+   },
+   {
+    "path": "processing.imaging.primary_beam_correction.evidence[0]",
+    "old": "The data products released here include all “clean” continuum images corrected and uncorrected for primary beam attenuation (PBA)",
+    "new": "The data products released here include all “clean” continuum images corrected and uncorrected for pri"
+   },
+   {
+    "path": "processing.inherited[0].what.evidence[1]",
+    "old": "We select S _/_ N total _>_ 2 or S _/_ N peak _>_ 3 _._ 6 sources (same as Scoville et al. 2017) as valid detections.",
+    "new": "S _/_ N peak _>_ 3 _._ 6 sources (same as Scoville et al. 2017) as valid detections."
+   },
+   {
+    "path": "analysis_steps[1].method.evidence[0]",
+    "old": "We use the Python Blob Detector and Source Finder (aka PyBDSM or PyBDSF; hereafter PyBDSF; Mohan & Rafferty 2015) to find sources blindly and extract their flux and size information.",
+    "new": "Next, PyBDSF fits multiple two-dimensional Gaussians to each “island” depending on the number of peaks identified within it. Thirdly, all Gaussians of the same “island” are grouped into one source"
+   },
+   {
+    "path": "analysis_steps[1].assumptions[0].evidence[1]",
+    "old": "using a single primary beam attenuation correction factor at the source’s central position is reasonable.",
+    "new": "Given that each source represents a high-redshift galaxy with a typical size of 0.5–2 _[′′]_, much smaller than the primary beam"
+   },
+   {
+    "path": "analysis_steps[2].key_parameters[0].evidence[0]",
+    "old": "We select S _/_ N total _>_ 2 or S _/_ N peak _>_ 3 _._ 6 sources (same as Scoville et al. 2017) as valid detections.",
+    "new": "S _/_ N peak _>_ 3 _._ 6 sources (same as Scoville et al. 2017) as valid detections."
+   },
+   {
+    "path": "analysis_steps[2].key_parameters[0].evidence[1]",
+    "old": "we select sources with a fitted magnitude error of _<_ 0 _._ 25 or _S_ total _>_ 3 _σ_ ( _σ_ being the pixel rms noise) and allow their positions to vary by at most 0 _[′′]_ _._ 7 in the second-pass fitting.",
+    "new": "and allow their positions to vary by at most 0 _[′′]_ _._ 7"
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": "Then, in order to identify possible extended sources, we allow sources with fitted magnitude error _<_ 0 _._ 20 or _S_ total above 3 times the rms noise to be fitted with circular Gaussian models (and in a next step Sérsic profiles) in the third-pass fitting.",
+    "new": "To optimize the galfit fitting for source fluxes as well as sizes, an iterative approach is adopted: After the first-pass fitting with point-source models to all galfit priors fixed at their original positions,"
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": "We use the GILDAS `uv_fit` task to fit Gaussian and/or point-source models then compare the total flux with those measured from the image-plane galfit and PyBDSF fitting.",
+    "new": "task to fit Gaussian and/or point-source models then compare the total flux with those measured from the image-plane galfit and PyBDSF fitting."
+   },
+   {
+    "path": "analysis_steps[6].method.evidence[0]",
+    "old": "We use MAGPHYS (da Cunha et al. 2008, 2015) for the SED fitting",
+    "new": "We use MAGPHYS (da Cunha et al. 2008, 2015) [22] for the SED fitting, as it has rich stellar SED libraries"
+   },
+   {
+    "path": "software[2].used_for.evidence[0]",
+    "old": "We use the Python Blob Detector and Source Finder (aka PyBDSM or PyBDSF; hereafter PyBDSF; Mohan & Rafferty 2015) to find sources blindly and extract their flux and size information.",
+    "new": "We use the Python Blob Detector and Source Finder (aka PyBDSM or PyBDSF; hereafter PyBDSF; Mohan & Rafferty 2015) [5] to find sources blindly and extract their flux and size information."
+   },
+   {
+    "path": "software[6].used_for.evidence[0]",
+    "old": "We use the GILDAS `uv_fit` task to fit Gaussian and/or point-source models then compare the total flux with those measured from the image-plane galfit and PyBDSF fitting.",
+    "new": "task to fit Gaussian and/or point-source models then compare the total flux with those measured from the image-plane galfit and PyBDSF fitting."
+   },
+   {
+    "path": "software[8].used_for.evidence[0]",
+    "old": "We use MAGPHYS (da Cunha et al. 2008, 2015) for the SED fitting",
+    "new": "We use MAGPHYS (da Cunha et al. 2008, 2015) [22] for the SED fitting, as it has rich stellar SED libraries"
+   },
+   {
+    "path": "results_numeric[9].evidence[0]",
+    "old": "The difference between blind photometry and `uv_fit` flux densities (on a logarithmic scale) has a median of 0.015 dex and scatter of 0.08 dex.",
+    "new": "a logarithmic scale) has a median of 0.015 dex and scatter of 0.08 dex."
+   },
+   {
+    "path": "reasoning.why_this_method.evidence[1]",
+    "old": "With both PyBDSF and prior-based galfit photometry, we not only obtain accurate independent fluxes which agree very well but also identify those few (0.5%) sources which suffer from source multiplicity/blending issues.",
+    "new": "With both PyBDSF and prior-based galfit photometry, we not only obtain accurate independent fluxes which agree very well but also identify those few (0.5% [12] ) sources which suffer from source multiplicity/blending issues."
+   },
+   {
+    "path": "reasoning.limitations_admitted[0].evidence[1]",
+    "old": "(Despite the vast number of star-forming galaxies presented in this work, we caution that this catalog is not complete in cosmic comoving volume, stellar mass or SFR.)",
+    "new": "we caution that this catalog is not complete in cosmic comoving volume, stellar mass or SFR."
+   },
+   {
+    "path": "reproducibility.data_public_as_stated.evidence[1]",
+    "old": "The latest versions of our catalogs are available from the COSMOS archive at IPAC/IRSA and in electronic form.",
+    "new": "The catalogs are available from the COSMOS archive at IPAC/IRSA and in electronic form from the journal."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2011.0.00097.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2011.` `0.00097.S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2012.1.00076.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2012.1.00076.` `S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2012.1.00952.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2012.` `1.00952.S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00092.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00092.` `S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00276.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.` `1.00276.S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00884.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2013.1.00884.` `S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.00055.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.` `1.00055.S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.00260.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00260.` `S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.00568.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.` `1.00568.S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.00853.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.00853.` `S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.01105.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.` `1.01105.S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.01212.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2015.1.01212.` `S`"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2016.1.00624.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "`ADS/JAO.ALMA#2016.` `1.00624.S`"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,1231 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...891..164S",
+  "title": "Chemistry and Physics of a Low-metallicity Hot Core in the Large Magellanic Cloud",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Shimonishi, Takashi",
+  "n_authors": 8,
+  "arxiv_id": "2001.06982",
+  "doi": "10.3847/1538-4357/ab6e6b",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00394.S",
+   "2018.1.01366.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We here present the results of 0.1 pc-scale observations in 250 and 350 GHz towards a newly-discovered hot molecular core in a nearby low-metallicity galaxy, the Large Magellanic Cloud (LMC), with the Atacama Large Millimeter/submillimeter Array."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "ST16 (IRAS 05195-6911)",
+     "coordinates": {
+      "value": "RA = 05h19m12.31s, Dec = -69d9'7.3\" (ICRS)",
+      "evidence": [
+       {
+        "loc": "2.2 Observations",
+        "quote": "The target high-mass YSO is located at RA = 05$^\\mathrm{h}$19$^\\mathrm{m}$12.31s and Dec = -69$^\\circ$9$\\ensuremath{'}$7.3$''$ (ICRS), based on the *Spitzer* SAGE infrared catalog (cite: Mei06)."
+       },
+       {
+        "loc": "4.3.2 NH2 from the SED fit",
+        "quote": "The distance to ST16 is assumed to be the same as that of the LMC."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "LMC distance (0.40\" = 0.097 pc)",
+      "evidence": [
+       {
+        "loc": "2.2 Observations",
+        "quote": "The target high-mass YSO is located at RA = 05$^\\mathrm{h}$19$^\\mathrm{m}$12.31s and Dec = -69$^\\circ$9$\\ensuremath{'}$7.3$''$ (ICRS), based on the *Spitzer* SAGE infrared catalog (cite: Mei06)."
+       },
+       {
+        "loc": "4.3.2 NH2 from the SED fit",
+        "quote": "The distance to ST16 is assumed to be the same as that of the LMC."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "assumed same as LMC",
+      "evidence": [
+       {
+        "loc": "2.2 Observations",
+        "quote": "The target high-mass YSO is located at RA = 05$^\\mathrm{h}$19$^\\mathrm{m}$12.31s and Dec = -69$^\\circ$9$\\ensuremath{'}$7.3$''$ (ICRS), based on the *Spitzer* SAGE infrared catalog (cite: Mei06)."
+       },
+       {
+        "loc": "4.3.2 NH2 from the SED fit",
+        "quote": "The distance to ST16 is assumed to be the same as that of the LMC."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the chemical composition, physical structure and sulfur isotope ratios of a newly discovered hot molecular core around the high-mass YSO ST16 in the LMC, and how do its abundances compare with other LMC and Galactic hot cores?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "In this paper, we report the results of high spatial resolution submillimeter observations with ALMA towards a high-mass YSO in the LMC, and present the discovery of a new hot molecular core."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00394.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "Observations were carried out with ALMA as a part of Cycle 4 (2016.1.00394.S) and Cycle 6 (2018.1.01366.S) programs (PI T. Shimonishi)."
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01366.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "Observations were carried out with ALMA as a part of Cycle 4 (2016.1.00394.S) and Cycle 6 (2018.1.01366.S) programs (PI T. Shimonishi)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (250 GHz) and Band 7 (350 GHz)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Band 6 | 2016 Nov 30 | 16.1 | 1.9–2.5 | 44 | 15.1 | 704.1 | 0.54 $\\times$ 0.40 | 3.6 | 0.98 MHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four spectral windows per band: 241.25–243.12, 243.61-245.48, 256.75–258.62, 258.60–260.48 GHz (B6); 336.97–338.84, 338.77-340.64, 348.85–350.72, 350.65–352.53 GHz (B7); channel 0.98 MHz",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "The channel spacing is 0.98 MHz, which corresponds to 1.2 km s$^{-1}$ for Band 6 and 0.85 km s$^{-1}$ for Band 7."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH",
+     "transition": "many (30 lines detected)",
+     "rest_frequency": "241.7–351.2 GHz",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "In total we have detected 90 transitions, out of which, 30 lines are due to CH$_3$OH, and 27 lines are due to SO$_2$ and its isotopologues."
+      }
+     ]
+    },
+    {
+     "species": "SO2 and isotopologues",
+     "transition": "multiple, e.g. 14(0,14)-13(1,13)",
+     "rest_frequency": "244.25422 GHz (example)",
+     "evidence": [
+      {
+       "loc": "Table A SO2",
+       "quote": "SO$_2$ | 14$_{0,14}$–13$_{1,13}$ | 94 | 244.25422"
+      }
+     ]
+    },
+    {
+     "species": "SO, 34SO, 33SO, CS, C34S, C33S, OCS, CH3CN, CCH, CN, NO, HNCO, H2CO, H13CO+, H13CN, H2CS, SiO",
+     "transition": "various",
+     "rest_frequency": "various",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "Molecular emission lines of CH$_3$OH, H$_2$CO, CCH, H$^{13}$CO$^{+}$, CS, C$^{34}$S, C$^{33}$S, SO, $^{34}$SO, $^{33}$SO, SO$_2$, $^{34}$SO$_2$, $^{33}$SO$_2$, OCS, H$_2$CS, CN, NO, HNCO, H$^{13}$CN, CH$_3$CN, and SiO are detected"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-4 (B6), C43-4 (B7)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Band 6    | 2016 Nov 30 | 16.1      | 1.9–2.5   | 44       | 15.1  | 704.1 | 0.54 $\\times$ 0.40"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15.1–704.1 m (B6); 15.1–783.5 m (B7)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "The minimum–maximum baseline lengths are 15.1–704.1 m for Band 6 and 15.1–783.5 m for Band 7."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "3.6\" (B6); 3.3\" (B7)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "0.37 $\\times$ 0.32 | 3.3 | 0.98 MHz"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "16.1 min (B6); 35.8 min (B7)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "The total on-source integration time is 16.1 minutes for Band 6 data and 35.8 minutes for Band 7."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 Nov 30 (B6, Cycle 4); 2018 Dec 4 (B7, Cycle 6)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Band 7 | 2018 Dec 4 | 35.8 | 0.5–0.6 | 46"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI T. Shimonishi programs",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "Cycle 4 (2016.1.00394.S) and Cycle 6 (2018.1.01366.S) programs (PI T. Shimonishi)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer, Herschel, AKARI, IRSF/SIRIUS, VLT/ISAAC",
+     "provided": {
+      "value": "Photometry and spectra for SED (1–1200 um) and 9.7 um silicate absorption",
+      "evidence": [
+       {
+        "loc": "Acknowledgments",
+        "quote": "We use data obtained by IRSF/SIRIUS, VLT/ISAAC, *AKARI*, *Spitzer*, and *Herschel*."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust mass absorption coefficients 1.06 (1200 um) and 1.89 cm2/g (870 um) for ice-coated grains",
+      "evidence": [
+       {
+        "loc": "4.3.1",
+        "quote": "we here use 1.06 cm$^2$ g$^{-1}$ for 1200 $\\mu$m and 1.89 cm$^2$ g$^{-1}$ for 870 $\\mu$m"
+       }
+      ]
+     },
+     "citation": "Ossenkopf & Henning 1994 (cite: Oss94)"
+    },
+    {
+     "what": {
+      "value": "Ice column densities toward ST16",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "Tabulated ice abundances are adapted from (cite: ST16)."
+       }
+      ]
+     },
+     "citation": "(cite: ST16)"
+    },
+    {
+     "what": {
+      "value": "Galactic hot core abundances for comparison",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "Abundances for Galactic hot cores are collected from (cite: Bla87; Tur91; Ziu91; Sut95; Schi97; Hel97)."
+       }
+      ]
+     },
+     "citation": "(cite: Bla87; Tur91; Ziu91; Sut95; Schi97; Hel97)"
+    },
+    {
+     "what": {
+      "value": "ST11 hot core abundances and sulfur isotope ratios",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "The data for ST11 are adapted from (cite: ST16b) and those for N113 A1 are from (cite: Sew18)."
+       }
+      ]
+     },
+     "citation": "(cite: ST16b); (cite: Sew18)"
+    },
+    {
+     "what": {
+      "value": "12C/13C = 49 for LMC",
+      "evidence": [
+       {
+        "loc": "4.4",
+        "quote": "assuming $^{12}$C/$^{13}$C = 49 (cite: Wan09)"
+       }
+      ]
+     },
+     "citation": "(cite: Wan09)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Gas-grain astrochemical simulations (cold, warm-up, post-warm-up) for LMC and Galactic conditions, UMIST 2012 network, Ach15 initial abundances",
+     "evidence": [
+      {
+       "loc": "Appendix: Details of the astrochemical simulations",
+       "quote": "The present gas-phase chemical network is based on the UMIST 2012 database (cite: McE13)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2 (B6 calibration); CASA 5.4.0 (B7 calibration)",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "For calibration, CASA 4.7.2 is used for Band 6 and CASA 5.4.0 is used for Band 7."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0519-4546 (both bands)",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "Flux, bandpass, and phase calibrators are J0519-4546, J0635-7516, and J0526-6749 for Band 6, while J0519-4546, J0519-4546, and J0529-7245 for Band 7"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% absolute flux calibration",
+     "evidence": [
+      {
+       "loc": "footnote 3",
+       "quote": "A canonical uncertainty of 10 $\\%$ for the absolute flux calibration of the ALMA Band 6 and 7 data is adopted"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not applied",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The self-calibration is not applied."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean in CASA 5.4.0",
+     "evidence": [
+      {
+       "loc": "Table 1 notes",
+       "quote": "The average beam size achieved by TCLEAN with the Briggs weighting and the robustness parameter of 0.5."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "With the Briggs weighting and the robustness parameter of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in CASA; continuum from line-free channels of four spws",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The continuum emission is subtracted from the spectral data using the *uvcontsub* task in CASA before the spectral extraction."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "impbcor in CASA",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "the images are corrected for the primary beam pattern using the *impbcor* task in CASA"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "common circular 0.40\" (0.097 pc) for B6 and B7",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "we have used a common circular restoring beam size of 0.40$''$ for Band 6 and 7 data"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Rotation diagram treatment",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "We use the following formulae based on the standard treatment of the rotation diagram analysis (cite: Sut95; Gol99):"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sut95; Gol99)"
+    },
+    {
+     "what": {
+      "value": "Robitaille SED model fit cutoff",
+      "evidence": [
+       {
+        "loc": "4.3.2",
+        "quote": "we use a cutoff value for $\\chi^2$ that is described in (cite: Rob07)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Rob07)"
+    },
+    {
+     "what": {
+      "value": "tau9.7-AV relation",
+      "evidence": [
+       {
+        "loc": "4.3.3",
+        "quote": "according to (cite: Boo11) (assuming $A_V$/$A_K$ = 8.8)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Boo11)"
+    },
+    {
+     "what": {
+      "value": "Dust temperature vs AV relation in simulations",
+      "evidence": [
+       {
+        "loc": "Appendix",
+        "quote": "using the following equation as presented in (cite: Hoc17)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hoc17)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum and uvcontsub fit order",
+    "Image size, cell size, clean threshold, mask, niter",
+    "Which calibration pipeline version / manual scripts",
+    "Source spectral extraction aperture relative to line-fit method details (Gaussian fit software)",
+    "Rotation-diagram fitting method and treatment of blends",
+    "Details of SED photometry compilation and fitting grid",
+    "Chemical network code name and numerical settings for reproducing simulations"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra and fit line parameters",
+    "method": {
+     "value": "Spectra extracted from 0.42\" circular region at continuum center; Gaussian fits to lines for Tb, FWHM, VLSR, integrated intensity",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "Line parameters are measured by fitting a Gaussian profile to observed lines."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Detection criterion 2.5 sigma and velocity coincidence with CO clouds",
+      "evidence": [
+       {
+        "loc": "3.1 Spectra",
+        "quote": "The detection criteria adopted here are the 2.5$\\sigma$ significance level and the velocity coincidence with the systemic velocity of nearby CO clouds (cite: Won11)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Line IDs with CDMS and JPL",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "Spectral lines are identified with the aid of the Cologne Database for Molecular Spectroscopy"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Rotation diagram analysis",
+    "method": {
+     "value": "LTE optically thin rotation diagrams; two-temperature fits split at Eu=100 K for CH3OH and SO2",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "We use the transitions with $E_{u}$ $<$100 K to fit the lower-temperature component and the transitions with $E_{u}$ $>$100 K to fit the higher-temperature component"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Optically thin, LTE; SO from SO(3_3-2_3) with Trot=50 K",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "We here assume an optically thin condition and the local thermodynamic equilibrium (LTE)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Non-LTE RADEX comparison, n(H2)=3e6 cm-3, Tbg 2.73 K",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "The calculated non-LTE column densities are reasonably consistent with the LTE estimations."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Column densities of other molecules",
+    "method": {
+     "value": "Solve rotation diagram equation for N with assumed Trot (50 K for extended/SO/CS/CCH/CN, 100 K for compact)",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "For other molecules that are concentrated at the hot core, we assume $T_{\\mathrm{rot}}$ = 100 K"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive H2 column density",
+    "method": {
+     "value": "Optically thin dust continuum at 870 and 1200 um; SED fits (Robitaille, Zhang & Tan); 9.7 um silicate depth; average adopted",
+     "evidence": [
+      {
+       "loc": "4.3.4",
+       "quote": "we use $N_{\\mathrm{H_2}}$ = (5.6 $\\pm$ 0.6) $\\times$ 10$^{23}$ cm$^{-2}$ as a representative value"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Td = 20, 60, 150 K tested; 60 K adopted",
+      "evidence": [
+       {
+        "loc": "4.3.1",
+        "quote": "We estimate $N_{\\mathrm{H_2}}$ for three different dust temperatures, 20 K, 60 K, and 150 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust-to-gas mass ratio 0.0027 (0.008 scaled by LMC Z~1/3); NH2/AV = 2.8e21; distance = LMC",
+      "evidence": [
+       {
+        "loc": "4.3.1",
+        "quote": "We use the dust-to-gas mass ratio of 0.0027 for the LMC, which is obtained by scaling the Galactic value of 0.008"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "SED: chi2 cutoff (chi2-chi2best)/Ndata<=3 median; best five Zhang&Tan models averaged",
+     "evidence": [
+      {
+       "loc": "4.3.2",
+       "quote": "We select the fit results which have $(\\chi^2 - \\chi^2_{best})/N_{data}$ $\\leqq$ 3"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistency among methods",
+     "evidence": [
+      {
+       "loc": "4.3.4",
+       "quote": "consistent $N_{\\mathrm{H_2}}$ values are obtained by different methods"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fractional abundances and comparison with Galactic/LMC hot cores",
+    "method": {
+     "value": "N(X)/NH2; metallicity-scaled by factor 3 for LMC; compare with literature",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "the abundances of LMC hot cores are multiplied by three to correct for the metallicity difference"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "12C/13C=49",
+      "evidence": [
+       {
+        "loc": "4.4",
+        "quote": "assuming $^{12}$C/$^{13}$C = 49 (cite: Wan09)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Sulfur isotope ratios",
+    "method": {
+     "value": "Ratios of column densities of SO, SO2, CS isotopologues; weighted mean",
+     "evidence": [
+      {
+       "loc": "Table 6",
+       "quote": "The weight is the inverse of the squared error value."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Astrochemical simulations",
+    "method": {
+     "value": "Gas-grain model with cold (1e5 yr, AV 1-5 mag), warm-up (5e4 yr, to 150 K, 6e6 cm-3, AV 100) and post-warm-up (1e5 yr) stages; LMC vs Galactic",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "The warm-up stage continues up to $t_h = 5 \\times 10^4$ years in our model."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "LMC: Z=1/3, gas-to-dust 300, chi_uv=3",
+      "evidence": [
+       {
+        "loc": "Table 10",
+        "quote": "Gas to dust ratio | 100 (MW), 300 (LMC)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2 (B6 calibration); 5.4.0 (B7 calibration, imaging)",
+    "used_for": {
+     "value": "Calibration, tclean imaging, impbcor, uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "For imaging, we use CASA 5.4.0 for the all data."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE column density calculations",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We have also performed non-LTE calculation for column densities of selected species using RADEX (cite: vdT07)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS / JPL databases",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line identification and spectroscopic constants",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We use the spectroscopic constants and partition functions extracted from the CDMS database except for HCOOCH$_3$"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Bolometric luminosity",
+    "value": "3.1e5",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2.1 Target",
+      "quote": "The bolometric luminosity of the source is estimated to be 3.1 $\\times$ 10$^5$ L$_{\\ensuremath{\\odot}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot CH3OH (Eu>100 K)",
+    "value": "137",
+    "uncertainty": "+8/-7",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "CH$_3$OH$^{a}$ ($E_{u} >$100 K) | 137$^{+8}_{-7}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot SO2 (Eu>100 K)",
+    "value": "232",
+    "uncertainty": "+27/-22",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "SO$_2$$^{a}$ ($E_{u} >$100 K) | 232$^{+27}_{-22}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N(CH3OH) Eu>100 K",
+    "value": "1.6e15",
+    "uncertainty": "+/-0.1e15",
+    "units": "cm-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "(1.6 $^{+0.1}_{-0.1}$) $\\times$ 10$^{15}$"
+     }
+    ]
+   },
+   {
+    "quantity": "NH2 adopted",
+    "value": "5.6e23",
+    "uncertainty": "0.6e23",
+    "units": "cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3.4",
+      "quote": "we use $N_{\\mathrm{H_2}}$ = (5.6 $\\pm$ 0.6) $\\times$ 10$^{23}$ cm$^{-2}$ as a representative value"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas number density",
+    "value": "3e6",
+    "uncertainty": "not stated",
+    "units": "cm-3",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3.4",
+      "quote": "we estimate the average gas number density to be $n_{\\mathrm{H_2}}$ = 3 $\\times$ 10$^6$ cm$^{-3}$ and the total gas mass to be 100 M$_{\\ensuremath{\\odot}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum 870 um",
+    "value": "10.55",
+    "uncertainty": "1.06",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "(10.55 $\\pm$ 1.06) mJy/beam for 870 $\\mu$m"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum 1200 um",
+    "value": "3.37",
+    "uncertainty": "0.34",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "(3.37 $\\pm$ 0.34) mJy/beam for 1200 $\\mu$m"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH abundance",
+    "value": "4.8e-9",
+    "uncertainty": "0.9e-9",
+    "units": "relative to H2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "CH$_3$OH$^{a,b}$ |  (4.8 $\\pm$ 0.9) $\\times$ 10$^{-9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO2 abundance",
+    "value": "1.1e-8",
+    "uncertainty": "0.2e-8",
+    "units": "relative to H2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "SO$_2$$^{a,b}$   |  (1.1 $\\pm$ 0.2) $\\times$ 10$^{-8}$"
+     }
+    ]
+   },
+   {
+    "quantity": "32S/34S weighted mean",
+    "value": "17",
+    "uncertainty": "2",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "17 $\\pm$ 2"
+     }
+    ]
+   },
+   {
+    "quantity": "32S/33S weighted mean",
+    "value": "53",
+    "uncertainty": "5",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "53 $\\pm$ 5"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot SO off-hot-core",
+    "value": "24.5",
+    "uncertainty": "1.4",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$T_{\\mathrm{rot}}$ = 24.5 $\\pm$ 1.4 K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Rotating envelope traced by SO2 and 34SO, east red-shifted and west blue-shifted, velocity separation 2-3 km/s",
+    "evidence": [
+     {
+      "loc": "5.5",
+      "quote": "the east side of the core is red-shifted and the west side is blue-shifted, and the velocity separation is about 2–3 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "value": "CCH and CN trace an outflow cavity (PDR-like)",
+    "evidence": [
+     {
+      "loc": "5.7",
+      "quote": "The present characteristic distributions of CCH and CN presumably trace the PDR-like outflow cavity structure"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "ST16 hosts a hot molecular core",
+    "experiment": "Line detection, rotation diagrams, H2 column density",
+    "result": "Tgas>100 K, n~3e6 cm-3, size~0.1 pc, rich molecular lines",
+    "finding": "ST16 is associated with a hot core",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "strongly suggests that the source is associated with a hot molecular core"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Hot core organics scale with metallicity",
+    "experiment": "Compare metallicity-scaled abundances of ST16, ST11, N113 A1 and Galactic cores",
+    "result": "CH3OH is low in ST16 and ST11 but comparable in N113 A1; SO2 similar in all",
+    "finding": "Organic molecules show large variation; SO2 scales with metallicity",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggests that organic molecules (e.g., CH$_3$OH, a classical hot core tracer) show a large abundance variation in low metallicity"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Sulfur isotopes in LMC differ from solar neighborhood",
+    "experiment": "Isotopologue column density ratios",
+    "result": "32S/34S=17, 32S/33S=53",
+    "finding": "34S and 33S overabundant in LMC",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggesting that both $^{34}$S and $^{33}$S are overabundant in the LMC"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Grain temperature during ice formation drives CH3OH differentiation",
+    "experiment": "Astrochemical simulations varying initial AV",
+    "result": "Peak CH3OH decreases at low AV, enhanced in LMC",
+    "finding": "Consistent with warm ice chemistry",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "The present simulations are consistent with the picture provided by the warm ice chemistry hypothesis"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Several independent NH2 methods used to check reliability",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "A column density of molecular hydrogen ($N_{\\mathrm{H_2}}$) is estimated by several methods to check their reliability."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "SO rotation diagram rejected as unreliable due to optically thick lines; used SO(3_3-2_3) instead",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "Note that the temperature and column density derived from the rotation diagram of SO would not be reliable"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Infall not detected because no optically thick tracer; NH2 includes low-temperature components",
+     "evidence": [
+      {
+       "loc": "5.5",
+       "quote": "an infall motion is not seen in the present data, because we do not cover a fully optically thick molecular tracer in this work"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single pointing with 0.4\" beam; beam dilution and LTE assumptions affect Trot and N",
+    "Assumed Trot for many species and Td=60 K drive abundance uncertainties",
+    "Simulations are a toy model with limited parameter exploration"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project codes given; data presumably in archive",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2016.1.00394.S and $\\#$2018.1.01366.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, mask, threshold)",
+    "Line-free channel list",
+    "Rotation diagram fit code details",
+    "Simulation code not released"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB",
+   "score_inferred": 3,
+   "score_reason": "ALMA codes and key settings given with extensive line tables, but imaging details and line-free channels missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, numeric results (Trot, N, isotope ratios) in tables, recipe mostly complete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Sutton et al. 1995; Goldsmith & Langer 1999 (cite: Sut95; Gol99)",
+     "why": "Rotation diagram formalism"
+    },
+    {
+     "citation": "(cite: Rob07)",
+     "why": "SED model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ST16b)",
+     "why": "ST11 LMC hot core"
+    },
+    {
+     "citation": "(cite: Sew18)",
+     "why": "N113 hot cores"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Spitzer SAGE",
+    "Herschel HERITAGE"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-fc16a68d471e3c210af497cab607bfaa",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:32",
+  "usage": {
+   "input_tokens": 55796,
+   "output_tokens": 10987,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.111338,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 84,
+  "quotes_ok": 84,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 88,
+   "stated": 58,
+   "rate": 0.659
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:43",
+  "custom_id": "repair-sonnet-a419f2292729eb4c6913faeda526fa73",
+  "fixed": [
+   {
+    "path": "data.configurations.evidence[0]",
+    "old": "(Cycle 4) | | | | | (C40-4)",
+    "new": "| Band 6    | 2016 Nov 30 | 16.1      | 1.9–2.5   | 44       | 15.1  | 704.1 | 0.54 $\\times$ 0.40"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[1].fitting",
+    "old_value": "straight-line fit"
+   },
+   {
+    "path": "analysis_steps[2].validation",
+    "old_value": "RADEX non-LTE"
+   },
+   {
+    "path": "analysis_steps[5].validation",
+    "old_value": "Compared with ST11, N113, solar neighborhood"
+   },
+   {
+    "path": "analysis_steps[6].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[6].validation",
+    "old_value": "Compared qualitatively with observations"
+   }
+  ],
+  "dropped_items": []
+ }
+}

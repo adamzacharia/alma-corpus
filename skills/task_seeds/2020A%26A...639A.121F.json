@@ -1,0 +1,297 @@
+{
+ "bibcode": "2020A&A...639A.121F",
+ "title": "Annular substructures in the transition disks around LkCa 15 and J1610",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202038027",
+ "arxiv_id": "2005.02712",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Do the transition disks LkCa 15 and J1610 show multiple annular substructures at ~40-60 mas resolution in 1.3 mm continuum, and can planet-disk interaction explain them?",
+ "alma_project_codes": [
+  "2018.1.01255.S"
+ ],
+ "data": {
+  "bands": "Band 6 (220 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "68x47 mas (LkCa 15), 55x43 mas (J1610)",
+  "sensitivity": "rms ~6.9 uJy/beam (LkCa 15), ~7.2 uJy/beam (J1610)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA 7 mm point-source flux of LkCa 15, 16.6±3.6 uJy",
+    "evidence": [
+     {
+      "loc": "3.1 Images",
+      "quote": "with a flux density of $16.6\\pm3.6\\,\\mu$Jy"
+     }
+    ]
+   },
+   "citation": "(cite: isella2014)"
+  },
+  {
+   "what": {
+    "value": "Gas surface density profile parameters from 12CO(3-2) of LkCa 15",
+    "evidence": [
+     {
+      "loc": "4.1 Set-up",
+      "quote": "We adopt a parameterized initial gas surface density profile based on the analysis of low-resolution $^{12}$CO ($J$=3-2) observations of LkCa 15 by (cite: jin2019)"
+     }
+    ]
+   },
+   "citation": "(cite: jin2019)"
+  },
+  {
+   "what": {
+    "value": "N2H+ abundant between 58 and 88 au in LkCa 15",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "showing that this ion is particularly abundant between $58^{+6}_{-10}$ and $88^{+6}_{-4}\\,$au"
+     }
+    ]
+   },
+   "citation": "(cite: qi2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate, concatenate and image",
+   "method": "CASA calibration, self-cal, concat, tclean multiscale with JvM correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 0 (LkCa 15), 0.3 (J1610); clean threshold 1 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit axisymmetric Gaussian-ring model to visibilities",
+   "method": "Sum of radial Gaussian rings, Fourier transformed and sampled at uv points",
+   "software": [
+    "GALARIO",
+    "emcee"
+   ],
+   "key_parameters": [
+    "16 free parameters (LkCa 15), 13 (J1610)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Azimuthally averaged radial profiles",
+   "method": "Re-center, deproject, average in 9 mas bins using fitted geometry",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Optical depth, dust mass and Sigma_g/Sigma_d",
+   "method": "Invert I=B(1-exp(-tau)); Sigma_d=tau/kappa; Toomre Q>2 gives gas upper limit",
+   "software": [],
+   "key_parameters": [
+    "kappa = 2.6 cm2/g at 1.3 mm"
+   ],
+   "assumptions": [
+    "Negligible albedo; temperature from MCRT model or phi=0.02 irradiation formula"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Hydrodynamical simulations and synthetic images",
+   "method": "Dusty FARGO-ADSG with 60 Earth-mass planet, three cooling prescriptions; RADMC-3D imaging convolved with observed beam",
+   "software": [
+    "Dusty FARGO-ADSG",
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "alpha=1e-4; 672x1556 cells; 1000 orbits then 300 with 3e5 particles"
+   ],
+   "assumptions": [
+    "Gas disk mass 0.1 Msun within 600 au; Rc=65 au"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "LkCa 15 ring radii B47/B69/B100",
+   "value": "47.33 / 68.99 / 100.11",
+   "uncertainty": "+1.53/-1.20, +0.17/-0.15, ±0.19",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table LkCa15",
+     "quote": "$R_i$ & (au) & $47.33^{+1.53}_{-1.20}$ & $68.99^{+0.17}_{-0.15}$ & $100.11^{+0.19}_{-0.19}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LkCa 15 inclination",
+   "value": "50.16",
+   "uncertainty": "±0.03",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table LkCa15",
+     "quote": "$i$ & $(^{\\circ})$ & $50.16\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "J1610 ring radii B29/B41",
+   "value": "28.79 / 41.11",
+   "uncertainty": "±0.10 / +0.13,-0.15",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table J1610",
+     "quote": "$R_i$ & (au) & $28.79^{+0.10}_{-0.10}$ & $41.11^{+0.13}_{-0.15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "J1610 inclination",
+   "value": "37.80",
+   "uncertainty": "±0.20",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table J1610",
+     "quote": "$i$ & $(^{\\circ})$ & $37.80\\pm0.20$"
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered flux density LkCa 15",
+   "value": "136.4",
+   "uncertainty": "±0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 ALMA observations and data reduction",
+     "quote": "$136.4\\pm0.1\\,$mJy and $30.8\\pm0.1\\,$mJy for LkCa 15 and J1610"
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered flux density J1610",
+   "value": "30.8",
+   "uncertainty": "±0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 ALMA observations and data reduction",
+     "quote": "$136.4\\pm0.1\\,$mJy and $30.8\\pm0.1\\,$mJy for LkCa 15 and J1610"
+    }
+   ]
+  },
+  {
+   "quantity": "LkCa 15 central unresolved emission peak",
+   "value": "73.7",
+   "uncertainty": "±6.9",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Images",
+     "quote": "with a peak intensity of $73.7\\pm6.9\\,\\mu$Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 1.35-7 mm of LkCa 15 center",
+   "value": "0.9",
+   "uncertainty": "±0.2",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1 Images",
+     "quote": "we obtain a spectral index of $0.9\\pm0.2$ between 1.35 and 7 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass B100 (LkCa 15), MCRT temperature",
+   "value": "182",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "we obtain dust masses of 51 and $182\\,M_\\oplus$ for B47+B69 and B100, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_g/Sigma_d upper limits B69, B100",
+   "value": "<68, <62",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "$\\Sigma_{\\rm g}/\\Sigma_{\\rm d}<[68,62]$ at their intensity peaks"
+    }
+   ]
+  },
+  {
+   "quantity": "Beta at 70 au in LkCa 15",
+   "value": "0.07-4.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "the cooling parameter $\\beta$ at 70 au in the LkCa 15 disk is $\\sim0.07 - 4.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "J1610 stellar luminosity",
+   "value": "0.46",
+   "uncertainty": "±0.03",
+   "units": "Lsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Stellar properties of J1610",
+     "quote": "Our final value is $L_*=0.46\\pm0.03L_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals, number of rounds and reference antennas",
+  "Cell size and image size",
+  "Multiscale scales list",
+  "Pipeline vs manual calibration and flux model details",
+  "Initial uv-fit parameter bounds apart from the sigma constraint",
+  "Which calibrator flux values were used",
+  "uv-plot binning for visibilities"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters",
+  "Image size and cell size",
+  "Multiscale scales",
+  "Hydro code initial setup scripts"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging and fitting approach described with key numbers, but self-cal and several clean parameters are missing; hydro part requires specialised codes.",
+ "rediscovery_reason": "Data likely public after the proprietary period, with numeric ring parameters from a uv fit; moderate recipe completeness.",
+ "source_card": "cards/2020A%26A...639A.121F/sonnet/card.md"
+}

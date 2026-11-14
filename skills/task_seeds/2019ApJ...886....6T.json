@@ -1,0 +1,271 @@
+{
+ "bibcode": "2019ApJ...886....6T",
+ "title": "The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. I. Identifying and Characterizing the Protostellar Content of the OMC-2 FIR4 and OMC-2 FIR3 Regions",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab498f",
+ "arxiv_id": "1910.00605",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What is the protostellar content of OMC2-FIR4 and OMC2-FIR3 at ~40 AU resolution, and what is the nature (luminosity, outflow, hot-corino chemistry) of HOPS-108 and HOPS-370?",
+ "alma_project_codes": [
+  "2015.1.00041.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm)",
+  "arrays": "34-42 antennas per execution",
+  "angular_resolution": "not stated",
+  "sensitivity": "continuum ~0.31 mJy/beam; 12CO ~7.7 mJy/beam (1 km/s); 13CO ~33.3 mJy/beam (0.44 km/s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric luminosities and classes of protostars (HOPS SED fits)",
+    "evidence": [
+     {
+      "loc": "3.3 Dust Continuum Mass and Radius Estimates",
+      "quote": "The luminosity is the L$_{bol}$ for each protostellar system measured from the SED (cite: furlan2016)."
+     }
+    ]
+   },
+   "citation": "(cite: furlan2016)"
+  },
+  {
+   "what": {
+    "value": "APEX 0.87 mm flux density 12.3 Jy in 19'' aperture",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA and VLA Continuum Images",
+      "quote": "The flux density measured by the APEX observations was 12.3 Jy in a 19$''$ aperture centered on HOPS-108."
+     }
+    ]
+   },
+   "citation": "(cite: furlan2014)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 1.84 cm2/g at 0.87 mm",
+    "evidence": [
+     {
+      "loc": "3.3 Dust Continuum Mass and Radius Estimates",
+      "quote": "We adopt $\\kappa_{0.87mm}$ = 1.84 cm$^2$ g$^{-1}$ from (cite: ossenkopf1994) column 5"
+     }
+    ]
+   },
+   "citation": "(cite: ossenkopf1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure source positions and flux densities",
+   "method": "Gaussian fits with imfit to continuum images",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 sigma detection threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust/gas masses and radii",
+   "method": "Isothermal optically thin M = D^2 F/(kappa B(T)), times 100 for gas; radius = HWHM x distance",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 43 K (L/Lsun)^0.25; L=1 Lsun if unmeasured"
+   ],
+   "assumptions": [
+    "D=400 pc; kappa0.87mm=1.84 cm2/g; beta=1 extrapolation to 9 mm; dust-to-gas 1:100"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Methanol rotation temperature and column density",
+   "method": "Rotation diagram from three methanol transitions with line fluxes in 0.5'' (HOPS-108) and 0.75'' (HOPS-370) apertures",
+   "software": [
+    "scipy"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin, lines from same physical structure; mean molecular weight 2.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Luminosity required to evaporate methanol",
+   "method": "Thermal equilibrium dust heating at 50 AU radius for 120 K or 160 K; accretion luminosity L=GMMdot/R",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Evaporation temperature 120 K (160 K with ice mixtures); protostellar radii from Hartmann 1997 and Palla 1993"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HOPS-108 0.87 mm flux density",
+   "value": "62.63",
+   "uncertainty": "0.98",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HOPS-108 | 05:35:27.086 | -05:10:00.06 | HOPS-108 | 0.4 | 62.63$\\pm$0.98 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HOPS-370 0.87 mm flux density",
+   "value": "533.28",
+   "uncertainty": "10.05",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HOPS-370 | 05:35:27.634 | -05:09:34.42 | HOPS-370 | 1.0 | 533.28$\\pm$10.05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HOPS-108 9 mm flux density",
+   "value": "0.099",
+   "uncertainty": "0.019",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HOPS-108 | 05:35:27.084 | -05:10:00.06 | HOPS-108 | 0.4 | 0.099$\\pm$0.019 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of APEX flux recovered",
+   "value": "~2% (0.257 Jy of 12.3 Jy)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2 ALMA and VLA Continuum Images",
+     "quote": "Thus, we are only recovering $\\sim$2% of the overall flux density from this region in our observations."
+    }
+   ]
+  },
+  {
+   "quantity": "HOPS-108 gas mass (ALMA)",
+   "value": "0.0073",
+   "uncertainty": "0.0001",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HOPS-108 | OMC2-FIR4 | 38.3 | 38.5 | 0 | 24.0$\\pm$10.0 | 14$\\pm$10 | 0.0073$\\pm$0.0001"
+    }
+   ]
+  },
+  {
+   "quantity": "HOPS-370 gas mass (ALMA)",
+   "value": "0.0344",
+   "uncertainty": "0.0006",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HOPS-370 | OMC2-FIR3 | 360.9 | 71.5 | I | 67.0$\\pm$10.0 | 16$\\pm$10 | 0.0344$\\pm$0.0006"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol rotation temperature HOPS-108 / HOPS-370",
+   "value": "140 / 129",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Line Emission",
+     "quote": "we derive rotation temperatures of 140 K and 129 K for HOPS-108 and HOPS-370, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol column density HOPS-108 / HOPS-370",
+   "value": "4.3e16 / 1.4e17",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Line Emission",
+     "quote": "methanol column density of 4.3$\\times$10$^{16}$ cm$^{-2}$ and 1.4$\\times$10$^{17}$ cm$^{-2}$ for HOPS-108 and HOPS-370"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol fractional abundance HOPS-108 / HOPS-370",
+   "value": "~1.6e-8 / ~8.5e-8",
+   "uncertainty": "not stated",
+   "units": "relative to H2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Line Emission",
+     "quote": "$\\sim$1.6$\\times$10$^{-8}$ and $\\sim$8.5$\\times$10$^{-8}$ for HOPS108 and HOP-370"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity needed to heat dust to 120 K at 50 AU",
+   "value": "~86",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Origin and Implications of the Compact Methanol Emission",
+     "quote": "the luminosity required to heat dust to this temperature at a radius of 50 AU is $\\sim$86 L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HOPS-108 system velocity",
+   "value": "12.6",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Line Emission",
+     "quote": "The system velocity of HOPS-108 is found to be 12.6 km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size and clean threshold/masks for continuum and line cubes",
+  "Number of clean iterations and deconvolver settings",
+  "Line-free channel ranges for continuum and for continuum subtraction in the line cubes",
+  "Self-calibration reference model, S/N cuts and which executions were combined",
+  "Exact adopted flux density of J0510+1800 and the derived Band 3 to 7 spectral index",
+  "Details of integrated-intensity velocity ranges and moment-map masks",
+  "Rotation diagram fitting uncertainties and any beam/optical depth corrections"
+ ],
+ "missing_for_reproduction": [
+  "Imaging cell/image size and masks",
+  "Self-calibration details and flux model for J0510+1800",
+  "Tobin et al. radiative transfer grid for T0",
+  "Rotation-diagram fit details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Central parameters (robust, uv cuts, tapers, solints, CASA version) given, but several imaging and line analysis details absent.",
+ "rediscovery_reason": "ALMA data are archival with a code listed, recipe is fairly complete, and results (fluxes, masses, Trot) are numeric.",
+ "source_card": "cards/2019ApJ...886....6T/sonnet/card.md"
+}

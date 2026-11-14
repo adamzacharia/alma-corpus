@@ -1,0 +1,263 @@
+{
+ "bibcode": "2015ApJ...803...60S",
+ "title": "ALMA Multi-line Observations of the IR-bright Merger VV 114",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/803/2/60",
+ "arxiv_id": "1501.07373",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "Distribution and kinematics of diffuse and dense molecular gas in the merger VV 114, and spatial variation of excitation conditions across the two merging disks",
+ "alma_project_codes": [
+  "2011.0.00467.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 7",
+  "arrays": "14-20 12 m antennas, compact and extended configurations",
+  "angular_resolution": "1.97''x1.35'' (CO 1-0), 1.64''x1.17'' (CO 3-2), 0.46''x0.38'' (HCN 4-3)",
+  "sensitivity": "30 km/s channel rms 1.0 mJy/beam (B3), 0.8 mJy/beam (B7); continuum 0.05, 0.11, 0.07 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish/SMA/JCMT fluxes used for missing-flux estimates and dust temperature 39.4 K",
+    "evidence": [
+     {
+      "loc": "3.2 12CO (3-2)",
+      "quote": "The estimated missing flux in our ALMA observation is 21 $\\pm$ 1 % (cite: wil08; sai13)."
+     }
+    ]
+   },
+   "citation": "(cite: wil08; sai13)"
+  },
+  {
+   "what": {
+    "value": "8.44 GHz continuum flux",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Column 2: 8.44 GHz continuum flux (cite: cnd91)."
+     }
+    ]
+   },
+   "citation": "(cite: cnd91)"
+  },
+  {
+   "what": {
+    "value": "Pa-alpha luminosity from miniTAO",
+    "evidence": [
+     {
+      "loc": "Table 10",
+      "quote": "Column 3: The Pa$\\alpha$ flux (cite: tat12)."
+     }
+    ]
+   },
+   "citation": "(cite: tat12)"
+  },
+  {
+   "what": {
+    "value": "HCN(4-3)/HCN(1-0) = 0.63",
+    "evidence": [
+     {
+      "loc": "5.1 Molecular Gas Mass Derivation",
+      "quote": "HCN (4–3)/HCN (1–0) = 0.63 (cite: ima07)"
+     }
+    ]
+   },
+   "citation": "(cite: ima07)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes and continuum",
+   "method": "CASA clean with Briggs (uniform for CO 3-2), uv continuum subtraction, primary beam correction, 5 or 30 km/s channels",
+   "software": [
+    "CASA",
+    "MIRIAD",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure box-summed line ratios",
+   "method": "Match uv range and beam, convolve, convert to K km/s, sum in 2.0'' R boxes and 1.2'' S boxes, ratio where both >3 sigma; multi-Gaussian fits to spectra",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive H2 and dense gas masses",
+   "method": "M = alpha L'",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 0.8; alpha_HCN = 10; uncertainty up to factor of two"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Non-LTE radiative transfer modeling",
+   "method": "RADEX grid in Tkin, nH2, N(H2) (case 1) or [HCN]/[HCO+] (case 2); chi2 minimization",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Case 1: Tkin 5-300 K step 5, n 10^2-10^5; case 2: Tkin 5-400 K, n 10^3-10^7"
+   ],
+   "assumptions": [
+    "[13CO]/[H2]=1.4e-6, [CO]/[13CO]=70, [CO]/[H2]=1e-4, [HCO+]/[H2]=1e-9; uniform sphere"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "LTE filling factor, Tex, column density, abundances",
+   "method": "Tex from CO(1-0) with Phi=Tb/Tkin; optical depth and column density equations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "13CO and CO from same cloud; 12CO(1-0) optically thick"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Dust and ISM mass from 340 GHz continuum",
+   "method": "Dust mass equation (wil08) and Scoville et al. 2014 RJ-tail ISM mass; compare with M_H2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa340 = 0.9 cm2/g (Draine & Lee), Td = 39.4 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total 12CO(1-0) integrated intensity",
+   "value": "594.6",
+   "uncertainty": "1.6",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 12CO (1-0)",
+     "quote": "The total $^{12}$CO (1–0) integrated intensity of VV 114 is 594.6 $\\pm$ 1.6 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/HCO+(4-3) at S0 (eastern nucleus)",
+   "value": "1.34",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 HCN/HCO+",
+     "quote": "S0 has a high $R_{\\rm{HCN/HCO^+}}$ (1.34 $\\pm$ 0.09)"
+    }
+   ]
+  },
+  {
+   "quantity": "R_3-2/1-0 range",
+   "value": "0.2 to 0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The $R_{3-2/1-0}$ of VV 114 varies from 0.2 to 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass at R38 (tidal arm tip)",
+   "value": "3.8e7 (alpha_CO/0.8)",
+   "uncertainty": "0.7e7",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 10",
+     "quote": "R38 | 3.8 $\\pm$ 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio at eastern nucleus (R18)",
+   "value": "128",
+   "uncertainty": "16",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.4",
+     "quote": "The smallest value of (128 $\\pm$ 16)"
+    }
+   ]
+  },
+  {
+   "quantity": "Tkin at R21a (eastern nucleus), best fit",
+   "value": "50 (range 25-90)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2.1 Case 1",
+     "quote": "constrained to within 25 – 90 K (the best fit is 50 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "nH2 at E0 (AGN)",
+   "value": "10^5.0-10^5.4",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2.2 Case 2",
+     "quote": "$n_{\\rm{H_2}}$ = 10$^{5.0}$ – 10$^{5.4}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Missing flux 340 GHz continuum vs JCMT",
+   "value": "75",
+   "uncertainty": "4",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "The estimated missing flux relative to the JCMT 340 GHz observation (cite: wil08) is 75 $\\pm$ 4 %"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value for each cube",
+  "Line-free channels used for continuum",
+  "CASA version and clean parameters (threshold, masks, iterations)",
+  "How multi-configuration data were combined",
+  "Exact box positions and Gaussian fit details",
+  "RADEX script details (line widths, chi2 error budget)",
+  "Pa-alpha extinction correction and SFR calibration choices",
+  "Whether pipeline products were re-calibrated"
+ ],
+ "missing_for_reproduction": [
+  "Briggs robust, clean parameters, line-free channels",
+  "Box coordinates",
+  "RADEX script details",
+  "Pa-alpha maps from miniTAO"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and many numeric tables, but imaging parameters and RADEX setup partly unstated.",
+ "rediscovery_reason": "Public Cycle 0 data, tabulated numeric results (line ratios, masses), mostly standard recipe.",
+ "source_card": "cards/2015ApJ...803...60S/sonnet/card.md"
+}

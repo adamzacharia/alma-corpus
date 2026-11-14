@@ -1,0 +1,379 @@
+{
+ "bibcode": "2021MNRAS.508.4639Z",
+ "title": "ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions-VI. On the formation of the 'L' type filament in G286.21+0.17",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab2801",
+ "arxiv_id": "2109.15185",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Whether G286.21+0.17 is undergoing global collapse as suggested by single-dish line profiles, and how its 'L' type filament, outflows, and protocluster formed.",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "ACA 7m and ALMA 12-m array",
+  "angular_resolution": "ACA 7m: ~13''; 12-m: ~1.7''; combined continuum: 2.12'' x 2.29''; combined lines: 2.09'' x 2.26'' to 2.40'' x 2.61''",
+  "sensitivity": "Continuum: 0.21 mJy (1 sigma); Lines: 0.004 to 0.012 Jy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "76 dense cores identified in 1.3 mm ALMA continuum and their 'blue' and 'red' velocity groupings",
+    "evidence": [
+     {
+      "loc": "Continuum emission",
+      "quote": "The 76 dense cores identified by 1.3mm continuum in C20 are marked by \"+\" in Fig. 3."
+     },
+     {
+      "loc": "Continuum emission",
+      "quote": "In C20, they divided the cores into two groups \"blue\" and \"red\" based on their velocity differences."
+     }
+    ]
+   },
+   "citation": "(cite: Cheng20) (C20)"
+  },
+  {
+   "what": {
+    "value": "Radius R = 0.40 +/- 0.05 pc derived from H13CO+ J=1-0 emission",
+    "evidence": [
+     {
+      "loc": "Is G286 undergoing global collapse?",
+      "quote": "The radius R derived from H$^{13}$CO$^{+}$ J=1-0 emission is 0.40 $\\pm$ 0.05 pc (see B10)."
+     }
+    ]
+   },
+   "citation": "(cite: Barnes10) (B10)"
+  },
+  {
+   "what": {
+    "value": "Hi-GAL column density and dust temperature maps processed by PPMAP",
+    "evidence": [
+     {
+      "loc": "Archived continuum emission data",
+      "quote": "The resolution of column density and dust temperature maps is $\\sim12\\ensuremath{''}$, and the resulting data is available online (cite: Marsh2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Marsh2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calculate central clump mass from PPMAP dust continuum maps",
+   "method": "Average PPMAP column density and dust temperature within R ~ 0.44 pc circle (ALMA 12m FOV FWHM radius) and compute mass assuming spherical geometry",
+   "software": [],
+   "key_parameters": [
+    "R ~ 0.44 pc"
+   ],
+   "assumptions": [
+    "Spherical geometry (n = N/2R) and mean molecular weight per free particle mu = 2.37"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract compact cores and filament skeletons, and measure filament width",
+   "method": "Extract compact cores using the Dendrogram algorithm on 3 mm continuum and HC3N moment 0 maps; identify sub-filament skeletons with FILFINDER; fit radial profile of the longest sub-filament with Radfil and deconvolve with beam",
+   "software": [
+    "Dendrogram",
+    "FILFINDER",
+    "Radfil"
+   ],
+   "key_parameters": [
+    "Cut spacing ~ 3 pixels, background degree bgdegree = 1, Gaussian fitting range out to 0.3 pc, HPBW ~ 2.20''"
+   ],
+   "assumptions": [
+    "Deconvolved FWHM = sqrt(FWHM^2 - HPBW^2) with 3 mm continuum HPBW ~ 2.20''"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Cluster dense cores into sub-clumps via nearest neighbor separation analysis",
+   "method": "Apply hierarchical clustering with Ward's linkage to the 76 1.3 mm dense cores from C20",
+   "software": [
+    "scipy"
+   ],
+   "key_parameters": [
+    "linkage method = 'ward'"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Extract spectra, moment maps, and position-velocity diagrams to resolve sub-clump kinematics and velocity gradients",
+   "method": "Extract spectra averaged over a 36'' region from ACA 7m and 12m+7m data; compute moment 0 and moment 1 maps (using narrow velocity range [-23, -16.5] km s^-1 for 12m+7m moment 1 to reduce outflow contamination); construct PV diagrams along two perpendicular directions",
+   "software": [],
+   "key_parameters": [
+    "Averaging aperture size = 36''; 12m+7m moment 1 velocity range = [-23, -16.5] km s^-1; ACA 7m blue/red integration ranges = [-60, -19.8] km s^-1 and [-19.8, 20] km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Identify outflow lobes and fit SiO shock knot line profiles",
+   "method": "Integrate high-velocity wings of HCO+ (1-0) and CS (2-1) in blueshifted [-41, -23] km s^-1 and redshifted [-16.5, 5] km s^-1 intervals; extract circle-averaged SiO (2-1) spectra at knots A-F and fit Gaussian profiles",
+   "software": [],
+   "key_parameters": [
+    "Outflow velocity intervals: redshifted [-16.5, 5] km s^-1, blueshifted [-41, -23] km s^-1; SiO knot circle radii r = 2.10'' to 6.06''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compute clump virial mass, outflow-to-gas momentum and energy ratios, and outflow dynamical time",
+   "method": "Calculate virial mass from H13CO+ J=1-0 linewidth and radius; calculate momentum and energy ratios P_out/P_gas and E_out/E_gas from moment 0 fluxes and median moment 1 velocities of HCO+ wings and H13CO+ sub-clumps; calculate outflow dynamical time from maximum lobe length and maximum velocities",
+   "software": [],
+   "key_parameters": [
+    "v_out^r ~ 3.5 km s^-1, v_out^b ~ 3.8 km s^-1, v_gas^r ~ 1.0 km s^-1, v_gas^b ~ 1.1 km s^-1, lambda_max ~ 0.40 pc, R = 0.40 +/- 0.05 pc, Delta v ~ 1.46 km s^-1"
+   ],
+   "assumptions": [
+    "Spherical clump (a2 = 1), power-law density index p ~ 1.77, optically thin H13CO+ (1-0) and high-velocity HCO+ (1-0) wings, equal and constant excitation temperature, abundance ratio [H13CO+/HCO+] ~ 1/60, no projection effect for t_dyn"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Average dust temperature of central G286 clump (within R ~ 0.44 pc)",
+   "value": "21.4",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The average dust temperature over the central region of G286 clump (i.e, inside the red circle with a radius of R$\\sim$0.44 pc, which is roughly the FWHM radius of the ALMA 12m-array FOV) is $\\sim21.4$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Average column density of central G286 clump (within R ~ 0.44 pc)",
+   "value": "5.66e22",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The average column density N within the circle is about $5.66\\times10^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of central region in G286 clump",
+   "value": "1021",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "We obtain M $\\sim$ 1021M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Length of longest sub-filament",
+   "value": "0.77",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The length of longest sub-filament is $\\sim0.77$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Width (deconvolved FWHM) of longest filament",
+   "value": "0.075",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "We fit the radial profiles of longest sub-filament with the Radfil algorithm (cite: Zucker2018) and obtain the width (deconvolved FWHM) of longest filament, W$\\sim$0.075 pc (the detailed description of the procedures is given in Appendix. 7)."
+    }
+   ]
+  },
+  {
+   "quantity": "Linewidth of H13CO+ J=1-0 in ACA 7m data",
+   "value": "1.46",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Is G286 undergoing global collapse?",
+     "quote": "The linewidth of H${^{13}}{\\rm C}$O$^{+}$ J=1-0 is $\\Delta v \\sim 1.46$ km s$^{-1}$ by fitting the ACA 7m spectral line (see Fig. 5(c)) with two Gaussian profiles."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass of G286 clump",
+   "value": "126",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Is G286 undergoing global collapse?",
+     "quote": "Then the virial mass of G286 clump is $M_{Vir} \\sim 126~$M$_{\\odot}$, which is significantly smaller than the total mass of G286 clump."
+    }
+   ]
+  },
+  {
+   "quantity": "Median velocity of redshifted outflow (v_out^r)",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "After subtracting the systemic velocity, the median intensity-weighted velocities of the redshifted and blueshifted outflows are $v_{out}^r\\sim 3.5$ km s$^{-1}$ and $v_{out}^b\\sim 3.8$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median velocity of blueshifted outflow (v_out^b)",
+   "value": "3.8",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "After subtracting the systemic velocity, the median intensity-weighted velocities of the redshifted and blueshifted outflows are $v_{out}^r\\sim 3.5$ km s$^{-1}$ and $v_{out}^b\\sim 3.8$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median velocity of redshifted sub-clump (v_gas^r)",
+   "value": "1.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "Similarly, we obtained $v_{gas}^r\\sim 1.0$ km s$^{-1}$ for the redshifted sub-clump and $v_{gas}^b\\sim 1.1$ km s$^{-1}$ for the blueshifted sub-clump."
+    }
+   ]
+  },
+  {
+   "quantity": "Median velocity of blueshifted sub-clump (v_gas^b)",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "Similarly, we obtained $v_{gas}^r\\sim 1.0$ km s$^{-1}$ for the redshifted sub-clump and $v_{gas}^b\\sim 1.1$ km s$^{-1}$ for the blueshifted sub-clump."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow-to-subclump momentum ratio (P_out / P_gas)",
+   "value": "0.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "Taking $\\left[ \\rm H^{13}CO^{+}/ \\rm HCO^{+}\\right]\\sim 1/60$ (cite: Milam2005), the momentum ratio is $P_{\\rm out}/P_{\\rm gas}\\sim 0.07$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow-to-subclump energy ratio (E_out / E_gas)",
+   "value": "0.24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "then we obtain $E_{\\rm out}/E_{\\rm gas}\\sim 0.24$."
+    }
+   ]
+  },
+  {
+   "quantity": "Length of longer blue outflow lobe (lambda_max)",
+   "value": "0.40",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "The length of longer blue lobe ($\\lambda_{\\rm max}$) is $\\sim 0.40$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical time (t_dyn)",
+   "value": "1.13e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Feedback of outflows",
+     "quote": "We obtain $t_{\\rm dyn} \\sim 1.13 \\times 10^{4}$ yr, which is consistent with the fact that G286 is a very young cluster."
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient along NW-SE direction from CS (2-1) PV diagram",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "km s^-1 pc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Formation of the \"L\" type filament and the G286 protocluster",
+     "quote": "The velocity gradient inferred from this PV diagram is about 14 km s$^{-1}$ pc$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient along SW-NE direction across NW-SE filament from CS (2-1) PV diagram",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "km s^-1 pc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Formation of the \"L\" type filament and the G286 protocluster",
+     "quote": "Fig. 12(b) presents the position-velocity (PV) diagram of CS J=2-1 along the red dashed arrow in Fig. 11(a), which reveals a velocity gradient of about 13 km s$^{-1}$ pc$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Multiscale deconvolver scale sizes, clean threshold, niter, cell size, and image size in tclean",
+  "Exact rest frequencies of the targeted molecular transitions",
+  "Dendrogram algorithm parameters (min_value, min_delta, min_npix) used for extracting compact cores from 3 mm continuum and HC3N moment 0 maps",
+  "FILFINDER parameters used to extract filament skeletons",
+  "Exact value of the systemic velocity subtracted when computing outflow and sub-clump characteristic velocities",
+  "Exact values of v_max^r and v_max^b used to compute the outflow dynamical time"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (multiscale scales, cell size, image size, stopping threshold)",
+  "Dendrogram extraction thresholds (min_value, min_delta, min_npix) for 3 mm continuum and HC3N moment 0 maps",
+  "FILFINDER input parameters for filament skeletonization",
+  "Exact coordinates of the endpoints of the PV diagram cuts shown in Fig. 11(a)",
+  "Exact spatial masks/polygons used to integrate the redshifted and blueshifted sub-clump and outflow fluxes for the momentum/energy ratio calculations"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Public ALMA project code (2019.1.00685.S), public PPMAP data, clearly stated software packages (CASA 5.6, FILFINDER, Radfil, Dendrogram, scipy), and explicit equations and velocity intervals for moment maps and outflow energetics; minor deductions for unstated tclean multiscale/threshold parameters, dendrogram/FILFINDER parameters, and exact PV slice coordinates.",
+ "rediscovery_reason": "ALMA data are public (2019.1.00685.S), the analysis follows standard spectral extraction, moment map integration, Gaussian fitting, and Radfil/FILFINDER filament profiling, and yields clear numeric results (filament length/width, SiO line fits, virial mass, outflow momentum/energy ratios, and velocity gradients).",
+ "source_card": "cards/2021MNRAS.508.4639Z/sonnet/card.md"
+}

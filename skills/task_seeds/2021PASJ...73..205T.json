@@ -1,0 +1,585 @@
+{
+ "bibcode": "2021PASJ...73..205T",
+ "title": "ALMA view of the Galactic super star cluster RCW 38 at 270 au resolution",
+ "year": 2021,
+ "doi": "10.1093/pasj/psaa115",
+ "arxiv_id": "1907.07358",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "To investigate the several 100 to 1000 AU-scale gas and dust structures, condensations, compact millimeter sources, and molecular outflows associated with massive star formation in the young Galactic super star cluster RCW 38.",
+ "alma_project_codes": [
+  "2015.1.01134.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) and Band 7 (0.87 mm)",
+  "arrays": "12-m array and ACA (7-m array and Total Power array) for Band 6; ACA (7-m array) for Band 7",
+  "angular_resolution": "minimum 0''.17 x 0''.15 (~289 AU x 255 AU); ~0''.16 (233 GHz); ~0''.5 (12CO); ~2'' (C18O_all); ~4' (341 GHz ACA, stated as ~4')",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLT near-infrared images and Spitzer/IRAC archival images of RCW 38",
+    "evidence": [
+     {
+      "loc": "Discovery of two compact mm-sources: Source A and Source B",
+      "quote": "The VLT/ISACC and NACO $J$, $H$, and $K_{\\rm s}$ images obtained by (cite: wol2006) and (cite: der2009) indicate no significant excess of emission toward Source A and Source B."
+     },
+     {
+      "loc": "Infrared-quiet sources",
+      "quote": "Here, the Spitzer/IRAC 3.6, 4.5, 5.6, and 8.0 $\\mu$m archival images (cite: wol2006) were used to estimate the upper-limit of the luminosity at 3.6–8.0 $\\mu$m ($L_{3.6-8.0}$) for Source A and Source B"
+     }
+    ]
+   },
+   "citation": "(cite: wol2006), (cite: der2009)"
+  },
+  {
+   "what": {
+    "value": "Position of H2 emission at 2.12 um from VLT/NACO",
+    "evidence": [
+     {
+      "loc": "High-velocity molecular outflows for Source A and Source B",
+      "quote": "The triangle in Figure 6(a) depicts the position of the H$_2$ emission at 2.12 $\\mu$m reported by (cite: der2009) using VLT/NACO, which is located near the tip of the blueshifted lobe"
+     }
+    ]
+   },
+   "citation": "(cite: der2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify C18O condensations and derive their LTE and virial properties",
+   "method": "Integrate C18O_all over -2 to +14 km/s, run clumpfind with lowest detection level of 5 sigma (3 Jy beam^-1 km s^-1), and calculate LTE column density, H2 mass, virial mass, and virial parameter.",
+   "software": [
+    "clumpfind"
+   ],
+   "key_parameters": [
+    "velocity range = -2 to +14 km s^-1; lowest detection level = 5 sigma (3 Jy beam^-1 km s^-1)"
+   ],
+   "assumptions": [
+    "LTE; T_ex = 30-50 K from 13CO_all brightness temperature; [16O]/[18O] = 550; [H2]/[12CO] = 10^4; uniform density sphere without magnetic field or external pressure"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Perform continuum photometry and measure source sizes of Source A and Source B",
+   "method": "Measure peak and integrated fluxes using aperture photometry on 233-GHz and 341-GHz_ACA maps (with local background subtraction in annulus for 341-GHz_ACA), and measure radii at half maximum using 1D Gaussian fits to horizontal and vertical profiles.",
+   "software": [],
+   "key_parameters": [
+    "Aperture radii: 6''.5 (341-GHz_ACA, background annulus 6''.5 to 9''.8), 0''.5 (233-GHz), and 12'' diameter (233-GHz vs ACA flux comparison)"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate H2 column densities, masses, and number densities of Source A and Source B from dust continuum",
+   "method": "Calculate N_H2 and M_H2 from peak and integrated continuum fluxes at 341 GHz (ACA) and 233 GHz (12-m) using optically thin dust emission equations, and derive n_H2 assuming a spherical geometry.",
+   "software": [],
+   "key_parameters": [
+    "kappa_341GHz = 1.8 cm^2 g^-1; kappa_233GHz = 0.899 cm^2 g^-1; R_g/d = 100"
+   ],
+   "assumptions": [
+    "Optically thin dust emission; D = 1.7 kpc; T_dust = 20-40 K for 341-GHz_ACA; T_dust = 100 K for 233-GHz; spherical geometry for n_H2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analyze small-scale C18O kinematics toward Source A",
+   "method": "Create integrated intensity map over -2 to +4 km/s, first moment map, and position-velocity (p-v) diagram of high-resolution C18O data around Source A, and compare with Keplerian rotation and infall models.",
+   "software": [],
+   "key_parameters": [
+    "velocity integration range = -2 to +4 km s^-1"
+   ],
+   "assumptions": [
+    "Tested Keplerian rotation or infall motion (v proportional to r^-1)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Characterize high-velocity 12CO molecular outflows from Source A and Source B",
+   "method": "Extract 12CO and C18O spectra to determine v_sys and wing velocities, map outflow lobes and velocity distributions |v_mom1 - v_sys|, and compute dynamical timescales, outflow masses, mass outflow rates, and mechanical force.",
+   "software": [],
+   "key_parameters": [
+    "v_sys = 2 km s^-1; X_CO = 2 x 10^20 (K km s^-1)^-1 cm^-2"
+   ],
+   "assumptions": [
+    "Inclination angle i = 30-70 deg (0 deg for plane of sky); X_CO conversion factor provides a lower limit to M_lobe"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate infrared upper-limit luminosities and compare with theoretical accretion luminosities",
+   "method": "Measure standard deviation of flux density in 4'' area around Source A and Source B in Spitzer/IRAC 3.6, 4.5, 5.6, and 8.0 um bands to integrate L_3.6-8.0 upper limits, and compare with L_acc calculated from M_* and M_dot_acc.",
+   "software": [],
+   "key_parameters": [
+    "4'' area for standard deviation measurement; M_* = 0.1 and 1 M_sun"
+   ],
+   "assumptions": [
+    "M_dot_acc equals total M_dot_lobe of redshifted and blueshifted lobes; R_* scaling relation from Stahler et al. (1986) and Hosokawa & Omukai (2009)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of identified C18O condensations",
+   "value": "21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Large-scale C$^{18}$O distribution",
+     "quote": "Distributions of the 21 identified condensations are indicated by the circles in Figure 1(a)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of C18O condensations (r_C18O)",
+   "value": "0.01-0.02",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The condensations have sizes of 0.01–0.02 pc, H$_2$ column densities of $10^{23}$–$10^{24}$ cm$^{-2}$, and H$_2$ masses of 10–130 $M_\\odot$."
+    },
+    {
+     "loc": "Large-scale C$^{18}$O distribution",
+     "quote": "The condensations have typical radius $r_{\\rm C^{18}O}$ of 0.01–0.02 pc (which correspond to $\\sim$2000–4000 AU) and are separated by 0.05–0.3 pc with each others."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density of C18O condensations (N_H2)",
+   "value": "10^23-10^24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The condensations have sizes of 0.01–0.02 pc, H$_2$ column densities of $10^{23}$–$10^{24}$ cm$^{-2}$, and H$_2$ masses of 10–130 $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass of C18O condensations (M_H2)",
+   "value": "10-130",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The condensations have sizes of 0.01–0.02 pc, H$_2$ column densities of $10^{23}$–$10^{24}$ cm$^{-2}$, and H$_2$ masses of 10–130 $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A peak flux density at 233 GHz",
+   "value": "24.9",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovery of two compact mm-sources: Source A and Source B",
+     "quote": "Source A shows a parallelogram-like distribution with a peak flux density of 24.9 mJy beam$^{-1}$, whereas Source B with a peak flux density of 48.8 mJy beam$^{-1}$ has a circular distribution"
+    }
+   ]
+  },
+  {
+   "quantity": "Source B peak flux density at 233 GHz",
+   "value": "48.8",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovery of two compact mm-sources: Source A and Source B",
+     "quote": "Source A shows a parallelogram-like distribution with a peak flux density of 24.9 mJy beam$^{-1}$, whereas Source B with a peak flux density of 48.8 mJy beam$^{-1}$ has a circular distribution"
+    }
+   ]
+  },
+  {
+   "quantity": "Source A peak brightness temperature at 233 GHz",
+   "value": "22",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovery of two compact mm-sources: Source A and Source B",
+     "quote": "The obtained peak brightness temperatures of Source A and Source B correspond to $T_{\\rm b}$ of 22 and 42 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B peak brightness temperature at 233 GHz",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovery of two compact mm-sources: Source A and Source B",
+     "quote": "The obtained peak brightness temperatures of Source A and Source B correspond to $T_{\\rm b}$ of 22 and 42 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A total flux at 233 GHz (12'' diameter aperture)",
+   "value": "0.73",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovery of two compact mm-sources: Source A and Source B",
+     "quote": "We performed the aperture photometry toward both sources at the central 12$''$ diameter in the 233-GHz map. The total fluxes of Source A and B are 0.73 and 0.17 Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B total flux at 233 GHz (12'' diameter aperture)",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovery of two compact mm-sources: Source A and Source B",
+     "quote": "We performed the aperture photometry toward both sources at the central 12$''$ diameter in the 233-GHz map. The total fluxes of Source A and B are 0.73 and 0.17 Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A dust radius at 233 GHz (r_dust)",
+   "value": "460",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In addition, the 233-GHz continuum image reveals two dense, small millimeter-sources with radii of 460 and 200 AU (Source A and Source B)."
+    },
+    {
+     "loc": "233-GHz data",
+     "quote": "The $r_{\\rm dust}$ values of Source A and Source B were measured by fitting the horizontal and vertical profiles across the peaks with a Gaussian function, with values of $\\sim$460 and $\\sim$200 AU, respectively (Figure 3)."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B dust radius at 233 GHz (r_dust)",
+   "value": "200",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In addition, the 233-GHz continuum image reveals two dense, small millimeter-sources with radii of 460 and 200 AU (Source A and Source B)."
+    },
+    {
+     "loc": "233-GHz data",
+     "quote": "The $r_{\\rm dust}$ values of Source A and Source B were measured by fitting the horizontal and vertical profiles across the peaks with a Gaussian function, with values of $\\sim$460 and $\\sim$200 AU, respectively (Figure 3)."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A dust radius at 341 GHz ACA (r_dust)",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "341-GHz$_{\\rm ACA}$ data",
+     "quote": "The radii of Source A and Source B at the half maxima, $r_{\\rm dust}$, are as small as $\\sim$0.02 and $\\sim$0.03 pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B dust radius at 341 GHz ACA (r_dust)",
+   "value": "0.03",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "341-GHz$_{\\rm ACA}$ data",
+     "quote": "The radii of Source A and Source B at the half maxima, $r_{\\rm dust}$, are as small as $\\sim$0.02 and $\\sim$0.03 pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A peak N_H2 from 341 GHz ACA",
+   "value": "1.1-2.7 x 10^24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "341-GHz$_{\\rm ACA}$ data",
+     "quote": "As a result, the $N_{\\rm H_2}$ values at the peaks of the two sources were calculated to be $1.1$–$2.7\\times10^{24}$ cm$^{-2}$ for Source A and $0.5$–$1.2\\times10^{24}$ cm$^{-23}$ for Source B"
+    }
+   ]
+  },
+  {
+   "quantity": "Source B peak N_H2 from 341 GHz ACA",
+   "value": "0.5-1.2 x 10^24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "341-GHz$_{\\rm ACA}$ data",
+     "quote": "As a result, the $N_{\\rm H_2}$ values at the peaks of the two sources were calculated to be $1.1$–$2.7\\times10^{24}$ cm$^{-2}$ for Source A and $0.5$–$1.2\\times10^{24}$ cm$^{-23}$ for Source B"
+    }
+   ]
+  },
+  {
+   "quantity": "Source A H2 mass from 341 GHz ACA",
+   "value": "32-81",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "341-GHz$_{\\rm ACA}$ data",
+     "quote": "whereas the $M_{\\rm H_2}$ values were as large as 32–81 $M_\\odot$ for Source A and 16–41 $M_\\odot$ for Source B."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B H2 mass from 341 GHz ACA",
+   "value": "16-41",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "341-GHz$_{\\rm ACA}$ data",
+     "quote": "whereas the $M_{\\rm H_2}$ values were as large as 32–81 $M_\\odot$ for Source A and 16–41 $M_\\odot$ for Source B."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A and Source B N_H2 from 233 GHz (T_d = 100 K)",
+   "value": "6 x 10^24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "233-GHz data",
+     "quote": "The derived $N_{\\rm H_2}$ value is approximately $6\\times10^{24}$ cm$^{-2}$ for the two sources, with the $M_{\\rm H_2}$ values calculated as $\\sim$5 $M_\\odot$ for Source A and $\\sim$2 $M_\\odot$ for Source B."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A H2 mass from 233 GHz (stated as ~5 M_sun in Section 3.3.2 and 13 M_sun in Abstract/Summary)",
+   "value": "5 (or 13)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The masses of Source A and Source B are estimated as 13 and 3 $M_\\odot$ at the optically-thin limit, respectively."
+    },
+    {
+     "loc": "233-GHz data",
+     "quote": "The derived $N_{\\rm H_2}$ value is approximately $6\\times10^{24}$ cm$^{-2}$ for the two sources, with the $M_{\\rm H_2}$ values calculated as $\\sim$5 $M_\\odot$ for Source A and $\\sim$2 $M_\\odot$ for Source B."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B H2 mass from 233 GHz (stated as ~2 M_sun in Section 3.3.2 and 3 M_sun in Abstract/Summary)",
+   "value": "2 (or 3)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The masses of Source A and Source B are estimated as 13 and 3 $M_\\odot$ at the optically-thin limit, respectively."
+    },
+    {
+     "loc": "233-GHz data",
+     "quote": "The derived $N_{\\rm H_2}$ value is approximately $6\\times10^{24}$ cm$^{-2}$ for the two sources, with the $M_{\\rm H_2}$ values calculated as $\\sim$5 $M_\\odot$ for Source A and $\\sim$2 $M_\\odot$ for Source B."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A C18O velocity gradient at central 2000 AU",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The C$^{18}$O emission shows a velocity gradient of 2 km s$^{-1}$ at the central 2000 AU of Source A, which could be interpreted as a Keplerian rotation with a central mass of a few $M_\\odot$ or infall motion of gas."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A outflow lobe lengths (blueshifted and redshifted)",
+   "value": "3200 (blueshifted), 9100 (redshifted)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "As shown in Figure 6(a), the blueshifted and redshifted lobes are elongated from Source A toward the northeast-southwest direction by $\\sim$3200 and $\\sim$9100 AU, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A outflow maximum velocities (blueshifted and redshifted)",
+   "value": "27 (blueshifted), 38 (redshifted)",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "Given the maximum velocities $v_{\\rm max}$ of 27 and 38 km s$^{-1}$, the dynamical timescales of the blueshifted and redshifted lobes $t_{\\rm dyn}$ were estimated as 560 and 1100 yr, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Source A outflow dynamical timescales (blueshifted and redshifted)",
+   "value": "560 (blueshifted), 1100 (redshifted)",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "Given the maximum velocities $v_{\\rm max}$ of 27 and 38 km s$^{-1}$, the dynamical timescales of the blueshifted and redshifted lobes $t_{\\rm dyn}$ were estimated as 560 and 1100 yr, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Source A outflow lobe masses (blueshifted and redshifted)",
+   "value": "0.06 (blueshifted), 0.4 (redshifted)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "The derived $M_{\\rm lobe}$ values of the blueshifted and redshifted lobes were 0.06 and 0.4 $M_\\odot$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Source A mass outflow rates (blueshifted and redshifted)",
+   "value": "(0.4-1.6) x 10^-4 (blueshifted), (1.3-6.3) x 10^-4 (redshifted)",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "If we assume the inclination angle of 30$^{\\circ}$–70$^{\\circ}$, the mass outflow rates $\\dot{M_{\\rm lobe}}$ of the two lobes were derived as (0.4–1.6) $\\times$10$^{-4}$ and (1.3–6.3)$\\,\\times$10$^{-4}$ $M_\\odot$ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B blueshifted outflow maximum velocity",
+   "value": "67",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "The $v_{\\rm max}$ of the blushifted lobe is found to be as high as 67 km s$^{-1}$, and the velocity increases within the cocoon (Figure 7(b))."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B blueshifted outflow projected length",
+   "value": "10000",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "The projected length of the blueshifted lobe is $\\sim10000$ AU, providing a short $t_{\\rm dyn}$ of 750 yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Source B blueshifted outflow dynamical timescale",
+   "value": "750",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "The projected length of the blueshifted lobe is $\\sim10000$ AU, providing a short $t_{\\rm dyn}$ of 750 yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Source B blueshifted outflow mass-loss rate",
+   "value": "(0.7-3) x 10^-3",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "High-velocity molecular outflows for Source A and Source B",
+     "quote": "The possible range of the mass-loss rate is (0.7–3) $\\times$ 10$^{-3}$ $M_{\\odot}$ yr$^{-1}$ with the same assumption of $i$ in the previous paragraph."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on 3.6-8.0 um luminosity (L_3.6-8.0) for Source A and Source B",
+   "value": "3.0 (Source A), 1.6 (Source B)",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Infrared-quiet sources",
+     "quote": "The $L_{3.6-8.0}$ values, which is not the bolometric luminosity, were then calculated as small as 3.0 $L_\\odot$ for Source A and 1.6 $L_\\odot$ for Source B."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Missing Tables 1, 2, 1.5, 2.5, 3, and 4 from the main text (only table footnotes are present in the text).",
+  "Exact uv-taper parameters (e.g., outer taper in arcseconds or kilolambda) for the 12CO and C18O_all cubes.",
+  "Deconvolver algorithm, cell size, image size, clean masking, and stopping threshold in CASA tclean.",
+  "Continuum subtraction method and line-free channel selection.",
+  "Whether self-calibration was performed on the continuum data.",
+  "Clumpfind step size / contour increment parameter used to identify the 21 C18O condensations.",
+  "Exact velocity integration ranges used to define the blueshifted and redshifted 12CO outflow lobes for Source A and Source B."
+ ],
+ "missing_for_reproduction": [
+  "Tables 1, 2, 1.5, 2.5, 3, and 4 are omitted from the provided text (only table footnotes are included).",
+  "Exact tclean parameters (cell size, image dimensions, stopping threshold, deconvolver, masking, continuum subtraction channels).",
+  "Exact uv-taper parameters applied to the 12CO and C18O_all visibilities.",
+  "Velocity integration ranges and spatial masks used to compute the 12CO outflow lobe masses for Source A and Source B.",
+  "Clumpfind contour step parameter."
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "The ALMA project code, CASA version, calibrators, weighting (robust=0.5), array combination method (visibility concatenation + feather), and physical equations/assumptions (opacities, temperatures, conversion factors, aperture sizes) are clearly stated, but imaging details (tclean thresholds, uv-taper values, outflow velocity integration windows) and the data tables themselves are missing from the text.",
+ "rediscovery_reason": "Public ALMA dataset (#2015.1.01134.S) with clear, quantitative main findings (21 C18O condensations, discovery of two compact continuum sources Source A and Source B with specific flux densities and radii, and high-velocity bipolar 12CO outflows) that can be directly recovered from standard imaging and aperture photometry.",
+ "source_card": "cards/2021PASJ...73..205T/sonnet/card.md"
+}

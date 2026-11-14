@@ -1,0 +1,373 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Here we report the dust polarization results in the disk as well as the inner envelope around it, obtained with the Atacama Large Millimeter/submillimeter Array in continuum"}
+],
+"fields": ["protoplanetary_disks", "star_formation"],
+"question": {
+"value": "What produces the dust polarization in the HH 111 inner envelope and spiral-dominated disk (magnetically aligned grains vs dust self-scattering), and does it indicate grain growth",
+"evidence": [
+{"loc": "Introduction", "quote": "In order to better determine the origin of the dust polarization, here we report the dust polarization detection at 2.4 times as high resolution and the modeling with the two polarization mechanisms."}
+]
+},
+"targets": [
+{
+"name": "HH 111 protostellar disk and inner envelope",
+"details": [
+{"loc": "Introduction", "quote": "located in Orion at a distance of $\\sim$ 400 pc"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "~400 pc",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2015.1.00037.S", "evidence": [{"loc": "Acknowledgments", "quote": "ADS/JAO.ALMA# 2015.1.00037.S and 2017.1.00044.S"}]},
+{"code": "2017.1.00044.S", "evidence": [{"loc": "Acknowledgments", "quote": "ADS/JAO.ALMA# 2015.1.00037.S and 2017.1.00044.S"}]},
+{"code": "2016.1.00389.S", "evidence": [{"loc": "Fiducial Disk Model", "quote": "ALMA archive Project Code: 2016.1.00389.S"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (~870 um) polarization in Cycles 3 and 5; Band 6 (1.3 mm, 231 GHz) archival map used for the disk model", "evidence": [
+{"loc": "Observations", "quote": "Polarization observations toward the HH 111 system were carried out with ALMA in Band 7 in Cycle 3 (Project ID: 2015.1.00037.S) in 2016 and Cycle 5 (Project ID: 2017.1.00044S) in 2017."},
+{"loc": "Fiducial Disk Model", "quote": "this disk has also been mapped in ALMA Band 6 at"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "four continuum windows centered at 336.5, 338.5, 348.5, and 350.5 GHz", "evidence": [
+{"loc": "Observations", "quote": "The correlator was set up to have four continuum windows, centered at 336.5, 338.5, 348.5, and 350.5 GHz"}
+]},
+{"field": "continuum_bandwidth", "value": "~8 GHz total, centered at 343.5 GHz (lambda ~870 um)", "evidence": [
+{"loc": "Observations", "quote": "for a total bandwidth of $\\sim$ 8 GHz centered at 343.5 GHz"}
+]},
+{"field": "baselines", "value": "~14-8550 m after combining the two cycles", "evidence": [
+{"loc": "Observations", "quote": "The projected baseline lengths were $\\sim$ 14-8550 m, after combining the observations in the two cycles."}
+]},
+{"field": "angular_resolution", "value": "0.080x0.070, 0.062x0.046, 0.041x0.030 arcsec for robust 2, 0.5, 0", "evidence": [
+{"loc": "Observations", "quote": "The resulting resolutions are $0^{\\prime\\prime}_{^\\textrm{.}}080$$\\times$$0^{\\prime\\prime}_{^\\textrm{.}}070$, $0^{\\prime\\prime}_{^\\textrm{.}}062$$\\times$$0^{\\prime\\prime}_{^\\textrm{.}}046$, and $0^{\\prime\\prime}_{^\\textrm{.}}041$$\\times$$0^{\\prime\\prime}_{^\\textrm{.}}030$, respectively."}
+]},
+{"field": "max_recoverable_scale", "value": "~1.4 arcsec", "evidence": [
+{"loc": "Observations", "quote": "The maximum recoverable size (MRS) scale was $\\sim$ $1^{\\prime\\prime}_{^\\textrm{.}}4$, enough to cover the disk seen in the continuum."}
+]},
+{"field": "sensitivity", "value": "Stokes I noise ~100, 80, 50 uJy/beam (186, 290, 417 mK); Stokes Q/U noise ~16, 18, 26 uJy/beam for robust 2, 0.5, 0", "evidence": [
+{"loc": "Observations", "quote": "the noise levels $\\sigma$ are $\\sim$ 100 $\\mu$Jy beam$^{-1}$ (186 mK), 80 $\\mu$Jy beam$^{-1}$ (290 mK), and 50 $\\mu$Jy beam$^{-1}$ (417 mK), respectively"},
+{"loc": "Observations", "quote": "the noise levels $\\sigma_p$ are $\\sim$ 16 $\\mu$Jy beam$^{-1}$ (30 mK), 18 $\\mu$Jy beam$^{-1}$ (65 mK), and 26 $\\mu$Jy beam$^{-1}$ (217 mK), respectively"}
+]},
+{"field": "observing_dates", "value": "Cycle 3 in 2016 and Cycle 5 in 2017", "evidence": [
+{"loc": "Observations", "quote": "Polarization observations toward the HH 111 system were carried out with ALMA in Band 7 in Cycle 3 (Project ID: 2015.1.00037.S) in 2016 and Cycle 5 (Project ID: 2017.1.00044S) in 2017."}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "VLA Band Ka", "provided": {"value": "9.1 mm (32.9 GHz) map at ~0.07 arcsec used with ALMA Bands 7 and 6 to constrain the disk model and opacity law", "evidence": [
+{"loc": "Fiducial Disk Model", "quote": "VLA Band Ka at $\\lambda \\sim 9.1$ mm (or 32.9 GHz)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "VLA Band Ka 9.1 mm (32.9 GHz) map of the HH 111 disk", "evidence": [{"loc": "Fiducial Disk Model", "quote": "VLA Band Ka at $\\lambda \\sim 9.1$ mm (or 32.9 GHz)"}]}, "citation": "(cite: Tobin2020)"},
+{"what": {"value": "Total protostar plus disk mass of ~1.8 Msun", "evidence": [{"loc": "Fiducial Disk Model", "quote": "Since the protostar and disk were previously found to have a total mass of $\\sim$ 1.8 $M_\\odot$ (cite: Lee2016HH111)"}]}, "citation": "(cite: Lee2016HH111)"},
+{"what": {"value": "Disk tilted ~18 deg away from edge-on", "evidence": [{"loc": "Results", "quote": "consistent with the disk tilted only by $\\sim$ 18$^\\circ$ away from being edge-on (cite: Lee2020HH111)"}]}, "citation": "(cite: Lee2020HH111)"},
+{"what": {"value": "Inner envelope gas temperature ~40 K from C18O", "evidence": [{"loc": "Origin of the Dust Polarization in the Inner Envelope", "quote": "which is $\\sim$ 40 K (cite: Lee2010)"}]}, "citation": "(cite: Lee2010)"},
+{"what": {"value": "DSHARP dust opacities (compact grains, MRN size distribution) used for the self-scattering model", "evidence": [{"loc": "Dust Self-Scattering", "quote": "Recently DSHARP dust opacities have been used to model the dust emission in protoplanetary disks (cite: Birnstiel2018), assuming compact grains with a MRN size distribution."}]}, "citation": "(cite: Birnstiel2018)"},
+{"what": {"value": "Scattering efficient for maximum grain size ~70-210 um (peak ~140 um) at 870 um", "evidence": [{"loc": "Dust Self-Scattering", "quote": "dust scattering is efficient when the maximum grain size $a_\\textrm{\\scriptsize max}$ $\\sim$ 70-210 $\\mu$m (with a peak at $\\sim$ 140 $\\mu$m)"}]}, "citation": "(cite: Kataoka2015)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Fiducial flared disk model with a pair of trailing logarithmic spiral arms, adopted from earlier work and compared with the polarization maps", "evidence": [
+{"loc": "Disk Model", "quote": "To construct the fiducial model, we adopt the same flared disk model previously used to model the continuum map of this disk obtained at a similar resolution in (cite: Lee2020HH111)."}
+]},
+{"value": "RADMC-3D dust self-scattering polarization model of the disk", "evidence": [
+{"loc": "Dust Self-Scattering", "quote": "We use RADMC-3D (cite: Dullemond2012) to calculate the dust polarization due to dust self-scattering."}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "calibrated with CASA (pipeline vs manual not stated)", "evidence": [
+{"loc": "Observations", "quote": "the $uv$ data were calibrated with the Common Astronomy Software Applications (CASA) package"}
+]},
+{"field": "self_calibration", "value": "phase-only self-calibration", "evidence": [
+{"loc": "Observations", "quote": "We also performed a phase-only self-calibration to improve the map fidelity."}
+]}
+],
+"imaging": [
+{"field": "weighting_robust", "value": "robust = 2, 0.5, 0", "evidence": [
+{"loc": "Observations", "quote": "we used 3 decreasing robust factors for the $uv$ weighting in making the maps. The robust factors are 2, 0.5, and 0."}
+]},
+{"field": "array_combination", "value": "Cycle 3 and Cycle 5 calibrated data combined into one data set for mapping", "evidence": [
+{"loc": "Observations", "quote": "The calibrated data from the two cycles were then combined into one calibrated data for mapping."}
+]},
+{"field": "final_beam", "value": "0.080x0.070, 0.062x0.046, 0.041x0.030 arcsec", "evidence": [
+{"loc": "Observations", "quote": "The resulting resolutions are $0^{\\prime\\prime}_{^\\textrm{.}}080$$\\times$$0^{\\prime\\prime}_{^\\textrm{.}}070$, $0^{\\prime\\prime}_{^\\textrm{.}}062$$\\times$$0^{\\prime\\prime}_{^\\textrm{.}}046$, and $0^{\\prime\\prime}_{^\\textrm{.}}041$$\\times$$0^{\\prime\\prime}_{^\\textrm{.}}030$, respectively."}
+]},
+{"field": "final_rms", "value": "Stokes I ~100, 80, 50 uJy/beam; Stokes Q/U ~16, 18, 26 uJy/beam", "evidence": [
+{"loc": "Observations", "quote": "the noise levels $\\sigma$ are $\\sim$ 100 $\\mu$Jy beam$^{-1}$ (186 mK), 80 $\\mu$Jy beam$^{-1}$ (290 mK), and 50 $\\mu$Jy beam$^{-1}$ (417 mK), respectively"},
+{"loc": "Observations", "quote": "the noise levels $\\sigma_p$ are $\\sim$ 16 $\\mu$Jy beam$^{-1}$ (30 mK), 18 $\\mu$Jy beam$^{-1}$ (65 mK), and 26 $\\mu$Jy beam$^{-1}$ (217 mK), respectively"}
+]}
+],
+"inherited": [
+{"what": {"value": "Details of the Cycle 3 and Cycle 5 observations", "evidence": [
+{"loc": "Observations", "quote": "Since the details of the observations in Cycles 3 and 5 have been reported in (cite: Lee2018Pdisk) and (cite: Lee2020HH111), respectively, we only recap the observation information most directly relevant to our investigation."}
+]}, "from_reference": "(cite: Lee2018Pdisk) for Cycle 3 and (cite: Lee2020HH111) for Cycle 5"},
+{"what": {"value": "Flared disk model (density and temperature structure) used as the fiducial model", "evidence": [
+{"loc": "Disk Model", "quote": "we adopt the same flared disk model previously used to model the continuum map of this disk obtained at a similar resolution in (cite: Lee2020HH111)"}
+]}, "from_reference": "(cite: Lee2020HH111)"},
+{"what": {"value": "Logarithmic spiral structure excited by gravitational instability", "evidence": [
+{"loc": "Disk Model", "quote": "They are assumed to follow the logarithmic structure as excited by gravitational instability (GI) due to the self gravity of the disk (cite: Lee2020HH111)"}
+]}, "from_reference": "(cite: Lee2020HH111)"},
+{"what": {"value": "Radiative transfer code for dust emission and magnetically aligned grain polarization", "evidence": [
+{"loc": "Fiducial Disk Model", "quote": "We use the radiative transfer code reported in (cite: Lee2021Pdisk) to calculate the dust emission from the model"}
+]}, "from_reference": "(cite: Lee2021Pdisk)"}
+],
+"unstated_but_needed": [
+"Which source was the ALMA flux calibrator and the absolute flux scale uncertainty in each cycle",
+"CASA version and whether the standard pipeline or manual scripts were used",
+"Self-calibration details: solution intervals, number of iterations, reference antenna, and which data went into the self-cal model",
+"How the Cycle 3 and Cycle 5 data were aligned (astrometry, relative flux scaling) before combination",
+"tclean settings: deconvolver, masks, cleaning threshold, niter, cell and image size, Stokes Q/U imaging and polarization leakage calibration",
+"Primary beam correction treatment and line-free channel handling (continuum windows only)",
+"Reduction of the archival Band 6 data (2016.1.00389.S) and the VLA Ka map: beams, calibration, imaging",
+"Source coordinates and the origin of the 400 pc distance",
+"The radiative transfer code of Lee et al. 2021 is not given here; the aligned-grain polarization model, inclination and field geometries are not fully specified",
+"RADMC-3D setup: photon number, scattering treatment, inclination and position angle, and the DSHARP opacity files used",
+"Disk model fitting is done by eye, so no fit statistics, uncertainty method, or priors are available"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image Stokes I, Q, U",
+"method": {"value": "CASA calibration of both cycles, phase-only self-calibration, combination of the two cycles, and imaging with three robust values", "evidence": [
+{"loc": "Observations", "quote": "In both cycles, the $uv$ data were calibrated with the Common Astronomy Software Applications (CASA) package"},
+{"loc": "Observations", "quote": "The calibrated data from the two cycles were then combined into one calibrated data for mapping."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "robust = 2, 0.5, 0", "evidence": [{"loc": "Observations", "quote": "The robust factors are 2, 0.5, and 0."}]},
+{"value": "Bandpass J5010+1800, gain J0552+0313, polarization J0522-3627", "evidence": [{"loc": "Observations", "quote": "with quasars J5010+1800, J0552+0313, and J0522-3627 as bandpass, gain, and polarization calibrators, respectively"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Derive polarized intensity, fraction and orientation",
+"method": {"value": "Bias-corrected polarized intensity from Q and U, polarization fraction P = P_i/I, orientations as E vectors", "evidence": [
+{"loc": "Observations", "quote": "and thus is bias-corrected"},
+{"loc": "Observations", "quote": "The fraction of the polarization is then defined as $P=P_i/I$."},
+{"loc": "Observations", "quote": "Polarization orientations are defined by the $E$ vectors."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Instrumental error on P expected to be below ~0.2% for the disk at the phase center", "evidence": [
+{"loc": "Observations", "quote": "the instrumental error on $P$ is expected to be $\\lesssim$ 0.2% for the disk at the phase center"}
+]}
+},
+{
+"order": 3,
+"goal": "Interpret envelope polarization as aligned grains",
+"method": {"value": "Rotate polarization orientation by 90 deg to get the magnetic field orientation, assuming optically thin thermal emission", "evidence": [
+{"loc": "Origin of the Dust Polarization in the Inner Envelope", "quote": "the dust polarization is likely due to thermal emission of the dust and magnetic field orientation can be obtained by rotating the polarization orientation by 90$^\\circ$"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Envelope brightness temperature ~1-6 K is far below the ~40 K gas temperature, so the continuum is optically thin", "evidence": [
+{"loc": "Origin of the Dust Polarization in the Inner Envelope", "quote": "The inner envelope has a brightness temperature of $\\sim$ 1$-$6 K"},
+{"loc": "Origin of the Dust Polarization in the Inner Envelope", "quote": "Therefore, the continuum emission is optically thin at the observed wavelength."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Build the fiducial disk model from multi-band intensity",
+"method": {"value": "Radiative transfer model of the flared disk with spiral arms, fit by eye to Band 7, Band 6 and Band Ka intensity, with density set by Toomre Q ~1 at the turnover radius", "evidence": [
+{"loc": "Fiducial Disk Model", "quote": "We use the radiative transfer code reported in (cite: Lee2021Pdisk) to calculate the dust emission from the model and fit (by eye) it roughly to the observed maps."},
+{"loc": "Fiducial Disk Model", "quote": "Then, since the spiral arms appears to be excited by GI (cite: Lee2020HH111), the Toomre Q parameters there are required to be $\\sim$ 1-2"}
+]},
+"software": ["radiative transfer code of Lee et al. 2021", "ParaView"],
+"key_parameters": [
+{"value": "T_t ~26 K, q ~0.65, rho_t ~3.6e-16 g cm^-3", "evidence": [{"loc": "Fiducial Disk Model", "quote": "$T_\\mathrm{t}\\sim 26$ K, $q \\sim 0.65$"}]},
+{"value": "kappa_0 ~0.12 and beta ~1.4 for the opacity law", "evidence": [{"loc": "Fiducial Disk Model", "quote": "$\\kappa_0 \\sim 0.12$ cm$^{-2}$ g$^{-1}$, and $\\beta \\sim 1.4$ can roughly reproduce the observed disk emission in Bands 7 and 6"}]},
+{"value": "Toomre Q ~1 at R_t", "evidence": [{"loc": "Fiducial Disk Model", "quote": "The value of $\\rho_\\mathrm{t}$ is set to have Toomre Q parameter of $\\sim$ 1 at $R_\\mathrm{t}$"}]}
+],
+"assumptions": [
+{"value": "Purely thermal dust emission, LTE everywhere", "evidence": [{"loc": "Fiducial Disk Model", "quote": "we assume that the dust emission is purely thermal and the disk is everywhere in LTE"}]},
+{"value": "Gas to dust mass ratio ~100", "evidence": [{"loc": "Disk Model", "quote": "Assuming that the disk also contains gas with a gas to dust mass ratio of $\\sim$ 100"}]},
+{"value": "Density power-law index n = 2.5", "evidence": [{"loc": "Fiducial Disk Model", "quote": "In order to simplify our fitting, we assume $n=2.5$."}]},
+{"value": "Dust opacity law kappa_lambda = kappa_0 (9.1 mm/lambda)^beta", "evidence": [{"loc": "Fiducial Disk Model", "quote": "With multi-band observations, we can also define an opacity law"}]}
+],
+"fitting": {"value": "Fit by eye, no sampler or likelihood", "evidence": [{"loc": "Fiducial Disk Model", "quote": "fit (by eye) it roughly to the observed maps"}]},
+"validation": {"value": "Spiral parameters agree with earlier work and expected scale height is similar to the best-fit value", "evidence": [
+{"loc": "Fiducial Disk Model", "quote": "the spiral parameters $a$ and $R_s$ are in good agreement with those previously reported in (cite: Lee2020HH111)"},
+{"loc": "Fiducial Disk Model", "quote": "The expected scale height in vertical hydrostatic equilibrium is $h_\\mathrm{t}^e \\sim$ 17.3 au, similar to the best-fit value of $h_\\mathrm{t}$"}
+]}
+},
+{
+"order": 5,
+"goal": "Test magnetically aligned grains in the disk",
+"method": {"value": "Generate Band 7 polarization maps from the fiducial model with highly pinched poloidal fields and with toroidal fields, and compare patterns with observations", "evidence": [
+{"loc": "Magnetically Aligned Grains", "quote": "In the following, we present the polarization results of the model for the two field morphologies separately in order to check these possibilities."}
+]},
+"software": ["radiative transfer code of Lee et al. 2021"],
+"key_parameters": [
+{"value": "alpha = 0.1 (maximum polarization fraction in an optically thin region)", "evidence": [{"loc": "Magnetically Aligned Grains", "quote": "Here $\\alpha = 0.1$ is used to produce the small polarization degree of $\\sim$ 2% as observed in the disk"}]}
+],
+"assumptions": [
+{"value": "Grains aligned with long axis perpendicular to the field lines", "evidence": [{"loc": "Magnetically Aligned Grains", "quote": "magnetically aligned grains have their long axis perpendicular to the field lines"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Qualitative comparison of orientation and polarization gap patterns with the observed map", "evidence": [
+{"loc": "Magnetically Aligned Grains", "quote": "In summary, it is unclear if the observed dust polarization of the disk can be due to magnetic alignment of the dust grains."}
+]}
+},
+{
+"order": 6,
+"goal": "Test dust self-scattering in the disk",
+"method": {"value": "RADMC-3D polarization from DSHARP grains with a_max of 170 um, with absorption opacity scaled to 3.2 cm^2 per g of dust and the disk temperature raised by ~1.3", "evidence": [
+{"loc": "Dust Self-Scattering", "quote": "We use RADMC-3D (cite: Dullemond2012) to calculate the dust polarization due to dust self-scattering."},
+{"loc": "Dust Self-Scattering", "quote": "the disk temperature is increased by a factor of $\\sim$ 1.3 in order to roughly match the observed brightness temperature in the disk"}
+]},
+"software": ["RADMC-3D"],
+"key_parameters": [
+{"value": "DSHARP grains with a_max = 170 um", "evidence": [{"loc": "Dust Self-Scattering", "quote": "we adopt the DSHARP grains with $a_\\textrm{\\scriptsize max}$ of 170 $\\mu$m"}]},
+{"value": "Absorption opacity ~1.4 scaled up to 3.2 cm^2 per g of dust", "evidence": [{"loc": "Dust Self-Scattering", "quote": "The dust absorption opacity is $\\sim$ 1.4 cm$^2$ per gram of dust but is scaled up to 3.2 cm$^2$ per gram of dust."}]},
+{"value": "Scattering opacity ~10 cm^2 per g, albedo ~0.76", "evidence": [{"loc": "Dust Self-Scattering", "quote": "The scattering opacity is $\\sim$ 10 cm$^2$ per gram of dust, giving rise an albedo of $\\sim$ 0.76."}]}
+],
+"assumptions": [
+{"value": "Compact grains with MRN size distribution (DSHARP); porous grains could give the scaled opacity combination", "evidence": [{"loc": "Dust Self-Scattering", "quote": "Note that this combination could be obtained if using porous grains (cite: Tazaki2019)."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Model reproduces ~2% polarization degree, minor-axis orientation on the near side, azimuthal orientation at the disk edges and the anticorrelation with the spiral arms; fails on near-far asymmetry and upper rim", "evidence": [
+{"loc": "Dust Self-Scattering", "quote": "The polarization degree is $\\sim$ 2%, roughly consistent with the observation."},
+{"loc": "Dust Self-Scattering", "quote": "no clear near-far side asymmetry is seen in the polarized intensity, inconsistent with the observed"}
+]}
+},
+{
+"order": 7,
+"goal": "Infer grain size from the best scattering model",
+"method": {"value": "Conclude that self-scattering by grains of ~150 um dominates the disk polarization, supported by the opacity index beta ~1.4", "evidence": [
+{"loc": "Dust Self-Scattering", "quote": "Thus, our result indicates a grain growth in the disk to a size of $\\sim$ 150 $\\mu$m."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Calibration of the ALMA uv data", "evidence": [{"loc": "Observations", "quote": "the $uv$ data were calibrated with the Common Astronomy Software Applications (CASA) package"}]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Dust self-scattering polarization model", "evidence": [{"loc": "Dust Self-Scattering", "quote": "We use RADMC-3D (cite: Dullemond2012) to calculate the dust polarization due to dust self-scattering."}]}},
+{"name": "ParaView", "version": "not stated", "used_for": {"value": "Volume rendering of the model density and temperature", "evidence": [{"loc": "Fiducial Disk Model", "quote": "produced by the visualization application ParaView using volume rendering (cite: Ahrens2005)"}]}},
+{"name": "Radiative transfer code of Lee et al. 2021", "version": "not stated", "used_for": {"value": "Dust emission model and aligned-grain polarization", "evidence": [{"loc": "Fiducial Disk Model", "quote": "We use the radiative transfer code reported in (cite: Lee2021Pdisk) to calculate the dust emission from the model"}]}}
+],
+"results_numeric": [
+{"quantity": "Polarization degree in the inner envelope", "value": "~6%", "uncertainty": "not stated", "units": "percent", "from_step": 2, "evidence": [{"loc": "Results", "quote": "The polarization degree is $\\sim$ 6% in the envelope but decreases to $\\sim$ 2% in the disk."}]},
+{"quantity": "Polarization degree in the disk", "value": "~2%", "uncertainty": "not stated", "units": "percent", "from_step": 2, "evidence": [{"loc": "Results", "quote": "The polarization degree is $\\sim$ 6% in the envelope but decreases to $\\sim$ 2% in the disk."}]},
+{"quantity": "Disk dust temperature index q", "value": "~0.65", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "$T_\\mathrm{t}\\sim 26$ K, $q \\sim 0.65$"}]},
+{"quantity": "Midplane temperature at R_t", "value": "~26", "uncertainty": "not stated", "units": "K", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "$T_\\mathrm{t}\\sim 26$ K, $q \\sim 0.65$"}]},
+{"quantity": "Dust opacity spectral index beta", "value": "~1.4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "$\\kappa_0 \\sim 0.12$ cm$^{-2}$ g$^{-1}$, and $\\beta \\sim 1.4$ can roughly reproduce the observed disk emission in Bands 7 and 6"}]},
+{"quantity": "Dust opacity kappa at 0.87, 1.3 and 9.1 mm", "value": "3.2, 1.8, 0.12", "uncertainty": "not stated", "units": "cm^2 per g of dust", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "The resulting $\\kappa_\\lambda$ values are 3.2, 1.8, 0.12 cm$^2$ per gram of dust at $\\lambda=$ 0.87, 1.3, and 9.1 mm, respectively."}]},
+{"quantity": "Mean dust surface density at R_t", "value": "~0.22", "uncertainty": "not stated", "units": "g cm^-2", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "The resulting mean dust surface density $\\Sigma_t/100$ is $\\sim 0.22$ g cm$^{-2}$ at $R_\\mathrm{t}$"}]},
+{"quantity": "Disk mass", "value": "~0.58", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "The resulting disk mass $M_d$ is $\\sim$ 0.58 $M_\\odot$."}]},
+{"quantity": "Protostar mass", "value": "~1.22", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "the protostar has a mass of $\\sim$ 1.22 $M_\\odot$."}]},
+{"quantity": "Disk to protostar mass ratio", "value": "~0.48", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "Therefore the disk to protostar mass ratio is $\\sim$ 0.48, and thus the disk is massive enough to excite GI for 2 prominent spiral arms"}]},
+{"quantity": "Scale height to radius ratio at R_t", "value": "~0.1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Fiducial Disk Model", "quote": "The scale height to radius ratio at $R_\\mathrm{t}$ is $\\sim$ 0.1"}]},
+{"quantity": "Aligned-grain parameter alpha", "value": "0.1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Magnetically Aligned Grains", "quote": "Here $\\alpha = 0.1$ is used to produce the small polarization degree of $\\sim$ 2% as observed in the disk"}]},
+{"quantity": "Albedo of the DSHARP 170 um grains with scaled absorption opacity", "value": "~0.76", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Dust Self-Scattering", "quote": "The scattering opacity is $\\sim$ 10 cm$^2$ per gram of dust, giving rise an albedo of $\\sim$ 0.76."}]},
+{"quantity": "Temperature increase factor in the scattering model", "value": "~1.3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Dust Self-Scattering", "quote": "the disk temperature is increased by a factor of $\\sim$ 1.3 in order to roughly match the observed brightness temperature in the disk"}]},
+{"quantity": "Inferred grain size", "value": "~150", "uncertainty": "not stated", "units": "um", "from_step": 7, "evidence": [{"loc": "Dust Self-Scattering", "quote": "Thus, our result indicates a grain growth in the disk to a size of $\\sim$ 150 $\\mu$m."}]}
+],
+"findings_qualitative": [
+{"value": "Polarized intensity and degree are lower in the spiral arms and higher in between the arms", "evidence": [{"loc": "Results", "quote": "This suggests an anticorrelation between the spiral arms and the polarized intensity (and thus the polarization degree)."}]},
+{"value": "Inner envelope magnetic field is mainly toroidal", "evidence": [{"loc": "Origin of the Dust Polarization in the Inner Envelope", "quote": "the magnetic fields in the inner envelope are almost everywhere parallel to the major axis and are, thus, mainly toroidal"}]},
+{"value": "Interarms are sandwiched and illuminated by two brighter arms, giving higher scattered polarized intensity", "evidence": [{"loc": "Dust Self-Scattering", "quote": "The interarms are sandwiched and illuminated by two brighter spiral arms and thus have higher polarized intensity."}]}
+],
+"claims": [
+{
+"hypothesis": "Is the envelope polarization due to magnetically aligned grains",
+"experiment": "Rotated the observed polarization orientations by 90 deg, assuming optically thin emission",
+"result": "Polarization is almost everywhere parallel to the minor axis with ~6% degree",
+"finding": "Envelope polarization is likely from aligned grains tracing a mainly toroidal field",
+"support": "supported",
+"evidence": [{"loc": "Origin of the Dust Polarization in the Inner Envelope", "quote": "In this case, the magnetic fields in the inner envelope are almost everywhere parallel to the major axis and are, thus, mainly toroidal"}]
+},
+{
+"hypothesis": "Does the disk polarized intensity correlate with the spiral arms",
+"experiment": "Mapped Stokes I and polarized intensity at three resolutions",
+"result": "Polarized intensity is lower in the arms and higher in the interarms",
+"finding": "The polarized intensity is anticorrelated with the spiral arms, though the inner NE arm is unresolved",
+"support": "supported",
+"evidence": [{"loc": "Results", "quote": "This suggests an anticorrelation between the spiral arms and the polarized intensity (and thus the polarization degree)."}]
+},
+{
+"hypothesis": "Can magnetically aligned grains explain the disk polarization",
+"experiment": "Modeled poloidal and toroidal field configurations in the fiducial disk with alpha = 0.1",
+"result": "Poloidal fields match only the far-side azimuthal pattern; toroidal fields fail for most orientations; both give polarization along the arms opposite to observed",
+"finding": "It is unclear if magnetic alignment explains the disk polarization",
+"support": "partially",
+"evidence": [{"loc": "Magnetically Aligned Grains", "quote": "The model with poloidal fields can account only for the azimuthal polarization orientations on the far side, while the model with toroidal fields fails to account for most polarization orientations"}]
+},
+{
+"hypothesis": "Can dust self-scattering explain the disk polarization and indicate grain growth",
+"experiment": "RADMC-3D self-scattering model with DSHARP grains of a_max 170 um in the fiducial disk",
+"result": "Reproduces ~2% degree, minor-axis orientation on the near side, azimuthal orientation at edges, and the anticorrelation with arms, but not the near-far asymmetry",
+"finding": "Polarization is likely dominated by self-scattering by grains grown to ~150 um, with possible contributions from other mechanisms",
+"support": "partially",
+"evidence": [
+{"loc": "Dust Self-Scattering", "quote": "Therefore the observed dust polarization in the HH 111 disk is likely dominated by dust self-scattering, with possible contributions from other mechanisms"},
+{"loc": "Dust Self-Scattering", "quote": "Thus, our result indicates a grain growth in the disk to a size of $\\sim$ 150 $\\mu$m."}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Higher resolution polarization to clarify the pattern and its relation to the spiral arms", "evidence": [{"loc": "Introduction", "quote": "At this higher resolution, we can clarify the polarization pattern and its morphological relationship with the spiral arms."}]},
+{"field": "why_this_method", "value": "Generate polarization maps from a fiducial disk model for the two mechanisms and compare with observations", "evidence": [{"loc": "Origin of the Dust Polarization in the Disk", "quote": "we construct a fiducial disk model and then generate dust polarization maps with these two polarization mechanisms to compare with the dust polarization mapped here at higher resolutions"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Pure magnetically aligned grains with poloidal or toroidal fields, and their combination, judged inconsistent with the observed orientations", "evidence": [
+{"loc": "Magnetically Aligned Grains", "quote": "Adding the toroidal fields into the model with poloidal fields will tilt the polarization orientations to one side (not shown), also inconsistent with the observed polarization orientations."}
+]},
+{"value": "Scattering by aligned (effectively prolate) grains, as proposed for HL Tau, is considered plausible but not modeled", "evidence": [
+{"loc": "Dust Self-Scattering", "quote": "It is plausible that the polarization observed in our case of HH 111 is also produced by scattering aligned grains."}
+]}
+],
+"limitations_admitted": [
+{"value": "Near-far side asymmetry in polarized intensity and far-side azimuthal orientation are not reproduced", "evidence": [{"loc": "abstract", "quote": "Further modeling work is needed to study how to reproduce the observed near-far side asymmetry in the polarized intensity and the observed azimuthal polarization orientation on the far side."}]},
+{"value": "Inner NE spiral arm is unresolved, so higher resolution and sensitivity are needed", "evidence": [{"loc": "Results", "quote": "observations at higher resolution and sensitivity are needed to confirm it"}]},
+{"value": "Detailed calculations including both emission and scattering by aligned grains are needed to test the scenario quantitatively", "evidence": [{"loc": "Dust Self-Scattering", "quote": "are needed to test the scenario quantitatively"}]},
+{"value": "Model spiral properties and grain properties differ from the actual ones", "evidence": [{"loc": "Dust Self-Scattering", "quote": "The detailed distribution and intensity of the polarized emission are different from the observed polarization map because the actual spirals may have different physical properties"}]}
+],
+"referee_caveats_inferred": [
+"Disk model is fit by eye with no uncertainties or degeneracy exploration; opacity, density and temperature are degenerate",
+"Grain size of ~150 um rests on one DSHARP grain demonstration with absorption opacity scaled by a factor of ~2.3, not a fit",
+"Self-scattering vs aligned prolate grains is not uniquely separated; paper itself calls the latter plausible",
+"Effect of phase self-calibration and combining two cycles on polarization fidelity not shown",
+"No polarization at other wavelengths to test the scattering wavelength dependence"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Flux calibrator, CASA version, self-calibration and tclean settings",
+"Reduction recipes for Band 6 and VLA Ka data",
+"Aligned-grain radiative transfer code and field geometry parameters",
+"RADMC-3D configuration and DSHARP opacity inputs"
+],
+"estimated_data_volume_inferred": "Rough guess: 100-300 GB raw for two Band 7 long-baseline projects plus a Band 6 project; a few GB for calibrated continuum",
+"score_inferred": 2,
+"score_reason": "ALMA projects are named but calibration, imaging and the by-eye model fit are under-specified, and the aligned-grain code and settings are not provided.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Recipe is incomplete (self-cal, imaging and model fitting by eye) and main results are qualitative pattern comparisons.",
+"methods_papers": [
+{"citation": "Lee et al. 2018 (cite: Lee2018Pdisk)", "why": "Cycle 3 observation details"},
+{"citation": "Lee et al. 2020 (cite: Lee2020HH111)", "why": "Cycle 5 observation details, spiral arms and the flared disk model"},
+{"citation": "Lee et al. 2021 (cite: Lee2021Pdisk)", "why": "Radiative transfer code with aligned-grain polarization"},
+{"citation": "Yang et al. 2017 (cite: Yang2017)", "why": "Self-scattering polarization patterns in disks, used for interpretation"}
+],
+"companion_papers": [
+{"citation": "Stephens et al. 2023 (cite: Stephens2023)", "why": "HL Tau polarization at 870 um with an analogous ring-gap anticorrelation"},
+{"citation": "Lin et al. 2024 (cite: Lin2024)", "why": "HL Tau polarization modeling"},
+{"citation": "Lee et al. 2023 (cite: Lee2023HH211)", "why": "HH 211 disk model with spiral arms"}
+],
+"related_projects_or_surveys": ["2015.1.00037.S", "2017.1.00044.S", "2016.1.00389.S", "VLA Ka-band data of Tobin et al. 2020"]
+}

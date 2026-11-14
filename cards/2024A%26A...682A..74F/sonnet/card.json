@@ -1,0 +1,924 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...682A..74F",
+  "title": "The GUAPOS project: G31.41+0.31 Unbiased ALMA sPectral Observational Survey. IV. Phosphorus-bearing molecules and their relation to shock tracers",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Fontani, F.",
+  "n_authors": 9,
+  "arxiv_id": "2311.13367",
+  "doi": "10.1051/0004-6361/202348219",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00489.S",
+   "2017.1.00501.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations and data reduction",
+    "quote": "Observations towards the HMC G31 were taken with ALMA during Cycle 5 (project 2017.1.00501.S, P.I.: M.T. Beltrán) obtaining an unbiased spectral survey in Band 3 from 84.05 GHz up to 115.91 GHz."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "G31.41+0.31",
+     "coordinates": {
+      "value": "RA(J2000)=18h47m34.312s, Dec(J2000)=-01d12m45.9s (pointing centre)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at heliocentric distance of 3.75 kpc (Immer et al. (cite: Immer19)"
+       },
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The pointing centre of the observations is R.A.(J2000)=18$^{\\rm h}$47$^{\\rm m}$34.$^{\\prime\\prime}$312 and Dec.(J2000)=$-$01$^{\\circ}$12$^{\\prime}$45.$^{\\prime\\prime}$9."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "3.75 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at heliocentric distance of 3.75 kpc (Immer et al. (cite: Immer19)"
+       },
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The pointing centre of the observations is R.A.(J2000)=18$^{\\rm h}$47$^{\\rm m}$34.$^{\\prime\\prime}$312 and Dec.(J2000)=$-$01$^{\\circ}$12$^{\\prime}$45.$^{\\prime\\prime}$9."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Immer et al. 2019",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at heliocentric distance of 3.75 kpc (Immer et al. (cite: Immer19)"
+       },
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The pointing centre of the observations is R.A.(J2000)=18$^{\\rm h}$47$^{\\rm m}$34.$^{\\prime\\prime}$312 and Dec.(J2000)=$-$01$^{\\circ}$12$^{\\prime}$45.$^{\\prime\\prime}$9."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Are P-bearing molecules (PN, PO) in the hot molecular core G31.41+0.31 associated with shock tracers (SiO, SO, SO2, SiS), and what does this say about P chemistry?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We study P-bearing molecules, as well as some shock tracers, towards one of the chemically richest hot molecular core, G31.41+0.31"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00501.S",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "project 2017.1.00501.S, P.I.: M.T. Beltrán"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00489.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA$\\#$2013.1.00489.S and ADS/JAO.ALMA$\\#$2017.1.00501.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3, 84.05-115.91 GHz",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "obtaining an unbiased spectral survey in Band 3 from 84.05 GHz up to 115.91 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "0.49 MHz channels, ~1.6 km/s at 90 GHz",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The frequency resolution is 0.49 MHz, corresponding to a velocity resolution of $\\sim$1.6 km s$^{-1}$ at 90 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "PN",
+     "transition": "N=2-1",
+     "rest_frequency": "93.9782-93.9823 GHz (hyperfine)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| PN | $N=2-1,J=2-2$ | 93.9782 | –5.6144 | 6.8 |"
+      }
+     ]
+    },
+    {
+     "species": "PO",
+     "transition": "J=5/2-3/2, Omega=1/2 (4 lines)",
+     "rest_frequency": "108.9984-109.2812 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$\\,F=3-2,\\,l=e$ | 108.9984 | –4.6712 | 8.4 |"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "J=2-1",
+     "rest_frequency": "86.8470 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| SiO | $J=2-1$ | 86.8470 | –4.5335 | 6.3 |"
+      }
+     ]
+    },
+    {
+     "species": "SiS",
+     "transition": "J=5-4, 6-5",
+     "rest_frequency": "90.7716, 108.9243 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| SiS | $J=5-4$ | 90.7716 | –4.9241 | 13.1 |"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "several",
+     "rest_frequency": "86.0940-109.2522 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| SO$^{b}$ | $N=2-1,J=2-1$ | 86.0940 | –5.2799 | 19.3 |"
+      }
+     ]
+    },
+    {
+     "species": "SO2",
+     "transition": "3(1,3)-2(0,2), 16(2,14)-15(3,13), 10(1,9)-10(0,10)",
+     "rest_frequency": "104.0294-104.2393 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$J_{K_a,K_b}=3_{1,3}-2_{0,2}$ | 104.0294 | –4.2264 | 7.7 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.2 arcsec (~4500 au)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The final angular resolution is 1.$^{\\prime\\prime}$2 ($\\sim$4500 au)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 5, P.I. M.T. Beltrán",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "project 2017.1.00501.S, P.I.: M.T. Beltrán"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "ALMA Band 6 SiO J=5-4 (Beltrán et al. 2018)",
+     "provided": {
+      "value": "High-resolution SiO J=5-4 wing maps (~0.22 arcsec)",
+      "evidence": [
+       {
+        "loc": "3.1.1 PN, PO and SiO",
+        "quote": "we show the maps of the high-velocity wings of the SiO $J=5-4$ line published in (cite: Beltran18)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectroscopic parameters from CDMS",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "All parameters are taken from the Cologne Database for Molecular Spectroscopy"
+       }
+      ]
+     },
+     "citation": "Endres et al. 2016 (cite: Endres16)"
+    },
+    {
+     "what": {
+      "value": "Solar isotopic ratios 28Si/29Si=19.7 and 32SO/34SO=22.5",
+      "evidence": [
+       {
+        "loc": "3.3.3 Opacity of SiO and SO lines",
+        "quote": "The reference Solar values for $^{28}$Si/$^{29}$Si and $^{32}$SO/$^{34}$SO are 19.7 (cite: AeG89) and 22.5 (cite: Lodders03), respectively."
+       }
+      ]
+     },
+     "citation": "Anders & Grevesse 1989; Lodders 2003"
+    },
+    {
+     "what": {
+      "value": "Outflow orientation and driving sources",
+      "evidence": [
+       {
+        "loc": "3.1.1 PN, PO and SiO",
+        "quote": "The orientation of the six outflows in the region and the position of their driving sources has been recently improved with ALMA"
+       }
+      ]
+     },
+     "citation": "Beltrán et al. 2022 (cite: Beltran22)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "~5%",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The uncertainty on the flux calibration is $\\sim 5\\%$."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "PO spectrum in region 2 smoothed in velocity by factor 2",
+     "evidence": [
+      {
+       "loc": "3.2.2 Tentative detection of PO",
+       "quote": "The spectrum towards this position was smoothed in velocity by a factor 2 to increase the sensitivity."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.2 arcsec",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The final angular resolution is 1.$^{\\prime\\prime}$2 ($\\sim$4500 au)."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction (calibration, baseline subtraction, cleaning, line identification)",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "For more details on the data reduction (calibration, baseline subtraction, cleaning and line identification) we refer to (cite: Mininni20)."
+       }
+      ]
+     },
+     "from_reference": "Mininni et al. 2020 (cite: Mininni20)"
+    },
+    {
+     "what": {
+      "value": "Flux-to-brightness-temperature conversion",
+      "evidence": [
+       {
+        "loc": "3.2.1 Main isotopologues",
+        "quote": "The conversion from flux density units to temperature units has been performed using Eq.(1) in (cite: Fontani21)"
+       }
+      ]
+     },
+     "from_reference": "Fontani et al. 2021 (cite: Fontani21)"
+    },
+    {
+     "what": {
+      "value": "Opacity estimation in madcuba",
+      "evidence": [
+       {
+        "loc": "3.3.3 Opacity of SiO and SO lines",
+        "quote": "madcuba estimates the line opacities as explained in (cite: Martin19)"
+       }
+      ]
+     },
+     "from_reference": "Martín et al. 2019 (cite: Martin19)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging parameters (weighting, robust, cell, image size, clean threshold)",
+    "Continuum subtraction and line-free channels",
+    "Array configurations, baselines, time on source, observing dates",
+    "How the extraction regions 1 and 2 were defined (aperture size/shape)",
+    "Role of project 2013.1.00489.S",
+    "Details of the Fig.1 moment-map procedure"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Integrated intensity maps",
+    "method": {
+     "value": "Integrate PN, SiO and other lines over 85.7-105.8 km/s; compare morphology and pixel-by-pixel ratios",
+     "evidence": [
+      {
+       "loc": "3.1.1 PN, PO and SiO",
+       "quote": "map of PN $J=2-1$ (panel (a)) integrated in the velocity range with emission above $3\\sigma$ rms, namely 85.7–105.8 km s$^{-1}$"
+      }
+     ]
+    },
+    "software": [
+     "madcuba"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with SiO J=5-4 high resolution maps",
+     "evidence": [
+      {
+       "loc": "3.1.1 PN, PO and SiO",
+       "quote": "In panel (d) of Fig. [1](#fig:PN-integ) we show the maps of the high-velocity wings of the SiO $J=5-4$ line published in (cite: Beltran18)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract spectra at regions 1, 2 and hot core",
+    "method": {
+     "value": "Spectra in brightness temperature from the two PN peaks and the 20 sigma 3 mm continuum contour",
+     "evidence": [
+      {
+       "loc": "3.1.1 PN, PO and SiO",
+       "quote": "We chose the 3 mm continuum contour at 20$\\sigma$ rms to disentangle the emission of the hot core from that of the ultracompact Hii region"
+      }
+     ]
+    },
+    "software": [
+     "madcuba"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "LTE fits for column densities and Tex",
+    "method": {
+     "value": "SLIM AUTOFIT of multiple transitions for SO, 34SO, SO2, SiS, SiO; free V, FWHM, Tex, Ntot, fixed filling beam",
+     "evidence": [
+      {
+       "loc": "3.3.1 SO, 34SO, SO2, SiS, and SiO",
+       "quote": "Through its AUTOFIT function, SLIM produces the synthetic spectrum that best matches the data assuming LTE."
+      }
+     ]
+    },
+    "software": [
+     "madcuba"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Emission fills the beam (theta_S fixed)",
+      "evidence": [
+       {
+        "loc": "3.3.1 SO, 34SO, SO2, SiS, and SiO",
+        "quote": "we can safely assume that the emission fills the telescope beam"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "LTE AUTOFIT; some Tex fixed (34SO region 1 at 58 K)",
+     "evidence": [
+      {
+       "loc": "3.3.1 SO, 34SO, SO2, SiS, and SiO",
+       "quote": "For $^{34}$SO, in region \"1\" the fit converged leaving $V$, $FWHM$, and $N_{\\rm tot}$ free, but we had to fix $T_{\\rm ex}$. The best-fit $T_{\\rm ex}$ obtained by visual inspection is 58 K."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "PN and PO column densities",
+    "method": {
+     "value": "Fit PN at Tex range from other tracers (26-75 K region 1, 12-30 K region 2); PO fitted with PN Tex, FWHM, V; upper limit in region 1",
+     "evidence": [
+      {
+       "loc": "3.3.2 PN and PO",
+       "quote": "we derive the best-fit in a range of $T_{\\rm ex}$ based on the minimum and maximum values obtained from the other tracers."
+      }
+     ]
+    },
+    "software": [
+     "madcuba"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "LTE",
+     "evidence": [
+      {
+       "loc": "3.2.2 Tentative detection of PO",
+       "quote": "We used madcuba to fit simultaneously the four transitions. The fitting method, which assumes local thermodynamic equilibrium (LTE) conditions"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Hyperfine-included fit gives consistent FWHM",
+     "evidence": [
+      {
+       "loc": "3.3.2 PN and PO",
+       "quote": "derived in all cases FWHMs slightly smaller but consistent within the errors with the values obtained neglecting it."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Opacity check",
+    "method": {
+     "value": "Compare madcuba tau with isotopologue intensity ratios (28SiO/29SiO, 32SO/34SO)",
+     "evidence": [
+      {
+       "loc": "3.3.3 Opacity of SiO and SO lines",
+       "quote": "the intensity ratio between the $^{28}$SiO and the $^{29}$SiO lines is $^{28}$SiO/$^{29}$SiO$\\sim 8$ in region \"1\" and $^{28}$SiO/$^{29}$SiO$\\sim 20$ in region \"2\"."
+      }
+     ]
+    },
+    "software": [
+     "madcuba"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "madcuba",
+    "version": "not stated",
+    "used_for": {
+     "value": "Spectral analysis, LTE fitting (SLIM/AUTOFIT)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The spectral analysis has been performed with the MAdrid Data CUBe Analysis (madcuba"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "PN Ntot region 1 (Tex=26 K)",
+    "value": "1.3e13",
+    "uncertainty": "0.1e13",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table (fit-total)",
+      "quote": "|  | PN | 9.7(0.9) | 94.8(0.4) | $1.3(0.1)\\times 10^{13}$ | 26 | 0.01 |"
+     }
+    ]
+   },
+   {
+    "quantity": "PN Ntot region 2 (Tex=12 K)",
+    "value": "1.5e13",
+    "uncertainty": "0.1e13",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| PN | 11.7(1.2) | 94.2(0.5) | $1.5(0.1)\\times 10^{13}$ | 12 | 0.01 |"
+     }
+    ]
+   },
+   {
+    "quantity": "SiO Ntot region 1",
+    "value": "3.6e14",
+    "uncertainty": "0.1e14",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| SiO | 12.6(0.4) | 95.1(0.2) | $3.6(0.1)\\times 10^{14}$ | 26.4(0.2) | 0.9 |"
+     }
+    ]
+   },
+   {
+    "quantity": "SiO Ntot region 2",
+    "value": "1.8e14",
+    "uncertainty": "0.2e14",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| SiO | 11.5(0.6) | 93.0(0.3) | $1.8(0.2)\\times 10^{14}$ | 11.6(0.6) | 0.7 |"
+     }
+    ]
+   },
+   {
+    "quantity": "PO/PN region 2",
+    "value": "~0.6-0.9",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3.2 / 4.3",
+      "quote": "the PO/PN ratio in region \"2\", where PO is tentatively detected, is $\\sim 0.6-0.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "PO integrated-line S/N region 2",
+    "value": "~6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2.2 Tentative detection of PO",
+      "quote": "we obtain a signal-to-noise ratio of $\\sim 6$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "PN emission is tightly associated with SiO and absent in the hot core, implying shock chemistry origin",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our study firmly confirms previous observational evidence that PN emission is tightly associated with SiO and it is likely a product of shock-chemistry"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "PN is associated with shocks traced by SiO rather than hot core chemistry",
+    "experiment": "Compare PN, SiO, S-bearing maps and spectra",
+    "result": "PN and SiO similar in morphology and profile; PN undetected in hot core",
+    "finding": "PN is a product of shock chemistry",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the PN and SiO lines are very similar both in spatial emission morphology and spectral shape"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Column density ratios to PN differ between regions",
+    "experiment": "LTE fits in regions 1 and 2",
+    "result": "SiO/PN constant; SO/PN, SiS/PN, SO2/PN decrease by ~an order of magnitude",
+    "finding": "SiO and PN share a common origin",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the column density ratio SiO/PN remains constant in regions \"1\" and \"2\""
+     }
+    ]
+   },
+   {
+    "hypothesis": "PO/PN ratio consistent with pure shock models",
+    "experiment": "Tentative PO fit in region 2",
+    "result": "PO/PN ~0.6-0.9",
+    "finding": "In line with pure shock models",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The PO/PN ratio in region \"2\", where PO is tentatively detected, is $\\sim 0.6-0.9$, in line with the predictions of pure shock models."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "PH3 as main P carrier in the hot core rejected since PN and PO not clearly detected there",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "hence PH$_3$ does not seem to be the main P-carrier here."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Single PN transition so Tex unconstrained; blending of SiS, PO, 29SiO lines in region 1; PO only tentative",
+     "evidence": [
+      {
+       "loc": "3.3.2 PN and PO",
+       "quote": "For PN, we cannot derive $T_{\\rm ex}$ from the data since we have only one transition."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "PN Ntot depends on assumed Tex from other species",
+    "LTE and beam-filling assumed",
+    "Region definitions not specified",
+    "Line blending in region 1 limits comparisons"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Data from ALMA project 2017.1.00501.S, acknowledged as used",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2013.1.00489.S and ADS/JAO.ALMA$\\#$2017.1.00501.S."
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration and imaging details (in Mininni et al. 2020)",
+    "Region extraction apertures",
+    "Exact madcuba version and fit settings"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB (Band 3 spectral survey, mosaic)",
+   "score_inferred": 3,
+   "score_reason": "Public data and a clear LTE fitting recipe, but reduction and extraction details are deferred to another paper.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Processing details are inherited from Mininni et al. 2020 and region definitions are not given."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Mininni et al. 2020 (cite: Mininni20)",
+     "why": "GUAPOS data reduction and source description"
+    },
+    {
+     "citation": "Martín et al. 2019 (cite: Martin19)",
+     "why": "madcuba software"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "López-Gallifa et al. 2023 (cite: LopezGallifa23)",
+     "why": "Excitation analysis of hot core species in GUAPOS"
+    },
+    {
+     "citation": "Mininni et al. 2023 (cite: Mininni23)",
+     "why": "GUAPOS COM analysis"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GUAPOS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-57e3ff7c6e3b8635231f0fb6b86db385",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:44",
+  "usage": {
+   "input_tokens": 27326,
+   "output_tokens": 7222,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064043,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 54,
+  "quotes_ok": 54,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 33,
+   "rate": 0.471
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:56",
+  "custom_id": "repair-sonnet-c62f94885c691d8283648727c0249e01",
+  "fixed": [
+   {
+    "path": "results_numeric[0].evidence[0]",
+    "old": "| \"1\" | PN | 9.7(0.9) | 94.8(0.4) | $1.3(0.1)\\times 10^{13}$ | 26 | 0.01 |",
+    "new": "|  | PN | 9.7(0.9) | 94.8(0.4) | $1.3(0.1)\\times 10^{13}$ | 26 | 0.01 |"
+   },
+   {
+    "path": "analysis_steps[0].validation.evidence[0]",
+    "old": null,
+    "new": "In panel (d) of Fig. [1](#fig:PN-integ) we show the maps of the high-velocity wings of the SiO $J=5-4$ line published in (cite: Beltran18)."
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "For $^{34}$SO, in region \"1\" the fit converged leaving $V$, $FWHM$, and $N_{\\rm tot}$ free, but we had to fix $T_{\\rm ex}$. The best-fit $T_{\\rm ex}$ obtained by visual inspection is 58 K."
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "We used madcuba to fit simultaneously the four transitions. The fitting method, which assumes local thermodynamic equilibrium (LTE) conditions"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

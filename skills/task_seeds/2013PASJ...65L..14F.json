@@ -1,0 +1,251 @@
+{
+ "bibcode": "2013PASJ...65L..14F",
+ "title": "Local Enhancement of the Surface Density in the Protoplanetary Ring Surrounding HD 142527",
+ "year": 2013,
+ "doi": "10.1093/pasj/65.6.L14",
+ "arxiv_id": "1309.7400",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the surface density and gravitational stability of the strongly asymmetric outer ring of HD 142527, using continuum and 13CO/C18O 3-2 data to constrain grain temperature?",
+ "alma_project_codes": [
+  "2011.0.00318.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "20–26 12-m antennas, Extended configuration, Cycle 0",
+  "angular_resolution": "continuum 0.39\"x0.34\" PA 57; lines 0.43\"x0.37\" PA 50",
+  "sensitivity": "continuum rms 0.19 mJy/beam; 13CO 12 and C18O 15 mJy/beam per 0.11 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass 2.2±0.3 Msun",
+    "evidence": [
+     {
+      "loc": "3.2.1 Integrated Intensity and Gas Kinematics",
+      "quote": "whereas the stellar mass is fixed in the range of $2.2 \\pm 0.3$ $M_{\\ensuremath{\\odot}}$ (V11)."
+     }
+    ]
+   },
+   "citation": "Verhoeff et al. 2011 (cite: ver11)"
+  },
+  {
+   "what": {
+    "value": "Abundance ratio X(C13O)/X(C18O) ~ 7",
+    "evidence": [
+     {
+      "loc": "3.2.2 Temperature Estimate",
+      "quote": "an abundance ratio of X(C$^{13}$O)/X(C$^{18}$O) $\\sim$ 7 (cite: qi11)"
+     }
+    ]
+   },
+   "citation": "Qi et al. 2011 (cite: qi11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image continuum and lines",
+   "method": "CASA calibration, CLEAN imaging, continuum self-cal applied to lines",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5; final Uniform weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit Keplerian rotation to 13CO to get inclination and systemic velocity",
+   "method": "Gaussian peak velocity along major axis every 0.03\", then S/N-weighted least-squares Keplerian fit",
+   "software": [],
+   "key_parameters": [
+    "free: systemic velocity, center, inclination; stellar mass fixed at 2.2±0.3 Msun"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate grain temperature from optically thick 13CO brightness temperature",
+   "method": "Add continuum Tb to line peak Tb after beam matching; take 13CO Tb at continuum peak (36 K) as upper bound on dust temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE; 13CO optically thick; C13O/C18O abundance ~7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive dust optical depth and surface density lower limit",
+   "method": "Compare Tdust with continuum Tb to get tau, convert with kappa_336=0.034 cm2/g for g/d=100",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas-to-dust 100; T=36 K; distance 140 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Radial Gaussian fit and Toomre Q",
+   "method": "Gaussian fit to deprojected radial profile per PA and azimuthal average; compute Toomre Q with isothermal sound speed at 36 K, M*=2.2 Msun",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "g/d = 100"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum contrast north peak/SW minimum",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1 Outer Disk",
+     "quote": "The contrast in flux density thus reaches to 30 between the northern peak and the SW minimum."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk total flux density at 336 GHz",
+   "value": "2.7",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1 Outer Disk",
+     "quote": "the total flux density ($>5\\sigma$) was measured as 2.7 Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1 Outer Disk",
+     "quote": "The peak flux density is expressed by a brightness temperature ($T_b$) of 24 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk flux density",
+   "value": "2.3",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.2 Inner Disk and Radial Gap",
+     "quote": "The integrated flux density over the Gaussian was 2.3$\\pm$0.2 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "26.9",
+   "uncertainty": "+2.2/-1.8",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Integrated Intensity and Gas Kinematics",
+     "quote": "the inclination was estimated as $i = 26.9^{+2.2}_{-1.8}$ degrees"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "3.70",
+   "uncertainty": "0.02",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Integrated Intensity and Gas Kinematics",
+     "quote": "The systemic velocity was determined as $3.70 \\pm 0.02$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak surface density (lower limit)",
+   "value": "28.1",
+   "uncertainty": "not stated",
+   "units": "g cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Constraint on Surface Density",
+     "quote": "the surface density was calculated as $\\Sigma_{\\rm peak}=$ 28.1 g cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk mass",
+   "value": "0.09",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Constraint on Surface Density",
+     "quote": "Integrating the surface density yielded a mass for the entire outer disk of 0.09 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q at horseshoe peak",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Stability against Self-Gravity",
+     "quote": "Locally estimated at the horseshoe peak at $R = 156$ AU, $Q$ was obtained as 0.9 for $\\Sigma_{\\rm peak} = 28$ g cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk mass",
+   "value": "4.3e-5",
+   "uncertainty": "0.4e-5",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.2 Inner Disk and Radial Gap",
+     "quote": "the total (gas and dust) disk mass was then calculated as $(4.3 \\pm 0.4) \\times 10^{-5}~M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN masks, threshold, iteration counts and cell/image sizes",
+  "Self-calibration solution intervals and reference antenna",
+  "Line-free channels and continuum subtraction method",
+  "Which calibrator was used for bandpass vs each scheduling block",
+  "Details of the 1+1D radiative transfer inputs (opacity, stellar parameters)",
+  "Inclination/position angle used for deprojection beyond i=27",
+  "Rest frequencies used"
+ ],
+ "missing_for_reproduction": [
+  "Imaging masks/thresholds, image sizes and cell sizes",
+  "Self-cal intervals",
+  "1+1D model inputs",
+  "Continuum subtraction channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main recipe are clear and the numbers are simple, but imaging and self-cal details are missing.",
+ "rediscovery_reason": "Cycle 0 data are likely public, the recipe is short and results are numeric, though some settings must be guessed.",
+ "source_card": "cards/2013PASJ...65L..14F/sonnet/card.md"
+}

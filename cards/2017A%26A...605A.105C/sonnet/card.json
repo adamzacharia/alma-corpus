@@ -1,0 +1,989 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017A&A...605A.105C",
+  "title": "AGN feedback on molecular gas reservoirs in quasars at z   2.4",
+  "year": 2017,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Carniani, S.",
+  "n_authors": 21,
+  "arxiv_id": "1706.08987",
+  "doi": "10.1051/0004-6361/201730672",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00965.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "The aim of the ALMA observations presented in this paper is to map the molecular gas in the host galaxies through the CO(3-2) emission"
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "LBQS0109+0213",
+     "coordinates": {
+      "value": "01:12:16.99 +02:29:47.7 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| LBQS0109 | 2.35 | 01:12:16.99 | +02:29:47.7 |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 2.35",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| LBQS0109 | 2.35 | 01:12:16.99 | +02:29:47.7 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "narrow [OIII] (Carniani 2015a)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| LBQS0109 | 2.35 | 01:12:16.99 | +02:29:47.7 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "2QZJ002830.4-281706",
+     "coordinates": {
+      "value": "00:28:30.42 -28:17:05.4 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 2QZJ0028 | 2.40 | 00:28:30.42 | -28:17:05.4 |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 2.40",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 2QZJ0028 | 2.40 | 00:28:30.42 | -28:17:05.4 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "narrow [OIII] (Carniani 2015a)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 2QZJ0028 | 2.40 | 00:28:30.42 | -28:17:05.4 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "[HB89] 0329-385",
+     "coordinates": {
+      "value": "03:31:06.41 -38:24:04.6 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HB8903 | 2.44 | 03:31:06.41 | -38:24:04.6 |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 2.44",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HB8903 | 2.44 | 03:31:06.41 | -38:24:04.6 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "narrow [OIII] (Carniani 2015a)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HB8903 | 2.44 | 03:31:06.41 | -38:24:04.6 |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is molecular gas depleted or absent in the regions of quasar host galaxies swept by fast ionised outflows, as expected if AGN feedback quenches star formation?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "compare the spatial distribution of the molecular gas with that of the fast-outflowing ionised gas"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 3 (~100 GHz, ~3 mm)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "were observed at the Band 3 frequencies ($\\sim100$ GHz, corresponding to $\\lambda\\sim3$ mm)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spws of ~1.875 GHz, 7.5 GHz total, 1.9 MHz channels (~5.7 km/s); one spw on CO(3-2) at 103.2, 101.6, 100.5 GHz",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "have a total bandwidth of 7.5 GHz divided into four spectral windows of $\\sim1.875$ GHz with a channel width of 1.9 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "3-2",
+     "rest_frequency": "345.8 GHz",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "CO(3-2) emission (rest frequency $\\nu_{\\rm rest}=345.8$ GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "semi-compact, max baseline ~1.5 km",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The antennas were distributed in a semi-compact configuration with a maximum baseline length of $\\sim 1.5$ km."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.6'' (beam ~0.6''x0.5'' in cubes)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "with a beam size of about 0.6$''$$\\times$0.5$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum 12 uJy/beam (first two), 18 uJy/beam (HB8903); cubes 240-280 uJy/beam per 30 km/s",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "1$\\sigma$ sensitivity of 240-280 $\\mu$Jy/beam per spectral bin of 30 km/s"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~40 min, 40-44 12-m antennas",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The on-source time was about 40 minutes with 40-44 12-m antennas for all sources."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "July 2015 to July 2016",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "between July 2015 and July 2016"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "SINFONI/VLT",
+     "provided": {
+      "value": "H and K band IFU data of [OIII] and Halpha outflow and star formation maps",
+      "evidence": [
+       {
+        "loc": "2 Sample selection",
+        "quote": "we have observed the three QSOs in the H (1.45-1.85 $\\mu$m) and K (1.95-2.45 $\\mu$m) bands"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SDSS and 2MASS",
+     "provided": {
+      "value": "astrometric reference positions",
+      "evidence": [
+       {
+        "loc": "3 Observations",
+        "quote": "consistent with the Sloan-Digital-Sky-Survey (SDSS) and Two-Micron-All-Sky-Survey (2MASS) positions"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "[OIII] outflow properties and Halpha SFRs and redshifts of targets",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "SFR estimated from ${\\rm H\\alpha}$ emission (cite: Carniani:2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Carniani:2015a; Carniani:2016)"
+    },
+    {
+     "what": {
+      "value": "Black hole masses",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Black hole masses from (cite: Shemmer:2004) and (cite: Williams:2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Shemmer:2004; Williams:2016)"
+    },
+    {
+     "what": {
+      "value": "8.4 GHz radio luminosity of LBQS0109",
+      "evidence": [
+       {
+        "loc": "4 LBQS0109",
+        "quote": "at 8.4 GHz (cite: Hooper:1995) measured with the Very Large Array"
+       }
+      ]
+     },
+     "citation": "(cite: Hooper:1995)"
+    },
+    {
+     "what": {
+      "value": "Gas-SFR relations for MS and starburst galaxies",
+      "evidence": [
+       {
+        "loc": "7 Lack of molecular gas",
+        "quote": "best-fit relations by (cite: Sargent:2014) between molecular gas mass and SFR"
+       }
+      ]
+     },
+     "citation": "(cite: Sargent:2014)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA calibration; pipeline vs manual not stated",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The data were calibrated using the CASA software version v4.5.2"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.5.2",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The data were calibrated using the CASA software version v4.5.2"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ceres and J0238+166",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "Ceres and J0238+166 were used as flux calibrators"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "All final images were reconstructed by using the CASA task clean."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "continuum natural; cubes briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "weighting = briggs and robust = 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.1''",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "a spatial scale per pixel of 0.1$''$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub UV-plane model on line-free channels",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "using the uvcontsub task"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Redshifts, outflow properties, spectro-astrometry and SFR from earlier SINFONI work",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "inferred by using the spectro-astrometric method described in (cite: Carniani:2015a)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Carniani:2015a)"
+    },
+    {
+     "what": {
+      "value": "Dust mass formula",
+      "evidence": [
+       {
+        "loc": "4 LBQS0109",
+        "quote": "Following (cite: Palau:2013), the equation can be simply rewritten as"
+       }
+      ]
+     },
+     "from_reference": "(cite: Palau:2013)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum and uvcontsub",
+    "Clean masks, thresholds and iterations",
+    "Flux scale uncertainty and self-calibration",
+    "Aperture definitions for line flux and spectra",
+    "Phase calibrator for 2QZJ0028 vs HB8903 assignment ambiguous",
+    "SINFONI data not described in public form",
+    "Conversion details from Jy km/s to L' and Mgas"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and cubes",
+    "method": {
+     "value": "clean on line-free channels (natural) and continuum-subtracted cubes (briggs 0.5, 30 km/s)",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "Continuum images at 3 mm were obtained using the line-free channels of the four spectral windows."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "astrometry checked against SDSS/2MASS within ~0.1''",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "within the astrometric uncertainty of about 0.1$''$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure continuum size and flux",
+    "method": {
+     "value": "2D elliptical Gaussian fit to visibilities",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "fitting a 2D elliptical Gaussian profile to the visibility data in CASA by using the uvmodelfit task"
+      }
+     ]
+    },
+    "software": [
+     "CASA uvmodelfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive dust masses",
+    "method": {
+     "value": "optically thin dust mass from 3 mm flux",
+     "evidence": [
+      {
+       "loc": "4 LBQS0109",
+       "quote": "we have adopted the optically thin approximation for our unobscured QSO"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Td=40-60 K, beta=2.0, kappa=0.45 (nu/250GHz)^beta cm2/g, continuum all dust",
+      "evidence": [
+       {
+        "loc": "4 LBQS0109",
+        "quote": "We adopt a $\\kappa_\\nu$ = ${\\rm 0.45\\times(\\nu/250 GHz)^\\beta \\ cm^2 g^{-1}}$ with a fixed emissivity index $\\beta=2.0$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure CO(3-2) line and gas mass",
+    "method": {
+     "value": "single Gaussian fit to spectrum, integrated flux in >2 sigma region, convert to L'CO and Mgas with r31 and alpha_CO; 3 sigma upper limits for non-detections assuming FWHM 400 km/s",
+     "evidence": [
+      {
+       "loc": "4 LBQS0109",
+       "quote": "derived from a single Gaussian fit, are $400\\pm60$ km/s"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "r31=1.0+-0.5; alpha_CO = 0.8 and 4",
+      "evidence": [
+       {
+        "loc": "4.1 Molecular and stellar mass estimates",
+        "quote": "r$_{31}$$=1.0\\pm0.5$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CO redshift and width compared with narrow [OIII] and Halpha",
+     "evidence": [
+      {
+       "loc": "4 LBQS0109",
+       "quote": "The agreement strongly indicates that most of the CO emission is tracing molecular gas in the host galaxy."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare CO with SINFONI outflow maps and test reality of 2QZJ0028 blueshifted feature",
+    "method": {
+     "value": "overlay maps; blind search of positive vs negative line peaks",
+     "evidence": [
+      {
+       "loc": "Reliability",
+       "quote": "We extracted 16 positive and 10 negative emission line with a level of confidence higher 5$\\sigma$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "positive vs negative peak counts",
+     "evidence": [
+      {
+       "loc": "Reliability of the CO(3-2) line detection in 2QZJ0028.",
+       "quote": "We extracted 16 positive and 10 negative emission line with a level of confidence higher 5$\\sigma$."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.2",
+    "used_for": {
+     "value": "calibration, clean, uvcontsub, uvmodelfit",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The data were calibrated using the CASA software version v4.5.2"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "LBQS0109 CO(3-2) integrated flux",
+    "value": "0.34",
+    "uncertainty": "0.03",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "S$_{\\rm CO(3-2)} \\Delta v$ \\[Jy km/s\\]$^{c}$ | $0.34\\pm0.03$"
+     }
+    ]
+   },
+   {
+    "quantity": "LBQS0109 CO(3-2) FWHM",
+    "value": "400",
+    "uncertainty": "60",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 LBQS0109",
+      "quote": "are $400\\pm60$ km/s"
+     }
+    ]
+   },
+   {
+    "quantity": "LBQS0109 z_CO(3-2)",
+    "value": "2.3558",
+    "uncertainty": "0.0005",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 LBQS0109",
+      "quote": "$z_{\\rm CO(3-2)} = 2.3558\\pm0.0005$"
+     }
+    ]
+   },
+   {
+    "quantity": "LBQS0109 Mgas (alpha_CO=4)",
+    "value": "4.0e10",
+    "uncertainty": "2.4e10",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "M$_{\\rm gas}$($\\alpha_{\\rm CO}$=4) \\[$10^{10}$ $\\mathrm{M}_{\\odot}$\\]$^{c,d}$ | $4.0\\pm2.4$"
+     }
+    ]
+   },
+   {
+    "quantity": "2QZJ0028 CO(3-2) flux upper limit (3 sigma)",
+    "value": "<0.09",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 2QZJ0028",
+      "quote": "3$\\sigma$ upper limit on the CO(3-2) integrated line flux of 0.09 Jy km/s"
+     }
+    ]
+   },
+   {
+    "quantity": "HB8903 3 mm continuum flux",
+    "value": "5.738",
+    "uncertainty": "0.018",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "6 HB8903",
+      "quote": "$5.738\\pm0.018$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "2QZJ0028 blueshifted CO flux",
+    "value": "0.12",
+    "uncertainty": "0.02",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$0.12\\pm0.02$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "LBQS0109 CO is faint or absent along the ionised outflow direction and resembles the narrow [OIII] star formation distribution.",
+    "evidence": [
+     {
+      "loc": "4.2 Morphology of the CO(3-2) emission",
+      "quote": "Both emission lines are faint or absent along the direction of the ionised outflow, while they are clearly visible in the other regions."
+     }
+    ]
+   },
+   {
+    "value": "Serendipitous sources suggest the QSOs lie in overdense regions.",
+    "evidence": [
+     {
+      "loc": "8 Overdensity",
+      "quote": "The detections of these seredentipitous sources in our ALMA observations suggest that the three QSOs are located in a overdensity."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Outflows remove molecular gas where they sweep the host",
+    "experiment": "Compare ALMA CO(3-2) maps with SINFONI outflow maps in LBQS0109",
+    "result": "CO faint or absent along outflow direction",
+    "finding": "Outflow is removing molecular gas and quenching SF in that region",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.2 Morphology of the CO(3-2) emission",
+      "quote": "These results support a scenario in which fast outflows are cleaning up the galaxy of its molecular gas"
+     }
+    ]
+   },
+   {
+    "hypothesis": "A molecular outflow is present in 2QZJ0028",
+    "experiment": "Search for CO offset from systemic velocity",
+    "result": "Tentative CO at about -2000 km/s, S/N=5.2, co-located with ionised outflow",
+    "finding": "Possible molecular outflow clump, needs confirmation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "Although we cannot completely rule out that this detection is spurious"
+     }
+    ]
+   },
+   {
+    "hypothesis": "QSO hosts have low gas content relative to MS galaxies",
+    "experiment": "Mgas versus SFR compared with Sargent 2014 relations",
+    "result": "All three below the MS relation extrapolation for alpha_CO=0.8",
+    "finding": "Low gas mass consistent with SMGs and QSOs; depletion times short",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "7 Lack of molecular gas",
+      "quote": "all three sources are placed below the relation extrapolated for star-forming galaxies"
+     }
+    ]
+   },
+   {
+    "hypothesis": "QSOs reside in overdensities",
+    "experiment": "Serendipitous continuum and line sources compared with number counts",
+    "result": "Six companions within ~160 kpc",
+    "finding": "QSOs likely in overdense systems",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Overdense systems",
+      "quote": "The number of serendipitous sources detect in our ALMA maps is larger than that expected by simulation and millimetre surveys"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Millimetre CO avoids dust extinction affecting optical SF tracers.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "observations at (sub-)millimetre wavelengths are crucial to definitely establish whether star formation is inhibited by fast outflows"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Blueshifted CO in 2QZJ0028 could be a merging companion, but SINFONI shows no merger signature.",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "An alternative interpretation to the outflow scenario could be that the detected blue-shifted CO emission is associated with a merging companion galaxy."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Low S/N prevents pixel-by-pixel kinematics; deeper data needed.",
+     "evidence": [
+      {
+       "loc": "4 LBQS0109",
+       "quote": "we cannot perform a detailed pixel-by-pixel kinematic analysis because of the low S/N of the data"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "alpha_CO and r31 are unconstrained, so gas masses uncertain by large factors",
+    "2QZJ0028 detection is marginal (5 sigma, few peaks) and at risk of being noise",
+    "Single-object CO morphology with a beam-elongated structure may be affected by beam shape",
+    "Companion redshifts unconfirmed, overdensity inferred assuming CO(3-2)"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data retrievable from ALMA archive",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "which can be retrieved from the ALMA data archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Line-free channel selection and masks",
+    "SINFONI datacubes and earlier outflow maps",
+    "Aperture definitions for line fluxes"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for 3 EBs-sets; cubes small",
+   "score_inferred": 3,
+   "score_reason": "Public data and standard CASA steps, but key imaging settings and apertures unstated and SINFONI comparison needs external data.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key imaging and extraction details missing and the main claims rely on SINFONI comparison."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Palau:2013)",
+     "why": "dust mass formula"
+    },
+    {
+     "citation": "(cite: Carniani:2015a)",
+     "why": "spectro-astrometric outflow method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Carniani:2016)",
+     "why": "Halpha/[OIII] star formation and SINFONI data"
+    },
+    {
+     "citation": "(cite: Cano-Diaz:2012)",
+     "why": "SINFONI outflow quenching result"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "SINFONI QSO sample of Shemmer/Netzer 2004"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-277b9317b8503efa43ce1197952f6545",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:10",
+  "usage": {
+   "input_tokens": 30035,
+   "output_tokens": 7481,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.068046,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2013.1.00965.S"
+  ],
+  "codes_printed_but_missing": [
+   "2013.0.00965.S"
+  ],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 49,
+   "rate": 0.62
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:38:12",
+  "custom_id": "repair-sonnet-b07e949e3352f1c48174f0765601c44f",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "We extracted 16 positive and 10 negative emission line with a level of confidence higher 5$\\sigma$."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00965.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2013.0.00965.S"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

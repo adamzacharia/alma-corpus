@@ -1,0 +1,383 @@
+{
+ "bibcode": "2025ApJ...985..148L",
+ "title": "L1448 IRS3B: Dust Polarization Aligned with Spiral Features, Tracing Gas Flows",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adcb9f",
+ "arxiv_id": "2503.07787",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "Which dust polarization mechanisms (magnetic alignment, self-scattering, mechanical alignment) operate in the envelope, circum-multiple disk, spirals and compact sources of the protostellar multiple L1448 IRS3B",
+ "alma_project_codes": [
+  "2021.1.00276.S"
+ ],
+ "data": {
+  "bands": "Band 4 and Band 7, full polarization continuum",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to L1448 IRS3 of 288 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The L1448 IRS3 system is at a distance of 288 pc based on recent constraints (cite: Ortiz2018; Zucker2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Ortiz2018; Zucker2019)"
+  },
+  {
+   "what": {
+    "value": "C17O (3-2) velocity field at 0.2 arcsec: Keplerian motion near source a, no clear perturbation by spirals",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "reveals Keplerian motion around a location near source $a$ without any clear perturbations caused by the spiral structures"
+     }
+    ]
+   },
+   "citation": "(cite: Nick2021)"
+  },
+  {
+   "what": {
+    "value": "Protostellar mass of source c, upper limit 0.2 Msun (sources a+b ~1.2 Msun)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "with an upper limit on the protostellar mass of 0.2 M$_\\odot$"
+     }
+    ]
+   },
+   "citation": "(cite: Nick2021)"
+  },
+  {
+   "what": {
+    "value": "Source c Gaussian fit in Band 6: 0.2 x 0.175 arcsec, PA 25 deg",
+    "evidence": [
+     {
+      "loc": "Polarization from Self-Scattering",
+      "quote": "find an extended source of 0.2$''$ $\\times$ 0.175$''$ with a PA of 25$^\\circ$"
+     }
+    ]
+   },
+   "citation": "(cite: Reynolds2023)"
+  },
+  {
+   "what": {
+    "value": "Dust ring around source d with estimated PA of 45 deg",
+    "evidence": [
+     {
+      "loc": "Polarization from Self-Scattering",
+      "quote": "they note a dust ring around source $d$ with an estimated PA of 45$^\\circ$ PA"
+     }
+    ]
+   },
+   "citation": "(cite: Reynolds2023)"
+  },
+  {
+   "what": {
+    "value": "Earlier SMA 870 um polarization: ~3% at angle -67 deg (east of north)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "a dust polarization fraction of $\\sim$3% with a polarization angle of -67$^\\circ$ (east of north) has been observed"
+     }
+    ]
+   },
+   "citation": "(cite: Galametz2018)"
+  },
+  {
+   "what": {
+    "value": "Combined bolometric temperature of IRS3A and B of 25.6 K (eHOPS)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "gives a combined bolometeric temperature for L1448 IRS3A and B of 25.6 K"
+     }
+    ]
+   },
+   "citation": "(cite: Pokhrel2023)"
+  },
+  {
+   "what": {
+    "value": "Three compact sources a, b, c in IRS3B",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We detect at both wavelengths the arcs or spiral structures and the three compact sources defined by (cite: John2016)"
+     }
+    ]
+   },
+   "citation": "(cite: John2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image Stokes I, Q, U",
+   "method": "Phase-only then amplitude+phase self-calibration with auto_selfcal on NRAO-calibrated data, then tclean Stokes I, Q, U maps with Briggs robust 0.5",
+   "software": [
+    "CASA",
+    "tclean",
+    "auto_selfcal"
+   ],
+   "key_parameters": [
+    "Band 4 phase-only intervals inf-EB, inf, 26.21s, 8.06s, 4.03s, int; amp+phase 300s",
+    "Band 7 phase-only inf-EB, inf, 48.38s; amp+phase inf"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive debiased polarized intensity, angle and noise",
+   "method": "P_m = sqrt(Q^2+U^2); sigma_P from sigma_Q and sigma_U; debias with Rice-type PDF at S/N<3 and with P = sqrt(Q^2+U^2-sigma_P^2) at higher S/N; chi = 0.5 arctan(U/Q)",
+   "software": [],
+   "key_parameters": [
+    "Low S/N threshold 3 sigma_P for PDF debiasing"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make brightness temperature maps and constrain spectral index/optical depth",
+   "method": "Brightness temperature maps without Rayleigh-Jeans approximation; spectral index lower limits tested with mtmfs and a restricted uv range of 50-1000 klambda with uv taper to match beam areas",
+   "software": [
+    "tclean"
+   ],
+   "key_parameters": [
+    "uv range 50-1000 klambda with taper (beam areas within a few percent)"
+   ],
+   "assumptions": [
+    "Brightness temperature is the temperature required for a blackbody to match the observed intensity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Identify polarization regions by morphology and fraction",
+   "method": "Regions classed as magnetic, scattering or mechanical using polarization fraction, location and angle relative to disk minor axis and spirals",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Model polarization angles from the continuum spiral spine and compare with observations",
+   "method": "Mask spirals in Stokes I, fit cubic splines (UnivariateSpline, smoothing factor 5, 4 segments in Band 7), take spline slope per pixel as the model vector, compare with observed angles",
+   "software": [
+    "SciPy"
+   ],
+   "key_parameters": [
+    "smoothing factor = 5"
+   ],
+   "assumptions": [
+    "Spiral arms create a drift velocity of dust relative to gas, traced by the continuum"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Measure mean fractional polarization along spirals and in inner regions",
+   "method": "Mean P/I per beam along the spiral feature and in the high-resolution inner region, per band",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean polarization fraction in inner regions, Band 4",
+   "value": "1.2",
+   "uncertainty": "0.6",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Magnetic Field Alignment",
+     "quote": "the mean polarization fraction drops to 1.2$\\pm$0.6% and 2.4$\\pm$1.1% in Band 4 and Band 7, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean polarization fraction in inner regions, Band 7",
+   "value": "2.4",
+   "uncertainty": "1.1",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Magnetic Field Alignment",
+     "quote": "the mean polarization fraction drops to 1.2$\\pm$0.6% and 2.4$\\pm$1.1% in Band 4 and Band 7, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fractional polarization along spiral arms, Band 4",
+   "value": "1.5",
+   "uncertainty": "0.7",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Simple Model of Polarization Morphology",
+     "quote": "1.5$\\pm$0.7% and 2.5$\\pm$1.3%, for Band 4 and Band 7, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fractional polarization along spiral arms, Band 7",
+   "value": "2.5",
+   "uncertainty": "1.3",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Simple Model of Polarization Morphology",
+     "quote": "1.5$\\pm$0.7% and 2.5$\\pm$1.3%, for Band 4 and Band 7, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Standard deviation of model-minus-observed polarization angle, Band 7",
+   "value": "18.5",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Simple Model of Polarization Morphology",
+     "quote": "the standard deviation of the distribution is 18.5$^\\circ$ with the distribution centered around 0$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner envelope polarization fraction (high-resolution maps)",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Magnetic Field Alignment",
+     "quote": "at 8% in Band 4 and Band 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower-limit spectral index, bright compact sources",
+   "value": "2",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The bright compact emission had lower-limit spectral indices of $\\alpha$ = 2 with the spiral arms being 1.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower-limit spectral index, spiral arms",
+   "value": "1.5",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The bright compact emission had lower-limit spectral indices of $\\alpha$ = 2 with the spiral arms being 1.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 to Band 4 brightness temperature ratio",
+   "value": "1.25 (central region), 1.5 (compact sources and outer spiral edge)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "typically by factors of 1.25 for the central region and 1.5 near the compact sources"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Band 7 polarization angle around source c",
+   "value": "126",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Polarization from Self-Scattering",
+     "quote": "has an angle of 126$^\\circ$, which is comparable to being along the minor axis"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Band 7 polarization angle around source a",
+   "value": "220",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Polarization from Self-Scattering",
+     "quote": "has an angle of 220$^\\circ$, which is comparable to being along the minor axis of the ring emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation of Band 7 polarization holes around source c",
+   "value": "~20",
+   "uncertainty": "not stated",
+   "units": "deg east of north",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Mechanical Alignment",
+     "quote": "appear rotated by $\\sim 20^{\\circ}$ east-of-north"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux of L1448 IRS3-ALMA in Band 4 (primary beam corrected)",
+   "value": "221",
+   "uncertainty": "25",
+   "units": "uJy/beam",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Other sources in the Field",
+     "quote": "the total flux is 221 $\\pm$25 $\\mu$Jy/beam (primary beam corrected)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Observation table (arrays, baselines, dates, time on source, max recoverable scale) is referenced but its contents are not in the text",
+  "Spectral window setup and bandwidth for Band 4 and Band 7",
+  "Flux, bandpass, gain and polarization calibrators and calibration pipeline/manual details",
+  "tclean image size, cell size, deconvolver, niter, threshold, masks and uv range/taper for the main maps",
+  "Method used to smooth Band 4/7 to a common beam",
+  "Exact auto_selfcal version and settings beyond the listed solution intervals",
+  "Mask and thresholds used to define the spiral spine for the spline fit, and the 4 segment definitions",
+  "Definition (polygons) of the tan and cyan polarization regions in Figure 5",
+  "How mean fractional polarization is computed (S/N cut, per-beam sampling, uncertainty meaning)",
+  "Brightness temperature formula inputs and beam handling",
+  "Primary-beam correction details"
+ ],
+ "missing_for_reproduction": [
+  "Observation table contents not in the text",
+  "tclean imaging parameters beyond robust",
+  "Region polygons and spline mask definitions"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public ALMA data, NRAO calibration, released scripts, selfcal script and final maps on Illinois Data Bank, and numeric summary statistics; some imaging parameters are unstated in the text.",
+ "rediscovery_reason": "Data are public, scripts are released and main results include numeric polarization fractions and angle scatter.",
+ "source_card": "cards/2025ApJ...985..148L/sonnet/card.md"
+}

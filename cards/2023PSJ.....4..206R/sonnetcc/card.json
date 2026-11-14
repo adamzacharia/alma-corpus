@@ -1,0 +1,1988 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023PSJ.....4..206R",
+  "title": "ALMA Observations of the DART Impact: Characterizing the Ejecta at Submillimeter Wavelengths",
+  "year": 2023,
+  "journal": "The Planetary Science Journal",
+  "first_author": "Roth, Nathan X.",
+  "n_authors": 15,
+  "arxiv_id": "2306.05908",
+  "doi": "10.3847/PSJ/acfcaa",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.A.00013.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report observations of the Didymos-Dimorphos binary asteroid system using the Atacama Large Millimeter/Submillimeter Array (ALMA) and the Atacama Compact Array (ACA) in support of the Double Asteroid Redirection Test (DART) mission."
+   }
+  ],
+  "science": {
+   "fields": [
+    "solar_system"
+   ],
+   "targets": [
+    {
+     "name": "Didymos-Dimorphos binary asteroid system",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "geocentric distance 0.075 au at impact (heliocentric 1.045 au post-impact)",
+      "evidence": [
+       {
+        "loc": "Pre-Impact 12m Observations",
+        "quote": "We tracked the asteroids’ position using JPL Horizons ephemerides (#187)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The small geocentric distance of the Didymos-Dimorphos system ($\\Delta_{min}$ = 0.075 au) at impact"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated beyond JPL Horizons ephemeris tracking",
+      "evidence": [
+       {
+        "loc": "Pre-Impact 12m Observations",
+        "quote": "We tracked the asteroids’ position using JPL Horizons ephemerides (#187)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The small geocentric distance of the Didymos-Dimorphos system ($\\Delta_{min}$ = 0.075 au) at impact"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Measure Didymos-Dimorphos' millimeter spectral emissivity pre-impact, then isolate the DART impact ejecta post-impact to derive dust mass and gas-phase upper limits",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We conducted pre-impact observations in order to characterize Didymos-Dimorphos’ spectral emissivity at millimeter wavelengths for the first time, and post-impact observations to measure the gas and dust produced in the ejecta plume."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.A.00013.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "It makes use of the following ALMA data: ADS/JAO.ALMA #2021.A.00013.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (343.5 GHz pre-impact; 344.25-347.45 GHz post-impact)",
+    "evidence": [
+     {
+      "loc": "Pre-Impact 12m Observations",
+      "quote": "using the Band 7 receiver in Time Division Mode (TDM) for pre-impact continuum observations centered at 343.5 GHz"
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "covering frequencies from 344.25 GHz to 347.45 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Pre: TDM, 31.25 MHz channels, 27 km/s resolution. Post: FDM, six non-contiguous spws (117-2000 MHz wide), 3 GHz total; 15.625 MHz continuum channels, 61-122 kHz line channels (0.05-0.11 km/s)",
+    "evidence": [
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "in six non-contiguous spectral windows ranging from 117 MHz to 2000 MHz wide and a total bandwidth of 3 GHz in two polarizations"
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "The channel spacing was 15.625 MHz for continuum windows and 61 kHz – 122 kHz for spectral line windows"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "SiO",
+     "transition": "J=8-7",
+     "rest_frequency": "347.331 GHz",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "we targeted the SiO (*J*=8–7), SiS (*J*=19–18), and SO ($J_K$=$8_8$–$7_7$) transitions"
+      },
+      {
+       "loc": "Table 4",
+       "quote": "SiO (*J*=8–7) | 347.331"
+      }
+     ]
+    },
+    {
+     "species": "SiS",
+     "transition": "J=19-18",
+     "rest_frequency": "344.779 GHz",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "we targeted the SiO (*J*=8–7), SiS (*J*=19–18), and SO ($J_K$=$8_8$–$7_7$) transitions"
+      },
+      {
+       "loc": "Table 4",
+       "quote": "SiS (*J*=19–18) | 344.779"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "J_K=8_8-7_7",
+     "rest_frequency": "344.310 GHz",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "we targeted the SiO (*J*=8–7), SiS (*J*=19–18), and SO ($J_K$=$8_8$–$7_7$) transitions"
+      },
+      {
+       "loc": "Table 4",
+       "quote": "SO ($J_K$=$8_8$–$7_7$) | 344.310"
+      }
+     ]
+    },
+    {
+     "species": "AlO",
+     "transition": "J_F=9_12-8_11",
+     "rest_frequency": "344.476 GHz",
+     "evidence": [
+      {
+       "loc": "Table 4",
+       "quote": "AlO ($J_F$=$9_{12}$–$8_{11}$) | 344.476"
+      },
+      {
+       "loc": "12 m Array Post-Impact Spectral Line Observations",
+       "quote": "Our 3$\\sigma$ upper limits for the integrated intensity of SiO, SiS, SO, AlO, KCl, and NaCN"
+      }
+     ]
+    },
+    {
+     "species": "KCl",
+     "transition": "J=45-44",
+     "rest_frequency": "344.820 GHz",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "KCl ($J$=45–44) and NaCN ($J_{Ka,Kc}$=$22_{3,20}$–$21_{3,19}$)"
+      },
+      {
+       "loc": "Table 4",
+       "quote": "KCl ($J$=45–44) | 344.820"
+      }
+     ]
+    },
+    {
+     "species": "NaCN",
+     "transition": "J_Ka,Kc=22_3,20-21_3,19",
+     "rest_frequency": "344.269 GHz",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "KCl ($J$=45–44) and NaCN ($J_{Ka,Kc}$=$22_{3,20}$–$21_{3,19}$)"
+      },
+      {
+       "loc": "Table 4",
+       "quote": "NaCN ($J_{Ka,Kc}$=$22_{3,20}$–$21_{3,19}$) | 344.269"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "8 GHz pre-impact (two polarizations); 3 GHz post-impact",
+    "evidence": [
+     {
+      "loc": "Pre-Impact 12m Observations",
+      "quote": "with a total bandwidth of 8 GHz in two polarizations"
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "a total bandwidth of 3 GHz in two polarizations"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ALMA 12 m array pre-impact; simultaneous 12 m array and ACA post-impact",
+    "evidence": [
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "four consecutive (46 minutes each), simultaneous executions of the ALMA 12 m array and the Atacama Compact Array (ACA)"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C3 (post-impact 12 m array)",
+    "evidence": [
+     {
+      "loc": "Analysis of the Ejecta",
+      "quote": "with the 12 m array at 345 GHz in configuration C3"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "12 m pre-impact 15-782 m; 12 m post-impact 15-500 m; ACA 9-49 m",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "15–782"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "15–500"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "9–49"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Pre-impact 0.38''-0.56''; post-impact 12 m 0.48''-1.11''; ACA 2.79''-6.95''",
+    "evidence": [
+     {
+      "loc": "Pre-Impact 12m Observations",
+      "quote": "was 0.38$''$ – 0.56$''$"
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "The spatial scale was 0.48$''$ – 1.11$''$ for the 12 m array"
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "$2.79\\ensuremath{''}$ – $6.95\\ensuremath{''}$ for the ACA"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "Pre-impact 3.3'' (236 km); post-impact 12 m 4.7'' (254 km; text gives 4.68''); ACA 19.3'' (1050 km)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$\\theta$~MRS~ = $3.3\\ensuremath{''}$ (236 km)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "$\\theta$~MRS~ = $19.3\\ensuremath{''}$ (1050 km)"
+     },
+     {
+      "loc": "Analysis of the Ejecta",
+      "quote": "the MRS is 4.68$\\ensuremath{''}$, corresponding to 254 km"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "Pre-impact 12 m: 5 min; post-impact 12 m: 4 x 46 min; ACA: 4 x 45.7 min (Table 1 T_int)",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "is the total on-source integration time."
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "four consecutive (46 minutes each), simultaneous executions"
+     },
+     {
+      "loc": "12 m Array Pre-Impact Observations",
+      "quote": "in a short pre-impact execution of the 12 m array"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Pre-impact UT 2022 September 15; post-impact UT 2022 September 27 (impact UT 23:14 2022 September 26)",
+    "evidence": [
+     {
+      "loc": "Pre-Impact 12m Observations",
+      "quote": "On UT 2022 September 15 we targeted Didymos-Dimorphos with one execution of the ALMA 12 m array"
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "On UT 2022 September 27 we targeted Didymos-Dimorphos in four consecutive (46 minutes each)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Director's Discretionary Time",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "using the Atacama Large Millimeter/Submillimeter Array (ALMA) with Director’s Discretionary Time"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Hubble Space Telescope",
+     "provided": {
+      "value": "Ejecta particle size distribution used for dust mass modeling",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Based on the ejecta particle size distribution measured by the Hubble Space Telescope (cite: Li2023)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "JWST",
+     "provided": {
+      "value": "Beaming parameter used in the NEATM thermal model",
+      "evidence": [
+       {
+        "loc": "Modeling and Interpretation",
+        "quote": "a beaming parameter of 1.93 based on JWST observations of Didymos-Dimorphos taken at a similar solar phase angle to the ALMA observations (cite: Rivkin2023)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "DART spacecraft (DRACO)",
+     "provided": {
+      "value": "Asteroid sizes (volume equivalent sphere diameters)",
+      "evidence": [
+       {
+        "loc": "Observing Geometry",
+        "quote": "calculated volume equivalent sphere diameters of 761 m and 151 m for Didymos and Dimorphos, respectively, based on imaging by the DRACO instrument on DART"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Volume equivalent sphere diameters: Didymos 761 m, Dimorphos 151 m",
+      "evidence": [
+       {
+        "loc": "Observing Geometry",
+        "quote": "calculated volume equivalent sphere diameters of 761 m and 151 m for Didymos and Dimorphos, respectively"
+       }
+      ]
+     },
+     "citation": "(cite: Daly2023)"
+    },
+    {
+     "what": {
+      "value": "Dimorphos total mass 4.3e9 kg",
+      "evidence": [
+       {
+        "loc": "Analysis of the Ejecta",
+        "quote": "Dimorphos’ total mass of $4.3\\times10^9$ kg (cite: Daly2023)"
+       }
+      ]
+     },
+     "citation": "(cite: Daly2023)"
+    },
+    {
+     "what": {
+      "value": "Piece-wise ejecta particle size distribution a^-2.7 (0.5 um to 2 mm), a^-3.7 (to 2.5 cm)",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "piece-wise differential particle size distribution of $a^{-2.7}$ for particles of radius 0.5 $\\mu$m to 2 mm and of $a^{-3.7}$ for larger particles up to a radius of 2.5 cm as derived by (cite: Li2023)"
+       }
+      ]
+     },
+     "citation": "(cite: Li2023)"
+    },
+    {
+     "what": {
+      "value": "Optical constants of low-Fe crystalline olivine",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "Optical constants from (cite: Fabian2001)"
+       }
+      ]
+     },
+     "citation": "(cite: Fabian2001)"
+    },
+    {
+     "what": {
+      "value": "Optical constants of amorphous olivine and amorphous pyroxene",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "Optical constants from (cite: Jager2003)"
+       }
+      ]
+     },
+     "citation": "(cite: Jager2003)"
+    },
+    {
+     "what": {
+      "value": "Bond albedo 0.067 (geometric albedo 0.16, phase integral 0.42)",
+      "evidence": [
+       {
+        "loc": "Modeling and Interpretation",
+        "quote": "We assumed a Bond albedo of 0.067 based on Didymos-Dimorphos’ geometric albedo of 0.16 and a phase integral of 0.42 derived from the HG phase function using the DART Design Reference Asteroid parameters (cite: Rivkin2021; Bowell1989)"
+       }
+      ]
+     },
+     "citation": "(cite: Rivkin2021; Bowell1989)"
+    },
+    {
+     "what": {
+      "value": "Beaming parameter 1.93",
+      "evidence": [
+       {
+        "loc": "Modeling and Interpretation",
+        "quote": "a beaming parameter of 1.93 based on JWST observations of Didymos-Dimorphos taken at a similar solar phase angle to the ALMA observations (cite: Rivkin2023)"
+       }
+      ]
+     },
+     "citation": "(cite: Rivkin2023)"
+    },
+    {
+     "what": {
+      "value": "Average porosity of ordinary chondrites 8.2%",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "We assumed an 8.2% average porosity of ordinary chondrites (cite: Tsuchiyama2011)"
+       }
+      ]
+     },
+     "citation": "(cite: Tsuchiyama2011)"
+    },
+    {
+     "what": {
+      "value": "Grain density 3500 kg m^-3",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "We assumed $\\rho = 3500$ kg m$^{-3}$ as measured in ordinary chondrites and the Itokawa returned samples (cite: Tsuchiyama2011)"
+       }
+      ]
+     },
+     "citation": "(cite: Tsuchiyama2011)"
+    },
+    {
+     "what": {
+      "value": "Secondary eclipse brightness decrease of 0.049 mag",
+      "evidence": [
+       {
+        "loc": "Didymos-Dimorphos' Spectral Emissivity",
+        "quote": "developed a photometric model for predicting mutual events for Didymos-Dimorphos, with secondary eclipses resulting in a 0.049 mag decrease in brightness"
+       }
+      ]
+     },
+     "citation": "(cite: Scheirich2022)"
+    },
+    {
+     "what": {
+      "value": "Gas rotational temperature 1000 K from pre-impact ejecta modeling",
+      "evidence": [
+       {
+        "loc": "Upper Limits on Gas-Phase Ejecta",
+        "quote": "We assumed a gas rotational temperature $T_{rot}$ = 1000 K based on pre-impact modeling of temperatures achieved in the ejecta (cite: Raducan2022b)"
+       }
+      ]
+     },
+     "citation": "(cite: Raducan2022b)"
+    },
+    {
+     "what": {
+      "value": "Line frequencies, statistical weights, upper state energies, Einstein-A coefficients (LAMDA for SiO, SiS, SO; CDMS for the rest)",
+      "evidence": [
+       {
+        "loc": "Table 4 notes",
+        "quote": "Frequencies, statistical weights, upper state energies, and Einstein-A coefficients retrieved from the LAMDA database (cite: Schoier2005) for SiO, SiS, and SO and from the CDMS database (cite: Endres2016) for all other species."
+       }
+      ]
+     },
+     "citation": "(cite: Schoier2005; Endres2016)"
+    },
+    {
+     "what": {
+      "value": "Rotational partition functions at 1000 K",
+      "evidence": [
+       {
+        "loc": "Upper Limits on Gas-Phase Ejecta",
+        "quote": "reported in CDMS for SiO, SiS, AlO, and KCl (cite: Endres2016), in HITRAN for SO (cite: Gamache2021), and in (cite: Carlson1997) for NaCN"
+       }
+      ]
+     },
+     "citation": "(cite: Endres2016; Gamache2021; Carlson1997)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard routines in CASA for flagging and calibration; automated ALMA pipeline flux scale checked and corrected for one execution",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "The data were flagged and calibrated using standard routines in Common Astronomy Software Applications (CASA) package version 6.5.2 (cite: CASA2022)."
+      },
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "The automated ALMA pipeline calibration scheme extrapolated along the upward trend to assign a flux scale of 1.22 Jy to J0238+1636"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.5.2",
+     "evidence": [
+      {
+       "loc": "Self Calibration",
+       "quote": "Self-calibration was performed using CASA 6.5.2 and an automated self-calibration procedure"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Pre-impact J2258-2758; post-impact 12 m: J0006-0623 (Exec 1,2), J0238+1636 (Exec 3), J0519-4546 (Exec 4); ACA: J2253+1608 (Exec 1,2), J2258-2758 (Exec 3), J0423-0120 (Exec 4)",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "J2258-2758 was used to calibrate the flux scale"
+      },
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "J0006-0623 for 12 m Executions 1 and 2, J0238+1636 for 12 m Execution 3, J0519-4546 for 12 m Execution 4"
+      },
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "J2253+1608 for ACA Executions 1 and 2, J2258-2758 for ACA Execution 3, and J0423-0120 for ACA Execution 4"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% absolute flux uncertainty adopted; J0238+1636 set to 1.11 Jy (not pipeline 1.22 Jy) for 12 m Execution 3",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "We instead applied the value of 1.11 Jy (measured for J0238+1636 on 2022 September 23) to our 12 m Execution 3 observations"
+      },
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "we conservatively adopted the 10% uncertainty in absolute flux recommended by the ALMA observatory for our measurements"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Automated phase-only self-cal (inf_EB, then per-scan 'inf', shorter intervals where possible) then amplitude (inf_ap) where phase succeeded; combine='scan,spw' fallback for all data; applycal applymode='calonly'",
+     "evidence": [
+      {
+       "loc": "Self Calibration",
+       "quote": "The first solution interval performed was a single solution over an entire execution block for each polarization independently, using gaincal parameters gaintype=‘G’ and combine=‘scan’, and solint=‘inf’"
+      },
+      {
+       "loc": "Self Calibration",
+       "quote": "gaincal was executed with the parameters combine=‘spw’, gaintype=‘T’, solmode=‘ap’, solint=‘inf’, and solnorm=True"
+      },
+      {
+       "loc": "Self Calibration",
+       "quote": "applymode=‘calonly’"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean (auto-masking heuristics built into tclean named in the self-calibration appendix)",
+     "evidence": [
+      {
+       "loc": "Self Calibration",
+       "quote": "The automated self-calibration procedure utilizes best practices (cite: Brogan2018) and the auto-masking heuristics built into tclean (cite: Kepley2020)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "MTMFS for continuum; Högbom for spectral-line cubes",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "we generated the final images using the multi-term multi-frequency synthesis (MTMFS) algorithm with Briggs visibility weighting"
+      },
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "imaged before any self-calibration was applied using the Högbom algorithm with natural weighting and auto-masking"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5 (continuum); natural weighting (spectral-line cubes)",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "Briggs visibility weighting (with a robust value of 0.5) was chosen to balance angular resolution and sensitivity to continuum emission."
+      },
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "Natural weighting was chosen to maximize sensitivity to potential faint, extended spectral line emission."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Auto-masking with the standard pipeline threshold parameters for compact 12 m array or ACA (continuum and line)",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "auto-masking using the standard pipeline threshold parameters specified for continuum measurements with a compact 12 m array (cite: Kepley2020)"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Applied after imaging",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "auto-masking using the standard pipeline threshold parameters specified for spectral line measurements with a compact 12 m array or the ACA (cite: Kepley2020), followed by primary beam correction."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "12 m and ACA imaged separately (no combination stated)",
+     "evidence": [
+      {
+       "loc": "12 m Array and ACA Post-Impact Continuum Observations",
+       "quote": "Figures [2](#fig:post-impact1) and [3](#fig:post-impact2) show our post-impact continuum maps for the 12 m array and the ACA."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Table 1 synthesized beams: pre-impact 0.56x0.38''; post-impact 12 m 1.11x0.48'' to 0.63x0.50''; ACA 2.95x6.95'' to 2.71x4.39''",
+     "evidence": [
+      {
+       "loc": "Table 1 notes",
+       "quote": "is the angular resolution (synthesized beam) at $\\nu$ given in arcseconds"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Post-self-cal image RMS (mJy/beam): pre-impact 12 m 0.061; post-impact 12 m 0.067, 0.049, 0.048, 0.040; ACA 0.706, 0.447, 0.379, 0.424",
+     "evidence": [
+      {
+       "loc": "Self Calibration Summary Table",
+       "quote": "Image RMS after self-calibration was applied."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Auto-masking and threshold parameters for imaging follow the ALMA imaging pipeline standard",
+      "evidence": [
+       {
+        "loc": "Pre-Impact 12m Observations",
+        "quote": "auto-masking using the standard pipeline threshold parameters specified for continuum measurements with a compact 12 m array (cite: Kepley2020)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Kepley2020)"
+    },
+    {
+     "what": {
+      "value": "Post-impact tracking and calibration (including continuum self-calibration) follow the pre-impact procedure",
+      "evidence": [
+       {
+        "loc": "Post Impact 12m and ACA Observations",
+        "quote": "Tracking and calibration were performed as in our pre-impact epoch, including the application of self-calibration to continuum measurements."
+       }
+      ]
+     },
+     "from_reference": "pre-impact epoch, this paper"
+    },
+    {
+     "what": {
+      "value": "Self-calibration follows best practices and tclean auto-masking heuristics",
+      "evidence": [
+       {
+        "loc": "Self Calibration",
+        "quote": "The automated self-calibration procedure utilizes best practices (cite: Brogan2018) and the auto-masking heuristics built into tclean (cite: Kepley2020)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Brogan2018); (cite: Kepley2020)"
+    },
+    {
+     "what": {
+      "value": "Dust mass calculation method",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "Dust masses were calculated for each execution following the methods of (cite: Jewitt1990) and (cite: Boissier2012)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Jewitt1990); (cite: Boissier2012)"
+    },
+    {
+     "what": {
+      "value": "Thermal emission model (NEATM)",
+      "evidence": [
+       {
+        "loc": "Didymos-Dimorphos' Spectral Emissivity",
+        "quote": "The Near Earth Asteroid Thermal model (cite: Harris1998; Delbo2002) was used to analyze thermal emission from the asteroids."
+       }
+      ]
+     },
+     "from_reference": "(cite: Harris1998; Delbo2002)"
+    },
+    {
+     "what": {
+      "value": "Column density relation to integrated intensity",
+      "evidence": [
+       {
+        "loc": "Upper Limits on Gas-Phase Ejecta",
+        "quote": "can be related to the integrated intensity as (cite: Bockelee1994):"
+       }
+      ]
+     },
+     "from_reference": "(cite: Bockelee1994)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image cell size and image size for continuum and line imaging",
+    "tclean niter, thresholds and any mask edits beyond the 'standard pipeline' auto-mask parameters",
+    "Which spectral windows/channels were used for the continuum and whether any continuum subtraction was applied to line cubes",
+    "Line-cube channel width and velocity grid used for the 3 sigma upper limits, and how the noise was measured",
+    "Exact auto_selfcal version/commit and the per-execution solution intervals beyond Table of best solutions",
+    "Pipeline (CASA pipeline) version and the flux scales assigned to each calibrator in each execution",
+    "Aperture center and how the flux in 50 km / 200 km apertures was summed (e.g., beam-area conversion, background handling)",
+    "How the weighted average and its uncertainty were computed",
+    "Infrared emissivity epsilon value used in the NEATM Tss equation and how Didymos and Dimorphos contributions were split",
+    "Mie calculation settings (size grid, wavelength) and Maxwell-Garnett implementation details",
+    "Method for the 10% systematic term combination with image RMS in quadrature or linear sum"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and self-calibrate the visibilities",
+    "method": {
+     "value": "Standard CASA calibration; automated phase (and where possible amplitude) self-calibration; flux scale of J0238+1636 corrected for 12 m Execution 3",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "The data were flagged and calibrated using standard routines in Common Astronomy Software Applications (CASA) package version 6.5.2 (cite: CASA2022)."
+      }
+     ]
+    },
+    "software": [
+     "CASA 6.5.2",
+     "auto_selfcal",
+     "gaincal",
+     "applycal"
+    ],
+    "key_parameters": [
+     {
+      "value": "gaincal combine='scan,spw' fallback used for all observations",
+      "evidence": [
+       {
+        "loc": "Self Calibration",
+        "quote": "it fell back and used combine=‘scan,spw’, which was the case for all the observations presented here"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "10% absolute flux uncertainty",
+      "evidence": [
+       {
+        "loc": "Post Impact 12m and ACA Observations",
+        "quote": "we conservatively adopted the 10% uncertainty in absolute flux recommended by the ALMA observatory for our measurements"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Success of each self-cal solution interval judged by increased image S/N",
+     "evidence": [
+      {
+       "loc": "Self Calibration",
+       "quote": "This first solution interval was successful for all data presented here as evaluated by an increased S/N in the resulting images following self-calibration."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image continuum and spectral-line data",
+    "method": {
+     "value": "MTMFS continuum imaging with Briggs weighting; Högbom natural-weighted line cubes; auto-masking; primary beam correction; channel-averaged continuum MS to 250 MHz channels for post-impact",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "We then averaged the spectral line channels to a channel width of 250 MHz to create a channel-averaged continuum Measurement Set for both the 12 m and the ACA data"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs robust = 0.5 for continuum",
+      "evidence": [
+       {
+        "loc": "Pre-Impact 12m Observations",
+        "quote": "Briggs visibility weighting (with a robust value of 0.5)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Peak continuum position agrees with predicted ephemeris position within one synthesized beam",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "This peak continuum position was in agreement with the predicted ephemeris position of the asteroids to within one synthesized ALMA beam."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit the pre-impact point-source flux density",
+    "method": {
+     "value": "uvmodelfit point-source model fit to visibilities, compared with image flux",
+     "evidence": [
+      {
+       "loc": "12 m Array Pre-Impact Observations",
+       "quote": "Using the CASA `uvmodelfit` routine with a point-source model returns a best-fit flux density of 1.79 $\\pm$ 0.18 mJy and a reduced $\\chi^2$ of 1.31"
+      }
+     ]
+    },
+    "software": [
+     "CASA uvmodelfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Asteroids unresolved (point source)",
+      "evidence": [
+       {
+        "loc": "12 m Array Pre-Impact Observations",
+        "quote": "The image is consistent with an unresolved point source"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Point-source model; reduced chi2 = 1.31; sampler and priors not stated",
+     "evidence": [
+      {
+       "loc": "12 m Array Pre-Impact Observations",
+       "quote": "Using the CASA `uvmodelfit` routine with a point-source model returns a best-fit flux density of 1.79 $\\pm$ 0.18 mJy and a reduced $\\chi^2$ of 1.31"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Fit flux consistent with image flux density 1.73 +/- 0.18 mJy",
+     "evidence": [
+      {
+       "loc": "12 m Array Pre-Impact Observations",
+       "quote": "consistent with the flux density in the image (1.73 $\\pm$ 0.18 mJy) and indicative of a good fit to the visibilities as a point-source."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive millimeter spectral emissivity with NEATM",
+    "method": {
+     "value": "NEATM with subsolar temperature and surface temperature distribution; integrated flux equation solved for emissivity using fit flux and Daly2023 diameters",
+     "evidence": [
+      {
+       "loc": "Didymos-Dimorphos' Spectral Emissivity",
+       "quote": "The Near Earth Asteroid Thermal model (cite: Harris1998; Delbo2002) was used to analyze thermal emission from the asteroids."
+      }
+     ]
+    },
+    "software": [
+     "NEATM (model)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Bond albedo 0.067; beaming parameter 1.93; Tss = 324 K pre-impact",
+      "evidence": [
+       {
+        "loc": "Didymos-Dimorphos' Spectral Emissivity",
+        "quote": "The resulting $T_{ss}$ is 324 K."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Didymos and Dimorphos have the same spectral emissivity; no emission from the night side",
+      "evidence": [
+       {
+        "loc": "Didymos-Dimorphos' Spectral Emissivity",
+        "quote": "As the asteroids were not spatially resolved during our pre-impact observations, we assumed that they have the same spectral emissivity."
+       },
+       {
+        "loc": "Didymos-Dimorphos' Spectral Emissivity",
+        "quote": "The temperature was calculated across the asteroid surface assuming that no emission originates from the night side as"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with emissivities of other asteroids measured at mm wavelengths (C, S, M, E classes)",
+     "evidence": [
+      {
+       "loc": "Didymos-Dimorphos' Spectral Emissivity",
+       "quote": "Our observed average emissivity of 0.95 ± 0.10 for Didymos-Dimorphos is consistent with its S-class classification"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Predict asteroid flux on the impact date",
+    "method": {
+     "value": "Repeat NEATM at impact-date geometry; reduce flux for secondary eclipse",
+     "evidence": [
+      {
+       "loc": "Didymos-Dimorphos' Spectral Emissivity",
+       "quote": "We predict a flux of 2.74 mJy attributable to the asteroids themselves when neither are in eclipse"
+      }
+     ]
+    },
+    "software": [
+     "NEATM (model)"
+    ],
+    "key_parameters": [
+     {
+      "value": "rH = 1.045 au, Delta = 0.075 au, Tss = 330 K; eclipse reduction 0.049 mag gives 2.60 mJy",
+      "evidence": [
+       {
+        "loc": "Didymos-Dimorphos' Spectral Emissivity",
+        "quote": "where we find $T_{ss}$ = 330 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Emissivity from pre-impact measurement applies post-impact",
+      "evidence": [
+       {
+        "loc": "Modeling and Interpretation",
+        "quote": "Once their spectral emissivity is known, the flux attributable to Didymos-Dimorphos on the impact date can be calculated"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Measure post-impact continuum flux in apertures",
+    "method": {
+     "value": "Integrate flux inside 50 km radius (12 m) and 200 km radius (ACA) apertures; examine visibility amplitudes versus baseline",
+     "evidence": [
+      {
+       "loc": "12 m Array and ACA Post-Impact Continuum Observations",
+       "quote": "We integrated the flux inside an aperture of 50 km radius for the 12 m images and of 200 km radius for the ACA images"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Apertures capture all emission at >=3 sigma",
+      "evidence": [
+       {
+        "loc": "12 m Array and ACA Post-Impact Continuum Observations",
+        "quote": "corresponding to radii which capture all emission at the $\\geq3\\sigma$ level"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Measured flux densities in formal agreement among executions and arrays",
+     "evidence": [
+      {
+       "loc": "Analysis of the Ejecta",
+       "quote": "The measured fluxes are in formal agreement between arrays and between executions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Subtract asteroid flux to isolate ejecta flux",
+    "method": {
+     "value": "Subtract predicted asteroid flux (2.74 mJy, or 2.60 mJy in eclipse) from each execution's flux",
+     "evidence": [
+      {
+       "loc": "Analysis of the Ejecta",
+       "quote": "We calculated the ejecta flux density for each execution by subtracting our predicted flux density for Didymos-Dimorphos, using the appropriate value depending on whether the asteroids were in eclipse."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Extra 10% uncertainty added",
+      "evidence": [
+       {
+        "loc": "Analysis of the Ejecta",
+        "quote": "We incorporated an additional 10% uncertainty into our ejecta flux densities to account for systematic uncertainties in our prediction of Didymos-Dimorphos’ post-impact flux."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Compute grain absorption efficiency and dust opacity",
+    "method": {
+     "value": "Mie theory for spherical homogeneous grains with miepython; porous grains via two-component Maxwell-Garnett (hollow sphere); opacity integrated over size distribution",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "using Mie theory for spherical, homogeneous grains with the `miepython` package"
+      },
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "The final refractive index for the porous grains was calculated using the two-component Maxwell-Garnett formula assuming vacuum as the core and the minerals as inclusions in the matrix"
+      }
+     ]
+    },
+    "software": [
+     "miepython"
+    ],
+    "key_parameters": [
+     {
+      "value": "amin 0.5 um, amax 2.5 cm; a^-2.7 to 2 mm, a^-3.7 above; rho 3500 kg m^-3; porosity 8.2%",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "assuming minimum and maximum particles of radius 0.5 $\\mu$m and 2.5 cm, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Grain temperature independent of size and equal to blackbody equilibrium temperature of 266 K at 1.045 au; size distribution and chemistry uniform in the field of view",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "The grain temperature is assumed to be independent of size and equal to the blackbody equilibrium temperature for fast-rotating bodies of 266 K at *r*~H~ = 1.045 au."
+       },
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "Assuming the dust size distribution and chemical properties do not vary within the field of view"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Alternative with amax = 0.5 m gives masses roughly twice as high",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "our resulting ejecta masses are higher by roughly a factor of two"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Convert ejecta flux to dust mass",
+    "method": {
+     "value": "Rayleigh-Jeans relation S = 2kTM kappa/(lambda^2 Delta^2) solved for M for each execution and material; weighted average over executions",
+     "evidence": [
+      {
+       "loc": "Analysis of the Ejecta",
+       "quote": "We used these derived ejecta flux densities to calculate the ejecta mass responsible for the flux density measured in each execution."
+      },
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "Given the overall good agreement between the fluxes, we calculated the weighted average flux of all executions to compare with results for individual executions."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Three compositions: crystalline olivine (Cry-Oli), amorphous olivine (Amo-Oli), amorphous pyroxene (Amo-Pyr)",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "we used optical constants to calculate refractive indexes for three separate materials when calculating $Q$~abs~"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Weighted average treated as a lower limit on ejecta dust mass; crystalline favored",
+      "evidence": [
+       {
+        "loc": "Calculation of the Dust Ejecta Masses",
+        "quote": "We consider this weighted average to be representative of the dust mass lower limit for the ejecta."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with 0.3-0.5% lower limits from optical measurements and pre-impact simulations",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "Our calculated ejecta masses are consistent with lower limits of 0.3–0.5% of Dimorphos’ mass estimated by (cite: Graykowski2023) based on optical wavelength measurements of the ejecta."
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Derive spectral-line upper limits and gas-phase masses",
+    "method": {
+     "value": "3 sigma integrated intensity limits in a 4.68'' diameter aperture; convert to upper-level and total column densities and vapor masses with Trot = 1000 K",
+     "evidence": [
+      {
+       "loc": "12 m Array Post-Impact Spectral Line Observations",
+       "quote": "within a 4.68$''$ diameter aperture centered on the asteroids"
+      },
+      {
+       "loc": "Upper Limits on Gas-Phase Ejecta",
+       "quote": "we derived upper limits on column densities and masses of gas-phase ejecta along the line-of-sight during our observations"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "CDMS",
+     "LAMDA",
+     "HITRAN"
+    ],
+    "key_parameters": [
+     {
+      "value": "Assumed line width 2 km/s",
+      "evidence": [
+       {
+        "loc": "12 m Array Post-Impact Spectral Line Observations",
+        "quote": "We assumed a line width of 2 km s$^{-1}$, consistent with the expansion velocity"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gas rotational temperature 1000 K; gas extended perpendicular to line of sight filtered out so limits constrain line-of-sight emission",
+      "evidence": [
+       {
+        "loc": "Upper Limits on Gas-Phase Ejecta",
+        "quote": "We assumed a gas rotational temperature $T_{rot}$ = 1000 K based on pre-impact modeling of temperatures achieved in the ejecta (cite: Raducan2022b)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.5.2",
+    "used_for": {
+     "value": "Flagging, calibration, self-calibration, imaging, uvmodelfit",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "The data were flagged and calibrated using standard routines in Common Astronomy Software Applications (CASA) package version 6.5.2 (cite: CASA2022)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging with auto-masking heuristics",
+     "evidence": [
+      {
+       "loc": "Self Calibration",
+       "quote": "the auto-masking heuristics built into tclean (cite: Kepley2020)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "auto_selfcal",
+    "version": "not stated",
+    "used_for": {
+     "value": "Automated self-calibration procedure",
+     "evidence": [
+      {
+       "loc": "Self Calibration",
+       "quote": "Self-calibration was performed using CASA 6.5.2 and an automated self-calibration procedure"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvmodelfit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Point-source fit to pre-impact visibilities",
+     "evidence": [
+      {
+       "loc": "12 m Array Pre-Impact Observations",
+       "quote": "Using the CASA `uvmodelfit` routine with a point-source model returns a best-fit flux density"
+      }
+     ]
+    }
+   },
+   {
+    "name": "miepython",
+    "version": "2.3.0",
+    "used_for": {
+     "value": "Mie theory absorption efficiency Qabs",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "using Mie theory for spherical, homogeneous grains with the `miepython` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "JPL Horizons",
+    "version": "not stated",
+    "used_for": {
+     "value": "Ephemerides used to track the asteroids",
+     "evidence": [
+      {
+       "loc": "Pre-Impact 12m Observations",
+       "quote": "We tracked the asteroids’ position using JPL Horizons ephemerides (#187)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA Calibrator Source Catalog",
+    "version": "not stated",
+    "used_for": {
+     "value": "Check of pipeline flux scale assigned to quasars",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "We examined the ALMA Calibrator Source Catalog for each quasar to assess the absolute flux calibration scale assigned by the pipeline."
+      }
+     ]
+    }
+   },
+   {
+    "name": "LAMDA / CDMS / HITRAN",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line parameters and partition functions",
+     "evidence": [
+      {
+       "loc": "Table 4 notes",
+       "quote": "retrieved from the LAMDA database (cite: Schoier2005) for SiO, SiS, and SO and from the CDMS database (cite: Endres2016) for all other species."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Pre-impact point-source flux density (uvmodelfit, 343.5 GHz)",
+    "value": "1.79",
+    "uncertainty": "0.18",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "12 m Array Pre-Impact Observations",
+      "quote": "returns a best-fit flux density of 1.79 $\\pm$ 0.18 mJy and a reduced $\\chi^2$ of 1.31"
+     }
+    ]
+   },
+   {
+    "quantity": "Reduced chi-squared of point-source fit",
+    "value": "1.31",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "12 m Array Pre-Impact Observations",
+      "quote": "returns a best-fit flux density of 1.79 $\\pm$ 0.18 mJy and a reduced $\\chi^2$ of 1.31"
+     }
+    ]
+   },
+   {
+    "quantity": "Pre-impact image flux density",
+    "value": "1.73",
+    "uncertainty": "0.18",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "12 m Array Pre-Impact Observations",
+      "quote": "consistent with the flux density in the image (1.73 $\\pm$ 0.18 mJy)"
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral emissivity of Didymos-Dimorphos at 343.5 GHz",
+    "value": "0.95",
+    "uncertainty": "0.10",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Didymos-Dimorphos' Spectral Emissivity",
+      "quote": "Our observed average emissivity of 0.95 ± 0.10 for Didymos-Dimorphos is consistent with its S-class classification"
+     }
+    ]
+   },
+   {
+    "quantity": "Subsolar temperature pre-impact",
+    "value": "324",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Didymos-Dimorphos' Spectral Emissivity",
+      "quote": "The resulting $T_{ss}$ is 324 K."
+     }
+    ]
+   },
+   {
+    "quantity": "Subsolar temperature on impact date",
+    "value": "330",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Didymos-Dimorphos' Spectral Emissivity",
+      "quote": "where we find $T_{ss}$ = 330 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted asteroid flux, no eclipse",
+    "value": "2.74",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Didymos-Dimorphos' Spectral Emissivity",
+      "quote": "We predict a flux of 2.74 mJy attributable to the asteroids themselves when neither are in eclipse"
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted asteroid flux, secondary eclipse",
+    "value": "2.60",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Didymos-Dimorphos' Spectral Emissivity",
+      "quote": "We reduced our predicted Didymos-Dimorphos flux a corresponding amount to 2.60 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Weighted-average total flux (asteroids plus ejecta)",
+    "value": "4.72",
+    "uncertainty": "0.19",
+    "units": "mJy",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "4.72 $\\pm$ 0.19"
+     }
+    ]
+   },
+   {
+    "quantity": "Weighted-average ejecta flux",
+    "value": "2.03",
+    "uncertainty": "0.22",
+    "units": "mJy",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "2.03 $\\pm$ 0.22"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust opacity at 0.87 mm, crystalline olivine",
+    "value": "4.15e-3",
+    "uncertainty": "not stated",
+    "units": "m^2 kg^-1",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$4.15\\times10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust opacity at 0.87 mm, amorphous olivine",
+    "value": "2.05e-2",
+    "uncertainty": "not stated",
+    "units": "m^2 kg^-1",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$2.05\\times10^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust opacity at 0.87 mm, amorphous pyroxene",
+    "value": "1.88e-2",
+    "uncertainty": "not stated",
+    "units": "m^2 kg^-1",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$1.88\\times10^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Average ejecta mass, crystalline olivine",
+    "value": "6.39e7",
+    "uncertainty": "0.64e7",
+    "units": "kg",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "6.39 $\\pm$ 0.64"
+     }
+    ]
+   },
+   {
+    "quantity": "Average ejecta mass, amorphous olivine",
+    "value": "1.29e7",
+    "uncertainty": "0.13e7",
+    "units": "kg",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "1.29 $\\pm$ 0.13"
+     }
+    ]
+   },
+   {
+    "quantity": "Average ejecta mass, amorphous pyroxene",
+    "value": "1.41e7",
+    "uncertainty": "0.14e7",
+    "units": "kg",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "1.41 $\\pm$ 0.14"
+     }
+    ]
+   },
+   {
+    "quantity": "Ejecta mass range as fraction of Dimorphos mass",
+    "value": "0.3-1.5",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These ejecta masses represent 0.3–1.5% of Dimorphos’ total mass"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of flux from particles of radius 100 um to 10 mm",
+    "value": "~75",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Calculation of the Dust Ejecta Masses",
+      "quote": "particles with radii between 100 $\\mu$m and 10 mm contribute $\\sim$75% of our measured flux density at $\\lambda$ = 0.87 mm"
+     }
+    ]
+   },
+   {
+    "quantity": "3 sigma integrated intensity upper limits (SiO, SiS, SO, AlO, KCl, NaCN)",
+    "value": "<2.1e-2, <1.5e-2, <1.3e-2, <1.7e-2, <1.3e-2, <1.8e-2",
+    "uncertainty": "not stated",
+    "units": "K km s^-1",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "12 m Array Post-Impact Spectral Line Observations",
+      "quote": "$<2.1\\times10^{-2}$ K km s$^{-1}$, $<1.5\\times10^{-2}$ K km s$^{-1}$, $<1.3\\times10^{-2}$ K km s$^{-1}$, $<1.7\\times10^{-2}$ K km s$^{-1}$, $<1.3\\times10^{-2}$ K km s$^{-1}$, and $<1.8\\times10^{-2}$ K km s$^{-1}$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Total column density upper limits (SiO, SiS, SO, AlO, KCl, NaCN)",
+    "value": "<1.6e11, <3.3e11, <1.1e12, <6.2e11, <3.2e10, <7.9e11",
+    "uncertainty": "not stated",
+    "units": "molecule cm^-2",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "$<$ $1.6\\times10^{11}$"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "$<$ $3.2\\times10^{10}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Line-of-sight vapor mass upper limits (SiO, SiS, SO, AlO, KCl, NaCN)",
+    "value": "<11.9, <24.5, <66.7, <37.1, <2.9, <47.3",
+    "uncertainty": "not stated",
+    "units": "kg",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Upper Limits on Gas-Phase Ejecta",
+      "quote": "$<$11.9 kg, $<$24.5 kg, $<$66.7 kg, $<$37.1 kg, $<$2.9 kg, and $<$47.3 kg for SiO, SiS, SO, AlO, KCl, and NaCN, respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Post-impact visibility amplitudes indicate an extended source; images show extended ejecta but no clear jets",
+    "evidence": [
+     {
+      "loc": "12 m Array and ACA Post-Impact Continuum Observations",
+      "quote": "no clear structure (*e.g.,* jets) was found in the images."
+     }
+    ]
+   },
+   {
+    "value": "Measurements are lower limits on total sub-mm flux because emission beyond the MRS is filtered out",
+    "evidence": [
+     {
+      "loc": "Analysis of the Ejecta",
+      "quote": "Thus, our measurements are lower limits on the total flux at sub-millimeter wavelengths"
+     }
+    ]
+   },
+   {
+    "value": "Slight flux decrease during the secondary-eclipse executions",
+    "evidence": [
+     {
+      "loc": "Analysis of the Ejecta",
+      "quote": "The slight decrease in flux during 12 m Execution 4 and ACA Execution 3"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is Didymos-Dimorphos' millimeter emissivity consistent with other measured asteroids?",
+    "experiment": "Pre-impact Band 7 12 m observation fit with a NEATM thermal model",
+    "result": "Emissivity 0.95 +/- 0.10 at 343.5 GHz",
+    "finding": "Consistent with S-class silicate surface with minimal metal",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Didymos-Dimorphos' Spectral Emissivity",
+      "quote": "Our observed average emissivity of 0.95 ± 0.10 for Didymos-Dimorphos is consistent with its S-class classification and a silicate surface composition with minimal surface metal."
+     }
+    ]
+   },
+   {
+    "hypothesis": "How much mm-sized dust mass was in the ejecta T+3.5 to T+8.6 hr?",
+    "experiment": "Subtracted scaled pre-impact asteroid flux from post-impact flux and converted to mass with Mie opacities",
+    "result": "Average ejecta mass 1.3-6.4e7 kg (0.3-1.5% of Dimorphos mass)",
+    "finding": "Consistent with optical lower limits and pre-impact simulations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Calculation of the Dust Ejecta Masses",
+      "quote": "Our calculated ejecta masses are consistent with lower limits of 0.3–0.5% of Dimorphos’ mass estimated by (cite: Graykowski2023) based on optical wavelength measurements of the ejecta."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is gas-phase ejecta (Si, S, Al, K, Na species) detectable?",
+    "experiment": "Searched 12 m and ACA cubes for SiO, SiS, SO, AlO, KCl, NaCN",
+    "result": "No lines detected; 3 sigma upper limits derived",
+    "finding": "Upper limits on line-of-sight vapor masses of ~3-67 kg",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "12 m Array Post-Impact Spectral Line Observations",
+      "quote": "We did not detect spectral line emission from any of the targeted molecules in summed or individual executions"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the ejecta continuum compact or extended?",
+    "experiment": "Visibility amplitude versus baseline for post-impact data",
+    "result": "Amplitudes vary significantly with baseline",
+    "finding": "Ejecta emission is extended (full modeling deferred)",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "12 m Array and ACA Post-Impact Continuum Observations",
+      "quote": "the visibility amplitudes are consistent with an extended source, showing significant variation with baseline length"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which grain composition best represents the ejecta?",
+    "experiment": "Mass computed for crystalline olivine, amorphous olivine and amorphous pyroxene",
+    "result": "Crystalline olivine gives the highest masses (~6.4e7 kg)",
+    "finding": "The higher crystalline-based mass is favored",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Calculation of the Dust Ejecta Masses",
+      "quote": "Given these trends and that crystalline material is likely more prevalent than amorphous in ordinary chondritic material (such as that contained in Dimorphos’ grains), the higher mass derived from crystalline olivine is favored."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Band 7 FDM setup chosen for both line and continuum sensitivity; 0.87 mm most sensitive to total ejecta mass",
+    "evidence": [
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "This correlator setup was chosen to be sensitive to spectral line emission from potential gas-phase ejecta as well as to thermal continuum emission."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "making our ALMA measurements at $\\lambda$ = 0.87 mm the most sensitive observations to the total ejecta mass"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Briggs robust 0.5 balances resolution and sensitivity; natural weighting for faint extended line emission",
+    "evidence": [
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "Briggs visibility weighting (with a robust value of 0.5) was chosen to balance angular resolution and sensitivity to continuum emission."
+     },
+     {
+      "loc": "Post Impact 12m and ACA Observations",
+      "quote": "Natural weighting was chosen to maximize sensitivity to potential faint, extended spectral line emission."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Pipeline-assigned flux scale of 1.22 Jy for J0238+1636 rejected in favour of 1.11 Jy",
+     "evidence": [
+      {
+       "loc": "Post Impact 12m and ACA Observations",
+       "quote": "The automated ALMA pipeline calibration scheme extrapolated along the upward trend to assign a flux scale of 1.22 Jy to J0238+1636 during our 12 m Execution 3, resulting in artificially inflated flux for our Didymos-Dimorphos measurements."
+      }
+     ]
+    },
+    {
+     "value": "Extending the size distribution to meter-sized material (amax = 0.5 m) raises ejecta masses by about a factor of two; not adopted in the main result",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "our resulting ejecta masses are higher by roughly a factor of two"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Size distribution for meter-sized material unknown; major caveat",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "our assumptions regarding the particle size distribution for meter-sized material are a significant caveat"
+      }
+     ]
+    },
+    {
+     "value": "Effective medium theories only approximate real optical properties",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "We note that EMT theories only provide approximations to the real optical properties of a substance"
+      }
+     ]
+    },
+    {
+     "value": "No optical constants available for crystalline pyroxenes at 0.87 mm",
+     "evidence": [
+      {
+       "loc": "Calculation of the Dust Ejecta Masses",
+       "quote": "as far as we are aware, there are no available optical constants for crystalline pyroxenes at $\\lambda = 0.87$ mm."
+      }
+     ]
+    },
+    {
+     "value": "Visibility modeling deferred to future work",
+     "evidence": [
+      {
+       "loc": "12 m Array and ACA Post-Impact Continuum Observations",
+       "quote": "A full modeling treatment of the visibilities is beyond the scope of this manuscript and is the subject of future work."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Ejecta mass depends strongly on the assumed composition (factor ~5 between crystalline and amorphous), and the favored crystalline choice rests on indirect argument",
+    "Asteroid flux subtraction relies on one 5-minute pre-impact point and an emissivity assumed equal for both bodies and constant to the impact date",
+    "Aperture photometry is applied to an extended source with unmodelled visibility structure; MRS filtering makes masses lower limits",
+    "Differing flux calibrators across executions, including one corrected by hand, may leave a systematic flux scale offset beyond the adopted 10%",
+    "Gas limits assume Trot = 1000 K and a 2 km/s line width, so limits are model-dependent"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging cell size, image size, niter and thresholds",
+    "Continuum spectral-window selection and line-free channel handling",
+    "Auto_selfcal version and parameters",
+    "Exact aperture centers and flux summation procedure",
+    "Epsilon (infrared emissivity) value and size split used in NEATM",
+    "Mie and Maxwell-Garnett implementation settings",
+    "No public statement of data availability or product location in the paper text"
+   ],
+   "estimated_data_volume_inferred": "Roughly 20-100 GB for nine short Band 7 executions (1 pre-impact 12 m, 4 post-impact 12 m, 4 ACA); estimate",
+   "score_inferred": 4,
+   "score_reason": "Project code, CASA version, calibrators, weighting and nearly all model parameters, equations and numeric results are given; imaging grid, masks, auto_selfcal settings and flux-summation details are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Single ALMA project with stated executions, explicit thermal and dust-mass recipe and numeric results (emissivity, masses, upper limits); archive data presumably public but paper does not state it."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Kepley2020)",
+     "why": "ALMA imaging pipeline heuristics used for auto-masking thresholds"
+    },
+    {
+     "citation": "(cite: Brogan2018)",
+     "why": "Self-calibration best practices"
+    },
+    {
+     "citation": "(cite: Jewitt1990)",
+     "why": "Dust flux and mass formalism"
+    },
+    {
+     "citation": "(cite: Boissier2012)",
+     "why": "Dust mass from sub-mm flux density"
+    },
+    {
+     "citation": "(cite: Harris1998; Delbo2002)",
+     "why": "NEATM thermal model"
+    },
+    {
+     "citation": "(cite: Bockelee1994)",
+     "why": "Column density from integrated intensity"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Li2023)",
+     "why": "HST ejecta imaging and particle size distribution"
+    },
+    {
+     "citation": "(cite: Daly2023)",
+     "why": "DART results: sizes and mass of Didymos and Dimorphos"
+    },
+    {
+     "citation": "(cite: Rivkin2023)",
+     "why": "JWST beaming parameter"
+    },
+    {
+     "citation": "(cite: Graykowski2023)",
+     "why": "Ejecta velocity and optical mass lower limits"
+    },
+    {
+     "citation": "(cite: Shestakova2023)",
+     "why": "Alkali vapor plume expansion velocity"
+    },
+    {
+     "citation": "(cite: Scheirich2022)",
+     "why": "Mutual event photometric model"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DART mission",
+    "ALMA Director's Discretionary Time project 2021.A.00013.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2023PSJ.....4..206R",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:25:16",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 172,
+  "quotes_ok": 172,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 21,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 128,
+   "stated": 102,
+   "rate": 0.797
+  },
+  "evidence_ok": true
+ }
+}

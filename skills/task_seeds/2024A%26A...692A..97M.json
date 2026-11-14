@@ -1,0 +1,190 @@
+{
+ "bibcode": "2024A&A...692A..97M",
+ "title": "Sulfur-bearing molecules in a sample of early star-forming cores",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202452350",
+ "arxiv_id": "2411.00539",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "How do abundances of sulfur-bearing molecules (34SO, SO2, NS, SO, SO+, H2CS) relate to gas temperature, column density and line widths in early star-forming cores?",
+ "alma_project_codes": [
+  "2017.1.00914.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm continuum)",
+  "arrays": "7 m array, single pointing",
+  "angular_resolution": "3.3\" to 3.8\"",
+  "sensitivity": "continuum ~1.2 mJy/beam; line (10 km/s) ~30 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity 0.0185 cm2/g at 870 um",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "for which we adopt the value of 0.0185 cm$^2$g$^{-1}$ (cite: csengeri2017)"
+     }
+    ]
+   },
+   "citation": "(cite: csengeri2017)"
+  },
+  {
+   "what": {
+    "value": "Molecular line parameters (Eu, gu, Aul, Q) from Splatalogue/CDMS",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Note: Parameters extracted from the Splatalogue Database for"
+     }
+    ]
+   },
+   "citation": "(cite: muller05)"
+  },
+  {
+   "what": {
+    "value": "Cloud distances and v_LSR from catalogs",
+    "evidence": [
+     {
+      "loc": "Source sample and data",
+      "quote": "Distances were obtained from the catalogs in Vizier ‘ATLASGAL cold high-mass clumps with NH$_{3}$’ (cite: wie12)"
+     }
+    ]
+   },
+   "citation": "(cite: wie12), (cite: urqu18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify cores and extract spectra",
+   "method": "Cores identified in 0.87 mm continuum; most intense core per clump; spectra extracted at continuum peak with a beam-size circular region",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit line profiles",
+   "method": "Gaussian fits to each line for peak, FWHM and integrated flux W; only main component fitted when wings present",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular column densities",
+   "method": "Upper-level column density from W, Aul and beam area, then total column density using partition function",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex = 20 K for all lines and cores; optically thin"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive core temperature from CH3OH",
+   "method": "Rotational diagram from two CH3OH lines, Trot taken as Tkin",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE, optically thin, beam filling factor 1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive N(H2), mass and density from continuum",
+   "method": "Kauffmann et al. 2008 formulae with beam-integrated 0.87 mm flux; density from sphere of beam diameter",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 0.0185 cm2/g at 870 um; Tdust = Tkin"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Abundance and line width correlations",
+   "method": "X = N/N(H2); linear fits with R2 of X vs T, X vs N, X vs X; line width histograms and Pearson coefficients",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean X(SO2)/X(SO)",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular abundances",
+     "quote": "We obtain a media of 1.6, with a maximum value of 9.29 and a minimum of 0.06."
+    }
+   ]
+  },
+  {
+   "quantity": "Average CH3OH-derived temperature of sample",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The average measured temperature of our sample is 65 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson coefficients of X vs X(SO) for SO+, NS, SO2, H2CS",
+   "value": "0.83, 0.87, 0.93, 0.93",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "for such abundance relations are 0.83, 0.87, 0.93, and 0.93, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation of H2CS and NS line widths",
+   "value": "0.93",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "there is an excellent correlation between H$_2$CS and NS ($\\rho = 0.93$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which cores were reprocessed and the clean parameters used",
+  "Line-free channel ranges for continuum subtraction and which cores needed it",
+  "Archival cube imaging parameters (weighting, robust, cell, size)",
+  "Which spectral windows hold each line and the mapping to the beam-size extraction aperture",
+  "Gaussian fitting code and initial guesses",
+  "Linear fit method for abundance correlations",
+  "Flux calibration uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Gaussian fitting scripts and aperture details",
+  "Imaging parameters of archival products",
+  "Line-free channels per spw"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public archival data and explicit formulas with tabulated inputs; minor imaging/fitting details missing.",
+ "rediscovery_reason": "Public data, explicit LTE and rotational-diagram recipe, numeric tables of results.",
+ "source_card": "cards/2024A%26A...692A..97M/sonnet/card.md"
+}

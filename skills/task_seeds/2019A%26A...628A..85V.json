@@ -1,0 +1,260 @@
+{
+ "bibcode": "2019A&A...628A..85V",
+ "title": "Disk masses in the Orion Molecular Cloud-2: distinguishing time and environment",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935378",
+ "arxiv_id": "1905.09804",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Are initial disk dust masses in the Orion Molecular Cloud-2 (beyond 0.5 pc from the Trapezium) the same as in low-mass star-forming regions, and how much does external photoevaporation reduce disk masses near the Trapezium?",
+ "alma_project_codes": [
+  "2015.1.00669.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm), effective frequency 99.5 GHz",
+  "arrays": "12-m array, mosaic of two 148-pointing sub-mosaics",
+  "angular_resolution": "2.7'' x 1.6'' beam",
+  "sensitivity": "1 sigma 0.1 mJy/beam in the southern part; 3 sigma dust mass limit 17 Earth masses (32 in the northern part)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Comparison disk dust mass distributions: Lupus, Taurus, Cham I, Upper Sco, sigma Ori, ONC",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "In addition to the regions shown here, the same procedure was also followed for disk masses in Taurus (cite: andrews13) and $\\sigma$ Ori (cite: ansdell17)."
+     }
+    ]
+   },
+   "citation": "Ansdell et al. 2016; Eisner et al. 2018; Barenfeld et al. 2016; Andrews et al. 2013; Ansdell et al. 2017"
+  },
+  {
+   "what": {
+    "value": "Median free-free emission strength and spectral index for correction (0.25 mJy at 3 mm)",
+    "evidence": [
+     {
+      "loc": "3.3.2 Contamination by free-free contamination at 3 mm",
+      "quote": "we have applied a correction based on the results presented in (cite: tychoniec18) for the median free-free emission strength and spectral index."
+     }
+    ]
+   },
+   "citation": "(cite: tychoniec18)"
+  },
+  {
+   "what": {
+    "value": "FRIED grid of externally irradiated disk mass-loss rates",
+    "evidence": [
+     {
+      "loc": "4.1 Environmental dependence",
+      "quote": "we have also used the FRIED grid of externally irradiated disks (cite: haworth18)."
+     }
+    ]
+   },
+   "citation": "(cite: haworth18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make point-source continuum map",
+   "method": "Remove baselines <30 kλ, combine line-free continuum, image with tclean mosaic",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "uv cut 30 kλ; effective frequency 99.5 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure fluxes at Spitzer YSO positions",
+   "method": "Brightest pixel within 2.5'' of catalog position; 3 sigma detection with primary-beam-weighted noise; visual check",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Find non-Spitzer point sources",
+   "method": "peak_local_max on the image, flux in the same 2.5'' aperture, cross-match with other surveys",
+   "software": [
+    "scikit-image"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Convert flux to dust mass",
+   "method": "Optically thin blackbody equation with free-free correction of 0.25 mJy",
+   "software": [],
+   "key_parameters": [
+    "beta=1, kappa_1000GHz=10 cm2/g, T=20 K (30 K test), d=414 pc"
+   ],
+   "assumptions": [
+    "Optically thin dust emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Disk mass distribution and comparison to other regions",
+   "method": "Kaplan-Meier estimator with upper limits; log-rank tests; log-rank with mass scaling factor vs ONC",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive photoevaporation mass-loss rate",
+   "method": "Compare ratio with Scally & Clarke formula and FRIED grid for fiducial disk",
+   "software": [
+    "FRIED grid"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Fiducial disk 20 Earth masses, 40 AU, gas-to-dust 100, 0.5 Myr exposure"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detected disks",
+   "value": "37 of 132 (28%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 Spitzer-detected sources",
+     "quote": "Of the disks, 37 are detected by our ALMA observations at at least $3\\sigma$, for a detection rate of $28\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostar detection rate",
+   "value": "26 of 35 (69%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 Spitzer-detected sources",
+     "quote": "26 detections give a detection rate of $69\\%$ for these objects."
+    }
+   ]
+  },
+  {
+   "quantity": "Unidentified point sources",
+   "value": "34",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.2 Non-Spitzer point sources",
+     "quote": "This sample – the Unidentified point sources – consists of $N=34$ sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk dust mass range",
+   "value": "6.9 to 273",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Disk masses in the OMC-2 field",
+     "quote": "between $273 \\pm 9.8\\,M_{\\oplus}$ and $6.9 \\pm 6.4\\,M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ONC/OMC-2 disk mass ratio",
+   "value": "0.18",
+   "uncertainty": "+0.18/-0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Environmental dependence",
+     "quote": "This leads to a mass ratio of $0.18^{+0.18}_{-0.11}$ between the regions"
+    }
+   ]
+  },
+  {
+   "quantity": "Log-rank p-value OMC-2 vs Lupus",
+   "value": "0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Time evolution",
+     "quote": "we cannot distinguish between the Lupus and OMC-2 disks ($p = 0.87$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Log-rank p-value OMC-2 vs Taurus",
+   "value": "0.76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Time evolution",
+     "quote": "the same is true for the comparison to Taurus ($p = 0.76$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Log-rank p-value OMC-2 vs Cham I",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Time evolution",
+     "quote": "Cham I ($p = 0.2$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Photoevaporative mass loss rate",
+   "value": "8e-8 (abstract); 1e-8 from observations vs 8e-8 from Scally & Clarke",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Environmental dependence",
+     "quote": "our observations imply a photoevaporative mass loss rate of $1 \\times 10^{-8}\\,M_{\\odot}\\,\\text{yr}^{-1}$ in the ONC."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean weighting/robust, cell size, image size, niter, threshold and masks",
+  "Which spectral ranges were excluded as line-contaminated",
+  "Calibration details (CASA version of calibration, pipeline vs manual) and flux scale uncertainty",
+  "peak_local_max parameters (threshold, min distance) for the unidentified source search",
+  "Exact log-rank and Kaplan-Meier implementation, including the mass-scaling fit procedure for the 0.18 ratio",
+  "Dust mass conversion detail: how flux was scaled from 99.5 GHz and the free-free subtraction per source"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (weighting, cell, size, masks, threshold)",
+  "peak_local_max settings",
+  "Exact line-contaminated channel ranges",
+  "Log-rank scaling implementation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear simple method, but imaging parameters and the statistical procedure are missing.",
+ "rediscovery_reason": "Public data, simple flux extraction and mass conversion with numeric results; imaging details need choices.",
+ "source_card": "cards/2019A%26A...628A..85V/sonnet/card.md"
+}

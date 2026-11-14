@@ -1,0 +1,237 @@
+{
+ "bibcode": "2024ApJ...977..198L",
+ "title": "The SUPERCOLD-CGM Survey. II. [C I](1─0) Emission and the Physical Conditions of Cold Gas in Enormous Lyα Nebulae at z ∼ 2",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad8637",
+ "arxiv_id": "2502.05805",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "milky_way_ism"
+ ],
+ "question": "What are the physical conditions and molecular gas content of QSOs, companions and the cold CGM in ELANe at z~2, from [C I](1-0), CO(4-3) and dust continuum?",
+ "alma_project_codes": [
+  "2019.1.01251.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA 12 m and ACA/Morita 7 m",
+  "angular_resolution": "12 m: 1.6-2.7'' x 1.2-1.8''; tapered 7+12 m: 5.2-5.4'' x 4.9-5.1''",
+  "sensitivity": "rms 0.12-0.17 mJy/beam per 60 km/s channel (12 m); 0.21-0.30 (tapered)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ly-alpha extents R_Lya of the nebulae",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Column 13: projected Ly$_{\\alpha}$ extent (cite: cai19)."
+     }
+    ]
+   },
+   "citation": "(cite: cai19)"
+  },
+  {
+   "what": {
+    "value": "CO(4-3) fluxes, luminosities, line widths and companion identifications",
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "In Paper I, We have measured the CO(4$-$3) luminosities for the QSOs and companion galaxies in our sample"
+     }
+    ]
+   },
+   "citation": "Paper I (cite: li23)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Pipeline calibration, uvcontsub, natural-weighted tclean of 12 m data, and 7+12 m uv-tapered cubes at 60 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "taper 18.75 kλ"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure [C I] fluxes and widths",
+   "method": "Extract spectra at peak pixel, fit Gaussian; 3 sigma upper limits = 3×RMS×sqrt(δν×FWHM)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Line center and width fixed to CO(4-3) where [C I] is partially covered"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate CGM [C I] flux",
+   "method": "CGM flux = tapered 7+12 m flux minus 12 m flux; uncertainty is quadrature sum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CGM defined as emission on scales ≳16 kpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive luminosities, FIR luminosity, SFR and dust mass",
+   "method": "Line luminosities from Carilli & Walter formulae; MBB SED normalised to continuum; SFR = 2.1e-10 L_FIR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust = 47 K, beta = 1.6, optically thin; L_FIR over 42.5-122.5 µm"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain gas density and radiation field",
+   "method": "Compare L[CI]/L_CO(4-3) and L[CI]/L_FIR ratios with PDR Toolbox models",
+   "software": [
+    "PhotoDissociation Region Toolbox"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive molecular gas masses and CGM mass/baryon fraction",
+   "method": "CO(4-3), [C I] and dust based masses; compare to infer alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "QSOs: alpha_CO=0.8, R41=0.87, X_CI=8.4e-5, Tex=29.1 K (Q10=0.457); companions R41=0.85; dust: DGR 1/50 with 47 K",
+    "CGM X_CI range (3.0-8.4)e-5; halo mass 10^12.5 Msun; baryon fraction 15.6%"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CGM [C I](1-0) flux in Q0050+0051",
+   "value": "0.22 (2.7σ)",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we detect a [C I]$(1-0)$ flux (luminosity) of 0.22 $\\rm Jy\\ km\\ s^{-1}$ ((2.5 $\\pm$ 0.9) $\\times 10^{7}$ $\\rm L_{\\ensuremath{\\odot}}$) at an SNR of 2.7"
+    }
+   ]
+  },
+  {
+   "quantity": "CGM molecular mass Q0050+0051",
+   "value": "(1.0-2.8)e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.5",
+     "quote": "This leads to a molecular gas mass of ($1.0 - 2.8$)$\\times 10^{10}$ $\\rm M_{\\ensuremath{\\odot}}$ based on the [C I]$(1-0)$ line."
+    }
+   ]
+  },
+  {
+   "quantity": "CGM mass 3σ limits other QSOs",
+   "value": "<(0.2-1.4)e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.5",
+     "quote": "the resulting range in limits for the molecular gas mass in the CGM is $<$($0.2 - 1.4$)$\\times 10^{10}$ $\\rm M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Baryon fraction in molecular CGM",
+   "value": "<0.4-3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.5",
+     "quote": "represents $<$0.4-3$\\%$ of the baryons"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas density of QSOs",
+   "value": "10^4.4-10^4.8",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "we estimate a gas density in the range of $10^{4.4}-10^{4.8}\\,{\\rm cm^{ -3}}$ and radiation field of $10^{3.3}-10^{3.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] flux Q0050+0051 QSO (12 m)",
+   "value": "0.89",
+   "uncertainty": "0.04",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.89$\\pm$0.04 | 382 | 1.11$\\pm$0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "r[CI]/CO Q0050+0051 QSO",
+   "value": "0.36",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Individual QSOs",
+     "quote": "The $r_{[\\rm C\\ I]/CO}$ values in the QSO and C1 are 0.36 $\\pm$ 0.03 and 0.75 $\\pm$ 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI]/FIR ratio Q1416+2649",
+   "value": "1.1e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "extremely low $L_{\\rm [C\\ I](1-0)}$/$L_{\\rm FIR(SF)}$ ratio of $1.1 \\times 10^{-6}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold and masks in tclean",
+  "Cell and image size",
+  "Line-free channel ranges per target",
+  "Gaussian-fit procedure and peak-pixel selection details",
+  "Exact PDR model grid and fitting method for n and G0",
+  "Comparison sample compilation for Figures 6-7",
+  "Observing dates, times on source and configurations (only in Paper I)"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters beyond weighting/taper",
+  "Paper I observing details",
+  "Comparison-sample data and PDR fitting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear taper/difference recipe, but imaging parameters and PDR fitting are underspecified and CO data live in Paper I.",
+ "rediscovery_reason": "Public data, a clear recipe and numeric tabulated results exist, though some settings are missing.",
+ "source_card": "cards/2024ApJ...977..198L/sonnet/card.md"
+}

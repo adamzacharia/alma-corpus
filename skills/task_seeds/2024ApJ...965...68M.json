@@ -1,0 +1,217 @@
+{
+ "bibcode": "2024ApJ...965...68M",
+ "title": "ALMA Confirmation of Millimeter Time Variability in the Gamma-Ray Detected Seyfert Galaxy GRS 1734-292",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad2fae",
+ "arxiv_id": "2404.00647",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Does the gamma-ray detected radio-quiet Seyfert GRS 1734-292 show a compact millimeter excess with time variability, and does it come from the corona or disk winds?",
+ "alma_project_codes": [
+  "2018.1.00576.S"
+ ],
+ "data": {
+  "bands": "Band 3, 4, 6 (97.5, 145, 225 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "Beams 0.29x0.16'' (B3 d1), 0.24x0.18'' (B3 d2), 0.19x0.11'' (B4), 0.14x0.07'' (B6)",
+  "sensitivity": "rms 0.036-0.046 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Black hole mass log M_BH = 8.50±0.50; coronal kTe=11.9 keV and tau=2.98",
+    "evidence": [
+     {
+      "loc": "2.2 Details of GRS 1734-292",
+      "quote": "The black hole mass is measured as $\\log{(M_{\\rm BH}\\,[M_{\\odot}])}=8.50\\pm0.50$"
+     }
+    ]
+   },
+   "citation": "Tortosa et al. 2017 (cite: Tortosa2017MNRAS.466.4193T)"
+  },
+  {
+   "what": {
+    "value": "Global jet spectrum S=76 (nu/GHz)^-0.75 mJy",
+    "evidence": [
+     {
+      "loc": "4.2 Millimeter excess",
+      "quote": "the global jet spectrum follows $S_{\\mu}\\approx76(\\mu/{\\rm GHz})^{-0.75}$"
+     }
+    ]
+   },
+   "citation": "(cite: Marti1998A&A...330...72M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image continuum",
+   "method": "Run provided calibration scripts, tclean-style clean with automasking at Bands 3, 4, 6",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "cell 0.03'', 3000 pix, robust -0.2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "measure matched-beam fluxes",
+   "method": "Beam-matched 0.3'' uv-clipped images; peak flux and 2D Gaussian fit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "fit coronal SSA + jet SED",
+   "method": "Bayesian fit of SSA corona model plus jet fraction to ALMA B3/4/6 day-1 and VLA 15 GHz fluxes",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "p = 2.7"
+   ],
+   "assumptions": [
+    "kTe=11.9 keV, tau=2.98 from Tortosa 2017"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "derive B and size, test alternatives",
+   "method": "Convert SSA parameters to B and R; compare with wind and jet-base models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "97.5 GHz peak flux (0.3'') day 1",
+   "value": "1.45",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B3 (d1) | 97.5 | $0.29\\times0.16$ | 0.038 | 1.6 | $2.2\\pm0.1$ | $1.45\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "97.5 GHz peak flux (0.3'') day 2",
+   "value": "2.5",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B3 (d2) | 97.5 | $0.24\\times0.18$ | 0.04 | 2.5 | $3.1\\pm0.1$ | $2.5\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Variability at 97.5 GHz over four days",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 ALMA observations",
+     "quote": "corresponding to a 70% variability in four days"
+    }
+   ]
+  },
+  {
+   "quantity": "S_nu_SSA",
+   "value": "1.5",
+   "uncertainty": "+0.08/-0.08",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Corona",
+     "quote": "($1.5^{+0.08}_{-0.08}$ mJy, $110^{+13}_{-6}$ GHz, $0.26^{+0.02}_{-0.02}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "nu_SSA",
+   "value": "110",
+   "uncertainty": "+13/-6",
+   "units": "GHz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Corona",
+     "quote": "($1.5^{+0.08}_{-0.08}$ mJy, $110^{+13}_{-6}$ GHz, $0.26^{+0.02}_{-0.02}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "jet fraction f_jet",
+   "value": "0.26",
+   "uncertainty": "+0.02/-0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Corona",
+     "quote": "($1.5^{+0.08}_{-0.08}$ mJy, $110^{+13}_{-6}$ GHz, $0.26^{+0.02}_{-0.02}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "coronal magnetic field",
+   "value": "≈10",
+   "uncertainty": "not stated",
+   "units": "G",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Corona",
+     "quote": "correspond to the coronal magnetic field $B\\approx10$ G and the size $R\\approx10\\,R_{\\rm s}$"
+    }
+   ]
+  },
+  {
+   "quantity": "coronal size",
+   "value": "≈10",
+   "uncertainty": "not stated",
+   "units": "R_s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Corona",
+     "quote": "correspond to the coronal magnetic field $B\\approx10$ G and the size $R\\approx10\\,R_{\\rm s}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels / spectral windows used for continuum",
+  "Number of CASA clean iterations and thresholds, niter",
+  "Exact CASA and pipeline versions",
+  "emcee settings (walkers, steps, priors, likelihood)",
+  "How the VLA 15 GHz unresolved flux was measured",
+  "Flux calibrator names and flux values",
+  "Wind model parameters beyond those listed",
+  "Coordinates of target"
+ ],
+ "missing_for_reproduction": [
+  "emcee configuration and priors",
+  "VLA flux extraction details",
+  "Wind/corona conversion formulas (in cited papers)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters given and data public, but fitting setup and conversion to B/R rely on cited works.",
+ "rediscovery_reason": "Public data, stated imaging recipe, numeric flux results; fit details partly missing.",
+ "source_card": "cards/2024ApJ...965...68M/sonnet/card.md"
+}

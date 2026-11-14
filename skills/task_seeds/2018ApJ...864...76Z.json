@@ -1,0 +1,269 @@
+{
+ "bibcode": "2018ApJ...864...76Z",
+ "title": "Rotation in the NGC 1333 IRAS 4C Outflow",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aad7ba",
+ "arxiv_id": "1808.00346",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Does the IRAS 4C molecular outflow rotate, and what do its angular momentum and launching radii imply for the launching mechanism (X-wind vs disk wind)?",
+ "alma_project_codes": [
+  "2016.1.01501.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "continuum 0.65\" x 0.41\" (PA -6.8 deg); lines in Table 1",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity kappa_1.3mm=0.899 cm2/g",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "dust opacity of (cite: Ossenkopf94) ($\\kappa_\\mathrm{1.3mm}=0.899~\\mathrm{cm}^2~\\mathrm{g}^{-1}$)"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf94)"
+  },
+  {
+   "what": {
+    "value": "Line frequencies and parameters from CDMS",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Information taken from the CDMS database ((cite: Muller05))"
+     }
+    ]
+   },
+   "citation": "(cite: Muller05)"
+  },
+  {
+   "what": {
+    "value": "Inclination about 25 deg from Segura-Cox et al.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "to about $25^\\circ$ between the disk plane and the line of sight ((cite: SeguraCox16))"
+     }
+    ]
+   },
+   "citation": "(cite: SeguraCox16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and line data",
+   "method": "CASA calibration, phase+amplitude self-cal on continuum applied to lines, CLEAN imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Continuum mass",
+   "method": "Total flux above 3 sigma within 2\" converted to mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T=30 K, kappa_1.3mm=0.899 cm2/g (Ossenkopf94), gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure outflow rotation and specific angular momentum from PV cuts",
+   "method": "PV cuts perpendicular to the outflow axis at each z; locate emission peaks of northern and southern walls; derive R_out, V_rot, j=R_out V_rot",
+   "software": [],
+   "key_parameters": [
+    "cuts 0.5\" wide, z=+0.5\" to +6\" (east), peaks defined as 0.9x peak intensity, PA of axis 96 deg"
+   ],
+   "assumptions": [
+    "edge-on inclination for rotation velocity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive launching radius and magnetic lever arm",
+   "method": "Anderson03 method using R_out, V_rot, V_p, protostar mass; lever arm from Ferreira06",
+   "software": [],
+   "key_parameters": [
+    "V_p = 1, 3, 10, 30 km/s; m* = 0.1, 0.2, 0.4 Msun"
+   ],
+   "assumptions": [
+    "inclination 5-25 deg; fiducial mass 0.2 Msun"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Centrifugal barrier and protostellar mass",
+   "method": "CS highest velocity/position (method 1) and SO outer radius and max velocity (method 2) in mid-plane PV diagrams; M=V^2R/(2G)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CS traces envelope outside barrier; SO enhanced at barrier"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean specific angular momentum of outflow",
+   "value": "about 100",
+   "uncertainty": "std dev 40",
+   "units": "au km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "The mean value of the specific angular momentum is about 100 $\\mbox{au km s}^{-1}$ with a standard deviation of 40 $\\mbox{au km s}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow axis position angle",
+   "value": "96",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The position angle of this outflow axis is 96$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation velocity at z=0.5\" and 6\"",
+   "value": "0.5 and 0.1",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "from about 0.5 $\\mbox{km s}^{-1}$ at $z=0.5\\ensuremath{''}$ (120 au) to about 0.1 $\\mbox{km s}^{-1}$ at $z=6\\ensuremath{''}$ (1400 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow median velocity",
+   "value": "7.5",
+   "uncertainty": "std 0.07",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "with a mean value of about 7.5 $\\mbox{km s}^{-1}$ and standard deviation of 0.07 $\\mbox{km s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Launching radius (V_p=3 km/s, 0.2 Msun)",
+   "value": "15",
+   "uncertainty": "std 7",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.3",
+     "quote": "mean value of 15 au and a standard deviation of 7 au for the case of $V_p=3~\\mbox{km s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Launching radius (V_p=10 km/s, 0.2 Msun)",
+   "value": "5.6",
+   "uncertainty": "std 1.8",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.3",
+     "quote": "a mean value of 5.6 au and a standard deviation of 1.8 au for the case of $V_p=10~\\mbox{km s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux within 2\"",
+   "value": "95",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The total continuum flux above $3\\sigma$ within a radius of 2$\\ensuremath{''}$ is 95 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum mass",
+   "value": "0.061",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "which corresponds to a mass of 0.061 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Centrifugal barrier radius (CS / SO methods)",
+   "value": "50 / 140",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "which gives $V_\\mathrm{CB1}=2.5~\\mbox{km s}^{-1}$ and $R_\\mathrm{CB1}=0.2\\ensuremath{''}$, i.e. 50 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar mass from centrifugal barrier",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$M_*=V_\\mathrm{CB}^2 R_\\mathrm{CB}/(2G)\\approx0.18~M_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the pipeline or manual calibration was used",
+  "Self-calibration solution intervals and number of iterations",
+  "Flux calibrator flux density and calibration uncertainty",
+  "Cell size, image size, clean threshold, deconvolver",
+  "Continuum-free channels / continuum subtraction method",
+  "Exact peak-finding procedure and uncertainties per z cut in the PV diagrams",
+  "Whether primary beam correction was applied",
+  "Exact outflow axis center used and Anderson03 equation implementation details"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact imaging parameters",
+  "Self-cal details",
+  "Peak-finding and uncertainty procedure for the PV analysis",
+  "Exact implementation of Anderson03 equation inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and many settings are given, but the CASA version, self-cal details and manual peak-picking are unspecified; the analysis is simple and numeric.",
+ "rediscovery_reason": "The archival ALMA data are linked to the paper, the recipe (imaging, PV cuts, formulas) is mostly specified, and the results are numeric.",
+ "source_card": "cards/2018ApJ...864...76Z/sonnet/card.md"
+}

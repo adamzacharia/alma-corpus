@@ -1,0 +1,364 @@
+{
+ "bibcode": "2020CPhy...30...85D",
+ "title": "Observation of High Doppler Velocity Wings in the Nascent Wind of R Doradus",
+ "year": 2020,
+ "doi": "10.15625/0868-3166/30/1/14763",
+ "arxiv_id": "1906.08535",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What is the morpho-kinematics of the nascent wind of the AGB star R Doradus in the light of high Doppler velocity wings observed in five molecular spectral lines, and can they be interpreted as gas streams, stellar pulsations, or rotation?",
+ "alma_project_codes": [
+  "2017.1.00824.S",
+  "2013.1.00166.S"
+ ],
+ "data": {
+  "bands": "Band 6, Band 7",
+  "arrays": "average of 45 antennas (2017.1.00824.S); average of 39 antennas (2013.1.00166.S)",
+  "angular_resolution": "180 x 140 mas^2 (CO), 180 x 130 mas^2 (SiO), 154 x 147 mas^2 (SO), 160 x 130 mas^2 (SO2), 157 x 145 mas^2 (HCN)",
+  "sensitivity": "5.5 (CO), 4.8 (SiO), 1.1 (SO), 6.3 (SO2), 8.5 (HCN) mJy beam^-1 channel^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to R Doradus (~59 pc)",
+    "evidence": [
+     {
+      "loc": "I. INTRODUCTION",
+      "quote": "They are both close to the Sun, at distances of ∼119 pc [8, 27] and ∼59 pc [15], respectively."
+     }
+    ]
+   },
+   "citation": "Knapp et al. (2003) [15]"
+  },
+  {
+   "what": {
+    "value": "Continuum flux level (0.65 Jy), 'blue-blob' feature, and channel maps in project 2013.1.00166.S",
+    "evidence": [
+     {
+      "loc": "III. LARGE DOPPLER VELOCITY COMPONENTS",
+      "quote": "We use coordinates rotated to have the “blue-blob” detected by Decin et al. (2018) [5] at a position angle of approximately 180◦"
+     },
+     {
+      "loc": "III.2. Eliminating a possible effect related to continuum subtraction",
+      "quote": "0.65 Jy with an uncertainty that does not exceed 0.01 Jy"
+     }
+    ]
+   },
+   "citation": "Decin et al. (2018) [5]"
+  },
+  {
+   "what": {
+    "value": "Rotating disc parameters (radial distances 6 to 25 au, max Doppler velocity 12 km s^-1, rotation axis angle 20 ± 20 deg)",
+    "evidence": [
+     {
+      "loc": "I. INTRODUCTION",
+      "quote": "It covers radial distances between 6 and 25 au and the Doppler velocity is maximal on the inner rim where it reaches 12 km s−1."
+     },
+     {
+      "loc": "III.2. Eliminating a possible effect related to continuum subtraction",
+      "quote": "In particular, the rotation axis observed by Homan et al. [12] makes an angle of only 20 ± 20◦ with the plane of the sky."
+     }
+    ]
+   },
+   "citation": "Homan et al. (2018b) [12]"
+  },
+  {
+   "what": {
+    "value": "Solid body rotation velocity of 1.0 ± 0.1 km s^-1 at the stellar surface (~1.9 au) and expanding shell radii",
+    "evidence": [
+     {
+      "loc": "III.3. Interpretations in terms of pulsations or rotations",
+      "quote": "Vlemmings et al. (2018) [28] quote a solid body rotation of 1.0±0.1 km s−1 at the stellar surface (∼1.9 au)"
+     }
+    ]
+   },
+   "citation": "Vlemmings et al. (2018) [28]"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Coordinate system definition and data cube preparation",
+   "method": "Retrieve pipeline-reduced continuum-subtracted data cubes from ALMA archive (and re-reduce SiO without continuum subtraction); set origin at continuum peak, refer Doppler velocities to LSR velocity of 7.0 km s^-1, and rotate sky coordinates so the x axis points 35 deg north of east and y axis 35 deg west of north.",
+   "software": [],
+   "key_parameters": [
+    "x axis PA = 35 deg north of east; y axis PA = 35 deg west of north; V_LSR = 7.0 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct integrated Position-Velocity (P-V) maps, velocity spectra, and high-velocity moment/channel maps",
+   "method": "Project data cubes onto the (x, Vz) and (y, Vz) planes by summing over y and x respectively; extract Doppler velocity spectra summed over a 1 arcsec radius circle; fit linear edges to the slow wind profile to measure end-point velocities; integrate emission for |Vz| > 7.5 km s^-1 to map high-velocity components and build 1 km s^-1 bin channel maps.",
+   "software": [],
+   "key_parameters": [
+    "High velocity cut: |Vz| > 7.5 km s^-1; spectral extraction radius = 1 arcsec; channel map bin width = 1 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Characterize gas stream geometry, transverse spatial profiles, and acceleration",
+   "method": "Define stream axes in P-V maps from origin to (x, y) = (0.1, -0.35) arcsec at Vz = -20 km s^-1 (blue-shifted) and (-0.1, 0.1) arcsec at Vz = 20 km s^-1 (red-shifted); integrate intensity above slow-wind end-point velocities (|Vz| > 7.0, 8.3, 6.2, 6.0 km s^-1 for CO, SiO, SO, SO2) and fit 1D Gaussians to transverse x and y profiles with respect to stream axes; compute beam-deconvolved widths and mean projected acceleration.",
+   "software": [],
+   "key_parameters": [
+    "Integration cuts: |Vz| > 7.0 (CO), 8.3 (SiO), 6.2 (SO), 6.0 (SO2) km s^-1"
+   ],
+   "assumptions": [
+    "Distance to R Doradus is ~59 pc (converting angular scales to au); illustrative stream length of 60 au (or mean distance 30 au) along the line of sight to estimate angles; z approximated as a linear function of Vz."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test for continuum subtraction artefacts",
+   "method": "Repeat the analysis of SiO(8-7) using two datasets with different antenna configurations without subtracting continuum in the uv plane; extract Doppler velocity distributions for |Vz| > 8 km s^-1 within circular apertures of R < 1.5 arcsec and R < 0.3 arcsec.",
+   "software": [],
+   "key_parameters": [
+    "|Vz| > 8 km s^-1; aperture radii R < 1.5 arcsec and R < 0.3 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Evaluate physical interpretations (symmetric streams, rotation, stellar pulsations)",
+   "method": "Calculate geometric constraints for symmetric streams from projected extents (30 au blue-shifted, 10 au red-shifted); extrapolate literature Keplerian and solid-body rotation models to a 20 km s^-1 velocity to test consistency with observed spatial scales.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Rotation velocity of 12 km s^-1 at 6 au (Homan et al. 2018b) for Keplerian test; solid body rotation of 1.0 ± 0.1 km s^-1 at 1.9 au (Vlemmings et al. 2018) for solid body test."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak intensity of CO(3-2)",
+   "value": "0.74",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Peak intensity (Jy beam−1) 0.74 1.31 0.13 0.17 0.39"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of SiO(8-7)",
+   "value": "1.31",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Peak intensity (Jy beam−1) 0.74 1.31 0.13 0.17 0.39"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of SO(6_5-5_4)",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Peak intensity (Jy beam−1) 0.74 1.31 0.13 0.17 0.39"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of SO2(13_4,10-13_3,11)",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Peak intensity (Jy beam−1) 0.74 1.31 0.13 0.17 0.39"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of HCN(4-3)",
+   "value": "0.39",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Peak intensity (Jy beam−1) 0.74 1.31 0.13 0.17 0.39"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow wind Doppler velocity spectrum end point for CO(3-2)",
+   "value": "7.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "This allows for a reliable evaluation of the end points of the Doppler velocity spectra of the slow wind, which we measure at ∼7.0, ∼8.3, ∼6.2, ∼6.0 and ∼6.8 km s−1 for CO, SiO, SO, SO2 and HCN respectively on the red-shifted side."
+    }
+   ]
+  },
+  {
+   "quantity": "Slow wind Doppler velocity spectrum end point for SiO(8-7)",
+   "value": "8.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "This allows for a reliable evaluation of the end points of the Doppler velocity spectra of the slow wind, which we measure at ∼7.0, ∼8.3, ∼6.2, ∼6.0 and ∼6.8 km s−1 for CO, SiO, SO, SO2 and HCN respectively on the red-shifted side."
+    }
+   ]
+  },
+  {
+   "quantity": "Slow wind Doppler velocity spectrum end point for SO(6_5-5_4)",
+   "value": "6.2",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "This allows for a reliable evaluation of the end points of the Doppler velocity spectra of the slow wind, which we measure at ∼7.0, ∼8.3, ∼6.2, ∼6.0 and ∼6.8 km s−1 for CO, SiO, SO, SO2 and HCN respectively on the red-shifted side."
+    }
+   ]
+  },
+  {
+   "quantity": "Slow wind Doppler velocity spectrum end point for SO2(13_4,10-13_3,11)",
+   "value": "6.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "This allows for a reliable evaluation of the end points of the Doppler velocity spectra of the slow wind, which we measure at ∼7.0, ∼8.3, ∼6.2, ∼6.0 and ∼6.8 km s−1 for CO, SiO, SO, SO2 and HCN respectively on the red-shifted side."
+    }
+   ]
+  },
+  {
+   "quantity": "Slow wind Doppler velocity spectrum end point for HCN(4-3)",
+   "value": "6.8",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "This allows for a reliable evaluation of the end points of the Doppler velocity spectra of the slow wind, which we measure at ∼7.0, ∼8.3, ∼6.2, ∼6.0 and ∼6.8 km s−1 for CO, SiO, SO, SO2 and HCN respectively on the red-shifted side."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum Doppler velocity of high-velocity wings",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "They are accelerated at a typical rate of 0.7 km s−1 au−1 up to some 20 km s−1."
+    },
+    {
+     "loc": "III.2. Eliminating a possible effect related to continuum subtraction",
+     "quote": "This result gives confidence in the reality of the high Doppler velocity components, seen to rise above continuum emission below |Vz| ∼ 20 km s−1."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean projected acceleration of high-velocity components",
+   "value": "0.68",
+   "uncertainty": "± 0.10",
+   "units": "km s^-1 au^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "III.2. Eliminating a possible effect related to continuum subtraction",
+     "quote": "The mean projected acceleration, averaged over the (Vz vs y) P-V maps of Figure 1 is 0.68±0.10 km s−1 au−1."
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-deconvolved stream width (standard deviation) in x",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "Gaussian fits give standard deviations with respect to the mean of 90 mas in x and 120 mas in y, meaning, after beam de-convolution, 70 mas (4.2 au) in x and 90 mas (5.4 au) in y."
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-deconvolved stream width (standard deviation) in y",
+   "value": "90",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "III.1. Interpretation in terms of gas streams",
+     "quote": "Gaussian fits give standard deviations with respect to the mean of 90 mas in x and 120 mas in y, meaning, after beam de-convolution, 70 mas (4.2 au) in x and 90 mas (5.4 au) in y."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 347.3 GHz (from unsubtracted SiO data)",
+   "value": "0.60",
+   "uncertainty": "± 0.03",
+   "units": "Jy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "III.2. Eliminating a possible effect related to continuum subtraction",
+     "quote": "The Doppler velocity distributions obtained for |Vz| > 8 km s−1 display uniform continuum emission beyond |Vz| > 20 km s−1 at a level of ∼ 0.60 ± 0.03 Jy on both red-shifted and blue-shifted sides."
+    }
+   ]
+  },
+  {
+   "quantity": "Aperture radius containing the high-velocity SiO emission",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "III.2. Eliminating a possible effect related to continuum subtraction",
+     "quote": "It provides evidence for the emission to be essentially contained within an aperture radius of 0.3 arcsec (18 au)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Software packages and versions used for calibration, deconvolution, coordinate rotation, and spectral analysis (e.g., CASA version, GILDAS)",
+  "Deconvolution algorithm and parameters (weighting/robust parameter, cell size, image size, cleaning threshold, masking) used for the custom continuum-unsubtracted SiO reduction",
+  "Line-free frequency channels selected for uv-plane continuum subtraction in the pipeline products",
+  "Exact spatial integration ranges (in x and y) used when summing the data cubes to construct the integrated P-V maps in Figure 1",
+  "Whether primary beam correction was applied to the cubes"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial integration bounds (in arcsec) used when summing cubes over x and y to produce the P-V maps in Figure 1",
+  "Specific execution blocks / member OUs from 2013.1.00166.S combined or selected for the main analysis and for the two separate uv-coverage datasets in Figure 6",
+  "Imaging parameters (clean threshold, weighting, cell size) used when re-imaging the raw SiO visibilities without continuum subtraction"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The paper uses public ALMA archival data (mostly standard pipeline products) and performs straightforward geometric projections, velocity cuts, and 1D Gaussian fits with clearly stated coordinate rotations and velocity thresholds. However, software versions, exact spatial integration windows for the summed P-V maps, and specific execution block selections for project 2013.1.00166.S are not explicitly stated.",
+ "rediscovery_reason": "All ALMA data are public in the archive (projects 2013.1.00166.S and 2017.1.00824.S), standard pipeline cubes can be used directly for the main analysis, and the key quantitative results (line peak intensities, slow-wind terminal velocities, high-velocity wing reach, projected acceleration, deconvolved stream widths, and continuum flux) are straightforward to re-measure.",
+ "source_card": "cards/2020CPhy...30...85D/sonnet/card.md"
+}

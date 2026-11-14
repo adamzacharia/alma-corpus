@@ -1,0 +1,271 @@
+{
+ "bibcode": "2014A&A...562A..67G",
+ "title": "ALMA reveals a warm and compact starburst around a heavily obscured supermassive black hole at z = 4.75",
+ "year": 2014,
+ "doi": "10.1051/0004-6361/201322892",
+ "arxiv_id": "1312.1248",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "How compact, warm and dusty is the starburst around the Compton-thick QSO XID403 at z=4.75, and can it explain the X-ray obscuration and outflows?",
+ "alma_project_codes": [
+  "2011.0.00716.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.305 mm, mean 230 GHz)",
+  "arrays": "22x12 m antennas",
+  "angular_resolution": "0.84x0.71 arcsec",
+  "sensitivity": "rms 0.07 mJy at 1.305 mm"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Band 7 872 um flux 6.1±0.5 mJy",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 872 | 152 | $6.1\\pm0.5$ | $2.1\\times1.1$ | ALMA band7 | 4 |"
+     }
+    ]
+   },
+   "citation": "Hodge et al. 2013 (cite: hodge13)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1181 um flux 3.5±0.1 mJy",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 1181 | 205 | $3.5\\pm0.1$ | $1.7\\times1.5$ | ALMA band6 | 5 |"
+     }
+    ]
+   },
+   "citation": "Nagao et al. 2012 (cite: nagao12)"
+  },
+  {
+   "what": {
+    "value": "Gas masses M_H2 and M_HI",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $M_{H_2}$ | $1.6\\pm0.3$ | $10^{10} M_{\\odot}$ | Coppin et al. (2010) |"
+     }
+    ]
+   },
+   "citation": "Coppin et al. 2010 (cite: coppin10); De Breuck et al. 2011 (cite: debreuck11)"
+  },
+  {
+   "what": {
+    "value": "X-ray N_H = 1.4e24 cm^-2",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $N_H^{X-ray}$ | $1.4^{+0.9}_{-0.5}$ | $10^{24}$cm$^{-2}$ | Gilli et al. (2011) |"
+     }
+    ]
+   },
+   "citation": "Gilli et al. 2011 (cite: gilli11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum flux and source size",
+   "method": "Image flux density at peak; fit single Gaussian to frequency-averaged visibilities with uvmodelfit, cross-checked with Gildas mapping",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit FIR SED for dust temperature",
+   "method": "chi2 fit of optically thick modified blackbody to ALMA+Herschel+ATCA data",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta=2 and lambda0=200 um fixed"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust mass",
+   "method": "Optically thin relation at 1.3 mm using model flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 4.0 (nu/1.2 THz)^beta cm2/g, beta=2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive L_IR, SFR and SFR surface density",
+   "method": "Integrate best-fit greybody; Kennicutt98 SFR; Sigma_SFR=(SFR/2)/(pi r_half^2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Cosmology H0=67, Om=0.32, OL=0.68; 1 arcsec=6.6 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Broad-band SED decomposition",
+   "method": "Fit stellar, AGN torus and dusty SSP components to optical-FIR photometry",
+   "software": [
+    "Fritz06/Feltre13 SED code"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Salpeter IMF, Calzetti attenuation, solar metallicity, z_form=8"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Reanalyse X-ray spectrum for Fe line",
+   "method": "Fit pexrav reflection plus free-energy Gaussian iron line with Cash statistic",
+   "software": [
+    "XSPEC"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust temperature",
+   "value": "58.5",
+   "uncertainty": "5.3",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $T_{dust}$ | $58.5\\pm5.3$ | K | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "4.9e8",
+   "uncertainty": "0.7e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{dust}$ | $4.9\\pm0.7$ | $10^{8} M_{\\odot}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR",
+   "value": "1020",
+   "uncertainty": "150",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SFR | $1020\\pm150$ | $M_{\\odot}$yr$^{-1}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR (8-1000um)",
+   "value": "5.9e12",
+   "uncertainty": "0.9e12",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L_{IR}$ | $5.9\\pm 0.9$ | $10^{12} L_{\\odot}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic Gaussian FWHM",
+   "value": "0.27",
+   "uncertainty": "0.08",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 ALMA observations",
+     "quote": "single Gaussian component with a FWHM of $0.27\\pm0.08$ arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.305 mm flux density",
+   "value": "2.47",
+   "uncertainty": "0.07",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1305 | 227 | $2.47\\pm0.07$ | $0.84\\times0.71$ | ALMA band6 | 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR lower limit",
+   "value": ">26",
+   "uncertainty": "not stated",
+   "units": "Msun/yr/kpc2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\Sigma_{SFR}$ | $>26$ | $M_{\\odot}$yr$^{-1}$kpc$^{-2}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "1.1e11",
+   "uncertainty": "within 50%",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 SED decomposition",
+     "quote": "stellar mass $M_*\\sim1.1\\times10^{11}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame Fe line energy",
+   "value": "6.88",
+   "uncertainty": "0.16",
+   "units": "keV",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 X-ray emission",
+     "quote": "($6.88\\pm0.16$ keV; see Fig.[4](#xray))"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters (weighting, robust, cell, size, masking)",
+  "Flagging details and phase-calibrator solutions",
+  "Exact fit setup for uvmodelfit (starting values)",
+  "Parameters of the SED decomposition fit beyond qualitative description",
+  "Photometry in the CANDELS fit and SPIRE 250um flux (Daddi et al. in prep)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "SED fit configuration and priors",
+  "Daddi et al. in prep SPIRE 250 um flux"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple single-EB continuum and straightforward SED fit, but imaging and SED-code details are missing.",
+ "rediscovery_reason": "Public Cycle 0 data, simple continuum and SED fit with numeric results.",
+ "source_card": "cards/2014A%26A...562A..67G/sonnet/card.md"
+}

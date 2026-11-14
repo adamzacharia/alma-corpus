@@ -1,0 +1,554 @@
+{
+ "bibcode": "2025MNRAS.539.3808U",
+ "title": "Physical properties and gas kinematics of massive star forming region G328.24−0.55",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf721",
+ "arxiv_id": "2505.01582",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Pin down the physical and kinematic properties (cores, masses, excitation temperatures, rotation, outflow) of the young stellar objects in the massive star forming region G328.24-0.55",
+ "alma_project_codes": [
+  "2021.1.00311.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 6 (1.3 mm)",
+  "arrays": "12 m array, 43 antennas",
+  "angular_resolution": "0.3 arcsec; synthesized beam 0.38 x 0.34 arcsec, PA 7.7 deg",
+  "sensitivity": "continuum rms 3 mJy/beam; line-detection rms 4 mJy/beam (>=3 sigma threshold)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "MeerKAT 1.28 GHz continuum data from SMGPS DR1",
+    "evidence": [
+     {
+      "loc": "2.1 MeerKAT archival data",
+      "quote": "The MeerKAT archival data of G328.24"
+     }
+    ]
+   },
+   "citation": "(cite: 2024MNRAS.531..649G)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity per unit mass 0.19 cm^2/g at 230 GHz",
+    "evidence": [
+     {
+      "loc": "3.1 continuum emission",
+      "quote": "at 230 GHz is assumed to be = 0.19 cm"
+     }
+    ]
+   },
+   "citation": "(cite: 2001ApJ...548..296W)"
+  },
+  {
+   "what": {
+    "value": "Electron temperature of 6343 K for the ionizing photon rate",
+    "evidence": [
+     {
+      "loc": "3.1 continuum emission",
+      "quote": "adopted electron temperature of 6343 K (cite: 2022A&A...664A.140K)"
+     }
+    ]
+   },
+   "citation": "(cite: 2022A&A...664A.140K)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature of 20 K assumed for MM2 and MM3",
+    "evidence": [
+     {
+      "loc": "3.2 molecular line emission",
+      "quote": "we assumed a dust temperature of 20 K (cite: 2006A&A...450..607W; 2014ApJ...790...84L) for both cores"
+     }
+    ]
+   },
+   "citation": "(cite: 2006A&A...450..607W; 2014ApJ...790...84L)"
+  },
+  {
+   "what": {
+    "value": "Molecular spectroscopic data (CDMS and JPL line databases)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA archival data",
+      "quote": "The Spectroscopic information of the identified molecular lines was taken from the Cologne Database for Molecular Spectroscopy"
+     }
+    ]
+   },
+   "citation": "(cite: 2001A&A...370L..49M; 2005JMoSt.742..215M; 2016JMoSp.327...95E) and (cite: 1998JQSRT..60..883P)"
+  },
+  {
+   "what": {
+    "value": "8.6 GHz ATCA UCHII region (28 mJy integrated flux density) and 6.7 GHz CH3OH maser clusters",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "with an integrated flux density of 28 mJy at 8.6 GHz"
+     }
+    ]
+   },
+   "citation": "(cite: 1998MNRAS.300.1131P)"
+  },
+  {
+   "what": {
+    "value": "Earlier core masses (~94.1, 33.3, 14.7 Msun), V_LSR -40.23 km/s and kinematic distance 2.5 kpc",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "The authors reported the $V_{\\text{LSR}}$ and kinematic distance of the source to be $-$40.23 kms$^{-1}$ and 2.5 kpc, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: 2017A&A...600L..10C)"
+  },
+  {
+   "what": {
+    "value": "Astrometric errors of the three datasets (ATCA 0.4, Spitzer 1.0, ALMA 0.1 arcsec)",
+    "evidence": [
+     {
+      "loc": "4.1 Chemical evolution of cores",
+      "quote": "The astrometric errors in the 3 observations: ATCA, Spitzer and ALMA are"
+     }
+    ]
+   },
+   "citation": "not stated"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image continuum and line cubes",
+   "method": "Standard CASA calibration; uvcontsub to split line-free continuum and line-only data; tclean with CLEAN, Briggs robust 0.5, primary-beam correction",
+   "software": [
+    "CASA 6.2.1-7",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "measure dust continuum core properties",
+   "method": "2D Gaussian fit in the image plane with CASA gaussfit to get position, peak intensity, integrated flux and size of each core",
+   "software": [
+    "CASA gaussfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "identify molecular lines and measure line properties",
+   "method": "Spectra extracted within a 0.5 arcsec diameter around each continuum peak; lines identified with MADCUBA SLIM autofit using CDMS/JPL; 2D Gaussian profile fits of lines give intensity and linewidth",
+   "software": [
+    "MADCUBA (SLIM)",
+    "CDMS",
+    "JPL catalog",
+    "CASA gaussfit"
+   ],
+   "key_parameters": [
+    "Detection threshold >=3 sigma with rms 4 mJy/beam",
+    "Spectral extraction diameter 0.5 arcsec (0.7 arcsec for CO in MM1a)"
+   ],
+   "assumptions": [
+    "Sources are isolated within the extraction diameter, comparable to the synthesized beam"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "derive CH3OH excitation temperatures",
+   "method": "Rotational diagram of CH3OH lines (v_t = 0-2) assuming LTE for MM1a, MM1b, MM1c",
+   "software": [],
+   "key_parameters": [
+    "E_up range 46-508 K (MM1a, MM1b) and 46-190 K (MM1c)"
+   ],
+   "assumptions": [
+    "LTE"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "estimate source distance",
+   "method": "Near kinematic distance from V_LSR of the unblended CH3OH 10_{2,8}-9_{3,7} line, using the revised kinematic distance estimation",
+   "software": [],
+   "key_parameters": [
+    "V_LSR = -42.6 km/s from Gaussian fit"
+   ],
+   "assumptions": [
+    "Near kinematic distance solution"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "derive core masses and beam-averaged H2 column densities",
+   "method": "Optically thin dust mass M_d = S_nu D^2 / (kappa_nu B_nu(T_d)) at ~230 GHz; column density from beam-averaged flux with gas-to-dust 100; T_d = CH3OH T_ex for MM1a-c and 20 K for MM2, MM3",
+   "software": [],
+   "key_parameters": [
+    "kappa = 0.19 cm^2/g at 230 GHz",
+    "Distance 2.8 kpc"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio 100",
+    "Mean molecular weight per H2 = 2.8",
+    "T_d for MM2 and MM3 = 20 K; T_ex used as T_d for MM1a-c"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "derive ionizing photon rate from MeerKAT free-free flux",
+   "method": "2D Gaussian fit of the MeerKAT continuum (CASA gaussfit) for flux; ionizing photon rate formula with T_e = 6343 K; spectral type inferred",
+   "software": [
+    "CASA gaussfit"
+   ],
+   "key_parameters": [
+    "T_e = 6343 K; D = 2.8 kpc; S_nu = 8.61 mJy"
+   ],
+   "assumptions": [
+    "Free-free emission from an HII region ionized by a single star"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "test for a rotating structure with CH3OH moment maps",
+   "method": "Moment 0, 1 and 2 maps of CH3OH 10_{2,8}-9_{3,7}; 2D Gaussian size of the moment-0 emission; spectrum within 0.52 arcsec diameter",
+   "software": [
+    "CASA gaussfit"
+   ],
+   "key_parameters": [
+    "Spectrum extracted within a 0.52 arcsec diameter"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "characterize CO outflow and its dynamical timescale",
+   "method": "CO 2-1 emission integrated over blue- and red-shifted velocity ranges and overlaid on the continuum; t_d = R_max / Delta v_max, averaged over lobes",
+   "software": [],
+   "key_parameters": [
+    "Blue lobe -51.8 to -46.4 km/s; red lobe -36.2 to -27.3 km/s",
+    "Outflow inclination ~46 deg to the plane of the sky"
+   ],
+   "assumptions": [
+    "MM1a is the driving source of the outflow"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dust continuum cores",
+   "value": "5 (MM1a, MM1b, MM1c, MM2, MM3)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The dust continuum image reveals 5 protostellar objects (MM1a, MM1b, MM1c, MM2 and MM3), with MM1a dominating the region."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux MM1a",
+   "value": "351",
+   "uncertainty": "15",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "351 $\\pm$ 15 & 1.1 & 0.5 & 69"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux MM1b",
+   "value": "224",
+   "uncertainty": "12",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "224 $\\pm$ 12 & 0.9 & 0.7 & 162"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux MM1c",
+   "value": "109.3",
+   "uncertainty": "4.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "109.3 $\\pm$ 4.4 & 1.2 & 0.6 & 30"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux MM2",
+   "value": "16.2",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "16.2 $\\pm$ 0.2 & 1.0 & 0.8 & 138"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux MM3",
+   "value": "24.7",
+   "uncertainty": "1.1",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "24.7 $\\pm$ 1.1 & 1.3 & 0.5 & 167"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1a: T_d (=T_ex CH3OH), mass, N_H2",
+   "value": "T_d 183 K; mass 23.2; N_H2 7.7 (x10^24)",
+   "uncertainty": "T_d 11 K; N_H2 0.8",
+   "units": "K; Msun; 1e24 cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "183 $\\pm$ 11 & 23.2 & 7.7 $\\pm$ 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1b: T_d (=T_ex CH3OH), mass, N_H2",
+   "value": "T_d 168 K; mass 16.1; N_H2 5.4 (x10^24)",
+   "uncertainty": "T_d 15 K; N_H2 0.7",
+   "units": "K; Msun; 1e24 cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "168 $\\pm$ 15 & 16.1 & 5.4 $\\pm$ 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1c: T_d (=T_ex CH3OH), mass, N_H2",
+   "value": "T_d 110 K; mass 12.0; N_H2 3.2 (x10^24)",
+   "uncertainty": "T_d 22 K; N_H2 0.7",
+   "units": "K; Msun; 1e24 cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "110 $\\pm$ 22 & 12.0 & 3.2 $\\pm$ 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "MM2: assumed T_d, mass, N_H2",
+   "value": "T_d 20 K (assumed); mass 9.8; N_H2 2.6 (x10^24)",
+   "uncertainty": "T_d 4 K; N_H2 0.5",
+   "units": "K; Msun; 1e24 cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "20 $\\pm$ 4 & 9.8 & 2.6 $\\pm$ 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "MM3: assumed T_d, mass, N_H2",
+   "value": "T_d 20 K (assumed); mass 14.9; N_H2 4.0 (x10^24)",
+   "uncertainty": "T_d 4 K; N_H2 0.9",
+   "units": "K; Msun; 1e24 cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "20 $\\pm$ 4 & 14.9 & 4.0 $\\pm$ 0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH excitation temperatures MM1a, MM1b, MM1c",
+   "value": "~183, 168, 110",
+   "uncertainty": "not stated (Table 1 lists 11, 15, 22 K)",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 molecular line emission",
+     "quote": "183, 168 and 110 K, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Detected molecular transitions MM1a, MM1b, MM1c, MM2, MM3",
+   "value": "70, 49, 26, 7, 8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected 70, 49, 26, 7 and 8 molecular transitions toward MM1a, MM1b, MM1c, MM2 and MM3, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Species detected toward MM1a and MM1b",
+   "value": "20 species (MM1a), 15 species (MM1b)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 molecular line emission",
+     "quote": "A total of 70 lines from 20 molecular species"
+    }
+   ]
+  },
+  {
+   "quantity": "MeerKAT radio continuum integrated flux and peak",
+   "value": "8.61 mJy; 7.5 mJy/beam",
+   "uncertainty": "not stated",
+   "units": "mJy; mJy/beam",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1 continuum emission",
+     "quote": "The integrated flux of the radio continuum source is 8.61 mJy and the peak intensity is 7.5 mJy beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Ionizing photon rate",
+   "value": "6.5e45 (log S* = 45.8)",
+   "uncertainty": "not stated",
+   "units": "s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1 continuum emission",
+     "quote": "the ionizing photon rate was estimated to be $6.5 \\times 10^{45}$ s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity V_LSR",
+   "value": "-42.6",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 molecular line emission",
+     "quote": "systemic velocity) of $-$42.6 kms$^{-1}$ obtained from Gaussian fit to the CH"
+    }
+   ]
+  },
+  {
+   "quantity": "Near kinematic distance",
+   "value": "2.8",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 molecular line emission",
+     "quote": "we calculated a near kinematic distance of 2.8 kpc to the source"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 10_{2,8}-9_{3,7} emission size in MM1a",
+   "value": "~2500 au (0.88 arcsec)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Presence of rotating structure",
+     "quote": "which corresponds to $\\sim$ 2500 au at the adopted distance"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH velocity dispersion in MM1a region",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Presence of rotating structure",
+     "quote": "The high velocity dispersion ($\\sim$ 3 kms$^{-1}$) within and outside MM1a continuum peak"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow lobe sizes (blue, red)",
+   "value": "31080 and 14840",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.3 Outflow",
+     "quote": "The sizes of the blue and red lobes of the outflow from the driving source are 31080 and 14840 au, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average outflow dynamical timescale",
+   "value": "1.03e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.3 Outflow",
+     "quote": "The average value of the dynamical timescale of the outflow is $1.03 \\times 10^{4}$ yr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the CASA pipeline or manual scripts were used, and the calibrated measurement set version (archive products vs re-calibration)",
+  "Flux density of the amplitude calibrator J1617-5848 and the absolute flux-scale uncertainty",
+  "Whether any self-calibration was applied",
+  "Line-free channel ranges and polynomial order used in uvcontsub; the continuum bandwidth actually imaged",
+  "tclean parameters: cell size, image size, niter/threshold, masking, deconvolver mode, spectral channel width/velocity resolution of the cubes",
+  "Whether the rms of 3 mJy/beam is before or after primary-beam correction and in which region it was measured",
+  "How the rotational diagram was fitted (least squares, treatment of optical depth, beam filling, partition function source) and which CH3OH lines were used per core",
+  "MADCUBA version and SLIM fit settings (LTE parameters, source size, velocity)",
+  "Moment-map clipping thresholds and velocity ranges for CH3OH moments 0/1/2",
+  "Definition of R_max and of the position of the driving source for the outflow, and how the 46 deg inclination was obtained",
+  "Which pixel/region the 2D Gaussian fits of the cores used and whether deconvolved sizes are reported in Table 1",
+  "Why the CH3OH rotational diagram temperature (not a dust temperature measurement) is used as Td for the mass; table line list contains a typo (HNCO 19.737 GHz)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selection and uvcontsub settings",
+  "tclean cell/image size, thresholds, masks, spectral channel width",
+  "Rotational-diagram fit details and MADCUBA settings",
+  "Moment-map thresholds, outflow R_max and driving-source position",
+  "Whether the archive pipeline products or a manual re-calibration were used"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public with a clear workflow and numeric tables (fluxes, masses, T_ex, outflow numbers), but imaging parameters (channels, masks, cell size) and fit details are not given.",
+ "rediscovery_reason": "Public archival project, one pointing, standard continuum and line analysis with explicit formulas and numeric Table 1 values; core masses, fluxes and T_ex can be checked, though exact numbers depend on unstated imaging choices.",
+ "source_card": "cards/2025MNRAS.539.3808U/sonnet/card.md"
+}

@@ -1,0 +1,713 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020A&A...636A...5R",
+  "title": "SYMBA: An end-to-end VLBI synthetic data generation pipeline. Simulating Event Horizon Telescope observations of M 87",
+  "year": 2020,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Roelofs, F.",
+  "n_authors": 209,
+  "arxiv_id": "2004.01161",
+  "doi": "10.1051/0004-6361/201936622",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00841.V"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the SYnthetic Measurement creator for long Baseline Arrays (`SYMBA`), a novel synthetic data generation pipeline for Very Long Baseline Interferometry (VLBI) observations."
+   }
+  ],
+  "science": {
+   "fields": [
+    "instrumentation",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "M87",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "16.4 ± 0.5 Mpc (16.7 Mpc assumed for the GRMHD models)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "At a distance of $(16.4 \\pm 0.5)$ Mpc (cite: Bird2010), the mass measurements correspond to an apparent diameter of the shadow between $\\sim22$ $\\mu$as and $42$ $\\mu$as."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Bird2010",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "At a distance of $(16.4 \\pm 0.5)$ Mpc (cite: Bird2010), the mass measurements correspond to an apparent diameter of the shadow between $\\sim22$ $\\mu$as and $42$ $\\mu$as."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How can realistic synthetic mm-VLBI (EHT) data with atmospheric, instrumental and calibration effects be generated and calibrated, and how well can GRMHD models of M87 be recovered with current and future EHT arrays?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Using synthetic data based on two example general relativistic magnetohydrodynamics (GRMHD) model images of M87, we performed case studies to assess the image quality that can be obtained with the current and future EHT array for different weather conditions."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00841.V",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00841.V."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "64 channels spanning 2 GHz bandwidth centred at 228 GHz (synthetic)",
+    "evidence": [
+     {
+      "loc": "7.1 Point source study",
+      "quote": "the visibilities are split into 64 channels spanning a bandwidth of 2 GHz centred at 228 GHz, which is the central EHT observation frequency."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "EHT2017 schedule of 11 April adopted",
+    "evidence": [
+     {
+      "loc": "5.3 uv-coverage",
+      "quote": "The EHT2017 schedule for 11 April was adopted."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "EHT stations (ALMA, APEX, JCMT, LMT, PV, SMA, SMT)",
+     "provided": {
+      "value": "Station parameters and observing schedule for the synthetic EHT2017 array; real ALMA data not analysed",
+      "evidence": [
+       {
+        "loc": "5.1 EHT2017 array",
+        "quote": "Our primary array consists of the 2017 EHT stations, excluding the SPT station for which M87 is always below the horizon."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "GRMHD model images of M87 (thermal-jet and kappa-jet) used as input source models",
+      "evidence": [
+       {
+        "loc": "6.2.1 Fiducial models",
+        "quote": "We base our scientific studies primarily on a GRMHD simulation of the jet launching region of M87 from (cite: Davelaar2019)."
+       }
+      ]
+     },
+     "citation": "(cite: Davelaar2019)"
+    },
+    {
+     "what": {
+      "value": "Pre-EHT2017 GRMHD model images",
+      "evidence": [
+       {
+        "loc": "6.2.2 Pre-EHT2017 models",
+        "quote": "we use `SYMBA` to simulate observations of GRMHD model images by (cite: Dexter2012) and (cite: Moscibrodzka2016)."
+       }
+      ]
+     },
+     "citation": "(cite: Dexter2012; Moscibrodzka2016)"
+    },
+    {
+     "what": {
+      "value": "Median site weather (PWV, pressure, temperature) from the EHT2017 VLBI monitor",
+      "evidence": [
+       {
+        "loc": "5.1 EHT2017 array",
+        "quote": "we used the median values measured during the EHT2017 campaign (5-11 April) at the individual primary sites, logged by the VLBI monitor (cite: eht-paperII)."
+       }
+      ]
+     },
+     "citation": "(cite: eht-paperII)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Point source (4 Jy), geometric crescent (Kamruddin & Dexter 2013), and two GRMHD models (BHAC + RAPTOR) as synthetic inputs",
+     "evidence": [
+      {
+       "loc": "6.1.1 Point source model",
+       "quote": "We use a simple 4 Jy point source model to study signal corruption and calibration effects."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "rPICARD CASA-based VLBI pipeline: fringe fit and a priori amplitude calibration, then network calibration with eht-imaging",
+     "evidence": [
+      {
+       "loc": "3 Synthetic data calibration with rPICARD",
+       "quote": "the synthetic data are passed through the `rPICARD` calibration pipeline (cite: Janssen2019)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Amplitude then phase self-calibration to the reconstructed image within eht-imaging",
+     "evidence": [
+      {
+       "loc": "7.2 Crescent and GRMHD image reconstructions",
+       "quote": "The visibility phases are then self-calibrated and used for imaging as well, while maintaining the closure quantity fits."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Regularized maximum likelihood imaging with eht-imaging (MEM, TV, TSV regularizers); starting model circular Gaussian FWHM 40 µas",
+     "evidence": [
+      {
+       "loc": "7.2 Crescent and GRMHD image reconstructions",
+       "quote": "The images are reconstructed with a regularized maximum likelihood (RML) method using the `eht-imaging` software."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Fiducial eht-imaging parameters, regularizers and imaging script",
+      "evidence": [
+       {
+        "loc": "7.2 Crescent and GRMHD image reconstructions",
+        "quote": "The fiducial parameters and regularizers (Maximum Entropy, Total Variation, and Total Squared Variation) obtained from an extensive parameter survey by (cite: eht-paperIV) are adopted."
+       }
+      ]
+     },
+     "from_reference": "(cite: eht-paperIV)"
+    },
+    {
+     "what": {
+      "value": "MeqSilhouette corruption details",
+      "evidence": [
+       {
+        "loc": "2 Synthetic data generation with MeqSilhouette",
+        "quote": "We briefly describe the added tropospheric and instrumental corruptions below, referring to (cite: Blecher2017) and (cite: Natarajan2019) for more details."
+       }
+      ]
+     },
+     "from_reference": "(cite: Blecher2017; Natarajan2019)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact eht-imaging regularizer weights and iteration schedule",
+    "MeqSilhouette and rPICARD version numbers",
+    "Random seeds for noise and pointing draws",
+    "Exact GRMHD model image files"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Generate corrupted synthetic visibilities",
+    "method": {
+     "value": "MeqSilhouette predicts visibilities from the input model and adds tropospheric, noise, pointing, gain and leakage corruptions",
+     "evidence": [
+      {
+       "loc": "2 Synthetic data generation with MeqSilhouette",
+       "quote": "`MeqSilhouette` predicts visibilities directly from the Fourier Transform of an input sky model."
+      }
+     ]
+    },
+    "software": [
+     "MeqSilhouette",
+     "ATM"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Calibrate synthetic data",
+    "method": {
+     "value": "rPICARD fringe fit (S/N>5.5) and a priori amplitude calibration, then 10 s averaging and network calibration",
+     "evidence": [
+      {
+       "loc": "3 Synthetic data calibration with rPICARD",
+       "quote": "the smallest timescale which yields fringe detections with S/N\\>5.5 on all baselines for which the source can be detected, is chosen"
+      }
+     ]
+    },
+    "software": [
+     "rPICARD",
+     "CASA",
+     "eht-imaging"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Reconstruct images and quantify fidelity",
+    "method": {
+     "value": "RML imaging and normalized cross-correlation with the input model convolved with varying beams",
+     "evidence": [
+      {
+       "loc": "7.2 Crescent and GRMHD image reconstructions",
+       "quote": "We compute the normalized cross-correlation (cite: eht-paperIV) between the reconstructed image $X$ and the input model image $Y$"
+      }
+     ]
+    },
+    "software": [
+     "eht-imaging"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MeqSilhouette",
+    "version": "not stated",
+    "used_for": {
+     "value": "synthetic data generation",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "We generate raw synthetic data with `MeqSilhouette`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "rPICARD",
+    "version": "not stated",
+    "used_for": {
+     "value": "CASA-based calibration of synthetic data",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "We then calibrate the raw data using the new `CASA` (cite: McMullin2007) VLBI data calibration pipeline `rPICARD`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "eht-imaging",
+    "version": "not stated",
+    "used_for": {
+     "value": "network calibration and RML imaging",
+     "evidence": [
+      {
+       "loc": "3 Synthetic data calibration with rPICARD",
+       "quote": "a ‘network calibration’ (cite: Fish2011; Johnson2015; Blackburn2019; eht-paperIII) is performed with the `eht-imaging` software."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ATM",
+    "version": "not stated",
+    "used_for": {
+     "value": "atmospheric attenuation and delay",
+     "evidence": [
+      {
+       "loc": "2.1.1 Mean troposphere",
+       "quote": "`MeqSilhouette` calculates the attenuation and time delays using the Atmospheric Transmission at Microwaves (`ATM`) software"
+      }
+     ]
+    }
+   },
+   {
+    "name": "am",
+    "version": "not stated",
+    "used_for": {
+     "value": "radiative transfer for PWV and opacity conversion",
+     "evidence": [
+      {
+       "loc": "5.1 EHT2017 array",
+       "quote": "we then perform radiative transfer at 225 GHz with the `am` atmospheric model software (cite: Paine2019)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "BHAC",
+    "version": "not stated",
+    "used_for": {
+     "value": "GRMHD simulation of input model",
+     "evidence": [
+      {
+       "loc": "6.2.1 Fiducial models",
+       "quote": "This GRMHD simulation is performed with the code `BHAC` (cite: Porth2017)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RAPTOR",
+    "version": "not stated",
+    "used_for": {
+     "value": "ray tracing of GRMHD models",
+     "evidence": [
+      {
+       "loc": "6.2.1 Fiducial models",
+       "quote": "The GRMHD simulation is post-processed with the general relativistic ray tracing code `RAPTOR` (cite: bronzwaer2018)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [],
+  "findings_qualitative": [
+   {
+    "value": "Atmospheric and instrumental corruptions significantly affect visibilities; EHT2017 can recover the GRMHD ring structure after calibration and self-calibration.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our synthetic observations show that the effects of atmospheric and instrumental corruptions on the measured visibilities are significant."
+     }
+    ]
+   },
+   {
+    "value": "Adding GLT, KP and PDB allows visual distinction of thermal-jet and kappa-jet models; AMT gives only minor improvement for M87.",
+    "evidence": [
+     {
+      "loc": "8.1 κ-jet versus thermal-jet model",
+      "quote": "The M87 reconstruction shows only minor improvement when the AMT is added to the EHT2020 array."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Including all corruption and calibration effects matters versus thermal noise only",
+    "experiment": "Reconstructed crescent and kappa-jet images from thermal-noise-only and full-effects synthetic data",
+    "result": "Full-effects reconstructions show more artefacts and irregularity",
+    "finding": "Full simulation is important for assessing image reconstruction",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7.2 Crescent and GRMHD image reconstructions",
+      "quote": "These comparisons highlight the importance of synthetic observations where all corruption and calibration effects are taken into account"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Future EHT stations improve discrimination of GRMHD models",
+    "experiment": "Synthetic observations with EHT2017, EHT2020, EHT2020+AMT of both models",
+    "result": "Reconstructions improve and model-specific features appear with added stations",
+    "finding": "Models can be visually distinguished with EHT2020",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "8.1 κ-jet versus thermal-jet model",
+      "quote": "With these stations included, the two models can be visually distinguished from each other more easily"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Poor weather degrades EHT imaging",
+    "experiment": "PWV 5 mm, tc 3 s, pointing rms 1-4 arcsec",
+    "result": "Decent image at 2 arcsec, much reduced at 3, failed at 4",
+    "finding": "Image quality degrades strongly with pointing offsets in poor weather",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "8.2 Varying observing conditions",
+      "quote": "For $\\mathcal{P}_\\mathrm{rms} = 2$\", a decent image can still be reconstructed."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only one GRMHD snapshot and two electron models used; results may not generalize.",
+     "evidence": [
+      {
+       "loc": "8.1 κ-jet versus thermal-jet model",
+       "quote": "We note that we have only used one GRMHD snapshot with two specific electron temperature models."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No quantitative validation of simulated corruptions against real EHT data",
+    "Visual model distinction is qualitative",
+    "Weather and pointing parameters are rough estimates"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Pipeline is open source on Bitbucket and dockerized; no real ALMA data are analysed",
+    "evidence": [
+     {
+      "loc": "4 Computing workflow",
+      "quote": "The pipeline is fully dockerized."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "SYMBA released at bitbucket.org/M_Janssen/symba",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "In this paper, we present the SYnthetic Measurement creator for long Baseline Arrays (`SYMBA`) – a new synthetic VLBI data generation and calibration pipeline."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact GRMHD model images",
+    "eht-imaging script parameters"
+   ],
+   "estimated_data_volume_inferred": "Small; synthetic data only, tens of GB at most",
+   "score_inferred": 3,
+   "score_reason": "Open pipeline and many parameters in tables, but key imaging settings are inherited and model inputs are external.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The work is a simulation pipeline with no real ALMA data and mostly qualitative, image-based results."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Blecher2017)",
+     "why": "MeqSilhouette"
+    },
+    {
+     "citation": "(cite: Janssen2019)",
+     "why": "rPICARD"
+    },
+    {
+     "citation": "(cite: eht-paperIV)",
+     "why": "eht-imaging parameters"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Davelaar2019)",
+     "why": "GRMHD models used"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Event Horizon Telescope"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-1db23cc6064cdb3f013c823f5856ed5b",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:31",
+  "usage": {
+   "input_tokens": 39005,
+   "output_tokens": 5513,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.067177,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 35,
+  "quotes_ok": 35,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 0,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 30,
+   "rate": 0.429
+  },
+  "evidence_ok": true
+ }
+}

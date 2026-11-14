@@ -1,0 +1,1096 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...823...37H",
+  "title": "Detection of Lensing Substructure Using ALMA Observations of the Dusty Galaxy SDP.81",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Hezaveh, Yashar D.",
+  "n_authors": 16,
+  "arxiv_id": "1601.01388",
+  "doi": "10.3847/0004-637X/823/1/37",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00016.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We apply our formalism to ALMA observations of SDP.81. We find evidence for the presence of a $M=10^{8.96\\pm 0.12} M_{\\odot}$ subhalo near one of the images"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "other"
+   ],
+   "targets": [
+    {
+     "name": "SDP.81",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How abundant is dark matter substructure near the lens galaxy of SDP.81, measured by fitting ALMA visibilities, and is it consistent with LCDM?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We study the abundance of substructure in the matter density near galaxies using ALMA Science Verification observations of the strong lensing system SDP.81."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00016.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00016.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 6 and 7, continuum only",
+    "evidence": [
+     {
+      "loc": "5 Results for SDP.81",
+      "quote": "We used only the calibrated continuum data from bands 6 and 7."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA long-baseline campaign observations",
+    "evidence": [
+     {
+      "loc": "4 implementation, simulations, and tests",
+      "quote": "For ALMA long-baseline campaign observations of SDP.81 (cite: Fomalont:15), visibilities were typically recorded every 0.5 seconds"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA Science Verification data",
+    "evidence": [
+     {
+      "loc": "5 Results for SDP.81",
+      "quote": "We use the recent ALMA Science Verification observations of the strongly lensed system SDP.81 (cite: SDP81)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "HST",
+     "provided": {
+      "value": "Image of the lensing galaxy shown against the ALMA arcs",
+      "evidence": [
+       {
+        "loc": "5 Results for SDP.81",
+        "quote": "Figure [4](#fig:SDP81ALMAHST) shows the lensing galaxy observed by the *Hubble Space Telescope* (greyscale) superimposed on the lensed arcs observed by ALMA."
+       }
+      ]
+     }
+    },
+    {
+     "name": "SDSS",
+     "provided": {
+      "value": "Lens galaxy r-band magnitude and environment (RedMaPPer cluster membership)",
+      "evidence": [
+       {
+        "loc": "6 Comparison to LCDM Predictions",
+        "quote": "which is $M_r = -21.88 \\pm 0.015$ using the SDSS DR10 magnitudes"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "RedMaPPer cluster catalog membership and mass-richness relation for the SDP.81 environment",
+      "evidence": [
+       {
+        "loc": "6 Comparison to LCDM Predictions",
+        "quote": "Assuming the mass–richness relationship of (cite: Rykoff:14), this corresponds to a mass of $\\sim 2.6\\times 10^{14} M_{\\odot}$."
+       }
+      ]
+     },
+     "citation": "(cite: Rykoff:14)"
+    },
+    {
+     "what": {
+      "value": "AGES luminosity function used for abundance matching",
+      "evidence": [
+       {
+        "loc": "6 Comparison to LCDM Predictions",
+        "quote": "we assume the AGES luminosity function (cite: Kochanek:12)"
+       }
+      ]
+     },
+     "citation": "(cite: Kochanek:12)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Mock ALMA observations of lensed clumpy sources made with an independent code and CASA, used to test the pipeline",
+     "evidence": [
+      {
+       "loc": "4.1 Mock observations",
+       "quote": "the lensed images were used to simulate ALMA observations using the Common Astronomy Software Applications package (CASA)."
+      }
+     ]
+    },
+    {
+     "value": "Dark Sky Simulation ds14_i and zoom-in simulations used to calibrate the subhalo mass function",
+     "evidence": [
+      {
+       "loc": "6 Comparison to LCDM Predictions",
+       "quote": "($4096^3$ particles in a $400~\\text{Mpc}/h$ box, `ds14_i`) from the Dark Sky Simulations (cite: Skillman:14)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Used the calibrated continuum data provided",
+     "evidence": [
+      {
+       "loc": "5 Results for SDP.81",
+       "quote": "We used only the calibrated continuum data from bands 6 and 7."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Subhalo modeled as a pseudo-Jaffe profile, following the earlier proposal for ALMA substructure detection",
+      "evidence": [
+       {
+        "loc": "5.1 Initial subhalo search",
+        "quote": "We follow (cite: Hezaveh13A) and model the subhalo deflection field using a truncated isothermal surface density profile"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hezaveh13A)"
+    },
+    {
+     "what": {
+      "value": "Pixelated source framework and Bayesian evidence normalization of source prior",
+      "evidence": [
+       {
+        "loc": "2 Framework",
+        "quote": "The general framework of fitting strongly lensed images with pixelated sources is described in detail in (cite: warren:03) and (cite: suyu:06)."
+       }
+      ]
+     },
+     "from_reference": "(cite: warren:03); (cite: suyu:06)"
+    },
+    {
+     "what": {
+      "value": "Subhalo mass function model and calibration methodology",
+      "evidence": [
+       {
+        "loc": "6 Comparison to LCDM Predictions",
+        "quote": "we follow the methodology presented in (cite: Mao:15)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Mao:15)"
+    },
+    {
+     "what": {
+      "value": "MCMC sampler of Goodman and Weare, implemented following emcee",
+      "evidence": [
+       {
+        "loc": "4.1 Mock observations",
+        "quote": "we have implemented the Markov chain Monte Carlo (MCMC) algorithm proposed by (cite: mcmchammer). We follow the procedure described in (cite: emcee)."
+       }
+      ]
+     },
+     "from_reference": "(cite: mcmchammer); (cite: emcee)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Source pixel grid size and extent for the actual fits (only 10 mas pixels for reconstruction shown)",
+    "Exact source prior form used for SDP.81 (gradient, curvature or clump power spectrum) and its parameters",
+    "MCMC settings: number of walkers, steps, burn-in, convergence criteria",
+    "Priors on antenna phase errors and time segmentation details",
+    "Which SV execution blocks and spectral windows were used for continuum",
+    "Phase center and target coordinates and redshifts",
+    "Subhalo mass grid and sampling for linearized maps",
+    "Code availability: pipeline not released"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Bin visibilities and estimate noise",
+    "method": {
+     "value": "Bin visibilities sharing a baseline within a short time into uv cells; estimate noise from differences of visibilities that null the sky, scaling Tsys",
+     "evidence": [
+      {
+       "loc": "5 Results for SDP.81",
+       "quote": "We estimate the noise variance for each visibility using the procedure described above and bin the visibilities in 12 meter cells."
+      }
+     ]
+    },
+    "software": [
+     "Elemental"
+    ],
+    "key_parameters": [
+     {
+      "value": "12 m cells; bins within ≲20 min on the same baseline; ~0.5 million binned visibilities from ~10 million",
+      "evidence": [
+       {
+        "loc": "5 Results for SDP.81",
+        "quote": "This results in $\\sim0.5$ million binned visibilities, a factor of $\\sim 20$ fewer than the original $\\sim10$ million."
+       }
+      ]
+     },
+     {
+      "value": "Retain binned visibilities with noise below 5.0 mJy (band 6) and 5.5 mJy (band 7)",
+      "evidence": [
+       {
+        "loc": "5 Results for SDP.81",
+        "quote": "We, therefore, decide to model binned visibilities with noise lower than 5.0 and 5.5 mJy in bands 6 and 7 respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Noise rms proportional to Tsys; variance of differenced visibilities equals twice noise variance",
+      "evidence": [
+       {
+        "loc": "4 implementation, simulations, and tests",
+        "quote": "we can simply assume that the variance in the subtracted visibilities is equal to twice the noise variance"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Both noise methods give consistent results",
+     "evidence": [
+      {
+       "loc": "4 implementation, simulations, and tests",
+       "quote": "We try both methods and find that they provide consistent results."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit smooth lens model to visibilities",
+    "method": {
+     "value": "Fit visibilities with a pixelated source, analytic marginalization over source pixels, antenna phase errors per baseline and time, and MCMC over lens parameters; initial localization with baselines <2 km",
+     "evidence": [
+      {
+       "loc": "5 Results for SDP.81",
+       "quote": "We first use only the subset of baselines shorter than 2 km in our initial MCMC analysis to localize the neighborhood of the best fit."
+      }
+     ]
+    },
+    "software": [
+     "emcee-style MCMC",
+     "Elemental",
+     "MPI"
+    ],
+    "key_parameters": [
+     {
+      "value": "Singular elliptical power law plus m=3,4 multipoles plus external shear; 12 free parameters",
+      "evidence": [
+       {
+        "loc": "5 Results for SDP.81",
+        "quote": "Overall, therefore, our primary lens model contains 12 freely adjustable parameters."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Flat LCDM with Omega_M = 0.267, H0 = 71",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "we assume a flat $\\Lambda$CDM expansion history with mean matter density $\\Omega_M = 0.267$ and current expansion rate $H_0 = 71$ km Mpc$^{-1}$ s$^{-1}$."
+       }
+      ]
+     },
+     {
+      "value": "No prior on lens parameters (C_eta^-1 = 0)",
+      "evidence": [
+       {
+        "loc": "2 Framework",
+        "quote": "we set ${\\bf C}_\\eta^{-1} = 0$, i.e., we assume no prior on the lens model parameters."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian likelihood with Gaussian source prior; MCMC after Goodman and Weare, following emcee",
+     "evidence": [
+      {
+       "loc": "4.1 Mock observations",
+       "quote": "We follow the procedure described in (cite: emcee)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested on mock ALMA data; parameters recovered without bias with gradient and curvature priors",
+     "evidence": [
+      {
+       "loc": "4.1 Mock observations",
+       "quote": "in both cases we successfully manage to recover the parameters with no apparent biases."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Linearized subhalo search",
+    "method": {
+     "value": "Map Delta E, twice the marginalized log-posterior difference, over subhalo position and mass using a linear approximation about the smooth model, marginalizing over lens, source and phase parameters",
+     "evidence": [
+      {
+       "loc": "Initial subhalo search",
+       "quote": "We search for subhalos over a range of subhalo masses, over a $8\\times8$ arcsec area around the lens center."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Pseudo-Jaffe subhalo with r_t = (sigma_v/(sqrt2 sigma_G)) r_E; initial search at M=10^8.6 Msun",
+      "evidence": [
+       {
+        "loc": "5.1 Initial subhalo search",
+        "quote": "we assume that $r_t$ is related to $\\sigma_v$ by $r_t = (\\sigma_v/\\sqrt{2}\\sigma_G)r_{\\rm E}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Bands 6 and 7 analyzed separately give a consistent pattern; alternative literature lens models give similar results",
+     "evidence": [
+      {
+       "loc": "5.1 Initial subhalo search",
+       "quote": "Our analysis reveals a consistent pattern between the two bands (see Figure [5](#initial_search))"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Nonlinear fit with subhalo and MCMC",
+    "method": {
+     "value": "Add a subhalo with 3 parameters (mass, 2-D position), refit jointly in bands 6 and 7 fully nonlinearly, then sample with MCMC",
+     "evidence": [
+      {
+       "loc": "5.1 Initial subhalo search",
+       "quote": "we then expanded our lens model to include a subhalo, with 3 adjustable parameters: mass $M_{\\rm sub}$, and 2-D location $\\bm{x}_{\\rm sub}$."
+      }
+     ]
+    },
+    "software": [
+     "emcee-style MCMC"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "MCMC over smooth lens and subhalo parameters; 68% uncertainties",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Best-fit lens parameters with 68% uncertainties"
+      }
+     ]
+    },
+    "validation": {
+     "value": "No significant degeneracy between subhalo and smooth lens parameters including multipoles",
+     "evidence": [
+      {
+       "loc": "5.1 Initial subhalo search",
+       "quote": "We do not find evidence for significant degeneracies between the subhalo parameters and the parameters of the smooth lens model"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Search for additional substructure",
+    "method": {
+     "value": "Repeat the linearized search about the model including the detected subhalo; nonlinear fit of a second subhalo",
+     "evidence": [
+      {
+       "loc": "5.2 Search for additional substructure",
+       "quote": "We repeated our search for a second subhalo, by linearly expanding about a smooth model now containing a subhalo of mass $M_{\\rm sub}=10^{8.96} M_{\\odot}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Second object marginal (<5 sigma) and possibly a modeling artifact, so not claimed as detection",
+     "evidence": [
+      {
+       "loc": "5.2 Search for additional substructure",
+       "quote": "First, the detection is marginal $(<5\\sigma)$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Constrain subhalo mass function",
+    "method": {
+     "value": "Combine Poisson likelihood from detected subhalos with exclusion areas from Delta E maps, assuming linear addition of Delta E; fit dn/dlogM = A (M/Mpivot)^-eta",
+     "evidence": [
+      {
+       "loc": "5.3 Bounds on the subhalo mass function",
+       "quote": "We describe the mass function using a simple parametrization, $dn/d\\log M = A\\,(M/M_{\\rm pivot})^{-\\eta}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Poisson process with spatially uniform mean projected density; subhalo effects add linearly",
+      "evidence": [
+       {
+        "loc": "5.3 Bounds on the subhalo mass function",
+        "quote": "We assume that the incidence of subhalos is a Poisson process with mean projected number density $n(M)$ that is spatially uniform"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Linear addition tends to underestimate decrease in posterior for overlapping subhalos, so bounds slightly conservative",
+     "evidence": [
+      {
+       "loc": "5.3 Bounds on the subhalo mass function",
+       "quote": "suggesting that our bounds below are (slightly) conservative."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare with LCDM predictions",
+    "method": {
+     "value": "Predict projected subhalo mass function from calibrated M0(Mhost, chost) relation with NFW radial distribution, marginalizing over host mass and concentration from abundance matching",
+     "evidence": [
+      {
+       "loc": "6 Comparison to LCDM Predictions",
+       "quote": "we treat it as a free parameter, along with other parameters describing the lens halo: the host halo mass and concentration ($M_\\text{host}$, $c_\\text{host}$), and the log–log slope ($\\eta$)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "eta=0.9; c_subs/c_host = 0.2 and 1.0; abundance matching with 0.2 dex scatter",
+      "evidence": [
+       {
+        "loc": "6 Comparison to LCDM Predictions",
+        "quote": "we assume the mass function slope is $\\eta=0.9$, and we show two possible values for the subhalo concentration, $c_\\text{subs}/c_\\text{host}=0.2$ and 1.0"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Subhalo spatial distribution independent of mass, isotropic, NFW radial profile",
+      "evidence": [
+       {
+        "loc": "6 Comparison to LCDM Predictions",
+        "quote": "the subhalo spatial distribution is *independent* from the subhalo mass function"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Limits consistent with theory but parameters degenerate",
+     "evidence": [
+      {
+       "loc": "6 Comparison to LCDM Predictions",
+       "quote": "substructure limits from SDP.81 are currently consistent with theoretical predictions."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Simulating mock ALMA observations",
+     "evidence": [
+      {
+       "loc": "4.1 Mock observations",
+       "quote": "the lensed images were used to simulate ALMA observations using the Common Astronomy Software Applications package (CASA)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Elemental",
+    "version": "not stated",
+    "used_for": {
+     "value": "Distributed dense linear algebra for the Fourier operator",
+     "evidence": [
+      {
+       "loc": "4 implementation, simulations, and tests",
+       "quote": "we take advantage of the “*Elemental*” dense linear algebra library, which efficiently performs linear algebra operations over distributed cores"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC sampling procedure, parallelized with MPI",
+     "evidence": [
+      {
+       "loc": "4.1 Mock observations",
+       "quote": "Our implementation allows sampling the posterior in parallel, over many cores, taking advantage of the MPI message-passing system."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Subhalo mass log10(M_sub)",
+    "value": "8.96",
+    "uncertainty": "0.12",
+    "units": "log10 Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$\\log_{10} (M_{\\rm sub})$ | subhalo mass ($M_\\odot$) | $8.96 \\pm 0.12$"
+     }
+    ]
+   },
+   {
+    "quantity": "Detection significance, joint bands 6 and 7",
+    "value": "6.9",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with a significance of $6.9\\sigma$ in a joint fit to data from bands 6 and 7"
+     }
+    ]
+   },
+   {
+    "quantity": "Delta E improvement from adding subhalo, joint fit",
+    "value": "-47.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 Initial subhalo search",
+      "quote": "improves the marginalized log posterior fit by $\\Delta\\ensuremath{{\\cal  E} }= -47.3$ in the joint fit"
+     }
+    ]
+   },
+   {
+    "quantity": "Subhalo position (x, y)",
+    "value": "(-0.694, 0.749)",
+    "uncertainty": "0.025, 0.044",
+    "units": "arcsec",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$x_{\\rm sub}$ | subhalo position x ($^{\\prime\\prime}$) | $-0.694 \\pm 0.025$"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial slope alpha",
+    "value": "1.06",
+    "uncertainty": "0.03",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$\\alpha$ | radial slope | $1.06  \\pm 0.03$"
+     }
+    ]
+   },
+   {
+    "quantity": "Delta E for second subhalo (~1e8 Msun)",
+    "value": "≈ -22",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 Search for additional substructure",
+      "quote": "could improve the fit marginally, with $\\Delta\\ensuremath{{\\cal  E} }\\approx -22$, compared to the 1-subhalo model."
+     }
+    ]
+   },
+   {
+    "quantity": "95% central range of n at 1e9 Msun",
+    "value": "0.012 < n < 0.2",
+    "uncertainty": "95% interval",
+    "units": "arcsec^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 Bounds on the subhalo mass function",
+      "quote": "the central 95% confidence region is $0.012\\ {\\rm arcsec}^{-2} < n < 0.2\\ {\\rm arcsec}^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Chi-squared of smooth fit over 5x5 arcsec region",
+    "value": "2e5 for 1.7e5 dof",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "5.1 Initial subhalo search",
+      "quote": "our model obtains $\\chi^2 = 2\\times 10^5$ for $1.7\\times 10^5$ degrees of freedom"
+     }
+    ]
+   },
+   {
+    "quantity": "Lens host halo mass from abundance matching",
+    "value": "8.7e12",
+    "uncertainty": "factor of 3.5",
+    "units": "Msun/h",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6 Comparison to LCDM Predictions",
+      "quote": "The typical halo mass we found with this procedure is roughly $8.7 \\times 10^{12} M_\\odot h^{-1}$, with an approximate uncertainty of a factor of 3.5."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Sensitivity to individual subhalos is lost at masses below ~1e7 Msun",
+    "evidence": [
+     {
+      "loc": "7 Discussion",
+      "quote": "the SDP.81 data set loses sensitivity for detecting individual subhalos at masses $\\lesssim 10^7 M_\\odot$."
+     }
+    ]
+   },
+   {
+    "value": "Marginalizing over antenna phase errors removes false positives that appear in uncorrected mock analyses",
+    "evidence": [
+     {
+      "loc": "4.2 Phase corruption",
+      "quote": "when phase errors are marginalized over appropriately, resulting in the disappearance of the false detections."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does ALMA visibility data of SDP.81 reveal a dark matter subhalo?",
+    "experiment": "Linearized search then nonlinear fit of bands 6 and 7 continuum visibilities",
+    "result": "Subhalo of log M = 8.96±0.12 with Delta E = -47.3, 6.9 sigma, seen in both bands",
+    "finding": "A subhalo is detected in projected mass",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Discussion",
+      "quote": "detects a $M=10^{8.96\\pm 0.12} M_{\\odot}$ subhalo with a significance of $6.9\\sigma$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there additional lower-mass substructure?",
+    "experiment": "Second linearized search about model with one subhalo",
+    "result": "~1e8 Msun candidate with Delta E ≈ -22, <5 sigma, near the first subhalo",
+    "finding": "Hints only, not a detection",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.2 Search for additional substructure",
+      "quote": "we do not label the second object as a detection, however we do include it in our main lens model."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the measured substructure abundance consistent with LCDM?",
+    "experiment": "Compare constraints with predicted subhalo mass function including host halo uncertainties",
+    "result": "Limits consistent with predictions, possibly hinting lower normalization",
+    "finding": "Consistent given current host halo uncertainties",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Comparison to LCDM Predictions",
+      "quote": "substructure limits from SDP.81 are currently consistent with theoretical predictions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Should substructure analyses use visibilities rather than CLEAN images?",
+    "experiment": "Mock tests with and without phase error marginalization",
+    "result": "Uncorrected phase errors give numerous false positives",
+    "finding": "Visibility modeling with marginalization is needed; may explain disagreement with Inoue et al.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "7 Discussion",
+      "quote": "we recommend that substructure analyses operate on the visibilities"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Visibility-domain modeling allows marginalizing antenna phase errors and has well-characterized noise, unlike CLEAN images",
+    "evidence": [
+     {
+      "loc": "4.2 Phase corruption",
+      "quote": "In addition, CLEAN images are produced through a non-linear deconvolution procedure whose effects on the data and the correlated noise properties can not be well quantified."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Gradient and curvature source priors compared on mock data; DC mode removed from the clump power-spectrum prior to avoid magnification bias",
+     "evidence": [
+      {
+       "loc": "4.1 Mock observations",
+       "quote": "To fix this issue, we removed the DC mode from this covariance matrix"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Simple spherical pseudo-Jaffe subhalo profile may leave residuals fitted by lower-mass substructure",
+     "evidence": [
+      {
+       "loc": "5.2 Search for additional substructure",
+       "quote": "We have assumed an extremely simple mass profile for the subhalos, a spherical tidally truncated pseudo-Jaffe model"
+      }
+     ]
+    },
+    {
+     "value": "Only continuum used; CO line data not analyzed; weaker data corruptions such as decorrelation not studied",
+     "evidence": [
+      {
+       "loc": "7 Discussion",
+       "quote": "The effects of decorrelation, visibility smearing due to frequency averaging, choice of parameterization for antenna phase error corrections, and antenna amplitude errors are among these effects."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only ~40% of visibilities used, selected by noise cut; effect on result not tested",
+    "Result depends on pseudo-Jaffe profile and fixed truncation relation",
+    "Significance from Laplace/linearized Delta E; no independent validation on real data",
+    "Host halo mass and subhalo concentration degenerate, limiting LCDM test",
+    "Detection near a cluster member may be affected by environment"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA Science Verification data, cited and acknowledged",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00016.SV."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Custom lens-fitting pipeline not released",
+    "MCMC and prior details",
+    "Source prior choice and grid for SDP.81",
+    "Specific visibility selection beyond noise cuts"
+   ],
+   "estimated_data_volume_inferred": "Tens to hundreds of GB for SV continuum visibilities of bands 6 and 7; heavy compute needed",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear formalism, but bespoke code, missing sampler and prior details, and cluster-scale compute make exact reproduction hard.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data are public but the recipe needs a custom visibility-domain lens pipeline with incomplete settings."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Hezaveh13A)",
+     "why": "Proposed ALMA subhalo detection and linearized treatment"
+    },
+    {
+     "citation": "(cite: suyu:06)",
+     "why": "Pixelated source lens modeling with evidence-based regularization"
+    },
+    {
+     "citation": "(cite: Mao:15)",
+     "why": "Subhalo mass function model used for LCDM comparison"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: SDP81)",
+     "why": "ALMA Science Verification observations of SDP.81"
+    },
+    {
+     "citation": "(cite: Inoue2015)",
+     "why": "Independent CLEAN-image substructure analysis of SDP.81 with different conclusions"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Science Verification",
+    "SDSS",
+    "Dark Sky Simulations"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-55f649a5f0deb7924c84c9e5bc543b8d",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:46",
+  "usage": {
+   "input_tokens": 38845,
+   "output_tokens": 9937,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.089136,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 66,
+  "quotes_ok": 66,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 93,
+   "stated": 51,
+   "rate": 0.548
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:08:22",
+  "custom_id": "repair-sonnet-61951626533c21d1ee7753944ae77497",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].method.evidence[0]",
+    "old": "We search for subhalos over a range of subhalos masses, over a $8\\times8$ arcsec area around the lens center.",
+    "new": "We search for subhalos over a range of subhalo masses, over a $8\\times8$ arcsec area around the lens center."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,186 @@
+{
+ "bibcode": "2017ApJ...846L..14S",
+ "title": "Massive Quenched Galaxies at z ∼ 0.7 Retain Large Molecular Gas Reservoirs",
+ "year": 2017,
+ "doi": "10.3847/2041-8213/aa85dc",
+ "arxiv_id": "1708.03337",
+ "fields": [
+  "nearby_galaxies",
+  "high_z_galaxies"
+ ],
+ "question": "Do recently quenched massive post-starburst galaxies at z~0.7 still retain large molecular gas reservoirs, as tested with ALMA CO(2-1)?",
+ "alma_project_codes": [
+  "2016.1.01126.S"
+ ],
+ "data": {
+  "bands": "Band 4",
+  "arrays": "not stated",
+  "angular_resolution": "2.2x3.0'' (J2202-0033), 1.7x2.4'' (J0912+1523), natural weighting",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Comparison samples of K+A post-starbursts' gas and SFR",
+    "evidence": [
+     {
+      "loc": "4 Molecular Gas Masses",
+      "quote": "we show for comparison the low-redshift ‘K+A’ post-starburst galaxies in (cite: french15)"
+     }
+    ]
+   },
+   "citation": "(cite: french15)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO fitting formula vs CO surface brightness",
+    "evidence": [
+     {
+      "loc": "4 Molecular Gas Masses",
+      "quote": "We estimate the value of $\\alpha_{\\rm{CO}}$ using the numerical models of (cite: narayanan12)."
+     }
+    ]
+   },
+   "citation": "(cite: narayanan12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra",
+   "method": "Fit point source or circular Gaussian to visibilities, averaging channels",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "Averaged 24 (J2202) or 6 (J0912) channels, ~200 and 50 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line flux and luminosity",
+   "method": "Gaussian profile fit to spectra; convert flux to L'CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas mass",
+   "method": "M_gas = alpha_CO x L'CO(1-0), with r21 = 1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.0; CO(2-1)/CO(1-0) = 1 (thermalized)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain obscured SFR",
+   "method": "2 mm continuum upper limit with modified blackbody; WISE 12um with Dale templates",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust = 30 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "M_gas SDSS J0912+1523",
+   "value": "34.0e9",
+   "uncertainty": "1.6e9",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Molecular Gas Masses",
+     "quote": "$\\ensuremath{M_{\\rm{gas}}}=(34.0\\pm1.6)\\times10^9$ $\\rm{M}_\\odot$ for SDSS J0912+1523"
+    }
+   ]
+  },
+  {
+   "quantity": "M_gas SDSS J2202-0033",
+   "value": "6.4e9",
+   "uncertainty": "0.8e9",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Molecular Gas Masses",
+     "quote": "$\\ensuremath{M_{\\rm{gas}}}=(6.4\\pm0.8)\\times10^9$ $\\rm{M}_\\odot$ for SDSS J2202-0033"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux J0912+1523",
+   "value": "1.07",
+   "uncertainty": "0.05",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Molecular Gas Masses",
+     "quote": "integrated line fluxes of $1.07\\pm0.05$ and $0.27\\pm0.03$ Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux J2202-0033",
+   "value": "0.27",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Molecular Gas Masses",
+     "quote": "integrated line fluxes of $1.07\\pm0.05$ and $0.27\\pm0.03$ Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "2 mm continuum 3sigma upper limit",
+   "value": "<75",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 ALMA Observations",
+     "quote": "with a 3$\\sigma$ upper limit $<75$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved FWHM J0912+1523",
+   "value": "1.9",
+   "uncertainty": "0.3",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 ALMA Observations",
+     "quote": "deconvolved source FWHM of 1.9 $\\pm$ 0.3$''$(14 $\\pm$ 2$\\,$kpc)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA/pipeline version",
+  "Flux calibrator and flux scale uncertainty",
+  "Spectral setup and frequencies",
+  "Cell/image size, cleaning parameters, continuum-subtraction channels",
+  "uvmultifit model parameters and positions",
+  "Rest frequency used for line luminosity"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and uvmultifit setup",
+  "Pipeline version",
+  "Rest frequency/line luminosity formula details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple analysis with public ALMA project, but imaging/fitting details are sparse.",
+ "rediscovery_reason": "Public data, simple numeric results (line flux, M_gas), though details are thin.",
+ "source_card": "cards/2017ApJ...846L..14S/sonnet/card.md"
+}

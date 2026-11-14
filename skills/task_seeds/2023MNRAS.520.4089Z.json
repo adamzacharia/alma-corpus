@@ -1,0 +1,412 @@
+{
+ "bibcode": "2023MNRAS.520.4089Z",
+ "title": "Millimeter-wave spectrum of 2-propanimine",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad405",
+ "arxiv_id": "2302.00372",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Measure the high-resolution millimeter-wave rotational spectrum of 2-propanimine in the laboratory and search for its emission in Sgr B2(N1S) and IRAS 16293B using ALMA spectral line surveys.",
+ "alma_project_codes": [
+  "2016.1.00074.S",
+  "2013.1.00278.S"
+ ],
+ "data": {
+  "bands": "Band 3 (ReMoCA), Band 7 (PILS)",
+  "arrays": "not stated",
+  "angular_resolution": "ReMoCA: ~0.3'' to ~0.8'' (median 0.6''); PILS: 0.5''",
+  "sensitivity": "ReMoCA: 0.35 to 1.1 mJy beam−1 (median 0.8 mJy beam−1) per channel; PILS: 4–5 mJy beam−1 km s−1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "LTE parameters and column densities for methanimine (CH2NH) and (E)/(Z)-1-propanimine toward Sgr B2(N1S)",
+    "evidence": [
+     {
+      "loc": "4.1 Search toward Sgr B2(N1)",
+      "quote": "In order to search for 2-propanimine, CH3C(NH)CH3, toward Sgr B2(N1S), we relied on the LTE parameters that we previously derived for methanimine, CH2NH, toward this position with the ReMoCA survey (Margulès et al. 2022)."
+     },
+     {
+      "loc": "4.1 Search toward Sgr B2(N1)",
+      "quote": "We recall in Table 6 the column density of methanimine and the upper limit to the column densities of the Z and E conformers of 1-propanimine that we derived earlier with the ReMoCA survey toward Sgr B2(N1S) (Margulès et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Margulès et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Methanimine (CH2NH) column density of 6–10×10^14 cm^-2 toward IRAS 16293B",
+    "evidence": [
+     {
+      "loc": "4.2 Search toward IRAS 16293-2422",
+      "quote": "Toward this position methanimine CH2NH was detected as part of PILS by Ligterink et al. (2018) with a column density of 6–10×1014 cm−2 for excitation temperatures between 70 and 120 K."
+     }
+    ]
+   },
+   "citation": "Ligterink et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "List of identified molecules included in the complete LTE model of Sgr B2(N1S)",
+    "evidence": [
+     {
+      "loc": "4.1 Search toward Sgr B2(N1)",
+      "quote": "The molecules included in the complete model comprise in particular those listed in Belloche et al. (2013)."
+     }
+    ]
+   },
+   "citation": "Belloche et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Perform quantum chemical calculations of 2-propanimine structure, dipole moments, vibrational frequencies, and internal rotation barriers",
+   "method": "Geometry optimization in Cs symmetry, harmonic/anharmonic vibrational frequency calculations, and 1D/2D potential energy surface (PES) scans using DFT (B3LYP, M062X, MN15) and ab initio MP2 methods",
+   "software": [
+    "Gaussian16"
+   ],
+   "key_parameters": [
+    "DFT methods B3LYP, M062X, MN15 with 6-311++G(3df,3pd) basis set; MP2 with aug-cc-pVTZ basis set; 2D PES with B3LYP/6-311+g(2d,2p) in 2° steps from 0° to 120°"
+   ],
+   "assumptions": [
+    "Cs molecular symmetry for equilibrium geometry optimization (relaxed during PES scans)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Synthesize 2-propanimine, measure laboratory millimeter-wave spectrum, and fit spectroscopic constants and internal rotation parameters",
+   "method": "Synthesize sample from KOH and 2-amino-2-methylpropanenitrile, record absorption spectrum from 50 to 500 GHz, remove standing-wave baseline via Fourier transform, fit line peaks with second-derivative Voigt profiles, and iteratively assign and fit torsional-rotational transitions using Watson's A reduction Hamiltonian in Ir representation",
+   "software": [
+    "custom spectral assignment software",
+    "XIAM",
+    "ERHAM",
+    "CALPGM/SPFIT",
+    "BARRIER",
+    "GNU Fortran 11.1.0"
+   ],
+   "key_parameters": [
+    "Frequency ranges: 50–110 GHz, 150–330 GHz, 360–500 GHz; cell pressure 8–20 µBar at −60 °C; frequency uncertainties 25–200 kHz; 9,349 line frequencies (27,259 transitions) fitted with 44 parameters in ERHAM"
+   ],
+   "assumptions": [
+    "Partially resolved 14N quadrupole hyperfine components (~1% of lines) are replaced by their intensity-weighted average frequencies; two methyl tops treated as independent in BARRIER calculation"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Generate rotational line catalog and partition functions for astronomical searches",
+   "method": "Predict transition frequencies and intensities up to J'' = 80 and 1 THz from the best-fit ERHAM parameters and MP2 dipole moments, and compute the torsional-rotational partition function by direct summation of Boltzmann factors up to J'' = 120",
+   "software": [
+    "ERHAM",
+    "CALPGM/SPCAT"
+   ],
+   "key_parameters": [
+    "J'' up to 80 and frequency up to 1 THz for catalog; J'' up to 120 for partition function; µa = 1.3711 D, µb = −2.0643 D; reduced spin weight 2:2:2:1:1 (total 8) vs full spin weight 16:16:16:8:8 (total 64)"
+   ],
+   "assumptions": [
+    "Vibrational partition function estimated from harmonic/anharmonic vibrational energies in Table B5; no conformational correction needed (Fconf = 1.00)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Search for 2-propanimine and derive column density upper limit toward Sgr B2(N1S) using ALMA ReMoCA data",
+   "method": "Compute LTE synthetic spectra with Weeds using the ERHAM spectroscopic predictions and LTE parameters adopted from methanimine, compare with the observed ReMoCA spectrum and complete multi-molecule model toward Sgr B2(N1S), and derive a column density upper limit",
+   "software": [
+    "Weeds"
+   ],
+   "key_parameters": [
+    "θs = 2.0'', Trot = 230 K, ∆V = 5.0 km s−1, Voff = 0.0 km s−1 (Vsys = 62 km s−1), Fvib = 3.33, Fconf = 1.00"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) justified by high density (> 1×10^7 cm^-3); resolved emission size fixed to 2''; identical LTE parameters (θs, Trot, ∆V, Voff) to methanimine"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Search for 2-propanimine and derive column density upper limit toward IRAS 16293B using ALMA PILS data",
+   "method": "Compute LTE synthetic spectra assuming optically thin emission using custom PILS routines and compare predicted bright transitions against line-free regions of the observed ALMA Band 7 spectrum down to the RMS noise level",
+   "software": [
+    "custom PILS LTE routines"
+   ],
+   "key_parameters": [
+    "Trot = 100 K, RMS noise level 4–5 mJy beam−1 km s−1, key frequency windows around 341.96, 346.86, and 361.34 GHz"
+   ],
+   "assumptions": [
+    "Optically thin emission and LTE at excitation temperature of 100 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rotational constant A of 2-propanimine (ERHAM)",
+   "value": "9709.082826",
+   "uncertainty": "0.000066",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "A MHz 9709.08619(11) 9709.082826(66)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of 2-propanimine (ERHAM)",
+   "value": "8478.033891",
+   "uncertainty": "0.000058",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B MHz 8479.04382(16) 8478.033891(58)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of 2-propanimine (ERHAM)",
+   "value": "4789.524383",
+   "uncertainty": "0.000054",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C MHz 4788.51105(14) 4789.524383(54)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of 2-propanimine (XIAM)",
+   "value": "9709.08619",
+   "uncertainty": "0.00011",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "A MHz 9709.08619(11) 9709.082826(66)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of 2-propanimine (XIAM)",
+   "value": "8479.04382",
+   "uncertainty": "0.00016",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B MHz 8479.04382(16) 8478.033891(58)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of 2-propanimine (XIAM)",
+   "value": "4788.51105",
+   "uncertainty": "0.00014",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C MHz 4788.51105(14) 4789.524383(54)"
+    }
+   ]
+  },
+  {
+   "quantity": "Internal rotation barrier V3 of CH3 top 1 (XIAM)",
+   "value": "531.956",
+   "uncertainty": "0.064",
+   "units": "cm−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The barriers to internal rotation of the two CH3 tops are determined to be 531.956(64) cm−1 and 465.013(26) cm−1 by XIAM."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "V3 cm−1 531.956(64) 531.394 (2) 465.013(26) 462.284 (2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Internal rotation barrier V3 of CH3 top 2 (XIAM)",
+   "value": "465.013",
+   "uncertainty": "0.026",
+   "units": "cm−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The barriers to internal rotation of the two CH3 tops are determined to be 531.956(64) cm−1 and 465.013(26) cm−1 by XIAM."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "V3 cm−1 531.956(64) 531.394 (2) 465.013(26) 462.284 (2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Internal rotation barrier V3 of CH3 top 1 (ERHAM/BARRIER)",
+   "value": "531.394",
+   "uncertainty": "not stated",
+   "units": "cm−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "V3 cm−1 531.956(64) 531.394 (2) 465.013(26) 462.284 (2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Internal rotation barrier V3 of CH3 top 2 (ERHAM/BARRIER)",
+   "value": "462.284",
+   "uncertainty": "not stated",
+   "units": "cm−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "V3 cm−1 531.956(64) 531.394 (2) 465.013(26) 462.284 (2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dipole moment component µa (MP2/aug-cc-pVTZ)",
+   "value": "1.3711",
+   "uncertainty": "not stated",
+   "units": "Debye",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "µa (1) Debye 1.3216 1.3142 1.2797 1.3711"
+    }
+   ]
+  },
+  {
+   "quantity": "Dipole moment component µb (MP2/aug-cc-pVTZ)",
+   "value": "-2.0643",
+   "uncertainty": "not stated",
+   "units": "Debye",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "µb (1) Debye −2.1122 −2.1066 −2.1242 −2.0643"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational partition function Qfull at 300 K",
+   "value": "2828914.006",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "300 2828914.006 353614.251"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced rotational partition function Qred at 300 K",
+   "value": "353614.251",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "300 2828914.006 353614.251"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of 2-propanimine toward Sgr B2(N1S)",
+   "value": "< 5.0e16",
+   "uncertainty": "not stated",
+   "units": "cm−2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "CH3C(NH)CH3 n 0 2.0 230 < 5.0 (16) 3.33 1.00 5.0 0.0 > 18"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density ratio methanimine / 2-propanimine toward Sgr B2(N1S)",
+   "value": "> 18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Upper-limits of its column density have been derived, and indicate that 2-propanimine is at least 18 times less abundant than methanimine in Sgr B2(N1S)"
+    },
+    {
+     "loc": "Table 6",
+     "quote": "CH3C(NH)CH3 n 0 2.0 230 < 5.0 (16) 3.33 1.00 5.0 0.0 > 18"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of 2-propanimine toward IRAS 16293B",
+   "value": "< 5e14",
+   "uncertainty": "not stated",
+   "units": "cm−2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Search toward IRAS 16293-2422",
+     "quote": "The upper limit found in this manner is 5 × 1014 cm−2, i.e., a ratio < 0.5–1 with respect to CH2NH, thus significantly less constraining than the < 1/18 ratio toward Sgr B2(N1S)."
+    },
+    {
+     "loc": "Figure 6 caption",
+     "quote": "No lines can be claimed to be detected at this level and the upper limit (red line) corresponds to a column density of 5 × 1014 cm−2."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio 2-propanimine / methanimine toward IRAS 16293B",
+   "value": "< 0.50–0.83",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "and is at most 50–83 % of methanimine in IRAS 16293B."
+    },
+    {
+     "loc": "4.2 Search toward IRAS 16293-2422",
+     "quote": "The upper limit found in this manner is 5 × 1014 cm−2, i.e., a ratio < 0.5–1 with respect to CH2NH, thus significantly less constraining than the < 1/18 ratio toward Sgr B2(N1S)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging details (CASA version, calibrators, continuum subtraction procedure, weighting, masking) for both ReMoCA and PILS surveys, which are deferred to Belloche et al. (2019), Melosso et al. (2020), and Jørgensen et al. (2016)",
+  "Exact coordinates, source size, linewidth, and systemic velocity adopted in the custom LTE synthetic spectrum routine for the IRAS 16293B offset position",
+  "Complete background molecular model parameters for all interfering species in Sgr B2(N1S)"
+ ],
+ "missing_for_reproduction": [
+  "Extracted 1D ALMA spectra toward Sgr B2(N1S) and IRAS 16293B (unless re-reduced from raw archival visibility data or obtained from survey teams)",
+  "Complete Weeds model parameters for all background molecules in Sgr B2(N1S)",
+  "Custom PILS LTE synthetic spectrum scripts and exact linewidth/source size parameters used for IRAS 16293B"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "The laboratory spectroscopy analysis is exceptionally reproducible with all XIAM/ERHAM input/output files, modified executables, and final catalogs publicly archived on Zenodo, CDS, and LSD. The ALMA upper limit derivations use public archival data and clearly stated LTE parameters for Sgr B2(N1S), though full reproduction from raw visibilities requires external survey reduction recipes (Belloche et al. 2019; Jørgensen et al. 2016) and the full Sgr B2(N1S) background line model.",
+ "rediscovery_reason": "Both the spectroscopic input/output datasets (on Zenodo/CDS) and the ALMA datasets (in the ALMA archive, plus published PILS cubes) are public, and all main results (spectroscopic constants, partition functions, and column density upper limits) are quantitative.",
+ "source_card": "cards/2023MNRAS.520.4089Z/sonnet/card.md"
+}

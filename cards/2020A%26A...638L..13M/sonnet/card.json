@@ -1,0 +1,828 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020A&A...638L..13M",
+  "title": "ALMA full polarization observations of PKS 1830-211 during its record-breaking flare of 2019",
+  "year": 2020,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Marti-Vidal, I.",
+  "n_authors": 6,
+  "arxiv_id": "2006.06044",
+  "doi": "10.1051/0004-6361/202038094",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.00692.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "PKS 1830$-$211 was observed with ALMA in full polarization mode on 2019 April 11."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "PKS 1830-211",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "absorber at z=0.89 (molecular absorber in front of the blazar)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The source has two bright and compact images (hereafter labelled NE and SW), separated by 1$''$ and delayed in time by $\\sim$26 days"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the polarization properties of the lensed blazar PKS 1830-211 differ between its two lensed images and vary on intra-hour timescales during its 2019 gamma-ray flare, and can differential polarimetry be validated with full-polarization data?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Here we report full polarization radio-millimeter observations of PKS 1830$-$211 obtained with ALMA close in time to this exceptional peak of the $\\gamma$-ray activity."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "The full-polarization calibration allows us to validate the technique of differential polarimetry."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2018.1.00692.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.00692.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The Band 6 receivers were used"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four 1.875 GHz spectral windows at ~234, 236, 247, 249 GHz, 1.95 MHz channels",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the correlator was configured to cover four independent 1.875 GHz wide spectral windows, centered at $\\sim 234$, 236, 247, and 249 GHz, with a spectral resolution of 1.95 MHz per channel."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.47'' x 0.31'', PA -83 deg",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The resulting beam is $0.47 ''\\times 0.31''$, with a position angle $-83^\\circ$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2019 April 11, two consecutive executions over ~2 h",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Observations were done in two consecutive executions over a time span of about two hours."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Fermi-LAT",
+     "provided": {
+      "value": "gamma-ray light curve of the flare",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "see Fig. [3](#fig:gamma-lc), generated from Fermi-LAT observations"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, two-step: standard calibration then full-polarization calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data calibration was done within the Common Astronomy Software Applications (CASA[^1]) package, following a two-step procedure."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J2000-1748 as absolute flux calibrator; bootstrapped to J1832-2039",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The quasar J2000-1748 was also used as absolute flux calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "better than 10%",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We estimate a flux accuracy better than 10%, based on the ALMA monitoring data of this source."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "phase-only, 6 s solint, all four spws combined, on Stokes I continuum",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "applying phase-only gain corrections at each 6 s integration and combining all four spectral windows to a common solution."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean for Stokes I, Q, U separately; immath for m and EVPA",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The CASA task `tclean` was executed to reconstruct the images of PKS 1830$-$211 in Stokes I, Q, and U, separately."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "uniform",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Uniform visibility weighting was used in the image deconvolution."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "same mask for Q and U as for Stokes I",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The CLEANing of Stokes Q and U was executed using the same mask as in the CLEANing of Stokes I."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.47'' x 0.31'', PA -83 deg",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The resulting beam is $0.47 ''\\times 0.31''$, with a position angle $-83^\\circ$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Full-polarization calibration follows standard ALMA procedure",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "following the standard ALMA calibration procedure (cite: Nagai)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Nagai)"
+    },
+    {
+     "what": {
+      "value": "Visibility model-fitting approach with uvmultifit",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "For a thorough discussion of the advantages of visibility model-fitting in this case, see (cite: mar14)."
+       }
+      ]
+     },
+     "from_reference": "(cite: mar14)"
+    },
+    {
+     "what": {
+      "value": "Differential polarimetry formalism (Eq. 11)",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "derived from Eq. 11 of (cite: mar16), which is the exact expression for differential polarimetry"
+       }
+      ]
+     },
+     "from_reference": "(cite: mar16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean cell size, image size, iteration/threshold and mask definition",
+    "CASA version",
+    "line-free channel selection and flagged absorption/atmospheric ranges",
+    "polarization calibrator model/reference antenna details",
+    "uvmultifit source-model settings and error estimation",
+    "fit method for Faraday RM and the NE/SW flux ratio function"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and self-calibrate",
+    "method": {
+     "value": "Standard calibration, flagging of absorption lines, polarization calibration with J1924-2914, phase-only self-cal on Stokes I",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The quasar J 1924$-$2914 was observed as the polarization calibrator."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "self-cal solint 6 s, all spws combined",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "applying phase-only gain corrections at each 6 s integration and combining all four spectral windows to a common solution."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Dynamic range improved by factor 2-3 after self-cal, reaching >~1000",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the dynamic range (DR; i.e., the ratio of peak flux to rms noise level in the image) improved by a factor 2–3 after self-calibration"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image Stokes I,Q,U and derive m and EVPA",
+    "method": {
+     "value": "tclean per Stokes, immath pixel-wise m and phi",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The images of the degree of linear polarization, $m$, and EVPA, $\\phi$, were computed pixel-wise from the Stokes Q and U images with the CASA task `immath`"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Intra-observation variability via visibility fitting",
+    "method": {
+     "value": "Each ~410 s scan split in three segments; Stokes I, Q, U of both images fitted independently with uvmultifit; differential NE/SW approach",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Each ALMA scan (with a typical duration of 410 seconds) was divided into three segments of equal length and the Stokes parameters I, Q, and U of PKS 1830$-$211 were fitted independently to each scan subdivision."
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Both lensed images point-like within the beam",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Since both lensed images of the blazar are point-like within the ALMA beam"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Differential approach removes residual instrumental effects common to both images",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "we search for relative changes between the NE and SW polarization states, in order to remove any possible residual instrumental effect"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Validate differential polarimetry",
+    "method": {
+     "value": "Fit XX and YY flux ratios in 15 segments per scan, compute Rpol=(rho_X/rho_Y-1)/2 vs source rotation, compare with prediction from full-pol Stokes parameters",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "In these fits, we divided each scan into 15 segments of equal duration to perform an intra-observation analysis"
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit"
+    ],
+    "key_parameters": [
+     {
+      "value": "feed rotation beta = 45 deg in Band 6",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "which are rotated by $\\beta = 45^\\circ$ with respect to the horizontal coordinates in Band 6"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Good agreement; chi2 decreases 10-15% by rotating SW image 2-5 deg",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "the fit improves slightly (a decrease of 10–15% in the $\\chi^2$) by rotating the SW image by 2$-$5 degrees"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Faraday rotation fit of differential EVPA",
+    "method": {
+     "value": "Thin Faraday screen (phi ∝ lambda^2) fit to NE-SW EVPA difference at each time bin",
+     "evidence": [
+      {
+       "loc": "Faraday rotation",
+       "quote": "we used a model of thin Faraday screen (i.e., $\\phi \\propto \\lambda^2$ law) to fit the EVPA difference between the two images at each time bin."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration, tclean imaging, immath",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data calibration was done within the Common Astronomy Software Applications (CASA[^1]) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvmultifit",
+    "version": "not stated",
+    "used_for": {
+     "value": "visibility-domain fitting of Stokes parameters",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The fitting was performed with the Python-based task `uvmultifit` (cite: mar14)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Peak fractional polarization SW",
+    "value": "14",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a fractional polarization peak of 14% (in the SW image, with a flux density of 2.34 Jy)"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak fractional polarization NE",
+    "value": "5.4",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "5.4% (in the NE image, with a flux density of 2.10 Jy)"
+     }
+    ]
+   },
+   {
+    "quantity": "NE EVPA",
+    "value": "-24",
+    "uncertainty": "not stated",
+    "units": "degrees",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "its EVPA ($-24$ degrees) is rotated $\\sim$15 degrees with respect to that of the SW"
+     }
+    ]
+   },
+   {
+    "quantity": "Rate of differential EVPA increase",
+    "value": "~2",
+    "uncertainty": "not stated",
+    "units": "degrees per hour",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a clear linear increase in the EVPA difference between the two images (see Fig. [2](#fig:curves)A) at a rate of about two degrees per hour"
+     }
+    ]
+   },
+   {
+    "quantity": "Delta alpha change",
+    "value": "-0.19 to -0.05",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "we estimate a variation from $\\Delta\\alpha \\sim -0.19$ to $\\Delta\\alpha \\sim -0.05$ between the start and end of the observations"
+     }
+    ]
+   },
+   {
+    "quantity": "Weighted mean RM of differential NE-SW",
+    "value": "3.4e4",
+    "uncertainty": "1.7e4",
+    "units": "rad m^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Faraday rotation",
+      "quote": "The weighted average of all the RM measurements is $(3.4 \\pm 1.7)\\times 10^4$ rad m$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Maximum Rpol",
+    "value": "~0.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The maximum $R_{pol}$ measured in our 2019 observations ($\\sim 0.1$; Fig. [4](#fig:diffpol))"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Polarization intensity appears suppressed during the gamma-ray flare; consistent with stronger magnetic turbulence",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the polarization intensity of the blazar was somehow suppressed during the $\\gamma$-ray flare"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do the NE and SW images show different polarization reflecting intrinsic evolution?",
+    "experiment": "Full-pol imaging of both images",
+    "result": "NE fractional polarization ~3 times lower than SW; EVPA offset ~15 deg",
+    "finding": "Intrinsic polarization evolved within the ~26 day delay; polarization suppressed during flare",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The leading NE image has a fractional polarization about three times lower than the SW image"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there intra-hour polarization variability?",
+    "experiment": "uvmultifit on scan segments",
+    "result": "EVPA difference rising ~2 deg/h; relative fractional polarization changed ~10%",
+    "finding": "Significant variability on ~1 h timescales, consistent with magnetic turbulence",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The differential electric vector position angle varied at a rate of about 2 degrees per hour during the time span of $\\sim 2$ h of our observations."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does full-pol calibration validate differential polarimetry?",
+    "experiment": "Compare Rpol from XX/YY fits to full-pol prediction",
+    "result": "Good agreement",
+    "finding": "Technique validated",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "There is good agreement between the dual-polarization measurements and the full-polarization prediction"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Faraday rotation analysis is limited; RM only tentative and consistent with zero at 2 sigma",
+     "evidence": [
+      {
+       "loc": "Faraday rotation",
+       "quote": "All the fitted values are compatible with zero at a 2$\\sigma$ level"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Turbulent-cell interpretation rests on a single epoch",
+    "Cannot tell which lensed image changes its spectral index",
+    "Time-delay comparison assumes negligible differential effects from microlensing or the lens"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data cited with project code",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.00692.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and tclean parameters",
+    "uvmultifit configuration and error treatment",
+    "Fermi-LAT light-curve processing"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw (two-hour full-pol Band 6 observation)",
+   "score_inferred": 5,
+   "score_reason": "Short letter; steps described qualitatively with many imaging/fit parameters missing, though data are a single public project.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public single-project data, simple recipe, numeric results (polarization fractions, EVPA rate)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: mar14)",
+     "why": "uvmultifit visibility fitting"
+    },
+    {
+     "citation": "(cite: mar16)",
+     "why": "differential polarimetry formalism"
+    },
+    {
+     "citation": "(cite: Nagai)",
+     "why": "ALMA full-polarization calibration"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: mar15)",
+     "why": "earlier ALMA differential polarimetry and Faraday rotation of PKS 1830-211"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Fermi-LAT"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-51338cb7345411dccfbcd5fb54ac197f",
+  "batch_id": "msgbatch_016UJ21GsfAPnRKEWwunhnkY",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:55:17",
+  "usage": {
+   "input_tokens": 9346,
+   "output_tokens": 6256,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.041232,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 47,
+  "quotes_ok": 47,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 34,
+   "rate": 0.493
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:26",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "Visibility model fitting with simple analytical source model"
+   }
+  ],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,958 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...968....9W",
+  "title": "A Spatially Resolved [C II] Survey of 31 z ∼ 7 Massive Galaxies Hosting Luminous Quasars",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Wang, Feige",
+  "n_authors": 18,
+  "arxiv_id": "2404.15413",
+  "doi": "10.3847/1538-4357/ad3fb4",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.01188.S",
+   "2019.1.01025.S",
+   "2019.A.00017.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present a survey of the [C II] emission lines and FIR continua of 31 luminous quasars at $z>6.5$ using the Atacama Large Millimeter Array (ALMA) and the NOrthern Extended Millimeter Array (NOEMA) at sub-arcsec resolution."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "31 quasars at z>6.5 with M1450<-25 (e.g. J0038-1527, J0313-1806, J1007+2115, J0439+1634)",
+     "coordinates": {
+      "value": "per-object RA/Dec listed in Table 1 (e.g. J0038-1527: 00:38:36.10 -15:27:23.6)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "J0038$-$1527 | 00:38:36.10 | $-$15:27:23.6 | 6.999$\\pm$0.001 | $-$27.13 | ALMA | 2018.1.01188.S"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_MgII ~6.5-7.6 (Table 1)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "J0038$-$1527 | 00:38:36.10 | $-$15:27:23.6 | 6.999$\\pm$0.001 | $-$27.13 | ALMA | 2018.1.01188.S"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Mg II redshifts from near-IR spectroscopy (refs in Table 1); [C II] redshifts also measured",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "J0038$-$1527 | 00:38:36.10 | $-$15:27:23.6 | 6.999$\\pm$0.001 | $-$27.13 | ALMA | 2018.1.01188.S"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the [C II] and FIR continuum properties, sizes, kinematics, dynamical masses and SMBH-host relations of host galaxies of 31 luminous z>6.5 quasars?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "In this paper, we present an overview of our spatially resolved [C II] survey of 31 luminous $z\\sim7$ quasars and discuss the properties of quasar host galaxies based on [C II] and dust emission."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2018.1.01188.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "one Cycle 6 program (program ID: 2018.1.01188.S, PI: F. Wang)"
+      }
+     ]
+    },
+    {
+     "code": "2019.1.01025.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "two Cycle 7 programs (program IDs: 2019.1.01025.S and 2019.A.00017.S, PI: F. Wang)"
+      }
+     ]
+    },
+    {
+     "code": "2019.A.00017.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "two Cycle 7 programs (program IDs: 2019.1.01025.S and 2019.A.00017.S, PI: F. Wang)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "two SPWs (0,1) on [C II], SPWs 2,3 ~15 GHz away for continuum",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation and data reduction",
+      "quote": "We tuned two spectral windows (SPW, 0 and 1) centered at the expected frequency of [C II] and the other two SPWs (2 and 3) centered at about 15 GHz away"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[C II]",
+     "transition": "158 um fine structure",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "The [C II] 158 $\\mu$m emission line and the underlying far-infrared (FIR) dust continuum"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "NOEMA: 10 antennas, C configuration, PolyFiX",
+    "evidence": [
+     {
+      "loc": "2.2 NOEMA observation and data reduction",
+      "quote": "All quasars were observed using 10 antennas with the C array configuration during winter 2018."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-3 or C43-4",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation and data reduction",
+      "quote": "targets were observed with either the C43-3 or C43-4 configuration"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "design ~0.3 mJy/beam per 100 km/s; resolution 0.4''-0.7''",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation and data reduction",
+      "quote": "designed to reach a flux sensitivity of $\\sim$0.3 mJy/beam per 100 $\\rm km ~s^{-1}$ and a resolution of 0.4$''$–0.7$''$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~15 min per target designed for ALMA; NOEMA ~2.5 h on-source",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation and data reduction",
+      "quote": "The on-source exposure time for each target was designed to be $\\sim15$ minutes"
+     },
+     {
+      "loc": "2.2 NOEMA observation and data reduction",
+      "quote": "(on-source $\\sim2.5$ hours) per target"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "ALMA 2018 December to 2020 March; NOEMA winter 2018",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation and data reduction",
+      "quote": "Observations were carried out between 2018 December and 2020 March with 42–50 12m antennas."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "NOEMA",
+     "provided": {
+      "value": "[C II] and continuum for 5 quasars at Decl.>30 deg (program W18EJ)",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "26 quasars with $\\rm Decl. < 30^\\circ$ were targeted with ALMA and the other 5 quasars with $\\rm Decl.>30^\\circ$ were observed with NOEMA."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Mg II redshifts and M1450 of quasars",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "References for the quasar discovery (first number) and for $z_{\\rm MgII}$ and $M_{\\rm 1450}$ measurements (second number)."
+       }
+      ]
+     },
+     "citation": "Yang21 and others (cite: Yang21)"
+    },
+    {
+     "what": {
+      "value": "Mg II black hole masses for the quasars",
+      "evidence": [
+       {
+        "loc": "4.3 SMBH-host Co-evolution",
+        "quote": "are measured from the Mg II emission line and are collected from the literature (cite: Banados21; Wang21b; Yang21)"
+       }
+      ]
+     },
+     "citation": "(cite: Banados21; Wang21b; Yang21)"
+    },
+    {
+     "what": {
+      "value": "[C II]/FIR properties and kinematics of z>5.7 quasars from the literature",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "There are 65 $z>5.7$ quasars with [C II] and FIR continuum observations in the literature at the time of doing our analyses."
+       }
+      ]
+     },
+     "citation": "(cite: Decarli18; Venemans20; Neeleman21)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Haro 11 galaxy template used to derive L_FIR/L_TIR",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "a galaxy template from Haro 11 which has a relatively low metallicity and is thought to be a good analogue of high-redshift galaxies (cite: Lyu16)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline, default calibration procedure",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "All the ALMA data were processed using the CASA (cite: CASA) pipeline for ALMA using the default calibration procedure."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "Cycle 6 calibrated with 5.4.0; Cycle 7 with 5.6.1; analysis with 5.6.1",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "The Cycle 6 data were calibrated with CASA version 5.4.0 and the Cycle 7 data were calibrated with CASA version 5.6.1."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "We imaged the data cubes using Briggs cleaning via the CASA task `tclean`"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 2.0 (natural) for main analysis; robust = 0.5 for kinematics",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "robustness parameter $r=2.0$, corresponding to natural weighting"
+      },
+      {
+       "loc": "4.1 Kinematics and Morphology",
+       "quote": "using the `tclean` task with robust parameter $r=0.5$ to obtain images with slightly higher spatial resolution"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "box masks from dirty continuum+line map",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "creating box masks for detected sources and estimating the sensitivity of the observations"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in uv plane on SPWs 0&1",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "We then subtract the continuum for the data cube from SPWs 0&1 using the `uvcontsub` task in the UV plane."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "cube rebinned to 23.4 MHz (~30 km/s); NOEMA 50 km/s channels",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "re-bin the data cube to $\\rm 23.4~MHz$ ($\\rm\\sim 30~ km~s^{-1}$ at the quasar redshifts)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging process designed to follow Decarli et al. 2018 (z~6 quasars)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observation and data reduction",
+        "quote": "the imaging process was designed to closely follow that used by (cite: Decarli18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Decarli18)"
+    },
+    {
+     "what": {
+      "value": "Graybody T=47 K, beta=1.6",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "we assume a dust temperature of $T_{\\rm dust}=47$ K and an emissivity index of $\\beta=1.6$ (cite: Beelen06)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Beelen06)"
+    },
+    {
+     "what": {
+      "value": "Dust mass opacity kappa=0.77 (nu/352 GHz)^beta cm2/g",
+      "evidence": [
+       {
+        "loc": "3.4 Dust and Gas Mass",
+        "quote": "Following (cite: Venemans18), the opacity coefficient is set by $\\kappa_\\nu(\\beta)=0.77\\,(\\nu/352\\,\\mathrm{GHz})^\\beta$ cm$^2$ g$^{-1}$."
+       }
+      ]
+     },
+     "from_reference": "(cite: Venemans18)"
+    },
+    {
+     "what": {
+      "value": "Dynamical mass formula calibrated for marginally resolved data",
+      "evidence": [
+       {
+        "loc": "4.2 Dynamical Mass",
+        "quote": "They suggested an empirical relation based on their high-resolution [C II] observations"
+       }
+      ]
+     },
+     "from_reference": "(cite: Neeleman21)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum maps",
+    "Clean threshold, niter, cell and image size, and mask details",
+    "Self-calibration usage",
+    "Flux calibrators and flux-scale uncertainty",
+    "How v_proj was measured from velocity maps",
+    "Scheme for correcting missing flux in 3'' aperture NOEMA fluxes",
+    "Exact L_bolometric values used for Spearman tests",
+    "Cosmic-microwave-background correction details for the graybody fit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image ALMA data and extract spectra",
+    "method": {
+     "value": "tclean dirty map, cubes at ~30 km/s, 1.5'' aperture 1D spectra fitted with flat continuum plus Gaussian",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "The spectra extracted from the SPWs 0&1 data cubes are then fitted with a flat continuum and a Gaussian function."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "aperture diameter 1.5''; robust 2.0",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observation and data reduction",
+        "quote": "We extract a 1D spectrum of each object with an aperture diameter of 1.5$''$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make [C II] line and continuum maps and measure 2D flux and size",
+    "method": {
+     "value": "collapse ±1.4 sigma_line (~83% flux, corrected), imfit 2D Gaussian",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The fit is performed with the `imfit` task within CASA by assuming a 2D Gaussian profile"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "imfit 2D Gaussian with free centroid, flux, axes, PA",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "with the centroid, integrated flux, major and minor axes, and the position angle as free parameters"
+      }
+     ]
+    },
+    "validation": {
+     "value": "±3.0 sigma collapse gives size ratio median 1.04±0.10",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "falls within the range of 0.86 to 1.27, with a median of $1.04\\pm0.10$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive L_[CII], L_FIR, SFR, dust mass, C+ mass",
+    "method": {
+     "value": "Luminosity equation; graybody and Haro 11 templates; De Looze14 and Murphy11 SFR relations; dust mass with CMB correction",
+     "evidence": [
+      {
+       "loc": "3.3 Star Formation Rates",
+       "quote": "We use the empirical relation calibrated by (cite: DeLooze14) for high-redshift galaxies to estimate the SFR"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "T_dust=47 K, beta=1.6; T_ex=100 K for C+",
+      "evidence": [
+       {
+        "loc": "3.4 Dust and Gas Mass",
+        "quote": "By assuming $T_{\\rm ex}=100$ K (cite: Meijerink07)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "dust-to-gas ratio 100, molecular fraction 0.75",
+      "evidence": [
+       {
+        "loc": "3.4 Dust and Gas Mass",
+        "quote": "By assuming a dust-to-gas ratio of 100 and a molecular-to-total gas mass fraction of 0.75 (cite: Neeleman21)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared SFR from [C II], graybody and Haro 11; tested HC18 Sigma_SFR-dependent relation",
+     "evidence": [
+      {
+       "loc": "3.5 [C II] Deficit",
+       "quote": "the [C II]-based SFR after considering the $\\Sigma_{\\rm SFR}$ is more consistent with the $L_{\\rm FIR}$-based SFR"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Classify kinematics and estimate dynamical masses",
+    "method": {
+     "value": "re-image with robust 0.5, moment maps with immoments, v_proj/2sigma_int>0.4 criterion; thin-disk M_dyn and Neeleman21 relation",
+     "evidence": [
+      {
+       "loc": "4.1 Kinematics and Morphology",
+       "quote": "galaxies with $v_{\\rm proj}/2\\sigma_{\\rm int}>0.4$ can be classified as rotation-dominated systems"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "D=1.5×FWHM major axis; i=arccos(b/a)",
+      "evidence": [
+       {
+        "loc": "4.2 Dynamical Mass",
+        "quote": "The inclination angle, $i$, is given by the ratio of minor ($a_{\\rm min}$) and major ($a_{\\rm maj}$) axes"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "[C II] from thin rotating disk",
+      "evidence": [
+       {
+        "loc": "4.2 Dynamical Mass",
+        "quote": "by assuming that the [C II] emission is originating from a thin rotating disk"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Two M_dyn equations compared (factor ~2.3)",
+     "evidence": [
+      {
+       "loc": "4.2 Dynamical Mass",
+       "quote": "which are $\\sim2.3$ times lower than those estimated from Equation"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.4.0 (calibration Cycle 6), 5.6.1 (calibration Cycle 7 and analysis)",
+    "used_for": {
+     "value": "calibration, tclean, uvcontsub, imfit, immoments",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observation and data reduction",
+       "quote": "All the data were then analyzed using CASA version 5.6.1."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS mapping",
+    "version": "not stated",
+    "used_for": {
+     "value": "NOEMA data analysis",
+     "evidence": [
+      {
+       "loc": "2.2 NOEMA observation and data reduction",
+       "quote": "The NOEMA data were analyzed using the `mapping` software from the GILDAS[^2] suite."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "L_[CII] range",
+    "value": "0.3-5.5",
+    "uncertainty": "not stated",
+    "units": "1e9 Lsun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\rm [CII]}=(0.3-5.5)\\times10^9~L_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "L_FIR range",
+    "value": "0.5-13.0",
+    "uncertainty": "not stated",
+    "units": "1e12 Lsun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\rm FIR}=(0.5-13.0)\\times10^{12}~L_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rho L_[CII] vs L_bol",
+    "value": "0.43",
+    "uncertainty": "p=1.7e-4",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "correlation coefficient of $\\rho=0.43$ and a chance probability of $p=1.7\\times10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rho L_FIR vs L_bol",
+    "value": "0.48",
+    "uncertainty": "p=7.4e-6",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "correlation coefficient of $\\rho=0.48$ and a chance probability of $p=7.4\\times10^{-6}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median host diameter and inclination",
+    "value": "D=5.0 kpc, i=46 deg",
+    "uncertainty": "not stated",
+    "units": "kpc, deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "The median values are $D=5.0$ kpc and $i=46^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotation-dominated fraction",
+    "value": "10 of 23 (43%)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1 Kinematics and Morphology",
+      "quote": "(43%) as rotation-dominated galaxies"
+     }
+    ]
+   },
+   {
+    "quantity": "M_dyn range of rotation-dominated hosts",
+    "value": "0.1-7.5",
+    "uncertainty": "large",
+    "units": "1e11 Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Dynamical Mass",
+      "quote": "The dynamical mass spans a broad range of $\\sim(0.1-7.5)\\times10^{11}~M_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "M_BH/M_dyn excess over local",
+    "value": "~10 (range 0.6-60)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 SMBH-host Co-evolution",
+      "quote": "with a broad range spanning from approximately 0.6 to 60"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Continuum emission more concentrated than [C II]; [C II] deficit similar to local IR-luminous galaxies",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "In general, the continuum emission is more concentrated than the [C II] emission"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do quasar luminosity and host [C II]/FIR luminosity correlate?",
+    "experiment": "Spearman tests on this work plus literature",
+    "result": "rho=0.43 and 0.48",
+    "finding": "moderate correlation with large scatter",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Both $L_{\\rm [CII]}$ and $L_{\\rm FIR}$ are correlated ($\\rho\\simeq0.4$) with the quasar bolometric luminosity, albeit with substantial scatter."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What are the kinematics of z~7 quasar hosts?",
+    "experiment": "Moment maps and v_proj/2sigma_int criterion",
+    "result": "43% rotation-dominated",
+    "finding": "diverse kinematics, rest dispersion-dominated or disturbed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "About $40$% of the quasar host galaxies show a velocity gradient in [C II] emission"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are SMBHs overmassive relative to local M_BH-M_dyn?",
+    "experiment": "Dynamical masses combined with literature",
+    "result": "ratio ~10 higher, range 0.6-60",
+    "finding": "overmassive BHs with large scatter and uncertainty",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the ratio between $M_{\\rm BH}$ and $M_{\\rm dyn}$ is about ten times higher than that of local $M_{\\rm BH}-M_{\\rm dyn}$ relation on average"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Imaging at natural weighting to maximize S/N and follow Decarli18 for comparison",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation and data reduction",
+      "quote": "to maximize the signal-to-noise ratio (S/N) of our observations"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Haro 11 template luminosities not used in later analyses; graybody preferred as more widely used",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Since the modified graybody has been more broadly used in the literature, we only use the luminosities derived from the graybody fitting in the following analyses."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Marginal resolution, assumed T_dust, and uncertain inclination give large uncertainties in M_dyn and SFR",
+     "evidence": [
+      {
+       "loc": "4.2 Dynamical Mass",
+       "quote": "We emphasize that the $M_{\\rm dyn}$ estimated from both equations have large uncertainties"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dynamical masses from marginally resolved data with assumed inclination and a thin-disk formula are very uncertain",
+    "Single fixed T=47 K graybody drives L_FIR, SFR and dust mass",
+    "Selection biased to UV-luminous quasars affects correlations",
+    "Counts of detections differ between abstract (27/28) and summary (26/27)"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA program IDs are given in acknowledgements; archival status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.01188.S., ADS/JAO.ALMA #2019.1.01025.S, ADS/JAO.ALMA#2019.A.00017.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Line-free channel definitions",
+    "Clean parameters",
+    "Bolometric luminosities and literature compilation",
+    "NOEMA mapping details"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for 26 ALMA fields",
+   "score_inferred": 3,
+   "score_reason": "Data and main steps are described with equations, but several imaging parameters and the literature compilation are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "ALMA data are public in the listed projects, steps are largely specified, and results are numeric (fluxes, luminosities, sizes)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Decarli18)",
+     "why": "imaging and analysis approach followed"
+    },
+    {
+     "citation": "(cite: Neeleman21)",
+     "why": "dynamical mass relation and kinematic comparison"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Yang19b)",
+     "why": "NOEMA observation of J0439+1634"
+    },
+    {
+     "citation": "(cite: Yue21)",
+     "why": "high-resolution ALMA of J0439+1634"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 9 Large Program 2022.1.01077.L"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-59741356c077eb1a91484c04870ea994",
+  "batch_id": "msgbatch_015xvy2vr7Jjr74fC6RAsmHN",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:10:04",
+  "usage": {
+   "input_tokens": 47157,
+   "output_tokens": 8748,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.091504,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2022.1.01077.L"
+  ],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 46,
+   "rate": 0.622
+  },
+  "evidence_ok": true
+ }
+}

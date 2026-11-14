@@ -1,0 +1,289 @@
+{
+ "bibcode": "2013ApJ...776...77K",
+ "title": "ALMA Observations of the Molecular Gas in the Debris Disk of the 30 Myr Old Star HD 21997",
+ "year": 2013,
+ "doi": "10.1088/0004-637X/776/2/77",
+ "arxiv_id": "1310.5068",
+ "fields": [
+  "debris_disks",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the physical state, origin and evolutionary status of the molecular gas in the 30 Myr old HD 21997 debris disk, and is it co-located with the dust?",
+ "alma_project_codes": [
+  "2011.0.00780.S"
+ ],
+ "data": {
+  "bands": "Band 6 (CO 2-1) and Band 7 (CO 3-2, CS 7-6)",
+  "arrays": "not stated",
+  "angular_resolution": "beams ~1.1-1.9 arcsec (Table)",
+  "sensitivity": "5.7-9.0 mJy/beam/channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust continuum results: dust disk inner radius ~55 AU, dust mass 0.09 Earth masses within ~150 AU",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "In Paper I, we found that the dust disk starts at a radius of $\\approx$55 AU."
+     }
+    ]
+   },
+   "citation": "Moór et al. 2013 (Paper I) (cite: moor2013)"
+  },
+  {
+   "what": {
+    "value": "ISM isotopic abundance ratios (tau12=560 tau18, tau13=7.4 tau18)",
+    "evidence": [
+     {
+      "loc": "3.3 Temperature and Mass of the CO Gas",
+      "quote": "then $\\tau_{12} = 560\n\\tau_{18}$, and $\\tau_{13} = 7.4 \\tau_{18}$"
+     }
+    ]
+   },
+   "citation": "Wilson & Rood 1994 (cite: wilson1994)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature 64 K from SED fitting",
+    "evidence": [
+     {
+      "loc": "4.2 Primordial Gas in a Hybrid Disk",
+      "quote": "the dust temperature (64 K, based on spectral energy distribution fitting done by (cite: moor2011b))"
+     }
+    ]
+   },
+   "citation": "Moór et al. 2011 (cite: moor2011b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract integrated line profiles and fluxes",
+   "method": "Sum flux within 2.8 arcsec radius of star per channel; integrate -4 to 6.6 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and PV diagram",
+   "method": "Zeroth and first moment maps; P.A. from v=vsys line; PV along major axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Optical depth, temperature and CO mass",
+   "method": "Isotopologue line ratios give optical depth; 12CO brightness and 3-2/2-1 ratio via Planck function give temperature; C18O gives mass for T 5.6-100 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "ISM isotope ratios; CO/H2 = 1e-4 for total gas mass"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit Keplerian disk model to 12CO(2-1) cube",
+   "method": "Grid of 104,448 models with 5 parameters, Keplerian, convolved with beam; chi2 max over channels; Bayesian probability exp(-chi2/2) marginalized",
+   "software": [],
+   "key_parameters": [
+    "M* 0.9-3.0 Msun step 0.3; rin 5-60 AU; rout 95-175 AU; i 25-39 deg step 2; p 0 to -1.75 step 0.25",
+    "Intrinsic line width 0.1 km/s; 2-channel Hanning smoothing; 6x spatial oversampling"
+   ],
+   "assumptions": [
+    "Keplerian rotation, power-law brightness I(r)~r^p, models normalized to observed total intensity"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "CO lifetime and gas production rate",
+   "method": "CO distributed 20-138 AU with power-law density, shielding from Visser 2009; lifetime into production rate",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha 1.5-2.5, H/r 0.05-0.2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk outer radius",
+   "value": "138",
+   "uncertainty": "±20",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|     Disk outer radius     |     $r_{\\rm out}$ (AU)      |     $138\\pm20$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "1.8",
+   "uncertainty": "+0.5/-0.2",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|       Stellar mass       |     $M_*$ ($M_{\\odot}$)     | $1.8^{+0.5}_{-0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "32.6",
+   "uncertainty": "±3.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|     Disk inclination     |      $i$ ($^{\\circ}$)       |   $32.6 \\pm 3.1$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner radius",
+   "value": "<26",
+   "uncertainty": "1 sigma upper limit",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|    Disk inner radius     |      $r_{\\rm in}$ (AU)      |       $< 26$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Major axis P.A.",
+   "value": "22.6",
+   "uncertainty": "±0.5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|     Disk orientation     |     $P.A.$ ($^{\\circ}$)     |   $22.6 \\pm 0.5$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "1.29",
+   "uncertainty": "±0.05",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated Line Profiles",
+     "quote": "The intensity-weighted average velocity for all lines is the same (1.29 $\\pm$ 0.05 km s$^{-1}$) as well."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(3-2) total flux",
+   "value": "2.52",
+   "uncertainty": "0.27",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1 (results)",
+     "quote": "| $^{12}$CO(3–2) | 345.796 | B1 | 1.19$\\times$1.47 | 117.5 | 7.9 | 0.615 | 2.52$\\,\\pm\\,$0.27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O(2-1) total flux",
+   "value": "0.36",
+   "uncertainty": "0.06",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1 (results)",
+     "quote": "| C$^{18}$O(2–1) | 219.560 | A1 | 1.21$\\times$1.92 | 18.6 | 9.0 | 0.129 | 0.36$\\,\\pm\\,$0.06 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radiation temperature from 12CO 3-2/2-1 ratio",
+   "value": "5.6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Temperature and Mass of the CO Gas",
+     "quote": "Indeed, using the Planck function, it turns out that these line ratios correspond to 5.6 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO mass",
+   "value": "(4-8)e-2",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Temperature and Mass of the CO Gas",
+     "quote": "The resulting value, (4–8)$\\times$10$^{-2}\\,M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-to-dust mass ratio",
+   "value": "0.4-0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "resulting in a CO-to-dust ratio of 0.4–0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit gas production rate",
+   "value": "1e19",
+   "uncertainty": "not stated",
+   "units": "kg/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Debris Disk with Pure Secondary Gas",
+     "quote": "we obtained a lower limit for the gas production rate of about 10$^{19}$ kg yr$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "robust value, cell size, image size, clean mask and threshold",
+  "CASA version and whether calibration used the archive scripts",
+  "line-free channels used for uvcontsub",
+  "number of flagged data/antennas",
+  "aperture/moment-map thresholds",
+  "CO excitation/radiative transfer code used for mass",
+  "model code for the disk grid not released"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters (robust, cell, mask)",
+  "model code",
+  "aperture and moment thresholds",
+  "CO excitation calculation details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and model grid described in detail, but imaging parameters and code absent.",
+ "rediscovery_reason": "Public Cycle 0 data, clear grid fit recipe and numeric results (rout, M*, i, fluxes), though imaging details are missing.",
+ "source_card": "cards/2013ApJ...776...77K/sonnet/card.md"
+}

@@ -1,0 +1,464 @@
+{
+ "bibcode": "2021ApJ...912...64Z",
+ "title": "Near-IR Observations of the Young Star [BHB2007]-1: A Substellar Companion Opening the Gap in the Disk",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abec42",
+ "arxiv_id": "2103.03881",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation",
+  "exoplanets"
+ ],
+ "question": "Investigate whether a planet or brown dwarf companion is carving the dust gap in the protoplanetary disk around [BHB2007]-1 using new VLT/NACO NIR observations.",
+ "alma_project_codes": [
+  "2013.1.00291.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA continuum and CO maps, stellar coordinates, disk inclination (75 deg), disk PA (12.5 deg), mm cavity size (~70 au), dynamical stellar mass (2.23 M_sun), systemic velocity (3.6 km/s), and VLA 14-mm map",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "For the astrometric calibration, we adopted the ALMA coordinates for the center of the star, RA=17:11:03.9234 and Dec=-27:22:55.4725, as measured in (cite: Alves2020)."
+     },
+     {
+      "loc": "Disk",
+      "quote": "Here, we assume that the midplane is given by the disk PA of 12.5$^\\circ$, as determined from the ALMA continuum by (cite: Alves2020)."
+     },
+     {
+      "loc": "Disk",
+      "quote": "The height profile is then deprojected by the disk inclination by dividing by $\\sin(i)$, where $i=75^\\circ$ as reported in (cite: Alves2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Alves2020)"
+  },
+  {
+   "what": {
+    "value": "Effective temperatures T_eff = 4060 K for [BHB2007]-1 and T_eff = 3346 K for [BHB2007]-2, and JHK spectra",
+    "evidence": [
+     {
+      "loc": "Stellar properties",
+      "quote": "with the effective temperature constrained by (cite: Covey2010) ($T_{\\rm eff}=4060$ K and $T_{\\rm eff}=3346$ K, for -1 and -2, respectively, with typical uncertainties of $\\pm$300 K)"
+     }
+    ]
+   },
+   "citation": "(cite: Covey2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce VLT/NACO NIR data and subtract stellar PSF",
+   "method": "Background subtraction (one frame from median of others), flat-fielding, recentering, median combination; 2D elliptical Gaussian fit to center, azimuthal average over angles devoid of emission (PA 230 to 350 deg) expanded to 2D PSF and subtracted",
+   "software": [],
+   "key_parameters": [
+    "Azimuthal average angles: PA 230 deg to 350 deg",
+    "Astrometric center: RA=17:11:03.9234, Dec=-27:22:55.4725"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Assess astrometry, distance, and physical association of sources in field",
+   "method": "Query Gaia EDR3 astrometric fidelity classifier and compare relative astrometry across two NACO epochs (~4 years apart)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance of 166 pc adopted for [BHB2007]-1 from [BHB2007]-2 Gaia EDR3 parallax"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive stellar properties (visual extinction, luminosity, mass, and age)",
+   "method": "Fit B-to-W4 photometry with Phoenix stellar photosphere models to obtain A_V and L_*, then compare with pre-main-sequence evolutionary tracks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_eff = 4060 +/- 300 K for [BHB2007]-1 and T_eff = 3346 +/- 300 K for [BHB2007]-2A"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure NIR disk brightness contrast and vertical scattering surface height profile",
+   "method": "Compute disk-to-stellar light contrast phi = F_disk * 4*pi*r^2 / F_*; trace disk surface by fitting a Gaussian as a function of height along disk PA, deproject by sin(i), and fit power-law h(R) ~ R^(1+alpha)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk midplane PA = 12.5 deg and inclination i = 75 deg from ALMA continuum"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Characterize position and mass of embedded substellar companion candidate",
+   "method": "Measure position and L' flux ratio on PSF-subtracted image and compare with COND, DUSTY, and BEX evolutionary models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "System age of 0.9-5.7 Myr, primary star L' magnitude of 7.93 (from WISE W1), and distance of 166 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Visual extinction A_V of [BHB2007]-1",
+   "value": "1.9",
+   "uncertainty": "1.0",
+   "units": "mag",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "For [BHB2007]-1, this yielded $A_{\\rm V}=1.9\\pm1.0$ mag and $L_*=0.63\\pm0.21\\ \\rm L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar luminosity L_* of [BHB2007]-1",
+   "value": "0.63",
+   "uncertainty": "0.21",
+   "units": "L_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "For [BHB2007]-1, this yielded $A_{\\rm V}=1.9\\pm1.0$ mag and $L_*=0.63\\pm0.21\\ \\rm L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Visual extinction A_V of [BHB2007]-2A",
+   "value": "1.5",
+   "uncertainty": "0.4",
+   "units": "mag",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "We found that the $A_{\\rm V}$ is comparable with that of [BHB2007]-1 ($1.5\\pm0.4$ mag) while the luminosity is $0.58\\pm0.16\\ L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar luminosity L_* of [BHB2007]-2A",
+   "value": "0.58",
+   "uncertainty": "0.16",
+   "units": "L_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "We found that the $A_{\\rm V}$ is comparable with that of [BHB2007]-1 ($1.5\\pm0.4$ mag) while the luminosity is $0.58\\pm0.16\\ L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass M_* of [BHB2007]-1",
+   "value": "0.65-0.85",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "we found $M_*=0.65-0.85\\ \\rm M_{\\odot}$ and $t=0.9-5.7$ Myr for [BHB2007]-1, and $M_*=0.24-0.30\\ M_{\\odot}$ and $t=0.1-0.8$ Myr for [BHB2007]-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Age t of [BHB2007]-1",
+   "value": "0.9-5.7",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "we found $M_*=0.65-0.85\\ \\rm M_{\\odot}$ and $t=0.9-5.7$ Myr for [BHB2007]-1, and $M_*=0.24-0.30\\ M_{\\odot}$ and $t=0.1-0.8$ Myr for [BHB2007]-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass M_* of [BHB2007]-2",
+   "value": "0.24-0.30",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "we found $M_*=0.65-0.85\\ \\rm M_{\\odot}$ and $t=0.9-5.7$ Myr for [BHB2007]-1, and $M_*=0.24-0.30\\ M_{\\odot}$ and $t=0.1-0.8$ Myr for [BHB2007]-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Age t of [BHB2007]-2",
+   "value": "0.1-0.8",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar properties",
+     "quote": "we found $M_*=0.65-0.85\\ \\rm M_{\\odot}$ and $t=0.9-5.7$ Myr for [BHB2007]-1, and $M_*=0.24-0.30\\ M_{\\odot}$ and $t=0.1-0.8$ Myr for [BHB2007]-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in J band (South)",
+   "value": "17.2",
+   "uncertainty": "1.6",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J$ | 17.2$\\pm$1.6 | 3.2$\\pm$0.3 | 5.3$^{+1.2}_{-0.8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in J band (North)",
+   "value": "3.2",
+   "uncertainty": "0.3",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J$ | 17.2$\\pm$1.6 | 3.2$\\pm$0.3 | 5.3$^{+1.2}_{-0.8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk South-to-North brightness ratio in J band",
+   "value": "5.3",
+   "uncertainty": "+1.2/-0.8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J$ | 17.2$\\pm$1.6 | 3.2$\\pm$0.3 | 5.3$^{+1.2}_{-0.8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in H band (South)",
+   "value": "12.4",
+   "uncertainty": "1.2",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $H$ | 12.4$\\pm$1.2 | 2.1$\\pm$0.2 | 5.9$^{+1.1}_{-1.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in H band (North)",
+   "value": "2.1",
+   "uncertainty": "0.2",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $H$ | 12.4$\\pm$1.2 | 2.1$\\pm$0.2 | 5.9$^{+1.1}_{-1.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk South-to-North brightness ratio in H band",
+   "value": "5.9",
+   "uncertainty": "+1.1/-1.0",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $H$ | 12.4$\\pm$1.2 | 2.1$\\pm$0.2 | 5.9$^{+1.1}_{-1.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in K_S band (South)",
+   "value": "9.3",
+   "uncertainty": "0.9",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $K_{S}$ | 9.3$\\pm$0.9 | 1.6$\\pm$0.2 | 5.8$^{+1.5}_{-1.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in K_S band (North)",
+   "value": "1.6",
+   "uncertainty": "0.2",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $K_{S}$ | 9.3$\\pm$0.9 | 1.6$\\pm$0.2 | 5.8$^{+1.5}_{-1.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk South-to-North brightness ratio in K_S band",
+   "value": "5.8",
+   "uncertainty": "+1.5/-1.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $K_{S}$ | 9.3$\\pm$0.9 | 1.6$\\pm$0.2 | 5.8$^{+1.5}_{-1.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in L' band (South)",
+   "value": "6.0",
+   "uncertainty": "0.7",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L^\\prime$ | 6.0$\\pm$0.7 | 1.1$\\pm$0.1 | 5.4$^{+1.3}_{-1.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-stellar light contrast in L' band (North)",
+   "value": "1.1",
+   "uncertainty": "0.1",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L^\\prime$ | 6.0$\\pm$0.7 | 1.1$\\pm$0.1 | 5.4$^{+1.3}_{-1.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk South-to-North brightness ratio in L' band",
+   "value": "5.4",
+   "uncertainty": "+1.3/-1.0",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L^\\prime$ | 6.0$\\pm$0.7 | 1.1$\\pm$0.1 | 5.4$^{+1.3}_{-1.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk flaring index alpha in H band",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk",
+     "quote": "A simple fit to the $H$-band profile yields an $\\alpha$ value of $\\sim$1.2. The $\\alpha$ value is lower ($\\alpha\\sim1$) for $J$ and $Ks$."
+    }
+   ]
+  },
+  {
+   "quantity": "NIR disk inner cavity upper limit",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk",
+     "quote": "our images do not reveal any disk cavity down to the NACO inner working angle of 0.12$''$ ($\\sim$20 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected separation of candidate companion",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Embedded sub-stellar object",
+     "quote": "The candidate companion is located at a distance of 53 au (0.32$''$), at a position angle of 186$\\degree$."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of candidate companion",
+   "value": "186",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Embedded sub-stellar object",
+     "quote": "The candidate companion is located at a distance of 53 au (0.32$''$), at a position angle of 186$\\degree$."
+    }
+   ]
+  },
+  {
+   "quantity": "L' flux ratio between candidate companion and primary star",
+   "value": "1.4e-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Embedded sub-stellar object",
+     "quote": "The flux ratio in $L^\\prime$ between the object and the primary star is 1.4$\\times$10$^{-2}$, which for the evolutionary models corresponds to an object in a range of 37–47 M$_{Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of candidate companion",
+   "value": "37-47",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Embedded sub-stellar object",
+     "quote": "The flux ratio in $L^\\prime$ between the object and the primary star is 1.4$\\times$10$^{-2}$, which for the evolutionary models corresponds to an object in a range of 37–47 M$_{Jup}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "All ALMA observation, calibration, and imaging parameters (inherited from Alves et al. 2020)",
+  "Criteria used to exclude poor quality NACO frames during data reduction",
+  "Aperture sizes or exact methods used to extract NACO relative photometry and companion L' flux ratio"
+ ],
+ "missing_for_reproduction": [
+  "Exactsoftware or scripts used for the custom NACO data reduction and azimuthal PSF reconstruction",
+  "List of rejected frames in the NACO observations",
+  "Photometric aperture radii and background regions used for the NACO photometry and L' companion flux ratio",
+  "Processed ALMA continuum and CO FITS images from Alves et al. (2020) used for overlays and astrometric registration"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "Archival ESO/ALMA/VLA program IDs are clearly given and the analytical steps (azimuthal PSF subtraction, contrast calculation, Gaussian vertical profile fitting, and evolutionary model comparison) are conceptually well described, but no software tools, scripts, or exact photometric extraction parameters are specified.",
+ "rediscovery_reason": "The raw VLT/NACO and ALMA data are public in the ESO and ALMA archives, the custom azimuthal PSF subtraction method is straightforward to implement from the text description, and the main results (companion L' flux ratio, position, and disk North/South contrast ratios) are concrete numeric values.",
+ "source_card": "cards/2021ApJ...912...64Z/sonnet/card.md"
+}

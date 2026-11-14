@@ -1,0 +1,688 @@
+{
+ "bibcode": "2020MNRAS.498.1319M",
+ "title": "Insights into the planetary dynamics of HD 206893 with ALMA",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa2386",
+ "arxiv_id": "2010.12582",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "What is the radial structure of the HD 206893 debris disc (is there a gap, asymmetry, CO gas, dust around the brown dwarf B), and what does it imply for the dynamics of the companions?",
+ "alma_project_codes": [
+  "2017.1.00828.S",
+  "2017.1.00825.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.88 mm, 342 GHz) new observations; Band 6 (1.3 mm, 222 GHz) archival",
+  "arrays": "Band 7: ACA and 12m array; Band 6: 12m array",
+  "angular_resolution": "Untapered beams: Band 7 12m 0.31''x0.25'' (PA -82 deg); Band 7 ACA 5.0''x2.7'' (88 deg); Band 6 12m 0.70''x0.57'' (67 deg)",
+  "sensitivity": "Image rms: Band 7 12m 9.1 uJy; Band 7 ACA 110 uJy; Band 6 12m 4.9 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Astrometry of HD 206893 B used for the orbit fit",
+    "evidence": [
+     {
+      "loc": "4 Disc orientation and HD 206893 B's orbit",
+      "quote": "we use its astrometry reported in (cite: Grandjean2019) and in (cite: Stolker2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Grandjean2019; Stolker2020)"
+  },
+  {
+   "what": {
+    "value": "Proper motion anomaly of 96+-28 m/s (Gaia DR2 minus Hipparcos-Gaia DR2)",
+    "evidence": [
+     {
+      "loc": "5.1 3 companions",
+      "quote": "this system has a proper motion anomaly of $96\\pm28$ m s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Kervella2019)"
+  },
+  {
+   "what": {
+    "value": "RV drift of 87 +16/-14 m/s/yr and minimum RV acceleration of 45 m/s/yr used for companion C",
+    "evidence": [
+     {
+      "loc": "5.1 3 companions",
+      "quote": "the RV drift of $87^{+16}_{-14}$ m s$^{-1}$ yr$^{-1}$ detected by (cite: Grandjean2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Grandjean2019)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass 1.3 Msun",
+    "evidence": [
+     {
+      "loc": "3.1 Results",
+      "quote": "Given the estimated stellar mass of 1.3 $M_\\odot$ (cite: Delorme2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Delorme2017)"
+  },
+  {
+   "what": {
+    "value": "System age 50-700 Myr and BD mass 12-50 MJup",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Given the estimated age of this system of 50–700 Myr, the companion mass is probably in the range 12–50 M$_\\mathrm{Jup}$ (cite: Delorme2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Delorme2017)"
+  },
+  {
+   "what": {
+    "value": "Direct imaging 5 sigma detection limits converted to masses with AMES-COND models",
+    "evidence": [
+     {
+      "loc": "5.1 3 companions",
+      "quote": "We use the $5\\sigma$ detection limits from (cite: Milli2017hd206; Delorme2017) and transform these to planet masses using AMES-COND models (cite: Baraffe2003)."
+     }
+    ]
+   },
+   "citation": "(cite: Milli2017hd206; Delorme2017; Baraffe2003)"
+  },
+  {
+   "what": {
+    "value": "Dust opacities assumed for the disc model",
+    "evidence": [
+     {
+      "loc": "3 Parametric axisymmetric disc model",
+      "quote": "which is set by the assumed dust opacities (cite: Marino2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Marino2019)"
+  },
+  {
+   "what": {
+    "value": "CO photodissociation timescale of 120 yr",
+    "evidence": [
+     {
+      "loc": "2.2 CO gas emission",
+      "quote": "an expected photodissociation rate of 120 yr (cite: Visser2009)"
+     }
+    ]
+   },
+   "citation": "(cite: Visser2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the continuum and measure total flux",
+   "method": "tclean Briggs imaging with Gaussian uv taper; integrate flux in an ellipse oriented as the disc",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "robust = 2.0",
+    "Gaussian taper 0.9'' at 0.88 mm and 0.4'' at 1.3 mm"
+   ],
+   "assumptions": [
+    "Central point source is photospheric emission (30 uJy at 0.88 mm, 13 uJy at 1.3 mm)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Azimuthal radial profiles and asymmetry tests",
+   "method": "Deproject with best-fit PA and inclination, azimuthally average; compare disc halves and subtract their radial profiles",
+   "software": [],
+   "key_parameters": [
+    "Band 6 untapered image and band 7 image with 0.4'' taper (similar beams)"
+   ],
+   "assumptions": [
+    "Disc orientation from the parametric fit"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Reconstruct radial profile in visibility space",
+   "method": "Subtract constant stellar flux from visibilities, deproject, reconstruct intensity profile with Frankenstein (Gaussian process)",
+   "software": [
+    "Frankenstein"
+   ],
+   "key_parameters": [
+    "maximum radius 400 au, alpha = 1.01, w_smooth = 1e-2"
+   ],
+   "assumptions": [
+    "No primary beam correction (effect < 10% within 150 au)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Upper limit on dust around the brown dwarf B",
+   "method": "Search for a point source at the expected BD position; 3 sigma flux limits converted to dust mass with radiative transfer",
+   "software": [],
+   "key_parameters": [
+    "BD expected at ~0.25'' separation towards the NE",
+    "Dust accretion rate onto BD from the debris disc ~4 kg/s using Bonsor et al. 2018 with corrected K_ej = 5.14e8"
+   ],
+   "assumptions": [
+    "Disc size >~0.1 au (a smaller, optically thick disc could hide more mass)",
+    "Accreted dust: 1 um radius grains, 3 g/cm3, accreted for 700 Myr"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Search for CO emission and derive CO mass and ice fraction limits",
+   "method": "Continuum-subtract, image cubes with tclean, apply a Keplerian mask (both rotation senses), integrate within deprojected radius of 150 au, convert flux limits to CO mass with a non-LTE tool, then to CO+CO2 ice fraction",
+   "software": [
+    "CASA tclean",
+    "CO mass tool of Matra et al. 2018"
+   ],
+   "key_parameters": [
+    "Band 7 cubes 0.43 km/s channels (1.1 km/s effective); Band 6 cubes 1.3 km/s channels (2.0 km/s effective)",
+    "Kinetic temperatures 20 to 200 K"
+   ],
+   "assumptions": [
+    "Optically thin CO emission, non-LTE excitation",
+    "Fractional luminosity ~3e-4, stellar mass 1.3 Msun, luminosity 2.9 Lsun, disc radius 70 au and width 100 au, photodissociation timescale 120 yr"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit parametric gap disc model to visibilities",
+   "method": "Two-power-law surface density with Gaussian gap, radiative transfer with RADMC-3D, MCMC fit in visibility space",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "Gap depth fixed to 1",
+    "Vertical extent fixed to 5% of radius, uniform vertical mass distribution",
+    "r_min lower limit of 14 au; outer edge fixed at 250 au",
+    "Free parameters include disc inclination and PA, phase centre offsets, and position, size (2D Gaussian) and flux of a background SMG ~11.5'' to the SW; spectral index alpha free and uniform",
+    "Reported values are posterior medians with 16th and 84th percentile uncertainties"
+   ],
+   "assumptions": [
+    "Dust mass counts only grains smaller than 1 cm, set by assumed opacities",
+    "Star modelled with Teff = 6500 K and R = 1.3 Rsun template spectrum"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Convert gap width to planet mass",
+   "method": "Gap width equated to chaotic zone width w_g = 3 a_p mu^(2/7), using posterior of r_g and w_g",
+   "software": [],
+   "key_parameters": [
+    "Stellar mass 1.3 Msun"
+   ],
+   "assumptions": [
+    "Gap truly empty and cleared by a planet on a circular orbit through scattering"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Fit the orbit of B with the disc orientation as prior",
+   "method": "Orbitize parallel-tempering MCMC on published astrometry with normal priors on inclination and node from the disc fit",
+   "software": [
+    "Orbitize"
+   ],
+   "key_parameters": [
+    "Priors: inclination N(140 deg, 3 deg), longitude of ascending node N(61 deg, 4 deg); SE side of the disc is the near side",
+    "10^7 points after convergence"
+   ],
+   "assumptions": [
+    "B's orbit is co-planar with the disc"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Constrain mass and semi-major axis of inner companion C",
+   "method": "Combine proper motion anomaly, RV acceleration, direct imaging limits and a stability criterion; Monte Carlo bootstrapping of the PMa and disc orientation; N-body check with REBOUND",
+   "software": [
+    "REBOUND"
+   ],
+   "key_parameters": [
+    "Stability limit: orbital spacing smaller than 5 mutual Hill radii, B circular with 12 MJup",
+    "Minimum RV acceleration 45 m/s/yr"
+   ],
+   "assumptions": [
+    "Disc inclination (40 deg) used as the system inclination"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Test gap origin and disc stirring scenarios",
+   "method": "Analytic secular resonance locations (Yelverton et al. 2018), disc mass from a collisional model, stirring timescales (Mustill & Wyatt 2009; Krivov et al. 2018)",
+   "software": [],
+   "key_parameters": [
+    "Equation 13 of Yelverton et al. 2018 has a typo; corrected first factor a_1^(1/2) a_2^2 a^(-5/2)",
+    "Maximum planetesimal size 100 km (or 400 km), disc age 50-700 Myr"
+   ],
+   "assumptions": [
+    "Yelverton et al. analysis valid only for two planets and a massless disc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total integrated flux at 0.88 mm",
+   "value": "2.68",
+   "uncertainty": "0.36 (includes 10% calibration)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Dust continuum",
+     "quote": "We estimate a total integrated flux of $2.68\\pm0.36$ and $1.05\\pm0.12$ mJy at 0.88 and 1.3 mm (including 10% absolute calibration uncertainties)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total integrated flux at 1.3 mm",
+   "value": "1.05",
+   "uncertainty": "0.12 (includes 10% calibration)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Dust continuum",
+     "quote": "We estimate a total integrated flux of $2.68\\pm0.36$ and $1.05\\pm0.12$ mJy at 0.88 and 1.3 mm (including 10% absolute calibration uncertainties)."
+    }
+   ]
+  },
+  {
+   "quantity": "Radial extent of disc emission",
+   "value": "30 to 180 au, peak near 110 au, local minimum near 70 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1.1 Dust radial structure",
+     "quote": "Based on these profiles, the disc emission is detected from 30 to 180 au, with a peak near 110 au and a local minimum at roughly 70 au."
+    }
+   ]
+  },
+  {
+   "quantity": "NE-SW flux asymmetry (NE brighter)",
+   "value": "30",
+   "uncertainty": "13",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1.1 Dust radial structure",
+     "quote": "Averaging both wavelengths, we find that the North East side is $30\\pm13\\%$ brighter."
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit on point-source flux at BD, 0.88 mm",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.1.2 BD dust emission upper limit",
+     "quote": "we can place $3\\sigma$ upper limits at 0.88 and 1.3 mm of 27 and 15 $\\mu$Jy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit on point-source flux at BD, 1.3 mm",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.1.2 BD dust emission upper limit",
+     "quote": "we can place $3\\sigma$ upper limits at 0.88 and 1.3 mm of 27 and 15 $\\mu$Jy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit around B",
+   "value": "2e-4",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.1.2 BD dust emission upper limit",
+     "quote": "we estimate a dust mass upper limit of $2\\times10^{-4}$ M$_\\oplus$ ($2\\times10^{-2}$ $M_\\mathrm{moon}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=3-2 3 sigma line flux upper limit",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2 CO gas emission",
+     "quote": "we estimate 3$\\sigma$ upper limits for the line fluxes of 66 mJy km s$^{-1}$for J=3-2 and 12 mJy km s$^{-1}$ for J=2-1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=2-1 3 sigma line flux upper limit",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2 CO gas emission",
+     "quote": "we estimate 3$\\sigma$ upper limits for the line fluxes of 66 mJy km s$^{-1}$for J=3-2 and 12 mJy km s$^{-1}$ for J=2-1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limit (from J=2-1)",
+   "value": "2.4e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2 CO gas emission",
+     "quote": "with an upper limit of $2.4\\times10^{-6}$ M$_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on CO+CO2 mass fraction in planetesimals",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2 CO gas emission",
+     "quote": "we find an upper limit of 9% for the fractional mass of CO+CO$_2$ in planetesimals"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass M_d",
+   "value": "0.031",
+   "uncertainty": "0.002",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.031\\pm0.002$ | total dust mass"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inner radius r_min",
+   "value": "28",
+   "uncertainty": "+5/-8",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$28_{-8}^{+5}$ | disc inner radius"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc peak radius r_c",
+   "value": "114",
+   "uncertainty": "+7/-5",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "we find that the disc dust density peaks at $r_\\mathrm{c}=114^{+7}_{-5}$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner surface density slope gamma_1",
+   "value": "0.8",
+   "uncertainty": "+-0.4",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "the surface density must increase moderately as $r^{0.8\\pm0.4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer surface density slope gamma_2",
+   "value": "-3.9",
+   "uncertainty": "+0.5/-0.6",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "Exterior to that the disc surface density declines steeply as $r^{-3.9\\pm0.5}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gap centre radius r_g",
+   "value": "74",
+   "uncertainty": "3",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "we find that the gap center is well constrained to $74\\pm3$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap width w_g (FWHM)",
+   "value": "27",
+   "uncertainty": "5",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "The gap width is constrained to $27\\pm5$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination from face-on",
+   "value": "40",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "The disc orientation is well constrained with $i=40\\pm3\\ensuremath{^\\circ}$ and PA$=61\\pm4\\ensuremath{^\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle",
+   "value": "61",
+   "uncertainty": "4",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "The disc orientation is well constrained with $i=40\\pm3\\ensuremath{^\\circ}$ and PA$=61\\pm4\\ensuremath{^\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc spectral index alpha (Table 1)",
+   "value": "2.54",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$2.54\\pm0.17$ | disc spectral index"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc spectral index alpha (text value, differs slightly from Table 1)",
+   "value": "2.53",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "The disc spectral index is found to be $2.53\\pm0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Background SMG integrated flux at 0.88 mm",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "has an integrated flux of 1.5 mJy at 0.88 mm and 0.24 mJy at 1.3 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative planet mass in the gap (scattering scenario)",
+   "value": "0.9",
+   "uncertainty": "+0.8/-0.5",
+   "units": "Jupiter masses",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1 Results",
+     "quote": "the measured gap width translates to a planet mass of $0.9^{+0.8}_{-0.5}$ M$_\\mathrm{Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 206893 B semi-major axis",
+   "value": "11.4",
+   "uncertainty": "+1.1/-0.8",
+   "units": "au",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4 Disc orientation and HD 206893 B's orbit",
+     "quote": "$a_\\mathrm{p}=11.4^{+1.1}_{-0.8}$ au, $e_\\mathrm{p}=0.14^{+0.05}_{-0.04}$ and $\\omega=74^{+36}_{-29}\\ensuremath{^\\circ}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 206893 B eccentricity",
+   "value": "0.14",
+   "uncertainty": "+0.05/-0.04",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4 Disc orientation and HD 206893 B's orbit",
+     "quote": "$a_\\mathrm{p}=11.4^{+1.1}_{-0.8}$ au, $e_\\mathrm{p}=0.14^{+0.05}_{-0.04}$ and $\\omega=74^{+36}_{-29}\\ensuremath{^\\circ}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 206893 B argument of pericentre",
+   "value": "74",
+   "uncertainty": "+36/-29",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4 Disc orientation and HD 206893 B's orbit",
+     "quote": "$a_\\mathrm{p}=11.4^{+1.1}_{-0.8}$ au, $e_\\mathrm{p}=0.14^{+0.05}_{-0.04}$ and $\\omega=74^{+36}_{-29}\\ensuremath{^\\circ}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 206893 B eccentricity upper bound (99.7% confidence)",
+   "value": "0.36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4 Disc orientation and HD 206893 B's orbit",
+     "quote": "the eccentricity is not larger than 0.36 (99.7% confidence)"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner companion C semi-major axis and mass range",
+   "value": "a 1.4-4.5 au; mass 4-100 MJup",
+   "uncertainty": "not stated",
+   "units": "au; Jupiter masses",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.1 3 companions",
+     "quote": "i.e. have a semi-major axis of roughly 1.4–4.5 au and a mass in the range 4–100 M$_\\mathrm{Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total disc mass (planetesimals up to 100 km, age 50-700 Myr)",
+   "value": "~20-120",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.5 Secular interactions between the disc and a scattered planet",
+     "quote": "we use the collisional model described in (cite: Marino201761vir) and estimate the total disc mass to be around $\\sim20-120$ M$_\\oplus$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters other than weighting and taper: deconvolver, cell size, image size, mask, threshold, niter",
+  "How the ACA and 12m data were combined for imaging and for the visibility fit (joint tclean or separate datasets)",
+  "Which spectral windows were used for the continuum images, and whether the line window was flagged",
+  "Flux calibrator and calibrator-derived flux scale for each execution block; pipeline version",
+  "Size of the ACA phase-centre shift and the method used to apply it",
+  "MCMC sampler, walkers, steps, priors and convergence criterion for the visibility fit",
+  "Dust opacity law and grain size distribution (only referenced to Marino et al. 2019)",
+  "Details of the SMG nuisance model priors and how it was removed from visibilities for Figure 5",
+  "Line-free channels and continuum-subtraction method for CO cubes",
+  "Rest frequencies, channel selection and the exact Keplerian-mask spectral extraction recipe",
+  "Orbitize settings (number of walkers/temperatures, priors on parameters other than i and Omega, which astrometric points)",
+  "Parameters for the Matra et al. 2018 CO non-LTE tool (collider densities, line width)",
+  "Relation of project 2017.1.00825.S to the data analysed (the paper lists it only in the acknowledgements)",
+  "Which of the 2017.1.00828.S execution blocks correspond to Table 1 rows"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters beyond robust and taper (masks, thresholds, cell and image size)",
+  "Full specification of the MCMC (priors, sampler, likelihood) and dust opacity model for the RADMC-3D fit",
+  "How ACA and 12m data are combined",
+  "Orbitize configuration and exact astrometry set",
+  "Inputs to the Matra et al. 2018 CO tool",
+  "No code or fitted models released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archive data and many numeric results, but the imaging and MCMC fitting recipe is only partly specified and no code is released",
+ "rediscovery_reason": "Data are public, flux, upper-limit and radial profile/gap results are numeric and can be approximately redone, although the parametric visibility fit needs assumptions for missing settings",
+ "source_card": "cards/2020MNRAS.498.1319M/sonnet/card.md"
+}

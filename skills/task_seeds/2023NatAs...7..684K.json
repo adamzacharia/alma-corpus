@@ -1,0 +1,631 @@
+{
+ "bibcode": "2023NatAs...7..684K",
+ "title": "Azimuthal C/O variations in a planet-forming disk",
+ "year": 2023,
+ "doi": "10.1038/s41550-023-01951-9",
+ "arxiv_id": "2303.08927",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "How does the gas-phase elemental C/O ratio vary azimuthally in the protoplanetary disk around HD 100546, and what explains the spatial and kinematic asymmetries in CS and SO emission?",
+ "alma_project_codes": [
+  "2016.1.01339.S",
+  "2019.1.00193.S",
+  "2017.1.00845.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "ACA (Atacama Compact Array) and ALMA",
+  "angular_resolution": "∼ 4.78\" x 4.06\" (ACA CS); ∼ 0.18\" (ALMA SO); ∼ 0.3\" (ALMA C2H)",
+  "sensitivity": "0.10 Jy beam-1 km s-1 (CS 7-6 integrated intensity rms); 0.024 Jy beam-1 (CS 7-6 channel map rms); 0.10 to 0.31 Jy beam-1 km s-1 across transitions"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA SO 7_7-6_6 and 7_8-6_7 observations and line fluxes",
+    "evidence": [
+     {
+      "loc": "1.1 Data & observational findings",
+      "quote": "We present a new detection of CS in HD 100546, alongside ALMA SO observations first presented in (Booth et al., 2022) (Figures 1 and 2)."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "SO 7 7 -6 6 1.25 × 10–21 (Booth et al., 2022)"
+     }
+    ]
+   },
+   "citation": "(Booth et al., 2022)"
+  },
+  {
+   "what": {
+    "value": "ALMA 870 µm continuum emission map",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "ALMA 870µm continuum emission map (Fedele et al., 2021), overlaid with SO 7 7 -6 6 +7 8 -6 7 emission contours (green) and CS 7-6 emission contours (white)."
+     }
+    ]
+   },
+   "citation": "(Fedele et al., 2021)"
+  },
+  {
+   "what": {
+    "value": "Radial profile of CO 3-2 emission",
+    "evidence": [
+     {
+      "loc": "3.3.4 Basic fitting procedure",
+      "quote": "[C]/[H] gas and [O]/[H] gas are constrained by modelling the CO ladder, the line profiles of the CO 3-2, CO 6-5 and [CI] transitions, and the radial profile of the CO 3-2 emission from (Walsh et al., 2014)."
+     }
+    ]
+   },
+   "citation": "(Walsh et al., 2014)"
+  },
+  {
+   "what": {
+    "value": "CO 3-2, CO 6-5, CI, HD 112µm, C2H, and HCO+ fluxes and upper limits, and APEX line profiles",
+    "evidence": [
+     {
+      "loc": "3.3.5 Modelling azimuthal asymmetries",
+      "quote": "This method allows us to constrain the CO depletion factor to ≲ 0.8, via comparison with the CO 6-5, CO 3-2, and [CI] 1-0 lines obtained by APEX and previously presented in (Kama et al., 2016) (see Supplementary Information 7)"
+     },
+     {
+      "loc": "Table 3",
+      "quote": "CO 3-2 1.72 ± 0.04 × 10–18 (Kama et al., 2016)"
+     }
+    ]
+   },
+   "citation": "(Kama et al., 2016)"
+  },
+  {
+   "what": {
+    "value": "CO 7-6 to 13-12 and 13CO 6-5 to 11-10 fluxes and upper limits",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "CO 7-6 2.35 ± 0.27 × 10–17 (van der Wiel et al., 2014)"
+     }
+    ]
+   },
+   "citation": "(van der Wiel et al., 2014)"
+  },
+  {
+   "what": {
+    "value": "CO 14-13 to 38-37, OI, CII, and H2O fluxes and upper limits",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "CO 14-13 6.00 ± 0.83 × 10–17 (Meeus et al., 2012)"
+     }
+    ]
+   },
+   "citation": "(Meeus et al., 2012)"
+  },
+  {
+   "what": {
+    "value": "13CO 3-2 upper limit",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "13 CO 3-2 ≤ 6.6 × 10–19 (Panic et al., 2010)"
+     }
+    ]
+   },
+   "citation": "(Panic et al., 2010)"
+  },
+  {
+   "what": {
+    "value": "OI, CII, and HD 56µm fluxes and upper limits",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "HD 56µm ≤ 1.6 × 10–17 (Fedele, D. et al., 2013)"
+     }
+    ]
+   },
+   "citation": "(Fedele, D. et al., 2013)"
+  },
+  {
+   "what": {
+    "value": "H2O 179.52 and 90.00 fluxes",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "H 2 O 179.52 3.05 ± 4.8 × 10–17 (Sturm et al., 2010)"
+     }
+    ]
+   },
+   "citation": "(Sturm et al., 2010)"
+  },
+  {
+   "what": {
+    "value": "H2O 557, 1113, and 1153 GHz fluxes and upper limits",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "H 2 O 557 GHz 1.41 ± 0.0259 × 10–18 (Du et al., 2017)"
+     }
+    ]
+   },
+   "citation": "(Du et al., 2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and extract spectra and upper limits from ACA Band 7 observations",
+   "method": "Calibrate ACA visibilities with the ALMA pipeline, subtract continuum with uvcontsub, image with tCLEAN using natural weighting, generate moment 0 maps between -14.5 and 25.5 km s-1, extract spectra using 5.0\" elliptical and Keplerian masks with specflux, and apply uv-plane matched filtering using DALI templates for non-detected lines.",
+   "software": [
+    "CASA",
+    "ALMA Pipeline",
+    "tCLEAN",
+    "uvcontsub",
+    "specflux",
+    "Keplerian mask (Teague, 2020)",
+    "VISIBLE / matched filter (Loomis et al., 2018)"
+   ],
+   "key_parameters": [
+    "cell size = 0.5\", image region = 20\"x20\", velocity integration range = -14.5 to 25.5 km s-1, elliptical aperture radius = 5.0\""
+   ],
+   "assumptions": [
+    "V_LSRK = 5.7 km s-1; M_* = 2.4 M_sun for Keplerian mask"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure and validate the spatial offset of CS 7-6 emission from the host star",
+   "method": "Fit a Gaussian to the CS image and deproject using disk inclination and PA; compare CS peak position against ACA continuum and C18O 3-2 reference positions; calculate beam centroid uncertainty; fit a Gaussian directly to continuum-subtracted visibilities within ±10 km s-1 of V_LSRK using CASA uvmodelfit.",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "uvmodelfit channels = ±10 km s-1 from source velocity, 20 iterations (converging after ∼8)"
+   ],
+   "assumptions": [
+    "Continuum and C18O 3-2 emission peaks trace the central star location within the central 0.5\" pixel"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct baseline axisymmetric 2D physical-chemical disk model (C/O = 0.5)",
+   "method": "Run a grid of 1728 DALI models to fit the SED for dust mass, constrain maximum gas mass from HD 56 µm and 112 µm upper limits, constrain global [C/H]gas and [O/H]gas from the CO ladder, [CI], C2H upper limits, and CO 3-2 radial profile, and fit radially varying [S/H] in dust rings using CS and SO fluxes and sulfur upper limits.",
+   "software": [
+    "DALI"
+   ],
+   "key_parameters": [
+    "Table 1 fiducial parameters: R_sub=0.25 au, R_gap=1.0 au, R_cav=13 au, R_out=1000 au, R_c=50 au, M_gas=1.45e-1 M_sun, M_dust=1.12e-3 M_sun, [C/H]gas=1.0e-5, [O/H]gas=2.0e-5, t_chem=5 Myr; [S/H]=10^-9 (13-30 au) and 10^-8 (150-230 au)"
+   ],
+   "assumptions": [
+    "Interstellar gas-to-dust ratio ∆_g/d = 100; UMIST 06 chemical network (122 species, 1701 reactions); d = 110 pc; L_* = 36 L_sun"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model azimuthal C/O variations by splicing 2D DALI models and simulating ALMA observations",
+   "method": "Use output abundances from baseline C/O=0.5 model (model A) as input for shadowed model (model B) with depleted H2O, atomic O, and CO (placing removed C into neutral atomic C), evolve for 5 years, raytrace both models, splice a wedge (θ, φ) from model B into model A using a custom Python script, and generate synthetic ALMA observations with CASA simobserve and simanalyze.",
+   "software": [
+    "DALI",
+    "Python",
+    "CASA",
+    "simobserve",
+    "simanalyze"
+   ],
+   "key_parameters": [
+    "Wedge size θ = 60 deg, wedge orientation φ = 10 deg north of west, wedge C/O = 1.5 (CO depletion factor = 0.3, O depletion factor = 0.3, H2O depletion factor = 0), chemical age = 5 years; grid of ∼570 models with θ = 10-90 deg, φ = 0-180 deg, C/O = 0.3-3.0"
+   ],
+   "assumptions": [
+    "Angles measured in cube plane rather than projected disk plane; shadow transit time in outer disk is ∼5 years"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Evaluate analytical cooling, freeze-out, and chemical conversion timescales for the shadowing hypothesis",
+   "method": "Compute dust radiative cooling timescale for 1 µm silicate grains cooling from 100 K to 50 K, calculate H2O collision/freeze-out timescale onto dust grains across r = 13-300 au for ∆_g/d = 10-390, and extract chemical rebalancing timescales (for 2x CS increase and 2x SO decrease) from DALI grid cells at z/r ∼ 0.25.",
+   "software": [
+    "DALI"
+   ],
+   "key_parameters": [
+    "grain radius r = 1 µm, grain density ρ = 4 g cm-3, specific heat C = 2000 J kg-1 K-1, ∆T = 50 K (100 K to 50 K), Q_rad = 0.125, dust settling factor = 100, ∆_g/d = 10-390, z/r ∼ 0.25"
+   ],
+   "assumptions": [
+    "Shadowing material orbits at r = 13 au (orbital period ∼30 yr, shadow transit time ∼5 yr in outer disk); optically thin regime in upper surface layers"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CS 7-6 integrated intensity peak flux",
+   "value": "0.90",
+   "uncertainty": "0.10",
+   "units": "Jy beam-1 km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "1.1 Data & observational findings",
+     "quote": "CS is detected at 9 σ confidence (0.90 ± 0.10 Jy beam–1 km s–1 at emission peak, as measured from the integrated intensity map), using the Atacama Compact Array (ACA) in Cycle 4 (Figure 2, top right)."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 channel map peak flux density",
+   "value": "0.21",
+   "uncertainty": "0.024",
+   "units": "Jy beam-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Data reduction",
+     "quote": "Channel maps are presented in Supplementary Information 6, from which we measure a peak flux density of 0.21 Jy beam–1 and rms of 0.024 Jy beam–1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 disk-integrated flux (elliptical mask)",
+   "value": "1.02",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Data reduction",
+     "quote": "The disk-integrated flux extracted from the elliptically masked cube was 1.02 Jy km s–1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 disk-integrated flux (Keplerian mask)",
+   "value": "0.62",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Data reduction",
+     "quote": "The total disk-integrated flux was extracted using the CASA task specflux, and determined to be 0.62 Jy km s–1 for the Keplerian-masked cube, where the mask was cut at ± 4 km s–1 either side of the source velocity in order to remove noisy channels."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 disk-integrated flux (energy units)",
+   "value": "1.167e-20",
+   "uncertainty": "not stated",
+   "units": "W m-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CS 7-6 1.167 × 10–20 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 emission peak spatial offset (image plane)",
+   "value": "1",
+   "uncertainty": "0.27",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Supplementary Information 1",
+     "quote": "We therefore find the CS 7-6 emission peak to be offset by ∼ 1 ± 0.27\"."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 emission peak radial offset (deprojected)",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.1 Data & observational findings",
+     "quote": "We determine the radial separation between the peak of the emission and the host star by exploiting the known inclination and position angle of the disk to deproject the image, finding the emission peak to be radially offset ∼ 100 au from the source."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 emission peak offset in visibility plane (total absolute)",
+   "value": "1.11",
+   "uncertainty": "0.33",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Supplementary Information 1",
+     "quote": "The offset in the emission peak is found to be 0.88 ± 0.23\" west and 0.68 ± 0.25\" south, corresponding to a total absolute offset of 1.11 ± 0.33\"."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 emission peak offset in visibility plane (west)",
+   "value": "0.88",
+   "uncertainty": "0.23",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Supplementary Information 1",
+     "quote": "The offset in the emission peak is found to be 0.88 ± 0.23\" west and 0.68 ± 0.25\" south, corresponding to a total absolute offset of 1.11 ± 0.33\"."
+    }
+   ]
+  },
+  {
+   "quantity": "CS 7-6 emission peak offset in visibility plane (south)",
+   "value": "0.68",
+   "uncertainty": "0.25",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Supplementary Information 1",
+     "quote": "The offset in the emission peak is found to be 0.88 ± 0.23\" west and 0.68 ± 0.25\" south, corresponding to a total absolute offset of 1.11 ± 0.33\"."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O 3-2 integrated intensity peak flux",
+   "value": "7.2",
+   "uncertainty": "0.3",
+   "units": "Jy beam-1 km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Data reduction",
+     "quote": "The detection is made at a ∼ 24 σ confidence level, with a peak flux of 7.2 ± 0.3 Jy beam–1 km s–1, as measured from the integrated intensity map."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O 3-2 disk-integrated flux (Keplerian mask)",
+   "value": "5.41",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Data reduction",
+     "quote": "The disk integrated flux is measured using the procedure outlined above, determined to be 5.41 Jy km s–1 using a Keplerian mask, and 8.22 Jy km s–1 using an elliptical mask."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O 3-2 disk-integrated flux (elliptical mask)",
+   "value": "8.22",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Data reduction",
+     "quote": "The disk integrated flux is measured using the procedure outlined above, determined to be 5.41 Jy km s–1 using a Keplerian mask, and 8.22 Jy km s–1 using an elliptical mask."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O 3-2 disk-integrated flux (energy units)",
+   "value": "9.03e-20",
+   "uncertainty": "not stated",
+   "units": "W m-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "C 18 O 3-2 9.03 × 10–20 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 2_1-1_0 3sigma upper limit",
+   "value": "< 0.66",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SO 2 1 - 1 0 329.385 0.250 15.8 1.423 × 10–5 4.83 ” × 4.08 ” 0.14 < 0.66"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 4_3,1-3_2,2 3sigma upper limit",
+   "value": "< 0.48",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SO 2 4 3,1 - 3 2,2 332.505 0.250 31.3 3.290 × 10–4 4.84 ” × 4.07 ” 0.10 < 0.48"
+    }
+   ]
+  },
+  {
+   "quantity": "C36S 7-6 3sigma upper limit",
+   "value": "< 0.46",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C 36 S 7 – 6 332.510 0.250 63.9 6.951 × 10–4 4.78 ” × 4.07 ” 0.10 < 0.46"
+    }
+   ]
+  },
+  {
+   "quantity": "HCS+ 8-7 3sigma upper limit",
+   "value": "< 0.71",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HCS + 8 – 7 341.339 0.250 73.7 8.352 × 10–4 4.62 ” × 4.03 ” 0.14 < 0.71"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS 10_0,10-9_0,9 3sigma upper limit",
+   "value": "< 1.50",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "H 2 CS 10 0,10 - 9 0,9 342.946 0.250 90.6 6.080 × 10–4 4.73 ” × 3.90 ” 0.31 < 1.50"
+    }
+   ]
+  },
+  {
+   "quantity": "34SO 2_3-2_1 3sigma upper limit",
+   "value": "< 1.60",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "34 SO 2 3 - 2 1 343.851 0.250 20.9 1.382 × 10–7 4.63 ” × 3.89 ” 0.31 < 1.60"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 8_8-7_7 3sigma upper limit",
+   "value": "< 1.50",
+   "uncertainty": "not stated",
+   "units": "Jy km s-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SO 8 8 - 7 7 344.310 0.250 87.5 5.188 × 10–4 4.62 ” × 3.89 ” 0.30 < 1.50"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit total dust mass",
+   "value": "1.12e-3",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.4 Basic fitting procedure",
+     "quote": "We find a best fit total dust mass of 1.12 × 10–3 M ⊙, consistent with previous studies (Kama et al., 2016)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum total gas mass",
+   "value": "< 5.6e-1",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.4 Basic fitting procedure",
+     "quote": "We constrain the total gas mass to < 5.6 × 10–1 M ⊙, equivalent to a gas-to-dust ratio of ∆ g/d ≈ 390 (taking into account dust depletion in the inner cavity)."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit global gas-phase C/O ratio (unshadowed region)",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.4 Basic fitting procedure",
+     "quote": "C 2 H upper limits presented in (Kama et al., 2016) constrain the global C/O ≲ 1, and we adopt [C/H] gas = 1 × 10–5 for our fiducial model, giving a C/O ratio of 0.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase C/O ratio in shadowed wedge",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.5 Modelling azimuthal asymmetries",
+     "quote": "The model presented here uses a CO depletion factor of 0.3, an atomic oxygen depletion factor of 0.3, and an H 2 O depletion factor of 0 (i.e. total removal), resulting in a gas-phase C/O ratio of 1.5."
+    }
+   ]
+  },
+  {
+   "quantity": "High-C/O wedge angular width (theta)",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.5 Modelling azimuthal asymmetries",
+     "quote": "Using these values, we find that a wedge size of θ = 60o centred ten degrees north of west west ( φ = 10o ) accurately reproduces both the CS and SO emission morphology and line profiles."
+    }
+   ]
+  },
+  {
+   "quantity": "High-C/O wedge orientation (phi, north of west)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.5 Modelling azimuthal asymmetries",
+     "quote": "Using these values, we find that a wedge size of θ = 60o centred ten degrees north of west west ( φ = 10o ) accurately reproduces both the CS and SO emission morphology and line profiles."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust cooling timescale",
+   "value": "189",
+   "uncertainty": "not stated",
+   "units": "s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Supplementary Information 5",
+     "quote": "t cooling = 0.1251.68 × × 4 π 10(10 –14–6 ) × 2 × 2000 5.67 × × ( 10100 – 50 –8 × 100) 4 ≈ 189 s"
+    }
+   ]
+  },
+  {
+   "quantity": "Chemical rebalancing timescale (between 13 and 300 au)",
+   "value": "2e-4 to 5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Supplementary Information 5",
+     "quote": "We find that the chemical timescale varies between ∼ 2 × 10–4 to ∼ 5 years, for radial regions between 13-300 au."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact disk inclination and position angle values adopted for image deprojection, Keplerian masking, and DALI raytracing",
+  "Specific line-free channel ranges used in uvcontsub for each ACA spectral window",
+  "tCLEAN stopping threshold and masking strategy during deconvolution of the ACA cubes",
+  "Exact CASA simobserve and simanalyze configuration files and noise/thermal parameters used to simulate the observations"
+ ],
+ "missing_for_reproduction": [
+  "DALI physical-chemical code and UMIST 06 network files (not publicly released with the paper)",
+  "Custom Python script used to splice the 2D DALI output cubes into 3D wedges",
+  "Exact disk inclination and position angle adopted in the DALI raytracing and deprojection",
+  "Reduced SO data cubes from Booth et al. (2022) and 870 µm continuum FITS from Fedele et al. (2021)"
+ ],
+ "reproducibility_score": 68,
+ "score_reason": "The ACA data reduction, imaging parameters, visibility fitting, and model parameters (Tables 1-3) are very thoroughly documented, and the raw ALMA data are public. However, full reproduction of the modelling requires the proprietary DALI code and custom splicing scripts, and exact disk inclination/PA values used for raytracing and deprojection are not explicitly stated.",
+ "rediscovery_reason": "The primary observational results (CS 7-6 detection, integrated flux, redshifted line profile,C18O 3-2 flux, and ~1 arcsec visibility/image centroid offset) can be directly reproduced from the public ACA dataset 2016.1.01339.S using standard CASA tasks.",
+ "source_card": "cards/2023NatAs...7..684K/sonnet/card.md"
+}

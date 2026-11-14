@@ -1,0 +1,347 @@
+{
+ "bibcode": "2018ApJ...869...10M",
+ "title": "Comprehensive Analysis of HD 105, A Young Solar System Analog",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aaec6a",
+ "arxiv_id": "1811.06440",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "What are the stellar parameters, disc architecture, scattered-light albedo and dust properties of the young Solar analogue HD 105 and its debris disc?",
+ "alma_project_codes": [
+  "2012.1.00437.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.95″ × 0.67″ at PA 88° (34 × 26 au)",
+  "sensitivity": "26.8 μJy/beam continuum rms (natural weighting)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ATCA 9 mm flux",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "an ATCA measurement at 9 mm taken from (cite: 2017Marshall)"
+     }
+    ]
+   },
+   "citation": "(cite: 2017Marshall)"
+  },
+  {
+   "what": {
+    "value": "APEX/LABOCA 880 μm flux",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "an APEX/LABOCA measurement at 880 $\\mu$m (cite: 2010Nilsson)"
+     }
+    ]
+   },
+   "citation": "(cite: 2010Nilsson)"
+  },
+  {
+   "what": {
+    "value": "Gaia DR2 position, parallax, proper motion, G mag",
+    "evidence": [
+     {
+      "loc": "3.1 Stellar parameters",
+      "quote": "are taken from the Gaia DR 2 catalogue (cite: 2016Prusti; 2016Lindegren; 2018Brown)"
+     }
+    ]
+   },
+   "citation": "(cite: 2018Brown)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum",
+   "method": "clean of all four spectral windows with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit disc architecture",
+   "method": "Grid of single-annulus models convolved with dirty beam, subtracted from image, residuals minimised",
+   "software": [],
+   "key_parameters": [
+    "Grid over inclination, PA, semi-major axis, width, flux"
+   ],
+   "assumptions": [
+    "Vertical opening angle 10°, constant surface brightness exponent alpha=0"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust mass",
+   "method": "Optically thin M = F d^2 / (kappa B)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 1.7 g cm^-2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Search for CO(2-1) emission",
+   "method": "Continuum-subtracted cube, Keplerian spectro-spatial filtering over disc region, non-LTE mass limit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Cube -25 to 25 km/s, 0.5 km/s step; star 1.114 Msun"
+   ],
+   "assumptions": [
+    "CO co-located with dust, vertically flat, Keplerian"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure scattered-light radial profile and albedo",
+   "method": "PSF subtraction (KLIP/PCA-RDI), elliptical-aperture averaging using ALMA geometry, throughput correction, albedo from Weinberger approximation",
+   "software": [],
+   "key_parameters": [
+    "NICMOS F160W: 69 modes, 125 reference images; SPHERE: 100 PCA modes, 610 images from 22 stars"
+   ],
+   "assumptions": [
+    "Optically thin dust"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain grain size and composition from albedo",
+   "method": "Hyperion radiative transfer for grain sizes 0.1-500 μm and silicate/ice mixtures",
+   "software": [
+    "Hyperion"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust mass fixed from ALMA flux; Ldust/L* = 2.6e-4"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit SED with disc model",
+   "method": "Grid of radiative transfer models with power-law size distribution, annulus 70-100 au",
+   "software": [
+    "Hyperion"
+   ],
+   "key_parameters": [
+    "amin 0.5-20.5 μm (41 values), q 2.5-4.5 (11 values), amax fixed 10 mm"
+   ],
+   "assumptions": [
+    "Pure astronomical silicate"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disc semi-major axis",
+   "value": "85",
+   "uncertainty": "± 5",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Semi-major axis (au) | 50 – 150 | 41 | Linear | 85 $\\pm$ 5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination",
+   "value": "50",
+   "uncertainty": "± 5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Disc architecture",
+     "quote": "with an inclination of 50 $\\pm$ 5 $^\\circ$ with respect to the line of sight at a position angle of 15 $\\pm$ 5$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle",
+   "value": "15",
+   "uncertainty": "± 5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Disc architecture",
+     "quote": "with an inclination of 50 $\\pm$ 5 $^\\circ$ with respect to the line of sight at a position angle of 15 $\\pm$ 5$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt width",
+   "value": "30",
+   "uncertainty": "± 10",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Belt width (au) | 10 – 50 | 21 | Linear | 30 $\\pm$ 10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total disc flux at 1.3 mm",
+   "value": "1.45",
+   "uncertainty": "± 0.28",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Disc architecture",
+     "quote": "The total flux of the disc in the sub-millimetre, 1.45 $\\pm$ 0.28 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "0.035",
+   "uncertainty": "+0.013/-0.009",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 Disc architecture",
+     "quote": "we calculate a mass of $0.035^{+0.013}_{-0.009}~$M$_{\\oplus}$ for the dust"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) 3-sigma upper limit",
+   "value": "8.5",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 Non-detection of cold CO emission",
+     "quote": "The spectro-spatial filtering yields a 3-$\\sigma$ upper limit of 8.5 mJy kms$^{-1}$ to CO emission."
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limit",
+   "value": "2.5e-7 to 2.5e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 Non-detection of cold CO emission",
+     "quote": "we determine a CO mass upper limit ranging from 2.5$\\times10^{-7}$ to 2.5$\\times10^{-6}$ $M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar age",
+   "value": "50",
+   "uncertainty": "± 16",
+   "units": "Myr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1 Stellar parameters",
+     "quote": "We derived an age of 50 $\\pm$ 16 Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust albedo (NICMOS)",
+   "value": "0.15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.3 Combined modelling",
+     "quote": "we obtain an albedo of 0.15 based on the NICMOS surface brightness (15 $\\mu$Jy/arcsec$^{2}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust albedo (SPHERE)",
+   "value": "0.06",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.3 Combined modelling",
+     "quote": "or 0.06 based on the SPHERE measurement (5.9 $\\mu$Jy/arcsec$^{2}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum grain size",
+   "value": "3.25",
+   "uncertainty": "+3.00/-1.00",
+   "units": "μm",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$a_{\\rm min}$ ($\\mu$m) | 0.5 – 20.5  |   41   | Linear  | 3.25$^{+3.00}_{-1.00}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Size distribution exponent q",
+   "value": "3.55",
+   "uncertainty": "+0.30/-0.15",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$q$                    | 2.50 – 4.50 |   11   | Linear  | 3.55$^{+0.30}_{-0.15}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gamma = Rdisc/Rbb",
+   "value": "2.43",
+   "uncertainty": "± 0.42",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "We find $\\Gamma = 2.43~\\pm~0.42$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size and image size of the ALMA clean image",
+  "clean threshold, mask and iterations",
+  "Exact model-fit residual metric and error estimation for disc architecture",
+  "Line-free channels for uvcontsub",
+  "Dust temperature adopted for the mass calculation",
+  "Details of the CO non-LTE excitation conditions",
+  "SED fitting method, likelihood and how parameter errors were derived"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks)",
+  "Unpublished ALICE F160W reduction",
+  "SPHERE custom PCA code",
+  "SED fitting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data public and the main numeric results are specified, but imaging and fitting details are sparse and several datasets are unpublished or custom.",
+ "rediscovery_reason": "Public ALMA data; disc geometry, dust mass and CO limit are numeric and the recipe is fairly simple, though imaging details are missing.",
+ "source_card": "cards/2018ApJ...869...10M/sonnet/card.md"
+}

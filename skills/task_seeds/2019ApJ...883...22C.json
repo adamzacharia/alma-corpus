@@ -1,0 +1,299 @@
+{
+ "bibcode": "2019ApJ...883...22C",
+ "title": "The Degree of Alignment between Circumbinary Disks and Their Binary Hosts",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab287b",
+ "arxiv_id": "1906.03269",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation",
+  "exoplanets"
+ ],
+ "question": "How well aligned are circumbinary disks with their host binaries, particularly for short-period double-lined spectroscopic binaries, and what does this imply for circumbinary planets?",
+ "alma_project_codes": [
+  "2015.1.00690.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.6\" beam (continuum 0.66\"x0.61\")",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UZ Tau E disk inclination 56.15 ± 1.50 deg and Omega_disk 90.39 ± 1.50 deg from ALMA continuum; inclination fixed in the dynamical model",
+    "evidence": [
+     {
+      "loc": "2.1 Background data on UZ Tau",
+      "quote": "They also measured the disk inclination (relative to the sky plane) to be $i_\\mathrm{disk} = 56.15 \\ensuremath{^\\circ} \\pm 1.50\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "citation": "(cite: long18)"
+  },
+  {
+   "what": {
+    "value": "M_tot sin^3 i_star = 0.69 ± 0.13 Msun and mass ratio q = 0.30 ± 0.03 for UZ Tau E",
+    "evidence": [
+     {
+      "loc": "2.3 UZ Tau E 13CO and C18O dynamical analysis",
+      "quote": "For UZ Tau E, (cite: jensen07) find $M_\\mathrm{tot} \\sin^3 i_\\star = 0.69 \\pm 0.13\\,M_\\odot$"
+     }
+    ]
+   },
+   "citation": "(cite: jensen07)"
+  },
+  {
+   "what": {
+    "value": "Orbital and disk parameters of the circumbinary disk sample compiled in Tables 3-5",
+    "evidence": [
+     {
+      "loc": "3.1 The circumbinary disk sample",
+      "quote": "The first group contains the circumbinary systems that have precise measurements of the disk and stellar orientations (Table [3](#tab:disks-known))"
+     }
+    ]
+   },
+   "citation": "literature references listed in Table 3-5 notes"
+  },
+  {
+   "what": {
+    "value": "Gaia DR2 distance 131.2 ± 1.7 pc",
+    "evidence": [
+     {
+      "loc": "2.1 Background data on UZ Tau",
+      "quote": "$131.2 \\pm 1.7\\,$pc (cite: gaia18; bailer-jones18)"
+     }
+    ]
+   },
+   "citation": "(cite: gaia18; bailer-jones18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging and flux",
+   "method": "Self-calibrate on continuum, image with multiscale-multifrequency clean, fit elliptical Gaussian with uvmodelfit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust=0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Line imaging, systemic velocity, cloud-contaminated channels",
+   "method": "tclean cubes, moment-0 maps, identify cloud contamination using FCRAO CO 1-0 maps; mask 4.0-7.5 km/s LSRK",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dynamical mass of UZ Tau E",
+   "method": "Forward-model 13CO and C18O emission to visibilities with a parametric disk (RADMC-3D), complex chi2 likelihood, MCMC",
+   "software": [
+    "DiskJockey",
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "q fixed to 0.5; i_disk fixed to 56.15 deg; gamma=1; d=131.2 pc"
+   ],
+   "assumptions": [
+    "Keplerian rotation, vertically isothermal, hydrostatic equilibrium, distance 131.2 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Binary inclination i_star",
+   "method": "Combine disk-based M_tot with RV M_tot sin^3 i_star from Jensen et al. 2007",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Hierarchical Bayesian inference of mutual inclination distribution",
+   "method": "Logit-normal p(theta) with hyperparameters mu_v, tau_v; disk-frame rotation; sample full posterior of 4 SB2 disks (V4046 Sgr, DQ Tau, UZ Tau E, AK Sco) using cos i_disk and cos i_star",
+   "software": [
+    "PyMC3",
+    "Theano"
+   ],
+   "key_parameters": [
+    "hyperpriors: mu_v ~ N(0,2); tau_v half-Gaussian (mu=0.5, sigma=4) with tau>0.5"
+   ],
+   "assumptions": [
+    "AK Sco astrometric orbit ignored; Omega_star treated as unknown; uniform phi"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "UZ Tau E total stellar mass",
+   "value": "1.21",
+   "uncertainty": "0.05",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 UZ Tau E 13CO and C18O dynamical analysis",
+     "quote": "These two uncertainties are added in quadrature to deliver a final mass determination of $M_\\mathrm{tot} = 1.21\\pm 0.05\\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "M_tot from 13CO",
+   "value": "1.19",
+   "uncertainty": "0.01 (stat)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_\\mathrm{tot}\\quad [M_\\odot]$ | $1.19 \\pm 0.01$ | $1.23 \\pm 0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "M_tot from C18O",
+   "value": "1.23",
+   "uncertainty": "0.01 (stat)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_\\mathrm{tot}\\quad [M_\\odot]$ | $1.19 \\pm 0.01$ | $1.23 \\pm 0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau E binary inclination i_star",
+   "value": "56.1",
+   "uncertainty": "5.7",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 UZ Tau E 13CO and C18O dynamical analysis",
+     "quote": "we infer the binary inclination relative to the sky-plane to be $i_\\star = 56.1 \\pm 5.7\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_Ea",
+   "value": "0.93",
+   "uncertainty": "0.04",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 UZ Tau E 13CO and C18O dynamical analysis",
+     "quote": "$M_\\mathrm{Ea} = 0.93 \\pm 0.04 \\,M_\\odot$ and $M_\\mathrm{Eb} = 0.28 \\pm 0.02 \\,M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_Eb",
+   "value": "0.28",
+   "uncertainty": "0.02",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 UZ Tau E 13CO and C18O dynamical analysis",
+     "quote": "$M_\\mathrm{Ea} = 0.93 \\pm 0.04 \\,M_\\odot$ and $M_\\mathrm{Eb} = 0.28 \\pm 0.02 \\,M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau E systemic velocity",
+   "value": "5.5 (LSRK)",
+   "uncertainty": "0.1",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 New ALMA observations of UZ Tau",
+     "quote": "$v_\\mathrm{LSRK} = 5.5 \\pm 0.1\\,{\\rm km\\thinspace s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau E 233 GHz continuum flux density",
+   "value": "145.72",
+   "uncertainty": "0.04 (stat)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2 New ALMA observations of UZ Tau",
+     "quote": "find a flux density of $145.72 \\pm 0.04$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau E 12CO line flux",
+   "value": "6.01",
+   "uncertainty": "0.02",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 New ALMA observations of UZ Tau",
+     "quote": "the ${}^{12}$CO, ${}^{13}$CO, and C${}^{18}$O line fluxes are $6.01\\pm0.02\\,\\mathrm{Jy}\\thinspace\\mathrm{km}\\thinspace \\mathrm{s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "68% upper bound on mutual inclination for CB disks around short-period SB2s",
+   "value": "3.0",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Inferring the mutual inclinations of CB disks around SB2s with a hierarchical Bayesian model",
+     "quote": "with 68% of the probability contained within $\\ensuremath{\\theta}< 3.0\\ensuremath{^\\circ}$ (95.4% and 99.7% within $\\ensuremath{\\theta}< 9.5\\ensuremath{^\\circ}$ and $\\ensuremath{\\theta}< 11.9\\ensuremath{^\\circ}$, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "95.4% upper bound on theta",
+   "value": "9.5",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Inferring the mutual inclinations of CB disks around SB2s with a hierarchical Bayesian model",
+     "quote": "95.4% and 99.7% within $\\ensuremath{\\theta}< 9.5\\ensuremath{^\\circ}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum and uvcontsub",
+  "Self-calibration solution intervals and reference antenna",
+  "Image size, cell size and clean thresholds",
+  "MCMC walker number, burn-in and convergence criteria for the disk model",
+  "Observed Omega_star treatment and numerical covariance matrices Sigma for the hierarchical model",
+  "Random seed and NUTS settings (draws, tuning) for PyMC3",
+  "Flux calibrator and calibration pipeline/CASA version",
+  "Disk model priors ranges and vertical structure parameters"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibration details",
+  "Line-free channel ranges and clean parameters",
+  "MCMC run settings for disk model and PyMC3 sampler",
+  "Exact input table values/covariances for the hierarchical model beyond Table 3"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public single ALMA dataset with fairly clear model description and released code, but imaging/calibration parameters and sampler settings are missing.",
+ "rediscovery_reason": "Public ALMA data, numeric results (M_tot, i_star, theta<3 deg), and hierarchical model fully specified with tabulated inputs.",
+ "source_card": "cards/2019ApJ...883...22C/sonnet/card.md"
+}

@@ -1,0 +1,272 @@
+{
+ "bibcode": "2022A&A...659A..29B",
+ "title": "A major asymmetric ice trap in a planet-forming disk. III. First detection of dimethyl ether",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142981",
+ "arxiv_id": "2203.02936",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What complex organic molecules and other species can be detected in the asymmetric ice trap of the IRS 48 planet-forming disk, and what are their column densities, abundance ratios, and chemical origins?",
+ "alma_project_codes": [
+  "2017.1.00834.S",
+  "2013.1.00100.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~0.8 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.55'' x 0.42'' (PA = 80 deg)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular spectroscopic parameters (line frequencies, Einstein A coefficients, upper energy levels, degeneracies) from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "Spectral analysis",
+      "quote": "We made use of the Cologne Database for Molecular Spectroscopy (CDMS) (cite: muller2001cologne; muller2005cologne) and the Jet Propulsion Laboratory (JPL) database (cite: pickett1998submillimeter) for molecular information."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: muller2001cologne; muller2005cologne) and JPL (cite: pickett1998submillimeter)"
+  },
+  {
+   "what": {
+    "value": "Distance of 136 pc to IRS 48",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We used a Keplerian mask over the region of emission at a distance of 136 pc (cite: 2021A&A...649A...1G), an inclination angle of , and a position angle of (cite: 2021AJ....161...33V)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021A&A...649A...1G)"
+  },
+  {
+   "what": {
+    "value": "Inclination angle and position angle of IRS 48 disk",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We used a Keplerian mask over the region of emission at a distance of 136 pc (cite: 2021A&A...649A...1G), an inclination angle of , and a position angle of (cite: 2021AJ....161...33V)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021AJ....161...33V)"
+  },
+  {
+   "what": {
+    "value": "COM abundances in IRAS 16293 A and B, V883 Ori, and comet 67P for abundance comparisons",
+    "evidence": [
+     {
+      "loc": "Comparisons to other environments",
+      "quote": "We compare our results as summarised in Table 1 (100 K column) and Figure 3 with the observed abundances in other astronomical environments including the class 0 protostellar binary IRAS 16293 A and B (cite: jorgensen2018alma; manigand2020alma), the outbursting source V883 Ori (cite: lee2019ice), and the comet 67P (cite: drozdovskaya2019ingredients)."
+     }
+    ]
+   },
+   "citation": "(cite: jorgensen2018alma; manigand2020alma; lee2019ice; drozdovskaya2019ingredients)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image calibrated visibilities",
+   "method": "Image the line data with tclean in CASA using Briggs weighting (robust = 0.5), recentred to the star position with a Keplerian mask.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "phase centre = ICRS 16:27:37.17 -24:30:35.55",
+    "channel width ~ 1.7 km s^-1"
+   ],
+   "assumptions": [
+    "distance = 136 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract and stack disk-integrated spectra and make moment 0 and channel maps",
+   "method": "Stack the cleaned images using GoFish over the whole azimuth of the disk to increase S/N, and create integrated intensity (moment 0) and channel maps of selected lines.",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "extraction over the whole azimuth of the disk"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model LTE spectra to derive molecular column densities and upper limits",
+   "method": "Convert flux densities to brightness temperature units and model stacked continuum-subtracted spectra in CASSIS assuming LTE, using CDMS and JPL spectroscopic databases, for transitions with E_up <= 400 K and A_ul >= 10^-5 s^-1.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "FWHM ~ 7 km s^-1",
+    "T_ex = 100 K (and range 70 - 250 K for detected COMs; 40 K for NO)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE)",
+    "Source emitting area based on 5 sigma continuum emission (1.4 x 10^-11 sr) and beam dilution factor",
+    "12C/13C ratio of 60 for methanol isotopologue upper limit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Methanol (CH3OH) column density (revised from weak lines, T_ex = 100 K)",
+   "value": "2e15",
+   "uncertainty": "1.0 - 2.5e15 (for T_ex = 70 - 250 K)",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Revising the column density",
+     "quote": "We use N() = $2\\times10^{15}$ cm$^{-2}$ as a reference for comparisons."
+    },
+    {
+     "loc": "Upper limits",
+     "quote": "|  | Methanol | 2 $\\times 10^{15}$ | 1.0 - 2.5 $\\times 10^{15}$ |  |  |  |  |  |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dimethyl ether (CH3OCH3) column density (T_ex = 100 K)",
+   "value": "1.5e15",
+   "uncertainty": "1.5 - 3.5e15 (for T_ex = 70 - 250 K)",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Upper limits",
+     "quote": "|  | Dimethyl ether | 1.5 $\\times 10^{15}$ | 1.5 - 3.5 $\\times 10^{15}$ |  |  |  |  |  |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Methyl formate (CH3OCHO) column density (T_ex = 100 K)",
+   "value": "1.3e15",
+   "uncertainty": "1.0 - 2.5e15 (for T_ex = 70 - 250 K)",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Upper limits",
+     "quote": "|  | Methyl formate | 1.3 $\\times 10^{15}$ | 1.0 - 2.5 $\\times 10^{15}$ |  |  |  |  |  |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH 3-sigma column density upper limit",
+   "value": "< 5.5e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Revising the column density",
+     "quote": "We also derived a 3$\\sigma$ upper limit for the column density of of $<$ 5.5 $\\times 10^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Strict upper limit on CH3OH column density (from 13CH3OH)",
+   "value": "3.3e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Revising the column density",
+     "quote": "This gives a strict upper limit on the column density of $\\approx$ 3.3 $\\times 10^{16}$ cm$^{-2}$ assuming a / ratio of 60."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO / CH3OCH3 column density ratio",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparisons to other environments",
+     "quote": "The / ratio in our disk is approximately 0.9 and this is consistent with what is observed in other sources across a full range of environments from star and disk formation to comets (cite: coletta2020evolutionary)."
+    }
+   ]
+  },
+  {
+   "quantity": "Nitric oxide (NO) excitation temperature",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Other line detections and upper limits",
+     "quote": "From the CASSIS spectral analysis models, we derive a best-fit total column density for NO of at an excitation temperature of 40 K."
+    }
+   ]
+  },
+  {
+   "quantity": "t-HCOOH / CH3OH ratio upper limit",
+   "value": "< 10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Upper limits",
+     "quote": "From the upper limit, we constrain this ratio to <10 %."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN / CH3OH ratio upper limit",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Upper limits",
+     "quote": "In IRS 48 we have an upper limit of $\\approx$10%."
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol D/H ratio upper limit (CH2DOH / CH3OH)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Upper limits",
+     "quote": "This then gives an upper limit on the D/H of 10% and this is consistent with the ratios seen in protostellar cores, young low-mass stars, and comet 67P ($\\approx$1%-10%, e.g. (cite: 2020A&A...639A..87V; 2021MNRAS.500.4901D))."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact values of disk inclination angle, position angle, stellar mass, and systemic velocity used for the Keplerian mask and GoFish spectral shifting/stacking (missing in the text conversion or inherited from van der Marel et al. 2021a/b)",
+  "Inner and outer radial bounds used in GoFish when extracting the azimuthally integrated spectra",
+  "Line-free channels and uv-plane vs image-plane method used for continuum subtraction",
+  "tclean cell size, image size, stopping threshold, and deconvolver settings",
+  "Details of line data calibration (referred to Ohashi et al. 2020)"
+ ],
+ "missing_for_reproduction": [
+  "Exact calibration script or parameters from Ohashi et al. (2020)",
+  "Exact Keplerian mask and GoFish parameters (stellar mass, systemic velocity, inclination, position angle, radial range)",
+  "Exact tclean imaging parameters (cell size, image size, threshold, deconvolver, continuum subtraction channels)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Public ALMA datasets, explicit software versions (CASA 5.7.0, GoFish 1.3.6, CASSIS 5.1.1), explicit spectral window frequencies, and clear LTE assumptions (T_ex, FWHM, source solid angle, spectroscopic table). Some imaging/stacking parameters (calibration details, Keplerian mask parameters) require consulting companion papers (Ohashi et al. 2020, van der Marel et al. 2021a,b).",
+ "rediscovery_reason": "Public ALMA archival data (2017.1.00834.S, 2013.1.00100.S), well-defined spectral stacking and LTE modelling workflow using standard public tools (CASA, GoFish, CASSIS), and concrete numeric column density targets.",
+ "source_card": "cards/2022A%26A...659A..29B/sonnet/card.md"
+}

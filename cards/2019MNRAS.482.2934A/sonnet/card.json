@@ -1,0 +1,969 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.482.2934A",
+  "title": "PKS B1740-517: an ALMA view of the cold gas feeding a distant interacting young radio galaxy",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Allison, J. R.",
+  "n_authors": 16,
+  "arxiv_id": "1810.08507",
+  "doi": "10.1093/mnras/sty2852",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00808.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We have used the Atacama Large Millimetre Array (ALMA) to detect a rare example of redshifted [12] CO (2-1) absorption in PKS B1740 _−_ 517"
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "nearby_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "PKS B1740-517",
+     "coordinates": {
+      "value": "RA 17h44m25.450s, Dec -51d44m43.79s (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "RA(J2000) 17 [h] 44 [m] 25 [s] _._ 450 Fey et al. (2009)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "_z_ 0.4413 A15"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.4413 (rest frame at z = 0.44185 from broad HI/CO absorption)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "RA(J2000) 17 [h] 44 [m] 25 [s] _._ 450 Fey et al. (2009)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "_z_ 0.4413 A15"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "21-cm absorption, confirmed by optical spectrum (A15)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "RA(J2000) 17 [h] 44 [m] 25 [s] _._ 450 Fey et al. (2009)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "_z_ 0.4413 A15"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is there cold molecular gas (12CO 2-1) in absorption or emission in the young radio galaxy PKS B1740-517, and how does it relate to the HI absorption, the interaction with a companion, and the source age?",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "Here we have used ALMA to search for [12] CO (2-1) emission and absorption, tracing the cold molecular component of the neutral gas"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00808.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGEMENTS",
+       "quote": "ADS/JAO.ALMA#2015.1.00808.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "~150-160 GHz (Band 4); one baseband on CO(2-1) at 159.9 GHz, three continuum basebands",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "We centred one baseband on the expected frequency of 12 159.9 GHz for the redshifted CO (2-1) line"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Line baseband: 3840 x 0.488 MHz channels (~0.9 km/s); continuum basebands at 146, 148, 158 GHz with 128 channels each",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "These were centred at sky frequencies of 146, 148, and 158 GHz, each with 128 channels spanning a bandwidth of 1875 MHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1 (absorption and emission)",
+     "rest_frequency": "not stated (observed 159.9 GHz at z=0.44)",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "We centred one baseband on the expected frequency of 12 159.9 GHz for the redshifted CO (2-1) line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "3 x 1875 MHz basebands",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "each with 128 channels spanning a bandwidth of 1875 MHz"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.1 m to 1.1 km",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "spanning baseline lengths between approximately 15.1 m and 1.1 km"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.33x0.76 arcsec (uniform, continuum); 0.5x1.1 arcsec (natural, CO)",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "giving a resolution of 0 _._ 33 _×_ 0 _._ 76 arcsec at 152 GHz"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "sensitive to angular scales ~0.35 to 26 arcsec",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "is sensitive to angular scales between about 0.35 and 26 arcsec"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "23 min on target in three scans",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "PKS B1740 _−_ 517 was observed for a total of 23 mins, in three scans"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 July 20",
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "were carried using ALMA on 2016 July 20"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "ASKAP (BETA and ASKAP-12)",
+     "provided": {
+      "value": "HI 21-cm absorption spectra, 11 epochs",
+      "evidence": [
+       {
+        "loc": "3.2 The Australian SKA Pathfinder",
+        "quote": "Further 21-cm observations of PKS B1740 _−_ 517 were undertaken as part of ASKAP commissioning and early science verification."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gemini-South",
+     "provided": {
+      "value": "optical imaging and spectra (from A15)",
+      "evidence": [
+       {
+        "loc": "2 PKS B1740-517",
+        "quote": "constructed from _g_ _[′]_ _r_ _[′]_ _i_ _[′]_ -band observations with the 8-m Gemini-South telescope by A15"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Radio SED flux densities from many surveys (Figure 7 references)",
+      "evidence": [
+       {
+        "loc": "Figure 7 caption",
+        "quote": "compiled using our data and those in the literature."
+       }
+      ]
+     },
+     "citation": "Hurley-Walker et al. (2017), Mauch et al. (2003), Van Kempen et al. (2014), etc."
+    },
+    {
+     "what": {
+      "value": "VLBI 2.3 GHz component separation 52 mas and flux ratio",
+      "evidence": [
+       {
+        "loc": "2 PKS B1740-517",
+        "quote": "resolved by very long baseline interferometry (VLBI; King 1994) into two compact (≲ 10 mas) components separated by 52 mas"
+       }
+      ]
+     },
+     "citation": "King (1994)"
+    },
+    {
+     "what": {
+      "value": "Optical spectrum, X-ray N_H and spin temperature limit, ASKAP-BETA HI data epochs",
+      "evidence": [
+       {
+        "loc": "4.1.1",
+        "quote": "A15 compared the total hydrogen column density from the X-ray spectrum and the total integrated H I 21-cm optical depth from the ASKAP spectrum"
+       }
+      ]
+     },
+     "citation": "Allison et al. (2015) (A15)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA with standard ALMA science pipeline tools",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "Data importing, flagging and calibration were carried out using version 4.5.3 of the CASA [3] package (McMullin et al. 2007) and the standard ALMA science pipeline tools [4]"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "4.5.3",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "version 4.5.3 of the CASA [3] package"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1924-2914 (flux scale and bandpass)",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "A further 5 min observation of J1924-2914 was used for calibration of the flux scale and spectral bandpass."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Uniform for continuum; natural for CO absorption and emission cubes",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "two-term Taylor multi-frequency synthesis image with Uniform weighting"
+      },
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "we used natural weighting (with a resolution of 0 _._ 5 _×_ 1 _._ 1 arcsec)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Emission: UVSUB of imaged continuum then first-order UVCONTSUB; absorption: 1st-order polynomial fit to continuum in spectrum",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "first imaged and subtracted the continuum directly from the visibilities using UVSUB, followed by a first-order polynomial using UVCONTSUB3"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Hanning smoothing; cubes at 2 km/s (absorption) and 10 km/s (emission)",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "we imaged the visibilities at the full 2 km s _[−]_ [1] velocity resolution"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "CO absorption 3.1 per cent per 2 km/s; 1.98 mJy/beam per 2 km/s; emission 2.10 mJy per 10 km/s",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "RMS noise level of 1.98 mJy beam _[−]_ [1] per 2 km s _[−]_ [1]"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ASKAP data reduction (self-calibration, continuum subtraction, imaging in MIRIAD) and HI line width fitting method",
+      "evidence": [
+       {
+        "loc": "3.2 The Australian SKA Pathfinder",
+        "quote": "et al. 1995) as described by A15, but using a higher 1 MHz resolution to form the coarse-channel data"
+       }
+      ]
+     },
+     "from_reference": "Allison et al. (2015) (A15)"
+    },
+    {
+     "what": {
+      "value": "Narrow HI line width modelling as two Gaussians convolved with fine filter bank response",
+      "evidence": [
+       {
+        "loc": "4.1.2",
+        "quote": "we repeat the method described by A15, jointly modeling the narrower H I component as the superposition of two Gaussians"
+       }
+      ]
+     },
+     "from_reference": "A15"
+    }
+   ],
+   "unstated_but_needed": [
+    "Continuum line-free channel ranges and polynomial fit region for the CO spectrum",
+    "Taylor-term, clean threshold, cell and image size for ALMA imaging",
+    "Pipeline version and flux calibrator flux density used",
+    "Which ALMA execution blocks/MOUS to use",
+    "Fitting details (priors, errors) of SED least-squares fit",
+    "Equipartition assumptions detail for B~3.4 mG"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure 152 GHz continuum",
+    "method": {
+     "value": "Two-term Taylor MFS image of continuum basebands, uniform weighting",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "we generated a two-term Taylor multi-frequency synthesis image with Uniform weighting"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract CO(2-1) absorption spectrum",
+    "method": {
+     "value": "Natural-weighted cube, spectrum at peak continuum, divided by 1st-order polynomial continuum fit to give percentage absorption",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "extracted the spectrum from the cube at the position of peak continuum flux density. We fitted a 1st-order polynomial to the continuum"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with ASKAP HI spectrum",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "We show the spectrum in Figure 2, overlaid with the H I absorption detected with ASKAP."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Search for CO(2-1) emission",
+    "method": {
+     "value": "Subtract continuum, 10 km/s cube, sum pixels within 1.75 arcsec (10 kpc)",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "We extracted the flux density spectrum by summing pixels per spatial resolution element within 1.75 arcsec"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive column densities and gas masses",
+    "method": {
+     "value": "Integrated optical depths converted to N(HI) and N(CO), then N(H2) with CO/H2 abundance; emission limit via X_CO; masses for disc with h~150 pc, radius 2 kpc",
+     "evidence": [
+      {
+       "loc": "4.1.1",
+       "quote": "Assuming that the atomic gas has a scale height _h_ _∼_ 150 pc (so that the disc obscures both source components) and a radial extent _∼_ 2 kpc from the AGN"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Tspin 100-2000 K; Tex >= 10 K for CO; Z_CO ~1e-4; Milky Way X_CO = 2e20; 400 km/s line width",
+      "evidence": [
+       {
+        "loc": "4.1.1",
+        "quote": "We therefore consider spin temperatures in the range 100 to 2000 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CO absorption H2 lower limit compared with emission upper limit",
+     "evidence": [
+      {
+       "loc": "4.1.1",
+       "quote": "which gives _N_ H 2 ≲ 1 _×_ 10 [22] cm _[−]_ [2], consistent with the lower limit estimated from the absorption line."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit radio SED and estimate spectral age",
+    "method": {
+     "value": "Least squares fit of peaked spectrum with continuous-injection break, then t_syn from equipartition B",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "Least squares fitting gives _v_ p = 786 MHz, _v_ br = 16 GHz, _α_ tk = 1 _._ 4, _α_ tn = _−_ 0 _._ 71, and _S_ p = 8 _._ 1 Jy."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Equipartition, equal electron and proton energy, component sizes ~10 mas",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "Assuming equipartition of the cosmic ray and magnetic field energy densities, equal energy densities of electrons and protons, and source component sizes of ∆ _θ_ _∼_ 10 mas"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least squares",
+     "evidence": [
+      {
+       "loc": "4.2 Evidence for a young radio AGN",
+       "quote": "Least squares fitting gives _v_ p = 786 MHz, _v_ br = 16 GHz,"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared expansion speed with literature",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "implies an expansion velocity of _v_ exp _∼_ 0 _._ 3 c, which is consistent with the distribution of directly measured velocities in the literature"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.3",
+    "used_for": {
+     "value": "ALMA import, flagging, calibration, imaging, UVSUB, UVCONTSUB",
+     "evidence": [
+      {
+       "loc": "3.1 The Atacama Large Millimetre Array",
+       "quote": "version 4.5.3 of the CASA [3] package (McMullin et al. 2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIRIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "ASKAP self-calibration, continuum subtraction, imaging",
+     "evidence": [
+      {
+       "loc": "3.2 The Australian SKA Pathfinder",
+       "quote": "were carried out using the MIRIAD [5] package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "general analysis",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGEMENTS",
+       "quote": "We have made use of A STROPY, a community-developed core P YTHON package for astronomy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "152 GHz continuum flux density",
+    "value": "72.5",
+    "uncertainty": "0.3",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 The Atacama Large Millimetre Array",
+      "quote": "has a total flux density of 72 _._ 5 _±_ 0 _._ 3 mJy at 152 GHz"
+     }
+    ]
+   },
+   {
+    "quantity": "Integrated CO optical depth (lower limit)",
+    "value": "4.78",
+    "uncertainty": "0.47",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "� _τ_ CO d _v_ ≳ 4 _._ 78 _±_ 0 _._ 47 km s _[−]_ [1]"
+     }
+    ]
+   },
+   {
+    "quantity": "Integrated HI optical depth",
+    "value": "0.549",
+    "uncertainty": "0.019",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "� _τ_ HI d _v_ _≈_ 0 _._ 549 _±_ 0 _._ 019 km s _[−]_ [1]"
+     }
+    ]
+   },
+   {
+    "quantity": "CO column density lower limit",
+    "value": "1.5e16",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "We estimate a lower limit to the average CO column density in front of the source of 1 _._ 5 _×_ 10 [16] cm _[−]_ [2]"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(2-1) emission upper limit",
+    "value": "<579",
+    "uncertainty": "not stated",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "giving an upper limit for undetected emission of � _S_ CO d _v_ _<_ 579 mJy km s _[−]_ [1]"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold H2 mass",
+    "value": "0.9-60e7",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "_M_ H 2 _∼_ 0 _._ 9 _−_ 60 _×_ 10 [7] M _⊙_"
+     }
+    ]
+   },
+   {
+    "quantity": "Narrow HI FWHM",
+    "value": "4.77",
+    "uncertainty": "+0.07/-0.07",
+    "units": "km/s",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "∆ _v_ FHWM = 4 _._ 77 _−_ [+0] 0 _[.]_ _._ [07] 07 [km s] _[−]_ [1]"
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral age",
+    "value": "~1600",
+    "uncertainty": "order of magnitude",
+    "units": "yr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "This gives an approximate spectral age for the source of _t_ syn _∼_ 1600 yr."
+     }
+    ]
+   },
+   {
+    "quantity": "SED break frequency",
+    "value": "16",
+    "uncertainty": "not stated",
+    "units": "GHz",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "_v_ p = 786 MHz, _v_ br = 16 GHz"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR upper limit from [OII]",
+    "value": "<=0.66",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "giving a total SFR ≲ 0 _._ 66 M _⊙_ yr _[−]_ [1]"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO(2-1) absorption coincides with the broad HI component; no CO absorption at the narrow HI component; no CO emission within 10 kpc.",
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "rather strikingly has no associated CO absorption"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Cold molecular gas is present in PKS B1740-517 and traces the same reservoir as HI",
+    "experiment": "ALMA CO(2-1) spectrum compared with ASKAP HI",
+    "result": "CO absorption detected with similar width to broad HI",
+    "finding": "Gas reservoir ~1e7-1e8 Msun in a disc or ring within a few kpc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 CONCLUSIONS",
+      "quote": "We argue that the broader atomic and molecular absorption lines arise from a central reservoir of cold gas"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The narrow HI component is a cold cloud with no CO",
+    "experiment": "Line width fit and covering-fraction / metallicity arguments",
+    "result": "FWHM 4.77 km/s, no CO",
+    "finding": "Cloud <100 pc along sightline and/or low-metallicity tidal gas",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 CONCLUSIONS",
+      "quote": "The absence of molecular gas suggests that either this structure is much smaller than 100 pc along our line-ofsight and/or that it arises from lower metallicity gas"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The radio source is young",
+    "experiment": "SED fit with ALMA 150 GHz point",
+    "result": "break at 16 GHz",
+    "finding": "Age ~1600 yr, delayed relative to ~50 Myr interaction",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 CONCLUSIONS",
+      "quote": "the radio AGN, which we estimate to be only _∼_ 1600 yr old, is delayed with respect to the bulk accretion of gas from the companion"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALMA to search CO and constrain high-frequency continuum and spectral age",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "to provide a stronger constraint on the high frequency continuum and hence spectral age of the source"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Narrow HI line as jet-driven outflow rejected because of its low velocity dispersion",
+     "evidence": [
+      {
+       "loc": "4.1.2",
+       "quote": "is inconsistent with jet-driven gas outflows that are typically associated with young radio sources"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Source age is an order-of-magnitude estimate relying on several assumptions",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "should therefore be considered a useful order of magnitude measurement of the source age"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single short ALMA observation; CO absorption lower limits depend on unknown covering fraction",
+    "Gas masses depend on assumed Tspin, Tex, X_CO and disc geometry",
+    "Spectral age depends on equipartition and a fit to non-simultaneous data"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data cited by project code; archive implied",
+    "evidence": [
+     {
+      "loc": "ACKNOWLEDGEMENTS",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00808.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, clean settings)",
+    "Line-free channel selection",
+    "ASKAP data access"
+   ],
+   "estimated_data_volume_inferred": "~5-20 GB",
+   "score_inferred": 5,
+   "score_reason": "Simple short observation and analytic equations given, but imaging details missing and ASKAP data needed for context.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public single-dataset ALMA data; CO absorption spectrum and continuum flux are numeric and reproducible."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Allison et al. (2015) (cite: A15)",
+     "why": "ASKAP HI reduction and line fitting method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Allison et al. (2015)",
+     "why": "First HI detection and optical data for PKS B1740-517"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASKAP FLASH",
+    "MeerKAT MALS",
+    "MIGHTEE",
+    "Apertif SHARP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-b21fbaf88971c38b3bd68957309d7655",
+  "batch_id": "msgbatch_01Wqx8zKsXeudsaRDPY1S9JC",
+  "run": "pilot",
+  "collected_at": "2026-10-27T23:21:20",
+  "usage": {
+   "input_tokens": 50724,
+   "output_tokens": 8421,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.093436,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 65,
+  "quotes_ok": 65,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 73,
+   "stated": 45,
+   "rate": 0.616
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T01:52:34",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "Least squares fitting gives _v_ p = 786 MHz, _v_ br = 16 GHz,"
+   }
+  ],
+  "removed_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

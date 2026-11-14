@@ -1,0 +1,933 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...882..138D",
+  "title": "The ALMA Spectroscopic Survey in the HUDF: CO Luminosity Functions and the Molecular Gas Content of Galaxies through Cosmic History",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Decarli, Roberto",
+  "n_authors": 37,
+  "arxiv_id": "1903.09164",
+  "doi": "10.3847/1538-4357/ab30fe",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00324.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We use the results from the ALMA large program ASPECS, the spectroscopic survey in the Hubble Ultra Deep Field (HUDF), to constrain CO luminosity functions of galaxies"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "cosmology"
+   ],
+   "targets": [
+    {
+     "name": "Hubble Ultra Deep Field / XDF mosaic (17 pointings)",
+     "coordinates": {
+      "value": "central pointing RA 03:32:38.5, Dec -27:47:00 (J2000)",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design and observations",
+        "quote": "the central pointing is centered at Right Ascension = 03:32:38.5 and Declination = -27:47:00 (J2000.0)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "CO lines at z=0.003-4.475",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design and observations",
+        "quote": "the central pointing is centered at Right Ascension = 03:32:38.5 and Declination = -27:47:00 (J2000.0)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "CO-based redshifts, cross-checked with catalog redshifts (MUSE etc.)",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design and observations",
+        "quote": "the central pointing is centered at Right Ascension = 03:32:38.5 and Declination = -27:47:00 (J2000.0)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the CO luminosity functions and the cosmic molecular gas density rho(H2) evolve with redshift, from the ASPECS LP 3 mm blind line scan?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we constrain the evolution of the cosmic molecular gas density $\\rho$(H$_2$): this cosmic gas density peaks at $z\\sim1.5$"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00324.L",
+     "evidence": [
+      {
+       "loc": "2.1 Survey design and observations",
+       "quote": "The ASPECS LP survey consists of a 150 hr program in ALMA Cycle 4 (Program ID: 2016.1.00324.L)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm), 84-115 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design and observations",
+      "quote": "The observations were performed in 5 different frequency settings, covering the frequency range 84–115 GHz."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=1-0 to 4-3 (blind scan, 2-1, 3-2, 4-3 mainly)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "fiducial 5-$\\sigma$ CO line luminosity limits of $(1.4, 2.1, 2.3)\\times10^9$ K km s$^{-1}$ pc$^2$, for CO(2-1), CO(3-2), and CO(4-3), respectively."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-3",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design and observations",
+      "quote": "The survey was executed with the array in a relatively compact (C40-3) configuration."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15-700 m",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design and observations",
+      "quote": "Baselines ranged between 15 and 700 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~1.75'' x 1.49'' (PA=91.5 deg) natural; ~3.5'' tapered",
+    "evidence": [
+     {
+      "loc": "2.2 Data reduction, calibration, and imaging",
+      "quote": "The resulting synthesized beam is $\\approx 1.75''\\times1.49''$ (PA=$91.5^\\circ$) at the center of the observed frequency range."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "~0.2 mJy/beam per 7.813 MHz channel",
+    "evidence": [
+     {
+      "loc": "2.2 Data reduction, calibration, and imaging",
+      "quote": "We reach a sensitivity of $\\sim 0.2$ mJy beam$^{-1}$ per 7.813 MHz channel throughout the scanned frequency range."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "68 hr of telescope time including calibration and overheads",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design and observations",
+      "quote": "The 3 mm survey presented here took 68 hr of telescope time (including calibrations and overheads)"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "December 2-21, 2016",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design and observations",
+      "quote": "was executed between December 2–21, 2016 (ALMA Cycle 4)."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST (CANDELS, 3D-HST grism) and Spitzer",
+     "provided": {
+      "value": "Optical/NIR photometry and grism spectroscopy, IRAC/MIPS photometry",
+      "evidence": [
+       {
+        "loc": "3 Ancillary data",
+        "quote": "The bulk of optical and NIR photometry comes from the *Hubble* Space Telescope (*HST*) Cosmic Assembly Near-infrared Deep Extragalactic Legacy Survey"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/MUSE (MUSE HUDS)",
+     "provided": {
+      "value": "Spectroscopic redshifts for line identification",
+      "evidence": [
+       {
+        "loc": "3 Ancillary data",
+        "quote": "The main optical spectroscopy sample in the ASPECS LP footprint comes from the MUSE *Hubble* Ultra Deep Survey"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO excitation ratios r_J1 = {1.00, 0.76±0.09, 0.42±0.07, 0.31±0.07}",
+      "evidence": [
+       {
+        "loc": "4.3 Line luminosities and corresponding H2 mass",
+        "quote": "with $r_{J1}=\\{1.00$, $0.76\\pm0.09$, $0.42\\pm0.07$, $0.31\\pm0.07\\}$, for $J_{\\rm up}$=$\\{$1, 2, 3, 4$\\}$"
+       }
+      ]
+     },
+     "citation": "(cite: daddi15)"
+    },
+    {
+     "what": {
+      "value": "Line search catalog (findclumps), fidelity and completeness",
+      "evidence": [
+       {
+        "loc": "4.1 Line search",
+        "quote": "Among the compilations presented in GL19, here we refer to the results obtained with findclumps."
+       }
+      ]
+     },
+     "citation": "(cite: gonzalezlopez19)"
+    },
+    {
+     "what": {
+      "value": "Local CO(1-0) luminosity functions and rho(H2)",
+      "evidence": [
+       {
+        "loc": "5 Discussion",
+        "quote": "compared to the local universe (cite: keres03; boselli14; saintonge17)"
+       }
+      ]
+     },
+     "citation": "(cite: keres03; boselli14; saintonge17)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline plus own procedures following the pipeline scheme; own-reduced cube used",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "We processed the data using both the CASA pipeline for ALMA data (cite: mcmullin07) and our own procedures (cite: aravena16a), which follow the general scheme of the official ALMA pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0334-4008 (flux, bandpass, pointing); J0342-3007 phase",
+     "evidence": [
+      {
+       "loc": "2.1 Survey design and observations",
+       "quote": "The quasar J0334-4008 was observed as a flux, bandpass, and pointing calibrator, while the quasar J0342-3007 served as phase calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "We imaged the 3 mm cube with natural weighting using the task tclean."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "dirty cube used for line search and most analysis",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "The lack of very bright sources in our cubes allows us to perform our analysis on the ‘dirty’ cube"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "We imaged the 3 mm cube with natural weighting using the task tclean."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "3'' taper, cleaned to 2-sigma, beam ~3.5'' (spectral extraction only)",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "we image the dataset after applying a u,v taper of $3''$ (using the uvtaper parameter in tclean) cleaned to 2-$\\sigma$."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "channels rebinned to 7.813 MHz (2x native), ~23.5 km/s at 99.5 GHz, nearest interpolation",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "We rebin the frequency dimension in channels of 7.813 MHz, i.e., $2\\times$ the native spectral resolution of the observations."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Line search, fidelity and completeness derived in companion paper",
+      "evidence": [
+       {
+        "loc": "4.1 Line search",
+        "quote": "We extensively discuss the line search approach in GL19, and summarize the main steps here for completeness."
+       }
+      ]
+     },
+     "from_reference": "(cite: gonzalezlopez19)"
+    },
+    {
+     "what": {
+      "value": "CO LF construction method",
+      "evidence": [
+       {
+        "loc": "4.4 CO luminosity functions",
+        "quote": "The CO luminosity functions are constructed in a similar way as in (cite: decarli16a) via a Monte Carlo approach"
+       }
+      ]
+     },
+     "from_reference": "(cite: decarli16a)"
+    },
+    {
+     "what": {
+      "value": "Own reduction procedures",
+      "evidence": [
+       {
+        "loc": "2.2 Data reduction, calibration, and imaging",
+        "quote": "our own procedures (cite: aravena16a), which follow the general scheme of the official ALMA pipeline"
+       }
+      ]
+     },
+     "from_reference": "(cite: aravena16a)"
+    },
+    {
+     "what": {
+      "value": "Line luminosity formula",
+      "evidence": [
+       {
+        "loc": "4.3 Line luminosities and corresponding H2 mass",
+        "quote": "The line fluxes are transformed into luminosities following (cite: carilli13)"
+       }
+      ]
+     },
+     "from_reference": "(cite: carilli13)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version used",
+    "Exact tclean parameters (cell, image size, niter, mask)",
+    "Pipeline version and flagging details of the independent reduction",
+    "Final rms per channel versus frequency across mosaic",
+    "Details of findclumps settings (in GL19)",
+    "Completeness and fidelity tables as a function of S/N and width",
+    "Random seed and prior details for the Monte Carlo realizations; fitting sampler not named"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Search for line candidates",
+    "method": {
+     "value": "Matched-filter line search in cube without priors (findclumps); candidates S/N>5",
+     "evidence": [
+      {
+       "loc": "4.1 Line search",
+       "quote": "This catalog of line candidates consists of 613 entries at S/N$>$5.0, 70 at S/N$>$5.5, 21 at S/N$>$6.0, and 15 at S/N$>$6.5."
+      }
+     ]
+    },
+    "software": [
+     "findclumps"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Negative-candidate statistics for fidelity; mock-line injection for completeness",
+     "evidence": [
+      {
+       "loc": "4.1 Line search",
+       "quote": "The statistics of negative line candidates is used to model the noise properties of the cube"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fidelity and completeness cuts",
+    "method": {
+     "value": "Fidelity=1-P; keep fidelity>20% and completeness>20%; completeness from injected Gaussian mock lines",
+     "evidence": [
+      {
+       "loc": "4.1 Line search",
+       "quote": "We limit our analysis to line candidates with fidelity $>$20%."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Identify CO transition and redshift",
+    "method": {
+     "value": "Use optical/NIR counterpart redshift to assign transition (z<0.8 CO(1-0), 0.8-1.9 CO(2-1), 1.9-3.2 CO(3-2)); otherwise bootstrap with probability proportional to volume; up to CO(4-3)",
+     "evidence": [
+      {
+       "loc": "4.2 Line identification and redshifts",
+       "quote": "the line identification is performed through a bootstrap, where the probability of a line candidate to be CO(1-0), CO(2-1), CO(3-2), and CO(4-3) is proportional to the volume of universe sampled"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared CO and catalog redshifts; MUSE confirmation of overlaps",
+     "evidence": [
+      {
+       "loc": "4.2 Line identification and redshifts",
+       "quote": "Our detailed analysis of the MUSE data confirms that these cases are examples of overlapping galaxies at different redshifts"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Convert fluxes to luminosities and H2 masses",
+    "method": {
+     "value": "L' from Carilli & Walter formula; CO(1-0) via r_J1; M_H2 = alpha_CO/r_J1 * L'",
+     "evidence": [
+      {
+       "loc": "4.3 Line luminosities and corresponding H2 mass",
+       "quote": "Here we adopt $\\alpha_{\\rm CO}=3.6$ M$_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ (cite: daddi10a)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO=3.6; no CMB correction (<~15%); intermediate excitation from Daddi15",
+      "evidence": [
+       {
+        "loc": "4.3 Line luminosities and corresponding H2 mass",
+        "quote": "we do not correct our measurements for the cosmic microwave background impact."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Build CO luminosity functions and rho(H2)",
+    "method": {
+     "value": "1000 Monte Carlo realizations; 0.5 dex bins shifted by 0.1 dex (5 times); completeness-corrected counts divided by comoving volume; rho(H2) from summed masses",
+     "evidence": [
+      {
+       "loc": "4.4 CO luminosity functions",
+       "quote": "The CO luminosity functions are created 1000 times"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Robustness tests with secure sources and different CO excitation",
+     "evidence": [
+      {
+       "loc": "8 Robustness of the CO Luminosity Functions",
+       "quote": "Here we test the robustness of the CO LFs constraints from ASPECS LP 3 mm by creating different realizations of the CO LFs"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Schechter fits to LFs",
+    "method": {
+     "value": "Schechter fit in log form, alpha fixed to -0.2, lognormal priors (sigma 0.5 dex) on Phi* (1e-3) and L'* (10^9.5); all bins and five independent subsets",
+     "evidence": [
+      {
+       "loc": "4.5 Analytical fits to the CO LFs",
+       "quote": "we assume broad ($\\sigma$=$0.5$ dex) log normal distributions as priors in $\\Phi_*$ and $L'_*$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Posterior medians and 14/86 percentiles; sampler not stated",
+     "evidence": [
+      {
+       "loc": "4.5 Analytical fits to the CO LFs",
+       "quote": "The best fit value and the 1-$\\sigma$ confidence levels of the fitted parameters are derived from the 50%, 14%, and 86% quartiles of the marginalized posterior distributions"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistency across binning choices",
+     "evidence": [
+      {
+       "loc": "4.5 Analytical fits to the CO LFs",
+       "quote": "The fitted parameters do not show strong dependency on the choice of binning"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Pipeline calibration and tclean imaging",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration, and imaging",
+       "quote": "We imaged the 3 mm cube with natural weighting using the task tclean."
+      }
+     ]
+    }
+   },
+   {
+    "name": "findclumps",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line candidate search",
+     "evidence": [
+      {
+       "loc": "4.1 Line search",
+       "quote": "here we refer to the results obtained with findclumps."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGPHYS",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting of photometry",
+     "evidence": [
+      {
+       "loc": "3 Ancillary data",
+       "quote": "The photometric dataset is modeled with the high–$z$ extension of the Spectral Energy Distribution (SED) fitting code MAGPHYS"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Drop in rho(H2) from z~1 to local",
+    "value": "6.5",
+    "uncertainty": "+1.8/-1.4",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "drops by factor of $6.5_{-1.4}^{+1.8}$ to the value measured locally"
+     }
+    ]
+   },
+   {
+    "quantity": "Schechter log L'* CO(2-1), all bins",
+    "value": "10.09",
+    "uncertainty": "+0.10/-0.09",
+    "units": "log K km/s pc^2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "CO(2-1) | $-2.79_{-0.09}^{+0.09}$   | $10.09_{-0.09}^{+0.10}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Schechter log L'* CO(3-2), all bins",
+    "value": "10.60",
+    "uncertainty": "+0.20/-0.15",
+    "units": "log K km/s pc^2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "CO(3-2)   | $-3.83_{-0.12}^{+0.13}$   | $10.60_{-0.15}^{+0.20}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of total CO luminosity recovered at <z>=1.43, 2.61, 3.80",
+    "value": "83%, 91%, 71%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.5 Analytical fits to the CO LFs",
+      "quote": "recover 83%, 91%, and 71% of the total CO luminosity at $\\langle z\\rangle$ = 1.43, 2.61, and at 3.80"
+     }
+    ]
+   },
+   {
+    "quantity": "rho(H2) at z~1",
+    "value": "7.1e7",
+    "uncertainty": "not stated",
+    "units": "Msun Mpc^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 rho(H2) vs redshift",
+      "quote": "$z\\sim 1$ \\[$\\rho$(H$_2$)$\\approx$7.1$\\times$10$^7$ Mpc$^{-3}$\\]"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO LFs at z>1 show an excess at the bright end relative to semi-analytic models",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "The CO LFs show an excess at the bright end compared with the predictions by semi–analytical models"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do CO luminosity functions evolve with redshift?",
+    "experiment": "Schechter fits to ASPECS LP CO LFs at z=1-4 compared with local LFs",
+    "result": "Knee higher by about an order of magnitude at z~2 than locally",
+    "finding": "Strong evolution of CO LF",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find strong evidence that the CO luminosity function evolves with redshift"
+     }
+    ]
+   },
+   {
+    "hypothesis": "How does cosmic molecular gas density evolve?",
+    "experiment": "Sum of completeness-corrected H2 masses per redshift bin",
+    "result": "Peak at z~1.5, drop of 6.5 to local",
+    "finding": "rho(H2) mirrors rho_SFR",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "this cosmic gas density peaks at $z\\sim1.5$ and drops by factor of $6.5_{-1.4}^{+1.8}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Has star formation efficiency evolved?",
+    "experiment": "Compare rho(H2) and rho_SFR evolution",
+    "result": "Similar evolution",
+    "finding": "Little room for SFE evolution since z~3 (population average)",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "leaves only little room for a significant evolution of the average star formation efficiency in galaxies since $z\\sim 3$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are results robust to source inclusion and CO excitation?",
+    "experiment": "Repeat with secure sources only and thermalized/Milky Way excitation",
+    "result": "Strong evolution z=0 to z>1 persists",
+    "finding": "Robust",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "8.2 Impact of CO excitation",
+      "quote": "Evidence of a strong evolution in $\\rho$(H$_2$) between the local universe and $z>1$ is confirmed irrespective of the assumptions on the CO excitation"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "alpha_CO=2 would give a milder evolution (factor ~3)",
+     "evidence": [
+      {
+       "loc": "6 Conclusions",
+       "quote": "the factor would be $\\sim$3 if we adopt $\\alpha_{\\rm CO}$=2 M$_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ for galaxies at $z>1$."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Local bin affected by cosmic variance and tiny volume",
+     "evidence": [
+      {
+       "loc": "4.5 Analytical fits to the CO LFs",
+       "quote": "although this last measure is strongly affected by cosmic variance due to the small volume probed by ASPECS LP 3 mm"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Faint-end slope fixed at alpha=-0.2, not fitted",
+    "Alpha_CO assumed constant; conclusions on SFE depend on it",
+    "Line identification for ~25% of candidates is probabilistic",
+    "Fiducial excitation from only 4 main-sequence galaxies",
+    "Small volume and cosmic variance"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Data from program 2016.1.00324.L",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "ALMA data: 2016.1.00324.L."
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "findclumps catalog and completeness/fidelity functions from GL19",
+    "Own reduction scripts",
+    "CASA version and tclean parameters",
+    "Fitting sampler"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for 17-pointing Band 3 mosaic; cubes tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Clear high-level recipe and tables of LFs and line candidates, but line search and completeness depend on companion paper and custom code.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Results rely on custom reduction and line-search/completeness products from GL19 that are not fully specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: gonzalezlopez19)",
+     "why": "Line search, fidelity and completeness"
+    },
+    {
+     "citation": "(cite: decarli16a)",
+     "why": "CO LF construction method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: aravena19)",
+     "why": "Main sequence context, alpha_CO from dust"
+    },
+    {
+     "citation": "(cite: boogaard19)",
+     "why": "MUSE counterparts and galaxy properties"
+    },
+    {
+     "citation": "(cite: popping19)",
+     "why": "Comparison with models"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASPECS Pilot",
+    "COLDz",
+    "HUDF/XDF",
+    "MUSE HUDS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-1c090f445ca0b9f2b3f7c0c606a6367b",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:16",
+  "usage": {
+   "input_tokens": 44231,
+   "output_tokens": 8411,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.086892,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 46,
+   "rate": 0.597
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,291 @@
+{
+ "bibcode": "2019ApJ...880..130M",
+ "title": "A New, Rotating Hot Corino in Serpens",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab2a08",
+ "arxiv_id": "1906.08848",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Does the Class 0 protostar Ser-emb 1 host a hot corino, and is hot corino emission connected to rotation (a possible protostellar disk)?",
+ "alma_project_codes": [
+  "2015.1.00964.S"
+ ],
+ "data": {
+  "bands": "Band 6, two frequency settings",
+  "arrays": "not stated",
+  "angular_resolution": "~0.57\"x0.47\" (robust 0.5); ~0.50\"x0.42\" (robust 0.0), ~100 au beam radius",
+  "sensitivity": "Channel rms 5-9 mJy/beam (robust 0.5, high-res windows), ~2 mJy/beam (low-res windows); 6-12 mJy/beam at robust 0.0"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic line parameters for CH3OH, CH2DOH, CH3OCH3, CH3OCHO",
+    "evidence": [
+     {
+      "loc": "3.1 Molecular detections",
+      "quote": "the values for CH$_3$OH, CH$_2$DOH, CH$_3$OCH$_3$, and CH$_3$OCHO used in Sect. [3.2.1](#sec:rot) are extracted from (cite: xu08), (cite: pearson12), (cite: endres09), and (cite: ilyushin09), respectively."
+     }
+    ]
+   },
+   "citation": "(cite: xu08); (cite: pearson12); (cite: endres09); (cite: ilyushin09)"
+  },
+  {
+   "what": {
+    "value": "Envelope mass, disk mass (0.28 Msun), bolometric temperature (39 K), luminosity (4.1 Lsun) of Ser-emb 1",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Its remaining envelope mass is 3.1 $M_{\\odot}$[^2], and the estimated disk mass is 0.28 $M_{\\odot}$ (cite: enoch11)."
+     }
+    ]
+   },
+   "citation": "(cite: enoch11)"
+  },
+  {
+   "what": {
+    "value": "Column densities of CH3OH, CH3OCH3, CH3OCHO and luminosities for other hot corinos (comparison table)",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "IRAS 2A       | 500$^{+290}_{-180}$ | 5.0$^{+2.9}_{-1.0}$ | 7.9$^{+4.6}_{-1.6}$ | (cite: taquet15)"
+     }
+    ]
+   },
+   "citation": "(cite: taquet15); (cite: jorgensen18); (cite: jacobsen18); (cite: lopezsepulcre17); (cite: lee19); (cite: bottinelli07); (cite: imai16); (cite: marcelino18)"
+  },
+  {
+   "what": {
+    "value": "Partition function correction factor for higher torsional states of CH3OCHO",
+    "evidence": [
+     {
+      "loc": "3.2.1 Rotational temperature and column densities",
+      "quote": "to take into account the higher torsional states that are not included in the partition function extracted from the JPL catalog (cite: favre14)."
+     }
+    ]
+   },
+   "citation": "(cite: favre14)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum self-calibration and subtraction",
+   "method": "Self-calibrate channel-averaged line-free continuum in 1-2 rounds, apply to native visibilities, subtract continuum in uv plane",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image cubes and extract source spectrum",
+   "method": "tclean with Briggs robust 0.5 and auto-mask; spectrum extracted at the continuum peak pixel",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify molecular lines",
+   "method": "Assign lines above 4 sigma using JPL and CDMS catalogs; detection criteria based on number of lines/isotopologs or >10 sigma",
+   "software": [
+    "MADCUBAIJ"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "CH3OH rotational diagram and column densities",
+   "method": "Gaussian fits to each CH3OH line (fixed VLSR 8.64, FWHM 3.33 km/s), rotational diagram linear fit, beam-dilution correction with filling factor ~7.5; Trot applied to CH2DOH, CH3OCH3, CH3OCHO",
+   "software": [
+    "Python curve_fit"
+   ],
+   "key_parameters": [
+    "Source size <= (0.29±0.15)\"x(0.12±0.10)\" from 2D Gaussian fit of 10(-3)-11(-2) moment 0 map"
+   ],
+   "assumptions": [
+    "LTE, optically thin lines; column densities are lower limits; CH3OCHO corrected by factor 2.1 for torsional states"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Map spatial distributions",
+   "method": "Re-image identified lines at robust 0.0 and make moment 0 maps; 2D Gaussian fit to size of methanol emission",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Search for rotation signature",
+   "method": "High-velocity red/blue moment maps and PV diagrams perpendicular and parallel to the outflow, compared with Keplerian (v∝R^-0.5) and infalling-rotating (v∝R^-1) curves",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Outflow direction is rotation axis of potential disk"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3OH rotational temperature",
+   "value": "261",
+   "uncertainty": "46",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the CH$_3$OH rotational temperature is 261 $\\pm$ 46 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density (lower limit)",
+   "value": "1.2e17",
+   "uncertainty": "0.4e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(1.2 $\\pm$ 0.4) $\\times$ 10$^{17}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCH3 column density (lower limit)",
+   "value": "9.2e16",
+   "uncertainty": "3.8e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(9.2 $\\pm$ 3.8) $\\times$ 10$^{16}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO column density (lower limit)",
+   "value": "9.1e16",
+   "uncertainty": "3.6e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(9.1 $\\pm$ 3.6) $\\times$ 10$^{16}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2DOH column density (lower limit)",
+   "value": "4.8e16",
+   "uncertainty": "1.8e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 Rotational temperature and column densities",
+     "quote": "(4.8 $\\pm$ 1.8) $\\times$ 10$^{16}$, (9.2 $\\pm$ 3.8) $\\times$ 10$^{16}$, and (9.1 $\\pm$ 3.6) $\\times$ 10$^{16}$, for CH$_2$DOH"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH D/H ratio",
+   "value": "0.40",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 Rotational temperature and column densities",
+     "quote": "These column densities imply a D/H ratio for methanol of 0.40"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCH3/CH3OH and CH3OCHO/CH3OH",
+   "value": "0.77 and 0.76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 Rotational temperature and column densities",
+     "quote": "CH$_3$OCH$_3$/CH$_3$OH and CH$_3$OCHO/CH$_3$OH ratios of 0.77 and 0.76, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH emitting source size (10-3 - 11-2 line)",
+   "value": "<= 0.29\" x 0.12\"",
+   "uncertainty": "±0.15\", ±0.10\"",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Rotational temperature and column densities",
+     "quote": "$\\Omega_{source}$ $\\le$ (0.29 $\\pm$ 0.15)$\\ensuremath{''}$ $\\times$ (0.12 $\\pm$ 0.10)$\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow position angle (CO)",
+   "value": "12.2",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Overview of the source",
+     "quote": "position angle of PA = 12.2$^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of high-velocity C18O rotating component",
+   "value": "<~200",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Overview of the source",
+     "quote": "Therefore, the actual radius of this compact component could be $<$200 au."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which self-calibration solution intervals and reference spws were used",
+  "Line-free channel ranges per spw",
+  "Image size and cell size for tclean",
+  "Clean thresholds and niter",
+  "Region/aperture used for the 'central pixel' spectrum and for PV cuts (width)",
+  "Velocity ranges for the high/mid/low-velocity moment maps",
+  "Exact Gaussian-fit uncertainties approach for line fluxes and the filling-factor handling",
+  "Whether the data were reduced with CASA pipeline vs. archive products; flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters and line-free channels",
+  "Image/cell size, clean thresholds",
+  "PV cut widths and moment-map velocity limits",
+  "Flux uncertainties used in rotational diagram fit"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA project and clear rotational-diagram recipe, but many imaging and self-cal parameters missing.",
+ "rediscovery_reason": "Single public project, numeric results (Trot, column densities) derivable with a described recipe, although some settings are missing.",
+ "source_card": "cards/2019ApJ...880..130M/sonnet/card.md"
+}

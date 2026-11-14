@@ -1,0 +1,146 @@
+{
+ "bibcode": "2019ApJ...879...17B",
+ "title": "Extreme CO Isotopologue Line Ratios in ULIRGS: Evidence for a Top-heavy IMF",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab2246",
+ "arxiv_id": "1905.06950",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Why are 13CO/C18O J=1-0 ratios extremely low in ULIRGs and a post-merger galaxy, and do they indicate a top-heavy IMF?",
+ "alma_project_codes": [
+  "2013.1.00379.S",
+  "2015.1.00167.S",
+  "2015.1.01191.S",
+  "2016.1.00140.S",
+  "2017.1.01306.S"
+ ],
+ "data": {
+  "bands": "Band 6 calibration uncertainties quoted (as stated in table caption)",
+  "arrays": "ALMA 12m array",
+  "angular_resolution": "0.86x0.51, 0.73x0.52, 0.47x0.40, 1.37x1.04 arcsec (matched across lines)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Infrared luminosity of NGC 2623 (and ULIRG IR luminosities)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "NGC 2623 is a post-merger galaxy with L$_{\\rm IR}$ = 10$^{11.6}$ L$_{\\odot}$ (cite: Armus2009)"
+     }
+    ]
+   },
+   "citation": "(cite: Armus2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the lines",
+   "method": "tclean with Briggs weighting robust 0.5, channel widths 20 km/s (12CO) and 35 km/s (C18O, 13CO), matched cell/uvtaper/uvrange, smoothed to a common beam",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps and integrated fluxes",
+   "method": "Integrated intensity maps with 3 sigma threshold, primary beam corrected; fluxes from an aperture covering all detected C18O and 13CO emission",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compute line ratio maps",
+   "method": "Convert moment maps from Jy/beam km/s to K km/s then ratio with immath",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean 13CO/C18O J=1-0, Arp 220",
+   "value": "0.9",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Mean $^{13}$CO/C$^{18}$O $J$=1-0 | 0.9 $\\pm$ 0.05 | 2 $\\pm$ 0.2 | 2 $\\pm$ 0.2 | 0.5 $\\pm$ 0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 13CO/C18O J=1-0, NGC 2623",
+   "value": "0.5",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Mean $^{13}$CO/C$^{18}$O $J$=1-0 | 0.9 $\\pm$ 0.05 | 2 $\\pm$ 0.2 | 2 $\\pm$ 0.2 | 0.5 $\\pm$ 0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 12CO/13CO J=1-0, NGC 2623",
+   "value": "92",
+   "uncertainty": "10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Mean $^{12}$CO/$^{13}$CO $J$=1-0 | 48 $\\pm$ 2 \\[$\\pm$ 0.1\\] | 36 $\\pm$ 0.8 \\[$\\pm$ 0.1\\] | 45 $\\pm$ 2 \\[$\\pm$ 0.1\\] | 92 $\\pm$ 10 \\[$\\pm$ 0.5\\] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 12CO/C18O J=1-0, IRAS 17208-0014",
+   "value": "81",
+   "uncertainty": "6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Mean $^{12}$CO/C$^{18}$O $J$=1-0 | 39 $\\pm$ 2 \\[$\\pm$ 0.1\\] | 63 $\\pm$ 4 \\[$\\pm$ 0.2\\] | 81 $\\pm$ 6 \\[$\\pm$ 0.2\\] | 40 $\\pm$ 2 \\[$\\pm$ 0.1\\] |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which ALMA project maps to which galaxy",
+  "Cell size, image size, uvtaper and uvrange values used for matching",
+  "Clean mask/threshold details",
+  "Line-free channels for continuum subtraction",
+  "Final common beam per galaxy and primary beam details",
+  "Aperture definition for fluxes",
+  "Conversion to brightness temperature details and S/N cut for ratio maps",
+  "Meaning of the 3-sigma moment-map threshold (per channel or integrated)"
+ ],
+ "missing_for_reproduction": [
+  "Mapping of projects to targets",
+  "Cell, image size, uvtaper/uvrange values",
+  "Clean masks",
+  "Aperture and S/N cuts"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and CASA recipe partly given, but many imaging parameters and the project-target mapping are missing.",
+ "rediscovery_reason": "Public data, a simple imaging recipe, and numeric line ratios, though some settings are missing.",
+ "source_card": "cards/2019ApJ...879...17B/sonnet/card.md"
+}

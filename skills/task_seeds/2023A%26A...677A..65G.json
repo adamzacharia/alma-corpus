@@ -1,0 +1,355 @@
+{
+ "bibcode": "2023A&A...677A..65G",
+ "title": "Rotational spectrum and interstellar detection of the first torsionally excited state of methylamine",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346518",
+ "arxiv_id": null,
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "To experimentally and theoretically study the terahertz and microwave rotational spectra of methylamine and search for its rotational transitions in the first torsionally excited state (v_t = 1) in the interstellar medium toward Sgr B2(N).",
+ "alma_project_codes": [
+  "2016.1.00074.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~0.3'' to ~0.8'' (median 0.6'')",
+  "sensitivity": "0.35 to 1.1 mJy beam^-1 per spectral channel (median 0.8 mJy beam^-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previously published infrared and microwave transition datasets for methylamine (v_t = 0, 1, 2)",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "that combines previously published data in the infrared (Ohashi et al. 1987, 1988; Gulaczyk et al. 2017) with data in the microwave spectral range (Motiyenko et al. 2014; Ohashi et al. 1989;"
+     },
+     {
+      "loc": "3.2. Far-infrared data",
+      "quote": "In the present fit, we added 6155 transitions belonging to the hot band"
+     }
+    ]
+   },
+   "citation": "Ohashi et al. (1987, 1988, 1989); Gulaczyk et al. (2017, 2018); Gulaczyk & Kręglewski (2020); Motiyenko et al. (2014); Kręglewski & Wlodarczak (1992); Ilyushin et al. (2005); Ilyushin & Lovas (2007)"
+  },
+  {
+   "what": {
+    "value": "Electric dipole moment components from Stark effect measurements",
+    "evidence": [
+     {
+      "loc": "4.2. Intensity calculation",
+      "quote": "In the Principal Axis Method (PAM), the dipole moment components are measured using Stark effect measurements by Lide (1957), and are then corrected by Takagi & Kojima (1973) with µ _a_ = −0.307 D and µ _c_ = 1.258 D."
+     }
+    ]
+   },
+   "citation": "Lide (1957); Takagi & Kojima (1973)"
+  },
+  {
+   "what": {
+    "value": "Rotational partition function and v_t = 0 spectroscopic predictions (LSD entry 31802, version 2021.08)",
+    "evidence": [
+     {
+      "loc": "4.2. Intensity calculation",
+      "quote": "For the latter, the rotational partition function calculated from first principles by Motiyenko et al. (2014) is used."
+     },
+     {
+      "loc": "5.2. Detection of CH3NH2 in its first torsionally excited state",
+      "quote": "Therefore, here we used the spectroscopic entry 31802 (version 2021.08) of the LSD, which is based on Motiyenko et al. (2014) and accounts for the hyperfine structure."
+     }
+    ]
+   },
+   "citation": "Motiyenko et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "LTE parameters for ground-state methylamine toward Sgr B2(N1S)",
+    "evidence": [
+     {
+      "loc": "5.2. Detection of CH3NH2 in its first torsionally excited state",
+      "quote": "The LTE synthetic spectrum computed with the LSD entry using the same LTE parameters as those reported in Table 3 of Kisiel et al. (2022) is compared to the ReMoCA spectrum of Sgr B2(N1S) in Fig. C.1."
+     }
+    ]
+   },
+   "citation": "Kisiel et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Vibrational energies of methylamine for partition function correction",
+    "evidence": [
+     {
+      "loc": "5.2. Detection of CH3NH2 in its first torsionally excited state",
+      "quote": "This correction was computed in the harmonic approximation using the vibrational energies of methylamine provided by Shimanouchi (1972) and Gulaczyk & Kr˛eglewski (2020)."
+     }
+    ]
+   },
+   "citation": "Shimanouchi (1972); Gulaczyk & Kręglewski (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure and assign laboratory rotational spectrum of methylamine and fit nuclear quadrupole hyperfine structure",
+   "method": "Record absorption spectra from 150 to 1520 GHz using the Lille fast-scan hybrid spectrometer, assign transitions using Loomis-Wood diagrams, and fit hyperfine components to derive hyperfine-free frequencies and quadrupole coupling constants",
+   "software": [
+    "BELGI-hybrid",
+    "Python",
+    "home-made software for Loomis-Wood plots"
+   ],
+   "key_parameters": [
+    "1456 hyperfine transitions (including 324 v_t = 1-1 components) fitted to yield 653 hyperfine-free frequencies"
+   ],
+   "assumptions": [
+    "Perturbation approach for nuclear quadrupole coupling using expectation values from the two-step diagonalization of H_WTR"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Globally fit the torsion-wagging-rotation Hamiltonian and generate spectral line predictions",
+   "method": "Two-step diagonalization of the hybrid Hamiltonian matrix using BELGI-hybrid to globally fit microwave, mm/submm, and far-infrared transitions for v_t = 0, 1, 2 up to J = 40, and compute line strengths and hyperfine intensities",
+   "software": [
+    "BELGI-hybrid"
+   ],
+   "key_parameters": [
+    "28802 transitions with J <= 40, K <= 17; 79 floated parameters and 8 fixed parameters"
+   ],
+   "assumptions": [
+    "RAM dipole moment components mu_a = -0.226 D and mu_c = 1.275 D; neglect torsional (alpha) and tunneling (gamma) dependence of dipole moments; nuclear spin statistical weights W_st = 1 for A1, A2, E2 and 3 for B1, B2, E1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute LTE synthetic spectra and identify methylamine v_t = 0 and v_t = 1 lines toward Sgr B2(N1S)",
+   "method": "Compute synthetic LTE spectra for CH3NH2 v = 0 (using LSD entry 31802) and v_t = 1 (using new predictions) with Weeds, add contributions of all identified molecules, and compare to the observed ReMoCA spectrum toward Sgr B2(N1S)",
+   "software": [
+    "Weeds"
+   ],
+   "key_parameters": [
+    "theta_s = 2.0'', T_rot = 230 K, N = 1.4e18 cm^-2, F_vib = 1.25, Delta_V = 5.0 km s^-1, V_off = 0.0 km s^-1 (with V_sys = 62 km s^-1)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE); emission size of 2''; distance of 8.2 kpc; vibrational partition function correction F_vib = 1.25 computed in the harmonic approximation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct population diagram and fit rotational temperature",
+   "method": "Correct observed and synthetic populations of v = 0 and v_t = 1 transitions for optical depth, subtract contamination from all other modeled species, and perform a linear fit in linear-logarithmic space",
+   "software": [],
+   "key_parameters": [
+    "v = 0 and v_t = 1 transitions included"
+   ],
+   "assumptions": [
+    "Single excitation temperature component across both v = 0 and v_t = 1 torsional states"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "14N nuclear quadrupole coupling parameter chi_+",
+   "value": "-2.4139",
+   "uncertainty": "0.0063",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "χ + (MHz) –2.4139(63) –2.4129(12)"
+    }
+   ]
+  },
+  {
+   "quantity": "14N nuclear quadrupole coupling parameter chi_-",
+   "value": "6.4058",
+   "uncertainty": "0.0085",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "χ − (MHz) 6.4058(85) 6.0697(25)"
+    }
+   ]
+  },
+  {
+   "quantity": "Global weighted standard deviation of hybrid Hamiltonian fit (28802 transitions)",
+   "value": "1.53",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Overview of a fit of 28 802 transitions of methylamine with _J_ ≤ 40, _K_ ≤ 17, using 79 parameters floated to give a weighted standard deviation of 1.53."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS residual for microwave v_t = 0 transitions (2790 lines)",
+   "value": "0.154",
+   "uncertainty": "not stated",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Microwave v _t_ = 0 2288 1.07 0.088 MHz 2790 2.38 0.154 MHz"
+    }
+   ]
+  },
+  {
+   "quantity": "RMS residual for microwave v_t = 1 transitions (2921 lines)",
+   "value": "0.218",
+   "uncertainty": "not stated",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Microwave v _t_ = 1 137 1.39 0.154 MHz 2921 3.35 0.218 MHz"
+    }
+   ]
+  },
+  {
+   "quantity": "RMS residual for microwave v_t = 2 transitions (40 lines)",
+   "value": "0.289",
+   "uncertainty": "not stated",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Microwave v _t_ = 2 – – – 40 3.10 0.289 MHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Internal rotation barrier V_3",
+   "value": "682.911087",
+   "uncertainty": "0.000019",
+   "units": "cm^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "12 [(1][ −] [γ][ cos 3][α][)][ ×] _[ V]_ [3] 695.320556(53) 682.911087(19)"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of detected lines of CH3NH2 v = 0 toward Sgr B2(N1S)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "= 0 [⋆] d 10 2.0 230 1.4 (18) 1.25 5.0 0.0 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of detected lines of CH3NH2 v_t = 1 toward Sgr B2(N1S)",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": " t = 1 d 5 2.0 230 1.4 (18) 1.25 5.0 0.0 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Total column density of CH3NH2 toward Sgr B2(N1S) (LTE model)",
+   "value": "1.4e18",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "= 0 [⋆] d 10 2.0 230 1.4 (18) 1.25 5.0 0.0 1"
+    },
+    {
+     "loc": "7. Conclusions",
+     "quote": "their measured intensities are consistent with the emission of methylamine in the torsional ground state at a temperature of about 230 K with a column density of 1.4 × 10 [18] cm [−][2] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3NH2 toward Sgr B2(N1S) (LTE model)",
+   "value": "230",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "= 0 [⋆] d 10 2.0 230 1.4 (18) 1.25 5.0 0.0 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Line width (FWHM) of CH3NH2 toward Sgr B2(N1S)",
+   "value": "5.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "= 0 [⋆] d 10 2.0 230 1.4 (18) 1.25 5.0 0.0 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Vibrational partition function correction factor F_vib for CH3NH2 at 230 K",
+   "value": "1.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "= 0 [⋆] d 10 2.0 230 1.4 (18) 1.25 5.0 0.0 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3NH2 from population diagram fit (v = 0 and v_t = 1)",
+   "value": "222",
+   "uncertainty": "8",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2. Detection of CH3NH2 in its first torsionally excited state",
+     "quote": "A fit to the population diagram yields a rotational temperature of 222 ± 8 K, as reported in Table 4."
+    },
+    {
+     "loc": "5.2. Detection of CH3NH2 in its first torsionally excited state",
+     "quote": "A fit to the population diagram yields a rotational temperature of 222 ± 8 K, as reported in Table 4."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration details, and imaging parameters (e.g., tclean weighting, robust parameter, self-calibration, continuum subtraction method), which are deferred to Belloche et al. (2019) and Melosso et al. (2020)",
+  "Full synthetic spectrum catalog and LTE parameters of all other contaminating molecules included in the full blue ReMoCA model used to subtract blending before fitting the population diagram"
+ ],
+ "missing_for_reproduction": [
+  "Reduced baseline-subtracted 1D spectrum of Sgr B2(N1S) from Melosso et al. (2020) (unless re-reduced from raw ALMA data)",
+  "Complete Weeds model of all other molecules identified in the ReMoCA survey used to compute the blue composite spectrum and subtract blending in the population diagram",
+  "Modified BELGI-hybrid source code and dedicated Python hyperfine fitting script"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The spectroscopic catalogs (LSD) and measured transition lists (CDS) are publicly released, and all LTE model parameters (size, T_rot, N, F_vib, Delta_V, V_off) and target coordinates are explicitly tabulated. However, raw ALMA data reduction is deferred to companion papers, and reproducing the deblended population diagram requires the unpublished full multi-molecule Weeds model of Sgr B2(N1S).",
+ "rediscovery_reason": "The ALMA raw data (2016.1.00074.S) and the spectroscopic line catalogs (LSD/CDS) are public, the exact coordinates of Sgr B2(N1S) and LTE parameters are fully specified, and the main results (line detections, column density, and rotational temperature) are clear quantitative benchmarks.",
+ "source_card": "cards/2023A%26A...677A..65G/sonnet/card.md"
+}

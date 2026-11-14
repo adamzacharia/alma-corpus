@@ -1,0 +1,413 @@
+{
+ "bibcode": "2021MNRAS.503.1174K",
+ "title": "Feedback factory: multiple faint radio jets detected in a cluster at z = 2",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab559",
+ "arxiv_id": "2102.11752",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "What is the role of AGN radio-jet based kinetic feedback and the compliance of cluster galaxies to the TIR-radio correlation within the z=2 galaxy cluster CL J1449+0856?",
+ "alma_project_codes": [
+  "2015.1.01355.S",
+  "2012.1.00885.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 7",
+  "arrays": "ALMA, ALMA+ACA",
+  "angular_resolution": "not stated",
+  "sensitivity": "67.6 \\mu Jy/beam at 870 \\mu m"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA CO[4-3] and CO[3-2] line fluxes, 870 \\mu m continuum fluxes and image, star formation rates, and stellar masses of cluster galaxies",
+    "evidence": [
+     {
+      "loc": "Data observation and reduction",
+      "quote": "The corresponding flux measurements along with resulting star formation rates (SFR) and stellar mass"
+     },
+     {
+      "loc": "Sub-millimeter",
+      "quote": "We borrow their results from the spectral line flux extraction of CO\\[4-3\\] and CO\\[3-2\\] along with the continuum flux measurements at 870 $\\mu$m obtained for each of the cluster galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: coogan18)"
+  },
+  {
+   "what": {
+    "value": "ALMA+ACA 92 GHz Sunyaev-Zel'dovich effect 5\\sigma signal and residual map",
+    "evidence": [
+     {
+      "loc": "Sub-millimeter",
+      "quote": "Furthermore, ALMA+ACA data of CL J1449+0856 at 92 GHz was presented in (cite: gobat19) in cycle 4 (Project ID: 2016.1.01107, PI: R. Gobat)."
+     },
+     {
+      "loc": "Sub-millimeter",
+      "quote": "We here make use of their results, including the Sunyaev-Zel’dovich effect (SZ) 5\\sigma signal and the corresponding residual map."
+     }
+    ]
+   },
+   "citation": "(cite: gobat19)"
+  },
+  {
+   "what": {
+    "value": "Diffuse X-ray ICM luminosity (7.2 x 10^43 ergs s^-1) and instantaneous energy injection rate from SFR and AGN outflows (~5 x 10^44 ergs s^-1)",
+    "evidence": [
+     {
+      "loc": "Radio emission: How much do we really have?",
+      "quote": "Finally, with the additional information of the X-ray luminosity (7.2 ~ \\times 10^{43} ~ergs~ s^{-1}) at 0.1–2.4 keV from the ICM of CL J1449+0856 (cite: gobat11; valentino16), we place this cluster among the other galaxy clusters from the (cite: mittal09) HIFLUGCS sample in Fig. 1."
+     },
+     {
+      "loc": "Quantifying the feedback",
+      "quote": "This power is \\sim 0.25 times the already estimated energy injection rate calculated by (cite: valentino16) from SFR and AGN outflows (\\sim 5~\\times 10^{44} ~ergs~ s^{-1})."
+     }
+    ]
+   },
+   "citation": "(cite: valentino16)"
+  },
+  {
+   "what": {
+    "value": "Low-redshift HIFLUGCS cluster sample radio and X-ray luminosity measurements for comparison",
+    "evidence": [
+     {
+      "loc": "Radio emission: How much do we really have?",
+      "quote": "Since we are also aiming to investigate the differences in the mode of operation of radio-jets at higher redshifts compared to their low redshift counterparts, we make a comparison to the results presented in (cite: mittal09)."
+     }
+    ]
+   },
+   "citation": "(cite: mittal09)"
+  },
+  {
+   "what": {
+    "value": "q_TIR vs M_* relation for main-sequence star-forming galaxies",
+    "evidence": [
+     {
+      "loc": "TIR-radio correlation",
+      "quote": "We also add to this the results from (cite: delvecchio20), which is a follow-up study of Main-Sequence star-forming galaxies from (cite: delvecchio17) but for an M_{*}-selected sample from the VLA-COSMOS 3 GHz survey (cite: smolcic17)."
+     }
+    ]
+   },
+   "citation": "(cite: delvecchio20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image JVLA 3 GHz and GMRT 325 MHz radio continuum data",
+   "method": "Calibrate, flag RFI, and image JVLA S-band (A and C configurations) and GMRT P-band data using TCLEAN in CASA, with self-calibration applied to GMRT data",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "JVLA A-config: Briggs robust = 2.0, nterms = 2, wprojplanes = 128, multiscale scales = [2, 5, 10] pixels; JVLA C-config and GMRT: Briggs robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure 3 GHz radio continuum fluxes and point-source sensitivity via PSF fitting",
+   "method": "Inject ~200 artificial point sources with GALFIT to determine 1-sigma sensitivity, then iteratively fit and subtract point sources at HST/WFC3 and ALMA 870 um prior positions followed by free-position point sources for residual jet components",
+   "software": [
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "Artificial source flux range: 4.5 - 7.5 \\mu Jy within 80'' radius; exclusion radius 1'' around >4\\sigma pixels"
+   ],
+   "assumptions": [
+    "Sources are unresolved point sources smaller than the synthesized beam HPBW"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute TIR-radio luminosity ratio (q_TIR) and compare with the main-sequence relation",
+   "method": "Convert 3 GHz flux to rest-frame 1.4 GHz luminosity and combine with L_IR (derived from ALMA 870 \\mu m fluxes) to calculate q_TIR for cluster galaxies and 3\\sigma upper limits for jet sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Radio spectral index \\alpha = -0.7 for star formation; cosmology \\Omega_m = 0.3, \\Omega_\\Lambda = 0.7, H_0 = 70 km s^-1 Mpc^-1; Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test physical origin of the counterpart-less radio sources via SED prediction and multi-wavelength image stacking",
+   "method": "Calculate noise fluctuation probabilities, predict expected 870 \\mu m fluxes assuming star formation, and median stack 1.5'' cutouts of the ALMA 870 \\mu m continuum image and HST F140W image at the radio source positions",
+   "software": [],
+   "key_parameters": [
+    "1.5'' cutout size for ALMA 870 \\mu m median stacking; 20'' radius (170 kpc) region for noise probability calculation"
+   ],
+   "assumptions": [
+    "Spectral index \\alpha = -0.7 and Bethermin et al. (2012) main-sequence SED templates"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate integrated radio-jet luminosity, mechanical cavity power, SZ residual correlation, and Inverse-Compton X-ray contribution",
+   "method": "Integrate rest-frame 10 MHz - 10 GHz radio luminosity from the 6 jets, convert to cavity power P_cav via the O'Sullivan et al. (2011) scaling relation, compare jet locations with the ALMA+ACA 92 GHz SZ residual map, and estimate IC X-ray flux limits from GMRT 325 MHz and Chandra stacking",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Jet spectral index \\alpha = -1.04 \\pm 0.03 (explored range -0.7 to -1.5, and -1.2); cavity energy E_cav = 4pV; Lorentz factor 10^3 - 10^5 and photon index 2 for IC calculation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "JVLA 3 GHz A-configuration RMS noise / point-source sensitivity",
+   "value": "1.34",
+   "uncertainty": "not stated",
+   "units": "\\mu Jy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JVLA S-band",
+     "quote": "The primary beam FWHM of the 3 GHz observations was 15’, and the FWHM of the synthesised beam at this wavelength was \\sim0.83^{\\prime\\prime}\\times0.67^{\\prime\\prime} at PA = -4.17° for the A-configuration data, with an RMS noise of 1.34\\mu Jy/beam over an effective bandwidth of 1.5 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "GMRT 325 MHz image RMS noise",
+   "value": "92",
+   "uncertainty": "not stated",
+   "units": "\\mu Jy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "GMRT P-band",
+     "quote": "The final synthesised beam was \\sim 7.4^{\\prime\\prime} \\times 6.6^{\\prime\\prime} at PA = 7.8° and the RMS noise of the resulting image was 92 \\mu Jy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Total 3 GHz flux from the 6 detected radio-jets",
+   "value": "30.6",
+   "uncertainty": "3.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We measure a total flux of 30.6 \\pm 3.3~\\mu Jy from the 6 detected jets."
+    },
+    {
+     "loc": "Radio emission: How much do we really have?",
+     "quote": "To make a comparison, we add up the contributions of all the detected jets in place of the jets from a central AGN, which gives us a flux of 30.6\\pm3.3 \\, \\mu Jy and a corresponding integrated radio luminosity (10 MHz–10 GHz rest-frame) of 2.1 ~(\\pm 0.2)~ \\times 10^{41} ~ergs~ s^{-1}."
+    }
+   ]
+  },
+  {
+   "quantity": "3 GHz flux of radio-jet R1",
+   "value": "7.4",
+   "uncertainty": "1.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum flux measurement",
+     "quote": "| R1 | 222.30911 | 8.94060 | 7.4\\pm1.3 | 570\\pm130 | <1.8 | B1, H5, A1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 GHz flux of radio-jet R2",
+   "value": "6.2",
+   "uncertainty": "1.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum flux measurement",
+     "quote": "| R2 | 222.30765 | 8.93966 | 6.2\\pm1.3 | 480\\pm130 | <1.9 | uncertain |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 GHz flux of radio-jet R3",
+   "value": "5.6",
+   "uncertainty": "1.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum flux measurement",
+     "quote": "| R3 | 222.30775 | 8.94050 | 5.6\\pm1.3 | 440\\pm130 | <2.0 | uncertain |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 GHz flux of radio-jet R7_N",
+   "value": "3.4",
+   "uncertainty": "1.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum flux measurement",
+     "quote": "| R7_N | 222.31031 | 8.94012 | 3.4\\pm1.3 | 260\\pm130 | <2.1 | S7, N7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 GHz flux of radio-jet R7_E",
+   "value": "3.4",
+   "uncertainty": "1.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum flux measurement",
+     "quote": "| R7_E | 222.31041 | 8.93988 | 3.4\\pm1.3 | 270\\pm130 | <2.1 | S7, N7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 GHz flux of radio-jet R7_W",
+   "value": "4.6",
+   "uncertainty": "1.3",
+   "units": "\\mu Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum flux measurement",
+     "quote": "| R7_W | 222.31006 | 8.94004 | 4.6\\pm1.3 | 360\\pm130 | <2.0 | S7, N7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average q_TIR of 3 GHz-detected cluster galaxies",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "TIR-radio correlation",
+     "quote": "The average q_{TIR} upper limit for the brightest of the additional sources (ignoring R7_N and R7_E due to < 3\\sigma radio detection significance) is 1.95, in contrast with the average q_{TIR} of the 3 GHz-detected galaxies, which is \\sim 2.5 as expected (cite: magnelli15)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average q_TIR 3-sigma upper limit for brightest additional radio sources",
+   "value": "1.95",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "TIR-radio correlation",
+     "quote": "The average q_{TIR} upper limit for the brightest of the additional sources (ignoring R7_N and R7_E due to < 3\\sigma radio detection significance) is 1.95, in contrast with the average q_{TIR} of the 3 GHz-detected galaxies, which is \\sim 2.5 as expected (cite: magnelli15)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median-stacked ALMA 870 \\mu m continuum sensitivity at radio-jet positions",
+   "value": "28",
+   "uncertainty": "not stated",
+   "units": "\\mu Jy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Origin of the radio emissions",
+     "quote": "We also median stack 1.5^{\\prime\\prime} cutouts of the 870 \\mu m continuum image from the regions of the sources and do not detect any emission even with the resulting sensitivity of 28 \\mu Jy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on average SFR at radio-jet sites from ALMA 870 \\mu m stacking",
+   "value": "22",
+   "uncertainty": "not stated",
+   "units": "M_{\\odot} yr^{-1}",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Origin of the radio emissions",
+     "quote": "This gives an 3\\sigma upper limit on the average SFR of \\sim 22~M_{\\odot} yr^{-1} within the emission regions, assuming a main-sequence template."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated radio luminosity (10 MHz - 10 GHz rest-frame) of the 6 jets (for \\alpha = -1.04)",
+   "value": "2.1e41",
+   "uncertainty": "0.2e41",
+   "units": "ergs s^{-1}",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio emission: How much do we really have?",
+     "quote": "To make a comparison, we add up the contributions of all the detected jets in place of the jets from a central AGN, which gives us a flux of 30.6\\pm3.3 \\, \\mu Jy and a corresponding integrated radio luminosity (10 MHz–10 GHz rest-frame) of 2.1 ~(\\pm 0.2)~ \\times 10^{41} ~ergs~ s^{-1}."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN-jet cavity power P_cav (for \\alpha = -1.04)",
+   "value": "1.14e44",
+   "uncertainty": "0.55e44",
+   "units": "ergs s^{-1}",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Quantifying the feedback",
+     "quote": "to get a $\\rm P_{\\rm cav}=1.14 ~(\\pm 0.55)~ \\times 10^{44} ~\\rm ergs~ s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN-jet cavity power P_cav upper limit (for \\alpha = -1.5)",
+   "value": "4.7e44",
+   "uncertainty": "not stated",
+   "units": "ergs s^{-1}",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Quantifying the feedback",
+     "quote": "The details of this distribution, although indeterminable with the current data, have large implications especially since the –1.5 limit results in a P_{cav} \\sim 4.7 ~ \\times 10^{44} ~ergs~ s^{-1}."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN-jet cavity power P_cav (for \\alpha = -1.2)",
+   "value": "1.8e44",
+   "uncertainty": "not stated",
+   "units": "ergs s^{-1}",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Quantifying the feedback",
+     "quote": "This gives a P_{cav} \\sim 1.8 ~ \\times 10^{44} ~ergs~ s^{-1}."
+    }
+   ]
+  },
+  {
+   "quantity": "Inverse-Compton X-ray luminosity upper limit from Chandra stacking",
+   "value": "2.2e42",
+   "uncertainty": "not stated",
+   "units": "ergs s^{-1}",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Inverse-Compton contribution",
+     "quote": "The generous upper limit hence derived from the total counts detected is 2.2~ \\times 10^{42}~ ergs~s^{-1} or 3\\% of the ICM X-ray luminosity."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for JVLA and GMRT data reduction",
+  "Exact flagging commands and channel ranges for JVLA spectral windows 13, 14, and 15",
+  "Pre-reduced ALMA 870 um continuum image from Coogan et al. (2018) and 92 GHz SZ residual map from Gobat et al. (2019), as ALMA reduction parameters are not restated in this paper"
+ ],
+ "missing_for_reproduction": [
+  "Manual flagging tables and iterative self-calibration parameters for JVLA 12A-188 and GMRT 23_068",
+  "Exact manual clean masks used during incremental TCLEAN runs for JVLA A and C configurations",
+  "Reduced ALMA 870 um continuum map (from Coogan et al. 2018), ALMA+ACA 92 GHz SZ residual map (from Gobat et al. 2019), HST/WFC3 F140W mosaic, and Chandra X-ray event files",
+  "SED fitting code or look-up tables from Bethermin et al. (2012, 2015) used to map 3 GHz and 870 um fluxes to L_IR"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "Raw VLA, GMRT, and ALMA project codes are public and the JVLA TCLEAN and GALFIT source-extraction parameters are well-specified, along with explicit equations and coordinates/fluxes for all targets and jets; however, manual RFI flagging/masking in VLA/GMRT reduction and reliance on pre-reduced ALMA, HST, and Chandra maps from earlier papers prevent fully automated end-to-end reproduction.",
+ "rediscovery_reason": "All raw radio and ALMA datasets are public, the core scientific results are concrete numeric flux and power measurements of discrete sources with published coordinates, and the VLA re-imaging + GALFIT point-source extraction + ALMA 870 um non-detection check is a well-defined recipe.",
+ "source_card": "cards/2021MNRAS.503.1174K/sonnet/card.md"
+}

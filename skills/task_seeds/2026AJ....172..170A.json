@@ -1,0 +1,390 @@
+{
+ "bibcode": "2026AJ....172..170A",
+ "title": "JWST Edge-on Disk Ice (JEDIce): Vibrationally Hot, Rotationally Cold H<SUB>2</SUB> in the Outer Disk of Oph 163131 Nonthermally Excited by Ultraviolet and Cosmic Rays",
+ "year": 2026,
+ "doi": "10.3847/1538-3881/ae947a",
+ "arxiv_id": "2607.09407",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What are the excitation regimes (ultraviolet irradiation, cosmic-ray ionization, and post-excitation collisional de-excitation) responsible for the vibrationally hot, rotationally cold ro-vibrational H2 emission in the outer disk of Oph 163131?",
+ "alma_project_codes": [
+  "2018.1.00958.S",
+  "2016.1.00771.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.02'' (continuum); 0.081'' x 0.072'' (12CO J=2-1)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Final continuum-subtracted 12CO J=2-1 cube and outer-disk brightness temperatures (T ~ 30-40 K)",
+    "evidence": [
+     {
+      "loc": "Observation Results",
+      "quote": "The comparison between CO and H$_2$ in the following sections uses the final continuum-subtracted $^{12}$CO $J=2-1$ cube from (cite: Villenave_highly_setled_Oph163131_2022), which combines the 2016 Cycle 4 (2016.1.00771.S; PI: Duchêne) and 2018 Cycle 6 observations"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "$^{12}$CO observations trace a more extended gaseous disk with elevated brightness temperatures ($T\\sim30$–40 K at radii beyond 200 au from the host protostar), consistent with cold outer-disk gas exposed to external ultraviolet irradiation (cite: Flores_unusualanatomy_oph163131_2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Villenave_highly_setled_Oph163131_2022); (cite: Flores_unusualanatomy_oph163131_2021)"
+  },
+  {
+   "what": {
+    "value": "B68 H2 line ratios, CR excitation probability b_(v=1,J=0) = 1.57, and effective emitting column gN(H2) ~ 6.5e21 cm^-2",
+    "evidence": [
+     {
+      "loc": "Non-thermal excitation of ro-vibrational H$_2$ in a cold, dense gas",
+      "quote": "In the CR-isolated B68 spectrum presented by (cite: Bialy2025_B68_CRH2) and listed in (cite: Neufeld2025_CRinB68_JWST) (their table 2), the measured 1–0 O(3)/O(2) and 1–0 O(4)/O(2) ratios are $\\sim0.16$ and $\\sim0.31$, respectively"
+     },
+     {
+      "loc": "The case for a cosmic-ray contribution",
+      "quote": "and a CR excitation probability $b_{(v=1,J=0)}=1.57$ from Table 1 of (cite: Bialy2025_B68_CRH2), and the same effective emitting column, $gN(\\mathrm{H}_2)\\approx6.5\\times10^{21}$ cm$^{-2}$, as adopted by (cite: Bialy2025_B68_CRH2) for the starless core B68."
+     }
+    ]
+   },
+   "citation": "(cite: Bialy2025_B68_CRH2); (cite: Neufeld2025_CRinB68_JWST)"
+  },
+  {
+   "what": {
+    "value": "Collisional de-excitation rate coefficient q1 = 2.2e-13 cm^3 s^-1 at T = 100 K",
+    "evidence": [
+     {
+      "loc": "Impact of Collisional De-excitation on CR-excited H$_2$",
+      "quote": "At $T=100$ K, we adopt $q_1 = 2.2\\times10^{-13}$ cm$^{3}$ s$^{-1}$ from (cite: Flower_Roueff_H2collisions_98), and impose detailed balance, $q_2(T) = 5  q_1  \\exp(-484 \\text{ K}/T)$, giving $q_2\\simeq8.7\\times10^{-15}$ cm$^{3}$ s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: Flower_Roueff_H2collisions_98)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST/NIRSpec IFU cubes, subtract continuum, construct moment-0 maps, and align with ALMA maps",
+   "method": "Process NIRSpec IFU data with JWST Calibration Pipeline v1.17.1 and JEDIce post-reduction steps; fit and remove local linear baseline per transition and integrate residual over fixed-width frequency window for moment-0 maps; align IFU maps with ALMA Band 6 continuum and 12CO J=2-1 using target astrometry and continuum cross-correlation.",
+   "software": [
+    "JWST Calibration Pipeline v1.17.1"
+   ],
+   "key_parameters": [
+    "R ~ 2700; 0.1'' spatial sampling; 3'' x 3'' FOV"
+   ],
+   "assumptions": [
+    "Distance of 147 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract outer-disk H2 spectrum and measure line surface brightnesses and ratios",
+   "method": "Extract spectrum in bright outer-disk aperture where 1-0 O(2) coincides with CO contours; frequency-integrate continuum-subtracted spectra in each pixel within the aperture and average over all pixels.",
+   "software": [],
+   "key_parameters": [
+    "7% absolute flux calibration uncertainty added in quadrature to propagated local RMS noise"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model UV-only excitation and collisional de-excitation with Meudon PDR code",
+   "method": "Run 1D plane-parallel isochoric slab models with isotropic external UV irradiation using the Meudon PDR code across a grid of hydrogen densities and UV field strengths, and compare emergent line ratios and surface brightnesses to observations.",
+   "software": [
+    "Meudon PDR code"
+   ],
+   "key_parameters": [
+    "n_H = 10^2-10^9 cm^-3; chi_UV = 100 and 1000 (Draine units)"
+   ],
+   "assumptions": [
+    "1D plane-parallel constant-density slab; self-consistent thermal balance"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate cosmic-ray ionization rate and analytical collisional de-excitation effects",
+   "method": "Assume CRs contribute half of observed 1-0 O(2) intensity to dilute UV overprediction of v=2-1 and 3-2 O(2) lines; apply Bialy et al. 2025 radiative-limit formula to estimate CR ionization rate, and solve analytical two-level steady-state rate equations for v=1, J=0 and J=2 to evaluate collisional redistribution.",
+   "software": [],
+   "key_parameters": [
+    "I_CR ~ 2.5e-5 erg s^-1 cm^-2 sr^-1; E_ul = 7.6e-13 erg; alpha_ul ~ 1.0; b_(v=1,J=0) = 1.57; gN(H2) ~ 6.5e21 cm^-2",
+    "A = 8.5e-7 s^-1; q1 = 2.2e-13 cm^3 s^-1 at T = 100 K; q2 = 8.7e-15 cm^3 s^-1"
+   ],
+   "assumptions": [
+    "CRs contribute ~50% of 1-0 O(2) surface brightness; effective emitting column gN(H2) may be up to an order of magnitude larger due to dust settling; collisional redistribution enhances 1-0 O(2) by up to a factor of ~2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H2 v=1-0 O(2) (2.627 um) surface brightness",
+   "value": "5.10e-5",
+   "uncertainty": "0.36e-5",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(2) | 2.627 | (1,0) | (0,2) | 5987 | 509 | 1 | 5 | 8.53$\\times10^{-7}$ | $(5.10\\pm0.36)\\times10^{-5}$ | $1.000$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=2-1 O(2) (2.786 um) surface brightness",
+   "value": "1.31e-5",
+   "uncertainty": "0.10e-5",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=2-1 O(2) | 2.786 | (2,0) | (1,2) | 11635 | 6471 | 1 | 5 | 1.28$\\times10^{-7}$ | $(1.31\\pm0.10)\\times10^{-5}$ | $0.252\\pm0.026$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=2-1 O(2) / v=1-0 O(2) line ratio",
+   "value": "0.252",
+   "uncertainty": "0.026",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=2-1 O(2) | 2.786 | (2,0) | (1,2) | 11635 | 6471 | 1 | 5 | 1.28$\\times10^{-7}$ | $(1.31\\pm0.10)\\times10^{-5}$ | $0.252\\pm0.026$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=3-2 O(2) (2.962 um) surface brightness",
+   "value": "5.58e-6",
+   "uncertainty": "0.50e-6",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=3-2 O(2) | 2.962 | (3,0) | (2,2) | 16952 | 12094 | 1 | 5 | 1.41$\\times10^{-7}$ | $(5.58\\pm0.50)\\times10^{-6}$ | $0.106\\pm0.012$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=3-2 O(2) / v=1-0 O(2) line ratio",
+   "value": "0.106",
+   "uncertainty": "0.012",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=3-2 O(2) | 2.962 | (3,0) | (2,2) | 16952 | 12094 | 1 | 5 | 1.41$\\times10^{-7}$ | $(5.58\\pm0.50)\\times10^{-6}$ | $0.106\\pm0.012$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 S(0) (2.223 um) surface brightness",
+   "value": "3.07e-6",
+   "uncertainty": "0.44e-6",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 S(0) | 2.223 | (1,2) | (0,0) | 6471 | 0 | 5 | 1 | 2.53$\\times10^{-7}$ | $(3.07\\pm0.44)\\times10^{-6}$ | $0.062\\pm0.010$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 S(0) / v=1-0 O(2) line ratio",
+   "value": "0.062",
+   "uncertainty": "0.010",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 S(0) | 2.223 | (1,2) | (0,0) | 6471 | 0 | 5 | 1 | 2.53$\\times10^{-7}$ | $(3.07\\pm0.44)\\times10^{-6}$ | $0.062\\pm0.010$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 O(3) (2.803 um) surface brightness",
+   "value": "2.83e-6",
+   "uncertainty": "0.46e-6",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(3) | 2.803 | (1,1) | (0,3) | 6149 | 1015 | 9 | 21 | 4.22$\\times10^{-7}$ | $(2.83\\pm0.46)\\times10^{-6}$ | $0.056\\pm0.010$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 O(3) / v=1-0 O(2) line ratio",
+   "value": "0.056",
+   "uncertainty": "0.010",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(3) | 2.803 | (1,1) | (0,3) | 6149 | 1015 | 9 | 21 | 4.22$\\times10^{-7}$ | $(2.83\\pm0.46)\\times10^{-6}$ | $0.056\\pm0.010$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 O(5) (3.235 um) surface brightness",
+   "value": "2.67e-6",
+   "uncertainty": "1.48e-6",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(5) | 3.235 | (1,3) | (0,5) | 6951 | 2503 | 21 | 33 | 2.08$\\times10^{-7}$ | $(2.67\\pm1.48)\\times10^{-6}$ | $0.051\\pm0.029$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 O(5) / v=1-0 O(2) line ratio",
+   "value": "0.051",
+   "uncertainty": "0.029",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(5) | 3.235 | (1,3) | (0,5) | 6951 | 2503 | 21 | 33 | 2.08$\\times10^{-7}$ | $(2.67\\pm1.48)\\times10^{-6}$ | $0.051\\pm0.029$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 S(1) (2.122 um) surface brightness",
+   "value": "2.09e-6",
+   "uncertainty": "0.39e-6",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 S(1) | 2.122 | (1,3) | (0,1) | 6951 | 170 | 21 | 9 | 3.47$\\times10^{-7}$ | $(2.09\\pm0.39)\\times10^{-6}$ | $0.041\\pm0.008$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 S(1) / v=1-0 O(2) line ratio",
+   "value": "0.041",
+   "uncertainty": "0.008",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 S(1) | 2.122 | (1,3) | (0,1) | 6951 | 170 | 21 | 9 | 3.47$\\times10^{-7}$ | $(2.09\\pm0.39)\\times10^{-6}$ | $0.041\\pm0.008$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 O(4) (3.004 um) surface brightness",
+   "value": "1.26e-6",
+   "uncertainty": "0.31e-6",
+   "units": "erg s^-1 cm^-2 sr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(4) | 3.004 | (1,2) | (0,4) | 6471 | 1681 | 5 | 9 | 2.90$\\times10^{-7}$ | $(1.26\\pm0.31)\\times10^{-6}$ | $0.025\\pm0.006$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 v=1-0 O(4) / v=1-0 O(2) line ratio",
+   "value": "0.025",
+   "uncertainty": "0.006",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $v$=1-0 O(4) | 3.004 | (1,2) | (0,4) | 6471 | 1681 | 5 | 9 | 2.90$\\times10^{-7}$ | $(1.26\\pm0.31)\\times10^{-6}$ | $0.025\\pm0.006$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Effective cosmic-ray ionization rate (after column and collisional reductions)",
+   "value": "1e-15 to 1e-14",
+   "uncertainty": "order-of-magnitude",
+   "units": "s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Within this framework, we infer a rather high effective cosmic-ray ionization rate of $\\sim(1$–$10)\\times10^{-15}$ s$^{-1}$ in the presence of a moderate UV field ($\\chi_{UV}=100-1000$, in Draine units)."
+    },
+    {
+     "loc": "Protostellar and external sources of excitation",
+     "quote": "The elevated CR ionization rates inferred here, $\\zeta \\sim 10^{-15}$–$10^{-14}$ s$^{-1}$, exceed typical values measured in the Galactic ISM and starless cores such as B68"
+    }
+   ]
+  },
+  {
+   "quantity": "Radiative-limit cosmic-ray ionization rate estimate (fiducial B68 column)",
+   "value": "4e-14",
+   "uncertainty": "order-of-magnitude",
+   "units": "s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The case for a cosmic-ray contribution",
+     "quote": "$\\zeta_{\\rm CR} = \\frac{I_{\\rm CR}}{(1/4\\pi) b_u \\alpha_{ul} E_{ul} g N(\\rm H_2)} \\approx 4\\times10^{-14}\\ \\rm s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas density required for collisional suppression of higher-J H2 lines",
+   "value": "10^7 to 10^8",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The case for a cosmic-ray contribution",
+     "quote": "Both the illustrative CR redistribution calculation in Appendix 7 and the UV PDR models in Section 3.1 suggest that efficient collisional redistribution within the $v=1$ manifold becomes important at densities broadly of order $n_{\\rm H}\\sim10^{7}$–$10^{8},\\mathrm{cm^{-3}}$ in Oph 163131"
+    }
+   ]
+  },
+  {
+   "quantity": "Illustrative collider density from 1-0 O(4)/O(2) ratio at 100 K",
+   "value": "3e7",
+   "uncertainty": "illustrative",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Impact of Collisional De-excitation on CR-excited H$_2$",
+     "quote": "Equating $1+n_{\\rm col}/3.9\\times10^{6}\\simeq8$ gives $n_{\\rm col}\\sim3\\times10^{7}$ cm$^{-3}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact coordinates, shape, and pixel mask of the outer-disk spectral extraction aperture shown in Figure 2",
+  "Exact frequency window width and local linear baseline wavelength ranges used for continuum subtraction and moment-0 integration of each H2 transition",
+  "Complete input parameter files for the Meudon PDR code v7.0 models (e.g., total visual extinction A_V, dust properties, elemental abundances, cosmic-ray rate assumed in the UV-only runs)",
+  "MAST DOI / link for the specific JWST observations (left blank in the Acknowledgements text)"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel coordinates/vertices of the outer-disk extraction aperture shown in Figure 2",
+  "Exact frequency integration widths and baseline fitting windows for each H2 line",
+  "Complete input configuration files for the Meudon PDR v7.0 grid",
+  "Specific MAST DOI link (omitted in the Acknowledgements text)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Archival ALMA products and public JWST/NIRSpec data are clearly identified, and the Meudon PDR code v7.0 and analytical rate equations are public/explicit, but exact spectral extraction aperture coordinates, integration windows, and full PDR input parameters are not specified.",
+ "rediscovery_reason": "Main results are numeric H2 line surface brightnesses, line ratios (Table 1), and analytical/PDR model comparisons from public JWST (PID 5299) and ALMA archival data, though ALMA plays only a supporting morphological/context role.",
+ "source_card": "cards/2026AJ....172..170A/sonnet/card.md"
+}

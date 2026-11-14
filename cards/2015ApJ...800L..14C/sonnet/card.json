@@ -1,0 +1,876 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...800L..14C",
+  "title": "Ethyl Cyanide On Titan: Spectroscopic Detection and Mapping Using Alma",
+  "year": 2015,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Cordiner, M. A.",
+  "n_authors": 12,
+  "arxiv_id": "1410.5325",
+  "doi": "10.1088/2041-8205/800/1/L14",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00319.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "Interferometric observations of Titan were made between UT 2012-07-03 23:22:14 and 2012-07-04 01:06:18 as part of ALMA project 2011.0.00319.S (for the purpose of flux calibration)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "solar_system",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Titan",
+     "coordinates": {
+      "value": "not stated (tracked ephemeris position)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Titan’s geocentric distance of 9.51 AU at the time of observation"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "9.51 AU geocentric",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Titan’s geocentric distance of 9.51 AU at the time of observation"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is gas-phase ethyl cyanide (C2H5CN) present in Titan's atmosphere, and what are its vertical and spatial distributions compared with HC3N, CH3CN and CH3CCH?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we employ millimeter-wave data obtained from the Atacama Large Millimeter/submillimeter Array (ALMA) Science Archive to search for and map rotational emission lines from C$_2$H$_5$CN in Titan’s atmosphere"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00319.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "as part of ALMA project 2011.0.00319.S (for the purpose of flux calibration)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Two 4 minute integrations were obtained using the dual-sideband Band 6 receiver"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 basebands: 221.48-223.35, 223.48-225.35 GHz (LSB), 236.48-238.36, 239.48-241.36 GHz (USB); 3840 channels each; 488 kHz spacing, 976 kHz resolution",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with frequencies 221.48-223.35 GHz and 223.48-225.35 GHz in the lower sideband, and 236.48-238.36 GHz and 239.48-241.36 GHz in the upper sideband, with 3840 channels per spectral window."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "C2H5CN",
+     "transition": "many, e.g. 25(10,15)-24(10,14)",
+     "rest_frequency": "222.918-240.429 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "C$_2$H$_5$CN | 223.554 | $26_{0,26}$ | $25_{0,25}$ | 147"
+      }
+     ]
+    },
+    {
+     "species": "HC3N",
+     "transition": "J=26-25",
+     "rest_frequency": "236.513 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HC$_3$N          | 236.513         | $26$         | $25$         | 153"
+      }
+     ]
+    },
+    {
+     "species": "CH3CCH",
+     "transition": "13_K-12_K",
+     "rest_frequency": "222.014-222.167 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CH$_3$CCH        | 222.167         | $13_0$       | $12_0$       | 75"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "twenty 12-m antennae",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with twenty 12-m antennae in the telescope array, providing baselines in the range 21-402 m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "21-402 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "providing baselines in the range 21-402 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.85'' x 0.67'' at 223.5 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "was $0.85''\\times0.67''$ (long axis $57.3^{\\circ}$ clockwise from celestial north)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "two 4 minute integrations",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Two 4 minute integrations were obtained"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012-07-03 23:22:14 to 2012-07-04 01:06:18 UT",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "between UT 2012-07-03 23:22:14 and 2012-07-04 01:06:18"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "archival; flux calibration observations",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "using ALMA archival spectra recorded in July 2012"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Cassini CIRS and HASI",
+     "provided": {
+      "value": "atmospheric temperature profile",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The atmospheric temperature profile was generated from a combination of Cassini CIRS and HASI measurements"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Titan temperature profile from Cassini CIRS and HASI",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The atmospheric temperature profile was generated from a combination of Cassini CIRS and HASI measurements"
+       }
+      ]
+     },
+     "citation": "(cite: fla05; ful05)"
+    },
+    {
+     "what": {
+      "value": "Line parameters and partition functions from JPL catalog",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Spectral line parameters and partition functions were taken from the JPL catalog."
+       }
+      ]
+     },
+     "citation": "JPL catalog"
+    },
+    {
+     "what": {
+      "value": "Butler-JPL-Horizons 2010 Titan flux model",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "scaled to match the Butler-JPL-Horizons 2010 Titan flux model (see ALMA Memo #594)"
+       }
+      ]
+     },
+     "citation": "ALMA Memo #594"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "archive data processed with standard JAO scripts (flagging, bandpass, gain)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "already processed using the standard scripts and protocols provided by the Joint ALMA Observatory. This included routine flagging, bandpass calibration and complex gain calibration."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.2.1",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "NRAO CASA software (version 4.2.1)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Butler-JPL-Horizons 2010 Titan model; 3C 279 bandpass",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The bright quasar 3C 279 was observed for bandpass calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "within 15%",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "which is expected to be accurate to within 15%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "imaging was carried out using the `clean` task"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Hogbom, threshold twice expected RMS",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using the Hogbom algorithm, with natural visibility weighting and a threshold flux level of twice the expected RMS noise"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "with natural visibility weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.1'' x 0.1''",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The image pixel sizes were set to $0.1''\\times0.1''$."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Continuum-subtraction of the visibility amplitudes was performed using the `uvcontsub` task"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.85'' x 0.67''",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "was $0.85''\\times0.67''$ (long axis $57.3^{\\circ}$ clockwise from celestial north)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Radiative transfer modelling strategy",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Adopting a similar strategy to (cite: cor14), the spatially-integrated C$_2$H$_5$CN emission lines in the range 223.9-224.2 GHz were modeled"
+       }
+      ]
+     },
+     "from_reference": "(cite: cor14)"
+    },
+    {
+     "what": {
+      "value": "Isotopologue and aerosol abundances",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the abundances of nitrogen and methane isotopologues and aerosols were the same as used by (cite: tea13)"
+       }
+      ]
+     },
+     "from_reference": "(cite: tea13)"
+    }
+   ],
+   "unstated_but_needed": [
+    "uvcontsub line-free channels and fit order",
+    "clean mask and iterations",
+    "Titan-frame velocity handling details",
+    "Specific aerosol and isotopologue abundance values",
+    "Noise estimation for fit uncertainties and the 3 sigma line detection",
+    "Exact lines summed for the C2H5CN map",
+    "Fitting algorithm details within NEMESIS"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "calibrate, subtract continuum and image",
+    "method": {
+     "value": "Archive-calibrated data flux-scaled to Titan model, uvcontsub, clean per channel, Doppler-shift to Titan rest frame",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The images were transformed from equatorial coordinates to (projected) linear distances with respect to the center of Titan"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "extract disk-integrated spectra and identify lines",
+    "method": {
+     "value": "Integrate cubes in circular region radius 1.1''; assign with Splatalogue, CDMS, JPL",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "integrating the reduced ALMA data cubes within a circular region of radius $1.1''$ from the center of Titan"
+      }
+     ]
+    },
+    "software": [
+     "Splatalogue"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Features detected at >3 sigma; spectra uncrowded",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The spectra are sufficiently uncrowded that unambiguous assignments were possible for all detected lines."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "make integrated-line emission maps",
+    "method": {
+     "value": "Sum strongest lines per species (six C2H5CN lines 223.9-224.1 GHz) and overlay on continuum",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "the strongest six lines in the range 223.9-224.1 GHz (shown in Fig. 3(b)) were summed to improve the signal-to-noise ratio of the map"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "retrieve C2H5CN vertical profile",
+    "method": {
+     "value": "Line-by-line radiative transfer least-squares fits of step and gradient abundance profiles to 223.9-224.2 GHz lines",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "least-squares fits to the observed spectra were performed using C$_2$H$_5$CN abundance profiles with constant mixing ratio above a specified cutoff altitude $z_c$ and zero abundance below."
+      }
+     ]
+    },
+    "software": [
+     "NEMESIS"
+    ],
+    "key_parameters": [
+     {
+      "value": "step z_c 100-400 km; gradient model reference altitude 292 km, slope as fraction of scale height",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The free parameters in this model were the abundance at a reference altitude $z_r = 292$ km"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Profiles do not vary with latitude/longitude; Lorentzian half-width 0.075 cm-1 atm-1 at 296 K, exponent 0.50; model atmosphere to 1000 km",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The Lorentzian broadening half-width at 296 K was assumed to be 0.075 cm$^{-1}$ atm$^{-1}$, with a temperature-dependence exponent of 0.50."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "least-squares, reduced chi^2",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Initially, least-squares fits to the observed spectra were performed using C$_2$H$_5$CN abundance profiles with constant mixing ratio above a specified cutoff altitude $z_c$ and zero abundance below."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi^2 values; fit quality of 300 and 400 km models",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The quality of these fits confirms that our C$_2$H$_5$CN line assignments are secure."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.1",
+    "used_for": {
+     "value": "uvcontsub and clean imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "NRAO CASA software (version 4.2.1)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NEMESIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "line-by-line radiative transfer retrieval",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "line-by-line radiative transfer module of the NEMESIS atmospheric retrieval code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Splatalogue",
+    "version": "not stated",
+    "used_for": {
+     "value": "line assignment",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Spectral peaks were assigned using the Splatalogue database for astronomical spectroscopy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "C2H5CN abundance at 292 km (gradient model)",
+    "value": "1.3",
+    "uncertainty": "0.4",
+    "units": "ppb",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The best-fitting abundance at $z_r$ was found to be $1.3 \\pm 0.4$ ppb"
+     }
+    ]
+   },
+   {
+    "quantity": "fractional scale height f_H",
+    "value": "4.6",
+    "uncertainty": "1.1",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "with a retrieved fractional scale height of $f_H = 4.6 \\pm 1.1$"
+     }
+    ]
+   },
+   {
+    "quantity": "Vertical column density, gradient model",
+    "value": "3.6e14",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Gradient      |      1.30       |      292       |   0.97   | $3.6\\times10^{14}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Column density range for good-fit models",
+    "value": "(1-5)e14",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The models that fit the data well have values in the range $(1-5)\\times10^{14}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Peak S/N of maps C2H5CN, HC3N, CH3CN, CH3CCH",
+    "value": "15, 40, 17, 29",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "C$_2$H$_5$CN: 15, HC$_3$N: 40, CH$_3$CN: 17, CH$_3$CCH: 29."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "C2H5CN emission is concentrated in the southern hemisphere whereas other species peak in the north",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the emission from C$_2$H$_5$CN is found to be concentrated in the southern (autumn) hemisphere"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas-phase C2H5CN is present in Titan's atmosphere",
+    "experiment": "Search archival ALMA Band 6 spectra",
+    "result": "27 lines in 19 features detected at >3 sigma",
+    "finding": "First spectroscopic detection of C2H5CN",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the detection of 27 rotational lines from C$_2$H$_5$CN (in 19 separate emission features detected at $>3\\sigma$ confidence)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "C2H5CN is located at high altitude",
+    "experiment": "Radiative transfer fits with step and gradient profiles",
+    "result": "Good fits for z_c 300/400 km and gradient; poor for 100 km",
+    "finding": "Mostly at altitudes >~200 km",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Radiative transfer models show that C$_2$H$_5$CN is most concentrated at altitudes $\\gtrsim200$ km"
+     }
+    ]
+   },
+   {
+    "hypothesis": "C2H5CN spatial distribution differs from other nitriles",
+    "experiment": "Integrated line maps",
+    "result": "7 sigma southern enhancement",
+    "finding": "Suggests short chemical lifetime",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Molecular Emission Maps",
+      "quote": "a significant ($7\\sigma$) flux enhancement over the southern pole relative to the north"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Temperature variation as the cause of asymmetry judged unlikely",
+     "evidence": [
+      {
+       "loc": "Molecular Emission Maps",
+       "quote": "so spatial variations in the gas temperature are an unlikely explanation for the observed asymmetries"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "No temperature information for the epoch; further work needed",
+     "evidence": [
+      {
+       "loc": "Molecular Emission Maps",
+       "quote": "temperature information for the epoch of our observations is lacking, so further work will be needed to firmly establish the relative distributions of these species"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Spatial resolution comparable to Titan's disk, so north-south structure is poorly resolved",
+    "Retrieval assumes latitude-independent profiles while claiming latitudinal asymmetry",
+    "Uncertainties on step models and degeneracy of altitude with abundance not given"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "data from ALMA Science Archive",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "obtained from the Atacama Large Millimeter/submillimeter Array (ALMA) Science Archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Atmospheric abundance profiles for aerosols/isotopologues",
+    "uvcontsub channel selection",
+    "NEMESIS configuration details"
+   ],
+   "estimated_data_volume_inferred": "~ a few GB",
+   "score_inferred": 3,
+   "score_reason": "Public archival data and a clear description of imaging, but retrieval inputs and several settings are not given.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, a mostly specified recipe and numeric results (column densities and abundances)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: irw08)",
+     "why": "NEMESIS retrieval code"
+    },
+    {
+     "citation": "(cite: mcm07)",
+     "why": "CASA"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: cor14)",
+     "why": "earlier ALMA Titan study with a similar modelling strategy"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f1a645d1e2d144cbe5c3328d348e8014",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:21",
+  "usage": {
+   "input_tokens": 15132,
+   "output_tokens": 6687,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.049174,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 43,
+   "rate": 0.623
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:55:22",
+  "custom_id": "repair-sonnet-4d80e5559a6259ed635edd4bc6bfc9a1",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "Initially, least-squares fits to the observed spectra were performed using C$_2$H$_5$CN abundance profiles with constant mixing ratio above a specified cutoff altitude $z_c$ and zero abundance below."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

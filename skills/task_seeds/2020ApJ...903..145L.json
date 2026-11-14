@@ -1,0 +1,199 @@
+{
+ "bibcode": "2020ApJ...903..145L",
+ "title": "ALMaQUEST. IV. The ALMA-MaNGA QUEnching and STar Formation (ALMaQUEST) Survey",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abba3a",
+ "arxiv_id": "2010.01751",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "How does sSFR depend on molecular gas fraction versus star formation efficiency, globally and at kpc scales, in MaNGA galaxies spanning starburst, main-sequence and green valley",
+ "alma_project_codes": [
+  "2015.1.01225.S",
+  "2017.1.01093.S",
+  "2018.1.00558.S",
+  "2018.1.00541.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "native 1.6''-2.8''; final 2.5''x2.5''",
+  "sensitivity": "rms ~0.2-2 mJy/beam per 11 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "xCOLD GASS comparison sample (offset 0.26 dex Chabrier to Salpeter)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "An offset of 0.26 dex has been added to the xCOLD GASS SFR and $\\rm~M_{*}$ measurements to account for the conversion from the Chabrier to the Salpeter IMF."
+     }
+    ]
+   },
+   "citation": "(cite: sai17)"
+  },
+  {
+   "what": {
+    "value": "PIPE3D global SFR and M* value-added catalog",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "The global measurements of SFR and $\\rm~M_{*}$ are taken from the PIPE3D (cite: san16a; san16b) value-added catalog (cite: san18)"
+     }
+    ]
+   },
+   "citation": "(cite: san16a; san16b; san18)"
+  },
+  {
+   "what": {
+    "value": "HI-MaNGA DR2 and ALFALFA catalog HI data",
+    "evidence": [
+     {
+      "loc": "2.4 GBT HI Observations",
+      "quote": "we use the $\\rm H\\textsc{i}$  data from both the second data release of $\\rm H\\textsc{i}$-MaNGA (D. Stark et al. in prep.) and the ALFALFA catalog (cite: hay18)."
+     }
+    ]
+   },
+   "citation": "(cite: mas19; hay18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO cubes and moment maps",
+   "method": "Clean continuum-subtracted data with Briggs weighting, re-image to 2.5'' beam and 0.5'' pixels; moments with IMMOMENTS",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "4 sigma clipping for velocity and dispersion maps; no clipping for moment 0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive H2 mass and global quantities",
+   "method": "Sum CO flux, SFR and M* within 1.5 Re (star-forming [SII] BPT spaxels for SFR) and MaNGA bundle; compute sSFR, SFE, fH2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.35 Msun (K km/s pc^2)^-1; Salpeter IMF"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Correlation of sSFR with SFE, fH2, HI ratios",
+   "method": "Kendall tau correlation analysis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Spaxel-level distributions",
+   "method": "Histograms of sSFR, fH2, SFE on star-forming spaxels per galaxy",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Kendall tau sSFR vs SFE",
+   "value": "0.67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the correlation between sSFR and SFE ($\\tau$ = 0.67)"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau sSFR vs fH2",
+   "value": "0.54",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "that between sSFR and $f_{\\rm H_{2}}$ ($\\tau$ = 0.54)"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau, all spaxels case",
+   "value": "0.56",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Appendix",
+     "quote": "A moderate correlation ($\\tau$ = 0.56) with high significance"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau, [NII] BPT: sSFR-SFE / sSFR-fH2",
+   "value": "0.78 / 0.49",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Appendix",
+     "quote": "a stronger correlation strength ($\\tau$ = 0.78) is found in the sSFR vs. SFE relation, with respect to the sSFR vs. $f_{\\rm H_{2}}$ relation ($\\tau$ = 0.49)"
+    }
+   ]
+  },
+  {
+   "quantity": "Max difference in global H2 mass with varying alpha_CO",
+   "value": "0.27 dex (mean ~0.05 and ~0.14 dex for methods 1 and 2)",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "can be as large as 0.27 dex with an average value of $\\sim 0.05$ and $\\sim 0.14$ dex in method 1 and method 2, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HI detections among 33 galaxies with HI data",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "of which 18 are detected in $\\rm H\\textsc{i}$  with S/N \\> 5"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum spectral windows used for continuum subtraction",
+  "Velocity ranges chosen by hand for moment-0 maps per galaxy",
+  "tclean/CLEAN image size, masking, and deconvolver",
+  "Exact conversion of CO flux to L'CO and treatment of line brightness (R21 not needed but redshift/distance used)",
+  "Per-galaxy CASA version assignment beyond three listed",
+  "Spaxel S/N cuts for CO in resolved analysis",
+  "Distances used for HI masses"
+ ],
+ "missing_for_reproduction": [
+  "Moment-0 velocity ranges",
+  "Line-free channels",
+  "Imaging masks and image size"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Data public and tables give numbers, but imaging details sparse.",
+ "rediscovery_reason": "Public ALMA and MaNGA data; Tables 2-3 and Kendall tau values give numeric answer keys.",
+ "source_card": "cards/2020ApJ...903..145L/sonnet/card.md"
+}

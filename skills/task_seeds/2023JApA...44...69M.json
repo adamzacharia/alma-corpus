@@ -1,0 +1,431 @@
+{
+ "bibcode": "2023JApA...44...69M",
+ "title": "Detection of monothioformic acid towards the solar-type protostar IRAS 16293─2422",
+ "year": 2023,
+ "doi": "10.1007/s12036-023-09961-9",
+ "arxiv_id": "2305.00480",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Search for and characterize the rotational emission lines of the SH-bearing molecule monothioformic acid (t-HC(O)SH) and other SH-bearing molecules towards the solar-type protostar IRAS 16293 B.",
+ "alma_project_codes": [
+  "2016.1.01150.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.274 mm)",
+  "arrays": "12 m array (40 antennas)",
+  "angular_resolution": "0.498'' x 0.381'' (continuum); 0.546'' x 0.391'' (spectral images)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular spectroscopy catalog entries for t-HC(O)SH (CDMS entry 062515) and other SH-bearing molecules",
+    "evidence": [
+     {
+      "loc": "Identification of emission lines of t-HC(O)SH towards the IRAS 16293 B",
+      "quote": "We used the local thermodynamic equilibrium (LTE) model with the Cologne Database for Molecular Spectroscopy (CDMS) to identify the molecular emission lines of t-HC(O)SH (CDMS entry 062515) towards the IRAS 16293 B (cite: mu05)."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: mu05)"
+  },
+  {
+   "what": {
+    "value": "Column density of molecular H2 towards IRAS 16293 B (1.20x10^25 cm^-2)",
+    "evidence": [
+     {
+      "loc": "Fractional abundance of t-HC(O)SH towards the IRAS 16293 B",
+      "quote": "The fractional abundance of t-HC(O)SH with respect to H$_{2}$ towards the IRAS 16293 B is 8.50$\\times$10$^{-11}$, while the column density of molecular H$_{2}$ towards the IRAS 16293 B is 1.20$\\times$10$^{25}$ cm$^{-2}$ (cite: jo16; cou18)."
+     }
+    ]
+   },
+   "citation": "(cite: jo16; cou18)"
+  },
+  {
+   "what": {
+    "value": "Column density (5.5x10^15 cm^-2) and abundance (4.58x10^-10) of CH3SH towards IRAS 16293 B",
+    "evidence": [
+     {
+      "loc": "Fractional abundance of t-HC(O)SH towards the IRAS 16293 B",
+      "quote": "The fractional abundance of t-HC(O)SH towards the IRAS 16293 B with respect to another SH–bearing molecule, CH$_{3}$SH is 0.185, where the column density of CH$_{3}$SH towards the IRAS 16293 B is 5.5$\\times$10$^{15}$ cm$^{-2}$ (cite: dro18)."
+     },
+     {
+      "loc": "Fractional abundance of t-HC(O)SH towards the IRAS 16293 B",
+      "quote": "Our derived fractional abundance of t-HC(O)SH (8.50$\\times$10$^{-11}$) is lower than the abundance of CH$_{3}$SH (4.58$\\times$10$^{-10}$)[^5]."
+     }
+    ]
+   },
+   "citation": "(cite: dro18)"
+  },
+  {
+   "what": {
+    "value": "Fractional abundance of t-HC(O)SH towards G+0.693–0.027 (1.2x10^-10) and G31.41+0.31 (1.4x10^-8)",
+    "evidence": [
+     {
+      "loc": "Fractional abundance of t-HC(O)SH towards the IRAS 16293 B",
+      "quote": "Earlier, (cite: rod21) and (cite: gar22) detected the rotational emission lines of t-HC(O)SH from G+0.693–0.027 and G31.41+0.31, with an estimated fractional abundance 1.2$\\times$10$^{-10}$ and 1.4$\\times$10$^{-8}$ respectively."
+     }
+    ]
+   },
+   "citation": "(cite: rod21) and (cite: gar22)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate raw visibility data, split target, and image continuum and spectral cubes",
+   "method": "Calibrate visibilities with the ALMA pipeline in CASA 5.4.1 using SETJY (Perley-Butler 2017), hifa_bandpassflag, and hifa_flagdata; split target with MSTRANSFORM; image continuum with TCLEAN; subtract continuum with UVCONTSUB; image cubes with TCLEAN; correct primary beam with IMPBCOR.",
+   "software": [
+    "CASA 5.4.1",
+    "SETJY",
+    "hifa_bandpassflag",
+    "hifa_flagdata",
+    "MSTRANSFORM",
+    "TCLEAN",
+    "UVCONTSUB",
+    "IMPBCOR"
+   ],
+   "key_parameters": [
+    "Briggs weighting robust = 0.5, SPECMODE=CUBE, hogbom deconvolver"
+   ],
+   "assumptions": [
+    "Perley-Butler 2017 flux calibration model"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure 1.274 mm continuum flux densities of IRAS 16293 A and B",
+   "method": "Fit 2D Gaussians over the continuum emission image of sources IRAS 16293 A and IRAS 16293 B using CASA task IMFIT.",
+   "software": [
+    "CASA 5.4.1",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "Continuum frequency 235.29 GHz (1.274 mm)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract molecular spectra towards IRAS 16293 B and perform baseline correction",
+   "method": "Extract molecular emission spectra from the continuum-subtracted spectral cubes using a 2.07'' diameter circular aperture centered on IRAS 16293 B, and fit a first-order polynomial for baseline correction using the GNU R package hyperSpec.",
+   "software": [
+    "GNU R",
+    "hyperSpec"
+   ],
+   "key_parameters": [
+    "Circular region diameter = 2.07'' centered at RA (J2000) = 16h32m22s.603, Dec (J2000) = –24d28'32''.729; first-order polynomial baseline"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Identify t-HC(O)SH transitions and fit LTE model parameters, and derive upper limits for other SH-bearing species",
+   "method": "Model extracted spectra assuming LTE in CASSIS with CDMS spectroscopy (entry 062515 for t-HC(O)SH) using the MCMC algorithm via the Python script interface; model >200 other molecules to check for line blending; estimate LTE upper limit column densities for 13 other SH-bearing species.",
+   "software": [
+    "CASSIS",
+    "Python"
+   ],
+   "key_parameters": [
+    "Source size = 0.5'', V_LSR = 2.7 km s^-1, CDMS entry 062515"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), T_c = 0, cosmic background temperature T_bg = 2.73 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate fractional abundance of t-HC(O)SH relative to H2 and CH3SH",
+   "method": "Divide the derived column density of t-HC(O)SH by the literature column densities of H2 and CH3SH towards IRAS 16293 B.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "N(H2) = 1.20x10^25 cm^-2 (cite: jo16; cou18) and N(CH3SH) = 5.5x10^15 cm^-2 (cite: dro18)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Create moment zero maps and measure emitting region sizes of t-HC(O)SH",
+   "method": "Generate integrated emission maps (moment zero) for three non-blended lines using CASA task IMMOMENTS, fit 2D Gaussians with IMFIT, and compute deconvolved source size theta_S = sqrt(theta_50^2 - theta_beam^2).",
+   "software": [
+    "CASA 5.4.1",
+    "IMMOMENTS",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "Transitions at 234.001 GHz, 234.021 GHz, and 234.074 GHz"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated continuum flux density of IRAS 16293 A at 235.29 GHz",
+   "value": "743.6",
+   "uncertainty": "23",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission towards the IRAS 16293",
+     "quote": "For source IRAS 16293 A, the estimated integrated flux density is 743.6$\\pm$23 mJy and the peak flux density is 207.1$\\pm$5 mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak continuum flux density of IRAS 16293 A at 235.29 GHz",
+   "value": "207.1",
+   "uncertainty": "5",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission towards the IRAS 16293",
+     "quote": "For source IRAS 16293 A, the estimated integrated flux density is 743.6$\\pm$23 mJy and the peak flux density is 207.1$\\pm$5 mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated continuum flux density of IRAS 16293 B at 235.29 GHz",
+   "value": "934.5",
+   "uncertainty": "22",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission towards the IRAS 16293",
+     "quote": "Similarly, for source IRAS 16293 B, the integrated flux density is 934.5$\\pm$22 mJy and the peak flux density is 464.1$\\pm$7.9 mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak continuum flux density of IRAS 16293 B at 235.29 GHz",
+   "value": "464.1",
+   "uncertainty": "7.9",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission towards the IRAS 16293",
+     "quote": "Similarly, for source IRAS 16293 B, the integrated flux density is 934.5$\\pm$22 mJy and the peak flux density is 464.1$\\pm$7.9 mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of t-HC(O)SH towards IRAS 16293 B",
+   "value": "1.02e15",
+   "uncertainty": "0.6e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Identification of emission lines of t-HC(O)SH towards the IRAS 16293 B",
+     "quote": "At the full-beam offset position, the best-fit column density of t-HC(O)SH is (1.02$\\pm$0.6)$\\times$10$^{15}$ cm$^{-2}$ with an excitation temperature of 125$\\pm$15 K and source size of 0.5$^{\\prime\\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of t-HC(O)SH towards IRAS 16293 B",
+   "value": "125",
+   "uncertainty": "15",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Identification of emission lines of t-HC(O)SH towards the IRAS 16293 B",
+     "quote": "At the full-beam offset position, the best-fit column density of t-HC(O)SH is (1.02$\\pm$0.6)$\\times$10$^{15}$ cm$^{-2}$ with an excitation temperature of 125$\\pm$15 K and source size of 0.5$^{\\prime\\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of LTE model spectra of t-HC(O)SH",
+   "value": "1.35",
+   "uncertainty": "0.3",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Identification of emission lines of t-HC(O)SH towards the IRAS 16293 B",
+     "quote": "The full-width half maximum (FWHM) of the LTE model spectra of t-HC(O)SH is 1.35$\\pm$0.3 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance of t-HC(O)SH with respect to H2 towards IRAS 16293 B",
+   "value": "8.50e-11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Fractional abundance of t-HC(O)SH towards the IRAS 16293 B",
+     "quote": "The fractional abundance of t-HC(O)SH with respect to H$_{2}$ towards the IRAS 16293 B is 8.50$\\times$10$^{-11}$, while the column density of molecular H$_{2}$ towards the IRAS 16293 B is 1.20$\\times$10$^{25}$ cm$^{-2}$ (cite: jo16; cou18)."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density ratio t-HC(O)SH / CH3SH towards IRAS 16293 B",
+   "value": "0.185",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Fractional abundance of t-HC(O)SH towards the IRAS 16293 B",
+     "quote": "The fractional abundance of t-HC(O)SH towards the IRAS 16293 B with respect to another SH–bearing molecule, CH$_{3}$SH is 0.185, where the column density of CH$_{3}$SH towards the IRAS 16293 B is 5.5$\\times$10$^{15}$ cm$^{-2}$ (cite: dro18)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of c-HC(O)SH towards IRAS 16293 B",
+   "value": "<=4.50e14",
+   "uncertainty": "0.8e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| c-HC(O)SH | 062516 | $\\leq$(4.50$\\pm$0.8)$\\times$10$^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of a-C2H3SH towards IRAS 16293 B",
+   "value": "<=2.32e12",
+   "uncertainty": "0.2e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|   a-C$_{2}$H$_{3}$SH | 060522 | $\\leq$(2.32$\\pm$0.2)$\\times$10$^{12}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of s-C2H3SH towards IRAS 16293 B",
+   "value": "<=1.53e12",
+   "uncertainty": "0.8e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|   s-C$_{2}$H$_{3}$SH | 060521 | $\\leq$(1.53$\\pm$0.8)$\\times$10$^{12}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of a-C2H5SH towards IRAS 16293 B",
+   "value": "<=7.82e11",
+   "uncertainty": "0.6e11",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|   a-C$_{2}$H$_{5}$SH | 062524 | $\\leq$(7.82$\\pm$0.6)$\\times$10$^{11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of g-C2H5SH towards IRAS 16293 B",
+   "value": "<=3.05e11",
+   "uncertainty": "0.9e11",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|   g-C$_{2}$H$_{5}$SH | 062523 | $\\leq$(3.05$\\pm$0.9)$\\times$10$^{11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of c-HC(S)SH towards IRAS 16293 B",
+   "value": "<=5.21e14",
+   "uncertainty": "0.7e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| c-HC(S)SH | 078507 | $\\leq$(5.21$\\pm$0.7)$\\times$10$^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of t-HC(S)SH towards IRAS 16293 B",
+   "value": "<=3.82e13",
+   "uncertainty": "0.4e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| t-HC(S)SH | 078506 | $\\leq$(3.82$\\pm$0.4)$\\times$10$^{13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Emitting region size of t-HC(O)SH at 234.001 GHz",
+   "value": "0.540",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Spatial distribution of t-HC(O)SH",
+     "quote": "The derived emitting regions of the t-HC(O)SH at frequencies 234.001 GHz, 234.021 GHz, and 234.074 GHz are 0.540$^{\\prime\\prime}$, 0.552$^{\\prime\\prime}$, and 0.550$^{\\prime\\prime}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Emitting region size of t-HC(O)SH at 234.021 GHz",
+   "value": "0.552",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Spatial distribution of t-HC(O)SH",
+     "quote": "The derived emitting regions of the t-HC(O)SH at frequencies 234.001 GHz, 234.021 GHz, and 234.074 GHz are 0.540$^{\\prime\\prime}$, 0.552$^{\\prime\\prime}$, and 0.550$^{\\prime\\prime}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Emitting region size of t-HC(O)SH at 234.074 GHz",
+   "value": "0.550",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Spatial distribution of t-HC(O)SH",
+     "quote": "The derived emitting regions of the t-HC(O)SH at frequencies 234.001 GHz, 234.021 GHz, and 234.074 GHz are 0.540$^{\\prime\\prime}$, 0.552$^{\\prime\\prime}$, and 0.550$^{\\prime\\prime}$ respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Specific frequency/channel ranges selected as line-free for continuum imaging and UVCONTSUB",
+  "TCLEAN imaging parameters: cell size, image size, cleaning threshold, niter, and masking strategy",
+  "MCMC prior parameter ranges, number of walkers, and number of iterations used in the CASSIS Python script",
+  "Exact channel/velocity ranges integrated in IMMOMENTS to create the moment zero maps",
+  "RMS noise levels of the continuum image and the spectral line cubes",
+  "Excitation temperature, linewidth, and source size assumed when deriving upper limit column densities for the non-detected SH-bearing molecules"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selections used for UVCONTSUB and continuum imaging",
+  "TCLEAN cell size, image dimensions, and cleaning stopping criteria",
+  "CASSIS MCMC script and prior bounds",
+  "Channel/velocity ranges integrated in IMMOMENTS for moment zero maps",
+  "Assumed T_ex and FWHM for the upper limit column density calculations in Table 2"
+ ],
+ "reproducibility_score": 70,
+ "score_reason": "Archival project code, CASA version, calibration tasks, weighting, extraction region coordinates and size, spectroscopy database entry, and fitting software (CASSIS MCMC) are clearly stated, though minor imaging parameters (cell size, clean thresholds, line-free channels) and MCMC priors are omitted.",
+ "rediscovery_reason": "The ALMA dataset (2016.1.01150.S) is public, the target extraction aperture and coordinates are explicitly specified, and the main results (continuum fluxes, t-HC(O)SH column density, excitation temperature, FWHM, and emitting size) are quantitative.",
+ "source_card": "cards/2023JApA...44...69M/sonnet/card.md"
+}

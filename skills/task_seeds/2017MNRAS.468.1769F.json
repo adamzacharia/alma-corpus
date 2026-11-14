@@ -1,0 +1,246 @@
+{
+ "bibcode": "2017MNRAS.468.1769F",
+ "title": "The varying mass distribution of molecular clouds across M83",
+ "year": 2017,
+ "doi": "10.1093/mnras/stx499",
+ "arxiv_id": "1702.07728",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Does the molecular cloud mass distribution in M83 show a truncation mass that varies with galactocentric radius, like the young massive cluster population?",
+ "alma_project_codes": [
+  "2012.1.00762.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m dishes only; no total power or short spacings",
+  "angular_resolution": "1.34x0.83 arcsec (29x18 pc; geometric mean 22.8 pc)",
+  "sensitivity": "median brightness sensitivity 0.89 K per beam; velocity resolution 2.57 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cluster truncation masses, indices and maximum cluster masses per radial bin",
+    "evidence": [
+     {
+      "loc": "Mass distributions",
+      "quote": "The normalization to equal area bins adopts the binning used in (cite: Adamo_2015) to facilitate direct comparison with that work."
+     }
+    ]
+   },
+   "citation": "(cite: Adamo_2015)"
+  },
+  {
+   "what": {
+    "value": "Disk rotation curve (M_d=6.4e10 Msun, R_d=2.9 kpc)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the disk mass $M_d=6.4\\times 10^{10}~M_{\\odot}$, the scale length $R_d=2.9$ kpc"
+     }
+    ]
+   },
+   "citation": "(cite: Lundgren_2004b)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor X_CO = 2.0e20",
+    "evidence": [
+     {
+      "loc": "ALMA Data",
+      "quote": "we adopt a CO-to-H$_2$ conversion factor of $X_{\\mathrm{CO}} = 2.0\\times 10^{20}$ (K km s$^{-1}$)$^{-1}$ cm$^{-2}$ (cite: Bolatto_2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto_2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify clouds in CO cube",
+   "method": "cprops masking (>2.5 sigma in two adjacent channels, extended to 1 sigma) and seeded watershed decomposition",
+   "software": [
+    "cprops (cpropstoo)"
+   ],
+   "key_parameters": [
+    "maxima separated by at least 40 pc or 5.14 km/s; 2.5 sigma above saddle"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Completeness by fake source injection",
+   "method": "Inject 350 Gaussian clouds at 51 masses (1e5-1e6 Msun), 10 random offsets; fit logistic recovery function",
+   "software": [],
+   "key_parameters": [
+    "50% completeness 3.35e5 Msun"
+   ],
+   "assumptions": [
+    "Fake clouds follow Local Group size-linewidth-luminosity relations"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure cloud properties",
+   "method": "Moments with Gaussian correction, beam deconvolution; luminous mass from alpha_CO, virial mass 5 sigma^2 R/G, surface density; bootstrap uncertainties",
+   "software": [
+    "cprops"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.35 Msun pc^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit cloud mass distributions in radial bins",
+   "method": "Fit pure power law, Schechter (beta=-2), truncated power law to completeness-corrected CCDF by minimizing Anderson-Darling statistic, with MCMC for uncertainties",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "10 chains, 200 burn-in, 2000 steps, thin by 10"
+   ],
+   "assumptions": [
+    "log-likelihood approx -A/(2n) for N>30"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute Jeans and Toomre masses",
+   "method": "Radial profiles of Sigma, sigma_v from ALMA/SEST CO and THINGS HI; kappa from exponential disk rotation curve; M_J and M_T formulae",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Exponential disk rotation curve of Lundgren 2004b"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of clouds identified",
+   "value": "873",
+   "uncertainty": "not stated",
+   "units": "clouds",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "GMC properties",
+     "quote": "This approach extracts 873 clouds."
+    }
+   ]
+  },
+  {
+   "quantity": "50% completeness limit",
+   "value": "3.35e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "GMC properties",
+     "quote": "50% completeness limit of $M_{\\mathrm{GMC}} > 3.35\\times 10^5~M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clouds above completeness limit",
+   "value": "711",
+   "uncertainty": "not stated",
+   "units": "clouds",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "GMC properties",
+     "quote": "Of the 873 clouds identified, 711 are above the 50% completeness limit."
+    }
+   ]
+  },
+  {
+   "quantity": "Median surface density, Rg>0.5 kpc",
+   "value": "170",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "GMC properties",
+     "quote": "median surface density of $\\langle \\Sigma \\rangle = 170~M_{\\odot}\\mbox{ pc}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median surface density, Rg<0.5 kpc",
+   "value": "700",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "GMC properties",
+     "quote": "clouds inside this radius have a median surface density of $\\langle \\Sigma \\rangle = 700~M_{\\odot}\\mbox{ pc}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Truncated power-law Mc, 0.45-2.3 kpc",
+   "value": "2.1 (+1.4/-0.4) e6",
+   "uncertainty": "+1.4/-0.4",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{c,\\mathrm{TPL}}$ ($10^6 M_{\\odot}$) | $7.0^{+10.5}_{- 1.8}$  | $2.1^{+ 1.4}_{- 0.4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum cloud mass, 0-0.45 kpc bin",
+   "value": "24.7e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{\\mathrm{max,GMC}}$ ($10^6 M_{\\odot}$)        | 24.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Max cluster mass / max cloud mass",
+   "value": "1-2%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Mass distributions",
+     "quote": "The maximum cluster mass is about 1-2% of the maximum cloud mass."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact imaging parameters of the JVO QA2 cube (weighting, cell size, deconvolver)",
+  "CASA version used for the delivered data",
+  "Fake-cloud size and line-width parameters used in the injection test",
+  "Exact radial bin geometry, inclination and position angle used for deprojection",
+  "Method for surface-density and velocity-dispersion profiles in the Toomre/Jeans calculation (radial binning details)",
+  "Recipe for the mass-weighted sum of HI and CO dispersions"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters of the QA2 cube",
+  "Fake-cloud injection details",
+  "Fitting code for Anderson-Darling MCMC",
+  "Radial bin geometry details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear cprops and fitting recipe, but several injection, binning and profile details are missing.",
+ "rediscovery_reason": "The data are public, the cprops recipe is specified and the main results are numeric (cloud counts, completeness, fitted masses).",
+ "source_card": "cards/2017MNRAS.468.1769F/sonnet/card.md"
+}

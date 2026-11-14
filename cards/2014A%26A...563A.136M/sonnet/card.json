@@ -1,0 +1,681 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014A&A...563A.136M",
+  "title": "UVMULTIFIT: A versatile tool for fitting astronomical radio interferometric data",
+  "year": 2014,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Martí-Vidal, I.",
+  "n_authors": 4,
+  "arxiv_id": "1401.4984",
+  "doi": "10.1051/0004-6361/201322633",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00405.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present UVMULTIFIT, a versatile library for fitting visibility data, implemented in a Python-based framework."
+   }
+  ],
+  "science": {
+   "fields": [
+    "instrumentation",
+    "other"
+   ],
+   "targets": [
+    {
+     "name": "PKS 1830-211",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "SN 1993J / M 81*",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can a flexible visibility-domain model-fitting library outperform image-plane analysis for sources near or below the resolution limit?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Fitting models to the direct interferometric observables (i.e., the visibilities) is preferable in the cases of simple (analytical) sky intensity distributions."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00405.S",
+     "evidence": [
+      {
+       "loc": "footnote 5",
+       "quote": "Project ADS/JAO.ALMA#2011.0.00405.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (~90 GHz), Cycle 0",
+    "evidence": [
+     {
+      "loc": "3.2.1 ALMA observations of PKS 1830-211",
+      "quote": "the restoring beam of the ALMA B3 ($\\sim$90 GHz) observations is 1.5$\\times$1.9 arcsec, with a position angle of 80 deg."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.5x1.9 arcsec, PA 80 deg",
+    "evidence": [
+     {
+      "loc": "3.2.1 ALMA observations of PKS 1830-211",
+      "quote": "the restoring beam of the ALMA B3 ($\\sim$90 GHz) observations is 1.5$\\times$1.9 arcsec, with a position angle of 80 deg."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLBI",
+     "provided": {
+      "value": "1.7, 5.0, 8.4 GHz data of SN 1993J (15 Nov 1997) used to test the code",
+      "evidence": [
+       {
+        "loc": "3.2.2 VLBI observations of SN 1993J",
+        "quote": "We selected VLBI observations of SN 1993J at 1.7, 5.0, and 8.4 GHz, taken on 15 Nov 1997."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Relative NE-SW positions of PKS 1830-211 images from VLBI astrometry",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA observations of PKS 1830-211",
+        "quote": "Since the relative position between the NE and SW images is well-known from VLBI observations (e.g., (cite: Jin))"
+       }
+      ]
+     },
+     "citation": "(cite: Jin)"
+    },
+    {
+     "what": {
+      "value": "Inner/outer shell radius ratio of 0.7 for SN 1993J",
+      "evidence": [
+       {
+        "loc": "3.2.2 VLBI observations of SN 1993J",
+        "quote": "Here, the ratio of the inner shell radius to the outer shell radius is set to 0.7 ((cite: IMV93J))."
+       }
+      ]
+     },
+     "citation": "(cite: IMV93J)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Synthetic ALMA Cycle 0 compact-configuration data of two point sources 1 arcsec apart (20 and 29 mJy) made with simobserve",
+     "evidence": [
+      {
+       "loc": "3.1.2 Simulated interferometer",
+       "quote": "we made use of the ALMA interferometer in its compact configuration at cycle 0."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robustness 0.5 (simulated data)",
+     "evidence": [
+      {
+       "loc": "3.1.3 Results from imaging",
+       "quote": "4.68$\\times$4.15 arcsec, using *Briggs* weighting with a robustness parameter of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Fitting strategy for PKS 1830-211 absorption spectra copied from the simulation",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA observations of PKS 1830-211",
+        "quote": "Indeed, we used the same fitting strategy to extract the absorption spectra toward the NE and SW images."
+       }
+      ]
+     },
+     "from_reference": "Sect. 3.1.4 of this paper"
+    },
+    {
+     "what": {
+      "value": "Further PKS 1830-211 results deferred to a companion paper",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA observations of PKS 1830-211",
+        "quote": "More details about these results will be given elsewhere (Muller at al. in prep.)."
+       }
+      ]
+     },
+     "from_reference": "Muller et al. in prep."
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibration and CASA version for the PKS 1830-211 ALMA data",
+    "Line-free channel ranges for the PKS 1830-211 continuum fit",
+    "Initial guesses and fitted flux values for PKS 1830-211",
+    "uvmultifit version and exact code for reproduction",
+    "Random seed for the synthetic spectra"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Locate sources from continuum channels",
+    "method": {
+     "value": "Fit two delta components to line-free channels in one fit (OneFitPerChannel=False), with relative position bounded",
+     "evidence": [
+      {
+       "loc": "3.1.4 Visibility model-fitting. Locating the sources",
+       "quote": "we select a subset of frequency channels corresponding to continuum emission and fit the data with `OneFitPerChannel`=False"
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "PKS 1830-211: relative position bounded within 10 mas of VLBI astrometry",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA observations of PKS 1830-211",
+        "quote": "we bounded the fit of the relative positions to be within only 10 mas with respect to the VLBI-astrometry results."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Levenberg-Marquardt or SIMPLEX chi-square minimization",
+     "evidence": [
+      {
+       "loc": "2.2 Model-fitting algorithm",
+       "quote": "is performed using either the Levenberg-Marquardt approach (cite: Levenberg) or the SIMPLEX algorithm (cite: Nesa)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Fitted positions differ by at most about 15 mas from the true ones in simulations",
+     "evidence": [
+      {
+       "loc": "3.1.5 Visibility model-fitting. Recovering the spectra",
+       "quote": "the positions fitted in continuum mode only differ by about 15 mas (at most) from the true positions of the sources."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Recover per-channel spectra",
+    "method": {
+     "value": "Fix positions, fit flux density of each component per channel (OneFitPerChannel=True)",
+     "evidence": [
+      {
+       "loc": "3.1.5 Visibility model-fitting. Recovering the spectra",
+       "quote": "we only solve for the fluxes of the two delta components at each spectral channel (i.e., we now set `OneFitPerChannel`=True)."
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Fitting errors show no line features; typical error ~0.5 mJy",
+     "evidence": [
+      {
+       "loc": "3.1.5 Visibility model-fitting. Recovering the spectra",
+       "quote": "The typical fitting error is around 0.5 mJy for both components."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "uvmultifit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Visibility model fitting",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "We present UVMULTIFIT, a versatile library for fitting visibility data, implemented in a Python-based framework."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "4.1 (GUI tested)",
+    "used_for": {
+     "value": "Host package; simobserve and CLEAN",
+     "evidence": [
+      {
+       "loc": "3.1.2 Simulated interferometer",
+       "quote": "To generate the synthetic visibilities, we used the casa task `simobserve`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "immultifit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extension for fitting large sources using dirty image and PSF",
+     "evidence": [
+      {
+       "loc": "2.2 Model-fitting algorithm",
+       "quote": "we have developed an extension called immultifit."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Core shift of M 81*",
+    "value": "2.05",
+    "uncertainty": "0.13",
+    "units": "mas GHz^-1",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.2.2 VLBI observations of SN 1993J",
+      "quote": "The simultaneous fit to the three datasets gives us a core shift of $2.05\\pm0.13$ mas GHz$^ {-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SN 1993J shell radius",
+    "value": "3.23",
+    "uncertainty": "0.02",
+    "units": "mas",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.2.2 VLBI observations of SN 1993J",
+      "quote": "our estimate of the shell radius is $3.23\\pm0.02$ mas"
+     }
+    ]
+   },
+   {
+    "quantity": "SN 1993J spectral index",
+    "value": "-0.83",
+    "uncertainty": "0.01",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.2.2 VLBI observations of SN 1993J",
+      "quote": "the estimated spectral index is $-0.83\\pm0.01$"
+     }
+    ]
+   },
+   {
+    "quantity": "Core-shift position angle",
+    "value": "62",
+    "uncertainty": "4",
+    "units": "deg",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.2.2 VLBI observations of SN 1993J",
+      "quote": "our estimate of the position angle of the core shift is $62\\pm4$ deg."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Visibility fitting separates spectra of two sources unresolved by the beam, which the CLEAN image cannot",
+    "evidence": [
+     {
+      "loc": "3.1.3 Results from imaging",
+      "quote": "As can be seen in the figure, the two spectra in the image plane cannot be separated."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Visibility fitting can separate spectra of sources closer than the beam",
+    "experiment": "Simulated ALMA Cycle 0 data of two deltas 1 arcsec apart, two-step fit",
+    "result": "Spectra decoupled with ~0.5 mJy errors; positions within ~15 mas",
+    "finding": "uvmultifit recovers spectra that imaging cannot",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1.5 Visibility model-fitting. Recovering the spectra",
+      "quote": "the spectrum of one source is completely decoupled from that of the other"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The same approach works on real ALMA data",
+    "experiment": "Fit to ALMA B3 data of PKS 1830-211 with positions bounded by VLBI",
+    "result": "Uncorrelated NE and SW absorption spectra",
+    "finding": "The method separates the lensed images",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2.1 ALMA observations of PKS 1830-211",
+      "quote": "The spectra from both the NE and the SW image are completely uncorrelated."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Simultaneous multi-frequency fits reproduce published VLBI results",
+    "experiment": "Joint fit of SN 1993J at 1.7, 5.0, 8.4 GHz",
+    "result": "Core shift, radius and spectral index consistent with earlier work",
+    "finding": "The simultaneous fit improves precision",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2.2 VLBI observations of SN 1993J",
+      "quote": "The simultaneous fit of the data at the three different frequencies, made with uvmultifit, improves the precision of the estimated quantities in all cases."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mosaic fits require components small relative to the primary beam; no line-profile kinematics in the models",
+     "evidence": [
+      {
+       "loc": "2.2 Model-fitting algorithm",
+       "quote": "the size of each individual component must be small compared with the telescope’s primary beam"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only a single simulated configuration and no comparison against other fitting tools",
+    "ALMA real-data results are shown only as a figure with no numbers",
+    "Fitting-bias systematics (~2%) are attributed to position offsets without a full test"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Code is open and downloadable; ALMA project code given",
+    "evidence": [
+     {
+      "loc": "2.1 Installation and use",
+      "quote": "We distribute uvmultifit under the terms of the general public licence (GPL); the code is open and free."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Downloadable from nordic-alma.se/support/software-tools",
+     "evidence": [
+      {
+       "loc": "2.1 Installation and use",
+       "quote": "`http://nordic-alma.se/support/software-tools`"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "PKS 1830-211 calibration and spectral setup",
+    "SN 1993J VLBI data location",
+    "Initial parameter guesses"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for the ALMA Cycle 0 PKS 1830-211 data",
+   "score_inferred": 3,
+   "score_reason": "The simulation is reproducible from the text and the code is open, but the real ALMA analysis is thinly documented.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The ALMA results are not numeric and the recipe lacks detail."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: IMVOver)",
+     "why": "Super-resolution formula for the smallest resolvable size"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Muller et al. in prep.",
+     "why": "Full PKS 1830-211 results"
+    },
+    {
+     "citation": "(cite: IMV93J)",
+     "why": "Prior SN 1993J VLBI analysis"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f51bbfefd61160cb9b7f2d20bb306234",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:20",
+  "usage": {
+   "input_tokens": 16837,
+   "output_tokens": 5024,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042563,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 32,
+  "quotes_ok": 32,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 65,
+   "stated": 23,
+   "rate": 0.354
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,797 @@
+{
+ "bibcode": "2025MNRAS.543..862V",
+ "title": "Low-frequency spectra of neutron star + OB supergiant binaries: Does wind density drive persistent and flaring modes of accretion?",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf1525",
+ "arxiv_id": "2508.04375",
+ "fields": [
+  "stellar_physics",
+  "other"
+ ],
+ "question": "What dominates the radio/millimeter emission of neutron star + OB supergiant binaries (stellar wind vs jet), and does wind density drive the SgXB (persistent) vs SFXT (flaring) dichotomy?",
+ "alma_project_codes": [
+  "2024.1.00657.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 1 (40 GHz), Band 4 (150 GHz), Band 7 (300 GHz); NOEMA 100 GHz; VLA 6 and 10 GHz",
+  "arrays": "ALMA, NOEMA, VLA",
+  "angular_resolution": "not stated",
+  "sensitivity": "RMS sensitivities of 10-40 microJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Earlier NOEMA 100 GHz observations of IGR J18410-0535 and X1908+075, included again",
+    "evidence": [
+     {
+      "loc": "Targets",
+      "quote": "were already published in the pilot study by (cite: vandeneijnden2023mm) and are included again here"
+     }
+    ]
+   },
+   "citation": "(cite: vandeneijnden2023mm)"
+  },
+  {
+   "what": {
+    "value": "Fe K alpha equivalent widths for the sample",
+    "evidence": [
+     {
+      "loc": "Stellar wind properties in SgXBs and SFXTs",
+      "quote": "we therefore take all measurements of the Fe K$\\alpha$ EW from (cite: pradhan2018)"
+     }
+    ]
+   },
+   "citation": "(cite: pradhan2018)"
+  },
+  {
+   "what": {
+    "value": "Literature ATCA radio data of additional SgXBs (OAO 1657-415, 4U 1538-522, EXO 1722-363, IGR J16207-5129, IGR J16318-4848, IGR J16320-4751) extrapolated to 100 GHz",
+    "evidence": [
+     {
+      "loc": "Stellar wind properties in SgXBs and SFXTs",
+      "quote": "we take the SgXBs included in the radio compilation of (cite: vandeneijnden2021) and perform a similar cross-match"
+     }
+    ]
+   },
+   "citation": "(cite: vandeneijnden2021)"
+  },
+  {
+   "what": {
+    "value": "GX 301-2 (BP Cru) radio measurement",
+    "evidence": [
+     {
+      "loc": "Stellar wind properties in SgXBs and SFXTs",
+      "quote": "Finally, we add GX 301-2 (BP Cru), based on (cite: pestalozzi2009)."
+     }
+    ]
+   },
+   "citation": "(cite: pestalozzi2009)"
+  },
+  {
+   "what": {
+    "value": "Optical/UV/IR wind mass-loss rates and terminal velocities for eight targets",
+    "evidence": [
+     {
+      "loc": "How do the millimeter properties compare with literature estimates?",
+      "quote": "we compiled literature measurements of the stellar wind mass loss rates and velocities for all our targets, obtained from optical / UV spectroscopy"
+     }
+    ]
+   },
+   "citation": "(cite: hainich2020); (cite: kretschmar2021); (cite: cox2005); (cite: gimenez2016); (cite: martinez2015); (cite: reig1996)"
+  },
+  {
+   "what": {
+    "value": "Wind properties of spectral-type matched stars for four targets without direct measurements",
+    "evidence": [
+     {
+      "loc": "How do the millimeter properties compare with literature estimates?",
+      "quote": "we instead match their stellar type to the closest comparison(s) in (cite: crowther2006) and (cite: markova2008)"
+     }
+    ]
+   },
+   "citation": "(cite: crowther2006); (cite: markova2008)"
+  },
+  {
+   "what": {
+    "value": "Bow shock stand-off distances for Vela X-1 and 4U 1907+09 (0.57 pc and 0.89 pc)",
+    "evidence": [
+     {
+      "loc": "Combining millimeter with bow shock constraints",
+      "quote": "The stand-off distance is resolvable for both objects (0.57 pc and 0.89 pc, respectively)"
+     }
+    ]
+   },
+   "citation": "(cite: gvaramadze2018); (cite: gvaramadze2011)"
+  },
+  {
+   "what": {
+    "value": "Best-fit L_X-L_R relation for Be/X-ray binaries used for the jet estimate",
+    "evidence": [
+     {
+      "loc": "The origin of radio-millimeter emission",
+      "quote": "the expected jet luminosity from the best-fit $L_X-L_R$ relation for Be/X-ray binaries reported in (cite: vandeneijnden2022)"
+     }
+    ]
+   },
+   "citation": "(cite: vandeneijnden2022)"
+  },
+  {
+   "what": {
+    "value": "Distances and donor types of the twelve targets",
+    "evidence": [
+     {
+      "loc": "Targets",
+      "quote": "For four targets, other works using (a combination of) different methods provide a better constrained distance measurement"
+     }
+    ]
+   },
+   "citation": "Table 1 references (vandermeij2021, kretschmar2021, martinez2015, torrejon2010, Sguera2009, nespoli2008, negueruela2008, coleiro2013, Gaia DR3)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate NOEMA 100 GHz data",
+   "method": "CLIC standard pipeline in GILDAS with manual inspection and re-runs, per observing date; output as UV-tables per target per side band",
+   "software": [
+    "GILDAS (CLIC)"
+   ],
+   "key_parameters": [
+    "Calibration performed separately per observing date; baseline-based bandpass and amplitude for A configuration",
+    "Data dropped: 2024 March 19 segments 2 and 3 and all of 2024 March 14"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image NOEMA data and measure 100 GHz flux densities",
+   "method": "Average UV-tables, clean, measure RMS, fit a point source in the UV plane at the phase centre, merge sidebands for final flux",
+   "software": [
+    "GILDAS (MAPPING, UV_CONT, UV_MERGE, GO NOISE)"
+   ],
+   "key_parameters": [
+    "Clean region twice the primary beam FWHM, down to 2x expected RMS (2.5x with A configuration)",
+    "UV-plane point-source fit is the formal detection criterion; 3 sigma upper limits for non-detections"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure ALMA flux densities from pipeline images",
+   "method": "Import pipeline FITS images into CASA, fit a 2D Gaussian with beam-fixed shape in the image plane, repeat on four sub-bands for detections",
+   "software": [
+    "CASA v.6.6.5.31 (importfits)",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "RMS in annulus of 15-30 pixels; detection if flux at least 3x local RMS",
+    "4U 1907+09 (offset from phase centre) measured manually at the source position in the 40 and 150 GHz images"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Calibrate, image and measure VLA 6 and 10 GHz flux densities",
+   "method": "Manual CASA calibration, tclean at each frequency, imfit of a beam-shaped Gaussian; 3 sigma limits otherwise",
+   "software": [
+    "CASA v.6.6.5.31 (tclean, imfit)"
+   ],
+   "key_parameters": [
+    "Robustness varied per target and band to optimise sensitivity vs sidelobes",
+    "Flux error from RMS in a nearby source-free region"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute specific luminosities",
+   "method": "L_nu = 4 pi F_nu D^2 with errors propagated from flux and distance",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distances from Table 1; 6.9 +/- 1.7 kpc adopted for IGR J18410-0535"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit power-law SEDs",
+   "method": "MCMC fit of S = xi S0 (nu/nu0)^alpha; three versions (ALMA full bands, ALMA sub-bands, ALMA+VLA); 4U 1907+09 uses ALMA 40+150 GHz and NOEMA 100 GHz",
+   "software": [
+    "emcee (cited in acknowledgements)"
+   ],
+   "key_parameters": [
+    "S0 = 1 mJy, nu0 = 121.6 GHz (log-mean of the three ALMA centroid frequencies)",
+    "Parameter estimates reported as 16/84th percentile intervals"
+   ],
+   "assumptions": [
+    "Single power law; 4U 1700-37 10 GHz tentative point (207 +/- 87 microJy) shown but excluded from fits; NOEMA two-sub-band indices not used"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Search for short-term variability and an RRL; assess long-term variability",
+   "method": "Light curves from uv-plane fits at 10 s and 1 min, constant-fit reduced chi-square, minimum detectable fractional variability; epoch-to-epoch comparison across campaigns",
+   "software": [
+    "CASA v.6.6.5.31 (uvfit)"
+   ],
+   "key_parameters": [
+    "Light curves in 1-minute bins assessed with reduced chi-square of a constant fit"
+   ],
+   "assumptions": [
+    "Constant source; per-bin uncertainty scales with sqrt(N)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare SFXT and SgXB millimeter luminosities and Fe K alpha EW",
+   "method": "Rescale to 100 GHz luminosity and plot vs orbital period and vs weighted-average Fe K alpha EW; add literature SgXBs by extrapolating ATCA radio data to 100 GHz",
+   "software": [],
+   "key_parameters": [
+    "Observed spectral index used for rescaling, otherwise alpha = 0.6"
+   ],
+   "assumptions": [
+    "Literature ATCA upper limits extrapolated to 100 GHz with alpha = 0.6; assumes low-frequency SED is wind dominated"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Compare millimeter Mdot/v_inf proxy with literature inner-wind estimates",
+   "method": "Use 100 GHz luminosity as a proxy for Mdot/v_inf and compare to UV/optical/IR literature values",
+   "software": [],
+   "key_parameters": [
+    "100 GHz flux extrapolated from 150 GHz for ALMA targets using the measured alpha"
+   ],
+   "assumptions": [
+    "Smooth, spherically symmetric wind with mass conservation and constant velocity",
+    "Similar composition and wind temperature across targets"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Combine millimeter and bow shock constraints",
+   "method": "Intersect the Mdot-v_inf permitted regions from the millimeter flux and from the bow shock stand-off distance",
+   "software": [],
+   "key_parameters": [
+    "ISM density between 1 and 10 cm^-3 for 4U 1907+09 constraints"
+   ],
+   "assumptions": [
+    "Stand-off distances 0.57 pc and 0.89 pc from the literature"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "Order-of-magnitude jet versus wind luminosity comparison",
+   "method": "Compute analytic wind spectrum, wind capture fraction, X-ray luminosity, and jet luminosity from the Be/XRB L_X-L_R relation, as a function of Mdot",
+   "software": [],
+   "key_parameters": [
+    "1.4 Msun neutron star with assumed donor mass and orbital period, circular orbit"
+   ],
+   "assumptions": [
+    "Wind capture prescription of tejeda2025 and Be/XRB L_X-L_R relation extrapolated to SgXBs"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Targets detected in at least one millimeter band",
+   "value": "9 of 12",
+   "uncertainty": "not stated",
+   "units": "targets",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Nine out of twelve targets, including all SFXTs, are detected in at least one millimeter band"
+    }
+   ]
+  },
+  {
+   "quantity": "Targets detected in the radio (VLA, 6 targets)",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "targets",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "while in the radio, only two targets are detected"
+    }
+   ]
+  },
+  {
+   "quantity": "NOEMA targets detected at the phase centre (of 6)",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "targets",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter and radio imaging",
+     "quote": "Three out of six NOEMA targets were detected at the phase centre."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA targets significantly detected in two or three bands at the phase centre (of 6)",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "targets",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Millimeter and radio imaging",
+     "quote": "In total, five out of the six ALMA targets are significantly detected in two or three bands at the phase centre"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1700-37 ALMA flux density at 40 / 150 / 300 GHz",
+   "value": "1417 / 3729 / 5508",
+   "uncertainty": "12 / 21 / 28",
+   "units": "microJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1417\\pm12$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$3729\\pm21$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$5508\\pm28$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vela X-1 ALMA flux density at 40 / 150 / 300 GHz (row name inferred from table order)",
+   "value": "375 / 994 / 1775",
+   "uncertainty": "12 / 22 / 30",
+   "units": "microJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$375\\pm12$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$994\\pm22$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$1775\\pm30$"
+    }
+   ]
+  },
+  {
+   "quantity": "SAX J1818.6-1703 ALMA flux density at 40 / 150 / 300 GHz (row name inferred from table order)",
+   "value": "123 / 288 / 463",
+   "uncertainty": "14 / 12 / 17",
+   "units": "microJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$123 \\pm 14$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$288 \\pm 12$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$463 \\pm 17$"
+    }
+   ]
+  },
+  {
+   "quantity": "2S 0114+650 NOEMA 100 GHz flux density",
+   "value": "63",
+   "uncertainty": "11",
+   "units": "microJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$63 \\pm 11$"
+    }
+   ]
+  },
+  {
+   "quantity": "IGR J19140+0951 NOEMA 100 GHz flux density",
+   "value": "209",
+   "uncertainty": "12",
+   "units": "microJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$209 \\pm 12$"
+    }
+   ]
+  },
+  {
+   "quantity": "IGR J18483-0311 NOEMA 100 GHz flux density",
+   "value": "112",
+   "uncertainty": "9",
+   "units": "microJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$112 \\pm 9$"
+    }
+   ]
+  },
+  {
+   "quantity": "IGR J18410-0535 NOEMA 100 GHz flux density (February 2023)",
+   "value": "63.4",
+   "uncertainty": "9.6",
+   "units": "microJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "IGR J18410-0535 was detected first with NOEMA in February 2023 at $63.4\\pm9.6$ $\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "NOEMA 100 GHz 3 sigma upper limits: X1908+075 / 4U 2206+54 / IGR J00370+6122",
+   "value": "<34.4 / <36 / <33",
+   "uncertainty": "not stated",
+   "units": "microJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$<34.4$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$< 36$"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "$<33$"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 6 GHz flux density of 4U 1700-37",
+   "value": "264",
+   "uncertainty": "11",
+   "units": "microJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$264 \\pm 11$"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA flux density of Vela X-1 at 6 / 10 GHz",
+   "value": "73.7 / 91.0",
+   "uncertainty": "10.0 / 15.0",
+   "units": "microJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$73.7 \\pm 10.0$"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "$91.0\\pm15.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tentative 4U 1700-37 10 GHz VLA counterpart (not significant, excluded from fits)",
+   "value": "207",
+   "uncertainty": "87",
+   "units": "microJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Radio observations",
+     "quote": "The potential counterpart is seen at $207 \\pm 87$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index range for accurately fitted systems",
+   "value": "0.6-0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with spectral indices in the range $\\alpha =0.6-0.8$ for those systems where accurate SED fits could be performed"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha of 4U 1700-37 (ALMA full bands; with VLA)",
+   "value": "0.67; 0.70",
+   "uncertainty": "0.01; 0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.67\\pm0.01$"
+    },
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "$\\alpha =  0.70 \\pm 0.01$ from ALMA and VLA"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha of Vela X-1 (ALMA full bands; with VLA)",
+   "value": "0.78; 0.80",
+   "uncertainty": "0.02; 0.02",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "than the millimeter spectrum ($\\alpha = 0.78 \\pm 0.02$)"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$0.80 \\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha of 4U 1907+09 (ALMA 40+150 GHz and NOEMA 100 GHz)",
+   "value": "1.0",
+   "uncertainty": "+0.9/-0.7",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Low-frequency SED fitting",
+     "quote": "4U 1907+09: $\\alpha = 1.0^{+0.9}_{-0.7}$, from the millimeter data only"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha of IGR J17544-2619 (ALMA full bands)",
+   "value": "0.70",
+   "uncertainty": "+0.10/-0.07",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.70^{+0.10}_{-0.07}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha of IGR J18410-0535 (ALMA full bands)",
+   "value": "1.2",
+   "uncertainty": "+0.6/-0.5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.2^{+0.6}_{-0.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha of SAX J1818.6-1703 (ALMA full bands)",
+   "value": "0.67",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.67\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha from the two NOEMA sub-bands: 2S 0114+650 / IGR J19140+0951 / IGR J18483-0311",
+   "value": "-1.2 / -1.0 / -0.6",
+   "uncertainty": "2.1 / 0.7 / 0.9",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Low-frequency SED fitting",
+     "quote": "we find values of $\\alpha = -1.2\\pm2.1$, $\\alpha = -1.0\\pm0.7$, and $\\alpha = -0.6\\pm0.9$ for 2S 0114+650, IGR J19140+0951, and IGR J18483-0311, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Density-profile index p implied by alpha = 0.6-0.8",
+   "value": "2-2.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The origin of radio-millimeter emission",
+     "quote": "the observed range of $\\alpha = 0.6-0.8$ implies $p=2-2.25$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vela X-1 radio-only spectral index (VLA)",
+   "value": "0.36",
+   "uncertainty": "0.33",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "the Vela X-1 VLA radio spectrum appears potentially shallower ($\\alpha = 0.36 \\pm 0.33$)"
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz luminosity range of the four SFXTs",
+   "value": "6e28 to 2e29",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Stellar wind properties in SgXBs and SFXTs",
+     "quote": "between $6\\times10^{28}$ erg/s and $2\\times10^{29}$ erg/s"
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz luminosity range of the six persistently accreting systems",
+   "value": "<4.6e28 to 2.4e30",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Stellar wind properties in SgXBs and SFXTs",
+     "quote": "between $<4.6\\times10^{28}$ erg/s and $2.4\\times10^{30}$ erg/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum detectable 1-min fractional variability, 4U 1700-37 (Band 1/4/7)",
+   "value": "0.5% / 0.4% / 0.3%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "0.5% / 0.4% / 0.3% for 4U 1700-37 (Band 1/4/7)"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum detectable 1-min fractional variability, Vela X-1 (Band 1/4/7)",
+   "value": "2% / 1.5% / 1%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "2% / 1.5% / 1% for Vela X-1 (Band 1/4/7)"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum detectable 1-min fractional variability, SAX J1818.6-1703 (Band 4/7)",
+   "value": "2.1% / 1.9%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Variability in low-frequency stellar wind emission",
+     "quote": "2.1% / 1.9% for SAX J1818.6-0535 (Band 4/7)"
+    }
+   ]
+  },
+  {
+   "quantity": "Vela X-1 millimeter-based Mdot/v_inf",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "not stated (paper's Mdot/v_inf units)",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "How do the millimeter properties compare with literature estimates?",
+     "quote": "close to the millimeter value of $0.19 \\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vela X-1 Mdot from combined mm and bow shock constraints",
+   "value": "8e-7 x (n_ISM / 1 cm^-3)^(1/2)",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Combining millimeter with bow shock constraints",
+     "quote": "$\\dot{M}_{\\rm w} \\approx 8\\times10^{-7}\\text{ } (n_{\\rm ISM} / \\text{ 1 cm}^{-3})^{1/2}$ $M_\\odot/$yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Vela X-1 v_inf from combined mm and bow shock constraints",
+   "value": "4e2 x (n_ISM / 1 cm^-3)^(1/2)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Combining millimeter with bow shock constraints",
+     "quote": "$v_\\infty = 4\\times10^2\\text{ } (n_{\\rm ISM} / \\text{ 1 cm}^{-3})^{1/2}$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1907+09 Mdot from combined mm and bow shock constraints",
+   "value": "2e-6 x (n_ISM / 1 cm^-3)^(1/2)",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Combining millimeter with bow shock constraints",
+     "quote": "$\\dot{M}_{\\rm w} \\approx 2\\times10^{-6} \\text{ }(n_{\\rm ISM} / \\text{ 1 cm}^{-3})^{1/2}$ $M_\\odot/$yr"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1907+09 v_inf from combined mm and bow shock constraints",
+   "value": "3e3 x (n_ISM / 1 cm^-3)^(1/2)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Combining millimeter with bow shock constraints",
+     "quote": "$v_\\infty = 3\\times10^3\\text{ } (n_{\\rm ISM} / \\text{ 1 cm}^{-3})^{1/2}$ km/s"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Target coordinates, including the offset position used to measure 4U 1907+09 in the ALMA images",
+  "ALMA pipeline and CASA version used by the archive pipeline, ALMA flux calibrators, and which sources received pipeline self-calibration (solint, mode)",
+  "ALMA imaging parameters of the pipeline products (robust, cell size, image size, beam sizes, per-image RMS), needed to reproduce the 2D Gaussian flux fits",
+  "Exact NOEMA flux calibrators and the exact UV_FIT settings, clean mask and thresholds per target",
+  "MCMC settings for the SED fits (sampler explicitly tied to the fit, number of walkers, steps, burn-in, bounds on alpha and log xi)",
+  "The Fe K alpha equivalent widths and the weighted-average recipe used for each target in the EW versus L_mm comparison",
+  "Wind parameter values and uncertainties adopted for each target in the Mdot/v_inf comparison, and temperature and composition assumed for the free-free proxy",
+  "ISM density, peculiar velocities and stand-off distances adopted in the bow shock analysis beyond the quoted ranges",
+  "Per-target VLA robust choices only appear in the table; sidelobe/imaging parameters are not given"
+ ],
+ "missing_for_reproduction": [
+  "NOEMA and VLA raw data come from other archives (IRAM, NRAO); only ALMA project 2024.1.00657.S is linked in the ALMA archive",
+  "ALMA pipeline version and flux calibrators",
+  "MCMC configuration of the SED fits",
+  "Fe K alpha EW values and wind-parameter tables for the literature comparisons are only partly given",
+  "Reproduction package and repository were to be released at publication; contents not verified here"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "ALMA project code and pipeline-image-based recipe are stated, numeric results are tabulated, and a code and data package is promised; ALMA calibrators, pipeline version, and fit settings are missing.",
+ "rediscovery_reason": "ALMA data are public after the stated proprietary period, flux measurement and SED-fit recipes are simple (Gaussian point-source fit, power law MCMC), and numeric fluxes and spectral indices are tabulated.",
+ "source_card": "cards/2025MNRAS.543..862V/sonnet/card.md"
+}

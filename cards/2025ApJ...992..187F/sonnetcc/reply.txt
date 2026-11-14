@@ -1,0 +1,217 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "We have searched for 3-hydroxypropanal towards the Galactic Center molecular cloud G+0.693-0.027 (hereafter G+0.693)"},
+{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "It was the target of the imaging spectral line survey Reexploring Molecular Complexity with ALMA (ReMoCA) that was performed with the Atacama Large Millimeter/submillimeter Array (ALMA) between 84.1 and 114.4 GHz."}
+],
+"fields": ["astrochemistry", "milky_way_ism", "star_formation"],
+"question": {
+"value": "Can 3-hydroxypropanal be detected in interstellar sources once its laboratory rotational spectrum is measured (searches toward Sgr B2(N), NGC 6334I, IRAS 16293-2422B, G+0.693-0.027 and TMC-1)?",
+"evidence": [
+{"loc": "abstract", "quote": "With the resulting rotational parameters, we searched for this molecule in the Sagittarius B2(N) and NGC 6334I hot cores, the IRAS 16293-2422B hot corino, and the G+0.693-0.027 and TMC-1 molecular clouds."}
+]
+},
+"targets": [
+{"name": "G+0.693-0.027", "details": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "which is located in the Sgr B2 complex"}], "coordinates": "pointing alpha = 17h47m22s, delta = -28d21'27'' (position switching; off position shifted by -885'', +290'')", "redshift_or_distance": "not stated", "distance_source": "not stated"},
+{"name": "Sgr B2(N1S)", "details": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "Sagittarius (Sgr) B2(N) is a high-mass star forming protocluster located in the molecular cloud complex Sgr B2 in the central molecular zone of our Galaxy, at a distance of 8.2 kpc (cite: Reid19)."}], "coordinates": "J2000 17h47m19.87s, -28d22'19.48'' (about 1'' south of Sgr B2(N1))", "redshift_or_distance": "8.2 kpc", "distance_source": "Reid et al. 2019 (cite: Reid19)"},
+{"name": "IRAS 16293-2422B", "details": [{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "toward a position one beam offset from IRAS 16293B"}], "coordinates": "not stated", "redshift_or_distance": "not stated", "distance_source": "not stated"},
+{"name": "NGC 6334I (MM1)", "details": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "with a pointing position focused on the MM1 hot core of this source"}], "coordinates": "J2000 alpha = 17h20m53.387s, delta = -35d46m57.533s", "redshift_or_distance": "not stated", "distance_source": "not stated"},
+{"name": "TMC-1 (cyanopolyyne peak)", "details": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "The pointing position is focused on the cyanopolyyne peak of TMC-1 at (J2000)"}], "coordinates": "J2000 alpha = 04h41m42.5s, delta = +25d41m26.8s", "redshift_or_distance": "not stated", "distance_source": "not stated"}
+],
+"alma_project_codes": [],
+"data_settings": [
+{"field": "bands", "value": "NGC 6334I: ALMA Bands 4, 7, 9 and 10", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "These observations span across regions of ALMA Bands 4, 7, 9, and 10."}]},
+{"field": "frequencies_and_spectral_setup", "value": "Sgr B2(N) ReMoCA: 84.1-114.4 GHz; IRAS 16293B PILS: 329.15-362.90 GHz", "evidence": [
+{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "that was performed with the Atacama Large Millimeter/submillimeter Array (ALMA) between 84.1 and 114.4 GHz."},
+{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "The PILS data consist of a full spectral survey of the source between 329.15 and 362.90 GHz"}]},
+{"field": "angular_resolution", "value": "PILS: 0.5'' ; NGC 6334I: smoothed to 0.26'' x 0.26'' in all bands", "evidence": [
+{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "The PILS data consist of a full spectral survey of the source between 329.15 and 362.90 GHz at 0.5$''$ angular resolution using ALMA"},
+{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "to achieve a consistent angular resolution of $0.26'' \\times 0.26''$ across all frequency bands."}]},
+{"field": "sensitivity", "value": "PILS: RMS 4-5 mJy km/s; NGC 6334I: RMS 13 mJy/beam (visually determined, line-confusion limited)", "evidence": [
+{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "down to the RMS noise level of the data (4–5 mJy km s$^{-1}$)"},
+{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "we visually determined the RMS noise around the line used to derive the upper limit to be 13 mJy/beam"}]}
+],
+"lines_targeted": [
+{"species": "HOCH2CH2CHO (3-hydroxypropanal, conformer 1)", "transition": "7(0,7) - 6(1,6)", "rest_frequency": "45.6874831 GHz (Yebes Q band; one of the tentatively identified G+0.693 lines)", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "the 7$_{0,7}$ – 6$_{1,6}$ transition (located at 45.6874831 GHz)"}]}
+],
+"other_facilities": [
+{"name": "Yebes 40 m", "provided": {"value": "Q-band (31.075-50.424 GHz) spectral survey of G+0.693", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "conducted with the Yebes 40$\\,$m radiotelescope (Guadalajara, Spain)"}]}},
+{"name": "IRAM 30 m", "provided": {"value": "mm-wave windows 83.2-115.41, 132.28-140.39 and 142.00-173.81 GHz toward G+0.693", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "observations across several millimeter-wavelength frequency windows (83.2–115.41 GHz, 132.28–140.39 GHz, and 142.00–173.81 GHz), conducted with the 30$\\,$m IRAM radio telescope"}]}},
+{"name": "GBT (GOTHAM DR5)", "provided": {"value": "3.9-36.4 GHz line survey of TMC-1 used for the upper limit", "evidence": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "This line survey was observed using the Robert C. Byrd Green Bank Telescope (GBT)."}]}},
+{"name": "FLASH and Prague spectrometers (laboratory)", "provided": {"value": "130-485 GHz laboratory rotational spectrum of 3-hydroxypropanal", "evidence": [{"loc": "3.2 Spectroscopic Experiments", "quote": "The rotational spectrum of 3-hydroxypropanal was measured in the frequency region 130–485 GHz using two spectrometers."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "s-propanal Tex, vLSR and FWHM, and its column density, plus acetaldehyde column density in G+0.693", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "$T_{\\rm ex}$ = 12 K, $v_{\\rm LSR}$ = 69 km s$^{-1}$ and FWHM = 21 km s$^{-1}$, leaving the column density as the only free parameter in the fit."}]}, "citation": "(cite: sanz-novo2022a)"},
+{"what": {"value": "H2 column density of G+0.693 used for the abundance", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "adopting a $N_{\\rm H_2}$ = 1.35$\\times$10$^{23}$ cm$^{-2}$ (cite: martin2008tracing)"}]}, "citation": "(cite: martin2008tracing)"},
+{"what": {"value": "Sgr B2(N1S) column densities of related molecules (acetaldehyde, propanal, lactaldehyde, 3-hydroxypropenal, 2-hydroxyprop-2-enal) from ReMoCA", "evidence": [{"loc": "Complementary Tables", "quote": "The parameters were derived from the ReMoCA survey by (cite: sanz-novo2022a)."}, {"loc": "Complementary Tables", "quote": "The parameters were derived from the ReMoCA survey by (cite: Koucky22)."}]}, "citation": "(cite: sanz-novo2022a); (cite: Koucky22)"},
+{"what": {"value": "Propanal column density toward IRAS 16293B (2.2e15 cm-2) used for the propanal/3-hydroxypropanal ratio", "evidence": [{"loc": "5.6 Discussion of Chemical Implications", "quote": "The column density of propanal was found to be $2.2 \\times 10^{15}$ cm$^{-2}$ toward IRAS 16293B (cite: lykke_alma-pils_2017)"}]}, "citation": "(cite: lykke_alma-pils_2017)"},
+{"what": {"value": "NGC 6334I simulation parameters (Tex 225 K, vlsr -5.2 km/s, linewidth 3.0 km/s)", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "were an excitation temperature of 225 K, a $v_{lsr}$ of -5.2 km s$^{-1}$, and a linewidth of 3.0 km s$^{-1}$ (cite: Ligterink2020)"}]}, "citation": "(cite: Ligterink2020)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [
+{"field": "smoothing", "value": "NGC 6334I data smoothed with CASA imsmooth to a common resolution", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "To ensure uniformity, the data were smoothed using the standard CASA"}]},
+{"field": "final_beam", "value": "NGC 6334I: 0.26'' x 0.26'' across Bands 4, 7, 9, 10", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "to achieve a consistent angular resolution of $0.26'' \\times 0.26''$ across all frequency bands."}]},
+{"field": "final_rms", "value": "NGC 6334I: 13 mJy/beam near the line used for the upper limit", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "we visually determined the RMS noise around the line used to derive the upper limit to be 13 mJy/beam"}]}
+],
+"inherited": [
+{"what": {"value": "Sgr B2(N) ReMoCA data reduction and analysis method", "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "Details about the data reduction and the method of analysis can be found in (cite: Belloche19; 2025A&A...698A.143B)."}]}, "from_reference": "(cite: Belloche19; 2025A&A...698A.143B)"},
+{"what": {"value": "Choice of Sgr B2(N1S) position", "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "It was chosen by (cite: Belloche19) as a compromise between reducing the dust optical depth"}]}, "from_reference": "(cite: Belloche19)"},
+{"what": {"value": "Sgr B2(N1S) LTE parameters taken from acetaldehyde", "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "we assumed the same LTE parameters as acetaldehyde ($T_{ex}$ = 250 K, $\\Delta V$ = 5.0 km s$^{-1}$"}]}, "from_reference": "acetaldehyde parameters from (cite: sanz-novo2022a) via Table of Sgr B2(N1S)"},
+{"what": {"value": "PILS observational details", "evidence": [{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "(for details see (cite: jor16))"}]}, "from_reference": "(cite: jor16)"},
+{"what": {"value": "NGC 6334I ALMA observational details", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "The observational details are described in the works of (cite: mcguire_band10_2018), (cite: mcguire_methoxymethanol_2017), and (cite: fried_methoxyethanol_2024)."}]}, "from_reference": "(cite: mcguire_band10_2018); (cite: mcguire_methoxymethanol_2017); (cite: fried_methoxyethanol_2024)"},
+{"what": {"value": "G+0.693 Yebes/IRAM survey details (resolution, noise)", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "Further details on these observations, including resolution and final noise levels of the molecular line survey, are given in (cite: rivilla_first_2023) and (cite: Sanz-Novo2023)."}]}, "from_reference": "(cite: rivilla_first_2023); (cite: Sanz-Novo2023)"},
+{"what": {"value": "G+0.693 frequency ranges not covered by new observations taken from the earlier IRAM 30m survey", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "for the frequency ranges not covered by these new observations, we used data from our previous IRAM 30m survey (see (cite: Rodriguez-Almeida2021a) for additional information)."}]}, "from_reference": "(cite: Rodriguez-Almeida2021a)"},
+{"what": {"value": "Vibrational partition function approximation formalism", "evidence": [{"loc": "4.1 Ground State", "quote": "The vibrational partition function was computed using the approximation formalism presented in (cite: gordy_cooke)"}]}, "from_reference": "(cite: gordy_cooke)"}
+],
+"unstated_but_needed": [
+"No ALMA project codes or member OUS identifiers are printed; the exact ReMoCA, PILS and NGC 6334I datasets must be identified from the cited papers or the archive",
+"ALMA calibration, CASA version, self-calibration and imaging parameters for ReMoCA, PILS and NGC 6334I are only by reference",
+"Source size, beam dilution treatment and linewidth for the IRAS 16293B PILS upper limit are not given in the text (only Tex 125 K and a table not shown)",
+"Which specific 3-hydroxypropanal line was used for each upper limit and its frequency, and the exact synthetic-spectrum setup in molsim and Weeds",
+"Spectroscopic catalog is in the Supplementary Information / Lille database, not in the text; exact partition function entry used in each source",
+"G+0.693 Yebes/IRAM spectra and noise levels are inherited and not ALMA data",
+"Prose frequency 106.1483426 GHz for the 7(6,2)-6(5,1) line disagrees with the 106.1583426 GHz in the transition table"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Measure and fit the laboratory rotational spectrum",
+"method": {"value": "Synthesized 3-hydroxypropanal and measured absorption spectra 130-485 GHz with FLASH and Prague spectrometers; fitted ground state and the v27=1 and v26=1 states (the latter two in a coupled two-state fit)", "evidence": [{"loc": "3.2 Spectroscopic Experiments", "quote": "The rotational spectrum of 3-hydroxypropanal was measured in the frequency region 130–485 GHz using two spectrometers."}, {"loc": "4.2 Vibrationally Excited States", "quote": "Therefore, these states were fitted with a combined fit using SPFIT code (cite: spcat)."}]},
+"software": ["SPCAT", "SPFIT", "ASFIT", "PIFORM", "Gaussian 16", "CFOUR", "MacroModel"],
+"key_parameters": [
+{"value": "Ground-state fit: 1194 distinct transition frequencies", "evidence": [{"loc": "4.1 Ground State", "quote": "Overall, the fit contains 1194 distinct transition frequencies."}]},
+{"value": "Excited-state fit: 2172 transitions, 800 distinct lines", "evidence": [{"loc": "4.2 Vibrationally Excited States", "quote": "Ultimately, a total of 2172 transitions were included in the excited-state fit, corresponding to 800 distinct lines."}]}
+],
+"assumptions": [
+{"value": "Conformer 1 is the only conformer with notable population", "evidence": [{"loc": "2 Quantum Chemical Calculations", "quote": "Therefore, it is the only conformer that is expected to have a notable population in our spectrum."}]}
+],
+"fitting": {"value": "A reduction, Ir representation using ASFIT; excited states with Coriolis-coupled two-state fit, G_a fixed, G_b, Delta E, G_b^J, G_b^K varied; perturbed-line uncertainty extended to 100 kHz", "evidence": [{"loc": "4.2 Vibrationally Excited States", "quote": "the final fit was performed by fixing $G_a$ to its computed value while allowing $G_b$, $\\Delta E$, $G_b^{J}$, and $G_b^{K}$ to vary."}]},
+"validation": {"value": "Calculated rotational constants agree with experiment within 3%", "evidence": [{"loc": "4.1 Ground State", "quote": "The calculated rotational constants of Conformer 1 agree with the experimentally determined values within 3% for each of the functional/basis set combinations."}]}},
+{"order": 2, "goal": "Build spectroscopic catalog and partition function",
+"method": {"value": "SPCAT catalog from fitted parameters; Qrot by SPCAT summed to J=200; Qvib from approximation formalism with CCSD/aug-cc-pVDZ anharmonic frequencies; Qtot = Qvib x Qrot", "evidence": [{"loc": "4.1 Ground State", "quote": "The rotational partition function was calculated with SPCAT by simulating the spectrum up to $J$ = 200."}, {"loc": "4.1 Ground State", "quote": "The total partition function was calculated as $Q_{\\mbox{vib}} (T) \\times Q_{\\mbox{rot}} (T)$ at each temperature."}]},
+"software": ["SPCAT"], "key_parameters": [], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Search for and fit 3-hydroxypropanal in G+0.693 (Yebes/IRAM)",
+"method": {"value": "Generated LTE synthetic spectra in MADCUBA SLIM and ran AUTOFIT-SLIM nonlinear least-squares LTE fit with Tex, vLSR and FWHM fixed from s-propanal, column density free", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "Using the Spectral Line Identification and Modelling (SLIM) tool of the MADCUBA package (cite: Martin2019), we generated the expected local thermodynamic equilibrium (LTE) synthetic spectra"}, {"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "we employed the AUTOFIT-SLIM tool (cite: Martin2019) and conducted a nonlinear least-squares LTE fit of the 3-hydroxypropanal emission to the observed spectra."}]},
+"software": ["MADCUBA", "SLIM", "AUTOFIT-SLIM"],
+"key_parameters": [
+{"value": "Tex = 12 K, vLSR = 69 km/s, FWHM = 21 km/s; column density the only free parameter", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "$T_{\\rm ex}$ = 12 K, $v_{\\rm LSR}$ = 69 km s$^{-1}$ and FWHM = 21 km s$^{-1}$, leaving the column density as the only free parameter in the fit."}]}
+],
+"assumptions": [
+{"value": "Vibrational contribution to the partition function not included", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "we did not include the vibrational contribution to the partition function ($Q_{\\mbox{vib}}$) in this case."}]},
+{"value": "N(H2) = 1.35e23 cm-2 with 15% uncertainty for the abundance", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "adopting a $N_{\\rm H_2}$ = 1.35$\\times$10$^{23}$ cm$^{-2}$ (cite: martin2008tracing) and assuming an uncertainty of 15% of its value."}]}
+],
+"fitting": {"value": "Nonlinear least-squares LTE fit; priors not applicable/not stated", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "conducted a nonlinear least-squares LTE fit of the 3-hydroxypropanal emission to the observed spectra."}]},
+"validation": {"value": "Model including 3-hydroxypropanal compared to observed spectrum; most lines blended", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "Overall, the inclusion of 3-hydroxypropanal greatly enhances the agreement between the model and the observed spectra"}]}},
+{"order": 4, "goal": "Upper limit toward Sgr B2(N1S) in ALMA ReMoCA",
+"method": {"value": "Compared ReMoCA spectra to LTE synthetic spectra computed with Weeds, assuming the acetaldehyde LTE parameters and fitting only the column density", "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "The survey was analyzed by comparing the observed spectra to synthetic spectra computed assuming LTE with the software Weeds (cite: Maret11)."}, {"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "keeping only the column density as a free parameter."}]},
+"software": ["Weeds"],
+"key_parameters": [
+{"value": "Tex = 250 K, delta V = 5.0 km/s; source size 2.0'' (table)", "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "we assumed the same LTE parameters as acetaldehyde ($T_{ex}$ = 250 K, $\\Delta V$ = 5.0 km s$^{-1}$"}]}
+],
+"assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Upper limit toward IRAS 16293B in ALMA PILS",
+"method": {"value": "Synthetic spectra at Tex = 125 K compared with PILS spectra at a position one beam offset from IRAS 16293B; 3 sigma upper limit from the fits", "evidence": [{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "Adopting an excitation temperature of 125 K and calculating synthetic spectra for 3-hydroxypropanal, we do not see any indications of lines that can be attributed to the species"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Vibrational partition function at 125 K included", "evidence": [{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "The vibrational partition function at 125K was considered when determining this upper limit."}]}
+],
+"fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 6, "goal": "Upper limit toward NGC 6334I MM1 in ALMA Bands 4, 7, 9, 10",
+"method": {"value": "Smoothed all bands to 0.26'' with CASA imsmooth, simulated emission with molsim, used the unblended line with the highest S/N and found the column density giving a 3 sigma peak", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "To establish the upper limit, we identified the 3-hydroxypropanal line in the observations with the highest signal-to-noise ratio under the given simulation parameters that was not blended with the emission of other molecular species."}, {"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "We then calculated the column density necessary for this peak to reach an intensity at least three times the RMS noise level."}]},
+"software": ["CASA imsmooth", "molsim"],
+"key_parameters": [
+{"value": "Tex = 225 K, vlsr = -5.2 km/s, linewidth = 3.0 km/s", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "were an excitation temperature of 225 K, a $v_{lsr}$ of -5.2 km s$^{-1}$, and a linewidth of 3.0 km s$^{-1}$ (cite: Ligterink2020)"}]}
+],
+"assumptions": [
+{"value": "Single excitation temperature; vibrational partition function and conformational correction at 225 K applied", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "The vibrational partition function and conformational correction at 225 K was taken into account when determining the upper limit column density."}]}
+],
+"fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 7, "goal": "Upper limit toward TMC-1 in GBT GOTHAM DR5",
+"method": {"value": "Same upper-limit method as NGC 6334I applied to GOTHAM spectra with molsim", "evidence": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "The upper limit was determined using the same method as Section [5.4](#subsec:ngc)."}]},
+"software": ["molsim"],
+"key_parameters": [
+{"value": "Tex = 7 K, vlsr = 5.8 km/s, linewidth = 0.3 km/s", "evidence": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "assuming an excitation temperature of 7 K, a $v_{lsr}$ of 5.8 km s$^{-1}$, and a linewidth of 0.3 km s$^{-1}$"}]}
+],
+"assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "MADCUBA (SLIM, AUTOFIT-SLIM)", "version": "not stated", "used_for": {"value": "LTE synthetic spectra and column density fit toward G+0.693", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "we employed the AUTOFIT-SLIM tool (cite: Martin2019) and conducted a nonlinear least-squares LTE fit of the 3-hydroxypropanal emission to the observed spectra."}]}},
+{"name": "Weeds", "version": "not stated", "used_for": {"value": "Synthetic LTE spectra for the ReMoCA Sgr B2(N) analysis", "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "The survey was analyzed by comparing the observed spectra to synthetic spectra computed assuming LTE with the software Weeds (cite: Maret11)."}]}},
+{"name": "CASA imsmooth", "version": "not stated", "used_for": {"value": "Smoothing NGC 6334I ALMA data to a common beam", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "To ensure uniformity, the data were smoothed using the standard CASA"}]}},
+{"name": "molsim", "version": "v0.5.0 (reference list)", "used_for": {"value": "Simulating emission and deriving upper limits for NGC 6334I and TMC-1", "evidence": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "The molecular emission was again simulated using"}]}},
+{"name": "SPCAT/SPFIT", "version": "not stated", "used_for": {"value": "Catalog generation, partition function and coupled-state fit", "evidence": [{"loc": "4.1 Ground State", "quote": "we subsequently used these resulting files to produce a spectroscopic catalog in the standard .cat format using SPCAT"}]}},
+{"name": "ASFIT", "version": "not stated", "used_for": {"value": "Ground-state rotational fit", "evidence": [{"loc": "4.1 Ground State", "quote": "Following the fitting using ASFIT, the determined parameters were outputted by the program in the file format required for SPFIT/SPCAT."}]}},
+{"name": "PIFORM", "version": "not stated", "used_for": {"value": "Formatting output of the excited-state fit", "evidence": [{"loc": "4.2 Vibrationally Excited States", "quote": "The PIFORM code (cite: kisiel_assignment_2001) was employed to format the output."}]}},
+{"name": "Gaussian 16", "version": "Gaussian 16 (Revision C.01 in reference list)", "used_for": {"value": "Geometry optimization and force-field calculations", "evidence": [{"loc": "2 Quantum Chemical Calculations", "quote": "zero-point corrected energies were calculated using Gaussian 16 (cite: g16) with the B3LYP/6-311++G(3df,2pd) functional and basis set."}]}},
+{"name": "CFOUR", "version": "not stated", "used_for": {"value": "CCSD/aug-cc-pVDZ spectroscopic parameters", "evidence": [{"loc": "2 Quantum Chemical Calculations", "quote": "and CCSD/aug-cc-pVDZ available in the CFOUR program package (cite: cfour)"}]}},
+{"name": "MacroModel", "version": "not stated", "used_for": {"value": "Conformational search", "evidence": [{"loc": "2 Quantum Chemical Calculations", "quote": "we conducted a conformational search using a Mixed torsional/Large-Scale Low-Mode sampling method as implemented in MacroModel (cite: mohamadi_macromodelintegrated_1990)."}]}}
+],
+"results_numeric": [
+{"quantity": "N(3-hydroxypropanal) in G+0.693", "value": "8.6e12", "uncertainty": "1.4e12", "units": "cm^-2", "from_step": 3, "evidence": [{"loc": "abstract", "quote": "Rotational emission of 3-hydroxypropanal was tentatively detected toward G+0.693-0.027 and a column density of (8.6$\\pm$1.4)$\\times$10$^{12}$ cm$^{-2}$ was determined."}]},
+{"quantity": "Abundance of 3-hydroxypropanal relative to H2 in G+0.693", "value": "6.4e-11", "uncertainty": "1.4e-11", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "which translates into a molecular abundance with respect to H$_2$ of (6.4$\\pm$1.4) $\\times$10$^{-11}$"}]},
+{"quantity": "s-propanal / 3-hydroxypropanal column density ratio in G+0.693", "value": "9", "uncertainty": "2", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "6 Conclusions", "quote": "This value suggests that 3-hydroxypropanal is $9\\pm2$ times less abundant than propanal in this source."}]},
+{"quantity": "N upper limit toward Sgr B2(N1S)", "value": "<7.9e16", "uncertainty": "not stated", "units": "cm^-2", "from_step": 4, "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "3-hydroxypropanal is not detected toward Sgr B2(N1S) and an upper limit column density of $7.9 \\times 10^{16}$cm$^{-2}$ was determined."}]},
+{"quantity": "Acetaldehyde / 3-hydroxypropanal ratio limit in Sgr B2(N1S)", "value": ">8.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "5.2 Sgr B2(N) Star-Forming Region", "quote": "We find that 3-hydroxypropanal is at least 8.5 times less abundant than acetaldehyde in Sgr B2(N1S)."}]},
+{"quantity": "3 sigma N upper limit toward IRAS 16293B (Tex 125 K)", "value": "<1.5e14", "uncertainty": "not stated", "units": "cm^-2", "from_step": 5, "evidence": [{"loc": "5.3 IRAS 16293-2422B Star-Forming Region", "quote": "The $3\\sigma$ upper limit to the column density for 3-hydroxypropanal derived from these fits comes out to 1.5$\\times 10^{14}$ cm$^{-2}$ for the assumed temperature."}]},
+{"quantity": "3 sigma N upper limit toward NGC 6334I MM1", "value": "<4.2e16", "uncertainty": "not stated", "units": "cm^-2", "from_step": 6, "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "Ultimately, the 3$\\sigma$ column density upper limit was found to be $4.2 \\times 10^{16}$ cm$^{-2}$."}]},
+{"quantity": "N upper limit toward TMC-1", "value": "<8.6e11", "uncertainty": "not stated", "units": "cm^-2", "from_step": 7, "evidence": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "The upper limit column density was found to be $8.6 \\times 10^{11}$ cm$^{-2}$."}]},
+{"quantity": "Number of distinct transition frequencies in ground-state fit", "value": "1194", "uncertainty": "not stated", "units": "lines", "from_step": 1, "evidence": [{"loc": "4.1 Ground State", "quote": "Overall, the fit contains 1194 distinct transition frequencies."}]}
+],
+"findings_qualitative": [
+{"value": "In G+0.693 3-hydroxypropanal appears to be the main carrier of many observed features despite blending, supporting the tentative detection", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "3-hydroxypropanal appears to be the main carrier of most of the observed spectral features"}]},
+{"value": "Coriolis coupling between v27=1 and v26=1 perturbs a small number of transitions", "evidence": [{"loc": "4.2 Vibrationally Excited States", "quote": "resulted in some observable Coriolis coupling between the two states that impacted a fairly small number of transitions."}]}
+],
+"claims": [
+{"hypothesis": "3-hydroxypropanal is present in interstellar gas", "experiment": "LTE modelling and AUTOFIT-SLIM fit of Yebes/IRAM spectral survey of G+0.693", "result": "N = (8.6+-1.4)e12 cm-2 at Tex = 12 K; most lines blended", "finding": "Tentative first interstellar detection toward G+0.693", "support": "partially", "evidence": [{"loc": "abstract", "quote": "Rotational emission of 3-hydroxypropanal was tentatively detected toward G+0.693-0.027"}]},
+{"hypothesis": "3-hydroxypropanal is detectable in hot cores, a hot corino and a cold cloud", "experiment": "Upper-limit searches in ALMA ReMoCA (Sgr B2(N1S)), ALMA PILS (IRAS 16293B), ALMA NGC 6334I data and GBT GOTHAM (TMC-1)", "result": "No lines found; upper limits 7.9e16, 1.5e14, 4.2e16 and 8.6e11 cm-2", "finding": "Not detected in the other sources", "support": "supported", "evidence": [{"loc": "abstract", "quote": "However, this molecule was not detected in the other sources that were investigated."}]},
+{"hypothesis": "The rotational spectrum of 3-hydroxypropanal can be measured and fitted", "experiment": "Synthesis and absorption spectroscopy 130-485 GHz; ground-state and coupled v27=1/v26=1 fits", "result": "1194 distinct lines in the ground-state fit; excited-state two-state fit with RMS about 63 kHz", "finding": "Ground state well determined; excited-state Coriolis parameters only moderately constrained", "support": "supported", "evidence": [{"loc": "4.1 Ground State", "quote": "Overall, the fit contains 1194 distinct transition frequencies."}]},
+{"hypothesis": "Chemical differentiation exists between G+0.693 and IRAS 16293B", "experiment": "Compare acetaldehyde to 3-hydroxypropanal column density ratios across sources", "result": "Ratio notably greater in IRAS 16293B than in G+0.693", "finding": "Clear chemical differentiation, possibly from the elevated cosmic-ray ionization rate in the Galactic Center", "support": "partially", "evidence": [{"loc": "5.6 Discussion of Chemical Implications", "quote": "However, this ratio is notably greater in IRAS 16293B than in G+0.693, thus indicating that there is a clear chemical differentiation in these two sources."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "G+0.693 is chemically rich and propanal and propenal are abundant there", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "which makes G+0.693 a good target for the interstellar search of 3-hydroxypropanal."}]},
+{"field": "why_this_method", "value": "Upper limit set where the strongest unblended line reaches 3 times the RMS noise", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "We then calculated the column density necessary for this peak to reach an intensity at least three times the RMS noise level."}]}
+],
+"alternatives_considered_or_rejected": [],
+"limitations_admitted": [
+{"value": "Most G+0.693 lines are heavily blended with other species", "evidence": [{"loc": "5.1 G+0.693-0.027 Molecular Cloud", "quote": "As can be seen in both figures, the majority of these lines are severely contaminated by emission from other molecules previously identified in this survey,"}]},
+{"value": "TMC-1 upper limit not stringent", "evidence": [{"loc": "5.5 TMC-1 Molecular Cloud", "quote": "This, unfortunately, is not an extremely stringent column density upper limit due to the weak transitions of the molecule within the frequency range of the GOTHAM observations."}]},
+{"value": "NGC 6334I data line-confusion limited; RMS determined by eye", "evidence": [{"loc": "5.4 NGC 6334I Star-Forming Region", "quote": "Since the observations are line confusion limited, we visually determined the RMS noise around the line used to derive the upper limit to be 13 mJy/beam."}]}
+],
+"referee_caveats_inferred": [
+"The G+0.693 detection rests on a few blended lines with Tex, vLSR and FWHM borrowed from propanal rather than fit",
+"ALMA data enter only as non-detections; the three ALMA upper limits are not independently reproducible without the cited source papers",
+"NGC 6334I RMS is judged visually from a single line, so the upper limit is subjective",
+"Upper limits assume different Tex per source and one line of unspecified frequency"
+],
+"reproducibility": [],
+"code_released": [
+{"value": "Spectroscopic catalog plus ASFIT and SPCAT files in the Supplementary Information", "evidence": [{"loc": "4.1 Ground State", "quote": "The spectroscopic catalog along with both the ASFIT and SPCAT files are provided in the Supplementary Information."}]}
+],
+"missing_for_reproduction": [
+"ALMA project codes and dataset identifiers for ReMoCA, PILS and NGC 6334I",
+"Processing and imaging settings for those ALMA datasets (by reference only)",
+"Yebes/IRAM G+0.693 spectra (non-ALMA, from earlier papers)",
+"Line list and line choice used for each upper limit",
+"Synthetic-spectrum configuration files for molsim and Weeds"
+],
+"estimated_data_volume_inferred": "Large if the ALMA survey cubes (ReMoCA, PILS, NGC 6334I Bands 4/7/9/10) must be re-obtained, likely hundreds of GB to TB raw; the lab spectra and catalogs are small",
+"score_inferred": 2,
+"score_reason": "ALMA role is limited to non-detections taken from earlier survey papers with no project codes or processing details given; the headline detection uses non-ALMA Yebes/IRAM data",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA data are minor, project codes are not stated and the main numeric result (G+0.693 column density) uses non-ALMA single-dish data and a tentative detection",
+"methods_papers": [
+{"citation": "Martin2019 (cite: Martin2019)", "why": "MADCUBA SLIM / AUTOFIT-SLIM method"},
+{"citation": "Belloche19 (cite: Belloche19)", "why": "ReMoCA data reduction and Sgr B2(N1S) position"},
+{"citation": "jor16 (cite: jor16)", "why": "PILS survey description"},
+{"citation": "Maret11 (cite: Maret11)", "why": "Weeds software"},
+{"citation": "molsim (cite: molsim)", "why": "Upper-limit simulations"}
+],
+"companion_papers": [
+{"citation": "sanz-novo2022a (cite: sanz-novo2022a)", "why": "Propanal and acetaldehyde in G+0.693 and Sgr B2(N1S), source of adopted LTE parameters"},
+{"citation": "Koucky22 (cite: Koucky22)", "why": "Lactaldehyde upper limit in ReMoCA"},
+{"citation": "rivilla_first_2023 (cite: rivilla_first_2023)", "why": "Details of the G+0.693 survey"},
+{"citation": "mcguire_band10_2018 (cite: mcguire_band10_2018)", "why": "NGC 6334I ALMA observations"}
+],
+"related_projects_or_surveys": ["ReMoCA", "PILS", "GOTHAM", "QUIJOTE"]
+}

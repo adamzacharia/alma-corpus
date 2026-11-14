@@ -1,0 +1,346 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "using a sample of 51 nearby disc galaxies from the PHANGS-ALMA survey with deep high-resolution molecular gas rotation curves and surface density profiles"},
+{"loc": "Galaxy sample", "quote": "As detailed below, in selecting our sample, we included galaxies with available CO rotation curves and surface density profiles derived by the PHANGS-ALMA collaboration."}
+],
+"fields": ["nearby_galaxies"],
+"question": {"value": "Is there a relation between the specific angular momentum and the mass of molecular gas in local disc galaxies, what are its slope, intercept and scatter, and do analytic stability models or the SHARK semi-analytic model reproduce it?", "evidence": [
+{"loc": "abstract", "quote": "For the very first time, using a statistical sample, we report the discovery of a well-defined $j_{\\rm H_2}-M_{\\rm H_2}$ relation."},
+{"loc": "abstract", "quote": "using a sample of 51 nearby disc galaxies from the PHANGS-ALMA survey with deep high-resolution molecular gas rotation curves and surface density profiles"}
+]},
+"targets": [
+{"name": "PHANGS-ALMA disc galaxy sample (51 galaxies with converged j_H2; 60 before the convergence cut; 70 before profile exclusions)", "details": [
+{"loc": "Molecular angular momentum catalogue", "quote": "In both tables, Hubble types, distances, and stellar masses are from (cite: leroy_surveyphangs-alma_2021)."}
+], "coordinates": "not stated", "redshift_or_distance": "per-galaxy distances listed in Table 1", "distance_source": "Leroy et al. 2021b (PHANGS-ALMA survey paper), (cite: leroy_surveyphangs-alma_2021)"}
+],
+"alma_project_codes": [
+{"code": "2012.1.00650.S", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2012.1.00650.S"}]},
+{"code": "2015.1.00925.S", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2015.1.00925.S"}]},
+{"code": "2015.1.00956.S", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2015.1.00956.S"}]},
+{"code": "2017.1.00886.L", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2017.1.00886.L"}]},
+{"code": "2018.1.01651.S", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2018.1.01651.S"}]}
+],
+"data_settings": [
+{"field": "angular_resolution", "value": "CO(2-1) maps at ~1 arcsec resolution; rotation curves at 150 pc", "evidence": [
+{"loc": "Galaxy sample", "quote": "star-forming galaxies at $\\sim 1^{\\prime\\prime}$ resolution"},
+{"loc": "2.1 Rotation curves", "quote": "provided high-resolution (150 pc) rotation curves for 67 galaxies with ordered rotation"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "PHANGS-ALMA survey data and derived products made available by the PHANGS collaboration", "evidence": [
+{"loc": "Acknowledgements", "quote": "We thank the PHANGS collaboration for making their data available."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J = 2 -> 1", "rest_frequency": "not stated", "evidence": [
+{"loc": "Galaxy sample", "quote": "mapping CO $J = 2 \\rightarrow 1$ emission, hereafter CO($2-1$)"}
+]}
+],
+"other_facilities": [
+{"name": "H I interferometric rotation curves from the literature", "provided": {"value": "H I tilted-ring rotation velocities used to extend the radial coverage of the CO rotation curves for 8 galaxies and as the only rotation curve for NGC 253, NGC 300 and NGC 7793", "evidence": [
+{"loc": "2.1 Rotation curves", "quote": "we supplemented the CO rotation curves with literature H i rotation curves when available."},
+{"loc": "2.1 Rotation curves", "quote": "In addition, we included H i rotation curves for three galaxies without available CO rotation curves, bringing the total sample to 70 galaxies."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "CO tilted-ring rotation curves (150 pc resolution) for the PHANGS-ALMA galaxies", "evidence": [
+{"loc": "2.1 Rotation curves", "quote": "We used the rotation curves derived by (cite: lang_phangs_2020) for the PHANGS-ALMA sample, obtained using the commonly employed tilted-ring model of the observed velocity field"}
+]}, "citation": "(cite: lang_phangs_2020)"},
+{"what": {"value": "Molecular gas surface density profiles (and the four alpha_CO prescriptions) for 66 of the 70 galaxies", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "We used the molecular gas surface density profiles provided by (cite: sun_molecular_2022) for 66 of our 70 galaxies."},
+{"loc": "2.2 Gas surface densities", "quote": "provides four alternative prescriptions for the PHANGS-ALMA sample"}
+]}, "citation": "(cite: sun_molecular_2022)"},
+{"what": {"value": "Hubble types, distances, stellar masses, effective radii and SFRs of the galaxies", "evidence": [
+{"loc": "Molecular angular momentum catalogue", "quote": "In both tables, Hubble types, distances, and stellar masses are from (cite: leroy_surveyphangs-alma_2021)."},
+{"loc": "4.1 Shape and dependences", "quote": "We obtained the values for Hubble type, $R_{\\rm e}$, SFR, and $M_{\\ast}$ from (cite: leroy_surveyphangs-alma_2021)."}
+]}, "citation": "(cite: leroy_surveyphangs-alma_2021)"},
+{"what": {"value": "H I rotation curves (tilted-ring) for NGC 2903, NGC 3351, NGC 3521, NGC 3627, NGC 1365, NGC 3621, NGC 4535, NGC 4536", "evidence": [
+{"loc": "2.1 Rotation curves", "quote": "with H i rotation velocities (also from tilted-ring models) from (cite: di_teodoro_radial_2021) and (cite: ponomareva_detailed_2016)."}
+]}, "citation": "(cite: di_teodoro_radial_2021); (cite: ponomareva_detailed_2016)"},
+{"what": {"value": "H I rotation curves for NGC 253, NGC 300 and NGC 7793", "evidence": [
+{"loc": "2.1 Rotation curves", "quote": "We obtained the H i rotation curves for NGC 253 from (cite: mancera_pina_impact_2022), NGC 300 from (cite: mancera_pina_baryonic_2021), and NGC 7793 from (cite: bacchini_volumetric_2019)."}
+]}, "citation": "(cite: mancera_pina_impact_2022); (cite: mancera_pina_baryonic_2021); (cite: bacchini_volumetric_2019)"},
+{"what": {"value": "CO(2-1) to CO(1-0) line ratio R21 = 0.65", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "where $R_{21} = 0.65$ is the adopted CO(2-1) to CO(1-0) line ratio (cite: den_brok_new_2021; leroy_low-j_2022)"}
+]}, "citation": "(cite: den_brok_new_2021); (cite: leroy_low-j_2022)"},
+{"what": {"value": "Literature j_H2 and M_H2 values for 16 THINGS galaxies used for comparison", "evidence": [
+{"loc": "4.2 Comparison with previous works", "quote": "In Fig. [2](#Fig_rela) we compare our results to the study of (cite: obreschkow_fundamental_2014), who analysed 16 nearby spiral galaxies from the THINGS survey (cite: walter_things_2008)."}
+]}, "citation": "(cite: obreschkow_fundamental_2014)"},
+{"what": {"value": "Stellar mass uncertainty of 0.1 dex", "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "where we adopt an uncertainty of 0.1 dex (cite: leroy_surveyphangs-alma_2021)"}
+]}, "citation": "(cite: leroy_surveyphangs-alma_2021)"}
+],
+"simulations_or_models_as_data": [
+{"value": "SHARK (v2.0) semi-analytic model predictions of j_H2-M_H2 for disc galaxies (M_* within +-3 sigma of the observed range, B/T<0.3), compared with the data", "evidence": [
+{"loc": "5 Testing theoretical models", "quote": "To compare our $j_{\\rm H_2}-M_{\\rm H_2}$ relation with SHARK, we selected only SHARK galaxies with $M_\\ast$ within $\\pm 3 \\sigma$ of our own $M_\\ast$ range and $B/T<0.3$"},
+{"loc": "5 Testing theoretical models", "quote": "SHARK (v2.0) incorporates a range of physical processes, including halo growth and mergers, gas accretion, chemical enrichment, and stellar and AGN feedback."}
+]},
+{"value": "Analytic disc-stability relation of Romeo (2020), j_i sigma_i / (G M_i) ~ 1, rewritten for H2 and compared with the data", "evidence": [
+{"loc": "5 Testing theoretical models", "quote": "First, we compare our findings to the scaling relation driven by disc instability introduced by (cite: romeo_massive_2020)"}
+]}
+],
+"calibration": [
+{"field": "archive_products_used_as_is", "value": "Derived PHANGS-ALMA products (rotation curves and surface density profiles) used as published; no ALMA data reduction in this paper", "evidence": [
+{"loc": "Galaxy sample", "quote": "As detailed below, in selecting our sample, we included galaxies with available CO rotation curves and surface density profiles derived by the PHANGS-ALMA collaboration."}
+]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "CO rotation curves from tilted-ring modelling of the velocity field", "evidence": [
+{"loc": "2.1 Rotation curves", "quote": "We used the rotation curves derived by (cite: lang_phangs_2020) for the PHANGS-ALMA sample, obtained using the commonly employed tilted-ring model of the observed velocity field"}
+]}, "from_reference": "(cite: lang_phangs_2020)"},
+{"what": {"value": "Molecular gas surface density profiles and alpha_CO prescriptions", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "We used the molecular gas surface density profiles provided by (cite: sun_molecular_2022) for 66 of our 70 galaxies."}
+]}, "from_reference": "(cite: sun_molecular_2022)"},
+{"what": {"value": "Metallicity-dependent fiducial alpha_CO calibration", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "which follows a metallicity-dependent calibration first introduced by (cite: sun_dynamical_2020)"}
+]}, "from_reference": "(cite: sun_dynamical_2020)"},
+{"what": {"value": "Polyexponential form for the surface density profile", "evidence": [
+{"loc": "3.2 Surface density profile fitting", "quote": "we considered a polyexponential function, which has been shown to effectively capture the complex behaviour of the gas surface densities in nearby galaxies (cite: bacchini_volumetric_2019; mancera_pina_impact_2022)"}
+]}, "from_reference": "(cite: bacchini_volumetric_2019; mancera_pina_impact_2022)"},
+{"what": {"value": "Orthogonal intrinsic scatter in the power-law fit", "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "We include the orthogonal intrinsic scatter ($\\sigma_{\\perp}$) following (cite: bacchini_volumetric_2019) and (cite: mancera_pina_baryonic_2021)."}
+]}, "from_reference": "(cite: bacchini_volumetric_2019); (cite: mancera_pina_baryonic_2021)"},
+{"what": {"value": "Definition of the convergence factor R", "evidence": [
+{"loc": "3.3 Specific angular momentum", "quote": "to the extrapolated $j_{\\rm H_2}(<R)$ (see e.g. (cite: mancera_pina_baryonic_2021))."}
+]}, "from_reference": "(cite: mancera_pina_baryonic_2021)"},
+{"what": {"value": "Rotation curve extrapolation functions (arctan; multi-parameter)", "evidence": [
+{"loc": "3.1 Rotation curve fitting", "quote": "We considered two models to extrapolate $V(R)$: an arctan function (cite: courteau_optical_1997) and a more flexible multi-parameter function (cite: rix_internal_1997)."}
+]}, "from_reference": "(cite: courteau_optical_1997); (cite: rix_internal_1997)"}
+],
+"unstated_but_needed": [
+"Priors ranges / bounds for the flat priors on the rotation-curve and surface-density parameters, and the emcee setup (walkers, steps, burn-in, convergence test)",
+"Radial extent and handling of the Lang et al. (2020) rotation curve points (radii cut, error treatment) and the exact files/versions of the Lang et al. (2020) and Sun et al. (2022) products",
+"Which galaxies needed a sum of two polyexponential profiles, and the criterion for choosing one versus two",
+"Likelihood, sampler, priors and handling of x/y uncertainties for the Bayesian power-law fit with orthogonal intrinsic scatter, and how distance uncertainty enters",
+"How the H I rotation curve velocities were joined to the CO curves (radius of transition, weighting)",
+"Details of how the metallicity Z', mean CO intensity and total surface density needed for the alpha_CO prescriptions were taken from Sun et al. (2022)",
+"Selection details of the SHARK sample (catalogue version, mass cuts, how j_H2 is defined in SHARK)"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Assemble rotation curves", "method": {"value": "Use PHANGS-ALMA CO tilted-ring rotation curves; supplement with literature H I rotation curves for eight galaxies, and use H I only for three galaxies; correct to the PHANGS distance and inclination", "evidence": [
+{"loc": "2.1 Rotation curves", "quote": "we supplemented the CO rotation curves with literature H i rotation curves when available."},
+{"loc": "2.1 Rotation curves", "quote": "Where needed, we corrected the rotation curve data to match the distance and inclination reported in (cite: lang_phangs_2020) to ensure homogeneity."}
+]}, "software": [], "key_parameters": [], "assumptions": [
+{"value": "H I and CO corotate", "evidence": [{"loc": "2.1 Rotation curves", "quote": "we note that H i and CO are expected to corotate, and this has been corroborated with observations in nearby galaxies"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Including H I rotation curves changes the slope within the uncertainties of the fiducial relation", "evidence": [
+{"loc": "Including H i rotation curves", "quote": "Any resulting changes in the slope lie within the uncertainties of our fiducial relation, confirming the robustness of our approach"}
+]}},
+{"order": 2, "goal": "Derive H2 surface density profiles with a master alpha_CO", "method": {"value": "Convert CO(2-1) intensity profiles to Sigma_H2 using R21 and alpha_CO(1-0); average four alpha_CO prescriptions (S20, MW, N12, B13) into a master alpha_CO, with the standard deviation as uncertainty and standard error propagation", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "The master conversion factor is derived by averaging the four prescriptions, and we adopt the standard deviation as uncertainty."},
+{"loc": "2.2 Gas surface densities", "quote": "to derive our final $\\Sigma_{\\rm H_2}(R)$ profile, with uncertainties determined through standard error propagation."}
+]}, "software": [], "key_parameters": [
+{"value": "R21 = 0.65", "evidence": [{"loc": "2.2 Gas surface densities", "quote": "where $R_{21} = 0.65$ is the adopted CO(2-1) to CO(1-0) line ratio (cite: den_brok_new_2021; leroy_low-j_2022)"}]},
+{"value": "alpha_CO,MW = 4.35 Msun (K km/s pc^2)^-1 for the Galactic-average prescription", "evidence": [{"loc": "2.2 Gas surface densities", "quote": "\\alpha_{\\text{CO, MW}}= 4.35 \\, M_{\\odot}\\, \\mathrm{(K\\,km\\,s^{-1}\\, pc^{2})}^{-1}~."}]}
+], "assumptions": [
+{"value": "Combining the four calibrations is treated as a conservative way of capturing realistic uncertainties", "evidence": [{"loc": "2.2 Gas surface densities", "quote": "Combining the calibrations into a master $\\alpha_{\\text{CO}}$ is a conservative approach that manages to capture realistic uncertainties better"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "M_H2 from the integrated profiles agrees with the PHANGS-ALMA CO luminosities, median difference 0.03 dex", "evidence": [
+{"loc": "footnote 3", "quote": "We find great agreement when comparing our values to the CO luminosities reported in (cite: leroy_surveyphangs-alma_2021), with a median difference of 0.03 dex."}
+]}},
+{"order": 3, "goal": "Fit rotation curves with analytic functions for extrapolation", "method": {"value": "Fit an arctan function first; use the multi-parameter function for five galaxies (NGC 300, NGC 1365, NGC 2903, NGC 3521, NGC 3627) with complex kinematics", "evidence": [
+{"loc": "3.1 Rotation curve fitting", "quote": "For simplicity, we first fitted the rotation curves with the arctan function, finding satisfactory fits for most cases."},
+{"loc": "3.1 Rotation curve fitting", "quote": "For five galaxies (NGC 300, NGC 1365, NGC 2903, NGC 3521, and NGC 3627) with complex kinematics the multi-parameter function works better."}
+]}, "software": ["emcee"], "key_parameters": [], "assumptions": [], "fitting": {"value": "MCMC with emcee, flat priors on the fitting parameters", "evidence": [
+{"loc": "3.1 Rotation curve fitting", "quote": "we retrieved posterior distributions for the best-fitting parameters using a Markov chain Monte Carlo (MCMC) routine with the Python package"},
+{"loc": "3.1 Rotation curve fitting", "quote": "assuming flat priors on the fitting parameters"}
+]}, "validation": {"value": "Fitted models reproduce the observed kinematics (shown for one representative galaxy)", "evidence": [
+{"loc": "3.1 Rotation curve fitting", "quote": "Our models successfully reproduced the observed kinematics"}
+]}},
+{"order": 4, "goal": "Fit H2 surface density profiles", "method": {"value": "Fit a polyexponential profile (Sigma_0, R_Sigma, c1, c2, c3); fit a sum of two polyexponential profiles when one is not flexible enough", "evidence": [
+{"loc": "3.2 Surface density profile fitting", "quote": "In those cases, we fit instead a combination (sum) of two polyexponential profiles."}
+]}, "software": ["emcee"], "key_parameters": [], "assumptions": [
+{"value": "Gas surface densities decay exponentially at large radii", "evidence": [{"loc": "3 Computing j", "quote": "we extrapolate the observed data to capture all $j$. For this, we fit $\\Sigma(R)$ and $V(R)$ with functional forms."}]}
+], "fitting": {"value": "emcee MCMC, as for the rotation curves", "evidence": [
+{"loc": "3.2 Surface density profile fitting", "quote": "Similar to our approach with the rotation curves, we used"}
+]}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Compute j_H2 and M_H2 by Monte Carlo and apply the convergence cut", "method": {"value": "Compute j(<R) = J/M by integrating R'^2 Sigma V and R' Sigma over radius up to 50 kpc for 100000 random MCMC realisations of the rotation-curve and surface-density parameters; take medians and 1 sigma as values and uncertainties; M_H2 from integrating the denominator; exclude galaxies with convergence factor R < 0.7", "evidence": [
+{"loc": "3.3 Specific angular momentum", "quote": "calculating $j_{\\rm H_2}$ for 100000 random MCMC realisations of both the rotation curves and surface density profiles fitting parameters"},
+{"loc": "3.3 Specific angular momentum", "quote": "up to 50 kpc"},
+{"loc": "3.3 Specific angular momentum", "quote": "We establish a threshold such that galaxies with $\\mathcal{R}<0.7$ are excluded from the derivation of the molecular $j - M$ relation (see below)."}
+]}, "software": [], "key_parameters": [
+{"value": "Convergence threshold R_min = 0.7; integration limit 50 kpc; 100000 realisations", "evidence": [{"loc": "3.3 Specific angular momentum", "quote": "Applying the convergence cutoff results in a final sample of 51 galaxies with converged $j_{\\rm H_2}$ profiles."}]}
+], "assumptions": [
+{"value": "Flat rotation curves and exponentially decaying Sigma beyond the data, so extrapolation captures all of j", "evidence": [{"loc": "3 Computing j", "quote": "Measuring $j$ from insufficiently extended data can lead to its underestimation"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Results are robust to the choice of R_min (0.2, 0.7, 0.8, 0.9 give consistent fit parameters)", "evidence": [
+{"loc": "Convergence criteria", "quote": "all the fitting parameters remain consistent within their uncertainties regardless of the specific convergence criterion employed."}
+]}},
+{"order": 6, "goal": "Fit the j_H2-M_H2 power law and look for secondary dependences", "method": {"value": "Fit log j = alpha [log M_H2 - 9] + beta with orthogonal intrinsic scatter; analyse residuals against Hubble type, R_e, SFR, M_* and M_H2/M_*", "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "We include the orthogonal intrinsic scatter ($\\sigma_{\\perp}$) following (cite: bacchini_volumetric_2019) and (cite: mancera_pina_baryonic_2021)."},
+{"loc": "4.1 Shape and dependences", "quote": "The parameters considered include Hubble type, effective radius ($R_{\\rm e}$), star formation rate (SFR), stellar mass ($M_{\\ast}$), and molecular gas fraction $M_{\\rm H_2} / M_\\ast$."}
+]}, "software": [], "key_parameters": [], "assumptions": [], "fitting": {"value": "Bayesian framework; sampler, priors and likelihood not given", "evidence": [
+{"loc": "abstract", "quote": "We quantify the scaling law by fitting a power law with a Bayesian framework"}
+]}, "validation": {"value": "Slope unchanged when H I rotation curves are excluded or when four outliers are excluded (j_H2-M_* case)", "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "excluding these four galaxies does not affect the slope of either the $j_{\\rm H_2}$–$M_{\\rm H_2}$ or the $j_{\\rm H_2}$–$M_\\ast$ relations"}
+]}},
+{"order": 7, "goal": "Compare with previous observations and with models", "method": {"value": "Compare with Obreschkow & Glazebrook (2014) for five overlapping galaxies; test the Romeo (2020) disc-stability scaling; compare with SHARK v2.0 disc galaxies", "evidence": [
+{"loc": "5 Testing theoretical models", "quote": "To match this stability relation to our observed $j_{\\rm H_2}$–$M_{\\rm H_2}$ relation with a slope $\\alpha\\approx0.5$, we need the scaling $\\sigma \\propto M_{\\rm H_2}^{0.5}$"},
+{"loc": "5 Testing theoretical models", "quote": "To compare our $j_{\\rm H_2}-M_{\\rm H_2}$ relation with SHARK, we selected only SHARK galaxies with $M_\\ast$ within $\\pm 3 \\sigma$ of our own $M_\\ast$ range and $B/T<0.3$"}
+]}, "software": ["SHARK"], "key_parameters": [], "assumptions": [
+{"value": "H2 velocity dispersion scaling gamma ~ 0.05-0.2 taken from kinematic measurements in the literature", "evidence": [{"loc": "5 Testing theoretical models", "quote": "Instead, for our data, the dependence is much weaker, $\\sigma \\propto M_{\\rm H_2}^{\\gamma}$, with $\\gamma\\approx0.05-0.2$"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC posterior sampling for the rotation-curve and surface-density fits", "evidence": [
+{"loc": "3.1 Rotation curve fitting", "quote": "we retrieved posterior distributions for the best-fitting parameters using a Markov chain Monte Carlo (MCMC) routine with the Python package"}
+]}},
+{"name": "SHARK", "version": "v2.0", "used_for": {"value": "Semi-analytic model predictions compared with the observed relation", "evidence": [
+{"loc": "5 Testing theoretical models", "quote": "For the semi-analytic models, we performed a first exploration using SHARK"},
+{"loc": "5 Testing theoretical models", "quote": "SHARK (v2.0) incorporates a range of physical processes"}
+]}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "Named as used; specific role not stated", "evidence": [
+{"loc": "Acknowledgements", "quote": "as well as the Python packages NumPy (cite: oliphant_python_2007), Matplotlib (cite: hunter_matplotlib_2007), SciPy (cite: virtanen_scipy_2020), and Astropy"}
+]}},
+{"name": "SciPy", "version": "not stated", "used_for": {"value": "Named as used; specific role not stated", "evidence": [
+{"loc": "Acknowledgements", "quote": "as well as the Python packages NumPy (cite: oliphant_python_2007), Matplotlib (cite: hunter_matplotlib_2007), SciPy (cite: virtanen_scipy_2020), and Astropy"}
+]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Named as used; specific role not stated", "evidence": [
+{"loc": "Acknowledgements", "quote": "SciPy (cite: virtanen_scipy_2020), and Astropy (cite: astropy_collaboration_astropy_2018), for which we are thankful."}
+]}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "Named as used; specific role not stated", "evidence": [
+{"loc": "Acknowledgements", "quote": "as well as the Python packages NumPy (cite: oliphant_python_2007), Matplotlib (cite: hunter_matplotlib_2007), SciPy (cite: virtanen_scipy_2020), and Astropy"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Slope alpha of the log j_H2 - log M_H2 relation", "value": "0.53", "uncertainty": "0.04", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "We find the best-fitting parameters to be $\\alpha = 0.53 \\pm 0.04$, $\\beta = 2.62 \\pm 0.02$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.11 \\pm 0.02$."}
+]},
+{"quantity": "Intercept beta of the j_H2-M_H2 relation (log j in kpc km/s at log M_H2 = 9)", "value": "2.62", "uncertainty": "0.02", "units": "dex (log kpc km/s)", "from_step": 6, "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "We find the best-fitting parameters to be $\\alpha = 0.53 \\pm 0.04$, $\\beta = 2.62 \\pm 0.02$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.11 \\pm 0.02$."}
+]},
+{"quantity": "Orthogonal intrinsic scatter of the j_H2-M_H2 relation", "value": "0.11", "uncertainty": "0.02", "units": "dex", "from_step": 6, "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "We find the best-fitting parameters to be $\\alpha = 0.53 \\pm 0.04$, $\\beta = 2.62 \\pm 0.02$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.11 \\pm 0.02$."}
+]},
+{"quantity": "Number of galaxies with converged j_H2 profiles (R >= 0.7)", "value": "51", "uncertainty": "not stated", "units": "galaxies", "from_step": 5, "evidence": [
+{"loc": "3.3 Specific angular momentum", "quote": "Applying the convergence cutoff results in a final sample of 51 galaxies with converged $j_{\\rm H_2}$ profiles."}
+]},
+{"quantity": "Slope of the j_H2-M_* relation", "value": "0.66", "uncertainty": "0.08", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "The best-fitting parameters are $\\alpha = 0.66 \\pm 0.08$, $\\beta = 2.48 \\pm 0.03$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.16 \\pm 0.02$."}
+]},
+{"quantity": "Intercept of the j_H2-M_* relation (log j at log M_* = 10)", "value": "2.48", "uncertainty": "0.03", "units": "dex (log kpc km/s)", "from_step": 6, "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "The best-fitting parameters are $\\alpha = 0.66 \\pm 0.08$, $\\beta = 2.48 \\pm 0.03$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.16 \\pm 0.02$."}
+]},
+{"quantity": "Orthogonal intrinsic scatter of the j_H2-M_* relation", "value": "0.16", "uncertainty": "0.02", "units": "dex", "from_step": 6, "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "The best-fitting parameters are $\\alpha = 0.66 \\pm 0.08$, $\\beta = 2.48 \\pm 0.03$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.16 \\pm 0.02$."}
+]},
+{"quantity": "p-value of the anti-correlation between j_H2 residuals and M_H2/M_*", "value": "0.003", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "the only significant trend ($p-$value=0.003) observed in our residual analysis is a moderate anti-correlation between $\\Delta_{j_{\\rm H_2}-M_{\\rm H_2}}$ and $M_{\\rm H_2}/M_\\ast$."}
+]},
+{"quantity": "Mean (median) difference in j_H2 versus Obreschkow & Glazebrook (2014) for 5 overlapping galaxies", "value": "0.04 (0.13)", "uncertainty": "not stated", "units": "dex", "from_step": 7, "evidence": [
+{"loc": "4.2 Comparison with previous works", "quote": "the mean (median) difference in $j_{\\rm H_2}$ is 0.04 (0.13) dex, with a maximum discrepancy of approximately 0.25 dex"}
+]},
+{"quantity": "Mean (median) difference in M_H2 versus Obreschkow & Glazebrook (2014), excluding NGC 7793", "value": "0.32 (0.28)", "uncertainty": "not stated", "units": "dex", "from_step": 7, "evidence": [
+{"loc": "4.2 Comparison with previous works", "quote": "The mean (median) difference, without taking NGC 7793 into account, is 0.32 (0.28) dex, with a maximum difference of about 0.7 dex."}
+]},
+{"quantity": "Median difference between integrated M_H2 and PHANGS-ALMA CO luminosities", "value": "0.03", "uncertainty": "not stated", "units": "dex", "from_step": 2, "evidence": [
+{"loc": "footnote 3", "quote": "We find great agreement when comparing our values to the CO luminosities reported in (cite: leroy_surveyphangs-alma_2021), with a median difference of 0.03 dex."}
+]},
+{"quantity": "p-value of correlation between j_H2 and log R_e,H2 (j_H2-M_* plane)", "value": "2e-9", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "we find a robust positive correlation between $j_{\\rm H_2}$ and $\\log(R_{\\rm e, H_2})$ with a $p$-value of $2 \\times 10^{-9}$."}
+]}
+],
+"findings_qualitative": [
+{"value": "The H2 relation has a slope close to the stellar j-M relation and shallower than the H I relation", "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "The slope of the molecular relation aligns closely with that of the $j_\\ast$-$M_\\ast$ relation"}
+]},
+{"value": "Galaxies with higher M_H2/M_* tend to have lower j_H2 at fixed M_H2; no clear dependence on Hubble type or R_e; no significant SFR correlation", "evidence": [
+{"loc": "4.1 Shape and dependences", "quote": "This relationship indicates that galaxies with higher $M_{\\rm H_2}/M_\\ast$ tend to have lower $j_{\\rm H_2}$ at a given $M_{\\rm H_2}$."},
+{"loc": "4.1 Shape and dependences", "quote": "We find no clear dependence with Hubble type or $R_{\\rm e}$ in our $j_{\\rm H_2}-M_{\\rm H_2}$ relation."}
+]},
+{"value": "Four lenticular or intermediate-spiral galaxies (NGC 1317, NGC 3626, NGC 4293, NGC 4457) form a tail with low R_e,H2, j_H2 and M_H2/M_*", "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "The tail is formed by the galaxies NGC 1317, NGC 3626, NGC 4293, and NGC 4457."}
+]}
+],
+"claims": [
+{"hypothesis": "Molecular gas follows a well-defined specific angular momentum - mass relation in local disc galaxies", "experiment": "MCMC-based j_H2 and M_H2 for 51 PHANGS-ALMA galaxies fitted with a power law with orthogonal intrinsic scatter", "result": "alpha = 0.53 +- 0.04, beta = 2.62 +- 0.02, scatter 0.11 +- 0.02 dex", "finding": "A clear power-law j_H2-M_H2 relation exists with slope similar to the stellar Fall relation", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "For the very first time, using a statistical sample, we report the discovery of a well-defined $j_{\\rm H_2}-M_{\\rm H_2}$ relation."},
+{"loc": "4.1 Shape and dependences", "quote": "We find the best-fitting parameters to be $\\alpha = 0.53 \\pm 0.04$, $\\beta = 2.62 \\pm 0.02$, with an orthogonal intrinsic scatter $\\sigma_{\\perp}=0.11 \\pm 0.02$."}
+]},
+{"hypothesis": "The relation is explained by a disc-stability model (Romeo 2020)", "experiment": "Compare the required scaling sigma ~ M_H2^0.5 with literature velocity dispersions of the sample", "result": "Observed dependence is much weaker, gamma ~ 0.05-0.2", "finding": "Models purely based on disc stability only partially capture the relation", "support": "partially", "evidence": [
+{"loc": "5 Testing theoretical models", "quote": "We infer that models purely based on disc stability, although powerful tools with the virtue of being simple enough to be falsifiable and intuitive, appear to only partially capture the $j_{\\rm H_2}-M_{\\rm H_2}$ relation."}
+]},
+{"hypothesis": "The SHARK semi-analytic model reproduces the observed relation", "experiment": "Select SHARK disc galaxies (B/T<0.3, matched M_*) and compare with the data", "result": "Remarkable agreement within the observed mass and B/T ranges; SHARK predicts flattening at low and high mass", "finding": "The physics in SHARK captures the mechanisms shaping the z=0 j_H2-M_H2 relation", "support": "supported", "evidence": [
+{"loc": "5 Testing theoretical models", "quote": "which shows a remarkable agreement between the SHARK predictions and our data within our observed masses and $B/T$ ranges."}
+]},
+{"hypothesis": "The result depends on the convergence threshold and on including H I rotation curves", "experiment": "Refit with R_min = 0.2, 0.8, 0.9 and with CO-only / CO+H I / H I subsets", "result": "Slopes and intercepts consistent within uncertainties", "finding": "The relation is robust to these choices", "support": "supported", "evidence": [
+{"loc": "Convergence criteria", "quote": "all the fitting parameters remain consistent within their uncertainties regardless of the specific convergence criterion employed."},
+{"loc": "Including H i rotation curves", "quote": "Any resulting changes in the slope lie within the uncertainties of our fiducial relation, confirming the robustness of our approach"}
+]},
+{"hypothesis": "Lenticular and intermediate spirals deviate in j_H2 at fixed M_*", "experiment": "Examine the j_H2-M_* plane for outliers and their R_e,H2, gas fractions and morphology", "result": "Four galaxies show low R_e,H2, j_H2 and M_H2/M_*", "finding": "Their gas discs were altered preferentially in the outer, high-j regions, while stellar components are unaffected (interpretation, small sample)", "support": "partially", "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "However, considering that our sample is predominantly composed of galaxies with minimal bulge components, a more representative sample, including a greater number of lenticular galaxies, would be necessary to draw clearer conclusions."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Deep high-resolution CO observations of local galaxies with rotation curves and profiles available from the PHANGS-ALMA collaboration; scarcity of such CO data had left the molecular j-M relation unquantified", "evidence": [
+{"loc": "Introduction", "quote": "the picture for the molecular gas (H$_2$) is largely incomplete due to the scarcity of deep and high-resolution CO data"}
+]},
+{"field": "why_this_method", "value": "Extrapolate rotation curves and surface densities with functional forms so that all of the angular momentum is captured", "evidence": [
+{"loc": "3 Computing j", "quote": "we extrapolate the observed data to capture all $j$. For this, we fit $\\Sigma(R)$ and $V(R)$ with functional forms."}
+]},
+{"field": "how_they_decided_enough", "value": "Galaxies are kept only if the convergence factor R is at least 0.7, to avoid over-reliance on extrapolation", "evidence": [
+{"loc": "3.3 Specific angular momentum", "quote": "which allows us to avoid over-reliance on the extrapolated data."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Arctan versus multi-parameter rotation-curve function; single versus summed polyexponential surface density profile", "evidence": [
+{"loc": "3.1 Rotation curve fitting", "quote": "For five galaxies (NGC 300, NGC 1365, NGC 2903, NGC 3521, and NGC 3627) with complex kinematics the multi-parameter function works better."},
+{"loc": "3.2 Surface density profile fitting", "quote": "In those cases, we fit instead a combination (sum) of two polyexponential profiles."}
+]},
+{"value": "Four alpha_CO prescriptions combined into one master alpha_CO rather than adopting a single one", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "The master conversion factor is derived by averaging the four prescriptions, and we adopt the standard deviation as uncertainty."}
+]},
+{"value": "Six galaxies excluded because of irregular surface density profiles or a compact, non-flattening rotation curve", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "From our 66 galaxies we also excluded NGC 1512, NGC 2566, NGC 2775, NGC 4569, and NGC 4826 since their surface density profiles are too irregular to allow a robust quantification of their angular momentum."}
+]}
+],
+"limitations_admitted": [
+{"value": "alpha_CO is hard to constrain and the calibrations differ by more than their quoted uncertainties", "evidence": [
+{"loc": "2.2 Gas surface densities", "quote": "remains challenging to constrain precisely due to its sensitivity to local conditions such as gas density, temperature, and metallicity"}
+]},
+{"value": "Insufficiently extended data lead to underestimated j, so results depend on the extrapolation for non-converged galaxies", "evidence": [
+{"loc": "3 Computing j", "quote": "Measuring $j$ from insufficiently extended data can lead to its underestimation"}
+]},
+{"value": "Results for the non-converged sample are less reliable", "evidence": [
+{"loc": "Molecular angular momentum catalogue", "quote": "but we note that these results are less reliable"}
+]},
+{"value": "Sample is predominantly low-bulge galaxies with few lenticulars, so conclusions on lenticulars are limited", "evidence": [
+{"loc": "The j_H2-M_* relation", "quote": "a more representative sample, including a greater number of lenticular galaxies, would be necessary to draw clearer conclusions."}
+]}
+],
+"referee_caveats_inferred": [
+"Result rests entirely on two inherited PHANGS products (rotation curves, Sigma_H2 profiles) whose systematics (inclination, beam smearing at 150 pc, alpha_CO) are not re-examined",
+"A uniform R21 = 0.65 and an averaged alpha_CO that is not independent of its components may bias M_H2 systematically and correlate errors with j",
+"Orthogonal-scatter fit details (priors, treatment of correlated j and M_H2 errors from the same MCMC) are not given",
+"Sample is limited to star-forming main-sequence galaxies at M_H2 >~ 1e8 Msun, so the relation is not shown to hold across the galaxy population"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "PHANGS collaboration data stated as made available; ALMA project codes printed", "evidence": [
+{"loc": "Acknowledgements", "quote": "We thank the PHANGS collaboration for making their data available."}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Priors, walker settings and convergence tests for the emcee fits",
+"Likelihood and sampler for the Bayesian power-law fit with orthogonal intrinsic scatter",
+"Numerical H I rotation-curve data and how they were merged with CO curves",
+"Per-galaxy choice of function (one vs two polyexponentials)",
+"No released analysis code or catalogue file named beyond Tables 1 and 2"
+],
+"estimated_data_volume_inferred": "Small (megabytes) if starting from the published PHANGS-ALMA rotation curves and Sigma_H2 profiles; raw ALMA data for the five projects would be hundreds of GB but are not needed",
+"score_inferred": 3,
+"score_reason": "Public PHANGS products, explicit equations, sample cuts and numeric results (Tables 1-4), but fitting priors/likelihood and some per-galaxy choices are missing and no code is released",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Inputs are public PHANGS-ALMA derived products, the pipeline is a short set of integrals and fits with numeric targets (alpha 0.53, beta 2.62, 51 galaxies), though priors and H I curve details must be assumed",
+"methods_papers": [
+{"citation": "(cite: lang_phangs_2020)", "why": "Source of the CO tilted-ring rotation curves"},
+{"citation": "(cite: sun_molecular_2022)", "why": "Source of the molecular gas surface density profiles and alpha_CO prescriptions"},
+{"citation": "(cite: leroy_surveyphangs-alma_2021)", "why": "PHANGS-ALMA survey paper giving distances, stellar masses, Hubble types"},
+{"citation": "(cite: mancera_pina_baryonic_2021)", "why": "Method for j computation, convergence factor and orthogonal-scatter fit"},
+{"citation": "(cite: bacchini_volumetric_2019)", "why": "Polyexponential profile and orthogonal intrinsic scatter fit"}
+],
+"companion_papers": [
+{"citation": "(cite: obreschkow_fundamental_2014)", "why": "Earlier j_H2 measurements for 16 THINGS galaxies used for comparison"},
+{"citation": "(cite: romeo_massive_2020)", "why": "Disc-stability scaling relation tested against the data"},
+{"citation": "(cite: lagos_quenching_2024)", "why": "SHARK v2.0 semi-analytic model compared with the data"}
+],
+"related_projects_or_surveys": ["PHANGS-ALMA", "THINGS", "HERACLES", "KILOGAS (upcoming ALMA survey)"]
+}

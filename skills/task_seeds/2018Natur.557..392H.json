@@ -1,0 +1,277 @@
+{
+ "bibcode": "2018Natur.557..392H",
+ "title": "The onset of star formation 250 million years after the Big Bang",
+ "year": 2018,
+ "doi": "10.1038/s41586-018-0117-z",
+ "arxiv_id": "1805.05966",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Determine the spectroscopic redshift of the lensed z~9 galaxy MACS1149-JD1 via ALMA [OIII] 88um and test whether its IRAC 4.5um excess implies an early (z~15) star formation episode",
+ "alma_project_codes": [
+  "2015.1.00428.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.62\" x 0.52\", PA = -8.9 deg",
+  "sensitivity": "continuum rms 17.7 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST, Spitzer/IRAC photometry",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "HST and Spitzer as well as VLT/HAWK-I photometry data that support our finding are available in the IOPscience repository"
+     }
+    ]
+   },
+   "citation": "Zheng et al. 2017 (cite: 7)"
+  },
+  {
+   "what": {
+    "value": "Lensing magnification from Frontier Fields mass models",
+    "evidence": [
+     {
+      "loc": "Methods, Magnification factor",
+      "quote": "using all the mass models released in the framework of the Frontier Fields survey"
+     }
+    ]
+   },
+   "citation": "(cite: 40-46)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient kappa0 = 10 cm2/g at 250 um",
+    "evidence": [
+     {
+      "loc": "Methods, Upper limits on dust continuum",
+      "quote": "κ 0 = 10 cm 2 g − 1 at 250 µ m"
+     }
+    ]
+   },
+   "citation": "Hildebrand 1983 (cite: 12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes and search for line",
+   "method": "CLEAN with natural weighting; bin six channels to ~42 km/s; search for >3σ signal in five consecutive channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line flux, redshift, width, size",
+   "method": "Integrated flux with imfit; 1D spectrum from >3σ region fit with Gaussian; imfit deconvolved size",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Lensing effects equal for major and minor axes"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Dust continuum upper limit, LIR and dust mass",
+   "method": "Collapse all four setups, exclude line; 3σ limit; modified blackbody over 8-1000 um with CMB correction",
+   "software": [
+    "CASA imstat"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=30-60 K (fiducial 40 K), beta_d=1.5, kappa0=10 cm2/g at 250um, emitting region one beam, mu=10"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SED fitting for star formation history",
+   "method": "Custom SED code with GALAXEV, nebular emission, [OIII] flux and dust upper limit; compare single and two-component SFHs (tau=10-400 Myr)",
+   "software": [
+    "KENSFIT"
+   ],
+   "key_parameters": [
+    "Fiducial tau=100 Myr; Chabrier IMF 0.1-100 Msun; Calzetti law; escape fraction 0"
+   ],
+   "assumptions": [
+    "mu=10 fiducial"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dynamical mass",
+   "method": "Dispersion-dominated Mdyn = 6.7 sigma^2 r_1/2 / G",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[OIII] redshift",
+   "value": "9.1096",
+   "uncertainty": "0.0006",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Redshift z [OIII] 9 . 1096 ± 0 . 0006"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] peak intensity",
+   "value": "129.8",
+   "uncertainty": "17.5",
+   "units": "mJy km/s/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Methods, [OIII] 88 um line",
+     "quote": "The peak intensity of MACS1149-JD1 is 129 . 8 ± 17 . 5 mJy km s − 1 beam − 1"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] integrated flux",
+   "value": "0.229",
+   "uncertainty": "0.048",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methods, [OIII] 88 um line",
+     "quote": "0 . 229 ± 0 . 048 Jy km s − 1"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] FWHM",
+   "value": "154",
+   "uncertainty": "39",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "154 ± 39"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] luminosity",
+   "value": "7.4e7 x (10/mu)",
+   "uncertainty": "1.6e7",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "(7 . 4 ± 1 . 6) × (10 /µ )"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust continuum 3σ upper limit",
+   "value": "<5.3 x (10/mu)",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "< 5 . 3 × (10 /µ ) a (3 σ )"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass 3σ upper limit (Td=40K)",
+   "value": "<5.3e5 x (10/mu)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods, Upper limits on dust continuum",
+     "quote": "we obtain the 3 σ dust mass upper limit of 5 . 3 × 10 5 × (10 /µ ) M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "4e9 x (10/mu)^0.5",
+   "uncertainty": "3e9",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Methods, Dynamical mass",
+     "quote": "M dyn = (4 ± 3) × (10 /µ ) 0 . 5 × 10 9 M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "Formation redshift of old component",
+   "value": "15.4",
+   "uncertainty": "+2.7/-2.0",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 3",
+     "quote": "z f , old 15 . 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "1.08e9 x (10/mu)",
+   "uncertainty": "+0.53/-0.18",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Stellar mass (10 9 M ⊙ ) 1 . 08"
+    }
+   ]
+  },
+  {
+   "quantity": "Lya redshift",
+   "value": "9.0942",
+   "uncertainty": "0.0019",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Methods, VLT/X-Shooter",
+     "quote": "corresponding to Ly α at a redshift of 9 . 0942 ± 0 . 0019"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, mask, image size and cell size",
+  "Which of the SPWs/channels were used for continuum and their weighting",
+  "Exact spectral extraction region and Gaussian fit procedure details",
+  "Velocity-integrated map channel selection beyond 335.5-335.8 GHz",
+  "SED fitting grid details beyond tables, MC procedure",
+  "Lens model choice for magnification beyond fiducial mu=10"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters",
+  "Line/continuum channel selection details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and code, key numbers given, but imaging parameters missing and SED analysis model-dependent.",
+ "rediscovery_reason": "Public data, numeric line results, simple recipe for line detection.",
+ "source_card": "cards/2018Natur.557..392H/sonnet/card.md"
+}

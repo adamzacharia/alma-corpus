@@ -1,0 +1,445 @@
+{
+ "bibcode": "2021A&A...653A.166C",
+ "title": "Structured velocity field in the inner envelope of B335: ALMA observations of rare CO isotopologues",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202140754",
+ "arxiv_id": "2107.01986",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Investigate the molecular line velocity profiles of the Class 0 protostar B335 and constrain the infall motions in its circumstellar gas, in particular the origin of double-peaked C17O profiles",
+ "alma_project_codes": [
+  "2016.1.01552.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "Beam 2.6 x 1.9 arcsec (C17O, 12CO after smoothing), 2.7 x 2.0 arcsec (C18O)",
+  "sensitivity": "RMS 10.0 mJy/beam (C17O), 10.7 mJy/beam (C18O), 2016.9 (12CO, as printed)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "H2 peak column density 3.1e22 cm^-2 at 3600 au, used for the opacity estimate",
+    "evidence": [
+     {
+      "loc": "Line opacity estimation",
+      "quote": "3.1 $\\times$ 10$^{22}$ cm$^{-2}$ is the peak column density of H$_{2}$ in B335 at a radius of 3600 au ((cite: Launhardt2013))"
+     }
+    ]
+   },
+   "citation": "(cite: Launhardt2013)"
+  },
+  {
+   "what": {
+    "value": "C17O abundance relative to H2 of 5e-8",
+    "evidence": [
+     {
+      "loc": "Line opacity estimation",
+      "quote": "= 5 $\\times$ 10$^{-8}$ is the C$^{17}$O abundance relative to H$_{2}$ abundance ((cite: Thomas2008))"
+     }
+    ]
+   },
+   "citation": "(cite: Thomas2008)"
+  },
+  {
+   "what": {
+    "value": "Einstein coefficient A10 = 6.695e-8 s^-1 for C17O J=1-0",
+    "evidence": [
+     {
+      "loc": "Line opacity estimation",
+      "quote": "is the Einstein coefficient for the C$^{17}$O J = 1–0 transition ((cite: Hitran2017), (cite: Splatalogue2005))"
+     }
+    ]
+   },
+   "citation": "(cite: Hitran2017), (cite: Splatalogue2005)"
+  },
+  {
+   "what": {
+    "value": "C18O is a factor of 3.6-3.9 more abundant than C17O",
+    "evidence": [
+     {
+      "loc": "Intensity ratio",
+      "quote": "C$^{18}$O is a factor of 3.6-3.9 more abundant than C$^{17}$O ((cite: Penzias1981), (cite: Jorgensen2002))"
+     }
+    ]
+   },
+   "citation": "(cite: Penzias1981), (cite: Jorgensen2002)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature formula for optically thin regime with central heating, adapted to 164.5 pc, used as gas kinetic temperature",
+    "evidence": [
+     {
+      "loc": "Linewidths and kinetic temperature",
+      "quote": "formula for dust temperature in an optically thin regime assuming only central heating by the B335 protostar derived by (cite: Shirley2011)"
+     },
+     {
+      "loc": "Linewidths and kinetic temperature",
+      "quote": "which we adapted to the new distance of 164.5 pc"
+     }
+    ]
+   },
+   "citation": "(cite: Shirley2011); (cite: Evans2015)"
+  },
+  {
+   "what": {
+    "value": "Central object mass 0.05-0.26 Msun from infall models",
+    "evidence": [
+     {
+      "loc": "Linewidths and kinetic temperature",
+      "quote": "which are the predicted values from infall models (see (cite: Yen2015b), (cite: Evans2015), Evans et al. in prep.)"
+     }
+    ]
+   },
+   "citation": "(cite: Yen2015b), (cite: Evans2015), Evans et al. in prep."
+  },
+  {
+   "what": {
+    "value": "B335 continuum centroid position taken from high resolution maps",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "corresponding to the peak of dust continuum obtained from high resolution maps ((cite: Maury2018))"
+     }
+    ]
+   },
+   "citation": "(cite: Maury2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image the lines",
+   "method": "Standard cycle-4 calibration in CASA, continuum self-calibration, tCLEAN imaging with Briggs weighting, 12CO smoothed to the C17O/C18O resolution",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust = 2 for C17O and C18O, robust = 1 for 12CO",
+    "C17O/C18O maps from C40-2 only; 12CO from two configurations combined"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and per-pixel spectra",
+   "method": "Moment 0 maps of C17O and 12CO; C17O spectra extracted at every 0.5 arcsec pixel to build a spectral map",
+   "software": [],
+   "key_parameters": [
+    "Mean radius of 3 sigma C17O emission is 860 au"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate maximum C17O line opacity from column density",
+   "method": "Opacity tau0 from A10, nu, peak H2 column density, C17O abundance and linewidth (Jansen 1995 formula)",
+   "software": [],
+   "key_parameters": [
+    "Delta V approx 1 km/s average linewidth of the two components together"
+   ],
+   "assumptions": [
+    "H2 column density 3.1e22 cm^-2 (peak at 3600 au) and C17O abundance 5e-8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare C17O and C18O integrated intensities",
+   "method": "Beam-matched C17O and C18O maps; ratio of integrated intensities W(C17O)/W(C18O) compared with the optically thin expectation from abundances",
+   "software": [],
+   "key_parameters": [
+    "Integration ranges: C17O 4.8-6.2 and 7.4-9.4 km/s (two hyperfine components); C18O 7.4-9.4 km/s"
+   ],
+   "assumptions": [
+    "C17O and C18O probe similar conditions; differences arise only from opacity; no fractionation or selective photodissociation"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit two-component hyperfine model to C17O spectra",
+   "method": "HfS fit per pixel with two velocity components (blue and red), giving velocity, linewidth and opacity maps",
+   "software": [
+    "HfS"
+   ],
+   "key_parameters": [
+    "Per component, four free parameters: linewidth (shared by hyperfine components), main line central velocity, main line peak intensity, optical depth",
+    "Minimum signal-to-noise of 3 sigma for fitting"
+   ],
+   "assumptions": [
+    "C17O (1-0) expected to be optically thin"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Kinetic temperature, thermal and non-thermal linewidths",
+   "method": "Tk(r) from a central-heating temperature profile at 100 and 860 au; thermal linewidth for C17O (29.01 amu); non-thermal part from v_obs^2 = v_th^2 + v_nonth^2",
+   "software": [],
+   "key_parameters": [
+    "Radii 100 au (about half the FWHM beam) to 860 au"
+   ],
+   "assumptions": [
+    "Dust and gas in thermal equilibrium, coupled by collisions at densities above 1e5 cm^-3"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Estimate free-fall velocity difference between 100 and 860 au",
+   "method": "Difference of free-fall velocities v_ff(r1) - v_ff(r2) with enclosed mass = envelope mass (from 110 GHz continuum) plus central object mass",
+   "software": [],
+   "key_parameters": [
+    "Central object mass 0.05-0.26 Msun adopted from infall models"
+   ],
+   "assumptions": [
+    "Maximum velocity difference along the line of sight occurs at the core center; envelope mass uses standard dust assumptions"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate flux missed by the interferometer",
+   "method": "ALMA C18O map smoothed to the Nobeyama 45 m beam, spectrum over one beam, flux converted to brightness temperature (Rayleigh-Jeans) and compared with single-dish data; C17O missing flux then inferred to be smaller",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "C17O is much more compact than C18O so its missing flux is smaller"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean radius of 3 sigma C17O emission",
+   "value": "860",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "The mean radius of the 3$\\sigma$ emission is 860 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak C17O opacity at the source center (column-density estimate)",
+   "value": "0.77",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Line opacity estimation",
+     "quote": "$\\tau_{0}$ = 0.77, which corresponds to an opacity typical from an optically thin line"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity ratio W(C17O)/W(C18O): range and mean",
+   "value": "0.15 to 0.50, mean 0.28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Intensity ratio",
+     "quote": "with values ranging from 0.15 to 0.50 and a mean value centered at 0.28"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean average velocity of blue and red components",
+   "value": "8.1 and 8.6",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modeling of the molecular line profiles",
+     "quote": "The mean average, velocity for the two components are 8.1 and 8.6 km s$^{-1}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity dispersion of blue and red components",
+   "value": "0.7 and 0.5",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modeling of the molecular line profiles",
+     "quote": "show a mean velocity dispersion for the two components of 0.7 and 0.5 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average opacity of blue and red components from HfS",
+   "value": "0.464 and 0.474",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modeling of the molecular line profiles",
+     "quote": "is found to be $\\tau_{bs}$ = 0.464 and $\\tau_{rs}$ = 0.474, for the blue- and red-shifted components respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas kinetic temperature at 100 au and 860 au",
+   "value": "46 and 20",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Linewidths and kinetic temperature",
+     "quote": "with values in range of T$_{k}$(100 au) = 46 K and T$_{k}$(860 au) = 20 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal C17O linewidth at 100 au and 860 au",
+   "value": "0.27 and 0.17",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Linewidths and kinetic temperature",
+     "quote": "(100 au) = 0.27 km s$^{-1}$ and"
+    },
+    {
+     "loc": "Linewidths and kinetic temperature",
+     "quote": "(860 au) = 0.17 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed total FWHM, blue and red components",
+   "value": "0.78 and 0.56",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Observed total | 0.78 | 0.56 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-thermal FWHM at 100 au, blue and red components",
+   "value": "0.73 and 0.48",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Non-thermal (100au) | 0.73 | 0.48 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-thermal FWHM at 860 au, blue and red components",
+   "value": "0.76 and 0.52",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Non-thermal (860au) | 0.76 | 0.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope mass within 860 au and 100 au",
+   "value": "~0.16 and ~0.012",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Linewidths and kinetic temperature",
+     "quote": "$\\sim$0.16 $M_\\odot$ and $\\sim$0.012 $M_\\odot$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Total enclosed mass within 100 au and 860 au",
+   "value": "0.06-0.16 and 0.27-0.41",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Linewidths and kinetic temperature",
+     "quote": "the total mass enclosed within a 100 and 860 au radii are in the 0.06–0.16 $M_\\odot$ and 0.27–0.41 $M_\\odot$ ranges, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fall velocity difference between 100 and 860 au",
+   "value": "0.46 - 1.01",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Linewidths and kinetic temperature",
+     "quote": "is 0.46 - 1.01 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak single-dish-matched C18O main-beam temperature (ALMA smoothed to 16 arcsec)",
+   "value": "0.79",
+   "uncertainty": "0.08",
+   "units": "K",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Possible origins of the observed gas motions",
+     "quote": "= 0.79 $\\pm$ 0.08 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of single-dish C18O flux recovered by ALMA",
+   "value": "around 14",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Possible origins of the observed gas motions",
+     "quote": "This means that our ALMA observations are recovering around 14 $\\%$ of the total flux detected with single-dish data."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration parameters (continuum channels/spws, solints, number of iterations, solution mode)",
+  "How the continuum was formed and which channels were line-free; how continuum was subtracted from line cubes (task, order)",
+  "tclean parameters: deconvolver, niter, threshold, masks, cell size, image size, primary-beam correction, spectral gridding",
+  "Smoothing kernel and method used to match 12CO to the C17O/C18O beam, and how beam-matched C17O/C18O maps were made",
+  "12CO RMS of 2016.9 mJy/beam looks like a unit error; true value not given",
+  "Initial guesses, hyperfine component setup and rest frequencies/relative intensities used in HfS, and how the 3 sigma threshold was applied per pixel",
+  "Dust opacity, dust temperature and gas-to-dust ratio behind the 'standard assumptions' for envelope mass within 100 and 860 au",
+  "Exact regions and apertures used for averaged linewidths, opacities and the missing flux comparison; how the 860 au 3 sigma radius was measured",
+  "Which execution blocks and how many were combined for each configuration, and calibration flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration, continuum definition and continuum subtraction settings",
+  "tclean parameters other than robust (masks, thresholds, cell and image size, spectral grid)",
+  "HfS initial guesses and per-pixel acceptance criteria",
+  "Dust and gas assumptions for the envelope mass; 'Evans et al. in prep.' values",
+  "Corrected 12CO RMS and smoothing details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, lines, configurations, robust values and CASA version are given and numbers are clear, but self-calibration, continuum subtraction, clean settings and HfS setup are missing.",
+ "rediscovery_reason": "Cycle 4 data from project 2016.1.01552.S (public status not stated in the paper but long past the proprietary period); the recipe is short and the main results (opacities, ratio, linewidths) are numeric.",
+ "source_card": "cards/2021A%26A...653A.166C/sonnet/card.md"
+}

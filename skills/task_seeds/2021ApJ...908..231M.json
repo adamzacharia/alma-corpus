@@ -1,0 +1,259 @@
+{
+ "bibcode": "2021ApJ...908..231M",
+ "title": "Compact Molecular Gas Distribution in Quasar Host Galaxies",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abd7f6",
+ "arxiv_id": "2101.00764",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What are the spatial distribution and kinematics of molecular gas (CO 2-1) in the host galaxies of six low-z PG quasars?",
+ "alma_project_codes": [
+  "2018.1.00006.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m array (43 antennas) plus Cycle 5 ACA",
+  "angular_resolution": "beam ~0.4''-1.4''",
+  "sensitivity": "RMS 0.34-0.59 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ACA-only CO(2-1) fluxes and line ratio L'CO(2-1)/L'CO(1-0)=0.62",
+    "evidence": [
+     {
+      "loc": "2.3 CO(2–1) Luminosity and Molecular Gas Estimates",
+      "quote": "adopting a luminosity ratio $L^\\prime_{\\rm CO(2-1)} / L^\\prime_{\\rm CO(1-0)} = 0.62$, the median value found by (cite: Shangguan2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Shangguan2020)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass, L_IR, dust-based gas masses of hosts",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(8) Total infrared luminosity of the host galaxy (cite: Shangguan2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Shangguan2018)"
+  },
+  {
+   "what": {
+    "value": "EDGE-CALIFA CO sizes and gas masses",
+    "evidence": [
+     {
+      "loc": "2.4 Comparison Sample",
+      "quote": "We only consider the EDGE-CALIFA galaxies with measured CO sizes (69 systems)."
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto2017)"
+  },
+  {
+   "what": {
+    "value": "xCOLD GASS nearby galaxy sample",
+    "evidence": [
+     {
+      "loc": "2.4 Comparison Sample",
+      "quote": "we also include the larger sample of nearby galaxies from xCOLD GASS (cite: Saintonge2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Saintonge2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate and image CO(2-1)",
+   "method": "CASA pipeline, CONCAT 12m+ACA, UVCONTSUB, TCLEAN with auto-multithresh",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, 11 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Pixelwise Gaussian line fitting and moment maps",
+   "method": "Fit 1-3 Gaussians per pixel with adaptive binning; BIC model selection at 5 sigma; Monte Carlo errors (300 iterations)",
+   "software": [
+    "LMFIT"
+   ],
+   "key_parameters": [
+    "initial width 20 km/s, max 500 km/s, S/N>=3 mask"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "CO luminosity and molecular gas mass",
+   "method": "Solomon & Vanden Bout L'CO formula, r21=0.62, alpha_CO conversion",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 3.1 Msun (K km/s pc2)^-1, 0.3 dex uncertainty; L'CO(2-1)/L'CO(1-0)=0.62"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Sérsic fit to intensity maps",
+   "method": "2D Sérsic convolved with beam, 7 free parameters, MCMC",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Oblate spheroid with intrinsic thickness q0=0.14"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Kinemetry of velocity maps",
+   "method": "Tilted-ring Fourier decomposition; k5/k1 threshold 0.02; bootstrap 100 times",
+   "software": [
+    "KINEMETRY"
+   ],
+   "key_parameters": [
+    "center and axis ratio fixed from Sérsic fit; ring width = half beam FWHM; 75% pixel sampling"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Rotation velocity and dispersion",
+   "method": "Extract profiles along kinematic major axis; mask beam-smeared central region where gradient < 11 km/s; average, correct for inclination",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Line asymmetry non-parametric analysis",
+   "method": "Measure v05, v50, v95 of model line; Delta v = Δv+ + Δv-; correlate with v_LOS",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median CO half-light radius",
+   "value": "1.8",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Compact Molecular Gas Distribution",
+     "quote": "$R_{\\rm 1/2} = 0.9 - 3.7$ kpc, with a median value of 1.8 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas surface density",
+   "value": ">~22",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Compact Molecular Gas Distribution",
+     "quote": "the sample is characterized by $\\Sigma_{\\rm H_2} \\gtrsim 22$ $M_\\odot$ pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "v_rot/sigma_v range",
+   "value": "9-42",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Regular Motions and Velocity Dispersion",
+     "quote": "We find $v_{\\rm rot} / \\sigma_v = 9$–42 for the five analyzed host galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Sérsic index",
+   "value": "0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "disk-like (Sérsic index $n = 0.87$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic-photometric PA misalignment",
+   "value": "~34",
+   "uncertainty": "26",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "misaligned on average by $\\sim 34 \\pm 26^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "PG 0050+124 velocity dispersion",
+   "value": "36",
+   "uncertainty": "27",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 0050+124 | $304$ | 0.010 | $337 \\pm 92$ | $36 \\pm 27$"
+    }
+   ]
+  },
+  {
+   "quantity": "Concatenated vs ACA flux excess (four sources)",
+   "value": "~12 average (9-24)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Sensitivity of the Concatenated Data Compared to the ACA Data",
+     "quote": "ranging from $\\sim 9\\%$ to $24\\%$, with an average of $\\sim 12\\%$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges and ACA flagged channels",
+  "Weights/relative scaling used when concatenating 12-m and ACA",
+  "CASA version and pipeline version",
+  "tclean niter/threshold, image size",
+  "Sampler settings and priors for the emcee Sérsic fit (walkers, steps, burn-in)",
+  "Precise flux calibrator fluxes",
+  "Exact definition of BIC 5-sigma probability threshold"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Line-free channel lists",
+  "emcee configuration",
+  "ACA data from Shangguan2020 program"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data in archive and imaging parameters given, but versions, MCMC settings and channel selections are missing.",
+ "rediscovery_reason": "Data from the archive (likely public), clear recipe, numeric results such as R1/2 and v_rot/sigma.",
+ "source_card": "cards/2021ApJ...908..231M/sonnet/card.md"
+}

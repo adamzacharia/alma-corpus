@@ -1,0 +1,456 @@
+{
+ "bibcode": "2022MNRAS.512.2371H",
+ "title": "Unveiling the main sequence to starburst transition region with a sample of intermediate redshift luminous infrared galaxies",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac520",
+ "arxiv_id": "2202.10576",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Establish the molecular gas distribution, star formation efficiency, dynamics, and star formation triggers of intermediate-redshift (0.28 < z < 0.44) U/LIRGs located in the transition region between regular main sequence star-forming galaxies and starbursts.",
+ "alma_project_codes": [
+  "2016.1.00896.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m Array (43 antennas)",
+  "angular_resolution": "0.31'' (0.31'' x 0.28'' beam, ~1.5 kpc) for ALMA CDFS1; 0.72'' - 1.01'' (~3.7 - 5.7 kpc) for NOEMA",
+  "sensitivity": "0.91 mJy/beam per 20 km s^-1 channel (CDFS1 ALMA); 0.55 - 0.71 mJy/beam (NOEMA targets)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Parent sample selection, L_IR, dust temperatures T_dust, single-dish CO measurements, and SPIRE-FTS spectra.",
+    "evidence": [
+     {
+      "loc": "The Sample",
+      "quote": "Our six targets, FLS02 (2 merging galaxies), CDFS1 (2 merging galaxies), SWIRE7 and SWIRE5, were selected from the sample of intermediate redshift U/LIRGs presented in (cite: magdis_far-infrared_2014) (hereafter M14), (cite: rigopoulou_herschel_2014) and (cite: pereira-santaella_optical_2019) (hereafter PS19)."
+     },
+     {
+      "loc": "CO(3-2) and Continuum Emission",
+      "quote": "The IR luminosity from (cite: magdis_far-infrared_2014)."
+     },
+     {
+      "loc": "CO(3-2) and Continuum Emission",
+      "quote": "The dust temperature from (cite: magdis_far-infrared_2014)."
+     }
+    ]
+   },
+   "citation": "(cite: magdis_far-infrared_2014)"
+  },
+  {
+   "what": {
+    "value": "Ground-based I-band integral field spectroscopy, optical images, SFR_IR, and [NII] 6583 A / Halpha (N2) ratios for gas-phase oxygen abundance.",
+    "evidence": [
+     {
+      "loc": "CO(3-2) and Continuum Emission",
+      "quote": "The IR star formation rate from (cite: pereira-santaella_optical_2019)."
+     },
+     {
+      "loc": "CO(3-2) and Continuum Emission",
+      "quote": "The gas phase oxygen abundance obtained from the N2 ratio presented in (cite: pereira-santaella_optical_2019)."
+     },
+     {
+      "loc": "Molecular Gas Mass",
+      "quote": "For the metallicity of our sample, we use our sample’s \\[NII\\] 6583 Å / H$\\alpha$ ratios (N2) reported in PS19 and converted these to 12 + log(O/H) using the (cite: pettini_\\[o_2004) correlation."
+     }
+    ]
+   },
+   "citation": "(cite: pereira-santaella_optical_2019)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of warm starbursting ULIRGs at 0.2 < z < 0.6 with CO molecular gas masses and SFEs.",
+    "evidence": [
+     {
+      "loc": "Molecular Gas and SFR at 0.2 < z < 0.6",
+      "quote": "(cite: combes_galaxy_2011) presented CO observations for a sample of ULIRGs at 0.2 $<$ z $<$ 0.6 which were previously detected at 60 $\\mu$m from IRAS and ISO observations."
+     },
+     {
+      "loc": "Molecular Gas and SFR at 0.2 < z < 0.6",
+      "quote": "Molecular gas masses and SFEs have been determined in both the cold LIRG and warm ULIRG samples ((cite: combes_galaxy_2011), (cite: lee_fine_2017)), and these results along with our sample are plotted in Figure 7."
+     }
+    ]
+   },
+   "citation": "(cite: combes_galaxy_2011)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of cold LIRGs at 0.25 < z < 0.65 with molecular gas masses and SFEs.",
+    "evidence": [
+     {
+      "loc": "Molecular Gas and SFR at 0.2 < z < 0.6",
+      "quote": "(cite: lee_fine_2017) investigated a sample of LIRGs, at 0.25 $<$ z $<$ 0.65, that have lower luminosities than our sample (log(L$_{\\rm IR}$ / L$_{\\odot}$) = 11.2 - 11.6) and are located on, or just above, the upper boundary of the MS (hereafter referred to as cold LIRGs)."
+     }
+    ]
+   },
+   "citation": "(cite: lee_fine_2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create CO(3-2) and continuum intensity (0th moment) maps and measure total CO fluxes",
+   "method": "Apply a 3sigma cut in each channel of the naturally weighted CO(3-2) cube and integrate across the total line width; apply a 3sigma cut to the continuum map.",
+   "software": [],
+   "key_parameters": [
+    "3sigma threshold per channel for CO(3-2) and 3sigma cut on continuum map"
+   ],
+   "assumptions": [
+    "Rest ~0.9 mm continuum arises from Rayleigh-Jeans dust emission and targets are star-formation dominated."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute CO(3-2) line luminosities and molecular gas masses",
+   "method": "Convert integrated CO(3-2) flux to line luminosity L'_CO(3-2) using Solomon et al. (1997) formula, then multiply by metallicity-dependent conversion factor alpha_CO(3-2)(Z) = alpha_0 * chi(Z) * R_1-3.",
+   "software": [],
+   "key_parameters": [
+    "alpha_0 = alpha_MW = 4.36 +/- 0.9 M_sun / (K km s^-1 pc^2), R_1-3 = 1.9, chi(Z) = 10^(-1.27 * (12 + log(O/H) - 8.67))"
+   ],
+   "assumptions": [
+    "H0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7; Chabrier (2003) IMF; chi(Z) = 1 for SWIRE7."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate star formation surface densities, molecular gas surface densities, SFE, and depletion times",
+   "method": "Measure star-forming area A_cont from pixels with SNR > 3sigma in continuum map, mask CO(3-2) cube to A_cont and integrate over velocity channels with no threshold, then compute Sigma_mol = M_mol(masked)/A_cont, Sigma_SFR = SFR_IR/A_cont, and tau_dep = 1/SFE.",
+   "software": [],
+   "key_parameters": [
+    "3sigma continuum contour mask A_cont; 300 km s^-1 assumed linewidth for SWIRE7 3sigma upper limit"
+   ],
+   "assumptions": [
+    "SFR_IR approximates total SFR; for FLS02-S A_cont equals the CO(3-2) emitting region; for FLS02 system SFR_IR is apportioned between N and S by relative continuum flux; all CDFS1 SFR_IR arises from CDFS1-W."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit 3D tilted-ring kinematic models to the CO(3-2) data cubes",
+   "method": "Use 3DBAROLO SEARCH algorithm to mask emission and fit a 3D tilted-ring thin-disk model convolved with the synthesized beam to derive v_rot and sigma_gas.",
+   "software": [
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "SEARCH 5sigma initial cut with 3sigma adjoining threshold; ring width 0.3'' - 0.4''; centre fixed to continuum peak; v_rad = 0; v_sys = 0 at centre; PA and inclination fixed after initial guess; v_rot and sigma_gas free"
+   ],
+   "assumptions": [
+    "Thin disk scale height and zero radial velocity."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare sample M_mol, SFE, and L_IR with intermediate-z cold LIRGs and warm ULIRGs",
+   "method": "Combine sample with Combes et al. (2011) warm ULIRGs and Lee et al. (2017) cold LIRGs and compute Pearson correlation between log(SFE) and log(L_IR).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) total integrated flux S_CO*Delta_v (CDFS1-W)",
+   "value": "13.42",
+   "uncertainty": "1.11",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| CDFS1-W | 13.42 $\\pm$ 1.11 | 6.26 $\\pm$ 0.52 | 9.71 $\\pm$ 0.66 | 4.53 $\\pm$ 0.31 | 11.79 | 29 | 91 | 9.08 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) total line luminosity L'_CO (CDFS1-W)",
+   "value": "6.26",
+   "uncertainty": "0.52",
+   "units": "10^9 K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| CDFS1-W | 13.42 $\\pm$ 1.11 | 6.26 $\\pm$ 0.52 | 9.71 $\\pm$ 0.66 | 4.53 $\\pm$ 0.31 | 11.79 | 29 | 91 | 9.08 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) masked integrated flux S_CO*Delta_v (CDFS1-W)",
+   "value": "9.71",
+   "uncertainty": "0.66",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| CDFS1-W | 13.42 $\\pm$ 1.11 | 6.26 $\\pm$ 0.52 | 9.71 $\\pm$ 0.66 | 4.53 $\\pm$ 0.31 | 11.79 | 29 | 91 | 9.08 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) total integrated flux S_CO*Delta_v (FLS02-N)",
+   "value": "4.50",
+   "uncertainty": "0.33",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| FLS02-N | 4.50 $\\pm$ 0.33 | 4.93 $\\pm$ 0.36 | 4.39 $\\pm$ 0.29 | 4.81 $\\pm$ 0.32 | 12.41 | 42 | 353 | 8.87 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) total integrated flux S_CO*Delta_v (FLS02-S)",
+   "value": "1.34",
+   "uncertainty": "0.18",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| FLS02-S | 1.34 $\\pm$ 0.18 | 1.47 $\\pm$ 0.20 | 1.34 $\\pm$ 0.18 | 1.47 $\\pm$ 0.20 | \\- | \\- | 27 | 8.82 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) total integrated flux S_CO*Delta_v (SWIRE5)",
+   "value": "13.36",
+   "uncertainty": "0.87",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| SWIRE5 | 13.36 $\\pm$ 0.87 | 10.18 $\\pm$ 0.66 | 8.94 $\\pm$ 0.56 | 6.81 $\\pm$ 0.43 | 12.06 | 33 | 170 | 8.77 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated flux upper limit S_CO*Delta_v (SWIRE7)",
+   "value": "<0.26",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO(3-2) and Continuum Emission",
+     "quote": "| SWIRE7 | $<$0.26 | $<$0.26 | $<$0.26 | $<$0.26 | 12.10 | 36 | 190 | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol (CDFS1-W)",
+   "value": "1.57",
+   "uncertainty": "0.35",
+   "units": "10^10 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| CDFS01-W | 2.51 $\\pm$ 0.52 | 1.57 $\\pm$ 0.35 | 1.14 $\\pm$ 0.25 | 0.48 | 3.37 $\\pm$ 0.09 | 1.27 | 125 $\\pm$ 30 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol (FLS02-N)",
+   "value": "2.25",
+   "uncertainty": "0.49",
+   "units": "10^10 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| FLS02-N | 4.56 $\\pm$ 0.94 | 2.25 $\\pm$ 0.49 | 2.20 $\\pm$ 0.48 | 6.04 | 2.56 $\\pm$ 0.09 | 0.77 | 62 $\\pm$ 15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol (FLS02-S)",
+   "value": "0.80",
+   "uncertainty": "0.20",
+   "units": "10^10 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| FLS02-S | 5.42 $\\pm$ 1.12 | 0.80 $\\pm$ 0.20 | 0.80 $\\pm$ 0.20 | 6.35 | 2.10 $\\pm$ 0.1 | -0.38 | 301 $\\pm$ 80 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol (SWIRE5)",
+   "value": "6.38",
+   "uncertainty": "1.38",
+   "units": "10^10 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| SWIRE 5 | 6.27 $\\pm$ 1.29 | 6.38 $\\pm$ 1.38 | 4.27 $\\pm$ 0.92 | 6.02 | 2.85 $\\pm$ 0.09 | 0.45 | 251 $\\pm$ 60 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass upper limit M_mol (SWIRE7)",
+   "value": "<0.21",
+   "uncertainty": "not stated",
+   "units": "10^10 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| SWIRE7 | 8.28 $\\pm$ 0.18 | $<$0.21 | $<$0.21 | 6.12 | $<$1.54 | 0.49 | $<$ 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time tau_dep (CDFS1-W)",
+   "value": "125",
+   "uncertainty": "30",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| CDFS01-W | 2.51 $\\pm$ 0.52 | 1.57 $\\pm$ 0.35 | 1.14 $\\pm$ 0.25 | 0.48 | 3.37 $\\pm$ 0.09 | 1.27 | 125 $\\pm$ 30 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time tau_dep (FLS02-N)",
+   "value": "62",
+   "uncertainty": "15",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| FLS02-N | 4.56 $\\pm$ 0.94 | 2.25 $\\pm$ 0.49 | 2.20 $\\pm$ 0.48 | 6.04 | 2.56 $\\pm$ 0.09 | 0.77 | 62 $\\pm$ 15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time tau_dep (FLS02-S)",
+   "value": "301",
+   "uncertainty": "80",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| FLS02-S | 5.42 $\\pm$ 1.12 | 0.80 $\\pm$ 0.20 | 0.80 $\\pm$ 0.20 | 6.35 | 2.10 $\\pm$ 0.1 | -0.38 | 301 $\\pm$ 80 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time tau_dep (SWIRE5)",
+   "value": "251",
+   "uncertainty": "60",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| SWIRE 5 | 6.27 $\\pm$ 1.29 | 6.38 $\\pm$ 1.38 | 4.27 $\\pm$ 0.92 | 6.02 | 2.85 $\\pm$ 0.09 | 0.45 | 251 $\\pm$ 60 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time upper limit tau_dep (SWIRE7)",
+   "value": "< 11",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "| SWIRE7 | 8.28 $\\pm$ 0.18 | $<$0.21 | $<$0.21 | 6.12 | $<$1.54 | 0.49 | $<$ 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer ring rotational velocity V_rot (CDFS1-W)",
+   "value": "259",
+   "uncertainty": "14",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| CDFS1-W | 306 | 79 | 259 $\\pm$ 14 | 42 $\\pm$ 10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum gas velocity dispersion sigma_gas (CDFS1-W)",
+   "value": "42",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| CDFS1-W | 306 | 79 | 259 $\\pm$ 14 | 42 $\\pm$ 10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer ring rotational velocity V_rot (SWIRE5)",
+   "value": "346",
+   "uncertainty": "46",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SWIRE5 | 188 | 50 | 346 $\\pm$ 46 | 42 $\\pm$ 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum gas velocity dispersion sigma_gas (SWIRE5)",
+   "value": "42",
+   "uncertainty": "6",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SWIRE5 | 188 | 50 | 346 $\\pm$ 46 | 42 $\\pm$ 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient rho for log(SFE) vs log(L_IR)",
+   "value": "0.91",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular Gas and SFR at 0.2 < z < 0.6",
+     "quote": "There is a statistically significant strong positive correlation for log(SFE) - log(L$_{\\rm IR}$) of the three samples, with a Pearson’s $\\rho$ = 0.91 (p-value < 0.001)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and GILDAS software versions used for reduction and imaging",
+  "Stopping threshold / niter and masking strategy used in CASA TCLEAN and GILDAS CLEAN",
+  "Specific channel ranges selected as line-free for UVCONTSUB and velocity integration windows for each source",
+  "Continuum RMS noise values (muJy/beam) for the continuum maps of each target",
+  "Exact ring radii and number of rings used in 3DBAROLO for CDFS1-W and SWIRE5"
+ ],
+ "missing_for_reproduction": [
+  "NOEMA raw/calibrated visibility data (projects W19BV and W20GC are only available upon request, not in a public archive as stated)",
+  "Exact continuum map RMS values needed to define the 3sigma contour masks A_cont",
+  "Exact velocity integration ranges and line-free channel ranges for each galaxy",
+  "Exact 3DBAROLO parameter files (ring radii, number of rings, systemic velocities, and centre pixel coordinates)"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The ALMA dataset (2016.1.00896.S) is publicly available and the analytical equations, conversion factors, pixel sizes, channel widths, and 3DBAROLO setup are clearly described, but 3 of the 4 systems rely on non-public NOEMA data and exact continuum RMS values and integration windows are not tabulated.",
+ "rediscovery_reason": "For the ALMA target CDFS1-W, the archival data (2016.1.00896.S) are public, the reduction and analysis steps (CASA pipeline + UVCONTSUB + TCLEAN natural weighting + moment masking + 3DBAROLO fit) are straightforward, and key numeric outputs (S_CO*dv, M_mol, A_cont, tau_dep, V_rot, sigma_gas) are explicitly tabulated.",
+ "source_card": "cards/2022MNRAS.512.2371H/sonnet/card.md"
+}

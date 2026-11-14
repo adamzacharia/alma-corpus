@@ -1,0 +1,294 @@
+{
+ "bibcode": "2023MNRAS.518..185M",
+ "title": "Rotational spectroscopy of mono-deuterated oxirane (c-C<SUB>2</SUB>H<SUB>3</SUB>DO) and its detection towards IRAS 16293-2422 B",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac2525",
+ "arxiv_id": "2209.01414",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Improve the laboratory rotational spectroscopic parameters of mono-deuterated oxirane ($c$-C$_2$H$_3$DO) and use the updated rest frequencies to detect it and determine its abundance and deuteration ratio towards IRAS 16293$-$2422 B.",
+ "alma_project_codes": [
+  "2013.1.00278.S",
+  "2016.1.01150.S"
+ ],
+ "data": {
+  "bands": "Band 7, Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' (Band 7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Microwave transition frequencies of c-C2H3DO (18 transitions kept)",
+    "evidence": [
+     {
+      "loc": "Treatment of previous data",
+      "quote": "We refitted the previous $c$-C$_2$H$_3$DO data (cite: c-C2H4O_div-isos_rot_1974; c-C2H3DO_rot_2019) in order to derive transition frequencies, their uncertainties and intensities for our present laboratory studies."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| MW (cite: c-C2H4O_div-isos_rot_1974) | 18 | 18 | 8 | 5 | 4 | 46 | .2 | 0.924 |"
+     }
+    ]
+   },
+   "citation": "(cite: c-C2H4O_div-isos_rot_1974)"
+  },
+  {
+   "what": {
+    "value": "Millimetre wave (112 transitions) and far-infrared (782 transitions / 392 frequencies) laboratory data of c-C2H3DO",
+    "evidence": [
+     {
+      "loc": "Treatment of previous data",
+      "quote": "We employed the millimetre wave data from (cite: c-C2H3DO_rot_2019) as provided by one of the authors of that study"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| mmW (cite: c-C2H3DO_rot_2019) | 112 | 112 | 23 | 14 | 10 | 5 | .02 | 1.004 |"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| FIR (cite: c-C2H3DO_rot_2019) | 782 | 392 | 57 | 40 | 56 | 0 | .070 | 0.879 |"
+     }
+    ]
+   },
+   "citation": "(cite: c-C2H3DO_rot_2019)"
+  },
+  {
+   "what": {
+    "value": "Scaled quantum-chemical spectroscopic parameters up to sixth order for c-C2H3DO",
+    "evidence": [
+     {
+      "loc": "Treatment of previous data",
+      "quote": "We employed the scaled spectroscopic parameters up to sixth order from a quantum-chemical calculation (cite: c-C2H2DO_calc_param_2014) as starting values as was done by (cite: c-C2H3DO_rot_2019)."
+     }
+    ]
+   },
+   "citation": "(cite: c-C2H2DO_calc_param_2014)"
+  },
+  {
+   "what": {
+    "value": "Column density and rotational temperature (125 K) of main isotopologue c-C2H4O towards IRAS 16293-2422 B",
+    "evidence": [
+     {
+      "loc": "Astronomical results",
+      "quote": "We assumed $T_{\\rm rot} = 125$ K in our initial calculations as was determined for $c$-C$_2$H$_4$O (cite: PILS_COMs_2017)."
+     },
+     {
+      "loc": "Astronomical results",
+      "quote": "This results in a $c$-C$_2$H$_3$DO to $c$-C$_2$H$_4$O ratio of $\\sim$0.15 with the $c$-C$_2$H$_4$O column density taken from (cite: PILS_COMs_2017)."
+     }
+    ]
+   },
+   "citation": "(cite: PILS_COMs_2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit laboratory rotational transitions and calculate rest frequencies and spectroscopic parameters of c-C2H3DO",
+   "method": "Global least-squares fitting of new submillimetre laboratory transitions (490-750 GHz and 810-1060 GHz) combined with previous MW, mmW, and recalibrated FIR data using Watson's S reduction (III^l representation) and A reduction (I^r representation).",
+   "software": [
+    "SPFIT",
+    "SPCAT"
+   ],
+   "key_parameters": [
+    "1504 new sub-mmW transitions (1091 frequencies) in 490-750 GHz and 810-1060 GHz; global fit of 2416 transitions (1613 frequencies) with J_max = 58, K_a,max = 43, K_c,max = 56",
+    "FIR recalibration factor of 1.0000037"
+   ],
+   "assumptions": [
+    "Dipole moment components derived from structure: mu_a = 0.36 D, mu_b = 1.86 D, mu_c = 0.08 D",
+    "Assigned uncertainties: 50 kHz for MW data, 5 kHz for mmW data, 0.00008 cm^-1 for FIR data, and 5 to 50 kHz for new sub-mmW lines"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit LTE synthetic spectra to ALMA PILS Band 7 and Band 6 data to identify c-C2H3DO and derive column density and D/H ratio",
+   "method": "Calculate LTE synthetic spectra using updated c-C2H3DO rest frequencies (from S reduction, III^l representation) and fit to ALMA PILS Band 7 and Band 6 spectra at the offset position of IRAS 16293-2422 B.",
+   "software": [],
+   "key_parameters": [
+    "T_rot = 125 K, FWHM linewidth = 1 km s^-1, LSR velocity offset = 2.6 km s^-1"
+   ],
+   "assumptions": [
+    "Local thermodynamical equilibrium (LTE) and 4 equivalent H atoms in c-C2H4O for D-to-H conversion"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct rotation diagram to independently derive rotational temperature and column density",
+   "method": "Fit a rotation diagram to the unblended or slightly blended c-C2H3DO transitions spanning a range of upper state energies (33 to 122 K).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE optically thin lines (standard rotation diagram assumption)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rotational constant A of c-C2H3DO (S reduction, III^l)",
+   "value": "24252.670221",
+   "uncertainty": "0.000039",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $A$ | 24252 | .670221 (39) | | 24252 | .647815 (44) | 24252 | .64765$^c$ | 24250 | .3320 | $A$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of c-C2H3DO (S reduction, III^l)",
+   "value": "19905.493836",
+   "uncertainty": "0.000040",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $B$ | 19905 | .493836 (40) | | 19905 | .523291 (40) | 19905 | .52126$^c$ | 19906 | .4347 | $B$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of c-C2H3DO (S reduction, III^l)",
+   "value": "13327.592078",
+   "uncertainty": "0.000053",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $C$ | 13327 | .592078 (53) | | 13327 | .583649 (53) | 13327 | .58134$^c$ | 13327 | .2181 | $C$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dipole moment component mu_a of c-C2H3DO",
+   "value": "0.36",
+   "uncertainty": "not stated",
+   "units": "D",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectroscopy of oxirane",
+     "quote": "We derived from the structural parameters of the molecule that the rotation of the principal inertial axis system of $c$-C$_2$H$_3$DO with respect to that of $c$-C$_2$H$_4$O leads to a small $\\mu _a$ dipole moment component of 0.36 D, a very small $\\mu _c = 0.08$ D and an almost unchanged $\\mu _b = 1.86$ D."
+    }
+   ]
+  },
+  {
+   "quantity": "Dipole moment component mu_b of c-C2H3DO",
+   "value": "1.86",
+   "uncertainty": "not stated",
+   "units": "D",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectroscopy of oxirane",
+     "quote": "We derived from the structural parameters of the molecule that the rotation of the principal inertial axis system of $c$-C$_2$H$_3$DO with respect to that of $c$-C$_2$H$_4$O leads to a small $\\mu _a$ dipole moment component of 0.36 D, a very small $\\mu _c = 0.08$ D and an almost unchanged $\\mu _b = 1.86$ D."
+    }
+   ]
+  },
+  {
+   "quantity": "Dipole moment component mu_c of c-C2H3DO",
+   "value": "0.08",
+   "uncertainty": "not stated",
+   "units": "D",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectroscopy of oxirane",
+     "quote": "We derived from the structural parameters of the molecule that the rotation of the principal inertial axis system of $c$-C$_2$H$_3$DO with respect to that of $c$-C$_2$H$_4$O leads to a small $\\mu _a$ dipole moment component of 0.36 D, a very small $\\mu _c = 0.08$ D and an almost unchanged $\\mu _b = 1.86$ D."
+    }
+   ]
+  },
+  {
+   "quantity": "c-C2H3DO column density (from LTE synthetic spectrum modelling at 125 K)",
+   "value": "8.9e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Astronomical results",
+     "quote": "The analysis yielded a $c$-C$_2$H$_3$DO column density $8.9 \\times 10^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "c-C2H3DO to c-C2H4O abundance ratio",
+   "value": "0.15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Astronomical results",
+     "quote": "This results in a $c$-C$_2$H$_3$DO to $c$-C$_2$H$_4$O ratio of $\\sim$0.15 with the $c$-C$_2$H$_4$O column density taken from (cite: PILS_COMs_2017)."
+    }
+   ]
+  },
+  {
+   "quantity": "D-to-H ratio per H atom for oxirane",
+   "value": "0.036",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Astronomical results",
+     "quote": "This corresponds to a D-to-H ratio of $\\sim$0.036 per H atom because all four H atoms in $c$-C$_2$H$_4$O are equivalent with respect to substitution by one D."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature T_rot of c-C2H3DO (from rotation diagram)",
+   "value": "103",
+   "uncertainty": "19",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Fits of the detected lines using the rotation diagrams yield a temperature of $T_{\\rm rot} = 103 \\pm 19$ K, which in turn agrees well with 125 K derived for the $c$-C$_2$H$_4$O main isotopologue previously."
+    },
+    {
+     "loc": "Discussion of astronomical results",
+     "quote": "The temperature of $103 \\pm 19$ K determined from the rotation diagram $c$-C$_2$H$_3$DO agrees well with the 125 K obtained for $c$-C$_2$H$_4$O (cite: PILS_COMs_2017)."
+    }
+   ]
+  },
+  {
+   "quantity": "c-C2H3DO column density (from rotation diagram)",
+   "value": "7.8e14",
+   "uncertainty": "1.5e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion of astronomical results",
+     "quote": "The column density from the rotation diagram of $(7.8 \\pm 1.5) \\times 10^{14}$ cm$^{-2}$ is slightly lower than $8.9 \\times 10^{14}$ cm$^{-2}$ derived from the modelling applying 125 K to some degree because the partition function value is lower at 103 K than at 125 K."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact celestial coordinates of the offset extraction position towards IRAS 16293-2422 B",
+  "Software or code used to compute the LTE synthetic spectra and fit the ALMA PILS spectra",
+  "Assumed source size (beam filling factor) and background continuum temperature used in the LTE radiative transfer modelling",
+  "Exact numeric value of the c-C2H4O column density taken from (cite: PILS_COMs_2017) to compute the 0.15 ratio",
+  "ALMA calibration and imaging parameters (inherited from Jørgensen et al. 2016 and Taquet et al. 2018)"
+ ],
+ "missing_for_reproduction": [
+  "Exact RA/Dec coordinates of the IRAS 16293-2422 B offset position spectrum (requires consulting Jørgensen et al. 2016)",
+  "Source size and background continuum temperature assumed in the LTE radiative transfer calculation",
+  "Integrated line intensities (W or int T dV) of the individual unblended ALMA transitions used to construct the rotation diagram in Fig. 6"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The laboratory spectroscopy, line lists, SPFIT/SPCAT parameter files, CDMS predictions, and ALMA data are all publicly available, and the LTE/rotation diagram parameters (T_rot, FWHM, v_LSR) are clearly stated; however, the exact extraction coordinates, LTE source size/continuum treatment, and individual integrated line fluxes for the rotation diagram are not tabulated in the paper.",
+ "rediscovery_reason": "Both the ALMA data (projects 2013.1.00278.S and 2016.1.01150.S) and the CDMS spectroscopic catalog entry for c-C2H3DO are public, and the main astronomical results (T_rot = 103 +/- 19 K, N = 8.9e14 and 7.8e14 cm^-2, D/H = 0.036) are clear numeric targets derivable from standard LTE/rotation diagram analysis.",
+ "source_card": "cards/2023MNRAS.518..185M/sonnet/card.md"
+}

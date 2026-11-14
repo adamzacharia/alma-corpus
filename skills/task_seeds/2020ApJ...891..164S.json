@@ -1,0 +1,348 @@
+{
+ "bibcode": "2020ApJ...891..164S",
+ "title": "Chemistry and Physics of a Low-metallicity Hot Core in the Large Magellanic Cloud",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab6e6b",
+ "arxiv_id": "2001.06982",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What are the chemical composition, physical structure and sulfur isotope ratios of a newly discovered hot molecular core around the high-mass YSO ST16 in the LMC, and how do its abundances compare with other LMC and Galactic hot cores?",
+ "alma_project_codes": [
+  "2016.1.00394.S",
+  "2018.1.01366.S"
+ ],
+ "data": {
+  "bands": "Band 6 (250 GHz) and Band 7 (350 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass absorption coefficients 1.06 (1200 um) and 1.89 cm2/g (870 um) for ice-coated grains",
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "we here use 1.06 cm$^2$ g$^{-1}$ for 1200 $\\mu$m and 1.89 cm$^2$ g$^{-1}$ for 870 $\\mu$m"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning 1994 (cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "Ice column densities toward ST16",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "Tabulated ice abundances are adapted from (cite: ST16)."
+     }
+    ]
+   },
+   "citation": "(cite: ST16)"
+  },
+  {
+   "what": {
+    "value": "Galactic hot core abundances for comparison",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "Abundances for Galactic hot cores are collected from (cite: Bla87; Tur91; Ziu91; Sut95; Schi97; Hel97)."
+     }
+    ]
+   },
+   "citation": "(cite: Bla87; Tur91; Ziu91; Sut95; Schi97; Hel97)"
+  },
+  {
+   "what": {
+    "value": "ST11 hot core abundances and sulfur isotope ratios",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "The data for ST11 are adapted from (cite: ST16b) and those for N113 A1 are from (cite: Sew18)."
+     }
+    ]
+   },
+   "citation": "(cite: ST16b); (cite: Sew18)"
+  },
+  {
+   "what": {
+    "value": "12C/13C = 49 for LMC",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "assuming $^{12}$C/$^{13}$C = 49 (cite: Wan09)"
+     }
+    ]
+   },
+   "citation": "(cite: Wan09)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra and fit line parameters",
+   "method": "Spectra extracted from 0.42\" circular region at continuum center; Gaussian fits to lines for Tb, FWHM, VLSR, integrated intensity",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Detection criterion 2.5 sigma and velocity coincidence with CO clouds"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Rotation diagram analysis",
+   "method": "LTE optically thin rotation diagrams; two-temperature fits split at Eu=100 K for CH3OH and SO2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin, LTE; SO from SO(3_3-2_3) with Trot=50 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Column densities of other molecules",
+   "method": "Solve rotation diagram equation for N with assumed Trot (50 K for extended/SO/CS/CCH/CN, 100 K for compact)",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive H2 column density",
+   "method": "Optically thin dust continuum at 870 and 1200 um; SED fits (Robitaille, Zhang & Tan); 9.7 um silicate depth; average adopted",
+   "software": [],
+   "key_parameters": [
+    "Td = 20, 60, 150 K tested; 60 K adopted"
+   ],
+   "assumptions": [
+    "Dust-to-gas mass ratio 0.0027 (0.008 scaled by LMC Z~1/3); NH2/AV = 2.8e21; distance = LMC"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fractional abundances and comparison with Galactic/LMC hot cores",
+   "method": "N(X)/NH2; metallicity-scaled by factor 3 for LMC; compare with literature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "12C/13C=49"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Sulfur isotope ratios",
+   "method": "Ratios of column densities of SO, SO2, CS isotopologues; weighted mean",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Astrochemical simulations",
+   "method": "Gas-grain model with cold (1e5 yr, AV 1-5 mag), warm-up (5e4 yr, to 150 K, 6e6 cm-3, AV 100) and post-warm-up (1e5 yr) stages; LMC vs Galactic",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LMC: Z=1/3, gas-to-dust 300, chi_uv=3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Bolometric luminosity",
+   "value": "3.1e5",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 Target",
+     "quote": "The bolometric luminosity of the source is estimated to be 3.1 $\\times$ 10$^5$ L$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Trot CH3OH (Eu>100 K)",
+   "value": "137",
+   "uncertainty": "+8/-7",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OH$^{a}$ ($E_{u} >$100 K) | 137$^{+8}_{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Trot SO2 (Eu>100 K)",
+   "value": "232",
+   "uncertainty": "+27/-22",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SO$_2$$^{a}$ ($E_{u} >$100 K) | 232$^{+27}_{-22}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH) Eu>100 K",
+   "value": "1.6e15",
+   "uncertainty": "+/-0.1e15",
+   "units": "cm-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "(1.6 $^{+0.1}_{-0.1}$) $\\times$ 10$^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2 adopted",
+   "value": "5.6e23",
+   "uncertainty": "0.6e23",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.4",
+     "quote": "we use $N_{\\mathrm{H_2}}$ = (5.6 $\\pm$ 0.6) $\\times$ 10$^{23}$ cm$^{-2}$ as a representative value"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas number density",
+   "value": "3e6",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.4",
+     "quote": "we estimate the average gas number density to be $n_{\\mathrm{H_2}}$ = 3 $\\times$ 10$^6$ cm$^{-3}$ and the total gas mass to be 100 M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 870 um",
+   "value": "10.55",
+   "uncertainty": "1.06",
+   "units": "mJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "(10.55 $\\pm$ 1.06) mJy/beam for 870 $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 1200 um",
+   "value": "3.37",
+   "uncertainty": "0.34",
+   "units": "mJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "(3.37 $\\pm$ 0.34) mJy/beam for 1200 $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH abundance",
+   "value": "4.8e-9",
+   "uncertainty": "0.9e-9",
+   "units": "relative to H2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "CH$_3$OH$^{a,b}$ |  (4.8 $\\pm$ 0.9) $\\times$ 10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 abundance",
+   "value": "1.1e-8",
+   "uncertainty": "0.2e-8",
+   "units": "relative to H2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "SO$_2$$^{a,b}$   |  (1.1 $\\pm$ 0.2) $\\times$ 10$^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "32S/34S weighted mean",
+   "value": "17",
+   "uncertainty": "2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "17 $\\pm$ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "32S/33S weighted mean",
+   "value": "53",
+   "uncertainty": "5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "53 $\\pm$ 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Trot SO off-hot-core",
+   "value": "24.5",
+   "uncertainty": "1.4",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$T_{\\mathrm{rot}}$ = 24.5 $\\pm$ 1.4 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum and uvcontsub fit order",
+  "Image size, cell size, clean threshold, mask, niter",
+  "Which calibration pipeline version / manual scripts",
+  "Source spectral extraction aperture relative to line-fit method details (Gaussian fit software)",
+  "Rotation-diagram fitting method and treatment of blends",
+  "Details of SED photometry compilation and fitting grid",
+  "Chemical network code name and numerical settings for reproducing simulations"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, mask, threshold)",
+  "Line-free channel list",
+  "Rotation diagram fit code details",
+  "Simulation code not released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA codes and key settings given with extensive line tables, but imaging details and line-free channels missing.",
+ "rediscovery_reason": "Public data, numeric results (Trot, N, isotope ratios) in tables, recipe mostly complete.",
+ "source_card": "cards/2020ApJ...891..164S/sonnet/card.md"
+}

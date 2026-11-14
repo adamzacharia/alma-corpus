@@ -1,0 +1,236 @@
+{
+ "bibcode": "2020ApJ...895...64L",
+ "title": "Radio Linear Polarization of GRB Afterglows: Instrumental Systematics in ALMA Observations of GRB 171205A",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab88cc",
+ "arxiv_id": "2004.06730",
+ "fields": [
+  "transients"
+ ],
+ "question": "Is the linear polarization of the GRB 171205A radio afterglow claimed by Urata et al. detected, or is it an ALMA instrumental systematic?",
+ "alma_project_codes": [
+  "2017.1.00801.T"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm, 97.5 GHz), full-Stokes",
+  "arrays": "not stated",
+  "angular_resolution": "0.28'' x 0.20'' at PA 85 deg",
+  "sensitivity": "rms ≈7.3 uJy in Q, U, V (full data)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previously claimed ALMA linear polarization (0.27±0.04)% and VLA cm spectral index 1.46±0.03",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "claimed a detection of $(0.27\\pm0.04)\\%$ linear polarization in the radio afterglow of GRB 171205A"
+     }
+    ]
+   },
+   "citation": "Urata et al. 2019 (cite: uth+19)"
+  },
+  {
+   "what": {
+    "value": "Compilation of radio polarization limits of other GRBs",
+    "evidence": [
+     {
+      "loc": "4.3 Radio Polarization of GRB Afterglows",
+      "quote": "Our compiled sample of radio linear polarization observations includes one detection (cite: lag+19), and several upper limits"
+     }
+    ]
+   },
+   "citation": "(cite: tfk+98; fyb+03; gt05; tfbk04; vdhpdb+14; lag+19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Regenerate QA2 data and test stability",
+   "method": "Run archive calibration scripts, image Stokes IQUV, fit point source with imfit, split by sideband and by SB execution",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "robust 0.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Independent polarization calibration",
+   "method": "Tsys/wvr, bandpass, qufromgain, XYf+QU in gaincal, xyamb, polcal for D-terms, repeated with two reference antennas",
+   "software": [
+    "CASA",
+    "qufromgain",
+    "xyamb",
+    "gaincal",
+    "polcal"
+   ],
+   "key_parameters": [
+    "cross-hand delays from scan 61 on polarization calibrator"
+   ],
+   "assumptions": [
+    "Stokes V of polarization calibrator negligible"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Self-calibration and imaging",
+   "method": "Phase-only then amp+phase self-cal per sideband, tclean imaging, imfit point source fits to IQUVP",
+   "software": [
+    "CASA",
+    "gaincal",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "amp solint 20 min, 14 solutions per pol per antenna, cross-hand phase fixed"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Quantify systematic uncertainty and upper limit",
+   "method": "Use gain calibrator polarization variation across SB executions; range of three Gaussian draws gives 1σ systematic, combined with statistical error; Rician bias",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Gain calibrator intrinsic polarization constant over observations; systematic is Gaussian"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Interpret limit with jet magnetic field models",
+   "method": "Compare with Granot & Taylor 2005 toroidal models and patch-coherence estimate",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "β≈-0.43 from Urata et al."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "3σ upper limit on linearly polarized intensity",
+   "value": "97.2",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We derive a 3$\\sigma$ upper limit on the linearly polarized intensity of $P<97.2~\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "3σ upper limit on fractional linear polarization",
+   "value": "<0.30",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\Pi_{\\rm L}<0.30\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Additional 1σ systematic calibration uncertainty",
+   "value": "0.09",
+   "uncertainty": "not stated",
+   "units": "% of Stokes I",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.5 Systematic calibration uncertainty",
+     "quote": "$\\approx0.16\\%/1.69\\approx0.09\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined-data linear polarized flux (undebiased)",
+   "value": "41.7",
+   "uncertainty": "±32.4",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.5 Systematic calibration uncertainty",
+     "quote": "This yields a linear polarization measurement of $41.7\\pm32.4~\\mu$Jy (undebiased)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stokes I flux density (all data, self-calibrated)",
+   "value": "32.44",
+   "uncertainty": "±0.03",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "for which we derive a value of $32.44\\pm0.03$ mJy (statistical error)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stokes V (all data)",
+   "value": "-73.4",
+   "uncertainty": "±7.3",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| All | amp & phase | 20 min | $32.44\\pm0.03$ | 7.7 | $-31.5\\pm7.3$ | $9.6\\pm7.7$ | $-73.4\\pm7.3$ | $41.7\\pm10.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic patch scale limit",
+   "value": "4e-3 Gamma^-1",
+   "uncertainty": "not stated",
+   "units": "rad",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Constraints on magnetic field geometry",
+     "quote": "$\\theta_{\\rm B}\\lesssim \\Pi_{\\rm L,lim}\\Gamma^{-1}\\Pi_{\\rm max}^{-1}\\approx4\\times10^{-3}\\Gamma^{-1}$ rad"
+    }
+   ]
+  },
+  {
+   "quantity": "mm spectral index",
+   "value": "-0.51",
+   "uncertainty": "±0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Constraints on magnetic field geometry",
+     "quote": "for which we calculate $\\beta_{\\rm mm}=-0.51\\pm0.04$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold and masks for tclean",
+  "Exact flagging selections beyond DV22 and the specific spectral window",
+  "Targeted source coordinates",
+  "Spectral windows' channelization",
+  "Whether the reduction scripts and CASA version for the manual reduction match 5.6.1"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters beyond robust",
+  "Exact flagging and spw details",
+  "Scripts not released"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, detailed recipe and numeric tables; some tclean/flagging details missing.",
+ "rediscovery_reason": "Public archival data, step-by-step recipe, numeric results in tables.",
+ "source_card": "cards/2020ApJ...895...64L/sonnet/card.md"
+}

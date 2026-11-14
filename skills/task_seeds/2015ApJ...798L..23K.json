@@ -1,0 +1,173 @@
+{
+ "bibcode": "2015ApJ...798L..23K",
+ "title": "An ALMA Disk Mass for the Candidate Protoplanetary Companion to FW Tau",
+ "year": 2015,
+ "doi": "10.1088/2041-8205/798/1/L23",
+ "arxiv_id": "1412.2175",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Is the 1.3 mm continuum (disk) emission in FW Tau associated with the close binary FW Tau AB or the faint companion, and what is the dust mass?",
+ "alma_project_codes": [
+  "2012.1.00989.S"
+ ],
+ "data": {
+  "bands": "Band 6 (mean 224 GHz, 1.34 mm)",
+  "arrays": "27 12 m antennas",
+  "angular_resolution": "1.45\" x 0.75\" (PA 131 deg)",
+  "sensitivity": "28 uJy/beam RMS"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "850 um flux 4.5 ± 1.1 mJy of FW Tau system",
+    "evidence": [
+     {
+      "loc": "2 The FW Tau System",
+      "quote": "noted a 4$\\sigma$ detection of the system at 850 $\\mu$m ($F_{\\nu}=4.5 \\pm 1.1$ mJy)"
+     }
+    ]
+   },
+   "citation": "Andrews & Williams 2005 (cite: Andrews:2005qf)"
+  },
+  {
+   "what": {
+    "value": "Herschel fluxes 30, 33, 70 mJy at 70, 100, 160 um",
+    "evidence": [
+     {
+      "loc": "2 The FW Tau System",
+      "quote": "$F_{\\nu} = 30 \\pm 4$, $33\\pm4$, and $70\\pm40$ mJy at 70, 100, and 160 $\\mu$m, respectively"
+     }
+    ]
+   },
+   "citation": "Howard et al. 2013 (cite: Howard:2013qy)"
+  },
+  {
+   "what": {
+    "value": "Companion position 2.28\" separation, PA 296 deg, and 3.6 um magnitude",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "from the FW Tau AB photocenter (cite: Kraus:2014lr)"
+     }
+    ]
+   },
+   "citation": "Kraus et al. 2014 (cite: Kraus:2014lr)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum",
+   "method": "CASA calibration, natural-weighted CLEAN with one phase-only self-cal iteration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux of companion",
+   "method": "Gaussian fit to emission, model of visibilities; unresolved",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Convert flux to dust mass",
+   "method": "Optically thin conversion",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust temperature ~10–20 K; opacity 2.3 cm^2/g at 1.3 mm"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm integrated flux of FW Tau C",
+   "value": "1.78",
+   "uncertainty": "0.03 (+~10% systematic)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "has an integrated $F_{\\nu} = 1.78\\pm0.03$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of FW Tau C",
+   "value": "1–2",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we infer $M_{\\rm dust} \\approx 1$–2 M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "FW Tau AB flux upper limit",
+   "value": "≤90",
+   "uncertainty": "3 sigma",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$F_{\\nu} \\le 90$ $\\mu$Jy ($3\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "FW Tau AB dust mass limit",
+   "value": "≲0.1",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "corresponds to a dust mass limit of $\\lesssim$0.1 $M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO 3-2 peak flux upper limit",
+   "value": "~3",
+   "uncertainty": "3 sigma",
+   "units": "mJy/beam per 20 km/s channel",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The 3$\\sigma$ upper limit on the peak flux is $\\sim$3 mJy beam$^{-1}$ in a single 20 km s$^{-1}$-wide channel."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Image size and cell size, CLEAN threshold/mask and iterations",
+  "Self-calibration solution interval and reference",
+  "Gaussian visibility fit procedure/software",
+  "Dust mass equation details, gas-to-dust ratio, distance used",
+  "Derivation of the 3 sigma AB upper limit of 90 uJy and 0.1 Earth mass",
+  "Source coordinates"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Self-cal details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short observation and simple analysis, but imaging parameters and CASA version are missing.",
+ "rediscovery_reason": "Data are from a Cycle 1 project and the simple flux measurement is numeric, though public status is not stated by the paper.",
+ "source_card": "cards/2015ApJ...798L..23K/sonnet/card.md"
+}

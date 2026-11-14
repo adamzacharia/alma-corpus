@@ -1,0 +1,689 @@
+{
+ "bibcode": "2021MNRAS.501.5973F",
+ "title": "ALMA detects molecular gas in the halo of the powerful radio galaxy TXS 0828+193",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3998",
+ "arxiv_id": "2012.12923",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the origin of the luminous off-source CO(3-2) emitting region near the z=2.57 radio galaxy TXS 0828+193, and are there additional CO-emitting companion galaxies or cold gas clouds in its overdense environment?",
+ "alma_project_codes": [
+  "2015.1.00661.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "42 and 36 antennae",
+  "angular_resolution": "continuum: 1.53'' x 1.33'' (P.A. -48.02 deg); line: 1.59'' x 1.40'' (P.A. -44.37 deg)",
+  "sensitivity": "continuum rms: 6.9 uJy beam^-1; line rms: 0.11-0.12 mJy beam^-1 per 72.6 km s^-1 channel (at primary beam centre)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAM PdBI CO(3-2) observations, beam size (5.3'' x 4.6''), channel rms (~0.3 mJy beam^-1 per 30 km s^-1 channel), and SW1/SW2 component properties",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: 2009MNRAS.395L..16N) studied the molecular gas of TXS 0828+193 through observation of the CO(3–2) line using the IRAM PdBI."
+     },
+     {
+      "loc": "CO(3–2) line emission in TXS 0828+193 and companion #1",
+      "quote": "In order to test this option, we tapered the ALMA data to the beam of the PdBI data ($5.3\\ensuremath{''}\\times4.6\\ensuremath{''}$)."
+     }
+    ]
+   },
+   "citation": "(cite: 2009MNRAS.395L..16N)"
+  },
+  {
+   "what": {
+    "value": "Spitzer IRAC 3.6 um and 4.5 um photometry, data reduction, completeness limits, and colour criterion from the CARLA program",
+    "evidence": [
+     {
+      "loc": "Multi-wavelength properties of the companion candidates",
+      "quote": "The flux densities of companion #1 at $3.6\\,\\mu \\rm m$ and $4.5\\,\\mu \\rm m$ are $1.37\\pm0.24\\,\\mu\\rm Jy$ and $3.40\\pm0.19\\,\\mu\\rm Jy$ (for details about the data reduction and photometry see (cite: 2013ApJ...769...79W))."
+     },
+     {
+      "loc": "Multi-wavelength properties of the companion candidates",
+      "quote": "According to (cite: 2013ApJ...769...79W) for a source to be real and considered as a cluster member, its flux density needs to be above the completeness limit in both IRAC bands ($3.45\\,\\mu\\rm Jy$ at $3.6\\,\\mu \\rm m$ and $2.55\\,\\mu\\rm Jy$ at $4.5\\,\\mu\\rm m$), and satisfy the colour criterion of $[3.6]-[4.5]>-0.1$."
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...769...79W)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image 100 GHz continuum and measure continuum flux densities",
+   "method": "Image the continuum with TCLEAN in CASA using natural weighting while excluding the spectral window containing line emission (96.53-97.17 GHz), clean to 0.01 mJy threshold, and apply primary beam correction; report 3-sigma upper limits from the primary beam corrected cube for non-detections.",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "natural weighting",
+    "clean threshold = 0.01 mJy; exclude 96.53-97.17 GHz"
+   ],
+   "assumptions": [
+    "10 percent absolute flux calibration error"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Subtract continuum and image the CO(3-2) line cube",
+   "method": "Fit the continuum using line-free channels of every spectral window and subtract it in the uv-plane using UVCONTSUB in CASA, then image the line cube with TCLEAN using natural weighting and 6-channel binning (72.6 km s^-1), and apply primary beam correction. Also produce a uv-tapered cube matching the IRAM PdBI beam (5.3'' x 4.6'') to test for resolved-out emission around companion #1.",
+   "software": [
+    "CASA",
+    "UVCONTSUB",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "channel width = 6 channels (72.6 km s^-1)",
+    "uv taper beam = 5.3'' x 4.6''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Search for additional CO(3-2) emitting sources in the field",
+   "method": "Run SOFIA on the cleaned, natural-weighted data cube (without primary beam correction) using noise scaling by local standard deviation and the smooth + clip finder with median absolute deviation rms mode and a 5-sigma threshold. Complement with visual inspection of collapsed line maps.",
+   "software": [
+    "SOFIA"
+   ],
+   "key_parameters": [
+    "noise scaling with standard deviation; smooth + clip with median absolute deviation rms mode; 5-sigma threshold; default merging; no source parametrisation"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Extract 1D spectra and fit CO(3-2) line profiles",
+   "method": "Create integrated intensity (moment-0) maps of the sources, calculate the rms of the moment-0 maps, define extraction regions including line emission starting at the 2-sigma level, extract 1D spectra from the continuum-subtracted data cube (using the primary beam corrected cube for the companions), and fit single Gaussian line profiles.",
+   "software": [],
+   "key_parameters": [
+    "aperture contour threshold = 2 sigma on moment-0 map"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute CO line luminosities and molecular gas masses",
+   "method": "Convert velocity-integrated CO(3-2) line fluxes into CO(3-2) line luminosities L'_CO(3-2), convert to L'_CO(1-0) using assumed luminosity ratios r_32, and multiply by the CO-to-H2 conversion factor alpha_CO.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "WMAP7 cosmology: H_0 = 70.4 km s^-1 Mpc^-1, Omega_m = 0.272, Omega_Lambda = 0.728",
+    "r_32 = L'_CO(3-2)/L'_CO(1-0) = 0.97 for HzRG and 0.66 for companions",
+    "CO-H2 conversion factor = 0.8 M_sun (K km s^-1 pc^2)^-1 (with note that ~4 M_sun (K km s^-1 pc^2)^-1 increases companion masses by a factor of 5)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Identify Spitzer IRAC counterparts and estimate stellar mass of companion #1",
+   "method": "Inspect archival Spitzer IRAC 3.6 um and 4.5 um images from the CARLA program at the positions of the ALMA CO detections, check completeness and colour criteria, and estimate an upper limit on the stellar mass of companion #1 from its rest-frame H-band (IRAC 3.6 um) luminosity.",
+   "software": [],
+   "key_parameters": [
+    "CARLA completeness limits: 3.45 uJy at 3.6 um and 2.55 uJy at 4.5 um; colour criterion: [3.6]-[4.5] > -0.1"
+   ],
+   "assumptions": [
+    "rest-frame H-band mass-to-light ratio = 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HzRG 100 GHz continuum flux density (S_100GHz)",
+   "value": "207",
+   "uncertainty": "25",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HzRG | 08:30:53.42 | +19:13:15.71 | $207\\pm25$ | $0.32\\pm0.10$ | $616\\pm138$ | $2.5766\\pm0.0007$ | $1.1\\pm0.3$ | $0.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "North jet 100 GHz continuum flux density (S_100GHz)",
+   "value": "64.6",
+   "uncertainty": "7.9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| North jet | | | $64.6\\pm7.9$ | – | – | – | – | – |"
+    }
+   ]
+  },
+  {
+   "quantity": "South jet 100 GHz continuum flux density (S_100GHz)",
+   "value": "69.3",
+   "uncertainty": "3.1",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| South jet | | | $69.3\\pm3.1$ | – | – | – | – | – |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 100 GHz continuum flux density (S_100GHz)",
+   "value": "22.5",
+   "uncertainty": "2.1",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #1 | 08:30:52.96 | +19:13:09.09 | $22.5\\pm2.1$ | $0.23\\pm0.07$ | $635\\pm150$ | $2.5727\\pm0.0008$ | $0.8\\pm0.2$ | $1.0\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 100 GHz continuum flux density (S_100GHz)",
+   "value": "<44.1",
+   "uncertainty": "3-sigma upper limit",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #2 | 08:30:54.00 | +19:12:47.02 | \\<44.1 | $0.30\\pm0.08$ | $432\\pm83$ | $2.5718\\pm0.0007$ | $1.1\\pm0.3$ | $1.3\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 100 GHz continuum flux density (S_100GHz)",
+   "value": "<45.9",
+   "uncertainty": "3-sigma upper limit",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (1) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.14\\pm0.06$ | $153\\pm46$ | $2.5730\\pm0.0002$ | $0.5\\pm0.$ | $0.6\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 100 GHz continuum flux density (S_100GHz)",
+   "value": "<51.6",
+   "uncertainty": "3-sigma upper limit",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #4 | 08:30:55.04 | +19:12:56.35 | \\<51.6 | $0.18\\pm0.07$ | $231\\pm67$ | $2.5741\\pm0.0003$ | $0.6\\pm0.2$ | $0.7\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG CO(3-2) velocity-integrated line flux (SdV_CO(3-2))",
+   "value": "0.32",
+   "uncertainty": "0.10",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HzRG | 08:30:53.42 | +19:13:15.71 | $207\\pm25$ | $0.32\\pm0.10$ | $616\\pm138$ | $2.5766\\pm0.0007$ | $1.1\\pm0.3$ | $0.9\\pm0.3$ |"
+    },
+    {
+     "loc": "CO(3–2) line emission in TXS 0828+193 and companion #1",
+     "quote": "Fitting a single Gaussian line to the CO(3–2) emission of the HzRG yields a FWHM of $616\\pm138\\,\\rm km\\,s^{-1}$ and a velocity integrated line flux $0.32\\pm0.10\\,\\rm Jy\\,km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG CO(3-2) FWHM",
+   "value": "616",
+   "uncertainty": "138",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HzRG | 08:30:53.42 | +19:13:15.71 | $207\\pm25$ | $0.32\\pm0.10$ | $616\\pm138$ | $2.5766\\pm0.0007$ | $1.1\\pm0.3$ | $0.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG CO(3-2) redshift (z_CO(3-2))",
+   "value": "2.5766",
+   "uncertainty": "0.0007",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HzRG | 08:30:53.42 | +19:13:15.71 | $207\\pm25$ | $0.32\\pm0.10$ | $616\\pm138$ | $2.5766\\pm0.0007$ | $1.1\\pm0.3$ | $0.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG CO(3-2) line luminosity (L'_CO(3-2))",
+   "value": "1.1e10",
+   "uncertainty": "0.3e10",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HzRG | 08:30:53.42 | +19:13:15.71 | $207\\pm25$ | $0.32\\pm0.10$ | $616\\pm138$ | $2.5766\\pm0.0007$ | $1.1\\pm0.3$ | $0.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG molecular gas mass (M_H2)",
+   "value": "0.9e10",
+   "uncertainty": "0.3e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In contrast to previous observations, we detect CO emission associated with the HzRG and derive a molecular gas mass of $(0.9\\pm0.3)\\times10^{10}\\,\\rm M_{\\odot}$."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| HzRG | 08:30:53.42 | +19:13:15.71 | $207\\pm25$ | $0.32\\pm0.10$ | $616\\pm138$ | $2.5766\\pm0.0007$ | $1.1\\pm0.3$ | $0.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 CO(3-2) velocity-integrated line flux (SdV_CO(3-2))",
+   "value": "0.23",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #1 | 08:30:52.96 | +19:13:09.09 | $22.5\\pm2.1$ | $0.23\\pm0.07$ | $635\\pm150$ | $2.5727\\pm0.0008$ | $0.8\\pm0.2$ | $1.0\\pm0.3$ |"
+    },
+    {
+     "loc": "CO(3–2) line emission in TXS 0828+193 and companion #1",
+     "quote": "The CO emission of companion #1 has a FWHM of $635\\pm150\\,\\rm km\\,s^{-1}$ and a velocity integrated line flux of $0.23\\pm0.07\\,\\rm Jy\\,km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 CO(3-2) FWHM",
+   "value": "635",
+   "uncertainty": "150",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #1 | 08:30:52.96 | +19:13:09.09 | $22.5\\pm2.1$ | $0.23\\pm0.07$ | $635\\pm150$ | $2.5727\\pm0.0008$ | $0.8\\pm0.2$ | $1.0\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 CO(3-2) redshift (z_CO(3-2))",
+   "value": "2.5727",
+   "uncertainty": "0.0008",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #1 | 08:30:52.96 | +19:13:09.09 | $22.5\\pm2.1$ | $0.23\\pm0.07$ | $635\\pm150$ | $2.5727\\pm0.0008$ | $0.8\\pm0.2$ | $1.0\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 CO(3-2) line luminosity (L'_CO(3-2))",
+   "value": "0.8e10",
+   "uncertainty": "0.2e10",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #1 | 08:30:52.96 | +19:13:09.09 | $22.5\\pm2.1$ | $0.23\\pm0.07$ | $635\\pm150$ | $2.5727\\pm0.0008$ | $0.8\\pm0.2$ | $1.0\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 molecular gas mass (M_H2)",
+   "value": "1.0e10",
+   "uncertainty": "0.3e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #1 | 08:30:52.96 | +19:13:09.09 | $22.5\\pm2.1$ | $0.23\\pm0.07$ | $635\\pm150$ | $2.5727\\pm0.0008$ | $0.8\\pm0.2$ | $1.0\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #1 stellar mass upper limit",
+   "value": "<4.7e9",
+   "uncertainty": "upper limit",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Multi-wavelength properties of the companion candidates",
+     "quote": "By assuming a mass-to-light ratio of 1, the IRAC $3.6\\,\\mu \\rm m$ luminosity of the source puts an upper limit of $\\sim 4.7\\times10^{9}\\,\\rm M_{\\ensuremath{\\odot}}$ on its stellar mass (cite: 2003ApJS..149..289B)."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 projected distance from HzRG",
+   "value": "29.9",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO(3–2) source finding",
+     "quote": "The other two sources, hereafter companion #2 and #3, are located at projected distances of $29.9\\,\\rm arcsec$ ($\\sim245\\,\\rm kpc$) and $21.6\\,\\rm arcsec$ ($\\sim177\\,\\rm kpc$) from the HzRG."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 CO(3-2) velocity-integrated line flux (SdV_CO(3-2))",
+   "value": "0.30",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #2 | 08:30:54.00 | +19:12:47.02 | \\<44.1 | $0.30\\pm0.08$ | $432\\pm83$ | $2.5718\\pm0.0007$ | $1.1\\pm0.3$ | $1.3\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 CO(3-2) FWHM",
+   "value": "432",
+   "uncertainty": "83",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #2 | 08:30:54.00 | +19:12:47.02 | \\<44.1 | $0.30\\pm0.08$ | $432\\pm83$ | $2.5718\\pm0.0007$ | $1.1\\pm0.3$ | $1.3\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 CO(3-2) redshift (z_CO(3-2))",
+   "value": "2.5718",
+   "uncertainty": "0.0007",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #2 | 08:30:54.00 | +19:12:47.02 | \\<44.1 | $0.30\\pm0.08$ | $432\\pm83$ | $2.5718\\pm0.0007$ | $1.1\\pm0.3$ | $1.3\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 CO(3-2) line luminosity (L'_CO(3-2))",
+   "value": "1.1e10",
+   "uncertainty": "0.3e10",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #2 | 08:30:54.00 | +19:12:47.02 | \\<44.1 | $0.30\\pm0.08$ | $432\\pm83$ | $2.5718\\pm0.0007$ | $1.1\\pm0.3$ | $1.3\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #2 molecular gas mass (M_H2)",
+   "value": "1.3e10",
+   "uncertainty": "0.3e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #2 | 08:30:54.00 | +19:12:47.02 | \\<44.1 | $0.30\\pm0.08$ | $432\\pm83$ | $2.5718\\pm0.0007$ | $1.1\\pm0.3$ | $1.3\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 projected distance from HzRG",
+   "value": "21.6",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO(3–2) source finding",
+     "quote": "The other two sources, hereafter companion #2 and #3, are located at projected distances of $29.9\\,\\rm arcsec$ ($\\sim245\\,\\rm kpc$) and $21.6\\,\\rm arcsec$ ($\\sim177\\,\\rm kpc$) from the HzRG."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (1) CO(3-2) velocity-integrated line flux (SdV_CO(3-2))",
+   "value": "0.14",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (1) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.14\\pm0.06$ | $153\\pm46$ | $2.5730\\pm0.0002$ | $0.5\\pm0.$ | $0.6\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (1) CO(3-2) FWHM",
+   "value": "153",
+   "uncertainty": "46",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (1) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.14\\pm0.06$ | $153\\pm46$ | $2.5730\\pm0.0002$ | $0.5\\pm0.$ | $0.6\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (1) CO(3-2) redshift (z_CO(3-2))",
+   "value": "2.5730",
+   "uncertainty": "0.0002",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (1) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.14\\pm0.06$ | $153\\pm46$ | $2.5730\\pm0.0002$ | $0.5\\pm0.$ | $0.6\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (1) molecular gas mass (M_H2)",
+   "value": "0.6e10",
+   "uncertainty": "0.3e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (1) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.14\\pm0.06$ | $153\\pm46$ | $2.5730\\pm0.0002$ | $0.5\\pm0.$ | $0.6\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (2) CO(3-2) velocity-integrated line flux (SdV_CO(3-2))",
+   "value": "0.12",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (2) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.12\\pm0.07$ | $287\\pm134$ | $2.5682\\pm0.0005$ | $0.4\\pm0.2$ | $0.5\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (2) CO(3-2) FWHM",
+   "value": "287",
+   "uncertainty": "134",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (2) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.12\\pm0.07$ | $287\\pm134$ | $2.5682\\pm0.0005$ | $0.4\\pm0.2$ | $0.5\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (2) CO(3-2) redshift (z_CO(3-2))",
+   "value": "2.5682",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (2) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.12\\pm0.07$ | $287\\pm134$ | $2.5682\\pm0.0005$ | $0.4\\pm0.2$ | $0.5\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (2) CO(3-2) line luminosity (L'_CO(3-2))",
+   "value": "0.4e10",
+   "uncertainty": "0.2e10",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (2) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.12\\pm0.07$ | $287\\pm134$ | $2.5682\\pm0.0005$ | $0.4\\pm0.2$ | $0.5\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #3 (2) molecular gas mass (M_H2)",
+   "value": "0.5e10",
+   "uncertainty": "0.3e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #3 (2) | 08:30:54.87 | +19:13:21.67 | \\<45.9 | $0.12\\pm0.07$ | $287\\pm134$ | $2.5682\\pm0.0005$ | $0.4\\pm0.2$ | $0.5\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 projected distance from HzRG",
+   "value": "30.5",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO(3–2) source finding",
+     "quote": "We also visually inspected the data cube by collapsing line maps and found one additional source at a projected distance of $30.5\\,\\rm arcsec$ ($\\sim250\\,\\rm kpc$) from the HzRG, hereafter companion #4."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 CO(3-2) velocity-integrated line flux (SdV_CO(3-2))",
+   "value": "0.18",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #4 | 08:30:55.04 | +19:12:56.35 | \\<51.6 | $0.18\\pm0.07$ | $231\\pm67$ | $2.5741\\pm0.0003$ | $0.6\\pm0.2$ | $0.7\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 CO(3-2) FWHM",
+   "value": "231",
+   "uncertainty": "67",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #4 | 08:30:55.04 | +19:12:56.35 | \\<51.6 | $0.18\\pm0.07$ | $231\\pm67$ | $2.5741\\pm0.0003$ | $0.6\\pm0.2$ | $0.7\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 CO(3-2) redshift (z_CO(3-2))",
+   "value": "2.5741",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #4 | 08:30:55.04 | +19:12:56.35 | \\<51.6 | $0.18\\pm0.07$ | $231\\pm67$ | $2.5741\\pm0.0003$ | $0.6\\pm0.2$ | $0.7\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 CO(3-2) line luminosity (L'_CO(3-2))",
+   "value": "0.6e10",
+   "uncertainty": "0.2e10",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #4 | 08:30:55.04 | +19:12:56.35 | \\<51.6 | $0.18\\pm0.07$ | $231\\pm67$ | $2.5741\\pm0.0003$ | $0.6\\pm0.2$ | $0.7\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #4 molecular gas mass (M_H2)",
+   "value": "0.7e10",
+   "uncertainty": "0.3e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Comp. #4 | 08:30:55.04 | +19:12:56.35 | \\<51.6 | $0.18\\pm0.07$ | $231\\pm67$ | $2.5741\\pm0.0003$ | $0.6\\pm0.2$ | $0.7\\pm0.3$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline version used for the initial calibration",
+  "Flux and phase/gain calibrator names",
+  "Exact cell size and image dimensions in pixels used in TCLEAN",
+  "Deconvolver algorithm and clean threshold/stopping criterion for the spectral line cube",
+  "Polynomial order and exact channel ranges used in UVCONTSUB",
+  "Exact velocity/channel ranges integrated to create the moment-0 maps for each source",
+  "Method and aperture/fitting details used to measure the 100 GHz continuum flux densities of the HzRG, jets, and companion #1",
+  "Spatial and spectral smoothing kernels used in the SOFIA smooth + clip algorithm",
+  "SOFIA version number"
+ ],
+ "missing_for_reproduction": [
+  "Exact TCLEAN cell size, image size, and spectral cube cleaning threshold/masking strategy",
+  "Exact velocity ranges integrated to produce the moment-0 maps for each source",
+  "SOFIA parameter file (specifically the spatial and spectral smoothing kernel sizes tested in the smooth + clip algorithm)",
+  "Exact aperture definitions or fitting procedure used to measure the 100 GHz continuum fluxes of the HzRG core and radio jets"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Single public ALMA Band 3 dataset (2015.1.00661.S) calibrated with the standard ALMA pipeline and imaged in CASA v5.4.0 with natural weighting and stated channel width (6 channels, 72.6 km/s), plus SOFIA source finding and simple Gaussian line fitting. Minor imaging and SOFIA kernel details are omitted, and 2-sigma moment-0 contour apertures introduce slight subjectivity.",
+ "rediscovery_reason": "The raw ALMA data (2015.1.00661.S) are publicly available in the ALMA archive, the processing uses standard pipeline calibration, TCLEAN natural weighting, UVCONTSUB, and SOFIA, and all main results (100 GHz continuum fluxes, CO(3-2) integrated line fluxes, FWHMs, redshifts, luminosities, and gas masses in Table 1) are concrete numerical values suitable as an answer key.",
+ "source_card": "cards/2021MNRAS.501.5973F/sonnet/card.md"
+}

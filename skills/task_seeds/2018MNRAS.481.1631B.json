@@ -1,0 +1,251 @@
+{
+ "bibcode": "2018MNRAS.481.1631B",
+ "title": "Obscured star formation in bright z ≃ 7 Lyman-break galaxies",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty2368",
+ "arxiv_id": "1802.05720",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How much obscured star formation is there in bright z~7 LBGs, what does the IRX-beta relation look like, and does dust shape the bright end of the UV luminosity function?",
+ "alma_project_codes": [
+  "2015.1.00540.S"
+ ],
+ "data": {
+  "bands": "Band 6 (233 GHz, 1.29 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "1.1 x 1.4 arcsec (natural weighting); 1.4 x 1.7 arcsec with 1 arcsec taper",
+  "sensitivity": "27 uJy/beam average RMS (natural); 31 uJy/beam tapered"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST/WFC3 JH140 imaging and M_UV, UV SFRs",
+    "evidence": [
+     {
+      "loc": "2 Data & Sample",
+      "quote": "High-resolution rest-frame UV imaging of the sample is available from *HST*/Wide Field Camera 3 (WFC3) as described in (cite: Bowler2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Bowler2016)"
+  },
+  {
+   "what": {
+    "value": "Greybody beta = 1.6 from local infrared luminous galaxies",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "We fix the exponent to $\\beta = 1.6$, which is the best-fitting value from the sample of local infrared luminous galaxies presented in (cite: Casey2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Casey2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure fluxes",
+   "method": "Natural-weighted tclean continuum; peak flux within 1 arcsec of HST centroid; Gaussian fit for total flux for detection and stacks; 2sigma upper limits as peak+2xRMS",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack ALMA images",
+   "method": "Stack at UltraVISTA Ks centroids, all six and excluding ID65666",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive L_FIR",
+   "method": "Modified blackbody with 1.3 mm flux, CMB correction, integrated 8-1000 um",
+   "software": [],
+   "key_parameters": [
+    "beta = 1.6, T = 40 K fiducial (also 50 K)"
+   ],
+   "assumptions": [
+    "optically thin; CMB contrast correction following DaCunha2013"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SED fitting for photo-z and stellar mass",
+   "method": "LePhare with BC03 models, exponentially declining SFH, Chabrier IMF, 1/5 Zsun, Calzetti dust, 16 bands",
+   "software": [
+    "LePhare"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure UV slope beta and IRX",
+   "method": "Power-law fit to photometry at 1270-2580 A; Y band excluded for three highest-z galaxies; IRX = L_FIR/L_UV",
+   "software": [
+    "SExtractor"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Assess UV-FIR offset and astrometry",
+   "method": "Compare ALMA and HST centroids for ID65666; blind source extraction of serendipitous sources and cross-match to HST to test astrometry; positional accuracy 0.6xFWHM/SNR",
+   "software": [
+    "SExtractor"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Derive SFRs",
+   "method": "FIR SFR from Kennicutt2012 and UV SFR from Madau1998, both with Chabrier IMF",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ID65666 peak flux",
+   "value": "124",
+   "uncertainty": "24",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "with a measured peak flux of $124 \\pm 24\\,\\mu{\\rm Jy}$ or $5.2\\sigma$ significance"
+    }
+   ]
+  },
+  {
+   "quantity": "ID65666 total flux (Gaussian fit)",
+   "value": "168",
+   "uncertainty": "56",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "results in a total flux of $168 \\pm 56\\,\\mu\\,{\\rm Jy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ID65666 L_FIR (T=40 K)",
+   "value": "3.63e11",
+   "uncertainty": "1.21e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "$L_{\\rm FIR} = 3.63 \\pm 1.21 \\times 10^{11}\\,L_{\\odot}$ ($T = 40\\,$K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Full stack flux (peak)",
+   "value": "46",
+   "uncertainty": "11",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "($f_{\\rm 1.3mm} = 46 \\pm 11\\,\\mu{\\rm Jy}/{\\rm beam}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Full stack L_FIR",
+   "value": "2.26e11",
+   "uncertainty": "0.76e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Full stack | $-2.00_{-0.19}^{+0.19}$ | $-22.76_{-0.06}^{+0.05}$ | $2.69 \\pm 0.14$ | $101 \\pm 34$ | $2.26 \\pm 0.76$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Full stack log IRX",
+   "value": "-0.08",
+   "uncertainty": "+0.15/-0.20",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$-0.08_{-0.20}^{+0.15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "UV-FIR offset ID65666",
+   "value": "0.6 arcsec (~3 kpc)",
+   "uncertainty": "~4 sigma",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "We therefore find that the offset has a significance of $\\simeq 4\\sigma$ in the absence of systematic errors"
+    }
+   ]
+  },
+  {
+   "quantity": "Average UV attenuation",
+   "value": "0.5-1.0",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "The measured FIR emission from our sample implies an average UV attenuation of $A_{\\rm UV} \\simeq 0.5$–$1.0\\,$mag"
+    }
+   ]
+  },
+  {
+   "quantity": "Obscured fraction of SFR in ID65666",
+   "value": "75% (85% for T=50 K)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "with $75$% of the total SFR being obscured (increasing to $85$% in the case of T$\\,= 50\\,$K)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA tclean parameters (cell size, image size, niter, deconvolver)",
+  "Exact stacking procedure and weights",
+  "Gaussian fitting task/method for total flux",
+  "Pipeline continuum channel selection / line flagging",
+  "Flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters",
+  "Stacking implementation details",
+  "Photometric catalogue and HST imaging from Bowler2016 needed"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Archival data and key steps are described, but imaging/stacking parameters are missing and the UV photometry comes from other papers.",
+ "rediscovery_reason": "Data are an ALMA Cycle 3 project; the recipe (natural-weight imaging, flux measurement, greybody L_FIR) is mostly specified and results are numeric.",
+ "source_card": "cards/2018MNRAS.481.1631B/sonnet/card.md"
+}

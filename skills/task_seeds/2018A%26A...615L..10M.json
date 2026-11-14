@@ -1,0 +1,239 @@
+{
+ "bibcode": "2018A&A...615L..10M",
+ "title": "Unlocking the secrets of the midplane gas and dust distribution in the young hybrid disc HD 141569",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201833381",
+ "arxiv_id": "1805.02476",
+ "fields": [
+  "protoplanetary_disks",
+  "debris_disks"
+ ],
+ "question": "What are the mass and spatial structure of the gas and dust in the midplane of the hybrid disc HD 141569, and how does it compare with debris, hybrid and protoplanetary discs?",
+ "alma_project_codes": [
+  "2015.1.01600.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "39 antennas of 12 m",
+  "angular_resolution": "0.65\" (72 au) continuum; 0.71\" (79 au) 13CO and C18O",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "12CO(3-2) data, PA=-9 deg and inclination=55 deg",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "we adopt the values of the $^{12}$CO disc, PA=-9$^{\\circ}$ and inclination=55$^{\\circ}$ (cite: White2016ALMADISK)"
+     }
+    ]
+   },
+   "citation": "(cite: White2016ALMADISK)"
+  },
+  {
+   "what": {
+    "value": "dust opacity 1.15 cm2/g for mm grains",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "an opacity, $\\kappa_\\nu$, corresponding to mm size grains of 1.15 cm$^{2}$g$^{-1}$ (cite: Draine2006OnDisks)"
+     }
+    ]
+   },
+   "citation": "(cite: Draine2006OnDisks)"
+  },
+  {
+   "what": {
+    "value": "VLA flux of 54 μJy used for free-free extrapolation",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we extrapolate from VLA flux of 54 $\\mu$Jy (cite: MacGregor2016CONSTRAINTSDISKS)"
+     }
+    ]
+   },
+   "citation": "(cite: MacGregor2016CONSTRAINTSDISKS)"
+  },
+  {
+   "what": {
+    "value": "ISM abundances 12CO/13CO=77, 12CO/H2=1e-4",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "assume ISM abundances of $^{12}$CO/$^{13}$CO = 77 and $^{12}$CO/H$_2$=10$^{-4}$ (cite: Wilson1994AbundancesMedium)"
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1994AbundancesMedium)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and CO lines",
+   "method": "ALMA pipeline calibration, uv continuum subtraction, clean with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Radial profiles",
+   "method": "Azimuthal averaging in radial bins after deprojection with 12CO disc PA and inclination; noise from emission-free regions",
+   "software": [],
+   "key_parameters": [
+    "bins 0.12\" (13CO, 1.3 mm), 0.15\" (12CO)"
+   ],
+   "assumptions": [
+    "PA=-9 deg, inclination=55 deg"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Minimum dust masses",
+   "method": "Optically thin M=F d^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T=20 K, kappa=1.15 cm2/g, d=111 pc, all emission thermal"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "12CO optical depth",
+   "method": "Ratio of 12CO(2-1) (scaled from 3-2 with RADEX ratio 1.08) to 13CO(2-1)",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "same excitation temperature; optical depth ratio 77"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Gas mass from 13CO and C18O limit",
+   "method": "Optically thin line-flux mass formula with ISM abundances",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T=20 K, 12CO/13CO=77, 12CO/H2=1e-4"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "mm ring radius",
+   "value": "220",
+   "uncertainty": "±10",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a ring of millimetre emission at 220$\\pm$10 au"
+    }
+   ]
+  },
+  {
+   "quantity": "ring minimum dust mass",
+   "value": "0.13",
+   "uncertainty": "±0.02",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The minimum dust mass of the ring is 0.13$\\pm$0.02 M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "central unresolved minimum dust mass",
+   "value": "1.2",
+   "uncertainty": "±0.2",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a minimum of 1.2$\\pm$0.2 M$_{\\oplus}$ of dust"
+    }
+   ]
+  },
+  {
+   "quantity": "gas mass from 13CO",
+   "value": "6.0e-4",
+   "uncertainty": "±0.9e-4",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(6.0$\\pm$0.9) $\\times 10^{-4}~$M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO optical depth range",
+   "value": "3 to 45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas emission",
+     "quote": "$\\tau_{^{12}\\rm CO}$ ranges from 3 to 45"
+    }
+   ]
+  },
+  {
+   "quantity": "unresolved continuum flux",
+   "value": "1.7",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Results",
+     "quote": "an unresolved point source of 1.7 mJy is detected"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O-based gas mass upper estimate",
+   "value": "1.4e-4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas emission",
+     "quote": "yielding a total gas mass estimate of 1.4$\\times$10$^{-4}$ M$_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Spectral windows and rest frequencies",
+  "Clean threshold, mask, image size and cell size",
+  "Velocity range and integration limits for 13CO moment map",
+  "Line-free channels for continuum subtraction",
+  "Exact 13CO integrated flux and 12CO(3-2) data processing",
+  "Excitation/partition treatment used in gas mass formula",
+  "Details of noise-curve regions"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "Integration velocity range",
+  "12CO(3-2) data from White et al. 2016",
+  "Exact fluxes feeding mass formulae"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short letter with project ID and basic setup, but imaging parameters and integration ranges are missing.",
+ "rediscovery_reason": "ALMA project is likely public, the recipe is simple and results are numeric, though some parameters are unstated.",
+ "source_card": "cards/2018A%26A...615L..10M/sonnet/card.md"
+}

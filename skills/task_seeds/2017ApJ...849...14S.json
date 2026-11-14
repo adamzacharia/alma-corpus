@@ -1,0 +1,238 @@
+{
+ "bibcode": "2017ApJ...849...14S",
+ "title": "Resolved Structure of the Arp 220 Nuclei at λ ≈ 3 mm",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa8f4b",
+ "arxiv_id": "1709.08537",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the resolved continuum structure of the two Arp 220 nuclei at 3 mm, how much of it is dust vs plasma emission, and what does the compact western core imply about the luminosity source?",
+ "alma_project_codes": [
+  "2015.1.00113.S"
+ ],
+ "data": {
+  "bands": "around 100 GHz (3 mm), two tunings",
+  "arrays": "not stated",
+  "angular_resolution": "~0.05'' (uniform weighting)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "33 GHz exponential-disk parameters and 6–33 GHz plasma spectral indices (-0.59 E, -0.61 W)",
+    "evidence": [
+     {
+      "loc": "Fractional Contribution of Dust Emission",
+      "quote": "$\\mbox{$\\alpha_{\\rm p}$}= -0.59 \\pm 0.08$ for E and $-0.61\\pm 0.07$ for W from the 6–33 GHz measurements by (cite: Barcos-Munoz15)"
+     }
+    ]
+   },
+   "citation": "(cite: Barcos-Munoz15)"
+  },
+  {
+   "what": {
+    "value": "Dust emissivity index beta = 1.8±0.1 (alpha_d = 3.8)",
+    "evidence": [
+     {
+      "loc": "Fractional Contribution of Dust Emission",
+      "quote": "using the dust emissivity index $\\beta$ of $1.8\\pm0.1$ in the Galactic plane (cite: Planck21)"
+     }
+    ]
+   },
+   "citation": "(cite: Planck21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and self-calibrate",
+   "method": "Standard observatory calibration re-run with revised J1550+0527 flux model, extra flagging, phase-only self-cal",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "flagged DA45, DA65, DV20; 37 antennas remain"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Spectra and continuum channel selection",
+   "method": "Power-law fit to off-line channels; define CDC1 and CDC2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Visibility model fitting (1G, r2G, 2G)",
+   "method": "Non-linear fits of complex visibilities per 30 MHz channel, averaged over nine CDC2 segments with inverse-variance weights",
+   "software": [
+    "mpfit",
+    "IDL"
+   ],
+   "key_parameters": [
+    "r2G: baselines <0.2 Mlambda flagged"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Dust fraction from spectral indices",
+   "method": "alpha = f_d alpha_d + (1-f_d) alpha_p solved for f_d",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_d = 3.8 (optically thin dust, beta=1.8); alpha_p from 6–33 GHz"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "1G+1E fit and dust map",
+   "method": "Fix plasma exponential disks scaled by (1-f_d), fit Gaussian dust component; image-domain subtraction for dust map",
+   "software": [
+    "mpfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "all emission optically thin for subtraction"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Bolometric luminosity of W1'",
+   "method": "Optically thick Gaussian-temperature disk, L = pi r^2 sigma T^4 /(2 ln2), T_b = T_dust",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "thin axisymmetric disk, two faces"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "W1 major-axis FWHM (2G)",
+   "value": "50.0",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2G fit",
+     "quote": "E$_1$ and W$_1$ have major axis FWHM of 88 mas (36 pc) and 50 mas (21 pc), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "W1 peak Tb (2G)",
+   "value": "640",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2G fit",
+     "quote": "Their peak brightness temperatures are as high as 73 K in E$_1$ and 640 K in W$_1$."
+    }
+   ]
+  },
+  {
+   "quantity": "W1 spectral index",
+   "value": "1.94",
+   "uncertainty": "±0.16",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2G fit",
+     "quote": "the spectral index of W$_1$, $1.94\\pm0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust fraction at 3 mm, E and W",
+   "value": "0.13 (E), 0.41 (W)",
+   "uncertainty": "±0.04, ±0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fractional Contribution of Dust Emission",
+     "quote": "we obtain $\\mbox{$f_{\\rm d}$}= 0.13 \\pm 0.04$ and $0.41 \\pm 0.05$ for Arp 220 E and W, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "W1' peak Tb (dust)",
+   "value": "529",
+   "uncertainty": "±20",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Bolometric Luminosity of the Compact Core in the Western Nucleus",
+     "quote": "$T_{\\rm p}$= $529 \\pm 20$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol of W1'",
+   "value": "3.3e12",
+   "uncertainty": "±0.8e12",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Bolometric Luminosity of the Compact Core in the Western Nucleus",
+     "quote": "we obtain $L_{\\rm bol}$= $(3.3 \\pm 0.8) \\times 10^{12}$ $L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol of W1 (optically thick)",
+   "value": "5.7e12",
+   "uncertainty": "±1.2e12",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Bolometric Luminosity of the Compact Core in the Western Nucleus",
+     "quote": "is calculated to be $(5.7\\pm1.2)\\times 10^{12}$ $L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm spectral index W / E",
+   "value": "+1.2 (W), 0.0 (E)",
+   "uncertainty": "±0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 mm Spectra of the Two Nuclei",
+     "quote": "of $+1.2$ for the western nucleus and $0.0$ for the eastern nucleus with uncertainties about $\\pm 0.2$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image sizes, cell sizes, cleaning thresholds and masks",
+  "Exact CDC1/CDC2 channel ranges and the nine segment boundaries",
+  "Initial guesses and weighting scheme in mpfit visibility fits",
+  "Robust values of the three images in Fig. 4",
+  "Self-calibration solution intervals",
+  "Continuum subtraction approach for line-contaminated data",
+  "How the fitting code treats visibility weights"
+ ],
+ "missing_for_reproduction": [
+  "Custom IDL fitting code not released",
+  "Channel lists and imaging parameters",
+  "Self-cal details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and well-described fitting models with tables, but custom code, channel lists and imaging details are missing.",
+ "rediscovery_reason": "Public data, numeric results, and recipe mostly clear, though some settings are missing.",
+ "source_card": "cards/2017ApJ...849...14S/sonnet/card.md"
+}

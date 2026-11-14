@@ -1,0 +1,283 @@
+{
+ "bibcode": "2019A&A...621A.122B",
+ "title": "High-mass star formation at sub-50 au scales",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201834064",
+ "arxiv_id": "1811.10245",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical properties of the densest structures (fragmentation, kinematics, jet/outflow vs disk) in the high-mass hot core G351.77-0.54 at sub-50 au resolution?",
+ "alma_project_codes": [
+  "2015.1.00496.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm), LO 226.378 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "21 mas x 15 mas continuum (PA -74 deg); ~25 x 20 mas lines (PA -86 deg)",
+  "sensitivity": "continuum 1 sigma ~50 uJy/beam; lines ~0.9 mJy/beam per 1 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ATLASGAL 870 um peak flux density 52.1 Jy/beam (19.2'' beam)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "Scaling the 870 $\\mu$m peak flux density of 52.1 Jy beam$^{-1}$ (with a beam size of $19.2''$)"
+     }
+    ]
+   },
+   "citation": "(cite: schuller2009)"
+  },
+  {
+   "what": {
+    "value": "Previous ALMA 690 GHz CO(6-5) and CH3CN data, 438 um continuum sources",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "Figure [6](#mom1_co) shows the previous CO(6–5) data (cite: beuther2017b)"
+     }
+    ]
+   },
+   "citation": "(cite: beuther2017b)"
+  },
+  {
+   "what": {
+    "value": "dust opacity 1.11 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "we are using for the 1.3 mm dust opacity $\\kappa$ a value of 1.11 cm$^2$ g$^{-1}$ from (cite: ossenkopf1994) at high densities of $10^8$ cm$^{-3}$."
+     }
+    ]
+   },
+   "citation": "(cite: ossenkopf1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and self-calibrate",
+   "method": "ALMA pipeline in CASA, then phase-only self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image continuum and lines",
+   "method": "Continuum from whole bandpass with robust -2; lines with robust 0; baselines >55 m only",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "identify continuum cores and measure fluxes, Tb",
+   "method": "identified by eye following 5 sigma contours; integrated fluxes within 4 sigma contours; peak and mean brightness temperatures",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "derive masses and column densities (lower limits)",
+   "method": "optically thin dust formula with Tb as temperature proxy",
+   "software": [],
+   "key_parameters": [
+    "column density T = 1000 K for mm1, mm2; 100 K for others; masses use mean Tb within 4 sigma"
+   ],
+   "assumptions": [
+    "kappa 1.11 cm2/g at 1.3 mm; gas-to-dust 150; distances 1 and 2.2 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "compare to Jeans fragmentation",
+   "method": "Jeans lengths/masses from CORE densities 1e7-1e8 cm-3 and T~50 K compared with observed separations and masses",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "mean temperature ~50 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "analyse line kinematics",
+   "method": "moment-1 maps, channel maps, position-velocity diagrams of the 217.82 GHz and SiO(5-4) lines; compare to CO(6-5) and CH3CN from earlier data",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "number of continuum sub-sources",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "This way, we identify 12 separate mm sources within a radius of roughly $3.5''$"
+    }
+   ]
+  },
+  {
+   "quantity": "peak brightness temperature mm1",
+   "value": "1144",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| mm1 | 17:26:42.533 | -36:09:17.37 | 15.0 | 47.4 | 1144 | 53 | 0.41 | 2.0 | 3.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "peak brightness temperature mm2",
+   "value": "1027",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| mm2 | 17:26:42.563 | -36:09:17.68 | 13.5 | 42.3 | 1027 | 93 | 0.20 | 1.0 | 3.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "sum of sub-core fluxes",
+   "value": "~208",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the sum of the fluxes of all identified sub-cores accumulates to only $\\sim$208 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "recovered fraction of continuum",
+   "value": "2.1",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we recover only about 2.1% of the total continuum emission in the field."
+    }
+   ]
+  },
+  {
+   "quantity": "core masses (lower limits)",
+   "value": "0.01-0.51 Msun at 1 kpc; 0.1-2.5 Msun at 2.2 kpc",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| mm9 | 17:26:42.280 | -36:09:17.73 | 1.4 | 55.3 | 115 | 50 | 0.51 | 2.5 | 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 number density of mm2",
+   "value": "6.8e10",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we derive high values for the approximate molecular hydrogen densities around $6.8\\times 10^{10}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans length",
+   "value": "870-2800",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Fragmentation",
+     "quote": "we find Jeans lengths between roughly 870 and 2800 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans mass",
+   "value": "0.1-0.4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Fragmentation",
+     "quote": "Jeans masses between 0.1 and 0.4 M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "highest velocities in 217.82 GHz moment 1 near mm1",
+   "value": "+7.9 and -9.0 within ~0.01 arcsec",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "the highest velocities are close to the center of mm1 with values of +7.9 and $-9.0$ km s$^{-1}$ within a separation of only $\\sim$0.01$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "separation of peaks in -18 and +14 km/s channels",
+   "value": "0.049 arcsec (~108/49 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The spatial peak positions in the channels at $-18$ and +14 km s$^{-1}$ are separated by only $0.049''$ or $\\sim$108/49 au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum image size, cell size, deconvolver, and clean thresholds/masks",
+  "Which channels were used as line-free for continuum subtraction",
+  "Exact spw frequency ranges and which spw was bandpass/phase calibrated",
+  "Moment map clipping thresholds and PV cut widths",
+  "Exact flux density scale uncertainty",
+  "Details of the self-calibration solint sequence and reference antenna",
+  "Tool used for Tb conversion (Rayleigh-Jeans or full Planck)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks, thresholds)",
+  "Line-free channel selection",
+  "Self-calibration solint details",
+  "Moment map and PV extraction parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and key steps given (robust, baseline cut, assumptions, tables) but imaging details and extraction parameters are missing.",
+ "rediscovery_reason": "Public data, a mostly stated recipe, and numeric results in Table 2 (fluxes, Tb, masses).",
+ "source_card": "cards/2019A%26A...621A.122B/sonnet/card.md"
+}

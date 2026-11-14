@@ -1,0 +1,905 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016MNRAS.457L.122H",
+  "title": "ALMA resolves extended star formation in high-z AGN host galaxies",
+  "year": 2016,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Harrison, C. M.",
+  "n_authors": 9,
+  "arxiv_id": "1510.06740",
+  "doi": "10.1093/mnrasl/slw001",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00869.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present high resolution (0.3$^{\\prime\\prime}$) Atacama Large Millimeter Array (ALMA) 870 $\\mu$m imaging of five $z$$\\approx$1.5–4.5 X-ray detected AGN"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "Chandra Deep Field South X-ray AGN (IDs 156, 276, 301, 310, 344) plus serendipitous source 305(S)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z≈1.5–4.5 (photometric; spectroscopic for ID 344, z=1.617)",
+      "evidence": [
+       {
+        "loc": "2 Target selection, observations and analysis",
+        "quote": "Thirty AGN were targeted that were selected from the *Chandra*-Deep Field South (CDF-S; (cite: Xue11))"
+       },
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "For the AGN we adopt the photometric redshifts and 1$\\sigma$ uncertainties provided in (cite: Hsu14)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Hsu et al. 2014 photometric redshifts; Szokoly04 spectroscopic for 344; 3D-HST (Skelton14) for 305(S)",
+      "evidence": [
+       {
+        "loc": "2 Target selection, observations and analysis",
+        "quote": "Thirty AGN were targeted that were selected from the *Chandra*-Deep Field South (CDF-S; (cite: Xue11))"
+       },
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "For the AGN we adopt the photometric redshifts and 1$\\sigma$ uncertainties provided in (cite: Hsu14)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the rest-frame FIR (star-formation) emission in high-z X-ray AGN hosts extended, and are its sizes and SFR surface densities similar to those of SMGs?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Here, we place constraints on the sizes of the rest-frame FIR emission in high-$z$ X-ray AGN host galaxies and hence measure the spatial distribution and surface density of star formation in these sources"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00869.S",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "This paper makes use of ALMA data: ADS/JAO.ALMA-2012.1.00869.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (870 μm), Cycle 1",
+    "evidence": [
+     {
+      "loc": "2 Target selection, observations and analysis",
+      "quote": "The data presented in this letter are from a Cycle 1 Band 7 ALMA programme"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "7.5 GHz centred on 351 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "Each target was observed using 7.5 GHz of bandwidth, centred on 351 GHz (i.e., $\\approx$870 $\\mu$m)"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "26 antennae",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The array configuration contained 26 ALMA antennae, with a maximum baseline of 1300 m and median baselines of $\\approx$200 m."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "max 1300 m, median ≈200 m",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "with a maximum baseline of 1300 m and median baselines of $\\approx$200 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "≈0.3 arcsec (high-res), ≈0.8 arcsec (detection)",
+    "evidence": [
+     {
+      "loc": "2.2 Data reduction and source detection",
+      "quote": "“detection images” (FWHM$\\approx$0.8$^{\\prime\\prime}$) and (2) “high-resolution images” (FWHM$\\approx$0.3$^{\\prime\\prime}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "4–6 arcsec",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The observations are sensitive to a maximum angular scale of 4–6$^{\\prime\\prime}$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "σ870=0.07–0.18 mJy/beam (high-res); 0.10–0.25 (detection)",
+    "evidence": [
+     {
+      "loc": "2.2 Data reduction and source detection",
+      "quote": "These final cleaned images have a noise of $\\sigma_{870}$=0.07–0.18 mJy beam$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2.5–7 min per target",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "with on-source exposure times of 2.5–7 min"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel PACS/SPIRE, Spitzer",
+     "provided": {
+      "value": "Infrared photometry for SED fitting",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "fitting SEDs to the available *Spitzer*, deblended *Herschel*-PACS; deblended *Herschel*-SPIRE and ALMA photometry"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST",
+     "provided": {
+      "value": "I, J, H imaging for positions",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "we collated the $I$-band, and where possible, $J$ and $H$ band *HST* observations of our targets"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA 1.4 GHz",
+     "provided": {
+      "value": "Radio synchrotron check",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "Only three of our sources (156, 344 and 305\\[S\\]) are detected in the deep 1.4 GHz radio imaging of (cite: Miller13)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Photometric redshifts of the AGN",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "For the AGN we adopt the photometric redshifts and 1$\\sigma$ uncertainties provided in (cite: Hsu14)."
+       }
+      ]
+     },
+     "citation": "(cite: Hsu14)"
+    },
+    {
+     "what": {
+      "value": "2–8 keV X-ray fluxes",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "We use these redshifts and the 2–8 keV X-ray fluxes from (cite: Xue11) to calculate X-ray luminosities"
+       }
+      ]
+     },
+     "citation": "(cite: Xue11)"
+    },
+    {
+     "what": {
+      "value": "SMG ALMA sizes and FIR luminosities for comparison",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "we compare our FIR size measurements with the $z$$\\approx$1–5 SMGs from the UDS field that were observed with ALMA by (cite: Simpson15)"
+       }
+      ]
+     },
+     "citation": "(cite: Simpson15)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline, rerun with additional flagging after visual inspection",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "However, the calibrated data were then visually inspected and, where appropriate, we repeated the pipeline calibration including additional data flagging."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.4.0",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "Application (casa; version 4.4.0; (cite: McMullin07))"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "imaged using the clean routine provided by casa"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5 (high-res); natural weighting plus Gaussian taper (detection)",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "To create the high-resolution images we used Briggs weighting (robust parameter = 0.5)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "tight clean mask around sources detected at SNR≥5 in dirty images; clean to 1.5σ, repeat for SNR≥4",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "We then place a tight clean mask around the emission from the source and iteratively clean down to 1.5$\\sigma$ within these regions."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "(0.3–0.4)x0.2 arcsec high-res; (0.8–0.9)x0.7 arcsec detection",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "to obtain synthesised beams of (0.3$^{\\prime\\prime}$–0.4$^{\\prime\\prime}$)$\\times$0.2$^{\\prime\\prime}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.07–0.18 mJy/beam (high-res)",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "These final cleaned images have a noise of $\\sigma_{870}$=0.07–0.18 mJy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging methods",
+      "evidence": [
+       {
+        "loc": "2.2 Data reduction and source detection",
+        "quote": "To image the data, we largely follow the methods described in detail in (cite: Simpson15) and so we only provide brief details here."
+       }
+      ]
+     },
+     "from_reference": "(cite: Simpson15)"
+    },
+    {
+     "what": {
+      "value": "Size measurement with imfit",
+      "evidence": [
+       {
+        "loc": "3 Extended far-infrared emission",
+        "quote": "To measure the intrinsic far-infrared sizes of our targets we follow the same methods as those presented in (cite: Simpson15)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Simpson15)"
+    },
+    {
+     "what": {
+      "value": "SED fitting routine and photometry compilation",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "The details of the SED fitting routine and the compilation of the non-ALMA photometry are detailed in (cite: Stanley15)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Stanley15)"
+    },
+    {
+     "what": {
+      "value": "SFR surface density derivation",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "To derive SFR surface densities we follow (cite: Simpson15)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Simpson15)"
+    },
+    {
+     "what": {
+      "value": "Full observations and data reduction details",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "Full details of the observations and data reduction will be presented in Stanley et al. (in prep)."
+       }
+      ]
+     },
+     "from_reference": "Stanley et al. (in prep)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Taper parameters for detection images",
+    "Calibrator names and flux scale",
+    "Observing dates and exact configurations",
+    "Cell and image size",
+    "Pipeline version",
+    "SED templates and fitting details (in Stanley15)",
+    "uv-binned amplitude fit initial settings",
+    "Source positions"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image",
+    "method": {
+     "value": "ALMA pipeline calibration with extra flagging; clean to make detection and high-resolution images",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "We created two sets of images: (1) “detection images” (FWHM$\\approx$0.8$^{\\prime\\prime}$) and (2) “high-resolution images” (FWHM$\\approx$0.3$^{\\prime\\prime}$)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5 for high-res",
+      "evidence": [
+       {
+        "loc": "2.2 Data reduction and source detection",
+        "quote": "Briggs weighting (robust parameter = 0.5)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Detect sources and measure fluxes",
+    "method": {
+     "value": "Peak SNR≳9 detections; total flux in 1 arcsec diameter apertures; errors from random apertures",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "Uncertainties are calculated by taking the 1$\\sigma$ distribution from placing hundreds of random apertures across the images."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Detection-image fluxes agree within 20%",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "agreement within 20% in all cases and a median ratio between measurements of 1.0"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive L_IR from SED fitting",
+    "method": {
+     "value": "Fit empirical SF templates plus AGN template to Spitzer, Herschel and ALMA photometry; subtract AGN contribution",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-wavelength properties",
+       "quote": "Using the best-fit SEDs we derived total infrared luminosities, $L_{{\\rm IR,SF}}$, due to star formation only"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "X-ray luminosities assume Gamma=1.4",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-wavelength properties",
+        "quote": "assuming a power-law index of $\\Gamma$=1.4"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "best-fit combination of templates accounting for uncertainties and upper limits",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-wavelength properties",
+       "quote": "taking into account photometric data points, uncertainties, and upper limits"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Radio synchrotron negligible",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-wavelength properties",
+       "quote": "We conclude that the ALMA photometry has negligible contribution from synchrotron emission."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Test for extended emission in uv-amplitudes",
+    "method": {
+     "value": "Bin visibility amplitudes in 100 kλ steps; fit constant vs Gaussian; compare with BIC",
+     "evidence": [
+      {
+       "loc": "3 Extended far-infrared emission",
+       "quote": "binning across the $uv$ distance in steps of 100k$\\lambda$, and calculating the error on the mean in each bin"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "constant and Gaussian models, BIC comparison",
+     "evidence": [
+      {
+       "loc": "3 Extended far-infrared emission",
+       "quote": "Using the Bayesian Information Criterion ((cite: Schwarz78))"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Δχ² 19–255 favouring Gaussian",
+     "evidence": [
+      {
+       "loc": "3 Extended far-infrared emission",
+       "quote": "The $\\Delta\\chi^{2}$ values between the two fits range from 19–255."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Measure intrinsic sizes",
+    "method": {
+     "value": "imfit elliptical Gaussian convolved with beam fit to high-res images",
+     "evidence": [
+      {
+       "loc": "3 Extended far-infrared emission",
+       "quote": "we use the imfit routine in casa to fit an elliptical Gaussian model (convolved with the synthesised beam) to the 870 $\\mu$m emission"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "uv sizes agree within 1–3σ, median ratio 0.9; peak/integrated flux ratios 0.49–0.74",
+     "evidence": [
+      {
+       "loc": "3 Extended far-infrared emission",
+       "quote": "with a median ratio of FWHM$^{uv}$/FWHM$^{{\\rm image}}$=0.9"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "SFR surface densities and comparison with SMGs",
+    "method": {
+     "value": "Convert L_IR to SFR (Kennicutt98, Chabrier IMF), uniform surface density within radius FWHM/2",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "we convert infrared luminosities to SFRs, following (cite: Kennicutt98) (converting to a Chabrier IMF), and assume a uniform surface density with a radius of FWHM/2"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "H0=70, OmegaM=0.30, OmegaL=0.70",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "we adopt $H_0 = 70$ km s$^{-1}$ Mpc$^{-1}$, $\\Omega_{\\rm{M}} = 0.30$ and $\\Omega_{\\Lambda}= 0.70$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.4.0",
+    "used_for": {
+     "value": "calibration, clean imaging, imfit size fitting",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction and source detection",
+       "quote": "The data were processed using the Common Astronomy Software Application (casa; version 4.4.0; (cite: McMullin07))"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median physical FIR size of AGN",
+    "value": "1.8",
+    "uncertainty": "not stated",
+    "units": "kpc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "physical sizes of 1–3 kpc (median value of 1.8 kpc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Deconvolved FWHM range",
+    "value": "0.2–0.5",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "The measured intrinsic (i.e., deconvolved) sizes are FWHM=0.2$^{\\prime\\prime}$–0.5$^{\\prime\\prime}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR surface density",
+    "value": "20–200",
+    "uncertainty": "not stated",
+    "units": "Msun/yr/kpc^2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "We obtain SFR surface densities of $\\approx$20–200 $M_{\\ensuremath{\\odot}}$ yr$^{-1}$ kpc$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak-to-integrated flux ratio",
+    "value": "0.49–0.74",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3 Extended far-infrared emission",
+      "quote": "We find $S^{0.3}_{\\rm pk}$/$S^{0.3}_{\\rm\n  int}$=0.49–0.74."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All six detected sources are spatially resolved at 0.3 arcsec",
+    "evidence": [
+     {
+      "loc": "3 Extended far-infrared emission",
+      "quote": "In all cases imfit returns spatially-resolved fits"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "FIR emission in high-z X-ray AGN hosts is extended",
+    "experiment": "uv-amplitude fits and imfit on 0.3 arcsec images",
+    "result": "All sources resolved with FWHM 0.2–0.5 arcsec (1–3 kpc)",
+    "finding": "Star-forming dust emission extended on kpc scales",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "We have identified extended 870 $\\mu$m emission in the $z\\approx$1.5–4.5 host galaxies of five X-ray AGN"
+     }
+    ]
+   },
+   {
+    "hypothesis": "AGN host sizes and SFR surface densities differ from SMGs",
+    "experiment": "Compare with Simpson15 SMGs measured identically",
+    "result": "Sizes and surface densities similar at comparable L_IR",
+    "finding": "Star formation distribution independent of X-ray AGN presence (small sample)",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "These results provide evidence that the kpc-scale star formation distribution and surface densities of high-$z$ star-forming galaxies are independent of the presence of an X-ray AGN."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "AGN-heated dust or radio synchrotron as source of the emission rejected",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "the observed spatial extent of the FIR emission on $>$1 kpc scales is challenging to explain with dust that is heated directly by AGN without any contribution from star formation"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small sample, all with high FIR luminosities",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "Although limited by a small sample of AGN, which all have high FIR luminosities"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only 3 of 30 primary targets detected; selection biased",
+    "Photometric redshifts uncertain for several sources",
+    "Sizes from short snapshot observations with modest SNR"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; public status not stated",
+    "evidence": [
+     {
+      "loc": "footnote 1",
+      "quote": "This paper makes use of ALMA data: ADS/JAO.ALMA-2012.1.00869.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Full reduction details deferred to Stanley et al. in prep",
+    "SED fitting inputs",
+    "Taper parameters"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw for Cycle 1 project",
+   "score_inferred": 3,
+   "score_reason": "Recipe largely given and follows Simpson15, but several settings are deferred or unstated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key details deferred to in-prep paper and SED analyses."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Simpson15)",
+     "why": "Imaging and size measurement methods"
+    },
+    {
+     "citation": "(cite: Stanley15)",
+     "why": "SED fitting routine"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Mullaney15)",
+     "why": "Source programme and sample"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "CDF-S",
+    "UDS ALMA SMG survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4a56f03eae49c60decbcea85b34248ce",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:46",
+  "usage": {
+   "input_tokens": 12587,
+   "output_tokens": 7695,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051668,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 49,
+   "rate": 0.62
+  },
+  "evidence_ok": true
+ }
+}

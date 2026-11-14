@@ -1,0 +1,454 @@
+{
+ "bibcode": "2023A&A...679A.119R",
+ "title": "PRUSSIC. II. ALMA imaging of dense-gas tracers in SDP.81: Evidence for low mechanical heating and a sub-solar metallicity in a z = 3.04 dusty galaxy",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202347315",
+ "arxiv_id": "2308.02886",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the dense-gas properties, relative contribution of mechanical heating, and gas-phase metallicity in the z=3.042 gravitationally lensed dusty star-forming galaxy SDP.81?",
+ "alma_project_codes": [
+  "2016.1.00663.S",
+  "2018.1.00747.S",
+  "2017.1.01694.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "0.36x0.24 arcsec (2016.1.00663.S), 0.33x0.29 arcsec (2018.1.00747.S), 2.3x2.1 arcsec (2017.1.01694.S); spatial scales 0.29 to 46 arcsec for HCN/HCO+, 2.1 to 46 arcsec for HNC",
+  "sensitivity": "sigma_rms (200 MHz): 126 uJy/beam (2016.1.00663.S), 35 uJy/beam (2018.1.00747.S), 51 uJy/beam (2017.1.01694.S)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "J_upp=1 HCN(1-0), HCO+(1-0), and HNC(1-0) upper limits in SDP.81",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| $J_\\mathrm{upp}=1$ lines (cite: Rybak2022a) |"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| $L{'}^\\mathrm{sky}_\\mathrm{HCN(1-0)}$ | [K km s$^{-1}$ pc$^2$] | $\\leq3.7\\times10^{10}$ |"
+     }
+    ]
+   },
+   "citation": "(cite: Rybak2022a)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) luminosity and FWHM in SDP.81",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": ": Global properties of SDP.81. Individual columns list the source position, source and lens redshift ($z_L$, $z_L$), sky-plane (observed) FIR and CO(1–0) luminosities, CO(1–0) FWHM (cite: Valtchanov2011), and FIR continuum magnification (cite: Rybak2020b)."
+     }
+    ]
+   },
+   "citation": "(cite: Valtchanov2011)"
+  },
+  {
+   "what": {
+    "value": "FIR luminosity, FIR continuum magnification (mu_160um = 18.2 +- 1.2), CO(5-4) and CO(8-7) constraints, and 200-pc resolution PDR G and n parameter space",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": ": Global properties of SDP.81. Individual columns list the source position, source and lens redshift ($z_L$, $z_L$), sky-plane (observed) FIR and CO(1–0) luminosities, CO(1–0) FWHM (cite: Valtchanov2011), and FIR continuum magnification (cite: Rybak2020b)."
+     },
+     {
+      "loc": "Photon-dissociation region modelling",
+      "quote": "If we restrict the parameter space to the $G$, $n$ range from the 200-pc resolution PDR modelling from (cite: Rybak2020b), only models with low mechanical heating ($\\alpha$=0–10%) are left."
+     }
+    ]
+   },
+   "citation": "(cite: Rybak2020b)"
+  },
+  {
+   "what": {
+    "value": "HCN ladder excitation conversion factors from nearby galaxies compilation",
+    "evidence": [
+     {
+      "loc": "HCN, HCO$^+$, and HNC emission",
+      "quote": "For a better comparison, we converted the $J_\\mathrm{upp}\\geq2$ luminosities using the HCN ladder from the compilation of (cite: Israel2023); the corresponding mean line ratios are$L'_\\mathrm{HCN(3-2)}/L'_\\mathrm{HCN(1-0)}=0.322$, $L'_\\mathrm{HCN(4-3)}/L'_\\mathrm{HCN(1-0)}=0.128$."
+     }
+    ]
+   },
+   "citation": "(cite: Israel2023)"
+  },
+  {
+   "what": {
+    "value": "Radiative transfer predictions for HCN(5-4)/HCN(1-0) = 0.094 in Milky Way central molecular zone",
+    "evidence": [
+     {
+      "loc": "HCN, HCO$^+$, and HNC emission",
+      "quote": "The HCN(5–4) line is not included in the (cite: Israel2023) data; following (cite: Bethermin2018), we use radiative transfer predictions for the Milky Way’s central molecular zone from (cite: Mills2013) to set $L'_\\mathrm{HCN(5-4)}/L'_\\mathrm{HCN(1-0)}=0.094$."
+     }
+    ]
+   },
+   "citation": "(cite: Mills2013)"
+  },
+  {
+   "what": {
+    "value": "z=0 HCN(4-3) and HCO+(4-3) galaxy measurements and L_FIR - L' correlations",
+    "evidence": [
+     {
+      "loc": "HCN, HCO$^+$, and HNC emission",
+      "quote": "Figure 3 puts our HCN(4–3) and HCO$^+$(4–3) measurements in the context of $z=0$ studies (cite: Zhang2014; Tan2018) and the predicted $L_\\mathrm{FIR}-L'$ relations from (cite: Zhang2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang2014; Tan2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate, and re-weight multi-epoch ALMA Band 3 visibilities",
+   "method": "Reduce data with standard ALMA pipeline, exclude unusable 2021 data from 2018.1.00747.S, concatenate datasets, and recalculate visibility weights consistently using statwt.",
+   "software": [
+    "CASA",
+    "ALMA pipeline",
+    "statwt"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image Band 3 continuum and subtract continuum from visibilities",
+   "method": "Image continuum using line-free channels in tclean with a manual mask down to 1.5 sigma; subtract continuum in uv-plane using uvcontsub with a constant flux fit.",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "line-free channels: 86.0-88.5 GHz and 90.0-101.0 GHz",
+    "cleaning threshold: 1.5 sigma",
+    "fastnoise=False"
+   ],
+   "assumptions": [
+    "Constant continuum flux across the spectrum for uvcontsub"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Create dirty spectral cubes and narrow-band (moment-0) images of HCN(4-3), HCO+(4-3), and HNC(4-3)",
+   "method": "Produce dirty images without deconvolution using tclean, applying uv-taper to HCN(4-3) and HCO+(4-3) to suppress sidelobes from discrepant array configurations, and make narrow-band (moment-0) images over a 430 km/s bandwidth.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "narrow-band width = 430 km s^-1",
+    "final tapered beam FWHM ~ 0.85'' x 0.94'' for HCN(4-3) and HCO+(4-3)"
+   ],
+   "assumptions": [
+    "Line width equals CO(3-2) FWHM of 430 km/s"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract line fluxes, upper limits, and sky-plane line luminosities",
+   "method": "Extract flux from a manually drawn aperture over the main lens arc (~6 beams for HCN and HCO+, 1.5 beams for HNC), adopt 3 sigma upper limits for undetected HCN and HNC, and multiply fluxes by 1.31 to account for total line flux vs flux within FWHM.",
+   "software": [],
+   "key_parameters": [
+    "aperture area ~ 6 beams (HCN, HCO+) and 1.5 beams (HNC)",
+    "aperture/FWHM flux correction factor = 1.31"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with Omega_m=0.315 and H_0=67.4 km s^-1 Mpc^-1",
+    "Contribution from the counterimage is negligible; differential magnification between HCN and HCO+ is limited (<= 15%)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain mechanical heating and gas-phase metallicity via PDR modelling",
+   "method": "Compare observed dense-gas line luminosity ratios (HCO+(4-3)/HCN(4-3), HCO+(4-3)/HNC(4-3), HCO+(4-3)/HCN(1-0)) and CO(5-4) (plus optionally CO(8-7) and 200-pc G, n constraints) against the Kazandjian et al. (2012, 2015) PDR model grid across metallicity Z = 0.1 to 2.0 Z_odot and mechanical heating alpha.",
+   "software": [
+    "LEIDEN PDR-XDR models"
+   ],
+   "key_parameters": [
+    "Z = 0.1 - 2.0 Z_odot",
+    "50% errors assumed on line ratios"
+   ],
+   "assumptions": [
+    "Semi-infinite parallel-plane slab morphology illuminated by external UV radiation, X-ray and CR contributions; Salpeter stellar IMF; mechanical heating due to supernovae shock dissipation only (Loenen et al. 2008 prescription) injected uniformly; all radiation due to star formation (no AGN); solar metallicity 12+log(O/H)=8.69 (Asplund et al. 2009)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Characterise foreground CO(0-1) absorption and companion galaxy CO(1-0) emission",
+   "method": "Identify foreground absorption feature at 87.9 GHz and companion emission line at 88.62 GHz, compare companion with VLT-MUSE optical imaging/spectroscopy, fit Gaussian profile using CASA imfit, and derive CO luminosity and molecular gas mass.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "alpha_CO = 4.3 M_odot / (K km s^-1 pc^2)"
+   ],
+   "assumptions": [
+    "Milky-Way CO-to-H2 conversion factor alpha_CO = 4.3 M_odot/(K km s^-1 pc^2) including helium"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Sky-plane 3mm continuum flux density (S^sky_3mm)",
+   "value": "0.510",
+   "uncertainty": "0.031",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $S^{\\mathrm{sky}}_\\mathrm{3\\mathrm{mm}}$ | [mJy] | 0.510$\\pm$0.031 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3) velocity-integrated flux (S Delta v_HCN(4-3))",
+   "value": "<=0.302",
+   "uncertainty": "3 sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $S\\Delta v_\\mathrm{HCN(4-3)}$ | [Jy km s$^{-1}$] | $\\leq$0.302 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3) velocity-integrated flux (S Delta v_HCO+(4-3))",
+   "value": "0.357",
+   "uncertainty": "0.056",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $S\\Delta v_\\mathrm{HCO^+(4-3)}$ | [Jy km s$^{-1}$] | 0.357$\\pm$0.056 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC(4-3) velocity-integrated flux (S Delta v_HNC(4-3))",
+   "value": "<=0.207",
+   "uncertainty": "3 sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $S\\Delta v_\\mathrm{HNC(4-3)}$ | [Jy km s$^{-1}$] | $\\leq$0.207 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sky-plane HCN(4-3) luminosity (L'^sky_HCN(4-3))",
+   "value": "<=7.2e9",
+   "uncertainty": "3 sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $L{'}^\\mathrm{sky}_\\mathrm{HCN(4-3)}$ | [K km s$^{-1}$ pc$^{2}$] | $\\leq7.2\\times10^9$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sky-plane HCO+(4-3) luminosity (L'^sky_HCO+(4-3))",
+   "value": "16.0e9",
+   "uncertainty": "4.3e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $L{'}^\\mathrm{sky}_\\mathrm{HCO^+(4-3)}$ | [K km s$^{-1}$ pc$^{2}$] | $(16.0\\pm4.3)\\times10^9$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sky-plane HNC(4-3) luminosity (L'^sky_HNC(4-3))",
+   "value": "<=7.1e9",
+   "uncertainty": "3 sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $L{'}^\\mathrm{sky}_\\mathrm{HNC(4-3)}$ | [K km s$^{-1}$ pc$^{2}$] | $\\leq7.1\\times10^9$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity ratio L'_HCO+(4-3) / L'_HCN(4-3)",
+   "value": ">=2.2",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "HCN, HCO$^+$, and HNC emission",
+     "quote": "As shown in Fig. 5, the slightly overluminous HCO$^+$(4–3) line and the upper limit on HCN(4–3) combine to a HCO$^+$(4–3)/HCN(4–3) ratio of $\\geq$2.2."
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity ratio L'_HCO+(4-3) / L'_HNC(4-3)",
+   "value": ">=2.3",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Photon-dissociation region modelling",
+     "quote": "For the comparison with models, we used the following dense-gas line ratios: $L'_\\mathrm{HCO^+(4-3)}$/$L'_\\mathrm{HCN(4-3)}\\geq2.2$, $L'_\\mathrm{HCO^+(4-3)}$/$L'_\\mathrm{HNC(4-3)}\\geq2.3$, and $L'_\\mathrm{HCO^+(4-3)}$/$L'_\\mathrm{HCN(1-0)}\\geq3.8$ (see Table 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity ratio L'_HCO+(4-3) / L'_HCO+(1-0)",
+   "value": ">=0.38",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "HCN, HCO$^+$, and HNC emission",
+     "quote": "The $L'_\\mathrm{HCO^+(4-3)}/L'_\\mathrm{HCO^+(1-0)}$ ratio is $\\geq$0.38, that is, consistent with a sub-thermal excitation."
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity ratio L'_HCO+(4-3) / L'_HCN(1-0)",
+   "value": ">=3.8",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Photon-dissociation region modelling",
+     "quote": "For the comparison with models, we used the following dense-gas line ratios: $L'_\\mathrm{HCO^+(4-3)}$/$L'_\\mathrm{HCN(4-3)}\\geq2.2$, $L'_\\mathrm{HCO^+(4-3)}$/$L'_\\mathrm{HNC(4-3)}\\geq2.3$, and $L'_\\mathrm{HCO^+(4-3)}$/$L'_\\mathrm{HCN(1-0)}\\geq3.8$ (see Table 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase metallicity (Z) of SDP.81",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "Z_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Our PDR modelling also indicates that SDP.81 has a sub-solar metallicity ($Z=0.5$ $Z_\\odot$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mechanical heating fraction (alpha) of SDP.81",
+   "value": "0-10 (0-5 when including CO(8-7))",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Photon-dissociation region modelling",
+     "quote": "If we restrict the parameter space to the $G$, $n$ range from the 200-pc resolution PDR modelling from (cite: Rybak2020b), only models with low mechanical heating ($\\alpha$=0–10%) are left."
+    },
+    {
+     "loc": "Photon-dissociation region modelling",
+     "quote": "When we repeated our analysis including the CO(8–7) line (which is concentrated in the northern part of the source), the only feasible models are $Z=0.5$ $Z_\\odot$ and $\\alpha=0-5$%."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground absorption feature flux at 87.9 GHz",
+   "value": "0.41",
+   "uncertainty": "0.05",
+   "units": "Jy km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO(0–1) absorption from the foreground galaxy",
+     "quote": "In addition, the emission from the SDP.81 itself, we find a pronounced negative feature around 87.9 GHz, with a total flux of 0.41$\\pm$0.05 Jy km s$^{-1}$ (Fig. 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground companion galaxy CO(1-0) line flux",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "A serendipitous discovery of CO(1–0) emission from a companion of the SDP.81 lensing galaxy",
+     "quote": "The line is centred at 88.62 GHz, a total line flux of 0.9 Jy km s$^{-1}$ and with a FWZI width of 210 km s$^{-1}$ (Fig. 9)."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground companion galaxy CO(1-0) luminosity (L'_CO(1-0))",
+   "value": "4.5e9",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "A serendipitous discovery of CO(1–0) emission from a companion of the SDP.81 lensing galaxy",
+     "quote": "We estimate the CO(1–0) luminosity as $L_\\mathrm{CO(1-0)}=2\\times10^6$ $L_\\odot$, $L'_\\mathrm{CO(1-0)}=4.5\\times10^9$ K km s$^{-1}$ pc$^{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground companion galaxy molecular gas mass (M_gas)",
+   "value": "2e10",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "A serendipitous discovery of CO(1–0) emission from a companion of the SDP.81 lensing galaxy",
+     "quote": "Therefore, we hypothesise that this is a gas-rich counterpart to the lensing elliptical galaxy, with $M_\\mathrm{gas}\\simeq2\\times10^{10}$ $M_\\odot$ (assuming a Milky-Way CO-to-H$_2$ conversion factor $\\alpha_\\mathrm{CO}=4.3$ $M_\\odot$/(K km s$^{-1}$ pc$^2$), (cite: Bolatto2013), and including the contribution of helium)."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground companion galaxy CO(1-0) Gaussian source size",
+   "value": "3.9 x 2.8",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "A serendipitous discovery of CO(1–0) emission from a companion of the SDP.81 lensing galaxy",
+     "quote": "Fitting a Gaussian profile to the observed emission using the `imfit` task yields a source size of $\\approx$ 3.9\" $\\times$ 2.8\"."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Weighting scheme (e.g., Briggs robust parameter or natural weighting) used in tclean for continuum and dirty line imaging",
+  "Exact uv-taper values (in arcsec or klambda) applied to HCN(4-3) and HCO+(4-3) visibilities",
+  "Pixel cell size and image dimensions used in tclean",
+  "Exact coordinates/vertices of the manually drawn aperture over the main lens arc used for flux extraction",
+  "Parameters (e.g. timebin, chanbin) used in CASA statwt task"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial coordinates/polygon of the manually drawn extraction aperture on the main lensing arc and continuum cleaning mask",
+  "Exact uv-taper parameters and tclean weighting settings used to achieve the 0.85''x0.94'' beam",
+  "Access to the Kazandjian et al. (2012, 2015) / Leiden PDR model grid tables"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The ALMA project codes, excluded execution blocks,CASA tasks, line-free frequency ranges, velocity integration widths, and flux correction factors are clearly stated. Minor deductions for unstated tclean weighting, exact uv-taper values, manual aperture coordinates, and non-public PDR model grid tables.",
+ "rediscovery_reason": "All three ALMA datasets are public in the archive, the imaging recipe (dirty moment-0 maps over a 430 km/s window with uvcontsub and tapering to ~0.85x0.94 arcsec) is straightforward to replicate, and the primary results are clear numeric fluxes and luminosity ratios.",
+ "source_card": "cards/2023A%26A...679A.119R/sonnet/card.md"
+}

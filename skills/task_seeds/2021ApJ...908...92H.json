@@ -1,0 +1,567 @@
+{
+ "bibcode": "2021ApJ...908...92H",
+ "title": "Rotating Filament in Orion B: Do Cores Inherit Their Angular Momentum from Their Parent Filament?",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abd034",
+ "arxiv_id": "2012.02442",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Do cores inherit their angular momentum from their parent filament, and what is the specific angular momentum profile of a star-forming filament in LBS 23?",
+ "alma_project_codes": [
+  "2016.1.01338.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.29 mm)",
+  "arrays": "12 m, 7 m, and Total Power (TP) arrays",
+  "angular_resolution": "2.66'' x 1.61'' (N2D+), 2.64'' x 1.58'' (continuum), 28.2'' (TP N2D+)",
+  "sensitivity": "32 mJy beam^-1 per 0.08 km s^-1 channel (N2D+); 0.54 mJy beam^-1 (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "YSO catalog (HOPS Class 0, Class I, flat-spectrum sources and Spitzer-identified sources)",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The HOPS Class 0, Class I and flat-spectrum sources are marked by cyan circles, cyan triangles and cyan stars, respectively (Furlan et al. 2016)."
+     },
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The Spitzer-identified pre-main sequence star and red protostar (detection in 24 _µ_ m without detection in 4.5, 5.8 or 8 _µ_ m) are marked as a black star and cross, respectively (Megeath et al. 2012)."
+     }
+    ]
+   },
+   "citation": "Furlan et al. 2016; Megeath et al. 2012"
+  },
+  {
+   "what": {
+    "value": "Brightest 25 hyperfine line relative frequencies and intensities of N2D+(3-2)",
+    "evidence": [
+     {
+      "loc": "3. RESULTS",
+      "quote": "we modeled the brightest 25 hyperfine lines of the N 2 D [+] (3-2) transition listed in Table 2 of Gerin et al. (2001) with 25 Gaussians"
+     }
+    ]
+   },
+   "citation": "Gerin et al. (2001)"
+  },
+  {
+   "what": {
+    "value": "850 um Herschel-Planck dust optical depth map and conversion coefficients gamma_OrionB and delta_OrionB",
+    "evidence": [
+     {
+      "loc": "3. RESULTS",
+      "quote": "Here, instead, we use the 850 _µ_ m Hershal-Plank dust emission map (from Lombardi et al. 2014) in concert with our ALMA data to estimate the H 2 column density and N 2 D [+] abundance of the central filament (see Appendix A)."
+     },
+     {
+      "loc": "A. COLUMN DENSITY ESTIMATION",
+      "quote": "where _γ_ _OrionB_ = 3460 mag and _δ_ _OrionB_ = _−_ 0 _._ 001 mag (see Eq. 11 in Lombardi et al. 2014)."
+     }
+    ]
+   },
+   "citation": "Lombardi et al. 2014"
+  },
+  {
+   "what": {
+    "value": "Archival 850 um SCUBA JCMT polarization data",
+    "evidence": [
+     {
+      "loc": "4.5. Magnetic fields in the LBS 23 filament",
+      "quote": "we use the archival 850 _µ_ m SCUBA polarimeter data (with a beam of _∼_ 20”) from the James Clerk Maxwell Telescope (JCMT)"
+     }
+    ]
+   },
+   "citation": "Matthews et al. (2009)"
+  },
+  {
+   "what": {
+    "value": "Critical linear mass calculation for an isothermal rotating filament",
+    "evidence": [
+     {
+      "loc": "4.1. Rotation and its effect on filament dynamics",
+      "quote": "Assuming the filament is isothermal, and using the same theoretical calculation as that used to obtain the values of Table 1 in Recchi et al. (2014), we find the critical linear mass ( _M_ _line,crit_ )"
+     },
+     {
+      "loc": "5. SUMMARY AND CONCLUSIONS",
+      "quote": "The authors thank Simone Recchi and Alvaro Hacar for conducting the calculation and providing the critical linear mass table for additional truncation radii."
+     }
+    ]
+   },
+   "citation": "Recchi et al. (2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit N2D+(3-2) hyperfine spectra to derive system velocity and velocity dispersion maps",
+   "method": "Model the brightest 25 hyperfine components of N2D+(3-2) with 25 Gaussians using known relative frequencies and intensities",
+   "software": [],
+   "key_parameters": [
+    "25 hyperfine components from Table 2 of Gerin et al. (2001)"
+   ],
+   "assumptions": [
+    "N2D+(3-2) emission is optically thin"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive H2 column density map, number density, mass, and N2D+ abundance of the central filament",
+   "method": "Convert Herschel-Planck 850 um optical depth to N(H2), correlate with smoothed ALMA TP N2D+ integrated intensity to derive a linear empirical relation, apply to high-resolution N2D+ moment 0 map, and compute N(N2D+) assuming optically thin LTE",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "V_lsr integration range 8.4 to 11.3 km s^-1; smoothed resolution 36.0''; 4 sigma threshold on Moment 0 map; central filament dimensions 13.8'' x 87.6'' (5540 x 16640 AU)"
+   ],
+   "assumptions": [
+    "gamma_OrionB = 3460 mag, delta_OrionB = -0.001 mag, A_V/A_K = 8.933, N(H2)/A_V = 0.93 x 10^21 cm^-2 mag^-1, cylindrical geometry with average depth = r * pi / 2, T_ex = 10 K, mu = 1.37 (for M(H2) in Eq. A3)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit radial column density profile and compute moment of inertia, rotational energy, and gravitational energy",
+   "method": "Rotate map by 11 deg, average radial H2 column density profile perpendicular to the filament over a 0.18 pc region, fit a Plummer-like profile, and integrate analytically to obtain moment of inertia I, rotational energy E_rot, gravitational energy E_G, and beta_rot",
+   "software": [],
+   "key_parameters": [
+    "Rotation angle 11 deg north of east; averaging length 0.18 pc; R = 2770 au; L ~ 34,000 AU"
+   ],
+   "assumptions": [
+    "Inclination i = 0 deg (plane of sky); mean molecular weight mu = 2.33"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure filament rotation, specific angular momentum profile, and gravitational stability",
+   "method": "Extract average radial velocity profile across minor axis, compute rotation velocity, angular frequency, critical linear mass (for non-rotating and rotating isothermal cylinders), total specific angular momentum J = I*omega/M, and radial profile j(r) = r * |V(r) - V_c|",
+   "software": [],
+   "key_parameters": [
+    "V_c = 10.05 km s^-1 at r = 0; central density rho_0 = 3.0 x 10^-17 g cm^-3; dimensionless truncation radius x = 3.0"
+   ],
+   "assumptions": [
+    "Isothermal rotating cylinder in hydrostatic equilibrium at T = 10 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate non-thermal velocity dispersion, Mach number, turbulent energy, and dissipation rate",
+   "method": "Subtract thermal velocity dispersion of N2D+ in quadrature from observed velocity dispersion in outflow-free region to get sigma_NT, Mach number M_s, turbulent energy E_sigma = M * sigma_NT^2, and dissipation rate L_sigma = E_sigma / t_diss",
+   "software": [],
+   "key_parameters": [
+    "Average sigma_v = 0.20 km s^-1 in outflow-free region; cylinder aspect ratio A = 6; eta = 5"
+   ],
+   "assumptions": [
+    "T_g = 10 K, mean molecular weight mu = 2.33, c_s = 0.19 km s^-1"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate plane-of-sky magnetic field strength and magnetic energy",
+   "method": "Apply Chandrasekhar-Fermi method using JCMT SCUBA polarization angle dispersion and ALMA C18O(2-1) density and velocity dispersion, then scale B to the dense filament density and calculate Alfven speed, magnetic Mach number, and magnetic energy E_B",
+   "software": [],
+   "key_parameters": [
+    "delta_V(C18O) = 0.6 km s^-1; n(H2)(C18O) = 1.7 x 10^4 cm^-3; delta_phi = 36.6 deg; sigma_v(filament) = 0.23 km s^-1"
+   ],
+   "assumptions": [
+    "Q = 0.5; C18O/H2 = 1.7 x 10^-7; depth of C18O region = 0.1 pc; B proportional to rho^kappa with kappa in [0, 2/3], adopting B = 510 uG in the dense filament"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Central filament total specific angular momentum (J)",
+   "value": "4 x 10^20",
+   "uncertainty": "2 x 10^20",
+   "units": "cm^2 s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find the total specific angular momentum (4 _×_ 10 [20] cm [2] s _[−]_ [1] ), the dependence of the specific angular momentum with radius ( _j_ ( _r_ ) _∝_ _r_ [1] _[.]_ [83] ), and the ratio of rotational energy to gravitational energy ( _β_ _rot_ _∼_ 0 _._ 04)"
+    },
+    {
+     "loc": "4.2. Specific angular momentum profile of filament",
+     "quote": "Using the angular frequency _ω_ and radius _r_ measured in §.4.1 and the moment of inertia ( _I_ ) calculated in Appendix C, we find the total specific angular momentum for the central filament is _∼_ 4 _±_ 2 _×_ 10 [20] cm [2] s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Specific angular momentum radial profile power-law index (alpha)",
+   "value": "1.83",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Specific angular momentum profile of filament",
+     "quote": "A fit to the data (using _j_ ( _r_ ) _∝_ _r_ _[α]_ ) gives an exponent of 1 _._ 83 _±_ 0 _._ 01 (see Figure 6)."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of rotational energy to gravitational energy (beta_rot)",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "We obtain a value of _β_ _rot_ _∼_ 0 _._ 04 for the central filament in LBS 23."
+    },
+    {
+     "loc": "C. GRAVITATIONAL AND ROTATIONAL ENERGY ESTIMATION",
+     "quote": "Therefore, the ratio of the rotational energy to gravitational energy ( _β_ _rot_ ) is _∼_ 0 _._ 04."
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament peak H2 number density",
+   "value": "6.6 x 10^6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "we thus estimate a peak and average number density for the central filament to be approximately 6 _._ 6 _×_ 10 [6] cm _[−]_ [3] and 1 _._ 6 _×_ 10 [6] cm _[−]_ [3], respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament average H2 number density",
+   "value": "1.6 x 10^6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "we thus estimate a peak and average number density for the central filament to be approximately 6 _._ 6 _×_ 10 [6] cm _[−]_ [3] and 1 _._ 6 _×_ 10 [6] cm _[−]_ [3], respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament total mass",
+   "value": "11.7",
+   "uncertainty": "50%",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "We sum the column density within the area of the filament to obtain the total filament mass of 11.7 M _⊙_, which corresponds to a linear mass of 64.6 M _⊙_ pc _[−]_ [1] ."
+    },
+    {
+     "loc": "3. RESULTS",
+     "quote": "We estimate an approximate 50% uncertainty in our calculation of the filament mass"
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament linear mass",
+   "value": "64.6",
+   "uncertainty": "not stated",
+   "units": "M_sun pc^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "We sum the column density within the area of the filament to obtain the total filament mass of 11.7 M _⊙_, which corresponds to a linear mass of 64.6 M _⊙_ pc _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Critical linear mass (non-rotating filament)",
+   "value": "25.2",
+   "uncertainty": "not stated",
+   "units": "M_sun pc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "we use Equation 59 in Ostriker (1964) to estimate the critical mass per unit length [3] (for a nonrotating filament) to be _M_ _line,crit_ _∼_ 25 _._ 2 M _⊙_ pc _[−]_ [1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Critical linear mass (rotating filament)",
+   "value": "29.0",
+   "uncertainty": "not stated",
+   "units": "M_sun pc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "we find the critical linear mass ( _M_ _line,crit_ ), for an isothermal rotating filament with truncation radius of _x_ = 3 _._ 0 and normalized angular frequency of _∼_ 0 _._ 36 is 29.0 M _⊙_ pc _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament rotation velocity",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "The rotation velocity is determined to be half of the total velocity range of the filament, or about 0 _._ 3 km s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament velocity gradient (v/r)",
+   "value": "20",
+   "uncertainty": "1",
+   "units": "km s^-1 pc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "Dividing the presumed circumference of the cylinder by the rotation velocity, we estimate the rotation period ( _T_ = 2 _πrv_ [,] [where] _vr_ [=] [20] _[±]_ [1] [km s pc] _[−]_ [1] [)] [to] [be] 3 _._ 1 _×_ 10 [5] years"
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament rotation period (T)",
+   "value": "3.1 x 10^5",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "we estimate the rotation period ( _T_ = 2 _πrv_ [,] [where] _vr_ [=] [20] _[±]_ [1] [km s pc] _[−]_ [1] [)] [to] [be] 3 _._ 1 _×_ 10 [5] years, which corresponds to an angular frequency ( _ω_ ) of 6 _._ 5 _±_ 0 _._ 3 _×_ 10 _[−]_ [13] rad s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Central filament angular frequency (omega)",
+   "value": "6.5 x 10^-13",
+   "uncertainty": "0.3 x 10^-13",
+   "units": "rad s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "which corresponds to an angular frequency ( _ω_ ) of 6 _._ 5 _±_ 0 _._ 3 _×_ 10 _[−]_ [13] rad s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Normalized angular frequency (Omega)",
+   "value": "0.36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Rotation and its effect on filament dynamics",
+     "quote": "Following Recchi et al., we calculate the normalized angular frequency [4] (Ω) for the central filament to be 0.36."
+    }
+   ]
+  },
+  {
+   "quantity": "Plummer profile power-law index (p)",
+   "value": "2.1",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.4. Filament density profile",
+     "quote": "The fit gives values for the power law index ( _p_ ) of 2 _._ 1 _±_ 0 _._ 2, the central (peak) column density ( _N_ 0 ) of 1 _._ 48 _±_ 0 _._ 09 _×_ 10 [23] cm _[−]_ [2], and the radius of the inner flat region ( _R_ _flat_ ) of 0 _._ 006 _±_ 0 _._ 002 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Plummer profile central H2 column density (N_0)",
+   "value": "1.48 x 10^23",
+   "uncertainty": "0.09 x 10^23",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.4. Filament density profile",
+     "quote": "The fit gives values for the power law index ( _p_ ) of 2 _._ 1 _±_ 0 _._ 2, the central (peak) column density ( _N_ 0 ) of 1 _._ 48 _±_ 0 _._ 09 _×_ 10 [23] cm _[−]_ [2], and the radius of the inner flat region ( _R_ _flat_ ) of 0 _._ 006 _±_ 0 _._ 002 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Plummer profile inner flat radius (R_flat)",
+   "value": "0.006",
+   "uncertainty": "0.002",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.4. Filament density profile",
+     "quote": "The fit gives values for the power law index ( _p_ ) of 2 _._ 1 _±_ 0 _._ 2, the central (peak) column density ( _N_ 0 ) of 1 _._ 48 _±_ 0 _._ 09 _×_ 10 [23] cm _[−]_ [2], and the radius of the inner flat region ( _R_ _flat_ ) of 0 _._ 006 _±_ 0 _._ 002 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Average non-thermal velocity dispersion (sigma_NT)",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3. Transonic turbulence in the filament",
+     "quote": "Thus, the average non-thermal velocity component is estimated to be _∼_ 0 _._ 19 km s _[−]_ [1], resulting in an average Mach number ( _M_ _s_ ) of 1.0 for the central filament."
+    }
+   ]
+  },
+  {
+   "quantity": "Average sonic Mach number (M_s)",
+   "value": "1.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3. Transonic turbulence in the filament",
+     "quote": "Thus, the average non-thermal velocity component is estimated to be _∼_ 0 _._ 19 km s _[−]_ [1], resulting in an average Mach number ( _M_ _s_ ) of 1.0 for the central filament."
+    }
+   ]
+  },
+  {
+   "quantity": "Gravitational energy (E_G)",
+   "value": "7.1 x 10^43",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Gravitational Energy ( _E_ _G_ ) 7 _._ 1 _×_ 10 [43] 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulence energy (E_sigma)",
+   "value": "9.7 x 10^42",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Turbulence Energy ( _E_ _σ_ ) 9 _._ 7 _×_ 10 [42] 0.14"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational energy (E_R)",
+   "value": "3.0 x 10^42",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Rotational Energy ( _E_ _R_ ) 3 _._ 0 _×_ 10 [42] 0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field energy (E_B)",
+   "value": "3.4 x 10^43",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Magnetic Field Energy ( _E_ _B_ ) 3 _._ 4 _×_ 10 [43] 0.48"
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulence dissipation rate (L_sigma)",
+   "value": "3.3 x 10^29",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3. Transonic turbulence in the filament",
+     "quote": "we find the free-fall time for our filament to be 1 _._ 9 _×_ 10 [5] yr, which leads to a turbulence dissipation rate of 3 _._ 3 _×_ 10 [29] erg s _[−]_ [1] for the central filament."
+    }
+   ]
+  },
+  {
+   "quantity": "Plane-of-sky magnetic field in C18O region (B_pos)",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "uG",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5. Magnetic fields in the LBS 23 filament",
+     "quote": "With a measured polarization angle dispersion ( _δφ_ ) of 36.6 _[◦]_, and using Eq. 5, we find the magnetic field strength in the plane of the sky in the medium-density region traced by C [18] O is about 50 _µ_ G."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic Mach number (M_A) in dense filament",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5. Magnetic fields in the LBS 23 filament",
+     "quote": "In this region, where the average velocity dispersion ( _σ_ _v_ ) is 0.23 km s _[−]_ [1], the magnetic mach number ( _M_ _A_ = _σ_ _v_ _/V_ _A_ ) is approximately 0.4."
+    }
+   ]
+  },
+  {
+   "quantity": "Dimensionless shock compression parameter (C_v)",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.6. Other interpretations of velocity gradients in filaments and the case for rotation",
+     "quote": "We estimate the linear mass of our filament within the region from which we obtain the velocity gradient (see Figure 5a) to be 69.5 M _⊙_ /pc, which results in _C_ _v_ _≈_ 0 _._ 3."
+    }
+   ]
+  },
+  {
+   "quantity": "N2D+/H2 abundance ratio",
+   "value": "(6-8) x 10^-12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "B. ABUNDANCE RATIO ESTIMATION",
+     "quote": "The N 2 D [+] /H 2 abundance ratio ranges between (6 _−_ 8) _×_ 10 _[−]_ [12], which is similar to the N 2 D [+] abundance observed in other dense cold regions (e.g., Tatematsu et al. 2020)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel (cell) size and image dimensions used in tclean",
+  "Stopping criteria (threshold, niter) used in tclean",
+  "Whether primary beam correction was applied to the maps",
+  "Imaging parameters for the C18O(2-1), 12CO(2-1), 13CO(2-1), and H2CO cubes used in the analysis",
+  "Exact excitation temperature assumed for the C18O column density calculation in Eq. 6"
+ ],
+ "missing_for_reproduction": [
+  "Exact frequency/velocity windows used for the 2nd-order polynomial baseline fit on the TP data",
+  "tclean pixel size, image dimensions, and stopping criteria",
+  "Software or script used to fit the 25 hyperfine Gaussian components to the N2D+(3-2) cube",
+  "Exact polygon/bounding box coordinates for the central filament mass integration, velocity/density profile extraction boxes, and outflow-free turbulence region",
+  "The Herschel-Planck 850 um optical depth map from Lombardi et al. (2014) and JCMT SCUBA polarization vectors from Matthews et al. (2009)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Calibration, array combination, hyperfine fitting, and analytical equations are well documented with explicit parameter values and appendices, though some imaging parameters (cell size, cleaning thresholds) and exact spatial extraction regions are not explicitly tabulated.",
+ "rediscovery_reason": "Public ALMA Cycle 4 data (2016.1.01338.S) with a clear analytical pipeline leading to well-defined quantitative results (velocity gradient, specific angular momentum profile slope alpha = 1.83, filament mass, and energy budget).",
+ "source_card": "cards/2021ApJ...908...92H/sonnet/card.md"
+}

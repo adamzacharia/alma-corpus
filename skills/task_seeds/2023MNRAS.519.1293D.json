@@ -1,0 +1,456 @@
+{
+ "bibcode": "2023MNRAS.519.1293D",
+ "title": "A closer look at NGC 7314 nuclear region: a multiwavelength analysis of the Seyfert nucleus and its surroundings",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3454",
+ "arxiv_id": "2212.11434",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "To identify the main ionization mechanisms in the nuclear and circumnuclear regions of NGC 7314 within a radius of about 300 pc, study the AGN emission and variability, and analyse the gas kinematics.",
+ "alma_project_codes": [
+  "2017.1.00082.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.092 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to NGC 7314 of 16 Mpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "NGC 7314 is a SAB(rs)bc galaxy (cite: rc3) located at 16 Mpc of distance (cite: distancia7314), which corresponds to an angular-to-physical scale of 0.013 arcsec$pc^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: distancia7314)"
+  },
+  {
+   "what": {
+    "value": "Redshift of NGC 7314 z = 0.00476",
+    "evidence": [
+     {
+      "loc": "Creation of the gas data cube",
+      "quote": "We also corrected the spectra for redshift, using $z = 0.00476$ (cite: kor04)."
+     }
+    ]
+   },
+   "citation": "(cite: kor04)"
+  },
+  {
+   "what": {
+    "value": "Central SMBH mass of 1.74 +/- 0.26 x 10^6 M_sun",
+    "evidence": [
+     {
+      "loc": "The broad Halpha and Hbeta components",
+      "quote": "The mass of the central SMBH was taken as $1.74 \\pm 0.26~\times~10^6$ M$_{\\ensuremath{\\odot}}$ (cite: onori17)."
+     }
+    ]
+   },
+   "citation": "(cite: onori17)"
+  },
+  {
+   "what": {
+    "value": "Inclination of 55 deg for the molecular CO structure",
+    "evidence": [
+     {
+      "loc": "The dusty torus",
+      "quote": "The authors also obtained an inclination of 55 deg for the molecular structure, which is not compatible with the value we obtained from the modelling of the BLR."
+     }
+    ]
+   },
+   "citation": "(cite: 2021gatos)"
+  },
+  {
+   "what": {
+    "value": "Pure shock-heating model emission-line ratios from the Mappings III library",
+    "evidence": [
+     {
+      "loc": "Shock heating",
+      "quote": "In order to evaluate if such a scenario is plausible, we retrieved the values of the emission-line ratios resulting from pure shock-heating models from the Mappings III library (cite: all08)."
+     }
+    ]
+   },
+   "citation": "(cite: all08)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and treat GMOS optical IFU data cube and subtract stellar/AGN continuum",
+   "method": "Reduce raw GMOS data in IRAF, correct for differential atmospheric refraction, combine via median, apply Butterworth spatial filtering, remove instrumental fingerprint, perform Richardson-Lucy deconvolution, and subtract continuum using STARLIGHT spectral synthesis.",
+   "software": [
+    "IRAF",
+    "Gemini IRAF package",
+    "IDL",
+    "STARLIGHT"
+   ],
+   "key_parameters": [
+    "spaxel size = 0.05 arcsec; Butterworth filter order n = 2, cut-off = 0.2 Ny; deconvolved PSF FWHM ~ 0.42 arcsec"
+   ],
+   "assumptions": [
+    "Galactic extinction AV = 0.058 with Cardelli et al. (1989) law; redshift z = 0.00476; MILES stellar library plus AGN power-law continuum with spectral index 1.5"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Align multiwavelength datasets (GMOS, HST, ALMA, SPLUS) and map emitting regions and kinematics",
+   "method": "Remove cosmic rays from HST images using L.A.Cosmic, match HST filters on nuclear peak, align GMOS broad Halpha peak with HST F814W peak and ALMA CO(3-2) kinematic centre, and construct emission-line maps, channel maps, and Gaussian velocity/dispersion maps.",
+   "software": [
+    "L.A.Cosmic"
+   ],
+   "key_parameters": [
+    "HST FOV = 11.9 x 10.6 arcsec^2"
+   ],
+   "assumptions": [
+    "Emission peak in HST F814W, GMOS broad Halpha peak, and ALMA CO(3-2) kinematic centre all correspond to the AGN position"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Decompose optical emission lines and measure fluxes and line ratios in Regions 1, 2, and 3",
+   "method": "Extract spectra from Regions 1, 2, and 3; decompose narrow lines into blueshifted and redshifted Gaussians using the [S II] doublet as an empirical width/redshift template, plus broad Gaussians for BLR emission; correct for interstellar extinction via Balmer decrement and repeat decomposition.",
+   "software": [],
+   "key_parameters": [
+    "100 Monte Carlo iterations for uncertainty estimation"
+   ],
+   "assumptions": [
+    "[S II] and [N II] lines are emitted by the same partially ionized region with similar widths and radial velocities; Cardelli et al. (1989) extinction law"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model photoionization and shock heating of narrow and coronal line regions",
+   "method": "Generate grids of photoionization models with CLOUDY v13.03 to reproduce observed emission-line ratios in Regions 1, 2, and 3, and compare asymmetric components in Regions 2 and 3 with pure shock-heating models from the Mappings III library.",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "AGN continuum spectral index = 1.5; AGN bolometric luminosity = 2.5 x 10^43 erg s^-1; electron densities from [S II]6716/6731 at T = 10000 K; free parameters: filling factor, chemical abundances, low-energy cut-off, and (for Region 1) distance and CLR density"
+   ],
+   "assumptions": [
+    "T = 10,000 K for [S II] density calculation; bolometric correction of 600 for [O III]5007; distance from AGN equals projected distance for Regions 2 (2.8 x 10^20 cm) and 3 (4.0 x 10^20 cm)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model the broad Halpha line profile in Region 1 to derive BLR geometry",
+   "method": "Fit a toy model of two circular rotating ring-shaped regions around the SMBH to the broad and very broad Halpha components.",
+   "software": [],
+   "key_parameters": [
+    "Free parameters: radius (r), inclination (i), and Gaussian width (sigma_Gauss) of each rotating ring"
+   ],
+   "assumptions": [
+    "SMBH mass = 1.74 +/- 0.26 x 10^6 M_sun; circular Keplerian rotating rings"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Reduce X-ray data and perform spectral variability and broadband torus reflection modelling",
+   "method": "Process XMM-Newton data with SAS and NuSTAR data with NUSTARDAS/HEASOFT; perform individual and simultaneous multi-epoch XMM-Newton spectral fits and combined XMM-Newton+NuSTAR broadband spectral fits using pexrav and borus02 torus reflection models in XSPEC.",
+   "software": [
+    "SAS",
+    "EPATPLOT",
+    "NUSTARDAS",
+    "NUPIPELINE",
+    "NUPRODUCTS",
+    "CALDB",
+    "HEASOFT",
+    "FTOOLS",
+    "grppha",
+    "NH",
+    "XSPEC",
+    "BORUS"
+   ],
+   "key_parameters": [
+    "XMM source radius = 35 arcsec, background radius = 70 arcsec, min 25 counts/bin; NuSTAR source radius = 50 arcsec, min 20 counts/bin; Fe Kalpha E = 6.4 keV, sigma = 0.01 keV; pexrav E_cut = 100 keV; borus02 half-opening angle fixed to 25 deg"
+   ],
+   "assumptions": [
+    "Galactic NH fixed to FTOOLS NH prediction; scattered power-law normalisation <= 1% of nuclear component; torus half-opening angle = 25 deg from BLR modelling"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Deconvolved GMOS PSF FWHM",
+   "value": "0.42",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "GMOS data",
+     "quote": "The resulting broad H$\\alpha$ image provided a FWHM of the PSF of $\\sim$ 0.42 arcsec."
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear [Fe VII]6087 flux (Region 1)",
+   "value": "17.9",
+   "uncertainty": "0.7",
+   "units": "10^-15 erg cm^-2 s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Coronal Emission Lines",
+     "quote": "we measured a nuclear flux of 17.9$\\pm$0.7 $\\times  10^{-15}$ erg cm$^{-2}$ s$^{-1}$ for the \\[Fe vii\\]$\\lambda6087$ at Region 1."
+    }
+   ]
+  },
+  {
+   "quantity": "Circumnuclear [Fe VII]6087 integrated flux (Region 3)",
+   "value": "5.8",
+   "uncertainty": "not stated",
+   "units": "10^-16 erg cm^-2 s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Coronal Emission Lines",
+     "quote": "At Region 3, the integrated flux decreases to about 5.8 $\times 10^{-16}$ erg cm$^{-2}$ s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha broad component integrated flux (Region 1)",
+   "value": "710",
+   "uncertainty": "3",
+   "units": "10^-15 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "H$\\alpha$ broad component | 710 $\\pm$ 3 | 11.4 $\\pm$ 0.4 | 1.68 $\\pm$ 0.23"
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha very broad component integrated flux (Region 1)",
+   "value": "264",
+   "uncertainty": "34",
+   "units": "10^-15 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "H$\\alpha$ very broad component | 264 $\\pm$ 34 | \\- | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "Hbeta broad component integrated flux (Region 1)",
+   "value": "76.4",
+   "uncertainty": "1.1",
+   "units": "10^-15 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "H$\beta$ broad component | 76.4 $\\pm$ 1.1 | \\- | \\-"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III]5007/Hbeta ratio (Region 1, blueshifted)",
+   "value": "15.10",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of emission-line ratios (observed values, Region 1 narrow line region, blueshifted)",
+     "quote": "15.10 $\\pm$ 0.16"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III]5007/Hbeta ratio (Region 1, redshifted)",
+   "value": "13.76",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of emission-line ratios (observed values, Region 1 narrow line region, redshifted)",
+     "quote": "13.76 $\\pm$ 0.15"
+    }
+   ]
+  },
+  {
+   "quantity": "Coronal line region distance from AGN (Region 1 CLOUDY model)",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Coronal line emission",
+     "quote": "However, the results indicate that the CLs are emitted by gas much closer to the central AGN ($\\sim$0.8 pc) than that responsible for the lower ionization lines ($\\sim$ 20 pc for the blueshifted components and 104 pc for the redshifted components)."
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha broad component FWHM (Region 1)",
+   "value": "1092",
+   "uncertainty": "6",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FWHM (km s$^{-1}$) | 1092 $\\pm$6 | H$\\alpha$=3044 $\\pm$5"
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha very broad component FWHM (Region 1)",
+   "value": "3044",
+   "uncertainty": "5",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FWHM (km s$^{-1}$) | 1092 $\\pm$6 | H$\\alpha$=3044 $\\pm$5"
+    }
+   ]
+  },
+  {
+   "quantity": "BLR ring inclination (broad component)",
+   "value": "25",
+   "uncertainty": "8",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Inclination ($^\\circ$) | 25 $\\pm$ 8 | 20 $\\pm$ 7"
+    }
+   ]
+  },
+  {
+   "quantity": "BLR ring inclination (very broad component)",
+   "value": "20",
+   "uncertainty": "7",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Inclination ($^\\circ$) | 25 $\\pm$ 8 | 20 $\\pm$ 7"
+    }
+   ]
+  },
+  {
+   "quantity": "BLR ring radius (broad component)",
+   "value": "0.62",
+   "uncertainty": "0.07",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Radius (pc) | 0.62 $\\pm$ 0.07 | 0.047 $^{+0.018}_{-0.005}$"
+    }
+   ]
+  },
+  {
+   "quantity": "BLR ring radius (very broad component)",
+   "value": "0.047",
+   "uncertainty": "+0.018/-0.005",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Radius (pc) | 0.62 $\\pm$ 0.07 | 0.047 $^{+0.018}_{-0.005}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Torus column density log(NH-Tor) (borus02 model)",
+   "value": "25.11",
+   "uncertainty": "+0.06/-0.04",
+   "units": "log(cm^-2)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Broadband X-ray spectral analysis",
+     "quote": "Our model allowed us to put constrains on the column density of the torus-like reflector, consistent with a Compton-thick torus (log(N$_{\rm {H-Tor}}$) = 25.11$_{0.04}^{0.06}$ cm$^{\rm{-2}}$), covering $\\sim$93 per cent of the sky."
+    }
+   ]
+  },
+  {
+   "quantity": "Torus covering factor CF (borus02 model)",
+   "value": "0.93",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "CF | 0.93$\\pm$0.01"
+    }
+   ]
+  },
+  {
+   "quantity": "Line-of-sight column density log(NH) (borus02 model)",
+   "value": "21.88",
+   "uncertainty": "0.01",
+   "units": "log(cm^-2)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$\\log$(N$_{\rm H}$) (cm$^{-2}$) | 21.88$\\pm$0.01"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray photon index Gamma (borus02 model)",
+   "value": "1.90",
+   "uncertainty": "+0.05/-0.02",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$\\Gamma$ | 1.90$_{0.02}^{0.05}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray high-energy cut-off E_cut (borus02 model)",
+   "value": "69.87",
+   "uncertainty": "+3.11/-2.88",
+   "units": "keV",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "E$_{\rm cut}$ (keV) | 69.87$_{2.88}^{3.11}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the ALMA CO(3-2) data cube was taken directly as an archival pipeline product or re-reduced/re-imaged from raw visibilities",
+  "Details of ALMA calibration and imaging parameters (CASA version, weighting, continuum subtraction, channel width, velocity range for integrated CO(3-2) map and RGB velocity channels)",
+  "Exact coordinates determined for the ALMA CO(3-2) kinematic centre used for astrometric alignment with GMOS"
+ ],
+ "missing_for_reproduction": [
+  "Exact aperture sizes and coordinates for Regions 2 and 3 in the GMOS data cube",
+  "Specific stellar population base spectra subset from MILES used in STARLIGHT",
+  "ALMA data processing details (whether archive products were used as-is and velocity integration limits for Figure 5b and Figure 12)",
+  "Custom IDL scripts used for GMOS data treatment and the BLR rotating-ring toy model"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "All raw datasets are public and the optical/X-ray analysis steps and software versions are well documented, but ALMA processing details are omitted (relying on García-Burillo et al. 2021), custom IDL scripts for IFU deconvolution/toy modelling are not released, and the treated GMOS cube requires a web request.",
+ "rediscovery_reason": "All primary raw data (GMOS, XMM-Newton, NuSTAR, HST, ALMA) are public in standard archives, and the main quantitative results (optical line fluxes/ratios, BLR ring parameters, CLOUDY distances, and XSPEC/borus02 torus parameters) are clearly tabulated.",
+ "source_card": "cards/2023MNRAS.519.1293D/sonnet/card.md"
+}

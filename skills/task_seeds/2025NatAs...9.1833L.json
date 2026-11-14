@@ -1,0 +1,361 @@
+{
+ "bibcode": "2025NatAs...9.1833L",
+ "title": "Detection of a septuple stellar system in formation via disk fragmentation",
+ "year": 2025,
+ "doi": "10.1038/s41550-025-02682-9",
+ "arxiv_id": "2509.06787",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Can disk fragmentation in a gravitationally unstable disk form an extreme high-order (septuple) protostellar system in the high-mass region NGC 6334IN?",
+ "alma_project_codes": [
+  "2021.1.00713.S",
+  "2022.1.00671.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm), 12-m array",
+  "arrays": "not stated",
+  "angular_resolution": "0.30\"x0.27\" (low-res); 0.076\"x0.058\" (combined)",
+  "sensitivity": "continuum rms 0.36 (short) and 0.12 mJy/beam (combined); line rms 10 and 3 mJy/beam at ~0.65 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 1.3 kpc to NGC 6334IN",
+    "evidence": [
+     {
+      "loc": "High-mass protocluster NGC 6334IN",
+      "quote": "a nearby (1.3 kpc) high-mass star formation region encompassing sites at various evolutionary stages (cite: Chibueze2014; Reid2014; Straw1989)"
+     }
+    ]
+   },
+   "citation": "(cite: Chibueze2014; Reid2014)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_1.3mm = 0.9 cm2/g from Ossenkopf & Henning Table 1 column 6",
+    "evidence": [
+     {
+      "loc": "Estimating gas mass from dust continuum emission",
+      "quote": "This value is retrieved from column 6 of Table 1 in ref. (cite: Ossenkopf1994)."
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Clump-averaged volume density 2e7 cm-3",
+    "evidence": [
+     {
+      "loc": "Jeans length",
+      "quote": "If we use the clump averaged volume density of 2 $\\times$ 10$^{7}$ cm$^{-3}$ (ref.(cite: Sandell2000))"
+     }
+    ]
+   },
+   "citation": "(cite: Sandell2000)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate, combine and image",
+   "method": "CASA calibration, phase-only self-cal per epoch, combine, tclean continuum (robust 0.5) and YCLEAN cubes",
+   "software": [
+    "CASA",
+    "tclean",
+    "YCLEAN"
+   ],
+   "key_parameters": [
+    "robust 0.5; CH3CN cubes robust 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify condensations and measure fluxes",
+   "method": "CASA imfit Gaussian fits, preselected from uv>1.3 km image, then fit on full combined image",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "4 components for C1,C2,C4,C5; 1 for C3; 2 for C6,C7"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive gas temperature maps",
+   "method": "XCLASS fitting of 13CH3CN J=13-12 K=0-6 ladders per pixel, with CH3COOH, CH3OCHO, CH3OCH3 included",
+   "software": [
+    "XCLASS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Gas temperature approximates dust temperature"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive masses, densities, surface densities",
+   "method": "Optically thin dust emission formula with T from 13CH3CN",
+   "software": [],
+   "key_parameters": [
+    "kappa_1.3mm = 0.9 cm2/g; mu=2.8; D=1.3 kpc"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit disk kinematics and enclosed mass",
+   "method": "3DBarolo tilted-ring fit to low-resolution CH3CN 12_4-11_4 cube; power-law fit to rotation velocities; Keplerian enclosed mass",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "circular geometry, Keplerian rotation V∝r^-0.5"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Toomre Q maps",
+   "method": "Q = c_s kappa/(pi G Sigma) with Keplerian kappa from M_cl=7.6 Msun, Sigma from disk mass 2.71 Msun, T maps",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Q<1-2 unstable"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test boundedness and virial state, Jeans lengths",
+   "method": "Virial parameter (Bertoldi & McKee), E_i/|W_i| from 13CH3CN centroid velocities, Jeans length comparison",
+   "software": [],
+   "key_parameters": [
+    "b=2 density profile; M_tot=10 M_gas; V_disk=-3 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Compare with disk fragmentation simulation",
+   "method": "Pluto radiation-hydro simulation post-processed with RADMC-3D to synthetic 1.3 mm continuum and CH3CN cubes",
+   "software": [
+    "Pluto",
+    "RADMC-3D"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust=200 K for fragment masses"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk inclination",
+   "value": "26.3",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dynamical mass of the embedded structures",
+     "quote": "The best-fits results in an inclination angle of 26.3$^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation velocity power-law index",
+   "value": "-0.53",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dynamical mass of the embedded structures",
+     "quote": "$V_{\\rm rot} \\propto r^{-0.53 \\pm 0.09}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed mass M_cl",
+   "value": "7.6",
+   "uncertainty": "1.4",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dynamical mass of the embedded structures",
+     "quote": "$M_{\\rm cl}$ = 7.6 $\\pm$ 1.4 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Condensation gas masses",
+   "value": "0.04–0.25",
+   "uncertainty": "53%",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Estimating gas mass from dust continuum emission",
+     "quote": "The derived condensation gas masses, $M_{\\rm gas}$, range from 0.04 to 0.25 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk gas mass",
+   "value": "1.87",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Estimating gas mass from dust continuum emission",
+     "quote": "We derive a parent disk mass, $M_{\\rm disk}$, of 1.87 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar mass",
+   "value": "4.89",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summerizng the measured masses from the observations",
+     "quote": "$M_{\\ast}$ = $M_{\\rm cl}-M_{\\rm disk}-\\sum M_{\\rm gas}$ = 4.89 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-to-star mass ratio",
+   "value": "0.2–0.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "results in a disk-to-star mass ratio of $M_{\\rm disk}/M_{\\ast} = 0.2$–$0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nearest-neighbour projected separations",
+   "value": "181–461 (mean 298)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "The projected separations of the nearest-neighbor pairs range from 181 to 461 AU, with an average separation of 298 AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean deprojected separation",
+   "value": "332",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "with a mean separation of 332 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal Jeans length",
+   "value": "1168",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Jeans length",
+     "quote": "The derived thermal Jeans length is 1168 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent Jeans length",
+   "value": "3460",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Jeans length",
+     "quote": "resulting in turbulent Jeans lengths of 3460 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q uncertainty",
+   "value": "54%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Calculation of the Toomre $Q$ parameter",
+     "quote": "Then the uncertainty in the Toomre $Q$ parameter is estimated to be 54%."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter range",
+   "value": "0.1–1.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Virial parameter of condensations",
+     "quote": "ranges from 0.1 to 1.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas temperatures high-res",
+   "value": "50–786",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimate of gas temperatures",
+     "quote": "the derived rotational temperatures vary from 50 to 786 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum",
+  "Image size and cell size, clean threshold and masks for tclean",
+  "Exact XCLASS fitting setup (priors, column density/linewidth ranges, source size)",
+  "3DBarolo parameters (ring radii, widths, masks, fixed/free parameters)",
+  "Which line-free channels and uv range exact for imfit preselection (units of uv cut given as '>1.3 km')",
+  "Rest frequencies of lines",
+  "Radiative-transfer details of the CH3CN abundance thresholds and simulation beam convolution",
+  "Size of imfit input components/initial guesses",
+  "Reduced data only available on request"
+ ],
+ "missing_for_reproduction": [
+  "Reduced/combined measurement sets (on request only)",
+  "Simulation snapshot from Oliva & Kuiper",
+  "XCLASS and 3DBarolo configuration details",
+  "Imaging parameters beyond robust"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public raw data and clear measurement chain with numbers, but key fitting/imaging settings missing and reduced data on request.",
+ "rediscovery_reason": "Public archive data, stated robust and imfit procedure, numeric results (masses, separations, Q), though some settings are missing.",
+ "source_card": "cards/2025NatAs...9.1833L/sonnet/card.md"
+}

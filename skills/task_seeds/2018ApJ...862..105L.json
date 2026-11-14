@@ -1,0 +1,218 @@
+{
+ "bibcode": "2018ApJ...862..105L",
+ "title": "The Core Mass Function across Galactic Environments. II. Infrared Dark Cloud Clumps",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aacb7c",
+ "arxiv_id": "1806.02213",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What is the core mass function in IRDC clumps, and does it differ from the Salpeter IMF and from the more evolved G286 protocluster?",
+ "alma_project_codes": [
+  "2013.1.00806.S"
+ ],
+ "data": {
+  "bands": "1.3 mm continuum, continuum band centred at 231.55 GHz",
+  "arrays": "12 m array only, 29 antennas; no ACA",
+  "angular_resolution": "not stated",
+  "sensitivity": "1 sigma ~0.2 mJy in ~1.36x0.82 arcsec beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity 0.899 cm2/g (moderately coagulated thin ice mantle model)",
+    "evidence": [
+     {
+      "loc": "2.3 Core Mass Estimation",
+      "quote": "moderately coagulated thin ice mantle model of Ossenkopf & Henning 1994"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning 1994"
+  },
+  {
+   "what": {
+    "value": "Gas-to-refractory-dust ratio of 141",
+    "evidence": [
+     {
+      "loc": "2.3 Core Mass Estimation",
+      "quote": "using a gas-to-refractory-component-dust ratio of 141 (Draine 2011)"
+     }
+    ]
+   },
+   "citation": "Draine 2011"
+  },
+  {
+   "what": {
+    "value": "G286 CMF results for comparison",
+    "evidence": [
+     {
+      "loc": "3.3 Comparison to G286",
+      "quote": "Paper I also presented results for 1.0$''$ resolution and with a noise level of 0.45 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "citation": "Cheng et al. 2018 (Paper I)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure flux recovery vs BGPS",
+   "method": "Compare ALMA flux above 3 sigma and BGPS flux in 27'' aperture, scaling BGPS to 231.6 GHz",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify cores",
+   "method": "astrodendro on images before primary-beam correction; leaves are cores; within primary beam FWHM; clumpfind as alternative",
+   "software": [
+    "astrodendro",
+    "clumpfind"
+   ],
+   "key_parameters": [
+    "trunk 4 sigma, branch +1 sigma, min leaf area 0.5 beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate core masses",
+   "method": "Optically thin dust emission, Sigma_mm formula",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=20 K, kappa_1.3mm,d=0.899 cm2/g, gas-to-dust 141"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive completeness corrections",
+   "method": "Insert artificial Gaussian cores (3 at a time, 50 repeats, 150 experiments per mass) over 10^-1 to 10^1.2 Msun, rerun dendrogram",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit CMF power law and compare",
+   "method": "Least-squares in log dN/dlogM with Poisson errors, and MLE (Newman 2005), five bins per dex; KS tests vs Salpeter and G286",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of cores",
+   "value": "107",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Images",
+     "quote": "Overall we have identified 107 cores in these images."
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux recovery fraction vs BGPS",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Observational Data",
+     "quote": "we derive a median flux recovery fraction of 0.19 $\\pm$ 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined true CMF alpha, M>=0.79 Msun (simple)",
+   "value": "0.86",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Core Mass Function",
+     "quote": "power law indices for $M>0.79\\:M_\\odot$ of $\\alpha=0.50\\pm0.10$, $0.49\\pm0.09$ and $0.86\\pm0.11$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined true CMF alpha, M>=1.26 Msun (simple)",
+   "value": "0.70",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Core Mass Function",
+     "quote": "then we derive $\\alpha=0.70\\pm0.13$ for the true CMF"
+    }
+   ]
+  },
+  {
+   "quantity": "MLE alpha, M>=1.26 Msun",
+   "value": "0.83",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Core Mass Function",
+     "quote": "The MLE analysis yields $\\alpha=0.83\\pm0.09$."
+    }
+   ]
+  },
+  {
+   "quantity": "KS p-value IRDC vs G286 (M>=0.79 / >=1.26)",
+   "value": "0.42 / 0.23",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Comparison to G286",
+     "quote": "the KS test yields $p=0.23$"
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass range",
+   "value": "0.261 to 178",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Images",
+     "quote": "The masses range from $0.261 M_{\\odot}$ to $178\\:M_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration and imaging details (CASA version, weighting, robust, tclean settings, cell and image size) not given",
+  "Dust temperature adopted is implied 20 K fiducial but only via the formula",
+  "How 4 sigma threshold images were produced from the archive products",
+  "Exact binning and fitting code for CMF power law",
+  "Mass-dependent f_flux and f_num curves are only shown in figures"
+ ],
+ "missing_for_reproduction": [
+  "Calibration/imaging parameters",
+  "Core catalog is in Table 1 but completeness curves only in figures"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear analysis recipe with a core table, but imaging steps and some parameters are inherited or unstated.",
+ "rediscovery_reason": "Public data, explicit dendrogram parameters, numeric CMF indices.",
+ "source_card": "cards/2018ApJ...862..105L/sonnet/card.md"
+}

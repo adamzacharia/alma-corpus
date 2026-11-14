@@ -1,0 +1,235 @@
+{
+ "bibcode": "2017MNRAS.472.4024R",
+ "title": "Close entrainment of massive molecular gas flows by radio bubbles in the central galaxy of Abell 1795",
+ "year": 2017,
+ "doi": "10.1093/mnras/stx2255",
+ "arxiv_id": "1708.08935",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "How does the molecular gas in the Abell 1795 central galaxy relate morphologically and kinematically to the radio bubbles, and can the gas be entrained by them?",
+ "alma_project_codes": [
+  "2015.1.00623.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12 m array, 38 antennas",
+  "angular_resolution": "0.8 x 0.6 arcsec, PA -15.3 deg (cube, natural weighting)",
+  "sensitivity": "0.64 mJy/beam in 10 km/s channels; continuum rms 0.026 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish IRAM 30m CO flux and CO(2-1)/CO(1-0)=0.8 line ratio",
+    "evidence": [
+     {
+      "loc": "Molecular gas mass",
+      "quote": "brightness line ratio of CO(2-1)/CO(1-0)$=0.8$ measured for Abell 1795 in single dish observations"
+     }
+    ]
+   },
+   "citation": "(cite: Salome03)"
+  },
+  {
+   "what": {
+    "value": "VLA 22 GHz nuclear flux 4.6±0.3 mJy",
+    "evidence": [
+     {
+      "loc": "Nuclear continuum",
+      "quote": "nuclear flux measurement at $22\\rm\\; GHz$ of $4.6\\pm0.3\\rm\\; mJy$"
+     }
+    ]
+   },
+   "citation": "(cite: Liuzzo09)"
+  },
+  {
+   "what": {
+    "value": "Gravitational potential (NFW) and cooling/free-fall time ratios",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Based on the gravitational potential for the central galaxy in Abell 1795 determined by (cite: Hogan17)"
+     }
+    ]
+   },
+   "citation": "(cite: Hogan17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(2-1) cube and continuum",
+   "method": "ALMA pipeline calibration, UVCONTSUB, CLEAN with natural weighting; continuum from line-free channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "10 km/s channels; natural weighting; continuum Briggs robust=0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit integrated spectra of regions",
+   "method": "Two-Gaussian fit to total spectrum and regional spectra",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [
+    "Total region 4x14 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Map multiple velocity components",
+   "method": "Fit 1-3 Gaussians per beam-sized spectrum at each pixel; 3 sigma detection from 5000 Monte Carlo simulations",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure velocity gradient along N filament",
+   "method": "PV diagram; 2D Gaussian fits to channel maps projected along filament; linear fit v=ax+b",
+   "software": [],
+   "key_parameters": [
+    "Channels -100 to -250 km/s; collision regions excluded"
+   ],
+   "assumptions": [
+    "Gradient not corrected for inclination"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Nuclear continuum and spectral index",
+   "method": "Point-source flux at 225.76 GHz combined with 22 GHz flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive molecular gas mass",
+   "method": "M_mol from CO(2-1) intensity via CO(2-1)/CO(1-0)=0.8 and Galactic XCO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "XCO=2e20 cm^-2 (K km/s)^-1, factor of a few uncertainty"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Energy budget of uplift",
+   "method": "Compare 4PV cavity energy with potential plus kinetic energy of lifted gas",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Prolate spheroid cavity; Hogan17 potential"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(2-1) integrated intensity",
+   "value": "13.1",
+   "uncertainty": "0.6",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular gas morphology: entrainment",
+     "quote": "The total integrated intensity is $13.1\\pm0.6\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass (Galactic XCO)",
+   "value": "3.3e9 (text); 3.2e9 (abstract)",
+   "uncertainty": "0.2e9",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the total molecular gas mass is $3.2\\pm0.2\\times10^{9}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N filament velocity gradient a",
+   "value": "-35.5",
+   "uncertainty": "0.9",
+   "units": "km/s/kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Position-velocity diagrams",
+     "quote": "$a=-35.5\\pm0.9\\hbox{$\\hbox{$\\rm\\; km\\rm\\; s^{-1}\\,$}\\rm\\; kpc^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear continuum flux at 225.76 GHz",
+   "value": "3.2",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Nuclear continuum",
+     "quote": "nuclear point source of $3.2\\pm0.2\\rm\\; mJy$ at $225.76\\rm\\; GHz$"
+    }
+   ]
+  },
+  {
+   "quantity": "Core spectral index",
+   "value": "-0.16",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Nuclear continuum",
+     "quote": "$\\alpha=-0.16\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow energy",
+   "value": "~7e57",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Direct uplift of molecular gas clouds",
+     "quote": "$E_{\\mathrm{out}}\\sim7\\times10^{57}\\rm\\; erg$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, mask, niter, cell and image size",
+  "Line-free channel ranges for UVCONTSUB",
+  "Primary-beam correction method and instrumental-broadening correction details",
+  "Spectral-fit initial guesses and the Monte Carlo procedure for the 3-sigma detection",
+  "Exact regions for N/S filament and centre spectra and PV apertures",
+  "Luminosity distance used in the mass formula",
+  "Whether the cube was binned before or after imaging"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters",
+  "Line-free channel ranges",
+  "Region definitions",
+  "Auxiliary Chandra/HST/VLA data processing"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps are described, but imaging parameters and regions are missing; key masses are numeric.",
+ "rediscovery_reason": "Single project code, simple pipeline-calibrated imaging, and numeric results (flux, mass, velocity gradient).",
+ "source_card": "cards/2017MNRAS.472.4024R/sonnet/card.md"
+}

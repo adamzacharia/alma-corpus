@@ -1,0 +1,1310 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Footprint of the nine ASAGAO sub-regions (red) overlaid on the HST/WFC3 F160W image, with the ASPECS, HUDF and GOODS-ALMA survey areas outlined for comparison.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right Ascension",
+      "units": "hms"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination",
+      "units": "dms"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 0,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "ASAGAO region consisting of nine sub-regions (red) overlaid on the HST/WFC3 F160W image.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "other",
+    "panels": 2,
+    "shows": "Frequency setups of the ASAGAO tunings, HUDF and GOODS-ALMA spectral windows (table), together with the atmospheric transmission and a modified black body spectrum scaled to 1 mJy at 243 GHz.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "Atmospheric transmission",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "inset",
+      "quantity": "Flux density (modified black body, z=2)",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. ASAGAO tuning 1 spw0 centre 254.12 GHz",
+     "approx. ASAGAO tuning 2 spw0 centre 245.12 GHz",
+     "approx. HUDF spw0 centre 212.2 GHz"
+    ],
+    "caption_quote": "Frequency setups of ASAGAO tuning 1 (red), tuning 2 (blue), HUDF (purple), and GOODS-ALMA (green).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "residual_map",
+    "panels": 2,
+    "shows": "Signal-to-noise ratio map with a 250 kλ taper and the primary beam coverage map of the original ASAGAO data.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right Ascension",
+      "units": "hms"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination",
+      "units": "dms"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Signal-to-noise ratio",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "Signal-to-noise ratio map with a 250 kλ taper (left) and the primary beam coverage map (right) based on the original ASAGAO data.",
+    "reproduction_target": false,
+    "crop_ok": false
+   },
+   {
+    "number": 4,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Pixel flux density distribution of the original ASAGAO signal map with a Gaussian fit, giving the noise level.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Flux density",
+      "units": "mJy beam^-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Number of pixels",
+      "units": "count (log)"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Gaussian noise fit to the pixel distribution sets the map rms.",
+    "readable_values": [
+     "approx. 1 sigma = 61 µJy beam^-1 from Gaussian fit",
+     "approx. peak pixel count 6e5 near 0 mJy beam^-1"
+    ],
+    "caption_quote": "The dashed curve shows the result of a Gaussian fit (1σ = 61 µJy beam−1).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "other",
+    "panels": 1,
+    "shows": "uv-plane coverage of the combined visibilities.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv distance u",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "uv distance v",
+      "units": "kλ"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "uv-plane coverage of the combined data.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Combined signal map (ASAGAO + HUDF + GOODS-ALMA) with 250 kλ taper, corrected for primary beam, with squares marking the 45 detected sources.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right Ascension",
+      "units": "hms"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination",
+      "units": "dms"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Flux density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "The squares represent the detected sources.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "sky_image",
+    "panels": 2,
+    "shows": "Primary beam coverage map (left) and rms noise map corrected for primary beam attenuation (right) for the combined data.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "Primary beam response",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "colour",
+      "quantity": "rms noise",
+      "units": "µJy beam^-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. primary beam response 1.0 at centre",
+     "approx. rms noise 50 µJy beam^-1 over most of the field"
+    ],
+    "caption_quote": "The rms noise map is corrected for primary beam attenuation.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Cumulative survey area as a function of 1-sigma rms noise for the ASAGAO-only and combined data.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "1 sigma flux density",
+      "units": "µJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "Area",
+      "units": "arcmin^2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. combined survey area 26.5 arcmin^2 at 150 µJy",
+     "approx. ASAGAO-only area 26 arcmin^2 at 250 µJy"
+    ],
+    "caption_quote": "Cumulative area of the combined map as a function of rms noise level (corrected for primary beam attenuation) for the ASAGAO only data (dashed) and the combined data (solid).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "histogram",
+    "panels": 2,
+    "shows": "Pixel flux density distribution of the combined signal map with Gaussian fit and the ratio of the distribution to the fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Flux density",
+      "units": "mJy beam^-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Number of pixels",
+      "units": "count (log)"
+     },
+     {
+      "axis": "y",
+      "quantity": "Ratio to Gaussian",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 2,
+    "validation_check": "Compares the non-Gaussian tail of the pixel distribution with the Gaussian fit to indicate real signal.",
+    "readable_values": [
+     "approx. 1 sigma = 34 µJy beam^-1 from Gaussian fit"
+    ],
+    "caption_quote": "The dashed curve shows the result of a Gaussian fit (1σ = 34 µJy beam−1).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "sky_image",
+    "panels": 3,
+    "shows": "Postage-stamp images of the ASAGAO sources at or above 4.5 sigma for no taper, 250 kλ taper and 160 kλ taper, with contours and synthesized beams.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "Flux density",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "Signal-to-noise",
+      "units": "sigma"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "Visual check of source morphology across tapers for spurious or extended emission.",
+    "readable_values": [],
+    "caption_quote": "Postage-stamp images of the ASAGAO ≥4.5σ sources with no taper (left), a 250-kλ taper (middle), and a 160-kλ taper (right).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Cumulative number of positive and negative peaks as a function of peak SN threshold, used to estimate spurious detections.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Peak SN",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "N(>SN)",
+      "units": "count"
+     }
+    ],
+    "roles": [
+     "data",
+     "residual"
+    ],
+    "supports_step": 4,
+    "validation_check": "Negative-peak counts estimate the spurious-source contamination as a function of SN.",
+    "readable_values": [
+     "approx. 130 positive peaks above SN 4.0",
+     "approx. 99 negative peaks above SN 4.0"
+    ],
+    "caption_quote": "Cumulative number of positive and negative peaks as a function of peak SN threshold.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Positional offsets of the 5-sigma ASAGAO sources relative to VLA 5-cm radio sources.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "arcsec"
+     }
+    ],
+    "roles": [
+     "literature_comparison"
+    ],
+    "supports_step": 4,
+    "validation_check": "Checks astrometry of ASAGAO sources against independent VLA 5-cm positions.",
+    "readable_values": [
+     "approx. largest offset about -0.21 arcsec in RA and -0.14 arcsec in Dec"
+    ],
+    "caption_quote": "Positional offsets of the 5σ ASAGAO sources from the VLA 5-cm radio sources",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 13,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Completeness as a function of input peak SN for two coverage regions, with an erf best-fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "SN (input peak)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "Completeness",
+      "units": "fraction"
+     },
+     {
+      "axis": "contours",
+      "quantity": "Coverage",
+      "units": "fraction"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "Injection-recovery completeness measured in two coverage regions.",
+    "readable_values": [
+     "approx. completeness 0.5 at SN 4.3",
+     "approx. fit parameters a=4.33, b=1.50"
+    ],
+    "caption_quote": "Completeness calculated for the regions with coverage > 0.6 (red) and < 0.6 (blue) as a function of input peak SN.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 14,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Ratio of input to output flux and input to output peak SN as a function of output peak SN from injection-recovery simulations, showing flux boosting.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "SN out (peak)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "S out / S in",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "SN out / SN in",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "simulation",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "Injection-recovery test of flux boosting at low SN.",
+    "readable_values": [
+     "approx. S_out/S_in about 1.15 at SN 5",
+     "approx. S_out/S_in about 1.0 at SN 20"
+    ],
+    "caption_quote": "The ratio between input flux (Sin) and output flux (Sout) (top) and the ratio between input peak SN (SNin) and output peak SN (SNout) (bottom)",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 15,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Differential fraction of negative to positive peaks as a function of peak SN with erf best-fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "SN",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "Negative fraction",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "residual",
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "Negative-to-positive peak ratio estimates the spurious fraction versus SN.",
+    "readable_values": [
+     "approx. negative fraction 1.0 at SN 4.0",
+     "approx. fit a=4.60, b=0.165"
+    ],
+    "caption_quote": "The differential fraction of negative peaks to positive peaks as a function of peak SN.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 16,
+    "kind": "other",
+    "panels": 2,
+    "shows": "Differential and cumulative 1.2 mm number counts of ASAGAO sources compared with blank-field and serendipitous surveys and a Schechter fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "S 1.2mm",
+      "units": "mJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "dN/dS",
+      "units": "mJy^-1 deg^-2"
+     },
+     {
+      "axis": "y",
+      "quantity": "N(>S)",
+      "units": "deg^-2"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison",
+     "model"
+    ],
+    "supports_step": 6,
+    "validation_check": "Comparison of ASAGAO counts with independent ALMA blank-field and single-dish follow-up counts.",
+    "readable_values": [
+     "approx. dN/dS about 1e5 mJy^-1 deg^-2 at 0.17 mJy",
+     "approx. N(>S) about 4e2 deg^-2 at 1.3 mJy"
+    ],
+    "caption_quote": "Differential (left) and cumulative (right) number counts at 1.2 mm obtained for ASAGAO sources (red squares).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 17,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "IR luminosity of ASAGAO sources with KS-band counterparts versus redshift, with the luminosity limit curve.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Redshift",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "log IR luminosity",
+      "units": "log(L_IR/L_sun)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 8,
+    "validation_check": "",
+    "readable_values": [
+     "approx. log L_IR 12.8 at z 2.6",
+     "approx. log L_IR 11.0 at z 0.5"
+    ],
+    "caption_quote": "IR luminosity of the ASAGAO sources with KS-band counterpart as a function of redshift.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 18,
+    "kind": "other",
+    "panels": 3,
+    "shows": "IR luminosity functions of ASAGAO sources in three redshift bins compared with Koprowski et al. 2017, Magnelli et al. 2013 and Gruppioni et al. 2013.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "IR luminosity",
+      "units": "L_sun"
+     },
+     {
+      "axis": "y",
+      "quantity": "Phi",
+      "units": "Mpc^-3 dex^-1"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison",
+     "model"
+    ],
+    "supports_step": 8,
+    "validation_check": "Comparison of ASAGAO luminosity functions with independent Herschel and ALMA luminosity functions.",
+    "readable_values": [
+     "approx. Phi about 1e-3 Mpc^-3 dex^-1 at L_IR 1e12 L_sun for 2.0<z<3.0",
+     "approx. Phi about 1.3e-4 Mpc^-3 dex^-1 at L_IR 7e11 L_sun for 1.0<z<2.0"
+    ],
+    "caption_quote": "IR luminosity functions constructed from the ASAGAO sources at 1.0 < z < 2.0 (left), 1.5 < z < 2.5 (middle), and 2.0 < z < 3.0 (right).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 18,
+  "caption_quotes_ok": 18,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [
+   3
+  ],
+  "validation_figures": 10,
+  "reproduction_targets": 3,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": false,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 8,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 9,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 10,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 11,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 12,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 13,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 14,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.993,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 15,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 16,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 17,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 18,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Footprint of the nine ASAGAO sub-regions (red) overlaid on the HST/WFC3 F160W image, with the ASPECS, HUDF and GOODS-ALMA survey areas outlined for comparison.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right Ascension",
+      "units": "hms"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination",
+      "units": "dms"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 0,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "ASAGAO region consisting of nine sub-regions (red) overlaid on the HST/WFC3 F160W image.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "other",
+    "panels": 2,
+    "shows": "Frequency setups of the ASAGAO tunings, HUDF and GOODS-ALMA spectral windows (table), together with the atmospheric transmission and a modified black body spectrum scaled to 1 mJy at 243 GHz.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "Atmospheric transmission",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "inset",
+      "quantity": "Flux density (modified black body, z=2)",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. ASAGAO tuning 1 spw0 centre 254.12 GHz",
+     "approx. ASAGAO tuning 2 spw0 centre 245.12 GHz",
+     "approx. HUDF spw0 centre 212.2 GHz"
+    ],
+    "caption_quote": "Frequency setups of ASAGAO tuning 1 (red), tuning 2 (blue), HUDF (purple), and GOODS-ALMA (green).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "residual_map",
+    "panels": 2,
+    "shows": "Signal-to-noise ratio map with a 250 kλ taper and the primary beam coverage map of the original ASAGAO data.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right Ascension",
+      "units": "hms"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination",
+      "units": "dms"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Signal-to-noise ratio",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "Signal-to-noise ratio map with a 250 kλ taper (left) and the primary beam coverage map (right) based on the original ASAGAO data.",
+    "reproduction_target": false,
+    "crop_ok": false
+   },
+   {
+    "number": 4,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Pixel flux density distribution of the original ASAGAO signal map with a Gaussian fit, giving the noise level.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Flux density",
+      "units": "mJy beam^-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Number of pixels",
+      "units": "count (log)"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Gaussian noise fit to the pixel distribution sets the map rms.",
+    "readable_values": [
+     "approx. 1 sigma = 61 µJy beam^-1 from Gaussian fit",
+     "approx. peak pixel count 6e5 near 0 mJy beam^-1"
+    ],
+    "caption_quote": "The dashed curve shows the result of a Gaussian fit (1σ = 61 µJy beam−1).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "other",
+    "panels": 1,
+    "shows": "uv-plane coverage of the combined visibilities.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv distance u",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "uv distance v",
+      "units": "kλ"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "uv-plane coverage of the combined data.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Combined signal map (ASAGAO + HUDF + GOODS-ALMA) with 250 kλ taper, corrected for primary beam, with squares marking the 45 detected sources.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right Ascension",
+      "units": "hms"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination",
+      "units": "dms"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Flux density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "The squares represent the detected sources.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "sky_image",
+    "panels": 2,
+    "shows": "Primary beam coverage map (left) and rms noise map corrected for primary beam attenuation (right) for the combined data.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "Primary beam response",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "colour",
+      "quantity": "rms noise",
+      "units": "µJy beam^-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. primary beam response 1.0 at centre",
+     "approx. rms noise 50 µJy beam^-1 over most of the field"
+    ],
+    "caption_quote": "The rms noise map is corrected for primary beam attenuation.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Cumulative survey area as a function of 1-sigma rms noise for the ASAGAO-only and combined data.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "1 sigma flux density",
+      "units": "µJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "Area",
+      "units": "arcmin^2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. combined survey area 26.5 arcmin^2 at 150 µJy",
+     "approx. ASAGAO-only area 26 arcmin^2 at 250 µJy"
+    ],
+    "caption_quote": "Cumulative area of the combined map as a function of rms noise level (corrected for primary beam attenuation) for the ASAGAO only data (dashed) and the combined data (solid).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "histogram",
+    "panels": 2,
+    "shows": "Pixel flux density distribution of the combined signal map with Gaussian fit and the ratio of the distribution to the fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Flux density",
+      "units": "mJy beam^-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Number of pixels",
+      "units": "count (log)"
+     },
+     {
+      "axis": "y",
+      "quantity": "Ratio to Gaussian",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 2,
+    "validation_check": "Compares the non-Gaussian tail of the pixel distribution with the Gaussian fit to indicate real signal.",
+    "readable_values": [
+     "approx. 1 sigma = 34 µJy beam^-1 from Gaussian fit"
+    ],
+    "caption_quote": "The dashed curve shows the result of a Gaussian fit (1σ = 34 µJy beam−1).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "sky_image",
+    "panels": 3,
+    "shows": "Postage-stamp images of the ASAGAO sources at or above 4.5 sigma for no taper, 250 kλ taper and 160 kλ taper, with contours and synthesized beams.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "Flux density",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "Signal-to-noise",
+      "units": "sigma"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "Visual check of source morphology across tapers for spurious or extended emission.",
+    "readable_values": [],
+    "caption_quote": "Postage-stamp images of the ASAGAO ≥4.5σ sources with no taper (left), a 250-kλ taper (middle), and a 160-kλ taper (right).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Cumulative number of positive and negative peaks as a function of peak SN threshold, used to estimate spurious detections.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Peak SN",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "N(>SN)",
+      "units": "count"
+     }
+    ],
+    "roles": [
+     "data",
+     "residual"
+    ],
+    "supports_step": 4,
+    "validation_check": "Negative-peak counts estimate the spurious-source contamination as a function of SN.",
+    "readable_values": [
+     "approx. 130 positive peaks above SN 4.0",
+     "approx. 99 negative peaks above SN 4.0"
+    ],
+    "caption_quote": "Cumulative number of positive and negative peaks as a function of peak SN threshold.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Positional offsets of the 5-sigma ASAGAO sources relative to VLA 5-cm radio sources.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "arcsec"
+     }
+    ],
+    "roles": [
+     "literature_comparison"
+    ],
+    "supports_step": 4,
+    "validation_check": "Checks astrometry of ASAGAO sources against independent VLA 5-cm positions.",
+    "readable_values": [
+     "approx. largest offset about -0.21 arcsec in RA and -0.14 arcsec in Dec"
+    ],
+    "caption_quote": "Positional offsets of the 5σ ASAGAO sources from the VLA 5-cm radio sources",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 13,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Completeness as a function of input peak SN for two coverage regions, with an erf best-fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "SN (input peak)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "Completeness",
+      "units": "fraction"
+     },
+     {
+      "axis": "contours",
+      "quantity": "Coverage",
+      "units": "fraction"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "Injection-recovery completeness measured in two coverage regions.",
+    "readable_values": [
+     "approx. completeness 0.5 at SN 4.3",
+     "approx. fit parameters a=4.33, b=1.50"
+    ],
+    "caption_quote": "Completeness calculated for the regions with coverage > 0.6 (red) and < 0.6 (blue) as a function of input peak SN.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 14,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Ratio of input to output flux and input to output peak SN as a function of output peak SN from injection-recovery simulations, showing flux boosting.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "SN out (peak)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "S out / S in",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "SN out / SN in",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "simulation",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "Injection-recovery test of flux boosting at low SN.",
+    "readable_values": [
+     "approx. S_out/S_in about 1.15 at SN 5",
+     "approx. S_out/S_in about 1.0 at SN 20"
+    ],
+    "caption_quote": "The ratio between input flux (Sin) and output flux (Sout) (top) and the ratio between input peak SN (SNin) and output peak SN (SNout) (bottom)",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 15,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Differential fraction of negative to positive peaks as a function of peak SN with erf best-fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "SN",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "Negative fraction",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "residual",
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "Negative-to-positive peak ratio estimates the spurious fraction versus SN.",
+    "readable_values": [
+     "approx. negative fraction 1.0 at SN 4.0",
+     "approx. fit a=4.60, b=0.165"
+    ],
+    "caption_quote": "The differential fraction of negative peaks to positive peaks as a function of peak SN.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 16,
+    "kind": "other",
+    "panels": 2,
+    "shows": "Differential and cumulative 1.2 mm number counts of ASAGAO sources compared with blank-field and serendipitous surveys and a Schechter fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "S 1.2mm",
+      "units": "mJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "dN/dS",
+      "units": "mJy^-1 deg^-2"
+     },
+     {
+      "axis": "y",
+      "quantity": "N(>S)",
+      "units": "deg^-2"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison",
+     "model"
+    ],
+    "supports_step": 6,
+    "validation_check": "Comparison of ASAGAO counts with independent ALMA blank-field and single-dish follow-up counts.",
+    "readable_values": [
+     "approx. dN/dS about 1e5 mJy^-1 deg^-2 at 0.17 mJy",
+     "approx. N(>S) about 4e2 deg^-2 at 1.3 mJy"
+    ],
+    "caption_quote": "Differential (left) and cumulative (right) number counts at 1.2 mm obtained for ASAGAO sources (red squares).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 17,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "IR luminosity of ASAGAO sources with KS-band counterparts versus redshift, with the luminosity limit curve.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Redshift",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "log IR luminosity",
+      "units": "log(L_IR/L_sun)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 8,
+    "validation_check": "",
+    "readable_values": [
+     "approx. log L_IR 12.8 at z 2.6",
+     "approx. log L_IR 11.0 at z 0.5"
+    ],
+    "caption_quote": "IR luminosity of the ASAGAO sources with KS-band counterpart as a function of redshift.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 18,
+    "kind": "other",
+    "panels": 3,
+    "shows": "IR luminosity functions of ASAGAO sources in three redshift bins compared with Koprowski et al. 2017, Magnelli et al. 2013 and Gruppioni et al. 2013.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "IR luminosity",
+      "units": "L_sun"
+     },
+     {
+      "axis": "y",
+      "quantity": "Phi",
+      "units": "Mpc^-3 dex^-1"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison",
+     "model"
+    ],
+    "supports_step": 8,
+    "validation_check": "Comparison of ASAGAO luminosity functions with independent Herschel and ALMA luminosity functions.",
+    "readable_values": [
+     "approx. Phi about 1e-3 Mpc^-3 dex^-1 at L_IR 1e12 L_sun for 2.0<z<3.0",
+     "approx. Phi about 1.3e-4 Mpc^-3 dex^-1 at L_IR 7e11 L_sun for 1.0<z<2.0"
+    ],
+    "caption_quote": "IR luminosity functions constructed from the ASAGAO sources at 1.0 < z < 2.0 (left), 1.5 < z < 2.5 (middle), and 2.0 < z < 3.0 (right).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

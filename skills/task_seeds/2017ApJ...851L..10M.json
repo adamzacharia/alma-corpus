@@ -1,0 +1,245 @@
+{
+ "bibcode": "2017ApJ...851L..10M",
+ "title": "The First Detection of a Pulsar with ALMA",
+ "year": 2017,
+ "doi": "10.3847/2041-8213/aa9c3e",
+ "arxiv_id": "1708.02828",
+ "fields": [
+  "stellar_physics"
+ ],
+ "question": "At what wavelengths does pulsar emission transition from coherent to incoherent; what is the Vela pulsar's mm/sub-mm spectrum?",
+ "alma_project_codes": [
+  "2015.1.01104.S"
+ ],
+ "data": {
+  "bands": "Band 3 (97.5 GHz), 4 (145 GHz), 6 (233 GHz), 7 (343.5 GHz)",
+  "arrays": "12-m array, average 38 antennas",
+  "angular_resolution": "~0.6 to 0.8 arcsec",
+  "sensitivity": "~20 uJy/beam (1 sigma) per band"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Pulsar radio position and proper motion",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "using its radio coordinates as a reference (Dodson et al. 2003)"
+     }
+    ]
+   },
+   "citation": "Dodson et al. 2003 (cite: dodson03)"
+  },
+  {
+   "what": {
+    "value": "Radio flux densities 400 MHz-24 GHz",
+    "evidence": [
+     {
+      "loc": "The pulsar",
+      "quote": "eight flux density values in the frequency range between 400 MHz and 24 GHz (Manchester et al. 2005; Johnston et al. 2006; Keith et al. 2011)"
+     }
+    ]
+   },
+   "citation": "Manchester et al. 2005; Johnston et al. 2006; Keith et al. 2011"
+  },
+  {
+   "what": {
+    "value": "UV-optical-NIR PL spectrum and Ks flux",
+    "evidence": [
+     {
+      "loc": "The pulsar",
+      "quote": "flat UV-optical-near-IR PL spectrum (Zyuzin et al. 2013)"
+     }
+    ]
+   },
+   "citation": "Zyuzin et al. 2013 (cite: zyuzin13)"
+  },
+  {
+   "what": {
+    "value": "Mid-IR Spitzer flux densities",
+    "evidence": [
+     {
+      "loc": "The pulsar",
+      "quote": "extrapolation of the mid-IR flux densities (Danilenko et al. 2011)"
+     }
+    ]
+   },
+   "citation": "Danilenko et al. 2011 (cite: danilenko11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "CASA 4.5.3 + ALMA pipeline calibration; natural-weighted clean images per band",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify pulsar by position",
+   "method": "Compute pulsar position at observing epochs from radio coordinates and proper motion; compare with ALMA source position",
+   "software": [],
+   "key_parameters": [
+    "astrometric accuracy 56, 48, 43, 123 mas in Bands 3,4,6,7"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure flux densities",
+   "method": "Fit elliptical Gaussian within 1 arcsec square aperture centred on the pulsar",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit mm spectrum and derive brightness temperature",
+   "method": "Power-law fit to four flux densities; compare with radio and IR/optical extrapolations; Tb from radio-peak flux for emitting region smaller than a neutron star radius",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "emitting region of one neutron star radius (or 50 R_NS alternative)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Characterise the nebula",
+   "method": "Flux down to 5 sigma contour in Band 7; compare with HST, Chandra, Gemini and archival VLT/NACO Ks images",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 287 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Pulsar flux density Band 3 (97.5 GHz)",
+   "value": "252",
+   "uncertainty": "35",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "252$\\pm$35"
+    }
+   ]
+  },
+  {
+   "quantity": "Pulsar flux density Band 4 (145 GHz)",
+   "value": "170",
+   "uncertainty": "26",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "170$\\pm$26"
+    }
+   ]
+  },
+  {
+   "quantity": "Pulsar flux density Band 6 (233 GHz)",
+   "value": "122",
+   "uncertainty": "22",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "122$\\pm$22"
+    }
+   ]
+  },
+  {
+   "quantity": "Pulsar flux density Band 7 (343.5 GHz)",
+   "value": "67",
+   "uncertainty": "19",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "a flux density of 67$\\pm$19 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index",
+   "value": "-0.93",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "spectral index $\\alpha  =  -0.93 \\pm 0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nebula Band 7 flux",
+   "value": "278",
+   "uncertainty": "33",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "flux of $278\\pm 33$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Nebula spectral index (Ks to Band 7)",
+   "value": "-0.79",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Nebula",
+     "quote": "which corresponds to a PL with $\\alpha = -0.79 \\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nebula Band 7 luminosity",
+   "value": "~6e25",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Nebula",
+     "quote": "the Band 7 luminosity of the nebula would be $\\sim 6 \\times 10^{25}$ erg s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "clean threshold, niter, cell and image size",
+  "masking",
+  "continuum channel selection / flagging",
+  "whether pipeline products or re-calibrated data were used",
+  "how the 10% flux error was combined with statistical error",
+  "spectral index fit method (weights)",
+  "brightness temperature emitting-size assumptions in detail",
+  "nebula flux aperture details"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "aperture and fit details",
+  "Gemini image source"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple recipe and public data, but imaging parameters are missing.",
+ "rediscovery_reason": "Public data, point-source flux measurements and a power-law fit with numeric answers.",
+ "source_card": "cards/2017ApJ...851L..10M/sonnet/card.md"
+}

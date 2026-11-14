@@ -1,0 +1,975 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...842...55L",
+  "title": "A Radio-to-mm Census of Star-forming Galaxies in Protocluster 4C23.56 at Z = 2.5: Gas Mass and Its Fraction Revealed with ALMA",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Lee, Minju M.",
+  "n_authors": 21,
+  "arxiv_id": "1705.10330",
+  "doi": "10.3847/1538-4357/aa74c2",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00242.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We investigate gas contents of star-forming galaxies associated with protocluster 4C23.56 at z = 2.49 by using the redshifted CO (3–2) and 1.1 mm dust continuum with the Atacama Large Millimeter/submillimeter Array."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "galaxy_clusters_and_sz"
+   ],
+   "targets": [
+    {
+     "name": "Protocluster 4C23.56 (HAEs)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 2.49",
+      "evidence": [
+       {
+        "loc": "2.2 Protocluster 4C23.56",
+        "quote": "Radio galaxy (HAE1) at z = 2.483 $\\pm$ 0.003 is associated to this protocluster"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "narrow-band Halpha selection; CO redshifts",
+      "evidence": [
+       {
+        "loc": "2.2 Protocluster 4C23.56",
+        "quote": "Radio galaxy (HAE1) at z = 2.483 $\\pm$ 0.003 is associated to this protocluster"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the molecular gas masses and gas fractions of main-sequence Halpha-emitting galaxies in protocluster 4C23.56 at z=2.49, and how do they compare with field galaxies?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The gas mass ($M_{\\rm gas}$) and gas fraction ($f_{\\rm gas}$) are comparable to those of field galaxies"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00242.S",
+     "evidence": [
+      {
+       "loc": "3.1 CO (3–2) at Band 3 and 1.1 mm at Band 6",
+       "quote": "ALMA#2012.1.00242.S, PI: K. Suzuki"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (CO 3-2) and Band 6 (1.1 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 Halpha emitters",
+      "quote": "The Band 3 CO (3–2) observations have been performed to cover 22 HAEs, and the Band 6 1.1 mm observations have been performed to cover 19 HAEs"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 6: four 1.875 GHz TDM windows at 256.0, 258.0, 272.0, 273.8 GHz; Band 3: FDM window at 99.3 GHz, TDM at 101.1, 111.3, 113.2 GHz",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The central frequencies of the four spectral windows are 256.0, 258.0, 272.0, and 273.8 GHz."
+     },
+     {
+      "loc": "3.1",
+      "quote": "One of the spectral windows, centered at 99.3 GHz, is taken in frequency division mode (FDM)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "3-2",
+     "rest_frequency": "345.79599 GHz",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "the redshifted CO(3–2) line ($\\nu_{\\rm rest}$ = 345.79599 GHz) at $z=2.5$ would fall"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Band 6: 17-462 m; Band 3: 43-1574 m",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The baseline lengths were between 17 and 462 m."
+     },
+     {
+      "loc": "3.1",
+      "quote": "The minimum baseline was 43 m, and the maximum baseline was 1574 m for Band 3."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Band 3 0.91x0.66 arcsec; Band 6 0.78x0.68 arcsec",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The synthesized beam sizes are 0$^{\\prime\\prime}$.91$\\times$0$^{\\prime\\prime}$.66 (PA = $23.5^{\\circ})$ for Band 3"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Band 6 ~0.08 mJy/beam; Band 3 ~0.17 mJy at 100 km/s",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The noise level (1$\\sigma$) reached $\\sim0.08~$mJy beam$^{-1}$ per field"
+     },
+     {
+      "loc": "3.1",
+      "quote": "The typical noise (1$\\sigma$) level reached $\\sim 0.17$ mJy when the spectral resolution is re-binned to 100 km s$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 6 ~30 min (8 pointings); Band 3 4 hours (4 pointings)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The Band 3 CO(3-2) observations were executed for a total of 4 hours of on-source time with 4-pointing"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Subaru/MOIRCS",
+     "provided": {
+      "value": "NB2288 Halpha emitter sample, J and Ks photometry for stellar masses and SFRs",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "The stellar masses ($M_{\\star}$) and SFRs of the HAEs are derived from the broad-band emissions in $J$ and $Ks$ bands"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer MIPS 24 um",
+     "provided": {
+      "value": "archival 24 um images for visual comparison",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "We present the MIPS image only to show the visual characteristics"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ASTE AzTEC",
+     "provided": {
+      "value": "1.1 mm SMG detections",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "SMGs observed at 1.1 mm with the Atacama Submillimeter Experiment"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "PHIBBS-I comparison sample (Mstar, SFR from Table 2)",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "the values of $M_{\\star}$ and SFR are simply adopted from Table 2 in (cite: Tacconi2013)"
+       }
+      ]
+     },
+     "citation": "(cite: Tacconi2013)"
+    },
+    {
+     "what": {
+      "value": "ALESS SMG 870 um fluxes and SED parameters",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "primary beam corrected flux, column 8 in Table 3"
+       }
+      ]
+     },
+     "citation": "(cite: Hodge2013); (cite: da Cunha2015)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.2.2 for calibration, 4.6.0 for imaging",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "used 4.2.2 version for calibration and imaged with 4.6.0 version"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Band 6 Neptune; Band 3 Titan",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The flux calibrator was Titan for Band 3."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~15-18%, not included in flux errors",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The absolute flux uncertainties for both bands were estimated as$\\sim15-18$%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "We applied the CLEAN algorithm to the calibrated visibilities with natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "flux measured after primary beam correction",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We measured the flux after primary beam correction."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "imsmooth Gaussian kernel 0.8x0.8 arcsec (Band 6), 0.6x0.6 arcsec (Band 3), channel by channel",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We adopted a smoothing Gaussian kernel size of $0^{\\prime\\prime}.8\\times0^{\\prime\\prime}.8$ for Band 6 and $0^{\\prime\\prime}.6\\times0^{\\prime\\prime}.6$ for Band 3."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "smoothed 1.1x0.9 arcsec (Band 3), 1.1x1.0 arcsec (Band 6)",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "$1^{\\prime\\prime}.1\\times0^{\\prime\\prime}.9$ for Band 3 and $1^{\\prime\\prime}.1\\times1^{\\prime\\prime}.0$ for Band 6"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "CO gas mass recipe, metallicity-dependent alpha_CO",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "We derived the gas mass from CO (3–2) emission by following the prescription presented in (cite: Genzel2015)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Genzel2015)"
+    },
+    {
+     "what": {
+      "value": "dust-based gas mass method with Td=25 K",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "We derive gas mass from dust continuum detection using a method presented in (cite: Scoville2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Scoville2016)"
+    },
+    {
+     "what": {
+      "value": "CO integration range chosen to maximize S/N",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "following the description in (cite: Seko2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Seko2016)"
+    },
+    {
+     "what": {
+      "value": "Mstar, SFR and extinction correction from companion paper",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "the full description of the data reduction and analysis for these observations will be presented in I. Tanaka et al. (in preparation)"
+       }
+      ]
+     },
+     "from_reference": "I. Tanaka et al. (in preparation)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Array configurations and observing dates",
+    "Pipeline vs manual calibration",
+    "Cell size, image size, clean threshold and masks",
+    "Continuum line-free channels and continuum subtraction",
+    "Exact velocity integration ranges per source",
+    "Stellar masses and SFRs depend on unpublished Tanaka et al. analysis",
+    "Projected-density kernel details and survey volume computation"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "calibrate and image",
+    "method": {
+     "value": "CLEAN with natural weighting on calibrated visibilities",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "We applied the CLEAN algorithm to the calibrated visibilities with natural weighting"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "detect sources and measure fluxes",
+    "method": {
+     "value": "Smooth images with imsmooth, take peak flux (1.1 mm) or peak velocity-integrated flux (CO moment 0); detection criteria within 1 arcsec of HAEs",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We adopted a peak flux at 1.1 mm or a peak velocity-integrated flux in the CO (3–2) moment 0 map to compute gas mass"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "1.1 mm detection >4 sigma; CO needs 2 of 3 criteria (peak >4 sigma, two channels >3.5 sigma, integrated S/N >5)",
+      "evidence": [
+       {
+        "loc": "3.2.1",
+        "quote": "A CO (3–2) line was regarded as detected if at least two among three criteria (a-c) are satisfied"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared with imfit Gaussian, clipped aperture photometry and specfit; growth curves for kernel choice",
+     "evidence": [
+      {
+       "loc": "Flux versus S/N",
+       "quote": "We also checked whether the peak flux is consistent with other flux measurements, i.e., Gaussian fitting (using CASA commend `imfit`)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "CO-based gas mass",
+    "method": {
+     "value": "M_gas = alpha_CO x L'_CO with alpha_MW=4.36 times metallicity factor A(Z), R13=1.9",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "We use a standard luminosity (brightness temperature) line ratio between different rotational transitions of CO, i.e., CO (1–0)-to-CO(3-2) ratio $R_{13} = 1.9$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "alpha_CO,1 in range [4.4, 5.9]",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "The adopted metallicity-dependent conversion factor is in the range of $\\alpha_{\\rm CO, 1}=[4.4, 5.9]$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "metallicity from empirical mass-metallicity relation (Genzel2015 eq 12a, Wuyts2014)",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "we adopted the galaxy’s metallicity derived from an empirical mass-metallicity relation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared to dust-based masses",
+     "evidence": [
+      {
+       "loc": "5.3 Combined results of SFR vs $M_{\\rm gas}$",
+       "quote": "The gas masses derived from different estimators of CO (3–2) and 1.1 mm are roughly consistent with each other"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "dust-based gas mass",
+    "method": {
+     "value": "Scoville RJ-tail luminosity-to-mass relation",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "Therefore, we assume a dust temperature of 25 K to weigh the global gas amount"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Td = 25 K",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "we assume a dust temperature of 25 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "gas fraction, comparison and gas density",
+    "method": {
+     "value": "f_gas = Mgas/(Mgas+Mstar); compare with PHIBBS-I and ALESS main-sequence galaxies; protocluster gas density from CO detections over survey volume",
+     "evidence": [
+      {
+       "loc": "6.3",
+       "quote": "The survey area is 14 comoving Mpc$^2$, and we adopted a $\\sim$20% sensitivity region (a radius of 37$^{\\prime\\prime}$) with our 4-pointing observations."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.2 (calibration), 4.6.0 (imaging)",
+    "used_for": {
+     "value": "calibration, CLEAN imaging, imsmooth, immath, imfit, specfit",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Common Astronomy Software Applications package (CASA, used 4.2.2 version for calibration and imaged with 4.6.0 version)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "FAST",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting for stellar mass calibration",
+     "evidence": [
+      {
+       "loc": "4.1 MOIRCS/Subaru NIR data : Mstar and SFR",
+       "quote": "calibrated from empirical fitting between (cite: Bruzual2003) (BC03) and the spectral energy distribution (SED) fitting with the FAST code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MOPEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Spitzer MIPS image processing",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We used MOPEX software package for image processing."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in software",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (cite: casa2007) , Astropy (cite: astropy2013)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CO(3-2) detections",
+    "value": "7 of 22 HAEs",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "seven CO detections out of 22 targeted H$\\alpha$ emitters (HAEs)"
+     }
+    ]
+   },
+   {
+    "quantity": "1.1 mm detections",
+    "value": "4 of 19",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "four out of 19 in 1.1 mm dust continuum"
+     }
+    ]
+   },
+   {
+    "quantity": "mean f_gas from CO(3-2)",
+    "value": "0.53",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\langle f_{\\rm gas}\\rangle = 0.53 \\pm 0.07$ from CO (3–2)"
+     }
+    ]
+   },
+   {
+    "quantity": "mean f_gas from 1.1 mm",
+    "value": "0.50",
+    "uncertainty": "0.06",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "7 Conclusion",
+      "quote": "0.50 $\\pm$ 0.06 for 1.1 mm measurement"
+     }
+    ]
+   },
+   {
+    "quantity": "protocluster cosmic gas density (CO-detected range)",
+    "value": "~5e9",
+    "uncertainty": "not stated",
+    "units": "Msun Mpc^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.3",
+      "quote": "the cosmic gas density is estimated as $\\rho_{\\rm gas, 4C23.56}\\sim 5 \\times 10^{9} \\,M_{\\odot}\\, {\\rm Mpc}^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mgas from dust",
+    "value": "(0.5-1.4)e11",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "in the range of $(0.5-1.4)\\times 10^{11}$ M$_{\\odot}$ for four objects"
+     }
+    ]
+   },
+   {
+    "quantity": "Mstar-SFE Pearson correlation excluding AGN",
+    "value": "0.89",
+    "uncertainty": "p=0.02",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4.2",
+      "quote": "Pearson’s correlation coefficient (in log scale) = 0.89 with a p-value of 0.02"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO- and dust-based gas masses are consistent for simultaneous detections, though dust-based values are systematically smaller",
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "The gas mass derived from 1.1 mm is systematically smaller for all four cases"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Protocluster main-sequence galaxies have gas fractions similar to field galaxies",
+    "experiment": "CO(3-2) and 1.1 mm gas masses compared with PHIBBS-I and ALESS main-sequence samples",
+    "result": "<f_gas>=0.53±0.07 (CO) vs 0.49±0.05 for PHIBBS-I MS",
+    "finding": "gas fractions comparable to field",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "we find that the average gas fraction does not differ ($\\langle f_{\\rm gas, PHIBBS-I, MS}\\rangle$ = 0.49$\\pm$0.05)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Protoclusters have higher cosmic gas density than general fields",
+    "experiment": "Gas density from CO detections over survey volume vs HUDF limit",
+    "result": "~5e9 Msun/Mpc^3, ~22x above field limit (6x with wider range)",
+    "finding": "protocluster gas density higher by an order of magnitude",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.3",
+      "quote": "This is $\\sim22\\times$ higher than the upper limit of the general field"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Environment affects SFE and stellar mass",
+    "experiment": "Compare detections with surface galaxy density",
+    "result": "five of seven CO detections in highest-density region; positive Mstar-SFE correlation",
+    "finding": "possible environmental role, needs confirmation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Such correlations imply a potentially critical role of environment on early galaxy evolution at high-z protoclusters, although future observations are necessary for confirmation."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Smoothing images gave better S/N than uv tapering and avoids divergent Gaussian fits for disturbed galaxies",
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "We found that image-based smoothing delivers a better S/N than tapering the uv visibilities."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "U/LIRG-like alpha_CO=0.8 disfavoured since it makes CO and dust masses inconsistent",
+     "evidence": [
+      {
+       "loc": "6.3",
+       "quote": "The U/LIRG-like conversion factor yields larger inconsistencies between different estimators"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small number of detections; sample bias cannot be rejected",
+     "evidence": [
+      {
+       "loc": "6.4.2",
+       "quote": "We cannot reject this argument with the current data set."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mstar and SFR rely on unpublished data and a single extinction recipe",
+    "Universal smoothing kernel and peak-flux measurement may bias fluxes",
+    "Gas density is a lower limit and uses small volume with cosmic-variance uncertainty",
+    "alpha_CO assumed with no independent test"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data acknowledged as project 2012.1.00242.S; public status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00242.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Mstar and SFR tables depend on in-preparation paper",
+    "Detailed imaging parameters and velocity ranges"
+   ],
+   "estimated_data_volume_inferred": "~50-150 GB raw for two bands",
+   "score_inferred": 3,
+   "score_reason": "Public project and clear gas mass formulae, but imaging details and Mstar/SFR inputs are partly unstated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, formulae stated, results numeric; Mstar/SFR taken from Table 1."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Genzel2015)",
+     "why": "CO gas mass prescription"
+    },
+    {
+     "citation": "(cite: Scoville2016)",
+     "why": "dust gas mass method"
+    },
+    {
+     "citation": "(cite: Seko2016)",
+     "why": "CO integration range"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "I. Tanaka et al., in preparation",
+     "why": "HAE Mstar/SFR derivation"
+    },
+    {
+     "citation": "M. Lee et al., in preparation",
+     "why": "kinematics and SED fitting"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MAHALO-Subaru",
+    "PHIBBS-I",
+    "ALESS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-40bcbc97f6e0473de7162778e8454bdd",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:09",
+  "usage": {
+   "input_tokens": 44811,
+   "output_tokens": 7968,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.085257,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 61,
+  "quotes_ok": 61,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 45,
+   "rate": 0.577
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:01:25",
+  "custom_id": "repair-sonnet-86945f7a4ff3227eba2cb7d74e000237",
+  "fixed": [
+   {
+    "path": "software[1].used_for.evidence[0]",
+    "old": "SED fitting with the FAST code",
+    "new": "calibrated from empirical fitting between (cite: Bruzual2003) (BC03) and the spectral energy distribution (SED) fitting with the FAST code"
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "The gas masses derived from different estimators of CO (3–2) and 1.1 mm are roughly consistent with each other"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

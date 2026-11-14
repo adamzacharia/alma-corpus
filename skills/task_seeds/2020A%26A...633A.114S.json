@@ -1,0 +1,257 @@
+{
+ "bibcode": "2020A&A...633A.114S",
+ "title": "Demographics of disks around young very low-mass stars and brown dwarfs in Lupus",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/201936913",
+ "arxiv_id": "1911.06005",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do disks around brown dwarfs and very low-mass stars in Lupus follow the demographic relations (disk mass, size, accretion) known for disks around stars?",
+ "alma_project_codes": [
+  "2017.1.01243.S",
+  "2013.1.00220.S",
+  "2016.1.01239.S",
+  "2013.1.00226.S",
+  "2013.1.00663.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12 m array",
+  "angular_resolution": "0.27x0.24 arcsec (robust -1); 0.36x0.33 arcsec (robust +0.5)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar properties (SpT, Teff, AV, L*) of targets",
+    "evidence": [
+     {
+      "loc": "2 Sample selection",
+      "quote": "were reported by (cite: alcala2014; alcala2017) and (cite: muzic+2014)"
+     }
+    ]
+   },
+   "citation": "(cite: alcala2014; alcala2017; muzic+2014)"
+  },
+  {
+   "what": {
+    "value": "Band 7 fluxes and data of original Lupus disks survey",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "For the observations results from the Lupus disks survey (ALMA Project ID: 2013.1.00220.S), we refer to (cite: ansdell+2016)."
+     }
+    ]
+   },
+   "citation": "(cite: ansdell+2016)"
+  },
+  {
+   "what": {
+    "value": "Mass accretion rates and accretion luminosities",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "The $\\dot{M}_{\\mathrm{acc}}$ and its uncertainty is taken from the X-Shooter observations presented by (cite: alcala2014; alcala2017)."
+     }
+    ]
+   },
+   "citation": "(cite: alcala2014; alcala2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum",
+   "method": "CASA calibration and Briggs-weighted continuum imaging with line-free channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust -1.0 / +0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux and rms",
+   "method": "uvmodelfit with elliptical Gaussian or point source; curve of growth for resolved; rms in 4-9 arcsec annulus; upper limits 3 rms",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit visibilities with disk brightness models",
+   "method": "Gaussian profile for BDs (6 parameters); Nuker profile for stellar disks (9 parameters); fit in uv plane",
+   "software": [
+    "Galario",
+    "emcee"
+   ],
+   "key_parameters": [
+    "200 walkers, 20000 steps"
+   ],
+   "assumptions": [
+    "Azimuthally symmetric disk"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive R68 and R95 sizes",
+   "method": "Radii enclosing 68% and 95% of cumulative flux from each MCMC model",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute dust masses",
+   "method": "Optically thin emission, constant kappa and Tdust",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa(890um)=2 cm2/g, Tdust=20 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Demographic comparison BDs vs stars",
+   "method": "Linear regression with Bayesian linmix including upper limits; Anderson-Darling tests",
+   "software": [
+    "linmix",
+    "scipy.stats"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Gas-to-dust ratio 100 for total disk mass"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust mass of J154518.5-342125",
+   "value": "2.3",
+   "uncertainty": "0.2",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$8.2_{-1.2}^{+1.0}$   | $13.2_{-2.0}^{+1.7}$ | $2.3 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "R68 of J154518.5-342125",
+   "value": "8.2",
+   "uncertainty": "+1.0/-1.2",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$8.2_{-1.2}^{+1.0}$   | $13.2_{-2.0}^{+1.7}$ | $2.3 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Detected BD dust mass range",
+   "value": "0.2-3.2",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 Total dust mass results",
+     "quote": "The total dust mass for the detected BD disks range between $0.2$ and $3.2$ $M_{\\Earth}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mstar-Mdust slope (stars+BDs)",
+   "value": "1.69",
+   "uncertainty": "0.19",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1.1",
+     "quote": "the slope and intercept become $1.69 \\pm 0.19$ and $-3.89 \\pm 0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdust-Macc slope (stars)",
+   "value": "0.69",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1.3",
+     "quote": "The resulting slope is $\\alpha = 0.69 \\pm 0.14$, while the intercept is $\\beta = -7.26 \\pm 0.36$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median accretion depletion timescale BDs vs stars",
+   "value": "9.5 vs 1.4",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1.3",
+     "quote": "The median value of this timescale for the BD sample is $9.5$ Myr, while for the stellar sub-sample considered is $1.4$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "AD test probability, Mdust/Mstar BD vs stars",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1.1",
+     "quote": "obtaining a probability of $6 \\%$ that the BD and stellar disk populations are drawn from the same distribution"
+    }
+   ]
+  },
+  {
+   "quantity": "AD test probability, depletion timescale",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1.3",
+     "quote": "with only a $0.6 \\%$ probability that the BD and stellar disks populations are drawn from the same original distribution"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size and image size for tclean",
+  "Clean threshold, masks, deconvolver",
+  "Line-free channel selection",
+  "Priors and bounds of the MCMC fits",
+  "CASA pipeline vs manual calibration",
+  "Burn-in and how fit convergence was judged",
+  "Distance used for conversion of dust mass formula (exact), and Planck function details",
+  "Flux-ratio correction details for completion survey"
+ ],
+ "missing_for_reproduction": [
+  "Priors and imaging parameters",
+  "Stellar masses and accretion rates from external papers"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and methods are well described, but imaging parameters and priors are missing, and the analysis relies on several external datasets.",
+ "rediscovery_reason": "Public data, numeric fluxes, dust masses and sizes in tables.",
+ "source_card": "cards/2020A%26A...633A.114S/sonnet/card.md"
+}

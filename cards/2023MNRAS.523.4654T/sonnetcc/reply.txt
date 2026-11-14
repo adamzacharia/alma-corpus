@@ -1,0 +1,476 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "ALMA Band 4, Band 7, and Band 9 observations of BRI 1335-0417 were carried out as part of the programs #2017.1.00394.S, and #2018.1.01103.S (PI=González López, Jorge)."},
+{"loc": "Data Availability", "quote": "The ALMA data we use in this work are publicly available in <https://almascience.nrao.edu/aq/>."}
+],
+"fields": ["high_z_galaxies", "agn_and_quasars"],
+"question": {
+"value": "Derive resolved dust temperature maps of the z=4.4 quasar host BRI 1335-0417, separate AGN-heated warm dust (unresolved point source) from star-formation-heated cold dust, and re-estimate the SFR and SFR surface density",
+"evidence": [
+{"loc": "1 Introduction", "quote": "this paper aims to (1) derive a resolved dust temperature map and clarify the heating source of the dust, (2) separate the warm dust heated by AGN and cold dust associated with the host galaxy"}
+]
+},
+"targets": [
+{
+"name": "BRI 1335-0417",
+"details": [
+{"loc": "1 Introduction", "quote": "a quasar host galaxy at a redshift of $z = 4.4704$ (cite: Guilloteau1997-xe)"},
+{"loc": "3.1 The resolved FIR continuum and [C II] emission", "quote": "the RA and Dec offsets are given relative to the position RA$=204.514232$ deg and Dec$=-4.543055$ deg"},
+{"loc": "1 Introduction", "quote": "providing an angular size distance $D_\\mathrm{A}=1375$ Mpc and a luminosity distance $D_\\mathrm{L}=40202$ Mpc at the redshift of 4.4074."}
+],
+"coordinates": "RA = 204.514232 deg, Dec = -4.543055 deg (reference position for offsets)",
+"redshift_or_distance": "z = 4.4704 (also printed as 4.4074 in the cosmology sentence); D_A = 1375 Mpc, D_L = 40202 Mpc",
+"distance_source": "redshift from Guilloteau et al. 1997 (cite: Guilloteau1997-xe); flat LCDM with H0 = 70 km/s/Mpc, Omega_M = 0.3"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.00394.S", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "were carried out as part of the programs #2017.1.00394.S, and #2018.1.01103.S (PI=González López, Jorge)."}]},
+{"code": "2018.1.01103.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00394.S, and #2018.1.01103.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 4 (2080 um), Band 7 (869 um), Band 9 (484 um)", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "ALMA Band 4, Band 7, and Band 9 observations of BRI 1335-0417 were carried out as part of the programs"},
+{"loc": "2.1 ALMA imaging", "quote": "observing wavelength 2080 $\\ensuremath{\\mu}m$ in Band 4, 869 $\\ensuremath{\\mu}m$ in Band 7, and 484 $\\ensuremath{\\mu}m$ in Band 9"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Observations targeted CO(7-6) (Band 4) and [C II] (Band 7) lines plus underlying continuum; continuum at rest-frame 385, 161, 90 um for Band 4, 7, 9", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "These observations targeted emission lines, including CO(7-6) (Band 4) and \\[C II\\] (Band 7)"},
+{"loc": "2.1 ALMA imaging", "quote": "corresponding to rest-frame 385 $\\ensuremath{\\mu}m$, 161 $\\ensuremath{\\mu}m$, 90 $\\ensuremath{\\mu}m$, respectively"}
+]},
+{"field": "angular_resolution", "value": "Synthesized beams (maj/min/PA, arcsec/arcsec/deg): Band 4 0.21/0.14/85; Band 7 0.19/0.16/75; Band 9 0.21/0.16/-53; [CII] 0.19/0.16/82; CO(7-6) 0.23/0.16/84", "evidence": [
+{"loc": "Table 1", "quote": "(Band 4) | 6.58 | 0.21/0.14/85"},
+{"loc": "Table 1", "quote": "(Band 7) | 25.9 | 0.19/0.16/75"},
+{"loc": "Table 1", "quote": "(Band 9) | 186 | 0.21/0.16/-53"}
+]},
+{"field": "sensitivity", "value": "Rms noise (uJy/beam): Band 4 6.58; Band 7 25.9; Band 9 186; [CII] 389; CO(7-6) 101", "evidence": [
+{"loc": "Table 1", "quote": "(Band 4) | 6.58 | 0.21/0.14/85"},
+{"loc": "Table 1", "quote": "(Band 7) | 25.9 | 0.19/0.16/75"},
+{"loc": "Table 1", "quote": "(Band 9) | 186 | 0.21/0.16/-53"}
+]},
+{"field": "time_on_source", "value": "Band 7: 1 h (other bands not stated)", "evidence": [
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "The relatively short (1h) Band 7 observation relying on the brightness of the source"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "PI = González López, Jorge; data public in ALMA archive", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "#2017.1.00394.S, and #2018.1.01103.S (PI=González López, Jorge)."},
+{"loc": "Data Availability", "quote": "The ALMA data we use in this work are publicly available in <https://almascience.nrao.edu/aq/>."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "7-6", "rest_frequency": "not stated", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "These observations targeted emission lines, including CO(7-6) (Band 4)"}]},
+{"species": "C+", "transition": "[C II]", "rest_frequency": "not stated", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "CO(7-6) (Band 4) and \\[C II\\] (Band 7)"}]}
+],
+"other_facilities": [
+{"name": "HST STIS/50CCD (GO-8572)", "provided": {"value": "Archival optical image used for visualization and pointing check of the quasar (consistent with point source)", "evidence": [
+{"loc": "2.2 HST imaging", "quote": "The data were taken as a part of program GO-8572 (PI=L. Storrie-Lombardi) in January 2001"},
+{"loc": "2.2 HST imaging", "quote": "we only use the data for visualization purposes"}
+]}},
+{"name": "Gaia", "provided": {"value": "Astrometric calibration of the HST image offset", "evidence": [
+{"loc": "2.2 HST imaging", "quote": "We identify the BRI 1335-0417 in the image using three Gaia sources available in the field of view"}
+]}},
+{"name": "Herschel PACS/SPIRE", "provided": {"value": "Integrated FIR photometry (PACS 70, 160; SPIRE 250 used; SPIRE 350 and 500 excluded for blending)", "evidence": [
+{"loc": "Table A1", "quote": "HERSCHEL PACS 160 | 160 | 20.976 | 7.838 | HPPSC"},
+{"loc": "3.3 Global SED of the galaxy", "quote": "because BRI 1335-0417 is not sufficiently separated from a nearby bright source at"}
+]}},
+{"name": "Spitzer IRAC/MIPS", "provided": {"value": "Mid-IR photometry for the global SED", "evidence": [
+{"loc": "Table A1", "quote": "Spitzer MIPS24 | 24.00 | 1.484 | 0.215 | SEIP"}
+]}},
+{"name": "VLA", "provided": {"value": "Radio photometry (from literature) for the global SED", "evidence": [
+{"loc": "Table A1", "quote": "VLA | 61685 | 0.076 | 0.011 | (cite: Carilli1999-mo)"}
+]}},
+{"name": "IRAM interferometer", "provided": {"value": "1350 um photometry point from literature", "evidence": [
+{"loc": "Table A1", "quote": "IRAM interferometer | 1350 | 5.6 | 1.1 | (cite: Guilloteau1997-xe)"}
+]}},
+{"name": "Pan-STARRS1, VISTA, 2MASS, WISE", "provided": {"value": "Optical/near-IR photometry (from literature) for the panchromatic SED", "evidence": [
+{"loc": "Table A1", "quote": "Pan-STARRS1-g | 0.477 | 0.0099 | 3.100e-04 | (cite: Chambers2016-ik)"},
+{"loc": "Table A1", "quote": "WISE W1 | 3.350 | 0.140 | 7.000e-03 | (cite: Lasker2021-lr)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "ALMA Band 6/3 photometry at 1110 um (9.0 mJy) and 2012 um (1.17 mJy) used as SED points", "evidence": [
+{"loc": "Table A1", "quote": "ALMA | 1110 | 9.0 | 0.9 | (cite: Lu2018-fd)"},
+{"loc": "Table A1", "quote": "ALMA | 2012 | 1.17 | 0.12 | (cite: Lu2018-fd)"}
+]}, "citation": "(cite: Lu2018-fd)"},
+{"what": {"value": "Total molecular gas mass from CO(2-1), used for the gas-to-dust ratio", "evidence": [
+{"loc": "3.3 Global SED of the galaxy", "quote": "if we adopt a total gas mass derived by (cite: Jones2016-cj) from CO (2-1)"}
+]}, "citation": "(cite: Jones2016-cj)"},
+{"what": {"value": "Disk geometry (position angle 7.6 deg, inclination 37.3 deg) from [C II] kinematic modelling", "evidence": [
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "We calculate the de-projected radius using the thin disk geometry proposed in (cite: tsukui2021-vl) (Position angle 7.6 deg, inclination 37.3 deg)"}
+]}, "citation": "(cite: tsukui2021-vl)"},
+{"what": {"value": "Previous SFR estimate 5040 +/- 1300 Msun/yr from unresolved SED", "evidence": [
+{"loc": "1 Introduction", "quote": "from modelling of the spatially-unresolved spectral energy distribution (SED) with thermal dust and synchrotron emission components (cite: Wagg2014-bh)"}
+]}, "citation": "(cite: Wagg2014-bh)"},
+{"what": {"value": "Dust opacity kappa_0 = 5.1 cm^2/g at nu_0 = 1199.1 GHz", "evidence": [
+{"loc": "3.2 Dust SED modelling", "quote": "$\\kappa_0=5.1$ cm$^2$ g$^{-1}$ is the dust opacity at a reference frequency $\\nu_0=1199.1$ GHz (cite: Draine2007-ou)"}
+]}, "citation": "(cite: Draine2007-ou)"},
+{"what": {"value": "alpha_CO = 0.8 and r21 = 0.85 used for CO-based gas mass", "evidence": [
+{"loc": "3.3 Global SED of the galaxy", "quote": "using the standard conversion factor for SMGs $\\alpha_{\\mathrm{CO}}=0.8$ M$_\\odot$ pc$^{-2}$/ (K km s$^{-1}$) (cite: Bolatto2013-ch)"},
+{"loc": "3.3 Global SED of the galaxy", "quote": "(cite: Carilli2013-im)"}
+]}, "citation": "(cite: Bolatto2013-ch); (cite: Carilli2013-im)"},
+{"what": {"value": "[C II] mass-to-light ratio for gas mass tracer comparison: M_gas/L_[CII] = 30 Msun/Lsun", "evidence": [
+{"loc": "3.5 Comparison of the derived dust mass profile and other gas mass tracer profiles", "quote": "(cite: Zanella2018-er) proposed the \\[C II\\] luminosity as a molecular gas mass tracer"}
+]}, "citation": "(cite: Zanella2018-er)"},
+{"what": {"value": "[C II]-SFR calibration used to compare SFR surface density", "evidence": [
+{"loc": "4.3 AGN-subtracted dust properties", "quote": "using the calibration of (cite: De_Looze2011-jm)"}
+]}, "citation": "(cite: De_Looze2011-jm)"},
+{"what": {"value": "Herschel/Spitzer/optical/VLA catalogue photometry listed in Table A1 (not measured by the authors)", "evidence": [
+{"loc": "Data Availability", "quote": "The photometric data from Spitzer and Herschel we use in this work are publicly available at doi:"}
+]}, "citation": "(cite: Marton2017-nl); SEIP; (cite: Chambers2016-ik); (cite: Lasker2021-lr); (cite: Carilli1999-mo)"}
+],
+"simulations_or_models_as_data": [
+{"value": "STARDUST templates: QSO template, AGN-heated dust template (Mullaney et al. 2011) and cold dust template (Draine & Li 2007)", "evidence": [
+{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "a QSO template dominating in the rest-frame UV to optical bands (cite: 2016ApJ...817...55S), an AGN-heated dust component (cite: Mullaney2011-sn) dominating in the rest-frame MIR bands"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Standard CASA pipeline calibration", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "We performed standard calibration and data reduction using the Common Astronomy Software Application (CASA; (cite: CASA_Team2022-cl)) pipeline"}
+]},
+{"field": "casa_version", "value": "CASA 5.1.1-5 (Band 7); CASA 5.4.0-70 (Band 4 and Band 9)", "evidence": [
+{"loc": "2.1 ALMA imaging (footnote)", "quote": "We used the same CASA version as used in the quality assurance at the ALMA Observatory, which is 5.1.1-5 for Band 7, and 5.4.0-70 for Band 4 and Band 9 data"}
+]},
+{"field": "flux_calibrator", "value": "Flux and bandpass: J1337-1257 (Band 4, 7), J1256-0547 (Band 9); phase: J1332-0509 (Band 4), J1336-0829 (Band 7, 9)", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "The flux and bandpass were calibrated using the quasars J1337-1257 for Band 4 and Band 7, and J1256-0547 for Band 9 data."},
+{"loc": "2.1 ALMA imaging", "quote": "The phase was calibrated using the quasars J1332-0509 for Band 4 and J1336-0829 for Band 7 and Band 9."}
+]}
+],
+"imaging": [
+{"field": "weighting_robust", "value": "Briggs, robust = 1.0 for CO(7-6) cube; robust = 0.5 for all others", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "The visibility data were weighted using a Briggs weighting scheme with a robust parameter of 1.0 for the CO(7-6) line data cube to improve the sensitivity and 0.5 for others"}
+]},
+{"field": "continuum_subtraction", "value": "Linear fit to line-free channels, subtracted in the visibility plane", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "We estimated the flux density of the underlying continuum emission by fitting a linear function to the identified line-free channels and subtracted it from the data cube in the visibility plane."}
+]},
+{"field": "line_free_channels", "value": "Identified with HIF_FINDCONT in CASA, plus manual removal of channels hit by atmospheric absorption (ranges not given)", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "We identified line-free channels using the HIF\\_FINDCONT task in CASA and additionally removed channels affected by atmospheric absorption."}
+]},
+{"field": "smoothing", "value": "Images convolved to the smallest common beam with COMMON_BEAM in SPECTRAL-CUBE", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "we convolved images to have the same spatial resolution with the smallest common beam size, using COMMON\\_BEAM in the SPECTRAL-CUBE package."}
+]},
+{"field": "final_beam", "value": "Matched beam 0.21 x 0.18 arcsec, PA 114 deg ([CII], 161 um, 90 um); 0.24 x 0.18 arcsec, PA 94 deg for CO(7-6) comparison", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "(beam area of 1.92 kpc$^2$, and effective radius of 0.78kpc)"},
+{"loc": "2.1 ALMA imaging", "quote": "(beam area of 2.3 kpc$^2$ and effective radius of 0.85kpc)"}
+]},
+{"field": "final_rms", "value": "Band 4 6.58, Band 7 25.9, Band 9 186 uJy/beam", "evidence": [
+{"loc": "Table 1", "quote": "(Band 4) | 6.58 | 0.21/0.14/85"},
+{"loc": "Table 1", "quote": "(Band 9) | 186 | 0.21/0.16/-53"}
+]}
+],
+"inherited": [
+{"what": {"value": "Band 7 (rest-frame 161 um) data previously presented, and Z-shaped spiral structure, disk kinematics", "evidence": [
+{"loc": "1 Introduction", "quote": "in addition to the earlier Band 7 ($\\sim 869\\ensuremath{\\mu}m$) data presented in ((cite: tsukui2021-vl); PI=González López, Jorge)"}
+]}, "from_reference": "(cite: tsukui2021-vl)"},
+{"what": {"value": "Disk geometry for deprojection (PA 7.6 deg, inclination 37.3 deg)", "evidence": [
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "We calculate the de-projected radius using the thin disk geometry proposed in (cite: tsukui2021-vl)"}
+]}, "from_reference": "(cite: tsukui2021-vl)"},
+{"what": {"value": "CMB-corrected greybody formalism and temperature conversion", "evidence": [
+{"loc": "3.2 Dust SED modelling", "quote": "As described in (cite: Da_Cunha2013-yv), these two temperatures are related as"}
+]}, "from_reference": "(cite: Da_Cunha2013-yv); (cite: Walter2022-uh)"},
+{"what": {"value": "Masked-moment method for [C II] template", "evidence": [
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "we make a \\[C II\\] moment map by the masked moment method ((cite: Dame2011-nv)"}
+]}, "from_reference": "(cite: Dame2011-nv)"},
+{"what": {"value": "Noise-correlated Monte Carlo with ESSENCE package", "evidence": [
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "randomly generate noise maps with the same correlation properties characterized by the noise ACF using the ESSENCE package (cite: Tsukui2022-ne; 2023arXiv230103579T)"}
+]}, "from_reference": "(cite: Tsukui2022-ne); (cite: 2023arXiv230103579T)"},
+{"what": {"value": "STARDUST SED fitting code (original, before the authors' modification)", "evidence": [
+{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "the more realistic galaxy SED fitting code STARDUST (cite: Kokorev2021-yp)"}
+]}, "from_reference": "(cite: Kokorev2021-yp)"}
+],
+"unstated_but_needed": [
+"Imaging parameters for tclean: cell size, image size, phase centre, niter, threshold, masks, deconvolver, spectral channel widths",
+"Exact line-free channel ranges / continuum frequency ranges for each band",
+"Self-calibration (if any) and absolute flux scale uncertainty adopted for each band",
+"Primary-beam correction details and exact aperture centring for the 2x2 arcsec integrated flux measurements",
+"Algorithm and bounds for the per-pixel greybody fit (optimizer, initial values, parameter ranges)",
+"emcee settings: number of walkers, steps, burn-in, prior ranges, likelihood treatment of upper limits",
+"STARDUST modification details; the modified code is not released until publication, and template versions are not given",
+"Flux extraction for Herschel/Spitzer/optical points beyond catalogue names; how the Band 4 continuum entered the global SED",
+"Treatment of the redshift discrepancy (z = 4.4704 vs 4.4074 in the cosmology sentence)",
+"Masked-moment threshold and kernel choices beyond the stated 2x beam and 2x channel width; noise map region used for the ACF"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image continuum and line cubes",
+"method": {"value": "CASA pipeline calibration, continuum from line-free channels with linear fit subtraction, then imaging with Briggs weighting; line maps by summing channels and per-pixel single Gaussian fits", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "We then imaged the line-free channels to produce continuum images and the continuum-subtracted data to produce emission line cubes."},
+{"loc": "2.1 ALMA imaging", "quote": "The mean velocity and the velocity dispersion of the emission line are extracted by fitting a single Gaussian to the spectrum at each pixel."}
+]},
+"software": ["CASA", "hif_findcont"],
+"key_parameters": [
+{"value": "robust = 1.0 for CO(7-6), 0.5 for others", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "a robust parameter of 1.0 for the CO(7-6) line data cube to improve the sensitivity and 0.5 for others"}]},
+{"value": "line maps from summing channels over -400 to 400 km/s; pixels kept if detected above 4 sigma in at least 4 channels", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "We only use pixels where the signal is detected more than 4 $\\sigma$ over at least 4 channels."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Match resolution of all images and cubes",
+"method": {"value": "Convolve to the smallest common beam", "evidence": [
+{"loc": "2.1 ALMA imaging", "quote": "we convolved images to have the same spatial resolution with the smallest common beam size, using COMMON\\_BEAM in the SPECTRAL-CUBE package."}
+]},
+"software": ["spectral-cube"],
+"key_parameters": [
+{"value": "same phase centre and pixel size used for all data products", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "the same phase centre and pixel size are used to image the visibility data so that all data products have the same pixel coordinates"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Fit the global (spatially integrated) SED with a single greybody",
+"method": {"value": "Integrate flux in a 2 arcsec x 2 arcsec box, then fit a single optically thin greybody (T, M_dust, beta free) to the photometry; 160 um Herschel point excluded because of warm dust excess", "evidence": [
+{"loc": "3.3 Global SED of the galaxy", "quote": "We measured the integrated flux densities by summing over the"},
+{"loc": "3.3 Global SED of the galaxy", "quote": "we fit the SED with a single greybody in the optically thin limit"},
+{"loc": "3.3 Global SED of the galaxy", "quote": "Therefore, we repeat the fit with the 160 $\\ensuremath{\\mu}m$ band flux excluded"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Herschel SPIRE 350 and 500 um excluded because of blending", "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "because BRI 1335-0417 is not sufficiently separated from a nearby bright source at"}]}
+],
+"assumptions": [
+{"value": "gas-to-dust ratio uses Jones et al. CO(2-1) gas mass with alpha_CO = 0.8 and r21 = 0.85", "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "a ratio of $\\mathrm{r}_{21}=L_{\\mathrm{CO}(2 \\rightarrow 1)}^{\\prime} / L_{\\mathrm{CO}(1 \\rightarrow 0)}^{\\prime}=0.85$ for SMGs"}]}
+],
+"fitting": {"value": "fitting method not stated", "evidence": []},
+"validation": {"value": "Compared with previous beta and L_TIR values from the literature", "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "are consistent with the previously derived values for this galaxy"}]}
+},
+{
+"order": 4,
+"goal": "Derive per-pixel dust temperature and surface density maps",
+"method": {"value": "Fit a CMB-corrected greybody to rest-frame 161 and 90 um images in each pixel with beta fixed at the global value, solving for Sigma_dust and T_dust", "evidence": [
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "With flux densities measured in two bands and the fiducial dust emissivity"},
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "we choose to use the best estimate of $\\beta=2.14\\pm0.17$ obtained with the global SED modelling as a fiducial value in this paper"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Band 4 (385 um) not used for the resolved fit because of lowest sensitivity", "evidence": [{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "However, the rest-frame 385 $\\ensuremath{\\mu}m$ data has the worst sensitivity in terms of the minimal detectable SFR"}]},
+{"value": "only pixels with 68% interval on T_dust below 10 K kept", "evidence": [{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "We only show and use pixels where the 68% confidence interval for the dust temperature is smaller than 10K."}]}
+],
+"assumptions": [
+{"value": "kappa_0 = 5.1 cm^2/g at 1199.1 GHz (Draine & Li 2007); CMB temperature correction at z = 4.4704", "evidence": [{"loc": "3.2 Dust SED modelling", "quote": "$\\kappa_0=5.1$ cm$^2$ g$^{-1}$ is the dust opacity at a reference frequency $\\nu_0=1199.1$ GHz (cite: Draine2007-ou)"}]}
+],
+"fitting": {"value": "Monte Carlo resampling, 300 trials, flux drawn from Gaussians and beta drawn from N(2.14, 0.17); 1 sigma from central 68%", "evidence": [
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "we repeat the fit 300 times using fluxes randomly drawn from a Gaussian distribution centred on the best fit measured value"},
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "We report the width of the central 68% of these 300 trials as our $1\\sigma$ uncertainties on $T_\\mathrm{dust}$ and $\\Sigma_\\mathrm{dust}$."}
+]},
+"validation": {"value": "Isoflux-line plots for three example regions show T and Sigma_dust constrained near the intersection", "evidence": [{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "The intersection of the two black lines corresponds to the most likely solution of $\\Sigma_\\mathrm{dust}$ and $T_\\mathrm{dust}$"}]}
+},
+{
+"order": 5,
+"goal": "Radial temperature profile and gas-tracer profile comparison",
+"method": {"value": "De-project radius with thin-disk geometry from [C II] kinematics; compare dust-derived, CO(7-6)-derived and [C II]-derived gas profiles normalised at about 2 kpc", "evidence": [
+{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "We calculate the de-projected radius using the thin disk geometry proposed in (cite: tsukui2021-vl) (Position angle 7.6 deg, inclination 37.3 deg)"},
+{"loc": "3.5 Comparison of the derived dust mass profile and other gas mass tracer profiles", "quote": "Both the dust-derived and CO-derived gas mass profiles are steeper than that estimated from the \\[C II\\] line."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "CO comparison done at common 0.24 x 0.18 arcsec resolution", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "For the comparison with CO(7-6) all data are convolved to the common"}]}
+],
+"assumptions": [
+{"value": "constant emissivity per unit mass for line tracers; constant dust-to-gas ratio for dust", "evidence": [{"loc": "3.5 Comparison of the derived dust mass profile and other gas mass tracer profiles", "quote": "we assume a constant emissivity per unit mass, while for the latter we assume a constant dust-to-gas ratio"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Test systematics of the resolved measurements",
+"method": {"value": "Vary absolute flux scales by 10% in opposite directions and vary beta over 1 to 2.5 to see effect on temperature and dust mass profiles", "evidence": [
+{"loc": "3.7 Systematic error of the spatially resolved measurements", "quote": "Considering the worst possible case, when the true Band 7 flux and Band 9 flux are 10% higher and lower than the observed values, respectively"},
+{"loc": "3.7 Systematic error of the spatially resolved measurements", "quote": "We investigate the effect on the derived dust temperature and mass profiles if the $\\beta$ value changes across the galaxy from 1 to 2.5."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Systematic error from absolute flux estimated as +2.7 K / -2.0 K", "evidence": [{"loc": "3.7 Systematic error of the spatially resolved measurements", "quote": "the systematic error due to the absolute flux uncertainty is estimated to be +2.7K/$-2.0$K"}]}
+},
+{
+"order": 7,
+"goal": "Decompose Band 7 and Band 9 continuum images into point source plus host",
+"method": {"value": "Fit three components (PSF-scaled point source, PSF-convolved circular Gaussian, and a [C II] moment-0 template for the disk) to each continuum image", "evidence": [
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "where the model has only 6 parameters: the central coordinates of the PSF and Gaussian components"},
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "to the observed Band 7 and Band 9 continuum images with simple"}
+]},
+"software": ["ESSENCE"],
+"key_parameters": [
+{"value": "[C II] cube convolved to continuum resolution; masked moment: kernel 2x beam and 2x channel width, mask threshold = rms of original cube", "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "convolution with a kernel of 2 times the beam size and 2 times the spectral channel width, then masking with a threshold set to the rms of the original cube"}]}
+],
+"assumptions": [
+{"value": "[C II] moment map traces the distribution of star-formation-heated dust", "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "using the observed \\[C II\\] moment0 map as a template tracing the dust distribution heated by the star formation in the galaxy"}]}
+],
+"fitting": {"value": "chi-square minimisation; uncertainties from 300 Monte Carlo realisations of noise generated with the measured noise ACF (ESSENCE)", "evidence": [
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "(3) repeat the fitting procedure 300 times with different random realizations of the noise"}
+]},
+"validation": {"value": "BIC prefers the three-component fit; total model flux matches measured flux; point source position matches optical quasar and temperature peak", "evidence": [
+{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "evaluation of the Bayesian information criterion (BIC) indicates that this three-component fit is preferred over any alternatives omitting one of the components"}
+]}
+},
+{
+"order": 8,
+"goal": "Fit the SED of AGN-heated and host dust using the decomposition",
+"method": {"value": "Fit two greybodies (optically thin, then cold dust with free tau_161um) simultaneously to integrated SED and to point-source fluxes at 161 and 90 um; also run modified STARDUST panchromatic fits", "evidence": [
+{"loc": "4.2.1 Two greybody components SED modelling", "quote": "The sum of the two greybody functions (AGN-heated dust and colder dust heated by star formation) is fitted to the spatially integrated fluxes"},
+{"loc": "4.2.1 Two greybody components SED modelling", "quote": "We fit the model again with the same procedure for the above optically thin case, but with a prior constraint that the cold dust temperature cannot exceed the warm dust temperature."},
+{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "we modified the code to accept the point source fluxes as independent constraints to be fitted with the AGN-heated dust component"}
+]},
+"software": ["emcee", "STARDUST"],
+"key_parameters": [
+{"value": "Optically thin model has 6 free parameters (T, M_dust, beta for each component)", "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "This model has 6 free parameters"}]},
+{"value": "Adopted final values: two greybodies with free optical thickness for cold component", "evidence": [{"loc": "4.2.3 Conclusion of the SED fitting results", "quote": "As final values for the remainder of this paper, we adopt the best-fit model parameters derived from the two greybodies fit with a free optical thickness"}]}
+],
+"assumptions": [
+{"value": "AGN-heated dust modelled as optically thin greybody with free beta, instead of torus models", "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "This motivates us to consider a simpler model where we fit the AGN-dust component with a greybody spectrum in the optically thin limit but with a free dust emissivity index"}]}
+],
+"fitting": {"value": "emcee with uniform priors", "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "We compute the distribution of their posteriors for a uniform prior distribution using the EMCEE package (cite: Foreman-Mackey2013-yn)."}]},
+"validation": {"value": "Three methods give consistent AGN contribution and SFR; QSO template without extinction preferred over stellar template (chi-square larger by 536); fit without decomposition gives SFR much higher", "evidence": [
+{"loc": "4.2.3 Conclusion of the SED fitting results", "quote": "all three methods of SED modelling that include the spatially-resolved constraints provide consistent estimates of the AGN contribution"},
+{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "but this results in a $\\chi^2$ value that is larger by 536, with 16 degrees of freedom"}
+]}
+},
+{
+"order": 9,
+"goal": "Make AGN-subtracted dust maps and SFR surface density",
+"method": {"value": "Subtract best-fit point-source model from the 161 and 90 um images and repeat the per-pixel greybody fit; convert Sigma_TIR to Sigma_SFR", "evidence": [
+{"loc": "4.3 AGN-subtracted dust properties", "quote": "in each pixel, we subtract our best-fitting model estimate of the contribution from the point-like AGN-heated dust"},
+{"loc": "4.3 AGN-subtracted dust properties", "quote": "assuming the (cite: Chabrier2003-el) initial mass function"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "same fiducial beta = 2.14 +/- 0.17; Monte Carlo includes point-source parameter uncertainties", "evidence": [{"loc": "4.3 AGN-subtracted dust properties", "quote": "but also our uncertainties on the properties of the point source component"}]}
+],
+"assumptions": [
+{"value": "Chabrier IMF in the TIR to SFR conversion", "evidence": [{"loc": "4.3 AGN-subtracted dust properties", "quote": "assuming the (cite: Chabrier2003-el) initial mass function"}]}
+],
+"fitting": {"value": "Monte Carlo as in step 4", "evidence": [{"loc": "4.3 AGN-subtracted dust properties", "quote": "We again use Monte Carlo simulations to propagate the uncertainties"}]},
+"validation": {"value": "Integrated SFR from the resolved map (with [CII]-based SFR where dust is unavailable) compared with the SED result", "evidence": [{"loc": "4.3 AGN-subtracted dust properties", "quote": "consistent with the SED modelling result"}]}
+},
+{
+"order": 10,
+"goal": "Kennicutt-Schmidt relation and depletion times",
+"method": {"value": "Convert dust mass surface density to gas surface density with the global gas-to-dust ratio and plot against AGN-subtracted Sigma_SFR per pixel", "evidence": [
+{"loc": "5.1 Implications for the dynamics and history of BRI 1335-0417", "quote": "The gas mass is derived by converting the spatially resolved dust mass surface density in Fig."},
+{"loc": "5.1 Implications for the dynamics and history of BRI 1335-0417", "quote": "to a total mass surface density assuming the same gas-to-dust ratio of"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "gas-to-dust ratio of 54.2 +/- 9.3 applied uniformly", "evidence": [{"loc": "5.1 Implications for the dynamics and history of BRI 1335-0417", "quote": "to a total mass surface density assuming the same gas-to-dust ratio of"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.1.1-5 (Band 7); 5.4.0-70 (Band 4, Band 9)", "used_for": {"value": "Pipeline calibration and imaging of ALMA data", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "We performed standard calibration and data reduction using the Common Astronomy Software Application (CASA; (cite: CASA_Team2022-cl)) pipeline"}]}},
+{"name": "hif_findcont (HIF_FINDCONT)", "version": "not stated", "used_for": {"value": "Identify line-free channels", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "We identified line-free channels using the HIF\\_FINDCONT task in CASA"}]}},
+{"name": "spectral-cube", "version": "not stated", "used_for": {"value": "COMMON_BEAM convolution to a common resolution", "evidence": [{"loc": "2.1 ALMA imaging", "quote": "using COMMON\\_BEAM in the SPECTRAL-CUBE package."}]}},
+{"name": "ESSENCE", "version": "not stated", "used_for": {"value": "Generate noise maps with realistic correlation for Monte Carlo errors", "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "randomly generate noise maps with the same correlation properties characterized by the noise ACF using the ESSENCE package"}]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "Posterior sampling for two-greybody SED fits", "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "We compute the distribution of their posteriors for a uniform prior distribution using the EMCEE package"}]}},
+{"name": "STARDUST", "version": "modified by authors (not yet released)", "used_for": {"value": "Panchromatic UV-to-FIR SED fit with QSO, AGN dust and cold dust templates, modified to accept point-source fluxes", "evidence": [{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "we modified the code to accept the point source fluxes as independent constraints to be fitted with the AGN-heated dust component"}]}}
+],
+"results_numeric": [
+{"quantity": "Dust temperature of the central pixel (single-greybody resolved fit, before AGN subtraction)", "value": "57.1", "uncertainty": "0.3", "units": "K", "from_step": 4, "evidence": [{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "The dust temperature of the central pixel is well constrained to be $57.1 \\pm 0.3$ K"}]},
+{"quantity": "Median dust temperature at large radius", "value": "38", "uncertainty": "spread 30 to 45 K", "units": "K", "from_step": 5, "evidence": [{"loc": "3.4 Intrinsic dust properties derived from the spatially resolved dust SED", "quote": "the temperature profile becomes flat with a median temperature of 38K and a large spread of values from 30 to 45 K"}]},
+{"quantity": "Global single-greybody dust temperature (160 um excluded)", "value": "39.0", "uncertainty": "+3.4/-2.9", "units": "K", "from_step": 3, "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "a dust temperature $T_{\\mathrm{dust}} = 39.0_{-2.9}^{+3.4}$K and an emissivity index $\\beta=2.14\\pm0.17$"}]},
+{"quantity": "Global emissivity index beta", "value": "2.14", "uncertainty": "0.17", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "an emissivity index $\\beta=2.14\\pm0.17$"}]},
+{"quantity": "Global total FIR luminosity L_TIR", "value": "2.7e13", "uncertainty": "+0.4/-0.3 (1e13)", "units": "Lsun", "from_step": 3, "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "the computed total FIR luminosity $L_{\\mathrm{TIR}}=2.7_{-0.3}^{+0.4}\\times 10^{13} L_\\odot$"}]},
+{"quantity": "Gas-to-dust mass ratio (global)", "value": "54.2", "uncertainty": "9.3", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.3 Global SED of the galaxy", "quote": "The gas-to-dust mass ratio is found to be 54.2$\\pm 9.3$ if we adopt"}]},
+{"quantity": "Gas-to-dust ratio needed to match CO and dust at 2 kpc", "value": "44", "uncertainty": "24", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "3.5 Comparison of the derived dust mass profile and other gas mass tracer profiles", "quote": "would require a gas-to-dust ratio 44 $\\pm$ 24"}]},
+{"quantity": "Systematic temperature error from absolute flux scale", "value": "+2.7/-2.0", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [{"loc": "3.7 Systematic error of the spatially resolved measurements", "quote": "the systematic error due to the absolute flux uncertainty is estimated to be +2.7K/$-2.0$K"}]},
+{"quantity": "Point source flux, Band 7 (161 um) and Band 9 (90 um)", "value": "3.09 (Band 7); 10.87 (Band 9)", "uncertainty": "+0.09/-0.08 (Band 7); +0.85/-1.18 (Band 9)", "units": "mJy", "from_step": 7, "evidence": [{"loc": "Table 2", "quote": "3.09$^{+0.09}_{-0.08}$ & 10.87$^{+0.85}_{-1.18}$"}]},
+{"quantity": "Gaussian component size sigma, Band 7 and Band 9", "value": "787 (Band 7); 777 (Band 9)", "uncertainty": "+18/-17 (Band 7); +66/-75 (Band 9)", "units": "pc", "from_step": 7, "evidence": [{"loc": "Table 2", "quote": "787$^{+18}_{-17}$ & 777$^{+66}_{-75}$"}]},
+{"quantity": "Measured total flux, Band 7 and Band 9", "value": "20.54 (Band 7); 52.92 (Band 9)", "uncertainty": "0.27 (Band 7); 2.13 (Band 9)", "units": "mJy", "from_step": 7, "evidence": [{"loc": "Table 2", "quote": "20.54$\\pm$0.27& 52.92$\\pm$2.13"}]},
+{"quantity": "Point source fraction of integrated flux (161 um, 90 um)", "value": "15% (161 um); 21% (90 um)", "uncertainty": "not stated", "units": "percent", "from_step": 7, "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "The contribution of the point sources to the integrated flux over the image is small, 15% and 21% in rest-frame"}]},
+{"quantity": "Point source fraction of flux in the central resolution element (161 um, 90 um)", "value": "49.8 (161 um); 56.7 (90 um)", "uncertainty": "+1.5/-1.3 (161 um); as printed -6.1/+4.5 (90 um)", "units": "percent", "from_step": 7, "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "contributing 49.8$_{-1.3}^{+1.5}$% and 56.7$^{-6.1}_{+4.5}$%"}]},
+{"quantity": "Warm (AGN-heated) dust temperature, adopted two-greybody fit with free tau", "value": "87.1", "uncertainty": "+34.1/-18.3", "units": "K", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "with dust temperatures of 87.1$^{+34.1}_{-18.3}$ K (warm component) and 52.6$^{+10.3}_{-11.0}$ K (cold component)"}]},
+{"quantity": "Cold dust temperature, adopted two-greybody fit with free tau", "value": "52.6", "uncertainty": "+10.3/-11.0", "units": "K", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "52.6$^{+10.3}_{-11.0}$ K (cold component)"}]},
+{"quantity": "Cold dust temperature, optically thin two-greybody fit", "value": "29.3", "uncertainty": "+4.5/-3.6", "units": "K", "from_step": 8, "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "the temperature of the cold dust component is $T_{\\mathrm{dust}}=29.3^{+4.5}_{-3.6}$ K"}]},
+{"quantity": "Dust emissivity indices of warm and cold components (adopted fit)", "value": "0.91 (warm); 2.56 (cold)", "uncertainty": "+0.56/-0.49 (warm); +0.37/-0.30 (cold)", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "$\\beta_{\\mathrm{dust}}=0.91^{+0.56}_{-0.49}$ and $\\beta_{\\mathrm{dust}}=2.56^{+0.37}_{-0.30}$ for the warm and cold components, respectively"}]},
+{"quantity": "SFR of the host from cold dust component (adopted)", "value": "1700", "uncertainty": "+500/-400", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "The star formation rate (SFR) estimated from the cold dust component is $1700_{-400}^{+500} M_\\odot$ yr$^{-1}$"}]},
+{"quantity": "AGN fraction of L_IR (adopted)", "value": "53", "uncertainty": "+14/-15", "units": "percent", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "a large AGN contribution ($53^{+14}_{-15}$%)"}]},
+{"quantity": "STARDUST SFR with decomposition constraints", "value": "1.77", "uncertainty": "0.02", "units": "1e3 Msun/yr", "from_step": 8, "evidence": [{"loc": "Table 3", "quote": "$1.77\\pm{0.02}$"}]},
+{"quantity": "STARDUST AGN-subtracted SFR without decomposition constraints", "value": "5260", "uncertainty": "31", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "STARDUST provides a best-fit model with a AGN subtracted SFR of 5260$\\pm31M_{\\odot}$"}]},
+{"quantity": "Integrated SFR from the resolved map", "value": "1476", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 9, "evidence": [{"loc": "4.3 AGN-subtracted dust properties", "quote": "The resulting integrated SFR is $\\sim1476 M_{\\odot}$ yr$^{-1}$"}]},
+{"quantity": "Gas depletion time range in the Kennicutt-Schmidt diagram", "value": "50-200", "uncertainty": "not stated", "units": "Myr", "from_step": 10, "evidence": [{"loc": "abstract", "quote": "with a constant gas depletion time of 50-200 Myr"}]}
+],
+"findings_qualitative": [
+{"value": "The steep central temperature gradient in the single-greybody map is entirely due to the unresolved warm dust; after point source subtraction the temperature profile is flat with only a slight central increase", "evidence": [{"loc": "4.3 AGN-subtracted dust properties", "quote": "The flat dust temperature indicates that the steep gradient in Fig."}]},
+{"value": "High-temperature peaks coincide with enhanced [C II] velocity dispersion along the disk minor axis; AGN wind vs anisotropic accretion not distinguished", "evidence": [{"loc": "6 Conclusion and summary", "quote": "With current data, we cannot conclude whether the feature is due to the AGN wind heating the dust"}]},
+{"value": "A QSO template without dust extinction fits the UV-to-optical SED better than a stellar template", "evidence": [{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "Our STARDUST calculation also finds that a QSO template without dust extinction"}]}
+],
+"claims": [
+{"hypothesis": "Is the steep central dust temperature rise caused by AGN-heated dust?", "experiment": "Per-pixel greybody fit to 161 and 90 um images, then decomposition into point source plus host and refit after point source subtraction", "result": "Central T = 57.1 K before subtraction; profile flat afterwards", "finding": "The temperature gradient is due to an unresolved warm dust component associated with the AGN", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The unresolved warm dust component also explains the steep temperature gradient, as the temperature profile derived after the point source subtraction is flat."}
+]},
+{"hypothesis": "Does a two-component dust model including AGN-heated warm dust describe the global SED better, and how does it change the SFR?", "experiment": "Two-greybody fits (thin and with free tau) and STARDUST fits constrained by decomposed point source fluxes", "result": "SFR 1700 (+500/-400) Msun/yr, AGN contribution 53 percent", "finding": "Previous SFR (5040 Msun/yr) overestimated by about a factor of three", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "a factor of three smaller than previous estimates due to a large AGN contribution"},
+{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "it is not possible to make this correction with unresolved photometric data alone"}
+]},
+{"hypothesis": "Is a distinct unresolved component required in the dust continuum images?", "experiment": "Three-component image decomposition (point source, Gaussian, [C II] template) of Band 7 and Band 9 images", "result": "Point source gives 15 and 21 percent of total flux but about 50 to 57 percent in the central beam, at the quasar position", "finding": "A point source coincident with the optical quasar and temperature peak is present in both bands", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "Image decomposition analysis reveals the presence of a point source in both dust continuum images"}
+]},
+{"hypothesis": "Does removing the point source change the central SFR surface density and the star formation regime?", "experiment": "AGN-subtracted maps; Kennicutt-Schmidt diagram using dust-derived gas surface density", "result": "Central Sigma_SFR reduced by over a factor of three; pixels lie on a roughly linear sequence with depletion time of 50-200 Myr", "finding": "The galaxy is a typical starburst with longer depletion time than previously estimated, consistent with settled disk kinematics", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The point source subtraction also reduces the estimated central SFR surface density"},
+{"loc": "5.1 Implications for the dynamics and history of BRI 1335-0417", "quote": "Our increased depletion time resolves this discrepancy."}
+]},
+{"hypothesis": "What causes the high-temperature regions in the outer disk correlated with velocity dispersion?", "experiment": "Compare temperature and [C II] velocity dispersion maps; single Gaussian fit at high-temperature peaks", "result": "High-T peaks coincide with enhanced dispersion along minor axis; no additional line components required", "finding": "AGN-driven outflow or anisotropic accretion are both possible", "support": "partially", "evidence": [
+{"loc": "3.6 The correlation of the temperature map and velocity dispersion map", "quote": "may indicate that an outflow from the central region heats up the dust and enhances the velocity dispersion"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Multiple continuum bands give many resolution elements for spatially resolved dust properties", "evidence": [{"loc": "1 Introduction", "quote": "Multiple continuum images provide a number of resolution elements over the galaxy, making it possible to investigate the spatially resolved physical properties of dust"}]},
+{"field": "why_this_method", "value": "[C II] moment-0 template needs only one parameter and captures arms and bar not representable by analytic models", "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "(1) there is only one parameter (total flux), (2) the \\[C II\\] emission captures disk substructures like arms and a bar"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Alternative of a stellar template for the UV-to-optical SED rejected in favour of the QSO template", "evidence": [{"loc": "4.2.2 Stardust panchromatic SED modelling", "quote": "This difference in $\\chi^2$ is highly significant and strongly favours the quasar template."}]},
+{"value": "Spatially varying beta (radial decrease from 2.5 to 1.0) considered but judged unlikely to remove the gradient", "evidence": [{"loc": "3.7 Systematic error of the spatially resolved measurements", "quote": "However, the scenario is unlikely because it contradicts the generally observed anti-correlation of the temperature and"}]}
+],
+"limitations_admitted": [
+{"value": "Resolved fluxes are beam-averaged and luminosity-weighted, which flattens intrinsic distributions", "evidence": [{"loc": "3.7 Systematic error of the spatially resolved measurements", "quote": "It is expected that such spatial smoothing by the beam acts to flatten any intrinsic distribution."}]},
+{"value": "Short Band 7 observation not sensitive to faint extended structure out to 10 kpc", "evidence": [{"loc": "4.1 Image decomposition of Band 7 and Band 9 continuum images", "quote": "is not sensitive enough to probe the faint structure out to 10 kpc in BRI 1335-0417"}]},
+{"value": "Sensitivity and resolution too low to test small-scale clumps in temperature-enhanced regions", "evidence": [{"loc": "3.6 The correlation of the temperature map and velocity dispersion map", "quote": "cannot be addressed with the current data due to sensitivity and resolution limits"}]},
+{"value": "Optically thin integrated fit gives lower cold-dust temperature than resolved results; integrated tau of limited meaning", "evidence": [{"loc": "4.2.1 Two greybody components SED modelling", "quote": "This is expected due to the optically thin assumption we adopted in the SED modelling"}]}
+],
+"referee_caveats_inferred": [
+"Fiducial beta fixed from the global SED (with the 160 um point excluded) for all pixels, so spatial beta gradients are not constrained",
+"AGN warm component temperature is poorly constrained (87 +34/-18 K) and rests on only two point-source fluxes plus the integrated SED",
+"Decomposition assumes [C II] morphology equals cold dust morphology, even though a central [CII]/FIR deficit is admitted",
+"Dust-based gas surface density assumes a constant gas-to-dust ratio from a single global CO(2-1) based estimate with alpha_CO = 0.8",
+"Inconsistent redshift values printed (4.4704 vs 4.4074) and 57.1 vs 57.7 K central temperature between text and conclusions"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA data public in the ALMA archive; HST in MAST; Spitzer and Herschel photometry public", "evidence": [
+{"loc": "Data Availability", "quote": "The ALMA data we use in this work are publicly available in <https://almascience.nrao.edu/aq/>."},
+{"loc": "Data Availability", "quote": "The HST data we use in this work can be obtained in"}
+]}
+],
+"code_released": [
+{"value": "Modified STARDUST code to be released on GitHub upon publication (not yet available at time of writing)", "evidence": [{"loc": "4.2.2 Stardust panchromatic SED modelling (footnote)", "quote": "The modified STARDUST code will be available at the GitHub repository <https://github.com/takafumi291>, upon publication"}]}
+],
+"missing_for_reproduction": [
+"tclean imaging parameters (cell, image size, niter, threshold, masks) and line-free channel ranges",
+"Per-pixel fit optimizer details and emcee configuration (walkers, steps, priors)",
+"Modified STARDUST source and template versions",
+"Exact integrated-flux aperture and primary beam treatment",
+"Band 4 and 9 observing time, array configuration and execution details"
+],
+"estimated_data_volume_inferred": "Moderate: three ALMA bands of one source, likely tens of GB of raw/calibrated visibilities; pipeline products only a few GB",
+"score_inferred": 3,
+"score_reason": "Public ALMA data, numeric results, a clear stepwise recipe and key parameters (robust, Monte Carlo counts, kernel choices) are given, but imaging and fitting settings and the modified STARDUST code are missing.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Data are public, the per-pixel greybody map and the image decomposition are specified well enough to redo, and the headline results (T maps, point source fluxes, SFR) are numeric.",
+"methods_papers": [
+{"citation": "(cite: tsukui2021-vl)", "why": "Earlier analysis of the Band 7 data, disk geometry and [C II] kinematics reused here"},
+{"citation": "(cite: Kokorev2021-yp)", "why": "STARDUST SED fitting code that the authors modified"},
+{"citation": "(cite: Walter2022-uh)", "why": "Greybody formalism with CMB correction used for resolved dust modelling"}
+],
+"companion_papers": [
+{"citation": "(cite: Jones2016-cj)", "why": "CO(2-1) gas mass and earlier depletion-time estimate for the same galaxy"},
+{"citation": "(cite: Wagg2014-bh)", "why": "Previous SFR and beta from the unresolved SED"}
+],
+"related_projects_or_surveys": ["ALMA 2017.1.00394.S", "ALMA 2018.1.01103.S", "HST GO-8572"]
+}

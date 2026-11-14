@@ -1,0 +1,192 @@
+{
+ "bibcode": "2012ApJ...761L..32W",
+ "title": "ALMA Submillimeter Continuum Imaging of the Host Galaxies of GRB 021004 and GRB 080607",
+ "year": 2012,
+ "doi": "10.1088/2041-8205/761/2/L32",
+ "arxiv_id": "1211.2807",
+ "fields": [
+  "high_z_galaxies",
+  "transients"
+ ],
+ "question": "Do the GRB 021004 and GRB 080607 host galaxies at z>2 have significant dust-obscured star formation, and is the large afterglow extinction of the dark burst GRB 080607 representative of its host?",
+ "alma_project_codes": [
+  "2011.0.00101.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA 12-m array, Cycle 0",
+  "angular_resolution": "1.55\"x1.25\" (GRB 021004); 1.56\"x0.87\" (GRB 080607)",
+  "sensitivity": "1 sigma 0.113 mJy (GRB 021004); 0.098 mJy (GRB 080607)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Infrared SED template library (105 templates) used to derive L_IR",
+    "evidence": [
+     {
+      "loc": "GRB 021004",
+      "quote": "this can be done using the infrared spectral energy distribution (SED) library of (cite: chary01)."
+     }
+    ]
+   },
+   "citation": "Chary & Elbaz 2001 (cite: chary01)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses of hosts and optical photometry/SFRs for comparison",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The host galaxy of GRB 080607 has a better constrained stellar mass of 1–3 $\\times10^{10} M_\\ensuremath{\\odot}$ (cite: chen11a)."
+     }
+    ]
+   },
+   "citation": "Chen et al. 2011a; Savaglio et al. 2009; Chen et al. 2009"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make continuum images",
+   "method": "Inspect JAO calibration, Fourier transform visibilities with natural weighting; dirty image for GRB 021004, CLEAN for GRB 080607",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure 345 GHz flux",
+   "method": "Point-source flux at host location; for GRB 080607 point-source and 2-D Gaussian fits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive L_IR and SFR",
+   "method": "Redshift CE01 templates and select those consistent with the observed 345 GHz flux or upper limit; convert L_IR to SFR",
+   "software": [],
+   "key_parameters": [
+    "3-sigma upper limit 0.33 mJy for GRB 021004"
+   ],
+   "assumptions": [
+    "Dust temperature from CE01 luminosity-dependent templates; cosmology H0=71, OmegaM=0.27, OmegaL=0.73"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "S345 GRB 080607 host",
+   "value": "0.31",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$S_{345} = 0.31\\pm 0.09$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "S345 GRB 021004 host",
+   "value": "0.17",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "GRB 021004",
+     "quote": "The 345 GHz point-source flux measured at the location of the host galaxy is $0.17\\pm0.11$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR GRB 080607 host",
+   "value": "2.4e11 to 4.5e11",
+   "uncertainty": "range",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\rm IR}=(2.4$–$4.5)\\times10^{11}~L_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR upper limit GRB 021004 host (3 sigma)",
+   "value": "<3.1e11",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "3-$\\sigma$ upper limit of $L_{\\rm IR}<3.1\\times10^{11}~L_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR GRB 080607 host",
+   "value": "41–77",
+   "uncertainty": "range",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "GRB 080607",
+     "quote": "The inferred SFR is between 41 and 77 $M_\\ensuremath{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR upper limit GRB 021004 host",
+   "value": "<53",
+   "uncertainty": "3 sigma",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "GRB 021004",
+     "quote": "the 3-$\\sigma$ upper limit of the SFR of the host galaxy is 53 $M_\\ensuremath{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Detection significance GRB 080607",
+   "value": "3.3",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "GRB 080607",
+     "quote": "we adopt the more conservative measurement of 0.31 mJy with a statistical significance of 3.3 $\\sigma$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Imaging parameters: cell size, image size, CLEAN threshold/mask, iterations",
+  "Method and region used for point-source and Gaussian fits",
+  "How L_IR was integrated from templates (8-1000 micron) and template matching tolerance",
+  "Flux scale uncertainty",
+  "Whether the four spectral windows were all combined"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Details of template selection and L_IR integration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple data and analysis, but imaging and fitting details missing.",
+ "rediscovery_reason": "Cycle 0 data are likely public, the recipe is short, and results are numeric fluxes.",
+ "source_card": "cards/2012ApJ...761L..32W/sonnet/card.md"
+}

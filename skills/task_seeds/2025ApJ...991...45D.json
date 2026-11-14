@@ -1,0 +1,367 @@
+{
+ "bibcode": "2025ApJ...991...45D",
+ "title": "Molecular Jets from an Evolved Protostar: Insights from JWST-ALMA Synergy",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adf8d6",
+ "arxiv_id": "2509.11641",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "How do the cold (ALMA CO, SiO) and warm/hot (JWST/MIRI H2 rotational) gas in the HOPS 315 (G205S3) jet and outflow compare in morphology and physical conditions (temperature, extinction, mass-loss rate)?",
+ "alma_project_codes": [
+  "2018.1.00302.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.46'' x 0.40'' (SiO), ~0.42'' x 0.36'' (CO), ~0.45'' x 0.40'' (continuum)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric temperature Tbol = 180 +/- 33 K, Lbol = 6.4 +/- 2.4 Lsun and spectral index ~0.417 of HOPS 315",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "is a Class I protostellar system characterized by a bolometric temperature of $T_{\\mathrm{bol}} = 180 \\pm 33$ K"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJS..224....5F; 2020ApJ...890..130T; 2020ApJS..251...20D)"
+  },
+  {
+   "what": {
+    "value": "Inclination angle 40 +/- 8 deg from the CO outflow morphology",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "The inclination angle for G205S3 was estimated to be $40\\ensuremath{^\\circ} \\pm 8\\ensuremath{^\\circ}$ based on the wide-angle CO outflow morphology observed with ALMA"
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJ...925...11D)"
+  },
+  {
+   "what": {
+    "value": "Mean jet velocity ~125 km/s and ALMA jet mass-loss rates (total ~0.59e-6 Msun/yr; blue lobe 0.29 +/- 0.12 e-6 Msun/yr)",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "and a mean jet velocity of $\\sim 125\\ km\\ s^{-1}$"
+     },
+     {
+      "loc": "5.2 Jet Physical condition",
+      "quote": "$\\dot{M}_{\\rm J, blue, ALMA} \\approx 0.29 \\pm 0.12 \\times 10^{-6}~M_\\odot~\\mathrm{yr}^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJ...925...11D)"
+  },
+  {
+   "what": {
+    "value": "Wavelength-dependent JWST/MIRI PSF FWHM relation 0.033 (lambda/um) + 0.106 arcsec",
+    "evidence": [
+     {
+      "loc": "3.3 Combining ALMA Maps with JWST Observations",
+      "quote": "the PSF FWHM is estimated using the relation $\\theta_{\\mathrm{FWHM}} = 0.033\\,(\\lambda/\\mu\\mathrm{m}) + 0.106\\ensuremath{''}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2023AJ....166...45L)"
+  },
+  {
+   "what": {
+    "value": "Weingartner & Draine mid-infrared extinction curve used for the extinction correction",
+    "evidence": [
+     {
+      "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+      "quote": "extinction curve for the mid-infrared regime to correct extinction to the observed fluxes"
+     }
+    ]
+   },
+   "citation": "(cite: 2001ApJ...548..296W)"
+  },
+  {
+   "what": {
+    "value": "Terminal jet velocity of 120-125 km/s from JWST infrared observations (comparison)",
+    "evidence": [
+     {
+      "loc": "5.1 Shock Structure",
+      "quote": "derived a terminal jet velocity of 120-125 km s$^{-1}$ based on JWST infrared observations"
+     }
+    ]
+   },
+   "citation": "(cite: 2025A&A...695A.145V)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA SiO, CO and continuum",
+   "method": "Calibrate with the standard CASA pipeline and image with tclean at robust +2.0; bin line cubes to 2.0 km/s",
+   "software": [
+    "CASA 6.5.4",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = +2.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect bright emission lines in JWST/MIRI cubes",
+   "method": "peakmoment first stage: extract spectra from a 0.5'' radius aperture on the jet, smooth, find local maxima and keep peaks above 5-7 sigma",
+   "software": [
+    "peakmoment",
+    "scipy.signal.find_peaks"
+   ],
+   "key_parameters": [
+    "Channel 4 limited to lambda < 26 um"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make continuum-subtracted JWST moment-0 maps",
+   "method": "Per line, take a subcube, fit a pixel-wise polynomial to line-free channels, subtract it and compute moment-0 from channels above 3 sigma of the residual",
+   "software": [
+    "peakmoment",
+    "spectral-cube"
+   ],
+   "key_parameters": [
+    "Spectral window +/-0.1-0.2 um of line-free channels; exclude +/-0.014-0.02 um around the peak; polynomial order up to 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Overlay ALMA maps on JWST maps",
+   "method": "Resample ALMA maps onto the JWST pixel grid with bilinear interpolation, keeping native beams, and overlay SiO contours on JWST moment maps",
+   "software": [
+    "reproject"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive H2 excitation temperatures, A_V and column densities",
+   "method": "Rotational (Boltzmann) diagram of MIRI H2 0-0 lines from a 0.5'' aperture on knot B2; A_V from ortho/para line-flux ratios; extinction-corrected single- and two-temperature fits",
+   "software": [],
+   "key_parameters": [
+    "Linear fit of ln(Nu/gu) vs Eu gives slope -1/Tex"
+   ],
+   "assumptions": [
+    "LTE and optically thin H2 lines",
+    "Weingartner & Draine mid-IR extinction curve with A_V = 23.3 mag"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate jet mass-loss rate",
+   "method": "Cylindrical-flow model of the molecular jet with mean N(H2), constant velocity and jet width equal to the MIRI PSF FWHM at 5.5 um",
+   "software": [],
+   "key_parameters": [
+    "V_j = 125 km/s; W_j ~ 0.29 arcsec"
+   ],
+   "assumptions": [
+    "mu_H2 = 2.8; jet unresolved so width set by PSF"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare knot positions and dynamical ages between ALMA and JWST",
+   "method": "Compute knot dynamical ages from jet velocity, inclination and Orion distance; measure offset between JWST H2 peaks and the ALMA SiO Gaussian centroid of knot B2; compare with expected proper motion over 4.37 yr",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Jet velocity 125 km/s, inclination 40 deg, distance 400 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Visual extinction A_V toward the jet near the continuum peak",
+   "value": "23.3",
+   "uncertainty": "+/-2.5",
+   "units": "mag",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+     "quote": "We have estimated an mean visual extinction A$_V$ = 23.3$\\pm$2.5 mag from the observed integrated line flux ratios of ortho-to-para."
+    }
+   ]
+  },
+  {
+   "quantity": "Single-temperature H2 rotational temperature",
+   "value": "1023",
+   "uncertainty": "+/-67",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+     "quote": "A single-temperature fit yields a rotational temperature of 1023 $\\pm$ 67 K, consistent with a warm molecular component."
+    }
+   ]
+  },
+  {
+   "quantity": "Warm component temperature T1 (two-temperature fit)",
+   "value": "773",
+   "uncertainty": "+/-44",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+     "quote": "we also performed a two-temperature fit, resulting in T$_\\mathrm{1}$=773$\\pm$44 K and T$_\\mathrm{2}$=2499$\\pm$721 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Hot component temperature T2 (two-temperature fit)",
+   "value": "2499",
+   "uncertainty": "+/-721 (abstract gives +/-720)",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+     "quote": "we also performed a two-temperature fit, resulting in T$_\\mathrm{1}$=773$\\pm$44 K and T$_\\mathrm{2}$=2499$\\pm$721 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Column densities N1 (T1) and N2 (T2)",
+   "value": "N1 = 3.34e20; N2 = 1.11e19",
+   "uncertainty": "N1 +/-0.43e20; N2 +/-1.03e19",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+     "quote": "we derive column densities of $N_1 = (3.34 \\pm 0.43 \\times 10^{20}~\\mathrm{cm}^{-2}$ for temperature component $T_1$, and $N_2 = (1.11 \\pm 1.03) \\times 10^{19}~\\mathrm{cm}^{-2}$ for $T_2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined mean N(H2), Section 3.2.1 value",
+   "value": "1.72e20",
+   "uncertainty": "+/-0.22e20",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Extinction Correction in H2 Rotational Diagram Analysis",
+     "quote": "The combined mean molecular hydrogen column density is estimated to be $N(\\mathrm{H}_2) = (1.72 \\pm 0.22) \\times 10^{20}~\\mathrm{cm}^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined N(H2), Summary value (inconsistent with Section 3.2.1)",
+   "value": "3.48e20",
+   "uncertainty": "+/-1.02e20",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Summary",
+     "quote": "The combined molecular hydrogen column density is $N(\\mathrm{H}_2) = (3.48 \\pm 1.02) \\times 10^{20}~\\mathrm{cm}^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet mass-loss rate, blueshifted lobe, from JWST",
+   "value": "0.27e-6",
+   "uncertainty": "+/-0.2e-6 (abstract gives +/-0.1e-6)",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Jet Physical condition",
+     "quote": "We estimate a jet mass-loss rate of $\\dot{M}_{\\rm J, blue, JWST} \\approx 0.27 \\times 10^{-6} \\pm 0.2 \\times 10^{-6}~M_\\odot~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet mass-loss rate, total (2x blue lobe), from JWST",
+   "value": "0.54e-6",
+   "uncertainty": "+/-0.4e-6",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Jet Physical condition",
+     "quote": "$\\dot{M}_{\\rm J, total, JWST} \\approx 0.54 \\pm 0.4 \\times 10^{-6}~M_\\odot~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical ages of knots B1 and B2",
+   "value": "B1 ~10 yr at ~210 AU; B2 ~30 yr at ~630 AU",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 Shock Structure",
+     "quote": "the dynamical age of knot B1 is estimated to be $\\sim$10 years at a projected separation of $\\sim$ 210 AU, while knot B2 is $\\sim$30 years old at $\\sim$ 630 AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Offset between JWST H2 peak and ALMA SiO centroid of knot B2",
+   "value": "~0.45 (5.51 um) to 0.26 (9.665 um)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 Shock Structure",
+     "quote": "The positional offset between the JWST/MIRI H$_2$ emission at shorter wavelengths and the ALMA SiO Gaussian centroid of knot B2 ranges from $\\sim$ 0.45$''$ at 5.51 $\\mu$m to 0.26$''$ at 9.665 $\\mu$m."
+    }
+   ]
+  },
+  {
+   "quantity": "Expected knot displacement over the 4.37 yr ALMA-JWST gap",
+   "value": "~115 AU (~0.22 arcsec)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 Shock Structure",
+     "quote": "the expected displacement over this period is $\\sim115$ AU (equivalent to $\\sim0.22\\ensuremath{''}$ at Orion distance 400 pc and inclination angle 40$\\ensuremath{^\\circ}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters other than robust: image size, cell size, deconvolver, threshold, masking, niter, and whether multiscale was used",
+  "Which execution blocks, spectral windows and fields of 2018.1.00302.S were imaged, and the CASA pipeline version",
+  "Continuum subtraction method and line-free channels used for the ALMA line cubes",
+  "Systemic velocity and velocity ranges used for the ALMA CO and SiO moment maps, and any clipping threshold",
+  "Rest-frequency and spectral setup details of the ALMA data (only line frequencies given in the Introduction)",
+  "Flux calibrator and flux-scale uncertainty for ALMA",
+  "Exact lines and measured fluxes used in each rotational-diagram fit, whether the fit is weighted, how the partition function and ortho/para ratio were treated, and the OPR value assumed",
+  "How the extinction A_V was solved for (which line pairs, which temperature grid) and how the two-temperature fit was parameterized",
+  "How the combined mean N(H2) is derived from N1, N2 (Section 3.2.1 value 1.72e20 differs from Summary value 3.48e20 cm-2)",
+  "Aperture position of knot B2 and the continuum-window ranges for each JWST line",
+  "Gaussian-fit procedure used to get the ALMA SiO knot centroid",
+  "JWST pipeline settings beyond version 1.14.0 (Level 3 products were downloaded, yet processing is also described)"
+ ],
+ "missing_for_reproduction": [
+  "ALMA tclean image size, cell, deconvolver, threshold, masks and line-free channels",
+  "Systemic velocity and moment-map velocity ranges for CO and SiO",
+  "Exact H2 line fluxes, aperture position and the fitting procedure for the rotational diagram and A_V",
+  "Reconciliation of the conflicting N(H2) and A_V values",
+  "Gaussian fitting details for the ALMA SiO knot centroid and the WCS alignment between ALMA and JWST"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Both datasets are public and the JWST tool is released, with a clear ALMA calibration/imaging statement (CASA 6.5.4, robust +2.0, beams), but many imaging and rotational-diagram settings are missing and N(H2) values conflict.",
+ "rediscovery_reason": "Public data in ALMA and MAST archives, released code, and numeric results (T1, T2, A_V, N(H2), mass-loss rate) allow a redo, although the missing aperture and fit details need choices.",
+ "source_card": "cards/2025ApJ...991...45D/sonnet/card.md"
+}

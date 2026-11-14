@@ -1,0 +1,733 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020MNRAS.496.3128R",
+  "title": "Characterizing the radio continuum nature of sources in the massive star-forming region W75N (B)",
+  "year": 2020,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Rodríguez-Kamenetzky, A.",
+  "n_authors": 14,
+  "arxiv_id": "2006.08566",
+  "doi": "10.1093/mnras/staa1742",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2017.1.01593.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We also performed complementary studies with multi-epoch VLA data and ALMA archive data at 1.3 mm wavelength."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "W75N (B)",
+     "coordinates": {
+      "value": "RA(J2000) = 20:38:37.0, Dec(J2000) = +42:37:51.0 (ALMA phase center)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "W75N (B), located in the Cygnus X complex at a distance of 1.3 kpc (cite: rygl2012)"
+       },
+       {
+        "loc": "2.2 ALMA",
+        "quote": "The phase center for the W75N (B) observations was RA(J2000) = 20:38:37.0 and Dec(J2000) = +42:37:51.0"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "1.3 kpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "W75N (B), located in the Cygnus X complex at a distance of 1.3 kpc (cite: rygl2012)"
+       },
+       {
+        "loc": "2.2 ALMA",
+        "quote": "The phase center for the W75N (B) observations was RA(J2000) = 20:38:37.0 and Dec(J2000) = +42:37:51.0"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Rygl et al. 2012",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "W75N (B), located in the Cygnus X complex at a distance of 1.3 kpc (cite: rygl2012)"
+       },
+       {
+        "loc": "2.2 ALMA",
+        "quote": "The phase center for the W75N (B) observations was RA(J2000) = 20:38:37.0 and Dec(J2000) = +42:37:51.0"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the nature of the radio continuum sources (VLA 1, VLA 3, VLA 4, Bc and new weak sources) in the massive star-forming region W75N (B)?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "which allowed us to study the morphology and the nature of the emission of the different radio continuum sources."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.01593.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "(archive ALMA data, project code: 2017.1.01593.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "1.3 mm",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "W75N (B) was observed with ALMA at 1.3 mm during three sessions"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spws: two 1.875 GHz wide at 217.117 and 230.552 GHz; two 117.188 MHz wide at 216.124 and 231.334 GHz; 1920 channels each",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "Two spws had 1.875 GHz bandwidth and were centered on $217.117$ and $230.552$ GHz."
+     },
+     {
+      "loc": "2.2 ALMA",
+      "quote": "All spws had 1920 spectral channels after hanning smoothing."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH",
+     "transition": "5(1,4)-4(2,2)",
+     "rest_frequency": "216.94552 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA",
+       "quote": "CH$_3$OH \\[5(1,4)–4(2,2); rest frequency 216.94552 GHz\\]"
+      }
+     ]
+    },
+    {
+     "species": "SO2",
+     "transition": "22(2,20)-22(1,21)",
+     "rest_frequency": "216.64330 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA",
+       "quote": "SO$_2$ \\[22(2,20)-22(1,21); 216.64330 GHz\\]"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "v=0 (5-4)",
+     "rest_frequency": "217.10498 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA",
+       "quote": "SiO \\[v=0 (5-4); 217.10498 GHz\\]"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15 m to 500 m, 46 antennas",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "46 ALMA telescopes participated, with a minimum baseline length of 15 m and a maximum baseline length of 500 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.73\" x 0.86\", PA -4 deg",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "yielding a synthesized beam size for the 1.3 mm continuum observations of $1.73\\ensuremath{''}\\times0.86\\ensuremath{''}$ with a position angle of $-4^\\circ$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~7 arcsec",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "This resulted in a maximum recoverable scale of $\\sim$7 arcsec."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "~16 minutes",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "In total, approximately 16 minutes were spent on source."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "May 6, 7 and 11, 2018",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "on May 6th, 7th, and 11th 2018"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "archive ALMA data",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "(archive ALMA data, project code: 2017.1.01593.S)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "4-48 GHz A-configuration continuum (project 14A-007) plus archive multi-epoch data; main dataset of the paper",
+      "evidence": [
+       {
+        "loc": "2.1 VLA",
+        "quote": "in its A-configuration at C (6 cm), Ku (2 cm), K (1.3 cm), and Q (7 mm) bands (project code 14A-007)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Archive multi-epoch VLA data (1992, 2001, 2006) reanalyzed for proper motions",
+      "evidence": [
+       {
+        "loc": "2.1 VLA",
+        "quote": "we also reanalyzed previously reported, multi-epoch VLA archive data (cite: carrasco2010)"
+       }
+      ]
+     },
+     "citation": "(cite: carrasco2010)"
+    },
+    {
+     "what": {
+      "value": "Physical parameters of mm cores taken from SMA study",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA",
+        "quote": "we are not able to derive with accuracy their physical parameters with the present data. For those estimates we refer to (cite: minh2010)."
+       }
+      ]
+     },
+     "citation": "(cite: minh2010)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline, then two rounds of phase self-calibration on continuum",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The observations were initially calibrated using the ALMA pipeline of CASA 5.1.1 (cite: mullin2007)."
+      },
+      {
+       "loc": "2.2 ALMA",
+       "quote": "we performed two interactions of phase self-calibration on the continuum emission by using CASA 5.1.1."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The observations were initially calibrated using the ALMA pipeline of CASA 5.1.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "two phase-only iterations; S/N improved by factor of three",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "This improved the continuum signal-to-noise ratio by a factor of three."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "TCLEAN, centered on VLA 2",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "the data were imaged and cleaned (task TCLEAN) centered on VLA 2"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "using Briggs weighting with a robust parameter of $0.5$"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "line channels excluded for continuum",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "after excluding the channels showing line emissions"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not applied to ALMA images",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The ALMA images presented in this paper (Section [3.2](#alma-sources)) have not been corrected by primary beam"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.73\" x 0.86\", PA -4 deg",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "$1.73\\ensuremath{''}\\times0.86\\ensuremath{''}$ with a position angle of $-4^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "VLA observation and calibration details",
+      "evidence": [
+       {
+        "loc": "2.1 VLA",
+        "quote": "A detailed description of the observations and calibration procedures can be found in (cite: carrasco2015)."
+       }
+      ]
+     },
+     "from_reference": "(cite: carrasco2015)"
+    },
+    {
+     "what": {
+      "value": "Mass-loss rate formula",
+      "evidence": [
+       {
+        "loc": "4.1 VLA 1",
+        "quote": "we follow Equation (3) from (cite: beltran2001) based on the model from (cite: reynolds1986)"
+       }
+      ]
+     },
+     "from_reference": "(cite: beltran2001); (cite: reynolds1986)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Channels excluded as line-emitting for ALMA continuum and self-cal solution intervals",
+    "ALMA image size, cell size, cleaning threshold, masks and final rms",
+    "Moment-map channel ranges and clipping thresholds for CH3OH, SO2, SiO",
+    "Method for locating ALMA cores (positions, fluxes of MM1-MM[N])",
+    "Exact fit procedures/uncertainties for the VLA SED and proper motions"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "calibrate and image ALMA 1.3 mm continuum",
+    "method": {
+     "value": "Pipeline calibration, line-free phase self-cal, tclean with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "using Briggs weighting with a robust parameter of $0.5$"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA",
+        "quote": "using Briggs weighting with a robust parameter of $0.5$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "identify mm cores and associate with VLA sources; map lines",
+    "method": {
+     "value": "Compare ALMA continuum cores with VLA positions; integrated intensity and first-moment maps of CH3OH, SO2, SiO",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA",
+       "quote": "we also show the images of the integrated intensity and velocity field (first order momentum) of the molecular lines"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with SMA results of Minh et al. 2010",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA",
+       "quote": "which is fully consistent with the velocity gradient reported by (cite: minh2010)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1 (ALMA); 4.1.0 (VLA)",
+    "used_for": {
+     "value": "ALMA pipeline calibration, self-calibration, tclean imaging; VLA CLEAN imaging",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The observations were initially calibrated using the ALMA pipeline of CASA 5.1.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration of archive VLA data",
+     "evidence": [
+      {
+       "loc": "2.1 VLA",
+       "quote": "using the Astronomical Image Processing System (AIPS[^4]) data reduction package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "ALMA continuum synthesized beam",
+    "value": "1.73 x 0.86, PA -4",
+    "uncertainty": "not stated",
+    "units": "arcsec, deg",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "$1.73\\ensuremath{''}\\times0.86\\ensuremath{''}$ with a position angle of $-4^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity gradient of CH3OH/SO2 core",
+    "value": "~5",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA",
+      "quote": "exhibits a velocity gradient of $\\sim$5 km/s along the northwest–southeast direction"
+     }
+    ]
+   },
+   {
+    "quantity": "VLA upper limit toward MM[N]",
+    "value": "~30",
+    "uncertainty": "not stated",
+    "units": "microJy (4 sigma)",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA",
+      "quote": "with an upper limit of $\\sim$30 $\\mu$Jy (4$\\sigma$ in the combination of C+Ku+K+Q bands"
+     }
+    ]
+   },
+   {
+    "quantity": "VLA 1 high-resolution Q-band spectral index",
+    "value": "+0.5",
+    "uncertainty": "0.4",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.1 VLA 1",
+      "quote": "we obtain a spectral index $\\alpha= +0.5\\pm0.4$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "ALMA 1.3 mm shows four cores (MM1, MM2, MM3, new MM[N]); VLA 1-3 sit in MM1; VLA[SW] and VLA[NE] coincide with MM2 and MM3",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA",
+      "quote": "The ALMA continuum observations at 1.3 mm show four cores in a region of $\\sim$14 arcsec (MM1, MM2, MM3, MM\\[N\\]; Fig. [3](#figualma))."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are the new weak VLA sources embedded YSOs?",
+    "experiment": "Compare VLA positions with ALMA 1.3 mm cores",
+    "result": "VLA[SW] and VLA[NE] coincide with MM2 and MM3",
+    "finding": "They are likely embedded YSOs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA",
+      "quote": "are associated with MM2 and MM3, respectively, indicating they are embedded YSOs"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are Bc and VLA 4 protostars?",
+    "experiment": "Check association with mm cores plus VLA spectral index and proper motions",
+    "result": "No mm core association, flat spectra, proper motions ~112-118 km/s",
+    "finding": "They are shock-excited obscured HH objects driven by VLA 3",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Bc and VLA 4",
+      "quote": "the fact that Bc and VLA 4 are not associated with any of the detected millimeter cores"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Cores lie at the edge of the ALMA primary beam, single band, limited resolution; physical parameters not derived",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA",
+       "quote": "Because these millimeter continuum cores are found at the edge of the ALMA primary beam and they were only observed at a single frequency band"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "ALMA images not primary-beam corrected so fluxes unreliable",
+    "Resolution too coarse to separate VLA 1-3 in mm"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archive ALMA data; data availability cites public archives",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "The datasets underlying this article were derived from sources in the public domain"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALMA clean parameters and line-free channels",
+    "Core flux measurements"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for ALMA raw data",
+   "score_inferred": 3,
+   "score_reason": "ALMA part is minor and thinly described, though project code, robust and CASA version are given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA analysis is qualitative with few numbers; main results are VLA-based."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "(cite: carrasco2015)",
+     "why": "Earlier publication of part of the same VLA data (VLA 2)"
+    },
+    {
+     "citation": "(cite: minh2010)",
+     "why": "SMA study of the same mm cores"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-bfb4d2ee3535069ee4203028000050b6",
+  "batch_id": "msgbatch_01AGJmWoowxdzxrBuhezyUD3",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:18:45",
+  "usage": {
+   "input_tokens": 26420,
+   "output_tokens": 5684,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.055447,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 50,
+  "quotes_ok": 50,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 59,
+   "stated": 34,
+   "rate": 0.576
+  },
+  "evidence_ok": true
+ }
+}

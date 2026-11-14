@@ -1,0 +1,465 @@
+{
+ "bibcode": "2023A&A...680A.110C",
+ "title": "Radio outburst from a massive (proto)star. II. A portrait in space and time of the expanding radio jet from S255IR NIRS 3",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202347468",
+ "arxiv_id": "2310.18002",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What is the spatial and temporal evolution of the expanding radio jet from the massive (proto)star S255IR NIRS 3 following its accretion outburst?",
+ "alma_project_codes": [
+  "2018.1.00864.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12m array (43 antennae on 2019/6/6, 47 antennae on 2021/9/3)",
+  "angular_resolution": "0.097'' (2019/6/6); 0.087'' (2021/9/3)",
+  "sensitivity": "50 uJy/beam (2019/6/6); 30 uJy/beam (2021/9/3)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2016 VLA continuum flux densities at nu >= 6 GHz and large-scale cm continuum jet PA",
+    "evidence": [
+     {
+      "loc": "Very Large Array",
+      "quote": "$^a$ Data acquired in 2016 at $\\nu\\ge6$ GHz have already been reported by Cesaroni et al. ((cite: cesa18)) and are listed here for the sake of completeness."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| cm cont. | 8$''$ (0.07 pc) | 70$^\\circ$ | Paper I |"
+     }
+    ]
+   },
+   "citation": "Cesaroni et al. ((cite: cesa18)); Paper I"
+  },
+  {
+   "what": {
+    "value": "2018 VLA A-array continuum flux densities at 6.0 GHz (Mar 29) and 22.2 GHz (May 5), and 1.3 cm map/peak position",
+    "evidence": [
+     {
+      "loc": "Very Large Array",
+      "quote": "$^e$ From Obonyo et al. ((cite: obonyo))."
+     },
+     {
+      "loc": "Continuum emission at $\\lambda\\ge7$ mm",
+      "quote": "For our analysis we also included the NE peak of our ALMA data and that of Obonyo et al. ((cite: obonyo); hereafter OLHKP)."
+     },
+     {
+      "loc": "Nature of the 3 mm continuum emission",
+      "quote": "To shed light on the nature of this putative lobe and set a constraint on its age, in Fig. 8 we compare the jet structure observed by OLHKP at 1.3 cm on May 5, 2018, with our ALMA image at 3 mm."
+     }
+    ]
+   },
+   "citation": "Obonyo et al. ((cite: obonyo); OLHKP)"
+  },
+  {
+   "what": {
+    "value": "Sub-millimetre continuum peak position",
+    "evidence": [
+     {
+      "loc": "Continuum emission at $\\lambda=3$ mm",
+      "quote": "This result is confirmed by the coincidence of the SW peak with the peak of the sub-millimetre emission (white cross) measured by Liu et al. ((cite: liu20)), as expected if the (proto)star lies inside the parental molecular, dusty core."
+     }
+    ]
+   },
+   "citation": "Liu et al. ((cite: liu20))"
+  },
+  {
+   "what": {
+    "value": "12CO(2-1) outflow size and position angle",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| $^{12}$CO(2–1) | 40$''$ (0.35 pc) | 75$^\\circ$ | Wang et al. ((cite: wang)) |"
+     }
+    ]
+   },
+   "citation": "Wang et al. ((cite: wang))"
+  },
+  {
+   "what": {
+    "value": "H2O maser outflow size, position angle, and spatial distribution",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| H$_2$O masers | 0.5$''$ (900 au) | 44$^\\circ$ | Hirota et al. ((cite: hiro21)) |"
+     },
+     {
+      "loc": "Origin of the SW lobe",
+      "quote": "This is true not only for the large-scale and small-scale lobes in Fig. 3, but also for the H$_2$O masers distribution, as shown in Fig. 9."
+     }
+    ]
+   },
+   "citation": "Hirota et al. ((cite: hiro21))"
+  },
+  {
+   "what": {
+    "value": "Accreted mass during the outburst M_acc ~ 3.4e-3 M_sun",
+    "evidence": [
+     {
+      "loc": "Modelling the jet variability",
+      "quote": "It is also worth noting that the ratio, $R_{\\rm e}$, between the mass ejected, $M_{\\rm jet}$, and that accreted during the outburst, $M_{\\rm acc}$, can be computed from the final value of $x_0\\,M_{\\rm jet}$ in Fig. 14 and that quoted by Caratti o Garatti et al. ((cite: cagana)) ($M_{\\rm acc}\\simeq3.4\\times10^{-3}$ $M_\\odot$)."
+     }
+    ]
+   },
+   "citation": "Caratti o Garatti et al. ((cite: cagana))"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure multi-epoch radio and millimetre continuum flux densities",
+   "method": "Integrate flux density inside a polygonal shape encompassing the compact source across VLA bands and ALMA 3 mm maps; subtract fiducial large-scale lobe flux (1.8 mJy at 6 GHz, 1.0 mJy at 10 GHz) in D-array when needed; separate NE and SW components at 3 mm.",
+   "software": [
+    "CASA",
+    "STATCONT"
+   ],
+   "key_parameters": [
+    "Relative flux error = 10%"
+   ],
+   "assumptions": [
+    "Large-scale lobes have constant flux in time; check source at 06h12m53.61s +18d00m26.4s is non-variable"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Track spatial expansion of the radio jet peak",
+   "method": "Fit a 2D Gaussian to sub-arcsecond VLA K-band (1.3 cm) maps to determine peak positions over time, and combine with the ALMA 3 mm NE peak positions and the OLHKP peak position to compute projected expansion velocities.",
+   "software": [],
+   "key_parameters": [
+    "Position uncertainty represented as 1/5 of the synthesised beam"
+   ],
+   "assumptions": [
+    "Protostar is located at the stationary SW peak of the 3 mm continuum emission (06h 12m 54.012s, +17d 59m 23.04s); distance d = 1.78 kpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute 3 mm spectral index maps and decompose dust vs. free-free emission",
+   "method": "Create continuum maps for the four ALMA Band 3 spectral windows (85.2, 87.2, 97.2, 99.2 GHz) with identical clean beams, fit pixel-by-pixel spectral index alpha where all four fluxes exceed 5 sigma, and calculate the free-free flux fraction R_S/(1+R_S).",
+   "software": [],
+   "key_parameters": [
+    "5 sigma threshold across all 4 bands; nu_1 = 85.2 GHz, nu_2 = 99.2 GHz"
+   ],
+   "assumptions": [
+    "Optically thin dust emission with S_nu^d propto nu^gamma (gamma = 2 to 4, dust opacity index beta = 0 to 2) and optically thin free-free emission with S_nu^ff propto nu^-0.1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit 2D spatial morphology of the NE lobe in ALMA 3 mm maps and derive jet expansion law",
+   "method": "Generate synthetic 2D brightness temperature maps of an optically thin jet (T_B = T_0 (y/y_0)^-3), convolve with the ALMA beam, fit to the observed NE lobe at t = 1061 and 1881 days to find y_0, y_m, and theta_0, and solve the momentum-conserving deceleration equation for T and y_m0.",
+   "software": [],
+   "key_parameters": [
+    "t = 1061 days and t = 1881 days; v_0 = 900 km s^-1; psi = 10 deg"
+   ],
+   "assumptions": [
+    "3 mm emission in the NE lobe is optically thin everywhere (T_B = T_0 (y/y_0)^-3); jet expands conserving momentum into an ambient medium with density propto r^-2"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit multi-epoch radio continuum spectra and derive jet physical evolution",
+   "method": "Fit the modified mono-polar Reynolds jet model (Eq. A.10) to each VLA continuum spectrum at nu >= 6 GHz across 16 epochs by varying theta_0, r_0, and Lambda, then compute the ionised jet mass M_i(t) and ejection-to-accretion ratio R_e.",
+   "software": [],
+   "key_parameters": [
+    "Fixed T_0 = 10^4 K, psi = 10 deg, y_m(t) from Eq. 6, mu = 1.67e-24 g; grid ranges theta_0 = 3-50 deg, r_0 = 50-300 au, Lambda = 10^-10 to 10^-7 M_sun yr^-1 / (km s^-1)"
+   ],
+   "assumptions": [
+    "Mono-polar thermal jet during VLA monitoring; standard spherical scaling (n propto r^-2, T_0, v_0, x_0, theta_0 independent of r); pyramidal geometry valid for theta_0 < 90 deg; emission at nu < 6 GHz excluded due to non-thermal contamination"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 92.2/92.5 GHz total continuum flux density (2019/6/6, day 1061)",
+   "value": "46.0",
+   "uncertainty": "10%",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "46.0 (22.8)$^f$"
+    },
+    {
+     "loc": "Very Large Array",
+     "quote": "The error on the flux densities is estimated to be $\\sim$10% (see main text)."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| 2019/6/6 | 22.8$^a$ | 23.2$^b$ | 46.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 92.5 GHz NE lobe flux density (2019/6/6, day 1061)",
+   "value": "22.8",
+   "uncertainty": "10%",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2019/6/6 | 22.8$^a$ | 23.2$^b$ | 46.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 92.5 GHz SW component flux density (2019/6/6, day 1061)",
+   "value": "23.2",
+   "uncertainty": "10%",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2019/6/6 | 22.8$^a$ | 23.2$^b$ | 46.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 92.2/92.5 GHz total continuum flux density (2021/9/3, day 1881)",
+   "value": "42.3",
+   "uncertainty": "10%",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "42.3 (18.8)$^f$"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| 2021/9/3 | 18.8$^a$ | 23.4$^b$ | 42.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 92.5 GHz NE lobe flux density (2021/9/3, day 1881)",
+   "value": "18.8",
+   "uncertainty": "10%",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2021/9/3 | 18.8$^a$ | 23.4$^b$ | 42.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 92.5 GHz SW component flux density (2021/9/3, day 1881)",
+   "value": "23.4",
+   "uncertainty": "10%",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2021/9/3 | 18.8$^a$ | 23.4$^b$ | 42.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature of 3 mm continuum peaks (uniform weighting)",
+   "value": "500",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission at $\\lambda=3$ mm",
+     "quote": "This is consistent with the high brightness temperature of both 3 mm continuum peaks, of the order of 500 K (obtained from the maps cleaned with uniform weighting)."
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre continuum jet size",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| mm cont. | 0.6$''$ (1000 au) | 48$^\\circ$ | this paper |"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre continuum jet position angle",
+   "value": "48",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| mm cont. | 0.6$''$ (1000 au) | 48$^\\circ$ | this paper |"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected mean expansion velocity of NE peak between the two ALMA epochs (days 1061 to 1881)",
+   "value": "84",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission at $\\lambda\\ge7$ mm",
+     "quote": "This expansion appears to slow down with time, because the mean velocity (projected on the plane of the sky) estimated from the ratio between the separation of the peaks at the last two epochs (ALMA data) and the corresponding time interval is $\\sim$40 au/820 days$\\simeq$84 km s$^{-1}$, much less than the mean velocity from the beginning of the radio burst, namely $\\sim$472 au/1881 days$\\simeq$436 km s$^{-1}$, where $\\sim$472 au is the distance of the NE peak from the star at the last epoch."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected mean expansion velocity of NE peak from radio burst onset to second ALMA epoch (1881 days)",
+   "value": "436",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission at $\\lambda\\ge7$ mm",
+     "quote": "This expansion appears to slow down with time, because the mean velocity (projected on the plane of the sky) estimated from the ratio between the separation of the peaks at the last two epochs (ALMA data) and the corresponding time interval is $\\sim$40 au/820 days$\\simeq$84 km s$^{-1}$, much less than the mean velocity from the beginning of the radio burst, namely $\\sim$472 au/1881 days$\\simeq$436 km s$^{-1}$, where $\\sim$472 au is the distance of the NE peak from the star at the last epoch."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free fraction of 3 mm flux in SW component",
+   "value": "65 to 85",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Nature of the 3 mm continuum emission",
+     "quote": "Using the values of $\\alpha$ in Fig. 7, we find that such a fraction on average ranges from 65%, for $\\gamma$=2, to 85%, for $\\gamma$=4."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit NE lobe parameters at first ALMA epoch (t = 1061 days): theta_0, y_0, y_m",
+   "value": "theta_0 = 9 deg, y_0 = 367 au (0.206''), y_m = 516 au (0.29'')",
+   "uncertainty": "not stated",
+   "units": "deg, au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Expansion law of the jet",
+     "quote": "The best-fit models are compared to the observed maps in Fig. 10 and correspond to $\\theta_0$=9$^\\circ$, $y_0$=0.206$''$=367 au, and $y_{\\rm m}$=0.29$''$=516 au, for the first map, and $\\theta_0$=2.4$^\\circ$, $y_0$=0.207$''$=368 au, and $y_{\\rm m}$=0.356$''$=634 au, for the second map."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit NE lobe parameters at second ALMA epoch (t = 1881 days): theta_0, y_0, y_m",
+   "value": "theta_0 = 2.4 deg, y_0 = 368 au (0.207''), y_m = 634 au (0.356'')",
+   "uncertainty": "not stated",
+   "units": "deg, au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Expansion law of the jet",
+     "quote": "The best-fit models are compared to the observed maps in Fig. 10 and correspond to $\\theta_0$=9$^\\circ$, $y_0$=0.206$''$=367 au, and $y_{\\rm m}$=0.29$''$=516 au, for the first map, and $\\theta_0$=2.4$^\\circ$, $y_0$=0.207$''$=368 au, and $y_{\\rm m}$=0.356$''$=634 au, for the second map."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet deceleration timescale T",
+   "value": "124",
+   "uncertainty": "not stated",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Expansion law of the jet",
+     "quote": "one obtains a system of two equations in the two unknowns $T$ and $y_{\\rm m 0}$, the solutions to which are $T$=124 days and $y_{\\rm m 0}$=251 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Initial projected outer radius y_m0 at radio burst onset",
+   "value": "251",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Expansion law of the jet",
+     "quote": "one obtains a system of two equations in the two unknowns $T$ and $y_{\\rm m 0}$, the solutions to which are $T$=124 days and $y_{\\rm m 0}$=251 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit jet parameters at radio burst onset (t = 0 days, 2016/07/10): theta_0, r_0, Lambda",
+   "value": "theta_0 = 11 deg, r_0 = 64 au, Lambda = 0.19e-8 M_sun yr^-1 (km s^-1)^-1",
+   "uncertainty": "theta_0: +8/-3 deg; r_0: +44/-14 au; Lambda: +0.07/-0.04 x 10^-8",
+   "units": "deg, au, M_sun yr^-1 (km s^-1)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| 16/07/10 | 0 | 251 | $11_{-3}^{+8}$ | $64_{-14}^{+44}$ | $0.19_{-0.04}^{+0.07}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit jet parameters at end of VLA monitoring (t = 554 days, 2018/01/15): theta_0, r_0, Lambda",
+   "value": "theta_0 = 50 deg, r_0 = 166 au, Lambda = 5.41e-8 M_sun yr^-1 (km s^-1)^-1",
+   "uncertainty": "theta_0: +0/-2 deg; r_0: +29/-32 au; Lambda: +0.72/-0.83 x 10^-8",
+   "units": "deg, au, M_sun yr^-1 (km s^-1)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| 18/01/15 | 554 | 421 | $50_{-2}^{+0}$ | $166_{-32}^{+29}$ | $5.41_{-0.83}^{+0.72}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Final ionised jet mass x_0 * M_jet",
+   "value": "7.5e-5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modelling the jet variability",
+     "quote": "One obtains $R_{\\rm e}\\simeq7.5\\times10^{-5}/(3.4\\times10^{-3}\\,x_0)\\simeq2.2\\times10^{-2}/x_0$."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on jet ionisation fraction x_0 (for R_e > 0.1)",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modelling the jet variability",
+     "quote": "Vice versa, assuming that at least 10% of the infalling material will be redirected into outflow, one has $R_{\\rm e}>0.1,$ which sets an upper limit of $\\sim$0.2 on the ionisation fraction, consistent with the estimate obtained in Paper I and the values estimated for similar sources (see Fedriani et al. (cite: fedr19))."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMA pipeline version and CASA version used specifically for the ALMA data reduction (5.6.2-2 is stated in the VLA section)",
+  "tclean imaging parameters: cell size, image size, deconvolver, stopping threshold, and masking strategy",
+  "Exact polygon vertices or boundary definition used to integrate flux densities of S255IR NIRS 3 and separate the NE and SW components at 3 mm",
+  "Velocity integration ranges used to create the SO(2_2-1_1) and H13CN(1-0) maps in Fig. 2",
+  "Whether primary beam correction was applied before flux extraction"
+ ],
+ "missing_for_reproduction": [
+  "Exact polygon regions used for flux integration in VLA and ALMA maps and the boundary dividing the NE and SW components in Table 4",
+  "Specific tclean parameters (cell size, image size, stopping criteria) for the ALMA cubes and VLA continuum images",
+  "Custom fitting scripts for the 2D optically thin jet convolution (Sect. 4.3.1) and the modified Reynolds SED chi^2 grid search (Sect. 4.3.2, Appendix B)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The paper provides complete flux density tables, explicit analytical derivations of both the expansion law and the modified Reynolds thermal jet equations in the appendices, and full best-fit parameter tables; only minor imaging parameters (cell size, cleaning thresholds, polygon vertices) and custom fitting scripts are unstated.",
+ "rediscovery_reason": "Public ALMA (2018.1.00864.S) and VLA (16A-424, 16B-427, 17B-045) datasets, fully tabulated flux densities and model parameters, and closed-form analytical equations in the appendices make both the continuum/spectral-index imaging and the time-dependent jet model fits highly suitable for automated reproduction.",
+ "source_card": "cards/2023A%26A...680A.110C/sonnet/card.md"
+}

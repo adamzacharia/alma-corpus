@@ -1,0 +1,284 @@
+{
+ "bibcode": "2020ApJ...894L..14L",
+ "title": "ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation",
+ "year": 2020,
+ "doi": "10.3847/2041-8213/ab8b65",
+ "arxiv_id": "2004.09532",
+ "fields": [
+  "milky_way_ism",
+  "star_formation"
+ ],
+ "question": "Do massive CMZ clouds contain hidden early-phase fragmentation into cores, and is it consistent with thermal Jeans fragmentation and with forming Arches/Quintuplet-like clusters?",
+ "alma_project_codes": [
+  "2016.1.00243.S"
+ ],
+ "data": {
+  "bands": "Band 6, continuum centred at 226 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "0.25\"x0.17\" (2000 AU x 1400 AU)",
+  "sensitivity": "40 uJy/beam rms (~60 near brightest Sgr C peak)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity 0.899 cm2/g",
+    "evidence": [
+     {
+      "loc": "3.2 Physical Properties of the Cores",
+      "quote": "We assumed $R$=100 and $\\kappa_\\nu$=0.899 cm$^2$ g$^{-1}$ (cite: ossenkopf1994)."
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning 1994 (cite: ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Parent 0.2 pc core gas temperature 50–200 K and density 1e6 cm-3",
+    "evidence": [
+     {
+      "loc": "4.1 Thermal Jeans Fragmentation",
+      "quote": "we adopt the characteristic gas temperature 50–200 K and gas density $10^6$ cm$^{-3}$ from those works."
+     }
+    ]
+   },
+   "citation": "Lu et al. 2017; Lu et al. 2019a"
+  },
+  {
+   "what": {
+    "value": "H2O maser and UC HII region associations",
+    "evidence": [
+     {
+      "loc": "3.2 Physical Properties of the Cores",
+      "quote": "About 30 cores are spatially associated with H$_2$O masers ([1](#fig:cont)) or UC H ii regions (cite: lu2019a)"
+     }
+    ]
+   },
+   "citation": "Lu et al. 2019a (cite: lu2019a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "tclean with Briggs weighting, multiscale clean, self-calibration on Sgr B1-off and Sgr C",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5; scales [0,5,15,50,150]; 0.04\" pixel"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify cores",
+   "method": "astrodendro dendrogram on non-PB-corrected images; leaves are cores; fluxes from PB-corrected images; drop leaves outside 30% PB response",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min flux 4 sigma, min significance 1 sigma, min area = beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive core masses, radii, densities",
+   "method": "Optically thin dust: M = R S d^2/(B(T) kappa); r=(A/pi)^0.5; n(H2)=M/(4 pi r^3/3)/(2.8 mH)",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 20 K, R = 100, kappa = 0.899 cm2/g, d = 8.178 kpc"
+   ],
+   "assumptions": [
+    "Optically thin dust, constant 20 K, gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit CMF high-mass power law",
+   "method": "MLE power-law fit of dN/dlogM with simultaneous lower bound (KS minimisation), plfit",
+   "software": [
+    "plfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Core separations and Jeans comparison",
+   "method": "MST of core positions, deprojected by 2/pi; compare with Jeans length and mass",
+   "software": [
+    "FragMent"
+   ],
+   "key_parameters": [
+    "Jeans: T 50–200 K, n = 1e6 cm-3, rho = n(H2) x 2.37 mH"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of cores, 20 km/s cloud",
+   "value": "471",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 20 km s$^{-1}$ | 471 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of cores, Sgr B1-off",
+   "value": "89",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Sgr B1-off     | 89        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of cores, Sgr C",
+   "value": "275",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Sgr C          | 275       |"
+    }
+   ]
+  },
+  {
+   "quantity": "5 sigma mass sensitivity",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "Msun per beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Physical Properties of the Cores",
+     "quote": "the 5$\\sigma$ mass sensitivity is 0.3 $M_\\odot$ per beam given a $T_\\text{dust}$ of 20 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law index alpha (three clouds)",
+   "value": "1.00–1.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Physical Properties of the Cores",
+     "quote": "The other three fittings reach similar values of $\\alpha$ in the range of 1.00–1.07."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF lower bound",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Physical Properties of the Cores",
+     "quote": "The lower bound of all fittings is found to be around 5 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Most frequent core separation",
+   "value": "~1e4",
+   "uncertainty": "(0.8–1.5)e4 under varied parameters",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Thermal Jeans Fragmentation",
+     "quote": "In the three clouds, the most frequent separation is $\\sim$$10^4$ AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans length",
+   "value": "(1.0–1.9)e4",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Thermal Jeans Fragmentation",
+     "quote": "The derived Jeans length is (1.0–1.9)$\\times$$10^4$ AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans mass",
+   "value": "3–25",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Thermal Jeans Fragmentation",
+     "quote": "This is generally consistent with the Jeans mass of 3–25 $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "90% completeness limit, 20 km/s cloud",
+   "value": "~2 (30% PB); ~5 (above 5 sigma)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Appendix: Lower Bound",
+     "quote": "the 90% completeness limit is estimated to be $\\sim$2 $M_\\odot$ for the 20 km s$^{-1}$ cloud"
+    }
+   ]
+  },
+  {
+   "quantity": "CMF index, flux-dependent T_dust, fixed lower bound 1 Msun",
+   "value": "1.40",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Appendix: Impact of Varying Dust Temperatures",
+     "quote": "fit a power-law index of $1.40\\pm0.10$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and phase centres per field",
+  "Line-free channel selection",
+  "Which execution blocks and calibrators were used; flux calibrator and flux uncertainty",
+  "Cleaning threshold, niter and masks",
+  "Exact astrodendro call details beyond min_value/min_delta/min_npix",
+  "Modifications made to FragMent",
+  "KDE settings for separation distributions",
+  "Primary beam correction details and mosaic pointing layout"
+ ],
+ "missing_for_reproduction": [
+  "Image size and field centres",
+  "Line-free channel list",
+  "Exact mask/threshold for cleaning",
+  "Full details of FragMent modifications"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging and dendrogram parameters are given and the catalog is online, but several imaging details and the full pipeline scripts are missing.",
+ "rediscovery_reason": "The project code is given, the recipe is mostly specified, and the results are numeric (core counts, alpha, separations).",
+ "source_card": "cards/2020ApJ...894L..14L/sonnet/card.md"
+}

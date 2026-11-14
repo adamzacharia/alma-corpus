@@ -1,0 +1,446 @@
+{
+ "bibcode": "2024ApJ...977L..46B",
+ "title": "[C II] Properties and Far-infrared Variability of a z = 7 Blazar",
+ "year": 2024,
+ "doi": "10.3847/2041-8213/ad823b",
+ "arxiv_id": "2408.12299",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Properties of the [C II] emission and rest-frame IR continuum of the z=7 blazar host, and whether synchrotron emission from the jet contributes to the IR continuum",
+ "alma_project_codes": [
+  "2021.A.00030.S"
+ ],
+ "data": {
+  "bands": "NOEMA: band 3; ALMA band number not stated (238 GHz continuum)",
+  "arrays": "ALMA 45-46 antennas, three passes",
+  "angular_resolution": "ALMA 0.49'' x 0.68'', PA=-69 deg; NOEMA ~0.8'' x 1.6'', PA=9.2 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA radio flux densities of J0410–0139 in 2021 and 2022",
+    "evidence": [
+     {
+      "loc": "3.2 IR Continuum variability",
+      "quote": "see Table E1 in (cite: banados2024a)"
+     }
+    ]
+   },
+   "citation": "(cite: banados2024a)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass 6.9 (+0.5/-0.4) x 10^8 Msun and MgII redshift 6.995 +/- 0.001",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "powered by a black hole with the mass of $6.9^{+0.5}_{-0.4} \\times 10^8$ $M_\\odot$ (cite: banados2024a)"
+     }
+    ]
+   },
+   "citation": "(cite: banados2024a)"
+  },
+  {
+   "what": {
+    "value": "[C II]-SFR relation log SFR = -6.09 + 0.90 x log L_[CII]",
+    "evidence": [
+     {
+      "loc": "Table 1 footnote a",
+      "quote": "is calculated using $\\log \\mathrm{SFR}_{\\rm \\ensuremath{\\text{[C\\,\\textsc{ii]}}}}=-6.09+0.90\\times \\log L_{\\rm \\ensuremath{\\text{[C\\,\\textsc{ii]}}}}$, with $L_{\\rm \\ensuremath{\\text{[C\\,\\textsc{ii]}}}}$ in solar luminosities (cite: delooze2014)"
+     }
+    ]
+   },
+   "citation": "(cite: delooze2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA cubes and continuum",
+   "method": "Standard CASA reduction; 40 km/s cubes with natural weighting, cleaned to 2 sigma",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "40 km/s channel width, natural weighting, 2 sigma clean threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum size and flux of the quasar host",
+   "method": "2D Gaussian fit to the 238 GHz continuum with imfit",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract the [C II] spectrum and total line flux",
+   "method": "Spectrum extracted in a 1.5'' radius aperture chosen by curve-of-growth analysis",
+   "software": [],
+   "key_parameters": [
+    "aperture radius 1.5''; cumulative flux plateaus there for both optical and [C II] centroids"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit the [C II] line profile and test for a second component",
+   "method": "Fit with one and two Gaussians; compare with BIC; make line images across 1.2xFWHM of each Gaussian and look for 3.5 sigma signal in the shifted component",
+   "software": [],
+   "key_parameters": [
+    "line images average channels across 1.2xFWHM"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate dynamical mass and black hole to host mass ratio",
+   "method": "Dispersion-dominated estimate M_dyn = (3/2) R sigma^2 / G following Decarli et al. 2018, with R the major semi-axis of the Gaussian fit of the [C II] map and sigma the line velocity dispersion",
+   "software": [],
+   "key_parameters": [
+    "R = 1.75 +/- 0.25 kpc",
+    "sigma = 88 +/- 17 km/s"
+   ],
+   "assumptions": [
+    "Dispersion-dominated system (no rotation in channel maps); dynamical mass comparable to stellar mass or bulge mass for the main-sequence and local-relation comparisons"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive [C II] luminosity and [C II]-based SFR",
+   "method": "log SFR = -6.09 + 0.90 x log L_[CII] with L in solar luminosities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat LCDM, H0 = 70 km/s/Mpc, Omega_M = 0.30"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare NOEMA and ALMA continuum with VLA radio to test synchrotron variability and derive IR luminosity and SFR",
+   "method": "Compare 224/239 GHz NOEMA (2021) and 238 GHz ALMA (2022) flux densities with quasi-simultaneous VLA data; derive L_IR from a modified black body and SFR_IR following Kennicutt 1998",
+   "software": [],
+   "key_parameters": [
+    "T_d = 47 K, beta = 1.6, integration over 8-1000 um"
+   ],
+   "assumptions": [
+    "Mm continuum treated as cold dust to compute IR luminosity, dust mass and SFR_IR"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate the synchrotron contribution needed for consistent [C II] and IR SFRs and place the source on the [C II] deficit plane",
+   "method": "Require the [C II]- and IR-derived SFRs to agree and solve for the synchrotron fraction of the mm continuum; compare L_[CII]/L_IR with other z>5.7 quasars",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust-obscured star formation dominates for massive galaxies; host galaxy contribution does not vary on scales of months"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C II] redshift",
+   "value": "6.9964",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Summary",
+     "quote": "providing a systemic redshift of $z_{\\ensuremath{\\text{[C\\,\\textsc{ii]}}}} = 6.9964\\pm 0.0005$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] FWHM",
+   "value": "206",
+   "uncertainty": "40",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM$_{\\rm \\ensuremath{\\text{[C\\,\\textsc{ii]}}}}$ | $206 \\pm 40$ | km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] velocity dispersion",
+   "value": "88",
+   "uncertainty": "17",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 [CII] properties",
+     "quote": "is the velocity dispersion from the Gaussian fit of the $\\text{[C\\,\\textsc{ii]}}$ line ($88\\pm17\\,$km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] line flux",
+   "value": "0.45",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA",
+     "quote": "The total $\\text{[C\\,\\textsc{ii]}}$ flux is $0.45\\pm 0.08\\,$Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity",
+   "value": "2.02e42",
+   "uncertainty": "0.36e42",
+   "units": "erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{\\rm \\ensuremath{\\text{[C\\,\\textsc{ii]}}}}$ | $(2.02\\pm 0.36)\\times 10^{42}$ | erg s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II]-derived SFR",
+   "value": "58",
+   "uncertainty": "9",
+   "units": "Msun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFR$_{\\rm \\ensuremath{\\text{[C\\,\\textsc{ii]}}}}^a$ | $58\\pm 9$ | $M_\\odot\\,$yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] major semi-axis",
+   "value": "1.75",
+   "uncertainty": "0.25",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1 [CII] properties",
+     "quote": "is the major semi-axis of the Gaussian fit of the $\\text{[C\\,\\textsc{ii]}}$ map ($1.75\\pm 0.25\\,$kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "4.6e9",
+   "uncertainty": "2.0e9",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1 [CII] properties",
+     "quote": "This results in $M_{\\rm dyn,\\ensuremath{\\text{[C\\,\\textsc{ii]}}}}=(4.6\\pm 2.0)\\times 10^9\\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole to dynamical mass ratio",
+   "value": "0.15",
+   "uncertainty": "+0.08/-0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1 [CII] properties",
+     "quote": "The black hole to galaxy dynamical mass ratio for J0410–0139 is $0.15^{+0.08}_{-0.05}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] centroid offset from optical position",
+   "value": "0.35'' (1.81 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA",
+     "quote": "The centroid of the $\\text{[C\\,\\textsc{ii]}}$ is offset by $0.35\\ensuremath{''}$ (1.81  kpc) from the optical position."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 238 GHz continuum deconvolved size",
+   "value": "0.57'' x 0.68''",
+   "uncertainty": "0.10'' x 0.10''",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA",
+     "quote": "The source is resolved, with a deconvolved size of $(0.57\\pm 0.10)^{\\prime\\prime}\\times (0.68\\pm 0.10)^{\\prime\\prime}$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_224GHz (NOEMA 2021)",
+   "value": "0.99",
+   "uncertainty": "0.07",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "S$_{\\rm 224\\,GHz}$ (NOEMA2021) | $0.99\\pm 0.07$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "S_239GHz (NOEMA 2021)",
+   "value": "1.11",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "S$_{\\rm 239\\,GHz}$ (NOEMA2021) | $1.11\\pm 0.09$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "S_238GHz (ALMA 2022)",
+   "value": "0.84",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "S$_{\\rm 238\\,GHz}$ (ALMA2022) | $0.84\\pm 0.06$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux decrease NOEMA to ALMA",
+   "value": "~33%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2 IR Continuum variability",
+     "quote": "However, the measured flux densities are inconsistent by $\\sim 33\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA flux density decrease above 3 GHz",
+   "value": "~37%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2 IR Continuum variability",
+     "quote": "The VLA flux densities above 3 GHz show an average decrement of $\\sim 37\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR (2021)",
+   "value": "1.53e46",
+   "uncertainty": "0.11e46",
+   "units": "erg s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{\\rm IR}(2021)^c$ | $(1.53\\pm 0.11)\\times 10^{46}$ | erg s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR (2022)",
+   "value": "1.13e46",
+   "uncertainty": "0.08e46",
+   "units": "erg s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{\\rm IR}(2022)^c$ | $(1.13\\pm 0.08)\\times 10^{46}$ | erg s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "IR-derived SFR if continuum were dust (2021, 2022)",
+   "value": "400 and 295",
+   "uncertainty": "29 and 21",
+   "units": "Msun yr^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2 IR Continuum variability",
+     "quote": "would be $400\\pm 29\\,M_\\odot\\,$yr$^{-1}$ and $295\\pm 21\\,M_\\odot\\,$yr$^{-1}$ in 2021 and 2022, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Synchrotron contribution needed for consistent SFRs (2021, 2022)",
+   "value": "85% and 80%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 [CII] deficit",
+     "quote": "the synchrotron contribution needs to be 85% and 80% in the mm observations from 2021 and 2022, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Nearby continuum source 238 GHz flux density",
+   "value": "0.20",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.4 Nearby continuum source",
+     "quote": "The integrated flux density is $S_{238\\,\\mathrm{GHz}}=0.20 \\pm 0.04$ mJy."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA band number, spectral windows and channel setup",
+  "CASA version and whether the pipeline or manual scripts were used",
+  "ALMA flux, bandpass and phase calibrators",
+  "Which tclean/clean algorithm, cell size, image size, masks and robust settings were used for ALMA",
+  "How the ALMA continuum was separated from the line (line-free channels and continuum subtraction method)",
+  "Primary-beam correction details",
+  "Functional form and starting parameters of the 1- and 2-Gaussian spectral fits (fitting code, priors, BIC values)",
+  "How the continuum flux densities in Table 1 were measured (imfit vs aperture) and how the flux scale uncertainty was set",
+  "Method used to compute L_IR uncertainties and the VLA flux densities used in the SED fit (only in Banados et al. 2024a)",
+  "Assumptions behind the 85%/80% synchrotron fraction beyond the stated SFR equality",
+  "Data availability and release status of 2021.A.00030.S"
+ ],
+ "missing_for_reproduction": [
+  "ALMA setup (band, spectral windows), CASA version and calibrators",
+  "Imaging parameters beyond natural weighting and 2 sigma clean threshold (cell and image size, masks)",
+  "Continuum/line separation for ALMA and Gaussian fitting details",
+  "VLA flux densities (in Banados et al. 2024a) and the exact SED fitting for L_IR"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "A project code and many numeric results are given and the analysis is simple (imfit, Gaussian line fit, closed-form M_dyn), but ALMA band, CASA version, calibrators and imaging details are missing and public release is not stated.",
+ "rediscovery_reason": "Single project code (2021.A.00030.S), simple analysis and numeric answer keys (flux, line parameters, M_dyn); the data should be public in the archive though the paper does not state it, and some imaging choices must be inferred.",
+ "source_card": "cards/2024ApJ...977L..46B/sonnet/card.md"
+}

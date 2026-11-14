@@ -1,0 +1,349 @@
+{
+ "bibcode": "2024A&A...691A.162G",
+ "title": "The Galaxy Activity, Torus, and Outflow Survey (GATOS): V. Unveiling PAH survival and resilience in the circumnuclear regions of AGNs with JWST",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202450086",
+ "arxiv_id": "2409.05686",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "How do AGN illumination, outflows, and host-outflow coupling affect the survival, resilience, and properties of PAH molecules in the nuclear and circumnuclear regions of local AGN?",
+ "alma_project_codes": [
+  "2017.1.00082.S",
+  "2018.1.00113.S",
+  "2019.1.00618.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Fully reduced ALMA CO(3–2) maps of NGC 5506 and NGC 7172",
+    "evidence": [
+     {
+      "loc": "3.2. ALMA data",
+      "quote": "For this work, we used the fully reduced CO(3–2) maps of NGC 5506 and NGC 7172 from García-Burillo et al. (2021) and Alonso Herrero et al. (2023)."
+     }
+    ]
+   },
+   "citation": "García-Burillo et al. (2021) and Alonso Herrero et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "JWST/MIRI MRS extracted spectra of the Orion Bar",
+    "evidence": [
+     {
+      "loc": "Appendix B: Orion Bar",
+      "quote": "In particular, we use the fully reduced version of the spectra presented in Chown et al. (2023), which are publicly available in webpage 9 of the ERS team PDRs4All."
+     }
+    ]
+   },
+   "citation": "Chown et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "Nuclear PAH ratios of NGC 6552, NGC 7319, and NGC 7469, and average SF-ring of NGC 7469",
+    "evidence": [
+     {
+      "loc": "Figure 5 caption",
+      "quote": "We also plot the nuclear regions of NGC 6552 (blue square), NGC 7319 (black upper limit) and NGC 7469 (magenta square) from García-Bernete et al. (2022d)."
+     }
+    ]
+   },
+   "citation": "García-Bernete et al. (2022d)"
+  },
+  {
+   "what": {
+    "value": "Average PAH ratios of star-forming regions of NGC 3256",
+    "evidence": [
+     {
+      "loc": "Figure 5 caption",
+      "quote": "black and magenta filled stars correspond to the average value of star-forming regions of NGC 3256 (from Rigopoulou et al. 2024) and NGC 7469 (from García-Bernete et al. 2022d)."
+     }
+    ]
+   },
+   "citation": "Rigopoulou et al. (2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Produce spatially resolved emission line and PAH feature maps and match angular resolutions",
+   "method": "Fit single Gaussians spaxel-by-spaxel to emission lines using ALUCINE; subtract local continuum and integrate residuals over 6.0–6.5 µm and 11.05–11.6 µm for 6.2 and 11.3 µm PAH maps; convolve higher-resolution maps with a Gaussian PSF and resample pixel sizes to match coarser resolution maps.",
+   "software": [
+    "ALUCINE"
+   ],
+   "key_parameters": [
+    "3σ signal-to-noise cut",
+    "PAH integration ranges: 6.0–6.5 µm (6.2 µm band) and 11.05–11.6 µm (11.3 µm band)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Correlate cold molecular gas, warm molecular gas, and PAH emission spaxel-by-spaxel",
+   "method": "Compute Pearson's correlation coefficients spaxel-by-spaxel between 11.3 µm PAH, H2 0-0 S(1) 17.03 µm, and ALMA CO(3–2) intensity maps.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract nuclear and circumnuclear aperture spectra and fit mid-IR PAH features",
+   "method": "Extract nuclear point-source spectra (~0.4'' at 11 µm) and circumnuclear circular aperture spectra (1.0'' and 1.5'' diameter); fit PAH bands using modified PAHFIT for circumnuclear/SF regions and a differential extinction model for obscured nuclear spectra; compare 6.2/7.7 and 11.3/7.7 µm PAH ratios with DFT model grids.",
+   "software": [
+    "PAHFIT"
+   ],
+   "key_parameters": [
+    "Aperture diameters: ~0.4'' at 11 µm (nuclear point source), 1.0'' (SF ring), 1.5'' (outflow, high-velocity dispersion, and galaxy disk regions)"
+   ],
+   "assumptions": [
+    "Nuclear regions are point sources for spectral extraction",
+    "NLR (ionization cones) are co-spatial with the main AGN ionized outflow"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Pearson correlation coefficient (PAH 11.3 µm vs H2 S(1)) in NGC 5506",
+   "value": "0.79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 5506 0.79 (249) 0.61 (311) 0.76 (1049)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (PAH 11.3 µm vs CO(3-2)) in NGC 5506",
+   "value": "0.61",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 5506 0.79 (249) 0.61 (311) 0.76 (1049)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (H2 S(1) vs CO(3-2)) in NGC 5506",
+   "value": "0.76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 5506 0.79 (249) 0.61 (311) 0.76 (1049)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (PAH 11.3 µm vs H2 S(1)) in NGC 5728",
+   "value": "0.36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 5728 0.36 (1725) 0.24 (1424) 0.79 (1393)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (PAH 11.3 µm vs CO(3-2)) in NGC 5728",
+   "value": "0.24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 5728 0.36 (1725) 0.24 (1424) 0.79 (1393)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (H2 S(1) vs CO(3-2)) in NGC 5728",
+   "value": "0.79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 5728 0.36 (1725) 0.24 (1424) 0.79 (1393)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (PAH 11.3 µm vs H2 S(1)) in NGC 7172",
+   "value": "0.73",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 7172 0.73 (630) 0.88 (818) 0.87 (1014)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (PAH 11.3 µm vs CO(3-2)) in NGC 7172",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 7172 0.73 (630) 0.88 (818) 0.87 (1014)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (H2 S(1) vs CO(3-2)) in NGC 7172",
+   "value": "0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC 7172 0.73 (630) 0.88 (818) 0.87 (1014)"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear PAH 6.2 µm flux in NGC 5506",
+   "value": "<13.5",
+   "uncertainty": "not stated",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "NGC 5506 <13.5 88.30 0.13 49.53 <84.70"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear PAH 7.7 µm flux in NGC 5506",
+   "value": "88.30",
+   "uncertainty": "not stated",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "NGC 5506 <13.5 88.30 0.13 49.53 <84.70"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear PAH 11.3 µm flux in NGC 5506",
+   "value": "49.53",
+   "uncertainty": "not stated",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "NGC 5506 <13.5 88.30 0.13 49.53 <84.70"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear PAH 6.2 µm flux in NGC 5728",
+   "value": "<3.47",
+   "uncertainty": "not stated",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "NGC 5728 <3.47 26.82 1.22 12.32 <19.63"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear PAH 7.7 µm flux in NGC 5728",
+   "value": "26.82",
+   "uncertainty": "not stated",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "NGC 5728 <3.47 26.82 1.22 12.32 <19.63"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear PAH 11.3 µm flux in NGC 5728",
+   "value": "12.32",
+   "uncertainty": "not stated",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "NGC 5728 <3.47 26.82 1.22 12.32 <19.63"
+    }
+   ]
+  },
+  {
+   "quantity": "6.2 µm PAH / H2 0-0 S(1) threshold for AGN-dominated regions",
+   "value": "<5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "6. Summary and conclusions",
+     "quote": "In particular, we find that values of the 6.2 µm PAH/H 2 0-0 S(1)>12 correspond to SF-dominated regions, while those regions with 6.2 µm PAH/H 2 0-0 S(1)<5 are AGN-dominated."
+    }
+   ]
+  },
+  {
+   "quantity": "6.2 µm PAH / H2 0-0 S(1) threshold for SF-dominated regions",
+   "value": ">12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "6. Summary and conclusions",
+     "quote": "In particular, we find that values of the 6.2 µm PAH/H 2 0-0 S(1)>12 correspond to SF-dominated regions, while those regions with 6.2 µm PAH/H 2 0-0 S(1)<5 are AGN-dominated."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA imaging parameters for NGC 5728 CO(3–2) cube (weighting/robust, cell size, channel width, synthesized beam size, rms noise)",
+  "Exact coordinates (RA/Dec) of the nuclear and circumnuclear extraction apertures (SF1-SF12, D1-D2, Out1-Out3, Disk1-Disk3)",
+  "Resolution-matching details between ALMA CO(3–2) maps and JWST MIRI/MRS maps for the spaxel-by-spaxel Pearson correlation analysis"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates or offsets of the 25 circumnuclear extraction apertures shown in Figure A.1",
+  "ALMA tclean imaging parameters, beam sizes, and channel widths for NGC 5728 CO(3–2)",
+  "Custom hot/cold pixel masking routine applied before creating JWST MIRI/MRS data cubes"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Public JWST and ALMA archive identifiers and pipeline versions are clearly stated, and measured PAH fluxes are tabulated in the appendix, but exact coordinates for the 25 extraction apertures, custom JWST pixel masking details, and ALMA imaging parameters for NGC 5728 are not provided.",
+ "rediscovery_reason": "Both JWST MIRI/MRS and ALMA CO(3–2) datasets are publicly available in archives, and the core quantitative results (spaxel-by-spaxel Pearson correlations between PAH, H2 S(1), and CO(3–2), as well as PAH band ratios in nuclear/outflow/SF regions) can be independently re-derived.",
+ "source_card": "cards/2024A%26A...691A.162G/sonnet/card.md"
+}

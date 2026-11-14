@@ -1,0 +1,447 @@
+ from both low- and high-density regions,"
+        }
+      ]
+    },
+    {
+      "value": "Optical densities increase with redshift, while FIR densities show no redshift evolution.",
+      "evidence": [
+        {
+          "loc": "Redshift Evolution",
+          "quote": "Combined with results from the literature, it is clear that the density measured with the optical or lines increases toward higher redshifts."
+        },
+        {
+          "loc": "Redshift Evolution",
+          "quote": "These results indicate that $n_\\mathrm{e,FIR}$ of high-redshift galaxies are low and do not show redshift evolution,"
+        }
+      ]
+    },
+    {
+      "value": "A high-temperature dense component can dominate λ4363 and bias direct-Te metallicities downward.",
+      "evidence": [
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "the $\\lambda$4363 emission from the high-density, high-temperature region dominates the observed luminosity because its emissivity strongly depends on electron temperature."
+        },
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "As a result, the temperature estimated from $\\lambda$4363 is overestimated compared to the effective temperature of the whole system, and the derived metallicity is significantly underestimated."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Optical and FIR density diagnostics trace the same gas density.",
+      "experiment": "Compare [OII]3729/3726 densities with 52 μm/88 μm densities.",
+      "result": "FIR-derived densities are systematically lower.",
+      "finding": "The lines trace different density components, motivating multi-zone ISM models.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Comparison of Densities from Optical and FIR",
+          "quote": "The electron densities measured with the 52$\\mu$m/88$\\mu$m ratios (the red diamonds) are systematically lower than those measured with the $\\lambda$3729/$\\lambda$3726 ratios."
+        },
+        {
+          "loc": "Comparison of Densities from Optical and FIR",
+          "quote": "These results indicate that the FIR lines are tracing gas whose densities are, on average, lower than the gas emitting the optical lines,"
+        }
+      ]
+    },
+    {
+      "hypothesis": "A homogeneous one-zone model constrained by optical lines reproduces ALMA FIR luminosities.",
+      "experiment": "Predict FIR luminosities with PyNeb and Cloudy and compare with four galaxies.",
+      "result": "FIR luminosities are underestimated by ~2–10.",
+      "finding": "A one-zone model fails; heavily obscured gas does not explain the discrepancy.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "1-Zone Model Fitting",
+          "quote": "We find that the JWST optical emission lines are well reproduced, whereas the ALMA 88$\\mu$m and 52$\\mu$m line luminosities are underestimated by a factor of $\\sim 2$-10, consistent with the results obtained using PyNeb."
+        },
+        {
+          "loc": "1-Zone Model Fitting",
+          "quote": "These comparisons indicate that heavily obscured dusty gas cannot explain the discrepancies seen in the 1-zone modeling."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Two regions with different densities and temperatures can jointly reproduce optical and FIR emission.",
+      "experiment": "Fit dust-corrected line luminosities with a seven-parameter two-zone model.",
+      "result": "The model reproduces the optical-to-FIR luminosities, with substantial parameter degeneracies.",
+      "finding": "A low-density and high-density mixture explains the observed lines.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "the 2-zone model self-consistently reproduces all the emission line luminosities observed from the optical to FIR,"
+        },
+        {
+          "loc": "2-Zone Model Fitting",
+          "quote": "As a result, most of the obtained parameters exhibit significant degeneracies, although some parameters, such as metallicity, are well constrained."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Direct-Te metallicities remain accurate when galaxies contain multiple density and temperature components.",
+      "experiment": "Compare direct-Te metallicities with fiducial two-zone metallicities.",
+      "result": "Agreement in the two less massive galaxies; underestimates of 0.4 and 0.8 dex in the two more massive galaxies.",
+      "finding": "Direct-Te metallicities can be significantly underestimated.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "the direct-$T_\\mathrm{e}$ metallicities are consistent with the 2-zone metallicities in the two less massive galaxies, MACS1149-JD1 and SXDF-NB1006-2,"
+        },
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "are significantly underestimated in the two more massive galaxies, COS-3018555981 and J0217-0208, by 0.4 and 0.8 dex, respectively."
+        }
+      ]
+    },
+    {
+      "hypothesis": "FIR-derived densities evolve with redshift in the same way as optical densities.",
+      "experiment": "Compile optical, UV, and FIR density measurements across redshift.",
+      "result": "Optical densities increase; FIR densities remain low and comparable to local values.",
+      "finding": "The diagnostics show contrasting redshift trends.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Redshift Evolution",
+          "quote": "Combined with results from the literature, it is clear that the density measured with the optical or lines increases toward higher redshifts."
+        },
+        {
+          "loc": "Redshift Evolution",
+          "quote": "These results indicate that $n_\\mathrm{e,FIR}$ of high-redshift galaxies are low and do not show redshift evolution,"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Joint optical/FIR line ratios can indicate metallicities and flag direct-Te underestimation.",
+      "experiment": "Fit line-ratio versus two-zone metallicity relations for four galaxies.",
+      "result": "88 μm/Hβ and 88 μm/λ5007 correlate with inferred metallicity.",
+      "finding": "The relations provide provisional guidelines requiring a larger calibration sample.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "JWST+ALMA Metallicity Estimator",
+          "quote": "We find that these line ratios correlate well with the metallicity, and obtain the best-fitting relations as follows:"
+        },
+        {
+          "loc": "JWST+ALMA Metallicity Estimator",
+          "quote": "Although the parameters in these relations are not tightly constrained due to the limited number of galaxies with 2-zone metallicity estimates,"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Existing 88 μm detections and compact HSC morphologies enable integrated-flux joint analysis; 52 μm adds complementary density constraints.",
+      "evidence": [
+        {
+          "loc": "Galaxy Sample",
+          "quote": "This sample was chosen based on existing 88$\\mu$m detections from ALMA,"
+        },
+        {
+          "loc": "Galaxy Sample",
+          "quote": "allowing us to conduct a JWST and ALMA joint analysis as simply as possible, based on the total line fluxes rather than a spatially resolved analysis."
+        },
+        {
+          "loc": "ALMA Dataset",
+          "quote": "we observed the 52$\\mu$m line, which has a higher critical density and thus provides complementary constraints to the 88$\\mu$m line."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "One-zone failures motivate relaxing the single-density and single-temperature assumptions; natural weighting without taper maximizes point-source sensitivity.",
+      "evidence": [
+        {
+          "loc": "2-Zone Model Fitting",
+          "quote": "Motivated by the failures of the 1-zone modeling in Section [5.2](#ss_1zone), we introduce a 2-zone model and relax the single-density and single-temperature assumptions"
+        },
+        {
+          "loc": "ALMA Dataset",
+          "quote": "Using the task `tclean`, we produced images and cubes with natural weighting without taper to maximize point-source sensitivities."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Adopt two-zone metallicities because the model reproduces optical and FIR luminosities simultaneously.",
+      "evidence": [
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "We adopt the metallicities from the 2-zone modeling as the fiducial values because the 2-zone model self-consistently reproduces all the emission line luminosities observed from the optical to FIR,"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Heavily obscured dusty gas cannot explain the one-zone FIR discrepancy.",
+      "evidence": [
+        {
+          "loc": "1-Zone Model Fitting",
+          "quote": "These comparisons indicate that heavily obscured dusty gas cannot explain the discrepancies seen in the 1-zone modeling."
+        }
+      ]
+    },
+    {
+      "value": "Cloudy independently reproduces the one-zone FIR underprediction found with PyNeb.",
+      "evidence": [
+        {
+          "loc": "1-Zone Model Fitting",
+          "quote": "We find that the JWST optical emission lines are well reproduced, whereas the ALMA 88$\\mu$m and 52$\\mu$m line luminosities are underestimated by a factor of $\\sim 2$-10, consistent with the results obtained using PyNeb."
+        }
+      ]
+    },
+    {
+      "value": "Spatially distinct ionic regions without mixing cannot reproduce J0217-0208.",
+      "evidence": [
+        {
+          "loc": "2-Zone Model Fitting",
+          "quote": "a model with spatially distinct and regions without mixing cannot reproduce the observed lines of J0217-0208."
+        }
+      ]
+    },
+    {
+      "value": "Clumpy star formation and AGN activity are possible explanations of the density structure; neither is uniquely established.",
+      "evidence": [
+        {
+          "loc": "Evolution of the ISM Structure",
+          "quote": "Here, we discuss two scenarios that can explain this evolution: (a) clumpy galaxies and (b) AGN activity."
+        },
+        {
+          "loc": "Evolution of the ISM Structure",
+          "quote": "Although we do not observe any obvious AGN signatures, such as broad hydrogen Balmer lines, in the galaxies studied here,"
+        }
+      ]
+    },
+    {
+      "value": "Porous density-bounded Hii regions, shocks, and diffuse ionized gas may also contribute.",
+      "evidence": [
+        {
+          "loc": "Evolution of the ISM Structure",
+          "quote": "porous, density-bounded Hii regions with high Lyman continuum escape have been proposed to explain both optical and FIR line properties (cite: 2022A&A...667A..35R)."
+        },
+        {
+          "loc": "Evolution of the ISM Structure",
+          "quote": "Shocks, which can strongly affect the density structure of the ISM, may also play a role"
+        },
+        {
+          "loc": "Evolution of the ISM Structure",
+          "quote": "Moreover, diffuse ionized gas could influence both the observed line ratios and the inferred electron densities."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Seven effective emission lines are insufficient to fully determine seven free parameters; most parameters are degenerate.",
+      "evidence": [
+        {
+          "loc": "2-Zone Model Fitting",
+          "quote": "effectively we have seven emission lines, which are insufficient to fully determine the seven free parameters."
+        },
+        {
+          "loc": "2-Zone Model Fitting",
+          "quote": "As a result, most of the obtained parameters exhibit significant degeneracies, although some parameters, such as metallicity, are well constrained."
+        }
+      ]
+    },
+    {
+      "value": "The lower limit of ne,1 and upper limit of ne,2 are not constrained.",
+      "evidence": [
+        {
+          "loc": "2-Zone Model Fitting",
+          "quote": "Although the lower limit of $n_\\mathrm{e,1}$ and the upper limit of $n_\\mathrm{e,2}$ are not constrained,"
+        }
+      ]
+    },
+    {
+      "value": "Equal metallicity and ionization parameter across zones are simplifying assumptions.",
+      "evidence": [
+        {
+          "loc": "Systematic Uncertainty of the 2-Zone Model",
+          "quote": "In the 2-zone modeling, we assume the same ionization parameters and metallicities in the high- and low-density regions to keep the model as simple as possible."
+        }
+      ]
+    },
+    {
+      "value": "The metallicity-estimator calibration is constrained by only four galaxies.",
+      "evidence": [
+        {
+          "loc": "Summary",
+          "quote": "We provide strong-line metallicity calibrations using optical and FIR lines (Figure [18](#fig_Z_OIIIr)), although they are currently constrained by only four galaxies."
+        }
+      ]
+    },
+    {
+      "value": "A larger sample is required for firm conclusions about simulation comparisons.",
+      "evidence": [
+        {
+          "loc": "Comparison of Metallicities",
+          "quote": "Although a larger sample is needed for firm conclusions,"
+        }
+      ]
+    },
+    {
+      "value": "The sample is restricted to galaxies with ALMA 88 μm detections.",
+      "evidence": [
+        {
+          "loc": "Selection Bias",
+          "quote": "The galaxies studied here are limited to those with ALMA 88$\\mu$m detections."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The two-zone metallicities are conditional on a simplified model with strong degeneracies; successful line reproduction alone does not establish uniqueness.",
+    "The systematic tests impose directional changes in O32 and zone metallicity rather than exploring all possible structures.",
+    "The four-galaxy estimator has no stated independent validation sample or coefficient uncertainties.",
+    "A high detection fraction among previously observed galaxies does not establish an unbiased parent population; the joint analysis also requires λ4363 detection.",
+    "The Electron Temperature and Metallicity subsection initially names J1211-0118 as a λ4363 detection, contradicting its later nondetection statement, the tables, and the joint-sample selection.",
+    "Cross-facility aperture matching and flux-calibration covariance need explicit treatment when reproducing the joint fit."
+  ],
+  "reproducibility": [
+    {
+      "field": "products_in_archive",
+      "value": "Raw JWST data obtained from MAST",
+      "evidence": [
+        {
+          "loc": "NIRSpec Spectrum",
+          "quote": "We downloaded raw data from the MAST archive and ran Stage 1 calibration with `calwebb_detector1`."
+        }
+      ]
+    }
+  ],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Public availability of the ALMA datasets is not explicitly stated.",
+    "No analysis-code release, fit chains, or machine-readable model implementation is identified.",
+    "ALMA imaging and continuum-subtraction parameters are incomplete.",
+    "Numerical 88 μm measurements and integration widths must be recovered from the cited papers.",
+    "Complete joint-fit likelihood, priors, normalization, upper-limit treatment, and convergence information are absent.",
+    "PyNeb atomic data and version are absent.",
+    "Custom JWST reduction and photometric corrections are delegated to earlier work.",
+    "Full COS-3018555981 and MACS1149-JD1 input fluxes and inherited Cloudy configuration require external papers."
+  ],
+  "estimated_data_volume_inferred": "Not reliably estimable from the text: antenna counts, execution details, visibility sampling, and final channel counts are absent.",
+  "score_inferred": 6,
+  "score_reason": "6/10: project codes, main extraction choices, diagnostics, model structure, several priors, and numeric answer keys are supplied; exact imaging, atomic data, likelihood, code, and inherited inputs remain incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The main results are numeric, but ALMA public availability is not stated and the joint-fitting recipe lacks essential implementation details.",
+  "methods_papers": [
+    {
+      "citation": "(cite: 2007ASPC..376..127M)",
+      "why": "CASA processing."
+    },
+    {
+      "citation": "(cite: 2023ApJS..265....5H)",
+      "why": "Inherited NIRCam reduction modifications and aperture-corrected photometry."
+    },
+    {
+      "citation": "(cite: 2024ApJ...976..142X)",
+      "why": "Inherited NIRSpec reduction modifications."
+    },
+    {
+      "citation": "(cite: 2024PASP..136a5001R)",
+      "why": "NSClean 1/f-noise correction."
+    },
+    {
+      "citation": "(cite: 2022ApJ...940L...7W; 2023ApJ...955...92V; 2023ApJ...953...56V)",
+      "why": "Q3D cube-combination procedure."
+    },
+    {
+      "citation": "(cite: 2023zndo...7584411R)",
+      "why": "reproject cube alignment."
+    },
+    {
+      "citation": "(cite: 2023A&A...677A.145U)",
+      "why": "Error-spectrum rescaling for correlated noise."
+    },
+    {
+      "citation": "(cite: 2021ApJS..254...22J)",
+      "why": "PROSPECTOR SED fitting."
+    },
+    {
+      "citation": "(cite: 2009ApJ...699..486C; 2010ApJ...712..833C)",
+      "why": "Flexible Stellar Population Synthesis."
+    },
+    {
+      "citation": "(cite: 2016ApJ...823..102C); (cite: 2017ApJ...838..159C)",
+      "why": "MIST tracks and rotation-enhanced ionizing flux."
+    },
+    {
+      "citation": "(cite: 2013PASP..125..306F)",
+      "why": "emcee SED sampling."
+    },
+    {
+      "citation": "(cite: 2015A&A...573A..42L)",
+      "why": "PyNeb density, temperature, and line-emissivity calculations."
+    },
+    {
+      "citation": "(cite: 2006A&A...448..955I)",
+      "why": "Ionic oxygen-abundance equations and temperature relation."
+    },
+    {
+      "citation": "(cite: 2025arXiv250403839C)",
+      "why": "Alternative ionic-temperature relation for robustness testing."
+    },
+    {
+      "citation": "(cite: 2024ApJ...962...24S)",
+      "why": "R23 and O32 strong-line metallicity calibrations."
+    },
+    {
+      "citation": "(cite: 2017RMxAA..53..385F)",
+      "why": "Cloudy photoionization modeling."
+    },
+    {
+      "citation": "(cite: 2020ApJ...896...93H)",
+      "why": "Inherited Cloudy emission-line calculation procedure and ALMA input measurements."
+    },
+    {
+      "citation": "(cite: 2000MNRAS.312..813S); (cite: 2020MNRAS.495.1016R)",
+      "why": "Fixed theoretical doublet ratios."
+    },
+    {
+      "citation": "(cite: 2000ApJ...533..682C); (cite: 1989agna.book.....O)",
+      "why": "Dust attenuation law and intrinsic Balmer ratios."
+    },
+    {
+      "citation": "(cite: 2024ApJ...977..133C)",
+      "why": "Hβ-to-SFR conversion."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: 2020ApJ...896...93H)",
+      "why": "Previous J0217-0208 and J1211-0118 ALMA measurements."
+    },
+    {
+      "citation": "(cite: 2016Sci...352.1559I); (cite: 2023ApJ...945...69R)",
+      "why": "Previous SXDF-NB1006-2 ALMA measurements."
+    },
+    {
+      "citation": "(cite: 2022MNRAS.515.1751W); (cite: 2024arXiv241107695S)",
+      "why": "COS-3018555981 input fluxes and component information."
+    },
+    {
+      "citation": "(cite: 2018Natur.557..392H); (cite: 2024MNRAS.533.2488M)",
+      "why": "MACS1149-JD1 ALMA flux and stellar mass."
+    },
+    {
+      "citation": "(cite: 2025ApJ...991L..38U)",
+      "why": "Independent similar optical/FIR multi-zone analysis at z ~ 6.8."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "HSC-Subaru Strategic Program (HSC-SSP)",
+    "JWST GO-1657",
+    "JWST GO-1840",
+    "JWST GTO-1262"
+  ]
+}
+tokens used
+100,205

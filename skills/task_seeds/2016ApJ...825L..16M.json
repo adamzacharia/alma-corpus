@@ -1,0 +1,247 @@
+{
+ "bibcode": "2016ApJ...825L..16M",
+ "title": "Protoplanetary Disks in the Hostile Environment of Carina",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/825/1/L16",
+ "arxiv_id": "1605.08809",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Are protoplanetary disks present in Carina's evaporating gas globules and the Tr 14 core, and what do their masses imply for external photo-evaporation?",
+ "alma_project_codes": [
+  "2015.1.01323.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "45 12-m antennas",
+  "angular_resolution": "0.03'' x 0.02'', PA -46.34 deg",
+  "sensitivity": "rms about 6 µJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass opacity kappa(1300um)=0.015 cm2/g, 100:1 gas-to-dust",
+    "evidence": [
+     {
+      "loc": "3. DISKS WITHIN CARINA'S EGGS",
+      "quote": "κ 1300µ _m_ = 0 . 015 cm [2] g [−][1] (Ossenkopf & Henning 1994, assuming a 100:1 gas-to-dust mass ratio)"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning 1994"
+  },
+  {
+   "what": {
+    "value": "Cluster UV luminosity Q_H values for Tr 14 and Tr 16",
+    "evidence": [
+     {
+      "loc": "4. PHOTO-EVAPORATION OF DISKS AND EGGS",
+      "quote": "The cluster has an UV luminosity ( _Q_ _H_ ) of 2 × 10 [50] photon s [−][1] (SB08)"
+     }
+    ]
+   },
+   "citation": "Smith & Brooks 2008"
+  },
+  {
+   "what": {
+    "value": "EGG mass 0.1-0.3 Msun for 105-600",
+    "evidence": [
+     {
+      "loc": "4. PHOTO-EVAPORATION OF DISKS AND EGGS",
+      "quote": "The EGG mass is estimated as _M_ EGG = 0 . 1–0 . 3 _M_ ⊙ (Sahai et al. 2012)"
+     }
+    ]
+   },
+   "citation": "Sahai et al. 2012"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "clean on calibrated visibilities, line-free channels averaged",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure flux and size",
+   "method": "gaussfit on natural-weighted image in 0.2'' x 0.2'' box",
+   "software": [
+    "CASA gaussfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Spectral index",
+   "method": "compare flux densities between 220 and 237 GHz spectral windows",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive disk masses",
+   "method": "optically thin isothermal dust: Mdisk = S D^2 /(B(Tdust) kappa)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=0.015 cm2/g, 100:1 gas-to-dust, Tdust=40 K (also 20 K), D~2.3 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate photo-evaporation rates and timescales",
+   "method": "analytic EUV/FUV mass-loss estimates scaled with Q_H and distance; compare with Orion proplyds",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Rdisk = 60 AU"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Flux density 104-593 (229 GHz)",
+   "value": "1.5",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "104-593 10 44 05.360 −59 29 40.77 1.5 ± 0.2 2.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux density 105-600 (229 GHz)",
+   "value": "0.90",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "105-600 10 46 32.905 −60 03 53.67 0.90 ± 0.09 2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 104-593",
+   "value": "2.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.5 ± 0.2 2.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 105-600",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.90 ± 0.09 2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass 104-593 (40 K / 20 K)",
+   "value": "45 / 105",
+   "uncertainty": "factor of a few",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "17 ± 4 45 105"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass 105-600 (40 K / 20 K)",
+   "value": "27 / 62",
+   "uncertainty": "factor of a few",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "110 ± 12 27 62"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass upper limit for non-detections (4σ, 40 K)",
+   "value": "≤ 7",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "≤ 0.24 _[f]_ – – – – ≤ 7 ≤ 16"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved disk size average",
+   "value": "0.05'' x 0.03'' ≈ 120 AU x 70 AU",
+   "uncertainty": "not stated",
+   "units": "arcsec / AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. DISKS WITHIN CARINA'S EGGS",
+     "quote": "average de-convolved size of 0 . 05 [′′] × 0 . 03 [′′] ≈ 120 AU × 70 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "EUV evaporation timescale of disks at Tr 14 core",
+   "value": "10^5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4. PHOTO-EVAPORATION OF DISKS AND EGGS",
+     "quote": "short as 10 [5] years for an initial disk mass of 50 _M_ Jup"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold, masking and cell/image size",
+  "Flux calibrator and flux-scale uncertainty",
+  "Whether the pipeline or manual calibration scripts were used",
+  "Details of the spectral index measurement (per-spw fluxes)",
+  "Upper-limit extraction method for non-detections",
+  "Phase centers of fields beyond Table 1"
+ ],
+ "missing_for_reproduction": [
+  "Flux calibrator and clean parameters",
+  "Per-spw fluxes for spectral indices",
+  "Non-detection limit procedure"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and key imaging settings given, but clean details and calibrator flux are missing; analysis is simple.",
+ "rediscovery_reason": "Cycle 3 data likely public, short recipe, numeric fluxes and masses.",
+ "source_card": "cards/2016ApJ...825L..16M/sonnet/card.md"
+}

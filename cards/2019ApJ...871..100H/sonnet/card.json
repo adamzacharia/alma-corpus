@@ -1,0 +1,924 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...871..100H",
+  "title": "ALMA Observations of the Protostellar Disk around the VeLLO IRAS 16253-2429",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Hsieh, Tien-Hao",
+  "n_authors": 6,
+  "arxiv_id": "1811.11651",
+  "doi": "10.3847/1538-4357/aaf4fe",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.00879.S",
+   "2015.1.00741.S",
+   "2016.1.00598.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA long-baseline observations toward the Class 0 protostar IRAS 16253-2429 (hereafter IRAS 16253) with a resolution down to 0.12$''$ ($\\sim$15 au)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 16253-2429",
+     "coordinates": {
+      "value": "RA 16h28m21.6s, Dec -24d36m23.4s",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "toward IRAS 16253 ($\\alpha$=16$^{\\rm h}$28$^{\\rm m}$21.6s, $\\delta$=$-$24$^\\circ$36$'$23.4$''$)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is there a disk around the VeLLO IRAS 16253, and what are its dust, kinematic and chemical (CO freeze-out) properties?",
+    "evidence": [
+     {
+      "loc": "INTRODUCTION",
+      "quote": "We aim to search for a disk around this unique source and study its physical and chemical properties."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00598.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "(Cycle 4 project, 2016.1.00598.S)"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00741.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we obtained 0.87 mm data from the ALMA archive (2015.1.00741.S, PI: L. Looney)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00879.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00598.S, 2013.1.00879.S, and 2015.1.00741.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "channel width 122 kHz (0.16 km/s) CO, 61 kHz (0.08 km/s) C18O",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The channel width was 122 kHz (0.16 km s$^{-1}$) for CO ($2-1$) and 61 kHz (0.08 km s$^{-1}$) for C$^{18}$O ($2-1$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "simultaneously observe CO ($2-1$), C$^{18}$O ($2-1$), and dust continuum emission at 217 GHz"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "simultaneously observe CO ($2-1$), C$^{18}$O ($2-1$), and dust continuum emission at 217 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "1840 MHz centered at 217 GHz (1.38 mm)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The continuum bandwidth was 1840 MHz, centered at 217 GHz (1.38 mm)."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-7, 42 antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The data were obtained in configuration of C40-7 with a projected baseline range of 11 to 2629 k$\\lambda$"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.11\"x0.08\" continuum (uniform); 0.14\"x0.11\" CO (natural)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "resulting in a spatial resolution of $0.11\\ensuremath{''}\\times0.08\\ensuremath{''}$ with uniform weighting for the continuum"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 0.066 mJy/beam continuum; 5.6 (CO) and 4.9 (C18O) mJy/beam per 0.16 km/s channel",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The rms noise level is 0.066 mJy beam$^{-1}$ for the continuum map, and 5.6 and 4.9 mJy beam$^{-1}$ for the CO and C$^{18}$O maps"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "48 min total, ~20 min on source",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total observing time was 48 min and the on-source time was $\\approx$20 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 Aug 18",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "on 2017 Aug 18th (Cycle 4 project, 2016.1.00598.S)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "0.87 mm data archival (PI L. Looney); C18O combined with Cycle 2 data of Yen et al. 2017",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The C$^{18}$O ($2-1$) data were combined with the ALMA cycle 2 data from (cite: ye17) to increase the sensitivity."
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Cycle 2 C18O (2-1) ALMA data combined with new data",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The C$^{18}$O ($2-1$) data were combined with the ALMA cycle 2 data from (cite: ye17) to increase the sensitivity."
+       }
+      ]
+     },
+     "citation": "(cite: ye17)"
+    },
+    {
+     "what": {
+      "value": "Cloud core rotation rate used for disk growth estimate",
+      "evidence": [
+       {
+        "loc": "The disk size and disk growth",
+        "quote": "If we use $\\Omega=\\rm 1.8-2.1\\times10^{-14}~rad~s^{-1}$ (cite: to11) and $a=0.14~\\rm km~s^{-1}$ (cite: hs18)"
+       }
+      ]
+     },
+     "citation": "(cite: to11), (cite: hs18)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1733-1304 (bandpass J1517-2422, phase J1625-2527)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The bandpass, flux, and phase calibrators were J1517-2422, J1733-1304, and J1625-2527, respectively."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not applied",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Self-calibration is not applied in order to maintain astrometric information of the source."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "uniform for continuum, natural for CO",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "with uniform weighting for the continuum and of $0.14\\ensuremath{''}\\times0.11\\ensuremath{''}$ with natural weighting for CO ($2-1$)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "C18O: uv-distance <600 kλ, beam 0.40\"x0.37\"",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we selected data with a $uv$-distance shorter than 600 k$\\lambda$, resulting in a relatively Gaussian-like beam with a size of $0.40\\ensuremath{''}$ by $0.37\\ensuremath{''}$"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "C18O combined with Cycle 2 data",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The C$^{18}$O ($2-1$) data were combined with the ALMA cycle 2 data from (cite: ye17) to increase the sensitivity."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Torus-like thick disk density model",
+      "evidence": [
+       {
+        "loc": "Model B1/B2 - Thick-disk model",
+        "quote": "we adopted the torus-like disk model from (cite: le17a; le17b) by adding an exponentially decreasing scale height beyond a radius $R_{\\rm t}$"
+       }
+      ]
+     },
+     "from_reference": "(cite: le17a; le17b)"
+    },
+    {
+     "what": {
+      "value": "PV model radiative transfer code, temperature/density structure",
+      "evidence": [
+       {
+        "loc": "PV-diagram and dynamic model",
+        "quote": "We use the radiative transfer code from (cite: le14) to perform the PV model given temperature and density structures under local thermodynamic equilibrium (LTE) conditions."
+       }
+      ]
+     },
+     "from_reference": "(cite: le14)"
+    },
+    {
+     "what": {
+      "value": "Chi-squared in complex visibility space",
+      "evidence": [
+       {
+        "loc": "Models of the continuum images",
+        "quote": "The $\\chi^2$ is calculated in the complex space (i.e. Eq. 2 in (cite: as17))"
+       }
+      ]
+     },
+     "from_reference": "(cite: as17)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and whether the pipeline or manual calibration was used",
+    "Imaging task, deconvolver, cleaning masks, cell/image size, continuum-subtraction channels",
+    "Flux scale uncertainty",
+    "Model grid ranges and step sizes for continuum and PV fits",
+    "Dust composition/opacity inputs to the DIANA tool",
+    "Distance adopted",
+    "Details of the Cycle 2 C18O data processing and project-code association (2013.1.00879.S)",
+    "Priors and sampling or minimization method for the chi-squared fits",
+    "PV cut widths and position angles"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit continuum visibilities with double Gaussian",
+    "method": {
+     "value": "Double Gaussian fit to visibility amplitudes at 0.87 and 1.38 mm, finding a break at ~200 kλ between extended and compact components",
+     "evidence": [
+      {
+       "loc": "continuum emission at 0.87 mm and 1.38 mm",
+       "quote": "We employ a double Gaussian fit to the observed amplitude but not phase, and we find a break point at a $uv$-distance of $\\approx$200 k$\\lambda$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Check sources compared to reference positions (within 10 mas at 1.3 mm, 5 mas at 0.87 mm)",
+     "evidence": [
+      {
+       "loc": "continuum emission at 0.87 mm and 1.38 mm",
+       "quote": "find that they are consistent with the referenced positions within 10 mas and 5 mas, respectively"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Model continuum offset with radiative transfer",
+    "method": {
+     "value": "RADMC-3D flared disk (A) and torus-like thick disk (B1/B2) grids, chi2 fit to visibilities beyond 200 kλ using vis_sample",
+     "evidence": [
+      {
+       "loc": "Models of the continuum images",
+       "quote": "We construct model grids (Sections [4.1.1](#sec:modA) and [4.1.2](#sec:modB)) to perform a $\\chi^2$ fitting to the visibilities at uv-distances beyond 200 k$\\lambda$."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "DIANA Opacity Tool",
+     "vis_sample"
+    ],
+    "key_parameters": [
+     {
+      "value": "Model A free parameters: Lstar, Mdisk, Rdisk, theta_flared, a_pow, a_max; r0 = 25 au",
+      "evidence": [
+       {
+        "loc": "Model A - flared-disk model",
+        "quote": "We take six free parameters including the protostellar luminosity ($L_{\\rm star}$), $M_{\\rm disk}$ (total mass of the disk scaled by $\\Sigma_0$), $R_{\\rm disk}$, $\\theta_{\\rm flared}$, $a_{\\rm pow}$, and $a_{\\rm max}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Inclination 65 deg from Gaussian aspect ratio; center, PA fixed from 1.38 mm fit; grain size distribution n(a) ∝ a^-a_pow",
+      "evidence": [
+       {
+        "loc": "Model A - flared-disk model",
+        "quote": "an inclination angle of $65\\ensuremath{^\\circ}$ is estimated from the Gaussian aspect ratio"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi-squared grid fit; errors from chi2 distribution at 99.9% confidence",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "The error of the fitted parameters are calculated with the $\\chi^2$ distribution in a confidence level of 99.9%."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare model peak offset with observed 46 mas",
+     "evidence": [
+      {
+       "loc": "Model A - flared-disk model",
+       "quote": "the offset (7 mas) in this model is still much smaller than the observed one (46 mas)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Model CO/C18O PV diagrams",
+    "method": {
+     "value": "Rotating infalling envelope model with conserved angular momentum and free-fall, LTE radiative transfer, chi2 over major and minor axis PV cuts",
+     "evidence": [
+      {
+       "loc": "PV-diagram and dynamic model",
+       "quote": "We model the PV diagrams assuming a rotating infalling envelope with conservation of angular momentum."
+      }
+     ]
+    },
+    "software": [
+     "Lee et al. 2014 radiative transfer code"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free: rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O; C18O fit at |V-Vlsr|<1.6 km/s, CO at >1.6 km/s",
+      "evidence": [
+       {
+        "loc": "PV-diagram and dynamic model",
+        "quote": "$\\mid V-V_{\\rm lsr} \\mid<1.6$ km s$^{-1}$ for C$^{18}$O and $\\mid V-V_{\\rm lsr} \\mid>1.6$ km s$^{-1}$ for CO"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "X_CO=5e-4, X_CO/X_C18O=560, T0=70 K, T ∝ r^-0.4",
+      "evidence": [
+       {
+        "loc": "PV-diagram and dynamic model",
+        "quote": "We take the CO abundance relative to H$_2$ as $X_{\\rm CO}=5\\times10^{-4}$ and the C$^{18}$O isotopic ratio of $X_{\\rm CO}/X_{\\rm C^{18}O}=560$ (cite: wi94)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi-squared minimization; modeled images convolved with the beam",
+     "evidence": [
+      {
+       "loc": "PV-diagram and dynamic model",
+       "quote": "we convolve the modeled images with the beam of the observations and make the PV diagrams with the same PV cuts"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "CO channel-map model with CO depletion",
+    "method": {
+     "value": "Compare best-fit dynamic model with channel maps via vis_sample, per-channel intensity scaling, add f_snow zeroing gas below f_snow×H",
+     "evidence": [
+      {
+       "loc": "CO channel map and CO-depletion model",
+       "quote": "the gas density at $z<f_{\\rm snow}\\times H(R)$ is set to zero, with $f_{\\rm snow}$ between 0 (no CO depletion) and 1 (complete CO depletion)"
+      }
+     ]
+    },
+    "software": [
+     "vis_sample"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "best f_snow = 0.55, chi2_r 1.78 vs 1.92 for f_snow=0",
+     "evidence": [
+      {
+       "loc": "CO channel map and CO-depletion model",
+       "quote": "we find the best-fit CO-depletion model for $f_{\\rm snow}=0.55$ with $\\chi^2_{\\rm r}=1.78$ while $\\chi^2_{\\rm r}=1.92$ for $f_{\\rm snow}=0$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Qualitative reproduction of quadruple pattern; chi2 difference small",
+     "evidence": [
+      {
+       "loc": "CO channel map and CO-depletion model",
+       "quote": "The model with CO depletion reproduces the quadruple pattern qualitatively well, though the CO peak positions are not perfectly matched and the difference between the $\\chi^2_{\\rm r}$ is small."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Monte Carlo radiative transfer for continuum disk models",
+     "evidence": [
+      {
+       "loc": "Models of the continuum images",
+       "quote": "we model the emission using the Monte Carlo radiative transfer code RADMC-3D"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DIANA Opacity Tool",
+    "version": "not stated",
+    "used_for": {
+     "value": "Dust opacity as function of wavelength",
+     "evidence": [
+      {
+       "loc": "Models of the continuum images",
+       "quote": "The dust opacity $\\kappa$ as a function of wavelength is constructed using DIANA Opacity Tool"
+      }
+     ]
+    }
+   },
+   {
+    "name": "vis_sample",
+    "version": "not stated",
+    "used_for": {
+     "value": "Compute model visibilities from synthetic images",
+     "evidence": [
+      {
+       "loc": "Models of the continuum images",
+       "quote": "the modeled visibilities are computed from the synthetic images using vis_sample"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "1.3 mm deconvolved Gaussian size",
+    "value": "0.16\" x 0.07\" (20 au x 8.8 au)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The 1.3 mm dust continuum emission has a deconvolved Gaussian size of $0.16\\ensuremath{''}\\times0.07\\ensuremath{''}$ (20 au $\\times$ 8.8 au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Offset between 0.87 and 1.38 mm peaks",
+    "value": "46",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "continuum emission at 0.87 mm and 1.38 mm",
+      "quote": "the central positions are offset by 46 milliarcsecs (mas)"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk component flux 1.38 mm",
+    "value": "10.1",
+    "uncertainty": "0.4",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "10.1$\\pm$0.4"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit CO depletion parameter f_snow",
+    "value": "0.55",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "CO channel map and CO-depletion model",
+      "quote": "we find the best-fit CO-depletion model for $f_{\\rm snow}=0.55$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass from free-fall",
+    "value": "0.028",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "dynamics of the disk-envelope system",
+      "quote": "we estimate a central mass of $\\sim$$0.028~M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass from Keplerian rotation",
+    "value": "0.12",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "dynamics of the disk-envelope system",
+      "quote": "We then estimate a mass of the central star of 0.12 $M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit V_rot,0 and V_infall,0",
+    "value": "1.6 and 1.4",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "PV-diagram and dynamic model",
+      "quote": "$V_{\\rm rot,0}=1.6~\\rm km~s^{-1}$, and $V_{\\rm infall,0}=1.4~\\rm km~s^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Model A disk mass",
+    "value": "1.6e-3",
+    "uncertainty": "0.1e-3",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "1.6$\\pm$0.1"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Source remains single at ~0.1\" resolution",
+    "evidence": [
+     {
+      "loc": "continuum emission at 0.87 mm and 1.38 mm",
+      "quote": "These images indicate that IRAS 16253 remains a single source at $\\approx0.1\\ensuremath{''}$ resolution."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The compact continuum component traces a disk",
+    "experiment": "Double Gaussian visibility fit at two wavelengths",
+    "result": "Consistent PA and aspect ratio, minor axis aligned with outflow",
+    "finding": "Compact component likely traces a disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "continuum emission at 0.87 mm and 1.38 mm",
+      "quote": "Therefore, the compact component likely traces a disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The 0.87/1.38 mm offset comes from optical depth differences",
+    "experiment": "RADMC-3D flared and thick-disk models",
+    "result": "Models give 7-20 mas offsets vs 46 mas observed",
+    "finding": "Optical depth can contribute but does not fully explain it",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Our model does generate an offset of $10-20$ mas, but it is still smaller than the observed value."
+     }
+    ]
+   },
+   {
+    "hypothesis": "A Keplerian disk is present and formed from a first core",
+    "experiment": "PV and channel map modeling of CO and C18O",
+    "result": "Centrifugal radii 16-64 au give Keplerian disk radius of 8-32 au",
+    "finding": "Disk too large for slow-start growth, favoring early-start",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Together with the size from the dust continuum, we speculate that a Keplerian disk is present with a radius of $8-32$ au in IRAS 16253."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CO freeze-out explains the quadruple CO pattern",
+    "experiment": "Add f_snow depletion to channel map model",
+    "result": "chi2_r 1.78 vs 1.92",
+    "finding": "CO depletion plausible but not uniquely established",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "freeze out of CO in the protostellar disk",
+      "quote": "CO depletion is considered as the most plausible explanation for the quadruple pattern in the channel maps although the other hypotheses cannot be completely ruled out."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Proper motion and phase calibration error as causes of the offset were considered but not excluded; dust absorption and CO self-absorption rejected for the quadruple pattern",
+     "evidence": [
+      {
+       "loc": "CO channel map and CO-depletion model",
+       "quote": "The second hypothesis is also unlikely because the far side (or bottom side) should be much fainter than the near side by being obscured."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Offset smaller than beam; calibration issue or proper motion not excluded",
+     "evidence": [
+      {
+       "loc": "grain growth at the Class 0 stage",
+       "quote": "the offset of $0.046\\ensuremath{''}$ is smaller than the beam sizes, $0.15\\ensuremath{''}$ at 0.87 mm and $0.1\\ensuremath{''}$ at 1.38 mm"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Offset of 46 mas below beam size and 0.87 mm phase calibration uncertain",
+    "Large F_C18O=52 scaling factor undermines abundance-based interpretation",
+    "Small chi2 improvement for CO depletion",
+    "Keplerian disk radius is speculative range, not a direct measurement",
+    "Assumed T0 and 1/r rotation profile fixed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival 0.87 mm data obtained from ALMA archive",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we obtained 0.87 mm data from the ALMA archive (2015.1.00741.S, PI: L. Looney)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA/pipeline version and imaging parameters",
+    "Model grid definitions",
+    "Custom PV modeling code (Lee et al. 2014) details"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for three projects",
+   "score_inferred": 5,
+   "score_reason": "Data public and fitting approach described, but processing and grid details not given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging settings and custom modeling details missing; results depend on bespoke models."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: le14)",
+     "why": "PV model radiative transfer code"
+    },
+    {
+     "citation": "(cite: wa16)",
+     "why": "DIANA opacity tool"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ye17)",
+     "why": "Cycle 2 C18O data and prior infall analysis"
+    },
+    {
+     "citation": "(cite: hs18)",
+     "why": "Past accretion burst and CO snow line"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ae9172ed75296438114b11303c4032eb",
+  "batch_id": "msgbatch_01AEkZpNmPiZhrPc6hs1WkfS",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:43:48",
+  "usage": {
+   "input_tokens": 20940,
+   "output_tokens": 8653,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064811,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 41,
+   "rate": 0.586
+  },
+  "evidence_ok": true
+ }
+}

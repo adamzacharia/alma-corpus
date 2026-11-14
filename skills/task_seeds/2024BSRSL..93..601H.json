@@ -1,0 +1,165 @@
+{
+ "bibcode": "2024BSRSL..93..601H",
+ "title": "Influence of Mid-infrared Galactic Bubble on Surroundings: A Case Study on IRAS 16489-4431",
+ "year": 2024,
+ "doi": "10.25518/0037-9565.11811",
+ "arxiv_id": "2405.17993",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What is the influence of a massive star on a mid-infrared bubble and its surrounding gas in IRAS 16489-4431?",
+ "alma_project_codes": [
+  "2019.1.00685.S",
+  "2017.1.00545.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12-m array",
+  "angular_resolution": "~2'' x 2'' beam",
+  "sensitivity": "rms 0.2 mJy/beam (continuum), 6.4 mJy/beam per 0.122 MHz channel (H13CO+)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel PPMAP dust temperature map (~12'' resolution)",
+    "evidence": [
+     {
+      "loc": "4.1 Cores",
+      "quote": "The final resolution of the temperature map is $\\sim$12$''$."
+     }
+    ]
+   },
+   "citation": "(cite: marsh2017)"
+  },
+  {
+   "what": {
+    "value": "Bubble identification and position/radius",
+    "evidence": [
+     {
+      "loc": "3.3 Shocked Bubble",
+      "quote": "having an angular radius of 0.2$'$ (cite: jayasinghe2019)"
+     }
+    ]
+   },
+   "citation": "(cite: jayasinghe2019)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosities 2690 and 3900 Lsun",
+    "evidence": [
+     {
+      "loc": "3.3 Shocked Bubble",
+      "quote": "The corresponding bolometric luminosities of 2690 and 3900 L$_\\odot$ are adopted from (cite: lang1999)."
+     }
+    ]
+   },
+   "citation": "(cite: lang1999)"
+  },
+  {
+   "what": {
+    "value": "Wind velocity ~700 km/s and mass-loss rate ~10^-9.4 Msun/yr for B1V star",
+    "evidence": [
+     {
+      "loc": "3.3 Shocked Bubble",
+      "quote": "$V\\sim$700 km s$^{-1}$ and $\\dot{\\mathrm{M}}$ of $\\sim$10$^{-9.4}$ M$_\\odot$ yr$^{-1}$ for a typical B1V star were obtained from (cite: oskinova2011)."
+     }
+    ]
+   },
+   "citation": "(cite: oskinova2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "identify dust cores",
+   "method": "Dendrogram on ALMA 3 mm continuum; leaves with area >33 pixels and S/N>5 are cores; parameters refined with CASA imfit",
+   "software": [
+    "astrodendro",
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "estimate core masses",
+   "method": "Optically thin dust mass equation of Hildebrand 1983",
+   "software": [],
+   "key_parameters": [
+    "Tdust = 21 K, beta = 1.5 and 2.0"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; kappa = 10 (nu/1.2 THz)^beta; distance 3.26 kpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "fit SED of the influencing source to get mass",
+   "method": "Robitaille et al. 2007 SED fitter with distance 3.0-3.6 kpc and Av 3-30; models with chi2-chi2best<=3 used",
+   "software": [
+    "SED-fitter (Robitaille 2007)"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mass of core C3 (beta=1.5, T=21 K)",
+   "value": "48.3",
+   "uncertainty": "2.2",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C3 \\[253.1381;-44.6038\\] | 1.4$''\\times$0.8$''$ | 13.2$\\pm$0.9  | 8.7$\\pm$0.4           | 48.3$\\pm$2.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of influencing star",
+   "value": "7.9",
+   "uncertainty": "0.7",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Shocked Bubble",
+     "quote": "The estimated mass of 7.9$\\pm$0.7 M$_{\\odot}$ is referring to a B2-B1 type star."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of YSOs",
+   "value": "8 Class I and 5 Class II",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.2 YSOs",
+     "quote": "We found a total of 8 Class I and 5 Class II sources within the targeted regions."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration, CASA version and imaging parameters (robust, cleaning) of the ATOMS data",
+  "dendrogram min_value/min_delta settings",
+  "imfit regions and procedure",
+  "H13CO+ moment/integration velocity range and rest frequency",
+  "how project 2017.1.00545.S was used (outflow data not described)",
+  "SED-fit input fluxes beyond Table 2 (Spitzer/Herschel) and error handling"
+ ],
+ "missing_for_reproduction": [
+  "ATOMS calibration/imaging details (only via Liu 2020)",
+  "dendrogram parameters",
+  "SED fitter inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple analysis with public data and a few stated parameters, but imaging details are deferred to another paper.",
+ "rediscovery_reason": "Public data and core identification and mass estimates are numeric and fairly simple, though imaging settings are deferred.",
+ "source_card": "cards/2024BSRSL..93..601H/sonnet/card.md"
+}

@@ -1,0 +1,292 @@
+{
+ "bibcode": "2017ApJ...836..223W",
+ "title": "An ALMA and MagAO Study of the Substellar Companion GQ Lup B*",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa5b96",
+ "arxiv_id": "1701.07541",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What are the properties of the dust disks around GQ Lup A and its substellar companion GQ Lup B, and what do they imply for the formation and orbit of GQ Lup B?",
+ "alma_project_codes": [
+  "2015.1.00773.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.054\" x 0.031\", PA 68.7 deg",
+  "sensitivity": "rms 39 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gas mass of 71.3 +/- 8.3 Earth masses used for total disk mass",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Total mass is calculated by adding our dust mass to the gas mass of 71.3 $\\pm$ 8.3 $M_\\ensuremath{\\oplus}$ measured by (cite: M16)."
+     }
+    ]
+   },
+   "citation": "MacGregor et al. 2017 (cite: M16)"
+  },
+  {
+   "what": {
+    "value": "Disk radius of 46.5 AU from CO (3-2) used for tidal truncation analysis",
+    "evidence": [
+     {
+      "loc": "Orbital Constraints from Disk Size",
+      "quote": "We adopt a disk radius of 46.5 AU determined by (cite: M16) from CO (3–2) emission"
+     }
+    ]
+   },
+   "citation": "MacGregor et al. 2017 (cite: M16)"
+  },
+  {
+   "what": {
+    "value": "Orbit groups (a, e, i) of GQ Lup B",
+    "evidence": [
+     {
+      "loc": "Orbital Constraints from Disk Size",
+      "quote": "showed that the semi-major axis $a$, eccentricity $e$, and inclination $i$ of GQ Lup B’s orbit fall into three groups"
+     }
+    ]
+   },
+   "citation": "Schwarz et al. 2016 (cite: S16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image 1.3 mm continuum",
+   "method": "CASA calibration, MSMFS CLEAN with natural weighting, four rounds of phase-only self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Upper limit on GQ Lup B disk mass",
+   "method": "Inject fake sources in 0.1\" region, find 99.7% recovery flux per disk size, convert to dust mass with optically thin formula",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T = 20 K, kappa(1.3 mm) = 2.3 cm2/g, distance 150 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit GQ Lup A disk visibilities",
+   "method": "RADMC-3D radiative transfer models (power-law Model A and Lynden-Bell & Pringle Model B), Fourier transformed and fit to visibilities",
+   "software": [
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "200 walkers; star 4300 K, 1 Lsun"
+   ],
+   "assumptions": [
+    "70% silicate/30% graphite, grain size 5 nm to 3 mm, power-law -3.5, giving 2.25 cm2/g at 1.3 mm"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "MagAO photometry of GQ Lup B",
+   "method": "ADI+KLIP with grid search over parameters using injected fake planets; fake-planet injection for i', z', Ys",
+   "software": [
+    "KLIP",
+    "Findr",
+    "IRAF",
+    "MATLAB"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Accretion rates from Halpha",
+   "method": "L_Halpha to L_acc relation of Rigliaco et al. 2012, then L_acc ∝ G M Mdot / R",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "A_V ~0.4 mag for A; no extinction correction for B; A's R mag 11.0 from literature"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Tidal truncation constraint on GQ Lup B orbit",
+   "method": "Eggleton/Pichardo truncation radius formula compared to 46.5 AU disk radius for orbit groups",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Secondary mass 25 MJup; disk radius 46.5 AU"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "GQ Lup A 1.3 mm flux",
+   "value": "27.5",
+   "uncertainty": "0.6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Sources in the ALMA Image",
+     "quote": "We measured a flux of $27.5\\pm0.6$ mJy for this source."
+    }
+   ]
+  },
+  {
+   "quantity": "GQ Lup A dust mass (Model A)",
+   "value": "5.9",
+   "uncertainty": "1.0",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Dust Mass ($M_\\ensuremath{\\oplus}$) | $5.9~\\pm~1.0$ | $5.5~\\pm~0.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk radius (Model A / B)",
+   "value": "23.8 / 19.5",
+   "uncertainty": "1.6 / 1.4",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Radius (AU) | $23.8~\\pm~1.6$ | $19.5~\\pm~1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination (Model A / B)",
+   "value": "56.2 / 55.3",
+   "uncertainty": "4.8 / 6.0",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Inclination ($^\\circ$) | $56.2~\\pm~4.8$ | $55.3~\\pm~6.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle (Model A)",
+   "value": "348.8",
+   "uncertainty": "4.8",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "PA ($^\\circ$) | $348.8~\\pm~4.8$ | $348.6~\\pm~5.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Surface density index gamma (Model A / B)",
+   "value": "0.10 / -0.21",
+   "uncertainty": "0.22 / 0.20",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\gamma$ | $0.10~\\pm~0.22$ | $-0.21~\\pm~0.20$"
+    }
+   ]
+  },
+  {
+   "quantity": "GQ Lup B disk dust mass upper limit",
+   "value": "<0.25-1",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "GQ Lup B’s Disk Mass",
+     "quote": "our data put a upper limit on the disk mass for GQ Lup B at $<$0.25–1 $M_\\ensuremath{\\oplus}$ from a point source to 1/3 of the Hill radius"
+    }
+   ]
+  },
+  {
+   "quantity": "GQ Lup B Halpha contrast",
+   "value": "8.60",
+   "uncertainty": "0.16",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "MagAO H$\\alpha$ Photometry",
+     "quote": "GQ Lup B was detected in H$\\alpha$ at S/N $\\sim$ 6.3 with a contrast of 8.60 $\\pm$ 0.16 mag."
+    }
+   ]
+  },
+  {
+   "quantity": "GQ Lup B separation",
+   "value": "0.721",
+   "uncertainty": "0.003",
+   "units": "arcsec",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "MagAO Astrometry of GQ Lup B",
+     "quote": "GQ Lup B is 0.721$''$ $\\pm$ 0.003$''$ from its host star, with a position angle of 277.6$^\\circ$ $\\pm$ 0.4$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "GQ Lup B z' magnitude",
+   "value": "16.40",
+   "uncertainty": "0.10",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "MagAO $i'$, $z'$, $Y_S$ Photometry",
+     "quote": "$z'=16.40\\pm0.10$ mag"
+    }
+   ]
+  },
+  {
+   "quantity": "Accretion rate GQ Lup A",
+   "value": "1e-8 to 1e-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Derivation of Accretion Rates from H$\\alpha$ Fluxes",
+     "quote": "The resulting accretion rates for GQ Lup A and B are $\\dot{M}\\sim10^{-8}$ to $10^{-7}~M_\\ensuremath{\\odot}~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Channel-selection and mask details for CLEAN and self-calibration solution intervals",
+  "Priors, parameter ranges, number of steps and burn-in for emcee fits",
+  "Fixed parameters in RADMC-3D (photon counts, grid, distance, stellar mass)",
+  "Source-finding routine details for the fake-source injection",
+  "Lupus I distance error treatment"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and self-cal parameters",
+  "emcee priors, bounds and chain lengths",
+  "RADMC-3D setup details",
+  "MagAO raw data availability"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "ALMA data identified and imaging described, but key fitting and CASA parameters are missing.",
+ "rediscovery_reason": "Public ALMA data, an explicit recipe for imaging and disk fitting, and numeric results in Table 2.",
+ "source_card": "cards/2017ApJ...836..223W/sonnet/card.md"
+}

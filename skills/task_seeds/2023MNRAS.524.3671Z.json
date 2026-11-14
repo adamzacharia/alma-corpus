@@ -1,0 +1,438 @@
+{
+ "bibcode": "2023MNRAS.524.3671Z",
+ "title": "Discovery of a radio jet in the Cloverleaf quasar at z = 2.56",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad2069",
+ "arxiv_id": "2212.07027",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Spatially differentiate emission originating from the AGN and host galaxy in the strongly lensed Cloverleaf quasar at z = 2.56 across optical, sub-millimetre, and radio wavelengths to study AGN feedback.",
+ "alma_project_codes": [
+  "2012.1.00175.S",
+  "2017.1.00963.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~300 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.26'' x 0.20'' (PA -31 deg)",
+  "sensitivity": "35 \\muJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens redshift z = 1.7 and lens configuration (single galaxy and distant cluster)",
+    "evidence": [
+     {
+      "loc": "3 LENS MODELLING",
+      "quote": "We take the assumption from Kneib et al. (1998) that the lens system is contributed by a single galaxy (the narrow absorption systems) and a distant cluster both at z ~ 1.7."
+     },
+     {
+      "loc": "3.1 Overview of Lens Modelling Strategy",
+      "quote": "In our lens model, the redshift of the lens plane is set as 1.7 (Kneib et al. 1998)."
+     }
+    ]
+   },
+   "citation": "Kneib et al. (1998)"
+  },
+  {
+   "what": {
+    "value": "2MASS star catalog identifier J14154739+1129507",
+    "evidence": [
+     {
+      "loc": "2.1 HST F814W Image",
+      "quote": "We use imfit in Common Astronomy Software Applications version 6.1.2.7 (CASA) (McMullin et al. 2007) to fit a star located at (14 : 15 : 47.39856, +11 : 29 : 50.7480) (2MASS id: J14154739+1129507 (Cutri et al. 2003))"
+     }
+    ]
+   },
+   "citation": "Cutri et al. (2003)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and astrometrically align multi-band archival observations",
+   "method": "Stack HST ACS F814W images with SWARP; calibrate and image ALMA 300 GHz, VLA 8.4 GHz, VLA 33 GHz, and e-Merlin 1.5 GHz visibility data in CASA with tclean; fit peak positions of the four lensed images in HST and ALMA using SAOimageDS9 and shift HST astrometry to match ALMA.",
+   "software": [
+    "SWARP",
+    "CASA",
+    "tclean",
+    "imfit",
+    "imregrid",
+    "AIPS",
+    "SAOimageDS9"
+   ],
+   "key_parameters": [
+    "Astrometric offset applied between HST and ALMA: 0.126'' in R.A. and 0.219'' in Dec.",
+    "Uniform restoring beam of 0.25'' x 0.25'' for radio images in spectral index analysis"
+   ],
+   "assumptions": [
+    "Four lensed images follow Gaussian distributions for size measurements in imfit"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Parametric lens mass and source modelling of HST optical and ALMA 300 GHz continuum images",
+   "method": "Fit the HST image in PyAutoLens with an isothermal ellipsoid plus external shear lens model and a point-source model; use the highest-likelihood result as prior/initial input to fit the ALMA 300 GHz continuum image with a power-law ellipsoid plus external shear lens mass model and an elliptical Sérsic source profile, fixing the lens mass centre to the HST result.",
+   "software": [
+    "PyAutoLens",
+    "dynesty",
+    "pyautofit"
+   ],
+   "key_parameters": [
+    "Lens plane redshift z = 1.7; source redshift z = 2.56"
+   ],
+   "assumptions": [
+    "Cosmology: \\Omega_m = 0.310, \\Omega_\\Lambda = 0.689, H_0 = 67.7 km s^-1 Mpc^-1",
+    "Lens system is a single galaxy and distant cluster at z ~ 1.7 modelled as a power-law ellipsoid with external shear"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Non-parametric source-plane reconstruction of ALMA 300 GHz and radio continuum bands",
+   "method": "Reconstruct the 300 GHz source plane iteratively using a magnification-weighted Voronoi grid followed by a brightness-weighted Voronoi mesh while fitting a new power-law ellipsoid plus shear lens mass model; then fix the lens mass model parameters to the 300 GHz non-parametric fit and reconstruct the 1.5, 8.4, and 33 GHz source planes using a magnification-weighted Voronoi mesh.",
+   "software": [
+    "PyAutoLens",
+    "dynesty",
+    "pyautofit",
+    "pylops"
+   ],
+   "key_parameters": [
+    "Magnification-weighted Voronoi mesh for 1.5, 8.4, and 33 GHz reconstructions to ensure identical Voronoi cell grids"
+   ],
+   "assumptions": [
+    "Fixed lens mass model parameters from ALMA 300 GHz non-parametric fit across all radio bands"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract multi-band radio fluxes and fit spectral indices in the lens and source planes",
+   "method": "Extract radio fluxes at 1.5, 8.4, and 33 GHz from elliptical apertures in the source plane and lens plane; fit single power-law SEDs and pixel-by-pixel spectral index maps in the source plane and from nterm=2 e-Merlin imaging in the lens plane.",
+   "software": [
+    "CASA",
+    "python",
+    "scipy",
+    "numpy"
+   ],
+   "key_parameters": [
+    "5-\\sigma cutoff mask for e-Merlin lens-plane spectral index map; S/N > 3.5 mask at 33 GHz for source-plane spectral index map"
+   ],
+   "assumptions": [
+    "Radio continuum SEDs follow a single power-law profile"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Lens Einstein radius r (parametric model)",
+   "value": "0.645",
+   "uncertainty": "+0.001 / -0.001",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "r Einstein radius ('') 0.645^+0.001_-0.001 0.636^+<0.001_-0.001"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens power-law slope \\alpha (parametric model)",
+   "value": "1.897",
+   "uncertainty": "+0.003 / -0.003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "\\alpha Slope 1.897^+0.003_-0.003 1.884^+<0.001_-0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens Einstein radius r (non-parametric model)",
+   "value": "0.636",
+   "uncertainty": "+<0.001 / -0.001",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "r Einstein radius ('') 0.645^+0.001_-0.001 0.636^+<0.001_-0.001"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens power-law slope \\alpha (non-parametric model)",
+   "value": "1.884",
+   "uncertainty": "+<0.001 / -0.014",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "\\alpha Slope 1.897^+0.003_-0.003 1.884^+<0.001_-0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy source-plane flux at 300 GHz",
+   "value": "2.0e3",
+   "uncertainty": "\\pm 0.3e3 [\\pm 0.3e3]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "host galaxy 300 2.0 \\pm 0.3 [\\pm 0.3] \\times 10^3 0.12 \\times 0.11 (14:15:46.2378, 11:29:43.659)"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy source-plane intrinsic size (FWHM) at 300 GHz",
+   "value": "0.115 x 0.109 (0.946 x 0.897 kpc; 0.12 x 0.11 in Table 4)",
+   "uncertainty": "not stated",
+   "units": "arcsec x arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The discovery of a radio jet",
+     "quote": "the cold dust emission shows an extended disklike structure of 0.115′′ × 0.109′′ in FWHM (0.946 kpc × 0.897 kpc) rather than a point source."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "host galaxy 300 2.0 \\pm 0.3 [\\pm 0.3] \\times 10^3 0.12 \\times 0.11 (14:15:46.2378, 11:29:43.659)"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy source-plane flux at 33 GHz",
+   "value": "4.8",
+   "uncertainty": "\\pm 1.3 [\\pm 0.7]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "host galaxy 33 4.8 \\pm 1.3 [\\pm 0.7] 0.14 \\times 0.11 (14:15:46.2364, 11:29:43.659)"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy source-plane flux at 8.4 GHz",
+   "value": "7",
+   "uncertainty": "\\pm 2 [\\pm 1]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "host galaxy 8.4 7 \\pm 2 [\\pm 1] 0.14 \\times 0.095 (14:15:46.2383, 11:29:43.698)"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy source-plane flux at 1.5 GHz",
+   "value": "26",
+   "uncertainty": "\\pm 10 [\\pm 4]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "host galaxy 1.5 26 \\pm 10 [\\pm 4] - (14:15:46.2388, 11:29:43.689)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet source-plane flux at 33 GHz",
+   "value": "4.7",
+   "uncertainty": "\\pm 1.0 [\\pm 0.7]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "radio jet 33 4.7 \\pm 1.0 [\\pm 0.7] 0.15 \\times 0.086 (14:15:46.2315, 11:29:43.787)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet source-plane flux at 8.4 GHz",
+   "value": "14",
+   "uncertainty": "\\pm 3 [\\pm 2]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "radio jet 8.4 14 \\pm 3 [\\pm 2] 0.11 \\times 0.049 (14:15:46.2315, 11:29:43.781)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet source-plane flux at 1.5 GHz",
+   "value": "1.1e2",
+   "uncertainty": "\\pm 0.2e2 [\\pm 0.2e2]",
+   "units": "\\muJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "radio jet 1.5 1.1 \\pm 0.2 [\\pm 0.2] \\times 10^2 0.12 \\times 0.045 (14:15:46.2299, 11:29:43.781)"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected distance of radio jet from host galaxy centre in source plane",
+   "value": "1.15 (0.14'')",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The discovery of a radio jet",
+     "quote": "All reconstructed radio images show extended emission to the northwest of the dust continuum core, at a projected distance of ~1.15 kpc (0.14'') away from the centre of the host galaxy."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet source-plane intrinsic size (FWHM) at 1.5 GHz",
+   "value": "0.99 x 0.37 (0.12'' x 0.045'')",
+   "uncertainty": "not stated",
+   "units": "kpc x kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The discovery of a radio jet",
+     "quote": "The FWHMs of this radio clump, fitted with Gaussian profiles, are 0.99 kpc × 0.37 kpc, 0.90 kpc × 0.40 kpc, and 1.23 kpc × 0.71 kpc, at 1.5 GHz, 8.4 GHz, and 33 GHz, respectively."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "radio jet 1.5 1.1 \\pm 0.2 [\\pm 0.2] \\times 10^2 0.12 \\times 0.045 (14:15:46.2299, 11:29:43.781)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet source-plane intrinsic size (FWHM) at 8.4 GHz",
+   "value": "0.90 x 0.40 (0.11'' x 0.049'')",
+   "uncertainty": "not stated",
+   "units": "kpc x kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The discovery of a radio jet",
+     "quote": "The FWHMs of this radio clump, fitted with Gaussian profiles, are 0.99 kpc × 0.37 kpc, 0.90 kpc × 0.40 kpc, and 1.23 kpc × 0.71 kpc, at 1.5 GHz, 8.4 GHz, and 33 GHz, respectively."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "radio jet 8.4 14 \\pm 3 [\\pm 2] 0.11 \\times 0.049 (14:15:46.2315, 11:29:43.781)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet source-plane intrinsic size (FWHM) at 33 GHz",
+   "value": "1.23 x 0.71 (0.15'' x 0.086'')",
+   "uncertainty": "not stated",
+   "units": "kpc x kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The discovery of a radio jet",
+     "quote": "The FWHMs of this radio clump, fitted with Gaussian profiles, are 0.99 kpc × 0.37 kpc, 0.90 kpc × 0.40 kpc, and 1.23 kpc × 0.71 kpc, at 1.5 GHz, 8.4 GHz, and 33 GHz, respectively."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "radio jet 33 4.7 \\pm 1.0 [\\pm 0.7] 0.15 \\times 0.086 (14:15:46.2315, 11:29:43.787)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet fitted spectral index \\alpha_fitted (lens plane)",
+   "value": "1.11",
+   "uncertainty": "\\pm 0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "radio jet lens 1.10 \\pm 0.12 1.12 \\pm 0.16 1.11 \\pm 0.01 1.35 \\pm 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet in-band spectral index \\alpha_1.77^1.25 (lens plane, e-Merlin)",
+   "value": "1.35",
+   "uncertainty": "\\pm 0.18",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "radio jet lens 1.10 ± 0.12 1.12 ± 0.16 1.11 ± 0.01 1.35 ± 0.18"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "radio jet lens 1.10 \\pm 0.12 1.12 \\pm 0.16 1.11 \\pm 0.01 1.35 \\pm 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet fitted spectral index \\alpha_fitted (source plane)",
+   "value": "1.11",
+   "uncertainty": "\\pm 0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "radio jet source 1.17 \\pm 0.16 1.04 \\pm 0.19 1.11 \\pm 0.04 -"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy fitted spectral index \\alpha_fitted (lens plane)",
+   "value": "0.80",
+   "uncertainty": "\\pm 0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "host galaxy lens 0.84 \\pm 0.12 0.76 \\pm 0.16 0.80 \\pm 0.02 -"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy fitted spectral index \\alpha_fitted (source plane)",
+   "value": "0.70",
+   "uncertainty": "\\pm 0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "host galaxy source 0.79 \\pm 0.15 0.58 \\pm 0.19 0.70 \\pm 0.06 -"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges omitted for the CO J=11-10 line in the ALMA Band 7 data",
+  "Image sizes (imsize), stopping thresholds, and niter settings used in CASA tclean across all bands",
+  "Whether PyAutoLens fitted the ALMA and radio datasets in the image plane or directly in the uv-visibility plane",
+  "Regularization scheme and regularization coefficient values for the PyAutoLens Voronoi mesh source reconstructions",
+  "Exact centre coordinates, semi-major/minor axes, and position angles of the elliptical apertures used to extract source-plane and lens-plane fluxes"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral channel/frequency ranges flagged for CO J=11-10 in ALMA Band 7 and CO J=1-0 in VLA 33 GHz",
+  "tclean stopping criteria (niter, threshold) and mask definitions for ALMA, VLA, and e-Merlin imaging",
+  "PyAutoLens regularization scheme, regularization weights, number of Voronoi pixels, and exact circular mask radii used during lens modelling",
+  "Exact geometric parameters (centres, semi-major/minor axes, position angles) of the elliptical apertures used for flux extraction in Figs. 1 and 2"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All archival dataset IDs, calibrators, CASA versions, weighting schemes, cell sizes, beam sizes, rms levels, and best-fit lens model parameters (Table 3) are clearly reported, and open-source PyAutoLens notebooks are linked. Some minor parameters (exact line-flagging channel ranges, PyAutoLens regularization settings, and exact flux aperture coordinates/axes) are not explicitly tabulated.",
+ "rediscovery_reason": "All multi-wavelength datasets are public in archives, the open-source PyAutoLens workflow is well-described, and the main results (lens mass model parameters in Table 3, de-lensed fluxes and sizes in Table 4, and radio spectral indices in Table 5) are concrete numeric targets.",
+ "source_card": "cards/2023MNRAS.524.3671Z/sonnet/card.md"
+}

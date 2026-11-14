@@ -1,0 +1,960 @@
+{
+ "bibcode": "2024A&A...692A.155K",
+ "title": "Binary orbit and disks properties of the RW Aur system using ALMA observations",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202347583",
+ "arxiv_id": "2407.18828",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Nature (bound or unbound) of the RW Aur binary interaction and its impact on the dust and gas of the two disks, from multi-epoch 1.3 mm ALMA data",
+ "alma_project_codes": [
+  "2015.1.01506.S",
+  "2016.1.00877.S",
+  "2016.1.01164.S",
+  "2017.1.01631.S",
+  "2018.1.00973.S"
+ ],
+ "data": {
+  "bands": "1.3 mm",
+  "arrays": "ACA 7m (SB2) plus 12m array up to configuration C-10 (LB1)",
+  "angular_resolution": "LB1 continuum 18x30 mas (3 au in abstract); SB 12CO 267x414 mas; LB 12CO 69x98 mas",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Historical astrometric separations of RW Aur A and B, epochs 1944 to 2013 (two outliers excluded)",
+    "evidence": [
+     {
+      "loc": "Results: RW Aur B orbit, with ALMA astrometry",
+      "quote": "We combined our ALMA astrometry with the historical separation between RW Aur A and B as compiled by (cite: csepany2017), covering epochs from 1944 to 2013."
+     }
+    ]
+   },
+   "citation": "(cite: csepany2017)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient kappa_nu = 2.3 (nu/230 GHz)^0.4 cm2 g-1",
+    "evidence": [
+     {
+      "loc": "Results: Dust continuum emission",
+      "quote": "$\\kappa_\\nu=2.3(\\nu/230\\,\\text{GHz})^{0.4}\\,\\text{cm}^{2}\\text{g}^{-1}$ is the frequency-dependent mass absorption coefficient (cite: andrews2013)"
+     }
+    ]
+   },
+   "citation": "(cite: andrews2013)"
+  },
+  {
+   "what": {
+    "value": "Reference dust temperature of 20 K for the dust mass",
+    "evidence": [
+     {
+      "loc": "Results: Dust continuum emission",
+      "quote": "a known temperature, that is commonly set to 20 K for standard reference (cite: ansdell2016; cieza2019)"
+     }
+    ]
+   },
+   "citation": "(cite: ansdell2016; cieza2019)"
+  },
+  {
+   "what": {
+    "value": "ALMA flux calibration uncertainty up to 10%",
+    "evidence": [
+     {
+      "loc": "Results: Continuum visibility modeling",
+      "quote": "it is known that the ALMA flux calibration uncertainties can reach up to 10%, and even higher in particular cases (cite: Andrews2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2018)"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosities of RW Aur A and B (0.88 and 0.53 Lsun)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The luminosities of stars A and B are 0.88$\\,L_\\odot$ and 0.53$\\,L_\\odot$, respectively (cite: Herczeg2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Herczeg2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Build and self-calibrate a pseudo-continuum for each project",
+   "method": "Flag line channels, combine remaining channels with the continuum spws, average, and self-calibrate each project independently",
+   "software": [
+    "CASA 5.6.2",
+    "gaincal"
+   ],
+   "key_parameters": [
+    "Line channels within +/-25 km/s of VLSR (about 6 km/s) flagged",
+    "Averaged to 125 MHz channels and 6 s bins",
+    "Briggs robust 0.5 (LB1: 1.0) for self-cal images; observations not aligned to a common phase center before self-cal"
+   ],
+   "assumptions": [
+    "Each project treated as a single epoch"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Apply self-cal to line data, subtract continuum, image gas and make moment maps",
+   "method": "Apply continuum self-cal tables to the original data, uvcontsub, tclean per line, combine epochs, then bettermoments for peak intensity, velocity, moment 0 and 1",
+   "software": [
+    "CASA 5.6.2",
+    "uvcontsub",
+    "tclean",
+    "bettermoments"
+   ],
+   "key_parameters": [
+    "tclean gain 0.05, cyclefactor 1.5, clean to 4 sigma, JvM correction",
+    "Channel width 1.3 km/s for LB 12CO, 0.5 km/s for SB 12CO",
+    "Moment images clipped at 0 sigma with no mask; extra LB 12CO image clipped at 1.3 mJy/beam km/s"
+   ],
+   "assumptions": [
+    "Spatial movement negligible across epochs at gas resolution, so epochs can be combined"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit parametric visibility models to the continuum of both disks",
+   "method": "Joint multi-epoch fit with an axisymmetric brightness model per disk (A: point source + Gaussian + tapered power law; B: two Gaussian rings), visibilities of the two sources summed",
+   "software": [
+    "galario",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Visibilities averaged to one channel per spw and 24 s; epochs not combined",
+    "All five epochs fit simultaneously with common intensity model but separate disk centers per epoch",
+    "Free per-epoch flux scale i_obs, SB4 fixed to 1",
+    "Model pixel size 4 mas (2 mas test gave consistent results)"
+   ],
+   "assumptions": [
+    "Each disk brightness distribution constant over the two years; only relative positions change",
+    "Azimuthally symmetric models"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive fluxes, brightness temperatures and dust masses",
+   "method": "Integrate model images for flux; azimuthally averaged brightness temperature; dust mass from the Hildebrand formula",
+   "software": [],
+   "key_parameters": [
+    "Dust temperature 20 K (also mean Tb of 27 K for RW Aur A within R90%)"
+   ],
+   "assumptions": [
+    "Optically thin dust at known temperature; fails for RW Aur A so only a lower limit",
+    "kappa_nu = 2.3 (nu/230 GHz)^0.4 cm2 g-1; distance 154 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test for a misaligned inner disk of RW Aur A",
+   "method": "Repeat the visibility MCMC letting the central Gaussian have its own inclination and position angle",
+   "software": [
+    "galario",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Same procedure as the main visibility fit"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Measure stellar masses from Keplerian rotation of the 12CO disks",
+   "method": "Fit a flat Keplerian disk to the velocity maps with eddy",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "Elliptical emission masks of 0.4 and 0.28 arcsec for A and B; velocity pixels 4 mas, not downsampled",
+    "Center, inclination and PA fixed from the continuum outer-disk fit; free: stellar mass and systemic velocity"
+   ],
+   "assumptions": [
+    "Upper and lower emission surfaces cannot be distinguished, so a flat disk is assumed"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Measure gas disk radii and gas-to-dust size ratio",
+   "method": "Integrate 12CO flux in elliptical apertures and find radii enclosing 68% and 90%; compare with continuum R90%",
+   "software": [],
+   "key_parameters": [
+    "Aperture radii 0.6 arcsec (A) and 0.45 arcsec (B)"
+   ],
+   "assumptions": [
+    "Radii are measured from a beam-convolved profile, so the ratio is an upper limit"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Fit the orbit of RW Aur B around RW Aur A",
+   "method": "MCMC over eight orbital parameters using ALMA disk-center astrometry, historical astrometry and one ALMA radial velocity; orbits computed with rebound for elliptical and hyperbolic regimes",
+   "software": [
+    "rebound",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Eight free parameters; 24 times as many walkers as free parameters",
+    "Uniform prior on positive eccentricity, excluding |1-ecc|<1e-4; periastron distance fitted instead of semi-major axis",
+    "Over 1e7 steps per walker; then one of every 80 steps recorded and last 1e5 recorded positions used",
+    "Radial velocity -0.954 km/s of B relative to A with 1 sigma set to 100 m/s",
+    "Two historical outliers (1991 and 1944 measurements) excluded"
+   ],
+   "assumptions": [
+    "Disk centers coincide with the stars; disks axisymmetric with zero eccentricity",
+    "Stars treated as point masses carrying the whole system mass"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Compare elliptical and hyperbolic solutions",
+   "method": "Akaike information criterion on the best 99.85 percentile of elliptical and hyperbolic models",
+   "software": [],
+   "key_parameters": [
+    "Best 99.85 percentile of each family compared"
+   ],
+   "assumptions": [
+    "Only the astrometric likelihood is used; 12CO morphology not used as a prior"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Compute disk-binary misalignment",
+   "method": "Compare disk inclination and PA (orientation set by the jet) with orbital inclination and node from the MCMC",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk is close to perpendicular to the jet"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "R90% of RW Aur A dust continuum",
+   "value": "123.77",
+   "uncertainty": "0.12",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$123.77 \\pm 0.12$"
+    },
+    {
+     "loc": "Results: Dust continuum emission",
+     "quote": "compact ($R_{90\\%}=0.124''$ or 19 au"
+    }
+   ]
+  },
+  {
+   "quantity": "R90% of RW Aur B dust continuum",
+   "value": "92.95",
+   "uncertainty": "0.14",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$92.95 \\pm 0.14$"
+    }
+   ]
+  },
+  {
+   "quantity": "R68% of RW Aur A dust continuum",
+   "value": "101.37",
+   "uncertainty": "0.13",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$101.37 \\pm 0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "R68% of RW Aur B dust continuum",
+   "value": "68.55",
+   "uncertainty": "0.23",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$68.55 \\pm 0.23$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius of RW Aur B",
+   "value": "41.49",
+   "uncertainty": "0.29",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$41.49  \\pm 0.29$"
+    },
+    {
+     "loc": "Results: Continuum visibility modeling",
+     "quote": "We find that the RW Aur B ring peaks at about 42 mas, which is 6.5 au from the disk center."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux of RW Aur A",
+   "value": "34.504",
+   "uncertainty": "0.010",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$34.504 \\pm 0.010$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.3 mm flux of RW Aur B",
+   "value": "4.427",
+   "uncertainty": "0.006",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$4.427 \\pm 0.006$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination of RW Aur A disk",
+   "value": "54.93",
+   "uncertainty": "0.04",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$54.93 \\pm 0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of RW Aur A disk",
+   "value": "39.35",
+   "uncertainty": "0.05",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$39.35 \\pm 0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination of RW Aur B disk",
+   "value": "63.98",
+   "uncertainty": "0.16",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$63.98 \\pm 0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of RW Aur B disk",
+   "value": "39.65",
+   "uncertainty": "0.24",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$39.65 \\pm 0.24$"
+    }
+   ]
+  },
+  {
+   "quantity": "Separation r_AB of B from A, SB1",
+   "value": "1491.49",
+   "uncertainty": "0.15",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1491.49 \\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Separation r_AB of B from A, SB3",
+   "value": "1493.49",
+   "uncertainty": "0.64",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1493.49 \\pm 0.64$"
+    }
+   ]
+  },
+  {
+   "quantity": "Separation r_AB of B from A, SB4",
+   "value": "1499.50",
+   "uncertainty": "0.60",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1499.50 \\pm 0.60$"
+    }
+   ]
+  },
+  {
+   "quantity": "Separation r_AB of B from A, LB1",
+   "value": "1493.56",
+   "uncertainty": "0.15",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1493.56 \\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle theta_AB of B relative to A, SB1",
+   "value": "254.155",
+   "uncertainty": "0.008",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$254.155 \\pm 0.008$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle theta_AB of B relative to A, SB3",
+   "value": "254.047",
+   "uncertainty": "0.026",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$254.047 \\pm 0.026$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle theta_AB of B relative to A, SB4",
+   "value": "254.041",
+   "uncertainty": "0.033",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$254.041 \\pm 0.033$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle theta_AB of B relative to A, LB1",
+   "value": "254.055",
+   "uncertainty": "0.006",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$254.055 \\pm 0.006$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux scaling factor i_SB1",
+   "value": "1.063",
+   "uncertainty": "0.001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$1.063 \\pm 0.001$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux scaling factor i_SB2",
+   "value": "1.055",
+   "uncertainty": "0.006",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$1.055 \\pm 0.006$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux scaling factor i_SB3",
+   "value": "1.006",
+   "uncertainty": "0.002",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$1.006 \\pm 0.002$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux scaling factor i_LB1",
+   "value": "0.970",
+   "uncertainty": "0.001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$0.970 \\pm 0.001$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature of RW Aur A",
+   "value": "120",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: Dust continuum emission",
+     "quote": "with a peak $T_b=120$ K in the disk center"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum brightness temperature of RW Aur B",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: Dust continuum emission",
+     "quote": "the maximum brightness temperature of RW Aur B at any radii is 15 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of RW Aur A at 20 K",
+   "value": "23.9",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: Dust continuum emission",
+     "quote": "we obtain a dust mass of $23.9\\,M_\\oplus$ and $3.1\\,M_\\oplus$ for A and B, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of RW Aur B at 20 K",
+   "value": "3.1",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: Dust continuum emission",
+     "quote": "we obtain a dust mass of $23.9\\,M_\\oplus$ and $3.1\\,M_\\oplus$ for A and B, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of RW Aur A using mean Tb of 27 K",
+   "value": "16.4",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: Dust continuum emission",
+     "quote": "with an average brightness temperature of RW Aur A within its $R_{90\\%}$ of 27 K, the dust mass becomes $16.4\\,M_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-disk misalignment (angular momentum same side)",
+   "value": "9.15",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results: Continuum visibility modeling",
+     "quote": "we find a misalignment of $9.15$ deg, or $118.8$ deg if they point in different directions"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-outer disk inclination difference, RW Aur A",
+   "value": "6.0",
+   "uncertainty": "0.4",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results: Inner disk geometry of RW Aur A",
+     "quote": "with a relative difference of $6.0\\pm0.4$ deg between the inner and outer disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-outer disk position angle difference, RW Aur A",
+   "value": "4.0",
+   "uncertainty": "0.6",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion: Disks structure in dust continuum emission",
+     "quote": "a difference in PA of $4.0\\pm0.6\\,$deg"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of RW Aur A",
+   "value": "1.238",
+   "uncertainty": "a fraction of a percent (formal)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "we obtain $M_A=1.238\\,M_\\odot$ and $VLSR_A=6172.44\\,$m s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of RW Aur B",
+   "value": "0.995",
+   "uncertainty": "a fraction of a percent (formal)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "for RW Aur B we obtain $M_B=0.995\\,M_\\odot$ and $VLSR_A=5218.24\\,$ m s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak of 12CO moment 0 in RW Aur A",
+   "value": "113",
+   "uncertainty": "4",
+   "units": "mas",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "we obtained a peak at $113\\pm{4}$ mas (about 18 au) for RW Aur A"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO R68% of RW Aur A",
+   "value": "327",
+   "uncertainty": "25",
+   "units": "mas",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "$R_{A, CO, 68\\%}=327\\pm25\\,$mas"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO R90% of RW Aur A",
+   "value": "456",
+   "uncertainty": "64",
+   "units": "mas",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "$R_{A, CO, 90\\%}=456\\pm64\\,$mas"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO R68% of RW Aur B",
+   "value": "238",
+   "uncertainty": "29",
+   "units": "mas",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "$R_{B, CO, 68\\%}=238\\pm29\\,$mas"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO R90% of RW Aur B",
+   "value": "343",
+   "uncertainty": "60",
+   "units": "mas",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "$R_{B, CO, 90\\%}=343\\pm60\\,$mas"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust size ratio (both disks)",
+   "value": "3.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results: 12CO J=2-1 emission",
+     "quote": "both disks have a gas-to-dust size ratio of 3.7"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA relative radial velocity of B w.r.t. A",
+   "value": "-0.954",
+   "uncertainty": "0.1 (adopted 1 sigma)",
+   "units": "km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Results: RW Aur B orbit, with ALMA astrometry",
+     "quote": "This radial velocity was assigned to RW Aur B with a value of $-0.954$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rate of relative motion of RW Aur B away from A",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "mas/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "at an approximate rate of 3 mas yr$^{-1}$ (about 0.5 au yr$^{-1}$ in sky-projected distance)"
+    }
+   ]
+  },
+  {
+   "quantity": "Periastron distance d_peri (best)",
+   "value": "55.0",
+   "uncertainty": "+477.5/-27.0",
+   "units": "au",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$55.0_{-27.0}^{+477.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Eccentricity (best)",
+   "value": "0.787",
+   "uncertainty": "+1.155/-0.284",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.787_{-0.284}^{+1.155}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital inclination (best)",
+   "value": "129.8",
+   "uncertainty": "+21.2/-29.9",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$129.8_{-29.9}^{+21.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Longitude of ascending node (best)",
+   "value": "73.8",
+   "uncertainty": "+73.7/-21.0",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$73.8_{-21.0}^{+73.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Argument of periastron (best)",
+   "value": "42.3",
+   "uncertainty": "+77.6/-5.4",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$42.3_{-5.4}^{+77.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Time since last periastron (relative to beginning of 2024)",
+   "value": "295",
+   "uncertainty": "+21/-74",
+   "units": "yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "which occurred $295_{-74}^{+21}$ yr ago relative to beginning of 2024"
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital period for elliptical orbits (t_peri>0)",
+   "value": "2773",
+   "uncertainty": "+27100/-366",
+   "units": "yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Results: RW Aur B orbit, with ALMA astrometry",
+     "quote": "we estimate that the period is $2773_{-366}^{+27100}$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Parallax adopted in orbit fit",
+   "value": "6.406",
+   "uncertainty": "0.044",
+   "units": "mas",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$6.406 \\pm 0.044$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass adopted in orbit fit",
+   "value": "2.233",
+   "uncertainty": "0.05*sqrt(2)",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$2.233 \\pm 0.05\\cdot\\sqrt{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative likelihood of best hyperbolic vs best elliptical models",
+   "value": "0.28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Discussion: Testing the bound/unbound nature",
+     "quote": "we find that the best hyperbolic models are 0.28 times as likely as the best elliptical models to be the solution that minimizes the information loss"
+    }
+   ]
+  },
+  {
+   "quantity": "Confidence that elliptical orbits are preferred over hyperbolic",
+   "value": "~1.1",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Discussion: Testing the bound/unbound nature",
+     "quote": "there is a $\\sim1.1\\sigma$ of confidence that elliptical orbits are preferred over hyperbolic orbits"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-binary misalignment (RW Aur A)",
+   "value": "27.1",
+   "uncertainty": "26.7 (1 sigma dispersion)",
+   "units": "deg",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Discussion: Orientation of the orbit, disks, and jet emission",
+     "quote": "we obtain a disk-binary misalignment of ${27.1}\\pm26.7$ deg"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN masks, deconvolver, niter, image size and cell size for the continuum and for the 12CO/13CO/C18O cubes, and the robust value used for the final images",
+  "Self-calibration details: number of rounds, solution intervals, solution modes, reference antenna, and whether amplitude self-cal was done",
+  "Which channels were flagged for lines other than the +/-25 km/s window, and the continuum bandwidth used per project",
+  "Visibility weighting: whether statwt or any weight rescaling was applied before the visibility fits (the discussion only recommends standardising weights)",
+  "galario and emcee settings for the continuum fit: number of walkers, steps, burn-in, parameter bounds, initial positions, image size, likelihood form, and how SB2 (ACA) offsets were treated",
+  "Orbit-fit likelihood, the exact astrometric uncertainties used for each ALMA epoch, the adopted epochs, and the source of the parallax (6.406 +/- 0.044 mas) and of the 2.233 Msun total-mass prior",
+  "How the single relative radial velocity of -0.954 km/s was measured from the 12CO cubes (method and region)",
+  "eddy settings: fitting method, mask details beyond the ellipse sizes, and how uncertainties were obtained",
+  "Flux calibrators per execution block and any flux corrections applied",
+  "Aperture and centre used to compute the 12CO radii and brightness-temperature profiles"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals, rounds and CLEAN masks (partly bypassed by the Zenodo self-calibrated products)",
+  "MCMC walker counts, steps, bounds, likelihood and weighting for the visibility fit",
+  "Historical astrometry values used (only the compilation citation and the two excluded points)",
+  "Origin of the parallax and total-mass priors and the radial-velocity measurement method",
+  "No analysis code released; only data products"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA projects and Zenodo self-calibrated products plus full model equations and numeric tables, but key MCMC and imaging settings, priors for the orbit fit, and historical astrometry values are missing and no code is released.",
+ "rediscovery_reason": "Data are stated available (ALMA projects and Zenodo products), the visibility-fit and orbit-fit recipes are largely described, and results are numeric tables (disk sizes, fluxes, orbital elements).",
+ "source_card": "cards/2024A%26A...692A.155K/sonnet/card.md"
+}

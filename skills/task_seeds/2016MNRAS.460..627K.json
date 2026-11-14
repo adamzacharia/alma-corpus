@@ -1,0 +1,179 @@
+{
+ "bibcode": "2016MNRAS.460..627K",
+ "title": "The winds from HL Tau",
+ "year": 2016,
+ "doi": "10.1093/mnras/stw989",
+ "arxiv_id": "1604.07285",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the properties (morphology, opening angle, velocity, energetics) of the outflowing molecular gas from HL Tau, in context with the optical jet and the disk?",
+ "alma_project_codes": [
+  "2011.0.00015.SV"
+ ],
+ "data": {
+  "bands": "Band 3 (CO J=1-0 and continuum)",
+  "arrays": "not stated",
+  "angular_resolution": "CO tapered beam 0.98 x 0.90 arcsec, PA -9 deg",
+  "sensitivity": "CO rms 8.1 mJy/beam per 1 km/s channel; continuum 0.01 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination 46±0.2 deg from continuum uv fitting",
+    "evidence": [
+     {
+      "loc": "4.1 flow inclination angle",
+      "quote": "(cite: Brogan15) fit the $uv$ plane visibilities of the dust continuum emission, and found an inclination angle of $46\\pm0.2^\\circ$"
+     }
+    ]
+   },
+   "citation": "Brogan15"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make moment maps",
+   "method": "Zeroth and first moment maps clipped at 3 and 5 sigma, integrated over 0-5.5 (blue) and 7-20 km/s (red)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure opening angle",
+   "method": "Limb-brightened red lobe decomposed into 90 deg small-scale and 60 deg larger-scale opening angles",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Conical 3D morphology"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive flow mass, momentum, energy",
+   "method": "Per-channel LTE column density and mass, momentum, energy summed; luminosity and mass loss rate from dynamical age",
+   "software": [
+    "uncertainties"
+   ],
+   "key_parameters": [
+    "Velocity integration limits 9-20 km/s red, -4 to 6 km/s blue"
+   ],
+   "assumptions": [
+    "Optically thin CO, T=50 K, CO abundance 1e-4, distance 140 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Deproject flow velocity",
+   "method": "Solve two trigonometric equations using red and blue peak velocities of counter-flow components with inclination and opening angle",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flow axis perpendicular to disk; inclination 44 deg to line of sight"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Red lobe opening angle, small scale",
+   "value": "90",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Opening angle",
+     "quote": "one with a small scale opening angle of 90$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe opening angle, large scale",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Opening angle",
+     "quote": "a larger scale (collimated) opening angle of of 60$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Deprojected wind velocities (red, blue)",
+   "value": "2.5 and -2.3",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 flow inclination angle",
+     "quote": "we find red and blue shifted wind velocities of 2.5 and -2.3 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Red flow mass",
+   "value": "0.73",
+   "uncertainty": "below quoted precision",
+   "units": "1e-4 Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Mass            | ($\\times 10^{-4}$ M$_\\odot$)      | 0.73  | 0.00  | 11.14  | 0.00   |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue flow mass",
+   "value": "11.14",
+   "uncertainty": "below quoted precision",
+   "units": "1e-4 Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Mass            | ($\\times 10^{-4}$ M$_\\odot$)      | 0.73  | 0.00  | 11.14  | 0.00   |"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical age",
+   "value": "approximately 2650",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Calculating Physical Quantities",
+     "quote": "we derive an outflow age of approximately 2650 yrs."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Taper parameters used for the released CO cube",
+  "CASA version",
+  "Systemic LSR velocity value used",
+  "Beam counts/areas and exact method for flux to K conversion",
+  "Wind and counter-flow peak velocities read from spectra",
+  "Mask details beyond 3 sigma"
+ ],
+ "missing_for_reproduction": [
+  "Taper details",
+  "Systemic velocity",
+  "Spectrum peak velocities",
+  "Exact masks and channel selection"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data with released images and clear formulae, but several parameters unstated.",
+ "rediscovery_reason": "Public data, simple recipe, numeric results.",
+ "source_card": "cards/2016MNRAS.460..627K/sonnet/card.md"
+}

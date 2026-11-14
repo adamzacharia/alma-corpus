@@ -1,0 +1,790 @@
+{
+ "bibcode": "2023PASJ...75..311K",
+ "title": "Galaxy clusters at z ∼ 1 imaged by ALMA with the Sunyaev-Zel'dovich effect",
+ "year": 2023,
+ "doi": "10.1093/pasj/psac110",
+ "arxiv_id": "2209.09503",
+ "fields": [
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Reveal the thermodynamic structure (pressure, temperature, density, entropy, cooling time) of two z~1 galaxy clusters, RCS J2319+0038 and HSC J0947-0119, from high-resolution ALMA Band 3 SZE images combined with Chandra, HSC and ACT data, including whether they host cool cores",
+ "alma_project_codes": [
+  "2019.1.00673.S",
+  "2018.1.00680.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12-m and 7-m arrays",
+  "angular_resolution": "all baselines: beam 3.76 x 3.38 arcsec PA 82.5 deg (RCS J2319+0038), 3.77 x 3.22 arcsec PA -89.1 deg (HSC J0947-0119); 12-m only 3.60 x 3.25 and 3.63 x 3.11 arcsec; 7-m only 18.7 x 11.9 and 17.8 x 11.2 arcsec",
+  "sensitivity": "average 1 sigma noise 4.8 uJy/beam (RCS J2319+0038) and 5.0 uJy/beam (HSC J0947-0119) for all baselines; 5.8 and 5.9 uJy/beam after smoothing to 5'' FWHM"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic redshift z=0.90 of RCS J2319+0038",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We adopt for this cluster the spectroscopic redshift of $z=0.90$ from (cite: Gilbank08)."
+     }
+    ]
+   },
+   "citation": "(cite: Gilbank08)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshift z=1.11 of HSC J0947-0119 from the CAMIRA catalogue",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we adopt for this cluster the photometric redshift[^2] of $z=1.11$ from the CAMIRA catalogue for the third public data release of HSC-SSP"
+     }
+    ]
+   },
+   "citation": "(cite: Oguri18)"
+  },
+  {
+   "what": {
+    "value": "ACT DR5 detection of RCS J2319+0038 (S/N 5.2) and HSC J0947-0119 (S/N 13.2) and ACT mass estimates",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "More recently, RCS J2319$+$0038 was also detected in the ACT Data Release 5 (DR5; (cite: Naess20)) cluster search[^1] (cite: Hilton21), with signal-to-noise ratio (S/N) of 5.2."
+     }
+    ]
+   },
+   "citation": "(cite: Hilton21)"
+  },
+  {
+   "what": {
+    "value": "Hydrostatic M500 of RCS J2319+0038 from Chandra",
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "inferred from the *Chandra* X-ray data of RCS J2319$+$0038 assuming hydrostatic equilibrium (cite: Hicks08)"
+     }
+    ]
+   },
+   "citation": "(cite: Hicks08)"
+  },
+  {
+   "what": {
+    "value": "Average pressure profile of X-ray clusters at 0.6<z<1.2, used as the input model for HSC J0947-0119",
+    "evidence": [
+     {
+      "loc": "4.1.2 Input models",
+      "quote": "we used the average pressure profile measured from a statistical sample of X-ray clusters at"
+     }
+    ]
+   },
+   "citation": "(cite: McDonald14b)"
+  },
+  {
+   "what": {
+    "value": "Generalized NFW pressure profile parameters (equation 13 of Arnaud10 with parameter values from table 5 of McDonald14b)",
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "we used equation (13) of (cite: Arnaud10) with the parameter values listed in table 5 of (cite: McDonald14b)"
+     }
+    ]
+   },
+   "citation": "(cite: Arnaud10; McDonald14b; Nagai07)"
+  },
+  {
+   "what": {
+    "value": "Temperature-mass scaling relation used to get kT=9.4 keV for HSC J0947-0119 and the relativistic correction",
+    "evidence": [
+     {
+      "loc": "4.1.2 Input models",
+      "quote": "using the scaling relation of (cite: Reichert11)"
+     }
+    ]
+   },
+   "citation": "(cite: Reichert11)"
+  },
+  {
+   "what": {
+    "value": "Relativistic correction to the SZE intensity",
+    "evidence": [
+     {
+      "loc": "4.1.1 Method",
+      "quote": "A relativistic correction to the SZE intensity by (cite: Itoh04) was taken into account."
+     }
+    ]
+   },
+   "citation": "(cite: Itoh04)"
+  },
+  {
+   "what": {
+    "value": "Absolute flux calibration uncertainty of ALMA (6%)",
+    "evidence": [
+     {
+      "loc": "4.3.1 Method",
+      "quote": "the absolute calibration uncertainty of ALMA (6%; (cite: Kitayama16))"
+     }
+    ]
+   },
+   "citation": "(cite: Kitayama16)"
+  },
+  {
+   "what": {
+    "value": "Metal abundance 0.3 solar on the Anders & Grevesse scale for X-ray spectral fitting",
+    "evidence": [
+     {
+      "loc": "2.3 X-ray: Chandra ACIS-S",
+      "quote": "the metal abundance $Z$ is 0.3 times the solar value given by (cite: Anders89)"
+     }
+    ]
+   },
+   "citation": "(cite: Anders89)"
+  },
+  {
+   "what": {
+    "value": "Galactic hydrogen column density N_H = 4.2e20 cm^-2",
+    "evidence": [
+     {
+      "loc": "2.3 X-ray: Chandra ACIS-S",
+      "quote": "(cite: HI4PI16), respectively."
+     }
+    ]
+   },
+   "citation": "(cite: HI4PI16)"
+  },
+  {
+   "what": {
+    "value": "Halo mass-concentration relation used in the weak-lensing mass fit",
+    "evidence": [
+     {
+      "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+      "quote": "the halo concentration is linked to the mass by the relation of (cite: Diemer15)"
+     }
+    ]
+   },
+   "citation": "(cite: Diemer15)"
+  },
+  {
+   "what": {
+    "value": "Mass-richness relation estimate of M500 (about 1.8e14 Msun for RCS J2319+0038, about 5.7e14 Msun for HSC J0947-0119)",
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "whereas the value inferred from the mass-richness relation of (cite: Okabe19)"
+     }
+    ]
+   },
+   "citation": "(cite: Okabe19)"
+  },
+  {
+   "what": {
+    "value": "Entropy profile prediction for steady-state cooling flow, K proportional to r^1.4",
+    "evidence": [
+     {
+      "loc": "4.4.2 Deprojected profiles",
+      "quote": "for the steady-state cooling flow (cite: Voit11)"
+     }
+    ]
+   },
+   "citation": "(cite: Voit11)"
+  },
+  {
+   "what": {
+    "value": "Non-radiative entropy model K proportional to r^1.2",
+    "evidence": [
+     {
+      "loc": "4.4.2 Deprojected profiles",
+      "quote": "$r \\ltsim 0.5 r_{500}$ (cite: Voit05)"
+     }
+    ]
+   },
+   "citation": "(cite: Voit05)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Detect and subtract compact millimeter sources",
+   "method": "Fit compact sources in the uv plane with uvmodelfit using only baselines longer than 15 klambda, all channels fitted together excluding line-affected ranges; subtract sources detected above 5 sigma from the whole visibility data",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "baselines > 15 klambda",
+    "detection threshold 5 sigma"
+   ],
+   "assumptions": [
+    "sources are point-like"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Image the SZE and estimate noise",
+   "method": "Multi-Scale CLEAN with tclean in joint mosaic imaging of 12-m and 7-m data; noise measured on difference maps from time-split visibilities; images smoothed to 5'' for display",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "mask radius 50'', threshold 0.01 mJy, scales [0,4,8,16,32,64]'', natural weighting, 0.5'' pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit SZE and X-ray morphology",
+   "method": "Elliptical Gaussian fit to the unsmoothed ALMA image with imfit; elliptical beta model fit to the unsmoothed Chandra image with Sherpa beta2d; integrated SZE flux within 45''",
+   "software": [
+    "CASA",
+    "imfit",
+    "CIAO",
+    "Sherpa"
+   ],
+   "key_parameters": [
+    "Gaussian free parameters: center, major and minor axis FWHM, position angle; beta model parameters x0, y0, S0, beta, theta_c, q, psi"
+   ],
+   "assumptions": [
+    "constant noise within 50'' of field centre for error estimates (Condon97)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure mean X-ray temperature and luminosity",
+   "method": "Fit the 0.4-7.0 keV Chandra spectrum within 45'' of the cluster centre with XSPEC; spectral analysis of Chandra data processed with CIAO 4.13",
+   "software": [
+    "CIAO",
+    "XSPEC",
+    "FTOOLS"
+   ],
+   "key_parameters": [
+    "energy band 0.4-7.0 keV; background from region theta > 3.2'"
+   ],
+   "assumptions": [
+    "collisional ionization equilibrium, metal abundance 0.3 solar (Anders89), z=0.90, N_H=4.2e20 cm^-2 (HI4PI16), helium mass fraction Y=0.25"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Galaxy density and weak-lensing mass",
+   "method": "CAMIRA richness and galaxy density from HSC-SSP; weak-lensing shear with re-Gaussianization, background selection, NFW fit to tangential shear",
+   "software": [
+    "HSC pipeline"
+   ],
+   "key_parameters": [
+    "surface mass density smoothed by a 30'' FWHM Gaussian for S/N peaks"
+   ],
+   "assumptions": [
+    "NFW profile with concentration tied to mass by Diemer15"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Imaging simulations and missing flux correction",
+   "method": "Build model y maps, create SZE input images in four spectral windows, simulate ALMA visibilities with simobserve (10 noise seeds), deconvolve as for real data, and fit I_out = c1 I_in + c0 binned by input intensity; apply c1 to intensity differences relative to a reference radius",
+   "software": [
+    "CASA",
+    "simobserve",
+    "tclean"
+   ],
+   "key_parameters": [
+    "reference radius theta_bar = 35'' from the cluster centre",
+    "y_peak = 1.1e-4 (RCS J2319+0038) and 1.5e-4 (HSC J0947-0119), with doubled and halved cases"
+   ],
+   "assumptions": [
+    "RCS J2319+0038 gas isothermal at 5.90 keV with triaxial elliptical beta density, h70/eta=1; HSC J0947-0119 McDonald14b pressure profile, kT=9.4 keV, h70=1, eta=1"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Reconstruct y profile and fit pressure-profile models",
+   "method": "Average observed intensity in elliptical bins, apply missing-flux correction relative to the 7th bin, add systematics in quadrature, compare with isothermal beta model and generalized NFW profiles, fit M500 and h70/eta by chi-square",
+   "software": [],
+   "key_parameters": [
+    "bins geometrically spaced, inner-most 0<theta<4'', width increasing by a factor of 1.1; reference bin centered at 34.4''",
+    "relativistic correction c_rel between 0.94 and 0.98 at 92 GHz for 3<kT<10 keV applied to model predictions, not data"
+   ],
+   "assumptions": [
+    "h70=1 and eta=1 in the presented results; axis ratio and position angle fixed to best-fit values"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Joint SZE plus X-ray deprojection to temperature, density, entropy and cooling time",
+   "method": "Fit SZE (theta_bar<30'') and 0.4-7 keV X-ray (theta_bar<60'') elliptical-annulus brightness jointly, varying temperature and density per ellipsoidal shell; compute K and t_cool",
+   "software": [
+    "SPEX"
+   ],
+   "key_parameters": [
+    "bin size 10'' in elliptical annuli, reference bin centered at 35''; temperature beyond 30'' fixed at 5.90 keV",
+    "Lambda_bol from rest-frame emissivity integrated from 0.1 eV to 1 MeV"
+   ],
+   "assumptions": [
+    "ellipsoidal shells with same orientation as triaxial beta model; h70/eta=1"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Test the origin of the ACT SZE centroid offset",
+   "method": "Cluster-injection simulations in the real ACT map with model cluster and compact sources, re-running filtering and detection, plus comparison with Hilton21 position recovery statistics",
+   "software": [],
+   "key_parameters": [
+    "spectral index -0.7 assumed for the compact-source effect on peak y (at most 4%)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SZE elliptical Gaussian flux, RCS J2319+0038",
+   "value": "-2.04",
+   "uncertainty": "0.20",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 RCS J2319+0038",
+     "quote": "for reference, the flux inferred from the elliptical Gaussian fit is $-2.04 \\pm 0.20$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "SZE integrated flux within 45'' radius, RCS J2319+0038",
+   "value": "-1.98",
+   "uncertainty": "0.10",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 RCS J2319+0038",
+     "quote": "is $-1.98 \\pm 0.10$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "SZE integrated flux within 45'' radius, HSC J0947-0119",
+   "value": "-3.66",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 HSC J0947-0119",
+     "quote": "is $-3.66\\pm 0.11$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "SZE elliptical Gaussian flux, HSC J0947-0119",
+   "value": "-4.12",
+   "uncertainty": "0.24",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 HSC J0947-0119",
+     "quote": "the flux inferred from the elliptical Gaussian fit is $-4.12"
+    }
+   ]
+  },
+  {
+   "quantity": "SZE axis ratio, HSC J0947-0119",
+   "value": "0.66",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 HSC J0947-0119",
+     "quote": "with a mean size of $\\sim 45''$ FWHM and an axis ratio of $0.66 \\pm 0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray beta-model beta, RCS J2319+0038",
+   "value": "0.673",
+   "uncertainty": "+0.034/-0.032",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of beta-model fit",
+     "quote": "$0.673^{+0.034}_{-0.032}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray beta-model core radius theta_c, RCS J2319+0038",
+   "value": "13.2",
+   "uncertainty": "+1.4/-1.2",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of beta-model fit",
+     "quote": "$13.2^{+1.4}_{-1.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray beta-model axis ratio q, RCS J2319+0038",
+   "value": "0.694",
+   "uncertainty": "+0.036/-0.034",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of beta-model fit",
+     "quote": "$0.694^{+0.036}_{-0.034}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic X-ray luminosity within 15'', RCS J2319+0038",
+   "value": "2.17e44",
+   "uncertainty": "0.09e44",
+   "units": "h70^-2 erg/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 RCS J2319+0038",
+     "quote": "(2.17 \\pm 0.09)\\times 10^{44} h_{70}^{-2}$ erg/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Average X-ray electron temperature within 45'', RCS J2319+0038",
+   "value": "5.90",
+   "uncertainty": "+0.79/-0.62",
+   "units": "keV",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.2 Input models",
+     "quote": "yielded the average electron temperature of $kT_{\\rm e}=5.90^{+0.79}_{-0.62}$ keV"
+    }
+   ]
+  },
+  {
+   "quantity": "Weak-lensing M500, RCS J2319+0038",
+   "value": "3.6e14",
+   "uncertainty": "+4.6/-2.2 e14",
+   "units": "h70^-1 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.2 Reconstructed y-parameter profile",
+     "quote": "$M_{500} = 3.6 ^{+4.6}_{-2.2} \\times 10^{14}"
+    }
+   ]
+  },
+  {
+   "quantity": "Weak-lensing M500, HSC J0947-0119",
+   "value": "2.6e14",
+   "uncertainty": "+3.2/-1.4 e14",
+   "units": "h70^-1 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.2 Reconstructed y-parameter profile",
+     "quote": "2.6 ^{+3.2}_{-1.4} \\times 10^{14} M_\\odot$ is inferred from our weak lensing analysis"
+    }
+   ]
+  },
+  {
+   "quantity": "CAMIRA richness N_mem, RCS J2319+0038 and HSC J0947-0119",
+   "value": "31.6 and 67.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Galaxy density and weak lensing mass",
+     "quote": "The richness of these clusters is $N_{\\rm mem}=31.6$ and $67.5$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Missing-flux coefficient c1, RCS J2319+0038",
+   "value": "0.89",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table of c1 and c0",
+     "quote": "$0.89 \\pm 0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Missing-flux coefficient c1, HSC J0947-0119",
+   "value": "0.79",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table of c1 and c0",
+     "quote": "$0.79 \\pm 0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak Compton y of HSC J0947-0119 input model",
+   "value": "1.5e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.2 Input models",
+     "quote": "The inferred peak value of the $y$-parameter is $y_{\\rm peak}=1.5 \\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak Compton y of RCS J2319+0038 input model",
+   "value": "1.1e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.2 Input models",
+     "quote": "to obtain $y_{\\rm peak}=1.1\\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Missing-flux systematic uncertainty",
+   "value": "0.030 (RCS J2319+0038), 0.042 (HSC J0947-0119)",
+   "uncertainty": "not stated",
+   "units": "uJy/arcsec^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.4 Systematic errors",
+     "quote": "$\\Delta I_\\nu^{\\rm in}=0.030 ~\\mu$Jy/arcsec$^2$ and $0.042$ $\\mu$Jy/arcsec$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit h70/eta from RCS J2319+0038 y profile",
+   "value": "1.07",
+   "uncertainty": "+0.15/-0.12",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 Reconstructed y-parameter profile",
+     "quote": "\\frac{h_{70}}{\\eta} = 1.07^{+0.15}_{-0.12}"
+    }
+   ]
+  },
+  {
+   "quantity": "Chi-square of isothermal beta model fit to RCS J2319+0038 y profile",
+   "value": "3.1 for 5 dof (best fit), 3.4 for h70/eta=1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 Reconstructed y-parameter profile",
+     "quote": "with the minimum $\\chi^2$ of 3.1 for 5 degrees of freedom (dof)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fitted M500 for RCS J2319+0038 with 0.6<z<1.2 all-cluster pressure profile",
+   "value": "5.4",
+   "uncertainty": "0.4",
+   "units": "1e14 Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table of M500 fits",
+     "quote": "Assumed pressure profile"
+    }
+   ]
+  },
+  {
+   "quantity": "Fitted M500 for HSC J0947-0119 with 0.6<z<1.2 all-cluster pressure profile",
+   "value": "5.7",
+   "uncertainty": "0.4",
+   "units": "1e14 Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1.2 Input models",
+     "quote": "$M_{500}=5.7 \\times 10^{14}$ M$_\\odot$ assuming $h_{70}=1$ and $\\eta=1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Chi^2/dof of HSC J0947-0119 y profile against the RCS J2319+0038 beta model",
+   "value": "39/6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 Reconstructed y-parameter profile",
+     "quote": "$\\chi^2/\\mbox{dof}=39/6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central entropy of RCS J2319+0038 within the core",
+   "value": "~80",
+   "uncertainty": "not stated",
+   "units": "keV cm^2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.4.2 Deprojected profiles",
+     "quote": "the entropy decreases moderately to $\\sim 80$ keV cm$^2$ within the core"
+    }
+   ]
+  },
+  {
+   "quantity": "Core radiative cooling time of RCS J2319+0038",
+   "value": "about half the age of the Universe at z=0.9 (~6 Gyr)",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.4.2 Deprojected profiles",
+     "quote": "the radiative cooling time in the core is about half the age of the Universe ($\\sim 6$ Gyr) at $z=0.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of SZE centre from BCG and main galaxy density peak, HSC J0947-0119",
+   "value": "~17'' (140 h70^-1 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Galaxy density and weak lensing mass",
+     "quote": "is persistently offset from the BCG and the main peak of galaxy density by about $17''$ (140 $h_{70}^{-1}$kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of ACT centroid from ALMA and Chandra centres, RCS J2319+0038",
+   "value": "~30'' (230 h70^-1 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.2.1 RCS J2319+0038",
+     "quote": "is offset from the centers of the ALMA and *Chandra* images by $\\sim 30''$ (230 $h_{70}^{-1}$kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact source 92 GHz flux density C1",
+   "value": "262.9",
+   "uncertainty": "3.9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table of RCS J2319+0038 compact sources",
+     "quote": "$262.9 \\pm 3.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact source 92 GHz flux density C2",
+   "value": "36.6",
+   "uncertainty": "3.9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table of RCS J2319+0038 compact sources",
+     "quote": "$36.6 \\pm 3.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact source 92 GHz flux density W",
+   "value": "76.8",
+   "uncertainty": "6.1",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table of RCS J2319+0038 compact sources",
+     "quote": "$76.8 \\pm 6.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact source 92 GHz flux density W1",
+   "value": "35.3",
+   "uncertainty": "4.9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table of HSC J0947-0119 compact sources",
+     "quote": "$35.3 \\pm 4.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact source 92 GHz flux density W2",
+   "value": "42.2",
+   "uncertainty": "4.5",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table of HSC J0947-0119 compact sources",
+     "quote": "$42.2 \\pm 4.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "RMS of residual SZE images after model subtraction",
+   "value": "6.8 (HSC J0947-0119), 6.5 (RCS J2319+0038)",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Residual SZE images",
+     "quote": "The RMS value of the residuals for HSC J0947$-$0119, 6.8 $\\mu$Jy/beam, is slightly larger than that for RCS J2319$+$0038, 6.5 $\\mu$Jy/beam."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Field-centre coordinates and compact-source RA/Dec for both clusters are blank in the supplied text, so source positions for uvmodelfit/subtraction and the cluster centres are missing",
+  "tclean parameters beyond those listed (niter, gain, cycle factors, convergence settings, field phase centres, gridder, image size) are only given by reference to Kitayama20",
+  "Exact line-affected frequency ranges and spectral-window/channel selection used to fit and subtract sources (only given in a table of W, W1 lines)",
+  "Whether the QA2 products came from the ALMA pipeline or manual calibration, the pipeline/CASA version used for calibration, and the flux/bandpass/phase calibrators",
+  "No self-calibration information, and no description of how the 7-m and 12-m data were combined weight-wise",
+  "simobserve parameters: PWV values, antenna configuration files, integration times per execution block, and CASA version used for the simulations",
+  "Optimizer, likelihood and treatment of covariance for the joint SZE plus X-ray deprojection in ellipsoidal shells and for the M500 and h70/eta fits",
+  "Details of the Chandra spectral extraction region/binning and the ACT map data products and filtering used for the injection test",
+  "Weak-lensing shear catalogue cuts and the exact S/N map and mass-fit procedure (deferred to Okabe19, Okabe21)"
+ ],
+ "missing_for_reproduction": [
+  "Cluster centre and compact-source coordinates (blank in text)",
+  "Full tclean parameter set (only partially given; rest deferred to Kitayama20)",
+  "simobserve inputs (configurations, PWV, integration times) and CASA version for simulations",
+  "Fitting/optimization details of the joint SZE and X-ray deprojection and of the M500 / h70/eta fits",
+  "ACT DR5 map products and filtering configuration, weak-lensing catalogue details",
+  "No released code or analysis scripts stated"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA imaging recipe is mostly specified (tclean scales, mask, weighting, 5 sigma source subtraction) but important details are inherited from Kitayama16/Kitayama20, coordinates are missing, and the simulation-based correction and joint deprojection lack fitting details",
+ "rediscovery_reason": "Public ALMA projects (2019.1.00673.S, 2018.1.00680.S) and Chandra data are linked; imaging recipe and numeric results (integrated fluxes of -1.98 and -3.66 mJy, beam and noise, c1 values, y-profile fits) are checkable, though full reproduction needs inherited settings",
+ "source_card": "cards/2023PASJ...75..311K/sonnet/card.md"
+}

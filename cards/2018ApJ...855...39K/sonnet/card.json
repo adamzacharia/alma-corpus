@@ -1,0 +1,963 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...855...39K",
+  "title": "Polarization Properties and Magnetic Field Structures in the High-mass Star-forming Region W51 Observed with ALMA",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Koch, Patrick M.",
+  "n_authors": 6,
+  "arxiv_id": "1801.08264",
+  "doi": "10.3847/1538-4357/aaa4c1",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00994.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the first ALMA dust polarization observations towards the high-mass star-forming regions W51 e2, e8, and W51 North in Band 6 (230 GHz)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "W51 e2",
+     "coordinates": {
+      "value": "19:23:43.95 +14:30:34.00 (J2000)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W51 e2 together with e8 is located along a molecular ridge at a parallax distance around 5.41 kpc (cite: sato10)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "(19:23:43.95, 14:30:34.00), (19:23:43.90, 14:30:27.00) and (19:23:39.95, 14:31:05.50), respectively."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "5.41 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W51 e2 together with e8 is located along a molecular ridge at a parallax distance around 5.41 kpc (cite: sato10)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "(19:23:43.95, 14:30:34.00), (19:23:43.90, 14:30:27.00) and (19:23:39.95, 14:31:05.50), respectively."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "parallax, Sato et al. 2010",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W51 e2 together with e8 is located along a molecular ridge at a parallax distance around 5.41 kpc (cite: sato10)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "(19:23:43.95, 14:30:34.00), (19:23:43.90, 14:30:27.00) and (19:23:39.95, 14:31:05.50), respectively."
+       }
+      ]
+     }
+    },
+    {
+     "name": "W51 e8",
+     "coordinates": {
+      "value": "19:23:43.90 +14:30:27.00 (J2000)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W51 e2 together with e8 is located along a molecular ridge at a parallax distance around 5.41 kpc (cite: sato10)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "5.41 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W51 e2 together with e8 is located along a molecular ridge at a parallax distance around 5.41 kpc (cite: sato10)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "parallax, Sato et al. 2010",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W51 e2 together with e8 is located along a molecular ridge at a parallax distance around 5.41 kpc (cite: sato10)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "W51 North",
+     "coordinates": {
+      "value": "19:23:39.95 +14:31:05.50 (J2000)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Parallax measurements towards W51 North yield about 5.1 kpc (cite: xu09)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "5.1 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Parallax measurements towards W51 North yield about 5.1 kpc (cite: xu09)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "parallax, Xu et al. 2009",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Parallax measurements towards W51 North yield about 5.1 kpc (cite: xu09)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust polarization properties and B-field morphologies in W51 e2, e8 and North at ~5 mpc, and how effectively can the B-field oppose gravity (sin omega)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The focus of the present paper is to study the role of the magnetic (B) field with the Atacama Large Millimeter/submillimeter Array (ALMA) at a physical scale around 5 mpc in W51 e2, e8, and North."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00994.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "during the Early Science (Cycle 2, project \"2013.1.00994.S\")"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (230 GHz)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "in Band 6 (230 GHz) with a resolution around 0$\\ensuremath{''}$26"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four basebands, FDM mode, 3840 channels over 1.875 GHz, 488 kHz resolution",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The four basebands were set in FDM mode (3840 channels for 1.875 GHz with a resolution of 488 kHz)."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m array (implied by baselines 13-1492 m, 38 antennas)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The array included 38 antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "38 antennas, 13 m to 1492 m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The array included 38 antennas with (projected) baselines ranging from 13 m to 1492 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.28\"x0.26\", PA 33 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "synthesized beam resolution $\\theta\\sim0\\ensuremath{''}$28$\\times$0$\\ensuremath{''}$26 with an orientation of 33$\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Stokes I 1σ 6 mJy/beam (e2, e8), 1.4 mJy/beam (North); Q 0.15 (e2,e8), 0.08; U 0.19 (e2,e8), 0.10 mJy/beam",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The sensitivities (1$\\sigma$) are 6 mJy/beam (e2, e8) and 1.4 mJy/beam (North) for Stokes $I$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "July 18, 2015, three execution blocks",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Observations were done in three execution blocks (EBs) on July 18, 2015."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "345 GHz polarization maps (Tang et al. 2009) and new combined subcompact+compact envelope-scale maps, theta~2.13x1.88 arcsec",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "we also present new larger-scale SMA maps combining data from the subcompact array configuration"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SMA 345 GHz polarization maps of e2, e8, North reproduced for comparison",
+      "evidence": [
+       {
+        "loc": "3.2 Polarization",
+        "quote": "here reproduced from (cite: tang09b) in panel (b), (c), and (g) in Figure [1](#figure_composite_pol)"
+       }
+      ]
+     },
+     "citation": "(cite: tang09b)"
+    },
+    {
+     "what": {
+      "value": "SMA 1.3 mm flux densities of e2 sub-cores",
+      "evidence": [
+       {
+        "loc": "3.1 230 GHz Dust Continuum",
+        "quote": "Their reported flux densities are 2.15$\\pm$0.12, 0.62$\\pm$0.12 and 0.73$\\pm$0.08 Jy for W51 e2-E, e2-NW and w2-N, respectively."
+       }
+      ]
+     },
+     "citation": "(cite: shi10a)"
+    },
+    {
+     "what": {
+      "value": "SMA compact array data for e2, e8, North",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "compact array configuration (described originally in (cite: zhang14) for W51 e2, e8, and W51 North)"
+       }
+      ]
+     },
+     "citation": "(cite: zhang14)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Separate EB calibration, then polarization calibration after merging, standard ALMA procedure",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Polarization calibration was performed after merging the three calibrated EBs following the standard polarization calibration for ALMA"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v4.5.0",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "was performed using CASA[^2] v4.5.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1922+1530 (0.175 Jy at 232.9 GHz) with Titan as reference",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "With a flux of 0.175 Jy at 232.9 GHz, J1922+1530 also provided the flux scale with the reference flux calibrator Titan."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The images presented here are with natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.28\"x0.26\", PA 33 deg",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "synthesized beam resolution $\\theta\\sim0\\ensuremath{''}$28$\\times$0$\\ensuremath{''}$26 with an orientation of 33$\\ensuremath{^\\circ}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Local gravity direction calculation and MHD force equation",
+      "evidence": [
+       {
+        "loc": "Footnote 4",
+        "quote": "Calculating the local direction of gravity is introduced in (cite: koch12a)."
+       }
+      ]
+     },
+     "from_reference": "(cite: koch12a)"
+    },
+    {
+     "what": {
+      "value": "SMA subcompact data for W51 North",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "subcompact array configuration (described originally in (cite: tang13) for W51 North)"
+       }
+      ]
+     },
+     "from_reference": "(cite: tang13)"
+    },
+    {
+     "what": {
+      "value": "Instrumental polarization in Band 6",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "A detailed analysis of the instrumental polarization in Band 6 is given in (cite: nagai16)"
+       }
+      ]
+     },
+     "from_reference": "(cite: nagai16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Spectral windows/channels used for continuum and total bandwidth",
+    "Image size, cell size, and whether clean was used with masks/threshold",
+    "Self-calibration performed or not",
+    "Polarization calibration details (leakage calibrator, Stokes solutions)",
+    "Pixel sampling used for B-field segments and the annulus for dispersion S",
+    "Procedure for the power-law fits of p vs I",
+    "Details of SMA combination and unpublished SMA data",
+    "Primary beam correction treatment for mosaics/pointings"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image Stokes I, Q, U",
+    "method": {
+     "value": "Separate EB calibration in CASA, merged for polarization calibration; natural weighting imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The three EBs were calibrated separately in flux, bandpass and gain."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "polarization calibrator J1924-2914, p=2.56%, PA=45.6 deg",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "measured to have a polarization fraction of 2.56% and a polarization position angle of 45.6$\\ensuremath{^\\circ}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Calibrator polarization consistent with other ALMA measurements",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "in agreement with other ALMA measurements"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive debiased polarized intensity and fraction",
+    "method": {
+     "value": "Debias Ip=sqrt(Q²+U²-σ²) for Ip≥3σp; require I≥3σ and Ip≥3σp",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "For all results displayed in this paper we impose the two simultaneous conditions of having Stokes $I\\geq$3$\\sigma$ and $I_p\\geq$3$\\sigma_p$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure core flux densities",
+    "method": {
+     "value": "two-dimensional Gaussian fits to continuum cores",
+     "evidence": [
+      {
+       "loc": "3.1 230 GHz Dust Continuum",
+       "quote": "The flux densities of these dense cores are determined by two-dimensional Gaussian fits"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian",
+     "evidence": [
+      {
+       "loc": "Results: 230 GHz Dust Continuum",
+       "quote": "The flux densities of these dense cores are determined by two-dimensional Gaussian fits to be 2.54, 1.04, 0.22 and 0.10 Jy for W51 e2-E, e2-W, e2-NW and e2-N, respectively"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with SMA fluxes of Shi et al. 2010a",
+     "evidence": [
+      {
+       "loc": "3.1 230 GHz Dust Continuum",
+       "quote": "Our newly reported flux densities are within the 3$\\sigma$ uncertainty levels of the ones in (cite: shi10a)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit p vs I anti-correlation and compute B-field dispersion S",
+    "method": {
+     "value": "Power-law fit of p vs I; S computed with r_disp=0.2\" over neighbouring segments; B-field = polarization PA rotated 90 deg",
+     "evidence": [
+      {
+       "loc": "4.1 Polarization Structures",
+       "quote": "Figure [6](#figure_field_dispersion) shows $\\mathcal{S}$-maps, evaluated for $r_{disp}=0.2\\ensuremath{''}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "r_disp = 0.2 arcsec",
+      "evidence": [
+       {
+        "loc": "4.1 Polarization Structures",
+        "quote": "evaluated for $r_{disp}=0.2\\ensuremath{''}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "power-law fit (method not stated)",
+     "evidence": [
+      {
+       "loc": "Results: Polarization",
+       "quote": "The anti-correlation can be fit with power-laws with indices -1.02 (e2), -0.84 (e8), and -0.84 (North)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with Planck and BLASTPol results",
+     "evidence": [
+      {
+       "loc": "4.1 Polarization Structures",
+       "quote": "Our findings are in line with recent BLASTPol results for the Vela C molecular cloud"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compute sin omega maps",
+    "method": {
+     "value": "Local gravity direction from summing pixelized dust emission weighted 1/r² as point masses; omega is angle between gravity direction and B-field orientation (0-90 deg)",
+     "evidence": [
+      {
+       "loc": "Footnote 4",
+       "quote": "derived by summing up all the surrounding pixelized dust emission weighted by $1/r^2$ along the direction to each pixel"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Dust emission distribution represents total mass distribution",
+      "evidence": [
+       {
+        "loc": "Footnote 4",
+        "quote": "The observed dust emission *distribution* is assumed to represent the total mass *distribution* that generates the gravitational potential $\\phi$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Initial comparison shows close structural resemblance to Sigma_B maps",
+     "evidence": [
+      {
+       "loc": "4.2 Gravity vs Magnetic Field",
+       "quote": "An initial comparison is showing a close structural resemblance between $\\sin\\omega$- and $\\Sigma_B$-maps."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.0",
+    "used_for": {
+     "value": "Calibration (bandpass, phase, amplitude, flux, polarization)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The calibration (bandpass, phase, amplitude, flux) was performed using CASA[^2] v4.5.0."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total 230 GHz continuum flux e2",
+    "value": "4.0",
+    "uncertainty": "not stated",
+    "units": "Jy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 230 GHz Dust Continuum",
+      "quote": "is 4.0, 3.7 and 6.8 Jy for W51 e2, e8 and North, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Flux densities e2-E, e2-W, e2-NW, e2-N",
+    "value": "2.54, 1.04, 0.22, 0.10",
+    "uncertainty": "not stated",
+    "units": "Jy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 230 GHz Dust Continuum",
+      "quote": "to be 2.54, 1.04, 0.22 and 0.10 Jy for W51 e2-E, e2-W, e2-NW and e2-N, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "p vs I power-law index (e2, e8, North)",
+    "value": "-1.02, -0.84, -0.84",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 Polarization",
+      "quote": "The anti-correlation can be fit with power-laws with indices -1.02 (e2), -0.84 (e8), and -0.84 (North)."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean sin omega e2",
+    "value": "0.40",
+    "uncertainty": "std 0.27",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Gravity vs Magnetic Field",
+      "quote": "$\\sin\\omega$ averaged over the entire W51 e2 map is small with 0.40 and a standard deviation of 0.27."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean sin omega e8",
+    "value": "0.41",
+    "uncertainty": "std 0.29",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Gravity vs Magnetic Field",
+      "quote": "average $\\sin\\omega$ value of 0.41 and a standard deviation of 0.29"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean sin omega North",
+    "value": "0.47",
+    "uncertainty": "std 0.30",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Gravity vs Magnetic Field",
+      "quote": "with an overall average of 0.47 and a standard deviation of 0.30"
+     }
+    ]
+   },
+   {
+    "quantity": "Polarization percentage range",
+    "value": "0.1% to 10%",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Measured relative polarization levels are between 0.1% and 10%."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "New B-field features resolved: cometary morphologies in satellite cores, convergence zones, possible streamlined fields",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "revealing new features such as cometary-shaped B-field morphologies in satellite cores, symmetrically converging B-field zones, and possibly streamlined morphologies"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does relative polarization anti-correlate with Stokes I at mpc scales?",
+    "experiment": "Power-law fits of p vs I for each source",
+    "result": "Indices about -1 with scatter of almost an order of magnitude",
+    "finding": "Typical anti-correlation present with large scatter, implying additional physics",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 Polarization",
+      "quote": "The anti-correlation can be fit with power-laws with indices -1.02 (e2), -0.84 (e8), and -0.84 (North)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is polarization related to local B-field dispersion?",
+    "experiment": "Compare S and p maps",
+    "result": "Lowest p coincides with largest S in convergence zones",
+    "finding": "Anti-correlation of p and S continues to mpc scales; likely unresolved field structure",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 Polarization Structures",
+      "quote": "the smallest polarization percentages clearly converge towards the largest field dispersions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can sin omega map where the B-field can oppose gravity?",
+    "experiment": "Compute sin omega maps from B-field and gravity direction",
+    "result": "Organized structures; mean values 0.40-0.47; narrow sin omega~0 channels",
+    "finding": "B-field role varies locally, with possible magnetic channels, speculative at resolution limit",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.2 Gravity vs Magnetic Field",
+      "quote": "This interpretation is, however, at or already beyond the limit of the current resolution."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Lower grain alignment efficiency could also explain p anti-correlations with S and I",
+     "evidence": [
+      {
+       "loc": "4.1 Polarization Structures",
+       "quote": "Alternatively, an intrinsic lower grain alignment efficiency, due to varying densities and temperatures, might also explain these two anti-correlations."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "sin omega only captures gravity-dominated zones; large values need field strength",
+     "evidence": [
+      {
+       "loc": "4.2 Gravity vs Magnetic Field",
+       "quote": "Its shortcoming is that it can only capture the zones where gravity is clearly dominating over the B-field"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No continuum/line-free or imaging parameters given, hindering reproduction",
+    "Qualitative interpretation of B-field morphologies is subjective",
+    "Gravity direction assumes dust emission traces mass and ignores filtered large scales",
+    "No uncertainties on sin omega or fits"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code given; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "ADS/JAO.ALMA#2013.1.00994.S"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, masking, cleaning)",
+    "Spectral windows used for continuum",
+    "Leakage calibration details",
+    "Fit procedure for power laws",
+    "Unpublished SMA data"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for three execution blocks",
+   "score_inferred": 3,
+   "score_reason": "Data identified and calibration outline given, but imaging details missing; analysis is mostly maps with few numbers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging and fitting recipes are incomplete and key results are morphological."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: koch12a)",
+     "why": "MHD force equation and gravity direction method"
+    },
+    {
+     "citation": "(cite: nagai16)",
+     "why": "ALMA Band 6 instrumental polarization"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: tang09b)",
+     "why": "SMA polarization of e2/e8"
+    },
+    {
+     "citation": "(cite: tang13)",
+     "why": "SMA polarization of W51 North"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "SMA W51 polarization",
+    "Planck",
+    "BLASTPol"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-10a09be8f09dada33f09ce1c3ac5afbb",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:54",
+  "usage": {
+   "input_tokens": 26831,
+   "output_tokens": 7404,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064458,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 63,
+  "quotes_ok": 63,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 48,
+   "rate": 0.615
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T04:15:23",
+  "custom_id": "repair-sonnet-819e7a817cac10d55fbca9723dc37808",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "The flux densities of these dense cores are determined by two-dimensional Gaussian fits to be 2.54, 1.04, 0.22 and 0.10 Jy for W51 e2-E, e2-W, e2-NW and e2-N, respectively"
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "The anti-correlation can be fit with power-laws with indices -1.02 (e2), -0.84 (e8), and -0.84 (North)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

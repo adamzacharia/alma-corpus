@@ -1,0 +1,452 @@
+parameter space of local ETGs."
+        },
+        {
+          "loc": "Comparison with other cold disks across cosmic time",
+          "quote": "This suggests that MQN01-QC could indeed represent one of the progenitors of today’s most massive ellipticals."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Stellar feedback can supply the observed disk turbulence.",
+      "experiment": "Apply a stellar-feedback turbulence model to measured gas mass, SFR and dispersion with an adopted SN rate and scale height.",
+      "result": "Required SN kinetic-energy transfer efficiency ≃0.05.",
+      "finding": "Only 5% of SN kinetic energy is needed under the adopted assumptions.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Comparison with other cold disks across cosmic time",
+          "quote": "We apply this model on the MQN01-QC to estimate the efficiency of the supernovae (SNe) in transferring kinetic energy to the molecular gas."
+        },
+        {
+          "loc": "Comparison with other cold disks across cosmic time",
+          "quote": "$\\epsilon_{\\rm SN} \\simeq 0.05$, implying that only $5\\%$ of the kinetic energy from SN feedback is needed to drive the observed turbulence in MQN01-QC disk."
+        }
+      ]
+    },
+    {
+      "hypothesis": "MQN01-QC is undergoing a dust-obscured starburst.",
+      "experiment": "Combine an IR-based SFR with a NIRCam color-calibrated stellar mass and compare with the z≈3 main sequence.",
+      "result": "The galaxy lies above the main sequence; stellar mass is only accurate to order of magnitude.",
+      "finding": "A dust-obscured starburst phase is suggested.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Stellar mass estimation of MQN01-QC from JWST/NIRCam images",
+          "quote": "place the MQN01-QC above to the star-forming main sequence at $z\\approx3$ (cite: Popesso+2023), thus suggesting that the galaxy is in a dust-obscured starburst phase"
+        },
+        {
+          "loc": "Stellar mass estimation of MQN01-QC from JWST/NIRCam images",
+          "quote": "this estimate is only accurate in terms of order-to-magnitude"
+        }
+      ]
+    },
+    {
+      "hypothesis": "The quasar's broad blueshifted CO component traces an outflow rather than tidally disturbed gas.",
+      "experiment": "Inspect an intergalaxy PVD, compute tidal radii, and estimate a conditional molecular outflow rate.",
+      "result": "Simplified tidal calculation disfavors stripping; conditional outflow rate ≃1.7 × 10^3 (αCO/0.5) M_sun yr−1.",
+      "finding": "Outflow is viable, but merger and outflow interpretations cannot be distinguished with current information.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "we cannot completely rule out the tidal stripping scenario, albeit the latter is not supported by our simplified calculation discussed above."
+        },
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "$\\dot{M}_{\\rm H2} \\simeq 1.7\\times10^{3}\\,(\\alpha_{\\rm CO}/0.5)\\,M_{\\astrosun}\\,{\\rm yr^{-1}}$."
+        },
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "we cannot rule out any of the two alternative scenarios (i.e., merger or outflow) with the available information."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Higher-resolution band 3 observations separate the previously blended quasar host and companion for spatially resolved analysis.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "caused the quasar host and its companion (previously dubbed as Object B in Paper I) to appear blended, preventing spatially resolved analysis."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "ALMA band 3 single-pointing observation targeting the CO(4–3) line at a much higher resolution"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Natural weighting maximizes surface-brightness sensitivity; CANNUBI constrains geometry before kinematics because S/N and resolution limit simultaneous fitting; PSF-convolved models address beam smearing.",
+      "evidence": [
+        {
+          "loc": "Reduction and imaging of ALMA data",
+          "quote": "adopting a “natural” weighting scheme of the visibilities to maximize the surface brightness sensitivity per beam."
+        },
+        {
+          "loc": "Rotating disk modeling of the MQN01-QC",
+          "quote": "the limited S/N and angular resolution of the current data hamper a simultaneous determination of all the free parameters."
+        },
+        {
+          "loc": "Rotating disk modeling of the MQN01-QC",
+          "quote": "This accounts for the beam smearing effect"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Iterate spectral extraction until convergence; cleaning masks cover observable emission; three annuli cover the line-emitting region.",
+      "evidence": [
+        {
+          "loc": "Flux and luminosity measurements from ALMA data",
+          "quote": "we iterated the procedure until convergence."
+        },
+        {
+          "loc": "Reduction and imaging of ALMA data",
+          "quote": "These were sufficient to encompass the observable emission of both the sources."
+        },
+        {
+          "loc": "Geometrical parameter derivation",
+          "quote": "These are sufficient to cover the entire emitting line region"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Single-Gaussian CO(4–3) fits are inadequate; use double Gaussians.",
+      "evidence": [
+        {
+          "loc": "Flux and luminosity measurements from ALMA data",
+          "quote": "The observed CO(4–3) line profiles of our sources cannot be adequately reproduced with a single Gaussian component."
+        }
+      ]
+    },
+    {
+      "value": "Companion's two-clump CO morphology may trace spiral structure, central gas depletion or optically thick central line emission.",
+      "evidence": [
+        {
+          "loc": "CO(4–3) line flux distributions and velocity fields",
+          "quote": "such as, e.g., spiral arms."
+        },
+        {
+          "loc": "CO(4–3) line flux distributions and velocity fields",
+          "quote": "could result from significant molecular gas depletion or optically thick line emission in the galaxy central region compared to its outskirts."
+        }
+      ]
+    },
+    {
+      "value": "Fit dust SEDs with both 35±5 K and 45±5 K temperature priors.",
+      "evidence": [
+        {
+          "loc": "Molecular gas mass and dust characteristics",
+          "quote": "two different Gaussian priors for the $T_{\\rm dust}$"
+        },
+        {
+          "loc": "Molecular gas mass and dust characteristics",
+          "quote": "$35\\,{\\rm K}$"
+        },
+        {
+          "loc": "Molecular gas mass and dust characteristics",
+          "quote": "$45\\,{\\rm K}$"
+        }
+      ]
+    },
+    {
+      "value": "Quasar mass bracketed by dispersion-dominated and rotation-dominated cases.",
+      "evidence": [
+        {
+          "loc": "Dynamical and virial mass estimates of galaxies",
+          "quote": "under the assumption of dispersion-dominated system"
+        },
+        {
+          "loc": "Dynamical and virial mass estimates of galaxies",
+          "quote": "the bulk of the emitting gas is dominated by regular rotation"
+        }
+      ]
+    },
+    {
+      "value": "Tidal stripping and molecular outflow remain viable; gas inflow from satellites, filaments or circumgalactic medium is also possible but difficult to test.",
+      "evidence": [
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "we cannot rule out any of the two alternative scenarios (i.e., merger or outflow) with the available information."
+        },
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "a molecular gas inflow from a low-mass satellite galaxy, or along one or more cosmic web filaments, or from the circumgalactic medium (cite: Emonts+2023), would potentially explain the observed blueshifted CO(4–3) emission."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Gas-mass uncertainties omit conversion-factor systematics.",
+      "evidence": [
+        {
+          "loc": "Molecular gas mass and dust characteristics",
+          "quote": "the reported uncertainties on molecular gas masses do not take into account systematic uncertainties on the assumed conversion factors."
+        }
+      ]
+    },
+    {
+      "value": "No continuum measurements near the SED peak; temperature weakly constrained; AGN FIR contribution could overestimate SFR.",
+      "evidence": [
+        {
+          "loc": "Molecular gas mass and dust characteristics",
+          "quote": "Due to the lack of continuum measurements near to the peak of the dust SED, we are able to put only shallow constraints on the dust temperature."
+        },
+        {
+          "loc": "Molecular gas mass and dust characteristics",
+          "quote": "any possible contribution from the central AGN to the measured FIR luminosity would result in an overestimation of the ${\\rm SFR}_{\\rm IR}$."
+        }
+      ]
+    },
+    {
+      "value": "Stellar mass has quasar-subtraction and limited-filter systematics; quoted aperture-flux errors exclude potential systematic errors.",
+      "evidence": [
+        {
+          "loc": "Stellar mass estimation of MQN01-QC from JWST/NIRCam images",
+          "quote": "considering the photometric systematic uncertainties originating from the quasar light subtraction and the lack of flux measurements from other filters."
+        },
+        {
+          "loc": "Stellar mass estimation of MQN01-QC from JWST/NIRCam images",
+          "quote": "do not take into account any potential systematic errors."
+        }
+      ]
+    },
+    {
+      "value": "Ring parameters are correlated; kinematic uncertainties omit geometry uncertainty and are underestimated.",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "the parameters derived for each ring are not fully independent."
+        },
+        {
+          "loc": "Table 2",
+          "quote": "The reported errors on kinematical quantities do not take into account that on disk geometry and are therefore underestimated."
+        }
+      ]
+    },
+    {
+      "value": "Current S/N and resolution cannot investigate potential radial motions.",
+      "evidence": [
+        {
+          "loc": "Kinematical parameter derivation",
+          "quote": "the current S/N and angular resolution of the observations are insufficient to investigate the presence of potential radial motions."
+        }
+      ]
+    },
+    {
+      "value": "Spherical mass distribution oversimplifies the companion; quasar virial estimates have large resolution-related uncertainties.",
+      "evidence": [
+        {
+          "loc": "Dynamical and virial mass estimates of galaxies",
+          "quote": "the approximation of spherically mass distribution is likely an oversimplification in our case"
+        },
+        {
+          "loc": "Dynamical and virial mass estimates of galaxies",
+          "quote": "given the limited angular resolution of the observations, the above virial mass estimates suffer from large uncertainties and should be taken with caution."
+        }
+      ]
+    },
+    {
+      "value": "Tidal analysis uses difficult-to-verify simplifying assumptions; projection and unknown outer mass budgets limit interpretation.",
+      "evidence": [
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "they rely on highly simplifying assumptions which are difficult to verify."
+        },
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "an accurate dynamical analysis is limited by projection effects and lack of information regarding the total mass (dark matter + baryons) of the individual galaxies."
+        }
+      ]
+    },
+    {
+      "value": "Available information cannot distinguish merger and outflow origins.",
+      "evidence": [
+        {
+          "loc": "Origin of the blueshifted emission of the quasar host galaxy",
+          "quote": "we cannot rule out any of the two alternative scenarios (i.e., merger or outflow) with the available information."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "GalPak3D and 3DBarolo share fixed CANNUBI geometry, so their agreement does not independently validate inclination or its contribution to mass uncertainty.",
+    "The printed L′CO equation contains DL rather than DL², while the adjacent luminosity relation implies a consistency check is needed before implementing it.",
+    "The printed quasar virial relation GMvir≈kσR² requires clarification before use; reproduce neither its algebra nor its numerical output by silently correcting it.",
+    "The stated single-pointing center differs from the tabulated source coordinates; exact imaging and primary-beam geometry should be checked against the data.",
+    "Two continuum measurements leave dust luminosity and SFR sensitive to the imposed temperature prior.",
+    "The conditional outflow rate depends directly on an assumed unresolved spatial extent and conversion factor; it is not a secure outflow detection.",
+    "The very low-significance intergalaxy PVD feature should not serve as a firm bridge-detection answer key.",
+    "The quoted log stellar mass and calibration coefficients should be checked directly against the stated flux units and flux ratio before adopting them as mutually consistent answer keys."
+  ],
+  "reproducibility": [],
+  "code_released": [
+    {
+      "value": "3DBarolo publicly available at https://editeodoro.github.io/Bbarolo/.",
+      "evidence": [
+        {
+          "loc": "Rotating disk modeling of the MQN01-QC",
+          "quote": "The code is publicly available at <https://editeodoro.github.io/Bbarolo/>"
+        }
+      ]
+    },
+    {
+      "value": "GalPak3D publicly available at https://galpak3d.univ-lyon1.fr/doc/index.htm.",
+      "evidence": [
+        {
+          "loc": "Kinematical parameter derivation",
+          "quote": "The code is publicly available at <https://galpak3d.univ-lyon1.fr/doc/index.htm>."
+        }
+      ]
+    },
+    {
+      "value": "CANNUBI details at https://www.filippofraternali.com/cannubi.",
+      "evidence": [
+        {
+          "loc": "Rotating disk modeling of the MQN01-QC",
+          "quote": "See <https://www.filippofraternali.com/cannubi> for full details."
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "Paper-specific scripts, masks, configuration files, posterior chains and exact software versions.",
+    "Paper I for band 6 mosaics and imported 1.2-mm photometry.",
+    "Exact continuum channel selections and final spectral/image grids.",
+    "MCMC prior bounds, run lengths and convergence criteria.",
+    "JWST reduction, PSF subtraction and stellar-calibration inputs.",
+    "Clarification of printed luminosity and virial equations and the stellar-calibration numerical consistency.",
+    "An explicit statement of ALMA/JWST data availability and archive product identifiers beyond the ALMA project and JWST program codes."
+  ],
+  "estimated_data_volume_inferred": "Not reliably quantifiable from the text; raw single-pointing visibilities plus mosaics, image cubes and JWST images are required.",
+  "score_inferred": 6,
+  "score_reason": "6/10: project, pipeline, major imaging choices and disk-model settings are detailed, with numeric answer keys and a second kinematic fit. Exact selections, sampler settings, inherited products and several numerical/formula ambiguities prevent an exact rerun.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but the supplied paper does not state that the observations are public, and the exact recipe requires missing settings and inherited material.",
+  "methods_papers": [
+    {
+      "citation": "(cite: McMullin+2007; Hunter+2023)",
+      "why": "CASA visibility reduction and processing."
+    },
+    {
+      "citation": "(cite: Hogbom1974)",
+      "why": "Högbom imaging deconvolution."
+    },
+    {
+      "citation": "(cite: Bethermin+2020; Pensabene+2024)",
+      "why": "Iterative 2σ-clipped CO photometry."
+    },
+    {
+      "citation": "(cite: Ren+2024)",
+      "why": "Quasar PSF alignment and flux scaling with light spikes."
+    },
+    {
+      "citation": "(cite: Foreman+2013)",
+      "why": "emcee ensemble MCMC for line and dust fits."
+    },
+    {
+      "citation": "(cite: Solomon+1997)",
+      "why": "CO flux-to-luminosity conversions."
+    },
+    {
+      "citation": "(cite: Bolatto+2013)",
+      "why": "Review of CO-to-molecular-gas mass conversion."
+    },
+    {
+      "citation": "(cite: Beelen+2006; Casey+2012; Leipski+2013; Decarli+2022)",
+      "why": "Optically thin modified-blackbody dust modeling."
+    },
+    {
+      "citation": "(cite: daCunha+2013; Zhang+2016)",
+      "why": "CMB contrast correction for dust emission."
+    },
+    {
+      "citation": "(cite: Murphy+2011)",
+      "why": "Infrared luminosity to star-formation-rate conversion."
+    },
+    {
+      "citation": "(cite: Kouroumpatzakis+2023)",
+      "why": "Referenced for color-based stellar-mass prediction."
+    },
+    {
+      "citation": "(cite: DiTeodoro+2015)",
+      "why": "3DBarolo tilted-ring cube fitting."
+    },
+    {
+      "citation": "(cite: Rogstad+1974)",
+      "why": "Tilted-ring model construction."
+    },
+    {
+      "citation": "(cite: Roman-Oliveira+2023)",
+      "why": "CANNUBI Bayesian geometry determination."
+    },
+    {
+      "citation": "(cite: Marasco+2019)",
+      "why": "Asymmetry-aware CANNUBI likelihood."
+    },
+    {
+      "citation": "(cite: Bouche+2015)",
+      "why": "GalPak3D parametric Bayesian kinematic modeling."
+    },
+    {
+      "citation": "(cite: Neeleman+2021)",
+      "why": "Additional lower-side dynamical-mass uncertainty."
+    },
+    {
+      "citation": "(cite: Decarli+2018)",
+      "why": "Quasar-host virial coefficient and mass estimates."
+    },
+    {
+      "citation": "(cite: Ho+2007; Wang+2013; Willott+2015mbh; Decarli+2018)",
+      "why": "Rotation-dominated quasar mass estimator."
+    },
+    {
+      "citation": "(cite: Rizzo+2024); (cite: Bacchini+2020; Fraternali+2021)",
+      "why": "Empirical turbulence evolution and stellar-feedback turbulence model."
+    },
+    {
+      "citation": "(cite: BinneyTremaine2008)",
+      "why": "Numerical two-body Jacobi-radius calculation."
+    },
+    {
+      "citation": "(cite: Rupke+2005)",
+      "why": "Molecular outflow-rate estimator."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "Paper I; (cite: Pensabene+2024)",
+      "why": "Earlier MQN01 ALMA survey, mosaic acquisition/processing and 1.2-mm photometry."
+    },
+    {
+      "citation": "(cite: Galbiati+2025)",
+      "why": "MQN01 environment and SED-based stellar masses for the NIRCam calibration sample."
+    },
+    {
+      "citation": "(cite: Travascio+2025)",
+      "why": "Multiwavelength characterization of the MQN01 galaxy/AGN overdensity."
+    },
+    {
+      "citation": "(cite: Wang+2025)",
+      "why": "JWST GO 1835 imaging and comparison protocluster spiral-galaxy work."
+    },
+    {
+      "citation": "Cantalupo et al., in prep.",
+      "why": "Lyα Cosmic Web filaments across the MQN01 structure."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "ALMA Cycle 8 program 2021.1.00793.S",
+    "MQN01 ALMA survey",
+    "MQN01 protocluster field",
+    "JWST GO 1835"
+  ]
+}
+tokens used
+37,943

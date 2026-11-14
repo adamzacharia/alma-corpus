@@ -1,0 +1,395 @@
+{
+ "bibcode": "2022MNRAS.511.3017U",
+ "title": "The bright extragalactic ALMA redshift survey (BEARS) I: redshifts of bright gravitationally lensed galaxies from the Herschel ATLAS",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac150",
+ "arxiv_id": "2201.07815",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Measure spectroscopic redshifts, CO line widths, CO luminosities, and magnification factors for bright gravitationally lensed submillimeter galaxies selected from the Herschel ATLAS South Galactic Pole field.",
+ "alma_project_codes": [
+  "2016.2.00133.S",
+  "2018.1.00804.S",
+  "2019.1.01477.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 4",
+  "arrays": "ACA (Morita Array) and 12-m Array",
+  "angular_resolution": "ACA Band 3: 17 x 10 arcsec; 12-m Band 3: 3.6 x 2.7 arcsec (~3 arcsec); 12-m Band 4: 2.2 x 1.8 arcsec (~2 arcsec)",
+  "sensitivity": "ACA: 3 mJy per 308 km/s; 12-m Array: 0.8 mJy per 300 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HerBS sample selection and photometric redshifts",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "Our sample selection for this paper is based on the criteria set out in (cite: bakx18):"
+     },
+     {
+      "loc": "Spectroscopic versus photometric redshifts",
+      "quote": "Fig. 4 presents a comparison of the photometric redshifts from previous catalogues in (cite: Bakx2020Erratum) which use an SED fit and the method described in (cite: ivison16) to the spectroscopic measurements presented here"
+     }
+    ]
+   },
+   "citation": "(cite: bakx18; Bakx2020Erratum; ivison16)"
+  },
+  {
+   "what": {
+    "value": "H-ATLAS SGP Data Release 2 Catalogue version 1.4",
+    "evidence": [
+     {
+      "loc": "Redshift determination",
+      "quote": "For the SGP field, data were taken from H-ATLAS SGP Data Release 2 Catalogue version 1.4 (cite: smith2017; maddox2018; furlanetto2018)."
+     }
+    ]
+   },
+   "citation": "(cite: smith2017; maddox2018; furlanetto2018)"
+  },
+  {
+   "what": {
+    "value": "VIKING-derived foreground lens redshifts",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(8) VIKING derived lens redshift from (cite: bakx2020)."
+     }
+    ]
+   },
+   "citation": "(cite: bakx2020)"
+  },
+  {
+   "what": {
+    "value": "Lensed, unlensed, and ULIRG comparison samples of CO redshifts, line widths, and luminosities",
+    "evidence": [
+     {
+      "loc": "Redshift and CO line width distributions",
+      "quote": "The lensed sample is compiled from (cite: neri2019), (cite: harris2012), (cite: yang2017), (cite: aravena2016) and some well known individual sources."
+     },
+     {
+      "loc": "Redshift and CO line width distributions",
+      "quote": "The unlensed sample comes from (cite: bothwell2013), (cite: harris2010) and several well known individual unlensed sources from literature."
+     },
+     {
+      "loc": "The $L^{\\prime}_{\\rm CO}$ and $\\Delta V$ relation",
+      "quote": "We use the previously defined “lensed\" and “unlensed\" samples (Section 4.1) and create an additional sample of ULIRGS. This is composed of data from (cite: solomon1997), (cite: combes2011) and (cite: combes2013)."
+     }
+    ]
+   },
+   "citation": "(cite: neri2019; harris2012; yang2017; aravena2016; bothwell2013; harris2010; solomon1997; combes2011; combes2013)"
+  },
+  {
+   "what": {
+    "value": "Median brightness temperature ratios for SMGs used for CO excitation correction",
+    "evidence": [
+     {
+      "loc": "The $L^{\\prime}_{\\rm CO}$ and $\\Delta V$ relation",
+      "quote": "a correction for excitation was applied using the median brightness temperature ratios for SMGs in Table 4 of (cite: bothwell2013), and accounting for errors."
+     }
+    ]
+   },
+   "citation": "(cite: bothwell2013)"
+  },
+  {
+   "what": {
+    "value": "Submillimetre number counts model and angular size data for LensPop simulations",
+    "evidence": [
+     {
+      "loc": "Magnification distribution",
+      "quote": "A mock submillimetre catalogue was created, based on the study by (cite: Cai2013) that allows for an estimate of number counts as a function of the (unlensed) flux at 500 $\\upmu\\mathrm{m}$ and redshift."
+     },
+     {
+      "loc": "Magnification distribution",
+      "quote": "The LensPop model also requires the source galaxy angular size, which we have estimated using data from (cite: Ikarashi2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Cai2013; Ikarashi2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA visibilities, subtract continuum, and re-image cubes",
+   "method": "Pipeline/manual calibration in CASA 5.6.1, initial imaging with tclean using natural weighting and Hogbom deconvolver, visual identification of spectral lines, visibility continuum subtraction, and re-imaging with manually adjusted channel widths.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting, standard gridder, Hogbom deconvolver, pixel scale 2.0/0.5/0.3 arcsec, image size 100x100/240x240 pixels"
+   ],
+   "assumptions": [
+    "5 per cent flux calibration uncertainty"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectral line fluxes and line widths",
+   "method": "Aperture photometry within the image cubes using circular apertures centered on continuum peaks, with manually adjusted aperture radii and frequency channels to maximize flux while keeping detection above 5 sigma.",
+   "software": [],
+   "key_parameters": [
+    "Detection threshold > 5 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Determine spectroscopic redshifts",
+   "method": "Calculate all potential redshift solutions from detected line frequencies and use multi-line detections (59 sources) or single-line exclusion of alternative solutions where other lines would have been detected (13 sources) following Bakx et al. (2020).",
+   "software": [],
+   "key_parameters": [
+    "Spectroscopic redshift uncertainty < 0.001"
+   ],
+   "assumptions": [
+    "Adjacent CO spectral lines typically have similar integrated line fluxes, allowing exclusion of redshift solutions for strong single-line detections"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive apparent CO(1-0) luminosities and lensing magnification factors",
+   "method": "Calculate apparent CO luminosities from the lowest available CO transition using Equation 3 of Solomon & Vanden Bout (2005), convert to CO(1-0) using median SMG brightness temperature ratios from Bothwell et al. (2013), and infer magnification factors from the vertical offset relative to a fit to the unlensed L'_CO(1-0) vs FWHM relation.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Spatially flat LambdaCDM cosmology with H0 = 67.4 km s^-1 Mpc^-1 and Omega_M = 0.315",
+    "Median SMG brightness temperature ratios from Table 4 of Bothwell et al. (2013) apply for excitation correction",
+    "Gravitational magnification depends only on lensing geometry and is independent of velocity width"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare inferred magnification distribution with galaxy-galaxy strong lensing population models",
+   "method": "Adapt the LensPop code (Collett 2015) with a mock submillimetre source catalogue based on Cai et al. (2013) and source sizes from Ikarashi et al. (2015), simulate 10% of the sky for S_500 > 80 mJy and z_source > 2, and compare the cumulative magnification distribution against the CO-inferred magnifications.",
+   "software": [
+    "LensPop"
+   ],
+   "key_parameters": [
+    "Source density 0.011 arcsec^-2, z > 1 (and z_source > 2 subset), S_500 > 80 mJy and 100 mJy, 10% sky area"
+   ],
+   "assumptions": [
+    "Strong lensing by elliptical galaxies modelled as singular isothermal ellipsoids (SIEs) with source lying within the Einstein radius"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of galaxies with robust spectroscopic redshifts",
+   "value": "71",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We present spectroscopic measurements for 71 galaxies associated with 62 of the brightest high-redshift submillimeter sources from the Southern fields of the Herschel Astrophysical Terahertz Large Area Survey (H-ATLAS), while targeting 85 sources which resolved into 142."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of Herschel fields with robust redshifts",
+   "value": "62",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Sample selection",
+     "quote": "We find spectroscopic redshifts for one or multiple sources in 62 of the 85 Herschel fields."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift identification success rate (overall)",
+   "value": "73",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We have obtained robust redshift measurements for all sources using the 12-m Array and an efficient tuning of ALMA to optimise its use as a redshift hunter, with 73 per cent of the sources having a robust redshift identification."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift range",
+   "value": "1.41 to 4.53",
+   "uncertainty": "< 0.001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The spectroscopic redshifts span a range $1.41<z<4.53$ with a mean value of 2.75"
+    },
+    {
+     "loc": "Redshift determination",
+     "quote": "We note that the uncertainty of the spectroscopic redshifts is less than 0.001, however for clarity, we show only three trailing digits in Table 1."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean spectroscopic redshift",
+   "value": "2.75",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Redshift and CO line width distributions",
+     "quote": "The redshift distribution of our sample has a mean redshift of 2.75 and median redshift of 2.61, with all sources lying within the redshift range $1.41< z< 4.52$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median spectroscopic redshift",
+   "value": "2.61",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Redshift and CO line width distributions",
+     "quote": "The redshift distribution of our sample has a mean redshift of 2.75 and median redshift of 2.61, with all sources lying within the redshift range $1.41< z< 4.52$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO emission line FWHM range",
+   "value": "110 to 1290",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "the CO emission line full-width at half-maxima range between $\\rm 110\\,km\\,s^{-1} < FWHM < 1290\\,km\\,s^{-1}$ with a mean value of $\\sim$500 km s$^{-1}$, in line with other high-$z$ samples."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO line width (FWHM)",
+   "value": "494",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Redshift and CO line width distributions",
+     "quote": "We find a median width of 475 km s$^{-1}$ and a mean of 494 km s$^{-1}$, which lies below both the values of the lensed and unlensed samples reported"
+    }
+   ]
+  },
+  {
+   "quantity": "Median CO line width (FWHM)",
+   "value": "475",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Redshift and CO line width distributions",
+     "quote": "We find a median width of 475 km s$^{-1}$ and a mean of 494 km s$^{-1}$, which lies below both the values of the lensed and unlensed samples reported"
+    }
+   ]
+  },
+  {
+   "quantity": "Photometric redshift standard deviation sigma(Delta z_Bakx / (1 + z_spec))",
+   "value": "0.14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spectroscopic versus photometric redshifts",
+     "quote": "The standard deviations are $\\sigma(\\Delta z_{\\rm Bakx} / (1+z_{\\rm spec}))=0.14$ and $\\sigma(\\Delta z_{\\rm Ivison} / (1+z_{\\rm spec}))=0.13$."
+    }
+   ]
+  },
+  {
+   "quantity": "Photometric redshift standard deviation sigma(Delta z_Ivison / (1 + z_spec))",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spectroscopic versus photometric redshifts",
+     "quote": "The standard deviations are $\\sigma(\\Delta z_{\\rm Bakx} / (1+z_{\\rm spec}))=0.14$ and $\\sigma(\\Delta z_{\\rm Ivison} / (1+z_{\\rm spec}))=0.13$."
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated differential magnification spread (100 GMCs model)",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The effects of differential magnification on luminosities",
+     "quote": "This is shown as the red curve in Fig. 7, and is a $\\pm3.5\\%$ effect."
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-11 spectroscopic redshift",
+   "value": "2.631",
+   "uncertainty": "< 0.001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| J012407.4$-$281434 | 11 | 1 | | 01:24:07.50 | $-$28:14:34.7 | 2.631 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-11 apparent CO(1-0) luminosity (mu L'_CO(1-0))",
+   "value": "78.1",
+   "uncertainty": "8.8",
+   "units": "10^10 K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J012407.4$-$281434 | 11 | 410 $\\pm$ 80 | 78.1 $\\pm$ 8.8 | 18.4 $\\pm$ 2.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS-11 magnification factor (mu)",
+   "value": "18.4",
+   "uncertainty": "2.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J012407.4$-$281434 | 11 | 410 $\\pm$ 80 | 78.1 $\\pm$ 8.8 | 18.4 $\\pm$ 2.1 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact circular aperture radii used for each source during line extraction",
+  "Exact frequency channel ranges selected for continuum subtraction and line flux integration per source",
+  "Final re-imaged channel widths per cube after manual adjustment",
+  "Stopping criteria / threshold and masking settings in CASA tclean",
+  "Exact parameters (slope and intercept) of the linear fit to the unlensed L'_CO vs FWHM relation used to compute the magnification factors in Table 2"
+ ],
+ "missing_for_reproduction": [
+  "Per-source aperture radii and frequency channel intervals used to extract line fluxes",
+  "Final channel widths of the continuum-subtracted image cubes for each source",
+  "Exact fitted equation for the unlensed L'_CO(1-0) vs FWHM relation used to compute the magnification factor mu in Table 2",
+  "Modified LensPop script/catalogue files implementing the Cai et al. (2013) submm source counts"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project codes, CASA version, imaging grid/beam/pixel parameters, and full per-source result tables (coordinates, redshifts, line fluxes, FWHMs, luminosities, magnifications) are clearly provided, and data are public; however, manual per-source aperture sizes, channel ranges, and the exact unlensed scaling relation fit coefficients are not explicitly tabulated.",
+ "rediscovery_reason": "Public archival ALMA data for a well-defined sample of 85 fields with complete answer keys (Table 1, Table A1, Table 2) for spectroscopic redshifts, line fluxes, FWHMs, and CO luminosities.",
+ "source_card": "cards/2022MNRAS.511.3017U/sonnet/card.md"
+}

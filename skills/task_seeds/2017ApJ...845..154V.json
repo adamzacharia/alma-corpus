@@ -1,0 +1,270 @@
+{
+ "bibcode": "2017ApJ...845..154V",
+ "title": "Molecular Gas in Three z ∼ 7 Quasar Host Galaxies",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa81cb",
+ "arxiv_id": "1707.05238",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the molecular gas content (CO, [C I]), rest-frame ~400 um dust continuum and ISM excitation (PDR vs XDR) of three z~7 quasar host galaxies?",
+ "alma_project_codes": [
+  "2013.1.00273.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "beams 5.3x2.2, 4.2x2.5, 3.8x2.3 arcsec",
+  "sensitivity": "rms per 100 MHz: 242, 121, 102 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[C II] redshifts, line widths, fluxes, 1 mm continuum, L_FIR, dust masses, dynamical masses",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "In the remainder of this paper, we will use the FIR luminosities derived from the continuum detection at 1 mm by (cite: ven16)."
+     }
+    ]
+   },
+   "citation": "(cite: ven16)"
+  },
+  {
+   "what": {
+    "value": "J1148+5251 LVG CO SLED line ratios used to extrapolate CO(1-0)",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "we here apply the same model that fits the strength of the CO lines of the quasar host galaxy J1148+5251 at $z=6.42$ (cite: rie09; stef15)"
+     }
+    ]
+   },
+   "citation": "(cite: rie09; stef15)"
+  },
+  {
+   "what": {
+    "value": "PDR and XDR model grids",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "applying the PDR and XDR models from (cite: mei05) and (cite: mei07)"
+     }
+    ]
+   },
+   "citation": "(cite: mei05; mei07)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract line spectra and fit fluxes",
+   "method": "Gaussian fit to spectra at [C II] position with redshift and width fixed to [C II] values",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure 3 mm continuum",
+   "method": "Average line-free channels; measure flux density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Constrain dust temperature",
+   "method": "Modified blackbody fit to 1 mm and 3 mm points including CMB effects",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta = 1.6 or 1.95; fixed redshift; 10% flux calibration error"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO(1-0) luminosity and H2 mass",
+   "method": "Convert fluxes to L' and scale to CO(1-0) via J1148+5251 LVG SLED; M_gas = alpha L'",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha = 0.8 Msun (K km/s pc^2)^-1; H0=70, OmegaM=0.3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Atomic carbon mass",
+   "method": "Optically thin [C I] mass relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex = 30 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "ISM diagnostics",
+   "method": "Compare line ratios with PDR/XDR models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Majority of [C II] from same region as CO and [C I]"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(6–5) flux J0305–3150",
+   "value": "0.65",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO(6–5) flux (Jy km s$^{-1}$) | $0.65\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7–6) flux J0305–3150",
+   "value": "0.69",
+   "uncertainty": "0.09",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO(7–6) flux (Jy km s$^{-1}$) | $0.69\\pm0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](2–1) flux J2348–3054",
+   "value": "0.16",
+   "uncertainty": "0.06",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "J2348–3054",
+     "quote": "We derive a line flux of $F_\\mathrm{[CI]}=0.16\\pm0.06$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum J0305–3150",
+   "value": "233",
+   "uncertainty": "30",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_\\mathrm{3\\,mm}$ ($\\mu$Jy) | $233\\pm30$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum J2348–3054",
+   "value": "118",
+   "uncertainty": "13",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "J2348–3054",
+     "quote": "$S_\\mathrm{94.9\\,GHz}=118\\pm13$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature J0305–3150 (beta=1.6)",
+   "value": "47",
+   "uncertainty": "+21/-10",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$T_d=47^{+21}_{-10}$ K ($T_d=28^{+7}_{-5}$ K) assuming a $\\beta=1.6$ ($\\beta=1.95$) for J0305–3150"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 (CO) J0305–3150",
+   "value": "2.7e10",
+   "uncertainty": "0.2e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$(2.7\\pm0.2)\\times10^{10}$ $M_\\ensuremath{\\odot}$ (J0305–3150)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II]/CO(1-0) luminosity ratio range",
+   "value": "2500–4200",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "The \\[C II\\]/CO(1–0) luminosity ratios derived for three quasar hosts range from 2500 to 4200."
+    }
+   ]
+  },
+  {
+   "quantity": "M_CI J2348–3054",
+   "value": "1.0e7",
+   "uncertainty": "0.4e7",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "we derive a neutral carbon mass of $M_\\mathrm{CI}=(1.0\\pm0.4)\\times10^7$ $M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDR density and radiation field J2348–3054",
+   "value": "n~2e5 cm^-3, G~1e3 G0",
+   "uncertainty": "not stated",
+   "units": "cm^-3; G0",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "we derive a density of $\\sim$$2\\times10^5$ cm$^{-3}$ and a radiation field strength of $\\sim$$10^3$ $G_0$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold, cell and image size",
+  "Which channels were used as line-free for continuum and exact line-map widths",
+  "CASA version and calibration script details",
+  "Spectrum extraction method and aperture",
+  "Fitting software/sampler for the modified blackbody",
+  "Rest frequencies adopted"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and image sizes",
+  "Line-free channel selection",
+  "CASA version",
+  "Fit software",
+  "[C II] properties from Venemans 2016"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple short observations and clear formulae, but imaging details and fitting software unstated, and inputs depend on Venemans 2016.",
+ "rediscovery_reason": "Public data, short recipe, numeric line fluxes and masses; some imaging details need inference.",
+ "source_card": "cards/2017ApJ...845..154V/sonnet/card.md"
+}

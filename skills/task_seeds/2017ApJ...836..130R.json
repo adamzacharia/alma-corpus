@@ -1,0 +1,210 @@
+{
+ "bibcode": "2017ApJ...836..130R",
+ "title": "Alma Observations of Massive Molecular Gas Filaments Encasing Radio Bubbles in the Phoenix Cluster",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/836/1/130",
+ "arxiv_id": "1611.00017",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "How is the molecular gas in the Phoenix cluster central galaxy distributed and moving relative to the radio bubbles, and is it consistent with free-fall?",
+ "alma_project_codes": [
+  "2013.1.01302.S"
+ ],
+ "data": {
+  "bands": "CO(3-2) at 216.66 GHz plus continuum basebands at 219.5, 230.5, 232.5 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "0.60 x 0.56 arcsec, P.A. -37.9 deg (line cube)",
+  "sensitivity": "0.3 mJy/beam per 12 km/s channel; continuum 0.019 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Chandra X-ray cavity properties and cavity enthalpy",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the cavity enthalpy was estimated as $4.4-6.7\\times10^{59}\\rm\\; erg$"
+     }
+    ]
+   },
+   "citation": "McDonald15"
+  },
+  {
+   "what": {
+    "value": "Effective radius ~17 kpc from HST imaging",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "determine an effective radius of $\\sim17\\rm\\; kpc$ from HST imaging in five photometric bands"
+     }
+    ]
+   },
+   "citation": "McDonald12"
+  },
+  {
+   "what": {
+    "value": "Ionized gas [OIII] velocity structure",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The strong velocity gradients in the molecular gas are comparable to those observed for the warm ionized gas ((cite: McDonald14))."
+     }
+    ]
+   },
+   "citation": "McDonald14"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(3-2) cube and continuum",
+   "method": "CASA pipeline calibration, CLEAN with natural weighting, UVCONTSUB, 12 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit total spectrum",
+   "method": "Three Gaussian components fitted to spectrum from 6x6 arcsec region",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Map velocity and FWHM per pixel",
+   "method": "Beam-sized region spectra fitted with 1-3 Gaussians, 3 sigma detection from 1000 Monte Carlo simulations",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas masses",
+   "method": "Mass from integrated CO intensity with XCO and line ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "XCO=0.4e20 cm^-2 (K km/s)^-1; CO(3-2)/CO(1-0)~0.8"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare PV diagram with Hernquist free-fall",
+   "method": "Free-fall velocity in Hernquist potential with NFW-derived total mass, several inclinations, initial velocity 250 km/s",
+   "software": [
+    "XSPEC"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Hydrostatic spherical atmosphere; Re ~17 kpc, a=9.4 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(3-2) integrated intensity",
+   "value": "8.9",
+   "uncertainty": "1.5",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "For the integrated CO(3-2) intensity of $8.9\\pm1.5\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "2.1e10",
+   "uncertainty": "0.3e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "the total molecular gas mass is $2.1\\pm0.3\\times10^{10}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central peak gas mass",
+   "value": "1.0e10",
+   "uncertainty": "0.2e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "has a molecular gas mass of $1.0\\pm0.2\\times10^{10}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN continuum flux at 225.09 GHz",
+   "value": "2.5",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.4 AGN continuum",
+     "quote": "with a flux of $2.5\\pm0.1\\rm\\; mJy$ at $225.09\\rm\\; GHz$"
+    }
+   ]
+  },
+  {
+   "quantity": "Main component FWHM",
+   "value": "450",
+   "uncertainty": "80",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Total | 198/141 | 1 | $5.3\\pm1.0$ | $11.0\\pm1.0$ | $450\\pm80$ | $20\\pm50$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy total mass within ~50 kpc",
+   "value": "~2e13",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "We therefore estimate a galaxy total mass of $\\sim2\\times10^{13}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ within a radius of $\\sim50\\rm\\; kpc$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels for continuum subtraction and continuum fit order",
+  "CLEAN threshold, mask, cell and image size",
+  "Exact regions for filaments and hybrid spatial/spectral flux separation",
+  "Initial guesses and bounds for MPFIT component fits and how components are assigned",
+  "Hernquist model inputs per filament (initial radius, inclination grid details)",
+  "Luminosity distance value used in mass calculation"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond weighting",
+  "Region definitions",
+  "Hernquist model script"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear outline but many parameters missing.",
+ "rediscovery_reason": "Public archival dataset, numeric results (flux, mass), moderately complete recipe.",
+ "source_card": "cards/2017ApJ...836..130R/sonnet/card.md"
+}

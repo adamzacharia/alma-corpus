@@ -1,0 +1,481 @@
+{
+ "bibcode": "2024A&A...689A.283L",
+ "title": "ALMA reveals a dust-obscured galaxy merger at cosmic noon",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202449626",
+ "arxiv_id": "2406.01673",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Determine the baryonic properties (SFR, stellar, molecular gas and dust masses) of the two galaxies in a serendipitously discovered, dust-obscured merger at z=1.17",
+ "alma_project_codes": [
+  "2015.1.00260.S",
+  "2016.1.00171.S"
+ ],
+ "data": {
+  "bands": "Band 3 (2.6-3.6 mm) and Band 6 (1.1-1.4 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "CO(2-1) beam 1.5'' x 1.3''; CO(5-4) and Band 6 continuum beam 0.8'' x 0.7''",
+  "sensitivity": "CO(2-1): 0.82 mJy/beam per 75 km/s channel; CO(5-4): 0.81 mJy/beam per 75 km/s channel; continuum: 0.23 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshift z=1.17223 +/- 0.00037 of the system",
+    "evidence": [
+     {
+      "loc": "3.1 Identification of the dusty galaxy merger",
+      "quote": "we conclude that we are witnessing two galaxies at $z=1.17223 \\pm 0.00037$ ((cite: Valentino2020)) merging."
+     }
+    ]
+   },
+   "citation": "(cite: Valentino2020)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 3.4 +/- 2 from z=1-3 DSFGs",
+    "evidence": [
+     {
+      "loc": "3.4 The molecular gas masses from the CO(2-1) emission",
+      "quote": "the mean and standard deviation measured for a sample of $z=1-3$ DSFGs in (cite: Harrington2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Harrington2021)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1)/CO(1-0) luminosity ratio of 0.85",
+    "evidence": [
+     {
+      "loc": "3.4 The molecular gas masses from the CO(2-1) emission",
+      "quote": "assuming a ratio of 0.85 between the CO(2–1) and CO(1–0) luminosities ((cite: Carilli2013))"
+     }
+    ]
+   },
+   "citation": "(cite: Carilli2013)"
+  },
+  {
+   "what": {
+    "value": "COSMOS2020 photometric maps used to extract SED photometry",
+    "evidence": [
+     {
+      "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+      "quote": "We extract the photometry of Matilda from the maps employed by (cite: Weaver2022) to assemble the COSMOS2020 catalogue."
+     }
+    ]
+   },
+   "citation": "(cite: Weaver2022)"
+  },
+  {
+   "what": {
+    "value": "Star-forming main sequence at z=1.17 used for comparison",
+    "evidence": [
+     {
+      "loc": "4.2 The dusty galaxy merger in context of typical star-forming galaxies",
+      "quote": "to star-forming main sequence galaxies at that same redshift according to (cite: Speagle2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Speagle2014)"
+  },
+  {
+   "what": {
+    "value": "Main-sequence depletion time and gas fraction relations at z=1.17",
+    "evidence": [
+     {
+      "loc": "4.2 The dusty galaxy merger in context of typical star-forming galaxies",
+      "quote": "of the two galaxies according to (cite: Tacconi2018) and compare them to MS $z=1.17$ galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: Tacconi2018)"
+  },
+  {
+   "what": {
+    "value": "CO(5-4)/CO(2-1) ratios of comparison samples (1.41 +/- 0.15 for stack of 22 SFGs; 1.6 +/- 0.2 to 2.2 +/- 0.3 across main-sequence distance)",
+    "evidence": [
+     {
+      "loc": "3.5 The molecular ISM excitation conditions",
+      "quote": "that is $F_{\\mathrm{CO(5-4)}}/F_{\\mathrm{CO(2-1)}} = 1.41 \\pm 0.15$"
+     }
+    ]
+   },
+   "citation": "(cite: Boogaard2020); (cite: Valentino2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO(2-1), CO(5-4) and Band 6 continuum from calibrated visibilities",
+   "method": "uv-plane continuum subtraction, tclean imaging with natural weighting in 75 km/s channels, moment-0 maps integrated over a selected velocity range",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean",
+    "immoments"
+   ],
+   "key_parameters": [
+    "CO(2-1) moment-0: -575 to +475 km/s (channels 55 to 69)",
+    "CO(5-4) moment-0: -605 to +445 km/s (channels 38 to 52)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify the merger by comparing ALMA with HST, VISTA, Spitzer and VLA",
+   "method": "Compare the morphology and peaks of CO and dust continuum with ancillary images; North is the VLA and ALMA peak with no HST emission, South is the HST galaxy",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image the velocity offset between negative and positive velocity peaks",
+   "method": "Moment-0 maps integrated separately over negative and positive velocities for CO(2-1) and CO(5-4)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Deblend and measure CO(2-1), CO(5-4) and continuum fluxes of North and South",
+   "method": "Flux of North measured within a single-beam element centred on it; South taken as 3 sigma upper limit from the remaining emission inside the CO(2-1) 3 sigma contours; same procedure for CO(5-4) and continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Flux error is the standard deviation of the intensity map with the merger emission within 2'' masked"
+   ],
+   "assumptions": [
+    "All gas not associated with North belongs to South"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Convert CO(2-1) flux to line luminosity and molecular gas mass",
+   "method": "Flux to L'CO(2-1) with the standard equation, then to CO(1-0) with a ratio of 0.85, then to M_H2 with alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO = 3.4 +/- 2"
+   ],
+   "assumptions": [
+    "alpha_CO from z=1-3 DSFGs; r21 = 0.85; Lambda-CDM H0 = 70, Om = 0.3, OL = 0.7"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Measure the CO(5-4)/CO(2-1) excitation ratio",
+   "method": "Ratio of the deblended CO(5-4) and CO(2-1) fluxes of North, compared with literature samples; South omitted because only upper limits",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Deblend and extract multi-band photometry for North and South",
+   "method": "PhoEBO deblending using radio and NIR high-resolution priors with PSF matching, followed by fixed-aperture photometry with Photutils; 0.15 mag added in quadrature to uncertainties",
+   "software": [
+    "PhoEBO",
+    "Photutils"
+   ],
+   "key_parameters": [
+    "Aperture diameter 4'' fixed; background from a two arcsec-wide annulus"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "SED fitting for stellar mass, dust mass and SFR",
+   "method": "Separate MAGPHYS SED fits of North and South with the redshift fixed, including the ALMA Band 6 continuum; SFR cross-checked with VLA 3 GHz",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [
+    "z fixed at 1.17223; Chabrier (2003) IMF"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Compare with main-sequence scaling relations (SFR, depletion time, gas fraction)",
+   "method": "Compare North and South SFR with the Speagle main sequence, and depletion time and gas fraction with the Tacconi 2018 relations at z=1.17",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) flux, North",
+   "value": "1.56",
+   "uncertainty": "0.25",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 The CO flux measurements",
+     "quote": "$F_{\\mathrm{CO(2-1)}}^\\mathrm{North} = 1.56 \\pm 0.25$ Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux, South (3 sigma upper limit)",
+   "value": "<= 0.75",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 The CO flux measurements",
+     "quote": "$F_{\\mathrm{CO(2-1)}}^\\mathrm{South} \\leq 0.75$ Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) flux, North",
+   "value": "1.61",
+   "uncertainty": "0.24",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 The CO flux measurements",
+     "quote": "$F_{\\mathrm{CO(5-4)}}^\\mathrm{North} = 1.61 \\pm 0.24$ Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) flux, South (3 sigma upper limit)",
+   "value": "<= 0.72",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 The CO flux measurements",
+     "quote": "$F_{\\mathrm{CO(5-4)}}^\\mathrm{South} \\leq 0.72$ Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 continuum flux, North",
+   "value": "1.26",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 The CO flux measurements",
+     "quote": "finding for North $F_{\\mathrm{cont}}^\\mathrm{North} = 1.26 \\pm 0.09$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 continuum flux, South (3 sigma upper limit)",
+   "value": "<= 0.28",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 The CO flux measurements",
+     "quote": "$F_\\mathrm{cont}^\\mathrm{South} \\leq 0.28$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4)/CO(2-1) flux ratio, North",
+   "value": "1.03",
+   "uncertainty": "0.35",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 The molecular ISM excitation conditions",
+     "quote": "$F_{\\mathrm{CO(5-4)}}/F_{\\mathrm{CO(2-1)}} = 1.03 \\pm 0.35$ for North"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass log(M_H2/Msun), North",
+   "value": "11.06",
+   "uncertainty": "+0.20/-0.39",
+   "units": "log Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\log(M_{\\text{H}_2}/M_\\ensuremath{\\odot})_N = 11.06^{+0.20}_{-0.39}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass log(M_H2/Msun), South (upper limit)",
+   "value": "<= 10.74",
+   "uncertainty": "not stated",
+   "units": "log Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\log(M_{\\text{H}_2}/M_\\ensuremath{\\odot})_S \\leq 10.74$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M*/Msun), North",
+   "value": "10.95",
+   "uncertainty": "+0.13/-0.05",
+   "units": "log Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\log(M_*/M_\\ensuremath{\\odot})_N = 10.95^{+0.13}_{-0.05}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass log(Mdust/Msun), North",
+   "value": "8.82",
+   "uncertainty": "+0.09/-0.07",
+   "units": "log Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\log(M_{\\text{dust}}/M_\\ensuremath{\\odot})_N = 8.82^{+0.09}_{-0.07}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR, North",
+   "value": "933",
+   "uncertainty": "+90/-120",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\text{SFR}_N = 933^{+90}_{-120} M_\\ensuremath{\\odot}$/yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M*/Msun), South",
+   "value": "10.59",
+   "uncertainty": "+/-0.08",
+   "units": "log Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\log(M_*/M_\\ensuremath{\\odot})_S = 10.59^{+0.08}_{-0.08}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass log(Mdust/Msun), South",
+   "value": "7.56",
+   "uncertainty": "+0.30/-0.33",
+   "units": "log Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\log(M_{\\text{dust}}/M_\\ensuremath{\\odot})_S = 7.56^{+0.30}_{-0.33}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR, South",
+   "value": "60",
+   "uncertainty": "+42/-29",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\text{SFR}_S = 60^{+42}_{-29} M_\\ensuremath{\\odot}$/yr"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from VLA 3 GHz, North",
+   "value": "376.8",
+   "uncertainty": "6.3",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\text{SFR}_{N, VLA} = 376.8 \\pm 6.3 M_\\ensuremath{\\odot}$/yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass ratio mu of the two galaxies",
+   "value": "2",
+   "uncertainty": "+3/-2",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.6 The stellar mass, dust mass and star formation rate from SED fitting",
+     "quote": "$\\mu= 2^{+3}_{-2}$ for the ratio based on the stellar masses only"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of CO(2-1) peak from the HST peak",
+   "value": "~1 arcsec (8 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Identification of the dusty galaxy merger",
+     "quote": "The peak of the ALMA CO(2–1) emission is $\\sim1\\ensuremath{''}$ away from the peak in the HST emission, corresponding to physical scales of 8kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak SNR of CO(2-1), CO(5-4) and continuum",
+   "value": "6, 6 and 14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA",
+     "quote": "The CO(2–1), CO(5–4) and continuum emissions are clearly detected with a peak-SNR of 6, 6 and 14, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and which calibration (pipeline or manual, release) the EU ARC calibrated data correspond to",
+  "tclean parameters other than natural weighting and 75 km/s channels: cell size, image size, deconvolver, masking, niter and threshold, primary-beam correction",
+  "Spectral window and channel selections for uvcontsub and for the line-free Band 6 continuum image, and the fit order",
+  "Rest frequencies and the velocity zero point (redshift used) for the velocity ranges of the moment maps",
+  "Aperture, beam and detection-threshold handling when measuring fluxes in the intensity maps (the single-beam element on North is defined only by position)",
+  "Whether the Band 3 and Band 6 data from the two programmes were combined or imaged per execution block or per programme",
+  "MAGPHYS version, priors/libraries and how upper limits (South ALMA band 6) enter the fit; the ALMA flux used in the SED is converted from the continuum measurement in an unspecified way",
+  "Absolute flux calibration uncertainty of ALMA fluxes and how it enters the errors",
+  "Exact PhoEBO configuration (prior images, PSF matching kernels) for this system"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and full tclean settings (cell, image size, masking, deconvolution threshold)",
+  "Spectral window / channel choices for continuum subtraction and the Band 6 continuum image",
+  "Aperture definition for the CO fluxes beyond a one-beam element, and the exact positions used",
+  "MAGPHYS libraries/priors and PhoEBO configuration",
+  "Photometry values for ancillary bands are given in Table 1, but ancillary cutout versions are not stated"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archival data, natural weighting, channel width, velocity ranges, deblending recipe and tabulated numbers are given, but CASA version, most tclean parameters, MAGPHYS setup and PhoEBO configuration are missing",
+ "rediscovery_reason": "ALMA data are archival and the CO/continuum fluxes and the gas mass chain are numeric and reproducible with the stated recipe; SED parts need external tools but Table 1 gives the photometry",
+ "source_card": "cards/2024A%26A...689A.283L/sonnet/card.md"
+}

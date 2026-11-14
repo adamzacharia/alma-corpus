@@ -1,0 +1,175 @@
+{
+ "bibcode": "2018MNRAS.475L..52S",
+ "title": "Imaging the molecular outflows of the prototypical ULIRG NGC 6240 with ALMA",
+ "year": 2018,
+ "doi": "10.1093/mnrasl/slx207",
+ "arxiv_id": "1712.07660",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the spatial and velocity distributions of the molecular outflows in the merging ULIRG NGC 6240, as traced by broad CO (2-1) wings?",
+ "alma_project_codes": [
+  "2015.1.00003.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "forty-two 12 m antennas",
+  "angular_resolution": "0.97'' x 0.53'' (PA = 64.5 deg)",
+  "sensitivity": "2.5 mJy/beam at 5 km/s bin"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish CO flux for comparison",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "which is 86 $\\pm$ 15 % of the single-dish value (cite: Papadopoulos14)"
+     }
+    ]
+   },
+   "citation": "(cite: Papadopoulos14)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocities of nuclei 7122 (north) and 7164 (south) km/s",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the systemic velocity of the northern (southern) nucleus of 7122 (7164) km s$^{-1}$ in the radio LSRK velocity frame (cite: Hagiwara10)"
+     }
+    ]
+   },
+   "citation": "(cite: Hagiwara10)"
+  },
+  {
+   "what": {
+    "value": "Nuclear SFR ~61 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Using the nuclear SFR of $\\sim$61 $M_{\\odot}$ yr$^{-1}$ derived from radio-to-FIR SED fitting (cite: Yun02)"
+     }
+    ]
+   },
+   "citation": "(cite: Yun02)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO(2-1) cube",
+   "method": "Self-calibrate, subtract continuum in uv, multiscale clean with natural weighting to 5 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Multiple Gaussian fit to spectra",
+   "method": "Hexagonal Nyquist sampling with 2.0'' apertures (step 1.0''); one-component fit if peak S/N>5, two-component if residual peak S/N>5",
+   "software": [],
+   "key_parameters": [
+    "Broad component defined as FWHM > 500 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive outflow mass, rate, and age",
+   "method": "Mdot = 3 v M tan(alpha)/R for uniformly filled cone; launching points at double nuclei",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "inclination 45 deg, CO(2-1)/CO(1-0) ratio unity, alpha_CO = 0.8 Msun (K km/s pc^2)^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(2-1) integrated intensity inside 3 sigma",
+   "value": "1283",
+   "uncertainty": "64",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "1283 $\\pm$ 64 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass",
+   "value": "10^8.7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\log M_{\\rm H_2, out}$ ($M_{\\odot}$) | 7.9 | 8.1 | 8.2 | 8.2 | 8.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass outflow rate",
+   "value": "231",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\dot{M}_{\\rm H_2, out}$ ($M_{\\odot}$ yr$^{-1}$) | 8 | 43 | 86 | 94 | 231"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loading factor",
+   "value": "~4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "the mass loading factor ($\\dot{M}_{\\rm H_2, out}$ divided by SFR) is $\\sim$4"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow ages",
+   "value": "5 to 27",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "found that it ranges from 5 to 27 Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Multiscale scales, cell size, image size, clean threshold",
+  "Line-free channel ranges",
+  "Self-calibration solution intervals",
+  "Fitting code and optimizer used for Gaussian fits",
+  "How projected velocities and distances were measured from linewidth peaks",
+  "Coordinates of the phase center"
+ ],
+ "missing_for_reproduction": [
+  "Multiscale scales, cell/image size, clean threshold",
+  "Self-calibration solution intervals",
+  "Details of measuring projected velocities and distances for the outflow peaks"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and a clear recipe, but several imaging and measurement parameters are missing.",
+ "rediscovery_reason": "Public single-dataset ALMA data; numeric results (flux, masses, rates) can be re-derived with the stated recipe.",
+ "source_card": "cards/2018MNRAS.475L..52S/sonnet/card.md"
+}

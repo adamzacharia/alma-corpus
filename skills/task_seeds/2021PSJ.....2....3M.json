@@ -1,0 +1,480 @@
+{
+ "bibcode": "2021PSJ.....2....3M",
+ "title": "Tropospheric Composition and Circulation of Uranus with ALMA and the VLA",
+ "year": 2021,
+ "doi": "10.3847/PSJ/abc48a",
+ "arxiv_id": "2010.11154",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "Determine the physical origin of brightness variations across Uranus's disk and infer the tropospheric composition and circulation pattern between ~1 and ~50 bar.",
+ "alma_project_codes": [
+  "2017.1.00855.S"
+ ],
+ "data": {
+  "bands": "Three ALMA bands at 3.1 mm (98 GHz), 2.1 mm (144 GHz), and 1.3 mm (233 GHz, Band 6)",
+  "arrays": "not stated",
+  "angular_resolution": "0.19 arcsec (2700 km) at 3.1 mm; 0.21 arcsec (3000 km) at 2.1 mm; 0.29 arcsec (4000 km) at 1.3 mm",
+  "sensitivity": "RMS per beam: 0.3 K (3.1 mm), 0.1 K (2.1 mm), 0.1 K (1.3 mm)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "3.5 cm and older disk-averaged radio brightness temperature data for seasonal comparison",
+    "evidence": [
+     {
+      "loc": "Seasonal Brightness Variations",
+      "quote": "We explore long-term trends in Uranus’s radio brightness in Figure 4, which plots our VLA 3.0 cm data along with 3.5 cm data obtained by (cite: klein06) and older disk-averaged data from various telescopes (cite: gulkis84)"
+     }
+    ]
+   },
+   "citation": "(cite: klein06); (cite: gulkis84)"
+  },
+  {
+   "what": {
+    "value": "Keck near-infrared observations in methane-sensitive PaBeta and H2-sensitive He1A filters from 2015",
+    "evidence": [
+     {
+      "loc": "Spatially Resolved Brightness Temperatures",
+      "quote": "Keck observations in the methane-sensitive PaBeta and H$_2$-sensitive He1A filters in 2015 (cite: sromovsky19) revealed a strong polar methane depletion that is spatially correlated with the bright polar region"
+     }
+    ]
+   },
+   "citation": "(cite: sromovsky19)"
+  },
+  {
+   "what": {
+    "value": "Temperature-pressure profile at 1 bar from Voyager 2 radio-occultation and upper atmosphere from Voyager/IRIS",
+    "evidence": [
+     {
+      "loc": "Radiative Transfer Modeling",
+      "quote": "its temperature follows an adiabat with a temperature of 76.4 K at 1 bar as determined by radio-occultation experiments with Voyager 2 (cite: lindal87)."
+     },
+     {
+      "loc": "Radiative Transfer Modeling",
+      "quote": "At higher altitudes, where radiative effects become important, we used the temperature-pressure profile derived from Voyager/IRIS observations by (cite: orton15)."
+     }
+    ]
+   },
+   "citation": "(cite: lindal87); (cite: orton15)"
+  },
+  {
+   "what": {
+    "value": "Protosolar abundance values",
+    "evidence": [
+     {
+      "loc": "Footnote 4",
+      "quote": "Solar abundances are assumed to be the protosolar values given in (cite: asplund09)"
+     }
+    ]
+   },
+   "citation": "(cite: asplund09)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA and VLA visibility data (both disk-subtracted and non-disk-subtracted)",
+   "method": "Apply standard pipeline/MIRIAD calibration, perform iterative phase-only self-calibration, subtract a uniform limb-darkened disk model in the UV plane for contrast imaging, and invert/deconvolve both disk-subtracted and non-disk-subtracted visibilities, applying a CMB correction.",
+   "software": [
+    "CASA",
+    "tclean",
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Self-calibration solution intervals of 20, 10, 5, and 1 minutes"
+   ],
+   "assumptions": [
+    "Flux calibration errors of ~5% for ALMA, 3% for longest four VLA wavelengths, and 7% at 0.9 cm"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Project maps and extract spatially resolved brightness temperature profiles",
+   "method": "Project images cylindrically onto a latitude-longitude grid, extract a 30-degree longitude slice centered on the sub-observer point to create 1-D latitude profiles, and average non-disk-subtracted profiles over 10-degree latitude bins for 25 deg N (20-30 deg N) and 75 deg N (70-80 deg N).",
+   "software": [],
+   "key_parameters": [
+    "Slice width: 30 deg longitude; latitude bin width: 10 deg (20-30 deg N and 70-80 deg N)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit radiative transfer models to the enriched region (25 deg N) and depleted north polar region (75 deg N) via MCMC",
+   "method": "Couple the Radio-BEAR radiative transfer code with the emcee MCMC sampler to fit the 8-band spectrum at 25 deg N using a simplified cloud-physics model, then fit the 75 deg N spectrum using a step-function depletion model above a mixing pressure P_mix.",
+   "software": [
+    "radiobear",
+    "emcee",
+    "scipy"
+   ],
+   "key_parameters": [
+    "500 iterations, 40 walkers, burn-in of 250 iterations (first half discarded)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium; dry adiabat with T = 76.4 K at 1 bar (Lindal et al. 1987) and Orton et al. (2015) T-P profile at higher altitudes; cloud opacity ignored; deep H2O fixed at 30x Solar; protosolar abundances from Asplund et al. (2009); simplified model ignores deep water-solution cloud."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive true deep abundances below the water-solution cloud and bulk N/S ratio",
+   "method": "Tune the full cloud-physics model (including the deep water-solution cloud) so that the NH3 and H2S abundances between the solution cloud and the NH4SH cloud match the best-constrained retrieved abundances from the MCMC fits, and compute the N/S ratio.",
+   "software": [
+    "radiobear"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Solution cloud removes ~5% of deep H2S and ~25% of deep NH3 following Atreya & Romani (1985); atmosphere is well-mixed below the mixing layer."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk-averaged brightness temperature at 95 mm (3.2 GHz)",
+   "value": "251.3",
+   "uncertainty": "7.5",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 95 | 3.2 | 251.3 | 261.3 | 293.4 | 7.5 | 2.2 | 3.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 51 mm (5.8 GHz)",
+   "value": "219.3",
+   "uncertainty": "6.6",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 51 | 5.8 | 219.3 | 219.2 | 262.0 | 6.6 | 0.8 | 2.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 30 mm (9.9 GHz)",
+   "value": "184.5",
+   "uncertainty": "5.5",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 30\\. | 9.9 | 184.5 | 182.8 | 224.4 | 5.5 | 1.2 | 2.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 20 mm (15 GHz)",
+   "value": "173.9",
+   "uncertainty": "5.2",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 20\\. | 15 | 173.9 | 169.4 | 205.0 | 5.2 | 1.3 | 2.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 9.1 mm (33 GHz)",
+   "value": "152.4",
+   "uncertainty": "10.7",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9.1 | 33 | 152.4 | 157.8 | 180.6 | 10.7 | 3.4 | 2.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 3.1 mm (98 GHz)",
+   "value": "140.7",
+   "uncertainty": "7.0",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3.1 | 98 | 140.7 | 142.6 | 165.1 | 7.0 | 0.3 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 2.1 mm (144 GHz)",
+   "value": "122.5",
+   "uncertainty": "6.6",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2.1 | 144 | 122.5 | 126.5 | 139.1 | 6.6 | 0.1 | 0.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged brightness temperature at 1.3 mm (233 GHz)",
+   "value": "91.1",
+   "uncertainty": "4.8",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1.3 | 233 | 91.1 | 96.0 | 101.8 | 4.8 | 0.1 | 0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 25 deg N (3.1 mm / 98 GHz)",
+   "value": "142.6",
+   "uncertainty": "1.1 (latitude bin), 7.0 (flux cal)",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3.1 | 98 | 140.7 | 142.6 | 165.1 | 7.0 | 0.3 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 75 deg N (3.1 mm / 98 GHz)",
+   "value": "165.1",
+   "uncertainty": "1.1 (latitude bin), 7.0 (flux cal)",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3.1 | 98 | 140.7 | 142.6 | 165.1 | 7.0 | 0.3 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 25 deg N (2.1 mm / 144 GHz)",
+   "value": "126.5",
+   "uncertainty": "0.9 (latitude bin), 6.6 (flux cal)",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2.1 | 144 | 122.5 | 126.5 | 139.1 | 6.6 | 0.1 | 0.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 75 deg N (2.1 mm / 144 GHz)",
+   "value": "139.1",
+   "uncertainty": "0.9 (latitude bin), 6.6 (flux cal)",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2.1 | 144 | 122.5 | 126.5 | 139.1 | 6.6 | 0.1 | 0.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 25 deg N (1.3 mm / 233 GHz)",
+   "value": "96.0",
+   "uncertainty": "0.5 (latitude bin), 4.8 (flux cal)",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1.3 | 233 | 91.1 | 96.0 | 101.8 | 4.8 | 0.1 | 0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 75 deg N (1.3 mm / 233 GHz)",
+   "value": "101.8",
+   "uncertainty": "0.5 (latitude bin), 4.8 (flux cal)",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1.3 | 233 | 91.1 | 96.0 | 101.8 | 4.8 | 0.1 | 0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S mixing ratio below NH4SH cloud at 25 deg N",
+   "value": "8.27e-4",
+   "uncertainty": "+2.93e-4/-1.39e-4 (16th-84th percentile: 6.88e-4 to 1.12e-3)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H$_2$S below NH$_4$SH | $5.34\\times10^{-4}$ | $6.88\\times10^{-4}$ | $8.27\\times10^{-4}$ | $1.12\\times10^{-3}$ | $1.50\\times10^{-3}$ | 35.2$^{+12.5}_{-5.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S ice cloud relative humidity (h_rel) at 25 deg N",
+   "value": "0.05",
+   "uncertainty": "+0.08/-0.03 (16th-84th percentile: 0.02 to 0.13)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H$_2$S h$_{rel}$ | 0.005 | 0.02 | 0.05 | 0.13 | 0.34 | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 mixing ratio above P_mix at 75 deg N",
+   "value": "4.7e-7",
+   "uncertainty": "+2.1e-7/-1.8e-7",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "the model is consistent with an NH$_3$ abundance of $4.7_{-1.8}^{+2.1} \\times 10^{-7}$ and an H$_2$S abundance of $<$$1.9\\times10^{-7}$ between $\\sim$20 and $\\sim$50 bar."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| NH$_3$ above P$_{mix}$ | $1.09\\times10^{-7}$ | $2.88\\times10^{-7}$ | $4.67\\times10^{-7}$ | $6.75\\times10^{-7}$ | $9.53\\times10^{-7}$ | $3.9^{+1.7}_{-1.5}\\times10^{-3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S mixing ratio above P_mix at 75 deg N (1-sigma upper limit)",
+   "value": "<1.9e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "the model is consistent with an NH$_3$ abundance of $4.7_{-1.8}^{+2.1} \\times 10^{-7}$ and an H$_2$S abundance of $<$$1.9\\times10^{-7}$ between $\\sim$20 and $\\sim$50 bar."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| H$_2$S above P$_{mix}$ | — | — | — | $1.89\\times10^{-7}$ | $1.11\\times10^{-6}$ | $<$0.008 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mixing pressure P_mix at 75 deg N",
+   "value": "54.59",
+   "uncertainty": "+8.64/-12.36 (reported in text as 55 +9/-12)",
+   "units": "bar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $P_{mix}$ | 30.64 | 42.23 | 54.59 | 63.23 | 75.58 | — |"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "The radio spectrum of the downwelling north polar region at latitudes north of $\\sim$50$^\\circ$N is consistent with strong depletions in both ammonia and hydrogen sulfide from the top of the atmosphere down to a mixing pressure $P_{mix} = 55_{-12}^{+9}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Deep H2S mixing ratio (below water solution cloud)",
+   "value": "8.7e-4",
+   "uncertainty": "+3.1e-4/-1.5e-4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The radio-dark equator and midlatitudes of the planet (south of $\\sim$50$^\\circ$ N) are well fit by a deep H$_2$S mixing ratio of $8.7_{-1.5}^{+3.1}\\times10^{-4}$ ($37_{-6}^{+13}\\times$ Solar)"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| Deep H$_2$S | $5.59 \\times 10^{-4}$ | $7.20 \\times 10^{-4}$ | $8.65 \\times 10^{-4}$ | $1.17 \\times 10^{-3}$ | $1.57 \\times 10^{-3}$ | 36.8$^{+13.1}_{-6.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Deep H2S abundance relative to Solar",
+   "value": "37",
+   "uncertainty": "+13/-6",
+   "units": "Solar",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The radio-dark equator and midlatitudes of the planet (south of $\\sim$50$^\\circ$ N) are well fit by a deep H$_2$S mixing ratio of $8.7_{-1.5}^{+3.1}\\times10^{-4}$ ($37_{-6}^{+13}\\times$ Solar)"
+    }
+   ]
+  },
+  {
+   "quantity": "Deep NH3 mixing ratio (below water solution cloud)",
+   "value": "1.7e-4",
+   "uncertainty": "+0.7e-4/-0.4e-4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "and a deep NH$_3$ mixing ratio of $1.7_{-0.4}^{+0.7}\\times10^{-4}$ ($1.4_{-0.3}^{+0.5}\\times$ Solar), in good agreement with literature models of Uranus’s disk-averaged spectrum."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| Deep NH$_3$ | $1.02\\times10^{-4}$ | $1.31\\times10^{-4}$ | $1.71 \\times 10^{-4}$ | $2.43 \\times 10^{-4}$ | $3.92 \\times 10^{-4}$ | 1.44$^{+0.60}_{-0.34}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Deep NH3 abundance relative to Solar",
+   "value": "1.4",
+   "uncertainty": "+0.6/-0.3",
+   "units": "Solar",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "RT Modeling Discussion",
+     "quote": "This procedure yielded abundances in the deep troposphere of $1.7_{-0.4}^{+0.7} \\times 10^{-4}$ (1.4$_{-0.3}^{+0.6}$$\\times$ Solar; 1$\\sigma$) for NH$_3$ and $8.7_{-1.5}^{+3.1} \\times 10^{-4}$ (37$_{-6}^{+13}$$\\times$ Solar; 1$\\sigma$) for H$_2$S."
+    }
+   ]
+  },
+  {
+   "quantity": "Bulk tropospheric N/S ratio",
+   "value": "0.20",
+   "uncertainty": "+0.08/-0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "RT Modeling Discussion",
+     "quote": "N/S = $0.20_{-0.07}^{+0.08}$ (1$\\sigma$), in agreement with (cite: depater89; depater91), who required N/S$<0.2$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact tclean parameters: weighting scheme (e.g., Briggs robust parameter), deconvolver algorithm, cell size, image size, stopping threshold, and masking strategy",
+  "Exact limb-darkening parameters and brightness temperature of the uniform disk model subtracted in the UV plane",
+  "Exact ALMA array configurations and baseline ranges",
+  "Exact prior distributions (bounds and functional forms) used for the free parameters in the enriched region MCMC run"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (weighting/robust, cell size, masking, stopping criteria)",
+  "Parameters of the limb-darkened uniform disk model subtracted from the visibilities",
+  "Exact prior bounds used in the emcee MCMC runs for the 25 deg N model",
+  "Specific commit/version of the radiobear code and the custom simplified cloud-physics and step-function depletion scripts"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Both ALMA and VLA project codes are explicitly provided, the radiative transfer code (radiobear) is open-source on GitHub, and intermediate brightness temperature tables (Table 2) are fully reported, allowing direct reproduction of the MCMC retrieval even without re-imaging; however, exact imaging parameters, UV disk-subtraction parameters, and MCMC prior bounds are not fully specified.",
+ "rediscovery_reason": "Public archival ALMA and VLA data with explicit project codes, open-source radiative transfer code (radiobear), and well-defined numeric targets (disk-averaged and latitude-binned brightness temperatures, deep H2S and NH3 abundances, P_mix, and N/S ratio).",
+ "source_card": "cards/2021PSJ.....2....3M/sonnet/card.md"
+}

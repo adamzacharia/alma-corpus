@@ -1,0 +1,317 @@
+# The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2
+
+`2021MNRAS.500.3667S` | Monthly Notices of the Royal Astronomical Society 2021 | first author: Stacey, H. R. | arXiv: 2009.01277 | DOI: 10.1093/mnras/staa3433
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: agn_and_quasars, high_z_galaxies, star_formation
+- Question: What are the intrinsic dust morphology, CO line morphology and kinematics, and star formation properties of z ~ 2 quasar host galaxies, and how do they relate to galaxy compaction and quenching?  
+  > "We resolve the host galaxies of seven gravitationally lensed quasars at redshift 1.5 to 2.8 using observations with the Atacama Large (sub-)Millimetre Array." (Abstract); "This paper presents observations with the Atacama Large (sub-)Millimetre Array (ALMA) of a sub-sample of seven optically luminous quasars from the parent sample of (cite: Stacey:2018a) to resolve their host galaxy emission." (Introduction)
+- Target **HS 0810+2554**: coordinates RA 123.38053 deg, Dec +25.75068 deg  
+  > "| HS 0810+2254 | 123.38053 | $+$25.75068 | – | 1.51 | 145 GHz | 32 | $0.17\times0.13$ | 2017.1.01368.S |" (Sample and observations); "HS 0810+2554 is a quasar at $z_{\rm s}=1.51$ that is lensed into a characteristic fold-configuration (cite: Reimers:2002; Hewett:2010)." (HS 0810+2554); z/distance z_s = 1.51  
+  > "| HS 0810+2254 | 123.38053 | $+$25.75068 | – | 1.51 | 145 GHz | 32 | $0.17\times0.13$ | 2017.1.01368.S |" (Sample and observations); "HS 0810+2554 is a quasar at $z_{\rm s}=1.51$ that is lensed into a characteristic fold-configuration (cite: Reimers:2002; Hewett:2010)." (HS 0810+2554); distance from (cite: Reimers:2002; Hewett:2010)  
+  > "| HS 0810+2254 | 123.38053 | $+$25.75068 | – | 1.51 | 145 GHz | 32 | $0.17\times0.13$ | 2017.1.01368.S |" (Sample and observations); "HS 0810+2554 is a quasar at $z_{\rm s}=1.51$ that is lensed into a characteristic fold-configuration (cite: Reimers:2002; Hewett:2010)." (HS 0810+2554)
+- Target **RX J0911+0551**: coordinates RA 137.86458 deg, Dec +05.84833 deg  
+  > "| RX J0911+0551 | 137.86458 | $+$05.84833 | 0.70 | 2.79 | 145 GHz | 123 | $0.40\times0.35$ | 2017.1.01081.S |" (Sample and observations); "RX J0911+0551 (RX J0911.4+0551) is a quasar at $z_{\rm s}=2.79$ that is lensed by a foreground galaxy at $z_{\rm l}=0.77$ (cite: Burud:1998; Kneib:2000)." (RX J0911+0551); z/distance z_s = 2.79, z_l = 0.70 (or 0.77)  
+  > "| RX J0911+0551 | 137.86458 | $+$05.84833 | 0.70 | 2.79 | 145 GHz | 123 | $0.40\times0.35$ | 2017.1.01081.S |" (Sample and observations); "RX J0911+0551 (RX J0911.4+0551) is a quasar at $z_{\rm s}=2.79$ that is lensed by a foreground galaxy at $z_{\rm l}=0.77$ (cite: Burud:1998; Kneib:2000)." (RX J0911+0551); distance from (cite: Burud:1998; Kneib:2000)  
+  > "| RX J0911+0551 | 137.86458 | $+$05.84833 | 0.70 | 2.79 | 145 GHz | 123 | $0.40\times0.35$ | 2017.1.01081.S |" (Sample and observations); "RX J0911+0551 (RX J0911.4+0551) is a quasar at $z_{\rm s}=2.79$ that is lensed by a foreground galaxy at $z_{\rm l}=0.77$ (cite: Burud:1998; Kneib:2000)." (RX J0911+0551)
+- Target **SDSS J0924+0219**: coordinates RA 141.23258 deg, Dec +02.32347 deg  
+  > "| SDSS J0924+0219 | 141.23258 | $+$02.32347 | 0.39 | 1.52 | 358 GHz | 44 | $0.28\times0.23$ | 2018.1.01591.S |" (Sample and observations); "SDSS J0924+0219 is a radio-quiet quasar at $z_{\rm s}\!=\!1.525$ that is lensed by a galaxy at $z_{\rm l}=0.39$ (cite: Inada:2003; Hewett:2010)." (SDSS J0924+0219); z/distance z_s = 1.52 (or 1.525), z_l = 0.39  
+  > "| SDSS J0924+0219 | 141.23258 | $+$02.32347 | 0.39 | 1.52 | 358 GHz | 44 | $0.28\times0.23$ | 2018.1.01591.S |" (Sample and observations); "SDSS J0924+0219 is a radio-quiet quasar at $z_{\rm s}\!=\!1.525$ that is lensed by a galaxy at $z_{\rm l}=0.39$ (cite: Inada:2003; Hewett:2010)." (SDSS J0924+0219); distance from (cite: Inada:2003; Hewett:2010)  
+  > "| SDSS J0924+0219 | 141.23258 | $+$02.32347 | 0.39 | 1.52 | 358 GHz | 44 | $0.28\times0.23$ | 2018.1.01591.S |" (Sample and observations); "SDSS J0924+0219 is a radio-quiet quasar at $z_{\rm s}\!=\!1.525$ that is lensed by a galaxy at $z_{\rm l}=0.39$ (cite: Inada:2003; Hewett:2010)." (SDSS J0924+0219)
+- Target **PG 1115+080**: coordinates RA 169.57083 deg, Dec +07.76603 deg  
+  > "| PG 1115+080 | 169.57083 | $+$07.76603 | 0.31 | 1.74 | 346 GHz | 27 | $0.32\times0.21$ | 2018.1.01591.S |" (Sample and observations); "PG 1115+080 is a quasar at $z_{\rm s}=1.74$ that is lensed by a galaxy at $z_{\rm l}=0.31$ (cite: Weymann:1980; Hewett:2010)." (PG 1115+080); z/distance z_s = 1.74, z_l = 0.31  
+  > "| PG 1115+080 | 169.57083 | $+$07.76603 | 0.31 | 1.74 | 346 GHz | 27 | $0.32\times0.21$ | 2018.1.01591.S |" (Sample and observations); "PG 1115+080 is a quasar at $z_{\rm s}=1.74$ that is lensed by a galaxy at $z_{\rm l}=0.31$ (cite: Weymann:1980; Hewett:2010)." (PG 1115+080); distance from (cite: Weymann:1980; Hewett:2010)  
+  > "| PG 1115+080 | 169.57083 | $+$07.76603 | 0.31 | 1.74 | 346 GHz | 27 | $0.32\times0.21$ | 2018.1.01591.S |" (Sample and observations); "PG 1115+080 is a quasar at $z_{\rm s}=1.74$ that is lensed by a galaxy at $z_{\rm l}=0.31$ (cite: Weymann:1980; Hewett:2010)." (PG 1115+080)
+- Target **H1413+117**: coordinates RA 213.94271 deg, Dec +11.49539 deg  
+  > "| H1413+117 | 213.94271 | $+$11.49539 | – | 2.56 | 285 GHz | 10 | $0.24\times0.21$ | 2012.1.00175.S |" (Sample and observations); "H1413+117 (the Cloverleaf) is a quasar at $z_{\rm s}=2.56$ that is lensed by a galaxy at unknown redshift (cite: Magain:1988; Riechers:2011b)." (H1413+117); z/distance z_s = 2.56  
+  > "| H1413+117 | 213.94271 | $+$11.49539 | – | 2.56 | 285 GHz | 10 | $0.24\times0.21$ | 2012.1.00175.S |" (Sample and observations); "H1413+117 (the Cloverleaf) is a quasar at $z_{\rm s}=2.56$ that is lensed by a galaxy at unknown redshift (cite: Magain:1988; Riechers:2011b)." (H1413+117); distance from (cite: Magain:1988; Riechers:2011b)  
+  > "| H1413+117 | 213.94271 | $+$11.49539 | – | 2.56 | 285 GHz | 10 | $0.24\times0.21$ | 2012.1.00175.S |" (Sample and observations); "H1413+117 (the Cloverleaf) is a quasar at $z_{\rm s}=2.56$ that is lensed by a galaxy at unknown redshift (cite: Magain:1988; Riechers:2011b)." (H1413+117)
+- Target **WFI J2026-4536**: coordinates RA 306.54346 deg, Dec -45.60753 deg  
+  > "| WFI J2026$-$4536 | 306.54346 | $-$45.60753 | – | 2.22 | 350 GHz | 28 | $0.14\times0.14$ | 2018.1.01591.S |" (Sample and observations); "WFI J2026$-$4536 is a quasar at $z=2.22$ (cite: Morgan:2004) that is lensed by a galaxy at unknown redshift into four images in a typical fold configuration." (WFI J2026-4536); z/distance z_s = 2.22  
+  > "| WFI J2026$-$4536 | 306.54346 | $-$45.60753 | – | 2.22 | 350 GHz | 28 | $0.14\times0.14$ | 2018.1.01591.S |" (Sample and observations); "WFI J2026$-$4536 is a quasar at $z=2.22$ (cite: Morgan:2004) that is lensed by a galaxy at unknown redshift into four images in a typical fold configuration." (WFI J2026-4536); distance from (cite: Morgan:2004)  
+  > "| WFI J2026$-$4536 | 306.54346 | $-$45.60753 | – | 2.22 | 350 GHz | 28 | $0.14\times0.14$ | 2018.1.01591.S |" (Sample and observations); "WFI J2026$-$4536 is a quasar at $z=2.22$ (cite: Morgan:2004) that is lensed by a galaxy at unknown redshift into four images in a typical fold configuration." (WFI J2026-4536)
+- Target **WFI J2033-4723**: coordinates RA 308.42533 deg, Dec -47.39528 deg  
+  > "| WFI J2033$-$4723 | 308.42533 | $-$47.39528 | 0.66 | 1.66 | 341 GHz | 28 | $0.31\times0.28$ | 2018.1.01591.S |" (Sample and observations); "WFI J2033$-$4723 is a quasar at $z_{\rm s}=1.66$ that is lensed by a galaxy at $z_{\rm l}=0.66$ (cite: Morgan:2004) into four images in a typical fold configuration." (WFI J2033-4723); z/distance z_s = 1.66, z_l = 0.66  
+  > "| WFI J2033$-$4723 | 308.42533 | $-$47.39528 | 0.66 | 1.66 | 341 GHz | 28 | $0.31\times0.28$ | 2018.1.01591.S |" (Sample and observations); "WFI J2033$-$4723 is a quasar at $z_{\rm s}=1.66$ that is lensed by a galaxy at $z_{\rm l}=0.66$ (cite: Morgan:2004) into four images in a typical fold configuration." (WFI J2033-4723); distance from (cite: Morgan:2004)  
+  > "| WFI J2033$-$4723 | 308.42533 | $-$47.39528 | 0.66 | 1.66 | 341 GHz | 28 | $0.31\times0.28$ | 2018.1.01591.S |" (Sample and observations); "WFI J2033$-$4723 is a quasar at $z_{\rm s}=1.66$ that is lensed by a galaxy at $z_{\rm l}=0.66$ (cite: Morgan:2004) into four images in a typical fold configuration." (WFI J2033-4723)
+
+## Data provenance
+
+- ALMA projects: 2017.1.01368.S, 2017.1.01081.S, 2018.1.01591.S, 2012.1.00175.S, 2015.1.01309.S, 2018.1.01519.S
+- bands: _not stated_
+- frequencies and spectral setup: 145 GHz (HS 0810+2554, RX J0911+0551), 358 GHz (SDSS J0924+0219), 346 GHz (PG 1115+080), 285 GHz (H1413+117), 350 GHz (WFI J2026-4536), 341 GHz (WFI J2033-4723)  
+  > "| HS 0810+2254 | 123.38053 | $+$25.75068 | – | 1.51 | 145 GHz | 32 | $0.17\times0.13$ | 2017.1.01368.S |" (Sample and observations); "| SDSS J0924+0219 | 141.23258 | $+$02.32347 | 0.39 | 1.52 | 358 GHz | 44 | $0.28\times0.23$ | 2018.1.01591.S |" (Sample and observations); "| H1413+117 | 213.94271 | $+$11.49539 | – | 2.56 | 285 GHz | 10 | $0.24\times0.21$ | 2012.1.00175.S |" (Sample and observations)
+- continuum bandwidth: _not stated_
+- arrays: _not stated_
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: 0.14x0.14 arcsec to 0.40x0.35 arcsec  
+  > "| RX J0911+0551 | 137.86458 | $+$05.84833 | 0.70 | 2.79 | 145 GHz | 123 | $0.40\times0.35$ | 2017.1.01081.S |" (Sample and observations); "| WFI J2026$-$4536 | 306.54346 | $-$45.60753 | – | 2.22 | 350 GHz | 28 | $0.14\times0.14$ | 2018.1.01591.S |" (Sample and observations)
+- max recoverable scale: _not stated_
+- sensitivity: 7 to 93 uJy beam^-1 (continuum rms with natural weighting)  
+  > "We achieve an rms noise of 7 $\upmu$Jy beam$^{-1}$ with natural weighting of the visibilties." (RX J0911+0551); "Thermal dust emission is detected in the ALMA imaging with a total flux density of 26 mJy and an rms noise level of 93 $\upmu$Jy beam$^{-1}$, using a natural weighting of the visibilities." (H1413+117)
+- time on source: 10 to 123 min  
+  > "| RX J0911+0551 | 137.86458 | $+$05.84833 | 0.70 | 2.79 | 145 GHz | 123 | $0.40\times0.35$ | 2017.1.01081.S |" (Sample and observations); "| H1413+117 | 213.94271 | $+$11.49539 | – | 2.56 | 285 GHz | 10 | $0.24\times0.21$ | 2012.1.00175.S |" (Sample and observations)
+- observing dates: _not stated_
+- pi or archival as stated: 4 targets from own programme (PI: McKean) and 3 archival (PIs: Chartas, Leung, van der Werf)  
+  > "Four targets, SDSS J0924+0219, PG 1115+080, WFI J2033$-$4723 and WFI J2026$-$4536 are from our own programme (PI: McKean)" (Summary of the sample, observations and data reduction); "We also include here archival data of HS 0810+2554 (PI: Chartas), RX J0911+0551 (PI: Leung) and H1413+117 (PI: van der Werf)" (Summary of the sample, observations and data reduction)
+- Line: CO (3-2) (not stated)
+- Line: CO (5-4) (not stated)
+- Line: CO (8-7) (not stated)
+- Line: CO (9-8) (not stated)
+- Line: CO (10-9) (not stated)
+- External data: Ancillary photometric data for SED fitting of lensed quasars  
+  > "The SED fitting follows a similar procedure described by (cite: Stacey:2018a) and uses ancillary data listed therein." (Dust properties) [from (cite: Stacey:2018a)]
+- External data: Lens model parameters (slope, ellipticity, position angle, and nearby galaxy parameters) for PG 1115+080 and WFI J2033-4723  
+  > "Robust lens models have been produced for PG 1115+080 and WFI J2033$-$4723, based on higher quality optical imaging of the quasars and extended arcs as part of the H$_0$ Lenses in COSMOGRAIL’s Wellspring (H0LiCOW) project (cite: Chen:2019; Rusu:2020)." (Lens Modelling); "The position and mass of these galaxies are fixed to the values found by (cite: Rusu:2020)." (Lens Modelling) [from (cite: Chen:2019; Rusu:2020)]
+- External data: Photometry and sizes for ALESS DSFGs, z > 4 DSFGs, and lensed DSFGs  
+  > "We perform SED fitting for the ALESS sample with photometry from (cite: Swinbank:2014) and (cite: Hodge:2019)." (Comparison with dusty star-forming galaxies); "References: [1] (cite: Hodge:2019); [2] (cite: Swinbank:2010); [3] (cite: Hodge:2016); [4] (cite: Riechers:2017); [5] (cite: Riechers:2013); [6] (cite: Riechers:2014); [7] (cite: Cortzen:2020); [8] (cite: Oteo:2016); [9] (cite: Nayyeri:2016); [10] Stacey et al. in prep; [11] (cite: Dye:2018)" (Supplementary figures and tables) [from (cite: Swinbank:2014), (cite: Hodge:2019), (cite: Swinbank:2010), (cite: Hodge:2016), (cite: Riechers:2017), (cite: Riechers:2013), (cite: Riechers:2014), (cite: Cortzen:2020), (cite: Oteo:2016), (cite: Nayyeri:2016), (cite: Dye:2018)]
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: ALMA pipeline in CASA followed by manual inspection and self-calibration  
+  > "The raw data were calibrated using the ALMA pipeline in the Common Astronomy Software Applications package (CASA; (cite: McMullin:2007)) to produce calibrated visibilities." (Summary of the sample, observations and data reduction); "The data were inspected to confirm the quality of the pipeline calibration and determine whether further flagging was required." (Summary of the sample, observations and data reduction)
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: Applied to RX J0911+0551, PG 1115+080, H1413+117 and WFI J2026-4536 using line-free spectral windows with solution intervals of each scan length; attempted but unsuccessful for SDSS J0924+0219 and WFI J2033-4723; not attempted for HS 0810+2554  
+  > "RX J0911+0551, PG 1115+080, H1413+117 and WFI J2026$-$4536 were self-calibrated using the line-free spectral windows with solution intervals of each scan length." (Summary of the sample, observations and data reduction); "Self-calibration was attempted for SDSS J0924+0219 and WFI J2033$-$4723, but was not successful, probably because of the lower signal-to-noise ratio of the surface brightness." (Summary of the sample, observations and data reduction); "We did not attempt to self-calibrate the data for HS 0810+2554 as the continuum emission is extremely weak (see below)." (Summary of the sample, observations and data reduction)
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: CLEAN  
+  > "The targets were imaged with natural weighting of the visibilities and deconvolved using CLEAN (cite: Hogbom:1974)." (Summary of the sample, observations and data reduction)
+- weighting robust: natural weighting  
+  > "The targets were imaged with natural weighting of the visibilities and deconvolved using CLEAN (cite: Hogbom:1974)." (Summary of the sample, observations and data reduction)
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: linear model fit to line-free spectral windows subtracted from visibilities  
+  > "The spectral line data were prepared by fitting a linear model for the continuum to the line-free spectral windows and subtracting this from the visibilities." (Summary of the sample, observations and data reduction)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: 0.17x0.13 arcsec (HS 0810+2554), 0.40x0.35 arcsec (RX J0911+0551), 0.28x0.23 arcsec (SDSS J0924+0219), 0.32x0.21 arcsec (PG 1115+080), 0.24x0.21 arcsec (H1413+117), 0.14x0.14 arcsec (WFI J2026-4536), 0.31x0.28 arcsec (WFI J2033-4723)  
+  > "| HS 0810+2254 | 123.38053 | $+$25.75068 | – | 1.51 | 145 GHz | 32 | $0.17\times0.13$ | 2017.1.01368.S |" (Sample and observations); "| RX J0911+0551 | 137.86458 | $+$05.84833 | 0.70 | 2.79 | 145 GHz | 123 | $0.40\times0.35$ | 2017.1.01081.S |" (Sample and observations); "| WFI J2026$-$4536 | 306.54346 | $-$45.60753 | – | 2.22 | 350 GHz | 28 | $0.14\times0.14$ | 2018.1.01591.S |" (Sample and observations)
+- final rms: 13 uJy/beam (HS 0810+2554), 7 uJy/beam (RX J0911+0551), 28 uJy/beam (SDSS J0924+0219), 93 uJy/beam (H1413+117), 30 uJy/beam (WFI J2026-4536, WFI J2033-4723)  
+  > "The achieved rms noise level is 13 $\upmu$Jy beam$^{-1}$ with natural weighting." (HS 0810+2554); "We achieve an rms noise of 7 $\upmu$Jy beam$^{-1}$ with natural weighting of the visibilties." (RX J0911+0551); "We achieve an rms noise of 28 $\upmu$Jy beam$^{-1}$ with natural weighting of the visibilities." (SDSS J0924+0219)
+
+### Inherited from earlier work
+
+- Grid-based pixellated lens modelling and visibility-plane optimisation methodology  
+  > "Our lens modelling analysis is adapted from the grid-based modelling technique of (cite: Vegetti:2009)." (Lens Modelling); "Recently, (cite: Powell:2020) introduced several algorithmic improvements to overcome this limitation and model large interferometric data sets directly. We employ this method for optimising the visibility-plane posterior probability and source-plane regularisation." (Lens Modelling) [from (cite: Vegetti:2009); (cite: Powell:2020)]
+- SED fitting procedure and ancillary data  
+  > "The SED fitting follows a similar procedure described by (cite: Stacey:2018a) and uses ancillary data listed therein." (Dust properties) [from (cite: Stacey:2018a)]
+- Fixed lens slope, ellipticity, position angle, and satellite galaxy parameters for PG 1115+080 and WFI J2033-4723  
+  > "Robust lens models have been produced for PG 1115+080 and WFI J2033$-$4723, based on higher quality optical imaging of the quasars and extended arcs as part of the H$_0$ Lenses in COSMOGRAIL’s Wellspring (H0LiCOW) project (cite: Chen:2019; Rusu:2020)." (Lens Modelling); "Therefore, in these cases we keep the lens slope, ellipticity and position angle fixed to literature values, and re-optimise only the lens galaxy position (which is not observed in our data) and shear parameters" (Lens Modelling) [from (cite: Chen:2019; Rusu:2020)]
+
+### Not stated but needed to reproduce (our reading)
+
+- CASA version and pipeline version used for calibration and imaging
+- Table 2 (summary of spectral line observations) and Table lens_models are referenced in the text but missing from the manuscript/markdown
+- Exact channel widths and frequency ranges of the line-free spectral windows used for continuum subtraction and self-calibration
+- Pixel size and image dimensions used for CLEAN imaging and source-plane pixellated reconstructions
+- Regularisation constants and exact prior bounds used in MultiNest lens modelling
+
+## Analysis recipe
+
+1. **Calibrate raw visibilities, self-calibrate, subtract continuum, and create lens-plane images and line profiles**: ALMA pipeline calibration in CASA, phase self-calibration on line-free windows (for 4 targets), linear continuum subtraction in visibility plane, CLEAN deconvolution with natural weighting, and single Gaussian fitting to integrated line profiles  
+  > "The raw data were calibrated using the ALMA pipeline in the Common Astronomy Software Applications package (CASA; (cite: McMullin:2007)) to produce calibrated visibilities." (Summary of the sample, observations and data reduction); "The targets were imaged with natural weighting of the visibilities and deconvolved using CLEAN (cite: Hogbom:1974)." (Summary of the sample, observations and data reduction); "The spectral line data were prepared by fitting a linear model for the continuum to the line-free spectral windows and subtracting this from the visibilities." (Summary of the sample, observations and data reduction)
+   - software: CASA
+   - parameter: self-calibration solution interval = scan length  
+  > "RX J0911+0551, PG 1115+080, H1413+117 and WFI J2026$-$4536 were self-calibrated using the line-free spectral windows with solution intervals of each scan length." (Summary of the sample, observations and data reduction)
+   - parameter: natural weighting  
+  > "The targets were imaged with natural weighting of the visibilities and deconvolved using CLEAN (cite: Hogbom:1974)." (Summary of the sample, observations and data reduction)
+   - fitting: single Gaussian fit to line profiles; linear model for continuum subtraction  
+  > "The resulting line profiles, fit with single Gaussians, are shown in Fig. 1." (Summary of the sample, observations and data reduction)
+   - validation: Continuum flux densities checked against expectations from SED fitting  
+  > "The continuum emission is consistent with the level of thermal dust emission expected from SED-fitting (cite: Stacey:2018a)." (Summary of the sample, observations and data reduction)
+2. **Visibility-plane gravitational lens modelling and pixellated source reconstruction**: Simultaneous optimisation of singular power-law ellipsoid lens mass distribution with external shear and pixellated source surface brightness directly on visibilities  
+  > "Recently, (cite: Powell:2020) introduced several algorithmic improvements to overcome this limitation and model large interferometric data sets directly. We employ this method for optimising the visibility-plane posterior probability and source-plane regularisation." (Lens Modelling); "Under the assumption of a smooth mass distribution, we parameterise the primary lens potential as a singular power-law ellipsoid with external shear, i.e. $\rho(r)\propto r^{-\zeta}$ (cite: Kormann:1994)." (Lens Modelling)
+   - software: MultiNest
+   - parameter: isothermal profile zeta = 2 (for 5 targets); fixed literature slope/ellipticity/PA for PG 1115+080 and WFI J2033-4723  
+  > "In all other cases, we assume isothermal mass distributions (i.e. $\zeta=2$) and optimise for the lens galaxy position, ellipticity parameters and external shear parameters." (Lens Modelling)
+   - parameter: maximum baseline < 300 m and 3 velocity channels for WFI J2033-4723 and SDSS J0924+0219 line cubes  
+  > "For WFI J2033$-$4723 and SDSS J0924+0219, we use only three velocity channels and restrict the $uv$ data to within a maximum baseline of 300 m to improve the surface brightness sensitivity." (Lens Modelling)
+   - assumption: Smooth singular power-law ellipsoid mass distribution with external shear; SIS for nearby perturbers in WFI J2033-4723  
+  > "Under the assumption of a smooth mass distribution, we parameterise the primary lens potential as a singular power-law ellipsoid with external shear, i.e. $\rho(r)\propto r^{-\zeta}$ (cite: Kormann:1994)." (Lens Modelling); "For WFI J2033$−$4723, our lens model also includes a luminous satellite galaxy close to the Einstein radius of the primary lens and a massive galaxy 4 arcsec from the primary lens, both of which we parameterise as a single isothermal sphere (SIS)." (Lens Modelling)
+   - fitting: MultiNest nested sampling with flat priors (typically +/- 20% of optimised values) and source regularisation fixed to MAP value  
+  > "The uncertainties on the lens model parameters were obtained from the posterior distributions derived using MultiNest (cite: Feroz:2013), with the source regularisation constant fixed to the maximum a posteriori value." (Lens Modelling); "Flat prior ranges were assumed for each free parameter, typically $\pm20$ percent of the optimised values." (Lens Modelling)
+   - validation: Dirty residual images after subtracting model visibilities checked to be below 4 sigma  
+  > "We find our lens models fit the data well and the residual surface brightness features are below the 4 $\sigma$ level." (Source reconstructions)
+3. **Measure intrinsic source sizes (R_eff), Sersic indices, and lensing magnifications**: Fit 2D Sersic profiles to 100 noise realisations of reconstructed continuum and integrated CO line sources using basin-hopping optimisation; compute mean magnification by masking source pixels below SNR of 4  
+  > "To estimate these uncertainties we assume our maximum a posteriori source model and create mock data with 100 different realisations of the noise at the level measured in the real data" (Source reconstructions); "To estimate the uncertainty on the source size, we fit a Sérsic profile (cite: Sersic:1963) to the source from each noise realisation of continuum and integrated line emission using a basin-hopping optimisation algorithm within the SciPy package (cite: Wales:1998; Jones:2001)." (Source reconstructions); "We estimate the magnification of each lens system by generating a model for the lensed emission for each noise realisation, where source pixels are masked below a signal-to-noise ratio of 4." (Source reconstructions)
+   - software: SciPy
+   - parameter: 100 noise realisations; SNR >= 4 mask for magnification; Sersic index n fixed to continuum value (1.0) for SDSS J0924+0219 and WFI J2033-4723 CO lines  
+  > "For the integrated line emission of SDSS J0924+0219 and WFI J2033$-$4723, we fix the index of the Sérsic profile to that found for the continuum as the fitting was found to be unstable due to the low signal-to-noise ratio of the data." (Source reconstructions)
+   - assumption: Additional +/- 10% uncertainty added to sizes where isothermal slope was assumed to account for empirical scatter in lens mass profile slope  
+  > "Therefore, where we assume only an isothermal profile is fit to the data, we propagate an additional $\pm10$ percent error into the uncertainty in our estimated sizes to account for the empirical scatter in $\zeta$." (Source reconstructions)
+   - fitting: Basin-hopping optimisation of Sersic profile parameters across 100 mock realisations  
+  > "To estimate the uncertainty on the source size, we fit a Sérsic profile (cite: Sersic:1963) to the source from each noise realisation of continuum and integrated line emission using a basin-hopping optimisation algorithm within the SciPy package (cite: Wales:1998; Jones:2001)." (Source reconstructions)
+   - validation: Simulations of mock Gaussian sources lensed with same uv-coverage and noise used to calibrate and correct for regularisation-induced source size inflation  
+  > "In order to test the robustness of our inferred source sizes, we created mock images of Gaussian sources lensed by the maximum a-priori lens model for each object." (Source reconstructions); "We found that the inferred source sizes were inflated by a constant value that can be related to the strength of the source regularisation." (Source reconstructions); "We use these simulations to infer a correction to the sizes derived from the Sérsic fits." (Source reconstructions)
+4. **Fit SEDs to derive dust temperatures, FIR/IR luminosities, SFRs, SFR surface densities, Eddington limits, and dust masses**: MCMC fitting of an optically thick modified blackbody (plus warm dust component for 2 sources and radio power-law where applicable) to sub-mm and ancillary photometry, followed by analytical conversions to L_FIR, L_IR, SFR, Sigma_SFR, and M_dust  
+  > "We apply a Markov Chain Monte Carlo (MCMC) analysis using the Python implementation (cite: Foreman-Mackey:2013) to infer the marginalised posterior distributions for each free parameter and the integrated FIR luminosity." (Dust properties); "We convert this to total infrared luminosity (8 to 1000 $\upmu$m) using a colour correction factor of 1.91 (i.e. $L_{\rm IR} = 1.91\times L_{\rm FIR}$) given by (cite: Dale:2001)" (Dust properties); "We follow (cite: Dunne:2000) to estimate the dust mass from our SED fits using" (Dust properties)
+   - software: emcee
+   - parameter: nu_0 = 3 THz (100 um) where tau = 1; beta = 2 fixed for HS 0810+2554; H1413+117 photometry > 300 GHz scaled by 0.8 for neighbour confusion  
+  > "where $\tau(\nu)=(\nu/\nu_0)^{\beta}$ and $\nu_0$ is the frequency at which the dust opacity is unity, which we assume to be rest-frame 3 THz (100 $\upmu$m)" (Dust properties); "We fix $\beta$ to a value of 2, as 1.5 cannot produce a satisfactory fit to the data" (Dust properties); "We estimate the effect of this by scaling all the photometric measurements above 300 GHz by a factor of 0.8." (Dust properties)
+   - assumption: Salpeter IMF with Kennicutt (1998) conversion SFR = L_IR / (5.8e9 L_sun); dust mass opacity kappa_850 = 0.077 m^2 kg^-1; flat LambdaCDM (H0 = 67.8 km/s/Mpc, Omega_M = 0.31, Omega_Lambda = 0.69)  
+  > "Throughout, we assume the (cite: Planck:2016) instance of a flat $\Lambda$CDM cosmology with $H_{0}= 67.8~$km s$^{-1}$ Mpc$^{-1}$, $\Omega_{\rm M}=0.31$ and $\Omega_{\Lambda}=0.69$." (Introduction); "We convert this to a star formation rate (SFR; M$_{\odot}$ yr$^{-1}$ ) assuming a Salpeter initial mass function with the conversion factor of (cite: Kennicutt:1998)," (Dust properties); "$\kappa_{850}$ is the dust mass opacity (0.077 m$^{2}$ kg$^{-1}$, from (cite: Dunne:2000))" (Dust properties)
+   - fitting: MCMC sampling using Foreman-Mackey et al. (2013) Python implementation  
+  > "We apply a Markov Chain Monte Carlo (MCMC) analysis using the Python implementation (cite: Foreman-Mackey:2013) to infer the marginalised posterior distributions for each free parameter and the integrated FIR luminosity." (Dust properties)
+   - validation: Tested two-component dust models and compared with Stefan-Boltzmann law relation against DSFG control samples using Kendall rank correlation test  
+  > "We attempted fitting two-component models to our SEDs but, as most are sparsely sampled, the uncertainties on the mass of the cold component was very large and encompasses the masses derived with a single temperature fit." (Dust properties); "A Kendall rank test (cite: Kendall:1945) for correlation between dust size and temperature yields a coefficient of $\tau=-0.37$ with a significance of $p=0.04$ (where $p=0.05$ is often taken as significant)." (Comparison with dusty star-forming galaxies)
+5. **Derive molecular gas luminosities, dynamical masses, gas mass, gas fraction, and depletion timescale**: Integrate reconstructed source-plane CO line cubes to get intrinsic line luminosities; compute dynamical mass from 2*R_eff and inclination-corrected maximum velocity; convert CO(3-2) luminosity of HS 0810+2554 to gas mass and depletion time  
+  > "We convert our line flux densities to luminosities ($L_{\rm CO}$ and $L^{\prime}_{\rm CO}$) with relations as given by (cite: Solomon:2005)." (Molecular gas properties); "From the reconstructed line emission, we estimate the enclosed dynamical mass of the galaxies, assuming" (Molecular gas properties); "We assume $\alpha_{\rm CO}=0.8$ M$_{\odot}$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$, as is often assumed for dusty starbursts, to convert $L^{\prime}_{\rm CO}$ to total gas mass ($M_{\rm gas}$)." (Intensity of star formation)
+   - parameter: inclination i = 45 +/- 15 deg where axis ratio is unconstrained (RX J0911+0551, PG 1115+080, WFI J2033-4723)  
+  > "Where we do not have a reliable constraint on the axis ratio due to a lack of radial resolution (i.e. RX J0911+0551, PG 1115+080 and WFI J2033$-$4723) we assume an inclination angle of $45\pm15$ deg, corresponding to axis ratios of 0.5 to 0.9." (Molecular gas properties)
+   - assumption: Circular velocity traces gas rotation in a disc; alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 for HS 0810+2554  
+  > "This method assumes that the circular velocity accurately traces the gas rotation, ignoring the effect of a non-spherical gravitational potential and turbulent pressure." (Molecular gas properties); "We assume $\alpha_{\rm CO}=0.8$ M$_{\odot}$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$, as is often assumed for dusty starbursts, to convert $L^{\prime}_{\rm CO}$ to total gas mass ($M_{\rm gas}$)." (Intensity of star formation)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CASA** : ALMA pipeline calibration, flagging inspection, self-calibration, continuum subtraction, and CLEAN imaging  
+  > "The raw data were calibrated using the ALMA pipeline in the Common Astronomy Software Applications package (CASA; (cite: McMullin:2007)) to produce calibrated visibilities." (Summary of the sample, observations and data reduction)
+- **MultiNest** : Deriving posterior probability distributions and uncertainties for lens model parameters  
+  > "The uncertainties on the lens model parameters were obtained from the posterior distributions derived using MultiNest (cite: Feroz:2013), with the source regularisation constant fixed to the maximum a posteriori value." (Lens Modelling)
+- **SciPy** : Basin-hopping optimisation algorithm to fit Sersic profiles to reconstructed sources  
+  > "To estimate the uncertainty on the source size, we fit a Sérsic profile (cite: Sersic:1963) to the source from each noise realisation of continuum and integrated line emission using a basin-hopping optimisation algorithm within the SciPy package (cite: Wales:1998; Jones:2001)." (Source reconstructions)
+- **emcee** : MCMC analysis for SED fitting  
+  > "We apply a Markov Chain Monte Carlo (MCMC) analysis using the Python implementation (cite: Foreman-Mackey:2013) to infer the marginalised posterior distributions for each free parameter and the integrated FIR luminosity." (Dust properties)
+- **Astropy** : General Python astronomical analysis  
+  > "This research made use of Astropy and Matplotlib packages for Python (cite: Astropy:2018; Hunter:2007)." (Acknowledgements)
+- **Matplotlib** : Plotting  
+  > "This research made use of Astropy and Matplotlib packages for Python (cite: Astropy:2018; Hunter:2007)." (Acknowledgements)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| 145 GHz continuum flux density (HS 0810+2554) | 0.3 | not stated | mJy | 1 | The total flux density of 0.3 mJy is consistent with the level of thermal dust emission expected at the observing frequency, based on SED fitting (see Fig. 21). |
+| CO(3-2) line FWHM (HS 0810+2554) | 380 | 10 | km s^-1 | 1 | The CO (3–2) line profile for HS 0810+2554 is shown in Fig. 1, which has a FWHM of about $380\pm10$ km s$^{-1}$ based on a single Gaussian fit. |
+| 145 GHz continuum flux density (RX J0911+0551) | 1.4 | not stated | mJy | 1 | We detect thermal dust continuum for this system with a total flux density at 145 GHz of 1.4 mJy, consistent with the expectations from SED fitting |
+| CO(5-4) line FWHM (RX J0911+0551) | 133 | 3 | km s^-1 | 1 | The spatially integrated line profile has a FWHM of $133\pm3$ km s$^{-1}$ based on a single Gaussian fit |
+| 358 GHz continuum flux density (SDSS J0924+0219) | 9.5 | not stated | mJy | 1 | The continuum emission from SDSS J0924+0219 is detected with a total flux density of 9.5 mJy at 358 GHz |
+| CO(8-7) line FWHM (SDSS J0924+0219) | 176 | 11 | km s^-1 | 1 | The line profile is found from a Gaussian fit to have a FWHM of $176\pm11$ km s$^{-1}$ that is shifted by $36\pm5$ km s$^{-1}$ from the optical systemic velocity. |
+| 346 GHz continuum flux density (PG 1115+080) | 2.6 | not stated | mJy | 1 | We detect continuum emission with a total flux density of 2.6 mJy, consistent with the expectations for thermal dust emission from SED fitting |
+| 285 GHz continuum flux density (H1413+117) | 26 | not stated | mJy | 1 | Thermal dust emission is detected in the ALMA imaging with a total flux density of 26 mJy and an rms noise level of 93 $\upmu$Jy beam$^{-1}$, using a natural weighting of the visibilities. |
+| CO(9-8) line FWHM (H1413+117) | 394 | 8 | km s^-1 | 1 | The CO (9–8) line emission is detected with a spatially integrated peak flux density of 83 mJy and a FWHM of $394\pm8$ km s$^{-1}$ , from a Gaussian profile fit |
+| 350 GHz continuum flux density (WFI J2026-4536) | 28.3 | not stated | mJy | 1 | The ALMA observations detect continuum emission with a flux density of 28.3 mJy and achieve an rms noise level of 30 $\upmu$Jy beam$^{-1}$ with natural weighting. |
+| CO(10-9) line FWHM (WFI J2026-4536) | 252 | 7 | km s^-1 | 1 | The FWHM of the line is $252\pm7$ km s$^{-1}$ and is offset by $\sim1000$ km s$^{-1}$ from the systemic velocity assumed from optical spectroscopy. |
+| 341 GHz continuum flux density (WFI J2033-4723) | 10.4 | not stated | mJy | 1 | The ALMA observations detect thermal dust emission with a total flux density of 10.4 mJy and achieve an rms noise of 30 $\upmu$Jy beam$^{-1}$ with natural weighting of the visibilities. |
+| CO(8-7) line FWHM (WFI J2033-4723) | 83 | 10 | km s^-1 | 1 | The FWHM of the line profile is quite narrow, at $83\pm10$ km s$^{-1}$ , and is offset by $258\pm4$ km s$^{-1}$ from the optical systemic velocity |
+| Dust effective radius R_dust (HS 0810+2554) | 0.13 | 0.04 | kpc | 3 | / HS 0810+2554 / $25\pm4$ / $0.13\pm0.04$ / $0.57\pm0.05$ / $39^{+4}_{-5}$ / $135^{+25}_{-18}$ / $\equiv2$ / $1.3^{+1.0}_{-0.9}\times10^{11}$ / $40^{+30}_{-30}$ / $400^{+300}_{-300}$ / $1.1^{+0.4}_{-0.5}\times10^{7}$ / |
+| Dust effective radius R_dust (RX J0911+0551) | 0.51 | 0.03 | kpc | 3 | / RX J0911+0551 / $14.8\pm0.2$ / $0.51\pm0.03$ / $0.56\pm0.04$ / $54^{+3}_{-3}$ / – / $1.9^{+0.1}_{-0.1}$ / $2.3^{+0.1}_{-0.1}\times10^{12}$ / $750^{+50}_{-50}$ / $500^{+100}_{-100}$ / $5.3^{+0.9}_{-0.8}\times10^{6}$ / |
+| Dust effective radius R_dust (SDSS J0924+0219) | 1.9 | 0.2 | kpc | 3 | / SDSS J0924+0219 / $15.1\pm0.7$ / $1.9\pm0.2$ / $1.2\pm0.1$ / $38^{+8}_{-7}$ / – / $1.5^{+0.6}_{-0.4}$ / $1.9^{+0.7}_{-0.5}\times10^{11}$ / $60^{+20}_{-20}$ / $3^{+1}_{-1}$ / $3.9^{+1.5}_{-1.4}\times10^{7}$ / |
+| Dust effective radius R_dust (PG 1115+080) | 0.14 | 0.04 | kpc | 3 | / PG 1115+080 / $21.5\pm0.4$ / $0.14\pm0.04$ / $0.47\pm0.01$ / $66^{+17}_{-21}$ / – / $1.9^{+0.3}_{-0.3}$ / $3.4^{+1.2}_{-1.0}\times10^{11}$ / $110^{+40}_{-30}$ / $1000^{+400}_{-400}$ / $2.5^{+1.5}_{-1.0}\times10^{6}$ / |
+| Dust effective radius R_dust (H1413+117) | 0.8 | 0.1 | kpc | 3 | / H1413+117 / $11.2\pm0.2$ / $0.8\pm0.1$ / $0.66\pm0.07$ / $53^{+1}_{-1}$ / $246^{+14}_{-24}$ / $1.88^{+0.04}_{-0.04}$ / $4.9^{+0.2}_{-0.2}\times10^{12}$ / $1600^{+60}_{-60}$ / $370^{+80}_{-80}$ / $1.2^{+0.1}_{-0.1}\times10^{8}$ / |
+| Dust effective radius R_dust (WFI J2026-4536) | 0.19 | 0.02 | kpc | 3 | / WFI J2026$-$4536 / $19.6\pm0.8$ / $0.19\pm0.02$ / $0.61\pm0.02$ / $63^{+4}_{-3}$ / – / $1.8^{+0.1}_{-0.1}$ / $3.1^{+1.7}_{-1.5}\times10^{12}$ / $1010^{+60}_{-50}$ / $4500^{+1700}_{-1700}$ / $3.9^{+0.1}_{0.1}\times10^7$ / |
+| Dust effective radius R_dust (WFI J2033-4723) | 2.5 | 0.2 | kpc | 3 | / WFI J2033$-$4723 / $17.6\pm0.9$ / $2.5\pm0.2$ / $1.1\pm0.2$ / $31^{+7}_{-5}$ / – / $1.7^{+0.3}_{-0.3}$ / $3.1^{+0.9}_{-0.6}\times10^{11}$ / $100^{+30}_{-20}$ / $2.5^{+0.9}_{-0.7}$ / $4.5^{+0.8}_{-0.7}\times10^{7}$ / |
+| Star formation rate surface density Sigma_SFR (WFI J2026-4536) | 4500 | +1700/-1700 | M_sun yr^-1 kpc^-2 | 4 | / WFI J2026$-$4536 / $19.6\pm0.8$ / $0.19\pm0.02$ / $0.61\pm0.02$ / $63^{+4}_{-3}$ / – / $1.8^{+0.1}_{-0.1}$ / $3.1^{+1.7}_{-1.5}\times10^{12}$ / $1010^{+60}_{-50}$ / $4500^{+1700}_{-1700}$ / $3.9^{+0.1}_{0.1}\times10^7$ / |
+| Molecular gas mass M_gas (HS 0810+2554) | 2.1e9 | 0.1e9 | M_sun | 5 | For this object we find $M_{\rm gas}=(2.1\pm0.1)\times10^9$ |
+| Gas fraction f_gas (HS 0810+2554) | 0.06 | 0.04 | dimensionless | 5 | For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\pm0.04$ and a depletion timescale of $50\pm40$ Myr, suggesting it is transitioning into quiescence. |
+| Gas depletion timescale t_dep (HS 0810+2554) | 50 | 40 | Myr | 5 | For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\pm0.04$ and a depletion timescale of $50\pm40$ Myr, suggesting it is transitioning into quiescence. |
+
+## Qualitative findings
+
+- Quasar hosts divide into two morphological types: extended, clumpy dust distributions (R_eff ~ 2 kpc, Sigma_SFR ~ 3 M_sun yr^-1 kpc^-2) and compact starbursts (R_eff ~ 0.5 kpc, Sigma_SFR = 400-4500 M_sun yr^-1 kpc^-2).  
+  > "We find that the quasar hosts in our sample can be distinguished into two types: 1) galaxies characterised by clumpy, extended dust distributions ($R_{\rm eff}\sim2$ kpc) and mean star formation rate surface densities comparable to sub-mm-selected dusty star-forming galaxies" (Abstract); "2) galaxies that have sizes in dust emission similar to coeval passive galaxies and compact starbursts ($R_{\rm eff}\sim0.5$ kpc), with high mean star formation rate surface densities ($\Sigma_{\rm SFR}=400$–4500 M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$ )" (Abstract)
+- Reconstructed CO velocity fields show rotational structure around the continuum peak in all cases, consistent with gas discs.  
+  > "In all cases, the reconstructed line velocity structure shows evidence of rotation around the peak of the continuum emission, suggesting the gas is in disc." (Molecular gas properties)
+
+## Claim tuples
+
+- H: Quasar host galaxies at z ~ 2 undergo dissipative contraction into compact spheroids with intense, potentially Eddington-limited central starbursts. | E: Reconstructed source-plane dust and CO emission of seven gravitationally lensed quasars using visibility-plane pixellated lens modelling and fitted optically thick dust SEDs. | R: Five of seven quasar hosts have compact dust sizes (R_eff = 0.13 to 0.8 kpc) comparable to coeval compact quiescent galaxies and mean SFR surface densities of 370 to 4500 M_sun yr^-1 kpc^-2, within a factor of 2-3 of or exceeding the Eddington limit (1600 +/- 800 M_sun yr^-1 kpc^-2). | F: A subset of quasar hosts are observed during dissipative compaction where high central gas densities drive Eddington-limited starbursts and black hole accretion. | **supported**
+- H: Higher effective dust temperatures in quasar hosts compared to unlensed DSFGs are driven by compact obscured starbursts rather than global AGN dust heating. | E: Compared intrinsic dust effective radii, effective dust temperatures, and FIR luminosities of the lensed quasar hosts against z ~ 2 ALESS DSFGs, z > 4 DSFGs, and lensed DSFGs relative to the modified Stefan-Boltzmann relation. | R: Dust size and temperature are anti-correlated (Kendall tau = -0.37, p = 0.04) and quasar hosts follow the modified Stefan-Boltzmann law for their smaller physical sizes. | F: Sub-mm dust emission in these quasar hosts is primarily heated by compact star formation rather than the central AGN. | **supported**
+- H: Extreme star formation in compact quasar hosts rapidly depletes their molecular gas reservoirs, leading to quenching. | E: Measured the intrinsic CO(3-2) luminosity, dynamical mass, gas mass, gas fraction, and gas depletion timescale for HS 0810+2554. | R: HS 0810+2554 has a gas mass of (2.1 +/- 0.1) x 10^9 M_sun, a gas fraction of 0.06 +/- 0.04 relative to its dynamical mass, and a depletion timescale of 50 +/- 40 Myr. | F: HS 0810+2554 is rapidly exhausting its gas reservoir and transitioning into quiescence. | **supported**
+
+## Reasoning
+
+- Why this data: Strong gravitational lensing provides the high angular resolution (100s pc) and sensitivity required to resolve the size, structure, and dynamics of z ~ 2 quasar hosts, while optical lens selection avoids dust temperature bias.  
+  > "This demands high spatial resolution (100s pc), which is most efficiently achieved by observing objects that are gravitationally lensed (e.g. (cite: Swinbank:2010; ALMA:2015))." (Introduction); "As these latter systems were primarily selected in optical imaging and subsequently selected on the basis of their FIR luminosity, their selection is largely insensitive to dust temperature." (Summary of the sample, observations and data reduction)
+- Why this method: Visibility-plane pixellated lens modelling avoids non-linear deconvolution systematics from sparse uv-coverage and handles large unaveraged interferometric datasets directly.  
+  > "Imaging interferometric data is a non-linear process, and the resulting image fidelity can depend heavily on the sparsity of the $uv$-plane coverage and choice of deconvolution method (e.g. CLEAN, (cite: Hogbom:1974))." (Lens Modelling); "These systematic uncertainties can be overcome by performing model fitting on the visibility data directly." (Lens Modelling); "Recently, (cite: Powell:2020) introduced several algorithmic improvements to overcome this limitation and model large interferometric data sets directly. We employ this method for optimising the visibility-plane posterior probability and source-plane regularisation." (Lens Modelling)
+- Alternative: Optically thin dust SED models were rejected in favour of optically thick models because optically thin models under-predict dust temperatures in high-z galaxies.  
+  > "(cite: Stacey:2018a) assumed the case of optically thin dust emission. However, there is growing evidence that an optically thin dust model under-predicts the dust temperature of high-redshift galaxies because the dust remains optically thick into the far-infrared ((cite: Riechers:2013), (cite: Cortzen:2020))." (Dust properties)
+- Alternative: Two-component dust mass models for all targets were attempted but rejected because sparse SED sampling yielded very large uncertainties on the cold component mass.  
+  > "We attempted fitting two-component models to our SEDs but, as most are sparsely sampled, the uncertainties on the mass of the cold component was very large and encompasses the masses derived with a single temperature fit." (Dust properties)
+- Alternative: Including the small satellite galaxy of RX J0911+0551 in the lens model was tested and rejected as it had no significant effect.  
+  > "The lensing galaxy of RX J0911+0551 also has a small satellite, however this is well within the Einstein radius and we find it does not have a significant effect on our lens modelling." (Lens Modelling)
+- How they decided it was enough: 100 noise realisations were found sufficient to produce a smooth Gaussian error distribution, and visibility model residuals were below 4 sigma.  
+  > "We find our lens models fit the data well and the residual surface brightness features are below the 4 $\sigma$ level." (Source reconstructions); "We find that 100 realisations is sufficient to produce a smooth distribution that can be approximated by a Gaussian function." (Supplementary figures and tables)
+- Limitation (authors): Sample is small (7 objects) and heterogeneous, probing different CO rotational transitions that trace different gas temperatures and regions.  
+  > "As a result, this sample is heterogeneous, and the observations probe different CO line transitions" (Summary of the sample, observations and data reduction); "Our conclusions here are based on the data for just seven objects from the sample of lensed quasars." (Conclusions)
+- Limitation (authors): 2D reconstructed velocity and dispersion maps are affected by beam-smearing, and two sources only use 3 velocity channels.  
+  > "However, these 2-dimensional maps may be strongly affected by beam-smearing, which can misguide interpretation of the dynamics of the systems (velocity dispersion in particular, e.g. (cite: Lelli:2010))." (Molecular gas properties); "Also note that for SDSS J0924+0219 and WFI J2033$-$4723 we use only three velocity channels for the reconstructions." (Molecular gas properties)
+- Limitation (authors): Single-temperature SED fits may underestimate total dust mass if a colder diffuse ISM dust component is present.  
+  > "Note that, if the temperature of dust in the diffuse ISM is much lower than the effective dust temperature for quasar hosts, the dust masses derived for of our sample could be underestimated." (Dust properties)
+- Limitation (authors): PG 1115+080 and HS 0810+2554 continuum are only marginally resolved in the radial/tangential direction, requiring size estimates from the minor axis and simulation-based corrections.  
+  > "However, for PG 1115+080 and HS 0810+2554 continuum, we determine that the lensed emission is only marginally resolved in the tangential direction." (Source reconstructions)
+- Caveat (inferred, ours): High-J CO transitions (J=8-7, 9-8, 10-9) trace dense, warm nuclear gas rather than the full cold molecular gas reservoir, which can bias CO sizes and dynamical masses downward.
+- Caveat (inferred, ours): Gas fraction and depletion time conclusions rely on a single object (HS 0810+2554) assuming a fixed starburst alpha_CO = 0.8.
+- Caveat (inferred, ours): Two tables referenced in the text (Table obs2 and Table lens_models) are absent from the article text.
+
+## Reproducibility
+
+- Data public (paper): Raw ALMA data are in the ALMA archive under the stated project codes; derived data shared on reasonable request to the corresponding author.  
+  > "ADS/JAO.ALMA#2012.1.00175.S, ADS/JAO.ALMA#2015.1.01309.S, ADS/JAO.ALMA#2017.1.01368.S, ADS/JAO.ALMA#2017.1.01081.S, ADS/JAO.ALMA#2018.1.01519.S." (Acknowledgements); "The data underlying this article will be shared on reasonable request to the corresponding author." (Data availability)
+- Products in archive: _not stated_
+- Code: _not stated_
+- Missing: The proprietary/specialized visibility-plane pixellated lens modelling code of Vegetti & Koopmans (2009) / Powell et al. (2020) is not publicly linked or released in the paper
+- Missing: Table of best-fit lens model parameters (referenced as Table lens_models) and Table of spectral line observation parameters (referenced as Table obs2) are missing from the paper text
+- Missing: Source-plane grid resolution, pixel sizes, and regularisation weights used for each target
+- Missing: Exact correction offsets applied to Sersic sizes from the Gaussian mock source inflation tests
+- Data volume (inferred): Moderate (~50-200 GB of raw and calibrated ALMA visibilities across 7 targets in Bands 4 and 7)
+- Score (inferred): 55/5, Raw ALMA project codes, physical equations, and numerical answer keys for all targets are clearly provided, but reproduction of the core source-plane reconstructions is blocked by the unstated availability of the specialized visibility-plane pixellated lens modelling code (Powell et al. 2020) and two missing tables (lens model parameters and spectral line setup) in the text.
+- Rediscovery candidate: yes, All ALMA project codes are public in the archive, lens-plane continuum fluxes and CO line Gaussian FWHMs can be directly reproduced with standard CASA scripts, and intrinsic sizes/SED properties provide well-defined numeric targets if an equivalent visibility-plane lens modelling tool (e.g. PyAutoLens or visilens) is used.
+
+## Links
+
+- Method: (cite: Vegetti:2009) (Grid-based pixellated gravitational lens modelling and source reconstruction framework)
+- Method: (cite: Powell:2020) (Algorithmic method for visibility-plane posterior probability optimisation and source-plane regularisation on large interferometric datasets)
+- Method: (cite: Dunne:2000) (Dust mass estimation formula and 850 um dust mass opacity)
+- Method: (cite: Solomon:2005) (Conversion relations from CO line flux density to line luminosities L_CO and L'_CO)
+- Method: (cite: Andrews:2011) (Optically thick Eddington flux limit relation for warm starbursts)
+- Companion: (cite: Stacey:2018a) (Parent Herschel/SPIRE survey of 104 gravitationally lensed quasars providing the sample, ancillary photometry, and initial SED fits)
+- Related: H0LiCOW
+- Related: ALESS
+
+## Checks
+
+```json
+{
+ "quotes": 199,
+ "quotes_ok": 199,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 6,
+ "unsupported_facts": 0,
+ "project_codes": 6,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [
+  "2018.1.01519.S"
+ ],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 24,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 109,
+  "stated": 83,
+  "rate": 0.761
+ },
+ "evidence_ok": true
+}
+```

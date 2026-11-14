@@ -1,0 +1,244 @@
+{
+ "bibcode": "2019MNRAS.483.2251Z",
+ "title": "The ALMA Fornax Cluster Survey I: stirring and stripping of the molecular gas in cluster galaxies",
+ "year": 2019,
+ "doi": "10.1093/mnras/sty3234",
+ "arxiv_id": "1811.11759",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Does the cluster environment affect the molecular gas in Fornax cluster galaxies, and which processes are responsible?",
+ "alma_project_codes": [
+  "2015.1.00497.S",
+  "2015.1.01135.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO(1-0) at ~115 GHz)",
+  "arrays": "12 m array",
+  "angular_resolution": "not stated",
+  "sensitivity": "typical rms ~3 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses for many targets and Herschel FIR detections",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^\\dagger$Stellar masses from (cite: Fuller2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Fuller2014)"
+  },
+  {
+   "what": {
+    "value": "xCOLD GASS field control sample median gas fractions",
+    "evidence": [
+     {
+      "loc": "4.4 Gas fractions & deficiencies",
+      "quote": "We use the relation based on the median values that they obtained by subdividing the sample in bins based on their stellar mass (cite: Saintonge2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Saintonge2017)"
+  },
+  {
+   "what": {
+    "value": "Cluster mean velocity 1493 km/s and dispersion 374 km/s",
+    "evidence": [
+     {
+      "loc": "2 Sample selection",
+      "quote": "The mean velocity and velocity dispersion of the Fornax cluster were taken from (cite: Drinkwater2001a), and equal 1493 km s$^{-1}$and 374 km s$^{-1}$, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: Drinkwater2001a)"
+  },
+  {
+   "what": {
+    "value": "Reduced NGC1365 image from archive",
+    "evidence": [
+     {
+      "loc": "3.1.2 NGC1365",
+      "quote": "an already reduced image of NGC1365 was taken from the ALMA archive"
+     }
+    ]
+   },
+   "citation": "project 2015.1.01135.S, PI Egusa"
+  },
+  {
+   "what": {
+    "value": "HI mass of NGC1427A 2.1e9 Msun",
+    "evidence": [
+     {
+      "loc": "5.5 NGC1427A",
+      "quote": "Its atomic hydrogen mass is $M_{\\text{H{\\sc i} }} = 2.1 \\times 10^9 M_\\odot$ (cite: Lee-Waddell2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Lee-Waddell2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO cubes",
+   "method": "Manual CASA calibration, tclean with natural weighting, uvcontsub, impbcor",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "10 km/s channels (2 km/s for FCC207, FCC261), 0.5\" pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps, PVDs and spectra",
+   "method": "Masked moment method with smoothed-cube mask clipped at 3 or 4 sigma; PVD from beam-wide slit along major axis",
+   "software": [],
+   "key_parameters": [
+    "velocity smoothing 4 channels; clip at 3 or 4 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Classify morphology and kinematics",
+   "method": "Visual inspection of moment 0 and 1 maps: regular vs disturbed",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure line flux and derive H2 masses",
+   "method": "Gaussian fit or direct box integration; M_H2 from CO flux with metallicity-dependent X_CO (Accurso+2017), metallicity from stellar mass",
+   "software": [],
+   "key_parameters": [
+    "Delta MS = 0; 10% calibration error added"
+   ],
+   "assumptions": [
+    "D = 19.95 Mpc; alpha_CO multiplied by 2.14e20 for X_CO; stellar M/L = 1 at 3.6 um"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Upper limits for non-detections",
+   "method": "3 sigma limits assuming Gaussian line of FWHM 50 km/s, peak 3x rms in inner PB-corrected cube",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compare gas fractions with field",
+   "method": "Compare M_H2/M_star with xCOLD GASS median relation (log interpolation/extrapolation); deficiency = log observed - log expected; KS and Mann-Whitney tests vs. cluster radius",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO detections",
+   "value": "15 of 30",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "CO was detected (at $> 3 \\sigma$) in 15 of the 30 galaxies observed."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 deficiency, regular galaxies",
+   "value": "-0.50",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Gas fractions & deficiencies",
+     "quote": "Galaxies with regular CO emission have an average H$_2$ deficiency of -0.50 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 deficiency, disturbed galaxies",
+   "value": "-1.1",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Gas fractions & deficiencies",
+     "quote": "galaxies with disturbed CO emission have an average H$_2$ deficiency of -1.1 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_H2 NGC1365",
+   "value": "9.49",
+   "uncertainty": "0.04",
+   "units": "log Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NGC1365 | 121 | R | B | 2.4; 2.0; 12 | 12 | 940 | 1221 $\\pm$ 20 | 9.49 $\\pm$ 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1380 continuum spectral index",
+   "value": "1.1",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC1380 | 107.765 | 4.18 $\\pm$ 0.04 | 113.763 | 4.65 $\\pm 0.08$ | 101.775 | 4.12 $\\pm 0.04$ | 1.1 $\\pm$ 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1427A metallicity from gas-to-dust ratio",
+   "value": "12+log(O/H) = 8.12",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.5 NGC1427A",
+     "quote": "The resulting metallicity, assuming these relations hold, is $12 + \\text{log}(\\text{O/H})$ = 8.12 (or 0.27 $Z_\\odot$)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which galaxies had continuum subtracted and the line-free channel ranges",
+  "Clean masks, thresholds and iteration limits",
+  "Mosaic pointing layouts and phase/bandpass calibrators other than flux calibrators",
+  "Exact channel ranges and aperture boxes used for integrated spectra",
+  "Exact Gaussian-fit procedure and box boundaries",
+  "Mopra reduction scripts beyond those described",
+  "Continuum imaging parameters and spectral-index fitting method",
+  "Specifics of the xCOLD GASS interpolation for expected H2 mass"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges and clean masks",
+  "Mopra reduction scripts",
+  "Integration boundaries per galaxy"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, scripts released, clear mass/deficiency recipe; some per-galaxy choices are visual or unstated.",
+ "rediscovery_reason": "Data are public, recipe is largely complete, and main results (detection counts, M_H2, deficiencies) are numeric.",
+ "source_card": "cards/2019MNRAS.483.2251Z/sonnet/card.md"
+}

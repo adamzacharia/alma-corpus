@@ -1,0 +1,621 @@
+{
+ "bibcode": "2021ApJ...909..181L",
+ "title": "Revisited Cold Gas Content with Atomic Carbon [C I] in z = 2.5 Protocluster Galaxies",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abdbb5",
+ "arxiv_id": "2101.04691",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Whether the same molecular gas mass calibration used for field galaxies can be applied to protocluster galaxies at z = 2.49 using [C I] (1-0), CO (3-2), and dust continuum.",
+ "alma_project_codes": [
+  "2015.1.00152.S"
+ ],
+ "data": {
+  "bands": "Band 4",
+  "arrays": "38 or 39 antennas",
+  "angular_resolution": "0''.42 x 0''.29 (natural weighting for [C I]); 0''.53 x 0''.43, 0''.65 x 0''.57, and 0''.97 x 0''.92 (tapered)",
+  "sensitivity": "0.10 mJy beam^-1 at 80 km s^-1 around phase center (natural weighting)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previous CO (3-2), CO (4-3), and 1.1 mm dust continuum observations and galaxy properties (M_star, SFR) of the protocluster HAEs",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "In this Paper, we perform a [CI] line search by targeting main-sequence galaxies associated with a protocluster at z = 2.49, where CO and dust emissions are already detected (Lee et al. 2017, 2019, hereafter we refer to these two papers as Paper I and Paper II, respectively)."
+     },
+     {
+      "loc": "2.3. Reanalysis of previous CO and dust measurements",
+      "quote": "We reanalyzed the CO (3–2), CO (4–3), and dust data for unified analyses to reduce the systematic errors coming from different flux measurement methods."
+     }
+    ]
+   },
+   "citation": "Lee et al. 2017 (Paper I); Lee et al. 2019 (Paper II)"
+  },
+  {
+   "what": {
+    "value": "Compilation of [C I] (1-0) and CO line luminosities and gas masses for local LIRGs, z ~ 1 main-sequence galaxies, and high-z DSFGs/QSOs",
+    "evidence": [
+     {
+      "loc": "3.2. The L ′ [CI](1 − 0) – L ′ CO(J − J − 1) relation",
+      "quote": "We first fit the literature values compiled in V20 and z ∼ 1 galaxies from the ASPECS survey (Boogaard et al. 2020) as well as the mean values of the SPT sources from Spilker et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Valentino et al. 2020 (V20)"
+  },
+  {
+   "what": {
+    "value": "[C I] and CO line luminosities for z ~ 1 galaxies from the ASPECS survey",
+    "evidence": [
+     {
+      "loc": "3.2. The L ′ [CI](1 − 0) – L ′ CO(J − J − 1) relation",
+      "quote": "We first fit the literature values compiled in V20 and z ∼ 1 galaxies from the ASPECS survey (Boogaard et al. 2020) as well as the mean values of the SPT sources from Spilker et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Boogaard et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Mean [C I] and CO line luminosity values of SPT sources",
+    "evidence": [
+     {
+      "loc": "3.2. The L ′ [CI](1 − 0) – L ′ CO(J − J − 1) relation",
+      "quote": "We first fit the literature values compiled in V20 and z ∼ 1 galaxies from the ASPECS survey (Boogaard et al. 2020) as well as the mean values of the SPT sources from Spilker et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Spilker et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "[C I] and CO (3-2) line luminosities for a compact star-forming galaxy at z = 2.2",
+    "evidence": [
+     {
+      "loc": "3.2. The L ′ [CI](1 − 0) – L ′ CO(J − J − 1) relation",
+      "quote": "For L ′ CO32 − L ′ CI10 relation, the data sets become sparse and most of the galaxies available are high- z DSFGs except for one from Popping et al. (2017), which is a compact star-forming galaxy (cSFG) at z = 2.2."
+     }
+    ]
+   },
+   "citation": "Popping et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "1.2 mm dust continuum and [C I]-based gas measurements and depletion time scales for z ~ 1 main-sequence galaxies",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "For a comparison of dust-based measurements, we plot data points from Bourne et al. (2019) using the 1.2mm detections."
+     },
+     {
+      "loc": "4.2. Gas depletion time scale compared to field galaxies",
+      "quote": "Other [C I ] -based data points in circles are z ∼ 1 main sequence galaxies taken from Bourne et al. (2019) and V20."
+     }
+    ]
+   },
+   "citation": "Bourne et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Field galaxy gas scaling relations for gas depletion time scale",
+    "evidence": [
+     {
+      "loc": "4.2 Gas depletion time scale compared to field galaxies",
+      "quote": "determined in Scoville et al. (2017), Tacconi et al. (2018) and Liu et al. (2019) at given stellar mass, redshift and deviation from the main sequence."
+     }
+    ]
+   },
+   "citation": "Scoville et al. (2017); Tacconi et al. (2018); Liu et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibility data, image [C I] cubes, subtract continuum, and apply primary beam correction",
+   "method": "Calibrate visibilities with ALMA pipeline in CASA 4.7.0; image with tclean in CASA 5.6.1 down to 2 sigma using 1'' circular masks with natural weighting and uvtapers (0''.3, 0''.5, 0''.9) at 80 km/s (and 50 km/s) binning; extract 10''x10'' subcubes, subtract continuum in image plane with imcontsub (fitorder=0), and apply primary beam correction.",
+   "software": [
+    "CASA",
+    "tclean",
+    "imcontsub"
+   ],
+   "key_parameters": [
+    "deconvolution threshold = 2 sigma, CLEAN mask = 1'' radius circular region",
+    "natural weighting and uvtaper = 0''.3, 0''.5, 0''.9; velocity resolution = 80 km s^-1 (default) or 50 km s^-1 (HAE 8)",
+    "imcontsub fitorder = 0 on 10'' x 10'' subcubes"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Apply detection criteria and measure line and continuum fluxes (including reanalysis of CO and 1.1 mm dust)",
+   "method": "Select candidates with peak integrated intensity S/N >= 4.5, then require peak flux density >= 3.5 sigma or >= 2 continuous channels > 2.5 sigma; measure total fluxes via 2D Gaussian fitting with CASA imfit in circular apertures (0''.7 or 1''.0) chosen from growth curves, or 1D Gaussian fitting for HAE 4b; reanalyze CO (3-2), CO (4-3), and 1.1 mm dust with the same procedure.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "HAE 3 and HAE 16: 0''.3-tapered map, 1''.0 aperture; HAE 4: natural-weighted map, 0''.7 aperture; HAE 8 and HAE 9: 0''.5-tapered map, 1''.0 aperture",
+    "CO (3-2): natural weighting, 1''.0 aperture; 1.1 mm dust: 0''.5 taper, 1''.0 aperture; CO (4-3): same imaging parameters and apertures as [C I]"
+   ],
+   "assumptions": [
+    "For non-detections without any line detection, assume FWHM = 300 km s^-1, natural weighting, and 0''.7 aperture for 3 sigma upper limits; if CO is detected, assume the CO (4-3) line width and aperture."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit L'_CO vs L'_[CI](1-0) luminosity relations",
+   "method": "Fit linear relations in log-log space between L'_CO(4-3) or L'_CO(3-2) and L'_[CI](1-0) for literature samples and for six secure protocluster galaxies (with variable and fixed slopes) using orthogonal distance regression.",
+   "software": [],
+   "key_parameters": [
+    "Include non-detections as 3 sigma upper limits with 1 sigma noise uncertainties; test variable slope and fixed slopes (a = 1.04, 1.32)."
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive and cross-calibrate molecular gas masses from [C I], CO (3-2), and 1.1 mm dust",
+   "method": "Calculate M_mol from [C I] using Equation (1), from CO (3-2) using R_13 and alpha_CO, and from 1.1 mm dust using the Scoville et al. (2016) calibration; compare the three tracers against galaxy properties and PDR models.",
+   "software": [],
+   "key_parameters": [
+    "A_10 = 7.93 x 10^-8 s^-1, Q_10 = 0.35, log(X_CI) = -4.8, mu = 1.36",
+    "R_13 = 1.9, alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1 (no metallicity correction); T_d = 25 K for dust"
+   ],
+   "assumptions": [
+    "Optically thin [C I] (1-0) with Q_10 = 0.35, log(X_CI) = -4.8, R_13 = 1.9, Milky Way-like alpha_CO = 4.36 without metallicity correction, T_d = 25 K, Chabrier (2003) IMF."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze gas depletion time scale scaling relations vs stellar mass",
+   "method": "Compute [C I]-based gas depletion time scales (tau_depl = M_gas / SFR), normalize by field scaling relations from Scoville et al. (2017), Tacconi et al. (2018), and Liu et al. (2019), and compute Spearman rank correlation coefficients with stellar mass.",
+   "software": [],
+   "key_parameters": [
+    "Include [C I] non-detections with CO (4-3) detections for galaxies with log(M_star/M_sun) > 9.5 using 3 sigma upper limits."
+   ],
+   "assumptions": [
+    "[C I] line width for non-detections equals CO (4-3) line width."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HAE 3 [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.17",
+   "uncertainty": "0.05",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE3 316.83763 23.52055 0.53 × 0.43 1.0 160 172 ± 106 0.17 ± 0.05 0.43 ± 0.12 0.67 ± 0.17 0.77 ± 0.26"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 3a [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.15",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE3a † 316.83763 23.52055 0.53 × 0.43 1.0 560 172 ± 106 0.15 ± 0.08 0.43 ± 0.12 0.63 ± 0.18 0.77 ± 0.26"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 3 [C I] (1-0) FWHM",
+   "value": "172",
+   "uncertainty": "106",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE3 316.83763 23.52055 0.53 × 0.43 1.0 160 172 ± 106 0.17 ± 0.05 0.43 ± 0.12 0.67 ± 0.17 0.77 ± 0.26"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 4 [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.20",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE4 316.84013 23.52810 0.42 × 0.29 0.7 480 228 ± 130 0.20 ± 0.06 0.42 ± 0.10 0.19 ± 0.06 < 0.42"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 4b [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.13",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE4b ‡ 316.84013 23.52810 0.53 × 0.43 1.0 480 292 ± 138 0.13 ± 0.08 0.17 ± 0.07 0.22 ± 0.10 < 0.42"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 8 [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.24",
+   "uncertainty": "0.04",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE8 316.81638 23.52431 0.65 × 0.57 1.0 150 154 ± 62 0.24 ± 0.04 0.55 ± 0.09 0.49 ± 0.06 0.90 ± 0.19"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 8 [C I] (1-0) FWHM",
+   "value": "154",
+   "uncertainty": "62",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE8 316.81638 23.52431 0.65 × 0.57 1.0 150 154 ± 62 0.24 ± 0.04 0.55 ± 0.09 0.49 ± 0.06 0.90 ± 0.19"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 9 [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.38",
+   "uncertainty": "0.09",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE9 316.84409 23.52871 0.65 × 0.57 1.0 560 410 ± 171 0.38 ± 0.09 0.64 ± 0.10 0.61 ± 0.12 1.52 ± 0.29"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 9a [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.55",
+   "uncertainty": "0.14",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE9a † 316.84409 23.52871 0.65 × 0.57 1.0 800 410 ± 171 0.55 ± 0.14 0.64 ± 0.10 1.23 ± 0.23 1.52 ± 0.29"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 16 [C I] (1-0) integrated flux (I_[CI]10)",
+   "value": "0.33",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HAE16 316.81102 23.52107 0.53 × 0.43 1.0 800 453 ± 201 0.33 ± 0.07 0.57 ± 0.14 0.82 ± 0.12 < 0.94"
+    }
+   ]
+  },
+  {
+   "quantity": "Protocluster log L'_CO43 - log L'_CI10 slope (a)",
+   "value": "1.16",
+   "uncertainty": "0.23",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "a 1.04 ± 0.02 1.32 ± 0.22 1.16 ± 0.23 fixed to 1.04 fixed to 1.32"
+    }
+   ]
+  },
+  {
+   "quantity": "Protocluster log L'_CO43 - log L'_CI10 intercept (b)",
+   "value": "10.46",
+   "uncertainty": "0.08",
+   "units": "log(K km s^-1 pc^2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "b 10.32 ± 0.02 10.47 ± 0.12 10.46 ± 0.08 10.42 ± 0.03 10.51 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Protocluster log L'_CO32 - log L'_CI10 slope (a)",
+   "value": "0.43",
+   "uncertainty": "0.20",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "a 1.32 ± 0.10 0.43 ± 0.20 fixed to 1.32"
+    }
+   ]
+  },
+  {
+   "quantity": "Protocluster log L'_CO32 - log L'_CI10 intercept (b)",
+   "value": "10.39",
+   "uncertainty": "0.08",
+   "units": "log(K km s^-1 pc^2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "b 10.36 ± 0.05 10.39 ± 0.08 10.70 ± 0.08"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 3a molecular gas mass from [C I] (M_mol,CI)",
+   "value": "5.5",
+   "uncertainty": "3.0",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE3a 5.5 ± 3.0 11.4 ± 3.2 8.0 ± 2.7"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 3a molecular gas mass from CO (M_mol,CO)",
+   "value": "11.4",
+   "uncertainty": "3.2",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE3a 5.5 ± 3.0 11.4 ± 3.2 8.0 ± 2.7"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 3a molecular gas mass from dust (M_mol,RJ)",
+   "value": "8.0",
+   "uncertainty": "2.7",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE3a 5.5 ± 3.0 11.4 ± 3.2 8.0 ± 2.7"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 4 molecular gas mass from [C I] (M_mol,CI)",
+   "value": "7.4",
+   "uncertainty": "2.2",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE4 7.4 ± 2.2 11.2 ± 2.7 < 4.4"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 4b molecular gas mass from [C I] (M_mol,CI)",
+   "value": "4.8",
+   "uncertainty": "3.0",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE4b 4.8 ± 3.0 4.5 ± 1.9 < 4.4"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 8 molecular gas mass from [C I] (M_mol,CI)",
+   "value": "8.9",
+   "uncertainty": "1.5",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE8 8.9 ± 1.5 14.6 ± 2.4 9.4 ± 2.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 8 molecular gas mass from CO (M_mol,CO)",
+   "value": "14.6",
+   "uncertainty": "2.4",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE8 8.9 ± 1.5 14.6 ± 2.4 9.4 ± 2.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 8 molecular gas mass from dust (M_mol,RJ)",
+   "value": "9.4",
+   "uncertainty": "2.0",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE8 8.9 ± 1.5 14.6 ± 2.4 9.4 ± 2.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 9a molecular gas mass from [C I] (M_mol,CI)",
+   "value": "20.3",
+   "uncertainty": "5.2",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE9a 20.3 ± 5.2 16.9 ± 2.6 15.9 ± 3.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 9a molecular gas mass from CO (M_mol,CO)",
+   "value": "16.9",
+   "uncertainty": "2.6",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE9a 20.3 ± 5.2 16.9 ± 2.6 15.9 ± 3.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 9a molecular gas mass from dust (M_mol,RJ)",
+   "value": "15.9",
+   "uncertainty": "3.0",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE9a 20.3 ± 5.2 16.9 ± 2.6 15.9 ± 3.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 10 molecular gas mass from [C I] (M_mol,CI, 3 sigma upper limit)",
+   "value": "< 6.3",
+   "uncertainty": "not stated",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE10 < 6.3 14.1 ± 3.2 5.2 ± 1.7"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 16 molecular gas mass from [C I] (M_mol,CI)",
+   "value": "12.2",
+   "uncertainty": "2.6",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE16 12.2 ± 2.6 15.1 ± 3.7 < 9.8"
+    }
+   ]
+  },
+  {
+   "quantity": "HAE 16 molecular gas mass from CO (M_mol,CO)",
+   "value": "15.1",
+   "uncertainty": "3.7",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HAE16 12.2 ± 2.6 15.1 ± 3.7 < 9.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass deviation of [C I] vs CO (3-2)",
+   "value": "-0.14",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Using the calibration adopted for field main-sequence galaxies, the [C I ] -based gas measurements are lower than or comparable to the CO-based gas measurements by -0.35 dex at the lowest with the mean deviation of -0.14 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass difference of [C I] vs dust",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The differences between [C I ] - and the dust- based measurements are relatively mild by up to 0.16 dex with the mean difference of 0.02 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between normalized depletion time scale (Scoville et al. 2017) and stellar mass (including upper limits)",
+   "value": "-0.81",
+   "uncertainty": "p = 0.008",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Gas depletion time scale compared to field galaxies",
+     "quote": "We find negative Spearman coefficient values ( p -value) of -0.81 (0.008, Scoville et al. 2017), -0.68 (0.04, Tacconi et al. 2018), -0.53 (0.14, Liu et al. 2019), when the 3 σ upper limits are all taken into account."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between normalized depletion time scale and stellar mass (secure detections only)",
+   "value": "-0.9",
+   "uncertainty": "p = 0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Gas depletion time scale compared to field galaxies",
+     "quote": "We also note that the correlation coefficient is -0.9 with p-value of 0.04 if only the secure detections are considered."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel/cell size and full image dimensions used in tclean",
+  "Exact line-free frequency/channel ranges used for imcontsub continuum subtraction",
+  "Observing dates and ALMA configurations for project 2015.1.00152.S",
+  "ALMA project codes for the reanalyzed CO (3-2), CO (4-3), and 1.1 mm continuum datasets (reported in Paper I and Paper II)",
+  "Individual galaxy stellar masses and star formation rates (taken from Paper I/II, not tabulated in this paper)"
+ ],
+ "missing_for_reproduction": [
+  "ALMA project IDs for the reanalyzed CO (3-2), CO (4-3), and 1.1 mm continuum datasets (must be looked up in Lee et al. 2017, 2019)",
+  "Exact velocity/frequency intervals for each target used in line integration and imcontsub continuum subtraction",
+  "tclean cell size and image dimensions",
+  "Tabulated M_star and SFR values for individual HAEs (inherited from Lee et al. 2017, 2019)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project code, CASA versions, calibration method, weighting, uvtapers, aperture sizes, velocity integration widths, and conversion factor equations/parameters are all clearly stated and fluxes/masses are fully tabulated; minor deductions for unstated tclean cell size, exact line-free channels, and reliance on Paper I/II for CO/dust project codes and M_star/SFR values.",
+ "rediscovery_reason": "Public ALMA dataset (2015.1.00152.S) with explicit CASA imaging/taper/aperture recipes and complete answer-key tables of line fluxes (Table 1), luminosity relation fits (Table 2), and derived molecular gas masses (Table 3).",
+ "source_card": "cards/2021ApJ...909..181L/sonnet/card.md"
+}

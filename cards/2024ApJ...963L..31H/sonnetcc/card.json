@@ -1,0 +1,1734 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...963L..31H",
+  "title": "On the Magnetic Field Properties of Protostellar Envelopes in Orion",
+  "year": 2024,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Huang, Bo",
+  "n_authors": 26,
+  "arxiv_id": "2402.07267",
+  "doi": "10.3847/2041-8213/ad27d4",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.00086.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "polarimetric observations toward 61 protostars in the Orion molecular clouds"
+   },
+   {
+    "loc": "Introduction",
+    "quote": "The *B*-field Orion Protostellar Survey (BOPS) used ALMA to observe 870 $\\mu$m dust polarization toward 61 young low-mass protostars in the OMCs."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "BOPS sample: 61 protostars in 57 ALMA fields in the Orion molecular clouds",
+     "coordinates": {
+      "value": "listed per source (R.A./Dec.) in the parameters table in the Appendix",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "to observe 57 fields, each centered on a different protostar as identified by the VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars (cite: tobin2020vla)"
+       },
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The names and coordinates of these protostars are listed in Table [\\[Tab:parameters\\]](#Tab:parameters) of Appendix [9](#App:Table)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "355.4 to 460.0 pc per source (column D of the parameters table)",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "to observe 57 fields, each centered on a different protostar as identified by the VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars (cite: tobin2020vla)"
+       },
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The names and coordinates of these protostars are listed in Table [\\[Tab:parameters\\]](#Tab:parameters) of Appendix [9](#App:Table)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "HH212M",
+     "coordinates": {
+      "value": "05:43:51.41 -01:02:53.25 (h:m:s, d:m:s)",
+      "evidence": [
+       {
+        "loc": "Table",
+        "quote": "HH212M & 05:43:51.41 & -01:02:53.25 & 0.95$\\times$0.70 & -70.0 & 429.2"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "429.2 pc",
+      "evidence": [
+       {
+        "loc": "Table",
+        "quote": "HH212M & 05:43:51.41 & -01:02:53.25 & 0.95$\\times$0.70 & -70.0 & 429.2"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the magnetic field (B-field) morphologies of Orion protostellar envelopes, how are they oriented relative to outflows and envelope velocity gradients, and is compact polarization from self-scattering?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Its main objective is to investigate the role of *B*-fields on spatial scales ranging from 400 to thousands of au, fully encompassing the protostellar envelope surrounding the youngest protostars."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 7 (870 um)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The BOPS (PI: Ian Stephens, 2019.1.00086) survey used ALMA Band 7 (870 $\\mu$m) to observe 57 fields"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "FDM; four spectral windows, two per sideband; spw1 CO (3-2) 345.79599 GHz, 468.75 MHz, 1920 ch, 0.21 km/s; spw2-4 continuum at 348.5, 334.5, 336.5 GHz, 1875 MHz each; C17O (3-2) in spw4",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The observations were taken in Frequency Division Mode (FDM), providing modest spectral resolutions."
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "We used four spectral windows, two in each sideband"
+     },
+     {
+      "loc": "Table",
+      "quote": "1: CO (3–2) | 1920 | 345.79599 | 468.75 | 0.24 | 0.21"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "345.79599 GHz",
+     "evidence": [
+      {
+       "loc": "Table",
+       "quote": "1: CO (3–2) | 1920 | 345.79599 | 468.75 | 0.24 | 0.21"
+      },
+      {
+       "loc": "3 Results",
+       "quote": "The $^{12}$CO (3–2) and C$^{17}$O (3–2) channel maps were used to identify the molecular outflows and the molecular emission from the envelope, respectively."
+      }
+     ]
+    },
+    {
+     "species": "C17O",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Notably, C$^{17}$O (3–2) in spectral window 4 was detected toward each protostar, which we used to trace the envelope kinematics."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "1.875 GHz per spectral window (continuum windows)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The maximum bandwidth (1.875 GHz per spectral window) was selected for the continuum"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ALMA compact configurations plus an intermediate configuration of both",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using the ALMA compact configurations C43-1 and C43-2, and an intermediate configuration of both"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-1, C43-2, and an intermediate configuration of both",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using the ALMA compact configurations C43-1 and C43-2, and an intermediate configuration of both"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "about 14 m to 312 m",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "which provided baselines between about 14 m and 312 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~400 au (1 arcsec); restoring beams about 0.8-0.97 x 0.65-0.71 arcsec",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with $\\sim$400 au (1$\\ensuremath{''}$) resolution using the Atacama Large Millimeter/submillimeter Array"
+     },
+     {
+      "loc": "Table",
+      "quote": "HH212M & 05:43:51.41 & -01:02:53.25 & 0.95$\\times$0.70 & -70.0"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Stokes I noise ~0.1 mJy/beam; Stokes Q and U ~0.07 mJy/beam; Stokes I S/N 750 to 4200",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "is strongly detected with a signal-to-noise ratio (S/N) ranging from 750 to 4200 for all targets"
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "which is higher than the noise level of $\\sigma_{QU} \\sim0.07$ mJy/beam in both the Stokes *Q* and *U* maps"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "November 29, 2019 to December 20, 2019",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "Observations were made from November 29, 2019, to December 20, 2019"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI: Ian Stephens (BOPS survey)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The BOPS (PI: Ian Stephens, 2019.1.00086) survey used ALMA Band 7"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLA / VANDAM Survey",
+     "provided": {
+      "value": "Sample selection from VLA 9 mm fluxes and VANDAM protostar identification; disk sizes and orientations from 0.1 arcsec observations",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "We targeted the brightest Class 0 sources using their VLA, C-array, 9 mm fluxes ($\\sim 1\\ensuremath{''}$ resolution)."
+       },
+       {
+        "loc": "3 Results",
+        "quote": "The disk’s major axis angles are derived from high resolution ($0.1\\ensuremath{''}$, $\\sim$40 au) observations as reported in (cite: tobin2020vla)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Disk major-axis position angles (and inclinations) of the protostars from high-resolution VANDAM observations",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "The disk’s major axis angles are derived from high resolution ($0.1\\ensuremath{''}$, $\\sim$40 au) observations as reported in (cite: tobin2020vla)."
+       }
+      ]
+     },
+     "citation": "(cite: tobin2020vla)"
+    },
+    {
+     "what": {
+      "value": "Disk radii of 30 to 250 au for the BOPS sample",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "In the BOPS sample, the disks have radii between 30 and 250 au (0.08$''$ and 0.63$''$) (cite: tobin2020vla)."
+       }
+      ]
+     },
+     "citation": "(cite: tobin2020vla)"
+    },
+    {
+     "what": {
+      "value": "Protostar identification and sample selection (VANDAM) and VLA C-array 9 mm fluxes",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "as identified by the VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars (cite: tobin2020vla)"
+       }
+      ]
+     },
+     "citation": "(cite: tobin2020vla)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "2D simulated intersecting angles uniformly projected from 3D (parallel: 0-22.5 deg; random: 0-90 deg; perpendicular: 67.5-90 deg), self-generated and compared with observed angle differences by K-S test",
+     "evidence": [
+      {
+       "loc": "3.4 Geometric projection effect",
+       "quote": "compare it with 2D simulated intersecting angles uniformly projected from a three-dimensional space"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Three successive rounds of phase-only self-calibration per source, Stokes I image as model, solution intervals 600 s, 30 s, 10 s; 12CO (3-2) flagged before self-cal",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Then we performed three successive rounds of phase-only self-calibration for each source to improve the image quality."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "with solution intervals set to 600, 30, and 10 seconds for the first, second, and third iterations, respectively"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean (continuum Stokes I, Q, U and line cubes)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The dust continuum images were produced using the `tclean` task in CASA (cite: casateam2022casa)"
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Finally, we performed the `tclean` task to produce Stokes *I*, *Q* and *U* image cubes using self-calibrated, continuum-subtracted data for each spectral window."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "with a *Briggs* weighting *robust* parameter set to 0.5, which is a good compromise between resolution and sensitivity (cite: Briggs95)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in the uv plane on self-calibrated line data",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The `uvcontsub` task was used to perform continuum fitting and subtraction in the UV plane."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "Continuum channels identified from full non-channel-averaged dirty cubes; channels exceeding 1.5 times the continuum baseline flagged after third self-cal round; continuum maps from line-free data of all spws",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Then, the full, non-channel-averaged dirty image cubes were produced to identify the channels of continuum."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "channels exceeding 1.5 times the continuum baseline were flagged after the third round of self-calibration"
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The final Stokes *I*, *Q*, *U* continuum maps were produced independently using line-free and self-calibrated data of all spectral windows."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "about 0.8-0.97 x 0.65-0.71 arcsec (per-source values in the parameters table)",
+     "evidence": [
+      {
+       "loc": "Table",
+       "quote": "HH212M & 05:43:51.41 & -01:02:53.25 & 0.95$\\times$0.70 & -70.0"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Stokes I ~0.1 mJy/beam (average); Stokes Q and U ~0.07 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The average noise level in the final Stokes *I* image is $\\sim0.1$ mJy beam$^{-1}$"
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "which is higher than the noise level of $\\sigma_{QU} \\sim0.07$ mJy/beam in both the Stokes *Q* and *U* maps"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Target identification and sample definition from the VANDAM survey",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "as identified by the VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars (cite: tobin2020vla)"
+       }
+      ]
+     },
+     "from_reference": "(cite: tobin2020vla)"
+    },
+    {
+     "what": {
+      "value": "Debiased polarized intensity definition",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "(cite: vaillancourt2006placing; hull2015stokes), using a 3$\\sigma_{QU}$ cutoff value"
+       }
+      ]
+     },
+     "from_reference": "(cite: vaillancourt2006placing; hull2015stokes)"
+    },
+    {
+     "what": {
+      "value": "Intensity-weighted mean B-field angle method",
+      "evidence": [
+       {
+        "loc": "6 Weighted mean B-field position angle",
+        "quote": "giving more weight to polarization directions in higher-density regions (cite: hull2013misalignment; hull2014tadpol)"
+       }
+      ]
+     },
+     "from_reference": "(cite: hull2013misalignment; hull2014tadpol)"
+    },
+    {
+     "what": {
+      "value": "Uncertainty-weighted mean position angle method",
+      "evidence": [
+       {
+        "loc": "6 Weighted mean B-field position angle",
+        "quote": "we also follow the approach discussed by (cite: galametz2020observational) and average the position angle of polarization by weighting it with its uncertainty"
+       }
+      ]
+     },
+     "from_reference": "(cite: galametz2020observational)"
+    },
+    {
+     "what": {
+      "value": "Pixel size of one-third to half of the beam FWHM for derivatives",
+      "evidence": [
+       {
+        "loc": "6 Weighted mean B-field position angle",
+        "quote": "the pixel size used here falls within a region of one-third to half of the beam FWHM (cite: soler2017relation)"
+       }
+      ]
+     },
+     "from_reference": "(cite: soler2017relation)"
+    },
+    {
+     "what": {
+      "value": "2D linear regression fit to the C17O moment 1 map for velocity gradient",
+      "evidence": [
+       {
+        "loc": "3.3 B-field at scales of 400-1000 au",
+        "quote": "we fit a 2D linear regression fit to the moment 1 map following (cite: goodman1993dense) and (cite: tobin2011ism)"
+       }
+      ]
+     },
+     "from_reference": "(cite: goodman1993dense; tobin2011ism)"
+    },
+    {
+     "what": {
+      "value": "Standard hourglass morphology definition",
+      "evidence": [
+       {
+        "loc": "3.2 B-field at envelope scales",
+        "quote": "show the expected morphology (cite: girart2006magnetic)"
+       }
+      ]
+     },
+     "from_reference": "(cite: girart2006magnetic)"
+    },
+    {
+     "what": {
+      "value": "Comparison of cumulative distribution of observed angle differences",
+      "evidence": [
+       {
+        "loc": "3.4 Geometric projection effect",
+        "quote": "we plot the cumulative distribution function of the observed angle difference (cite: hull2013misalignment; hull2014tadpol; stephens2017alignment)"
+       }
+      ]
+     },
+     "from_reference": "(cite: hull2013misalignment; hull2014tadpol; stephens2017alignment)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and whether the ALMA pipeline or manual calibration products were used as the starting point",
+    "Calibrator/flux scale and measurement-set selection used before self-calibration",
+    "tclean image size, cell size, deconvolver, masks and clean threshold for continuum and cubes",
+    "Which channels were treated as line-free per source for uvcontsub, and how the 12CO/other lines were flagged exactly",
+    "Spectral binning, channel width and restoring-beam choices for the C17O and 12CO cubes",
+    "How the 'continuum baseline' for the 1.5x channel flagging was defined",
+    "Exact selection of channels/velocity ranges for the 14 manually treated outflow sources and for companion sources",
+    "Source of the distances, Lbol and Tbol values in the parameters table",
+    "Self-scattering selection criteria for 'compact polarized emission' and the Gaussian-fit procedure details",
+    "Rules used to classify B-field morphologies (standard-hourglass, rotated, spiral, complex) and the P-V cut width",
+    "Number of pixels used and the Monte Carlo/sample details behind the K-S test simulations"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "self-calibrate and image the dust continuum in Stokes I, Q, U",
+    "method": {
+     "value": "Three rounds of phase-only self-calibration using the Stokes I image as model, then tclean continuum maps in Stokes I, Q, U from line-free self-calibrated data",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Then we performed three successive rounds of phase-only self-calibration for each source to improve the image quality."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The final Stokes *I*, *Q*, *U* continuum maps were produced independently using line-free and self-calibrated data of all spectral windows."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs robust = 0.5",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "with a *Briggs* weighting *robust* parameter set to 0.5, which is a good compromise between resolution and sensitivity (cite: Briggs95)"
+       }
+      ]
+     },
+     {
+      "value": "Solution intervals 600, 30, 10 s",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "with solution intervals set to 600, 30, and 10 seconds for the first, second, and third iterations, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Stokes I S/N 750 to 4200 reported for all targets after self-calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "is strongly detected with a signal-to-noise ratio (S/N) ranging from 750 to 4200 for all targets"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "derive debiased polarized intensity, fractional polarization and angle maps",
+    "method": {
+     "value": "P = (Q^2+U^2-sigma_QU^2)^1/2 with 3 sigma_QU cutoff; P_frac = P/I; theta = 0.5 arctan(U/Q) with 3 sigma threshold on the polarization intensity map",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The debiased polarized intensity is defined as $P=(Q^{2}+U^{2}-\\sigma_{QU}^{2})^{1/2}$ (cite: vaillancourt2006placing; hull2015stokes), using a 3$\\sigma_{QU}$ cutoff value."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The polarization angle is calculated as $\\theta=0.5\\cdot \\arctan(U/Q)$, using a 3$\\sigma$ value of the polarization intensity map as a threshold."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "3 sigma_QU cutoff for debiased P",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "using a 3$\\sigma_{QU}$ cutoff value"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Polarization angle rotated by 90 deg gives B-field direction if polarization arises from B-field aligned grains",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "should be rotated by 90$^\\circ$ to infer the mean direction of *B*-field $\\langle \\theta_{B} \\rangle$ if the polarization arises from *B*-field aligned grains"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "make continuum-subtracted line cubes",
+    "method": {
+     "value": "Apply self-cal solutions to full data, identify continuum channels in dirty cubes, uvcontsub, then tclean Stokes I, Q, U cubes per spectral window",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "For the line data, we first applied the self-calibration solutions to the entire dataset."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The `uvcontsub` task was used to perform continuum fitting and subtraction in the UV plane."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "uvcontsub",
+     "tclean"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "determine envelope V_LSR and make outflow and velocity-field maps",
+    "method": {
+     "value": "Gaussian fit to C17O spectrum within 1000 au for V_LSR; immoments for 12CO blue/red outflow maps (velocity range from +/-5 km/s from V_LSR, channels above 5 sigma, some channels chosen manually); C17O moment 1 over channels above 3 sigma",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The envelope’s centroid velocity ($V_{\\rm LSR}$) was estimated by fitting a Gaussian to the spectrum obtained from averaging the C$^{17}$O (3–2) emission within a scale of 1000 au around the position of the protostar."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The `immoments` task was used to generate the outflow maps."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "This map covers all channels with emission exceeding 3$\\sigma$."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "immoments"
+    ],
+    "key_parameters": [
+     {
+      "value": "Outflow channels: starting from +/- 5 km/s w.r.t. V_LSR, emission at least 5 sigma",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "included all channels where the emission was at least 5$\\sigma$"
+       }
+      ]
+     },
+     {
+      "value": "Outflow edges at 5 sigma and radius R = 1000 au for position angle",
+      "evidence": [
+       {
+        "loc": "7 Outflow parameters",
+        "quote": "The edges of the lobes are defined using the 5$\\sigma$ level of the emission."
+       },
+       {
+        "loc": "7 Outflow parameters",
+        "quote": "Uniformly, the radius from center to lobe edge is set to $R=1000$ au, as most sources have clear outflows at this scale."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "C17O emission optically thin in the envelope",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "Since C$^{17}$O emission is optically thin in the envelope region (see Appendix [8](#App:VG))"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fit to C17O spectrum for V_LSR (details not stated)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "was estimated by fitting a Gaussian to the spectrum obtained from averaging the C$^{17}$O (3–2) emission"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "identify self-scattering sources from compact polarized emission",
+    "method": {
+     "value": "Gaussian fits to the polarized intensity of compact polarized sources; compare polarization angle to outflow direction and disk major axis; fractional polarization range check",
+     "evidence": [
+      {
+       "loc": "3.1 Self-scattering",
+       "quote": "We performed Gaussian fits to the polarized intensity and found that in each cases, the upper limits of the size of polarized emission are comparable to disk sizes, suggesting that the polarization arises from disk scales."
+      },
+      {
+       "loc": "3.1 Self-scattering",
+       "quote": "The fractional polarization of these 16 ptotostars is between 0.5% to 2.0%, suggesting that the compact polarization detected arises from self-scattering"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Self-scattering polarization is parallel to the minor axis of an inclined disk, so aligned with outflow",
+      "evidence": [
+       {
+        "loc": "3.1 Self-scattering",
+        "quote": "Self-scattering polarization is observed parallel to the minor axis of an inclined disk"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fit (sampler/priors not stated)",
+     "evidence": [
+      {
+       "loc": "3.1 Self-scattering",
+       "quote": "We performed Gaussian fits to the polarized intensity"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Deconvolved Gaussian sizes compared with resolved disk sizes from high-resolution data",
+     "evidence": [
+      {
+       "loc": "3.1 Self-scattering",
+       "quote": "The deconvolved major and minor axes from the Gaussian fits are consistent with the resolved disk sizes obtained from high resolution data by (cite: tobin2020vla)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "compute mean B-field position angles (intensity- and uncertainty-weighted)",
+    "method": {
+     "value": "Total-intensity-weighted average of Stokes Q and U over pixels above 4 sigma, with error propagation; also uncertainty-weighted average with chi-squared scaled error; 400-1000 au annulus used to avoid disk contamination",
+     "evidence": [
+      {
+       "loc": "6 Weighted mean B-field position angle",
+       "quote": "i.e. all Stokes *Q* and *U* pixels larger than 4$\\sigma$ are enclosed"
+      },
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "we select an annular region from 1$\\ensuremath{''}$ ($\\sim$400 au) to 2.5$''$ ($\\sim$1000 au)"
+      },
+      {
+       "loc": "6 Weighted mean B-field position angle",
+       "quote": "we also follow the approach discussed by (cite: galametz2020observational) and average the position angle of polarization by weighting it with its uncertainty"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Pixel size one-third to half of beam FWHM (e.g. 0.28-0.42 arcsec for HH212M)",
+      "evidence": [
+       {
+        "loc": "6 Weighted mean B-field position angle",
+        "quote": "the pixel size used here falls within a region of one-third to half of the beam FWHM (cite: soler2017relation)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Annular 400-1000 au result compared with all-polarization-data result; found very similar",
+     "evidence": [
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "Within this region the difference between the outflow and the intensity-weighted average *B*-field direction appears to be very similar to the one obtained using all polarization data"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "measure envelope velocity gradients and classify sources",
+    "method": {
+     "value": "P-V cuts of C17O (3-2) perpendicular to outflow; absolute gradient from 5 sigma red/blue emission at 400 au; 2D linear fit to the moment 1 map for gradient direction; classify into Perp, Nonperp, Unres types",
+     "evidence": [
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "We generated position-velocity (P–V) cuts from the C$^{17}$O (3–2) channel maps centered at the dust peak intensity and perpendicular to the outflow axis."
+      },
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "In cases without a significant velocity gradient, we use the spectral resolution divided by the angular resolution as an upper limit."
+      },
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "Perp-Type: velocity gradient is perpendicular to the outflow ($67.5\\ensuremath{^\\circ}\\le \\vert \\theta_{\\rm Out}-\\theta_{v} \\vert \\le 90\\ensuremath{^\\circ}$, 8 out of 39);"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Significant gradient threshold ~1.0 km/s/arcsec",
+      "evidence": [
+       {
+        "loc": "3.3 B-field at scales of 400-1000 au",
+        "quote": "Unres-Type: velocity gradient is unresolved ($\\vert \\nabla v_{\\rm {abs}} \\vert \\lesssim 1.0$ km s$^{-1}$ arcsec$^{-1}$, 25 out of 39)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Envelope angular momentum expected parallel to the outflow",
+      "evidence": [
+       {
+        "loc": "3.3 B-field at scales of 400-1000 au",
+        "quote": "The envelope’s angular momentum is expected to be parallel to the outflow (cite: pudritz2019role)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least-squares fit of v_lsr = v_alpha dAlpha + v_delta dDelta + v0 to moment 1 map",
+     "evidence": [
+      {
+       "loc": "8 C17O opacity and velocity gradient",
+       "quote": "We estimate the velocity gradient by fitting the following function (cite: goodman1993dense; tobin2011ism)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "classify B-field morphologies and test B-field vs outflow and disk alignment",
+    "method": {
+     "value": "Visual classification of B-field patterns into standard-hourglass, rotated-hourglass, spiral, complex; histogram of angle difference between outflow and mean B-field; correlation coefficients per velocity-gradient type",
+     "evidence": [
+      {
+       "loc": "3.2 B-field at envelope scales",
+       "quote": "In the standard-hourglass category, 8 protostars show the expected morphology (cite: girart2006magnetic), in which their outflow is roughly parallel to the direction of the hourglass axis."
+      },
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "However, in Perp-Type sources, a correlation between the *B*-field and outflow is evident, with a correlation coefficient of 0.83"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Uncertainty-weighted B angles at 400-1000 au used for type analysis",
+      "evidence": [
+       {
+        "loc": "3.3 B-field at scales of 400-1000 au",
+        "quote": "We use the uncertainty-weighted position angles of the *B*-field on scales of 400–1000 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Envelope-scale polarization (including HOPS-250) assumed to be magnetically aligned grains; self-scattering not significant in the envelope",
+      "evidence": [
+       {
+        "loc": "3.2 B-field at envelope scales",
+        "quote": "we assume that the polarization is produced by magnetically aligned grains"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "4 sigma_QU threshold used to avoid noise-generated vectors",
+     "evidence": [
+      {
+       "loc": "3.2 B-field at envelope scales",
+       "quote": "3$\\sigma$ polarized emission in some regions may be generated by noise in the data"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "test projection effects on the B-field vs outflow angle distribution",
+    "method": {
+     "value": "Compare observed cumulative angle-difference distribution of 39 sources with simulated 3D-to-2D projected parallel, random and perpendicular models via K-S test",
+     "evidence": [
+      {
+       "loc": "3.4 Geometric projection effect",
+       "quote": "We run the Kolmogorov–Smirnov (K-S) test on the angle difference distribution of our sample."
+      },
+      {
+       "loc": "3.4 Geometric projection effect",
+       "quote": "The parallel case uses the angles randomly selected within 0 and 22.5$^\\circ$ in 3D, and then project onto the plane of the sky in the simulation"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "3D angles uniformly projected onto the plane of the sky",
+      "evidence": [
+       {
+        "loc": "3.4 Geometric projection effect",
+        "quote": "compare it with 2D simulated intersecting angles uniformly projected from a three-dimensional space"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "K-S test (not a fit)",
+     "evidence": [
+      {
+       "loc": "3.4 Geometric projection effect",
+       "quote": "We run the Kolmogorov–Smirnov (K-S) test on the angle difference distribution of our sample."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Applied to the entire sample only",
+     "evidence": [
+      {
+       "loc": "3.4 Geometric projection effect",
+       "quote": "it is prudent to exclusively employ the 3D projection analysis on the entire sample only"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "check that C17O is optically thin",
+    "method": {
+     "value": "Derive T_R from peak intensity and beam, T_ex(12CO) from optically thick line, assume T_ex(C17O) ~ 50 K, compute opacity",
+     "evidence": [
+      {
+       "loc": "8 C17O opacity and velocity gradient",
+       "quote": "Assuming $T_{EX}({\\rm C}^{17}{\\rm O})\\approx 50$ K, we then obtained the opacity of C$^{17}$O for each source, with a range of 0.04 to 0.26, which is considered to be optically thin."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Rayleigh-Jeans approximation accurate; 12CO optically thick; T_ex(C17O) ~ 50 K",
+      "evidence": [
+       {
+        "loc": "8 C17O opacity and velocity gradient",
+        "quote": "Assuming the Rayleigh–Jeans approximation is accurate, then the observable source radiation temperature $T_{R}$ is estimated as:"
+       },
+       {
+        "loc": "8 C17O opacity and velocity gradient",
+        "quote": "We have $^{12}{\\rm CO}$ detection, which is usually optically thick in the OMCs"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging, uv-plane continuum subtraction and moment maps",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The dust continuum images were produced using the `tclean` task in CASA (cite: casateam2022casa)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum Stokes I, Q, U images and line cubes",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Finally, we performed the `tclean` task to produce Stokes *I*, *Q* and *U* image cubes using self-calibrated, continuum-subtracted data for each spectral window."
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvcontsub",
+    "version": "not stated",
+    "used_for": {
+     "value": "uv-plane continuum fit and subtraction",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The `uvcontsub` task was used to perform continuum fitting and subtraction in the UV plane."
+      }
+     ]
+    }
+   },
+   {
+    "name": "immoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "Generating outflow maps",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The `immoments` task was used to generate the outflow maps."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Stokes I S/N range of continuum",
+    "value": "750 to 4200",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "is strongly detected with a signal-to-noise ratio (S/N) ranging from 750 to 4200 for all targets"
+     }
+    ]
+   },
+   {
+    "quantity": "Average Stokes I noise",
+    "value": "~0.1",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The average noise level in the final Stokes *I* image is $\\sim0.1$ mJy beam$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stokes Q and U noise sigma_QU",
+    "value": "~0.07",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "which is higher than the noise level of $\\sigma_{QU} \\sim0.07$ mJy/beam in both the Stokes *Q* and *U* maps"
+     }
+    ]
+   },
+   {
+    "quantity": "Sources with both dust polarization and outflow detected",
+    "value": "56",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "we successfully detected both dust polarization and molecular outflows in 56 sources"
+     }
+    ]
+   },
+   {
+    "quantity": "Sources with self-scattering polarization",
+    "value": "16",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Self-scattering is observed in 16 sources, most of them are Class 0"
+     }
+    ]
+   },
+   {
+    "quantity": "Fractional polarization of self-scattering sources",
+    "value": "0.5% to 2.0%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.1 Self-scattering",
+      "quote": "The fractional polarization of these 16 ptotostars is between 0.5% to 2.0%"
+     }
+    ]
+   },
+   {
+    "quantity": "Median difference between polarization direction and outflow direction (compact sources, excluding HOPS-250)",
+    "value": "7",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.1 Self-scattering",
+      "quote": "Excluding this source, we find that the median difference between polarization direction and the the outflow direction is 7$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median difference between polarization direction and disk major axis (compact sources, excluding HOPS-250)",
+    "value": "86",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.1 Self-scattering",
+      "quote": "and the median difference between polarization direction and the the disk major axis is 86$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of standard-hourglass protostars",
+    "value": "8",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "3.2 B-field at envelope scales",
+      "quote": "In the standard-hourglass category, 8 protostars show the expected morphology"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of rotated-hourglass protostars",
+    "value": "13",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "3.2 B-field at envelope scales",
+      "quote": "There are 13 protostars that exhibit a similar hourglass structure"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of spiral protostars",
+    "value": "9",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "3.2 B-field at envelope scales",
+      "quote": "The spiral category encompasses 9 protostars"
+     }
+    ]
+   },
+   {
+    "quantity": "Protostars with mean B-field approximately perpendicular to outflow",
+    "value": "16 of 40 (40.0%)",
+    "uncertainty": "+/-3.0%",
+    "units": "percent",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "40.0% ($\\pm$3.0%) of the protostars exhibit a mean magnetic field direction approximately perpendicular to the outflow"
+     },
+     {
+      "loc": "3.2 B-field at envelope scales",
+      "quote": "two-fifths of the protostars (16 out of 40) are located in the last quartile"
+     }
+    ]
+   },
+   {
+    "quantity": "Protostars with significant velocity gradient (>~1.0 km/s/arcsec)",
+    "value": "14",
+    "uncertainty": "not stated",
+    "units": "count",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "toward 14 protostars, which is probably indicative of rotation"
+     }
+    ]
+   },
+   {
+    "quantity": "Perp-Type / Nonperp-Type / Unres-Type counts",
+    "value": "8 / 6 / 25 of 39",
+    "uncertainty": "not stated",
+    "units": "count",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "velocity gradient is unresolved ($\\vert \\nabla v_{\\rm {abs}} \\vert \\lesssim 1.0$ km s$^{-1}$ arcsec$^{-1}$, 25 out of 39)"
+     }
+    ]
+   },
+   {
+    "quantity": "Correlation coefficient between B-field and outflow, Perp-Type",
+    "value": "0.83",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "in Perp-Type sources, a correlation between the *B*-field and outflow is evident, with a correlation coefficient of 0.83"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of Perp-Type sources with B-field perpendicular to outflow",
+    "value": "75.0%",
+    "uncertainty": "+/-12.5%",
+    "units": "percent",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "Specifically, 75.0% ($\\pm$12.5%) of the sources show a trend that the *B*-field is perpendicular to the outflow."
+     }
+    ]
+   },
+   {
+    "quantity": "Correlation coefficient between B-field and disk orientation, Perp-Type",
+    "value": "0.96",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "with a correlation coefficient of 0.96"
+     }
+    ]
+   },
+   {
+    "quantity": "K-S probability of drawing observed distribution from parallel model",
+    "value": "<0.001",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.4 Geometric projection effect",
+      "quote": "The probability of our results being drawn from parallel models is $<$0.001, ruling out this scenario."
+     }
+    ]
+   },
+   {
+    "quantity": "K-S probability, random model",
+    "value": "0.325",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.4 Geometric projection effect",
+      "quote": "The probability that the distribution is drawn from a random model is 0.325, and from a perpendicular model is 0.615."
+     }
+    ]
+   },
+   {
+    "quantity": "K-S probability, perpendicular model",
+    "value": "0.615",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.4 Geometric projection effect",
+      "quote": "The probability that the distribution is drawn from a random model is 0.325, and from a perpendicular model is 0.615."
+     }
+    ]
+   },
+   {
+    "quantity": "Opacity of C17O (3-2) range",
+    "value": "0.04 to 0.26",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "8 C17O opacity and velocity gradient",
+      "quote": "with a range of 0.04 to 0.26, which is considered to be optically thin"
+     }
+    ]
+   },
+   {
+    "quantity": "T_ex(12CO) range at 400 au envelope scales",
+    "value": "15.3 to 50.4",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "8 C17O opacity and velocity gradient",
+      "quote": "ranges from 15.3 K to 50.4 K at envelope scales of 400 au"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Self-scattering signatures in several Class 0 sources suggest grain growth already in disks at early protostellar phases",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Self-scattering signatures are seen in several Class 0 sources, suggesting that grain growth appears to be significant in disks at earlier protostellar phases."
+     }
+    ]
+   },
+   {
+    "value": "Envelope B-field morphology falls into standard-hourglass, rotated-hourglass and spiral categories",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "whose morphology can be approximately classified into three categories: standard-hourglass, rotated-hourglass (with its axis perpendicular to outflow), and spiral-like morphology"
+     }
+    ]
+   },
+   {
+    "value": "All standard-hourglass sources are in the Unres-Type",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Notably, all of the sources with *B*-field patterns showing a standard-hourglass structure of *B*-field are in the Unres-Type"
+     }
+    ]
+   },
+   {
+    "value": "Six protostars show polarized emission along streamer-like dust structures, possibly accretion streamers",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "We speculate that these could be accretion streamers"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is compact polarization in the BOPS protostars produced by self-scattering by grown grains in disks?",
+    "experiment": "Compare polarization angle of compact polarized sources with outflow direction and disk major axis; check fractional polarization",
+    "result": "Median offset 7 deg from outflow and 86 deg from disk major axis; fractional polarization 0.5% to 2.0% for 16 sources",
+    "finding": "Self-scattering in 16 sources implies grain growth in disks at early Class 0 stages",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 Self-scattering",
+      "quote": "Excluding this source, we find that the median difference between polarization direction and the the outflow direction is 7$^\\circ$"
+     },
+     {
+      "loc": "Discussion",
+      "quote": "This result suggests that grain growth has already occurred in the disks in the earliest stages of the protostellar phase."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the mean envelope B-field systematically perpendicular to protostellar outflows?",
+    "experiment": "Histogram of angle difference between outflow and total-intensity-weighted mean B-field for 40 protostars",
+    "result": "16 of 40 in the 67.5-90 deg quartile; distribution otherwise appears random",
+    "finding": "Two-fifths show perpendicular B-field and the rest random relative orientation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.2 B-field at envelope scales",
+      "quote": "The distribution appears almost random."
+     },
+     {
+      "loc": "3.2 B-field at envelope scales",
+      "quote": "two-fifths of the protostars (16 out of 40) are located in the last quartile"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the B-field orientation relative to outflow depend on envelope velocity-gradient type?",
+    "experiment": "Classify protostars by C17O velocity-gradient direction and compare B-field and outflow angles per type on 400-1000 au scales",
+    "result": "Perp-Type: correlation coefficient 0.83, 75.0% (+/-12.5%) perpendicular; no significant relation in Nonperp-Type and Unres-Type",
+    "finding": "Sources with velocity gradient perpendicular to outflow have B-field preferentially perpendicular to outflow",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "We find no significant relation between the average *B*-field and the outflow directions in Nonperp-Type and Unres-Type."
+     },
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "Specifically, 75.0% ($\\pm$12.5%) of the sources show a trend that the *B*-field is perpendicular to the outflow."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are standard-hourglass B-field morphologies associated with weak envelope rotation due to magnetic braking?",
+    "experiment": "Cross-tabulate B-field morphology with velocity-gradient type",
+    "result": "All standard-hourglass protostars are Unres-Type; strong-gradient sources mostly have rotated-hourglass or spiral morphology",
+    "finding": "Strong B-fields may slow rotation in standard-hourglass sources; strong rotation twists field into spirals",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "All the protostars with the standard-hourglass shape in our sample are observed in the Unres-Type, possibly because the *B*-field is strong enough to slow down the rotation in this case"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can the observed B-field and outflow angle distribution be explained by projection of parallel, random or perpendicular 3D orientations?",
+    "experiment": "K-S test of observed angle-difference distribution (39 sources) against simulated projected models",
+    "result": "Parallel p<0.001; random p=0.325; perpendicular p=0.615",
+    "finding": "Parallel scenario ruled out; random and perpendicular both remain possible",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.4 Geometric projection effect",
+      "quote": "Though the probability is higher for the perpendicular case, each model could be possible for the distribution."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Earlier polarization surveys had limited sensitivity and mixed regions and evolutionary stages, giving biased non-uniform samples; BOPS observes one region uniformly",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The limited sensitivity of previous surveys (cite: hull2014tadpol; zhang2014magnetic) probed sources at varying evolutionary stages and in different star-forming regions, thus resulting in samples that were biased and non-uniform."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Briggs robust 0.5 chosen as a compromise between resolution and sensitivity; annulus 400-1000 au chosen to avoid disk self-scattering contamination",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "which is a good compromise between resolution and sensitivity (cite: Briggs95)"
+     },
+     {
+      "loc": "3.3 B-field at scales of 400-1000 au",
+      "quote": "To avoid possible contamination from disk self-scattering polarization (see Section [3.1](#Sec:selfscat))"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Intensity-weighted mean B-field direction rejected as sole estimator for extended sources because extended regions with low density contribute too much; uncertainty-weighted average used for comparison",
+     "evidence": [
+      {
+       "loc": "6 Weighted mean B-field position angle",
+       "quote": "The intensity-weighted method always makes sense when applied to point sources, but it may lead to misjudgment in certain extended cases"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Limited spectral resolution (~0.9 km/s) prevents detecting velocity gradients in most sources",
+     "evidence": [
+      {
+       "loc": "3.3 B-field at scales of 400-1000 au",
+       "quote": "However, most of the sources do not show a clear gradient, which may due to the limited spectral resolution of the observations ($\\sim$0.9 km s$^{-1}$)."
+      }
+     ]
+    },
+    {
+     "value": "Self-scattering may also be present in other sources but only visible near the intensity peak; higher angular resolution needed",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "It is possible that other sources in the sample also have polarized emission from self-scattering, but this would only be apparent around the intensity peak."
+      }
+     ]
+    },
+    {
+     "value": "Outflow and B-field angles are projected on the plane of the sky",
+     "evidence": [
+      {
+       "loc": "3.4 Geometric projection effect",
+       "quote": "The position angles of the outflow and *B*-field we measured are projected onto the plane of the sky."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Small subsamples per velocity-gradient type (8, 6, 25) make correlation coefficients and percentages fragile",
+    "B-field morphology classification is visual and subjective; no quantitative criteria given",
+    "Unres-Type dominated by spectral-resolution-limited non-detections, so absence of gradient is weak evidence for slow rotation",
+    "Self-scattering identification relies on angle alignment and fractional polarization range, not on a modelled scattering test",
+    "K-S test applied once on 39 sources; models for parallel/random/perpendicular are idealized"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and calibration route (pipeline vs manual) not stated",
+    "tclean image size, cell size, masks, thresholds and cube binning not stated",
+    "Per-source line-free channel selection and manual outflow channel choices not fully specified",
+    "Morphology classification and compact-source selection criteria are qualitative",
+    "Source of distances, Lbol, Tbol not stated"
+   ],
+   "estimated_data_volume_inferred": "57 Band 7 fields x 4 spectral windows (1920 channels each) in compact configurations; likely several hundred GB of measurement sets for full reprocessing (rough estimate)",
+   "score_inferred": 3,
+   "score_reason": "Scale 1-5. Data identified by project code and key steps (self-cal solints, robust, annulus, weighting formulas, classification thresholds) are given, but imaging geometry, CASA version, masks and morphology criteria are missing, so exact numbers are only approximately reproducible.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that the data are public, and the recipe lacks imaging parameters and objective morphology criteria needed to redo the main classifications exactly."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: hull2014tadpol)",
+     "why": "TADPOL survey method for intensity-weighted mean B-field direction and comparison sample"
+    },
+    {
+     "citation": "(cite: galametz2020observational)",
+     "why": "Uncertainty-weighted mean position angle approach"
+    },
+    {
+     "citation": "(cite: goodman1993dense)",
+     "why": "Velocity gradient fitting method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: tobin2020vla)",
+     "why": "VANDAM survey: protostar sample, disk sizes and orientations"
+    },
+    {
+     "citation": "(cite: liu2023omc3)",
+     "why": "Higher angular resolution observations of disk self-scattering in OMC-3"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "BOPS (B-field Orion Protostellar Survey)",
+    "VANDAM",
+    "TADPOL"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024ApJ...963L..31H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T11:56:52",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 146,
+  "quotes_ok": 146,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2019.1.00086.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 22,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 116,
+   "stated": 83,
+   "rate": 0.716
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T11:56:53",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2019.1.00086",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The BOPS (PI: Ian Stephens, 2019.1.00086) survey used ALMA Band 7"
+      },
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2019.1.00086."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

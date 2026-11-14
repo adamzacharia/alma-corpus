@@ -1,0 +1,477 @@
+{
+ "bibcode": "2021ApJ...910..141T",
+ "title": "Carbon-chain Chemistry versus Complex-organic-molecule Chemistry in Envelopes around Three Low-mass Young Stellar Objects in the Perseus Region",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abe854",
+ "arxiv_id": "2102.10218",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Spatial distributions and CH3OH/HC3N abundance ratios in three Perseus low-mass YSOs, compared with Nautilus chemical models to test WCCC vs hot-corino-like chemistry",
+ "alma_project_codes": [
+  "2017.1.00955.S"
+ ],
+ "data": {
+  "bands": "Band 4, Cycle 5 (archival)",
+  "arrays": "7-m Array (ACA)",
+  "angular_resolution": "~11'' x 8'' (continuum 11.0'' x 8.6''; HC3N 11.2'' x 8.4''; CH3OH 10.6'' x 8.2'')",
+  "sensitivity": "Continuum noise 4 mJy/beam (IRAS 03235, IRAS 03245) and 1 mJy/beam (IRAS 03271)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric temperatures (Tbol) of the three sources",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Bolometric temperature taken from (cite: 2015ApJS..220...11D)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJS..220...11D)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosities (assumed 250 pc), rescaled to 293 pc",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Bolometric luminosities at an assumed distance of 250 pc taken from (cite: 2015ApJS..220...11D)"
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJS..220...11D)"
+  },
+  {
+   "what": {
+    "value": "Envelope masses (assumed 250 pc), rescaled to 293 pc",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Envelope masses at an assumed distance of 250 pc taken from (cite: 2009ApJ...692..973E)"
+     }
+    ]
+   },
+   "citation": "(cite: 2009ApJ...692..973E)"
+  },
+  {
+   "what": {
+    "value": "IR spectral indexes used for Class",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "IR spectral indexes"
+     }
+    ]
+   },
+   "citation": "(cite: 2009ApJ...692..973E)"
+  },
+  {
+   "what": {
+    "value": "Dust temperatures of IRAS 03245 and IRAS 03271",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Dust temperatures taken from (cite: 2009AA...493...89E)."
+     }
+    ]
+   },
+   "citation": "(cite: 2009AA...493...89E)"
+  },
+  {
+   "what": {
+    "value": "Distance to Perseus (293 pc)",
+    "evidence": [
+     {
+      "loc": "2 Data Reduction",
+      "quote": "at the source distance (cite: 2018ApJ...865...73O)"
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...865...73O)"
+  },
+  {
+   "what": {
+    "value": "Line frequencies, Eup and Aij from the JPL catalog",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Taken from the Jet Propulsion Laboratory (JPL) catalog (cite: 1998JQSRT..60..883P)."
+     }
+    ]
+   },
+   "citation": "(cite: 1998JQSRT..60..883P)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30-m CH3OH column density in IRAS 03245 used for comparison",
+    "evidence": [
+     {
+      "loc": "3.2 Spectral analyses",
+      "quote": "derived the CH$_{3}$OH column density to be"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJ...833..125G)"
+  },
+  {
+   "what": {
+    "value": "Molecular outflow direction used to interpret HC3N offset",
+    "evidence": [
+     {
+      "loc": "3.1 Results: Spatial distributions",
+      "quote": "the direction of the molecular outflow (cite: 2019ApJ...884..149H)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...884..149H)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes from calibrated visibilities",
+   "method": "tclean on pipeline-calibrated visibilities with uniform weighting",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Uniform weighting",
+    "Pixel 2.3'', image 250 x 250 pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make continuum images and measure noise",
+   "method": "Continuum (2 mm) images created from the data cubes using IMCONTSUB",
+   "software": [
+    "CASA",
+    "imcontsub"
+   ],
+   "key_parameters": [
+    "Noise 4 mJy/beam (IRAS 03235, IRAS 03245), 1 mJy/beam (IRAS 03271)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Moment 0 maps and 2D Gaussian fits for sizes and peak positions",
+   "method": "2D Gaussian fitting to continuum and moment 0 maps; beam-deconvolved sizes, with the synthesized beam given as upper limit when deconvolution fails",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "CH3OH moment 0 map made from the 1_0-1_-1 and 3_0-3_-1 lines because they are partially blended"
+   ],
+   "assumptions": [
+    "Distance 293 pc used to convert angular sizes to au"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive column densities and excitation temperatures from spectra",
+   "method": "Optically thin LTE model in the CASSIS spectrum analyzer, fitted with MCMC to spectra at the HC3N emission peak",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Case 1: Tex of HC3N and CH3OH restricted to 15-30 K",
+    "Case 2: Tex 35-40 K (IRAS 03235, IRAS 03245) and 35-50 K (IRAS 03271), comparable to dust temperatures"
+   ],
+   "assumptions": [
+    "LTE, optically thin lines"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Run chemical network models of the CH3OH/HC3N ratio",
+   "method": "Nautilus hot-core model with a slow warm-up stage, varying cosmic-ray ionization rate and C/O ratio",
+   "software": [
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "Cosmic-ray rates 1.3e-17, 3.0e-16, 4.0e-14 s^-1 (Models 1-3)",
+    "C/O ratio 0.4 (Models 1-3), 0.5 (Model 4), 1.2 (Model 5)",
+    "Initial T 10 K rising to 200 K during warm-up",
+    "Slow warm-up period of 1e6 yr"
+   ],
+   "assumptions": [
+    "Dust temperature equal to gas temperature"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare observed ratios with models to constrain age and temperature",
+   "method": "Observed CH3OH/HC3N ratios (with errors, Cases 1 and 2) overplotted on model ratio vs time; ages after the temperature reaches 25 K compared; model temperature checked against observed dust temperature",
+   "software": [],
+   "key_parameters": [
+    "For non-detections, ratio assumed lower than the IRAS 03245 value"
+   ],
+   "assumptions": [
+    "Dust temperature of IRAS 03235 expected to be similar to the other two sources"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HC3N emission size, IRAS 03235",
+   "value": "~11'' (~3223 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec / au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Results: Spatial distributions",
+     "quote": "The size of the HC$_{3}$N emission ($\\sim11\\ensuremath{''}$, corresponding to $\\sim 3223$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N emission size, IRAS 03245",
+   "value": "~10'' (~2930 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec / au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Results: Spatial distributions",
+     "quote": "The spatial extent of HC$_{3}$N ($\\approx 10\\ensuremath{''}$, $\\sim 2930$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH emission size, IRAS 03245",
+   "value": "~6'' (~1758 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec / au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Results: Spatial distributions",
+     "quote": "larger than that of CH$_{3}$OH ($\\sim 6 \\ensuremath{''}$, corresponding to $\\sim 1758$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum noise level",
+   "value": "4 (IRAS 03235, IRAS 03245); 1 (IRAS 03271)",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data Reduction",
+     "quote": "The noise levels of the continuum images are 4 mJy beam$^{-1}$ in IRAS 03235 and IRAS 03245, and 1 mJy beam$^{-1}$ in IRAS 03271, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "N(HC3N), IRAS 03235, Case 1",
+   "value": "4.9e12",
+   "uncertainty": "0.4e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($4.9 \\pm 0.4$)$\\times 10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HC3N), IRAS 03235, Case 2",
+   "value": "1.3e12",
+   "uncertainty": "0.7e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($1.3 \\pm 0.7$)$\\times10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HC3N), IRAS 03245, Case 1",
+   "value": "7.2e12",
+   "uncertainty": "0.2e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($7.2 \\pm 0.2$)$\\times 10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HC3N), IRAS 03245, Case 2",
+   "value": "2.7e12",
+   "uncertainty": "1.1e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($2.7 \\pm 1.1$)$\\times 10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH), IRAS 03245, Case 1",
+   "value": "2.7e13",
+   "uncertainty": "0.4e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($2.7 \\pm 0.4$)$\\times 10^{13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH), IRAS 03245, Case 2",
+   "value": "4.3e13",
+   "uncertainty": "0.5e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($4.3 \\pm 0.5$)$\\times 10^{13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HC3N), IRAS 03271, Case 1",
+   "value": "2.2e12",
+   "uncertainty": "0.3e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($2.2 \\pm 0.3$)$\\times 10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HC3N), IRAS 03271, Case 2",
+   "value": "5.3e11",
+   "uncertainty": "1.6e11",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "($5.3 \\pm 1.6$)$\\times 10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tex of HC3N, all three sources, Case 1",
+   "value": "16-18",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral analyses",
+     "quote": "The obtained excitation temperatures of HC$_{3}$N in all of the three sources in Case 1 are $16-18$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N line width (FWHM)",
+   "value": "~1",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral analyses",
+     "quote": "The line widths (FWHM) of HC$_{3}$N in our target sources ($\\sim 1$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/HC3N column-density ratio, IRAS 03245, Case 1",
+   "value": "3.7",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Comparison",
+     "quote": "The observed CH$_{3}$OH/HC$_{3}$N ratios in IRAS 03245 are derived to be $3.7 \\pm 0.6$ and $16^{+14}_{-6}$ for Case 1 and Case 2, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/HC3N column-density ratio, IRAS 03245, Case 2",
+   "value": "16",
+   "uncertainty": "+14/-6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Comparison",
+     "quote": "The observed CH$_{3}$OH/HC$_{3}$N ratios in IRAS 03245 are derived to be $3.7 \\pm 0.6$ and $16^{+14}_{-6}$ for Case 1 and Case 2, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Model age and temperature best matching ratio and dust temperature in IRAS 03245",
+   "value": "t = (7.7-7.9)e5 yr, T = 31-34 K",
+   "uncertainty": "not stated",
+   "units": "yr; K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Comparison",
+     "quote": "can be best reproduced simultaneously by our models at $t \\approx$ (7.7–7.9)$\\times 10^{5}$ yr ($T \\approx 31-34$ K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Model temperature range matching IRAS 03235 and IRAS 03271 (CH3OH non-detections)",
+   "value": "32 K < T < 55 K",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Comparison",
+     "quote": "corresponding to 32 K $< T < 55$ K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for the archival calibration",
+  "tclean settings beyond uniform weighting and gridding: deconvolver, niter, threshold, masking, channel width and rest frequency used for the cubes",
+  "Line-free channels (or continuum selection) used with IMCONTSUB and whether the continuum comes from a line cube",
+  "Velocity range and any clipping used for the moment 0 maps",
+  "Primary-beam correction (whether images are corrected) and software/task used for the 2D Gaussian fits",
+  "Exact extraction region and filling-factor/source-size treatment for the CASSIS spectra (only beam sizes of 14'', 12'', 9'' are given)",
+  "CASSIS version, MCMC settings (number of chains/iterations/burn-in), and the allowed ranges for N, FWHM and VLSR",
+  "Which CH3OH lines were fit and how the blended 1_0-1_-1 and 3_0-3_-1 lines were treated",
+  "Upper limits on CH3OH column density or ratio in IRAS 03235 and IRAS 03271",
+  "Nautilus version, reaction network and full initial abundances; how the model CH3OH/HC3N ratio was computed (gas-phase abundance ratio vs column density)",
+  "Dust temperature for IRAS 03235 (not available)"
+ ],
+ "missing_for_reproduction": [
+  "tclean deconvolution/mask/threshold and channel settings, and the line-free channels for continuum subtraction",
+  "CASSIS MCMC settings, parameter ranges for N, FWHM and VLSR, line selection, and spectrum extraction region",
+  "Nautilus network version and initial abundances not listed in the paper (inherited from Taniguchi et al. 2019a)",
+  "Dust temperatures taken from external catalogs and not available for IRAS 03235"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archival data and moderately complete recipe with numeric tables, but imaging and CASSIS fit details and Nautilus inputs are missing or inherited.",
+ "rediscovery_reason": "Data are archival and public, steps are simple (cubes, moment 0, Gaussian fits, LTE fit), and results are numeric tables; chemical modelling needs inherited inputs.",
+ "source_card": "cards/2021ApJ...910..141T/sonnet/card.md"
+}

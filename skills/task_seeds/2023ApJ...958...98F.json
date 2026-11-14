@@ -1,0 +1,582 @@
+{
+ "bibcode": "2023ApJ...958...98F",
+ "title": "Early Planet Formation in Embedded Disks (eDisk). XII. Accretion Streamers, Protoplanetary Disk, and Outflow in the Class I Source Oph IRS 63",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acf7c1",
+ "arxiv_id": "2310.14617",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Characterize the gas and dust structures, kinematics, accretion streamers, and mass budget (envelope infall versus stellar accretion) of the Class I source Oph IRS63 in the context of early planet formation.",
+ "alma_project_codes": [
+  "2019.1.00261.L",
+  "2019.A.00034.S",
+  "2015.1.01512.S"
+ ],
+ "data": {
+  "bands": "1.3 mm (225 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.034'' x 0.025'' for 1.3 mm continuum; ~0.28''-0.29'' x 0.40''-0.42'' for molecular lines (~0.4'')",
+  "sensitivity": "0.017 mJy/beam (1.3 mm continuum); 2.1 (12CO), 4.5 (13CO), 3.0 (C18O), 4.4 (SO), 1.0 (H2CO) mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to Oph IRS63 of 132 ± 6 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The distance to Oph IRS63 is estimated to be $132 \\pm 6$ pc based on its proximity to the B45 molecular cloud (cite: Zucker2020)."
+     }
+    ]
+   },
+   "citation": "Zucker et al. (2020) (cite: Zucker2020)"
+  },
+  {
+   "what": {
+    "value": "Bolometric temperature (T_bol = 348 K) and bolometric luminosity (L_bol = 1.3 L_sun)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The bolometric temperature and luminosity of Oph IRS63 ($\\rm T_{bol}$=348 K and $\\rm L_{bol}$=1.3 $\\rm L_\\odot$), make it the most evolved source (closer to the Class II phase) of the whole eDisk sample (cite: Ohashi2023)"
+     }
+    ]
+   },
+   "citation": "Ohashi et al. (2023) (cite: Ohashi2023)"
+  },
+  {
+   "what": {
+    "value": "Rotational constant B_e of C18O from the JPL database",
+    "evidence": [
+     {
+      "loc": "Mass infalling rate",
+      "quote": "Using a standard abundance of $3 \\times 10^{-7}$ (cite: Frerking1982) for C$^{18}$O and $B_e$ value taken from the JPL database (cite: Pickett1998), we obtain a total C$^{18}$O mass of $M_{envelope} \\sim 0.04~M_\\odot$."
+     }
+    ]
+   },
+   "citation": "Pickett et al. (1998) (cite: Pickett1998)"
+  },
+  {
+   "what": {
+    "value": "12CO column densities (2-5 x 10^18 cm^-2) and veiling (r_k = 3) from iSHELL observations",
+    "evidence": [
+     {
+      "loc": "Infrared spectra of Oph IRS63",
+      "quote": "Flores et al. (submitted) measured $^{12}$CO column densities of $2 - 5 \\times$ 10$^{18}$ cm$^{-2}$"
+     },
+     {
+      "loc": "Infrared spectra of Oph IRS63",
+      "quote": "where the spectrum of Oph IRS63 is fit using a black body component (with a fixed veiling of $\\rm r_{k}=3$, based on iSHELL observations)"
+     }
+    ]
+   },
+   "citation": "Flores et al. (submitted)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure basic dust continuum properties and dust disk size",
+   "method": "Fit a 2D Gaussian profile in the image plane using CASA imfit to obtain center coordinates, position angle, and inclination; integrate flux density above 5 sigma; compute azimuthally averaged intensity profiles using GoFish to derive radii enclosing 68%, 90%, and 95% of total flux.",
+   "software": [
+    "CASA",
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Flux integration threshold = 5 sigma; i = 47 deg; P.A. = 149 deg"
+   ],
+   "assumptions": [
+    "Thin axisymmetric disk geometry transforming deconvolved aspect ratio 0.685 to inclination 46.7 deg"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Calculate dust disk mass",
+   "method": "Apply the Hildebrand (1983) optically thin thermal dust emission formula at 225 GHz using two dust temperature prescriptions.",
+   "software": [],
+   "key_parameters": [
+    "nu = 225 GHz; S_nu = 317 mJy; D = 132 pc; T_dust = 20 K and 46 K"
+   ],
+   "assumptions": [
+    "Optically thin thermal emission; dust opacity kappa_nu = 2.3 cm^2 g^-1 of dust; D = 132 pc; L_bol = 1.3 L_sun"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Generate moment maps and characterize molecular emission morphology",
+   "method": "Create moment 0 (integrated intensity), moment 1 (velocity), and moment 8 (peak intensity) maps of 12CO, 13CO, C18O, SO, and H2CO; fit a 2D Gaussian to the SO ring central depression to measure its offset from the continuum peak.",
+   "software": [
+    "CASA",
+    "CARTA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Kinematic analysis of the disk and envelope via Position-Velocity (PV) diagrams",
+   "method": "Extract PV cuts along the disk major axis (5-pixel wide or ~0.5'') for 13CO, C18O, and SO; fit broken power-law (13CO, SO) or single power-law (C18O) rotation profiles using SLAM in both ridge and edge modes with MCMC to determine inner power-law index, break radius R_b, outer power-law index, systemic velocity, and dynamical stellar mass M_star.",
+   "software": [
+    "SLAM"
+   ],
+   "key_parameters": [
+    "PV cut width = 5 pixels (~0.5''); P.A. = 149 deg; emission threshold > 5 sigma; filtered-out velocity channels excluded"
+   ],
+   "assumptions": [
+    "d = 132 pc; i = 47 deg; Keplerian rotation forced to derive M_star"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model C18O and SO spiral/arc structures as infalling rotating streamers",
+   "method": "Apply the Mendoza et al. (2009) analytical ballistic model of a finite-sized rotating cloud collapsing onto a central point mass; manually adjust initial polar angle theta, azimuthal angle phi, and cloud radius R_cloud to visually match projected 2D trajectories and PV diagram velocity profiles for 3 C18O streamers and 3 SO spirals.",
+   "software": [],
+   "key_parameters": [
+    "M_star = 0.5 M_sun; i = 47 deg; P.A. = 149 deg; near side = 59 deg E of N; For C18O: R_disk = 265 au, R_cloud = 5300 au, h_0 = 1250 au km s^-1, (theta, phi) = (57, 188), (85, 270), (108, 300) deg; For SO: R_disk = 110 au, R_cloud = 550, 275, 1320 au, (theta, phi) = (124, 260), (55, 155), (67, 75) deg"
+   ],
+   "assumptions": [
+    "Negligible pressure gradient (supersonic flow); rigid-body rotation at spherical cloud boundary; negligible self-gravity (central star dominates); aligned cloud and disk rotational axes"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive envelope mass and envelope-to-disk mass infall rate",
+   "method": "Verify C18O is optically thin and 13CO is optically thick using their brightness temperature ratio; compute gas excitation temperature T_ex from peak 13CO brightness temperature assuming LTE; compute C18O column density and total H2 envelope mass (excluding inner 265 au disk); divide envelope mass by free-fall infall timescale from the outermost C18O edge to the disk.",
+   "software": [],
+   "key_parameters": [
+    "T_bg = 2.7 K; T_ex = 21 K; inner disk exclusion radius = 265 au; d = 132 pc"
+   ],
+   "assumptions": [
+    "LTE; optically thick 13CO and optically thin C18O; [12C]/[13C] = 77 and [16O]/[18O] = 560; X(C18O)/X(H2) = 3 x 10^-7; free-fall velocity from outermost edge"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Measure protostellar mass accretion rate and evaluate disk gravitational stability (Toomre Q) and gas-to-dust size ratio",
+   "method": "De-redden IRTF iSHELL/SpeX spectra using A_v = 24 mag; integrate Br-gamma line flux at 2.166 um; convert Br-gamma luminosity to accretion luminosity via Alcalá et al. (2017) relation and derive stellar mass accretion rate; compute Toomre Q parameter using gas disk mass (from dust mass with g/d = 100) and gas radius R_gas = 265 au; compute ratio of gas disk radius to 95% dust continuum radius.",
+   "software": [
+    "SpexTool"
+   ],
+   "key_parameters": [
+    "A_v = 24 mag (varied 20-40 mag); R_in = 5 R_star; R_star = 3.0 R_sun (varied 2.0-3.7 R_sun, log g = 3.2); M_star = 0.5 M_sun; T_eff = 3500 K; mu = 2.3; g/d = 100; T = 20 K and 46 K"
+   ],
+   "assumptions": [
+    "Alcalá et al. (2017) Br-gamma scaling (a = 1.19 ± 0.1, b = 4.02 ± 0.51); Fitzpatrick (1999) extinction law; gas-to-dust ratio = 100; mean molecular weight mu = 2.3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum peak intensity",
+   "value": "5.8",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.3 mm continuum | 225 | $0.034\\ensuremath{''} \\times 0.025\\ensuremath{''}$ ($56.7^\\circ$) | \\- | 0.017 | 5.8 | 0"
+    },
+    {
+     "loc": "Millimeter continuum",
+     "quote": "We see a disk that is centrally peaked with a peak intensity of 5.8 mJy beam$^{-1}$or 170 K."
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak brightness temperature",
+   "value": "170",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "We see a disk that is centrally peaked with a peak intensity of 5.8 mJy beam$^{-1}$or 170 K."
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm total continuum flux density",
+   "value": "317",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "Because the Gaussian fit does not properly account for the extended dust continuum structure, we integrate the flux above 5$\\sigma$ to derive a total flux density of $317\\pm 0.5$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk position angle (P.A.)",
+   "value": "149",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "We obtained a disk position angle $\\rm P.A= 149^\\circ$ (measured from north through east)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk inclination (i_disk)",
+   "value": "46.7",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "and a deconvolved disk aspect ratio of $0.685$ that we transform to disk inclination of $i_{disk} = 46.7^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk radius enclosing 68% flux (R_68%)",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "and defined the radii enclosing the 68$\\%$, 90$\\%$ and 95$\\%$ of total flux as $R_{68\\%}$= $0.17\\ensuremath{''}$, $R_{90\\%}$= $0.38\\ensuremath{''}$, and $R_{95\\%}$= $0.47\\ensuremath{''}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk radius enclosing 90% flux (R_90%)",
+   "value": "0.38",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "and defined the radii enclosing the 68$\\%$, 90$\\%$ and 95$\\%$ of total flux as $R_{68\\%}$= $0.17\\ensuremath{''}$, $R_{90\\%}$= $0.38\\ensuremath{''}$, and $R_{95\\%}$= $0.47\\ensuremath{''}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk radius enclosing 95% flux (R_95%)",
+   "value": "0.47 (or 62 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "and defined the radii enclosing the 68$\\%$, 90$\\%$ and 95$\\%$ of total flux as $R_{68\\%}$= $0.17\\ensuremath{''}$, $R_{90\\%}$= $0.38\\ensuremath{''}$, and $R_{95\\%}$= $0.47\\ensuremath{''}$, respectively."
+    },
+    {
+     "loc": "Gas vs. dust disk size",
+     "quote": "In Section [\\[subsec:continuum\\]](#subsec:continuum), we measured the dust disk size as the radius enclosing 95$\\%$ of the flux and found $R_{95\\%} = 0.47\\ensuremath{''}$ or $R_{95\\%} = 62$ au (at $d=132$ pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk mass (T_dust = 20 K)",
+   "value": "5e-4 (or 160 M_earth)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "from which we obtain a total dust disk mass of $\\rm M_{dust}\\sim 5 \\times 10^{-4} \\, M_\\odot$ (or $\\rm M_{dust} \\sim 160 \\, M_\\oplus$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk mass (T_dust = 46 K)",
+   "value": "2e-4 (or 60 M_earth)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum",
+     "quote": "which for Oph IRS63 yields a temperature $\\rm T_{dust} =$46 K, and therefore a dust mass of $\\rm M_{dust}\\sim 2 \\times  10^{-4} \\, M_\\odot$ (or $\\rm M_{dust} \\sim 60 \\, M_\\oplus$)."
+    }
+   ]
+  },
+  {
+   "quantity": "SO ring radius",
+   "value": "0.5",
+   "uncertainty": "0.2",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spirals",
+     "quote": "As briefly mentioned above, an annular structure with a radius of $\\sim0.5\\ensuremath{''} \\pm 0.2\\ensuremath{''}$ is observed on the moment 0 map"
+    }
+   ]
+  },
+  {
+   "quantity": "SO ring center offset relative to dust continuum",
+   "value": "0.11",
+   "uncertainty": "0.023",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spirals",
+     "quote": "The center of the SO ring, or more precisely, the center of the emission drop, is offset by approximately $0.11\\ensuremath{''}$ relative to the dust continuum emission, as measured through a 2D Gaussian fitting (see Figure [2](#fig:SO_spirals_annotation))."
+    },
+    {
+     "loc": "Spirals",
+     "quote": "Although small, this difference is significant given that we can measure the positions of the SO emission with an accuracy of $0.023\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow position angle (blue-shifted)",
+   "value": "240",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The Outflow",
+     "quote": "We estimated the outflow’s position angle to be $\\sim 240^\\circ$ by averaging the P.A.s of the two legs of the V-shape structure."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar dynamical mass (M_star)",
+   "value": "0.5",
+   "uncertainty": "0.2",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "By analyzing the velocity pattern of $^{13}$CO and C$^{18}$O, we measure a protostellar mass of $\\rm M_\\star = 0.5 \\pm 0.2$ $\\rm M_\\odot$"
+    },
+    {
+     "loc": "CO emission",
+     "quote": "The stellar mass obtained from SLAM relates to this inner power law index, and by forcing Keplerian rotation, we derive a mass of $M_\\star = 0.5 \\pm 0.2$ $M_\\odot$ (fifth column in Table [1](#table:slam_parameters))."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas disk radius (R_b / R_gas from 13CO)",
+   "value": "265",
+   "uncertainty": "9",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO emission",
+     "quote": "We obtain that such a radius is at $R_b = 265 \\pm 9$ au using ridge and edge methods."
+    },
+    {
+     "loc": "Summary",
+     "quote": "The gaseous disk measured from $^{13}$CO $R_{gas} = 265 \\pm 9$ au is about four times larger than the dust disk $R^{dust}_{95\\%}$=62 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner rotational velocity power-law index (p_in for CO)",
+   "value": "0.61 (or ~0.6)",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO emission",
+     "quote": "For both CO isotopologues, we find almost Keplerian inner power law indices of $p_{in}\\sim0.6\\pm 0.04$ using the edge and ridge methods (second column in Table [1](#table:slam_parameters))."
+    },
+    {
+     "loc": "Summary",
+     "quote": "By fitting a power law function to the rotational velocity profiles of the lines, we confirm a (quasi)Keplerian rotational profile with $v\\propto r^{-0.61\\pm0.04}$ out to a distance of $R_{gas}=265 \\pm 9$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer velocity power-law index (p_in + dp for 13CO)",
+   "value": "1.2",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO emission",
+     "quote": "The $p_{in}+dp$ values measured for the edge and ridge method are 1.6 and 0.9, respectively, which gives an average of $p_{in}+dp=1.2 \\pm 0.4$, where the uncertainty is dominated by the standard deviation."
+    }
+   ]
+  },
+  {
+   "quantity": "SO kinematic break radius (R_b)",
+   "value": "97 (edge) / 120 (ridge) (~100-110)",
+   "uncertainty": "12 (edge) / 39 (ridge)",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SO (edge) | $0.48 \\pm 0.19$ | $1.13 \\pm 0.23$ | $97 \\pm 12$ | $0.76 \\pm 0.19$ | $3.05 \\pm 0.02$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "SO (ridge) | $0.83 \\pm 0.06$ | $1.30 \\pm 0.26$ | $120 \\pm 39$ | $0.14 \\pm 0.14$ | $3.08 \\pm 0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (V_sys)",
+   "value": "2.8",
+   "uncertainty": "0.01",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spirals",
+     "quote": "with respect to $V_{sys}$=2.8 $\\rm km \\, s^{-1}$."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$^{13}$CO (edge) | $0.59 \\pm 0.01$ | $1.6 \\pm 0.1$ | $264 \\pm 3$ | $0.73 \\pm 0.02$ | $2.80 \\pm 0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope peak excitation temperature (T_ex)",
+   "value": "21",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Mass infalling rate",
+     "quote": "From this equation, we measure a peak excitation temperature of 21 K in the envelope."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O infalling envelope mass (M_envelope)",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Mass infalling rate",
+     "quote": "we obtain a total C$^{18}$O mass of $M_{envelope} \\sim 0.04~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope-to-disk mass infall rate",
+   "value": "4e-6",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Mass infalling rate",
+     "quote": "Finally, we estimate a mass infalling rate from the envelope to the disk of $\\dot{M}_{infall} \\sim 4\\times 10^{-6}$ $M_\\odot \\,  yr^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Visual extinction (A_v)",
+   "value": "24",
+   "uncertainty": "range 20 to 40",
+   "units": "mag",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "(proto)Stellar mass accretion rate",
+     "quote": "We deredden the infrared spectrum using our $A_v=24$ mag derived from the procedure described in Appendix [3](#appendix:infrared)."
+    },
+    {
+     "loc": "Infrared spectra of Oph IRS63",
+     "quote": "The second procedure result in extinction estimates between 20 to 40 magnitudes of visual extinction with a best fit of 24 magnitudes"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar accretion luminosity (L_acc from Br-gamma)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "(proto)Stellar mass accretion rate",
+     "quote": "Putting all these numbers together, we measure a (proto)stellar accretion luminosity of $L_{acc} = 0.21$ $L_\\odot$, and consequently, a mass accretion rate of $\\dot{M}_{acc} = 5\\times 10^{-8}$ $M_\\odot \\, yr^{-1}$, for an $Av$ of 24 mag."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar mass accretion rate (M_dot_acc)",
+   "value": "5e-8",
+   "uncertainty": "range 2e-8 to 2e-7",
+   "units": "M_sun yr^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "(proto)Stellar mass accretion rate",
+     "quote": "and consequently, a mass accretion rate of $\\dot{M}_{acc} = 5\\times 10^{-8}$ $M_\\odot \\, yr^{-1}$, for an $Av$ of 24 mag."
+    },
+    {
+     "loc": "(proto)Stellar mass accretion rate",
+     "quote": "and obtain (proto)stellar mass accretion rates from $\\dot{M}_{acc} = 2\\times 10^{-7}$ to $2\\times 10^{-8}$ $M_\\odot \\, yr^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q parameter",
+   "value": "2 to 8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Envelope infall vs. stellar accretion rate",
+     "quote": "We obtain a Toomre-Q parameter ranging from $Q \\sim 2-8$ from these two temperatures."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust disk size ratio (R_gas / R_dust,95%)",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas vs. dust disk size",
+     "quote": "By dividing the gas and dust disk sizes, we find a gas-to-dust size ratio of $R_{gas}/R^{dust}_{95\\%}\\sim4.3$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration parameters (solution intervals, number of phase/amplitude rounds) which are deferred to Ohashi et al. (2023)",
+  "Imaging parameters in tclean (pixel/cell size, image dimensions, cleaning threshold, masking strategy, multiscale scales)",
+  "Whether the short-baseline continuum from 2019.A.00034.S was combined with the long-baseline continuum from 2015.1.01512.S or if 2015.1.01512.S was imaged standalone",
+  "Exact velocity ranges excluded due to cloud contamination / interferometric filtering during the SLAM PV fitting",
+  "Exact value of initial radial velocity v_0 used in the Mendoza et al. (2009) streamer trajectories",
+  "Exact spatial polygon/aperture ΔΩ and outer radius used to compute the C18O envelope mass and free-fall timescale t_infall"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging and self-calibration parameters (deferred to Ohashi et al. 2023)",
+  "Exact velocity channel ranges masked/excluded for cloud contamination in the SLAM fits and moment maps",
+  "Initial radial velocity v_0 and inclination/orientation sign conventions used in the custom Mendoza et al. (2009) streamer implementation",
+  "Exact spatial region (aperture/polygon) and outer radius used to integrate C18O envelope flux and calculate the free-fall timescale t_infall",
+  "Reduced IRTF iSHELL and SpeX spectra (and measured raw Br-gamma line flux F_line before conversion to L_acc)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The ALMA data are public in the archive, the core kinematic and continuum analysis tools (CASA, GoFish, SLAM) are public and well-cited, and the analytical equations and fitted parameters are explicitly tabulated. However, imaging details are deferred to the survey overview paper (Ohashi et al. 2023), the IRTF NIR spectra are not publicly linked, and the region definitions for the C18O infall rate and v_0 for streamer trajectories are not specified.",
+ "rediscovery_reason": "The ALMA datasets (2015.1.01512.S and 2019.A.00034.S) are public, and the primary ALMA-based results—continuum flux and radii (GoFish/imfit), dynamical stellar mass and gas disk break radius (SLAM on 13CO/C18O/SO), and streamer trajectory parameters—are numeric and can be reproduced directly from the visibility data or cubes.",
+ "source_card": "cards/2023ApJ...958...98F/sonnet/card.md"
+}

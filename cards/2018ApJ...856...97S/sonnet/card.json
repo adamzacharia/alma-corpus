@@ -1,0 +1,896 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...856...97S",
+  "title": "Dense Molecular Gas in the Starburst Nucleus of NGC 1808",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Salak, Dragan",
+  "n_authors": 6,
+  "arxiv_id": "1802.09108",
+  "doi": "10.3847/1538-4357/aab2ac",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.01004.S",
+   "2013.1.00911.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Dense molecular gas tracers in the central 1 kpc region of the superwind galaxy NGC 1808 have been imaged by ALMA at a resolution of 1$''$ ($\\sim50$ pc)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1808",
+     "coordinates": {
+      "value": "05h07m42.331s, -37d30m45.88s (J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "nearby (10.8 Mpc; (cite: Tul88)) galaxy NGC 1808"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "single pointing toward the galactic center at $(\\alpha,\\delta)_\\mathrm{J2000}=(05^\\mathrm{h}07^\\mathrm{m}42.331s\\pm0.003s,-37\\ensuremath{^\\circ}30\\ensuremath{'}45.88\\ensuremath{''}\\pm0.05\\ensuremath{''})$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "10.8 Mpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "nearby (10.8 Mpc; (cite: Tul88)) galaxy NGC 1808"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "single pointing toward the galactic center at $(\\alpha,\\delta)_\\mathrm{J2000}=(05^\\mathrm{h}07^\\mathrm{m}42.331s\\pm0.003s,-37\\ensuremath{^\\circ}30\\ensuremath{'}45.88\\ensuremath{''}\\pm0.05\\ensuremath{''})$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Tully 1988 Nearby Galaxy Catalog",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "nearby (10.8 Mpc; (cite: Tul88)) galaxy NGC 1808"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "single pointing toward the galactic center at $(\\alpha,\\delta)_\\mathrm{J2000}=(05^\\mathrm{h}07^\\mathrm{m}42.331s\\pm0.003s,-37\\ensuremath{^\\circ}30\\ensuremath{'}45.88\\ensuremath{''}\\pm0.05\\ensuremath{''})$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the distribution, line ratios and physical conditions (density, temperature) of dense molecular gas in the starburst nucleus, ring and outflow of NGC 1808?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "the next important step is to image other molecular species, especially those that trace the dense molecular gas, which is abundant in star-forming regions."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.01004.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.01004.S, ADS/JAO.ALMA#2013.1.00911.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00911.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.01004.S, ADS/JAO.ALMA#2013.1.00911.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 and Band 7",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "observations of molecular spectral lines in bands 3 and 7 carried out with ALMA"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 3: four basebands at 86.800, 88.716, 97.981, 100.750 GHz (bandwidths 1.875, 1.875, 0.234, 1.875 GHz); Band 7: HCO+(4-3) baseband at 356.734 GHz, 1.875 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Four basebands (center rest frequencies at 86.800, 88.716, 97.981, and 100.750 GHz, and effective bandwidths 1.875, 1.875, 0.234, and 1.875 GHz, respectively)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "J=1-0",
+     "rest_frequency": "88.630-88.634 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HCN | $J=1-0$ | $88.63042$-$88.63393$"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=1-0",
+     "rest_frequency": "89.18852 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HCO$^{+}$ | $J=1-0$ | $89.18852$"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=4-3",
+     "rest_frequency": "356.73422 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HCO$^{+}$ | $J=4-3$$^{(b)}$ | $356.73422$"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=2-1",
+     "rest_frequency": "97.98095 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CS | $J=2-1$$^{(b)}$ | $97.98095$"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "v=0, J=2-1",
+     "rest_frequency": "86.84696 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiO | $v=0,~J=2-1$$^{(b)}$ | $86.84696$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Band 3: 12 m array; Band 7: 12 m array plus ACA (7 m)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The data were acquired with the 12 m array and Atacama Compact Array (7 m antennas) and combined in the imaging (CLEAN) process."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 3: 2.20''x1.53'' (SiO natural) to 1.15''x0.75'' (CS, robust 0.5); Band 7 HCO+(4-3): 0.98''x0.52''",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "the sizes of the synthesized beams range from $2.20\\ensuremath{''}\\times1.53\\ensuremath{''}$ for SiO (2-1) in natural weighting to $1.15\\ensuremath{''}\\times0.75\\ensuremath{''}$ for CS (2-1) with robust parameter 0.5."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~19'' (Band 7, shortest ACA baseline ~9 m)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The shortest baseline of ACA was about 9 m, yielding a maximum recoverable scale of $\\sim19\\ensuremath{''}$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Band 3 ~1 mJy/beam (5 km/s); Band 7 HCO+(4-3) ~11 mJy/beam (5 km/s)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The rms sensitivity of the produced data cubes is $\\sim1$ mJy beam$^{-1}$ (channel width $\\Delta v=5~\\mathrm{km~s}^{-1}$)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "given in Salak et al. 2017, not in this paper",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "were presented in (cite: Sal17) together with an observational summary that includes the observation date, on-source time, and calibrator information."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "ALMA cycle 1/2 CO(1-0) and CO(3-2) data",
+     "provided": {
+      "value": "CO(1-0), CO(3-2) cubes and continuum from earlier papers",
+      "evidence": [
+       {
+        "loc": "3.3 Line intensity ratios",
+        "quote": "The ALMA observations in cycles 1 and 2 have produced the data cubes of two CO lines, $J=1-0$ and $J=3-2$"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO-to-H2 conversion factor X_CO = 0.8e20 cm-2 (K km/s)-1 and 12C/13C ~20-50",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "applying a CO-to-H$_2$ conversion factor of $X_\\mathrm{CO}=0.8\\times10^{20}~\\mathrm{cm}^{-2}(\\mathrm{K~km~s}^{-1})^{-1}$ (cite: Sal14)"
+       }
+      ]
+     },
+     "citation": "(cite: Sal14)"
+    },
+    {
+     "what": {
+      "value": "R_CO (CO(3-2)/CO(1-0)) maps and 93 GHz/350 GHz continuum",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "was presented in (cite: Sal17)."
+       }
+      ]
+     },
+     "citation": "(cite: Sal17)"
+    },
+    {
+     "what": {
+      "value": "Molecular data for RADEX from LAMDA",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "molecular parameters were acquired from the Leiden Atomic and Molecular Database"
+       }
+      ]
+     },
+     "citation": "(cite: Sch05)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "~5% calibration uncertainty",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "the calibration uncertainty of the high signal-to-noise ratio images is of the order of $5\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Two image sets were produced based on the parameters in the task “clean”"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5 (5 km/s) and natural (20 km/s); Band 7 uniform",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Briggs algorithm with a robustness parameter of 0.5 (optimum sensitivity and resolution) and a velocity resolution of $\\Delta v=5~\\mathrm{km~s}^{-1}$"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12 m + ACA combined in CLEAN (Band 7)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "combined in the imaging (CLEAN) process"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observation dates, on-source time, calibrators, continuum data",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "were presented in (cite: Sal17) together with an observational summary that includes the observation date, on-source time, and calibrator information."
+       }
+      ]
+     },
+     "from_reference": "(cite: Sal17)"
+    },
+    {
+     "what": {
+      "value": "Major axis PA 316 deg",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "position angle $316\\ensuremath{^\\circ}$ determined in (cite: Sal16)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sal16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration procedure",
+    "clean mask, threshold, cell and image size",
+    "line-free channels and continuum subtraction method",
+    "uv taper/smoothing to common resolution for ratio maps",
+    "pixel blanking thresholds for ratio maps",
+    "exact RADEX grid settings and line-width handling"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "image lines",
+    "method": {
+     "value": "CASA clean cubes with robust 0.5 and natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The visibility data were deconvolved and CLEANed using the Common Astronomy Software Applications (CASA) package"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "measure line parameters and intensity ratios",
+    "method": {
+     "value": "Gaussian fits to spectra from 3'' aperture and 2'' regions; integrated intensity ratios",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "spectrum extracted from a circular region of diameter $3\\ensuremath{''}$ ($\\sim156$ pc) toward the galactic center"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fitting",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "obtained from Gaussian fitting of the spectra within the regions"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "LTE optical depth and column density",
+    "method": {
+     "value": "13C isotopologue ratios give tau; N from LTE formula with Tex=31 K and 10 K",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "we use $T_\\mathrm{ex}=31$ K, estimated for $^{12}$CO (1-0) (cite: Sal14), and $T_\\mathrm{ex}=10$ K."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "[HCO+]/[H13CO+] = 50 or 25; same beam filling",
+      "evidence": [
+       {
+        "loc": "Appendix",
+        "quote": "we adopt the values of 50, following (cite: San12), and 25, estimated in section"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "non-LTE density and temperature",
+    "method": {
+     "value": "RADEX with LVG, intersections of line ratio curves in n-T space; four column density setups",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "The non-LTE calculations were carried out using the radiative transfer program RADEX (cite: vdT07)"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "5-500 K, 1e2-1e7 cm-3, dV=50 km/s, Tbg=2.73 K",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "temperature range of $5~\\mathrm{K}\\leq T_\\mathrm{k}\\leq500~\\mathrm{K}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "[CO]/[H2]=1e-4, [HCO+]/[H2]=1e-8, XCO=0.8e20",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "we adopt an abundance ratio of $[\\mathrm{HCO^{+}}]/[\\mathrm{H_2}]=10^{-8}$ reported in previous works"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not a statistical fit; graphical intersection",
+     "evidence": [
+      {
+       "loc": "Non-LTE calculation of gas density and kinetic temperature",
+       "quote": "The physical conditions (density and temperature) are estimated from the areas where the intensity ratios intersect in the parameter space."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Setup quality judged by number and closeness of intersections",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "the quality of the chosen setup was evaluated based on the number of intersections and how close they appear in the investigated parameter space."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "deconvolution and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "deconvolved and CLEANed using the Common Astronomy Software Applications (CASA) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE radiative transfer",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "radiative transfer program RADEX (cite: vdT07)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "R_HCO+ (4-3/1-0) in CND",
+    "value": "0.420",
+    "uncertainty": "0.022",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "the average value is $R_\\mathrm{HCO^{+}}=0.420\\pm0.022$"
+     }
+    ]
+   },
+   {
+    "quantity": "max R_HCO+ within central 50 pc",
+    "value": "0.622",
+    "uncertainty": "0.027",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "$R_\\mathrm{HCO^{+}}^\\mathrm{max}(r<0.5\\ensuremath{''})=0.622\\pm0.027$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HCO+ (1-0) in CND",
+    "value": "1.46",
+    "uncertainty": "0.04",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "C | $1.46\\pm0.04$"
+     }
+    ]
+   },
+   {
+    "quantity": "CND density from setup 4",
+    "value": "10^4.9 - 10^5.8",
+    "uncertainty": "not stated",
+    "units": "cm-3",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$10^{4.9}~\\mathrm{cm^{-3}}\\lesssim n_\\mathrm{H_2}\\lesssim 10^{5.8}~\\mathrm{cm^{-3}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CND kinetic temperature",
+    "value": "20-100 (mean ~40)",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$20~\\mathrm{K}\\lesssim T_\\mathrm{k}\\lesssim100~\\mathrm{K}$ (on average $T_\\mathrm{k}\\sim40~\\mathrm{K}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "N_HCN/N_HCO+ in CND (LTE)",
+    "value": "2.46",
+    "uncertainty": "0.10",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Appendix",
+      "quote": "$N_\\mathrm{HCN}/N_\\mathrm{HCO^{+}}=2.46\\pm0.10$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+(1-0)/HOC+(1-0) in CND",
+    "value": "19.0",
+    "uncertainty": "3.8",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "is measured to be $19.0\\pm3.8$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "SiO and HNCO detected toward CND, indicating shocked gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "SiO (2-1) and HNCO (4-3) are detected toward the circumnuclear disk (CND), indicating the presence of shocked dense gas."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the CND dense and warm?",
+    "experiment": "RADEX on HCN/HCO+ isotopologue and HCO+ ratios",
+    "result": "n~10^5 cm-3, 20-100 K",
+    "finding": "Dense warm gas in CND",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "is dense ($n_\\mathrm{H_2}\\sim10^5~\\mathrm{cm}^{-3}$) and warm ($20~\\mathrm{K}\\lesssim T_\\mathrm{k}\\lesssim100~\\mathrm{K}$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is dense gas present in the outflow?",
+    "experiment": "PVDs along minor axis, RADEX",
+    "result": "HCN, HCO+, CS, C2H detected; low density 10^2-10^3",
+    "finding": "Dense tracers detected in outflow with velocity gradient",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "are detected for the first time in the superwind of NGC 1808, confirming the presence of a velocity gradient in the outflow direction."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What drives enhanced HCN/HCO+?",
+    "experiment": "Compare R_H with SiO and 93 GHz continuum",
+    "result": "tentative correlations",
+    "finding": "Possibly shock heating and electron excitation from star formation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "There is evidence that an enhanced intensity ratio of HCN (1-0)/HCO$^{+}$ (1-0) reflects star formation activity"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Column density uncertain by a factor of a few; beam filling factors may differ among tracers",
+     "evidence": [
+      {
+       "loc": "4.4",
+       "quote": "The uncertainty of the column density is estimated to be a factor of a few."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Non-LTE solutions are graphical with no formal uncertainties",
+    "Assumed abundances and X_CO dominate results",
+    "HCN enhancement setup chosen post hoc"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "calibration details and CASA version",
+    "imaging parameters beyond robust",
+    "exact regions and masks"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for two projects",
+   "score_inferred": 3,
+   "score_reason": "Data are archival with codes given, but calibration and imaging details are sparse and the analysis is partly graphical.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Calibration and imaging details are missing, and the physical-conditions results rely on graphical intersections and assumed abundances."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: vdT07)",
+     "why": "RADEX"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Sal17)",
+     "why": "earlier ALMA CO and continuum data, observation summary"
+    },
+    {
+     "citation": "(cite: Sal16)",
+     "why": "earlier ALMA study of NGC 1808"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-86e39828261520b8302126fd4d23c8c0",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:59",
+  "usage": {
+   "input_tokens": 41991,
+   "output_tokens": 7065,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.077923,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 35,
+   "rate": 0.515
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:01",
+  "custom_id": "repair-sonnet-a7e26fdf8618f2d3fef23185e5b867a2",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "The physical conditions (density and temperature) are estimated from the areas where the intensity ratios intersect in the parameter space."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

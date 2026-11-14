@@ -1,0 +1,486 @@
+{
+ "bibcode": "2022MNRAS.516.4066L",
+ "title": "WISDOM Project - XIII. Feeding molecular gas to the supermassive black hole in the starburst AGN-host galaxy Fairall 49",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac2493",
+ "arxiv_id": "2209.00363",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the supermassive black hole mass, molecular gas mass, CO-to-H2 conversion factor, and gas inflow rate in the starburst AGN-host galaxy Fairall 49 using high-resolution ALMA CO(2-1) kinematics?",
+ "alma_project_codes": [
+  "2017.1.00904.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "ALMA 12-m array",
+  "angular_resolution": "0.171'' x 0.132'' (72 x 55 pc) for continuum; 0.216'' x 0.160'' (91 x 67 pc) for CO(2-1)",
+  "sensitivity": "0.038 mJy/beam (continuum); 0.7 mJy/beam per 15 km/s channel (CO cube mean rms); 0.84 mJy/beam (PV diagram rms)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshift z = 0.02002 and line-of-sight velocity 6002 km/s",
+    "evidence": [
+     {
+      "loc": "The target: a LIRG with a Seyfert nucleus",
+      "quote": "Considering that Fairall 49 has a line-of-sight velocity of 6002 $\\mathrm{km}\\,\\mathrm{s}^{-1}$(cite: Huchra2012), we obtain $D = 86.7$ Mpc, so 1$''$ corresponds to $\\sim$0.42 kpc."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Redshift | 0.02002 | (cite: Huchra2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Huchra2012)"
+  },
+  {
+   "what": {
+    "value": "Total far-IR luminosity L_FIR = 1.1 x 10^11 L_odot",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$L_{\\rm FIR}$ (L$_\\odot$) | $1.1 \\times 10^{11}$ | (cite: MunozMarin2007)"
+     }
+    ]
+   },
+   "citation": "(cite: MunozMarin2007)"
+  },
+  {
+   "what": {
+    "value": "X-ray luminosity L_X = 1.5 x 10^43 erg/s",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$L_{\\rm X}$ (erg s$^{-1}$) | $1.5\\times10^{43}$ | (cite: Iwasawa2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Iwasawa2016)"
+  },
+  {
+   "what": {
+    "value": "SMBH and stellar mass data for 83 ETGs, six WISDOM ETGs, and NGC 404 for the M_BH - M_star scaling relation fit",
+    "evidence": [
+     {
+      "loc": "Implications for the SMBH and host galaxy",
+      "quote": "To investigate the location of Fairall 49 on the $M_\\bullet-M_\\star$ relation, we consider the data from (cite: Sahu2019) for 83 ETGs and update them with six SMBH measurements from WISDOM (cite: WISDOM-1; WISDOM-2; WISDOM-3; WISDOM-4; WISDOM-5; WISDOM-7)."
+     },
+     {
+      "loc": "Implications for the SMBH and host galaxy",
+      "quote": "We also add the dwarf lenticular galaxy NGC 404 (cite: Davis2020) as well as Fairall 49."
+     }
+    ]
+   },
+   "citation": "(cite: Sahu2019; WISDOM-1; WISDOM-2; WISDOM-3; WISDOM-4; WISDOM-5; WISDOM-7; Davis2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA Band 6 continuum and CO(2-1) line datacube",
+   "method": "Calibrate uv data with CASA pipeline, manually flag bad antennas/baselines with flagdata, image continuum with tclean, subtract continuum in uv plane with uvcontsub (1st-order polynomial), bin to 15 km/s, clean cube with CASA tclean and GIPSY clean, and extract moment maps with 3DBAROLO",
+   "software": [
+    "CASA",
+    "GIPSY",
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "Högbom deconvolver, Briggs robust = 0.5, cleaned down to ~3 sigma, 15 km/s channel binning, GIPSY Boolean mask smoothed to 0.4'' clipped at 3 sigma_s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract HST F606W surface photometry and calculate the stellar gravitational potential",
+   "method": "Fit ellipses to HST WFPC2 F606W isophotes using ARCHANGEL to derive the 1D surface brightness profile; non-parametrically subtract the inner HSB (AGN/starburst) component within R_HSB ~ 200 pc; compute stellar circular velocity contribution using both 1D MGE (MGEFIT) and thick-disk (GIPSY Rotmod) methods",
+   "software": [
+    "ARCHANGEL",
+    "MGEFIT",
+    "GIPSY"
+   ],
+   "key_parameters": [
+    "1D MGE axial ratio q = 0.01; thick-disk exponential vertical scale height h_z = 253 pc; baseline HSB subtraction of ~10^9 L_odot within ~200 pc"
+   ],
+   "assumptions": [
+    "Inner HSB component within ~200 pc is dominated by AGN and starburst emission rather than tracing stellar mass (assigned M/L = 0 in baseline model)",
+    "Thick-disk vertical scale height h_z = 253 pc from empirical relation h_z = 0.196 h_R^0.633 with h_R ~ 1.5 kpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit 3D tilted-ring kinematic model to the CO(2-1) datacube",
+   "method": "Divide the CO disk into 19 independent concentric rings and perform a two-stage 3D tilted-ring fit with 3DBAROLO to derive rotation velocity, radial velocity, and velocity dispersion profiles",
+   "software": [
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "19 rings of width 0.186'' (out to ~3.5''), cos(theta) azimuthal weighting, exponential vertical profile with z_0 = 100 pc (0.25''), twostage=true, polyn=0"
+   ],
+   "assumptions": [
+    "Fully axisymmetric flat gas disk with exponential vertical distribution (scale height 100 pc); western side is near side based on HST dust lanes"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit dynamical mass models to the rotation curve and derive gas inflow rate",
+   "method": "Fit a 4-component mass model (stellar disk, molecular gas disk, central SMBH, NFW dark matter halo) to the 3DBAROLO rotation curve using MCMC (emcee), and compute radial gas inflow rate Mdot_gas(R) = M_gas(R) * V_rad(R) / R",
+   "software": [
+    "GIPSY",
+    "emcee",
+    "corner.py"
+   ],
+   "key_parameters": [
+    "200 walkers, 1000 burn-in iterations, 2000 sampling iterations, stretch move parameter a = 2, gas vertical scale height h_z = 100 pc"
+   ],
+   "assumptions": [
+    "Molecular gas is in dynamical equilibrium; atomic gas (HI) contribution is neglected; D = 86.7 Mpc, H_0 = 75 km/s/Mpc; spherical NFW DM halo obeying Moster+2013 and Dutton+2014 scaling relations"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Forward model the inner CO(2-1) datacube directly with KINMS",
+   "method": "Fit a 12-parameter global dynamical model directly to the inner CO datacube (R <= 1'') using KINMS in an MCMC framework",
+   "software": [
+    "KINMS"
+   ],
+   "key_parameters": [
+    "Fitted region R <= 1'' (and R < 0.5'' test), 12 free parameters, 30000 MCMC samples, fixed Upsilon_gas, V_200, and C_200 from full rotation-curve fit"
+   ],
+   "assumptions": [
+    "Exponential CO surface brightness profile exp(-R/R_gas) and linear radial velocity trend V_rad,0 * (1 - R/R_Vrad)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit the M_BH - M_star scaling relation and evaluate X_CO and R_21",
+   "method": "Fit linear scaling relation to SMBH and stellar masses of ETGs + WISDOM sample + Fairall 49 using BayesLineFit; compare dynamical gas mass to CO-luminosity-based gas mass under Galactic and starburst X_CO and R_21 assumptions",
+   "software": [
+    "BayesLineFit",
+    "corner.py"
+   ],
+   "key_parameters": [
+    "Milky Way X_CO,20 = 2, thermalized R_21 = 1, Helium correction factor 1.37; starburst X_CO,20 = 0.2 and Seyfert R_21 = 2.5"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Distance (D)",
+   "value": "86.7",
+   "uncertainty": "10%",
+   "units": "Mpc",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "The target: a LIRG with a Seyfert nucleus",
+     "quote": "Considering that Fairall 49 has a line-of-sight velocity of 6002 $\\mathrm{km}\\,\\mathrm{s}^{-1}$(cite: Huchra2012), we obtain $D = 86.7$ Mpc, so 1$''$ corresponds to $\\sim$0.42 kpc."
+    },
+    {
+     "loc": "The target: a LIRG with a Seyfert nucleus",
+     "quote": "For large line-of-sight velocities, the effect of peculiar velocities on $D$ is not large, so the distance uncertainty is plausibly of the order of 10$\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation rate (SFR)",
+   "value": "16.4",
+   "uncertainty": "not stated",
+   "units": "M_odot yr^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFR ($M_\\odot$ yr$^{-1}$) | 16.4 | This work (Sect. 2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute magnitude M_F606W",
+   "value": "-20.31",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{F606W}$ (mag) | $-20.31$ | This work (Sect. 3.2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Effective radius (R_eff)",
+   "value": "882",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$R_{\\rm eff}$ (pc) | 882 | This work (Sect. 3.2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Total F606W luminosity (L_F606W)",
+   "value": "1.2e10",
+   "uncertainty": "not stated",
+   "units": "L_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{F606W}$ (L$_\\odot$) | $1.2\\times10^{10}$ | This work (Sect. 3.2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner HSB component luminosity (baseline model)",
+   "value": "1e9",
+   "uncertainty": "not stated",
+   "units": "L_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar gravitational potential",
+     "quote": "For our baseline model, the luminosity of the HSB component is about $10^9$ L$_\\odot$ within $\\sim$200 pc ($\\sim$0.5$''$), corresponding to 8$\\%$ of the total luminosity of Fairall 49."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass (M_bullet, fiducial rotation-curve fit)",
+   "value": "1.6e8",
+   "uncertainty": "+/- 0.4e8 (rnd) +/- 0.8e8 (sys)",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "(2) The dynamically inferred SMBH mass is $1.6\\pm0.4\\mathrm{(rnd)}\\pm0.8 \\mathrm{(sys)}\\times 10^{8}$ $\\mathrm{M}_{\\odot}$ assuming that we have accurately subtracted the AGN and starburst light contributions, which have a luminosity of $\\sim$10$^9$ L$_\\odot$;"
+    },
+    {
+     "loc": "Supermassive black hole mass",
+     "quote": "To explain the inner parts of the rotation curve, the mass model requires a central SMBH with a mass of $1.6 \\pm 0.4 (\\mathrm{rnd}) \\pm 0.8 (\\mathrm{sys}) \\times 10^{8}$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH sphere of influence radius (r_SOI)",
+   "value": "150",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Supermassive black hole mass",
+     "quote": "For the baseline mass model in Figure 1, the SOI of the SMBH occurs at $R\\simeq150$ pc (within which $V_\\bullet > V_\\star$), so it is well resolved by the angular resolution of the ALMA data ($\\sim$80 pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination (i, rotation-curve fit)",
+   "value": "58.3",
+   "uncertainty": "+3.0/-3.0",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$i$ ($^{\\circ}$) | 58.3$_{-3.0}^{+3.0}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (M_star, rotation-curve fit)",
+   "value": "21.5",
+   "uncertainty": "+1.7/-1.4",
+   "units": "10^9 M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\star}$ (10$^{9}$) M$_\\odot$ | 21.5$_{-1.4}^{+1.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-to-light ratio (Upsilon_star, rotation-curve fit)",
+   "value": "1.8",
+   "uncertainty": "+/- 0.1",
+   "units": "M_odot/L_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Forward modeling",
+     "quote": "while the rotation-curve fit (Sect. 0.1) gives $\\Upsilon_\\star=1.8\\pm0.1$ and $M_\\bullet = (1.6 \\pm 0.4) \\times 10^8$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass (M_gas, rotation-curve fit)",
+   "value": "0.34",
+   "uncertainty": "+0.26/-0.29",
+   "units": "10^9 M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\rm gas}$ (10$^{9}$ M$_\\odot$) | 0.34$_{-0.29}^{+0.26}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark matter halo mass (M_200, rotation-curve fit)",
+   "value": "6.1",
+   "uncertainty": "+3.8/-4.4",
+   "units": "10^11 M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{200}$ (10$^{11}$ M$_\\odot$) | 6.1$_{-4.4}^{+3.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark matter halo concentration (C_200, rotation-curve fit)",
+   "value": "6.8",
+   "uncertainty": "+1.7/-1.7",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$C_{200}$ | 6.8$_{-1.7}^{+1.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum molecular gas inflow rate (Mdot_gas)",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "(5) the molecular gas inflow rate increases steadily with radius and may be as high as $\\sim$5 $M_\\odot$ yr$^{-1}$."
+    },
+    {
+     "loc": "Implications for the AGN baryon cycle",
+     "quote": "The resulting gas inflow rate reaches a maximum of $\\sim$5 M$_\\odot$ yr$^{-1}$ for our baseline mass model."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass (M_bullet, KINMS R <= 1'' fit)",
+   "value": "3.2e8",
+   "uncertainty": "+/- 0.5e8",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Forward modeling",
+     "quote": "Regarding dynamical parameters, KINMS gives $\\Upsilon_\\star=1.76\\pm0.05$ and $M_\\bullet = (3.2 \\pm 0.5) \\times 10^8$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "log(M_bullet / M_odot) (KINMS R <= 1'' fit)",
+   "value": "8.50",
+   "uncertainty": "+/- 0.07",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$\\log(M_{\\bullet}/M_\\odot$) | 5 to 10 | $8.50\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-to-light ratio (Upsilon_star, KINMS R <= 1'' fit)",
+   "value": "1.76",
+   "uncertainty": "+/- 0.05",
+   "units": "M_odot/L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$\\Upsilon_{\\star}$ | 0.1 to 10 | $1.76\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central radial inflow velocity (V_rad,0, KINMS fit)",
+   "value": "16.2",
+   "uncertainty": "+5.6/-5.0",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$V_{\\rm rad, 0}$ ($\\mathrm{km}\\,\\mathrm{s}^{-1}$) | 0 to 100 | $16.2^{+5.6}_{-5.0}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas velocity dispersion (sigma_gas, KINMS fit)",
+   "value": "25.9",
+   "uncertainty": "+/- 1.3",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$\\sigma_{\\rm gas}$ ($\\mathrm{km}\\,\\mathrm{s}^{-1}$) | 1 to 100 | $25.9\\pm1.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle (PA, KINMS fit)",
+   "value": "30.6",
+   "uncertainty": "+1.6/-1.3",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PA ($^{\\circ}$) | 30 to 60 | $30.6^{+1.6}_{-1.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination (i, KINMS fit)",
+   "value": "64.1",
+   "uncertainty": "+/- 1.2",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$i$ ($^{\\circ}$) | 40 to 80 | $64.1\\pm{1.2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel (cell) size and image dimensions (in pixels or arcseconds) used in CASA tclean and GIPSY clean",
+  "Exact frequency or channel ranges selected as line-free channels for uvcontsub and continuum imaging",
+  "Which specific antennas and baselines were manually flagged in CASA flagdata",
+  "Whether primary beam correction was applied to the continuum map and CO datacube",
+  "Exact radius R_HSB and exponential fit parameters used in the iterative 1D non-parametric HSB light subtraction"
+ ],
+ "missing_for_reproduction": [
+  "Exact image cell size and dimensions used during CASA tclean and GIPSY clean",
+  "Exact frequency channels selected as line-free for uvcontsub",
+  "Specific manual flags applied in CASA flagdata",
+  "Exact numerical 1D surface brightness profile table after non-parametric HSB subtraction"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "Both the ALMA data (2017.1.00904.S) and HST WFPC2 data (ID 5479) are public in archives, all software packages (CASA, GIPSY, 3DBAROLO, KINMS, ARCHANGEL, MGEFIT, emcee, BayesLineFit) are publicly available, and the MCMC priors, ring parameters, and dynamical equations are thoroughly specified, with only minor imaging parameters (cell size, exact manual flags) and the tabulated 1D subtracted light profile omitted.",
+ "rediscovery_reason": "Public archival ALMA and HST data with a clear, well-documented two-pronged dynamical modeling recipe (3DBAROLO + emcee and KINMS) yielding concrete numeric targets for SMBH mass, stellar mass, gas mass, and radial inflow velocity.",
+ "source_card": "cards/2022MNRAS.516.4066L/sonnet/card.md"
+}

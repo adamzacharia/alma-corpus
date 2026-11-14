@@ -1,0 +1,233 @@
+{
+ "bibcode": "2019AJ....157..135M",
+ "title": "Kuiper Belt-like Hot and Cold Populations of Planetesimal Inclinations in the β Pictoris Belt Revealed by ALMA",
+ "year": 2019,
+ "doi": "10.3847/1538-3881/ab06c0",
+ "arxiv_id": "1902.04081",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "Is the vertical distribution (and hence inclination distribution) of mm grains in the beta Pic planetesimal belt a single Gaussian or a sum of hot and cold populations, and what stirs it?",
+ "alma_project_codes": [
+  "2012.1.00142.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm, 224.58 GHz effective)",
+  "arrays": "12-m extended, 12-m compact (two pointings), and ACA",
+  "angular_resolution": "0.32'' x 0.27'' (6.1 x 5.3 au), natural weighting",
+  "sensitivity": "RMS 12 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "885 um ALMA archival dataset (Band 7, mosaic) re-reduced for comparison",
+    "evidence": [
+     {
+      "loc": "4.5",
+      "quote": "we independently re-reduced the dataset as described in §2.2 of (cite: Matra2017a)."
+     }
+    ]
+   },
+   "citation": "Dent2014; Matra2017a"
+  },
+  {
+   "what": {
+    "value": "beta Pic b orbit: a 8.8 au, inclination 89.3 deg, PA 32.1 deg",
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "best-fit semimajor axis of 8.8 au, an inclination to the line of sight $I_{\\rm p}$ of 89.3$^{\\circ}$ and a position angle $\\Omega_{\\rm p}$ of 32.1$^{\\circ}$ (cite: Lagrange2018b)"
+     }
+    ]
+   },
+   "citation": "Lagrange2018b"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosity 8.7 Lsun",
+    "evidence": [
+     {
+      "loc": "4.1 Method",
+      "quote": "around a star of 8.7 L$_{\\odot}$ (cite: KennedyWyatt2014)"
+     }
+    ]
+   },
+   "citation": "KennedyWyatt2014"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image combined continuum",
+   "method": "CLEAN MFS imaging of combined 12m+ACA data with weight rescaling, natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure stellar flux",
+   "method": "Select uv >300 klambda, CLEAN, 2D Gaussian fit at star",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image-plane radial and vertical profiles",
+   "method": "Vertical profiles every 15 au; Gaussian fits for spine and FWHM; compare single vs double Gaussian on radially integrated profile",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Visibility-domain model fitting",
+   "method": "Parametric 3D dust models, RADMC-3D images, FT to uv points, MCMC fit with Models 1-5",
+   "software": [
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "walkers = 10x free parameters; 2500 steps"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Convert aspect ratio to inclination",
+   "method": "RMS_i = sqrt(2) h, mean i = sqrt(pi/2) h",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Dynamical constraints",
+   "method": "not stated",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "not stated"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "RMS inclination hot population",
+   "value": "8.9",
+   "uncertainty": "+0.7/-0.5",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The hot and cold populations have RMS inclinations of 8.9$^{+0.7}_{-0.5}$ and 1.1$^{+0.5}_{-0.5}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS inclination cold population",
+   "value": "1.1",
+   "uncertainty": "+0.5/-0.5",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The hot and cold populations have RMS inclinations of 8.9$^{+0.7}_{-0.5}$ and 1.1$^{+0.5}_{-0.5}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 1.33 mm flux",
+   "value": "20",
+   "uncertainty": "2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "is 20$\\pm$2 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt PA (Model 2)",
+   "value": "29.7",
+   "uncertainty": "+0.1/-0.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$PA$ | $^{\\circ}$ | $30.0_{-0.1}^{+0.1}$ | $29.7_{-0.1}^{+0.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt inclination (Model 2)",
+   "value": "88.6",
+   "uncertainty": "+0.2/-0.3",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$I$ | $^{\\circ}$ | $86.6_{-0.3}^{+0.4}$ | $88.6_{-0.3}^{+0.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot-population mass fraction",
+   "value": "80",
+   "uncertainty": "+4/-5",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 Conclusions",
+     "quote": "with the hot component containing $80^{+4}_{-5}$% of the observed mass"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of largest bodies for hot population at 150 au",
+   "value": "0.007 to 54",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2.2",
+     "quote": "should be between 0.007 and 54 M$_{\\oplus}$ at 150 au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Dust opacity value fixed in RADMC-3D",
+  "Burn-in length and walker initialisation for MCMC",
+  "Exact CO-flagged channel ranges",
+  "Image size and cell size",
+  "Multiscale scales for 885 um imaging",
+  "Whether the pipeline or manual calibration was used and the CASA version for the 1.33 mm data"
+ ],
+ "missing_for_reproduction": [
+  "Opacity and RADMC-3D settings",
+  "Details of calibration in companion papers",
+  "Priors/bounds and initialisation for MCMC"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear model definitions, but calibration is deferred to other papers and some settings are missing.",
+ "rediscovery_reason": "Public data, a fairly complete modelling recipe and numeric results.",
+ "source_card": "cards/2019AJ....157..135M/sonnet/card.md"
+}

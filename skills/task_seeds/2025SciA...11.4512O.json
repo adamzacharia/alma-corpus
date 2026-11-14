@@ -1,0 +1,338 @@
+{
+ "bibcode": "2025SciA...11.4512O",
+ "title": "Massive extended streamers feed high-mass young stars",
+ "year": 2025,
+ "doi": "10.1126/sciadv.adw4512",
+ "arxiv_id": "2508.15889",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Do high-mass protostars like G336 ALMA1 lack a large Keplerian disk and instead gain gas via massive streamers reaching well inside the expected disk radius, and are the flows strong enough to overcome stellar feedback?",
+ "alma_project_codes": [
+  "2017.1.00237.S",
+  "2022.1.00700.S"
+ ],
+ "data": {
+  "bands": "1.3 mm continuum (Band 6)",
+  "arrays": "12m array",
+  "angular_resolution": "continuum 0.031x0.025\" (96x78 au)",
+  "sensitivity": "continuum 28 uJy/beam; line cubes 1.1-1.3 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Central mass 10 Msun, inclination 65 deg, outer streamer temperature 93 K, outer infall rate ~1e-4 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "A central mass of 10 ${\\rm M}_\\odot$ was determined by (cite: Olguin2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Olguin2023)"
+  },
+  {
+   "what": {
+    "value": "Clump luminosity 2.5e4 Lsun",
+    "evidence": [
+     {
+      "loc": "Inner blue streamer modeling",
+      "quote": "Assuming that the luminosity of the clump $L=2.5\\times10^{4}$ ${\\rm L}_\\odot$ (cite: Urquhart2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Urquhart2018)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 1 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "Replenishing times",
+      "quote": "$\\kappa_{\\nu}=1$ cm$^2$ g$^{-1}$ is the dust opacity at 1.3 mm (cite: Ossenkopf1994)"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Combine and self-calibrate data",
+   "method": "Combine C-8 and C-9 data, align channels with CVEL, phase-only self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and lines",
+   "method": "GOCONTINUUM continuum separation; tclean continuum; YCLEAN line cubes",
+   "software": [
+    "GOCONTINUUM",
+    "CASA tclean",
+    "YCLEAN"
+   ],
+   "key_parameters": [
+    "continuum robust 0.5, threshold 1.25 sigma; lines robust 2, multiscale 0,5,15,25"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit central source",
+   "method": "Gaussian fit to ALMA1 continuum within 50 mas radius",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Model streamers with streamline models",
+   "method": "Mendoza2009 streamlines grid over centrifugal radius, polar and azimuthal angles, best chosen by visual inspection; separate inner blue streamer in mid-plane with r_f=200 au",
+   "software": [
+    "velocity_tools"
+   ],
+   "key_parameters": [
+    "rc 400-600 au (50 au steps), theta0 75-85, phi0 50-70; inner: r_c=200 au, theta0=89, phi0 140-195, v_r0=0.1 km/s selected"
+   ],
+   "assumptions": [
+    "Central mass 10 Msun, inclination 65 deg, mid-plane trajectory inside centrifugal radius"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare PV diagram with velocity distributions",
+   "method": "Compare observed PV along blue streamer spine to Keplerian, Keplerian+free-fall, IRE (FERIA) and streamline models at deprojected radius",
+   "software": [
+    "pvextractor",
+    "FERIA"
+   ],
+   "key_parameters": [
+    "inclination 65 deg, P.A. disk -55 deg, centrifugal barrier 250 au"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Estimate masses, infall rates, timescales and forces",
+   "method": "Optically thin dust mass; free-fall and viscous times; Mdot = v_ff M/l; force L/c vs Mdot v",
+   "software": [],
+   "key_parameters": [
+    "T=100 K, kappa=1 cm2/g at 1.3 mm, R_dg=0.01, d=3.1 kpc, mu=2.33, alpha 0.1-1, v_ff=6 km/s, l=500 au"
+   ],
+   "assumptions": [
+    "Optically thin dust, dust-to-gas 0.01, Ossenkopf1994 opacity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum beam",
+   "value": "0.031x0.025 (P.A.=57.5 deg)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "The resulting continuum angular resolution is $0.031\\times0.025$” (P.A.=57.5$^{\\circ}$; $96\\times78$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum rms",
+   "value": "28",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "noise level is $28\\,\\mu$Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA1 deconvolved size (geometric mean)",
+   "value": "39",
+   "uncertainty": "6",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling refinement",
+     "quote": "resulting in a geometric mean size of $39\\pm6\\,{\\rm mas}$ (121 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA1 Gaussian flux density",
+   "value": "7.7",
+   "uncertainty": "1.1",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling refinement",
+     "quote": "The flux density of the Gaussian is $7.7\\pm1.1$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Centrifugal radius",
+   "value": "500 (450-550 equally good)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling refinement",
+     "quote": "equally good matches can be obtained with a centrifugal radius between 450 and 550 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass ALMA1",
+   "value": "0.24",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "The resulting masses are 0.24 ${\\rm M}_\\odot$ for the gas in ALMA1"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner blue streamer mass",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "0.6 ${\\rm M}_\\odot$ for the inner blue streamer"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner red streamer mass",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "0.3 ${\\rm M}_\\odot$ for the red-shifted streamer"
+    }
+   ]
+  },
+  {
+   "quantity": "Infall rate inner blue streamer",
+   "value": "1.6e-3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "This gives infall rates of $1.6\\times10^{-3}$ ${\\rm M}_\\odot$ yr$^{-1}$ and $0.9\\times10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Infall rate inner red streamer",
+   "value": "0.9e-3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "$0.9\\times10^{-3}$ ${\\rm M}_\\odot$ yr$^{-1}$ for the inner blue and red-shifted streamers"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fall time of ALMA1",
+   "value": "~25",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "the free-fall time is ${\\sim}25$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Replenishing time, blue streamer (free-fall)",
+   "value": "~150",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Replenishing times",
+     "quote": "between ${\\sim}150$ yr (free-fall)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radiation force",
+   "value": "~1e22",
+   "uncertainty": "order of magnitude",
+   "units": "N",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Inner blue streamer modeling",
+     "quote": "the force exerted by the source radiation field is of the order of $10^{22}$ N"
+    }
+   ]
+  },
+  {
+   "quantity": "Streamer inflow force",
+   "value": "~1e24",
+   "uncertainty": "order of magnitude",
+   "units": "N",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Inner blue streamer modeling",
+     "quote": "the force exerted by the inflow resulting from the blue-shifted streamer is of the order of $10^{24}$ N"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals and number of iterations",
+  "CASA version",
+  "Calibration pipeline version and flux calibrator",
+  "Line-free channels for continuum",
+  "tclean image size, cell size and mask parameters",
+  "Streamline model fixed parameters not repeated from Olguin2023",
+  "PV extraction path widths",
+  "Viscosity alpha and 100 K temperature choices beyond the justification given"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Self-calibration parameters",
+  "Imaging sizes and mask details",
+  "Exact PV cut widths and paths"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, released scripts and mostly explicit parameters; some calibration and imaging details missing, and streamline fits are visual.",
+ "rediscovery_reason": "Public data, released scripts, numeric results (continuum fit, masses, infall rates) can be re-derived.",
+ "source_card": "cards/2025SciA...11.4512O/sonnet/card.md"
+}

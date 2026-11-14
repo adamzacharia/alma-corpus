@@ -1,0 +1,347 @@
+{
+ "bibcode": "2020MNRAS.493.3744F",
+ "title": "SMM J04135+10277: a distant QSO-starburst system caught by ALMA",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa472",
+ "arxiv_id": "2002.06925",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What are the dust continuum, molecular gas content and CO excitation of the quasar and its star-forming companion in SMM J04135+10277, and is the quasar really gas-poor?",
+ "alma_project_codes": [
+  "2015.1.00661.S"
+ ],
+ "data": {
+  "bands": "Band 4 and Band 6",
+  "arrays": "12-m array, 37 (Band 4) and 44 (Band 6) antennas",
+  "angular_resolution": "1.01x0.92 arcsec (Band 4); 1.0x0.78 arcsec (Band 6)",
+  "sensitivity": "Continuum RMS 27.8 uJy/beam (B4), 46.7 uJy/beam (B6); line RMS 0.32 and 0.38 mJy/beam at 77 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(1-0) line luminosity and width of companion; QSO 3 sigma upper limit",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "(cite: 2016ApJ...827...18S) reported a line luminosity of $L_{\\rm CO(1-0)}^{'}=(8.6\\pm1.7)\\times10^{10}\\, \\rm K\\,km\\,s^{-1}\\,pc^{2}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJ...827...18S)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) and CO(3-2) observations used in SLED",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "combined with CO(1-0) and CO(3-2) line observations from the literature"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...765L..31R)"
+  },
+  {
+   "what": {
+    "value": "Lensing magnifications mu_QSO=1.3, mu_Comp=1.6",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$\\mu_{\\rm QSO}=1.3$ (cite: 2003A&A...411..343K); $\\mu_{\\rm Comp.}=1.6$ (cite: 2013ApJ...765L..31R)"
+     }
+    ]
+   },
+   "citation": "(cite: 2003A&A...411..343K); (cite: 2013ApJ...765L..31R)"
+  },
+  {
+   "what": {
+    "value": "SCUBA data and z_UV",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "($z_{\\rm UV}=2.837\\pm0.003$; (cite: 2003A&A...411..343K))"
+     }
+    ]
+   },
+   "citation": "(cite: 2003A&A...411..343K)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure source fluxes",
+   "method": "Natural-weighted CLEAN continuum images; fluxes and sizes of QSO and companion measured",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit FIR SED and derive L_IR and SFR",
+   "method": "MR-MOOSE Bayesian fit of ALMA+SCUBA+ArTeMiS, and alternative Chary & Elbaz templates",
+   "software": [
+    "MR-MOOSE"
+   ],
+   "key_parameters": [
+    "25% QSO contribution assumed in SCUBA bands for templates"
+   ],
+   "assumptions": [
+    "Dust heated by star formation; Chabrier IMF; lensing corrected"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and fit CO lines",
+   "method": "Spectra extracted from cubes and fitted with Gaussians for widths and integrated fluxes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Kinematics of companion",
+   "method": "Moment 1/2 maps, PV diagram at -30 deg, GalPak3D rotating disk model",
+   "software": [
+    "GalPak3D"
+   ],
+   "key_parameters": [
+    "Exponential disk, arctan rotation curve, default settings"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "CO luminosities and gas masses",
+   "method": "Solomon et al. 1997 L'CO equation; M_H2 = alpha_CO L'CO(1-0); QSO assuming thermalised CO(5-4)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=0.8; lensing corrected; L'(4-3)/L'(1-0)=1 for QSO"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "CO SLED excitation modelling",
+   "method": "RADEX grid of Tkin and nH2 with fixed N_CO, chi2 comparison to CO SLED J=1-8",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "QSO: width 300 km/s, N_CO=1e16 cm-2; companion: 850 km/s, 1e17; Tkin 10-400 K, log nH2 2-7"
+   ],
+   "assumptions": [
+    "Spherical geometry, H2 only collision partner, CMB background at z=2.84"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux QSO at 150 GHz",
+   "value": "0.399",
+   "uncertainty": "0.015",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.399\\pm0.015$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux companion at 150 GHz",
+   "value": "1.233",
+   "uncertainty": "0.037",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1.233\\pm0.037$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux QSO at 240 GHz",
+   "value": "2.174",
+   "uncertainty": "0.023",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$2.174\\pm0.023$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux companion at 240 GHz",
+   "value": "7.64",
+   "uncertainty": "0.30",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$7.64\\pm0.30$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust QSO",
+   "value": "24",
+   "uncertainty": "6",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$T_{\\rm dust, QSO}=24\\pm6\\,\\rm K$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust companion",
+   "value": "16",
+   "uncertainty": "3",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$T_{\\rm dust, Comp.}=16\\pm3\\,\\rm K$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR QSO (MR-MOOSE)",
+   "value": "2.1e12",
+   "uncertainty": "+1.7/-1.2 e12",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$L_{\\rm FIR, QSO}=(2.1^{+1.7}_{-1.2})\\times10^{12}\\,\\rm L_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR companion (MR-MOOSE)",
+   "value": "2.4e12",
+   "uncertainty": "1e12",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$L_{\\rm FIR, Comp.}=(2.4\\pm1)\\times10^{12}\\,\\rm L_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) FWHM companion",
+   "value": "1127",
+   "uncertainty": "49",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$1127\\pm49$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) integrated flux companion",
+   "value": "8.77",
+   "uncertainty": "0.50",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$8.77\\pm0.50$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) integrated flux QSO",
+   "value": "2.50",
+   "uncertainty": "0.22",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$2.50\\pm0.22$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass companion (CO(1-0))",
+   "value": "6.8e10",
+   "uncertainty": "1.4e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$(6.8\\pm1.4)\\times10^{10}\\,\\rm M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass QSO (from CO(5-4))",
+   "value": "2.3e10",
+   "uncertainty": "0.2e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "the molecular gas mass of the quasar is $(2.3\\pm0.2)\\times10^{10}\\,\\rm M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GalPak3D effective radius",
+   "value": "3.0",
+   "uncertainty": "0.04",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Appendix A",
+     "quote": "effective radius of $3.0\\pm0.04\\,\\rm kpc$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Updated flux values used to redo flux calibration",
+  "CASA and pipeline versions",
+  "Line-free channels and clean thresholds/masks, cell and image size",
+  "Rest frequencies and integration windows for line fluxes",
+  "MR-MOOSE priors and setup, and ArTeMiS/SCUBA fluxes used",
+  "RADEX grid step sizes and observed SLED inputs with errors",
+  "How continuum fluxes and sizes were measured (fitting method)",
+  "Which Gaussian fitting procedure was used for spectra"
+ ],
+ "missing_for_reproduction": [
+  "Updated flux calibrator values",
+  "MR-MOOSE configuration and priors",
+  "CLEAN parameters",
+  "RADEX SLED input details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and moderate recipe, but several imaging and fitting details missing.",
+ "rediscovery_reason": "Public data, short observations, numeric fluxes, line widths and gas masses reproducible.",
+ "source_card": "cards/2020MNRAS.493.3744F/sonnet/card.md"
+}

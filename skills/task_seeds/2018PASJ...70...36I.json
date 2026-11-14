@@ -1,0 +1,295 @@
+{
+ "bibcode": "2018PASJ...70...36I",
+ "title": "Subaru High-z Exploration of Low-Luminosity Quasars (SHELLQs). III. Star formation properties of the host galaxies at z ≳ 6 studied with ALMA",
+ "year": 2018,
+ "doi": "10.1093/pasj/psy026",
+ "arxiv_id": "1802.05742",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the star formation properties, sizes, dynamical masses and black hole-host mass relation of low-luminosity (M1450 > -25) quasar hosts at z >~ 6, compared with optically luminous quasars?",
+ "alma_project_codes": [
+  "2016.1.01423.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "[CII] beams 0.52-0.79 x 0.43-0.71 arcsec",
+  "sensitivity": "continuum rms 9.5, 20.7, 13.2, 8.8 uJy/beam; [CII] 0.12-0.24 mJy/beam per 50 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Literature compilation of z>~6 quasar [CII], FIR, Mdyn, MBH and M1450 for comparison",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "We have also compiled $M_{\\rm BH}$ or $M_{\\rm 1450}$"
+     }
+    ]
+   },
+   "citation": "many, e.g. (cite: 2017arXiv171002212W), (cite: 2013ApJ...773...44W)"
+  },
+  {
+   "what": {
+    "value": "MBH of J0859+0022 and J2216-0016 from Mg II virial calibration",
+    "evidence": [
+     {
+      "loc": "Table 4 note",
+      "quote": "See details about the $M_{\\rm BH}$ measurement of J0859+0022 and J2216-0016 with the Mg -based calibrations (cite: 2009ApJ...699..800V) in M. Onoue et al. (in preparation)."
+     }
+    ]
+   },
+   "citation": "Onoue et al. in preparation; (cite: 2009ApJ...699..800V)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes and continuum",
+   "method": "Calibrate and clean with CASA; uv continuum subtraction; bin to 50 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "briggs robust 0.5; 0.1 arcsec pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract [CII] line properties",
+   "method": "Single Gaussian fit of continuum-subtracted spectrum in 1.5 arcsec aperture; L_[CII] via standard equation",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "1.5 arcsec diameter circular aperture"
+   ],
+   "assumptions": [
+    "H0=70, OmegaM=0.3, OmegaL=0.7"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive SFR from [CII]",
+   "method": "De Looze et al. 2011 relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Kroupa IMF; young stars heat [CII]; AGN contribution neglected; dispersion ~0.3 dex not in errors"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "FIR luminosity, SFR_TIR and dust mass",
+   "method": "Optically thin gray body to 1.2 mm flux; extend to TIR (8-1000 um); SFR=1.49e-10 L_TIR; Mdust from kappa",
+   "software": [],
+   "key_parameters": [
+    "Td=47 K and 35 K, beta=1.6, kappa0=0.4 cm2/g at 250 GHz"
+   ],
+   "assumptions": [
+    "No CMB correction for Td >~ 35 K; star formation accounts for all TIR"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure source sizes",
+   "method": "2D Gaussian fit to [CII] moment-0 and continuum maps in image plane, 3 sigma clipping, native resolution",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Search for companion emitters",
+   "method": "CLUMPFIND on continuum-subtracted cubes, peak S/N>=5; continuum emitters at S/N>=5",
+   "software": [
+    "CLUMPFIND"
+   ],
+   "key_parameters": [
+    "Delta S = 1 sigma, S_start = 3 sigma; 43 MHz binning"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Dynamical mass and comparison with MS and MBH-Mdyn",
+   "method": "Thin-disk Mdyn=1.16e5 vcirc^2 D; i from axis ratio; compare with nu2GC and local relation",
+   "software": [],
+   "key_parameters": [
+    "vcirc=0.75 FWHM/sin i; D=1.5 a_maj"
+   ],
+   "assumptions": [
+    "Mdyn used as surrogate for M*; Eddington-limited accretion for BH mass of two quasars"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L_[CII] range",
+   "value": "(3.8-10.2)e8",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\rm [C\\,\\emissiontype{II}]} = (3.8-10.2) \\times 10^8~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "J2216-0016 [CII] flux",
+   "value": "1.05",
+   "uncertainty": "0.08",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1.05 $\\pm$ 0.08"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] FWHM range",
+   "value": "192-356",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6 Summary",
+     "quote": "The line FWHM ranges from 192 to 356 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_[CII]",
+   "value": "25-67",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The derived SFRs (25–67 $M_\\odot$ yr$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm continuum flux density",
+   "value": "136-246",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$f_{\\rm 1.2mm}$ ($\\mu$Jy) | 157 $\\pm$ 23 | 189 $\\pm$ 32 | 136 $\\pm$ 27 | 246 $\\pm$ 12"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR (Td=35 K)",
+   "value": "1.2-2.0e11",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\rm FIR} = (1.2-2.0) \\times 10^{11}~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_TIR (Td=35 K)",
+   "value": "23-40",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\simeq 23-40~M_\\odot ~{\\rm yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]/L_FIR",
+   "value": "(2.2-8.7)e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\simeq (2.2-8.7) \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdyn",
+   "value": "(1.4-8.2)e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\simeq (1.4-8.2) \\times 10^{10}~M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "J2216-0016 [CII] size major axis",
+   "value": "5.2",
+   "uncertainty": "0.8",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(5.2 $\\pm$ 0.8) kpc $\\times$ (2.5 $\\pm$ 0.7) kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "ODR fit of log L[CII]/LFIR vs log LFIR",
+   "value": "intercept 3.84, slope -0.56",
+   "uncertainty": "0.57, 0.05",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "\\log_{\\rm 10} L_{\\rm [C\\,\\emissiontype{II}]}/L_{\\rm FIR} = (3.84 \\pm 0.57) - (0.56 \\pm 0.05) ~\\log_{\\rm 10} L_{\\rm FIR}"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel selection and velocity ranges for moment-0 maps",
+  "Clean mask, threshold and iteration settings; image size",
+  "CASA task parameters for imfit (regions, initial guesses)",
+  "Dust-temperature SED details for the gray body integration and L_FIR band definition",
+  "Gas-to-dust ratio value used",
+  "Details of nu2GC selection and M_BH from Onoue et al.",
+  "Which archive products or scripts were used (pipeline vs manual)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges and moment velocity ranges",
+  "Clean masks/thresholds",
+  "SED integration details",
+  "MBH values from unpublished paper"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and recipe mostly specified, but several imaging and analysis details are missing and some inputs are unpublished.",
+ "rediscovery_reason": "Public data, clear CASA recipe and numeric results (fluxes, sizes, luminosities).",
+ "source_card": "cards/2018PASJ...70...36I/sonnet/card.md"
+}

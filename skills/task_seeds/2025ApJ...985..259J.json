@@ -1,0 +1,694 @@
+{
+ "bibcode": "2025ApJ...985..259J",
+ "title": "Searching for Compact Obscured Nuclei in Compton-thick Active Galactic Nuclei",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adcecb",
+ "arxiv_id": "2504.15248",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Are Compact Obscured Nuclei (CONs, bright HCN-vib cores) present in hard X-ray-confirmed Compton-thick AGN of GOALS U/LIRGs, and do CT AGN show evolved molecular outflows consistent with a CON-to-CT-AGN evolutionary sequence?",
+ "alma_project_codes": [
+  "2017.1.00598.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "ALMA 12-m Array",
+  "angular_resolution": "~0.3 arcsec (beams 0.28-0.39 x 0.24-0.29 arcsec, ~80-190 pc)",
+  "sensitivity": "Cube RMS 0.19-0.50 mJy/beam per 33 km/s channel; continuum RMS 0.06-0.17 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshifts, luminosity distances and infrared luminosities of the sample",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Column (2): Redshifts from (cite: Armus2009)."
+     },
+     {
+      "loc": "Table 1 notes",
+      "quote": "Column (4): Infrared luminosities from (cite: Armus2009)."
+     }
+    ]
+   },
+   "citation": "Armus et al. 2009 (cite: Armus2009)"
+  },
+  {
+   "what": {
+    "value": "Line-of-sight column densities",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Column (5): Line of sight column densities from (cite: Ricci2021)."
+     }
+    ]
+   },
+   "citation": "Ricci et al. 2021 (cite: Ricci2021)"
+  },
+  {
+   "what": {
+    "value": "IRAS 25/60 micron flux ratios",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Column (6): Ratio of IRAS fluxes at 25$\\mu$m and 60$\\mu$m from (cite: Sanders2003)."
+     }
+    ]
+   },
+   "citation": "Sanders et al. 2003 (cite: Sanders2003)"
+  },
+  {
+   "what": {
+    "value": "HCN-vib upper limit for NGC 1068 at ~15 pc scales, and for NGC 5135 and IRAS 13120-5453",
+    "evidence": [
+     {
+      "loc": "2.3 Literature HCN-vib Measurements",
+      "quote": "In this work, we use the HCN-vib upper limit reported in (cite: Falstad2021) at $\\sim15$ pc-scales"
+     },
+     {
+      "loc": "2.3 Literature HCN-vib Measurements",
+      "quote": "For NGC 5135 and IRAS 13120-5453, HCN-vib upper limits are presented in (cite: Falstad2021)."
+     }
+    ]
+   },
+   "citation": "Falstad et al. 2021 (cite: Falstad2021)"
+  },
+  {
+   "what": {
+    "value": "HCN (3-2) line properties and cube RMS of NGC 6240N/S, used to compute 3-sigma HCN-vib upper limits",
+    "evidence": [
+     {
+      "loc": "2.3 Literature HCN-vib Measurements",
+      "quote": "HCN-vib non-detections are also reported for NGC 6240N and NGC 6240S in (cite: Nishimura2024)."
+     }
+    ]
+   },
+   "citation": "Nishimura et al. 2024 (cite: Nishimura2024)"
+  },
+  {
+   "what": {
+    "value": "CON comparison values: HCN-vib and 1-mm continuum surface brightnesses of CONs and other U/LIRGs (Figure 8)",
+    "evidence": [
+     {
+      "loc": "4.1 Are CT AGN also CONs?",
+      "quote": "In Figure [8](#fig:CT_CON), we compare our complete sample of nine CT AGN to other local U/LIRGs (including CONs)"
+     }
+    ]
+   },
+   "citation": "Falstad2019; Falstad2021; Nishimura2024 (cite: Falstad2019; Falstad2021; Nishimura2024)"
+  },
+  {
+   "what": {
+    "value": "Intrinsic 10-24 keV X-ray luminosities of the CT AGN (Figure 9)",
+    "evidence": [
+     {
+      "loc": "4.3 Sample selection bias - Heavily-CT AGN",
+      "quote": "Figure [9](#fig:X_vib) is a plot of the 10$-$24 keV intrinsic X-ray luminosities from the literature"
+     }
+    ]
+   },
+   "citation": "Teng2015; Puccetti2016; Gandhi2017; Ricci2017a; Ricci2017c; Oda2018; Yamada2020; Ricci2021"
+  },
+  {
+   "what": {
+    "value": "Literature outflow detections (CO and dense molecular) in NGC 6240, NGC 1068, IRAS 13120-5453",
+    "evidence": [
+     {
+      "loc": "4.2 Evolutionary link",
+      "quote": "Dense molecular outflows have also been observed in NGC 1068 and IRAS 13120-5453 with velocities of $\\sim 300$ km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "Feruglio2013; Treister2020; GB2014; Privon2017; Lutz2020"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, continuum-subtract and image line cubes and continuum",
+   "method": "Automated ALMA imaging pipeline continuum subtraction (NGC 6921 manual); Briggs-weighted imaging; cubes smoothed to ~33 km/s; continuum image from line-free channels",
+   "software": [
+    "CASA 5.1.1-5",
+    "ALMA imaging pipeline"
+   ],
+   "key_parameters": [
+    "Briggs weighting, robust = 0.5",
+    "Cubes smoothed to ~33 km/s channels, about four times the pipeline products"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure 1-mm continuum peak positions, flux densities and sizes",
+   "method": "Two-dimensional Gaussian fit to the continuum map with CASA IMFIT; two components for NGC 7130",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Fit region contains all continuum emission >3 sigma",
+    "NGC 7130 two-component fit with peak positions fixed to observed peaks"
+   ],
+   "assumptions": [
+    "1-mm continuum peak taken as the AGN position (and spectral extraction position)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Make moment 0 maps and measure HCN and HCO+ (3-2) line fluxes, FWHM and surface brightness at the continuum peak",
+   "method": "Beam-sized aperture spectra at the continuum peak; Gaussian FWHM via specutils; flux over twice the FWHM; luminosity from Solomon and Vanden Bout formula divided by aperture area",
+   "software": [
+    "Spectral-Cube",
+    "Astropy specutils"
+   ],
+   "key_parameters": [
+    "Moment 0 integrated over all channels with >3 sigma line emission",
+    "Flux integrated over a velocity range of twice the Gaussian FWHM",
+    "Flux uncertainty from spectrum RMS plus an assumed 10% Band 6 flux uncertainty"
+   ],
+   "assumptions": [
+    "Rest frequencies from Splatalogue; D_L and z from Armus et al. 2009"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Place 3-sigma upper limits on HCN-vib luminosity and surface brightness",
+   "method": "Boxcar line profile of width equal to the HCN (3-2) FWHM on central beam spectrum, converted with the luminosity equation and divided by beam area",
+   "software": [],
+   "key_parameters": [
+    "Example NGC 4922N: mean 1-sigma noise 0.25 mJy over FWHM 148 km/s gives <0.11 Jy km/s"
+   ],
+   "assumptions": [
+    "CON criterion Sigma_HCN-vib >= 1 Lsun/pc^2"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Search for non-circular motions: moment 1/2 maps and position-velocity diagrams",
+   "method": "Moment 1 and 2 maps masked at moment 0 >= 3 sigma; HCN (3-2) PV slices along the major axis through the continuum peak",
+   "software": [
+    "Spectral-Cube"
+   ],
+   "key_parameters": [
+    "PV slice width about one beam",
+    "Systemic velocity from the peak of the HCN (3-2) line in extracted spectra"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Map HCN/HCO+ (3-2) luminosity ratio and extract spectra at HCN-enhanced regions for outflow wings",
+   "method": "Ratio of HCN and HCO+ moment 0 maps masked where HCN is below 3 sigma; beam-sized spectra at elevated-ratio positions",
+   "software": [
+    "Spectral-Cube"
+   ],
+   "key_parameters": [
+    "NGC 6921 omitted (HCO+ unresolved, low S/N)"
+   ],
+   "assumptions": [
+    "Elevated HCN/HCO+ can be driven by mechanical heating from outflows"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare CT AGN HCN-vib and 1-mm surface brightness with CONs and derive CON detection rate",
+   "method": "Re-measure HCN-vib upper limits with continuum-sized apertures, plot against S_1mm/Omega with literature CONs and U/LIRGs, compute detection-rate interval",
+   "software": [],
+   "key_parameters": [
+    "1-sigma confidence interval by beta distribution quantile technique"
+   ],
+   "assumptions": [
+    "Both continuum peaks of NGC 7130 plotted since the AGN position is unknown (10 points for 9 AGN)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test the effect of spatial resolution on the HCN-vib non-detections",
+   "method": "Treat the HCN-vib emission as a point source with fixed luminosity (3-sigma or 1-sigma limit) and solve for the aperture radius at which surface brightness reaches 1 Lsun/pc^2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Line luminosity constant; only aperture radius changes"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Assess outflow detectability and census literature outflows in the nine CT AGN",
+   "method": "Scale line luminosities of known CON HCN outflows to the survey sensitivity; tally literature molecular outflows and ages",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCN (3-2)/HCN (1-0) luminosity ratio of 0.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1-mm continuum flux density, NGC 4922N",
+   "value": "4.50",
+   "uncertainty": "0.23",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4.50"
+    },
+    {
+     "loc": "Table 3 notes",
+     "quote": "Column (4): Flux density in mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "1-mm continuum flux density, NGC 7674",
+   "value": "2.32",
+   "uncertainty": "0.17",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "2.32"
+    },
+    {
+     "loc": "Table 3 notes",
+     "quote": "Column (4): Flux density in mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "1-mm continuum flux density, NGC 6921",
+   "value": "0.48",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.48"
+    },
+    {
+     "loc": "Table 3 notes",
+     "quote": "Column (4): Flux density in mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "1-mm continuum surface brightness S_1mm/Omega, NGC 4922N",
+   "value": "8.00",
+   "uncertainty": "0.65",
+   "units": "mJy arcsec^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "8.00"
+    },
+    {
+     "loc": "Table 3 notes",
+     "quote": "Column (6): 1-mm continuum surface brightness."
+    }
+   ]
+  },
+  {
+   "quantity": "1-mm continuum surface brightness S_1mm/Omega, NGC 7674",
+   "value": "6.73",
+   "uncertainty": "0.77",
+   "units": "mJy arcsec^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "6.73"
+    },
+    {
+     "loc": "Table 3 notes",
+     "quote": "Column (6): 1-mm continuum surface brightness."
+    }
+   ]
+  },
+  {
+   "quantity": "1-mm continuum surface brightness S_1mm/Omega, NGC 6921",
+   "value": "2.68",
+   "uncertainty": "0.68",
+   "units": "mJy arcsec^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "2.68"
+    },
+    {
+     "loc": "Table 3 notes",
+     "quote": "Column (6): 1-mm continuum surface brightness."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2) line flux, NGC 4922N",
+   "value": "0.57",
+   "uncertainty": "0.04",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.57"
+    },
+    {
+     "loc": "Table 4 notes",
+     "quote": "Column (3): Integrated flux at the 1-mm continuum peak in Jy km s$^{-1}$ measured with a beam-sized aperture."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2) FWHM, NGC 4922N",
+   "value": "148",
+   "uncertainty": "6",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "148"
+    },
+    {
+     "loc": "Table 4 notes",
+     "quote": "This was measured via a Gaussian fit to the line profile."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2) line flux, NGC 7130 West",
+   "value": "1.38",
+   "uncertainty": "0.05",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "1.38"
+    },
+    {
+     "loc": "Table 4 notes",
+     "quote": "Column (3): Integrated flux at the 1-mm continuum peak in Jy km s$^{-1}$ measured with a beam-sized aperture."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2) line flux, NGC 7130 East",
+   "value": "1.81",
+   "uncertainty": "0.06",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "1.81"
+    },
+    {
+     "loc": "Table 4 notes",
+     "quote": "Column (3): Integrated flux at the 1-mm continuum peak in Jy km s$^{-1}$ measured with a beam-sized aperture."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2) line flux, NGC 7674",
+   "value": "0.15",
+   "uncertainty": "0.04",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.15"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "226"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2) line flux, NGC 6921",
+   "value": "0.16",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.16"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "357"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ (3-2) integrated flux, NGC 6921 (marginal, ~2 sigma)",
+   "value": "0.11",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Dense gas tracers",
+     "quote": "we measure an integrated flux of 0.11 $\\pm$ 0.07 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib 3-sigma flux upper limit, NGC 4922N",
+   "value": "<0.11",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Limits on HCN-vib emission",
+     "quote": "Over a FWHM of 148 km s$^{-1}$, this corresponds to a $3\\sigma$ flux upper limit of $<$ 0.11 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib 3-sigma flux upper limits, other targets (NGC 7130 W / E, NGC 7674, NGC 6921)",
+   "value": "<0.15 / <0.17 / <0.13 / <0.21",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.15"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "0.17"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "0.13"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib luminosity 3-sigma upper limit, NGC 4922N",
+   "value": "<371",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Limits on HCN-vib emission",
+     "quote": "or a luminosity upper limit of $<$ 371"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib surface brightness 3-sigma upper limit over beam, NGC 4922N",
+   "value": "<0.02",
+   "uncertainty": "not stated",
+   "units": "Lsun pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Limits on HCN-vib emission",
+     "quote": "we obtain a $3\\sigma$ surface brightness upper limit of"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib surface brightness upper limit over continuum-sized aperture, NGC 4922N",
+   "value": "<0.004",
+   "uncertainty": "not stated",
+   "units": "Lsun pc^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "0.004"
+    },
+    {
+     "loc": "Table 5 notes",
+     "quote": "Limits are provided at 3$\\sigma$ confidence."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib surface brightness upper limit over continuum-sized aperture, NGC 7130 W",
+   "value": "<0.006",
+   "uncertainty": "not stated",
+   "units": "Lsun pc^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "0.006"
+    },
+    {
+     "loc": "Table 5 notes",
+     "quote": "Limits are provided at 3$\\sigma$ confidence."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-vib surface brightness upper limit over continuum-sized aperture, NGC 7674",
+   "value": "<0.005",
+   "uncertainty": "not stated",
+   "units": "Lsun pc^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "0.005"
+    },
+    {
+     "loc": "Table 5 notes",
+     "quote": "Limits are provided at 3$\\sigma$ confidence."
+    }
+   ]
+  },
+  {
+   "quantity": "CON detection rate in hard X-ray CT AGN",
+   "value": "0",
+   "uncertainty": "+17/-0",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 Are CT AGN also CONs?",
+     "quote": "translating to a CONs detection rate of 0$^{+17}_{-0}$% in CT AGN"
+    }
+   ]
+  },
+  {
+   "quantity": "Aperture radius for Sigma_HCN-vib = 1 Lsun/pc^2 at 3-sigma luminosity limit",
+   "value": "r < 4-26 pc, median r < 16 pc",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.1.1 Impact of Spatial Resolution",
+     "quote": "then the radius upper limit ranges from $r<$ $4-26$ pc and a median of $r<$ 16 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Aperture radius for Sigma_HCN-vib = 1 Lsun/pc^2 at 1-sigma luminosity limit",
+   "value": "r < 2-15 pc, median r < 10 pc",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.1.1 Impact of Spatial Resolution",
+     "quote": "with $r<$ $2-15$ pc and a median upper limit of $r<$ 10 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Detectability of ESO 320-G030 HCN (3-2) outflow at survey sensitivity",
+   "value": "8-28 sigma",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Evolutionary link",
+     "quote": "would have been detected at a $8-28\\sigma$ level"
+    }
+   ]
+  },
+  {
+   "quantity": "Detectability of Arp 220W HCN (1-0) outflow at survey sensitivity",
+   "value": "3-11 sigma",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Evolutionary link",
+     "quote": "would have been detected at a $3-11\\sigma$ level"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum relative radio velocity in PV diagrams of the four new sources",
+   "value": "<= 200",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.1 Nuclear kinematics",
+     "quote": "relative radio velocities do not exceed $\\pm$ 200 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of the nine CT AGN with literature molecular outflows",
+   "value": "4/9 (at least 44%)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Evolutionary link",
+     "quote": "we find that at least 44% (4/9) host molecular outflows."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum fitting and for the 1-mm continuum images (pipeline default vs manual), including the manual range for NGC 6921",
+  "tclean parameters: cell size, image size, deconvolver, threshold, masking, niter, and whether the pipeline cube products or a re-run were used",
+  "Whether the data are the archive pipeline-calibrated products or a user re-run of the calibration; flux, bandpass and phase calibrators",
+  "Exact aperture shape and size for the beam-sized and continuum-sized spectral extractions, and the 33 km/s rebinning procedure (CASA task and channel mapping)",
+  "Which Gaussian component is east/west for NGC 7130 (Table 3 rows are unlabeled) and the mapping of Table 4 West/East onto Table 3 coordinates",
+  "Primary beam correction status of cubes and continuum",
+  "Continuum bandwidth and frequencies used for the 1-mm continuum image",
+  "Moment-map sigma mask definition (which noise estimate) and the spectral range for the HCN/HCO+ ratio maps",
+  "PV slice position angles and how the major axis was determined",
+  "Literature values for NGC 1068, NGC 5135, IRAS 13120-5453 and NGC 6240 used in Figures 8-9 must be taken from the cited papers"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selection and continuum fit ranges (including the manual NGC 6921 range)",
+  "Cell size, image size, deconvolution and masking parameters",
+  "Exact apertures for the extractions and the PV slice position angles",
+  "Statement that the data are public and which archive products (calibrated MS or pipeline cubes) were used",
+  "Literature HCN-vib numbers for five other sources must be gathered from Falstad 2021 and Nishimura 2024"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, CASA version, robust, channel width, lines, rest frequencies, and numeric tables are given, but line-free channels, imaging geometry, masks, apertures and PV axes are not, and data public status is not stated; literature inputs must be gathered separately.",
+ "rediscovery_reason": "The single ALMA project (2017.1.00598.S) is from a 2017 cycle and should be in the public archive; flux, FWHM, upper-limit and surface-brightness values are tabulated so a redo of continuum, line fluxes and HCN-vib limits is feasible, although the data-public status is inferred rather than stated.",
+ "source_card": "cards/2025ApJ...985..259J/sonnet/card.md"
+}

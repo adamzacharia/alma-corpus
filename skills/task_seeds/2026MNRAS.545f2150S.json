@@ -1,0 +1,547 @@
+{
+ "bibcode": "2026MNRAS.545f2150S",
+ "title": "HD 44892: the youngest (or oldest?) gas-harbouring debris disc around an intermediate-mass star",
+ "year": 2026,
+ "doi": "10.1093/mnras/staf2150",
+ "arxiv_id": "2508.19860",
+ "fields": [
+  "debris_disks",
+  "protoplanetary_disks"
+ ],
+ "question": "Whether gas and millimeter continuum dust emission are present around the 2.1 Myr hybrid debris disc candidate HD 44892, what their masses and origins (primordial vs. secondary) are, and whether the young 2.1 Myr or alternative 800 Myr age is favored.",
+ "alma_project_codes": [
+  "2022.1.01686.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12 m array (46 operational antennas)",
+  "angular_resolution": "0.44'' x 0.38'' (84 au x 72 au, PA -70.7 deg) for continuum; 0.46'' x 0.40'' (88 au x 76 au, PA -80.6 deg) for 12CO",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar parameters (temperature 7500 ± 500 K, luminosity 60.0 ± 20.0 L_odot, stellar mass 2.87 +0.67/-0.41 M_odot, age 2.1 +1.2/-1.0 Myr) and fractional IR excess at 12 um (7.86 +0.11/-2.27) of HD 44892",
+    "evidence": [
+     {
+      "loc": "HD 44892",
+      "quote": "HD 44892 has a temperature of 7500 ± 500K, a luminosity of 60.0 ± 20.0 $L_{\\odot}$, stellar mass of 2.87 $^{+0.67}_{-0.41}$ $M_{\\odot}$, and an age of 2.1 $^{+1.2}_{-1.0}$ Myr (cite: Iglesias2023X-shooterEvolution)."
+     },
+     {
+      "loc": "HD 44892",
+      "quote": "HD 44892 has a fractional IR excess at 12 $\\mu$m of 7.86 $^{+0.11}_{-2.27}$ (cite: Iglesias2023X-shooterEvolution)"
+     }
+    ]
+   },
+   "citation": "(cite: Iglesias2023X-shooterEvolution)"
+  },
+  {
+   "what": {
+    "value": "Radial velocity of HD 44892 (20.9 ± 0.6 km s^-1)",
+    "evidence": [
+     {
+      "loc": "HD 44892",
+      "quote": "(cite: Gontcharov2006PulkovoSystem) have calculated the radial velocity of the star to be 20.9 ± 0.6 km s$^{-1}$, which is the value adopted in this study."
+     }
+    ]
+   },
+   "citation": "(cite: Gontcharov2006PulkovoSystem)"
+  },
+  {
+   "what": {
+    "value": "Continuum and 12CO fluxes for NO Lup",
+    "evidence": [
+     {
+      "loc": "HD 44892 in the context of known gas-harbouring debris discs",
+      "quote": "For NO Lup, using continuum and $^{12}$CO fluxes from (cite: Lovell2021ALMADispersal), we derive the CO gas mass, assuming gas temperature of 50 K, of (5.03 ± 1.13) $\\times$ 10$^{-5}$ $M_{\\oplus}$."
+     }
+    ]
+   },
+   "citation": "(cite: Lovell2021ALMADispersal)"
+  },
+  {
+   "what": {
+    "value": "Data for Fomalhaut dust and CO gas mass derivation",
+    "evidence": [
+     {
+      "loc": "HD 44892 in the context of known gas-harbouring debris discs",
+      "quote": "For Fomalhaut, using data from (cite: Matra2017DetectionComets) and (cite: MacGregor2017ADisk), we derive a 50 K dust mass of $(1.49\\pm0.38)\\times10^{-2}$$M_{\\oplus}$ and a CO gas mass of $(1.89\\pm0.55)\\times10^{-7}$$M_{\\oplus}$."
+     }
+    ]
+   },
+   "citation": "(cite: Matra2017DetectionComets) and (cite: MacGregor2017ADisk)"
+  },
+  {
+   "what": {
+    "value": "Data for eta Crv dust and CO gas mass derivation",
+    "evidence": [
+     {
+      "loc": "HD 44892 in the context of known gas-harbouring debris discs",
+      "quote": "For $\\eta$ Crv we derive a dust mass at 50 K of $(1.07\\pm0.87)\\times10^{-2}$$M_{\\oplus}$ and a CO gas mass of $(5.92\\pm0.78)\\times10^{-7}$$M_{\\oplus}$ (cite: Marino2017ALMAPlanets)."
+     }
+    ]
+   },
+   "citation": "(cite: Marino2017ALMAPlanets)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux and size",
+   "method": "Image continuum with CASA tclean (Briggs weighting, robust=0.3), measure flux inside the 3-sigma contour, fit Gaussian component with CASA imfit, and verify astrometric accuracy.",
+   "software": [
+    "CASA",
+    "tclean",
+    "imfit",
+    "CARTA"
+   ],
+   "key_parameters": [
+    "robust = 0.3",
+    "flux measured inside 3-sigma contour"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Subtract continuum, image CO lines, and extract moment maps and spectra",
+   "method": "Subtract continuum with uvcontsub, identify emission channels with plotms, image CO SPWs with tclean (robust=0.3, then nchan=3 binning, then with Keplerian Mask tool), and create moment 0 maps with immoments over -8.49 to 15.33 km s^-1.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "plotms",
+    "tclean",
+    "immoments",
+    "imfit",
+    "Keplerian Mask"
+   ],
+   "key_parameters": [
+    "robust = 0.3, nchan = 3",
+    "Velocity / frequency integration range: -8.49 to 15.33 km s^-1 (230.5445 GHz to 230.5262 GHz)",
+    "Keplerian mask parameters: inclination = 40 deg, PA = 17.2 deg, stellar mass = 3.27 M_odot, outer radius = 0.4'' (76 au)"
+   ],
+   "assumptions": [
+    "Star radial velocity in LSR frame ~1.5 km s^-1 (heliocentric 20.9 ± 0.6 km s^-1); Keplerian rotation around star"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Simulate dust ring models to constrain belt radius, dust temperature, dust mass, and collisional lifetime",
+   "method": "Generate circular dust ring models (radii 20-100 au, width 1 px / 0.2 au) at various inclinations, simulate ALMA observations with CASA simalma, compare to data with imfit to find best-fit radius, compute blackbody temperature and optically thin dust mass, and estimate collisional lifetime.",
+   "software": [
+    "CASA",
+    "simalma",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Ring radii = 20-100 au; ring width = 1 px (0.2 au)"
+   ],
+   "assumptions": [
+    "Blackbody dust grains; optically thin thermal emission; distance D = 191 pc; stellar luminosity L = 60.0 L_odot; dust opacity kappa = 0.1 * 2.3 * (nu / 230e9)^0.7 cm^2 g^-1 (Beckwith 1990)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO and total H2 gas masses and upper limits",
+   "method": "Calculate minimum CO gas mass from 12CO (2-1) integrated flux assuming LTE and optically thin emission at 20 K and 50 K; derive 3-sigma upper limits from 13CO and C18O moment 0 RMS inside the 3-sigma 12CO contour; convert to total H2 mass assuming ISM abundance ratios.",
+   "software": [],
+   "key_parameters": [
+    "Gas temperatures = 20 K and 50 K; 13CO and C18O 3-sigma flux upper limit = 90.84 mJy km s^-1"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE); Boltzmann level population; ISM abundance ratios 12CO/H2 = 10^-4, CO/13CO = 77, CO/C18O = 550"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze optical UVES spectra for circumstellar absorption and mass accretion rate",
+   "method": "Reduce UVES spectra with EsoReflex, correct telluric contamination with Molecfit, fit Kurucz stellar model spectra to identify Ca II K & H and Na I D1 & D2 absorption and residual variability, and compute mass accretion rate from H-alpha following Fairlamb et al. (2017).",
+   "software": [
+    "UVES EsoReflex pipeline",
+    "Molecfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Kurucz stellar atmosphere models"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model the spectral energy distribution (SED) and compare Spitzer IRS spectra",
+   "method": "Fit single-temperature blackbody belt model to the infrared excess for stellar temperatures of 7000 K, 7500 K, and 8000 K (excluding IRAS 100 um upper limit), and compare Spitzer IRS mid-IR spectrum to reference protoplanetary and debris discs.",
+   "software": [
+    "VOSA"
+   ],
+   "key_parameters": [
+    "Stellar effective temperatures T_eff = 7000 K, 7500 K, 8000 K"
+   ],
+   "assumptions": [
+    "Optically thin dust; single-temperature blackbody belt"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum flux of HD 44892",
+   "value": "0.136",
+   "uncertainty": "± 0.016",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "We detected continuum emission of 0.136 ± 0.016 mJy ($\\sim$9 $\\sigma$), shown in Figure 3."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum fitted Gaussian major axis FWHM",
+   "value": "0.58",
+   "uncertainty": "± 0.08",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "Using task ‘imfit’, which is part of the CASA package, we found that the continuum emission of HD 44892 is marginally resolved, as the fitted Gaussian component has a FWHM of major axis of 0.58$''$ ± 0.08$''$, 110 au"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (2-1) integrated line flux (unbinned moment 0)",
+   "value": "96.92",
+   "uncertainty": "± 16.22",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas",
+     "quote": "From moment 0 (Figure 6, integrated intensity made using the CASA task ‘immoments’ within range -8.49-15.33 km s$^{-1}$) we found an integrated line flux of 96.92 ±16.22 mJy km s$^{-1}$ ($\\sim$6.0 $\\sigma$)."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (2-1) integrated line flux (3-channel binned moment 0)",
+   "value": "93.06",
+   "uncertainty": "± 14.10",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas",
+     "quote": "The moment 0 map was made using the same velocity range as in the non-binned case, resulting in a slightly lower noise of 14.10 mJy km s$^{-1}$, and the integrated line flux of 93.06 mJy km s$^{-1}$, improving the signal-to-noise (6.6 $\\sigma$)."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (2-1) integrated line flux F_21 (Keplerian masked moment 0)",
+   "value": "95.47",
+   "uncertainty": "± 13.49",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas",
+     "quote": "Using the Keplerian Mask during cleaning has improved the signal-to-noise once more, in moment 0 this resulted in an integrated line flux ($F_{21}$) of 95.47 ± 13.49 mJy km s$^{-1}$ (7.1 $\\sigma$, Figure 6)."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO deconvolved Gaussian major axis",
+   "value": "0.34",
+   "uncertainty": "± 0.10",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas",
+     "quote": "We used the ‘imfit’ task and obtained the deconvolved Gaussian parameters: 0.34$''$ ± 0.10$''$ for the major axis and 0.19$''$ ± 0.08$''$ for the minor axis (PA of 76.2 ± 63.4$\\degree$)."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO deconvolved Gaussian minor axis",
+   "value": "0.19",
+   "uncertainty": "± 0.08",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas",
+     "quote": "We used the ‘imfit’ task and obtained the deconvolved Gaussian parameters: 0.34$''$ ± 0.10$''$ for the major axis and 0.19$''$ ± 0.08$''$ for the minor axis (PA of 76.2 ± 63.4$\\degree$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination from deconvolved Gaussian aspect ratio",
+   "value": "56.1",
+   "uncertainty": "± 19.9",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas",
+     "quote": "This suggests an inclination of 56.1 ± 19.9$\\degree$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit dust ring distance from simalma",
+   "value": "40-45",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion",
+     "quote": "We used the CASA task ‘imfit’ to compare the simulated images to the actual data, and found that a ring located approximately 40-45 au from the star best reproduced the observed emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust belt blackbody temperature at 40-45 au",
+   "value": "115",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion",
+     "quote": "A debris belt distance of 40-45 au corresponds to a dust temperature of $\\sim$115 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum dust mass (at 115 K)",
+   "value": "0.019",
+   "uncertainty": "± 0.009",
+   "units": "M_oplus",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our detection of 1.3 mm emission yields the dust mass of 0.019 ± 0.009 M$_{\\oplus}$ assuming 115 K temperature."
+    },
+    {
+     "loc": "Analysis & discussion",
+     "quote": "This results in a minimum dust mass at the dust temperature of 115 K of 0.019 ± 0.009 M$_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum dust mass (at 50 K)",
+   "value": "0.05",
+   "uncertainty": "± 0.03",
+   "units": "M_oplus",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion",
+     "quote": "For comparison, a lower dust temperature of 50 K would yield a higher dust mass estimate of 0.05 ± 0.03$M_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Collisional dust lifetime",
+   "value": "10^-2",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion",
+     "quote": "In this scenario, following (cite: Pearce2021Fomalhaut) (cite: Wyatt2002Collisions) we obtain the dust lifetime of order $10^{-2}$ Myr, which is much smaller than the estimated age of HD 44892."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum CO gas mass from 12CO (at 20 K)",
+   "value": "7.86e-5",
+   "uncertainty": "± 2.05e-5",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The $^{12}$CO detection yields a CO gas mass of (7.86 ± 2.05) $\\times$ 10$^{-5}$ $M_{\\oplus}$ or (1.62 ± 0.17) $\\times$ 10$^{-4}$ $M_{\\oplus}$ assuming a gas temperature of 20 K or 50 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum CO gas mass from 12CO (at 50 K)",
+   "value": "1.62e-4",
+   "uncertainty": "± 0.17e-4",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The $^{12}$CO detection yields a CO gas mass of (7.86 ± 2.05) $\\times$ 10$^{-5}$ $M_{\\oplus}$ or (1.62 ± 0.17) $\\times$ 10$^{-4}$ $M_{\\oplus}$ assuming a gas temperature of 20 K or 50 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 gas mass from 12CO (at 20 K)",
+   "value": "0.06",
+   "uncertainty": "± 0.02",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion",
+     "quote": "If the gas is indeed primordial, we estimate the H$_{2}$ mass, and hence total disc gas mass, to be 0.06 ± 0.02 $M_{\\oplus}$ for 20 K gas and 0.12 ± 0.01 $M_{\\oplus}$ for 50 K gas."
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 gas mass from 12CO (at 50 K)",
+   "value": "0.12",
+   "uncertainty": "± 0.01",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion",
+     "quote": "If the gas is indeed primordial, we estimate the H$_{2}$ mass, and hence total disc gas mass, to be 0.06 ± 0.02 $M_{\\oplus}$ for 20 K gas and 0.12 ± 0.01 $M_{\\oplus}$ for 50 K gas."
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas mass upper limit from 13CO (at 20 K)",
+   "value": "<7.09e-3",
+   "uncertainty": "not stated",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{CO}$ (20K) | \\<7.09 $\\times$ 10$^{-3}$ | \\<5.27 $\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas mass upper limit from 13CO (at 50 K)",
+   "value": "<1.47e-2",
+   "uncertainty": "not stated",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{CO}$ (50K) | \\<1.47 $\\times$ 10$^{-2}$ | \\<1.10 $\\times$ 10$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas mass upper limit from C18O (at 20 K)",
+   "value": "<5.27e-2",
+   "uncertainty": "not stated",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{CO}$ (20K) | \\<7.09 $\\times$ 10$^{-3}$ | \\<5.27 $\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas mass upper limit from C18O (at 50 K)",
+   "value": "<1.10e-1",
+   "uncertainty": "not stated",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{CO}$ (50K) | \\<1.47 $\\times$ 10$^{-2}$ | \\<1.10 $\\times$ 10$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 gas mass upper limit from 13CO (at 20 K)",
+   "value": "<5.06",
+   "uncertainty": "not stated",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{H_{2}}$ (20K) | \\<5.06 | \\<37.67"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 gas mass upper limit from 13CO (at 50 K)",
+   "value": "<10.51",
+   "uncertainty": "not stated",
+   "units": "M_oplus",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{H_{2}}$ (50K) | \\<10.51 | \\<78.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rate log(Mdot_acc) (epoch 1)",
+   "value": "-7.64",
+   "uncertainty": "+0.11/-0.07",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "UVES results",
+     "quote": "We found accretion rates of $\\log\\dot{M}_{acc}$ = -7.64$^{+0.11}_{-0.07}$$\\,M_{\\odot}\\,yr^{-1}$ and $\\log\\dot{M}_{acc}$ = -7.69$^{+0.11}_{-0.07}$ $M_{\\odot}\\,yr^{-1}$ for the two observed epochs"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rate log(Mdot_acc) (epoch 2)",
+   "value": "-7.69",
+   "uncertainty": "+0.11/-0.07",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "UVES results",
+     "quote": "We found accretion rates of $\\log\\dot{M}_{acc}$ = -7.64$^{+0.11}_{-0.07}$$\\,M_{\\odot}\\,yr^{-1}$ and $\\log\\dot{M}_{acc}$ = -7.69$^{+0.11}_{-0.07}$ $M_{\\odot}\\,yr^{-1}$ for the two observed epochs"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm belt temperature and radius from SED fit (for T_eff = 7000 K)",
+   "value": "739 K at 1.1 au",
+   "uncertainty": "not stated",
+   "units": "K, au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Analysis & discussion, SED",
+     "quote": "suggests that the debris disc is composed of a warm belt at 739 K"
+    },
+    {
+     "loc": "SED",
+     "quote": "We estimate the distance of the 739 K dust belt to be 1.1 au from the parent star."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image cell size and image dimensions (imsize) used in CASA tclean for continuum and spectral line cubes",
+  "Stopping threshold and number of iterations (niter) in tclean",
+  "Line-free channel ranges and polynomial order (fitorder) used in CASA uvcontsub",
+  "Which spectral windows were combined to create the continuum image (whether line-free channels of the CO SPWs were included with the two continuum SPWs)",
+  "Exact reference frequency (nu) plugged into the dust opacity and Planck function equations for the continuum dust mass calculation"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters: cell size, image size, stopping threshold, and niter",
+  "Exact line-free channel ranges and polynomial order used in uvcontsub",
+  "Full methodology for the UVES absorption fitting and H-alpha accretion rate derivation (deferred to Szewczyk et al., in prep)",
+  "Exact photometric catalog points used to construct the SED in Figure 10"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project code, CASA version, calibrators, Briggs robust parameter, velocity/frequency integration ranges, Keplerian mask parameters, and analytic mass equations are all explicitly stated, with only minor imaging parameters (cell size, clean threshold, uvcontsub channels) omitted.",
+ "rediscovery_reason": "Public single-pointing ALMA Band 6 dataset (2022.1.01686.S) with clear processing steps and concrete numeric answer keys for continuum flux, 12CO integrated flux, dust mass, and CO gas mass.",
+ "source_card": "cards/2026MNRAS.545f2150S/sonnet/card.md"
+}

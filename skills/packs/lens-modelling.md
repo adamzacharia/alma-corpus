@@ -1,0 +1,2378 @@
+# Evidence pack: Strong-lens modelling of ALMA sources (`lens-modelling`)
+
+Scope: lens models in uv or image plane, magnification, source-plane reconstruction
+
+Built from 177 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2013-2026.
+Matcher (regex over analysis steps): `lens (?:model|mass)|lensing model|lenstool|visilens|pyautolens|autolens|source[- ]plane|magnification|gravitational(?:ly)? lens`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- high_z_galaxies: 175
+- agn_and_quasars: 40
+- star_formation: 24
+- cosmology: 17
+- galaxy_clusters_and_sz: 9
+- astrochemistry: 7
+- other: 4
+- milky_way_ism: 3
+- nearby_galaxies: 2
+- transients: 2
+
+### Software named in the matched steps
+- lenstool: 28
+- pyautolens: 20
+- glafic: 18
+- visilens: 16
+- casa: 15
+- emcee: 13
+- dynesty: 9
+- uvmcmcfit: 7
+- galfit: 7
+- magphys: 7
+- glee: 5
+- gravlens: 5
+- cigale: 5
+- bagpipes: 5
+- multinest: 5
+- linestacker: 5
+- scipy: 4
+- lenstronomy: 4
+- 3dbarolo: 3
+- pymultinest: 3
+- ripples: 3
+- sextractor: 3
+- sl_fit: 2
+- imfit: 2
+- lens-modelling code of rybak et al. 2015a (not named): 2
+- jam: 2
+- hostlens: 2
+- miriad: 2
+- pyautofit: 2
+- pylops: 2
+- python: 2
+- lens modelling code developed by neal jackson: 2
+- pynufft: 2
+- radex: 2
+- astropy: 2
+- photutils: 2
+- pixellated reconstruction code (proprietary): 2
+- gildas: 2
+- eazy: 2
+- scikit-learn: 1
+
+### Fitting methods (most common phrasings)
+- chi2 minimization: 2
+- Bayesian MCMC in LENSTOOL on image-plane positions; priors specified by the user per parameter; likelihood effectively …: 1
+- Gaussian fit with CASA IMFIT (no priors/sampler): 1
+- MCMC Metropolis-Hastings; median and 68% intervals: 1
+- Same priors as continuum model; 10x7 parameters: 1
+- chi2 minimization; bootstrap uncertainties of 10%: 1
+- Minimization of a penalty function: visibility-space chi^2 plus source-plane regularization term lambda_S (R_s s)^T R_s…: 1
+- Orthogonal distance regression of log Sigma_SFR vs log([C II]/FIR): 1
+- emcee affine-invariant ensemble MCMC with Gaussian likelihood in visibility plane: 1
+- logistic regression: 1
+- Chi-squared minimization (chi^2_tot = chi^2_flux + chi^2_posG + chi^2_posX + chi^2_posY + chi^2_posq + chi^2_e): 1
+- Regularized source-plane chi^2 minimization (chi^2_reg = chi^2_ext + chi^2_core + chi^2_flux + R_s) with Newton's metho…: 1
+- Regularized chi^2 minimization in the source plane; 1-sigma power spectrum errors computed from >10^6 random Gaussian p…: 1
+- Chi-squared minimization in the visibility plane (chi^2_v) and regularized chi-squared minimization in the lens plane f…: 1
+- Static nested sampling with dynesty using multiple ellipsoids bounding, random walk proposal (N_walks = 15), 180 live p…: 1
+- Standard deviation across alternative mass models (0.017) and across 6 H_0 runs (0.043), plus propagation of mean 3.4% …: 1
+- MCMC, runmode=3, flat prior 2'' either side of stars: 1
+- 4 model variants; Gaussian source rejected: 1
+- Priors on G and X centroids from observed light; uniform priors on other parameters: 1
+- glafic models constructed as in (cite: kawamata2016).: 1
+- Schechter and DPL fits with MCMC using emcee; refit 1,000 MC realizations.: 1
+- Refit Schechter functions to subsamples and alternative assumptions.: 1
+- DPL fitting includes other blind-survey LF points; high-z bright-end limits replaced by a central value with limit diff…: 1
+- emcee sampling of likelihood in visibilities; 1 sigma range of posterior: 1
+- linear regression log r_s vs log F with HerMES comparison: 1
+- MCMC in uv-plane via VISILENS; reduced chi^2 = 1.035 (continuum) and 1.014 ([C II]): 1
+- Direct extraction of maximum velocity from PV line connecting maximum and minimum moment 1 pixels: 1
+- Most probable parameters from marginalising over Bayesian evidence: 1
+- Nelder-Mead chi^2 minimization followed by 5 independent MCMC chains of 15,000-30,000 steps for light profiles and 5 MC…: 1
+- 5 MCMC chains of 10,000 points each for the toy substructure model: 1
+- Template fitting, two-component power-law continuum fitting, and single/double Gaussian line profile fitting: 1
+- Semi-linear inversion jointly solving lens parameters and source surface brightness; maximum a posteriori solutions.: 1
+- Linear inversions of mock visibilities.: 1
+- SED fitting inherited from Reuter:2020.: 1
+- Maximise Bayesian evidence of Suyu et al. 2006: 1
+- Fit each lensed image independently; use recovered-parameter variations to estimate lens-model systematic errors: 1
+- MCMC with Metropolis-Hastings sampling, tempering (posterior^1/T); noise from differencing adjacent visibilities: 1
+- glafic lens fit to optical positions: 1
+- Independent glafic channel fits: 1
+- Dynesty nested sampler; Gaussian prior on lens centre (other priors not stated): 1
+
+### Validation checks used
+- Model predictions of additional images tested against data; image families checked in the model: 1
+- Median chi-square 1.9 (median solutions) and 0.3 (best solutions) judged reasonable; image-plane RMS; reconstructions r…: 1
+- Individual image reconstructions compared visually; magnifications compared with earlier models (Appendix comparison): 1
+- Einstein radii are noted to be consistent across lens models; PJ105353 and PJ132630 values agree with earlier work: 1
+- Relative uncertainty similar to Spilker et al. and Bussmann et al., so direct comparison is considered feasible: 1
+- Peak values are mostly consistent with global averages because sources are only marginally resolved: 1
+- Alternative alpha = 0.5 raises q_FIR by 0.3-0.4, smaller than the sample dispersion: 1
+- Analytic cross-section peaks are approximately concordant with the observed negative correlation: 1
+- Residuals <2.5 sigma; PyAutoLens pixelized reconstruction converged to same model: 1
+- Image-plane moment maps and per-channel residuals; image vs source-plane moment maps match: 1
+- Residuals <1% of emission: 1
+- Residuals in the dirty-image plane; mock-data lens-modelling tests (Appendix B) recover mean surface brightness within …: 1
+- Fractional systematic error on mean surface brightness: 65 per cent CO(3-2), 30 per cent CO(10-9), ~10 per cent for con…: 1
+- Compared with earlier SDP.81 estimates and the ALESS median T_dust; resolved fit repeated on Cleaned images gives consi…: 1
+- CO SLED well reproduced (chi^2 <= 1) by PDRToolbox models without mechanical heating: 1
+- Compared with Smith et al. 2017 trend and other high-z resolved studies; isolated outlying low-ratio pixels judged lens…: 1
+- Bolton ray tracing tested against Gravlens; residual maps inspected: 1
+- Checked residual positional differences between ALMA local peaks and VLBA gravitational centers of p and q (2.3, 4.0, 1…: 1
+- Compared reconstructed convergence maps and power spectra in 3 wavenumber bins against true input values, demonstrating…: 1
+- Checked a posteriori fit to VLBA jet components p, q, r, s in the lens plane (chi^2_pos/dof_pos = 0.80 for Type A with …: 1
+- Compared visibility chi^2 between perturbed, unperturbed, and null models (and with A1/A2 core flux ratio fixed to unit…: 1
+- Verified that MGE parametrization of elliptical NFW profile introduces only ~0.04% error in the deflection angle.: 1
+- Compared results across all 8 alternative model runs in Appendix B.: 1
+- Compared with grale; tested in blind analysis: 1
+- rms across runs gives statistical error: 1
+- Models compared; magnification consistent across models: 1
+- Compare magnifications among independent lens models; tabulate image-position residuals.: 1
+- Compare z = 2 and 6 areas and alternative lens models.: 1
+- Blind and blind+prior counts agree within 1σ; assess fitted shapes through χ²/dof.: 1
+- All tested faint-end slopes consistent within approximately 1–2σ.: 1
+- Compare with previous IR LFs and simulations.: 1
+- compared with fluxes from 1.5'' tapered images; injected fake sources: 1
+- phase calibrator positions compared to literature: 1
+- Tested an 'ALMA-only' model with all lens parameters free, tested alternative HST double/quad lens configurations, and …: 1
+- Ray-traced the image-plane synthesized beam at the flux peak to verify source-plane resolution (0.26'' x 0.09'') and ch…: 1
+- Evaluated effect of turbulent pressure gradient in a thick-disk model on v_c and M_dyn: 1
+- Image-plane best fit checked in uv plane via MIRIAD uvmodel chi2; offset within uncertainties: 1
+- Monitored MCMC convergence, checked chi^2 improvement and residuals, verified alignment of mass and light axes and Fabe…: 1
+- Checked that C/D intersection samples correspond to typical chi^2 values of the full MCMC chain and verified accretion …: 1
+- Compared bolometric luminosity estimates derived independently from de-reddened HST F160W and unreddened WISE W4: 1
+
+### Key parameters and settings (bibcode: value)
+- 2024ApJ...961....2K: Image-plane positions only for most models; each family of n images gives 2(n-1) constraints; catalogs in Table 13
+- 2024ApJ...961....2K: Ellipticity upper limit e < 0.75
+- 2024ApJ...961....2K: Profile centre sometimes fixed to the HST centroid of the visible lens; secondary deflectors added as SIS/SIE where appropriate
+- 2024ApJ...961....2K: Positional uncertainty sigma_position set to the beam size of the lowest-resolution ALMA or JVLA image; lens redshifts held fixed
+- 2024ApJ...961....2K: 300 posterior samples; area above a 3 sigma S/N threshold in both planes; median with 16th-84th percentile
+- 2024ApJ...961....2K: Flat cosmology H0 = 70, Omega_m = 0.3, Omega_Lambda = 0.7
+- 2024ApJ...961....2K: spectral index alpha = 0.8
+- 2019A&A...624A.138Y: Priors: Einstein radii uniform [0.1,1.1'']; axis ratios Normal(0.5,0.2); source positions uniform ±0.2''; source axis ratio uniform [0.1,0.9]; Reff Normal(0.1'…
+- 2019A&A...624A.138Y: q0 = 0.2
+- 2020MNRAS.494.5542R: Sky-plane pixel size 25 mas; every second pixel cast back, so beam sub-sampled by ~4
+- 2020MNRAS.494.5542R: Primary beam approximated by an elliptical Gaussian
+- 2020MNRAS.494.5542R: Visibility noise from the scatter over 10-minute intervals rather than the Sigma column
+- 2020MNRAS.494.5542R: [C II] reconstructed in 62.50 MHz (~40 km/s) channels with lambda_S optimized per channel; moment-0 and moment-1 maps made (pixels with SNR <= 1 masked for mom…
+- 2020MNRAS.494.5542R: Reconstructions re-sampled onto a Cartesian grid of 200x200 pc pixels
+- 2020MNRAS.494.5542R: 1000 noise realizations; S/N thresholds 1, 2, 3 averaged for the magnification
+- 2020MNRAS.494.5542R: Mock sources: uniform ellipse 3.4x2.4 kpc and an FIR-luminosity-map source, forward-lensed with the SDP.81 lens model
+- 2020MNRAS.494.5542R: Uniform magnification adopted for 160 um to 1.3 mm continuum; Herschel 160-500 um emission assumed to follow the Band 8 surface brightness distribution
+- 2020MNRAS.494.5542R: Resolved test of T_dust fixed to 60 K and 80 K, fitting only the normalization
+- 2020MNRAS.494.5542R: FIR-bright region defined as Sigma_SFR >= 50 Msun/yr/kpc^2
+- 2020MNRAS.494.5542R: CO(1-0), CO(7-6) and CO(9-8) assumed to follow the spatial distribution of CO(3-2), (8-7) and (10-9)
+- 2015ApJ...812...43B: 512 walkers; burn-in 500-1000 iterations; final 10 iterations
+- 2015ApJ...812...43B: uniform priors; theta_E 0.1-6 arcsec; q_lens>0.3; q_s>0.2; r_s 0.01-1.5 arcsec
+- 2015ApJ...812...43B: z_mu=1.5, sigma_z=0.2; SIS+NFW lenses
+- 2023ApJ...954..197I: VLBA position error = 2 mas; G centroid error = 5 mas; X and Y centroid error = 0.1''
+- 2023ApJ...954..197I: N^2 = 36 modes (22 intermediate modes with 3.5 < sqrt(m^2+n^2) < 6.5), L = 3.6'', source mesh = 6.66 mas or 13.3 mas, |mu| <= 30
+- 2023ApJ...954..197I: N^2 = 36 Fourier modes, L = 3.6'' centered at (-0.4'', 0.3'') and L = 4.2'' centered at (-0.7'', 0.3''), mesh size = 6.66 mas, S/N > 3.8 sigma, c_p + c_q = 0.95
+- 2023ApJ...954..197I: 60 s time averaging, 4 SPWs, polar grid delta r = 100 m, delta theta = 1 deg to 90 deg (optimal 10 deg; <= 1.5 deg for Object Y), zero-padded 18.0'' box (from …
+- 2023MNRAS.520.1613M: Binned pixel scale = 0.01'', synthesised beam = 0.0308'' x 0.0235'' at PA = 15 deg, rotation PA = 11.9 deg, calibration error = 10%
+- 2023MNRAS.520.1613M: 10 free parameters in Ph5 (Upsilon_0, delta, upsilon_0, kappa_s, q_DM, i, beta_z, shear_mag, shear_phi, eta_PPN); fixed NFW scale radius r_s = 10 * R_eff = 11.…
+- 2023MNRAS.520.1613M: Alternative mass models: r_s = 5 R_eff, r_s free, Wong2015-like; alternative H_0 = 67.28, 68.20, 72.2, 74.2, 76.2 km s^-1 Mpc^-1; stellar libraries: MILES and …
+- 2018MNRAS.477..669M: chain samples PDF 100,000 times; positional uncertainty 0.5'' for Ao6, Ao7 and 0.15'' for others
+- 2024ApJS..275...36F: Background sources exceed cluster redshift by > 0.2 photometrically or > 0.1 spectroscopically.
+- 2024ApJS..275...36F: Systematic μ errors: HFF 20%, CLASH/RELICS 40% at μ ≤ 5; then 50%, 60%, 80% at 5–10, 10–30, > 30.
+- 2024ApJS..275...36F: Magnification maps z = 0–6 in steps of 0.5; nearest redshift result per source; foreground sources use z = 0.
+- 2024ApJS..275...36F: 104 blind and 146 blind+prior unique background sources; fiducial fit uses blind sample.
+- 2024ApJS..275...36F: Gaussian mock flux distributions; 10% absolute flux accuracy; 16–84th percentile intervals.
+- 2024ApJS..275...36F: Size relations r_e,dust ∝ L_IR^-0.53 and L_IR^0.28; modified blackbody T_dust = 35 K, β_d = 1.8.
+- 2024ApJS..275...36F: 1,000 bootstrap realizations; count-fit flux cuts > 0.03 and > 0.1 mJy.
+- 2024ApJS..275...36F: Redshift bins: 0.6–1.0, 1.0–2.0, 2.0–3.0, 3.0–4.0, 4.0–6.0, 6.0–7.5.
+- 2024ApJS..275...36F: 1,000 MC realizations; report average and 16–84th percentiles.
+- 2017A&A...597A..41G: 10,000-240,000 iterations, 5,000 burn-in
+- 2021ApJ...917...99Y: Lens redshift = [0.67], Source redshift = [6.5187], Lens Mass = [2.06x10^10 M_sun], Lens e = [0.65], Lens PA = [94.58 deg] (in default model)
+- 2021ApJ...917...99Y: source-plane pixel size = 0.04''
+- 2021ApJ...917...99Y: integrated flux SNR > 10 threshold for moment 1 and 2
+- 2021ApJ...917...99Y: mu_[C II] = 3.44, mu_cont = 4.53
+- 2021ApJ...917...99Y: 4 elliptical annuli with width R_eff = 0.136''
+- 2015MNRAS.452.2258D: 2×2 binned continuum to 0.01" pixels
+- 2015MNRAS.452.2258D: CO(5-4) channels 31-61; CO(8-7) channels 30-60
+- 2015MNRAS.452.2258D: Fixed magnification of 3 at extreme velocities
+- 2023ApJ...943...25G: 16'' x 19'' cutout, pixel scale 0.06''/pixel, circular masks of ~0.3'' radius around QSO images, PSF correction box 7 to 35 pixels over 30 steps
+- 2023ApJ...943...25G: z_l = 0.599 for G and GX, z_s = 2.517 for source
+- 2023ApJ...943...25G: Cardelli et al. (1989) extinction curve with R_V = 3.1; accretion disk inclination i = 60 deg, PA = 90 deg, relative microlens speed ~340 km/s
+- 2023ApJ...943...25G: Power-law spectral index alpha_nu = -0.5; virial mass coefficients a = 0.774, b = 0.520, c = 2.06; magnification mu = 117; bolometric corrections BC_5100 = 9.5…
+- 2023ApJ...943...25G: Host galaxy magnification factor = 15 (from hostlens for SIE+gamma+GX model)
+- 2022MNRAS.510.2480D: Core radius r_c = 10^-4 arcsec fixed; 21 mock configurations M1-M20 varying FWHM (0.045, 0.07, 0.09, 0.16 arcsec), pixel scale (0.01, 0.04, 0.1 arcsec), and SNR
+- 2025A&A...693L..17S: Ellipsoidal power-law, external shear and multipole expansions up to 4th order.
+- 2025A&A...693L..17S: Delaunay source grid adapted to magnification; neighbouring-point regularisation.
+- 2025A&A...693L..17S: Area-weighted gradient weights regularisation by triangle area.
+- 2025A&A...693L..17S: 1000 mock visibility data sets for each maximum a-posteriori model.
+- 2025A&A...693L..17S: Include nominal ±10% ALMA flux scale accuracy.
+- 2025A&A...693L..17S: Reuter:2020 SED-based SFR 700±200 M⊙ yr⁻¹ and original magnification 20±3.
+- 2018MNRAS.476.4383D: power-law slopes fixed per run; number of source pixels fixed
+- 2020MNRAS.495L...1I: Band 7, 303.9 GHz
+- 2020MNRAS.495L...1I: Optimise centroid, PA, axis ratio and FWHM; keep mass model fixed
+- 2020MNRAS.495L...1I: Maximum positive residual: 260 μJy
+- 2020MNRAS.495L...1I: Residual magnification: roughly 8× along major axis and 1.6× along minor axis
+- 2020MNRAS.495L...1I: Rest-frame 8–1000 μm luminosity
+- 2013ApJ...767..132H: Source: 4 params; SIE lens: 5 params
+- 2020MNRAS.496..598C: Lens ellipsoid orientation and ellipticity free
+- 2020MNRAS.496..598C: Thirteen channels between −180 and 230 km s−1
+- 2020MNRAS.496..598C: Integrated CO optimization mask radius 0.8″
+- 2020MNRAS.496..598C: μtot = ΣI(i,j) / Σ[I(i,j)/μ(i,j)]
+- 2020MNRAS.496..598C: UV magnification μ = 103; log(LBol/erg s−1) = 45.54
+- 2020MNRAS.496..598C: Combine nine clumps; molecular outflow velocity is mean clump velocity
+- 2026A&A...706A.174A: B6: only spectral windows 0 and 1 used because of emission lines in the others
+- 2026A&A...706A.174A: Lens centre free with Gaussian prior between the two images and standard deviation 1″
+- 2026A&A...706A.174A: Rest-frame wavelengths 10 to 10^3 micron fitted
+- 2026A&A...706A.174A: T_dust gamma prior (shape a=1.5); beta_dust Gaussian prior centred 1.8, sigma 0.25
+- 2026A&A...706A.174A: Magnification fixed to give intrinsic properties
+- 2026A&A...706A.174A: Gas-to-dust mass ratio fixed at about 100 after an initial free fit
+- 2019ApJ...873...50D: time averaging up to 10 min with uv separation <15 m; velocity bins 75-250 km/s
+- 2019ApJ...873...50D: 1000 chains, 1000 burn-in, 1000 extra steps
+- 2023MNRAS.524.3671Z: Lens plane redshift z = 1.7; source redshift z = 2.56
+- 2023MNRAS.524.3671Z: Magnification-weighted Voronoi mesh for 1.5, 8.4, and 33 GHz reconstructions to ensure identical Voronoi cell grids
+- 2023MNRAS.524.3671Z: 5-\sigma cutoff mask for e-Merlin lens-plane spectral index map; S/N > 3.5 mask at 33 GHz for source-plane spectral index map
+- 2014A&A...568A..92M: limits: beta<3, T<100 K observed-frame, lambda0<2000 um
+- 2020MNRAS.496..138B: SIE lens parameters: critical radius 0.87 arcsec, ellipticity 0.13 at PA -73.1 deg, shear 0.042 at PA 65.4 deg; f_AD between 0 and 1
+- 2020MNRAS.496..138B: Einstein radius = 0.92 arcsec (optimized on CO visibilities, fixed for continuum and radio); Sersic source profile
+- 2020MNRAS.496..138B: 5 free source parameters per frequency slice: position (x, y), flux, width, axis ratio, position angle
+- 2020MNRAS.496..138B: Map side-length 100 eta_0, resolution 0.005 eta_0/pixel, (kappa, gamma) = (0.48, 0.57), stellar surface density fraction alpha = 0.07, eta_0 ~ 3.2e16 cm, <M/M_…
+- 2025ApJ...989..115T: image position uncertainty 0.4 arcsec and photometric-redshift uncertainty 0.6
+- 2025ApJ...989..115T: added systematic error 40% for mu<5 and 50% for mu>5
+- 2025ApJ...989..115T: nonparametric SFH with 6 bins and continuity prior; SFR averaged over 100 Myr
+- 2025ApJ...989..115T: stellar metallicity Z = 0.02 (solar), Calzetti attenuation with power-law slope delta -0.7 to 0.4
+- 2025ApJ...989..115T: Draine & Li dust emission with Umin all values above 5.0
+- 2025ApJ...989..115T: Sersic index 1, six free parameters (x, y, flux, effective radius, axis ratio, position angle)
+- 2025ApJ...989..115T: chi-square computed within a 3 arcsec-radius circle around each source
+- 2025ApJ...989..115T: 20,000 fits in total; median and 16-84% interval
+- 2021MNRAS.505.4838L: Three to four dark matter halos for parametric models
+- 2021MNRAS.505.4838L: 1.5 x seeing diameter extraction aperture; spectral binning factor of 30; redshift search range z = 0 to z = 8
+- 2021MNRAS.505.4838L: BAGPIPES: constant SFH, stellar mass 10^6 to 10^12 M_sun, age 0.0 Gyr to age of Universe at z=6.07
+- 2015PASJ...67...72T: Position uncertainty 20 mas; 100–200 mas for 10 blended knots; 130–200 mas for HST images; N_DOF = 88
+- 2021MNRAS.500.3667S: isothermal profile zeta = 2 (for 5 targets); fixed literature slope/ellipticity/PA for PG 1115+080 and WFI J2033-4723
+- 2021MNRAS.500.3667S: maximum baseline < 300 m and 3 velocity channels for WFI J2033-4723 and SDSS J0924+0219 line cubes
+- 2021MNRAS.500.3667S: 100 noise realisations; SNR >= 4 mask for magnification; Sersic index n fixed to continuum value (1.0) for SDSS J0924+0219 and WFI J2033-4723 CO lines
+- 2021MNRAS.500.3667S: inclination i = 45 +/- 15 deg where axis ratio is unconstrained (RX J0911+0551, PG 1115+080, WFI J2033-4723)
+- 2026A&A...707A.252K: Lens redshifts fixed at z = 0.626 (or 0.636 in text) and z = 1.002; 1000 posterior samples for magnification error
+- 2026A&A...707A.252K: Circular region of radius 1.5 arcsec (11 kpc); CO(6-5) cube spectral resolution ~50 km/s; static source-plane beam of 0.035'' x 0.027'' (5 pixels per beam); 10…
+- 2026A&A...707A.252K: Smooth & Search masking with 3 sigma cut; 11 rings with radial separation 0.0138'' (theta_maj / 2.5); center fixed via 2D-Gaussian fit to moment-0 map; fixed i…
+- 2026A&A...707A.252K: V_c = 386 km/s, r = 1.07 kpc
+- 2016MNRAS.457.2936I: position errors 1/4 of beam (6x8 mas); G error 0.02 arcsec
+- 2016MNRAS.457.2936I: aperture radii 0.04, 0.05, 0.06 arcsec
+- 2021ApJ...921...97J: 1000 MCMC chains; lens parameters constrained within best-fit values of 140 GHz single-lens model
+- 2021ApJ...921...97J: 15% calibration/lensing error added in quadrature; upper limit on effective radius = 5000 pc (W) and 1300 pc (E)
+- 2021ApJ...921...97J: T_CMB = 21.5 K at z = 6.9; T_1 = 23.6 K, T_2 = 62.5 K
+- 2015MNRAS.451L..40R: Gradient regularisation
+- 2020MNRAS.493.5290S: 3 sigma signal-to-noise cut for moment maps
+- 2020MNRAS.493.5290S: Component flux densities not used in the fit
+- 2024ApJ...973...25K: Two cluster-scale PIEMD halos plus 165 cluster members; uniform priors with +/-5'' position range, ellipticity 0 to 0.85, maximum velocity dispersion 800 km/s,…
+- 2024ApJ...973...25K: DSFG-3 redshift left free (prior z = 2.0 - 2.2), giving z_geom = 2.11 +/- 0.01
+- 2024ApJ...973...25K: Sizes measured at 2 mm because of higher S/N; minimum 10% fractional uncertainty
+- 2024ApJ...973...25K: Flux ratio S_1abc / S_3abc = 3.1 +/- 0.3 (averaged for 2 mm and 3 mm)
+- 2024ApJ...973...25K: q_PAH in [0.5, 4.0]; U_min in [1, 25]; gamma in [0.01, 0.99]; A_V < 8; redshift fixed at z = 2.236
+- 2019ApJ...870...80L: lambda fitted for fixed lens model, alternating with MCMC until convergence
+- 2022MNRAS.512.2426M: Constant-weight gradient regularisation; 6 to 14 lens mass model parameters plus regularisation and number of source pixels
+- 2022MNRAS.512.2426M: 100 realisations of randomised source plane pixelisation; surface brightness threshold; image plane mask
+- 2022MNRAS.512.2426M: Dust emissivity index beta = 2.0; integration range 3-1100 um
+- 2015ApJ...812...88M: Maraston05 SPS, Kroupa IMF, solar metallicity; grids in age, tau, A_V, delta, alpha
+- 2023A&A...674A.101M: Grid over time delay Delta t and differential magnification R_q
+- 2023A&A...674A.101M: Plasmon injection time t_0, core flux I_c (< 0.18 Jy), plasmon flux I_p, decay power beta, plasmon spectral index alpha_p, time delay Delta t, differential mag…
+- 2025MNRAS.537.1163A: Upper limits not used in the fit
+- 2025MNRAS.537.1163A: Source reconstructed on Voronoi mesh with constant regularization (coefficient lambda_reg)
+- 2025MNRAS.537.1163A: Initial phase: SIS + shear mass and single Sersic source; later phases inherit priors
+- 2025MNRAS.537.1163A: Pixels shown only where SNR_G > 5 (SNR_G^2 = chi2_G - chi2_line)
+- 2018A&A...613A..34P: eight free parameters
+- 2022PASJ...74.1429T: Free parameters: xy-position, total flux Sdv, and effective radius R_e; fixed parameters: Sersic index n = 1, axis ratio q = 0.93, position angle theta_q = 108…
+- 2022PASJ...74.1429T: Sersic index n = 0.5 (circular Gaussian), point source for -200 km s^-1 channel of [N II] 205 um, two circular Gaussian sources for +100 km s^-1 channel of [O …
+- 2022PASJ...74.1429T: Expanding sphere geometry, dV = 400 km s^-1, background temperature = 19.2 K (CMB at z = 6.02); search ranges: T_kin = 20-700 K, log(n_H2/cm^-3) = 2-6.7, log(N…
+- 2015ApJ...811..115W: MCMC chain length 5x10^5
+- 2020ApJ...891...64F: positional error 0.03''; flux error 10%
+- 2024ApJ...970...30M: T_dust = 25 K, beta = 1.8, kappa = 0.9 cm^2/g at rest 600 um
+- 2024ApJ...970...30M: Reconstruction at spectroscopic CO(4-3) redshift z=4.27; channel-averaged reconstructed beam approximated by placing the image-plane beam at the spectral and s…
+- 2024ApJ...970...30M: SEARCH: primary SNR cut 4.5 sigma, secondary 3.5 sigma, at least 30 pixels, significant flux in at least 2 consecutive channels
+- 2024ApJ...970...30M: Ring geometry: maximum radius 0.8 x CO FWHM major axis; minimum ring radius = beam minor axis / 2.5; minimum model radius 0
+- 2024ApJ...970...30M: Initial guesses Vmax = 150 km/s, Vsigma = 30 km/s; inclination and PA initial guesses from [C II] modeling
+- 2022MNRAS.510.3734D: 0.8 x 0.8 arcsec source plane with 400 Voronoi pixels, 7 randomisations per likelihood evaluation, 50 randomisations averaged onto 100 x 100 square pixels for …
+- 2022MNRAS.510.3734D: Magnification factors: mu = 5.5 for CO(1-0) and 3290um dust, mu = 5.6 for [CI](1-0), mu = 5.9 for [CII]
+- 2022MNRAS.510.3734D: De-magnification factor mu = 5.8; IMF scaling factor = 1.41
+- 2015ApJ...811..124S: Each Gaussian has up to four free parameters: centroid, flux, size
+- 2020ApJ...903...34A: Uniform priors on M_formed = 10^(1-15) Msun and T_0 = 0.5-0.8 Gyr
+- 2020ApJ...903...34A: Aperture photometry with 4-pixel (~0.5'') radius
+- 2024ApJ...974..145S: Second-order polynomial spectral calibration against 0.48-inch diameter aperture photometry
+- 2024ApJ...974..145S: 0.63 μm < λ_rest < 0.68 μm; tied σ and one free redshift; [NII] ratio 1:3; [SII] ratio 0.4375–1.4484
+- 2024ApJ...974..145S: Continuum SSP with free dust law, convolved to PRISM resolution; fit redward of 2 μm, mask Hα, double errors
+- 2024ApJ...974..145S: Observed 3σ 1.2-mm flux upper limit: 113 μJy
+- 2018ApJ...863L..16M: A0 magnification mu = 4 (+-10%); 2.1 kpc lens-corrected aperture
+- 2023A&A...678A.183N: r_4,1 = L'_CO(4-3) / L'_CO(1-0) = 0.33
+- 2023A&A...678A.183N: alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1
+- 2023A&A...678A.183N: Box sizes: 200, 400, 800, 1600, 2800, 3200 pc (Cosmic Snake) and 200, 400, 800, 1600, 3200, 6400 pc (A521)
+- 2023A&A...678A.183N: ALMA S/N thresholds (100% fidelity): 4.4 sigma in single channel; 4.0 sigma (Cosmic Snake) or 3.6 sigma (A521) in two adjacent channels
+- 2023A&A...678A.183N: Circular aperture diameters: 200, 400, 800, 1200, 1400 pc (Cosmic Snake) and 400, 800, 1600, 3200, 6400 pc (A521)
+- 2013ApJ...779...67B: 4'' radius aperture
+- 2020A&A...641L...2M: Eight free parameters: source position, lens position, mass scale, softening length, ellipticity, position angle
+- 2026ApJ..1000..159M: β_dust = 2.0, κ_UV = 5.0 x 10^4 cm^2 g^-1, κ_0 = 30 cm^2 g^-1 at 100 µm, log ξ_cl = -1.0
+- 2026ApJ..1000..159M: r_e,dust = r_e,UV (105 ± 9 pc for GHZ2, 260 ± 20 pc for GS-z14-0)
+- 2026ApJ..1000..159M: Gravitational magnification µ = 1.3 (GHZ2) and µ = 1.17 (GS-z14-0)
+- 2026ApJ..1000..159M: n_e = 100 - 4000 cm^-3
+- 2026ApJ..1000..159M: Alternative gas fractions f_gas = M_gas / (M_gas + M_*) = 0.1, 0.5, 0.9
+- 2018Natur.553...51M: Four Sersic components (1 E, 3 W) for visilens
+- 2022A&A...668L...4G: Free astrometric offset (< 0.15 arcsec for detections)
+- 2022A&A...668L...4G: 1000 random off-center extractions for r.m.s. error estimation; 3 sigma upper limits for non-detections
+- 2022A&A...668L...4G: SFH start at z = 10; tau in (0, 3] Gyr; t_q in [1, 3] Gyr; tau_q in [0.1, 1.] Gyr
+- 2015ApJ...806..260F: Cloverleaf star-formation [NII] = ZEUS-1 minus ALMA flux (~80 Jy km/s), magnification 11
+- 2024ApJ...965..108U: Logarithmic: SFR, stellar mass, dust luminosity, dust mass
+- 2024ApJ...965..108U: Linear: dust temperature, E(B−V), IRX, β, δ, bolometric AGN luminosity
+- 2017ApJ...846L..22G: One Gaussian for each CO line; two Gaussians for 450 µm continuum
+- 2021ApJ...908..192S: HLS1623: IRAC and ALMA only for MAGPHYS
+- 2021ApJ...908..192S: Uniform mu=5 for 26 lensed morphological components
+- 2015A&A...576L...2S: µ = 49 ± 5
+- 2026MNRAS.546f2284B: Bins: r.f. 88 um, r.f. 158 um, All, z > 9.5, z < 9.5, M_* > 10^9 M_sun, M_* < 10^9 M_sun, beta_UV > -2, beta_UV < -2
+- 2026MNRAS.546f2284B: T_dust(z=0) = 50 K, beta_dust = 2.0, kappa_0 = 10.41 cm^2 g^-1 at nu_0 = 1900 GHz
+- 2016ApJ...823...37H: Singular elliptical power law plus m=3,4 multipoles plus external shear; 12 free parameters
+- 2021A&A...655A..42S: magnification uncertainty adopted 20% for all images
+- 2021A&A...655A..42S: CIGALE test: same stellar templates and attenuation law as MAGPHYS, delayed exponential SFH, nebular emission, Dale 2014 dust templates with alpha_SF 0-4 and f…
+- 2021A&A...655A..42S: reference samples recalibrated to metallicity-dependent alpha_CO for comparison
+- 2015MNRAS.453L..26R: 1 Mλ uv cut; 2-channel averaging (41 km/s)
+- 2025A&A...693A.190J: PB > 0.5; 1<=z<5; 10^8<=M*<=10^12 Msun; 0.001<=SFR<=10^3 Msun/yr; magnification <100
+- 2018MNRAS.475.4939A: minimum magnification mu_min = 2
+- 2018MNRAS.475.4939A: halo-to-stellar mass ratio 30 for SISSA; z_lv = z_l or 2.5
+- 2022A&A...657A..25N: Ring width in image plane >= half the beam size (350 pc for CS HST, 400 pc for A521 HST, 300 pc for CS ALMA, 400 pc for A521 ALMA, 800 pc for CS SINFONI)
+- 2022A&A...657A..25N: 16 prior combinations varying attenuation law (MW or Calzetti), Agemin (0.1 or 0.5 Gyr), A_V min (2, 3, or free), and SFH (constant or exponentially decreasing)
+- 2022A&A...657A..25N: 6 rings of width 300 pc up to 1.7 kpc (Cosmic Snake); 16 rings of width 400 pc up to 6 kpc (A521)
+- 2024A&A...692A..34C: Mask r < 0.05 arcsec and r > 0.18 arcsec; best-fit lens parameters in a table
+- 2024A&A...692A..34C: r_max about 1.5 kpc from the lens model; h = 300 pc; h/r_max ~0.2
+- 2024A&A...692A..34C: v_max about 350 km/s, sigma 140 km/s
+- 2020Natur.584..201R: conjugate gradient tolerance 1e-12 (typical source-inversion accuracy 1e-6)
+- 2020Natur.584..201R: 163190 visibilities per channel
+- 2020Natur.584..201R: rotation curve function V_t, R_t, beta, xi; exponential velocity dispersion profile; no radial variation of inclination and position angle; gas surface density…
+- 2020Natur.584..201R: four-step optimisation scheme for lens mass model and source kinematics
+- 2020Natur.584..201R: SFR conversion 1.48e-10 Msun/(yr Lsun), Kroupa IMF
+- 2024A&A...688A.110S: 240 live points, importance sampling with constant efficiency 0.05
+- 2024A&A...688A.110S: Lens priors uniform within +/-10 to 20 percent of optimised values
+- 2024A&A...688A.110S: Shear strength log-uniform in [-3,-1], free position angle
+- 2024A&A...688A.110S: Multipole coefficient priors uniform +/-0.01
+- 2018Sci...361.1016S: time averaging up to 3 min with uv separation <10 m
+- 2022MNRAS.511.3017U: Source density 0.011 arcsec^-2, z > 1 (and z_source > 2 subset), S_500 > 80 mJy and 100 mJy, 10% sky area
+- 2026A&A...705A..81K: lens centers fixed at Einstein ring centers with uniform priors; Einstein radius upper limit slightly above Spilker16
+- 2026A&A...705A..81K: constant regularization scheme with one coefficient
+- 2017ApJ...835L..23I: priors gamma=0.05±0.05, e_G=0±1, e_Y=0±1; astrometric errors 0.2'' (X), 0.003'' (G), 0.13'' (Y)
+- 2023ApJ...945..121U: Fixed redshifts (z = 1.06, 2.09, 2.84) and fixed Galactic N_H from Willingale et al. (2013)
+- 2023ApJ...945..121U: Delayed SFH, Bruzual & Charlot (2003) SSP, modified Calzetti attenuation, Inoue (2011) nebular emission, SKIRTOR AGN torus model, Jones et al. (2017) THEMIS du…
+- 2026ApJ..1004..194F: 130 multiple images of 40 source galaxies (14 with spectroscopic redshifts); five NFW components, cluster galaxies, external shear, m=3 and 4 multipoles
+- 2026ApJ..1004..194F: Image-position error 0.8 arcsec; best-fit RMS offset 0.64 arcsec
+- 2018ApJ...867..140L: moment-0 maps collapsed over 300 km/s centered at +/-155 km/s
+- 2021A&A...652A.128J: age between 0 and 1.0 Gyr
+- 2021A&A...652A.128J: magnification from the online Frontier Fields magnification calculator (CATS models) and CLASH models
+- 2021A&A...652A.128J: integration width about twice the ALPINE median FWHM of ~252 km/s
+- 2024ApJ...969L..28L: Initial best fit with scipy optimize.minimize, then emcee posterior sampling
+- 2024ApJ...969L..28L: Dusty-region magnification mu_d from the 3x3 pixel mean of the magnification map at the ALMA 870 um peak
+- 2018A&A...610A..53M: magnification mu = F_LP/F_SP for SNR>=3 pixels
+- 2020ApJ...898...33C: secondary lens offset fixed to (-0.025", -0.327")
+- 2024ApJ...977L..36H: jwst_0916.pmap CRDS_CTX, 0.04'' pixel scale, 7'' x 7'' cutouts
+- 2019A&A...628A..23A: bins from -400 to 400 km/s; outer bins widened by 4x
+- 2023A&A...675A..85M: Redshift grid z_min = 0.4 to z_max = 4 with step Delta z = 0.2; 8, 9, 7, 9, and 9 lens models for A2744, MACSJ0416, MACSJ1149, A370, and AS1063
+- 2023A&A...675A..85M: 1000 realizations per lens model per cluster field
+- 2025ApJ...991...53C: position uncertainty 0.03''; Einstein radius lognormal priors 0.1 dex; shape priors 0.20 (mild) or 0.05 (strong); shear 0.00±0.05
+- 2025ApJ...991...53C: pixsrc noise increased to 80 uJy/beam
+- 2017A&A...600L...3C: r_core=0.15 kpc, r_cut=100 kpc fixed
+- 2023MNRAS.521.2962F: 1000 Monte-Carlo realizations fluctuating UV luminosity, IR size, and fluxes within 1-sigma Gaussian errors
+- 2025ApJ...990L..38Y: Sersic ellipse light profiles for lens and source; 2 Sersic ellipses for COSMOS-005
+- 2025ApJ...990L..38Y: Strong lensing defined as magnification greater than 2
+- 2021ApJ...909..130R: Aperture radius R <= 3 kpc, uv-taper = 1.0 arcsec, bandwidth = 250 MHz (110 km/s) centered at 667.97 GHz
+- 2026ApJ..1000..235K: pixel-based N_eff = sum(N_ij SFR_ij) / sum(SFR_ij)
+- 2026ApJ..1000..235K: fractional uncertainty on N_eff = 20%
+- 2022MNRAS.511.1408G: Wavelength integration range 8-1000 um
+- 2024MNRAS.535.1533B: Sersic index n free between 0.5 and 5 for lensed sources; n = 0.5 fixed in IMFIT for unlensed sources
+- 2020MNRAS.499.5136C: If the 2σ region is smaller than twice the beam area, use a circular aperture of diameter 1.5 times the beam major axis, centred on the flux-map peak
+- 2020MNRAS.499.5136C: Flux uncertainty: rescale noise by square root of independent beams in the selected region
+- 2024A&A...688A.146A: 10% flux reduction applied to R100 fluxes; circular Gaussian PSF FWHM = 0.1 arcsec for lens modelling
+- 2018NatAs...2...56Z: lens z=0.776, source z=6.027 fixed
+- 2022ApJ...930...32C: Fixed parameters: alpha_MIR = 2, lambda_0 = 200 um; Free parameters: beta, L_IR (8-1000 um), T_dust, lambda_peak; mass-weighted T_dust = 25 K for M_gas
+- 2025A&A...701A..85K: Statistical relative error 19%; systematic relative error 10%
+- 2017ApJ...845..108Y: Luminosity bins from 3 sigma limiting apparent luminosity to 0.5 dex higher
+- 2023A&A...673A.116K: Lens parameters: (x_L, y_L), ellipticity e_L, position angle phi_L; Source parameters: Sersic profile with (x_S, y_S), flux density, Sersic index, half-light r…
+- 2025NatAs...9.1553F: free: V, sigma, PA, inclination; ring width (0.5-1.0) x PSF FWHM; AZIM normalization
+- 2019MNRAS.487L..81L: mu=2 (YD4), mu=10 (JD1)
+- 2023A&A...679A.119R: aperture area ~ 6 beams (HCN, HCO+) and 1.5 beams (HNC)
+- 2023A&A...679A.119R: aperture/FWHM flux correction factor = 1.31
+- 2026ApJ..1004..114V: Einstein radius theta_E = 0.25'' (and conservative 0.2''), source redshift z = 4.0148, lens redshift z = 1.66
+- 2018A&A...620A.125M: redshift grid dz=0.2 from 0.4 (0.6 for MACSJ1149) to 4
+- 2020MNRAS.498.4109J: kappa_o = 0.04 m^2 kg^-1 at 250 GHz; R_gal ~0.76 kpc; mu = 5.6; T_o = 2.73 K
+- 2019NatAs...3.1115D: 100% fidelity at S/N=6.3 per channel; 5.7σ for two channels
+- 2020ApJ...905...85S: visibilities averaged temporally unless binned visibility spans >10 m in uv
+- 2024A&A...686A..85A: K = 6; G = 4.3e-3 pc Msun^-1 km^2 s^-2
+- 2024A&A...686A..85A: R_e = 4.522 (a b)^0.5 mu^-0.5 pc with a, b in mas (4.522 kpc/arcsec at z = 9.1092)
+- 2020ApJ...905..152D: 50 Voronoi realisations per slice
+- 2020ApJ...905..152D: L_IR defined at rest-frame 8-1000 um
+- 2024MNRAS.528.6222B: Voronoi pixelization shape prior [20, 45] pixels; regularization coefficient lambda prior [10^-6, 10^6]; SNR > 3 threshold on source plane for magnification an…
+- 2020A&A...633A.160C: 2500 iterations x 100 walkers per source for beta
+- 2024MNRAS.530.4887W: Flat bounds: log(\mu L_{IR}) = 13-14 (HerBS) and 13-14.5 (SPT), T_{dust} = 20-50 K, \beta = 0.5-4 (or 1\sigma range 1.68-2.41 for SPT and 1.61-2.26 for HerBS i…
+- 2023Natur.621..483G: 801x801 grid, 0.01'' pixel; pwv 0.6 mm; antenna configuration 2 (Cycle 8)
+- 2024ApJ...964..146F: mu_rad = 1.37, mu_tang = 6.35, PA -39.5 deg
+- 2021ApJ...907..122M: Cluster M(<84'') ~ 1.7 x 10^14 M_sun, V_vir = 1100 km s^-1, r_vir = 1200 kpc; z=0.33 galaxy M_* = 10^11.0 M_sun, σ = 170 ± 30 km s^-1; z=0.73 galaxy M_* = 10^1…
+- 2025PASJ...77..139I: Lensing magnification corrected for literature objects
+- 2025A&A...704A.158C: 500 mock objects inserted per simulation run; Sersic index n = 1, fixed half-light radius R_h = 0.2 kpc; lensing magnification mu < 5 in A2744
+- 2021A&A...646A..26B: Solar oxygen abundance 12+log(O/H) = 8.69
+- 2025PASP..137l4501T: Reference redshift z_common = 2.5 for the real sample
+- 2023MNRAS.521.5508H: n_H > 10^4 cm^-3, T_kin > 100 K
+- 2024ApJ...977L...9Z: magnification mu = 1.3
+- 2026ApJ...997..218A: 3sigma upper limits
+- 2016ApJ...832..114M: Gamma_int = 1.8; intrinsic NH 2.3e23 cm^-2
+- 2025ApJ...995..219F: rms image-position separation 0.14"
+- 2016A&A...596A..75S: sigma ~209+-20 km/s
+- 2021MNRAS.502.1797R: Slit width 1.2 arcsec, length 11 arcsec; total integration 5,400 sec per source; lens offset 0.5 arcsec, ellipticity e = 0.6
+- 2024ApJ...962..128M: Iterate until every source is measured; apply to both 450 μm and 850 μm maps
+- 2025ApJ...988...19S: Lensing magnification 1.17x
+- 2024ApJ...961...71F: Lensing magnification mu = 22 applied to the Table values (except flux densities)
+- 2025ApJ...990...29H: beta_d = 2.0, Td = 80 K, mu = 1.43, L_IR error 50%
+
+
+### Assumptions (bibcode: value)
+- 2024ApJ...961....2K: Image families assumed at the same redshift when the redshift of a family is unknown (e.g. PJ011646 families 1 and 2)
+- 2024ApJ...961....2K: Lens modelled in the image plane rather than the uv plane
+- 2024ApJ...961....2K: SIE is the simplest profile adequate for galaxy-scale lenses; core and cut radii of PIEMD/dPIE would be poorly constrained
+- 2024ApJ...961....2K: 1 mm magnification used as proxy for total infrared magnification
+- 2024ApJ...961....2K: Gaussian profile; FWHM = 2 x R_e; distorted lensed beam not deconvolved
+- 2024ApJ...961....2K: 1 mm flux density normalised to equal the SFR, i.e. sub-mm distribution traces star formation
+- 2024ApJ...961....2K: 6 GHz magnification used as a rough proxy where no high-resolution 1 mm image exists (PJ022633, PJ112713, PJ133634, PJ160722)
+- 2024ApJ...961....2K: single radio spectral index for all galaxies
+- 2024ApJ...961....2K: Fiducial stellar masses 10^10.5-10^11 Msun at z = 2.5 because no stellar masses are measured
+- 2019A&A...624A.138Y: Both source components have constant magnification across SED; deflectors at z=0.626 and 1.002
+- 2019A&A...624A.138Y: CO and H2O emission identical up to flux normalization
+- 2019A&A...624A.138Y: R and B are thin disks
+- 2020MNRAS.494.5542R: Lens mass model fixed to R15a (SIE with external shear)
+- 2020MNRAS.494.5542R: Optically thin dust emission; uniform T_dust and beta; Salpeter IMF; CMB effects negligible (<=0.1 K, <=0.1 dex)
+- 2020MNRAS.494.5542R: [O I] lines assumed to follow the FIR continuum surface brightness distribution
+- 2015ApJ...812...43B: Additional lenses at same redshift as primary; maximal-lensing Einstein radii fixed for weakly lensed systems
+- 2015ApJ...812...43B: flat cosmology H0=69, Om=0.29
+- 2023ApJ...954..197I: VLBA 5 GHz component q corresponds to the quasar core; ellipticity priors e_G = 0.2 +/- 0.2 and e_Y = 0.5 +/- 0.2 for Type B.
+- 2023ApJ...954..197I: Dirichlet boundary condition (delta psi = 0) on square of side L; peak-subtracted CLEAN intensities scaled by 1/1.6 to correct ~60% CLEAN boost.
+- 2023ApJ...954..197I: Weak lensing perturbation regime (|mu| <= 30); spatial pixel error correlations in the source plane are negligible (off-diagonal covariance <= 10%); Dirichlet …
+- 2023ApJ...954..197I: Errors in source-plane intensity differences scale with S/N to the power beta, adjusted so unperturbed chi^2/dof ~ 2.8-3.0.
+- 2023ApJ...954..197I: Visibility noise variance estimated from half the squared difference between adjacent SPWs.
+- 2023MNRAS.520.1613M: Image-plane pixel covariance errors are small due to dense uv-plane coverage; lens galaxy light contamination is negligible in Band 7.
+- 2023MNRAS.520.1613M: Planck 2015 LCDM cosmology (H_0 = 67.7 km s^-1 Mpc^-1, Omega_Lambda = 0.6911, Omega_m = 0.3089); dark matter halo centre and orientation aligned with stellar c…
+- 2023MNRAS.520.1613M: Systematic uncertainties from mass model, cosmology, and kinematics are independent and can be summed in quadrature.
+- 2018MNRAS.477..669M: Stellar mass from Galfit F606W, BC03, Chabrier IMF, solar metallicity, burst at z=3
+- 2024A&A...684A..56K: Other lines follow bulk kinematics of [CII]
+- 2013A&A...558A.123M: Plasmon speed close to c; magnification 3-6
+- 2024ApJS..275...36F: Use one fiducial model with systematic errors rather than median magnification maps.
+- 2024ApJS..275...36F: Purity uncertainty omitted at the high-purity cut; fiducial Schechter fit uses all 33 clusters without weights.
+- 2024ApJS..275...36F: Good lens models: N_img > 100; good-model clusters get fourfold weights.
+- 2024ApJS..275...36F: Flat universe: Ω_m = 0.3, Ω_Λ = 0.7, H_0 = 70 km s^-1 Mpc^-1.
+- 2024ApJS..275...36F: At z ≥ 4, fix both DPL slopes to z = 1–2 results.
+- 2017A&A...597A..41G: z=2 (range 1-3) for sources without spectroscopic redshift
+- 2021ApJ...917...99Y: Singular isothermal ellipsoid (SIE) lens mass distribution and single Sérsic source profile
+- 2021ApJ...917...99Y: Default lensing model mapping from image plane to source plane
+- 2021ApJ...917...99Y: LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7
+- 2021ApJ...917...99Y: Dust continuum traces molecular gas (for CO magnification) and SFR surface density
+- 2015MNRAS.452.2258D: Single smooth power-law profile, scale-invariant slope
+- 2023ApJ...943...25G: Circular Sérsic profile with fixed n = 4 (de Vaucouleurs) for the QSO host galaxy
+- 2023ApJ...943...25G: Singular isothermal ellipsoid plus external shear (SIE+gamma) for lens G, plus singular isothermal sphere (SIS) for perturber GX
+- 2023ApJ...943...25G: Salpeter IMF with mean stellar mass 0.3 M_sun and stellar mass fraction 0.2 in De Vaucouleurs profile for kappa_*
+- 2023ApJ...943...25G: LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.30, Omega_Lambda = 0.70
+- 2023ApJ...943...25G: Coleman et al. (1980) early-type and Sbc galaxy spectral templates for K-correction; Bell et al. (2003) color-M/L relation
+- 2022MNRAS.510.2480D: Elliptical power-law mass density profile plus external shear for the main lens; pixellated regularised background source
+- 2025A&A...693L..17S: Bayesian priors on lens mass distribution and source smoothness.
+- 2025A&A...693L..17S: Flat ΛCDM cosmology (cite: PlanckCollaboration:2020).
+- 2025A&A...693L..17S: Neglect lens-model parameter uncertainties.
+- 2025A&A...693L..17S: Source uncertainty dominated by data noise and phase/amplitude-error artefacts.
+- 2025A&A...693L..17S: Uniformly magnified beam for the mean-FWHM estimate.
+- 2025A&A...693L..17S: Uniform dust temperature and emissivity over the source.
+- 2025A&A...693L..17S: Inherited modified black-body SED and Kroupa initial mass function.
+- 2018MNRAS.476.4383D: Elliptical power-law density profile plus external shear only when evidence improved
+- 2020MNRAS.495L...1I: Λ-CDM: Ωm = 0.3, ΩΛ = 0.7, H0 = 70 km s−1 Mpc−1; 1 arcsec = 8.2 kpc at z=2.3
+- 2020MNRAS.495L...1I: Parametric Sérsic source morphology
+- 2020MNRAS.495L...1I: Clump SED scaled from the well-sampled Cosmic Eyelash SED
+- 2020MNRAS.495L...1I: (cite: chabrier03) initial mass function
+- 2020MNRAS.495L...1I: (cite: ke12) LIR-to-SFR conversion
+- 2013ApJ...767..132H: WMAP7 cosmology h=0.71, Om=0.27, OL=0.73
+- 2013ApJ...767..132H: Standard starburst SFR conversion (Kennicutt 1998)
+- 2020MNRAS.496..598C: Point-source UV emission; singular isothermal ellipsoid plus external shear from nearby galaxy group
+- 2020MNRAS.496..598C: Fixed HST lens parameters; independently fitted elliptical Gaussian source in each channel
+- 2020MNRAS.496..598C: CO inclination assumes an inclined circular disk
+- 2020MNRAS.496..598C: Clumps have moved at their observed velocities throughout their lifetimes
+- 2020MNRAS.496..598C: Comparison objects standardized to αCO = 0.8 M⊙ (K km s−1 pc²)−1
+- 2026A&A...706A.174A: Lens redshift unconstrained; magnification depends mainly on image geometry
+- 2026A&A...706A.174A: kappa = 8.94 cm2/g at 158 micron, appropriate for SN-ejected dust after reverse shock destruction
+- 2026A&A...706A.174A: [CO]/[H2] fixed to a fiducial Milky Way value (log = -4.0)
+- 2026A&A...706A.174A: Foreground extinction from Lupus-I at 24 micron negligible
+- 2019ApJ...873...50D: Flat Planck LCDM: h=0.677, Om=0.308, OL=0.691
+- 2023MNRAS.524.3671Z: Cosmology: \Omega_m = 0.310, \Omega_\Lambda = 0.689, H_0 = 67.7 km s^-1 Mpc^-1
+- 2023MNRAS.524.3671Z: Lens system is a single galaxy and distant cluster at z ~ 1.7 modelled as a power-law ellipsoid with external shear
+- 2023MNRAS.524.3671Z: Fixed lens mass model parameters from ALMA 300 GHz non-parametric fit across all radio bands
+- 2023MNRAS.524.3671Z: Radio continuum SEDs follow a single power-law profile
+- 2014A&A...568A..92M: Chabrier IMF; H0=70, Om=0.3, OL=0.7
+- 2020MNRAS.496..138B: Singular Isothermal Ellipsoid (SIE) lens mass profile and Gaussian source profile
+- 2020MNRAS.496..138B: Disk radius R is half the FWHM of the integrated CO source (81 mas); flat cosmology with DL = 11400 Mpc, DA = 1790 Mpc
+- 2020MNRAS.496..138B: Single elliptical Gaussian source per frequency channel acts as regularisation
+- 2020MNRAS.496..138B: Standard accretion disc model size R_1/2 = 0.02 eta_0 (also tested 3x larger, R_1/2 = 0.06 eta_0)
+- 2025ApJ...989..115T: Chabrier IMF; BC03 stellar population with solar metallicity; Calzetti attenuation; Draine 2014 dust templates
+- 2025ApJ...989..115T: Differential magnification negligible so quantities scale linearly with magnification
+- 2025ApJ...989..115T: Noise map convolved with the dirty beam to mimic correlated interferometric noise
+- 2017MNRAS.467.3513T: Quasar point source and CO(7-6) centre identical
+- 2017MNRAS.467.3513T: Circular morphology, disc or Gaussian bracket reality
+- 2021MNRAS.505.4838L: Pseudo isothermal elliptical mass distributions and empirical scaling relations for parametric models; dark matter follows smoothed luminosity-weighted galaxy …
+- 2021MNRAS.505.4838L: Magnification factor mu = 31 for intrinsic EW upper limit
+- 2021MNRAS.505.4838L: H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7
+- 2021MNRAS.505.4838L: LTM model magnifications; dust temperature T_dust = 30 K (also tested 35 K for IRX and 85 K upper limit) and dust emissivity beta = 2.0; Chabrier IMF
+- 2015PASJ...67...72T: Flat universe Ωm=0.26, ΩΛ=0.74, H0=72
+- 2015PASJ...67...72T: M/L = 2 Msun/Lsun at ~1 µm
+- 2021MNRAS.500.3667S: Smooth singular power-law ellipsoid mass distribution with external shear; SIS for nearby perturbers in WFI J2033-4723
+- 2021MNRAS.500.3667S: Additional +/- 10% uncertainty added to sizes where isothermal slope was assumed to account for empirical scatter in lens mass profile slope
+- 2021MNRAS.500.3667S: Circular velocity traces gas rotation in a disc; alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 for HS 0810+2554
+- 2026A&A...707A.252K: Two SIE lens mass profiles and a single Sérsic source profile
+- 2026A&A...707A.252K: Static source-plane beam defined as theta_maj/sqrt(mu) x theta_min/sqrt(mu) with 5 pixels per beam; Gaussian distribution of lens model parameters over 1000 sa…
+- 2026A&A...707A.252K: Static source-plane beam of 0.035'' x 0.027''; V_rot in the outermost ring approximates V_max
+- 2026A&A...707A.252K: Chabrier IMF; SFR ~ 10^-10 L_IR [L_odot]; alpha_CO = 0.8 (with error incorporating range 0.8-4.0); helium contribution of 36%; CO(6-5) to CO(1-0) ratio from Ya…
+- 2016MNRAS.457.2936I: SIE plus external shear
+- 2021ApJ...921...97J: SIE lens mass profile, Sersic source profile; fixed magnification mu = 1.3 for E and mu = 2.2 for p-H2O in W from Marrone et al. (2018)
+- 2021ApJ...921...97J: Uniform dust temperature; kappa_nu = 0.038 * (nu / 372.7 GHz)^beta_Td [m^2 kg^-1] from Draine (2003); beta_Td fixed to 2.0
+- 2015MNRAS.451L..40R: Only far-infrared part of the SED considered, where magnification is valid
+- 2020MNRAS.493.5290S: Smooth mass distribution; more complex models would not change the interpretation
+- 2020MNRAS.493.5290S: Half of the detected 380 GHz H2O emission originates in the disc; the radio-core magnification represents the H2O disc
+- 2020MNRAS.493.5290S: Half of the H2O emission originates in the anomalous feature
+- 2024ApJ...973...25K: Cluster-member scaling relation normalized to L* galaxy (m_F200W = 17.0 AB) with sigma_0* = 120 km/s, r_core* = 0.15 kpc, r_cut* = 30 kpc
+- 2024ApJ...973...25K: 3 mm sizes may be inflated by synchrotron contamination
+- 2024ApJ...973...25K: Both arc systems at similar redshifts; far-IR photometry does not resolve the systems; Kroupa IMF; flat LCDM with Omega_m = 0.3, Omega_Lambda = 0.7, H0 = 70
+- 2024ApJ...973...25K: Total flux-weighted magnification mu = 16 +/- 3 for both DSFGs combined; Planck photometry excluded because of confusion noise; radio SED not modeled
+- 2019ApJ...870...80L: Lens at z=0.9
+- 2022MNRAS.512.2426M: Elliptical power-law surface mass density profile (1 or 2 components) with optional external shear
+- 2022MNRAS.512.2426M: Flat LambdaCDM cosmology with h = 0.677 and Omega_m = 0.307
+- 2022MNRAS.512.2426M: Dust mass absorption coefficient extrapolated from kappa_850 = 0.077 m^2 kg^-1 to 873 um, constant across sample
+- 2022MNRAS.512.2426M: Kroupa IMF conversion log(SFR) = log(L_IR) - 43.41 assuming all IR emission is from star formation (no AGN contribution)
+- 2015ApJ...812...88M: Flat LCDM H0=70, OmegaM=0.3; ALMA magnification applied to stellar emission
+- 2023A&A...674A.101M: Minimum randomness corresponds to the most likely values of Delta t and R_q
+- 2025MNRAS.537.1163A: Chabrier IMF; energy balance between UV/optical and IR
+- 2025MNRAS.537.1163A: Spatially flat LCDM, H0 = 67.8, Omega_M = 0.308 (Planck 2016)
+- 2025MNRAS.537.1163A: Ignoring a small compact line-of-sight source; its SIS Einstein radius converged to negligible value
+- 2025MNRAS.537.1163A: Common centre set at the shared stellar and dust peak
+- 2018A&A...613A..34P: Gaussian uncorrelated noise
+- 2018A&A...613A..34P: dust traced by molecular gas, same magnification mu_CO = 7.3
+- 2022PASJ...74.1429T: Foreground lens at z = 0.776 follows a singular isothermal ellipsoid (SIE) with external shear; background source at z = 6.02 has an exponential disk (Sersic n…
+- 2022PASJ...74.1429T: Circular Gaussian source profile (n = 0.5) or point source
+- 2022PASJ...74.1429T: Differential magnification across CO transitions is negligible; molecular gas mass <= M_dyn (5 x 10^10 M_sun); L_CO(13-12) < L_CO(12-11) for both components; T…
+- 2015ApJ...811..115W: SMBH at mass centroid; uniform prior on log M_BH [6.5, 9.5]
+- 2020ApJ...891...64F: Gaussian prior on shear gamma=0.05±0.05; no prior on SIE centroid
+- 2024ApJ...970...30M: Cold-dust temperature 25 K dominates the dust mass; alternative luminosity-weighted T_dust = 40 K tested
+- 2024ApJ...970...30M: Magnification roughly constant across the image, so the channel-averaged beam approximates the source-plane beam
+- 2024ApJ...970...30M: Rotating gaseous disk made of concentric rings, convolved with the beam
+- 2018ApJ...866L..12G: Both lenses at same redshift for M/L ratio
+- 2018ApJ...866L..12G: alpha=0, Gaussian vertical profile
+- 2022MNRAS.510.3734D: Elliptical power-law volume mass density profile for the foreground lens with zero external shear
+- 2022MNRAS.510.3734D: alpha_CO = 3.0 +/- 0.5 M_sun (K km s^-1 pc^2)^-1 with 1.36 helium factor and mean GDR = 135; alpha_[CI] = 18.8 M_sun (K km s^-1 pc^2)^-1; alpha_CII = 30 M_sun/…
+- 2022MNRAS.510.3734D: Near-IR Ks-band morphology traces mid-IR lens light; Chabrier (2003) IMF in MAGPHYS scaled by 1.41 to Kroupa (2003) IMF
+- 2015ApJ...811..124S: Lens parameters fixed to ALMA best fit
+- 2020ApJ...903...34A: Delayed exponentially declining SFH, tau = 0.3 Gyr, solar metallicity Z=0.02, log(U) = -3, A_V = 1.0 mag (Calzetti law); star-forming main sequence galaxy; mas…
+- 2024ApJ...974..145S: Magnification correction; Hα-to-SFR coefficient 5.5 × 10^-42 (M_⊙ yr^-1)/(erg/s)
+- 2024ApJ...974..145S: For obscured limits, A_v ∼ 1–3 magnitudes and the cited Kriek2016 dust law with dust index 0
+- 2024ApJ...974..145S: T_dust = 35K; spectral index = 1.8; lensing magnification accounted for
+- 2023A&A...678A.183N: Lambda-CDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7; Salpeter (1955) IMF
+- 2023A&A...678A.183N: Calzetti (2000, 2001) dust extinction law
+- 2023A&A...678A.183N: Uniform gravitational magnification over the isolated counter-image integration area
+- 2023A&A...678A.183N: Radial bin E(B-V) extinction correction applied based on where the majority of pixels of the box lies
+- 2020A&A...641L...2M: Flat universe Omega_m=0.3, Omega_L=0.7; H0 = 67.4 or 73.3; second absorber at z=0.19 neglected
+- 2026ApJ..1000..159M: Dust is in radiative thermal equilibrium, optically thin, with clumpy geometry, and has the same spatial extent as the UV stellar continuum (r_e,dust = r_e,UV)
+- 2026ApJ..1000..159M: Negligible dark matter contribution within galaxy centers (<= r_e); M_ion = 1.2 x 10^7 M_sun adopted as lower limit of M_gas for GS-z14-0
+- 2018Natur.553...51M: Lens is a singular isothermal ellipsoid
+- 2022A&A...668L...4G: Primary beam response is B(x,y) = (2 J1(theta)/theta)^2
+- 2022A&A...668L...4G: For MRG-0138, two point-source components have relative amplitudes fixed by the ratio of mean magnifications between the two lensed images from N18, and result…
+- 2022A&A...668L...4G: Salpeter (1955) IMF
+- 2022A&A...668L...4G: Comparable source-plane distributions of dust and stars so that Md/M* is independent of lensing magnification mu
+- 2022A&A...668L...4G: Spectroscopic metallicity priors from N18 and Man21
+- 2024ApJ...965..108U: Main analysis neglects photometric-redshift and lens-model/magnification uncertainties
+- 2024ApJ...965..108U: SFR averaged over the last 10 Myr; dust luminosity/mass exclude AGN-torus dust
+- 2024ApJ...965..108U: Flat universe; H0=70.4 km s−1 Mpc−1; ΩM=0.272; errors 1σ unless specified
+- 2017ApJ...846L..22G: Gaussian source model adequate
+- 2021ApJ...908..192S: Chabrier IMF; delayed exponential SFH; two-component dust absorption; UV/IR energy balance
+- 2021ApJ...908..192S: Flat LambdaCDM; h=0.7; Omega_m=0.3
+- 2021ApJ...908..192S: Representative magnification informed by MACS1115/MACS0553 mass models
+- 2015A&A...576L...2S: Missing short-spacing flux negligible
+- 2026MNRAS.546f2284B: Flux-based stacks are not corrected for gravitational lensing magnification
+- 2026MNRAS.546f2284B: Optically-thin dust emission; flat Lambda-CDM cosmology with Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.674
+- 2026MNRAS.546f2284B: Gravitational lensing affects stellar and dust components equally (no differential lensing)
+- 2016ApJ...823...37H: Flat LCDM with Omega_M = 0.267, H0 = 71
+- 2021A&A...655A..42S: thin lens approximation with all cluster members on one plane
+- 2021A&A...655A..42S: Bruzual and Charlot stellar emission, da Cunha 2008 dust emission, Charlot and Fall attenuation law, energy balance
+- 2021A&A...655A..42S: differential lensing assumed not too severe, so ratios cancel mu
+- 2025A&A...693A.190J: Spectroscopic redshifts used where available, otherwise photometric; SFR and stellar mass corrected for magnification
+- 2025A&A...693A.190J: Noise is independent of magnification so per-stamp correction would reduce stacking efficiency
+- 2025A&A...693A.190J: Adding bootstrap and RMS errors quadratically is an approximation that slightly over-estimates the error (they are correlated)
+- 2018MNRAS.475.4939A: Spherically symmetric lenses; flat LCDM with Omega_m=0.307, h=0.693
+- 2022A&A...657A..25N: Surface brightness is constant inside each ring and conserved through gravitational lensing
+- 2022A&A...657A..25N: Salpeter (1955) initial mass function; Lambda-CDM cosmology (H_0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7); constant magnification factor of 2.8 …
+- 2022A&A...657A..25N: CO luminosity ratio r_4,1 = L'_CO(4-3)/L'_CO(1-0) = 0.33; Milky Way CO-to-H2 conversion factor alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1; constant counter-imag…
+- 2013ApJ...767...88W: Average magnification 15
+- 2024A&A...692A..34C: Velocity gradient solely produced by a galactic disk (most extreme case)
+- 2017ApJ...843L..35W: Results same if source twice as large
+- 2020Natur.584..201R: LCDM cosmology, H0 = 67.8 km/s/Mpc, Omega_m = 0.308, Omega_Lambda = 0.691
+- 2020Natur.584..201R: lens is a cored elliptical power-law profile plus external shear
+- 2020Natur.584..201R: source morphology the same at all infrared photometric points, so the 160 micron magnification applies to L_IR; infrared emission is thermal dust heated by you…
+- 2024A&A...688A.110S: Gaussian likelihood with uncorrelated Gaussian noise
+- 2024A&A...688A.110S: Multipole orders m=3 and m=4 only
+- 2018Sci...361.1016S: Singular isothermal ellipsoid lens
+- 2022MNRAS.511.3017U: Spatially flat LambdaCDM cosmology with H0 = 67.4 km s^-1 Mpc^-1 and Omega_M = 0.315
+- 2022MNRAS.511.3017U: Median SMG brightness temperature ratios from Table 4 of Bothwell et al. (2013) apply for excitation correction
+- 2022MNRAS.511.3017U: Gravitational magnification depends only on lensing geometry and is independent of velocity width
+- 2022MNRAS.511.3017U: Strong lensing by elliptical galaxies modelled as singular isothermal ellipsoids (SIEs) with source lying within the Einstein radius
+- 2017ApJ...835L..23I: z_X = z_L; z_Y varied 0.5-1
+- 2023ApJ...945..121U: Flat universe with H_0 = 70.4 km s^-1 Mpc^-1 and Omega_M = 0.272; lensing magnification factors mu = 1.19, 1.57, 2.46
+- 2023ApJ...945..121U: Chabrier (2003) IMF, metallicity = 0.02, energy balance between UV/optical and IR, isotropic AGN X-ray radiation
+- 2026ApJ..1004..194F: L_IR integrated over rest-frame 8-1000 um
+- 2018ApJ...867..140L: Lens within 0.2 arcsec of HST optical centroid; no external shear
+- 2021A&A...652A.128J: IMF from Kroupa and Boily 2002
+- 2021A&A...652A.128J: L[CII] formula of Solomon and Vanden Bout 2005
+- 2024ApJ...969L..28L: Centre of mass aligned with centre of light; modeling done in angular scales without assuming redshifts
+- 2018A&A...610A..53M: Singular Isothermal Ellipsoid lens
+- 2020ApJ...898...33C: single Sérsic source; lens mass ratio not fixed
+- 2020ApJ...898...33C: beam smearing not accounted for; qualitative
+- 2020ApJ...898...33C: Chabrier IMF; magnification 5.8
+- 2024ApJ...977L..36H: Three clumps modeled as point sources (and later Sérsic profiles for radii of clumps 1 and 3), halo modeled as Sérsic profile; magnification μ = 1.60 +0.01/-0.…
+- 2023A&A...675A..85M: Modified black body with beta = 1.5, T_dust = 35 K, z = 2.5 when scaling literature counts from 850 um, 1.2 mm, and 1.3 mm to 1.1 mm
+- 2025ApJ...991...53C: All galaxies and halo at the same redshift z~1
+- 2023MNRAS.521.2962F: Radiative equilibrium in a clumpy sphere ISM with high density contrast (negligible interclump opacity)
+- 2023MNRAS.521.2962F: Optically thin modified blackbody dust emission with fixed emissivity index beta = 2
+- 2023MNRAS.521.2962F: Mass absorption coefficient kappa_UV = 5.0e4 cm^2/g and dust emissivity kappa_0 = 30 cm^2/g at 100 um
+- 2023MNRAS.521.2962F: Cosmology (Omega_m, Omega_Lambda, h) = (0.3, 0.7, 0.7) and gravitational lensing magnification factors mu = 9.3 (A1689-zD1) and mu = 1.43 (MACS0416-Y1)
+- 2025ApJ...990L..38Y: Flat LCDM, H0 = 70 km/s/Mpc, OmegaM = 0.3, OmegaLambda = 0.7
+- 2016ApJS..222....1F: source redshift z=2.5 for magnification
+- 2021ApJ...909..130R: Magnification factors mu = 43, 25, and 16 for R = 1, 2, and 3 kpc apertures (main arc contains 95% of total flux); flat LambdaCDM cosmology with Omega_m = 0.31…
+- 2021ApJ...909..130R: Magnification mu = 16; CO line ratio r_2/1 = 0.6; Galactic alpha_CO = 4.4 M_sun/(K km s^-1 pc^2); M_H2(M20) = 132 x L_[CII]^0.97; M_H2(Z18) = 30 x L_[CII].
+- 2026ApJ..1000..235K: Dust (or radio) continuum surface brightness traces the 2D probability density of supernovae
+- 2016ApJ...826..112S: Flat WMAP9 cosmology, h=0.693, Om=0.286
+- 2022MNRAS.511.1408G: Flat LambdaCDM cosmology with Omega_M = 0.32, Omega_Lambda = 0.63, Omega_b = 0.05, h = 0.67, sigma_8 = 0.81
+- 2022MNRAS.511.1408G: Optically-thin single-temperature modified blackbody with dust emissivity index beta = 1.5
+- 2022MNRAS.511.1408G: Radio spectral index alpha = -0.7
+- 2024MNRAS.535.1533B: Singular Isothermal Ellipsoid (SIE) lens mass profile with external shear; flat Lambda-CDM Planck 2020 cosmology (Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.…
+- 2017ApJ...850..170O: Dense gas and low-J CO magnification equal to dust and CO(3-2) values
+- 2020MNRAS.499.5136C: H0=67.7 km s−1 Mpc−1; Ωm=0.308; ΩΛ=0.70
+- 2020MNRAS.499.5136C: Magnifications μ=10, 2 and 1.4 for MACSJJ149-JD1, A2744-YD4 and MACSJ0416-Y1
+- 2024A&A...688A.146A: Isothermal ellipsoid mass profile for lens with same centroid, axis ratio, and PA as light profile; mu = 2.2 for galaxy W from Marrone et al. (2018)
+- 2022ApJ...930...32C: General opacity model with tau = 1 at lambda_rest = 200 um; CMB heating correction included; Chabrier IMF; Planck cosmology (H_0 = 67.7 km s^-1 Mpc^-1, Omega_l…
+- 2017ApJ...845..108Y: Lambda CDM: Omega_M=0.3, Omega_Lambda=0.7, H0=70
+- 2023A&A...673A.116K: Lens is at z = 0.632; companion magnifications assumed to be mu_comp-N = mu_comp-SW = 1
+- 2025NatAs...9.1553F: circular rotation
+- 2019MNRAS.487L..81L: Line FWHM=100 km/s
+- 2023A&A...679A.119R: Flat LambdaCDM cosmology with Omega_m=0.315 and H_0=67.4 km s^-1 Mpc^-1
+- 2023A&A...679A.119R: Contribution from the counterimage is negligible; differential magnification between HCN and HCO+ is limited (<= 15%)
+- 2026ApJ..1004..114V: Thin lens approximation
+- 2018A&A...620A.125M: sources without redshift: Gaussian z=2, sigma=0.5; no multiple images; differential magnification neglected
+- 2020MNRAS.498.4109J: Constant magnification mu=5.6, circular source of constant radius, luminosity-weighted single dust temperature, no MIR power law, synchrotron or free-free
+- 2024A&A...685A..80Z: Clumps unresolved
+- 2020ApJ...905...85S: Regularization strength set by maximizing Bayesian evidence for fixed lens parameters, iterated
+- 2024A&A...686A..85A: Kinematics compatible with a dispersion-dominated or slow-rotation system (Vrot/sigma = 0.69); magnification 11.5
+- 2018A&A...620A.115B: Local 5-4/4-3 ratio applies; differential lensing negligible; Planck2015 cosmology, Chabrier IMF
+- 2020ApJ...905..152D: Errors exclude systematic uncertainty of the parametric lens model
+- 2024MNRAS.528.6222B: Singular Isothermal Ellipsoid (SIE) mass distribution
+- 2020A&A...633A.160C: BC03 SEDs, Chabrier IMF, tau=1e11 yr, 0.2 Zsun, Calzetti law with 0<=A_V<=1
+- 2024MNRAS.530.4887W: Lensing magnification \mu = 5.5 for mock SPT galaxies and \mu = 5.3 for mock HerBS galaxies
+- 2019A&A...632L...7J: mu = 5.6±0.1; SFR = 3.6e3 Msun/yr
+- 2023Natur.621..483G: Constant polarization fraction of unity/1% and constant B orientation in source plane; continuum matches CO morphology
+- 2024ApJ...964..146F: Differential magnification neglected for physical values
+- 2016MNRAS.462L...6K: T = 35 K, beta = 1.6, Chabrier IMF, CMB correction 14-20% missed continuum
+- 2021ApJ...907..122M: Singular isothermal sphere (SIS) profile; σ^2 = V^2 / 2; Faber-Jackson relation (Gallazzi et al. 2006); Tully-Fisher relation (Di Teodoro et al. 2016)
+- 2025PASJ...77..139I: SFR converted to L_FIR assuming Salpeter IMF for the local relation
+- 2017ApJ...837L..21L: magnification mu=1.8±0.3
+- 2021ApJ...908..146C: cosmology H0=70, Omega_M=0.3, Omega_Lambda=0.7
+- 2021ApJ...908..146C: SFR conversion with Kennicutt (1998) formula, after correction to Chabrier IMF
+- 2025A&A...704A.158C: Small number Poisson statistics (Gehrels 1986) for 1-sigma upper limits
+- 2016A&A...586L...7B: Chabrier IMF; magnification 5.7
+- 2025PASP..137l4501T: Flat LambdaCDM with h approx 0.67, Omega_m approx 0.3, Omega_Lambda approx 0.7
+- 2017A&A...608A.138G: alpha_CO=0.8 (DSFG/ULIRG) or 3.6 (low-z/cluster); R71=R81~0.39, R31~0.56
+- 2020MNRAS.494.4090C: H0 = 70 km s−1 Mpc−1; ΩΛ = 0.7; Ωm = 0.3
+- 2020MNRAS.494.4090C: μ = 6.3 assumed for Table 1 sources marked f without a lensing model.
+- 2025ApJS..278...45F: AID20 assumed z=2.0; AID60 assumed z=9.0
+- 2017MNRAS.466.2825B: Lens models from dust emission apply to [CI] gas
+- 2024ApJ...977L...9Z: Magnification-corrected SFR from SED fitting and Halpha
+- 2020ApJ...902...78R: kappa = 0.015 (nu/250 GHz)^beta m^2/kg, beta=2; gas-to-dust ratio 100; Kroupa IMF; flat LCDM H0=68.1
+- 2026ApJ...997..218A: T_dust = 25 K and dust emissivity index beta = 1.8
+- 2026ApJ...997..218A: Lensing magnification correction for A2744-QSO1 (mu=6.2 for A, mu=7.3 for B)
+- 2023A&A...674L...5B: Flat LambdaCDM cosmology with Omega_m = 0.307 and H_0 = 67.7 km s^-1 Mpc^-1; luminosities not corrected for lensing magnification
+- 2021MNRAS.502.1797R: R_1/2 = 2 kpc for dynamical mass; Einstein lensing mass = 2.5 x M* with M* = 1.6e9 M_sun
+- 2024ApJ...962..128M: Reported fluxes are not corrected for magnification
+- 2020ApJ...890..171J: Einstein mass = 2.5 M*
+- 2018ApJ...860...87F: alpha_CO 0.8 for B, 4.3 for A; magnification 2.38; W1 gas bound with isotropic turbulence
+- 2020A&A...634L...3Y: Similar H2O(4_23-3_30)/H2O(2_11-2_02) flux ratio in R and B
+- 2025ApJ...988...19S: H0=70, Omega_m=0.3, Omega_Lambda=0.7 cosmology
+- 2017MNRAS.466..138K: z = 7.5, CMB temperature ~23.4 K, magnification 9.3
+- 2024ApJ...961...71F: Narrow [C ii] associated with the UV-bright clump of radius 27 pc
+- 2016A&A...593L...2N: all four are multiple images of the same region
+- 2017A&A...604A.132L: Concordance cosmology Ωm=0.3, ΩΛ=0.7, H0=70
+- 2026A&A...706A.285C: Magnification of the host galaxy taken as the galaxy-integrated average factor
+- 2025ApJ...989..160I: Total-mass-to-stellar-mass ratios up to 10 for both foreground galaxies as an extreme case
+- 2024ApJ...964...39G: Concordance cosmology H0=70, Omega_Lambda=0.7, Omega_M=0.3; bolometric LF assumes maximum UV completeness and no magnification (lower limit)
+
+
+### Limitations the authors admit
+- 2024ApJ...961....2K: Statistical magnification uncertainties may understate larger systematic uncertainties (mis-identified images, mass parameterisation)
+- 2024ApJ...961....2K: Size measurement does not deconvolve the distorted source-plane beam and is best done in the visibility plane
+- 2024ApJ...961....2K: Current ALMA resolution only marginally resolves the Sigma_SFR distribution, so peak values are close to averages
+- 2019A&A...624A.138Y: Source-plane uncertainties may be underestimated; mass-sheet degeneracy not explored
+- 2020MNRAS.494.5542R: CO(3-2) has low S/N and must be interpreted carefully
+- 2020MNRAS.494.5542R: Agreement of the PDR models with line ratios is largely due to large systematic uncertainties on CO(3-2) and CO(10-9) reconstructions
+- 2020MNRAS.494.5542R: Semi-infinite uniform-density slab models are likely too simplistic for a clumpy ISM
+- 2020MNRAS.494.5542R: Low surface-brightness CO(10-9) component could be a modelling artifact
+- 2020MNRAS.494.5542R: T_dust from rest-frame 160-350 um is limited because the data lie on the Rayleigh-Jeans tail
+- 2015ApJ...812...43B: Resolution may cause over-predicted sizes and under-predicted magnifications; optically faint lenses may be missed
+- 2023ApJ...954..197I: The weak lensing perturbation formalism breaks down near critical curves where magnification is very large (|mu| > 30) and cannot account for changes in image multiplicity.
+- 2023ApJ...954..197I: Perturbations on angular scales smaller than ~1.0'' were neglected due to limited S/N and angular resolution.
+- 2023ApJ...954..197I: CLEAN deconvolution causes a systematic ~60% boost in extended flux amplitudes on large angular scales (>= 0.7'').
+- 2023ApJ...954..197I: The physical origin of the weak continuum emission at Object Y remains unconfirmed because its significance drops below 3 sigma under natural weighting.
+- 2023MNRAS.520.1613M: Cleaning visibilities into an image correlates pixels by the synthesized beam, which can bias image-plane modelling if pixel covariance is not accounted for.
+- 2023MNRAS.520.1613M: MUSE spectroscopic data have low SNR in the galaxy outskirts, preventing strong constraints on the orbital anisotropy beta_z, the dark matter halo scale radius r_s, or a central SMBH.
+- 2023MNRAS.520.1613M: Assuming a LCDM cosmology to compute angular diameter distances introduces a circularity when testing General Relativity.
+- 2018MNRAS.477..669M: Systematic biases up to ~0.21'' and degeneracies prevent concluding any offset is significant
+- 2024A&A...684A..56K: Data not standardized, resolution limited, CO SLED turnover unconstrained
+- 2019PASJ...71...57K: Detection is tentative and low S/N; line may be partly thermal
+- 2013A&A...558A.123M: Many parameters with few data points prevent a statistically robust constraint of parameter space
+- 2013A&A...558A.123M: Sparse, irregular time sampling
+- 2016MNRAS.461..164I: Primary lenses assumed SIE; multipoles and non-isothermal profiles not included
+- 2024ApJS..275...36F: Lens-model quality may leave systematic high-magnification area errors.
+- 2024ApJS..275...36F: CIB measurements depend on subtraction of CMB and Galactic dust emission.
+- 2024ApJS..275...36F: Some redshifts rely on tentative or single lines; four sources use assumed redshifts.
+- 2024ApJS..275...36F: IR luminosities for Herschel-undetected sources depend on upper limits and one ALMA detection.
+- 2024ApJS..275...36F: Small-number statistics affect cosmic SFRD; measurements remain consistent with prior estimates within 1–2σ.
+- 2017A&A...597A..41G: Possible unaccounted systematics at 5-10% level; non-uniform sensitivity in two mosaics
+- 2021ApJ...917...99Y: The high-resolution C43-8 ALMA configuration observations from Program 2018.1.00566.S were not yet completed.
+- 2021ApJ...917...99Y: The inclination angle i of the host galaxy rotation axis remains unconstrained, leaving sin(i) dependencies in the dynamical mass, gas fraction, and SMBH-to-host mass ratio.
+- 2021ApJ...917...99Y: The SIE + Sérsic lensing model is an over-simplification that leaves statistically significant residual clumps (4.9% of continuum peak, 8.1% of [C II] peak), and Table 1 uncertainties only include st…
+- 2021ApJ...917...99Y: Simple image-plane inverse ray-tracing fails for multiply-imaged pixels inside the caustics, producing a likely artificial low-velocity component in the PV diagram, and suffers from beam smearing.
+- 2015MNRAS.452.2258D: Differential magnification neglected; large uncertainties in gas conversion factors
+- 2015MNRAS.452.2258D: Image-plane pixel covariance ignored
+- 2023ApJ...943...25G: In the second HST visit, image D is covered by a diffraction spike of image A, potentially introducing photometric systematics.
+- 2023ApJ...943...25G: Image separations measured from HST and ALMA are inconsistent (e.g., A-B separation is 0.58'' in HST vs 0.51'' in ALMA), and the data are not constraining enough to quantify the impact on the radio/s…
+- 2023ApJ...943...25G: The host galaxy stellar mass estimate is based on only two photometric bands (F125W and F160W) and is subject to magnification and radial mass slope uncertainties.
+- 2023ApJ...943...25G: The lens galaxy redshift (z = 0.5985) and the redshift of perturber GX are tentative, as no direct emission/absorption from the lens galaxy was isolated in the 2D spectrum and GX's redshift is based …
+- 2023ApJ...943...25G: The cause of the ~0.1-0.2 mag variations between the two HST visits (70 days apart) cannot be definitively constrained with only two epochs.
+- 2022MNRAS.510.2480D: Only perturbers at the lens redshift (subhaloes) with fixed mean NFW concentration-mass relation are considered here; line-of-sight field haloes and concentration scatter are deferred to Paper II.
+- 2022MNRAS.510.2480D: Higher SNR mock images were generated from sources reconstructed from lower SNR real observations and thus may lack small-scale source features.
+- 2022MNRAS.510.2480D: In reality, changing angular resolution requires changing instrument or wavelength filter, which changes the intrinsic morphology of the lensed source.
+- 2022MNRAS.510.2480D: The direct resolution comparison between M13 and M17 is based on a single system using a rescaled low-z spiral galaxy (NGC 5457) that may be morphologically unrealistic for high-z sources.
+- 2018ApJ...862...64S: Small field and low-number statistics; field comparison selection not equivalent
+- 2026ApJ..1002L..28Y: T_dust and beta assumed; multi-band FIR needed
+- 2026ApJ..1002L..28Y: Pair fraction is a lower limit because the survey is incomplete
+- 2025A&A...693L..17S: Source-plane resolution is non-uniform because magnification varies.
+- 2025A&A...693L..17S: Lens-parameter uncertainties omitted from source uncertainty maps.
+- 2025A&A...693L..17S: Uniform dust temperature and emissivity assumption is likely inaccurate.
+- 2025A&A...693L..17S: AGN cannot be ruled out; X-ray and radio observations are lacking.
+- 2025A&A...693L..17S: Matched-resolution stellar observations and emission-line kinematics are needed.
+- 2025A&A...693L..17S: Group-related mass sheet transform-like effects are untested and could change size and SFR.
+- 2025A&A...693L..17S: Instrumental flux calibration and SED modelling limit overall source-property uncertainties.
+- 2018MNRAS.476.4383D: Low S/N and undetected counter-image in HELMS J001615.7+032435 raise modelling uncertainty
+- 2020MNRAS.495L...1I: Small lens-model mismatch prevents a simultaneous fit to both images
+- 2020MNRAS.495L...1I: Fidelity assessment requires large SNR bins
+- 2020MNRAS.495L...1I: Approximately 80-pc source-plane resolution applies along the major axis
+- 2020MNRAS.495L...1I: SFR limit depends on the adopted SED and stellar initial mass function
+- 2013ApJ...767..132H: Only compact-configuration data used; SPT0529-54 posterior bimodal
+- 2020MNRAS.496..598C: Continuum source size uncertain because of simple source geometry, low S/N and lens modeling synthesized ALMA data
+- 2020MNRAS.496..598C: Higher-S/N images required to confirm mm–UV source offset
+- 2020MNRAS.496..598C: Differential magnification can distort CO line profiles
+- 2020MNRAS.496..598C: Only projected clump distances are observed
+- 2020MNRAS.496..598C: Several clump detections have low significance and need deeper confirmation
+- 2020MNRAS.496..598C: Single-epoch UFO and molecular energetics may sample different driving epochs
+- 2020MNRAS.496..598C: Energy channeled into ionized gas is omitted
+- 2020MNRAS.496..598C: Outflow dynamical depletion time excludes star formation depletion
+- 2026A&A...706A.174A: Stellar mass and other SED-derived properties highly uncertain because of Lupus-I extinction
+- 2026A&A...706A.174A: Lens redshift not confirmed; MUSE and FORS2 data too poor
+- 2026A&A...706A.174A: Dust mass strongly depends on the assumed kappa and optical depth
+- 2026A&A...706A.174A: Unresolved data and fixed GDMR and [CO]/[H2] prevent tight gas-mass constraints
+- 2026A&A...706A.174A: A minor AGN contribution cannot be ruled out
+- 2019ApJ...873...50D: Parameterized Sérsic modeling cannot independently constrain faint emission at large radii
+- 2019ApJ...873...50D: Simple Sérsic profiles unlikely to fully characterize source structure
+- 2023MNRAS.524.3671Z: Three of the 18 VLA 33 GHz execution blocks taken before 22 Oct. 2013 were corrupted and unusable due to incomplete execution.
+- 2023MNRAS.524.3671Z: The four optical point-source images may suffer from microlensing, which is not included in the strong lens modelling, and provide limited constraints on the lens model.
+- 2023MNRAS.524.3671Z: Several reconstructed 300 GHz emission clumps outside the caustics have lower fidelity due to lens model uncertainty.
+- 2023MNRAS.524.3671Z: A counter-jet on the opposite side of the host galaxy may be too faint to detect with current sensitivity if it lies away from the caustics.
+- 2023MNRAS.524.3671Z: A numerical plotting issue caused the inner critical curve in Figures A1 and B1 to be drawn as an ellipse rather than a point.
+- 2014A&A...568A..92M: Knot C in rest-frame optical poorly fitted by the lens model
+- 2020MNRAS.496..138B: Low signal-to-noise ratio of the ALMA submillimetre continuum prevents measuring individual component fluxes and requires deeper observations to confirm the spatial offset from the CO line.
+- 2020MNRAS.496..138B: Relatively low angular resolution and sensitivity of the 5-minute ALMA observation prevent deriving detailed source structure or investigating detailed mass substructure.
+- 2020MNRAS.496..138B: Low signal-to-noise at the red end of the CO(5-4) velocity slices introduces large uncertainties on the channel centroids, preventing a definitive interpretation of a warped disk.
+- 2020MNRAS.496..138B: The radio source size inferred from u-v fitting is only 1.3 sigma from zero and is sensitive to the starting parameters of the optimization, and a partial AGN contribution to the radio emission canno…
+- 2025ApJ...989..115T: Line detections for R0032-z299 are marginal
+- 2025ApJ...989..115T: SED fitting codes differ systematically, especially in attenuation models, complicating comparison to literature
+- 2025ApJ...989..115T: PDR modelling is whole-galaxy integrated and plane-parallel, so qualitative only
+- 2025ApJ...989..115T: Compactness as the cause of attenuation is not established; edge-on orientation is not the only factor
+- 2025ApJ...989..115T: Degeneracy between dust mass and dust temperature remains with limited continuum bands
+- 2017MNRAS.467.3513T: CO(10-9)/(11-10) resolution and sensitivity insufficient to resolve source; size uncertainty dominated by systematics; chi2/dof ~3.4 indicates underestimated errors.
+- 2021MNRAS.505.4838L: Absence of WFC3 coverage at the position predicted by GLAFIC and LTM models makes the clear identification of the fifth image (z6.5) challenging, with ~12'' scatter among models.
+- 2021MNRAS.505.4838L: Arc magnification estimates are likely lower limits; alternative methods next to the critical curves yield mu ~ 150-200 with larger uncertainty.
+- 2021MNRAS.505.4838L: Supernova dust yield estimate is highly uncertain due to unknown SN production rates in early metal-poor galaxies and dust destruction/ejection processes.
+- 2021MNRAS.505.4838L: Single sub-mm continuum wavelength (1.2 mm) leaves the dust temperature unconstrained below the Herschel 85 K upper limit; deeper multi-band ALMA observations (e.g., Band 5) are needed.
+- 2015PASJ...67...72T: Core radius and velocity dispersion highly degenerate; BH mass and core radius degenerate
+- 2021MNRAS.500.3667S: Sample is small (7 objects) and heterogeneous, probing different CO rotational transitions that trace different gas temperatures and regions.
+- 2021MNRAS.500.3667S: 2D reconstructed velocity and dispersion maps are affected by beam-smearing, and two sources only use 3 velocity channels.
+- 2021MNRAS.500.3667S: Single-temperature SED fits may underestimate total dust mass if a colder diffuse ISM dust component is present.
+- 2021MNRAS.500.3667S: PG 1115+080 and HS 0810+2554 continuum are only marginally resolved in the radial/tangential direction, requiring size estimates from the minor axis and simulation-based corrections.
+- 2026A&A...707A.252K: About 20 ± 6% of the 1.940 mm continuum emission may be resolved out in the high-resolution observations compared to Yang19.
+- 2026A&A...707A.252K: Intensity values from PyAutoLens visibility fits are in arbitrary units.
+- 2026A&A...707A.252K: Simple SIE lens mass models have small formal statistical uncertainties and are prone to model misspecification.
+- 2026A&A...707A.252K: Interpolating the source-plane CO(6-5) cube onto a square grid requires assuming a static source-plane beam, whereas the true lensing magnification and effective resolution vary across the source.
+- 2026A&A...707A.252K: CO(6-5) traces warmer, denser gas than CO(1-0) or [C II] and may not trace the full spatial extent of the colder molecular gas disk, and converting CO(6-5) to CO(1-0) and M_gas (with uncertain alpha_…
+- 2016MNRAS.457.2936I: Canonical lens model may be too simple; core, power-law deviation, multipoles could explain anomalies
+- 2021ApJ...921...97J: CO(3-2) from ATCA is spatially unresolved (5-6'') between W and E and had to be distributed by scaling to CO(6-5).
+- 2021ApJ...921...97J: Signal-to-noise is insufficient for lensing reconstruction in E and for p-H2O(2_1,1-2_0,2) in W, requiring adoption of fixed magnification factors from Marrone et al. (2018).
+- 2021ApJ...921...97J: [CI](2-1) and p-H2O(2_1,1-2_0,2) are not significantly detected in E, and the lack of [CI](1-0) observations prevents direct measurement of the [CI] excitation temperature and confirmation of the [CI…
+- 2021ApJ...921...97J: In the LVG models, T_kin/T_dust is assumed constant across all visual extinctions/densities rather than varying with extinction or density.
+- 2021ApJ...921...97J: Observations of important neutral gas coolants [OI] (63 um) and [SiII] (35 um), which contribute >50% of total cooling, are unavailable.
+- 2015MNRAS.451L..40R: Results may not extrapolate to general SMG population due to size-bias
+- 2020MNRAS.493.5290S: Variability evidence is only tentative (2-3 sigma)
+- 2020MNRAS.493.5290S: Beam smearing prevents detailed disc dynamics; deferred to future higher-resolution CO imaging
+- 2020MNRAS.493.5290S: Low surface brightness and chance lensing configuration make spatial resolution of the H2O emission difficult
+- 2024ApJ...973...25K: Arcs 1a and 3c are only marginally resolved at 2 mm, so higher-resolution dust imaging is needed
+- 2024ApJ...973...25K: ALMA beam is highly elongated (high declination target) and aligned with the direction of greatest magnification
+- 2024ApJ...973...25K: 3 mm fluxes and sizes may be contaminated by synchrotron emission
+- 2024ApJ...973...25K: DSFG-3 lacks a secure spectroscopic redshift; lens-model redshift uncertainty is likely underestimated
+- 2019ApJ...870...80L: Constant dust temperature assumed, uncertainty within factor ~2
+
+### Settings cards flag as needed but not stated
+- casa version: 9
+- flux calibrator and flux scale uncertainty: 5
+- clean threshold, mask, cell and image size: 3
+- flux calibrators and flux scale uncertainty: 3
+- casa version and pipeline version used for calibration and imaging: 3
+- clean threshold, cell and image size: 3
+- image size and cell size: 3
+- casa version and pipeline version: 3
+- alma array configuration and baseline lengths: 2
+- cell size and image size: 2
+- line-free channels and continuum subtraction details: 2
+- line-free channels used for continuum: 2
+- line-free channels and continuum subtraction method: 2
+- lens model parameters: 2
+- pixel cell size and image dimensions used in tclean: 2
+- line-free channel ranges for continuum subtraction: 2
+- primary beam correction details: 2
+- pipeline version: 2
+- alma calibration: casa/pipeline version, flux/bandpass/phase calibrators, flux-scale uncertainty, a…: 1
+- alma imaging recipe: tclean parameters beyond natural weighting (cell, image size, mask, threshold,…: 1
+- which of the four listed alma projects supplies which target; mous/member ids; 2019.1.01197.s is me…: 1
+- lenstool run set-up: prior bounds for each parameter, number of mcmc chains/samples, burn-in/conver…: 1
+- exact multiple-image positions are given (table 13) but how each position was measured (peak, centr…: 1
+- cleanlens settings: source-plane pixel scale, sub-sampling, and how the 3 sigma area threshold was …: 1
+- imfit set-up for source-plane sizes: fitting region, whether components were fixed or free, which o…: 1
+- peak sigma_sfr: flux-to-sfr normalisation and pixel scale of the source-plane 1 mm map: 1
+- stellar masses assumed for delta ms and the exact form of the wang et al. relation used; no passage…: 1
+- blobcat detection and extraction parameters and how radio effective radii were measured: 1
+- apparent l_ir and sfr inputs come from earlier sed fits (berman et al. 2022; harrington et al. 2016…: 1
+- number of tclean iterations, thresholds, masks and cell/image sizes: 1
+- self-calibration solution intervals and number of rounds: 1
+- line-free channel selection: 1
+- uv-range or taper settings: 1
+- source-plane flux-binning details and mcmc chain length/convergence: 1
+- details of the modified blackbody sed fit (fitted data points, priors, two-temperature split): 1
+- deflector optical positions used for priors: 1
+- exact pyautolens and 3dbarolo settings: 1
+- the lens-modelling code itself is not named or stated as public; its regularization form (r_s), the…: 1
+- full lens mass model parameters (sie and shear values) are only referenced to r15a: 1
+- flux, bandpass and phase calibrators, and any self-calibration, for the band 3, band 8 and lbc data…: 1
+
+## Paper excerpts (40 of 177, chosen for detail and spread over fields/years)
+
+### 2024ApJ...961....2K: PASSAGES: The Wide-ranging, Extreme Intrinsic Properties of Planck-selected, Lensed Dusty Star-forming Galaxies (2024; high_z_galaxies; observational_alma_primary)
+- question: Build LENSTOOL strong-lens models for 15 Planck-selected PASSAGES lensed DSFGs to get magnifications, de-lensed L_IR, SFRs and source-plane sizes, and test whether they are Eddington-limited or starburst-like
+- step 2: Identify multiple-image families to use as lens constraints
+  - method: Visual identification of image families using HST, Gemini, ALMA and JVLA images (parity and morphology), iteratively refined by model predictions [Lens modeling with LENSTOOL: "The process of isolating image families is usually iterative, where the model may predict unidentified image locations."] [Visual identification of multiple image…: "This coverage spanning 0.6 $\mu$m to 6 cm gives us a large number of unique sightlines through foreground mass distributions, which we use to constrain our models."]
+  - parameter: Image-plane positions only for most models; each family of n images gives 2(n-1) constraints; catalogs in Table 13 [Visual identification of multiple image…: "Each lensed image family of multiplicity $n$ provides $2(n-1)$ constraints to be used in the optimization"] [Visual identification of multiple image…: "For most models herein, we use only image positions, which helps to minimize the systematic uncertainty introduced in the model."]
+  - assumption: Image families assumed at the same redshift when the redshift of a family is unknown (e.g. PJ011646 families 1 and 2) [Notes on individual objects: "For the purposes of deriving our lens models, it is sufficient to assume that they lie at the same redshift."]
+  - assumption: Lens modelled in the image plane rather than the uv plane [Visual identification of multiple image…: "In this work, as we are merging information from traditional optical telescopes and radio interferometers, we apply lens modeling to the transformed image plane."]
+  - validation: Model predictions of additional images tested against data; image families checked in the model [Lens modeling with LENSTOOL: "When confirmed, these added images can be incorporated into the model for further refinement."]
+- step 3: Optimise parametric lens mass models with LENSTOOL MCMC
+  - method: Parametric foreground mass (SIE basis, optional secondary SIS/SIE, NFW plus SIS for the cluster lens PJ144958) optimised in the image plane with Bayesian MCMC; median, best and sometimes mode solutions reported [Lens model mass profile optimization: "so we perform all optimization in the image plane unless otherwise noted."] [Lens model mass profile optimization: "For these models, we use a singular isothermal ellipsoid (SIE) potential as a basis for all mass profiles (cite: Kormann:1994aa)."]
+  - software: LENSTOOL
+  - parameter: Ellipticity upper limit e < 0.75 [Lens model mass profile optimization: "An upper limit is generally imposed on the ellipticity of $e < 0.75$, following (cite: Acebron:2017aa)."]
+  - parameter: Profile centre sometimes fixed to the HST centroid of the visible lens; secondary deflectors added as SIS/SIE where appropriate [Lens model mass profile optimization: "In some galaxy-scale cases, the location of the profile center is fixed to the centroid of the visible baryonic component revealed by *HST*, which reduces the number of free parameters[^6]."] [Lens model mass profile optimization: "Where possible (and appropriate), a secondary singular isothermal ellipsoidal/spheroidal potential can be added to account for the effect of any secondary deflectors."]
+  - parameter: Positional uncertainty sigma_position set to the beam size of the lowest-resolution ALMA or JVLA image; lens redshifts held fixed [Best-fit lens model parameters: "The positional uncertainty $\sigma_{\rm position}$ is supplied for each object, and is equal to the size of the synthesized beam for ALMA or JVLA (whichever is lowest resolution)."] [Best-fit lens model parameters: "Fixed parameters are denoted with an asterisk."]
+  - assumption: SIE is the simplest profile adequate for galaxy-scale lenses; core and cut radii of PIEMD/dPIE would be poorly constrained [Lens model mass profile optimization: "appears to be the simplest profile that effectively describes galaxy-scale strong lensing configurations"]
+  - fitting: Bayesian MCMC in LENSTOOL on image-plane positions; priors specified by the user per parameter; likelihood effectively chi-square of image positions with sigma_position errors; sampler details not given [Lens model mass profile optimization: "LENSTOOL employs Bayesian Markov chain Monte Carlo (MCMC) methods to thoroughly explore the posterior distribution for each supplied parameter in order to find a best-fit solution."] [Lens model mass profile optimization: "each of which has their own prior distribution, specified by the user"]
+  - validation: Median chi-square 1.9 (median solutions) and 0.3 (best solutions) judged reasonable; image-plane RMS; reconstructions reproduce the number of multiple images; source-plane coincidence of individual images [Lens model mass profile optimization: "This suggests that the goodness-of-fit of our lens models are reasonable, in aggregate"] [Source-plane reconstruction: "one of the tests that we use to evaluate the goodness-of-fit of a lens model is evaluating the spatial coincidence of the source plane reconstruction of individual multiple images."]
+- step 4: Reconstruct the source plane and derive magnifications
+  - method: Invert arcs with the LENSTOOL cleanlens function; total magnification = image-plane solid angle over source-plane solid angle; uncertainty from 300 posterior draws [Source-plane reconstruction: "we can invert the observed arcs to approximate the unlensed brightness distribution in the source plane using the `cleanlens` function of LENSTOOL."] [Total magnification factors: "Total magnification of each lens is determined as the ratio of the total solid angle subtended in the image plane to that of the source plane (as reconstructed by our lens model)."]
+  - software: LENSTOOL
+  - parameter: 300 posterior samples; area above a 3 sigma S/N threshold in both planes; median with 16th-84th percentile [Total magnification factors: "300 samples are drawn from the full MCMC-sampled posterior distribution for each lens mass profile parameter optimized with LENSTOOL"] [Total magnification factors: "measured as the area above a $3\sigma$ signal-to-noise threshold (for both the source plane and image plane)"]
+  - assumption: 1 mm magnification used as proxy for total infrared magnification [ALMA 1.1 mm continuum: "we use lensing magnifications at 1 mm as a proxy for the total infrared magnification"]
+  - validation: Individual image reconstructions compared visually; magnifications compared with earlier models (Appendix comparison) [Source-plane reconstruction: "These individual reconstructions are compared visually"] [Comparison with existing lens models: "In summary, the general agreement for most objects with prior models (derived from independent constraints) helps to lend credence to their robustness."]
+- step 5: Measure Einstein radii and enclosed lens masses
+  - method: Equivalent Einstein radius: radius where mean convergence falls to 1, from convergence maps of 100 posterior draws, centred on the peak pixel [Measuring Einstein radii: "defined as the radius enclosing an average surface mass density equal to the critical surface density"] [Measuring Einstein radii: "The Einstein radii are computed analogously to the magnification, where 100 samples are drawn from the modeling-derived posterior distribution, with a new convergence map created for each iteration."]
+  - software: LENSTOOL
+  - validation: Einstein radii are noted to be consistent across lens models; PJ105353 and PJ132630 values agree with earlier work [Measuring Einstein radii: "is usually quite consistent across different lens models"]
+- step 6: Measure source-plane effective radii at 1 mm
+  - method: CASA IMFIT Gaussian fit to the source-plane reconstruction of all lensed images together; R_e = geometric mean of semi-major and semi-minor axes; mean and standard deviation over 10 random MCMC iterations; converted to kpc with the source … [Source-plane size: "the intrinsic size of the far-IR continuum-emitting region is measured from the source-plane reconstruction using CASA IMFIT."] [Source-plane size: "we randomly select 10 of the MCMC lens modeling iterations to create different source-plane reconstructions, measure effective radii independently, and take the mean and standard deviation of this distribution."]
+  - software: CASA, LENSTOOL
+  - parameter: Flat cosmology H0 = 70, Omega_m = 0.3, Omega_Lambda = 0.7 [Introduction: "flat cosmological model with $H_0=70$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_m = 0.3$, and $\Omega_\Lambda = 0.7$."]
+  - assumption: Gaussian profile; FWHM = 2 x R_e; distorted lensed beam not deconvolved [Source-plane size: "The full-width at half-maximum of the Gaussian is related to the effective radius as ${\rm FWHM} = 2 \times R_{\rm e}$."] [Source-plane size: "As a caveat, this measurement is perhaps best made in the visibility-plane in order to deconvolve the effect of the synthesized beam."]
+  - fitting: Gaussian fit with CASA IMFIT (no priors/sampler) [Source-plane size: "the intrinsic size of the far-IR continuum-emitting region is measured from the source-plane reconstruction using CASA IMFIT."]
+  - validation: Relative uncertainty similar to Spilker et al. and Bussmann et al., so direct comparison is considered feasible [Source-plane size: "the relative uncertainty in effective radius for this work is likewise similar."]
+- step 7: De-lens L_IR, SFR and derive Sigma_SFR
+  - method: Divide apparent L_IR and starburst-SED SFRs from earlier papers by the 1.1 mm magnification (6 GHz magnification where no ALMA image); Sigma_SFR = SFR over the disk area from R_e, and a peak value from the 99.7th percentile of source-plane… [Intrinsic IR luminosities of highly-mag…: "Using the lens model-derived magnifications at 1.1 mm, we can derive intrinsic, de-lensed IR luminosities"] [Table 3: "The star formation rate surface density, $\Sigma_{\rm SFR}$ is given as both a global average value (total SFR divided by the area of the disk with given effective radius), and as a peak value given in brackets"]
+  - assumption: 1 mm flux density normalised to equal the SFR, i.e. sub-mm distribution traces star formation [Eddington-limited star-formation surfac…: "by normalizing the 1 mm flux density to equal the SFR, effectively assuming that the spatial distribution at sub-mm wavelengths directly traces the distribution of star formation"]
+  - assumption: 6 GHz magnification used as a rough proxy where no high-resolution 1 mm image exists (PJ022633, PJ112713, PJ133634, PJ160722) [Intrinsic IR luminosities of highly-mag…: "These $\mu_{\rm 6 GHz}$ factors can thus be used to roughly estimate intrinsic $L_{\rm IR}$"]
+  - validation: Peak values are mostly consistent with global averages because sources are only marginally resolved [Eddington-limited star-formation surfac…: "the current ALMA data are only marginally able to resolve this distribution."]
+- step 8: Compute the radio-FIR correlation parameter q_FIR
+  - method: 6 GHz flux converted to rest-frame 1.4 GHz luminosity with a single spectral index and lens magnification, then q_FIR from the FIR luminosity; radio effective radii compared with 1 mm sizes (radio size method not separately described) [Radio-FIR correlation and intrinsic rad…: "where we determine $L_{\rm 1.4~GHz}$ from 6 GHz flux as"] [Radio-FIR correlation and intrinsic rad…: "we examine the distribution of effective radii for our sample in both the rest-frame far-IR and radio"]
+  - parameter: spectral index alpha = 0.8 [Radio-FIR correlation and intrinsic rad…: "spectral index $\alpha$ (assumed here to be 0.8; (cite: Condon:1992aa))"]
+  - assumption: single radio spectral index for all galaxies [Radio-FIR correlation and intrinsic rad…: "the calculation of $q_{\rm FIR}$ for PASSAGES galaxies is weakened by the assumption of a single radio spectral index $\alpha$"]
+  - validation: Alternative alpha = 0.5 raises q_FIR by 0.3-0.4, smaller than the sample dispersion [Radio-FIR correlation and intrinsic rad…: "we conclude that the possible effect on our interpretation is minimal."]
+- step 9: Compare with main-sequence, size-luminosity and size-bias expectations
+  - method: Delta MS from depletion times and Sigma_SFR relations at fiducial stellar masses; L_IR-R_e scaling versus unlensed DSFGs; magnification versus R_0 = R_e/theta_Ein against analytic SIS cross-sections [Intrinsic IR luminosities of highly-mag…: "For fiducial stellar masses[^11] of $10^{10.5} M_\odot$, $10^{10.75} M_\odot$, and $10^{11} M_\odot$ at a representative redshift of $z=2.5$, this yields main-sequence depletion times of 340, 360, and 380 Myr, respectively."] [Connection of lensing halo mass to magn…: "a useful parameter might be the ratio of galaxy angular size (effective radius) to the angular Einstein radius of the lens, $R_0 \equiv R_{\rm e} / \theta_{\rm Ein}$."]
+  - assumption: Fiducial stellar masses 10^10.5-10^11 Msun at z = 2.5 because no stellar masses are measured [Intrinsic IR luminosities of highly-mag…: "the dearth of stellar mass estimates makes it impossible to reliably place these other properties in context."]
+  - validation: Analytic cross-section peaks are approximately concordant with the observed negative correlation [Connection of lensing halo mass to magn…: "are approximately concordant with the negative correlation seen in the upper panel of Fig."]
+- result: Total magnification (1 mm and 6 GHz) = 2 - 28 (median 7) ± not stated dimensionless [abstract: "Magnifications range from $\mu = {2 - 28}$ (median $\mu=7$)"]
+- result: Intrinsic L_IR = 0.2 - 5.9 x 10^13 (median 1.4 x 10^13) ± not stated Lsun [Intrinsic IR luminosities of highly-mag…: "which range from $L_{\rm IR} = 0.2 - 5.9 \times 10^{13}~L_{\odot}$ (median $1.4 \times 10^{13}~L_{\odot}$)."]
+- result: Intrinsic IR-inferred SFR = 170 - 6300 (median 1500) ± not stated Msun/yr [Intrinsic IR luminosities of highly-mag…: "inferred SFRs of $170 - 6300~M_{\odot}~{\rm yr}^{-1}$ (median $1500~M_{\odot}~{\rm yr}^{-1}$"]
+- result: 1 mm dust continuum effective radius R_e = 1.7 - 4.3 (median 3.0) ± not stated kpc [Source-plane reconstructed galaxy sizes: "this results in dust continuum sizes of $R_{\rm e} = 1.7 - 4.3$ kpc (median 3.0 kpc"]
+- result: Median chi-square of best solutions = 0.3 ± not stated dimensionless [Lens model mass profile optimization: "the median for the best solutions is $\tilde{\chi}_{\rm best}^2 = { 0.3}$"]
+- result: Median Einstein radius = about 1.5 ± not stated arcsec [Connection of lensing halo mass to magn…: "The median Einstein radius is found to be $\sim 1.5^{\prime\prime}$"]
+- result: PJ020941 magnification at 1 mm and 6 GHz = mu_1mm = 10.5, mu_6GHz = 12.0 ± +/-3.7 and +/-3.5 dimensionless [Comparison with existing lens models: "we find, $\mu_{\rm 1mm} =10.5 \pm 3.7$ and $\mu_{\rm 6 GHz} = 12.0 \pm 3.5$"]
+- result: PJ105353 magnification at 870 um = 7.6 (about 12 at 1 mm) ± 0.7 dimensionless [Comparison with existing lens models: "we find a significantly different total value of $\mu_{870 \mu {\rm m}} = 7.6 \pm 0.7$ (or $\mu_{\rm 1 mm} \approx 12$)"]
+- result: PJ132630 magnification at 1 mm = 4.3 ± 0.6 dimensionless [Comparison with existing lens models: "in close agreement with our $\mu_{\rm 1mm} = 4.3 \pm 0.6$"]
+- result: PJ132630 Einstein radius = 1.78 ± 0.18 arcsec [Comparison with existing lens models: "our $\theta_{\rm Ein} = 1.78 \pm 0.18$"]
+- result: PJ011646 mass within the Einstein radius = 1.54 x 10^12 ± 0.03 x 10^12 Msun [Notes on individual objects: "$(1.54 \pm 0.03) \times 10^{12} M_\odot$ within the Einstein radius at $z_{\rm lens}=0.555$"]
+- result: Sigma_SFR, primary range (inner 68%) = about 20 - 160 ± not stated Msun/yr/kpc^2 [Intrinsic IR luminosities of highly-mag…: "the inner 68% confidence interval in star-formation surface density is $\Sigma_{\rm SFR} \approx 20 - 160$"]
+- result: q_FIR = 2.0 - 3.1, median 2.3 ± 1 sigma dispersion 0.3 dimensionless [Radio-FIR correlation and intrinsic rad…: "We find values ranging from $q_{\rm FIR} = 2.0 - 3.1$, with a median of 2.3 and $1\sigma$ dispersion of 0.3"]
+- result: Delta MS for median depletion time 250 Myr and M_star = 10^10.75 = 0.32 ± not stated dex [Intrinsic IR luminosities of highly-mag…: "a median depletion time and stellar mass (250 Myr and $M_\star = 10^{10.75}~M_\odot$) yields $\Delta {\rm MS} = 0.32$"]
+- result: Magnification at the peak cross-section versus R_0 = mu(R_0) about 2.9522 / R_0 ± not stated dimensionless [Connection of lensing halo mass to magn…: "are found to occur at $\mu(R_0) \approx 2.9522 / R_0$"]
+- limitation (authors): Statistical magnification uncertainties may understate larger systematic uncertainties (mis-identified images, mass parameterisation) [Total magnification factors: "we caution that these statistical values can underestimate larger systematic"]
+- limitation (authors): Size measurement does not deconvolve the distorted source-plane beam and is best done in the visibility plane [Source-plane size: "As a caveat, this measurement is perhaps best made in the visibility-plane in order to deconvolve the effect of the synthesized beam."]
+- not stated (card): ALMA calibration: CASA/pipeline version, flux/bandpass/phase calibrators, flux-scale uncertainty, any self-calibration, and whether archive products were used as delivered; ALMA imaging recipe: tclean parameters beyond natural weighting (cell, image size, mask, threshold, niter, uv-taper, primary-beam correction), which images were fed to LENSTOOL; Which of the four listed ALMA projects supplies …
+
+### 2019A&A...624A.138Y: CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP> line and dust emission in a z = 3.63 strongly lensed starburst merger at sub-kiloparsec scales (2019; high_z_galaxies; observational_alma_primary)
+- question: What are the spatial and kinematic structure, dust and gas content (CO, H2O, H2O+) of the lensed SMG G09v1.97 at sub-kpc scales in the source plane, and is it a merger?
+- step 3: Lens model from dust continuum
+  - method: Joint fit of 1.94 and 0.87 mm images with two SIE deflectors and two exponential-profile source components; image-plane fit [4.1 Fitting the dust continuum emission: "we used the 1.94 and 0.87 mm dust continuum images (Fig. [1](#fig:g09-image)) to constrain simultaneously the mass distribution (SIE model) of G1 and G2 and the dust emission"]
+  - software: sl_fit
+  - parameter: Priors: Einstein radii uniform [0.1,1.1'']; axis ratios Normal(0.5,0.2); source positions uniform ±0.2''; source axis ratio uniform [0.1,0.9]; Reff Normal(0.1'',0.03'') in [0,0.2''] [4.1 Fitting the dust continuum emission: "The prior on both Einstein radii is uniform in the range $[0.1\ensuremath{''},1.1\ensuremath{''}]$."]
+  - assumption: Both source components have constant magnification across SED; deflectors at z=0.626 and 1.002 [4.1 Fitting the dust continuum emission: "each of the two background components has a constant magnification across its entire far-IR spectral energy distribution (SED)"]
+  - fitting: MCMC Metropolis-Hastings; median and 68% intervals [4 Lens Modeling: "implementing the standard Metropolis-Hastings algorithm"]
+  - validation: Residuals <2.5 sigma; PyAutoLens pixelized reconstruction converged to same model [4.1 Fitting the dust continuum emission: "The analysis converges to the same lens model and reconstructs a source galaxy with the same global structure as the double-disk model"]
+- step 4: Source-plane line cube reconstruction
+  - method: Cube binned into 10 velocity bins of 105 km/s (−478 to 467); fixed mass model; one elliptical exponential per bin; H2O+ in 2 bins [4.2 Fitting the CO and H2O Line Emission: "the data cube was binned into 10 velocity channel bins of 105 km s$^{-1}$ from $-$478 to 467 km s$^{-1}$"]
+  - software: sl_fit
+  - assumption: CO and H2O emission identical up to flux normalization [4.2 Fitting the CO and H2O Line Emission: "we assume that, up to a normalizing flux constant, the emission is identical between the ${\mathrm{CO}}(6\text{--}5)$ and H~2~O($2_{11}\text{--}2_{02}$) lines"]
+  - fitting: Same priors as continuum model; 10x7 parameters [4.2 Fitting the CO and H2O Line Emission: "We thus fit for the 10$\times$7 parameters defining the source emission"]
+  - validation: Image-plane moment maps and per-channel residuals; image vs source-plane moment maps match [5.2 Kinematic structure: "The moment maps from the image and source plane match very well, suggesting that our lens model is robust."]
+- step 5: Morphology and kinematics in source plane
+  - method: Three-disk IMFIT of CO moment-0 map; inclination from axis ratio with q0=0.2; 3DBarolo tilted-ring test; PV diagrams [5.1 Morphology: "we performed a fit to the 0$^{\rm th}$ moment map of ${\mathrm{CO}}(6\text{--}5)$ in the source plane with a disk model using `IMFIT`"]
+  - software: IMFIT, 3DBarolo
+  - parameter: q0 = 0.2 [5.1 Morphology: "Choosing a typical value of $q_0=0.2$ for disk galaxies"]
+  - assumption: R and B are thin disks [5.1 Morphology: "Assuming that both R and B are thin disks, the inclination angle can be derived"]
+  - fitting: chi2 minimization; bootstrap uncertainties of 10% [5.1 Morphology: "Using bootstrap resampling, the uncertainties from the fit are determined with uncertainties of 10%."]
+  - validation: Residuals <1% of emission [5.1 Morphology: "maximum differences are less than 1% of the emission"]
+- result: Total magnification (dust) = 10.3 ± 0.5 dimensionless [4.1: "$\mu_{\rm tot}$ = $10.3\pm 0.5$"]
+- result: Compact dust Reff = 0.63 ± 0.15 kpc [4.1: "$R_{\rm eff,\,1}$ = $0.63 \pm 0.15\, {\rm kpc}$"]
+- result: Extended dust Reff = 1.37 ± 0.05 kpc [4.1: "$R_{\rm eff,\,2}$ = $1.37 \pm 0.05\, {\rm kpc}$"]
+- result: Einstein radius G1 = 0.39 ± ±0.01 arcsec [4.1: "Einstein radius of $0.39\ensuremath{''} ^{+0.01}_{-0.01}$ for G1"]
+- result: Einstein radius G2 = 0.63 ± ±0.01 arcsec [4.1: "$0.63\ensuremath{''}^{+0.01}_{-0.01}$ for the more distant G2"]
+- result: Semi-major half-light radius R and B = 1.2 and 0.4 ± 10% kpc [5.1: "of 1.2 kpc and 0.4 kpc, are separated by a projected distance of 0.18$''$ (1.3 kpc)"]
+- result: Inclinations R, B = 82, 66 ± not stated deg [5.1: "we infer inclinations for R and B of 82$^\circ$ and 66$^\circ$, respectively"]
+- limitation (authors): Source-plane uncertainties may be underestimated; mass-sheet degeneracy not explored [Appendix: "the uncertainties of $\mu$ (and on the intrinsic source flux and size) do not account for the effect of mass-sheet degeneracy"]
+- not stated (card): Number of tclean iterations, thresholds, masks and cell/image sizes; Self-calibration solution intervals and number of rounds; Line-free channel selection; Uv-range or taper settings; Source-plane flux-binning details and MCMC chain length/convergence; Details of the modified blackbody SED fit (fitted data points, priors, two-temperature split); Deflector optical positions used for priors; Exact …
+
+### 2020MNRAS.494.5542R: Full of Orions: a 200-pc mapping of the interstellar medium in the redshift-3 lensed dusty star-forming galaxy SDP.81 (2020; high_z_galaxies, milky_way_ism; observational_alma_primary)
+- question: Map the ISM of the lensed z=3.042 DSFG SDP.81 at ~200 pc resolution: spatial distribution of FIR continuum, CO and [C II]; gas cooling budget; PDR conditions (FUV field, density, surface temperature) and the origin of the [C II]/FIR deficit
+- step 3: Reconstruct source-plane maps by visibility-plane lens modelling
+  - method: Fixed parametric SIE+shear lens model; source on an adaptive Delaunay triangular grid; penalty function combining visibility chi^2 with source-plane regularization; lambda_S re-optimized per dataset (and per [C II] channel) [3.2 Lens modelling: "To summarize, this technique uses a parametric lens model, while the source is reconstructed on an adaptive triangular grid obtained via the Delaunay tessellation."] [3.2 Lens modelling: "Keeping the lens mass model fixed, we re-optimize for the offset between the lens center and phase-tracking centre"]
+  - software: lens-modelling code of Rybak et al. 2015a (not named)
+  - parameter: Sky-plane pixel size 25 mas; every second pixel cast back, so beam sub-sampled by ~4 [3.2 Lens modelling: "The sky-plane pixel size is set to 25 mas"]
+  - parameter: Primary beam approximated by an elliptical Gaussian [3.2 Lens modelling: "The primary beam response is approximated by an elliptical Gaussian."]
+  - parameter: Visibility noise from the scatter over 10-minute intervals rather than the Sigma column [3.2 Lens modelling: "rather than from the Sigma column of the ALMA Measurement Set files"]
+  - parameter: [C II] reconstructed in 62.50 MHz (~40 km/s) channels with lambda_S optimized per channel; moment-0 and moment-1 maps made (pixels with SNR <= 1 masked for moment 1) [3.3.2 [CII] emission: "We frequency-averaged the line into channels 62.50 MHz ($\sim40$ km s$^{-1}$) wide"] [3.3.2 [CII] emission: "For the moment-one map, we mask pixels with SNR$\leq$1 in each channel before calculating the velocity map."]
+  - parameter: Reconstructions re-sampled onto a Cartesian grid of 200x200 pc pixels [3.3 Source-plane reconstructions: "we re-sample the reconstructed source onto a Cartesian grid with 200$\times$200 pc pixels"]
+  - assumption: Lens mass model fixed to R15a (SIE with external shear) [3.2 Lens modelling: "which follows a singular isothermal ellipsoid profile with an external shear component"]
+  - fitting: Minimization of a penalty function: visibility-space chi^2 plus source-plane regularization term lambda_S (R_s s)^T R_s s; no sampler or priors stated [3.2 Lens modelling: "with a source-plane regularization to constrain the problem and prevent noise-fitting"]
+  - validation: Residuals in the dirty-image plane; mock-data lens-modelling tests (Appendix B) recover mean surface brightness within 10-15 per cent (~20 per cent for CO(3-2)) [3.3 Source-plane reconstructions: "we further assess the reliability of the source-plane reconstruction by performing our lens modelling analysis on mock datasets in Appendix"] [3.3 Source-plane reconstructions: "with the mean surface brightness recovered within 10–15 per cent for most datasets ($\sim$20 per cent for CO(3–2))"]
+- step 4: Estimate source-plane uncertainties and magnifications
+  - method: Noise-realization Monte Carlo for per-pixel uncertainty; integrated magnification from forward-lensing source pixels above S/N thresholds; systematic error from mock uniform and FIR-like sources [3.2 Lens modelling: "drawing 1000 random realizations of the noise map given the"] [3.2 Lens modelling: "forward-lens them into the image-plane and calculate the corresponding magnification and uncertainty for each S/N threshold"]
+  - software: lens-modelling code of Rybak et al. 2015a (not named)
+  - parameter: 1000 noise realizations; S/N thresholds 1, 2, 3 averaged for the magnification [3.2 Lens modelling: "we take all the source-plane pixels with S/N $\geq$1, 2 and 3"]
+  - parameter: Mock sources: uniform ellipse 3.4x2.4 kpc and an FIR-luminosity-map source, forward-lensed with the SDP.81 lens model [Appendix B: "a uniform surface-brightness elliptical source with major/minor axis of 3.4$\times$2.4 kpc"]
+  - validation: Fractional systematic error on mean surface brightness: 65 per cent CO(3-2), 30 per cent CO(10-9), ~10 per cent for continuum, [C II] and CO(5-4)/(8-7) [Appendix B: "the fractional uncertainty is 65 and 30 per cent, respectively"]
+- step 5: Fit the dust SED and derive L_FIR, T_dust and SFR
+  - method: Optimally-thin modified black body fitted to ALMA Bands 4/6/7/8 and Herschel PACS/SPIRE photometry; resolved fit of T_dust only on Bands 6, 7, 8 source-plane maps; SFR from the Kennicutt (1998) relation [4.1.1 Global dust SED: "and an optically-thin modified black-body SED"] [4.1.2 Resolved dust SED: "We therefore adopt $\beta=1.8$ derived from the spatially-integrated SED fit, and fit for $T_\mathrm{dust}$ only."]
+  - parameter: Uniform magnification adopted for 160 um to 1.3 mm continuum; Herschel 160-500 um emission assumed to follow the Band 8 surface brightness distribution [Table 1 caption: "for our analysis, we assume all the 160 to 500-$\mu$m emission to follow the Band 8 surface brightness distribution."]
+  - parameter: Resolved test of T_dust fixed to 60 K and 80 K, fitting only the normalization [4.1.2 Resolved dust SED: "We do this by fixing $T_\mathrm{dust}$ to 60 and 80 K, respectively, and optimizing for the normalization ($\propto M_\mathrm{dust}$) only."]
+  - parameter: FIR-bright region defined as Sigma_SFR >= 50 Msun/yr/kpc^2 [4.1.1 Global dust SED: "we will refer to the region with $\Sigma_\mathrm{SFR}\geq 50$ M$_\odot$ yr$^{-1}$ kpc$^{-2}$ as the *FIR-bright region*"]
+  - assumption: Optically thin dust emission; uniform T_dust and beta; Salpeter IMF; CMB effects negligible (<=0.1 K, <=0.1 dex) [4.1.1 Global dust SED: "we consider the CMB effects to be negligible for SDP.81"] [4.1.1 Global dust SED: "the CMB effect on $T_\mathrm{dust}$ is $\leq0.1$ K, while the inferred $L_\mathrm{FIR}$ is biased by $\leq$0.1 dex"]
+  - validation: Compared with earlier SDP.81 estimates and the ALESS median T_dust; resolved fit repeated on Cleaned images gives consistent results [4.1.2 Resolved dust SED: "Repeating the SED-fitting on the Cleaned Bands 6, 7 and 8 images (thus eliminating any lens-modelling systematics) yields results consistent with the source-plane analysis."]
+- step 6: Gas cooling budget, CO SLED and CO-FIR correlations
+  - method: Compare source-plane [C II], [O I] and CO line luminosities; unobserved CO lines scaled with Class I ULIRG ratios; Pearson correlation of CO or [C II] with FIR per pixel (SNR >= 3) with 1000 Monte Carlo realizations [4.2.1 [CII] dominates the gas cooling b…: "assuming that the CO line ratios in SDP.81 match CO ratios of the Class I ULIRGs from (cite: Rosenberg2015)"] [4.2.2 CO spectral energy distribution: "for each pixel with SNR$\geq$3 in both tracers"]
+  - parameter: CO(1-0), CO(7-6) and CO(9-8) assumed to follow the spatial distribution of CO(3-2), (8-7) and (10-9) [4.2 Emission lines: "we assume that the CO(1–0), (7–6) and (9–8) lines follow the same spatial distribution as the CO(3–2), (8–7) and (10–9) lines, respectively"]
+  - assumption: [O I] lines assumed to follow the FIR continuum surface brightness distribution [4.2.1 [CII] dominates the gas cooling b…: "Assuming both lines follow the FIR continuum surface brightness distribution, we obtain the de-lensed source-plane luminosities"]
+  - validation: CO SLED well reproduced (chi^2 <= 1) by PDRToolbox models without mechanical heating [4.2.2 CO spectral energy distribution: "As the SDP.81 CO ladder is well-reproduced ($\chi^2\leq1$) by the PDRToolbox models which do not include mechanical heating"]
+- step 8: Measure the global and resolved [C II]/FIR ratio and its slope with Sigma_SFR
+  - method: Ratio of source-plane [C II] and FIR luminosities, globally and per 200 pc pixel; log-log slope vs Sigma_SFR by orthogonal distance regression [4.3 [CII]/FIR ratio and deficit: "using orthogonal distance regression, similar to the slope of $-0.7$ derived by (cite: Lamarche2018) for SDP.11"]
+  - fitting: Orthogonal distance regression of log Sigma_SFR vs log([C II]/FIR) [4.3 [CII]/FIR ratio and deficit: "using orthogonal distance regression"]
+  - validation: Compared with Smith et al. 2017 trend and other high-z resolved studies; isolated outlying low-ratio pixels judged lens-modelling artifacts [4.3 [CII]/FIR ratio and deficit: "these are likely lens-modelling artifacts"]
+- result: Median source-plane resolution = ~30 mas (~200 pc) ± not stated mas / pc [3.3 Source-plane reconstructions: "The median source-plane resolution is $\sim$30 mas, which corresponds to $\sim$200 parsec"]
+- result: Dust temperature (global SED) = 35 ± 4 K [4.1.1 Global dust SED: "We obtain $T_\mathrm{dust}=35\pm4$ K and $\beta=1.8\pm0.3$ and a (magnification-corrected) FIR luminosity (8-1000 $\mu$m) $L_\mathrm{FIR}=(2.4\pm0.5)\times10^{12}$ L$_\odot$."]
+- result: Dust emissivity index beta = 1.8 ± 0.3 dimensionless [4.1.1 Global dust SED: "We obtain $T_\mathrm{dust}=35\pm4$ K and $\beta=1.8\pm0.3$ and a (magnification-corrected) FIR luminosity (8-1000 $\mu$m) $L_\mathrm{FIR}=(2.4\pm0.5)\times10^{12}$ L$_\odot$."]
+- result: FIR luminosity (8-1000 um, magnification-corrected) = 2.4e12 ± 0.5e12 Lsun [4.1.1 Global dust SED: "We obtain $T_\mathrm{dust}=35\pm4$ K and $\beta=1.8\pm0.3$ and a (magnification-corrected) FIR luminosity (8-1000 $\mu$m) $L_\mathrm{FIR}=(2.4\pm0.5)\times10^{12}$ L$_\odot$."]
+- result: Star-formation rate = 410 ± 90 Msun/yr [4.1.1 Global dust SED: "which yields SFR = 410$\pm$90 M$_\odot$ yr$^{-1}$."]
+- result: Spatially integrated [C II]/FIR luminosity ratio = 1.5e-3 ± 0.3e-3 dimensionless [4.3 [CII]/FIR ratio and deficit: "FIR luminosity ratio of $(1.5 \pm 0.3)\times 10^{-3}$"]
+- result: [C II]/FIR slope vs Sigma_SFR = -0.75 ± 0.01 dimensionless [4.3 [CII]/FIR ratio and deficit: "slope of $-0.75\pm0.01$, using orthogonal distance regression"]
+- result: Pearson correlation of CO(3-2), CO(5-4), CO(8-7), CO(10-9) with FIR = 0.401, 0.847, 0.821, 0.664 ± 0.010, 0.006, 0.006, 0.09 dimensionless [4.2.2 CO spectral energy distribution: "We find $R_\mathrm{CO(3-2)/FIR}=0.401\pm0.010$, $R_\mathrm{CO(5-4)/FIR}=0.847\pm0.006$, $R_\mathrm{CO(8-7)/FIR}=0.821\pm0.006$ and $R_\mathrm{CO(10-9)/FIR}=0.664\pm0.09$."]
+- result: Resolved [C II]/FIR minimum in FIR-bright clumps = ~(2-3)e-4 ± not stated dimensionless [4.3 [CII]/FIR ratio and deficit: "down to $\sim(2-3)\times10^{-4}$ in the two FIR-bright clumps"]
+- result: Fraction of [C II] luminosity from Sigma_SFR <= 10 Msun/yr/kpc^2 = ~50 per cent ± not stated per cent [3.3.2 [CII] emission: "$\sim$50 per cent of the total \[C ii\] luminosity arises from regions with"]
+- limitation (authors): CO(3-2) has low S/N and must be interpreted carefully [3.3.3 CO(3-2) emission: "it must be interpreted carefully"]
+- limitation (authors): Agreement of the PDR models with line ratios is largely due to large systematic uncertainties on CO(3-2) and CO(10-9) reconstructions [6 Conclusions: "We emphasise that the agreement between the observed line ratios and the simplistic PDR models is largely due to significant systematic uncertainties on the CO(3–2) and CO(10–9) source reconstructions."]
+- limitation (authors): Semi-infinite uniform-density slab models are likely too simplistic for a clumpy ISM [5.4.1 Caveats and limitations: "Our semi-infinite, uniform-density slab models (even after adjusting for multi-side illumination) are likely too simplistic"]
+- not stated (card): The lens-modelling code itself is not named or stated as public; its regularization form (R_s), the converged lambda_S values and the optimizer settings are not given; Full lens mass model parameters (SIE and shear values) are only referenced to R15a; Flux, bandpass and phase calibrators, and any self-calibration, for the Band 3, Band 8 and LBC data are not given; CASA tasks and parameters used f…
+
+### 2015ApJ...812...43B: HerMES: ALMA Imaging of Herschel-selected Dusty Star-forming Galaxies (2015; high_z_galaxies; observational_alma_primary)
+- question: How does gravitational lensing and multiplicity affect the properties of the brightest Herschel-selected DSFGs, and what do the lens models imply for the bright end of the intrinsic DSFG number counts?
+- step 3: Visibility-plane lens modeling
+  - method: uvmcmcfit: elliptical Gaussian sources, SIE lenses, ray tracing, compare model visibilities to data [3.1 Model Fitting Methodology: "Sources are assumed to be elliptical Gaussians that are parameterized by the following six free parameters"]
+  - software: uvmcmcfit, emcee
+  - parameter: 512 walkers; burn-in 500-1000 iterations; final 10 iterations [3.1 Model Fitting Methodology: "We employ a “burn-in” phase with 512 walkers and 500-1000 iterations"]
+  - parameter: uniform priors; theta_E 0.1-6 arcsec; q_lens>0.3; q_s>0.2; r_s 0.01-1.5 arcsec [3.1 Model Fitting Methodology: "The axial ratios of the lenses and sources are restricted to be $q_{\rm lens} > 0.3$ and $q_{\rm s} > 0.2$."]
+  - assumption: Additional lenses at same redshift as primary; maximal-lensing Einstein radii fixed for weakly lensed systems [3.1 Model Fitting Methodology: "We assume secondary, tertiary, etc., lenses are located at the same redshift as the primary lens."]
+  - fitting: emcee affine-invariant ensemble MCMC with Gaussian likelihood in visibility plane [3.1 Model Fitting Methodology: "We use emcee (cite: Foreman-Mackey:2013yq) to sample the posterior probability density function (PDF) of our model parameters."]
+  - validation: Bolton ray tracing tested against Gravlens; residual maps inspected [3.1 Model Fitting Methodology: "tests of the Bolton ray-tracing routine indicate it produces results consistent with Gravlens"]
+- step 4: Compute magnifications and de-lens sample
+  - method: mu870 = ratio of lensed to intrinsic flux; KS tests of apparent vs intrinsic distributions; multiplicity rate [3.1 Model Fitting Methodology: "This is done simply by taking the ratio of the total flux density in the lensed image of the model ($S_{\rm out}$) to the total flux density in the unlensed, intrinsic source model ($S_{\rm in}$)."]
+- step 6: Test intrinsic number counts via magnification statistics
+  - method: Predict <mu870> and P(mu>mu_min) for ALESS and COSMOS broken power-law counts; compare with data via logistic regression [5.2 Comparing Models with Data: "Instead of computing a running average of the data, we show a logistic regression fit to the data (cite: scikitlearn)."]
+  - software: Scipy, scikit-learn
+  - parameter: z_mu=1.5, sigma_z=0.2; SIS+NFW lenses [5.1 Statistical Predictions: "where $a_z = 1 + z$, $z_\mu = 1.5$ (to reflect the relatively blue SPIRE colors of the sample), and $\sigma_z = 0.2$."]
+  - assumption: flat cosmology H0=69, Om=0.29 [1 Introduction: "we assume a flat cosmology with $H_0=$69 km s$^{-1}$ Mpc$^{-1}$, $\Omega_{\rm m_0} = 0.29$"]
+  - fitting: logistic regression [4.2 Comparing Models with Data: "Instead of computing a running average of the data, we show a logistic regression fit to the data"]
+- result: Sources with mu870>1.1 = 36 of 62 ± not stated sources [abstract: "36 experience significant amplification ($\mu>1.1$)"]
+- result: Multiplicity rate = 20/29 (69%) ± not stated percent [4.2 Multiplicity in the ALMA Sample: "We find that 20/29 *Herschel* DSFGs break down into multiple ALMA sources, implying a multiplicity rate of 69%."]
+- result: Median S870 drop due to lensing = 1.6 ± KS p=0.044 dimensionless [4.1 De-lensing: "the median flux density in the *Herschel*-ALMA sample drops by a factor of 1.6 when lensing is taken into account"]
+- result: Brightest intrinsic source S870 (HADFS11.0) = 17.5 ± 0.4 mJy [4.1 De-lensing: "with an intrinsic flux density of $S_{870} = 17.5 \pm 0.4\,$mJy"]
+- result: Median mu870 of lensed subset = 1.6 ± not stated dimensionless [7 Conclusions: "The median amplification in the subset that experiences lensing is $\mu_{870} = 1.6$."]
+- result: Transition flux S_trans from data = 24 ± 3 mJy [5.2 Comparing Models with Data: "the logistic regression fit yields $S_{\rm trans} = 24\pm3\,$mJy"]
+- result: S_trans for ALESS and COSMOS counts = 37 and 69 ± not stated mJy [5.2 Comparing Models with Data: "the models based on the ALESS and COSMOS number counts yield $S_{\rm trans} = 37\,$mJy $S_{\rm trans} = 69\,$mJy, respectively"]
+- limitation (authors): Resolution may cause over-predicted sizes and under-predicted magnifications; optically faint lenses may be missed [3.1 Model Fitting Methodology: "in some cases the lens models may moderately over-predict the intrinsic sizes of the lensed galaxies and hence under-predict the magnification factors"]
+- not stated (card): Line-free channels/continuum definition and clean thresholds, cell and image size; Which targets received selfcal and solint; Exact MCMC convergence criteria; final phase of only 10 iterations; Lens position/Einstein radius fixings are given per object but the SMA data and fits for the combined sample are not tabulated here; Details of logistic regression and running-average smoothing parameters;…
+
+### 2023ApJ...954..197I: ALMA Measurement of 10 kpc Scale Lensing-power Spectra toward the Lensed Quasar MG J0414+0534 (2023; agn_and_quasars, cosmology, high_z_galaxies; observational_alma_primary)
+- question: Measure the 10 kpc-scale lensing power spectra for gravitational potential, astrometric shift, and convergence perturbations towards the quadruply lensed quasar MG J0414+0534 to test small-scale dark matter structures and CDM predictions.
+- step 2: Align multi-wavelength astrometry and fit smooth background lens models (Type A and Type B)
+  - method: Rotate and translate the VLBA 5 GHz map by 1.76 deg (East of North) to match HST core positions, align the ALMA robust=-1 map to the VLBA p and q gravitational center in A1, and fit smooth lens models: Type A (SIE for G, ES, CIS for X) and… [Smooth Model: "In order to match the VLBA positions to the HST positions, we translated and rotated the coordinates of the VLBA map to best-fit the positions of lensed q to the HST positions in the OPT/NIR band. The obtained rotation angle is $1.76^\circ$ (East of North)."] [Smooth Model: "Then our ALMA maps were rotated by the same angle (assuming a perfect alignment with the coordinates in the VLBA image) and the position of a local peak in image A1 was placed on the brightest image A1 of the lensed gravitational center of p and q in the corresponding VLBA data"]
+  - parameter: VLBA position error = 2 mas; G centroid error = 5 mas; X and Y centroid error = 0.1'' [Smooth Model: "We assumed that the errors in the VLBA positions are $2\,\textrm{mas}$, which is the mean size of the synthesized beam."] [Smooth Model: "Considering a possible misalignment of $\sim 2\,$mas, the positional error of the centroid of G was assumed to be $5\,$mas. The positional error of X and Y were assumed to be $0.1\ensuremath{''}$."]
+  - assumption: VLBA 5 GHz component q corresponds to the quasar core; ellipticity priors e_G = 0.2 +/- 0.2 and e_Y = 0.5 +/- 0.2 for Type B. [Smooth Model: "Second, as the position of the radio emission at 5\, GHz is very close to the OPT/NIR emission of the quasar core ($<2\,$mas), we can consider component q as the quasar core rather than a jet (cite: inoue2020)."] [Results of ALMA Observations, Smooth Mo…: "We assume a conservative error value $\delta e_\textrm{Y}=0.20$ for the ellipticity of Y. To include these constraints in fitting, we add a term"]
+  - fitting: Chi-squared minimization (chi^2_tot = chi^2_flux + chi^2_posG + chi^2_posX + chi^2_posY + chi^2_posq + chi^2_e) [Table 3: "| Type | $\chi^2_{\textrm{flux}}$ | $\chi^2_{\textrm{posG}}$ | $\chi^2_{\textrm{posX}}$ | $\chi^2_{\textrm{posY}}$ | $\chi^2_{\textrm{posq}}$ | $\chi^2_{e}$ | $\chi^2_{\textrm{tot}}/$dof | A2/A1 | B/A1 | C/A1 | |"]
+  - validation: Checked residual positional differences between ALMA local peaks and VLBA gravitational centers of p and q (2.3, 4.0, 1.4 mas for A2, B, C). [Smooth Model: "The differences between local peaks in the ALMA image and the gravitational centers of p and q for A2, B, and C were 2.3, 4.0, and $1.4\,\textrm{mas}$, which are smaller than the pixel size of $5\,$mas used in the continuum maps."]
+- step 3: Validate the source-plane chi^2 formalism and weighting schemes via mock ALMA simulations
+  - method: Construct a parametric mock source (core + 2 bright spots + 2 elliptical Gaussians for dust) lensed by the Type A model plus a 36-mode random Gaussian potential perturbation; simulate Cycle 2 and Cycle 4 visibilities with CASA simobserve, … [Generation of Mock Data: "Third, we added a random Gaussian perturbation consisting of $4\times 3^2=36$ discrete modes to the potential of the background lens model."] [Mock Observation: "We carried out ALMA mock continuum observations of the lensed ’true’ source using the $simobserve$ task in CASA."]
+  - software: CASA, simobserve, tclean
+  - parameter: N^2 = 36 modes (22 intermediate modes with 3.5 < sqrt(m^2+n^2) < 6.5), L = 3.6'', source mesh = 6.66 mas or 13.3 mas, |mu| <= 30 [Mock Analysis: "For instance, for $N=6$, we use 22 intermediate-frequency modes for analysis of perturbation (Figure 9) in our mock simulations."] [Mock Analysis: "In this mock analysis, we used the same square boundary with a side length of $L=3.6\ensuremath{''}$ and $N=6$."]
+  - assumption: Dirichlet boundary condition (delta psi = 0) on square of side L; peak-subtracted CLEAN intensities scaled by 1/1.6 to correct ~60% CLEAN boost. [Fourier Mode Expansion: "to discretise the potential, we impose a Dirichlet boundary condition $\delta \psi=0$ at the boundary of a square R with a side length of $L$"] [Mock Observation: "Therefore, to test our mock analysis, we multiplied the mock observed intensities for peak-subtracted lensed images by a constant of $1/1.6$."]
+  - fitting: Regularized source-plane chi^2 minimization (chi^2_reg = chi^2_ext + chi^2_core + chi^2_flux + R_s) with Newton's method for ray-tracing [Regularization of Fitting: "For a given set of smoothing parameters $\delta \psi_0, \delta \alpha_0$, and $\delta \kappa_0$, we minimize a regularized $\chi^2_{\textrm{reg}}$ defined as $\chi^2_{\textrm{reg}} = \chi^2+R_s,$"] [Generation of Mock Data: "Using the first guess values, the corresponding accurate points in the lens plane was computed using Newton’s method."]
+  - validation: Compared reconstructed convergence maps and power spectra in 3 wavenumber bins against true input values, demonstrating that magnification weighting is better for real-space map fidelity while homogeneous weighting has lower relative error… [Mock Result: "In contrast, the homogeneous weighting gave much better results than the magnification weighting in reconstructing the lensing power spectra (Table 2). The relative errors between the mean value of the reconstructed power spectra are $40$ to $80$ percent for the magnification weighting and $20$ to $50$ percent for the…"]
+- step 4: Reconstruct potential perturbations and measure lensing power spectra from the ALMA image in the source plane
+  - method: Subtract bright core components p and q from the ALMA continuum map (robust=0) using the CASA synthesized elliptical Gaussian beam with c_p + c_q = 0.95 at A2 and MIR flux ratios at A1, B, C; construct 6.66 mas source-plane meshes on pixel… [Source Plane Fit to ALMA image: "To subtract lensed images of bright core components p and q from a continuum image, we used the best-fitted elliptical Gaussian beam obtained from CASA."] [Source Plane Fit to ALMA image: "We constructed multi-scale meshes in the source plane in a similar manner to our mock analysis but the mesh sizes was fixed to be $6.66$\,mas."]
+  - software: CASA
+  - parameter: N^2 = 36 Fourier modes, L = 3.6'' centered at (-0.4'', 0.3'') and L = 4.2'' centered at (-0.7'', 0.3''), mesh size = 6.66 mas, S/N > 3.8 sigma, c_p + c_q = 0.95 [Source Plane Fit to ALMA image: "we considered two types of models to describe the potential perturbation due to subhalos and LOS structures: 36 modes with $L=3.6\ensuremath{''}$ centered at $(-0.4\ensuremath{''},0.3\ensuremath{''})$. To test the effect of possible masses in the vicinity of object Y, we also considered another model with 36 modes wit…"] [Source Plane Fit to ALMA image: "$c_\textrm{p}+c_\textrm{q}$ was also constrained to be 0.95."]
+  - assumption: Weak lensing perturbation regime (|mu| <= 30); spatial pixel error correlations in the source plane are negligible (off-diagonal covariance <= 10%); Dirichlet boundary condition on square of side L. [Source Plane Fit to ALMA image: "Using the data set, we found that the absolute values of the non-diagonal components in the covariance matrix of the difference in the weighted sum of the de-lensed source intensity is $\lesssim 10$ per cent of the diagonal components."]
+  - assumption: Errors in source-plane intensity differences scale with S/N to the power beta, adjusted so unperturbed chi^2/dof ~ 2.8-3.0. [Source Plane Fit to ALMA image: "Before performing $\chi^2$ analysis, we adjusted $\beta$ to satisfy the condition $\chi^2/\textrm{dof} \sim 3$ for an unperturbed model."] [Source Plane Fit to ALMA image: "Similar to our mock analysis, the constant $\beta$ was chosen to satisfy $\chi^2/\textrm{dof}=2.8$ in the initial model without any perturbation."]
+  - fitting: Regularized chi^2 minimization in the source plane; 1-sigma power spectrum errors computed from >10^6 random Gaussian potentials with Delta chi <= 1 and R_s/dof smaller than best-fit. [Source Plane Fit to ALMA image: "The $1\,\sigma$ errors of the powers were calculated using random Gaussian potentials that give $\varDelta \chi \le 1$ with the smoothing term $R_s/\textrm{dof}$ smaller than that for the best-fitted model."] [Mock Result: "$1\,\sigma$ errors are calculated by considering $>10^6$ sets of random Gaussian potentials that give $\varDelta \chi \le 1$ with the smoothing term smaller than that for the best-fitted model."]
+  - validation: Checked a posteriori fit to VLBA jet components p, q, r, s in the lens plane (chi^2_pos/dof_pos = 0.80 for Type A with robust=0) and compared Type A and Type B power spectra across angular scales. [Source Plane Fit to ALMA image: "the reduced $\chi^2$ for the best-fit Type A model based on the ALMA (Cycle 2 + Cycle 4) image reconstructed with $\textit{robust}=0$, magnification weighting and $L=3.6\ensuremath{''}$ or $L=4.2\ensuremath{''}$ is $\chi^2_{\textrm{pos}}/\textrm{dof}_\textrm{pos}=22.5/(36 - 8)=0.80$."]
+- step 5: Verify lens model perturbations and Object Y via visibility-plane fitting and lens-plane VLBA fitting
+  - method: Average ALMA visibilities in 60s bins and 4 SPWs using CASA 6.4, bin onto polar grids (delta r = 100 m, azimuthal spacing delta theta), and fit overall amplitude scaling factors a (point sources) and b (FFTed zero-padded 18''x18'' extended… [Procedure of fitting visibilities to th…: "First, we averaged visibility data in each channel bin with an integration time of 60 seconds using CASA 6.4."] [Procedure of fitting visibilities to th…: "In our analysis, we used visibilities that are averaged on grids (denoted by $J$) in the polar coordinates $(r,\theta)$ with a radial bin size of $\delta r=100\,$m and an azimuthal size of $\delta \theta$ in the visibility plane $(u,v)$"]
+  - software: CASA
+  - parameter: 60 s time averaging, 4 SPWs, polar grid delta r = 100 m, delta theta = 1 deg to 90 deg (optimal 10 deg; <= 1.5 deg for Object Y), zero-padded 18.0'' box (from 6.0'', N_c = 1200, 0.005'' pixels) [Lens Plane Fit to ALMA Visibilities: "For $1^\circ \lesssim \delta \theta \lesssim 90^\circ$, our visibility fitting showed that the perturbed model fits the ALMA data better than the corresponding unperturbed smooth model (Figure 27). We found that the optimal value of azimuthal separation that gives the best-fit is $\delta \theta =10^\circ$."] [Object Y: "Therefore, in order to retain the phase information of object Y, we needed to restrict the azimuthal separation of polar grids to $\delta \theta \lesssim \arctan{(40/1500)}=1.5\ensuremath{^\circ}$."]
+  - assumption: Visibility noise variance estimated from half the squared difference between adjacent SPWs. [Appendix, Procedure of fitting visibili…: "In other words, the variance in the subtracted visibilities in a particular bin were assumed to be twice the true noise variance"]
+  - fitting: Chi-squared minimization in the visibility plane (chi^2_v) and regularized chi-squared minimization in the lens plane for VLBA positions. [Appendix, Procedure of fitting visibili…: "Finally, a statistic $\chi_v^2$ ($\chi^2$ in the visibility plane) can be written as"] [Lens Plane Fit to VLBA Positions: "To do so, we minimized $\chi^2$ for the positions of G, X, and the VLBA jet components and MIR flux ratios plus the smoothing term $R_s$ defined in equation (10)."]
+  - validation: Compared visibility chi^2 between perturbed, unperturbed, and null models (and with A1/A2 core flux ratio fixed to unity), confirming that both point and extended components improve the fit. [Lens Plane Fit to ALMA Visibilities: "In order to have the evidence of improvement due to the extended source components, we fitted model visibilities in which the point source flux ratio of A1 to A2 is artificially fixed to be unity while the extended source components were intact."]
+- result: Convergence power (Delta_kappa) at angular scale ~1.1'' (l = 1.2 x 10^6, ~9 kpc) = 0.021-0.028 ± 1 sigma range dimensionless [Abstract: "the range of measured convergence, astrometric shift, and potential powers at an angular scale of $\sim 1.1\ensuremath{''}$ (corresponding to an angular wave number of $l=1.2\times 10^6$ or $\sim 9\,$kpc in the primary lens plane) within $1\,\sigma$ are $\varDelta_\kappa=0.021-0.028$, $\varDelta_\alpha =7-9\,$mas, and…"]
+- result: Astrometric shift power (Delta_alpha) at angular scale ~1.1'' (l = 1.2 x 10^6) = 7-9 ± 1 sigma range mas [Abstract: "the range of measured convergence, astrometric shift, and potential powers at an angular scale of $\sim 1.1\ensuremath{''}$ (corresponding to an angular wave number of $l=1.2\times 10^6$ or $\sim 9\,$kpc in the primary lens plane) within $1\,\sigma$ are $\varDelta_\kappa=0.021-0.028$, $\varDelta_\alpha =7-9\,$mas, and…"]
+- result: Gravitational potential power (Delta_psi) at angular scale ~1.1'' (l = 1.2 x 10^6) = 1.2-1.6 ± 1 sigma range mas^2 [Abstract: "the range of measured convergence, astrometric shift, and potential powers at an angular scale of $\sim 1.1\ensuremath{''}$ (corresponding to an angular wave number of $l=1.2\times 10^6$ or $\sim 9\,$kpc in the primary lens plane) within $1\,\sigma$ are $\varDelta_\kappa=0.021-0.028$, $\varDelta_\alpha =7-9\,$mas, and…"]
+- result: Intermediate-mode convergence power (Delta_kappa, Type A, L = 3.6'', l = (8.6 +/- 2.6) x 10^5) = 0.0079 ± +/- 0.0005 dimensionless [Table 5: "| A | hom. | 36 | $3.6\ensuremath{''}$ | $8.6\pm 2.6$ | $1.5\ensuremath{''}^{+0.64\ensuremath{''}}_{-0.35\ensuremath{''}}$ | $0.00070\pm0.00004$ | $0.0033\pm0.0002$ | $0.0079\pm0.0005$ | 1.2 | 0.12 | 18 |"]
+- result: Intermediate-mode convergence power (Delta_kappa, Type A, L = 4.2'', l = (7.4 +/- 2.2) x 10^5) = 0.0066 ± +/- 0.0003 dimensionless [Table 5: "| A | hom. | 36 | $4.2\ensuremath{''}$ | $7.4 \pm 2.2$ | $1.75\ensuremath{''}^{+0.75\ensuremath{''}}_{-0.40\ensuremath{''}}$ | $0.00072\pm 0.00003$ | $0.0030\pm0.0002$ | $0.0066\pm0.0003$ | 1.2 | 0.12 | 18 |"]
+- result: RMS convergence perturbation at quadruple images of q (delta_kappa_rms^q, Type A) = 0.017 ± +/- 0.005 dimensionless [Source Plane Fit to ALMA image: "For the four Type A models we analyzed, the rms of convergence perturbation $\delta \kappa_{\textrm{rms}}^q$ and that of shear perturbation $\delta \gamma_{\textrm{rms}}^q$ at the positions of the quadruple image of q are $0.017\pm 0.005$ and $0.010 \pm 0.002$, respectively."]
+- result: RMS shear perturbation at quadruple images of q (delta_gamma_rms^q, Type A) = 0.010 ± +/- 0.002 dimensionless [Source Plane Fit to ALMA image: "For the four Type A models we analyzed, the rms of convergence perturbation $\delta \kappa_{\textrm{rms}}^q$ and that of shear perturbation $\delta \gamma_{\textrm{rms}}^q$ at the positions of the quadruple image of q are $0.017\pm 0.005$ and $0.010 \pm 0.002$, respectively."]
+- result: Primary lens G effective Einstein radius b_G (Type A smooth model) = 1.094 ± not stated arcsec [Table 3: "| A | $1.094\ensuremath{''}$ | $(-0.0562\ensuremath{''}, 0.2654\ensuremath{''})$ | 0.307 | $-87.9\ensuremath{^\circ}$ | 0.0918 | $47.5\ensuremath{^\circ}$ | $(0.006\ensuremath{''},-0.009\ensuremath{''})$ | $0.219\ensuremath{''}$ | $(0.445\ensuremath{''},1.483\ensuremath{''})$ | $0.018\ensuremath{''}$ | |"]
+- result: Primary lens G effective Einstein radius b_G (Type B smooth model) = 1.107 ± not stated arcsec [Table 3: "| B | $1.107\ensuremath{''}$ | $(-0.0981\ensuremath{''}, 0.2254\ensuremath{''})$ | 0.280 | $-87.9\ensuremath{^\circ}$ | 0.0790 | $47.5\ensuremath{^\circ}$ | $(-0.001\ensuremath{''},-0.002\ensuremath{''})$ | $0.160\ensuremath{''}$ | $(0.316\ensuremath{''},1.490\ensuremath{''})$ | $0.019\ensuremath{''}$ | |"]
+- result: Visibility fit amplitude scaling parameters at delta_theta = 10 deg = a = 1.8, b = 0.42 ± a: +/- 1.5, b: +/- 0.39 a: mJy, b: dimensionless [Lens Plane Fit to ALMA Visibilities: "At $\delta \theta =10^\circ$, the coefficients of the point-source and extended source components in the perturbed model were $a=1.8\pm 1.5\,$mJy and $b=0.42\pm 0.39$."]
+- limitation (authors): The weak lensing perturbation formalism breaks down near critical curves where magnification is very large (|mu| > 30) and cannot account for changes in image multiplicity. [Source Plane \chi^2_{\textrm{ext}} for …: "Note that the above formalism applies only for the weak lensing regime: the perturbation does not change the number of lensed images as $d \delta {\boldsymbol{\alpha}}$ is sufficiently small."]
+- limitation (authors): Perturbations on angular scales smaller than ~1.0'' were neglected due to limited S/N and angular resolution. [Source Plane Fit to ALMA image: "However, note that our result cannot exclude the possibility of contribution from very small angular scale modes $<1.0\ensuremath{''}$, which we did not take into account."]
+- limitation (authors): CLEAN deconvolution causes a systematic ~60% boost in extended flux amplitudes on large angular scales (>= 0.7''). [Mock Observation: "We observed that our CLEANed image gives a $\sim 60$ per cent increase in intensities except for the brightest spot with S/N$\gtrsim 50$ that corresponds to the mock quasar core."]
+- not stated (card): Exact solution intervals (solint) and S/N thresholds used during phase-only self-calibration of Cycle 2 and Cycle 4 data; Exact frequency channel ranges flagged as line emission vs. line-free continuum; Stopping threshold, niter, and masking strategy in CASA tclean; Specific numerical optimization algorithm/solver used to minimize the regularized chi^2 in the source-plane and lens-plane fits
+
+### 2023MNRAS.520.1613M: Probing general relativity in galactic scales at z 0.3 (2023; cosmology, high_z_galaxies, nearby_galaxies; archival_reuse)
+- question: What is the constraint on the gravitational slip parameter eta_PPN at galactic scales at z = 0.299 when combining strong gravitational lensing and galactic dynamics for the SDP.81 lens system?
+- step 3: Prepare ALMA Band 7 continuum image and error map for image-plane lens modelling
+  - method: Bin the ALMA Band 7 continuum image from 0.005'' to 0.01'' pixels, rotate by PA = 11.9 deg, and build an error map from the background rms measured in CASA plus 10% of each pixel value added in quadrature. [ALMA data: "We use the image of continuum band 7, which includes the $\sim 250\mu$m rest-frame emission, for the lens modelling. The image was also binned from a pixel scale of $0.005\ensuremath{''}$ to a pixel scale of $0.01\ensuremath{''}$, to increase the modelling efficiency and reduce the covariance between the pixels (cite:…"] [ALMA data: "Moreover, the error map was estimated by the rms background value, measured using `CASA` in a region where no emission is seen, with the addition of $10$% of the value of each pixel summed in quadrature to account for possible calibration errors."]
+  - software: CASA
+  - parameter: Binned pixel scale = 0.01'', synthesised beam = 0.0308'' x 0.0235'' at PA = 15 deg, rotation PA = 11.9 deg, calibration error = 10% [ALMA data: "During the modelling, we assumed the synthesised beam sizes described in the ALMA data: $0.0308\ensuremath{''} \times 0.0235\ensuremath{''}$ ($\sim 141\text{\,pc} \times 108\text{\,pc}$ at the lens redshift), position angle (PA) of $15^{\ensuremath{^\circ}}$, counterclockwise from North."]
+  - assumption: Image-plane pixel covariance errors are small due to dense uv-plane coverage; lens galaxy light contamination is negligible in Band 7. [ALMA data: "Due to the wavelength observed by ALMA, the lens light is not visible, and only the deflected source is captured, making this dataset very suitable for lens modelling since the contamination due to the lens galaxy light is negligible."] [Lens modelling: "However, due to the high coverage of the $uv-$plane in these ALMA data, the error associated with the image plane is significantly reduced."]
+- step 4: Perform 5-phase joint Bayesian modelling of ALMA gravitational lensing and MUSE stellar dynamics
+  - method: Simultaneously fit ALMA Band 7 lensing (via PyAutoLens with custom MGE deflection angles + elliptical NFW + external shear, scaled by (1 + eta_PPN)/2) and MUSE V_rms kinematics (via JAM with MGE stellar + MGE-parametrized NFW potential) ac… [Lens modelling: "Unfortunately, `PyAutoLens` does not provide the MGE parametrization as an alternative to light or mass profile. For this reason, we implement the MGE deflection angle in the context of the `PyAutoLens` framework, whilst the light and dark matter mass parametrizations were performed using the `MgeFit` package (cite: C…"] [Kinematic modelling: "To solve the axisymmetric Jeans equations and compute the projected second velocity moment, we use the Jeans Anisotropic Modelling (cite: Cappellari2008; Cappellari2020), in its Python implementation."]
+  - software: PyAutoLens, JAM, MgeFit, dynesty, MGETOOLS
+  - parameter: 10 free parameters in Ph5 (Upsilon_0, delta, upsilon_0, kappa_s, q_DM, i, beta_z, shear_mag, shear_phi, eta_PPN); fixed NFW scale radius r_s = 10 * R_eff = 11.4''; 300 K-means seed evaluations for Ph5 lens likelihood cap [Pipeline prescription: "Using the MP$_3$ and MP$_4$ results, we compute 300 likelihood evaluations, each of them using a different K-means seed."] [Combined modelling: "Since we do not have enough data to constrain the dark matter halo on larger scales, we fix $r_s$ as 10 times the effective radius ($R_{\text{eff}} = 1.14\ensuremath{''}$) of the stellar component (cite: Kravtsov2013; Sonnenfeld2015)."]
+  - assumption: Planck 2015 LCDM cosmology (H_0 = 67.7 km s^-1 Mpc^-1, Omega_Lambda = 0.6911, Omega_m = 0.3089); dark matter halo centre and orientation aligned with stellar component; constant orbital anisotropy beta_z; no SMBH in fiducial model. [Introduction: "Throughout the paper, unless otherwise stated, the cosmological parameters assumed are: $H_0 = 67.7$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_{\Lambda} = 0.6911$, $\Omega_{m} = 0.3089$ (cite: Planck_2015)."] [Combined modelling: "We also assume that the dark matter centre, the luminous mass centre, and the lens light centre coincide."]
+  - fitting: Static nested sampling with dynesty using multiple ellipsoids bounding, random walk proposal (N_walks = 15), 180 live points (100 in Ph2), dlogz = 10 in Ph1-Ph2 and dlogz = 0.8 in Ph3-Ph5; joint likelihood L_Model = L_Lens * L_Dyn; Ph1 pri… [Bayesian inference: "For all pipeline phases, we use the static version of `dynesty`. We employ a multiple ellipsoids bounding distribution (cite: Mukherjee_2006; Feroz_2019), which can better handle with multi-modal distributions, and a random walk proposal sampling (cite: Metropolis; Hastings1970) with $N_{\text{walks}} = 15$."] [Bayesian inference: "Since in the first two phases, we are only interested in estimating a marginal region of the parameter space where the model has physical solutions, we define the termination criteria (cite: Skilling2006) as `dlogz`$= 10$. On the other hand, in the last three phases, the termination criteria are `dlogz`$= 0.8$. Moreov…"]
+  - validation: Verified that MGE parametrization of elliptical NFW profile introduces only ~0.04% error in the deflection angle. [Combined modelling: "We conclude that the error related to this parametrization in the deflection angle is of the order of $0.04\%$."]
+- step 5: Quantify systematic uncertainties from mass profile, cosmology, and stellar kinematics
+  - method: Re-run the 5-phase pipeline for 3 alternative mass models (r_s = 5 R_eff, free r_s, and Wong et al. 2015 composite model with spherical NFW + constant M/L + SMBH) and 5 alternative H_0 values (67.28, 68.20, 74.2, 72.2, 76.2 km s^-1 Mpc^-1)… [Alternative Mass Profiles: "First, we fix the dark matter radius to be 5 times the effective radius, for which we infer a $\eta_{\text{PPN}} = 1.12^{+0.03}_{-0.02}$ , and a fraction of dark matter within the Einstein ring consistent with $f_{\text{DM}} \sim 35\%$. Next, although our data do not cover the possible extended halo of dark matter, we…"] [Cosmology: "For the models assuming $H_0$ determined by time-delay, we infer $\eta_{\text{PPN}} = (1.11^{+0.04}_{-0.04} \,; 1.13^{+0.02}_{-0.03} \,; 1.14^{+0.04}_{-0.04})$, for $H_0 = (74.2 \,; 72.2 \,; 76.2)$ km s$^{-1}$ Mpc$^{-1}$, respectively."]
+  - software: PyAutoLens, JAM, dynesty, pPXF
+  - parameter: Alternative mass models: r_s = 5 R_eff, r_s free, Wong2015-like; alternative H_0 = 67.28, 68.20, 72.2, 74.2, 76.2 km s^-1 Mpc^-1; stellar libraries: MILES and XSL DR2 [Cosmology: "Therefore, we opt to run the fiducial model again, however with different values of the Hubble constant, defined by the lower ($H_0 = 67.28$ km s$^{-1}$ Mpc$^{-1}$) and upper ($H_0 = 68.20$ km s$^{-1}$ Mpc$^{-1}$) values of the $1\sigma$ confidence level."] [Kinematics: "re-deriving the kinematic map using the Medium resolution INT Library of Empirical Spectra (cite: Miles_models) and the X-Shooter Spectral Library (cite: XSL)."]
+  - assumption: Systematic uncertainties from mass model, cosmology, and kinematics are independent and can be summed in quadrature. [Final inference on \eta_{\text{PPN}}: "We now can combine in quadrature all the systematic uncertainties to estimate our final inference on the slip parameter: $0.017$ due to the effects related to the mass model adopted, $0.043$ related to the uncertainty on the cosmology, and $0.19$ uncertainty from the kinematic fit."]
+  - fitting: Standard deviation across alternative mass models (0.017) and across 6 H_0 runs (0.043), plus propagation of mean 3.4% velocity dispersion template offset into 13.6% (0.19) uncertainty on eta_PPN. [Alternative Mass Profiles: "Taking the standard deviation between the different values of $\eta_{\text{PPN}}$ for these alternative mass models, we can estimate an additional systematic uncertainty of the order of $0.017$ on the slip parameter."] [Cosmology: "Considering the standard deviation of the values of $\eta_{\text{PPN}}$ inferred for this six values of $H_0$, we infer an additional uncertainty of the order of $0.043$ on the slip parameter, related to the uncertainty on the Hubble constant."]
+  - validation: Compared results across all 8 alternative model runs in Appendix B. [Discussion and Systematics: "All the Ph5 results for each of the models discussed below are in Appendix"]
+- result: Gravitational slip parameter eta_PPN (final inference with systematics) = 1.13 ± +0.03/-0.03 (stat) +- 0.20 (sys) dimensionless [Abstract: "We infer, after accounting for systematic uncertainties related to the mass model, cosmology and kinematics, $\eta_{\text{PPN}} = 1.13^{+0.03}_{-0.03}\pm0.20\,(\text{sys})$, which is in accordance with GR predictions."]
+- result: Central stellar mass-to-light ratio Upsilon_0 (fiducial model) = 4.63 ± +0.06/-0.09 M_sun/L_sun [Table 2: "$\Upsilon_0$ | $4.63^{+0.06}_{-0.09}$ | M$_\odot$/L$_\odot$"]
+- result: M/L gradient parameter delta (fiducial model) = 1.78 ± +0.09/-0.09 arcsec^-1 [Table 2: "$\delta$ | $1.78^{+0.09}_{-0.09}$ | arcsec$^{-1}$"]
+- result: Central-to-outermost M/L ratio upsilon_0 (fiducial model) = 0.88 ± +0.07/-0.05 dimensionless [Table 2: "$\upsilon_0$ | $0.88^{+0.07}_{-0.05}$ | \-"]
+- result: Galaxy inclination i (fiducial model) = 82 ± +4/-4 degree [Table 2: "$i$ | $82^{+4}_{-4}$ | degree"]
+- result: Orbital anisotropy beta_z (fiducial model) = -0.53 ± +0.03/-0.04 dimensionless [Table 2: "$\beta_z$ | $-0.53^{+0.03}_{-0.04}$ | \-"]
+- result: NFW halo amplitude kappa_s (fiducial model) = 0.086 ± +0.002/-0.003 dimensionless [Table 2: "$\kappa_s$ | $0.086^{+0.002}_{-0.003}$ | \-"]
+- result: Dark matter halo 3D axial ratio q_DM (fiducial model) = 0.49 ± +0.02/-0.01 dimensionless [Table 2: "$q_\text{DM}$ | $0.49^{+0.02}_{-0.01}$ | \-"]
+- result: External shear magnitude shear_mag (fiducial model) = 0.022 ± +0.001/-0.001 dimensionless [Table 2: "$\text{shear}_{\text{mag}}$ | $0.022^{+0.001}_{-0.001}$ | \-"]
+- result: External shear orientation shear_phi (fiducial model) = 55 ± +2/-3 degree [Table 2: "$\text{shear}_{\phi}$ | $55^{+2}_{-3}$ | degree"]
+- result: Einstein radius R_Ein (fiducial model) = 1.61 ± not stated arcsec [Main Results: "We found $R_{\text{Ein}} = 1.61\ensuremath{''}$, which agrees with previous studies (cite: Dye2014; Vlahakis_2015; Wong2015)."]
+- result: Dark matter fraction inside R_Ein f_DM (fiducial model) = 35 ± not stated % [Main Results: "We have found that the dark matter fraction, $f_{\text{DM}}$, is of the order of $\sim 35\%$, showing that the galaxy is baryonic dominated in the inner regions."]
+- result: Systematic uncertainty on eta_PPN from mass model = 0.017 ± not stated dimensionless [Alternative Mass Profiles: "Taking the standard deviation between the different values of $\eta_{\text{PPN}}$ for these alternative mass models, we can estimate an additional systematic uncertainty of the order of $0.017$ on the slip parameter."]
+- result: Systematic uncertainty on eta_PPN from cosmology (H_0) = 0.043 ± not stated dimensionless [Cosmology: "Considering the standard deviation of the values of $\eta_{\text{PPN}}$ inferred for this six values of $H_0$, we infer an additional uncertainty of the order of $0.043$ on the slip parameter, related to the uncertainty on the Hubble constant."]
+- result: Systematic uncertainty on eta_PPN from kinematic fit = 0.19 ± not stated dimensionless [Final inference on \eta_{\text{PPN}}: "We now can combine in quadrature all the systematic uncertainties to estimate our final inference on the slip parameter: $0.017$ due to the effects related to the mass model adopted, $0.043$ related to the uncertainty on the cosmology, and $0.19$ uncertainty from the kinematic fit."]
+- limitation (authors): Cleaning visibilities into an image correlates pixels by the synthesized beam, which can bias image-plane modelling if pixel covariance is not accounted for. [Lens modelling: "As a consequence of the procedure of obtaining an image from the visibilities, the image pixels become correlated by the beam, which could bias the image-plane modelling if the uncertainties do not take into account the covariance between the pixels."]
+- limitation (authors): MUSE spectroscopic data have low SNR in the galaxy outskirts, preventing strong constraints on the orbital anisotropy beta_z, the dark matter halo scale radius r_s, or a central SMBH. [Combined modelling: "Since we do not have enough data to constrain the dark matter halo on larger scales, we fix $r_s$ as 10 times the effective radius ($R_{\text{eff}} = 1.14\ensuremath{''}$) of the stellar component (cite: Kravtsov2013; Sonnenfeld2015)."]
+- limitation (authors): Assuming a LCDM cosmology to compute angular diameter distances introduces a circularity when testing General Relativity. [Conclusions: "Although, assuming a cosmology derived under the $\Lambda$CDM can raise discussions about the recursion of testing GR using predictions of itself."]
+- not stated (card): Exact numeric value of the rms background measured in CASA for the ALMA Band 7 continuum image; Exact spatial mask definition applied to the ALMA Band 7 image during PyAutoLens fitting; Note on Table 1 vs text discrepancy: section 'Combined modelling' states MGE describes the HST/F160W image, whereas Table 1 caption states 'MGE components of the HST/F110W image of SDP.81 lens galaxy'; Exact wavel…
+
+### 2018MNRAS.477..669M: Dark matter dynamics in Abell 3827: new data consistent with standard cold dark matter (2018; galaxy_clusters_and_sz, high_z_galaxies, other; multi_facility_alma_minor)
+- question: Is the dark matter of Abell 3827's central galaxies offset from their stars, once new ALMA and MUSE data improve lensed image identifications?
+- step 3: Parametric lens model
+  - method: lenstool MCMC with PIEMD cluster halo plus Hernquist and PISP galaxy components [3.2.1 LENSTOOL: "The parameters’ posterior probability distribution function (PDF) is explored by a Markov Chain Monte Carlo (MCMC) iteration"]
+  - software: lenstool
+  - parameter: chain samples PDF 100,000 times; positional uncertainty 0.5'' for Ao6, Ao7 and 0.15'' for others [3.2.1 LENSTOOL: "We assume statistical uncertainty of 0.5$''$ on the location of Ao6 and Ao7"]
+  - assumption: Stellar mass from Galfit F606W, BC03, Chabrier IMF, solar metallicity, burst at z=3 [3.2.1 LENSTOOL: "assuming a (cite: cha03) initial mass function, solar metallicity, and a single burst of star formation at redshift $z_{\mathrm f}\!=\!3$"]
+  - fitting: MCMC, runmode=3, flat prior 2'' either side of stars [3.2.1 LENSTOOL: "the location and amount of each galaxy’s dark matter is given a flat prior $2\ensuremath{''}$ either side of its stars"]
+  - validation: Compared with grale; tested in blind analysis [3.2 Mass model: "Both have been tested in a blind analysis of strong lensing data for which the true mass distribution is known"]
+- step 4: Free-form lens model
+  - method: grale genetic algorithm on ~1300 Plummer spheres, 20 runs averaged [3.2.2 GRALE: "We run twenty mass reconstructions with different random seeds."]
+  - software: grale
+  - validation: rms across runs gives statistical error [3.2.2 GRALE: "their rms provides an estimate of statistical error"]
+- result: lenstool best-fit rms = 0.13 ± not stated arcsec [4 Results: "This model achieves $\langle$rms$\rangle_i$=$0.13\ensuremath{''}$"]
+- result: N1 dark matter offset = 0.54 ± +0.22/-0.23 kpc [5 Conclusions: "$0.29^{+0.12}_{-0.13}$ arcseconds or $0.54^{+0.22}_{-0.23}$ kpc"]
+- result: (sigma/m)cos(i) = 0.68 ± +0.28/-0.29 cm^2/g [5 Conclusions: "$(\sigma/m)\cos{(i)}=0.68^{+0.28}_{-0.29}$ cm${^2}$/g"]
+- result: luminosity-weighted [OII] amplification = 144 ± not stated dimensionless [4 Results: "the luminosity-weighted amplification of its \[Oii\] emission is $\mu=144$"]
+- limitation (authors): Systematic biases up to ~0.21'' and degeneracies prevent concluding any offset is significant [4 Results: "we cannot here conclude that any offset is physically significant"]
+- not stated (card): taper scale (uv taper value); CLEAN threshold, mask, cell and image size; how moment maps/CO images used for image identification were made; ALMA flux scale uncertainty and calibration details; lenstool configuration files and image-identification weights
+
+### 2024A&A...684A..56K: Probing the interstellar medium of the quasar BRI 0952‒0115. An analysis of [C II], [C II], CO, OH, and H<SUB>2</SUB>O (2024; agn_and_quasars, high_z_galaxies, milky_way_ism; archival_reuse)
+- question: What are the ISM properties and heating mechanisms (PDR vs XDR) of the lensed quasar BRI 0952-0115 at z=4.432, and what is its evolutionary stage?
+- step 3: per-channel lensing magnification
+  - method: Visilens fit of each [CII] channel with Sersic source, magnification extrapolated to other lines by nearest velocity [Spectral Reconstruction: "we used a closest value finding algorithm to search for the velocity bin in the \[C ii\] data which is nearest the velocity bin of the particular line"]
+  - software: Visilens
+  - assumption: Other lines follow bulk kinematics of [CII] [3.3 Lensing Reconstruction: "as long as the other line species detected follow the bulk motion and systematic kinematics of the entire galaxy, as traced by \[C ii\], this method of extrapolating the magnification factor is valid."]
+  - fitting: 4 model variants; Gaussian source rejected [Visilens Modelling: "the fit from VISILENS for this model was sufficiently poor that we disregarded it."]
+  - validation: Models compared; magnification consistent across models [Visilens Modelling: "the magnification factor across the velocity range does not change greatly depending on the model used."]
+- limitation (authors): Data not standardized, resolution limited, CO SLED turnover unconstrained [5.3: "these observations are not standardized and suffer from angular resolution limitations"]
+- not stated (card): Line-free channel ranges per band; Velocity ranges for moment maps and spectral extraction; Extraction ellipse coordinates; Taper size for band 3; Visilens parameter ranges and priors; Gaussian fit procedure details; Band 7 reduction details (in Kade23); Band 3 and 4 CASA versions inconsistent; Starburst99 assumptions; SFR and LIR values used for depletion time
+
+### 2019PASJ...71...57K: Searching for the 380 GHz H<SUB>2</SUB>O emission from the high-z lensed quasi-stellar object MG J0414+0534 (2019; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Can the 380 GHz (and 336 GHz) H2O maser/line emission be detected from the lensed QSO MG J0414+0534 at z=2.639, and what does its flux ratio anomaly imply about its origin?
+- step 3: Lens modelling to explain flux ratio anomaly
+  - method: SIE(G)+SIS(X)+external shear fit to four image positions and A1, A2 continuum fluxes; multi-clump source model for line [4.2 Lens Modeling: "Our model of SIE(G)+SIS(X)+shear for the system fits well to the observed images and fluxes, with a reduced $\chi^2$ of 1.0."]
+  - software: Glee
+  - fitting: Priors on G and X centroids from observed light; uniform priors on other parameters [4.2 Lens Modeling: "We adopt a prior on the centroids of G and X based on the observed light distribution (listed in Table 1), and uniform prior on the other parameters."]
+- limitation (authors): Detection is tentative and low S/N; line may be partly thermal [4 Discussion: "we want to emphasize that our current detection is still tentative."]
+- not stated (card): tclean cell size, image size, niter/threshold, masks; CASA version; Flux scale of calibrators and flux uncertainty; Self-calibration solution intervals and reference antenna; Lens model optimizer/sampler details and priors widths; Positions and magnifications of hypothetical maser clumps; Spectral-line cube channel width/velocity frame for moment 0
+
+### 2013A&A...558A.123M: Probing the jet base of the blazar PKS 1830-211 from the chromatic variability of its lensed images. Serendipitous ALMA observations of a strong gamma-ray flare (2013; agn_and_quasars; observational_alma_primary)
+- question: Can the chromatic, time-variable flux ratio of the two lensed images of PKS 1830-211 during a gamma-ray flare constrain the jet structure and physics near the jet base (core-shift, plasmon ejection)?
+- step 4: Derive core-shift and flare timing
+  - method: Estimate core separation from plasmon travel time between tau=1 surfaces; apply lens magnification [Constraints on the jet physics: "From our jet models, both conical and concave, we estimate a distance of 0.3–0.5 pc between the cores at 100 GHz and 300 GHz."]
+  - assumption: Plasmon speed close to c; magnification 3-6 [Constraints on the jet physics: "Since the speed of the plasmon is likely close to the speed of light"]
+- result: Core distance between 100 and 300 GHz = 0.3-0.5 ± not stated pc [Constraints on the jet physics: "we estimate a distance of 0.3–0.5 pc between the cores at 100 GHz and 300 GHz."]
+- result: Apparent (lensed) core-shift 100-300 GHz = 5-8 ± not stated microarcsec [Constraints on the jet physics: "results in an apparent core-shift of 5–8 $\mu$as between 100 and 300 GHz (for a shift of 0.5 pc)"]
+- result: Normalized core-shift Omega = ~0.8 ± not stated mas GHz [Implications for the absorption studies: "Our model suggests a value of $\Omega$ $\sim$0.8 mas GHz"]
+- limitation (authors): Many parameters with few data points prevent a statistically robust constraint of parameter space [Model of the blazar's jet: "makes it difficult to constrain the parameter space in a statistically robust way"]
+- limitation (authors): Sparse, irregular time sampling [Observations and data reduction: "hence the loose and irregular time sampling"]
+- not stated (card): Spectral windows and calibrators used for bandpass and phase, and CASA version; Details of the array configurations and baseline lengths; Exact line-free channel selection; uvmultifit availability (in preparation); Optimizer and initial values for the jet-model least-squares fit; Numerical details of the jet model code (grid, integration)
+
+### 2016MNRAS.461..164I: On the origin of the flux ratio anomaly in quadruple lens systems (2016; cosmology, high_z_galaxies; theory_or_simulation_compared_to_alma)
+- question: Whether flux ratio anomalies in 11 quadruple lens systems are caused mainly by subhaloes or by line-of-sight structures
+- step 1: Fit smooth lens models
+  - method: Fit SIE plus external shear to fluxes, positions and time delays by chi^2 [5 Lens model: "simultaneous $\chi^2$ fitting of the fluxes, positions, and time delay of lensed images"]
+  - software: GRAVLENS
+- limitation (authors): Primary lenses assumed SIE; multipoles and non-isothermal profiles not included [Conclusion and Discussion: "This assumption may be too simple."]
+- not stated (card): Fitted lens model parameters for each system (only referenced); Observational errors on flux ratios and eps_0 per system; Host halo concentration and mass mapping details; Data points for the redshift correlation fits
+
+### 2024ApJS..275...36F: ALMA Lensing Cluster Survey: Deep 1.2 mm Number Counts and Infrared Luminosity Functions at z ≃ 1─8 (2024; high_z_galaxies, galaxy_clusters_and_sz, cosmology; large_program_or_survey)
+- question: Origins of the CIB; faint 1.2-mm number counts, IR luminosity functions, and cosmic SFRD.
+- step 5: Correct lensing and remove duplicate images
+  - method: Use fiducial glafic models to infer magnification at the continuum peak and source redshift; divide observed flux by magnification; average intrinsic fluxes for multiple images. [Lens Model and Magnification Correction: "In this paper, we adopt the lens model of glafic as a fiducial model for our analyses, although we also use other available models to evaluate uncertainties in magnification factors."] [Lens Model and Magnification Correction: "We then evaluate the magnification factor based on the peak pixel position of the ALMA continuum emission and the redshift estimate."]
+  - software: glafic, Lenstool, Zitrin-LTM, Zitrin-dPIEeNFW
+  - parameter: Background sources exceed cluster redshift by > 0.2 photometrically or > 0.1 spectroscopically. [Lens Model and Magnification Correction: "defined as sources with photometric (spectroscopic) redshift estimates exceeding the cluster redshift by more than 0.2 (0.1)."]
+  - parameter: Systematic μ errors: HFF 20%, CLASH/RELICS 40% at μ ≤ 5; then 50%, 60%, 80% at 5–10, 10–30, > 30. [Lens Models Uncertainty: "we adopt 20% (40%), 50%, 60%, and 80% for the systematic uncertainty of the different lens models at $\mu\leq5$, $5<\mu\leq10$, $10<\mu\leq30$, and $\mu >30$ in HFF (CLASH & RELICS)."]
+  - assumption: Use one fiducial model with systematic errors rather than median magnification maps. [Lens Model and Magnification Correction: "To retain the full range of the lensing magnification, we thus use the fiducial lens model and include the systematic uncertainties from the different models in the following analysis."]
+  - fitting: glafic models constructed as in (cite: kawamata2016). [Lens Model and Magnification Correction: "The lens model of glafic is constructed in the same manner as (cite: kawamata2016), wherein interested readers can find more specific lens modeling procedures using glafic."]
+  - validation: Compare magnifications among independent lens models; tabulate image-position residuals. [Lens Models Uncertainty: "We compare the magnification factors between our fiducial and other lens models at random pixel positions of the maps and evaluate the systematic uncertainty from the choice of the lens model."] [Lens Models: "we summarize the number of the multiple images used for constructing the glafic models and the r.m.s of positional differences between the observed and model-predicted multiple images."]
+- step 7: Calculate effective survey areas
+  - method: Count PB ≥ 30% regions and lens-correct area as a function of intrinsic flux and redshift. [Survey Area: "We estimate the survey areas of each ALCS field by counting the areas with the PB sensitivity in the mosaic maps of $\geq$30%"] [Survey Area: "Since the sensitivity and the magnification are not spatially uniform across the ALMA maps, the survey area varies according to the intrinsic flux density."]
+  - software: glafic
+  - parameter: Magnification maps z = 0–6 in steps of 0.5; nearest redshift result per source; foreground sources use z = 0. [Survey Area: "With our fiducial model, we create the magnification maps for each cluster from $z=0$ to $z=6$, with a step of 0.5, and calculated the effective survey area at each redshift."] [Survey Area: "we use the closest redshift calculation result in each ALCS source, while we adopt the $z=0$ result for the sources in the foreground of the clusters."]
+  - validation: Compare z = 2 and 6 areas and alternative lens models. [Survey Area: "the total survey areas show a negligible change between redshifts $z=2$ and $z=6$."] [Lens Models Uncertainty: "We find that the survey area is unchanged by more than $\sim$10% in the wide magnification ranges."]
+- step 8: Derive and fit 1.2-mm number counts
+  - method: Sum p/[C A_eff] in intrinsic-flux bins and divide by bin width; propagate flux, calibration, magnification, and Poisson errors with 1,000 mock catalogs. [Number counts at 1.2 mm: "\xi(S) = \frac{p(S)}{C(S, D)A_{\rm eff}(S)},"] [Number counts at 1.2 mm: "n(S) = \frac{\Sigma\xi(S)}{\Delta S},"]
+  - software: emcee
+  - parameter: 104 blind and 146 blind+prior unique background sources; fiducial fit uses blind sample. [Number counts at 1.2 mm: "A total of 104 and 146 sources are accounted for in our number counts analysis based on the blind and blind+prior samples"] [Summary: "we derive the 1.2 mm number counts by using the blind sample, exploring its faint end down to $\sim7\mu$Jy."]
+  - parameter: Gaussian mock flux distributions; 10% absolute flux accuracy; 16–84th percentile intervals. [Number counts at 1.2 mm: "We make a mock catalog of the ALCS sources whose flux densities follow Gaussian probability distributions."] [Number counts at 1.2 mm: "We adopt the measurement uncertainty for the random noise and 10% for the absolute flux accuracy."]
+  - assumption: Purity uncertainty omitted at the high-purity cut; fiducial Schechter fit uses all 33 clusters without weights. [Number counts at 1.2 mm: "the purity uncertainty is not included in our procedure."] [Number counts at 1.2 mm: "we adopt the best-fit Schechter function for the entire 33 ALCS clusters without any weights among the clusters as our fiducial measurement."]
+  - fitting: Schechter and DPL fits with MCMC using emcee; refit 1,000 MC realizations. [Number counts at 1.2 mm: "To characterize the shape of our number counts, we fit Schechter (cite: schechter1976) and double power law (DPL) functions to our differential and cumulative number counts."] [Number counts at 1.2 mm: "We search the best-fit model with the MCMC method using emcee (cite: foreman-mackey2013)."]
+  - validation: Blind and blind+prior counts agree within 1σ; assess fitted shapes through χ²/dof. [Number counts at 1.2 mm: "We find that our number-count estimates based on the blind and blind+prior samples are consistent within the 1$\sigma$ uncertainties in the wide flux range."] [Number counts at 1.2 mm: "the $\chi^{2}$/dof values indicate that the number counts are well represented by Schechter and DPL."]
+- step 10: Test count systematics
+  - method: Repeat simulations and counts for alternative size relations; split clusters by survey; bootstrap clusters; weight lens-model quality; exclude highly magnified sources. [Impact from the dust continuum size dis…: "We carry out the same MC simulations for correcting the flux measurements, completeness"] [Potential Caveats: "we also perform the Bootstrap test by randomly sampling 5 clusters from CLASH and RELICS."]
+  - parameter: Size relations r_e,dust ∝ L_IR^-0.53 and L_IR^0.28; modified blackbody T_dust = 35 K, β_d = 1.8. [Impact from the dust continuum size dis…: "1) negative correlation of $r_{\rm e, dust}\propto L_{\rm IR}^{-0.53}$, and 2) positive correlation of $r_{\rm e, dust}\propto L_{\rm IR}^{0.28}$"] [Impact from the dust continuum size dis…: "To convert the 1.2-mm flux density to $L_{\rm IR}$, we assume a single modified black body with dust temperature $T_{\rm dust}=35$ K (cite: coppin2008) and $\beta_{\rm d}=1.8$ (cite: planck2011)."]
+  - parameter: 1,000 bootstrap realizations; count-fit flux cuts > 0.03 and > 0.1 mJy. [Potential Caveats: "the grey shaded region shows the 1$\sigma$ region from the 1,000 realizations of the Bootstrap test."] [Potential Caveats: "we also estimate the faint-end slope only with the data points at $>0.03$ mJy and $>0.1$ mJy from all 33 clusters"]
+  - assumption: Good lens models: N_img > 100; good-model clusters get fourfold weights. [Potential Caveats: "we classify the five HFF clusters and the R1347 and M1206 as a group of the good model with $N_{\rm img}>100$."] [Potential Caveats: "we add four times more weights on the number counts of the good model clusters than the others."]
+  - fitting: Refit Schechter functions to subsamples and alternative assumptions. [Potential Caveats: "The dashed line indicates the best-fit Schechter function for each subsample"]
+  - validation: All tested faint-end slopes consistent within approximately 1–2σ. [Potential Caveats: "We find that all these $\alpha$ measurements are consistent within the $\sim1$–2$\sigma$ errors, regardless of the subsample and the FIR size assumptions."]
+- step 12: Derive and fit IR luminosity functions
+  - method: Use the blind+prior sample with 1/V_max completeness weighting; integrate flux-dependent survey area over volume; run 1,000 redshift/flux MC realizations with updated magnifications. [IR Luminosity Function at $z\simeq$ 1–8: "we use the blind+prior sample to obtain the statistically reliable results in the following analyses."] [IR Luminosity Function at $z\simeq$ 1–8: "\Phi(L, z) = \frac{1}{\Delta L} \Sigma \frac{1}{C V_{\rm max, i}},"]
+  - parameter: Redshift bins: 0.6–1.0, 1.0–2.0, 2.0–3.0, 3.0–4.0, 4.0–6.0, 6.0–7.5. [IR Luminosity Function at $z\simeq$ 1–8: "$0.6\leq z < 1.0$ ($N=13$), $1.0\leq z < 2.0$ ($N=46$), $2.0\leq z < 3.0$ ($N=39$), $3.0\leq z < 4.0$ ($N=30$), $4.0\leq z < 6.0$ ($N=12$), and $6.0\leq z < 7.5$ ($N=1$)."]
+  - parameter: 1,000 MC realizations; report average and 16–84th percentiles. [IR Luminosity Function at $z\simeq$ 1–8: "We divide each luminosity and redshift bin and repeat this procedure 1,000 times."] [IR Luminosity Function at $z\simeq$ 1–8: "The red circles and error bars denote the average and 16-84 percentile from the MC realization."]
+  - assumption: Flat universe: Ω_m = 0.3, Ω_Λ = 0.7, H_0 = 70 km s^-1 Mpc^-1. [Introduction: "Throughout this paper, we assume a flat universe with $\Omega_{\rm m} = 0.3$, $\Omega_\Lambda = 0.7$,"] [Introduction: "and $H_0 = 70$ km s$^{-1}$ Mpc$^{-1}$."]
+  - assumption: At z ≥ 4, fix both DPL slopes to z = 1–2 results. [IR Luminosity Function at $z\simeq$ 1–8: "we fix both of them at $z\geq4$ by using the best-fit results at $z=1.0$–2.0, where the IR LF shape is the most securely determined with the largest sample size."]
+  - fitting: DPL fitting includes other blind-survey LF points; high-z bright-end limits replaced by a central value with limit differences as errors. [IR Luminosity Function at $z\simeq$ 1–8: "To evaluate the shape of IR LFs, we perform the DPL fit to our IR LF estimates."] [IR Luminosity Function at $z\simeq$ 1–8: "We include the data points in the fitting that are obtained from other ALMA blind surveys in the literature (cite: koprowski2017; hatsukade2018)."]
+  - validation: Compare with previous IR LFs and simulations. [IR Luminosity Function at $z\simeq$ 1–8: "We also find that our IR LF estimates are generally consistent with the previous studies within the 1$\sigma$ uncertainties."] [IR Luminosity Function at $z\simeq$ 1–8: "We find that our measurements and the best-fit DPL functions are generally consistent with these recent simulations within the 1–2$\sigma$ errors, except for the model of (cite: zavala2021)."]
+- result: Unique background sources after cluster-member removal and multiple-image correction = 146 ± not stated sources [Lens Model and Magnification Correction: "After removing the cluster member galaxies and correcting the counts for the multiple images, we identify 146 out of 180 ALCS sources in the blind+prior sample as the unique sources behind the clusters."]
+- result: Median magnification = 2.70 ± not stated dimensionless [Lens Model and Magnification Correction: "The median magnification is 2.70 for the unique ALCS sources behind the clusters."]
+- result: Median intrinsic 1.2-mm flux density = 0.35 ± not stated mJy [Properties of ALCS sources: "The median $S_{\rm int}$ and $z$ values are estimated to be $S_{\rm int} =$0.35 mJy and $z=2.03$, respectively."]
+- result: Median source redshift = 2.03 ± not stated dimensionless [Properties of ALCS sources: "The median $S_{\rm int}$ and $z$ values are estimated to be $S_{\rm int} =$0.35 mJy and $z=2.03$, respectively."]
+- result: Faintest number-count flux limit = 7 ± not stated μJy [Resolving CIB: "We adopt $S_{\rm limit}=7$ $\mu$Jy from the faintest bin of our number count data"]
+- result: Fiducial Schechter faint-end slope alpha = -2.05 ± +0.12/-0.10 dimensionless [Summary: "We estimate a faint-end slope of $\alpha=-2.05^{+0.12}_{-0.10}$ for our fiducial model."]
+- result: Schechter log(S_star) = 0.60 ± +0.38/-0.33 mJy [Table 2: "| $-2.05_{-0.10}^{+0.12}$ | | $0.60_{-0.33}^{+0.38}$ | $2.85_{-0.52}^{+0.50}$ | 4.9/14 |"]
+- result: Schechter log(phi_star) = 2.85 ± +0.50/-0.52 deg^-2 [Table 2: "| $-2.05_{-0.10}^{+0.12}$ | | $0.60_{-0.33}^{+0.38}$ | $2.85_{-0.52}^{+0.50}$ | 4.9/14 |"]
+- result: Schechter chi^2/dof = 4.9/14 ± not stated dimensionless [Table 2: "| $-2.05_{-0.10}^{+0.12}$ | | $0.60_{-0.33}^{+0.38}$ | $2.85_{-0.52}^{+0.50}$ | 4.9/14 |"]
+- result: DPL number-count alpha = 2.12 ± +0.15/-0.13 dimensionless [Table 2: "| $2.12_{-0.13}^{+0.15}$ | $3.81_{-1.65}^{+2.60}$ | $2.97_{-0.59}^{+0.89}$ | $0.44_{-0.59}^{+0.48}$ | 4.2/13 |"]
+- result: DPL number-count beta = 3.81 ± +2.60/-1.65 dimensionless [Table 2: "| $2.12_{-0.13}^{+0.15}$ | $3.81_{-1.65}^{+2.60}$ | $2.97_{-0.59}^{+0.89}$ | $0.44_{-0.59}^{+0.48}$ | 4.2/13 |"]
+- result: DPL number-count log(S_star), as printed = 2.97 ± +0.89/-0.59 mJy [Table 2: "| $2.12_{-0.13}^{+0.15}$ | $3.81_{-1.65}^{+2.60}$ | $2.97_{-0.59}^{+0.89}$ | $0.44_{-0.59}^{+0.48}$ | 4.2/13 |"]
+- result: DPL number-count log(phi_star), as printed = 0.44 ± +0.48/-0.59 deg^-2 [Table 2: "| $2.12_{-0.13}^{+0.15}$ | $3.81_{-1.65}^{+2.60}$ | $2.97_{-0.59}^{+0.89}$ | $0.44_{-0.59}^{+0.48}$ | 4.2/13 |"]
+- result: Conservative faint-end slope alpha = ≈ -2.0 ± +0.2/-0.3 dimensionless [Potential Caveats: "These various test results suggest the $\alpha$ measurement with a conservative uncertainty would be $\simeq -2.0^{+0.2}_{-0.3}$."]
+- result: Lens-quality-weighted faint-end slope = -1.96 ± +0.14/-0.13 dimensionless [Summary: "Combining all the clusters weighted by the quality of the lens models yields a slightly shallower value of $\alpha=-1.96^{+0.14}_{-0.13}$."]
+- result: Faint-end slope for positive FIR size–luminosity correlation = -1.86 ± +0.16/-0.14 dimensionless [Table 3: "| ALL ($N=33$) | $\propto L_{\rm IR}^{a\dagger}$ | $-1.86_{-0.14}^{+0.16}$ |"]
+- result: Faint-end slope for negative FIR size–luminosity correlation = -2.12 ± +0.13/-0.11 dimensionless [Table 3: "| ALL ($N=33$) | $\propto L_{\rm IR}^{-b\dagger}$ | $-2.12_{-0.11}^{+0.13}$ |"]
+- result: CIB resolved-fraction variation with source-size assumptions = ∼0.6–1.1 ± not stated dimensionless [Impact from the dust continuum size dis…: "the resolved fraction of the CIB can be changed by factors of $\sim$0.6–1.1 by the different size assumption."]
+- result: IR LF faint-end alpha at z = 1.0–2.0 = 0.94 ± ±0.43 dimensionless [IR Luminosity Function at $z\simeq$ 1–8: "| 1.0–2.0 | $0.94 \pm 0.43$ | $3.72 \pm 1.10$ | $-3.38 \pm 0.62$ | $12.21 \pm 0.27$ |"]
+- result: IR LF bright-end beta at z = 1.0–2.0 = 3.72 ± ±1.10 dimensionless [IR Luminosity Function at $z\simeq$ 1–8: "| 1.0–2.0 | $0.94 \pm 0.43$ | $3.72 \pm 1.10$ | $-3.38 \pm 0.62$ | $12.21 \pm 0.27$ |"]
+- limitation (authors): Lens-model quality may leave systematic high-magnification area errors. [Potential Caveats: "we caution that there may remain further systematic uncertainties related to the different qualities of the lens models among the clusters."]
+- limitation (authors): CIB measurements depend on subtraction of CMB and Galactic dust emission. [Resolving CIB: "the uncertainty of the CIB itself is large due to the model dependence of the CMB and Galactic dust emission, which are subtracted from the observations to estimate the CIB."]
+- not stated (card): Exact tclean automask subparameters, deconvolver, image dimensions, and continuum spectral-window/channel selection.; Per-field manual masks and complete additional flagging records.; Exact combination procedure for new ALCS and previous HFF visibilities.; SExtractor detection filtering, deblending, background, and noise-map configuration.; Machine-readable per-source photometry-choice exceptions…
+
+### 2017A&A...597A..41G: The ALMA Frontier Fields Survey. I. 1.1 mm continuum detections in Abell 2744, MACS J0416.1-2403 and MACS J1149.5+2223 (2017; high_z_galaxies; observational_alma_primary)
+- question: Can ALMA 1.1 mm mosaics of three Frontier Fields lensing clusters detect sub-mJy dusty star-forming galaxies, and what are their fluxes, sizes and NIR counterpart offsets?
+- step 3: measure flux densities and sizes in uv-plane
+  - method: uvmcmcfit elliptical Gaussian in uv-plane after PB-weighting pointings within 19'' [4.2.2 uv-plane fit: "We estimate an initial source position based on the continuum images and select all pointings which lie within 19$''$ (PB$\geq$0.1) of the initial position."]
+  - software: uvmcmcfit, emcee
+  - parameter: 10,000-240,000 iterations, 5,000 burn-in [4.2.2 uv-plane fit: "Between 10,000–240,000 iterations were required, depending on the speed of convergence."]
+  - fitting: emcee sampling of likelihood in visibilities; 1 sigma range of posterior [4.2.2 uv-plane fit: "`uvmcmcfit` uses `EMCEE` (cite: Foreman-mackey2013) to sample the posterior probability density function (PDF) of the model parameters."]
+  - validation: compared with fluxes from 1.5'' tapered images; injected fake sources [4.2.2 uv-plane fit: "We see that the two estimates agree within the errors"]
+- step 4: demagnify sizes and fluxes
+  - method: magnification from 16/50/84th percentiles of FF lens models; r/sqrt(mu), F/mu [4.3 Source sizes: "We correct the effective radius as $r_{s}/\sqrt{\mu}$ and the flux density as $F_{\rm uv-fit}/\mu$."]
+  - assumption: z=2 (range 1-3) for sources without spectroscopic redshift [4.3 Source sizes: "we will assume that they lie at $z$$=$2 and use the range $z$$=$1–3 as an estimate of the error"]
+  - fitting: linear regression log r_s vs log F with HerMES comparison [4.3 Source sizes: "we fit a linear regression between flux density and effective radius as $\log{r_{\rm s}} = m\times\log{F_{\nu}} + b$"]
+- step 5: measure ALMA-HST positional offsets
+  - method: 2D Gaussian centroid of F160W counterpart vs ALMA; source plane offsets via Zitrin-NFWv3 and LTMv1 [4.4 Positional Offsets: "we tracked the positions of the centroids in ALMA and *HST* to the source plane using the lensing models of Zitrin-NFWv3 and Zitrin-LTMv1"]
+  - validation: phase calibrator positions compared to literature [4.4 Positional Offsets: "By comparing the observed positions of the phase calibrators used in the ALMA observations to those in the literature"]
+- result: A2744-ID01 uv-fit flux = 1.570 ± 0.073 mJy [Table 4: "| A2744-ID01 | $1.495 \pm 0.081$ | $1.545 \pm 0.081$ | 1.7 | 1.6 | $1.570\pm0.073$ |"]
+- result: A2744-ID02 uv-fit flux = 2.816 ± 0.229 mJy [Table 4: "| A2744-ID02 | $1.656 \pm 0.131$ | $3.262 \pm 0.213$ | 10.3 | 2.2 | $2.816\pm0.229$ |"]
+- result: size-flux regression slope m = -0.08 ± 0.10 dimensionless [4.3 Source sizes: "The best-fit regression values are $m=-0.08\pm0.10$ and $b=-0.95\pm0.05$"]
+- result: size-flux regression intercept b = -0.95 ± 0.05 dimensionless [4.3 Source sizes: "The best-fit regression values are $m=-0.08\pm0.10$ and $b=-0.95\pm0.05$"]
+- result: median offset Delta DEC (NIR-mm) = -0.13 ± 0.02 arcsec [4.4 Positional Offsets: "$\Delta{\rm DEC}$$=$$-$0.13$''$$\pm$0.02$''$"]
+- result: A2744-ID02 source-plane offset = 0.48 ± 0.04 arcsec [4.4 Positional Offsets: "is $0.48\ensuremath{''}\pm0.04\ensuremath{''}$ including only the uncertainties"]
+- limitation (authors): Possible unaccounted systematics at 5-10% level; non-uniform sensitivity in two mosaics [3.2 High-significance continuum detecti…: "we only caution that there may be unaccounted for systematic errors at the 5–10% level."]
+- not stated (card): DBSCAN parameters (eps, min_samples); Priors and initial parameter ranges for uvmcmcfit; Number of walkers; Exact simobserve settings (PWV, integration time); Which lens models and versions exactly were used per cluster; Cosmology parameters; Details of fake point-source injection (flux grid, number)
+
+### 2021ApJ...917...99Y: ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System at the Epoch of Reion… (2021; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the sub-kpc spatial structure, lensing configuration, physical properties, and gas kinematics of the host galaxy of the z=6.51 gravitationally lensed quasar J0439+1634?
+- step 3: Model gravitational lensing and source surface brightness in the uv-plane
+  - method: Use VISILENS to fit an SIE lens + Sérsic source model directly to the continuum and [C II] visibilities using MCMC. In the default model, fix lens mass, ellipticity, and PA to the HST fiducial model, fit lens position on continuum, and fix… [Lensing Model: "In short, VISILENS models the $uv-$plane response of a lens system and obtains the posterior distributions of model parameters using Markov Chain Monte Carlo (MCMC)."] [3.1 Building the Lensing Model: "Because the continuum has a higher signal-to-noise ratio (SNR), we first fit the continuum to obtain the best-fit lens position, then apply the lens position when fitting the [C ii] emission."]
+  - software: VISILENS
+  - parameter: Lens redshift = [0.67], Source redshift = [6.5187], Lens Mass = [2.06x10^10 M_sun], Lens e = [0.65], Lens PA = [94.58 deg] (in default model) [Table 1: "$^{1}$ In the default model, the parameters of the lens galaxy, except its position, are fixed to the fiducial model in (cite: fan19)."]
+  - assumption: Singular isothermal ellipsoid (SIE) lens mass distribution and single Sérsic source profile [3.1 Building the Lensing Model: "Specifically, we use an SIE to describe the lens galaxy."] [3.1 Building the Lensing Model: "We use a Sérsic profile to describe the source, both for the continuum and the [C ii] line emission."]
+  - fitting: MCMC in uv-plane via VISILENS; reduced chi^2 = 1.035 (continuum) and 1.014 ([C II]) [Lensing Model: "In short, VISILENS models the $uv-$plane response of a lens system and obtains the posterior distributions of model parameters using Markov Chain Monte Carlo (MCMC)."] [3.2 Dust Continuum: "The dust continuum of J0439+1634 can be well-fitted by a single Sérsic profile, with a reduced $\chi^2=1.035$."]
+  - validation: Tested an 'ALMA-only' model with all lens parameters free, tested alternative HST double/quad lens configurations, and tested adding a second Gaussian component to the source model. [3.1 Building the Lensing Model: "For comparison, we also build an alternative model, hereafter referred as the “ALMA-only" model, in which we leave all parameters free when fitting the ALMA data and do not use any information from the *HST* observations."] [3.2 Dust Continuum: "When we add a Gaussian profile to the source model, where we allow the Gaussian profile to have negative flux, the flux of the Gaussian profile converges to zero within the error."]
+- step 4: Reconstruct source-plane [C II] data cube, moment maps, and kinematics
+  - method: Attempt uv-plane axisymmetric thin rotating disk fit with VISILENS (rejected due to poor fit). Reconstruct source-plane data cube via inverse ray-tracing of the cleaned image cube onto a 0.04'' grid using the default lens model, compute mo… [3.4 [C ii] Kinematics: "We thus fit the [C ii] emission using an axisymmetric rotating thin disk, following the method described in (cite: neeleman19)."] [3.4 [C ii] Kinematics: "Specifically, we reconstruct the source (i.e., un-lensed) data cube on a grid with a pixel size of $0.04\ensuremath{''}$."]
+  - software: VISILENS
+  - parameter: source-plane pixel size = 0.04'' [3.4 [C ii] Kinematics: "Specifically, we reconstruct the source (i.e., un-lensed) data cube on a grid with a pixel size of $0.04\ensuremath{''}$."]
+  - parameter: integrated flux SNR > 10 threshold for moment 1 and 2 [3.4 [C ii] Kinematics: "When calculating the first and the second moments, we only include pixels that have integrated flux SNR larger than $10$."]
+  - assumption: Default lensing model mapping from image plane to source plane [3.4 [C ii] Kinematics: "We then trace all the pixels in the image-plane data cube (i.e., the clean image) to the source plane according to the default lensing model."]
+  - fitting: Direct extraction of maximum velocity from PV line connecting maximum and minimum moment 1 pixels [3.4 [C ii] Kinematics: "We extract the velocities along the black line, which connects the pixels with the maximum and minimum moment 1 value (i.e., the red and blue peaks)."]
+  - validation: Ray-traced the image-plane synthesized beam at the flux peak to verify source-plane resolution (0.26'' x 0.09'') and checked caustic positions for multiply-imaged regions. [3.4 [C ii] Kinematics: "The lower-right corner of the reconstructed moment 0 map illustrates the output when we perform the inverse ray-tracing analysis to an image-plane beam located at the image-plane flux peak."] [3.4 [C ii] Kinematics: "The source-plane beam has a size of $0.26\ensuremath{''}\times0.09\ensuremath{''}$, which further illustrates that a source-plane pixel size of $0.04\ensuremath{''}$ is appropriate."]
+- step 5: Derive de-lensed physical properties, spatially resolved [C II] deficit, and dynamical mass
+  - method: Correct apparent luminosities, SFR, dust mass, and gas mass from (cite: yang19) using derived continuum and [C II] magnifications. Measure [C II]/FIR vs Sigma_FIR in 4 concentric elliptical rings of width R_eff. Compute dynamical mass from… [4.1 Dust Continuum and [C ii] Emission: "For [C ii]-based quantities, we apply the magnification of [C ii] emission, $\mu_\text{[C\,{\sc ii}]}=3.44$; for FIR-based quantities, we apply the continuum magnification, $\mu_\text{cont}=4.53$."] [Physical Properties of J0439+1634, Dust…: "All regions have the same center, ellipticity, and position angle as the continuum emission."]
+  - parameter: mu_[C II] = 3.44, mu_cont = 4.53 [4.1 Dust Continuum and [C ii] Emission: "For [C ii]-based quantities, we apply the magnification of [C ii] emission, $\mu_\text{[C\,{\sc ii}]}=3.44$; for FIR-based quantities, we apply the continuum magnification, $\mu_\text{cont}=4.53$."]
+  - parameter: 4 elliptical annuli with width R_eff = 0.136'' [4.1 Dust Continuum and [C ii] Emission: "The $n^\text{th}$ region is defined as $n\times R_\text{eff}<R<(n+1)\times R_\text{eff}$, where $n=0,1,2,3$, and $R_\text{eff}=0.136\ensuremath{''}$ is the half-light radius of the continuum emission."]
+  - assumption: LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7 [Introduction: "Throughout this paper, we use a $\Lambda$CDM universe with $H_0=70 \text{ km s}^{-1}\text{Mpc}^{-1}$, $\Omega_\text{M}=0.3$, and $\Omega_\Lambda=0.7$."]
+  - assumption: Dust continuum traces molecular gas (for CO magnification) and SFR surface density [4.1 Dust Continuum and [C ii] Emission: "In addition, we apply the continuum magnification to the CO-based molecular gas mass, assuming that the dust continuum traces the molecular gas."] [5.1 A Maximum Star Forming Rotating Sys…: "Assuming that the dust continuum traces the SFR surface density (SFRD), we estimate the SFRD within the continuum half-light radius"]
+  - validation: Evaluated effect of turbulent pressure gradient in a thick-disk model on v_c and M_dyn [4.2 Host Galaxy Dynamics: "Following the discussion in (cite: fsw20), we estimate the circular velocity of the host galaxy, $v_c$:"]
+- result: Continuum magnification (mu_cont, default model) = 4.53 ± +/- 0.05 dimensionless [Abstract: "The overall magnification is $4.53\pm0.05$ for the continuum and $3.44\pm0.05$ for the [C ii] line."]
+- result: [C II] magnification (mu_[CII], default model) = 3.44 ± +/- 0.05 dimensionless [Abstract: "The overall magnification is $4.53\pm0.05$ for the continuum and $3.44\pm0.05$ for the [C ii] line."]
+- result: De-lensed continuum source flux (default model) = 3.46 ± +/- 0.04 mJy [Table 1: "| Flux $^{6}$ | \- | $3.46\pm0.04$ | $4.15\pm0.10$ | \- | $3.18\pm0.07$ | $4.16\pm0.10$ |"]
+- result: De-lensed [C II] source flux (default model) = 4.15 ± +/- 0.10 Jy km s^-1 [Table 1: "| Flux $^{6}$ | \- | $3.46\pm0.04$ | $4.15\pm0.10$ | \- | $3.18\pm0.07$ | $4.16\pm0.10$ |"]
+- result: Continuum half-light radius (R_eff, angular) = 0.136 ± +/- 0.002 arcsec [3.2 Dust Continuum: "The best-fit Sérsic index is $1.71\pm0.06$ and the half-light radius is $0.136\ensuremath{''}\pm0.002\ensuremath{''}$ ($0.74\pm0.01$ kpc), suggesting a compact, exponential-disk-like profile."]
+- result: Continuum half-light radius (R_eff, physical) = 0.74 ± +/- 0.01 kpc [3.2 Dust Continuum: "The best-fit Sérsic index is $1.71\pm0.06$ and the half-light radius is $0.136\ensuremath{''}\pm0.002\ensuremath{''}$ ($0.74\pm0.01$ kpc), suggesting a compact, exponential-disk-like profile."]
+- result: Continuum Sérsic index (n) = 1.71 ± +/- 0.06 dimensionless [3.2 Dust Continuum: "The best-fit Sérsic index is $1.71\pm0.06$ and the half-light radius is $0.136\ensuremath{''}\pm0.002\ensuremath{''}$ ($0.74\pm0.01$ kpc), suggesting a compact, exponential-disk-like profile."]
+- result: [C II] half-light radius (R_eff, angular) = 0.233 ± +/- 0.006 arcsec [3.3 Integrated [C ii] Flux: "The best-fit [C ii] emission has a Sérsic index of $0.82\pm0.05$, consistent with an exponential $(n=1)$ profile, and a half-light radius of $0.233\ensuremath{''}\pm 0.006\ensuremath{''}$ $(1.27\pm0.03 \text{ kpc})$."]
+- result: [C II] half-light radius (R_eff, physical) = 1.27 ± +/- 0.03 kpc [3.3 Integrated [C ii] Flux: "The best-fit [C ii] emission has a Sérsic index of $0.82\pm0.05$, consistent with an exponential $(n=1)$ profile, and a half-light radius of $0.233\ensuremath{''}\pm 0.006\ensuremath{''}$ $(1.27\pm0.03 \text{ kpc})$."]
+- result: [C II] Sérsic index (n) = 0.82 ± +/- 0.05 dimensionless [3.3 Integrated [C ii] Flux: "The best-fit [C ii] emission has a Sérsic index of $0.82\pm0.05$, consistent with an exponential $(n=1)$ profile, and a half-light radius of $0.233\ensuremath{''}\pm 0.006\ensuremath{''}$ $(1.27\pm0.03 \text{ kpc})$."]
+- result: Maximum line-of-sight rotation velocity (v_max sin(i)) = 130 ± not stated km s^-1 [3.4 [C ii] Kinematics: "The maximum rotation velocity is roughly $v_\text{max}\sin(i)=130\text{ km s}^{-1}$ where $i$ is the inclination angle of the rotation axis, and the velocity is measured out to $r_\text{max}=2\text{ kpc}$."]
+- result: Outer rotation velocity dispersion (sigma) = 70 ± not stated km s^-1 [3.4 [C ii] Kinematics: "The moment 2 map suggests that these regions have $\sigma\sim70 \text{ km s}^{-1}$, which means that a thick geometry is likely."]
+- result: Median source-plane velocity dispersion (sigma_med) = 94 ± not stated km s^-1 [5.2 SMBH-Host Co-evolution: "We thus adopt the median value of the source-plane moment 2 map, $\sigma_\text{med}=94 \text{ km s}^{-1}$, which gives $r_h = 0.18 \text{ kpc}$."]
+- result: De-lensed [C II] luminosity (L_[CII]) = 3.5e9 ± +/- 0.3e9 L_sun [Table 2: "| $L_\text{[C\,{\sc ii}]} (L_\odot)$ | $(3.5\pm0.3)\times10^9$ |"]
+- result: De-lensed FIR luminosity (L_FIR) = 7.5e12 ± +/- 0.4e12 L_sun [Table 2: "| $L_\text{FIR} (L_\odot)$ | $(7.5\pm0.4)\times10^{12}$ |"]
+- result: De-lensed TIR luminosity (L_TIR) = 1.06e13 ± +/- 0.04e13 L_sun [Table 2: "| $L_\text{TIR} (L_\odot)$ | $(1.06\pm0.04)\times10^{13}$ |"]
+- result: De-lensed TIR star formation rate (SFR_TIR) = 1.56e3 ± not stated M_sun year^-1 [Abstract: "The host galaxy of J0439+1634 is a compact ultra-luminous infrared galaxy, with a total star formation rate (SFR) of $1.56\times10^{3}M_\odot/\text{year}$ after correcting for lensing and an effective radius of $0.74$ kpc."]
+- result: De-lensed dust mass (M_dust) = 4.9e8 ± +/- 0.2e8 M_sun [Table 2: "| $M_\text{dust}(M_\odot)$ | $4.9\pm0.2\times10^8$ |"]
+- result: De-lensed molecular gas mass (M_H2,CO) = 1.19e10 ± not stated M_sun [Table 2: "| $M_{\text{H}_2,\text{CO}}(M_\odot)$ | $1.19\times10^{10}$ |"]
+- result: Dynamical mass within 2 kpc (M_dyn sin^2(i)) = 7.9e9 ± not stated M_sun [4.2 Host Galaxy Dynamics: "Using the maximum line-of-sight velocity $v_\text{max}\sin(i) = 130 \text{ km s}^{-1}$ and the corresponding radius $r_\text{max}=2\text{ kpc}$, we estimate the dynamical mass within $r_\text{max}$ for J0439+1634, $M_\text{dyn}\sin^2(i)=7.9\times10^{9}M_\odot$."]
+- result: SFR surface density within continuum half-light radius (Sigma_SFR) = 800 ± not stated M_sun year^-1 kpc^-2 [5.1 A Maximum Star Forming Rotating Sys…: "to be $\Sigma_\text{SFR}\approx800 M_\odot\text{ year}^{-1}\text{ kpc}^{-2}$."]
+- result: SMBH sphere of influence radius (r_h) = 0.18 ± not stated kpc [5.2 SMBH-Host Co-evolution: "We thus adopt the median value of the source-plane moment 2 map, $\sigma_\text{med}=94 \text{ km s}^{-1}$, which gives $r_h = 0.18 \text{ kpc}$."]
+- limitation (authors): The high-resolution C43-8 ALMA configuration observations from Program 2018.1.00566.S were not yet completed. [Data: "The high-resolution observation with configuration C43-8 is not completed at the time of this paper’s writing."]
+- limitation (authors): The inclination angle i of the host galaxy rotation axis remains unconstrained, leaving sin(i) dependencies in the dynamical mass, gas fraction, and SMBH-to-host mass ratio. [Abstract: "However, our data cannot be fit by an axisymmetric thin rotating disk, and the inclination of the rotation axis, $i$, remains unconstrained."]
+- limitation (authors): The SIE + Sérsic lensing model is an over-simplification that leaves statistically significant residual clumps (4.9% of continuum peak, 8.1% of [C II] peak), and Table 1 uncertainties only include statistical errors. [Table 1: "Besides, note that the uncertainties only include statistical errors, and do not take into account the systematic errors introduced by the model choice (see Section 3.5 for more discussion)."]
+- not stated (card): Exact frequency/channel ranges used as line-free channels in UVCONTSUB; Self-calibration solution interval (solint) and number of self-calibration iterations; TCLEAN imaging parameters: cell size, image size, stopping threshold, masking, and spectral channel width of the cleaned cube; Flux calibrator identity; Priors and MCMC sampler configuration (number of walkers, steps, burn-in) in VISILENS; …
+
+### 2015MNRAS.452.2258D: Revealing the complex nature of the strong gravitationally lensed system H-ATLAS J090311.6+003906 using ALMA (2015; high_z_galaxies; archival_reuse)
+- question: What are the physical properties (dust, gas, kinematics, star formation) of the lensed SMG SDP.81, and how does the ALMA-reconstructed submm emission relate to the HST near-IR emission?
+- step 1: Lens model from continuum
+  - method: Image-plane semi-linear inversion with dual reconstruction of band 6 and 7 continuum; power-law elliptical mass plus external shear [3.1 Lens modelling procedure: "using a dual reconstruction of the ALMA band 6 and band 7 continuum image data"]
+  - software: Nightingale & Dye semi-linear code
+  - parameter: 2×2 binned continuum to 0.01" pixels [3 LENS MODELLING: "our use of the 2 × 2 pixel binned version of the band 6 and band 7 science verification continuum image data"]
+  - assumption: Single smooth power-law profile, scale-invariant slope [3.1 Lens modelling procedure: "we adopted a single smooth powerlaw profile with a volume mass density of the form ρ ∝ r −α"]
+  - fitting: Most probable parameters from marginalising over Bayesian evidence [4.1 Lens model: "most probable lens model parameters identified by marginalising over the Bayesian evidence"]
+  - validation: Image-plane best fit checked in uv plane via MIRIAD uvmodel chi2; offset within uncertainties [3 LENS MODELLING: "although there is a slight offset in parameter space between the image plane minimum-χ 2 and the uv plane minimum-χ 2, this is within the parameter uncertainties"]
+- step 2: Reconstruct CO cubes and moment maps
+  - method: Apply best lens model to each channel of CO cubes; moment maps with immoments [4.3 CO emission and source kinematics: "We used our best fit lens model to reconstruct the distribution of flux in the source plane for each slice of the image data cubes"]
+  - software: CASA
+  - parameter: CO(5-4) channels 31-61; CO(8-7) channels 30-60 [4.3 CO emission and source kinematics: "stacking over channels 31 to 61 inclusive"]
+- step 5: CO(1-0) gas mass
+  - method: De-magnify Valtchanov CO(1-0) spectrum using velocity-dependent magnification from CO(5-4) lens reconstruction; alpha_CO=1 [4.4.2 CO(1-0) gas: "we used the CO luminosity to molecular gas mass conversion factor from Bothwell et al. (2013) of α CO = 1"]
+  - parameter: Fixed magnification of 3 at extreme velocities [4.4.2 CO(1-0) gas: "we assumed a fixed magnification of 3 in these extremes"]
+- result: Continuum magnification = 15.9 ± 0.7 dimensionless [Table 2: "Total continuum magnification 15.9 ± 0.7"]
+- result: CO(5-4) magnification = 13.7 ± 0.6 dimensionless [4.3 CO emission and source kinematics: "13.7 ± 0.6 for the CO(5-4) flux and 13.1 ± 0.6 for the CO(8-7) flux"]
+- result: CO(1-0) luminosity = 3.5e10 ± 0.6e10 K km/s pc^2 [4.4.2 CO(1-0) gas: "L ′ CO = (3.5 ± 0.6) × 10 10 K kms −1 pc 2"]
+- result: Gas mass from CO = 3.5e10 ± 0.6e10 Msun [4.4.2 CO(1-0) gas: "total molecular gas mass in the source of (3.5 ± 0.6) × 10 10 M ⊙"]
+- limitation (authors): Differential magnification neglected; large uncertainties in gas conversion factors [4.4.1 Dust mass: "we have of course neglected any effects of differential magnification"]
+- limitation (authors): Image-plane pixel covariance ignored [3 LENS MODELLING: "image pixels are correlated by the beam which biases image plane modelling"]
+- not stated (card): MCMC priors, sampler and chain settings for kinematic fit; Lens model mask definitions and priors/evidence sampler details; Line-free channel ranges and CASA version used by ASP scripts; Two-component SED model functional form and fitting priors; Magnification-velocity mapping details for CO(1-0)
+
+### 2023ApJ...943...25G: A Highly Magnified Gravitationally Lensed Red QSO at z = 2.5 with a Significant Flux Ratio Anomaly (2023; agn_and_quasars, high_z_galaxies; multi_facility_alma_minor)
+- question: What is the nature of the gravitationally lensed dust-reddened QSO W2M J1042+1641 at z = 2.517, what causes its extreme flux ratio anomaly, and what are its intrinsic black hole and host galaxy properties?
+- step 2: Coupled morphological and gravitational lens mass modeling of HST WFC3/IR images
+  - method: Iteratively fit QSO point sources, Sérsic profiles for lens G, galaxy G1, and lensed QSO host Einstein ring with hostlens, reconstruct the PSF in 30 steps, and fit shared lens mass models (SIE+gamma, free SIE+gamma, SIE+gamma+GX) with glaf… [Coupled light and lens modeling: "To tackle the issues above, we wrote a custom wrapper code around `hostlens`, which uses an iterative approach:"] [Coupled light and lens modeling: "We now proceed in an iterative fashion, where we first refit the parameters of the shared lens mass model with `glafic` using the improved relative astrometry from step 3, and repeating steps 3 and 4. We do this in 30 steps, where the PSF correction box size is increased from 7 to 35 pixels on a side"]
+  - software: hostlens, glafic, glee, DrizzlePac
+  - parameter: 16'' x 19'' cutout, pixel scale 0.06''/pixel, circular masks of ~0.3'' radius around QSO images, PSF correction box 7 to 35 pixels over 30 steps [Hubble Imaging: "We reduced the images using the `DrizzlePac` software package to a final pixel scale of 0.06$''$ pixel$^{-1}$."] [Modeling of the system: "We focused on a $16\ensuremath{''} \times 19\ensuremath{''}$ cutout around the system starting with a newly constructed PSF (cite: Glikman15) for each filter."]
+  - parameter: z_l = 0.599 for G and GX, z_s = 2.517 for source [Table 5: "Both G and GX are assumed to be at $z_l=0.599$ (see §[2.4.1](#sec:lensz)), and the source is fixed at $z_s=2.517$."]
+  - assumption: Circular Sérsic profile with fixed n = 4 (de Vaucouleurs) for the QSO host galaxy [Coupled light and lens modeling: "We fixed the Sérsic index to the fiducial value for an early-type galaxy, $n=4$ (cite: devaucouleurs48)"]
+  - assumption: Singular isothermal ellipsoid plus external shear (SIE+gamma) for lens G, plus singular isothermal sphere (SIS) for perturber GX [Lensing analysis: "A commonly used model to fit gravitationally lensed QSOs, when the main constraints are astrometric, is the singular isothermal ellipsoid with external shear (SIE$+\gamma$)."] [Lensing analysis: "If we include it in the fit as a SIS at the observed location and at the redshift of the lens, with a velocity dispersion free to vary, we obtain a perfect fit for zero degrees of freedom"]
+  - fitting: Nelder-Mead chi^2 minimization followed by 5 independent MCMC chains of 15,000-30,000 steps for light profiles and 5 MCMC runs with 10^5-10^6 steps for glafic mass models [Coupled light and lens modeling: "During the fitting, our wrapper performs the parameter optimization by minimizing the sum of the quality-of-fit $\chi^2$ reported by `hostlens` for the 4 cutouts, using the Nelder-Mead algorithm (cite: Gao12)."] [Coupled light and lens modeling: "Once we have inferred the best-fit profile parameters as described above, we determine the corresponding uncertainties by combining 5 independent MCMC chains of 15,000 - 30,000 steps."]
+  - validation: Monitored MCMC convergence, checked chi^2 improvement and residuals, verified alignment of mass and light axes and Faber-Jackson scaling for GX [Coupled light and lens modeling: "We ensure their convergence by monitoring the change in the parameter values over time and removing the “burn-in“ steps."] [The Fiducial Model: "While the velocity dispersion of GX was a free parameter during the fit, its best-fit value of $\sim 46.5$ km/s is in good agreement with the predicted value of $\sim50$ km/s based on its relative luminosity compared to G, and the Faber-Jackson law."]
+- step 3: Calculate total magnification and test microlensing, extinction, and substructure explanations for the flux ratio anomaly
+  - method: Anchor lens model magnification predictions by intersecting the C/D model distribution with a Gaussian fit to observed F160W fluxes; evaluate differential extinction; run GPU-D microlensing simulations; model substructure perturber near im… [Flux ratio analysis and total magnifica…: "Based on the arguments we presented in §[3](#sec:morphmodeling), we construct an “anchor” by using the fiducial lens model, in spite of the fact that the SIE$+\gamma$ model shows a better match, and intersecting the C/D model prediction distribution with a Gaussian fit to the observed fluxes in filter F160W only"] [Microlensing analysis, intrinsic variab…: "We conducted microlensing simulations in order to investigate the plausibility of microlensing as the reason for the large flux anomaly of image A."]
+  - software: GPU-D, extinction
+  - parameter: Cardelli et al. (1989) extinction curve with R_V = 3.1; accretion disk inclination i = 60 deg, PA = 90 deg, relative microlens speed ~340 km/s [Extinction: "The median differential extinction was found to be $E(B-V)=0.04$, the median total extinction $E(B-V)=0.08$, and the median $R_V$ in particular, for the early-type sample, was consistent with the Galactic value of 3.1."] [Details of the microlensing calculation: "For the size of the accretion disk, $R_0$, in the observed F160W filter we use Equation 2 from (cite: morgan10), and assume inclination $i=60$ deg and PA$=90$ deg. To compute the microlensing time scale represented in the horizontal axis of the left plot in Figure [9](#fig:microlensing), we follow the methodology in (…"]
+  - assumption: Salpeter IMF with mean stellar mass 0.3 M_sun and stellar mass fraction 0.2 in De Vaucouleurs profile for kappa_* [Table 6: "We then reduced the mass in the best-fit De Vaucouleurs profile to a stellar fraction of 0.2 (cite: dai10), and computed the resulting convergence at the location of the QSO images."] [Details of the microlensing calculation: "For the population of lenses we assume a Salpeter (cite: salpeter55) IMF and a mean solar mass of $0.3 M_\ensuremath{\odot}$."]
+  - fitting: 5 MCMC chains of 10,000 points each for the toy substructure model [Footnote 21: "We used 5 MCMC chains of 10000 points each. The fluxes of the images predicted by the SIE$+\gamma$+GX model were used as constraints (the flux of image A being boosted), with 5% uncertainty."]
+  - validation: Checked that C/D intersection samples correspond to typical chi^2 values of the full MCMC chain and verified accretion disk size is much smaller than source position uncertainty [Flux ratio analysis and total magnifica…: "We checked that, although this intersection samples from the tail of the C/D model prediction distribution, the resulting samples correspond overall to the distribution of $\chi^2$ values of the entire MCMC chain we used in Table [\[tab:lens\]](#tab:lens), and therefore not to particularly poor fits."]
+- step 4: Fit optical/NIR spectra to measure QSO reddening, UV leakage, outflow velocities, and virial black hole mass
+  - method: Fit reddened composite QSO template and two-component power-law continuum to LBT/IRTF/Keck spectra; fit Gaussian profiles to Mg II, C IV, Ly-alpha absorption features and broad H-alpha emission; compute virial black hole mass and Eddington… [Spectral characteristics: "We then fit the line-free portions of the spectrum with a two-component power-law, one reddened and one pure, both with the same power-law index"] [Black hole mass: "Figure [13](#fig:mbh), left, shows that the H$\alpha$ line in the near-infrared spectrum is well fit by a single Gaussian, with a FWHM in velocity space of $v_{\rm FWHM} = 8479$ km s$^{-1}$, which we use to estimate the black hole mass of W2M J1042+1641."]
+  - software: IRAF, Spextool, modsCCDred
+  - parameter: Power-law spectral index alpha_nu = -0.5; virial mass coefficients a = 0.774, b = 0.520, c = 2.06; magnification mu = 117; bolometric corrections BC_5100 = 9.5 and BC_W4 = 7.5 [Spectral characteristics: "Following our interpretation that W2M J1042+1641 is a reddened QSO with some leakage of the intrinsic spectrum, we model the QSO spectrum as a power law, with spectral index $\alpha_\nu = -0.5$ ($F_{\lambda0} \propto \lambda^{-(\alpha_\nu+2)}$)."] [Black hole mass: "adopting the values $a=0.774$, $b=0.520$, $c=2.06$ for single-epoch measurements of FWHM$_{H\alpha}$ and $L_{5100}$, based on the calibration of (cite: Assef11)."]
+  - assumption: LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.30, Omega_Lambda = 0.70 [Introduction: "When computing luminosities and any other cosmology-dependent quantities, we use the $\Lambda$CDM concordance cosmology: $H_0=70$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_M=0.30$, and $\Omega_\Lambda=0.70$."]
+  - fitting: Template fitting, two-component power-law continuum fitting, and single/double Gaussian line profile fitting [Spectral characteristics: "While the template-based fit results in $E(B-V)=0.73$ mag, the two-component power-law fit yields $E(B-V) = 0.89$ mag."] [Spectral characteristics: "We see two distinct absorption systems that are well fit by a double Gaussian"]
+  - validation: Compared bolometric luminosity estimates derived independently from de-reddened HST F160W and unreddened WISE W4 [Black hole mass: "we compute $\log (L_{\rm bol} ~{\rm [erg/s]}) = 46.47$ – consistent with the estimate based on the de-reddened and F160W flux."]
+- step 5: Derive QSO host galaxy luminosity and stellar mass
+  - method: Convert de-magnified HST F160W host magnitude to rest-frame R-band luminosity via K-correction using mag2mag; estimate stellar mass from rest-frame u-g color (F125W - F160W) and g-band luminosity using Bell et al. (2003) mass-to-light rati… [The relation between the black hole mas…: "Following (cite: Peng06), we use the demagnified source magnitude in F160W to convert to absolute magnitude $R$-band, which is commonly used in the literature, as the K-correction is less dependent on the galaxy SED template."] [The relation between the black hole mas…: "Therefore, we can use the $F125W-F160W$ color as rest-frame $u-g$ and estimate the galaxy’s stellar mass using mass-to-light ratios from a single color as determined by (cite: Bell03) (Table 7)."]
+  - software: mag2mag, hostlens
+  - parameter: Host galaxy magnification factor = 15 (from hostlens for SIE+gamma+GX model) [The relation between the black hole mas…: "However, our analysis shows that the the (extended) host galaxy is only magnified by a factor of 15 (computed with `hostlens` for the SIE+$\gamma$+GX model)"]
+  - assumption: Coleman et al. (1980) early-type and Sbc galaxy spectral templates for K-correction; Bell et al. (2003) color-M/L relation [The relation between the black hole mas…: "We find **$\log(L_R/L_\odot) \sim 11.4$** for the early-type template, and **$\log(L_R/L_\odot) \sim11.2$** for the Sbc template."]
+  - validation: Compared derived stellar mass and magnification with earlier CIGALE SED fitting results by Matsuoka et al. (2018) [The relation between the black hole mas…: "An estimate of the stellar mass in W2M J1042+1641 was also conducted by (cite: Matsuoka18), which found $\log(M_\star/M_\odot) = 13.55$ using an SED fit (cite: Noll09) to the observed photometry which includes both the AGN and host galaxy light."]
+- result: Lens galaxy velocity dispersion sigma_G (fiducial SIE+gamma+GX model) = 223.2 ± +1.3/-1.1 km/s [Table 5: "$\sigma_G$ | $222.0^{+0.9}_{-0.6}$ | 229.0$\pm$0.8 | $223.2^{+1.3}_{-1.1}$"]
+- result: Perturber GX velocity dispersion sigma_GX (fiducial SIE+gamma+GX model) = 46.5 ± +4.2/-3.9 km/s [Table 5: "$\sigma_{GX}$ | $-$ | $-$ | $46.5^{+4.2}_{-3.9}$"]
+- result: External shear gamma (fiducial SIE+gamma+GX model) = 0.08 ± +0.02/-0.01 dimensionless [Table 5: "$\gamma$ | 0.03$\pm$0.01 | 0.15$\pm$0.01 | $0.08^{+0.02}_{-0.01}$"]
+- result: Time delay of Image D relative to other images (fiducial SIE+gamma+GX model) = 22.7 ± +-1.5 days [Table 5: "$\Delta t$ (days) | $12.9^{+7.4}_{-3.9}$ | 26.1$\pm$1.1 | 22.7$\pm$1.5"]
+- result: Total QSO magnification accounting for anomalous images A and B = 117 ± +22/-14 dimensionless [Flux ratio analysis and total magnifica…: "$+\mu_{\mathrm{D},C/D\cap}=117^{+22}_{-14}$."]
+- result: Total QSO magnification predicted by fiducial model without anomaly = 52 ± +5/-4 dimensionless [Flux ratio analysis and total magnifica…: "$\mu_\mathrm{total}^\mathrm{predicted A, B}=(|\mu_{\mathrm{A}}|+\mu_{\mathrm{B}}+|\mu_{\mathrm{C}}|+\mu_{\mathrm{D}})_{C/D\cap}=52^{+5}_{-4}$."]
+- result: Microlensing probability for Image A anomaly (SIE+gamma+GX, case 2) = 0.22 ± +0.55/-0.18 % [Microlensing analysis, intrinsic variab…: "However, the probability that image A is magnified by a factor as large as required to explain the observed anomaly is only $0.22^{+0.55}_{-0.18}\%$ (for the SIE$+\gamma$+GX model, in case 2 from the plot; $0.17^{+0.48}_{-0.14}\%$ for case 1."]
+- result: QSO dust reddening E(B-V) from template and power-law fits = 0.68 to 0.89 ± not stated mag [Initial Spectroscopy: "This best fit is achieved with a QSO template reddened by $E(B-V)=0.68$ (corresponding to a $A_V = 5.4$ mag in the QSO rest frame; red line)."]
+- result: H-alpha broad line FWHM (Table 3) = 8340 ± +-330 km s^-1 [Table 3: "FWHM$_{H\alpha}$ | $8340\pm330$ | km s$^{-1}$"]
+- result: Black hole mass log(M_BH) from F160W continuum fit = 9.56 ± not stated log(M_sun) [Black hole mass: "These values yield $\log (M_{\rm BH,vir} ~[M_\odot]) = 9.56$."]
+- result: Black hole mass log(M_BH) from WISE W4 luminosity = 9.06 ± not stated log(M_sun) [Black hole mass: "We de-magnify this flux by a factor of 117 and find $\log (L_{5100} ~{\rm [erg/s]}) = 44.37$, resulting in $\log (M_{\rm BH,vir} ~[M_\odot]) = 9.06$."]
+- result: Eddington ratio log(L/L_Edd) from F160W continuum fit = -1.34 ± not stated dimensionless [Black hole mass: "This gives $\log(L_{\rm bol} ~ {\rm [erg/s]}) = 46.33$ and a corresponding Eddington ratio, $\log(L/L_{Edd}) = -1.34$"]
+- result: Eddington ratio log(L/L_Edd) from WISE W4 = -0.68 ± not stated dimensionless [Black hole mass: "We find an Eddington ratio of $\log(L/L_{Edd}) = -0.68$, which is more consistent with the values found for other red quasars."]
+- result: Host galaxy stellar mass log(M_*/M_sun) = 11.4 ± not stated dimensionless [Abstract: "We find a host-galaxy stellar mass of $\log{M_\star/M_\odot}=11.4$, which is higher than the local $M_{BH}$ vs. $M_\star$ relation, but consistent with other high redshift QSOs."]
+- result: Host galaxy magnification factor = 15 ± not stated dimensionless [The relation between the black hole mas…: "However, our analysis shows that the the (extended) host galaxy is only magnified by a factor of 15 (computed with `hostlens` for the SIE+$\gamma$+GX model)"]
+- limitation (authors): In the second HST visit, image D is covered by a diffraction spike of image A, potentially introducing photometric systematics. [Flux ratio analysis and total magnifica…: "First, figure [2](#fig:hst1) shows that in both filters of visit 2, image D is covered by a diffraction spike of image A. It is difficult to assess what level of systematics this may introduce for the photometry of image D, reported in Table [\[tab:photometry\]](#tab:photometry)."]
+- limitation (authors): Image separations measured from HST and ALMA are inconsistent (e.g., A-B separation is 0.58'' in HST vs 0.51'' in ALMA), and the data are not constraining enough to quantify the impact on the radio/sub-mm flux ratio analysis. [Clues from the radio data: "2) the image separations measured from *HST* (Table [\[tab:astrometry\]](#tab:astrometry)) and from ALMA (Table [2](#tab:radio_mm)) are inconsistent, e.g., the separation between images A and B being $0.58\ensuremath{''}$ and $0.51\ensuremath{''}$, respectively, and the separation between the other images being even m…"]
+- limitation (authors): The host galaxy stellar mass estimate is based on only two photometric bands (F125W and F160W) and is subject to magnification and radial mass slope uncertainties. [The relation between the black hole mas…: "We caution that this stellar mass is based on only two photometric measurements, and is further subject to the uncertainty propagated from the magnification factor, but is the best that can be estimated with the current data."]
+- not stated (card): CASA version and ALMA pipeline version used for ALMA calibration and imaging; Exact Briggs robust parameter value used for ALMA continuum imaging; Which channels were flagged as line-specific (CO line) to isolate continuum-only spectral channels in ALMA data; ALMA array configuration and baseline lengths; Cell size, image size, and stopping threshold/masking parameters used in ALMA deconvolution;…
+
+### 2022MNRAS.510.2480D: Detecting low-mass haloes with strong gravitational lensing I: the effect of data quality and lensing configuration (2022; cosmology, high_z_galaxies; multi_facility_alma_minor)
+- question: How does the lowest halo mass that can be detected with galaxy-galaxy strong gravitational lensing depend on the quality of the observations and the characteristics of the observed lens systems?
+- step 1: Model real observations and generate mock lensing datasets
+  - method: Start from most probable reconstructed pixellated sources and smooth elliptical power-law lens models of real HST, Keck-AO, and ALMA systems; forward lens sources, convolve with PSF (or overwrite ALMA visibilities with Fourier-transformed … [Source and lens galaxies: "We start from their most probable reconstructed sources and lens them forward through their best smooth lens model (i.e. without the contribution of subhaloes), creating mock observations with the same set-up of the original data."] [Interferometric observations with ALMA: "The mock data were created by directly overwriting the visibility data with the Fourier-transformed sky model, then adding Gaussian noise at the same level as measured in the actual data."]
+  - parameter: Core radius r_c = 10^-4 arcsec fixed; 21 mock configurations M1-M20 varying FWHM (0.045, 0.07, 0.09, 0.16 arcsec), pixel scale (0.01, 0.04, 0.1 arcsec), and SNR [Lens modelling: "The core radius $r_c$ is fixed at $10^{-4}$ arcsec."] [Mock data, Source and lens galaxies: "In total, we create 21 strong gravitational lens systems of varying configuration, SNR and angular resolution"]
+  - assumption: Elliptical power-law mass density profile plus external shear for the main lens; pixellated regularised background source [Lens modelling: "We represent the lens mass distribution by an elliptical power-law model, with dimensionless surface mass density given by"] [Lens modelling: "In addition, an external shear component of strength $\Gamma$ and position angle $\Gamma_{\theta}$ is added to the model."]
+- limitation (authors): Only perturbers at the lens redshift (subhaloes) with fixed mean NFW concentration-mass relation are considered here; line-of-sight field haloes and concentration scatter are deferred to Paper II. [Introduction: "In this first paper we discuss the detectability of perturbers located at the redshift of the main lens (i.e. subhaloes), focusing on estimates of the detectable masses and the dependence on the lensing configuration, data quality and source structure."]
+- limitation (authors): Higher SNR mock images were generated from sources reconstructed from lower SNR real observations and thus may lack small-scale source features. [The effect of the signal-to-noise ratio: "We created all the mock images presented here from the reconstructed sources of real observations with the lowest SNR considered. As a result our higher SNR images may be missing small scale features compared to an actual observation of comparable quality."]
+- limitation (authors): In reality, changing angular resolution requires changing instrument or wavelength filter, which changes the intrinsic morphology of the lensed source. [Noise model: "One limitation of this approach is that, in reality, an increase in resolution requires a change of instrument, or filter, leading to source galaxies with a different structure."]
+- not stated (card): ALMA data reduction, calibration, and visibility averaging parameters (deferred to Stacey et al. in prep.); Exact macro-model parameters (kappa_0, gamma, q, position angle, external shear) for BELLS1, BELLS2, SHARP1, and ALMA1; Prior ranges used in MultiNest for macro-model parameters and source regularization; Spatial grid resolution on the lens plane and mass grid spacing used to compute the se…
+
+### 2018ApJ...862...64S: Deciphering the Activity and Quiescence of High-redshift Cluster Environments: ALMA Observations of Cl J1449+0856 at z = 2 (2018; galaxy_clusters_and_sz, high_z_galaxies; observational_alma_primary)
+- question: How much obscured star formation and how much quiescence is there in the core of the z=2 cluster ClJ1449, and what do ALMA 870um continuum and CO(4-3) say about member galaxies and the forming BCG?
+- step 1: Count 870um sources and compute overdensity
+  - method: Compare six S/N>4 sources >0.5 mJy with blank-field counts; assess lensing magnification with NFW halo [3 Overdensity of 870$\mu$m sources: "assuming a spherical NFW halo of mass $6\times10^{13}$ M$_{\odot}$ and a concentration in the range $c=1-5$"]
+- limitation (authors): Small field and low-number statistics; field comparison selection not equivalent [4.1.1 Color distribution: "the very small number statistics of the *ALMA*-detected sample in the cluster"]
+- not stated (card): Reduction/calibration and imaging details (CASA version, weighting, cleaning) are only in C18; Positions and catalogue of known cluster members; Per-source flux values for A1-A6 and members; Flux-boosting correction recipe for CO(4-3); CO(5-4)/CO(4-3) ratio values and CO(5-4)-LIR relation coefficients adopted; Conversion from 870um flux to LIR with Bethermin SEDs (template details)
+
+### 2026ApJ..1002L..28Y: A Close Quasar Pair in a Massive Galaxy Merger at z = 5.7 (2026; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Is J2037–4537 a physical close quasar pair in a galaxy merger at z=5.7 rather than a doubly-imaged lensed quasar, and what are the host galaxy properties and implied pair fraction?
+- step 4: Lens modeling test
+  - method: Fit continuum and [C II] with singular isothermal ellipsoid plus external shear lens and Sersic sources [3.1 Confirming the Close Quasar Pair Hy…: "We assume a singular isothermal elliptical density profile for the potential lensing galaxy, and add an external shear component"]
+  - software: PyAutoLens
+  - validation: Compared continuum and [C II] best-fit lens models, sizes and axis ratio [3.1 Confirming the Close Quasar Pair Hy…: "The best-fit lensing models for the continuum and the \[C ii\] line have significantly different deflector galaxy positions and Einstein radii"]
+- limitation (authors): T_dust and beta assumed; multi-band FIR needed [3.2 Quasar Host Galaxy Properties: "Future multi-band FIR photometry is needed to directly constrain $T_\text{dust}$ and $\beta$ for J2037–4537."]
+- limitation (authors): Pair fraction is a lower limit because the survey is incomplete [4.1 Quasar Pair Fraction: "This value is a lower limit because the survey of (cite: yue21) is incomplete."]
+- not stated (card): Number of channels/channel width and velocity resolution of the [C II] cube; Cell size, image size, masks and clean thresholds; Calibrators and whether the pipeline or manual calibration was used; MCMC sampler, priors and likelihood for Gaussian line fits; PyAutoLens model setup, priors and settings; Which line-free channels were used given the line at the spectrum edge; Procedure for sigma used …
+
+### 2025A&A...693L..17S: A nuclear spiral in a dusty star-forming galaxy at z = 2.78 (2025; high_z_galaxies; archival_reuse)
+- question: Whether DSFGs exhibit nuclear spirals within their central kpc.
+- step 1: Reconstruct the lensed source
+  - method: Infer maximum a posteriori lens models and source surface brightness for gradient, curvature and area-weighted gradient regularisation. [Data and lens modelling: "In an extension of the analysis by (cite: Stacey:2024), we infer *maximum a posteriori* lens models and their associated sources for the three regularisation types, casting every pixel into the source plane."] [Data and lens modelling: "We consider three types of source regularisation: gradient, curvature and area-weighted gradient."]
+  - software: pronto
+  - parameter: Ellipsoidal power-law, external shear and multipole expansions up to 4th order. [Data and lens modelling: "The lens model comprises an ellipsoidal power-law, external shear and multipole expansions up to 4th order."]
+  - parameter: Delaunay source grid adapted to magnification; neighbouring-point regularisation. [Data and lens modelling: "The source is constructed on a Delaunay grid adapted to the lens model magnification and a regularisation hyper-parameter enforces a correlation between neighbouring points of the source."]
+  - parameter: Area-weighted gradient weights regularisation by triangle area. [Data and lens modelling: "area-weighted gradient is a modification of the former whereby the regularisation is weighted by the area of each triangle rather than each triangle being weighted equally."]
+  - assumption: Bayesian priors on lens mass distribution and source smoothness. [Data and lens modelling: "In the lens modelling procedure, assumptions must be made about the mass distribution in the lens and the smoothness of the source in the form of Bayesian statistical priors."]
+  - assumption: Flat ΛCDM cosmology (cite: PlanckCollaboration:2020). [Introduction: "Throughout, we assume flat $\Lambda$CDM cosmology (cite: PlanckCollaboration:2020)."]
+  - fitting: Semi-linear inversion jointly solving lens parameters and source surface brightness; maximum a posteriori solutions. [Data and lens modelling: "The lens modelling was performed by (cite: Stacey:2024) using `pronto`, a semi-linear inversion methodology adapted for interferometric data solving simultaneously for the lens model parameters and source surface brightness"] [Data and lens modelling: "we infer *maximum a posteriori* lens models and their associated sources for the three regularisation types"]
+  - validation: Compare regularisation types with Stacey:2024; gradient and curvature agree within 2σ, with limited angular discrepancies for area-weighted gradient. [Data and lens modelling: "Gradient and curvature regularisation types produce model parameters consistent within 2$\sigma$ of those reported in (cite: Stacey:2024)."] [Data and lens modelling: "The area-weighted gradient regularisation model is consistent except for the shear and ellipticity position angles which differ by 2 and 10 degrees, respectively."]
+- step 2: Map source uncertainties and magnification
+  - method: Invert 1000 mock visibility data sets; form pixel mean, standard deviation and signal-to-noise maps; calculate magnification from mapped triangle-area ratios. [Data and lens modelling: "We inferred an uncertainty in the source plane by generating 1000 mock visibility data sets from the maximum a-posteriori lens model and realisations of the noise and performing linear inversions."] [Data and lens modelling: "We then created mean, standard deviation and signal-to-noise ratio maps for each pixel of the reconstructed source."]
+  - parameter: 1000 mock visibility data sets for each maximum a-posteriori model. [Data and lens modelling: "We inferred an uncertainty in the source plane by generating 1000 mock visibility data sets from the maximum a-posteriori lens model and realisations of the noise and performing linear inversions."]
+  - assumption: Neglect lens-model parameter uncertainties. [Data and lens modelling: "We generate uncertainty maps for all three models neglecting the uncertainties in lens model parameters."]
+  - assumption: Source uncertainty dominated by data noise and phase/amplitude-error artefacts. [Data and lens modelling: "the source surface brightness uncertainty is dominated by noise and artefacts in the data caused by phase and amplitude errors"]
+  - fitting: Linear inversions of mock visibilities. [Data and lens modelling: "We inferred an uncertainty in the source plane by generating 1000 mock visibility data sets from the maximum a-posteriori lens model and realisations of the noise and performing linear inversions."]
+  - validation: Assess whether source clumps are genuine or noise artefacts. [Discussion: "Here, our source error analysis gives due diligence to questions of source structure significance, such as whether individual clumps are genuine or noise artefacts."]
+- step 3: Measure resolution and recovered flux
+  - method: Estimate brightness-weighted source-plane beam FWHM; compare Delaunay vertex spacing; compute lensed flux from source flux density times magnification map. [Results: "Assuming the beam is uniformly magnified, we infer a surface-brightness-weighted mean FWHM of $55$ pc (consistent for all three regularisation types)."] [Results: "This is very similar to the median distance between the Delaunay vertices when every pixel is cast back into the source plane; $\approx50$ pc."]
+  - parameter: Include nominal ±10% ALMA flux scale accuracy. [Results: "including nominal $\pm10$% flux scale accuracy for ALMA calibration."]
+  - assumption: Uniformly magnified beam for the mean-FWHM estimate. [Results: "Assuming the beam is uniformly magnified, we infer a surface-brightness-weighted mean FWHM of $55$ pc (consistent for all three regularisation types)."]
+  - validation: Resolution agrees with Delaunay spacing; recovered flux agrees with unresolved APEX/LABOCA measurement. [Results: "This is very similar to the median distance between the Delaunay vertices when every pixel is cast back into the source plane; $\approx50$ pc."] [Results: "These are consistent with the measurement of $0.125\pm0.005$ Jy with $\pm15$% flux scale accuracy quoted by (cite: Reuter:2020) from an unresolved flux density measurement with APEX/LABOCA at the same frequency."]
+- step 4: Derive star formation rates and densities
+  - method: Compute brightness-weighted mean magnifications, correct the inherited SED-based star formation rate, and map star formation rate density. [Results: "We find a surface-brightness-weighted mean magnification of $16.6^{+0.3}_{-0.2}$ ($16.5^{+0.2}_{-0.2}$; $15.8^{+0.3}_{-0.2}$) for gradient (curvature; area-weighted) source regularisation types."] [Results: "With these magnification corrections, we infer an obscured star formation rate"]
+  - parameter: Reuter:2020 SED-based SFR 700±200 M⊙ yr⁻¹ and original magnification 20±3. [Results: "An obscured star formation rate of $700\pm200$ M$_{\odot}$ yr$^{-1}$ was computed by (cite: Reuter:2020) for SPT 0538$-$50 by fitting the far-infrared–mm broad-band spectral energy distribution"] [Results: "with a quoted magnification of $20\pm3$ based on lens modelling with observations at lower angular resolution."]
+  - assumption: Uniform dust temperature and emissivity over the source. [Results: "The star formation rate density for each source reconstruction is shown in Fig. [2](#fig:reconstruction) (fourth panels), assuming that the dust temperature and emissivity are uniform over the source."]
+  - assumption: Inherited modified black-body SED and Kroupa initial mass function. [Results: "a modified black-body and (cite: Kroupa:2001) initial mass function"]
+  - fitting: SED fitting inherited from Reuter:2020. [Results: "An obscured star formation rate of $700\pm200$ M$_{\odot}$ yr$^{-1}$ was computed by (cite: Reuter:2020) for SPT 0538$-$50 by fitting the far-infrared–mm broad-band spectral energy distribution"]
+  - validation: Revised rates consistent with Reuter:2020; SED-fitting uncertainty dominates. [Results: "consistent with (cite: Reuter:2020) within the uncertainties."] [Results: "Note that the uncertainties in the star formation rate from SED fitting dominate the overall uncertainties."]
+- result: Surface-brightness-weighted mean source-plane FWHM = 55 ± not stated pc [Results: "Assuming the beam is uniformly magnified, we infer a surface-brightness-weighted mean FWHM of $55$ pc (consistent for all three regularisation types)."]
+- result: Median source-plane Delaunay vertex spacing = ≈50 ± not stated pc [Results: "This is very similar to the median distance between the Delaunay vertices when every pixel is cast back into the source plane; $\approx50$ pc."]
+- result: Effective spatial resolution over the source = <50 to 80 ± not stated pc [Results: "Therefore, we consider 55 pc a reasonable characterisation of the effective spatial resolution which varies from $<50$ to $80$ pc over the source."]
+- result: Total lensed flux density, gradient regularisation = 0.111 ± ±0.011 Jy [Results: "$0.111\pm0.011$ Jy ($0.111\pm0.011$ Jy; $0.114\pm0.011$ Jy) for gradient (curvature; area-weighted) regularisation methods"]
+- result: Total lensed flux density, curvature regularisation = 0.111 ± ±0.011 Jy [Results: "$0.111\pm0.011$ Jy ($0.111\pm0.011$ Jy; $0.114\pm0.011$ Jy) for gradient (curvature; area-weighted) regularisation methods"]
+- result: Total lensed flux density, area-weighted gradient regularisation = 0.114 ± ±0.011 Jy [Results: "$0.111\pm0.011$ Jy ($0.111\pm0.011$ Jy; $0.114\pm0.011$ Jy) for gradient (curvature; area-weighted) regularisation methods"]
+- result: Inferred contribution of undetected extended dust emission = <10% ± not stated dimensionless [Results: "This suggests that there is no significant contribution (\<10%) from undetected, extended low surface brightness dust emission."]
+- result: Surface-brightness-weighted mean magnification, gradient = 16.6 ± +0.3/-0.2 dimensionless [Results: "We find a surface-brightness-weighted mean magnification of $16.6^{+0.3}_{-0.2}$ ($16.5^{+0.2}_{-0.2}$; $15.8^{+0.3}_{-0.2}$) for gradient (curvature; area-weighted) source regularisation types."]
+- result: Surface-brightness-weighted mean magnification, curvature = 16.5 ± +0.2/-0.2 dimensionless [Results: "We find a surface-brightness-weighted mean magnification of $16.6^{+0.3}_{-0.2}$ ($16.5^{+0.2}_{-0.2}$; $15.8^{+0.3}_{-0.2}$) for gradient (curvature; area-weighted) source regularisation types."]
+- result: Surface-brightness-weighted mean magnification, area-weighted gradient = 15.8 ± +0.3/-0.2 dimensionless [Results: "We find a surface-brightness-weighted mean magnification of $16.6^{+0.3}_{-0.2}$ ($16.5^{+0.2}_{-0.2}$; $15.8^{+0.3}_{-0.2}$) for gradient (curvature; area-weighted) source regularisation types."]
+- result: Obscured star formation rate, gradient = 850 ± ±270 M⊙ yr⁻¹ [Results: "$850\pm270$ M$_{\odot}$ yr$^{-1}$ ($850\pm270$ M$_{\odot}$ yr$^{-1}$ and $890\pm290$ M$_{\odot}$ yr$^{-1}$) for gradient (curvature; area-weighted)"]
+- result: Obscured star formation rate, curvature = 850 ± ±270 M⊙ yr⁻¹ [Results: "$850\pm270$ M$_{\odot}$ yr$^{-1}$ ($850\pm270$ M$_{\odot}$ yr$^{-1}$ and $890\pm290$ M$_{\odot}$ yr$^{-1}$) for gradient (curvature; area-weighted)"]
+- result: Obscured star formation rate, area-weighted gradient = 890 ± ±290 M⊙ yr⁻¹ [Results: "$850\pm270$ M$_{\odot}$ yr$^{-1}$ ($850\pm270$ M$_{\odot}$ yr$^{-1}$ and $890\pm290$ M$_{\odot}$ yr$^{-1}$) for gradient (curvature; area-weighted)"]
+- result: Central star formation rate density = ≈2000 ± not stated M⊙ yr⁻¹ kpc⁻² [Results: "The central region of the source has an implied extreme star formation rate of $\approx2000$ M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$"]
+- result: Area-weighted gradient shear position-angle difference from Stacey:2024 = 2 ± not stated degrees [Data and lens modelling: "The area-weighted gradient regularisation model is consistent except for the shear and ellipticity position angles which differ by 2 and 10 degrees, respectively."]
+- result: Area-weighted gradient ellipticity position-angle difference from Stacey:2024 = 10 ± not stated degrees [Data and lens modelling: "The area-weighted gradient regularisation model is consistent except for the shear and ellipticity position angles which differ by 2 and 10 degrees, respectively."]
+- limitation (authors): Source-plane resolution is non-uniform because magnification varies. [Results: "As the magnification varies over the source, the effective angular resolution in the source plane is not uniform."]
+- limitation (authors): Lens-parameter uncertainties omitted from source uncertainty maps. [Data and lens modelling: "We generate uncertainty maps for all three models neglecting the uncertainties in lens model parameters."]
+- limitation (authors): Uniform dust temperature and emissivity assumption is likely inaccurate. [Discussion: "we assumed that the dust emissivity and temperature are uniform over the source, but in reality, these are likely non-uniform."]
+- not stated (card): Calibration software, versions, calibrators, flagging and any self-calibration settings deferred to Stacey:2024.; Spectral-window bandwidths, continuum channel selection and visibility averaging.; Visibility selections, noise weights and noise-realisation prescription.; Numerical lens parameters, parameter priors, optimisation settings and regularisation hyper-parameters.; Image pixel scale, fiel…
+
+### 2018MNRAS.476.4383D: Modelling high-resolution ALMA observations of strongly lensed highly star-forming galaxies detected by Herschel (2018; high_z_galaxies; observational_alma_primary)
+- question: What are the lens mass properties and intrinsic (de-magnified) properties of six Herschel-selected lensed submm galaxies, and do image-plane and visibility-plane lens modelling agree?
+- step 1: Image-plane lens modelling
+  - method: Semi-linear inversion with Voronoi source pixels, Bayesian evidence maximised by MCMC, on cleaned image [3 Methodology: "we have used k-means clustering for the source pixels and Markov Chain Monte Carlo (MCMC) optimisation"]
+  - software: MCMC (unnamed code)
+  - parameter: power-law slopes fixed per run; number of source pixels fixed [3.1 Adapting the SLI method: "We performed multiple MCMC runs for a range of power-law density profile slopes which were kept fixed in each case to help simplify parameter space."]
+  - assumption: Elliptical power-law density profile plus external shear only when evidence improved [3.2 Lens model: "We only incorporated external shear in the lens model when the Bayesian evidence was improved by its inclusion."]
+  - fitting: Maximise Bayesian evidence of Suyu et al. 2006 [3.1 Adapting the SLI method: "we used Markov Chain Monte Carlo (MCMC) optimisation to maximise the Bayesian evidence derived by (cite: suyu06)."]
+  - validation: Compared with visibility-plane results; beam sidelobe test [4 Results: "We therefore conclude that beam sidelobes in the current data play a negligible role."]
+- step 2: Visibility-plane lens modelling
+  - method: Model visibilities for each source pixel via MIRIAD uvmodel; chi-squared on complex visibilities [3.1 Adapting the SLI method: "This is achieved by incorporating the ` MIRIAD` software package library (cite: sault95) into our reconstruction code, but using a much streamlined version of the ` uvmodel` procedure."]
+  - software: MIRIAD
+  - validation: Compared to image-plane parameters; mild differences only for HELMS J001615.7+032435 [4 Results: "On the whole, there is good agreement between the parameters obtained using the two methods"]
+- step 3: Compute magnifications
+  - method: Average magnification over 100 source plane pixelisations using best-fit image-plane model [4 Results: "computed the average source magnification factor of 100 different source plane pixelisations."]
+- result: Power-law slope alpha, H-ATLAS J142413.9 (image plane) = 2.03 ± 0.04 dimensionless [Table 3: "| H-ATLAS J142413.9 | $0.59\pm0.01$ | $(0.18\pm 0.01,0.68\pm0.01)$ | $84\pm2$ | $1.07\pm0.02$ | $2.03\pm0.04$ |"]
+- result: Einstein radius HELMS J004723.6 (image plane) = 2.16 ± 0.10 arcsec [Table 3: "$2.16\pm0.10$"]
+- result: Total magnification H-ATLAS J142935.3 (image plane) = 23.6 ± 1.3 dimensionless [Table 4: "| H-ATLAS J142935.3 | $23.6\pm1.3$ | $22.3\pm1.3$ |"]
+- limitation (authors): Low S/N and undetected counter-image in HELMS J001615.7+032435 raise modelling uncertainty [Object notes: "results in an undetected counter-image which increases the modelling uncertainty for this system."]
+- not stated (card): MCMC sampler, priors, chain settings and convergence criteria; Number of Voronoi source pixels and k-means settings; Visibility averaging/uv-grouping used for sigma_j; Which spectral windows/channels were averaged and CLEAN parameters (mask, threshold, iterations); Range of fixed slopes alpha scanned; Source code of lens modelling not released; SED fitting code and priors; far-IR luminosity and g…
+
+### 2020MNRAS.495L...1I: Giant star-forming clumps? (2020; high_z_galaxies, star_formation; archival_reuse)
+- question: Does the Cosmic Eyelash contain significant dusty star-forming clumps?
+- step 3: Update the gravitational lens model
+  - method: Update the earlier parametric cluster-core mass model using ALMA image-pair centroids as constraints [Lens modeling: "We have produced an updated version of the parametric mass model of the MACS J2135$-$01 cluster core described in (cite: swinbank10) using lenstool[^4] (cite: jullokneib09)."] [Lens modeling: "We take the centroids of the ALMA image pair in Figs [1](#fig:sma_alma)–[2](#fig:eyelashcont) as constraints."]
+  - software: lenstool
+  - assumption: Λ-CDM: Ωm = 0.3, ΩΛ = 0.7, H0 = 70 km s−1 Mpc−1; 1 arcsec = 8.2 kpc at z=2.3 [Introduction: "a standard $\Lambda$-CDM cosmology with $\Omega_{\rm m} = 0.3$, $\Omega_\Lambda = 0.7$ and $H_0 = 70$ km s$^{-1}$ Mpc$^{-1}$, where 1 arcsec at $z=2.3$ corresponds to 8.2 kpc."]
+  - validation: Small lens-model mismatch motivates independent fits to the two images [Lens modeling: "Because of a small mis-match in the lens model,[^5] to reproduce both images simultaneously we performed the fit on each image independently"]
+- step 4: Fit the intrinsic continuum morphology
+  - method: Forward-model Sérsic sources through the fixed lens model, convolve with the ALMA beam, and re-grid to the image-plane pixel grid; compare one and two components [Lens modeling: "We took a forward-model approach, assuming a Sérsic profile for the source, convolving by the ALMA beam and re-gridding to the same pixel grid in the image plane."] [Lens modeling: "this time comprising two independent Sérsic profiles"]
+  - parameter: Band 7, 303.9 GHz [Lens modeling: "our best ALMA continuum image of the Cosmic Eyelash (Band 7, 303.9 GHz)"]
+  - parameter: Optimise centroid, PA, axis ratio and FWHM; keep mass model fixed [Lens modeling: "The source parameters (centroid, PA, axis ratio and FWHM) were optimised while keeping the mass model fixed."]
+  - assumption: Parametric Sérsic source morphology [Lens modeling: "We took a forward-model approach, assuming a Sérsic profile for the source"]
+  - fitting: Fit each lensed image independently; use recovered-parameter variations to estimate lens-model systematic errors [Lens modeling: "we performed the fit on each image independently, using the variations in the recovered parameters as an estimate of systematic errors due to the lens model."]
+  - validation: Single-component fit leaves >50σ core residuals; assess two-component residuals for mirrored substructure [Lens modeling: "The best source parameters with a single Sérsic profile reproduced the observed configurations well, with significant ($>50\sigma$) residuals near the core of each image, symmetrical about the critical line."] [Lens modeling: "We found no mirrored sub-structure in the residual map"]
+- step 6: Derive clump luminosity and SFR limits
+  - method: Scale the maximum positive residual to the Cosmic Eyelash SED, account for lens magnification, and convert LIR to SFR [Lens modeling: "If we scale the maximum positive residual, which is magnified by roughly $8\times$ and $1.6\times$ along the major and minor axes, to the well-sampled SED of the Cosmic Eyelash"] [Lens modeling: "Adopting the traditional conversion from $L_{\rm IR}$ to SFR (cite: ke12)"]
+  - parameter: Maximum positive residual: 260 μJy [Lens modeling: "a brightest peak of 260 $\mu$Jy, roughly $10\sigma$ above the noise"]
+  - parameter: Residual magnification: roughly 8× along major axis and 1.6× along minor axis [Lens modeling: "which is magnified by roughly $8\times$ and $1.6\times$ along the major and minor axes"]
+  - parameter: Rest-frame 8–1000 μm luminosity [Lens modeling: "we find that its rest-frame 8–1000-$\mu$m luminosity cannot exceed $24\times 10^9$ L$_\odot$."]
+  - assumption: Clump SED scaled from the well-sampled Cosmic Eyelash SED [Lens modeling: "to the well-sampled SED of the Cosmic Eyelash"]
+  - assumption: (cite: chabrier03) initial mass function [Introduction: "Throughout, we adopt the (cite: chabrier03) initial mass function"]
+  - assumption: (cite: ke12) LIR-to-SFR conversion [Lens modeling: "Adopting the traditional conversion from $L_{\rm IR}$ to SFR (cite: ke12)"]
+  - validation: Alternative Arp 220 SED raises the limit by 1.6× [Lens modeling: "Adopting the extreme starburst SED of Arp 220, our limit moves $1.6\times$ higher."]
+- result: Extended component effective radius = 4.42 ± ± 1.21 kpc [Table 2: "| $4.42\pm 1.21$ | 0.46 | $134\pm4$ | $6.2\pm0.9$ | $0.45\pm0.22$ |"]
+- result: Extended component axis ratio = 0.46 ± not stated dimensionless [Table 2: "| $4.42\pm 1.21$ | 0.46 | $134\pm4$ | $6.2\pm0.9$ | $0.45\pm0.22$ |"]
+- result: Extended component PA = 134 ± ±4 deg [Table 2: "| $4.42\pm 1.21$ | 0.46 | $134\pm4$ | $6.2\pm0.9$ | $0.45\pm0.22$ |"]
+- result: Extended component total flux = 6.2 ± ±0.9 mJy [Table 2: "| $4.42\pm 1.21$ | 0.46 | $134\pm4$ | $6.2\pm0.9$ | $0.45\pm0.22$ |"]
+- result: Extended component Sérsic index = 0.45 ± ±0.22 dimensionless [Table 2: "| $4.42\pm 1.21$ | 0.46 | $134\pm4$ | $6.2\pm0.9$ | $0.45\pm0.22$ |"]
+- result: Compact component effective radius = 1.23 ± ± 0.02 kpc [Table 2: "| $1.23\pm 0.02$ | 0.44 | $155\pm6$ | $8.3\pm1.3$ | $0.51\pm0.06$ |"]
+- result: Compact component axis ratio = 0.44 ± not stated dimensionless [Table 2: "| $1.23\pm 0.02$ | 0.44 | $155\pm6$ | $8.3\pm1.3$ | $0.51\pm0.06$ |"]
+- result: Compact component PA = 155 ± ±6 deg [Table 2: "| $1.23\pm 0.02$ | 0.44 | $155\pm6$ | $8.3\pm1.3$ | $0.51\pm0.06$ |"]
+- result: Compact component total flux = 8.3 ± ±1.3 mJy [Table 2: "| $1.23\pm 0.02$ | 0.44 | $155\pm6$ | $8.3\pm1.3$ | $0.51\pm0.06$ |"]
+- result: Compact component Sérsic index = 0.51 ± ±0.06 dimensionless [Table 2: "| $1.23\pm 0.02$ | 0.44 | $155\pm6$ | $8.3\pm1.3$ | $0.51\pm0.06$ |"]
+- result: Source-plane separation of component central positions = within 0.01 ± not stated arcsec [Lens modeling: "two components lying very close in central position (within 0.01 arcsec or $\approx 80$ pc in the source plane)"]
+- result: Clump rest-frame 8–1000-μm luminosity limit = <24 × 10^9 ± not stated L⊙ [Summary: "with rest-frame 8–1000-$\mu$m luminosities below $24\times 10^9$ L$_\odot$"]
+- result: Individual clump SFR limit = <2.6 ± not stated M⊙ yr−1 [Summary: "individual SFRs no higher than 1 per cent of the total, so $<2.6$ M$_\odot$ yr$^{-1}$."]
+- result: Individual clump fraction of total SFR = no higher than 1 ± not stated per cent [Summary: "individual SFRs no higher than 1 per cent of the total"]
+- result: Increase in clump limit using Arp 220 SED = 1.6 ± not stated dimensionless [Lens modeling: "Adopting the extreme starburst SED of Arp 220, our limit moves $1.6\times$ higher."]
+- limitation (authors): Small lens-model mismatch prevents a simultaneous fit to both images [Lens modeling: "Because of a small mis-match in the lens model,[^5] to reproduce both images simultaneously we performed the fit on each image independently"]
+- limitation (authors): Fidelity assessment requires large SNR bins [Lens modeling: "albeit needing to adopt large SNR bins, searching for both positive and negative peaks."]
+- limitation (authors): Approximately 80-pc source-plane resolution applies along the major axis [Lens modeling: "they are unresolved down to $\approx 80$ pc in the source plane[^6] along the major axis."]
+- not stated (card): Exact execution blocks and the role of acknowledged project 2013.1.00164.S, which is absent from Table 1.; CASA and ALMA Science Pipeline versions and calibration scripts.; Exact flagged channel ranges and final usable continuum bandwidth for each dataset.; Self-calibration solution intervals, reference antennas, solution thresholds and applied relative astrometric or flux-scale corrections.; TCL…
+
+### 2013ApJ...767..132H: ALMA Observations of SPT-discovered, Strongly Lensed, Dusty, Star-forming Galaxies (2013; high_z_galaxies; observational_alma_primary)
+- question: Are four SPT-discovered dusty sources gravitationally lensed, and what are their magnifications and intrinsic properties from visibility-plane lens modeling?
+- step 2: Visibility-plane lens modeling with integrated phase self-calibration
+  - method: Gaussian source lensed by SIE, Fourier transformed and sampled at ALMA uv; chi^2 vs visibilities with antenna phases solved at each chain step [3.1 Lens Modeling: "We model the lenses by generating model lensed images that are subjected to simulated observations and compared to the data."]
+  - software: custom MCMC code
+  - parameter: Source: 4 params; SIE lens: 5 params [3.1 Lens Modeling: "The lens is modelled as a Singular Isothermal Ellipsoid (SIE) with five free parameters"]
+  - assumption: WMAP7 cosmology h=0.71, Om=0.27, OL=0.73 [1 Introduction: "with WMAP7 parameters, with $h=0.71$, $\Omega_M=0.27$, and $\Omega_\Lambda=0.73$"]
+  - fitting: MCMC with Metropolis-Hastings sampling, tempering (posterior^1/T); noise from differencing adjacent visibilities [3.1 Lens Modeling: "We explore the model parameter space using a Markov Chain Monte Carlo (MCMC) method with Metropolis-Hastings sampling."]
+  - validation: Simulated observations recover input antenna phases; extended-array data compared with predictions [Lens Model Self-Calibration: "The excellent agreement between input and recovered phase demonstrates that the simultaneous fitting of the lens model and antenna phases does not bias the antenna phase measurement"]
+- step 3: Derive intrinsic properties
+  - method: Divide observed fluxes by magnification; greybody SED for L_FIR; SFR from Kennicutt conversion [4 Discussion: "The lens models permit the calculation of some intrinsic properties of the lensed galaxies by simply dividing observed properties by the magnification."]
+  - assumption: Standard starburst SFR conversion (Kennicutt 1998) [4 Discussion: "assuming a standard conversion for starbursting galaxies (cite: kennicutt98)"]
+  - validation: LABOCA 870 um flux agrees with modeled ALMA flux within ~10% [2.3 Other Supporting Data: "agree with the total flux density in the modeled ALMA data (described below) to within calibration uncertainties, typically 10%"]
+- result: SPT0346-52 magnification = 5.4 ± 0.2 dimensionless [Table 1: "5.4$\pm$0.2"]
+- result: SPT0418-47 magnification = 21.0 ± 3.5 dimensionless [Table 1: "21.0$\pm$3.5"]
+- result: SPT0529-54 magnification = 9.4 ± 1.0 dimensionless [Table 1: "9.4$\pm$1.0"]
+- result: SPT0346-52 Einstein radius = 1.124 ± 0.004 arcsec [Table 1: "1.124$\pm$0.004"]
+- result: SPT0346-52 intrinsic L_FIR = 37.3 ± 2.8 1e12 Lsun [Table 1: "37.3$\pm$2.8"]
+- result: SPT0346-52 SFR surface density = 4200 ± not stated Msun/yr/kpc^2 [4 Discussion: "implying a star-formation rate of 4200 M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$"]
+- result: SPT0346-52 magnification from extended data = 5.26 ± 0.12 dimensionless [High Resolution Observations of SPT0346…: "$5.26 \pm 0.12$"]
+- limitation (authors): Only compact-configuration data used; SPT0529-54 posterior bimodal [4 Discussion: "The extended array data on this source can possibly break this degeneracy."]
+- not stated (card): CASA version and calibration scripts; Imaging parameters (weighting, cleaning, cell size); MCMC chain length, priors, tempering schedule T; Greybody fit parameters (T_dust, beta) and FIR luminosity integration range; Lens priors and source-model starting values; Phase calibrator names; Code for lens modeling not released
+
+### 2020MNRAS.496..598C: Linking the small-scale relativistic winds and the large-scale molecular outflows in the z = 1.51 lensed quasar HS 0810+2554 (2020; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Resolve the host mm continuum, measure molecular gas mass and extent, and search for an outflow linking small scale relativistic winds to large scale molecular gas.
+- step 4: Constrain the gravitational lens
+  - method: Fit HST optical image positions with glafic; freeze the resulting lens parameters for ALMA modeling. [Lensing Analysis: "We used the gravitational lens adaptive-mesh fitting code *glafic* (cite: 2010ascl.soft10012O) to model the gravitational lens system HS 0810$+$2554."] [Lensing Analysis: "The parameters of the lens are constrained using the optical positions of the images obtained from *HST* observations of HS 0810$+$2554."]
+  - software: glafic, CASTLES
+  - parameter: Lens ellipsoid orientation and ellipticity free [Lensing Analysis: "The ellipsoid’s orientation and ellipticity were left as free parameters."]
+  - assumption: Point-source UV emission; singular isothermal ellipsoid plus external shear from nearby galaxy group [Lensing Analysis: "For modeling the source of the UV emission we assumed a point source."] [Lensing Analysis: "The lens is modeled with a singular isothermal ellipsoid (SIE) plus an external shear from the nearby galaxy group."]
+  - fitting: glafic lens fit to optical positions [Lensing Analysis: "The parameters of the lens are constrained using the optical positions of the images obtained from *HST* observations of HS 0810$+$2554."]
+  - validation: Point-source UV assumption motivated by small accretion disk and absence of a UV Einstein ring [Lensing Analysis: "The HST image of HS 0810$+$2554 does not show an Einstein ring in the UV band indicating that most of the observed UV emission most likely originates from the accretion disk."]
+- step 6: Reconstruct CO rotation and magnification
+  - method: Lens-invert integrated CO(3–2) and individual channel images; construct a source-plane cube and moments; use intensity-weighted magnification maps. [Lensing Analysis: "We create a spectral cube containing the reconstructed sources at each frequency channel."] [Lensing Analysis: "the derived moment 0 spectrally integrated map and the moment 1 velocity map of the CO(J=3$\rightarrow$2) line emission in the source plane."]
+  - software: glafic, writelens
+  - parameter: Thirteen channels between −180 and 230 km s−1 [Lensing Analysis: "we first produce images of the CO(J=3$\rightarrow$2) line emission at the thirteen frequency channels between $-$180 km s$^{-1}$ and 230 km s$^{-1}$."]
+  - parameter: Integrated CO optimization mask radius 0.8″ [Lensing Analysis: "optimize the lens modeling by including a circular mask region with a radius of 0$^{\prime\prime}\!\!.$8 centered on the ALMA emission."]
+  - parameter: μtot = ΣI(i,j) / Σ[I(i,j)/μ(i,j)] [Lensing Analysis: "{ \mu }_{ tot }=\frac { \sum { I\left( i,j \right) } }{ \sum { \frac { I\left( i,j \right) }{ \mu \left( i,j \right) } } }"]
+  - assumption: Fixed HST lens parameters; independently fitted elliptical Gaussian source in each channel [Lensing Analysis: "We next use `glafic` to model each one of the thirteen images independently, assuming lens model parameters obtained from modeling the HST observation"] [Lensing Analysis: "The extended source of the CO(J=3$\rightarrow$2) line emission in each frequency channel is modeled with an elliptical gaussian"]
+  - assumption: CO inclination assumes an inclined circular disk [Lensing Analysis: "Assuming the CO(J=3$\rightarrow$2) line emission originates from an inclined circular disk"]
+  - fitting: Independent glafic channel fits [Lensing Analysis: "We next use `glafic` to model each one of the thirteen images independently"]
+  - validation: Magnification uncertainties from emission within 2σ and 2.5σ levels; source-plane moment 1 confirms rotation [Lensing Analysis: "The uncertainty of the magnifications were estimated by considering emission lying within the 2$\sigma$ and 2.5$\sigma$ confidence levels."] [Lensing Analysis: "A clear rotation is seen in the moment 1 map, with the north(south) portions of the CO(J=3$\rightarrow$2) emission moving towards(away from) us."]
+- step 11: Calculate outflow depletion
+  - method: Use local lens magnifications and clump masses; calculate lifetime-averaged Mdot = Mclump vclump/rclump and tdyn ≈ MMol/MdotOutflow. [Table 4: "The magnifications at the locations of the clumps were calculated from the magnification map of HS 0810$+$2554 described in Section 6."] [Discussion and Conclusions: "\dot { { M } } = \frac { { M }_{\rm clump }{ v }_{\rm clump } }{ { r }_{\rm clump } }"]
+  - assumption: Clumps have moved at their observed velocities throughout their lifetimes [Discussion and Conclusions: "This equation assumes that the clumps have been moving at the observed velocity of ${v }_{\rm clump}$ for their lifetime."]
+- step 12: Compare molecular and ultrafast wind energetics
+  - method: Measure 1450 Å luminosity from SDSS and apply bolometric conversion; combine clump momentum fluxes, normalize by LBol/c, and calculate molecular-to-UFO kinetic-power ratio C. [Discussion and Conclusions: "The UV monochromatic luminosity density of HS 0810$+$2554 at 1450Å was obtained from analyzing its available SDSS spectrum."] [Discussion and Conclusions: "The rate of change of momentum of the molecular outflow is $\dot { { p } }_{\rm mo}=\dot {{M}} v_{\rm clump}$ and the momentum boost is $\dot { { p } }_{\rm mo}/(L_{Bol}/c)$."]
+  - parameter: UV magnification μ = 103; log(LBol/erg s−1) = 45.54 [Discussion and Conclusions: "The bolometric luminosity, $\log(L_{\rm Bol}/\rm erg~s^{-1})$ = 45.54 (corrected for magnification of $\mu = 103$)"]
+  - parameter: Combine nine clumps; molecular outflow velocity is mean clump velocity [Discussion and Conclusions: "is calculated by combining the nine outflowing clumps"] [Discussion and Conclusions: "the outflow velocity represents the average of the clump velocities."]
+  - assumption: Comparison objects standardized to αCO = 0.8 M⊙ (K km s−1 pc²)−1 [Discussion and Conclusions: "For consistency we have adjusted published results assuming the same conversion factor of $\alpha_{\rm CO}$ = 0.8 $M_{\odot}$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$ for estimating the total molecular gas mass."]
+  - validation: Compare with energy-conserving expectation and published AGN outflow measurements [Discussion and Conclusions: "The momentum boost of the outer molecular wind of HS 0810$+$2554 is slightly below the value expected for an energy-conserving outflow, given the observed ultrafast outflow (UFO) momentum boost."] [Discussion and Conclusions: "we also show the momentum boosts and velocities of the ultrafast and molecular outflows of several other AGN based on published results."]
+- result: CO(3–2) source major-axis FWHM = ~950 ± not stated pc [Lensing Analysis: "The FWHM values of the best-fit elliptical gaussian source model to the CO(J=3$\rightarrow$2) emission along the major and minor axes are $\sim$950 pc and $\sim$690 pc, respectively."]
+- result: CO(3–2) source minor-axis FWHM = ~690 ± not stated pc [Lensing Analysis: "The FWHM values of the best-fit elliptical gaussian source model to the CO(J=3$\rightarrow$2) emission along the major and minor axes are $\sim$950 pc and $\sim$690 pc, respectively."]
+- result: CO(3–2) disk inclination = ~43 ± not stated degrees [Lensing Analysis: "$i_{\rm CO(3-2)}$ $\sim$ 43$^{\circ}$"]
+- result: Continuum magnification = ~7 ± ±3 dimensionless [Lensing Analysis: "$\mu_{\rm cont}$ $\sim$ 7 $\pm$ 3 and $\mu_{\rm CO(3-2)}$ $\sim$ 10 $\pm$ 2, respectively."]
+- result: CO(3–2) magnification = ~10 ± ±2 dimensionless [Lensing Analysis: "$\mu_{\rm cont}$ $\sim$ 7 $\pm$ 3 and $\mu_{\rm CO(3-2)}$ $\sim$ 10 $\pm$ 2, respectively."]
+- result: Extended mm versus point-like UV source centroid separation = ~300 ± not stated pc [Lensing Analysis: "Our lensing analysis indicates that the centroids of the extended mm (continuum and line emission) and point-like UV source emission regions are separated by about 0$^{\prime\prime}\!\!.$35 $\sim$ 300 pc"]
+- result: Clump mass range quoted in discussion = 0.3 × 10^8 to 8 × 10^8 ± not stated M⊙ [Discussion and Conclusions: "The masses in the clumps range from 0.3 $\times$ 10$^{8}$ to 8 $\times$ 10$^{8}$ $M_{\odot}$"]
+- result: Individual clump mass outflow-rate range = ~7 to ~75 ± not stated M⊙ year−1 [Discussion and Conclusions: "the estimated mass outflow rates range from $\sim$ 7 M$_{\odot}$ year$^{-1}$ to $\sim$ 75 M$_{\odot}$ year$^{-1}$."]
+- result: Outflow dynamical depletion time = 1.3 × 10^8/μ32 ± ±0.4 × 10^8/μ32 years [Discussion and Conclusions: "We find a dynamical depletion time of ${ t }_{\rm dyn}$ = (1.3 $\pm$ 0.4)/$\mu_{32}$ $\times$ 10$^{8}$ years."]
+- result: Magnification-corrected log bolometric luminosity = 45.54 ± not stated log(LBol/erg s−1) [Discussion and Conclusions: "The bolometric luminosity, $\log(L_{\rm Bol}/\rm erg~s^{-1})$ = 45.54 (corrected for magnification of $\mu = 103$)"]
+- result: 1450 Å log monochromatic luminosity = 45.04 ± not stated log(λLλ/erg s−1) [Discussion and Conclusions: "$\log({\lambda}L_{\lambda}/\rm erg~s^{-1})$ = 45.04"]
+- result: Molecular outflow momentum boost = 26 ± ±6 dimensionless [Discussion and Conclusions: "Based on our analysis the ($\dot { { p } }_{\rm mo}/(L_{Bol}/c)$, $v_{\rm mo}$) values of the molecular outflow are (26 $\pm$ 6, 1040 km s$^{-1}$)."]
+- result: Average molecular outflow velocity = 1040 ± not stated km s−1 [Discussion and Conclusions: "Based on our analysis the ($\dot { { p } }_{\rm mo}/(L_{Bol}/c)$, $v_{\rm mo}$) values of the molecular outflow are (26 $\pm$ 6, 1040 km s$^{-1}$)."]
+- result: Energy-transfer rate C = 0.2 ± ±0.1 dimensionless [Discussion and Conclusions: "We calculate the energy-transfer rate of HS 0810$+$2554 to be $C$ = 0.2 $\pm$ 0.1"]
+- result: Eddington ratio = 0.07 ± ±0.03 dimensionless [Discussion and Conclusions: "$L_{\rm Bol}/L_{\rm Edd}$ = 0.07 $\pm$ 0.03."]
+- limitation (authors): Continuum source size uncertain because of simple source geometry, low S/N and lens modeling synthesized ALMA data [Discussion and Conclusions: "very uncertain due to the assumed simplistic elliptical source model, the low S/N of the continuum ALMA data and the inherent problems with lens modeling the synthesized ALMA data."]
+- limitation (authors): Higher-S/N images required to confirm mm–UV source offset [Lensing Analysis: "We caution, however, that higher S/N ALMA images would be required to confirm this offset."]
+- limitation (authors): Differential magnification can distort CO line profiles [The Einstein Ring of the CO(J=3→2) Emis…: "The CO line profiles of lensed AGN will in general be distorted by differential magnification across the molecular disk"]
+- not stated (card): Exact visually selected line-free channels for continuum imaging and uvcontsub.; tclean cell size, image size, deconvolver, cleaning mask, stopping threshold and iteration limit.; Primary beam correction and treatment of off-axis clump fluxes.; Full fitted SIE and external-shear lens parameters and their uncertainties.; glafic version, optimizer settings, parameter bounds, fitting statistic and i…
+
+### 2026A&A...706A.174A: Hiding behind a curtain of dust: Gas and dust properties of an ultra-luminous strongly-lensed z = 3.75 galaxy behind the Milky Way disc (2026; high_z_galaxies; observational_alma_primary)
+- question: Confirm the spectroscopic redshift of the strongly lensed submm galaxy J154506 behind the Milky Way (Lupus-I cloud) and make an initial characterisation of its dust and molecular gas properties
+- step 3: Model the gravitational lens and derive the magnification
+  - method: uv-plane lens modelling of B6 and B7 continuum independently; SIE lens and Sersic source; average of the two magnifications adopted [5 Lens modelling and magnification: "We modelled the lens as a spherical isothermal ellipsoid (SIE) and the source as a Sérsic profile (cite: Sersic1963)."] [5 Lens modelling and magnification: "The model parameters were optimised by fitting only the continuum emission in B6 and B7 independently, using the non-linear sampler Dynesty."]
+  - software: PyAutoLens, Dynesty
+  - parameter: B6: only spectral windows 0 and 1 used because of emission lines in the others [5 Lens modelling and magnification: "for B6, we used only spectral windows 0 and 1 due to the presence of emission lines in the other spectral windows"]
+  - parameter: Lens centre free with Gaussian prior between the two images and standard deviation 1″ [5 Lens modelling and magnification: "a Gaussian prior centred between the two multiple images and a standard deviation of 1″"]
+  - assumption: Lens redshift unconstrained; magnification depends mainly on image geometry [5 Lens modelling and magnification: "The magnification factor, which is primarily dependent on the image geometry, remains largely unaffected by the unconstrained lens redshift."]
+  - fitting: Dynesty nested sampler; Gaussian prior on lens centre (other priors not stated) [5 Lens modelling and magnification: "using the non-linear sampler Dynesty"]
+  - validation: Lens position consistent with MUSE centroid; magnifications agree with Tamura et al. (2025) [5 Lens modelling and magnification: "The lens position recovered by the parametric model is consistent with the centroid of the MUSE detection."] [5 Lens modelling and magnification: "Our derived magnification factors agree with those recently reported by (cite: Tamura2025)"]
+- step 4: Fit the FIR dust SED with a modified blackbody
+  - method: Bayesian greybody fit with MERCURIUS (PyMultiNest nested sampling), optically thin and self-consistent opacity scenarios, magnification-corrected [6.1 Dust emission and FIR-derived prope…: "We first fitted J154506 using the Bayesian FIR SED PYMULTINEST fitting code MERCURIUS (cite: Witstok2022), which employs a nested sampling algorithm (cite: Buchner2014) to fit a greybody spectrum to FIR photometry."]
+  - software: MERCURIUS, PyMultiNest
+  - parameter: Rest-frame wavelengths 10 to 10^3 micron fitted [6.1 Dust emission and FIR-derived prope…: "For fitting, we considered rest-frame FIR wavelengths from 10 to"]
+  - parameter: T_dust gamma prior (shape a=1.5); beta_dust Gaussian prior centred 1.8, sigma 0.25 [6.1 Dust emission and FIR-derived prope…: "Specifically, we used a default gamma distribution with a shape parameter (a=1.5)"] [6.1 Dust emission and FIR-derived prope…: "we imposed a Gaussian prior centred at 1.8 with a standard deviation of 0.25."]
+  - assumption: kappa = 8.94 cm2/g at 158 micron, appropriate for SN-ejected dust after reverse shock destruction [6.1 Dust emission and FIR-derived prope…: "This value of $\kappa$ is appropriate for dust grains ejected by supernovae (SNe) after reverse shock destruction (cite: Hirashita2014)."]
+  - fitting: Nested sampling (MERCURIUS/PyMultiNest) with gamma prior on T_dust and Gaussian prior on beta [6.1 Dust emission and FIR-derived prope…: "we imposed a Gaussian prior centred at 1.8 with a standard deviation of 0.25."]
+  - validation: Posteriors shown; TUNER fit compared with MERCURIUS [6.2 Radiative transfer model results: "The well-constrained TUNER model fits the observed data comparably to the best-fit MERCURIUS model"]
+- step 5: Model dust and CO SED jointly with non-LTE radiative transfer
+  - method: TUNER non-LTE LVG radiative transfer with lognormal density PDF fitted to CO line SED and dust continuum with MCMC [6.2 Radiative transfer model results: "non-local thermodynamic equilibrium (non-LTE) radiative transfer calculations model the CO line intensities and dust continuum using a large velocity gradient approximation"]
+  - software: TUNER, emcee
+  - parameter: Magnification fixed to give intrinsic properties [Simultaneous modelling of the observed …: "is fixed in the model to therefore provide the intrinsic source properties"]
+  - parameter: Gas-to-dust mass ratio fixed at about 100 after an initial free fit [6.2 Radiative transfer model results: "The initial model fits, obtained with a free molecular gas-to-dust mass ratio (GDMR), yielded a median GDMR of $100$, which we subsequently fixed"]
+  - assumption: [CO]/[H2] fixed to a fiducial Milky Way value (log = -4.0) [6.2 Radiative transfer model results: "to a fiducial Milky Way value"]
+  - fitting: emcee with 100 walkers and 50 autocorrelation times, uniform priors [Simultaneous modelling of the observed …: "using 100 walkers and 50 autocorrelation times and uniform priors."]
+  - validation: Narrow marginalised posteriors; consistency with MERCURIUS [6.2 Radiative transfer model results: "the narrowness of the marginalised posterior distributions of the parameters"]
+- step 6: Derive [CII]-based SFR and test AGN contribution
+  - method: [CII] luminosity from the APEX median spectrum corrected for magnification, SFR from the de Looze high-z relation; AGN fraction constrained with the MIPS 24 micron upper limit [6.3 [CII] as a tracer of cold ISM: "Using the high-redshift relations from (cite: deLooze2014), we derive an SFR of 840"] [6.4 Possible AGN contribution: "be constrained using the upper limit on the Multiband Imaging Photometer for Spitzer (MIPS)"]
+  - assumption: Foreground extinction from Lupus-I at 24 micron negligible [6.4 Possible AGN contribution: "we assume that foreground extinction from the Lupus-I molecular cloud at 24"]
+  - validation: SFR from [CII] consistent with SFR from L_IR; low Tk/Td supports star-formation heating [6.3 [CII] as a tracer of cold ISM: "This [CII]-derived SFR is remarkably consistent with that obtained from the median total infrared luminosity"]
+- result: Magnification, B6 = 7.4 ± 0.6 dimensionless [5 Lens modelling and magnification: "We derive magnification factors of $\mu = 7.4 \pm 0.6$ and $\mu = 4.5 \pm 0.4$ for B6 and B7, respectively."]
+- result: Magnification, B7 = 4.5 ± 0.4 dimensionless [5 Lens modelling and magnification: "We derive magnification factors of $\mu = 7.4 \pm 0.6$ and $\mu = 4.5 \pm 0.4$ for B6 and B7, respectively."]
+- result: Adopted average magnification = 6.0 ± 0.4 dimensionless [5 Lens modelling and magnification: "we adopt the average magnification $\mu = 6.0 \pm 0.4$ to derive intrinsic properties"]
+- result: Einstein radius, B6 fit = 0.86 ± 0.01 arcsec [5 Lens modelling and magnification: "The best-fit lens mass model parameters are $R_{\rm E} = 0.86 \pm 0.01$, $q = 0.58 \pm 0.02$, and $\theta = -8 \pm 2$, in B6"]
+- result: Einstein radius, B7 fit = 0.78 ± 0.01 arcsec [5 Lens modelling and magnification: "$R_{\rm E} = 0.78 \pm 0.01$, $q = 0.81 \pm 0.03$, and $\theta = -10 \pm 7$, in B7"]
+- result: Dust temperature, optically thin and self-consistent MERCURIUS fits = 30 and 48 ± 2 and 1 K [6.1 Dust emission and FIR-derived prope…: "we obtain an emissivity indices of $\beta_{\rm dust}$ $=2.0 \pm0.1$ and $2.1 \pm0.1$, and dust temperatures of $30\pm2$ and $48\pm1$ K"]
+- result: Dust emissivity index beta, optically thin and self-consistent MERCURIUS fits = 2.0 and 2.1 ± 0.1 and 0.1 dimensionless [6.1 Dust emission and FIR-derived prope…: "we obtain an emissivity indices of $\beta_{\rm dust}$ $=2.0 \pm0.1$ and $2.1 \pm0.1$"]
+- result: Intrinsic IR luminosity (MERCURIUS) = 6-7e12 ± not stated Lsun [6.1 Dust emission and FIR-derived prope…: "The derived intrinsic IR luminosity is L$_{\rm{IR}}=6-7\times 10^{12}~\rm{L}_{\odot}$"]
+- result: IR-based SFR (MERCURIUS) = 860 to 910 ± 80 and 90 Msun/yr [6.1 Dust emission and FIR-derived prope…: "the IR-based SFR ranges from $860\pm80$ to $910\pm90~\rm{M}_{\odot}yr^{-1}$"]
+- result: Dust mass, optically thin and variable optical depth models (magnification corrected) = 3.4e9 and 1.7e9 ± 1.6e9 and 0.3e9 Msun [6.1 Dust emission and FIR-derived prope…: "we derive dust masses of $3.4\pm1.6\times10^{9}~\rm{M}_{\odot}$ and $1.7\pm0.3\times10^{9}~\rm{M}_{\odot}$ for the optically-thin and variable dust optical depth models, respectively"]
+- result: Dust temperature from TUNER joint fit = 38 ± not stated K [7 Summary and conclusions: "The combined modelling of the dust SED and CO excitation ladder constrains the dust temperature to 38 K"]
+- result: Gas-to-dust temperature ratio Tk/Td (median) = 1.1 ± 0.2 dimensionless [6.2 Radiative transfer model results: "the median gas-to-dust temperature ratio is T$_{\rm{k}}$/T$_{\rm{d}} =1.1 \pm 0.2$"]
+- result: TUNER dust emissivity index = 2.2 ± not stated dimensionless [6.2 Radiative transfer model results: "yielding a dust emissivity index of $2.2$"]
+- result: Total molecular gas mass M_ISM (16th-84th percentile) = 3.1-8.5e11 ± 16th-84th percentile range Msun [6.2 Radiative transfer model results: "M$_{\rm{ISM}} = 3.1-8.5 \times 10^{11} ~\rm{M}_{\odot}$"]
+- result: CO(1-0) luminosity L'CO(1-0) (16th-84th percentile) = 4.1-6.5e10 ± 16th-84th percentile range K km/s pc^2 [6.2 Radiative transfer model results: "CO luminosity L$^{\prime}_{\rm{CO(1-0)}}=4.1-6.5 \times 10^{10}~\rm{K\, km \,s}^{-1}\,\rm{pc}^2$"]
+- result: CO-to-H2 conversion factor alpha_CO(1-0) (16th-84th percentile) = 5.2-17 ± 16th-84th percentile range Msun pc^-2 (K km/s)^-1 [6.2 Radiative transfer model results: "$\alpha_{\rm{CO(1-0)}} = 5.2-17~\rm{M}_\odot\, \rm{pc}^{-2} (\rm{K\, km \,s}^{-1})^{-1}$"]
+- result: Intrinsic L_IR (8-1000 micron) from TUNER (16th-84th percentile) = 5.5-6.5e12 ± 16th-84th percentile range Lsun [6.2 Radiative transfer model results: "L$_{\rm{IR}}(8-1000 \mu \rm{m})=5.5-6.5\times10^{12} \rm{L}_{\odot}$ after correcting for magnification"]
+- result: Intrinsic [CII] luminosity = 5.4e9 ± not stated Lsun [6.3 [CII] as a tracer of cold ISM: "corresponding to an intrinsic L$_{\rm{[CII]}}$ of $5.4\times10^{9}\rm L _{\odot}$"]
+- result: [CII]-derived SFR = 840 ± not stated Msun/yr [6.3 [CII] as a tracer of cold ISM: "Using the high-redshift relations from (cite: deLooze2014), we derive an SFR of 840"]
+- result: nuL_nu(5 micron)/L_IR upper limit = <0.04 ± upper limit dimensionless [6.4 Possible AGN contribution: "the ratio $\nu \rm L_\nu(5\ \mu\rm m) / \rm L_{\rm IR} < 0.04$"]
+- limitation (authors): Stellar mass and other SED-derived properties highly uncertain because of Lupus-I extinction [4 Spectroscopic redshift confirmation: "makes SED-derived properties, such as the stellar mass, highly uncertain."]
+- limitation (authors): Lens redshift not confirmed; MUSE and FORS2 data too poor [3.5 MUSE and FORS2 observations: "The low quality of this dataset precluded spectroscopic confirmation of the lens and prevented further detailed analysis."]
+- limitation (authors): Dust mass strongly depends on the assumed kappa and optical depth [6.1 Dust emission and FIR-derived prope…: "Dust mass estimates are highly dependent on the assumed"]
+- not stated (card): Imaging parameters for ACA tclean (cell size, image size, deconvolver, threshold, niter) and the clean mask for continuum; Line-free channel ranges used for continuum estimation in the ACA cubes; Exact velocity range used to integrate each ACA line and how line fluxes and uncertainties were computed; Flux calibrator and flux-scale uncertainty for the ACA and archival data; Primary-beam correction…
+
+### 2019ApJ...873...50D: Source Structure and Molecular Gas Properties from High-resolution CO Imaging of SPT-selected Dusty Star-forming Galaxies (2019; high_z_galaxies; observational_alma_primary)
+- question: How do the sizes, magnifications and kinematics of high-J CO and dust continuum compare in lensed SPT DSFGs, and does differential magnification bias LVG-derived gas properties?
+- step 2: Visibility-based lens modeling of continuum and CO channels
+  - method: SIE lens(es) plus Sérsic sources fit to visibilities; continuum and channels fit simultaneously with shared lens parameters; also single-channel models [3 Lens modeling: "we fit the continuum and the CO line channels simultaneously, i.e. fitting multiple source components with one shared set of lens parameters."]
+  - software: visilens, emcee
+  - parameter: time averaging up to 10 min with uv separation <15 m; velocity bins 75-250 km/s [3 Lens modeling: "For line data we divide the data into 75–250 km s$^{-1}$ velocity bins, depending on the flux distribution and SNR of the line."]
+  - parameter: 1000 chains, 1000 burn-in, 1000 extra steps [3 Lens modeling: "Generally, we run 1000 chains with 1000 burn-in steps and 1000 extra chain steps."]
+  - assumption: Flat Planck LCDM: h=0.677, Om=0.308, OL=0.691 [1 Introduction: "we assume a flat Planck $\Lambda$CDM cosmology, where $h = 0.677$, $\Omega_m = 0.308$, and $\Omega_\Lambda = 0.691$"]
+  - fitting: emcee MCMC; median and 1 sigma intervals [3 Lens modeling: "We quote the median value of each parameter of the sample as the estimated value and the $1\sigma$ interval as the uncertainty."]
+  - validation: Chain convergence, residual images, DIC model selection [3 Lens modeling: "we use the Deviance Information Criterion (cite: Spiegelhalter02) for model selection"]
+- step 3: Compare CO and dust sizes and magnifications
+  - method: Circularized half-light size sqrt(a_S b_S) from MCMC chains for CO single channels (500-800 km/s) vs continuum; magnification comparisons across channels, continuum and transitions [4.1 Source Sizes: "We calculate the circularized size and its uncertainty from the MCMC chains as $\sqrt{a_S b_S}$"]
+  - software: visilens
+  - validation: Compare mu*L'_intrinsic to apparent L' (Figure 3, Figure 8) [4 Analysis: "We quantify the ability of the lens models to recover the line fluxes by comparing the apparent CO line luminosities ($L^\prime_\mathrm{apparent}$) to the product of the magnification and intrinsic line luminosities"]
+- result: SPT0346-52 CO(8-7) magnification (150 km/s channels) = 6.0 ± 0.2 dimensionless [Table 4: "| SPT0346-52 | CO(2-1) | 5 | 150 | 0.26 $\pm$ 0.02 | 7.20 $\pm$ 0.53 | 6.1 $\pm$ 0.7 |"]
+- result: Continuum magnification SPT0346-52 / 0529-54 / 0532-50 / 2147-50 = 5.1 / 12.4 / 7.9 / 4.8 ± 0.1 / 0.6 / 0.2 / 0.2 dimensionless [Table 3: "| SPT0529-54 | 1.94 $\pm$ 0.15 | 3.06 $\pm$ 0.80 | 662.0 | 7.59 $\pm$ 0.03 | 0.57 $\pm$ 0.04 | 12.4 $\pm$ 0.6 |"]
+- result: Dust vs CO circularized size, SPT0346-52 = r_dust 0.55, r_CO 0.73 ± 0.02, 0.04 kpc [Table 3: "| SPT0346-52 | 0.55 $\pm$ 0.02 | 0.73 $\pm$ 0.04 | 966.7 | 14.75 $\pm$ 0.03 | 2.95 $\pm$ 0.05 | 5.1 $\pm$ 0.1 |"]
+- result: Dust vs CO circularized size, SPT2147-50 = r_dust 1.14, r_CO 2.20 ± 0.06, 0.61 kpc [Table 3: "| SPT2147-50 | 1.14 $\pm$ 0.06 | 2.20 $\pm$ 0.61 | 659.2 | 4.30 $\pm$ 0.02 | 0.88 $\pm$ 0.05 | 4.8 $\pm$ 0.2 |"]
+- result: SPT2147-50 CO(2-1) vs CO(6-5) magnification = ~8 vs ~5 (~60% higher) ± not stated dimensionless [4.2 Magnification: "for SPT2147-50 we see CO(6-5) magnified by a factor $\sim$5 and CO(2-1) magnified by $\sim$8$\times$, $\sim$60% higher than the high-J CO magnification."]
+- limitation (authors): Parameterized Sérsic modeling cannot independently constrain faint emission at large radii [4.1 Source Sizes: "the faint emission at large radii is not independently constrained because of our parameterized modeling"]
+- limitation (authors): Simple Sérsic profiles unlikely to fully characterize source structure [3 Lens modeling: "While simple Sérsic profiles are unlikely to fully characterise the source structure"]
+- not stated (card): Imaging parameters (cell size, image size, mask, threshold, channel binning) for CLEAN; Pipeline/CASA version; Line-free channels for continuum subtraction; Priors on lens/source parameters in visilens; Flux calibrators and flux scale uncertainty; Which lower-J line fluxes (Table 2) come from which references and how apparent line luminosity uncertainties were propagated; Likelihood form and trea…
+
+### 2023MNRAS.524.3671Z: Discovery of a radio jet in the Cloverleaf quasar at z = 2.56 (2023; high_z_galaxies, agn_and_quasars; archival_reuse)
+- question: Spatially differentiate emission originating from the AGN and host galaxy in the strongly lensed Cloverleaf quasar at z = 2.56 across optical, sub-millimetre, and radio wavelengths to study AGN feedback.
+- step 2: Parametric lens mass and source modelling of HST optical and ALMA 300 GHz continuum images
+  - method: Fit the HST image in PyAutoLens with an isothermal ellipsoid plus external shear lens model and a point-source model; use the highest-likelihood result as prior/initial input to fit the ALMA 300 GHz continuum image with a power-law ellipso… [3.1 Overview of Lens Modelling Strategy: "Fit the HST data using a simple lens model which assumes point-source emission for the source galaxy. This provides an initial estimate for the parametric lens mass model."] [3.1 Overview of Lens Modelling Strategy: "Take the highest likelihood results from the previous step as the initial input to fit the ALMA 300 GHz continuum data with another parametric mass model, using an extended source model which follows a smoothly parameterized form of elliptical Sérsic profile."]
+  - software: PyAutoLens, dynesty, pyautofit
+  - parameter: Lens plane redshift z = 1.7; source redshift z = 2.56 [1 INTRODUCTION: "In this case, 1'' corresponds to ~8.7 kpc in the lens plane at z = 1.7 and ~8.22 kpc in the source plane at z = 2.56."] [3.1 Overview of Lens Modelling Strategy: "In our lens model, the redshift of the lens plane is set as 1.7 (Kneib et al. 1998)."]
+  - assumption: Cosmology: \Omega_m = 0.310, \Omega_\Lambda = 0.689, H_0 = 67.7 km s^-1 Mpc^-1 [1 INTRODUCTION: "Throughout the paper, we assume a cosmology with \Omega_m = 0.310, \Omega_\Lambda = 0.689, and H_0 = 67.7 km s^-1 Mpc^-1 (Planck Collaboration et al. 2020)."]
+  - assumption: Lens system is a single galaxy and distant cluster at z ~ 1.7 modelled as a power-law ellipsoid with external shear [3 LENS MODELLING: "We take the assumption from Kneib et al. (1998) that the lens system is contributed by a single galaxy (the narrow absorption systems) and a distant cluster both at z ~ 1.7."] [3.2.2 The ALMA 300 GHz continuum: "We adopt a power-law ellipsoid (Tessore & Metcalf 2015) with an external shear as the lens galaxy mass profile and model the source with an elliptical Sérsic profile."]
+  - fitting: Bayesian inference using nested sampler Dynesty integrated within PyAutoLens [3.3.1 The ALMA 300-GHz continuum: "With the Bayesian inference (Dynesty) integrated within PyAutoLens, we adopt the best-fit results and their associated errors as the lens profile (Table 3), which is further used for the non-parametric modelling of the radio data."]
+  - validation: Invert simple point source to lens plane using fitted mass models and verify simulated positions match the four HST images within 0.5 pixel. [3.3.2 The 1.5-, 8.4-, and 33-GHz contin…: "For both parametric and non-parametric models, the positions of the simulated point source (Fig. 1) match well with all four images in the HST data, within 0.5-pixel size. This indicates that our models are reliable."]
+- step 3: Non-parametric source-plane reconstruction of ALMA 300 GHz and radio continuum bands
+  - method: Reconstruct the 300 GHz source plane iteratively using a magnification-weighted Voronoi grid followed by a brightness-weighted Voronoi mesh while fitting a new power-law ellipsoid plus shear lens mass model; then fix the lens mass model pa… [3.3.1 The ALMA 300-GHz continuum: "To fit the non-parametric source, we first fix the parameters of the lens object according to our parametric mass model (see Sect. 3.2.2), and then use a pixelized Voronoi grid that adapts to the mass model’s magnification pattern, giving higher resolutions to areas with higher magnification."] [3.3.1 The ALMA 300-GHz continuum: "Then, we perform a fit where the source plane is reconstructed by a brightness-weighted Voronoi (Fig. 2 left) mesh. We fit a new mass model, a power-law ellipsoid (Tessore & Metcalf 2015) with an external shear (shown in Table 3)."]
+  - software: PyAutoLens, dynesty, pyautofit, pylops
+  - parameter: Magnification-weighted Voronoi mesh for 1.5, 8.4, and 33 GHz reconstructions to ensure identical Voronoi cell grids [3.3.2 The 1.5-, 8.4-, and 33-GHz contin…: "For the data from VLA and e-Merlin, the source plane is reconstructed with a magnification-weighted Voronoi mesh instead of a brightness-weighted one. This is because a magnification-based mesh produces an identical grid of Voronoi cells across all three frequency channels"]
+  - assumption: Fixed lens mass model parameters from ALMA 300 GHz non-parametric fit across all radio bands [3.3.2 The 1.5-, 8.4-, and 33-GHz contin…: "The ALMA 300-GHz continuum image provides strong constraints on our lensing galaxy mass model, therefore we fix the mass model parameters to values derived from this data in order to perform non-parametric fitting at radio bands."]
+  - fitting: Bayesian inference with Dynesty in PyAutoLens; Gaussian profile fitting to measure FWHMs of source-plane components [3.3.1 The ALMA 300-GHz continuum: "With the Bayesian inference (Dynesty) integrated within PyAutoLens, we adopt the best-fit results and their associated errors as the lens profile (Table 3), which is further used for the non-parametric modelling of the radio data."] [4.2 The discovery of a radio jet: "The FWHMs of this radio clump, fitted with Gaussian profiles"]
+  - validation: Inspect residual maps (Appendix B), perform mock Sérsic source lensing simulations across caustics (Appendix A), and Monte Carlo sample lens model parameter probability distributions (~5% error contribution). [3.3.2 The 1.5-, 8.4-, and 33-GHz contin…: "The residual maps at multiple wavelengths are presented in Appendix B."] [3.3.2 The 1.5-, 8.4-, and 33-GHz contin…: "The error compromises a 15% absolute flux uncertainty, a ~ 5% error from the uncertainty of the model by running multiple models with all parameters randomly sampled with their probability density distributions, and a statistical error measured in emission-free regions."]
+- step 4: Extract multi-band radio fluxes and fit spectral indices in the lens and source planes
+  - method: Extract radio fluxes at 1.5, 8.4, and 33 GHz from elliptical apertures in the source plane and lens plane; fit single power-law SEDs and pixel-by-pixel spectral index maps in the source plane and from nterm=2 e-Merlin imaging in the lens p… [4.3 Spectral indices of the radio conti…: "We first measure radio fluxes from regions shown in the lens plane (Fig. 1) and the source plane (Fig. 2) for 1.5, 8.4, and 33 GHz, respectively."] [4.3 Spectral indices of the radio conti…: "Then we fit spectral indices with fluxes from all three radio bands, which are shown in orange lines of Fig. 3. All SEDs can be fitted with one single power-law profile."]
+  - software: CASA, python, scipy, numpy
+  - parameter: 5-\sigma cutoff mask for e-Merlin lens-plane spectral index map; S/N > 3.5 mask at 33 GHz for source-plane spectral index map [4.3 Spectral indices of the radio conti…: "We use a 5-\sigma mask from the e-Merlin continuum to mask the spectral index map and the error map."] [4.3 Spectral indices of the radio conti…: "As shown in Fig. 5, we fit power-law profiles for all pixels at maps of 8.4 GHz, 1.5 GHz, and 33 GHz, with a mask of S/N > 3.5 at the 33 GHz source plane image."]
+  - assumption: Radio continuum SEDs follow a single power-law profile [4.3 Spectral indices of the radio conti…: "All SEDs can be fitted with one single power-law profile."]
+  - fitting: Linear fit in log-log space to a single power-law profile across 1.5, 8.4, and 33 GHz [Table 5: "Spectral indices of different components in the lens plane and the source plane within 1-\sigma: \alpha_fitted is the spectral index of the best linear fit, considering fluxes in all three radio bands."]
+  - validation: Compare spectral indices between lens plane and source plane and against the in-band e-Merlin 1.25-1.77 GHz spectral index map. [4.3 Spectral indices of the radio conti…: "Although the average slope of the e-Merlin spectral index map is consistent with that obtained with"]
+- result: Lens Einstein radius r (parametric model) = 0.645 ± +0.001 / -0.001 arcsec [Table 3: "r Einstein radius ('') 0.645^+0.001_-0.001 0.636^+<0.001_-0.001"]
+- result: Lens power-law slope \alpha (parametric model) = 1.897 ± +0.003 / -0.003 dimensionless [Table 3: "\alpha Slope 1.897^+0.003_-0.003 1.884^+<0.001_-0.014"]
+- result: Lens Einstein radius r (non-parametric model) = 0.636 ± +<0.001 / -0.001 arcsec [Table 3: "r Einstein radius ('') 0.645^+0.001_-0.001 0.636^+<0.001_-0.001"]
+- result: Lens power-law slope \alpha (non-parametric model) = 1.884 ± +<0.001 / -0.014 dimensionless [Table 3: "\alpha Slope 1.897^+0.003_-0.003 1.884^+<0.001_-0.014"]
+- result: Host galaxy source-plane flux at 300 GHz = 2.0e3 ± \pm 0.3e3 [\pm 0.3e3] \muJy [Table 4: "host galaxy 300 2.0 \pm 0.3 [\pm 0.3] \times 10^3 0.12 \times 0.11 (14:15:46.2378, 11:29:43.659)"]
+- result: Host galaxy source-plane intrinsic size (FWHM) at 300 GHz = 0.115 x 0.109 (0.946 x 0.897 kpc; 0.12 x 0.11 in Table 4) ± not stated arcsec x arcsec [4.2 The discovery of a radio jet: "the cold dust emission shows an extended disklike structure of 0.115′′ × 0.109′′ in FWHM (0.946 kpc × 0.897 kpc) rather than a point source."]
+- result: Host galaxy source-plane flux at 33 GHz = 4.8 ± \pm 1.3 [\pm 0.7] \muJy [Table 4: "host galaxy 33 4.8 \pm 1.3 [\pm 0.7] 0.14 \times 0.11 (14:15:46.2364, 11:29:43.659)"]
+- result: Host galaxy source-plane flux at 8.4 GHz = 7 ± \pm 2 [\pm 1] \muJy [Table 4: "host galaxy 8.4 7 \pm 2 [\pm 1] 0.14 \times 0.095 (14:15:46.2383, 11:29:43.698)"]
+- result: Host galaxy source-plane flux at 1.5 GHz = 26 ± \pm 10 [\pm 4] \muJy [Table 4: "host galaxy 1.5 26 \pm 10 [\pm 4] - (14:15:46.2388, 11:29:43.689)"]
+- result: Radio jet source-plane flux at 33 GHz = 4.7 ± \pm 1.0 [\pm 0.7] \muJy [Table 4: "radio jet 33 4.7 \pm 1.0 [\pm 0.7] 0.15 \times 0.086 (14:15:46.2315, 11:29:43.787)"]
+- result: Radio jet source-plane flux at 8.4 GHz = 14 ± \pm 3 [\pm 2] \muJy [Table 4: "radio jet 8.4 14 \pm 3 [\pm 2] 0.11 \times 0.049 (14:15:46.2315, 11:29:43.781)"]
+- result: Radio jet source-plane flux at 1.5 GHz = 1.1e2 ± \pm 0.2e2 [\pm 0.2e2] \muJy [Table 4: "radio jet 1.5 1.1 \pm 0.2 [\pm 0.2] \times 10^2 0.12 \times 0.045 (14:15:46.2299, 11:29:43.781)"]
+- result: Projected distance of radio jet from host galaxy centre in source plane = 1.15 (0.14'') ± not stated kpc [4.2 The discovery of a radio jet: "All reconstructed radio images show extended emission to the northwest of the dust continuum core, at a projected distance of ~1.15 kpc (0.14'') away from the centre of the host galaxy."]
+- result: Radio jet source-plane intrinsic size (FWHM) at 1.5 GHz = 0.99 x 0.37 (0.12'' x 0.045'') ± not stated kpc x kpc [4.2 The discovery of a radio jet: "The FWHMs of this radio clump, fitted with Gaussian profiles, are 0.99 kpc × 0.37 kpc, 0.90 kpc × 0.40 kpc, and 1.23 kpc × 0.71 kpc, at 1.5 GHz, 8.4 GHz, and 33 GHz, respectively."]
+- result: Radio jet source-plane intrinsic size (FWHM) at 8.4 GHz = 0.90 x 0.40 (0.11'' x 0.049'') ± not stated kpc x kpc [4.2 The discovery of a radio jet: "The FWHMs of this radio clump, fitted with Gaussian profiles, are 0.99 kpc × 0.37 kpc, 0.90 kpc × 0.40 kpc, and 1.23 kpc × 0.71 kpc, at 1.5 GHz, 8.4 GHz, and 33 GHz, respectively."]
+- result: Radio jet source-plane intrinsic size (FWHM) at 33 GHz = 1.23 x 0.71 (0.15'' x 0.086'') ± not stated kpc x kpc [4.2 The discovery of a radio jet: "The FWHMs of this radio clump, fitted with Gaussian profiles, are 0.99 kpc × 0.37 kpc, 0.90 kpc × 0.40 kpc, and 1.23 kpc × 0.71 kpc, at 1.5 GHz, 8.4 GHz, and 33 GHz, respectively."]
+- result: Radio jet fitted spectral index \alpha_fitted (lens plane) = 1.11 ± \pm 0.01 dimensionless [Table 5: "radio jet lens 1.10 \pm 0.12 1.12 \pm 0.16 1.11 \pm 0.01 1.35 \pm 0.18"]
+- result: Radio jet in-band spectral index \alpha_1.77^1.25 (lens plane, e-Merlin) = 1.35 ± \pm 0.18 dimensionless [Table 5: "radio jet lens 1.10 ± 0.12 1.12 ± 0.16 1.11 ± 0.01 1.35 ± 0.18"]
+- result: Radio jet fitted spectral index \alpha_fitted (source plane) = 1.11 ± \pm 0.04 dimensionless [Table 5: "radio jet source 1.17 \pm 0.16 1.04 \pm 0.19 1.11 \pm 0.04 -"]
+- result: Host galaxy fitted spectral index \alpha_fitted (lens plane) = 0.80 ± \pm 0.02 dimensionless [Table 5: "host galaxy lens 0.84 \pm 0.12 0.76 \pm 0.16 0.80 \pm 0.02 -"]
+- result: Host galaxy fitted spectral index \alpha_fitted (source plane) = 0.70 ± \pm 0.06 dimensionless [Table 5: "host galaxy source 0.79 \pm 0.15 0.58 \pm 0.19 0.70 \pm 0.06 -"]
+- limitation (authors): Three of the 18 VLA 33 GHz execution blocks taken before 22 Oct. 2013 were corrupted and unusable due to incomplete execution. [2.3.2 VLA 33 GHz continuum: "However, three of them, taken before 22 Oct. 2013, were corrupted and not usable due to incomplete execution."]
+- limitation (authors): The four optical point-source images may suffer from microlensing, which is not included in the strong lens modelling, and provide limited constraints on the lens model. [3.2.1 The HST optical data: "The four optical images of Cloverleaf point sources may suffer from micro-lensing (Kayser et al. 1990), which may lead to a biased result since the micro-lensing effect is not included in the strong lens modelling."]
+- limitation (authors): Several reconstructed 300 GHz emission clumps outside the caustics have lower fidelity due to lens model uncertainty. [4.2 The discovery of a radio jet: "Due to the uncertainty of the lens model, several emission clumps outside the caustics have less fidelity."]
+- not stated (card): Exact frequency/channel ranges omitted for the CO J=11-10 line in the ALMA Band 7 data; Image sizes (imsize), stopping thresholds, and niter settings used in CASA tclean across all bands; Whether PyAutoLens fitted the ALMA and radio datasets in the image plane or directly in the uv-visibility plane; Regularization scheme and regularization coefficient values for the PyAutoLens Voronoi mesh source…
+
+### 2014A&A...568A..92M: Herschel-ATLAS and ALMA. HATLAS J142935.3-002836, a lensed major merger at redshift 1.027 (2014; high_z_galaxies; observational_alma_primary)
+- question: Confirm the lensing hypothesis for H1429-0028, model the background source's morphology and dynamics, and provide a full physical characterisation.
+- step 2: Lens model fit
+  - method: SLI simultaneous fit of CO(4-3) moment-0 and 7 GHz maps with elliptical power-law mass profile, no external shear [4.1.1 Lens characterisation: "the images given as input are the velocity-integrated CO(4$\to$3) line map and the 7-GHz continuum map."]
+  - software: SLI code
+  - validation: Fraction of >2 sigma residuals 0.2% (7 GHz) and 0.5% (CO) [4.1.1 Lens characterisation: "we measure a fraction of $>2\sigma$ residuals of 0.2% and 0.5% for the 7 GHz and CO (J:4$\to$3) data respectively."]
+- step 3: Source-plane reconstruction and dynamics
+  - method: Apply best-fit lens model to CO(4-3) cube; dynamical mass via isotropic virial estimator; r1/2 from moment minimisation and bootstrapping [4.1.3 Source dynamical analysis: "The uncertainties were found via bootstrapping, i.e., the pixel flux values were shifted within $\pm$r.m.s., and $r_{1/2}$, $x_c$, and $y_c$ were recomputed for a total of 10,000 iterations."]
+- step 4: SED fitting of foreground and background
+  - method: magphys flux PDFs after galfit foreground removal, extinction scenarios and demagnification; emcee modified blackbody fits [4.2 Foreground and background SEDs: "Given the lack of spatially resolved photometry, we avoid working with best-fit solutions and consider instead flux probability distribution functions (PDFs)."]
+  - software: magphys, galfit, emcee
+  - parameter: limits: beta<3, T<100 K observed-frame, lambda0<2000 um [4.2 Foreground and background SEDs: "it was necessary to limit $\beta$ below 3, the temperature to observed-frame 100 K, and, in the optically-thick case, $\lambda_0$ below observed-frame 2000 $\mu$m."]
+  - assumption: Chabrier IMF; H0=70, Om=0.3, OL=0.7 [1 Introduction: "H$_{0} = 70$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_{M} = 0.3$, $\Omega_{\Lambda} = 0.7$, and a Chabrier initial mass function."]
+  - fitting: emcee affine invariant MCMC; priors beyond parameter limits not stated [4.2 Foreground and background SEDs: "using an affine invariant Markov chain Monte Carlo method (cite: Foreman12)"]
+- result: Lens Einstein radius = 2.18 ± +0.19/-0.27 kpc [4.1.1 Lens characterisation: "$\theta_{\rm E}=2.18_{-0.27}^{+0.19}\,$kpc"]
+- result: Magnification mu_TOT CO(4-3) = 9.7 ± 0.7 dimensionless [Table 1: "ALMA CO (J:4$\to$3) | $9.7\pm0.7$"]
+- result: Dynamical mass of NS component = 5.8e10 ± 1.7e10 Msun [4.1.3 Source dynamical analysis: "the dynamical mass to be $5.8\pm1.7\times10^{10}\,$M$_\odot$"]
+- result: Background SFR = 394 ± +91/-88 Msun/yr [Table magphys: "394$_{-88}^{+91}$"]
+- limitation (authors): Knot C in rest-frame optical poorly fitted by the lens model [4.1.2 Source-plane reconstruction: "Still, the fit is poor."]
+- not stated (card): tclean/clean parameters (deconvolver, threshold, cell, image size, masks); robust/taper details and line-free channel ranges; Self-calibration solution interval and reference; CASA version; Lens model priors, regularisation and source-plane pixel scale; Moment-map velocity ranges and clipping; MAGPHYS modified code with upper limits not public
+
+### 2020MNRAS.496..138B: VLA and ALMA observations of the lensed radio-quiet quasar SDSS J0924+0219: a molecular structure in a 3 μJy radio source (2020; agn_and_quasars, high_z_galaxies, star_formation; observational_alma_primary)
+- question: What are the properties of the radio and molecular gas reservoirs in the lensed radio-quiet quasar SDSS J0924+0219, and what causes its optical flux ratio anomaly?
+- step 3: Model gravitational lensing in the image plane
+  - method: Optimize a Gaussian source profile and flux anomaly parameter f_AD through an SIE lens galaxy mass model against the CO(5-4), submm continuum, and radio images. [3.1.1 The integrated line emission: "using the Singular Isothermal Ellipsoid (SIE) model developed by Eigenbrod et al. (2006) for the lensing galaxy"] [3.1.1 The integrated line emission: "Allowing the source to have a Gaussian profile, the galaxy position and the source parameters were optimized using the difference between the data and the lensed images convolved with the point spread"]
+  - software: lens modelling code developed by Neal Jackson
+  - parameter: SIE lens parameters: critical radius 0.87 arcsec, ellipticity 0.13 at PA -73.1 deg, shear 0.042 at PA 65.4 deg; f_AD between 0 and 1 [3.1.1 The integrated line emission: "An extra parameter, f AD, was introduced, that can vary between 0 and 1 and which multiplies the flux of the component D, while keeping the flux of A the same."] [Table 4: "A standard galaxy model (critical radius 0 [′′] . 87, ellipticity 0.13 at PA −73.1 [◦], shear magnitude 0.042 at PA 65.4 [◦] ) is used for the image plane fitting."]
+  - assumption: Singular Isothermal Ellipsoid (SIE) lens mass profile and Gaussian source profile [3.1.1 The integrated line emission: "Allowing the source to have a Gaussian profile, the galaxy position and the source parameters were optimized using the difference between the data and the lensed images convolved with the point spread"]
+  - fitting: Optimization of difference between data and PSF-convolved lensed model images [3.1.1 The integrated line emission: "the galaxy position and the source parameters were optimized using the difference between the data and the lensed images convolved with the point spread"]
+  - validation: Reduced chi-squared (1.85 for CO, 1.19 for submm continuum, 2.05 for radio) and residual map inspection [3.1.1 The integrated line emission: "The fit has a χ red [2] [=][ 1][.][85][ and is generally satisfactory apart] from some difference in the structure of image B."] [Figure 12 caption: "obtained from the image-plane lens modelling of the submillimetre continuum using the SIE galaxy lens model (Eigenbrod et al. 2006) used in Section 3.1.1 (χ red [2] [=] [1][.][19][).]"]
+- step 5: Perform lens modelling in the u-v plane and derive intrinsic CO luminosity and dynamical mass
+  - method: Fit a Sersic source profile lensed by an SIE galaxy model to the CO(5-4), submm continuum, and radio visibilities using visilens, then compute intrinsic CO luminosity and dynamical mass following Solomon & Vanden Bout (2005). [3.1.1 The integrated line emission: "We also fitted the u−v data with a lens model using visilens. All the lens galaxy parameters, except the position and mass of the lens galaxy, were fixed assuming the SIE lens model by Eigenbrod et al. (2006)."] [3.1.1 The integrated line emission: "Following Solomon & Vanden Bout (2005), we get a CO line (lensed) luminosity of µL [′] CO [=][ 3][.][16] [×] [10] [10] [K km s] [−][1] [pc] [2] [.]"]
+  - software: visilens
+  - parameter: Einstein radius = 0.92 arcsec (optimized on CO visibilities, fixed for continuum and radio); Sersic source profile [Table 4: "For the u − v plane fitting, the lens parameters are the same as for the image plane, except for the Einstein radius (0 [′′] . 92) which was obtained by optimising for it in case of the CO line visibility data and subsequently kept fixed for the submillimeter continuum and radio u − v fits."]
+  - assumption: Disk radius R is half the FWHM of the integrated CO source (81 mas); flat cosmology with DL = 11400 Mpc, DA = 1790 Mpc [3.1.1 The integrated line emission: "Using our value of size of the integrated CO line emission source of 81 ± 8 mas (Table 4), we get R = 348 ± 34 pc, approximating R to be equal to half of size of the disk."]
+  - fitting: MCMC/parameter distribution optimization in visilens (shown in corner plot Fig. 10) [Figure 10 caption: "Corner plot showing the distribution for different parameters, obtained by fitting a lens model to the CO(5-4) visibility data using visilens, described in Section 3.1.1."]
+  - validation: Residual visibility-imaged maps and comparison of source sizes with image-plane fits [3.1.3 The submillimetre continuum: "The size of the submillimetre continuum found using u − v plane fitting (0 [′′] . 26±0 [′′] . 07, Table 4) is consistent with the size of 0 [′′] . 21 found using the image plane fitting."]
+- step 6: Reconstruct velocity-resolved CO(5-4) source structure across frequency channels
+  - method: Project each frequency slice of the ALMA CO(5-4) image cube back to the source plane using the fixed SIE lens model, modelling the source in each channel as a single elliptical Gaussian. [3.1.2 ALMA observations: velocity-resol…: "We use the previous SIE lens model (Section 3.1.1) which allows us to fix the galaxy mass parameters, and we represent the source structure in each frequency plane as a single elliptical Gaussian, whose position, flux, width, axis ratio and position angle we allow to vary in order to fit the data."]
+  - software: lens modelling code developed by Neal Jackson
+  - parameter: 5 free source parameters per frequency slice: position (x, y), flux, width, axis ratio, position angle [3.1.2 ALMA observations: velocity-resol…: "we represent the source structure in each frequency plane as a single elliptical Gaussian, whose position, flux, width, axis ratio and position angle we allow to vary in order to fit the data."]
+  - assumption: Single elliptical Gaussian source per frequency channel acts as regularisation [3.1.2 ALMA observations: velocity-resol…: "These assumptions about the source effectively constitute a regularisation, which prevents the source structure from varying catastrophically as the model attempts to fit noise in the image."]
+  - fitting: Image-plane optimization per frequency channel [3.1.2 ALMA observations: velocity-resol…: "we project each of the frequency-sliced images back to the source plane, without modelling the u − v data explicitly."]
+  - validation: Tested robustness against alternative source assumption (circular Gaussians) and checked consistency with integrated CO source model [3.1.2 ALMA observations: velocity-resol…: "The size of the structure, and the overall distribution of velocities, is robust to different assumptions about the source structure, such as allowing the source components corresponding to each frequency plane to be circular Gaussians."]
+- step 8: Simulate microlensing magnification map for image D
+  - method: Generate a microlensing magnification map for image D using Wambsganss (2001) ray-tracing tree code and convolve with a Gaussian optical source profile to evaluate demagnification duration. [4.2 Is microlensing the reason behind t…: "To test that such a long period of demagnification is plausible, we simulated a microlensing magnification map corresponding to image D using the ray-tracing tree code developed by Wambsganss (2001)."] [4.2 Is microlensing the reason behind t…: "To account for the optical-source size, we convolve the map by a gaussian profile with half-light radius R 1/2 = 0.02η 0"]
+  - software: ray-tracing tree code developed by Wambsganss (2001)
+  - parameter: Map side-length 100 eta_0, resolution 0.005 eta_0/pixel, (kappa, gamma) = (0.48, 0.57), stellar surface density fraction alpha = 0.07, eta_0 ~ 3.2e16 cm, <M/M_sun> = 0.3, v_trans = 0.049 eta_0/year, R_1/2 = 0.02 eta_0 and 0.06 eta_0 [4.2 Is microlensing the reason behind t…: "We built a map with 100 microlensing Einstein radius η 0 sidelength and 0.005 η 0 / pixel resolution."] [4.2 Is microlensing the reason behind t…: "We use convergence and shear values at the position of image D as derived by Keeton et al. (2006) (i.e. (κ, γ) = (0.48, 0.57)), a fraction of surface density in form of stars of α = 0.07."]
+  - assumption: Standard accretion disc model size R_1/2 = 0.02 eta_0 (also tested 3x larger, R_1/2 = 0.06 eta_0) [4.2 Is microlensing the reason behind t…: "To account for the optical-source size, we convolve the map by a gaussian profile with half-light radius R 1/2 = 0.02η 0, correponding to the I −band magnitude accretion disc source size expected in the framework of the standard accretion disc model (Mosquera & Kochanek 2011)."]
+  - validation: Tested sensitivity to increasing the optical source half-light radius by a factor of 3 [4.2 Is microlensing the reason behind t…: "This result remains qualitatively unchanged if we increase the source size by a factor of 3, to account for the fact the the optical continuum emission may be larger than expected by the standard model of accretion"]
+- result: Lensed CO(5-4) luminosity (mu L'_CO) = 3.16e10 ± not stated K km s^-1 pc^2 [Table 2: "CO(5-4) Luminosity, µL CO [′] 3.16 × 10 [10] K km s [−][1] pc [2]"]
+- result: CO(5-4) source magnification = 23.5 ± not stated dimensionless [3.1.1 The integrated line emission: "The lens model fitting of the u − v data using visilens demonstrates a source magnification of 23.5"]
+- result: Intrinsic CO(5-4) line luminosity (L'_CO) = 1.34e9 ± not stated K km s^-1 pc^2 [3.1.1 The integrated line emission: "making the intrinsic CO line luminosity equal to L [′] CO [≃] [1][.][34][ ×][ 10] [9] [K km s] [−][1] [pc] [2] [.]"]
+- result: Molecular disk radius R = 348 ± 34 pc [3.1.1 The integrated line emission: "Using our value of size of the integrated CO line emission source of 81 ± 8 mas (Table 4), we get R = 348 ± 34 pc, approximating R to be equal to half of size of the disk."]
+- result: Dynamical mass (M_dyn) = 3.25e9 ± not stated cosec^2(i) M_sun [3.1.1 The integrated line emission: "The FWHM of the line is 200 ± 7 km/s, thus giving a dynamical mass M dyn = 3.25 × 10 [9] cosec [2] (i)M ⊙ where i is the inclination angle of the disk."]
+- result: Intrinsic CO(5-4) source flux density (u-v lens model) = 0.954 ± 0.057 mJy [Table 4: "Source Flux Density/mJy 0.954 ± 0.057 (0.8) 0.225 ± 0.048 (0.1) 0.003 ± 0.002 (0.0023)"]
+- result: Intrinsic CO(5-4) source FWHM (u-v lens model) = 0.081 ± 0.008 arcsec [3.1.1 The integrated line emission: "The source FWHM using the u − v plane analysis is 0 [′′] . 081±0 [′′] . 008, slightly larger than the FWHM found in the image plane analysis."]
+- result: Intrinsic submm continuum source flux density (u-v lens model) = 0.225 ± 0.048 mJy [Table 4: "Source Flux Density/mJy 0.954 ± 0.057 (0.8) 0.225 ± 0.048 (0.1) 0.003 ± 0.002 (0.0023)"]
+- result: Intrinsic submm continuum source FWHM (u-v lens model) = 0.260 ± 0.071 arcsec [Table 4: "Source FWHM/ [′′] 0.081 ± 0.008 (0.045) 0.260 ± 0.071 (0.21) 0.120 ± 0.089 (0.052)"]
+- result: Intrinsic radio source flux density (u-v lens model) = 0.003 ± 0.002 mJy [Table 4: "Source Flux Density/mJy 0.954 ± 0.057 (0.8) 0.225 ± 0.048 (0.1) 0.003 ± 0.002 (0.0023)"]
+- result: Intrinsic radio source FWHM (u-v lens model) = 0.120 ± 0.089 arcsec [Table 4: "Source FWHM/ [′′] 0.081 ± 0.008 (0.045) 0.260 ± 0.071 (0.21) 0.120 ± 0.089 (0.052)"]
+- result: Molecular gas velocity-resolved structure physical extent = 1-2.5 ± not stated kpc [abstract: "The molecular gas displays ordered motion, in a structure approximately 1–2.5 kpc in physical extent, with typical velocities of 50-100 km s [−][1] ."]
+- limitation (authors): Low signal-to-noise ratio of the ALMA submillimetre continuum prevents measuring individual component fluxes and requires deeper observations to confirm the spatial offset from the CO line. [2.2 ALMA observations: "We detect the submillimetre continuum at a level of approximately 2 mJy within an area encompassing all four lensed images, but with the signal-to-noise available it is not possible to make sensible measurements of the individual component fluxes."]
+- limitation (authors): Relatively low angular resolution and sensitivity of the 5-minute ALMA observation prevent deriving detailed source structure or investigating detailed mass substructure. [3.1.2 ALMA observations: velocity-resol…: "The relatively low resolution of the ALMA observations do not allow us to ask more than simple questions of the data. In particular, we cannot derive the structure of the source in detail, nor do we have the sensitivity at high resolution needed for investigation of detailed structure within the mass model."]
+- limitation (authors): Low signal-to-noise at the red end of the CO(5-4) velocity slices introduces large uncertainties on the channel centroids, preventing a definitive interpretation of a warped disk. [3.1.2 ALMA observations: velocity-resol…: "while we may be tempted to interpret the source to be a warped disk, it should be noted that there could be a large error bar on the fit to the velocity planes towards the red end because of their low signal to noise"]
+- not stated (card): CASA version and ALMA/VLA calibration pipeline versions used; CLEAN imaging parameters: cell size, image size, stopping threshold, and masking strategy; Method and CASA task (e.g., uvcontsub vs imcontsub) and exact channel ranges used for continuum subtraction; Velocity channel width/binning used for the CO(5-4) velocity slices and moment maps; Source code or availability of the custom lens model…
+
+### 2025ApJ...989..115T: ALMA Lensing Cluster Survey: Physical Characterization of Near-infrared-dark Intrinsically Faint ALMA Sources at z = 2─4 (2025; high_z_galaxies; observational_alma_primary)
+- question: What are the spectroscopic redshifts, stellar, gas and dust properties of three intrinsically faint, triply lensed NIR-dark ALMA sources, and what causes their strong dust attenuation?
+- step 4: Build lens models and derive magnifications
+  - method: glafic parametric lens models for M0417 and R0032 constrained by literature multiple images plus the three new triply lensed systems; MCMC magnification uncertainty plus systematic error [3.2 Mass model: "We utilize the publicly available `glafic` code (cite: Oguri2010; Oguri2021) to construct our fiducial lens models, following (cite: Kawamata2016) and (cite: Okabe2020)."] [3.2 Mass model: "Additionally, the three triply lensed systems identified in this study are included to provide further constraints."]
+  - software: glafic
+  - parameter: image position uncertainty 0.4 arcsec and photometric-redshift uncertainty 0.6 [3.2 Mass model: "we employ an MCMC method, taking into account uncertainties in the positions of the multiple images ($\Delta x= \Delta y=0.4\ensuremath{''}$) and photometric redshifts ($\Delta z= 0.6$)"]
+  - parameter: added systematic error 40% for mu<5 and 50% for mu>5 [3.2 Mass model: "Specifically, we incorporate an error of 40% for magnifications below 5 and 50% for those above 5."]
+  - fitting: MCMC sampling of the lens parameters; median and 16th/84th percentiles reported [3.2 Mass model: "The median value is chosen as the representative value, with the 16th and 84th percentiles serving as the uncertainty range."]
+  - validation: Lens models predicted the multiple images later confirmed by spectroscopy; compared with other lens models for systematics [3.1.2 R0032-z239: "Thus, these three sources are triply lensed images as predicted from our lens model."]
+- step 6: SED fitting for stellar mass, SFR, L_IR, A_V and dust mass
+  - method: CIGALE with a dynesty Bayesian search and flat priors, per lensed image; apparent quantities divided by magnification and combined by inverse-variance weighting [3.3 SED fitting: "We use the `CIGALE` code (cite: Boquien2019) to perform SED fitting and estimate key physical parameters."] [3.3 SED fitting: "After correcting each value for magnification, we took the intrinsic physical quantity as the average weighted by the inverse square of the uncertainties."]
+  - software: CIGALE, dynesty
+  - parameter: nonparametric SFH with 6 bins and continuity prior; SFR averaged over 100 Myr [Appendix SED fitting, Table of CIGALE p…: "Number of constant SFH bins | | 6"] [Appendix SED fitting, Table of CIGALE p…: "Prior | | Continuity"]
+  - parameter: stellar metallicity Z = 0.02 (solar), Calzetti attenuation with power-law slope delta -0.7 to 0.4 [Appendix SED fitting, Table of CIGALE p…: "Metallicity of the stellar model | $Z_{\text{star}}$ | 0.02"] [Appendix SED fitting, Table of CIGALE p…: "Slope of the power law modifying the attenuation curve | $\delta$ | -0.7–0.4"]
+  - parameter: Draine & Li dust emission with Umin all values above 5.0 [Appendix SED fitting, Table of CIGALE p…: "Minimum radiation field | $U_{\text{min}}$ | All possible values above 5.0"]
+  - assumption: Chabrier IMF; BC03 stellar population with solar metallicity; Calzetti attenuation; Draine 2014 dust templates [3.3 SED fitting: "We assume a nonparametric star-formation history (SFH) (cite: Leja2019) and adopt the stellar population model from (cite: Bruzual2003) with solar metallicity."] [3.3 SED fitting: "The dust attenuation law is taken from (cite: Calzetti2000). For the dust infrared emission model, we use (cite: Draine2014) templates."]
+  - assumption: Differential magnification negligible so quantities scale linearly with magnification [3.3 SED fitting: "In our case, differential magnification is negligible, meaning that the physical quantities scale linearly with the magnification factor."]
+  - fitting: dynesty posterior sampling with flat priors; median as best fit and 16-84% credible interval [3.3 SED fitting: "We use flat prior distributions for all parameters."] [3.3 SED fitting: "determined the median value as the best-fit parameter, accompanied by the 16–84% credible interval"]
+  - validation: SFRs from L_IR (Madau & Dickinson calibration x 0.63) are consistent within uncertainties with the SED SFRs [3.3 SED fitting: "These values are consistent within the uncertainties with the SFRs derived from the SED fitting."]
+- step 8: Measure intrinsic 1.2 mm dust size and axis ratio by source-plane fitting
+  - method: glafic source-plane Sersic (n=1) model fitted to each ALCS Band 6 image separately, results averaged; uncertainties from lens-model MCMC samples and noise realisations [3.5 Morphology of star-forming region: "We reconstruct ALMA band 6 (1.2 mm) continuum images for the three triply lensed systems observed by ALCS using the `glafic` version 2."] [3.5 Morphology of star-forming region: "In this study, we perform individual fittings for each of the three images and then adopt their average value."]
+  - software: glafic
+  - parameter: Sersic index 1, six free parameters (x, y, flux, effective radius, axis ratio, position angle) [3.5 Morphology of star-forming region: "we put a Sérsic source with a Sérsic index $n$ of 1, characterized by six free parameters"]
+  - parameter: chi-square computed within a 3 arcsec-radius circle around each source [3.5 Morphology of star-forming region: "For $\chi^2$ optimization, only the area within a 3$''$-radius circle centered on each source was considered."]
+  - parameter: 20,000 fits in total; median and 16-84% interval [3.5 Morphology of star-forming region: "After conducting the fitting procedure 20,000 times in total, we adopt the median value as the best-fit value and use the 16–84% percent interval as the uncertainty."]
+  - assumption: Noise map convolved with the dirty beam to mimic correlated interferometric noise [3.5 Morphology of star-forming region: "Given the pixel-correlated noise characteristic of interferometric images, we use a noise map convolved with the dirty beam of the ALMA observation."]
+  - fitting: chi-square optimisation of source parameters with lens parameters held fixed; repeated over MCMC lens models and noisy model images [3.5 Morphology of star-forming region: "all source parameters are optimized with the lens parameters hold constant"]
+  - validation: Minimum measurable radius r_min = 0.44 theta_beam / sqrt(SNR), with lensing resolution gain sqrt(mu), shows all sources are resolved [Appendix: Intrinsic dust continuum size: "These results confirm that all sources in our sample are spatially resolved."]
+- result: Total magnification mu (sum of three images), M0417-z365 / R0032-z239 / R0032-z299 = 12.5 / 14.7 / 15.2 ± +3.3/-3.3 ; +4.6/-4.6 ; +4.6/-4.6 dimensionless [Table 2: "$12.5\substack{+3.3 \\ -3.3}$"]
+- result: Intrinsic stellar mass log10(M*/Msun), M0417-z365 / R0032-z239 / R0032-z299 = 10.37 / 10.04 / 9.82 ± +0.23/-0.47 ; +0.20/-0.30 ; +0.19/-0.37 dex (log Msun) [Table 4: "$10.37\substack{+0.23 \\ -0.47}$"]
+- result: Intrinsic infrared luminosity log10(L_IR/Lsun), M0417-z365 / R0032-z239 / R0032-z299 = 12.19 / 11.93 / 11.48 ± +0.14/-0.15 ; +0.14/-0.14 ; +0.14/-0.17 dex (log Lsun) [Table 4: "$12.19\substack{+0.14 \\ -0.15}$"]
+- result: SFR averaged over 100 Myr, M0417-z365 / R0032-z239 / R0032-z299 = 101 / 52 / 21 ± +39/-54 ; +18/-24 ; +8/-10 Msun/yr [Table 4: "$101\substack{+39 \\ -54}$"]
+- result: SFR from L_IR (Madau & Dickinson x 0.63), M0417-z365 / R0032-z239 / R0032-z299 = 167 / 92 / 33 ± +63/-69 ; +35/-35 ; +12/-16 Msun/yr [3.3 SED fitting: "$167_{-69}^{+63}~\mathrm{M_\odot \, yr^{-1}}$ for M0417-z365, $92_{-35}^{+35}~\mathrm{M_\odot \, yr^{-1}}$ for R0032-z239, and $33_{-16}^{+12}~\mathrm{M_\odot \, yr^{-1}}$ for R0032-z299"]
+- result: Dust attenuation A_V, M0417-z365 / R0032-z239 / R0032-z299 = 4.5 / 4.6 / 4.0 ± +/-0.4 ; +0.19/-0.20 ; +0.4/-0.5 mag [Table 4: "$4.5\substack{+0.4 \\ -0.4}$"]
+- result: Dust mass log10(M_dust/Msun), M0417-z365 / R0032-z239 / R0032-z299 = 8.46 / 8.73 / 8.29 ± +0.14/-0.14 ; +0.14/-0.15 ; +0.14/-0.14 dex (log Msun) [Table 4: "$8.46\substack{+0.14 \\ -0.14}$"]
+- result: Offset from main sequence DeltaMS, M0417-z365 / R0032-z239 / R0032-z299 = 1.4 / 2.4 / 1.3 ± +0.5/-0.7 ; +1.1/-0.8 ; +0.5/-0.6 dimensionless [Table 4: "$1.4\substack{+0.5 \\ -0.7}$"]
+- result: 1.2 mm continuum circularized effective radius, M0417-z365 / R0032-z239 / R0032-z299 = 0.60 / 0.53 / 1.3 ± +0.14/-0.24 ; +0.06/-0.14 ; +0.3/-0.3 kpc [Table 4: "$0.60\substack{+0.14 \\ -0.24}$"]
+- result: Apparent axis ratio b/a, M0417-z365 / R0032-z239 / R0032-z299 = 0.50 / 0.24 / 0.17 ± +0.27/-0.32 ; +0.04/-0.07 ; +0.11/-0.07 dimensionless [Table 4: "$0.50\substack{+0.27 \\ -0.32}$"]
+- result: Infrared surface density Sigma_IR, M0417-z365 / R0032-z239 / R0032-z299 = 6.6e11 / 4.7e11 / 2.8e10 ± +7.8/-3.3 ; +2.9/-1.9 ; +2.6/-1.3 (same power of ten) Lsun/kpc^2 [3.5 Morphology of star-forming region: "$6.6\substack{+7.8 \\ -3.3}\times 10^{11}$, $4.7\substack{+2.9 \\ -1.9}\times 10^{11}$, and $2.8\substack{+2.6 \\ -1.3}\times 10^{10}\,L_\odot\si{kpc^{-2}}$, respectively."]
+- limitation (authors): Line detections for R0032-z299 are marginal [3.1.3 R0032-z299: "even though the line detections are marginal"]
+- limitation (authors): SED fitting codes differ systematically, especially in attenuation models, complicating comparison to literature [3.3 SED fitting: "Different SED fitting codes often produce systematic differences in results due to various assumptions they employ, especially the dust attenuation models."]
+- limitation (authors): PDR modelling is whole-galaxy integrated and plane-parallel, so qualitative only [3.6 PDR properties: "Since our measurements are integrated over the whole galaxy, the obtained results should be treated qualitatively."]
+- not stated (card): CASA version and whether the ALMA pipeline or manual scripts were used; calibrators and any self-calibration of the Band 3/4 data; Full tclean settings: deconvolver, niter, image size, masks and the line-free channel ranges used for the continuum images and the uvcontsub fit order; Exactly how Band 3/4 continuum fluxes were measured (peak pixel position, aperture) and the ALCS Band 6 photometry v…
+
+### 2017MNRAS.467.3513T: On the dust and gas components of the z = 2.8 gravitationally lensed quasar host RX J0911.4+0551 (2017; high_z_galaxies, agn_and_quasars; archival_reuse)
+- question: Are the dust and gas components of the lensed quasar host RX J0911 compact and concentric with the quasar, and what are their sizes, using ALMA 358 GHz continuum plus PdBI CO(7-6) and HST lensing constraints?
+- step 1: Fix astrometric offsets between HST, PdBI and ALMA frames
+  - method: Fit disc source centred on quasar to PdBI line (160 mas radius) and ALMA continuum (40 mas) data via HST lens model; cross-check direct ALMA-PdBI fit [Astrometry: "obtain offsets (offsets 2) between the HST and ALMA reference frames from a best fit to the ALMA continuum data of a model using for the source a disc having a radius of 40 mas and centred on the quasar;"]
+  - assumption: Quasar point source and CO(7-6) centre identical [Astrometry: "assume that the quasar point source and the centre of the CO(7-6) line emission are identical;"]
+  - validation: Direct vs indirect offsets agree to 15 mas in x and 6 mas in y [Astrometry: "15 mas in $x$ and 6 mas in $y$, is merely a consistency cross-check"]
+- step 3: Fit continuum source size on clean map
+  - method: Circular uniform disc or Gaussian source through lens model; chi2 vs rms radius rho [Measurement of the source sizes: "The fits are first made on the clean map, using as uncertainty 10% of the measured flux density added in quadrature to the 165 $\mu$Jy beam$^{-1}$ of effective noise"]
+  - assumption: Circular morphology, disc or Gaussian bracket reality [Measurement of the source sizes: "assume a circular morphology in the form of either a uniform disc or a Gaussian, two extreme configurations that may reasonably be thought to bracket reality"]
+  - fitting: chi2 minimisation (details not stated) [Measurement of the source sizes: "Table [\[Table3\]](#Table3) summarizes the result of the best fits and Figure [7](#fig7) displays the dependence of their $\chi^2$ on the source size"]
+  - validation: Compared to uv-plane and B/A results [Measurement of the source sizes: "Such agreement between results obtained by two completely independent methods brings additional confidence in their validity."]
+- step 5: Size from B/A flux ratio
+  - method: Compare measured B/A (11.6+-1.2%) with lens model predictions for disc and Gaussian sources [Measurement of the source sizes: "The present 358 GHz ALMA data give a B/A ratio of 11.6$\pm$1.2%."]
+- result: Dust continuum FWHM = 0.76 ± 0.04 (abstract) / 0.08 (text) kpc [abstract: "0.76 $\pm$ 0.04 kpc FWHM"]
+- result: Final rms radius rho (continuum) = 38 ± 4 mas [Measurement of the source sizes: "we retain as final value of the size of the 358 GHz continuum emission $\rho=38\pm 4$ mas"]
+- result: rho from clean-map fit = 34 ± 6 mas [Measurement of the source sizes: "A same value of 34$\pm$6 mas (0.27$\pm$0.05 kpc) is obtained for $\rho$"]
+- result: B/A ratio at 358 GHz = 11.6 ± 1.2 percent [Measurement of the source sizes: "The present 358 GHz ALMA data give a B/A ratio of 11.6$\pm$1.2%."]
+- result: Gas/dust size ratio = 3.4 ± 0.4 dimensionless [Measurement of the source sizes: "It is 3.4$\pm$0.4 times smaller than the size of the CO(7-6) emission"]
+- limitation (authors): CO(10-9)/(11-10) resolution and sensitivity insufficient to resolve source; size uncertainty dominated by systematics; chi2/dof ~3.4 indicates underestimated errors. [Measurement of the source sizes: "the uncertainty on the source size is completely dominated by systematic effects"]
+- not stated (card): Fitting code and minimiser used for map-plane and uv-plane fits; Exact visibility weighting and which spectral windows/channels used for continuum; How effective noise 165 uJy/beam relates to the 0.39 mJy/beam quoted; Line-free channels and continuum scaling used for CO line continuum subtraction; Flux scale uncertainty and flux calibrator; Source-plane model details (pixelisation, magnification …
+
+### 2021MNRAS.505.4838L: ALMA Lensing Cluster Survey: a strongly lensed multiply imaged dusty system at z ≥ 6 (2021; high_z_galaxies; large_program_or_survey)
+- question: Characterise the physical properties and dust production rate of an intrinsically faint, strongly lensed, quintuply-imaged dusty galaxy MACS0600-z6 at z = 6.07 near the end of cosmic reionisation.
+- step 4: Construct cluster lens models, identify multiple images, and compute magnifications and UV-FIR offset
+  - method: Build three independent cluster mass models using GLAFIC, LENSTOOL, and Light-Traces-Mass (LTM) constrained by 9 other secure multiply-imaged systems (5 with MUSE redshifts) to predict multiple image positions and magnification factors, an… [Lens models and multiple images: "The three models used here are produced using GLAFIC (cite: GLAFIC), LENSTOOL (cite: Lenstool), and Light-Traces-Mass (LTM; (cite: Zitrin2015))."] [Lens models and multiple images: "Four modellers (MO, JR, GC, AZ) voted on the choice of multiply-imaged systems which, besides the $z\sim6$ system, included nine other systems considered as secure."]
+  - software: GLAFIC, LENSTOOL, LTM
+  - parameter: Three to four dark matter halos for parametric models [Lens models and multiple images: "The parametric modeling of MACS0600 typically included three to four dark matter halos and, whereas for the LTM models, the masses of several bright cluster members were modeled independently."]
+  - assumption: Pseudo isothermal elliptical mass distributions and empirical scaling relations for parametric models; dark matter follows smoothed luminosity-weighted galaxy distribution for LTM [Lens models and multiple images: "The first two models can be regarded as parametric, in the sense that both the galaxies and their dark matter halos are described using independent analytic forms (e.g., combinations of pseudo isothermal elliptical mass distributions) and adopt empirical scaling relations for cluster members."] [Lens models and multiple images: "The LTM method is similar, but here the dark matter is assumed to follow the light distribution and thus is modeled as a smoothed version of the luminosity-weighted galaxy distribution."]
+  - fitting: Minimization using multiple image constraints; source position adjusted in LENSTOOL/GLAFIC to match [CII] 158 um line flux ratio; arc delensed in LTM [Lens models and multiple images: "All models are minimized using available multiple image constraints to find the best-fit solution and its associated errors."] [Lens models and multiple images: "The two parametric models (LENSTOOL and GLAFIC) extracted values by first planting a compact source in the expected position, and adjusting its exact position with respect to the critical curves to match the observed \[CII\] 158 $\mu$m line flux ratio."]
+  - validation: Checked consistency of WFC3 colors (F125W-F160W = 0.32 +/- 0.15), F160W surface brightness (21.9 +/- 0.3), 1.2 mm continuum flux ratio, and [C II] 158 um detections across multiple images. [Lens models and multiple images: "Colors measured on WFC3 images are similar with averaged values of F125W-F160W = 0.32$\pm$0.15."] [Lens models and multiple images: "All images have consistent surface brightness in the WFC3 images (e.g. the averaged value on F160W is 21.9$\pm$0.3) reinforcing the multiple images system hypothesis."]
+- step 5: Confirm spectroscopic redshift and measure Ly-alpha upper limit with Gemini/GMOS
+  - method: Reduce Gemini-North/GMOS spectra using Gemini IRAF package, extract spectrum in 1.5 x seeing diameter aperture, bin by factor of 30 in spectral direction, fit with stacked spectrum of 81 LBGs via chi^2 minimization, and inspect 2D spectra … [Spectroscopic follow-up: "We reduced the data using the Gemini IRAF package, as recommended by the instrument team."] [Spectroscopic follow-up: "We extracted the spectrum in a 1.5$\times$seeing diameter aperture and a break is clearly identified between 850nm and 900nm. To improve the signal, we binned the spectra in the spectral direction with a binning factor of 30 (see Figure 1)."]
+  - software: Gemini IRAF package
+  - parameter: 1.5 x seeing diameter extraction aperture; spectral binning factor of 30; redshift search range z = 0 to z = 8 [Spectroscopic follow-up: "We extracted the spectrum in a 1.5$\times$seeing diameter aperture and a break is clearly identified between 850nm and 900nm. To improve the signal, we binned the spectra in the spectral direction with a binning factor of 30 (see Figure 1)."] [Spectroscopic follow-up: "We searched for the best-fit using a $\chi^2$ minimization technique over a redshift range between $z=$0 and $z=8$."]
+  - assumption: Magnification factor mu = 31 for intrinsic EW upper limit [Spectroscopic follow-up: "no emission line is detected in any of the 3 images allowing us to place a firm upper limit on the Ly-$\alpha$ luminosity in this $z\sim$6 system at L(Ly-$\alpha$, 2$\sigma$) $<$ 2.4$\times$10$^{42}$ erg/s, corresponding to a rest-frame EW of $<$113Å /$\mu$ and EW<3.6Å assuming a magnification factor of $\mu$=31."]
+  - fitting: chi^2 minimization against stacked LBG template over 0 <= z <= 8 [Spectroscopic follow-up: "We searched for the best-fit using a $\chi^2$ minimization technique over a redshift range between $z=$0 and $z=8$."]
+  - validation: Ruled out z ~ 1.1 Balmer break interloper by non-detection of [OII]3727,3729 doublet; consistent with photometric redshift and ALMA [C II]158 um line. [Spectroscopic follow-up: "The best fit is found at $z_{spec}$=6.19$^{+0.06}_{-0.16}$, consistent with both the photometric redshift and the \[CII\]158$\mu$m emission line detected in the ALMA data."] [Spectroscopic follow-up: "One can also argue that if the break seen in the Gemini data is the Balmer Break at $z\sim$1.1 instead of the Lyman Break at $z\sim$6, we would have detected the \[OII\]3727,3729 doublet, which makes the high-redshift identification for this system robust."]
+- step 6: Derive intrinsic physical properties, galaxy size, stellar age, and SN dust production rate
+  - method: Fit SEDs with MAGPHYS for dust-detected images (arc and z6.3b) and BAGPIPES for remaining images, measure UV slope beta, compute intrinsic size on z6.4 following Oesch et al. (2010), estimate stellar age from Balmer Break amplitude (F160W … [Physical Properties: "We determine the intrinsic (lensing-corrected) physical properties for those two images with a clear dust detection (MACS0600-arc and MACS0600-z6.3b) using MAGPHYS (cite: MAGPHYS), which includes FIR models to fit the dust properties, while we use BAGPIPES (cite: BAGPIPES) to provide constraints for the remaining imag…"] [Physical Properties: "We follow the method described in (cite: Oesch2010) to determine the size of this galaxy, taking into account the *SExtractor* half light radius and the *Hubble* PSF."]
+  - software: MAGPHYS, BAGPIPES
+  - parameter: BAGPIPES: constant SFH, stellar mass 10^6 to 10^12 M_sun, age 0.0 Gyr to age of Universe at z=6.07 [Physical Properties: "For the BAGPIPES runs, we assume a constant Star Formation History (SFH) with a stellar mass ranging from 10$^6$ to 10$^{12}$ M$_{\odot}$, and an age ranging from 0.0 Gyr to the age of the Universe at $z=6.07$ ."]
+  - assumption: H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7 [Introduction: "Throughout this paper we assume $\rm{H_0=70 km.s^{-1}.Mpc^{-1}}$, $\Omega_m$=0.3 and $\Omega_{\Lambda}$=0.7."]
+  - assumption: LTM model magnifications; dust temperature T_dust = 30 K (also tested 35 K for IRX and 85 K upper limit) and dust emissivity beta = 2.0; Chabrier IMF [Physical Properties: "For each image we adopt the magnification from the LTM model, based upon the spectroscopic redshift"] [Physical Properties: "The latter is obtained assuming a dust temperature of 30K, a dust emissivity of $\beta$=2.0 and the mean magnification."]
+  - fitting: SED fitting with MAGPHYS and BAGPIPES, averaging parameter values over mean, min, and max LTM magnification values [Table 2 caption: "The central value is obtained by averaging the parameter value of the best fit-model obtained assuming the mean, min and max magnification value and the error bars included uncertainties on the magnification factor"]
+  - validation: Consistent physical properties across all multiple images; tested sensitivity of dust mass and IRX-beta conclusion to higher dust temperature (T_dust = 85 K). [Physical Properties: "Reassuringly, we determine that all images have similar properties."] [Discussion and Conclusion: "For a temperature of 85K, the estimated dust mass would decrease to $M_{dust}$=6.3$^{+1.6}_{3.6}$$\times$10$^6$M$_{\odot}$, and its dust-to-stellar mass ratio will be comparable to previous findings at high-redshift."]
+- result: 1.2 mm flux ratio between z6.3b and MACS0600-arc = 0.62 ± +0.33/-0.24 dimensionless [Lens models and multiple images: "The 1.2mm flux ratio between 1.3b and the arc is 0.62$^{+0.33}_{-0.24}$ in excellent agreement with ratios observed in the near infrared and with the predicted lens-model magnifications (see below)."]
+- result: LTM magnification of MACS0600-arc (mu) = 31 ± +10/-9 dimensionless [Table 2: "| arc | 2.2 $^{+ 1.3 }_{- 0.9 }$ | 4.5 $^{+ 3.4 }_{- 3.1 }$ | 6.1 $^{+ 7.6}_{- 1.9 }$ | $-$1.6$\pm$0.1 | 31 $^{+10}_{-9}$ |"]
+- result: LTM magnification of MACS0600-z6.3b (mu) = 13 ± +3/-2 dimensionless [Table 2: "| z6.3b | 1.1 $^{+ 0.6 }_{- 0.5 }$ | 5.1 $^{+ 4.2 }_{- 3.2 }$ | 5.9 $^{+ 3.5}_{- 2.8 }$ | $-$1.7$\pm$0.3 | 13 $^{+3}_{-2}$ |"]
+- result: Physical offset between FIR continuum and UV continuum = <0.4 ± not stated kpc [Lens models and multiple images: "In the image plan we measured an observed offset of 0.24$''$ and 0.35$''$ respectively for z6.3b and the arc. Accounting for the magnification, we estimate a physical offset of $<$0.4 kpc."]
+- result: Gemini/GMOS Lyman-break spectroscopic redshift (z_spec) = 6.19 ± +0.06/-0.16 dimensionless [Spectroscopic follow-up: "The best fit is found at $z_{spec}$=6.19$^{+0.06}_{-0.16}$, consistent with both the photometric redshift and the \[CII\]158$\mu$m emission line detected in the ALMA data."]
+- result: 2-sigma Ly-alpha luminosity upper limit L(Ly-alpha, 2sigma) = <2.4e42 ± not stated erg/s [Spectroscopic follow-up: "no emission line is detected in any of the 3 images allowing us to place a firm upper limit on the Ly-$\alpha$ luminosity in this $z\sim$6 system at L(Ly-$\alpha$, 2$\sigma$) $<$ 2.4$\times$10$^{42}$ erg/s, corresponding to a rest-frame EW of $<$113Å /$\mu$ and EW<3.6Å assuming a magnification factor of $\mu$=31."]
+- result: Lensing-corrected Ly-alpha rest-frame equivalent width upper limit (for mu=31) = <3.6 ± not stated Angstrom [Spectroscopic follow-up: "no emission line is detected in any of the 3 images allowing us to place a firm upper limit on the Ly-$\alpha$ luminosity in this $z\sim$6 system at L(Ly-$\alpha$, 2$\sigma$) $<$ 2.4$\times$10$^{42}$ erg/s, corresponding to a rest-frame EW of $<$113Å /$\mu$ and EW<3.6Å assuming a magnification factor of $\mu$=31."]
+- result: Mean lensing-corrected stellar mass (M_star) = 2.9e9 ± +11.5e9/-2.3e9 M_sun [Abstract: "Based on the spectral energy distribution, we infer lensing-corrected stellar and dust masses of $\rm{2.9^{+11.5}_{-2.3}\times10^9}$ and $\rm{4.8^{+4.5}_{-3.4}\times10^6}$ $\rm{M_{\odot}}$ respectively"]
+- result: Mean lensing-corrected dust mass (M_dust, for T_dust = 30 K) = 4.8e6 ± +4.5e6/-3.4e6 M_sun [Abstract: "Based on the spectral energy distribution, we infer lensing-corrected stellar and dust masses of $\rm{2.9^{+11.5}_{-2.3}\times10^9}$ and $\rm{4.8^{+4.5}_{-3.4}\times10^6}$ $\rm{M_{\odot}}$ respectively"]
+- result: Mean lensing-corrected star formation rate (SFR) = 9.7 ± +22.0/-6.6 (+23.0/-6.6 in text) M_sun yr^-1 [Abstract: "a star formation rate of $\rm{9.7^{+22.0}_{-6.6} M_{\odot} yr^{-1}}$, an intrinsic size of $\rm{0.54^{+0.26}_{-0.14}}$ kpc, and a luminosity-weighted age of 200$\pm$100 Myr."]
+- result: Average UV continuum slope (beta) = -1.66 ± +/-0.08 dimensionless [Physical Properties: "We measure the UV slopes of all images from the best SED-fit and find an average $\beta$=$-$1.66$\pm$0.08."]
+- result: Intrinsic galaxy size (half-light radius) = 0.54 ± +0.26/-0.14 kpc [Abstract: "a star formation rate of $\rm{9.7^{+22.0}_{-6.6} M_{\odot} yr^{-1}}$, an intrinsic size of $\rm{0.54^{+0.26}_{-0.14}}$ kpc, and a luminosity-weighted age of 200$\pm$100 Myr."]
+- result: Luminosity-weighted stellar age = 200 ± +/-100 Myr [Abstract: "a star formation rate of $\rm{9.7^{+22.0}_{-6.6} M_{\odot} yr^{-1}}$, an intrinsic size of $\rm{0.54^{+0.26}_{-0.14}}$ kpc, and a luminosity-weighted age of 200$\pm$100 Myr."]
+- result: Formation redshift (z_form) = 7.2 ± +0.8/-0.6 dimensionless [Physical Properties: "Following the methodology discussed in (cite: Roberts-Borsani2020), we estimate an age of 200$\pm$100 Myr, indicative of a formation redshift of $z\rm{_{form}}$=7.2$^{+0.8}_{-0.6}$"]
+- result: Dust mass produced per core-collapse supernova = 0.3 ± +0.5/-0.2 M_sun [Physical Properties: "Assuming a Chabrier (cite: Chabrier2003) IMF for the production rate of SNe, for the measured dust mass and stellar age, each SN would have produced 0.3$^{+0.5}_{-0.2}$ M$_{\odot}$ of dust."]
+- result: Intrinsic UV absolute magnitude (M_uv) = -19.9 ± +/-0.15 mag [Discussion and Conclusion: "Such intrinsically faint sources ($M_{uv}$=-19.9$\pm$0.15) emitting light during the Epoch of Reionisation are considered to be dominant contributors to the cosmic reionisation of hydrogen"]
+- limitation (authors): Absence of WFC3 coverage at the position predicted by GLAFIC and LTM models makes the clear identification of the fifth image (z6.5) challenging, with ~12'' scatter among models. [Lens models and multiple images: "While all models reassuringly agree on the positions of the five multiple images, there is larger scatter ($\sim$12$''$) in the predicted location of the fifth image, z6.5."]
+- limitation (authors): Arc magnification estimates are likely lower limits; alternative methods next to the critical curves yield mu ~ 150-200 with larger uncertainty. [Lens models and multiple images: "We note that the magnifications for the arc are likely lower limits. If the magnification for the arc is instead estimated by directly averaging the magnification next to the critical curves, or alternatively by comparing the area of the arc to its delensed size, values around $\mu\sim150-200$ are obtained, although s…"]
+- limitation (authors): Supernova dust yield estimate is highly uncertain due to unknown SN production rates in early metal-poor galaxies and dust destruction/ejection processes. [Physical Properties: "Although this estimate is highly uncertain given the uncertain production rate of SNe in early metal poor galaxies and possible dust destruction and ejection processes in low mass galaxies at high redshift, it is perhaps somewhat larger than that derived locally"]
+- not stated (card): Exact spectral window frequencies, channel widths, and line-free channel ranges used to create the emission-line subtracted 1.2 mm continuum image; ALMA array configuration and baseline lengths; tclean parameters (cell size, image size, stopping threshold, masking, primary beam correction); Full lens model parameter files and multiple-image constraint lists (deferred to a separate paper in prepar…
+
+### 2015PASJ...67...72T: High-resolution ALMA observations of SDP.81. I. The innermost mass profile of the lensing elliptical galaxy probed by 30 milli-arcsecond images (2015; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the innermost mass profile and central SMBH mass of the foreground elliptical lensing SDP.81, derived from lens modeling of 30 mas ALMA images?
+- step 4: Fit lens mass model
+  - method: Isothermal ellipsoid with core, external shear, third-order and (4,2) multipole perturbations fit to image positions with MCMC errors [3.1 Methods and results: "We then refine the mass model by adding the higher-order perturbations (the number of independent parameters is 12) and fitting all of the identified multiple images."]
+  - software: GLAFIC
+  - parameter: Position uncertainty 20 mas; 100–200 mas for 10 blended knots; 130–200 mas for HST images; N_DOF = 88 [3.1 Methods and results: "The positional uncertainty of the knots used for optimization is set to 20 mas"]
+  - assumption: Flat universe Ωm=0.26, ΩΛ=0.74, H0=72 [1 Introduction: "we assume a flat universe with $\Omega_\mathrm{m} = 0.26$, $\Omega_{\Lambda} = 0.74$, and $H_0 = 72$ km s$^{-1}$ Mpc$^{-1}$"]
+  - fitting: Chi-square minimization with MCMC for 68% intervals [3.1 Methods and results: "the $1\sigma$ confidence intervals are computed by Marcov-chain Monte Carlo simulations"]
+  - validation: Compared with independent ALMA (Rybak15, Dye15) and HST (Dye14) models [3.1 Methods and results: "The best-fit parameters of the isothermal ellipsoid and external shear are in good agreement with those independently obtained using the same ALMA images"]
+- step 5: Compare lens mass profile with stellar light
+  - method: Convergence profile vs HST profile scaled by M/L = 2, lens model smoothed by HST PSF [3.2 Mass profile of SDSS J0903: "the stellar surface mass is scaled using a fiducial mass-to-light ratio of $2~M_{\solar}~L_{\solar}^{-1}$"]
+  - assumption: M/L = 2 Msun/Lsun at ~1 µm [3.2 Mass profile of SDSS J0903: "which is a typical value for local massive ellipticals"]
+- result: Core radius of isothermal ellipsoid = 48 ± +169/-28 mas [3.2 Mass profile of SDSS J0903: "$r_\mathrm{core} = 48 ^{+169}_{-28}$ mas"]
+- result: Velocity dispersion = 265 ± +15/-4 km/s [4 Discussions and conclusions: "$\sigma_v = 265 ^{+15}_{-4}$ km s$^{-1}$"]
+- result: Position angle of ellipsoid = 11 ± 13 deg [3.2 Mass profile of SDSS J0903: "$\theta_e = 11 \pm 13 \ensuremath{^\circ}$"]
+- result: Total magnification = ~22 ± not stated dimensionless [3.1 Methods and results: "the total magnification factor is expected to be $\mu_\mathrm{g} \sim 22$"]
+- result: Lens-model chi2 = 3.45 ± not stated dimensionless [3.1 Methods and results: "($\chi^2 = 3.45$)"]
+- limitation (authors): Core radius and velocity dispersion highly degenerate; BH mass and core radius degenerate [3.1 Methods and results: "Note that the core radius ($r_\mathrm{core}$) and velocity dispersion ($\sigma_v$) of the isothermal ellipsoid are highly degenerate."]
+- not stated (card): ALMA imaging/calibration settings (tclean parameters, robust, CASA version) are deferred to other papers; Exact positions and fluxes of the 46 identified knots; Initial parameter values and MCMC settings (chain length, priors) for GLAFIC; Fixed reference position of the non-thermal source; Mass-to-light ratio uncertainty treatment
+
+### 2021MNRAS.500.3667S: The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2 (2021; agn_and_quasars, high_z_galaxies, star_formation; observational_alma_primary)
+- question: What are the intrinsic dust morphology, CO line morphology and kinematics, and star formation properties of z ~ 2 quasar host galaxies, and how do they relate to galaxy compaction and quenching?
+- step 2: Visibility-plane gravitational lens modelling and pixellated source reconstruction
+  - method: Simultaneous optimisation of singular power-law ellipsoid lens mass distribution with external shear and pixellated source surface brightness directly on visibilities [Lens Modelling: "Recently, (cite: Powell:2020) introduced several algorithmic improvements to overcome this limitation and model large interferometric data sets directly. We employ this method for optimising the visibility-plane posterior probability and source-plane regularisation."] [Lens Modelling: "Under the assumption of a smooth mass distribution, we parameterise the primary lens potential as a singular power-law ellipsoid with external shear, i.e. $\rho(r)\propto r^{-\zeta}$ (cite: Kormann:1994)."]
+  - software: MultiNest
+  - parameter: isothermal profile zeta = 2 (for 5 targets); fixed literature slope/ellipticity/PA for PG 1115+080 and WFI J2033-4723 [Lens Modelling: "In all other cases, we assume isothermal mass distributions (i.e. $\zeta=2$) and optimise for the lens galaxy position, ellipticity parameters and external shear parameters."]
+  - parameter: maximum baseline < 300 m and 3 velocity channels for WFI J2033-4723 and SDSS J0924+0219 line cubes [Lens Modelling: "For WFI J2033$-$4723 and SDSS J0924+0219, we use only three velocity channels and restrict the $uv$ data to within a maximum baseline of 300 m to improve the surface brightness sensitivity."]
+  - assumption: Smooth singular power-law ellipsoid mass distribution with external shear; SIS for nearby perturbers in WFI J2033-4723 [Lens Modelling: "Under the assumption of a smooth mass distribution, we parameterise the primary lens potential as a singular power-law ellipsoid with external shear, i.e. $\rho(r)\propto r^{-\zeta}$ (cite: Kormann:1994)."] [Lens Modelling: "For WFI J2033$−$4723, our lens model also includes a luminous satellite galaxy close to the Einstein radius of the primary lens and a massive galaxy 4 arcsec from the primary lens, both of which we parameterise as a single isothermal sphere (SIS)."]
+  - fitting: MultiNest nested sampling with flat priors (typically +/- 20% of optimised values) and source regularisation fixed to MAP value [Lens Modelling: "The uncertainties on the lens model parameters were obtained from the posterior distributions derived using MultiNest (cite: Feroz:2013), with the source regularisation constant fixed to the maximum a posteriori value."] [Lens Modelling: "Flat prior ranges were assumed for each free parameter, typically $\pm20$ percent of the optimised values."]
+  - validation: Dirty residual images after subtracting model visibilities checked to be below 4 sigma [Source reconstructions: "We find our lens models fit the data well and the residual surface brightness features are below the 4 $\sigma$ level."]
+- step 3: Measure intrinsic source sizes (R_eff), Sersic indices, and lensing magnifications
+  - method: Fit 2D Sersic profiles to 100 noise realisations of reconstructed continuum and integrated CO line sources using basin-hopping optimisation; compute mean magnification by masking source pixels below SNR of 4 [Source reconstructions: "To estimate these uncertainties we assume our maximum a posteriori source model and create mock data with 100 different realisations of the noise at the level measured in the real data"] [Source reconstructions: "To estimate the uncertainty on the source size, we fit a Sérsic profile (cite: Sersic:1963) to the source from each noise realisation of continuum and integrated line emission using a basin-hopping optimisation algorithm within the SciPy package (cite: Wales:1998; Jones:2001)."]
+  - software: SciPy
+  - parameter: 100 noise realisations; SNR >= 4 mask for magnification; Sersic index n fixed to continuum value (1.0) for SDSS J0924+0219 and WFI J2033-4723 CO lines [Source reconstructions: "For the integrated line emission of SDSS J0924+0219 and WFI J2033$-$4723, we fix the index of the Sérsic profile to that found for the continuum as the fitting was found to be unstable due to the low signal-to-noise ratio of the data."]
+  - assumption: Additional +/- 10% uncertainty added to sizes where isothermal slope was assumed to account for empirical scatter in lens mass profile slope [Source reconstructions: "Therefore, where we assume only an isothermal profile is fit to the data, we propagate an additional $\pm10$ percent error into the uncertainty in our estimated sizes to account for the empirical scatter in $\zeta$."]
+  - fitting: Basin-hopping optimisation of Sersic profile parameters across 100 mock realisations [Source reconstructions: "To estimate the uncertainty on the source size, we fit a Sérsic profile (cite: Sersic:1963) to the source from each noise realisation of continuum and integrated line emission using a basin-hopping optimisation algorithm within the SciPy package (cite: Wales:1998; Jones:2001)."]
+  - validation: Simulations of mock Gaussian sources lensed with same uv-coverage and noise used to calibrate and correct for regularisation-induced source size inflation [Source reconstructions: "In order to test the robustness of our inferred source sizes, we created mock images of Gaussian sources lensed by the maximum a-priori lens model for each object."] [Source reconstructions: "We found that the inferred source sizes were inflated by a constant value that can be related to the strength of the source regularisation."]
+- step 5: Derive molecular gas luminosities, dynamical masses, gas mass, gas fraction, and depletion timescale
+  - method: Integrate reconstructed source-plane CO line cubes to get intrinsic line luminosities; compute dynamical mass from 2*R_eff and inclination-corrected maximum velocity; convert CO(3-2) luminosity of HS 0810+2554 to gas mass and depletion time [Molecular gas properties: "We convert our line flux densities to luminosities ($L_{\rm CO}$ and $L^{\prime}_{\rm CO}$) with relations as given by (cite: Solomon:2005)."] [Molecular gas properties: "From the reconstructed line emission, we estimate the enclosed dynamical mass of the galaxies, assuming"]
+  - parameter: inclination i = 45 +/- 15 deg where axis ratio is unconstrained (RX J0911+0551, PG 1115+080, WFI J2033-4723) [Molecular gas properties: "Where we do not have a reliable constraint on the axis ratio due to a lack of radial resolution (i.e. RX J0911+0551, PG 1115+080 and WFI J2033$-$4723) we assume an inclination angle of $45\pm15$ deg, corresponding to axis ratios of 0.5 to 0.9."]
+  - assumption: Circular velocity traces gas rotation in a disc; alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 for HS 0810+2554 [Molecular gas properties: "This method assumes that the circular velocity accurately traces the gas rotation, ignoring the effect of a non-spherical gravitational potential and turbulent pressure."] [Intensity of star formation: "We assume $\alpha_{\rm CO}=0.8$ M$_{\odot}$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$, as is often assumed for dusty starbursts, to convert $L^{\prime}_{\rm CO}$ to total gas mass ($M_{\rm gas}$)."]
+- result: Dust effective radius R_dust (HS 0810+2554) = 0.13 ± 0.04 kpc [Intensity of star formation: "| HS 0810+2554 | $25\pm4$ | $0.13\pm0.04$ | $0.57\pm0.05$ | $39^{+4}_{-5}$ | $135^{+25}_{-18}$ | $\equiv2$ | $1.3^{+1.0}_{-0.9}\times10^{11}$ | $40^{+30}_{-30}$ | $400^{+300}_{-300}$ | $1.1^{+0.4}_{-0.5}\times10^{7}$ |"]
+- result: Dust effective radius R_dust (RX J0911+0551) = 0.51 ± 0.03 kpc [Intensity of star formation: "| RX J0911+0551 | $14.8\pm0.2$ | $0.51\pm0.03$ | $0.56\pm0.04$ | $54^{+3}_{-3}$ | – | $1.9^{+0.1}_{-0.1}$ | $2.3^{+0.1}_{-0.1}\times10^{12}$ | $750^{+50}_{-50}$ | $500^{+100}_{-100}$ | $5.3^{+0.9}_{-0.8}\times10^{6}$ |"]
+- result: Dust effective radius R_dust (SDSS J0924+0219) = 1.9 ± 0.2 kpc [Intensity of star formation: "| SDSS J0924+0219 | $15.1\pm0.7$ | $1.9\pm0.2$ | $1.2\pm0.1$ | $38^{+8}_{-7}$ | – | $1.5^{+0.6}_{-0.4}$ | $1.9^{+0.7}_{-0.5}\times10^{11}$ | $60^{+20}_{-20}$ | $3^{+1}_{-1}$ | $3.9^{+1.5}_{-1.4}\times10^{7}$ |"]
+- result: Dust effective radius R_dust (PG 1115+080) = 0.14 ± 0.04 kpc [Intensity of star formation: "| PG 1115+080 | $21.5\pm0.4$ | $0.14\pm0.04$ | $0.47\pm0.01$ | $66^{+17}_{-21}$ | – | $1.9^{+0.3}_{-0.3}$ | $3.4^{+1.2}_{-1.0}\times10^{11}$ | $110^{+40}_{-30}$ | $1000^{+400}_{-400}$ | $2.5^{+1.5}_{-1.0}\times10^{6}$ |"]
+- result: Dust effective radius R_dust (H1413+117) = 0.8 ± 0.1 kpc [Intensity of star formation: "| H1413+117 | $11.2\pm0.2$ | $0.8\pm0.1$ | $0.66\pm0.07$ | $53^{+1}_{-1}$ | $246^{+14}_{-24}$ | $1.88^{+0.04}_{-0.04}$ | $4.9^{+0.2}_{-0.2}\times10^{12}$ | $1600^{+60}_{-60}$ | $370^{+80}_{-80}$ | $1.2^{+0.1}_{-0.1}\times10^{8}$ |"]
+- result: Dust effective radius R_dust (WFI J2026-4536) = 0.19 ± 0.02 kpc [Intensity of star formation: "| WFI J2026$-$4536 | $19.6\pm0.8$ | $0.19\pm0.02$ | $0.61\pm0.02$ | $63^{+4}_{-3}$ | – | $1.8^{+0.1}_{-0.1}$ | $3.1^{+1.7}_{-1.5}\times10^{12}$ | $1010^{+60}_{-50}$ | $4500^{+1700}_{-1700}$ | $3.9^{+0.1}_{0.1}\times10^7$ |"]
+- result: Dust effective radius R_dust (WFI J2033-4723) = 2.5 ± 0.2 kpc [Intensity of star formation: "| WFI J2033$-$4723 | $17.6\pm0.9$ | $2.5\pm0.2$ | $1.1\pm0.2$ | $31^{+7}_{-5}$ | – | $1.7^{+0.3}_{-0.3}$ | $3.1^{+0.9}_{-0.6}\times10^{11}$ | $100^{+30}_{-20}$ | $2.5^{+0.9}_{-0.7}$ | $4.5^{+0.8}_{-0.7}\times10^{7}$ |"]
+- result: Molecular gas mass M_gas (HS 0810+2554) = 2.1e9 ± 0.1e9 M_sun [Intensity of star formation: "For this object we find $M_{\rm gas}=(2.1\pm0.1)\times10^9$"]
+- result: Gas fraction f_gas (HS 0810+2554) = 0.06 ± 0.04 dimensionless [Abstract: "For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\pm0.04$ and a depletion timescale of $50\pm40$ Myr, suggesting it is transitioning into quiescence."]
+- result: Gas depletion timescale t_dep (HS 0810+2554) = 50 ± 40 Myr [Abstract: "For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\pm0.04$ and a depletion timescale of $50\pm40$ Myr, suggesting it is transitioning into quiescence."]
+- limitation (authors): Sample is small (7 objects) and heterogeneous, probing different CO rotational transitions that trace different gas temperatures and regions. [Summary of the sample, observations and…: "As a result, this sample is heterogeneous, and the observations probe different CO line transitions"]
+- limitation (authors): 2D reconstructed velocity and dispersion maps are affected by beam-smearing, and two sources only use 3 velocity channels. [Molecular gas properties: "However, these 2-dimensional maps may be strongly affected by beam-smearing, which can misguide interpretation of the dynamics of the systems (velocity dispersion in particular, e.g. (cite: Lelli:2010))."]
+- limitation (authors): Single-temperature SED fits may underestimate total dust mass if a colder diffuse ISM dust component is present. [Dust properties: "Note that, if the temperature of dust in the diffuse ISM is much lower than the effective dust temperature for quasar hosts, the dust masses derived for of our sample could be underestimated."]
+- not stated (card): CASA version and pipeline version used for calibration and imaging; Table 2 (summary of spectral line observations) and Table lens_models are referenced in the text but missing from the manuscript/markdown; Exact channel widths and frequency ranges of the line-free spectral windows used for continuum subtraction and self-calibration; Pixel size and image dimensions used for CLEAN imaging and sour…
+
+### 2026A&A...707A.252K: Detailed lens modeling and kinematics of the submillimeter galaxy G09v1.97: An analysis of CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP>, and dust continuum e… (2026; high_z_galaxies, star_formation; observational_alma_primary)
+- question: Constrain the ongoing processes, source-plane morphology, and kinematics (disk versus merger) in the z = 3.63 gravitationally lensed submillimeter galaxy H-ATLAS J083051.0+013224 (G09v1.97) using high angular resolution dust continuum, CO(…
+- step 2: Perform parametric gravitational lens modeling on visibilities
+  - method: Fit two foreground lens galaxies as single isothermal ellipsoid (SIE) mass profiles and the background source as a single linear Sérsic profile directly on the interferometric visibilities in PyAutoLens; optimize the lens mass model on dus… [Lens modeling: "PyAutoLens is capable of handling interferometric data and performing reconstructions directly on the visibilities, thereby minimizing the effect of correlated noise in interferometric images."] [Parametric source modeling: "We modeled these two galaxies as single isothermal ellipsoid (SIE) mass distributions."]
+  - software: PyAutoLens
+  - parameter: Lens redshifts fixed at z = 0.626 (or 0.636 in text) and z = 1.002; 1000 posterior samples for magnification error [Lens modeling: "| Lens SE | 0.626 | $-0.21^{+0.02}_{-0.02}$ | $-0.08^{+0.02}_{-0.02}$ | $0.51 ^{+0.04} _{-0.04}$ | $18.97 ^{+4.03} _{-3.78}$ | $0.44^{+0.01}_{-0.01}$ |"] [Parametric source modeling: "We performed the sampling 1000 times for each emission type, obtained magnification factors for each of these samples, and calculated the standard deviation of the magnification factors from each sample, thus obtaining the magnification factor error."]
+  - assumption: Two SIE lens mass profiles and a single Sérsic source profile [Parametric source modeling: "We modeled these two galaxies as single isothermal ellipsoid (SIE) mass distributions."] [Parametric source modeling: "We modeled the source as a single Sérsic profile using a linear light profile, allowing the intensity parameters to be solved via linear algebra."]
+  - fitting: Uniform priors on lens and source parameters; linear algebra solve for intensity; 1000 posterior samples from maximum likelihood solution for errors [Parametric source modeling: "During lens modeling, the redshifts of the lens galaxies were fixed while we allowed all other parameters to vary, assuming uniform priors."] [Parametric source modeling: "We modeled the source as a single Sérsic profile using a linear light profile, allowing the intensity parameters to be solved via linear algebra."]
+  - validation: Tested adding a second Sérsic source profile for CO(6-5) as in Yang19 and verified it did not improve residuals [CO(6–5) emission: "We attempted to improve the model by including a second source, also described by a Sérsic profile and as motivated by (cite: Yang19). However, the inclusion of this second source did not improve the residuals, and we discarded this model."]
+- step 3: Perform non-parametric pixelated source-plane reconstructions and reconstruct the de-magnified CO(6-5) spectral cube
+  - method: Using the continuum-optimized lens mass model, reconstruct source-plane emission on a magnification-weighted adaptive Voronoi pixel mesh with constant regularization in PyAutoLens; bin CO(6-5) into 50 km/s channels, reconstruct each bin no… [Non-parametric source modeling: "In this work, we use the optimized lens mass model derived from the dust continuum emission (described in Section [3.3.1.1](#subsubsec:parametric_dust_lens_model)) to create a pixelized reconstruction using a magnification weighted adaptive Voronoi pixel mesh."] [Spectral cube reconstructions: "To create de-magnified source-plane emission cubes, we divided the emission line into bins of equivalent size and non-parametrically modeled the emission in each bin. We used a spectral resolution of $\approx 50$ km/s"]
+  - software: PyAutoLens, CASA
+  - parameter: Circular region of radius 1.5 arcsec (11 kpc); CO(6-5) cube spectral resolution ~50 km/s; static source-plane beam of 0.035'' x 0.027'' (5 pixels per beam); 1000 samples for sigma_l; 100 samples for pixelized magnification error [Non-parametric source modeling: "We used this methodology to create pixelized reconstructions of the dust continuum emission, CO(6–5), , and $^+$ emission using a Voronoi mesh covering a circular region of radius 1.5 arcseconds (11 kpc) in the image plane around G09v1.97."] [Spectral cube reconstructions: "Thus, the static angular resolution achieved in the source plane was approximately $0''.035 \times 0''.027$ ($\approx 260 \times 200$ pc) for the reconstructed CO(6–5) spectral cube."]
+  - assumption: Static source-plane beam defined as theta_maj/sqrt(mu) x theta_min/sqrt(mu) with 5 pixels per beam; Gaussian distribution of lens model parameters over 1000 samples [Spectral cube reconstructions: "We assumed a standard beam size of five pixels per source-plane beam, where the source-plane beam was defined as $\theta_{\rm maj}/\sqrt{\mu} \times \theta_{\rm min}/\sqrt{\mu}$, with $\mu$ given by the parametrically modeled CO(6–5) emission (see Table [\[tab:lensing_bestfit_sourceparams\]](#tab:lensing_bestfit_sourc…"] [Non-parametric source modeling: "This approach is valid only if the lens model parameters form Gaussian distributions over the 1000 samples. We confirmed that this assumption holds."]
+  - fitting: Magnification-weighted adaptive Voronoi pixel mesh with constant regularization scheme [Non-parametric source modeling: "We used a constant regularization scheme parameterized by the regularization coefficient."]
+  - validation: Compared moment-0 and moment-1 maps on Voronoi pixels versus interpolated square pixels; also tested doubling the number of Voronoi pixels and using a rectangular mesh [Spectral cube reconstructions: "We computed moment-0 and moment-1 maps for the Voronoi pixels and visually verified that the interpolation to square pixels did not significantly affect the moment-0 or moment-1 maps."] [G09v1.97 - merger or disk?: "In the first, we used twice the number of pixels in the Voronoi mesh prior to interpolation to a square grid, and in the second, we used a rectangular mesh instead of a Voronoi mesh."]
+- step 4: Model source-plane CO(6-5) kinematics and classify disk vs. merger
+  - method: Fit tilted rings to the de-magnified source-plane CO(6-5) spectral cube using 3DBarolo (first with PA and inclination free, then fixing them to their averages and refitting); calculate PVsplit parameters from the major-axis PV diagram to t… [Modeling with $^{\rm 3D}$Barolo: "We use $^{\rm 3D}$Barolo to model the kinematics of the CO(6–5) emission in the source plane."] [Modeling with $^{\rm 3D}$Barolo: "We first ran the fitting procedure with both position angle and inclination free (together with the rotation velocity and dispersion). We then took the averages of the position angle and the inclination, respectively, and fixed those values to refit the disk."]
+  - software: 3DBarolo
+  - parameter: Smooth & Search masking with 3 sigma cut; 11 rings with radial separation 0.0138'' (theta_maj / 2.5); center fixed via 2D-Gaussian fit to moment-0 map; fixed i = 50 deg and PA = 6.7 deg [Modeling with $^{\rm 3D}$Barolo: "We use $^{\rm 3D}$Barolo ’s Smooth & Search algorithm to mask the data. This algorithm first smooths the data, performs a $3\sigma$ cut to the data to mask values at $<3\sigma$, and then searches for sources in the smoothed and masked data."] [Modeling with $^{\rm 3D}$Barolo: "We use a radial separation of $0.0138''$ for the individual rings, calculated by $\theta_{\rm maj}/2.5$ where $\theta_{\rm maj}$ is the major axis of the source-plane static beam, resulting in 11 rings."]
+  - assumption: Static source-plane beam of 0.035'' x 0.027''; V_rot in the outermost ring approximates V_max [Kinematic modeling: "We perform all kinematic modeling on the CO(6–5) source plane de-magnified cube (see Section [3.3.3](#subsec:cube_and_spec_reconstructions)), assuming a static beam in the source plane."] [Modeling results: "therefore we assume that using $\rm V_{rot}$ in the outermost ring is the best approximation of $\rm V_{max}$ possible with the current data."]
+  - fitting: Monte Carlo evaluation of tilted-ring model parameters in 3DBarolo [Modeling with $^{\rm 3D}$Barolo: "Rather than employing a parametric approach, this tool fits a user-specific number of tilted rings to the input emission line cube and returns the best-fit model for the rings through a Monte Carlo evaluation methodology."]
+  - validation: Varied ring separation from 0.007'' (23 rings) to 0.042'' (4 rings) in steps of a factor of 2 to test impact of static beam assumption [Modeling results: "We performed a simple investigation into the impact of the assumed static beam on our kinematic modeling results by varying the ring separation used in the $^{\rm 3D}$Barolo modeling. We vary the separation from $0''.007$ ($\theta_{\rm maj}/5$, corresponding to 23 rings) to $0''.042$ ($\theta_{\rm maj}*1.2$, correspon…"]
+- step 5: Derive physical properties: SFR, dynamical mass, gas mass, gas mass fraction, and depletion time
+  - method: Calculate SFR from L_IR and from CO(6-5) emission; fit source-plane CO(6-5) spatial extent to derive Sigma_SFR; calculate dynamical mass from outermost 3DBarolo ring (Vc = 386 km/s, r = 1.07 kpc); convert CO(6-5) to CO(1-0) using LVG model… [Physical properties of the warm rotatin…: "We consider the radius and rotational velocity in the outermost ring from $^{\rm 3D}$Barolo, corresponding to $\rm V_c = 386$ km/s and r = 1.07 kpc, resulting in $M_{\mathrm{dyn}}= (3.7 \pm 0.1) \times 10^{10}$ M$_{\odot}$ [^7]."] [Physical properties of the warm rotatin…: "Assuming $\alpha_{\rm CO} = 0.8$ (cite: Downes98) and a helium contribution of 36% (cite: Yang17), we obtain a gas mass in the region of CO(6–5) emission of $M_{\mathrm{gas}} = (1.8 \pm 0.74) \times 10^{10}$M$_{\odot}$."]
+  - parameter: V_c = 386 km/s, r = 1.07 kpc [Physical properties of the warm rotatin…: "We consider the radius and rotational velocity in the outermost ring from $^{\rm 3D}$Barolo, corresponding to $\rm V_c = 386$ km/s and r = 1.07 kpc, resulting in $M_{\mathrm{dyn}}= (3.7 \pm 0.1) \times 10^{10}$ M$_{\odot}$ [^7]."]
+  - assumption: Chabrier IMF; SFR ~ 10^-10 L_IR [L_odot]; alpha_CO = 0.8 (with error incorporating range 0.8-4.0); helium contribution of 36%; CO(6-5) to CO(1-0) ratio from Yang17 LVG modeling; CO(6-5) and CO(7-6) emission are very similar [Physical properties of the warm rotatin…: "Assuming a Chabrier initial mass function (cite: Chabrier03) and the relation between SFR and $L_{\rm IR}$ as SFR $\sim 10^{-10} L_{\rm IR} [L_{\odot}]$, this implies a SFR of $1400 \pm 700$ M$_{\odot}$ yr$^{-1}$."] [Physical properties of the warm rotatin…: "Assuming $\alpha_{\rm CO} = 0.8$ (cite: Downes98) and a helium contribution of 36% (cite: Yang17), we obtain a gas mass in the region of CO(6–5) emission of $M_{\mathrm{gas}} = (1.8 \pm 0.74) \times 10^{10}$M$_{\odot}$."]
+  - validation: Compared derived M_dyn, t_dep, and gas mass fraction with values reported in Yang17 [Physical properties of the warm rotatin…: "This is in good agreement with the dynamical mass found in (cite: Yang17) for G09v1.97."]
+- result: Lens SE Einstein radius = 0.44 ± +0.01/-0.01 arcsec [Lens modeling: "| Lens SE | 0.626 | $-0.21^{+0.02}_{-0.02}$ | $-0.08^{+0.02}_{-0.02}$ | $0.51 ^{+0.04} _{-0.04}$ | $18.97 ^{+4.03} _{-3.78}$ | $0.44^{+0.01}_{-0.01}$ |"]
+- result: Lens NW Einstein radius = 0.48 ± +0.01/-0.01 arcsec [Lens modeling: "| Lens NW | 1.002 | $0.14^{+0.02}_{-0.02}$ | $0.38^{+0.02}_{-0.02}$ | $0.77 ^{+0.05} _{-0.06}$ | $-73.53 ^{+7.12} _{-6.08}$ | $0.48^{+0.01}_{-0.01}$ |"]
+- result: Parametric lensing magnification factor for continuum (mu_continuum) = 10.55 ± ±0.26 (or ±0.36 in Table) dimensionless [Dust continuum emission: "Through this methodology, we obtain a lensing magnification factor of $\mu_{\rm continuum} = 10.55 \pm 0.26$."]
+- result: Pixelized lensing magnification factor for continuum (mu_pixel) = 9.83 ± ±0.26 dimensionless [$^+$ emission: "| Continuum | $0.04^{+0.01}_{-0.01}$ | $0.05^{+0.01}_{-0.01}$ | $0.38 ^{+0.04} _{-0.04}$ | $-80.93 ^{+3.06} _{-3.09}$ | $0.08^{+0.02}_{-0.01}$ | $2.12^{+0.67}_{-0.45}$ | $10.55 \pm 0.36$ | $9.83 \pm 0.26$ |"]
+- result: Parametric lensing magnification factor for CO(6–5) (mu_CO(6-5)) = 9.72 ± ±0.27 dimensionless [CO(6–5) emission: "Through this methodology, we obtain a lensing magnification factor of $\mu_{\rm CO(6-5)} = 9.72 \pm 0.27$."]
+- result: Pixelized lensing magnification factor for CO(6–5) (mu_pixel) = 12.23 ± ±0.38 dimensionless [$^+$ emission: "| CO(6–5) | $0.01^{+0.49}_{-0.51}$ | $0.02^{+0.48}_{-0.51}$ | $0.48 ^{+0.48} _{-0.50}$ | $-0.29 ^{+89.57} _{-89.98}$ | $0.51^{+0.49}_{-0.50}$ | $2.86^{+2.13}_{-2.06}$ | $9.72 \pm 0.27$ | $12.23 \pm 0.38$ |"]
+- result: Parametric lensing magnification factor for H2O (mu_H2O) = 11.60 ± ±0.41 dimensionless [emission: "Through this methodology, we obtain a lensing magnification factor of $\mu_{\rm H_{2}O} = 11.60 \pm 0.41$."]
+- result: Pixelized lensing magnification factor for H2O (mu_pixel) = 10.23 ± ±0.33 dimensionless [$^+$ emission: "| | $0.03^{+0.01}_{-0.01}$ | $0.06^{+0.02}_{-0.02}$ | $0.46 ^{+0.19} _{-0.28}$ | $-68.06 ^{+19.23} _{-21.20}$ | $0.17^{+0.64}_{-0.11}$ | $3.23^{+1.77}_{-2.39}$ | $11.60 \pm 0.41$ | $10.23 \pm 0.33$ |"]
+- result: Parametric lensing magnification factor for H2O+ (mu_H2O+) = 14.86 ± ±0.48 dimensionless [$^+$ emission: "Through this methodology, we obtain a lensing magnification factor of $\mu_{\rm H_{2}O^{+}} = 14.86 \pm 0.48$."]
+- result: Pixelized lensing magnification factor for H2O+ (mu_pixel) = 13.39 ± ±0.32 dimensionless [$^+$ emission: "| $^+$ | $0.040^{+0.002}_{-0.002}$ | $0.084^{+0.005}_{-0.005}$ | $0.35 ^{+0.02} _{-0.02}$ | $-83.76 ^{+1.52} _{-1.55}$ | $0.094^{+0.003}_{-0.003}$ | $0.80^{+0.024}_{-0.0029}$ | $14.86 \pm 0.48$ | $13.39 \pm 0.32$ |"]
+- result: Kinematic position angle (PA_kin) = 6.7 ± ±1.7 degrees [Modeling with $^{\rm 3D}$Barolo: "The inclination ($i$), at 50 degrees, did not vary at all, and the position angle varied from $\approx 1$ to $\approx 19$ degrees, resulting in an average of $(6.7 \pm 1.7)^{\circ}$."]
+- result: Kinematic inclination (i) = 50 ± not stated degrees [Modeling with $^{\rm 3D}$Barolo: "| i$^{\circ, b}$ | 50 |"]
+- result: Systemic velocity offset (V_sys) = 109 ± not stated km/s [Modeling results: "The best-fit systemic velocity of the CO(6–5) emission from the kinematic fitting, $\rm V_{sys} = 109$ km/s, corresponds to a redshift of $z = 3.6300017$, slightly higher than previously reported."]
+- result: Maximum rotational velocity (V_rot,max) = 388 ± +55/-36 km/s [Modeling with $^{\rm 3D}$Barolo: "| $\rm V_{rot, max}^{d}$ \[km/s\] | $388^{55}_{-36}$ |"]
+- result: Average velocity dispersion (sigma_bar) = 138 ± +7/-6 km/s [Modeling with $^{\rm 3D}$Barolo: "| $\bar{\sigma}^{e}$ \[km/s\] | $138^{+7}_{-6}$ |"]
+- result: Ratio of maximum rotational velocity to average velocity dispersion (V_max / sigma_bar) = 2.8 ± ±0.4 dimensionless [abstract: "Instead, we find that G09v1.97 resembles a rotating disk with $\rm V_{max}/\bar{\sigma} = 2.8 \pm 0.4$"]
+- result: Source-plane CO(6–5) spatial extent = 0.21 x 0.12 (1.5 x 0.88 kpc) ± ±0.03 x ±0.02 arcsec arcsec (kpc) [Physical properties of the warm rotatin…: "Fitting the CO(6–5) emission in the source plane, we find a spatial extent of $0''.21 \pm 0''.03 \times 0''.12 \pm 0''.02$, corresponding to $1.5 \rm\, kpc \times 0.88\,kpc$ at $z = 3.63$."]
+- result: Star-formation rate from L_IR (SFR_LIR) = 1400 ± ±700 M_odot yr^-1 [Physical properties of the warm rotatin…: "Assuming a Chabrier initial mass function (cite: Chabrier03) and the relation between SFR and $L_{\rm IR}$ as SFR $\sim 10^{-10} L_{\rm IR} [L_{\odot}]$, this implies a SFR of $1400 \pm 700$ M$_{\odot}$ yr$^{-1}$."]
+- result: Surface star formation rate density (Sigma_SFR) = 340 ± not stated M_odot yr^-1 kpc^-2 [Physical properties of the warm rotatin…: "This implies a surface star formation rate density of $\Sigma_{\rm SFR} \approx 340$ M$_{\odot}$ yr$^{-1}$ kpc${^{-2}}$."]
+- result: Dynamical mass (M_dyn) = 3.7 ± ±0.1 10^10 M_odot [Physical properties of the warm rotatin…: "We consider the radius and rotational velocity in the outermost ring from $^{\rm 3D}$Barolo, corresponding to $\rm V_c = 386$ km/s and r = 1.07 kpc, resulting in $M_{\mathrm{dyn}}= (3.7 \pm 0.1) \times 10^{10}$ M$_{\odot}$ [^7]."]
+- result: Gas mass (M_gas) = 1.8 ± ±0.74 10^10 M_odot [Physical properties of the warm rotatin…: "Assuming $\alpha_{\rm CO} = 0.8$ (cite: Downes98) and a helium contribution of 36% (cite: Yang17), we obtain a gas mass in the region of CO(6–5) emission of $M_{\mathrm{gas}} = (1.8 \pm 0.74) \times 10^{10}$M$_{\odot}$."]
+- result: Gas depletion time (t_dep) = 13 ± ±8 Myr [Physical properties of the warm rotatin…: "This implies a depletion time (defined as $t_{\rm dep} = M_{\rm gas}/\mathrm{SFR}$) for G09v1.97 of $13 \pm 8$ Myr, lower than the value found for G09v1.97 by (cite: Yang17) but within the error range."]
+- result: Gas mass fraction (M_gas / M_dyn) = 0.5 ± ±0.02 dimensionless [Physical properties of the warm rotatin…: "This implies a gas mass fraction ($M_{\rm gas}$/$M_{\rm dyn}$) of $0.5 \pm 0.02$, lower than reported in (cite: Yang17) but still within an expected range for strongly lensed SMGs (cite: Yang17)."]
+- result: Star-formation rate from CO (SFR_CO) = 2515 ± ±260 M_odot yr^-1 [Physical properties of the warm rotatin…: "we obtain $\rm SFR_{CO} \approx (2515 \pm 260)$ M$_{\odot}$ yr$^{-1}$ using the conversion between CO(7–6) and SFR given in (cite: Lu15)"]
+- limitation (authors): About 20 ± 6% of the 1.940 mm continuum emission may be resolved out in the high-resolution observations compared to Yang19. [Continuum emission: "This value is lower than that found by (cite: Yang19) of $8.8 \pm 0.5$ mJy, suggesting the possibility that some continuum emission has been resolved out in the high-resolution observations utilized in this paper."]
+- limitation (authors): Intensity values from PyAutoLens visibility fits are in arbitrary units. [Lens modeling: "In its current form, intensity values from PyAutoLens fits performed on interferometric visibilities are in arbitrary units."]
+- limitation (authors): Simple SIE lens mass models have small formal statistical uncertainties and are prone to model misspecification. [Non-parametric source modeling: "Such small formal uncertainties are common in group-scale strong lenses like G09v1.97, particularly when adopting simple mass models such as the Singular Isothermal Ellipsoid (SIE), which are prone to model misspecification."]
+- not stated (card): CASA version and ALMA pipeline version used for data reduction and imaging; Cell size and image size (pixel dimensions) used in tclean; Exact frequency ranges of the line-free channels used in uvcontsub; Exact boundaries of the uniform priors used for lens and source parameters in PyAutoLens; Non-linear sampler/optimizer used within PyAutoLens (e.g., dynesty, emcee) and its hyperparameters; Exact…
+
+### 2016MNRAS.457.2936I: ALMA imprint of intergalactic dark structures in the gravitational lens SDP.81 (2016; high_z_galaxies, cosmology; archival_reuse)
+- question: Whether anomalous flux ratios and astrometric shifts in the lensed images of SDP.81 reveal perturbations from intergalactic dark structures along the line of sight
+- step 1: Fit SIE+external shear lens model
+  - method: Simultaneous chi^2 fit of positions of bright clump peaks (S/N>~10) and the lens galaxy AGN centroid in band 7 continuum [3.1 Canonical Lens Model: "In order to implement the simultaneous $\chi^2$ fitting of the positions of the centroids of lensed images and the lensing galaxy, we used our developed code."]
+  - software: in-house code, GRAVLENS
+  - parameter: position errors 1/4 of beam (6x8 mas); G error 0.02 arcsec [3.3 Modelling: "the 1$\,\sigma$ errors are 1/4 of $\theta_{\textrm{beam}}$, i.e., $6 \times 8$ mas with the same PA direction."]
+  - assumption: SIE plus external shear [3.1 Canonical Lens Model: "we adopt a singular isothermal ellipsoid (SIE) (cite: kormann1994)"]
+  - fitting: chi^2 minimization; 1 sigma from parameter range with reduced chi^2 < 1 [4.1 Best-fitted Model: "The 1 $\sigma$ uncertainty in the model parameters are obtained by finding a range of each parameter that gives the reduced $\chi^2$ less than 1."]
+  - validation: Code compared with GRAVLENS, chi^2 within a few percent; compared with literature models [3.1 Canonical Lens Model: "The obtained $\chi^2$ values are consistent each other within a few percent."]
+- step 2: Measure source-plane aperture flux ratios
+  - method: Invert images to source plane, uniform/magnification weighted combination, compute aperture fluxes of B,C,D relative to A; errors from Monte Carlo of 100 random points in noise ring [4.2 Flux in Aperture: "First, we randomly selected 100 points within a ring region with an angular distance $R$ from the centre of the lens satisfying $3.5<R<4.3$ arcsec."]
+  - parameter: aperture radii 0.04, 0.05, 0.06 arcsec [4.2 Flux in Aperture: "computed the fluxes in circles with aperture radius $0.04,0.05,0.06$ arcsec"]
+  - validation: Hypothetical observation with beam convolution gives <4% error [4.2 Flux in Aperture: "We have found that the errors in the aperture flux ratios are less than 4 percent."]
+- result: Reduced chi^2 of best-fit SIEES = 0.22 (0.647/(16-13)) ± not stated dimensionless [4.1 Best-fitted Model: "the reduced $\chi^2$ ($=\chi^2$/dof) is $0.647/(16-13)=0.22$"]
+- result: Einstein radius b = 1.605 ± +0.030/-0.004 arcsec [Table 1: "$1.605^{+0.030}_{-0.004}$"]
+- result: Aperture flux ratio B/A (best-fit, 0.06 arcsec) = 0.820 ± 0.062 dimensionless [Table 4: "ratio | 0.820 | 0.801 | 0.945"]
+- result: Aperture flux ratio C/A (best-fit, 0.06 arcsec) = 0.801 ± 0.060 dimensionless [Table 4: "ratio | 0.820 | 0.801 | 0.945"]
+- limitation (authors): Canonical lens model may be too simple; core, power-law deviation, multipoles could explain anomalies [6 Conclusion and Discussion: "The canonical lens model that we have considered may have been too simple."]
+- not stated (card): Own lens-fitting code not released; optimizer details missing; Exact pixel coordinates of the clump peaks used as fit positions; Image-plane CLEAN products' exact archive file names; Channel velocity-to-index mapping and noise rms per channel; Aperture centres in the source plane; Details of CASA version used for archive images
+
+### 2021ApJ...921...97J: Molecular Line Observations in Two Dusty Star-forming Galaxies at z = 6.9 (2021; high_z_galaxies, star_formation, astrochemistry; observational_alma_primary)
+- question: What are the physical properties of the molecular interstellar medium, gas mass, CO-to-H2 conversion factor, gas depletion timescales, and heating mechanisms in the two dusty star-forming galaxies of SPT0311-58 at z = 6.9?
+- step 3: Perform gravitational lens modeling in the visibility plane
+  - method: Fit parametric lens models to visibility data of 140 GHz and 101 GHz continuum and single-channel (1000 km/s) CO(6-5), CO(7-6), and CO(10-9) lines in W using visilens with SIE lens profile and Sersic source profile(s). [Lens Modeling: "In this analysis, we perform lens modeling on the 140 and 101 GHz ($\sim$272 and 375 $\mu$m rest-frame, respectively) continuum, and $\rm CO(6-5)$, $\rm CO(7-6)$, and $\rm CO(10-9)$ molecular line transitions in W."] [Lens Modeling: "Since the signal-to-noise is not sufficiently high for pixellated modeling, we use a parametric lens modeling code, `visilens` (cite: spilker16)."]
+  - software: visilens, emcee
+  - parameter: 1000 MCMC chains; lens parameters constrained within best-fit values of 140 GHz single-lens model [Lens Modeling: "As the best-fit parameters, we take the median value of the 1000 MCMC chains with 1$\sigma$ uncertainty."] [Lens Modeling: "For all the lensing reconstruction in this paper, we vary the lens parameters only within the best-fit values obtained from the high resolution 140 GHz measurement set using a single lens."]
+  - assumption: SIE lens mass profile, Sersic source profile; fixed magnification mu = 1.3 for E and mu = 2.2 for p-H2O in W from Marrone et al. (2018) [Lens Modeling: "In this code, the background source is parameterized by one or more S$\rm \acute{e}$rsic (cite: sersic68) profiles with seven free parameters: source position relative to the lens ($\rm x_{S}, y_{S}$), flux density (S), half light radius major axis ($\rm a_{S}$), S$\rm \acute{e}$rsic index ($\rm n_{S}$), axis ratio ($…"] [Lens Modeling: "The lensing source is represented by one or more Singular Isothermal Ellipsoids (SIEs), which has five free parameters: the center of the lens relative to phase center ($\rm x_{L}$, $\rm y_{L}$), the lens mass ($\rm M_{L}$) which determines the strength of lensing, the ellipticity of the lens ($\rm e_{L}$), and the po…"]
+  - fitting: MCMC sampling (emcee) in the visibility plane; Deviance Information Criterion (DIC) used to select number of sources [Lens Modeling: "This model uses a Markov Chain Monte Carlo (MCMC) algorithm (`emcee` package; (cite: foremanmackey13)) to sample the parameter space."] [Lens Modeling: "The performance of different models is measured by Deviance Information Criterion (DIC; (cite: spiegelhalter02)) to determine the number of sources to include in the model."]
+  - validation: 140 GHz lens parameters compared and found to agree with Marrone et al. (2018) pixellated lens model [Lens Modeling: "The lens parameters obtained from the 140 GHz data agree with (cite: marrone18) model."]
+- step 4: Fit modified blackbody dust SED to derive dust temperature, dust mass, L_FIR, and L_IR
+  - method: Fit a uniform-temperature modified blackbody function (including CMB effect) to magnification-corrected rest-frame >50 um photometry using MCMC to sample M_dust and T_dust, then integrate rest-frame 8-1000 um for L_IR and 42.5-122.5 um for… [Introduction: "We estimate the $\rm L_{IR}$ as flux integrated from 8$-$1000 $\rm \mu m$ and total far-infrared luminosity ($\rm L_{FIR}$) from 42.5$-$122.5 $\rm \mu m$ in the rest frame (cite: helou85)."] [SED Fitting and Dust Mass: "In this section, we assume a uniform dust temperature ($\rm T_{dust}$) in each source and fit a modified blackbody function to the photometry greater than 50 $\mu m$ rest frame and the equations are adopted from (cite: weiss07):"]
+  - parameter: 15% calibration/lensing error added in quadrature; upper limit on effective radius = 5000 pc (W) and 1300 pc (E) [SED Fitting and Dust Mass: "A 15% absolute calibration error is added in quadrature to the statistical error to account for the uncertainty from the absolute flux calibration and lens modeling."] [SED Fitting and Dust Mass: "We use MCMC algorithm to sample the dust mass and the dust temperature by giving an upper limit on the effective radius as 5000 pc in W and 1300 pc in E."]
+  - assumption: Uniform dust temperature; kappa_nu = 0.038 * (nu / 372.7 GHz)^beta_Td [m^2 kg^-1] from Draine (2003); beta_Td fixed to 2.0 [SED Fitting and Dust Mass: "The frequency dependent dust absorption coefficient is adopted from (cite: draine03) $$\begin{equation}\rm \kappa_{\nu} = 0.038(\nu/372.7 \ GHz)^{\beta_{T_{d}}} \ [m^{2} \ kg^{-1}] \end{equation}$$"] [SED Fitting and Dust Mass: "We fix $\beta_{T_{d}}$ to 2.0 (cite: greve12)."]
+  - fitting: MCMC sampling of M_dust and T_dust [SED Fitting and Dust Mass: "We use MCMC algorithm to sample the dust mass and the dust temperature by giving an upper limit on the effective radius as 5000 pc in W and 1300 pc in E."]
+  - validation: Derived L_IR and L_FIR agree with CIGALE SED fits from Marrone et al. (2018) within uncertainties [SED Fitting and Dust Mass: "These values agree with the luminosities inferred from `CIGALE` SED fits from (cite: marrone18) to within the uncertainties."]
+- step 5: Analyze L_H2O - L_FIR correlation and derive H2O-based SFR and [CI]-based gas mass
+  - method: Perform MCMC linear regression of log10(L_H2O/L_FIR) vs log10(L_FIR) across SPT0311-58 and literature sample; calibrate Kennicutt & Evans (2012) SFR relation with L_H2O; calculate molecular gas mass from [CI](2-1) luminosity using Weiss et… [$L_{H_{2}O} - L_{FIR}$ Correlation: "To get the correlation between $\rm L_{H_{2}O}$ and $\rm L_{FIR}$, we perform two MCMC linear regressions to all the sources in log-log space as shown in Figure 3."] [$L_{H_{2}O} - L_{FIR}$ Correlation: "We calibrate this SFR with $\rm L_{H_{2}O}$ using $\rm L_{IR}$/$\rm L_{FIR}$ values from the SED fit and Equation \[eqn:lh2o_lfir\]."]
+  - parameter: T_CMB = 21.5 K at z = 6.9; T_1 = 23.6 K, T_2 = 62.5 K [Gas Mass from [CI]: "To consider the effect of the background CMB temperature at redshift 6.9, which is $\sim$21.5 K, we include a factor $\rm B_{\nu}(T_{ex})/(B_{\nu}(T_{ex}) - B_{\nu}(T_{CMB}))$ to the equation."] [Gas Mass from [CI]: "where $\rm T_{1}$ = 23.6 K and $\rm T_{2}$ = 62.5 K are the excitation energy transitions of the two transitions of \[CI\]."]
+  - fitting: MCMC linear regression in log-log space (with slope fixed to zero and slope free) [$L_{H_{2}O} - L_{FIR}$ Correlation: "To get the correlation between $\rm L_{H_{2}O}$ and $\rm L_{FIR}$, we perform two MCMC linear regressions to all the sources in log-log space as shown in Figure 3."]
+  - validation: H2O-based SFR and [CI]-based gas mass compared against L_IR-based SFR and LVG radiative transfer model outputs [Summary and Conclusion: "Both the calculations give consistent values within errors in W."] [Gas Mass and SFR: "The gas mass estimated from \[CI\]$\rm (2-1)$ agrees with the LVG models to within the uncertainties."]
+- result: Continuum magnification at 95 GHz (SPT0311-58 W) = 2.09 ± 0.06 dimensionless [Table 2: "| 1 & 2 | W | 95 | 1.26 $\pm$ 0.04 | 2.09 $\pm$ 0.06 | 0.60 $\pm$ 0.09 | 16 $\pm$ 4 | 26 $\pm$ 12 |"]
+- result: Continuum magnification at 140 GHz (SPT0311-58 W) = 2.09 ± 0.10 dimensionless [Table 2: "| 3 | W | 140 | 4.12 $\pm$ 0.01 | 2.09 $\pm$ 0.10 | 1.97 $\pm$ 0.31 | | |"]
+- result: CO(6-5) magnification (SPT0311-58 W) = 2.08 ± 0.21 dimensionless [Table 3: "| $\rm CO(6-5)$ | W | 2.33 $\pm$ 0.09 | 10.22 $\pm$ 0.39 | 2.08 $\pm$ 0.21 |"]
+- result: CO(7-6) magnification (SPT0311-58 W) = 2.13 ± 0.14 dimensionless [Table 3: "| $\rm CO(7-6)$ | W | 2.15 $\pm$ 0.12 | 11.00 $\pm$ 0.61 | 2.13 $\pm$ 0.14 |"]
+- result: CO(10-9) magnification (SPT0311-58 W) = 2.16 ± 0.11 dimensionless [Table 3: "| $\rm CO(10-9)$ | W | 1.41 $\pm$ 0.10 | 10.30 $\pm$ 0.73 | 2.16 $\pm$ 0.11 |"]
+- result: Intrinsic far-infrared luminosity L_FIR from modified blackbody SED (SPT0311-58 W) = 16e12 ± 4e12 L_sun [Abstract: "The intrinsic far-infrared luminosity is (16 $\pm$ 4)$\times\rm 10^{12} \ \rm L_{\odot}$ in West and (27 $\pm$ 4)$\times\rm 10^{11} \ \rm L_{\odot}$ in East."]
+- result: Intrinsic far-infrared luminosity L_FIR from modified blackbody SED (SPT0311-58 E) = 27e11 ± 4e11 L_sun [Abstract: "The intrinsic far-infrared luminosity is (16 $\pm$ 4)$\times\rm 10^{12} \ \rm L_{\odot}$ in West and (27 $\pm$ 4)$\times\rm 10^{11} \ \rm L_{\odot}$ in East."]
+- result: Intrinsic total infrared luminosity L_IR from modified blackbody SED (SPT0311-58 W) = 26e12 ± 12e12 L_sun [SED Fitting and Dust Mass: "We estimate intrinsic $\rm L_{IR}$ = (26 $\pm$ 12)$\times \rm 10^{12}\ \rm L_{\odot}$ and $\rm L_{FIR}$ = (16 $\pm$ 4)$\times \rm 10^{12}\ \rm L_{\odot}$ in W, and $\rm L_{IR}$ = (35 $\pm$ 7)$\times \rm 10^{11}\ \rm L_{\odot}$ and $\rm L_{FIR}$ = (27 $\pm$ 4)$\times \rm 10^{11}\ \rm L_{\odot}$ in E."]
+- result: Intrinsic total infrared luminosity L_IR from modified blackbody SED (SPT0311-58 E) = 35e11 ± 7e11 L_sun [SED Fitting and Dust Mass: "We estimate intrinsic $\rm L_{IR}$ = (26 $\pm$ 12)$\times \rm 10^{12}\ \rm L_{\odot}$ and $\rm L_{FIR}$ = (16 $\pm$ 4)$\times \rm 10^{12}\ \rm L_{\odot}$ in W, and $\rm L_{IR}$ = (35 $\pm$ 7)$\times \rm 10^{11}\ \rm L_{\odot}$ and $\rm L_{FIR}$ = (27 $\pm$ 4)$\times \rm 10^{11}\ \rm L_{\odot}$ in E."]
+- result: Dust temperature T_dust from modified blackbody SED (SPT0311-58 W) = 69 ± 20 K [SED Fitting and Dust Mass: "From the SED modeling in SPT0311-58, we get $\rm T_{dust} = 69 \pm 20$ K in W and $49 \pm 9$ K in E, and an intrinsic $\rm M_{dust} = (1.3 \pm 0.5)\times10^{9}\ M_{\odot}$ in W and $\rm (1.8 \pm 0.6)\times10^{8}\ M_{\odot}$ in E."]
+- result: Dust temperature T_dust from modified blackbody SED (SPT0311-58 E) = 49 ± 9 K [SED Fitting and Dust Mass: "From the SED modeling in SPT0311-58, we get $\rm T_{dust} = 69 \pm 20$ K in W and $49 \pm 9$ K in E, and an intrinsic $\rm M_{dust} = (1.3 \pm 0.5)\times10^{9}\ M_{\odot}$ in W and $\rm (1.8 \pm 0.6)\times10^{8}\ M_{\odot}$ in E."]
+- result: Intrinsic dust mass M_dust from modified blackbody SED (SPT0311-58 W) = 1.3e9 ± 0.5e9 M_sun [SED Fitting and Dust Mass: "From the SED modeling in SPT0311-58, we get $\rm T_{dust} = 69 \pm 20$ K in W and $49 \pm 9$ K in E, and an intrinsic $\rm M_{dust} = (1.3 \pm 0.5)\times10^{9}\ M_{\odot}$ in W and $\rm (1.8 \pm 0.6)\times10^{8}\ M_{\odot}$ in E."]
+- result: Intrinsic dust mass M_dust from modified blackbody SED (SPT0311-58 E) = 1.8e8 ± 0.6e8 M_sun [SED Fitting and Dust Mass: "From the SED modeling in SPT0311-58, we get $\rm T_{dust} = 69 \pm 20$ K in W and $49 \pm 9$ K in E, and an intrinsic $\rm M_{dust} = (1.3 \pm 0.5)\times10^{9}\ M_{\odot}$ in W and $\rm (1.8 \pm 0.6)\times10^{8}\ M_{\odot}$ in E."]
+- result: L_H2O / L_FIR ratio (fixed zero slope fit) = 1.10e-5 ± 0.4e-5 dimensionless [$L_{H_{2}O} - L_{FIR}$ Correlation: "The fit with the slope fixed to zero gives: $$\begin{equation} \label{eqn:lh2o_lfir} \rm \frac{L_{H_{2}O}}{L_{FIR}} = (1.10 \pm 0.4) \times 10^{-5}\end{equation}$$"]
+- result: Intrinsic SFR from p-H2O(2_1,1-2_0,2) (SPT0311-58 W) = 4356 ± 2143 M_sun/yr [$L_{H_{2}O} - L_{FIR}$ Correlation: "We estimate an intrinsic SFR of (4356 $\pm$ 2143) $\rm M_{\odot}$/yr in W and a 1$\sigma$ upper limit of 385 $\rm M_{\odot}$/yr in E."]
+- result: Intrinsic gas mass from [CI](2-1) (SPT0311-58 W) = 24.9e10 ± 10.7e10 M_sun [Gas Mass from [CI]: "We estimate an intrinsic gas mass of (24.9 $\pm$ 10.7)$\times 10^{10} \ \rm M_{\odot}$ in W and (11.4 $\pm$ 11.4)$\times 10^{9} \ \rm M_{\odot}$ in E."]
+- limitation (authors): CO(3-2) from ATCA is spatially unresolved (5-6'') between W and E and had to be distributed by scaling to CO(6-5). [Ancillary Data: "Since $\rm CO(3-2)$ is spatially unresolved ($\sim$5 $-$ 6$''$) into W and E, we distribute the flux density of $\rm CO(3-2)$ by scaling to $\rm CO(6-5)$ in the two galaxies."]
+- limitation (authors): Signal-to-noise is insufficient for lensing reconstruction in E and for p-H2O(2_1,1-2_0,2) in W, requiring adoption of fixed magnification factors from Marrone et al. (2018). [Lens Modeling: "Since we do not have a good signal-to-noise for lensing reconstruction in E, we adopt a magnification of 1.3 for all the molecular lines. For the same reason, we adopt $\mu = 2.2$ from (cite: marrone18) in p-$\rm H_{2} O (2_{1,1}-2_{0,2})$ in W."]
+- limitation (authors): [CI](2-1) and p-H2O(2_1,1-2_0,2) are not significantly detected in E, and the lack of [CI](1-0) observations prevents direct measurement of the [CI] excitation temperature and confirmation of the [CI] abundance-density relation. [Model Outputs: "However, it has to be noted that, due to the lack of \[CI\]$\rm (1-0)$ observations, we cannot reliably confirm the relationship between \[CI\] abundance and gas density."]
+- not stated (card): Imaging task (e.g., tclean vs clean), cell size, image size, stopping threshold, and masking strategy in CASA; Exact channel ranges excluded for continuum imaging and used for uvcontsub; Shape and exact centering coordinates of the 2.5'' and 1.2'' apertures used for spectral extraction; Visibility averaging time/frequency bin size used prior to visilens fitting; Full numerical values in Appendix …
+
+### 2015MNRAS.451L..40R: ALMA imaging of SDP.81 - I. A pixelated reconstruction of the far-infrared continuum emission. (2015; high_z_galaxies; observational_alma_primary)
+- question: What is the pixelated source-plane structure, magnification and star-formation rate density of the lensed starburst SDP.81 from ALMA 1 and 1.3 mm continuum visibilities?
+- step 2: Lens mass model and pixelated source reconstruction
+  - method: Bayesian visibility-space fit with Delaunay-tessellated source grid, gradient regularisation, elliptical power-law mass plus external shear; each spw reconstructed separately then averaged [3 Gravitational lens mass modelling: "The modelling method optimises the Bayesian evidence by minimising a combination of the $\chi^2$ measured in the visibility space and a regularisation performed on the source plane grid."]
+  - parameter: Gradient regularisation [3 Gravitational lens mass modelling: "we adopt the gradient rather than the curvature regularisation to prevent the source from being overly smoothed"]
+  - fitting: Maximum a posteriori; noise per baseline from rms of visibilities within an observing block [3 Gravitational lens mass modelling: "We estimate the noise level for each baseline at a given time and frequency by calculating the rms of the visibilities measured within the same observing block"]
+  - validation: Visibility residuals consistent with Gaussian noise; consistency between spws and bands; error from rms scatter between spws [3 Gravitational lens mass modelling: "4.7 and 0.3 percent of the visibilities are out with the 2- and 3-$\sigma$ levels, respectively"]
+- step 3: Magnification and intrinsic properties
+  - method: Magnification as ratio of source-plane to image-plane emission; scale SED-derived properties of Negrello14 by it [4 The intrinsic source properties of SD…: "We estimate the lensing magnification $\mu$ of the source by calculating the ratio of the reconstructed emission in the source-plane and image-plane."]
+  - assumption: Only far-infrared part of the SED considered, where magnification is valid [4 The intrinsic source properties of SD…: "we only consider the properties derived from the far-infrared part of the spectrum"]
+- result: Total magnification = 17.6 ± 0.4 dimensionless [4 The intrinsic source properties of SD…: "The total magnification is found to be $\mu_{\rm tot} =$ 17.6 $\pm$ 0.4."]
+- result: Star-forming disk magnification = 25.2 ± 2.6 dimensionless [4 The intrinsic source properties of SD…: "$\mu_{\rm SF~disk} =$ 25.2 $\pm$ 2.6"]
+- result: Intrinsic SFR = 315 ± 60 Msun/yr [abstract: "giving an intrinsic total star-formation rate of 315 $\pm$ 60 M$_\odot$ yr$^{-1}$"]
+- result: Dust mass = 6.4e8 ± 1.5e8 Msun [abstract: "a dust mass of 6.4 $\pm$ 1.5 $\times$ 10$^{8}$ M$_{\odot}$"]
+- result: Total flux density Band 6 / Band 7 (<=0.5 Mλ) = 21.7 / 38.9 ± 2.2 / 3.9 mJy [2 ALMA continuum imaging: "21.7 $\pm$ 2.2 and 38.9 $\pm$ 3.9 mJy, respectively"]
+- limitation (authors): Results may not extrapolate to general SMG population due to size-bias [4 The intrinsic source properties of SD…: "the results for this source should not necessarily be extrapolated to the general sub-mm galaxy population"]
+- not stated (card): Regularisation strength / evidence optimisation details and priors on lens parameters; Source-grid pixel number and resolution; Which calibrated products/scripts were used and CASA version; How the 28 per cent flux offset in Band 6 spw0 was corrected; Conversion from far-IR luminosity to SFR (calibration) and how SFR density map was scaled; Rybak et al. 2015 method paper was in preparation; Image…
+
+### 2020MNRAS.493.5290S: Smoke on the water: CO and H<SUB>2</SUB>O in a circumnuclear disc around a quasar at redshift 2.64 (2020; agn_and_quasars, high_z_galaxies; archival_reuse)
+- question: Where does the 380 GHz H2O (4_14-3_21) line emission in the lensed quasar MG J0414+0534 originate (disc, jet or offset component), and what is the structure of the circumnuclear molecular gas disc and radio jets?
+- step 3: Detect the 380 GHz H2O line and measure line intensity, luminosity and moment maps
+  - method: Line imaging of the Band 3 data, line intensity and luminosity (uncorrected for lensing magnification), moment maps of images A1 and A2 above a 3 sigma cut [2.2.1 100 GHz data: "We confirm the detection of the 4$_{14}$–3$_{21}$ H$_2$O line; the line intensity and line luminosity (uncorrected for lensing magnification)"] [2.2.1 100 GHz data: "Moment maps of the line emission from lensed images A1 and A2, using a signal-to-noise ratio cut of 3$\sigma$, are shown in Fig."]
+  - software: CASA
+  - parameter: 3 sigma signal-to-noise cut for moment maps [2.2.1 100 GHz data: "using a signal-to-noise ratio cut of 3$\sigma$"]
+  - validation: Detection consistent with the previous tentative detection; the 5_23-6_16 line is not detected, as in the earlier analysis [2.2.1 100 GHz data: "We do not detect the 5$_{23}$–6$_{16}$ H$_2$O line, consistent with the results of"]
+- step 8: Build a gravitational lens model
+  - method: Parametric gravlens model: SIE plus external shear for the primary lens G1 and an SIS for the satellite G2, optimised on 1.6 GHz VLBI image positions; ALMA data aligned to the VLBI frame on the compact core [3.3 Source-plane structure: "We assume a simple model of a singular isothermal ellipsoid with external shear"] [3.3 Source-plane structure: "we align them using the compact core emission that is associated with synchrotron emission from the quasar."]
+  - software: gravlens
+  - parameter: Component flux densities not used in the fit [3.3 Source-plane structure: "The flux densities of the components were not used in the modelling, as these are known to deviate from a smooth lens model"]
+  - assumption: Smooth mass distribution; more complex models would not change the interpretation [3.3 Source-plane structure: "this will not significantly change our interpretation here."]
+  - fitting: Best-fit parameters optimised to VLBI positions; optimiser and priors not stated [3.3 Source-plane structure: "were used to optimise for the best lens model parameters."]
+  - validation: Agreement with previous lens models [3.3 Source-plane structure: "are found to be in good agreement with previous modelling of the system"]
+- step 9: Reconstruct the source plane and locate the anomalous H2O component
+  - method: Reconstruct VLBI and CO components in the source plane; place a grid of mock sources, lens them, and exclude positions that do not reproduce the observed image region; infer magnification and isotropic luminosity assuming half the line emi… [3.3 Source-plane structure: "we place a grid of mock sources on the source plane and compute the positions predicted by our lens model."] [3.3 Source-plane structure: "we exclude all source positions that produce an image below the midpoint between image A1 and A2."]
+  - software: gravlens
+  - assumption: Half of the detected 380 GHz H2O emission originates in the disc; the radio-core magnification represents the H2O disc [3.3 Source-plane structure: "Assuming just half of the 380 GHz H$_2$O emission we detect originates in a disc"]
+  - assumption: Half of the H2O emission originates in the anomalous feature [3.3 Source-plane structure: "Assuming that half of the 380 GHz H$_2$O emission originates in the anomalous feature"]
+  - validation: Candidate source regions checked against the position of the anomalous feature north of A2 in position-velocity diagrams and Gaussian fits [3.3 Source-plane structure: "only the green and blue source regions are in agreement with the observations."]
+- result: 380 GHz H2O (4_14-3_21) integrated line intensity = 1.0 ± 0.1 Jy km/s [Table 1: "$1.0\pm0.1$"]
+- result: 380 GHz H2O line luminosity (uncorrected for lensing magnification) = 5.3e7 ± 0.6e7 Lsun [Table 1: "$(5.3\pm0.6)\times10^{7}$"]
+- result: 380 GHz H2O line luminosity L' = 3.0e10 ± 0.4e10 K km/s pc^2 [Table 1: "$(3.0\pm0.4)\times10^{10}$"]
+- result: Peak H2O velocity dispersion = ~400 ± not stated km/s [3.1 Velocity structure: "the velocity dispersion of the 380 GHz H$_2$O emission peaks at around $400$ km s$^{-1}$"]
+- result: Time delay between merging images (lens model) = 0.4 ± not stated days [3.2 Variability: "The time delay between the merging images of the quasar is expected to be 0.4 days, based on our lens model"]
+- result: Radio jet extent (East-West, in projection) = ~200 ± not stated pc [3.3 Source-plane structure: "extended in an East–West direction by around 200 pc in projection."]
+- result: CO (11-10) molecular gas disc size = 60 ± not stated pc (diameter) [3.3 Source-plane structure: "a molecular gas disc with a size that is 60 pc in projection around the quasar."]
+- result: Total magnification of the radio core = ~40 ± not stated dimensionless [3.3 Source-plane structure: "($\mu_{\rm tot} \simeq 40$)"]
+- result: Isotropic H2O disc line luminosity (intrinsic) = ~7e5 ± not stated Lsun [3.3 Source-plane structure: "we estimate the isotropic line luminosity is $\sim7\times10^{5}$ L$_{\odot}$."]
+- result: Highest combined magnification of merging images from mock sources = ~330 ± not stated dimensionless [3.3 Source-plane structure: "we take the highest combined magnification of the merging images produced by the mock sources (about 330)"]
+- result: Minimum intrinsic isotropic luminosity of the anomalous H2O component = 8e4 ± not stated Lsun [3.3 Source-plane structure: "to infer a minimum intrinsic isotropic line luminosity of $8\times10^{4}$ L$_{\odot}$."]
+- result: Offset of the anomalous H2O component from the quasar = >600 ± not stated pc [3.3 Source-plane structure: "originates $>600$ pc East of the quasar and perpendicular to the molecular gas disc."]
+- limitation (authors): Variability evidence is only tentative (2-3 sigma) [4.2 Structure of the circumnuclear gas …: "We find tentative evidence for variability in the 380 GHz H$_2$O disc at the 3$\sigma$ level on timescales of hours to days."]
+- limitation (authors): Beam smearing prevents detailed disc dynamics; deferred to future higher-resolution CO imaging [3.4 Size and structure of the molecular…: "Therefore, we defer a more comprehensive investigation of the disc dynamics to a future work that will use higher resolution imaging of the CO (11–10) line."]
+- limitation (authors): Low surface brightness and chance lensing configuration make spatial resolution of the H2O emission difficult [4.3 Discussion: "However, the low surface brightness of this 380 GHz H$_2$O line emission and the chance lensing configuration we propose suggest that spatially resolving the source emission may be difficult."]
+- not stated (card): CASA version used for the ALMA pipeline and for IMFIT/imaging; tclean (or other imaging) parameters for the Band 3 cubes: weighting/robust, cell size, image size, deconvolver, masks and cleaning threshold; Which channels were treated as line-free for continuum subtraction (the paper notes the broad line makes this hard); Self-calibration solution intervals, reference model and number of iteration…
+
+### 2024ApJ...973...25K: Birds of a Feather: Resolving Stellar Mass Assembly with JWST/NIRCam in a Pair of Kindred z ∼ 2 Dusty Star-forming Galaxies Lensed by the PLCK G165.7+67.0 Clus… (2024; high_z_galaxies, transients; multi_facility_alma_minor)
+- question: Characterize the intrinsic properties and resolved stellar mass assembly of two lensed z~2.2 DSFGs behind the G165 cluster, using a new lens model, JWST/NIRCam pixel-by-pixel SED fitting, and ALMA Band 3/4 and VLA continuum for dust sizes,…
+- step 3: Build the parametric lens model and measure magnifications
+  - method: LENSTOOL parametric model with PIEMD halos and 165 cluster members; ALMA and VLA magnifications from the ratio of image-plane to source-plane area, with 300 resamplings of the MCMC posterior [Lens modeling: "we measured magnifications simply by taking the ratio of image-plane to source-plane area."] [Lens modeling: "we resampled 300 iterations uniformly from the MCMC-derived posterior distribution, resulting in an approximately Gaussian distribution of magnifications."]
+  - software: LENSTOOL
+  - parameter: Two cluster-scale PIEMD halos plus 165 cluster members; uniform priors with +/-5'' position range, ellipticity 0 to 0.85, maximum velocity dispersion 800 km/s, maximum core radius 20'' (~100 kpc); halo cut radii fixed to 1000 kpc [Lens modeling: "Uniform priors were used for these parameters, including a wide range of $\pm 5\ensuremath{''}$ in $x$ and $y$ position from the approximate center of both cluster cores,"] [Lens modeling: "As their cut/truncation radii are poorly constrained, these were fixed to values of 1000 kpc."]
+  - parameter: DSFG-3 redshift left free (prior z = 2.0 - 2.2), giving z_geom = 2.11 +/- 0.01 [Redshift of DSFG-3: "allowed the redshift to vary from $z=2.0 - 2.2$ in the final model."]
+  - assumption: Cluster-member scaling relation normalized to L* galaxy (m_F200W = 17.0 AB) with sigma_0* = 120 km/s, r_core* = 0.15 kpc, r_cut* = 30 kpc [Lens modeling: "The power law was normalized such that a characteristic $L_\star$ galaxy at the redshift of the cluster ($m_{\rm F200W} = 17.0$ AB mag) has a velocity dispersion of $\sigma_0^\star = 120~{\rm km~s}^{-1}$,"]
+  - fitting: MCMC (sampler not named); the median of each parameter's posterior is adopted; minimum-chi^2 solutions also provided [Lens modeling: "In this work, we adopt the median of each parameter’s posterior distribution"] [Lens modeling: "We also provide the minimum-$\chi^2$ solutions, which are nearly always in close agreement with the median solution."]
+  - validation: Astrometric uncertainty from independent image-position markings by multiple team members; median offset 0.03'' [Lens modeling: "multiple team members independently marked the positions for the known image family members, and found a median offset of $0.03\ensuremath{''}$"]
+- step 4: Reconstruct the source plane and measure the 2 mm dust size
+  - method: Pixel-by-pixel ray-tracing of the images with lenstool cleanlens, then 2-D Gaussian fits with CASA imfit to the 2 mm source-plane reconstructions [Source-plane reconstruction: "the observed images are ray-traced to the source plane pixel-by-pixel through the `cleanlens` function of lenstool, with the image-plane oversampled by a factor of 4 and the source-plane by a factor of 2."] [Source-plane reconstruction: "we use the casa imfit task to fit the emission with 2-d Gaussian profiles (and adopt a minimum 10% fractional uncertainty)."]
+  - software: LENSTOOL, CASA imfit
+  - parameter: Sizes measured at 2 mm because of higher S/N; minimum 10% fractional uncertainty [Source-plane reconstruction: "these dust sizes are measured for the 2 mm images given their higher S/N"]
+  - assumption: 3 mm sizes may be inflated by synchrotron contamination [Source-plane reconstruction: "the possible contamination from synchrotron at 3 mm is expected to result in slightly larger sizes than from thermal dust alone."]
+  - fitting: 2-D Gaussian fit with CASA imfit; no regularization or parameterization of the source in the reconstruction [Source-plane reconstruction: "The reconstruction of all images in this work in the source plane does not impose regularization or parameterization of the intrinsic structure of the source."]
+  - validation: Reconstructions from only the high-magnification arcs agree with the full reconstruction [Source-plane reconstruction: "adding confidence to this reconstruction."]
+- step 5: Derive IR-based SFR and L_IR for each DSFG
+  - method: Apportion the total apparent IR SFR between Arc 1abc and Arc 3abc by their mm flux ratio, then correct by the total 2 mm magnification of each arc system [Table 2 notes: "The total apparent (i.e. lensing-uncorrected) IR-derived SFR of $12000\pm 2000 ~M_\odot {\rm yr}^{-1}$ from is divided between Arcs 1abc and 3abc according to their ratio of millimeter flux"] [Table 2 notes: "Then, these apportioned SFRs are corrected for the total 2 mm magnifications of Arc 1abc and Arc 3abc, respectively."]
+  - parameter: Flux ratio S_1abc / S_3abc = 3.1 +/- 0.3 (averaged for 2 mm and 3 mm) [Table 2 notes: "according to their ratio of millimeter flux, $S_{\rm 1abc} / S_{\rm 3abc} = 3.1 \pm 0.3$ (averaged for 2 mm and 3 mm)"]
+  - assumption: Both arc systems at similar redshifts; far-IR photometry does not resolve the systems; Kroupa IMF; flat LCDM with Omega_m = 0.3, Omega_Lambda = 0.7, H0 = 70 [Table 2 notes: "As the far-IR photometry largely does not resolve Arcs 1abc and 3abc, we make a preliminary estimate by apportioning the total ${\rm SFR}_{\rm IR}$ according to their share of flux at 2 mm and 3 mm"] [Introduction: "In this work, we adopt a $\Lambda$CDM cosmological model of $\Omega_m=0.3$, $\Omega_\Lambda = 0.7$, and $H_0 = 70~{\rm km}~{\rm s}^{-1}~{\rm Mpc}^{-1}$,"]
+- step 7: Combined UV-through-FIR SED fit including ALMA 2 mm and 3 mm photometry
+  - method: bagpipes fit to the summed photometry of Arcs 1a, 1bc, 3ab and 3c, adding WISE, Herschel/SPIRE, LMT/AzTEC and ALMA 2 mm / 3 mm fluxes, with a dust emission model [Simultaneous UV-FIR fitting of the spat…: "we fold them into a combined SED fit for Arcs 1a, 1bc, 3ab, and 3c, so that we can take advantage of unresolved photometry"]
+  - software: bagpipes
+  - parameter: q_PAH in [0.5, 4.0]; U_min in [1, 25]; gamma in [0.01, 0.99]; A_V < 8; redshift fixed at z = 2.236 [Simultaneous UV-FIR fitting of the spat…: "These include the PAH mass fraction ($q_{\rm PAH} \in [0.5, 4.0]$), the lower cutoff of the incident starlight intensity on the dust ($U_{\rm min} \in [1, 25]$, effectively describing the dust temperature distribution),"] [Simultaneous UV-FIR fitting of the spat…: "Redshift is held fixed at $z=2.236$."]
+  - assumption: Total flux-weighted magnification mu = 16 +/- 3 for both DSFGs combined; Planck photometry excluded because of confusion noise; radio SED not modeled [Table 3 notes: "we use the total flux-weighted magnification for both DSFG-1 and DSFG-3 combined, $\mu = 16 \pm 3$, to derive intrinsic values."] [Simultaneous UV-FIR fitting of the spat…: "*Planck* photometry is excluded from the fit given its high confusion noise."]
+  - fitting: bagpipes with uniform priors on the dust parameters; sampler not stated [Simultaneous UV-FIR fitting of the spat…: "these priors are all uniformly distributed, and consistent with those used by (cite: Williams:2019ab)."]
+  - validation: Alternative SFHs (single burst, exponential+burst) tested; no significant improvement and SFR changes by <~5% [Simultaneous UV-FIR fitting of the spat…: "We also test different choices in SFH (a single burst model and an exponential$+$burst model), but find no significant improvement over the single exponential model."]
+- result: Magnification of Arc 1abc at 2 mm and 3 mm = 28.4 (2 mm); 29.1 (3 mm) ± +/- 2.4 (2 mm); +/- 1.7 (3 mm) dimensionless [Table 1 (Arc 1abc row): "$28.4 \pm 2.4$ | $29.1 \pm 1.7$"]
+- result: Magnification of Arc 3abc at 2 mm and 3 mm = 7.3 (2 mm); 7.4 (3 mm) ± +/- 0.7 (2 mm); +/- 0.6 (3 mm) dimensionless [Table 1 (Arc 3abc row): "$7.3 \pm 0.7$ | $7.4 \pm 0.6$"]
+- result: Geometric redshift of DSFG-3 from lens model = 2.11 ± +/- 0.01 (likely underestimated) dimensionless [Redshift of DSFG-3: "The MCMC posterior distribution yields a quite precise value of $z_{\rm geom} = 2.11 \pm 0.01$"]
+- result: 2 mm dust continuum effective radius, DSFG-1 and DSFG-3 = 1.6 kpc (DSFG-1); 2.1 kpc (DSFG-3) ± +/- 0.2 kpc each kpc [Results: "we find 2-mm dust continuum effective radii of $R_{e, 2{\rm mm}} = 1.6 \pm 0.2$ kpc and $2.1 \pm 0.2$ kpc for DSFG-1 and DSFG-3, respectively"]
+- result: 3 mm dust continuum effective radius, both DSFGs = 2.6 ± +/- 0.3 not stated (kpc implied) [Footnote 12: "At 3 mm, we find $\sim 1.5\times$ larger sizes of $R_{e, 3{\rm mm}} = 2.6 \pm 0.3$ for both DSFGs"]
+- result: Intrinsic IR-derived SFR (SFR_IR), DSFG-1 and DSFG-3 = 320 (DSFG-1); 400 (DSFG-3) ± +/- 70; +/- 80 Msun/yr [abstract: "Boasting intrinsic star formation rates ${\rm SFR}_{\rm IR} = 320 \pm 70$ and $400 \pm 80~ M_\odot~{\rm yr}^{-1}$"]
+- result: log L_IR / Lsun, DSFG-1 = 12.5 ± +/- 0.1 dex (log Lsun) [Table 2 (DSFG-1 row): "$320 \pm 70$ | $12.5 \pm 0.1$"]
+- result: log L_IR / Lsun, DSFG-3 = 12.6 ± +/- 0.1 dex (log Lsun) [Table 2 (DSFG-3 row): "$400 \pm 80$ | $12.6 \pm 0.1$"]
+- result: Mm flux ratio S_1abc / S_3abc = 3.1 ± +/- 0.3 dimensionless [Table 2 notes: "$S_{\rm 1abc} / S_{\rm 3abc} = 3.1 \pm 0.3$ (averaged for 2 mm and 3 mm)"]
+- result: Combined UV-FIR SFR of both DSFGs (magnification-corrected) = 350 ± +/- 70 Msun/yr [Simultaneous UV-FIR fitting of the spat…: "The derived magnification-corrected SFR is SFR$_{\rm UV-FIR}= 350 \pm 70~M_\odot~{\rm yr}^{-1}$."]
+- result: Dust emission parameters q_PAH, U_min, gamma from the UV-FIR fit = q_PAH = 3.9; U_min = 22; gamma = 0.09 ± +/- 0.2; +/- 2; +/- 0.06 dimensionless [Simultaneous UV-FIR fitting of the spat…: "The best-fit dust emission parameters are $q_{\rm PAH} = 3.9 \pm 0.2$, $U_{\rm min} = 22 \pm 2$, and $\gamma = 0.09 \pm 0.06$."]
+- limitation (authors): Arcs 1a and 3c are only marginally resolved at 2 mm, so higher-resolution dust imaging is needed [Results: "as Arcs 1a and 3c are only marginally resolved at 2 mm."]
+- limitation (authors): ALMA beam is highly elongated (high declination target) and aligned with the direction of greatest magnification [A comparison of integrated vs. resolved…: "this elongation is essentially aligned with the orientation of greatest magnification, so lensing does not offer an easy remedy."]
+- limitation (authors): 3 mm fluxes and sizes may be contaminated by synchrotron emission [Source-plane reconstruction: "the possible contamination from synchrotron at 3 mm is expected to result in slightly larger sizes than from thermal dust alone."]
+- not stated (card): ALMA calibration route (pipeline vs manual), pipeline/CASA version used for calibration, flux calibrator and flux-scale uncertainty; Number of execution blocks, array configuration(s), time on source and spectral window layout for the two ALMA programs; Imaging settings: tclean task parameters, cell and image size, deconvolver, masks, thresholds, niter, primary-beam correction, and which channels…
+
+## All papers in this technique
+
+- 2013A&A...558A.123M (2013): Probing the jet base of the blazar PKS 1830-211 from the chromatic variability of its lensed images. Serendipitous ALMA observations of a s…
+- 2013ApJ...767...88W (2013): ALMA Redshifts of Millimeter-selected Galaxies from the SPT Survey: The Redshift Distribution of Dusty Star-forming Galaxies
+- 2013ApJ...767..132H (2013): ALMA Observations of SPT-discovered, Strongly Lensed, Dusty, Star-forming Galaxies
+- 2013ApJ...779...67B (2013): SPT 0538-50: Physical Conditions in the Interstellar Medium of a Strongly Lensed Dusty Star-forming Galaxy at z = 2.8
+- 2013Natur.495..344V (2013): Dusty starburst galaxies in the early Universe as revealed by gravitational lensing
+- 2014A&A...568A..92M (2014): Herschel-ATLAS and ALMA. HATLAS J142935.3-002836, a lensed major merger at redshift 1.027
+- 2015A&A...576L...2S (2015): ALMA detection of [C ii] 158 μm emission from a strongly lensed z = 2.013 star-forming galaxy
+- 2015ApJ...806..260F (2015): Band-9 ALMA Observations of the [N II] 122 μm Line and FIR Continuum in Two High-z galaxies.
+- 2015ApJ...806L..17S (2015): ALMA Resolves the Properties of Star-forming Regions in a Dense Gas Disk at z ∼ 3
+- 2015ApJ...811..115W (2015): The Innermost Mass Distribution of the Gravitational Lens SDP.81 from ALMA Observations
+- 2015ApJ...811..124S (2015): Sub-kiloparsec Imaging of Cool Molecular Gas in Two Strongly Lensed Dusty, Star-forming Galaxies
+- 2015ApJ...812...43B (2015): HerMES: ALMA Imaging of Herschel-selected Dusty Star-forming Galaxies
+- 2015ApJ...812...88M (2015): Stellar Masses and Star Formation Rates of Lensed, Dusty, Star-forming Galaxies from the SPT Survey
+- 2015MNRAS.451L..40R (2015): ALMA imaging of SDP.81 - I. A pixelated reconstruction of the far-infrared continuum emission.
+- 2015MNRAS.452.2258D (2015): Revealing the complex nature of the strong gravitationally lensed system H-ATLAS J090311.6+003906 using ALMA
+- 2015MNRAS.453L..26R (2015): ALMA imaging of SDP.81 - II. A pixelated reconstruction of the CO emission lines
+- 2015PASJ...67...72T (2015): High-resolution ALMA observations of SDP.81. I. The innermost mass profile of the lensing elliptical galaxy probed by 30 milli-arcsecond im…
+- 2016A&A...586L...7B (2016): An ALMA view of the interstellar medium of the z = 4.77 lensed starburst SPT-S J213242-5802.9
+- 2016A&A...593L...2N (2016): Planck's Dusty GEMS. II. Extended [CII] emission and absorption in the Garnet at z = 3.4 seen with ALMA
+- 2016A&A...596A..75S (2016): Characterizing elusive, faint dusty star-forming galaxies: a lensed, optically undetected ALMA galaxy at z 3.3
+- 2016ApJ...822...80S (2016): The Redshift Distribution of Dusty Star-forming Galaxies from the SPT Survey
+- 2016ApJ...823...37H (2016): Detection of Lensing Substructure Using ALMA Observations of the Dusty Galaxy SDP.81
+- 2016ApJ...826..112S (2016): ALMA Imaging and Gravitational Lens Models of South Pole Telescope—Selected Dusty, Star-Forming Galaxies at High Redshifts
+- 2016ApJ...832..114M (2016): SPT0346-52: Negligible AGN Activity in a Compact, Hyper-starburst Galaxy at z = 5.7
+- 2016ApJS..222....1F (2016): ALMA Census of Faint 1.2 mm Sources Down to ~ 0.02 mJy: Extragalactic Background Light and Dust-poor, High-z Galaxies
+- 2016MNRAS.457.2936I (2016): ALMA imprint of intergalactic dark structures in the gravitational lens SDP.81
+- 2016MNRAS.461..164I (2016): On the origin of the flux ratio anomaly in quadruple lens systems
+- 2016MNRAS.462L...6K (2016): [C II] emission in z ∼ 6 strongly lensed, star-forming galaxies
+- 2017A&A...597A..41G (2017): The ALMA Frontier Fields Survey. I. 1.1 mm continuum detections in Abell 2744, MACS J0416.1-2403 and MACS J1149.5+2223
+- 2017A&A...600L...3C (2017): Planck's dusty GEMS. III. A massive lensing galaxy with a bottom-heavy stellar initial mass function at z = 1.5
+- 2017A&A...604A.132L (2017): The ALMA Frontier Fields Survey. II. Multiwavelength Photometric analysis of 1.1 mm continuum sources in Abell 2744, MACSJ0416.1-2403 and M…
+- 2017A&A...608A.138G (2017): The ALMA Frontier Fields Survey. III. 1.1 mm emission line identifications in Abell 2744, MACSJ 0416.1-2403, MACSJ 1149.5+2223, Abell 370, …
+- 2017ApJ...835L..23I (2017): Evidence for a Dusty Dark Dwarf Galaxy in the Quadruple Lens MG 0414+0534
+- 2017ApJ...837..182O (2017): ALMACAL II: Extreme Star Formation Rate Densities in Dusty Starbursts Revealed by ALMA 20 mas Resolution Imaging
+- 2017ApJ...837L..21L (2017): Dust in the Reionization Era: ALMA Observations of a z = 8.38 Gravitationally Lensed Galaxy
+- 2017ApJ...843L..35W (2017): ALMA Observations of the Gravitational Lens SDP.9
+- 2017ApJ...845..108Y (2017): Blind Millimeter Line Emitter Search using ALMA Data Toward Gravitational Lensing Clusters
+- 2017ApJ...846L..22G (2017): ALMA Resolves the Molecular Gas in a Young Low-metallicity Starburst Galaxy at z = 1.7
+- 2017ApJ...850..170O (2017): High Dense Gas Fraction in Intensely Star-forming Dusty Galaxies
+- 2017MNRAS.466..138K (2017): A merger in the dusty, z = 7.5 galaxy A1689-zD1?
+- 2017MNRAS.466.2825B (2017): ALMA observations of atomic carbon in z ∼ 4 dusty star-forming galaxies
+- 2017MNRAS.467.3513T (2017): On the dust and gas components of the z = 2.8 gravitationally lensed quasar host RX J0911.4+0551
+- 2018A&A...610A..53M (2018): Chandra and ALMA observations of the nuclear activity in two strongly lensed star-forming galaxies
+- 2018A&A...613A..34P (2018): ALMA view of RX J1131-1231: Sub-kpc CO (2-1) mapping of a molecular disk in a lensed star-forming quasar host galaxy
+- 2018A&A...620A.115B (2018): Dense-gas tracers and carbon isotopes in five 2.5 &lt; z &lt; 4 lensed dusty star-forming galaxies from the SPT SMG sample
+- 2018A&A...620A.125M (2018): The ALMA Frontier Fields Survey. IV. Lensing-corrected 1.1 mm number counts in Abell 2744, MACS J0416.1-2403 and MACS J1149.5+2223
+- 2018ApJ...860...87F (2018): The Discovery of a New Massive Molecular Gas Component Associated with the Submillimeter Galaxy SMM J02399-0136
+- 2018ApJ...862...64S (2018): Deciphering the Activity and Quiescence of High-redshift Cluster Environments: ALMA Observations of Cl J1449+0856 at z = 2
+- 2018ApJ...863L..16M (2018): The “Cosmic Seagull”: A Highly Magnified Disk-like Galaxy at z ≃ 2.8 behind the Bullet Cluster
+- 2018ApJ...864...60M (2018): SOFIA/HAWC+ Detection of a Gravitationally Lensed Starburst Galaxy at z = 1.03
+- 2018ApJ...866L..12G (2018): A Magnified View of Circumnuclear Star Formation and Feedback around an Active Galactic Nucleus at z = 2.6
+- 2018ApJ...867..140L (2018): Resolving Star Formation on Subkiloparsec Scales in the High-redshift Galaxy SDP.11 Using Gravitational Lensing
+- 2018MNRAS.475.4939A (2018): ALMA observations of lensed Herschel sources: testing the dark matter halo paradigm
+- 2018MNRAS.476.4383D (2018): Modelling high-resolution ALMA observations of strongly lensed highly star-forming galaxies detected by Herschel
+- 2018MNRAS.477..669M (2018): Dark matter dynamics in Abell 3827: new data consistent with standard cold dark matter
+- 2018NatAs...2...56Z (2018): A dusty star-forming galaxy at z = 6 revealed by strong gravitational lensing
+- 2018Natur.553...51M (2018): Galaxy growth in a massive halo in the first billion years of cosmic history
+- 2018Sci...361.1016S (2018): Fast molecular outflow from a dusty star-forming galaxy in the early Universe
+- 2019A&A...624A.138Y (2019): CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP> line and dust emission in a z = 3.63 strongly lensed starburst merger at sub-kiloparsec scal…
+- 2019A&A...628A..23A (2019): Imaging the molecular interstellar medium in a gravitationally lensed star-forming galaxy at z = 5.7
+- 2019A&A...631A..91G (2019): Towards sub-kpc scale kinematics of molecular and ionized gas of star-forming galaxies at z ∼ 1
+- 2019A&A...632L...7J (2019): Detection of a high-redshift molecular outflow in a primeval hyperstarburst galaxy
+- 2019ApJ...870...80L (2019): Spatially Resolved [C II] Emission in SPT0346-52: A Hyper-starburst Galaxy Merger at z ∼ 5.7
+- 2019ApJ...873...50D (2019): Source Structure and Molecular Gas Properties from High-resolution CO Imaging of SPT-selected Dusty Star-forming Galaxies
+- 2019ApJ...883...81S (2019): Evidence for Inside-out Galaxy Growth and Quenching of a z ∼ 2 Compact Galaxy From High-resolution Molecular Gas Imaging
+- 2019MNRAS.486.2366M (2019): The molecular gas properties in the gravitationally lensed merger HATLAS J142935.3-002836
+- 2019MNRAS.487L..81L (2019): The absence of [C II] 158 μm emission in spectroscopically confirmed galaxies at z &gt; 8
+- 2019NatAs...3.1115D (2019): Molecular clouds in the Cosmic Snake normal star-forming galaxy 8 billion years ago
+- 2019PASJ...71...57K (2019): Searching for the 380 GHz H<SUB>2</SUB>O emission from the high-z lensed quasi-stellar object MG J0414+0534
+- 2020A&A...633A.160C (2020): The ALMA Frontier Fields Survey. V. ALMA Stacking of Lyman-Break Galaxies in Abell 2744, Abell 370, Abell S1063, MACSJ0416.1-2403 and MACSJ…
+- 2020A&A...634L...3Y (2020): First detection of the 448 GHz ortho-H<SUB>2</SUB>O line at high redshift: probing the structure of a starburst nucleus at z = 3.63
+- 2020A&A...641L...2M (2020): All good things come in threes: the third image of the lensed quasar PKS 1830-211
+- 2020ApJ...890..171J (2020): The Redshift and Star Formation Mode of AzTEC2: A Pair of Massive Galaxies at z = 4.63
+- 2020ApJ...891...64F (2020): Truth or Delusion? A Possible Gravitational Lensing Interpretation of the Ultraluminous Quasar SDSS J010013.02+280225.8 at z = 6.30
+- 2020ApJ...892L..18I (2020): ALMA 50-parsec-resolution Imaging of Jet-ISM Interaction in the Lensed Quasar MG J0414+0534
+- 2020ApJ...898...33C (2020): ALMA [{N} {II}] 205 μm Imaging Spectroscopy of the Lensed Submillimeter Galaxy ID 141 at Redshift 4.24
+- 2020ApJ...902...78R (2020): The Complete Redshift Distribution of Dusty Star-forming Galaxies from the SPT-SZ Survey
+- 2020ApJ...903...34A (2020): Probing the Nature of High-redshift Weak Emission Line Quasars: A Young Quasar with a Starburst Host Galaxy
+- 2020ApJ...905...85S (2020): Ubiquitous Molecular Outflows in z &gt; 4 Massive, Dusty Galaxies. I. Sample Overview and Clumpy Structure in Molecular Outflows on 500 pc …
+- 2020ApJ...905..152D (2020): [N II] Fine-structure Emission at 122 and 205 μm in a Galaxy at z = 2.6: A Globally Dense Star-forming Interstellar Medium
+- 2020MNRAS.493.5290S (2020): Smoke on the water: CO and H<SUB>2</SUB>O in a circumnuclear disc around a quasar at redshift 2.64
+- 2020MNRAS.494.4090C (2020): The [C II]/[N II] ratio in 3 &lt; z &lt; 6 sub-millimetre galaxies from the South Pole Telescope survey
+- 2020MNRAS.494.5542R (2020): Full of Orions: a 200-pc mapping of the interstellar medium in the redshift-3 lensed dusty star-forming galaxy SDP.81
+- 2020MNRAS.495L...1I (2020): Giant star-forming clumps?
+- 2020MNRAS.496..138B (2020): VLA and ALMA observations of the lensed radio-quiet quasar SDSS J0924+0219: a molecular structure in a 3 μJy radio source
+- 2020MNRAS.496..598C (2020): Linking the small-scale relativistic winds and the large-scale molecular outflows in the z = 1.51 lensed quasar HS 0810+2554
+- 2020MNRAS.498.4109J (2020): Gas and star formation from HD and dust emission in a strongly lensed galaxy
+- 2020MNRAS.499.5136C (2020): Missing [C II] emission from early galaxies
+- 2020Natur.584..201R (2020): A dynamically cold disk galaxy in the early Universe
+- 2021A&A...645A..45C (2021): Planck's Dusty GEMS. VIII. Dense-gas reservoirs in the most active dusty starbursts at z ∼ 3
+- 2021A&A...646A..26B (2021): A puzzling non-detection of [O III] and [C II] from a z ≈ 7.7 galaxy observed with ALMA
+- 2021A&A...652A.128J (2021): ALMA Lensing Cluster Survey: A spectral stacking analysis of [C II] in lensed z ∼ 6 galaxies
+- 2021A&A...655A..42S (2021): Molecular gas budget and characterization of intermediate-mass star-forming galaxies at z ≈ 2-3
+- 2021ApJ...907..122M (2021): FIR-luminous [C II] Emitters in the ALMA-SCUBA-2 COSMOS Survey (AS2COSMOS): The Nature of Submillimeter Galaxies in a 10 Comoving Megaparse…
+- 2021ApJ...908..146C (2021): ALMA Lensing Cluster Survey: An ALMA Galaxy Signposting a MUSE Galaxy Group at z = 4.3 Behind "El Gordo"
+- 2021ApJ...908..192S (2021): ALMA 1.3 mm Survey of Lensed Submillimeter Galaxies Selected by Herschel: Discovery of Spatially Extended SMGs and Implications
+- 2021ApJ...909..130R (2021): Ultrafaint [C II] Emission in a Redshift = 2 Gravitationally Lensed Metal-poor Dwarf Galaxy
+- 2021ApJ...917...99Y (2021): ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System a…
+- 2021ApJ...921...97J (2021): Molecular Line Observations in Two Dusty Star-forming Galaxies at z = 6.9
+- 2021MNRAS.500.3667S (2021): The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2
+- 2021MNRAS.502.1797R (2021): Optical and near-infrared observations of the SPT2349-56 proto-cluster core at z = 4.3
+- 2021MNRAS.505.4838L (2021): ALMA Lensing Cluster Survey: a strongly lensed multiply imaged dusty system at z ≥ 6
+- 2022A&A...657A..25N (2022): Radial profiles of lensed z ∼ 1 galaxies on sub-kiloparsec scales
+- 2022A&A...668L...4G (2022): The uncertain interstellar medium of high-redshift quiescent galaxies: Impact of methodology
+- 2022ApJ...930...32C (2022): Searching Far and Long. I. Pilot ALMA 2 mm Follow-up of Bright Dusty Galaxies as a Redshift Filter
+- 2022MNRAS.510.2480D (2022): Detecting low-mass haloes with strong gravitational lensing I: the effect of data quality and lensing configuration
+- 2022MNRAS.510.3734D (2022): A high-resolution investigation of the multiphase ISM in a galaxy during the first two billion years
+- 2022MNRAS.511.1408G (2022): The far-infrared/radio correlation for a sample of strongly lensed dusty star-forming galaxies detected by Herschel
+- 2022MNRAS.511.3017U (2022): The bright extragalactic ALMA redshift survey (BEARS) I: redshifts of bright gravitationally lensed galaxies from the Herschel ATLAS
+- 2022MNRAS.512.2426M (2022): Modelling high-resolution ALMA observations of strongly lensed dusty star-forming galaxies detected by Herschel
+- 2022PASJ...74.1429T (2022): Central concentration of warm and dense molecular gas in a strongly lensed submillimeter galaxy at z = 6
+- 2023A&A...673A.116K (2023): Exploring the environment, magnetic fields, and feedback effects of massive high-redshift galaxies with [C II]
+- 2023A&A...674A.101M (2023): Cosmo-tomography toward PKS 1830‒211: Variability of the quasar and of its foreground molecular absorption monitored with ALMA
+- 2023A&A...674L...5B (2023): Neutral outflows in high-z QSOs
+- 2023A&A...675A..85M (2023): The ALMA Frontier Fields Survey. VI. Lensing-corrected 1.1 mm number counts in Abell 2744, MACSJ0416.1-2403, MACSJ1149.5+2223, Abell 370, a…
+- 2023A&A...678A.183N (2023): Resolved Kennicutt-Schmidt law in two strongly lensed star-forming galaxies at redshift 1
+- 2023A&A...679A.119R (2023): PRUSSIC. II. ALMA imaging of dense-gas tracers in SDP.81: Evidence for low mechanical heating and a sub-solar metallicity in a z = 3.04 dus…
+- 2023ApJ...943...25G (2023): A Highly Magnified Gravitationally Lensed Red QSO at z = 2.5 with a Significant Flux Ratio Anomaly
+- 2023ApJ...945..121U (2023): ALMA Lensing Cluster Survey: Properties of Millimeter Galaxies Hosting X-Ray-detected Active Galactic Nuclei
+- 2023ApJ...954..197I (2023): ALMA Measurement of 10 kpc Scale Lensing-power Spectra toward the Lensed Quasar MG J0414+0534
+- 2023MNRAS.520.1613M (2023): Probing general relativity in galactic scales at z 0.3
+- 2023MNRAS.521.2962F (2023): Estimating dust temperature and Far-IR luminosity of high-redshift galaxies using ALMA single-band continuum observations
+- 2023MNRAS.521.5508H (2023): Bright extragalactic ALMA redshift survey (BEARS) III: detailed study of emission lines from 71 Herschel targets
+- 2023MNRAS.524.3671Z (2023): Discovery of a radio jet in the Cloverleaf quasar at z = 2.56
+- 2023Natur.621..483G (2023): Polarized thermal emission from dust in a galaxy at redshift 2.6
+- 2024A&A...684A..56K (2024): Probing the interstellar medium of the quasar BRI 0952‒0115. An analysis of [C II], [C II], CO, OH, and H<SUB>2</SUB>O
+- 2024A&A...685A..80Z (2024): Unveiling [C II] clumps in a lensed star-forming galaxy at z ∼ 3.4
+- 2024A&A...686A..85A (2024): Spatially resolved Hα and ionizing photon production efficiency in the lensed galaxy MACS1149-JD1 at a redshift of 9.11
+- 2024A&A...688A.110S (2024): Complex angular structure of three elliptical galaxies from high-resolution ALMA observations of strong gravitational lenses
+- 2024A&A...688A.146A (2024): GA-NIFS: The core of an extremely massive protocluster at the epoch of reionisation probed with JWST/NIRSpec
+- 2024A&A...690L..16J (2024): A photo-z cautionary tale: Redshift confirmation of COSBO-7 at z = 2.625
+- 2024A&A...692A..34C (2024): A kiloparsec-scale ordered magnetic field in a galaxy at z = 5.6
+- 2024A&A...692A.215C (2024): Molecular gas budget of strongly magnified low-mass star-forming galaxies at cosmic noon
+- 2024ApJ...961....2K (2024): PASSAGES: The Wide-ranging, Extreme Intrinsic Properties of Planck-selected, Lensed Dusty Star-forming Galaxies
+- 2024ApJ...961...71F (2024): The Extended [C II] under Construction? Observation of the Brightest High-z Lensed Star-forming Galaxy at z = 6.2
+- 2024ApJ...962..128M (2024): Comparing SCUBA-2 and ALMA Selections of Faint Dusty Star-forming Galaxies in A2744
+- 2024ApJ...964...39G (2024): UNCOVER Spectroscopy Confirms the Surprising Ubiquity of Active Galactic Nuclei in Red Sources at z &gt; 5
+- 2024ApJ...964..146F (2024): JWST and ALMA Multiple-line Study in and around a Galaxy at z = 8.496: Optical to Far-Infrared Line Ratios and the Onset of an Outflow Prom…
+- 2024ApJ...965..108U (2024): ALMA Lensing Cluster Survey: Full Spectral Energy Distribution Analysis of z ∼ 0.5─6 Lensed Galaxies Detected with millimeter Observations
+- 2024ApJ...967...11C (2024): TEMPLATES: Characterization of a Merger in the Dusty Lensing SPT0418─47 System
+- 2024ApJ...969L..28L (2024): A Strongly Lensed Dusty Starburst of an Intrinsic Disk Morphology at a Photometric Redshift of z <SUB>ph</SUB> &gt; 7
+- 2024ApJ...970...30M (2024): First Constraints on the Interstellar Medium Conditions of a Low-mass, Highly Obscured z = 4.27 Main-sequence Galaxy
+- 2024ApJ...973...25K (2024): Birds of a Feather: Resolving Stellar Mass Assembly with JWST/NIRCam in a Pair of Kindred z ∼ 2 Dusty Star-forming Galaxies Lensed by the P…
+- 2024ApJ...974..145S (2024): UNCOVER NIRSpec/PRISM Spectroscopy Unveils Evidence of Early Core Formation in a Massive, Centrally Dusty Quiescent Galaxy at z <SUB>spec</…
+- 2024ApJ...977L...9Z (2024): ALMA Detection of [O III] 88 μm at z = 12.33: Exploring the Nature and Evolution of GHZ2 as a Massive Compact Stellar System
+- 2024ApJ...977L..36H (2024): Detailed Study of Stars and Gas in a z = 8.3 Massive Merger with Extreme Dust Conditions
+- 2024ApJS..275...36F (2024): ALMA Lensing Cluster Survey: Deep 1.2 mm Number Counts and Infrared Luminosity Functions at z ≃ 1─8
+- 2024MNRAS.528.6222B (2024): Characterization of Herschel-selected strong lens candidates through HST and sub-mm/mm observations
+- 2024MNRAS.530.4887W (2024): Little evolution of dust emissivity in bright infrared galaxies from 2 &lt; z &lt; 6
+- 2024MNRAS.535.1533B (2024): A novel high-z submm galaxy efficient line survey in ALMA Bands 3 through 8 - an ANGELS pilot
+- 2025A&A...693A.190J (2025): ALMA Lensing Cluster Survey: Dust mass measurements as a function of redshift, stellar mass, and star formation rate from z = 1 to z = 5
+- 2025A&A...693L..17S (2025): A nuclear spiral in a dusty star-forming galaxy at z = 2.78
+- 2025A&A...701A..85K (2025): Early galaxy evolution: The complex interstellar medium distribution of the z ∼ 7 galaxy A1689-zD1
+- 2025A&A...704A.158C (2025): Pushing JWST to the extremes: Search and scrutiny of bright galaxy candidates at z ≃ 15─30
+- 2025ApJ...988...19S (2025): Detection of [O III]<SUB>88 μm</SUB> in JADES-GS-z14-0 at z = 14.1793
+- 2025ApJ...989..115T (2025): ALMA Lensing Cluster Survey: Physical Characterization of Near-infrared-dark Intrinsically Faint ALMA Sources at z = 2─4
+- 2025ApJ...989..160I (2025): MIDIS: MIRI Uncovers Virgil, the First Little Red Dot with Clear Detection of Its Host Galaxy at z ≃ 6.6
+- 2025ApJ...990...29H (2025): Compact Ionized Gas Region Surrounded by Porous Neutral Gas in a Dusty Lyman Break Galaxy at Redshift z = 8.312
+- 2025ApJ...990L..38Y (2025): Unveiling a Population of Strong Galaxy─Galaxy Lensed, Faint Dusty Star-forming Galaxies
+- 2025ApJ...991...53C (2025): HerS-3: An Exceptional Einstein Cross Reveals a Massive Dark Matter Halo
+- 2025ApJ...995..219F (2025): PASSAGES: The Discovery of a Strongly Lensed Protocluster Core Candidate at Cosmic Noon
+- 2025ApJS..278...45F (2025): DUALZ—Deep UNCOVER-ALMA Legacy High-Z Survey
+- 2025MNRAS.537.1163A (2025): The onset of bar formation in a massive galaxy at z ~ 3.8
+- 2025NatAs...9.1553F (2025): Primordial rotating disk composed of at least 15 dense star-forming clumps at cosmic dawn
+- 2025PASJ...77..139I (2025): Detection of the [O I] 63 µm emission line from the z = 6.04 quasar J2054-0005
+- 2025PASP..137l4501T (2025): The ViSta Method for Stacking in the Fourier Domain and its Application to the Dusty Star-forming Galaxies in the ALMA Science Archive
+- 2026A&A...705A..81K (2026): Resolving the molecular gas emission of the z ∼ 2.5─2.8 starburst galaxies SPT 0125-47 and SPT 2134-50
+- 2026A&A...706A.174A (2026): Hiding behind a curtain of dust: Gas and dust properties of an ultra-luminous strongly-lensed z = 3.75 galaxy behind the Milky Way disc
+- 2026A&A...706A.285C (2026): Infrared emission from z ∼ 6.5 quasar host galaxies: a direct estimate of dust physical properties
+- 2026A&A...707A.252K (2026): Detailed lens modeling and kinematics of the submillimeter galaxy G09v1.97: An analysis of CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP>, …
+- 2026ApJ...997..218A (2026): Tentative Detection of Neutral Gas in a Little Red Dot at z = 4.46
+- 2026ApJ..1000..159M (2026): Low Dust Mass and High Star Formation Efficiency at z &gt; 12 from Deep ALMA Observations
+- 2026ApJ..1000..235K (2026): Forecasting the Observable Rates of Gravitationally Lensed Supernovae for the PASSAGES Dusty Starbursts
+- 2026ApJ..1002L..28Y (2026): A Close Quasar Pair in a Massive Galaxy Merger at z = 5.7
+- 2026ApJ..1004..114V (2026): JWST's PEARLS: A Clumpy Ring Galaxy at z = 4.0148
+- 2026ApJ..1004..194F (2026): ALMA Observations of [O I] 145 μm and [N II] 205 μm Emission Lines from Star-forming Galaxies at z ∼ 7
+- 2026MNRAS.546f2284B (2026): Probing infrared eXcess to investigate early-Universe dust (PIXIEDust)

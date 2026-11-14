@@ -1,0 +1,238 @@
+{
+ "bibcode": "2019MNRAS.482..698C",
+ "title": "The Ophiuchus DIsc Survey Employing ALMA (ODISEA) - I: project description and continuum images at 28 au resolution",
+ "year": 2019,
+ "doi": "10.1093/mnras/sty2653",
+ "arxiv_id": "1809.08844",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What are the 1.3 mm continuum fluxes, sizes, substructures and implied dust masses of the Spitzer-selected (Sample A) discs in Ophiuchus at 0.2'' resolution?",
+ "alma_project_codes": [
+  "2016.1.00545.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz/1.3 mm)",
+  "arrays": "12-m array, 42-45 antennas",
+  "angular_resolution": "0.28'' x 0.19'' synthesized beam (~0.2'', 28 au)",
+  "sensitivity": "typical rms ~0.15 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spitzer catalog, 2MASS and Spitzer photometry of the 147 targets",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "Table [\\[table:c2d\\]](#table:c2d) shows the 2MASS and *Spitzer* photometry from these 147 objects, taken from the NASA/IPAC Infrared Science Archive."
+     }
+    ]
+   },
+   "citation": "Evans et al. 2009b (Cores to Discs)"
+  },
+  {
+   "what": {
+    "value": "Spectral types and companion separations from literature",
+    "evidence": [
+     {
+      "loc": "3.3 General trends",
+      "quote": "We have also collected spectral types from the literature for 88 objects from our sample."
+     }
+    ]
+   },
+   "citation": "Cieza et al. 2010; Erickson et al. 2011; Wilking et al. 2005; Manara et al. 2015; McClure et al. 2010 and others"
+  },
+  {
+   "what": {
+    "value": "Dust masses of other regions for comparison (Lupus, Upper Sco, Cha I, sigma Ori, IC 348, Taurus)",
+    "evidence": [
+     {
+      "loc": "4.2 Comparison to other regions",
+      "quote": "For comparison, we perform the same analysis for objects in Lupus (Ansdell et al. 2016), Upper Scorpius (Barenfeld et al. 2016), Chamaeleon I (Pascucci et al. 2016)"
+     }
+    ]
+   },
+   "citation": "Ansdell et al. 2016; Barenfeld et al. 2016; Pascucci et al. 2016; Ansdell et al. 2017; Ruiz-Rodriguez et al. 2018; Andrews et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Detect sources and measure peak/rms",
+   "method": "Inspect images with CASA Viewer; imstat peak within 1'' aperture and rms in 1.0-1.2'' annulus",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit fluxes and sizes of single sources in the uv plane",
+   "method": "uvmodelfit point source and Gaussian fits for single objects with peak S/N>5; resolved only if S/N>30 and Gaussian flux > point flux + 3 rms; elliptical disc model for substructured sources",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "Free parameters: flux, major/minor FWHM, PA, offsets <1''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Photometry of multiples and substructured discs, and non-detections",
+   "method": "CASA Viewer 2-D image-plane fitting for multiples and ~3'' apertures for substructured discs; point-source uvmodelfit at offset-corrected positions (-0.08'', -0.56'') for non-detections",
+   "software": [
+    "CASA Viewer",
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Stack non-detections",
+   "method": "Mean of each pixel from the images of the 27 non-detections centered at nominal positions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Search for substructure",
+   "method": "Phase-only self-calibration and uniform-weight imaging for ~50 sources >~15 mJy; visual inspection; deprojected radial profiles using fitted PA and axes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Convert flux to dust mass and compare regions",
+   "method": "Optically thin M_dust = F d^2/(kappa B(T)); Kaplan-Meier cumulative distributions with ASURV",
+   "software": [
+    "ASURV"
+   ],
+   "key_parameters": [
+    "kappa_1.3mm = 0.023 cm2/g (beta=1), d = 140 pc, T_dust = 20 K"
+   ],
+   "assumptions": [
+    "Optically thin emission, T=20 K, beta=1, Beckwith opacity, 140 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Discs detected",
+   "value": "133 (in 120 systems)",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum images, disc photometry, and sizes",
+     "quote": "We detect a total of 133 discs in 120 systems."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatially resolved discs",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Fifty-three of these discs are spatially resolved."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked non-detection flux",
+   "value": "0.16",
+   "uncertainty": "rms 0.04 mJy",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Stacking of non-detections",
+     "quote": "The stacked image has an rms of 0.04 mJy and shows a 4-$\\sigma$ (0.16 mJy) detection"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of stacked non-detections",
+   "value": "0.09",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Disc dust masses and sizes",
+     "quote": "corresponds to an average dust mass of just 0.09 M$_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-to-mass conversion",
+   "value": "0.58",
+   "uncertainty": "not stated",
+   "units": "Earth masses per mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Disc dust masses and sizes",
+     "quote": "M_{dust}  = 0.58 \\times \\frac{F_{1.3mm}}{\\mathrm{mJy}}  M_{\\oplus}"
+    }
+   ]
+  },
+  {
+   "quantity": "Discs with clear substructure",
+   "value": "8 (plus 4 with hints)",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find clear substructures (inner cavities, rings, gaps, and/or spiral arms) in 8 of the sources and hints of such structures in another 4 discs."
+    }
+   ]
+  },
+  {
+   "quantity": "Discs with dust mass sufficient for 10 Earth-mass core",
+   "value": "~50 (~1/3)",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Implications for planet formation: challenges and future directions",
+     "quote": "only $\\sim$50 targets (1/3 of the sample) have enough dust to form a critical-mass rocky core"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters: cell size, image size, masks, threshold, deconvolver, number of iterations",
+  "Continuum channel selection / flagging of line-contaminated channels",
+  "Self-calibration solution intervals and reference models",
+  "Exact deprojection and radial-profile binning procedure",
+  "Individual aperture sizes for flux in non-substructure sources and starting guesses for uvmodelfit",
+  "Stacking implementation details (pixel grid, primary-beam handling)",
+  "Exact CASA/pipeline version of the delivered calibration"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters (cell, image size, masks, thresholds)",
+  "Self-calibration details",
+  "Full results tables only online",
+  "Deprojection and profile details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single public project with clear photometry recipe and numeric tables, but imaging parameters missing.",
+ "rediscovery_reason": "Single ALMA project; recipe for photometry and mass conversion is clear and results are numeric.",
+ "source_card": "cards/2019MNRAS.482..698C/sonnet/card.md"
+}

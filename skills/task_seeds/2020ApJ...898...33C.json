@@ -1,0 +1,262 @@
+{
+ "bibcode": "2020ApJ...898...33C",
+ "title": "ALMA [{N} {II}] 205 μm Imaging Spectroscopy of the Lensed Submillimeter Galaxy ID 141 at Redshift 4.24",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab980b",
+ "arxiv_id": "2006.01147",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the intrinsic morphology, kinematics, line ratios and star formation properties of the lensed SMG ID 141, from ALMA [N II] 205 um and continuum imaging?",
+ "alma_project_codes": [
+  "2015.1.00388.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "1.46\"x0.88\" continuum; 1.25\"x0.8\" [N II]",
+  "sensitivity": "continuum rms 0.25 mJy/beam; cube rms ~0.6 mJy/beam per 100 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[C II] flux 107±17 Jy km/s and CO(7-6) flux 6.5±1.4 Jy km/s",
+    "evidence": [
+     {
+      "loc": "4.2 Line ratio properties",
+      "quote": "together with the \\[C ii \\] flux ($107\\pm 17$ Jy km/s) and CO (7-6) flux ($6.5\\pm1.4$ Jy km/s) from (cite: Cox2011)"
+     }
+    ]
+   },
+   "citation": "(cite: Cox2011)"
+  },
+  {
+   "what": {
+    "value": "Lens configuration: two lens galaxies at z=0.595; Keck astrometry for secondary lens offset",
+    "evidence": [
+     {
+      "loc": "4.1 Lensing Modeling",
+      "quote": "using the astrometry information provided by Keck image (cite: Bussmann2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Bussmann2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [N II] cube",
+   "method": "CASA cleaning with natural weighting, uvcontsub order 1; continuum averaged over three SPWs",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract and fit [N II] spectra",
+   "method": "polygon apertures on each lensed image; double-Gaussian fits",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit FIR SED",
+   "method": "modified blackbody fit with beta fixed",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta = 1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Lens model the continuum in the uv-plane",
+   "method": "two SIE lenses plus one Sérsic source; visibility fitting with nested sampling",
+   "software": [
+    "tiny_lens",
+    "Visilens",
+    "pymultinest",
+    "PyAutoLens"
+   ],
+   "key_parameters": [
+    "secondary lens offset fixed to (-0.025\", -0.327\")"
+   ],
+   "assumptions": [
+    "single Sérsic source; lens mass ratio not fixed"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Reconstruct source-plane velocity fields",
+   "method": "trace [N II] moment maps to source plane with the continuum lens model, stacking multiple image counterparts weighted by flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beam smearing not accounted for; qualitative"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Line ratios, SFR and SF region size",
+   "method": "line ratios vs C(60/100) from Lu2015; SFR from LIR (Kennicutt) and CO(7-6); Sigma_SFR from C(60/100); R_SF from Sigma_SFR = 0.5 SFR/(pi R^2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF; magnification 5.8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total [N II] flux",
+   "value": "7.9",
+   "uncertainty": "1.9",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Spectra",
+     "quote": "The total \\[N ii \\] flux is $7.9\\pm 1.9$ Jy km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum flux",
+   "value": "52.0",
+   "uncertainty": "5.2",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Dust continuum",
+     "quote": "The total continuum flux measured by ALMA is 52.0 $\\pm$ 5.2 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Source Sérsic index",
+   "value": "0.9539",
+   "uncertainty": "0.0595",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$n_{S}$ | 0 | \\[0.30 ,8.00\\] | 0.9539 | 0.0595"
+    }
+   ]
+  },
+  {
+   "quantity": "Source effective radius",
+   "value": "0.1798",
+   "uncertainty": "0.0016",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$R_{e}$ ($''$) | 0 | \\[0.01 ,1.00\\] | 0.1798 | 0.0016"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi2 of lens model",
+   "value": "1.01",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Lensing Modeling",
+     "quote": "The best-fit model has $\\chi^2 = 757972$ with 746981 degrees of freedom"
+    }
+   ]
+  },
+  {
+   "quantity": "log([N II]/[C II])",
+   "value": "-1.12",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Line ratio properties",
+     "quote": "log(\\[N ii \\] /\\[C ii \\] ) = -1.12$\\pm$0.16"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic LIR (8-1000 um)",
+   "value": "1.7e13",
+   "uncertainty": "0.4e13",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Star Formation Properties",
+     "quote": "$= 1.7 \\pm 0.4 \\times 10^{13} L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_FIR",
+   "value": "1843",
+   "uncertainty": "424",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Star Formation Properties",
+     "quote": "SFR$_{\\rm FIR} = 1843 \\pm 424 M_{\\odot}/\\rm yr$"
+    }
+   ]
+  },
+  {
+   "quantity": "R_SF",
+   "value": "0.74",
+   "uncertainty": "0.30",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Star Formation Properties",
+     "quote": "$R_{\\rm SF}$ = 0.74 $\\pm$ 0.30 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature",
+   "value": "~40",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Dust continuum",
+     "quote": "The resulting dust temperature is $\\sim$40 K."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used in uvcontsub",
+  "Clean threshold, cell and image size",
+  "Which SPWs/channels and mask define the moment maps",
+  "Polygon aperture definitions for spectra",
+  "Details of moment-map back-projection to source plane",
+  "Exact visibility data selection/averaging for lens modelling"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, image size, line-free channels)",
+  "Aperture polygons",
+  "Source-plane back-projection details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and public code, and lens priors tabulated, but imaging and kinematic reconstruction details are sparse.",
+ "rediscovery_reason": "Public single-EB data, numeric results (fluxes, lens parameters), code available.",
+ "source_card": "cards/2020ApJ...898...33C/sonnet/card.md"
+}

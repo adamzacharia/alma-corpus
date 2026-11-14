@@ -1,0 +1,294 @@
+# Magnetically regulated collapse in the B335 protostar?. II. Observational constraints on gas ionization and magnetic field coupling
+
+`2023A&A...669A..90C` | Astronomy and Astrophysics 2023 | first author: Cabedo, Victoria | arXiv: 2204.10043 | DOI: 10.1051/0004-6361/202243813
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: star_formation, astrochemistry
+- Question: To observationally characterize the level of gas ionization at small envelope radii (<= 1000 au) and investigate its relation to the efficiency of magnetic field coupling in the Class 0 protostar B335.  
+  > "The purpose of this work is to observationally characterize the level of ionization of the gas at small envelope radii and to investigate its relation to the efficiency of the coupling between the star-forming gas and the magnetic field in the Class 0 protostar B335." (abstract)
+- Target **B335**: coordinates 19:37:00.9 +07:34:09.6 (J2000)  
+  > "B335, located at a distance of 164.5 pc (cite: Watson2020), is an isolated Bok Globule which contains an embedded Class 0 protostar (cite: Keene1983)." (Introduction); "The centroid position of B335 is assumed to be $\alpha =$ 19:37:00.9 and $\delta =$ +07:34:09.6 (in J2000 coordinates) based on the dust continuum peak obtained by (cite: Maury2018)." (Observations and data reduction); z/distance 164.5 pc  
+  > "B335, located at a distance of 164.5 pc (cite: Watson2020), is an isolated Bok Globule which contains an embedded Class 0 protostar (cite: Keene1983)." (Introduction); "The centroid position of B335 is assumed to be $\alpha =$ 19:37:00.9 and $\delta =$ +07:34:09.6 (in J2000 coordinates) based on the dust continuum peak obtained by (cite: Maury2018)." (Observations and data reduction); distance from (cite: Watson2020)  
+  > "B335, located at a distance of 164.5 pc (cite: Watson2020), is an isolated Bok Globule which contains an embedded Class 0 protostar (cite: Keene1983)." (Introduction); "The centroid position of B335 is assumed to be $\alpha =$ 19:37:00.9 and $\delta =$ +07:34:09.6 (in J2000 coordinates) based on the dust continuum peak obtained by (cite: Maury2018)." (Observations and data reduction)
+
+## Data provenance
+
+- ALMA projects: 2016.1.01552.S, 2015.1.01188.S
+- bands: _not stated_
+- frequencies and spectral setup: Center frequencies: 87.7, 110.0, 231.0 GHz; Spectral resolutions: 0.08, 0.09, 0.10 km s^-1 (raw), 0.15 and 0.2 km s^-1 (cubes)  
+  > "| C40-1 | 19/03/2017 | 10:40:52.8 - 10:53:42.8 | 231.0 | 0.09 | J1751+0939 | J1851+0035 | J1751+0939 |" (Technical details of the ALMA observations); "| C40-3 | 12/06/2016 | 18:39:47.5 - 19:24:24.3 | 87.7 | 0.10 | J1751+0939 | J1938+0448 | J1751+0939 |" (Technical details of the ALMA observations); "| Spectral res. (km s$^{-1}$) | 0.2 | 0.2 | 0.2 | 0.2 | 0.15 | 0.15 | \- | | |" (Observations and data reduction)
+- continuum bandwidth: _not stated_
+- arrays: 12m array and Atacama Compact Array (ACA)  
+  > "As our data for H$^{13}$CO$^+$ (J=3-2) only include observations with the Atacama Compact Array (ACA), we used additional observations of this molecular line at smaller scales from the ALMA project 2015.1.01188.S." (Observations and data reduction); "| C40-1 | 19/03/2017 | 10:40:52.8 - 10:53:42.8 | 231.0 | 0.09 | J1751+0939 | J1851+0035 | J1751+0939 |" (Technical details of the ALMA observations)
+- configurations: C40-1, C40-2, C40-3, C40-4, C40-5, C40-6, and ACA  
+  > "As our data for H$^{13}$CO$^+$ (J=3-2) only include observations with the Atacama Compact Array (ACA), we used additional observations of this molecular line at smaller scales from the ALMA project 2015.1.01188.S." (Observations and data reduction); "| C40-1 | 19/03/2017 | 10:40:52.8 - 10:53:42.8 | 231.0 | 0.09 | J1751+0939 | J1851+0035 | J1751+0939 |" (Technical details of the ALMA observations); "| C40-6 | 10/10/2016 | 20:50:38.0 - 21:39:40.2 | 87.7 | 0.10 | J1751+0939 | J1938+0448 | J1751+0939 |" (Technical details of the ALMA observations)
+- baselines: restricted to 9 - 140 klambda for DCO+ (J=3-2) and H13CO+ (J=3-2)  
+  > "For DCO$^{+}$ (J=3-2) and H$^{13}$CO$^+$ (J=3-2), we restricted the baselines to a common "u,v" range between 9 and 140 $k\lambda$, and finally smoothed them to the same angular resolution." (Observations and data reduction)
+- angular resolution: 1.5'' x 1.5'' (J=3-2 and J=2-1 lines), 2.6'' x 2.6'' (J=1-0 lines), 0.8'' x 0.7'' (110 GHz continuum)  
+  > "| $\Theta_{\rm maj}$ (arcsec) | 1.5 | 1.5 | 1.5 | 1.5 | 2.6 | 2.6 | 0.8 | | |" (Observations and data reduction); "| $\Theta_{\rm min}$ (arcsec) | 1.5 | 1.5 | 1.5 | 1.5 | 2.6 | 2.6 | 0.7 | | |" (Observations and data reduction)
+- max recoverable scale: 11.3'' (DCO+ 3-2), 16.0'' (H13CO+ 3-2), 10.6'' (12CO 2-1, N2D+ 3-2), 22.3'' (110 GHz cont.)  
+  > "| $\Theta_{\rm LRS}$\* (arcsec) | 11.3 | 16.0 | 10.6 | 10.6 | | | 22.3 | | |" (Observations and data reduction)
+- sensitivity: rms: 6.00 to 143.5 mJy beam^-1 (cubes), 0.065 mJy beam^-1 (110 GHz cont.), 5.23 to 634.6 mJy beam^-1 km s^-1 (integrated)  
+  > "| rms (mJy beam$^{-1}$) | 22.37 | 53.15 | 143.5 | 6.00 | 18.58 | 10.57 | 0.065 | | |" (Observations and data reduction); "| rms (mJy beam$^{-1}$ km s$^{-1}$) | 11.17 | 21.28 | 634.6 | 5.23 | 17.17 | 17.58 | \- | | |" (Observations and data reduction)
+- time on source: _not stated_
+- observing dates: October 2016 to September 2017 (and 12/06/2016 in Table)  
+  > "Observations of the Class 0 protostellar object B335 were carried out with the ALMA interferometer during the Cycle 4 observation period, from October 2016 to September 2017, as part of the 2016.1.01552.S project." (Observations and data reduction); "| C40-3 | 12/06/2016 | 18:39:47.5 - 19:24:24.3 | 87.7 | 0.10 | J1751+0939 | J1938+0448 | J1751+0939 |" (Technical details of the ALMA observations)
+- pi or archival as stated: _not stated_
+- Line: DCO+ J=3-2 (216.112 GHz)
+- Line: H13CO+ J=3-2 (260.255 GHz)
+- Line: 12CO J=2-1 (230.538 GHz)
+- Line: N2D+ J=3-2 (231.321 GHz)
+- Line: H13CO+ J=1-0 (86.754 GHz)
+- Line: C17O J=1-0 (112.359 GHz)
+- External data: Distance to B335 of 164.5 pc  
+  > "B335, located at a distance of 164.5 pc (cite: Watson2020), is an isolated Bok Globule which contains an embedded Class 0 protostar (cite: Keene1983)." (Introduction) [from (cite: Watson2020)]
+- External data: Centroid position of B335 (alpha = 19:37:00.9, delta = +07:34:09.6 J2000)  
+  > "The centroid position of B335 is assumed to be $\alpha =$ 19:37:00.9 and $\delta =$ +07:34:09.6 (in J2000 coordinates) based on the dust continuum peak obtained by (cite: Maury2018)." (Observations and data reduction) [from (cite: Maury2018)]
+- External data: Dust temperature Td = 25 K and dust emissivity exponent beta = 0.76  
+  > "at the excitation temperature of the line (assumed to be equal to the dust temperature at the observed scales, $T_{\rm ex}=T_{\rm d}=25$ K, (cite: Galametz2019), (cite: Cabedo2021b))" (Deuteration fraction); "We assume a standard gas-to-dust ratio $\chi_{\rm d}$ = 100, a dust emissivity exponent $\beta=0.76$ (cite: Galametz2019), and a dust temperature $T_{\rm d}=25$ K." (Estimate of the CO depletion in B335) [from (cite: Galametz2019), (cite: Cabedo2021b)]
+- External data: Dust mass absorption coefficient kappa_0 = 1.6 cm^2 g^-1 at lambda_0 = 1.3 mm  
+  > "We adopt a dust mass absorption coefficient $\kappa_0 = 1.6$ cm$^2$ g$^{-1}$ at $\lambda_0 = 1.3$ mm, following (cite: Ossenkopf1994)." (Estimate of the CO depletion in B335) [from (cite: Ossenkopf1994)]
+- External data: Expected CO to H2 abundance ratio X_CO = 10^-4  
+  > "Here, $N_{\rm CO}^{\rm exp}$ is computed as the product of the H$_{2}$ column density, $N_{\rm H_2}$, and the expected CO to H$_{2}$ abundance ratio, $X_{\rm CO}$ = \[CO\]/\[H$_{2}$\] = 10$^{-4}$ (cite: WilsonRodd1994; Gerner2014)" (Estimate of the CO depletion in B335) [from (cite: WilsonRodd1994; Gerner2014)]
+- External data: CO to C17O abundance ratio f_C17O = 2317  
+  > "and $N_{\rm CO}^{\rm obs}$ is derived as the product of the C$^{17}$O column density, $N_{\rm C^{17}O}$, and the C$^{17}$O to CO abundance ratio, $f_{\rm C^{17}O}$ = \[CO\]/\[C$^{17}$O\] = 2317 (cite: Wouterloot2008)." (Estimate of the CO depletion in B335) [from (cite: Wouterloot2008)]
+- External data: Core diameter L = 1720 au  
+  > "We obtained $n_{\rm H_{2}}$ as $N_{\rm H_{2}}/L$, using the $N_{\rm H_{2}}$ map obtained in Sect. 4.1 and considering a core diameter, $L$, of 1720 au derived from the C$^{17}$O (J=1-0) emission (cite: Cabedo2021b)." (Derivation of the CR ionization rate) [from (cite: Cabedo2021b)]
+- External data: Standard molecular abundances [C17O] = 5e-8, [DCO+] = 1e-11, [H13CO+] = 1e-10  
+  > "applying the following standard abundances: \[C$^{17}$O\] = 5$\times$10$^{-8}$ (cite: Thomas2008), \[DCO$^{+}$\] = 10$^{-11}$ and \[H$^{13}$CO$^+$\] = 10$^{-10}$ (cite: Jorgensen2004)." (Estimation of the opacity effects) [from (cite: Thomas2008), (cite: Jorgensen2004)]
+- Simulation/model as data: X-ray spectra models for a typical and a flaring T Tauri star from Rab et al. (2017) used to compute X-ray ionization rate zeta_X  
+  > "We therefore estimated the X-ray ionization rate, $\zeta_{\rm X}$, using the spectra described by (cite: Rab2017) for a typical and a flaring T Tauri star, assuming a stellar radius of $2R_\odot$." (Origin of the ionization)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: standard script for Cycle 4 ALMA data  
+  > "Calibration of the raw data was done using the standard script for Cycle 4 ALMA data and the Common Astronomy Software Applications (CASA), version 5.6.1-8." (Observations and data reduction)
+- casa version: 5.6.1-8  
+  > "Calibration of the raw data was done using the standard script for Cycle 4 ALMA data and the Common Astronomy Software Applications (CASA), version 5.6.1-8." (Observations and data reduction)
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: J1751+0939, J2148+0657  
+  > "| C40-1 | 19/03/2017 | 10:40:52.8 - 10:53:42.8 | 231.0 | 0.09 | J1751+0939 | J1851+0035 | J1751+0939 |" (Technical details of the ALMA observations); "| C40-4 | 21/11/2016 | 22:41:22.0 - 23:28:19.8 | 231.0 | 0.09 | J2148+0657 | J1851+0035 | J2148+0657 |" (Technical details of the ALMA observations)
+- flux scale uncertainty: _not stated_
+- self calibration: Continuum emission self-calibrated with CASA; 12CO (J=2-1) and N2D+ (J=3-2) calibrated using the 231 GHz self-calibrated continuum model  
+  > "The continuum emission was self-calibrated with CASA. Line emission from $^{12}$CO (J=2-1) and N$_{2}$D$^{+}$ (J=3-2) was additionally calibrated using the self-calibrated continuum model at the appropriate frequency (231 GHz, not shown in this work)." (Observations and data reduction)
+
+### Imaging
+
+- task: tCLEAN  
+  > "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA, using Briggs weighting with a robust parameter of 1 for all the tracers." (Observations and data reduction)
+- deconvolver: _not stated_
+- weighting robust: Briggs weighting with robust = 1  
+  > "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA, using Briggs weighting with a robust parameter of 1 for all the tracers." (Observations and data reduction)
+- uv taper: 1.5'' applied to C17O (J=1-0) and H13CO+ (J=1-0); uv-range restricted to 9 - 140 klambda for DCO+ (J=3-2) and H13CO+ (J=3-2)  
+  > "For DCO$^{+}$ (J=3-2) and H$^{13}$CO$^+$ (J=3-2), we restricted the baselines to a common "u,v" range between 9 and 140 $k\lambda$, and finally smoothed them to the same angular resolution." (Observations and data reduction); "The preliminary analysis shows that both C$^{17}$O (J=1-0) and H$^{13}$CO$^+$ (J=1-0) emission is barely detected in the most extended configurations. We proceed by applying a common "uv tapering" of 1.5 $''$ to both lines." (Observations and data reduction)
+- cell size: 0.5'' (J=3-2 and J=2-1 lines), 0.25'' (J=1-0 lines), 0.3'' (110 GHz continuum)  
+  > "| Pixel size (arcsec) | 0.5 | 0.5 | 0.5 | 0.5 | 0.25 | 0.25 | 0.3 | | |" (Observations and data reduction)
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: _not stated_
+- line free channels: _not stated_
+- primary beam correction: applied to 110 GHz dust continuum  
+  > "The H$_{2}$ column density has been estimated from the dust thermal emission at 110 GHz (see Fig. 1) corrected for the primary beam attenuation." (Estimate of the CO depletion in B335)
+- array combination: Combination of ALMA configurations (including ACA and 12m array from 2015.1.01188.S for H13CO+ J=3-2)  
+  > "All lines were targeted using a combination of ALMA configurations to recover the largest length-scale range possible." (Observations and data reduction); "As our data for H$^{13}$CO$^+$ (J=3-2) only include observations with the Atacama Compact Array (ACA), we used additional observations of this molecular line at smaller scales from the ALMA project 2015.1.01188.S." (Observations and data reduction)
+- smoothing: Smoothed to matching angular resolutions (1.5'' for J=3-2/2-1 lines, 2.6'' for J=1-0 lines; C17O and 110 GHz continuum smoothed to match DCO+ beam for f_D)  
+  > "Furthermore, we smoothed the data to obtain exactly the same angular resolution. Additionally, we smooth C$^{17}$O (J=1-0) and the dust continuum at 110 GHz to obtain DCO$^{+}$ matching beam maps to compute $f_{\rm D}$." (Observations and data reduction)
+- final beam: 1.5'' x 1.5'' PA 0 deg (J=3-2, 2-1); 2.6'' x 2.6'' PA 0 deg (J=1-0); 0.8'' x 0.7'' PA -61.5 deg (110 GHz cont.)  
+  > "| $\Theta_{\rm maj}$ (arcsec) | 1.5 | 1.5 | 1.5 | 1.5 | 2.6 | 2.6 | 0.8 | | |" (Observations and data reduction); "| $\Theta_{\rm min}$ (arcsec) | 1.5 | 1.5 | 1.5 | 1.5 | 2.6 | 2.6 | 0.7 | | |" (Observations and data reduction); "| P.A. () | 0 | 0 | 0 | 0 | 0 | 0 | $-61.5$ | | |" (Observations and data reduction)
+- final rms: 22.37, 53.15, 143.5, 6.00, 18.58, 10.57 mJy beam^-1 (cubes); 0.065 mJy beam^-1 (110 GHz cont.); 11.17, 21.28, 634.6, 5.23, 17.17, 17.58 mJy beam^-1 km s^-1 (integrated)  
+  > "| rms (mJy beam$^{-1}$) | 22.37 | 53.15 | 143.5 | 6.00 | 18.58 | 10.57 | 0.065 | | |" (Observations and data reduction); "| rms (mJy beam$^{-1}$ km s$^{-1}$) | 11.17 | 21.28 | 634.6 | 5.23 | 17.17 | 17.58 | \- | | |" (Observations and data reduction)
+
+### Inherited from earlier work
+
+- Centroid position of B335  
+  > "The centroid position of B335 is assumed to be $\alpha =$ 19:37:00.9 and $\delta =$ +07:34:09.6 (in J2000 coordinates) based on the dust continuum peak obtained by (cite: Maury2018)." (Observations and data reduction) [from (cite: Maury2018)]
+- Line profile fitting methodology with two velocity components using HfS and C17O (J=1-0) comparison data/core diameter  
+  > "Following (cite: Cabedo2021b), we modeled the spectrum at each pixel using the *HfS* fitting program (cite: Estalella2017)." (Data products); "considering a core diameter, $L$, of 1720 au derived from the C$^{17}$O (J=1-0) emission (cite: Cabedo2021b)." (Derivation of the CR ionization rate) [from (cite: Cabedo2021b)]
+- Chemical network method to compute ionization fraction chi_e and cosmic-ray ionization rate zeta_CR from deuteration fraction R_D  
+  > "We followed the method presented in (cite: Caselli1998) to compute $\chi_{\rm e}$ and $\zeta_{\rm CR}$ from $R_{\rm D}$." (Ionization fraction and cosmic-ray ionization rate) [from (cite: Caselli1998)]
+- Dust mass absorption coefficient kappa_0 = 1.6 cm^2 g^-1 at 1.3 mm  
+  > "We adopt a dust mass absorption coefficient $\kappa_0 = 1.6$ cm$^2$ g$^{-1}$ at $\lambda_0 = 1.3$ mm, following (cite: Ossenkopf1994)." (Estimate of the CO depletion in B335) [from (cite: Ossenkopf1994)]
+- Dust temperature (25 K) and dust emissivity exponent beta (0.76)  
+  > "at the excitation temperature of the line (assumed to be equal to the dust temperature at the observed scales, $T_{\rm ex}=T_{\rm d}=25$ K, (cite: Galametz2019), (cite: Cabedo2021b))" (Deuteration fraction); "We assume a standard gas-to-dust ratio $\chi_{\rm d}$ = 100, a dust emissivity exponent $\beta=0.76$ (cite: Galametz2019), and a dust temperature $T_{\rm d}=25$ K." (Estimate of the CO depletion in B335) [from (cite: Galametz2019)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Numeric value adopted for the carbon isotopic abundance ratio f_12/13C used in Equations 1 and 8
+- Exact self-calibration parameters (solution intervals, number of rounds, phase-only vs amplitude+phase)
+- Continuum subtraction procedure and line-free channel ranges (continuum subtraction is implied by figure filenames 'contsub' in Appendix B, but not described in the text)
+- Deconvolver, masking, stopping threshold, and image size used in tCLEAN
+- Calibration and observation details (dates, configurations, calibrators) for archival project 2015.1.01188.S
+
+## Analysis recipe
+
+1. **Extract integrated intensity maps and pixel-by-pixel spectral maps, and model line profiles with two velocity components**: Integrate molecular line emission over emitting velocity ranges to create moment 0 maps; extract pixel-by-pixel spectra and fit two independent velocity components simultaneously at each pixel using HfS.  
+  > "We derived the integrated intensity maps by integrating the molecular line emission over the velocity range in which it is emitting" (Data products); "Following (cite: Cabedo2021b), we modeled the spectrum at each pixel using the *HfS* fitting program (cite: Estalella2017)." (Data products)
+   - software: HfS
+   - parameter: Velocity ranges: 7.8-8.9 km s^-1 (DCO+ 3-2), 7.5-8.9 km s^-1 (H13CO+ 3-2), 7.6-9.4 km s^-1 (12CO 2-1), 7.7-8.9 km s^-1 (N2D+ 3-2), 7.4-9.2 km s^-1 (H13CO+ 1-0), 4.7-6.5 and 7.7-9.3 km s^-1 (C17O 1-0)  
+  > "| vel. range (km s$^{-1}$) | 7.8 - 8.9 | 7.5 - 8.9 | 7.6 - 9.4 | 7.7 - 8.9 | 7.4-9.2 | 4.7-6.5 | \- | | |" (Observations and data reduction)
+   - assumption: Two independent velocity components; optically thin line emission (no resolved hyperfine structure for DCO+ and H13CO+)  
+  > "we use two independent velocity components to fit the line profiles simultaneously." (Data products); "In this case, as none of the transitions present a resolved hyperfine structure, the opacity of the line could not be obtained by modeling the line profile" (Line profile modeling)
+   - fitting: Chi-squared goodness of fit using HfS  
+  > "We obtained maps of peak velocity and velocity dispersion for each velocity component, deriving the corresponding uncertainties from the $\chi^2$ goodness of fit (cite: Estalella2017)." (Data products)
+   - validation: Estimated optical depth maps from 110 GHz dust continuum and standard molecular abundances to confirm lines are optically thin (< 1) outside the central beam.  
+  > "Outside of that central beam, the expected line opacities are generally smaller than 1, so we found no need for applying an opacity correction to our data." (Estimation of the opacity effects)
+2. **Compute column densities and deuteration fraction (R_D) maps for each velocity component**: Calculate column densities of DCO+ (J=3-2) and H13CO+ (J=3-2) using Eq. 2 and take their ratio scaled by the 12C/13C abundance ratio (Eq. 1).  
+  > "Here, we apply this method to obtain maps of $R_{\rm D}$, computed as the column density ratio of DCO$^{+}$ (J=3-2) and its non-deuterated counterpart, H$^{13}$CO$^+$ (J=3-2):" (Deuteration fraction)
+   - parameter: Spectroscopic parameters from Table 1: log(A/s^-1) = -3.12, g_u = 7, Q_rot = 25.22, E_l = 7.21 cm^-1 for DCO+ (3-2); log(A/s^-1) = -2.87, g_u = 7, Q_rot = 22.91, E_l = 8.68 cm^-1 for H13CO+ (3-2)  
+  > "| $\log~(A/{\rm s}^{-1})$ | $-3.12$ | $-2.87$ | $-7.17$ |" (Table 1); "| $Q_{\rm rot}$ | 25.22 | 22.91 | 25 |" (Table 1)
+   - assumption: LTE with excitation temperature T_ex = T_d = 25 K, background temperature T_bg = 2.7 K, and spatial coexistence of DCO+ and H13CO+  
+  > "$J_{v}(T)$ is the Planck function at the background (2.7 K) and at the excitation temperature of the line (assumed to be equal to the dust temperature at the observed scales, $T_{\rm ex}=T_{\rm d}=25$ K, (cite: Galametz2019), (cite: Cabedo2021b))" (Deuteration fraction); "One of the main uncertainties of the deuteration analysis is the assumption that both DCO$^{+}$ (J=3-2) and H$^{13}$CO$^+$ (J=3-2) have the same $T_{\rm ex}$." (Deuteration fraction)
+   - fitting: _not stated_
+   - validation: Tested sensitivity to T_ex by recomputing column densities at 20 K and 30 K (changes H13CO+ column density by ~15%); compared R_D spatial trends with N2D+ (J=3-2) integrated emission.  
+  > "However, to check the effect that the variation of $T_{\rm ex}$ would produce in our values, we computed the column densities of both species at two additional temperatures, 20 and 30 K." (Deuteration fraction); "The decreasing trend in $R_{\rm D}$ is further confirmed by our observations of N$_{2}$D$^{+}$ (J=3-2)." (Local destruction of deuterated molecules)
+3. **Derive H2 column density, C17O column density, and CO depletion factor (f_D) map**: Calculate N_H2 from primary-beam-corrected 110 GHz dust continuum (Eq. 6 & 7) and N_C17O from C17O (J=1-0) integrated emission (Eq. 2), smoothed to match the DCO+ beam; compute f_D as the ratio of expected to observed CO column density (Eq. 5).  
+  > "Additionally, we smooth C$^{17}$O (J=1-0) and the dust continuum at 110 GHz to obtain DCO$^{+}$ matching beam maps to compute $f_{\rm D}$." (Observations and data reduction); "The H$_{2}$ column density has been estimated from the dust thermal emission at 110 GHz (see Fig. 1) corrected for the primary beam attenuation." (Estimate of the CO depletion in B335)
+   - parameter: kappa_0 = 1.6 cm^2 g^-1 at 1.3 mm, beta = 0.76, gas-to-dust ratio chi_d = 100, mu_H2 = 2.8, T_d = 25 K, X_CO = 10^-4, f_C17O = 2317  
+  > "We adopt a dust mass absorption coefficient $\kappa_0 = 1.6$ cm$^2$ g$^{-1}$ at $\lambda_0 = 1.3$ mm, following (cite: Ossenkopf1994). We assume a standard gas-to-dust ratio $\chi_{\rm d}$ = 100, a dust emissivity exponent $\beta=0.76$ (cite: Galametz2019), and a dust temperature $T_{\rm d}=25$ K." (Estimate of the CO depletion in B335); "expected CO to H$_{2}$ abundance ratio, $X_{\rm CO}$ = \[CO\]/\[H$_{2}$\] = 10$^{-4}$ (cite: WilsonRodd1994; Gerner2014), and $N_{\rm CO}^{\rm obs}$ is derived as the product of the C$^{17}$O column density, $N_{\rm C^{17}O}$, and the C$^{17}$O to CO abundance ratio, $f_{\rm C^{17}O}$ = \[CO\]/\[C$^{17}$O\] = 2317 (cite: Wouterloot2008)." (Estimate of the CO depletion in B335)
+   - assumption: Constant dust and gas excitation temperature of 25 K; standard dust properties and gas-to-dust ratio of 100.  
+  > "We assume a standard gas-to-dust ratio $\chi_{\rm d}$ = 100, a dust emissivity exponent $\beta=0.76$" (Estimate of the CO depletion in B335)
+   - fitting: _not stated_
+   - validation: Analytical error propagation estimating systematic uncertainty of a factor of 2 to 3 on f_D.  
+  > "Propagating the errors from the column density maps they stem from, we expect these depletion values to have an uncertainty of a factor of 2 to 3" (Estimate of the CO depletion in B335)
+4. **Compute gas ionization fraction (chi_e) and cosmic-ray ionization rate (zeta_CR) maps, and fit radial power-law profiles of zeta_CR**: Use Caselli et al. (1998) analytical relations (Eqs. 3 and 4) combining R_D, f_D, volume density n_H2 = N_H2 / L, and hydrogenation fraction R_H (from H13CO+ 1-0 and C17O 1-0, Eq. 8); extract radial median profiles of zeta_CR over position angles and fit broken power laws.  
+  > "We followed the method presented in (cite: Caselli1998) to compute $\chi_{\rm e}$ and $\zeta_{\rm CR}$ from $R_{\rm D}$." (Ionization fraction and cosmic-ray ionization rate); "We obtained $R_{\rm H}$ for both velocity components as the column density ratio of H$^{13}$CO$^+$ (J=1-0) to C$^{17}$O (J=1-0), and accounting for $f_{^{12/13}C}$ and $f_{\rm C^{17}O}$:" (Derivation of the CR ionization rate); "We find that the trend of $\zeta_{\rm CR}$ can be parameterized by two independent, decreasing power-law profiles $\zeta_{\rm CR}$$(r)\propto r^{s}$." (Derivation of the CR ionization rate)
+   - parameter: Core diameter L = 1720 au; break radius r = 270 au; radial profile range 40 to 700 au over position angles 0 <= vartheta <= pi  
+  > "considering a core diameter, $L$, of 1720 au derived from the C$^{17}$O (J=1-0) emission (cite: Cabedo2021b)." (Derivation of the CR ionization rate); "As the $\zeta_{\rm CR}$$(r,\vartheta)$ distributions between 40 and 700 au are skewed, for each radius $\bar{r}$ we considered the median value of $\zeta_{\rm CR}$$(\bar{r},\vartheta)$ and estimated the errors using the first and third quartiles." (Derivation of the CR ionization rate)
+   - assumption: Simple steady-state chemical network of Caselli et al. (1998); uniform line-of-sight core depth L = 1720 au.  
+  > "While this observational method to measure $\chi_{\rm e}$ of the gas relies on a simple chemical network and a rather strong hypothesis, it is widely used in the literature in dense cores and also toward protostars." (Ionization fraction and cosmic-ray ionization rate)
+   - fitting: Power-law fit zeta_CR(r) proportional to r^s to median radial profiles with errors from first and third quartiles  
+  > "for each radius $\bar{r}$ we considered the median value of $\zeta_{\rm CR}$$(\bar{r},\vartheta)$ and estimated the errors using the first and third quartiles. We find that the trend of $\zeta_{\rm CR}$ can be parameterized by two independent, decreasing power-law profiles $\zeta_{\rm CR}$$(r)\propto r^{s}$." (Derivation of the CR ionization rate)
+   - validation: Compared derived zeta_CR radial profiles against FUV extinction depth and X-ray ionization rate models (zeta_X) computed from Rab et al. (2017) T Tauri spectra.  
+  > "We therefore estimated the X-ray ionization rate, $\zeta_{\rm X}$, using the spectra described by (cite: Rab2017) for a typical and a flaring T Tauri star, assuming a stellar radius of $2R_\odot$." (Origin of the ionization)
+
+## Software
+
+- **CASA** 5.6.1-8: Raw data calibration, continuum self-calibration, and tCLEAN imaging  
+  > "Calibration of the raw data was done using the standard script for Cycle 4 ALMA data and the Common Astronomy Software Applications (CASA), version 5.6.1-8." (Observations and data reduction); "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA, using Briggs weighting with a robust parameter of 1 for all the tracers." (Observations and data reduction)
+- **tCLEAN** : Generating final images and spectral cubes from calibrated visibilities  
+  > "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA, using Briggs weighting with a robust parameter of 1 for all the tracers." (Observations and data reduction)
+- **HfS** : Simultaneous fitting of two velocity components to the molecular line spectra at each pixel  
+  > "Following (cite: Cabedo2021b), we modeled the spectrum at each pixel using the *HfS* fitting program (cite: Estalella2017)." (Data products)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Mean column density of DCO+ (J=3-2) | 3e11 | not stated | cm^-2 | 2 | / $N_{i}^{\rm mean}$ (cm$^{-2}$) / 3$\times$10$^{11}$ / 7$\times$10$^{11}$ / 3$\times$10$^{13}$ / |
+| Mean column density of H13CO+ (J=3-2) | 7e11 | not stated | cm^-2 | 2 | / $N_{i}^{\rm mean}$ (cm$^{-2}$) / 3$\times$10$^{11}$ / 7$\times$10$^{11}$ / 3$\times$10$^{13}$ / |
+| Mean column density of C17O (J=1-0) | 3e13 | not stated | cm^-2 | 3 | / $N_{i}^{\rm mean}$ (cm$^{-2}$) / 3$\times$10$^{11}$ / 7$\times$10$^{11}$ / 3$\times$10$^{13}$ / |
+| Mean deuteration fraction R_D | 1 - 2 | ~0.1 - 0.2 (one-tenth of values) | % | 2 | The mean values of $R_{\rm D}$ are $\sim$1-2%, being higher in the outer region of the envelope where the gas is expected to be colder, and decreasing toward the center where the protostar is located and the temperature is expected to rise.; The bottom panels show that the statistical uncertainties are roughly one-tenth of the deuteration values. |
+| Deuteration fraction R_D (blueshifted component range) | 0.06 - 2 | not stated | % | 2 | the most widespread blueshifted gas component shows larger $R_{\rm D}$ dispersion, with values from 0.06% to 2%, while the more localized redshifted gas exhibits more uniform values, between 0.01% and 1%. |
+| Deuteration fraction R_D (redshifted component range) | 0.01 - 1 | not stated | % | 2 | the most widespread blueshifted gas component shows larger $R_{\rm D}$ dispersion, with values from 0.06% to 2%, while the more localized redshifted gas exhibits more uniform values, between 0.01% and 1%. |
+| H2 column density N_H2 | 10^20 to a few 10^22 | factor of 3 to 5 | cm^-2 | 3 | The resulting $N_{\rm H_2}$ column densities probed in the ALMA dust continuum emission map range from $\sim 10^{20}$ cm$^{-2}$ at radii of $\sim 1600$ au up to a few $10^{22}$ cm$^{-2}$ at the protostar position.; We estimate that the systematic error is about a factor of 3 to 5 |
+| CO depletion factor f_D | 20 - 80 | factor of 2 to 3 | dimensionless | 3 | The depletion factor ranges from $\sim 20$ in the outer regions to $\sim 70$ in the center of the object. Propagating the errors from the column density maps they stem from, we expect these depletion values to have an uncertainty of a factor of 2 to 3; As shown in Fig. 3, we find $f_{\rm D}$ ranging from 20 to 40 at radii of 1000 to 100 au, except at the core center where it increases up to 80. |
+| Ionization fraction chi_e (range) | 1e-6 - 8e-6 | ~1.5e-6 | dimensionless | 4 | We find large fractions of ionized gas, $\chi_{\rm e}$ $\simeq 1-8 \times 10^{-6}$.; We obtained a mean value of $\chi_{\rm e}$ = $2\times10^{-6}$ for both components. Generally, these values are subject to statistical uncertainties of $\sim1.5\times10^{-6}$. |
+| Mean ionization fraction chi_e | 2e-6 | 1.5e-6 | dimensionless | 4 | We obtained a mean value of $\chi_{\rm e}$ = $2\times10^{-6}$ for both components. Generally, these values are subject to statistical uncertainties of $\sim1.5\times10^{-6}$. |
+| H2 volume density n_H2 | 10^4 - 10^6 | not stated | cm^-3 | 4 | With this approximation, we find values of the volume density ranging from $\sim 10^{4}$ in the outer regions, to $\sim 10^{6}$ cm$^{-3}$ at the protostar position. |
+| Mean hydrogenation fraction R_H | 2e-7 - 3e-7 | one order of magnitude smaller than R_H | dimensionless | 4 | Values of $R_{\rm H}$ are relatively uniform across the source, with mean values between 2 and $3\times 10^{-7}$ for the two velocity components. The statistical uncertainties of these values are generally one order of magnitude smaller than $R_{\rm H}$. |
+| Cosmic-ray ionization rate zeta_CR (range) | 10^-16 - 7e-14 | same order of magnitude as zeta_CR | s^-1 | 4 | As expected from the values of $\chi_{\rm e}$, $\zeta_{\rm CR}$ increases toward the center, reaching values of 7$\times$10$^{-14}$ s$^{-1}$ at the peak of the dust continuum.; Our analysis reveals very high values of $\zeta_{\rm CR}$ between $10^{-16}$ and $10^{-14}$ s$^{-1}$, increasing toward the central protostellar embryo at small envelope radii. |
+| Power-law slope of zeta_CR(r) at r < 270 au | -0.96 | 0.04 | dimensionless | 4 | At small radii, $r<270$ au, the slope of the power law, $s = -0.96 \pm 0.04$, is compatible with the diffusive regime of CR propagation. |
+| Power-law slope of zeta_CR(r) at r > 270 au | -3.77 | 0.30 | dimensionless | 4 | However, at $r>270$ au, $\zeta_{\rm CR}$ drops abruptly to $s = -3.77 \pm 0.30$, which cannot be explained by any propagation regime. |
+
+## Qualitative findings
+
+- Deuteration fraction R_D decreases toward the center of B335 (<1%), coinciding with a lack of N2D+ (J=3-2) emission, indicating local destruction of both O-bearing and N-bearing deuterated species near the protostar.  
+  > "Indeed, $R_{\rm D}$ decreases down to $<1$% toward the center and the northern region of the source." (Local destruction of deuterated molecules); "A lack of N$_{2}$D$^{+}$ is observed in regions where $R_{\rm D}$ is lower, suggesting that the physical processes lowering the abundance of O-bearing deuterated molecules also lower the abundance of N-bearing deuterated species around the protostar." (Local destruction of deuterated molecules)
+- Enhanced gas ionization (chi_e ~ 1-8 x 10^-6) and high cosmic-ray ionization rates (zeta_CR up to ~10^-14 s^-1) in the inner envelope are produced by cosmic rays locally accelerated in shocks near the protostar rather than interstellar Galactic cosmic rays or UV/X-ray photons.  
+  > "Our observations suggest that local acceleration of cosmic rays, and not the penetration of interstellar Galactic cosmic rays, may be responsible for the gas ionization in the inner envelope, potentially down to disk-forming scales." (abstract)
+- The high ionization fraction implies strong coupling between the gas and magnetic field (quasi-ideal MHD conditions) in the inner envelope, supporting efficient magnetic braking and explaining the small (<10 au) disk size in B335.  
+  > "The large fraction of ionized gas unveiled by our observations in the inner envelope of B335 should lead to almost perfect coupling of the gas to the local magnetic field lines, generating a drastic braking of rotational motions." (Magnetic field coupling and non-ideal MHD effects)
+
+## Claim tuples
+
+- H: The inner envelope of the Class 0 protostar B335 has a high gas ionization fraction that efficiently couples the gas to the magnetic field, enabling strong magnetic braking. | E: Mapped DCO+ (3-2), H13CO+ (3-2), H13CO+ (1-0), C17O (1-0), and 110 GHz dust continuum with ALMA, fitted two velocity components, and applied the Caselli et al. (1998) chemical relations to derive maps of R_D, f_D, chi_e, and zeta_CR at radii <= 1000 au. | R: Measured large ionization fractions chi_e = 1-8 x 10^-6 (mean 2 x 10^-6), which are 1 to 2 orders of magnitude higher than standard density-dependent predictions (10^-7 to 10^-8). | F: The high ionization fraction leads to strong coupling between the gas and magnetic field in the inner envelope of B335, supporting quasi-ideal MHD conditions and efficient magnetic braking. | **supported**
+- H: The enhanced ionization rate in the inner envelope of B335 is driven by locally accelerated cosmic rays rather than interstellar Galactic cosmic rays or protostellar FUV/X-ray radiation. | E: Derived the spatial distribution and radial profile of the ionization rate zeta_CR from 40 to 700 au and compared it against FUV attenuation depths, T Tauri X-ray ionization models, and cosmic-ray propagation models. | R: Found zeta_CR increasing toward the protostar up to 7 x 10^-14 s^-1 with a radial power-law slope s = -0.96 +/- 0.04 at r < 270 au, exceeding modelled X-ray ionization rates and Galactic CR levels. | F: Local acceleration of cosmic rays in jet or accretion shocks near the protostar is responsible for the enhanced gas ionization in the inner envelope. | **supported**
+- H: CO is depleted in the inner envelope (<1000 au) of B335 despite expected warm temperatures. | E: Computed the ratio of expected CO column density (from 110 GHz dust continuum) to observed CO column density (from C17O J=1-0 emission) across the inner envelope. | R: Found CO depletion factors f_D ranging from 20 to 40 at radii of 1000 to 100 au, increasing up to ~70-80 at the central position. | F: High CO depletion persists at radii < 1000 au, potentially due to chemical conversion of CO into CH3OH/CH4 or HCO+ promoted by cosmic rays, UV photodissociation, or large dust grains. | **partially**
+
+## Reasoning
+
+- Why this data: B335 is an isolated, nearby (164.5 pc) Class 0 protostar with an hourglass magnetic field and no detected disk down to ~10 au; combining multiple ALMA configurations recovers the largest scale range, and the chosen molecular ions/isotopologues constrain R_D, R_H, f_D, chi_e, and zeta_CR.  
+  > "Its isolation and relative proximity makes B335 an ideal object with which to test models of star formation." (Introduction); "We used DCO$^{+}$ (J=3-2) and H$^{13}$CO$^+$ (J=3-2) to obtain $R_{\rm D}$ and $\chi_{\rm e}$. We used H$^{13}$CO$^+$ (J=1-0) and C$^{17}$O (J=1-0) to derive the hydrogenation fraction, $R_{\rm H}$." (Observations and data reduction)
+- Why this method: Two velocity components were fitted with HfS because all lines exhibit asymmetric double-peaked profiles tracing distinct gas motions; the Caselli et al. (1998) analytical chemical network is valid in warm (T >= 24 K), dense (n_H ~ 10^6 cm^-3), highly ionized (chi_e >= 3e-7) gas where ortho-to-para H2 variations stabilize.  
+  > "As all the molecules present a double-peaked profile with similar velocity patterns to the ones observed in (cite: Cabedo2021b), namely two different velocity components with varying intensity across the source spatial extent, we use two independent velocity components to fit the line profiles simultaneously." (Data products); "This was also pointed out by (cite: Bron2021) who show that $R_{\rm D}$ is a robust estimator of $\zeta_{\rm CR}$ when the gas is subject to high ionization fractions ($\chi_{\rm e}$$\gtrsim 3 \times 10^{-7}$)." (Origin of the ionization)
+- Alternative: Single spherically symmetric infall / self-absorption origin for double-peaked profiles: rejected because optically thin lines (like DCO+ and C17O) show the same two spatially separated velocity components.  
+  > "but stress that the small optical depth values found in DCO$^{+}$ confirm that the two velocity components are not mainly produced by self-absorption effects." (Estimation of the opacity effects)
+- Alternative: Outflow origin for the double-peaked velocity components: rejected because tracer morphologies do not follow the outflow cavity and spectra lack broad high-velocity wings (except for a localized third component in H13CO+ 3-2).  
+  > "As none of the tracers present a morphology typical of the outflow cavity, we assume that they are not tracing outflowing gas and that the two velocity components are not caused by this effect." (Spectral maps)
+- Alternative: Far-UV (FUV) photon ionization: ruled out because FUV photon energy (~13 eV) is below the H2 ionization threshold (15.44 eV) and FUV photons are absorbed within a thin column density layer (~3 x 10^20 cm^-2).  
+  > "However, ionization by far-UV (FUV) photons can be ruled out. Indeed, the maximum energy of FUV photons is around 13 eV, thus below the threshold for ionization of molecular hydrogen (15.44 eV)." (Origin of the ionization)
+- Alternative: X-ray ionization from the central protostar: rejected because modeled X-ray ionization rates (using flaring/typical T Tauri spectra) fall well below the observed ionization rates.  
+  > "It is evident that X-ray ionization cannot explain the values of the ionization rate estimated from observations." (Origin of the ionization)
+- Alternative: Interstellar Galactic cosmic-ray penetration: rejected because Galactic CRs are attenuated at high densities and would produce chi_e of 10^-7 to 10^-8, one to two orders of magnitude lower than observed, and would not increase toward the center.  
+  > "However, the range of derived values is much higher than those expected from Galactic CRs (cite: Padovani2022)." (Origin of the ionization)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Assumption of a constant temperature (T_ex = T_d = 25 K) across the envelope introduces systematic errors of a factor of 3-5 in N_H2, a factor of 2 in N_CO, and a factor of 2-3 in f_D, especially toward the central peak.  
+  > "We estimate that the systematic error is about a factor of 3 to 5, being higher toward the peak position where standard dust properties and conditions of emission may not be met." (Estimate of the CO depletion in B335); "The CO column density values are subject to systematic uncertainties due to the adopted gas temperature, as this latter is not well constrained and is expected to vary across the envelope. Altogether, the systematic uncertainty is about a factor of 2" (Estimate of the CO depletion in B335)
+- Limitation (authors): Presence of a third velocity component (outflow contamination) in the southeastern region of H13CO+ (J=3-2) causes poor two-component fits and large errors in R_D there.  
+  > "However, these values have the largest associated errors due to the presence of a third velocity component in the line profiles of H$^{13}$CO$^+$ (J=3-2) and should not be totally trusted (see Appendix 8.1)." (Deuteration fraction)
+- Limitation (authors): Global uncertainties on zeta_CR are of the same order of magnitude as the derived zeta_CR values.  
+  > "Considering the systematic uncertainties on n$_{\rm H_{2}}$, and $R_{\rm H}$ we estimate the global uncertainty on $\zeta_{\rm CR}$ values, and find them to be of the same order of magnitude as the $\zeta_{\rm CR}$ values." (Derivation of the CR ionization rate)
+- Limitation (authors): Limited angular resolution (1.5 arcsec ~ 250 au) means only three or four radial points in the zeta_CR profile are completely independent, preventing exact localization of the CR acceleration shock.  
+  > "However, we note that these values are also affected by our limited angular resolution of 1.5 arcsec ($\sim$ 250 au), implying that only three or four points in the plot are completely independent, and that observations at larger angular resolution are needed in order to confirm the observed trend." (Origin of the ionization)
+- Limitation (authors): Large optical depths (>1) in the central beam for H13CO+ transitions and unknown dust/gas temperatures make central R_D and f_D values uncertain.  
+  > "We acknowledge that these large values can potentially affect our deuteration measurements toward the central beam" (Estimation of the opacity effects)
+- Limitation (authors): Large-scale interferometric filtering produces negative emission bowls in the center and west regions of DCO+ (J=3-2) and H13CO+ (J=3-2).  
+  > "The effect of large-scale filtering cannot be ruled out. This is particularly visible in the DCO$^{+}$ (J=3-2) and H$^{13}$CO$^+$ (J=3-2) where negative emission is observed in the center and west regions of the source." (Spectral maps)
+- Caveat (inferred, ours): Assuming a constant excitation and dust temperature of 25 K down to the central beam ignores the steep protostellar radial temperature gradient; higher temperatures near the center would increase partition functions and alter column densities, optical depths, and CO depletion factors.
+- Caveat (inferred, ours): The carbon isotopic ratio f_12/13C is used in the equations for R_D and R_H, but the exact numerical value adopted (e.g., 60 vs 70) is not stated in the text.
+- Caveat (inferred, ours): Using a constant line-of-sight depth L = 1720 au to convert N_H2 to volume density n_H2 across the entire map underestimates the central volume density if the inner envelope is centrally condensed.
+
+## Reproducibility
+
+- Data public (paper): _not stated_
+- Products in archive: _not stated_
+- Missing: Adopted numerical value of the 12C/13C abundance ratio f_12/13C
+- Missing: Self-calibration parameters (solution intervals, SNR thresholds) and continuum subtraction channel ranges
+- Missing: tCLEAN deconvolution parameters (stopping threshold, masking, niter)
+- Missing: Observation and calibration details for the archival dataset 2015.1.01188.S
+- Data volume (inferred): ~50-150 GB of raw ALMA visibilities across 8 execution blocks in 2016.1.01552.S plus archival data from 2015.1.01188.S; ~1-5 GB of reduced image cubes
+- Score (inferred): 75/5, ALMA project codes, CASA version, calibrators, imaging weights, uv-ranges/tapering, pixel/beam sizes, velocity integration ranges, spectroscopic constants, and analytical chemical equations are all clearly documented. Minor deductions for omitting the numerical value of f_12/13C, self-calibration/continuum-subtraction details, and specific observation tables for 2015.1.01188.S.
+- Rediscovery candidate: yes, Both ALMA datasets (2016.1.01552.S and 2015.1.01188.S) are public in the ALMA archive, the analytical recipe from line cubes to R_D, f_D, chi_e, and zeta_CR is explicit, and the paper provides clear quantitative answer keys (mean column densities, R_D, f_D, chi_e, zeta_CR, and radial power-law slopes).
+
+## Links
+
+- Method: (cite: Caselli1998) (Chemical network equations used to compute ionization fraction chi_e and cosmic-ray ionization rate zeta_CR from DCO+/HCO+ deuteration and CO depletion)
+- Method: (cite: Estalella2017) (HfS spectral line fitting program used to fit two velocity components and derive uncertainties)
+- Method: (cite: Ossenkopf1994) (Dust mass absorption coefficient kappa_0 at 1.3 mm)
+- Method: (cite: Rab2017) (T Tauri X-ray spectra models used to calculate the X-ray ionization rate zeta_X)
+- Companion: (cite: Maury2018) (Paper I of the series, establishing the hourglass magnetic field morphology and centroid position of B335)
+- Companion: (cite: Cabedo2021b) (Previous study of B335 C17O (J=1-0) kinematics by the same authors, providing the C17O comparison maps, two-velocity-component fitting methodology, and core diameter L = 1720 au)
+- Companion: (cite: Galametz2019) (CALYPSO survey analysis providing the dust emissivity beta = 0.76 and dust temperature Td = 25 K for B335)
+- Related: MagneticYSOs
+
+## Checks
+
+```json
+{
+ "quotes": 155,
+ "quotes_ok": 155,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 10,
+ "unsupported_facts": 0,
+ "project_codes": 2,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 15,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 94,
+  "stated": 76,
+  "rate": 0.809
+ },
+ "evidence_ok": true
+}
+```

@@ -1,0 +1,595 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We perform spatially-resolved pixel-by-pixel SED fitting using rest-frame near-UV to near-IR imaging from JWST/NIRCam,"},
+{"loc": "ALMA Bands 3 and 4", "quote": "These data were retrieved from the public ALMA archive"}
+],
+"fields": ["high_z_galaxies", "transients"],
+"question": {
+"value": "Characterize the intrinsic properties and resolved stellar mass assembly of two lensed z~2.2 DSFGs behind the G165 cluster, using a new lens model, JWST/NIRCam pixel-by-pixel SED fitting, and ALMA Band 3/4 and VLA continuum for dust sizes, fluxes and magnifications",
+"evidence": [
+{"loc": "abstract", "quote": "We present a new parametric lens model for the G165.7+67.0 galaxy cluster,"},
+{"loc": "Introduction", "quote": "In this work, we focus on two DSFGs and a massive red galaxy at Cosmic Noon that have been strongly lensed by a massive galaxy cluster at $z=0.35$."}
+]
+},
+"targets": [
+{
+"name": "G165-DSFG-1 (PLCK_G165.6295+67.0026)",
+"details": [
+{"loc": "Introduction", "quote": "Hereafter, we refer to this known DSFG, PLCK_G165.6295+67.0026"},
+{"loc": "Summary and Conclusions", "quote": "with a detection of CO(3–2) at $z=2.236$"},
+{"loc": "Redshift of DSFG-3", "quote": "has a known redshift from the LMT Redshift Search Receiver (RSR) and other single-dish sub-mm observations"}
+],
+"coordinates": "not stated (only the name PLCK_G165.6295+67.0026)",
+"redshift_or_distance": "z = 2.236",
+"distance_source": "LMT/RSR CO(3-2) detection and other single-dish sub-mm observations; NIRSpec (cited from other work)"
+},
+{
+"name": "G165-DSFG-3 (G165.6354+67.0087)",
+"details": [
+{"loc": "Introduction", "quote": "For this second object, G165.6354+67.0087, we use the nickname G165-DSFG-3 (or DSFG-3)"},
+{"loc": "Redshift of DSFG-3", "quote": "Since DSFG-3 lacks a secure spectroscopic redshift, we left this as a free parameter in our lens model"},
+{"loc": "Redshift of DSFG-3", "quote": "We adopt the redshift of DSFG-3 to be $z=2.23$ in this work"}
+],
+"coordinates": "not stated (only the name G165.6354+67.0087)",
+"redshift_or_distance": "z = 2.23 adopted (photometric z = 2.23 +/- 0.09; lens-model geometric z = 2.11 +/- 0.01; possible secondary solution z ~ 2.12)",
+"distance_source": "photometric redshift and lens-model geometric redshift; no secure spectroscopic redshift"
+}
+],
+"alma_project_codes": [
+{"code": "2021.1.00607.S", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "as part of program 2021.1.00607.S (PI: R. Cañameras)"},
+{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA # 2021.1.00607.S."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (2.7 mm, 111 GHz; called 3 mm) and Band 4 (2.2 mm, 138 GHz; called 2 mm)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "G165 was observed with ALMA band 3 (representative wavelength 2.7 mm, 111 GHz; hereafter referred to as 3 mm)"},
+{"loc": "ALMA Bands 3 and 4", "quote": "and band 4 (2.2 mm, 138 GHz; hereafter referred to as 2 mm)"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Band 3 coverage 109.08-110.70 and 110.77-112.52 GHz; Band 4 coverage 136.46-138.25 and 138.59-140.39 GHz", "evidence": [
+{"loc": "Testing the redshift solution for DSFG-3", "quote": "$\\nu_{\\rm B3}/{\\rm GHz} \\in [109.08,110.70] \\cup [110.77,112.52]$ and $\\nu_{\\rm B4}/{\\rm GHz} \\in [136.46,138.25] \\cup [138.59,140.39]$, respectively."}
+]},
+{"field": "continuum_bandwidth", "value": "3.3 GHz bandwidth for both bands", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "both over a 3.3 GHz bandwidth."}
+]},
+{"field": "baselines", "value": "unweighted baselines 0.03 - 0.3 km (5th to 80th percentile)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "The unweighted baselines ranged from $0.03 - 0.3$ km (5th to 80th percentile)."}
+]},
+{"field": "angular_resolution", "value": "3 mm: 2.0'' x 0.9'' at PA = -2.7 deg; 2 mm: 1.6'' x 0.7'' at PA = -18.4 deg", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "This results in synthesized beams of $2.0\\ensuremath{''} \\times 0.9\\ensuremath{''}$ at PA$=-2.7^{\\circ}$ for 3 mm (maximum recoverable scale of $18.4\\ensuremath{''}$)"},
+{"loc": "ALMA Bands 3 and 4", "quote": "and $1.6\\ensuremath{''} \\times 0.7\\ensuremath{''}$ at PA$=-18.4^{\\circ}$ for 2 mm (maximum recoverable scale of $15.1\\ensuremath{''}$)"}
+]},
+{"field": "max_recoverable_scale", "value": "18.4'' (3 mm); 15.1'' (2 mm)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "for 3 mm (maximum recoverable scale of $18.4\\ensuremath{''}$)"},
+{"loc": "ALMA Bands 3 and 4", "quote": "for 2 mm (maximum recoverable scale of $15.1\\ensuremath{''}$)"}
+]},
+{"field": "sensitivity", "value": "continuum rms 22 uJy/beam (3 mm) and 20 uJy/beam (2 mm)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "The continuum noise rms levels achieved are 22 $\\mu$Jy/beam (3 mm) and 20 $\\mu$Jy/beam (2 mm), both over a 3.3 GHz bandwidth."}
+]},
+{"field": "observing_dates", "value": "3 mm executed 2022 May 26; 2 mm executed 2022 May 28 (PWV 0.9 mm and 1.4 mm)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "Weather conditions were favorable, with mean precipitable water vapor PWV $=0.9$ mm for the 3 mm observations (executed on 2022 May 26) and PWV$=1.4$ mm for the 2mm observations (executed on 2022 May 28)."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Archival: program 2021.1.00607.S (PI: R. Cañameras), retrieved from the public ALMA archive", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "as part of program 2021.1.00607.S (PI: R. Cañameras)"},
+{"loc": "ALMA Bands 3 and 4", "quote": "These data were retrieved from the public ALMA archive"}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=3-2 (tentative feature searched for DSFG-3 redshift in the ALMA windows)", "rest_frequency": "not stated", "evidence": [
+{"loc": "Testing the redshift solution for DSFG-3", "quote": "an unlikely but possible identification of a narrow CO(3–2) line at (observed) 110.849 GHz"}
+]}
+],
+"other_facilities": [
+{"name": "JWST NIRCam", "provided": {"value": "8-filter imaging (F090W-F444W) from PEARLS (PID 1176) and DDT (PID 4446); main data for SED fitting and the lens model", "evidence": [
+{"loc": "JWST NIRCam", "quote": "G165 was observed with NIRCam in three epochs: first through the Prime Extragalactic Areas for Reionization and Lensing Science (PEARLS) program (PID 1176; PI: Windhorst) on 2023 March 30 (Epoch 1)"}
+]}},
+{"name": "VLA C band", "provided": {"value": "6 GHz continuum, program 18A-399, observed 2018 April 6, rms 2.7 uJy/beam, used for photometry and magnifications", "evidence": [
+{"loc": "VLA C Band", "quote": "G165 was observed with the *Karl G. Jansky* Very Large Array in C band (4 - 8 GHz) in full polarization during the most extended A configuration through our program 18A-399 (PI: P. Kamieneski)"},
+{"loc": "VLA C Band", "quote": "The sensitivity reached was $2.7~ \\mu{\\rm Jy}~{\\rm beam}^{-1}$."}
+]}},
+{"name": "LMT AzTEC and RSR", "provided": {"value": "1 mm flux used to check ALMA fluxes with a modified blackbody; RSR CO(3-2) redshift of DSFG-1", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "against the 1 mm flux from the Large Millimeter Telescope (LMT) AzTEC"},
+{"loc": "Redshift of DSFG-3", "quote": "has a known redshift from the LMT Redshift Search Receiver (RSR) and other single-dish sub-mm observations"}
+]}},
+{"name": "JWST NIRSpec", "provided": {"value": "spectroscopic redshifts and Halpha-based properties used as comparison (from other work)", "evidence": [
+{"loc": "A comparison of integrated vs. resolved properties", "quote": "These are the result of combining measurements from NIRSpec slits NS_46 and NS_969"}
+]}},
+{"name": "Herschel SPIRE and WISE", "provided": {"value": "unresolved far-IR/mid-IR photometry used in the combined UV-FIR SED fit", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "unresolved photometry measured by (cite: Harrington:2016aa) from the Wide-field Infrared Survey Explorer (*WISE*) at $12/22 \\mu$m"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Unresolved WISE 12/22 um, Herschel/SPIRE 250/350/500 um and LMT/AzTEC 1.1 mm photometry used in the UV-FIR SED fit", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "unresolved photometry measured by (cite: Harrington:2016aa) from the Wide-field Infrared Survey Explorer (*WISE*) at $12/22 \\mu$m"}
+]}, "citation": "(cite: Harrington:2016aa)"},
+{"what": {"value": "Total apparent IR-derived SFR of 12000 +/- 2000 Msun/yr, divided between Arcs 1abc and 3abc (citation key missing in converted text)", "evidence": [
+{"loc": "Table 2 notes", "quote": "The total apparent (i.e. lensing-uncorrected) IR-derived SFR of $12000\\pm 2000 ~M_\\odot {\\rm yr}^{-1}$ from is divided between Arcs 1abc and 3abc according to their ratio of millimeter flux"}
+]}, "citation": "not stated (citation missing in the converted text)"},
+{"what": {"value": "LMT AzTEC 1 mm flux S_1mm = 24 +/- 2.0 mJy used for the modified-blackbody comparison", "evidence": [
+{"loc": "Table 1 notes", "quote": "a modified blackbody (dust emissivity index $\\beta = 1.8$) with $S_{\\rm 1mm} = 24 \\pm 2.0$ mJy"}
+]}, "citation": "not stated (citation missing in the converted text)"},
+{"what": {"value": "LMT/RSR CO(3-2) detection and linewidth (Delta V = 650 +/- 10 km/s) for DSFG-1/3 redshift", "evidence": [
+{"loc": "Redshift of DSFG-3", "quote": "has a known redshift from the LMT Redshift Search Receiver (RSR) and other single-dish sub-mm observations"}
+]}, "citation": "(cite: Harrington:2021aa)"},
+{"what": {"value": "Star-forming main sequence evolution model, log SFR = 0.8 log Mstar - 6.2 at the DSFG epochs", "evidence": [
+{"loc": "Starbursts or not? The proximity of DSFG-1 and DSFG-3 to the star-forming main sequence", "quote": "yields ${\\rm log}[{\\rm SFR}(M_\\star, t)] \\approx 0.8~{\\rm log}M_\\star - 6.2$."}
+]}, "citation": "(cite: Speagle:2014aa)"},
+{"what": {"value": "Core-collapse SN scale factor k_CC = 0.0104 per Msun for a Kroupa IMF, 8-50 Msun progenitors", "evidence": [
+{"loc": "Prediction of observer-frame supernova rates", "quote": "yield $k_{\\rm CC} = 0.0104~M_\\odot^{-1}$"}
+]}, "citation": "(cite: Strolger:2015aa)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "casa_version", "value": "CASA 6.2.1 (stated for imaging; version used for calibration not stated)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "using the Common Astronomy Software Applications (casa) version 6.2.1 (cite: McMullin:2007aa)"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "Continuum multi-frequency synthesis images and spectral cubes made in CASA (specific task name not stated)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "Continuum multi-frequency synthesis images and spectral cubes were created using the Common Astronomy Software Applications (casa) version 6.2.1 (cite: McMullin:2007aa), with `robust`$=$0.5 Briggs weighting (cite: Briggs:1995aa)."}
+]},
+{"field": "weighting_robust", "value": "Briggs robust = 0.5 (robust = -1 tested but S/N insufficient)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "with `robust`$=$0.5 Briggs weighting (cite: Briggs:1995aa)."},
+{"loc": "Footnote 6", "quote": "Imaging with $\\texttt{robust}=-1$ (i.e., closer to uniform weighting) was tested in an attempt to improve angular resolution, but S/N was insufficient to yield useful results."}
+]},
+{"field": "final_beam", "value": "3 mm: 2.0'' x 0.9'' PA -2.7 deg; 2 mm: 1.6'' x 0.7'' PA -18.4 deg", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "This results in synthesized beams of $2.0\\ensuremath{''} \\times 0.9\\ensuremath{''}$ at PA$=-2.7^{\\circ}$ for 3 mm (maximum recoverable scale of $18.4\\ensuremath{''}$)"},
+{"loc": "ALMA Bands 3 and 4", "quote": "and $1.6\\ensuremath{''} \\times 0.7\\ensuremath{''}$ at PA$=-18.4^{\\circ}$ for 2 mm (maximum recoverable scale of $15.1\\ensuremath{''}$)"}
+]},
+{"field": "final_rms", "value": "22 uJy/beam (3 mm) and 20 uJy/beam (2 mm) continuum", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "The continuum noise rms levels achieved are 22 $\\mu$Jy/beam (3 mm) and 20 $\\mu$Jy/beam (2 mm), both over a 3.3 GHz bandwidth."}
+]}
+],
+"inherited": [
+{"what": {"value": "Source-plane reconstruction procedure (cleanlens ray-tracing) with further details in the earlier PASSAGES paper", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "Further details of our specific procedure may be found in Section 3.3 of (cite: Kamieneski:2024aa)."}
+]}, "from_reference": "Section 3.3 of (cite: Kamieneski:2024aa)"},
+{"what": {"value": "VLA observations of G165 as part of the PASSAGES sample; details in the earlier paper", "evidence": [
+{"loc": "VLA C Band", "quote": "see (cite: Kamieneski:2024aa) for additional details"}
+]}, "from_reference": "(cite: Kamieneski:2024aa)"},
+{"what": {"value": "piXedfit pixel binning algorithm details", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "Full details are provided in Section 3.3 of (cite: Abdurrouf:2021ab)."}
+]}, "from_reference": "Section 3.3 of (cite: Abdurrouf:2021ab)"},
+{"what": {"value": "JWST NIRCam data description and data reduction", "evidence": [
+{"loc": "JWST NIRCam", "quote": "A more in-depth description of the JWST NIRCam data is given in (cite: Windhorst:2023aa) and (cite: Frye:2024aa), but we provide relevant details here."},
+{"loc": "JWST NIRCam", "quote": "Data were reduced in line with (cite: Windhorst:2023aa)"}
+]}, "from_reference": "(cite: Windhorst:2023aa); (cite: Frye:2024aa)"},
+{"what": {"value": "Further details of the lens model and cluster members", "evidence": [
+{"loc": "Lens modeling", "quote": "Some details of this model and the cluster members are presented in the appendix of (cite: Pascale:2024aa), but we include additional information here."}
+]}, "from_reference": "appendix of (cite: Pascale:2024aa)"},
+{"what": {"value": "Cluster-member mass scaling power law", "evidence": [
+{"loc": "Lens modeling", "quote": "The masses of the cluster members were scaled all together in a power law, according to their F200W flux, per (cite: Limousin:2005aa)."}
+]}, "from_reference": "(cite: Limousin:2005aa)"}
+],
+"unstated_but_needed": [
+"ALMA calibration route (pipeline vs manual), pipeline/CASA version used for calibration, flux calibrator and flux-scale uncertainty",
+"Number of execution blocks, array configuration(s), time on source and spectral window layout for the two ALMA programs",
+"Imaging settings: tclean task parameters, cell and image size, deconvolver, masks, thresholds, niter, primary-beam correction, and which channels define the continuum",
+"blobcat parameters (detection/flood-fill thresholds, S/N cut) and how flux uncertainties were derived, including how upper limits for Arc 3ab were set",
+"Which 2 mm / 3 mm images (with or without primary beam correction, tapering) were used for imfit and source-plane sizes",
+"Lens model parameter file and image positions: the multiple-image list is referenced but not reproduced in the text, and lenstool MCMC run settings (sampler setup, convergence) are not given",
+"Identity and citation of the source of the total IR SFR (12000 +/- 2000 Msun/yr) and of the 1 mm flux used in the modified-blackbody check (citations missing in the converted text)",
+"Exact bagpipes configuration for the IR dust SED and sampler settings for the SED fits"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Image ALMA Band 3 and 4 continuum and cubes",
+"method": {"value": "Continuum multi-frequency synthesis images and spectral cubes in CASA with Briggs robust = 0.5 weighting", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "Continuum multi-frequency synthesis images and spectral cubes were created using the Common Astronomy Software Applications (casa) version 6.2.1 (cite: McMullin:2007aa), with `robust`$=$0.5 Briggs weighting (cite: Briggs:1995aa)."}
+]},
+"software": ["CASA 6.2.1"],
+"key_parameters": [
+{"value": "robust = 0.5; unweighted baselines 0.03 - 0.3 km (5th to 80th percentile)", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "The unweighted baselines ranged from $0.03 - 0.3$ km (5th to 80th percentile)."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "robust = -1 tested to improve resolution, but S/N was insufficient", "evidence": [
+{"loc": "Footnote 6", "quote": "Imaging with $\\texttt{robust}=-1$ (i.e., closer to uniform weighting) was tested in an attempt to improve angular resolution, but S/N was insufficient to yield useful results."}
+]}
+},
+{
+"order": 2,
+"goal": "Measure mm and radio fluxes of the arcs",
+"method": {"value": "Photometry of resolved arcs with the flood-filling algorithm blobcat on ALMA 2 mm, 3 mm and VLA 6 GHz images", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "As the lensed objects of interest are spatially resolved, photometry was performed using the flood-filling algorithm blobcat (cite: Hales:2012aa)."}
+]},
+"software": ["blobcat"],
+"key_parameters": [],
+"assumptions": [
+{"value": "Modified blackbody with dust emissivity index beta = 1.8 and S_1mm = 24 +/- 2.0 mJy as check on the 2 mm and 3 mm fluxes", "evidence": [
+{"loc": "Table 1 notes", "quote": "a modified blackbody (dust emissivity index $\\beta = 1.8$) with $S_{\\rm 1mm} = 24 \\pm 2.0$ mJy"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "2 mm and 3 mm fluxes compared with the LMT AzTEC 1 mm flux under a modified blackbody: relative consistency at 2 mm; 3 mm exceeds the prediction, possibly from synchrotron", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "we compare the measured 2 mm and 3 mm fluxes against the 1 mm flux from the Large Millimeter Telescope (LMT) AzTEC, reported by , under assumption of a modified blackbody SED, and find relative consistency."},
+{"loc": "Table 1 notes", "quote": "The observed flux at 3 mm (1.3 mJy) exceeds the modified blackbody prediction (0.5 mJy), possibly owing to contamination from synchrotron emission."}
+]}
+},
+{
+"order": 3,
+"goal": "Build the parametric lens model and measure magnifications",
+"method": {"value": "LENSTOOL parametric model with PIEMD halos and 165 cluster members; ALMA and VLA magnifications from the ratio of image-plane to source-plane area, with 300 resamplings of the MCMC posterior", "evidence": [
+{"loc": "Lens modeling", "quote": "we measured magnifications simply by taking the ratio of image-plane to source-plane area."},
+{"loc": "Lens modeling", "quote": "we resampled 300 iterations uniformly from the MCMC-derived posterior distribution, resulting in an approximately Gaussian distribution of magnifications."}
+]},
+"software": ["LENSTOOL"],
+"key_parameters": [
+{"value": "Two cluster-scale PIEMD halos plus 165 cluster members; uniform priors with +/-5'' position range, ellipticity 0 to 0.85, maximum velocity dispersion 800 km/s, maximum core radius 20'' (~100 kpc); halo cut radii fixed to 1000 kpc", "evidence": [
+{"loc": "Lens modeling", "quote": "Uniform priors were used for these parameters, including a wide range of $\\pm 5\\ensuremath{''}$ in $x$ and $y$ position from the approximate center of both cluster cores,"},
+{"loc": "Lens modeling", "quote": "As their cut/truncation radii are poorly constrained, these were fixed to values of 1000 kpc."}
+]},
+{"value": "DSFG-3 redshift left free (prior z = 2.0 - 2.2), giving z_geom = 2.11 +/- 0.01", "evidence": [
+{"loc": "Redshift of DSFG-3", "quote": "allowed the redshift to vary from $z=2.0 - 2.2$ in the final model."}
+]}
+],
+"assumptions": [
+{"value": "Cluster-member scaling relation normalized to L* galaxy (m_F200W = 17.0 AB) with sigma_0* = 120 km/s, r_core* = 0.15 kpc, r_cut* = 30 kpc", "evidence": [
+{"loc": "Lens modeling", "quote": "The power law was normalized such that a characteristic $L_\\star$ galaxy at the redshift of the cluster ($m_{\\rm F200W} = 17.0$ AB mag) has a velocity dispersion of $\\sigma_0^\\star = 120~{\\rm km~s}^{-1}$,"}
+]}
+],
+"fitting": {"value": "MCMC (sampler not named); the median of each parameter's posterior is adopted; minimum-chi^2 solutions also provided", "evidence": [
+{"loc": "Lens modeling", "quote": "In this work, we adopt the median of each parameter’s posterior distribution"},
+{"loc": "Lens modeling", "quote": "We also provide the minimum-$\\chi^2$ solutions, which are nearly always in close agreement with the median solution."}
+]},
+"validation": {"value": "Astrometric uncertainty from independent image-position markings by multiple team members; median offset 0.03''", "evidence": [
+{"loc": "Lens modeling", "quote": "multiple team members independently marked the positions for the known image family members, and found a median offset of $0.03\\ensuremath{''}$"}
+]}
+},
+{
+"order": 4,
+"goal": "Reconstruct the source plane and measure the 2 mm dust size",
+"method": {"value": "Pixel-by-pixel ray-tracing of the images with lenstool cleanlens, then 2-D Gaussian fits with CASA imfit to the 2 mm source-plane reconstructions", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "the observed images are ray-traced to the source plane pixel-by-pixel through the `cleanlens` function of lenstool, with the image-plane oversampled by a factor of 4 and the source-plane by a factor of 2."},
+{"loc": "Source-plane reconstruction", "quote": "we use the casa imfit task to fit the emission with 2-d Gaussian profiles (and adopt a minimum 10% fractional uncertainty)."}
+]},
+"software": ["LENSTOOL", "CASA imfit"],
+"key_parameters": [
+{"value": "Sizes measured at 2 mm because of higher S/N; minimum 10% fractional uncertainty", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "these dust sizes are measured for the 2 mm images given their higher S/N"}
+]}
+],
+"assumptions": [
+{"value": "3 mm sizes may be inflated by synchrotron contamination", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "the possible contamination from synchrotron at 3 mm is expected to result in slightly larger sizes than from thermal dust alone."}
+]}
+],
+"fitting": {"value": "2-D Gaussian fit with CASA imfit; no regularization or parameterization of the source in the reconstruction", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "The reconstruction of all images in this work in the source plane does not impose regularization or parameterization of the intrinsic structure of the source."}
+]},
+"validation": {"value": "Reconstructions from only the high-magnification arcs agree with the full reconstruction", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "adding confidence to this reconstruction."}
+]}
+},
+{
+"order": 5,
+"goal": "Derive IR-based SFR and L_IR for each DSFG",
+"method": {"value": "Apportion the total apparent IR SFR between Arc 1abc and Arc 3abc by their mm flux ratio, then correct by the total 2 mm magnification of each arc system", "evidence": [
+{"loc": "Table 2 notes", "quote": "The total apparent (i.e. lensing-uncorrected) IR-derived SFR of $12000\\pm 2000 ~M_\\odot {\\rm yr}^{-1}$ from is divided between Arcs 1abc and 3abc according to their ratio of millimeter flux"},
+{"loc": "Table 2 notes", "quote": "Then, these apportioned SFRs are corrected for the total 2 mm magnifications of Arc 1abc and Arc 3abc, respectively."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Flux ratio S_1abc / S_3abc = 3.1 +/- 0.3 (averaged for 2 mm and 3 mm)", "evidence": [
+{"loc": "Table 2 notes", "quote": "according to their ratio of millimeter flux, $S_{\\rm 1abc} / S_{\\rm 3abc} = 3.1 \\pm 0.3$ (averaged for 2 mm and 3 mm)"}
+]}
+],
+"assumptions": [
+{"value": "Both arc systems at similar redshifts; far-IR photometry does not resolve the systems; Kroupa IMF; flat LCDM with Omega_m = 0.3, Omega_Lambda = 0.7, H0 = 70", "evidence": [
+{"loc": "Table 2 notes", "quote": "As the far-IR photometry largely does not resolve Arcs 1abc and 3abc, we make a preliminary estimate by apportioning the total ${\\rm SFR}_{\\rm IR}$ according to their share of flux at 2 mm and 3 mm"},
+{"loc": "Introduction", "quote": "In this work, we adopt a $\\Lambda$CDM cosmological model of $\\Omega_m=0.3$, $\\Omega_\\Lambda = 0.7$, and $H_0 = 70~{\\rm km}~{\\rm s}^{-1}~{\\rm Mpc}^{-1}$,"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Resolved pixel-by-pixel SED fitting of JWST/NIRCam photometry (ALMA not included)",
+"method": {"value": "Bin pixels with piXedfit to S/N = 20 per filter, then fit each bin with bagpipes using an exponentially declining SFH", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "If a S/N threshold for each filter is met (a conservative S/N$=20$, in our case), the bin is established; otherwise, the radius of the bin is increased."},
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "we fitted the SED of each bin with bagpipes (Bayesian Analysis of Galaxies for Physical Inference and Parameter EStimation; (cite: Carnall:2018aa))"}
+]},
+"software": ["piXedfit", "bagpipes", "cloudy"],
+"key_parameters": [
+{"value": "Age 0.1 Gyr to age of Universe at that redshift; tau 0.3 - 10 Gyr; metallicity 0 - 3.5 Zsun; log(U) -4 to -2; A_V 0 - 3", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "The stellar population age for each bin could vary from 0.1 Gyr to the age of the Universe at the given redshift, and $\\tau$ was allowed to vary from $0.3 - 10$ Gyr."},
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "and metallicity could vary from 0 to 3.5 $Z_\\odot$."}
+]},
+{"value": "Bins larger than the F444W PSF FWHM (0.14''); all bands convolved to F444W resolution", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "each bin is required to be larger than the F444W PSF FWHM ($0.14\\ensuremath{''}$)."}
+]}
+],
+"assumptions": [
+{"value": "Calzetti et al. dust attenuation model; Kroupa IMF; nebular emission via cloudy models", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "A (cite: Calzetti:2000aa) dust attenuation model was imposed, with attenuation allowed to vary from $A_V = 0 - 3$"}
+]}
+],
+"fitting": {"value": "bagpipes Bayesian SED fit with the priors listed; sampler and likelihood not stated", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "The total mass formed was allowed to vary widely, from ${\\rm log}_{10}(M / M_\\odot) = 1 - 15$, and metallicity could vary from 0 to 3.5 $Z_\\odot$."}
+]},
+"validation": {"value": "Integrated SED fits compared with summed bin-wise results and with Halpha-derived SFR and Balmer-decrement A_V from NIRSpec; close agreement reported", "evidence": [
+{"loc": "Table 3 notes", "quote": "In all cases, we find quite close agreement with our independently-derived values."}
+]}
+},
+{
+"order": 7,
+"goal": "Combined UV-through-FIR SED fit including ALMA 2 mm and 3 mm photometry",
+"method": {"value": "bagpipes fit to the summed photometry of Arcs 1a, 1bc, 3ab and 3c, adding WISE, Herschel/SPIRE, LMT/AzTEC and ALMA 2 mm / 3 mm fluxes, with a dust emission model", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "we fold them into a combined SED fit for Arcs 1a, 1bc, 3ab, and 3c, so that we can take advantage of unresolved photometry"}
+]},
+"software": ["bagpipes"],
+"key_parameters": [
+{"value": "q_PAH in [0.5, 4.0]; U_min in [1, 25]; gamma in [0.01, 0.99]; A_V < 8; redshift fixed at z = 2.236", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "These include the PAH mass fraction ($q_{\\rm PAH} \\in [0.5, 4.0]$), the lower cutoff of the incident starlight intensity on the dust ($U_{\\rm min} \\in [1, 25]$, effectively describing the dust temperature distribution),"},
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "Redshift is held fixed at $z=2.236$."}
+]}
+],
+"assumptions": [
+{"value": "Total flux-weighted magnification mu = 16 +/- 3 for both DSFGs combined; Planck photometry excluded because of confusion noise; radio SED not modeled", "evidence": [
+{"loc": "Table 3 notes", "quote": "we use the total flux-weighted magnification for both DSFG-1 and DSFG-3 combined, $\\mu = 16 \\pm 3$, to derive intrinsic values."},
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "*Planck* photometry is excluded from the fit given its high confusion noise."}
+]}
+],
+"fitting": {"value": "bagpipes with uniform priors on the dust parameters; sampler not stated", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "these priors are all uniformly distributed, and consistent with those used by (cite: Williams:2019ab)."}
+]},
+"validation": {"value": "Alternative SFHs (single burst, exponential+burst) tested; no significant improvement and SFR changes by <~5%", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "We also test different choices in SFH (a single burst model and an exponential$+$burst model), but find no significant improvement over the single exponential model."}
+]}
+},
+{
+"order": 8,
+"goal": "Compare each DSFG with the star-forming main sequence",
+"method": {"value": "Compare SFR_IR with the Speagle et al. main-sequence SFR at the stellar mass and epoch of each DSFG; Delta_MS = log10(SFR/SFR_MS) with a 0.6 dex starburst threshold", "evidence": [
+{"loc": "Starbursts or not? The proximity of DSFG-1 and DSFG-3 to the star-forming main sequence", "quote": "yields ${\\rm log}[{\\rm SFR}(M_\\star, t)] \\approx 0.8~{\\rm log}M_\\star - 6.2$."},
+{"loc": "Starbursts or not? The proximity of DSFG-1 and DSFG-3 to the star-forming main sequence", "quote": "both cases yield $\\Delta_{\\rm MS} \\approx 0.6$ dex."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Starburst threshold of Delta_MS >= 0.6 dex (twice the typical ~0.3 dex scatter)", "evidence": [
+{"loc": "Starbursts or not? The proximity of DSFG-1 and DSFG-3 to the star-forming main sequence", "quote": "Adopting a $\\Delta_{\\rm MS} \\ge 0.6$ dex threshold"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 9,
+"goal": "Predict core-collapse supernova rates",
+"method": {"value": "R_CC = k_CC x SFR with k_CC from the Kroupa IMF and 8-50 Msun progenitors; observer-frame rate dilated by (1+z)^-1", "evidence": [
+{"loc": "Prediction of observer-frame supernova rates", "quote": "The supernova rate can thus be tabulated as $R_{\\rm CC} = k_{\\rm CC} \\cdot {\\rm SFR}$"},
+{"loc": "Prediction of observer-frame supernova rates", "quote": "yield $k_{\\rm CC} = 0.0104~M_\\odot^{-1}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "SFR_UV-FIR = 350 +/- 70 Msun/yr (combined)", "evidence": [
+{"loc": "Prediction of observer-frame supernova rates", "quote": "${\\rm SFR}_{\\rm UV-FIR} = 350 \\pm 70~M_\\odot~{\\rm yr}^{-1}$."}
+]}
+],
+"assumptions": [
+{"value": "Kroupa IMF, progenitors 8-50 Msun; a Salpeter IMF would give k_CC = 0.0070 but is cancelled by the SFR change", "evidence": [
+{"loc": "Prediction of observer-frame supernova rates", "quote": "A (cite: Salpeter:1955aa) IMF for the same $8-50~M_\\odot$ progenitor range would yield $k_{\\rm CC} = 0.0070~M_\\odot^{-1}$"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.2.1 (ALMA imaging); 6.1.0 (VLA)", "used_for": {"value": "ALMA continuum and cube imaging; imfit for source-plane sizes; VLA data reduction", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "using the Common Astronomy Software Applications (casa) version 6.2.1 (cite: McMullin:2007aa)"},
+{"loc": "VLA C Band", "quote": "The data were reduced using casa v6.1.0."}
+]}},
+{"name": "blobcat", "version": "not stated", "used_for": {"value": "Flood-fill photometry of arcs in ALMA and VLA images", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "photometry was performed using the flood-filling algorithm blobcat (cite: Hales:2012aa)."}
+]}},
+{"name": "LENSTOOL", "version": "not stated", "used_for": {"value": "Parametric cluster lens model, magnifications, and source-plane reconstruction (cleanlens)", "evidence": [
+{"loc": "Lens modeling", "quote": "We constructed a parametric lens model for the G165 cluster using LENSTOOL"}
+]}},
+{"name": "piXedfit", "version": "not stated", "used_for": {"value": "Binning of NIRCam pixels to a S/N threshold for resolved SED fitting", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "to bin pixels such that each satisfies a S/N condition in all filters, while preserving similarity in SED shape between pixels within each bin."}
+]}},
+{"name": "bagpipes", "version": "not stated", "used_for": {"value": "Bin-wise, integrated and UV-FIR SED fitting", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "we fitted the SED of each bin with bagpipes"}
+]}},
+{"name": "cloudy", "version": "not stated", "used_for": {"value": "Pre-computed photoionization models for the nebular component in bagpipes", "evidence": [
+{"loc": "Pixel-by-pixel SED fitting with piXedfit and bagpipes", "quote": "pre-computed from cloudy photoionization models (cite: Ferland:2017aa)."}
+]}},
+{"name": "photutils", "version": "not stated", "used_for": {"value": "Kron aperture fluxes for integrated NIRCam photometry", "evidence": [
+{"loc": "A comparison of integrated vs. resolved properties", "quote": "we use photutils (cite: Bradley:2022aa) to capture Kron aperture fluxes"}
+]}},
+{"name": "STScI JWST Pipeline", "version": "1.11.2 (context pmap_1100)", "used_for": {"value": "JWST NIRCam data reduction", "evidence": [
+{"loc": "JWST NIRCam", "quote": "using the STScI JWST Pipeline[^4] version 1.11.2 (cite: Bushouse:2023aa) and context file pmap_1100"}
+]}},
+{"name": "VLA Calibration pipeline", "version": "v2018.1", "used_for": {"value": "Initial flagging and calibration of VLA data", "evidence": [
+{"loc": "VLA C Band", "quote": "Initial flagging and calibration was carried out through the VLA Calibration pipeline v2018.1."}
+]}},
+{"name": "Trilogy", "version": "not stated", "used_for": {"value": "RGB images of the 8 NIRCam filters", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "RGB images of the 8 NIRCam filters are constructed according to the Trilogy[^9] prescription (cite: Coe:2012aa)."}
+]}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "astropy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "glue", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Ned Wright's Cosmology Calculator", "version": "not stated", "used_for": {"value": "Angular-to-physical size conversion", "evidence": [
+{"loc": "Introduction", "quote": "$1 \\ensuremath{''} = 8.243$ kpc (cite: Wright:2006aa)."}
+]}}
+],
+"results_numeric": [
+{"quantity": "Continuum rms, ALMA 3 mm", "value": "22", "uncertainty": "not stated", "units": "uJy/beam", "from_step": 1, "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "The continuum noise rms levels achieved are 22 $\\mu$Jy/beam (3 mm) and 20 $\\mu$Jy/beam (2 mm), both over a 3.3 GHz bandwidth."}
+]},
+{"quantity": "Continuum rms, ALMA 2 mm", "value": "20", "uncertainty": "not stated", "units": "uJy/beam", "from_step": 1, "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "The continuum noise rms levels achieved are 22 $\\mu$Jy/beam (3 mm) and 20 $\\mu$Jy/beam (2 mm), both over a 3.3 GHz bandwidth."}
+]},
+{"quantity": "Flux density of Arc 1abc at 2 mm", "value": "1900", "uncertainty": "+/- 100", "units": "uJy", "from_step": 2, "evidence": [
+{"loc": "Table 1 (Arc 1abc row)", "quote": "$1900 \\pm 100^\\dagger$ | $980 \\pm 60^\\dagger$ | $1150 \\pm 50$"}
+]},
+{"quantity": "Flux density of Arc 1abc at 3 mm", "value": "980", "uncertainty": "+/- 60", "units": "uJy", "from_step": 2, "evidence": [
+{"loc": "Table 1 (Arc 1abc row)", "quote": "$1900 \\pm 100^\\dagger$ | $980 \\pm 60^\\dagger$ | $1150 \\pm 50$"}
+]},
+{"quantity": "Flux density of Arc 3abc at 2 mm", "value": "620", "uncertainty": "+/- 40", "units": "uJy", "from_step": 2, "evidence": [
+{"loc": "Table 1 (Arc 3abc row)", "quote": "$620 \\pm 40^\\dagger$ | $310 \\pm 30^\\dagger$"}
+]},
+{"quantity": "Flux density of Arc 3abc at 3 mm", "value": "310", "uncertainty": "+/- 30", "units": "uJy", "from_step": 2, "evidence": [
+{"loc": "Table 1 (Arc 3abc row)", "quote": "$620 \\pm 40^\\dagger$ | $310 \\pm 30^\\dagger$"}
+]},
+{"quantity": "Magnification of Arc 1abc at 2 mm and 3 mm", "value": "28.4 (2 mm); 29.1 (3 mm)", "uncertainty": "+/- 2.4 (2 mm); +/- 1.7 (3 mm)", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 1 (Arc 1abc row)", "quote": "$28.4 \\pm 2.4$ | $29.1 \\pm 1.7$"}
+]},
+{"quantity": "Magnification of Arc 3abc at 2 mm and 3 mm", "value": "7.3 (2 mm); 7.4 (3 mm)", "uncertainty": "+/- 0.7 (2 mm); +/- 0.6 (3 mm)", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 1 (Arc 3abc row)", "quote": "$7.3 \\pm 0.7$ | $7.4 \\pm 0.6$"}
+]},
+{"quantity": "Geometric redshift of DSFG-3 from lens model", "value": "2.11", "uncertainty": "+/- 0.01 (likely underestimated)", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Redshift of DSFG-3", "quote": "The MCMC posterior distribution yields a quite precise value of $z_{\\rm geom} = 2.11 \\pm 0.01$"}
+]},
+{"quantity": "2 mm dust continuum effective radius, DSFG-1 and DSFG-3", "value": "1.6 kpc (DSFG-1); 2.1 kpc (DSFG-3)", "uncertainty": "+/- 0.2 kpc each", "units": "kpc", "from_step": 4, "evidence": [
+{"loc": "Results", "quote": "we find 2-mm dust continuum effective radii of $R_{e, 2{\\rm mm}} = 1.6 \\pm 0.2$ kpc and $2.1 \\pm 0.2$ kpc for DSFG-1 and DSFG-3, respectively"}
+]},
+{"quantity": "3 mm dust continuum effective radius, both DSFGs", "value": "2.6", "uncertainty": "+/- 0.3", "units": "not stated (kpc implied)", "from_step": 4, "evidence": [
+{"loc": "Footnote 12", "quote": "At 3 mm, we find $\\sim 1.5\\times$ larger sizes of $R_{e, 3{\\rm mm}} = 2.6 \\pm 0.3$ for both DSFGs"}
+]},
+{"quantity": "Intrinsic IR-derived SFR (SFR_IR), DSFG-1 and DSFG-3", "value": "320 (DSFG-1); 400 (DSFG-3)", "uncertainty": "+/- 70; +/- 80", "units": "Msun/yr", "from_step": 5, "evidence": [
+{"loc": "abstract", "quote": "Boasting intrinsic star formation rates ${\\rm SFR}_{\\rm IR} = 320 \\pm 70$ and $400 \\pm 80~ M_\\odot~{\\rm yr}^{-1}$"}
+]},
+{"quantity": "log L_IR / Lsun, DSFG-1", "value": "12.5", "uncertainty": "+/- 0.1", "units": "dex (log Lsun)", "from_step": 5, "evidence": [
+{"loc": "Table 2 (DSFG-1 row)", "quote": "$320 \\pm 70$ | $12.5 \\pm 0.1$"}
+]},
+{"quantity": "log L_IR / Lsun, DSFG-3", "value": "12.6", "uncertainty": "+/- 0.1", "units": "dex (log Lsun)", "from_step": 5, "evidence": [
+{"loc": "Table 2 (DSFG-3 row)", "quote": "$400 \\pm 80$ | $12.6 \\pm 0.1$"}
+]},
+{"quantity": "Mm flux ratio S_1abc / S_3abc", "value": "3.1", "uncertainty": "+/- 0.3", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Table 2 notes", "quote": "$S_{\\rm 1abc} / S_{\\rm 3abc} = 3.1 \\pm 0.3$ (averaged for 2 mm and 3 mm)"}
+]},
+{"quantity": "Stellar mass log(M*/Msun), DSFG-1 and DSFG-3", "value": "10.2 (DSFG-1); 10.3 (DSFG-3)", "uncertainty": "+/- 0.1 each", "units": "dex (log Msun)", "from_step": 6, "evidence": [
+{"loc": "abstract", "quote": "stellar masses ${\\rm log}[M_\\star/M_\\odot] = 10.2 \\pm 0.1$ and $10.3 \\pm 0.1$"}
+]},
+{"quantity": "UV-NIR SED-derived intrinsic SFR, DSFG-1 and DSFG-3", "value": "50 (DSFG-1); 40 (DSFG-3)", "uncertainty": "+/- 20 each", "units": "Msun/yr", "from_step": 6, "evidence": [
+{"loc": "Summary and Conclusions", "quote": "UV-NIR SED-derived SFRs ($50 \\pm 20~ M_\\odot~{\\rm yr}^{-1}$ for DSFG-1, $40 \\pm 20~ M_\\odot~{\\rm yr}^{-1}$ for DSFG-3)"}
+]},
+{"quantity": "Dust attenuation A_V, DSFG-1 and DSFG-3", "value": "1.5 (DSFG-1); 1.2 (DSFG-3)", "uncertainty": "+/- 0.3 (DSFG-1); +/- 0.2 (DSFG-3; abstract gives 0.3)", "units": "mag", "from_step": 6, "evidence": [
+{"loc": "Summary and Conclusions", "quote": "and dust attenuation ($A_V = 1.5 \\pm 0.3$ vs. $A_V = 1.2 \\pm 0.2$)"}
+]},
+{"quantity": "Fraction of resolved bins above the model rSFMS at z~2.2, Arc 1 and Arc 3", "value": "~99% (Arc 1); ~89% (Arc 3)", "uncertainty": "not stated", "units": "percent of bins", "from_step": 6, "evidence": [
+{"loc": "Resolved star-forming main sequence in DSFG-1 and DSFG-3", "quote": "we find that the overwhelming majority ($\\approx 99\\%$) of the bins in Arc 1 lie above the model rSFMS at $z \\approx 2.2$"},
+{"loc": "Resolved star-forming main sequence in DSFG-1 and DSFG-3", "quote": "whereas $\\approx 89\\%$ of the bins in Arc 3 lie above"}
+]},
+{"quantity": "Combined UV-FIR SFR of both DSFGs (magnification-corrected)", "value": "350", "uncertainty": "+/- 70", "units": "Msun/yr", "from_step": 7, "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "The derived magnification-corrected SFR is SFR$_{\\rm UV-FIR}= 350 \\pm 70~M_\\odot~{\\rm yr}^{-1}$."}
+]},
+{"quantity": "Dust emission parameters q_PAH, U_min, gamma from the UV-FIR fit", "value": "q_PAH = 3.9; U_min = 22; gamma = 0.09", "uncertainty": "+/- 0.2; +/- 2; +/- 0.06", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "The best-fit dust emission parameters are $q_{\\rm PAH} = 3.9 \\pm 0.2$, $U_{\\rm min} = 22 \\pm 2$, and $\\gamma = 0.09 \\pm 0.06$."}
+]},
+{"quantity": "Distance to main sequence Delta_MS, DSFG-1 and DSFG-3", "value": "~0.6", "uncertainty": "not stated", "units": "dex", "from_step": 8, "evidence": [
+{"loc": "Starbursts or not? The proximity of DSFG-1 and DSFG-3 to the star-forming main sequence", "quote": "both cases yield $\\Delta_{\\rm MS} \\approx 0.6$ dex."}
+]},
+{"quantity": "Combined core-collapse SN rate (rest-frame; observer-frame)", "value": "3.6 yr^-1 (rest-frame); 1.1 yr^-1 (observer-frame)", "uncertainty": "+/- 0.7; +/- 0.2", "units": "yr^-1", "from_step": 9, "evidence": [
+{"loc": "Prediction of observer-frame supernova rates", "quote": "This results in a total expected rest-frame rate of $R_{\\rm CC} = 3.6 \\pm 0.7~{\\rm yr}^{-1}$, or a remarkable observer-frame rate of $1.1 \\pm 0.2~{\\rm yr}^{-1}$."}
+]}
+],
+"findings_qualitative": [
+{"value": "The 3 mm flux exceeds the modified-blackbody prediction, possibly from synchrotron contamination", "evidence": [
+{"loc": "Table 1 notes", "quote": "The observed flux at 3 mm (1.3 mJy) exceeds the modified blackbody prediction (0.5 mJy), possibly owing to contamination from synchrotron emission."}
+]},
+{"value": "No strong lines in the ALMA Band 3/4 windows, consistent with z = 2.23 for DSFG-3; a ~3 sigma CO(3-2) candidate at 110.849 GHz would give z = 2.12", "evidence": [
+{"loc": "Testing the redshift solution for DSFG-3", "quote": "We find no strong lines within the available spectral windows, which is consistent with our assumption of $z=2.23$."}
+]}
+],
+"claims": [
+{"hypothesis": "The two lensed DSFGs behind G165 are intrinsically similar objects", "experiment": "Lens-corrected IR SFR from ALMA-based flux sharing, UV-NIR SED fitting, 2 mm sizes and UVJ colors", "result": "SFR_IR 320 +/- 70 vs 400 +/- 80 Msun/yr; log M* 10.2 vs 10.3; A_V 1.5 vs 1.2; 2 mm sizes 1.6 vs 2.1 kpc", "finding": "The DSFGs have strikingly similar intrinsic properties", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "they are remarkably similar objects."}
+]},
+{"hypothesis": "Star formation in the DSFGs is galaxy-wide rather than confined to a central starburst", "experiment": "Resolved SED fitting compared with an extrapolated resolved star-forming main sequence, with 2 mm sizes as an obscured-mode tracer", "result": "~99% (Arc 1) and ~89% (Arc 3) of bins lie above the model rSFMS; 2 mm R_e of 1.6 and 2.1 kpc", "finding": "Widespread unobscured and obscured star formation, with caveats about extrapolating the rSFMS model to z~2.2", "support": "partially", "evidence": [
+{"loc": "Resolved star-forming main sequence in DSFG-1 and DSFG-3", "quote": "it appears to be the case that star formation is not confined purely to a central starburst region, but is widely distributed (often in clumps) throughout the plane of the disk."},
+{"loc": "Resolved star-forming main sequence in DSFG-1 and DSFG-3", "quote": "The evolutionary model we employ for the rSFMS was only designed for $z\\sim 1$ to $z=0$, and it is not clear how the evolution might extend to our objects at $z\\approx 2.2$."}
+]},
+{"hypothesis": "The DSFGs are starbursts relative to the star-forming main sequence", "experiment": "Compare SFR_IR with the Speagle et al. main-sequence SFR at each object's stellar mass and epoch", "result": "SFR_IR is ~3.6 times the main-sequence SFR for both, Delta_MS ~ 0.6 dex", "finding": "Both are only marginally classified as starbursts", "support": "supported", "evidence": [
+{"loc": "Starbursts or not? The proximity of DSFG-1 and DSFG-3 to the star-forming main sequence", "quote": "this means that DSFG-1 and DSFG-3 are only just marginally classified as starbursts."}
+]},
+{"hypothesis": "DSFG-3 lies at the same redshift as DSFG-1 and the two are interacting", "experiment": "Lens-model geometric redshift, photometric redshift, and a search for lines in ALMA Band 3/4 windows", "result": "z_phot = 2.23 +/- 0.09, z_geom = 2.11 +/- 0.01, no strong ALMA lines, a ~3 sigma CO(3-2) candidate at z = 2.12", "finding": "Likely at z ~ 2.23 (Delta V ~ 600 km/s) but not secure", "support": "partially", "evidence": [
+{"loc": "Redshift of DSFG-3", "quote": "We adopt the redshift of DSFG-3 to be $z=2.23$ in this work ($\\Delta V \\sim 600~{\\rm km~s}^{-1}$ from DSFG-1)"},
+{"loc": "Testing the redshift solution for DSFG-3", "quote": "Given the very marginal detection (S/N $\\approx 3$), we certainly do not consider this a secure, robust spectroscopic redshift on its own."}
+]},
+{"hypothesis": "The DSFG pair can yield a high observable core-collapse SN rate", "experiment": "UV-through-FIR SED SFR combined with a k_CC scale factor and time dilation", "result": "R_CC = 3.6 +/- 0.7 per yr rest-frame, 1.1 +/- 0.2 per yr observer-frame", "finding": "The G165 field is a strong candidate for supernova monitoring", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "this pair of objects alone is predicted to yield an observable $1.1 \\pm 0.2~{\\rm CCSNe~yr}^{-1}$,"}
+]}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "Dust sizes measured at 2 mm because of higher S/N than 3 mm; resolved ALMA+JWST SED fitting not attempted because of the coarse, elongated ALMA beam", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "these dust sizes are measured for the 2 mm images given their higher S/N"},
+{"loc": "A comparison of integrated vs. resolved properties", "quote": "it is therefore not worthwhile to attempt spatially-resolved SED fitting with both ALMA and JWST"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Briggs robust = -1 imaging was tested to improve angular resolution but rejected for insufficient S/N", "evidence": [
+{"loc": "Footnote 6", "quote": "Imaging with $\\texttt{robust}=-1$ (i.e., closer to uniform weighting) was tested in an attempt to improve angular resolution, but S/N was insufficient to yield useful results."}
+]},
+{"value": "Single burst and exponential+burst SFHs tested in the UV-FIR fit; no significant improvement over a single exponential", "evidence": [
+{"loc": "Simultaneous UV-FIR fitting of the spatially-integrated SED", "quote": "but find no significant improvement over the single exponential model."}
+]}
+],
+"limitations_admitted": [
+{"value": "Arcs 1a and 3c are only marginally resolved at 2 mm, so higher-resolution dust imaging is needed", "evidence": [
+{"loc": "Results", "quote": "as Arcs 1a and 3c are only marginally resolved at 2 mm."}
+]},
+{"value": "ALMA beam is highly elongated (high declination target) and aligned with the direction of greatest magnification", "evidence": [
+{"loc": "A comparison of integrated vs. resolved properties", "quote": "this elongation is essentially aligned with the orientation of greatest magnification, so lensing does not offer an easy remedy."}
+]},
+{"value": "3 mm fluxes and sizes may be contaminated by synchrotron emission", "evidence": [
+{"loc": "Source-plane reconstruction", "quote": "the possible contamination from synchrotron at 3 mm is expected to result in slightly larger sizes than from thermal dust alone."}
+]},
+{"value": "DSFG-3 lacks a secure spectroscopic redshift; lens-model redshift uncertainty is likely underestimated", "evidence": [
+{"loc": "Redshift of DSFG-3", "quote": "Since DSFG-3 lacks a secure spectroscopic redshift, we left this as a free parameter in our lens model"}
+]}
+],
+"referee_caveats_inferred": [
+"ALMA is a minor ingredient; the IR SFR rests on an externally cited total SFR split by mm flux ratio, not an independent ALMA-based SED",
+"The Arc 1abc/3abc flux split assumes similar dust SEDs and redshifts for both systems",
+"Source-plane sizes from 2 mm are marginally resolved with a large elongated beam, so R_e values depend on the lens model and the minimum 10% error floor",
+"DSFG-3 redshift remains uncertain, which affects magnification, SFR and the pair-interaction interpretation"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA data retrieved from the public ALMA archive", "evidence": [
+{"loc": "ALMA Bands 3 and 4", "quote": "These data were retrieved from the public ALMA archive"}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"ALMA calibration and imaging parameters beyond robust = 0.5",
+"Lens model files, image positions and MCMC settings (best-fit parameters are in the appendix, but run settings are not given)",
+"Source of the total IR SFR of 12000 +/- 2000 Msun/yr and the 1 mm flux (citations missing in text)",
+"blobcat settings and imfit setup",
+"Bagpipes sampler settings and IR dust SED configuration"
+],
+"estimated_data_volume_inferred": "tens of GB raw for two short Band 3/4 single-pointing datasets (rough guess, plus public JWST and VLA data)",
+"score_inferred": 3,
+"score_reason": "On a 1-5 scale: ALMA data are public and a few key imaging facts are given (CASA 6.2.1, robust 0.5, beams, rms), but calibration, photometry and lens-model details are incomplete, and main results depend on JWST and an externally cited IR SFR.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA data are public, but the ALMA part is a minor input and the main numeric results depend on the lens model, JWST SED fits and an external total IR SFR whose source is not given in the text.",
+"methods_papers": [
+{"citation": "(cite: Kamieneski:2024aa)", "why": "Source-plane reconstruction procedure (Section 3.3) and VLA observation details"},
+{"citation": "(cite: Abdurrouf:2021ab)", "why": "piXedfit pixel-binning algorithm (Section 3.3)"},
+{"citation": "(cite: Carnall:2018aa)", "why": "bagpipes SED fitting code"},
+{"citation": "(cite: Windhorst:2023aa)", "why": "JWST NIRCam data description and reduction"},
+{"citation": "(cite: Hales:2012aa)", "why": "blobcat flood-fill photometry"}
+],
+"companion_papers": [
+{"citation": "(cite: Frye:2024aa)", "why": "JWST NIRCam and NIRSpec study of the G165 field, redshifts, overdensities"},
+{"citation": "(cite: Pascale:2024aa)", "why": "Lens model use for SN H0pe time delays and H0"},
+{"citation": "(cite: Pascale:2022aa)", "why": "Earlier in-depth examination of the G165 cluster"},
+{"citation": "(cite: Harrington:2016aa)", "why": "Earlier SED fit and single-dish photometry of G165"},
+{"citation": "(cite: Harrington:2021aa)", "why": "CO line detection and redshift of DSFG-1"}
+],
+"related_projects_or_surveys": [
+"PASSAGES (Planck All-Sky Survey to Analyze Gravitationally-lensed Extreme Starbursts)",
+"PEARLS JWST program (PID 1176) and JWST DDT program (PID 4446)",
+"ALMA program 2021.1.00607.S (PI: R. Cañameras)",
+"VLA program 18A-399"
+]
+}

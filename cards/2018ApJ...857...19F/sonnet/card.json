@@ -1,0 +1,1365 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...857...19F",
+  "title": "The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Faesi, Christopher M.",
+  "n_authors": 3,
+  "arxiv_id": "1801.06238",
+  "doi": "10.3847/1538-4357/aaad60",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00586.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We have conducted a $^{12}$CO(2-1) survey of several molecular gas complexes in the vicinity of H II regions within the spiral galaxy NGC 300 using the Atacama Large Millimeter Array."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "milky_way_ism",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 300 (48 regions near HII regions, DCL6 to DCL140)",
+     "coordinates": {
+      "value": "center 00:54:53.48 -37:41:03.8 (J2000); pointings in Table 1",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we are able to achieve $< 10$ pc and $1~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$ resolution at the 1.93 Mpc distance of the galaxy (cite: 2004AJ....128.1167G)"
+       },
+       {
+        "loc": "The GMC distribution across NGC 300",
+        "quote": "central coordinates of \\[$00^{\\rm h}54^{\\rm m}53^{\\rm s}.48$, $-37^{\\circ}41\\ensuremath{'}03\\ensuremath{''}.8$\\] (J2000), an inclination of $39.8^{\\circ}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "1.93 Mpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we are able to achieve $< 10$ pc and $1~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$ resolution at the 1.93 Mpc distance of the galaxy (cite: 2004AJ....128.1167G)"
+       },
+       {
+        "loc": "The GMC distribution across NGC 300",
+        "quote": "central coordinates of \\[$00^{\\rm h}54^{\\rm m}53^{\\rm s}.48$, $-37^{\\circ}41\\ensuremath{'}03\\ensuremath{''}.8$\\] (J2000), an inclination of $39.8^{\\circ}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gieren et al. 2004 (cite: 2004AJ....128.1167G)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we are able to achieve $< 10$ pc and $1~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$ resolution at the 1.93 Mpc distance of the galaxy (cite: 2004AJ....128.1167G)"
+       },
+       {
+        "loc": "The GMC distribution across NGC 300",
+        "quote": "central coordinates of \\[$00^{\\rm h}54^{\\rm m}53^{\\rm s}.48$, $-37^{\\circ}41\\ensuremath{'}03\\ensuremath{''}.8$\\] (J2000), an inclination of $39.8^{\\circ}$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do GMCs in NGC 300, resolved at 10 pc and 1 km/s, follow the Milky Way scaling relations and mass spectrum, and what sets GMC properties (global vs local environment such as pressure)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "To test these possibilities, it is necessary to match as nearly as possible the spatial and spectral resolution and sensitivity of Milky Way studies."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00586.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data",
+       "quote": "We obtained Atacama Large Millimeter Array (ALMA) Cycle 2 observations (project code 2013.1.00586.S; PI: C. Lada)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6, CO(2-1) at 230.538 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The ALMA Band 6 correlator was set up to have three spectral windows"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Two line windows (122 kHz, 469 MHz bandwidth) at 230.538 and 219.560 GHz; one continuum window (15.625 MHz, 1.875 GHz bandwidth) at ~231.5 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "two spectral line windows with resolution 122 kHz ($\\sim0.16~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$), bandwidth 469 MHz, and centered at 230.538 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "centered at 230.538 GHz (to cover $^{12}$CO(2-1))"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "219.560 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "219.560 GHz (for C$^{18}$O(2-1))"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12 m array",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "All targets were observed with the ALMA 12 m array during Cycle 2 on 9, 12, and 15 December 2014."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C34-2/1",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "ALMA was in configuration C34-2/1 for all three observing nights"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15.0 m to 348.5 m",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "arranged with baselines ranging from 15.0 m to 348.5 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~1.5 x 0.9 arcsec (14 pc x 8.4 pc), PA ~90 deg",
+    "evidence": [
+     {
+      "loc": "2.3 Imaging and deconvolution",
+      "quote": "The synthesized beam (i.e., final angular resolution) is approximately $1.5\\ensuremath{''} \\times 0.9\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "10.7 arcsec (at 230.5 GHz), ~100 pc",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "a maximum recoverable scale of $10.7\\ensuremath{''}$ (at 230.5 GHz)"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "RMS 6.6-6.8 mJy/beam per 1 km/s channel (~130 mK)",
+    "evidence": [
+     {
+      "loc": "2.3 Imaging and deconvolution",
+      "quote": "The RMS noise in the final data cubes ranges between 6.6 and 6.8 mJy beam$^{-1}$, which corresponds to a surface brightness sensitivity of about 130 mK"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "3.03 minutes per target",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "adding up to a total on-source time of 3.03 minutes per target"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "9, 12 (Table 2 lists 13), 15 December 2014",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "during Cycle 2 on 9, 12, and 15 December 2014"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI C. Lada project",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data",
+      "quote": "project code 2013.1.00586.S; PI: C. Lada"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "APEX",
+     "provided": {
+      "value": "Single-dish CO(2-1) survey defining targets, velocities, alpha_CO and used to check flux recovery",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data",
+        "quote": "representing all 42 CO detections plus 6 selected CO nondetections from the Atacama Pathfinder EXperiment (APEX) survey of F14"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel/SPIRE",
+     "provided": {
+      "value": "250 um image used to show regions and assign environmental zones",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data",
+        "quote": "Figure [1](#fig:almaobs) shows the observed regions on a 250 $\\mu$m *Herschel*/SPIRE image obtained by our team"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "APEX CO integrated intensities, velocities, region metallicity-based alpha_CO",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "CO integrated intensity $I_{\\rm CO}$, velocity centroid $v_0$, and spectral Gaussian fit FWHM from the APEX single dish observations of (cite: Faesi:2014ib)"
+       }
+      ]
+     },
+     "citation": "(cite: Faesi:2014ib)"
+    },
+    {
+     "what": {
+      "value": "HI gas surface density, velocity dispersion, stellar surface density, v_rot,max for pressure calculation",
+      "evidence": [
+       {
+        "loc": "6.3 Midplane disk pressure",
+        "quote": "We use their results (from their Table 2) for these two quantities."
+       }
+      ]
+     },
+     "citation": "(cite: 2011MNRAS.410.2217W)"
+    },
+    {
+     "what": {
+      "value": "M51 GMC catalog for comparison",
+      "evidence": [
+       {
+        "loc": "6.2 The role of environment: NGC 300 vs. M51",
+        "quote": "We have downloaded the catalog kindly made publicly available by (cite: 2014ApJ...784....3C)"
+       }
+      ]
+     },
+     "citation": "(cite: 2014ApJ...784....3C)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Manual calibration by NA ALMA Science Center",
+     "evidence": [
+      {
+       "loc": "2.2 Data processing",
+       "quote": "Calibration was performed manually by the North American ALMA Science Center team using CASA version 4.3.0."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.3.0 (calibration)",
+     "evidence": [
+      {
+       "loc": "2.2 Data processing",
+       "quote": "using CASA version 4.3.0"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Uranus (Butler-JPL-Horizons 2012 model)",
+     "evidence": [
+      {
+       "loc": "2.2 Data processing",
+       "quote": "flux calibration using the Butler-JPL-Horizons 2012 model for Uranus to set the flux scale"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "1% relative, 5% absolute",
+     "evidence": [
+      {
+       "loc": "2.2 Data processing",
+       "quote": "We adopt ALMA’s fiducial 1% relative and 5% absolute flux calibration uncertainty"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN, manual iterative",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "We `CLEAN`ed each of the 48 regions manually and iteratively."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale CLEAN, scales 1, 2, 5, 10, 15 x synthesized beam",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "we set the `multiscale` parameter to factors of 1, 2, 5, 10, and 15 times the synthesized beam"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "thus we used natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.15 arcsec pixels",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "The final cubes have $0.15~\\ensuremath{''}$ pixels and a spatial extent of $48~\\ensuremath{''}$."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "48 arcsec extent; 200 channels centered on 144 km/s",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "We imaged 200 velocity channels centered on the NGC 300 systemic velocity of $144~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$"
+      }
+     ]
+    },
+    "masking": {
+     "value": "Hand-drawn polygon CLEAN box around significant coherent emission, extended iteratively; 100 iterations per cycle, gain 0.1, threshold 4 sigma, then final 2 sigma",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "We ran `CLEAN` for 100 iterations at a time with loop gain set to 0.1 and a threshold of $4\\sigma$"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "None; no continuum detected",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum data and dust emission upper limits",
+       "quote": "No continuum emission was detected in any of the regions studied, and thus we did not attempt to continuum-subtract the spectral line data."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Spectral resolution smoothed to 1 km/s",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "we smoothed our spectral images to $1~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$ velocity resolution"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.5 x 0.9 arcsec, PA ~90 deg",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "with a position angle of roughly $90^{\\circ}$ (measured E from N)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "6.6-6.8 mJy/beam (continuum 0.13-0.15 mJy/beam)",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "The RMS noise in the final data cubes ranges between 6.6 and 6.8 mJy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "APEX comparison procedure follows pilot paper",
+      "evidence": [
+       {
+        "loc": "2.5 Comparison to APEX single dish observations",
+        "quote": "The procedure follows that of (cite: Faesi:2016bl), which we briefly summarize again here."
+       }
+      ]
+     },
+     "from_reference": "(cite: Faesi:2016bl)"
+    },
+    {
+     "what": {
+      "value": "Cloud identification scheme follows pilot paper, using modified CPROPS",
+      "evidence": [
+       {
+        "loc": "3 Cloud identification and characterization",
+        "quote": "The cloud identification scheme follows (cite: Faesi:2016bl), which are briefly summarized here."
+       }
+      ]
+     },
+     "from_reference": "(cite: Faesi:2016bl); Rosolowsky & Leroy 2006"
+    },
+    {
+     "what": {
+      "value": "alpha_CO per region from metallicity gradient parameterization (Bolatto et al. 2013)",
+      "evidence": [
+       {
+        "loc": "3.2 Improving physical parameter estimates",
+        "quote": "We again take the parameterization of $\\alpha_{\\rm CO}$ from (cite: Bolatto:2013hl)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Bolatto:2013hl); F14 (cite: Faesi:2014ib)"
+    },
+    {
+     "what": {
+      "value": "Size correction factor 1.2 for CO-dark gas",
+      "evidence": [
+       {
+        "loc": "3.2 Improving physical parameter estimates",
+        "quote": "we simply assume the prediction of (cite: 2010ApJ...716.1191W) that $R_{\\rm{H}_2}/R_{\\rm CO} \\approx 1.2$"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2010ApJ...716.1191W)"
+    },
+    {
+     "what": {
+      "value": "NGC 300 geometry parameters as in F14",
+      "evidence": [
+       {
+        "loc": "The GMC distribution across NGC 300",
+        "quote": "We adopt the same parameters for NGC 300 for these calculations as in F14"
+       }
+      ]
+     },
+     "from_reference": "(cite: Faesi:2014ib)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact CASA version used for re-imaging (only calibration version 4.3.0 given)",
+    "Hand-drawn CLEAN polygons per region are not provided",
+    "Line-free channel ranges for noise estimation",
+    "Exact CPROPS modifications (elliptical beam) code not public (private communication)",
+    "Per-region alpha_CO values from F14 not tabulated here",
+    "uv-taper/robust not needed (natural) but tclean parameters like gridder/niter limits per region unspecified",
+    "ODR and bootstrap implementation details and random seeds"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image CO(2-1) cubes",
+    "method": {
+     "value": "Manual calibration, then multiscale CLEAN with hand-drawn masks to 4 sigma then 2 sigma, natural weighting, 1 km/s channels",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "we re-did the entire imaging process in order to tailor the deconvolution algorithm for our particular science goals"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "scales 1,2,5,10,15 x beam; 0.15 arcsec pixels; 100 iterations per cycle; gain 0.1",
+      "evidence": [
+       {
+        "loc": "2.3 Imaging and deconvolution",
+        "quote": "We ran `CLEAN` for 100 iterations at a time with loop gain set to 0.1 and a threshold of $4\\sigma$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Convergence tests on DCL88-126 (CLEANed flux plateau, residuals look like noise); single vs per-channel boxes gave no significant difference",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "We found no significant difference in either RMS noise or cloud properties in comparing these approaches"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Check flux recovery vs APEX",
+    "method": {
+     "value": "Multiply ALMA cube by 27 arcsec Gaussian APEX beam, integrate masked pixels, sum 40 km/s window, ratio to APEX",
+     "evidence": [
+      {
+       "loc": "2.5 Comparison to APEX single dish observations",
+       "quote": "we multiplied each plane of the data cube by the APEX beam profile, which we estimate as a Gaussian with FWHM 27$\\ensuremath{''}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "3 sigma per-pixel mask; 40 km/s window",
+      "evidence": [
+       {
+        "loc": "2.5 Comparison to APEX single dish observations",
+        "quote": "we summed the spectral flux in a $40~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$ wide window centered on the H I velocity"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Median F_rec 0.63 consistent with SMA pilot",
+     "evidence": [
+      {
+       "loc": "2.5 Comparison to APEX single dish observations",
+       "quote": "We find a median $\\mathcal{F_{\\rm rec}}$ of 0.63 with typical uncertainties of about 0.2"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Identify and decompose GMCs",
+    "method": {
+     "value": "Modified CPROPS: 4 sigma adjacent-voxel seeds, 2 sigma edge, local maxima in 15 pc x 15 pc x 2 km/s cube, SIGDISCONT=5, modified CLUMPFIND assignment; remove duplicates and clouds beyond 29 arcsec",
+     "evidence": [
+      {
+       "loc": "3 Cloud identification and characterization",
+       "quote": "For our final catalog presented here, we use `SIGDISCONT`=5"
+      }
+     ]
+    },
+    "software": [
+     "CPROPS"
+    ],
+    "key_parameters": [
+     {
+      "value": "candidate clouds larger than one beam, peak >1 K above merge level",
+      "evidence": [
+       {
+        "loc": "3 Cloud identification and characterization",
+        "quote": "have a peak brightness temperature $>1~K$ ($\\sim51$ mJy for the typical synthesized beam sizes in these observations) above the merge level"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "SIGDISCONT experiments (0,1,2,5,999), added-noise experiments, duplicate-cloud comparison",
+     "evidence": [
+      {
+       "loc": "8 CPROPS parameter experiments",
+       "quote": "We systematically tested `SIGDISCONT` values of 0, 1, 2, 5, and 999."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive cloud properties",
+    "method": {
+     "value": "R (eta=1.91, deconvolved, extrapolated to 0 K, x1.2), linewidth, L_CO, M_lum=alpha_CO/R21 L_CO, M_vir=189 dV^2 R, alpha_vir, Sigma; bootstrap uncertainties",
+     "evidence": [
+      {
+       "loc": "3.1 Cloud properties",
+       "quote": "Uncertainties in the independent properties are computed using a bootstrap method with 1000 iterations."
+      }
+     ]
+    },
+    "software": [
+     "CPROPS"
+    ],
+    "key_parameters": [
+     {
+      "value": "D=1.93 Mpc; R21=0.7; alpha_CO,MW=4.35; Sigma100_GMC=0.69",
+      "evidence": [
+       {
+        "loc": "3.2 Improving physical parameter estimates",
+        "quote": "arriving at $\\Sigma^{100}_{\\rm GMC} = 0.69$, i.e. a GMC surface density of $69~\\ensuremath{M_{\\odot}}$ pc$^{-2}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Metallicity from radial gradient, CO(2-1)/CO(1-0)=0.7, R_H2/R_CO=1.2, truncated power-law density with beta=1",
+      "evidence": [
+       {
+        "loc": "3.1 Cloud properties",
+        "quote": "This formulation (cite: Solomon:1987uq) assumes a truncated power law density distribution $\\rho \\propto R^{-\\beta}$, taking $\\beta = 1$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Sizes below 5 pc discarded; final sample 121 clouds",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "We thus exclude all clouds with $R<5$ pc (approximately half our spatial resolution) from the majority of the remaining analysis presented here."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit mass spectrum",
+    "method": {
+     "value": "Maximum-likelihood fit of cumulative M_lum distribution with truncated and untruncated power laws above completeness limit 8e3 Msun",
+     "evidence": [
+      {
+       "loc": "5.1 GMC Mass Spectrum",
+       "quote": "We fit the cumulative mass distribution of $M_{\\rm lum}$ in our full sample of GMCs using the `mspecfit.pro` IDL code"
+      }
+     ]
+    },
+    "software": [
+     "mspecfit.pro (IDL)"
+    ],
+    "key_parameters": [
+     {
+      "value": "completeness limit 8e3 Msun",
+      "evidence": [
+       {
+        "loc": "5.1 GMC Mass Spectrum",
+        "quote": "We adopt a completeness limit of $8\\times10^3~\\ensuremath{M_{\\odot}}$ based on our observational sensitivity."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Maximum likelihood (Rosolowsky 2005) accounting for mass uncertainties",
+     "evidence": [
+      {
+       "loc": "5.1 GMC Mass Spectrum",
+       "quote": "implements a maximum likelihood algorithm to account for uncertainties in both cloud mass and the number distribution"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Truncated fit significantly better than untruncated",
+     "evidence": [
+      {
+       "loc": "5.1 GMC Mass Spectrum",
+       "quote": "The truncated power law is a significantly better fit to this cloud population than the standard form"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Fit Larson relations",
+    "method": {
+     "value": "Orthogonal distance regression in log space for size-linewidth, virial, mass-size and C_RdV-Sigma; Pearson correlation",
+     "evidence": [
+      {
+       "loc": "5.2.1 Size-linewidth relation",
+       "quote": "We formally fit a linear function to the logarithms of these two quantities using orthogonal distance regression (ODR)"
+      }
+     ]
+    },
+    "software": [
+     "ODR"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "ODR with errors in both variables",
+     "evidence": [
+      {
+       "loc": "5.2.1 Size-linewidth relation",
+       "quote": "which finds the maximum likelihood power law slope while accounting for errors in both variables simultaneously"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Monte Carlo of 10^4 random model clouds shows slope 0.27, r=0.37 for covariance test",
+     "evidence": [
+      {
+       "loc": "5.3 The size-linewidth coefficient and virial equilibrium",
+       "quote": "We fit this model population as described above, and now find a slope of 0.27 with a correlation coefficient of 0.37."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Resolution test vs M51",
+    "method": {
+     "value": "Smooth cubes to 40 pc and 2 km/s with IMSMOOTH, SPECSMOOTH, IMREBIN, rerun CPROPS",
+     "evidence": [
+      {
+       "loc": "6.3 The effects of resolution",
+       "quote": "we used the `CASA` tasks `IMSMOOTH`, `SPECSMOOTH`, and `IMREBIN` to convolve our fully cleaned data cubes"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "CPROPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux preserved in convolution",
+     "evidence": [
+      {
+       "loc": "6.3 The effects of resolution",
+       "quote": "Basic tests demonstrated that the flux in the original data was fully preserved in the convolution."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Estimate midplane ISM pressure",
+    "method": {
+     "value": "P_ISM from Elmegreen 1989 with self-gravitating stellar disk substitution, using literature HI, stellar and scale-height data, compared with Milky Way solar neighborhood and M51",
+     "evidence": [
+      {
+       "loc": "6.4 Midplane disk pressure",
+       "quote": "Following (cite: 1989ApJ...338..178E), we take the midplane gas pressure $P_{\\rm ISM}$ to be"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "sigma_g=12.5 km/s; h_*=310 pc; Sigma_g~7 Msun/pc^2",
+      "evidence": [
+       {
+        "loc": "6.4 Midplane disk pressure",
+        "quote": "This yields a stellar scale height of $h_* = 310$ pc, which we treat as constant with radius"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Atomic gas dominates molecular; constant stellar scale height; self-gravitating stellar disk",
+      "evidence": [
+       {
+        "loc": "6.4 Midplane disk pressure",
+        "quote": "we assume that the atomic gas dominates the molecular gas over large scales"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Milky Way value consistent with Boulares & Cox 1990",
+     "evidence": [
+      {
+       "loc": "6.4 Midplane disk pressure",
+       "quote": "Our result is consistent with the modeled estimate of the kinetic pressure at the solar radius by (cite: 1990ApJ...365..544B)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.0 (calibration)",
+    "used_for": {
+     "value": "Calibration, imaging (multiscale CLEAN), smoothing",
+     "evidence": [
+      {
+       "loc": "2.2 Data processing",
+       "quote": "Our data were processed and imaged entirely using the Common Astronomy Software Applications (CASA) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CPROPS",
+    "version": "modified (elliptical beam)",
+    "used_for": {
+     "value": "Cloud identification and property measurement",
+     "evidence": [
+      {
+       "loc": "3 Cloud identification and characterization",
+       "quote": "we use a modified version of the `CPROPS` algorithm (cite: Rosolowsky:2006cb)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "mspecfit.pro",
+    "version": "not stated",
+    "used_for": {
+     "value": "Maximum-likelihood mass spectrum fitting (IDL)",
+     "evidence": [
+      {
+       "loc": "5.1 GMC Mass Spectrum",
+       "quote": "using the `mspecfit.pro` IDL code"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of GMCs (full sample after cuts)",
+    "value": "253",
+    "uncertainty": "not stated",
+    "units": "clouds",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "our sample consists of 253 clouds across these 46 regions after removing duplicates (32 GMCs)"
+     }
+    ]
+   },
+   {
+    "quantity": "Final sample size (R>=5 pc)",
+    "value": "121",
+    "uncertainty": "not stated",
+    "units": "clouds",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "our final cloud catalog comprises 121 GMCs"
+     }
+    ]
+   },
+   {
+    "quantity": "Median ALMA/APEX recovered flux fraction",
+    "value": "0.63",
+    "uncertainty": "typical 0.2",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.5 Comparison to APEX single dish observations",
+      "quote": "We find a median $\\mathcal{F_{\\rm rec}}$ of 0.63 with typical uncertainties of about 0.2"
+     }
+    ]
+   },
+   {
+    "quantity": "Size-linewidth slope",
+    "value": "0.48",
+    "uncertainty": "0.05",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Size-linewidth | $0.48\\pm0.05$ | 0.55 | $4\\times10^{-11}$ | $0.5\\ensuremath{^{a}}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Virial relation slope (M_lum vs M_vir)",
+    "value": "1.00",
+    "uncertainty": "0.05",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2.2 Virial equilibrium",
+      "quote": "we find (again via ODR fitting) a slope of $1.00\\pm0.05$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass-size slope",
+    "value": "2.00",
+    "uncertainty": "0.12",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2.3 The mass-size relation",
+      "quote": "we find a power law slope of $2.00\\pm0.12$"
+     }
+    ]
+   },
+   {
+    "quantity": "C_RdV-Sigma slope",
+    "value": "0.43",
+    "uncertainty": "0.04",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 The size-linewidth coefficient and virial equilibrium",
+      "quote": "we find a best-fit slope of $0.43\\pm0.04$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median surface density (final sample)",
+    "value": "60.6",
+    "uncertainty": "not stated",
+    "units": "Msun pc^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| $\\Sigma$ | $M_{\\odot}$ pc$^{-2}$ | 13.8 | 397.0 | 60.6 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Truncated mass spectrum slope gamma",
+    "value": "-1.76",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1 GMC Mass Spectrum",
+      "quote": "we derive a slope of $\\gamma = -1.76\\pm0.07$ with a truncation mass $M_0 = 9.0\\pm2.2\\times10^5~\\ensuremath{M_{\\odot}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Truncation mass M0",
+    "value": "9.0e5",
+    "uncertainty": "2.2e5",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1 GMC Mass Spectrum",
+      "quote": "$M_0 = 9.0\\pm2.2\\times10^5~\\ensuremath{M_{\\odot}}$ and $N_u = 8.3\\pm3.0$ clouds"
+     }
+    ]
+   },
+   {
+    "quantity": "Untruncated slope",
+    "value": "-1.90",
+    "uncertainty": "0.05",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1 GMC Mass Spectrum",
+      "quote": "The best-fit straight power law has an exponent of $\\gamma=-1.90\\pm0.05$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median deconvolved aspect ratio",
+    "value": "2.4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "with a median value of 2.4 within the final sample"
+     }
+    ]
+   },
+   {
+    "quantity": "Median C_RdV NGC 300",
+    "value": "0.46",
+    "uncertainty": "scatter 0.14",
+    "units": "km s^-1 pc^-1/2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "6.2 The role of environment: NGC 300 vs. M51",
+      "quote": "the median $C_{R \\Delta V}$ in NGC 300 is 0.46 $\\rm{km}~\\rm{s}^{-1}$ pc$^{-1/2}$ with a scatter of 0.14"
+     }
+    ]
+   },
+   {
+    "quantity": "ISM pressure NGC 300",
+    "value": "8.4e3 at 0.9 kpc to 4.1e3 at 3.7 kpc",
+    "uncertainty": "median error 1.3e3",
+    "units": "K cm^-3",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "6.4 Midplane disk pressure",
+      "quote": "from a value of $P/k \\approx 8.4 \\times 10^3$ K cm$^{-3}$ at 0.9 kpc to $4.1 \\times 10^3$ K cm$^{-3}$ at 3.7 kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "ISM pressure Milky Way solar radius",
+    "value": "1.2e4",
+    "uncertainty": "range 8.5-19.8e3",
+    "units": "K cm^-3",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "6.4 Midplane disk pressure",
+      "quote": "we find the ISM midplane pressure at the solar radius is $1.2\\times10^4$ K cm$^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "3 sigma mass surface density sensitivity",
+    "value": "13.2",
+    "uncertainty": "not stated",
+    "units": "Msun pc^-2",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.3 Imaging and deconvolution",
+      "quote": "this implies a 3$\\sigma$ mass surface density sensitivity of $13.2~\\ensuremath{M_{\\odot}}$ pc$^{-2}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No systematic trends of cloud properties with galactocentric radius or environmental zone",
+    "evidence": [
+     {
+      "loc": "4.2 The GMC distribution across NGC 300",
+      "quote": "implying that GMC properties do not vary systematically across NGC 300"
+     }
+    ]
+   },
+   {
+    "value": "Observed C_RdV-Sigma correlation can result from Larson relations plus measurement scatter",
+    "evidence": [
+     {
+      "loc": "7 Summary and Conclusions",
+      "quote": "We demonstrate that this observed trend can be readily explained by the Larson relations holding in the presence of observational scatter"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do NGC 300 GMCs obey the Milky Way Larson relations?",
+    "experiment": "ODR fits of size-linewidth, virial and mass-size relations for 121 resolved clouds",
+    "result": "Slopes 0.48±0.05, 1.00±0.05, 2.00±0.12; median Sigma 60.6 Msun/pc^2",
+    "finding": "GMCs resemble Milky Way disk clouds, mostly virialized with near-constant surface density",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "they show an identical scaling relationship between size $R$ and linewidth $\\Delta V$ ($\\Delta V \\propto R^{0.48\\pm0.05}$), appear to be mostly in virial equilibrium"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the NGC 300 GMC mass spectrum like that of inner disks?",
+    "experiment": "Maximum-likelihood fit of cumulative mass function above 8e3 Msun",
+    "result": "gamma=-1.76±0.07 with truncation at ~9e5 Msun",
+    "finding": "Similar to inner Milky Way and spiral disks, shallower than outer disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The GMC mass spectrum is similar to those in the inner disks of spiral galaxies (including the Milky Way)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are differences between NGC 300 and M51 GMCs due to resolution?",
+    "experiment": "Smoothed NGC 300 cubes to 40 pc, 2 km/s and reanalyzed",
+    "result": "C_RdV preserved at 0.43; median Sigma lower (45 Msun/pc^2)",
+    "finding": "Differences are not resolution artifacts; likely environmental",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Summary and Conclusions",
+      "quote": "the observed difference in size-linewidth coefficient and median surface density between NGC 300 and M51 is not an artifact of resolution"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does midplane pressure explain GMC property differences?",
+    "experiment": "Computed P_ISM for NGC 300, Milky Way, compared to literature M51",
+    "result": "NGC 300 and MW ~1e4 K cm^-3; M51 >=10x higher",
+    "finding": "Pressure plausibly a key environmental variable",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6.4 Midplane disk pressure",
+      "quote": "This provides a plausible explanation for the notable differences in GMC populations"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Nearby southern galaxy allows <10 pc resolution for direct comparison with Milky Way clouds",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "By targeting a nearby, southern galaxy, we are able to achieve $< 10$ pc and $1~\\ensuremath{\\rm{km}~\\rm{s}^{-1}}$ resolution"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Natural weighting and multiscale CLEAN chosen to maximize sensitivity to extended GMC structure",
+    "evidence": [
+     {
+      "loc": "2.3 Imaging and deconvolution",
+      "quote": "we aimed to maximize sensitivity in order to most reliably identify and detect the full extent of GMCs, thus we used natural weighting"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Channel-by-channel CLEAN boxes tested and found equivalent, so single box used",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging and deconvolution",
+       "quote": "thus utilized the far less time-intensive method of a single `CLEAN` box for each data cube"
+      }
+     ]
+    },
+    {
+     "value": "SIGDISCONT of 0,1,2,999 rejected in favor of 5 as over-decomposing or not decomposing",
+     "evidence": [
+      {
+       "loc": "8 CPROPS parameter experiments",
+       "quote": "we select the most conservative value for `SIGDISCONT` of 5 which still separates clearly different clouds that happen to overlap in space or velocity"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission",
+     "evidence": [
+      {
+       "loc": "2.5 Comparison to APEX single dish observations",
+       "quote": "This means there may be low surface brightness CO emission we are unable to detect in the ALMA data."
+      }
+     ]
+    },
+    {
+     "value": "Sampled range of environments limited to inner rising rotation curve",
+     "evidence": [
+      {
+       "loc": "4.2 The GMC distribution across NGC 300",
+       "quote": "so the range of environments sampled in this study is somewhat limited"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Results depend on alpha_CO prescription and 1.2 size factor, which affect masses and surface densities",
+    "Decomposition choices (SIGDISCONT) influence mass spectrum and mass-size slopes",
+    "Pressure comparison relies on many literature inputs and assumed scale heights",
+    "Hand-drawn CLEAN masks introduce subjectivity",
+    "Only ~half of clouds resolved; deconvolved sizes near beam are unreliable"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2013.1.00586.S cited; archive data used (public implied by acknowledgement)",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00586.S (PI. C. Lada)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Hand-drawn CLEAN masks per region",
+    "Modified CPROPS version with elliptical beam (private communication)",
+    "Per-region alpha_CO values from F14",
+    "CASA version used for imaging"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB raw for 3 execution blocks, 48 fields",
+   "score_inferred": 3,
+   "score_reason": "Public data and detailed recipe, but manual masking, modified private CPROPS and inherited alpha_CO/F14 inputs hinder exact reproduction.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Manual iterative cleaning and a modified, unreleased CPROPS version make an exact redo difficult, though results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Rosolowsky & Leroy 2006 (cite: Rosolowsky:2006cb)",
+     "why": "CPROPS algorithm"
+    },
+    {
+     "citation": "Rosolowsky 2005 (cite: Rosolowsky:2005gt)",
+     "why": "mass spectrum fitting method"
+    },
+    {
+     "citation": "Cornwell 2008 (cite: 2008ISTSP...2..793C)",
+     "why": "multiscale CLEAN"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Faesi et al. 2016 (cite: Faesi:2016bl)",
+     "why": "SMA pilot study of NGC 300 with same procedures"
+    },
+    {
+     "citation": "Faesi et al. 2014 (cite: Faesi:2014ib)",
+     "why": "APEX survey and alpha_CO/metallicity inputs"
+    },
+    {
+     "citation": "Colombo et al. 2014 (cite: 2014ApJ...784....3C)",
+     "why": "M51 PAWS GMC catalog for comparison"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PAWS (M51)",
+    "APEX NGC 300 survey (F14)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f98c560342b18063b4e92a3fe3544e0e",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:53",
+  "usage": {
+   "input_tokens": 94503,
+   "output_tokens": 14302,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.16662,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 104,
+  "quotes_ok": 104,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 16,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 95,
+   "stated": 77,
+   "rate": 0.811
+  },
+  "evidence_ok": true
+ }
+}

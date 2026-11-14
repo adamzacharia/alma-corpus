@@ -1,0 +1,199 @@
+{
+ "bibcode": "2018ApJ...869...71Z",
+ "title": "Constraining the Volume Density of Dusty Star-forming Galaxies through the First 3 mm Number Counts from ALMA",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aaecd2",
+ "arxiv_id": "1810.12300",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the 3 mm galaxy number counts from archival ALMA Band 3 data, and what do they imply for the volume density of DSFGs and their contribution to the CSFRD at z>4?",
+ "alma_project_codes": [
+  "2013.1.00092.S",
+  "2015.1.00853.S",
+  "2016.1.00171.S",
+  "2016.1.00324.L",
+  "2016.1.00698.S",
+  "2015.1.01528.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84-116 GHz, 2.59-3.57 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "theta >= 1.0 arcsec",
+  "sensitivity": "continuum rms < 0.2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Backward evolution model of the submm sky (IRLF evolution, SED assignment) used for predictions",
+    "evidence": [
+     {
+      "loc": "4 Constraining the infrared galaxy luminosity function",
+      "quote": "we use the estimated galaxy number counts and the predictions from the backward evolution model presented by (cite: Casey2018a; Casey2018b)"
+     }
+    ]
+   },
+   "citation": "(cite: Casey2018a; Casey2018b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select archival maps",
+   "method": "Query ALMA archive for Band 3 data in UDS, CDF-S, COSMOS with resolution and sensitivity cuts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Blind source extraction",
+   "method": "SNR maps from uncorrected PB maps, noise = 68th percentile of pixels, 5 sigma threshold, iterative masking",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "threshold 5 sigma; radius 1.3 x primary beam FWHM"
+   ],
+   "assumptions": [
+    "Fluxes scaled to 3 mm with S proportional to nu^(2+beta), beta=1.8"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Contamination, completeness, flux boosting",
+   "method": "Inverted maps for false detections; Monte Carlo source injection (100 realizations per SNR bin)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Cumulative number counts and fit",
+   "method": "N_i=(1-f_cont)/(zeta A_eff) summed; Monte Carlo and Poisson errors; double power law fit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Constrain IRLF evolution",
+   "method": "Fit model number counts for psi2 (-6.5 to -2.0) and z_cutoff (9 to 5) by maximum likelihood with flat priors",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thick SEDs at rest-frame lambda<100 um"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Sources detected >5 sigma",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Source extraction",
+     "quote": "The 16 serendipitously-detected 3 mm sources at $>5\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Effective survey area",
+   "value": "198",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA Band 3 archival data",
+     "quote": "This compilation covers an effective area of $198\\,\\rm arcmin^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Double power-law alpha",
+   "value": "1.4",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Number Counts",
+     "quote": "$\\alpha=1.4\\pm0.5$ and $\\beta=3.4\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Double power-law S0",
+   "value": "0.11",
+   "uncertainty": "+0.22/-0.03",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Number Counts",
+     "quote": "$S_0=0.11^{+0.22}_{-0.03}\\rm\\,mJy$"
+    }
+   ]
+  },
+  {
+   "quantity": "psi2 best fit",
+   "value": "-4.2",
+   "uncertainty": "+1.6/-0.8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 Constraining the infrared galaxy luminosity function",
+     "quote": "best-fit value of $\\Psi_2=-4.2^{+1.6}_{-0.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "DSFG share of CSFRD at z~4-5",
+   "value": "35-85",
+   "uncertainty": "68% confidence interval",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 Constraining the infrared galaxy luminosity function",
+     "quote": "DSFGs contribute $\\approx35-85\\%$ of the total CSFRD at $z\\approx4-5$"
+    }
+   ]
+  },
+  {
+   "quantity": "False detection rate at 5 sigma",
+   "value": "<=5",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 Completeness",
+     "quote": "a false detection rate of $\\lesssim5\\%$ is expected at our adopted threshold"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact per-map list of 135 maps and their rms",
+  "SNR threshold used for candidate pixels beyond 5 sigma, mask handling details",
+  "Casa version",
+  "Flux deboosting prescription details",
+  "Model code/grid for psi2 and z_cutoff fit",
+  "Redshift info for the sources used"
+ ],
+ "missing_for_reproduction": [
+  "Code for extraction and model",
+  "Exact map list",
+  "Model grid"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear recipe, but the model code and details are missing.",
+ "rediscovery_reason": "Public archival data and numeric catalog and counts, though the model step is hard.",
+ "source_card": "cards/2018ApJ...869...71Z/sonnet/card.md"
+}

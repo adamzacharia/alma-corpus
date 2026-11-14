@@ -1,0 +1,173 @@
+{
+ "bibcode": "2020A&A...642A..96P",
+ "title": "A search for millimeter emission from the coldest and closest brown dwarf with ALMA",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202038587",
+ "arxiv_id": "2009.05414",
+ "fields": [
+  "stellar_physics",
+  "exoplanets"
+ ],
+ "question": "Does the coldest known brown dwarf W0855 emit steady or pulsed millimeter radio emission at ~93 GHz, and what does this imply for radio astrometry and its magnetic field?",
+ "alma_project_codes": [
+  "2019.1.00202.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~93 GHz, 3.2 mm)",
+  "arrays": "44 ALMA 12 m antennas",
+  "angular_resolution": "3.081\"x2.559\" synthesised beam",
+  "sensitivity": "7.3 uJy/beam steady; 88 uJy per 30 s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA 4-8 GHz upper limit on W0855 steady flux of 7.2 uJy, plotted for comparison",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "reported for W0855 a VLA 4-8 GHz upper limit on the steady flux of 7.2 $\\mu$Jy"
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.487.1994K)"
+  },
+  {
+   "what": {
+    "value": "TVLM 513 detection at 56±12 uJy with ALMA, used for flux scaling",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "has been detected with ALMA at the 56$\\pm$12 $\\mu$Jy level by (cite: 2015ApJ...815...64W)"
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJ...815...64W)"
+  },
+  {
+   "what": {
+    "value": "Proper motion of W0855 used for phase centre",
+    "evidence": [
+     {
+      "loc": "2.1 Band 3 observations in December 2019",
+      "quote": "taking the proper motion as measured by (cite: 2016AJ....152...78L) into account"
+     }
+    ]
+   },
+   "citation": "(cite: 2016AJ....152...78L)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image W0855 field alone",
+   "method": "tclean mfs, natural weighting, single field",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "pixel 0.4\"; RMS 11.8 uJy vs expected 8 uJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Remove 3C 209 sidelobes via mosaic",
+   "method": "Re-image combining 3C 209 field and target field as mosaic",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Steady-emission upper limit",
+   "method": "3 x noise RMS",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Search for pulsed emission",
+   "method": "188 images of 30 s bins; flux measured in a beam-shaped region at W0855 position; light curve; Gaussian distribution check",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "30 s bins"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Noise RMS, steady (mosaic image)",
+   "value": "7.3",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Data analysis",
+     "quote": "reduced the noise RMS in the region around the nominal position of W0855 to 7.3 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on steady flux",
+   "value": "21.9",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 Derivation of an upper limit on the steady flux",
+     "quote": "we obtain an upper limit of 21.9 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on pulsed flux (30 s)",
+   "value": "264",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Search for pulsed emission",
+     "quote": "can be placed at 264 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "30 s image noise RMS",
+   "value": "88",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Search for pulsed emission",
+     "quote": "noise RMS of 88 $\\mu$Jy that we measured on average in the individual 30 s images"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Masking/clean threshold and iteration count for tclean",
+  "Mosaic details (phase centres, weighting of the 3C 209 field, gridder)",
+  "Method for measuring flux in the beam-shaped region of the 30 s images",
+  "Whether 3C 209 was imaged with same deconvolver (hogbom assumed not stated)",
+  "Image size",
+  "Pipeline flagging beyond standard"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and mosaic settings",
+  "Flux-measurement procedure in 30 s images"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Simple dataset and workflow with key numbers stated; some imaging parameters missing.",
+ "rediscovery_reason": "Single project, standard pipeline, numeric noise and upper limits to reproduce.",
+ "source_card": "cards/2020A%26A...642A..96P/sonnet/card.md"
+}

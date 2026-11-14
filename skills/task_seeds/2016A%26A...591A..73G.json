@@ -1,0 +1,292 @@
+{
+ "bibcode": "2016A&A...591A..73G",
+ "title": "ALMA finds dew drops in the dusty spider's web",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201527647",
+ "arxiv_id": "1602.04823",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the dust, atomic carbon, CO(7-6) and H2O properties of the Spiderweb radio galaxy and its surroundings, and what do they say about shocks, molecular gas and star formation?",
+ "alma_project_codes": [
+  "2012.1.01087.S"
+ ],
+ "data": {
+  "bands": "Band 6 (Cycle 1)",
+  "arrays": "not stated",
+  "angular_resolution": "continuum beam 0.69'' x 0.44'', PA 89.3 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(1-0) H2 mass ~6e10 Msun and L'CO(1-0)=6.5e10 K km/s pc^2",
+    "evidence": [
+     {
+      "loc": "4.1.3 Possible causes",
+      "quote": "$L^{\\prime}_{\\rm CO(1-0)}=6.5\\times 10^{10}$ K km/s pc$^2$ (cite: emonts13)"
+     }
+    ]
+   },
+   "citation": "(cite: emonts13)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of lensed galaxies with CO(7-6), [CI], H2O fluxes and magnifications",
+    "evidence": [
+     {
+      "loc": "4.1.2 Line ratios",
+      "quote": "find nine lensed sub-millimetre galaxies (SMG) and QSOs"
+     }
+    ]
+   },
+   "citation": "(cite: lupu12; danielson11; weiss03; omont13; vanderwerf11; riechers13)"
+  },
+  {
+   "what": {
+    "value": "850 micron dust mass absorption coefficient 0.076 m^2/kg",
+    "evidence": [
+     {
+      "loc": "4.3 Mass Estimates",
+      "quote": "850 $\\mu$m absorption coefficient of 0.076 m$^2$ kg$^{-1}$ from (cite: stevens03)"
+     }
+    ]
+   },
+   "citation": "(cite: stevens03)"
+  },
+  {
+   "what": {
+    "value": "Radio fluxes 8.2 GHz 1.88 mJy (core), 5.9 mJy (companion #10); 36.5 GHz from Emonts in prep",
+    "evidence": [
+     {
+      "loc": "3.1.1",
+      "quote": "$S(8.2\\,\\text{GHz)} = 1.88$ mJy (cite: pentericci97)"
+     }
+    ]
+   },
+   "citation": "(cite: pentericci97); Emonts et al. in prep"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes",
+   "method": "Natural-weighted continuum map excluding 254.9-265.7 GHz; line cubes binned, UV-plane continuum subtraction (except H2O)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities",
+   "method": "Double 2D Gaussian fit with centres fixed at [CI] component peaks; single Gaussian for companion #10",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit line profiles and integrate fluxes",
+   "method": "Lorentzian for [CI] comp 1, Gaussians for CO(7-6) and comp 2; fluxes integrated over stated velocity ranges avoiding line blending",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare CO(7-6)/[CI] ratio and H2O/IR with lensed literature sample",
+   "method": "Normalise line luminosities by IR luminosity, plot against literature sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "no differential lensing between IR and line emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive H2 gas mass from [CI]2-1",
+   "method": "Papadopoulos et al. 2004 formula",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X[CI]=3e-5, Q21=0.57, A21=2.68e-7 s^-1"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive dust mass, FIR luminosity and SFR",
+   "method": "Single greybody dust mass and L_FIR following De Breuck 2003, SFR = L_FIR/1e10",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta=1.5, Td=40 K, delta_MF=1, delta_SB=1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "246 GHz continuum flux density of HzRG",
+   "value": "1.78",
+   "uncertainty": "0.29",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1",
+     "quote": "yields the flux density of $1.78\\pm0.29$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion #10 continuum flux density",
+   "value": "0.19",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.2",
+     "quote": "we find a flux density of $0.19\\pm0.01$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI]2-1 line flux, components 1+2",
+   "value": "1.30",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table lines",
+     "quote": "| 2–1        | 809.34    | 11:40:48.33 | -26:29:8.582  | $1.30\\pm0.03$   | $420\\pm30$  | $280\\pm40$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI]2-1 FWHM component 1",
+   "value": "270",
+   "uncertainty": "15",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "FWHM) of $270\\pm15$ km/s and a redshift of $z=2.1606\\pm0.0041$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 mass from [CI]2-1",
+   "value": "3.3e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Mass Estimates",
+     "quote": "We find a total H$_2$ molecular gas mass for both components of $3.3\\times10^{10}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG dust mass",
+   "value": "6.1e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Mass Estimates",
+     "quote": "we derive a dust mass of $M_d=6.1\\times10^{8}$ M$_{\\odot}$ for the H$z$RG"
+    }
+   ]
+  },
+  {
+   "quantity": "HzRG SFR upper limit",
+   "value": "<440",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Star-formation rate",
+     "quote": "derive the SFRs of $<440$ M$_{\\odot}$ yr$^{-1}$ for the H$z$RG"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O line flux West",
+   "value": "0.05",
+   "uncertainty": "0.01",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table lines",
+     "quote": "| H$_2$O     | 752.03    | 11:40:48.82 | -26:29:9.580  | $0.05\\pm0.01$   | $230\\pm50$  | —          |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O line flux East",
+   "value": "0.1",
+   "uncertainty": "0.02",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table lines",
+     "quote": "| H$_2$O     | 752.03    | 11:40:48.11 | -26:29:9.970  | $0.1\\pm0.02$   | $350\\pm70$  | —          |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) flux companion #10",
+   "value": "0.08",
+   "uncertainty": "0.01",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "integrated line flux from -170 km/s to 150 km/s of 0.08$\\pm$0.01 Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on size of component 2 broad region",
+   "value": "<60",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Mass Estimates",
+     "quote": "we find that $R<60$ pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum subtraction",
+  "Imaging task, cell and image size, masking and deconvolution settings",
+  "CASA version",
+  "Flux calibrator and phase calibrator identities and flux scale uncertainty",
+  "How line profiles were fit (fitter, errors) and how the SFR conversion handles the IMF",
+  "Luminosity distance and IR luminosities adopted for the comparison sample"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Line-free channels",
+  "CASA version",
+  "Fit procedure details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Single archival-type dataset and explicit equations, but imaging and fitting details are sparse.",
+ "rediscovery_reason": "Single-project data likely public, with numeric fluxes and masses to compare, though imaging details are sparse.",
+ "source_card": "cards/2016A%26A...591A..73G/sonnet/card.md"
+}

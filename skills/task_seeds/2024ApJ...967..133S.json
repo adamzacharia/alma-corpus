@@ -1,0 +1,602 @@
+{
+ "bibcode": "2024ApJ...967..133S",
+ "title": "Hidden Gems on a Ring: Infant Massive Clusters and Their Formation Timeline Unveiled by ALMA, HST, and JWST in NGC 3351",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad3de6",
+ "arxiv_id": "2401.14453",
+ "fields": [
+  "star_formation",
+  "nearby_galaxies"
+ ],
+ "question": "Identify and characterize forming (embedded, infant) young massive clusters in the central starburst ring of NGC 3351 using matched-resolution ALMA, HST and JWST data, and infer their evolutionary timeline and large-scale context",
+ "alma_project_codes": [
+  "2021.1.00059.S",
+  "2013.1.00634.S",
+  "2015.1.00956.S",
+  "2022.1.00159.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 7",
+  "arrays": "12-m array (Bands 3 and 7) plus 7-m array (Band 7)",
+  "angular_resolution": "0.1″–0.2″ (5–10 pc); final beams 0.17″ (continua), 0.10″ (CO 3-2), 0.19″ (Band 3 lines), 0.12″ (Band 7 HCO+ and CS)",
+  "sensitivity": "Continuum 1-sigma ~6.5–6.8 uJy/beam (Band 3), ~80–100 uJy/beam (Band 7); line cubes 0.3–2.5 K per channel (see Table 2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy distance 9.96 Mpc",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Distance | $9.96\\,(\\pm0.01)$ Mpc"
+     }
+    ]
+   },
+   "citation": "Anand_etal_2021"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity, inclination and position angle of NGC 3351",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Systemic velocity | $775\\,(\\pm5)\\rm\\;km/s$"
+     }
+    ]
+   },
+   "citation": "Lang_etal_2020"
+  },
+  {
+   "what": {
+    "value": "Galaxy stellar mass and SFR",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Stellar mass | $2.3\\,(\\pm0.6){\\times}10^{10}\\;\\mbox{$\\rm M_\\odot$}$"
+     }
+    ]
+   },
+   "citation": "Leroy_etal_2021a"
+  },
+  {
+   "what": {
+    "value": "Updated PHANGS-HST star cluster catalog with SED-fit ages and masses (class 1 and 2 clusters used)",
+    "evidence": [
+     {
+      "loc": "2.2 HST Data",
+      "quote": "we take advantage of an updated PHANGS-HST star cluster catalog presented in (cite: Maschmann_etal_2024) and (cite: Thilker_etal_2024)"
+     }
+    ]
+   },
+   "citation": "Maschmann_etal_2024; Thilker_etal_2024; Lee_etal_2022"
+  },
+  {
+   "what": {
+    "value": "Catalog of compact 3.35 micron JWST sources (in preparation)",
+    "evidence": [
+     {
+      "loc": "2.3 JWST Data",
+      "quote": "following the methodology of (cite: Rodriguez_etal_2023)"
+     }
+    ]
+   },
+   "citation": "J. Rodriguez et al. (in prep.); Rodriguez_etal_2023"
+  },
+  {
+   "what": {
+    "value": "Archival lower-resolution CO(2-1) data used to build the cleaning mask",
+    "evidence": [
+     {
+      "loc": "2.1 Calibration and Imaging",
+      "quote": "which is constructed based on archival, lower-resolution $\\mathrm{CO}\\,(2\\text{--}1)$ data (cite: Sun_etal_2020a; Leroy_etal_2021a)"
+     }
+    ]
+   },
+   "citation": "Sun_etal_2020a; Leroy_etal_2021a"
+  },
+  {
+   "what": {
+    "value": "1.4 GHz MERLIN upper limit of 0.30 mJy (6 sigma) for compact sources",
+    "evidence": [
+     {
+      "loc": "4.2 Stellar Mass",
+      "quote": "they put a $6\\sigma$ upper limit of $0.30\\,\\mbox{$\\rm mJy$}$ for any compact source at 1.4 GHz."
+     }
+    ]
+   },
+   "citation": "Hagele_etal_2010"
+  },
+  {
+   "what": {
+    "value": "Band 3 C-2 configuration data (archival project)",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "The Band 3 C-2 data come from an archival project (cite: Gallagher_etal_2018a)."
+     }
+    ]
+   },
+   "citation": "Gallagher_etal_2018a"
+  },
+  {
+   "what": {
+    "value": "Chandra X-ray hot gas energy ~f^1/2 1e54 erg and MUSE ionized outflow (70 km/s, 6e52 erg) used for outflow comparison",
+    "evidence": [
+     {
+      "loc": "5.3 YMCs in Large-scale Context",
+      "quote": "identified and modelled a stream of warm ionized gas outflow, with a radial velocity of ${\\sim}70\\,\\mbox{$\\rm km~s^{-1}$}$ and kinetic energy of ${\\sim}6\\times10^{52}\\,$erg."
+     }
+    ]
+   },
+   "citation": "Swartz_etal_2006; Leaman_etal_2019"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA visibilities into continuum maps and line cubes",
+   "method": "Observatory-supplied calibration scripts and CASA pipeline; line and continuum subsets extracted, combined across array configurations and imaged with a modified PHANGS-ALMA imaging pipeline (two-stage tclean); primary-beam corrected, beams circularized, cubes converted to brightness temperature",
+   "software": [
+    "CASA",
+    "tclean",
+    "PHANGS-ALMA imaging pipeline"
+   ],
+   "key_parameters": [
+    "Line cubes cut to +/-300 km/s around systemic velocity of 778 km/s",
+    "Channel widths: 10 km/s for HCN, HCO+, CS; native 0.85 km/s for CO(3-2) (also a 5 km/s version)",
+    "Clean depth: multiscale to S/N=4, then single-scale to S/N=1 (CO 3-2) or 2 (others)",
+    "Briggs robust 1.0; uniform weighting for CO(3-2)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify compact continuum sources (YMC candidates)",
+   "method": "Select peaks above S/N=5 in the 93 GHz and 350 GHz continuum images, merge counterparts, separate a blended pair by eye",
+   "software": [],
+   "key_parameters": [
+    "Peak S/N >= 5 within r < 500 pc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure continuum fluxes, sizes and line luminosities/widths of each source",
+   "method": "2D Gaussian fits with imfit inside circular apertures; elliptical apertures from the fits to extract spectra; local background annulus subtracted; line integrated flux and effective width measured using CO(3-2) as velocity prior",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Circular aperture of diameter 0.34″ (twice the beam FWHM); imfit dooff=True; beam deconvolution attempted",
+    "Isolated-source background annuli: inner/outer radii 2x/3x aperture radii"
+   ],
+   "assumptions": [
+    "Line emission is spatially associated with thermal dust, so 350 GHz apertures are used where available"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Cross-match ALMA sources with HST clusters and JWST sources",
+   "method": "HST class 1-2 clusters matched if within the ALMA source major-axis HWHM; JWST 3.35 micron catalog matched with the same criterion (closest if several), plus visual inspection of multi-band JWST images",
+   "software": [],
+   "key_parameters": [
+    "HST classes 1 and 2 only (compact clusters)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive gas masses from 350 GHz dust continuum",
+   "method": "Two-component (dust + free-free) decomposition to check dust dominance at 350 GHz; optically thin dust optical depth tau350 = S350/(Omega B_nu(Tdust)); gas mass = tau350/(kappa350 D/G) x Omega d^2",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 130 K (~50% uncertainty)",
+    "kappa350 = 1.9 cm^2/g; D/G = 1/100",
+    "Spectral indices alpha = 4.0 (dust), -0.15 (free-free)"
+   ],
+   "assumptions": [
+    "Optically thin dust (tau350 ~ 0.001–0.005); synchrotron ignored in dust/free-free split",
+    "Systematic gas mass uncertainty ~0.5 dex"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive stellar masses from 93 GHz free-free emission",
+   "method": "Treat 93 GHz flux as free-free, convert to ionizing photon rate Q0 (Emig et al. 2020 formula), then to stellar mass with a Starburst99-based conversion M* = Q0 / 2.2e46 s^-1 Msun",
+   "software": [
+    "Starburst99"
+   ],
+   "key_parameters": [
+    "T_e = 6000 K",
+    "Synchrotron spectral index -0.75 for MERLIN-based bound on synchrotron fraction"
+   ],
+   "assumptions": [
+    "3 Myr old stellar population, Kroupa IMF, solar metallicity; negligible ionizing photon escape",
+    "Stellar age choice changes masses by 0.3–0.6 dex (zero age: 2x smaller; 5 Myr: 5x larger)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive size, total mass, gas fraction, virial mass, escape velocity, free-fall time, gas surface density and Eddington ratio",
+   "method": "Half-light radius from imfit; M_tot = M_gas + M_star; M_vir = 5 sigma^2 R_hl/(f G); v_esc = sqrt(2G(M_tot/3.4)/R_hl); rho_tot = (M_tot/3.4)/(4/3 pi R_hl^3) and t_ff = sqrt(3 pi/(32 G rho)); Sigma_gas = M_gas/(pi R_hl^2/ln2); Eddington ratio from Sigma_gas and f_gas",
+   "software": [],
+   "key_parameters": [
+    "Virial geometric factor f = 5/3 (rho ~ r^-2); sigma from HCN(1-0) effective width",
+    "Psi ~ 1e3 Lsun/Msun for ages <~3 Myr (Starburst99, Kroupa IMF)"
+   ],
+   "assumptions": [
+    "Uniform gas sphere with central star cluster for the Eddington ratio"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Classify YMC candidates and infer an evolutionary timeline",
+   "method": "Classify sources into four types from presence/absence at 350 GHz, 93 GHz, JWST and HST; compare number counts of ALMA YMCs and HST clusters (<10 Myr) in a matched mass range; durations proportional to counts and scaled to a 10 Myr reference window",
+   "software": [],
+   "key_parameters": [
+    "HST mass thresholds 10^4.5 and 10^5 Msun"
+   ],
+   "assumptions": [
+    "(1) SFR of the ring constant over 10 Myr; (2) combined ALMA+HST sample complete over matched mass range up to ~10 Myr; (3) no substantial YMC loss"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Place YMCs in ring context: SFR share, azimuthal trends, outflow energetics",
+   "method": "Divide total YMC stellar mass by the 93 GHz-bright duration for an instantaneous SFR; examine azimuthal distribution vs ring models (popcorn vs pearls on a string); compare Starburst99 mechanical energy (with 2% retention) to reported outflow energies",
+   "software": [
+    "Starburst99"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "4–6 Myr duration of the 93 GHz-bright phase"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of ALMA continuum sources identified (93 GHz / 350 GHz / unique)",
+   "value": "15 at 93 GHz, 11 at 350 GHz, 18 unique (8 common)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Identifying ALMA Sources",
+     "quote": "We identify 15 sources at 93 GHz and 11 at 350 GHz."
+    },
+    {
+     "loc": "3.1 Identifying ALMA Sources",
+     "quote": "we identify in total 18 ALMA sources"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA sources with HST cluster counterparts",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Cross-matching ALMA–JWST–HST Sources",
+     "quote": "This cross-matching scheme yields six ALMA sources with HST cluster counterparts"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA sources with JWST counterparts",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Cross-matching ALMA–JWST–HST Sources",
+     "quote": "we find in total eight unique cross-matched sources"
+    }
+   ]
+  },
+  {
+   "quantity": "93 GHz flux density range",
+   "value": "0.03–0.15",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Characterizing ALMA Sources",
+     "quote": "The source fluxes range over $S_{93}=0.03{-}0.15$ mJy at 93 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Half-light radii at 93 and 350 GHz",
+   "value": "1.4–6.0 pc (93 GHz); 2.6–7.6 pc (350 GHz)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Characterizing ALMA Sources",
+     "quote": "ranges over $R_\\mathrm{hl,\\,93}=1.4{-}6.0$ pc and $R_\\mathrm{hl,\\,350}=2.6{-}7.6$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "350 GHz dust optical depth",
+   "value": "0.001–0.005",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Gas Mass",
+     "quote": "our estimated optical depths of $\\tau_{350}\\approx0.001\\text{--}0.005$ for all sources make this approximation appropriate."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas masses (11 sources detected at 350 GHz)",
+   "value": "3e4–2e5",
+   "uncertainty": "~0.5 dex systematic",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Gas Mass",
+     "quote": "We find gas masses of $3\\times10^4{-}2\\times10^5\\;\\mbox{$\\rm M_\\odot$}$ for the 11 YMCs detected at 350 GHz."
+    },
+    {
+     "loc": "4.1 Gas Mass",
+     "quote": "we expect an overall systematic uncertainty of $\\sim$0.5 dex on these gas mass estimates."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar masses (15 sources detected at 93 GHz)",
+   "value": "2e4–1e5",
+   "uncertainty": "0.3–0.6 dex systematic (age)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Stellar Mass",
+     "quote": "we find stellar masses of $2\\times10^4{-}1\\times10^5\\;\\mbox{$\\rm M_\\odot$}$ for the 15 YMCs with detectable 93 GHz emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Median offset of 93 GHz-based vs HST SED-based stellar mass",
+   "value": "~0.5 dex lower",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Stellar Mass",
+     "quote": "systematically lower than the HST SED-based mass estimates (median offset ${\\sim}0.5$ dex,"
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass M_tot",
+   "value": "0.3–3e5",
+   "uncertainty": "~0.5 dex systematic",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Total Mass & Gas Fraction",
+     "quote": "we find total masses of $M_\\mathrm{tot} \\equiv M_\\mathrm{gas}+M_\\star \\approx 0.3{-}3\\times10^5\\;\\mbox{$\\rm M_\\odot$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas",
+   "value": "<~25% to >~70%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Total Mass & Gas Fraction",
+     "quote": "ranges from $\\lesssim$25% to $\\gtrsim$70%."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial masses (12 sources with HCN measurements)",
+   "value": "1e5–1e6",
+   "uncertainty": "large statistical and systematic",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5 Virial Mass",
+     "quote": "We find virial masses of $10^5{-}10^6\\,\\mbox{$\\rm M_\\odot$}$ for the 12 YMC candidates with $\\mathrm{HCN}\\,(1\\text{--}0)$ line measurements available"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0) velocity dispersion",
+   "value": "8–16",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Conclusions",
+     "quote": "and gas velocity dispersion ($8{-}16\\;\\mbox{$\\rm km~s^{-1}$}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape velocity",
+   "value": "6–10",
+   "uncertainty": "~0.3 dex",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.6 Escape Velocity",
+     "quote": "We find escape velocities of $6{-}10\\;\\mbox{$\\rm km~s^{-1}$}$ among all YMC candidates"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fall time",
+   "value": "0.5–1",
+   "uncertainty": "~0.3 dex systematic",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.7 Volume Density & Free-fall Time",
+     "quote": "The corresponding free-fall times are $0.5{-}1$ Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas surface density (350 GHz detections)",
+   "value": "500–2000",
+   "uncertainty": "~0.5 dex systematic",
+   "units": "Msun/pc^2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.8 Gas Surface Density",
+     "quote": "We find gas surface densities of $500{-}2000\\,\\mbox{$\\rm M_\\odot~pc^{-2}$}$ for the YMC candidates with 350 GHz continuum detections"
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington ratio f_Edd",
+   "value": "~0.2–0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.8 Gas Surface Density",
+     "quote": "we estimate $f_\\mathrm{Edd}\\sim0.2{-}0.7$ for the YMC candidates with associated gas"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied V-band extinction",
+   "value": "~30–110 (15–55 if half the gas is in front)",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.8 Gas Surface Density",
+     "quote": "also imply $V$-band extinctions of $\\sim$30–110 mag"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of YMC types (Type 1 / 2 / 3 / 4 / unclassified)",
+   "value": "3 / 3 / 5 / 3 / 4",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6 Conclusions",
+     "quote": "starless clumps ($N=3$), clump–H II region complexes (3), clump–H II region–cluster complexes (5), and exposed H II region–cluster complexes (3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stage durations for Types 1–4",
+   "value": "1–1.7, 1–1.7, 1.8–2.8, 1–1.7",
+   "uncertainty": "preliminary, order-of-magnitude",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2 YMCs versus Evolved Clusters",
+     "quote": "we find that the typical duration of the four stages (mapping to Types 1–4) are 1–1.7 Myr, 1–1.7 Myr, 1.8–2.8 Myr, and 1–1.7 Myr, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "HST clusters in the central region (r_gal < 500 pc)",
+   "value": "42 total, 37 with SED-based ages < 10 Myr",
+   "uncertainty": "not stated",
+   "units": "clusters",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2 YMCs versus Evolved Clusters",
+     "quote": "The HST cluster catalog includes in total 42 star clusters in the central region of NGC 3351"
+    }
+   ]
+  },
+  {
+   "quantity": "Total YMC stellar mass (excluding 4 possible SNRs)",
+   "value": "7e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.3 YMCs in Large-scale Context",
+     "quote": "The total stellar mass of all YMCs (excluding the four sources that are possibly SNRs) is $7\\times10^5\\,\\mbox{$\\rm M_\\odot$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Instantaneous SFR from YMCs",
+   "value": "0.1–0.2 (~50% of ring SFR)",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.3 YMCs in Large-scale Context",
+     "quote": "Dividing these two numbers gives us an instantaneous SFR of 0.1–0.2 $\\mbox{$\\rm M_\\odot~yr^{-1}$}$, which is already $\\sim$50% of the total SFR of the starburst ring."
+    }
+   ]
+  },
+  {
+   "quantity": "YMC mechanical luminosity and deposited energy over 4 Myr",
+   "value": "~2e40 erg/s; ~3e54 erg",
+   "uncertainty": "order-of-magnitude",
+   "units": "erg/s; erg",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.3 YMCs in Large-scale Context",
+     "quote": "can together produce a mechanical luminosity of ${\\sim}2\\times10^{40}\\;\\mathrm{erg\\;s^{-1}}$, or a total deposited mechanical energy of ${\\sim}3\\times10^{54}\\,$erg over 4 Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA SPW layout, which 2013.1.00634.S / 2015.1.00956.S / 2022.1.00159.S execution blocks (if any) were used and which one is the archival C-2 project",
+  "Flux, bandpass and phase calibrators and flux-scale uncertainty; whether any self-calibration was applied",
+  "Line-free channel selection per SPW for continuum extraction and continuum fitting",
+  "Output channel width / number of channels per SPW chosen for continuum imaging",
+  "Cell size, image size, restoring beams before circularization, multiscale scales, tclean niter and thresholds",
+  "Details of the cleaning mask (CO 2-1 threshold) and how S/N thresholds were set",
+  "Velocity ranges adopted per source when integrating lines and the exact effective-width recipe",
+  "How the two-component dust+free-free decomposition was solved per source",
+  "Exact counts of HST clusters above the two mass thresholds and by age that enter the timeline durations",
+  "Access to the in-preparation JWST 3.35 micron catalog (Rodriguez et al.) and updated PHANGS-HST SED-fit catalog (Thilker et al.)",
+  "Uncertainty propagation used for derived quantities (only systematic dex values given)"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters (cell, imsize, niter, thresholds, scales) and line-free channel lists",
+  "Which ALMA project / execution blocks supply the C-2 and 7m data (2013.1.00634.S, 2015.1.00956.S, 2022.1.00159.S roles unstated)",
+  "In-preparation catalogs (JWST 3.35 micron sources; updated PHANGS-HST cluster ages and Halpha decision tree)",
+  "Per-source velocity windows for line integration and details of the dust/free-free decomposition",
+  "Cluster counts per mass threshold and age bin used for the timeline"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Observation and analysis choices (S/N=5 detection, imfit, mass formulas and constants) are well specified and results are numeric, but imaging parameters, calibrator and line-free channels are not given and HST/JWST catalogs partly depend on in-preparation work",
+ "rediscovery_reason": "The ALMA-only chain (continuum detection, imfit fluxes and sizes, gas and stellar masses, derived quantities) uses archival-type data and fully stated formulas with numeric tables to check; HST/JWST-dependent steps would need substitute catalogs",
+ "source_card": "cards/2024ApJ...967..133S/sonnet/card.md"
+}

@@ -1,0 +1,444 @@
+{
+ "bibcode": "2024A&A...692A..34C",
+ "title": "A kiloparsec-scale ordered magnetic field in a galaxy at z = 5.6",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202450969",
+ "arxiv_id": "2407.14596",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Are kiloparsec-scale ordered magnetic fields already present in a strongly lensed dusty star-forming galaxy at z=5.6, as traced by polarised dust emission?",
+ "alma_project_codes": [
+  "2021.1.00458.S",
+  "2013.1.01231.S"
+ ],
+ "data": {
+  "bands": "Band 7 (both the full-polarisation dust data and the archival [C II] data)",
+  "arrays": "not stated",
+  "angular_resolution": "0.38 x 0.3 arcsec (2.3 x 1.8 kpc at z = 5.6) in the final full-Stokes images",
+  "sensitivity": "1 sigma RMS 12 uJy/beam (clean stopping level); polarised-intensity RMS 8.5 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens amplification factor 5.6 +/- 0.1 and half-light radius ~0.6 kpc from earlier lens modelling",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "with an amplification factor of $5.6\\pm0.1$ and a half-light radius of $\\sim0.6$ kpc"
+     }
+    ]
+   },
+   "citation": "Spilker et al. 2016 (cite: Spilker2016)"
+  },
+  {
+   "what": {
+    "value": "SFR of about 3600 +/- 300 Msun/yr (lens-corrected) and HyLIRG luminosity",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "has an SFR of around $3600\\pm300\\,M_\\odot\\,\\mathrm{yr}^{-1}$"
+     }
+    ]
+   },
+   "citation": "Ma et al. 2016 (cite: Ma2016)"
+  },
+  {
+   "what": {
+    "value": "Total 870 um flux density 131 +/- 8 mJy",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The total flux density of SPT0346$-$52 at $870\\,\\mu$m is $131\\pm8$ mJy"
+     }
+    ]
+   },
+   "citation": "Reuter et al. 2020 (cite: Reuter2020)"
+  },
+  {
+   "what": {
+    "value": "Mean resolved polarisation fraction of SALSA (HAWC+) galaxies, 3.3 +/- 0.7 percent for all and 1.3 +/- 0.1 percent for starbursts",
+    "evidence": [
+     {
+      "loc": "Polarisation fraction and morphology of magnetic fields",
+      "quote": "A typical mean resolved polarisation fraction of $3.3\\pm0.7$ percent has been reported among all the galaxies in the SALSA survey"
+     },
+     {
+      "loc": "Polarisation fraction and morphology of magnetic fields",
+      "quote": "dropping to a lower fraction of $1.3\\pm0.1$ percent when only starburst galaxies"
+     }
+    ]
+   },
+   "citation": "Lopez-Rodriguez et al. 2022b (cite: Lopez-Rodriguez2022)"
+  },
+  {
+   "what": {
+    "value": "9io9 mean polarisation fraction 0.6 +/- 0.3 percent at rest-frame 350 um",
+    "evidence": [
+     {
+      "loc": "Results and analysis",
+      "quote": "a mean fraction of $0.6\\pm0.3$ percent is reported at rest-frame 350 $\\mu$m"
+     }
+    ]
+   },
+   "citation": "Geach et al. 2023 (cite: Geach2023)"
+  },
+  {
+   "what": {
+    "value": "Typical disk scale height of 300 pc",
+    "evidence": [
+     {
+      "loc": "Disk-driven versus merger-driven",
+      "quote": "Assuming a typical disk scale height of 300 pc"
+     }
+    ]
+   },
+   "citation": "Geach et al. 2023 (cite: Geach2023)"
+  },
+  {
+   "what": {
+    "value": "Preferred gas density of 50 cm^-3 from photodissociation region modelling",
+    "evidence": [
+     {
+      "loc": "Formation timescales of galactic magnetic fields",
+      "quote": "We assume a preferred gas density of 50 cm$^{-3}$ from photodissociation region modelling"
+     }
+    ]
+   },
+   "citation": "Litke et al. 2022 (cite: Litke2022)"
+  },
+  {
+   "what": {
+    "value": "Instrumental uncertainty of linear polarised fraction about 0.1 percent and 1 deg in angle",
+    "evidence": [
+     {
+      "loc": "Observation and data reduction",
+      "quote": "The instrumental uncertainty of the linear polarised fraction is about 0.1 percent and 1 deg in terms of the polarisation angle from the ALMA technical handbook"
+     }
+    ]
+   },
+   "citation": "Cortes et al. 2023, ALMA technical handbook (cite: Cortes2023)"
+  },
+  {
+   "what": {
+    "value": "Long-term monitoring polarisation fraction of J0423-0120 of 3.2-5.1 percent in the same period",
+    "evidence": [
+     {
+      "loc": "Observation and data reduction",
+      "quote": "consistent with the long-term monitoring of its polarisation status of 3.2-5.1 percent in the same period."
+     }
+    ]
+   },
+   "citation": "AMAPOLA monitoring page (footnote 2, www.alma.cl)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate the full-polarisation Band 7 data",
+   "method": "Standard pipeline calibration of XX and YY, split, then polarisation calibration with J0423-0120 as polarisation calibrator to correct leakage",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Bandpass J0519-4546; phase J0253-5441; flux J0519-4546 (about 5 percent uncertainty)",
+    "Parallactic angle coverage wider than 120 degrees in both sessions"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image Stokes I cubes (line search) and full Stokes continuum images",
+   "method": "tclean: hogbom natural-weighted Stokes I cubes to search lines; clarkstokes natural-weighted full Stokes images, cleaned to 12 uJy/beam",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Stop at 1 sigma RMS of 12 uJy/beam; beam 0.38 x 0.3 arcsec; polarised-intensity RMS 8.5 uJy/beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Reduce and image the archival [C II] data",
+   "method": "scriptForPI reduction in CASA 4.2.2, uvcontsub (fitorder = 1), natural-weighted tclean in CASA 6.2.1, channels binned to 100 km/s",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Natural weighting instead of the robust weighting of the earlier paper"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive polarisation fraction and magnetic-field position angle on a Nyquist grid",
+   "method": "Resample Stokes maps with apertures of half the clean beam; per-sample median I, Q, U; P = sqrt(Q^2+U^2)/I; mask P/sigma_P < 3; chi_B = 0.5 arctan(U/Q) + pi/2",
+   "software": [
+    "not named in the paper"
+   ],
+   "key_parameters": [
+    "Aperture = half the clean beam; P/sigma_P < 3 masked before position-angle calculation"
+   ],
+   "assumptions": [
+    "Projected B-field is perpendicular to the dust polarisation angle (pi/2 offset)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Reconstruct the source-plane dust and polarised emission with a pixellated lens model",
+   "method": "Pixellated lensing reconstruction (Warren & Dye) with publicly available software; central r < 0.05 arcsec and outer r > 0.18 arcsec masked",
+   "software": [
+    "publicly available lens-reconstruction software (cite: Nightingale2015; Nightingale2021; Dye2018; Dye2022), name not given"
+   ],
+   "key_parameters": [
+    "Mask r < 0.05 arcsec and r > 0.18 arcsec; best-fit lens parameters in a table"
+   ],
+   "assumptions": [
+    "No assumption on source structure"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare polarisation with [C II] kinematics",
+   "method": "Compare the spatial distribution of polarisation with [C II] kinematics and channel maps",
+   "software": [],
+   "key_parameters": [
+    "Median velocity dispersion of 140 km/s in the region with polarisation"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compare polarisation fraction with local starbursts and 9io9",
+   "method": "Compare measured fraction at 131 um (~700 pc) with SALSA HAWC+ 154 um results and 9io9",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Test the alpha-Omega disk dynamo via the dynamo number",
+   "method": "D_d ~ 9 (h Omega/sigma)^2 ~ 9 (h/r_max)^2 (v_max/sigma)^2 compared with critical value ~7",
+   "software": [],
+   "key_parameters": [
+    "r_max about 1.5 kpc from the lens model; h = 300 pc; h/r_max ~0.2",
+    "v_max about 350 km/s, sigma 140 km/s"
+   ],
+   "assumptions": [
+    "Velocity gradient solely produced by a galactic disk (most extreme case)"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Estimate an equipartition upper limit on the turbulent magnetic field",
+   "method": "B_eq = sqrt(4 pi rho) sigma_v with rho from 50 cm^-3 and [C II] dispersion 140 km/s",
+   "software": [],
+   "key_parameters": [
+    "[C II] line dispersion 140 km/s at the polarised region; density 50 cm^-3"
+   ],
+   "assumptions": [
+    "Turbulence dominates the line width; equipartition between turbulent kinetic and magnetic energy"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median polarisation fraction of SPT0346-52 (rest-frame 131 um)",
+   "value": "0.9",
+   "uncertainty": "0.2",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "The median and mean values of polarisation fractions both show $0.9\\pm0.2$ percent, with 0.4 percent variations across the individual polarisation measurements."
+    }
+   ]
+  },
+  {
+   "quantity": "Variation of polarisation fraction across individual measurements",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "with 0.4 percent variations across the individual polarisation measurements."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field position angle range",
+   "value": "0 to 100",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "ranging from 0 to 100 degrees, and show a bimodal distribution."
+    }
+   ]
+  },
+  {
+   "quantity": "Bimodal peaks of chi_B (chi_B,1 and chi_B,2)",
+   "value": "~28 and ~78",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "at $\\chi_\\mathrm{B,1}\\sim$28 degrees and $\\chi_\\mathrm{B,2}\\sim$78 degrees"
+    }
+   ]
+  },
+  {
+   "quantity": "Median polarisation fractions of the two chi_B groups",
+   "value": "1.0 and 0.8",
+   "uncertainty": "0.4 and 0.4",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "with median polarisation fractions of $1.0\\pm0.4$ and $0.8\\pm0.4$ percent, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Polarised-intensity RMS",
+   "value": "8.5",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observation and data reduction",
+     "quote": "The RMS achieved for the polarised intensity is 8.5 $\\mu$Jy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Polarisation calibrator J0423-0120 fraction",
+   "value": "4.7",
+   "uncertainty": "0.1",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observation and data reduction",
+     "quote": "The best-fit polarisation fraction of J0423$-$0120 is around 4.7$\\pm$0.1 percent"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean amplification factor at the polarised region",
+   "value": "10.1",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "with a mean amplification factor of $\\mu=10.1\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Physical resolution in the source plane at the polarised region",
+   "value": "~700",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "which corresponds to $\\sim700$ pc in the source plane with our angular resolution."
+    }
+   ]
+  },
+  {
+   "quantity": "Source-plane extent of polarised dust",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "After correcting the lens amplification, the polarised dust extends over 3 kpc in the source plane."
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of polarised emission from the Stokes I peak (source plane)",
+   "value": "300-600",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "is offset roughly 300-600 pc from the peak of Stokes $I$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamo number D_d (extreme disk case)",
+   "value": "2.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Disk-driven versus merger-driven",
+     "quote": "Then, the $v_\\text{max}/\\sigma$ is about 2.5, which predicts $D_d\\approx2.3$, well below the $D_{cr,d}\\sim7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition turbulent magnetic field upper limit",
+   "value": "<=450",
+   "uncertainty": "not stated",
+   "units": "uG",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Formation timescales of galactic magnetic fields",
+     "quote": "We estimate the equipartition turbulent magnetic field strength to be $\\leq450$ $\\mu$G."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Version of CASA used for the pipeline and polarisation calibration of 2021.1.00458.S",
+  "Spectral window setup, frequencies and continuum bandwidth of the Band 7 polarisation data",
+  "Which template/script was used for polarisation calibration, and the Stokes solve/fitting settings (e.g. polcal solution intervals, polarisation angle calibration reference)",
+  "tclean parameters: cell size, image size, mask, niter, clean threshold method, and how the continuum was formed across spws",
+  "How the polarisation fraction was debiased (if at all) and how sigma_P was estimated for the P/sigma_P < 3 mask",
+  "Exact sampling grid (pixel offsets) used for the half-beam Nyquist apertures and how I-tilde, Q-tilde, U-tilde uncertainties were computed",
+  "Lens-model software name/version, source pixel grid, regularisation, priors, and how the mask r < 0.05 and r > 0.18 arcsec was applied",
+  "Lens redshift (text says ~1.1, table gives 0.9) and the final lens-model table consistent with the recovered amplification",
+  "How the [C II] velocity gradient and velocity dispersion maps were computed (moment method, clipping), and the [C II] imaging parameters other than weighting and channel binning",
+  "Mean molecular weight/mass-density conversion used to turn 50 cm^-3 into rho for B_eq",
+  "How the SPT0346-52 SFR surface density (1500 +/- 300) and the Fig. 4 comparison data were assembled"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact script for the polarisation calibration",
+  "spw setup and tclean image parameters (cell, imsize, masks, niter)",
+  "Definition of sigma_P and any debiasing used in the P/sigma_P < 3 mask",
+  "Lens model code, grid, priors and regularisation",
+  "[C II] moment/velocity-dispersion map recipe",
+  "Conversion of 50 cm^-3 to mass density for B_eq"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Both datasets are ALMA project data and key numeric results (median P, chi_B peaks, amplification, D_d, B_eq) are stated with formulas, but spw setup, tclean parameters, polarisation-calibration scripts and lens-model settings are missing.",
+ "rediscovery_reason": "The ALMA archive links both projects to the paper and the headline numbers (median P 0.9 percent, chi_B peaks 28/78 deg, D_d 2.3, B_eq <= 450 uG) are numeric; the polarisation measurement can be redone with CASA, though the lens reconstruction needs assumptions.",
+ "source_card": "cards/2024A%26A...692A..34C/sonnet/card.md"
+}

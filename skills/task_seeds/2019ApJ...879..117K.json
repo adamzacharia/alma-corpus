@@ -1,0 +1,241 @@
+{
+ "bibcode": "2019ApJ...879..117K",
+ "title": "High Star Formation Rates of Low Eddington Ratio Quasars at z ≳ 6",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab25ee",
+ "arxiv_id": "1905.12268",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Do z~6 quasars with low Eddington ratios have high host-galaxy star formation rates, as expected if SMBH growth precedes prolonged star formation?",
+ "alma_project_codes": [
+  "2016.1.01311.S",
+  "2017.1.00125.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 7",
+  "arrays": "12 m antennae, 38 to 46 used",
+  "angular_resolution": "0.6''-0.7''; beams 0.80''x0.57'' (B6), 0.81''x0.67'' (B7)",
+  "sensitivity": "rms 0.021 mJy (B6), 0.026 mJy (B7) over 7.5 GHz"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Rest-UV (Lbol, MBH, lambda_Edd) and FIR properties of z>~6 quasars compiled from literature",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Derived Rest-UV and FIR Properties of $z\\gtrsim6$ Quasars from the Literature"
+     }
+    ]
+   },
+   "citation": "DeRosa11, Shen19, Decarli18, Mazzucchelli17, Willott10a, etc. (Table 3 refs)"
+  },
+  {
+   "what": {
+    "value": "Simulated evolutionary track of a BH and host from Smidt et al.",
+    "evidence": [
+     {
+      "loc": "4.2 SMBH Activity and Star Formation",
+      "quote": "we plot the evolutionary track of a BH in the simulation of (cite: Smidt18)"
+     }
+    ]
+   },
+   "citation": "(cite: Smidt18)"
+  },
+  {
+   "what": {
+    "value": "Lbol, MBH, lambda_Edd of IMS J2204+0112 and UV spectral properties",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "This quasar has $M_{\\rm BH}=1.23\\times10^{9}~M_{\\odot}$, and $\\lambda_{\\rm Edd}=0.11$"
+     }
+    ]
+   },
+   "citation": "(cite: Kim15; Kim18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "measure continuum flux densities",
+   "method": "Fit 2D Gaussian to each continuum map with IMFIT",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "derive LFIR from modified blackbody",
+   "method": "Fit modified blackbody to 250 GHz point, to two bands, and to eight SPW fluxes; integrate 42.5-122.5 um",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [
+    "Td=47 K, beta=1.6 fixed; also free Td and beta"
+   ],
+   "assumptions": [
+    "Cosmology Om=0.3, OL=0.7, H0=70"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "convert LFIR to SFR",
+   "method": "SFR = 1.7e-10 LFIR/Lsun Msun/yr",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "FIR flux arises mainly from star formation; Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "test dust-obscuration explanation via A_UV",
+   "method": "Estimate A_UV from LFIR/LUV using Calzetti00 eq. 7 for varying f_host",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Host is a starburst; LFIR dominated by host"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "compare with literature quasars and simulation",
+   "method": "Compute LFIR, Lbol, MBH, lambda_Edd, SFR for literature z>~6 quasars from single ~250 GHz flux; compare to Smidt18 track",
+   "software": [],
+   "key_parameters": [
+    "3 sigma upper limits for FIR-undetected; LEQ defined as lambda_Edd<0.2"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Flux density at 250 GHz",
+   "value": "1.474",
+   "uncertainty": "0.023",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Sub-mm Continuum Maps of IMS J2204+0112",
+     "quote": "$f_{\\rm 250GHz}=1.474\\pm0.023$ and $f_{\\rm 343.5GHz}=3.132\\pm 0.028$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux density at 343.5 GHz",
+   "value": "3.132",
+   "uncertainty": "0.028",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Sub-mm Continuum Maps of IMS J2204+0112",
+     "quote": "$f_{\\rm 250GHz}=1.474\\pm0.023$ and $f_{\\rm 343.5GHz}=3.132\\pm 0.028$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "LFIR (250 GHz, Td=47 K, beta=1.6)",
+   "value": "3.30e12",
+   "uncertainty": "+/-0.05e12",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 FIR Luminosity and Star-formation Rate",
+     "quote": "$L_{\\rm FIR}= (3.30^{+0.05}_{-0.05}) \\times10^{12}~L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (representative)",
+   "value": "560",
+   "uncertainty": "+/-8",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\bm{560^{+8}_{-8}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fit Td, beta (beta>1.6 mode)",
+   "value": "Td=46.5, beta=1.73",
+   "uncertainty": "+1.9/-1.8; +/-0.03",
+   "units": "K; dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$46.5^{+1.9}_{-1.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LFIR (beta<1.6 mode)",
+   "value": "4.30e12",
+   "uncertainty": "+0.35/-0.37",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 FIR Luminosity and Star-formation Rate",
+     "quote": "we obtained $L_{\\rm FIR}=(4.30^{+0.35}_{-0.37}) \\times10^{12}~L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LFIR/Lbol",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 FIR Excess of IMS J2204+0112",
+     "quote": "IMS J2204+0112 has the highest $L_{\\rm FIR}/L_{\\rm bol}$ value of 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on A_UV",
+   "value": ">1.7",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 FIR Excess of IMS J2204+0112",
+     "quote": "The lower limit of the UV extinction of IMS J2204+0112 would be $A_{\\rm UV}>1.7$ or $E(B-V)>0.4$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used by the ALMA pipeline and pipeline version",
+  "Whether the pipeline continuum images used any specific weighting/robust or cleaning",
+  "IMFIT region and initial parameters",
+  "Flux calibrator flux values and absolute flux scale uncertainty",
+  "Exact Lbol and MBH derivation inputs for the literature quasars (L3000, FWHM)",
+  "Fitting of lambda_Edd-dependent trend (red dotted line) method",
+  "Binning/scaling of the Smidt18 track",
+  "Values of f_host and L_UV used for A_UV curves"
+ ],
+ "missing_for_reproduction": [
+  "Pipeline CASA version",
+  "Literature quasar input measurements (L3000, FWHM, 250 GHz fluxes) must be taken from cited papers",
+  "Details of correlation fitting"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Simple continuum analysis with pipeline images and clear formulas; literature compilation steps are less specified.",
+ "rediscovery_reason": "Archive data public by ALMA policy, simple recipe and numeric results (fluxes, LFIR, SFR), though the data release status is inferred.",
+ "source_card": "cards/2019ApJ...879..117K/sonnet/card.md"
+}

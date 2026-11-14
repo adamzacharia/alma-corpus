@@ -1,0 +1,1026 @@
+{
+ "alma_project_codes": [
+  {
+   "code": "2022.1.00479.S",
+   "evidence": [
+    {
+     "loc": "Acknowledgements",
+     "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2022.1.00479.S."
+    },
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "We conducted ALMA observations in June 2023 with three executions with the project ID 2022.1.00479."
+    }
+   ]
+  }
+ ],
+ "alternatives_considered_or_rejected": [
+  {
+   "evidence": [
+    {
+     "loc": "4.2.1 One-layer model",
+     "quote": "We note that an LTE model without considering dust absorption was also tried but failed to interpret the line spectrum: without the scaling factor $e^{-\tau_{\\rm dust}}$, the model naturally would underestimate the column density"
+    }
+   ],
+   "value": "LTE model without dust absorption was tested but rejected because it underestimated the column density with low optical depth to match absolute brightness."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "4.3 Clustering into kinematic components",
+     "quote": "Although the two-layer model better reproduces the spectra profile with lower reduced $\\chi^2$ and Akaike information criterion (AIC, see appendix 8), the one-layer model is chosen in case where no clear double peak is presented."
+    }
+   ],
+   "value": "Using two-layer models everywhere was rejected in favor of the conservative one-layer model unless the centroid velocity difference exceeded the velocity dispersions of both layers."
+  }
+ ],
+ "analysis_steps": [
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "2.2 STATCONT for continuum subtraction",
+       "quote": "We used the default sigma-clipping algorithm, which removes the line-emitting channels by iteratively measuring the median and standard deviation in a histogram of spectral points."
+      }
+     ],
+     "value": "STATCONT default sigma-clipping accurately isolates line-free continuum channels pixel by pixel."
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Separate continuum and line emission",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "2.2 STATCONT for continuum subtraction",
+       "quote": "We used the default sigma-clipping algorithm, which removes the line-emitting channels by iteratively measuring the median and standard deviation in a histogram of spectral points."
+      }
+     ],
+     "value": "default sigma-clipping algorithm"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "2.2 STATCONT for continuum subtraction",
+      "quote": "STATCONT performs continuum subtraction in image domain pixel by pixel, and provides a continuum-subtracted cube and continuum image as outputs."
+     }
+    ],
+    "value": "Image-domain continuum subtraction via STATCONT"
+   },
+   "order": 1,
+   "software": [
+    "STATCONT"
+   ],
+   "validation": {
+    "evidence": [],
+    "value": "not stated"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "4.2.1 One-layer model",
+       "quote": "This approach assumes that the dust and gas are co-located instead of assuming the dust as a background to the gas (see (cite: sa19; ro21; bo21; ya24)), and that the dust and gas temperature are the same, $T_{\\rm ex}$."
+      }
+     ],
+     "value": "LTE holds, dust and gas are co-located, and gas excitation temperature equals dust temperature."
+    },
+    {
+     "evidence": [
+      {
+       "loc": "7.1 Boltzmann distribution and optical depth",
+       "quote": "We note here the partition function $Q(T)$ of is taken from due to the lack of the vibrational correction."
+      }
+     ],
+     "value": "Partition function Q(T) of CH3 13CN is taken from CH3CN."
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "4.2.2 Two-layer model",
+      "quote": "We first perform Markov Chain Monte Carlo (MCMC) sampling of a grid of positions in the emitting regions (in total 41 positions with gaps around emission of roughly beam size)."
+     },
+     {
+      "loc": "4.2.2 Two-layer model",
+      "quote": "These solutions at each points in the grid are then interpolated to a map of initial guesses for the fitting."
+     }
+    ],
+    "value": "MCMC sampling over a 41-position grid to establish initial guesses, followed by pixel-by-pixel fitting; Dynesty nested sampling tested for evidence calculation."
+   },
+   "goal": "Pixel-by-pixel LTE radiative transfer modeling",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "4.1 LTE model setup",
+       "quote": "A spatial mask is taken using a threshold of S/N>12 from the K=3 integrated intensity map"
+      }
+     ],
+     "value": "S/N > 12 mask on CH3CN K=3 integrated intensity map"
+    },
+    {
+     "evidence": [
+      {
+       "loc": "4.2.1 One-layer model",
+       "quote": "the partition function $Q(T)$ is provided by CDMS up to 900 K, so the boundary of the fitting is set to 800 K."
+      }
+     ],
+     "value": "Upper temperature boundary = 800 K"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "4.1 LTE model setup",
+      "quote": "We apply local thermal equilibrium (LTE) modeling to the and lines for the whole map (pixel by pixel)."
+     },
+     {
+      "loc": "4.2.1 One-layer model",
+      "quote": "Together with the isotopologue ratio $N_{\\rm tot, \\ch{CH3CN}}/N_{\\rm tot, \\ch{CH3^{13}CN}}$, six free parameters are included: excitation temperature ($T_{\\rm ex}$), column density ($N_{\\rm tot, \\ch{CH3CN}}$), dust optical depth ($\\tau_{\\rm dust}$), central velocity ($V_{\\rm LSR}$), linewidth ($\\Delta V$)"
+     }
+    ],
+    "value": "One-layer (6 free parameters) and two-layer (12 free parameters) LTE radiative transfer modeling with dust absorption."
+   },
+   "order": 2,
+   "software": [
+    "Dynesty"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "8 Degeneracy and model selection",
+      "quote": "Figure 11 (left panel) shows the Akaike information criterion (AIC) map... In addition, we have also calculated Bayesian evidence with nested sampling algorithm (cite: sk04) using Dynesty"
+     }
+    ],
+    "value": "AIC map comparison and Bayesian evidence via nested sampling."
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "4.3 Clustering into kinematic components",
+       "quote": "We use a criterion for the two layer-model: the difference of the centroid velocities ($V_{\\rm in}=V_{\\rm LSR,1}-V_{\\rm LSR,2}$) is larger than the velocity dispersions of both layers, $\\sigma_1$ and $\\sigma_2$."
+      }
+     ],
+     "value": "Two distinct layers are only accepted if the difference between centroid velocities exceeds the velocity dispersions of both layers."
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Decompose and cluster kinematic components in PPV space",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "4.3 Clustering into kinematic components",
+       "quote": "We use the clustering algorithm DBSCAN (cite: es96; va23; gi24) with `eps=0.3` and `min_samples=10`, clustering these points into six groups."
+      }
+     ],
+     "value": "DBSCAN with eps=0.3 and min_samples=10"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "4.3 Clustering into kinematic components",
+      "quote": "We use the clustering algorithm DBSCAN (cite: es96; va23; gi24) with `eps=0.3` and `min_samples=10`, clustering these points into six groups. For discarded points, we simply use the one-layer model at such positions, so that they go back to the major kinematic component I"
+     }
+    ],
+    "value": "Model selection based on velocity separation threshold followed by DBSCAN clustering in PPV space."
+   },
+   "order": 3,
+   "software": [],
+   "validation": {
+    "evidence": [],
+    "value": "not stated"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "5.3 Toomre Q analysis",
+       "quote": "assuming the dust opacity $\\kappa=0.899$ cm$^{2}$ g$^{-1}$ at 1.3 mm (cite: os94; to18), a gas to dust mass ratio of 100, with inclination correction from (cite: di22)."
+      },
+      {
+       "loc": "5.3 Toomre Q analysis",
+       "quote": "By assuming Keplerian rotation, we obtain $Q$ maps for VLA4A and VLA4B"
+      }
+     ],
+     "value": "kappa = 0.899 cm^2 g^-1 at 1.3 mm, gas-to-dust ratio of 100, Keplerian rotation, and sound speed from one-layer Tex."
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Calculate Toomre Q stability parameter maps",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "5.3 Toomre Q analysis",
+       "quote": "assuming the dust opacity $\\kappa=0.899$ cm$^{2}$ g$^{-1}$ at 1.3 mm (cite: os94; to18), a gas to dust mass ratio of 100"
+      }
+     ],
+     "value": "kappa = 0.899 cm^2 g^-1, gas-to-dust ratio = 100"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "5.3 Toomre Q analysis",
+      "quote": "The Toomre Q parameter is widely used to test if a disk is gravitationally unstable as $Q=\\frac{c_S \\Omega}{\\pi G \\Sigma}$"
+     }
+    ],
+    "value": "Evaluation of Toomre Q parameter using sound speed from Tex, surface density from tau_dust, and angular velocity from Keplerian thin disk models."
+   },
+   "order": 4,
+   "software": [],
+   "validation": {
+    "evidence": [],
+    "value": "not stated"
+   }
+  }
+ ],
+ "calibration": [
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "We use the pipeline calibrated data restored using CASA 6.4.12 (cite: casa)."
+    }
+   ],
+   "field": "pipeline_or_manual",
+   "value": "pipeline"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "We use the pipeline calibrated data restored using CASA 6.4.12 (cite: casa)."
+    }
+   ],
+   "field": "casa_version",
+   "value": "CASA 6.4.12"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "The three executions shared the same bandpass and flux calibrator as J0423-0120, while the phase calibrator either J0328+3139 or J0336-3218 depending on the execution."
+    }
+   ],
+   "field": "flux_calibrator",
+   "value": "J0423-0120"
+  }
+ ],
+ "claims": [
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find the two-layer LTE radiative model including dust absorption is essential to interpret the and line emission. We identify two major and four small kinematic components, and derive their physical and chemical properties."
+    }
+   ],
+   "experiment": "Fitting CH3CN and CH3 13CN J=12-11 lines across SVS13A using one-layer and two-layer LTE radiative transfer models including dust absorption, followed by DBSCAN clustering.",
+   "finding": "Two major (I and II) and four minor kinematic components are identified; Component I traces disk/envelope rotation while Component II traces infalling or disturbed gas around VLA4A.",
+   "hypothesis": "High-resolution observations can resolve kinematic and physical sub-structures in the forming protobinary SVS13A.",
+   "result": "Two major components (I and II) and four minor components (III-VI) are separated in PPV space with distinct temperatures, column densities, and kinematics.",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "5.2 Physical conditions",
+     "quote": "Toward SVS13A, although the temperature is mostly determined by the protostellar radiation, it is unlikely the only factor in order to reproduce the asymmetric structure... Mechanical heating has been suggested to interpret such asymmetric temperature structures"
+    }
+   ],
+   "experiment": "Mapping gas excitation temperature using the CH3CN K-ladder.",
+   "finding": "Mechanical heating from shocks associated with an infalling streamer or binary interaction contributes to heating in addition to central protostellar radiation.",
+   "hypothesis": "Protostellar radiative heating alone may not explain the temperature distribution in SVS13A.",
+   "result": "Gas temperatures exceed 500 K at VLA4A, reach ~300 K between protostars, and ~250 K along the dusty spiral, showing clear asymmetry.",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "5.3 Toomre Q analysis",
+     "quote": "The Q parameter maps show that the disks are in general stable near the protostars (Q >1). However, VLA4A is likely undergoing an accretion outburst, suggesting that the high temperature is temporary."
+    }
+   ],
+   "experiment": "Deriving sound speed and surface density maps to compute the Toomre Q parameter for VLA4A and VLA4B disks under current and quiescent luminosity conditions.",
+   "finding": "Disks are currently gravitationally stable (Q > 1), but prior to the outburst in quiescent lower-luminosity states, parts were gravitationally unstable (Q < 1), potentially triggering fragmentation or accretion bursts.",
+   "hypothesis": "The disks in SVS13A could have experienced gravitational instability prior to the outburst.",
+   "result": "Current Q > 1; quiescent luminosity 100x lower reduces Q by ~0.6, driving regions below the instability threshold.",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "5.4 spatial distribution",
+     "quote": "With the LTE model (Figures 5 and 8), we find low values in comparison with the canonical one throughout the maps except for component III and IV... Other than these two components, the / ratios ~20-40 are in general lower than the canonical value of 68. Interestingly, it is even lower around the primary source VLA4B"
+    }
+   ],
+   "experiment": "Deriving 12C/13C column density ratios across the map from CH3CN / CH3 13CN modeling.",
+   "finding": "The 12C/13C ratio is spatially inhomogeneous and systematically below canonical ISM values (~68), indicating chemical segregation between VLA4A and VLA4B potentially influenced by streamer accretion.",
+   "hypothesis": "The 12C/13C ratio across SVS13A is uniform and canonical.",
+   "result": "12C/13C ratios range from ~10 near VLA4B to 15-50 around VLA4A, and 19.8(+6.9/-5.9) overall in the one-layer fit.",
+   "support": "refuted"
+  }
+ ],
+ "code_released": [
+  {
+   "evidence": [],
+   "value": "not stated"
+  }
+ ],
+ "companion_papers": [
+  {
+   "citation": "Diaz-Rodriguez et al. 2022 (cite: di22)",
+   "why": "Derived binary masses, orbital proper motions, and disk parameters."
+  },
+  {
+   "citation": "Hsieh et al. 2023 (cite: hs23)",
+   "why": "Identified candidate infalling streamer and measured 12C/13C with NOEMA."
+  },
+  {
+   "citation": "Hsieh et al. 2024 (cite: hs24)",
+   "why": "Multi-component LTE modeling of O-bearing COMs toward SVS13A."
+  }
+ ],
+ "data_settings": [
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "accompanied with one continuum window at 234.5 GHz with 1.875 GHz bandwidth and 488 kHz (0.6 km s$^{-1}$) channel width (band 6, (cite: ed04)). In this paper, we present the J=12-11 window which covers a wavelength ranging from 220.52 GHz to 220.75 GHz"
+    }
+   ],
+   "field": "bands",
+   "value": "Band 6"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "one continuum window at 234.5 GHz with 1.875 GHz bandwidth and 488 kHz (0.6 km s$^{-1}$) channel width (band 6, (cite: ed04)). In this paper, we present the J=12-11 window which covers a wavelength ranging from 220.52 GHz to 220.75 GHz with a channel width of 61 kHz (0.08 km s$^{-1}$)."
+    }
+   ],
+   "field": "frequencies_and_spectral_setup",
+   "value": "CH3CN J=12-11 window: 220.52 to 220.75 GHz (channel width 61 kHz / 0.08 km s^-1); continuum window at 234.5 GHz (bandwidth 1.875 GHz, channel width 488 kHz / 0.6 km s^-1)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "one continuum window at 234.5 GHz with 1.875 GHz bandwidth"
+    }
+   ],
+   "field": "continuum_bandwidth",
+   "value": "1.875 GHz"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "With the ALMA C-7 configuration, the baselines were $91-8282$ m ($\sim$$65-6000$ k$\\lambda$) at 220 GHz"
+    }
+   ],
+   "field": "configurations",
+   "value": "C-7"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "baselines were $91-8282$ m ($\sim$$65-6000$ k$\\lambda$) at 220 GHz"
+    }
+   ],
+   "field": "baselines",
+   "value": "91-8282 m"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "resulting in a beam size of $0.11\\ensuremath{''}\\times0.08\\ensuremath{''}$ ($\\sim$30 au) for the cube."
+    }
+   ],
+   "field": "angular_resolution",
+   "value": "0.11\" x 0.08\" (~30 au)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "recovering scales from 0.1 to 1.2 arcsec ($\\sim$30$-$360 au)."
+    }
+   ],
+   "field": "max_recoverable_scale",
+   "value": "1.2 arcsec (~360 au)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "This image cube has an rms noise level of 1.7 mJy beam$^{-1}$ (4.7 K) at the spectral resolution of 0.08 km s$^{-1}$."
+    }
+   ],
+   "field": "sensitivity",
+   "value": "1.7 mJy beam^-1 (4.7 K) at 0.08 km s^-1"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "The total on-source (SVS13A) time was 144 min"
+    }
+   ],
+   "field": "time_on_source",
+   "value": "144 min"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "We conducted ALMA observations in June 2023 with three executions"
+    }
+   ],
+   "field": "observing_dates",
+   "value": "June 2023"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "We conducted ALMA observations in June 2023 with three executions with the project ID 2022.1.00479."
+    }
+   ],
+   "field": "pi_or_archival_as_stated",
+   "value": "PI"
+  }
+ ],
+ "depth": "full",
+ "estimated_data_volume_inferred": "30-60 GB",
+ "external_data_from_literature": [
+  {
+   "citation": "Ortiz-Leon et al. 2018 (cite: or18)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "SVS13A is a well studied protobinary system located in the NGC1333 cluster in the Perseus Molecular Cloud ($d=$293 pc, (cite: or18))."
+     }
+    ],
+    "value": "Distance d = 293 pc to NGC1333"
+   }
+  },
+  {
+   "citation": "Diaz-Rodriguez et al. 2022 (cite: di22)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "(cite: di22) derive the total mass of the binary to be 1.0$\\pm$0.4 $M_\\odot$ given the proper motion of the binary orbit. The individual masses of the protostars are estimated as 0.27$\\pm$0.10 $M_\\odot$ for VLA4A (secondary) and 0.60$\\pm$0.20 $M_\\odot$ for VLA4B (primary)."
+     }
+    ],
+    "value": "Binary mass 1.0+/-0.4 Msun, VLA4A mass 0.27+/-0.10 Msun, VLA4B mass 0.60+/-0.20 Msun, and disk inclination angles."
+   }
+  },
+  {
+   "citation": "Ossenkopf & Henning 1994 (cite: os94); Tobin et al. 2018 (cite: to18)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "5.3 Toomre Q analysis",
+      "quote": "assuming the dust opacity $\\kappa=0.899$ cm$^{2}$ g$^{-1}$ at 1.3 mm (cite: os94; to18)"
+     }
+    ],
+    "value": "Dust opacity kappa = 0.899 cm^2 g^-1 at 1.3 mm"
+   }
+  },
+  {
+   "citation": "CDMS (cite: mu05; en16) and JPL (cite: pi98)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "4.1 LTE model setup",
+      "quote": "The line data are taken from CDMS (cite: mu05; en16) and JPL (cite: pi98), whereas the original catalogues are from (cite: mu09; mu15)."
+     }
+    ],
+    "value": "Molecular spectroscopic line parameters for CH3CN and CH3 13CN"
+   }
+  }
+ ],
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "findings_qualitative": [
+  {
+   "evidence": [
+    {
+     "loc": "6 Summary",
+     "quote": "the is the brightest towards the secondary protostar VLA4A while its isotopologue is the brightest in between the two protostars. In addition, towards the primary VLA4B, the emission from both and shows a dip at the location of the continuum peak resulting in a ring-like morphology."
+    }
+   ],
+   "value": "CH3CN peaks toward VLA4A while CH3 13CN peaks between the protostars, and both display ring-like morphologies around VLA4B caused by dust absorption."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "6 Summary",
+     "quote": "While the component I is likely associated with rotating disk or envelope around VLA4A and VLA4B, the component II might be associated with the dusty spiral structure, a possible infalling streamer, around VLA4A."
+    }
+   ],
+   "value": "Component I traces rotating disk/envelope gas around both protostars, while Component II traces infalling/disturbed gas possibly linked to a candidate streamer feeding VLA4A."
+  }
+ ],
+ "imaging": [
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "Imaging was done using the `tclean` package with a robust weighting of 0.5"
+    }
+   ],
+   "field": "task",
+   "value": "tclean"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "Imaging was done using the `tclean` package with a robust weighting of 0.5"
+    }
+   ],
+   "field": "weighting_robust",
+   "value": "robust = 0.5"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.2 STATCONT for continuum subtraction",
+     "quote": "We use STATCONT (cite: sa18) to determine the continuum level and find the line-free channels. STATCONT performs continuum subtraction in image domain pixel by pixel, and provides a continuum-subtracted cube and continuum image as outputs."
+    }
+   ],
+   "field": "continuum_subtraction",
+   "value": "STATCONT image-domain subtraction using default sigma-clipping"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "resulting in a beam size of $0.11\\ensuremath{''}\\times0.08\\ensuremath{''}$ ($\\sim$30 au) for the cube."
+    }
+   ],
+   "field": "final_beam",
+   "value": "0.11\" x 0.08\""
+  },
+  {
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "This image cube has an rms noise level of 1.7 mJy beam$^{-1}$ (4.7 K) at the spectral resolution of 0.08 km s$^{-1}$."
+    }
+   ],
+   "field": "final_rms",
+   "value": "1.7 mJy beam^-1 (4.7 K)"
+  }
+ ],
+ "inherited": [
+  {
+   "from_reference": "Vastel et al. 2015 (cite: va15) and Möller et al. 2017 (cite: mo17)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "4.1 LTE model setup",
+      "quote": "The LTE model is constructed based on CASSIS and XCLASS manuals (cite: va15; mo17)."
+     }
+    ],
+    "value": "LTE radiative transfer model formulation"
+   }
+  },
+  {
+   "from_reference": "Myers et al. 1996 (cite: my96)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "4.2.2 Two-layer model",
+      "quote": "This equation can be considered as a variation from the two-layer model in (cite: my96) and its family"
+     }
+    ],
+    "value": "Two-layer radiative transfer framework modified to include dust absorption in both layers"
+   }
+  }
+ ],
+ "limitations_admitted": [
+  {
+   "evidence": [
+    {
+     "loc": "4.2.2 Two-layer model",
+     "quote": "Such a fit with many free parameters is difficult to converge and suffers from degeneracy (see Appendix 8)."
+    },
+    {
+     "loc": "8 Degeneracy and model selection",
+     "quote": "Figure 10 shows the corner plot from the MCMC sampling toward position 1 in Figure 4. A correlation between the $\\tau_{\\rm dust, 1}$ and $\\tau_{\\rm dust, 2}$ from the two layers is shown."
+    }
+   ],
+   "value": "Strong parameter degeneracies exist in the 12-parameter two-layer fit, especially between tau_dust,1 and tau_dust,2, and between infall and expansion geometries due to layer asymmetry."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "8 Degeneracy and model selection",
+     "quote": "Figure 10 reveals another unconstrained parameter in the isotopologue ratio of / for which the sample reaches its upper boundary of 80 in the prior. This is also expected toward the region with low S/N in"
+    }
+   ],
+   "value": "The 12C/13C ratio is unconstrained and hits the prior upper bound of 80 in low S/N CH3 13CN regions."
+  }
+ ],
+ "lines_targeted": [
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "ALMA observations toward SVS13A targeting and J=12-11 K-ladder line emission with a high spatial resolution of $\\sim30$ au"
+    },
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "covers a wavelength ranging from 220.52 GHz to 220.75 GHz"
+    }
+   ],
+   "rest_frequency": "220.52-220.75 GHz",
+   "species": "CH3CN",
+   "transition": "J=12-11 (K=0-7)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "ALMA observations toward SVS13A targeting and J=12-11 K-ladder line emission with a high spatial resolution of $\\sim30$ au"
+    },
+    {
+     "loc": "3.2 and",
+     "quote": "The K-ladder is detected in the observing windows with K $=0-7$ for and K $=0-5$ for"
+    }
+   ],
+   "rest_frequency": "220.52-220.75 GHz",
+   "species": "CH3 13CN",
+   "transition": "J=12-11 (K=0-5)"
+  }
+ ],
+ "methods_papers": [
+  {
+   "citation": "Sánchez-Monge et al. 2018 (cite: sa18)",
+   "why": "STATCONT image-domain continuum subtraction algorithm"
+  },
+  {
+   "citation": "Ester et al. 1996 (cite: es96)",
+   "why": "DBSCAN clustering algorithm"
+  },
+  {
+   "citation": "Speagle 2020 (cite: sp20)",
+   "why": "Dynesty nested sampling algorithm"
+  }
+ ],
+ "missing_for_reproduction": [
+  {
+   "type": "string",
+   "value": "Exact tclean parameters (niter, threshold, pixel cell size, image size, deconvolver, mask description)."
+  },
+  {
+   "type": "string",
+   "value": "Custom scripts implementing the one-layer and two-layer LTE models and MCMC setup."
+  },
+  {
+   "type": "string",
+   "value": "Exact coordinates/indices of the 41 MCMC grid positions used for interpolating initial parameter guesses."
+  }
+ ],
+ "numeric_results": [
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "one-layer | 27660 | 210.6$^{+72.7}_{-42.1}$ | 1.1$^{+0.3}_{-0.3}$ | 16.4$^{+0.6}_{-0.4}$ | 8.0$^{+0.8}_{-0.6}$ | - | 1.0$^{+0.2}_{-0.2}$ | 19.8$^{+6.9}_{-5.9}$"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "One-layer fit excitation temperature",
+   "uncertainty": "+72.7/-42.1",
+   "units": "K",
+   "value": "210.6"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "one-layer | 27660 | 210.6$^{+72.7}_{-42.1}$ | 1.1$^{+0.3}_{-0.3}$ | 16.4$^{+0.6}_{-0.4}$ | 8.0$^{+0.8}_{-0.6}$ | - | 1.0$^{+0.2}_{-0.2}$ | 19.8$^{+6.9}_{-5.9}$"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "One-layer fit dust optical depth",
+   "uncertainty": "+0.3/-0.3",
+   "units": "dimensionless",
+   "value": "1.1"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "one-layer | 27660 | 210.6$^{+72.7}_{-42.1}$ | 1.1$^{+0.3}_{-0.3}$ | 16.4$^{+0.6}_{-0.4}$ | 8.0$^{+0.8}_{-0.6}$ | - | 1.0$^{+0.2}_{-0.2}$ | 19.8$^{+6.9}_{-5.9}$"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "One-layer fit log10(N_tot) column density",
+   "uncertainty": "+0.6/-0.4",
+   "units": "log10(cm^-2)",
+   "value": "16.4"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "one-layer | 27660 | 210.6$^{+72.7}_{-42.1}$ | 1.1$^{+0.3}_{-0.3}$ | 16.4$^{+0.6}_{-0.4}$ | 8.0$^{+0.8}_{-0.6}$ | - | 1.0$^{+0.2}_{-0.2}$ | 19.8$^{+6.9}_{-5.9}$"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "One-layer fit 12C/13C ratio",
+   "uncertainty": "+6.9/-5.9",
+   "units": "dimensionless",
+   "value": "19.8"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "I | 27660 | 205.5$^{+79.1}_{-43.1}$ | 0.9$^{+0.4}_{-0.3}$ | 16.3$^{+0.5}_{-0.4}$ | 7.9$^{+0.8}_{-0.7}$ | - | 0.9$^{+0.2}_{-0.2}$ | 19.5$^{+8.6}_{-5.6}$"
+    }
+   ],
+   "from_step": 3,
+   "quantity": "Component I excitation temperature",
+   "uncertainty": "+79.1/-43.1",
+   "units": "K",
+   "value": "205.5"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "I | 27660 | 205.5$^{+79.1}_{-43.1}$ | 0.9$^{+0.4}_{-0.3}$ | 16.3$^{+0.5}_{-0.4}$ | 7.9$^{+0.8}_{-0.7}$ | - | 0.9$^{+0.2}_{-0.2}$ | 19.5$^{+8.6}_{-5.6}$"
+    }
+   ],
+   "from_step": 3,
+   "quantity": "Component I 12C/13C ratio",
+   "uncertainty": "+8.6/-5.6",
+   "units": "dimensionless",
+   "value": "19.5"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "II | 7282 | 178.9$^{+73.7}_{-47.0}$ | 0.4$^{+0.7}_{-0.4}$ | 15.8$^{+0.6}_{-0.3}$ | 9.0$^{+0.2}_{-0.1}$ | -2.1$^{+0.3}_{-0.3}$ | 0.8$^{+0.2}_{-0.2}$ | 38.6$^{+34.0}_{-11.9}$"
+    }
+   ],
+   "from_step": 3,
+   "quantity": "Component II excitation temperature",
+   "uncertainty": "+73.7/-47.0",
+   "units": "K",
+   "value": "178.9"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "II | 7282 | 178.9$^{+73.7}_{-47.0}$ | 0.4$^{+0.7}_{-0.4}$ | 15.8$^{+0.6}_{-0.3}$ | 9.0$^{+0.2}_{-0.1}$ | -2.1$^{+0.3}_{-0.3}$ | 0.8$^{+0.2}_{-0.2}$ | 38.6$^{+34.0}_{-11.9}$"
+    }
+   ],
+   "from_step": 3,
+   "quantity": "Component II V_in",
+   "uncertainty": "+0.3/-0.3",
+   "units": "km s^-1",
+   "value": "-2.1"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table [tab:para]",
+     "quote": "II | 7282 | 178.9$^{+73.7}_{-47.0}$ | 0.4$^{+0.7}_{-0.4}$ | 15.8$^{+0.6}_{-0.3}$ | 9.0$^{+0.2}_{-0.1}$ | -2.1$^{+0.3}_{-0.3}$ | 0.8$^{+0.2}_{-0.2}$ | 38.6$^{+34.0}_{-11.9}$"
+    }
+   ],
+   "from_step": 3,
+   "quantity": "Component II 12C/13C ratio",
+   "uncertainty": "+34.0/-11.9",
+   "units": "dimensionless",
+   "value": "38.6"
+  }
+ ],
+ "other_facilities": [],
+ "paper_type": "observational_alma_primary",
+ "paper_type_evidence": [
+  {
+   "loc": "abstract",
+   "quote": "We conducted ALMA observations toward SVS13A targeting and J=12-11 K-ladder line emission with a high spatial resolution of $\\sim30$ au at a spectral resolution of $\\sim0.08$ km s$^{-1}$"
+  }
+ ],
+ "question": {
+  "evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We aim to provide a snapshot of the forming protobinary system SVS13A, consisting of VLA4A and VLA4B. This includes clear pictures of its kinematic structures, physical conditions, and chemical properties."
+   }
+  ],
+  "value": "What are the resolved kinematic structures, physical conditions (gas temperature, dust opacity), and 12C/13C chemical properties in the protobinary system SVS13A?"
+ },
+ "reasoning": [
+  {
+   "evidence": [
+    {
+     "loc": "4.2.1 One-layer model",
+     "quote": "We chose a high S/N= 12 as a mask in the integrated intensity map of K$=$3 to avoid this."
+    }
+   ],
+   "field": "how_they_decided_enough",
+   "value": "A conservative mask of S/N > 12 on the K=3 map was chosen to avoid edge regions where beam-filling factors could lead to overestimating optical depth."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "4.3 Clustering into kinematic components",
+     "quote": "We use a criterion for the two layer-model: the difference of the centroid velocities ($V_{\\rm in}=V_{\\rm LSR,1}-V_{\\rm LSR,2}$) is larger than the velocity dispersions of both layers, $\\sigma_1$ and $\\sigma_2$. This threshold set a strict situation for using two-layer model only when the double-peak is clearly seen"
+    }
+   ],
+   "field": "why_this_method",
+   "value": "Strict velocity difference threshold relative to dispersion was applied to use the two-layer model only when double peaks are unambiguous."
+  }
+ ],
+ "rediscovery_candidate": false,
+ "rediscovery_reason": "While the ALMA data are public, the custom pixel-by-pixel one- and two-layer radiative transfer modeling code with MCMC initial-guess grid interpolation is not published or packaged.",
+ "referee_caveats_inferred": [
+  "Strong degeneracy exists in the two-layer radiative transfer model between the dust optical depths of the front and rear layers, and between infall and expansion scenarios due to asymmetry.",
+  "The 12C/13C isotopologue ratio is unconstrained in regions with weak CH3 13CN emission, pegging at the prior upper limit of 80."
+ ],
+ "related_projects_or_surveys": [
+  "PRODIGE"
+ ],
+ "reproducibility": [
+  {
+   "evidence": [
+    {
+     "loc": "Acknowledgements",
+     "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2022.1.00479.S."
+    }
+   ],
+   "field": "data_public_as_stated",
+   "value": "Data available under ALMA project code 2022.1.00479.S"
+  }
+ ],
+ "results_numeric": [],
+ "score_inferred": 7,
+ "score_reason": "High-quality ALMA observation and clear methodological explanations, with key parameters and tables well reported, but the custom two-layer LTE code and grid-initialization pipeline are not publicly released.",
+ "simulations_or_models_as_data": [],
+ "software": [
+  {
+   "name": "CASA",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observation",
+      "quote": "We use the pipeline calibrated data restored using CASA 6.4.12 (cite: casa). Imaging was done using the `tclean` package"
+     }
+    ],
+    "value": "Calibration restoration and imaging with tclean"
+   },
+   "version": "6.4.12"
+  },
+  {
+   "name": "STATCONT",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "2.2 STATCONT for continuum subtraction",
+      "quote": "We use STATCONT (cite: sa18) to determine the continuum level and find the line-free channels. STATCONT performs continuum subtraction in image domain pixel by pixel"
+     }
+    ],
+    "value": "Image-domain continuum subtraction and determination of continuum level"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "Dynesty",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "8 Degeneracy and model selection",
+      "quote": "we have also calculated Bayesian evidence with nested sampling algorithm (cite: sk04) using Dynesty (cite: sp20; ko22) toward the 41 grid positions"
+     }
+    ],
+    "value": "Bayesian evidence computation via nested sampling for model comparison"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "Numpy",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "5.4 spatial distribution",
+      "quote": "Software: Numpy ((cite: numpy)), Scipy ((cite: scipy)), APLpy ((cite: aplpy)), Matplotlib ((cite: matplotlib)), Astropy ((cite: astropy)) CASA ((cite: casa))"
+     }
+    ],
+    "value": "Scientific computing"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "Scipy",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "5.4 spatial distribution",
+      "quote": "Software: Numpy ((cite: numpy)), Scipy ((cite: scipy)), APLpy ((cite: aplpy)), Matplotlib ((cite: matplotlib)), Astropy ((cite: astropy)) CASA ((cite: casa))"
+     }
+    ],
+    "value": "Scientific computing"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "APLpy",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "5.4 spatial distribution",
+      "quote": "Software: Numpy ((cite: numpy)), Scipy ((cite: scipy)), APLpy ((cite: aplpy)), Matplotlib ((cite: matplotlib)), Astropy ((cite: astropy)) CASA ((cite: casa))"
+     }
+    ],
+    "value": "Plotting astronomical images"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "Matplotlib",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "5.4 spatial distribution",
+      "quote": "Software: Numpy ((cite: numpy)), Scipy ((cite: scipy)), APLpy ((cite: aplpy)), Matplotlib ((cite: matplotlib)), Astropy ((cite: astropy)) CASA ((cite: casa))"
+     }
+    ],
+    "value": "Plotting"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "Astropy",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "5.4 spatial distribution",
+      "quote": "Software: Numpy ((cite: numpy)), Scipy ((cite: scipy)), APLpy ((cite: aplpy)), Matplotlib ((cite: matplotlib)), Astropy ((cite: astropy)) CASA ((cite: casa))"
+     }
+    ],
+    "value": "Astronomical data processing"
+   },
+   "version": "not stated"
+  }
+ ],
+ "targets": [
+  {
+   "coordinates": "03h29m03s.74, 31d16m03s.8",
+   "details": [
+    {
+     "loc": "2.1 ALMA observation",
+     "quote": "phase center at International Celestial Reference System (ICRS) $\\alpha$ = 3$^{\\rm h}$29$^{\\rm m}$ 03$^{\\rm s}$.74, $\\delta$ = 31$^{\\rm d}$16$^{\\rm m}$03$^{\\rm s}$.8."
+    },
+    {
+     "loc": "1 Introduction",
+     "quote": "SVS13A is a well studied protobinary system located in the NGC1333 cluster in the Perseus Molecular Cloud ($d=$293 pc, (cite: or18))."
+    }
+   ],
+   "distance_source": "Ortiz-León et al. 2018 (cite: or18)",
+   "name": "SVS13A",
+   "redshift_or_distance": "293 pc"
+  }
+ ],
+ "unstated_but_needed": [
+  "tclean cell size, imsize, niter, clean threshold, and multiscale/deconvolver choices.",
+  "Exact parameterization and initial priors for the pixel-by-pixel two-layer fitting."
+ ]
+}

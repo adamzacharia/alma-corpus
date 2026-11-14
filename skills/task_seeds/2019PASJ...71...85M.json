@@ -1,0 +1,203 @@
+{
+ "bibcode": "2019PASJ...71...85M",
+ "title": "Complex distribution and velocity field of molecular gas in NGC 1316 as revealed by the Morita Array of ALMA",
+ "year": 2019,
+ "doi": "10.1093/pasj/psz067",
+ "arxiv_id": "1905.11085",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the distribution, total mass and velocity field of molecular gas in the cD/radio galaxy NGC 1316, what is its origin (inflow or outflow), and how does it interact with the nuclear jet?",
+ "alma_project_codes": [
+  "2017.1.00129.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "ACA 7M (Morita Array) plus 12-m total power",
+  "angular_resolution": "15.2\" x 7.7\" (1.5 x 0.8 kpc), PA 89 deg",
+  "sensitivity": "12 mJy/beam rms at 9.9 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass for GDR",
+    "evidence": [
+     {
+      "loc": "4.2.1 Infalling galaxy (galaxies)",
+      "quote": "given the literature data of dust mass (cite: Draine:2007aa) and the upper limit of H i mass (cite: Horellou:2001aa)"
+     }
+    ]
+   },
+   "citation": "Draine et al. 2007 (cite: Draine:2007aa)"
+  },
+  {
+   "what": {
+    "value": "HI mass upper limit",
+    "evidence": [
+     {
+      "loc": "4.2.1 Infalling galaxy (galaxies)",
+      "quote": "given the literature data of dust mass (cite: Draine:2007aa) and the upper limit of H i mass (cite: Horellou:2001aa)"
+     }
+    ]
+   },
+   "citation": "Horellou et al. 2001 (cite: Horellou:2001aa)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image 7M data, combine with TP",
+   "method": "Pipeline calibration, tclean mosaic cube, feather with TP, primary beam correction",
+   "software": [
+    "CASA",
+    "tclean",
+    "feather"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5, auto-multithresh, niter 10000"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect CO emission and make moment maps",
+   "method": "SoFiA source finding with noise normalisation, smoothing kernels, 4 sigma threshold, friends-of-friends merging, reliability cuts; moment 1/2 blanked below 0.9 Jy/beam km/s",
+   "software": [
+    "SoFiA"
+   ],
+   "key_parameters": [
+    "merging radius 2 pixels, 3 channels; min size 3 pixels/channels; integrated S/N>3; dilation 2 pixels, 1 channel"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive total molecular gas mass",
+   "method": "Sum moment-0 flux in a box, convert Jy/beam to K via Rayleigh-Jeans, apply X_CO and helium factor 1.36; error from noise map",
+   "software": [],
+   "key_parameters": [
+    "Box 120\"x160\", 114.497-114.73 GHz (1406.8-2013.55 km/s)"
+   ],
+   "assumptions": [
+    "Milky-Way X_CO = 2.0e20 cm^-2 (K km/s)^-1; distance 20.8 Mpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Characterise velocity field with PV cuts and compare with Keck ionized gas",
+   "method": "Moment-1/2 maps and position-velocity cuts of CO; Keck/LRIS long-slit spectra PV maps compared at same PA",
+   "software": [],
+   "key_parameters": [
+    "LRIS slit PA 158.56 deg, 1.0\" slit, velocity accuracy ~100 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate relaxation timescale and GDR/H2-HI ratios",
+   "method": "t_relax = t_dyn/epsilon with literature t_dyn and epsilon; GDR and H2/HI from literature dust and HI limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Potential eccentricity equals stellar eccentricity (0.4)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass (Galactic X_CO)",
+   "value": "5.62e8",
+   "uncertainty": "0.53e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Total molecular gas mass",
+     "quote": "The total molecular gas mass is estimated to be $(5.62 \\pm 0.53)\\times 10^8$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central CO peak intensity",
+   "value": "26.8 mK at ~1720 km/s (4.2 sigma)",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Spatial distribution",
+     "quote": "a weak and narrow CO emission is detected with a peak intensity of $26.8$ mK at $\\sim 1720$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity difference NW Shell-SE Blob",
+   "value": "~400",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.1 CO velocity field",
+     "quote": "The velocity difference between the NW Shell and the SE Blob ($\\sim 400$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio",
+   "value": "~28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1 Infalling galaxy (galaxies)",
+     "quote": "the obtained GDR and H$_2$/H i ratio of the dust patches are respectively $\\sim 28$ and $\\gtrsim 5.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "t_relax",
+   "value": "8e8",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.2 Timescales",
+     "quote": "$t_{\\rm relax}$ is estimated to be $8\\times10^8$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas velocity dispersion",
+   "value": "20-50",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.1 CO velocity field",
+     "quote": "The velocity dispersion of the molecular gas is roughly in the range of $20-50$ km s$^{-1}$ at kpc-resolution."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Spatial cell size and image size of the cube",
+  "Which channels were used for the final 9.9 km/s binning and the TP feathering scaling factor",
+  "Line-free channels and continuum subtraction method",
+  "Dust-mass and HI inputs and the exact GDR calculation",
+  "Keck/LRIS PV extraction details and reduction software"
+ ],
+ "missing_for_reproduction": [
+  "Cell size, image size, channel binning details",
+  "Feather scaling and TP processing details",
+  "Keck data reduction code and PV cut definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging and mass recipe largely given with public data, but several imaging parameters and the extended discussion inputs are missing.",
+ "rediscovery_reason": "Public 7M/TP data, tclean and mass recipe stated, numeric mass result.",
+ "source_card": "cards/2019PASJ...71...85M/sonnet/card.md"
+}

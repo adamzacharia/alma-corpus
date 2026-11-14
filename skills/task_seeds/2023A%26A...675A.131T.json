@@ -1,0 +1,498 @@
+{
+ "bibcode": "2023A&A...675A.131T",
+ "title": "Investigating the asymmetric chemistry in the disk around the young star HD 142527",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346272",
+ "arxiv_id": "2304.06382",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What is the role of the asymmetric dust trap in setting the chemical composition of the HD 142527 disk, and how does it compare to IRS 48?",
+ "alma_project_codes": [
+  "2011.0.00318.S",
+  "2011.0.00465.S",
+  "2012.1.00613.S",
+  "2013.1.00305.S",
+  "2015.1.00614.S",
+  "2015.1.00805.S",
+  "2015.1.01137.S"
+ ],
+ "data": {
+  "bands": "Band 4, Band 6, Band 7, Band 8, Band 9",
+  "arrays": "not stated",
+  "angular_resolution": "0.147\" to 0.439\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Line properties (frequency, upper level energy, Einstein A coefficient, upper state degeneracy) and partition functions Q(T_rot)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The line properties (frequency, upper level energy, Einstein $A$ coefficient and upper state degeneracy) have been acquired from *CDMS*."
+     },
+     {
+      "loc": "Column densities",
+      "quote": "$Q\\left(T_\\textnormal{rot}\\right)$ is the partition function at $T_\\textnormal{rot}$ which, through interpolation, has been obtained from the *Cologne Database for Molecular Spectroscopy* (*CDMS*; (cite: CDMS01; CDMS05))."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: CDMS01; CDMS05)"
+  },
+  {
+   "what": {
+    "value": "Scattered light emission overlaid on HCN and CS moment-zero maps",
+    "evidence": [
+     {
+      "loc": "Influence of misaligned, warped inner disk",
+      "quote": "Figure 7 shows the and moment-zero maps with the scattered light emission ((cite: AvenhausEA14), S. de Regt *priv. comm.*) overplotted."
+     }
+    ]
+   },
+   "citation": "(cite: AvenhausEA14), S. de Regt priv. comm."
+  },
+  {
+   "what": {
+    "value": "Dereddened spectral energy distribution (SED) of HD 142527",
+    "evidence": [
+     {
+      "loc": "RADMC-3D Model",
+      "quote": "The *RADMC-3D* model has been visually fitted to both the dereddened SED (obtained from (cite: VerhoeffEA11)), using $A_V$=0.3 mag (cite: FvdM20) and the ALMA continuum radial profile."
+     }
+    ]
+   },
+   "citation": "(cite: VerhoeffEA11)"
+  },
+  {
+   "what": {
+    "value": "Continuum flux and brightness temperature of IRS 48 used to derive its dust mass, and IRS 48 molecular column densities",
+    "evidence": [
+     {
+      "loc": "Dust mass",
+      "quote": "Using the flux given in Table 3 of (cite: FvdM20) and a dust temperature equal to the brightness temperature of 27 K (cite: vdMarelEA21), we derive a dust mass for IRS 48 of (6.2$\\pm$0.6)$\\times$10$^{-5}$ M$_\\odot$."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "while the and column densities were acquired using a rotational diagram analysis ($\\Omega$=1.4$\\times$10$^{-11}$ sr, (cite: vdMarelEA21))."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "$^{(a)}$: the and column densities for IRS 48 have been taken at a rotational temperature of $T_\\textnormal{rot}$=50 K (cite: ABoothEA21)."
+     }
+    ]
+   },
+   "citation": "(cite: FvdM20; vdMarelEA21; ABoothEA21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search for weak line emission via spectral stacking",
+   "method": "Align and stack spectra from different sides of the disk accounting for Keplerian rotation in radial bins from 0.0\" to 3.0\" (width = 2x beam minor axis, step = 1x beam minor axis)",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Radial range 0.0\" to 3.0\", bin width = 2x minor axis of beam, step = 1x minor axis of beam"
+   ],
+   "assumptions": [
+    "Keplerian rotation of the disk (d = 157 pc, M_star = 1.69 M_sun, incl = 27 deg, PA = 160 deg)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract disk-integrated line fluxes and 3-sigma upper limits",
+   "method": "Extract integrated fluxes using SPECFLUX task with circular apertures (CO isotopologues except 13C18O) or Keplerian masks (all other detections); compute 3-sigma upper limits in a 3.0\" circular aperture for non-detections",
+   "software": [
+    "CASA",
+    "SPECFLUX"
+   ],
+   "key_parameters": [
+    "Circular aperture radius 2.5\" to 3.0\" for bright CO isotopologues; 3.0\" circular aperture for upper limits; channel width delta_v = 0.5 km s^-1"
+   ],
+   "assumptions": [
+    "10% ALMA flux calibration uncertainty"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate disk-averaged column densities and rotational diagram for H2CO",
+   "method": "Compute upper level column density N_u^thin from integrated flux, apply optical depth correction C_tau, and convert to N_tot via Boltzmann equation using CDMS partition functions; for H2CO, fit 4 transitions simultaneously with MCMC rotational diagram analysis",
+   "software": [
+    "GoFish",
+    "emcee"
+   ],
+   "key_parameters": [
+    "T_rot = 35 K for single-transition disk-averaged column densities; Omega = 4.7e-11 sr (annulus ~115 au to ~395 au) for H2CO rotational diagram"
+   ],
+   "assumptions": [
+    "LTE / Boltzmann level populations; T_rot = 35 K for single transitions"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract azimuthally averaged deprojected radial profiles",
+   "method": "Deproject and azimuthally average emission using GoFish with radial bin sizes of half the beam minor axis",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Bin size = 0.5 x beam minor axis"
+   ],
+   "assumptions": [
+    "Disk inclination = 27 deg, PA = 160 deg"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive mm-sized dust mass from Band 6 continuum",
+   "method": "Measure Band 6 continuum flux at 277.51 GHz in a 1.625\" circular aperture, compute peak continuum brightness temperature via inverse Planck function, and calculate optically thin dust mass",
+   "software": [],
+   "key_parameters": [
+    "Aperture radius = 1.625\", nu = 277.51 GHz, T_dust = 28.2 K, kappa_nu = 2.8 cm^2 g^-1"
+   ],
+   "assumptions": [
+    "Optically thin continuum emission; d = 157 pc; kappa_nu = 10 (nu / 1000 GHz)^beta cm^2 g^-1 with beta = 1; T_dust = 28.2 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive total gas mass and gas-to-dust ratio",
+   "method": "Taper 13C18O J=3-2 to C18O J=3-2 beam, extract GoFish radial profiles to ~415 au, convert to 12CO column densities using isotopologue ratios, combine 13C18O in the ring with C18O at r <= 50 au and r >= 350 au, convert to H2 and integrate radial surface density",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Radial extent out to ~415 au; C18O used at <=50 au and >=350 au"
+   ],
+   "assumptions": [
+    "Optically thin emission; 12C/13C = 68 +/- 15; 16O/18O = 557 +/- 30; H2/12CO = 10^4; mean molecular weight = 2.4"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Model 3D dust temperature structure and locate the CO snowline",
+   "method": "Construct a 3D radiative transfer model in RADMC-3D with DIANA opacities (via OpTool), visually fitting the dereddened SED and ALMA continuum radial profile to map the 20 K midplane CO snowline",
+   "software": [
+    "RADMC-3D",
+    "OpTool"
+   ],
+   "key_parameters": [
+    "Small grains 0.005-1 um, large grains 0.005-1000 um; R_sub = 0.22 au, R_c,ID = 40 au, gamma = 1; cavity 40-100 au; inner disk h_c = 0.2, psi = 0.05, 50% large grains; outer disk h_c = 0.35, R_c = 150 au, psi = 0.2, 85% large grains; settling chi = 0.1; M_dust = 7.5e-3 M_sun"
+   ],
+   "assumptions": [
+    "DIANA dust opacities; dust sublimation temperature = 1500 K; A_V = 0.3 mag; L = 9.9 L_sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C I] 3P1-3P0 integrated flux",
+   "value": "6.1e3",
+   "uncertainty": "0.6e3",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{(b)}$: | $^3$P$_{1}$-$^3$P$_0$ | 492.16065100 | 23.6                | -7.09724                  | 3                   | 0.5    | 0.58\"$\\times$0.49 (-85)  | 372.34     | 18.36      | (6.1$\\pm$0.6)$\\times$10$^3$  | $>$(4.2$\\pm$0.4)$\\times$10$^{17}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] average column density",
+   "value": ">4.2e17",
+   "uncertainty": "0.4e17",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{(b)}$: | $^3$P$_{1}$-$^3$P$_0$ | 492.16065100 | 23.6                | -7.09724                  | 3                   | 0.5    | 0.58\"$\\times$0.49 (-85)  | 372.34     | 18.36      | (6.1$\\pm$0.6)$\\times$10$^3$  | $>$(4.2$\\pm$0.4)$\\times$10$^{17}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "13C18O J=3-2 integrated flux",
+   "value": "297.0",
+   "uncertainty": "29.7",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 3-2$^{(c)}$           | 314.119675   | 30.2                | -5.72343                  | 8                   | 2.0    | 0.32\"$\\times$0.24\" (82)  | 13.66      | 2.00       | 297.0$\\pm$29.7               | (1.9$\\pm$0.2)$\\times10^{15}$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "13C18O average column density (at T_rot=35 K)",
+   "value": "1.9e15",
+   "uncertainty": "0.2e15",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 3-2$^{(c)}$           | 314.119675   | 30.2                | -5.72343                  | 8                   | 2.0    | 0.32\"$\\times$0.24\" (82)  | 13.66      | 2.00       | 297.0$\\pm$29.7               | (1.9$\\pm$0.2)$\\times10^{15}$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "DCO+ J=4-3 integrated flux",
+   "value": "98.0",
+   "uncertainty": "9.8",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 4-3                   | 288.143858   | 34.6                | -2.3224                   | 9                   | 2.0    | 0.36\"$\\times$0.25\" (89)  | 18.36      | 4.05       | 98.0$\\pm$9.8                 | (1.4$\\pm$0.1)$\\times10^{11}$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "DCO+ average column density (at T_rot=35 K)",
+   "value": "1.4e11",
+   "uncertainty": "0.1e11",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 4-3                   | 288.143858   | 34.6                | -2.3224                   | 9                   | 2.0    | 0.36\"$\\times$0.25\" (89)  | 18.36      | 4.05       | 98.0$\\pm$9.8                 | (1.4$\\pm$0.1)$\\times10^{11}$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "CS J=7-6 average column density (at T_rot=35 K)",
+   "value": "1.6e13",
+   "uncertainty": "0.2e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 7-6                   | 342.882850   | 65.8                | -3.07737                  | 15                  | 0.5    | 0.55\"$\\times$0.45\" (76)  | 129.41     | 3.44       | (1.1$\\pm$0.1)$\\times10^3$    | (1.6$\\pm$0.2)$\\times10^{13}$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 1_2-0_1 average column density 3-sigma upper limit",
+   "value": "<1.9e13",
+   "uncertainty": "0.2e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 1$_2$-0$_1$           | 329.385477   | 15.8                | -4.84664                  | 3                   | 2.0    | 0.62\"$\\times$0.47\" (86)  | 19.26      | 4.76       | $<$65.3$\\pm$0.6              | $<$(1.9$\\pm$0.2)$\\times10^{13}$   |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 7_1,6-7_0,7 average column density 3-sigma upper limit",
+   "value": "<1.4e12",
+   "uncertainty": "0.1e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|           | 7$_{1,6}$-7$_{0,7}$   | 314.859528   | 80.1                | -3.4562                   | 60                  | 2.0    | 0.31\"0.24\" (81)          | 7.03       | 1.41       | $<$38.6$\\pm$3.9              | $<$(1.4$\\pm$0.1)$\\times10^{12}$   |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO total column density (rotational diagram, Omega=4.7e-11 sr)",
+   "value": "2.1e14",
+   "uncertainty": "0.2e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Rotational diagram analysis of ",
+     "quote": "The resulting fit can be found in Figure 3, yielding a total column density of $N_\\textnormal{tot}$=(2.1$\\pm$0.2)$\\times$10$^{14}$ cm$^{-2}$ and a rotational temperature of $T_\\textnormal{rot}$=20.1$^{+0.8}_{-0.7}$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO rotational temperature",
+   "value": "20.1",
+   "uncertainty": "+0.8/-0.7",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Rotational diagram analysis of ",
+     "quote": "The resulting fit can be found in Figure 3, yielding a total column density of $N_\\textnormal{tot}$=(2.1$\\pm$0.2)$\\times$10$^{14}$ cm$^{-2}$ and a rotational temperature of $T_\\textnormal{rot}$=20.1$^{+0.8}_{-0.7}$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 continuum flux density (at 277.51 GHz)",
+   "value": "1.9",
+   "uncertainty": "0.2",
+   "units": "Jy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "The continuum flux was extracted from the image using a circular aperture with a radius of 1.625\", yielding a flux density of $F_\\nu$=1.9$\\pm$0.2 Jy at a rest frequency of $\\nu$=277.51 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak continuum brightness temperature",
+   "value": "28.2",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "The peak brightness temperature was found to be $T_\\textnormal{dust}$=28.2 K at $\\sim$175 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum dust mass of mm-sized grains in HD 142527",
+   "value": "1.5e-3",
+   "uncertainty": "0.2e-3",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "Using this method, the minimum dust mass of the mm-sized dust grains was found to be $M_\\textnormal{dust}$=(1.5$\\pm$0.2)$\\times$10$^{-3}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of IRS 48",
+   "value": "6.2e-5",
+   "uncertainty": "0.6e-5",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "Using the flux given in Table 3 of (cite: FvdM20) and a dust temperature equal to the brightness temperature of 27 K (cite: vdMarelEA21), we derive a dust mass for IRS 48 of (6.2$\\pm$0.6)$\\times$10$^{-5}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass of HD 142527",
+   "value": "1.6e-2",
+   "uncertainty": "0.6e-2",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas mass",
+     "quote": "By summing over all the radial bins we acquired a gas mass estimate of $M_\\textnormal{gas}$=(1.6$\\pm$0.6)$\\times$10$^{-2}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio of HD 142527",
+   "value": "10.8",
+   "uncertainty": "4.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas mass",
+     "quote": "Combining our estimates of the gas and dust mass, we obtain a gas-to-dust ratio of 10.8$\\pm$4.2."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak optical depth of 13C18O J=3-2 at ~180 au",
+   "value": "0.03",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas mass",
+     "quote": "Using the radial profile (further discussed in Section 3.4) we inferred a peak optical depth of $\\tau_{\\textnormal{\\ce{^{13}C^{18}O}}}\\simeq$0.03 at $\\sim$180 au."
+    }
+   ]
+  },
+  {
+   "quantity": "CO snowline radius (from 13C18O and DCO+ radial profiles)",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The snowline",
+     "quote": "Furthermore, Figure 4 shows that peaks beyond the dust trap, allowing us to confirm that the snowline must lie beyond the dust trap, likely located at a radius of $\\sim$300 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Modelled CO snowline radius (at dust trap vs opposite side)",
+   "value": "220 to 280",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "The snowline",
+     "quote": "The snowline is located at smaller radii at the location of the dust trap ($\\sim$220 au) compared to the other side of the disk ($\\sim$280 au), indicating that the large dust concentration lowers the temperature."
+    }
+   ]
+  },
+  {
+   "quantity": "CS/SO column density ratio",
+   "value": ">1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The elemental /-ratio",
+     "quote": "By taking the ratio of the column density between the $J$=7-6 transition and the $3\\sigma$ upper limit for the $J$=1$_2$-0$_1$, displayed in Table 1, we obtain /$>$1."
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO/CH3OH column density ratio",
+   "value": "114",
+   "uncertainty": "14",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The formation of ",
+     "quote": "Taking the ratio, we find /$\\gtrsim$114$\\pm14$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Multiscale scales used in tclean",
+  "Cell size and image size used in tclean",
+  "Exact Keplerian mask parameters (e.g., target systemic velocity, r_max, line width profile parameters)",
+  "Self-calibration solution intervals (solint) and number of iterations",
+  "Line-free channel ranges used for UVCONTSUB",
+  "Whether primary beam correction was applied to the images before extracting fluxes",
+  "Priors, number of walkers, and number of steps used in the emcee rotational diagram MCMC fitting"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters (solution intervals, number of rounds, SNR thresholds, reference antennas)",
+  "Exact tclean parameters: pixel cell size, image dimensions, and multiscale scale sizes",
+  "Keplerian mask parameters used for tclean and SPECFLUX flux extraction (inner/outer radii, line width profile, systemic velocity)",
+  "Exact circular aperture radius (stated as between 2.5\" and 3.0\") used for each individual CO isotopologue in SPECFLUX",
+  "Surface density normalization sigma_c and radial Gaussian center/width parameters for the outer disk in the RADMC-3D model"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All 7 ALMA datasets are public in the archive, the software stack (CASA 6.5.1, GoFish, emcee, RADMC-3D, OpTool) is open and clearly identified, and most equations, line parameters, and physical assumptions are explicitly given in the text and tables. However, low-level imaging/self-calibration settings (solint, cell size, multiscale scales, exact Keplerian mask parameters) and a few RADMC-3D outer-disk Gaussian parameters are omitted.",
+ "rediscovery_reason": "All ALMA datasets are publicly available archival observations, the analysis relies on standard open-source tools (CASA, GoFish, emcee), and the paper provides clear quantitative answer keys (integrated fluxes, column densities, H2CO rotational temperature, dust mass, and gas mass).",
+ "source_card": "cards/2023A%26A...675A.131T/sonnet/card.md"
+}

@@ -1,0 +1,529 @@
+{
+ "bibcode": "2024A&A...689A.220T",
+ "title": "HYPERION: Coevolution of supermassive black holes and galaxies at z &gt; 6 and the build-up of massive galaxies",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202349054",
+ "arxiv_id": "2401.04211",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Cold-dust SED (dust temperature, mass, emissivity, SFR), molecular gas mass, gas-to-dust ratio and star formation efficiency of ten z>6 QSOs, used to judge the co-evolution of SMBHs and host galaxies and whether QSO hosts are progenitors of local massive galaxies",
+ "alma_project_codes": [
+  "2019.1.01633.S",
+  "2015.1.00399.S",
+  "2018.1.01790.S",
+  "2021.2.00151.S",
+  "2017.1.01472.S",
+  "2018.1.01188.S",
+  "2021.1.00934.S",
+  "2021.2.00064.S",
+  "2018.1.01289.S",
+  "2019.1.00672.S",
+  "2017.1.01195.S",
+  "2016.1.01063.S",
+  "2017.1.01088.S"
+ ],
+ "data": {
+  "bands": "New ALMA Band 8 and/or Band 9; archival Bands 3 to 6 (Table also lists Band 7 for J036+03); NOEMA 3 mm",
+  "arrays": "not stated",
+  "angular_resolution": "Band 8 J231-20 beam 4.3x2.9 arcsec2 (too coarse to separate the companion); per-observation beams are tabulated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "J231-20 ALMA B3 to B6 continuum results (QSO/companion decomposition)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "we used the results presented in (cite: Pensabene2021), who analyzed all the ALMA observations from B3 to B6 available for this QSO"
+     }
+    ]
+   },
+   "citation": "(cite: Pensabene2021)"
+  },
+  {
+   "what": {
+    "value": "SEDs/dust properties of J1319+0950, J1148+5251, J1342+0928 and J183+05 (J1319 and J1148 results used directly)",
+    "evidence": [
+     {
+      "loc": "5.1 Dust properties",
+      "quote": "Their SEDs were analyzed in (cite: carniani2019) (J1319+0950 and J1148+5251), in (cite: novak2019; witstok2023) (J1342+0928), and in (cite: decarli2023) (J183+05)."
+     }
+    ]
+   },
+   "citation": "(cite: carniani2019); (cite: novak2019); (cite: witstok2023); (cite: decarli2023)"
+  },
+  {
+   "what": {
+    "value": "J036+03 CO(6-5) detection and luminosity",
+    "evidence": [
+     {
+      "loc": "5.2 Molecular gas mass",
+      "quote": "reported the detection of the CO(6-5) emission line of J036+03"
+     }
+    ]
+   },
+   "citation": "(cite: decarli2023)"
+  },
+  {
+   "what": {
+    "value": "Results for J0100+2802 and J2310+1855 reported again in this work",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "results already presented in (cite: tripodi2023b) and in (cite: Tripodi2022), respectively, which are reported in this work"
+     }
+    ]
+   },
+   "citation": "(cite: tripodi2023b); (cite: Tripodi2022)"
+  },
+  {
+   "what": {
+    "value": "BH masses, bolometric luminosities and dynamical masses of the sample",
+    "evidence": [
+     {
+      "loc": "6.2 Evolutionary paths",
+      "quote": "and the dynamical masses (cite: neeleman2021; riechers2009; Tripodi2022) were taken from the literature"
+     }
+    ]
+   },
+   "citation": "(cite: zappacosta2023); (cite: mazzucchelli2023); (cite: neeleman2021); (cite: riechers2009); (cite: Tripodi2022)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of 16 WISSH QSOs at 2<z<5 (dust properties)",
+    "evidence": [
+     {
+      "loc": "6.1 Properties of the QSO host galaxies",
+      "quote": "We also included the dust properties inferred for 16 QSOs belonging to the WISE-SDSS Selected Hyper-luminous (WISSH) sample at"
+     }
+    ]
+   },
+   "citation": "(cite: duras2017)"
+  },
+  {
+   "what": {
+    "value": "Comparison SPT lensed dusty star-forming galaxies, SMGs and SF galaxies (dust properties)",
+    "evidence": [
+     {
+      "loc": "6.1 Properties of the QSO host galaxies",
+      "quote": "(cite: reuter2020) analyzed the cold-dust SEDs of the objects in this sample employing an MBB function in the optically thick regime"
+     },
+     {
+      "loc": "6.1 Properties of the QSO host galaxies",
+      "quote": "we considered a sample composed of three submm galaxies (SMGs) and eight star-forming (SF) galaxies from (cite: witstok2023)"
+     }
+    ]
+   },
+   "citation": "(cite: reuter2020); (cite: witstok2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes from archive-calibrated data",
+   "method": "Archive calibration; CASA tclean natural weighting, 3 sigma threshold; continuum via MFS in line-free channels; uvcontsub for line cubes",
+   "software": [
+    "CASA 5.1.1-5",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "natural weighting, 3 sigma cleaning threshold",
+    "uvcontsub polynomial order 1 for J0224-4711, 0 for others"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities and sizes, with tapering for extended emission",
+   "method": "2D Gaussian fit in CASA; peak flux taken as total for unresolved sources; tapered maps for higher-resolution data to recover extended emission",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "uvtaper 0.9 arcsec (J036+03) or 0.7 arcsec (J0224-4711, J2054-0005)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Correct J231-20 Band 8 flux for the close companion",
+   "method": "Subtract companion contribution using Pensabene2021 SED: companion 0.6 dex fainter than QSO at ~400 GHz, highest-temperature model; result 6.74 +/- 0.31 mJy used as detection in the SED fit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Companion flux is 0.6 dex below QSO flux at ~400 GHz"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract line properties (CO(7-6), [CI], CO(6-5))",
+   "method": "Moment maps from thresholded continuum-subtracted cubes; spectrum from S/N>2 region; single-Gaussian fit of line profile; 2D Gaussian fit of line maps; luminosities from Solomon et al. formulae",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "moment-map threshold 2.5 sigma (J0224-4711) or 3 sigma (J1319+0950, J2054-0005)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit the cold-dust SED with an optically thick modified black body",
+   "method": "MBB with CMB correction; free T_dust, M_dust, beta; MCMC with uniform priors",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "k0 = 0.45 cm2/g at nu0 = 250 GHz",
+    "T0 = 2.73 K for CMB",
+    "40 chains, 6000 trials, burn-in ~100",
+    "Solid angle from continuum mean size of resolved observations"
+   ],
+   "assumptions": [
+    "Optically thick regime; opacity law from beelen+2006/carniani2019"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive L_TIR and star formation rate",
+   "method": "Integrate best-fit model over 8-1000 micron rest frame; SFR proportional to L_TIR with Kroupa IMF; SFR reduced for 50% AGN contribution to dust heating",
+   "software": [],
+   "key_parameters": [
+    "SFR = 1.496e-10 x L_IR(8-1000 micron)"
+   ],
+   "assumptions": [
+    "Kroupa IMF",
+    "AGN contributes 50% of dust heating"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive molecular gas masses from CO",
+   "method": "M_H2 = alpha_CO / r_J-(J-1) x L'_CO; r65 and r76 from APM0879+5255 and Cloverleaf",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO = 0.8 Msun (K km/s pc2)^-1",
+    "r65 = 1.23 +/- 0.66 (J1319+0950, J2054-0005); r76 = 0.76 +/- 0.41 (J0224-4711)"
+   ],
+   "assumptions": [
+    "CO(7-6) ~ CO(6-5) for J0224-4711"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare dust properties, GDR and SFE with literature samples and fit T_dust-z",
+   "method": "Compile local and high-z comparison samples; fit T_dust(z) = A(1+z)^B to all sources and to QSOs only; GDR from M_gas/M_dust; SFE = SFR/M_H2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Fit excludes stacked results"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Classify evolutionary regime via BH and galaxy growth efficiencies",
+   "method": "Compare G_gal = SFR/M_gal with G_BH = (1-eps) Mdot_BH/M_BH; slope angle >45 deg BH-dominated, ~45 symbiotic, <45 galaxy-dominated",
+   "software": [],
+   "key_parameters": [
+    "radiative efficiency eps=0.1; BH masses from MgII"
+   ],
+   "assumptions": [
+    "SFR corrected for 50% AGN contribution; Mdot_BH from L_bol"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "T_dust (J036+03, J0224-4711, J231-20, J2054-0005)",
+   "value": "59; 85; 51; 64",
+   "uncertainty": "+/-2; +12/-8; +/-3; +/-2",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of SED results",
+     "quote": "$59\\pm 2$ | $85^{+12}_{-8}$ | $51\\pm 3$ | 64 ± 2"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dust (J036+03, J0224-4711, J231-20, J2054-0005)",
+   "value": "6.1; 9.3; 53; 10.6 (x1e7)",
+   "uncertainty": "+/-2.5; +/-2.7; +/-5; +/-2.4",
+   "units": "Msun (x1e7)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of SED results",
+     "quote": "6.1 ± 2.5 | 9.3 ± 2.7 | 53 ± 5 | 10.6 ± 2.4"
+    }
+   ]
+  },
+  {
+   "quantity": "beta (J036+03, J0224-4711, J231-20, J2054-0005)",
+   "value": "2.4; 1.7; 1.6; 2.1",
+   "uncertainty": "+/-0.2; +/-0.2; +/-0.1; +/-0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of SED results",
+     "quote": "2.4 ± 0.2 | 1.7 ± 0.2 | 1.6 ± 0.1 | 2.1 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR (J036+03, J0224-4711, J231-20, J2054-0005)",
+   "value": "6.2; 33.2; 6.6; 9.8 (x1e12)",
+   "uncertainty": "+/-1.0; +22/-10; +/-1.6; +/-1.0",
+   "units": "Lsun (x1e12)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table of SED results",
+     "quote": "6.2 ± 1.0 | 33.2$^{+22}_{-10}$ | 6.6 ± 1.6 | 9.8 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (J036+03, J0224-4711, J231-20, J2054-0005)",
+   "value": "466; 2485; 496; 730",
+   "uncertainty": "+/-75; +1682/-768; +/-118; +/-75",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table of SED results",
+     "quote": "466 ± 75 | 2485$^{+1682}_{-768}$ | 496 ± 118 | 730 ± 75"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cold-dust SED fit: T_dust",
+   "value": "54",
+   "uncertainty": "+8/-4",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Dust properties",
+     "quote": "we obtained $T_{\\rm dust}=54^{+8}_{-4}$ K, $M_{\\rm dust}=(4.6\\pm 3.0)\\times 10^8\\ \\rm M_\\odot$, and $\\beta=1.6 \\pm 0.55$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cold-dust SED fit: M_dust",
+   "value": "4.6e8",
+   "uncertainty": "+/-3.0e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Dust properties",
+     "quote": "we obtained $T_{\\rm dust}=54^{+8}_{-4}$ K, $M_{\\rm dust}=(4.6\\pm 3.0)\\times 10^8\\ \\rm M_\\odot$, and $\\beta=1.6 \\pm 0.55$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cold-dust SED fit: beta",
+   "value": "1.6",
+   "uncertainty": "+/-0.55",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Dust properties",
+     "quote": "we obtained $T_{\\rm dust}=54^{+8}_{-4}$ K, $M_{\\rm dust}=(4.6\\pm 3.0)\\times 10^8\\ \\rm M_\\odot$, and $\\beta=1.6 \\pm 0.55$"
+    }
+   ]
+  },
+  {
+   "quantity": "J231-20 B8 flux corrected for companion",
+   "value": "6.74",
+   "uncertainty": "+/-0.31",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.4 QSO J231-20",
+     "quote": "We obtain 6.74$\\pm$0.31."
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 J0224-4711 (CO(7-6))",
+   "value": "1.0e10",
+   "uncertainty": "+/-0.1e10 (statistical)",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 Molecular gas mass",
+     "quote": "This gave $M_{\\rm H2}=(1.0 \\pm 0.1) \\times 10^{10}\\ \\rm M_\\odot$ for J0224-4711."
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 J1319+0950 and J2054-0005 (CO(6-5))",
+   "value": "1.5e10; 6.4e9",
+   "uncertainty": "+/-0.2e10; +/-1.0e9 (statistical)",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 Molecular gas mass",
+     "quote": "We then obtained $M_{\\rm H2}=(1.5 \\pm 0.2)\\times 10^{10}$ for J1319+0950, and $M_{\\rm H2}=(6.4 \\pm 1.0) \\times 10^9\\ \\rm M_\\odot$ for J2054-0005."
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 J036+03",
+   "value": "7.5e9",
+   "uncertainty": "+/-0.64e9",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 Molecular gas mass",
+     "quote": "This yielded $M_{\\rm H2}=(7.5 \\pm 0.64) \\times 10^9\\ \\rm M_\\odot$ following our assumptions."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) redshift of J0224-4711",
+   "value": "6.5220",
+   "uncertainty": "0.0002",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.1 CO(7-6) and [CI]",
+     "quote": "corresponding to $z=6.5220\\pm 0.0002$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) FWHM (J1319+0950)",
+   "value": "529",
+   "uncertainty": "41",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.2 CO(6-5) in J1319+0950",
+     "quote": "we obtained an FWHM of the line of $529 \\pm 41$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) integrated flux (J2054-0005)",
+   "value": "0.288",
+   "uncertainty": "0.047",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.3 CO(6-5) in J2054-0005",
+     "quote": "an integrated flux of 0.288 $\\pm$ 0.047 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust-z fit, all galaxies: A and B",
+   "value": "A=19 K, B=0.7",
+   "uncertainty": "A +/-2 K; B +/-0.1",
+   "units": "K and dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.1.1 Dust temperature",
+     "quote": "We found $A=19\\pm 2$ K and $B=0.7\\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust-z fit, QSOs only: A and B",
+   "value": "A=29 K, B=0.35",
+   "uncertainty": "A +/-2 K; B +/-0.04",
+   "units": "K and dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.1.1 Dust temperature",
+     "quote": "We found $A=29\\pm 2$ K and $B=0.35\\pm 0.04$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale of the sample",
+   "value": "~1e-2 Gyr",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.1.4 Star formation efficiency",
+     "quote": "Our sample exhibits $\\tau_{\\rm dep}\\sim 10^{-2}$ Gyr"
+    }
+   ]
+  },
+  {
+   "quantity": "GDR range in the sample",
+   "value": "30 to 250",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "7 Summary",
+     "quote": "We found a large scatter of the GDR in our sample, from 30 to 250."
+    }
+   ]
+  },
+  {
+   "quantity": "GDR (J036+03, J0224-4711, J231-20, J2054-0005)",
+   "value": "123; 110; 26; 60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of SED results",
+     "quote": "123 | 110 | 26 | 60"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters beyond weighting: cell size, image size, clean mask and iteration limits, spw and channel selections for continuum",
+  "Which archive calibration (pipeline version or manual script) was applied to each dataset, and any flux-scale uncertainty",
+  "Line-free channel ranges used in uvcontsub and for continuum images",
+  "Moment-map and spectrum extraction details (aperture, velocity range, channel binning for each line)",
+  "How flux and size uncertainties from the 2D Gaussian fits were derived and the primary-beam correction",
+  "Bin edges of the six wavelength bins for the mean SED and how errors are propagated",
+  "Source sizes (solid angle) adopted for unresolved sources in the SED fits (J036+03 B8/B9, J0224-4711 B8/B9)",
+  "MCMC walker initialisation and convergence criterion for emcee; the discrepancy between 40 chains, 6000 trials and the burn-in of ~100",
+  "Briggs robust value if used (table footnotes mention robust=0.5 without saying which data)",
+  "BH masses and L_bol errors for the HYPERION QSOs from Tortosa et al. in prep; J0224-4711 dynamical mass in Tripodi in prep",
+  "Exact ALMA execution blocks and which observation of J2054-0005 was chosen in B6/B7"
+ ],
+ "missing_for_reproduction": [
+  "Tclean image/cell sizes, mask, iteration and Briggs settings",
+  "Spectral window and channel selections for continuum and lines",
+  "Which archive calibration product version was used",
+  "Details of Gaussian fits and error treatment for flux densities",
+  "Bin definitions for the mean SED",
+  "Code for SED fitting, MCMC setup details (walkers, convergence) and comparison sample compilation",
+  "Literature BH masses and dynamical masses (Tortosa et al. and Tripodi in prep)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are ALMA archival or public, and the SED recipe (equations, priors, chain settings, opacity model) plus flux tables with project IDs are given; imaging parameters, channel selections and several literature inputs are missing, so the numerical results can be reproduced from the tabulated fluxes but not fully from raw data.",
+ "rediscovery_reason": "Archival ALMA data and an explicit MBB/MCMC recipe with priors; the flux table lets a reproducer refit the SEDs and compare to numeric T_dust, M_dust, beta, SFR results.",
+ "source_card": "cards/2024A%26A...689A.220T/sonnet/card.md"
+}

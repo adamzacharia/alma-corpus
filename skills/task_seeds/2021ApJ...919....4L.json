@@ -1,0 +1,328 @@
+{
+ "bibcode": "2021ApJ...919....4L",
+ "title": "Propionamide (C<SUB>2</SUB>H<SUB>5</SUB>CONH<SUB>2</SUB>): The Largest Peptide-like Molecule in Space",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac091c",
+ "arxiv_id": "2108.05001",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Whether propionamide (C2H5CONH2), the largest peptide-like molecule and next member of the amide chemical family after formamide and acetamide, can be detected in the interstellar medium toward Sgr B2(N).",
+ "alma_project_codes": [
+  "2016.1.00074.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "typically 0.6'' x 0.5''",
+  "sensitivity": "0.4 to 1 mJy/beam median rms in channel maps"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Laboratory rotational transitions of propionamide in the 21.4-39 GHz range, dipole moment components (mu_a = 0.6359(60) D, mu_b = 3.496(30) D), and fundamental frequency of skeletal torsion mode v30 (45(7) cm-1)",
+    "evidence": [
+     {
+      "loc": "2. SPECTROSCOPY",
+      "quote": "We started our analysis of propionamide spectrum from the results of Marstokk et al. (1996) where the data in the 21.4 – 39 GHz range were obtained using Stark modulated spectroscopy."
+     },
+     {
+      "loc": "2. SPECTROSCOPY",
+      "quote": "We used dipole moment components obtained by Marstokk et al. (1996) via Stark measurements μ a = 0.6359(60) D and μ b = 3.496(30) D"
+     }
+    ]
+   },
+   "citation": "Marstokk et al. (1996)"
+  },
+  {
+   "what": {
+    "value": "Excitation energies of normal vibrational modes of propionamide up to 1000 cm-1",
+    "evidence": [
+     {
+      "loc": "2. SPECTROSCOPY",
+      "quote": "The excitation energies of all other modes were taken from the study of the vibrational spectrum of propionamide by Kuroda et al. (1972)."
+     }
+    ]
+   },
+   "citation": "Kuroda et al. (1972)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic data for acetamide and acetone, plus JPL and CDMS spectroscopy databases for other molecules",
+    "evidence": [
+     {
+      "loc": "4.2.4. Detection of propionamide",
+      "quote": "We built our own Weeds database containing the spectroscopic data of propionamide, acetamide (Ilyushin et al. 2004) and acetone (Ilyushin et al. 2019). The JPL (Pickett et al.1998) and CDMS(Müller et al. 2005; Endresetal.2016) databases are used for other molecules."
+     }
+    ]
+   },
+   "citation": "Ilyushin et al. (2004); Ilyushin et al. (2019); Pickett et al. (1998); Müller et al. (2005); Endres et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "N(H2)/N(C18O) abundance ratio in Orion KL (7 x 10^6) and Galactic 16O/18O gradient",
+    "evidence": [
+     {
+      "loc": "4.2.3. H 2 column density",
+      "quote": "According to the Galactic gradient of [16] O/ [18] O(Wilson & Rood 1994), the abundance ratio of C [18] O is significantly different in the Galactic Center region and the solar neighborhood. We adopt an abundance ratio N(H 2 )/N(C [18] O) two times of that in Orion KL (7 × 10 [6] cm [-2], Castets & Langer (1995))."
+     }
+    ]
+   },
+   "citation": "Wilson & Rood (1994); Castets & Langer (1995)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure and model laboratory rotational spectrum of propionamide and compute partition function",
+   "method": "Measure microwave/mm/sub-mm transitions (9-461 GHz) in three laboratories and fit rotational transitions of ground (v=0) and excited torsional states (v=1) simultaneously with methyl torsion states using the Rho axis method (RAM); calculate rotational and vibrational partition functions.",
+   "software": [
+    "RAM36hf"
+   ],
+   "key_parameters": [
+    "K_a <= 10, J <= 50 for ground state; F fixed at 5.55 cm^-1; predictions limited to uncertainty < 0.1 MHz"
+   ],
+   "assumptions": [
+    "Dipole moment components mu_a = 0.6359(60) D and mu_b = 3.496(30) D from Marstokk et al. (1996); vibrational modes up to 1000 cm^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Select low-blending target position Sgr B2(N1E) using integrated intensity maps",
+   "method": "Map integrated intensity of the clean 92.143 GHz propionamide line (92142 to 92143.5 MHz) and compare with CH13CN contours to pick a position offset from Sgr B2(N1) where propionamide is strong and blending/continuum opacity is weak.",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "Selected position 17:47:19.99, -28:22:18.72 (J2000), ~1.5'' east of Sgr B2(N1), region size ~0.3''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Subtract continuum emission in the image plane",
+   "method": "Select 3-5 groups of line-free channels in each spectral window and fit and subtract a first-order baseline in the image plane.",
+   "software": [
+    "GILDAS",
+    "CLASS"
+   ],
+   "key_parameters": [
+    "3-5 groups of line-free channels per spectral window; first-order baseline"
+   ],
+   "assumptions": [
+    "Continuum emission follows the spectral energy distribution of free-free emission"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive C18O and H2 column densities toward Sgr B2(N1E)",
+   "method": "Model ALMA C18O spectrum with Weeds under LTE and optically thin assumptions, then scale by adopted N(H2)/N(C18O) ratio.",
+   "software": [
+    "GILDAS",
+    "Weeds"
+   ],
+   "key_parameters": [
+    "T_ex = 150 K"
+   ],
+   "assumptions": [
+    "Optically thin emission, LTE, T_ex = 150 K, N(H2)/N(C18O) = 1.4 x 10^7 (two times the Orion KL value of 7 x 10^6)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Identify and model propionamide and related amide molecules (formamide, acetamide) using LTE synthetic spectra",
+   "method": "Fit Gaussian linewidths to clean lines in CLASS, then simulate 3-mm LTE spectral profiles in Weeds for each spectral window separately using custom spectroscopic database plus JPL and CDMS.",
+   "software": [
+    "GILDAS",
+    "CLASS",
+    "Weeds"
+   ],
+   "key_parameters": [
+    "Linewidth = 4.2(0.5) km s^-1, T_ex = 150 K, source size ~ 0.3''; same parameters used for v=0 and v=1 states"
+   ],
+   "assumptions": [
+    "LTE conditions with T_ex = 150 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Column density of propionamide (C2H5CONH2) toward Sgr B2(N1E)",
+   "value": "1.5e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The column density of propionamide toward Sgr B2(N1E) was derived to be 1.5×10 [16 ] cm [−2], which is three-fifths of that of acetamide, and one-nineteenth of that of formamide."
+    },
+    {
+     "loc": "4.2.4. Detection of propionamide",
+     "quote": "A column density of 1.5 × 10 [16 ] cm [−2 ] was obtained for propionamide (see Table 4)."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of C2H5CONH2 relative to H2 toward Sgr B2(N1E)",
+   "value": "4.3e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.4. Detection of propionamide",
+     "quote": "Abundances relative to H 2 was estimated to be 4.3 × 10 [−9 ] for C 2 H 5 CONH 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Linewidth of C2H5CONH2 toward Sgr B2(N1E)",
+   "value": "4.2",
+   "uncertainty": "0.5",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.4. Detection of propionamide",
+     "quote": "With the derived size, a linewidth measurement of 4.2(.5) km s [−1 ] with Gaussian fit of 92.408 and 103.342 GHz lines in CLASS"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O column density toward Sgr B2(N1E)",
+   "value": "2.5e17",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.3. H 2 column density",
+     "quote": "The column density of C O was derived to be 2.5 × 10 [17] cm [-2] ."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density toward Sgr B2(N1E)",
+   "value": "3.5e24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.3. H 2 column density",
+     "quote": "The N(H 2 ) was then calculated to be 3.5 × 10 [24] cm [-2] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of CH3CONH2 relative to H2 toward Sgr B2(N1E)",
+   "value": "7.2e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "We derived average abundances relative to H 2 of 7.2 × 10 [−9 ] for CH 3 CONH 2, and 8.0 × 10 [−8 ] for NH 2 CHO."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of NH2CHO relative to H2 toward Sgr B2(N1E)",
+   "value": "8.0e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "We derived average abundances relative to H 2 of 7.2 × 10 [−9 ] for CH 3 CONH 2, and 8.0 × 10 [−8 ] for NH 2 CHO."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio [C2H5CONH2]/[CH3CONH2] toward Sgr B2(N1E)",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "The abundance ratio [C 2 H 5 CONH 2 ]/[CH 3 CONH 2 ] was 0.6, while [CH 3 CONH 2 ]/[NH 2 CHO] was estimated to be ∼ 0.1 toward Sgr B2(N1E)."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio [CH3CONH2]/[NH2CHO] toward Sgr B2(N1E)",
+   "value": "0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "The abundance ratio [C 2 H 5 CONH 2 ]/[CH 3 CONH 2 ] was 0.6, while [CH 3 CONH 2 ]/[NH 2 CHO] was estimated to be ∼ 0.1 toward Sgr B2(N1E)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean column density of C2H5CONH2 toward main Sgr B2(N1) region",
+   "value": "3.3e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "A mean column density of 3.3 × 10 [16 ] cm [−2 ] was obtained for C 2 H 5 CONH 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio [C2H5CONH2]/[CH3CONH2] toward main Sgr B2(N1) region",
+   "value": "0.22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "The abundance ratio [C 2 H 5 CONH 2 ]/ [CH 3 CONH 2 ] was estimated to be ∼ 0.22, which was lower than that of Sgr B2(N1E)."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio [CH3CONH2]/[NH2CHO] toward main Sgr B2(N1) region",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.5. Related molecules",
+     "quote": "The [CH 3 CONH 2 ]/[NH 2 CHO] is ∼ 0.16 toward the main Sgr B2(N1) region."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "TCLEAN imaging parameters in CASA 5.6.1-8 (weighting scheme, robust parameter, cell size, image size, masking, stopping threshold, self-calibration details)",
+  "Exact channel/frequency ranges used for the 3-5 line-free groups in each spectral window for first-order baseline subtraction",
+  "Numerical contents of Tables 1-5 (which are missing from the main text and only present as unrendered figures/tables in the PDF conversion)",
+  "Exact aperture size/shape used to extract the Sgr B2(N1E) and main Sgr B2(N1) spectra from the ALMA cubes"
+ ],
+ "missing_for_reproduction": [
+  "Detailed TCLEAN parameters in CASA 5.6.1-8 (robust weighting, pixel size, masking, self-calibration)",
+  "Exact frequency intervals used as line-free channels for the image-plane baseline subtraction",
+  "Values in Tables 1-5 (omitted in text conversion, requiring access to the published tables/electronic supplements)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Archival ALMA project code, coordinates of Sgr B2(N1E), CASA/GILDAS versions, LTE assumptions (T_ex = 150 K, linewidth = 4.2 km/s, source size = 0.3''), and electronic supplements for the new spectroscopic catalog and spectra are all clearly provided, though TCLEAN imaging parameters and exact continuum-subtraction channel windows are inherited from Belloche et al. (2019) or unstated.",
+ "rediscovery_reason": "The ALMA dataset (2016.1.00074.S) is public, the target position Sgr B2(N1E) is explicitly given, the spectroscopic predictions are published as supplementary tables, and the main results are numeric column densities and abundance ratios.",
+ "source_card": "cards/2021ApJ...919....4L/sonnet/card.md"
+}

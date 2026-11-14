@@ -1,0 +1,403 @@
+{
+ "bibcode": "2023A&A...678A.194C",
+ "title": "ALMA-IMF. VII. First release of the full spectral line cubes: Core kinematics traced by DCN J = (3‒2)",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245429",
+ "arxiv_id": "2306.14710",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "How to homogeneously calibrate and image the 12m-array spectral line cubes for the 15 ALMA-IMF protoclusters, and what are the global and core-scale kinematics traced by DCN (3-2) across different evolutionary stages?",
+ "alma_project_codes": [
+  "2017.1.01355.L",
+  "2013.1.01365.S",
+  "2015.1.01273.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm; ~91-106 GHz) and Band 6 (1.3 mm; ~216-234 GHz)",
+  "arrays": "12m array released in DR1 (7m and TP arrays also observed, combination ongoing)",
+  "angular_resolution": "~2000 au physical resolution; 0.3'' to 1.5'' in continuum; ~0.24'' to 2.23'' across line spectral windows",
+  "sensitivity": "0.88 to 11.18 mJy beam^-1 (dirty beam) in B3; 1.55 to 32.64 mJy beam^-1 (dirty beam) in B6"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Smoothed core catalogues providing positions, major and minor FWHMs, position angles, dust temperatures, masses, and densities for 595 continuum cores",
+    "evidence": [
+     {
+      "loc": "Global scale DCN (3-2) morphology",
+      "quote": "The core numbering (n), core name, RA, DEC, position angle (PA), core major (F$_{A}$) and core minor (F$_{B}$) FWHM and dust temperatures (T) are taken from the smoothed core catalogues in (cite: louvet22)."
+     },
+     {
+      "loc": "DCN line extraction, background subtraction, and hyperfine fitting",
+      "quote": "We used the smoothed core catalogue from (cite: louvet22) to obtain the positions and core sizes for the 595 continuum cores over the 15 ALMA-IMF protoclusters."
+     }
+    ]
+   },
+   "citation": "(cite: louvet22)"
+  },
+  {
+   "what": {
+    "value": "Protocluster central positions, distances, V_LSR, and evolutionary stage classifications (Young, Intermediate, Evolved)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "listing their central positions, $V_{\\rm LSR}$ estimates, distances from the Sun, evolutionary nature, and imaged areas of the mosaics in ALMA’s B3 (3 mm) and B6 (1 mm)."
+     }
+    ]
+   },
+   "citation": "(cite: Motte2022)"
+  },
+  {
+   "what": {
+    "value": "Fraction of bandwidth containing bright line emission (1 - f_BW,cleanest), continuum startmodels (.tt0 and .tt1), and manually defined noise estimation regions",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "This is the fraction of the bandwidth found to contain bright line emission, which was excluded to make the `cleanest` continuum cubes, i.e. $1-f_\\mathrm{BW,cleanest}$ from Table 3 of (cite: Ginsburg2022)."
+     },
+     {
+      "loc": "Continuum start-model",
+      "quote": "This model cube is constructed from the .tt0 and .tt1 products of the mostly line-free `cleanest` continuum imaging (see (cite: Ginsburg2022)), `tclean` then stores this as an initial model and subtracts it from the visibilities at the beginning of the deconvolution process."
+     }
+    ]
+   },
+   "citation": "(cite: Ginsburg2022)"
+  },
+  {
+   "what": {
+    "value": "Rest frequencies and hyperfine structure frequencies and relative weights for DCN (3-2)",
+    "evidence": [
+     {
+      "loc": "DCN line extraction, background subtraction, and hyperfine fitting",
+      "quote": "The values for the specified hyperfine model were taken from the CDMS catalogue to define the frequencies and relative weights of the hyperfine lines (cite: Endres2016; muller2001; muller2005)."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: Endres2016; muller2001; muller2005)"
+  },
+  {
+   "what": {
+    "value": "Upper level energies and critical densities for OCS, OC33S, C18O, 13CS, DCN, N2D+, and DCO+",
+    "evidence": [
+     {
+      "loc": "Protocluster $V_{\\rm LSR}$ estimates from the DCN (3-2) fits",
+      "quote": "The temperatures and critical densities for OCS, OC$^{33}$S, C$^{18}$O and $^{13}$CS are taken from (cite: molet19)."
+     },
+     {
+      "loc": "Protocluster $V_{\\rm LSR}$ estimates from the DCN (3-2) fits",
+      "quote": "For DCN (3-2), we take the values from (cite: Bocso2019) and for N$_2$D$^+$, DCO$^+$ we follow (cite: Bocso2019) and approximate the critical density assuming $n_{crit}\\approx$A/$\\Gamma$ (cite: Shirley2015), for collisional rates at T=100 K where the Einstein A and $\\Gamma$ coefficients are taken from the Leiden Atomic Molecular Database (LAMBDA) (cite: Schoier2005)."
+     }
+    ]
+   },
+   "citation": "(cite: molet19); (cite: Bocso2019); (cite: Shirley2015); LAMBDA (cite: Schoier2005)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and post-process the 12m spectral line cubes",
+   "method": "Restore QA3-reprocessed measurement sets with scriptForPI.py, split spectral windows and combine 12m configurations, build continuum startmodel from cleanest continuum (.tt0 and .tt1), deconvolve line cubes with multi-scale tclean using a 10% pbmask, convolve models to a common beam with radio-beam, apply JvM correction to residuals, and subtract continuum in the image plane with STATCONT",
+   "software": [
+    "CASA",
+    "tclean",
+    "astroquery",
+    "radio-beam",
+    "STATCONT"
+   ],
+   "key_parameters": [
+    "pbmask = 10% of primary beam response",
+    "Cleaning threshold = 5 sigma (10 sigma for G351.77)",
+    "Multi-scale scales = geometric series from 0 increasing by ~x2 minor beam/cell size up to ~5.5''"
+   ],
+   "assumptions": [
+    "Dirty beam volume is integrated up to its first null to compute JvM epsilon factor"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate cube noise levels homogeneously across all fields and spectral windows",
+   "method": "Calculate MAD (scaled by 1.4826) on the 25% of channels with the lowest intensity within manually defined continuum noise regions on JvM-corrected, non-continuum-subtracted, non-primary-beam-corrected cubes, then scale by 1/epsilon to convert to mJy per dirty beam",
+   "software": [
+    "astropy.stats.median_abs_deviation"
+   ],
+   "key_parameters": [
+    "25% lowest intensity channels; MAD scale factor = 1.4826"
+   ],
+   "assumptions": [
+    "Noise estimated from a smaller clean beam should be scaled up by the dirty-to-clean beam volume ratio (1/epsilon)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Create global DCN (3-2) moment maps",
+   "method": "Shift B6 spw1 STATCONT continuum-subtracted, non-primary-beam-corrected cubes to DCN (3-2) rest frame, extract a 50 km s^-1 subcube around protocluster V_LSR, and compute moment 0, 1, and 2 maps over manually determined velocity ranges using a 4 sigma threshold",
+   "software": [
+    "spectral-cube"
+   ],
+   "key_parameters": [
+    "Subcube width = 50 km s^-1; pixel and channel threshold = 4 sigma (dirty beam noise); rest frequency = 217.23854 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Extract core-averaged background-subtracted DCN (3-2) spectra and fit hyperfine structure",
+   "method": "Extract average DCN (3-2) spectrum for each of the 595 continuum cores from an elliptical aperture of 2x the continuum FWHM, subtract background spectrum from an elliptical annulus (2x to 3x continuum FWHM, excluding overlapping neighbour cores), fit single-component DCN hyperfine structure model in PySpecKit, and classify detections into Single- or Complex-type",
+   "software": [
+    "spectral-cube",
+    "PySpecKit"
+   ],
+   "key_parameters": [
+    "Core aperture = 2x continuum FWHM; background annulus = 2x to 3x continuum FWHM; detection criteria: S/N > 4 sigma (from MAD in 30 line-free channels) and velocity dispersion > 0.2 km s^-1; 7 hyperfine components from CDMS"
+   ],
+   "assumptions": [
+    "DCN (3-2) is an optically thin dense gas tracer with critical density ~10^7 cm^-3; FWHM linewidth = sigma_obs * sqrt(8 ln 2)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze core-to-core velocity dispersion, spatial spread, and non-thermal velocity dispersion across evolutionary stages",
+   "method": "Compute core velocity offsets, core-to-core velocity dispersions, radial spatial offsets, and non-thermal velocity dispersions for the 266 Single-type cores; apply Kolmogorov-Smirnov (KS) tests between evolutionary stages and compute Pearson's correlation coefficient between non-thermal velocity dispersion and deconvolved core size",
+   "software": [],
+   "key_parameters": [
+    "T_k = 18 K to 300 K (from continuum dust temperature); smoothed continuum beam = 2700 au"
+   ],
+   "assumptions": [
+    "Gas kinetic temperature T_k for DCN (3-2) equals the core dust temperature from Louvet et al.; core size is the geometric mean of major and minor continuum FWHMs deconvolved by the smoothed beam (unless deconvolved size < 0.5x non-deconvolved size)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean JvM epsilon factor across all spectral windows and fields",
+   "value": "0.62",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JvM correction",
+     "quote": "The mean, median and standard deviation for $\\epsilon$ over all spectral windows and fields are 0.62, 0.60, and 0.17, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median JvM epsilon factor across all spectral windows and fields",
+   "value": "0.60",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JvM correction",
+     "quote": "The mean, median and standard deviation for $\\epsilon$ over all spectral windows and fields are 0.62, 0.60, and 0.17, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average ratio of line beam to continuum beam (excluding B3 spw0)",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Beam sizes",
+     "quote": "The average ratio of the line beams and continuum beam is $\\sim$1.2, except for B3, spectral window 0 (which includes the N$_2$H$^+$ transition), where the ratio is on average $\\sim$1.4."
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum cores with DCN (3-2) detection (Single + Complex)",
+   "value": "357",
+   "uncertainty": "not stated",
+   "units": "cores (60% of 595)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "DCN (3-2) detection of cores",
+     "quote": "Of the 595 continuum cores, 357 (60%) have a DCN (3-2) detection."
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum cores with Single-type DCN (3-2) detection",
+   "value": "266",
+   "uncertainty": "not stated",
+   "units": "cores (~45% of 595)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "DCN (3-2) detection of cores",
+     "quote": "After filtering out the cores with a Complex DCN (3-2) spectrum, the sample is reduced to 266 continuum cores, that is, $\\sim$45% of the continuum cores have a single component HFS fit."
+    }
+   ]
+  },
+  {
+   "quantity": "Average Single-type DCN (3-2) core detection rate in Young protoclusters",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Global scale DCN (3-2) morphology",
+     "quote": "| Average | 36 | 12 (19) | 35 (53)% | 5.2 | | 1.9 | 1.5 | 1.3 | 0.76 | | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average Single-type DCN (3-2) core detection rate in Intermediate protoclusters",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Global scale DCN (3-2) morphology",
+     "quote": "| Average | 28 | 9 (13) | 30 (45)% | 7.4 | | 2.9 | 1.5 | 1.3 | 0.64 | | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average Single-type DCN (3-2) core detection rate in Evolved protoclusters",
+   "value": "62",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Global scale DCN (3-2) morphology",
+     "quote": "| Average | 59 | 37 (44) | 62 (75)% | 10.4 | | 2.3 | 1.2 | 1.1 | 0.51 | | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core-to-core velocity dispersion for Young protoclusters",
+   "value": "1.8",
+   "uncertainty": "0.2",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Core-to-core velocity distribution",
+     "quote": "We find core-to-core velocity dispersions of 1.8$\\pm$0.2 km s$^{-1}$, 2.6$\\pm$0.4km s$^{-1}$, and 2.2$\\pm$0.2km s$^{-1}$ for the young, intermediate, and evolved protoclusters, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Core-to-core velocity dispersion for Intermediate protoclusters",
+   "value": "2.6",
+   "uncertainty": "0.4",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Core-to-core velocity distribution",
+     "quote": "We find core-to-core velocity dispersions of 1.8$\\pm$0.2 km s$^{-1}$, 2.6$\\pm$0.4km s$^{-1}$, and 2.2$\\pm$0.2km s$^{-1}$ for the young, intermediate, and evolved protoclusters, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Core-to-core velocity dispersion for Evolved protoclusters",
+   "value": "2.2",
+   "uncertainty": "0.2",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Core-to-core velocity distribution",
+     "quote": "We find core-to-core velocity dispersions of 1.8$\\pm$0.2 km s$^{-1}$, 2.6$\\pm$0.4km s$^{-1}$, and 2.2$\\pm$0.2km s$^{-1}$ for the young, intermediate, and evolved protoclusters, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Standard deviation of core spatial spread (Young, Intermediate, Evolved)",
+   "value": "0.33, 0.39, 0.60",
+   "uncertainty": "<0.06",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Core-to-core velocity distribution",
+     "quote": "The standard deviation of the spatial spread for the young, intermediate, and evolved regions are 0.33 pc, 0.39 pc, and 0.60 pc, respectively, with standard errors $<$0.06 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Average DCN (3-2) core linewidth in Young and Intermediate protoclusters",
+   "value": "1.5",
+   "uncertainty": "0.7",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "DCN (3-2) linewidths",
+     "quote": "Considering the DCN (3-2) linewidths grouped by evolutionary classification, we find slightly smaller average linewidths in the evolved regions of $\\sim$1.2 km s$^{-1}$ compared to the young and intermediate protoclusters of $\\sim$1.5 km s$^{-1}$, and standard deviations of $\\sim$0.5, and $\\sim$0.7 km s$^{-1}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average DCN (3-2) core linewidth in Evolved protoclusters",
+   "value": "1.2",
+   "uncertainty": "0.5",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "DCN (3-2) linewidths",
+     "quote": "Considering the DCN (3-2) linewidths grouped by evolutionary classification, we find slightly smaller average linewidths in the evolved regions of $\\sim$1.2 km s$^{-1}$ compared to the young and intermediate protoclusters of $\\sim$1.5 km s$^{-1}$, and standard deviations of $\\sim$0.5, and $\\sim$0.7 km s$^{-1}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient between non-thermal velocity dispersion and core size",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "DCN (3-2) linewidths",
+     "quote": "We fit Pearson’s correlation coefficient ($\\rho$), which measures the linear correlation between two variables, and find a value of 0.18, indicating no correlation exists between the dispersion and core sizes in these data."
+    }
+   ]
+  },
+  {
+   "quantity": "Average core mass and density for Complex-type, Single-type, and non-detected DCN cores",
+   "value": "~17 M_sun (~2.5e7 cm^-3), ~5 M_sun (~1e7 cm^-3), ~3 M_sun (~0.8e7 cm^-3)",
+   "uncertainty": "not stated",
+   "units": "M_sun (cm^-3)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Nature of the core population traced by DCN (3-2)",
+     "quote": "We find that the Complex-type spectra are typically extracted in cores with higher masses and densities ($\\sim$17 M$_{\\odot}$, and $\\sim$2.5$\\times$10$^7$cm$^{-3}$, respectively) than those with Single-type DCN (3-2) spectra ($\\sim$5 M$_{\\odot}$, and $\\sim$1$\\times$10$^7$cm$^{-3}$, respectively)."
+    },
+    {
+     "loc": "Nature of the core population traced by DCN (3-2)",
+     "quote": "If we consider the non-detected cores, the average masses and densities are slightly lower, $\\sim$3 M$_{\\odot}$, and $\\sim$0.8$\\times$10$^7$cm$^{-3}$, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and pipeline versions used for measurement set restoration and line cube imaging",
+  "Cell sizes, image dimensions, weighting scheme/robust parameter for the line cubes, and exact masked channel ranges (deferred to the external imaging_parameters.py file on GitHub)",
+  "Exact manually determined velocity integration ranges for the DCN (3-2) moment maps of each of the 15 protoclusters (paper states they are in the figure captions, which are absent from the main text)",
+  "Exact 30-channel line-free velocity ranges selected by eye for each core spectrum to compute the MAD noise"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version used to run the line imaging pipeline",
+  "Scripts for the DCN (3-2) core extraction, annulus crown masking, and PySpecKit HFS fitting",
+  "Exact manually selected velocity integration windows for the 15 protoclusters' DCN moment maps",
+  "Exact 30-channel line-free velocity ranges chosen by eye for the noise estimate of each core spectrum"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "All 180 DR1 cubes, models, residuals, and primary beams are publicly hosted on Harvard Dataverse, the full imaging pipeline and parameter files are on GitHub, and per-core fit tables are printed in the appendices; minor deductions for unstated CASA version and manual/eye-selected velocity windows and spectral classifications.",
+ "rediscovery_reason": "The post-processed FITS cubes are publicly available on Harvard Dataverse, the continuum core coordinates and FWHMs are tabulated in Appendix F, the DCN hyperfine model is given in Table E.2, and the per-core and per-protocluster kinematic fits provide an exact numeric answer key.",
+ "source_card": "cards/2023A%26A...678A.194C/sonnet/card.md"
+}

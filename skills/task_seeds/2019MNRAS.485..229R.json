@@ -1,0 +1,235 @@
+{
+ "bibcode": "2019MNRAS.485..229R",
+ "title": "Deep and narrow CO absorption revealing molecular clouds in the Hydra-A brightest cluster galaxy",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz406",
+ "arxiv_id": "1902.01863",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Are there cold molecular gas clouds along the line of sight to the Hydra-A mm-continuum core, and what are their kinematics, temperature and column densities (as a test of chaotic cold accretion)?",
+ "alma_project_codes": [
+  "2016.1.01214.S",
+  "2017.1.00629.S"
+ ],
+ "data": {
+  "bands": "Band 6 (CO 2-1) and Band 3 (CO 1-0)",
+  "arrays": "not stated",
+  "angular_resolution": "0.19 arcsec (CO 2-1); 1.63 arcsec (CO 1-0)",
+  "sensitivity": "RMS per channel 1.4 mJy (CO 2-1), 0.7 mJy (CO 1-0)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HI absorption profile toward core (VLBA) compared with CO",
+    "evidence": [
+     {
+      "loc": "6 Cold, Clumpy Gas Clouds",
+      "quote": "warmer atomic gas has also been detected in Hydra-A with the *Very Long Baseline Array* (VLBA) telescope (cite: Taylor1996)."
+     }
+    ]
+   },
+   "citation": "(cite: Taylor1996)"
+  },
+  {
+   "what": {
+    "value": "X-ray H2 column density 3.5±0.3e22 cm-2",
+    "evidence": [
+     {
+      "loc": "7 Temperature and Column Density Derivations",
+      "quote": "They find a value of $N_{ \\textnormal{H}_{2}} = 3.5\\pm 0.3 \\times 10^{22}$ cm$^{-2}$"
+     }
+    ]
+   },
+   "citation": "(cite: Russell2013)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30m molecular mass 2.26±0.29e9 Msun",
+    "evidence": [
+     {
+      "loc": "5 Molecular Gas Mass of the Disc",
+      "quote": "$M_{\\text{mol}}=2.26 \\pm 0.29\\times 10^{9}$ $M_{\\odot}$ found from *Institut de RadioAstronomie Millimétrique* (IRAM) 30m observations"
+     }
+    ]
+   },
+   "citation": "(cite: Hamer2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make moment maps and disc kinematics",
+   "method": "Integrated brightness, velocity and dispersion maps of CO(2-1) with immoments",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Molecular gas mass of disc",
+   "method": "Bolatto2013 relation; Monte Carlo of 100000 noise-perturbed spectra, double-Gaussian chi2 fit to get SCOdv",
+   "software": [],
+   "key_parameters": [
+    "F21 = 3.2, F10 = 1; rms from line-free range outside -600 to +600 km/s"
+   ],
+   "assumptions": [
+    "X_CO = 2e20 cm-2 (K km/s)-1; D_L = 242.4 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Remove emission and fit absorption features",
+   "method": "Fit and subtract a Gaussian emission line excluding absorption channels (about -48 to -1 km/s), then triple-Gaussian fit via Monte Carlo",
+   "software": [],
+   "key_parameters": [
+    "Mask limits scanned between -55±10 and +5±10 km/s; choose lowest reduced chi2 of flat-line fit"
+   ],
+   "assumptions": [
+    "Filling factor of 1 (lower limit on tau); tau_a = ln(I0/Iobs) equals tau"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Excitation temperature and column densities",
+   "method": "Ratio of velocity-integrated tau of CO(2-1) and CO(1-0) for optically thin LTE gas, solved numerically with Monte Carlo; then N_CO and N_H2",
+   "software": [],
+   "key_parameters": [
+    "Spectra from larger circle matching CO(1-0) beam; single Gaussian fit per line"
+   ],
+   "assumptions": [
+    "CO/H2 = 3.2e-4 (Milky Way gas-phase carbon, all in CO); optically thin LTE"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular mass from CO(1-0)",
+   "value": "1.06e9",
+   "uncertainty": "+0.02/-0.02 (e9)",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5 Molecular Gas Mass of the Disc",
+     "quote": "we find an estimated mass of $M_{\\text{mol}}=1.06^{+0.02}_{-0.02}\\times 10^{9}$ $\\text{M}_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass from CO(2-1)",
+   "value": "5.6e9",
+   "uncertainty": "+0.1/-0.1 (e9)",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5 Molecular Gas Mass of the Disc",
+     "quote": "we estimate a mass of $M_{\\text{mol}}=5.6^{+0.1}_{-0.1}\\times 10^{9}$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CO(2-1) optical depth, region A",
+   "value": "0.88",
+   "uncertainty": "+0.06/-0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| A | -42.8 $^{+0.1}_{-0.1}$ | -33$^{+2}_{-2}$ | 4.4 $^{+0.3}_{-0.3}$ | 0.88$^{+0.06}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Region A FWHM",
+   "value": "4.4",
+   "uncertainty": "+0.3/-0.3",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| A | -42.8 $^{+0.1}_{-0.1}$ | -33$^{+2}_{-2}$ | 4.4 $^{+0.3}_{-0.3}$ | 0.88$^{+0.06}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature, region A",
+   "value": "42",
+   "uncertainty": "+25/-11",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Temperature and Column Density Derivations",
+     "quote": "find a cloud excitation temperature of $T_\\textnormal{ex} = 42^{+25}_{-11}$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "CO column density",
+   "value": "2e17",
+   "uncertainty": "+3/-1 (e17)",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Temperature and Column Density Derivations",
+     "quote": "$N_{ \\textnormal{CO}}=2^{+3}_{-1}\\times 10 ^{17}\\textnormal{cm}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density",
+   "value": "7e20",
+   "uncertainty": "+10/-4 (e20)",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Temperature and Column Density Derivations",
+     "quote": "$N_{ \\textnormal{H}_{2}  }=7^{+10}_{-4}\\times 10 ^{20}\\textnormal{cm}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc velocity gradient",
+   "value": "~140",
+   "uncertainty": "not stated",
+   "units": "km/s/kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 Dynamics of the cold gas disc",
+     "quote": "average line-of-sight velocity gradient of ${\\sim}$140 km s$^{-1}$ kpc$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters (weighting, robust, cell, image size, masking)",
+  "line-free channels for continuum subtraction",
+  "flux calibrator and flux scale uncertainty",
+  "whether pipeline or manual calibration",
+  "exact extraction regions (circle radii/positions) for spectra",
+  "continuum flux measurement method",
+  "partition function and Aul values used",
+  "pixel/beam used for moment maps and clipping"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and extraction regions",
+  "Continuum subtraction channel selection",
+  "Partition function and Einstein A values",
+  "Exact Monte Carlo implementation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and analysis described in equations, but imaging and region details are missing.",
+ "rediscovery_reason": "Public archival data, simple Gaussian-fit Monte Carlo recipe, numeric results (tau, Tex, N).",
+ "source_card": "cards/2019MNRAS.485..229R/sonnet/card.md"
+}

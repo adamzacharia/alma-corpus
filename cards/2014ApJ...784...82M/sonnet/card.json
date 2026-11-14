@@ -1,0 +1,982 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014ApJ...784...82M",
+  "title": "ALMA Observations of the Orion Proplyds",
+  "year": 2014,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Mann, Rita K.",
+  "n_authors": 9,
+  "arxiv_id": "1403.2026",
+  "doi": "10.1088/0004-637X/784/1/82",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00028.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "we carried out a much more sensitive pilot survey with the Atacama Large Millimeter/submillimeter Array (ALMA) that targeted 48 young stars, including 22 *HST*-identified proplyds."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "Orion Nebula Cluster proplyds (5 fields, 22 HST proplyds plus 26 other stars)",
+     "coordinates": {
+      "value": "Field 1 phase center 05:35:16.30 -05:23:22.40 (J2000); five fields in Table 1",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | 05:35:16.30 | -05:23:22.40 | 2600 | 0.24 | 0.50$\\times$0.44 | 84 |"
+       },
+       {
+        "loc": "Results",
+        "quote": "where $d=400$ pc is the distance to Orion (cite: sandstrom; menten; kraus07; kraus09)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "400 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | 05:35:16.30 | -05:23:22.40 | 2600 | 0.24 | 0.50$\\times$0.44 | 84 |"
+       },
+       {
+        "loc": "Results",
+        "quote": "where $d=400$ pc is the distance to Orion (cite: sandstrom; menten; kraus07; kraus09)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Sandstrom et al. 2007; Menten et al. 2007; Kraus et al. 2007, 2009",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | 05:35:16.30 | -05:23:22.40 | 2600 | 0.24 | 0.50$\\times$0.44 | 84 |"
+       },
+       {
+        "loc": "Results",
+        "quote": "where $d=400$ pc is the distance to Orion (cite: sandstrom; menten; kraus07; kraus09)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust disk masses of the Orion proplyds and other ONC stars, and how do they depend on distance from theta1 Ori C (external photoevaporation)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "To probe the full disk mass distribution in the ONC and further study the impact of external photoionizing radiation on disk properties"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00028.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00028.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (345 GHz), 856 um",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "observed with ALMA using the Band 7 (345 GHz) receivers on 2012 October 24, as part of the Cycle 0 Early Science operations"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four 1.875 GHz-wide spectral windows, 3840 channels each; covering CO(3-2), HCN(4-3), HCO+(4-3), CS(7-6)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The correlator was configured to observe simultaneously four 1.875 GHz-wide spectral windows, each divided into 3840 channels each with a width of 488.28 kHz"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "~7.5 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The focus here will be on the wideband ($\\Delta \\nu \\approx7.5$ GHz) continuum emission, extracted by integrating over all line-free channels"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "Twenty-two 12-m antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Twenty-two 12-m diameter ALMA antennas were arranged in a hybrid configuration"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "shortest baseline 21.2 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Since the shortest baseline was 21.2 m in length, the maximum recoverable scale was 4$\\ensuremath{''}$99."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.5 arcsec (robust weighting); beam 0.51x0.46",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "yielded (with robust weighting) images with a $\\sim$0$\\ensuremath{''}$5 angular resolution"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "4.99 arcsec",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Since the shortest baseline was 21.2 m in length, the maximum recoverable scale was 4$\\ensuremath{''}$99."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "1 sigma rms 0.24-1.15 mJy/beam by field",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 4 | 05:35:25.30 | -05:15:35.50 | 1300 | 1.15 | 0.51$\\times$0.46 | 89 |"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "136 s per visit; 2600 s Field 1, 1300 s Fields 2-5",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Each Field was observed for 136 seconds per visit."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012 October 24",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "observed with ALMA using the Band 7 (345 GHz) receivers on 2012 October 24"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "Previous 880 um disk masses (Mann & Williams 2010) combined with ALMA",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "Combining these ALMA data with previous SMA observations"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "Published cm flux densities for free-free extrapolation",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "using published VLA flux densities from 1.3 cm to 6 cm"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST",
+     "provided": {
+      "value": "Proplyd identification",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "22 *HST*-identified proplyds"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "VLA centimeter flux densities used for free-free extrapolation",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "using published VLA flux densities from 1.3 cm to 6 cm (cite: garay; felli; felli93; zapata)"
+       }
+      ]
+     },
+     "citation": "(cite: garay; felli; felli93; zapata)"
+    },
+    {
+     "what": {
+      "value": "SMA disk masses at intermediate distances",
+      "evidence": [
+       {
+        "loc": "Disk Masses and Distance from theta1 Ori C",
+        "quote": "including the previous SMA results from (cite: mann10) to fill in the intermediate distances not yet probed with ALMA"
+       }
+      ]
+     },
+     "citation": "(cite: mann10)"
+    },
+    {
+     "what": {
+      "value": "Positions and names of non-proplyd targets from HST ACS and CTIO surveys",
+      "evidence": [
+       {
+        "loc": "Table 3",
+        "quote": "ACS sources from (cite: robberto), ROB sources from (cite: robberto10)"
+       }
+      ]
+     },
+     "citation": "(cite: robberto; robberto10; ricci)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Callisto flux model from Butler (2012)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The model of Callisto was that provided by Butler (2012)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard procedures in CASA",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Data calibration and image reconstruction were performed using standard procedures in the `CASA` package."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Callisto (Butler 2012 model); gain J0607-085; bandpass J0522-364",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The absolute amplitude scale was determined from observations of Callisto, and the bandpass response of the system was measured from observations of the bright quasar J0522–364."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "error does not include uncertainties in the flux scale of $\\sim$ 10%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN, multi-frequency synthesis, each field separately",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Each field was Fourier-inverted separately, using the multi-frequency synthesis mode in the `CLEAN` task"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Clark, threshold ~2x RMS",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "These dirty images were then `CLEAN`ed with the Clark algorithm down to a threshold of $\\sim$2$\\times$ the RMS"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "with an intermediate Briggs robustness parameter of 0.5 chosen to achieve the desired angular resolution"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "dirty image to ~34 arcsec diameter",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "A dirty image was generated out to a diameter of $\\sim$34$''$"
+      }
+     ]
+    },
+    "masking": {
+     "value": "boxes on features visible in dirty images",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "boxes were used to focus the algorithm toward features that could be visually confirmed in the dirty images"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum made by integrating line-free channels",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "extracted by integrating over all line-free channels"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied after CLEAN",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "After `CLEAN`ing, each field was corrected for primary beam attenuation"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.51 x 0.46 arcsec",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "restored with a synthesized 0$\\ensuremath{''}$51 $\\times$ 0$\\ensuremath{''}$46 beam"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Optically thin isothermal mass relation and opacity 0.034 cm2/g at 856 um",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "assuming the standard optically thin isothermal relationship (cite: beckwith90)"
+       }
+      ]
+     },
+     "from_reference": "(cite: beckwith90)"
+    },
+    {
+     "what": {
+      "value": "Disk temperature 20 K for comparison with earlier surveys",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "We assume a typical disk temperature of 20 K, as in previous disk surveys of Taurus and Ophiuchus by (cite: andrews05; andrews07)"
+       }
+      ]
+     },
+     "from_reference": "(cite: andrews05; andrews07; mann09a; mann10)"
+    },
+    {
+     "what": {
+      "value": "Censored correlation tests",
+      "evidence": [
+       {
+        "loc": "Disk Masses and Distance from theta1 Ori C",
+        "quote": "Using the correlation tests described by (cite: isobe), including the Cox Hazard Model, Generalized Kendall’s Tau, and Spearman’s Rho tests"
+       }
+      ]
+     },
+     "from_reference": "(cite: isobe)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel selection for continuum",
+    "Exact CASA version and CLEAN parameters (niter, cell size, image size in pixels, box definitions)",
+    "Exact numerical RMS threshold used for CLEAN",
+    "Specific cm flux values and spectral index fits used for free-free extrapolation",
+    "Details of Gaussian fitting procedure for flux and sizes",
+    "Details of the survival analysis implementation (ASURV?) and the SMA data table",
+    "Whether the 3-sigma upper limit was computed from local or field-center rms"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum",
+    "method": {
+     "value": "CASA CLEAN with MFS, Briggs robust 0.5, Clark, boxes, primary beam correction",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Each field was Fourier-inverted separately, using the multi-frequency synthesis mode in the `CLEAN` task with an intermediate Briggs robustness parameter of 0.5"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure fluxes",
+    "method": {
+     "value": "Fit elliptical Gaussians in the image plane for centroids and integrated flux densities; noise from emission-free regions",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The centroid positions and 856 $\\mu$m integrated flux densities for each target were measured by fitting elliptical Gaussians in the image plane."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "elliptical Gaussian",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The centroid positions and 856 $\\mu$m integrated flux densities for each target were measured by fitting elliptical Gaussians in the image plane."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Subtract free-free emission",
+    "method": {
+     "value": "Extrapolate maximum cm flux with F_ff ∝ nu^-0.1 to 856 um, subtract to get F_dust",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The highest levels of centimeter emission were used to account for the free-free contributions to result in the most conservative estimate of disk mass."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "cm data only at wavelengths <= 6 cm",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "We avoided observations taken at wavelengths longer than 6 cm (5 GHz) in this analysis"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "free-free ∝ nu^-0.1, dust ∝ nu^2",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Fits to the free-free emission ($F_{\\rm ff} \\propto \\nu^{-0.1}$) and dust emission ($F_{\\rm dust} \\propto \\nu^{2}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive disk masses",
+    "method": {
+     "value": "M = F d^2/(kappa B_nu(T))",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "$$M_{\\rm disk} = \\frac{F_{\\rm dust}d^2}{\\kappa_{\\nu}B_{\\nu}(T)},$$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "d=400 pc, kappa=0.034 cm2/g with gas-to-dust 100:1, T=20 K (40 K for massive stars)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "$\\kappa_{\\nu}=0.034$ cm$^2$ g$^{-1}$ is the (cite: beckwith90) dust grain opacity at 856 $\\mu$m with an implicit gas-to-dust mass ratio of 100:1"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Optical depth discussed: up to ~10-25% optically thick emission for brighter disks",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "the brighter disks could have up to $\\sim$10-25% of their emission being optically thick"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Completeness",
+    "method": {
+     "value": "Fraction of sources detectable at >=3 sigma vs disk mass",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "An overall disk mass sensitivity for the survey was determined by measuring the fraction of sources that could be detected at $\\geq 3\\sigma$ as a function of $M_{\\rm disk}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Test mass vs distance correlation",
+    "method": {
+     "value": "Censored-data correlation tests on ALMA plus SMA data",
+     "evidence": [
+      {
+       "loc": "Disk Masses and Distance from theta1 Ori C",
+       "quote": "including the Cox Hazard Model, Generalized Kendall’s Tau, and Spearman’s Rho tests, that make use of the combined, censored dataset"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration and imaging (CLEAN)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Data calibration and image reconstruction were performed using standard procedures in the `CASA` package."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Proplyds detected",
+    "value": "21 of 22",
+    "uncertainty": "not stated",
+    "units": "count",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We detected submillimeter emission from 21 of the 22 targeted *HST*-identified proplyds in this survey"
+     }
+    ]
+   },
+   {
+    "quantity": "100% completeness mass limit",
+    "value": "1.2",
+    "uncertainty": "not stated",
+    "units": "M_jup",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the observed fields are 100% complete for $M_{\\rm disk} \\geq\\,1.2\\,M_{\\rm jup}$"
+     }
+    ]
+   },
+   {
+    "quantity": "50% completeness mass limit",
+    "value": "0.4",
+    "uncertainty": "not stated",
+    "units": "M_jup",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "50% complete for $M_{\\rm disk} \\ge \n0.4\\,M_{\\rm jup}$"
+     }
+    ]
+   },
+   {
+    "quantity": "114-426 flux density",
+    "value": "7.0",
+    "uncertainty": "1.2",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 3 | 114-426 | 5:35:11.32 | -5:24:26.52 | 7.0 $\\pm$1.2 | 0 | 7.0$\\pm$1.2 | 3.38 $\\pm$0.56 |"
+     }
+    ]
+   },
+   {
+    "quantity": "253-1536 dust flux density",
+    "value": "162.9",
+    "uncertainty": "0.9",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 5 | 253-1536 | 5:35:25.30 | -5:15:35.40 | 162.9 $\\pm$0.9 | 0 | 162.9$\\pm$0.9 | 78.66 $\\pm$0.42 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Upper limits on undetected disk masses",
+    "value": "0.1-0.6",
+    "uncertainty": "3 sigma",
+    "units": "M_jup",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The ALMA observations place stringent (3 $\\sigma$) upper limits of 0.1–0.6 $M_{\\rm jup}$ on the disk masses for the undetected targets"
+     }
+    ]
+   },
+   {
+    "quantity": "Probability of no correlation, mass vs projected distance",
+    "value": "<1e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Disk Masses and Distance from theta1 Ori C",
+      "quote": "the probability of no correlation between disk mass and projected distance to $\\theta^1$ Ori C is $<$10$^{-4}$ for all 3 tests"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Massive disks (>~3 Mjup) are lacking within 0.03 pc of theta1 Ori C (EUV-dominated), while FUV-dominated region shows a wide range of disk masses",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "There is a clear lack of massive disks ($\\gtrsim$ 3 $M_{\\rm jup}$) within 0.03 pc of $\\theta^1$ Ori C where EUV irradiation dominates"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Disk masses depend on distance from theta1 Ori C",
+    "experiment": "Combine ALMA and SMA masses with censored correlation tests",
+    "result": "p(no correlation) <1e-4 in all three tests",
+    "finding": "Disk masses are lower closer to theta1 Ori C, attributed to photoevaporation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Disk Masses and Distance from theta1 Ori C",
+      "quote": "This plot reveals clearly that disk masses tend to be substantially lower when they are located closer to $\\theta^1$ Ori C."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Massive stars and non-proplyd stars host detectable disks",
+    "experiment": "Image 26 non-HST-proplyd stars incl. theta1 C and F",
+    "result": "Only 2 detected; limits 0.1-0.6 Mjup",
+    "finding": "Such disks must be low mass and small; massive stars have no disks or short-lived disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Only 2 of the non-proplyd sources were detected"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Beam of ~0.5 arcsec chosen to separate disks in crowded Trapezium, resolve large proplyds, and filter out extended cloud emission",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "This target resolution was chosen to distinguish individual disks toward the crowded Trapezium cluster, resolve the emission from three large proplyds"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Projection effects, stellar mass segregation, optical depth and tidal stripping rejected as explanations",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Instead, the evidence suggests that an externally driven disk evolution factor is likely responsible for the behavior in Figure [5](#fig3)."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Disk masses may be underestimated for brighter disks due to optical depth",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "resulting in an underestimation of their disk masses"
+      }
+     ]
+    },
+    {
+     "value": "Selection effects in incomplete ONC disk census",
+     "evidence": [
+      {
+       "loc": "Footnote",
+       "quote": "there are still strong selection effects at play in the currently incomplete ONC disk mass census"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single temperature (20 K) and opacity assumed for all disks",
+    "Maximum cm flux used for free-free, biasing masses low and variability unaccounted for",
+    "Background cloud emission not corrected",
+    "Projected rather than true distances"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Cycle 0 data ADS/JAO.ALMA#2011.0.00028.S cited",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00028.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and exact CLEAN parameters",
+    "cm flux values used",
+    "SMA data table and survival analysis details"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB (Cycle 0, 5 fields, 4 spws)",
+   "score_inferred": 3,
+   "score_reason": "Data are public and the recipe is mostly described, but several processing parameters and the literature fluxes are not given.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public Cycle 0 data; fluxes and masses in tables with a simple mass formula."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: beckwith90)",
+     "why": "Optically thin disk mass formula and opacity"
+    },
+    {
+     "citation": "(cite: andrews05)",
+     "why": "Optical depth discussion and temperature convention"
+    },
+    {
+     "citation": "(cite: isobe)",
+     "why": "Censored correlation tests"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: mann10)",
+     "why": "SMA survey of Orion proplyds combined with ALMA data"
+    },
+    {
+     "citation": "J. Bally et al., in preparation",
+     "why": "Forthcoming article on disk 114-426"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ONC HST Treasury Program",
+    "ALMA Cycle 1 ONC survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-007682b45a5632d9524f947b14061a08",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:20",
+  "usage": {
+   "input_tokens": 18628,
+   "output_tokens": 8241,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.06044,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 67,
+  "quotes_ok": 67,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 53,
+   "rate": 0.671
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:40:00",
+  "custom_id": "repair-sonnet-a699e5a71bce17cf5a869190420b37ea",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "The centroid positions and 856 $\\mu$m integrated flux densities for each target were measured by fitting elliptical Gaussians in the image plane."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

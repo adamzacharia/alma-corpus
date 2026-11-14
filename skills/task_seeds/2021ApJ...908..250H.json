@@ -1,0 +1,592 @@
+{
+ "bibcode": "2021ApJ...908..250H",
+ "title": "ALMA Observations of the Inner Cavity in the Protoplanetary Disk around Sz 84",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abba76",
+ "arxiv_id": "2009.09912",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the radial structure of the inner cavity in the dust disk of Sz 84 for large (mm) versus small (sub-micron) grains, and what does it imply for grain growth and fragmentation?",
+ "alma_project_codes": [
+  "2015.1.01301.S",
+  "2016.1.00571.S",
+  "2013.1.00220.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, cycle 3, own data); archival Band 3 (cycle 4) and Band 7 (cycle 2)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 6 continuum beam 198 x 195 mas at PA -88.5 deg (about 0.2 arcsec, 30 au)",
+  "sensitivity": "Band 6 continuum r.m.s. 61.3 uJy/beam; 12CO moment 0 r.m.s. 8.7 mJy/beam km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar parameters: spectral type M5, M* 0.2 Msun, age 1 Myr",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "$M_{\\rm *}$: 0.2 $M_{\\odot}$,"
+     },
+     {
+      "loc": "1 Introduction",
+      "quote": "age: 1 Myr,"
+     }
+    ]
+   },
+   "citation": "(cite: alca2014)"
+  },
+  {
+   "what": {
+    "value": "Teff 3162 K",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "$T_{\\rm eff}$: 3162 K,"
+     }
+    ]
+   },
+   "citation": "(cite: hend2020a)"
+  },
+  {
+   "what": {
+    "value": "Distance 152.6 pc",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "distance: 152.6 pc,"
+     }
+    ]
+   },
+   "citation": "(cite: gaia18)"
+  },
+  {
+   "what": {
+    "value": "Mass accretion rate 1.3e-9 Msun/yr and A_V = 0.5 mag",
+    "evidence": [
+     {
+      "loc": "4.2 SED fitting",
+      "quote": "We set a mass accretion rate of $\\dot{M} =$ 1.3 $\\times$10$^{-9}$ $M_{\\odot}$/yr"
+     },
+     {
+      "loc": "Table 6",
+      "quote": "The value of $A_{V}=$0.5 mag"
+     }
+    ]
+   },
+   "citation": "(cite: mana14)"
+  },
+  {
+   "what": {
+    "value": "Band 7 total flux density 33 +/- 0.4 mJy used for the spectral index",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "is 33 $\\pm$ 0.4 mJy."
+     }
+    ]
+   },
+   "citation": "(cite: vandermarel18a)"
+  },
+  {
+   "what": {
+    "value": "Earlier band 6 flux 12.63 +/- 0.21 mJy used for consistency check",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "which is consistent with previous ALMA band 6 observations (12.63 $\\pm$ 0.21;"
+     }
+    ]
+   },
+   "citation": "(cite: ansd2018a)"
+  },
+  {
+   "what": {
+    "value": "Spectral index ~2.7 of other transitional disks (comparison value)",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "which is lower than the value of $\\alpha \\sim$2.7 found in other transitional disk systems"
+     }
+    ]
+   },
+   "citation": "(cite: pini2014a)"
+  },
+  {
+   "what": {
+    "value": "Small-grain cavity radius 55 au from earlier SED analysis (used as starting value)",
+    "evidence": [
+     {
+      "loc": "4.2 SED fitting",
+      "quote": "this size is smaller than the cavity size derived from the SED analysis by"
+     }
+    ]
+   },
+   "citation": "(cite: meri2010a)"
+  },
+  {
+   "what": {
+    "value": "Dust models: standard ISM dust (small grains) and Model 2 (large grains)",
+    "evidence": [
+     {
+      "loc": "4.2 SED fitting",
+      "quote": "Briefly, small dust grains are from the standard interstellar-medium dust model"
+     },
+     {
+      "loc": "4.2 SED fitting",
+      "quote": "are from Model 2 in"
+     }
+    ]
+   },
+   "citation": "(cite: kim1994) and (cite: wood2002)"
+  },
+  {
+   "what": {
+    "value": "Dynamical mass 0.4 +/- 0.1 Msun from 13CO 3-2, and spectroscopic mass 0.16-0.18 Msun (comparison)",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "estimated from the $^{13}$CO $J=3\\rightarrow2$ line reported in the literature"
+     }
+    ]
+   },
+   "citation": "(cite: yen2018a); (cite: alca2017)"
+  },
+  {
+   "what": {
+    "value": "Optical to far-IR photometry and Spitzer IRS spectrum used in SED fitting",
+    "evidence": [
+     {
+      "loc": "4.2 SED fitting",
+      "quote": "Photometry and spectroscopy data used here are summarized in"
+     }
+    ]
+   },
+   "citation": "(cite: mone2003); (cite: cutr2003a); (cite: cutr2014a); (cite: rivi2016a); (cite: meri2010a); (cite: vandermarel18a)"
+  },
+  {
+   "what": {
+    "value": "Cavity-size ratios of other systems for comparison (Figure 5)",
+    "evidence": [
+     {
+      "loc": "5.1 Comparison with other systems",
+      "quote": "from the literature are compiled in"
+     }
+    ]
+   },
+   "citation": "(cite: vill2019a); (cite: vandermarel+16); (cite: vandermarel18a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image the Band 6 continuum and 12CO",
+   "method": "Calibrate with ALMA scripts in CASA, one round of phase self-cal, correct phase centers with fixvis using Gaia proper motions, CLEAN with multi-frequency deconvolution and uv-taper; subtract continuum with uvcontsub and image 12CO cube at 1.0 km/s",
+   "software": [
+    "CASA",
+    "CLEAN",
+    "fixvis",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "robust = -2.0 for continuum, 2.0 for 12CO",
+    "uv-taper 50.0 x 0.6 Mlambda at 183.0 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit the Band 6 (and Band 3, 7) visibilities with a parametric brightness profile",
+   "method": "Power-law radial profile with two cavity radii and a depth delta; model image converted to visibilities with vis_sample, deprojected, azimuthally averaged in 20 klambda bins (real part) and fit with emcee",
+   "software": [
+    "vis_sample",
+    "emcee"
+   ],
+   "key_parameters": [
+    "8 free parameters (F_total, r_cav1, r_cav2, delta, gamma1, gamma2, i, PA); phase center fixed",
+    "2000 burn-in steps plus 2000 steps, 4000 total, 200 walkers",
+    "Outer radius of model 300 au; delta left free after delta=0 failed"
+   ],
+   "assumptions": [
+    "No emission inside r_cav1 because the SED shows negligible NIR excess"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive the mm spectral index",
+   "method": "Spectral index from total flux densities at bands 3, 6 (this work, visibility fits) and 7 (literature)",
+   "software": [],
+   "key_parameters": [
+    "Band 3 1.70 +/- 0.06 mJy, Band 6 13.43 +/- 0.13 mJy, Band 7 33 +/- 0.4 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure 12CO moment maps and dynamical mass",
+   "method": "Moment 0 and moment 1 maps, PV diagram along PA 165.71 deg with i = 75.13 deg, overplotting Keplerian peak-emission loci for stellar masses 0.2 to 0.6 Msun",
+   "software": [],
+   "key_parameters": [
+    "PA 165.71 deg and i 75.13 deg taken from the visibility fit"
+   ],
+   "assumptions": [
+    "Foreground cloud absorption negligible in the central CO region because of high inclination"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain small- and large-grain cavity sizes with MCRT SED modeling",
+   "method": "HOCHUNK3D Monte Carlo radiative transfer with a two-layer disk; four-step manual fitting: initial h_small and M_disk at r_cav1=10 au, r_cav2_small=55 au; iterate q1, q2 to match band 6 surface brightness; vary r_cav2_small 40-80 au; vary r_cav1_large 1, 8, 26 au",
+   "software": [
+    "HOCHUNK3D"
+   ],
+   "key_parameters": [
+    "Free parameters r_cav1_large, r_cav2_small, h_small(100 au), M_disk",
+    "r_cav2_large fixed to 26 au from the visibility fit",
+    "q1 = -1.0, q2 = 4.5 (fiducial)",
+    "Scale height of large grains fixed at 1 au at 100 au; small grains varied to match 60-70 um flux",
+    "Large-grain mass fraction 0.9; accretion rate 1.3e-9 Msun/yr; inclination 75 deg"
+   ],
+   "assumptions": [
+    "Gas-to-dust mass ratio 100",
+    "Scale height exponent p = 1.25 with T proportional to r^-0.5; size distribution n(s) ~ s^-3.5"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Check consistency of visibility-fit and MCRT surface brightness",
+   "method": "Compare the two band 6 surface-brightness profiles convolved with a 0.2 arcsec beam",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Upper limit on small-grain mass inside the cavity",
+   "method": "Optically thin emission from small grains with surface density power law, temperature from HOCHUNK3D, scaled to the 10 um IR excess upper limit; sensitivity tested over wavelength, r_min, r_max, alpha",
+   "software": [
+    "HOCHUNK3D"
+   ],
+   "key_parameters": [
+    "r_min = 0.03 au (sublimation), r_max = 60 au, alpha = -1"
+   ],
+   "assumptions": [
+    "Surface density power law with exponent alpha; inclination not needed"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 6 continuum r.m.s. noise",
+   "value": "61.3",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations",
+     "quote": "The root-mean-square (r.m.s.) noise in the region far from the object is 61.3 $\\mu$Jy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 total flux density",
+   "value": "13.43",
+   "uncertainty": "0.13",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "is 13.43 $\\pm$ 0.13 mJy, which is consistent with previous ALMA band 6 observations"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 total flux density",
+   "value": "1.70",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "are 1.70 $\\pm$ 0.06 and 13.43 $\\pm$ 0.13 mJy, respectively, and that at band 7 taken from"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO integrated flux density",
+   "value": "1.89",
+   "uncertainty": "0.05",
+   "units": "Jy/beam km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The $^{12}$CO integrated flux density at more than 3 $\\sigma$ is 1.89 $\\pm$ 0.05 Jy/beam$\\cdot$km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index alpha (bands 3-7)",
+   "value": "2.42",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The value of $\\alpha$ was then calculated as 2.42 $\\pm$ 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of Sz 84",
+   "value": "~0.4-0.6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "found that the dynamical mass of Sz 84 is $\\sim$0.4–0.6 $M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer cavity radius r_cav2 (large grains)",
+   "value": "25.90",
+   "uncertainty": "+2.01/-1.85",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "25.90$^{+2.01}_{-1.85}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner cavity radius r_cav1 (visibility fit)",
+   "value": "6.45",
+   "uncertainty": "+4.12/-4.29",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "6.45$^{+4.12}_{-4.29}$"
+    },
+    {
+     "loc": "4.1 Visibility fitting",
+     "quote": "which have an upper limit of $r_{\\rm cav1}\\sim$10 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity depth delta",
+   "value": "0.59",
+   "uncertainty": "+0.26/-0.25",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.59$^{+0.26}_{-0.25}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner power-law index gamma1",
+   "value": "-0.43",
+   "uncertainty": "+0.85/-0.46",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$-0.43^{+0.85}_{-0.46}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer power-law index gamma2",
+   "value": "4.07",
+   "uncertainty": "+0.16/-0.13",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4.07$^{+0.16}_{-0.13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "75.13",
+   "uncertainty": "+1.74/-0.46",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "75.13$^{+1.74}_{-0.46}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "165.71",
+   "uncertainty": "+3.22/-2.58",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "165.71$^{+3.22}_{-2.58}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi-square of visibility fit",
+   "value": "1.24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Visibility fitting",
+     "quote": "the best-fit visibilities with a reduced-$\\chi^{2}$ of 1.24"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux inside the 26 au cavity",
+   "value": "4.4 (33 % of total band 6 flux)",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Visibility fitting",
+     "quote": "The flux inside the 26 au cavity was measured at 4.4 mJy in the best-fit model disk, which is 33 % of the total flux at band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Small-grain cavity radius",
+   "value": "60",
+   "uncertainty": "10",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 SED fitting",
+     "quote": "The SED can be well reproduced by a cavity in the small dust with a size of $60\\pm10$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner cavity radius of large grains (fiducial MCRT)",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 SED fitting",
+     "quote": "The 8 au cavity, which is consistent with the results of MCMC modeling in"
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial small-grain scale height at 100 au and disk mass",
+   "value": "h_small = 5.0 au; M_disk = 2.5 MJup",
+   "uncertainty": "not stated",
+   "units": "au; MJup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 SED fitting",
+     "quote": "found that the values of $h^{\\rm small}_{r=100{\\rm au}}=$5.0 au and $M_{\\rm disk}=$2.5 $M_{\\rm Jup}$ well reproduce"
+    }
+   ]
+  },
+  {
+   "quantity": "Max residual between visibility-fit and MCRT surface brightness",
+   "value": "~119 (1.9 sigma)",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 SED fitting",
+     "quote": "is $\\sim$119 $\\mu$Jy/beam (1.9 $\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on small-grain mass inside 60 au cavity (10 um limit, alpha=-1)",
+   "value": "4e-7",
+   "uncertainty": "upper limit",
+   "units": "Mearth",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Upper limit on amount of small grains inside cavity",
+     "quote": "the upper limit on $M_{\\rm cav}^{\\rm small}$ is $4\\times10^{-7}M_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of large grains at r<60 au",
+   "value": "~7",
+   "uncertainty": "not stated",
+   "units": "Mearth",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Upper limit on amount of small grains inside cavity",
+     "quote": "The mass of large dust grains at $r<$60 au is $\\sim$7 $M_{\\ensuremath{\\oplus}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of systems with larger small-grain cavity (Sz 84 and DM Tau)",
+   "value": "7.7",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.1 Comparison with other systems",
+     "quote": "accounting for 7.7 % of objects observed with NIR direct imaging and ALMA"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the ALMA pipeline or manual scripts (and their versions) were used",
+  "CLEAN parameters not given: niter, threshold, masks, nterms, cell size, image size, primary-beam correction, spectral windows used for the continuum",
+  "Self-calibration details: reference antenna, combine/gaintype settings, SNR threshold, which solutions were applied to which executions",
+  "Whether the archival Band 3 and Band 7 data were self-calibrated and how line-free channels were selected for continuum",
+  "12CO moment-map clipping thresholds, velocity range and the details of the PV cut",
+  "vis_sample settings: model image size, pixel scale and how model visibilities were weighted and averaged",
+  "How the sigma of each 20 klambda bin was derived and the initial walker positions of emcee",
+  "HOCHUNK3D configuration: stellar R* and L*, grid, photon number, inner radius, extinction law, and how chi2 was weighted across the SED",
+  "Exact procedure for iterating h_small and the fiducial chi2 definition for models A-F",
+  "Parameter ranges for Band 7 flux and why Band 3 flux prior range was chosen"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and CLEAN parameters (cell, image size, niter, masks, nterms)",
+  "Self-calibration solution details and reference antenna",
+  "HOCHUNK3D input files (stellar luminosity and radius, grid, extinction law)",
+  "Analysis scripts for the vis_sample/emcee fit and the MCRT iteration are not released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes and the visibility-fit model, priors, bounds and MCMC settings are given, but imaging parameters, CASA version and HOCHUNK3D inputs are missing and no code is released",
+ "rediscovery_reason": "Two datasets are labelled archival and the visibility fit (model, priors, bounds, steps, walkers) and spectral index are numeric and redoable; the SED part needs additional stellar inputs",
+ "source_card": "cards/2021ApJ...908..250H/sonnet/card.md"
+}

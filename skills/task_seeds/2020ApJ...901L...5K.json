@@ -1,0 +1,171 @@
+{
+ "bibcode": "2020ApJ...901L...5K",
+ "title": "High Molecular Gas Masses in Absorption-selected Galaxies at z ≍ 2",
+ "year": 2020,
+ "doi": "10.3847/2041-8213/abb4e1",
+ "arxiv_id": "2009.04001",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Do high-metallicity z~2 DLAs host CO-emitting galaxies with high molecular gas masses, and do absorption-selected galaxies match emission-selected samples?",
+ "alma_project_codes": [
+  "2016.1.00628.S",
+  "2017.1.01558.S"
+ ],
+ "data": {
+  "bands": "Bands 3 and 4",
+  "arrays": "not stated",
+  "angular_resolution": "beams ~1.6-3.6 arcsec (Table 1)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "DLA metallicities, N_HI, Delta V90 and references per DLA",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "References: (1) (cite: berg15); (2) (cite: neeleman13), (3) (cite: krogager16), (4) (cite: petitjean02)"
+     }
+    ]
+   },
+   "citation": "berg15; neeleman13; krogager16; petitjean02; fynbo10; fynbo13"
+  },
+  {
+   "what": {
+    "value": "Emission metallicity vs stellar mass of UV-selected galaxies",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the stellar mass for the (binned) UV-selected galaxies of (cite: erb06)"
+     }
+    ]
+   },
+   "citation": "erb06"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image",
+   "method": "ALMA pipeline calibration, self-cal for three sources, uvsub continuum subtraction, natural-weighted cubes",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "detect and measure CO line",
+   "method": "Spectrum from cut through dirty cube at peak pixel of velocity-integrated emission (unresolved); limits from 200 km/s cubes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "derive molecular gas masses",
+   "method": "Convert CO flux to L'CO, apply R13/R14 to CO(1-0), multiply by alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=4.36; R13≈1.8, R14≈2.4; flat LCDM H0=67.4, Om=0.315"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compare with mass-metallicity relation",
+   "method": "Assume Mmol/M*≈1 to get stellar mass; plot DLA metallicity vs M* against Erb06",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular gas masses of five CO detections",
+   "value": "(1.3-20.7) x (alpha_CO/4.36) x 10^10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "M_{mol}}\\approx (1.3 - 20.7)"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limits on Mmol for non-detections",
+   "value": "(0.6-2.3) x (alpha_CO/4.36) x 10^10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations, Data analysis, and Results",
+     "quote": "$(0.6 - 2.3) \\times (\\alpha_{\\rm CO}/4.36) 10^{10} \\; \\textrm{M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "B1228-113 integrated CO(3-2) flux",
+   "value": "0.726",
+   "uncertainty": "0.031",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.726 \\pm 0.031$"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 Mmol",
+   "value": "20.7",
+   "uncertainty": "1.3",
+   "units": "1e10 Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$20.7 \\pm 1.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO emitter impact parameters",
+   "value": "5.6-100",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$b \\approx 5.6-100$ kpc"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum-fit details",
+  "Self-calibration solution intervals",
+  "Image size and cell size, CLEAN depth/masking",
+  "CASA version and pipeline version",
+  "Flux, bandpass calibrators per run",
+  "How CO FWHM and integrated flux and uncertainties were measured (fit form)",
+  "QSO and DLA galaxy coordinates"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Line-fitting procedure for flux and FWHM",
+  "L'CO conversion details beyond cited formula"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple, numeric recipe, but imaging and line measurement details are sparse.",
+ "rediscovery_reason": "Public data, natural-weighted cubes, numeric flux and mass results in tables.",
+ "source_card": "cards/2020ApJ...901L...5K/sonnet/card.md"
+}

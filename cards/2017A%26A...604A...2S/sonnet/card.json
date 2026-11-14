@@ -1,0 +1,859 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017A&A...604A...2S",
+  "title": "PdBI U/LIRG Survey (PULS): Dense molecular gas in Arp 220 and NGC 6240",
+  "year": 2017,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Sliwa, Kazimierz",
+  "n_authors": 2,
+  "arxiv_id": "1704.03766",
+  "doi": "10.1051/0004-6361/201630139",
+  "heldout": false,
+  "archival_class_ours": "unknown",
+  "alma_projects_obscore": []
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In addition, we present Atacama Large Millimeter/submillmeter Array science verification observations of Arp 220 in CS $J$ = 4$-$3 and CH$_{\\rm{3}}$CN(10-9)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Arp 220",
+     "coordinates": {
+      "value": "15 34 57.24 +23 30 11.2 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Arp 220  | 15 34 57.24 | +23 30 11.2 | 1.4 $\\times$ 10$^{12}$     | 5434          | 0.018126  | 81.3    | 390                |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=0.018126, D_L=81.3 Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Arp 220  | 15 34 57.24 | +23 30 11.2 | 1.4 $\\times$ 10$^{12}$     | 5434          | 0.018126  | 81.3    | 390                |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "9-year WMAP parameters (Hinshaw2012)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Arp 220  | 15 34 57.24 | +23 30 11.2 | 1.4 $\\times$ 10$^{12}$     | 5434          | 0.018126  | 81.3    | 390                |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "NGC 6240",
+     "coordinates": {
+      "value": "16 52 58.89 +02 24 03.7 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| NGC 6240 | 16 52 58.89 | +02 24 03.7 | 5.4 $\\times$ 10$^{11}$     | 7340          | 0.02448   | 108     | 520                |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=0.02448, D_L=108 Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| NGC 6240 | 16 52 58.89 | +02 24 03.7 | 5.4 $\\times$ 10$^{11}$     | 7340          | 0.02448   | 108     | 520                |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "9-year WMAP parameters (Hinshaw2012)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| NGC 6240 | 16 52 58.89 | +02 24 03.7 | 5.4 $\\times$ 10$^{11}$     | 7340          | 0.02448   | 108     | 520                |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the molecular gas physical conditions and CO isotopologue abundance ratios in Arp 220 and NGC 6240, and how do dense-gas line ratios differ?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Various lines are used to analyse the physical conditions of the molecular gas including the \\[$^{12}$CO\\]/\\[$^{13}$CO\\] and \\[$^{12}$CO\\]/\\[C$^{18}$O\\] abundance ratios."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00018.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2011.0.00018.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 5 (ALMA SV); PdBI 3 mm and 1.4 mm",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "Arp 220 was a target for Band 5 SV observations on 16 July 2016."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "ALMA: four spws of 1.875 GHz each on H2O, HNC 2-1, CS 4-3, CH3OH",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "The four spectral windows, of 1.875GHz bandwidth each, were placed on H$_{2}$O (3$_{13}$ - 2$_{20}$), HNC $J$=2-1, CS $J$=4-3 and CH$_{3}$OH (4$_{31}$ - 3$_{30}$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CS",
+     "transition": "J=4-3",
+     "rest_frequency": "195.954 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "|  | CS $J$ = 4$-$3  | 195.954 | 0.9 x 0.7 | 1.4 | 20 | 61.0 |"
+      }
+     ]
+    },
+    {
+     "species": "CH3CN",
+     "transition": "10-9",
+     "rest_frequency": "183.674 - 183.964 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "|  | CH$_{\\rm{3}}$CN(10-9)  | 183.674 - 183.964 | 0.9 x 0.8 | 2.4 | 20 | 19.7 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "PdBI spacings 24 m to 400 m (up to 760 m in extended configuration)",
+    "evidence": [
+     {
+      "loc": "2.1 PdBI",
+      "quote": "the six 15 m antennas were arranged with spacings from 24 m to 400 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "ALMA SV: 16 July 2016",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "Arp 220 was a target for Band 5 SV observations on 16 July 2016."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM PdBI",
+     "provided": {
+      "value": "Main new line data (13CO, HCN, HCO+, CS, etc.) for Arp 220 and NGC 6240",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "We present new IRAM Plateau de Bure Interferometer observations of Arp 220 in HCN, HCO$^{+}$, HN$^{13}$C $J$=1–0"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "12CO J=3-2 of Arp 220 (Sakamoto2008)",
+      "evidence": [
+       {
+        "loc": "2.1 PdBI",
+        "quote": "We also use the SMA observations of $^{12}$CO $J$=3$-$2 in Arp 220 published in (cite: Sakamoto2008)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "12CO J=1-0 and 2-1 of Arp 220 used in RADEX modelling",
+      "evidence": [
+       {
+        "loc": "4 Radiative Transfer Analysis",
+        "quote": "The $^{12}$CO lines modelled are the $J$=1-0, 2-1 (cite: Downes1998) and 3-2 (cite: Sakamoto2008)."
+       }
+      ]
+     },
+     "citation": "(cite: Downes1998)"
+    },
+    {
+     "what": {
+      "value": "13CO/C18O = 1 to estimate C18O emission",
+      "evidence": [
+       {
+        "loc": "4 Radiative Transfer Analysis",
+        "quote": "We use a line ratio of $^{13}$CO/C$^{18}$O = 1 (cite: Matsushita2009; Greve2009) to estimate the emission of C$^{18}$O"
+       }
+      ]
+     },
+     "citation": "(cite: Matsushita2009; Greve2009)"
+    },
+    {
+     "what": {
+      "value": "Linewidths 120 and 250 km/s for Arp 220W and E from ALMA 12CO 1-0",
+      "evidence": [
+       {
+        "loc": "4 Radiative Transfer Analysis",
+        "quote": "We adopt the following linewidths: 120 km s$^{-1}$ and 250 km s$^{-1}$ for Arp 220W and Arp 220E measured using ALMA $^{12}$CO $J$=1$-$0 observations at 0.09$''$"
+       }
+      ]
+     },
+     "citation": "(cite: Scoville2017)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA v4.7.1",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Using `CASA` v4.7.1, we create datacubes of 20 km s$^{-1}$ channel widths"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Delivered once phase-only self-calibrated ALMA SV visibilities used",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "After checking for any obvious calibration flaws, we use the once phase-only self-calibrated delivered visibility dataset."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "PdBI: 3C273 and MWC349",
+     "evidence": [
+      {
+       "loc": "2.1 PdBI",
+       "quote": "The primary amplitude calibrators were 3C273"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "PdBI ±5% at 3 mm, ±10% at 1.4 mm",
+     "evidence": [
+      {
+       "loc": "2.1 PdBI",
+       "quote": "The uncertainties in the flux scales are typically $\\pm 5$% at 3 mm and $\\pm 10$% at 1.4 mm."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "we create datacubes of 20 km s$^{-1}$ channel widths with a natural weighting for maximum sensitivity."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "2σ cutoff for ALMA integrated intensity maps",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We created integrated intensity maps using a 2$\\sigma$ cutoff"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Gaussian kernel smoothing to common resolution; Arp 220 to 13CO 1-0 beam, NGC 6240 to 1.2\"",
+     "evidence": [
+      {
+       "loc": "3 Line Ratios",
+       "quote": "we smooth the data cubes using a Gaussian kernel to match angular resolution."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "RADEX+MultiNest MCMC code and details of priors",
+      "evidence": [
+       {
+        "loc": "4 Radiative Transfer Analysis",
+        "quote": "We refer the reader to Kamenetzky et al. (2014) for more details."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kamenetzky2014)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA imaging parameters for ALMA SV cubes (cell, image size, continuum subtraction, line-free channels)",
+    "MCMC prior bounds on Tkin, nH2, N/dV; number of live points",
+    "Which delivered ALMA calibration products/scripts version",
+    "Data release location of PdBI products not given as a specific link"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image ALMA SV CS 4-3 and CH3CN 10-9",
+    "method": {
+     "value": "Datacubes of 20 km/s channels, natural weighting, integrated intensity maps with 2σ cutoff",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Using `CASA` v4.7.1, we create datacubes of 20 km s$^{-1}$ channel widths with a natural weighting for maximum sensitivity."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared total CS 4-3 flux with APEX single dish",
+     "evidence": [
+      {
+       "loc": "5.1 Molecules Detected",
+       "quote": "The ALMA SV CS $J$ = 4$-$3 observations total flux agrees with the single dish observations."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Brightness temperature line ratio maps",
+    "method": {
+     "value": "Smooth cubes to common beam, 5σ cut, ratio maps of integrated Tb",
+     "evidence": [
+      {
+       "loc": "3 Line Ratios",
+       "quote": "We applied a 5$\\sigma$ cut to each map used to produce the the ratio maps."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Radiative transfer modelling of 12CO, 13CO, C18O",
+    "method": {
+     "value": "RADEX models with MultiNest nested sampling likelihood, filling factor, three priors",
+     "evidence": [
+      {
+       "loc": "4 Radiative Transfer Analysis",
+       "quote": "This code implements the nested sampling algorithm MultiNest (cite: Feroz2009) using its Python wrapper PyMultiNest (cite: Buchner2014) to constrain parameters."
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "MultiNest",
+     "PyMultiNest"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free: Tkin, N/dV, nH2, filling factor ≤1; optical depth prior 0-100",
+      "evidence": [
+       {
+        "loc": "4 Radiative Transfer Analysis",
+        "quote": "An optical depth range of 0 to 100."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "[12CO]/[H2] = 3e-4; 13CO/C18O = 1; diameter ~700 pc",
+      "evidence": [
+       {
+        "loc": "Table 4 notes",
+        "quote": "Molecular Gas (H$_{2}$) mass assuming \\[$^{12}$CO\\]/\\[H$_{2}$\\] = 3 $\\times$ 10$^{-4}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Nested sampling (MultiNest) with column length, dynamical mass and optical depth priors",
+     "evidence": [
+      {
+       "loc": "4 Radiative Transfer Analysis",
+       "quote": "We also implement three priors:"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Arp 220W fit excluded 3-2 line because it gave poor SLED fits",
+     "evidence": [
+      {
+       "loc": "4 Radiative Transfer Analysis",
+       "quote": "the addition of the $J$=3-2 line resulted in poor SLED fits"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "v4.7.1",
+    "used_for": {
+     "value": "Analysis of PdBI FITS cubes and imaging of ALMA SV data",
+     "evidence": [
+      {
+       "loc": "2.1 PdBI",
+       "quote": "imported into `CASA` (cite: McMullin2007) v4.7.1 for data analysis."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS/MAPPING",
+    "version": "not stated",
+    "used_for": {
+     "value": "PdBI data reduction",
+     "evidence": [
+      {
+       "loc": "2.1 PdBI",
+       "quote": "All data reductions were done with the MAPPING program in the standard IRAM GILDAS[^2] package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Escape-probability radiative transfer",
+     "evidence": [
+      {
+       "loc": "4 Radiative Transfer Analysis",
+       "quote": "we use the escape-probability radiative transfer program RADEX (cite: vanderTak2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MultiNest/PyMultiNest",
+    "version": "not stated",
+    "used_for": {
+     "value": "Nested sampling of parameters",
+     "evidence": [
+      {
+       "loc": "4 Radiative Transfer Analysis",
+       "quote": "This code implements the nested sampling algorithm MultiNest (cite: Feroz2009) using its Python wrapper PyMultiNest (cite: Buchner2014)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Best-fit Tkin Arp 220C",
+    "value": "38",
+    "uncertainty": "-1σ 37, +1σ 690",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "|  | Best Fit | 38 | 3.35 | 4.9 | -0.036 | 19.20 | 8.69 | 0.3 | 90 | 91 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit log10 nH2 Arp 220C",
+    "value": "3.35",
+    "uncertainty": "-1σ 2.55, +1σ 3.40",
+    "units": "log cm^-3",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "|  | Best Fit | 38 | 3.35 | 4.9 | -0.036 | 19.20 | 8.69 | 0.3 | 90 | 91 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit [12CO]/[13CO] Arp 220C",
+    "value": "90",
+    "uncertainty": "-1σ 58, +1σ 309",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "|  | Best Fit | 38 | 3.35 | 4.9 | -0.036 | 19.20 | 8.69 | 0.3 | 90 | 91 |"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HCO+ 1-0 ratio Arp 220E",
+    "value": "2.4",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Arp 220E | 15 34 57.342 | +23 30 11.610 | 0.8 $\\pm$ 0.1 | 0.8 $\\pm$ 0.1   | 23 $\\pm$ 3    | 19 $\\pm$ 2    | 0.9 $\\pm$ 0.1        | 2.4 $\\pm$ 0.2   |"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HCO+ 1-0 ratio NGC 6240",
+    "value": "0.80",
+    "uncertainty": "0.09",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| NGC 6240 | 16 52 58.900 | +02 24 03.810 | 1.0 $\\pm$ 0.1 | ...             | ...           | ...           | ...                  | 0.80 $\\pm$ 0.09 |"
+     }
+    ]
+   },
+   {
+    "quantity": "CS 4-3 flux Arp 220 (ALMA SV)",
+    "value": "61.0",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "|  | CS $J$ = 4$-$3  | 195.954 | 0.9 x 0.7 | 1.4 | 20 | 61.0 |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "13CO ratios show east-west gradient across Arp 220 while 12CO ratios vary smoothly",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the line ratios of optically thin lines such as $^{13}$CO show a east-west gradient across Arp 220."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Molecular gas on ~700 pc scale in Arp 220 conditions",
+    "experiment": "RADEX + MultiNest fit of 12CO, 13CO, C18O",
+    "result": "Best fit Tkin 38 K, nH2 10^3.35",
+    "finding": "Warm, moderately dense gas averaged over the nuclei",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The radiative transfer analysis solution is consistent with a warm ($\\sim$40 K), moderately dense ($\\sim$ 10$^{3.4}$ cm$^{-3}$) molecular gas component averaged over the two nuclei."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are CO isotopologue abundances enhanced by nucleosynthesis",
+    "experiment": "Free abundance ratios in the fit",
+    "result": "Ratios ~90 for both",
+    "finding": "C18O enhancement explained by stellar nucleosynthesis",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find \\[$^{12}$CO\\]/\\[$^{13}$CO\\] and \\[$^{12}$CO\\]/\\[C$^{18}$O\\] abundance ratios of $\\sim$ 90 for both."
+     }
+    ]
+   },
+   {
+    "hypothesis": "HCN/HCO+ differs between the two mergers",
+    "experiment": "Ratio maps",
+    "result": "Arp 220 >2, NGC 6240 <1",
+    "finding": "Significantly different ratios",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Arp 220 has line ratios above 2 and NGC 6240 below 1."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Optical depth, selective photodissociation and fractionation ruled out as cause of high 12CO/13CO",
+     "evidence": [
+      {
+       "loc": "5.3 Abundance Ratios",
+       "quote": "Optical depth effects have been ruled out by our analysis as the best fit solutions have optical depths $>$ 1 for $^{12}$CO and $<<$1 for $^{13}$CO."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution too poor to separate the two nuclei",
+     "evidence": [
+      {
+       "loc": "Table 3 notes",
+       "quote": "Our resolution is too poor to distinguish the nuclei spatially"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-component fit with poorly constrained C18O derived from assumed 13CO/C18O=1",
+    "Mixed-resolution data and missing flux affect ratios",
+    "Best-fit and mean values differ widely, broad posteriors"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "PdBI data to be released via IRAM Large Program Archive and NED; ALMA SV public",
+    "evidence": [
+     {
+      "loc": "Release of Data",
+      "quote": "The PdBI data presented in this paper will be released via the **IRAM Large Program Archive** and NASA’s Extragalactic Database"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "MCMC code of Kamenetzky available on github (pyradexnest)",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "https://github.com/jrka/pyradexnest"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "PdBI project codes and raw data",
+    "MCMC prior ranges and sampler settings",
+    "CASA imaging details"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB for ALMA SV; PdBI data separate",
+   "score_inferred": 3,
+   "score_reason": "ALMA part is small; modelling uses public code but literature inputs and settings partly unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results rely mostly on PdBI data and literature inputs; ALMA role minor."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Kamenetzky2014)",
+     "why": "RADEX MCMC code and priors"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Sliwa2017a)",
+     "why": "Similar analysis of NGC 2623"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PdBI U/LIRG Survey (PULS)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-230aba998c4803437f615d559fb59ac0",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:11",
+  "usage": {
+   "input_tokens": 36818,
+   "output_tokens": 7398,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.074414,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 54,
+  "quotes_ok": 54,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2011.0.00018.SV"
+  ],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 41,
+   "rate": 0.577
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,237 @@
+{
+ "bibcode": "2014ApJ...792...94D",
+ "title": "Molecular Gas in the X-Ray Bright Group NGC 5044 as Revealed by ALMA",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/792/2/94",
+ "arxiv_id": "1407.3235",
+ "fields": [
+  "nearby_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "What are the mass, kinematics and confinement of the molecular gas in the cooling-flow group NGC 5044, and how does it relate to the hot gas, dust and AGN?",
+ "alma_project_codes": [
+  "2011.0.00735.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm), CO(2-1)",
+  "arrays": "not stated",
+  "angular_resolution": "1.4\" by 2.2\" FWHM (210 by 330 pc)",
+  "sensitivity": "4 sigma surface brightness limit 0.16 Jy/beam (in 50 km/s bins); mass limit 3e5 Msun"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "GMRT flux densities at 235 and 610 MHz (229 mJy and 39 mJy)",
+    "evidence": [
+     {
+      "loc": "The Central AGN and Absorption Feature",
+      "quote": "the total flux densities (central point source plus extended emission) for 5044 at 235 MHz and 610 MHz from GMRT data are 229 mJy and 39 mJy (Giacintucci et al. 2008)"
+     }
+    ]
+   },
+   "citation": "Giacintucci et al. 2008"
+  },
+  {
+   "what": {
+    "value": "Star formation rate 0.073 Msun/yr from GALEX and WISE",
+    "evidence": [
+     {
+      "loc": "Effects of Star Formation",
+      "quote": "The star formation rate in NGC 5044 based on *GALEX* and *WISE* data is 0.073 M$_{\\odot}$ yr$^{-1}$ (Werner et al. 2014)."
+     }
+    ]
+   },
+   "citation": "Werner et al. 2014"
+  },
+  {
+   "what": {
+    "value": "Cavity power 6e42 erg/s",
+    "evidence": [
+     {
+      "loc": "Cloud Dynamics",
+      "quote": "The cavity power in NGC 5044 is ${P_{cav}=6 \\times 10^{42}}$ erg s$^{-1}$ (David et al. 2009)"
+     }
+    ]
+   },
+   "citation": "David et al. 2009"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and cube creation",
+   "method": "Own continuum subtraction and channel maps with chosen velocity resolution and weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect molecular structures",
+   "method": "Bin cube into 50 km/s slices and identify structures above 4 sigma within the central 2.5 kpc where primary beam response >0.3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit spectra and derive molecular masses",
+   "method": "Gaussian fits to spectra in 10 km/s channels; mass from Bolatto et al. relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Xco = 2e20 cm^-2 (K km/s)^-1; CO(2-1)/CO(1-0) flux density ratio 3.2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Size, density, virial parameter of resolved GMAs",
+   "method": "2D Gaussian fits to GMAs 11, 13, 18; deconvolved radius; surface and volume density; virial parameter",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "n_H2 = 100 cm^-3 for true GMCs"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Central continuum source and absorption",
+   "method": "imfit point-source check, flux in line-free region, Gaussian fit to absorption in a 2x2 arcsec extraction",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of molecular structures",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "detected 24 molecular structures within the central 2.5 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular mass",
+   "value": "5.1e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The total molecular mass of the GMAs listed in Table 1 is $5.1 \\times 10^7$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow component of GMA 18 linewidth",
+   "value": "5.5",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The central region",
+     "quote": "58.7 km s$^{-1}$, 5.5 km s$^{-1}$ and ${M_{mol}=8.7 \\times 10^5}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved radius of GMA 18",
+   "value": "120",
+   "uncertainty": "12",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The central region",
+     "quote": "$115 \\pm 25$, $140 \\pm 15$ and $120 \\pm 12$ pc for GMAs 11, 13 and 18"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC volume filling factor",
+   "value": "15%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The central region",
+     "quote": "the average GMC volume filling factor for the three GMAs is 15%"
+    }
+   ]
+  },
+  {
+   "quantity": "Central AGN flux density at 230 GHz",
+   "value": "55.3",
+   "uncertainty": "3.9",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Central AGN and Absorption Feature",
+     "quote": "${S_{\\nu}= 55.3 \\pm 3.9}$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption feature velocity",
+   "value": "260.3",
+   "uncertainty": "0.8",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Central AGN and Absorption Feature",
+     "quote": "a mean velocity of $260.3 \\pm 0.8$ km s$^{-1}$ and a linewidth of $5.2 \\pm 0.8$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dispersal timescale of GMA 18",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Are the GMAs confined?",
+     "quote": "$t_{disp} \\sim 2~r_c/\\sigma$=12 Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Weighting scheme / robust value and tclean/clean parameters for the cubes",
+  "CASA version",
+  "Cell size and image size",
+  "Line-free channels or fit order used for continuum subtraction",
+  "How the 24 structures were delineated and spectral extraction apertures",
+  "Flux-scale uncertainty",
+  "Integration regions for each GMA",
+  "Derivation of GMC density and pressure estimates and X-ray gas values"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "CASA version",
+  "Structure extraction regions",
+  "X-ray derived inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis, but imaging and region definitions are unstated.",
+ "rediscovery_reason": "Data public, a single short execution, and numeric results (masses, linewidths, flux density) are tabulated, though imaging details need reconstruction.",
+ "source_card": "cards/2014ApJ...792...94D/sonnet/card.md"
+}

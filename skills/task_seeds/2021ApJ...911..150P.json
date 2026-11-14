@@ -1,0 +1,785 @@
+{
+ "bibcode": "2021ApJ...911..150P",
+ "title": "An Atacama Large Millimeter/submillimeter Array Survey of Chemistry in Disks around M4-M5 Stars",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abe870",
+ "arxiv_id": "2105.04681",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What is the chemistry of protoplanetary disks around low-mass M4-M5 stars at 10-100 AU scales, and how does it compare to disks around solar-type stars?",
+ "alma_project_codes": [
+  "2017.1.01107.S"
+ ],
+ "data": {
+  "bands": "1.1mm (262GHz) and 1.3mm (231GHz)",
+  "arrays": "41-46 antennas",
+  "angular_resolution": "0.12-0.29\" (observational); 0.18\" to 0.47\" (synthesized beams)",
+  "sensitivity": "0.03-0.09 mJy beam^-1 (continuum rms); 1.6-4.2 mJy beam^-1 (line channel rms)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar spectral types, ages, luminosities, masses, effective temperatures, and literature distances for the 5 target disks",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The stellar ages ($t_*$), stellar luminosities ($L_*$), stellar masses ($M_*$), and stellar effective temperatures ($T_\\mathrm{eff}$) were taken from the literature, where they were derived from continuum photometry, spectral energy distribution (SED) fits, scaling relations, and/or stellar evolutionary models."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "*References: \\[0\\] (cite: cite_gaia2016; cite_gaia2018b), \\[1\\] (cite: cite_luhmanetal2010), \\[2\\] (cite: cite_andrewsetal2013), \\[3\\] (cite: cite_wardduongetal2018), \\[4\\] (cite: cite_manaraetal2017), \\[5\\] (cite: cite_alcalaetal2017).*"
+     }
+    ]
+   },
+   "citation": "(cite: cite_luhmanetal2010; cite_andrewsetal2013; cite_wardduongetal2018; cite_manaraetal2017; cite_alcalaetal2017)"
+  },
+  {
+   "what": {
+    "value": "Molecular line frequencies, upper energy levels, line intensities, and partition functions",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "All frequencies, upper energy levels ($E_\\mathrm{u}$), and line intensities ($S\\mu^2$) were obtained directly from the Cologne Database for Molecular Spectroscopy (cite: cite_cdms2016), with the exception of the HCN lines, for which these values were obtained from CDMS via Splatalogue (cite: cite_splatalogue2016)."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: cite_cdms2016) and Splatalogue (cite: cite_splatalogue2016)"
+  },
+  {
+   "what": {
+    "value": "Dust continuum fluxes, molecular line fluxes, and column density ratios of solar-type and Herbig Ae disks for comparison",
+    "evidence": [
+     {
+      "loc": "Disk Sample",
+      "quote": "Figure 1 compares the dust continuum fluxes of our M4-M5 disk sample to dust continuum fluxes of solar-type and Herbig Ae disks (cite: cite_huangetal2017; cite_bergneretal2019; cite_bergneretal2020; cite_peguesetal2020)."
+     },
+     {
+      "loc": "Relative Line Fluxes toward Disks around M4-M5 Stars and Solar-Type Stars",
+      "quote": "The literature disk sample was compiled from the chemistry surveys of (cite: cite_huangetal2017), (cite: cite_bergneretal2019), (cite: cite_bergneretal2020), and (cite: cite_peguesetal2020)."
+     }
+    ]
+   },
+   "citation": "(cite: cite_huangetal2017; cite_bergneretal2019; cite_bergneretal2020; cite_peguesetal2020)"
+  },
+  {
+   "what": {
+    "value": "Dust continuum flux detections from Taurus and Chamaeleon I star-forming regions",
+    "evidence": [
+     {
+      "loc": "Disk Sample",
+      "quote": "Figure 1 also compares our sample to the dust continuum flux detections from (cite: cite_andrewsetal2013) and from (cite: cite_pascuccietal2016), which were extracted from the Taurus and Chamaeleon I star-forming regions, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: cite_andrewsetal2013; cite_pascuccietal2016)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocities for J1545-3417 and Sz 69",
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "For J1545-3417 and Sz 69, systemic velocities are based on values and uncertainties available in the literature (cite: cite_yenetal2018)."
+     }
+    ]
+   },
+   "citation": "(cite: cite_yenetal2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Estimate disk centers and extract line/continuum emission with Keplerian masks",
+   "method": "Fit 2D Gaussians to the dust continuum to find disk centers; apply Keplerian masks across emission velocity channels to extract spectra, moment 0 maps, radial profiles, and integrated fluxes; estimate uncertainties via 1000 random/bootstrapped samples.",
+   "software": [
+    "Python",
+    "kepmask",
+    "Astropy",
+    "NumPy",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Keplerian mask parameters: V_0 = 0.22-0.25 km/s, R_0 = 100 AU, q = 0.3, and disk-specific theta_alpha, theta_beta, V_LSR, and mask extents (Table 6)",
+    "Detection criteria: >= 3 sigma in velocity-integrated map and peak >= 3 sigma in at least 3 channels within Keplerian mask"
+   ],
+   "assumptions": [
+    "Combined thermal and turbulent line width follows power law Delta V ~ V_0 (R_0/100)^q",
+    "Literature distances in parentheses (140 pc for Taurus, 160 pc for Chamaeleon I, 150 pc for Lupus)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compare relative line fluxes and compute correlation coefficients across M4-M5 and solar-type/Herbig Ae disks",
+   "method": "Normalize integrated line fluxes to 140 pc, compute Spearman and Pearson correlation coefficients in log-log space for molecule pairs, and analyze flux ratios vs stellar mass and radius.",
+   "software": [
+    "Python",
+    "NumPy",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Statistical significance threshold: p-value <= 0.01"
+   ],
+   "assumptions": [
+    "H2CO 3_03-2_02 and 4_04-3_03 line fluxes from the literature have similar flux behaviors and can be combined"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit pixel-by-pixel hyperfine spectra of C2H and HCN in J1100-7619 to derive radial profiles of T_ex, tau, and N_tot",
+   "method": "Reimage C2H and HCN in J1100-7619 at 0.14 km/s resolution; fit 4-parameter LTE hyperfine model per pixel using MCMC; compute T_ex, tau, and N_tot per pixel; construct weighted radial profiles over valid pixels in deprojected annuli.",
+   "software": [
+    "CASA",
+    "Python",
+    "emcee",
+    "NumPy",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Channel width = 0.14 km s^-1",
+    "100 walkers, 1000 steps, 950 burn-in steps disregarded",
+    "Valid pixel criteria: SNR of faintest resolved hyperfine component >= 3, relative parameter errors <= 0.20, flux difference f_50 <= 0.20"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), identical line width for each hyperfine component, homogeneous excitation conditions along line of sight, filling factor f = 1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate disk-averaged column densities and column density ratios for C2H, HCN, and DCN across the sample",
+   "method": "Extract emission within the 1-sigma radial profile extent; solve a linear system of equations (Mx = b) to decompose blended hyperfine flux into individual component fluxes for assumed T_ex and tau ranges; compute disk-averaged N_tot.",
+   "software": [
+    "Python",
+    "NumPy"
+   ],
+   "key_parameters": [
+    "Emission extent defined where radial profile decreases to 1 sigma"
+   ],
+   "assumptions": [
+    "T_ex = 10-30 K (median 20 K) for C2H, HCN, and DCN; tau = 1-5 (median 2) for C2H; tau = 4-12 (median 8) for HCN; DCN is optically thin"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "FP Tau 1.1 mm continuum total emission",
+   "value": "11",
+   "uncertainty": "0.019",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| FP Tau | 1.1 | 44 | 11 $\\pm$ 0.019 | 8.7 | 0.04 | 0.40\" x 0.26\" (-173.8$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "FP Tau 1.3 mm continuum total emission",
+   "value": "8.4",
+   "uncertainty": "0.015",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | 1.3 | 36 | 8.4 $\\pm$ 0.015 | 6.4 | 0.03 | 0.29\" x 0.23\" (-8.4$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 1.1 mm continuum total emission",
+   "value": "29",
+   "uncertainty": "0.077",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| J0432+1827 | 1.1 | 51 | 29 $\\pm$ 0.077 | 12 | 0.09 | 0.35\" x 0.25\" (14.6$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 1.3 mm continuum total emission",
+   "value": "25",
+   "uncertainty": "0.051",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | 1.3 | 42 | 25 $\\pm$ 0.051 | 8.6 | 0.05 | 0.24\" x 0.20\" (-16.1$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 1.1 mm continuum total emission",
+   "value": "35",
+   "uncertainty": "0.077",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| J1100-7619 | 1.1 | 46 | 35 $\\pm$ 0.077 | 5.8 | 0.04 | 0.19\" x 0.14\" (-11.4$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 1.3 mm continuum total emission",
+   "value": "25",
+   "uncertainty": "0.056",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | 1.3 | 63 | 25 $\\pm$ 0.056 | 8.6 | 0.07 | 0.39\" x 0.25\" (-3.2$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1545-3417 1.1 mm continuum total emission",
+   "value": "24",
+   "uncertainty": "0.28",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| J1545-3417 | 1.1 | 42 | 24 $\\pm$ 0.28 | 18 | 0.04 | 0.29\" x 0.24\" (90.0$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1545-3417 1.3 mm continuum total emission",
+   "value": "20",
+   "uncertainty": "0.16",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | 1.3 | 41 | 20 $\\pm$ 0.16 | 15 | 0.04 | 0.27\" x 0.24\" (76.4$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 69 1.1 mm continuum total emission",
+   "value": "9.4",
+   "uncertainty": "0.023",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Sz 69 | 1.1 | 30 | 9.4 $\\pm$ 0.023 | 9.0 | 0.04 | 0.29\" x 0.24\" (-89.8$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 69 1.3 mm continuum total emission",
+   "value": "8.0",
+   "uncertainty": "0.015",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | 1.3 | 30 | 8.0 $\\pm$ 0.015 | 7.2 | 0.03 | 0.27\" x 0.24\" (77.7$^\\circ$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "FP Tau 12CO (J=2-1) integrated flux",
+   "value": "781",
+   "uncertainty": "11",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| FP Tau | 55 | 781 $\\pm$ 11 | 247 $\\pm$ 4.3 | 2.0 - 14.6 | 1.24 | 0.20 | 3.4 | 0.30\" x 0.23\" (-6.3$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 12CO (J=2-1) integrated flux",
+   "value": "1847",
+   "uncertainty": "13",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J0432+1827 | 126 | 1847 $\\pm$ 13 | 129 $\\pm$ 2.9 | 0.6 - 10.6 | 2.16 | 0.20 | 3.3 | 0.24\" x 0.20\" (-14.8$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 12CO (J=2-1) integrated flux",
+   "value": "1306",
+   "uncertainty": "6.1",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1100-7619 | 186 | 1306 $\\pm$ 6.1 | 69 $\\pm$ 1.4 | 2.1 - 7.3 | 2.04 | 0.20 | 2.5 | 0.40\" x 0.25\" (-1.1$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1545-3417 12CO (J=2-1) integrated flux",
+   "value": "738",
+   "uncertainty": "10",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1545-3417 | 98 | 738 $\\pm$ 10 | 141 $\\pm$ 3.3 | -1.0 - 10.0 | 2.00 | 0.20 | 3.7 | 0.27\" x 0.24\" (71.0$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 69 12CO (J=2-1) integrated flux",
+   "value": "2001",
+   "uncertainty": "15",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| Sz 69 | 138 | 2001 $\\pm$ 15 | 192 $\\pm$ 3.0 | 1.2 - 9.4 | 2.68 | 0.20 | 3.8 | 0.27\" x 0.24\" (73.0$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "FP Tau C18O (J=2-1) integrated flux",
+   "value": "91",
+   "uncertainty": "6.7",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| FP Tau | 44 | 91 $\\pm$ 6.7 | 54 $\\pm$ 3.3 | 1.9 - 14.7 | 0.56 | 0.40 | 2.1 | 0.30\" x 0.24\" (-7.1$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 C18O (J=2-1) integrated flux",
+   "value": "148",
+   "uncertainty": "9.0",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J0432+1827 | 58 | 148 $\\pm$ 9.0 | 36 $\\pm$ 2.4 | 0.4 - 10.8 | 1.32 | 0.40 | 2.0 | 0.25\" x 0.21\" (-13.5$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 C18O (J=2-1) integrated flux",
+   "value": "71",
+   "uncertainty": "3.6",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1100-7619 | 116 | 71 $\\pm$ 3.6 | 12 $\\pm$ 1.2 | 2.2 - 7.4 | 1.36 | 0.20 | 2.1 | 0.42\" x 0.27\" (-2.3$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1545-3417 C18O (J=2-1) integrated flux",
+   "value": "89",
+   "uncertainty": "9.5",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1545-3417 | 123 | 89 $\\pm$ 9.5 | 21 $\\pm$ 2.9 | -1.1 - 10.1 | 1.96 | 0.40 | 2.3 | 0.28\" x 0.25\" (69.1$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 69 C18O (J=2-1) integrated flux",
+   "value": "38",
+   "uncertainty": "6.6",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| Sz 69 | 37 | 38 $\\pm$ 6.6 | 22 $\\pm$ 2.5 | 1.4 - 9.4 | 0.96 | 0.40 | 2.2 | 0.29\" x 0.25\" (71.0$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "FP Tau C2H (N=3-2, J=7/2-5/2) integrated flux",
+   "value": "140",
+   "uncertainty": "18",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| FP Tau | 63 | 140 $\\pm$ 18 | 81 $\\pm$ 4.7 | 1.1 - 14.7 | 1.44 | 0.40 | 3.2 | 0.44\" x 0.34\" (-176.5$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 C2H (N=3-2, J=7/2-5/2) integrated flux",
+   "value": "288",
+   "uncertainty": "19",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J0432+1827 | 104 | 288 $\\pm$ 19 | 39 $\\pm$ 4.3 | -1.6 - 10.0 | 1.32 | 0.40 | 3.0 | 0.34\" x 0.24\" (14.4$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 C2H (N=3-2, J=7/2-5/2) integrated flux",
+   "value": "1180",
+   "uncertainty": "17",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1100-7619 | 167 | 1180 $\\pm$ 17 | 22 $\\pm$ 1.9 | -0.4 - 7.4 | 1.48 | 0.20 | 2.9 | 0.18\" x 0.14\" (-9.5$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1545-3417 C2H (N=3-2, J=7/2-5/2) integrated flux",
+   "value": "61",
+   "uncertainty": "12",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1545-3417 | 56 | 61 $\\pm$ 12 | 47 $\\pm$ 3.0 | -1.9 - 9.7 | 1.16 | 0.40 | 2.6 | 0.37\" x 0.33\" (72.4$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 69 C2H (N=3-2, J=7/2-5/2) integrated flux",
+   "value": "28",
+   "uncertainty": "8.1",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| Sz 69 | 39 | 28 $\\pm$ 8.1 | 25 $\\pm$ 3.7 | -2.6 - 9.0 | 0.40 | 0.40 | 2.8 | 0.37\" x 0.32\" (72.9$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "FP Tau HCN (J=3-2) integrated flux",
+   "value": "272",
+   "uncertainty": "17",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| FP Tau | 48 | 272 $\\pm$ 17 | 164 $\\pm$ 4.4 | 2.0 - 14.6 | 1.20 | 0.20 | 4.2 | 0.38\" x 0.25\" (-173.8$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 HCN (J=3-2) integrated flux",
+   "value": "600",
+   "uncertainty": "18",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J0432+1827 | 85 | 600 $\\pm$ 18 | 125 $\\pm$ 2.9 | -0.2 - 11.4 | 1.36 | 0.20 | 3.8 | 0.34\" x 0.24\" (14.3$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 HCN (J=3-2) integrated flux",
+   "value": "1655",
+   "uncertainty": "24",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1100-7619 | 137 | 1655 $\\pm$ 24 | 67 $\\pm$ 1.6 | -0.2 - 9.8 | 1.64 | 0.20 | 2.6 | 0.18\" x 0.14\" (-9.1$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1545-3417 HCN (J=3-2) integrated flux",
+   "value": "120",
+   "uncertainty": "14",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1545-3417 | 88 | 120 $\\pm$ 14 | 51 $\\pm$ 2.6 | -1.1 - 10.1 | 1.36 | 0.40 | 2.4 | 0.37\" x 0.33\" (70.1$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 69 HCN (J=3-2) integrated flux",
+   "value": "42",
+   "uncertainty": "8.6",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| Sz 69 | 39 | 42 $\\pm$ 8.6 | 40 $\\pm$ 3.4 | -0.2 - 11.0 | 0.44 | 0.40 | 2.6 | 0.37\" x 0.33\" (71.0$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 DCN (J=3-2) integrated flux",
+   "value": "15",
+   "uncertainty": "2.7",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1100-7619 | 62 | 15 $\\pm$ 2.7 | 8.3 $\\pm$ 1.0 | 2.1 - 7.3 | 0.72 | 0.20 | 1.6 | 0.47\" x 0.34\" (-3.3$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J0432+1827 H2CO 3_03-2_02 integrated flux",
+   "value": "80",
+   "uncertainty": "8.0",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J0432+1827 | 136 | 80 $\\pm$ 8.0 | 6.5 $\\pm$ 2.1 | 0.4 - 10.8 | 1.48 | 0.40 | 1.7 | 0.26\" x 0.21\" (-17.7$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 H2CO 3_03-2_02 integrated flux",
+   "value": "100",
+   "uncertainty": "3.7",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J1100-7619 | 219 | 100 $\\pm$ 3.7 | 7.7 $\\pm$ 1.0 | 2.2 - 7.4 | 2.12 | 0.20 | 1.6 | 0.41\" x 0.27\" (-2.8$^{\\circ}$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between C2H 3-2 and HCN 3-2 (all disks)",
+   "value": "0.923",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "| HCN (J=3–2) | C$_2$H (N=3–2) | 5 | 0.993 | 1.000 | 1.404e-24 | 7 | 0.803 | 0.750 | 5.218e-02 | 12 | 0.970 | 0.923 | 1.862e-05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between C2H 3-2 and HCN 3-2 (M4-M5 disks)",
+   "value": "1.000",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "| HCN (J=3–2) | C$_2$H (N=3–2) | 5 | 0.993 | 1.000 | 1.404e-24 | 7 | 0.803 | 0.750 | 5.218e-02 | 12 | 0.970 | 0.923 | 1.862e-05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 C2H excitation temperature",
+   "value": "10-20",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Excitation Temperatures, Column Densities, and Optical Depths",
+     "quote": "C$_2$H excitation temperatures are $\\sim$10-20K and appear roughly constant across the disk."
+    },
+    {
+     "loc": "Summary",
+     "quote": "5. Pixel-by-pixel fits of the C$_2$H and HCN hyperfine structure toward J1100-7619 reveal that C$_2$H excitation temperatures, optical depths, and column densities are $\\sim$10-20K, $\\sim$1-4, and $\\sim$(1-10)$\\times 10^{14}$ cm$^{-2}$, respectively, across the disk."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 C2H optical depth",
+   "value": "1-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Excitation Temperatures, Column Densities, and Optical Depths",
+     "quote": "C$_2$H optical depths range from $\\sim$1-4 and are also roughly constant with radius."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 C2H column density (radial profile)",
+   "value": "(1-10)e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "5. Pixel-by-pixel fits of the C$_2$H and HCN hyperfine structure toward J1100-7619 reveal that C$_2$H excitation temperatures, optical depths, and column densities are $\\sim$10-20K, $\\sim$1-4, and $\\sim$(1-10)$\\times 10^{14}$ cm$^{-2}$, respectively, across the disk."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 HCN excitation temperature (20-60 AU)",
+   "value": "15-25",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "HCN excitation temperatures and optical depths are from $\\sim$15-25K and $\\sim$7-15, respectively, interior to the pebble disk edge where sufficient signal-to-noise exists."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 HCN optical depth (20-60 AU)",
+   "value": "7-15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "HCN excitation temperatures and optical depths are from $\\sim$15-25K and $\\sim$7-15, respectively, interior to the pebble disk edge where sufficient signal-to-noise exists."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 HCN column density (20-60 AU)",
+   "value": "(3-30)e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "HCN column densities in the same disk region range from $\\sim$(3-30)$\\times 10^{13}$ cm$^{-2}$ (see Section 4.4.2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged median C2H column density across M4-M5 sample",
+   "value": "(5-10)e13",
+   "uncertainty": "factors of 2-4",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk-Averaged Column Densities",
+     "quote": "The median C$_2$H column density estimates are (5-10)$\\times 10^{13}$ cm$^{-2}$ across the sample. Changing the excitation temperature and opacity result in factors of 2-4 higher or lower estimates of the column density."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged median HCN column density across M4-M5 sample",
+   "value": "(4-12)e12",
+   "uncertainty": "factors of 3-10",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk-Averaged Column Densities",
+     "quote": "The median HCN column density estimates span a factor of 3, from (4-12)$\\times 10^{12}$ cm$^{-2}$. Changes in optical depth from 4 to 12 lead to factors $\\lesssim$3 in difference between estimates, while changes in excitation temperature from 10K to 30K lead to factors of $\\sim$3-10 (excluding Sz 69)."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 disk-averaged median DCN column density",
+   "value": "7e11",
+   "uncertainty": "range (4-10)e11",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk-Averaged Column Densities",
+     "quote": "For the bright and well-resolved disk J1100-7619, DCN is detected, and the estimated column densities (not shown) span $\\sim$(4-10)$\\times 10^{11}$ cm$^{-2}$ from 10-30K with a median of $\\sim$7$\\times 10^{11}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged median C2H/HCN column density ratio across M4-M5 sample",
+   "value": "7-11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk-Averaged Column Densities",
+     "quote": "Median estimates of the ratio range from $\\sim$7 for FP Tau to $\\sim$11 for J1545-3417."
+    }
+   ]
+  },
+  {
+   "quantity": "J1100-7619 disk-averaged median DCN/HCN column density ratio",
+   "value": "0.072",
+   "uncertainty": "range 0.04-0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk-Averaged Column Densities",
+     "quote": "This disk has a median DCN/HCN value of $\\sim$0.072 and ranges from $\\sim$0.04-0.1 across the extremes."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges used as line-free channels for continuum imaging and uvcontsub",
+  "Polynomial order (fitorder) used in CASA uvcontsub",
+  "Image dimensions (imsize) used in CASA clean",
+  "Exact deprojected radial bin width used when constructing radial emission profiles and hyperfine weighted radial profiles"
+ ],
+ "missing_for_reproduction": [
+  "Hand-drawn CLEAN masks for each channel and line",
+  "Exact line-free frequency/channel ranges used for continuum imaging and uvcontsub",
+  "Exact self-calibration solution interval per execution (only ranges 10-100s and 70-210s are stated)",
+  "Image size (imsize) in CASA clean",
+  "Radial bin widths used for radial profiles"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Complete and detailed mathematical and procedural description of Keplerian masking (Table 6), hyperfine MCMC fitting (Appendix 8), and column density matrix inversion (Appendix 9), with CASA version, robust parameter, pixel sizes, and velocity channel widths explicitly given. Minor deductions for hand-drawn CLEAN masks, unstated line-free channel ranges, and solint given only as ranges.",
+ "rediscovery_reason": "Public single-project ALMA dataset (2017.1.01107.S), well-specified imaging and Keplerian mask parameters (Table 6), and explicit numerical answer keys for continuum fluxes (Table 4), line fluxes/radii (Table 5), correlations (Table 7), and column densities.",
+ "source_card": "cards/2021ApJ...911..150P/sonnet/card.md"
+}

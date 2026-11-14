@@ -1,0 +1,469 @@
+{
+ "bibcode": "2026ApJ...997..155M",
+ "title": "The ALMA Survey of 70 µm Dark High-mass Clumps in Early Stages (ASHES). XIII. Core Mass Function, Lifetime, and Growth of Prestellar Cores",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae25f6",
+ "arxiv_id": "2512.00147",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the universality, power-law slope, lifetime, and mass growth properties of the prestellar core mass function (CMF) in the earliest stages of high-mass star formation within 70 μm dark IRDC clumps?",
+ "alma_project_codes": [
+  "2015.1.01539.S",
+  "2017.1.00716.S",
+  "2018.1.00192.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~1.3 mm)",
+  "arrays": "12-m array, 7-m array, Total Power (TP; for spectral line data only)",
+  "angular_resolution": "~1.2'' for continuum; 29.6'' for TP C18O",
+  "sensitivity": "~0.094 mJy beam^-1 (average 1sigma continuum rms)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "NH3 rotational temperatures at ~5'' for cores in eleven ASHES clumps",
+    "evidence": [
+     {
+      "loc": "Core Mass",
+      "quote": "For cores in eleven ASHES clumps, we used the rotational temperatures derived from NH$_3$ observations at $\\sim$5$''$ (cite: Li23; Allingham24)."
+     }
+    ]
+   },
+   "citation": "(cite: Li23; Allingham24)"
+  },
+  {
+   "what": {
+    "value": "Clump temperatures for twenty-eight clumps",
+    "evidence": [
+     {
+      "loc": "Core Mass",
+      "quote": "For the remaining twenty-eight clumps, we adopted the clump temperature for the core mass calculation (cite: Guzman15)."
+     }
+    ]
+   },
+   "citation": "(cite: Guzman15)"
+  },
+  {
+   "what": {
+    "value": "Core catalog (839 cores), continuum properties, and temperatures used for mass estimation (Table 4)",
+    "evidence": [
+     {
+      "loc": "Core Mass",
+      "quote": "Column 3 in Table 4 in (cite: Morii23) shows the temperature used for each core in the mass estimation."
+     },
+     {
+      "loc": "Observations and Data",
+      "quote": "By applying the dendrogram technique, implemented in `astrodendro` (cite: Rosolowsky08), to the 1.3 mm continuum images of 39 regions, we have identified 839 cores (cite: Morii23)."
+     }
+    ]
+   },
+   "citation": "(cite: Morii23)"
+  },
+  {
+   "what": {
+    "value": "Core evolutionary classifications and virial parameters",
+    "evidence": [
+     {
+      "loc": "Observations and Data",
+      "quote": "Detailed information and line setups are described in (cite: Morii24)."
+     },
+     {
+      "loc": "Observations and Data",
+      "quote": "Among 839 cores, either of the lines is detected from 492 cores (58.6%), and 340 cores (69.1%) have virial parameter smaller than 2, classified as gravitationally bound cores ignoring external pressure and the magnetic field (cite: Morii24)."
+     }
+    ]
+   },
+   "citation": "(cite: Morii24)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity at 1.3 mm of 0.9 cm^2 g^-1",
+    "evidence": [
+     {
+      "loc": "Core Mass",
+      "quote": "We adopt the standard gas-to-dust mass ratio of 100, and a dust opacity of 0.9 cm$^2$ g$^{-1}$ (cite: Ossenkopf94)."
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf94)"
+  },
+  {
+   "what": {
+    "value": "CMF power-law indices from the ALMA-IMF project for comparison",
+    "evidence": [
+     {
+      "loc": "Power-law Index of CMFs",
+      "quote": "For comparison, we plotted the index and the uncertainties estimated in some studies of the ALMA-IMF project (cite: Nony23; Pouteau23; Louvet24)."
+     }
+    ]
+   },
+   "citation": "(cite: Nony23; Pouteau23; Louvet24)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify cores, classify evolutionary stages, and assess gravitational binding",
+   "method": "Extract cores from 1.3 mm continuum images of 39 regions using astrodendro (and getsf with 10 arcsec maximum size for comparison); classify into outflow cores, warm cores, and prestellar core candidates using CO (2-1) and warm gas tracers (H2CO, CH3OH, HC3N); compute virial parameters from DCO+ and N2D+ (3-2) velocity dispersions.",
+   "software": [
+    "astrodendro",
+    "getsf"
+   ],
+   "key_parameters": [
+    "virial parameter < 2 for gravitationally bound cores; getsf maximum source size = 10 arcsec"
+   ],
+   "assumptions": [
+    "Ignore external pressure and magnetic field in virial analysis"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Calculate core masses and verify optically thin dust emission",
+   "method": "Compute core masses from 1.3 mm continuum flux density using Equation 1, and check optical depth at 1.3 mm using the ratio of peak intensity over beam solid angle to the Planck function.",
+   "software": [],
+   "key_parameters": [
+    "gas-to-dust mass ratio R = 100; dust opacity kappa_nu = 0.9 cm^2 g^-1"
+   ],
+   "assumptions": [
+    "Optically thin 1.3 mm dust continuum emission; NH3 rotational temperatures for 11 clumps and clump temperatures for 28 clumps"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Evaluate mass completeness, apply flux recovery correction, and select final core sample",
+   "method": "Insert artificial Gaussian cores into continuum images at uniformly random positions where primary beam response > 40%, run astrodendro 5000 times to measure detection rate and flux recovery per mass bin, exclude 5 clumps with lowest completeness, and divide observed core masses by the recovery fraction where completeness > 0.5.",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "5000 trials; primary beam response > 40%; 90% completeness threshold = 1.2 M_sun after excluding 5 clumps; flux correction applied where completeness > 0.5"
+   ],
+   "assumptions": [
+    "Artificial cores have Gaussian profiles"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct CMFs and fit power-law slopes",
+   "method": "Construct differential histograms (using numpy Freedman Diaconis Estimator for bin edges), variable-bin complementary cumulative distributions, and unbinned distributions; fit power-law indices above 1.2 M_sun and evaluate 1sigma uncertainties via 1000-trial Monte Carlo simulations of 50% mass uncertainties.",
+   "software": [
+    "Numpy",
+    "powerlaw"
+   ],
+   "key_parameters": [
+    "M_min = 1.2 M_sun; 1000 Monte Carlo trials with mass scaling factor uniformly in 0.5-1.5"
+   ],
+   "assumptions": [
+    "Core mass uncertainty is 50%"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate statistical lifetime of prestellar cores as a function of mass",
+   "method": "Compute statistical lifetime of gravitationally bound prestellar cores relative to bound protostellar cores overall and in logarithmic mass bins using Equation 2.",
+   "software": [],
+   "key_parameters": [
+    "reference protostellar lifetime t_proto = 0.2 Myr; freefall time t_ff ~ 3 x 10^4 yr"
+   ],
+   "assumptions": [
+    "Constant star formation rate throughout the cloud's lifetime; baseline constant core mass over time, plus alternative scenarios with M_proto = 2 * M_obs (accretion onto protostar) and M_proto = 0.5 * M_obs (core growth)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model core mass growth and infer external mass infall rate from CMF evolution",
+   "method": "Compare observed bound prestellar and protostellar CMFs with Bondi-Hoyle-Lyttleton (BHL) accretion and fit a power-law external mass infall model (M_dot = C * M^p) using scipy curve_fit.",
+   "software": [
+    "Scipy"
+   ],
+   "key_parameters": [
+    "n_cl = 4 x 10^4 cm^-3; sigma_cl = 1 km s^-1; external infall duration = 30 kyr"
+   ],
+   "assumptions": [
+    "External mass infall rate follows a power-law dependence on core mass over a constant duration of 30 kyr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total cores identified in 39 clumps",
+   "value": "839",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Data",
+     "quote": "By applying the dendrogram technique, implemented in `astrodendro` (cite: Rosolowsky08), to the 1.3 mm continuum images of 39 regions, we have identified 839 cores (cite: Morii23)."
+    }
+   ]
+  },
+  {
+   "quantity": "Final selected core sample size (34 clumps)",
+   "value": "715",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Completeness",
+     "quote": "After this selection, our sample ensures a 90% completeness level above 1.2 $M_\\odot$, resulting in a final sample of 715 cores for the CMF analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "Prestellar core candidates in selected sample",
+   "value": "461",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Completeness",
+     "quote": "Among the 715 cores in the middle panel, the numbers of prestellar core candidates, warm cores, and outflow cores are 461, 178, and 76, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar cores in selected sample",
+   "value": "254",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We study the CMF in the earliest stage of high-mass star formation using 461 prestellar core candidates and 254 protostellar cores as a part of the ALMA Survey of 70 μm Dark High-mass Clumps in Early Stages (ASHES)."
+    }
+   ]
+  },
+  {
+   "quantity": "Gravitationally bound prestellar cores in selected sample",
+   "value": "130",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Prestellar CMF",
+     "quote": "Our prestellar core sample consists of 461 cores without any signs of protostars detected by ALMA such as molecular outflows and warm gas tracers. It includes 130 gravitationally bound cores based on virial analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "Derived core mass range",
+   "value": "0.06 to 81",
+   "uncertainty": "~50%",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Core Mass",
+     "quote": "The derived core mass ranges from 0.06 to 81 $M_\\odot$. The uncertainties of mass is $\\sim$50%, largely contributed from the gas-to-dust mass ratio and the dust opacity (cite: Morii23)."
+    }
+   ]
+  },
+  {
+   "quantity": "90% mass completeness level across all 39 clumps",
+   "value": "0.3-4.5 (median ~0.6)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Completeness",
+     "quote": "The completeness level ranges from 0.3–4.5 $M_\\odot$ with a median of $\\sim$0.6 $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "90% mass completeness threshold for selected 34 clumps",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Completeness",
+     "quote": "After this selection, our sample ensures a 90% completeness level above 1.2 $M_\\odot$, resulting in a final sample of 715 cores for the CMF analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope (all selected cores, differential histogram before flux correction)",
+   "value": "-1.92",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Completeness",
+     "quote": "As expected from the recovered flux plot, the flux correction mostly affects low-mass cores near 1 $M_\\odot$, and it makes a slightly steeper slope from -1.92$\\pm$0.12 to -2.02$\\pm$0.11."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope (all selected cores, differential histogram after flux correction)",
+   "value": "-2.02",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Completeness",
+     "quote": "As expected from the recovered flux plot, the flux correction mostly affects low-mass cores near 1 $M_\\odot$, and it makes a slightly steeper slope from -1.92$\\pm$0.12 to -2.02$\\pm$0.11."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope (all selected cores, MLE)",
+   "value": "-2.05",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The CMF, including both protostellar and prestellar cores, has a power-law slope of -2.05$\\pm$0.04, shallower than Salpeter’s IMF slope of -2.35."
+    },
+    {
+     "loc": "Power-law Index of CMFs",
+     "quote": "Since they used the MLE method, to directly compare with our sample, we also plot the best-fit index derived in the same way as a gray line ($\\alpha=$-2.05$\\pm$0.04)."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope (gravitationally bound prestellar cores, MLE)",
+   "value": "-2.32",
+   "uncertainty": "0.30",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Conversely, the CMF of gravitationally bound, prestellar cores has a steeper slope (-2.32$\\pm$0.30), indistinguishable from Salpeter’s slope."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope range (prestellar core candidates across methods)",
+   "value": "-2.65 to -2.38",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Prestellar CMF",
+     "quote": "The best fit $\\alpha$ was -2.65 to -2.38 for prestellar core candidates (including bound and unbound cores) and -2.53 to -1.83 for bound prestellar cores."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope range (gravitationally bound prestellar cores across methods)",
+   "value": "-2.53 to -1.83",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Prestellar CMF",
+     "quote": "The best fit $\\alpha$ was -2.65 to -2.38 for prestellar core candidates (including bound and unbound cores) and -2.53 to -1.83 for bound prestellar cores."
+    }
+   ]
+  },
+  {
+   "quantity": "Statistical lifetime of bound prestellar cores",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Lifetime of Prestellar Cores",
+     "quote": "By inserting the total number of bound, prestellar cores and the number of bound, protostellar cores (including both warm cores and outflow cores) into Equation [\\[equ:lifetime\\]](#equ:lifetime), we estimate the lifetime of prestellar cores to be 0.18 Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "External mass infall rate power-law exponent (p)",
+   "value": "1.16",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Core Growth and CMF",
+     "quote": "The derived best-fit parameter is $p=1.16\\pm0.02$ with $C=1.60\\pm$0.01."
+    }
+   ]
+  },
+  {
+   "quantity": "External mass infall rate normalization factor (C)",
+   "value": "1.60",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Core Growth and CMF",
+     "quote": "The derived best-fit parameter is $p=1.16\\pm0.02$ with $C=1.60\\pm$0.01."
+    }
+   ]
+  },
+  {
+   "quantity": "External mass infall rate at 1 M_sun (assuming 30 kyr infall duration)",
+   "value": "5.33e-5",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Core Growth and CMF",
+     "quote": "Assuming a duration of external infall of 30 kyr, approximately free-fall time of ASHES cores, the mass infalll rate is described as $$\begin{equation} \\dot{M}= 5.33\times 10^{-5} \\left( \frac{M_{\rm core}}{1\\,M_\\odot} \right)^{1.16} \\,M_\\odot\\,{\rm yr^{-1}}. \\label{equ:bestfit-mdot} \\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cores identified by getsf in 39 clumps",
+   "value": "331",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Core Identification: astrodendro VS getsf",
+     "quote": "As a result, 331 cores were identified from 39 clumps. Of those, 305 overlap with the cores identified by `astrodendro` according to their positions."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF power-law slope using getsf cores",
+   "value": "-1.78",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Core Identification: astrodendro VS getsf",
+     "quote": "The power-law fit was applied to the CMFs with $M > 1.2 M_\\odot$, and the best-fit parameters are $\\alpha = -1.92\\pm0.12$ and $-1.78\\pm0.12$ for `astrodendro` and `getsf`, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging parameters (e.g., CASA version, tclean weighting, robust parameter, multiscale scales, continuum subtraction), which are deferred to Sanhueza et al. (2019) and Morii et al. (2023)",
+  "Exact astrodendro parameters (min_value, min_delta, min_npix) used for core identification and artificial core recovery tests, deferred to Morii et al. (2023)",
+  "Individual source distances and dust temperatures for the 39 clumps / 839 cores, deferred to Table 4 of Morii et al. (2023)"
+ ],
+ "missing_for_reproduction": [
+  "FITS continuum images of the 39 ASHES clumps to run astrodendro, getsf, and the artificial Gaussian core completeness simulations",
+  "Exact astrodendro parameters (min_value, min_delta, min_npix) used during the 5000-trial completeness and flux recovery tests",
+  "Region-by-region flux recovery curves used to correct individual core masses"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The statistical, CMF fitting, completeness, lifetime, and infall modeling steps are clearly described with standard Python packages (astrodendro, powerlaw, scipy, numpy), and the core catalogs/temperatures are published in companion papers (Morii et al. 2023, 2024), though exact astrodendro thresholds and the FITS continuum maps are needed to exactly replicate the injection-recovery flux corrections.",
+ "rediscovery_reason": "The ALMA datasets (Cycles 3, 5, 6) and companion catalogs (Morii et al. 2023, 2024) are public, the core extraction and power-law fitting recipes are well-specified, and the main results are concrete numerical slopes, lifetimes, and infall parameters.",
+ "source_card": "cards/2026ApJ...997..155M/sonnet/card.md"
+}

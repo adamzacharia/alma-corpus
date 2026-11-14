@@ -1,0 +1,623 @@
+{
+ "bibcode": "2026MNRAS.551g1411H",
+ "title": "Accurate proper motions of the protostellar system VLA 1623-2417",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag1411",
+ "arxiv_id": "2607.14428",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What are the accurate absolute and relative proper motions of the components A (Aa, Ab), B, and W in the quadruple protostellar system VLA 1623-2417, and what do they imply for the system's orbital dynamics and the ejection scenario for component W?",
+ "alma_project_codes": [
+  "2011.0.00902.S",
+  "2013.1.01004.S",
+  "2015.1.00084.S",
+  "2016.1.01468.S",
+  "2015.1.01112.S",
+  "2018.1.01205.L",
+  "2018.1.00200.S",
+  "2018.1.00353.S",
+  "2018.1.01089.S",
+  "2018.1.00388.S",
+  "2019.1.01792.S",
+  "2019.1.01074.S",
+  "2018.1.00769.S",
+  "2022.1.01734.S"
+ ],
+ "data": {
+  "bands": "Bands 3 (~100 GHz), 4 (~150 GHz), 5 (~190 GHz), 6 (~230 GHz), and 7 (~330 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "Better than 1.1 arcsec; ALMA synthesized beams range from 0.06 x 0.05 arcsec to 0.67 x 0.41 arcsec",
+  "sensitivity": "0.01 to 1.69 mJy/Beam across ALMA observations"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Published BIMA millimeter array positions for components B and W",
+    "evidence": [
+     {
+      "loc": "Data selection and calibration",
+      "quote": "In addition, we will make use of published positions obtained from observations with the Berkeley–Illinois–Maryland Association (BIMA) millimeter array (cite: 2000ApJ...529..477L) and the Submillimeter Array (SMA; (cite: 2013ApJ...768..110C; 2012A&A...539A.130M; 2013ApJ...764L..15M))."
+     }
+    ]
+   },
+   "citation": "(cite: 2000ApJ...529..477L)"
+  },
+  {
+   "what": {
+    "value": "Published SMA positions for components B and W",
+    "evidence": [
+     {
+      "loc": "Absolute proper motions of VLA 1623–2417 B",
+      "quote": "In the lower left panel of Figure [2](#fig:Abs-all2), we also show the position from BIMA reported in (cite: 2000ApJ...529..477L) as well as three SMA observations from (cite: 2013ApJ...768..110C), (cite: 2012A&A...539A.130M), and (cite: 2013ApJ...764L..15M)."
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...768..110C; 2012A&A...539A.130M; 2013ApJ...764L..15M)"
+  },
+  {
+   "what": {
+    "value": "Distance (137.3 +/- 1.2 pc) and trigonometric parallax (7.28 +/- 0.06 mas) of Lynds 1688 / VLA 1623-2417",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper, we focus on VLA 1623–2417, a prototypical Class 0 protostar in the $\\rho$ Ophiuchi A molecular cloud core (cite: 1993ApJ...406..122A) at a distance of $137.3\\pm1.2$ pc (cite: 2017ApJ...834..141O)."
+     },
+     {
+      "loc": "Determination of absolute and relative positions",
+      "quote": "The second correction accounts for the trigonometric parallax of the source ($\\varpi=7.28\\pm0.06$ mas, as appropriate for Lynds 1688; (cite: 2017ApJ...834..141O))"
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...834..141O)"
+  },
+  {
+   "what": {
+    "value": "Solar peculiar motion (U_sun = 11.1, V_sun = 12.24, W_sun = 7.25) km s^-1",
+    "evidence": [
+     {
+      "loc": "Absolute proper motions",
+      "quote": "Here, we adopt the values of (cite: 2010MNRAS.403.1829S) for the latter: $(U_\\odot = 11.1, V_\\odot = 12.24, W_\\odot = 7.25)$ km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2010MNRAS.403.1829S)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocities (4.00, 2.31, and 1.75 km s^-1 for A, B, W) and disk-derived stellar masses (0.2-0.3 M_sun for A, 1.9 M_sun for B, 0.64 M_sun for W)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Most recently, (cite: 2024AyA...687A.308S) derived systemic velocities of 4.00 km s$^{-1}$, 2.31 km s$^{-1}$, and 1.75 km s$^{-1}$ for components A, B, and W, respectively."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "Both VLA 1623–2417 B and W, on the other hand, are surrounded by circumstellar disks indicating stellar masses of 1.9 and 0.64 M$_\\odot$, respectively (cite: 2024AyA...687A.308S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2024AyA...687A.308S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure raw source positions and apply astrometric corrections",
+   "method": "Fit a 2D Gaussian function to each component using CASA task IMFIT (fitting Aa and Ab separately in 11 high-resolution epochs, and a single Gaussian to A in others), then apply corrections for changes in cataloged gain calibrator positions and for trigonometric parallax to transform from geocentric to barycentric coordinates.",
+   "software": [
+    "CASA",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "11 resolved epochs for Aa and Ab; single Gaussian for A in remaining epochs"
+   ],
+   "assumptions": [
+    "Trigonometric parallax of 7.28 +/- 0.06 mas (distance 137.3 +/- 1.2 pc)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit absolute proper motions and peculiar velocities",
+   "method": "Fit linear and uniform motion to the gain-calibrator and parallax-corrected positions over time using scipy.optimize.curve_fit, adding source- and frequency-dependent systematic errors in quadrature to achieve reduced chi-squared ~ 1, and subtract the reflex Solar motion to obtain peculiar velocities.",
+   "software": [
+    "Python",
+    "scipy.optimize",
+    "curve_fit"
+   ],
+   "key_parameters": [
+    "Systematic errors typically 10 to 50 mas added in quadrature; for A, exclude VLA C, X, Ku bands from fit; for W, exclude X-band observations with RA resolution worse than 3 times the 0.33 arcsec shock separation"
+   ],
+   "assumptions": [
+    "Linear and uniform proper motion; Solar motion relative to LSR of (U_sun = 11.1, V_sun = 12.24, W_sun = 7.25) km s^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute relative proper motions between system components",
+   "method": "Compute relative proper motions using two methods: (1) fitting linear motion to epoch-by-epoch angular offsets between source pairs (Delta theta), and (2) subtracting the fitted absolute proper motions (Delta mu).",
+   "software": [],
+   "key_parameters": [
+    "Time baselines: 11.12 yr (Aa-Ab), 11.35 yr (B-A and A-W), 31.84 yr (B-W)"
+   ],
+   "assumptions": [
+    "Linear and uniform relative motion over the observed time span"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit orbital parameters of the compact binary Aa/Ab",
+   "method": "Run MCMC orbit fitting on the relative astrometry of Aa and Ab using the orbitize! package under both agnostic orbital phase priors (near apoastron) and restricted orbital phase priors (near periastron).",
+   "software": [
+    "orbitize!"
+   ],
+   "key_parameters": [
+    "10,000 walkers, 500 burn-in steps"
+   ],
+   "assumptions": [
+    "Keplerian two-body orbit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Absolute proper motion in RA of Aa (15 mu_alpha cos delta)",
+   "value": "-9.19",
+   "uncertainty": "1.13",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **Aa** |   $-$9.19 $\\pm$ 1.13 | 1.04 | $-$24.29 $\\pm$ 0.63 | 1.05 | 16.91 $\\pm$ 0.49 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in Dec of Aa (mu_delta)",
+   "value": "-24.29",
+   "uncertainty": "0.63",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **Aa** |   $-$9.19 $\\pm$ 1.13 | 1.04 | $-$24.29 $\\pm$ 0.63 | 1.05 | 16.91 $\\pm$ 0.49 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential velocity of Aa (V_t)",
+   "value": "16.91",
+   "uncertainty": "0.49",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **Aa** |   $-$9.19 $\\pm$ 1.13 | 1.04 | $-$24.29 $\\pm$ 0.63 | 1.05 | 16.91 $\\pm$ 0.49 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in RA of Ab (15 mu_alpha cos delta)",
+   "value": "-11.05",
+   "uncertainty": "1.16",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **Ab** | $-$11.05 $\\pm$ 1.16 | 0.97 | $-$28.37 $\\pm$ 0.72 | 1.05 | 19.81 $\\pm$ 0.54 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in Dec of Ab (mu_delta)",
+   "value": "-28.37",
+   "uncertainty": "0.72",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **Ab** | $-$11.05 $\\pm$ 1.16 | 0.97 | $-$28.37 $\\pm$ 0.72 | 1.05 | 19.81 $\\pm$ 0.54 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential velocity of Ab (V_t)",
+   "value": "19.81",
+   "uncertainty": "0.54",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **Ab** | $-$11.05 $\\pm$ 1.16 | 0.97 | $-$28.37 $\\pm$ 0.72 | 1.05 | 19.81 $\\pm$ 0.54 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in RA of A (15 mu_alpha cos delta)",
+   "value": "-10.08",
+   "uncertainty": "0.73",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **A** | $-$10.08 $\\pm$ 0.73 | 0.93 | $-$25.84 $\\pm$ 1.16 | 0.79 | 18.05 $\\pm$ 0.74 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in Dec of A (mu_delta)",
+   "value": "-25.84",
+   "uncertainty": "1.16",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **A** | $-$10.08 $\\pm$ 0.73 | 0.93 | $-$25.84 $\\pm$ 1.16 | 0.79 | 18.05 $\\pm$ 0.74 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential velocity of A (V_t)",
+   "value": "18.05",
+   "uncertainty": "0.74",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **A** | $-$10.08 $\\pm$ 0.73 | 0.93 | $-$25.84 $\\pm$ 1.16 | 0.79 | 18.05 $\\pm$ 0.74 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in RA of B (15 mu_alpha cos delta)",
+   "value": "-7.10",
+   "uncertainty": "0.36",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **B** |   $-$7.10 $\\pm$ 0.36 | 0.87 | $-$25.11 $\\pm$ 0.50 | 0.92 | 16.98 $\\pm$ 0.35 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in Dec of B (mu_delta)",
+   "value": "-25.11",
+   "uncertainty": "0.50",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **B** |   $-$7.10 $\\pm$ 0.36 | 0.87 | $-$25.11 $\\pm$ 0.50 | 0.92 | 16.98 $\\pm$ 0.35 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential velocity of B (V_t)",
+   "value": "16.98",
+   "uncertainty": "0.35",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **B** |   $-$7.10 $\\pm$ 0.36 | 0.87 | $-$25.11 $\\pm$ 0.50 | 0.92 | 16.98 $\\pm$ 0.35 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in RA of W (15 mu_alpha cos delta)",
+   "value": "-5.28",
+   "uncertainty": "0.54",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **W** |   $-$5.28 $\\pm$ 0.54 | 0.95 | $-$24.68 $\\pm$ 0.97 | 0.91 | 16.43 $\\pm$ 0.63 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute proper motion in Dec of W (mu_delta)",
+   "value": "-24.68",
+   "uncertainty": "0.97",
+   "units": "mas yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **W** |   $-$5.28 $\\pm$ 0.54 | 0.95 | $-$24.68 $\\pm$ 0.97 | 0.91 | 16.43 $\\pm$ 0.63 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential velocity of W (V_t)",
+   "value": "16.43",
+   "uncertainty": "0.63",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| **W** |   $-$5.28 $\\pm$ 0.54 | 0.95 | $-$24.68 $\\pm$ 0.97 | 0.91 | 16.43 $\\pm$ 0.63 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential peculiar velocity of A (V_t,pec)",
+   "value": "4.7",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Absolute proper motions",
+     "quote": "This corresponds to a total tangential peculiar velocity $V_{\\text{t,pec}} =$ 4.7, 5.3, and 6.0 km s$^{-1}$, respectively, for sources A, B, and W."
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential peculiar velocity of B (V_t,pec)",
+   "value": "5.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Absolute proper motions",
+     "quote": "This corresponds to a total tangential peculiar velocity $V_{\\text{t,pec}} =$ 4.7, 5.3, and 6.0 km s$^{-1}$, respectively, for sources A, B, and W."
+    }
+   ]
+  },
+  {
+   "quantity": "Tangential peculiar velocity of W (V_t,pec)",
+   "value": "6.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Absolute proper motions",
+     "quote": "This corresponds to a total tangential peculiar velocity $V_{\\text{t,pec}} =$ 4.7, 5.3, and 6.0 km s$^{-1}$, respectively, for sources A, B, and W."
+    }
+   ]
+  },
+  {
+   "quantity": "Relative proper motion Aa - Ab (mu_Delta_alpha, Delta theta method)",
+   "value": "-1.93",
+   "uncertainty": "0.13",
+   "units": "mas yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **Aa – Ab** | 11.12 | $\\Delta \\theta$ | $-$1.93 $\\pm$ 0.13 | 0.94 | $-$3.94 $\\pm$ 0.18 | 0.99 | $+$ 2.94 $\\pm$ 0.16 | 1.31 | $-$0.90 $\\pm$ 0.03 | 0.44 | $+$1.92 $\\pm$ 0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative proper motion Aa - Ab (mu_Delta_delta, Delta theta method)",
+   "value": "-3.94",
+   "uncertainty": "0.18",
+   "units": "mas yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **Aa – Ab** | 11.12 | $\\Delta \\theta$ | $-$1.93 $\\pm$ 0.13 | 0.94 | $-$3.94 $\\pm$ 0.18 | 0.99 | $+$ 2.94 $\\pm$ 0.16 | 1.31 | $-$0.90 $\\pm$ 0.03 | 0.44 | $+$1.92 $\\pm$ 0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative tangential velocity Aa - Ab (V_t,rel)",
+   "value": "+1.92",
+   "uncertainty": "0.11",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **Aa – Ab** | 11.12 | $\\Delta \\theta$ | $-$1.93 $\\pm$ 0.13 | 0.94 | $-$3.94 $\\pm$ 0.18 | 0.99 | $+$ 2.94 $\\pm$ 0.16 | 1.31 | $-$0.90 $\\pm$ 0.03 | 0.44 | $+$1.92 $\\pm$ 0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative tangential velocity B - A (V_t,rel)",
+   "value": "-1.17",
+   "uncertainty": "0.51",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **B – A** | 11.35 | $\\Delta \\theta$ | $-$1.70 $\\pm$ 0.76 | 0.99 | $+$0.90 $\\pm$ 0.37 | 0.98 | $-$1.79 $\\pm$ 0.78 | 1.06 | $-$0.03 $\\pm$ 0.02 | 0.74 | –1.17 $\\pm$ 0.51 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative radial separation rate B - W (mu_rho)",
+   "value": "-2.40",
+   "uncertainty": "0.58",
+   "units": "mas yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **B – W** | 31.84 | $\\Delta \\theta$ | $+$2.51 $\\pm$ 0.60 | 0.99 | $+$1.00 $\\pm$ 0.79 | 0.94 | $-$2.40 $\\pm$ 0.58 | 0.93 | $+$0.008 $\\pm$ 0.005 | 0.97 | –0.73 $\\pm$ 0.48 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative tangential velocity B - W (V_t,rel)",
+   "value": "-0.73",
+   "uncertainty": "0.48",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **B – W** | 31.84 | $\\Delta \\theta$ | $+$2.51 $\\pm$ 0.60 | 0.99 | $+$1.00 $\\pm$ 0.79 | 0.94 | $-$2.40 $\\pm$ 0.58 | 0.93 | $+$0.008 $\\pm$ 0.005 | 0.97 | –0.73 $\\pm$ 0.48 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative radial separation rate A - W (mu_rho)",
+   "value": "-3.10",
+   "uncertainty": "0.55",
+   "units": "mas yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **A – W** | 11.35 | $\\Delta \\theta$ | $+$3.25 $\\pm$ 0.63 | 1.02 | $+$1.28 $\\pm$ 1.37 | 1.03 | $-$3.10 $\\pm$ 0.55 | 0.68 | $+$0.009 $\\pm$ 0.008 | 1.10 | –2.02 $\\pm$ 0.36 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative tangential velocity A - W (V_t,rel)",
+   "value": "-2.02",
+   "uncertainty": "0.36",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Relative proper motions",
+     "quote": "| **A – W** | 11.35 | $\\Delta \\theta$ | $+$3.25 $\\pm$ 0.63 | 1.02 | $+$1.28 $\\pm$ 1.37 | 1.03 | $-$3.10 $\\pm$ 0.55 | 0.68 | $+$0.009 $\\pm$ 0.008 | 1.10 | –2.02 $\\pm$ 0.36 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab orbital semi-major axis (First result, near apoastron)",
+   "value": "44.51",
+   "uncertainty": "+5.65/-5.73",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $a$                | 44.51$^{+5.65}_{-5.73}$   | au          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab orbital eccentricity (First result, near apoastron)",
+   "value": "0.41",
+   "uncertainty": "+0.08/-0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $e$                | 0.41$^{+0.08}_{-0.08}$    |             |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab orbital inclination (First result, near apoastron)",
+   "value": "106.9",
+   "uncertainty": "+2.1/-1.7",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $i$                | 106.9$^{+2.1}_{-1.7}$     | degrees     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab orbital period (First result, near apoastron)",
+   "value": "284.0",
+   "uncertainty": "+62.7/-54.2",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $P$                | 284.0$^{+62.7}_{-54.2}$   | years       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab total mass (First result, near apoastron)",
+   "value": "1.08",
+   "uncertainty": "+0.20/-0.18",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $M_{\\mathrm{tot}}$ | 1.08$^{+0.20}_{-0.18}$    | $M_{\\odot}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab orbital semi-major axis (Second result, near periastron)",
+   "value": "48.63",
+   "uncertainty": "+7.85/-5.84",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $a$                | 48.63$^{+7.85}_{-5.84}$   | au          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab orbital period (Second result, near periastron)",
+   "value": "516.4",
+   "uncertainty": "+237.8/-128.7",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $P$                | 516.4$^{+237.8}_{-128.7}$ | years       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa/Ab total mass (Second result, near periastron)",
+   "value": "0.42",
+   "uncertainty": "+0.16/-0.13",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamics of source W",
+     "quote": "|      | $M_{\\mathrm{tot}}$ | 0.42$^{+0.16}_{-0.13}$    | $M_{\\odot}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and ALMA pipeline versions per ALMA project (deferred to QA2 reports in archive)",
+  "Cell size, image size, stopping threshold/niter, and masking strategy during CASA CLEAN imaging",
+  "Whether continuum subtraction or line-free channel selection was performed on the ALMA visibility datasets before continuum imaging",
+  "Whether self-calibration was applied to any of the archival datasets (presumably not, to preserve absolute astrometry, but unstated)",
+  "Exact systematic astrometric error values (between 10 and 50 mas) added in quadrature for each specific source and frequency band"
+ ],
+ "missing_for_reproduction": [
+  "Exact cataloged coordinates adopted for each gain calibrator at the time of original observation versus the updated reference catalog coordinates used to compute the gain calibrator shifts",
+  "Exact observation timestamps (to the day/hour) used to compute the geocentric-to-barycentric parallax corrections for each epoch",
+  "CLEAN imaging parameters (cell size, image size, niter, stopping threshold, spectral window selection)",
+  "Note that while raw/calibrated visibilities require details above, the paper provides the full intermediate tables of measured, gain-corrected, and parallax-corrected coordinates and uncertainties (Tables of absolute and relative positions), allowing direct reproduction of all proper motion and orbital fits."
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "All 37 archival project codes, observing dates, bands, gain calibrators, robust weights, and UV baseline cuts are explicitly tabulated, and the authors also publish the complete intermediate astrometric tables (before correction, after gain-calibrator correction, and after parallax correction, plus relative offsets), enabling exact reproduction of the kinematic and orbital analysis. Minor deductions are for unstated CLEAN imaging parameters and the exact per-band systematic error terms before quadrature addition.",
+ "rediscovery_reason": "All ALMA and VLA datasets are public in the archives with project codes listed, the full astrometric coordinate tables are printed in the paper, and the main results are quantitative proper motions and orbital parameters obtained with standard open-source Python tools (scipy.optimize.curve_fit and orbitize!).",
+ "source_card": "cards/2026MNRAS.551g1411H/sonnet/card.md"
+}

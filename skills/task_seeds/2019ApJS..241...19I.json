@@ -1,0 +1,250 @@
+{
+ "bibcode": "2019ApJS..241...19I",
+ "title": "ALMA Spatially Resolved Dense Molecular Gas Survey of Nearby Ultraluminous Infrared Galaxies",
+ "year": 2019,
+ "doi": "10.3847/1538-4365/ab05b9",
+ "arxiv_id": "1902.04124",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "How do HCN-to-HCO+ J=3-2 flux ratios, dense gas mass and vibrationally excited HCN vary within a uniformly selected sample of nearby ULIRGs, and do they reveal buried AGNs?",
+ "alma_project_codes": [
+  "2017.1.00057.S",
+  "2013.1.00032.S",
+  "2015.1.00027.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211-275 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.1''-0.2'' (150-530 pc) for most; 0.6''-0.8'' for two sources",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IR-spectroscopic AGN bolometric contributions",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(12): Infrared-spectroscopically estimated bolometric contribution of AGNs (in %) by (cite: nar10)."
+     }
+    ]
+   },
+   "citation": "(cite: nar10)"
+  },
+  {
+   "what": {
+    "value": "Pre-ALMA interferometric CO J=1-0 total molecular masses",
+    "evidence": [
+     {
+      "loc": "5.4 Nuclear Dense Molecular Mass",
+      "quote": "from pre-ALMA interferometric CO J=1–0 observations (cite: eva00; eva02)"
+     }
+    ]
+   },
+   "citation": "(cite: eva00; eva02)"
+  },
+  {
+   "what": {
+    "value": "Optical spectral classifications",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(11): Optical spectroscopic classification by (cite: vei99)."
+     }
+    ]
+   },
+   "citation": "(cite: vei99)"
+  },
+  {
+   "what": {
+    "value": "HCN/HCO+ J=3-2 results for three Cycle 2/3 ULIRGs",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^{C}$ Taken from (cite: ima16c)."
+     }
+    ]
+   },
+   "citation": "(cite: ima16c)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "uvcontsub then clean to make continuum and line cubes from calibrated data",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, gain 0.1, ~20 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line fluxes and sizes",
+   "method": "Gaussian fits to spectra at continuum peak; moment 0/1/2 maps; imfit for deconvolved sizes; spectra in 1-2'' apertures",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "HCN/HCO+ flux ratios and maps",
+   "method": "Ratios of Gaussian fluxes for nuclear beam and integrated spectra; ratio maps from moment 0 where HCO+ >~3 sigma",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Dense gas mass",
+   "method": "Line luminosity (Solomon & Vanden Bout) times alpha_HCN",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_HCN=10 (range 6-40), optically thick thermalized; alpha_CO=1.5 for CO J=2-1 total mass"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Continuum SED and free-free estimate",
+   "method": "Integrated continuum flux vs Herschel/IRAS extrapolation; free-free from L_FIR formula with Te=10^4 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Te = 10^4 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of ULIRGs in complete sample",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2 Selected Targets and Molecular Lines",
+     "quote": "We selected 26 sources with infrared fluxes above a certain threshold"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN v2=1f detection rate (Cycle 5)",
+   "value": "at most ~9% (2/23)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.2 Vibrationally Excited HCN J=3-2",
+     "quote": "The detection rate of the HCN v$_{2}$=1f J=3–2 emission line in ULIRGs observed in ALMA Cycle 5 is at most $\\sim$9 % (=2/23)."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN v2=1f detection rate (full sample)",
+   "value": "~19% (5/26)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.2 Vibrationally Excited HCN J=3-2",
+     "quote": "the detection rate in the complete sample could be as high as $\\sim$19 % (=5/26)"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN v2=1f to v=0 flux ratio (IRAS 10378+1108, 11095-0238 NE)",
+   "value": "~0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.2 Vibrationally Excited HCN J=3-2",
+     "quote": "The HCN v$_{2}$=1f to v=0 flux ratios at J=3–2 are $\\sim$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Dense gas mass (alpha_HCN=10), IRAS 14348-1447 SW",
+   "value": ">5.2e9",
+   "uncertainty": "lower limit",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4 Nuclear Dense Molecular Mass",
+     "quote": "are $>$5.2 $\\times$ 10$^{9}$M$_{\\odot}$, $>$3.0 $\\times$ 10$^{9}$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular mass IRAS 22491-1808 nucleus (CO 2-1)",
+   "value": "~6e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4 Nuclear Dense Molecular Mass",
+     "quote": "to be $\\sim$6 $\\times$ 10$^{9}$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/HCO+ J=3-2 ratio, IRAS 00188-0856 nuclear peak",
+   "value": "1.9",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| IRAS 00188$-$0856    |    1.9$\\pm$0.2     |     1.7$\\pm$0.2      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated continuum / peak continuum flux ratio",
+   "value": "1.5-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.6 Spatially Integrated Continuum Emission and SED",
+     "quote": "are substantially (a factor of 1.5–6) larger than the continuum fluxes at the nuclear peak positions"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for uvcontsub per source (only continuum frequency ranges in Table 3)",
+  "Image size, masking, clean threshold and niter",
+  "Whether archive pipeline-calibrated products or manual scripts were used; CASA version",
+  "Velocity ranges summed for moment 0 maps and Gaussian fitting windows/masks",
+  "Calibration of the Cycle 2/3 data (2013.1.00032.S, 2015.1.00027.S) processing",
+  "Details of aperture-flux extraction and spectral-line contamination handling",
+  "Definition of rms for moment maps and thresholds for ratio maps"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact clean parameters (image size, mask, threshold)",
+  "Line-free channels and Gaussian-fit windows",
+  "Aperture centering and flux extraction specifics"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear basic imaging recipe with tabulated results, but many imaging and fitting details are missing.",
+ "rediscovery_reason": "Data are public, the recipe is mostly simple (CASA clean, Gaussian fits), and results are tabulated numbers such as flux ratios.",
+ "source_card": "cards/2019ApJS..241...19I/sonnet/card.md"
+}

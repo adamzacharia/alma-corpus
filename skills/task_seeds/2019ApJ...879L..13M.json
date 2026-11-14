@@ -1,0 +1,218 @@
+{
+ "bibcode": "2019ApJ...879L..13M",
+ "title": "ALMA Observations of Molecular Gas in the Host Galaxy of AT2018cow",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab2915",
+ "arxiv_id": "1906.05446",
+ "fields": [
+  "nearby_galaxies",
+  "transients"
+ ],
+ "question": "What are the molecular gas and star-formation properties of the host galaxy CGCG 137-068 and the local AT2018cow site, and do they favor a massive-star explosion or a TDE progenitor?",
+ "alma_project_codes": [
+  "2017.A.00045.T"
+ ],
+ "data": {
+  "bands": "Band 3 (100.00-115.99 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "3.66 x 2.71 arcsec (1.1 x 0.8 kpc)",
+  "sensitivity": "0.21 mJy/beam at 40.64 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass and SFR of CGCG 137-068",
+    "evidence": [
+     {
+      "loc": "Galactic-scale properties",
+      "quote": "Both the stellar mass ($M_{\\rm star}$) and star formation rate (SFR) values are taken from (cite: Perley:2019aa)"
+     }
+    ]
+   },
+   "citation": "(cite: Perley:2019aa)"
+  },
+  {
+   "what": {
+    "value": "Atomic gas mass",
+    "evidence": [
+     {
+      "loc": "Galactic-scale properties",
+      "quote": "the atomic gas mass ($M_{\\rm atom}$) is from (cite: Roychowdhury:2019aa)"
+     }
+    ]
+   },
+   "citation": "(cite: Roychowdhury:2019aa)"
+  },
+  {
+   "what": {
+    "value": "xGASS and xCOLD-GASS reference galaxies",
+    "evidence": [
+     {
+      "loc": "Galactic-scale properties",
+      "quote": "with those of xGASS (cite: Catinella:2018aa) and xCOLD-GASS galaxies (cite: Saintonge:2017aa) at similar redshifts"
+     }
+    ]
+   },
+   "citation": "(cite: Catinella:2018aa); (cite: Saintonge:2017aa)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(1-0) cube",
+   "method": "Pipeline calibration, uvcontsub, tclean mosaic cube with auto-multithresh",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, niter 10000"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive H2 column density and gas surface density at the AT2018cow site",
+   "method": "Convert CO intensity to K via Rayleigh-Jeans and apply Galactic XCO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Milky Way XCO justified by solar or super-solar metallicity"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive total molecular gas mass and compare with xGASS/xCOLD-GASS",
+   "method": "Integrated CO luminosity to Mmol with Galactic XCO; combine with literature Mstar, SFR, Matom; compare scaling relations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance 60 Mpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "1.85e8",
+   "uncertainty": "0.04e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$(1.85\\pm0.04)\\times10^8$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2) at AT2018cow site",
+   "value": "8.6e20",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The H$_2$ column density at the AT2018cow site is estimated to be $8.6\\times10^{20}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_mol at site",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1-kpc-scale properties",
+     "quote": "of $14$ M$_\\odot$ pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "I_CO",
+   "value": "0.575",
+   "uncertainty": "0.020",
+   "units": "K km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.575\\pm0.020$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO",
+   "value": "4.34e7",
+   "uncertainty": "0.15e7",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(4.34\\pm0.15)\\times 10^7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mmol/Mstar",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "$M_{\\rm mol}/M_{\\rm star}$, SFE(mol), and $M_{\\rm mol}/M_{\\rm atom}$ of CGCG 137-068 are $0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFE(mol)",
+   "value": "1.2e-9",
+   "uncertainty": "not stated",
+   "units": "yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "$1.2\\times10^{-9}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mmol/Matom",
+   "value": "0.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| M$_{\\rm mol}$/M$_{\\rm atom}$             | $0.29$                     | this study |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for UVCONTSUB",
+  "Cell size and image size",
+  "Aperture/region and velocity range used to integrate I_CO and total flux",
+  "How the 6 arcsec site-level N(H2) was measured (aperture)",
+  "Method for SFE definitions and SFE(gas)",
+  "Line ratio / CO-to-H2 formula for L'CO to Mmol (helium inclusion)",
+  "Whether the two executions were combined and the calibrators used"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels, cell/image size",
+  "Flux integration aperture and velocity range",
+  "XCO/mass formula details including helium",
+  "Literature Mstar, SFR, Matom values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters mostly given but aperture and integration choices are missing; short letter.",
+ "rediscovery_reason": "Public archival data, mostly complete imaging recipe, numeric results (Mmol, N(H2)).",
+ "source_card": "cards/2019ApJ...879L..13M/sonnet/card.md"
+}

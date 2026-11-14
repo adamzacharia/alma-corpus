@@ -1,0 +1,841 @@
+{
+ "bibcode": "2021ApJ...910...53V",
+ "title": "A Massive, Clumpy Molecular Gas Distribution and Displaced AGN in Zw 3146",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abe306",
+ "arxiv_id": "2102.02300",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "agn_and_quasars"
+ ],
+ "question": "How is the molecular gas in the Zw 3146 BCG distributed relative to the X-ray cavities, and why are the molecular gas and the mm continuum (AGN) source offset?",
+ "alma_project_codes": [
+  "2018.1.01056.S"
+ ],
+ "data": {
+  "bands": "Band 3, centered on CO(1-0) at 89.316 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "0.30 x 0.26 arcsec, P.A. -79.5 deg (final CO(1-0) cube)",
+  "sensitivity": "line cube RMS 2.4 mJy/beam (20 km/s channels); continuum RMS 7.5 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Earlier CO(1-0) integrated fluxes: IRAM-30m 5.2+-1.2 Jy km/s, OVRO 5.7+-0.9 Jy km/s",
+    "evidence": [
+     {
+      "loc": "Molecular Gas Mass",
+      "quote": "yielded CO(1-0) integrated fluxes of $5.2\\pm1.2\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$ and $5.7\\pm0.9\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$, respectively (cite: Edge01; Edge03)"
+     }
+    ]
+   },
+   "citation": "(cite: Edge01; Edge03)"
+  },
+  {
+   "what": {
+    "value": "Nebular redshift 0.29060+-0.00010 of the emission-line nebula",
+    "evidence": [
+     {
+      "loc": "Systemic Velocity",
+      "quote": "Previous works on Zw 3146 generally adopted a redshift of $0.29060\\pm0.00010$, which was determined from the emission-line nebula (cite: Allen92)."
+     }
+    ]
+   },
+   "citation": "(cite: Allen92)"
+  },
+  {
+   "what": {
+    "value": "Deprojected thermodynamic radial profiles of the ICM used for cavity pressure, temperature and density",
+    "evidence": [
+     {
+      "loc": "X-ray Cavities",
+      "quote": "All necessary thermodynamic quantities were obtained by interpolating the deprojected radial profiles from (cite: Pulido18)."
+     }
+    ]
+   },
+   "citation": "(cite: Pulido18)"
+  },
+  {
+   "what": {
+    "value": "Cluster mass profile used for the acceleration under gravity",
+    "evidence": [
+     {
+      "loc": "X-ray Cavities",
+      "quote": "The acceleration under gravity at radius $R$ was determined using the cluster mass profile from (cite: Pulido18)."
+     }
+    ]
+   },
+   "citation": "(cite: Pulido18)"
+  },
+  {
+   "what": {
+    "value": "Lower-frequency (VLA, BIMA) continuum flux measurements for the SED",
+    "evidence": [
+     {
+      "loc": "Millimetre Continuum",
+      "quote": "flux measurements at lower frequencies, which were obtained from either the VLA or BIMA (cite: Egami06; Coble07; Giacintucci14)"
+     }
+    ]
+   },
+   "citation": "(cite: Egami06; Coble07; Giacintucci14)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass 1.6e9 Msun of the BCG, estimated from 2MASS K-band magnitude",
+    "evidence": [
+     {
+      "loc": "Acceleration by an asymmetric radio jet",
+      "quote": "The black hole mass in the Zw 3146 BCG, estimated using the 2MASS K-band magnitude, is $M_{\\bullet} = 1.6\\ensuremath{\\times 10^{9}} \\hbox{$\\rm\\thinspace M_{\\odot}$}$ (cite: Main17)."
+     }
+    ]
+   },
+   "citation": "(cite: Main17)"
+  },
+  {
+   "what": {
+    "value": "31 GHz source density of 16.7 per square degree for flux >= 1 mJy",
+    "evidence": [
+     {
+      "loc": "The SMBH of a secondary galaxy",
+      "quote": "we have instead used a $31\\rm\\; GHz$ survey of known extragalactic sources (cite: Mason09)."
+     }
+    ]
+   },
+   "citation": "(cite: Mason09)"
+  },
+  {
+   "what": {
+    "value": "Spectral index of 0.4 used to scale 31 GHz flux to 100 GHz",
+    "evidence": [
+     {
+      "loc": "The SMBH of a secondary galaxy",
+      "quote": "assuming a spectral index of 0.4 (cite: Marriage11)"
+     }
+    ]
+   },
+   "citation": "(cite: Marriage11)"
+  },
+  {
+   "what": {
+    "value": "Galactic CO-to-H2 conversion factor X_CO,gal = 2e20 cm^-2 (K km/s)^-1",
+    "evidence": [
+     {
+      "loc": "Molecular Gas Mass",
+      "quote": "Its nominal value is the mean empirically-derived Galactic value, $X_{\\rm CO, gal} = 2\\ensuremath{\\times 10^{20}}\\hbox{$\\rm\\; cm^{-2}\\,$}(\\rm\\; K\\hbox{$\\rm\\; km\\rm\\; s^{-1}\\,$})^{-1}$ (cite: Bolatto13)."
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto13)"
+  },
+  {
+   "what": {
+    "value": "Star formation rate of 70 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Molecular Gas Mass",
+      "quote": "The SFR in Zw 3146, $70\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$ (cite: Egami06)"
+     }
+    ]
+   },
+   "citation": "(cite: Egami06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the CO(1-0) cube and continuum",
+   "method": "CASA pipeline calibration, uvcontsub continuum subtraction, clean imaging with Briggs weighting",
+   "software": [
+    "CASA 5.4.0",
+    "uvcontsub",
+    "clean"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "velocity binning to 20 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure the molecular gas systemic redshift",
+   "method": "Extract a spectrum from a 3'' x 3'' region and fit a single Gaussian",
+   "software": [],
+   "key_parameters": [
+    "3'' x 3'' extraction region"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive total CO flux and molecular gas mass",
+   "method": "Fit the integrated spectrum from a 13 x 13 kpc box with a single Gaussian and convert the integrated flux to mass with the X_CO relation",
+   "software": [],
+   "key_parameters": [
+    "Luminosity distance 1500 Mpc at z = 0.29007"
+   ],
+   "assumptions": [
+    "Galactic X_CO = 2e20 cm^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Map integrated flux, velocity and FWHM pixel by pixel",
+   "method": "Fit spectra from individual pixels (each averaged over a synthesized-beam-sized box) with up to two Gaussians",
+   "software": [],
+   "key_parameters": [
+    "Monte Carlo with 10000 iterations, 5 sigma detection threshold for each component"
+   ],
+   "assumptions": [
+    "Instrumental broadening incorporated into the model"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Isolate the molecular extensions by subtracting the unresolved central source and fit clump spectra",
+   "method": "Subtract a scaled, tophat-convolved beam image centred on the brightest pixel from the integrated flux map, then fit spectra of the clumps",
+   "software": [],
+   "key_parameters": [
+    "Beam image convolved with a beam-shaped tophat kernel"
+   ],
+   "assumptions": [
+    "The central peak is an unresolved point source"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Measure the 3 mm continuum and fit its SED",
+   "method": "Image line-free channels at 96.193 GHz in a 40'' square, fit a 2D Gaussian, then fit a power law to the SED with lower-frequency literature fluxes",
+   "software": [],
+   "key_parameters": [
+    "Contours start at 3 sigma with sigma = 7.45 uJy/beam, steps of 4 sigma"
+   ],
+   "assumptions": [
+    "Power law S_nu proportional to nu^-alpha"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Quantify and check the gas-continuum offset",
+   "method": "Compare CO and continuum peak positions; check against VLA positions and the DECaLS r-band stellar centre",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Offset cannot come from phase calibration because line and continuum share the same observation"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Identify X-ray cavities and derive their energetics",
+   "method": "Apply a GGM filter to the Chandra image, manually identify cavities as ellipses, then compute enthalpy 4pV, ages and power from interpolated deprojected profiles",
+   "software": [
+    "gaussian gradient magnitude algorithm"
+   ],
+   "key_parameters": [
+    "Volume from geometric mean of oblate and prolate geometries; 15% uncertainty in semiaxes a and b",
+    "Mean cavity power = E_cav / t_buoy"
+   ],
+   "assumptions": [
+    "Cavity in pressure balance with the surrounding gas",
+    "Efficiency epsilon = 0.1 for accreted mass"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Test explanations for the gas-continuum offset",
+   "method": "Chance-alignment probability from 1000 randomly populated fields; momentum-thrust acceleration from cavity D versus restoring acceleration of a singular isothermal sphere",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "31 GHz source density scaled to 100 GHz"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular gas redshift",
+   "value": "0.29007",
+   "uncertainty": "0.00003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Systemic Velocity",
+     "quote": "A single-gaussian fitted to the spectrum yields a molecular gas redshift of $0.29007\\pm0.00003$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas blueshift relative to nebular redshift",
+   "value": "158",
+   "uncertainty": "30",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Systemic Velocity",
+     "quote": "The molecular gas rest frame is blueshifted by $158\\pm30\\hbox{$\\rm\\; km\\rm\\; s^{-1}\\,$}$ from this nebular redshift."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) integrated flux (all emission)",
+   "value": "2.78",
+   "uncertainty": "0.17",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "is best-fit by a single Gaussian with total flux $2.78\\pm0.17\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$. This corresponds to $5.05\\pm0.50\\ensuremath{\\times 10^{10}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ of molecular gas."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass (Galactic X_CO)",
+   "value": "5.05e10",
+   "uncertainty": "0.50e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "is best-fit by a single Gaussian with total flux $2.78\\pm0.17\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$. This corresponds to $5.05\\pm0.50\\ensuremath{\\times 10^{10}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ of molecular gas."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of integrated CO(1-0) line (all emission)",
+   "value": "353",
+   "uncertainty": "24",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$353\\pm24$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of earlier CO(1-0) flux recovered by ALMA",
+   "value": "50%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "Our ALMA observation recovers 50% of this flux"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass, Central Clump",
+   "value": "36.4e8",
+   "uncertainty": "2.3e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$36.4\\pm2.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass, Clump 1",
+   "value": "52.7e8",
+   "uncertainty": "3.7e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$52.7\\pm3.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass, Clump 2",
+   "value": "78.3e8",
+   "uncertainty": "6.7e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$78.3\\pm6.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass, Clump 3",
+   "value": "83.7e8",
+   "uncertainty": "7.1e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$83.7\\pm7.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux, Central Clump",
+   "value": "0.201",
+   "uncertainty": "0.013",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$0.201\\pm0.013$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux, Clump 1",
+   "value": "0.289",
+   "uncertainty": "0.02",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$0.289\\pm0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux, Clump 2",
+   "value": "0.429",
+   "uncertainty": "0.036",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$0.429\\pm0.036$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux, Clump 3",
+   "value": "0.46",
+   "uncertainty": "0.04",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table of spectral fits",
+     "quote": "$0.46\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO(1-0) flux in the unresolved central source",
+   "value": "22%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Distribution and Kinematics",
+     "quote": "The unresolved emission subtracted from the integrated flux map amounted to 22% of the total flux."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of total CO flux in outer filament portions",
+   "value": "40%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison to other BCGs",
+     "quote": "account for $40\\%$ of the total flux"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum integrated flux density at 96.193 GHz",
+   "value": "133",
+   "uncertainty": "13",
+   "units": "uJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Millimetre Continuum",
+     "quote": "A single, unresolved source was identified (R.A.: 10:23:39.5948, decl.: +4:11:11.032), which had a total integrated flux density of $133\\pm13 \\rm\\; \\mu Jy$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum centroid accuracy",
+   "value": "0.006",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Millimetre Continuum",
+     "quote": "A two-dimensional gaussian fit to the continuum flux yielded an accuracy for the centroid of $0.006$ arcseconds."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum SED spectral index alpha",
+   "value": "0.685",
+   "uncertainty": "0.063",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Millimetre Continuum",
+     "quote": "The spectral energy distribution (SED) is best fit by a power law with spectral index[^1] $\\alpha = 0.685\\pm0.063$, which is a typical value for an AGN (cite: Hogan15a)."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-continuum offset",
+   "value": "2.6 kpc (0.6 arcsec)",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "The Molecular Gas-AGN Offset",
+     "quote": "The two peaks are $2.6\\rm\\; kpc$ ($0.6''$) apart, and only a minimal overlap is present in the fainter reaches of the two distributions."
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity A 4pV",
+   "value": "161",
+   "uncertainty": "+58/-56",
+   "units": "1e58 erg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$161^{+58}_{-56}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity A buoyant rise time",
+   "value": "41.2",
+   "uncertainty": "2.8",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$41.2\\pm2.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity A mean power",
+   "value": "12.4",
+   "uncertainty": "+4.6/-4.4",
+   "units": "1e44 erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$12.4^{+4.6}_{-4.4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity B 4pV",
+   "value": "214",
+   "uncertainty": "+77/-74",
+   "units": "1e58 erg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$214^{+77}_{-74}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity B buoyant rise time",
+   "value": "36.3",
+   "uncertainty": "2.4",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$36.3\\pm2.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity B mean power",
+   "value": "18.7",
+   "uncertainty": "+6.9/-6.6",
+   "units": "1e44 erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$18.7^{+6.9}_{-6.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity C 4pV",
+   "value": "204",
+   "uncertainty": "+86/-68",
+   "units": "1e58 erg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$204^{+86}_{-68}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity C buoyant rise time",
+   "value": "71.2",
+   "uncertainty": "+4.4/-4.3",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$71.2^{+4.4}_{-4.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity C mean power",
+   "value": "9.08",
+   "uncertainty": "+3.9/-3.1",
+   "units": "1e44 erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$9.08^{+3.9}_{-3.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity D 4pV",
+   "value": "30.6",
+   "uncertainty": "11",
+   "units": "1e58 erg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$30.6\\pm11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity D buoyant rise time",
+   "value": "6.68",
+   "uncertainty": "+0.62/-0.6",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$6.68^{+0.62}_{-0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity D mean power",
+   "value": "14.5",
+   "uncertainty": "+5.5/-5.3",
+   "units": "1e44 erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$14.5^{+5.5}_{-5.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity E 4pV",
+   "value": "86.6",
+   "uncertainty": "+31/-29",
+   "units": "1e58 erg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$86.6^{+31}_{-29}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity E buoyant rise time",
+   "value": "52.1",
+   "uncertainty": "3.3",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$52.1\\pm3.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity E mean power",
+   "value": "5.27",
+   "uncertainty": "+1.9/-1.8",
+   "units": "1e44 erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$5.27^{+1.9}_{-1.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity F 4pV",
+   "value": "118",
+   "uncertainty": "+40/-39",
+   "units": "1e58 erg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$118^{+40}_{-39}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity F buoyant rise time",
+   "value": "77.9",
+   "uncertainty": "+4.8/-4.7",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$77.9^{+4.8}_{-4.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity F mean power",
+   "value": "4.8",
+   "uncertainty": "1.6",
+   "units": "1e44 erg/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of cavity parameters",
+     "quote": "$4.8\\pm1.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total accreted gas mass needed for the outbursts",
+   "value": "4.6e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "X-ray Cavities",
+     "quote": "The total accreted gas mass of $4.6\\ensuremath{\\times 10^{7}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ can easily be supplied by the observed $5\\ensuremath{\\times 10^{10}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ of molecular gas."
+    }
+   ]
+  },
+  {
+   "quantity": "Total hot gas mass displaced by the cavities",
+   "value": "1.3e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Origin of the Molecular Gas",
+     "quote": "Combined, the cavities displace a total of $1.3\\ensuremath{\\times 10^{11}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ of hot gas."
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of chance alignment of a background source within 0.6 arcsec",
+   "value": "1.2e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "The SMBH of a secondary galaxy",
+     "quote": "This exercise results in a probability of $1.2\\ensuremath{\\times 10^{-6}}$ that two sources are separated by $<0.6''$."
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole acceleration from cavity D one-sided jet",
+   "value": "1.5e-8",
+   "uncertainty": "not stated",
+   "units": "cm s^-2",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Acceleration by an asymmetric radio jet",
+     "quote": "evaluates to $1.5\\ensuremath{\\times 10^{-8}}\\hbox{$\\rm\\; cm\\rm\\; s^{-2}\\,$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Restoring gravitational acceleration at 1 kpc displacement",
+   "value": "5.8e-7",
+   "uncertainty": "not stated",
+   "units": "cm s^-2",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Acceleration by an asymmetric radio jet",
+     "quote": "at a displacement of $R=1\\rm\\; kpc$ is $5.8\\ensuremath{\\times 10^{-7}}\\hbox{$\\rm\\; cm\\rm\\; s^{-2}\\,$}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Flux, bandpass and phase calibrator names and the per-execution-block configurations (not given)",
+  "Pipeline version (only CASA 5.4.0 is stated)",
+  "Number of spectral windows and exact rest-frame frequency or velocity axis used for CO(1-0)",
+  "uvcontsub line-free channel ranges and fit order",
+  "clean cell size, image size, niter, threshold, masking and deconvolver for the line cube",
+  "Whether the cube was primary-beam corrected before fitting and how instrumental broadening was modelled",
+  "uv range, weighting and beam for the 96.193 GHz continuum image",
+  "Initial guesses and bounds of the Gaussian fits, and how the Monte Carlo significance test was set up",
+  "Exact boxes used for the Central Clump and Clumps 1-3 spectra",
+  "Chandra observation IDs and exposure used for the cavity images",
+  "Ellipse parameters (centres, position angles) of the six cavities and the radial profile values used",
+  "Literature flux densities for the SED, and the frequencies used in the power-law fit"
+ ],
+ "missing_for_reproduction": [
+  "Calibrator names, execution block details and full clean parameters",
+  "uvcontsub line-free channels",
+  "Pixel-fitting code and Monte Carlo set-up",
+  "Chandra obsids and the cavity ellipse parameters",
+  "Literature SED fluxes",
+  "Liu et al. in preparation cooling rates"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "The ALMA project code, CASA version, robust value and beam are given and results are numeric, but clean parameters, line-free channels, calibrators and the Chandra reduction come from other works or are unstated.",
+ "rediscovery_reason": "The ALMA project is identified and the CO(1-0) flux, redshift, gas mass and continuum flux are numeric and derivable from the cube with the stated robust and velocity binning; the X-ray cavity part needs earlier reductions.",
+ "source_card": "cards/2021ApJ...910...53V/sonnet/card.md"
+}

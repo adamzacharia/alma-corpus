@@ -1,0 +1,318 @@
+{
+ "bibcode": "2024A&A...692A.203K",
+ "title": "PKS 1424−418: A persistent candidate source of the mm─γ-ray connection?",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202451773",
+ "arxiv_id": "2411.19737",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Is there a long-term correlation between mm (ALMA) and gamma-ray (Fermi-LAT) light curves of the FSRQ PKS 1424-418, with what time lag, and what does the mm spectral index say about jet opacity and the gamma-ray site",
+ "alma_project_codes": [
+  "2011.0.00001.CAL"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "4FGL catalog sources and their default spectral models, used for the LAT background model",
+    "evidence": [
+     {
+      "loc": "2.1 gamma-ray data",
+      "quote": "4FGL-catalog sources (cite: abdollahi2020; ballet2023) present within 20$^{\\circ}$"
+     },
+     {
+      "loc": "2.1 gamma-ray data",
+      "quote": "We kept the default spectral models provided by the catalog for all the sources except our target"
+     }
+    ]
+   },
+   "citation": "(cite: abdollahi2020; ballet2023)"
+  },
+  {
+   "what": {
+    "value": "Details of the ALMA calibrator catalog and its observations",
+    "evidence": [
+     {
+      "loc": "2.2 Millimeter-wave data",
+      "quote": "Details of the catalog and ALMA observations can be found in (cite: bonato2018)."
+     }
+    ]
+   },
+   "citation": "(cite: bonato2018)"
+  },
+  {
+   "what": {
+    "value": "Apparent jet speed beta_app = 9 (median for FSRQs)",
+    "evidence": [
+     {
+      "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+      "quote": "a median value for FSRQs; (cite: weaver2022)"
+     }
+    ]
+   },
+   "citation": "(cite: weaver2022)"
+  },
+  {
+   "what": {
+    "value": "Jet viewing angle range 1-3 deg",
+    "evidence": [
+     {
+      "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+      "quote": "$\\theta_{\\rm jet}$ = 1–3$^{\\circ}$ (cite: paliya2018; weaver2022)"
+     }
+    ]
+   },
+   "citation": "(cite: paliya2018; weaver2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Build 6-day gamma-ray light curve from Fermi-LAT",
+   "method": "Standard Fermi-LAT unbinned likelihood analysis of Pass 8 data in 6-day bins, power-law model for the target, two fits per bin with faint sources removed",
+   "software": [
+    "Fermi-LAT unbinned likelihood analysis"
+   ],
+   "key_parameters": [
+    "ROI radius 10 deg; 4FGL sources within 20 deg included",
+    "Energy 0.1-200 GeV, 4 Sep 2011 to 26 Mar 2020 (MJD 55808-58934)",
+    "SOURCE class evclass=128, FRONT+BACK evtype=3, zmax 90 deg",
+    "Background: gll_iem_v07 and iso_P8R3_SOURCE_V3_v1",
+    "Upper limits for TS < 20 or dF/F >= 0.5; faint sources with TS < 9 removed before second fit"
+   ],
+   "assumptions": [
+    "Simple power law for the target; no significant difference from LogParabola"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Assemble ALMA band 3, 6 and 7 light curves",
+   "method": "Take flux densities from the ALMA calibrator catalogue; average multiple measurements at the same timestamp; treat 91 and 103 GHz as 95 GHz band 3",
+   "software": [],
+   "key_parameters": [
+    "Band 3 median sampling interval 6 days (average ~10 days)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Pearson correlation between mm and gamma-ray light curves",
+   "method": "Divide the full time range into equal-sized bins, average flux in each bin, correlate local means over overlapping bins; repeat over many bin sizes",
+   "software": [],
+   "key_parameters": [
+    "488 calculations with Bin_eq from 6 to 100 days"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Search for time delay with the LCCF and assess significance",
+   "method": "Local cross-correlation function with 6-day delay bins between band 3 and gamma-ray light curves; confidence levels from 100,000 simulated gamma-ray light curves",
+   "software": [
+    "DELCgen"
+   ],
+   "key_parameters": [
+    "Also tested delay bins of 12, 30 and 60 days"
+   ],
+   "assumptions": [
+    "Gamma-ray PSD as bending power law and PDF as gamma plus log-normal mixture; empty bins filled by linear interpolation"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute (sub)mm spectral index between band 3 and band 7",
+   "method": "Spectral index alpha from binned band 3 (95 GHz) and band 7 (345 GHz) flux densities, uncertainty by error propagation",
+   "software": [],
+   "key_parameters": [
+    "Bin_eq from 3 to 30 days (NBin_eq 1038 to 105)"
+   ],
+   "assumptions": [
+    "alpha ~ -0.5 is the boundary between optically thick and thin"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate LCCF peak lags with Gaussian fits for bands 3 and 7",
+   "method": "Fit a single Gaussian to the central LCCF hump, using only points above the first side-lobe peak (LCCF ~0.48); delta t = 8 days for band 7",
+   "software": [],
+   "key_parameters": [
+    "Delta t = 8 days (median band 7 sampling)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Convert lags into deprojected distance between mm core and gamma-ray site",
+   "method": "Distance from apparent jet speed, lag, viewing angle and redshift: delta d = beta_app c tau / (sin theta_jet (1+z))",
+   "software": [],
+   "key_parameters": [
+    "beta_app = 9; theta_jet = 1-3 deg"
+   ],
+   "assumptions": [
+    "Higher beta_app gives a larger distance range (0.71-2.14 pc)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean Pearson coefficient, band 3 vs gamma-ray (488 bin sizes)",
+   "value": "0.76",
+   "uncertainty": "1 sigma 0.02 (min 0.71, max 0.86)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Linear relations",
+     "quote": "The r$_{\\rm P}$ values are $\\sim$0.76 on average, with a 1 $\\sigma$ uncertainty of 0.02 (minimum and maximum of 0.71 and 0.86, respectively)."
+    }
+   ]
+  },
+  {
+   "quantity": "LCCF peak value band 3 vs gamma-ray at tau = 0",
+   "value": "~0.75",
+   "uncertainty": "lag uncertainty +/-3 days",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Cross-correlation",
+     "quote": "Only the top part of this central LCCF hump where it peaks at $\\tau$ = 0 with LCCF $\\sim$ 0.75, exceeds the confidence level of 99.9%."
+    },
+    {
+     "loc": "3.2 Cross-correlation",
+     "quote": "with an uncertainty of $\\pm$3 days from $\\tau$ = 0"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean band 3 to band 7 spectral index",
+   "value": "-0.57",
+   "uncertainty": "1 sigma 0.08 (range -0.78 to -0.19)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Evolution of the (sub)mm wave spectral index",
+     "quote": "The average of the $\\alpha$ values is $-$0.57 (with 1 $\\sigma$ of 0.08), and they range from a minimum of $-$0.78 to a maximum of $-$0.19."
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian-fit LCCF lag, gamma-ray vs band 3",
+   "value": "-2.8",
+   "uncertainty": "2.0",
+   "units": "days",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+     "quote": "The fits estimate $\\tau_{\\rm \\gamma-B3}$ = $-$2.8$\\pm$2.0 days and $\\tau_{\\rm \\gamma-B7}$ = $-$0.8$\\pm$2.6 days."
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian-fit LCCF lag, gamma-ray vs band 7",
+   "value": "-0.8",
+   "uncertainty": "2.6",
+   "units": "days",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+     "quote": "The fits estimate $\\tau_{\\rm \\gamma-B3}$ = $-$2.8$\\pm$2.0 days and $\\tau_{\\rm \\gamma-B7}$ = $-$0.8$\\pm$2.6 days."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Pearson coefficient between ALMA bands (B3-B7, B3-B6, B7-B6)",
+   "value": "0.967, 0.987, 0.988",
+   "uncertainty": "0.004, 0.002, 0.005 (1 sigma)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Appendix The ALMA band 3, 6, and 7 data",
+     "quote": "0.967$\\pm$0.004 (with 1 $\\sigma$ uncertainty) for B3–B7, 0.987$\\pm$0.002 for B3–B6, and 0.988$\\pm$0.005 for B7–B6"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean band 3 flux density at 95 GHz",
+   "value": "~3",
+   "uncertainty": "1 sigma of 1 Jy",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Millimeter-wave data",
+     "quote": "The band 3 flux densities are $\\sim$3 Jansky (Jy) on average at 95 GHz with 1 $\\sigma$ of 1 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Distance of gamma-ray site upstream of 95 GHz core (beta_app = 9, theta_jet 1-3 deg)",
+   "value": "0.16-0.48",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+     "quote": "This indicates that the $\\gamma$-ray production site is located in a region upstream of the 95 GHz core by about 0.16–0.48 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Distance between 345 GHz core and gamma-ray site (if tau = 0.8 day is a real shift)",
+   "value": "~0.05-0.14",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+     "quote": "$\\Delta d_{\\rm \\gamma-B7}$ $\\sim$ 0.05–0.14 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Core shift between 95 GHz and 345 GHz cores",
+   "value": "~1.8",
+   "uncertainty": "not stated",
+   "units": "microarcsec",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Potential effects of a core shift to the gamma-ray origin",
+     "quote": "the level of the core shift between the 95 GHz and 345 GHz cores is $\\sim$1.8 $\\mu$as"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact query or extraction date of the ALMA calibrator catalogue and any flagging or quality cuts applied to its flux densities",
+  "Flux-scale uncertainty and per-point flux errors of the catalogue measurements, and how they enter the correlations",
+  "Fermi Science Tools or fermipy version and the 4FGL release used (the paper cites two 4FGL references)",
+  "Which source in the ROI was the variable one and the exact fit settings per time bin",
+  "Full list of the Bin_eq grid steps and bin edges used for the 488 Pearson calculations",
+  "How delay-bin uncertainties and LCCF confidence curves were computed in practice (random seeds, number of delay bins)",
+  "Fitting algorithm and weighting for the Gaussian fits to the LCCF humps",
+  "Light-curve tables themselves (gamma-ray and ALMA flux values) are not given"
+ ],
+ "missing_for_reproduction": [
+  "Catalogue extraction date, filtering and the exact flux tables used",
+  "Fermi Science Tools version, 4FGL release and ROI model file",
+  "Binning grids and random seeds for the Pearson and LCCF simulations",
+  "Light-curve tables not published"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Both data sets are public and the correlation, LCCF and spectral-index recipes are clearly described with numeric results, but software versions, catalogue selection, bin edges and fit details are missing.",
+ "rediscovery_reason": "Public ALMA calibrator-catalogue and Fermi-LAT data, a mostly complete recipe, and numeric results (r_P ~0.76, LCCF peak ~0.75 at zero lag, mean alpha -0.57) that can be re-derived.",
+ "source_card": "cards/2024A%26A...692A.203K/sonnet/card.md"
+}

@@ -1,0 +1,1227 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.485..739M",
+  "title": "Asymmetric mid-plane gas in ALMA images of HD 100546",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Miley, J. M.",
+  "n_authors": 8,
+  "arxiv_id": "1902.07506",
+  "doi": "10.1093/mnras/stz426",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00863.S",
+   "2015.1.01600.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In this paper we present new ALMA observations towards the proto-planet hosting transitional disc of Herbig Ae/Be star HD 100546."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "HD 100546",
+     "coordinates": {
+      "value": "11h33m25.3209s -70d11m41.2432s (Gaia DR2, proper-motion corrected)",
+      "evidence": [
+       {
+        "loc": "2 HD 100546",
+        "quote": "The star is located at a distance of 110pc (cite: Lindegren2018)"
+       },
+       {
+        "loc": "4 Results",
+        "quote": "giving a position of 11h33m25.3209s -70d11m41.2432s"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "110 pc",
+      "evidence": [
+       {
+        "loc": "2 HD 100546",
+        "quote": "The star is located at a distance of 110pc (cite: Lindegren2018)"
+       },
+       {
+        "loc": "4 Results",
+        "quote": "giving a position of 11h33m25.3209s -70d11m41.2432s"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lindegren2018 (Gaia DR2)",
+      "evidence": [
+       {
+        "loc": "2 HD 100546",
+        "quote": "The star is located at a distance of 110pc (cite: Lindegren2018)"
+       },
+       {
+        "loc": "4 Results",
+        "quote": "giving a position of 11h33m25.3209s -70d11m41.2432s"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust and gas masses, gas-to-dust ratio, azimuthal asymmetry and radial grain-size trends in the HD 100546 disc, using new Band 6 continuum, 13CO and first-detected C18O plus archival Band 7 continuum?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "In this paper we present new ALMA observations towards Herbig Ae/Be star HD 100546 in order to characterise the dust and gas in its disc."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01600.S",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "project ID 2015.1.01600.S, PI: O. Panić"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00863.S",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "(Project ID: 2011.0.00863.S, PI: C. Walsh)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (new, 1.3 mm); Band 7 (archival, 867 um)",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "We present new ALMA observations of HD 100546 with band 6 receivers across 4 unique spectral windows (SPWs)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "SPW0 232 GHz and SPW1 234 GHz continuum (128 channels of 15625 kHz); SPW2 13CO at 220398 MHz (1920 channels, 61.035 kHz); SPW3 C18O at 219560 MHz (3840 channels, 0.166 km/s)",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "SPW2 contains 1920 channels of width 61.035 kHz, which at central frequency 220398 MHz gives resolution of 0.083kms$^{-1}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "for the window containing the $^{13}$CO (2-1) emission line"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "The C$^{18}$O (2-1) line is in SPW3"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "2 GHz total",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "to give a total bandwidth of 2 GHz"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-460 m, 43 antennas",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "employing 43 antennas with a baseline range of 15-460 metres"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.05x0.77 arcsec continuum",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "giving a synthesized beam of 1$\\ensuremath{''}$05 x 0$\\ensuremath{''}$77, P.A. = -20$^{\\circ}$ for the continuum image"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "10.6 arcsec (Band 6); 5.3 arcsec (Band 7)",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "giving a maximum angular scale of 10$\\ensuremath{''}$6."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "continuum rms 0.5 mJy/beam",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "measured with an image rms of 0.5 mJy/beam"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "625 s",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "for a total time of 625s on source"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "28 March 2016",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "Observations were made on the 28th March 2016"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST ACS",
+     "provided": {
+      "value": "F435W scattered-light image (Ardila2007) compared with C18O",
+      "evidence": [
+       {
+        "loc": "5.2.1 Evidence in ALMA Images",
+        "quote": "Figure [5](#fig:hst) displays the HST image in the F435W band presented by (cite: Ardila2007)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia DR2",
+     "provided": {
+      "value": "stellar position and distance",
+      "evidence": [
+       {
+        "loc": "4 Results",
+        "quote": "We adjusted the GAIA data release 2 (2018) position of HD 100546 for proper motion"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "dust opacity kappa(1.3mm)=1.15 cm2/g for amax=1 mm, and opacity indices beta",
+      "evidence": [
+       {
+        "loc": "5.1.1 Dust Mass",
+        "quote": "Assuming a maximum grain size $a_{\\rm max}$ = 1 mm yields $\\kappa_{1.3 \\rm mm}$ = 1.15 $\\rm cm^{2}g^{-1}$ (cite: Draine2006)."
+       }
+      ]
+     },
+     "citation": "(cite: Draine2006)"
+    },
+    {
+     "what": {
+      "value": "ISM ratio CO/C18O ~ 550",
+      "evidence": [
+       {
+        "loc": "5.1.2 Gas Mass",
+        "quote": "CO/C$^{18}\\rm O \\sim$ 550 (cite: Wilson1994)"
+       }
+      ]
+     },
+     "citation": "(cite: Wilson1994)"
+    },
+    {
+     "what": {
+      "value": "13CO/C18O = 8 ISM ratio",
+      "evidence": [
+       {
+        "loc": "5.2 Radial Flux Profiles",
+        "quote": "the isotopic ratio $^{13}$CO/C$^{18}$O=8 based on ISM values (cite: Wilson1999)"
+       }
+      ]
+     },
+     "citation": "(cite: Wilson1999)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.7.0",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "Calibration and reduction was carried out using CASA version 4.7.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1107-4449",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "The flux calibrator was J1107-4449"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Self-cal using line-free continuum channel models, solutions applied to all channels; solint not given",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "Line free continuum channels were used to construct image models to be used for self-calibration, the solutions were then applied to all channels."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "imaging was performed using CASA tasks and the CLEAN algorithm (cite: Rau2011)"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "briggs, robust=0.5",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "images were created with briggs weighting and robust=0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "by subtracting the continuum from SPWs containing the line emission using CASA task *uvcontsub*"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not applied",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "Source emission is contained within the inner third of the primary beam and so primary beam correction was not applied to images."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "13CO 1.08x0.82 arcsec; C18O 1.10x0.83 arcsec; Band 7 continuum 0.95x0.42 arcsec, later imaged with Band 6 beam",
+     "evidence": [
+      {
+       "loc": "5.4 Spectral Index",
+       "quote": "The continuum from this data is imaged using the same beam as the band 6 1.3mm continuum."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "1.3 mm 0.5 mJy/beam; 13CO 0.033 and C18O 0.027 Jy/beam km/s",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "with rms noise 0.033 Jy/beam kms$^{-1}$ and 0.027 Jy/beam kms$^{-1}$ respectively"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Band 7 data originally reduced by Walsh et al.; re-reduced here",
+      "evidence": [
+       {
+        "loc": "3 Observations & Data Reduction",
+        "quote": "We re-reduce and image this data, applying self calibration as described above"
+       }
+      ]
+     },
+     "from_reference": "(cite: Walsh2014)"
+    },
+    {
+     "what": {
+      "value": "beta method for non-Rayleigh-Jeans",
+      "evidence": [
+       {
+        "loc": "5.4 Spectral Index",
+        "quote": "we take an approach similar to that of (cite: Guidi2016) and calculate $\\beta_{\\rm mm}$"
+       }
+      ]
+     },
+     "from_reference": "(cite: Guidi2016)"
+    },
+    {
+     "what": {
+      "value": "gas mass formula",
+      "evidence": [
+       {
+        "loc": "5.1.2 Gas Mass",
+        "quote": "we calculate the total gas mass similarly to (cite: Hughes2008; Matra2015; White2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hughes2008; Matra2015; White2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "self-calibration solution intervals, number of rounds, and which continuum channels",
+    "CLEAN threshold, masks, cell and image size",
+    "line-free channels for uvcontsub",
+    "Band 7 calibration and imaging details (robust, flux scale)",
+    "how the uvcontsub-based uniform disc fit was actually done",
+    "CO excitation/partition details for the gas-mass temperature range",
+    "flux calibrator flux density and flux-scale uncertainty"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, self-calibrate and image",
+    "method": {
+     "value": "CASA 4.7.0 calibration, self-cal, CLEAN with briggs robust=0.5, uvcontsub, immoments",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "Integrated intensity, from which fluxes are measured, and intensity weighted velocity maps were created with CASA task *immoments*"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust=0.5; channels with >3 sigma signal summed",
+      "evidence": [
+       {
+        "loc": "3 Observations & Data Reduction",
+        "quote": "by summing all emission in channels containing significant (\\>3$\\sigma$) signal"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Determine geometry and centre of emission",
+    "method": {
+     "value": "Minor axis from systemic-velocity channel; elliptical Gaussian fit with PA prior for inclination; image- and uv-plane centre fits",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "we then fit an elliptical Gaussian to each of the CO isotopologue integrated emission maps to determine inclinations"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian in image; uniform elliptical disc in uv",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "fitting a uniform, elliptical disc geometry in the uv plane"
+      }
+     ]
+    },
+    "validation": {
+     "value": "compared with Walsh2014 and Pineda2014 geometry; astrometric error budget 50 mas",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "We adopt this greater value of 50 mas as a conservative uncertainty on coordinate positions in the image."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Dust mass",
+    "method": {
+     "value": "Optically thin flux-to-mass relation within 3 sigma contour",
+     "evidence": [
+      {
+       "loc": "5.1.1 Dust Mass",
+       "quote": "We measure the flux within a 3$\\sigma$ contour of the 1.3 mm continuum image."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "T = 20-40 K; amax = 1 mm; kappa = 1.15 cm2/g",
+      "evidence": [
+       {
+        "loc": "5.1.1 Dust Mass",
+        "quote": "we therefore adopt a range of 20K – 40K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "dn/da ∝ a^-3.5",
+      "evidence": [
+       {
+        "loc": "5.1.1 Dust Mass",
+        "quote": "assuming a dust grain size distribution $dn/da \\propto a^{-3.5}$ (cite: Mathis1977)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared with Wright2015 and Band 7 flux estimate",
+     "evidence": [
+      {
+       "loc": "5.1.1 Dust Mass",
+       "quote": "a disc mass of 0.7$\\times 10^{-3}~$M$_{\\odot}$ is found"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Gas mass and g/d",
+    "method": {
+     "value": "Optically thin LTE C18O (2-1) mass, ISM abundances, over range of T; g/d from T=20 K masses",
+     "evidence": [
+      {
+       "loc": "5.1.2 Gas Mass",
+       "quote": "assuming optically thin emission and local thermodynamic equilibrium, we calculate the total gas mass"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "CO/H2 ~1e-4; CO/C18O ~550; minimum at 20 K",
+      "evidence": [
+       {
+        "loc": "5.1.2 Gas Mass",
+        "quote": "The minimum gas mass was calculated with a temperature of 20 K, giving a minimum disc gas mass of 0.018 M$_{\\odot}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "ISM C18O abundance, no isotope-selective photodissociation or freeze-out",
+      "evidence": [
+       {
+        "loc": "5.1.2 Gas Mass",
+        "quote": "The calculated gas mass assumes ISM abundances of C$^{18}$O relative to CO."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "treated as lower limit",
+     "evidence": [
+      {
+       "loc": "Gas Mass",
+       "quote": "In light of the discussion above, our calculated gas estimate represents a firm lower limit, but a very large one in comparison to other Herbig discs."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Asymmetry: density vs temperature",
+    "method": {
+     "value": "Flux ratios of 60-degree segments on opposite sides; required density or temperature change; Toomre Q",
+     "evidence": [
+      {
+       "loc": "5.3.1 Density Scenario",
+       "quote": "We split each half of the disc, bisected along the major axis, into three 60$^\\circ$ degree segments and sum the flux in the segment."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared against Panic2017 models",
+     "evidence": [
+      {
+       "loc": "Temperature Scenario",
+       "quote": "the radiative transfer models of (cite: Panic2017) show that in reality an increase in disc temperature from 20 to 32K"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Radial profiles and extent",
+    "method": {
+     "value": "Deproject (i=43, PA=144) and azimuthally average; noise from off-source polynomial fits; edge where flux < 2x noise",
+     "evidence": [
+      {
+       "loc": "5.2 Radial Flux Profiles",
+       "quote": "we take this to be the point at which the average flux becomes less than 2 times the average noise fluctuations at that radius"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "polynomials fitted to off-source fluctuations",
+     "evidence": [
+      {
+       "loc": "Radial Flux Profiles",
+       "quote": "The amplitudes of these fluctuations as a function of radius are fitted with polynomials, the polynomials are then averaged over the different off-source locations."
+      }
+     ]
+    },
+    "validation": {
+     "value": "surface density comparison across tracers",
+     "evidence": [
+      {
+       "loc": "Radial Flux Profiles",
+       "quote": "We explore this by calculating surface density profiles for each tracer, which are plotted in Figure [10](#fig:surf_dens)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Spectral and opacity index radial profile",
+    "method": {
+     "value": "Azimuthally averaged 867 um and 1.3 mm profiles, beta from d log F - d log B over d log nu",
+     "evidence": [
+      {
+       "loc": "5.4 Spectral Index",
+       "quote": "calculate $\\beta_{\\rm mm}$ with"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "T(R)=T100 (R/R100)^0.5, T100=25 K",
+      "evidence": [
+       {
+        "loc": "5.4 Spectral Index",
+        "quote": "We adopt a temperature profile that obeys a power law, $T(R) = T_{100}~( R/R_{100} )^{0.5}$, and take $T_{100}$=25K."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "p=3.5 size distribution; optically thin",
+      "evidence": [
+       {
+        "loc": "Spectral Index",
+        "quote": "We have assumed in our analysis that dust grains in the disc have a size distribution of $dn/da \\propto a^{-p}$, where p=3.5"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "optical depth check; temperature sensitivity test",
+     "evidence": [
+      {
+       "loc": "Spectral Index",
+       "quote": "The results are shown in Figure [13](#fig:opt_depth) and suggest that over all emissivities tested, the 1.3 mm emission is always optically thin for the entirety of the disc."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.0",
+    "used_for": {
+     "value": "calibration, imaging, uvcontsub, immoments",
+     "evidence": [
+      {
+       "loc": "3 Observations & Data Reduction",
+       "quote": "Calibration and reduction was carried out using CASA version 4.7.0."
+      }
+     ]
+    }
+   },
+   {
+    "name": "APLpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "plotting",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "APLpy, an open-source plotting package for Python"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "general analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "1.3 mm continuum flux",
+    "value": "492",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "The integrated continuum flux in the 1.3 mm image of 492 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "13CO (2-1) integrated flux",
+    "value": "12.872",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "The $^{13}$CO (2-1) integrated flux is measured at 12.872 Jy kms$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "C18O (2-1) integrated flux",
+    "value": "2.948",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "an integrated flux of 2.948 Jy kms$^{-1}$ for the (2-1) transition"
+     }
+    ]
+   },
+   {
+    "quantity": "position angle",
+    "value": "144",
+    "uncertainty": "2.4",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "The average value of the two is $144\\pm 2.4^\\circ$ which we adopt henceforth."
+     }
+    ]
+   },
+   {
+    "quantity": "inclination",
+    "value": "43",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "We adopt an average inclination of $43^{\\circ}$ for all further analysis."
+     }
+    ]
+   },
+   {
+    "quantity": "systemic velocity",
+    "value": "5.42",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "giving 5.42 kms$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "dust mass",
+    "value": "4.1e-4 (40 K) to 9.6e-4 (20 K)",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.1.1 Dust Mass",
+      "quote": "4.1$\\times 10^{-4}~$M$_{\\odot}$ for $T$= 40 K, and 9.6$\\times 10^{-4}~$M$_{\\odot}$ for $T$= 20 K"
+     }
+    ]
+   },
+   {
+    "quantity": "minimum gas mass (T=20 K)",
+    "value": "0.018",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1.2 Gas Mass",
+      "quote": "giving a minimum disc gas mass of 0.018 M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "gas-to-dust ratio",
+    "value": "19",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1.3 Gas To Dust Ratio",
+      "quote": "we calculate a g/d for HD 100546 of $\\approx$ 19"
+     }
+    ]
+   },
+   {
+    "quantity": "outer radius continuum / 13CO / C18O",
+    "value": "286 / 385 / 297",
+    "uncertainty": "11",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Radial Flux Profiles",
+      "quote": "detected as far out as 385$\\pm$11 au"
+     }
+    ]
+   },
+   {
+    "quantity": "SW/NE brightness ratio, outer disc C18O",
+    "value": "1.27",
+    "uncertainty": "0.18",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.3.1 Density Scenario",
+      "quote": "the brightness ratio is 1.27$\\pm$0.18"
+     }
+    ]
+   },
+   {
+    "quantity": "minimum Toomre Q",
+    "value": "~24 at ~80 au",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.3.1 Density Scenario",
+      "quote": "Q(R) for this disc reaches a minimum $\\sim 24$ at $\\sim$80 au"
+     }
+    ]
+   },
+   {
+    "quantity": "C18O optical depth maximum",
+    "value": "0.68",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Radial Flux Profiles",
+      "quote": "with $\\tau \\le$ 0.68"
+     }
+    ]
+   },
+   {
+    "quantity": "inner spectral index",
+    "value": "2.1, rising by ~0.3 outward",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.4 Spectral Index",
+      "quote": "begins in the inner disc with a value of 2.1 and steadily rises with radius by $\\Delta \\alpha_{\\rm mm} \\approx$ 0.3"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Extended C18O emission bulges coincide with HST scattered-light spiral structures.",
+    "evidence": [
+     {
+      "loc": "5.2.1 Evidence in ALMA Images",
+      "quote": "Each of the low-level bulges in the extended C$^{18}$O (2-1) emission is found in the same region of the disc as one of the 3 scattered light structures."
+     }
+    ]
+   },
+   {
+    "value": "Emission centres are offset from the stellar position by ~70-110 mas.",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "the disc is seen to have a puzzling offset from the known stellar position of between $\\approx$70-110 milliarcseconds"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The disc retains a large gas reservoir",
+    "experiment": "Optically thin C18O mass with ISM abundances",
+    "result": "Mg ≥ 0.018 Msun, g/d ≈ 19",
+    "finding": "Large lower-limit gas mass for a transition disc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A firm lower-limit on the total gas mass calculated from optically thin, mid-plane tracing C$^{18}$O (2-1) emission is 0.018 M$_\\odot$ assuming ISM abundances."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Mid-plane gas is asymmetric and linked to scattered-light spirals",
+    "experiment": "Compare C18O maps with HST, segment flux ratios",
+    "result": "Ratio 1.27±0.18 in outer disc; bulges coincide with structures",
+    "finding": "Density increase needed; temperature alone is ruled out",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.3.2 Temperature Scenario",
+      "quote": "We can therefore rule out temperature as a sole cause of any flux asymmetry."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Grain sizes increase toward the star",
+    "experiment": "Radial alpha and beta between 867 um and 1.3 mm",
+    "result": "alpha rises outward from 2.1; beta indicates cm grains",
+    "finding": "Radial grain-size sorting, cm sizes inside ~200 au",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We measure a radially increasing millimetre spectral index between wavelengths of 867 $\\mu$m and 1.3 mm, which shows that grain sizes increase towards the star"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "C18O is used because it is less optically thick and traces the dense mid-plane.",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "In this study we observe C$^{18}$O, a less optically thick alternative to other CO isotopologues"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Temperature-only and gravitational instability explanations for the asymmetry rejected.",
+     "evidence": [
+      {
+       "loc": "5.3.1 Density Scenario",
+       "quote": "Calculation of the Toomre parameter, Q, based on the radial profile of C$^{18}$O rules out gravitational instability in the disc."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Gas mass is a lower limit because C18O/CO abundance could differ from ISM values.",
+     "evidence": [
+      {
+       "loc": "5.1.2 Gas Mass",
+       "quote": "so our calculation represents a lower limit"
+      }
+     ]
+    },
+    {
+     "value": "Resolution of ~1 arcsec dilutes azimuthal variations.",
+     "evidence": [
+      {
+       "loc": "5.3.1 Density Scenario",
+       "quote": "Given the 1$\\ensuremath{''}$0 resolution of the data, it is feasible that there are much larger azimuthal density variations"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dust temperature and opacity assumptions dominate mass and beta uncertainty",
+    "Band 6 vs Band 7 flux-scale uncertainty and different uv coverage affect spectral index",
+    "Asymmetry significance depends on a 1 arcsec beam and uncertain astrometry",
+    "Gas-to-dust ratio depends on assumed ISM isotope ratio"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Both datasets given by ALMA project code; archival Band 7 stated as archival",
+    "evidence": [
+     {
+      "loc": "3 Observations & Data Reduction",
+      "quote": "We also utilise archival cycle 0 ALMA observations of HD 100546 in band 7"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "self-cal parameters",
+    "CLEAN parameters",
+    "exact flux used in mass calculation",
+    "segment definitions detail"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB",
+   "score_inferred": 3,
+   "score_reason": "Data are public and main steps are described, but many imaging and self-calibration parameters are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, numeric results (fluxes, masses, g/d) are well defined, though imaging details are partly missing."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Draine2006)",
+     "why": "Opacity and beta calculations"
+    },
+    {
+     "citation": "(cite: Guidi2016)",
+     "why": "Spatially resolved beta approach"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Walsh2014)",
+     "why": "Original Band 7 observations of HD 100546"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-319908b745b09550dedc6af89ec6e55b",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:32",
+  "usage": {
+   "input_tokens": 25353,
+   "output_tokens": 9786,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.074889,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 87,
+  "quotes_ok": 87,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 14,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 87,
+   "stated": 62,
+   "rate": 0.713
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:05",
+  "custom_id": "repair-sonnet-002c4a79fb6cc8b0fb3f9e5d0b634230",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "In light of the discussion above, our calculated gas estimate represents a firm lower limit, but a very large one in comparison to other Herbig discs."
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "the radiative transfer models of (cite: Panic2017) show that in reality an increase in disc temperature from 20 to 32K"
+   },
+   {
+    "path": "analysis_steps[5].fitting.evidence[0]",
+    "old": null,
+    "new": "The amplitudes of these fluctuations as a function of radius are fitted with polynomials, the polynomials are then averaged over the different off-source locations."
+   },
+   {
+    "path": "analysis_steps[5].validation.evidence[0]",
+    "old": null,
+    "new": "We explore this by calculating surface density profiles for each tracer, which are plotted in Figure [10](#fig:surf_dens)."
+   },
+   {
+    "path": "analysis_steps[6].assumptions[0].evidence[0]",
+    "old": null,
+    "new": "We have assumed in our analysis that dust grains in the disc have a size distribution of $dn/da \\propto a^{-p}$, where p=3.5"
+   },
+   {
+    "path": "analysis_steps[6].validation.evidence[0]",
+    "old": null,
+    "new": "The results are shown in Figure [13](#fig:opt_depth) and suggest that over all emissivities tested, the 1.3 mm emission is always optically thin for the entirety of the disc."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

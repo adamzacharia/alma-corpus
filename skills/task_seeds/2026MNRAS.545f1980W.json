@@ -1,0 +1,369 @@
+{
+ "bibcode": "2026MNRAS.545f1980W",
+ "title": "SDSS-ALMA Legacy Value Archival Gas Exploration (SALVAGE) ─ I. Global star formation is governed by central (not global) molecular gas",
+ "year": 2026,
+ "doi": "10.1093/mnras/staf1980",
+ "arxiv_id": "2511.06775",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What role does the spatial distribution of molecular gas and star formation efficiency in the inner versus outer regions play in driving global star formation scaling relations and galaxy quenching?",
+ "alma_project_codes": [
+  "2011.0.00374.S",
+  "2012.1.00539.S",
+  "2013.1.00058.S",
+  "2013.1.00096.S",
+  "2013.1.00115.S",
+  "2013.1.00530.S",
+  "2013.1.01383.S",
+  "2015.1.00320.S",
+  "2015.1.00389.S",
+  "2015.1.00405.S",
+  "2015.1.00587.S",
+  "2015.1.00820.S",
+  "2015.1.01012.S",
+  "2015.1.01120.S",
+  "2015.1.01225.S",
+  "2016.1.00177.S",
+  "2016.1.00329.S",
+  "2016.1.00852.S",
+  "2016.1.00948.S",
+  "2016.1.01172.S",
+  "2016.1.01265.S",
+  "2016.1.01269.S",
+  "2017.1.00025.S",
+  "2017.1.00496.S",
+  "2017.1.00601.S",
+  "2017.1.00629.S",
+  "2017.1.01093.S",
+  "2017.1.01727.S",
+  "2018.1.00541.S",
+  "2018.1.00558.S",
+  "2018.1.00940.S",
+  "2018.1.01852.S",
+  "2019.1.00260.S",
+  "2019.1.00597.S",
+  "2019.1.01136.S",
+  "2019.1.01757.S",
+  "2021.1.00094.S",
+  "2021.1.00602.S",
+  "2021.1.01089.S",
+  "2022.1.00482.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~2.7 mm)",
+  "arrays": "12 m main array (50 antennas)",
+  "angular_resolution": "< 3 arcsec (typical beam size ~1-3 arcsec)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "MPA-JHU DR7 catalogue of emission line fluxes, inner/outer/total stellar masses, and inner/outer/total star formation rates",
+    "evidence": [
+     {
+      "loc": "Ancillary Data Products from MPA-JHU",
+      "quote": "The Max-Planck-Institute for Astrophysics–John Hopkins University (MPA-JHU) catalogues provide flux measurements of up to 12 emission lines, photometric stellar mass estimates, and hybrid photometry/spectral index SFR estimates (cite: K03; Tremonti04; Brinchmann04)."
+     }
+    ]
+   },
+   "citation": "(cite: K03; Tremonti04; Brinchmann04)"
+  },
+  {
+   "what": {
+    "value": "Galaxy Zoo DESI morphology catalogue (edge-on disk, merger disturbance, and bar fractions)",
+    "evidence": [
+     {
+      "loc": "GalaxyZoo Morphology Catalogue",
+      "quote": "We use the Galaxy Zoo DESI morphology catalogue (cite: Walmsley23) trained on DECaLS Galaxy Zoo responses to predict key morphological features."
+     }
+    ]
+   },
+   "citation": "(cite: Walmsley23)"
+  },
+  {
+   "what": {
+    "value": "xCOLD GASS and MASCOT global CO luminosities and molecular gas masses for validation and comparison",
+    "evidence": [
+     {
+      "loc": "Quality Assurance",
+      "quote": "19 targets in SALVAGE have previous unresolved global CO measurements from xCOLD GASS (14 targets in common) and MASCOT (5 targets in common)."
+     },
+     {
+      "loc": "A semi-resolved perspective on global scaling relations",
+      "quote": "Since we are investigating *global* scaling relations of CO-detected galaxies, we compare to CO-detected galaxies from the large and representative (but unresolved) xCOLDGASS (cite: Saintonge17)."
+     }
+    ]
+   },
+   "citation": "(cite: Saintonge17), (cite: Wylezalek22)"
+  },
+  {
+   "what": {
+    "value": "GALEX-Sloan-WISE Legacy Catalogue (GSWLC-A1) photometric global SFRs and stellar masses",
+    "evidence": [
+     {
+      "loc": "Comparing MPA-JHU SFRs to GSWLC",
+      "quote": "To address the potential for errors introduced by mixing the inner (spectroscopic) and outer (photometric) components to obtain the total SFR, we compare the total SFRs used in this work with photometric-only total SFRs from the GSWLC (cite: Salim16)."
+     }
+    ]
+   },
+   "citation": "(cite: Salim16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Crossmatch SDSS DR7 and ALMA Science Archive and select sample",
+   "method": "Query ALMA Science Archive with pyVO and crossmatch to SDSS DR7 MPA/JHU sample (Dec < +47 deg) using astropy match_to_catalog_sky within 4 r-band Petrosian radii; filter by CO(1-0) coverage, spatial resolution < 3 arcsec, MRS > 1.5 Petrosian radii, and remove duplicates",
+   "software": [
+    "pyVO",
+    "astropy",
+    "ALMiner"
+   ],
+   "key_parameters": [
+    "Matching tolerance = 4 SDSS r-band Petrosian radii; QA2 PASS; scan_intent=TARGET; spatial resolution < 3 arcsec; MRS > 1.5 Petrosian radii"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Calibrate and image ALMA CO(1-0) visibilities",
+   "method": "Restore pipeline calibrations in CASA (or use Help Desk MS for Cycles 0-2), split science targets, subtract continuum with uvcontsub, regrid velocity with mstransform, and run two-stage multiscale + single-scale tclean via the PHANGS-ALMA pipeline",
+   "software": [
+    "CASA",
+    "split",
+    "uvcontsub",
+    "mstransform",
+    "tclean",
+    "PHANGS-ALMA pipeline"
+   ],
+   "key_parameters": [
+    "Target velocity resolution = 25 km/s; spectral coverage = +/- 1000 km/s; multiscale scales = 0, 1, 2.5, 5.0 arcsec; single-scale clean down to S/N = 1; Briggs robust = 0.5; primary beam cutoff = 0.25"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract inner, outer, and total CO spectra and compute molecular gas masses",
+   "method": "Spatially sum cube pixels in inner (r < 1.5 arcsec), outer (1.5 arcsec to 4 SDSS photometric scale lengths), and total (r < 4 scale lengths) apertures; integrate CO flux using FWZI (1 peak for inner, 3 peaks for outer) with spectral-cube; compute RMS from outer 200 km/s; convert flux to L'_CO and M_mol",
+   "software": [
+    "spectral-cube"
+   ],
+   "key_parameters": [
+    "Inner diameter = 3 arcsec; outer annulus = 1.5 arcsec to 4 scale lengths; RMS region = outer 200 km/s (~16 channels); detection threshold S/N > 5; upper limit line width = 300 km/s (~12 channels)"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology (Omega_M = 0.3, Omega_Lambda = 0.7, H_0 = 70 km s^-1 Mpc^-1) and constant alpha_CO = 4.35 M_sun (K km s^-1 pc^2)^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute multi-wavelength scaling parameters and correlate global Delta_SFR with semi-resolved gas fractions",
+   "method": "Filter for 175 non-edge-on galaxies with secure CO detections (M_mol,total S/N > 5 and either inner or outer S/N > 5); compute sSFR, Delta_SFR, f_gas, and SFE in inner, outer, and total regions; compute Pearson r and intrinsic scatter between Delta_SFR and gas fractions using ltsfit",
+   "software": [
+    "ltsfit"
+   ],
+   "key_parameters": [
+    "disk-edge-on_yes_fraction <= 0.5; SFMS matching tolerances: delta_z = 0.005, delta_M* = 0.1 dex, delta_Sigma_5 = 0.1 dex (minimum 5 galaxies); outlier clipping disabled in ltsfit"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Final SALVAGE sample size",
+   "value": "277",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Quality Assurance",
+     "quote": "This quality assurance check brings our sample size to 277."
+    }
+   ]
+  },
+  {
+   "quantity": "CO-detected non-edge-on analysis subsample size",
+   "value": "175",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "There are 175 galaxies in SALVAGE for which a total $M_\\text{mol}$ and either an inner or outer $M_\\text{mol}$ are securely detected."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of SALVAGE sample",
+   "value": "0.044",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Description of the SALVAGE Sample",
+     "quote": "Objects in SALVAGE have a range of redshifts from $\\thicksim0.02$ to $\\thicksim0.25$ with a median of $0.044$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median radius of central region probed by SDSS fibre",
+   "value": "1.3",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Description of the SALVAGE Sample",
+     "quote": "The radii of the central region probed by the SDSS fibre size ranges from $\\thicksim$0.5-6 kpc, with a median of 1.3 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median difference in L'_CO between SALVAGE and xCOLD GASS / MASCOT",
+   "value": "0.02",
+   "uncertainty": "0.09",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Quality Assurance",
+     "quote": "The median difference between our measurement of $L'_\\text{CO}$ and those in xCOLD GASS/MASCOT for these 12 detections is 0.02 dex ($\\thicksim$5%) with a scatter around zero of $\\thicksim$0.09 dex, which is similar to the typical error on xCOLD GASS luminosities ($\\thicksim$0.07 dex)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (r) between global Delta_SFR and f_gas,inner",
+   "value": "0.775",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "Panel B of Figure 6 shows that $\\Delta$SFR is more strongly correlated with $f_\\text{gas, inner}$ than any of the other gas fraction variables we tested, both in terms of the highest correlation coefficient (r = 0.775) and the lowest intrinsic scatter of the relation ($\\sigma = (0.061\\pm0.035$) dex)."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter (sigma) between global Delta_SFR and f_gas,inner",
+   "value": "0.061",
+   "uncertainty": "0.035",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "Panel B of Figure 6 shows that $\\Delta$SFR is more strongly correlated with $f_\\text{gas, inner}$ than any of the other gas fraction variables we tested, both in terms of the highest correlation coefficient (r = 0.775) and the lowest intrinsic scatter of the relation ($\\sigma = (0.061\\pm0.035$) dex)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (r) between global Delta_SFR and f_gas,total",
+   "value": "0.737",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "Panel A of Figure 6 demonstrates that while the correlation between $f_\\text{gas, total}$ and $\\Delta$SFR is still strong (r = 0.737), it is not as strong as the correlation with $f_\\text{gas, inner}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter (sigma) between global Delta_SFR and f_gas,total",
+   "value": "0.120",
+   "uncertainty": "0.039",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "The relationship between the global gas fraction and global $\\Delta$SFR also has a larger intrinsic scatter of $\\sigma = (0.120 \\pm 0.039$) dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (r) between global Delta_SFR and f_gas,outer",
+   "value": "0.640",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "The weaker correlation and larger scatter between the global gas fraction and global $\\Delta$SFR arises from the even weaker correlation and large scatter in the relationship between the outer gas fraction and global $\\Delta$SFR (r = 0.640, $\\sigma = (0.201 \\pm 0.037$) dex);"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter (sigma) between global Delta_SFR and f_gas,outer",
+   "value": "0.201",
+   "uncertainty": "0.037",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "The weaker correlation and larger scatter between the global gas fraction and global $\\Delta$SFR arises from the even weaker correlation and large scatter in the relationship between the outer gas fraction and global $\\Delta$SFR (r = 0.640, $\\sigma = (0.201 \\pm 0.037$) dex);"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient (r) between global Delta_SFR and f_gas,inner / f_gas,outer",
+   "value": "0.415",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "Of the four gas fraction variables tested here, $\\Delta$SFR exhibits the weakest correlation (r = 0.415) and the largest intrinsic scatter ($\\sigma = (0.281 \\pm 0.043$) dex) with the inner to outer gas fraction ratio."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter (sigma) between global Delta_SFR and f_gas,inner / f_gas,outer",
+   "value": "0.281",
+   "uncertainty": "0.043",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "What dictates global star-formation?",
+     "quote": "Of the four gas fraction variables tested here, $\\Delta$SFR exhibits the weakest correlation (r = 0.415) and the largest intrinsic scatter ($\\sigma = (0.281 \\pm 0.043$) dex) with the inner to outer gas fraction ratio."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO-detected galaxies >= 0.5 dex above SFMS that are post-mergers or interacting pairs",
+   "value": "64",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The importance of the central region to quenching in the context of previous works",
+     "quote": "Indeed, 64 per cent (7/11) of the CO-detected galaxies in SALVAGE 0.5 dex or more above the SFMS appear to be post-mergers or interacting pairs, by visual inspection of their DECaLS images."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used to image the cubes inside the PHANGS-ALMA pipeline (13 versions from v4.2.2 to v6.5.4 are listed for calibration restoration, but the imaging CASA version is not specified)",
+  "Exact line-free velocity channels excluded during uvcontsub continuum fitting for each individual galaxy",
+  "Details of the manual calibration recipes applied by the ALMA Help Desk for the 46 Cycle 0-2 targets"
+ ],
+ "missing_for_reproduction": [
+  "Calibrated measurement sets for the 46 Cycle 0, 1, and 2 targets that were privately supplied by the ALMA Help Desk rather than generated by archival restoration scripts"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "The paper releases the reduced ALMA cubes, moment maps, and compiled catalogue on CANFAR, and provides the complete processing and analysis code on GitHub alongside detailed parameter descriptions. Only the 46 Cycle 0-2 Help Desk calibrated measurement sets would require an external request to reproduce from raw data.",
+ "rediscovery_reason": "All reduced cubes, catalogues, and pipeline scripts are publicly hosted, the sample selection and FWZI spectral extraction rules are explicitly specified, and the core results are quantitative correlation coefficients and intrinsic scatter values.",
+ "source_card": "cards/2026MNRAS.545f1980W/sonnet/card.md"
+}

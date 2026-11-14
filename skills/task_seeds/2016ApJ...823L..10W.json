@@ -1,0 +1,193 @@
+{
+ "bibcode": "2016ApJ...823L..10W",
+ "title": "First Detection of Gas-phase Methanol in a Protoplanetary Disk",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/823/1/L10",
+ "arxiv_id": "1606.06492",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Is gas-phase methanol present in the TW Hya protoplanetary disk, and what are its abundance and radial location?",
+ "alma_project_codes": [
+  "2013.1.00902.S",
+  "2013.1.00114.S"
+ ],
+ "data": {
+  "bands": "Band 7 and Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "Stacked B7 beam 1.4\"x0.73\"; B6 0.5\"x0.5\"",
+  "sensitivity": "Stacked B7 rms 2.0 mJy/beam; per-channel ~4 mJy (B7), ~5 mJy (B6)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "TW Hya disk physical structure (density, temperature, UV) reproducing dust SED and CO lines",
+    "evidence": [
+     {
+      "loc": "Constraining the methanol abundance",
+      "quote": "We adopt the TW Hya disk physical structure from (cite: kama16) that reproduces the dust SED as well CO rotational line emission"
+     }
+    ]
+   },
+   "citation": "(cite: kama16)"
+  },
+  {
+   "what": {
+    "value": "TW Hya inclination and position angle",
+    "evidence": [
+     {
+      "loc": "Constraining the methanol abundance",
+      "quote": "a disk inclination and position angle appropriate for TW Hya (cite: hughes11)"
+     }
+    ]
+   },
+   "citation": "(cite: hughes11)"
+  },
+  {
+   "what": {
+    "value": "Methanol molecular data (A and E type) from LAMDA",
+    "evidence": [
+     {
+      "loc": "Constraining the methanol abundance",
+      "quote": "the molecular data files for A- and E-type methanol from the Leiden Atomic and Molecular Database (LAMDA"
+     }
+    ]
+   },
+   "citation": "LAMDA"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image data",
+   "method": "Self calibration on continuum, continuum subtraction, dirty channel maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack three B7 methanol lines in uv domain",
+   "method": "Concatenate after velocity regridding and image with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model abundance and location",
+   "method": "Grid of LIME LTE models varying inner/outer radius (10 AU steps), abundance and vertical layer; compare stacked line profile and channel maps",
+   "software": [
+    "LIME"
+   ],
+   "key_parameters": [
+    "layers z/r<=0.1, 0.1-0.2, 0.2-0.3"
+   ],
+   "assumptions": [
+    "LTE; Kama et al. disk structure"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak S/N of stacked B7 emission",
+   "value": "5.5",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "OBSERVATIONS",
+     "quote": "reaching a peak S/N of $5.5\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial midplane CH3OH abundance (30-100 AU ring)",
+   "value": "2.8e-12",
+   "uncertainty": "~20%",
+   "units": "relative to H2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Constraining the methanol abundance",
+     "quote": "with a fractional abundance of $2.8\\times10^{-12}$ relative to"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance in 0.1<z/r<0.2 and 0.2<z/r<0.3",
+   "value": "8.0e-12; 4.4e-11",
+   "uncertainty": "not stated",
+   "units": "relative to H2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Constraining the methanol abundance",
+     "quote": "fractional abundances of $8.0\\times10^{-12}$ and $4.4\\times10^{-11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak column density at 30 AU",
+   "value": "3-6e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Constraining the methanol abundance",
+     "quote": "peak column density of $\\approx 3 - 6 \\times 10^{12}$ cm$^{-2}$ at 30 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked line peak flux density",
+   "value": "33",
+   "uncertainty": "rms 6.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Detection of gas-phase methanol",
+     "quote": "The peak flux density for the stacked line profile is 33 mJy and the rms noise is 6.5 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/H2O gas ratio (midplane)",
+   "value": "~0.7",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "DISCUSSION",
+     "quote": "ratio is $\\approx 0.7$% if both species are located in the midplane"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method",
+  "Image size and cell size",
+  "Which B7 transitions are stacked beyond approximate frequencies; velocity regridding details",
+  "Aperture/mask for spectrum extraction beyond the 3 sigma continuum contour",
+  "LIME settings (photons, grid) and methanol temperature/excitation assumptions",
+  "Exact fit criterion (by eye)"
+ ],
+ "missing_for_reproduction": [
+  "LIME configuration",
+  "Kama et al. 2016 model files",
+  "Imaging sizes and line-free channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear stacking recipe, but modeling details and disk model are external and fit is by eye.",
+ "rediscovery_reason": "Public data; stacked detection with numeric S/N and abundances is redoable, though modeling needs external disk structure.",
+ "source_card": "cards/2016ApJ...823L..10W/sonnet/card.md"
+}

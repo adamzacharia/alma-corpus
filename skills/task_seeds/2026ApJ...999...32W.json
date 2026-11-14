@@ -1,0 +1,491 @@
+{
+ "bibcode": "2026ApJ...999...32W",
+ "title": "Constraining Properties of Dust Formed in Wolf─Rayet Binary WR 112 Using Mid-infrared and Millimeter Observations",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae31f1",
+ "arxiv_id": "2511.19572",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "What are the properties, particularly the grain size distribution and composition, of circumstellar dust formed in the carbon-rich Wolf-Rayet binary WR 112?",
+ "alma_project_codes": [
+  "2023.1.00999.S",
+  "2024.1.00803.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~1.3 mm)",
+  "arrays": "12-m array",
+  "angular_resolution": "Continuum: 0.83\" x 0.51\" (uniform) and 2.54\" x 2.21\" (natural + 2\" taper); CO cubes: 1.4\" x 0.9\"",
+  "sensitivity": "Continuum RMS: ~0.06 mJy beam^-1 (uniform) and ~0.03 mJy beam^-1 (natural + taper); CO cubes RMS: ~0.5-1.0 mJy beam^-1 per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Background-subtracted and PSF-subtracted JWST MIRI images of WR 112 at 7.7, 15, and 21 um",
+    "evidence": [
+     {
+      "loc": "Archival Observations",
+      "quote": "To model the extended dust arcs, we obtained the background-subtracted and PSF-subtracted JWST images of WR 112 from (cite: Richardson2025) that use the PSF subtraction method described by (cite: Lieb2025)."
+     }
+    ]
+   },
+   "citation": "(cite: Richardson2025)"
+  },
+  {
+   "what": {
+    "value": "Unresolved optical and infrared photometry of WR 112 from Pan-STARRS, Skymapper, DENIS, 2MASS, WISE, MSX, IRAS, AKARI, and ESO/UKIRT",
+    "evidence": [
+     {
+      "loc": "Archival Observations",
+      "quote": "The filters that are included are summarized in Table [\\[tbl:other_obs\\]](#tbl:other_obs)."
+     }
+    ]
+   },
+   "citation": "(cite: Chambers2016; Onken2024; Kimeswenger2004; Denis2005; Cutri2003; Wright2010; Egan2003; IRAS1988; Akari2020; Williams1987)"
+  },
+  {
+   "what": {
+    "value": "Large-scale CO survey and neutral hydrogen gas survey spectra at the location of WR 112",
+    "evidence": [
+     {
+      "loc": "CO emission",
+      "quote": "A large-scale CO survey ((cite: Dame2001), 8.5 ′ FWHM) and neutral hydrogen gas survey ( (cite: HI4PI2016), 8.1 ′ beam), both with a velocity resolution of 1.3 km s^−1^, show a peak at $v_{\\text{LSR}} \\approx$ 37.5 km s^−1^"
+     }
+    ]
+   },
+   "citation": "(cite: Dame2001; HI4PI2016)"
+  },
+  {
+   "what": {
+    "value": "Laboratory optical constants of ACAR-type, ACH2-type, and BE-type amorphous carbon grains",
+    "evidence": [
+     {
+      "loc": "Temperatures as Free Parameters",
+      "quote": "We adopted optical constants of ACAR-type amorphous carbon prepared by (cite: Colangeli1995) in laboratory and measured by (cite: Zubko1996)."
+     },
+     {
+      "loc": "Stochastic heating",
+      "quote": "In addition to the ACAR-type grains adopted, we also conducted the fits for the two other laboratory analogues of amorphous carbon grain prepared by (cite: Colangeli1995) and measured by (cite: Zubko1996), the ACH2-type and the BE-type"
+     }
+    ]
+   },
+   "citation": "(cite: Colangeli1995; Zubko1996)"
+  },
+  {
+   "what": {
+    "value": "Distance of 3.39 kpc, terminal wind speed of 1230 +- 260 km s^-1, and wind momentum ratio eta ~ 0.13 for WR 112",
+    "evidence": [
+     {
+      "loc": "Continuum emission",
+      "quote": "This suggests any substructure, if it exists, would have a size less than 1700 au, assuming a distance of 3.39   to WR 112 (cite: Lau2020b)."
+     },
+     {
+      "loc": "CO emission",
+      "quote": "stellar winds moving directly toward us would, in principle, be observable in the $^{12}$CO(2–1) line given the spectral window width and terminal wind speed of $1230\\pm$260 km s^−1^ (cite: Lau2020b)."
+     },
+     {
+      "loc": "Stellar SED of the WR 112 system",
+      "quote": "In addition, (cite: Lau2020b) estimated, from the geometry of the dust structures, that the ratio of the momentum of stellar wind from the OB star to that from WR 112 is $\\eta \\sim 0.13$."
+     }
+    ]
+   },
+   "citation": "(cite: Lau2020b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA Band 6 continuum and CO spectral line data, and measure central source flux and extended dust upper limits",
+   "method": "Calibrate raw data with ALMA pipeline, concatenate three nights, image continuum with uniform and natural+taper weightings, subtract continuum with uvcontsub, and image CO isotopologue cubes with natural weighting and multi-scale tclean.",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub",
+    "auto-multithresh"
+   ],
+   "key_parameters": [
+    "robust = -2 (uniform) and robust = 2 with 2\" uv-taper (natural) for continuum"
+   ],
+   "assumptions": [
+    "Distance of 3.39 kpc to WR 112"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Constrain stellar spectra and properties of WR 112 and its OB companion",
+   "method": "Fit sum of PoWR model spectra for WC ('MW WC') and OB ('GAL-OB-Vd3') stars to archival unresolved photometry at lambda < 0.9 um and wind momentum ratio log(eta).",
+   "software": [
+    "PoWR"
+   ],
+   "key_parameters": [
+    "6 free parameters: R_V (3.1 to 4.1 in steps of 0.1), g_OB, T_OB, T_WC, R_t, and continuous L_WC (1e5 to 1e6 L_sun)"
+   ],
+   "assumptions": [
+    "Milky Way extinction curve G23 with A_V = 11.0 +- 0.3 mag; Galactic metallicity; WC mass loss rate > 1.0e-5 M_sun yr^-1; wind momentum ratio eta ~ 0.13 with 1 dex uncertainty; helium mass fraction 55%"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract spatially resolved dust SEDs for 23 extended dust arc apertures",
+   "method": "Define 23 annulus-sector apertures in two clean azimuthal sectors (13 in Sector I, 10 in Sector II) by locating radial profile troughs (cavities) in 21 um JWST image, mask 3-sigma background sources, integrate JWST fluxes, and compute ALMA 1.3 mm 3-sigma upper limits.",
+   "software": [
+    "photutils.background"
+   ],
+   "key_parameters": [
+    "Sector I: 216 deg <= PA <= 256 deg (13 apertures); Sector II: 94 deg <= PA <= 134 deg (10 apertures); 20% uncertainty adopted for JWST fluxes"
+   ],
+   "assumptions": [
+    "Deprojected distance estimated as sky-plane distance at PA = 216 deg for Sector I and PA = 134 deg for Sector II"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit spatially resolved dust SEDs with free dust temperatures and a single grain radius",
+   "method": "Perform a joint MCMC fit of modified blackbody emission across all 23 apertures treating each aperture temperature as a free parameter and sharing effective solid angles and a single grain radius.",
+   "software": [
+    "emcee",
+    "Mie scattering code (Dullemond 2012)"
+   ],
+   "key_parameters": [
+    "26 free parameters: Omega_eff^I, Omega_eff^II, grain radius a (-9.0 <= log[a/m] <= -4.0), and 23 temperatures T_d^(1)...T_d^(23)"
+   ],
+   "assumptions": [
+    "Radiative equilibrium, optically thin uniformly expanding dust, ACAR-type amorphous carbon optical constants (Zubko 1996)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit spatially resolved dust SEDs using an equilibrium temperature grid and four grain size distributions",
+   "method": "Compute radiative equilibrium temperature grid T_d(a, r) by balancing stellar photon absorption and thermal emission, then run MCMC fits to the 23 aperture SEDs for four grain size distribution parameterizations.",
+   "software": [
+    "emcee",
+    "Mie scattering code (Dullemond 2012)"
+   ],
+   "key_parameters": [
+    "Grain radius parameters sampled in log space between 1 nm and 100 um; 4 distributions (single radius a_e; log-normal a_c, sigma_log_a; two radii a_1, a_2, f_2; power law a_l, a_u, beta)"
+   ],
+   "assumptions": [
+    "Radiative equilibrium, no scattering, median stellar spectrum S_*(lambda), constant grain size distribution across outer apertures, ACAR optical constants"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit spatially resolved dust SEDs accounting for stochastic heating of small grains",
+   "method": "Compute grain temperature probability distributions P(T) on a 200-radius grid (1 nm to 10 um) for each aperture using DustEM, interpolate P(T) via quantile function linear interpolation, and fit the 23 aperture SEDs with MCMC for the four grain size distributions.",
+   "software": [
+    "DustEM",
+    "emcee",
+    "Mie scattering code (Dullemond 2012)"
+   ],
+   "key_parameters": [
+    "Grid of 200 grain radii from 1 nm to 10 um; four grain size distributions (single radius, log-normal, two radii, power law)"
+   ],
+   "assumptions": [
+    "Graphite heat capacity (Draine 2001), dust bulk density rho = 1.81 g cm^-3, ACAR optical constants (also tested ACH2 and BE types)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Model the spatially unresolved infrared SED to constrain inner dust properties",
+   "method": "Approximate circumstellar dust as continuous concentric spherical shells from r_in to R = 90,000 au, fix outer shell (r > r_s) to the resolved bimodal distribution, and fit three inner-region models (Models A, B, C) to unresolved archival photometry using DustEM and MCMC.",
+   "software": [
+    "DustEM",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Outer cutoff R = 90,000 au; outer bimodal parameters fixed to a_1 = 1.247 nm, a_2 = 0.134 um, f_2 = 2.85e-5; Model A (free r_in), Model B (free r_in, r_s, f_in), Model C (free r_in, r_s, a_3, n_3/n_1)"
+   ],
+   "assumptions": [
+    "Spherical shell number density equals 9 times the number of dust in a 40-deg aperture of the same radial width"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Calculate dust production rate and evaluate physical mechanisms for grain size evolution",
+   "method": "Integrate grain mass over the inferred size distributions to derive dust production rate over the 20.1 yr orbital period, and analytically/numerically evaluate collisional timescales, gas drag stopping time, radiative torque disruption (RATD), and radiation-driven sublimation.",
+   "software": [
+    "DustEM"
+   ],
+   "key_parameters": [
+    "Dust arc radial width = 5210 au; orbital period P = 20.1 yr; sublimation temperatures tested (e.g. 1800 K) at r = 100 to 300 au"
+   ],
+   "assumptions": [
+    "Dust coupled to gas at v_inf = 1230 km s^-1, dust bulk density rho_d = 1.81 g cm^-3, pure helium gas at T_gas ~ 2000 K for drag and RATD estimates"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 1.3 mm central point-source continuum flux",
+   "value": "8.5",
+   "uncertainty": "+-0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The total flux from the point-like emission is $F_\\nu=8.5\\pm$0.1  ."
+    },
+    {
+     "loc": "ALMA Observations of CO lines",
+     "quote": "![](spectrum_at_star.pdf)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on extended dust surface brightness at 1.3 mm",
+   "value": "1.53e6",
+   "uncertainty": "not stated",
+   "units": "Jy sr^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "No extended structure is detected beyond the $3\\sigma$ level. The flux from the dust structures near WR 112 at ~1.3 mm must be below the level of 1.53 × 10^6^  sr^−1^."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on central dust substructure size",
+   "value": "1700",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "This suggests any substructure, if it exists, would have a size less than 1700 au, assuming a distance of 3.39   to WR 112 (cite: Lau2020b)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO isotopologue emission peak velocity (v_LSR)",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "CO emission",
+     "quote": "The spectra of the three isotpologues all peak at ~35 km s^−1^, as shown in Figure [16](#fig:spectrum_CO)."
+    }
+   ]
+  },
+  {
+   "quantity": "WR 112 mass loss rate",
+   "value": "2.69e-5",
+   "uncertainty": "+2.40e-5/-1.33e-5",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "The mass loss rate of WR 112 is $2.69^{+2.40}_{-1.33} \\times 10^{-5}$ $M_{\\odot}~\\mathrm{yr^{-1}}$, while that of its companion is $7.94^{+17.18}_{-5.95} \\times 10^{-7}$ $M_{\\odot}~\\mathrm{yr^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "OB companion mass loss rate",
+   "value": "7.94e-7",
+   "uncertainty": "+17.18e-7/-5.95e-7",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "The mass loss rate of WR 112 is $2.69^{+2.40}_{-1.33} \\times 10^{-5}$ $M_{\\odot}~\\mathrm{yr^{-1}}$, while that of its companion is $7.94^{+17.18}_{-5.95} \\times 10^{-7}$ $M_{\\odot}~\\mathrm{yr^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "WR 112 luminosity",
+   "value": "5.04e5",
+   "uncertainty": "+4.13e5/-3.13e5",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "The luminosity of WR 112, corrected for terminal wind speed (cite: Sander2019), is $5.04^{+4.13}_{-3.13} \\times 10^5 ~L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "OB companion luminosity",
+   "value": "4.57e5",
+   "uncertainty": "+7.73e5/-2.91e5",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "The luminosity of its OB companion is $4.57^{+7.73}_{-2.91} \\times 10^5 ~L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "WR 112 mass",
+   "value": "19.8",
+   "uncertainty": "+9.5/-8.4",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "According to the mass-luminosity relation of WR stars (cite: Langer1989), the mass of WR 112 should be $19.8^{+9.5}_{-8.4} ~M_{\\odot}$, if we assume a helium mass fraction of $55\\%$ (cite: Sander2012)."
+    }
+   ]
+  },
+  {
+   "quantity": "OB companion mass",
+   "value": "42.4",
+   "uncertainty": "+43.9/-18.2",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "The mass of the companion is $42.4^{+43.9}_{-18.2} ~M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Wind momentum ratio (eta)",
+   "value": "0.049",
+   "uncertainty": "+0.182/-0.041",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stellar SED of the WR 112 system",
+     "quote": "Our estimate for the wind momentum ratio ($\\eta=0.049^{+0.182}_{-0.041}$) is consistent with the estimate of (cite: Lau2020b) at $1\\sigma$ level."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature profile power-law index (gamma, free-T model)",
+   "value": "-0.384",
+   "uncertainty": "+-0.021",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Temperatures as Free Parameters",
+     "quote": "The best-fit power law for the temperature profile from all the apertures has power law index $\\gamma = -0.384 \\pm 0.021$."
+    }
+   ]
+  },
+  {
+   "quantity": "Small grain radius (a_1, bimodal stochastic heating ACAR model)",
+   "value": "1.247",
+   "uncertainty": "+0.247/-0.159",
+   "units": "nm",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Stochastic heating",
+     "quote": "| $a_1 = 1.247^{+0.247}_{-0.159}~\\mathrm{nm}$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Large grain radius (a_2, bimodal stochastic heating ACAR model)",
+   "value": "0.134",
+   "uncertainty": "+0.084/-0.026",
+   "units": "um",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Stochastic heating",
+     "quote": "| $a_2 = 0.134^{+0.084}_{-0.026}$  μm |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance of large to small grains (f_2, bimodal stochastic heating ACAR model)",
+   "value": "2.85e-5",
+   "uncertainty": "+1.27e-5/-0.82e-5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Stochastic heating",
+     "quote": "| $f_2 = 2.85^{+1.27}_{-0.82} \\times 10^{-5}$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law grain size distribution index (beta, stochastic heating ACAR model)",
+   "value": "-3.52",
+   "uncertainty": "+0.08/-0.08",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Stochastic heating",
+     "quote": "| $\\beta = -3.52^{+0.08}_{-0.08}$ |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner dust grain radius (a_3, unresolved SED Model C)",
+   "value": "0.192",
+   "uncertainty": "+0.038/-0.044",
+   "units": "um",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dust SED at the location of the star",
+     "quote": "| $a_3=0.192^{+0.038}_{-0.044}$  μm                       |     |     |     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust production rate (bimodal ACAR model)",
+   "value": "1.93e-7",
+   "uncertainty": "+1.31e-7/-0.41e-7",
+   "units": "M_sun yr^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Dust production rate",
+     "quote": "Under this condition, the dust production rate is $1.93^{+1.31}_{-0.41} \\times 10^{-7}~\\mathrm{M}_{\\odot}~\\mathrm{yr}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital period of WR 112",
+   "value": "20.1",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Dust production rate",
+     "quote": "The resulting orbital period is approximately $20.1$ yr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel size (cell size) and image dimensions used in CASA tclean for ALMA continuum and CO spectral cubes",
+  "Specific multiscale scales parameter values used in tclean",
+  "Exact channel ranges used for uvcontsub and line-free continuum imaging",
+  "Number of walkers, steps, and burn-in length used in emcee MCMC fits",
+  "Exact pixel coordinates or radial distance values of the interpolated cavity boundaries defining the 23 JWST/ALMA apertures"
+ ],
+ "missing_for_reproduction": [
+  "Table of extracted JWST flux densities and ALMA 1.3 mm upper limits for each of the 23 apertures",
+  "Exact radial bounds (in arcsec or pixels) of the 23 apertures defined from the 21 um radial brightness profile troughs",
+  "PSF-subtracted JWST images from Richardson et al. (2025) if not publicly archived alongside MAST raw data",
+  "Compiled table of the unresolved archival photometry and adopted uncertainties used in the stellar and inner-dust SED fits",
+  "Custom scripts coupling DustEM quantile-interpolated PDFs with emcee"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "The physical equations, software tools (CASA 6.6.1, PoWR, DustEM, emcee), laboratory optical constants, and model parameterizations are documented in high detail, and all numeric fit results are tabulated. However, the intermediate photometry table for the 23 apertures, exact aperture coordinates, and custom fitting scripts are not released.",
+ "rediscovery_reason": "Both the ALMA Band 6 data and JWST MIRI data are archived under stated program codes, the data reduction and SED modeling steps are clearly specified, and the paper reports concrete numeric benchmarks (8.5 mJy central flux, 1.53e6 Jy sr^-1 upper limit, grain radii of 1.247 nm and 0.134 um, and dust production rate of 1.93e-7 M_sun yr^-1).",
+ "source_card": "cards/2026ApJ...999...32W/sonnet/card.md"
+}

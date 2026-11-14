@@ -1,0 +1,482 @@
+{
+ "bibcode": "2025ApJ...985..124L",
+ "title": "The Nature of Optical Afterglows without Gamma-Ray Bursts: Identification of AT2023lcr and Multiwavelength Modeling",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adc800",
+ "arxiv_id": "2411.07973",
+ "fields": [
+  "transients"
+ ],
+ "question": "Why were optical afterglows without detected GRBs (AT 2023lcr, AT 2020blt, AT 2021any, AT 2021lfa) not seen with a GRB: off-axis jet, low initial Lorentz factor, or on-axis classical GRB missed by satellites?",
+ "alma_project_codes": [
+  "2022.A.00025.T"
+ ],
+ "data": {
+  "bands": "Band 3 (100 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "All data for AT 2020blt and AT 2021any",
+    "evidence": [
+     {
+      "loc": "4.1 Settings",
+      "quote": "All data used in this work for AT 2020blt and AT 2021any can be found in (cite: Ho_2020; Ho_2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Ho_2020; Ho_2022)"
+  },
+  {
+   "what": {
+    "value": "AT 2021lfa observations (main set) plus additional observations",
+    "evidence": [
+     {
+      "loc": "4.1 Settings",
+      "quote": "To model AT 2021lfa, we used all observations from (cite: Ho_2022) and additional observations from (cite: Lipunov_2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Ho_2022); (cite: Lipunov_2022)"
+  },
+  {
+   "what": {
+    "value": "KONUS-Wind 90%-confidence 20-1500 keV peak flux upper limit for AT 2023lcr",
+    "evidence": [
+     {
+      "loc": "2.5 Search for Gamma-ray Emission",
+      "quote": "For a typical LGRB spectrum, the 90%-confidence upper limit on the 20–1500 keV peak flux was reported to be $1.8\\times10^{-7}\\,$erg cm$^{-2}\\,$s$^{-1}$ on a 2.944 s scale (cite: Ridnaia2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Ridnaia2023)"
+  },
+  {
+   "what": {
+    "value": "Gamma-ray energy upper limits for AT 2020blt, AT 2021any and AT 2021lfa",
+    "evidence": [
+     {
+      "loc": "4.4 Radiative Efficiencies",
+      "quote": "Limits for AT 2020blt, AT 2021any, and AT 2021lfa have been calculated in (cite: Ho_2020), (cite: Ho_2022), and (cite: Sarin_2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Ho_2020), (cite: Ho_2022), (cite: Sarin_2022)"
+  },
+  {
+   "what": {
+    "value": "Milky Way extinction A_V = 0.128 mag",
+    "evidence": [
+     {
+      "loc": "2.1 Optical Photometry",
+      "quote": "To correct for Milky Way extinction we use $A_V=0.128$ mag (cite: Schlafly2011)."
+     }
+    ]
+   },
+   "citation": "(cite: Schlafly2011)"
+  },
+  {
+   "what": {
+    "value": "LambdaCDM cosmology used for the luminosity distance",
+    "evidence": [
+     {
+      "loc": "footnote 7",
+      "quote": "$\\Lambda$CDM cosmology of (cite: Planck_2020) is used throughout."
+     }
+    ]
+   },
+   "citation": "(cite: Planck_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Obtain Band 3 flux density and position of AT 2023lcr from ALMA",
+   "method": "ALMA data calibrated and imaged with the automated CASA-based pipeline; source detected in both epochs",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Band 3 (100 GHz), epochs 2023 June 29 and 2023 July 04"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit optical light curve and measure optical spectral index",
+   "method": "Multi-band g, r, i, z extinction-corrected light curves fit with a smoothed broken power law with constant magnitude offsets between bands; MCMC fit",
+   "software": [],
+   "key_parameters": [
+    "smoothness n fixed to 2; t_0 allowed between last GOTO non-detection and first GOTO detection",
+    "GOTO L-band point treated as the average of r- and g-band fluxes"
+   ],
+   "assumptions": [
+    "no host-galaxy or supernova contribution"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure X-ray spectral and temporal indices",
+   "method": "Swift/XRT detections fit simultaneously with the online Swift tool; Chandra spectrum fit with sherpa (absorbed power law, 0.5-6 keV); X-ray light curve fit with a single power law at 1 keV",
+   "software": [
+    "Swift online XRT tool",
+    "CIAO",
+    "sherpa"
+   ],
+   "key_parameters": [
+    "Galactic N_H = 4.12e20 cm^-2; Gamma = 2 adopted for the count-rate to flux conversion",
+    "Chandra flux multiplied by 1.77 to go from 0.5-6 keV to 0.3-10 keV"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive analytical limits on the jet Lorentz factor",
+   "method": "Limits from deceleration time (rise time), radio spectrum (Gamma_avg) and interstellar scintillation size limits, following Perley et al. 2024",
+   "software": [],
+   "key_parameters": [
+    "t_dec approximated by t_rise; upper limit on t_rise from first detection minus last non-detection"
+   ],
+   "assumptions": [
+    "typical rest-frame deceleration time of about 200 s; uniform circumburst density; full filling factor"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "MCMC afterglow modelling of the radio, optical and X-ray data",
+   "method": "afterglowpy jet models (top hat, Gaussian, power law) fit with the emcee EnsembleSampler to radio, optical and X-ray data, for several data subsets and afterglowpy settings",
+   "software": [
+    "afterglowpy",
+    "emcee"
+   ],
+   "key_parameters": [
+    "most runs: 64 walkers, 75,000 iterations, 30,000 burn-in; if not converged: 64 walkers, 225,000 iterations, 125,000 burn-in",
+    "broad uniform priors (Table of priors, e.g. log10 Gamma_0 in [0,3], theta_c in [0.02,0.78] rad, p in [2,3])",
+    "afterglowpy runs repeated with and without ICC and with Gamma_0 infinite and finite",
+    "X-ray fluxes converted to a 5 keV flux density with spectral index beta = -1"
+   ],
+   "assumptions": [
+    "homogeneous circumburst medium, single-shell approximation",
+    "Galactic extinction with R_V = 3.1; redshift z = 1.0272 for AT 2023lcr"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare configurations with goodness-of-fit metrics",
+   "method": "reduced chi^2 (minimum over 5,000 posterior samples) and WAIC-based elpd",
+   "software": [],
+   "key_parameters": [
+    "5% systematic error on VLA flux densities at 1-18 GHz and 15% at 18-40 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compute gamma-ray energy limits and radiative efficiency",
+   "method": "KONUS-Wind limits converted to isotropic-equivalent luminosity and energy; eta_gamma = E_gamma,iso / (E_K,iso + E_gamma,iso) using E_K,iso from the model",
+   "software": [],
+   "key_parameters": [
+    "evaluated at z = 1.0272 and at the redshift upper limit z = 1.6"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 3 peak flux density, epoch 1 (2023 June 29)",
+   "value": "140",
+   "uncertainty": "14",
+   "units": "microJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.4 Radio",
+     "quote": "The peak flux density of the source was $140\\pm14\\,\\mu$Jy in the first epoch and $94\\pm11\\,\\mu$Jy in the second epoch."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 3 peak flux density, epoch 2 (2023 July 04)",
+   "value": "94",
+   "uncertainty": "11",
+   "units": "microJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.4 Radio",
+     "quote": "The peak flux density of the source was $140\\pm14\\,\\mu$Jy in the first epoch and $94\\pm11\\,\\mu$Jy in the second epoch."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical light-curve break time t_b (observer frame)",
+   "value": "0.73",
+   "uncertainty": "+0.06/-0.06 (68%)",
+   "units": "d",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Optical",
+     "quote": "a break time $t_b=0.73^{+0.06}_{-0.06}$ d in the observer frame (68% confidence)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pre-break optical temporal index alpha_1",
+   "value": "0.23",
+   "uncertainty": "+0.04/-0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Optical",
+     "quote": "The best-fit broken power-law temporal indices are $\\alpha_1=0.23^{+0.04}_{-0.03}$ and $\\alpha_2=1.39^{+0.05}_{-0.04}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Post-break optical temporal index alpha_2",
+   "value": "1.39",
+   "uncertainty": "+0.05/-0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Optical",
+     "quote": "The best-fit broken power-law temporal indices are $\\alpha_1=0.23^{+0.04}_{-0.03}$ and $\\alpha_2=1.39^{+0.05}_{-0.04}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical spectral index beta_opt",
+   "value": "1.20",
+   "uncertainty": "+0.16/-0.16 (68%)",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Optical",
+     "quote": "We find a best-fit spectral index of $\\beta_{\\mathrm{opt}}=1.20^{+0.16}_{-0.16}$ (68% confidence)"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray temporal index alpha_X",
+   "value": "1.47",
+   "uncertainty": "+0.17/-0.16 (68%)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 X-rays",
+     "quote": "find a best-fit power law index $\\alpha_X=1.47^{+0.17}_{-0.16}$ (68% confidence)"
+    }
+   ]
+  },
+  {
+   "quantity": "Swift/XRT photon index",
+   "value": "1.8",
+   "uncertainty": "+0.8/-0.5 (90%)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 X-rays",
+     "quote": "we find a best-fit photon index of $\\Gamma=1.8^{+0.8}_{-0.5}$ (90% confidence interval)"
+    }
+   ]
+  },
+  {
+   "quantity": "Chandra photon index",
+   "value": "1.16",
+   "uncertainty": "+0.95/-0.95 (68%)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 X-rays",
+     "quote": "The best-fit power law index was $\\Gamma=1.16^{+0.95}_{-0.95}$ (68% confidence)"
+    }
+   ]
+  },
+  {
+   "quantity": "Burst time t_0 offset after last GOTO non-detection",
+   "value": "52",
+   "uncertainty": "+16/-18",
+   "units": "min",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Optical",
+     "quote": "We find a best-fit $t_0$ that is $52^{+16}_{-18}$ min after the GOTO non-detection"
+    }
+   ]
+  },
+  {
+   "quantity": "KONUS-Wind isotropic-equivalent energy upper limit (z = 1.0272)",
+   "value": "<2.1e52",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "2.5 Search for Gamma-ray Emission",
+     "quote": "gives a limit on the isotropic-equivalent energy of $E_{\\gamma,\\mathrm{iso}}<2.1\\times10^{52}\\,$erg."
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2023lcr jet half-opening angle theta_c (on-axis top hat, finite Gamma_0)",
+   "value": "0.02 rad (1.15 deg)",
+   "uncertainty": "not stated",
+   "units": "rad",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 AT2023lcr",
+     "quote": "with a highly collimated jet ($\\theta_\\text{c} \\approx 0.02$ rad, or equivalently, $1.15^\\circ$)"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2023lcr beaming-corrected blast-wave energy E_K",
+   "value": "2.2e50",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 AT2023lcr",
+     "quote": "we obtain a beaming-corrected value of the blast wave energy $E_{K} \\approx 2.2 \\times 10^{50}$ erg"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2023lcr posterior initial Lorentz factor Gamma_0",
+   "value": "166",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 AT2023lcr",
+     "quote": "our posterior $\\Gamma_0 \\approx 166$"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2023lcr radiative efficiency upper limit",
+   "value": "<2.3%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 AT2023lcr",
+     "quote": "AT 2023lcr had an isotropic radiative energy below $2.1 \\times 10^{52}$ erg and a possible radiative efficiency $\\eta_\\gamma < 2.3\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2020blt opening angle and beaming-corrected E_K",
+   "value": "theta_c ~ 5 deg; E_K ~ 4e50 erg",
+   "uncertainty": "not stated",
+   "units": "deg; erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 AT2020blt",
+     "quote": "we obtain $\\theta_\\text{c} \\sim 5^\\circ$ and a beaming-corrected $E_\\text{K} \\sim 4 \\times 10^{50}$ erg"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2021any Gamma_0, free t_0 model",
+   "value": "204",
+   "uncertainty": "+371/-115",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 AT2021any",
+     "quote": "The free $t_0$ model finds $\\Gamma_0 \\approx 204_{-115}^{+371}$, while the fixed $t_0$ model finds $\\Gamma_0 \\approx 81_{-15}^{+17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2021any Gamma_0, fixed t_0 model",
+   "value": "81",
+   "uncertainty": "+17/-15",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 AT2021any",
+     "quote": "The free $t_0$ model finds $\\Gamma_0 \\approx 204_{-115}^{+371}$, while the fixed $t_0$ model finds $\\Gamma_0 \\approx 81_{-15}^{+17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2021lfa on-axis Gamma_0 (top hat; Gaussian)",
+   "value": "11; 6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.5 AT2021lfa",
+     "quote": "$\\Gamma_0 \\approx 11$ for the top hat model and $\\Gamma_0 \\approx 6$ for the Gaussian model"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2021lfa off-axis Gamma_0 (Gaussian; power law)",
+   "value": "110; 155",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.5.2 Off-axis Interpretation",
+     "quote": "the Gaussian jet with $\\Gamma_0 \\approx 110$ and power law jet with $\\Gamma_0 \\approx 155$"
+    }
+   ]
+  },
+  {
+   "quantity": "AT 2021lfa off-axis Gaussian theta_c and theta_v",
+   "value": "theta_c ~ 1.7 deg; theta_v ~ 3.4 deg",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.5.2 Off-axis Interpretation",
+     "quote": "we obtain $\\theta_\\text{c} \\approx 1.7^\\circ$ and $\\theta_\\text{v} \\approx 3.4^\\circ$ for the Gaussian solution"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA CASA and pipeline version, and whether pipeline products were used unchanged",
+  "ALMA flux, bandpass and phase calibrators, array configuration, baselines, and on-source time for each epoch",
+  "ALMA spectral window setup: the four frequencies (90.5, 92.4, 102.5, 105.5 GHz) appear only in the data table, not in the text; continuum bandwidth is not given",
+  "How the ALMA peak flux density and its error were measured (task, fit vs peak pixel, flux-scale uncertainty, rms, beam)",
+  "Per-measurement systematic error assumed for the ALMA points in the afterglowpy fits",
+  "Initial walker positions for the AT 2023lcr, AT 2020blt and AT 2021any fits (only given for the forced off-axis AT 2021lfa fit)",
+  "Convergence criterion used to decide that samples 'do not appear converged'",
+  "Exact afterglowpy flag settings (spreading, integration resolution) beyond the Gamma_0, ICC and structure choices",
+  "Burst time t_0 prior range for each event (listed as '-' in the prior table)"
+ ],
+ "missing_for_reproduction": [
+  "ALMA pipeline and CASA versions, calibrators, configuration and measurement method for the two Band 3 epochs",
+  "Initial walker positions and convergence criterion for the fits other than the forced off-axis AT 2021lfa run",
+  "Per-point treatment of ALMA systematic error in the likelihood"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Modelling recipe (priors, walkers, iterations, likelihood, versions) and a public repository with code and data products are given, and results are numeric; the ALMA reduction details are missing.",
+ "rediscovery_reason": "The afterglow fits can be rerun from released data products with stated priors and sampler settings and give numeric results, but this does not require reprocessing the ALMA data, which play a minor role.",
+ "source_card": "cards/2025ApJ...985..124L/sonnet/card.md"
+}

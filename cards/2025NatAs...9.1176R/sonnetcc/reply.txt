@@ -1,0 +1,404 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "To better understand MP Mus we obtained new ALMA observations at 3 mm and with a spatial resolution (4 au) similar to that of the 1.3 mm data presented by (cite: Ribas_2023)"}
+],
+"fields": ["protoplanetary_disks", "exoplanets"],
+"question": {
+"value": "Does the apparently structureless disk of MP Mus hide substructures at 3 mm, and can a companion in the inner disk explain both the Gaia proper motion anomaly and the 3 mm cavity?",
+"evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "To better understand MP Mus we obtained new ALMA observations at 3 mm and with a spatial resolution (4 au) similar to that of the 1.3 mm data presented by (cite: Ribas_2023)"},
+{"loc": "Confronting observations with simulations", "quote": "To explore if a protoplanet within the mass range and orbital separations suggested by the *Gaia* PMa could explain the inner cavity seen at 3 mm, we ran hydrodynamical simulations"}
+]
+},
+"targets": [
+{
+"name": "MP Mus",
+"details": [
+{"loc": "Main", "quote": "This K1V star is located 97.9$\\pm$0.1 pc away from Earth (cite: Gaia_2021b) and has an estimated age of 7-10 Myr (cite: Ribas_2023)."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "97.9 +/- 0.1 pc",
+"distance_source": "Gaia (cite: Gaia_2021b)"
+}
+],
+"alma_project_codes": [
+{"code": "2022.1.01758.S", "evidence": [{"loc": "ALMA data processing and imaging", "quote": "The MP Mus ALMA Band 3 (3 mm) data correspond to the ALMA project 2022.1.01758.S (P.I.: Á. Ribas)"}]},
+{"code": "2017.1.01167.S", "evidence": [{"loc": "ALMA data processing and imaging", "quote": "The Band 6 data (1.3 mm) are part of ALMA project 2017.1.01167.S (P.I.: S. Pérez) and were already presented in (cite: Ribas_2023)."}]},
+{"code": "2017.1.01419.S", "evidence": [{"loc": "ALMA data processing and imaging", "quote": "combined these observations with those of ALMA project 2017.1.01419.S (P.I.: C. Cáceres), which had lower spatial resolution but were useful to study gas emission in the system"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (3 mm) and Band 6 (1.3 mm)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The MP Mus ALMA Band 3 (3 mm) data correspond to the ALMA project 2022.1.01758.S"},
+{"loc": "ALMA data processing and imaging", "quote": "The Band 6 data (1.3 mm) are part of ALMA project 2017.1.01167.S"}]},
+{"field": "frequencies_and_spectral_setup", "value": "Band 3: four SPWs at 90.521, 92.416, 102.521, 104.479 GHz, 1.875 GHz each, 128 channels. Band 6: three continuum SPWs at 232.483, 244.983, 246.983 GHz (1.875 GHz, 128 channels each) plus a 12CO(2-1) SPW at 230.525 GHz (1.875 GHz, 960 channels)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "containing four spectral windows centred at 90.521, 92.416, 102.521, and 104.479 GHz, each with a bandwidth of 1.875 GHz and 128 channels"},
+{"loc": "ALMA data processing and imaging", "quote": "The correlator setup in this case contained four spectral windows, three for continuum centred at 232.483, 244.983, and 246.983 GHz (bandwidth of 1.875 GHz and 128 channels each)"},
+{"loc": "ALMA data processing and imaging", "quote": "the fourth one centred at 230.525 GHz targeting the $^{12}$CO (2-1) line (bandwidth of 1.875 GHz and 960 channels)"}]},
+{"field": "continuum_bandwidth", "value": "Band 3: four SPWs of 1.875 GHz each; Band 6: three continuum SPWs of 1.875 GHz each", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The correlator was setup to maximise the continuum sensitivity, containing four spectral windows centred at 90.521, 92.416, 102.521, and 104.479 GHz, each with a bandwidth of 1.875 GHz and 128 channels."}]},
+{"field": "configurations", "value": "Band 3: compact (1 execution) + extended (3 executions); Band 6: one compact + one extended", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The compact configuration was observed once on 21 May 2022 and contains baselines from 27 m to 3.6 km."},
+{"loc": "ALMA data processing and imaging", "quote": "The extended configuration was observed three times on 27-28 July 2022 with baselines ranging from 230 m to 16.2 km."},
+{"loc": "ALMA data processing and imaging", "quote": "The data consist of a compact configuration observed on 15 January 2018 with baselines between 15 m and 2.4 km, and an extended one taken on 16 November 2017 with baselines between 90 m and 8.2 km."}]},
+{"field": "baselines", "value": "Band 3: 27 m-3.6 km (compact), 230 m-16.2 km (extended); Band 6: 15 m-2.4 km (compact), 90 m-8.2 km (extended)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The compact configuration was observed once on 21 May 2022 and contains baselines from 27 m to 3.6 km."},
+{"loc": "ALMA data processing and imaging", "quote": "an extended one taken on 16 November 2017 with baselines between 90 m and 8.2 km"}]},
+{"field": "angular_resolution", "value": "beam 0.06 x 0.04 arcsec at both wavelengths (robust = 0); PA = -13 deg at 1.3 mm and -27 deg at 3 mm; about 4 au", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "resulting in a beam of 0.06\"$\\times$0.04\" in both cases"},
+{"loc": "Hidden substructures at 3 mm", "quote": "a spatial resolution (4 au) similar to that of the 1.3 mm data"}]},
+{"field": "sensitivity", "value": "image rms 37 uJy/beam (1.3 mm) and 7.7 uJy/beam (3 mm); peak S/N 105 (1.3 mm) and 90 (3 mm)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The corresponding image rms values are 37 $\\mu$Jy beam$^{-1}$ and 7.7 $\\mu$Jy beam$^{-1}$ at 1.3 and 3 mm, respectively."},
+{"loc": "ALMA data processing and imaging", "quote": "The peak S/N of these images is 105 at 1.3 mm and 90 at 3 mm."}]},
+{"field": "observing_dates", "value": "Band 3: 21 May 2022 (compact), 27-28 July 2022 (extended); Band 6: 15 January 2018 (compact), 16 November 2017 (extended)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The compact configuration was observed once on 21 May 2022"},
+{"loc": "ALMA data processing and imaging", "quote": "The extended configuration was observed three times on 27-28 July 2022"},
+{"loc": "ALMA data processing and imaging", "quote": "a compact configuration observed on 15 January 2018 with baselines between 15 m and 2.4 km, and an extended one taken on 16 November 2017"}]},
+{"field": "pi_or_archival_as_stated", "value": "Band 3: authors' own proposal (PI Ribas, 2022.1.01758.S); Band 6: 2017.1.01167.S (PI Perez), previously presented in Ribas et al. 2023", "evidence": [
+{"loc": "Author contributions", "quote": "A.R. led the ALMA Band 3 proposal"},
+{"loc": "ALMA data processing and imaging", "quote": "The Band 6 data (1.3 mm) are part of ALMA project 2017.1.01167.S (P.I.: S. Pérez) and were already presented in (cite: Ribas_2023)."}]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "not stated (SPW centred at 230.525 GHz; CO channels flagged, line not analysed here)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "the fourth one centred at 230.525 GHz targeting the $^{12}$CO (2-1) line"},
+{"loc": "ALMA data processing and imaging", "quote": "We chose not to include those data in this work since here we focus on the continuum only."}]}
+],
+"other_facilities": [
+{"name": "Gaia (DR2 and DR3)", "provided": {"value": "Proper motion anomaly of MP Mus from DR2 vs DR3 proper motions, scanning law, RUWE", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We determined the PMa of MP Mus by comparing the proper motion vectors of *Gaia* DR2 and *Gaia* DR3 (cite: Penoyre_2022a; Penoyre_2022b)."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Disk inclination and position angle (and stellar mass) of MP Mus", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "disk geometries from (cite: Ribas_2023)"}]}, "citation": "(cite: Ribas_2023)"},
+{"what": {"value": "1.3 mm continuum data and radial profile (R68, R90, flux and dust mass at 1.3 mm) from earlier paper", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The Band 6 data (1.3 mm) are part of ALMA project 2017.1.01167.S (P.I.: S. Pérez) and were already presented in (cite: Ribas_2023)."}]}, "citation": "(cite: Ribas_2023)"},
+{"what": {"value": "Distance to MP Mus (97.9 +/- 0.1 pc)", "evidence": [
+{"loc": "Main", "quote": "This K1V star is located 97.9$\\pm$0.1 pc away from Earth (cite: Gaia_2021b)"}]}, "citation": "(cite: Gaia_2021b)"},
+{"what": {"value": "Gaia DR2 scanning law", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We used the scanning law of *Gaia* DR2"}]}, "citation": "(cite: Boubert_2021)"},
+{"what": {"value": "Dust opacity law (kappa at 230 GHz = 2.3 cm2/g) and beta range 0 to 0.5 used for the dust mass", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "where $\\kappa_\\text{230 GHz}$=2.3 cm$^2$ g$^{-1}$ and $\\beta$ values between 0 and 0.5, as typically inferred in protoplanetary disks (cite: Tazzari_2021)"}]}, "citation": "(cite: Andrews_2005); (cite: Tazzari_2021)"},
+{"what": {"value": "Disk aspect ratio H/R = 0.1 at 100 au for PHANTOM", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "We adopted a typical disk aspect ratio $H/R$ to 0.1 at a reference radius of 100 au (cite: Law_2021; Paneque_2023)."}]}, "citation": "(cite: Law_2021; Paneque_2023)"},
+{"what": {"value": "DIANA standard dust composition for MCFOST", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "We adopted a DIANA standard dust composition (cite: Woitke_2016; Min_2016)"}]}, "citation": "(cite: Woitke_2016; Min_2016)"},
+{"what": {"value": "Upper limits on companion mass beyond 40-50 au (more massive than 2-3 MJup ruled out)", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "previous observing campaigns to detect planets and substellar objects in MP Mus have ruled-out sources more massive than $2-3~M_{\\rm Jup}$ at separations $>40-50$ au (cite: Wolff_2016; AsensioTorres_2021)"}]}, "citation": "(cite: Wolff_2016; AsensioTorres_2021)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Grid of 25 PHANTOM SPH star+planet models (a_p = 0.5, 1, 1.5, 2, 2.5 au; M_p = 3, 5, 7, 10, 15 MJup), post-processed with MCFOST to 1.3 and 3 mm images and convolved with the ALMA beams", "evidence": [
+{"loc": "Confronting observations with simulations", "quote": "We ran a grid of 25 models with different orbital radii and masses that would fit inside the 3 au cavity, namely at 0.5, 1, 1.5, 2, and 2.5 au"},
+{"loc": "Confronting observations with simulations", "quote": "convolved the results with the corresponding ALMA beams"}]},
+{"value": "Monte Carlo simulations of Gaia DR2 and DR3 astrometry for a two-body system, 500 000 runs over log-uniform mass ratio and period", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "simulations randomly sampling the log-uniform space of mass ratios (from 0.0001 to 1) and periods (from 0.016 to 1585 yr)"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline for initial calibration of both bands, then phase-only self-calibration", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "All the observations were first calibrated using the pipeline script and CASA V.6.4.1.12, and further processing was performed with CASA V.6.5.6.22."},
+{"loc": "ALMA data processing and imaging", "quote": "The observations were calibrated with the pipeline and CASA V.5.1.1-5"}]},
+{"field": "casa_version", "value": "Band 3: CASA 6.4.1.12 (pipeline), 6.5.6.22 (further processing); Band 6: CASA 5.1.1-5 (pipeline), 6.5.6.22 (rest of analysis)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "All the observations were first calibrated using the pipeline script and CASA V.6.4.1.12, and further processing was performed with CASA V.6.5.6.22."},
+{"loc": "ALMA data processing and imaging", "quote": "The observations were calibrated with the pipeline and CASA V.5.1.1-5, and we then used CASA V.6.5.6.22 for the rest of the analysis."}]},
+{"field": "flux_scale_uncertainty", "value": "5% absolute calibration in Band 3", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "The uncertainty is largely dominated by the absolute calibration (5% in Band 3, see the ALMA Technical Handbook)."}]},
+{"field": "self_calibration", "value": "Band 3: phase-only self-cal on compact and extended separately, phase centres aligned to a common value, flux of the three extended executions rescaled to the compact one, then one more phase-only round on the combined data. Band 6: same approach, CO channels flagged, compact rescaled to extended flux, final combined phase-only round. Solution intervals not stated", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "we first performed phase-only self-calibration on the extended and compact configurations separately."},
+{"loc": "ALMA data processing and imaging", "quote": "re-scaled the flux of the three extended executions to match the flux of the compact one"},
+{"loc": "ALMA data processing and imaging", "quote": "Finally, one additional round of phase-only self-calibration was applied after combining the four execution blocks."},
+{"loc": "ALMA data processing and imaging", "quote": "then re-scaled the compact configuration to have the same flux as the extended one"}]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "We imaged the data using the `tclean` routine in CASA using different weighting to achieve the best compromise between spatial resolution and sensitivity."}]},
+{"field": "deconvolver", "value": "mtmfs with nterms=1", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "we used the `mtmfs` option with `nterms=1` and scales of 0, 1, 3, and 5 beams"}]},
+{"field": "weighting_robust", "value": "robust = 0 for both wavelengths (main images); robust = -0.5 for 3 mm sanity check; robust = 0.5 image for the 3 mm flux", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "We adopted a `robust` parameter of 0 for both wavelengths"},
+{"loc": "Radial profiles and additional sanity checks", "quote": "we produced images with `robust=-0.5` to improve the angular resolution"},
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "from the image synthesised with `robust=0.5`"}]},
+{"field": "masking", "value": "not stated", "evidence": []},
+{"field": "multiscale_scales", "value": "0, 1, 3 and 5 beams", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "we used the `mtmfs` option with `nterms=1` and scales of 0, 1, 3, and 5 beams"}]},
+{"field": "line_free_channels", "value": "Channels containing CO emission flagged in the Band 6 data (channel ranges not stated)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "We flagged channels containing CO emission"}]},
+{"field": "final_beam", "value": "0.06 x 0.04 arcsec, PA = -13 deg (1.3 mm) and -27 deg (3 mm)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "resulting in a beam of 0.06\"$\\times$0.04\" in both cases"}]},
+{"field": "final_rms", "value": "37 uJy/beam (1.3 mm), 7.7 uJy/beam (3 mm)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The corresponding image rms values are 37 $\\mu$Jy beam$^{-1}$ and 7.7 $\\mu$Jy beam$^{-1}$ at 1.3 and 3 mm, respectively."}]}
+],
+"inherited": [
+{"what": {"value": "Band 6 (1.3 mm) data, their calibration and earlier radial profile are those of the earlier MP Mus paper", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The Band 6 data (1.3 mm) are part of ALMA project 2017.1.01167.S (P.I.: S. Pérez) and were already presented in (cite: Ribas_2023)."}]}, "from_reference": "(cite: Ribas_2023)"},
+{"what": {"value": "Starting disk inclination and position angle for the FRANK geometry fit", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "using the measured disk inclination and position angles as initial guesses (cite: Ribas_2023)"}]}, "from_reference": "(cite: Ribas_2023)"},
+{"what": {"value": "Dust mass calculation follows standard assumptions", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "We then calculated a dust disk mass of $0.12^{+0.03}_{-0.02}$ $M_{\\rm Jup}$ using standard assumptions (cite: Andrews_2005)"}]}, "from_reference": "(cite: Andrews_2005)"},
+{"what": {"value": "Gaia two-body astrometric simulation method and RUWE threshold", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "assuming a two body system with different mass ratios and periods (cite: Penoyre_2022a)"},
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We hence imposed a conservative threshold to the simulations of $\\rm{UWE_{DR3}}<1.1$ (cite: Penoyre_2022a)."}]}, "from_reference": "(cite: Penoyre_2022a)"},
+{"what": {"value": "Simulation duration chosen to reach a steady-state cavity", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "enough time to ensure that the inner cavity reaches a steady state (cite: Ragusa_2020)"}]}, "from_reference": "(cite: Ragusa_2020)"}
+],
+"unstated_but_needed": [
+"Self-calibration solution intervals, number of rounds per configuration beyond the ones described, and the reference antenna/SNR thresholds",
+"tclean image size, cell size, masks, threshold and iteration limits",
+"Which flux scale reference or flux calibrator was used when rescaling executions, and the rescaling factors",
+"Exact line-free/CO-flagged channel ranges in the Band 6 SPW",
+"Primary-beam correction treatment for the images and profiles",
+"FRANK settings other than alpha and w_smooth (number of bins, outer radius, uv-range cut, weight scale), and the fitted i and PA values",
+"Gaia simulation details: number of epochs actually used, astrometric noise model, treatment of the companion light ratio beyond l = q^3.5",
+"PHANTOM setup files: accretion and sink settings are partly given but the dust-gas coupling parameters, initial particle placement and snapshot used for imaging are not",
+"MCFOST inputs: dust size distribution, inclination and position angle used for imaging, the mapping from SPH dust sizes to MCFOST grains, and the snapshot time",
+"Number of bins and the uncertainty used in the GOFISH radial profile extraction; GPUVMEM parameters (pixel size, iterations, weighting)"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Calibrate and self-calibrate ALMA Band 3 and Band 6 data",
+"method": {"value": "Pipeline calibration, then phase-only self-calibration per configuration, re-centring, flux rescaling between executions and a final combined self-cal round", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "In particular, we first performed phase-only self-calibration on the extended and compact configurations separately."},
+{"loc": "ALMA data processing and imaging", "quote": "We then ran one final round of phase-only self-calibration in which both the compact and extended configurations were combined."}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "CASA 6.4.1.12 pipeline then 6.5.6.22 (Band 3); CASA 5.1.1-5 pipeline then 6.5.6.22 (Band 6)", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "All the observations were first calibrated using the pipeline script and CASA V.6.4.1.12, and further processing was performed with CASA V.6.5.6.22."},
+{"loc": "ALMA data processing and imaging", "quote": "The observations were calibrated with the pipeline and CASA V.5.1.1-5"}]}],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Image the continuum at 1.3 and 3 mm",
+"method": {"value": "tclean with mtmfs, nterms=1, multiscale 0,1,3,5 beams, robust = 0 for both bands", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "we used the `mtmfs` option with `nterms=1` and scales of 0, 1, 3, and 5 beams"},
+{"loc": "ALMA data processing and imaging", "quote": "We adopted a `robust` parameter of 0 for both wavelengths"}]},
+"software": ["CASA tclean"],
+"key_parameters": [
+{"value": "rms 37 uJy/beam (1.3 mm) and 7.7 uJy/beam (3 mm); peak S/N 105 and 90", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The peak S/N of these images is 105 at 1.3 mm and 90 at 3 mm."}]}],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Derive visibility-space radial intensity profiles",
+"method": {"value": "FRANK fit of the axisymmetric profile from visibilities (Hankel transform), geometry fitted non-parametrically first", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "Under the assumption that the the disk is axisymmetric, this software calculates the radial profile of the disk directly from the observed visibilities using a Hankel transform."}]},
+"software": ["FRANK"],
+"key_parameters": [
+{"value": "1.3 mm: alpha = 1.2, w_smooth = 5e-3", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we adopted $\\alpha$=1.2 and $w_{\\rm smooth}=5\\times10^{-3}$"}]},
+{"value": "3 mm: alpha = 1.3, w_smooth = 1e-2 (lower values gave artificial ripples)", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we found that going below $\\alpha$=1.3 or $w_{\\rm smooth}=10^{-2}$ produced clearly artificial ripples in the profile, and we thus used these values"}]}],
+"assumptions": [
+{"value": "Disk is axisymmetric", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "Under the assumption that the the disk is axisymmetric"}]}],
+"fitting": {"value": "FRANK non-parametric geometry fit with inclination and PA initialised from Ribas et al. 2023; hyper-parameters alpha and w_smooth explored", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we first fit the geometry of the system with the non-parametric option and using the measured disk inclination and position angles as initial guesses (cite: Ribas_2023)"}]},
+"validation": {"value": "Residual visibilities imaged: below 3 rms at 3 mm; two blobs near 5 rms at 1.3 mm. Fitted i and PA compatible with 1 deg uncertainty", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "the residuals are below three times the image noise (rms) in the case of the 3 mm observations, and the 1.3 mm show only two localised blobs around the 5 rms level"}]}},
+{"order": 4, "goal": "Check substructures are not FRANK artefacts",
+"method": {"value": "Radial profiles from robust=-0.5 tclean images with GOFISH, and a GPUVMEM image with no entropy term (positivity only)", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we also calculated the radial profiles directly from the synthesised images using the GOFISH code (cite: GoFish)"},
+{"loc": "Radial profiles and additional sanity checks", "quote": "The self-calibrated continuum data were super-resolved using GPUVMEM with no entropy term in the objective function (cite: Carcamo_2018); image positivity alone provided sufficient regularisation (cite: Perez_2020)."}]},
+"software": ["GOFISH", "GPUVMEM", "CASA tclean"],
+"key_parameters": [
+{"value": "robust = -0.5 for the 3 mm image", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we produced images with `robust=-0.5` to improve the angular resolution"}]}],
+"assumptions": [],
+"fitting": {"value": "GPUVMEM maximum-entropy-family image reconstruction with positivity only", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "The self-calibrated continuum data were super-resolved using GPUVMEM with no entropy term in the objective function"}]},
+"validation": {"value": "Ring and two gaps visible in the image profile; cavity only tentative in GOFISH profile but visible in GPUVMEM image", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "The ring and two gaps are also visible in the image profile. The cavity is only tentatively detected in the profile as a flattening of the intensity in the inner regions."},
+{"loc": "Radial profiles and additional sanity checks", "quote": "The GPUVMEM image reproduces the same substructures identified in the `tclean` image while also revealing a small central cavity."}]}},
+{"order": 5, "goal": "Measure 3 mm flux, dust mass and disk radii",
+"method": {"value": "Flux from robust=0.5 image; dust mass from optically thin emission with bootstrap over flux, temperature and beta; radii from the cumulative intensity profile of robust=0 images", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "To determine the disk mass and its uncertainty we bootstrapped 1000 estimates by varying the 3 mm flux within its uncertainty"},
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "based on the cumulative curve of the intensity profiles"}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Dust temperature 20 K (Normal, sigma 2.5 K in bootstrap); beta uniform 0 to 0.5; 1000 bootstrap draws; median and 16/84 percentiles reported", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "as well as the temperature value following a Normal distribution with a standard deviation of 2.5 K, and $\\beta$ with a uniform distribution between 0 and 0.5"},
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "The reported dust mass and uncertainties correspond to the median and the 16% and 84% values."}]},
+{"value": "kappa_230GHz = 2.3 cm2/g", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "where $\\kappa_\\text{230 GHz}$=2.3 cm$^2$ g$^{-1}$ and $\\beta$ values between 0 and 0.5"}]}],
+"assumptions": [
+{"value": "Optically thin emission, average dust temperature 20 K, power-law dust opacity; gas-to-dust ratio 100 used later for disk mass in simulations", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "optically thin emission, an average dust temperature of 20 K, and a power-law dependence of the dust opacity with frequency"}]}],
+"fitting": {"value": "Bootstrap of 1000 estimates", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "we bootstrapped 1000 estimates"}]},
+"validation": {"value": "Dust mass compatible with that from the 1.3 mm flux in Ribas et al. 2023", "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "This mass is compatible with the dust mass derived from the 1.3 mm flux in (cite: Ribas_2023)."}]}},
+{"order": 6, "goal": "Constrain companion mass and separation from the Gaia proper motion anomaly",
+"method": {"value": "Compare Gaia DR2 and DR3 proper motions, then simulate Gaia observations of a two-body system with 500 000 random draws and keep those matching the observed anomaly and RUWE", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We then used these epochs and angles, together with realistic *Gaia* uncertainties, to simulate the *Gaia* DR2 and DR3 observations of MP Mus"},
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We then selected only those simulations which resulted in astrometric properties compatible with what is observed in MP Mus"}]},
+"software": ["ASTROMET"],
+"key_parameters": [
+{"value": "Mass ratio 0.0001 to 1 and period 0.016 to 1585 yr, log-uniform; selection UWE_DR3 < 1.1; stellar mass 1.30 +/- 0.08 Msun, inclination 32 +/- 1 deg, PA 10 +/- 1 deg", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "simulations randomly sampling the log-uniform space of mass ratios (from 0.0001 to 1) and periods (from 0.016 to 1585 yr)"},
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We hence imposed a conservative threshold to the simulations of $\\rm{UWE_{DR3}}<1.1$ (cite: Penoyre_2022a)."}]}],
+"assumptions": [
+{"value": "No eccentricity; light ratio l = q^3.5; PMa dominated by a single companion", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We assumed no eccentricity and a relation between the mass"},
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "In this work we assume that, although there may be other planets in MP Mus, its PMa is dominated by a single companion."}]}],
+"fitting": {"value": "Monte Carlo rejection sampling (no fit)", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "The mass of the primary source, the viewing angles, and the orbital phase were sampled at random every time"}]},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 7, "goal": "Run SPH hydrodynamic models of a star plus planet in the disk",
+"method": {"value": "Grid of 25 3D PHANTOM simulations, one-fluid dust with five grain sizes, evolved for 1000 planet orbits", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "We ran 3D global hydrodynamical simulations using the SPH code PHANTOM (cite: Price_2018)"},
+{"loc": "PHANTOM simulations", "quote": "We let the simulations evolve for $1000$ planet orbits"}]},
+"software": ["PHANTOM"],
+"key_parameters": [
+{"value": "N = 1e6 particles; R_out = 50 au; R_in = 1.5 a_p; alpha_AV = 0.2, beta_AV = 2 (alpha_ss = 5e-3); disk mass 0.01 Msun; star 1.3 Msun; H/R = 0.1 at 100 au; grains 1 um to 0.5 cm, n(s) proportional to s^-3.5, 3 g/cm3", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "The resolution is set by the number of particles ($N=10^6$)."},
+{"loc": "PHANTOM simulations", "quote": "We simulated five dust grains sizes ranging from $1~\\mu$m to 0.5 cm and with intrinsic density 3 g cm$^{-3}$."},
+{"loc": "PHANTOM simulations", "quote": "The outer radius is initialised to 50 au as traced by the 1.3 mm continuum observations"}]}],
+"assumptions": [
+{"value": "Gas-to-dust ratio 100, locally isothermal disk with T proportional to R^-0.5 and surface density proportional to R^-1", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "The dust component is set by adopting an initial gas-to-dust ratio of 100 uniformly across the entire disk."},
+{"loc": "PHANTOM simulations", "quote": "the initial surface density profile follows $\\Sigma \\propto R^{-1}$"}]}],
+"fitting": {"value": "No fit; grid over a_p and M_p compared with observed cavity", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "we ran a grid of 25 simulations varying the semi-major axis and the mass of the companion within ranges compatible with the *Gaia* PMa"}]},
+"validation": {"value": "Cavity radius is 3-4 times the primary sink radius, so it is tidal and not a numerical artefact", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "the radius of cavity we observe is always 3-4 times bigger, meaning that it is carved by the tidal interaction rather than being a numerical artefact"}]}},
+{"order": 8, "goal": "Radiative transfer of the SPH models and comparison with ALMA profiles",
+"method": {"value": "MCFOST Monte Carlo radiative transfer on the SPH Voronoi mesh, 1.3 and 3 mm images convolved with ALMA beams, radial profiles with GOFISH", "evidence": [
+{"loc": "Confronting observations with simulations", "quote": "We then performed radiative transfer with the MCFOST code (cite: MCFOST; MCFOST2) to produce continuum images at 1.3 and 3 mm and convolved the results with the corresponding ALMA beams."}]},
+"software": ["MCFOST", "GOFISH"],
+"key_parameters": [
+{"value": "Star: 5000 K black body, R = 1.25 Rsun, M = 1.3 Msun; N_gamma = 1e8 photons for temperature and for ray-tracing images", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "modelled as a black body with temperature of 5000 K"},
+{"loc": "PHANTOM simulations", "quote": "Images are then computed via ray-tracing again with $N_\\gamma = 10^8$ photons."}]}],
+"assumptions": [
+{"value": "DIANA dust: 60% silicates, 15% amorphous carbon, 25% porosity; local thermal equilibrium; passive stellar heating", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "i.e. 60% silicates, 15% amorphous carbon (cite: Dorschner_1995; Zubko_1996) and 25% porosity"},
+{"loc": "PHANTOM simulations", "quote": "in order to compute the temperature structure of the disk assuming local thermal equilibrium"}]}],
+"fitting": {"value": "No fit; qualitative comparison of cavity size and depth at 1.3 vs 3 mm", "evidence": [
+{"loc": "Confronting observations with simulations", "quote": "The mass of the companion does not have a strong effect on the cavity size, but more massive objects result in deeper cavities."}]},
+"validation": {"value": "Models at 1-2 au reproduce the cavity size; some also show the cavity at 3 mm but not at 1.3 mm", "evidence": [
+{"loc": "Confronting observations with simulations", "quote": "the simulations show that the observed cavity can be successfully explained by a gas giant orbiting at 1-2 au"}]}}
+],
+"software": [
+{"name": "CASA", "version": "6.4.1.12 and 6.5.6.22 (Band 3); 5.1.1-5 and 6.5.6.22 (Band 6)", "used_for": {"value": "Pipeline calibration, self-calibration, imaging", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "All the observations were first calibrated using the pipeline script and CASA V.6.4.1.12, and further processing was performed with CASA V.6.5.6.22."}]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Continuum imaging with mtmfs", "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "We imaged the data using the `tclean` routine in CASA"}]}},
+{"name": "FRANK", "version": "not stated", "used_for": {"value": "Visibility-space radial intensity profiles", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "The radial profiles in Fig. [3](#fig:rad_profiles) were created using the FRANK code (cite: frank)."}]}},
+{"name": "GOFISH", "version": "not stated", "used_for": {"value": "Radial profiles from images (observations and simulated images)", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we also calculated the radial profiles directly from the synthesised images using the GOFISH code (cite: GoFish)"}]}},
+{"name": "GPUVMEM", "version": "not stated", "used_for": {"value": "Maximum-entropy-family image reconstruction as a check on substructures", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "we also used the non-parametric GPUVMEM image reconstruction code (cite: Carcamo_2018) to create a maximum-entropy version of the image"}]}},
+{"name": "PHANTOM", "version": "not stated", "used_for": {"value": "3D SPH hydrodynamics of star, planet and dusty disk", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "We ran 3D global hydrodynamical simulations using the SPH code PHANTOM (cite: Price_2018)"}]}},
+{"name": "MCFOST", "version": "not stated", "used_for": {"value": "Monte Carlo radiative transfer, temperature structure and continuum images", "evidence": [
+{"loc": "PHANTOM simulations", "quote": "The thermal structure and the 1.3 mm and 3 mm continuum emission images were computed using the Monte Carlo radiative transfer code MCFOST (cite: MCFOST; MCFOST2)."}]}},
+{"name": "ASTROMET", "version": "not stated", "used_for": {"value": "Listed among the packages used; the text does not say what it was used for, presumably the Gaia astrometric simulations", "evidence": [
+{"loc": "Code availability", "quote": "The Python packages used in this study are publicly available:"},
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "assuming a two body system with different mass ratios and periods (cite: Penoyre_2022a)"}]}}
+],
+"results_numeric": [
+{"quantity": "Gaia proper motion anomaly significance", "value": "4.5", "uncertainty": "not stated", "units": "sigma", "from_step": 6, "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "The resulting PMa has a significance of 4.5 $\\sigma$"}]},
+{"quantity": "Proper motion change |delta mu|", "value": "0.21", "uncertainty": "0.05", "units": "mas/yr", "from_step": 6, "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "implies a change in the proper motion of $|\\Delta \\mu|=0.21\\pm0.05$ mas yr$~^{-1}$"}]},
+{"quantity": "RUWE Gaia DR2 and DR3", "value": "0.98 and 0.96", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "(of 0.98 and 0.96, respectively)"}]},
+{"quantity": "Companion orbital separation implied by PMa", "value": "<30 au (required mass increases with separation; a < 1 au excluded by RUWE)", "uncertainty": "not stated", "units": "au", "from_step": 6, "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "the PMa of MP Mus is most likely due to a companion at orbital separations $<$30 au"}]},
+{"quantity": "3 mm ring radius", "value": "10.5", "uncertainty": "not stated", "units": "au", "from_step": 3, "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "the new 3 mm data reveal a ring at 10.5 au and two gaps at 7.5 and 15 au that are undetected at shorter wavelengths"}]},
+{"quantity": "3 mm gap radii", "value": "7.5 and 15", "uncertainty": "not stated", "units": "au", "from_step": 3, "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "the new 3 mm data reveal a ring at 10.5 au and two gaps at 7.5 and 15 au that are undetected at shorter wavelengths"}]},
+{"quantity": "3 mm inner cavity radius", "value": "~3", "uncertainty": "not stated", "units": "au", "from_step": 3, "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "an inner cavity with a radius of $\\sim$3 au, as well as a ring and two gaps"}]},
+{"quantity": "Image rms at 1.3 mm", "value": "37", "uncertainty": "not stated", "units": "uJy/beam", "from_step": 2, "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The corresponding image rms values are 37 $\\mu$Jy beam$^{-1}$ and 7.7 $\\mu$Jy beam$^{-1}$ at 1.3 and 3 mm, respectively."}]},
+{"quantity": "Image rms at 3 mm", "value": "7.7", "uncertainty": "not stated", "units": "uJy/beam", "from_step": 2, "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The corresponding image rms values are 37 $\\mu$Jy beam$^{-1}$ and 7.7 $\\mu$Jy beam$^{-1}$ at 1.3 and 3 mm, respectively."}]},
+{"quantity": "Peak S/N at 1.3 and 3 mm", "value": "105 and 90", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "ALMA data processing and imaging", "quote": "The peak S/N of these images is 105 at 1.3 mm and 90 at 3 mm."}]},
+{"quantity": "3 mm flux density", "value": "22", "uncertainty": "1 (dominated by 5% absolute calibration)", "units": "mJy", "from_step": 5, "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "We measured a 3 mm flux of 22$\\pm$1 mJy from the image synthesised with `robust=0.5`."}]},
+{"quantity": "Dust disk mass from 3 mm flux", "value": "0.12", "uncertainty": "+0.03/-0.02", "units": "MJup", "from_step": 5, "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "We then calculated a dust disk mass of $0.12^{+0.03}_{-0.02}$ $M_{\\rm Jup}$ using standard assumptions"}]},
+{"quantity": "3 mm radii enclosing 68%, 90%, 95% of flux", "value": "22, 35, 44", "uncertainty": "5 each", "units": "au", "from_step": 5, "evidence": [
+{"loc": "Properties and additional analysis of the ALMA data at 3 mm", "quote": "The radii encompassing 68%, 90%, and 95% of the 3 mm continuum flux are 22$\\pm$5 au, 35$\\pm$5 au, and 44$\\pm$5 au respectively"}]},
+{"quantity": "Companion mass needed if located in the gaps (7.5 or 15 au)", "value": ">10", "uncertainty": "not stated", "units": "MJup", "from_step": 6, "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "it would require masses above $10~M_{\\rm Jup}$ to account for the observed signal"}]}
+],
+"findings_qualitative": [
+{"value": "The 3 mm image shows a ring and two gaps and a barely resolved inner cavity that are invisible at 1.3 mm at the same resolution", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "the new 3 mm data reveal a ring at 10.5 au and two gaps at 7.5 and 15 au that are undetected at shorter wavelengths"}]},
+{"value": "SPH models with a gas giant at 1-2 au reproduce the cavity size; planets at 0.5 au give no resolvable cavity and at 2 au or more give cavities that are too large", "evidence": [
+{"loc": "Confronting observations with simulations", "quote": "none of the models with an orbital separation of 0.5 au carve an inner cavity large enough to be discernible with the current spatial resolution, regardless of their mass"},
+{"loc": "Confronting observations with simulations", "quote": "planets at $\\geq$2 au produce cavities that are too large to be compatible with the observations"}]},
+{"value": "Census of disk substructures is potentially very incomplete and long-wavelength high-resolution surveys are needed", "evidence": [
+{"loc": "Discussion", "quote": "indicate that our current census of disk substructures (cite: Bae_2023) is potentially very incomplete"}]}
+],
+"claims": [
+{"hypothesis": "MP Mus has hidden substructures that are not visible at 1.3 mm", "experiment": "New Band 3 imaging at 4 au resolution compared with 1.3 mm data, plus FRANK profiles and image-plane checks", "result": "Ring at 10.5 au, gaps at 7.5 and 15 au and a ~3 au cavity at 3 mm", "finding": "The disk is structured; longer wavelengths reveal substructure hidden by optical depth and weaker grain trapping contrast", "support": "supported", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "The 3 mm data prove that MP Mus is indeed structured"}]},
+{"hypothesis": "A companion explains the Gaia proper motion anomaly of MP Mus", "experiment": "Simulated Gaia DR2 and DR3 astrometry for two-body systems and matched the observed PMa and RUWE", "result": "Companion at <30 au, mass increasing with separation; short periods (a<1 au) ruled out", "finding": "Gaia and ALMA together suggest a giant protoplanet in the inner 1-3 au", "support": "supported", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "the *Gaia* and ALMA data strongly suggest that MP Mus harbours a giant protoplanet in the inner 1-3 au of the system"}]},
+{"hypothesis": "A planet in the PMa-allowed range can produce the observed inner cavity", "experiment": "25 PHANTOM SPH simulations plus MCFOST imaging at 1.3 and 3 mm", "result": "Planets at 1-2 au carve a cavity of the right size, sometimes visible at 3 mm only", "finding": "A gas giant of a few to ~15 MJup at 1-2 au is consistent with the cavity", "support": "partially", "evidence": [
+{"loc": "Supplementary material", "quote": "should therefore be considered as a strong indication that planets with such properties can explain the observations, rather than as precise measurements of the planet location and mass"}]},
+{"hypothesis": "The two gaps are not the origin of the PMa", "experiment": "Compare mass required at 7.5 and 15 au with the narrow gap widths", "result": "Required mass above 10 MJup would open much wider gaps", "finding": "Gaps may host planets but those are unlikely to cause the PMa; the inner cavity is the favoured location", "support": "supported", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "even if planets may be carving those gaps, they are unlikely to be the cause of the PMa"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Longer wavelengths have lower dust optical depth and trace larger, more strongly trapped grains, so substructures may show higher contrast", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "Longer wavelengths offer two main advantages to search for substructures in disks."}]},
+{"field": "why_this_method", "value": "FRANK works in visibility space and reaches higher angular resolution than synthesised images", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "We do this in visibility space with the code FRANK (cite: frank), which achieves higher angular resolution and recovers smaller structures than working with synthesised images."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Each of the cavity and two gaps carved by a different planet, or a single planet carving multiple gaps, or non-planet mechanisms, are acknowledged but not tested", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "we caution that mechanisms other than planets can open cavities and gaps"}]},
+{"value": "Companion in either gap (7.5 or 15 au) rejected as the PMa source because it would need >10 MJup", "evidence": [
+{"loc": "Hidden substructures at 3 mm", "quote": "even if planets may be carving those gaps, they are unlikely to be the cause of the PMa"}]}
+],
+"limitations_admitted": [
+{"value": "Only a two-body interaction is modelled in the Gaia analysis; multi-body interpretation is more complex", "evidence": [
+{"loc": "The Gaia proper motion anomaly of MP Mus", "quote": "We note that we only model a two-body interaction, and the interpretation of the PMa becomes more complex for multi-body systems."}]},
+{"value": "Simulation outcome is highly sensitive to disk and dust properties that were not explored in detail", "evidence": [
+{"loc": "Full set of PHANTOM simulations", "quote": "this is highly sensitive to the disk and dust properties which we have not explored in detail"}]},
+{"value": "Cavity only tentatively detected in image-plane profile", "evidence": [
+{"loc": "Radial profiles and additional sanity checks", "quote": "The cavity is only tentatively detected in the profile as a flattening of the intensity in the inner regions."}]}
+],
+"referee_caveats_inferred": [
+"The planet case rests on a single Gaia PMa at 4.5 sigma; no independent detection of the companion",
+"The inner cavity is near the beam size (~4 au beam vs ~3 au radius) and depends on FRANK hyper-parameters",
+"SPH models used a fixed disk and dust setup without exploring it, so the 3 mm vs 1.3 mm cavity contrast is not robust",
+"Dust mass assumes optically thin 3 mm emission and 20 K, while inner disk may be optically thick"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA programs 2022.1.01758.S and 2017.1.01167.S and Gaia data are public", "evidence": [
+{"loc": "Data availability", "quote": "All the data used in this work are publicly available through the ALMA archive (programs 2022.1.01758.S and 2017.1.01167.S) and the *Gaia* archive."}]}
+],
+"code_released": [
+{"value": "ASTROMET, FRANK, PHANTOM, MCFOST and GPUVMEM are listed as publicly available; no scripts of the authors mentioned", "evidence": [
+{"loc": "Code availability", "quote": "The Python packages used in this study are publicly available:"}]}
+],
+"missing_for_reproduction": [
+"Self-calibration solution intervals and per-step parameters",
+"tclean image size, cell size, masks and thresholds",
+"Exact FRANK configuration beyond alpha and w_smooth, and fitted geometry",
+"Full PHANTOM and MCFOST input files and snapshot selection",
+"Gaia simulation configuration files and random seeds"
+],
+"estimated_data_volume_inferred": "About 100-300 GB of raw measurement sets (5 Band 3 and 2 Band 6 executions, up to 16 km baselines), a few tens of GB after averaging; Gaia data are small",
+"score_inferred": 3,
+"score_reason": "Data are public and imaging settings (robust, scales, FRANK alpha and w_smooth) and many simulation parameters are given, but self-cal solints, image geometry, masks and simulation inputs are missing, so exact numbers need tuning.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Public ALMA Band 3 data, a reasonably specified tclean and FRANK recipe, and numeric results (ring/gap radii, flux 22 mJy, dust mass 0.12 MJup, R68/R90/R95) make the observational part redoable.",
+"methods_papers": [
+{"citation": "(cite: frank) Jennings et al. 2020", "why": "FRANK visibility-space radial profile fitting"},
+{"citation": "(cite: Penoyre_2022a)", "why": "Gaia astrometric simulations and RUWE threshold"},
+{"citation": "(cite: Price_2018)", "why": "PHANTOM SPH code"},
+{"citation": "(cite: Carcamo_2018)", "why": "GPUVMEM image reconstruction"},
+{"citation": "(cite: Andrews_2005)", "why": "Standard dust mass assumptions"}
+],
+"companion_papers": [
+{"citation": "(cite: Ribas_2023)", "why": "Earlier ALMA 1.3 mm study of MP Mus with the same Band 6 data and disk geometry"},
+{"citation": "(cite: Aguayo_2025)", "why": "Higher-resolution 0.89 mm observations confirming the tentative outer ring"}
+],
+"related_projects_or_surveys": ["2017.1.01419.S (lower-resolution Band 6 data with CO)"]
+}

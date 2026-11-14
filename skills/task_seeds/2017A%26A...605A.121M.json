@@ -1,0 +1,201 @@
+{
+ "bibcode": "2017A&A...605A.121M",
+ "title": "Phase correction for ALMA. Investigating water vapour radiometer scaling: The long-baseline science verification data case study",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201731197",
+ "arxiv_id": "1707.03506",
+ "fields": [
+  "instrumentation"
+ ],
+ "question": "Whether scaling the water vapour radiometer (WVR) solutions in wvrgcal improves phase correction, coherence and image S/N in ALMA long-baseline science verification data, and how the optimal scaling relates to weather conditions",
+ "alma_project_codes": [
+  "2011.0.00013.SV",
+  "2011.0.00014.SV",
+  "2011.0.00015.SV",
+  "2011.0.00016.SV"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 6, 7 (Juno B6; Mira B3, B6; HL Tau B3, B6, B7; SDP.81 B4, B6, B7)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract and unwrap bandpass-calibrator phases",
+   "method": "Extract phases from widest single spectral window of bandpass calibrator and unwrap",
+   "software": [
+    "CASA",
+    "custom python package"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Find optimal WVR scaling factor",
+   "method": "Apply standard WVR solutions scaled by a range of factors to raw phases (via unity point-source dataset) and minimise the two-point-deviation of corrected phases",
+   "software": [
+    "CASA",
+    "wvrgcal",
+    "custom python package"
+   ],
+   "key_parameters": [
+    "T = 6, 12, 32, 64 s; scale range 0.05-2.5, step 0.01; reference-antenna-only or all baselines"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate coherence improvement",
+   "method": "Coherence from exp(-phi_rms^2/2) using phase RMS over 60 s and full bandpass; ratio of scaled to standard WVR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Gaussian random phase noise"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Correlate scaling with weather",
+   "method": "Spearman rank correlation of scaling factors against weather parameters",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Image bandpass and science targets with and without scaling",
+   "method": "Re-run reduction with scaling in wvrgcal; compare peak flux (dirty) and S/N (cleaned) of scaled vs standard",
+   "software": [
+    "CASA",
+    "wvrgcal"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "EBs with TPD improvement",
+   "value": "62 of 75",
+   "uncertainty": "not stated",
+   "units": "EBs",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Scaling factors",
+     "quote": "There are 62 EBs of the 75 that indicate the TPD statistic of the phase fluctuation is improved"
+    }
+   ]
+  },
+  {
+   "quantity": "EBs with coherence improvement (full bandpass)",
+   "value": "39 of 75",
+   "uncertainty": "not stated",
+   "units": "EBs",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Scaling factors",
+     "quote": "39 of the total 75 EBs, have a coherence improvement"
+    }
+   ]
+  },
+  {
+   "quantity": "EBs with coherence improvement over 60 s",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "EBs",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Scaling factors",
+     "quote": "only 12 EBs indicate there is an improvement on shorter timescales"
+    }
+   ]
+  },
+  {
+   "quantity": "Optimal scaling factor range (6 and 12 s)",
+   "value": "~0.6 to ~2.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Scaling factors",
+     "quote": "The scaling factors we find vary from $\\sim$0.6 to $\\sim$2.0 for ($T$= 6 and 12 s)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho scaling vs PWV",
+   "value": "-0.76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.1",
+     "quote": "$-$0.38, $-$0.39, and $-$0.76 for pressure, temperature, and PWV, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Bandpass images improved",
+   "value": "33 of 39",
+   "uncertainty": "not stated",
+   "units": "EBs",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1 Bandpass calibrator",
+     "quote": "there are 33 that have image improvements (25 of these $>$5%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Science images with S/N improvement",
+   "value": "23 of 33",
+   "uncertainty": "not stated",
+   "units": "EBs",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "a reduced number of 23 show science target image improvements, in terms of S/N."
+    }
+   ]
+  },
+  {
+   "quantity": "Scaling factor for EB X760 (12 s)",
+   "value": "1.42",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "scaled WVR solution, factor 1.42, applied to the raw data"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Briggs robust, clean thresholds, cell size, multiscale scales for science images (only in SV scripts)",
+  "Exact wvrgcal options besides scale factor",
+  "Number of clean iterations used for science images",
+  "Which antennas were additionally flagged in scaling analysis"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and wvrgcal options",
+  "Science imaging parameters (only in SV scripts)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and released code, but imaging and calibration details deferred to SV scripts and CASA version missing.",
+ "rediscovery_reason": "Public data, released code, numeric results in tables.",
+ "source_card": "cards/2017A%26A...605A.121M/sonnet/card.md"
+}

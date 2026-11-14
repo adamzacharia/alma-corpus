@@ -1,0 +1,299 @@
+# First extragalactic detection of a phosphorus-bearing molecule with ALCHEMI: Phosphorus nitride (PN)
+
+`2022A&A...659A.158H` | Astronomy and Astrophysics 2022 | first author: Haasler, D. | arXiv: 2112.04849 | DOI: 10.1051/0004-6361/202142032
+
+Card schema 1.0 | model gemini-4-argon | depth full | type large_program_or_survey
+
+## Science
+
+- Fields: astrochemistry, nearby_galaxies, star_formation
+- Question: Search for P-bearing molecules outside the Milky Way towards the nearby starburst Galaxy NGC 253 and investigate the interstellar chemistry regulating their abundances.  
+  > "We searched for P-bearing molecules outside the Milky Way towards the nearby starburst Galaxy NGC 253." (abstract); "We present in this work a search for P-bearing molecules towards the galaxy NGC 253 using the spectral line survey of the ALMA Comprehensive High-resolution Extragalactic Molecular Inventory (ALCHEMI; (cite: Martin2021))." (Introduction)
+- Target **NGC 253 CMZ**: coordinates RA(ICRS) = 00h47m33.26s, DEC(ICRS) = -25d17m17.7s  
+  > "The observations target the CMZ of NGC 253 covering a rectangular area of $50'' \times 20''$, that is 850 $\times$ 340 pc centred at RA(ICRS) = 00$^h$47$^m$33.26$^s$, DEC(ICRS) = $-$25º17$'$17.7$''$." (Observations); z/distance _not stated_; distance from _not stated_
+- Target **NGC 253 GMC 6**: coordinates _not stated_; z/distance _not stated_; distance from _not stated_
+- Target **NGC 253 GMC 4**: coordinates _not stated_; z/distance _not stated_; distance from _not stated_
+
+## Data provenance
+
+- ALMA projects: 2017.1.00161.L, 2018.1.00162.S
+- bands: Bands 3, 4, 5, 6, and 7  
+  > "ALCHEMI is an unbiased spectral survey that uses the ALMA main array and ACA (ALMA Compact Array) configurations to fully cover the bands 3, 4, 5, 6, and 7 (from 84.2 to 373.2 GHz)" (Observations)
+- frequencies and spectral setup: 84.2 to 373.2 GHz, 10 km s^-1 channels  
+  > "fully cover the bands 3, 4, 5, 6, and 7 (from 84.2 to 373.2 GHz) down to an average sensitivity of $\sim$15 mK in 10 km s$^{-1}$ channels" (Observations)
+- continuum bandwidth: _not stated_
+- arrays: ALMA main array and ACA (ALMA Compact Array)  
+  > "ALCHEMI is an unbiased spectral survey that uses the ALMA main array and ACA (ALMA Compact Array) configurations" (Observations)
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: 1.6'' (28 pc)  
+  > "at a common angular resolution of $1.6''$ (28 pc)." (Observations)
+- max recoverable scale: _not stated_
+- sensitivity: ~15 mK in 10 km s^-1 channels  
+  > "down to an average sensitivity of $\sim$15 mK in 10 km s$^{-1}$ channels at a common angular resolution of $1.6''$ (28 pc)." (Observations)
+- time on source: _not stated_
+- observing dates: _not stated_
+- pi or archival as stated: ALCHEMI ALMA Large Program  
+  > "We used observations from the ALMA Comprehensive High-resolution Extragalactic Molecular Inventory (ALCHEMI), which is an ALMA Large Program to study the molecular inventory of the starburst Galaxy NGC 253 ((cite: Martin2021))." (Observations)
+- Line: PN J=2-1 (93.979 GHz)
+- Line: PN J=3-2 (140.967 GHz)
+- Line: PO J=5/2-3/2, Omega=1/2, F=3-2, l=e (108.998 GHz)
+- Line: PO J=5/2-3/2, Omega=1/2, F=2-1, l=e (109.045 GHz)
+- Line: PH3 J=1-0 (266.945 GHz)
+- Line: CP J=5/2-3/2, F=3-2 (95.710 GHz)
+- Line: CP J=5/2-3/2, F=2-1 (95.713 GHz)
+- Line: CCP J=15/2-13/2, Omega=1/2, F=8-7, l=e (95.406 GHz)
+- Line: CCP J=15/2-13/2, Omega=1/2, F=7-6, l=e (95.410 GHz)
+- Line: CCP J=15/2-13/2, Omega=1/2, F=8-7, l=f (95.456 GHz)
+- Line: CCP J=15/2-13/2, Omega=1/2, F=7-6, l=f (95.460 GHz)
+- Line: 29SiO J=2-1 (85.759 GHz)
+- Line: 29SiO J=3-2 (128.637 GHz)
+- Line: 29SiO J=4-3 (171.512 GHz)
+- Line: C34S J=2-1 (96.412 GHz)
+- Line: C34S J=3-2 (144.617 GHz)
+- External data: Total H2 column density (N_H2) from dust continuum observations  
+  > "We derived the relative abundance of PN compared to H$_{2}$, using the total column density of H$_{2}$, *N$_{\rm H_2}$*, derived by (cite: Mangum2019) from dust continuum observations with a similar spatial resolution than ALCHEMI (1.5$''\times$0.9$''$)." (Detections of phosphorus nitride (PN) and LTE analysis) [from (cite: Mangum2019)]
+- External data: GMC labelling in NGC 253  
+  > "search for PN emission towards the Giant Molecular Clouds (GMCs) shown in Fig. 1 (we have adopted the labelling from (cite: Leroy2015)), with the exception of GMC 5." (Detections of phosphorus nitride (PN) and LTE analysis) [from (cite: Leroy2015)]
+- External data: Collisional data between PN and p-H2 from BASECOL  
+  > "We used the collisional data between PN and p-H$_2$ (cite: Najar2017PNData) taken from BASECOL (cite: Dubernet2013Basecol; Ba2020basecol) and prepared for RADEX with SPECTCOL." (Non-LTE analysis of PN) [from (cite: Najar2017PNData; Dubernet2013Basecol; Ba2020basecol)]
+- External data: Spectroscopic data from the CDMS and JPL catalogues  
+  > "Spectroscopic data obtained from the CDMS catalogue: PN entry 045511 (September 2019), PO entry 047507 (October 2019), PH$_{3}$ entry 034501 (May 2013), CP entry 043501 (March 2000), CCP entry 055503 (April 2009), $^{29}$SiO entry 045504 (January 2014), and C$^{34}$S entry 046501 (January 2004)." (Table 1); "The spectroscopic data of PS was taken from the entry 63007 (January 1997) of the Jet Propulsion Laboratory (JPL) catalogue." (Other P-bearing molecules) [from (cite: Muller2001; Endres2016)]
+- External data: Galactic PO/PN and PH3/PN ratios and PN, 29SiO, C34S column densities  
+  > "Following this work, we show in Fig. 5 the column densities of PN and $^{29}$SiO, both normalised by the column density of C$^{34}$S, towards different Galactic sources detected previously." (Correlation between PN and SiO abundances: Role of shocks) [from (cite: Rivilla2018; Rivilla2020; Rivilla2016; Bernal2021; Lefloch2016; Bergner2019)]
+- Simulation/model as data: Chemical models of P-bearing molecules under shocks and varying cosmic-ray ionisation rates from Jiménez-Serra et al. (2018)  
+  > "In this section, we compare the observational results with the predictions of the chemical models presented by (cite: Jimenez-Serra2018), who studied the chemistry of P-bearing molecules under different physical conditions such as presence of shocks, and different cosmic-ray ionisation rates ($\zeta$) and gas densities." (Comparison with chemical models)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: _not stated_
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: _not stated_
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: _not stated_
+- weighting robust: _not stated_
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: _not stated_
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: 1.6'' (28 pc)  
+  > "at a common angular resolution of $1.6''$ (28 pc)." (Observations)
+- final rms: ~15 mK in 10 km s^-1 channels  
+  > "down to an average sensitivity of $\sim$15 mK in 10 km s$^{-1}$ channels at a common angular resolution of $1.6''$ (28 pc)." (Observations)
+
+### Inherited from earlier work
+
+- ALCHEMI observations and data reduction  
+  > "More details about the observations and the data reduction of ALCHEMI are extensively presented in (cite: Martin2021)." (Observations) [from (cite: Martin2021)]
+- GMC labelling in NGC 253  
+  > "search for PN emission towards the Giant Molecular Clouds (GMCs) shown in Fig. 1 (we have adopted the labelling from (cite: Leroy2015)), with the exception of GMC 5." (Detections of phosphorus nitride (PN) and LTE analysis) [from (cite: Leroy2015)]
+- 3-sigma column density upper limit calculation method in MADCUBA  
+  > "MADCUBA calculates the upper limit of the column density using the 3$\sigma$ value of the integrated intensity (see details in (cite: Martin2019b))." (Detections of phosphorus nitride (PN) and LTE analysis) [from (cite: Martin2019b)]
+- Method of normalising PN and 29SiO column densities by C34S  
+  > "Following this work, we show in Fig. 5 the column densities of PN and $^{29}$SiO, both normalised by the column density of C$^{34}$S, towards different Galactic sources detected previously." (Correlation between PN and SiO abundances: Role of shocks) [from (cite: Rivilla2018)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Exact sky coordinates (RA, Dec) of the continuum peak pixels extracted for GMCs 1-4 and 6-10
+- Exact numerical values of N(H2) from Mangum et al. (2019) adopted for GMCs 4 and 6
+- Priors, number of walkers, and number of steps used in the emcee MCMC sampling for the SpectralRadex non-LTE fit
+- Velocity integration ranges used to create the PN(2-1) integrated intensity maps in Figure 1
+- Complete calibration and imaging parameters of the ALCHEMI survey cubes (deferred to Martín et al. 2021)
+
+## Analysis recipe
+
+1. **Inspect datacubes, extract spectra, and perform LTE line fitting and upper limit derivation**: Extract spectra towards the continuum emission peak pixel of each GMC; generate simulated LTE spectra with MADCUBA-SLIM and fit with MADCUBA-AUTOFIT (or compute 3-sigma integrated intensity upper limits for non-detections); calculate abundances relative to H2 using N(H2) from Mangum et al. (2019).  
+  > "The Spectral Line Identification and Modelling (SLIM) tool of MADCUBA generates a simulated spectrum assuming local thermodynamic equilibrium (LTE) conditions." (Data analysis and results); "To perform the molecular analysis, we extracted the spectra towards the pixel of the peak of the continuum emission of the GMCs." (Detections of phosphorus nitride (PN) and LTE analysis); "We derived the relative abundance of PN compared to H$_{2}$, using the total column density of H$_{2}$, *N$_{\rm H_2}$*, derived by (cite: Mangum2019) from dust continuum observations with a similar spatial resolution than ALCHEMI (1.5$''\times$0.9$''$)." (Detections of phosphorus nitride (PN) and LTE analysis)
+   - software: MADCUBA, SLIM, AUTOFIT
+   - parameter: Source size fixed to theta_s = 1.6''  
+  > "We fixed the source size to $\theta_s$=1.6$''$, which matches the ALCHEMI synthesised beam, and hence the derived molecular column densities are beam-averaged." (Detections of phosphorus nitride (PN) and LTE analysis)
+   - parameter: FWHM fixed to 50 km s^-1 for PN and other P-bearing species  
+  > "We also fixed the FWHM to the linewidth that reproduces well the PN(2$-$1) profiles, which is 50 km s$^{-1}$." (Detections of phosphorus nitride (PN) and LTE analysis)
+   - parameter: For GMC 4 and non-detections, Tex fixed to 4.4 K (derived from GMC 6)  
+  > "For GMC 4, since the PN(3$-$2) is within the noise level (Fig. 2), we performed the LTE fit using only the PN(2$-$1) transition and fixing $T_{\rm ex}$ to the one derived in GMC 6." (Detections of phosphorus nitride (PN) and LTE analysis)
+   - assumption: Local thermodynamic equilibrium (LTE) conditions  
+  > "The Spectral Line Identification and Modelling (SLIM) tool of MADCUBA generates a simulated spectrum assuming local thermodynamic equilibrium (LTE) conditions." (Data analysis and results)
+   - assumption: Beam filling factor of 1 (source size matches 1.6'' beam) and co-spatial distribution of species  
+  > "Since the uncertainty in the filling factor cancels when comparing species, assuming co-spatial distribution, the column density ratios between species still provide reliable constraints." (Detections of phosphorus nitride (PN) and LTE analysis)
+   - assumption: PN and dust trace similar volumes of gas  
+  > "Assuming that PN and dust trace similar volumes of gas (we discuss this assumption in Sect. 4), we obtain an abundance of $\chi$=(0.8$\pm$0.1)$\times$10$^{-11}$ (see Table 2)." (Detections of phosphorus nitride (PN) and LTE analysis)
+   - fitting: Non-linear least-squares fitting utilising the Levenberg-Marquardt algorithm in MADCUBA-AUTOFIT  
+  > "The AUTOFIT tool performs a non-linear least-squares fitting of the simulated LTE spectrum to the observed data utilising the Levenberg-Marquardt algorithm (cite: Levenberg1944; Marquardt1963)" (Data analysis and results)
+   - validation: Comparison of higher Tex models (10 K and 15 K) against observed PN(3-2) spectrum, and consistency check with non-LTE analysis  
+  > "Higher values of $T_{\rm ex}$ (e.g. 10 and 15 K) would result in higher intensities of the PN(3$-$2) transition, which are not consistent with the observations, as shown in Fig. 2." (Detections of phosphorus nitride (PN) and LTE analysis)
+2. **Perform non-LTE radiative transfer modelling of PN in GMC 6**: Convert spectral intensities from Jy beam^-1 to brightness temperature (K) and model PN excitation and optical depth using SpectralRadex (RADEX LVG approximation) coupled with emcee MCMC sampling.  
+  > "We also performed a non-LTE analysis in GMC 6 using SpectralRadex (cite: Holdship2021)." (Non-LTE analysis of PN); "SpectralRadex uses RADEX (cite: VanderTak2007) to calculate spectral line excitation and optical depth within the large velocity gradient approximation." (Non-LTE analysis of PN); "We combine this model with emcee (cite: ForemanMackey2013emcee) to perform a Markov Chain Monte Carlo (MCMC) sampling of the likelihood." (Non-LTE analysis of PN)
+   - software: SpectralRadex, RADEX, SPECTCOL, emcee
+   - parameter: FWHM and v_LSR fixed to values from Table 2 (FWHM = 50 km s^-1, v_LSR = 184 km s^-1)  
+  > "The FWHM and v$_{\rm LSR}$ of the lines are taken from Table 2." (Non-LTE analysis of PN)
+   - assumption: Large velocity gradient (LVG) approximation and Gaussian spectral line profile  
+  > "SpectralRadex uses RADEX (cite: VanderTak2007) to calculate spectral line excitation and optical depth within the large velocity gradient approximation. A Gaussian spectral line profile is assumed to produce model spectra." (Non-LTE analysis of PN)
+   - assumption: Channel uncertainties are independent, Gaussian, and 15% of the channel value  
+  > "We assume the uncertainty on each channel is independent from the other channels, Gaussian, and 15% of the channel value." (Non-LTE analysis of PN)
+   - fitting: Markov Chain Monte Carlo (MCMC) sampling with emcee; 67% probability density interval around the most likely value used for uncertainty estimation  
+  > "We combine this model with emcee (cite: ForemanMackey2013emcee) to perform a Markov Chain Monte Carlo (MCMC) sampling of the likelihood." (Non-LTE analysis of PN); "To estimate the uncertainty on this value, we take the region around this most likely value which contains 67% of the probability density (similar to a 1$\sigma$ interval)." (Non-LTE analysis of PN)
+   - validation: Comparison of non-LTE column density posterior with the LTE column density  
+  > "The non-LTE analysis provides us with results that are similar to those seen in the LTE analysis." (Non-LTE analysis of PN)
+3. **Compare abundances and molecular ratios with Galactic sources and chemical models**: Compare C34S-normalised PN and 29SiO column densities and PO/PN and PH3/PN upper limits against Galactic observations and the shock + cosmic-ray chemical models of Jiménez-Serra et al. (2018).  
+  > "Following this work, we show in Fig. 5 the column densities of PN and $^{29}$SiO, both normalised by the column density of C$^{34}$S, towards different Galactic sources detected previously." (Correlation between PN and SiO abundances: Role of shocks); "In this section, we compare the observational results with the predictions of the chemical models presented by (cite: Jimenez-Serra2018), who studied the chemistry of P-bearing molecules under different physical conditions such as presence of shocks, and different cosmic-ray ionisation rates ($\zeta$) and gas densities." (Comparison with chemical models)
+   - parameter: Shock model parameters: cosmic-ray ionisation rate zeta = 10^-13 s^-1, pre-shock density n(H) = 2x10^4 cm^-3  
+  > "When (cite: Jimenez-Serra2018) introduced a high cosmic-ray ionisation rates of $\zeta$=10$^{-13}$ s$^{-1}$ in the shock models with pre-shock densities of $n$(H)=2$\times$10$^{4}$ cm$^{-3}$ (see their Fig. 8), the predicted PN abundances decrease by one order of magnitude at the post-shock stage, reaching several 10$^{-11}$" (Comparison with chemical models)
+   - assumption: C34S is optically thin and a good proxy for H2 barely affected by shocks or PDRs  
+  > "(cite: Rivilla2018) used C$^{34}$S to normalise the abundances because this optically-thin species is expected to be a good proxy of H$_2$, and it is barely affected by the presence of shocks or photo-dominated regions (cite: Requena-Torres2006; martin2009)." (Correlation between PN and SiO abundances: Role of shocks)
+   - assumption: All hydrogen is in molecular form, n(H) = 2 * n(H2)  
+  > "Assuming a molecular cloud in which all the hydrogen is in molecular form, $n$(H)=2$\times n$(H$_2$)." (Comparison with chemical models)
+   - fitting: _not stated_
+   - validation: Check that model gas density and cosmic-ray ionisation rate match independent ALCHEMI constraints and non-LTE density results  
+  > "These values for $\zeta$ and gas density match well with the expected physical properties of the GMCs in the CMZ of NGC 253." (Comparison with chemical models)
+
+## Software
+
+- **MADCUBA** : Datacube inspection, molecular species identification (SLIM), LTE spectrum fitting (AUTOFIT), and 3-sigma upper limit derivation  
+  > "We used MADCUBA (cite: Martin2019b) for the inspection of the ALCHEMI datacubes, the identification of the molecular species, and the LTE derivation of the physical parameters of the emission." (Data analysis and results); "The Spectral Line Identification and Modelling (SLIM) tool of MADCUBA generates a simulated spectrum assuming local thermodynamic equilibrium (LTE) conditions." (Data analysis and results); "The AUTOFIT tool performs a non-linear least-squares fitting of the simulated LTE spectrum to the observed data utilising the Levenberg-Marquardt algorithm (cite: Levenberg1944; Marquardt1963)" (Data analysis and results)
+- **SpectralRadex** : Non-LTE radiative transfer modelling of PN in GMC 6  
+  > "We also performed a non-LTE analysis in GMC 6 using SpectralRadex (cite: Holdship2021)." (Non-LTE analysis of PN)
+- **RADEX** : Calculating spectral line excitation and optical depth within the large velocity gradient approximation inside SpectralRadex  
+  > "SpectralRadex uses RADEX (cite: VanderTak2007) to calculate spectral line excitation and optical depth within the large velocity gradient approximation." (Non-LTE analysis of PN)
+- **SPECTCOL** : Preparing BASECOL collisional data between PN and p-H2 for RADEX  
+  > "We used the collisional data between PN and p-H$_2$ (cite: Najar2017PNData) taken from BASECOL (cite: Dubernet2013Basecol; Ba2020basecol) and prepared for RADEX with SPECTCOL." (Non-LTE analysis of PN)
+- **emcee** : Markov Chain Monte Carlo (MCMC) sampling of the likelihood in the non-LTE analysis  
+  > "We combine this model with emcee (cite: ForemanMackey2013emcee) to perform a Markov Chain Monte Carlo (MCMC) sampling of the likelihood." (Non-LTE analysis of PN)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| PN LTE column density (GMC 6) | 1.20e13 | 0.09e13 (text) / 0.17e13 (Table 2) | cm^-2 | 1 | We obtain a total PN column density *N*=(1.20$\pm$0.09)$\times$10$^{13}$ cm$^{-2}$ and excitation temperature $T_{\rm ex}$=4.4$\pm$1.3 K.; / PN / 1.20$\pm$0.17 / 4.4$\pm$1.3 / 184$\pm$6 / 50 / 0.80$\pm$0.19 / |
+| PN excitation temperature Tex (GMC 6) | 4.4 | 1.3 | K | 1 | We obtain a total PN column density *N*=(1.20$\pm$0.09)$\times$10$^{13}$ cm$^{-2}$ and excitation temperature $T_{\rm ex}$=4.4$\pm$1.3 K. |
+| PN abundance relative to H2 (GMC 6) | 8.0e-12 | 1.0e-12 (text) / 1.9e-12 (Table 2) | dimensionless | 1 | which translate into abundances with respect to H$_2$ of $\chi$=(8.0$\pm$1.0)$\times$10$^{-12}$ and $\chi$=(4.4$\pm$1.2)$\times$10$^{-12}$.; / PN / 1.20$\pm$0.17 / 4.4$\pm$1.3 / 184$\pm$6 / 50 / 0.80$\pm$0.19 / |
+| PN LTE column density (GMC 4) | 6.5e12 | 1.6e12 (text) / 1.7e12 (Table 2) | cm^-2 | 1 | We obtain a total PN column density of *N*=(6.5$\pm$1.6)$\times$10$^{12}$ cm$^{-2}$, which translates into a PN abundance of $\chi$=(0.44$\pm$0.12)$\times$10$^{-11}$.; / PN / 0.65$\pm$0.17 / 4.4 / 242 / 50 / 0.44$\pm$0.17 / |
+| PN abundance relative to H2 (GMC 4) | 4.4e-12 | 1.2e-12 (text) / 1.7e-12 (Table 2) | dimensionless | 1 | which translate into abundances with respect to H$_2$ of $\chi$=(8.0$\pm$1.0)$\times$10$^{-12}$ and $\chi$=(4.4$\pm$1.2)$\times$10$^{-12}$.; / PN / 0.65$\pm$0.17 / 4.4 / 242 / 50 / 0.44$\pm$0.17 / |
+| PN non-LTE column density (GMC 6) | 5e12 | 67% interval: 6.3e11 to 1.8e13 | cm^-2 | 2 | The most likely value of the column density of PN is 5$\times$10$^{12}$ cm$^{-2}$.; This interval is 6.3$\times$10$^{11}$ cm$^{-2}$ to 1.8$\times$10$^{13}$ cm$^{-2}$. |
+| Most likely gas density n(H2) from non-LTE analysis (GMC 6) | 3e4 | < 1e6 | cm^-3 | 2 | This non-LTE analysis gives a most likely gas density of 3$\times$10$^{4}$ cm$^{-3}$ and the majority of the probability density is at values lower than 10$^{6}$ cm$^{-3}$. |
+| PO column density upper limit (GMC 6) | <1.5e13 | not stated | cm^-2 | 1 | We obtain *N*$<$1.5$\times$10$^{13}$ cm$^{-2}$ for GMC 6 (Table 2), which gives a PO/PN ratio $<$1.3. |
+| PO/PN ratio upper limit (GMC 6) | <1.3 | not stated | dimensionless | 1 | We obtain *N*$<$1.5$\times$10$^{13}$ cm$^{-2}$ for GMC 6 (Table 2), which gives a PO/PN ratio $<$1.3. |
+| PO column density upper limit (GMC 4) | <1.1e13 | not stated | cm^-2 | 1 | The same was made for GMC 4 which results in *N*$<$1.1$\times$10$^{13}$ cm$^{-2}$ and a PO/PN ratio $<$1.7. |
+| PO/PN ratio upper limit (GMC 4) | <1.7 | not stated | dimensionless | 1 | The same was made for GMC 4 which results in *N*$<$1.1$\times$10$^{13}$ cm$^{-2}$ and a PO/PN ratio $<$1.7. |
+| PH3 column density upper limit (GMC 6) | <3.2e13 | not stated | cm^-2 | 1 | We obtained *N*$<$3.2$\times$10$^{13}$ cm$^{-2}$ (Table 2) for GMC 6, which gives a PH$_3$/PN ratio $<$2.7. |
+| PH3/PN ratio upper limit (GMC 6) | <2.7 | not stated | dimensionless | 1 | We obtained *N*$<$3.2$\times$10$^{13}$ cm$^{-2}$ (Table 2) for GMC 6, which gives a PH$_3$/PN ratio $<$2.7. |
+| PH3 column density upper limit (GMC 4) | <3.4e13 | not stated | cm^-2 | 1 | For GMC 4 the results obtained were *N*$<$3.4$\times$10$^{13}$ cm$^{-2}$ and a PH$_3$/PN ratio $<$5.3. |
+| PH3/PN ratio upper limit (GMC 4) | <5.3 (Sect. 3.4) / <5.2 (Table 3, Sect. 4.2) | not stated | dimensionless | 1 | For GMC 4 the results obtained were *N*$<$3.4$\times$10$^{13}$ cm$^{-2}$ and a PH$_3$/PN ratio $<$5.3.; Regarding PH$_3$, we found that PH$_3$/PN is $<$5.2 and $<$2.7 in GMCs 4 and 6, respectively. |
+| CP column density upper limit (GMC 6) | <3.0e13 | not stated | cm^-2 | 1 | The derived upper limits for CP and CCP are *N*$<$3.0$\times$10$^{13}$ cm$^{-2}$ and *N*$<$3.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 6 |
+| CCP column density upper limit (GMC 6) | <3.8e13 | not stated | cm^-2 | 1 | The derived upper limits for CP and CCP are *N*$<$3.0$\times$10$^{13}$ cm$^{-2}$ and *N*$<$3.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 6 |
+| CP column density upper limit (GMC 4) | <2.7e13 | not stated | cm^-2 | 1 | and *N*$<$2.7$\times$10$^{13}$ cm$^{-2}$ and *N*$<$2.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 4 (Table 2). |
+| CCP column density upper limit (GMC 4) | <2.8e13 | not stated | cm^-2 | 1 | and *N*$<$2.7$\times$10$^{13}$ cm$^{-2}$ and *N*$<$2.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 4 (Table 2). |
+| 29SiO LTE column density (GMC 6) | 9.2e13 | 1.8e13 | cm^-2 | 1 | / $^{29}$SiO / 9.2$\pm$1.8 / 5.2$\pm$0.3 / 187.4$\pm$2.0 / 70.4 / 6.3$\pm$1.9 / |
+| C34S LTE column density (GMC 6) | 57e13 | 7e13 | cm^-2 | 1 | / C$^{34}$S / 57$\pm$7 / 6.83$\pm$0.21 / 188.1$\pm$0.4 / 67.8$\pm$1.0 / 39$\pm$9 / |
+| 29SiO LTE column density (GMC 4) | 6.1e13 | 1.0e13 | cm^-2 | 1 | / $^{29}$SiO / 6.1$\pm$1.0 / 5.20$\pm$0.23 / 246.4$\pm$1.8 / 74$\pm$4 / 4.1$\pm$1.2 / |
+| C34S LTE column density (GMC 4) | 25e13 | 3e13 | cm^-2 | 1 | / C$^{34}$S / 25$\pm$3 / 7.9$\pm$0.5 / 237.7$\pm$1.0 / 74.4$\pm$2.3 / 17$\pm$5 / |
+
+## Qualitative findings
+
+- First detection of a phosphorus-bearing molecule (PN) in an extragalactic environment, towards GMCs 4 and 6 in the CMZ of NGC 253.  
+  > "We report the detection of a P-bearing molecule, phosphorus nitride (PN), for the first time in an extragalactic environment, towards two giant molecular clouds (GMCs) of NGC 253." (abstract)
+- PN is sub-thermally excited in NGC 253, with a low excitation temperature (Tex = 4.4 +/- 1.3 K) in gas of density n(H2) ~ 3x10^4 cm^-3.  
+  > "We derived a low excitation temperature of $T_{\rm ex}$=(4.4$\pm$1.3) K towards the GMC with the brightest PN emission, which indicates that PN is sub-thermally excited." (abstract); "A non-LTE analysis derives a column density consistent with the LTE values, and confirms that the PN transitions are sub-thermally excited in a gas with volume density of the order of 10$^4$ cm$^{-3}$." (Conclusions)
+- The correlation between PN and 29SiO (normalised by C34S) in NGC 253 follows the same trend seen in Galactic sources, extending it to lower relative abundances.  
+  > "The points of NGC 253 nicely follow the same trend observed in Galactic sources, extending it to lower relative abundances." (Correlation between PN and SiO abundances: Role of shocks)
+- Models with shocks alone overpredict the PN abundance in NGC 253 by more than an order of magnitude; combining shock-driven chemistry with high cosmic-ray ionisation rates (zeta ~ 10^-13 s^-1) and resulting secondary UV photochemistry reproduces the observed PN abundances and PO/PN upper limits.  
+  > "Therefore, the models based solely on shocks fail to explain the relatively low PN abundances observed in NGC 253, and hence an additional agent is needed." (Comparison with chemical models); "Comparison of the observations with chemical models indicates that the derived molecular abundances of PN in NGC 253 can be explained by shock-driven chemistry followed by cosmic-ray-driven photochemistry." (abstract)
+
+## Claim tuples
+
+- H: P-bearing molecules can be detected in extragalactic environments towards the chemically rich CMZ of the starburst galaxy NGC 253. | E: Searched the ALCHEMI unbiased spectral survey (84.2-373.2 GHz) towards GMCs in the CMZ of NGC 253 using MADCUBA (SLIM/AUTOFIT) and SpectralRadex. | R: PN(2-1) is detected at 16-sigma in GMC 6 and 5-sigma in GMC 4, and PN(3-2) is detected in GMC 6, yielding N(PN) = (1.20+/-0.09)x10^13 cm^-2 and (6.5+/-1.6)x10^12 cm^-2; PO, PH3, CP, CCP, HCP, and PS are not detected. | F: PN is detected for the first time in an extragalactic environment towards GMCs 4 and 6 of NGC 253. | **supported**
+- H: Extragalactic phosphorus chemistry is driven by shocks similarly to Galactic star-forming and Galactic Centre regions. | E: Derived LTE column densities of PN, 29SiO, and C34S across NGC 253 GMCs and compared PN/C34S versus 29SiO/C34S with Galactic sources. | R: The C34S-normalised PN and 29SiO abundances in GMCs 4 and 6 and upper limits in the other GMCs follow the same positive correlation observed in Galactic sources. | F: Phosphorus chemistry in extragalactic environments is overall similar to that in the Milky Way, with P-bearing molecules enhanced in shocked regions via grain sputtering. | **supported**
+- H: High cosmic-ray ionisation rates in galactic CMZs induce secondary UV photochemistry that lowers overall PN abundances and reduces the PO/PN ratio below 1. | E: Derived PO/PN upper limits in GMCs 4 and 6 and compared observed PN abundances and PO/PN ratios against shock + cosmic-ray chemical models from Jiménez-Serra et al. (2018). | R: Pure shock models predict PN abundances of (1-5)x10^-10 (over an order of magnitude above the observed (0.4-0.8)x10^-11), whereas shock models with zeta = 10^-13 s^-1 and n(H) = 2x10^4 cm^-3 predict PN abundances of several 10^-11 and PO/PN < 1; observed PO/PN upper limits are <1.3 and <1.7. | F: Shock-driven chemistry followed by cosmic-ray-driven photochemistry explains the PN abundances in NGC 253, though deeper observations are needed to firmly confirm PO/PN < 1. | **partially**
+
+## Reasoning
+
+- Why this data: NGC 253 is a nearby prototypical starburst galaxy with a prolific CMZ molecular inventory, and the ALCHEMI unbiased survey provides high sensitivity across ALMA Bands 3 to 7.  
+  > "The central molecular zone (CMZ) of NGC 253 is one of the most prolific extragalactic sources for detections of molecules, as shown by previous spectral surveys, which revealed a rich chemical composition (e.g. (cite: Martin2006; Aladro2015; Meier2015; Ando2017; Martin2021)). This fact makes NGC 253 an excellent target for the search of new molecular species in the extragalactic ISM." (Introduction)
+- Why this method: Both LTE (MADCUBA) and non-LTE (SpectralRadex + emcee) analyses were performed to account for sub-thermal excitation of PN, and C34S was used for abundance normalisation because it is optically thin and barely affected by shocks or PDRs.  
+  > "(cite: Rivilla2018) used C$^{34}$S to normalise the abundances because this optically-thin species is expected to be a good proxy of H$_2$, and it is barely affected by the presence of shocks or photo-dominated regions (cite: Requena-Torres2006; martin2009)." (Correlation between PN and SiO abundances: Role of shocks)
+- Alternative: Thermal desorption due to heating in hot molecular cores was rejected based on interferometric maps in AFGL 5142 showing P-bearing emission arises from shocks rather than central hot cores.  
+  > "We note that the only interferometric maps of P-bearing emission available so far, obtained towards the star-forming region AFGL 5142 ((cite: Rivilla2020)), have shown that the emission of P-bearing molecules arises from regions associated with shocks, and not from the central hot molecular core surrounding the newly formed protostars, which clearly rule out desorption due to heating." (Correlation between PN and SiO abundances: Role of shocks)
+- Alternative: Chemical models based solely on shocks were rejected because they overpredict the PN abundance in NGC 253 by more than an order of magnitude.  
+  > "Therefore, the models based solely on shocks fail to explain the relatively low PN abundances observed in NGC 253, and hence an additional agent is needed." (Comparison with chemical models)
+- Alternative: Higher LTE excitation temperatures (e.g., 10 K and 15 K) were rejected because they overpredict the PN(3-2) line intensity.  
+  > "Higher values of $T_{\rm ex}$ (e.g. 10 and 15 K) would result in higher intensities of the PN(3$-$2) transition, which are not consistent with the observations, as shown in Fig. 2." (Detections of phosphorus nitride (PN) and LTE analysis)
+- Alternative: GMC 5 was excluded from the analysis because bright continuum sources cause complex absorption profiles at ~1'' resolution.  
+  > "Because this results in complex spectral line profiles from a variety of molecular species, we do not analyse GMC 5." (Detections of phosphorus nitride (PN) and LTE analysis)
+- How they decided it was enough: _not stated_
+- Limitation (authors): If PN emission is confined to 0.6'' core sizes rather than the 1.6'' beam, beam-averaged column densities are underestimated by a factor of ~7.  
+  > "We note that if the PN emission would be confined to the $0.6"$ core sizes measured at higher resolution (cite: Ando2017), column densities in this work would be underestimated by a factor of $\sim$7." (Detections of phosphorus nitride (PN) and LTE analysis)
+- Limitation (authors): A 2-sigma tail-like emission feature of PN(2-1) in GMC 6 cannot be firmly confirmed due to current sensitivity limits.  
+  > "In GMC 6 it exhibits a tail-like structure towards the south-east at a 2$\sigma$ level. This emission might be a real feature, but the current sensitivity does not allow us to draw a firm conclusion." (Detections of phosphorus nitride (PN) and LTE analysis)
+- Limitation (authors): Gas kinetic temperature is poorly constrained in the non-LTE analysis (ranging from ~50 K to ~300 K).  
+  > "We find that the gas temperature is poorly constrained, showing a range for $T_{\rm K}$ between $\sim$50K to $\sim$300K." (Non-LTE analysis of PN)
+- Limitation (authors): Transitions of HCP and PS, and some transitions of PN (4-3, 6-5) and PO, are heavily contaminated by other molecular species.  
+  > "All of the transitions of HCP and PS are heavily contaminated by other species, which prevents the derivation of significant upper limits for their abundance." (Other P-bearing molecules); "Moreover, some PN transitions appear heavily contaminated by transitions of more abundant species: PN(4$-$3) is contaminated by CH$_{3}$C$_{2}$H(11$-$10) and PN(6$-$5) by several transitions of HC$_{3}$N." (Detections of phosphorus nitride (PN) and LTE analysis)
+- Limitation (authors): Current upper limits on PO and PH3 are not deep enough to firmly confirm whether PO/PN < 1 or whether PH3 is equally or less abundant than PN in NGC 253.  
+  > "In any case, we note that the upper limits derived for the PO abundance towards the CMZ of NGC 253 and other regions in the CMZ of our Galaxy (Table 3) do not allow us to firmly confirm that the ratio PO/PN$<$1." (Molecular ratios of P-bearing species: Role of cosmic-rays and photochemistry); "As for the case of PO, deeper observations will be needed to confirm whether PH$_3$ are equally or less abundant than PN in NGC 253." (Molecular ratios of P-bearing species: Role of cosmic-rays and photochemistry)
+- Caveat (inferred, ours): Slight discrepancy in reported uncertainties between the text and Table 2 for PN column density (1.20+/-0.09 vs 1.20+/-0.17 x 10^13 cm^-2 in GMC 6; 6.5+/-1.6 vs 6.5+/-1.7 x 10^12 cm^-2 in GMC 4) and abundance, as well as a typo in the Conclusions swapping the PO/PN upper limits (<1.3 and <1.7) between GMCs 4 and 6.
+- Caveat (inferred, ours): In GMC 4, only a single transition of PN (J=2-1) is detected, requiring Tex and FWHM to be fixed to GMC 6 values.
+- Caveat (inferred, ours): In GMC 6, only two PN transitions are detected, making the 3-parameter non-LTE MCMC fit (N, T_K, n_H2) under-constrained without external priors on kinetic temperature.
+
+## Reproducibility
+
+- Data public (paper): ALMA project codes ADS/JAO.ALMA#2017.1.00161.L and ADS/JAO.ALMA#2018.1.00162.S are stated  
+  > "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00161.L and ADS/JAO.ALMA#2018.1.00162.S." (Acknowledgements)
+- Products in archive: _not stated_
+- Missing: Exact pixel coordinates (RA, Dec) of the continuum peaks in each GMC where spectra were extracted
+- Missing: Exact numerical values of N(H2) from Mangum et al. (2019) used for GMCs 4 and 6
+- Missing: Priors and sampler configuration (number of walkers, steps, burn-in) for the emcee + SpectralRadex non-LTE MCMC analysis
+- Missing: Velocity integration intervals for the PN(2-1) moment 0 maps in Figure 1
+- Data volume (inferred): Hundreds of GB to several TB for the full ALCHEMI survey cubes (84.2-373.2 GHz), though <1 GB if working only with extracted 1D spectra towards the 9 GMCs.
+- Score (inferred): 7/5, The spectral analysis tools (MADCUBA, SpectralRadex, emcee), spectroscopic catalogue entries (CDMS, JPL, BASECOL), and fixed LTE parameters are clearly documented, and the ALCHEMI data are public. However, exact extraction coordinates for the GMC continuum peaks, exact adopted N(H2) values, and MCMC priors/settings are not explicitly listed in this paper.
+- Rediscovery candidate: yes, The ALCHEMI dataset (2017.1.00161.L, 2018.1.00162.S) is public, the target transitions and spectroscopic entries are explicitly tabulated, and the main results are well-defined numeric column densities, excitation temperatures, and upper limits.
+
+## Links
+
+- Method: (cite: Martin2019b) (Describes the MADCUBA software package, SLIM, AUTOFIT, and the 3-sigma upper limit derivation method)
+- Method: (cite: Holdship2021) (Describes the SpectralRadex package used for the non-LTE radiative transfer analysis)
+- Method: (cite: VanderTak2007) (Describes the RADEX radiative transfer code underlying SpectralRadex)
+- Method: (cite: ForemanMackey2013emcee) (Describes the emcee MCMC ensemble sampler)
+- Method: (cite: Jimenez-Serra2018) (Provides the phosphorus shock and cosmic-ray chemical models compared against observations)
+- Companion: (cite: Martin2021) (Overview paper presenting the observations and data reduction of the ALCHEMI Large Program)
+- Companion: (cite: Holdship2021) (ALCHEMI study constraining cosmic-ray ionisation rates in NGC 253)
+- Companion: (cite: harada2021) (ALCHEMI study constraining cosmic-ray ionisation rates in NGC 253)
+- Related: ALCHEMI (ALMA Comprehensive High-resolution Extragalactic Molecular Inventory)
+
+## Checks
+
+```json
+{
+ "quotes": 137,
+ "quotes_ok": 137,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 9,
+ "unsupported_facts": 0,
+ "project_codes": 2,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 23,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 98,
+  "stated": 61,
+  "rate": 0.622
+ },
+ "evidence_ok": true
+}
+```

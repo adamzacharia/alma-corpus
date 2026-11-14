@@ -1,0 +1,27 @@
+# Codex refresh review: sed-fitting
+VERDICT: FIX
+REFRESH: PARTIAL
+
+## Findings
+
+- RR-01 | medium | attribution | “8–1000 um … 16 listed papers” | The visible parameter/assumption lists contain at least 18 distinct bibcodes specifying this interval, including integrals labelled FIR/TIR (e.g. 2022ApJ...941...47S, 2021ApJ...909..204F, 2017ApJ...836....8T). The counting rule is unclear. | Recount with an explicit label-independent wavelength criterion, publish the qualifying bibcodes, and synchronize step 6 and the table.
+- RR-02 | medium | stale | “At exactly 850 um … 0.0383–0.15 m2/kg” | The pack gives 1.7 cm²/g = 0.17 m²/kg at 850 μm for 2019A&A...626A.126A and 2021A&A...655A..98A. The reference table itself includes the equivalent normalization for 2025A&A...698A.183D. | Extend the range to include 0.17, or explicitly restrict it to a defined galaxy subset.
+- RR-03 | medium | stale | “beta (fixed) … 1.2–2.5 … all fields” | The pack includes fixed MBB beta=0.65 when FIR data are absent (2025A&A...703A..15M) and a warm-component beta≈0 (2024A&A...686A.206Y). | Separate galaxy emissivity choices from disk prescriptions and recount each stated scope.
+- RR-04 | medium | stale | “Gas-to-dust … about 30–200” | The parameter line for 2021ApJ...918...76C explicitly includes a tested dust-to-gas ratio of 1:300. | Include 300 in the tested range and distinguish adopted values, sensitivity tests and measured ratios.
+- RR-05 | medium | attribution | “Empirical templates scaled to the ALMA flux: CE01 … 2021ApJ...915...46C” | That paper’s pack assumption specifies luminosity-dependent CE01 templates “without scaling.” | Separate freely rescaled templates from luminosity-dependent templates used without rescaling.
+- RR-06 | medium | science | “Opacity regime … lambda_0 … 380 um” | For 2024A&A...686A.206Y, the pack defines a piecewise emissivity multiplier, `(lambda0/lambda)^beta` beyond lambda0. This is a break wavelength, not the τ=1 wavelength of the general-opacity model. | Remove this example from the τ=1 range and describe disk break-wavelength prescriptions separately.
+- RR-07 | medium | usability | “M_dust: from the MBB normalization” | The supplied mass-normalized equation is optically thin; the general-opacity model supplies only a proportional shape. The pack explicitly fits emitting area and mass together (2025A&A...695L..15F) or derives solid angle from resolved sizes (2024A&A...689A.220T). | Give the thick-model normalization and its geometry, including `tau_nu = kappa_nu M_d/A`; prohibit reusing the thin conversion without justification.
+- RR-08 | medium | science | “a Jy-peak temperature is about 1.7 x T_dust” | The pack identifies this as an approximate **ALCS conversion** (2024ApJ...965..108U), not a universal relation between MBB temperatures. | Restrict 1.7 to that calibration; calculate each model’s peak and explicitly specify the rest-frame spectral-density convention.
+- RR-09 | low | science | “25 K at z > 8 is unphysical” | Using the stated `T_CMB=2.73(1+z)`, the crossing is z≈8.16; 25 K still exceeds the CMB at z=8.1. | State the inequality directly, or use z≥8.16 for an already heated 25 K temperature.
+- RR-10 | medium | omission | “SFR … constants … cross-check codes” | SFR averaging timescales are omitted: the pack specifies 10 Myr for 2024ApJ...965..108U, 100 Myr for 2024ApJ...964...95S, and instantaneous GalaPy SFRs for 2025A&A...699A.183H. | Require the averaging timescale and SFH assumptions beside every SFR and before inter-code comparisons.
+- RR-11 | medium | omission | “At z ~ 5.5 measured peak temperatures are 38 +/- 8 K” | The same pack excerpt limits this result to four infrared-bright galaxies and warns that more metal-poor systems are probably missing (2020MNRAS.498.4192F). | Attach those selection limits to the temperature and 0.3–0.6 dex bias claims; avoid treating them as population-wide corrections.
+- RR-12 | medium | omission | “Build the photometry table” | No bandpass/colour-correction check appears, although the pack records Herschel corrections assuming beta=2 (2024A&A...687A.217D) and iterative SPIRE colour/aperture corrections (2023MNRAS.519.5807D). | Require calibration-compatible synthetic photometry or documented colour corrections, including whether inputs were already corrected.
+- RR-13 | medium | broken-edit | “per-instrument values in references/parameters.md” | The supplied reference contains no calibration-floor table, despite repeated promises of one. Relevant rebuilt-pack values include the instrument list in 2024MNRAS.530.4887W and ALMA band-dependent 5/10/20% values in 2024ApJ...974..306S. | Add the promised table with instrument/band, uncertainty type and bibcode; distinguish ALMA band dependence from differences between instruments.
+- RR-14 | low | length | “SKILL.md” | The supplied skill substantially exceeds ~300 lines and repeats temperature, contamination and uncertainty guidance across steps, pitfalls and verification. | Move detailed software counts, literature examples and population sensitivity grids to references/parameters.md; retain the decision workflow and essential checks.
+
+## Notes
+
+The description’s 989 papers and high-z count of 558 match the rebuilt pack.
+Software counts and the 79/21/51 not-stated sums match; changes from the old reconciliation are supported.
+The truncated parameter/assumption lists prevent certifying every recount and legacy attribution.
+Historical FIXED status alone does not validate a range against the enlarged pack.

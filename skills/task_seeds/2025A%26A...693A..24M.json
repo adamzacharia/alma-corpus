@@ -1,0 +1,410 @@
+{
+ "bibcode": "2025A&A...693A..24M",
+ "title": "Nucleus of M31: Upper limits to the molecular and ionised gas content",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202347597",
+ "arxiv_id": null,
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Place constraints on the cold molecular and warm ionised gas content around the supermassive black hole in the nucleus of M31 to test stellar mass-loss gas accumulation and Sgr A*-like ionised accretion disc scenarios.",
+ "alma_project_codes": [
+  "2019.1.00711.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "ALMA-12m array",
+  "angular_resolution": "0.12'' (0.46 pc) and 0.8''; beam 0.15'' x 0.09'', PA 2.3 deg",
+  "sensitivity": "3sigma line upper limit 0.15 Jy km/s (for 1000 km/s window); 3sigma continuum upper limits 96, 93, 150 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Predicted CO(1–0) signal of 2 mJy with line width 1000 km/s corresponding to 10^4 M_sun of molecular gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The mass loss from these stars is expected to fill a molecular gas disc within the tidal truncation of 1 pc (= 0.26 arcsec) of 10 [4] _M_ ⊙, corresponding to a CO(1–0) signal of 2 mJy with a line width of 1000 km/s."
+     },
+     {
+      "loc": "1. Introduction",
+      "quote": "This rules out the original prediction of Chang et al. (2007), namely a CO(1–0) flux of 2 mJy with a line width of 1000 km s [−][1], corresponding to a molecular mass of 10 [4] _M_ ⊙"
+     }
+    ]
+   },
+   "citation": "Chang et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "H30α recombination line parameters and flux (3 mJy, 2200 km/s) detected in the MW for Sgr A*",
+    "evidence": [
+     {
+      "loc": "3.2. Hydrogen recombination line",
+      "quote": "In Table 4, we summarise our results given our initial assumptions scaled from the previous observations of the H30α recombination line detected in the MW for SgrA* by Murchikova et al. (2019)."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "MW 8 4 4 10 [−][7] 0.12 1 2200 10 [−][4][.][5] _3_ 3"
+     }
+    ]
+   },
+   "citation": "Murchikova et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Lower-frequency radio continuum measurements and synchrotron power-law fit",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "The blue and orange points correspond to the measurements of Crane et al. (1992, 1993), and Yang et al. (2017)."
+     },
+     {
+      "loc": "3.3. Continuum flux",
+      "quote": "Our upper limits are compatible with the synchrotron power-law emission that was derived from lower-frequency measurements (Crane et al. 1992, 1993; Yang et al. 2017)."
+     }
+    ]
+   },
+   "citation": "Crane et al. (1992, 1993); Yang et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Sound speed of the gas c_s = 550 km s^-1",
+    "evidence": [
+     {
+      "loc": "3.2. Hydrogen recombination line",
+      "quote": "Relying on Baganoff et al. (2003), who estimated _c_ _s_ = 550 km s [−][1], we found a typical size of 4.2 pc, which is well sampled by our observations (0.3 [′′] or a resolution of 1.1 pc)."
+     }
+    ]
+   },
+   "citation": "Baganoff et al. (2003)"
+  },
+  {
+   "what": {
+    "value": "Optical Hα-emitting disc luminosity L_Hα = (8.7 ± 1) x 10^2 L_sun and radius 0.7'' (2.7 pc)",
+    "evidence": [
+     {
+      "loc": "4. Discussion and conclusions",
+      "quote": "In the optical, Menezes et al. (2013) discovered an eccentric Hα-emitting disc in the nucleus of M31, with a radius of 0.7 [′′] ."
+     },
+     {
+      "loc": "4. Discussion and conclusions",
+      "quote": "The authors estimated that this gas disc with a radius of 2.7 pc has a luminosity of _L_ _H_ α = (8.7±1)×10 [2] _L_ ⊙ ."
+     }
+    ]
+   },
+   "citation": "Menezes et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure 3sigma upper limits on line intensities and continuum fluxes",
+   "method": "Compute 3sigma (99.7% CL) upper limits on integrated line flux over a 1000 km/s window centred on systemic velocity (and 2200 km/s for H30a), and continuum upper limits from the available bandwidth and spatial standard deviation over an area covering ten times the beam at the optical phase centre position.",
+   "software": [],
+   "key_parameters": [
+    "Delta V_max = 1000 km/s (and 2200 km/s for H30alpha); 3sigma (99.7% CL); area = 10 x beam for stacked continuum"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive 3sigma upper limits on intrinsic CO luminosity and molecular hydrogen mass",
+   "method": "Calculate intrinsic CO luminosity L'_CO from velocity-integrated line flux using Solomon et al. (1997) Eq. 1, then convert to total molecular gas mass M_H2 using alpha_CO and CO line ratios R_1J (Eq. 2).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Luminosity distance D_L = 0.78 Mpc",
+    "CO line ratios R_12 = 1.3 and R_13 = 1.8",
+    "Galactic conversion factor alpha_CO = 4.36 M_sun / (K km s^-1 pc^2), including 36% helium correction"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Scale expected H30alpha recombination line emission from Sgr A* to M31* and compare with NOEMA upper limit",
+   "method": "Rescale Bondi radius, gas mass, and H30alpha integrated signal from MW (Sgr A*) to M31 based on black hole mass ratio (35) and distance ratio (97), and compare predicted flux with observed 3sigma upper limit.",
+   "software": [],
+   "key_parameters": [
+    "M_BH(M31) = 1.4 x 10^8 M_sun (35 x MW); D(M31) = 780 kpc (97 x MW); Delta V = 2200 km/s"
+   ],
+   "assumptions": [
+    "Sound speed c_s = 550 km s^-1, same plasma characteristics (ionised gas surface density mu, sound speed c_s, plane thickness h) and masing amplification factor as Sgr A*"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1–0) integrated line flux 3sigma upper limit",
+   "value": "1.32",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "N [(] _[a]_ [)] 2.93,2.05,−2.9 6 [(][+][)] 115.387 (1–0) 1.32"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2–1) integrated line flux 3sigma upper limit",
+   "value": "0.33",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "N [(] _[b]_ [)] 0.60,0.42,−164. 8.13 230.769 (2–1) 0.33"
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha integrated line flux 3sigma upper limit (1000 km/s window)",
+   "value": "0.99",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "N [(] _[b]_ [)] 0.66,0.46,+136. 8.13 232.133 H30α 0.99"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3–2) integrated line flux 3sigma upper limit",
+   "value": "0.15",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A [(] _[c]_ [)] 0.15,0.09,2.3 1.32 346.142 (3–2) 0.15"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4–3) integrated line flux 3sigma upper limit",
+   "value": "0.15",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "The upper limits on HCO+(4–3) at 356.734 GHz are the same as were estimated for CO(3–2)."
+    }
+   ]
+  },
+  {
+   "quantity": "NOEMA 114.739 GHz continuum flux 3sigma upper limit",
+   "value": "912.",
+   "uncertainty": "3sigma upper limit",
+   "units": "µJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NOEMA 114.739 3.6 912."
+    }
+   ]
+  },
+  {
+   "quantity": "NOEMA 218.327 GHz continuum flux 3sigma upper limit",
+   "value": "24.",
+   "uncertainty": "3sigma upper limit",
+   "units": "µJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NOEMA 218.327 7.5 24."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 351.071 GHz stacked continuum flux 3sigma upper limit",
+   "value": "96.",
+   "uncertainty": "3sigma upper limit",
+   "units": "µJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "ALMA 351.071 7.5 96. [(] _[a]_ [)]"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 344.332 GHz continuum flux 3sigma upper limit",
+   "value": "93.",
+   "uncertainty": "3sigma upper limit",
+   "units": "µJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "ALMA 344.332; 351.463 1.8; 7.3 93.; 150."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 351.463 GHz continuum flux 3sigma upper limit",
+   "value": "150.",
+   "uncertainty": "3sigma upper limit",
+   "units": "µJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "ALMA 344.332; 351.463 1.8; 7.3 93.; 150."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1–0) intrinsic luminosity L'_CO 3sigma upper limit",
+   "value": "1964",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO(1–0) 115.271 1.32 1964 8565"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1–0) derived H2 mass 3sigma upper limit",
+   "value": "8565",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO(1–0) 115.271 1.32 1964 8565"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2–1) intrinsic luminosity L'_CO 3sigma upper limit",
+   "value": "123",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO(2–1) 230.538 0.33 123 696"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2–1) derived H2 mass 3sigma upper limit",
+   "value": "696",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO(2–1) 230.538 0.33 123 696"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3–2) intrinsic luminosity L'_CO 3sigma upper limit",
+   "value": "24.5",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO(3–2) 345.796 0.15 24.5 195"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3–2) derived H2 mass 3sigma upper limit",
+   "value": "195",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We exclude the presence of molecular gas with an upper limit of 3σ on the _H_ 2 mass of 195 _M_ ⊙ based on CO(3–2) ALMA observations."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "CO(3–2) 345.796 0.15 24.5 195"
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha flux density 3sigma upper limit (for 2200 km/s line width)",
+   "value": "<0.22",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "M31 780 140 1.4 10 [−][5] 4.2 0.3 _2200_ _0.04_ _0.38_ <0.22 (3σ)"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted H30alpha flux density for M31 (scaled from MW)",
+   "value": "0.38",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "M31 780 140 1.4 10 [−][5] 4.2 0.3 _2200_ _0.04_ _0.38_ <0.22 (3σ)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of observed M31 H30alpha 3sigma upper limit to MW H30alpha flux",
+   "value": "0.07",
+   "uncertainty": "3sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Hydrogen recombination line",
+     "quote": "The 3σ upper limit obtained here is 0.07 × the MW results."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "M31/MW Ratio 97 35 35 35 0.3 _1_ _1225_ _0.13_ 0.07"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and pipeline versions used for ALMA data reduction",
+  "GILDAS/CLIC/MAPPING versions used for NOEMA data reduction",
+  "Imaging weighting scheme and robust parameter",
+  "Whether the two ALMA configurations (C43-6 and C43-3) were combined or imaged separately",
+  "Exact systemic velocity used to center the 1000 km/s integration window",
+  "Channel width and spectral averaging details for the ALMA cubes"
+ ],
+ "missing_for_reproduction": [
+  "CASA and pipeline versions",
+  "Whether ALMA C43-6 and C43-3 configurations were combined or only C43-6 was used for Table 1 (Table 1 lists t_int = 1.32 hr and beam 0.15'' x 0.09'', matching C43-6 alone)",
+  "Exact velocity range used for the 1000 km/s window",
+  "Spatial aperture or single-beam extraction method used to derive the line flux upper limits in Table 1"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The paper uses standard ALMA pipeline products and simple analytical equations (Eqs. 1-10) with explicitly stated conversion factors to compute 3sigma upper limits from noise maps. However, it omits software versions, imaging weighting, and exact spatial/spectral extraction details for the line rms.",
+ "rediscovery_reason": "The ALMA dataset (2019.1.00711.S) is public, standard pipeline products were used, and the main ALMA results are simple 3sigma noise upper limits on CO(3-2) flux, luminosity, H2 mass, and Band 7 continuum using fully specified analytical formulas.",
+ "source_card": "cards/2025A%26A...693A..24M/sonnet/card.md"
+}

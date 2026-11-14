@@ -1,0 +1,302 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "Summary", "quote": "from wide-field Subaru/HSC imaging, Keck/DEIMOS and Magellan/IMACS optical spectroscopic, and deep ALMA observations."},
+{"loc": "ALMA observation and [C II] emitters", "quote": "In this letter, we focus on the identification of three \\[C II\\] emitting galaxies"}
+],
+"fields": ["high_z_galaxies", "agn_and_quasars"],
+"question": {
+"value": "Does the z=6.63 quasar J0910-0414 trace a galaxy overdensity (protocluster), and how massive is it and what does a nearby double-peaked LAE imply about the quasar lifetime",
+"evidence": [
+{"loc": "Introduction", "quote": "In this letter, we report the discovery of a protocluster anchored by a luminous quasar: J0910–0414 at $z=6.63$."},
+{"loc": "Observations and data analysis", "quote": "This motivated us to investigate whether J0910–0414 traces an overdensity of galaxies with multi-wavelength followup observations."}
+]
+},
+"targets": [
+{
+"name": "J0910–0414 (quasar)",
+"details": [
+{"loc": "Observations and data analysis", "quote": "J0910–0414, a luminous quasar discovered by (cite: Wang19b) with a \\[C II\\]-based redshift of $z=6.6363\\pm0.0003$ (cite: Wang23b)."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "z=6.6363±0.0003 ([C II]-based)",
+"distance_source": "[C II]-based redshift from Wang et al. (Wang23b, submitted)"
+},
+{
+"name": "SMG-A, SMG-B, SMG-C ([C II] emitters in the J0910–0414 field)",
+"details": [
+{"loc": "ALMA observation and [C II] emitters", "quote": "centered at (09h10m54.544s, –04d13m55.515s) and (09h10m53.598s, –04d14m09.107s), respectively."},
+{"loc": "ALMA observation and [C II] emitters", "quote": "with a smaller aperture ($0.3''$ diameter aperture ) centered at (09h10m54.552s, –04d14m06.994s)"},
+{"loc": "abstract", "quote": "includes three \\[C II\\] emitters at $z\\sim6.63$"}
+],
+"coordinates": "SMG-A (09h10m54.544s, –04d13m55.515s); SMG-B (09h10m53.598s, –04d14m09.107s); SMG-C (09h10m54.552s, –04d14m06.994s) (spectral extraction aperture centres)",
+"redshift_or_distance": "z~6.63",
+"distance_source": "[C II] redshifts of the emitters (individual values in the paper's table)"
+}
+],
+"alma_project_codes": [
+{"code": "2018.1.01188.S", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "(Project: 2018.1.01188.S, PI: F. Wang)"}]},
+{"code": "2019.1.01216.S", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "(Project: 2019.1.01216.S, PI: J. Yang)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "with Atacama Large Millimeter/submillimeter Array (ALMA) C-3 in band 6"}]},
+{"field": "configurations", "value": "C-3 (2018.1.01188.S, single pointing); C-6 (2019.1.01216.S, higher resolution)", "evidence": [
+{"loc": "ALMA observation and [C II] emitters", "quote": "We identified two \\[C II\\] emitting galaxies (SMG-A and SMG-B) from the single-pointing ALMA observation"},
+{"loc": "ALMA observation and [C II] emitters", "quote": "We then followed up this quasar field with ALMA/C-6 (Project: 2019.1.01216.S, PI: J. Yang) to reach a higher resolution and better sensitivity."}]},
+{"field": "time_on_source", "value": "19 minutes (C-3); 383 minutes (C-6)", "evidence": [
+{"loc": "ALMA observation and [C II] emitters", "quote": "The on-source exposure time was 19 minutes."},
+{"loc": "ALMA observation and [C II] emitters", "quote": "with a total on-source time of 383 minutes"}]},
+{"field": "observing_dates", "value": "C-6: 2021 May to 2021 June", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "The high resolution observations were obtained from 2021 May to 2021 June"}]},
+{"field": "pi_or_archival_as_stated", "value": "PI F. Wang (2018.1.01188.S); PI J. Yang (2019.1.01216.S)", "evidence": [
+{"loc": "ALMA observation and [C II] emitters", "quote": "(Project: 2018.1.01188.S, PI: F. Wang)"},
+{"loc": "ALMA observation and [C II] emitters", "quote": "(Project: 2019.1.01216.S, PI: J. Yang)"}]}
+],
+"lines_targeted": [
+{"species": "C+", "transition": "[C II] (transition not given)", "rest_frequency": "not stated", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "We identified two \\[C II\\] emitting galaxies (SMG-A and SMG-B) from the single-pointing ALMA observation"}]}
+],
+"other_facilities": [
+{"name": "Subaru/HSC", "provided": {"value": "i2, z and NB926 imaging used to select LAE candidates", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "We observed this quasar field with $i2$, $z$ and $NB926$ filters and the on-source exposure times are 150 minutes, 240 minutes, and 313 minutes, respectively."}]}},
+{"name": "Magellan/IMACS", "provided": {"value": "multi-slit spectroscopy confirming LAEs (one mask, 4129)", "evidence": [{"loc": "Optical spectroscopy", "quote": "With a single mask, we observed 10 LAE candidates, some dropout-selected galaxies, bright alignment stars and flux-calibration stars."}]}},
+{"name": "Keck/DEIMOS", "provided": {"value": "three multi-slit masks, 830G grating, confirming LAEs", "evidence": [{"loc": "Optical spectroscopy", "quote": "We designed three multi-slit masks with $1''$ slit width and used the 830G grating for the DEIMOS observations."}]}},
+{"name": "Pan-STARRS1 DR1", "provided": {"value": "photometric and astrometric calibration of the HSC data", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "The photometric and astrometric calibrations were performed based on the Pan-STARRS1 DR1 dataset (cite: Chambers16)."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Quasar clustering correlation length r0QQ=24.3 h^-1 Mpc (gamma=2.0)", "evidence": [{"loc": "Overdensity of galaxies", "quote": "(cite: Shen07) measured a correlation length of $r_0^{\\rm QQ}=24.3~h^{-1}~{\\rm Mpc}$ for a fixed slope of $\\gamma=2.0$"}]}, "citation": "Shen07 (Shen et al. 2007)"},
+{"what": {"value": "LAE auto-correlation length r0GG=2.66 h^-1 Mpc (gamma=1.8) at z~6.6", "evidence": [{"loc": "Overdensity of galaxies", "quote": "(cite: Ouchi18) measured a correlation length of $r_0^{\\rm GG}=2.66~h^{-1}~{\\rm Mpc}$ (for a fixed slope of $\\gamma=1.8$) for $z\\sim6.6$ LAEs."}]}, "citation": "Ouchi18 (Ouchi et al. 2018)"},
+{"what": {"value": "LAE bias parameter b=4.54±0.63 at z~6.6", "evidence": [{"loc": "The mass of the protocluster", "quote": "the bias parameter for $z\\sim6.6$ LAEs is measured to be $b=4.54\\pm0.63$ (cite: Ouchi18)"}]}, "citation": "Ouchi18 (Ouchi et al. 2018)"},
+{"what": {"value": "Quasar-CO emitter cross-correlation length r0QG=8.37 h^-1 Mpc, gamma=1.8, used as comparison profile", "evidence": [{"loc": "Overdensity of galaxies", "quote": "measured from quasar-CO emitters with $r_0^{\\rm QG}=8.37~h^{-1}~{\\rm Mpc}$ and $\\gamma=1.8$ (cite: Garcia22)"}]}, "citation": "Garcia22 (Garcia-Vergara et al. 2022)"},
+{"what": {"value": "Background [C II] emitter number density from [C II] cumulative number density with L_[CII] > 10^8.2 Lsun", "evidence": [{"loc": "Overdensity of galaxies", "quote": "The background number of \\[C II\\] emitters is estimated from the \\[C II\\] cumulative number density with $L_{\\rm [CII]}>10^{8.2}~L_\\odot$ (cite: Popping19; Uzgil21)"}]}, "citation": "Popping19; Uzgil21"},
+{"what": {"value": "LAE overdensity profile in protocluster fields (HzRg and LAB), used as comparison with r0QG=20 h^-1 Mpc and gamma=1.8", "evidence": [{"loc": "Overdensity of galaxies", "quote": "that is measured from a sample of high-$z$ radio galaxies (HzRg) and Ly$\\alpha$ blobs (LAB) by (cite: Hennawi15)"}]}, "citation": "Hennawi15 (Hennawi et al. 2015)"},
+{"what": {"value": "Overdensity profiles of [C II] emitters and LAEs in three z~6 quasar fields, provided by the authors of that paper", "evidence": [{"loc": "Overdensity of galaxies", "quote": "we also show the overdensity profiles of three quasar fields with known \\[C II\\] overdensities measured using both \\[C II\\] emitters and LAEs by (cite: Meyer22)"}]}, "citation": "Meyer22 (Meyer et al. 2022)"},
+{"what": {"value": "Black hole virial mass (3.59±0.61)e9 Msun of the quasar", "evidence": [{"loc": "Observations and data analysis", "quote": "J0910–0414 hosts a SMBH with a virial mass of $(3.59\\pm0.61)\\times10^9~M_\\odot$ (cite: Yang21)."}]}, "citation": "Yang21 (Yang et al. 2021)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Empirical fitting formula relating Lyman-alpha peak separation to ionizing photon escape fraction", "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "which implies a low ionizing photon escape fraction of $\\sim7$% by using the empirical fitting formula of (cite: Izotov18)"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Standard CASA reduction; pipeline vs manual not stated", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "The ALMA data were reduced with the standard `CASA` package (cite: CASA)."}]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Detailed ALMA data reduction and quasar host characterization deferred to a separate paper", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "the detailed ALMA data reduction and the characterization of the quasar host galaxy will be presented in a separate work (Yang J. et al., in prep)"}]}, "from_reference": "Yang J. et al., in prep"},
+{"what": {"value": "LAE selection criteria follow an earlier survey", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "Similar with (cite: Shibuya18), we impose the following selection criteria to select LAEs"}]}, "from_reference": "(cite: Shibuya18)"},
+{"what": {"value": "Use of the forced catalog from hscPipe", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "following previous works (cite: Becker18; Shibuya18)"}]}, "from_reference": "(cite: Becker18; Shibuya18)"},
+{"what": {"value": "CModel photometry algorithm", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "The detailed algorithm of the CModel photometry is presented in (cite: Bosch18)."}]}, "from_reference": "(cite: Bosch18)"},
+{"what": {"value": "Comparison field for background LAE density taken at r>50 cMpc", "evidence": [{"loc": "Overdensity of galaxies", "quote": "We choose to only use the region with $r>50$ cMpc (cite: Jiang18) from the central quasar as a comparison field"}]}, "from_reference": "(cite: Jiang18)"},
+{"what": {"value": "Velocity bin of ±1000 km/s for [C II] emitters in the cylindrical overdensity profile", "evidence": [{"loc": "Overdensity of galaxies", "quote": "a velocity bin of $\\Delta v=\\pm1000~{\\rm km~s^{-1}}$ (cite: Meyer22)"}]}, "from_reference": "(cite: Meyer22)"},
+{"what": {"value": "Present-day mass formula assuming collapse into a cluster at z=0", "evidence": [{"loc": "The mass of the protocluster", "quote": "we follow the widely used formula by assuming that this structure will collapse into a cluster at $z=0$ (cite: Chiang13)"}]}, "from_reference": "(cite: Chiang13)"},
+{"what": {"value": "Quasar UV lifetime constraint from galaxies in the quasar proximity zone and the time-delay equation", "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "we can constrain the quasar UV lifetime using galaxies in the proximity zones of quasars (cite: Bosman20)"}]}, "from_reference": "(cite: Bosman20)"}
+],
+"unstated_but_needed": [
+"ALMA calibration details: CASA version, pipeline vs manual, flux calibrator, and the flux scale uncertainty for both projects",
+"ALMA imaging parameters: tclean settings, weighting/robust, cell and image size, beam, continuum subtraction and line-free channels, channel width, rms",
+"Spectral setup and the rest frequency used for [C II], and how the redshift and line luminosities were derived from the extracted spectra (fitting method, L_[CII] conversion)",
+"How the SMG-A/B/C positions were determined and how the SMG-C spectrum was decontaminated from the quasar",
+"Cosmology (H0, Om, h) used for cMpc areas, distances, and the mean matter density",
+"How the uncertainties on the overdensity (3.3 +1.1/-0.9) and mass were computed (Poisson/bootstrap, treatment of the correction factor C)",
+"The HSC LAE candidate catalogue (87 objects) and the spectroscopic reduction products, needed to redo the overdensity numbers",
+"Kernel parameters and level choice for the LAE overdensity contours (only a quartic kernel and 1' grid size given)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Extract [C II] spectra of SMG-A/B/C",
+"method": {"value": "Spectra extracted from the deep C-6 data cube with circular apertures (1.0'' for SMG-A and SMG-B, 0.3'' for SMG-C to avoid quasar contamination); SMG-A/B seen in the moment zero map", "evidence": [
+{"loc": "ALMA observation and [C II] emitters", "quote": "The \\[C II\\] spectra of galaxy SMG-A and SMG-B were extracted from the deep C-6 data cube with a $1.0''$ diameter aperture centered at"},
+{"loc": "ALMA observation and [C II] emitters", "quote": "To avoid contamination from the flux of the quasar, we extracted the spectra for the SMG-C with a smaller aperture"}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "aperture diameter 1.0'' (SMG-A, SMG-B); 0.3'' (SMG-C)", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "with a smaller aperture ($0.3''$ diameter aperture ) centered at (09h10m54.552s, –04d14m06.994s)"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Select LAE candidates from HSC narrow-band imaging",
+"method": {"value": "Colour and S/N cuts on forced-catalogue CModel colours and 1.5'' aperture S/N, plus pipeline flag cuts and visual inspection of stacked images", "evidence": [
+{"loc": "Subaru/HSC observation and LAE selection", "quote": "The signal-to-noise ratio (SNR) is measured in a $1.5''$ diameter aperture while the color was measured using the CModel magnitude following previous works (cite: Shibuya18)."},
+{"loc": "Subaru/HSC observation and LAE selection", "quote": "all sources satisfying these criteria were then visually inspected in the stacked images to further reject moving objects, satellite trails, uncorrected hot pixels, and other artifacts."}]},
+"software": ["hscPipe"],
+"key_parameters": [
+{"value": "SNR(NB926) >= 5", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "SNR(NB926)\\ge5"}]},
+{"value": "z - NB926 >= 1.0", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "z-NB926\\ge1.0"}]},
+{"value": "SNR(i) < 3", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "SNR(i)<3"}]},
+{"value": "87 candidates pass; uniform selection within 40' of the quasar", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "In total, 87 LAE candidates pass our selection."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Spectroscopic follow-up of a subset: about 60% have a redshift and 92% of those are at z~6.6", "evidence": [{"loc": "Optical spectroscopy", "quote": "We can only measure redshift for $\\sim$60% of the LAE candidates but of these 92% are indeed at the intended redshift $z\\sim6.6$"}]}
+},
+{
+"order": 3,
+"goal": "Confirm LAEs spectroscopically",
+"method": {"value": "Magellan/IMACS (one mask, 1'' slits, 300-line grism) and Keck/DEIMOS (three masks, 830G grating) multi-slit spectroscopy", "evidence": [
+{"loc": "Optical spectroscopy", "quote": "We used the IMACS f/2 camera with 300-line red-blazed grism and designed a dedicated multi-slit mask"},
+{"loc": "Optical spectroscopy", "quote": "In total, the IMACS and DEIMOS observations convincingly confirmed 12 bright LAEs at $z\\sim6.6$ and only one low-$z$ interloper at $z=0.85$."}]},
+"software": ["COSMOS2", "PypeIt"],
+"key_parameters": [
+{"value": "IMACS: 11x1200 s (first night) + 6x1200 s (second night)", "evidence": [{"loc": "Optical spectroscopy", "quote": "We obtained 11$\\times$1200s exposures on the first night and 6$\\times$1200s exposures on the second night."}]},
+{"value": "DEIMOS: 6 hours on mask1, 3 hours each on mask2 and mask3", "evidence": [{"loc": "Optical spectroscopy", "quote": "We spent 6-hours of time on-source for mask1 and 3-hours each on the other two masks."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Measure the LAE overdensity",
+"method": {"value": "Compare the LAE surface density in the central ~14x30 arcmin^2 region with the outskirts of the HSC field (r>50 cMpc from the quasar)", "evidence": [
+{"loc": "Overdensity of galaxies", "quote": "On average, the density in the central region (24 LAEs within 420 arcmin$^2$) is $4.3^{+1.1}_{-0.9}$"},
+{"loc": "Overdensity of galaxies", "quote": "(50 LAEs within 3740 arcmin$^2$)"}]},
+"software": [],
+"key_parameters": [
+{"value": "overdensity definition delta = n/nbar - 1", "evidence": [{"loc": "Overdensity of galaxies", "quote": "$\\delta=\\frac{n}{\\bar{n}}-1=3.3^{+1.1}_{-0.9}$"}]}
+],
+"assumptions": [
+{"value": "Outskirts of the field (r>50 cMpc) represent the background density", "evidence": [{"loc": "Overdensity of galaxies", "quote": "We choose to only use the region with $r>50$ cMpc (cite: Jiang18) from the central quasar as a comparison field"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Background LAE densities in the HSC field compared with other z~6.6 LAE surveys; similar except near the depth limit", "evidence": [{"loc": "Overdensity of galaxies", "quote": "except at the very faint end close to the survey depth limit"}]}
+},
+{
+"order": 5,
+"goal": "Cumulative overdensity profiles of LAEs and [C II] emitters",
+"method": {"value": "Overdensity measured in cylindrical volumes with logarithmically spaced radial bins; velocity bin ±1000 km/s for [C II] emitters and ±2250 km/s (NB926 width) for LAEs; compared with cross-correlation-function and protocluster profiles", "evidence": [
+{"loc": "Overdensity of galaxies", "quote": "We measure the overdensity profile in a set of cylindrical volumes with logarithmically spaced radial bins"},
+{"loc": "Overdensity of galaxies", "quote": "$\\Delta v=\\pm2250~{\\rm km~s^{-1}}$ (the width of NB926 filter)"}]},
+"software": [],
+"key_parameters": [
+{"value": "background [C II] number from cumulative number density with L_[CII] > 10^8.2 Lsun; background LAEs measured at r>50 cMpc", "evidence": [{"loc": "Overdensity of galaxies", "quote": "while the background number of LAEs is directly measured from the outskirts ($r>50$ cMpc ) of our HSC observations"}]},
+{"value": "quasar-LAE cross-correlation length r0QG = 7.7 h^-1 Mpc (gamma=1.8), derived from r0QQ and r0GG", "evidence": [{"loc": "Overdensity of galaxies", "quote": "$r_0^{\\rm QG}=\\sqrt{r_0^{\\rm QQ}, r_0^{\\rm GG}}=7.7~h^{-1}~{\\rm Mpc}$ ($\\gamma=1.8$)"}]}
+],
+"assumptions": [
+{"value": "Fixed slope gamma=1.8 for all comparison profiles", "evidence": [{"loc": "Overdensity of galaxies", "quote": "we used $\\gamma=1.8$ and $r_0^{\\rm QG}=20~h^{-1}~{\\rm Mpc}$ to be consistent with $\\gamma$ of other profiles"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Estimate present-day protocluster mass",
+"method": {"value": "M_z=0 = (1+delta_m) rho_bar V, with delta_m obtained from 1 + b delta_m = C(1+delta) and C the redshift-space-distortion correction", "evidence": [
+{"loc": "The mass of the protocluster", "quote": "$M_{z=0}=(1+\\delta_m)\\bar{\\rho}V$"},
+{"loc": "The mass of the protocluster", "quote": "We thus can determine $\\delta_m$ through $1+b\\delta_m = C(1+\\delta)$"}]},
+"software": [],
+"key_parameters": [
+{"value": "volume from ~14x30 arcmin^2 (~35x74 cMpc^2) box and line-of-sight depth 36.9 cMpc", "evidence": [{"loc": "The mass of the protocluster", "quote": "a line-of-sight depth of $36.9~ {\\rm cMpc}$ which is derived from the redshift difference of the highest-$z$ LAE and lowest-$z$ LAE in the spectroscopic sample"}]},
+{"value": "mean matter density 3.88e10 Msun per cMpc^3", "evidence": [{"loc": "The mass of the protocluster", "quote": "$\\bar{\\rho}=3.88\\times10^{10}M_\\odot~{\\rm cMpc^{-3}}$ is the mean matter density of the Universe"}]}
+],
+"assumptions": [
+{"value": "Structure collapses into a cluster at z=0; Chiang13 formula extrapolated to z~6.6 and higher masses; LAE bias b=4.54±0.63", "evidence": [{"loc": "The mass of the protocluster", "quote": "Extrapolating the (cite: Chiang13) formula to $z\\sim6.6$ and higher masses, we derive $C=0.84$, $\\delta_m=0.57$ and the present-day mass"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Volume described as conservative; compared with Coma", "evidence": [{"loc": "The mass of the protocluster", "quote": "We note that the volume is conservative because the boundary does not cover the whole structure"}]}
+},
+{
+"order": 7,
+"goal": "Constrain quasar UV lifetime from the double-peaked LAE-11",
+"method": {"value": "Measure Lya peak separation of LAE-11, infer escape fraction with an empirical formula, and compute light-travel time delay and a lower limit on quasar lifetime from the transverse separation", "evidence": [
+{"loc": "A double peaked LAE in the quasar vicinity", "quote": "Using Equation (4), we estimate the time delay to be $\\Delta t=1.6\\times10^6$ yr."},
+{"loc": "A double peaked LAE in the quasar vicinity", "quote": "we estimate the lower limit of quasar UV lifetime using $t_q > \\frac{D_\\perp}{c}=8.1\\times10^5$ yr"}]},
+"software": [],
+"key_parameters": [
+{"value": "D_parallel = 0.18 pMpc, D_perp = 0.25 pMpc", "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "$D_\\parallel=0.18$ pMpc, and $D_\\perp=0.25$ pMpc, respectively"}]}
+],
+"assumptions": [
+{"value": "Line-of-sight separation cannot be distinguished from peculiar velocity, so only the transverse separation sets the lower limit", "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "we cannot distinguish the line-of-sight separation from the peculiar velocity of the galaxy around the quasar"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "ALMA data reduction", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "The ALMA data were reduced with the standard `CASA` package (cite: CASA)."}]}},
+{"name": "hscPipe", "version": "6.7", "used_for": {"value": "Processing and calibration of Subaru/HSC images and photometry", "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "The data were processed with `hscPipe 6.7`, a customization of the LSST Science Pipelines (cite: Juric17; Bosch18)."}]}},
+{"name": "COSMOS2", "version": "not stated", "used_for": {"value": "Reduction of Magellan/IMACS spectra", "evidence": [{"loc": "Optical spectroscopy", "quote": "we reduced IMACS data with the COSMOS2 pipeline (cite: COSMOS)"}]}},
+{"name": "PypeIt", "version": "not stated", "used_for": {"value": "Reduction of Keck/DEIMOS spectra", "evidence": [{"loc": "Optical spectroscopy", "quote": "The DEIMOS data were reduced with the PypeIt pipeline (cite: Pypeit_ascl; Pypeit) following the standard steps"}]}},
+{"name": "astropy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Numpy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Scipy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+{"quantity": "Overall LAE overdensity delta", "value": "3.3", "uncertainty": "+1.1/-0.9", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "abstract", "quote": "This structure has an overall overdensity of $\\delta=3.3^{+1.1}_{-0.9}$ within $\\sim35\\times74$ cMpc$^2$ on the sky"}]},
+{"quantity": "LAE density in central region relative to outskirts", "value": "4.3", "uncertainty": "+1.1/-0.9", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Overdensity of galaxies", "quote": "the density in the central region (24 LAEs within 420 arcmin$^2$) is $4.3^{+1.1}_{-0.9}$"}]},
+{"quantity": "Central LAE overdensity within R<~2 cMpc", "value": ">30", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "an extreme overdensity of $\\delta>30$ in its central region (i.e., $R\\lesssim2$ cMpc)"}]},
+{"quantity": "Number of HSC LAE candidates passing selection", "value": "87", "uncertainty": "not stated", "units": "count", "from_step": 2, "evidence": [{"loc": "Subaru/HSC observation and LAE selection", "quote": "In total, 87 LAE candidates pass our selection."}]},
+{"quantity": "Spectroscopically confirmed LAEs", "value": "12 (plus 1 low-z interloper at z=0.85)", "uncertainty": "not stated", "units": "count", "from_step": 3, "evidence": [{"loc": "Optical spectroscopy", "quote": "convincingly confirmed 12 bright LAEs at $z\\sim6.6$ and only one low-$z$ interloper at $z=0.85$"}]},
+{"quantity": "Fraction of measured-redshift LAE candidates at z~6.6", "value": "92%", "uncertainty": "not stated", "units": "percent", "from_step": 3, "evidence": [{"loc": "Optical spectroscopy", "quote": "of these 92% are indeed at the intended redshift $z\\sim6.6$"}]},
+{"quantity": "Lya luminosity range of confirmed LAEs", "value": "(0.6-3.6)e43", "uncertainty": "not stated", "units": "erg s^-1", "from_step": 3, "evidence": [{"loc": "Optical spectroscopy", "quote": "$L_{\\rm Ly\\alpha}\\simeq (0.6-3.6) \\times10^{43}~{\\rm erg~s^{-1}}$"}]},
+{"quantity": "[C II] luminosity range of SMG-A, SMG-B, SMG-C", "value": "(1.8-42.5)e8", "uncertainty": "not stated", "units": "Lsun", "from_step": 1, "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "The \\[C II\\] luminosities of SMG-A, SMG-B, and SMG-C are in the range of $(1.8-42.5)\\times10^8~L_\\odot$."}]},
+{"quantity": "Quasar-LAE cross-correlation length r0QG", "value": "7.7", "uncertainty": "not stated", "units": "h^-1 Mpc", "from_step": 5, "evidence": [{"loc": "Overdensity of galaxies", "quote": "$r_0^{\\rm QG}=\\sqrt{r_0^{\\rm QQ}, r_0^{\\rm GG}}=7.7~h^{-1}~{\\rm Mpc}$ ($\\gamma=1.8$)"}]},
+{"quantity": "Redshift-space-distortion correction factor C", "value": "0.84", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "The mass of the protocluster", "quote": "we derive $C=0.84$, $\\delta_m=0.57$ and the present-day mass"}]},
+{"quantity": "Mass overdensity delta_m", "value": "0.57", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "The mass of the protocluster", "quote": "we derive $C=0.84$, $\\delta_m=0.57$ and the present-day mass"}]},
+{"quantity": "Present-day (z=0) protocluster mass", "value": "6.9e15", "uncertainty": "+1.2/-1.4 e15", "units": "Msun", "from_step": 6, "evidence": [{"loc": "abstract", "quote": "a galaxy cluster with a mass of $6.9^{+1.2}_{-1.4}\\times10^{15}~M_\\odot$ at the current epoch"}]},
+{"quantity": "Lya peak separation of LAE-11", "value": "320", "uncertainty": "±22", "units": "km s^-1", "from_step": 7, "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "The peak separation of the $\\rm Ly\\alpha$ line is measured to be $320\\pm22~{\\rm km~s^{-1}}$"}]},
+{"quantity": "Ionizing photon escape fraction of LAE-11", "value": "~7", "uncertainty": "not stated", "units": "percent", "from_step": 7, "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "which implies a low ionizing photon escape fraction of $\\sim7$% by using the empirical fitting formula of (cite: Izotov18)"}]},
+{"quantity": "Light-travel time delay to LAE-11", "value": "1.6e6", "uncertainty": "not stated", "units": "yr", "from_step": 7, "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "we estimate the time delay to be $\\Delta t=1.6\\times10^6$ yr."}]},
+{"quantity": "Lower limit on quasar UV lifetime", "value": ">8.1e5", "uncertainty": "not stated", "units": "yr", "from_step": 7, "evidence": [{"loc": "A double peaked LAE in the quasar vicinity", "quote": "$t_q > \\frac{D_\\perp}{c}=8.1\\times10^5$ yr"}]}
+],
+"findings_qualitative": [
+{"value": "All three [C II] emitters are undetected in Subaru narrow-band and z-band imaging, suggesting they are dustier than the narrow-band selected LAEs", "evidence": [{"loc": "ALMA observation and [C II] emitters", "quote": "which indicates that these \\[C II\\] emitters are likely dustier than the narrow-band selected LAEs"}]},
+{"value": "Overdensity far exceeds the expectation from the quasar-galaxy cross-correlation function", "evidence": [{"loc": "Overdensity of galaxies", "quote": "the overdensity in the J0910–0414 field is much higher than that expected from the quasar–galaxy cross-correlation function"}]}
+],
+"claims": [
+{"hypothesis": "A luminous z>6.5 quasar traces a protocluster", "experiment": "Subaru/HSC narrow-band LAE selection, IMACS and DEIMOS spectroscopy, and ALMA [C II] follow-up of the field", "result": "87 LAE candidates, 12 spectroscopically confirmed LAEs at 6.54<z<=6.64 and three [C II] emitters around the quasar", "finding": "J0910–0414 anchors a protocluster at z=6.63", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "we report the discovery of a massive protocluster around a luminous quasar at $z=6.63$."},
+{"loc": "Summary", "quote": "The identification of this protocluster is secured by the discovery of a significant overdensity of both \\[C II\\] emitters and LAEs in the field."}]},
+{"hypothesis": "The LAE overdensity is high compared with the field and with expectations from clustering", "experiment": "Central-region vs outskirts LAE surface density and cumulative overdensity profiles compared with cross-correlation and protocluster profiles", "result": "delta=3.3 (+1.1/-0.9) overall and delta>30 within R<~2 cMpc; profile above quasar-galaxy cross-correlation expectation", "finding": "The structure is among the most overdense known in the early Universe", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "an extreme overdensity of $\\delta>30$ in its central region (i.e., $R\\lesssim2$ cMpc)"},
+{"loc": "Overdensity of galaxies", "quote": "This indicates that the protocluster traced by quasar J0910–0414 is among the most overdense structures known in the early Universe."}]},
+{"hypothesis": "The protocluster will become a very massive cluster", "experiment": "Chiang13 mass formula with the LAE overdensity, bias b=4.54 and a volume from the 14x30 arcmin^2 box and 36.9 cMpc depth", "result": "M_z=0 = 6.9 (+1.2/-1.4) e15 Msun", "finding": "More massive than Coma and the most massive protocluster known at z>6", "support": "supported", "evidence": [
+{"loc": "The mass of the protocluster", "quote": "at $z=0$ it would be three times more massive than the nearby Coma cluster (cite: Merritt87)"}]},
+{"hypothesis": "A double-peaked LAE near the quasar constrains quasar ionization and lifetime", "experiment": "Lya peak separation and geometry of LAE-11 relative to the quasar", "result": "peak separation 320±22 km/s, time delay 1.6e6 yr, t_q > 8.1e5 yr", "finding": "The quasar has ionized its surroundings and its UV lifetime exceeds 0.8 Myr", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "we discover a double-peaked LAE which implies that the quasar has a UV lifetime greater than 0.8 Myrs and has already ionized its surrounding intergalactic medium."},
+{"loc": "A double peaked LAE in the quasar vicinity", "quote": "we cannot distinguish the line-of-sight separation from the peculiar velocity of the galaxy around the quasar"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "The quasar's Lya at the quasar redshift falls in the Subaru/HSC NB926 filter, and ALMA was used to find obscured galaxies", "evidence": [
+{"loc": "Observations and data analysis", "quote": "the redshifted Ly$\\alpha$ line of galaxies at the quasar redshift is well placed in a narrow band filter, NB926, on Subaru/HSC"},
+{"loc": "ALMA observation and [C II] emitters", "quote": "To identify obscured galaxies in the quasar field"}]}
+],
+"alternatives_considered_or_rejected": [],
+"limitations_admitted": [
+{"value": "Volume used for the mass is conservative and the line-of-sight depth is a lower limit", "evidence": [{"loc": "The mass of the protocluster", "quote": "We note that the volume is conservative because the boundary does not cover the whole structure and the line-of-sight depth is a lower limit"}]},
+{"value": "Many LAE candidates are not confirmed or ruled out and need deeper spectroscopy", "evidence": [{"loc": "Optical spectroscopy", "quote": "Future deeper spectroscopic observations are needed to confirm the nature of these LAE candidates."}]},
+{"value": "Non-uniform observations of other quasar fields make direct comparison difficult", "evidence": [{"loc": "Comparison with other galaxy overdensities traced by $z\\sim6$ quasars", "quote": "the current non-uniform observations make it challenging to directly compare their physical properties and evolutionary phases"}]}
+],
+"referee_caveats_inferred": [
+"The ALMA reduction, imaging and line-fitting details are deferred to an in-prep paper, so the [C II] luminosities cannot be checked from this text",
+"Mass estimate depends on extrapolating the Chiang13 formula to z~6.6 and masses beyond its calibration, and on one bias value from Ouchi18",
+"Overdensity of the central region depends on the choice of a ~14x30 arcmin^2 box drawn after seeing the LAE distribution",
+"The lifetime limit uses a single galaxy and ignores peculiar velocity and Lya redshift uncertainty"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"ALMA calibration and imaging recipe (CASA version, tclean parameters, line-free channels, beam, rms)",
+"Spectral line fitting method and L_[CII] conversion for SMG-A/B/C",
+"HSC LAE candidate catalogue and the spectroscopic reductions (not stated as public)",
+"Cosmological parameters and error propagation for overdensity and mass"
+],
+"estimated_data_volume_inferred": "Two Band 6 ALMA projects (19 min and 383 min on source); raw size not stated, likely tens of GB; HSC and optical data are non-ALMA and not reproducible from the archive alone",
+"score_inferred": 2,
+"score_reason": "ALMA is a minor part, its reduction is deferred to a later paper and no imaging settings are given; the optical/overdensity analysis is described but depends on non-ALMA, unreleased catalogues",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The ALMA recipe is incomplete and the headline results (overdensity, mass) rest on HSC and spectroscopic data not stated as public",
+"methods_papers": [
+{"citation": "Yang J. et al., in prep", "why": "Contains the detailed ALMA data reduction and quasar host characterization"},
+{"citation": "Chiang13 (Chiang et al. 2013)", "why": "Formula for present-day protocluster mass"},
+{"citation": "Bosman20 (Bosman et al. 2020)", "why": "Method for constraining quasar UV lifetime from galaxies in the proximity zone"},
+{"citation": "Shibuya18 (Shibuya et al. 2018)", "why": "LAE selection criteria followed"}
+],
+"companion_papers": [
+{"citation": "Wang23b (Wang et al. 2023, submitted)", "why": "[C II]-based redshift of the quasar"},
+{"citation": "Yang21 (Yang et al. 2021)", "why": "Quasar black hole mass"},
+{"citation": "Meyer22 (Meyer et al. 2022)", "why": "Overdensity profiles of [C II] emitters and LAEs in three quasar fields used for comparison"}
+],
+"related_projects_or_surveys": ["Subaru/HSC narrow-band NB926 imaging of the J0910–0414 field", "Magellan/IMACS slit mask 4129", "Keck/DEIMOS masks (mask1, mask2, mask3)"]
+}

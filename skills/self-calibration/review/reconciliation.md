@@ -1,0 +1,22 @@
+# Reconciliation: self-calibration
+- SR-01 | FIXED | Removed 2015ApJ...812..126C from the "combine spws" example (pack line 176: spw combining was ATCA Ka); replaced with 2020ApJ...892L..18I ("spws combined"); 2015ApJ...812..126C now cited only as Band 9 antenna-based phase self-cal.
+- SR-02 | FIXED | "If it fails" now says keep the last validated calibration state (2020ApJ...898...10T kept its 120 s round after later rounds failed); fall back to pipeline data only if no round helps (2017A&A...603A..10B).
+- SR-03 | FIXED | Pitfall now reports ALMAGAL's findcont limitation and lack of manual continuum ranges as stated; manual explicit ranges are labelled my recommendation.
+- SR-04 | FIXED | Pitfalls and Verification now say simulations show unbiased recovery of antenna phases; pack shows no test of lens-parameter bias.
+- SR-05 | FIXED | Software row now "tclean (or older clean) + gaincal + applycal", citing 2023PSJ.....4..142C for tclean and 2017ApJ...850L...2A for clean.
+- SR-06 | FIXED | 2019AJ....157..251T, 2016ApJ...829L..35T, 2016A&A...586A..99H, 2016A&A...593A..44L and 2014ApJ...795..156W marked "type not stated" in SKILL.md/parameters.md; Vega's last round shown as "amp" (mode unspecified), not ap.
+- SR-07 | FIXED | Ranges recomputed per mode: first phase from record length/int (2015ApJ...808...36M, ALMAGAL) to whole observation (type not stated); final phase-only 2 s to 2 min, 240 s listed as type not stated; amplitude integration time (2.048 s) to 3600 s; MIRIAD 0.01 min kept as requested interval with unstated type; requested solint vs integration explained.
+- SR-08 | FIXED | Single S/N row split into three defined gates (ALMAGAL S/N_selfcal, image detection significance, source flux density), separate from per-solution minsnr; When-not-to-use row reworded likewise.
+- SR-09 | FIXED | Summary and Pitfalls quote exact aggregate category labels (63/36/13/12/8), state they may overlap and are not summed.
+- SR-10 | FIXED | Removed the predictive "large vs 10-25%" rule; now says the table is heterogeneous case results with different metrics; only ALMAGAL array trend kept.
+- SR-11 | FIXED | Band 9 is no longer an exclusion; both When-not-to-use and Pitfalls list Band 9 failures (2019ApJ...871...73H, 2014ApJ...796...82Z) and successes (2014A&A...567A.125G, 2015ApJ...812..126C, 2016ApJ...823...91S, 2024PSJ.....5..125T); feasibility tied to signal.
+- SR-12 | FIXED | Longer single amplitude round labelled my conservative recommendation; documented alternatives added (same solint: 2017A&A...605A..21C, 2017ApJ...850L..30Y, 2020ApJ...894L..14L; two rounds: 2018ApJ...853..171G).
+- SR-13 | FIXED | Callout and Step 7 now branch by product: transfer (69 lines), kept off lines (5 lines), and three subtraction orders incl. continuum-subtracted-first line self-cal (2012A&A...548A..69N, 2018ApJ...863L..35M, 2019A&A...623L...6P, 2020A&A...644A.119P).
+- SR-14 | FIXED | The +-10% phase criterion is quoted as an undefined paper-specific description; users told to define a phase statistic in degrees if they use one.
+- SR-15 | FIXED | Missing-flux row now says 2015ApJ...804...37L did no amplitude self-cal and its two phase rounds were not applied to the 12m data.
+- SR-16 | FIXED | New Polarization pitfall: per-polarization T gains and fixed cross-hand phase (2020ApJ...895...64L), parallel-hand ratio check, and the factor 2-3 filtering bias self-cal cannot remove (2024A&A...686A.274V).
+- SR-17 | FIXED | Reporting list extended: channel ranges, subtraction channels and fit order, masks, thresholds, minblperant, gaintype, normalisation, calibration chain; backed by quoted not-stated categories.
+- SR-18 | FIXED | Step 7 now requires an explicit calibration chain: input data state, incremental vs replacement tables, spwmap, handling of flagged solutions (general CASA practice), with the TDM-to-FDM example.
+- SR-19 | FIXED | Step 4 explains solint='inf' gives per-scan solutions unless combine='scan' (general CASA practice), cites both documented strategies, and asks to record time span and number of solutions (2020ApJ...895...64L: 14 per pol per antenna).
+
+Counts note (Codex Notes): the old custom counts 41/43/54 over "163" lines were not reproducible. Recounted with grep over the pack's key-parameter section (lines 120-685): 391 `processing.calibration.self_calibration = ` lines, one per paper; "phase[- ]only" 141; amplitude terms 128; transfer beyond self-cal data 69; kept off line data 5. The regexes are stated in SKILL.md.

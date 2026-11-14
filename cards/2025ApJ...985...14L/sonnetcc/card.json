@@ -1,0 +1,1625 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...985...14L",
+  "title": "Cloud-scale Gas Properties, Depletion Times, and Star Formation Efficiency per Freefall Time in PHANGS─ALMA",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Leroy, Adam K.",
+  "n_authors": 34,
+  "arxiv_id": "2502.04481",
+  "doi": "10.3847/1538-4357/adbcab",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2012.1.00650.S",
+   "2013.1.00803.S",
+   "2013.1.01161.S",
+   "2015.1.00121.S",
+   "2015.1.00782.S",
+   "2015.1.00925.S",
+   "2015.1.00956.S",
+   "2016.1.00386.S",
+   "2017.1.00392.S",
+   "2017.1.00766.S",
+   "2017.1.00886.L",
+   "2018.1.01321.S",
+   "2018.1.01651.S",
+   "2018.A.00062.S",
+   "2019.2.00129.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "by comparing star formation activity to cloud-scale gas properties using the largest homogeneous cloud-scale data set on molecular gas in galaxies, PHANGS–ALMA"
+   },
+   {
+    "loc": "2 Data and methods",
+    "quote": "We conduct our analysis using the high-level data products"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "PHANGS–ALMA galaxy sample (67 galaxies, 841 regions after selection)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "d <~ 20 Mpc (nearby sample; per-galaxy distances not listed)",
+      "evidence": [
+       {
+        "loc": "2 Data and methods",
+        "quote": "PHANGS–ALMA targeted nearby ($d \\lesssim 20$ Mpc), low to moderately inclined ($i \\lesssim 75^\\circ$)"
+       },
+       {
+        "loc": "2 Data and methods",
+        "quote": "We adopt distances and orientation parameters for all PHANGS–ALMA targets as measured and compiled by (cite: LANG20KINEMATICS; ANAND21DISTANCES; PHANGSALMA21SURVEY)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "LANG20KINEMATICS; ANAND21DISTANCES; PHANGSALMA21SURVEY",
+      "evidence": [
+       {
+        "loc": "2 Data and methods",
+        "quote": "PHANGS–ALMA targeted nearby ($d \\lesssim 20$ Mpc), low to moderately inclined ($i \\lesssim 75^\\circ$)"
+       },
+       {
+        "loc": "2 Data and methods",
+        "quote": "We adopt distances and orientation parameters for all PHANGS–ALMA targets as measured and compiled by (cite: LANG20KINEMATICS; ANAND21DISTANCES; PHANGSALMA21SURVEY)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the regional mass-weighted cloud-scale (60-150 pc) molecular gas properties (surface density, velocity dispersion, virial parameter, free-fall time) relate to molecular gas depletion time and star formation efficiency per free-fall time in 1.5 kpc regions across PHANGS-ALMA galaxies?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Then we test how $\\tau_{\\rm dep}^{\\rm mol}$ and $\\epsilon_{\\rm ff}^{\\rm mol}$ vary as functions of the regional mass-weighted mean molecular gas properties on cloud scales (60–150 pc)"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00650.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.00650.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00803.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2013.1.00803.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.01161.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2013.1.01161.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00121.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00121.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00782.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00782.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00925.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00925.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00956.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00956.S"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00386.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2016.1.00386.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00392.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00392.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00766.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00766.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00886.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00886.L"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01321.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2018.1.01321.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01651.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2018.1.01651.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.A.00062.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2018.A.00062.S"
+      }
+     ]
+    },
+    {
+     "code": "2019.1.01235.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2019.1.01235.S"
+      }
+     ]
+    },
+    {
+     "code": "2019.2.00129.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2019.2.00129.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.1 Cloud-scale gas properties",
+       "quote": "of the CO (2-1) line, which traces the bulk of the molecular gas"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "PHANGS-ALMA data include short- and zero-spacing data (arrays not itemised)",
+    "evidence": [
+     {
+      "loc": "2.3 Data selection and completeness",
+      "quote": "This total flux is well-measured by summing the PHANGS–ALMA data, which include short- and zero-spacing data, without any aggressive high resolution masking."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Fiducial 150 pc (FWHM physical beam); 120, 90 and 60 pc also used for fewer galaxies",
+    "evidence": [
+     {
+      "loc": "3.1 Cloud-scale gas properties",
+      "quote": "cloud-scale (physical beam size $\\ell = 150$ pc) imaging"
+     },
+     {
+      "loc": "Appendix: PHANGS–ALMA at higher resolution",
+      "quote": "PHANGS–ALMA also represents the largest survey of CO from galaxies at $120$ pc, $90$ pc, and $60$ pc resolution"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Sensitive to individual ~1e5 Msun GMCs per 60-150 pc beam; CO-bright at 150 pc defined as > 0.6 K km/s, about 3x typical rms integrated intensity noise",
+    "evidence": [
+     {
+      "loc": "2.3 Data selection and completeness",
+      "quote": "PHANGS–ALMA has sensitivity to detect individual $\\sim 10^{5}$ M$_\\odot$ GMCs in each $60{-}150$ pc beam"
+     },
+     {
+      "loc": "Appendix: Procedure to replicate",
+      "quote": "CO bright emission visible to PHANGS–ALMA at 150 pc would be defined as $> 0.6$ K km s$^{-1}$, or about $3\\times$ the typical rms integrated intensity noise."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA data processed as part of the PHANGS–ALMA CO (2-1) survey; analysis uses PHANGS high-level products (mega-tables)",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data, which have been processed as part of the PHANGS–ALMA CO (2-1) survey:"
+     },
+     {
+      "loc": "2 Data and methods",
+      "quote": "We conduct our analysis using the high-level data products"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Ground-based narrowband H-alpha",
+     "provided": {
+      "value": "Default Sigma_SFR tracer (with WISE 22 um); maps from A. Razza et al. (in preparation)",
+      "evidence": [
+       {
+        "loc": "2.2 Star formation rate per unit gas",
+        "quote": "By default, we estimate $\\Sigma_{\\rm SFR}$ combining H$\\alpha$ narrowband measurements and WISE $22\\mu$m mid-infrared emission."
+       }
+      ]
+     }
+    },
+    {
+     "name": "WISE",
+     "provided": {
+      "value": "22 um (WISE4) maps for Sigma_SFR; 3.4-22 um images compiled by LEROY19Z0MGS",
+      "evidence": [
+       {
+        "loc": "2.2 Star formation rate per unit gas",
+        "quote": "using narrowband H$\\alpha$ maps from A. Razza et al. (in preparation) and $22\\mu$m WISE4 maps from (cite: LEROY19Z0MGS)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "GALEX",
+     "provided": {
+      "value": "FUV emission combined with WISE 22 um for Sigma_SFR when H-alpha maps are unavailable",
+      "evidence": [
+       {
+        "loc": "2.2 Star formation rate per unit gas",
+        "quote": "When H$\\alpha$ maps are not available, we instead combine GALEX FUV emission and WISE 22$\\mu$m emission"
+       }
+      ]
+     }
+    },
+    {
+     "name": "IRAC 3.6 um",
+     "provided": {
+      "value": "3.6 um images listed among the core data sets aggregated in the mega-tables (specific use not stated here)",
+      "evidence": [
+       {
+        "loc": "2 Data and methods",
+        "quote": "IRAC $3.6\\mu$m images"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "PHANGS mega-tables: per-hexagon CO-derived cloud-scale properties, SFR and gas masses",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "Calculations and database described in detail in (cite: SUN22CLOUDS) and (cite: SUN23SFGAS)."
+       },
+       {
+        "loc": "2 Data and methods",
+        "quote": "They break galaxies into individual sub-galactic regions and then measure a rich set of galaxy structural, stellar, and ISM properties in each region."
+       }
+      ]
+     },
+     "citation": "(cite: SUN22CLOUDS; SUN23SFGAS)"
+    },
+    {
+     "what": {
+      "value": "CO-to-H2 conversion prescription alpha_CO^2-1 (metallicity, emissivity and excitation terms)",
+      "evidence": [
+       {
+        "loc": "2.1 Cloud-scale gas properties",
+        "quote": "we adopt the new CO-to-H$_2$ conversion factor $\\alpha_{\\rm CO}^{2-1}$ recommended by (cite: SCHINNERER24REVIEW)"
+       }
+      ]
+     },
+     "citation": "(cite: SCHINNERER24REVIEW)"
+    },
+    {
+     "what": {
+      "value": "Emissivity (starburst) term of alpha_CO from dust-based estimates; ~0.2 dex scatter quoted",
+      "evidence": [
+       {
+        "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+        "quote": "who find $\\approx 0.2$ dex scatter between their dust-based $\\alpha_{\\rm CO}^{2-1}$ and the fit to local conditions that we employ"
+       }
+      ]
+     },
+     "citation": "(cite: CHIANG24XCO)"
+    },
+    {
+     "what": {
+      "value": "Sigma_SFR calibration from H-alpha plus WISE 22 um; ~0.15 dex point-to-point scatter vs MUSE",
+      "evidence": [
+       {
+        "loc": "2.2 Star formation rate per unit gas",
+        "quote": "These measurements follow (cite: BELFIORE23SFRLARGE) as implemented by (cite: SUN23SFGAS)"
+       },
+       {
+        "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+        "quote": "found $\\approx 0.15$ dex point-to-point scatter between the estimators that we use"
+       }
+      ]
+     },
+     "citation": "(cite: BELFIORE23SFRLARGE)"
+    },
+    {
+     "what": {
+      "value": "Galaxy distances and orientation parameters",
+      "evidence": [
+       {
+        "loc": "2 Data and methods",
+        "quote": "We adopt distances and orientation parameters for all PHANGS–ALMA targets as measured and compiled by (cite: LANG20KINEMATICS; ANAND21DISTANCES; PHANGSALMA21SURVEY)."
+       }
+      ]
+     },
+     "citation": "(cite: LANG20KINEMATICS; ANAND21DISTANCES; PHANGSALMA21SURVEY)"
+    },
+    {
+     "what": {
+      "value": "Molecular gas scale height H_mol = 100 pc",
+      "evidence": [
+       {
+        "loc": "2.1 Cloud-scale gas properties",
+        "quote": "with $H_\\mathrm{mol} = 100$ pc the adopted molecular gas disk scale height (cite: HEYER15REVIEW)"
+       }
+      ]
+     },
+     "citation": "(cite: HEYER15REVIEW)"
+    },
+    {
+     "what": {
+      "value": "Molecular Kennicutt-Schmidt power-law fit (Sigma_SFR ~ Sigma_mol^1.2) overplotted for comparison",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "The selected data agree well with the power-law fit by (cite: SUN23SFGAS), shown by the dashed line,"
+       }
+      ]
+     },
+     "citation": "(cite: SUN23SFGAS)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Turbulence-regulated star formation expectation for fixed tau_ff (dashed line in the tau_dep vs alpha_vir figure)",
+     "evidence": [
+      {
+       "loc": "3.3 Molecular gas depletion time as a function of cloud-scale virial parameter",
+       "quote": "the dashed line shows the expected relationship from (cite: PADOAN12EFF) for fixed"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Uses PHANGS–ALMA high-level products (mega-tables); no ALMA calibration done in this paper",
+     "evidence": [
+      {
+       "loc": "2 Data and methods",
+       "quote": "We conduct our analysis using the high-level data products"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "PHANGS-ALMA data include short- and zero-spacing data",
+     "evidence": [
+      {
+       "loc": "Footnote 4",
+       "quote": "which include short- and zero-spacing data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "Data convolved to 150 pc (FWHM) for the fiducial cloud-scale measurement; Sigma_mol and Sigma_SFR convolved to the hexagon diameter FWHM for tau_dep",
+     "evidence": [
+      {
+       "loc": "Appendix: Procedure to replicate",
+       "quote": "Convolve the CO or simulated molecular gas data to have a resolution of $150$ pc (FWHM)."
+      },
+      {
+       "loc": "Footnote 3",
+       "quote": "we convolve both $\\Sigma_{\\rm mol}$ and $\\Sigma_{\\rm SFR}$ to share a matched Gaussian kernel with FWHM equal to the hex diameter"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "150 pc physical FWHM (fiducial)",
+     "evidence": [
+      {
+       "loc": "3.1 Cloud-scale gas properties",
+       "quote": "cloud-scale (physical beam size $\\ell = 150$ pc) imaging"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "CO-bright threshold > 0.6 K km/s, about 3x the typical rms integrated intensity noise at 150 pc",
+     "evidence": [
+      {
+       "loc": "Appendix: Procedure to replicate",
+       "quote": "$> 0.6$ K km s$^{-1}$, or about $3\\times$ the typical rms integrated intensity noise"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Cross-scale (mass-weighted region averaging) methodology",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt the cross-scale methodology developed in (cite: LEROY16GMCS), (cite: LEROY17SFGAS), (cite: SCHRUBA19GMCS), (cite: SUN20PRESS) and (cite: SUN22CLOUDS)."
+       }
+      ]
+     },
+     "from_reference": "(cite: LEROY16GMCS), (cite: LEROY17SFGAS), (cite: SCHRUBA19GMCS), (cite: SUN20PRESS), (cite: SUN22CLOUDS)"
+    },
+    {
+     "what": {
+      "value": "Mass-weighting scheme for line-of-sight gas properties",
+      "evidence": [
+       {
+        "loc": "3.1 Cloud-scale gas properties",
+        "quote": "It has been described in detail by (cite: LEROY16GMCS; LEROY17SFGAS; UTOMO18EFF) and (cite: SUN22CLOUDS)."
+       }
+      ]
+     },
+     "from_reference": "(cite: LEROY16GMCS; LEROY17SFGAS; UTOMO18EFF) and (cite: SUN22CLOUDS)"
+    },
+    {
+     "what": {
+      "value": "Size scale R_pix definition with H_mol = 100 pc",
+      "evidence": [
+       {
+        "loc": "2.1 Cloud-scale gas properties",
+        "quote": "Following (cite: SUN22CLOUDS), we take the relevant scale to be"
+       }
+      ]
+     },
+     "from_reference": "(cite: SUN22CLOUDS)"
+    },
+    {
+     "what": {
+      "value": "Completeness and inclination corrections to cloud-scale Sigma_mol and sigma_mol (lognormal PDF assumption for completeness)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Corrected for completeness and inclination following (cite: SUN22CLOUDS)."
+       },
+       {
+        "loc": "Appendix: Procedure to replicate",
+        "quote": "Apply inclination corrections as in (cite: SUN22CLOUDS) to calculate face-on values of each quantity."
+       }
+      ]
+     },
+     "from_reference": "(cite: SUN22CLOUDS)"
+    },
+    {
+     "what": {
+      "value": "Effective-width line width definition sigma = I_CO / (sqrt(2 pi) I_pk)",
+      "evidence": [
+       {
+        "loc": "3.2 Molecular gas depletion time as a function of cloud-scale surface density and line width",
+        "quote": "derived from the ratio of the line integral to the peak, $\\sigma \\equiv I_{\\rm CO} / \\sqrt{2 \\pi} I_{\\rm pk}$"
+       }
+      ]
+     },
+     "from_reference": "(cite: HEYER01GMCS; LEROY16GMCS; SUN22CLOUDS)"
+    },
+    {
+     "what": {
+      "value": "Sigma_SFR convolution to hexagon-diameter kernel and sampling at hexagon centre",
+      "evidence": [
+       {
+        "loc": "Footnote 3",
+        "quote": "as in (cite: SUN23SFGAS), we convolve both $\\Sigma_{\\rm mol}$ and $\\Sigma_{\\rm SFR}$ to share a matched Gaussian kernel with FWHM equal to the hex diameter"
+       }
+      ]
+     },
+     "from_reference": "(cite: SUN23SFGAS)"
+    },
+    {
+     "what": {
+      "value": "PHANGS-ALMA CO (2-1) maps (observing, calibration, imaging done in the survey paper)",
+      "evidence": [
+       {
+        "loc": "2 Data and methods",
+        "quote": "the PHANGS–ALMA CO (2-1) maps (cite: PHANGSALMA21SURVEY)"
+       }
+      ]
+     },
+     "from_reference": "(cite: PHANGSALMA21SURVEY)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Version and exact columns of the PHANGS mega-tables used (Sun et al. 2022/2023 products) and the list of the 67 galaxies out of the 80 in the parent table",
+    "S/N threshold and masking that define the 'high S/N mask' used for the completeness f_comp",
+    "Geometric factor f in the alpha_vir expression and the exact face-on correction of Sigma_mol and sigma_mol",
+    "Metallicity (Z) and stellar surface density (Sigma_star) sources used to evaluate f(Z) and g(Sigma_star) in alpha_CO",
+    "Number of bootstrap resamples, random seed, and the exact likelihood form and prior on intrinsic scatter in the linear fits",
+    "KDE grid size and exact settings behind the plotted median and 16-84% trends",
+    "How hexagonal region grids are laid out and which regions overlap or are treated as independent",
+    "Raw ALMA calibration, imaging and masking choices behind the PHANGS-ALMA maps (only available in the survey paper)",
+    "Narrowband H-alpha maps (A. Razza et al., in preparation) are not yet published"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Convert CO (2-1) intensity to molecular gas mass with a variable alpha_CO",
+    "method": {
+     "value": "Local best-estimate alpha_CO^2-1 = alpha_CO,MW^1-0 x f(Z) x g(Sigma_star) x R21(Sigma_SFR)^-1 applied region by region",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Calculated via $\\alpha_{\\rm CO,MW}^{1-0} \\times f(Z) \\times g(\\Sigma_\\star) \\times R_{21}(\\Sigma_{\\rm SFR})^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "alpha_CO,MW^1-0 = 4.35 Msun pc^-2 (K km/s)^-1",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$=4.35\\;\\mbox{$\\rm M_\\odot~pc^{-2}\\ (K~km~s^{-1})^{-1}$}$; Milky Way CO (1-0) conversion factor"
+       }
+      ]
+     },
+     {
+      "value": "f(Z) = (Z/Zsun)^-1.5 metallicity-dependent term",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$=\\left(Z / Z_\\odot \\right)^{-1.5}$ ; metallicity-dependent"
+       }
+      ]
+     },
+     {
+      "value": "Emissivity term alpha_CO^1-0 ~ Sigma_star^-0.25 for Sigma_star > 100 Msun pc^-2",
+      "evidence": [
+       {
+        "loc": "3.5 The key role of the CO-to-H2 conversion factor",
+        "quote": "In our prescription, $\\alpha_{\\rm CO}^{1-0} \\propto \\Sigma_\\star^{-0.25}$ where $\\Sigma_\\star > 100$ M$_\\odot$ pc$^{-2}$ (cite: CHIANG24XCO)"
+       }
+      ]
+     },
+     {
+      "value": "R21 = 0.65 (Sigma_SFR / 0.018 Msun/yr/kpc2)^0.125, min 0.35, max 1.0",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$=0.65 \\left( \\Sigma_{\\rm SFR}\\;/\\;0.018~{\\rm M}_\\odot~{\\rm yr}^{-1}~{\\rm kpc}^{-2} \\right)^{0.125}$ with min 0.35, max 1.0; CO line excitation term"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "alpha_CO assumed fixed within each region when averaging",
+      "evidence": [
+       {
+        "loc": "Footnote 2",
+        "quote": "so when we conduct region-averages we assume a fixed $\\alpha_{\\rm CO}$ within each region."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Analysis repeated with a fixed Milky Way alpha_CO",
+     "evidence": [
+      {
+       "loc": "3.5 The key role of the CO-to-H2 conversion factor",
+       "quote": "we repeat our analysis using a fixed $\\alpha_{\\rm CO}$ instead of our best estimate"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure cloud-scale gas properties along each CO-detected line of sight at 150 pc",
+    "method": {
+     "value": "Per sightline: Sigma_mol, effective-width sigma_mol, R_pix, then tau_ff and alpha_vir; face-on and completeness corrections",
+     "evidence": [
+      {
+       "loc": "3.1 Cloud-scale gas properties",
+       "quote": "Within each region of each galaxy, we measure four gas properties for each individual line of sight where CO is detected."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "tau_ff = sqrt(3 pi / (32 G rho)), rho = 3 M_beam / (4 pi R_pix^3)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Calculated via $\\tau_{\\rm ff} = \\sqrt{3 \\pi / (32 G \\rho_{\\rm mol}^{\\rm cloud})}$"
+       }
+      ]
+     },
+     {
+      "value": "alpha_vir = 5 sigma^2 R_pix / (f G M_beam)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Calculated via $\\alpha_{\\rm vir}^{\\rm cloud} = 5 \\sigma^2_{\\rm mol} R_{\\rm pix} / (f G M_{\\rm mol}^{\\rm beam})$."
+       }
+      ]
+     },
+     {
+      "value": "R_pix = (l^2 H_mol / (8 cos i))^(1/3), l = 150 pc, H_mol = 100 pc",
+      "evidence": [
+       {
+        "loc": "2.1 Cloud-scale gas properties",
+        "quote": "Following (cite: SUN22CLOUDS), we take the relevant scale to be $R_{\\rm pix} \\equiv (\\ell^2 H_{\\rm mol} / (8 \\cos i))^{1/3}$ at the fiducial $\\ell=150$ pc resolution, with $H_{\\rm mol}=100$ pc."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Mass in each beam spread over the whole beam and a line-of-sight depth H_mol / cos i",
+      "evidence": [
+       {
+        "loc": "2.1 Cloud-scale gas properties",
+        "quote": "This assumes that the mass measured in each beam is spread over the entire beam and over a line-of-sight depth of $H_\\mathrm{mol}/\\cos{i}$"
+       }
+      ]
+     },
+     {
+      "value": "alpha_vir considers only gas self-gravity",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "considering only gas self-gravity"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Sun et al. 2022 showed a good match to an object-oriented (cloud-finding) analysis",
+     "evidence": [
+      {
+       "loc": "2.1 Cloud-scale gas properties",
+       "quote": "showed a good overall match between results for an object oriented analysis, where size is measured from morphological analysis, and this sightline based approach"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Average cloud-scale properties over 1.5 kpc hexagonal regions with mass weighting",
+    "method": {
+     "value": "Each sightline weighted by local gas surface density within each hexagon; tau_ff averaged harmonically so tau_dep ~ <tau_ff> for fixed eps_ff",
+     "evidence": [
+      {
+       "loc": "3.1 Cloud-scale gas properties",
+       "quote": "Then, we weight each line of sight by the local gas surface density to derive mass-weighted, region-averaged molecular gas properties."
+      },
+      {
+       "loc": "Appendix: Procedure to replicate",
+       "quote": "In the case of $\\tau_{\\rm ff}^{\\rm mol}$, calculate the average via"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Hexagonal apertures 1.5 kpc diameter (1 kpc for the 120/90/60 pc samples)",
+      "evidence": [
+       {
+        "loc": "Appendix: Procedure to replicate",
+        "quote": "Divide the target region or galaxy into hexagonal apertures with diameter $1.5$ kpc."
+       },
+       {
+        "loc": "Appendix: PHANGS–ALMA at higher resolution",
+        "quote": "work with $1$ kpc diameter hexagonal regions rather than the $1.5$ kpc diameter used for the main results"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive region-level tau_dep and eps_ff",
+    "method": {
+     "value": "Convolve Sigma_SFR and Sigma_mol maps to 1.5 kpc FWHM, divide for tau_dep, sample at hexagon centre; eps_ff = <tau_ff> / tau_dep",
+     "evidence": [
+      {
+       "loc": "Appendix: Procedure to replicate",
+       "quote": "Estimate the molecular gas depletion time by convolving the $\\Sigma_{\\rm SFR}$ and $\\Sigma_{\\rm mol}$ maps to 1.5 kpc (FWHM) resolution."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Sigma_SFR from H-alpha + WISE 22 um (default); GALEX FUV + WISE 22 um where H-alpha missing; WISE 22 um alone in a handful of cases",
+      "evidence": [
+       {
+        "loc": "2.2 Star formation rate per unit gas",
+        "quote": "in a handful of cases we use only WISE $22\\mu$m emission"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Sigma_SFR estimators match VLT/MUSE gold-standard maps to ~0.1 dex accuracy",
+      "evidence": [
+       {
+        "loc": "2.2 Star formation rate per unit gas",
+        "quote": "matches the results using the “gold standard” VLT/MUSE maps to $\\approx 0.1$ dex accuracy"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Select regions with adequate CO completeness",
+    "method": {
+     "value": "Require cloud-scale CO flux completeness > 50% and <Sigma_mol^cloud> > 20 Msun pc^-2",
+     "evidence": [
+      {
+       "loc": "2.3 Data selection and completeness",
+       "quote": "Based on this figure we impose a $\\langle \\Sigma_{\\rm mol}^{\\rm cloud} \\rangle$ cut at $20$ M$_\\odot$ pc$^{-2}$ in addition to requiring $f_{\\rm comp}^{\\rm CO} > 50\\%$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "841 regions in 67 galaxies at 150 pc",
+      "evidence": [
+       {
+        "loc": "2.3 Data selection and completeness",
+        "quote": "Applying this criteria to the $\\ell = 150$ pc resolution PHANGS–ALMA data set in (cite: SUN22CLOUDS), we select $841$ regions in $67$ galaxies."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Lognormal surface-density PDF used to correct for completeness (inherited from Sun et al. 2022)",
+      "evidence": [
+       {
+        "loc": "2.3 Data selection and completeness",
+        "quote": "by assuming lognormal probability distribution function for the surface density, in good agreement with observations"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cut chosen so a few high-completeness galaxies do not dominate low-Sigma bins",
+     "evidence": [
+      {
+       "loc": "2.3 Data selection and completeness",
+       "quote": "avoids the case where a few high completeness galaxies dominate low $\\langle \\Sigma_{\\rm mol}^{\\rm cloud} \\rangle$ bins and drive our results on their own"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Correlate and fit tau_dep and eps_ff against cloud-scale gas properties",
+    "method": {
+     "value": "Spearman rank correlation plus a linear fit y = m (x - x0) + b in log-log space, treating the gas property as the independent variable; also galaxy-normalised versions and KDE median trends",
+     "evidence": [
+      {
+       "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+       "quote": "We calculate $x_0$ as the median of the $x$ data, then maximize the log-likelihood to infer $m$ and $b$."
+      }
+     ]
+    },
+    "software": [
+     "scipy"
+    ],
+    "key_parameters": [
+     {
+      "value": "x0 is the median of x; intrinsic scatter term included but very small; sigma reported as robust rms residual",
+      "evidence": [
+       {
+        "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+        "quote": "We also include an intrinsic scatter term in the fit, but this tends to be very small given our adopted uncertainty estimates (see below)."
+       }
+      ]
+     },
+     {
+      "value": "Adopted uncertainties: tau_dep 0.3 dex, Sigma_mol 0.2 dex, tau_ff 0.1 dex, sigma_mol 0.15 dex",
+      "evidence": [
+       {
+        "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+        "quote": "we consider any individual $\\tau_{\\rm dep}^{\\rm mol}$ estimate to be uncertain by $\\approx 0.3$ dex"
+       },
+       {
+        "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+        "quote": "we consider these $\\langle \\sigma_{\\rm mol}^{\\rm cloud} \\rangle$ values to be uncertain by $\\approx 0.15$ dex"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Fit y on x (not x on y, not bivariate); results depend on this choice",
+      "evidence": [
+       {
+        "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+        "quote": "Fitting $x$ as a function of $y$ or conducting a bivariate fit would yield different results."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Maximum-likelihood linear fit with adopted uncertainties and intrinsic scatter term; per-galaxy bootstrap for fit uncertainties",
+     "evidence": [
+      {
+       "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+       "quote": "where we repeatedly re-draw $N$ galaxies from the parent sample and refit the relation between $\\tau_{\\rm dep}^{\\rm mol}$ and gas properties."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Galaxy-normalised tau_dep or eps_ff to remove galaxy-to-galaxy offsets; KDE median and 16-84% trend compared with the fits",
+     "evidence": [
+      {
+       "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+       "quote": "We fit lines to the median trends, but found them to be similar to those found fitting the data and only report the fits to the data."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Test robustness to alpha_CO and resolution",
+    "method": {
+     "value": "Repeat the analysis with a fixed Galactic alpha_CO and with 120, 90 and 60 pc cloud-scale data in 1 kpc hexagons",
+     "evidence": [
+      {
+       "loc": "3.5 The key role of the CO-to-H2 conversion factor",
+       "quote": "we repeat our analysis using a fixed $\\alpha_{\\rm CO}$ instead of our best estimate"
+      },
+      {
+       "loc": "Appendix: PHANGS–ALMA at higher resolution",
+       "quote": "We apply the same completeness and surface density cuts, but work with $1$ kpc diameter hexagonal regions rather than the $1.5$ kpc diameter used for the main results."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Higher-resolution results consistent with the 150 pc results",
+     "evidence": [
+      {
+       "loc": "Appendix: PHANGS–ALMA at higher resolution",
+       "quote": "Overall all three resolutions show consistent results"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "scipy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Two-dimensional Gaussian KDE with default Scott's rule bandwidth for median and 16-84% trends",
+     "evidence": [
+      {
+       "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+       "quote": "allowing the bandwidth to be chosen using the default “Scott’s rule” implement in `scipy`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of selected 1.5 kpc regions (150 pc resolution)",
+    "value": "841",
+    "uncertainty": "not stated",
+    "units": "regions",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.3 Data selection and completeness",
+      "quote": "we select $841$ regions in $67$ galaxies."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of galaxies in selected sample",
+    "value": "67",
+    "uncertainty": "not stated",
+    "units": "galaxies",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.3 Data selection and completeness",
+      "quote": "we select $841$ regions in $67$ galaxies."
+     }
+    ]
+   },
+   {
+    "quantity": "Median star formation efficiency per free-fall time",
+    "value": "0.39",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.6 Correlation of eps_ff with cloud-scale gas properties",
+      "quote": "corresponds to $0.39\\%$ of gas formed into stars per free-fall time, and we measure $\\pm 0.29$ dex or a factor of $2$ scatter across the sample."
+     }
+    ]
+   },
+   {
+    "quantity": "Scatter in eps_ff across the sample",
+    "value": "0.29",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.6 Correlation of eps_ff with cloud-scale gas properties",
+      "quote": "we measure $\\pm 0.29$ dex or a factor of $2$ scatter across the sample."
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rank correlation, tau_dep vs <tau_ff>",
+    "value": "0.18",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 tau_dep as a function of free-fall time",
+      "quote": "with Spearman rank correlation coefficient $0.18$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fit slope m, tau_dep vs <tau_ff>",
+    "value": "0.51",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 tau_dep as a function of free-fall time",
+      "quote": "relation with slope $m = 0.51$"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rank correlation, galaxy-normalised tau_dep vs <tau_ff>",
+    "value": "0.28",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 tau_dep as a function of free-fall time",
+      "quote": "with the rank correlation coefficient increasing to $0.28$ after normalization"
+     }
+    ]
+   },
+   {
+    "quantity": "Fit slope m, galaxy-normalised tau_dep vs <tau_ff>",
+    "value": "0.43",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 tau_dep as a function of free-fall time",
+      "quote": "$m = 0.43$, but the overall picture appears similar as in the left panel"
+     }
+    ]
+   },
+   {
+    "quantity": "Fit slope m, tau_dep vs <Sigma_mol^cloud>",
+    "value": "-0.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.2 tau_dep vs cloud-scale surface density and line width",
+      "quote": "fixed $\\epsilon_{\\rm ff}^{\\rm mol}$, fixed dynamical state clouds: $m = -0.3$ for"
+     }
+    ]
+   },
+   {
+    "quantity": "Fit slope m, tau_dep vs <sigma_mol^cloud>",
+    "value": "-0.48",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.2 tau_dep vs cloud-scale surface density and line width",
+      "quote": "(compared to $-0.5$ expected) and $m = -0.48$ for"
+     }
+    ]
+   },
+   {
+    "quantity": "Fit slope m, tau_dep vs <alpha_vir^cloud> (raw and galaxy-normalised)",
+    "value": "-0.27 (raw); -0.11 (normalised)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.3 tau_dep vs cloud-scale virial parameter",
+      "quote": "We find a best-fit slope of $m = -0.27$, though this drops to $m = -0.11$ after normalize each galaxy by its mean"
+     }
+    ]
+   },
+   {
+    "quantity": "rms scatter of individual regions about the median trend after galaxy normalisation",
+    "value": "0.2",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.1 tau_dep as a function of free-fall time",
+      "quote": "with individual regions showing rms scatter $\\approx 0.2$ dex about the median trend"
+     }
+    ]
+   },
+   {
+    "quantity": "Sample size at 120 pc resolution (1 kpc regions)",
+    "value": "966 regions in 41 galaxies",
+    "uncertainty": "not stated",
+    "units": "regions",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Appendix: PHANGS–ALMA at higher resolution",
+      "quote": "our sample at $\\ell = 120$ pc consists of $966$ 1 kpc regions in $41$ galaxies."
+     }
+    ]
+   },
+   {
+    "quantity": "Sample size at 90 pc and 60 pc resolution",
+    "value": "552 regions in 28 galaxies (90 pc); 170 regions in 9 galaxies (60 pc)",
+    "uncertainty": "not stated",
+    "units": "regions",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Appendix: PHANGS–ALMA at higher resolution",
+      "quote": "At $\\ell = 90$ pc we have 552 regions in $28$ galaxies, and at $\\ell = 60$ pc we have 170 regions in $9$ galaxies."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Innermost 1.5 kpc regions show high Sigma_mol^cloud, sigma_mol^cloud and alpha_vir^cloud together with low tau_dep",
+    "evidence": [
+     {
+      "loc": "3.4 tau_dep, gas properties, and galactocentric radius",
+      "quote": "The innermost $1.5$ kpc hexes show high $\\langle \\Sigma_{\\rm mol}^{\\rm cloud} \\rangle$, high $\\langle \\sigma_{\\rm mol}^{\\rm cloud} \\rangle$, high $\\langle \\alpha_{\\rm vir}^{\\rm cloud} \\rangle$, and low $\\tau_{\\rm dep}^{\\rm mol}$."
+     }
+    ]
+   },
+   {
+    "value": "A fixed Milky Way alpha_CO gives nearly constant tau_dep and removes or reverses the correlations",
+    "evidence": [
+     {
+      "loc": "3.5 The key role of the CO-to-H2 conversion factor",
+      "quote": "The fixed $\\alpha_{\\rm CO}$ leads to a nearly constant $\\tau_{\\rm dep}^{\\rm mol}$, in contrast to the fiducial results with our best-estimate $\\alpha_{\\rm CO}$."
+     }
+    ]
+   },
+   {
+    "value": "Surface density at 150 pc is a good predictor of the 60 pc surface density despite a 6x difference in beam area",
+    "evidence": [
+     {
+      "loc": "4.3 Surface density, physical density, and resolution",
+      "quote": "provide an outstanding predictor of the $\\ell = 60$ pc $\\langle \\Sigma_{\\rm mol}^{\\rm cloud} \\rangle$ despite $6\\times$ difference in beam area"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Denser gas (shorter cloud-scale free-fall time) has shorter molecular gas depletion time",
+    "experiment": "Spearman correlation and linear fit of log tau_dep vs log <tau_ff> for 841 regions in 67 galaxies",
+    "result": "Weak positive correlation (rank 0.18, 0.28 after galaxy normalisation); slope m = 0.51, shallower than the slope of 1 expected for fixed eps_ff",
+    "finding": "Density plays a role in setting star formation rate per unit gas, but the dependence is shallower than for constant eps_ff",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "correlate positively, consistent with the expectation that gas density plays a key role in setting the rate of star formation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "tau_dep depends on cloud-scale surface density and velocity dispersion as expected for fixed eps_ff and dynamical state",
+    "experiment": "Fits of log tau_dep vs log <Sigma_mol^cloud> and log <sigma_mol^cloud>",
+    "result": "Anti-correlations with slopes -0.3 and -0.48, shallower than -0.5 and -1 expected",
+    "finding": "tau_dep anti-correlates with both quantities; tau_dep vs sigma is highlighted as a cleaner comparison because alpha_CO affects only the vertical axis",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 tau_dep vs cloud-scale surface density and line width",
+      "quote": "anti-correlates with both quantities."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We also observe anti-correlations between"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Gas with lower virial parameter forms stars faster and more efficiently, as predicted by turbulence-regulated theory",
+    "experiment": "Compare tau_dep and eps_ff with <alpha_vir^cloud>",
+    "result": "tau_dep weakly anti-correlates with alpha_vir (m = -0.27); eps_ff is nearly flat or mildly positive with alpha_vir",
+    "finding": "The predicted relation is not seen, likely because alpha_vir based on self-gravity alone misses stellar gravity in galaxy centres",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "3.3 tau_dep vs cloud-scale virial parameter",
+      "quote": "Our observations do not show the predicted correlation."
+     },
+     {
+      "loc": "3.6 Correlation of eps_ff with cloud-scale gas properties",
+      "quote": "we do not find the predicted theoretical relationship"
+     }
+    ]
+   },
+   {
+    "hypothesis": "A single star formation efficiency per free-fall time describes the sample",
+    "experiment": "Compute eps_ff = <tau_ff> / tau_dep per region and compare with gas properties",
+    "result": "Median eps_ff 0.39% with +/- 0.29 dex scatter; almost no correlation with Sigma_mol or sigma_mol",
+    "finding": "A fixed eps_ff is a reasonable approximate description at the 0.3 dex level, with caveats from correlated axes",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 tau_dep as a function of free-fall time",
+      "quote": "Most of the data lie within $\\pm 0.3$ dex (i.e., a factor of two) of the blue line"
+     },
+     {
+      "loc": "3.6 Correlation of eps_ff with cloud-scale gas properties",
+      "quote": "we measure $\\pm 0.29$ dex or a factor of $2$ scatter across the sample."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The inferred correlations depend on the adopted CO-to-H2 conversion factor",
+    "experiment": "Repeat the analysis with a fixed Milky Way alpha_CO instead of the Schinnerer et al. 2024 prescription",
+    "result": "Fixed alpha_CO yields nearly constant tau_dep and weaker or reversed correlations",
+    "finding": "Excitation and emissivity corrections to alpha_CO in inner galaxies are key to the results",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our results depend sensitively on the adopted CO-to-H$_2$ conversion factor, with corrections for excitation and emissivity effects in inner galaxies playing an important role."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "PHANGS-ALMA is the largest homogeneous cloud-scale molecular gas data set in galaxies",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "using the largest homogeneous cloud-scale data set on molecular gas in galaxies, PHANGS–ALMA"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "kpc-sized regions average out the time evolution of individual star-forming regions and allow lower-resolution IR SFR tracers",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "By working with these kpc-sized regions, we average out the time evolution of individual star-forming regions"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Fixed Milky Way alpha_CO run as a comparison to the fiducial variable alpha_CO",
+     "evidence": [
+      {
+       "loc": "2.1 Cloud-scale gas properties",
+       "quote": "we also run our analysis using a fixed Galactic $\\alpha_{\\rm CO}$"
+      }
+     ]
+    },
+    {
+     "value": "Fitting x on y or a bivariate fit not adopted; would give different results",
+     "evidence": [
+      {
+       "loc": "2.4 Correlation analysis, binning, fitting, and uncertainties",
+       "quote": "Fitting $x$ as a function of $y$ or conducting a bivariate fit would yield different results."
+      }
+     ]
+    },
+    {
+     "value": "Second-moment or Gaussian-fit line widths not used; effective width adopted instead",
+     "evidence": [
+      {
+       "loc": "4.4 tau_dep-sigma anti-correlation",
+       "quote": "it will be interesting to explore whether other methods (e.g., second moment, gaussian model fit) show more or less anti-correlation"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Correlated axes when plotting eps_ff vs cloud-scale properties",
+     "evidence": [
+      {
+       "loc": "2.2 Star formation rate per unit gas",
+       "quote": "we caution that comparing $\\epsilon_{\\rm ff}^{\\rm mol}$ to cloud-scale gas properties unavoidably involves plotting highly correlated quantities against one another"
+      }
+     ]
+    },
+    {
+     "value": "alpha_CO is the largest uncertainty",
+     "evidence": [
+      {
+       "loc": "4.6 Next steps",
+       "quote": "Finally, improved knowledge of $\\alpha_{\\rm CO}$ remains the single largest uncertainty."
+      }
+     ]
+    },
+    {
+     "value": "Measurements are population averages, not initial conditions and outcomes of individual clouds",
+     "evidence": [
+      {
+       "loc": "4.2 What this measurement is not",
+       "quote": "We do not measure the initial conditions and final outcomes for individual clouds."
+      }
+     ]
+    },
+    {
+     "value": "Fit slopes depend on the choice of dependent variable and fitting method",
+     "evidence": [
+      {
+       "loc": "3.2 tau_dep vs cloud-scale surface density and line width",
+       "quote": "Again we caution that the adopted methodology affects the precise value of the fit slopes."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "All main trends rest on one alpha_CO prescription; a fixed alpha_CO reverses several signs, so the physical conclusions are conditional on the emissivity and excitation terms",
+    "Rank correlations are weak (0.18 to 0.31) and fit slopes depend on regression direction; no uncertainties on slopes are tabulated in the text",
+    "Same PHANGS-ALMA sample and mega-tables as Sun et al. 2023, so results are not independent of earlier work",
+    "Selection to high Sigma_mol regions (f_comp > 0.5) leaves leverage mostly from few galaxy-centre regions",
+    "Effective-width line widths in galaxy centres may be biased by multiple velocity components"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Full region-by-region measurement table available online as a machine-readable table; raw ALMA data public status not stated",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "The full table is available online as part of a machine readable table."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Mega-table input products (Sun et al. 2022, 2023) are needed and are not reproduced here",
+    "Bootstrap count, seed, likelihood and KDE grid details are not given",
+    "Metallicity and stellar-mass-surface-density inputs to alpha_CO",
+    "Unpublished H-alpha maps (Razza et al. in preparation)",
+    "No code release is mentioned"
+   ],
+   "estimated_data_volume_inferred": "Small (megabytes) if started from the mega-tables; many terabytes if re-deriving from raw ALMA data of 16 projects",
+   "score_inferred": 4,
+   "score_reason": "The paper gives a step-by-step appendix, explicit formulae and numeric fit tables, but depends on mega-tables and inputs from earlier papers and omits bootstrap and fit settings.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Region tables are online and the appendix gives a complete recipe; headline slopes and eps_ff are numeric, so a reproduction from the mega-tables is feasible."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: SUN22CLOUDS)",
+     "why": "Defines cloud-scale property calculation, completeness and inclination corrections, and the hexagon database"
+    },
+    {
+     "citation": "(cite: SUN23SFGAS)",
+     "why": "Defines kpc-scale mega-table, Sigma_SFR processing and Sigma_mol/Sigma_SFR convolution"
+    },
+    {
+     "citation": "(cite: SCHINNERER24REVIEW)",
+     "why": "Source of the adopted alpha_CO prescription"
+    },
+    {
+     "citation": "(cite: PHANGSALMA21SURVEY)",
+     "why": "PHANGS-ALMA CO (2-1) survey data and processing"
+    },
+    {
+     "citation": "(cite: BELFIORE23SFRLARGE)",
+     "why": "Sigma_SFR calibration from H-alpha plus 22 um"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: LEROY17SFGAS)",
+     "why": "Earlier cross-scale tau_dep and alpha_vir study of M51"
+    },
+    {
+     "citation": "(cite: SCHRUBA19GMCS)",
+     "why": "Cloud-property and star formation comparison across eight galaxies"
+    },
+    {
+     "citation": "(cite: TENG24XCO)",
+     "why": "Shows alpha_CO anti-correlates with line width in PHANGS-ALMA"
+    },
+    {
+     "citation": "(cite: UTOMO18EFF)",
+     "why": "Earlier PHANGS-ALMA eps_ff measurement"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA",
+    "PHANGS mega-tables",
+    "z0MGS",
+    "HERACLES",
+    "COMING"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025ApJ...985...14L",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T22:24:49",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 130,
+  "quotes_ok": 130,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 16,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2019.1.01235.S"
+  ],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 14,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 112,
+   "stated": 76,
+   "rate": 0.679
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,368 @@
+{
+ "bibcode": "2026ApJS..284....3H",
+ "title": "The Hidden Life of Stars: Embedded Beginnings to Asymptotic Giant Branch Endings in the PHANGS─JWST Sample. I. Catalog of Mid-infrared Sources",
+ "year": 2026,
+ "doi": "10.3847/1538-4365/ae4aa5",
+ "arxiv_id": "2509.16459",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "Generate a multiwavelength catalog and classification framework of 10 and 21 um compact mid-infrared sources in 19 nearby PHANGS-JWST galaxies to study young stellar clusters and evolved dusty stars.",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00886.L",
+  "2018.1.01321.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S",
+  "2019.1.01235.S",
+  "2019.2.00129.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.74'' to 1.93'' across targets",
+  "sensitivity": "typical 1sigma noise ~6.2 mJy beam^-1 (~0.17 K) in 2.5 km s^-1 channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(2-1) emission line maps and galaxy properties",
+    "evidence": [
+     {
+      "loc": "Supporting Data Sets",
+      "quote": "We used CO (2-1) emission line maps from the PHANGS–ALMA project (cite: Leroy2021)."
+     },
+     {
+      "loc": "Sample Selection",
+      "quote": "Table [\\[tab:galaxies\\]](#tab:galaxies) lists the galaxies included in this study along with their properties, as reported in (cite: lee2023) and (cite: Leroy2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Leroy2021)"
+  },
+  {
+   "what": {
+    "value": "Morphological masks of sub-galactic environments",
+    "evidence": [
+     {
+      "loc": "Supporting Data Sets",
+      "quote": "We further use the morphological masks of sub-galactic environments from (cite: Querejeta2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta2021)"
+  },
+  {
+   "what": {
+    "value": "MUSE emission line maps and stellar continuum",
+    "evidence": [
+     {
+      "loc": "Supporting Data Sets",
+      "quote": "For this work, we use emission line maps from (cite: phangs-muse), which were generated using the MUSE Data Analysis Pipeline (DAP)."
+     }
+    ]
+   },
+   "citation": "(cite: phangs-muse)"
+  },
+  {
+   "what": {
+    "value": "E(B-V) reddening maps",
+    "evidence": [
+     {
+      "loc": "Supporting Data Sets",
+      "quote": "In particular, we rely on H$\\alpha$ and H$\\beta$ emission line maps that are corrected for the Milky Way Foreground extinction as well as the $E(B-V)$ reddening maps from (cite: Belfiore2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Belfiore2023)"
+  },
+  {
+   "what": {
+    "value": "SAGE-LMC spectroscopic classifications and photometric catalogs of evolved stars",
+    "evidence": [
+     {
+      "loc": "Source Classification",
+      "quote": "We use the `PARSEC` stellar evolutionary tracks (section [4.1.2](#sec:parsec)) to classify RSGs, O-AGBs, and C-AGBs, which we validate with observations from the SAGE-LMC survey (cite: Jones2017; Jones2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Jones2017; Jones2018)"
+  },
+  {
+   "what": {
+    "value": "MUSE nebular catalog",
+    "evidence": [
+     {
+      "loc": "Exposed Sources",
+      "quote": "By cross-matching our exposed sources with the “nebular” catalog from (cite: neb_catalog) using a maximum separation of 1$''$ (comparable to the typical MUSE PSF), we find that about 77% of the exposed clusters are associated with MUSE nebular regions across our sample of 19 galaxies."
+     }
+    ]
+   },
+   "citation": "(cite: neb_catalog)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Convolve multiwavelength JWST and HST images to common catalog resolutions and subtract diffuse emission",
+   "method": "Convolve maps to 0.36'' (F1130W) for the 10 um catalog and 0.67'' (F2100W) for the 21 um catalog using jwst_kernels, mask saturated galaxy centers in NGC 1365 and NGC 7496 using STPSF, and decompose F1000W and F2100W maps using Constrained Diffusion (CD)",
+   "software": [
+    "pjpipe",
+    "jwst_kernels",
+    "STPSF"
+   ],
+   "key_parameters": [
+    "Use scale 2 of CD decomposition for F2100W and sum of scales 1 and 2 for F1000W; central mask radius ~18'' for NGC 1365 and NGC 7496"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify compact 10 and 21 um sources and measure multiwavelength photometry and completeness limits",
+   "method": "Run ASTRODENDRO on CD-filtered F1000W and F2100W maps, measure peak surface brightness on unfiltered convolved JWST/HST maps with annular background subtraction, sample native ALMA CO(2-1) and MUSE maps at source positions, and run artificial source tests (AST)",
+   "software": [
+    "ASTRODENDRO",
+    "STPSF",
+    "WEBBPSF",
+    "Photutils",
+    "Neloura"
+   ],
+   "key_parameters": [
+    "Dendrogram threshold = min + 5 * step; min_npix = 41 (F2100W) or 10 (F1000W); min_delta = 3 * step; min separation = 0.33'' (F1000W) or 0.17'' (F2100W); background annulus = 2x to 3x PSF size"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Classify sources and analyze correlations and luminosity functions",
+   "method": "Classify sources into exposed/embedded young clusters, RSGs, O-AGBs, C-AGBs, CPNs, B[e], WRs, foreground stars, and background galaxies using flux ratio cuts from CIGALE, PARSEC/COLIBRI, and SAGE-LMC; fit Halpha-F2100W linear relation and Pareto-lognormal luminosity functions",
+   "software": [
+    "CIGALE",
+    "PARSEC",
+    "COLIBRI",
+    "CMD 3.7",
+    "ASTRODENDRO"
+   ],
+   "key_parameters": [
+    "Flux ratio cuts in Table 3; Gaia DR3 parallax_over_error > 3 within 2''; F200W semi-major/semi-minor axis ratio > 1.5 for background galaxies"
+   ],
+   "assumptions": [
+    "BC03 SSP with Z=0.02, Chabrier IMF, A_V = 1 and 10 mag, R_V = 3.1, q_PAH = 0.95 to 3.8%, U_min = 10, alpha = 2 for CIGALE cluster models; Kroupa IMF for PARSEC models"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of compact sources detected at 21 um (F2100W)",
+   "value": "24945",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We detect 24,945 compact sources at 21 $\\mu$m and 55,581 at 10 $\\mu$m."
+    },
+    {
+     "loc": "Source Identification",
+     "quote": "We ran this algorithm on both the F1000W and F2100W bands across our targets and found 24945 sources in the F2100W maps and 55581 in the F1000W maps."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of compact sources detected at 10 um (F1000W)",
+   "value": "55581",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We detect 24,945 compact sources at 21 $\\mu$m and 55,581 at 10 $\\mu$m."
+    },
+    {
+     "loc": "Source Identification",
+     "quote": "We ran this algorithm on both the F1000W and F2100W bands across our targets and found 24945 sources in the F2100W maps and 55581 in the F1000W maps."
+    }
+   ]
+  },
+  {
+   "quantity": "Median 50% completeness limit for 10 um (F1000W) catalog",
+   "value": "5",
+   "uncertainty": "<0.2",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Completeness Limits",
+     "quote": "The median detection limit at the F1000W resolution is 5 $\\mu$Jy, while at F2100W, it is about five times higher at 24 $\\mu$Jy."
+    },
+    {
+     "loc": "Completeness Limits",
+     "quote": "The uncertainty in the completeness limit due to fitting error is less than 0.2 $\\mu$Jy for the F1000W catalog and 0.7 $\\mu$Jy for the F2100W catalog, as calculated from the covariance matrix of the curve fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "Median 50% completeness limit for 21 um (F2100W) catalog",
+   "value": "24",
+   "uncertainty": "<0.7",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Completeness Limits",
+     "quote": "The median detection limit at the F1000W resolution is 5 $\\mu$Jy, while at F2100W, it is about five times higher at 24 $\\mu$Jy."
+    },
+    {
+     "loc": "Completeness Limits",
+     "quote": "The uncertainty in the completeness limit due to fitting error is less than 0.2 $\\mu$Jy for the F1000W catalog and 0.7 $\\mu$Jy for the F2100W catalog, as calculated from the covariance matrix of the curve fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux in the 21 um catalog",
+   "value": "21.1",
+   "uncertainty": "4.8",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Source Photometry",
+     "quote": "The median flux in the 21 $\\mu$m catalog is 21.1 $\\mu$Jy with an uncertainty of 4.8 $\\mu$Jy, while in the 10 $\\mu$m catalog, the median flux and uncertainty are 3.8 $\\mu$Jy and 0.85 $\\mu$Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux in the 10 um catalog",
+   "value": "3.8",
+   "uncertainty": "0.85",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Source Photometry",
+     "quote": "The median flux in the 21 $\\mu$m catalog is 21.1 $\\mu$Jy with an uncertainty of 4.8 $\\mu$Jy, while in the 10 $\\mu$m catalog, the median flux and uncertainty are 3.8 $\\mu$Jy and 0.85 $\\mu$Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of exposed clusters in 21 um catalog",
+   "value": "6355",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Exposed Sources",
+     "quote": "In total, we identified 6,355 exposed regions in the 21 $\\mu$m catalog and 10,345 in the 10 $\\mu$m catalog, corresponding to approximately 25% and 20% of the regions in the 21 $\\mu$m and 10 $\\mu$m catalogs, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of exposed clusters in 10 um catalog",
+   "value": "10345",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Exposed Sources",
+     "quote": "In total, we identified 6,355 exposed regions in the 21 $\\mu$m catalog and 10,345 in the 10 $\\mu$m catalog, corresponding to approximately 25% and 20% of the regions in the 21 $\\mu$m and 10 $\\mu$m catalogs, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of embedded clusters in 10 um catalog",
+   "value": "939",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Embedded Sources",
+     "quote": "We found 939 and 1411 embedded clusters in our 10 and 21 $\\mu$m catalogs, which account for $<5\\%$ of the whole catalogs."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of embedded clusters in 21 um catalog",
+   "value": "1411",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Embedded Sources",
+     "quote": "We found 939 and 1411 embedded clusters in our 10 and 21 $\\mu$m catalogs, which account for $<5\\%$ of the whole catalogs."
+    }
+   ]
+  },
+  {
+   "quantity": "Overall slope alpha of log(L_Halpha,corr) vs log(nu L_nu,21um) relation",
+   "value": "0.84",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| Overall | 0.14 | $0.84 \\pm 0.01$ | $-0.10 \\pm 0.00$ | 0.77 | 0.88 | 0.30 | $3.85$ | $0.67$ | 6324 |  |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median luminosity function slope beta for 21 um ISM sources",
+   "value": "-1.73",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Luminosity Functions",
+     "quote": "The median slope ($\\beta$) across our sample is $-1.73 \\pm 0.10$ for 21 $\\mu$m sources, while 10 $\\mu$m sources exhibit slightly steeper slopes, averaging $-2.01 \\pm 0.03$."
+    },
+    {
+     "loc": "Table 6",
+     "quote": "| Median  |      $-1.73 \\pm 0.10$      |      $-2.02 \\pm 0.03$      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median luminosity function slope beta for 10 um ISM sources",
+   "value": "-2.02",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| Median  |      $-1.73 \\pm 0.10$      |      $-2.02 \\pm 0.03$      |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact PHANGS-ALMA CO(2-1) data release version and moment-0 map masking scheme (e.g., strict vs. broad mask) sampled for the catalog CO surface brightness"
+ ],
+ "missing_for_reproduction": [
+  "Exact per-galaxy 'step' noise values used in ASTRODENDRO for all 19 galaxies (only the range across the sample is given in text)",
+  "Exact parameter grid or scripts used for the Pareto-lognormal luminosity function fitting"
+ ],
+ "reproducibility_score": 90,
+ "score_reason": "All underlying survey data (PHANGS-JWST, PHANGS-HST, PHANGS-ALMA, PHANGS-MUSE) are public, the final catalogs are publicly archived with a DOI, and the custom analysis pipeline (Neloura) for source detection, photometry, and artificial star tests is publicly released on GitHub.",
+ "rediscovery_reason": "Public high-level image mosaics and public analysis code allow full reproduction of the 10 and 21 um source catalogs, completeness limits, classifications, and luminosity function slopes.",
+ "source_card": "cards/2026ApJS..284....3H/sonnet/card.md"
+}

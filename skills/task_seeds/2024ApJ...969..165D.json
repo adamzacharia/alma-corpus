@@ -1,0 +1,337 @@
+{
+ "bibcode": "2024ApJ...969..165D",
+ "title": "Chemistry in Externally FUV-irradiated Disks in the Outskirts of the Orion Nebula Cluster",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad4603",
+ "arxiv_id": "2405.00615",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Does the chemistry of protoplanetary disks externally irradiated by FUV fields in the ONC outskirts differ from that of isolated disks?",
+ "alma_project_codes": [
+  "2018.1.01190.S",
+  "2011.0.00028.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 and 1.3 mm settings, 220 and 265 GHz); archival Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.13 arcsec high-res continuum (~54 au); ~0.5 arcsec lines",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar and disk properties (mass, inclination, PA, v_LSR, disk mass) for 216-0939",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The stellar and disk properties were taken from (cite: factor_alma_2017) and (cite: williams_alma_2014)"
+     }
+    ]
+   },
+   "citation": "Factor et al. 2017; Williams et al. 2014"
+  },
+  {
+   "what": {
+    "value": "Literature isolated-disk line fluxes for comparison sample",
+    "evidence": [
+     {
+      "loc": "Comparison between irradiated and isolated disks",
+      "quote": "The literature disk sample was compiled from (cite: huang_alma_2017), (cite: bergner_organic_2019), (cite: bergner_survey_2019)"
+     }
+    ]
+   },
+   "citation": "Huang 2017; Bergner 2019a,b, 2020; Pegues 2020, 2021, 2023; Law 2021; Guzmán 2021; Öberg 2021"
+  },
+  {
+   "what": {
+    "value": "External FUV field G0 from Herschel",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "based on Herschel FIR observations (cite: Pabst2021)"
+     }
+    ]
+   },
+   "citation": "Pabst et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters from CDMS/JPL/LAMDA",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Molecular data extracted from the CDMS"
+     }
+    ]
+   },
+   "citation": "Müller et al. 2001, 2005; Endres 2016; Pickett 1998; Schöier 2005"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image continuum",
+   "method": "Self-cal on pseudo-continuum, then tclean continuum at robust +0.5 with elliptical masks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "7 phase-only + 1 amplitude iteration; robust +0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image line cubes",
+   "method": "uvcontsub then tclean with robust +0.5, uvtaper 0.5 arcsec, Keplerian masks, 0.4 km/s channels",
+   "software": [
+    "CASA",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "253-1536B mask: inclination 45 deg, PA -90 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure continuum disk sizes and radial profiles",
+   "method": "Deprojected radial profiles; size = radius containing 95% of flux",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Detect lines",
+   "method": ">=3 sigma in >=3 channels within Keplerian mask; matched filter in visibilities using HCN and C18O as filters",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Disk-integrated fluxes",
+   "method": "Multiply cubes by Keplerian mask (immath) and sum; uncertainty from 1000 bootstrap samples of shifted centers plus 10% calibration in quadrature; 3 sigma upper limits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Column densities",
+   "method": "LTE, optically thin, Tex 20-50 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE and optically thin; Tex 20-50 K"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "HCN excitation temperature",
+   "method": "Ratio of HCN 3-2 (smoothed to Band 7 beam) to HCN 4-3, optically thin",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "tau=0"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare with isolated disks",
+   "method": "Distance-normalized fluxes and flux ratios vs stellar mass with Spearman correlations against literature sample",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "216-0939 continuum disk size",
+   "value": "311.5",
+   "uncertainty": "14.5",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust continuum emission",
+     "quote": "we estimate a disk size of $311.5\\pm 14.5~\\mathrm{au}$ for the 216–0939 disk"
+    }
+   ]
+  },
+  {
+   "quantity": "216-0939 cavity outer edge",
+   "value": "120-135",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust continuum emission",
+     "quote": "a central cavity with an outer edge at $120-135$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "253-1536A disk size",
+   "value": "239.1",
+   "uncertainty": "14.5",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust continuum emission",
+     "quote": "a disk size of $239.1\\pm14.5$ au and $108.7\\pm14.5$ au for 253–1536A and 253–1536B"
+    }
+   ]
+  },
+  {
+   "quantity": "253-1536B disk size",
+   "value": "108.7",
+   "uncertainty": "14.5",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust continuum emission",
+     "quote": "a disk size of $239.1\\pm14.5$ au and $108.7\\pm14.5$ au for 253–1536A and 253–1536B"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 3-2 integrated flux, 216-0939",
+   "value": "989",
+   "uncertainty": "145",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $3-2$ | $989 \\pm 145$ | $2193 \\pm 255$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 3-2 integrated flux, 253-1536A/B",
+   "value": "2193",
+   "uncertainty": "255",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $3-2$ | $989 \\pm 145$ | $2193 \\pm 255$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO 3_22-2_21 flux, 216-0939",
+   "value": "283",
+   "uncertainty": "76",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$283 \\pm 76$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN excitation temperature, 216-0939",
+   "value": "20.0",
+   "uncertainty": "+4.1/-2.9",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "HCN excitation temperature",
+     "quote": "$20.0^{+4.1}_{-2.9}$ K and $22.5^{+5.4}_{-3.6}$ K for 216–0939 and 253–1536A/B"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN excitation temperature, 253-1536A/B",
+   "value": "22.5",
+   "uncertainty": "+5.4/-3.6",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "HCN excitation temperature",
+     "quote": "$20.0^{+4.1}_{-2.9}$ K and $22.5^{+5.4}_{-3.6}$ K for 216–0939 and 253–1536A/B"
+    }
+   ]
+  },
+  {
+   "quantity": "N_tot(HCN)",
+   "value": "(0.5-1.8)e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Column density retrieval",
+     "quote": "$N_\\mathrm{tot}(\\mathrm{HCN}) \\sim (0.5-1.8) \\times 10^{13}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N_tot(C2H)",
+   "value": "(0.3-1.0)e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Column density retrieval",
+     "quote": "$N_\\mathrm{tot}(\\mathrm{C}_2\\mathrm{H}) \\sim (0.3 - 1.0)\\times 10^{14}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H/HCN flux ratio vs stellar mass Spearman coefficient",
+   "value": "-0.24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Comparison between irradiated and isolated disks",
+     "quote": "Spearman coefficient of $-0.24$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals and reference antenna",
+  "Exact channel ranges/ uv ranges for continuum vs line",
+  "Image size and cell size for tclean",
+  "Clean threshold and number of iterations",
+  "Spectral windows' line-free channels for continuum selection",
+  "Partition functions used in column densities",
+  "Filter details for matched filter",
+  "Which Spearman computation details and treatment of upper limits",
+  "Flux values of the literature sample used",
+  "Radii for aperture definitions of Keplerian mask beyond inputs"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters",
+  "Image size/cell size and clean thresholds",
+  "Literature flux table values for comparison sample",
+  "Matched filter implementation details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Data public and steps described, but many imaging and self-cal parameters and comparison-sample values missing.",
+ "rediscovery_reason": "Public data, numeric fluxes and sizes, mostly specified recipe.",
+ "source_card": "cards/2024ApJ...969..165D/sonnet/card.md"
+}

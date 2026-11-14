@@ -1,0 +1,262 @@
+{
+ "bibcode": "2019ApJ...887..143S",
+ "title": "ALMA Observations of Atomic Carbon [C I] ( <SUP> 3 </SUP> P <SUB> 1 </SUB> → <SUP> 3 </SUP> P <SUB> 0 </SUB>) and Low-J CO Lines in the Starburst Galaxy NGC 1808",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab55dc",
+ "arxiv_id": "1911.04077",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "How does atomic carbon [C I](1-0) relate to low-J CO lines, molecular gas mass and outflow in the central 1 kpc of the starburst galaxy NGC 1808?",
+ "alma_project_codes": [
+  "2017.1.00984.S",
+  "2016.1.00296.S",
+  "2012.1.01004.S",
+  "2013.1.00911.S"
+ ],
+ "data": {
+  "bands": "Bands 6 (220, 230 GHz) and 8 (500 GHz)",
+  "arrays": "12-m, 7-m (ACA) and total power",
+  "angular_resolution": "[C I] 0.825''x0.590''; CO(2-1) 1.280''x0.943''",
+  "sensitivity": "[C I] 20 mJy/beam; CO(2-1) 3.0 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(1-0) and CO(3-2) ALMA data",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^{e}$ Data from (cite: Sal17)."
+     }
+    ]
+   },
+   "citation": "(cite: Sal17)"
+  },
+  {
+   "what": {
+    "value": "L'CO-L'CI relations for nearby galaxies",
+    "evidence": [
+     {
+      "loc": "4.2.4 L'CO-L'[CI] Correlations",
+      "quote": "(cite: Jia19) have shown that, for a sample of 15 nearby galaxies, including Seyfert and starburst galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: Jia19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image 12m+ACA(+TP) data",
+   "method": "CASA pipeline calibration, continuum subtraction, tclean cube imaging, feather with TP for band 8",
+   "software": [
+    "CASA",
+    "tclean",
+    "feather"
+   ],
+   "key_parameters": [
+    "robust = 0.5, Hogbom, mosaic gridder"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps and line fluxes/luminosities",
+   "method": "immoments with no masking for integrated intensity; masked moments 1 and 2; L' from SDR92 formula",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 10.8 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "CND column density and abundance in LTE",
+   "method": "LTE optically thin N_CO and N_CI from mean 3'' aperture spectra; masses via XCO",
+   "software": [],
+   "key_parameters": [
+    "Tex = 20-100 K"
+   ],
+   "assumptions": [
+    "CO/H2 = 1e-4; Galactic XCO = 2e20 or starburst 0.5e20"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Non-LTE LVG modelling of CND",
+   "method": "RADEX grid in N, Tk, nH2; match CO(3-2)/(1-0), CO(2-1)/(1-0), [C I]/CO(1-0) ratios within 3 sigma",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "dV = 25 km/s, T_bg = 2.73 K, LVG escape probability"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Radial intensity ratios and correlations",
+   "method": "Azimuthally averaged ratio profiles in elliptical rings; pixel power-law least-squares fits W_CO = a W_CI^b",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "PA 324 deg, inclination 57 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Outflow upper limits from PVDs",
+   "method": "[C I] smoothed to CO(1-0) resolution; PVDs along dust lanes; <10% of flux in non-circular motions; Ek=Mv^2/2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "v_out ~180 km/s for inclination 57 deg"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C I] column density in CND",
+   "value": "3e18",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2 Column Density and Abundance",
+     "quote": "obtain $N_\\mathrm{CI}\\sim3\\times10^{18}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_CI in CND at Tex=50 K",
+   "value": "5.4e3",
+   "uncertainty": "0.1e3",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2 Column Density and Abundance",
+     "quote": "For $T_\\mathrm{ex,[CI]}=50$ K, the mass is $M_\\mathrm{CI}=(5.4\\pm0.1)\\times10^3~M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CI/H2 abundance in CND",
+   "value": "~6e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2 Column Density and Abundance",
+     "quote": "the mean C I/H$_2$ abundance ratio in the CND is $N_\\mathrm{CI}/N_\\mathrm{H_2}=M_\\mathrm{CI}/(6M_\\mathrm{H_2})\\sim6\\times10^{-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean [C I]/CO(2-1) ratio within 20''",
+   "value": "0.21",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1 Intensity Ratios",
+     "quote": "the mean value over the rings within a radius of $20\\ensuremath{''}$ is $r_{21}=0.21\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean [C I]/CO(1-0) ratio within 20''",
+   "value": "0.18",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1 Intensity Ratios",
+     "quote": "The mean intensity ratio over the rings in the central radius $20\\ensuremath{''}$ region is $0.18\\pm0.04$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) vs [C I] power-law index b",
+   "value": "0.686",
+   "uncertainty": "0.010",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "CO (1–0)        | $1.488\\pm0.019$ | $0.686\\pm0.010$ | $0.85$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow C I mass upper limit",
+   "value": "~1e4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Atomic Carbon in the Outflow",
+     "quote": "which is $M_\\mathrm{out}\\sim1\\times10^4~M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total C I mass central 1 kpc",
+   "value": "9.7e4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.3 Abundance and Mass in the Central 1 kpc",
+     "quote": "$M_\\mathrm{CI}\\sim9.7\\times10^4~M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'[CI]/L'CO(1-0) central 1 kpc",
+   "value": "0.11",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2.3 Abundance and Mass in the Central 1 kpc",
+     "quote": "The luminosity ratio $L'_\\mathrm{[CI]}/L'_\\mathrm{CO(1-0)}=0.11\\pm0.02$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels for continuum subtraction",
+  "Number of clean iterations, thresholds and masks",
+  "Flux calibrators/CASA version",
+  "Image sizes and channel widths for band 6",
+  "Mask thresholds for moment maps",
+  "Feather parameters and TP scaling",
+  "Pixel selection and weighting for correlation fits"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "CASA version",
+  "CLEAN masks and thresholds",
+  "Details of the CO(1-0) and CO(3-2) data from earlier papers",
+  "Pixel selection for fits"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the main steps are given, but several imaging details are missing and CO(1-0) and CO(3-2) come from earlier papers.",
+ "rediscovery_reason": "The data are public, the recipe is reasonably clear, and the results are numeric (ratios, column densities, fit indices).",
+ "source_card": "cards/2019ApJ...887..143S/sonnet/card.md"
+}

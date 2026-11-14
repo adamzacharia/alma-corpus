@@ -1,0 +1,809 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...809L..25L",
+  "title": "The Distribution and Chemistry of H<SUB>2</SUB>CO in the DM Tau Protoplanetary Disk",
+  "year": 2015,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Loomis, Ryan A.",
+  "n_authors": 5,
+  "arxiv_id": "1508.07004",
+  "doi": "10.1088/2041-8205/809/2/L25",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00629.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We use archival ALMA observations of the resolved distribution of H$_2$CO emission in the disk around the young low-mass star DM Tau to assess the relative importance of these formation routes."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "DM Tau",
+     "coordinates": {
+      "value": "RA 04h33m48.7s, Dec +18d10m09.8s (J2000, continuum peak)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "continuum peak at $\\alpha$J2000 = 04$^{h}$33$^{m}$48.7$^{s}$, $\\delta$J2000 = 18$\\degree$10$'$09.8$''$"
+       },
+       {
+        "loc": "Observations",
+        "quote": "(94 x 65 AU at 145 pc)"
+       },
+       {
+        "loc": "Simulated observations of chemical models",
+        "quote": "inclination of 34$\\degree$, and distance of 145 pc were assumed for the radiative transfer (cite: Teague_2015)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "145 pc",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "continuum peak at $\\alpha$J2000 = 04$^{h}$33$^{m}$48.7$^{s}$, $\\delta$J2000 = 18$\\degree$10$'$09.8$''$"
+       },
+       {
+        "loc": "Observations",
+        "quote": "(94 x 65 AU at 145 pc)"
+       },
+       {
+        "loc": "Simulated observations of chemical models",
+        "quote": "inclination of 34$\\degree$, and distance of 145 pc were assumed for the radiative transfer (cite: Teague_2015)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Teague et al. 2015",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "continuum peak at $\\alpha$J2000 = 04$^{h}$33$^{m}$48.7$^{s}$, $\\delta$J2000 = 18$\\degree$10$'$09.8$''$"
+       },
+       {
+        "loc": "Observations",
+        "quote": "(94 x 65 AU at 145 pc)"
+       },
+       {
+        "loc": "Simulated observations of chemical models",
+        "quote": "inclination of 34$\\degree$, and distance of 145 pc were assumed for the radiative transfer (cite: Teague_2015)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do gas-phase and/or grain-surface reactions govern the H2CO distribution in the DM Tau disk?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "to evaluate whether gas-phase chemistry significantly contributes to H$_2$CO abundances, or whether grain-surface chemistry truly dominates."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00629.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "as part of the ALMA cycle 0 project 2011.0.00629.S (PI: E. Chapillion)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "DM Tau was observed on 2012 October 23 in Band 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four windows at 339.674, 340.366, 351.527, 354.264 GHz; 468.75 MHz each, 122.07 kHz (0.105 km/s) channels",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The correlator spectral setup consisted of four windows centered at 339.674, 340.366, 351.527, and 354.264 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H2CO",
+     "transition": "5_15-4_14",
+     "rest_frequency": "351.769 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The observed 5$_{15}$ - 4$_{14}$ transition of H$_2$CO at 351.769 GHz is located in the third window."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "17.5-380 m (20-430 klambda), 23 antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The array configuration included 23 antennas with projected baseline lengths between 17.5 and 380 m (20-430 k$\\lambda$)"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.65\" x 0.45\" at PA ~-29 deg",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "providing a synthesized beam of 0.65\" x 0.45\" (94 x 65 AU at 145 pc) at a PA of $\\sim$-29$\\degree$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "35 minutes",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total integration time on-source was 35 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012 October 23",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "DM Tau was observed on 2012 October 23"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival; Cycle 0 project PI E. Chapillon",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We use archival ALMA observations"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Physical disk model of DM Tau",
+      "evidence": [
+       {
+        "loc": "Chemical modeling",
+        "quote": "We use the physical disk model of DM Tau derived in (cite: Andrews_2011)"
+       }
+      ]
+     },
+     "citation": "Andrews_2011"
+    },
+    {
+     "what": {
+      "value": "Disk inclination 34 deg and position angle -24.3 deg, stellar mass 0.7 Msun",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "with an inclination of 34$\\degree$ (cite: Teague_2015)"
+       }
+      ]
+     },
+     "citation": "Teague_2015"
+    },
+    {
+     "what": {
+      "value": "X-ray luminosity upper limit 4.6e29 erg/s",
+      "evidence": [
+       {
+        "loc": "Chemical modeling",
+        "quote": "the X-ray upper limit is assumed from (cite: Damiani_1995) of $L_{\\rm XR} \\le 4.6\\times10^{29}$ erg s$^{-1}$"
+       }
+      ]
+     },
+     "citation": "Damiani_1995"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Time-dependent disk chemistry models (gas-only, gas+grain, CH3OH as grain-only proxy), 1 Myr, ~6000 reactions, ~600 species",
+     "evidence": [
+      {
+       "loc": "Chemical modeling",
+       "quote": "contains a total of $\\sim6000$ reactions and $\\sim600$ species"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.2",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We self-calibrated the data in CASA version 4.2 using the DM Tau disk continuum emission."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Callisto (flux), J0423-013 (bandpass), J0510+180 (phase)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Callisto was used for flux calibration, and J0423-013 was used as the bandpass calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Self-calibrated on DM Tau disk continuum",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We self-calibrated the data in CASA version 4.2 using the DM Tau disk continuum emission."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean, multi-frequency synthesis for continuum",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We imaged the continuum emission using the multi-frequency synthesis mode of the CASA *CLEAN* task"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Initial mask from Keplerian disk model, then modified to fit emission",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We generated an initial *CLEAN* mask using a simple model of a disk in Keplerian rotation and then modified it"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uv-plane continuum subtraction",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we continuum subtracted the visibilities in the uv plane"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.5\" x 1.0\" restoring beam (217 x 145 AU)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "applied a restoring beam of 1.5\" x 1.0\" (217 x 145 AU at 145 pc)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~0.16 mJy/beam continuum; ~10 mJy/beam per H2CO channel",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The achieved rms is $\\sim$0.16 mJy beam$^{-1}$ for the continuum and $\\sim$10 mJy beam$^{-1}$ per H$_2$CO channel."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Physical disk model of DM Tau",
+      "evidence": [
+       {
+        "loc": "Chemical modeling",
+        "quote": "We use the physical disk model of DM Tau derived in (cite: Andrews_2011)"
+       }
+      ]
+     },
+     "from_reference": "Andrews_2011"
+    },
+    {
+     "what": {
+      "value": "Time-dependent chemical model; radiation field details",
+      "evidence": [
+       {
+        "loc": "Chemical modeling",
+        "quote": "see (cite: Cleeves_2013; Cleeves_2014) for details"
+       }
+      ]
+     },
+     "from_reference": "Cleeves_2013; Cleeves_2014"
+    }
+   ],
+   "unstated_but_needed": [
+    "Robust/weighting, cell and image size, clean threshold",
+    "Line-free channels for continuum and continuum subtraction",
+    "Self-calibration solution intervals and number of rounds",
+    "Deprojection radial bin widths and error estimation",
+    "LIME settings (grid points, photons, collision rates)",
+    "Abundance scaling factors applied to each model",
+    "Chemical network files and model code availability"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and H2CO cube",
+    "method": {
+     "value": "Self-calibrate, clean continuum, uv continuum-subtract, clean H2CO at 1.5\"x1.0\" beam with Keplerian-based mask",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We generated an initial *CLEAN* mask using a simple model of a disk in Keplerian rotation and then modified it"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Moment-0 map and radial profiles",
+    "method": {
+     "value": "immoments over 4-8 km/s; deproject with PA -24.3 deg and i=34 deg; azimuthal average about continuum peak",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The moment map was created using the *immoments* command in CASA, summing over all channels observed to have H$_2$CO emission (4-8 km s$^{-1}$)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Run disk chemistry models",
+    "method": {
+     "value": "Three H2CO formation scenarios; 1 Myr; tests with reduced cosmic ray rate and 1% reactive desorption",
+     "evidence": [
+      {
+       "loc": "Chemical modeling",
+       "quote": "we consider three different H$_2$CO formation scenarios: (1) gas-phase only; (2) both gas-phase and grain-surface; and (3) grain-surface reactions only."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "10% reactive desorption, standard cosmic-ray rate, 1 Myr",
+      "evidence": [
+       {
+        "loc": "Chemical modeling",
+        "quote": "we assume that $10\\%$ of the time the grain-surface reactions result in desorption of the product"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Robustness tested with reduced cosmic ray ionization and reactive desorption",
+     "evidence": [
+      {
+       "loc": "Chemical modeling",
+       "quote": "seem robust with respect to the assumed cosmic ray ionization rate and reactive desorption efficiency."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Simulate observations and compare profiles",
+    "method": {
+     "value": "LIME non-LTE radiative transfer, simobserve with original array and integration time, scale abundances to match peak flux, compare radial profiles",
+     "evidence": [
+      {
+       "loc": "Simulated observations of chemical models",
+       "quote": "the model abundances were uniformly scaled such that the peak integrated flux of the model and the observations match"
+      }
+     ]
+    },
+    "software": [
+     "LIME",
+     "CASA simobserve"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "M*=0.7 Msun, i=34 deg, d=145 pc",
+      "evidence": [
+       {
+        "loc": "Simulated observations of chemical models",
+        "quote": "A stellar mass of 0.7 M$_{sun}$ (to determine line broadening), inclination of 34$\\degree$, and distance of 145 pc were assumed"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual comparison of radial profiles",
+     "evidence": [
+      {
+       "loc": "Simulated observations of chemical models",
+       "quote": "When comparing observed and simulated radial profiles, it is clear that the gas-phase model severely underpredicts emission in the outer disk."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2",
+    "used_for": {
+     "value": "Self-calibration, clean imaging, immoments, simobserve",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We self-calibrated the data in CASA version 4.2"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE radiative transfer of H2CO 5_15-4_14",
+     "evidence": [
+      {
+       "loc": "Simulated observations of chemical models",
+       "quote": "using the non-LTE radiative transfer code LIME (cite: Brinch_2010)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "H2CO emission half-light radius",
+    "value": "~270",
+    "uncertainty": "not stated",
+    "units": "not stated (AU presumably)",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "with a half-light radius of $\\sim$270."
+     }
+    ]
+   },
+   {
+    "quantity": "Model overprediction of line fluxes",
+    "value": "2-10",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Simulated observations of chemical models",
+      "quote": "The original model output overpredicted the line fluxes by factors of 2–10."
+     }
+    ]
+   },
+   {
+    "quantity": "CO snowline radius in model",
+    "value": "~80",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Chemical modeling",
+      "quote": "outside the CO snowline at $\\sim$80 AU there is a rise in column density"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "H2CO emission is centrally peaked and radially broad, with no ring or hole",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "displaying a large H$_2$CO emission disk without any apparent hole or gap"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Both gas-phase and grain-surface chemistry contribute to disk H2CO",
+    "experiment": "Compare observed radial profile with gas-only, gas+grain and grain-only chemical models",
+    "result": "Gas-only underpredicts outer emission; grain-only overpredicts beyond 100 AU; gas+grain is closest",
+    "finding": "Both pathways are needed; gas-phase gives the central peak, grain-surface the emission beyond the CO snowline",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions and future directions",
+      "quote": "we have shown that there are both gas-phase and grain-surface contributions to the observed H$_2$CO gas in DM Tau."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The ring reported by Henning & Semenov 2008 is real",
+    "experiment": "Compare ALMA 5_15-4_14 with earlier 3_13-2_12 PdBI data and LIME simulation",
+    "result": "ALMA shows centrally peaked emission",
+    "finding": "The earlier ring may be partly due to excitation and sensitivity",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the previously noted H$_2$CO ring may be partially due to excitation effects."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Spatial distribution should discriminate between formation pathways",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The spatial distribution of H$_2$CO should contain information on the contributions of these formation mechanisms."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Model overpredicts fluxes; abundances rescaled; grain-only case proxied by CH3OH since H2CO gas-phase cannot be switched off",
+     "evidence": [
+      {
+       "loc": "Chemical modeling",
+       "quote": "It is not possible to turn off H$_2$CO gas-phase formation and destruction pathways in the model while leaving reactions on the grains"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Qualitative by-eye model comparison, no quantitative fit or uncertainties",
+    "Single transition, so excitation and vertical structure are degenerate",
+    "Coarse 1.5\" beam, few models",
+    "No error bars on radial profile"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival Cycle 0 data",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We use archival ALMA observations"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Chemical model code and exact setups",
+    "LIME parameters",
+    "Clean parameters and self-cal details"
+   ],
+   "estimated_data_volume_inferred": "~5-20 GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and a clear outline, but the chemical modeling is not reproducible from the text and imaging parameters are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main conclusions are qualitative and depend on a non-public chemical code."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Cleeves_2014",
+     "why": "Time-dependent chemical model"
+    },
+    {
+     "citation": "Brinch_2010",
+     "why": "LIME radiative transfer code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Henning_2008",
+     "why": "Earlier PdBI H2CO observations of DM Tau"
+    },
+    {
+     "citation": "Qi_2013_H2CO",
+     "why": "H2CO in HD 163296"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-334631ceaae682e302db90f2acccb3fa",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:21",
+  "usage": {
+   "input_tokens": 13568,
+   "output_tokens": 5944,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.043895,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 53,
+  "quotes_ok": 53,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 67,
+   "stated": 39,
+   "rate": 0.582
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:55:21",
+  "custom_id": "repair-sonnet-484a5c7da534a8c7c072b378790be05b",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "When comparing observed and simulated radial profiles, it is clear that the gas-phase model severely underpredicts emission in the outer disk."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

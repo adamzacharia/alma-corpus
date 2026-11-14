@@ -1,0 +1,398 @@
+{
+ "bibcode": "2024NatAs...8..256O",
+ "title": "Closing the feedback-feeding loop of the radio galaxy 3C 84",
+ "year": 2024,
+ "doi": "10.1038/s41550-023-02138-y",
+ "arxiv_id": "2312.00917",
+ "fields": [
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "Do kpc-sized cold molecular gas filaments in NGC 1275 (host of 3C 84) flow onto and feed the circumnuclear disc (CND), closing the feedback-feeding loop of the AGN?",
+ "alma_project_codes": [
+  "2017.0.01257.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "beam 0.19 x 0.10 arcsec (P.A. = 4.8 deg), 68 x 36 pc",
+  "sensitivity": "0.36 mJy/beam per channel (new cube); 1 mJy/beam at 20 km/s in original cube"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SMA CO flux integral of the inner and western filaments, 106.0 +/- 3.4 Jy km/s (western filament 34.1 +/- 2.3), used for comparison",
+    "evidence": [
+     {
+      "loc": "Molecular gas masses",
+      "quote": "The combined flux integral of their inner and the western filaments, which correspond to most of the emission in our data, is $106.0 \\pm 3.4$ Jy km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "Ho et al. (cite: Ho09)"
+  },
+  {
+   "what": {
+    "value": "Radial infall velocity of the filaments of order 200 km/s, used for the accretion rate",
+    "evidence": [
+     {
+      "loc": "Accretion rates",
+      "quote": "In the models of Lim et al.(cite: Lim08) for the radial infall of the filaments towards the CND, they do so with velocities of the order of 200 km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "Lim et al. (cite: Lim08)"
+  },
+  {
+   "what": {
+    "value": "Standard-ISM alpha_CO = 4.3 Msun/(K km/s pc^2) and S_CO(2-1) = 2.4 S_CO(1-0)",
+    "evidence": [
+     {
+      "loc": "Molecular gas masses",
+      "quote": "which are characteristic of a standard ISM(cite: Bolatto13)"
+     }
+    ]
+   },
+   "citation": "Bolatto et al. (cite: Bolatto13)"
+  },
+  {
+   "what": {
+    "value": "X-ray cooling flow rate of at least 30 Msun/yr (O VI) and Halpha filament cooling rate of about 100 Msun/yr, used for comparison",
+    "evidence": [
+     {
+      "loc": "Molecular gas feeding 3C 84",
+      "quote": "the disposition rate of at least 30 $M_\\odot$ yr$^{-1}$ of the X-ray cooling flow derived by Bregman et al.(cite: Bregman06)"
+     }
+    ]
+   },
+   "citation": "Bregman et al. (cite: Bregman06); Fabian et al. (cite: Fabian11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "phase self-calibrate on 3C 84",
+   "method": "Single phase-only self-calibration of pipeline-calibrated visibilities using a point model for 3C 84",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "3C 84 is a point source at the phase centre for the model"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "re-derive the bandpass using 3C 84 itself, iteratively",
+   "method": "Bandpass solution from 3C 84 using only baselines longer than 500 klambda; line emission modelled and subtracted from the uv data, then bandpass redetermined; done twice",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Baselines > 500 klambda, spatial scales smaller than about 0.4 arcsec"
+   ],
+   "assumptions": [
+    "Line emission is much weaker than the 3C 84 continuum so the bandpass error it induces is small"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "make the final spectral cube",
+   "method": "Imaging with natural weighting, 13.1 km/s channels, Hanning smoothing",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Velocity resolution 26.1 km/s; beam 0.19 x 0.10 arcsec; noise 0.36 mJy/beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "make moment images (integrated line and velocity field)",
+   "method": "SoFiA-2 Smooth+Clip finder builds a mask from merged smoothed-cube masks; mask applied to the original cube to compute moments",
+   "software": [
+    "SoFiA-2"
+   ],
+   "key_parameters": [
+    "Spatial Gaussian kernels 0, 3, 6, 12, 24 pixels; velocity boxcar kernels 0, 3, 7 channels; noise cutoff 4 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "examine kinematics along filaments and the CND",
+   "method": "Position-velocity diagrams along selected position angles and along filaments, plus velocity-field inspection, to judge infall onto the CND",
+   "software": [],
+   "key_parameters": [
+    "PA 90 deg slice through the CND; PA 150 deg along filament D centred 0.3 arcsec W of the centre"
+   ],
+   "assumptions": [
+    "Filaments pointing toward 3C 84 with organised E-W kinematics are infalling, not pushed outward by the N-S jets"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "measure flux integrals and derive H2 masses",
+   "method": "Flux integrals of the full field, CND and filaments A, B, C converted to H2 mass with a CO-to-H2 conversion factor and a CO(2-1)/CO(1-0) ratio",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO = 4.3 Msun/(K km/s pc^2) and S_CO(2-1) = 2.4 S_CO(1-0) (standard ISM); alternative alpha_CO = 0.8"
+   ],
+   "assumptions": [
+    "Standard Galactic ISM conversion factor as default; AGN-like lower factor as alternative",
+    "Most CO(2-1) emission recovered by the array"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "estimate the gas infall rate onto the CND",
+   "method": "Mdot = M_gas / t_dyn = M_gas (r/v)^-1 for filament gas within r = 0.7 arcsec (~250 pc), with infall velocity 200 km/s",
+   "software": [],
+   "key_parameters": [
+    "Gas mass of about 5e8 Msun inside radius 0.7 arcsec (~250 pc) for alpha_CO = 4.3; v = 200 km/s"
+   ],
+   "assumptions": [
+    "Infall velocity 200 km/s taken from radial infall models; same conversion factor for filaments and CND"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Synthesized beam of the re-processed cube",
+   "value": "0.19 x 0.10 arcsec, P.A. = 4.8 deg (68 x 36 pc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "The beam size is 0$\\overset{\\prime\\prime}{.}$19 $\\times$ 0$\\overset{\\prime\\prime}{.}$10 (P.A. = 4$\\overset{\\circ}{.}$8), corresponding to 68 $\\times$ 36 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Channel noise of re-processed cube",
+   "value": "0.36",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "the noise level in the channels is 0.36 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux integral over the entire field of view",
+   "value": "112.9",
+   "uncertainty": "6.0",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "The flux integral over the entire field of view is $112.9 \\pm 6.0$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux integral of the CND",
+   "value": "22.2",
+   "uncertainty": "1",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "The flux integral of the CND is $22.2 \\pm 1$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux integrals of filaments A, B, C",
+   "value": "17.6, 20.7, 12.6",
+   "uncertainty": "0.8, 1.0, 0.6",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "$17.6 \\pm 0.8$, $20.7\\pm 1.0$ and $12.6\\pm 0.6$ Jy km s$^{-1}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 mass (alpha_CO = 4.3)",
+   "value": "2.79e9",
+   "uncertainty": "0.14e9",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "this gives a total H$_2$ mass of $2.79 \\pm 0.14\\times 10^9$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 masses of filaments A, B, C (alpha_CO = 4.3)",
+   "value": "4.4e8, 5.2e8, 3.1e8",
+   "uncertainty": "0.2e8, 0.3e8, 0.2e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "the H$_2$ masses are $4.4 \\pm 0.2\\times 10^8$, $5.2 \\pm 0.3 \\times 10^8$, and $3.1 \\pm 0.2 \\times 10^8$ $M_\\odot$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass of the CND (alpha_CO = 4.3)",
+   "value": "5.6e8",
+   "uncertainty": "0.3e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "The H$_2$ mass of the CND is $5.6 \\pm 0.3 \\times 10^8$ $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Factor by which masses decrease for alpha_CO = 0.8",
+   "value": "5.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular gas masses",
+     "quote": "all masses decrease by a factor 5.4."
+    }
+   ]
+  },
+  {
+   "quantity": "Infall rate of filaments within 0.7 arcsec (alpha_CO = 4.3 / 0.8)",
+   "value": "~200 / ~40",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Accretion rates",
+     "quote": "this gives an estimated infall rate of about 200 $M_\\odot$ yr$^{-1}$."
+    },
+    {
+     "loc": "Accretion rates",
+     "quote": "this reduces to $\\sim$40 $M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Infall rate of filaments A and B (alpha_CO = 4.3 / 0.8)",
+   "value": "~90 / ~20",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Accretion rates",
+     "quote": "this gives an infall rate of $\\sim$90 $M_\\odot$ yr$^{-1}$ or $\\sim$20 $M_\\odot$ yr$^{-1}$, depending on the conversion factor assumed."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated disposition rate of cold gas onto the CND",
+   "value": "20-200",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular gas feeding 3C 84",
+     "quote": "we estimate that the disposition rate of cold gas onto the CND to be in the range 20–200 $M_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Time to build the CND from the filaments",
+   "value": "several times 1e6",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Accretion rates",
+     "quote": "it would take just several times $10^6$ yr to build the CND."
+    }
+   ]
+  },
+  {
+   "quantity": "Length and width of filament A",
+   "value": "about 2.7 kpc long, ~150 pc wide",
+   "uncertainty": "not stated",
+   "units": "kpc, pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas feeding 3C 84",
+     "quote": "has a length of about 2.7 kpc, but has a width of only $\\sim$150 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Length and width of filament B",
+   "value": "~1.8 kpc long, 230 pc wide",
+   "uncertainty": "not stated",
+   "units": "kpc, pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas feeding 3C 84",
+     "quote": "somewhat shorter and wider ($\\sim$1.8 kpc long and 230 pc wide)"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity displacement of a cloud from filament B at about 4 arcsec",
+   "value": "about 200",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular gas feeding 3C 84",
+     "quote": "there is a small cloud which is displaced by about 200 km s$^{-1}$ from the main filament"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA band, spectral window setup and the rest frequency used for CO(2-1) and the systemic velocity reference",
+  "Phase-only self-calibration solution interval and which channels or spectral windows were used",
+  "How the line emission was modelled and subtracted from the uv data in the bandpass iterations (clean-component model, masks, number of iterations of cleaning)",
+  "Bandpass solution details: solution interval, polynomial or per-channel, and treatment of the flux-scale",
+  "Continuum subtraction method and line-free channels used for the final cube",
+  "Cell size, image size, deconvolution thresholds and primary beam correction in the MIRIAD imaging",
+  "Spatial and spectral extent of the SoFiA-2 masks around the CND and exact region definitions for filaments A, B, C and the CND used for flux integrals",
+  "Conversion from flux integral to mass: the exact formula and distance used, and how the 0.6 Jy km/s smallest cloud was identified",
+  "Flux scale uncertainty and flux calibrator used",
+  "Archive project code printed as 2017.0.01257.S, which differs from the code linked by the archive (2017.1.01257.S); the correct code needs checking"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution interval and bandpass solution parameters",
+  "Line modelling and subtraction method used in the bandpass iterations",
+  "MIRIAD imaging parameters (cell, image size, deconvolution, primary beam correction)",
+  "Exact regions and masks used for the filament and CND flux integrals",
+  "Spectral window and rest-frequency setup, and ALMA band"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the main pipeline is described (self-cal, bandpass from 3C 84 above 500 klambda, natural weighting, SoFiA-2 kernels and cutoff, alpha_CO values, infall formula) with numeric results, but self-cal and bandpass details, line subtraction and imaging parameters are missing.",
+ "rediscovery_reason": "Public ALMA data, flux integrals and H2 masses are numeric and the moment and mass recipe is largely given, though the custom bandpass step needs inference.",
+ "source_card": "cards/2024NatAs...8..256O/sonnet/card.md"
+}

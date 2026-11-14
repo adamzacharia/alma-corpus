@@ -1,0 +1,842 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2013ApJ...778L..25C",
+  "title": "Unveiling the Dust Nucleation Zone of IRC+10216 with ALMA",
+  "year": 2013,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Cernicharo, J.",
+  "n_authors": 8,
+  "arxiv_id": "1310.7383",
+  "doi": "10.1088/2041-8205/778/2/L25",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00229.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "We present here the first sub-mm ALMA observations of an inner AGB star envelope, IRC+10216, and demonstrate their potential in revealing the dust formation zone."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IRC+10216",
+     "coordinates": {
+      "value": "continuum peak RA 09h47m57.446s, Dec +13d16m43.86s (J2000)",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "We adopt a distance to IRC+10216 of 130 pc (cite: groenewegen2012) and a radius for the star of 4$\\times$10$^{13}$ cm (cite: menten2012)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "continuum emission peak at $\\alpha$=09$^h$ 47$^m$ 57.446$^s$ and $\\delta$=13$^o$ 16’ 43.86\" (J2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "130 pc",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "We adopt a distance to IRC+10216 of 130 pc (cite: groenewegen2012) and a radius for the star of 4$\\times$10$^{13}$ cm (cite: menten2012)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "continuum emission peak at $\\alpha$=09$^h$ 47$^m$ 57.446$^s$ and $\\delta$=13$^o$ 16’ 43.86\" (J2000)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Groenewegen et al. 2012",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "We adopt a distance to IRC+10216 of 130 pc (cite: groenewegen2012) and a radius for the star of 4$\\times$10$^{13}$ cm (cite: menten2012)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "continuum emission peak at $\\alpha$=09$^h$ 47$^m$ 57.446$^s$ and $\\delta$=13$^o$ 16’ 43.86\" (J2000)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the physical and chemical conditions of the dust nucleation zone of IRC+10216, as probed by vibrationally excited HNC J=3-2 lines in early ALMA data?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The HNC data are interpreted through a 1D–spherical non–local radiative transfer model, coupled to a chemical model that includes chemistry at thermochemical equilibrium for the innermost regions"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 6, 255.3 to 274.8 GHz over 4 setups",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "They consisted in 4 spectral setups covering the frequency range 255.3 to 274.8 GHz (receiver band 6) with a 0.5 MHz channel spacing."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "setup id4, 269.8 to 274.0 GHz, 2 runs",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Observations were obtained in 2 runs in a single spectral setup (referenced as id4 in the ALMA archive), which covered the range 269.8 to 274.0GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HNC",
+     "transition": "J=3-2, nine vibrational states",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "We report the detection in IRC+10216 of lines of HNC $J$=3-2 pertaining to 9 excited vibrational states with energies up to $\\sim$5300 K."
+      }
+     ]
+    },
+    {
+     "species": "SiS",
+     "transition": "v=1 J=15-14",
+     "rest_frequency": "270.917 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "SiS $\\nu$=1 J=15-14 at 270.917 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "16 antennas, up to 402 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The array was configured with 16 antennas extending up to 402 m."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.6\"x0.5\" synthetic beam",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The final synthetic beam is 0.6\"x0.5\" and the r.m.s. per channel is $\\sim$5 mJy/Beam."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "~5 mJy/beam per channel; continuum 2 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "That of the continuum map is 2 mJy/Beam"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "two runs of ~72 min each, 26 min on source",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Two runs of about 72 min each were performed, of which 26 min correspond to correlations on source."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "April 8 to 23, 2012 (Cycle 0)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations of IRC+10216 with ALMA were made between April 8 and 23, 2012 (ALMA Cycle0)."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM 30-m",
+     "provided": {
+      "value": "single-dish spectrum for comparison with ALMA, used in HNC fits",
+      "evidence": [
+       {
+        "loc": "Line modeling and Discussion",
+        "quote": "the ALMA spectrum superimposed on the spectrum observed with the IRAM 30-m single-dish telescope (cite: Cernicharo2011)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel/HIFI",
+     "provided": {
+      "value": "HNC high-J ground-state lines modeled by Daniel et al. 2012",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "High–$J$ rotational lines of its ground vibrational level have recently been observed in IRC+10216 from *Herschel*/HIFI observations."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "HNC collisional rate coefficients for rotational transitions",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "The collisional rate coefficients for the rotational transitions of HNC were derived from the calculations of (cite: dumouchel2010)."
+       }
+      ]
+     },
+     "citation": "(cite: dumouchel2010)"
+    },
+    {
+     "what": {
+      "value": "CSE temperature profile",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "adopting the temperature radial profile of (cite: agundez2012)"
+       }
+      ]
+     },
+     "citation": "(cite: agundez2012)"
+    },
+    {
+     "what": {
+      "value": "HCN abundance profile",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "by using the HCN abundance profile derived by (cite: Fonfria2008)"
+       }
+      ]
+     },
+     "citation": "(cite: Fonfria2008)"
+    },
+    {
+     "what": {
+      "value": "HNC effective abundance profile for r>=10 R*",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "we kept for radii $\\geq 10 \\, R_*$ the $\"$effective$\"$ abundance profile derived from the analysis of the *Herschel* observations by (cite: daniel2012)"
+       }
+      ]
+     },
+     "citation": "(cite: daniel2012)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "calibration with CASA",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Calibration was performed with the CASA software package, and data analysis with GILDAS."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "3C279 and 3C273 for bandpass and absolute flux; 4.26 Jy adopted for J0854+201 at 272.4 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "A flux of 4.26 Jy was adopted as reference for J0854+201 at 272.4 GHz"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~8%",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We estimate an uncertainty for the flux calibration of $\\sim$ 8%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "iterative self-cal on compact SiS v=1 J=15-14 source",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "this standard calibration was subsequently improved by iterative self-calibration on the highly compact, bright source at the origin of vibrationally excited SiS emission"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging restoration was made with moderate robust weighting (with a 0.5 robustness value) for all the available channels"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.6\"x0.5\"",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The final synthetic beam is 0.6\"x0.5\""
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~5 mJy/beam per channel; 2 mJy/beam continuum",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the r.m.s. per channel is $\\sim$5 mJy/Beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Chemistry and CSE structure (temperature, dust opacity, velocity profiles) taken from earlier models",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "its gas/dust temperatures, dust opacity, and radial velocity profiles are taken from (cite: Fonfria2008), (cite: agundez2012) and (cite: daniel2012)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Fonfria2008), (cite: agundez2012), (cite: daniel2012)"
+    },
+    {
+     "what": {
+      "value": "Non-local radiative transfer code",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "we performed non–local radiative transfer (RT) calculations with the code described in (cite: daniel2008)"
+       }
+      ]
+     },
+     "from_reference": "(cite: daniel2008)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging task and cleaning parameters (masks, thresholds, cell and image size)",
+    "Continuum subtraction and line-free channels",
+    "Self-calibration solution intervals",
+    "Numerical H2 density profile and HNC abundance profile (only shown in figures)",
+    "Line-integration or fitting procedure for the line profiles",
+    "CASA version"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image ALMA data",
+    "method": {
+     "value": "CASA calibration with self-calibration on SiS v=1 emission; imaging with robust 0.5; analysis in GILDAS",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Calibration was performed with the CASA software package, and data analysis with GILDAS."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "GILDAS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify lines",
+    "method": {
+     "value": "Line identification with MADEX",
+     "evidence": [
+      {
+       "loc": "Line modeling and Discussion",
+       "quote": "The line identification was made with the MADEX code (cite: Cernicharo2012)."
+      }
+     ]
+    },
+    "software": [
+     "MADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compute thermochemical-equilibrium HNC abundance",
+    "method": {
+     "value": "TE calculation for 1-10 R* with 21 elements and ~300 molecules",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer and Chemical Modeling",
+       "quote": "Our calculations include 21 elements and nearly 300 molecular species"
+      }
+     ]
+    },
+    "software": [
+     "TE code of Tejero & Cernicharo 1991"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "solar abundances except C raised over O by factor 1.5",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "We adopted solar elemental abundances (cite: asplund2009), except for C, whose abundance was increased over O by a factor of 1.5."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Non-local RT modeling of HNC lines and constrain H2 density",
+    "method": {
+     "value": "RT with 8 vibrational states, J up to 55, l-type doubling; ~950 levels and ~8700 transitions; H2 density tuned to fit profiles",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer and Chemical Modeling",
+       "quote": "The number of energy levels considered is thus $\\sim$950, which translates to a total of $\\sim$8700 radiative transitions."
+      }
+     ]
+    },
+    "software": [
+     "non-local RT code (Daniel & Cernicharo 2008)"
+    ],
+    "key_parameters": [
+     {
+      "value": "ro-vibrational collision rates = rotational rates scaled down by 100",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "They were estimated by scaling down the rotational rate coefficients by a factor of 100"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "distance 130 pc, R* = 4e13 cm, spherical symmetry",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer and Chemical Modeling",
+        "quote": "We adopt a distance to IRC+10216 of 130 pc (cite: groenewegen2012) and a radius for the star of 4$\\times$10$^{13}$ cm (cite: menten2012)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "best fit by eye (not formal)",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer and Chemical Modeling",
+       "quote": "The best fit to the data is obtained with the density profile shown by the blue curves in Figure [3](#fig3)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "tested sensitivity to rate scaling factor and IR pumping",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer and Chemical Modeling",
+       "quote": "Several runs were performed to check the effect of this assumption on the results."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Calibration was performed with the CASA software package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "data analysis",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "data analysis with GILDAS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "line identification and HNC frequencies/strengths",
+     "evidence": [
+      {
+       "loc": "Line modeling and Discussion",
+       "quote": "The line identification was made with the MADEX code (cite: Cernicharo2012)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "HNC emitting region radius",
+    "value": "~0.06",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the radius inferred for the emitting region is $\\sim$0.06$\\ensuremath{''}$ (i.e., $\\simeq$ 3 stellar radii)"
+     }
+    ]
+   },
+   {
+    "quantity": "HNC abundance relative to H2",
+    "value": "1e-8 to 1e-6",
+    "uncertainty": "range",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$10^{-8} <$ $\\chi$(HNC) $< 10^{-6}$"
+     }
+    ]
+   },
+   {
+    "quantity": "TE HNC abundance at stellar surface",
+    "value": "2e-6",
+    "uncertainty": "not stated",
+    "units": "relative to H2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Radiative Transfer and Chemical Modeling",
+      "quote": "It is maximum at the stellar surface (2 $\\times$ 10$^{-6}$ relative to H$_2$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Emitting region H2 density",
+    "value": ">5e9",
+    "uncertainty": "not stated",
+    "units": "cm^-3",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "$n$(H$_2$) $>$ $5\\, 10^9$ cm$^{-3}$ and T$_g$ $>$ 1300 K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The ALMA spectrum contains many narrow unidentified lines arising near the star",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "also shows a surprising large number of narrow, unidentified lines that arise in the vicinity of the star"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Vibrationally excited HNC lines probe the dust formation zone and can be explained by TE chemistry",
+    "experiment": "Non-local RT plus TE chemistry model fitted to ALMA HNC lines",
+    "result": "Lines up to ~5300 K reproduced; emission from 1-3 R*",
+    "finding": "HNC emission arises from a hot, dense region of about 0.06\", similar in size to the IR dusty clumps",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "it has been possible to successfully reproduce the emission of all the vibrationally excited $J$=3-2 HNC lines up to energy levels $\\simeq  5300\\,$K."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Emitting region unresolved; higher resolution and 2D/3D modeling needed",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The emitting region is still unresolved with the current observations"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Density constrained by eye-fit with no uncertainties",
+    "Collisional rates for vibrational transitions are guessed",
+    "1D model for a clumpy region"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "RT and TE codes are not public",
+    "Final model profiles only in figures"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 2,
+   "score_reason": "Data are archival but the modeling relies on unreleased codes and unstated profiles.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Modeling code is not available and the results are model-dependent."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: daniel2008)",
+     "why": "RT code"
+    },
+    {
+     "citation": "(cite: Cernicharo2012)",
+     "why": "MADEX"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: daniel2012)",
+     "why": "Herschel HNC analysis"
+    },
+    {
+     "citation": "(cite: Cernicharo2011)",
+     "why": "HCN modeling and IRAM 30-m survey"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e2e92586b598eeec9fe6205ccb79b25e",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:20",
+  "usage": {
+   "input_tokens": 10973,
+   "output_tokens": 6285,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.043005,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 51,
+  "quotes_ok": 51,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00229.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 40,
+   "rate": 0.563
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:04:27",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2011.0.00229.S",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA2011.0.00229.S."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

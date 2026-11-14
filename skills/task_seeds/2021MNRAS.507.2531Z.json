@@ -1,0 +1,764 @@
+{
+ "bibcode": "2021MNRAS.507.2531Z",
+ "title": "On dust evolution in planet-forming discs in binary systems - II. Comparison with Taurus and ρ Ophiuchus (sub-)millimetre observations: discs in binaries have small dust sizes",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab2024",
+ "arxiv_id": "2107.05268",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Whether theoretical models of dust evolution (grain growth and radial drift) in binary protoplanetary discs agree with ALMA (sub-)millimetre observations of disc dust sizes, tidal truncation radii, and the flux-radius correlation in Taurus and rho Ophiuchus.",
+ "alma_project_codes": [
+  "2013.1.00157.S",
+  "2016.1.01164.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm / 0.85 mm) and Band 6 (1.33 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.20 arcsec (rho Ophiuchus, Cox et al. 2017); ~0.12 arcsec (Taurus, Manara et al. 2019)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Taurus binary disc 1.33 mm fluxes, 68% and 95% dust radii, and stellar parameters",
+    "evidence": [
+     {
+      "loc": "Analysis of $\\rho$ Ophiuchus binary discs in the visibility plane",
+      "quote": "To compare our binary disc models with observations, in Section [\\[sec.4\\]](#sec.4) we relied on the observed discs in (cite: Manara+19_2019A&A...628A..95M) for Taurus and in (cite: Cox+17_2017ApJ...851...83C) for $\\rho$ Ophiuchus."
+     }
+    ]
+   },
+   "citation": "(cite: Manara+19_2019A&A...628A..95M)"
+  },
+  {
+   "what": {
+    "value": "rho Ophiuchus binary disc ALMA Band 7 continuum visibilities and 0.87 mm image-plane fluxes",
+    "evidence": [
+     {
+      "loc": "Analysis of $\\rho$ Ophiuchus binary discs in the visibility plane",
+      "quote": "In order to deal with observations consistently we proceeded to a fit of the binary discs in (cite: Cox+17_2017ApJ...851...83C) in the visibility plane"
+     }
+    ]
+   },
+   "citation": "(cite: Cox+17_2017ApJ...851...83C)"
+  },
+  {
+   "what": {
+    "value": "Archival binary disc continuum fluxes and separations in Taurus",
+    "evidence": [
+     {
+      "loc": "A logbook of binary disc observations",
+      "quote": "We collect archival data from multiple stellar disc surveys in Taurus (cite: Harris+12_2012ApJ...751..115H; Akeson&Jensen14_2014ApJ...784...62A; Akeson+19_2019ApJ...872..158A; Manara+19_2019A&A...628A..95M)"
+     }
+    ]
+   },
+   "citation": "(cite: Harris+12_2012ApJ...751..115H; Akeson&Jensen14_2014ApJ...784...62A; Akeson+19_2019ApJ...872..158A; Manara+19_2019A&A...628A..95M)"
+  },
+  {
+   "what": {
+    "value": "Archival binary disc continuum fluxes, distances, and multiplicity in rho Ophiuchus",
+    "evidence": [
+     {
+      "loc": "A logbook of binary disc observations",
+      "quote": "$\\rho$ Ophiuchus (cite: Cox+17_2017ApJ...851...83C; Cieza+19_2019MNRAS.482..698C; Williams+19_2019ApJ...875L...9W; Zurlo+20_2020MNRAS.496.5089Z)"
+     }
+    ]
+   },
+   "citation": "(cite: Cox+17_2017ApJ...851...83C; Cieza+19_2019MNRAS.482..698C; Williams+19_2019ApJ...875L...9W; Zurlo+20_2020MNRAS.496.5089Z)"
+  },
+  {
+   "what": {
+    "value": "Archival binary disc continuum fluxes and separations in Lupus",
+    "evidence": [
+     {
+      "loc": "A logbook of binary disc observations",
+      "quote": "and Lupus (cite: Ansdell+18_2018ApJ...859...21A; Zurlo+21_2021MNRAS.501.2305Z)"
+     }
+    ]
+   },
+   "citation": "(cite: Ansdell+16_2016ApJ...828...46A; Ansdell+18_2018ApJ...859...21A; Zurlo+21_2021MNRAS.501.2305Z)"
+  },
+  {
+   "what": {
+    "value": "Single-star flux-radius correlation parameters",
+    "evidence": [
+     {
+      "loc": "Flux-radius correlation in binary disc observations",
+      "quote": "Taurus best-fit parameters (slope and intercept) in Tab. [2](#tab:5.1) are compatible with the (cite: Tripathi+17_2017ApJ...845...44T) ones ($\\alpha= 2.12\\pm0.05$, $\\beta=0.50\\pm0.07$) within $1\\sigma$"
+     }
+    ]
+   },
+   "citation": "(cite: Tripathi+17_2017ApJ...845...44T)"
+  },
+  {
+   "what": {
+    "value": "Gas-to-dust disc size ratios in Lupus and Taurus",
+    "evidence": [
+     {
+      "loc": "Tentative relation between dust-to-gas size ratio and truncation radius",
+      "quote": "This is in line with the results of (cite: Sanchis+21_2021arXiv210111307S) in Lupus, who took into account single star discs and binaries with separation larger than 2 arcsec (roughly 317 au at the Lupus median distance), inferring a median of $R_\\mathrm{gas}/R_\\mathrm{dust}=2.5\\pm1.5$."
+     }
+    ]
+   },
+   "citation": "(cite: Sanchis+21_2021arXiv210111307S); Rota et al. (subm.)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compile archival binary disc fluxes and fit the flux-separation correlation",
+   "method": "Gather archival (sub-)mm continuum fluxes of binary pairs in Taurus, rho Ophiuchus, and Lupus, re-scale to 0.85 mm and d=140 pc, and perform a three-Gaussian hierarchical Bayesian linear regression in log space.",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "10 chains and 2.5x10^4 steps; non-detection uncertainty assumed as 1/3 of quoted upper limit; pairs closer than 0.15 arcsec in Harris et al. (2012) excluded as circumbinary"
+   ],
+   "assumptions": [
+    "F_nu proportional to nu^2 between 0.85 mm and 1.33 mm; reference distance d = 140 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute disc-integrated spectral indices in binaries to validate multi-band flux scaling",
+   "method": "Compute spectral indices alpha_0.9-1.3mm between ALMA Band 7 (0.9 mm) and Band 6 (1.3 mm) fluxes for binary and single-star discs in Taurus, rho Ophiuchus, and Lupus.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flux calibration uncertainty is excluded"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute synthetic Band 7 surface brightness, fluxes, and dust radii from binary disc evolution models",
+   "method": "Compute 0.85 mm dust opacity via Mie theory, calculate radial surface brightness profile S_b(R) for 1D secular dust evolution models from Paper I, integrate S_b(R) to obtain total flux F, and determine radii enclosing 68% (R_68,mod) and 95% (R_95,mod) of the dust flux.",
+   "software": [
+    "DiscEvolution"
+   ],
+   "key_parameters": [
+    "Wavelength = 0.85 mm (ALMA Band 7); R_in = 10^-2 au; 10^-4 <= alpha <= 0.025; 10 au <= R_0 <= 80 au; t = 0.1, 0.3, 1, 2, 3 Myr; sensitivity cut S_b = 3.33x10^8 Jy sr^-1 (7.85 mJy arcsec^-2)"
+   ],
+   "assumptions": [
+    "Face-on discs; d = 140 pc; compact spherical grains with 10% silicates, 30% refractory organics, 60% water ice, grain size distribution exponent q = -3.5; solar mass star"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit rho Ophiuchus binary disc continuum visibilities to measure fluxes and dust radii",
+   "method": "Average continuum visibilities in each spectral window, rescale uv-distances to wavelength units, model each disc component with a power-law and exponential taper intensity profile using galario, and fit the 8*n parameter space with MCMC using emcee to derive F, R_68,obs, and R_95,obs.",
+   "software": [
+    "galario",
+    "emcee",
+    "uvplot"
+   ],
+   "key_parameters": [
+    "8 parameters per disc component (log F_tot, gamma_1, gamma_2, R_C, i, PA, Delta_alpha, Delta_delta); 100 to 300 walkers; 5x10^3 to 2x10^4 steps; last 1000 steps used for posterior median and 16th/84th percentiles"
+   ],
+   "assumptions": [
+    "Axisymmetric intensity profile I(R) proportional to (R/R_C)^(-gamma_1) * exp(-(R/R_C)^gamma_2); circumbinary discs excluded; Gaia distances from Williams et al. (2019)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate observational tidal truncation radii and compare with model and observed dust radii and dust-to-gas size ratios",
+   "method": "Compute zero-eccentricity tidal truncation radii R_trunc from observed projected separations a_p and mass ratios q using the Eggleton radius formula (for Taurus) or R_trunc = a_p/3 (for rho Ophiuchus), and compare R_68 and R_95 as well as R_dust/R_gas against model predictions.",
+   "software": [],
+   "key_parameters": [
+    "h = 0.88, k = 0.01 in Eq. 5"
+   ],
+   "assumptions": [
+    "Zero orbital eccentricity e = 0; true separation a ~ a_p; equal mass stars q = 1 for rho Ophiuchus targets; R_68,gas = 0.68*R_trunc and R_95,gas = 0.95*R_trunc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Test the flux-radius correlation and its dependence on truncation radius in observations and models",
+   "method": "Perform Bayesian linear regression (linmix) of log(R_68,obs) vs log(F_nu) and of log(F_nu / R_68,obs^2) vs log(R_trunc) for Taurus and rho Ophiuchus binary discs, run Spearman and Pearson correlation tests, and compare against drift-dominated models (alpha = 10^-3, 10^-4) and the Tripathi et al. (2017) single-star relation.",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "10 chains and 2.5x10^4 steps in linmix; T Tau S and UY Aur B excluded; asymmetric error bars set to the larger error; drift-dominated models with alpha = 10^-3, 10^-4 and R_0 = 10, 30, 80 au"
+   ],
+   "assumptions": [
+    "F_nu proportional to nu^2 to rescale 1.33 mm Taurus fluxes to 0.85 mm; d = 140 pc; R_68,1.3mm / R_68,0.9mm ~ 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Flux-separation regression slope beta (detections only, D)",
+   "value": "0.46",
+   "uncertainty": "+/-0.11",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| D | $0.52\\pm0.29$ | $0.46\\pm0.11$ | $0.55_{-0.05}^{+0.06}$ | $0.47_{-0.11}^{+0.10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-separation regression intercept alpha (detections only, D)",
+   "value": "0.52",
+   "uncertainty": "+/-0.29",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| D | $0.52\\pm0.29$ | $0.46\\pm0.11$ | $0.55_{-0.05}^{+0.06}$ | $0.47_{-0.11}^{+0.10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-separation correlation coefficient rho (detections only, D)",
+   "value": "0.47",
+   "uncertainty": "+0.10/-0.11",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| D | $0.52\\pm0.29$ | $0.46\\pm0.11$ | $0.55_{-0.05}^{+0.06}$ | $0.47_{-0.11}^{+0.10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-separation regression slope beta (detections and non-detections, D&ND)",
+   "value": "0.69",
+   "uncertainty": "+0.13/-0.12",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| D&ND | $-0.45_{-0.33}^{+0.31}$ | $0.69_{-0.12}^{+0.13}$ | $0.80_{-0.07}^{+0.08}$ | $0.50_{-0.08}^{+0.07}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-radius regression intercept alpha (Taurus binaries)",
+   "value": "1.86",
+   "uncertainty": "+0.31/-0.29",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Tau | $1.86_{-0.29}^{+0.31}$ | $0.39_{-0.17}^{+0.18}$ | $0.32_{-0.06}^{+0.08}$ | $0.70_{-0.25}^{+0.16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-radius regression slope beta (Taurus binaries)",
+   "value": "0.39",
+   "uncertainty": "+0.18/-0.17",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Tau | $1.86_{-0.29}^{+0.31}$ | $0.39_{-0.17}^{+0.18}$ | $0.32_{-0.06}^{+0.08}$ | $0.70_{-0.25}^{+0.16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-radius correlation coefficient rho (Taurus binaries)",
+   "value": "0.70",
+   "uncertainty": "+0.16/-0.25",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Tau | $1.86_{-0.29}^{+0.31}$ | $0.39_{-0.17}^{+0.18}$ | $0.32_{-0.06}^{+0.08}$ | $0.70_{-0.25}^{+0.16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-radius regression intercept alpha (rho Ophiuchus binaries)",
+   "value": "1.59",
+   "uncertainty": "+/-0.25",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Oph | $1.59\\pm0.25$ | $0.29\\pm0.15$ | $0.30_{-0.06}^{+0.08}$ | $0.54_{-0.28}^{+0.21}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-radius regression slope beta (rho Ophiuchus binaries)",
+   "value": "0.29",
+   "uncertainty": "+/-0.15",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Oph | $1.59\\pm0.25$ | $0.29\\pm0.15$ | $0.30_{-0.06}^{+0.08}$ | $0.54_{-0.28}^{+0.21}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-radius correlation coefficient rho (rho Ophiuchus binaries)",
+   "value": "0.54",
+   "uncertainty": "+0.21/-0.28",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Oph | $1.59\\pm0.25$ | $0.29\\pm0.15$ | $0.30_{-0.06}^{+0.08}$ | $0.54_{-0.28}^{+0.21}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disc-integrated spectral index alpha_bin (Taurus binaries)",
+   "value": "1.88",
+   "uncertainty": "+0.31/-0.22",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Surface brightness and size determination - a model case",
+     "quote": "| Taurus | \\- | $1.88~(+0.31,\\,-0.22)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disc-integrated spectral index alpha_bin (rho Ophiuchus binaries)",
+   "value": "1.88",
+   "uncertainty": "+0.43/-0.30",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Surface brightness and size determination - a model case",
+     "quote": "| $\\rho$ Ophiuchus | $1.98~(+0.81,\\,-0.17)$ | $1.88~(+0.43,\\,-0.30)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disc-integrated spectral index alpha_bin (Lupus binaries)",
+   "value": "2.06",
+   "uncertainty": "+0.18/-0.11",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Surface brightness and size determination - a model case",
+     "quote": "| Lupus | $2.32~(+0.40,\\,-0.20)$ | $2.06~(+0.18,\\,-0.11)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 5 A continuum flux F (0.87 mm)",
+   "value": "26.0986",
+   "uncertainty": "+0.3973/-0.4073",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 5 A | J162502.1-245932a | 16:25:02.119 | -24:59:32.798 | 1.490 | 27.74$\\pm$0.77 | $26.0986^{+0.3973}_{-0.4073}$ | $0.1171^{+0.0037}_{-0.0040}$ | $0.1408^{+0.0100}_{-0.0070}$ | 142.04 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 5 A 68%-flux radius R_68,obs",
+   "value": "0.1171",
+   "uncertainty": "+0.0037/-0.0040",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 5 A | J162502.1-245932a | 16:25:02.119 | -24:59:32.798 | 1.490 | 27.74$\\pm$0.77 | $26.0986^{+0.3973}_{-0.4073}$ | $0.1171^{+0.0037}_{-0.0040}$ | $0.1408^{+0.0100}_{-0.0070}$ | 142.04 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 5 B continuum flux F (0.87 mm)",
+   "value": "19.3541",
+   "uncertainty": "+0.3523/-0.4492",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 5 B | J162502.1-245932b | 16:25:02.011 | -24:59:33.004 | 1.490 | 19.60$\\pm$0.70 | $19.3541^{+0.3523}_{-0.4492}$ | $0.0836^{+0.0062}_{-0.0070}$ | $0.1036^{+0.0117}_{-0.0144}$ | 142.04 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 5 B 68%-flux radius R_68,obs",
+   "value": "0.0836",
+   "uncertainty": "+0.0062/-0.0070",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 5 B | J162502.1-245932b | 16:25:02.011 | -24:59:33.004 | 1.490 | 19.60$\\pm$0.70 | $19.3541^{+0.3523}_{-0.4492}$ | $0.0836^{+0.0062}_{-0.0070}$ | $0.1036^{+0.0117}_{-0.0144}$ | 142.04 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 7 A continuum flux F (0.87 mm)",
+   "value": "45.3971",
+   "uncertainty": "+1.2018/-1.0932",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 7 A | J162623.4-242101a | 16:26:23.362 | -24:20:59.997 | 2.030 | 46.75$\\pm$0.40 | $45.3971^{+1.2018}_{-1.0932}$ | $0.0746^{+0.0035}_{-0.0034}$ | $0.0941^{+0.0068}_{-0.0066}$ | 125.69 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 7 A 68%-flux radius R_68,obs",
+   "value": "0.0746",
+   "uncertainty": "+0.0035/-0.0034",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 7 A | J162623.4-242101a | 16:26:23.362 | -24:20:59.997 | 2.030 | 46.75$\\pm$0.40 | $45.3971^{+1.2018}_{-1.0932}$ | $0.0746^{+0.0035}_{-0.0034}$ | $0.0941^{+0.0068}_{-0.0066}$ | 125.69 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 7 B continuum flux F (0.87 mm)",
+   "value": "37.9256",
+   "uncertainty": "+1.9133/-1.4758",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 7 B | J162623.4-242101b | 16:26:23.432 | -24:21:01.749 | 2.030 | 38.36$\\pm$0.38 | $37.9256^{+1.9133}_{-1.4758}$ | $0.0512^{+0.0041}_{-0.0056}$ | $0.0628^{+0.0089}_{-0.0111}$ | 125.69 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 7 B 68%-flux radius R_68,obs",
+   "value": "0.0512",
+   "uncertainty": "+0.0041/-0.0056",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 7 B | J162623.4-242101b | 16:26:23.432 | -24:21:01.749 | 2.030 | 38.36$\\pm$0.38 | $37.9256^{+1.9133}_{-1.4758}$ | $0.0512^{+0.0041}_{-0.0056}$ | $0.0628^{+0.0089}_{-0.0111}$ | 125.69 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 27 A continuum flux F (0.87 mm)",
+   "value": "33.8995",
+   "uncertainty": "+0.7475/-0.6761",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 27 A | J163130.9-242440a | 16:31:30.873 | -24:24:40.288 | 3.560 | 36.29$\\pm$0.78 | $33.8995^{+0.7475}_{-0.6761}$ | $0.1791^{+0.0066}_{-0.0065}$ | $0.2493^{+0.0303}_{-0.0152}$ | 130.61 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 27 A 68%-flux radius R_68,obs",
+   "value": "0.1791",
+   "uncertainty": "+0.0066/-0.0065",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 27 A | J163130.9-242440a | 16:31:30.873 | -24:24:40.288 | 3.560 | 36.29$\\pm$0.78 | $33.8995^{+0.7475}_{-0.6761}$ | $0.1791^{+0.0066}_{-0.0065}$ | $0.2493^{+0.0303}_{-0.0152}$ | 130.61 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 27 B continuum flux F (0.87 mm)",
+   "value": "5.8274",
+   "uncertainty": "+0.5074/-0.5356",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 27 B | J163130.9-242440b | 16:31:31.025 | -24:24:37.484 | 3.560 | 6.58$\\pm$0.32 | $5.8274^{+0.5074}_{-0.5356}$ | $0.0874^{+0.0219}_{-0.0140}$ | $0.1049^{+0.0437}_{-0.0209}$ | 130.61 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 27 B 68%-flux radius R_68,obs",
+   "value": "0.0874",
+   "uncertainty": "+0.0219/-0.0140",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 27 B | J163130.9-242440b | 16:31:31.025 | -24:24:37.484 | 3.560 | 6.58$\\pm$0.32 | $5.8274^{+0.5074}_{-0.5356}$ | $0.0874^{+0.0219}_{-0.0140}$ | $0.1049^{+0.0437}_{-0.0209}$ | 130.61 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 34 A continuum flux F (0.87 mm)",
+   "value": "32.6494",
+   "uncertainty": "+1.1996/-1.4906",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 34 A | J163221.0-243036a | 16:32:21.047 | -24:30:36.309 | 7.560 | 33.43$\\pm$0.96 | $32.6494^{+1.1996}_{-1.4906}$ | $0.0495^{+0.0053}_{-0.0053}$ | $0.0961^{+0.0195}_{-0.0193}$ | 155.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 34 A 68%-flux radius R_68,obs",
+   "value": "0.0495",
+   "uncertainty": "+0.0053/-0.0053",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 34 A | J163221.0-243036a | 16:32:21.047 | -24:30:36.309 | 7.560 | 33.43$\\pm$0.96 | $32.6494^{+1.1996}_{-1.4906}$ | $0.0495^{+0.0053}_{-0.0053}$ | $0.0961^{+0.0195}_{-0.0193}$ | 155.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 34 B continuum flux F (0.87 mm)",
+   "value": "7.5725",
+   "uncertainty": "+0.7182/-0.6441",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 34 B | J163221.0-243036b | 16:32:20.811 | -24:30:29.487 | 7.560 | 6.32$\\pm$0.25 | $7.5725^{+0.7182}_{-0.6441}$ | $0.1920^{+0.0187}_{-0.0157}$ | $0.2105^{+0.0232}_{-0.0191}$ | 155.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 34 B 68%-flux radius R_68,obs",
+   "value": "0.1920",
+   "uncertainty": "+0.0187/-0.0157",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 34 B | J163221.0-243036b | 16:32:20.811 | -24:30:29.487 | 7.560 | 6.32$\\pm$0.25 | $7.5725^{+0.7182}_{-0.6441}$ | $0.1920^{+0.0187}_{-0.0157}$ | $0.2105^{+0.0232}_{-0.0191}$ | 155.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 3 continuum flux F (0.87 mm)",
+   "value": "95.4603",
+   "uncertainty": "+0.6081/-0.5906",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 3 | J162309.2-241705 | 16:23:09.219 | -24:17:05.364 | 1.650 | $114.3\\pm9.7$ | $95.4603^{+0.6081}_{-0.5906}$ | $0.2220^{+0.0021}_{-0.0021}$ | $0.2683^{+0.0080}_{-0.0097}$ | 160.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 3 68%-flux radius R_68,obs",
+   "value": "0.2220",
+   "uncertainty": "+0.0021/-0.0021",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 3 | J162309.2-241705 | 16:23:09.219 | -24:17:05.364 | 1.650 | $114.3\\pm9.7$ | $95.4603^{+0.6081}_{-0.5906}$ | $0.2220^{+0.0021}_{-0.0021}$ | $0.2683^{+0.0080}_{-0.0097}$ | 160.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 4 continuum flux F (0.87 mm)",
+   "value": "6.9157",
+   "uncertainty": "+0.5712/-0.6309",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 4 | J162336.1-240221 | 16:23:36.113 | -24:02:21.227 | 1.832 | $7.12\\pm0.31$ | $6.9157^{+0.5712}_{-0.6309}$ | $0.0888^{+0.0232}_{-0.0168}$ | $0.1111^{+0.0491}_{-0.0272}$ | 148.71 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 4 68%-flux radius R_68,obs",
+   "value": "0.0888",
+   "uncertainty": "+0.0232/-0.0168",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 4 | J162336.1-240221 | 16:23:36.113 | -24:02:21.227 | 1.832 | $7.12\\pm0.31$ | $6.9157^{+0.5712}_{-0.6309}$ | $0.0888^{+0.0232}_{-0.0168}$ | $0.1111^{+0.0491}_{-0.0272}$ | 148.71 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 21 A continuum flux F (0.87 mm)",
+   "value": "14.4805",
+   "uncertainty": "+1.1061/-1.5993",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 21 A | J162740.3-242204 | 16:27:40.275 | -24:22:04.568 | 0.638 | 14.83$\\pm$0.48 | $14.4805^{+1.1061}_{-1.5993}$ | $0.0467^{+0.0052}_{-0.0057}$ | $0.0558^{+0.0172}_{-0.0084}$ | 130.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 21 A 68%-flux radius R_68,obs",
+   "value": "0.0467",
+   "uncertainty": "+0.0052/-0.0057",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 21 A | J162740.3-242204 | 16:27:40.275 | -24:22:04.568 | 0.638 | 14.83$\\pm$0.48 | $14.4805^{+1.1061}_{-1.5993}$ | $0.0467^{+0.0052}_{-0.0057}$ | $0.0558^{+0.0172}_{-0.0084}$ | 130.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 45 A continuum flux F (0.87 mm)",
+   "value": "5.9081",
+   "uncertainty": "+1.6318/-0.6604",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 45 A | J162751.8-243145 | 16:27:51.796 | -24:31:46.048 | 7.170 | 5.46$\\pm$0.72 | $5.9081^{+1.6318}_{-0.6604}$ | $0.1453^{+0.2296}_{-0.0351}$ | $0.1908^{+0.5257}_{-0.0618}$ | 139.40 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 45 A 68%-flux radius R_68,obs",
+   "value": "0.1453",
+   "uncertainty": "+0.2296/-0.0351",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 45 A | J162751.8-243145 | 16:27:51.796 | -24:31:46.048 | 7.170 | 5.46$\\pm$0.72 | $5.9081^{+1.6318}_{-0.6604}$ | $0.1453^{+0.2296}_{-0.0351}$ | $0.1908^{+0.5257}_{-0.0618}$ | 139.40 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 11 B continuum flux F (0.87 mm)",
+   "value": "13.2425",
+   "uncertainty": "+3.1133/-5.2698",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 11 B | J162646.4-241160 | 16:26:46.427 | -24:12:00.443 | 0.577 | 15.41$\\pm$0.38 | $13.2425^{+3.1133}_{-5.2698}$ | $0.0507^{+0.0297}_{-0.0131}$ | $0.0887^{+0.1399}_{-0.0411}$ | 109.54 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 11 B 68%-flux radius R_68,obs",
+   "value": "0.0507",
+   "uncertainty": "+0.0297/-0.0131",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 11 B | J162646.4-241160 | 16:26:46.427 | -24:12:00.443 | 0.577 | 15.41$\\pm$0.38 | $13.2425^{+3.1133}_{-5.2698}$ | $0.0507^{+0.0297}_{-0.0131}$ | $0.0887^{+0.1399}_{-0.0411}$ | 109.54 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 13 B continuum flux F (0.87 mm)",
+   "value": "483.2569",
+   "uncertainty": "+0.8476/-0.8513",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 13 B | J162658.4-244532 | 16:26:58.504 | -24:45:37.220 | 5.065 | 624$\\pm$73 | $483.2569^{+0.8476}_{-0.8513}$ | $0.4384^{+0.0010}_{-0.0010}$ | $0.5932^{+0.0027}_{-0.0026}$ | 139.40 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 13 B 68%-flux radius R_68,obs",
+   "value": "0.4384",
+   "uncertainty": "+0.0010/-0.0010",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 13 B | J162658.4-244532 | 16:26:58.504 | -24:45:37.220 | 5.065 | 624$\\pm$73 | $483.2569^{+0.8476}_{-0.8513}$ | $0.4384^{+0.0010}_{-0.0010}$ | $0.5932^{+0.0027}_{-0.0026}$ | 139.40 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 31 A continuum flux F (0.87 mm)",
+   "value": "94.4169",
+   "uncertainty": "+0.5072/-0.5525",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 31 A | J163152.1-245616 | 16:31:52.111 | -24:56:16.030 | 3.000 | 94.4$\\pm$2.7 | $94.4169^{+0.5072}_{-0.5525}$ | $0.0783^{+0.0018}_{-0.0041}$ | $0.1126^{+0.0083}_{-0.0037}$ | 166.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ROph 31 A 68%-flux radius R_68,obs",
+   "value": "0.0783",
+   "uncertainty": "+0.0018/-0.0041",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ROph 31 A | J163152.1-245616 | 16:31:52.111 | -24:56:16.030 | 3.000 | 94.4$\\pm$2.7 | $94.4169^{+0.5072}_{-0.5525}$ | $0.0783^{+0.0018}_{-0.0041}$ | $0.1126^{+0.0083}_{-0.0037}$ | 166.46 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact bounds for the uniform priors used in the emcee visibility-plane fits (gamma_1, gamma_2, R_C, log F_tot, i, PA, Delta_alpha, Delta_delta)",
+  "Calibration and continuum channel selection details for the archival ALMA visibilities from Cox et al. (2017)",
+  "Exact values of the tapered power-law fit parameters (a, b, c, d, e) in Eq. 4 for the median and 16th/84th percentile R_68,mod and R_95,mod curves"
+ ],
+ "missing_for_reproduction": [
+  "Prior boundaries for the 8 visibility-fit parameters in Appendix C",
+  "Pre-processing script for extracting and spectral-window-averaging the continuum visibilities from ALMA project 2013.1.00157.S",
+  "Exact compiled table of the literature binary pair fluxes and separations plotted in Figure 1"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "Archival ALMA project codes and simulation software (DiscEvolution, galario, emcee, linmix) are explicitly named and public, mathematical equations for all models and fits are fully specified, and complete fitted parameter tables for all 15 rho Ophiuchus targets are provided; minor details like MCMC prior bounds and visibility calibration scripts are omitted.",
+ "rediscovery_reason": "Public archival ALMA data (2013.1.00157.S and 2016.1.01164.S), public simulation and visibility-fitting codes (DiscEvolution, galario, emcee, linmix), and explicit numeric answer keys for both the 15 visibility fits (Tables 2-3) and the Bayesian linear regressions (Tables 1-3 in main text).",
+ "source_card": "cards/2021MNRAS.507.2531Z/sonnet/card.md"
+}

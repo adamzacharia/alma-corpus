@@ -1,0 +1,455 @@
+{
+ "bibcode": "2021MNRAS.504.5863L",
+ "title": "Observed CN and HCN intensity ratios exhibit subtle variations in extreme galaxy environments",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab1204",
+ "arxiv_id": "2104.08224",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "How do the integrated line intensity ratios of three energy transitions each of CN and HCN vary across starburst and AGN environments in NGC 3256, NGC 7469, and IRAS 13120-5453?",
+ "alma_project_codes": [
+  "2011.0.00525.S",
+  "2012.1.00034.S",
+  "2012.1.00165.S",
+  "2013.1.00218.S",
+  "2013.1.00379.S",
+  "2015.1.00102.S",
+  "2015.1.00287.S",
+  "2015.1.00412.S",
+  "2015.1.00993.S",
+  "2016.1.00777.S",
+  "2018.1.00493.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, and Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "Matched round beams: 2.2'' / 469 pc (NGC 3256), 0.95'' / 304 pc (NGC 7469), 1.1'' / 715 pc (IRAS 13120)",
+  "sensitivity": "0.24 to 2.00 mJy beam^-1 across lines and galaxies (determined on dirty cubes)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Infrared luminosities L_IR for the target galaxies",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "^*b*^$L_{\\textsubscript{IR}}$ data from (cite: Sanders2003) and are corrected for luminosity distance."
+     }
+    ]
+   },
+   "citation": "(cite: Sanders2003)"
+  },
+  {
+   "what": {
+    "value": "AGN contribution to L_IR for NGC 3256 and NGC 7469",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "^*c*^The AGN contribution to $L_\\text{IR}$ is estimated from 6 μm and 24 μm emission for NGC 3256 and NGC 7469 (cite: Alonso2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Alonso2012)"
+  },
+  {
+   "what": {
+    "value": "AGN contribution to L_IR for IRAS 13120",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "For IRAS 13120, the AGN contribution is estimated from 15 μm and 30 μm (cite: Veilleux2013), 60 μm (cite: Teng2015), and total 8-1000 μm emission (cite: Iwasawa2011)."
+     }
+    ]
+   },
+   "citation": "(cite: Veilleux2013), (cite: Teng2015), (cite: Iwasawa2011)"
+  },
+  {
+   "what": {
+    "value": "SN Type Ia luminosity distance for NGC 7469",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "For NGC 7469, the SN Type Ia distance is from (cite: Ganeshalingam2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Ganeshalingam2013)"
+  },
+  {
+   "what": {
+    "value": "Inclination angle of 45 +/- 5 degrees for NGC 7469",
+    "evidence": [
+     {
+      "loc": "Pixel-by-pixel comparisons",
+      "quote": "For NGC 7469, we corrected the measured intensities in the scatter plots for an inclination angle of $45\\pm5$ degrees (cite: Davies2004)."
+     }
+    ]
+   },
+   "citation": "(cite: Davies2004)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, continuum-subtract, and image uv datasets to matched spatial and spectral resolutions",
+   "method": "Calibrate raw uv data, subtract continuum with UVCONTSUB, image in TCLEAN with matched UVRANGE, WIDTH, CELL, and UVTAPER using AUTO-MULTITHRESH down to 2 sigma, and smooth to a common round beam with IMSMOOTH.",
+   "software": [
+    "CASA",
+    "UVCONTSUB",
+    "TCLEAN",
+    "IMSTAT",
+    "AUTO-MULTITHRESH",
+    "IMSMOOTH"
+   ],
+   "key_parameters": [
+    "UVRANGE > 15 klambda (NGC 3256), > 19.8 klambda (NGC 7469), > 15.9 klambda (IRAS 13120)",
+    "Velocity resolution: 26.43 km s^-1 (NGC 3256), 20.68 km s^-1 (NGC 7469), 20.64 km s^-1 (IRAS 13120)",
+    "Final smoothed round beam: 2.2'' (NGC 3256), 0.95'' (NGC 7469), 1.1'' (IRAS 13120)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create integrated intensity (moment 0) maps, uncertainty maps, and regional line intensity ratios",
+   "method": "Extract cleaned smoothed cubes, trim to line emission channels (including all hyperfine components), mask at 3.5 sigma and require emission in all six lines, integrate to moment 0 in K km s^-1, apply primary beam correction, and compute regional and global line ratios.",
+   "software": [
+    "CASA",
+    "ASTROPY",
+    "PYTHON 3.7"
+   ],
+   "key_parameters": [
+    "RMS masking threshold = 3.5 sigma",
+    "Nuclear aperture size = FWHM of the beam centered on the 93 GHz continuum peak"
+   ],
+   "assumptions": [
+    "ALMA calibration uncertainties are 5% (Band 3) and 10% (Band 6 and 7)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform pixel-by-pixel linear regression of line intensities in log-log space",
+   "method": "Re-sample imaged cubes to half the beam FWHM (reducing pixel count across beam by factor of 3), recompute masked moment 0 maps, correct NGC 7469 for inclination, and fit log(y) = m log(x) + b using Linmix.",
+   "software": [
+    "LINMIX",
+    "ASTROPY",
+    "PYTHON 3.7"
+   ],
+   "key_parameters": [
+    "Re-binned pixel sizes: 1.1'' (NGC 3256), 0.475'' (NGC 7469), 0.55'' (IRAS 13120)"
+   ],
+   "assumptions": [
+    "Inclination angle of 45 +/- 5 degrees applied to NGC 7469; no inclination correction applied to NGC 3256 or IRAS 13120"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate CN/HCN column density ratios in NGC 3256 using LTE and 1D non-LTE radiative transfer",
+   "method": "Estimate column density range via simple LTE calculation, then run online RADEX non-LTE calculations to reproduce observed CN (1-0)/HCN (1-0) intensity ratios in NGC 3256.",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Gas temperature = 40 K, H2 number density = 10^7 cm^-3, line width = 10 km s^-1, column density range = 10^13 - 10^17 cm^-2"
+   ],
+   "assumptions": [
+    "T_gas = 40 K, n(H2) = 10^7 cm^-3, delta V = 10 km s^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) intensity ratio in NGC 3256 northern nucleus",
+   "value": "0.39",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| N. nucl. | $0.39(4)$ | $0.48(7)$ | $0.47(5)$ | $0.27(4)$ | $1.7(1)$ | $0.55(8)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) intensity ratio in NGC 3256 southern nucleus",
+   "value": "0.33",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| S. nucl. | $0.33(4)$ | $0.46(7)$ | $0.44(5)$ | $0.22(3)$ | $1.12(9)$ | $0.34(5)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) intensity ratio in NGC 3256 non-nuclear region",
+   "value": "0.27",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Non-nucl. | $0.27(3)$ | $0.45(6)$ | $0.43(5)$ | $0.21(3)$ | $1.14(8)$ | $0.38(5)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (1-0)/HCN (1-0) intensity ratio in NGC 3256 northern nucleus",
+   "value": "1.7",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| N. nucl. | $0.39(4)$ | $0.48(7)$ | $0.47(5)$ | $0.27(4)$ | $1.7(1)$ | $0.55(8)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (1-0)/HCN (1-0) intensity ratio in NGC 3256 non-nuclear region",
+   "value": "1.14",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Non-nucl. | $0.27(3)$ | $0.45(6)$ | $0.43(5)$ | $0.21(3)$ | $1.14(8)$ | $0.38(5)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) intensity ratio in NGC 7469 nucleus",
+   "value": "0.52",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Nucl. | $0.52(6)$ | $0.48(7)$ | $0.80(9)$ | $0.45(6)$ | $1.13(9)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) intensity ratio in NGC 7469 non-nuclear region",
+   "value": "0.33",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Non-nucl. | $0.33(4)$ | $0.37(5)$ | $0.76(9)$ | $0.30(4)$ | $1.11(8)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (3-2)/CN (2-1) intensity ratio in NGC 7469 nucleus",
+   "value": "0.45",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Nucl. | $0.52(6)$ | $0.48(7)$ | $0.80(9)$ | $0.45(6)$ | $1.13(9)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (3-2)/CN (2-1) intensity ratio in NGC 7469 non-nuclear region",
+   "value": "0.30",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Non-nucl. | $0.33(4)$ | $0.37(5)$ | $0.76(9)$ | $0.30(4)$ | $1.11(8)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (1-0)/HCN (1-0) intensity ratio in NGC 7469 nucleus",
+   "value": "1.13",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Nucl. | $0.52(6)$ | $0.48(7)$ | $0.80(9)$ | $0.45(6)$ | $1.13(9)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) global intensity ratio in IRAS 13120",
+   "value": "0.80",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Global | $0.80(9)$ | $0.8(1)$ | $0.77(9)$ | $0.53(8)$ | $1.7(1)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (1-0)/HCN (1-0) global intensity ratio in IRAS 13120",
+   "value": "1.7",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Global | $0.80(9)$ | $0.8(1)$ | $0.77(9)$ | $0.53(8)$ | $1.7(1)$ | $0.8(1)$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) log-log slope in NGC 3256",
+   "value": "1.53",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $\\frac{\\text{HCN (3-2)}}{\\text{HCN (1-0)}}$ | $1.53\\pm0.07$ | $1.55\\pm0.05$ | $0.84\\pm0.06$ | $1.46\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) log-log slope in NGC 7469",
+   "value": "1.55",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $\\frac{\\text{HCN (3-2)}}{\\text{HCN (1-0)}}$ | $1.53\\pm0.07$ | $1.55\\pm0.05$ | $0.84\\pm0.06$ | $1.46\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (3-2)/HCN (1-0) log-log slope in IRAS 13120",
+   "value": "0.84",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $\\frac{\\text{HCN (3-2)}}{\\text{HCN (1-0)}}$ | $1.53\\pm0.07$ | $1.55\\pm0.05$ | $0.84\\pm0.06$ | $1.46\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN (4-3)/HCN (3-2) log-log slope in NGC 7469",
+   "value": "1.34",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $\\frac{\\text{HCN (4-3)}}{\\text{HCN (3-2)}}$ | $0.99\\pm0.04$ | $1.34\\pm0.05$ | $1.3\\pm0.1$ | $1.12\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (2-1)/CN (1-0) average log-log slope across all three galaxies",
+   "value": "0.93",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Consistency in the CN ratios",
+     "quote": "The slopes for the CN (2-1)/CN (1-0) ratio are consistent within one standard deviation for all three galaxies in our sample, with an average value of $0.93\\pm0.05$ (Figure [\\[fig:HCN_and_CN_galax_comps\\]](#fig:HCN_and_CN_galax_comps)b)."
+    }
+   ]
+  },
+  {
+   "quantity": "CN (3-2)/CN (2-1) log-log slope in NGC 7469",
+   "value": "1.55",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $\\frac{\\text{CN (3-2)}}{\\text{CN (2-1)}}$ | $1.26\\pm0.05$ | $1.55\\pm0.04$ | $1.11\\pm0.04$ | $1.33\\pm0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CN (1-0)/HCN (1-0) log-log slope in NGC 3256",
+   "value": "1.49",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $\\frac{\\text{CN (1-0)}}{\\text{HCN (1-0)}}$ | $1.49\\pm0.06$ | $1.26\\pm0.05$ | $0.83\\pm0.05$ | $1.25\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "RADEX N_CN/N_HCN column density ratio for NGC 3256 non-nuclear pixels",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The CN/HCN intensity ratio as a probe of radiation field",
+     "quote": "Using a gas temperature of $40$ K, an H$_2$ number density of $10^7$ cm$^{-3}$, and a line width of $10$ km s$^{-1}$, we reproduce CN (1-0)/HCN (1-0) $\\sim1$ in the non-nuclear pixels of NGC 3256 with a column density ratio of N~CN~/N~HCN~ $\\sim10$."
+    }
+   ]
+  },
+  {
+   "quantity": "RADEX N_CN/N_HCN column density ratio for NGC 3256 northern nucleus",
+   "value": "~24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The CN/HCN intensity ratio as a probe of radiation field",
+     "quote": "The intensity ratio of CN (1-0)/HCN (1-0) $\\sim1.7$ in the northern nucleus of NGC 3256 is reproduced with N~CN~/N~HCN~ $\\sim24$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ExactCASA versions used for raw uv calibration of each of the 11 ALMA projects",
+  "Exact UVTAPER values used in TCLEAN for each line and galaxy",
+  "Ambiguity in NGC 7469 processing text where CN (3-2) is listed under both robust = 0.5 and natural weighting (while CN (2-1) weighting is omitted)",
+  "Specific frequency/velocity ranges of line-free channels used for UVCONTSUB and IMSTAT, and exact velocity integration ranges (referenced as Table B1/imaging_vel_props in the appendix, which is omitted from the main text)",
+  "Exact AUTO-MULTITHRESH sub-parameters (e.g. sidelobethreshold, noisethreshold, lownoisethreshold)"
+ ],
+ "missing_for_reproduction": [
+  "Exact UVTAPER parameters per line and galaxy in TCLEAN",
+  "Velocity integration windows (Table B1 / tab:imaging_vel_props referenced as being in the Appendix, which is not included in the provided text)",
+  "Full slope and intercept table (Table B3 / tab:slopes_full) and full measured ratio table (tab:measured_ratios_full) from the Appendix",
+  "Resolution of the typo in Section 2.2.2 regarding whether CN (2-1) or CN (3-2) used robust = 0.5 vs natural weighting in NGC 7469"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "All 11 ALMA project codes are explicitly tabulated, CASA version (5.6.1), UVRANGE cut-offs, pixel sizes, channel widths, target beam sizes, masking thresholds (2 sigma cleaning, 3.5 sigma moment 0), and regression software (Linmix) are clearly specified. Minor deductions for omitted exact UVTAPER values, a typo in NGC 7469 weighting, and velocity integration windows being in an omitted appendix.",
+ "rediscovery_reason": "All raw ALMA data are public in the archive with exact project IDs provided, the uv-matching, imaging, and moment-0 masking procedures are well-defined, and the primary results are quantitative regional intensity ratios and log-log regression slopes.",
+ "source_card": "cards/2021MNRAS.504.5863L/sonnet/card.md"
+}

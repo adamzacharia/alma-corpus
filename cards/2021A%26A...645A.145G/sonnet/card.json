@@ -1,0 +1,1237 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021A&A...645A.145G",
+  "title": "ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). V. Sample, overview, and demography of disk molecular emission",
+  "year": 2021,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Garufi, A.",
+  "n_authors": 12,
+  "arxiv_id": "2012.07667",
+  "doi": "10.1051/0004-6361/202039483",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00846.S",
+   "2018.1.01037.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "This paper is the fifth of the ALMA-DOT series and is devoted to the analysis of the H$_2$CO, CS, and CN from the entire sample."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "DG Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "121.2 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| DG Tau          |    K7    |        0.3         |  121.2   | a, 1 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 (Gaia2018)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| DG Tau          |    K7    |        0.3         |  121.2   | a, 1 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "DG Tau B",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| DG Tau B        |    \\-    |        1.1         |  140    | b, 2 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Garufi2020b",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| DG Tau B        |    \\-    |        1.1         |  140    | b, 2 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HL Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "147.3 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HL Tau          |    K3    |        2.1         |  147.3   | c, 3 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Galli2018",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HL Tau          |    K3    |        2.1         |  147.3   | c, 3 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Haro 6-13",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "130.4 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Haro 6-13       |    K5    |        1.0         |  130.4   | d, 1 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 (Gaia2018)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Haro 6-13       |    K5    |        1.0         |  130.4   | d, 1 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "IRAS 04302+2247",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "161 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "4, based on the distance to the parent molecular cloud L1536 (cite: Galli2019)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "distance to parent cloud L1536 (Galli2019)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "4, based on the distance to the parent molecular cloud L1536 (cite: Galli2019)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "T Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "144.3 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| T Tau N, Sa, Sb | K0, -, M |     2, 2, 0.5      |  144.3   | f, 1 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 (Gaia2018)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| T Tau N, Sa, Sb | K0, -, M |     2, 2, 0.5      |  144.3   | f, 1 |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the spatial distribution and column density of H2CO, CS, CN and weaker molecules (H2CS, CH3OH, HDO) in young, embedded Class I disks in Taurus, and which molecules trace the gaseous disk?",
+    "evidence": [
+     {
+      "loc": "Survey goals and sample",
+      "quote": "The main goal of this survey is a comprehensive description of the molecular content of young ($\\lesssim1$ Myr) disks and of the steps in the pathway of synthesis of increasingly complex molecules."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00846.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2016.1.00846.S and ADS/JAO.ALMA#2018.1.01037.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01037.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2016.1.00846.S and ADS/JAO.ALMA#2018.1.01037.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (all targets); Band 5 for DG Tau (SO2/SO, not analysed here)",
+    "evidence": [
+     {
+      "loc": "Survey goals and sample",
+      "quote": "Also, ALMA-DOT includes Band 5 observations of DG Tau, which enables the probing of five SO$_2$ lines and one SO line."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "12 SPWs with 0.244 MHz resolution (Cycle 6)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "The correlator setup included 12 SPWs with 0.244 MHz resolution."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "2-1",
+     "rest_frequency": "230.53800 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{12}$CO | 2$-$1                                                       | 230.53800        | 17           | 0.02          |"
+      }
+     ]
+    },
+    {
+     "species": "o-H2CO",
+     "transition": "3(1,2)-2(1,1)",
+     "rest_frequency": "225.69777 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| o-H$_2$CO | $3_{1,2}-2_{1,1}$                                           | 225.69777        | 33           | 43.5          |"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "5-4",
+     "rest_frequency": "244.93555 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| CS        | 5$-$4                                                       | 244.93555        | 35           | 19.1          |"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "2-1 hyperfine components (main: 5/2-3/2, 7/2-5/2)",
+     "rest_frequency": "226.87478 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 2$-$1, $\\frac{5}{2}-\\frac{3}{2}$, $\\frac{7}{2}-\\frac{5}{2}$ | 226.87478        | 16           | 6.7           |"
+      }
+     ]
+    },
+    {
+     "species": "o-H2CS",
+     "transition": "7(1,6)-6(1,5)",
+     "rest_frequency": "244.04850 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| o-H$_2$CS | $7_{1,6}-6_{1,5}$                                           | 244.04850        | 60           | 55.9          |"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "5(0,5)-4(0,4) (A)",
+     "rest_frequency": "241.79143 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $5_{0,5}-4_{0,4}$ (A)                                       | 241.79143        | 35           | 16.2          |"
+      }
+     ]
+    },
+    {
+     "species": "HDO",
+     "transition": "3(1,2)-2(2,1)",
+     "rest_frequency": "225.89672 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $3_{1,2}-2_{2,1}$                                           | 225.89672        | 168          | 0.7           |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15 m to 1.4 km (Cycle 6)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "in an extended configuration with baselines ranging from 15 m to 1.4 km"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.11-0.17'' (Cycle 4); 0.26-0.34'' (Cycle 6)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "The clean beam size of the 2018 observing run spans from 0.26$''$ to 0.34$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~1.3'' (Cycle 4); ~5'' (~700 au) (Cycle 6)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "a maximum recoverable scale of $\\sim1.3\\ensuremath{''}$"
+     },
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "The largest angular scale is $\\sim$5$''$ ($\\sim$700 au)."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 0.6-1.3 mJy/beam (Cycle 4); 0.9-2.2 mJy/beam line cubes (Cycle 6)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "the rms of the resulting line cubes from 0.9 to 2.2 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~104 to ~113 minutes total integration (Cycle 6)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "The total integration time spans from $\\sim$104 to $\\sim$113 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Cycle 4 (August 2017) for DG Tau, DG Tau B; Cycle 6 (28 October 2018) for the others",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "The Cycle 6 observations of HL Tau, T Tau, IRAS04302, and Haro 6-13 were obtained on October 28, 2018"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Molecular line parameters (frequency, Eup, Sij mu^2) from CDMS",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "All parameters are from CDMS (cite: Mueller2005)."
+       }
+      ]
+     },
+     "citation": "(cite: Mueller2005)"
+    },
+    {
+     "what": {
+      "value": "Stellar masses and distances of targets",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "References for the distance: 1, (cite: Gaia2018); 2, (cite: Garufi2020b); 3, (cite: Galli2018)"
+       }
+      ]
+     },
+     "citation": "Isella2009; deValon2020; Yen2019; Schaefer2009; Guilloteau2014; Koehler2016; Gaia2018"
+    },
+    {
+     "what": {
+      "value": "H2CO ortho-to-para ratio 1.8-2.8 and H2CS ortho-to-para 3.0; CH3OH A/E ratio of one",
+      "evidence": [
+       {
+        "loc": "4.4 Line brightness and column density",
+        "quote": "assuming an ortho-to-para ratio of 1.8$-$2.8 (cite: Guzman2018) and 3.0 (cite: Legal2019), respectively."
+       }
+      ]
+     },
+     "citation": "(cite: Guzman2018); (cite: Legal2019); (cite: Carney2019)"
+    },
+    {
+     "what": {
+      "value": "Optical extinction A_V of sources and DSHARP CO moment 0 maps for comparison of central depression",
+      "evidence": [
+       {
+        "loc": "5.2 Origin of the inner depression",
+        "quote": "we compared the minimum flux recorded at the center of the CO moment 0 maps with the optical extinction $A_{\\rm V}$ retrieved from the literature."
+       }
+      ]
+     },
+     "citation": "(cite: Andrews2018)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard procedure in CASA",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The data reduction followed the standard procedure using the Common Astronomy Software Applications package (cite: McMullin2007) version 4.7.2."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "version 4.7.2"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase self-cal on continuum, solution intervals down to 10 s; same table applied to all SPWs",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "solution intervals of the self-calibration could be decreased down to 10 sec without rejecting any solution."
+      },
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The same self-calibration table was applied to all SPWs."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "TCLEAN, interactive",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "Continuum images and spectral cubes were produced using TCLEAN interactively"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs 0.0 (2.0 for faint CH3OH and SO2 maps)",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The maps presented in this work are obtained using Briggs weighting of 0.0 and setting a channel width of 0.2 km s$^{-1}$."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "manual mask on visible signal, iterated until residuals show no significant emission",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "by applying a manually selected mask on the visible signal and iterating until the visual inspection of the residuals revealed no significant source emission."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "flat interpolation of neighbouring line-free continuum",
+     "evidence": [
+      {
+       "loc": "5.1 Line optical depth",
+       "quote": "the ground of the line is assumed to be a flat interpolation of the neighboring continuum."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.26-0.34'' (2018 run)",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The clean beam size of the 2018 observing run spans from 0.26$''$ to 0.34$''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.9-2.2 mJy/beam (2018 line cubes)",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "the rms of the resulting line cubes from 0.9 to 2.2 mJy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Cycle 4 observations and reduction of DG Tau and DG Tau B",
+      "evidence": [
+       {
+        "loc": "3 Observations and data reduction",
+        "quote": "The Cycle 4 observations of DG Tau and DG Tau B taken in August 2017 were presented by (cite: Podio2019) and (cite: Garufi2020b), respectively."
+       }
+      ]
+     },
+     "from_reference": "(cite: Podio2019); (cite: Garufi2020b)"
+    },
+    {
+     "what": {
+      "value": "Opening angle of IRAS04302 H2CO emission measured directly",
+      "evidence": [
+       {
+        "loc": "4.3.1 Vertical distribution",
+        "quote": "we directly measured the opening angle between the midplane and the height $z$ with maximized H$_2$CO flux (cite: Podio2020)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Podio2020)"
+    },
+    {
+     "what": {
+      "value": "Shifted-ellipse method for z/r from near-IR work",
+      "evidence": [
+       {
+        "loc": "4.3.1 Vertical distribution",
+        "quote": "This method is routinely adopted for near-IR observations (cite: deBoer2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: deBoer2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Spatial pixel/cell size and image size for tclean",
+    "Line-free channels used for continuum subtraction",
+    "Clean threshold, deconvolver and number of iterations",
+    "Flux calibrator for Cycle 6 and flux scale uncertainty",
+    "Exact formulae/code for the LTE column density calculation, including partition functions",
+    "Beam-dilution/aperture treatment and uncertainty estimation for fluxes",
+    "Details of the stacking (centering, weighting) of undetected CH3OH and HDO",
+    "Source of A_V values for Fig. 5",
+    "Spectral setup of Cycle 4 data (given only in earlier papers)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, self-calibrate and image",
+    "method": {
+     "value": "Standard CASA calibration, phase self-calibration on continuum applied to line SPWs, interactive tclean with Briggs 0.0 and 0.2 km/s channels",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The maps presented in this work are obtained using Briggs weighting of 0.0 and setting a channel width of 0.2 km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "self-cal solint down to 10 s; Briggs 0.0; 0.2 km/s channels",
+      "evidence": [
+       {
+        "loc": "3 Observations and data reduction",
+        "quote": "solution intervals of the self-calibration could be decreased down to 10 sec without rejecting any solution."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection of residuals",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "iterating until the visual inspection of the residuals revealed no significant source emission."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Constrain disk geometry and emission height",
+    "method": {
+     "value": "Gaussian fit to continuum for centroid, PA, i; z/r from shift of ring ellipse along minor axis, visually matched to synthetic ellipse",
+     "evidence": [
+      {
+       "loc": "4.3.1 Vertical distribution",
+       "quote": "First, we constrained the disk centroid, position angle (PA), and inclination, $i,$ with a Gaussian fit to the continuum emission."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "z/r increased until visual fit of observed substructure",
+      "evidence": [
+       {
+        "loc": "4.3.1 Vertical distribution",
+        "quote": "The offset of this ellipse along the minor axis increases as we increase the $z/r$ and this is done until we visually fit the observed substructure with the synthetic ellipse."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Substructures azimuthally symmetric",
+      "evidence": [
+       {
+        "loc": "4.3.1 Vertical distribution",
+        "quote": "Assuming that all apparent substructures are azimuthally symmetric, we applied this method"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "visual, no formal fit",
+     "evidence": [
+      {
+       "loc": "4.3.1 Vertical distribution",
+       "quote": "The offset of this ellipse along the minor axis increases as we increase the $z/r$ and this is done until we visually fit the observed substructure with the synthetic ellipse."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistency with higher resolution images (HL Tau)",
+     "evidence": [
+      {
+       "loc": "4.3.1 Vertical distribution",
+       "quote": "The results are consistent with those obtained from higher resolution images such as that of HL Tau (cite: ALMA2015)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Radial profiles and disk sizes",
+    "method": {
+     "value": "Azimuthal averaging over annuli with PA, i, z/r; outer radius defined as enclosing 90% of total flux",
+     "evidence": [
+      {
+       "loc": "4.3.2 Radial distribution",
+       "quote": "we defined the outer radius of a certain type of emission as the separation from the star enclosing 90% of the total flux in the image."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "gas outer radius from H2CO",
+      "evidence": [
+       {
+        "loc": "4.3.2 Radial distribution",
+        "quote": "To constrain the gas outer radius, we used the H$_2$CO emission since this line is the least affected by the surrounding envelope"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Integrated flux and column density",
+    "method": {
+     "value": "Moment 0 integrated over regions from Table 3; optically thin LTE column density for T = 20-100 K",
+     "evidence": [
+      {
+       "loc": "4.4 Line brightness and column density",
+       "quote": "Our poor knowledge of the gaseous temperature was addressed by adopting values between 20 K and 100 K and determining the range of column densities for this range of temperatures."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "ortho-to-para H2CO 1.8-2.8; H2CS 3.0; CH3OH A/E = 1",
+      "evidence": [
+       {
+        "loc": "4.4 Line brightness and column density",
+        "quote": "the ratio between these types is one (cite: Carney2019)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin emission and LTE",
+      "evidence": [
+       {
+        "loc": "4.4 Line brightness and column density",
+        "quote": "The line brightness can be converted into column density in the scenario of optically thin emission and local thermodynamic equilibrium (LTE)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Critical densities < 2e6 cm-3 support LTE; optical thinness checked via brightness temperature and literature",
+     "evidence": [
+      {
+       "loc": "5.1 Line optical depth",
+       "quote": "Thus, in absence of better constraints, we assume that the H$_2$CO and CS lines are optically thin."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Test origin of inner depression",
+    "method": {
+     "value": "Compare minimum central CO moment 0 flux with A_V for ALMA-DOT and DSHARP sources normalised to 0.1'' beam and 140 pc",
+     "evidence": [
+      {
+       "loc": "5.2 Origin of the inner depression",
+       "quote": "after normalizing each source to the same beam size (0.1$''$$\\times$0.1$''$) and distance (140 pc)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Stack undetected lines",
+    "method": {
+     "value": "Stack CH3OH and HDO maps centered on continuum, smooth by 1''",
+     "evidence": [
+      {
+       "loc": "5.5 Weak lines",
+       "quote": "after centering each map on the center of the continuum emission and smoothing the resulting map by 1$''$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Data reduction, self-calibration, tclean imaging",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The data reduction followed the standard procedure using the Common Astronomy Software Applications package (cite: McMullin2007) version 4.7.2."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Molecular line parameters",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The molecular parameters are taken from the Cologne Database of Molecular Spectroscopy (CDMS) (cite: Mueller2005)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Gas-to-dust outer radius ratio (H2CO)",
+    "value": "1.6",
+    "uncertainty": "scatter < 0.1",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3.2 Radial distribution",
+      "quote": "the ratios between the measurements from these two components are surprisingly similar (1.6 with a scatter of less than 0.1)"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean column densities H2CO, CS, CN",
+    "value": "7.5, 2.0, 3.0",
+    "uncertainty": "not stated",
+    "units": "1e13 cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.4 Line brightness and column density",
+      "quote": "with their averages of \\[7.5, 2.0, 3.0\\] $\\times\\ 10^{13}$ cm$^{-2}$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "CS/H2CO column density ratio range",
+    "value": "0.2-0.6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.4 Column densities",
+      "quote": "The range of CS/H$_2$CO ratios across the targets is impressively small (from 0.2 to 0.6)"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CS/H2CO ratio in HL Tau",
+    "value": "0.4-0.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.4 Column densities",
+      "quote": "this ratio is 0.4$-$0.7 in HL Tau, 0.1$-$0.2 in IRAS04302"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH/H2CO ratio in IRAS04302",
+    "value": "0.5-0.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.4 Column densities",
+      "quote": "the derived CH$_3$OH/H$_2$CO ratio constrained in IRAS04302 (0.5$-$0.7)"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked CH3OH average column density",
+    "value": "1.5-5",
+    "uncertainty": "not stated",
+    "units": "1e13 cm-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.5 Weak lines",
+      "quote": "we constrained the average column density of CH$_3$OH from DG Tau, DG Tau B, HL Tau, and Haro 6-13 as $[1.5-5]\\times10^{13}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked CH3OH peak significance",
+    "value": "2.5",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.5 Weak lines",
+      "quote": "The CH$_3$OH flux is maximized in the center with a peak at 2.5$\\sigma$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO outer radius of gas emission (DG Tau, DG Tau B, HL Tau, Haro 6-13, IRAS04302)",
+    "value": "120, 240, 250, 150, 390",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| HL Tau | 138 | 47 | 0.16 | 150 | 55 | 250 | 1.7 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Asymmetry of CS vs H2CO in HL Tau",
+    "value": "2.6 vs 1.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3.3 Azimuthal distribution",
+      "quote": "(a degree of 2.6 versus 1.5)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CS and H2CO trace the gaseous disk with little or no contamination, H2CO being the best; CN does not trace the disk and appears as a faint ring beyond the dust disk; 12CO is contaminated by outflow/envelope.",
+    "evidence": [
+     {
+      "loc": "6 Summary and conclusions",
+      "quote": "Both CS and H$_2$CO are good tracers of the gaseous disk having little (the CS) or no (the H$_2$CO) contamination from the surrounding medium."
+     }
+    ]
+   },
+   {
+    "value": "All lines show inner depression, partly explained by foreground absorption and continuum over-subtraction, but likely an actual column density decrease in the inner ~50 au.",
+    "evidence": [
+     {
+      "loc": "6 Summary and conclusions",
+      "quote": "The dimmed flux in the inner $\\sim$50 au reflects a probable decrease in column density"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Which molecules trace the disk of embedded Class I sources?",
+    "experiment": "Moment 1 maps and PV diagrams of CS, H2CO, CN",
+    "result": "H2CO shows no envelope/outflow contamination; CS little; CN kinematics impracticable",
+    "finding": "H2CO and CS are good disk tracers, CN is not",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Spatial distribution of detectable emission",
+      "quote": "suggesting that this molecule is an optimal tracer of the gaseous disk structure in these sources."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the gas-to-dust size ratio imply dust radial drift?",
+    "experiment": "90% flux radii for H2CO and continuum",
+    "result": "Constant ratio ~1.6",
+    "finding": "Ratio probably reflects different optical depths; no drift indicated",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Summary and conclusions",
+      "quote": "The constancy and the amount of the ratio suggest that this is due to the different optical depths of the two components and no radial drifty is indicated."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the inner depression of molecular emission real?",
+    "experiment": "Radial profiles, spectra and A_V comparison",
+    "result": "Negative fluxes at Vsys, correlation with extinction, but emission also lacking in wings",
+    "finding": "Mix of foreground absorption and probable true column density decrease",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.2 Origin of the inner depression",
+      "quote": "This behavior is suggestive of an actual decrease in molecular emission at the inner edge of the gaseous emission"
+     }
+    ]
+   },
+   {
+    "hypothesis": "How do H2CO and CS column densities compare with more evolved disks?",
+    "experiment": "Column densities under optically thin LTE compared with literature",
+    "result": "H2CO > CS by >3x on average, unlike more evolved sources",
+    "finding": "Possible chemical evolution of H2CO vs CS",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Summary and conclusions",
+      "quote": "The column density of H$_2$CO is routinely larger than that of CS (more than three times larger, on average)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Resolve disk from envelope and outflow at ~0.3'' angular resolution; Band 6 covers many lines",
+    "evidence": [
+     {
+      "loc": "Survey goals and sample",
+      "quote": "This goal requires us to resolve structures of a few hundred au, which translates, at the distance of Taurus, into an angular resolution on the order of 0.3$''$."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Moderate resolution and symmetry assumption limit z/r accuracy; optical thinness uncertain",
+     "evidence": [
+      {
+       "loc": "4.3.1 Vertical distribution",
+       "quote": "We however caution that the moderate angular resolution, the small size of the rings (in particular in Haro 6-13), and the assumption of azimuthally symmetric structures (cite: Podio2019) limit the accuracy of our constraints."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Column densities rely on optically thin LTE with a wide assumed temperature range, giving factor-of-several ranges",
+    "Visual fitting of z/r has no formal uncertainties",
+    "Heterogeneous resolution and recoverable scale between Cycle 4 and Cycle 6 data complicate comparisons",
+    "Continuum over-subtraction and absorption affect inner-disk results",
+    "Interactive cleaning limits exact reproducibility"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data cited in acknowledgements (2016.1.00846.S, 2018.1.01037.S)",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00846.S and ADS/JAO.ALMA#2018.1.01037.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Cell/image size, clean thresholds, mask details",
+    "Line-free channel selection",
+    "Column density code and partition functions",
+    "Flux calibrator and flux scale",
+    "Stacking procedure details"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for two projects",
+   "score_inferred": 3,
+   "score_reason": "Public data and standard CASA steps, but many imaging parameters unstated and key analyses are visual or inherited from companion papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key steps (z/r, column density) rely on visual fitting and unstated details; partial numeric results only."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: McMullin2007)",
+     "why": "CASA"
+    },
+    {
+     "citation": "(cite: deBoer2016)",
+     "why": "z/r from shifted ellipse method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Podio2019); (cite: Podio2020b)",
+     "why": "DG Tau ALMA-DOT"
+    },
+    {
+     "citation": "(cite: Garufi2020b)",
+     "why": "DG Tau B"
+    },
+    {
+     "citation": "(cite: Podio2020)",
+     "why": "IRAS 04302+2247"
+    },
+    {
+     "citation": "(cite: Codella2020)",
+     "why": "H2CS"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-DOT",
+    "DSHARP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4b195b94cb59db14ca4820d0a560875f",
+  "batch_id": "msgbatch_0184TVS5zAE5RP75JHcHhf4m",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:28:58",
+  "usage": {
+   "input_tokens": 37327,
+   "output_tokens": 10876,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.092314,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 85,
+  "quotes_ok": 85,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 94,
+   "stated": 60,
+   "rate": 0.638
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:53",
+  "custom_id": "repair-sonnet-e80b239ac7b3b65c3c9fed91dd898804",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "The offset of this ellipse along the minor axis increases as we increase the $z/r$ and this is done until we visually fit the observed substructure with the synthetic ellipse."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

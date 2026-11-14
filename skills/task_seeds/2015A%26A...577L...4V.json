@@ -1,0 +1,267 @@
+{
+ "bibcode": "2015A&A...577L...4V",
+ "title": "Resolving the stellar activity of the Mira AB binary with ALMA",
+ "year": 2015,
+ "doi": "10.1051/0004-6361/201526186",
+ "arxiv_id": "1503.07647",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What are the size, shape, flux densities and spectral indices of Mira A and Mira B at mm wavelengths, and what do they imply about the extended atmosphere, stellar activity and the wind around Mira B?",
+ "alma_project_codes": [
+  "2011.0.00014.SV"
+ ],
+ "data": {
+  "bands": "Band 3 (~94.6 GHz) and Band 6 (~228.7 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3: 72x64 mas and 68x57 mas; Band 6: 34x24 mas",
+  "sensitivity": "rms ~40 uJy/beam (Band 3), ~130 uJy/beam (Band 6)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Flux density at 345 GHz and CO/continuum Cycle 1 ALMA data of Mira",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the flux density at 345 GHz (cite: ramsetal14) are presented in Fig. [3](#fig:sed)"
+     }
+    ]
+   },
+   "citation": "(cite: ramsetal14)"
+  },
+  {
+   "what": {
+    "value": "VLA flux densities and 43 GHz measurements used in SED",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The VLA values, the ALMA values from this work and the flux density at 345 GHz (cite: ramsetal14) are presented in Fig. [3](#fig:sed)."
+     }
+    ]
+   },
+   "citation": "(cite: mattkaro06); (cite: reidment07)"
+  },
+  {
+   "what": {
+    "value": "Calibrator flux densities and spectral indices from the ALMA calibrator catalog",
+    "evidence": [
+     {
+      "loc": "Flux density calibrators",
+      "quote": "we present the calibrators, and their adopted flux densities and spectral indices from the ALMA calibrator catalog."
+     }
+    ]
+   },
+   "citation": "ALMA calibrator catalog"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate continuum data and image",
+   "method": "Self-calibration on averaged continuum SPWs; images made with clean, Briggs 0.5, MFS with 2 Taylor terms in Band 3",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit source size and shape in uv-plane",
+   "method": "uv-fitting of delta function, elliptical/circular Gaussian and disc models for Mira A and B per epoch",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive spectral indices and brightness temperatures",
+   "method": "Spectral index within Band 3 from MFS/uv-fits and between bands from flux densities; Tb for uniform disc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance 92 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare with radio photosphere and wind models",
+   "method": "Compare SED/spectral index and Tb with Reid & Menten model and expected Mira B wind emission",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Ionized cavity gas temperature T=10^4 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mira A spectral index within Band 3",
+   "value": "1.71",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "from 1.71$\\pm$0.05 within Band 3 to $1.54\\pm0.04$ between Band 3 and 6"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A spectral index Band 3 to 6",
+   "value": "1.54",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "from 1.71$\\pm$0.05 within Band 3 to $1.54\\pm0.04$ between Band 3 and 6"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B spectral index in Band 3",
+   "value": "1.3",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The spectral index of Mira B is 1.3$\\pm$0.2 in Band 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B spectral index Band 3 to 6",
+   "value": "1.72",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "it rises to $1.72\\pm0.11$ between the bands"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A Band 3 brightness temperature",
+   "value": "~5300",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(with brightness temperature $T_b\\sim5300$ K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A Band 6 brightness temperature",
+   "value": "~2500",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\sim4.0\\times3.6$ AU in Band 6 ($T_b\\sim2500$ K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A hotspot brightness temperature",
+   "value": "~10000",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "With a size of $\\sim4.7$ mas, we find $T_b\\sim10000$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B FWHM size",
+   "value": "~26 mas (~2.4 AU)",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with a full-width half-maximum (fwhm) of $\\approx26$ mas, which corresponds to $\\sim2.4$ AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A Band 3 disc major axis (17 Oct)",
+   "value": "41.8",
+   "uncertainty": "0.4",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Oct 2014 & 94.2 & Disc & 35.03$\\pm$0.04 & 41.8$\\pm$0.4 & 1.20$\\pm$0.01 & 54$\\pm$2 & 1.73$\\pm$0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A Band 6 hotspot flux density (29 Oct)",
+   "value": "10.13",
+   "uncertainty": "0.07",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 228.67 & Gaussian & 10.13$\\pm$0.07 & 4.6$\\pm$0.5 & 1.0 & …& …"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira AB average separation",
+   "value": "0.472",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Relative astrometry",
+     "quote": "The average separation of 0.472$''$ corresponds to $43.4$ AU at a distance of $92$ pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Image size and cell size",
+  "Initial models/starting parameters for UVMULTIFIT fits and fit-selection criteria",
+  "Details of self-calibration (solints, reference antennas, number of iterations)",
+  "How brightness temperatures were computed (uniform disc assumptions, exact formula)",
+  "How spectral indices and uncertainties were derived in uv-fits",
+  "Baseline range / configuration details"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "UVMULTIFIT starting parameters and fit setup",
+  "self-cal parameters",
+  "image size/cell size"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear modelling approach with tabulated results, but many processing and fitting details are missing.",
+ "rediscovery_reason": "Data are public, uv-fitting with UVMULTIFIT is straightforward, and results are numeric in Table 1.",
+ "source_card": "cards/2015A%26A...577L...4V/sonnet/card.md"
+}

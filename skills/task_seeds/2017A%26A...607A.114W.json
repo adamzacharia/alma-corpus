@@ -1,0 +1,230 @@
+{
+ "bibcode": "2017A&A...607A.114W",
+ "title": "CO emission tracing a warp or radial flow within ≲100 au in the HD 100546 protoplanetary disk",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201731334",
+ "arxiv_id": "1710.00703",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the 12CO J=3-2 velocity field of the HD 100546 disk deviate from Keplerian rotation, indicating an inner-disk warp or radial flow?",
+ "alma_project_codes": [
+  "2011.0.00863.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.92'' x 0.38'' (37 deg) with uniform weighting",
+  "sensitivity": "rms 26 mJy/beam/channel (uniform), S/N 106"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass 2.4 Msun",
+    "evidence": [
+     {
+      "loc": "2 ALMA imaging of HD 100546",
+      "quote": "a stellar mass of $2.4 M_{\\odot}$, (cite: vandenancker98)"
+     }
+    ]
+   },
+   "citation": "(cite: vandenancker98)"
+  },
+  {
+   "what": {
+    "value": "Outer disk P.A. 146+-4 deg and inclination 44+-3 deg from continuum",
+    "evidence": [
+     {
+      "loc": "3.1 A flat emitting surface",
+      "quote": "a P.A. of $146\\degree \\pm 4\\degree$ and an inclination of $44\\degree \\pm 3\\degree$ (cite: pineda14)"
+     }
+    ]
+   },
+   "citation": "(cite: pineda14)"
+  },
+  {
+   "what": {
+    "value": "CO emitting layer opening angle ~11 deg from thermo-chemical modelling",
+    "evidence": [
+     {
+      "loc": "3.2 A flared emitting surface",
+      "quote": "suggest an opening angle $\\alpha \\approx 11\\degree$ (cite: bruderer12)"
+     }
+    ]
+   },
+   "citation": "(cite: bruderer12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-image 12CO cube and make moment maps",
+   "method": "Re-clean with uniform weighting; zeroth moment 3 sigma clip, first/second/eighth 6 sigma clip",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "pixel 0.12'', rms 26 mJy/beam/channel"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit flat and flared Keplerian surface to first-moment map",
+   "method": "Analytic line-of-sight velocity model convolved with the beam; grid search over inclination, P.A. and opening angle (coarse 5 deg then 1 deg)",
+   "software": [],
+   "key_parameters": [
+    "Inclination 20-60 deg, P.A. 120-170 deg, opening angle 0-20 deg"
+   ],
+   "assumptions": [
+    "Stellar mass 2.4 Msun; Keplerian rotation; emission from flat or double-cone surface"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit misaligned inner-disk warp model",
+   "method": "Outer disk fixed to best upper-cone model; inner flat disk with own inclination, P.A. and transition radius; coarse grid 10 deg/10 au then 2 deg/2 au",
+   "software": [],
+   "key_parameters": [
+    "inner inclination 40-90 deg, inner P.A. 40-100 deg, transition radius 40-120 au"
+   ],
+   "assumptions": [
+    "Inner disk planar and flat Keplerian"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit radial-flow model",
+   "method": "Radial velocity v_r = chi v_K inside a transition radius, flat disk inside; coarse grid 10 au/0.1 then 1 au/0.01",
+   "software": [],
+   "key_parameters": [
+    "transition radius 10-120 au; chi 0 to sqrt(2)"
+   ],
+   "assumptions": [
+    "Outer disk fixed to best upper-cone model"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate warp precession period",
+   "method": "Scaling relation from Lai 2014 / Debes 2017 for assumed companions",
+   "software": [],
+   "key_parameters": [
+    "mu_c = 0.006, r_disk = 40 au, a_c = 50 au, i_c = 80 deg"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Best-fit flat disk inclination / P.A. (metric i)",
+   "value": "36 deg / 145 deg",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Flat | \\(i\\) | 36 | 145 | 0 | 1590 | 62.1% | 0.737 | 7.23 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Best upper-cone flared model inclination / P.A. / opening angle",
+   "value": "36 / 145 / 9 deg",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 A flared emitting surface",
+     "quote": "The best-fit inclination, P.A., and opening angle are 36, 145, and 9, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Best warp model (metric i): inner inclination, P.A., transition radius",
+   "value": "80 deg, 60 deg, 90 au",
+   "uncertainty": "not stated",
+   "units": "deg, deg, au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Warped | \\(i\\) | 80 | 60 | 90 | 1722 | 67.2% | 0.387 | 4.06 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Best warp model (metrics ii & iii)",
+   "value": "84 deg, 64 deg, 100 au; peak residual 2.44 dv",
+   "uncertainty": "not stated",
+   "units": "deg, deg, au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | \\(ii\\) & (iii) | 84 | 64 | 100 | 1710 | 66.4% | 0.350 | 2.44 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial flow best fit (metric i): transition radius, chi",
+   "value": "54 au, 1.23",
+   "uncertainty": "not stated",
+   "units": "au, dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A radial flow",
+     "quote": "Metric (i) favours a radial component to the flow within a radius of 54 au and a velocity scaling factor of $\\chi = 1.23$ which is close to the free-fall velocity."
+    }
+   ]
+  },
+  {
+   "quantity": "Warp precession period for companion at 50 au",
+   "value": "1940",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Is the inner disk warped?",
+     "quote": "results in a precession period of 1940 yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Warp precession period for companion at 10 au",
+   "value": "111",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Is the inner disk warped?",
+     "quote": "leads to a precession period of 111 yr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Gaia distance value used for converting angular to au",
+  "Source coordinates / phase centre",
+  "Spectral setup details and calibrators (only in Paper I)",
+  "Exact clean parameters (niter, threshold, mask) for the uniform-weighted cube",
+  "Pixel masking criterion yielding the 2562 unmasked first-moment pixels",
+  "Moment-map generation code and model code are not given",
+  "Velocity resolution relation between 0.15 km/s channels and delta v = 0.21 km/s"
+ ],
+ "missing_for_reproduction": [
+  "Gaia distance value",
+  "Model code not released",
+  "Exact clean parameters and moment-map masks",
+  "Calibration details only in Paper I"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple grid models with full parameter ranges, but the code, distance and several imaging details are missing, and calibration is deferred to Paper I.",
+ "rediscovery_reason": "Public Cycle 0 data, analytic grid models with stated ranges and numeric best fits in tables.",
+ "source_card": "cards/2017A%26A...607A.114W/sonnet/card.md"
+}

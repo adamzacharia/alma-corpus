@@ -1,0 +1,1205 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2026ApJ..1001..120X",
+  "title": "Disk Wind Feedback from High-mass Protostars. V. Application of Multimodal Machine Learning to Characterize Outflow Properties",
+  "year": 2026,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Xu, Duo",
+  "n_authors": 5,
+  "arxiv_id": "2601.21100",
+  "doi": "10.3847/1538-4357/ae50fa",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01454.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Our model, trained on synthetic ALMA observations generated from 3D magnetohydrodynamic simulations, utilizes a cross-attention fusion mechanism to integrate morphological and kinematic features with probabilistic uncertainty estimation."
+   },
+   {
+    "loc": "Conclusions",
+    "quote": "The framework was trained and validated on synthetic observations and successfully applied to real ALMA"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "G35.20-0.74N (G35.20)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "2.2 kpc",
+      "evidence": [
+       {
+        "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+        "quote": "Their distances are 2.2 kpc, 8.4 kpc, and 2.1 kpc, respectively."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "G45.47+0.05 (G45.47)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "8.4 kpc",
+      "evidence": [
+       {
+        "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+        "quote": "Their distances are 2.2 kpc, 8.4 kpc, and 2.1 kpc, respectively."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "G339.88-1.26 (G339.88)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "2.1 kpc",
+      "evidence": [
+       {
+        "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+        "quote": "Their distances are 2.2 kpc, 8.4 kpc, and 2.1 kpc, respectively."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can a multi-modal deep learning model using CO spatial and spectral information infer protostellar mass, inclination and position angle of high-mass protostellar outflows, and how does it behave on real ALMA data?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We present a multi-modal deep learning framework that jointly leverages spatial and spectral information from CO observations to infer protostellar mass, inclination, and position angle"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01454.S",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "obtained with ALMA in the C36-3 configuration in 2016 (project ID: 2015.1.01454.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "The $^{12}$CO (2-1) data were obtained with ALMA"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C36-3",
+    "evidence": [
+     {
+      "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+      "quote": "obtained with ALMA in the C36-3 configuration in 2016 (project ID: 2015.1.01454.S)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15 m to 463 m",
+    "evidence": [
+     {
+      "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+      "quote": "with baselines ranging from 15 m to 463 m and an on-source integration time of 3.5 minutes per target"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "major axes 0.87'', 0.90'', 0.93''; minor axes 0.83'', 0.84'', 0.74'' (G35.20, G45.47, G339.88)",
+    "evidence": [
+     {
+      "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+      "quote": "The synthesized beams have major axes of 0.87$''$, 0.90$''$, and 0.93$''$, and minor axes of 0.83$''$, 0.84$''$, and 0.74$''$ for G35.20, G45.47, and G339.88, respectively."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "3.5 minutes per target",
+    "evidence": [
+     {
+      "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+      "quote": "with baselines ranging from 15 m to 463 m and an on-source integration time of 3.5 minutes per target"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016",
+    "evidence": [
+     {
+      "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+      "quote": "obtained with ALMA in the C36-3 configuration in 2016 (project ID: 2015.1.01454.S)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SED-fitting protostellar masses and inclinations for the three sources, used for comparison with the ML estimates",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison with Previous Estimates",
+        "quote": "estimated protostellar masses of 13-28 $M_\\odot$ for G35.20, 23-53 $M_\\odot$ for G45.47, and 11-42 $M_\\odot$ for G339.88 based on SED fitting"
+       }
+      ]
+     },
+     "citation": "(cite: 2023ApJ...942....7F)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "3D ideal MHD disk wind simulations of a massive protostar (Staff et al. 2023, Paper II), same snapshots as Paper III, protostellar masses 2, 4, 8, 12, 16, 20, 24 Msun",
+     "evidence": [
+      {
+       "loc": "2.1 Magnetohydrodynamics Simulations",
+       "quote": "We utilize the 3D ideal MHD simulations from (cite: 2023ApJ...947...40S), which model a disk wind outflow from a massive protostar."
+      },
+      {
+       "loc": "2.1 Magnetohydrodynamics Simulations",
+       "quote": "we adopt the same simulation snapshots as those used by (cite: 2024ApJ...966..117X)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard pipeline calibration in CASA",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "After standard pipeline calibration, self-calibration using the continuum was applied to the CO line data"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "self-calibration using the continuum applied to the CO line data",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "After standard pipeline calibration, self-calibration using the continuum was applied to the CO line data"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean in CASA",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "imaging was carried out with the tclean task using Briggs weighting with robust = 0.5"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "imaging was carried out with the tclean task using Briggs weighting with robust = 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Full observational details of the real ALMA data deferred to original publications",
+      "evidence": [
+       {
+        "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+        "quote": "We refer readers to the original publications for full observational details."
+       }
+      ]
+     },
+     "from_reference": "original publications of the sources (cite: 2022ApJ...936...68Z; 2019ApJ...886L...4Z; 2019ApJ...873...73Z)"
+    },
+    {
+     "what": {
+      "value": "Simulation setup, code and parameters",
+      "evidence": [
+       {
+        "loc": "2.1 Magnetohydrodynamics Simulations",
+        "quote": "A comprehensive description of the MHD simulation setup, code, and parameters can be found in (cite: 2023ApJ...947...40S)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2023ApJ...947...40S)"
+    },
+    {
+     "what": {
+      "value": "Dust temperature calculation for the radiative transfer",
+      "evidence": [
+       {
+        "loc": "2.2 Synthetic Observations",
+        "quote": "dust temperatures are calculated as described in (cite: 2024ApJ...966..117X)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024ApJ...966..117X)"
+    },
+    {
+     "what": {
+      "value": "Simulated ALMA observing setup (C36-3 configuration, 210 s integration) matched to the real observations; insensitivity to distance supported by Paper III",
+      "evidence": [
+       {
+        "loc": "2.2 Synthetic Observations",
+        "quote": "making the training process largely insensitive to distance, as also supported by (cite: 2024ApJ...966..117X)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024ApJ...966..117X)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Self-calibration solution intervals, number of iterations and reference channels for the real ALMA CO data",
+    "Line-free channels / continuum subtraction, channel width, cell size, image size, cleaning threshold and masks for the tclean imaging of the real data",
+    "Systemic velocity (v_lsr) adopted for each real source and the velocity cutoffs used to make red/blue integrated-intensity maps from real data",
+    "CASA version and pipeline version",
+    "Calibrators and flux scale; ALMA band and spectral setup for 2015.1.01454.S",
+    "Sky coordinates of the three targets and source of the adopted distances",
+    "simalma parameters (antenna list, thermal noise settings, spectral resolution, pointing, cell size) for the synthetic observations",
+    "Learning rates, batch size, optimizer, scheduler and random seeds for each training stage; cross-attention and MLP dimensions; 1D CNN layer specification",
+    "How the 224x224 images were cropped/regridded from the simulated and observed images",
+    "Public availability of the MHD snapshots, synthetic data cubes and trained model weights/code"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Generate synthetic 12CO(2-1) data from MHD simulations",
+    "method": {
+     "value": "RADMC-3D non-LTE radiative transfer on the mirrored MHD snapshots, 20 viewing angles",
+     "evidence": [
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "We use the publicly available radiative transfer code radmc-3d (cite: 2012ascl.soft02015D) to generate synthetic"
+      },
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "Level populations are computed based on local density and temperature, assuming that gas and dust temperatures are coupled."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "20 inclinations, cosine uniformly spaced between 0.025 and 0.975 (about 12.8 to 88.6 deg)",
+      "evidence": [
+       {
+        "loc": "2.2 Synthetic Observations",
+        "quote": "where the inclination angles are sampled by uniformly spacing the cosine of inclination angles between 0.025 and 0.975"
+       }
+      ]
+     },
+     {
+      "value": "Synthetic source distances 500 pc, 1 kpc, 2 kpc (2 kpc fiducial)",
+      "evidence": [
+       {
+        "loc": "2.2 Synthetic Observations",
+        "quote": "we include synthetic sources at distances of 500 pc, 1 kpc, and 2 kpc, using 2 kpc as the fiducial setup."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant 12CO abundance 1e-4 relative to H2; gas-to-dust mass ratio 100; gas and dust temperatures coupled",
+      "evidence": [
+       {
+        "loc": "2.2 Synthetic Observations",
+        "quote": "we assume a constant $^{12}$CO abundance of $10^{-4}$ relative to $H_2$ and a gas-to-dust mass ratio of 100"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Synthetic spectra shown to reproduce features of real outflows in Paper III",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "The resulting synthetic spectra were shown to closely reproduce the features of real ALMA-observed protostellar outflows."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Simulate ALMA observations of the synthetic cubes",
+    "method": {
+     "value": "CASA simalma post-processing with the C36-3 configuration and 210 s integration matching the real data",
+     "evidence": [
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "To simulate ALMA observations, we post-process the synthetic line data using CASA"
+      },
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "adopting the same C36-3 array configuration and 210-second integration time as used in the real observations discussed in"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "simalma"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Build ML inputs (images, spectra) with augmentation",
+    "method": {
+     "value": "Three-channel image (blue, red, total integrated intensity, normalized 0-1) plus a normalized spectrum clipped at +/-50 km/s; randomized velocity cutoff; data-loader augmentations",
+     "evidence": [
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "integrated intensities, along with the total integrated intensity, each normalized between 0 and 1."
+      },
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "we employ a randomized velocity cutoff strategy."
+      },
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "The corresponding spectrum is clipped at $\\pm$50 km/s and similarly normalized."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Velocity exclusion |v - v_lsr| > 3, 5, 8 or 10 km/s",
+      "evidence": [
+       {
+        "loc": "2.2 Synthetic Observations",
+        "quote": "which mimics the filtering of low-velocity gas while preserving the large-scale structure of the outflow lobes"
+       }
+      ]
+     },
+     {
+      "value": "Training beam-convolution sigma between 0.75 and 2.0 pixels for 224x224 inputs; zoom up to 20%; rotations 0-360 deg",
+      "evidence": [
+       {
+        "loc": "2.4 Multi-Modal Machine Learning Framework",
+        "quote": "convolving the images with random beam sizes ($\\sigma$ between 0.75 and 2.0 pixels for 224$\\times$224 inputs)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection that morphologies are robust across velocity cutoffs",
+     "evidence": [
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "Visual inspection confirms that the resulting morphologies are robust across these ranges"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Train multi-modal network for mass, inclination, position angle",
+    "method": {
+     "value": "Image encoder (pretrained ResNet50/152 or ViT_B_16/ViT_L_16) plus from-scratch 1D CNN spectrum encoder, cross-attention fusion, MLP head predicting Gaussian mean and log-variance; progressive fine-tuning",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "we adopt widely used pretrained architectures, including ResNet50 (cite: 2016cvpr.confE...1H) and ViT_L_16 (cite: 2020arXiv201011929D)"
+      },
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "The spectrum encoder is designed from scratch using a 1D CNN"
+      },
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "we employ a cross-attention mechanism that fuses spatial and spectral features"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Train on 1 kpc and 2 kpc models; validate and test on 500 pc models",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-Modal Machine Learning Framework",
+        "quote": "synthetic models placed at 1 kpc and 2 kpc are used exclusively for training, while models placed at 500 pc are reserved entirely for validation and testing."
+       }
+      ]
+     },
+     {
+      "value": "Three stages: freeze image encoder; unfreeze last image-encoder layer after 10 epochs without validation improvement; unfreeze all; stop after 10 further epochs without improvement; best validation model kept",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-Modal Machine Learning Framework",
+        "quote": "After the validation loss fails to improve for 10 consecutive epochs, we unfreeze the last layer of the image encoder and continue training with a lower learning rate."
+       },
+       {
+        "loc": "2.3 Multi-Modal Machine Learning Framework",
+        "quote": "We save the model with the best validation performance as our fiducial model."
+       }
+      ]
+     },
+     {
+      "value": "Random masking of spectrum segments (set to zero) during training; PA represented as sine and cosine",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-Modal Machine Learning Framework",
+        "quote": "During training, random segments of the input spectrum are set to zero, mimicking missing or corrupted spectral channels that often arise in observations."
+       },
+       {
+        "loc": "2.3 Multi-Modal Machine Learning Framework",
+        "quote": "we represent it as a two-component vector using sine and cosine values."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian negative log-likelihood loss on predicted mean and log-variance; optimizer and priors not stated",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "The model is trained by minimizing the Gaussian Negative Log-Likelihood (NLL) of the true value"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Held-out validation set with early stopping; restricted-training stress test excluding 12 Msun and five inclinations",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "we deliberately withhold specific physical configurations from the training phase to evaluate the model’s performance on entirely unseen data."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Evaluate on synthetic tests and interpret the network",
+    "method": {
+     "value": "Restricted-set generalization test, full-space test on 500 pc data, Gaussian smoothing robustness test, spectrum ablation, Smooth Grad-CAM++, Integrated Gradients with mean baseline, occlusion sensitivity",
+     "evidence": [
+      {
+       "loc": "3.2 Interpretable Analysis of Physical Feature Contributions in the Multi-Modal Network",
+       "quote": "we employ three complementary interpretability techniques: Smooth Grad-CAM++, Integrated Gradients (IG), and Occlusion Sensitivity Analysis."
+      },
+      {
+       "loc": "3.1 Assessing Model Performance",
+       "quote": "we perform a controlled ablation test to isolate the contribution of the spectral modality."
+      }
+     ]
+    },
+    "software": [
+     "Smooth Grad-CAM++",
+     "Integrated Gradients"
+    ],
+    "key_parameters": [
+     {
+      "value": "Test set of 6,720 samples (7 masses x 20 inclinations x 4 velocity cutoffs x 12 position angles at 30 deg)",
+      "evidence": [
+       {
+        "loc": "2.3 Multi-Modal Machine Learning Framework",
+        "quote": "The final testing set comprises 6,720 distinct samples"
+       }
+      ]
+     },
+     {
+      "value": "Grad-CAM++ averaged over N=10 noisy inputs; IG with 30-50 interpolation steps and mean image/spectrum baseline",
+      "evidence": [
+       {
+        "loc": "3.2.1 Smooth Grad-CAM++ Visualization",
+        "quote": "by averaging Grad-CAM++ maps over multiple noisy realizations of the input ($N=10$)"
+       },
+       {
+        "loc": "3.2.2 Integrated Gradients with Mean Baseline",
+        "quote": "By integrating gradients over 30-50 interpolation steps"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Three attribution methods agree that spatial features dominate",
+     "evidence": [
+      {
+       "loc": "3.2.3 Occlusion Sensitivity Analysis",
+       "quote": "The strong agreement across Smooth Grad-CAM++, Integrated Gradients, and Occlusion Sensitivity Analysis"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Apply trained models to real ALMA CO images with rotation-based uncertainty",
+    "method": {
+     "value": "Rotate each outflow image in 3 deg steps (120 versions), run all through the trained models, average means and combine mean aleatoric variance with dispersion of means (epistemic)",
+     "evidence": [
+      {
+       "loc": "4.1 Rotation-Based Evaluation and Uncertainty Decomposition",
+       "quote": "we rotate the outflow image by steps of 3$^{\\circ}$, producing 120 rotated versions that are independently passed through the trained models."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Physical quantities such as mass and inclination should be invariant under image rotation",
+      "evidence": [
+       {
+        "loc": "4.1 Rotation-Based Evaluation and Uncertainty Decomposition",
+        "quote": "Ideally, physical quantities such as mass and inclination should be invariant under image rotation."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Qualitative side-by-side comparison of real maps with synthetic counterparts from the grid at the predicted parameters; PA compared with apparent outflow orientation",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison with Previous Estimates",
+       "quote": "a side-by-side comparison between the real ALMA $^{12}$CO (2–1) observations of our three targets and synthetic counterparts retrieved from the simulation grid"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare ML masses and inclinations with SED-based estimates",
+    "method": {
+     "value": "Compare ML predictions with SED-fitting values from the literature; interpret predicted mass as a proxy for m*/Mcore given the fixed 60 Msun core",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison with Previous Estimates",
+       "quote": "should not be interpreted as an absolute physical mass for real systems, but rather as a proxy for the evolutionary fraction of the core"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Training simulations assume a fixed initial core mass of 60 Msun (single evolutionary track)",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison with Previous Estimates",
+        "quote": "our training simulations assume a fixed initial core mass of 60 $M_\\odot$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "simalma synthetic ALMA observations; calibration, self-calibration and tclean imaging of the real data",
+     "evidence": [
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "To simulate ALMA observations, we post-process the synthetic line data using CASA"
+      },
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "Data calibration and imaging were performed in CASA."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "imaging the real CO data",
+     "evidence": [
+      {
+       "loc": "4 Application to Real ALMA-Observed Protostellar Outflows and Uncertainty Assessment",
+       "quote": "imaging was carried out with the tclean task using Briggs weighting with robust = 0.5"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE synthetic 12CO(2-1) line emission",
+     "evidence": [
+      {
+       "loc": "2.2 Synthetic Observations",
+       "quote": "We use the publicly available radiative transfer code radmc-3d (cite: 2012ascl.soft02015D) to generate synthetic"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ResNet50 / ResNet152",
+    "version": "not stated",
+    "used_for": {
+     "value": "pretrained image encoder",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "To enable a fair comparison across architectures, we also include ResNet152 and ViT_B_16, which have comparable numbers of parameters."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ViT_L_16 / ViT_B_16",
+    "version": "not stated",
+    "used_for": {
+     "value": "pretrained Vision Transformer image encoders",
+     "evidence": [
+      {
+       "loc": "2.3 Multi-Modal Machine Learning Framework",
+       "quote": "we adopt widely used pretrained architectures, including ResNet50 (cite: 2016cvpr.confE...1H) and ViT_L_16 (cite: 2020arXiv201011929D)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Smooth Grad-CAM++",
+    "version": "not stated",
+    "used_for": {
+     "value": "localizing input regions driving predictions",
+     "evidence": [
+      {
+       "loc": "3.2 Interpretable Analysis of Physical Feature Contributions in the Multi-Modal Network",
+       "quote": "we employ three complementary interpretability techniques: Smooth Grad-CAM++, Integrated Gradients (IG), and Occlusion Sensitivity Analysis."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Integrated Gradients",
+    "version": "not stated",
+    "used_for": {
+     "value": "quantifying image versus spectrum importance",
+     "evidence": [
+      {
+       "loc": "3.2.2 Integrated Gradients with Mean Baseline",
+       "quote": "we apply Integrated Gradients (IG)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "ML-inferred protostellar masses for the three ALMA sources",
+    "value": "~12-15",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Comparison with Previous Estimates",
+      "quote": "The predicted masses for the three outflows cluster around $\\sim$12-15 $M_\\odot$ with relatively small total uncertainties."
+     }
+    ]
+   },
+   {
+    "quantity": "Inclinations inferred for G35.20 and G45.47 (pole-on) versus G339.88 (near edge-on)",
+    "value": "G35.20 and G45.47 ~10-20; G339.88 ~70-80",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Comparison with Previous Estimates",
+      "quote": "The models infer G35.20 and G45.47 to be relatively pole-on (inclinations $\\sim$10-20$^{\\circ}$), whereas G339.88 is predicted to be close to edge-on (inclinations $\\sim$70-80$^{\\circ}$)."
+     }
+    ]
+   },
+   {
+    "quantity": "Fiducial ViT_L_16 best validation NLL (epoch 392)",
+    "value": "-4.927",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.3 Multi-Modal Machine Learning Framework",
+      "quote": "the fiducial ViT model achieved its best performance at epoch 392 with a validation NLL of -4.927"
+     }
+    ]
+   },
+   {
+    "quantity": "ResNet50 best validation NLL (epoch 4273)",
+    "value": "-4.61",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Training Dynamics and Learning Curves",
+      "quote": "reached its optimal performance at Epoch 4273, with a validation NLL of $-4.61$"
+     }
+    ]
+   },
+   {
+    "quantity": "Parameter counts of ResNet50 and ViT_L_16 configurations",
+    "value": "~27 million and ~307 million",
+    "uncertainty": "not stated",
+    "units": "parameters",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.3 Multi-Modal Machine Learning Framework",
+      "quote": "which contains $\\sim$27 million parameters in the ResNet50 configuration and $\\sim$307 million in the ViT_L_16 configuration"
+     }
+    ]
+   },
+   {
+    "quantity": "Reduction of training sample in restricted dataset",
+    "value": "35",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.3 Multi-Modal Machine Learning Framework",
+      "quote": "we reduce the total training sample by 35%"
+     }
+    ]
+   },
+   {
+    "quantity": "Test set size",
+    "value": "6,720",
+    "uncertainty": "not stated",
+    "units": "samples",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.3 Multi-Modal Machine Learning Framework",
+      "quote": "The final testing set comprises 6,720 distinct samples"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All models degrade significantly when the smoothing kernel exceeds sigma ~5; ViT_L_16 gives the most stable position angle under heavy blurring",
+    "evidence": [
+     {
+      "loc": "3.1 Assessing Model Performance",
+      "quote": "ViT_L_16 consistently provides the most stable position angle predictions under heavy blurring."
+     }
+    ]
+   },
+   {
+    "value": "Spatial features dominate all predictions; spectra give a secondary role for mass and inclination and minimal for position angle",
+    "evidence": [
+     {
+      "loc": "3.2.2 Integrated Gradients with Mean Baseline",
+      "quote": "In all cases, spatial information dominates the prediction of physical properties."
+     }
+    ]
+   },
+   {
+    "value": "Predicted position angles are consistent across models and match visible outflow orientations",
+    "evidence": [
+     {
+      "loc": "4.3 Position Angle as a Robust Validation Metric",
+      "quote": "The mean position angles are broadly consistent across models and align well with the apparent outflow orientations in the images"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do ViT backbones generalize and resist resolution loss better than ResNets?",
+    "experiment": "Compared ResNet50/152 and ViT_B_16/ViT_L_16 on restricted-set tests and on test data convolved with increasing Gaussian kernels",
+    "result": "ViT_L_16 gives the most stable position angle under heavy blurring; ViT_B_16 generalizes better than ResNets with comparable parameters",
+    "finding": "Transformer architectures are better suited for unseen observational conditions and degraded spatial information",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 Assessing Model Performance",
+      "quote": "Similarly, ViT_B_16 demonstrates superior generalization compared to ResNet-based models with equivalent parameter counts."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which modality drives the inferred parameters?",
+    "experiment": "Grad-CAM++, Integrated Gradients, occlusion and spectrum-ablation tests",
+    "result": "Image attributions exceed spectral ones for all quantities; spectral omission has little impact at moderate smoothing",
+    "finding": "Spatial morphology is the dominant driver; spectra give secondary constraints for mass and inclination",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 Assessing Model Performance",
+      "quote": "confirming that spatial features are the dominant drivers of the predictions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can the framework recover mass and inclination of real massive-protostar outflows in ALMA data?",
+    "experiment": "Applied the trained models to 12CO(2-1) ALMA images of three sources with rotation-based uncertainty decomposition and compared with SED estimates",
+    "result": "Masses ~12-15 Msun, below SED estimates; inclinations differ from SED values, pole-on for G35.20 and G45.47",
+    "finding": "Absolute masses should be read as evolutionary-stage proxies because of the fixed 60 Msun core, and inclinations show larger discrepancies",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "While recovered position angles show excellent agreement with visual morphology, inclination angles exhibit larger discrepancies"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is position angle a robust quantity on real data?",
+    "experiment": "Compared position angle predictions from four models on the three sources with epistemic uncertainties",
+    "result": "Mean position angles are broadly consistent across models and align with outflow orientations in the images",
+    "finding": "The models capture physically meaningful geometry despite the simulation-to-real domain shift",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Position Angle as a Robust Validation Metric",
+      "quote": "provides encouraging evidence that the models capture physically meaningful outflow structures rather than overfitting to synthetic artifacts."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Synthetic observations mimic the C36-3 setup of the real ALMA observations so the model can be applied to them",
+    "evidence": [
+     {
+      "loc": "2.2 Synthetic Observations",
+      "quote": "adopting the same C36-3 array configuration and 210-second integration time as used in the real observations discussed in"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Earlier work used only 1D spectral profiles and ignored outflow-lobe morphology in 2D maps",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "However, the approach was based solely on 1D spectral profiles, without incorporating the rich morphological information present in 2D integrated intensity maps of the red- and blue-shifted outflow lobes."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Predicted mass is degenerate with accretion rate because training uses a single 60 Msun core evolutionary track",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "the model is trained on a single evolutionary track."
+      }
+     ]
+    },
+    {
+     "value": "Framework trained only on synthetic 12CO(2-1) emission and optimized for ALMA interferometric data; other tracers or instruments would need fine-tuning",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "the current framework is trained exclusively on synthetic $^{12}$CO (2-1) emission."
+      }
+     ]
+    },
+    {
+     "value": "Validation on real data is qualitative because simulations are stochastic realizations rather than pixel-level templates",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison with Previous Estimates",
+       "quote": "This qualitative approach to validation is necessitated by the nature of the 3D MHD simulations"
+      }
+     ]
+    },
+    {
+     "value": "G35.20 contains multiple outflows, which affects single-source interpretation",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison with Previous Estimates",
+       "quote": "the region is known to contain multiple protostellar outflows"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No ground truth for real sources; comparison is only against SED values from one paper and visual agreement, so accuracy on real data is unquantified",
+    "Only three sources observed with a single short C36-3 setup, so the real-data test is very small",
+    "Training set uses one MHD track (60 Msun core), so mass inference is not an absolute measurement",
+    "Test samples share the same simulation snapshots as training (differing only by distance), so generalization beyond the simulation family is weakly tested",
+    "Single training run per model; no seed variance reported"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Trained network code, weights and hyperparameters (learning rates, optimizer, batch size, architecture details)",
+    "Synthetic training dataset and the MHD snapshots or a statement of their availability",
+    "simalma and tclean parameters, self-calibration details and line-free channels for the real data",
+    "Systemic velocities and the velocity cuts used for the real-source integrated-intensity maps",
+    "Numerical per-model test errors (results are presented mainly as figures)"
+   ],
+   "estimated_data_volume_inferred": "ALMA side: small (three short C36-3 pointings, a few GB raw). The main cost is generating RADMC-3D cubes for 7 masses x 20 inclinations x 3 distances and training large ViT models, which needs GPU compute.",
+   "score_inferred": 2,
+   "score_reason": "The real ALMA data are only a three-source test; the core results are ML training on private synthetic data with no released code or hyperparameter recipe, and key results are given in figures.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that code, simulation snapshots or synthetic data are public, the training recipe is incomplete, and the main results are mostly figure-based and model-dependent."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2024ApJ...966..117X)",
+     "why": "Paper III: radiative transfer and simalma synthetic CO observations, dust temperature calculation and the same simulation snapshots"
+    },
+    {
+     "citation": "(cite: 2023ApJ...947...40S)",
+     "why": "Paper II: 3D MHD simulations used as the training data source"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2019ApJ...882..123S)",
+     "why": "Paper I of the series (MHD simulations)"
+    },
+    {
+     "citation": "(cite: 2024ApJ...967..145G)",
+     "why": "Paper IV of the series (radio emission from shock-ionized outflow structures)"
+    },
+    {
+     "citation": "(cite: 2022ApJ...936...68Z; 2019ApJ...886L...4Z; 2019ApJ...873...73Z)",
+     "why": "Original publications of the ALMA data for G35.20, G45.47 and G339.88"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Disk Wind Feedback from High-mass Protostars series (Papers I-V)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2026ApJ..1001..120X",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T17:00:15",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 87,
+  "quotes_ok": 87,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 102,
+   "stated": 60,
+   "rate": 0.588
+  },
+  "evidence_ok": true
+ }
+}

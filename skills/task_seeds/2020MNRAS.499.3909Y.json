@@ -1,0 +1,435 @@
+{
+ "bibcode": "2020MNRAS.499.3909Y",
+ "title": "Evidence for a jet and outflow from Sgr A*: a continuum and spectral line study",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa2399",
+ "arxiv_id": "2008.04317",
+ "fields": [
+  "agn_and_quasars",
+  "milky_way_ism"
+ ],
+ "question": "To establish if there is a collimated jet and outflow arising from Sgr A* by studying its environment using sub-arcsecond hydrogen recombination line and broad-band radio continuum observations.",
+ "alma_project_codes": [
+  "2015.A.00021.S",
+  "2011.0.00887.S",
+  "2015.0.00021.S"
+ ],
+ "data": {
+  "bands": "Band 6, Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "0.30'' x 0.33'' (Band 6 H30alpha)",
+  "sensitivity": "0.4 mJy per 3 km s^-1 channel (Band 6)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Upper limit on Br-gamma emission within 0.2'' of Sgr A* of ~ 2 Jy km s^-1",
+    "evidence": [
+     {
+      "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+      "quote": "The upper limit on the Brγ emission within 0.2′′ of Sgr A* is ∼ 2 Jy km s−1 (Ciurlo et al. 2020)."
+     }
+    ]
+   },
+   "citation": "Ciurlo et al. 2020"
+  },
+  {
+   "what": {
+    "value": "Br-gamma emissivity for Te ~ 10^4 K and ne ~ 10^4 cm^-3 of j_gamma ~ 2.7 x 10^-28 erg s^-1 cm^-3 sr^-1",
+    "evidence": [
+     {
+      "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+      "quote": "The Brγ emissivity for Te ∼ 104 K and ne ∼ 104 cm−3 is jγ ∼ 2.7 × 10−28 erg s−1 cm−3 sr−1 (Hummer and Storey 1987)."
+     }
+    ]
+   },
+   "citation": "Hummer and Storey 1987"
+  },
+  {
+   "what": {
+    "value": "Rotation measure detected toward Sgr A* (RM ~ -5 x 10^5 rad m^-2)",
+    "evidence": [
+     {
+      "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+      "quote": "One of the implications of the presence of ionized gas on such a small scale associated with Sgr A* is that it can also explain the large rotation measure detected toward Sgr A* (RM∼−5 × 105 rad m−2) (Bower et al. 2018)."
+     }
+    ]
+   },
+   "citation": "Bower et al. 2018"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image ALMA and VLA recombination line cubes without uv-plane continuum subtraction",
+   "method": "Combine or split spectral windows, perform iterative phase (and for Band 6, final amplitude and phase) self-calibration on Sgr A*, and image line cubes directly prior to continuum subtraction.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "H30a channel width 45 km s^-1 from -3770 to +700 km s^-1; H39a channel width 15.625 MHz; VLA H52a and H56a channel width 2 MHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra toward Sgr A*, equalize flux across spectral windows, and subtract continuum in the image plane",
+   "method": "Extract spectrum in aperture centered on Sgr A*, equalize adjacent spectral windows by taking the ratio of mean fluxes in edge channels (5 channels for ALMA H30a, 10 channels for VLA H52a/H56a) and scaling, concatenate spws, and subtract a linear continuum fit over selected line-free velocity intervals.",
+   "software": [],
+   "key_parameters": [
+    "Extraction apertures: inner 0.23'' (or 0.46'' diameter) for H30a, inner 0.75'' (or 1.5'') for H39a, 0.20'' x 0.11'' for H52a, 0.22'' x 0.27'' for H56a; scaling factor 1.0052 for H30a lower velocity window, 0.9832 to 1.003 for H52a"
+   ],
+   "assumptions": [
+    "Selected velocity ranges at band edges are sufficiently free of line emission to define a linear continuum"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map spatial distribution of extreme velocity (-2500 and +4000 km s^-1) ionized gas",
+   "method": "Select spectral windows containing -2500 and 4000 km s^-1 emission, make moment/average maps of 5 channels near low and high velocity band edges (channels 5-10 and 50-55), and subtract them from each other to form continuum-subtracted line emission contour maps.",
+   "software": [],
+   "key_parameters": [
+    "Channels 5-10 and 50-55 in spectral windows covering -2500 and 4000 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Image multi-band VLA radio continuum from 1 to 48 GHz to identify persistent jet and outflow structures",
+   "method": "Self-calibrate VLA A-array broadband visibility data in phase and amplitude on Sgr A*, split bandwidth into multiple channels to account for frequency response, and construct high-dynamic-range continuum images and spectral channel cubes across Q, Ka, Ku, X, and L bands.",
+   "software": [
+    "AIPS",
+    "VBGLU",
+    "OBIT",
+    "MFImager"
+   ],
+   "key_parameters": [
+    "L-band imaged in 16 channels (1-2 GHz), split into low (1-1.4 GHz) and high (1.5-1.9 GHz) sub-bands; X-band split into 46 channels across 2 GHz; Ka-band split into 24 channels across 8 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive physical properties of the sub-arcsecond ionized gas, pc-scale jet magnetic field, and 3D jet/disk orientation",
+   "method": "Compute volume emission measure (VEM), electron density, and ionized mass of feature J1 from its 36 GHz optically-thin free-free flux density; estimate equipartition magnetic field of the pc-scale jet from its 1.6 GHz surface brightness; infer 3D jet and inner accretion disk orientation angles from PA and radial velocity signs.",
+   "software": [],
+   "key_parameters": [
+    "J1 36 GHz integrated flux ~ 0.2 mJy; J1 dimensions 0.2'' x 0.02'' x 0.02''; jet diameter ~ 2'', 1.6 GHz surface brightness ~ 0.2 mJy beam^-1"
+   ],
+   "assumptions": [
+    "Galactic center distance d = 8 kpc; nominal electron temperature Te = 10^4 K; optically-thin thermal bremsstrahlung for J1 at 36 GHz",
+    "Equipartition between electrons and protons with an E^-2 electron energy spectrum between 10 MeV and 100 GeV",
+    "Jet emerges perpendicular to the equatorial plane of the inner accretion flow"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak radial velocity of double-peaked recombination line emission toward Sgr A*",
+   "value": "+/-500",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.1 H30alpha Line Emission",
+     "quote": "This confirms the double-peak spectrum of Sgr A* at ∼±500 km s−1 utilizing a different technique in continuum subtraction."
+    }
+   ]
+  },
+  {
+   "quantity": "Extreme blueshifted recombination line velocity peak within 0.2'' of Sgr A*",
+   "value": "-2500",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We also detect emission at more extreme radial velocities peaking near −2500 and 4000 km s−1 within 0.2′′."
+    }
+   ]
+  },
+  {
+   "quantity": "Extreme redshifted recombination line velocity peak within 0.2'' of Sgr A*",
+   "value": "4000",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We also detect emission at more extreme radial velocities peaking near −2500 and 4000 km s−1 within 0.2′′."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular absorption line center frequency in Band 6 spectrum",
+   "value": "233.963",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.1 H30alpha Line Emission",
+     "quote": "The absorption is centered at 233.963 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow absorption line frequencies in Ka band (H56alpha) spectrum",
+   "value": "36.796, 36.947",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.4 H56alpha Line Emission",
+     "quote": "The two narrow absorption lines are detected at 36.796 and 36.947 GHz, and are shown in Figure 4b."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of linear feature J1 at 44 GHz",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 High Frequency Radio Data",
+     "quote": "Figure 5 shows a linear feature J1 with a PA∼ 23◦ extending NE of Sgr A* for ∼ 0.4′′, and having a typical surface brightness of ∼ 300 µJy beam−1 at 44 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Surface brightness of linear feature J1 at 44 GHz",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "uJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 High Frequency Radio Data",
+     "quote": "Figure 5 shows a linear feature J1 with a PA∼ 23◦ extending NE of Sgr A* for ∼ 0.4′′, and having a typical surface brightness of ∼ 300 µJy beam−1 at 44 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of linear feature J2 at 44 GHz",
+   "value": "39",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 High Frequency Radio Data",
+     "quote": "There is also a fainter feature, J2, which is 1/2 of typical surface brightness of J1, with PA∼ 39◦."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of elongated feature J5 at 44 GHz",
+   "value": "59",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 High Frequency Radio Data",
+     "quote": "We note a weak elongated feature J5 with a surface brightness of ∼ 50µJy beam−1 to the NE of IRS 16C and a PA∼ 59◦."
+    }
+   ]
+  },
+  {
+   "quantity": "Surface brightness of elongated feature J5 at 44 GHz",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "uJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 High Frequency Radio Data",
+     "quote": "We note a weak elongated feature J5 with a surface brightness of ∼ 50µJy beam−1 to the NE of IRS 16C and a PA∼ 59◦."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angles of linear features J3 and J4 at 44 GHz",
+   "value": "51, 57",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 High Frequency Radio Data",
+     "quote": "The position angles of J3 and J4 are 51◦ and 57◦, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density of feature J1 at 36 GHz",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+     "quote": "J3 lies in an area confused by extended continuum emission, making it difficult to extract reliable fluxes, so we focus on J1, which has an integrated flux ∼ 0.2 mJy at 36 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Volume emission measure (VEM) of feature J1",
+   "value": "6e57",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+     "quote": "Thus, we infer VEM ≈ 6 × 1057 cm−3 for nominal temperature 104 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Electron density (n_e) of feature J1",
+   "value": "1e5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+     "quote": "Adopting dimensions 0′′.2 × 0′′.02 × 0′′.02 consistent with Fig. 6(b) this implies ne ≈ 1 × 105 cm−3 and mass ≈ 6 × 10−5 M⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized gas mass of feature J1",
+   "value": "6e-5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.0.1 Collimated Outflow and Interaction Sites",
+     "quote": "Adopting dimensions 0′′.2 × 0′′.02 × 0′′.02 consistent with Fig. 6(b) this implies ne ≈ 1 × 105 cm−3 and mass ≈ 6 × 10−5 M⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition magnetic field of the pc-scale jet",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "mG",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 DISCUSSION",
+     "quote": "we deduce an equipartition magnetic field ∼ 0.2 mG using standard (but uncertain)"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet position angle (PA)",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The position angle of this elongated structure and the sense of motion of ionized features with respect to Sgr A* suggest a symmetric, collimated jet emerging from Sgr A* with an opening angle of ∼ 30◦ and a position angle of ∼60◦ punching through the medium before accelerating a significant fraction of the orbiting ionized gas to high velocities."
+    },
+    {
+     "loc": "4.1 Orientation of the Jet",
+     "quote": "Thus the red shifted arm of the jet emerges to the NE of Sgr A* with PA Ωj ≈ 60◦ E of N and makes an angle θj ≈ 45◦ to the line of sight (which is directed away from the observer)."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet opening angle",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The position angle of this elongated structure and the sense of motion of ionized features with respect to Sgr A* suggest a symmetric, collimated jet emerging from Sgr A* with an opening angle of ∼ 30◦ and a position angle of ∼60◦ punching through the medium before accelerating a significant fraction of the orbiting ionized gas to high velocities."
+    }
+   ]
+  },
+  {
+   "quantity": "Wider-angle outflow opening angle",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 SUMMARY",
+     "quote": "The opening angle of the outflow is 60◦, with the inner 30◦ occupied by the relativistic jet."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet angle to the line of sight (theta_j)",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Orientation of the Jet",
+     "quote": "Thus the red shifted arm of the jet emerges to the NE of Sgr A* with PA Ωj ≈ 60◦ E of N and makes an angle θj ≈ 45◦ to the line of sight (which is directed away from the observer)."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred inner accretion disk inclination (i)",
+   "value": "120",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Orientation of the Jet",
+     "quote": "implying that the orbital elements of the disk, i.e. PA of the ascending node, Ω, and inclination to the plane of the sky, i, are either (i) Ω = Ωj − 90◦ ≈ 330◦, i = 180◦ − θj ≈ 120◦, or (ii) Ω = Ωj + 90◦ ≈ 150◦, i = θj ≈ 120◦."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred inner accretion disk ascending node PA (Omega)",
+   "value": "330 or 150",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Orientation of the Jet",
+     "quote": "implying that the orbital elements of the disk, i.e. PA of the ascending node, Ω, and inclination to the plane of the sky, i, are either (i) Ω = Ωj − 90◦ ≈ 330◦, i = 180◦ − θj ≈ 120◦, or (ii) Ω = Ωj + 90◦ ≈ 150◦, i = θj ≈ 120◦."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals (solint) for both ALMA Band 6 and Band 3 datasets",
+  "Imaging weighting scheme (e.g., Briggs robust parameter) and deconvolution algorithm/stopping threshold for ALMA Band 6 and Band 3 cubes",
+  "Synthesized beam size for the ALMA Band 3 H39alpha cube",
+  "Cell size and image dimensions for ALMA and VLA imaging",
+  "Resolution of discrepancy between text and figure captions for line-free velocity ranges (e.g., H30alpha -1300 to -1800 km/s in text vs -1800 to -1400 km/s in Fig 1a title; -3600 to -3800 km/s in text vs -3700 to -3540 km/s in Fig 1c title; H39alpha -3000 to -2300 km/s in text vs -3000 to -2500 km/s in Fig 2 caption; H52alpha -4200 to -3900 and 5800 to 6000 km/s in text vs -4000 to -3600 and 6000 to 6300 km/s in Fig 3 caption)"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals (solint) and S/N thresholds for ALMA Band 6, ALMA Band 3, and VLA datasets",
+  "tclean / imaging parameters (weighting/robust, cell size, image size, deconvolver, niter/threshold) for ALMA Band 6 and Band 3 cubes",
+  "Exact resolution of discrepancies between main text and figure labels/captions for the velocity intervals used in linear continuum fitting",
+  "Exact channel frequency ranges for each of the 16 VLA L-band channel maps and 46 X-band channel maps"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "Archival ALMA and VLA project codes are clearly identified and the spectral window equalization and image-plane continuum subtraction procedures are described step-by-step, but key interferometric imaging and self-calibration parameters (robust weighting, solint, cell size) are omitted and there are minor numerical inconsistencies between text and figure captions regarding line-free channel ranges.",
+ "rediscovery_reason": "Both ALMA datasets (2015.A.00021.S and 2011.0.00887.S) are public in the ALMA archive, the target position and aperture sizes are explicit, and the core spectroscopic result (confirming the +/-500 km/s double peak and testing the -2500/+4000 km/s excess under different continuum window assumptions) is a well-defined quantitative target.",
+ "source_card": "cards/2020MNRAS.499.3909Y/sonnet/card.md"
+}

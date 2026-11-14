@@ -1,0 +1,848 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...866..159V",
+  "title": "Dust Emission in an Accretion-rate-limited Sample of z ≳ 6 Quasars",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Venemans, Bram P.",
+  "n_authors": 12,
+  "arxiv_id": "1809.01662",
+  "doi": "10.3847/1538-4357/aadf35",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01115.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present Atacama Large Millimeter Array 1 mm observations of the rest-frame far-infrared (FIR) dust continuum in 27 quasars at redshifts $6.0\\lesssim z<6.7$."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "27 z~6 quasars (e.g. P007+04, J1048–0109, P183+05)",
+     "coordinates": {
+      "value": "listed per source in Table 1 (e.g. P007+04: 00:28:06.560 +04:57:25.39)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| P007+04 | 00$^\\mathrm{h}$28$^\\mathrm{m}$06$.\\!\\!^\\mathrm{s}$560 | +04$^\\circ$57$^\\prime$25.39$''$ | 6.0008$\\pm$0.0004 | \\[C II\\]  | –26.58 | 1, 2 |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 6.0–6.6 (e.g. 6.0008 for P007+04)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| P007+04 | 00$^\\mathrm{h}$28$^\\mathrm{m}$06$.\\!\\!^\\mathrm{s}$560 | +04$^\\circ$57$^\\prime$25.39$''$ | 6.0008$\\pm$0.0004 | \\[C II\\]  | –26.58 | 1, 2 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "[C II] line, Mg II or template fit to UV spectrum, per Table 1 references",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| P007+04 | 00$^\\mathrm{h}$28$^\\mathrm{m}$06$.\\!\\!^\\mathrm{s}$560 | +04$^\\circ$57$^\\prime$25.39$''$ | 6.0008$\\pm$0.0004 | \\[C II\\]  | –26.58 | 1, 2 |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the FIR dust continuum properties of a UV luminosity-limited sample of z>6 quasar hosts, and does FIR luminosity (star formation) correlate with quasar UV luminosity (black hole growth)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "To obtain a less biased view of the host galaxies of $z>6$ quasars and to investigate how the quasar bolometric and FIR luminosities relate to each other, we targeted a UV luminosity-limited quasar sample"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01115.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Analysis",
+       "quote": "The new ALMA observations (program ID: 2015.1.01115.S, PI: F. Walter)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.2 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 A Quasar Luminosity-limited Sample",
+      "quote": "the \\[C II\\] 158 $\\mu$m emission line is redshifted to the easily accessible 1.2 mm band (ALMA band 6)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "two partly overlapping 1.875 GHz spectral windows covering redshifted [C II] plus two 1.875 GHz windows at lower frequency for continuum (~16 GHz below the line)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Analysis",
+      "quote": "two (partly overlapping) bandpasses of 1.875 GHz covering the redshifted \\[C II\\] 158 $\\mu$m line and two bandpasses of 1.875 GHz width each targeting the quasar continuum at slightly lower frequencies"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[C II]",
+     "transition": "158 um fine-structure",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Analysis",
+       "quote": "covering the redshifted \\[C II\\] 158 $\\mu$m line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "typical beam ~1.0 arcsec",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Analysis",
+      "quote": "The typical beam had a size of $\\sim$1.0$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "typical rms 0.5 mJy/beam in 30 km/s bins",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Analysis",
+      "quote": "the typical rms noise is 0.5 mJy beam$^{-1}$ in 30 km s$^{-1}$ bins"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "8 min per source",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Analysis",
+      "quote": "consisted of 8 min on-source integrations"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI F. Walter, Cycle 3",
+    "evidence": [
+     {
+      "loc": "2.1 A Quasar Luminosity-limited Sample",
+      "quote": "Of these, 27 were observed with ALMA in Cycle 3 (cite: dec18)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Bolometers, PdBI/NOEMA and other ALMA programs (literature)",
+     "provided": {
+      "value": "1 mm photometry of 64 literature z>5.7 quasars",
+      "evidence": [
+       {
+        "loc": "2.3 Literature Sample",
+        "quote": "In total, 64 quasars with mm observations were found in the literature, of which 30 were detected."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Redshifts and M1450 of the sample quasars",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "References for the redshift and $M_{1450}$: (1) (cite: dec18), (2) (cite: ban16)"
+       }
+      ]
+     },
+     "citation": "(cite: dec18); (cite: ban16)"
+    },
+    {
+     "what": {
+      "value": "Literature 1 mm flux densities, redshifts and M1450 of z>5.7 quasars (Table 3)",
+      "evidence": [
+       {
+        "loc": "2.3 Literature Sample",
+        "quote": "From the literature we collected all available observations of high-redshift ($z>5.7$) quasars obtained in the 1 mm band."
+       }
+      ]
+     },
+     "citation": "(cite: wan08b); (cite: omo13); (cite: wan13); (cite: ven16) and others"
+    },
+    {
+     "what": {
+      "value": "Dust mass opacity kappa = 0.77 (nu/352 GHz)^beta cm2/g",
+      "evidence": [
+       {
+        "loc": "4.3 Dust Masses",
+        "quote": "$\\kappa_\\nu(\\beta)=0.77\\,(\\nu/352\\,\\mathrm{GHz})^\\beta$ cm$^2$ g$^{-1}$ (cite: dun00)"
+       }
+      ]
+     },
+     "citation": "(cite: dun00)"
+    },
+    {
+     "what": {
+      "value": "Arp 220 and M82 templates",
+      "evidence": [
+       {
+        "loc": "4.1 FIR Luminosity",
+        "quote": "we can fit templates of the local star-forming galaxies Arp 220 and M82 (cite: sil98)"
+       }
+      ]
+     },
+     "citation": "(cite: sil98)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "1900 GHz map from line-free channels of the two [C II] spectral windows; 1790 GHz map from all channels of the lower-sideband windows; faint sources: all line-free channels of four windows",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Analysis",
+       "quote": "One was created by averaging the line-free channels in the two spectral windows targeting the \\[C II\\] line (cite: dec18)."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observation details and data reduction",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA Observations and Analysis",
+        "quote": "Further details of the observations and the data reduction can be found in (cite: dec18)."
+       }
+      ]
+     },
+     "from_reference": "(cite: dec18)"
+    },
+    {
+     "what": {
+      "value": "Dust SED assumption T=47 K, beta=1.6, negligible optical depth",
+      "evidence": [
+       {
+        "loc": "4.1 FIR Luminosity",
+        "quote": "Following the literature on $z\\sim6$ quasars (cite: wan08b; wan13; wil13; ven16), we here assume that the dust spectral energy distribution can be described by a modified blackbody"
+       }
+      ]
+     },
+     "from_reference": "(cite: bee06; lei14); (cite: wan08b; wan13; wil13; ven16)"
+    },
+    {
+     "what": {
+      "value": "Only S/N>10 sources used for size measurement",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission size",
+        "quote": "Following (cite: dec18), we only regard objects detected at S/N $>10$ as suitable to determine the extent of the emission."
+       }
+      ]
+     },
+     "from_reference": "(cite: dec18)"
+    },
+    {
+     "what": {
+      "value": "SFR from TIR luminosity relation",
+      "evidence": [
+       {
+        "loc": "4.2 SFRs",
+        "quote": "SFR $=1.48\\times10^{-10} L_\\mathrm{TIR}/L_\\ensuremath{\\odot}$ (cite: mur11)"
+       }
+      ]
+     },
+     "from_reference": "(cite: mur11)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibration pipeline, CASA version, calibrators and flux scale uncertainty (deferred to Decarli et al. 2018)",
+    "tclean parameters: weighting/robust, cell size, image size, masking, deconvolver",
+    "Line-free channel selection for each source",
+    "Exact flux conversion from 1900/1790 GHz rest-frame to observed 1 mm used in histograms and Table 3 comparison",
+    "Method for the linear fit and Pearson r (sample set, treatment of upper limits)",
+    "Rest frequency of [C II] and the continuum frequency values per source"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "make continuum maps",
+    "method": {
+     "value": "Average line-free channels in [C II] windows (1900 GHz rest) and all channels in lower sideband windows (1790 GHz rest); for four faint sources average all line-free channels of four windows",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Analysis",
+       "quote": "The second map was constructed by averaging all the channels in the spectral windows in the lower sideband"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "measure continuum flux densities and sizes",
+    "method": {
+     "value": "Peak pixel within 0.5 arcsec of quasar position; imfit integrated flux if peak S/N>=7, else peak flux",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Analysis",
+       "quote": "If the S/N ratio of the peak flux density in one of the continuum maps was at least 7, then the integrated flux densities provided by “imfit” were taken as the brightness of the source"
+      }
+     ]
+    },
+    "software": [
+     "CASA imfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "search radius 0.5 arcsec",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA Observations and Analysis",
+        "quote": "the peak flux density in the maps was measured by selecting the brightest pixel within 0.5$''$ of the quasar position"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "derive FIR luminosity, SFR and dust mass",
+    "method": {
+     "value": "Scale modified blackbody to measured flux; integrate 42.5–122.5 um for L_FIR and 3–1100 um for L_TIR; SFR from Murphy relation; dust mass from Eq. 2",
+     "evidence": [
+      {
+       "loc": "4.1 FIR Luminosity",
+       "quote": "The FIR luminosity, $L_{\\mathrm{FIR}}$, is calculated by integrating Equation ([\\[eq:sdust\\]](#eq:sdust)) between 42.5 and 122.5 $\\mu$m in the rest-frame (cite: hel88)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T_dust=47 K, beta=1.6, negligible dust optical depth, Kroupa IMF, all dust heated by star formation",
+      "evidence": [
+       {
+        "loc": "4.3 Dust Masses",
+        "quote": "Assuming $T_\\mathrm{dust}=47$ K, $\\beta=1.6$ and a negligible dust optical depth at $\\nu_\\mathrm{rest}=1790$ GHz"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Sensitivity to alternative SED parameters (T=55 K, Arp 220/M82 templates, tau=1) quantified",
+     "evidence": [
+      {
+       "loc": "4.1 FIR Luminosity",
+       "quote": "Scaling the M82 and Arp 220 templates to our measured flux density results in an FIR luminosity that is 38% and 48% lower, respectively."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "test L_FIR vs UV luminosity correlation",
+    "method": {
+     "value": "Pearson correlation and straight-line fit of log L_FIR vs M1450 for all literature+new quasars and for the complete luminosity-limited sample",
+     "evidence": [
+      {
+       "loc": "4.4 Correlation between the FIR and UV Luminosity",
+       "quote": "Fitting a straight line to the data results in the a correlation with a non-zero slope"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Restricted to complete sample to check selection bias",
+     "evidence": [
+      {
+       "loc": "4.4 Correlation between the FIR and UV Luminosity",
+       "quote": "In this complete sample, the correlation is even weaker, with a Pearson’s $r=-0.22$."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "continuum flux/size measurement with imfit",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Analysis",
+       "quote": "We also measured the source brightness and extent using the CASA task “imfit.”"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Rest-frame 1900 GHz flux density range",
+    "value": "0.12–5.9",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$0.12<S_\\mathrm{rest,\\,1900\\,GHz}<5.9$ mJy, with a median (mean) flux density of 0.88 mJy (1.59 mJy)"
+     }
+    ]
+   },
+   {
+    "quantity": "FIR luminosity range",
+    "value": "(0.27–13)e12",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\mathrm{FIR}}$ $=(0.27-13)\\times10^{12}$ $L_\\ensuremath{\\odot}$, with 74% of our quasar hosts having $L_{\\mathrm{FIR}}$ $>10^{12}$ $L_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median L_FIR",
+    "value": "1.8e12",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 FIR Luminosity",
+      "quote": "with a median value of $L_{\\mathrm{FIR}}$ $=1.8\\times10^{12}$ $L_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR range",
+    "value": "50–2700",
+    "uncertainty": "factor ~2–3",
+    "units": "Msun/yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 SFRs",
+      "quote": "we derive SFRs of SFR $=50-2700$ $M_\\ensuremath{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass range",
+    "value": "2e7–1e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Dust Masses",
+      "quote": "the estimated dust masses range from $M_\\mathrm{dust} \\approx 2\\times10^7$ $M_\\ensuremath{\\odot}$ for the faintest sources"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson r, L_FIR vs M1450 (all)",
+    "value": "-0.37",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.4 Correlation between the FIR and UV Luminosity",
+      "quote": "with a Pearson’s $r$ of $r=-0.37$"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson r, complete sample",
+    "value": "-0.22",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.4 Correlation between the FIR and UV Luminosity",
+      "quote": "the correlation is even weaker, with a Pearson’s $r=-0.22$"
+     }
+    ]
+   },
+   {
+    "quantity": "Linear fit slope log L_FIR vs (M_UV+26)",
+    "value": "-0.18",
+    "uncertainty": "0.04",
+    "units": "dex per mag",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.4 Correlation between the FIR and UV Luminosity",
+      "quote": "log($L_{\\mathrm{FIR}}$) = $(12.41\\pm0.05) - (0.18\\pm0.04) \\times (M_\\mathrm{UV} + 26)$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All 27 hosts detected; sources at S/N>10 are unresolved or marginally resolved at ~1 arcsec resolution",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "We detect all 27 quasar hosts in the dust continuum (Figure [1](#fig:maps)) at a significance of $\\gtrsim3$$\\sigma$"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Quasar UV luminosity correlates with host FIR luminosity",
+    "experiment": "Compare L_FIR with M1450 for new plus literature quasars and the complete sample",
+    "result": "r=-0.37 overall, r=-0.22 for complete sample",
+    "finding": "No strong correlation; coevolution not ruled out but not supported",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we do not find a strong correlation between quasar UV luminosity (a proxy for ongoing black hole growth) and FIR luminosity"
+     }
+    ]
+   },
+   {
+    "hypothesis": "z~6 quasar hosts are FIR luminous",
+    "experiment": "ALMA 1 mm continuum of 27 quasars",
+    "result": "74% have L_FIR>1e12 Lsun",
+    "finding": "Most hosts are ULIRG-like",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with 74% of our quasar hosts having $L_{\\mathrm{FIR}}$ $>10^{12}$ $L_\\ensuremath{\\odot}$"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Luminosity-limited sample to give less biased view of hosts",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "To obtain a less biased view of the host galaxies of $z>6$ quasars"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Alternative dust SEDs (T=41 K beta=1.95; T=38 K beta=2.0; T=55 K; Arp 220/M82 templates; tau=1) tested for impact on L_FIR",
+     "evidence": [
+      {
+       "loc": "4.1 FIR Luminosity",
+       "quote": "Using $T_{\\mathrm{dust}}$ $=38$ K and $\\beta=2.0$ results in an FIR luminosity that is 23% lower"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Derived L_FIR, SFR and dust mass dominated by assumed SED; only Rayleigh-Jeans data so T and beta degenerate",
+     "evidence": [
+      {
+       "loc": "4.1 FIR Luminosity",
+       "quote": "from our data alone we cannot derive a dust temperature together with the emissivity index, as they are degenerate"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-band continuum, so L_FIR is extrapolated from assumed SED",
+    "Pearson r treatment of upper limits in literature sample not described",
+    "Low resolution prevents robust size/SFR density",
+    "Sample selection includes quasar J1152+0055 below luminosity cut"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA program cited with acknowledgement; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.01115.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "Calibration details (in Decarli et al. 2018)",
+    "Table 3 conversion details",
+    "Fit method details"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for 27 short snapshots",
+   "score_inferred": 3,
+   "score_reason": "Simple measurements and clear SED assumptions with tabulated results, but imaging and calibration settings are deferred to another paper.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data from a single ALMA program, simple continuum flux measurement and analytic derived quantities with tabulated numeric answers."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: dec18)",
+     "why": "Observation and data reduction details"
+    },
+    {
+     "citation": "(cite: ven16)",
+     "why": "Previous SED and correlation analysis"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: dec18)",
+     "why": "[C II] properties of the same sample"
+    },
+    {
+     "citation": "(cite: dec17)",
+     "why": "[C II] companion sources"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 3 z>6 quasar [C II] survey (2015.1.01115.S)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-0b3d75535947e8154b633b2912c56b4a",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:11",
+  "usage": {
+   "input_tokens": 35130,
+   "output_tokens": 7411,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.072791,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 47,
+  "quotes_ok": 47,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 34,
+   "rate": 0.486
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:34:53",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[1].fitting",
+    "old_value": "imfit Gaussian fit"
+   },
+   {
+    "path": "analysis_steps[3].fitting",
+    "old_value": "straight line fit; method not stated"
+   }
+  ],
+  "dropped_items": []
+ }
+}

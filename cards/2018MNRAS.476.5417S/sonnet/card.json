@@ -1,0 +1,928 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018MNRAS.476.5417S",
+  "title": "Unveiling the inner morphology and gas kinematics of NGC 5135 with ALMA",
+  "year": 2018,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Sabatini, G.",
+  "n_authors": 8,
+  "arxiv_id": "1712.08834",
+  "doi": "10.1093/mnras/sty570",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2013.1.00243.S",
+   "2013.1.00524.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "based on the analysis of Atacama Large Millimeter Array (ALMA) archival data"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 5135",
+     "coordinates": {
+      "value": "AGN region A: RA(J2000) +13:25:43.99, DEC(J2000) -29:50:00.02",
+      "evidence": [
+       {
+        "loc": "NGC5135",
+        "quote": "NGC 5135, a nearby galaxy at $z$=$0.013693$ (implying a scale of $\\sim$281 pc/arcsec)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.013693 (~281 pc/arcsec)",
+      "evidence": [
+       {
+        "loc": "NGC5135",
+        "quote": "NGC 5135, a nearby galaxy at $z$=$0.013693$ (implying a scale of $\\sim$281 pc/arcsec)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the inner gas morphology and kinematics of the Seyfert 2 galaxy NGC 5135, and can a tilted-ring rotating disk model explain them?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we present a reconstruction of the gas morphology and kinematics in the inner regions of this galaxy"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00243.S",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "project 2013.1.00243.S, PI: Colina"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00524.S",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "project 2013.1.00524.S, PI: N. Lu"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (~1.3 mm) and Band 9 (~500 um)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "band 6 (B6, $\\sim$1.3 mm) and band 9 (B9, $\\sim$500 $\\mu$m)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "B6: 1875 MHz windows at 227.4 and 241.6 GHz (488 kHz channels), 2 GHz continuum window at 228.8 GHz; B9: four windows at 678.2, 680.2, 683.7, 682.0 GHz",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "Two 1875 MHz spectral windows, centred respectively at the sky frequencies of 227.4 GHz, and 241.6 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "cover the expected frequency of CO(2–1) and CS(5–4) molecular line emissions"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=5-4",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "cover the expected frequency of CO(2–1) and CS(5–4) molecular line emissions"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=6-5",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "The expected sky frequency of CO(6–5) transition falls in the fourth spectral window."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "B6: compact (38 antennas) and extended (44 antennas); B9: 39 antennas",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "The “compact” configuration was obtained with 38 antennas distributed over the baseline range between 15.0 and 348.5 m, while the “extended” one with 44 antennas over the baseline range 15 – 1600 m"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "B9: 20.5-886 m",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "39 12-m antennas included in a range of baselines between 20.5 and 886 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "B6 continuum beam 0.25x0.20 arcsec; B9 0.30x0.29 arcsec",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "The achieved continuum beam size of the concatenated image is 0.25$^{\\prime \\prime}\\times$ 0.20$^{\\prime \\prime}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "B6 ~12 arcsec; B9 ~2.68 arcsec",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "The maximum recoverable scale for the B9 configuration is $\\simeq$2.68 arcsec."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "B6 continuum rms 1.9e-5 Jy/beam; B9 2.11e-3 Jy/beam",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "the 1$\\sigma$ RMS is 1.9$\\times$ $10^{-5}$ Jy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "B9 on 2 June 2015 (Cycle 3)",
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "were taken on June 2$^{nd}$ 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival; PIs Colina (B6) and N. Lu (B9)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "based on the analysis of Atacama Large Millimeter Array (ALMA) archival data"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLT SINFONI",
+     "provided": {
+      "value": "Near-IR line and continuum maps used for AGN and SF region positions",
+      "evidence": [
+       {
+        "loc": "NGC5135",
+        "quote": "(cite: bedregal2009) observed NGC 5135 with VLT SINFONI in \\[Si VI\\]$\\lambda \\:1.96\\: \\mu m$ line"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Chandra",
+     "provided": {
+      "value": "X-ray AGN position and obscuration",
+      "evidence": [
+       {
+        "loc": "NGC5135",
+        "quote": "Our target was also observed by (cite: levenson2004) in the X-rays with Chandra (0.4-8 keV)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SED decomposition parameters (M*, L_IR, SFR, L_BOL AGN) and broad-band SED",
+      "evidence": [
+       {
+        "loc": "NGC5135",
+        "quote": "the broad-band SED and the result of the decomposition performed by (cite: gruppioni2016) are shown in Figure [2]"
+       }
+      ]
+     },
+     "citation": "(cite: gruppioni2016)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "B6: archive ALMA pipeline; B9: manual calibration, improved over archive script",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "Manual calibration was performed for the archival data."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "B6 pipeline calibration CASA 4.2.2; concatenation with CASA 4.7.1",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "The calibrated data-sets of the two configurations were concatenated and combined with CASA 4.7.1."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "B9 flux model scaled by factor 0.84 to 1.39 Jy; phase calibrator J1316-3338",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "updated the flux density model for the flux density calibrator by a factor 0.84 (to the value of 1.39 Jy)"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA standard cleaning on combined image",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "the CASA standard cleaning was performed on the combined image, considering *briggs - $robust=0.5$* weighting."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "considering *briggs - $robust=0.5$* weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Compact and extended B6 configurations concatenated",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "The calibrated data-sets of the two configurations were concatenated"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "B6 0.25x0.20 arcsec; B9 0.30x0.29 arcsec",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "The beam of the B9 continuum image is 0.30$^{\\prime \\prime}$v$\\times$0.29$^{\\prime \\prime}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "B6 1.9e-5, B9 2.11e-3 Jy/beam; moment 0 rms 1.1e-3 (CO 2-1), 1.5e-2 (CO 6-5), 1.5e-4 (CS) Jy km/s/beam",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "The 1$\\sigma$ RMS obtained for the moment 0 maps is 1.1$\\times$ $10^{-3}$ and 1.5$\\times$ $10^{-2}$ Jy km s$^{-1}$ beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "3D tilted-ring fitting code and residual definition",
+      "evidence": [
+       {
+        "loc": "4 3DBAROLO",
+        "quote": "the flux of the RMS of the data-cube is associated to D in case it is a blank pixel; see (cite: diteodoro2015) for details"
+       }
+      ]
+     },
+     "from_reference": "(cite: diteodoro2015)"
+    },
+    {
+     "what": {
+      "value": "SED decomposition of NGC 5135",
+      "evidence": [
+       {
+        "loc": "NGC5135",
+        "quote": "the broad-band SED and the result of the decomposition performed by (cite: gruppioni2016) are shown in Figure [2]"
+       }
+      ]
+     },
+     "from_reference": "(cite: gruppioni2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels and method of continuum subtraction",
+    "Clean threshold, mask, image size, cell size",
+    "Whether primary beam correction was applied",
+    "Rest frequencies and velocity definition for cubes",
+    "Full 3DBarolo parameter file (rings, widths, number of rings, fixed values, weighting function, fit-region)",
+    "Which B9 flux calibrator and how the 0.84 correction was derived",
+    "Self-calibration usage",
+    "Flagged antenna names",
+    "Region extraction geometries and region flux values"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image continuum and line data",
+    "method": {
+     "value": "B6 archive pipeline calibration with configurations concatenated; B9 manually recalibrated; CASA cleaning with briggs weighting",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "Finally, the CASA standard cleaning was performed on the combined image, considering *briggs - $robust=0.5$* weighting."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "3 The ALMA (archival) data",
+        "quote": "considering *briggs - $robust=0.5$* weighting"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make moment maps and measure region fluxes",
+    "method": {
+     "value": "Moment 0, 1, 2 maps; regions drawn on lower-resolution B9 continuum and applied to both bands using CASA viewer",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "we have selected the extraction region as to include all the flux in that band in the continuum image, applying the same extraction region to both bands."
+      }
+     ]
+    },
+    "software": [
+     "CASA viewer"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fix geometric parameters",
+    "method": {
+     "value": "PA from kpvslice; inclination from ellipse fit to DSS isophotes; kinematic centre from B6 continuum peak",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "The inclination ($i$) of the disc is estimated by using the DSS image of NGC 5135 (see Figure [7]) and matching the isophotal contours of the outer disc with an ellipsis."
+      }
+     ]
+    },
+    "software": [
+     "kpvslice",
+     "Karma"
+    ],
+    "key_parameters": [
+     {
+      "value": "PA ~10 (+5/-10) deg; i = 57 +/- 2 deg; thin disk",
+      "evidence": [
+       {
+        "loc": "4 3DBAROLO",
+        "quote": "This method provided an estimate of the inclination angle $i$=$57\\pm 2$ deg"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Thin disk, rotation-dominated kinematics, emission peak of B6 continuum coincident with AGN",
+      "evidence": [
+       {
+        "loc": "4 3DBAROLO",
+        "quote": "assuming the emission peak of the B6 continuum coincident with the position of the AGN"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "PA varied in 5 deg steps within error to test robustness",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "varying the PA by steps of 5$^{\\circ}$ within the error, around the best-fit value"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit 3D tilted-ring model to CO(2-1) cube",
+    "method": {
+     "value": "3DBarolo chi-square-like minimisation with local and azim normalisations, within R_max = 4 arcsec",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "we have chosen a kind of $\\chi^{2}$"
+      }
+     ]
+    },
+    "software": [
+     "3DBarolo"
+    ],
+    "key_parameters": [
+     {
+      "value": "Rmax = 4 arcsec (~1.167 kpc); 52 channels of 10 km/s shown",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "seven representative velocity channels (out of 52) of spectral resolution 10 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Minimise Delta r = (M-D)^2/sqrt(D); no sampler or priors stated",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "then $^{\\rm 3D}$`BAROLO` minimises the quantity:"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare local and azim solutions; compare moment maps and PV diagrams of model with data",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "the `local` model solutions must be compatible with those found by the `azim` one."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.2 (pipeline), 4.7.1 (concatenation)",
+    "used_for": {
+     "value": "Calibration, concatenation, cleaning, viewer for regions",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "The data available in the archive were calibrated using the ALMA calibration pipeline using CASA version 4.2.2."
+      }
+     ]
+    }
+   },
+   {
+    "name": "3DBarolo",
+    "version": "v1.3",
+    "used_for": {
+     "value": "Tilted-ring kinematic modelling of CO(2-1) cube",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "In the $^{\\rm 3D}$`BAROLO` version used in this work (v1.3)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "kpvslice (Karma)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Estimating position angle of major axis",
+     "evidence": [
+      {
+       "loc": "4 3DBAROLO",
+       "quote": "By using the code kpvslice, an extension of the Karma software"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Inclination",
+    "value": "57",
+    "uncertainty": "2",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 3DBAROLO",
+      "quote": "This method provided an estimate of the inclination angle $i$=$57\\pm 2$ deg"
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle",
+    "value": "10",
+    "uncertainty": "+5/-10",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 3DBAROLO",
+      "quote": "we found $\\phi \\sim10^{+5}_{-10}$ deg"
+     }
+    ]
+   },
+   {
+    "quantity": "B6 continuum rms",
+    "value": "1.9e-5",
+    "uncertainty": "not stated",
+    "units": "Jy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "the 1$\\sigma$ RMS is 1.9$\\times$ $10^{-5}$ Jy beam$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(2-1) rotation velocity rise",
+    "value": "20 to ~50 at ~1 kpc",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "passing from 20 km s$^{-1}$ to $\\sim$50 km s$^{-1}$ at $\\sim$1 kpc from the centre"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity dispersion",
+    "value": "~20 to 30",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "passing from $\\simeq$20 to 30 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial velocity (inflow)",
+    "value": "~-30",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "keeps almost constant, at around $-$30 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CS(5-4) flux density of region E",
+    "value": "0.29",
+    "uncertainty": "0.03",
+    "units": "Jy/beam",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3 The ALMA (archival) data",
+      "quote": "flux density $\\sim$0.29$\\pm$0.03 Jy/beam"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Gas inflow toward the nucleus through spiral arms and bar, superimposed on disk rotation",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "discovery of radial motions overimposed to the galaxy disk rotation, with clear evidence of them consisting of gas inflow towards the nucleus"
+     }
+    ]
+   },
+   {
+    "value": "AGN region unresolved in continuum, not detected in CO",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "while do not detected any CO emission, in agreement with the AGN being heavily obscured"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can a rotating disk plus radial motion model explain the inner CO(2-1) kinematics?",
+    "experiment": "3DBarolo tilted-ring fit with local and azim normalisations",
+    "result": "Models reproduce velocity field and most of the structure; not regions F and H or the dispersion map",
+    "finding": "Overall structure is rotation plus inflow, with non-axisymmetric exceptions",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "we cannot consider our best-fit model as fully explanatory of the gas kinematic in NGC 5135, but only an approximation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "What is the origin of the two-velocity region F?",
+    "experiment": "Examine channel maps, spectra, PV minor axis",
+    "result": "Empty cavity bounded by +/-70 km/s blobs",
+    "finding": "Possible expanding super-bubble",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5 The possible origins",
+      "quote": "resembles an expanding super-bubble"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the nuclear mm flux match torus-only SED expectations?",
+    "experiment": "Compare B6 and B9 flux of region A with SED decomposition",
+    "result": "Flux exceeds torus-only expectation by about two orders of magnitude",
+    "finding": "Upper limit to torus; possible contamination from SF or colder dust",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "largely exceed the SED decomposition expectations for torus only (by about two orders of magnitude)"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Archival ALMA B6 and B9 data available for this Seyfert galaxy",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "For one of these Seyfert galaxies, NGC 5135, ALMA data were available in the archive in two bands"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "SNR and AGN outflow origins for region F were discarded",
+     "evidence": [
+      {
+       "loc": "5 The possible origins",
+       "quote": "Hence the SNR origin hypothesis is likely to be discarded for no clear evidence of the presence of the remnant."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "B9 maximum recoverable scale is small, so fluxes between bands are not comparable",
+     "evidence": [
+      {
+       "loc": "3 The ALMA (archival) data",
+       "quote": "any direct comparison between the fluxes measured in the two bands will not be possible"
+      }
+     ]
+    },
+    {
+     "value": "Bar-induced non-circular motions are not fully reconstructed",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "the presence of the nuclear bar at the centre of NGC 5135 introduces motions in the innermost gas that the $^{3D}$`BAROLO` software is unable to reconstruct perfectly"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Inclination from a DSS outer-disc ellipse may not apply to the inner gas disk",
+    "Thin-disk, axisymmetric assumption in a barred region",
+    "Super-bubble interpretation is qualitative, with no quantitative energetics",
+    "Region fluxes are not tabulated"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "based on the analysis of Atacama Large Millimeter Array (ALMA) archival data"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "3DBarolo parameter file",
+    "Imaging parameters beyond robust",
+    "Line-free channels",
+    "Region definitions and fluxes"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw across both projects",
+   "score_inferred": 3,
+   "score_reason": "Public data and a named code, but many imaging and fitting parameters are missing and results are mostly qualitative.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe is incomplete and main results are mostly qualitative."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: diteodoro2015)",
+     "why": "3DBarolo tilted-ring code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: gruppioni2016)",
+     "why": "Seyfert SED decomposition sample"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "12 micron galaxy sample (12MGS)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-7ab1364e6cb424badafb093ae3a95864",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:38:00",
+  "usage": {
+   "input_tokens": 20451,
+   "output_tokens": 7977,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.060942,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 46,
+   "rate": 0.639
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,970 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...810..133I",
+  "title": "Compact Starbursts in z ∼ 3-6 Submillimeter Galaxies Revealed by ALMA",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Ikarashi, Soh",
+  "n_authors": 20,
+  "arxiv_id": "1411.5038",
+  "doi": "10.1088/0004-637X/810/2/133",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00326.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report the source size distribution, as measured by ALMA millimetric continuum imaging, of a sample of 13 AzTEC-selected submillimeter galaxies (SMGs) at $z_{\\rm phot}\\sim3$–6."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "13 ASXDF SMGs in SXDF (e.g. ASXDF1100.013.1, 027.1, 053.1)",
+     "coordinates": {
+      "value": "Per-source RA/Dec in Table 1 (e.g. 02:16:45.86, -5:03:47.2 for ASXDF1100.013.1)",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "we observed 30 AzTEC sources in the Subaru/XMM-Newton Deep field (SXDF), which includes the UKIDSS UDS field"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| ASXDF1100.013.1    | 02:16:45.86        | $-$5:03:47.2       | 18.5 |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_phot>=2.8 for 3 sources with photo-z; others lower limits from 4.5-um relation; z~3-6 assumed (stacked radio/mm colour gives z=4.0+/-0.4)",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "we observed 30 AzTEC sources in the Subaru/XMM-Newton Deep field (SXDF), which includes the UKIDSS UDS field"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| ASXDF1100.013.1    | 02:16:45.86        | $-$5:03:47.2       | 18.5 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "SED fitting following Caputi et al. 2012; 4.5um-z relation from ALESS; radio/mm colour (Carilli & Yun 1999)",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "we observed 30 AzTEC sources in the Subaru/XMM-Newton Deep field (SXDF), which includes the UKIDSS UDS field"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| ASXDF1100.013.1    | 02:16:45.86        | $-$5:03:47.2       | 18.5 |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Are the starburst regions of z~3-6 SMGs compact enough to be progenitors of z~2 compact quiescent galaxies, as measured by ALMA 1100-um continuum sizes?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we need to image more typical SMGs with $L_{\\rm IR}\\sim 10^{12}$ L$_{\\odot}$."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "We demonstrate that they have the compact starburst nuclei necessary to produce the small structures that typify cQGs."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00326.S",
+     "evidence": [
+      {
+       "loc": "2 AzTEC-selected z>~3 SMGs",
+       "quote": "Our ALMA program (2012.1.00326.S, P.I. Ikarashi; Ikarashi et al. in prep)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "continuum centered at 265 GHz (1100 um)",
+    "evidence": [
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "We measured the source sizes of our ASXDF sources using ALMA continuum data centered at 265 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "25 12-m antennas (baselines up to 400 klambda, 440 m) for 7 sources; 28 antennas with extended baselines up to 1200 klambda (1320 m) for 6 sources",
+    "evidence": [
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "Seven of the 13 ASXDF sources were observed with 25 working 12-m antennas, mainly covering baselines up to 400 k$\\lambda$, corresponding to physical baseline lengths of 440 m."
+     },
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "The remaining six sources were observed with three more 12-m antennas, deployed for tests on longer baselines, covering up to 1200 k$\\lambda$ or 1320 m."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.7\" (baselines <=400 klambda); 0.23\" x 0.19\" (PA=21 deg) for high-res images (200-1200 klambda)",
+    "evidence": [
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "The synthesized beam size in our ALMA continuum images, using baselines up to 400 k$\\lambda$, is $\\sim 0''.7$ (FWHM)"
+     },
+     {
+      "loc": "3.2 Ancillary long-baseline data",
+      "quote": "The resultant synthesized beam is 0$''$.23 $\\times$ 0$''$.19 (PA $=$ 21$^{\\circ}$)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 70-88 uJy/beam (<=400 klambda images)",
+    "evidence": [
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "sufficient to achieve r.m.s. noise levels of 70–88 $\\mu$Jy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "3.6-4.5 minutes",
+    "evidence": [
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "On-source observation times were 3.6–4.5 minutes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel (PACS/SPIRE)",
+     "provided": {
+      "value": "Faintness selection and stacked FIR fluxes",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "We selected our ALMA targets based on their faintness in the $\\it Herschel$ images (cite: oli12)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA 1.4 GHz",
+     "provided": {
+      "value": "Radio faintness selection and stacked flux (15.2+/-2.4 uJy)",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "Given a stacked VLA 1.4-GHz flux density of $15.2\\pm 2.4$ $\\mu$Jy"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Optical-IRAC photometry (SXDF/UDS)",
+     "provided": {
+      "value": "12-band SED photo-z",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "we have performed the spectral energy distribution (SED) analysis of our sources based on 12 bands"
+       }
+      ]
+     }
+    },
+    {
+     "name": "AzTEC/ASTE",
+     "provided": {
+      "value": "1100-um parent map selecting the targets",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "The AzTEC 1100-$\\mu$m map contains a total of 221 millimeter sources over a contiguous area of 950 arcmin$^2$."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Local (U)LIRG and disk Sigma_SFR from surface IR luminosity densities",
+      "evidence": [
+       {
+        "loc": "6 Surface SFR density",
+        "quote": "$\\Sigma_{\\rm SFR}$ for local merger-driven (U)LIRGs is 5–4500 M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$ with a median of 29$^{+24}_{-12}$"
+       }
+      ]
+     },
+     "citation": "(cite: ruj11)"
+    },
+    {
+     "what": {
+      "value": "High-z disk galaxy CO sizes (4 BzK and 14 disks)",
+      "evidence": [
+       {
+        "loc": "6 Surface SFR density",
+        "quote": "We took four BzK galaxies at $z\\sim$ 1.5 with CO $J$=2–1 sizes from (cite: dad10) and 14 high-redshift disk galaxies"
+       }
+      ]
+     },
+     "citation": "(cite: dad10); (cite: tac13)"
+    },
+    {
+     "what": {
+      "value": "Radio and CO sizes of z~1-3 SMGs (~0.5\")",
+      "evidence": [
+       {
+        "loc": "4 Are z~3-6 SMGs more compact",
+        "quote": "median radius of 0$''$.5 or 2.5 kpc as measured via radio continuum – (cite: big08) – or $\\sim 0''.5$ or 2 kpc as measured via high-$J$ CO emission – (cite: tac06)"
+       }
+      ]
+     },
+     "citation": "(cite: big08); (cite: tac06)"
+    },
+    {
+     "what": {
+      "value": "NIR sizes of cQGs and cSFGs",
+      "evidence": [
+       {
+        "loc": "5 progenitors of cQGs",
+        "quote": "We plot the sizes of $z\\gtrsim3$ SMGs alongside the NIR sizes of compact star-forming galaxies (cSFGs) at $z\\sim 2$–2.5 (cite: bar14) and cQGs (cite: kro13)"
+       }
+      ]
+     },
+     "citation": "(cite: bar14); (cite: kro13)"
+    },
+    {
+     "what": {
+      "value": "ALESS average SED/template used for SFR, L_IR and 4.5um-z relation",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "The SFRs and $L_{\\rm IR}$ are estimated from the average SMG SEDs."
+       }
+      ]
+     },
+     "citation": "(cite: sim14); (cite: swi14)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Monte-Carlo: 82000 mock Gaussian sources in noisy visibilities to calibrate size measurement bias",
+     "evidence": [
+      {
+       "loc": "3.1 Data, method and results",
+       "quote": "We generated 82000 mock sources with a symmetric Gaussian profile in noisy visibility data"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean for continuum images; imfit for image-plane fits",
+     "evidence": [
+      {
+       "loc": "3.1 Data, method and results",
+       "quote": "All of our sample shows the millimeter sizes of $\\gtrsim2$ times smaller than the beam size by a CASA task, imfit"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "high-res images use only 200-1200 klambda baselines; extended-baseline data used as supplementary",
+     "evidence": [
+      {
+       "loc": "3.2 Ancillary long-baseline data",
+       "quote": "we created high-angular-resolution ALMA millimeter continuum images (hereafter high-res images) using 200–1200 k$\\lambda$ baselines"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "high-res rms 122-126 uJy/beam individually; 88 (stacked faint), 67 (stacked all)",
+     "evidence": [
+      {
+       "loc": "3.2 Ancillary long-baseline data",
+       "quote": "are 126, 124, 124, 122, 122, 126, 88 and 67 $\\mu$Jy beam$^{-1}$, respectively"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SED/photo-z method",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "using the same method described in (cite: cap12)"
+       }
+      ]
+     },
+     "from_reference": "(cite: cap12)"
+    },
+    {
+     "what": {
+      "value": "uv-amplitude Gaussian size-fitting approach",
+      "evidence": [
+       {
+        "loc": "3.1 Data, method and results",
+        "quote": "assuming a symmetrical Gaussian[^1] as was done in previous studies"
+       }
+      ]
+     },
+     "from_reference": "(cite: ion06; you08; ivi10; ika11)"
+    },
+    {
+     "what": {
+      "value": "Visibility stacking with CASA code stacker",
+      "evidence": [
+       {
+        "loc": "3.2 Ancillary long-baseline data",
+        "quote": "we stacked the visibility data of these four sources using the CASA code, stacker (cite: lin15)"
+       }
+      ]
+     },
+     "from_reference": "(cite: lin15)"
+    },
+    {
+     "what": {
+      "value": "Further program details deferred",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "Our ALMA program (2012.1.00326.S, P.I. Ikarashi; Ikarashi et al. in prep)"
+       }
+      ]
+     },
+     "from_reference": "Ikarashi et al. in prep"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration procedure (manual vs pipeline), calibrators and flux scale",
+    "Clean parameters: weighting/robust, cell size, image size, masks, threshold",
+    "Exact model fitting of uv-amp plots (binning, fit parameter errors, uv range)",
+    "Details of the size-correction probability map from simulations",
+    "Mock source parameter grid and noise generation",
+    "Conversion from L_IR/SFR (SED template, T_d=32 K, IMF details) to SFR values",
+    "Bootstrapping details for stacking and Sigma_SFR distribution",
+    "Spectral setup/bandwidth and spectral windows"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Select sample and estimate redshifts",
+    "method": {
+     "value": "13 of 17 sources with S/N>=10 selected with z_phot>=2.8 or IRAC-faint (F4.5>=22.75 mAB) and detected in <=4 bands; minimum z from 4.5um-z relation; stacked radio/mm colour gives z=4.0",
+     "evidence": [
+      {
+       "loc": "2 AzTEC-selected z>~3 SMGs",
+       "quote": "we analyse here only the 13 (out of 17) sources that have photometric redshifts $z_{\\rm phot}\\geq2.8$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Average ALESS SMG template valid at z>3 (Td=32 K)",
+      "evidence": [
+       {
+        "loc": "2 AzTEC-selected z>~3 SMGs",
+        "quote": "Here we are assuming that this template is also valid at $z\\gtrsim3$–4."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure sizes from uv-amplitude plots",
+    "method": {
+     "value": "Fit symmetric Gaussian to visibilities (<=400 klambda) for >=10 sigma sources",
+     "evidence": [
+      {
+       "loc": "3.1 Data, method and results",
+       "quote": "we have measured source sizes using the visibility data directly – on $uv$–amplitude plots"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "S/N>=10 threshold",
+      "evidence": [
+       {
+        "loc": "3.1 Data, method and results",
+        "quote": "we measure millimeter size of ASXDF sources with $\\geq10\\sigma$ continuum detections"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Symmetric Gaussian profile",
+      "evidence": [
+       {
+        "loc": "3.1 Data, method and results",
+        "quote": "assuming a symmetrical Gaussian"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Monte-Carlo with 82000 mock sources",
+     "evidence": [
+      {
+       "loc": "3.1 Data, method and results",
+       "quote": "This plot demonstrates that our source size measurement is accurate to within 1$\\sigma$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Correct sizes for measurement bias",
+    "method": {
+     "value": "Use probability distribution of actual size for given S/N and measured size from simulations",
+     "evidence": [
+      {
+       "loc": "3.1 Data, method and results",
+       "quote": "the correction is done using the probability distribution of actual source size for the appropriate signal-to-noise ratio and measured size of each source"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Ellipticity dependence tested with axis ratios 0.5-1.0; overestimate ~10% at 0.5",
+     "evidence": [
+      {
+       "loc": "3.1 Data, method and results",
+       "quote": "at an axis ratio of 0.5, the circularized size can be over-estimated about 10 percent"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Check with long-baseline high-res images and stacking",
+    "method": {
+     "value": "Image 200-1200 klambda data, imfit, compare image flux with visibility flux at 200 klambda; stack visibilities of faint sources",
+     "evidence": [
+      {
+       "loc": "3.2 Ancillary long-baseline data",
+       "quote": "we compare fluxes measured using imfit on the high-res ALMA images with fluxes expected at a $uv$-distance of $\\geq200$ k$\\lambda$"
+      }
+     ]
+    },
+    "software": [
+     "CASA imfit",
+     "stacker"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Imfit ellipticity bias tested by Monte Carlo",
+     "evidence": [
+      {
+       "loc": "3.2 Ancillary long-baseline data",
+       "quote": "imfit tends to return major/minor axis ratio of $<1$ even for input axis ratio of 1"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Convert to physical size, Sigma_SFR and compare with other populations",
+    "method": {
+     "value": "Angular to physical size with uniform z=3-6 probability or photo-z error; Sigma_SFR from SFR and R_c,e; KS tests vs radio/CO sizes and local/high-z disks; bootstrapping",
+     "evidence": [
+      {
+       "loc": "4 Are z~3-6 SMGs more compact",
+       "quote": "we assume uniform redshift probability at $z=$3–6 for sources without photo-$z$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "H0=70, OmegaM=0.3, OmegaL=0.7",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "$H_{\\rm 0}= 70$ km s$^{-1}$ Mpc$^{-1}$, $\\Omega_{\\rm M}= 0.3$ and $\\Omega_{\\rm \\Lambda}= 0.7$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "imaging and imfit source fitting; stacker code runs in CASA",
+     "evidence": [
+      {
+       "loc": "3.2 Ancillary long-baseline data",
+       "quote": "We measured their millimeter sizes and fluxes in the image using a CASA task, imfit"
+      }
+     ]
+    }
+   },
+   {
+    "name": "stacker",
+    "version": "not stated",
+    "used_for": {
+     "value": "visibility stacking of faint sources",
+     "evidence": [
+      {
+       "loc": "3.2 Ancillary long-baseline data",
+       "quote": "using the CASA code, stacker (cite: lin15)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median FWHM size",
+    "value": "0.20",
+    "uncertainty": "+0.03/-0.05",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with a median of 0$''$.20$^{+0''.03}_{-0''.05}$ (FWHM)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median circularized effective radius R_c,e",
+    "value": "0.67",
+    "uncertainty": "+0.13/-0.14",
+    "units": "kpc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "0.67$^{+0.13}_{-0.14}$ kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Median Sigma_SFR",
+    "value": "100",
+    "uncertainty": "+42/-26",
+    "units": "Msun/yr/kpc^2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "100$^{+42}_{-26}$ M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median SFR",
+    "value": "340",
+    "uncertainty": "+12/-13",
+    "units": "Msun/yr",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 AzTEC-selected z>~3 SMGs",
+      "quote": "340$^{+12}_{-13}$ M$_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Image/visibility flux ratio at 200 klambda",
+    "value": "1.07",
+    "uncertainty": "+0.08/-0.09",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 Ancillary long-baseline data",
+      "quote": "F_{\\rm image, 200\\,k\\lambda} = 1.07^{+0.08}_{-0.09} \\times F_{\\rm visibility, 200\\,k\\lambda}"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked radio/mm photometric redshift",
+    "value": "4.0",
+    "uncertainty": "+/-0.4",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 AzTEC-selected z>~3 SMGs",
+      "quote": "we expect a photometric redshift, $z=4.0^{+0.4}_{-0.4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "KS probability, radio vs mm sizes (with 0.86 correction)",
+    "value": "3.5",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 Are z~3-6 SMGs more compact",
+      "quote": "gives 3.5 per cent that the differences between radio and millimeter sizes could arise by chance"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "~100% of rest-frame FIR emission in the sources comes from the compact component",
+    "evidence": [
+     {
+      "loc": "3.2 Ancillary long-baseline data",
+      "quote": "This indicates that $\\sim$ 100 percent of the rest-frame FIR emission in $z\\gtrsim3$ ASXDF sources comes from the compact component"
+     }
+    ]
+   },
+   {
+    "value": "Sigma_SFR is similar to local (U)LIRGs, not disks; merger vs disk-instability trigger cannot be distinguished",
+    "evidence": [
+     {
+      "loc": "6 Surface SFR density",
+      "quote": "Thus at this stage we cannot distinguish the trigger of starbursts of $z\\gtrsim3$ SMGs by their compact size."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "z>~3 SMGs have compact star-forming regions smaller than z~1-3 SMGs",
+    "experiment": "uv-amplitude Gaussian size fitting with Monte Carlo correction, compared with radio/CO sizes via KS test",
+    "result": "median R_c,e 0.67 kpc, >2x smaller than radio/CO sizes; KS probability 3.5%",
+    "finding": "z>~3 SMGs have more compact star formation than z~1-3 SMGs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4 Are z~3-6 SMGs more compact",
+      "quote": "our measured sizes are more than a factor $2\\times$ smaller than those of SMGs at $z\\sim$ 1–3"
+     }
+    ]
+   },
+   {
+    "hypothesis": "z>~3 SMGs are progenitors of z~2 compact quiescent galaxies",
+    "experiment": "Compare SMG sizes with NIR sizes of cQGs and cSFGs",
+    "result": "SMG sizes comparable to or smaller than cQG stellar sizes",
+    "finding": "Supports SMG to cQG to massive elliptical evolution",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 progenitors of cQGs",
+      "quote": "The size of the starburst region in $z\\sim$ 3–6 SMGs is comparable to (or smaller than) the (NIR) size of the stellar component in $z\\sim2$ cQGs"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The compact starbursts resemble local merger-driven (U)LIRGs rather than extended disks",
+    "experiment": "Sigma_SFR distribution vs local ULIRGs and disks with KS tests",
+    "result": "median Sigma_SFR 100 vs 29 (ULIRGs); 0% KS match with disks",
+    "finding": "Compact nuclear starbursts like local (U)LIRGs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Surface SFR density",
+      "quote": "Figure [11](#fig:ssfrd) shows that our sample has $\\Sigma_{\\rm SFR}$ similar to local (U)LIRGs rather than those of extended disks at high and low redshifts."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Beam of ~0.7\" too coarse to resolve; uv-amp fitting exploits long-baseline data for unresolved sources",
+    "evidence": [
+     {
+      "loc": "3.1 Data, method and results",
+      "quote": "too coarse to allow us to resolve any compact starburst nuclei in high-redshift SMGs"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Large Sigma_SFR uncertainties for ~0.1\" sources; only 13 sources; redshifts mostly lower limits",
+     "evidence": [
+      {
+       "loc": "6 Surface SFR density",
+       "quote": "This large uncertainty comes from the limit of size measurement in our data set."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Most redshifts are not spectroscopic; distances assumed uniformly distributed over z=3-6",
+    "Gaussian assumption and size correction depend on simulation priors",
+    "Sample selected for S/N>=10, Herschel/radio faintness; possible biases",
+    "Comparison with radio/CO sizes involves differing methods and luminosities"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data acknowledged as ADS/JAO.ALMA#2012.1.00326.S",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00326.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration and imaging parameters",
+    "Details of simulation-based correction and Monte-Carlo grid",
+    "SED templates and exact L_IR/SFR conversion",
+    "Photometric catalogs"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB (30 fields, short scans, 1 band)",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear approach, but imaging, calibration and fitting details are missing and key methods are deferred to in-prep papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete (simulation correction, calibration unspecified) though data are public."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: lin15)",
+     "why": "visibility stacking code stacker"
+    },
+    {
+     "citation": "(cite: cap12)",
+     "why": "SED photo-z method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Ikarashi et al. in prep",
+     "why": "program and SED analysis details"
+    },
+    {
+     "citation": "(cite: sim15)",
+     "why": "ALMA 870um sizes of SCUBA2 SMGs for comparison"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALESS",
+    "AzTEC SXDF survey",
+    "UKIDSS UDS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-122fde1bf069c6dc0fa1126a6ea270d3",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:19",
+  "usage": {
+   "input_tokens": 24348,
+   "output_tokens": 8979,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.069849,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 63,
+  "quotes_ok": 63,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 81,
+   "stated": 45,
+   "rate": 0.556
+  },
+  "evidence_ok": true
+ }
+}

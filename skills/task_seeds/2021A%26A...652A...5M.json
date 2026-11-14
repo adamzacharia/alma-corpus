@@ -1,0 +1,451 @@
+{
+ "bibcode": "2021A&A...652A...5M",
+ "title": "A study of submillimeter methanol absorption toward PKS 1830‒211:. Excitation, invariance of the proton-electron mass ratio, and systematics",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202140531",
+ "arxiv_id": "2105.08015",
+ "fields": [
+  "astrochemistry",
+  "cosmology",
+  "agn_and_quasars"
+ ],
+ "question": "Constrain the excitation of submillimeter methanol absorption lines at z=0.89 toward PKS 1830-211 and test the cosmological invariance of the proton-electron mass ratio mu from the relative kinematics of the lines",
+ "alma_project_codes": [
+  "2018.1.00051.S"
+ ],
+ "data": {
+  "bands": "Bands 4, 5, 6, 7 (four tunings; B4 observed twice: B4a, B4b)",
+  "arrays": "not stated",
+  "angular_resolution": "30-60 mas (July 2019 tunings); 0.18 arcsec for B4b",
+  "sensitivity": "rms noise normalized to the continuum level, 1.0-1.7 x 10^-3 per tuning at 1.0-1.6 km/s resolution"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mu-sensitivity coefficients K_mu for each methanol transition",
+    "evidence": [
+     {
+      "loc": "Appendix K_mu",
+      "quote": "Here, we adopt the $K_\\mu$ values from (cite: jan11a)"
+     }
+    ]
+   },
+   "citation": "(cite: jan11a) Jansen et al. 2011a"
+  },
+  {
+   "what": {
+    "value": "Collisional rate coefficients for CH3OH with para-H2 used in RADEX",
+    "evidence": [
+     {
+      "loc": "5 Excitation of methanol lines",
+      "quote": "we used the non-LTE radiative transfer code RADEX (cite: vdtak07) with collisional rate coefficients from (cite: pot04)"
+     }
+    ]
+   },
+   "citation": "(cite: pot04) Pottage et al. 2004"
+  },
+  {
+   "what": {
+    "value": "H2 column density of 2e22 cm^-2 (southwest) used as H2 proxy for abundance",
+    "evidence": [
+     {
+      "loc": "5.2 Methanol relative abundance",
+      "quote": "We further take the H$_2$ column density of $2 \\times 10^{22}$ cm$^{-2}$, estimated by (cite: mul14a) using CH spectra (obtained in 2012), as an H$_2$ proxy."
+     }
+    ]
+   },
+   "citation": "(cite: mul14a) Muller et al. 2014a"
+  },
+  {
+   "what": {
+    "value": "H2 column density of 1e21 cm^-2 for the northeast line of sight",
+    "evidence": [
+     {
+      "loc": "3.3 Non-detection of methanol on the northeast line of sight",
+      "quote": "With an H$_2$ column density of $1 \\times 10^{21}$ cm$^{-2}$ (cite: mul14a)"
+     }
+    ]
+   },
+   "citation": "(cite: mul14a) Muller et al. 2014a"
+  },
+  {
+   "what": {
+    "value": "Methanol rest frequencies and uncertainties",
+    "evidence": [
+     {
+      "loc": "Table of lines, notes",
+      "quote": "Rest frequencies are taken from the Cologne Database for Molecular Spectroscopy (cite: CDMS01; CDMS05; CDMS16)"
+     }
+    ]
+   },
+   "citation": "CDMS (cite: CDMS01; CDMS05; CDMS16), based on (cite: xu08) and (cite: xu97)"
+  },
+  {
+   "what": {
+    "value": "Core shift Omega ~0.8 mas GHz for PKS 1830-211",
+    "evidence": [
+     {
+      "loc": "6.3 Chromatic structure of the quasar",
+      "quote": "estimated a core shift of $\\Omega \\sim 0.8$ mas GHz"
+     }
+    ]
+   },
+   "citation": "(cite: mar13) Marti-Vidal et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and extract spectra toward SW and NE images",
+   "method": "CASA standard calibration, phase-only self-calibration on continuum, conversion topocentric to LSRK then heliocentric, spectra extracted with UVMultiFit using a two-point-source model",
+   "software": [
+    "CASA",
+    "UVMultiFit"
+   ],
+   "key_parameters": [
+    "v_Helio = v_LSRK - 12.4 km/s",
+    "Phase-only gain corrections every 6 s"
+   ],
+   "assumptions": [
+    "Two point sources adequately describe the data; third image and weak extensions have negligible effect on the spectra"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Assess quasar continuum variability and flux ratios",
+   "method": "Continuum flux densities and ratios of the NE and SW images tracked across tunings; light curve reconstructed using a time delay and spectral index",
+   "software": [],
+   "key_parameters": [
+    "time delay 27 days; spectral index alpha close to -0.7"
+   ],
+   "assumptions": [
+    "Light curve is smooth after the start of the observations"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit a common two-Gaussian opacity profile to all methanol lines",
+   "method": "Joint fit of all transitions with a sum of two Gaussian velocity components shared by all lines, with per-tuning covering factor f_c, per-line opacity scaling gamma_i and per-line bulk velocity v_i; 13CH3OH opacities tied to 12CH3OH",
+   "software": [
+    "Python scipy.optimize"
+   ],
+   "key_parameters": [
+    "Reference line: ground-state A-CH3OH (350.905 GHz) with gamma = 1"
+   ],
+   "assumptions": [
+    "Constant f_c as a function of velocity within a tuning",
+    "Errors Gaussian, parameters uncorrelated, model a good representation of the data"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain methanol excitation with a RADEX non-LTE grid",
+   "method": "RADEX models on a grid of n_H2 and Tkin (also G1 column density and A/E), compared to the ALMA spectra via chi2 summed over tunings; two Gaussian components treated as independent",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Grid: n_H2 1e3-1e6 cm^-3, Tkin 6-100 K",
+    "Two B4 visits averaged, average f_c adopted; 13CH3OH modeled with ratio 62 but not in the chi2"
+   ],
+   "assumptions": [
+    "Para-H2 is the collisional partner; no additional heating by ambient radiation field or cosmic rays; T_CMB = 5.14 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive A/E ratio, methanol abundance and 12C/13C ratio",
+   "method": "A/E from the RADEX grid; total column from summing A and E over G1 and G2 divided by an H2 proxy; 12CH3OH/13CH3OH from the tied opacity ratio in the joint profile fit",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "H2 column density 2e22 cm^-2 from 2012 CH spectra used as a proxy, despite profile variations between 2012 and 2019"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit multivariate regression of line velocities for delta mu / mu",
+   "method": "Weighted linear regression v_i/c = (dmu/mu)*K_mu + Gamma_t*t + Gamma_E*Elow + Gamma_0, with several variable combinations; rest-frequency uncertainties added quadratically",
+   "software": [],
+   "key_parameters": [
+    "K_mu values from Jansen et al. 2011a; frequency and K_mu not used as simultaneous variables (Pearson r ~ 0.8)"
+   ],
+   "assumptions": [
+    "Gaussian errors; 3-sigma upper limit taken as three times the 1-sigma uncertainty"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test chromatic and A/E systematics",
+   "method": "Replace K_mu with frequency in the regression; estimate f_c vs frequency and an upper limit on core shift; repeat regression separating A- and E-CH3OH",
+   "software": [],
+   "key_parameters": [
+    "Core shift Omega ~0.8 mas GHz (from Marti-Vidal 2013) gives max core shift ~2 microarcsec across the campaign"
+   ],
+   "assumptions": [
+    "Absorbing gas has constant solid angle so 1/f_c traces continuum solid angle"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Upper limit on methanol column density toward the northeast image",
+   "method": "Stack A- and E-CH3OH lines with Elow < 30 K (weights = inverse squared rms), derive integrated opacity upper limit, convert to column density under LTE with T_ex = T_CMB",
+   "software": [],
+   "key_parameters": [
+    "alpha = 2.2e13 cm^-2 km^-1 s for the ground-state A-CH3OH line; A/E = 1"
+   ],
+   "assumptions": [
+    "LTE with Tex = TCMB; line width 20 km/s"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Delta mu / mu (final multivariate regression with K_mu, t, Elow)",
+   "value": "-1.8e-7",
+   "uncertainty": "1.2e-7 (1 sigma)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Invariance of mu and systematics",
+     "quote": "(-1.8 \\pm 1.2) \\times 10^{-7}$ ($1\\sigma$ CL)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on |Delta mu / mu| (3 sigma)",
+   "value": "3.6e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Invariance of mu and systematics",
+     "quote": "to obtain an upper limit of $3.6 \\times 10^{-7}$ at $3\\sigma$ (99.7% CL)"
+    }
+   ]
+  },
+  {
+   "quantity": "Delta mu / mu from K_mu-only regression (first estimate)",
+   "value": "2.9e-7",
+   "uncertainty": "3.1e-7 (1 sigma)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Invariance of mu and systematics",
+     "quote": "$v_i/c = (2.9 \\pm 3.1) \\times 10^{-7} \\times \\hbox{$K_\\mu$}+ (-4.64 \\pm 0.16)/c$"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi2 of final multivariate regression",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Invariance of mu and systematics",
+     "quote": "yields the lowest $\\chi^2_r$ value ($\\chi^2_r =3.5$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity drift coefficient with time |Gamma_t|",
+   "value": "~8",
+   "uncertainty": "~10 sigma significance",
+   "units": "m s^-1 d^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Invariance of mu and systematics",
+     "quote": "with a coefficient $| \\Gamma_t | \\sim 8$ m s$^{-1}$ d$^{-1}$ determined at $\\sim 10\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity drift between B4a and B4b visits",
+   "value": "~0.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Invariance of mu and systematics",
+     "quote": "we clearly see a systematic drift of $\\sim 0.3$ km s$^{-1}$ between B4a and B4b visits"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi2 of common line profile fit",
+   "value": "2.0 (50 free parameters)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Construction of a global line opacity profile",
+     "quote": "(reduced $\\chi^2$ of 2.0 for 50 free parameters)"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol covering factors",
+   "value": "0.6-0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Construction of a global line opacity profile",
+     "quote": "The methanol covering factors are in the $0.6$–$0.8$ range"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit RADEX Tkin and n_H2 (chi2_r = 13)",
+   "value": "Tkin = 9 K; n_H2 = 1.3e5 cm^-3; A/E = 1",
+   "uncertainty": "1-sigma region Tkin 8-17 K, n_H2 2e4-2e5 cm^-3",
+   "units": "K; cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Excitation of methanol lines",
+     "quote": "an A/E abundance ratio of 1, $\\hbox{$T_\\mathrm{kin}$}=9$ K, and $\\hbox{$n_\\mathrm{H_2}$} = 1.3 \\times 10^5$ cm$^{-3}$"
+    },
+    {
+     "loc": "5 Excitation of methanol lines",
+     "quote": "indicates a region with $T_\\mathrm{kin}$ between $8 - 17$ K and $n_\\mathrm{H_2}$ between $2 \\times 10^4 - 2 \\times 10^5$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit A-CH3OH column densities for G1 and G2",
+   "value": "1.8e14 (G1) and 0.7e14 (G2)",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Excitation of methanol lines",
+     "quote": "column densities of A-CH$_3$OH of $1.8 \\times 10^{14}$ cm$^{-2}$ and $0.7 \\times 10^{14}$ cm$^{-2}$ for $G_1$ and $G_2$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol A/E abundance ratio",
+   "value": "1.0",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 The A/E ratio",
+     "quote": "we estimate an abundance ratio A/E $= 1.0 \\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total methanol column density (southwest)",
+   "value": "~5e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Methanol relative abundance",
+     "quote": "we estimate a total methanol column density of $\\sim 5 \\times 10^{14}$ cm$^{-2}$ along the southwest line of sight"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/H2 abundance (southwest)",
+   "value": "~2e-8",
+   "uncertainty": "not stated (rough estimate)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Methanol relative abundance",
+     "quote": "This yields an average methanol abundance relative to H$_2$ of CH$_3$OH/H$_2 \\sim 2 \\times 10^{-8}$ toward the southwest image"
+    }
+   ]
+  },
+  {
+   "quantity": "12CH3OH/13CH3OH ratio",
+   "value": "62",
+   "uncertainty": "3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 The 12CH3OH/13CH3OH ratio",
+     "quote": "ratio of $62 \\pm 3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol column density upper limit toward the northeast image",
+   "value": "<2.4e11 (3 sigma)",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Non-detection of methanol on the northeast line of sight",
+     "quote": "we then estimated a total methanol column density $< 2.4 \\times 10^{11}$ cm$^{-2}$ ($3\\sigma$ upper limit)"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative magnification factor of the two images minimizing flux dispersion",
+   "value": "1.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Quasar activity",
+     "quote": "A relative magnification factor of 1.04 would minimize the flux dispersion of points between July 10 and 28"
+    }
+   ]
+  },
+  {
+   "quantity": "Change in integrated opacity between B4a and B4b (-13 to -2 km/s)",
+   "value": "<10%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 Variability of the absorption profile",
+     "quote": "This feature corresponds to a change in integrated opacity within the velocity range $-13$ km s$^{-1}$ to $-2$ km s$^{-1}$ of less than 10%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration, mstransform and UVMultiFit",
+  "Whether the standard ALMA pipeline or manual scripts were used, and any flagging",
+  "Continuum normalization and how the 'normalized to continuum' spectra were produced from the UVMultiFit output (fit parameters, spectral windows, line-free channels)",
+  "Exact two-Gaussian fit initial values and velocity windows/channel ranges used for each line in the joint fit",
+  "Handling of the second-visit B4b configuration differences in the visibility fits (baseline weighting, uv range)",
+  "Numerical values of the 12.4 km/s-style frame shifts per epoch and the H2 collisional rate file details beyond LAMDA/Pottage rates",
+  "Exact time stamps of each tuning used for the regression variable t",
+  "Full table of K_mu, Elow, rest frequencies is in a table; RADEX line-width/column grid step sizes are not given"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibration scripts",
+  "UVMultiFit settings (uv range, weights, spectral windows) and continuum normalization",
+  "Initial guesses and fit windows for the joint profile fit; exact RADEX line widths and column grids",
+  "Per-line epoch times and Elow table values used in the regression (partly in tables)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "One public ALMA project code, numeric results and tables of fitted velocities are given, but CASA version, UVMultiFit settings, and fit initialization are unstated.",
+ "rediscovery_reason": "ALMA project is stated by code and numeric results (v_i table, regression coefficients, Delta mu/mu) are given; spectral extraction details are incomplete but the regression could be redone from the published tables.",
+ "source_card": "cards/2021A%26A...652A...5M/sonnet/card.md"
+}

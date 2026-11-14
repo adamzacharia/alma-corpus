@@ -1,0 +1,237 @@
+{
+ "bibcode": "2018MNRAS.479.5440L",
+ "title": "Neutral versus ionized gas kinematics at z ≃ 2.6: the AGN-host starburst galaxy PKS 0529-549",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty1795",
+ "arxiv_id": "1807.03321",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Do neutral ([C I]) and ionized ([O III]) gas trace the same kinematics in PKS 0529-549 at z~2.6, and is the [C I] disc dynamically relaxed and baryon-dominated?",
+ "alma_project_codes": [
+  "2013.1.00521.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "34 antennas, Cycle 2",
+  "angular_resolution": "0.43'' x 0.28'', PA 64.5 deg",
+  "sensitivity": "continuum 0.055 mJy/beam; [C I] 0.55 mJy/beam per 50 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass and H-band luminosity from Spitzer SED fit",
+    "evidence": [
+     {
+      "loc": "3.3 Mass budget",
+      "quote": "For PKS 0529-549, they give $L_{\\rm H} \\simeq 4 \\times 10^{11}$ L$_{\\odot}$ and $M_{\\star} \\simeq 3 \\times 10^{11}$ M$_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: deBreuck2010)"
+  },
+  {
+   "what": {
+    "value": "WIM mass 2.4e9 Msun",
+    "evidence": [
+     {
+      "loc": "3.3 Mass budget",
+      "quote": "estimate $2.4\\times10^{9}$ M$_{\\odot}$ for a fiducial electron density of 500 cm$^{-3}$"
+     }
+    ]
+   },
+   "citation": "(cite: Nesvadba2017)"
+  },
+  {
+   "what": {
+    "value": "Local baryonic Tully-Fisher relation from SPARC",
+    "evidence": [
+     {
+      "loc": "4.2 The baryonic Tully-Fisher relation",
+      "quote": "lies on the local baryonic TF relation from the SPARC sample"
+     }
+    ]
+   },
+   "citation": "(cite: Lelli2016b; Lelli2016a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [C I] cube",
+   "method": "CASA clean, natural weighting, 50 km/s channels, image-plane continuum subtraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Build moment maps",
+   "method": "Boolean-masked moment 0 and intensity-weighted moment 1 in GIPSY",
+   "software": [
+    "GIPSY"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "3D disc model of [C I]",
+   "method": "GALMOD trial-and-error for initial estimates and geometry, then 3DBarolo chi2 fit of Vrot and sigma in a single ring",
+   "software": [
+    "GALMOD",
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "exponential vertical profile, h = 0.04'' ~ 300 pc"
+   ],
+   "assumptions": [
+    "parameters constant with radius (single ring)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Mass budget and dynamical mass",
+   "method": "M_R = eps R Vrot^2/G with eps=1; baryonic mass from stellar (literature) + molecular (from [C I] flux) + WIM",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "[C/H2] abundance of M82; factor of 2 uncertainty"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with baryonic Tully-Fisher relation",
+   "method": "Place Vrot and Mbar on local SPARC BTFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C I](2-1) flux",
+   "value": "2.1",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA data",
+     "quote": "The [C I] flux is $2.1\\pm0.4$ Jy $\\mathrm{km}\\,\\mathrm{s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vrot",
+   "value": "310",
+   "uncertainty": "50",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$V_{\\rm rot}$ ($\\mathrm{km}\\,\\mathrm{s}^{-1}$) | $310\\pm50$"
+    }
+   ]
+  },
+  {
+   "quantity": "sigma_V",
+   "value": "<~30",
+   "uncertainty": "upper limit",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\sigma_{\\rm V}$ ($\\mathrm{km}\\,\\mathrm{s}^{-1}$) | $\\lesssim$30"
+    }
+   ]
+  },
+  {
+   "quantity": "inclination",
+   "value": "50",
+   "uncertainty": "4",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$i$ ($^{\\circ}$) | $50\\pm4$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_4kpc",
+   "value": "0.9e11",
+   "uncertainty": "0.3e11",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Mass budget",
+     "quote": "thus $M_{\\rm 4\\, kpc} = (0.9 \\pm 0.3) \\times10^{11}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_bar",
+   "value": "3.4e11",
+   "uncertainty": "2.0e11",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Mass budget",
+     "quote": "the total baryonic mass of PKS 0529-549 is $M_{\\rm bar} = (3.4\\pm2.0) \\times 10^{11}$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol",
+   "value": "4e10",
+   "uncertainty": "factor of 2",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Mass budget",
+     "quote": "we estimate $M_{\\rm mol}\\simeq 4 \\times 10^{10}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] disc fit Vrot/sigma",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison with other high-z galaxies",
+     "quote": "leading to $V_{\\rm rot}/\\sigma_{\\rm V}\\simeq0.3$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum subtraction",
+  "Exact channel mask regions",
+  "3DBarolo settings (initial estimates, ring geometry, normalization, fit options)",
+  "GALMOD fixed centre, PA, Vsys values and iteration details",
+  "CASA version and clean parameters (cell, image size, threshold)",
+  "Mol mass conversion details (Man et al. in prep.)"
+ ],
+ "missing_for_reproduction": [
+  "3DBarolo and GALMOD input parameters",
+  "Companion papers in prep. for flux and Mmol",
+  "Mask definition"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and clear workflow, but modelling and masking details incomplete and some inputs from in-prep papers.",
+ "rediscovery_reason": "Public data, numeric Vrot/sigma results; recipe moderately complete.",
+ "source_card": "cards/2018MNRAS.479.5440L/sonnet/card.md"
+}

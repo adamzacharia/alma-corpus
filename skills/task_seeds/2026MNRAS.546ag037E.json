@@ -1,0 +1,523 @@
+{
+ "bibcode": "2026MNRAS.546ag037E",
+ "title": "Stellar-mass black holes on the millimetre Fundamental Plane of black hole accretion",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag037",
+ "arxiv_id": "2601.04007",
+ "fields": [
+  "stellar_physics",
+  "agn_and_quasars"
+ ],
+ "question": "Whether the newly-discovered millimetre fundamental plane of black hole accretion holds for accreting stellar-mass black holes (X-ray binaries), and whether ADAF or compact jet models can explain the correlation for these sources.",
+ "alma_project_codes": [
+  "2016.1.00496.S",
+  "2019.1.01324.T",
+  "2017.1.00051.S",
+  "2016.1.00773.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ACA (Atacama Compact Array) and archival ALMA",
+  "angular_resolution": "4.448'' - 6.646'' (ACA)",
+  "sensitivity": "0.42 - 0.60 mJy beam^-1 (ACA continuum rms)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "48 SMBH / AGN sample defining the mmFP",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The mm fundamental plane of BH accretion (mmFP) was discovered for a sample of $48$ sources primarily drawn from the mm-Wave Interferometric Survey of Dark Object Masses (WISDOM) project."
+     }
+    ]
+   },
+   "citation": "(cite: Ruffa24)"
+  },
+  {
+   "what": {
+    "value": "98 GHz ALMA continuum flux of A0620-00 (0.044 +/- 0.008 mJy)",
+    "evidence": [
+     {
+      "loc": "Archival Observations",
+      "quote": "In the case of A0620-00 we took the mm flux from (cite: Gallo2019) which was observed at $98$ GHz (Proposal ID: 2016.1.00773.S)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| A0620-00 (Archival) |  |  | $0.044\\pm0.008$ | $27.8\\pm0.04$ | 98 | 12-11-2016 | $30.7\\pm0.08$ | 12-09-2013 | Quiescent |"
+     }
+    ]
+   },
+   "citation": "(cite: Gallo2019)"
+  },
+  {
+   "what": {
+    "value": "350 GHz JCMT continuum flux of XTE J1118+480 (4.10 +/- 0.41 mJy)",
+    "evidence": [
+     {
+      "loc": "Archival Observations",
+      "quote": "Due to the impossibility of observing XTE J1118+480 with ACA (see Section 2.1), its mm luminosity was estimated from James Clerk Maxwell Telescope (JCMT) continuum observations at $350$ GHz (cite: Fender01)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| XTE J1118+480 (Archival) | $\\phantom{1}1.8\\phantom{1}$ | $0.85$ | $4.10\\pm0.41$ | $30.7\\pm0.04$ | $350$ | 30-05-2000 | $35.5\\pm0.08$ | 12-03-2000 | Hard |"
+     }
+    ]
+   },
+   "citation": "(cite: Fender01)"
+  },
+  {
+   "what": {
+    "value": "Distances and black hole masses for Cygnus X-1, GRS 1915+105, XTE J1118+480 and A0620-00, plus 2-10 keV X-ray flux of XTE J1118+480",
+    "evidence": [
+     {
+      "loc": "Archival Observations",
+      "quote": "Swift data are not available for XTE J1118+480, so its $2$ – $10$ keV flux was retrieved from the X-ray observations presented in (cite: Gultekin2019), which were taken in 2000, just two months apart from the available JCMT mm data."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "The distance and black hole mass of Cygnus X-1, GRS 1915+105, XTE J1118+480 and A0620-00 were taken from (cite: Gultekin2019), those of GX 339-4 from (cite: Tremou20)."
+     }
+    ]
+   },
+   "citation": "(cite: Gultekin2019)"
+  },
+  {
+   "what": {
+    "value": "Distance and black hole mass of GX 339-4",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The distance and black hole mass of Cygnus X-1, GRS 1915+105, XTE J1118+480 and A0620-00 were taken from (cite: Gultekin2019), those of GX 339-4 from (cite: Tremou20)."
+     }
+    ]
+   },
+   "citation": "(cite: Tremou20)"
+  },
+  {
+   "what": {
+    "value": "Chandra 3-9 keV X-ray observation, photon index Gamma = 2.07, and Table 1 variability data for A0620-00",
+    "evidence": [
+     {
+      "loc": "Archival Observations",
+      "quote": "We instead use the Chandra observation from (cite: Dincer2017) and use it for both our archival and ACA data points."
+     },
+     {
+      "loc": "Archival Observations",
+      "quote": "This observation was taken at $3--9$ keV range so as with the Swift data we scale it to the $2--10$ keV range using the $\\Gamma$ reported in (cite: Dincer2017) for A0620-00 of 2.07."
+     },
+     {
+      "loc": "Archival Observations",
+      "quote": "To quantify this we use the data from Table 1 of (cite: Dincer2017) and compute the fractional variability, $F_{\\rm var}$."
+     }
+    ]
+   },
+   "citation": "(cite: Dincer2017)"
+  },
+  {
+   "what": {
+    "value": "X-ray catalogue data",
+    "evidence": [
+     {
+      "loc": "Data Availability",
+      "quote": "The X-ray data were retrieved from the catalogue of (cite: Bi20) or from the NASA/IPAC Extragalactic Database"
+     }
+    ]
+   },
+   "citation": "(cite: Bi20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image new ACA and archival ALMA continuum observations",
+   "method": "Reduce data using the CASA pipeline following Davis et al. (2022) and Ruffa et al. (2024), and image the four continuum spectral windows together using CASA TCLEAN in multi-frequency synthesis mode.",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "230 GHz (ACA, Cygnus X-1 archival, GX 339-4 archival); 104 GHz (GRS 1915+105 archival)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure mm continuum fluxes, scale non-230 GHz fluxes, and derive 230 GHz luminosities",
+   "method": "Measure continuum fluxes and upper limits as in Ruffa et al. (2024), scale archival observations taken at 98, 104, and 350 GHz to 230 GHz assuming a flat spectral index, and compute luminosities using literature distances.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat mm spectral index alpha = 0 for scaling 98, 104, and 350 GHz fluxes to 230 GHz",
+    "Target distances from Gultekin et al. (2019) and Tremou et al. (2020)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compile and band-scale intrinsic 2-10 keV X-ray luminosities and assess variability",
+   "method": "Retrieve X-ray luminosities from Swift (0.3-10 keV), Chandra (3-9 keV), and literature, scale them to the 2-10 keV band using assumed spectral/photon indices, and calculate fractional variability F_var for A0620-00.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X-ray spectral index of -0.8 for scaling Swift 0.3-10 keV data to 2-10 keV",
+    "Photon index Gamma = 2.07 for scaling Chandra 3-9 keV data of A0620-00 to 2-10 keV"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the M_BH - L_nu,mm relation and the mm Fundamental Plane (mmFP)",
+   "method": "Fit the combined SMBH + XRB sample (including new ACA data for Cygnus X-1 and archival 230 GHz data for GX 339-4) using LTS_LINEFIT and LTS_PLANEFIT, and evaluate Spearman rank correlation coefficients.",
+   "software": [
+    "LTS_LINEFIT",
+    "LTS_PLANEFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare observations with ADAF and compact jet physical model grids",
+   "method": "Generate mock SEDs using the LLAGN ADAF model of Pesce et al. (2021) and the BHJET compact jet model of Lucchini et al. (2022) across grids of BH mass and accretion rate / jet power, extract predicted 230 GHz and 2-10 keV luminosities, and compare with observed XRB and SMBH data.",
+   "software": [
+    "BHJET"
+   ],
+   "key_parameters": [
+    "ADAF grid: M_BH = 10^0 - 10^10 M_sun, Mdot/Mdot_Edd = 10^-7 - 10^-2",
+    "BHJET grid: M_BH = 10^0 - 10^10 M_sun, jet power = 10^-5.5 - 10^-1.5 L_Edd, inclinations i = 2.5 deg and 90 deg"
+   ],
+   "assumptions": [
+    "All other model free parameters fixed at their default values calibrated for SMBHs"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Cygnus X-1 (ACA) 230 GHz continuum flux density f_nu,mm",
+   "value": "11.9",
+   "uncertainty": "0.39",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Cygnus X-1 (ACA) | $\\phantom{1}1.86$ | $1.17$ | $11.9\\pm0.39$ | $31.1\\pm0.04$ | $230$ | 11-05-2024 | $37.0\\pm0.08$ | 08-04-2024 | Soft |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cygnus X-1 (ACA) log10(L_nu,mm / erg s^-1)",
+   "value": "31.1",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Cygnus X-1 (ACA) | $\\phantom{1}1.86$ | $1.17$ | $11.9\\pm0.39$ | $31.1\\pm0.04$ | $230$ | 11-05-2024 | $37.0\\pm0.08$ | 08-04-2024 | Soft |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cygnus X-1 (Archival) 230 GHz continuum flux density f_nu,mm",
+   "value": "4.16",
+   "uncertainty": "0.42",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Cygnus X-1 (Archival) |  |  | $4.16\\pm0.42$ | $30.6\\pm0.04$ | $230$ | 06-11-2016 | $36.7\\pm0.08$ | 23-11-2016 | Hard |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cygnus X-1 (Archival) log10(L_nu,mm / erg s^-1)",
+   "value": "30.6",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Cygnus X-1 (Archival) |  |  | $4.16\\pm0.42$ | $30.6\\pm0.04$ | $230$ | 06-11-2016 | $36.7\\pm0.08$ | 23-11-2016 | Hard |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRS 1915+105 (ACA) 230 GHz continuum flux density f_nu,mm upper limit",
+   "value": "<1.45",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRS 1915+105 (ACA) | $11\\phantom{.11}$ | 1.00 | $<1.45$ | $<31.7$ | $230$ | 26-05-2024 | $38.1\\pm0.08$ | 16-08-2023 | Obscured |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRS 1915+105 (ACA) log10(L_nu,mm / erg s^-1) upper limit",
+   "value": "<31.7",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRS 1915+105 (ACA) | $11\\phantom{.11}$ | 1.00 | $<1.45$ | $<31.7$ | $230$ | 26-05-2024 | $38.1\\pm0.08$ | 16-08-2023 | Obscured |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRS 1915+105 (Archival) 104 GHz continuum flux density f_nu,mm",
+   "value": "2.86",
+   "uncertainty": "0.29",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRS 1915+105 (Archival) |  |  | $2.86\\pm0.29$ | $31.6\\pm0.04$ | $104$ | 13-10-2017 | $39.7\\pm0.08$ | 18-10-2017 | Soft |"
+    }
+   ]
+  },
+  {
+   "quantity": "GRS 1915+105 (Archival) log10(L_nu,mm / erg s^-1)",
+   "value": "31.6",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GRS 1915+105 (Archival) |  |  | $2.86\\pm0.29$ | $31.6\\pm0.04$ | $104$ | 13-10-2017 | $39.7\\pm0.08$ | 18-10-2017 | Soft |"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 339-4 (ACA) 230 GHz continuum flux density f_nu,mm",
+   "value": "7.2",
+   "uncertainty": "0.50",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GX 339-4 (ACA) | $10\\phantom{.11}$ | $0.76$ | $\\phantom{1}7.2\\pm0.50$ | $32.3\\pm0.04$ | $230$ | 13-06-2024 | $37.1\\pm0.08$ | 16-06-2024 | Hard |"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 339-4 (ACA) log10(L_nu,mm / erg s^-1)",
+   "value": "32.3",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GX 339-4 (ACA) | $10\\phantom{.11}$ | $0.76$ | $\\phantom{1}7.2\\pm0.50$ | $32.3\\pm0.04$ | $230$ | 13-06-2024 | $37.1\\pm0.08$ | 16-06-2024 | Hard |"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 339-4 (Archival) 230 GHz continuum flux density f_nu,mm",
+   "value": "0.30",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GX 339-4 (Archival) |  |  | $0.30\\pm0.03$ | $30.9\\pm0.04$ | $230$ | 13-10-2017 | $37.3\\pm0.08$ | 17-10-2017 | Hard |"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 339-4 (Archival) log10(L_nu,mm / erg s^-1)",
+   "value": "30.9",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| GX 339-4 (Archival) |  |  | $0.30\\pm0.03$ | $30.9\\pm0.04$ | $230$ | 13-10-2017 | $37.3\\pm0.08$ | 17-10-2017 | Hard |"
+    }
+   ]
+  },
+  {
+   "quantity": "A0620-00 (ACA) 230 GHz continuum flux density f_nu,mm upper limit",
+   "value": "<1.80",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| A0620-00 (ACA) | $10\\phantom{.11}$ | $0.82$ | $<1.80$ | $<29.7$ | $230$ | 05-12-2023 | $30.7\\pm0.08$ | 12-09-2013 | Quiescent |"
+    }
+   ]
+  },
+  {
+   "quantity": "A0620-00 (ACA) log10(L_nu,mm / erg s^-1) upper limit",
+   "value": "<29.7",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| A0620-00 (ACA) | $10\\phantom{.11}$ | $0.82$ | $<1.80$ | $<29.7$ | $230$ | 05-12-2023 | $30.7\\pm0.08$ | 12-09-2013 | Quiescent |"
+    }
+   ]
+  },
+  {
+   "quantity": "A0620-00 X-ray fractional variability F_var",
+   "value": "0.83",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Archival Observations",
+     "quote": "We find a $F_{\\rm var}$ of 0.83 indicating that A0620-00 is significantly variable."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm power-law slope",
+   "value": "0.89",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "\\log_{10}\\left(\\frac{M_{\\rm BH}}{\\rm M_{\\odot}}\\right)=(0.89\\pm0.04)\\left[\\log_{10}\\left(\\frac{L_{\\rm \\nu,mm}}{\\mathrm{erg\\,s}^{-1}}\\right)-39\\right] + (8.26\\pm0.08)\\,,"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm power-law intercept",
+   "value": "8.26",
+   "uncertainty": "0.08",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "\\log_{10}\\left(\\frac{M_{\\rm BH}}{\\rm M_{\\odot}}\\right)=(0.89\\pm0.04)\\left[\\log_{10}\\left(\\frac{L_{\\rm \\nu,mm}}{\\mathrm{erg\\,s}^{-1}}\\right)-39\\right] + (8.26\\pm0.08)\\,,"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm observed scatter sigma_obs",
+   "value": "0.49",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with an observed scatter ($\\sigma_{\\rm obs}$) of $0.49$ dex and an estimated intrinsic scatter ($\\sigma_{\\rm int}$) of $0.44\\pm0.15$ dex."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm intrinsic scatter sigma_int",
+   "value": "0.44",
+   "uncertainty": "0.15",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with an observed scatter ($\\sigma_{\\rm obs}$) of $0.49$ dex and an estimated intrinsic scatter ($\\sigma_{\\rm int}$) of $0.44\\pm0.15$ dex."
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP L_X,2-10 slope coefficient",
+   "value": "-0.22",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "\\nonumber \\log_{10}\\left(\\frac{M_{\\rm BH}}{\\rm M_{\\odot}}\\right) =  (-0.22\\pm0.05)\\left[\\log_{10}\\left(\\frac{L_{\\rm X,2-10}}{\\mathrm{erg\\,s}^{-1}}\\right)-40\\right] \\\\+   (0.97\\pm0.05)\\left[\\log_{10}\\left(\\frac{L_{\\nu,\\rm mm}}{\\mathrm{erg\\,s}^{-1}}\\right)-39\\right] + (8.32\\pm0.08)\\,,"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP L_nu,mm slope coefficient",
+   "value": "0.97",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "\\nonumber \\log_{10}\\left(\\frac{M_{\\rm BH}}{\\rm M_{\\odot}}\\right) =  (-0.22\\pm0.05)\\left[\\log_{10}\\left(\\frac{L_{\\rm X,2-10}}{\\mathrm{erg\\,s}^{-1}}\\right)-40\\right] \\\\+   (0.97\\pm0.05)\\left[\\log_{10}\\left(\\frac{L_{\\nu,\\rm mm}}{\\mathrm{erg\\,s}^{-1}}\\right)-39\\right] + (8.32\\pm0.08)\\,,"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP intercept coefficient",
+   "value": "8.32",
+   "uncertainty": "0.08",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "\\nonumber \\log_{10}\\left(\\frac{M_{\\rm BH}}{\\rm M_{\\odot}}\\right) =  (-0.22\\pm0.05)\\left[\\log_{10}\\left(\\frac{L_{\\rm X,2-10}}{\\mathrm{erg\\,s}^{-1}}\\right)-40\\right] \\\\+   (0.97\\pm0.05)\\left[\\log_{10}\\left(\\frac{L_{\\nu,\\rm mm}}{\\mathrm{erg\\,s}^{-1}}\\right)-39\\right] + (8.32\\pm0.08)\\,,"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP observed scatter sigma_obs",
+   "value": "0.42",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with $\\sigma_{\\rm obs}=0.42$ dex and $\\sigma_{\\rm int}=0.36\\pm0.07$ dex."
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP intrinsic scatter sigma_int",
+   "value": "0.36",
+   "uncertainty": "0.07",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with $\\sigma_{\\rm obs}=0.42$ dex and $\\sigma_{\\rm int}=0.36\\pm0.07$ dex."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Specific CASA versions used for each dataset",
+  "TCLEAN weighting scheme (e.g., Briggs robust parameter), cell size, image size, and stopping threshold",
+  "Exact method used to measure continuum flux densities (e.g., peak pixel vs Gaussian fit vs aperture integration) and upper limit threshold (e.g., 3-sigma) inherited from Ruffa et al. (2024)",
+  "Assumed flux scale uncertainty when computing errors on L_nu,mm"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and TCLEAN imaging parameters (robust weighting, cell size, thresholds)",
+  "Exact flux extraction method (peak vs integrated Gaussian fit) and upper-limit sigma multiplier used for ACA maps (deferred to Ruffa et al. 2024)",
+  "Exact unabsorbed 0.3-10 keV Swift fluxes and absorption column densities (N_H) prior to scaling to 2-10 keV",
+  "Exact default parameter configuration files for the Pesce et al. (2021) ADAF code and Lucchini et al. (2022) BHJET code"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All ALMA/ACA project codes, observing dates, frequencies, flux densities, luminosities, BH masses, distances, and fitting tools (LTS_LINEFIT/LTS_PLANEFIT) are explicitly tabulated in Table 1 and the text, and the SMBH parent sample is published in Ruffa et al. (2024). Minor deductions for deferring imaging/flux-extraction details to Davis et al. (2022) and Ruffa et al. (2024) and not providing raw Swift X-ray count rates/spectra.",
+ "rediscovery_reason": "All raw ALMA/ACA data are public in the archive with explicit project codes, the analysis is straightforward (continuum point-source flux measurement and 2D/3D linear regression with public LTS_LINEFIT/LTS_PLANEFIT packages), and all intermediate and final numeric results are clearly reported.",
+ "source_card": "cards/2026MNRAS.546ag037E/sonnet/card.md"
+}

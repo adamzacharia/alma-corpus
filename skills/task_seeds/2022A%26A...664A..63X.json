@@ -1,0 +1,563 @@
+{
+ "bibcode": "2022A&A...664A..63X",
+ "title": "Starbursts with suppressed velocity dispersion revealed in a forming cluster at z = 2.51",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142843",
+ "arxiv_id": "2205.07909",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz",
+  "star_formation"
+ ],
+ "question": "What is the role of dense environments and the detailed physical mechanisms in triggering starburst activities in high-redshift forming galaxy clusters?",
+ "alma_project_codes": [
+  "2016.1.01155.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "CO(3-2): 0.31'' x 0.25'' (Case 1), 1.54'' x 1.37'' (Case 2); 3.2 mm continuum: 0.30'' x 0.24'' and 1.12'' x 1.06''",
+  "sensitivity": "CO(3-2): ~110-120 uJy beam^-1 per 30 km/s channel (Case 1), ~60 uJy beam^-1 per 90 km/s channel (Case 2); 3.2 mm continuum: ~6.9 uJy beam^-1 (high-res) and ~4.3 uJy beam^-1 (low-res)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ks-selected catalog IDs",
+    "evidence": [
+     {
+      "loc": "ALMA observations",
+      "quote": "Table notes: $^{a}$IDs from the $K_{\\rm s}$-selected catalog (cite: Muzzin2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Muzzin2013)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses (M_*), CO(1-0) luminosities, metallicity-dependent CO-to-H2 conversion factors, and multi-wavelength IR photometry (24 um, 100 um, 160 um, 870 um, 1.8 mm)",
+    "evidence": [
+     {
+      "loc": "Starburst and main-sequence galaxies",
+      "quote": "The stellar masses were derived from spectral energy distribution (SED) fitting (cite: Wang2018)."
+     },
+     {
+      "loc": "Dust mass",
+      "quote": "We fit data from 24 $\\mu$m up to the millimeter wavelengths (see the data at 24 $\\mu$m, 100 $\\mu$m, 160 $\\mu$m, 870 $\\mu$m, and 1.8 mm in , and the data at 3.2 mm in Table [\\[tab1\\]](#tab1))."
+     }
+    ]
+   },
+   "citation": "(cite: Wang2016; Wang2018)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) luminosity and gas mass values for comparison",
+    "evidence": [
+     {
+      "loc": "Molecular gas mass",
+      "quote": "It is worth mentioning that (cite: Gomez-Guijarro2019) also reported CO(1$-$0) luminosity values and (cite: Champagne2021) reported CO(1$-$0) luminosity and gas mass values for the two SBs and two MSs."
+     }
+    ]
+   },
+   "citation": "(cite: Gomez-Guijarro2019; Champagne2021)"
+  },
+  {
+   "what": {
+    "value": "Ionized and molecular gas kinematic measurements of field galaxies from GHASP, DYNAMO, MUSE/KMOS, KROSS, KMOS^3D, MASSIV, SIGMA, SINS, LAW09, AMAZE, KDS, HERACLES, PHIBSS, and individual CO studies",
+    "evidence": [
+     {
+      "loc": "The two SBs have dynamically cold gas-rich disks with low velocity dispersions",
+      "quote": "The ionized gas observations of the star-forming galaxies, sorted by redshifts from the lowest to the highest, are from surveys GHASP (cite: Epinat2010), DYNAMO (cite: Green2014), MUSE and KMOS (cite: Swinbank2017), KROSS (cite: Johnson2018), KMOS$^{3D}$ (cite: Wisnioski2015; Ubler2019)"
+     },
+     {
+      "loc": "The two SBs have dynamically cold gas-rich disks with low velocity dispersions",
+      "quote": "The molecular gas observations of the star-forming galaxies, sorted by redshifts, are from the HERACLES survey (cite: Leroy2008; Leroy2009) and the PHIBSS survey (cite: Tacconi2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Epinat2010; Green2014; Swinbank2017; Johnson2018; Wisnioski2015; Ubler2019; Epinat2012; Simons2016; Forster2009; Cresci2009; Law2009; Gnerucci2011; Turner2017; Leroy2008; Leroy2009; Tacconi2013; Rivera2018; Barro2017; Swinbank2011; Tadaki2017; Tadaki2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure CO(3-2) and 3.2 mm dust continuum source sizes",
+   "method": "Fit an elliptical Gaussian to visibility CO(3-2) data in the UV plane using uvmodelfit, and perform 2D elliptical Gaussian fits on high-resolution Moment 0 maps of CO(3-2) and 3.2 mm continuum in the image plane",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Lack of significant size variation between CO and dust continuum when comparing with literature"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO(3-2) flux, luminosity, and CO excitation R_31",
+   "method": "Perform 2D Gaussian fitting on the velocity-integrated intensity map (Moment 0) to get CO(3-2) flux, convert to L'_CO(3-2), and divide by JVLA L'_CO(1-0) to obtain R_31",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust mass, total infrared luminosity, and SFR via IR SED fitting",
+   "method": "Fit multi-wavelength infrared photometry from 24 um to 3.2 mm using CIGALE with a two-component dust emission model and test for AGN contribution",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "U_min = 0.1-50, alpha = 1-3, gamma = 0.0001-1, q_PAH = 0.47-7.32%"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF, Draine (2014) dust model, Fritz (2006) AGN template"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate molecular gas masses, gas fractions, and depletion times using three independent methods",
+   "method": "Calculate M_gas from (i) CO(1-0) luminosity with metallicity-dependent alpha_CO(Z), (ii) M_dust with metallicity-dependent gas-to-dust ratio delta_GDR, and (iii) 3.2 mm Rayleigh-Jeans dust continuum following Scoville et al. (2016)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Helium correction factor of 1.36; PP04 metallicity scale with 0.15 dex uncertainty; RJ-tail parameters: beta = 1.8, T_d = 25 K, alpha_850 = 6.7e19 erg s^-1 Hz^-1 M_sun^-1 (corresponding to alpha_CO = 6.5)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model 3D molecular gas kinematics to derive V_max and sigma_0",
+   "method": "Fit the 0.3'' resolution CO(3-2) data cubes with a 3D Bayesian parametric disk model convolved with the 3D PSF and LSF using GalPAK^3D",
+   "software": [
+    "GalPAK^3D"
+   ],
+   "key_parameters": [
+    "10 free parameters (x_c, y_c, z_c, Flux, r_1/2, r_v, Incl., PA, V_max, sigma_0); 20,000 MCMC iterations; last 30% chain fraction used"
+   ],
+   "assumptions": [
+    "Thick exponential-disk light profile and arctan rotational velocity curve V_rot propto V_max arctan(r/r_v)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Evaluate gravitational stability of the gas disks via Toomre Q parameter",
+   "method": "Calculate Toomre Q = kappa * sigma_0,gas / (pi * G * Sigma_gas) using kinematic parameters and the three gas mass estimates",
+   "software": [],
+   "key_parameters": [
+    "Q_crit = 1 (thin disk), Q_crit = 0.67 (thick disk)"
+   ],
+   "assumptions": [
+    "Flat rotation curve with epicyclic frequency kappa = sqrt(2) * V_max / r_1/2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) integrated intensity I_CO(3-2) (SB1)",
+   "value": "1.273",
+   "uncertainty": "0.036",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "SB1 & 131077&10:00:56.95& +02:20:17.2& 2.494 &1.273 $\\pm$ 0.036& 547 $\\pm$ 38"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated intensity I_CO(3-2) (SB2)",
+   "value": "0.764",
+   "uncertainty": "0.028",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "SB2 & 130891&10:00:57.56&+02:20:11.2& 2.512 &0.764 $\\pm$ 0.028& 324 $\\pm$ 17"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated intensity I_CO(3-2) (MS1)",
+   "value": "0.537",
+   "uncertainty": "0.023",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "MS1 &130949&10:00:56.86&+02:20:08.7& 2.503 &0.537 $\\pm$ 0.023& 453 $\\pm$ 47"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated intensity I_CO(3-2) (MS2)",
+   "value": "0.242",
+   "uncertainty": "0.024",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "MS2 &130901&10:00:57.39&+02:20:10.8& 2.507 &0.242 $\\pm$ 0.024& 472 $\\pm$ 103"
+    }
+   ]
+  },
+  {
+   "quantity": "3.2 mm continuum flux density S_3.2mm (SB1)",
+   "value": "82",
+   "uncertainty": "10",
+   "units": "uJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "$\\pm$ 0.15& 12.95$^{+0.04}_{-0.04}$ & 1314 $\\pm$ 122 & 4.9 $\\pm$ 0.4& 4.10 $\\pm$ 0.12& 0.84 $\\pm$ 0.07 &82 $\\pm$ 10"
+    }
+   ]
+  },
+  {
+   "quantity": "3.2 mm continuum flux density S_3.2mm (SB2)",
+   "value": "38",
+   "uncertainty": "10",
+   "units": "uJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "10.83 $\\pm$ 0.15 & 12.70$^{+0.16}_{-0.26}$ & 751 $\\pm$ 338 &3.2 $\\pm$ 0.3& 2.49 $\\pm$ 0.09& 0.78 $\\pm$ 0.08&38 $\\pm$ 10"
+    }
+   ]
+  },
+  {
+   "quantity": "3.2 mm continuum flux density S_3.2mm (MS1)",
+   "value": "62",
+   "uncertainty": "12",
+   "units": "uJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "11.36 $\\pm$ 0.15& 12.29$^{+0.16}_{-0.25}$ & 292 $\\pm$ 128 & 2.3 $\\pm$ 0.2& 1.74 $\\pm$ 0.07 & 0.76 $\\pm$ 0.07&62 $\\pm$ 12"
+    }
+   ]
+  },
+  {
+   "quantity": "3.2 mm continuum flux density S_3.2mm (MS2)",
+   "value": "18",
+   "uncertainty": "3",
+   "units": "uJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "11.35 $\\pm$ 0.15&12.30$^{+0.20}_{-0.40}$ & 300 $\\pm$ 179 & 1.8 $\\pm$ 0.3& 0.79 $\\pm$ 0.08& 0.44 $\\pm$ 0.08&18 $\\pm$ 3"
+    }
+   ]
+  },
+  {
+   "quantity": "CO excitation R_31 (SB1)",
+   "value": "0.84",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "$\\pm$ 0.15& 12.95$^{+0.04}_{-0.04}$ & 1314 $\\pm$ 122 & 4.9 $\\pm$ 0.4& 4.10 $\\pm$ 0.12& 0.84 $\\pm$ 0.07 &82 $\\pm$ 10"
+    }
+   ]
+  },
+  {
+   "quantity": "CO excitation R_31 (SB2)",
+   "value": "0.78",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "10.83 $\\pm$ 0.15 & 12.70$^{+0.16}_{-0.26}$ & 751 $\\pm$ 338 &3.2 $\\pm$ 0.3& 2.49 $\\pm$ 0.09& 0.78 $\\pm$ 0.08&38 $\\pm$ 10"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate SFR (SB1)",
+   "value": "1314",
+   "uncertainty": "122",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Starburst and main-sequence galaxies",
+     "quote": "The intense star formation of the two SBs shows that they are rapidly building up their stellar masses at a rate of 1314 $\\pm$ 122 $M_{\\odot}$yr$^{-1}$ and 751 $\\pm$ 338 $M_{\\odot}$yr$^{-1}$ (see Table [\\[tab1\\]](#tab1))."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate SFR (SB2)",
+   "value": "751",
+   "uncertainty": "338",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Starburst and main-sequence galaxies",
+     "quote": "The intense star formation of the two SBs shows that they are rapidly building up their stellar masses at a rate of 1314 $\\pm$ 122 $M_{\\odot}$yr$^{-1}$ and 751 $\\pm$ 338 $M_{\\odot}$yr$^{-1}$ (see Table [\\[tab1\\]](#tab1))."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_gas,CO (SB1)",
+   "value": "20.2",
+   "uncertainty": "1.7",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "| $^{b} M_{\\rm gas,CO}$ ($10^{10}$$M_{\\odot}$) | 20.2 $\\pm$ 1.7 | 13.3 $\\pm$ 1.4 | 9.2 $\\pm$ 0.9 | 7.4 $\\pm$ 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_gas,CO (SB2)",
+   "value": "13.3",
+   "uncertainty": "1.4",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "| $^{b} M_{\\rm gas,CO}$ ($10^{10}$$M_{\\odot}$) | 20.2 $\\pm$ 1.7 | 13.3 $\\pm$ 1.4 | 9.2 $\\pm$ 0.9 | 7.4 $\\pm$ 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas,CO (SB1)",
+   "value": "0.70",
+   "uncertainty": "+0.09/-0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "| $^{c} f_{\\rm gas,CO}$ | 0.70$^{+0.09}_{-0.06}$ | 0.66$^{+0.10}_{-0.07}$ | 0.29$^{+0.09}_{-0.06}$ | 0.25$^{+0.08}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas,CO (SB2)",
+   "value": "0.66",
+   "uncertainty": "+0.10/-0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "ALMA observations",
+     "quote": "| $^{c} f_{\\rm gas,CO}$ | 0.70$^{+0.09}_{-0.06}$ | 0.66$^{+0.10}_{-0.07}$ | 0.29$^{+0.09}_{-0.06}$ | 0.25$^{+0.08}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum circular velocity V_max (SB1)",
+   "value": "419",
+   "uncertainty": "+21/-58",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $V_{\\mathrm{max}}$ (km s$^{-1}$)            | 419$^{+21}_{-58}$          | 497$^{+123}_{-252}$        | 327$^{+89}_{-47}$          | 245$^{+211}_{-97}$         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum circular velocity V_max (SB2)",
+   "value": "497",
+   "uncertainty": "+123/-252",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $V_{\\mathrm{max}}$ (km s$^{-1}$)            | 419$^{+21}_{-58}$          | 497$^{+123}_{-252}$        | 327$^{+89}_{-47}$          | 245$^{+211}_{-97}$         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum circular velocity V_max (MS1)",
+   "value": "327",
+   "uncertainty": "+89/-47",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $V_{\\mathrm{max}}$ (km s$^{-1}$)            | 419$^{+21}_{-58}$          | 497$^{+123}_{-252}$        | 327$^{+89}_{-47}$          | 245$^{+211}_{-97}$         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum circular velocity V_max (MS2)",
+   "value": "245",
+   "uncertainty": "+211/-97",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $V_{\\mathrm{max}}$ (km s$^{-1}$)            | 419$^{+21}_{-58}$          | 497$^{+123}_{-252}$        | 327$^{+89}_{-47}$          | 245$^{+211}_{-97}$         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic velocity dispersion sigma_0 (SB1)",
+   "value": "25",
+   "uncertainty": "+11/-15",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $\\sigma_{\\mathrm{0}}$ (km s$^{-1}$)         | 25$^{+11}_{-15}$           | 33$^{+27}_{-19}$           | 90$^{+15}_{-18}$           | 110$^{+36}_{-40}$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic velocity dispersion sigma_0 (SB2)",
+   "value": "33",
+   "uncertainty": "+27/-19",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $\\sigma_{\\mathrm{0}}$ (km s$^{-1}$)         | 25$^{+11}_{-15}$           | 33$^{+27}_{-19}$           | 90$^{+15}_{-18}$           | 110$^{+36}_{-40}$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic velocity dispersion sigma_0 (MS1)",
+   "value": "90",
+   "uncertainty": "+15/-18",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $\\sigma_{\\mathrm{0}}$ (km s$^{-1}$)         | 25$^{+11}_{-15}$           | 33$^{+27}_{-19}$           | 90$^{+15}_{-18}$           | 110$^{+36}_{-40}$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic velocity dispersion sigma_0 (MS2)",
+   "value": "110",
+   "uncertainty": "+36/-40",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $\\sigma_{\\mathrm{0}}$ (km s$^{-1}$)         | 25$^{+11}_{-15}$           | 33$^{+27}_{-19}$           | 90$^{+15}_{-18}$           | 110$^{+36}_{-40}$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-dispersion ratio V_max/sigma_0 (SB1)",
+   "value": "16.8",
+   "uncertainty": "+7.4/-10.4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $^{a} V_{\\mathrm{max}}/\\sigma_{\\mathrm{0}}$ | 16.8$^{+7.4}_{-10.4}$      | 15.0$^{+13.0}_{-11.3}$     | 3.6$^{+1.1}_{-0.9}$        | 2.2$^{+2.0}_{-1.2}$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-dispersion ratio V_max/sigma_0 (SB2)",
+   "value": "15.0",
+   "uncertainty": "+13.0/-11.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $^{a} V_{\\mathrm{max}}/\\sigma_{\\mathrm{0}}$ | 16.8$^{+7.4}_{-10.4}$      | 15.0$^{+13.0}_{-11.3}$     | 3.6$^{+1.1}_{-0.9}$        | 2.2$^{+2.0}_{-1.2}$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-dispersion ratio V_max/sigma_0 (MS1)",
+   "value": "3.6",
+   "uncertainty": "+1.1/-0.9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $^{a} V_{\\mathrm{max}}/\\sigma_{\\mathrm{0}}$ | 16.8$^{+7.4}_{-10.4}$      | 15.0$^{+13.0}_{-11.3}$     | 3.6$^{+1.1}_{-0.9}$        | 2.2$^{+2.0}_{-1.2}$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-dispersion ratio V_max/sigma_0 (MS2)",
+   "value": "2.2",
+   "uncertainty": "+2.0/-1.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $^{a} V_{\\mathrm{max}}/\\sigma_{\\mathrm{0}}$ | 16.8$^{+7.4}_{-10.4}$      | 15.0$^{+13.0}_{-11.3}$     | 3.6$^{+1.1}_{-0.9}$        | 2.2$^{+2.0}_{-1.2}$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk half-light radius r_1/2 (SB1)",
+   "value": "1.79",
+   "uncertainty": "0.10",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $r_{\\rm 1/2}$ (kpc)                         | 1.79 $\\pm$ 0.10            | 1.29 $\\pm$ 0.09            | 2.43 $\\pm$ 0.25            | 2.26 $\\pm$ 1.04            |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk half-light radius r_1/2 (SB2)",
+   "value": "1.29",
+   "uncertainty": "0.09",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass",
+     "quote": "| $r_{\\rm 1/2}$ (kpc)                         | 1.79 $\\pm$ 0.10            | 1.29 $\\pm$ 0.09            | 2.43 $\\pm$ 0.25            | 2.26 $\\pm$ 1.04            |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean stopping threshold, niter, deconvolver, and masking strategy",
+  "Whether continuum subtraction (e.g., uvcontsub) was performed on the CO(3-2) visibility data before imaging",
+  "Exact frequency ranges excluded when imaging the 3.2 mm continuum",
+  "Primary beam correction status for flux measurements",
+  "Exact parameter grid values and star formation history settings used in CIGALE",
+  "Prior distributions and bounds for the 10 free parameters in GalPAK^3D"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean deconvolution parameters (niter, stopping threshold, masking)",
+  "Details of how visibility weighting ratios (1:4 and 1:1 between C40-4 and C40-7) were implemented in CASA (e.g., statwt or concat weight scaling)",
+  "Exact frequency channels excluded for 3.2 mm continuum imaging and velocity windows integrated for Moment 0 maps",
+  "GalPAK^3D sub-cube cutout dimensions (in pixels/channels) and parameter prior bounds"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Calibration, array combination weights, pixel sizes, channel widths, weighting schemes, and kinematic modeling tools/assumptions are clearly specified, and all key output quantities are tabulated. Minor deductions for missing tclean stopping criteria, exact continuum line-free channel ranges, and GalPAK^3D prior bounds.",
+ "rediscovery_reason": "Public ALMA dataset (2016.1.01155.S), well-defined recipe from calibrated visibilities to 3D kinematic modeling with public software (CASA, CIGALE, GalPAK^3D), and comprehensive numeric tables for fluxes, sizes, masses, V_max, and sigma_0.",
+ "source_card": "cards/2022A%26A...664A..63X/sonnet/card.md"
+}

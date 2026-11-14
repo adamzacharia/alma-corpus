@@ -1,0 +1,269 @@
+{
+ "bibcode": "2020MNRAS.497.2811K",
+ "title": "Survey of planetesimal belts with ALMA: gas detected around the Sun-like star HD 129590",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa2038",
+ "arxiv_id": "2005.05841",
+ "fields": [
+  "debris_disks",
+  "astrochemistry"
+ ],
+ "question": "Do debris discs around later-type stars host secondary CO/CN gas, and what are the dust and gas properties of 10 planetesimal-belt systems?",
+ "alma_project_codes": [
+  "2017.1.00704.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~1.5 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar parameters, fractional luminosities and SEDs for the sample",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "References: From (cite: 2017MNRAS.469..521K) updated with GAIA DR2 distances"
+     }
+    ]
+   },
+   "citation": "(cite: 2017MNRAS.469..521K)"
+  },
+  {
+   "what": {
+    "value": "JCMT 850 micron flux of HD 15745 (12±1.4 mJy)",
+    "evidence": [
+     {
+      "loc": "4.1.6 HD 15745",
+      "quote": "Extrapolating the observed JCMT flux for HD 15745 at 850 $\\mu$m ($12\\pm1.4$ mJy) to 1.27 mm"
+     }
+    ]
+   },
+   "citation": "(cite: 2017MNRAS.470.3606H)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure fluxes",
+   "method": "Combine four SPWs excluding CO line channels, CLEAN with natural weighting, integrate flux in ellipse where S/N >~2",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "2-D Gaussian fit for resolution check",
+   "method": "imfit on continuum images",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit dust ring geometry and mass",
+   "method": "Gaussian ring model, RADMC-3D images at 1.27 mm fit to dirty images with MCMC",
+   "software": [
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "100 walkers, 1000 steps after burn-in"
+   ],
+   "assumptions": [
+    "size distribution index -3.5, max grain 1 cm, min = blowout size, astrosilicates 2.7 g/cm3, kappa~1.3 cm2/g"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract CO/CN moment maps, spectra and fluxes",
+   "method": "uvcontsub cubes, moment-0 integrated over ±20 km/s refined per source, upper limits 3 sigma",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit gas disc with LTE radiative transfer MCMC",
+   "method": "Gaussian ring gas model, RADMC-3D CO cubes vs dirty cubes, per channel",
+   "software": [
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "100 walkers, ~10,000 steps; 2.667 channels per resolution element"
+   ],
+   "assumptions": [
+    "LTE, mu=14, axisymmetric"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Non-LTE CO and CN masses",
+   "method": "Optically thin non-LTE with fluorescence, scan over electron density and Tk 10-250 K, take min/max",
+   "software": [
+    "LAMDA database"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "collision rates from Dickinson & Richards 1975, Allison & Dalgarno 1971"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive planetesimal CO ice fraction and HCN/CO",
+   "method": "Steady-state gas vs dust production using Matra et al. 2017 Eq. 2 and 2018 Eq. 3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "no shielding"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HD 129590 CO flux",
+   "value": "0.056",
+   "uncertainty": "0.014",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HD 129590 | $1.61 \\times 1.16$ | 81.9 | 1.52 | $0.056 \\pm 0.014$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 129590 CO mass (non-LTE)",
+   "value": "2.1e-5 - 1.3e-4",
+   "uncertainty": "range",
+   "units": "M_earth",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "we find that (the optically thin) mass range is $2.1\\times10^{-5}$ - $1.3\\times10^{-4}$ M$_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 121191 CO flux",
+   "value": "0.21",
+   "uncertainty": "0.02",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.21 \\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 121191 gas ring radius",
+   "value": "22",
+   "uncertainty": "+2/-3",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "$R_0 = 22^{+2}_{-3}$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 121191 CO mass LTE",
+   "value": "2.3e-3",
+   "uncertainty": "+2.3/-0.9 e-3",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "$2.3^{+2.3}_{-0.9} \\times 10^{-3}$ M$_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 129590 dust ring radius",
+   "value": "74.2",
+   "uncertainty": "+6.1/-5.9",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HD 129590 | $74.2^{+6.1}_{-5.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 129590 dust mass",
+   "value": "0.39",
+   "uncertainty": "±0.02",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.39^{+0.02}_{-0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/CO outgassing ratio HD 129590",
+   "value": "<2.4",
+   "uncertainty": "upper limit",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5.2",
+     "quote": "$<2.4$% for HD 129590 and $<0.46$% for HD 121191"
+    }
+   ]
+  },
+  {
+   "quantity": "HR 4796A CO ice fraction",
+   "value": "<1.9",
+   "uncertainty": "upper limit",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5.1",
+     "quote": "HR 4796A ($<$1.9%)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels for continuum and uvcontsub",
+  "CASA version and pipeline version",
+  "Image size, cell size, clean threshold",
+  "Flux, bandpass and phase calibrators",
+  "MCMC priors ranges and burn-in length",
+  "Velocity binning of cubes and masks used for fluxes",
+  "Stellar models for non-LTE fluorescence and electron density grid"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Calibration details",
+  "MCMC priors and non-LTE grid ranges",
+  "Custom MCMC wrapper code"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and clear model description, but many imaging and fitting settings are missing and the gas fits need weeks of CPU.",
+ "rediscovery_reason": "Public data, numeric results (fluxes, masses, radii); continuum and CO flux are redoable.",
+ "source_card": "cards/2020MNRAS.497.2811K/sonnet/card.md"
+}

@@ -1,0 +1,957 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...840....8S",
+  "title": "Luminous Infrared Galaxies with the Submillimeter Array. V. Molecular Gas in Intermediate to Late-stage Mergers",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Sliwa, Kazimierz",
+  "n_authors": 7,
+  "arxiv_id": "1703.07121",
+  "doi": "10.3847/1538-4357/aa689b",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00804.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present new high-resolution ALMA ($^{13}$CO $J$=1$-$0 and $J$= 2-1) and CARMA ($^{12}$CO and $^{13}$CO $J$=1$-$0) observations of two Luminous Infrared Galaxies (LIRGs): Arp 55 and NGC 2623."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 2623 (Arp 243)",
+     "coordinates": {
+      "value": "08h38m24.1s +25d45m16.53s (CO 3-2 peak, Line Ratios table)",
+      "evidence": [
+       {
+        "loc": "2.1 The Targets",
+        "quote": "is an advanced merger LIRG ($L_{\\rm{FIR}}$ = 3.0 $\\times$ 10$^{11}$ $L_{\\odot}$; (cite: Sanders2003)) at a distance of 83 Mpc (1$''$ = 402 pc)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "83 Mpc",
+      "evidence": [
+       {
+        "loc": "2.1 The Targets",
+        "quote": "is an advanced merger LIRG ($L_{\\rm{FIR}}$ = 3.0 $\\times$ 10$^{11}$ $L_{\\odot}$; (cite: Sanders2003)) at a distance of 83 Mpc (1$''$ = 402 pc)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "Arp 55",
+     "coordinates": {
+      "value": "NE 09h15m55.5s +44d19m57.9s; SW 09h15m54.7s +44d19m51.5s",
+      "evidence": [
+       {
+        "loc": "2.1 The Targets",
+        "quote": "The system consists of two nuclei separated by $\\sim$ 11$^{\\prime\\prime}$ (9.3 kpc at $D_{\\rm{L}}$ = 175 Mpc; 1$^{\\prime\\prime}$ = 850 pc)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "D_L = 175 Mpc",
+      "evidence": [
+       {
+        "loc": "2.1 The Targets",
+        "quote": "The system consists of two nuclei separated by $\\sim$ 11$^{\\prime\\prime}$ (9.3 kpc at $D_{\\rm{L}}$ = 175 Mpc; 1$^{\\prime\\prime}$ = 850 pc)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the molecular gas physical conditions, 12CO/13CO abundance ratio and CO-to-H2 conversion factor in the LIRGs Arp 55 and NGC 2623, and how do they depend on merger stage?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We perform a Bayesian likelihood non-local thermodynamic equilibrium analysis to constrain the molecular gas physical conditions such as temperature, column and volume densities and the \\[$^{12}$CO\\]/\\[$^{13}$CO\\] abundance ratio."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00804.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "ALMA observations towards NGC 2623 were conducted during Cycle 2 (Project ID= 2015.1.00804.S; PI: K.Sliwa)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (13CO 1-0) and Band 6 (13CO 2-1)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "The receiver Bands 3 and 6 were tuned to $^{13}$CO $J$=1$-$0 and $J$ = 2-1, respectively."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four spectral windows, 1.875 GHz bandwidth, 960 channels each",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "Each observation consisted of four spectral windows with a bandwidth of 1.875 GHz and 960 channels each."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The receiver Bands 3 and 6 were tuned to $^{13}$CO $J$=1$-$0 and $J$ = 2-1, respectively."
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The receiver Bands 3 and 6 were tuned to $^{13}$CO $J$=1$-$0 and $J$ = 2-1, respectively."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Band 6 baselines above 200 m flagged",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "we flag all baselines above 200 m after applying the water vapour radiometer and system temperature corrections"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 2, PI K. Sliwa",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "ALMA observations towards NGC 2623 were conducted during Cycle 2 (Project ID= 2015.1.00804.S; PI: K.Sliwa)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "CARMA",
+     "provided": {
+      "value": "12CO and 13CO J=1-0 maps and 2.8 mm continuum",
+      "evidence": [
+       {
+        "loc": "2.3 CARMA",
+        "quote": "Arp 55 was observed in $^{12}$CO and $^{13}$CO $J$=1$-$0 using CARMA in the B, C, and D array configurations"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "12CO J=2-1, 3-2 and 13CO 2-1 data",
+      "evidence": [
+       {
+        "loc": "2.4 Submillimeter Array (SMA)",
+        "quote": "We use the SMA calibrated $uv$ datasets of $^{12}$CO $J$=2$-$1 and $J$ = 3–2 from Paper I."
+       }
+      ]
+     }
+    },
+    {
+     "name": "JCMT",
+     "provided": {
+      "value": "12CO 2-1 map of Arp 55 to check flux recovery",
+      "evidence": [
+       {
+        "loc": "2.5 JCMT",
+        "quote": "For Arp 55, we used the JCMT to map a 56$''$ $\\times$ 56$''$ area in $^{12}$CO $J$=2$-$1 using the RxA3 receiver"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "JCMT 12CO 3-2 flux of Arp 55, 775 ± 130 Jy km/s",
+      "evidence": [
+       {
+        "loc": "2.5 JCMT",
+        "quote": "measured the $^{12}$CO $J$=3$-$2 flux in Arp 55 in a JCMT spectrum to be 775 $\\pm$ 130 Jy km s$^{-1}$"
+       }
+      ]
+     },
+     "citation": "Papadopoulos2012a"
+    },
+    {
+     "what": {
+      "value": "Comparison LIRG temperature/density results (Arp 220, Arp 299, VV 114, NGC 1614, NGC 6240, NGC 4038/9, M51)",
+      "evidence": [
+       {
+        "loc": "5.3 Merger Stage",
+        "quote": "We plot the most probable $T_{\\rm{kin}}$ versus $n_{\\rm{H_{2}}}$ of Arp 220 (cite: Rangwala2011), Arp 299 (cite: Sliwa2012), VV 114 (cite: Sliwa2013)"
+       }
+      ]
+     },
+     "citation": "Rangwala2011; Sliwa2012; Sliwa2013; Sliwa2014; Tunnard2015b; Schirm2014"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Band 3 with ALMA pipeline; Band 6 manual",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The Band 6 observations were manually calibrated using `CASA` v4.7.0."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v4.7.0 (Band 6 calibration and imaging)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The Band 6 observations were manually calibrated using `CASA` v4.7.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "CASA ALMA pipeline v4.5.3 (Band 3)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The Band 3 data were calibrated using the `CASA` (cite: McMullin2007) ALMA pipeline (v4.5.3)"
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0854+2006 (both bands)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The observations used J0854+2006 as the flux and bandpass calibrators and J0837+2454 as the gain calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% Band 3, 20% Band 6",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We estimate a flux calibration uncertainty of 10$\\%$ and 20$\\%$ for Bands 3 and 6, respectively."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA v4.7.0",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We image the datasets using `CASA` v4.7.0"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "using a Briggs robust weighting of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "CLEAN boxes around emission",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "CLEAN boxes were placed around the emission to aid the CLEAN process converge."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uv-domain using line-free channels",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Each dataset was continuum subtracted in the $uv$ domain using line-free channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied to integrated intensity maps, 2 sigma cutoff",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Each integrated intensity map was primary beam corrected."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "13CO 1-0 2.4x1.9 arcsec; 13CO 2-1 3.4x1.4 arcsec; 2.5 arcsec compromise for analysis",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| $^{13}$CO $J$=2$-$1  | ALMA | 14.3 | 1.1 | 40 | 3.4 $\\times$ 1.4 |"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "13CO 1-0 0.43 mJy/beam; 2-1 1.1 mJy/beam",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| $^{13}$CO $J$=1$-$0  | ALMA | 28.6 | 0.43 | 30 | 2.4 $\\times$ 1.9 |"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SMA calibration and 12CO 2-1/3-2 uv datasets",
+      "evidence": [
+       {
+        "loc": "2.4 SMA",
+        "quote": "We use the SMA calibrated $uv$ datasets of $^{12}$CO $J$=2$-$1 and $J$ = 3–2 from Paper I. For calibration details, see Paper I."
+       }
+      ]
+     },
+     "from_reference": "Paper I, Wilson2008"
+    },
+    {
+     "what": {
+      "value": "Nested-sampling RADEX likelihood code and details",
+      "evidence": [
+       {
+        "loc": "4.1 Radiative Transfer Modeling",
+        "quote": "We use the code published in (cite: Kamenetzky2014) that implements a nested sampling algorithm"
+       }
+      ]
+     },
+     "from_reference": "Kamenetzky2014"
+    },
+    {
+     "what": {
+      "value": "Dynamical mass formula",
+      "evidence": [
+       {
+        "loc": "Table 3",
+        "quote": "$M_{\\rm{dyn}}$ = 99$\\Delta$V$^{2}$D(pc) (cite: Wilson1990)"
+       }
+      ]
+     },
+     "from_reference": "Wilson1990"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum subtraction",
+    "Clean thresholds and image sizes/cell sizes for ALMA cubes",
+    "Priors ranges and sampler settings for pyradexnest (beyond the three listed priors)",
+    "Exact RADEX collisional data and line width treatment",
+    "Which ALMA execution blocks/MOUS were used",
+    "Method for deriving deconvolved source sizes"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image ALMA 13CO cubes and moment maps",
+    "method": {
+     "value": "Pipeline (Band 3) / manual (Band 6) calibration, uv continuum subtraction, CLEAN with boxes, integrated intensity with 2 sigma cutoff, primary-beam correction",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Integrated intensity maps were created including line emission channels and using a 2$\\sigma$ cutoff."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5; 30 and 40 km/s channels; Band 6 baselines >200 m flagged",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA",
+        "quote": "creating datacubes of 30 and 40 km s$^{-1}$ channel width for $^{13}$CO $J$=1$-$0 and $J$=2-1, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Match resolutions and measure line fluxes at nuclear peaks",
+    "method": {
+     "value": "Gaussian taper during imaging to common resolution; 13CO 2-1 flux scaled using average 13CO(2-1/1-0) line ratio (1.6 Arp 55; 0.85 NGC 2623)",
+     "evidence": [
+      {
+       "loc": "4.2.1 Arp 55",
+       "quote": "we estimate the flux of $^{13}$CO $J$=2$-$1 at the resolution of $^{12}$CO $J$=1$-$0 using an average $^{13}$CO (2-1/1-0) line ratio of 1.6 (K units"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Arp 55 imaged with baselines >30.5 klambda; NGC 2623 at 2.5 arcsec",
+      "evidence": [
+       {
+        "loc": "2.5 JCMT",
+        "quote": "we image all Arp 55 maps with baselines above 30.5 k$\\lambda$, the shortest baseline in the $^{12}$CO $J$=3$-$2 observations"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "30% uncertainty on 13CO flux scaled",
+      "evidence": [
+       {
+        "loc": "4.2.1 Arp 55",
+        "quote": "We also implement a 30$\\%$ uncertainty for $^{13}$CO which covers the observed range"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "JCMT flux compared to SMA to check flux recovery",
+     "evidence": [
+      {
+       "loc": "2.5 JCMT",
+       "quote": "The JCMT $^{12}$CO $J$=2$-$1 flux measured for Arp 55 is consistent with the total flux measured in the SMA map"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Non-LTE modelling of Tkin, nH2, N(CO), 12CO/13CO, filling factor",
+    "method": {
+     "value": "RADEX with Bayesian nested sampling, with priors from dynamical mass, column length and tau in [0,100]",
+     "evidence": [
+      {
+       "loc": "4.1 Radiative Transfer Modeling",
+       "quote": "we implement three priors"
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "pyradexnest"
+    ],
+    "key_parameters": [
+     {
+      "value": "tau within [0,100]",
+      "evidence": [
+       {
+        "loc": "4.1 Radiative Transfer Modeling",
+        "quote": "The final prior limit the optical depth, $\\tau$, within the range of \\[0,100\\]."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Spherical geometry for column length (half of source size for Arp 55)",
+      "evidence": [
+       {
+        "loc": "4.1 Radiative Transfer Modeling",
+        "quote": "We estimate the column length from the deconvolved source diameter, assuming a spherical geometry."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "nested sampling; flux scaled by area filling factor <=1",
+     "evidence": [
+      {
+       "loc": "4.1 Radiative Transfer Modeling",
+       "quote": "the flux is permitted to scale uniformly down by an area filling factor $\\Phi_{\\rm{A}}$($\\leq$ 1)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive alpha_CO",
+    "method": {
+     "value": "From RADEX 12CO column density vs peak 12CO 1-0 luminosity, assuming x_CO = 3e-4; dynamical-mass upper limit alpha_CO,dyn = Mdyn/L_CO",
+     "evidence": [
+      {
+       "loc": "5.2 CO-to-H2 Conversion Factor",
+       "quote": "By comparing the $^{12}$CO column density (Table [4](#tab:results)) with the peak $^{12}$CO $J$=1$-$0 luminosity we measure $\\alpha_{\\rm{CO}}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "x_CO = 3e-4",
+      "evidence": [
+       {
+        "loc": "5.2 CO-to-H2 Conversion Factor",
+        "quote": "we adopt the value of 3 $\\times$ 10$^{-4}$, a value found in warm star forming clouds (cite: Lacy1994)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "dynamical mass upper limit",
+     "evidence": [
+      {
+       "loc": "5.2 CO-to-H2 Conversion Factor",
+       "quote": "$\\alpha_{\\rm{CO, dyn}}$ is strictly an upper limit to the true $\\alpha_{\\rm{CO}}$ value"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.0 (pipeline 4.5.3)",
+    "used_for": {
+     "value": "calibration, imaging",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The Band 6 observations were manually calibrated using `CASA` v4.7.0."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE radiative transfer",
+     "evidence": [
+      {
+       "loc": "4.1 Radiative Transfer Modeling",
+       "quote": "We use the code published in (cite: Kamenetzky2014)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Starlink",
+    "version": "not stated",
+    "used_for": {
+     "value": "JCMT data cube reduction",
+     "evidence": [
+      {
+       "loc": "2.5 JCMT",
+       "quote": "A data cube spanning -585 to 585 km s$^{-1}$ was created using the `Starlink` software"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "NGC 2623 best-fit Tkin",
+    "value": "107",
+    "uncertainty": "1sigma range 31-530",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| NGC 2623 | Median | 125 | 2.8 | 4.8 | -1.0 | 18.9 | 250 | 8.7 | 0.5 |"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 2623 best-fit log nH2",
+    "value": "2.7",
+    "uncertainty": "1sigma range 2.2-3.3",
+    "units": "log cm^-3",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "less dense ($\\sim$ 10$^{2.7}$ cm$^{-3}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 2623 [12CO]/[13CO] best fit",
+    "value": "267",
+    "uncertainty": "1sigma 85-720",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| NGC 2623 | Median | 125 | 2.8 | 4.8 | -1.0 | 18.9 | 250 | 8.7 | 0.5 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Arp 55NE alpha_CO",
+    "value": "0.1",
+    "uncertainty": "range 0.1-0.2",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "we measure $\\alpha_{\\rm{CO}}$ for Arp 55NE, Arp 55SW and NGC 2623 to be 0.1, 0.08 and 0.7"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 2623 alpha_CO",
+    "value": "0.7",
+    "uncertainty": "not stated",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "0.1, 0.08 and 0.7 (3 $\\times$ 10$^{-4}$/$x_{\\rm{CO}}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "2.8 mm continuum flux NGC 2623",
+    "value": "18",
+    "uncertainty": "4",
+    "units": "mJy",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2.3 CARMA",
+      "quote": "We measure the 2.8 mm continuum flux of NGC 2623 and Arp 55 to be 18 $\\pm$ 4 mJy and 1.9 $\\pm$ 0.4 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 2623 13CO 1-0 flux",
+    "value": "3.1",
+    "uncertainty": "±0.3 (meas.), ±0.3 (cal.)",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "3.1 ($\\pm$ 0.3) \\[$\\pm$ 0.3\\]"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Advanced mergers have warmer, less dense gas and lower pressure than early/intermediate mergers",
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "advanced mergers have a warmer and less dense molecular gas component than the early/intermediate mergers."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas conditions differ with merger stage",
+    "experiment": "Non-LTE RADEX analysis of Arp 55 vs NGC 2623 and literature LIRGs",
+    "result": "Arp 55 cold and dense; NGC 2623 ~110 K and less dense",
+    "finding": "Advanced mergers warmer and less dense",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "advanced mergers is in general warmer and less dense than early/intermediate stage mergers"
+     }
+    ]
+   },
+   {
+    "hypothesis": "12CO/13CO is enhanced in LIRGs",
+    "experiment": "RADEX abundance ratio fits",
+    "result": "NGC 2623 ~250; Arp 55 ~15-30",
+    "finding": "NGC 2623 follows the LIRG trend, Arp 55 does not",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the \\[$^{12}$CO\\]/\\[$^{13}$CO\\] abundance ratio of NGC 2623 is unusually high ($>$250)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "alpha_CO transitions from Galactic to LIRG value early in a merger",
+    "experiment": "alpha_CO from RADEX column densities",
+    "result": "~0.1 for Arp 55, ~0.7 for NGC 2623",
+    "finding": "Transition occurs at an even earlier stage",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "this suggests that the transition from a Galactic conversion factor to a LIRG value happens at an even earlier merger stage."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "alpha_CO largest uncertainty from x_CO assumption",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "The largest uncertainty in these values arises from the assumption of the $^{12}$CO abundance relative to H$_{2}$"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only two galaxies and single positions modelled; merger-stage trend relies on heterogeneous literature fits",
+    "Few lines constrain many RADEX parameters; degeneracies large",
+    "Fractionation could bias 12CO/13CO",
+    "Mixed resolutions and missing flux in CO 3-2"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project listed; public status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2015.0.0804.S ."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "pyradexnest at github (third-party code)",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "https://github.com/jrka/pyradexnest"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "CARMA and SMA raw data processing details",
+    "line-free channels",
+    "clean parameters",
+    "sampler settings"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB for the two ALMA bands (raw); CARMA/SMA additional",
+   "score_inferred": 3,
+   "score_reason": "ALMA data identified and imaging basics given, but modelling priors and many imaging parameters are missing, with multi-facility inputs.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results depend on SMA/CARMA data and unspecified modelling settings, so the recipe is incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Kamenetzky2014",
+     "why": "Bayesian RADEX nested sampling code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Wilson2008 (Paper I)",
+     "why": "SMA data and calibration"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "SMA LIRG survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-22e386a590778528ec341a3911f98b5f",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:10",
+  "usage": {
+   "input_tokens": 29438,
+   "output_tokens": 8788,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.073984,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 63,
+  "quotes_ok": 63,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2015.0.0804.S"
+  ],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 49,
+   "rate": 0.628
+  },
+  "evidence_ok": true
+ }
+}

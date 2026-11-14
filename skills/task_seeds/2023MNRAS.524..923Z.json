@@ -1,0 +1,597 @@
+{
+ "bibcode": "2023MNRAS.524..923Z",
+ "title": "The large molecular gas fraction of post-starburst galaxies at z &gt; 1",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad1821",
+ "arxiv_id": "2306.08120",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What is the molecular gas content of post-starburst galaxies at z > 1, and what physical mechanisms are responsible for quenching their star formation?",
+ "alma_project_codes": [
+  "2019.1.00900.S"
+ ],
+ "data": {
+  "bands": "Band 4",
+  "arrays": "not stated",
+  "angular_resolution": "FWHM = 1.9'' x 1.3'' (ID83492) and 1.6'' x 1.3'' (ID97148)",
+  "sensitivity": "0.65 mJy/beam (ID83492) and 0.13 mJy/beam (ID97148) over a bandwidth of 150 km s^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical spectroscopic redshifts and post-SB confirmation",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "(5) Redshift estimated from the optical spectra (Maltby et al. 2016)"
+     }
+    ]
+   },
+   "citation": "Maltby et al. 2016"
+  },
+  {
+   "what": {
+    "value": "Multi-wavelength photometric catalog in the SXDS field",
+    "evidence": [
+     {
+      "loc": "3.4 Stellar mass and star formation rate",
+      "quote": "We modelled the multi-wavelength photometric catalog in the SXDS field described in Kubo et al. (2018)."
+     }
+    ]
+   },
+   "citation": "Kubo et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Literature CO-observed samples of star-forming, post-starburst, and quiescent galaxies up to z ~ 2",
+    "evidence": [
+     {
+      "loc": "2.3 Literature samples",
+      "quote": "In particular we considered samples of star-forming (Saintonge et al. 2011, Tacconi et al. 2013, Freundlich et al. 2019), post-SB (French et al. 2015, Rowlands et al. 2015, Suess et al. 2017, Bezanson et al. 2019, Belli et al. 2021, Bezanson et al. 2022),"
+     }
+    ]
+   },
+   "citation": "Saintonge et al. 2011; Tacconi et al. 2013; Freundlich et al. 2019; French et al. 2015; Rowlands et al. 2015; Suess et al. 2017; Bezanson et al. 2019, 2022; Belli et al. 2021; Sargent et al. 2015; Davis et al. 2016; Rudnick et al. 2017; Hayashi et al. 2018; Spilker et al. 2018; Williams et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Monte Carlo library of 500,000 synthetic model spectra for stellar age estimation",
+    "evidence": [
+     {
+      "loc": "3.5 Stellar age",
+      "quote": "We adopted the model library described in Zibetti et al. (2017), which comprises 500000 synthetic spectra assuming randomly generated star formation histories"
+     }
+    ]
+   },
+   "citation": "Zibetti et al. 2017"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract 1D CO(3-2) spectra, optimize spatial position, and measure line flux and redshift in the uv plane",
+   "method": "Iterative uv-plane point-source modelling per channel across all four sidebands, averaging over channels maximizing S/N to fit spatial position, and fitting average line maps in uv plane with a 2D PSF model; Gaussian fit to 1D spectrum allowing for negative continuum for ID97148",
+   "software": [
+    "GILDAS",
+    "CASA"
+   ],
+   "key_parameters": [
+    "2D PSF (point-source) model in uv plane"
+   ],
+   "assumptions": [
+    "Targets are spatially unresolved point sources at the angular resolution of the observations"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure dust continuum flux densities and upper limits",
+   "method": "Integrate spectral range excluding channels dominated by CO emission line, fit 2D PSF model in uv plane at fixed CO position, and stack continuum maps of both targets",
+   "software": [
+    "GILDAS",
+    "CASA"
+   ],
+   "key_parameters": [
+    "5 sigma upper limit at fixed CO position"
+   ],
+   "assumptions": [
+    "Point-source profile centered at the CO detection position"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas masses from CO(3-2) luminosity and continuum upper limits",
+   "method": "Convert CO(3-2) luminosity to CO(1-0) using excitation ratio r_32 and then to M_H2 using Milky-Way-like alpha_CO; convert continuum upper limits using Rayleigh-Jeans dust emission calibration at 850 um",
+   "software": [],
+   "key_parameters": [
+    "r_32 = 0.5",
+    "alpha_CO = 4.4 M_sun K km s^-1 pc^2",
+    "beta = 1.8, alpha_850 = 1 x 10^20 erg s^-1 Hz^-1 M_sun^-1"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with Omega_m = 0.3, Omega_Lambda = 0.7, H_0 = 70 km s^-1 Mpc^-1; r_32 = 0.5; alpha_CO = 4.4 M_sun K km s^-1 pc^2; optically thin dust continuum with beta = 1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate stellar masses and star formation rates via spectro-photometric SED fitting and [OII] emission",
+   "method": "Simultaneously fit multi-wavelength SXDS photometry and VLT/VIMOS optical spectra at fixed spectroscopic redshift using Fast++; also compute dust-corrected [OII] luminosity SFR using Kewley et al. (2004)",
+   "software": [
+    "Fast++"
+   ],
+   "key_parameters": [
+    "log(tau/yr^-1) in [6.5, 10] in log-steps of 0.1; ages in log-steps of 0.1 from 100 Myr to age of Universe; A_V in [0, 6] mag; Z = 0.008, 0.02, 0.05"
+   ],
+   "assumptions": [
+    "Bruzual & Charlot (2003) models, Chabrier (2003) IMF, delayed SFHs, Calzetti et al. (2000) dust attenuation curve, E(B-V)_star = 0.58 E(B-V)_nebular"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure spectral absorption indices and derive stellar population ages",
+   "method": "Measure Lick indices H_delta_F, H_gamma_F, and D_n4000 from VIMOS optical spectra and compare with a Monte Carlo library of 500,000 synthetic spectra to construct Bayesian PDFs of R-band light-weighted and mass-weighted mean stellar ages",
+   "software": [],
+   "key_parameters": [
+    "10% error added to D_n4000 error budget; median of PDF as fiducial value, 16th and 84th percentiles as uncertainties"
+   ],
+   "assumptions": [
+    "Zibetti et al. (2017) library of 500,000 synthetic spectra with Sandage (1986) SFHs plus random bursts, varying metal enrichment histories, and 2016 Bruzual & Charlot (2003) / Chevallard & Charlot (2016) SSPs"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) redshift (ID97148)",
+   "value": "1.2728",
+   "uncertainty": "± 0.0007",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97148 34.3335000 -5.0840889 1.2728 ± 0.0007 1.273 299.4 ± 78.2 166 < 60.1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line flux (ID97148)",
+   "value": "299.4",
+   "uncertainty": "± 78.2",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97148 34.3335000 -5.0840889 1.2728 ± 0.0007 1.273 299.4 ± 78.2 166 < 60.1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line velocity width (ID97148)",
+   "value": "166",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97148 34.3335000 -5.0840889 1.2728 ± 0.0007 1.273 299.4 ± 78.2 166 < 60.1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line flux corrected for negative continuum (ID97148)",
+   "value": "687.7",
+   "uncertainty": "± 78.2",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97148 corrected 1 34.3335000 -5.0840889 1.2728 ± 0.0007 1.273 687.7 ± 78.2 240 < 60.1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line velocity width corrected for negative continuum (ID97148)",
+   "value": "240",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97148 corrected 1 34.3335000 -5.0840889 1.2728 ± 0.0007 1.273 687.7 ± 78.2 240 < 60.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density 5sigma upper limit (ID97148)",
+   "value": "< 60.1",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97148 34.3335000 -5.0840889 1.2728 ± 0.0007 1.273 299.4 ± 78.2 166 < 60.1"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) redshift (ID83492)",
+   "value": "1.1393",
+   "uncertainty": "± 0.0005",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "83492 34.5469167 -5.1470694 1.1393 ± 0.0005 1.138 258.8 ± 50.9 568 < 69.3"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line flux (ID83492)",
+   "value": "258.8",
+   "uncertainty": "± 50.9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "83492 34.5469167 -5.1470694 1.1393 ± 0.0005 1.138 258.8 ± 50.9 568 < 69.3"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line velocity width (ID83492)",
+   "value": "568",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "83492 34.5469167 -5.1470694 1.1393 ± 0.0005 1.138 258.8 ± 50.9 568 < 69.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density 5sigma upper limit (ID83492)",
+   "value": "< 69.3",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "83492 34.5469167 -5.1470694 1.1393 ± 0.0005 1.138 258.8 ± 50.9 568 < 69.3"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line flux (Companion1 of 83492)",
+   "value": "789.0",
+   "uncertainty": "± 55.5",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Companion1 of 83492 34.5475633 -5.1485586 1.1375 ± 0.0002 – 789.0 ± 55.5 555 48.9 ± 13.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density (Companion1 of 83492)",
+   "value": "48.9",
+   "uncertainty": "± 13.9",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Companion1 of 83492 34.5475633 -5.1485586 1.1375 ± 0.0002 – 789.0 ± 55.5 555 48.9 ± 13.9"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line flux (Companion2 of 83492)",
+   "value": "1054.3",
+   "uncertainty": "± 63.9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Companion2 of 83492 34.5501383 -5.1491131 1.1379 ± 0.0001 – 1054.3 ± 63.9 439 65.3 ± 13.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density (Companion2 of 83492)",
+   "value": "65.3",
+   "uncertainty": "± 13.9",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Companion2 of 83492 34.5501383 -5.1491131 1.1379 ± 0.0001 – 1054.3 ± 63.9 439 65.3 ± 13.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (ID97148)",
+   "value": "4.1",
+   "uncertainty": "± 1.1",
+   "units": "10^9 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "For our sample galaxies, we obtain molecular gas masses MH2 = (4.1 ± 1.1) × 109 M⊙ for ID97148 and MH2 = (9.9 ± 1.9) × 109 M⊙ for ID83492 (Table 3)."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "97148 < −0.14 10.66 ± 0.13 4.1 ± 1.1 < 0.20 > 5.7 −1.0 ± 0.1 8.6+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 corrected (ID97148)",
+   "value": "13.8",
+   "uncertainty": "± 1.6",
+   "units": "10^9 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "97148 corrected 2 < −0.14 10.66 ± 0.13 13.8 ± 1.6 < 0.05 > 19 −1.0 ± 0.1 8.6+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (ID83492)",
+   "value": "9.9",
+   "uncertainty": "± 1.9",
+   "units": "10^9 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "For our sample galaxies, we obtain molecular gas masses MH2 = (4.1 ± 1.1) × 109 M⊙ for ID97148 and MH2 = (9.9 ± 1.9) × 109 M⊙ for ID83492 (Table 3)."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "83492 −0.28 ± 0.40 10.79 ± 0.20 9.9 ± 1.9 0.05 18.9 −0.8 ± 0.1 8.9+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (Companion1 of 83492)",
+   "value": "29.5",
+   "uncertainty": "± 2.1",
+   "units": "10^9 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Companion1 of 83492 2.47+0.24−0.63 10.57 ± 0.10 29.5 ± 2.1 10.00 0.10 0.13 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (Companion2 of 83492)",
+   "value": "31.1",
+   "uncertainty": "± 1.9",
+   "units": "10^9 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Companion2 of 83492 2.93+0.01−0.63 10.80 ± 0.20 31.1 ± 1.9 27.37 0.04 0.31 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked continuum 5sigma upper limit F_cont",
+   "value": "< 9.1",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "We also stacked the continuum maps of our target galaxies at the position of the CO detections, reaching a 5𝜎 upper limit on the flux Fcont ≲ 9.1 𝜇Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked continuum gas mass upper limit M_gas",
+   "value": "< 9.2 x 10^9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular gas mass",
+     "quote": "This implies an upper limit on the average gas mass Mgas ≲ 9.2×109 M⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M_*) (ID97148)",
+   "value": "10.66",
+   "uncertainty": "± 0.13",
+   "units": "log(M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "97148 < −0.14 10.66 ± 0.13 4.1 ± 1.1 < 0.20 > 5.7 −1.0 ± 0.1 8.6+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate log(SFR) (ID97148)",
+   "value": "< -0.14",
+   "uncertainty": "not stated",
+   "units": "log(M_sun yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "97148 < −0.14 10.66 ± 0.13 4.1 ± 1.1 < 0.20 > 5.7 −1.0 ± 0.1 8.6+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M_*) (ID83492)",
+   "value": "10.79",
+   "uncertainty": "± 0.20",
+   "units": "log(M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "83492 −0.28 ± 0.40 10.79 ± 0.20 9.9 ± 1.9 0.05 18.9 −0.8 ± 0.1 8.9+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate log(SFR) (ID83492)",
+   "value": "-0.28",
+   "uncertainty": "± 0.40",
+   "units": "log(M_sun yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "83492 −0.28 ± 0.40 10.79 ± 0.20 9.9 ± 1.9 0.05 18.9 −0.8 ± 0.1 8.9+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas fraction log(f_H2) (ID97148)",
+   "value": "-1.0",
+   "uncertainty": "± 0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "97148 < −0.14 10.66 ± 0.13 4.1 ± 1.1 < 0.20 > 5.7 −1.0 ± 0.1 8.6+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas fraction log(f_H2) (ID83492)",
+   "value": "-0.8",
+   "uncertainty": "± 0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "83492 −0.28 ± 0.40 10.79 ± 0.20 9.9 ± 1.9 0.05 18.9 −0.8 ± 0.1 8.9+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation efficiency SFE (ID97148)",
+   "value": "< 0.20",
+   "uncertainty": "not stated",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "97148 < −0.14 10.66 ± 0.13 4.1 ± 1.1 < 0.20 > 5.7 −1.0 ± 0.1 8.6+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation efficiency SFE (ID83492)",
+   "value": "0.05",
+   "uncertainty": "not stated",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "83492 −0.28 ± 0.40 10.79 ± 0.20 9.9 ± 1.9 0.05 18.9 −0.8 ± 0.1 8.9+0.1−0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "D_n4000 index (ID97148)",
+   "value": "1.166",
+   "uncertainty": "± 0.010",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 Stellar age",
+     "quote": "For ID97148 we obtain H𝛿F = 7.1±0.6, H𝛾F = 7.0±0.6, andD𝑛4000 = 1.166±0.010, whereas for ID83492 we estimate H𝛿F = 5.1 ± 0.2, H𝛾F = 2.9 ± 4.6, and D𝑛4000 = 1.407 ± 0.007."
+    }
+   ]
+  },
+  {
+   "quantity": "D_n4000 index (ID83492)",
+   "value": "1.407",
+   "uncertainty": "± 0.007",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 Stellar age",
+     "quote": "For ID97148 we obtain H𝛿F = 7.1±0.6, H𝛾F = 7.0±0.6, andD𝑛4000 = 1.166±0.010, whereas for ID83492 we estimate H𝛿F = 5.1 ± 0.2, H𝛾F = 2.9 ± 4.6, and D𝑛4000 = 1.407 ± 0.007."
+    }
+   ]
+  },
+  {
+   "quantity": "R-band light-weighted mean stellar age log(age/yr) (ID97148)",
+   "value": "8.6",
+   "uncertainty": "± 0.1",
+   "units": "log(yr)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 Stellar age",
+     "quote": "As a result, for ID97148 we estimate an 𝑅-band light-weighted mean age of log(age/yr) = 8.6 ± 0.1 and for ID83492 log(age/yr) = 8.9 ± 0.1."
+    }
+   ]
+  },
+  {
+   "quantity": "R-band light-weighted mean stellar age log(age/yr) (ID83492)",
+   "value": "8.9",
+   "uncertainty": "± 0.1",
+   "units": "log(yr)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 Stellar age",
+     "quote": "As a result, for ID97148 we estimate an 𝑅-band light-weighted mean age of log(age/yr) = 8.6 ± 0.1 and for ID83492 log(age/yr) = 8.9 ± 0.1."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used for calibration",
+  "Imaging parameters (weighting scheme, robust parameter, cell size, cleaning thresholds) used to generate the 2D maps",
+  "Exact velocity binning width applied to the 1D spectra",
+  "Exact frequency/channel ranges integrated for the CO(3-2) line maps and excluded for the continuum maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel/frequency windows selected for the CO(3-2) line integration and continuum maps for each source",
+  "Optimized RA/DEC coordinates used for the final uv-plane extraction of ID97148 (since Table 2 lists H-band coordinates and the CO peak is offset by ~1.6'')",
+  "CASA and GILDAS software versions",
+  "Multi-wavelength photometric catalog of Kubo et al. (2018) and the Zibetti et al. (2017) Monte Carlo stellar population model library"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Public ALMA data (2019.1.00900.S), standard pipeline calibration, and well-described uv-plane point-source fitting (with cross-checks between GILDAS uv_fit and CASA uvmodelfit) make the ALMA measurements straightforward to reproduce, though the exact velocity integration windows and optimized extraction coordinates for ID97148 are not explicitly tabulated.",
+ "rediscovery_reason": "The ALMA Band 4 dataset (2019.1.00900.S) is public and small, the uv-plane point-source fitting method is clearly described, and the primary numeric results (CO fluxes, redshifts, line widths, and molecular gas masses for the two targets and two serendipitous companions) are explicitly tabulated.",
+ "source_card": "cards/2023MNRAS.524..923Z/sonnet/card.md"
+}

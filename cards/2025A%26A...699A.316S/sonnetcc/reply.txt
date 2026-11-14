@@ -1,0 +1,197 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We use infrared, and sub-millimeter observations to construct the spectral energy distribution (SED) between 2 $\\mu$m and 1.27 mm for an epoch 15–21 years after the red nova eruption."},
+{"loc": "ALMA/ACA", "quote": "BLG-360 was observed on 16/05/2022 using the Atacama Compact Array (ACA, a.k.a. Morita Array) consisting of 7-m antennas."}
+],
+"fields": ["evolved_stars", "stellar_physics", "transients"],
+"question": {
+"value": "Establish the characteristics of the OGLE-2002-BLG-360 merger remnant and its dusty environment and structure, and compare with other Galactic red novae",
+"evidence": [
+{"loc": "abstract", "quote": "We aim to establish the characteristics of the merger remnant, as well as of the dusty environment and its structure."},
+{"loc": "abstract", "quote": "We attempt to establish similarities with other Galactic red novae and argue how such an environment may have formed."}
+]
+},
+"targets": [
+{
+"name": "OGLE-2002-BLG-360 (BLG-360)",
+"details": [
+{"loc": "ALMA/ACA", "quote": "we get a 5$\\sigma$ upper limit on the circumstellar CO flux of 13.5 mJy at the fitted position of BLG-360 ($\\alpha$=17$^h$ 57$^m$ 38.9796$^s$, $\\delta$=–29$\\degree$ 46$'$ 04.952$''$)"},
+{"loc": "SED modelling", "quote": "For model `cd1ol`, we get $d$=4.09 kpc, which corresponds to a luminosity of 1646 L$_{\\odot}$."},
+{"loc": "Introduction", "quote": "The distance to BLG-360 was estimated by T13 to be 8.2 kpc, based on the OGLE-III extinction maps produced by (cite: nataf2013)."}
+],
+"coordinates": "alpha=17h 57m 38.9796s, delta=-29d 46' 04.952'' (fitted position in the ACA data)",
+"redshift_or_distance": "4.09 kpc (this paper, model cd1ol); 8.2 kpc (T13)",
+"distance_source": "Derived by equating the model blackbody luminosity to 4 pi d^2 F for the best RADMC-3D model; earlier value from T13 based on OGLE-III extinction maps"
+}
+],
+"alma_project_codes": [
+{"code": "2021.2.00017.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.2.00017.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (ACA)", "evidence": [{"loc": "ALMA/ACA", "quote": "Band 7 data were taken between 342.14–346.08 GHz and 354.12–358.05 GHz"}]},
+{"field": "frequencies_and_spectral_setup", "value": "342.14–346.08 GHz and 354.12–358.05 GHz; velocity resolution ~1 km/s; covers CO (3-2)", "evidence": [
+{"loc": "ALMA/ACA", "quote": "Band 7 data were taken between 342.14–346.08 GHz and 354.12–358.05 GHz, with a velocity resolution of $\\approx$1 km s$^{-1}$."},
+{"loc": "ALMA/ACA", "quote": "The heterodyne setup covers the rest frequency ($\\nu_{\\rm rest}$=345.796 GHz) of CO (3–2)"}
+]},
+{"field": "arrays", "value": "ACA (7-m antennas), ten antennas", "evidence": [{"loc": "ALMA/ACA", "quote": "BLG-360 was observed on 16/05/2022 using the Atacama Compact Array (ACA, a.k.a. Morita Array) consisting of 7-m antennas. Ten antennas were used in total."}]},
+{"field": "angular_resolution", "value": "clean beam 4.84 x 2.79 arcsec (natural weighting)", "evidence": [{"loc": "ALMA/ACA", "quote": "deconvolved from a clean beam of 4.84$''$ $\\times$ 2.79$''$ in natural weighting"}]},
+{"field": "max_recoverable_scale", "value": "19.5 arcsec (FoV 28.5 arcsec)", "evidence": [{"loc": "ALMA/ACA", "quote": "1400 s, the maximum recoverable scale was 19.5$''$, and the FoV was 28.5$''$."}]},
+{"field": "sensitivity", "value": "5 sigma upper limit on circumstellar CO flux 13.5 mJy (200 km/s bins)", "evidence": [{"loc": "ALMA/ACA", "quote": "we get a 5$\\sigma$ upper limit on the circumstellar CO flux of 13.5 mJy at the fitted position of BLG-360"}]},
+{"field": "time_on_source", "value": "total integration time ~1400 s", "evidence": [{"loc": "ALMA/ACA", "quote": "The total integration time was $\\approx$1400 s"}]},
+{"field": "observing_dates", "value": "16/05/2022", "evidence": [{"loc": "ALMA/ACA", "quote": "BLG-360 was observed on 16/05/2022 using the Atacama Compact Array"}]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=3-2", "rest_frequency": "345.796 GHz", "evidence": [{"loc": "ALMA/ACA", "quote": "The heterodyne setup covers the rest frequency ($\\nu_{\\rm rest}$=345.796 GHz) of CO (3–2), but no lines were detected towards BLG-360."}]}
+],
+"other_facilities": [
+{"name": "Keck II / NIRC2", "provided": {"value": "Ks-band detection (0.39 mJy) and J, H upper limits", "evidence": [{"loc": "Keck", "quote": "BLG-360 was detected in the $K_s$ band across three frames, but not in the $J$ or $H$ bands."}]}},
+{"name": "Gemini North / NIRI", "provided": {"value": "L' and M' photometry, Ks upper limit", "evidence": [{"loc": "Gemini", "quote": "The source is well-detected in the $L^\\prime$ and $M^\\prime$ bands with magnitudes of 8.85 $\\pm$ 0.05 and 6.50 $\\pm$ 0.08 for $L^\\prime$ and $M^\\prime$, respectively."}]}},
+{"name": "NEOWISE", "provided": {"value": "3.4 and 4.6 micron light curve and interpolated SED fluxes", "evidence": [{"loc": "(NEO)WISE", "quote": "The interpolated fluxes are 0.019 $\\pm$ 0.008 and 0.27 $\\pm$ 0.091 Jy for 3.4 and 4.6 $\\mu$m, respectively."}]}},
+{"name": "Subaru / COMICS", "provided": {"value": "N12.4 photometry and 10 micron spectrum", "evidence": [{"loc": "Subaru", "quote": "The photometric flux measured was 5.43 $\\pm$ 0.28 Jy, although this error is likely underestimated."}]}},
+{"name": "SOFIA FORCAST", "provided": {"value": "Mid-IR photometry in eleven filters", "evidence": [{"loc": "FORCAST", "quote": "FORCAST observations were done in the dual configuration of the instrument – that is, in two filters simultaneously – and a total of eleven filters were used."}]}},
+{"name": "SOFIA HAWC+", "provided": {"value": "Far-IR photometry in bands A, C, D, E (53-214 micron)", "evidence": [{"loc": "HAWC+", "quote": "The observations were taken in bands A, C, D, and E (53, 89, 154, and 214 $\\mu$m)."}]}},
+{"name": "SMA", "provided": {"value": "Continuum detection at 235.5 GHz (11.9 mJy/beam) and interstellar CO (2-1)", "evidence": [{"loc": "SMA", "quote": "The continuum flux density of BLG-360 is 11.9 $\\pm$ 0.45 mJy/beam at 235.5 GHz."}]}},
+{"name": "VLASS (VLA)", "provided": {"value": "3 GHz non-detection upper limit", "evidence": [{"loc": "VLA", "quote": "As the observations in 2020 are closest to the SOFIA observation epoch, we adopt 772 $\\mu$Jy as the VLA flux upper limit."}]}},
+{"name": "ASKAP (RACS)", "provided": {"value": "0.89 and 1.37 GHz upper limits", "evidence": [{"loc": "ASKAP", "quote": "BLG-360 was covered but was not detected at rms noise levels of 0.39 and 0.26 mJy for the 0.89 and 1.37 GHz observations, respectively."}]}},
+{"name": "ASAS-SN and SkyMapper", "provided": {"value": "Optical upper limits (g, V, i, z)", "evidence": [{"loc": "SkyMapper", "quote": "we derive a 5$\\sigma$ non-detection limits of $i=$22.0 and $z=$21.2 mag in the AB system"}]}},
+{"name": "VVV, WISE and Spitzer (intermediate epoch)", "provided": {"value": "2011-2017 photometry to trace evolution between the 2010 and 2017-2023 SEDs", "evidence": [{"loc": "Remnant evolution", "quote": "To illustrate the evolution of BLG-360 during the time between the two epochs considered so far, we extracted photometric measurements for the period 2011–2017."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Mira-star extinction (A_Ks = 0.67 +/- 0.17 mag) used to revise E(B-V)", "evidence": [{"loc": "Extinction and reddening", "quote": "We revise $E(B-V)$ using reddening of Mira stars within 0.8$\\degree$ of BLG-360 from (cite: lewis2023)."}]}, "citation": "(cite: lewis2023)"},
+{"what": {"value": "2010 SED and properties of BLG-360 (distance 8.2 kpc, stellar and dust parameters) used as starting point and comparison epoch", "evidence": [{"loc": "Remnant evolution", "quote": "To examine the temporal changes of the remnant, we revisit the SED analysis of T13 within our RADMC-3D framework."}]}, "citation": "T13 (cite: tylenda2013)"},
+{"what": {"value": "Optical constants for olivine, pyroxene silicates", "evidence": [{"loc": "SED modelling", "quote": "We considered several silicate types, and found olivine grains (cite: dorschner1995olivinepyroxene) to best replicate our observations."}]}, "citation": "(cite: dorschner1995olivinepyroxene)"},
+{"what": {"value": "Optical constants for alumina and solid iron dust", "evidence": [{"loc": "SED modelling", "quote": "Our models contained silicates, alumina dust (cite: begemann1997), and solid iron dust (cite: pollack1994; henningstognienko1996)."}]}, "citation": "(cite: begemann1997); (cite: pollack1994); (cite: henningstognienko1996)"},
+{"what": {"value": "BT-Settl (AGSS2009) synthetic stellar spectra, log(g)=0.0, [X/H]=0.0, 3000-4500 K", "evidence": [{"loc": "Stellar parameters", "quote": "we construct models using synthetic stellar spectra from the BT-Settl (AGSS2009) grid (cite: allard2012), extracted from the Spanish Virtual Observatory (SVO) service"}]}, "citation": "(cite: allard2012)"},
+{"what": {"value": "VVV DR2 catalogue photometry used for Keck zeropoints", "evidence": [{"loc": "Keck", "quote": "The zeropoints were derived by comparing the photometry of non-blended stars in the field of view with the measurements available in the VVV DR2 catalogue"}]}, "citation": "(cite: VVVDR2_Minniti_2017yCat)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Hyperion disk model grids sp-hmi and spu-hmi (via SED Fitter) compared with the observed SED", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "We searched for the best match to our observed SED among the model sets designated as sp-hmi and spu-hmi."}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "CASA pipeline", "evidence": [{"loc": "ALMA/ACA", "quote": "The data were reduced using CASA pipeline 6.2.1.7."}]},
+{"field": "pipeline_version", "value": "CASA pipeline 6.2.1.7", "evidence": [{"loc": "ALMA/ACA", "quote": "The data were reduced using CASA pipeline 6.2.1.7."}]}
+],
+"imaging": [
+{"field": "weighting_robust", "value": "natural weighting", "evidence": [{"loc": "ALMA/ACA", "quote": "deconvolved from a clean beam of 4.84$''$ $\\times$ 2.79$''$ in natural weighting"}]},
+{"field": "final_beam", "value": "4.84 x 2.79 arcsec", "evidence": [{"loc": "ALMA/ACA", "quote": "deconvolved from a clean beam of 4.84$''$ $\\times$ 2.79$''$ in natural weighting"}]}
+],
+"inherited": [
+{"what": {"value": "Initial DUSTY model started from the T13 analysis of the 2010 SED epoch", "evidence": [{"loc": "DUSTY", "quote": "We based our initial model on the analysis of the latest SED epoch (2010) considered by T13"}]}, "from_reference": "T13 (cite: tylenda2013)"},
+{"what": {"value": "FORCAST fluxes measured with the SOFIA photometry script; HAWC+ uses a modified version", "evidence": [{"loc": "FORCAST", "quote": "Fluxes and errors were measured using the FORCAST photometry script provided by the SOFIA Observatory"}, {"loc": "HAWC+", "quote": "The fluxes and errors were extracted using a modified version of the photometry script used for FORCAST."}]}, "from_reference": "SOFIA Observatory FORCAST photometry recipe (footnote URL)"},
+{"what": {"value": "Alternative FORCAST PSF-fitting photometry", "evidence": [{"loc": "FORCAST", "quote": "we extracted fluxes using PSF fitting, following the methodology of (cite: burris2023)"}]}, "from_reference": "(cite: burris2023)"},
+{"what": {"value": "Hyperion disk model grids", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "A full description of the models is given in (cite: robitaille2017)."}]}, "from_reference": "(cite: robitaille2017)"},
+{"what": {"value": "Extinction law values A_Ks/A_V=0.118 and R_V=3.1", "evidence": [{"loc": "Extinction and reddening", "quote": "Using the standard values of A$_{Ks}$/A$_V$=0.118 and R$_V$=A$_V$/$E(B-V)$=3.1 (cite: ccm89)"}]}, "from_reference": "(cite: ccm89)"},
+{"what": {"value": "WISE colour correction factors for a 400 K Planck function", "evidence": [{"loc": "(NEO)WISE", "quote": "the corrections would be 1.13 and 1.02 at 3.4 and 4.6 $\\mu$m, respectively (cite: WISEcolorcorr)"}]}, "from_reference": "(cite: WISEcolorcorr)"}
+],
+"unstated_but_needed": [
+"ACA imaging details: tclean parameters (cell, image size, mask, niter, threshold), spectral windows used for the continuum, and line-free channels",
+"How the ACA integrated continuum flux (33.7 mJy) and deconvolved source size were measured (aperture, Gaussian fit, task)",
+"Which ALMA execution blocks / MOUS were used and whether archive pipeline products were used as delivered",
+"ALMA flux calibrator and absolute flux scale uncertainty",
+"RADMC-3D run settings: number of photon packages, wavelength grid, scattering treatment, grain size distribution and grain sizes per model, gas-to-dust ratio",
+"Exact optical-constant files and mixing prescription used for each grain species",
+"Objective function or criterion for the manual fits and how models were compared beyond visual agreement",
+"How the SED was dereddened for the model comparison (extinction curve applied across 2 micron to 1.27 mm)",
+"Treatment of non-detections and upper limits in the model comparison",
+"DUSTY input files and scaling used to match the observed SED"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Assemble multi-facility SED photometry", "method": {"value": "Photometry from archival and new observations within four years of the SOFIA epoch, interpolated or averaged where needed, with non-detections as 5 sigma upper limits", "evidence": [{"loc": "Observations", "quote": "In order to get the best possible wavelength coverage, we select data within four years of the SOFIA observations."}, {"loc": "Table 1", "quote": "Non-detection fluxes are given as 5$\\sigma$ upper limits, where $\\sigma$ is the root-mean-square noise in a region where BLG-360 should be observed."}]}, "software": ["CASA", "FORCAST Redux", "HAWC DRP"], "key_parameters": [{"value": "FORCAST aperture photometry with 12-pixel apertures", "evidence": [{"loc": "FORCAST", "quote": "Aperture photometry was performed on level 3 pipeline products using large apertures of 12 pixels."}]}], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Alternative PSF-fitting photometry for FORCAST shows fluctuations are consistent with noise", "evidence": [{"loc": "Alternative photometry extraction", "quote": "The PSF photometry shows that the fluctuations are due to noise within the large FORCAST photometry extraction aperture."}]}},
+{"order": 2, "goal": "Measure ACA Band 7 continuum and CO (3-2) limit", "method": {"value": "Integrated continuum flux and deconvolved size from ACA data; CO upper limit from spatial rms of the background in 200 km/s bins", "evidence": [{"loc": "ALMA/ACA", "quote": "By measuring the spatial root-mean-square (rms; denoted as $\\sigma$) of the background in 200 km s$^{-1}$ bins, we get a 5$\\sigma$ upper limit on the circumstellar CO flux of 13.5 mJy"}]}, "software": ["CASA"], "key_parameters": [{"value": "natural weighting, clean beam 4.84 x 2.79 arcsec", "evidence": [{"loc": "ALMA/ACA", "quote": "deconvolved from a clean beam of 4.84$''$ $\\times$ 2.79$''$ in natural weighting"}]}], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Revise extinction and compute total flux", "method": {"value": "Mean K-band extinction of 100 nearby Miras converted to E(B-V); total extinction-corrected flux integrated over the SED", "evidence": [{"loc": "Extinction and reddening", "quote": "A total of 100 Miras sources were used, which show little variation in estimated extinction, with a standard deviation of 0.17 mag."}]}, "software": [], "key_parameters": [], "assumptions": [{"value": "A_Ks/A_V=0.118 and R_V=3.1 (CCM89); adopted E(B-V)=1.83 mag", "evidence": [{"loc": "Extinction and reddening", "quote": "Therefore, we adopt the $E(B-V)$ value of 1.83 mag, derived from nearby Miras, for our analysis."}]}], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 4, "goal": "Initial 1-D DUSTY SED fit", "method": {"value": "Single spherical dust shell fitted manually, model SED scaled to the maximum observed flux", "evidence": [{"loc": "DUSTY", "quote": "Then, we manually adjusted the parameters to better reproduce the observations. As the output SED of DUSTY is dimensionless, we scaled the model SED fluxes to the maximum value of our observed SED."}]}, "software": ["DUSTY"], "key_parameters": [{"value": "Teff 4500 K, R* 661 Rsun, r_out 20 pc, inner-boundary dust temperature 300 K", "evidence": [{"loc": "DUSTY", "quote": "| 4500 | 661 | 208 | 20 | 300 | 0.30 | 1.00 | 2 | –1.1 |"}]}], "assumptions": [{"value": "Spherically symmetric circumstellar dust", "evidence": [{"loc": "DUSTY", "quote": "which was also based on the assumption that the circumstellar dust was spherically symmetric"}]}], "fitting": {"value": "Manual adjustment of parameters", "evidence": [{"loc": "DUSTY", "quote": "Then, we manually adjusted the parameters to better reproduce the observations."}]}, "validation": {"value": "Rejected because the shell extends to 20 pc, inconsistent with typical circumstellar sizes", "evidence": [{"loc": "SED modelling", "quote": "The dust shell, however, extended out to 20 pc from the central star, which is inconsistent with typical circumstellar sizes of evolved stars (cite: fong2006)."}]}},
+{"order": 5, "goal": "Manual RADMC-3D SED fit with single-shell, two-shell and cavity geometries", "method": {"value": "Three spherical geometries (S, D, CD) with a point-source blackbody star, grains mixed with Mie theory; silicate type, grain ratios, shell radii and density scaling varied by hand", "evidence": [{"loc": "SED modelling", "quote": "We examined three different dust structures: a single shell of continuous dust (S), a two-shell structure (D), and the same D geometry but with a cavity with zero dust density between the inner and outer dust shell (CD)."}, {"loc": "SED modelling", "quote": "We mix the grains using Mie theory via python routines supplied in the RADMC-3D package."}]}, "software": ["RADMC-3D"], "key_parameters": [{"value": "Box grid -10000 to 10000 AU, 800 points per axis, 25 AU per cell", "evidence": [{"loc": "SED modelling", "quote": "We use a grid resolution of 800 points on each axis, giving a spatial resolution of 25 AU per grid cell."}]}, {"value": "Dust sublimation temperature 1700 K", "evidence": [{"loc": "SED modelling", "quote": "We set the dust sublimation temperature arbitrarily at 1700 K, and remove any dust that exceeds this temperature from the model."}]}, {"value": "Density gradient fixed at 2.00", "evidence": [{"loc": "SED modelling", "quote": "to 2.00, as larger values increase the optical depth to an extent where the calculation time increases significantly"}]}], "assumptions": [{"value": "Star treated as a point-source blackbody and sole heat source; spherical geometry", "evidence": [{"loc": "SED modelling", "quote": "We treat the central star as a point source, which is the only heat source in the system."}]}, {"value": "Only one silicate type per model; same opacity curves for all dust within each model", "evidence": [{"loc": "SED modelling", "quote": "For the silicate dust, we only implement one grain type, and do not mix different silicate grains together in any single model."}]}], "fitting": {"value": "Manual fit; no sampler or likelihood stated", "evidence": [{"loc": "SED modelling", "quote": "to manually fit the SED"}]}, "validation": {"value": "Models consistent with observed fluxes within 5 sigma; some FIR overprediction", "evidence": [{"loc": "SED modelling", "quote": "The models are, however, consistent with the observed fluxes within 5$\\sigma$ uncertainties."}]}},
+{"order": 6, "goal": "Derive distance and luminosity from the best model", "method": {"value": "Equate blackbody model luminosity to 4 pi d^2 F and solve for d", "evidence": [{"loc": "SED modelling", "quote": "We then rearrange Equation [\\[eq: luminosity\\]](#eq: luminosity) for $d$ to calculate the distance."}]}, "software": [], "key_parameters": [], "assumptions": [{"value": "Star is a blackbody with model R* and Teff", "evidence": [{"loc": "SED modelling", "quote": "where $\\sigma_{\\rm SB}$ is the Stefan-Boltzmann constant and $d$ is the distance to the star."}]}], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 7, "goal": "Test iron versus carbon and silicate type", "method": {"value": "Swap equal quantity of iron for amorphous carbon (cd1dl vs cd4dl) and compare four silicate types in the 10 micron profile", "evidence": [{"loc": "Mineralogy: iron vs carbon", "quote": "The only difference is that we exchange the same quantity of iron dust for amorphous carbon dust"}]}, "software": ["RADMC-3D"], "key_parameters": [], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Carbon model gives too high opacity below ~17 micron and no 10 micron feature", "evidence": [{"loc": "Mineralogy: iron vs carbon", "quote": "The result is that our opacities are too high for wavelengths $\\lesssim$17 $\\mu$m, resulting in underestimated NIR fluxes and no 10 $\\mu$m feature."}]}},
+{"order": 8, "goal": "Rule out a disk geometry and test stellar spectrum", "method": {"value": "Compare Hyperion disk models (sp-hmi, spu-hmi) from SED Fitter to the observed SED; replace blackbody with BT-Settl synthetic spectra", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "We compared SED models calculated using the Hyperion code (cite: robitaille2011hyperion) and different dust geometries."}, {"loc": "Stellar parameters", "quote": "The 3500 K spectrum produces an almost identical SED to the `cd1ol` SED, in which the star was modelled as a 3000 K blackbody."}]}, "software": ["SED Fitter", "Hyperion", "RADMC-3D"], "key_parameters": [], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Disk models give much larger FIR/sub-mm excess and significant optical emission, unlike the observations", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "The shape of the SED, coupled with the fact that BLG-360 is not visible at optical wavelengths, immediately rules out a disk geometry dominating the dust structure of BLG-360."}]}},
+{"order": 9, "goal": "Model the 2010 SED to trace evolution", "method": {"value": "Refit the T13 2010 SED with RADMC-3D starting from cd1ol, changing only inner-shell density and extent and stellar properties", "evidence": [{"loc": "Remnant evolution", "quote": "We therefore changed only the density distribution, extent of the inner shell, and the properties of the star."}]}, "software": ["RADMC-3D"], "key_parameters": [], "assumptions": [{"value": "Dust composition and grain size unchanged; outer shell unchanged", "evidence": [{"loc": "Remnant evolution", "quote": "We assume that the dust composition and grain size did not change."}]}], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Smooth evolution seen in 2011-2017 NIR/IR photometry", "evidence": [{"loc": "Remnant evolution", "quote": "suggest smooth evolution of the object between the 2010 and 2017–2023 SED epochs"}]}}
+],
+"software": [
+{"name": "CASA pipeline", "version": "6.2.1.7", "used_for": {"value": "Reduction of the ACA Band 7 data", "evidence": [{"loc": "ALMA/ACA", "quote": "The data were reduced using CASA pipeline 6.2.1.7."}]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Monte Carlo dust radiative transfer for the SED models", "evidence": [{"loc": "SED modelling", "quote": "We mix the grains using Mie theory via python routines supplied in the RADMC-3D package."}]}},
+{"name": "DUSTY", "version": "not stated", "used_for": {"value": "Initial 1-D radiative transfer SED fit", "evidence": [{"loc": "SED modelling", "quote": "Our initial analysis consisted of fitting the observed SED using the 1-D radiative transfer code DUSTY (cite: dustyv2)."}]}},
+{"name": "SED Fitter", "version": "not stated", "used_for": {"value": "Fitting Hyperion disk model grids to the SED", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "we attempted to fit the observed SED with the SED Fitter"}]}},
+{"name": "Hyperion", "version": "not stated", "used_for": {"value": "Radiative transfer behind the disk-model SED sets", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "We compared SED models calculated using the Hyperion code (cite: robitaille2011hyperion) and different dust geometries."}]}},
+{"name": "FORCAST Redux pipeline", "version": "2.3.0", "used_for": {"value": "Processing and calibration of SOFIA FORCAST data", "evidence": [{"loc": "FORCAST", "quote": "The raw data were processed and calibrated in the FORCAST Redux pipeline version 2.3.0 (cite: sofiaredux)."}]}},
+{"name": "HAWC DRP pipeline", "version": "v3.0.0", "used_for": {"value": "Reduction of SOFIA HAWC+ data", "evidence": [{"loc": "HAWC+", "quote": "The data were reduced using the HAWC DRP pipeline v3.0.0 (cite: sofiaredux)."}]}},
+{"name": "IRAF Gemini package", "version": "not stated", "used_for": {"value": "Reduction of the FLAMINGOS-2 K-band spectrum", "evidence": [{"loc": "Gemini spectroscopy", "quote": "The data were reduced in the standard IRAF Gemini package"}]}}
+],
+"results_numeric": [
+{"quantity": "ACA Band 7 integrated continuum flux", "value": "33.7", "uncertainty": "1.11", "units": "mJy", "from_step": 2, "evidence": [{"loc": "ALMA/ACA", "quote": "The integrated continuum flux is 33.7 $\\pm$ 1.11 mJy."}]},
+{"quantity": "ACA 5 sigma upper limit on circumstellar CO (3-2) flux", "value": "13.5", "uncertainty": "not stated", "units": "mJy", "from_step": 2, "evidence": [{"loc": "ALMA/ACA", "quote": "we get a 5$\\sigma$ upper limit on the circumstellar CO flux of 13.5 mJy"}]},
+{"quantity": "ACA deconvolved source size", "value": "(835 x 372)", "uncertainty": "501 and 210", "units": "mas", "from_step": 2, "evidence": [{"loc": "ALMA/ACA", "quote": "A source size of (835$\\pm$501) $\\times$ (372$\\pm$210) mas was calculated"}]},
+{"quantity": "SMA continuum flux density at 235.5 GHz", "value": "11.9", "uncertainty": "0.45", "units": "mJy/beam", "from_step": 1, "evidence": [{"loc": "SMA", "quote": "The continuum flux density of BLG-360 is 11.9 $\\pm$ 0.45 mJy/beam at 235.5 GHz."}]},
+{"quantity": "E(B-V) from nearby Miras (adopted)", "value": "1.83", "uncertainty": "0.46", "units": "mag", "from_step": 3, "evidence": [{"loc": "Extinction and reddening", "quote": "we find $E(B-V)$=1.83$\\pm$0.46 mag using the Miras technique"}]},
+{"quantity": "Total extinction-corrected flux", "value": "3.14e-9", "uncertainty": "not stated", "units": "erg s^-1 cm^-2", "from_step": 3, "evidence": [{"loc": "Extinction and reddening", "quote": "The total extinction-corrected flux of BLG-360 is then $F=\\int F_{\\lambda} d\\lambda=3.14\\times$10$^{-9}$ erg s$^{-1}$ cm$^{-2}$"}]},
+{"quantity": "SED spectral index between 89 and 1273 micron", "value": "-1.86", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "Spectral energy distribution", "quote": "The SED between 89–1273 $\\mu$m is best represented by a steeper spectrum with a spectral index of –1.86."}]},
+{"quantity": "Total dust mass (best model cd1ol)", "value": "0.012", "uncertainty": "not stated", "units": "Msun", "from_step": 5, "evidence": [{"loc": "SED modelling", "quote": "The total dust mass across both shells is 0.012 M$_{\\odot}$, with just 2$\\times$10$^{-4}$ M$_{\\odot}$ found within the inner shell, and the rest in the outer shell."}]},
+{"quantity": "Dust composition fractions (iron, olivine, alumina)", "value": "58%, 25%, 17%", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "The dust composition is dominated by iron grains (58%), but also contains olivine silicates (25%) and alumina dust (17%)"}]},
+{"quantity": "Outer and inner dust shell extent", "value": "9500 and 1000", "uncertainty": "not stated", "units": "AU", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "The dust in the outer shell extends out to a maximum distance of 9500 AU from the central source, whilst the inner shell extends out to 1000 AU."}]},
+{"quantity": "Distance (model cd1ol)", "value": "4.09", "uncertainty": "not stated", "units": "kpc", "from_step": 6, "evidence": [{"loc": "SED modelling", "quote": "we get $d$=4.09 kpc, which corresponds to a luminosity of 1646 L$_{\\odot}$."}]},
+{"quantity": "Stellar luminosity (model cd1ol)", "value": "1646", "uncertainty": "not stated", "units": "Lsun", "from_step": 6, "evidence": [{"loc": "SED modelling", "quote": "we get $d$=4.09 kpc, which corresponds to a luminosity of 1646 L$_{\\odot}$."}]},
+{"quantity": "Dust mass of the 2010 model", "value": "3.44e-3", "uncertainty": "not stated", "units": "Msun", "from_step": 9, "evidence": [{"loc": "Remnant evolution", "quote": "Our 2010 model yields a total dust mass of 3.44$\\times$10$^{-3}$ M$_{\\odot}$"}]},
+{"quantity": "Dust expansion velocity of the inner shell", "value": "116–195", "uncertainty": "not stated", "units": "km/s", "from_step": 9, "evidence": [{"loc": "Remnant evolution", "quote": "we estimated the dust expansion velocity to be between 116–195 km s$^{-1}$"}]},
+{"quantity": "Average dust mass-loss rate", "value": "7e-4", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 9, "evidence": [{"loc": "Remnant evolution", "quote": "The average dust mass-loss rate is $\\approx$7$\\times$10$^{-4}$ M$_{\\odot}$ yr$^{-1}$"}]}
+],
+"findings_qualitative": [
+{"value": "No gas lines (CO from ACA/SMA, K-band atomic and molecular) are detected, unlike other red nova remnants", "evidence": [{"loc": "The anomaly of BLG-360", "quote": "Another remarkable feature of the BLG-360 remnant is the lack of spectroscopic signatures of gas, atomic or molecular"}]},
+{"value": "The 10 micron absorption needs both olivine silicates and alumina; a silicate-only feature is too narrow", "evidence": [{"loc": "Mineralogy: silicate dust", "quote": "We find that a silicate to alumina ratio of 3:2 is able to reproduce the depth and width of the 10 $\\mu$m profile"}]},
+{"value": "The outer shell likely formed from pre-merger mass loss", "evidence": [{"loc": "Dust extent", "quote": "Therefore, material that formed the outer shell must have been lost from the star for many years prior to the merger event"}]}
+],
+"claims": [
+{"hypothesis": "Can a spherically symmetric dust model reproduce the 2-1270 micron SED of the remnant?", "experiment": "Manual RADMC-3D fits of single-shell, two-shell and two-shell-with-cavity models", "result": "Best model cd1ol: M-type star with 0.012 Msun of dust in two shells reaching 1000 and 9500 AU", "finding": "The SED is best replicated by a spherically symmetric two-shell model with a dust-free cavity", "support": "supported", "evidence": [{"loc": "abstract", "quote": "We show that the SED is best replicated by a spherically symmetric model consisting of an M-type supergiant surrounded by 0.012 M$_{\\odot}$ of dust concentrated within two spherical shells."}]},
+{"hypothesis": "Is the distance to BLG-360 smaller than the previous 8.2 kpc?", "experiment": "Compared the observed total flux with the model blackbody luminosity, plus a revised extinction from nearby Miras", "result": "d = 4.09 kpc and L = 1646 Lsun for cd1ol", "finding": "The distance is revised to about half the T13 value", "support": "supported", "evidence": [{"loc": "Summary", "quote": "We revise the distance of BLG-360 to 4.09 kpc, approximately half of the previous value of 8.2 kpc."}]},
+{"hypothesis": "Is the high near-IR opacity due to iron or to carbon grains?", "experiment": "Compared models cd1dl and cd4dl differing only by iron versus amorphous carbon", "result": "Carbon model gives too high opacity and no 10 micron feature", "finding": "Solid iron grains are the more likely source of the NIR opacity", "support": "supported", "evidence": [{"loc": "Mineralogy: iron vs carbon", "quote": "Therefore, we conclude that our source of NIR opacities is more likely to be solid iron than carbon grains."}]},
+{"hypothesis": "Is the dust in a disk or torus rather than spherical?", "experiment": "Compared Hyperion sp-hmi and spu-hmi disk models with the observed SED and the cd1ol model", "result": "Disk models show large FIR/sub-mm excess and strong optical emission not observed", "finding": "A disk does not dominate the dust structure, though a disk inside the inner shell cannot be excluded", "support": "supported", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "The shape of the SED, coupled with the fact that BLG-360 is not visible at optical wavelengths, immediately rules out a disk geometry dominating the dust structure of BLG-360."}]},
+{"hypothesis": "Has the remnant continued to form dust since 2010?", "experiment": "Modelled the 2010 SED with RADMC-3D and compared with the 2017-2023 model", "result": "Dust mass rose from 3.44e-3 to 0.012 Msun and the inner shell expanded from 700 to 1000 AU", "finding": "Dust condensation has continued after the merger and is driven outward by stellar outflows", "support": "supported", "evidence": [{"loc": "Remnant evolution", "quote": "This indicates that dust condensation has continued several years after the merger event"}]},
+{"hypothesis": "Why is BLG-360 detected in sub-mm with small arrays while other red novae are not, and why are there no gas lines?", "experiment": "ACA and SMA continuum and CO searches combined with model dust opacities", "result": "Continuum detected, no CO lines; model dust opacity is very high in the IR but modest at 1.3 mm", "finding": "An unusually high dust-to-gas ratio is suggested but the ratio is unknown", "support": "partially", "evidence": [{"loc": "The anomaly of BLG-360", "quote": "This suggests that the remnant has an unusually high dust-to-gas mass ratio. This ratio is, however, unknown, hampering any determinations of the total circumstellar mass."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Sub-mm and far-IR coverage is needed to constrain the Rayleigh-Jeans tail and the extended dust", "evidence": [{"loc": "Dust extent", "quote": "Indeed, if we implemented a more compact outer shell, the slope of the Rayleigh-Jeans tail would be steeper and so the sub-mm fluxes, as well as the SOFIA-HAWC+ fluxes, would be underestimated."}]},
+{"field": "why_this_method", "value": "DUSTY gave an unphysical 20 pc shell, so a 3-D code (RADMC-3D) was used for a closer physical representation", "evidence": [{"loc": "SED modelling", "quote": "To get a closer physical representation of the SED, we used RADMC-3D"}]},
+{"field": "how_they_decided_enough", "value": "No better-fitting model found within the simplifying assumptions", "evidence": [{"loc": "SED modelling", "quote": "It was very difficult, if not impossible, to find better-fitting models within our simplifying assumptions."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "FeO, MgS and amorphous carbon grains rejected as not fitting the observations", "evidence": [{"loc": "SED modelling", "quote": "We also examined possible contributions from FeO (cite: henning1995), MgS (cite: begemann1994), and amorphous carbon (cite: preibisch1993) grains but find these do not fit our observations."}]},
+{"value": "Single DUSTY shell rejected because it extends to 20 pc", "evidence": [{"loc": "SED modelling", "quote": "The dust shell, however, extended out to 20 pc from the central star, which is inconsistent with typical circumstellar sizes of evolved stars (cite: fong2006)."}]}
+],
+"limitations_admitted": [
+{"value": "Models overpredict FIR fluxes and miss SOFIA flux dips", "evidence": [{"loc": "SED modelling", "quote": "Our models slightly overpredict the FIR fluxes at 20–220 $\\mu$m and do not reproduce the flux variations seen in data gathered with SOFIA"}]},
+{"value": "ACA deconvolved size is likely only an upper limit", "evidence": [{"loc": "ALMA/ACA", "quote": "This deconvolved size is likely just an upper limit."}]},
+{"value": "Spherical geometry assumed to limit free parameters", "evidence": [{"loc": "Spherical vs disk geometry", "quote": "In order to limit the number of free parameters, we assumed in our RADMC-3D models a spherical geometry for the dust shells."}]},
+{"value": "Stellar and dust constraints carry large uncertainties from both observations and method", "evidence": [{"loc": "Caveats", "quote": "Although we are able to make some constraints on the stellar properties of the merger remnant, these constraints carry some intrinsic uncertainty, both from the observational errors and the methodology."}]}
+],
+"referee_caveats_inferred": [
+"Model fits are manual with no goodness-of-fit statistic, so parameter degeneracies (Teff, distance, silicate type, iron fraction) are not quantified",
+"SED combines epochs spanning several years for a variable source",
+"ALMA ACA contributes a single broad-band flux, so the Rayleigh-Jeans slope relies on sparse SOFIA and SMA data",
+"Dust composition conclusions depend on available opacity tables for metallic iron and alumina"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"ACA imaging and flux-extraction recipe",
+"RADMC-3D run settings and grain size distributions",
+"Model fit criterion and parameter search procedure",
+"Photometry tables are given but intermediate reduced images are not released"
+],
+"estimated_data_volume_inferred": "ACA data of one ~1400 s execution: roughly 1-5 GB raw (estimate); other facilities' photometry is tabulated in the paper",
+"score_inferred": 3,
+"score_reason": "SED photometry is tabulated and model parameters are listed, but model fits are manual with unspecified RADMC-3D settings, and the ACA imaging recipe is minimal.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA plays a minor role (one ACA flux), the central results come from a manual multi-facility SED model without a complete, objective fitting recipe.",
+"methods_papers": [
+{"citation": "RADMC-3D (cite: radmc3d)", "why": "Dust radiative transfer code used for the main SED models"},
+{"citation": "DUSTY (cite: dustyv2)", "why": "1-D radiative transfer code used for the initial fit"},
+{"citation": "(cite: robitaille2017)", "why": "Describes the Hyperion SED model grids used to test disk geometries"},
+{"citation": "(cite: burris2023)", "why": "PSF-fitting photometry method for FORCAST"}
+],
+"companion_papers": [
+{"citation": "T13 (cite: tylenda2013)", "why": "Earlier SED analysis and discovery as a red nova; 2010 comparison epoch"},
+{"citation": "(cite: steinmetz2024)", "why": "ALMA study of the red nova V1309 Sco used for comparison"},
+{"citation": "(cite: kaminski2018)", "why": "ALMA study of the red nova V4332 Sgr used for comparison"}
+],
+"related_projects_or_surveys": ["ALMA 2021.2.00017.S (ACA)", "SOFIA proposal 09-0088 (FORCAST and HAWC+)", "VVV and VVVX", "VLASS", "ASKAP RACS", "NEOWISE"]
+}

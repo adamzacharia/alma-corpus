@@ -1,0 +1,263 @@
+{
+ "bibcode": "2015MNRAS.452...88K",
+ "title": "ALMA detection of a disc-dominated [C II] emission line at z=4.6 in the luminous QSO J1554+1937",
+ "year": 2015,
+ "doi": "10.1093/mnras/stv1160",
+ "arxiv_id": "1505.05262",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What is the origin (rotating disc vs bulge) of the broad [C II] line in the luminous z=4.6 QSO J1554+1937, and how does this affect its position relative to the local M-sigma relation?",
+ "alma_project_codes": [
+  "2012.1.00604.S"
+ ],
+ "data": {
+  "bands": "Band 7 (275-373 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~1 arcsec at 340 GHz; beam 1.2\" x 0.7\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric luminosity and target selection from QSO catalog",
+    "evidence": [
+     {
+      "loc": "2 Target selection and ALMA observations",
+      "quote": "We first identified luminous QSOs as potential targets from the multi-wavelength QSO catalog of (cite: krawczyk13)"
+     }
+    ]
+   },
+   "citation": "(cite: krawczyk13)"
+  },
+  {
+   "what": {
+    "value": "SMBH mass (2.8±0.5)e10 Msun from C IV width",
+    "evidence": [
+     {
+      "loc": "4.6 Measuring the central black hole mass",
+      "quote": "(cite: shenEtal11) estimated the SMBH in J1554+1937 to have a mass of $M_\\mathrm{BH} = (2.8\\pm0.5)\\times10^{10}~M_\\odot$."
+     }
+    ]
+   },
+   "citation": "(cite: shenEtal11)"
+  },
+  {
+   "what": {
+    "value": "Linear v0-sigma relation",
+    "evidence": [
+     {
+      "loc": "4.5",
+      "quote": "We therefore use the linear relation from (cite: pizzella05) to represent the relationship between $\\sigma$ and $v_0$."
+     }
+    ]
+   },
+   "citation": "(cite: pizzella05)"
+  },
+  {
+   "what": {
+    "value": "Local M-sigma relation",
+    "evidence": [
+     {
+      "loc": "4.7",
+      "quote": "we are now equipped to compare J1554+1937 to the local $M$–$\\sigma$ relation (cite: kormendyHo_review)"
+     }
+    ]
+   },
+   "citation": "(cite: kormendyHo_review)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Run NAASC scripts in CASA 4.2, clean with Briggs weighting, one round of phase-only self-calibration",
+   "software": [
+    "CASA",
+    "clean"
+   ],
+   "key_parameters": [
+    "robust=0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum and line sizes and fluxes",
+   "method": "Gaussian fit in the uv-plane with uvmodelfit for continuum and line; moment 0, 1, 2 maps",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "moment 0 over 337.3-338.2 GHz; moment 1 pixels with S/N ≥4 of ~2 mJy rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model disc line profiles",
+   "method": "Idealised disc with v(r)=v0[1-exp(-r/r0)], exponential surface brightness, Gaussian dispersion, inclination, integrated over disc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "v0 and inclination degenerate"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Dynamical mass",
+   "method": "Mdyn/Msun ≈1.16e5 v0^2 D with v0 sin i from half-width at 20% of maximum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "rotating disc; D=1.6 kpc (line) or 2.0 kpc (continuum)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Bulge velocity dispersion from disc rotation",
+   "method": "Pizzella et al. linear v0-sigma relation, then aperture correction to r_e/2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "host has a classical bulge"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare with M-sigma",
+   "method": "Place the source relative to the Kormendy & Ho relation with SMBH mass from Shen et al. for various inclinations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "intrinsic scatter 0.29 dex"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C II] FWHM",
+   "value": "735",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Data Analysis",
+     "quote": "The FWHM is 735 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift",
+   "value": "4.627",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Data Analysis",
+     "quote": "The actual redshift of the line is approximately 4.627"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at ~344 GHz",
+   "value": "12.70",
+   "uncertainty": "0.12",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Data Analysis",
+     "quote": "The integrated flux density resulting from the fit is $12.70\\pm0.12$ mJy at $\\sim344$ GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] integrated flux",
+   "value": "9.40",
+   "uncertainty": "0.40",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Data Analysis",
+     "quote": "The integrated flux density is to be $9.40\\pm0.40$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] line luminosity",
+   "value": "5.9e9",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Data Analysis",
+     "quote": "corresponding to a line luminosity of $5.9\\times10^9~\\mathrm{L}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass x sin^2 i (continuum size)",
+   "value": "5.3e10",
+   "uncertainty": "1.3e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "$M_\\mathrm{dyn}\\times\\sin^2(i)\\approx(5.3\\pm1.3)\\times10^{10}~M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum sigma_e/2",
+   "value": "310",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5",
+     "quote": "therefore $\\sigma_{e/2}\\ensuremath{\\gtrsim}310$ km s$^{-1}$ for J1554+1937"
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington ratio",
+   "value": "0.15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.6",
+     "quote": "the Eddington ratio ($L_\\mathrm{bol}/L_\\mathrm{Edd}$) is 0.15"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Channel width and cell/image size used in clean",
+  "Line-free channels used for continuum subtraction and continuum map",
+  "Clean threshold, masking and iterations",
+  "Self-calibration solution interval",
+  "How the moment maps and 20 per cent half-width were measured (visual)",
+  "Details of the line profile model fitting/inclination integration",
+  "Number of execution blocks and observing date"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond robust",
+  "Continuum and line-free channel definitions",
+  "Exact moment map thresholds and line-width measurement"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short single dataset with public ALMA data and simple recipe, but several imaging details and visual measurements are unspecified.",
+ "rediscovery_reason": "Single archival dataset, numeric results (flux, FWHM, sizes) are recoverable with standard CASA steps.",
+ "source_card": "cards/2015MNRAS.452...88K/sonnet/card.md"
+}

@@ -1,0 +1,411 @@
+{
+ "bibcode": "2024ApJ...961...42T",
+ "title": "Star Formation Efficiency in Nearby Galaxies Revealed with a New CO-to-H<SUB>2</SUB> Conversion Factor Prescription",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad10ae",
+ "arxiv_id": "2310.16037",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How does the CO-to-H2 conversion factor (alpha_CO) depend on local CO velocity dispersion at 150 pc scales, and how does a velocity-dispersion-based alpha_CO prescription change the star formation efficiency (depletion time) in centers and disks of 65 PHANGS galaxies",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00886.L",
+  "2018.1.01321.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "CO(2–1) beam sizes of 150 pc or smaller",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Database of multi-wavelength measurements in 1.5 kpc hexagonal apertures (velocity dispersion at 150 pc, CO(2–1) intensity, Sigma_star, Sigma_SFR, metallicity)",
+    "evidence": [
+     {
+      "loc": "2.1 PHANGS Datasets",
+      "quote": "leveraging a database developed by (cite: 2022AJ....164...43S)"
+     },
+     {
+      "loc": "2.1 PHANGS Datasets",
+      "quote": "we extract multiple physical quantities in matched hexagonal apertures with fixed sizes of 1.5 kpc"
+     }
+    ]
+   },
+   "citation": "(cite: 2022AJ....164...43S)"
+  },
+  {
+   "what": {
+    "value": "Dust-based alpha_CO measurements at 2 kpc resolution for 41 galaxies (12 PHANGS galaxies used)",
+    "evidence": [
+     {
+      "loc": "2.2 Dust-based alpha_CO Measurements",
+      "quote": "The authors assumed a constant dust-to-metals ratio to constrain the total gas mass with dust and metallicity measurements."
+     },
+     {
+      "loc": "1 Introduction",
+      "quote": "which have dust-inferred $\\alpha_\\mathrm{CO}$ values at kpc scales (from (cite: 2023arXiv231100407C)"
+     }
+    ]
+   },
+   "citation": "(cite: 2023arXiv231100407C)"
+  },
+  {
+   "what": {
+    "value": "Stellar bar classification of PHANGS galaxies",
+    "evidence": [
+     {
+      "loc": "2.1 PHANGS Datasets",
+      "quote": "we adopt the classification of stellar bars for PHANGS galaxies (cite: 2021A&A...656A.133Q)"
+     }
+    ]
+   },
+   "citation": "(cite: 2021A&A...656A.133Q)"
+  },
+  {
+   "what": {
+    "value": "PG16S (S-calibration) gas-phase metallicity used for the 12 galaxies with dust-based alpha_CO",
+    "evidence": [
+     {
+      "loc": "2.2 Dust-based alpha_CO Measurements",
+      "quote": "is based on the S-calibration in (cite: 2016MNRAS.457.3678P)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016MNRAS.457.3678P)"
+  },
+  {
+   "what": {
+    "value": "Purely metallicity-dependent alpha_CO prescription used for comparison",
+    "evidence": [
+     {
+      "loc": "3.2 Comparison to Previous Literature",
+      "quote": "the purely metallicity-dependent $\\alpha_\\mathrm{CO}$ prescription from (cite: 2017MNRAS.464.3315A)"
+     }
+    ]
+   },
+   "citation": "(cite: 2017MNRAS.464.3315A)"
+  },
+  {
+   "what": {
+    "value": "Tentative alpha_CO prescription combining metallicity and stellar mass surface density, used for comparison (author citation marker missing in the paper text)",
+    "evidence": [
+     {
+      "loc": "3.2 Comparison to Previous Literature",
+      "quote": "also suggested a tentative prescription"
+     }
+    ]
+   },
+   "citation": "citation marker not preserved in the paper text"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Assemble PHANGS measurements in 1.5 kpc apertures",
+   "method": "Extract velocity dispersion, CO(2–1) intensity, stellar mass surface density, SFR surface density and metallicity from the Sun et al. database in matched hexagonal apertures",
+   "software": [],
+   "key_parameters": [
+    "Sample: 65 galaxies, the overlap of the bar classification and the Sun et al. database",
+    "Centers: central ~2 kpc-sized aperture at R_gal=0; disks are the remaining measurements"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Match dust-based alpha_CO to velocity dispersion and define the complete regime",
+   "method": "Nearest-neighbor matching of 2 kpc alpha_CO measurements to the intensity-weighted 150 pc velocity dispersion averaged over 1.5 kpc apertures; completeness per bin as fraction of pixels with reliable alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO data coverage insufficient for velocity dispersion below ~3 km/s; metallicity completeness drops below Z' ~0.6"
+   ],
+   "assumptions": [
+    "CO(2–1)/(1–0) ratio R21 = 0.65 used to convert alpha_CO(2-1) to alpha_CO(1-0)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit alpha_CO versus velocity dispersion power law",
+   "method": "Least-squares fit in log-log space of the complete-regime data (~1600 points from 12 galaxies) with scipy curve_fit",
+   "software": [
+    "scipy"
+   ],
+   "key_parameters": [
+    "Fit: log alpha_CO = -0.81 log <dv>_150pc + 1.05 (alpha_CO in Msun (K km/s pc^2)^-1, dv in km/s)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare with metallicity- and Sigma_star-based prescriptions",
+   "method": "Fit alpha_CO versus Z', compare residuals of each fit against the other variable, and compare predictions of the two prescriptions on PHANGS galaxies using kpc-scale Z' and Sigma_star",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Sigma_mol neglected in the Sigma_star-based prescription because Sigma_mol << Sigma_star",
+    "PG16S-based Z' for the 12 galaxies; PP04-based Z' across the full sample"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive depletion times in the 12 galaxy centers",
+   "method": "t_dep = Sigma_mol / Sigma_SFR = alpha_CO * I_CO / Sigma_SFR using measured alpha_CO versus MW alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Standard MW alpha_CO of 4.35 (6.7 for alpha_CO(2-1)) Msun (K km/s pc^2)^-1"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Apply prescriptions to all 65 galaxies and compare t_dep",
+   "method": "Compute Sigma_mol and t_dep with four alpha_CO prescriptions (MW, metallicity-based, Sigma_star-based, this work) and compare distributions in barred/non-barred centers and disks, plus the molecular Kennicutt-Schmidt relation",
+   "software": [],
+   "key_parameters": [
+    "Measurements at 1.5 kpc scale across all 65 galaxies"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Slope of log alpha_CO versus log <dv>_150pc",
+   "value": "-0.81",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 A Velocity Dispersion-based alpha_CO Prescription",
+     "quote": "\\log \\alpha_\\mathrm{CO} = -0.81\\ \\log \\langle \\Delta v \\rangle_\\mathrm{150pc} + 1.05"
+    },
+    {
+     "loc": "3.1 A Velocity Dispersion-based alpha_CO Prescription",
+     "quote": "the standard deviation error returned by `curve_fit` is $\\pm$0.02 for both the fitted slope and intercept"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log alpha_CO versus log <dv>_150pc",
+   "value": "1.05",
+   "uncertainty": "±0.02",
+   "units": "log10 of Msun (K km/s pc^2)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 A Velocity Dispersion-based alpha_CO Prescription",
+     "quote": "\\log \\alpha_\\mathrm{CO} = -0.81\\ \\log \\langle \\Delta v \\rangle_\\mathrm{150pc} + 1.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of alpha_CO about the velocity dispersion fit",
+   "value": "~0.12",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 A Velocity Dispersion-based alpha_CO Prescription",
+     "quote": "$\\sigma \\sim 0.12$ dex, and the standard deviation error returned by `curve_fit` is $\\pm$0.02 for both the fitted slope and intercept"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of alpha_CO with metallicity Z'",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Comparison to Previous Literature",
+     "quote": "the scatter of the observed $\\alpha_\\mathrm{CO}$ is $\\sigma \\sim$0.1 dex with $\\langle \\Delta v \\rangle_\\mathrm{150pc}$ and 0.3 dex with $Z'$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter between velocity-dispersion-based and Sigma_star-based alpha_CO predictions",
+   "value": "~0.5",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Comparison to Previous Literature",
+     "quote": "the two prescriptions show an overall match with a $\\sim$0.5 dex scatter"
+    }
+   ]
+  },
+  {
+   "quantity": "Median t_dep of 12 barred centers with measured alpha_CO",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Star Formation Efficiency in Galaxy Centers",
+     "quote": "the median $t_\\mathrm{dep}$ of barred and non-barred centers becomes 0.6 Gyr and 2.0 Gyr, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median t_dep of 12 non-barred centers with measured alpha_CO",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Star Formation Efficiency in Galaxy Centers",
+     "quote": "the median $t_\\mathrm{dep}$ of barred and non-barred centers becomes 0.6 Gyr and 2.0 Gyr, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of median t_dep with MW alpha_CO to that with measured alpha_CO (12 centers)",
+   "value": "4–5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Star Formation Efficiency in Galaxy Centers",
+     "quote": "the median $t_\\mathrm{dep}$ with the MW $\\alpha_\\mathrm{CO}$ is 4–5 times longer than that with the measured $\\alpha_\\mathrm{CO}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean/median t_dep in barred galaxy centers (65 galaxies, this prescription)",
+   "value": "~700",
+   "uncertainty": "16th–84th percentile 0.3–1.6 Gyr",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Systematic Impact on Star Formation Efficiency",
+     "quote": "the mean/median of $t_\\mathrm{dep}$ in barred galaxy centers ($\\sim$700 Myr) being 3 times shorter than in non-barred centers (${\\sim}2.1$ Gyr)"
+    },
+    {
+     "loc": "3.4 Systematic Impact on Star Formation Efficiency",
+     "quote": "The 16th–84th percentile ranges for $t_\\mathrm{dep}$ in barred and non-barred centers is 0.3–1.6 and 0.8–3.6 Gyr, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean/median t_dep in non-barred galaxy centers (65 galaxies, this prescription)",
+   "value": "~2.1",
+   "uncertainty": "16th–84th percentile 0.8–3.6 Gyr",
+   "units": "Gyr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Systematic Impact on Star Formation Efficiency",
+     "quote": "the mean/median of $t_\\mathrm{dep}$ in barred galaxy centers ($\\sim$700 Myr) being 3 times shorter than in non-barred centers (${\\sim}2.1$ Gyr)"
+    },
+    {
+     "loc": "3.4 Systematic Impact on Star Formation Efficiency",
+     "quote": "The 16th–84th percentile ranges for $t_\\mathrm{dep}$ in barred and non-barred centers is 0.3–1.6 and 0.8–3.6 Gyr, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median t_dep in barred centers (conclusions form)",
+   "value": "0.7",
+   "uncertainty": "+0.9/-0.4",
+   "units": "Gyr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Conclusions",
+     "quote": "median $t_\\mathrm{dep}$ (0.7$^{+0.9}_{-0.4}$ Gyr) being 3 times shorter than in non-barred galaxy centers (2.1$^{+1.5}_{-1.3}$ Gyr)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median t_dep in non-barred centers (conclusions form)",
+   "value": "2.1",
+   "uncertainty": "+1.5/-1.3",
+   "units": "Gyr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Conclusions",
+     "quote": "median $t_\\mathrm{dep}$ (0.7$^{+0.9}_{-0.4}$ Gyr) being 3 times shorter than in non-barred galaxy centers (2.1$^{+1.5}_{-1.3}$ Gyr)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median t_dep in disks for all four prescriptions",
+   "value": "2–3",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Systematic Impact on Star Formation Efficiency",
+     "quote": "the median of $t_\\mathrm{dep}$ remains consistent at 2–3 Gyr across all four prescriptions"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Sigma_mol of barred centers relative to non-barred centers, MW-like alpha_CO",
+   "value": "3 times higher",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "the median $\\Sigma_\\mathrm{mol}$ of barred centers is 3 times higher than that of non-barred centers if using a MW-like $\\alpha_\\mathrm{CO}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Sigma_mol of barred centers relative to non-barred centers, this prescription",
+   "value": "1.3 times higher",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "our $\\alpha_\\mathrm{CO}$ prescription results in only 1.3 times higher $\\Sigma_\\mathrm{mol}$ in barred centers"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact file/version of the Sun et al. (2022) PHANGS database and the Chiang et al. (2023) alpha_CO table used",
+  "How the 2 kpc alpha_CO pixels were matched to 1.5 kpc hexagonal apertures in the nearest-neighbor matching (matching radius, tie handling)",
+  "Initial guesses and any weights or bounds passed to curve_fit",
+  "Exact threshold values applied to the completeness cut in the fit (stated only as ~3 km/s in velocity dispersion and Z' >~ 0.6)",
+  "How the mean/median depletion times of centers and disks are aggregated (per hexagon or per galaxy) and how the percentile ranges are computed",
+  "Which SFR tracer and calibration lies behind Sigma_SFR (not described in this paper)",
+  "The citation and exact form of the Sigma_star-dependent prescription (citation marker is missing in the text)",
+  "How the four tested prescriptions (MW, metallicity-based, Sigma_star plus metallicity, this work) are implemented for all 65 galaxies, including the PG16S/PP04 conversion for the Accurso et al. prescription",
+  "How the 1.5 kpc aperture size relates to the ~2 kpc central aperture used for 'center' in footnote 3"
+ ],
+ "missing_for_reproduction": [
+  "Exact files of the PHANGS aperture database and the dust-based alpha_CO table",
+  "Details of the nearest-neighbor matching and the curve_fit setup",
+  "Implementation of the comparison prescriptions across the 65 galaxies",
+  "No code or data release is stated in the paper"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Inputs are published PHANGS products and the fit is a simple power law with numeric results, but data location, matching details and comparison prescription implementations are not given in this paper.",
+ "rediscovery_reason": "PHANGS-ALMA derived products and the dust-based alpha_CO measurements are public published works; the main fit and depletion-time results are numeric and the analysis is a simple fit, though matching details must be inferred.",
+ "source_card": "cards/2024ApJ...961...42T/sonnet/card.md"
+}

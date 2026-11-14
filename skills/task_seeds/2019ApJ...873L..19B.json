@@ -1,0 +1,243 @@
+{
+ "bibcode": "2019ApJ...873L..19B",
+ "title": "Extremely Low Molecular Gas Content in a Compact, Quiescent Galaxy at z = 1.522",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab0c9c",
+ "arxiv_id": "1902.09564",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How much molecular gas remains in a massive, recently quenched (post-starburst) galaxy at z=1.522, and how do gas fractions vary with stellar surface density across high-z galaxies?",
+ "alma_project_codes": [
+  "2015.1.00853.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "~2\"",
+  "sensitivity": "9 uJy/beam continuum at 98 GHz; 105 uJy/beam per 100 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Literature samples of high-z galaxies with molecular gas, SFRs, sizes (PHIBSS, PHIBSS2, Daddi+10, Decarli+16, Spilker+16, Sargent+15, Hayashi+18, Rudnick+17, Gobat+18, Suess+17, Spilker+18)",
+    "evidence": [
+     {
+      "loc": "2.4 Ancillary Datasets",
+      "quote": "we compile a literature sample of high-redshift galaxies with measured molecular gas reservoirs, star formation rates, and stellar sizes measured from rest-frame optical HST imaging."
+     }
+    ]
+   },
+   "citation": "(cite: tacconi:18; daddi:10; decarli:16; spilker:16; sargent:15)"
+  },
+  {
+   "what": {
+    "value": "COLDGASS low-redshift CO(1-0) benchmark",
+    "evidence": [
+     {
+      "loc": "2.4 Ancillary Datasets",
+      "quote": "Finally we include CO(1-0)-based data from the COLDGASS survey"
+     }
+    ]
+   },
+   "citation": "(cite: saintonge:11; saintonge:11b; saintonge:12)"
+  },
+  {
+   "what": {
+    "value": "3D-HST catalogs, UV+IR SFRs and HST structural parameters for 1<z<2 comparison",
+    "evidence": [
+     {
+      "loc": "2.4 Ancillary Datasets",
+      "quote": "we include galaxies from the 3D-HST photometric catalogs"
+     }
+    ]
+   },
+   "citation": "(cite: brammer:11; skelton3dhst; whitaker:14; wel:12)"
+  },
+  {
+   "what": {
+    "value": "Stellar velocity dispersion line width FWHM ~600 km/s",
+    "evidence": [
+     {
+      "loc": "2.3 Non-Detection and H2 Gas Mass Limit",
+      "quote": "which have FWHM $\\sim$ 600 $\\rm{km\\,s}^{-1}$(cite: bezanson:13a)"
+     }
+    ]
+   },
+   "citation": "(cite: bezanson:13a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit stellar properties and structure",
+   "method": "FAST SED fit of NMBS photometry with delayed exponentially declining SFHs; Galfit single Sérsic fit to HST F160W; PPXF spectral age fit",
+   "software": [
+    "FAST",
+    "Galfit",
+    "PPXF"
+   ],
+   "key_parameters": [
+    "redshift fixed at z_spec=1.522"
+   ],
+   "assumptions": [
+    "Chabrier IMF; H0=70, Om=0.3, OL=0.7"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectrum via visibility point-source fit",
+   "method": "Fit point source to visibilities in 8-channel bins (~200 km/s), position fixed to optical/NIR position, flux free",
+   "software": [],
+   "key_parameters": [
+    "position fixed; only flux density free"
+   ],
+   "assumptions": [
+    "Source unresolved since Re=0.23\" << 2\" beam"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive CO luminosity and H2 mass upper limits",
+   "method": "3 sigma limit on integrated CO(2-1) flux with line width 600 km/s; thermalized excitation; alpha_CO=4.4",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO = 4.4 Msun/(K km/s pc^2)"
+   ],
+   "assumptions": [
+    "CO(2-1)/CO(1-0) thermalized, accurate to <30%"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Dust continuum gas limit",
+   "method": "3 mm continuum limit converted to gas mass with Dunne+11 emissivity, Td=25 K, M_H2/M_dust=100",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 25 K; gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with literature gas fractions vs sSFR, size, surface density",
+   "method": "Compile literature samples, compute fH2, sSFR and Sigma_star = Mstar/(2 pi Re^2), compare with 3D-HST relations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Milky Way alpha_CO applied to literature (conservative)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar mass",
+   "value": "11.2",
+   "uncertainty": "not stated",
+   "units": "log Msun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Multi-Wavelength Photometry and LRIS Spectrum",
+     "quote": "The best-fitting model finds a stellar mass of $\\log \\ensuremath{M_{\\rm{\\star}}}/\\ensuremath{\\rm{M}_\\odot}= 11.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar age",
+   "value": "~0.8",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Multi-Wavelength Photometry and LRIS Spectrum",
+     "quote": "The photometric fit yields a stellar age of $\\sim$0.8 Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "3sigma upper limit L'CO(2-1)",
+   "value": "<2.4e9",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 Non-Detection and H2 Gas Mass Limit",
+     "quote": "This yields a 3$\\sigma$ upper limit to the CO(2–1) luminosity of $\\ensuremath{\\rm{L}_{\\rm{CO}}'}< 2.4 \\times 10^{9}$ K $\\rm{km\\,s}^{-1}$ pc$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "3sigma upper limit M_H2 (CO)",
+   "value": "<1.1e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 Non-Detection and H2 Gas Mass Limit",
+     "quote": "final 3$\\sigma$ upper limit on the molecular gas mass of C21434 of $\\ensuremath{M_{\\rm{H_2}}}< 1.1\\times10^{10}$ $\\rm{M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction upper limit",
+   "value": "<7%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The implied gas fraction is $\\ensuremath{f_{\\rm{H_2}}}{\\equiv M_{H_2}/M_{\\star}}<7\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum gas mass limit",
+   "value": "<4.5e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 Non-Detection and H2 Gas Mass Limit",
+     "quote": "the 3-$\\sigma$ gas mass limit from the 3 mm continuum is $M_{H_2}<4.5\\times10^{10} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO limit from continuum",
+   "value": "<19",
+   "uncertainty": "not stated",
+   "units": "Msun/(K km/s pc^2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 Non-Detection and H2 Gas Mass Limit",
+     "quote": "This places a very weak limit on $\\alpha_{CO} < 19$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging/weighting details (visibility fitting uses 8-channel bins but no imaging parameters)",
+  "Exact optical/NIR position used to fix the point source",
+  "Velocity center and exact integration window for the upper limit",
+  "Conversion details from L'CO to the limit (r21 value and formula)",
+  "CASA version used",
+  "Stellar surface density and SFR values for literature galaxies"
+ ],
+ "missing_for_reproduction": [
+  "Exact upper-limit calculation details and r21",
+  "Position of source",
+  "Literature tables compiled values",
+  "Imaging parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple data and clear final numbers, but visibility fitting details and literature compilation are underspecified.",
+ "rediscovery_reason": "Short single-project dataset; main result is a numeric upper limit that can be recomputed from the visibilities.",
+ "source_card": "cards/2019ApJ...873L..19B/sonnet/card.md"
+}

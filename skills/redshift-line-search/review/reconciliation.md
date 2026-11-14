@@ -1,0 +1,18 @@
+# Reconciliation: redshift-line-search
+- SR-01 | FIXED | Step 1 now says the line of source Lya-2 was truncated, leaving its luminosity and redshift uncertain (pack line 419, 2013ApJ...763..120C).
+- SR-02 | FIXED | Split into a targeted search-window row (abs(v) < 500 km/s of Lya, 2017A&A...605A..42C) and a post-detection companion-association row (abs(dv) < 2000 km/s, 2020ApJ...904..130V); step 7 explains the difference.
+- SR-03 | FIXED | GILDAS row now separates ALMA uv_fit (2024A&A...685A..80Z) from NOEMA clic/mapping spectra (2017ApJ...849...91M) and labels 6 as the unfiltered aggregate, with the GILDAS/CLASS step from the off-topic LMC paper excluded.
+- SR-04 | FIXED | Software table splits emcee / curve_fit / lmfit by use: lmfit marked as 2D Sersic morphology (2024A&A...691A.133V); PyMC3 dropped from recommendations as LMC-only (2019A&A...632A.106L).
+- SR-05 | FIXED | Step 2 and the table give separate frequency (7.8-31.2 MHz) and velocity (17-100 km/s) channel examples, each with its paper, plus dv ~ c dnu/nu_obs.
+- SR-06 | FIXED | parameters.md no longer copies 2016ApJ...833...67W's kernels, completeness and region into the 2016ApJ...833...69D and 2019ApJ...882..136A rows; those cells are blank, with a note that blanks are not inherited.
+- SR-07 | FIXED | Removed the "about 124 on-topic" and "eight off-topic" counts; the skill now says some papers are off-topic, gives two examples, and says the aggregate counts are unfiltered.
+- SR-08 | FIXED | Table column renamed "Common choice or example"; single-paper rows now read "example:", with a note that only rows with 3+ papers and an explicit tally count as common. Weighting row now reads natural 6 vs robust 0.5 5, about equal.
+- SR-09 | FIXED | Step 9 now separates flux-density limits (720 uJy/beam over 40 km/s, 2014ApJ...792...34O) from integrated limits, gives I_lim = 3 sigma_ch dv sqrt(N), and asks for the rms definition, channel correlation and window correction to be stated.
+- SR-10 | FIXED | Step 1 now asks you to record the frame and velocity convention, convert before comparing centroids (LSR conversion in 2015ApJ...807..180W), and define the sign of the offset.
+- SR-11 | FIXED | Step 4 adds duplicate merging across kernels (2016ApJ...833...67W "duplicates removed") and requires the retained S/N to feed fidelity and completeness.
+- SR-12 | FIXED | Added step 10: blind detectable volume with per-field noise and PB (2020ApJ...889...98M) vs UV-selected modified 1/Vmax (2020ApJ...905..147Y), kept distinct; fidelity/completeness weighting for 2021A&A...646A..76L marked as not shown in the pack.
+- SR-13 | FIXED | Step 8 now asks for flux losses to be checked before a total flux is reported: aperture correction 2.5 (2015MNRAS.452...54M), residual scaling (2020ApJ...904..130V), finite-window Gaussian losses (2024ApJ...968....9W ~83%, 2019ApJ...887..107F).
+- SR-14 | FIXED | Search-region text and table now say radius vs diameter: PB FWHM 16" is a diameter (8" half-power radius), "within the PB FWHM" means radius FWHM/2, and the step warns that using the FWHM as a radius quadruples the area.
+- SR-15 | FIXED | Aperture row lists each geometry explicitly: 0.35" radius, 0.4-1.5" radii, 0.8" radius, 0.8" diameter, 1.5" diameter, single beam, area of four beams, 3 sigma isophote.
+- SR-16 | FIXED | sigma_z now uses sigma_nu_center (fit uncertainty on the line center) or centroid-velocity uncertainty, explicitly not the line width.
+- SR-17 | FIXED | All "|dv|" and "|v|" in tables (SKILL.md and parameters.md) replaced with abs(dv) and abs(v).

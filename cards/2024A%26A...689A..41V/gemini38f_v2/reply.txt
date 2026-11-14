@@ -1,0 +1,1500 @@
+{
+ "$defs": {
+  "CalSetting": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "field": {
+     "enum": [
+      "pipeline_or_manual",
+      "casa_version",
+      "pipeline_version",
+      "archive_products_used_as_is",
+      "flux_calibrator",
+      "flux_scale_uncertainty",
+      "self_calibration"
+     ],
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "value",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "CitedWork": {
+   "additionalProperties": false,
+   "properties": {
+    "citation": {
+     "type": "string"
+    },
+    "why": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "citation",
+    "why"
+   ],
+   "type": "object"
+  },
+  "Claim": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "experiment": {
+     "type": "string"
+    },
+    "finding": {
+     "type": "string"
+    },
+    "hypothesis": {
+     "type": "string"
+    },
+    "result": {
+     "type": "string"
+    },
+    "support": {
+     "enum": [
+      "supported",
+      "partially",
+      "refuted"
+     ],
+     "type": "string"
+    }
+   },
+   "required": [
+    "hypothesis",
+    "experiment",
+    "result",
+    "finding",
+    "support",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "DataSetting": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "field": {
+     "enum": [
+      "bands",
+      "frequencies_and_spectral_setup",
+      "continuum_bandwidth",
+      "arrays",
+      "configurations",
+      "baselines",
+      "angular_resolution",
+      "max_recoverable_scale",
+      "sensitivity",
+      "time_on_source",
+      "observing_dates",
+      "pi_or_archival_as_stated"
+     ],
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "value",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "Evidence": {
+   "additionalProperties": false,
+   "properties": {
+    "loc": {
+     "description": "Section heading (e.g. '2.1 Observations') or 'abstract', 'Table 2', 'Figure 3 caption'",
+     "type": "string"
+    },
+    "quote": {
+     "description": "Verbatim text copied from the paper, at most 40 words",
+     "type": "string"
+    }
+   },
+   "required": [
+    "loc",
+    "quote"
+   ],
+   "type": "object"
+  },
+  "ExternalData": {
+   "additionalProperties": false,
+   "properties": {
+    "citation": {
+     "description": "The cited work as written in the paper, with its (cite: key) if present",
+     "type": "string"
+    },
+    "what": {
+     "$ref": "#/$defs/Fact",
+     "description": "Table, catalog or measurement taken from another paper"
+    }
+   },
+   "required": [
+    "what",
+    "citation"
+   ],
+   "type": "object"
+  },
+  "Facility": {
+   "additionalProperties": false,
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "provided": {
+     "$ref": "#/$defs/Fact",
+     "description": "What this facility, survey or archive contributed"
+    }
+   },
+   "required": [
+    "name",
+    "provided"
+   ],
+   "type": "object"
+  },
+  "Fact": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "description": "1-3 verbatim quotes supporting the value; empty when not stated",
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "value": {
+     "description": "The fact in the paper's terms, or exactly 'not stated'",
+     "type": "string"
+    }
+   },
+   "required": [
+    "value",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "ImgSetting": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "field": {
+     "enum": [
+      "task",
+      "deconvolver",
+      "weighting_robust",
+      "uv_taper",
+      "cell_size",
+      "image_size",
+      "masking",
+      "multiscale_scales",
+      "continuum_subtraction",
+      "line_free_channels",
+      "primary_beam_correction",
+      "array_combination",
+      "smoothing",
+      "final_beam",
+      "final_rms"
+     ],
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "value",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "Inherited": {
+   "additionalProperties": false,
+   "properties": {
+    "from_reference": {
+     "type": "string"
+    },
+    "what": {
+     "$ref": "#/$defs/Fact",
+     "description": "A choice the paper takes from earlier work ('as in Paper I', 'following X')"
+    }
+   },
+   "required": [
+    "what",
+    "from_reference"
+   ],
+   "type": "object"
+  },
+  "NumericResult": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "from_step": {
+     "description": "order of the analysis step that produced it; 0 if not tied to one",
+     "type": "integer"
+    },
+    "quantity": {
+     "type": "string"
+    },
+    "uncertainty": {
+     "description": "As stated (e.g. '+0.3/-0.2', '10%'), or 'not stated'",
+     "type": "string"
+    },
+    "units": {
+     "description": "Units as stated; 'dimensionless' for ratios and indices",
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "quantity",
+    "value",
+    "uncertainty",
+    "units",
+    "from_step",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "ProjectCode": {
+   "additionalProperties": false,
+   "properties": {
+    "code": {
+     "description": "ALMA project code exactly as printed, e.g. 2015.1.00123.S",
+     "type": "string"
+    },
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    }
+   },
+   "required": [
+    "code",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "ReasonSetting": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "field": {
+     "enum": [
+      "why_this_data",
+      "why_this_method",
+      "how_they_decided_enough"
+     ],
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "value",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "ReproSetting": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "field": {
+     "enum": [
+      "data_public_as_stated",
+      "products_in_archive"
+     ],
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "value",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "Software": {
+   "additionalProperties": false,
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "used_for": {
+     "$ref": "#/$defs/Fact"
+    },
+    "version": {
+     "description": "Version as stated, or 'not stated'",
+     "type": "string"
+    }
+   },
+   "required": [
+    "name",
+    "version",
+    "used_for"
+   ],
+   "type": "object"
+  },
+  "SpectralLine": {
+   "additionalProperties": false,
+   "properties": {
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "rest_frequency": {
+     "type": "string"
+    },
+    "species": {
+     "type": "string"
+    },
+    "transition": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "species",
+    "transition",
+    "rest_frequency",
+    "evidence"
+   ],
+   "type": "object"
+  },
+  "WireStep": {
+   "additionalProperties": false,
+   "properties": {
+    "assumptions": {
+     "items": {
+      "$ref": "#/$defs/Fact"
+     },
+     "type": "array"
+    },
+    "fitting": {
+     "$ref": "#/$defs/Fact"
+    },
+    "goal": {
+     "description": "Short label for the step (our wording, e.g. 'measure the continuum flux')",
+     "type": "string"
+    },
+    "key_parameters": {
+     "items": {
+      "$ref": "#/$defs/Fact"
+     },
+     "type": "array"
+    },
+    "method": {
+     "$ref": "#/$defs/Fact"
+    },
+    "order": {
+     "type": "integer"
+    },
+    "software": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "validation": {
+     "$ref": "#/$defs/Fact"
+    }
+   },
+   "required": [
+    "order",
+    "goal",
+    "method",
+    "software",
+    "key_parameters",
+    "assumptions",
+    "fitting",
+    "validation"
+   ],
+   "type": "object"
+  },
+  "WireTarget": {
+   "additionalProperties": false,
+   "properties": {
+    "coordinates": {
+     "type": "string"
+    },
+    "details": {
+     "description": "Quotes giving its coordinates, redshift/distance and where the distance comes from; empty if none",
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "type": "array"
+    },
+    "distance_source": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "redshift_or_distance": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "name",
+    "details",
+    "coordinates",
+    "redshift_or_distance",
+    "distance_source"
+   ],
+   "type": "object"
+  }
+ },
+ "additionalProperties": false,
+ "alma_project_codes": [
+  {
+   "code": "2016.1.00698.S",
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "For both observations with project code 2016.1.00698.S (PI: A. Mantz), calibrated datasets were obtained through the calibrated measurement set service (cite: Petry2020) of the European ALMA Regional Center using CASA 5.4.0."
+    }
+   ]
+  },
+  {
+   "code": "2018.1.00478.S",
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "Furthermore, we make use of ancillary ALMA Band 4 observations (PI: J. Zavala, 2018.1.00478.S) to get better spectral constraints on the contaminating emission from dusty galaxies."
+    }
+   ]
+  }
+ ],
+ "alternatives_considered_or_rejected": [
+  {
+   "evidence": [
+    {
+     "loc": "“Cleaned” image reconstruction",
+     "quote": "The use of the clean algorithm has been the de facto standard in radio astronomy for half a century (cite: Hogbom1974) . However, this routine assumes that the emission distribution is well described by an arbitrary set of point-like or multi-scale Gaussian sources. Figure 2 directly shows that this assumption is invalid in our case"
+    }
+   ],
+   "value": "Standard CLEAN algorithm was rejected because the assumption of point-like or multi-scale Gaussian sources is invalid for extended ICM emission concentrated at small uv-distances."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The empirical formalism",
+     "quote": "Only the pressure profile that corresponds to the averaged local cool-core (A10-CC) profile is disfavored by the data ($\\Delta\\ln\\mathcal{Z} > 2.3$)."
+    },
+    {
+     "loc": "ALMA+ACA+ACT joint likelihood modeling",
+     "quote": "Furthermore, note that the A10-CC profile model is disfavored by the data ($\\Delta\\ln\\mathcal{Z}>11.2$)"
+    }
+   ],
+   "value": "A10-CC (local cool core) model rejected by the data via Bayesian evidence."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The theoretical formalism",
+     "quote": "Through the Bayes factor, we can reject the presence of a point source at the location of the BCG in the ALMA+ACA data by $4.1\\sigma$."
+    }
+   ],
+   "value": "A central point source at the BCG position was tested and rejected by 4.1 sigma."
+  }
+ ],
+ "analysis_steps": [
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "Mitigating point-source contamination in the ACA and ALMA observations",
+       "quote": "The galaxies are bright enough to show as point sources in the continuum maps (e.g., see Fig. [fig:combined]). Hence, we removed the higher-frequency half of the corresponding spectral window before continuum modeling the pressure distribution of the ICM."
+      }
+     ],
+     "value": "Bright line emission from interloper galaxies contaminates continuum; removing the affected half of the spectral window removes contamination."
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "Mitigating point-source contamination in the ACA and ALMA observations",
+      "quote": "Finally, we ran a point source search with our forward modeling routine using both the ALMA+ACA Band 3 and ALMA Band 4 observations with a lower uv-cut of 11 k$\\lambda$ to exclude extended emission."
+     }
+    ],
+    "value": "Nested sampling fit of point sources with 7 parameters: RA, Dec, Amplitude, spectral slope, and three calibration parameters."
+   },
+   "goal": "Identify and subtract contaminating compact sources and line emission",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Mitigating point-source contamination in the ACA and ALMA observations",
+       "quote": "lower uv-cut of 11 k$\\lambda$ to exclude extended emission."
+      }
+     ],
+     "value": "uv-cut >= 11 klambda"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Mitigating point-source contamination in the ACA and ALMA observations",
+      "quote": "We did this by modeling the point source using both ALMA Band 3 and 4 observations. Note that this point source is located just beyond $r_{500}$ and is undetected ($<2\\sigma$) in the ACA+ALMA Band 3 map. Nevertheless, we subtracted the model from the observations before modeling the SZ signal"
+     }
+    ],
+    "value": "Joint modeling of point source using Band 3 and Band 4 with a power-law spectrum and subtracting the model from visibilities."
+   },
+   "order": 1,
+   "software": [
+    "dynesty"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Mitigating point-source contamination in the ACA and ALMA observations",
+      "quote": "Other than the earlier mentioned two bright sources, we found no other region with a significant detection in the posterior distribution of the modeled parameters"
+     }
+    ],
+    "value": "No additional significant sources detected above noise."
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "The thermal Sunyaev-Zeldovich effect",
+       "quote": "As we do not expect the electron temperature in XLSSC 122 to exceed 5 keV (cite: Mantz2018) , we have neglected the temperature-dependent relativistic corrections of the thermal SZ in this work."
+      }
+     ],
+     "value": "Relativistic thermal SZ corrections are neglected."
+    },
+    {
+     "evidence": [
+      {
+       "loc": "Joint likelihood modeling of the ICM via ALMA, ACA, and ACT observations",
+       "quote": "We treat the ACT and ACA+ALMA observations as independent when computing the final posterior distribution of the model parameters. This is done by adding the log-likelihoods linearly."
+      }
+     ],
+     "value": "Zero covariance between ACT and ACA+ALMA observations."
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "Visibility-based modeling of the ICM",
+      "quote": "The implementation uses the static nested sampling method implemented in the dynesty package (cite: Speagle2020Dynesty; sergey_koposov_2023_7600689)."
+     },
+     {
+      "loc": "Joint likelihood modeling of the ICM via ALMA, ACA, and ACT observations",
+      "quote": "Sampling of the posterior distribution continues until the log difference of the Bayesian evidence is less than an arbitrary threshold, in our case set to $\\Delta\\ln\\mathcal{B}=0.01$."
+     }
+    ],
+    "value": "Static nested sampling via dynesty with stopping threshold dlnB = 0.01; flat priors on physical parameters, Gaussian on calibration and redshift."
+   },
+   "goal": "Forward-model ICM pressure profiles to ALMA, ACA, and ACT data",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Pressure Profiles",
+       "quote": "P_{\\rm e} (r) = P_{\\rm e,i} \\left(\\frac{r}{r_{\\rm s}}\\right)^{-\\gamma} \\left[ 1+ \\left(\\frac{r}{r_{\\rm s}}\\right)^{\\alpha} \\right]^{(\\gamma-\\beta)/\\alpha}"
+      }
+     ],
+     "value": "gNFW parameters: P0, rs, e, PA, alpha, beta, gamma"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Methodology",
+      "quote": "From a parametric description of the pressure distribution, we map the ICM on a three-dimensional grid which is then integrated along the line of sight to produce a projected Compton y map... Fourier transform the surface brightness map to the visibility space... compute the likelihood of the resulting model on the unbinned visibilities"
+     }
+    ],
+    "value": "Bayesian forward modeling in uv-space evaluating Gaussian likelihood on unbinned ALMA/ACA visibilities combined with ACT map likelihood."
+   },
+   "order": 2,
+   "software": [
+    "dynesty"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "The theoretical formalism",
+      "quote": "The residuals in Figure 1 are obtained by subtracting the model in the visibility plane from the data. As the residuals indicate a good agreement between the observations and the modeled surface brightness"
+     }
+    ],
+    "value": "Inspection of residual visibility maps and radially binned uv profiles."
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "“Cleaned” image reconstruction",
+       "quote": "If we assume the signal is well-described by a gNFW profile (instead of a combination of point sources), we can use our forward-modeling technique to find the best-described gNFW profile... and to subtract this from the visibilities"
+      }
+     ],
+     "value": "ICM bulk is well described by the forward-modeled gNFW profile."
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "“Cleaned” image reconstruction",
+      "quote": "not stated"
+     }
+    ],
+    "value": "not stated"
+   },
+   "goal": "Produce deconvolved clean-like image reconstruction of the ICM",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "“Cleaned” image reconstruction",
+       "quote": "add the imaged residuals (shown on the right panel of Fig. 1) to the likelihood-weighted model, which is smoothed with the synthesized beam ($5\\ensuremath{''}$) and attenuated by the primary beam"
+      }
+     ],
+     "value": "Synthesized beam smoothing FWHM = 5''"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "“Cleaned” image reconstruction",
+      "quote": "By subtracting the model from the visibilities, the resulting residual image thus becomes freed of the dirty beam patterns originating from the convolution between the SZ effect and the incomplete uv-coverage. Then, similar to clean, we add the imaged residuals... to the likelihood-weighted model"
+     }
+    ],
+    "value": "Subtract best-fit visibility model from data, image the residuals, and add them back to the likelihood-weighted model smoothed by the 5'' beam."
+   },
+   "order": 3,
+   "software": [],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Modeling asymmetric pressure distributions",
+      "quote": "By marginalizing over the posterior distribution, we get a smoother model which closely resembles the “cleaned ” image, as indicated in Figure 8 where we plot the contours from the cleaned image reconstruction"
+     }
+    ],
+    "value": "Comparison of reconstruction contours to two-component model fits."
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "Mass estimates",
+       "quote": "Here, we make use of local scaling relations from (cite: Arnaud2010) to convert $Y_{\\rm 500,c}$ to an SZ-derived halo mass, as robust scalings derived from high-z clusters do not exist."
+      }
+     ],
+     "value": "Local scaling relations from Arnaud et al. (2010) apply at z = 1.98."
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "Mass estimates",
+      "quote": "Our SZ mass is calculated by taking the evidence-weighted average of the mass estimates from the empirical formalism runs utilizing ALMA+ACA+ACT observations as shown in Table [table:sigle_ACA_ALMA_ACT]"
+     }
+    ],
+    "value": "Evidence-weighted average over empirical model runs."
+   },
+   "goal": "Derive cluster halo mass M500,c",
+   "key_parameters": [],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Mass estimates",
+      "quote": "Our SZ mass is calculated by taking the evidence-weighted average of the mass estimates from the empirical formalism runs utilizing ALMA+ACA+ACT observations as shown in Table [table:sigle_ACA_ALMA_ACT], and is equal to $M_{500,\\mathrm{c}} = 1.66^{+0.23}_{-0.20} \\times 10^{14}~\\rm M_\\odot$."
+     }
+    ],
+    "value": "Evidence-weighted averaging of M500,c posterior estimates."
+   },
+   "order": 4,
+   "software": [],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Mass estimates",
+      "quote": "We find lower SZ-derived mass estimates than what is expected from the velocity-dispersion measurement ($\\sim\\times2.5$)."
+     }
+    ],
+    "value": "Comparison with dynamical mass from galaxy velocity dispersion and Chandra X-ray mass estimates."
+   }
+  }
+ ],
+ "calibration": [
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "calibrated datasets were obtained through the calibrated measurement set service (cite: Petry2020) of the European ALMA Regional Center using CASA 5.4.0."
+    }
+   ],
+   "field": "pipeline_or_manual",
+   "value": "pipeline (calibrated measurement set service of the European ALMA Regional Center)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "calibrated datasets were obtained through the calibrated measurement set service (cite: Petry2020) of the European ALMA Regional Center using CASA 5.4.0."
+    }
+   ],
+   "field": "casa_version",
+   "value": "CASA 5.4.0"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The thermal Sunyaev-Zeldovich effect",
+     "quote": "Therefore, any relativistic corrections fall within the calibration uncertainty of the ALMA and ACA observations ($\\sim5\\%$)."
+    }
+   ],
+   "field": "flux_scale_uncertainty",
+   "value": "~5%"
+  }
+ ],
+ "claims": [
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detect the SZ effect with $11\\sigma$ significance in the ALMA+ACA observations and find a flattened inner pressure profile that is consistent with a non-cool core classification with a significance of $\\geq 3\\sigma$."
+    }
+   ],
+   "experiment": "Parametric gNFW forward modeling to ALMA+ACA Band 3 visibilities.",
+   "finding": "XLSSC 122 exhibits a flattened inner pressure profile consistent with a non-cool core / morphologically disturbed cluster.",
+   "hypothesis": "What is the dynamical state and core structure of the ICM in XLSSC 122?",
+   "result": "SZ effect detected at 11 sigma with flattened inner pressure profile (disfavoring local cool cores at >= 3 sigma).",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "By reconstructing the interferometric observations and modeling in the uv-plane, we obtain a tentative detection of an infalling group or filamentary-like structure in the southeast that is believed to boost and heat up the ICM"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "tentatively confirm the presence of a second source or filamentary-like structure to the southeast with $\\Delta\\ln{\\mathcal{Z} = 6.6}$ ($\\sigma_{\\rm eff} = 3.6$) when modeling the ALMA+ACA observations alone and $\\Delta\\ln{\\mathcal{Z} = 3.0}$ ($\\sigma_{\\rm eff} = 2.4$) when including ACT observations."
+    }
+   ],
+   "experiment": "Two-component gNFW modeling in the uv-plane combined with custom clean-like image reconstruction.",
+   "finding": "Tentative detection of an infalling group or filamentary structure in the southeast driving ICM heating.",
+   "hypothesis": "Does the ICM of XLSSC 122 contain asymmetric or multiple sub-components indicative of active merging?",
+   "result": "Second component detected tentatively at 3.6 sigma (ALMA+ACA) and 2.4 sigma (ALMA+ACA+ACT).",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Mass estimates",
+     "quote": "Our SZ mass is calculated by taking the evidence-weighted average of the mass estimates from the empirical formalism runs utilizing ALMA+ACA+ACT observations as shown in Table [table:sigle_ACA_ALMA_ACT], and is equal to $M_{500,\\mathrm{c}} = 1.66^{+0.23}_{-0.20} \\times 10^{14}~\\rm M_\\odot$."
+    }
+   ],
+   "experiment": "Evidence-weighted combination of empirical pressure profile models forward-modeled to ALMA+ACA+ACT data.",
+   "finding": "The SZ-derived mass of XLSSC 122 is refined to M500,c = 1.66(+0.23/-0.20) x 10^14 M_sun, lower than the dynamical mass.",
+   "hypothesis": "What is the total halo mass M500,c of XLSSC 122 when combining interferometric and single-dish SZ data?",
+   "result": "M500,c = 1.66(+0.23/-0.20) x 10^14 M_sun.",
+   "support": "supported"
+  }
+ ],
+ "code_released": [
+  {
+   "evidence": [
+    {
+     "loc": "Visibility-based modeling of the ICM",
+     "quote": "The implementation uses the static nested sampling method implemented in the dynesty package (cite: Speagle2020Dynesty; sergey_koposov_2023_7600689)."
+    }
+   ],
+   "value": "dynesty public package was used; cluster-specific forward-modeling code availability is not stated."
+  }
+ ],
+ "companion_papers": [],
+ "data_settings": [
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "We rely upon archival yet unpublished ALMA and ACA Band 3 observations (henceforth denoted ALMA+ACA) made on 2016-10-22 and 2017-01-06, respectively"
+    },
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "Furthermore, we make use of ancillary ALMA Band 4 observations (PI: J. Zavala, 2018.1.00478.S) to get better spectral constraints on the contaminating emission from dusty galaxies."
+    }
+   ],
+   "field": "bands",
+   "value": "Band 3 (ALMA 12m and ACA 7m) and Band 4 (ALMA 12m)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "Both the 12m-array and 7m-array observations span four spectral windows: 89.51–91.50, 91.45–93.44, 101.51–103.49, and 103.51–105.49 GHz, observed in continuum mode."
+    },
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "The Band 4 observations span four spectral windows – 139.7–141.6, 143.0–143.9, 153.1–154.0, and 154.9–155.9 GHz"
+    }
+   ],
+   "field": "frequencies_and_spectral_setup",
+   "value": "Band 3: 89.51-91.50, 91.45-93.44, 101.51-103.49, 103.51-105.49 GHz; Band 4: 139.7-141.6, 143.0-143.9, 153.1-154.0, 154.9-155.9 GHz"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "archival yet unpublished ALMA and ACA Band 3 observations (henceforth denoted ALMA+ACA) made on 2016-10-22 and 2017-01-06, respectively"
+    },
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "These observations, with project code 2018.1.00478.S, were performed on 2019-01-18"
+    }
+   ],
+   "field": "observing_dates",
+   "value": "2016-10-22 (ALMA Band 3), 2017-01-06 (ACA Band 3), 2019-01-18 (ALMA Band 4)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "The total on-source time for the ACA and ALMA observations are 3.9 and 0.42 hours, respectively."
+    }
+   ],
+   "field": "time_on_source",
+   "value": "ACA: 3.9 hours; ALMA 12m: 0.42 hours"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "The ACA and ALMA observations reach a central continuum sensitivity of $0.24$ and $0.037$ mJy beam$^{-1}$ per pointing with an angular resolution of $11\\ensuremath{''}$ and $2\\ensuremath{''}$, respectively."
+    },
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "It reaches a continuum sensitivity of $\\sim0.024$ mJy beam$^{-1}$ RMS."
+    }
+   ],
+   "field": "sensitivity",
+   "value": "ACA Band 3: 0.24 mJy/beam; ALMA 12m Band 3: 0.037 mJy/beam; ALMA Band 4: ~0.024 mJy/beam RMS"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "with an angular resolution of $11\\ensuremath{''}$ and $2\\ensuremath{''}$, respectively."
+    }
+   ],
+   "field": "angular_resolution",
+   "value": "11'' (ACA Band 3), 2'' (ALMA 12m Band 3)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "The maximum recoverable scales of the ACA and ALMA observations are $77\\ensuremath{''}$ and $23\\ensuremath{''}$ per pointing."
+    }
+   ],
+   "field": "max_recoverable_scale",
+   "value": "77'' (ACA), 23'' (ALMA 12m)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "Both observations were carried out in mosaic mode, with the ACA observations consisting of five pointings and the ALMA observations consisting of 11."
+    },
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "with a single pointing centered on $\\mathrm{RA} = \\ang[ angle-symbol-over-decimal, angle-symbol-degree=\\textsuperscript{h}, angle-symbol-minute=\\textsuperscript{m}, angle-symbol-second=\\textsuperscript{s}, ]{02;17;42.8}$, $\\mathrm{Dec}= \\ang[minimum-integer-digits=2,angle-symbol-over-decimal,]{-03;45;31.2}$"
+    }
+   ],
+   "field": "configurations",
+   "value": "ACA Band 3: 5-pointing mosaic; ALMA Band 3: 11-pointing mosaic; ALMA Band 4: single pointing"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "We rely upon archival yet unpublished ALMA and ACA Band 3 observations (henceforth denoted ALMA+ACA) made on 2016-10-22 and 2017-01-06, respectively, for characterizing the SZ decrement. For both observations with project code 2016.1.00698.S (PI: A. Mantz)"
+    },
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "Furthermore, we make use of ancillary ALMA Band 4 observations (PI: J. Zavala, 2018.1.00478.S)"
+    }
+   ],
+   "field": "pi_or_archival_as_stated",
+   "value": "archival (PI: A. Mantz for 2016.1.00698.S; PI: J. Zavala for 2018.1.00478.S)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "archival yet unpublished ALMA and ACA Band 3 observations"
+    }
+   ],
+   "field": "arrays",
+   "value": "ALMA 12m array and ACA 7m array"
+  }
+ ],
+ "depth": "full",
+ "estimated_data_volume_inferred": "10-30 GB",
+ "external_data_from_literature": [
+  {
+   "citation": "(cite: Willis2020)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Observations of XLSSC 122",
+      "quote": "Optical spectroscopy using the Hubble Space Telescope (HST) Wide Field Camera 3 established that 37 galaxies are associated with XLSSC 122 (cite: Willis2020) and found the average spectroscopic redshift to be $z=1.98$."
+     }
+    ],
+    "value": "HST WFC3 optical spectroscopy of 37 cluster member galaxies and redshift z = 1.98."
+   }
+  },
+  {
+   "citation": "(cite: 2023arXiv230701258C)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Observations of XLSSC 122",
+      "quote": "ACT Data Release 6 (DR6; (cite: 2023arXiv230701258C)) to map the SZ decrement from the core to the virial radius at sub-arcminute resolution."
+     }
+    ],
+    "value": "ACT DR6 100 GHz and 150 GHz maps."
+   }
+  },
+  {
+   "citation": "(cite: Mantz2014; Mantz2018)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Auxiliary Data Comparison",
+      "quote": "Figure 3 compares the SZ decrement (also shown in Figure 1) with the observed X-ray emission seen by XMM-Newton from (cite: Mantz2014; Mantz2018)"
+     }
+    ],
+    "value": "XMM-Newton X-ray observations and CARMA 30 GHz SZ measurements."
+   }
+  }
+ ],
+ "fields": [
+  "galaxy_clusters_and_sz"
+ ],
+ "findings_qualitative": [
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In contrast to the previous works, we find better agreement between the SZ effect signal and the X-ray emission as well as the cluster member distribution."
+    }
+   ],
+   "value": "Good spatial agreement between ALMA+ACA SZ decrement and X-ray emission, refuting earlier CARMA-reported 35'' offset."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Further, XLSSC 122 exhibits an excess of SZ flux in the south of the cluster where no X-ray emission is detected."
+    }
+   ],
+   "value": "Excess SZ flux in the south of the cluster without counterpart X-ray emission, indicative of low-density shock-heated gas."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "By comparing XLSSC 122 to local observations and even more distant clusters of galaxies, we posit the idea that XLSSC 122 is in its “adolescent” phase. Even though detected at $z\\sim2$, XLSSC 122 had time to virialize and attract matter over time, forming a bulk of hot but low-density gas in the ICM."
+    }
+   ],
+   "value": "XLSSC 122 is in an adolescent phase of cluster formation undergoing a major merger."
+  }
+ ],
+ "imaging": [
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "The bottom panel and remaining figures in this paper that show ALMA+ACA observations are tapered to have a beam with an FWHM of $5\\ensuremath{''}$."
+    }
+   ],
+   "field": "uv_taper",
+   "value": "Tapered to 5'' FWHM Gaussian beam"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "The bottom panel and remaining figures in this paper that show ALMA+ACA observations are tapered to have a beam with an FWHM of $5\\ensuremath{''}$."
+    }
+   ],
+   "field": "final_beam",
+   "value": "5'' FWHM"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "“Cleaned” image reconstruction",
+     "quote": "By subtracting the model from the visibilities, the resulting residual image thus becomes freed of the dirty beam patterns originating from the convolution between the SZ effect and the incomplete uv-coverage. Then, similar to clean, we add the imaged residuals... to the likelihood-weighted model"
+    }
+   ],
+   "field": "deconvolver",
+   "value": "Custom forward-modeled gNFW subtraction and restoration algorithm (single major cycle)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Visibility-based modeling of the ICM",
+     "quote": "Regarding handling the ALMA+ACA mosaic, we model each pointing individually and correct for the primary beam attenuation per field."
+    }
+   ],
+   "field": "primary_beam_correction",
+   "value": "Corrected per field in visibility forward-modeling"
+  }
+ ],
+ "inherited": [
+  {
+   "from_reference": "(cite: DiMascolo2019a)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Visibility-based modeling of the ICM",
+      "quote": "Here we rely on a uv-space Bayesian approach based on the work of (cite: DiMascolo2019a)."
+     }
+    ],
+    "value": "uv-space Bayesian forward-modeling routine"
+   }
+  },
+  {
+   "from_reference": "(cite: madhavacheril2020atacama)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Joint likelihood modeling of the ICM via ALMA, ACA, and ACT observations",
+      "quote": "To account for these sources of covariance, we estimate inter-map covariance matrices using similar procedures to (cite: madhavacheril2020atacama)"
+     }
+    ],
+    "value": "Procedure for estimating ACT inter-map covariance matrices"
+   }
+  },
+  {
+   "from_reference": "(cite: 2022A&A...659A.126A)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Mass estimates",
+      "quote": "To derive the dynamical mass, we adopt the methodology described in (cite: 2022A&A...659A.126A)."
+     }
+    ],
+    "value": "Methodology to derive dynamical mass from member velocity dispersion"
+   }
+  }
+ ],
+ "limitations_admitted": [
+  {
+   "evidence": [
+    {
+     "loc": "Modeling asymmetric pressure distributions",
+     "quote": "Regarding the eccentricity, the modeling done on both the ACA+ALMA and ACA+ALMA+ACT observations imply an eccentricity for the smaller component of $\\sim0.8$. This is extreme; however, the cause is most likely because of the model choice. Currently, there are no accurate models to describe these filamentary-like structures which were computationally feasible."
+    }
+   ],
+   "value": "An elliptical gNFW profile is an imperfect model for filamentary structures, leading to extreme best-fit eccentricities (~0.8)."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "ALMA+ACA modeling",
+     "quote": "Thus we conclude, via the Bayesian evidence, that we cannot robustly differentiate between runs that are modeled with more complexity (more unfrozen parameters) and the more simplistic ones because of the loss of large-scale information in the interferometric observations."
+    }
+   ],
+   "value": "Spatial filtering in ALMA+ACA creates a strong beta-P0 degeneracy preventing constraint of outer profile slope without single-dish data."
+  }
+ ],
+ "lines_targeted": [],
+ "methods_papers": [
+  {
+   "citation": "(cite: DiMascolo2019a)",
+   "why": "Bayesian uv-space forward modeling technique for interferometric SZ data"
+  },
+  {
+   "citation": "(cite: Speagle2020Dynesty)",
+   "why": "Nested sampling package used for Bayesian parameter inference and evidence calculation"
+  },
+  {
+   "citation": "(cite: Petry2020)",
+   "why": "Calibrated measurement set service for CASA ALMA pipeline calibration"
+  }
+ ],
+ "missing_for_reproduction": [
+  "Specific CASA calibration scripts or MeasurementSets (must be obtained via EU ARC calibrated MS service).",
+  "The custom forward-modeling likelihood code wrapping dynesty, the ALMA primary beam models, and ACT covariance matrix calculation."
+ ],
+ "other_facilities": [
+  {
+   "name": "Atacama Cosmology Telescope (ACT)",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "The Atacama Cosmology Telescope",
+      "quote": "In this paper, we use ACT maps at 100 and 150 GHz from DR6 with a point-source sensitivity integrated over the beam of 0.5 mJy and 0.8 mJy, respectively."
+     }
+    ],
+    "value": "DR6 single-dish 100 GHz and 150 GHz maps to constrain total integrated SZ Compton Y and large spatial scales."
+   }
+  },
+  {
+   "name": "XMM-Newton",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Auxiliary Data Comparison",
+      "quote": "In total, XMM-Newton collected $\\approx 1096$ source photons in an exposure of 106 ksec"
+     }
+    ],
+    "value": "X-ray imaging of the diffuse ICM."
+   }
+  },
+  {
+   "name": "Chandra",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Auxiliary Data Comparison",
+      "quote": "Here, we use the previously unpublished data from the archive (PI: Noordeh) and applied the standard ACIS reprocessing technique in order to merge the Chandra observations into a flux-corrected image using the ciao tools."
+     }
+    ],
+    "value": "ACIS X-ray imaging for source count and morphology comparison."
+   }
+  },
+  {
+   "name": "Hubble Space Telescope (HST)",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Observations of XLSSC 122",
+      "quote": "Optical spectroscopy using the Hubble Space Telescope (HST) Wide Field Camera 3 established that 37 galaxies are associated with XLSSC 122"
+     }
+    ],
+    "value": "WFC3 optical imaging and spectroscopy of cluster member galaxies."
+   }
+  }
+ ],
+ "paper_type": "archival_reuse",
+ "paper_type_evidence": [
+  {
+   "loc": "The Atacama Large Millimeter/Submillimeter Array",
+   "quote": "We rely upon archival yet unpublished ALMA and ACA Band 3 observations (henceforth denoted ALMA+ACA) made on 2016-10-22 and 2017-01-06, respectively, for characterizing the SZ decrement. For both observations with project code 2016.1.00698.S (PI: A. Mantz)"
+  }
+ ],
+ "question": {
+  "evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We study the dynamical state and morphology of the $z=1.98$ galaxy cluster XLSSC 122 with high-resolution observations ($\\approx 5 \\ensuremath{''}$) of the ICM through the Sunyaev-Zeldovich (SZ) effect."
+   }
+  ],
+  "value": "What is the dynamical state, pressure profile morphology, and halo mass of the z = 1.98 galaxy cluster XLSSC 122 as resolved by the SZ effect?"
+ },
+ "reasoning": [
+  {
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "To constrain such a broad range of spatial scales, we employ a new technique that jointly forward-models parametric descriptions of the pressure distribution to interferometric ACA and ALMA observations and multi-band imaging data from the 6-m, single-dish Atacama Cosmology Telescope (ACT)."
+    }
+   ],
+   "field": "why_this_data",
+   "value": "ALMA and ACA provide high resolution to map the cluster core and remove point sources, while ACT provides zero-spacing single-dish data to recover large-scale filtered flux."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Visibility-based modeling of the ICM",
+     "quote": "Modeling in the uv-plane avoids issues related to the deconvolution of interferometric data (e.g. heavily correlated image-space noise, the filtering of large spatial scales, and the non-uniform weighting of the signal across the baselines)"
+    }
+   ],
+   "field": "why_this_method",
+   "value": "uv-plane forward modeling bypasses deconvolution artifacts, noise correlation in image space, and baseline filtering biases."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Joint likelihood modeling of the ICM via ALMA, ACA, and ACT observations",
+     "quote": "Sampling of the posterior distribution continues until the log difference of the Bayesian evidence is less than an arbitrary threshold, in our case set to $\\Delta\\ln\\mathcal{B}=0.01$."
+    }
+   ],
+   "field": "how_they_decided_enough",
+   "value": "Convergence in dynesty nested sampling when dlnB < 0.01."
+  }
+ ],
+ "rediscovery_candidate": true,
+ "rediscovery_reason": "All primary ALMA and ACA datasets are public in the ALMA archive, ACT DR6 maps are publicly available, and the parametric modeling workflow is well-described with complete lists of priors and model equations.",
+ "referee_caveats_inferred": [
+  "The second filamentary component has a modest Bayesian detection significance (2.4-3.6 sigma) and relies on an ad-hoc highly elliptical gNFW profile rather than a physical filament model.",
+  "Relativistic SZ corrections were neglected, which could introduce percent-level systematic offsets if gas temperatures in merger shocks exceed 5 keV.",
+  "Mass conversion relies on local scaling relations that may undergo redshift evolution not fully captured at z ~ 2."
+ ],
+ "reproducibility": [
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "We rely upon archival yet unpublished ALMA and ACA Band 3 observations (henceforth denoted ALMA+ACA) made on 2016-10-22 and 2017-01-06, respectively, for characterizing the SZ decrement. For both observations with project code 2016.1.00698.S (PI: A. Mantz)"
+    }
+   ],
+   "field": "data_public_as_stated",
+   "value": "yes"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "The Atacama Large Millimeter/Submillimeter Array",
+     "quote": "calibrated datasets were obtained through the calibrated measurement set service (cite: Petry2020) of the European ALMA Regional Center using CASA 5.4.0."
+    }
+   ],
+   "field": "products_in_archive",
+   "value": "yes"
+  }
+ ],
+ "results_numeric": [
+  {
+   "evidence": [
+    {
+     "loc": "Mass estimates",
+     "quote": "Our SZ mass is calculated by taking the evidence-weighted average of the mass estimates from the empirical formalism runs utilizing ALMA+ACA+ACT observations as shown in Table [table:sigle_ACA_ALMA_ACT], and is equal to $M_{500,\\mathrm{c}} = 1.66^{+0.23}_{-0.20} \\times 10^{14}~\\rm M_\\odot$."
+    }
+   ],
+   "from_step": 4,
+   "quantity": "M500,c (SZ)",
+   "uncertainty": "+0.23/-0.20",
+   "units": "10^14 M_\\odot",
+   "value": "1.66"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "ALMA+ACA+ACT joint likelihood modeling",
+     "quote": "With the introduction of the ACT observations, we find that the eccentricity is driven to lower values with a likelihood-weighted average of $e=0.46^{+0.12}_{-0.16}$."
+    }
+   ],
+   "from_step": 2,
+   "quantity": "eccentricity e (ALMA+ACA+ACT)",
+   "uncertainty": "+0.12/-0.16",
+   "units": "dimensionless",
+   "value": "0.46"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "ALMA+ACA modeling",
+     "quote": "Using Equation [eq:bayesian], we can conclude that we detect the SZ effect at $\\sim10.9-11.2\\sigma$ in the ACA+ALMA data"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "ALMA+ACA SZ detection significance",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "value": "10.9-11.2"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "ALMA+ACA+ACT: Single theoretical-model posterior values",
+     "quote": "118.8 | 15.4 | $-0.3\\substack{+0.9\\\\-0.9}$ | $11.3\\substack{+1.3 \\\\ -1.3}$ | $0.06\\substack{+0.01 \\\\ -0.01}$ | $0.020\\substack{+0.002 \\\\-0.002}$ | $0.47\\substack{+0.12 \\\\ -0.15}$ | $6\\substack{+10 \\\\ -10}$"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "ALMA+ACA+ACT best-fit gNFW ln Z",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "value": "118.8"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Modeling asymmetric pressure distributions",
+     "quote": "For the elliptical one, we find $|\\Delta\\ln{\\mathcal{Z}}| = 68.6$. The latter translates to a Bayesian evidence difference of 6.6 with respect to the best single elliptical gNFW model, indicating a tentative $3.6\\sigma$ detection of the second component"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "Two-component detection significance (ALMA+ACA)",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "value": "3.6"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Modeling asymmetric pressure distributions",
+     "quote": "From the Bayesian evidence, we find $\\Delta|\\ln{\\mathcal{Z}}| = 116.8$ and $\\Delta|\\ln{\\mathcal{Z}}| = 121.8$, which corresponds to a difference of $-0.4$ and $3.0$ (with the latter equivalent to a tentative $2.4\\sigma$ preference)"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "Two-component detection significance (ALMA+ACA+ACT)",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "value": "2.4"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Mass estimates",
+     "quote": "Following this procedure we find $\\log_{10} M_{500,\\mathrm{c}}^{\\mathrm{dyn}} = 14.69^{+0.13}_{-0.18}~\\rm M_\\odot$."
+    }
+   ],
+   "from_step": 4,
+   "quantity": "log10 M500,c (dynamical)",
+   "uncertainty": "+0.13/-0.18",
+   "units": "log10(M_\\odot)",
+   "value": "14.69"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Time scales",
+     "quote": "By fitting the same model to XLSSC 122, we find $Y(<r_{500,\\mathrm{c}}) = 2.0^{+0.6}_{-0.4} \times 10^{-5}~\\textnormal{Mpc}^2$"
+    }
+   ],
+   "from_step": 2,
+   "quantity": "Y(<r500,c)",
+   "uncertainty": "+0.6/-0.4",
+   "units": "10^-5 Mpc^2",
+   "value": "2.0"
+  }
+ ],
+ "score_inferred": 8,
+ "score_reason": "High reproducibility: datasets are fully public in ALMA and ACT archives, the forward-modeling mathematical formalism and priors are comprehensively detailed in tables and equations, and numerical values are well tabulated.",
+ "simulations_or_models_as_data": [],
+ "software": [
+  {
+   "name": "CASA",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "The Atacama Large Millimeter/Submillimeter Array",
+      "quote": "calibrated datasets were obtained through the calibrated measurement set service (cite: Petry2020) of the European ALMA Regional Center using CASA 5.4.0."
+     }
+    ],
+    "value": "Pipeline calibration of ALMA and ACA MeasurementSets"
+   },
+   "version": "5.4.0"
+  },
+  {
+   "name": "dynesty",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "Visibility-based modeling of the ICM",
+      "quote": "The implementation uses the static nested sampling method implemented in the dynesty package (cite: Speagle2020Dynesty; sergey_koposov_2023_7600689)."
+     }
+    ],
+    "value": "Static nested sampling for Bayesian parameter estimation and evidence calculation"
+   },
+   "version": "v2.1.0"
+  },
+  {
+   "name": "ciao",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "Auxiliary Data Comparison",
+      "quote": "applied the standard ACIS reprocessing technique in order to merge the Chandra observations into a flux-corrected image using the ciao tools."
+     }
+    ],
+    "value": "Reprocessing and merging archival Chandra ACIS observations"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "colossus",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "Mass estimates",
+      "quote": "concentration parameter definition of (cite: 2019ApJ...871..168D) and the $M_{200,\\mathrm{c}}^{\\mathrm{dyn}}$ to $M_{500,\\mathrm{c}}^{\\mathrm{dyn}}$ conversion as implemented by the colossus package"
+     }
+    ],
+    "value": "Mass conversion from M200,c to M500,c"
+   },
+   "version": "not stated"
+  }
+ ],
+ "targets": [
+  {
+   "coordinates": "2°17′44.2128″ , -3°45′31.68″",
+   "details": [
+    {
+     "loc": "Observations of XLSSC 122",
+     "quote": "The cluster can be found at an RA and Dec of 2°17′44.2128″ , -3°45′31.68″ ."
+    },
+    {
+     "loc": "Observations of XLSSC 122",
+     "quote": "Optical spectroscopy using the Hubble Space Telescope (HST) Wide Field Camera 3 established that 37 galaxies are associated with XLSSC 122 (cite: Willis2020) and found the average spectroscopic redshift to be $z=1.98$."
+    }
+   ],
+   "distance_source": "HST WFC3 optical spectroscopy (Willis et al. 2020)",
+   "name": "XLSSC 122",
+   "redshift_or_distance": "z = 1.98"
+  }
+ ],
+ "unstated_but_needed": [
+  "Exact pixel scale and grid size used for the 3D pressure model generation before line-of-sight integration.",
+  "Exact imaging task and weighting parameters (e.g. robust parameter value) used when imaging the residual visibilities for the clean-like reconstruction."
+ ]
+}

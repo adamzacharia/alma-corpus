@@ -1,0 +1,496 @@
+{
+ "bibcode": "2020ApJ...902..140N",
+ "title": "ALMA Observations of HCO<SUP>+</SUP> and HCN Emission in the Massive Star-forming Region N55 of the Large Magellanic Cloud",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abb466",
+ "arxiv_id": "2009.00383",
+ "fields": [
+  "star_formation",
+  "nearby_galaxies"
+ ],
+ "question": "How do the properties of dense molecular clumps (size, linewidth, mass, dense gas fraction) relate to star formation in the quiescent N 55-S region of the LMC, compared with other LMC GMCs",
+ "alma_project_codes": [
+  "2013.1.00993.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "ALMA 12 m array",
+  "angular_resolution": "HCO+(1-0) beam 4.07'' x 3.11'' (0.98 x 0.74 pc); HCN(1-0) beam 4.13'' x 3.14'' (0.99 x 0.75 pc)",
+  "sensitivity": "rms ~10 mJy/beam (HCO+) and 11 mJy/beam (HCN) per 0.4 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "12CO(1-0) and 13CO(1-0) maps of N 55-S, used for comparison and for the CO-traced H2 mass",
+    "evidence": [
+     {
+      "loc": "HCO and HCN emission in N 55",
+      "quote": "The $^{12}$CO($1-0$) and $^{13}$CO($1-0$) maps of N 55-S (cite: naslim2018) is also shown for a comparison"
+     }
+    ]
+   },
+   "citation": "Naslim et al. 2018 (cite: naslim2018)"
+  },
+  {
+   "what": {
+    "value": "12CO(1-0) excitation temperature 20 to 40 K, basis for assumed Tex = 30 K",
+    "evidence": [
+     {
+      "loc": "Clump column density",
+      "quote": "Their study shows that $T_{\\rm ex}$ values of $^{12}$CO ($1-0$) range from 20 to 40 K in the N 55-S."
+     }
+    ]
+   },
+   "citation": "Naslim et al. 2018 (cite: naslim2018)"
+  },
+  {
+   "what": {
+    "value": "30% missing flux in the ALMA 12CO(1-0) maps, applied to the CO-traced H2 mass",
+    "evidence": [
+     {
+      "loc": "Dense gas fraction",
+      "quote": "(cite: naslim2018) report a 30% missing flux in the ALMA $^{12}$CO(1-0) emission maps."
+     }
+    ]
+   },
+   "citation": "Naslim et al. 2018 (cite: naslim2018)"
+  },
+  {
+   "what": {
+    "value": "HCO+ to H2 abundance X = 1e-9",
+    "evidence": [
+     {
+      "loc": "Clump column density",
+      "quote": "Assuming the relative abundance of HCO$^{+}$ to H$_{2}$ to be X=10$^{-9}$"
+     }
+    ]
+   },
+   "citation": "(cite: garrod2008; loren1990; caselli2002; lee2003; zinchenko2009)"
+  },
+  {
+   "what": {
+    "value": "HCO+(1-0) partition function 14.4 at Tex = 30 K",
+    "evidence": [
+     {
+      "loc": "Clump column density",
+      "quote": "The partition function $Q_{rot}$ of HCO$^{+}$($1-0$) transition is 14.4 at $T_{\\rm ex}=30$ K (cite: rohlfs2004; mangum2015)."
+     }
+    ]
+   },
+   "citation": "(cite: rohlfs2004; mangum2015)"
+  },
+  {
+   "what": {
+    "value": "YSO positions and 8 micron magnitudes in N 55-S",
+    "evidence": [
+     {
+      "loc": "Clump association with YSOs",
+      "quote": "The 8$\\mu$m magnitudes of the YSOs associated with clumps 2, 3, 7, and 8 in the N 55-S are $\\sim$ \\[8.24\\], \\[7.27\\], \\[10.19\\] and \\[8.76\\] respectively (cite: gruendl2009)."
+     }
+    ]
+   },
+   "citation": "Gruendl & Chu 2009 (cite: gruendl2009); Chen et al. 2009 (cite: chen2009)"
+  },
+  {
+   "what": {
+    "value": "Dense gas fraction of other LMC GMCs 0.1-0.24; HCN/HCO+ flux ratio 0.1-0.5 for LMC clouds and ~0.2 for 30 Doradus-10, used for comparison",
+    "evidence": [
+     {
+      "loc": "Comparison of N 55 clump properties with other LMC clouds",
+      "quote": "The dense gas fraction of N 55-S is 0.025$\\pm$0.005, smaller than the fraction seen in other GMCs; 0.1$-$0.24."
+     },
+     {
+      "loc": "Comparison of N 55 clump properties with other LMC clouds",
+      "quote": "The HCN/HCO$^{+}$ flux ratio is found to be (0.1$-$0.5) for various LMC clouds (N 105, N 113, N 159, and N 44) by (cite: seale2012)"
+     }
+    ]
+   },
+   "citation": "Seale et al. 2012 (cite: seale2012); Anderson et al. 2014 (cite: anderson2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image line cubes",
+   "method": "ALMA pipeline calibrated visibilities imaged with CASA tclean at 0.4 km/s channels, Briggs weighting",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5",
+    "Channels binned from 0.2 to 0.4 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make velocity-integrated intensity maps",
+   "method": "Integrate HCO+ and HCN cubes along the velocity axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify clumps and measure size, linewidth and flux",
+   "method": "astrodendro dendrogram on the data cubes; leaves taken as clumps; parameters by bisection method",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "Local maxima with flux >3 sigma_rms"
+   ],
+   "assumptions": [
+    "Gaussian line profiles for FWHM from sigma_v"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive HCO+ and H2 column density and optical depth",
+   "method": "LTE analysis with peak optical depth from peak brightness temperature, then N_H2 from assumed HCO+ abundance",
+   "software": [],
+   "key_parameters": [
+    "Tex = 30 K",
+    "Background temperature 2.72 K",
+    "Q_rot = 14.4"
+   ],
+   "assumptions": [
+    "HCO+/H2 abundance X = 1e-9",
+    "Gaussian emission line profile"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive volume density, surface density, LTE and virial masses and virial parameter",
+   "method": "n_col, Sigma_p, M_LTE, M_vir equations; virial parameter alpha = M_vir/M_LTE",
+   "software": [],
+   "key_parameters": [
+    "mu_mol = 2.3; beta = 1"
+   ],
+   "assumptions": [
+    "Spherical clumps with radial power-law density profile"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate dense gas fraction",
+   "method": "CO-traced H2 mass (L_CO, X_CO, 30% missing-flux correction) compared with HCO+ mass sum",
+   "software": [],
+   "key_parameters": [
+    "X_CO = 2e20 cm-2 K-1 km-1 s"
+   ],
+   "assumptions": [
+    "Galactic X_CO is adequate for metallicities down to ~0.5 Zsun"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit size-linewidth relation and test virial state",
+   "method": "Power-law fit of linewidth versus radius for HCO+ clumps; virial parameter examined",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Associate clumps with YSOs and compare with other LMC clouds",
+   "method": "Positional match of Spitzer YSOs to emission peaks; clumps with and without YSOs compared in mass, surface density and linewidth; comparison with Seale et al. 2012 and Anderson et al. 2014 clumps",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "8 micron magnitude used as proxy for YSO mass"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of HCO+(1-0) clumps",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Clump identification and characterization",
+     "quote": "We identify 10 significant molecular clumps in the HCO$^{+}$(1$-$0) and 8 in the HCN(1$-$0) data cubes."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of HCN(1-0) clumps",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Clump identification and characterization",
+     "quote": "We identify 10 significant molecular clumps in the HCO$^{+}$(1$-$0) and 8 in the HCN(1$-$0) data cubes."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/HCO+ flux ratio range of clumps",
+   "value": "0.46 to 0.78",
+   "uncertainty": "0.17 and 0.12 at the ends",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Clump identification and characterization",
+     "quote": "The HCN/HCO$^{+}$ flux ratio of the clumps ranges from 0.46 $\\pm$ 0.17 to 0.78 $\\pm$ 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density range",
+   "value": "(0.2-1.6)e22",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "The column density of H$_2$ gas traced by HCO$^{+}(1-0)$ emission in N 55-S clumps are in the range $N_{\\rm H_{2}} \\sim$ $(0.2-1.6)$ $\\times$ 10$^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Clump volume density range",
+   "value": "300 to 4850",
+   "uncertainty": "+/-50 and +/-1630 at the ends",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Clump volume density",
+     "quote": "The derived clump volume densities range from 300 $\\pm$ 50 to 4850$\\pm$1630 cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass surface density range",
+   "value": "29 to 290",
+   "uncertainty": "+/-4 and +/-41 at the ends",
+   "units": "Msun pc^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Mass surface density",
+     "quote": "The values of mass-surface density vary from 29 $\\pm$ 4 to 290 $\\pm$ 41 $M_{\\odot}$ pc$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass range",
+   "value": "(0.96-12.16)e2",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "M_vir versus M_LTE",
+     "quote": "The virial and LTE masses of N 55-S clumps are (0.96$-$12.16)$\\times$10$^{2}$ M$_{\\odot}$ and (0.43$-$4.29)$\\times$10$^{2}$ $M_{\\odot}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE mass range",
+   "value": "(0.43-4.29)e2",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "M_vir versus M_LTE",
+     "quote": "The virial and LTE masses of N 55-S clumps are (0.96$-$12.16)$\\times$10$^{2}$ M$_{\\odot}$ and (0.43$-$4.29)$\\times$10$^{2}$ $M_{\\odot}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Average virial parameter",
+   "value": "2.6",
+   "uncertainty": "1.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "M_vir versus M_LTE",
+     "quote": "The average value of virial parameter is 2.6$\\pm$1.2."
+    }
+   ]
+  },
+  {
+   "quantity": "Beam filling factor f",
+   "value": "0.001-0.01",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Low volume densities of dense gas clumps",
+     "quote": "Comparing the above derived mass with the cloud mass derived from LTE analysis yields $f=(0.001-0.01)$ for the clumps in our sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 mass traced by 12CO(1-0)",
+   "value": "2.59e4",
+   "uncertainty": "0.01e4",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Dense gas fraction",
+     "quote": "the total H$_{2}$ mass traced by $^{12}$CO(1$-$0) is (2.59 $\\pm$ 0.01) $\\times$ 10$^{4}$ $M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 mass traced by HCO+(1-0)",
+   "value": "0.70e3",
+   "uncertainty": "0.10e3",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Dense gas fraction",
+     "quote": "The total H$_{2}$ mass traced by HCO$^{+}$(1$-$0) is $\\sim$ (0.70 $\\pm$ 0.10) $\\times$ 10$^{3}$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dense gas fraction",
+   "value": "0.025",
+   "uncertainty": "0.005",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Dense gas fraction",
+     "quote": "Thus the dense gas fraction in the N 55-S region is 0.025$\\pm$0.005."
+    }
+   ]
+  },
+  {
+   "quantity": "Dense gas fraction with X_CO = 4e20",
+   "value": "0.013",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Dense gas fraction",
+     "quote": "A higher value of $X_{\\rm CO}$ = 4$\\times$10$^{20}$ cm$^{-2}$ K$^{-1}$ km$^{-1}$ s (cite: hughes2010) will further decrease the dense gas fraction to 0.013."
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth power-law index",
+   "value": "0.65",
+   "uncertainty": "0.32",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "size-linewidth relation",
+     "quote": "The size and linewidth of HCO$^{+}$($1-0$) clumps follow a power-law, $\\Delta v$ $\\propto$ $R^{0.65\\pm0.32}$"
+    }
+   ]
+  },
+  {
+   "quantity": "YSO to emission-peak offsets for clumps 2, 3, 7, 8",
+   "value": "1.16, 1.21, 0.43, 1.69",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Clump association with YSOs",
+     "quote": "The positional offset between the emission peak and YSO position is 1.16, 1.21, 0.43 and 1.69 arcsec for clump 2, 3, 7, and 8 respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean mass of YSO-associated clumps",
+   "value": "245",
+   "uncertainty": "96",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Clump association with YSOs",
+     "quote": "The average mass of the YSO-associated clumps is 245 $\\pm$ 96 $M_{\\odot}$ whereas the average mass of clumps without YSOs is $\\sim$ 103 $\\pm$ 39 $M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean mass of clumps without YSOs",
+   "value": "~103",
+   "uncertainty": "39",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Clump association with YSOs",
+     "quote": "The average mass of the YSO-associated clumps is 245 $\\pm$ 96 $M_{\\odot}$ whereas the average mass of clumps without YSOs is $\\sim$ 103 $\\pm$ 39 $M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass surface density threshold for YSO association",
+   "value": ">= 73",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Clump association with YSOs",
+     "quote": "The clumps with mass-surface densities $\\geq$ 73 $M_{\\odot}$ pc$^{-2}$ shows YSO association in N 55-S."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM linewidths of YSO-associated clumps vs clumps without YSOs",
+   "value": "1.6-2.4 vs 1.0-1.5",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Clump association with YSOs",
+     "quote": "The velocity widths of YSO associated clumps are $\\Delta v$ = $1.6-2.4$ km s$^{-1}$ whereas the clumps without YSOs, $\\Delta v$ = $1.0-1.5$ km s$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version",
+  "Number of antennas, baseline range, array configuration and number of execution blocks",
+  "Whether the pipeline products were used as delivered or manually re-calibrated",
+  "Image cell size, image size, tclean niter/threshold, masking and deconvolver",
+  "Primary beam correction and any continuum subtraction or line-free channels",
+  "Velocity range used to integrate the moment-0 maps",
+  "Spectral-binning method from 0.2 to 0.4 km/s",
+  "astrodendro parameters (min_value, min_delta, min_npix) beyond the 3 sigma threshold, and the number of bootstrap realisations",
+  "How clump spectra, peak brightness temperature T_p and HCN/HCO+ flux ratios were extracted from the cubes (aperture, conversion from Jy/beam to K)",
+  "Whether sizes were beam-deconvolved when computing R",
+  "Fitting method (e.g. ordinary vs orthogonal regression) for the size-linewidth relation",
+  "L_CO and the region used for the CO-traced H2 mass, and how HCO+ mass was summed over clumps",
+  "How the 0.04% chance-coincidence probability was computed",
+  "Flux-scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "CASA and pipeline versions, array configuration and imaging parameters beyond robust and channel width",
+  "astrodendro parameters and bootstrap settings",
+  "Velocity range and aperture for T_p, flux ratios and spectra",
+  "Fitting method for the size-linewidth relation",
+  "L_CO region and procedure for the CO-traced mass",
+  "Archival data availability is not stated in the paper"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, line setup, weighting, robust and channel width are given and the derivation equations and assumptions are explicit with numeric tables, but imaging details, astrodendro settings, spectrum extraction and the CO-mass inputs are missing.",
+ "rediscovery_reason": "The ALMA project is cited and archive-linked, the processing is a standard tclean plus astrodendro plus LTE recipe, and results are tabulated numerically; some settings must be chosen by the reproducer.",
+ "source_card": "cards/2020ApJ...902..140N/sonnet/card.md"
+}

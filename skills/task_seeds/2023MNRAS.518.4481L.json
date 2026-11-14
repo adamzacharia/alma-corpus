@@ -1,0 +1,519 @@
+{
+ "bibcode": "2023MNRAS.518.4481L",
+ "title": "Dynamical mass measurements of two protoplanetary discs",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3223",
+ "arxiv_id": "2211.03712",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Measure dynamically the total disc mass of IM Lup and GM Aur from deviations from Keplerianity in $^{12}$CO and $^{13}$CO rotation curves induced by disc self-gravity and pressure gradients.",
+ "alma_project_codes": [
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~ 0.15\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distances and inclinations of IM Lup (d=158 pc, i=47.5 deg) and GM Aur (d=159 pc, i=53.2 deg)",
+    "evidence": [
+     {
+      "loc": "Basic system parameters",
+      "quote": "Distances and inclinations of the two sources are obtained from the literature. In particular, we adopt the same geometrical parameters as used in MAPS (cite: Oberg21)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| $i$ (degrees) | 47.5$^\\circ$ | 53.2$^\\circ$ |"
+     }
+    ]
+   },
+   "citation": "(cite: Gaia18); (cite: Oberg21)"
+  },
+  {
+   "what": {
+    "value": "Pressure scale height parameters H0 and q for IM Lup (H0=10 au, q=0.66) and GM Aur (H0=7.5 au, q=0.3)",
+    "evidence": [
+     {
+      "loc": "Basic system parameters",
+      "quote": "we fix the pressure scale height from the thermochemical model of (cite: Zhang21) (which are in very good agreement with the recent analysis of (cite: Paneque22))"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| $H_0$ (au) | 10 | 7.5 |"
+     }
+    ]
+   },
+   "citation": "(cite: Zhang21)"
+  },
+  {
+   "what": {
+    "value": "Height of emitting layers of 12CO and 13CO (z0, p, q, Rt) and 2D gas temperature parameterizations for GM Aur",
+    "evidence": [
+     {
+      "loc": "Basic system parameters",
+      "quote": "and the height of the emitting layers of $^{12}$CO and $^{13}$CO from the MAPS analysis (cite: Law21)."
+     },
+     {
+      "loc": "GM Aur",
+      "quote": "(cite: Law21) parameterize the gas temperatures of the two molecules as:"
+     }
+    ]
+   },
+   "citation": "(cite: Law21)"
+  },
+  {
+   "what": {
+    "value": "Dust mass of IM Lup (1.7e-3 M_sun)",
+    "evidence": [
+     {
+      "loc": "IM Lup",
+      "quote": "Note that, given the known value of the dust mass of $M_{\\rm dust}=1.7~10^{-3}\\, \\mathrm{M}_{\\ensuremath{\\odot}}$ (cite: Cleeves16), our measurement implies a gas/dust ratio of $\\sim 60$, close to the standard assumed value of 100."
+     }
+    ]
+   },
+   "citation": "(cite: Cleeves16)"
+  },
+  {
+   "what": {
+    "value": "Dust mass of GM Aur (0.002 M_sun)",
+    "evidence": [
+     {
+      "loc": "GM Aur",
+      "quote": "The dust mass estimated by (cite: Macias18) is $0.002\\, \\mathrm{M}_{\\ensuremath{\\odot}}$, which would translate into $0.2\\, \\mathrm{M}_{\\ensuremath{\\odot}}$ for the gas mass, assuming a gas/dust ratio of 100."
+     }
+    ]
+   },
+   "citation": "(cite: Macias18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract rotation curves using EDDY (Simple Harmonic Oscillator method)",
+   "method": "Fit line centroids using Gaussian and Quadratic methods and align spectra in annuli with a Simple Harmonic Oscillator (SHO) model deprojected using known disc inclination, position angle, and emitting layer height z(R).",
+   "software": [
+    "EDDY"
+   ],
+   "key_parameters": [
+    "Radial range: from beam FWHM to ~500 au (IM Lup 12CO) and ~400 au (GM Aur both lines and IM Lup 13CO)",
+    "Line centroid methods: Gaussian and Quadratic"
+   ],
+   "assumptions": [
+    "Axisymmetric disc with thin emitting layer z_i(R) and fixed geometry from Table 1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract rotation curves using DISCMINER",
+   "method": "Fit Gaussian or quadratic profiles to line profiles to obtain line-of-sight velocities, model and mask the lower emitting surface, and compute unweighted azimuthal averages of deprojected velocities within [-30, 30] deg around the disc major axis.",
+   "software": [
+    "DISCMINER"
+   ],
+   "key_parameters": [
+    "Azimuthal averaging window: [-30, 30] deg around major axes"
+   ],
+   "assumptions": [
+    "Radial and vertical velocity components v_R and v_z are negligible or localised; fixed orientation and emission surfaces from Table 1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Pre-compute self-gravitating potential contribution on a 2D grid",
+   "method": "Numerically integrate the 1D integral for the radial derivative of the disc gravitational potential (Eq. 14) on a 2D grid (R, Z) using QUADPACK and interpolate at (R, z(R)) during MCMC fitting.",
+   "software": [
+    "QUADPACK",
+    "DySc"
+   ],
+   "key_parameters": [
+    "Surface density power-law index gamma = 1"
+   ],
+   "assumptions": [
+    "Tapered power-law surface density profile with gamma = 1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit dynamical model to 12CO and 13CO rotation curves via MCMC",
+   "method": "Simultaneously (and for GM Aur also separately) fit 12CO and 13CO rotation curves to the analytical + numerical rotation velocity model including stellar gravity, disc self-gravity, radial pressure gradient, and emitting height z(R) using emcee.",
+   "software": [
+    "emcee",
+    "DySc",
+    "corner",
+    "MATPLOTLIB"
+   ],
+   "key_parameters": [
+    "100 walkers, 1500 burn-in steps, 500 production steps",
+    "Reference radius R0 = 100 au; fixed parameters from Table 1"
+   ],
+   "assumptions": [
+    "Vertically isothermal disc in hydrostatic and centrifugal balance; independent data points along the rotation curve; gas-to-dust ratio evaluated against literature dust masses"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "IM Lup stellar mass (EDDY Gaussian)",
+   "value": "1.02",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "For EDDY , the best fit stellar mass is $M_\\star\\approx 1.02 \\, \\mathrm{M}_{\\ensuremath{\\odot}}$, the best fit disc mass is $M_{\\rm d}\\approx 0.096 \\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 66$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disc mass (EDDY Gaussian)",
+   "value": "0.096",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "For EDDY , the best fit stellar mass is $M_\\star\\approx 1.02 \\, \\mathrm{M}_{\\ensuremath{\\odot}}$, the best fit disc mass is $M_{\\rm d}\\approx 0.096 \\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 66$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup scale radius Rc (EDDY Gaussian)",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "For EDDY , the best fit stellar mass is $M_\\star\\approx 1.02 \\, \\mathrm{M}_{\\ensuremath{\\odot}}$, the best fit disc mass is $M_{\\rm d}\\approx 0.096 \\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 66$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup stellar mass (DISCMINER Gaussian)",
+   "value": "1.01",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "For DISCMINER , the best fit stellar mass is $M_\\star\\approx 1.01 \\, \\mathrm{M}_{\\ensuremath{\\odot}}$, the best fit disc mass is $M_{\\rm d}\\approx 0.11 \\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 67$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disc mass (DISCMINER Gaussian)",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "For DISCMINER , the best fit stellar mass is $M_\\star\\approx 1.01 \\, \\mathrm{M}_{\\ensuremath{\\odot}}$, the best fit disc mass is $M_{\\rm d}\\approx 0.11 \\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 67$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup scale radius Rc (DISCMINER Gaussian)",
+   "value": "67",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "For DISCMINER , the best fit stellar mass is $M_\\star\\approx 1.01 \\, \\mathrm{M}_{\\ensuremath{\\odot}}$, the best fit disc mass is $M_{\\rm d}\\approx 0.11 \\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 67$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup consistent disc mass",
+   "value": "0.1",
+   "uncertainty": "factor ~ 2 systematic",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For IM Lup, we are able to obtain a consistent disc mass of $M_{\\rm disc}=0.1 \\, \\mathrm{M}_{\\odot}$, implying a disc-star mass ratio of 0.1 (consistent with the observed spiral structure in the continuum emission) and a gas/dust ratio of $\\sim 65$ (consistent with standard assumptions), with a systematic uncertainty by a factor $\\simeq2$ due to the different methods to extract the rotation curve."
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disc-to-star mass ratio",
+   "value": "0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For IM Lup, we are able to obtain a consistent disc mass of $M_{\\rm disc}=0.1 \\, \\mathrm{M}_{\\odot}$, implying a disc-star mass ratio of 0.1 (consistent with the observed spiral structure in the continuum emission)"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup gas-to-dust ratio",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "Note that, given the known value of the dust mass of $M_{\\rm dust}=1.7~10^{-3}\\, \\mathrm{M}_{\\ensuremath{\\odot}}$ (cite: Cleeves16), our measurement implies a gas/dust ratio of $\\sim 60$, close to the standard assumed value of 100."
+    },
+    {
+     "loc": "Abstract",
+     "quote": "and a gas/dust ratio of $\\sim 65$ (consistent with standard assumptions)"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup Toomre Q in outer disc",
+   "value": "1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IM Lup",
+     "quote": "In the outer disc, our model predicts $Q\\sim 1$ indicating that the disc might be marginally gravitationally unstable, consistent with the observed large scale spiral structure in the dust morphology (cite: Huang18)."
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup stellar mass (EDDY Quadratic)",
+   "value": "1.03",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Using the quadratic method to retrieve the rotation curves",
+     "quote": "Indeed, using the SHO quadratic method with EDDY , we obtain $M_\\star \\approx 1.03 \\, \\text{M}_\\odot$, $M_\\text{d} \\approx 0.19 \\, \\text{M}_\\odot$ and $R_\\text{c} \\approx 87 \\, \\text{au}$"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disc mass (EDDY Quadratic)",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Using the quadratic method to retrieve the rotation curves",
+     "quote": "Indeed, using the SHO quadratic method with EDDY , we obtain $M_\\star \\approx 1.03 \\, \\text{M}_\\odot$, $M_\\text{d} \\approx 0.19 \\, \\text{M}_\\odot$ and $R_\\text{c} \\approx 87 \\, \\text{au}$"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup scale radius Rc (EDDY Quadratic)",
+   "value": "87",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Using the quadratic method to retrieve the rotation curves",
+     "quote": "Indeed, using the SHO quadratic method with EDDY , we obtain $M_\\star \\approx 1.03 \\, \\text{M}_\\odot$, $M_\\text{d} \\approx 0.19 \\, \\text{M}_\\odot$ and $R_\\text{c} \\approx 87 \\, \\text{au}$"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup stellar mass (DISCMINER Quadratic)",
+   "value": "1.02",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Using the quadratic method to retrieve the rotation curves",
+     "quote": "while for DISCMINER quadratic we obtain again very good agreement for the disc and stellar masses ($M_\\star \\approx 1.02 \\, \\text{M}_\\odot$, $M_\\text{d} \\approx 0.23 \\, \\text{M}_\\odot$), but we were not able to fit for the disc scale radius."
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disc mass (DISCMINER Quadratic)",
+   "value": "0.23",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Using the quadratic method to retrieve the rotation curves",
+     "quote": "while for DISCMINER quadratic we obtain again very good agreement for the disc and stellar masses ($M_\\star \\approx 1.02 \\, \\text{M}_\\odot$, $M_\\text{d} \\approx 0.23 \\, \\text{M}_\\odot$), but we were not able to fit for the disc scale radius."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur simultaneous fit disc mass (DISCMINER)",
+   "value": "0.26",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "The disc mass is $M_{\\rm d}\\approx 0.26\\, \\mathrm{M}_{\\odot}$, the stellar mass is $M_{\\star}\\approx 0.7\\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 60$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur simultaneous fit stellar mass (DISCMINER)",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "The disc mass is $M_{\\rm d}\\approx 0.26\\, \\mathrm{M}_{\\odot}$, the stellar mass is $M_{\\star}\\approx 0.7\\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 60$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur simultaneous fit scale radius Rc (DISCMINER)",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "The disc mass is $M_{\\rm d}\\approx 0.26\\, \\mathrm{M}_{\\odot}$, the stellar mass is $M_{\\star}\\approx 0.7\\, \\mathrm{M}_{\\odot}$ and the scale radius is $R_{\\rm c}\\approx 60$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur disc-to-star mass ratio",
+   "value": "0.35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our best fit disc mass measurement is $M_{\\rm disc}=0.26 \\, \\mathrm{M}_{\\odot}$, implying a disc-star mass ratio of $\\sim 0.35$ and a gas/dust ratio of $\\sim 130$."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur gas-to-dust ratio",
+   "value": "130",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our best fit disc mass measurement is $M_{\\rm disc}=0.26 \\, \\mathrm{M}_{\\odot}$, implying a disc-star mass ratio of $\\sim 0.35$ and a gas/dust ratio of $\\sim 130$."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur individual 12CO fit stellar mass",
+   "value": "0.79",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "The resulting values for the star mass, disc mass and scale radius are: $M_{\\star}\\approx 0.79\\, \\mathrm{M}_{\\odot}$, $M_{\\rm d}\\approx 0.11\\, \\mathrm{M}_{\\odot}$ and $R_{\\rm c}\\approx 65$ au for the $^{12}$CO line fit"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur individual 12CO fit disc mass",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "The resulting values for the star mass, disc mass and scale radius are: $M_{\\star}\\approx 0.79\\, \\mathrm{M}_{\\odot}$, $M_{\\rm d}\\approx 0.11\\, \\mathrm{M}_{\\odot}$ and $R_{\\rm c}\\approx 65$ au for the $^{12}$CO line fit"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur individual 12CO fit scale radius Rc",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "The resulting values for the star mass, disc mass and scale radius are: $M_{\\star}\\approx 0.79\\, \\mathrm{M}_{\\odot}$, $M_{\\rm d}\\approx 0.11\\, \\mathrm{M}_{\\odot}$ and $R_{\\rm c}\\approx 65$ au for the $^{12}$CO line fit"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur second individual CO line fit stellar mass",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "and a rather implausible $M_{\\star}\\approx 0.6\\, \\mathrm{M}_{\\odot}$, $M_{\\rm d}\\approx 0.44\\, \\mathrm{M}_{\\odot}$ and $R_{\\rm c}\\approx 59$ au for the $^{12}$CO line."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur second individual CO line fit disc mass",
+   "value": "0.44",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "and a rather implausible $M_{\\star}\\approx 0.6\\, \\mathrm{M}_{\\odot}$, $M_{\\rm d}\\approx 0.44\\, \\mathrm{M}_{\\odot}$ and $R_{\\rm c}\\approx 59$ au for the $^{12}$CO line."
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur second individual CO line fit scale radius Rc",
+   "value": "59",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GM Aur",
+     "quote": "and a rather implausible $M_{\\star}\\approx 0.6\\, \\mathrm{M}_{\\odot}$, $M_{\\rm d}\\approx 0.44\\, \\mathrm{M}_{\\odot}$ and $R_{\\rm c}\\approx 59$ au for the $^{12}$CO line."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Position angle (PA) values for IM Lup and GM Aur (referred to in text as being in Table 1, but omitted from Table 1)",
+  "Which specific MAPS image cube data products (e.g., robust weighting, multiscale vs JvM-corrected cubes) were downloaded from the MAPS repository",
+  "Radial bin width / step size used when extracting rotation curves in EDDY and DISCMINER",
+  "Exact grid resolution and radial/vertical domain bounds used for the 2D (R, Z) numerical integration grid of the self-gravitating potential term"
+ ],
+ "missing_for_reproduction": [
+  "Exact Position Angle (PA) values adopted for IM Lup and GM Aur (must be looked up in Oberg et al. 2021 / Law et al. 2021)",
+  "Which specific MAPS cube variant (e.g., robust 0.5 vs circularized beam, JvM-corrected vs residual-scaled) was used as input to EDDY and DISCMINER",
+  "Radial bin spacing and exact inner/outer radius values in au used in the rotation curve extraction",
+  "Exact likelihood weighting / error bar definition on the extracted rotation curve points passed into emcee"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "The input spectral cubes are publicly hosted by the MAPS survey, the extraction tools (EDDY and DISCMINER) are public, the authors released their MCMC dynamical fitting code (DySc) on GitHub, and almost all fixed structural parameters, equations, and MCMC settings/priors are explicitly tabulated.",
+ "rediscovery_reason": "Public MAPS data cubes, public analysis and fitting codes (EDDY, DISCMINER, DySc), well-defined analytical/numerical equations, and clear numeric target quantities (stellar mass, disc mass, scale radius).",
+ "source_card": "cards/2023MNRAS.518.4481L/sonnet/card.md"
+}

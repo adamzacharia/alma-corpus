@@ -1,0 +1,272 @@
+{
+ "bibcode": "2014ApJ...788L..34P",
+ "title": "Resolved Images of the Protoplanetary Disk around HD 100546 with ALMA",
+ "year": 2014,
+ "doi": "10.1088/2041-8205/788/2/L34",
+ "arxiv_id": "1405.5773",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the resolved morphology, size and kinematics of the dust (870 um) and CO(3-2) gas in the HD 100546 disk, and what do they imply for planet-related processes?",
+ "alma_project_codes": [
+  "2011.0.00863.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um continuum, CO 3-2)",
+  "arrays": "not stated",
+  "angular_resolution": "0.93\" x 0.37\" (PA=39 deg) continuum; 0.92\" x 0.38\" (PA=38 deg) CO",
+  "sensitivity": "continuum rms 5.7 mJy/beam; CO rms 27 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inner radius fixed at 14 au",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "it is not possible to constrain $R_{\\rm in}$, and therefore it is fixed at 14 au (cite: quanz2011)"
+     }
+    ]
+   },
+   "citation": "Quanz et al. 2011 (cite: quanz2011)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass 2.4±0.1 Msun",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "M$_*$=2.4$\\pm$0.1 M$_\\odot$ (cite: vandenAncker_1997-HAeBe_Parameters)"
+     }
+    ]
+   },
+   "citation": "van den Ancker et al. 1997"
+  },
+  {
+   "what": {
+    "value": "Gas surface density Sigma_gas(r)=18 (r/au) g cm-2",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Using $\\Sigma_{gas}(r)$$=$18 $(r/\\textrm{au})$ g cm$^{-2}$ (cite: Mulders_2013-HD100546_Companion_Mass)"
+     }
+    ]
+   },
+   "citation": "Mulders et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO cube",
+   "method": "Uniform weighting imaging in CASA; uvcontsub and multiscale clean for CO",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit continuum geometry",
+   "method": "Elliptical Gaussian fit to visibilities; inclination from axis ratio",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit truncated uniform disk to visibilities",
+   "method": "Truncated disk of uniform surface brightness fit to de-projected visibilities; free F0 and Rout",
+   "software": [],
+   "key_parameters": [
+    "R_in fixed at 14 au"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare with radiative transfer models",
+   "method": "MCMax model with 1-3 mm grain component truncated at Rout in a grid 40-100 au in 10 au steps",
+   "software": [
+    "MCMax"
+   ],
+   "key_parameters": [
+    "mm dust mass 5e-4 Msun, 0.1x hydrostatic scale height"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "CO moments and PV diagram kinematics",
+   "method": "Moment maps and major-axis PV diagram compared with Keplerian curves for M*=2.4 Msun at 40 and 30 deg",
+   "software": [],
+   "key_parameters": [
+    "moment 0 over -2.1 to 14.0 km/s; moment 1 voxels >3 rms, pixels with integrated intensity >0.4 Jy/beam km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Stokes number estimate",
+   "method": "St = sqrt(2 pi) rho_s a / Sigma_gas at 50 au",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "rho_s = 1 g cm-3, a = 1 mm"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum total flux",
+   "value": "1.09",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The total and peak flux are 1.09 Jy and 0.500 Jy beam$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum position angle",
+   "value": "145.14",
+   "uncertainty": "0.04",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results, Dust",
+     "quote": "The PA of the major axis (145.14$\\ensuremath{^\\circ}$$\\pm$0.04$\\ensuremath{^\\circ}$) and inclination angle (41.94$\\ensuremath{^\\circ}$$\\pm$0.03$\\ensuremath{^\\circ}$), are in agreement"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination from continuum",
+   "value": "41.94",
+   "uncertainty": "0.03",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "i | 41.94$\\ensuremath{^\\circ}$$\\pm$0.03$\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian major axis FWHM",
+   "value": "613.2",
+   "uncertainty": "0.1",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Major axis (FWHM) | (613.2$\\pm$0.1)  mas"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian integrated flux",
+   "value": "1.2015",
+   "uncertainty": "0.0002",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Integrated Flux | (1.2015$\\pm$0.0002) Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Truncated disk outer radius",
+   "value": "45.8",
+   "uncertainty": "0.7 (underestimated)",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the total flux is 1.07$\\pm$0.02 Jy and the outer radius is 45.8$\\pm$0.7 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Truncated disk total flux",
+   "value": "1.07",
+   "uncertainty": "0.02",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the total flux is 1.07$\\pm$0.02 Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Visibility null location",
+   "value": "250",
+   "uncertainty": "not stated",
+   "units": "kλ",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "shows a null at $R_{null}$$\\approx$250 k$\\lambda$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO disk extent at 3 sigma",
+   "value": "3.5 arcsec (340 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The CO (3–2) emission extends out to 3.5$\\ensuremath{''}$ (340 au), where the 3-$\\sigma$ level is reached"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-disk inclination from PV diagram",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "For separations $<$2$\\ensuremath{''}$ the velocities are better reproduced with an inclination angle of 30$\\ensuremath{^\\circ}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum and uvcontsub",
+  "Clean masks, thresholds, cell and image size",
+  "Self-calibration status",
+  "Rest frequency/spectral windows used",
+  "Details of the truncated-disk visibility fit (binning, weights, fitting method)",
+  "Exact modifications to the Mulders et al. 2011 model and goodness-of-fit criterion",
+  "Phase-center and de-projection details for the visibility plots"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters, masks, line-free channels",
+  "Fitting procedure details for the truncated disk",
+  "Modified MCMax model parameters"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and standard CASA steps with many numeric results, but imaging and model-fit details are sparse.",
+ "rediscovery_reason": "Public data; uvmodelfit and visibility results are numeric and redoable, though imaging details are missing.",
+ "source_card": "cards/2014ApJ...788L..34P/sonnet/card.md"
+}

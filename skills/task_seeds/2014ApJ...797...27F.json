@@ -1,0 +1,302 @@
+{
+ "bibcode": "2014ApJ...797...27F",
+ "title": "Revealing H<SUB>2</SUB>D<SUP>+</SUP> Depletion and Compact Structure in Starless and Protostellar Cores with ALMA",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/797/1/27",
+ "arxiv_id": "1410.3706",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What small-scale structure and H2D+ distribution exist in the Oph A SM1 and SM1N cores, and are they starless or protostellar?",
+ "alma_project_codes": [
+  "2011.0.00396.S"
+ ],
+ "data": {
+  "bands": "Band 7, 359 and 372 GHz",
+  "arrays": "28 or 23 antennas; no ACA or total power (Cycle 0)",
+  "angular_resolution": "not stated",
+  "sensitivity": "SM1 2.0 mJy/beam; SM1N 0.3 mJy/beam; H2D+ 0.07 Jy/beam per 0.15 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Hildebrand dust opacity kappa_0 = 0.1 cm2/g at 1000 GHz",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "we normalize $\\kappa_0 = 0.1$ cm$^2$ g$^{-1}$ at 1000 GHz (cite: hildebrand83)"
+     }
+    ]
+   },
+   "citation": "(cite: hildebrand83)"
+  },
+  {
+   "what": {
+    "value": "Distance 120 pc to Oph A",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "where $d = 120$ pc is the distance to Oph A (cite: loinard08)."
+     }
+    ]
+   },
+   "citation": "(cite: loinard08)"
+  },
+  {
+   "what": {
+    "value": "H2D+ Einstein A = 1.08e-4 s^-1, E_u/k = 17.8 K",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "$E_u/k = 17.8$ K, and $A_{ul} = 1.08 \\times 10^{-4}$ s$^{-1}$ for the ortho-H$_2$D$^+$  $1_{11} - 1_{10}$ transition (cite: raman04)"
+     }
+    ]
+   },
+   "citation": "(cite: raman04)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "MFS imaging of all four spws; uniform weighting for SM1 after self-cal, natural multiscale for SM1N",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit Gaussian models to visibilities",
+   "method": "Single 2D Gaussian fit with uvmodelfit to 359 GHz windows",
+   "software": [
+    "CASA uvmodelfit",
+    "Miriad uvamp"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive condensation masses",
+   "method": "Optically thin dust mass M = d^2 S/(kappa B(T_d))",
+   "software": [],
+   "key_parameters": [
+    "kappa_0 = 0.1 cm2/g at 1000 GHz; beta 1.8 (SM1N), 0.4 (SM1) from SMA/ALMA"
+   ],
+   "assumptions": [
+    "T_d = gas temperature; SM1N 16 K from NH3; SM1 >=30 K; d = 120 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit H2D+ line and derive column density and abundance",
+   "method": "1D Gaussian per pixel above 3 sigma; opacity and column density with Tex = 12 K; N(H2) from tapered continuum at Td = 17 K",
+   "software": [],
+   "key_parameters": [
+    "T_ex = 12 K, mu = 2.8"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Limit internal luminosity",
+   "method": "Herschel 70 um 3-sigma limits converted via Dunham et al. 2008 relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SM1 total flux (uv model)",
+   "value": "0.317",
+   "uncertainty": "0.001",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SM1 | 16:26:27.86 | -24:23:59.5 | 0.317(1) | 0.314(1) | 0.908(7) | -6(2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "SM1 Gaussian major axis",
+   "value": "0.314",
+   "uncertainty": "0.001",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SM1 | 16:26:27.86 | -24:23:59.5 | 0.317(1) | 0.314(1) | 0.908(7) | -6(2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "SM1N total flux (uv model)",
+   "value": "0.15",
+   "uncertainty": "0.01",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SM1N | 16:26:27.20 | -24:23:22.4 | 0.15(1) | 4.2(2) | 0.61(3) | -24(3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "SM1N major axis",
+   "value": "4.2",
+   "uncertainty": "0.2",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SM1N | 16:26:27.20 | -24:23:22.4 | 0.15(1) | 4.2(2) | 0.61(3) | -24(3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "SM1 spectral index beta",
+   "value": "0.4",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we find $\\beta = 0.4 \\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "SM1N gas temperature (NH3)",
+   "value": "16.0",
+   "uncertainty": "0.7",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We find kinetic gas temperatures $T_K = 16.0 \\pm 0.7$ K toward SM1N."
+    }
+   ]
+  },
+  {
+   "quantity": "SM1N condensation mass (beta=1.8, 16 K)",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we find the SM1N condensation has a mass of 0.02 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "SM1 mean density",
+   "value": "3e9",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we find $<n> = 3 \\times 10^{9}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2D+ v_LSR",
+   "value": "3.75",
+   "uncertainty": "0.06",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$v_{LSR} = 3.75$ km s$^{-1}$, and a mean line width (FWHM) $\\Delta v = 0.46$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2D+ FWHM line width",
+   "value": "0.46",
+   "uncertainty": "0.1",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "Typical uncertainties on these values are $\\sim 0.06$ km s$^{-1}$  and $\\sim 0.1$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "max ortho-H2D+ column density",
+   "value": "1.2e13",
+   "uncertainty": "2.5e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "We find a maximum ortho-H$_2$D$^+$  column density $N(\\mbox{ortho-H$_2$D$^+$}) = 1.2 \\times 10^{13}$ cm$^{-2}$ at the integrated intensity H$_2$D$^+$  peak."
+    }
+   ]
+  },
+  {
+   "quantity": "max ortho-H2D+ abundance",
+   "value": "1e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "The maximum abundance thus derived is $X(\\mbox{ortho-H$_2$D$^+$}) = 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_int upper limit SM1",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$L_{int} \\lesssim 0.9~L_\\odot$ for SM1 and $L_{int} \\lesssim 0.6~L_\\odot$ for SM1N"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solint and number of iterations for SM1",
+  "Cell size, image size, clean masks and thresholds",
+  "Multiscale scales for SM1N",
+  "Taper parameters for the H2D+ cube",
+  "Line-free channels used for continuum subtraction",
+  "uvmodelfit starting parameters",
+  "Phase centre / reference positions used for uv-averaging bins",
+  "ATCA NH3 data and SMA data are unpublished (in preparation)"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and self-cal settings",
+  "Unpublished ATCA NH3 and SMA data",
+  "Herschel PACS data processing details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are identifiable and the analysis is mostly simple, but imaging parameters and auxiliary data are missing.",
+ "rediscovery_reason": "A single Cycle 0 project; the uvmodelfit and mass recipe is simple and the results are numeric.",
+ "source_card": "cards/2014ApJ...797...27F/sonnet/card.md"
+}

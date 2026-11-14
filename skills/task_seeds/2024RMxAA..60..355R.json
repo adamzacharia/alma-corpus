@@ -1,0 +1,220 @@
+{
+ "bibcode": "2024RMxAA..60..355R",
+ "title": "The Radio Continuum Source Projected Near HR 8799",
+ "year": 2024,
+ "doi": "10.22201/ia.01851101p.2024.60.02.12",
+ "arxiv_id": "2407.05479",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "Is the radio continuum source seen near HR 8799 (VLA 3 GHz and ALMA 340 GHz) physically associated with the star/exoplanets, or is it a background galaxy?",
+ "alma_project_codes": [
+  "2016.1.00907.S"
+ ],
+ "data": {
+  "bands": "340 GHz continuum (0.8 mm)",
+  "arrays": "12 m array only",
+  "angular_resolution": "0.88\" x 0.76\"; PA 14 deg",
+  "sensitivity": "10 μJy/beam rms at 0.8 mm"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "3 GHz source counts and spectral index distribution",
+    "evidence": [
+     {
+      "loc": "3.1 VLA data",
+      "quote": "we have used the 3.0 GHz source catalog of Smolčić et al. (2017) to produce a plot of the expected number of background sources"
+     }
+    ]
+   },
+   "citation": "Smolčić et al. 2017"
+  },
+  {
+   "what": {
+    "value": "850 μm background source counts",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA data",
+      "quote": "From the results of Zavala et al. (2017) we estimate that the number of background sources with a flux density of 0.49 mJy or higher at 850 $\\mu$m is about 4.9 per square arcmin."
+     }
+    ]
+   },
+   "citation": "Zavala et al. 2017"
+  },
+  {
+   "what": {
+    "value": "Exoplanet orbital motions",
+    "evidence": [
+     {
+      "loc": "3.1 VLA data",
+      "quote": "an interpolation of the orbital motions of the exoplanets with respect to the star taken from Konopacky et al. (2016)"
+     }
+    ]
+   },
+   "citation": "Konopacky et al. 2016"
+  },
+  {
+   "what": {
+    "value": "ALMA+ACA fluxes at 340 and 230 GHz and disk inner radius",
+    "evidence": [
+     {
+      "loc": "3.3 Comparison between the VLA and the ALMA data",
+      "quote": "the data points of Faramaz et al. (2021) have flux densities of 316$\\pm$20 and 58$\\pm$18 $\\mu$Jy, at 340 and 230 GHz, respectively."
+     }
+    ]
+   },
+   "citation": "Faramaz et al. 2021"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and fit source",
+   "method": "Calibrate and concatenate VLA epochs; clean ALMA and VLA images; fit source in image plane with IMFIT",
+   "software": [
+    "CASA",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "ALMA robust 0.5; VLA robust 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Chance-coincidence probability",
+   "method": "Use background source counts times the solid angle of a 2.2\" radius circle",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Spectral index and variability",
+   "method": "Split the 2-4 GHz band into two 1 GHz halves; compare positions and fluxes in VLA and ALMA and per-epoch",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Proper motion test",
+   "method": "Compare VLA and ALMA positions 5.5 yr apart against expected stellar proper-motion displacement",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 340 GHz flux density",
+   "value": "207",
+   "uncertainty": "10",
+   "units": "μJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "207$\\pm$10 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 3 GHz flux density",
+   "value": "19.1",
+   "uncertainty": "2.7",
+   "units": "μJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "19.1$\\pm$2.7 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "A priori probability, 3 GHz",
+   "value": "0.0046",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 VLA data",
+     "quote": "the *a priori probability is 0.0046, or 1 in 215."
+    }
+   ]
+  },
+  {
+   "quantity": "A priori probability, ALMA",
+   "value": "0.021",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 ALMA data",
+     "quote": "is 0.021."
+    }
+   ]
+  },
+  {
+   "quantity": "VLA in-band spectral index",
+   "value": "1.3",
+   "uncertainty": "0.9",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 VLA data",
+     "quote": "spectral index of $\\alpha$ = 1.3$\\pm$0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 3 to 340 GHz",
+   "value": "0.69",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Comparison between the VLA and the ALMA data",
+     "quote": "The spectral index between the 3.0 and 340.0 GHz flux densities is 0.69$\\pm$0.03."
+    }
+   ]
+  },
+  {
+   "quantity": "Position difference VLA vs ALMA",
+   "value": "<= 0.03",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Comparison between the VLA and the ALMA data",
+     "quote": "The two positions coincide within $\\leq 0\\rlap.{''}03$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration procedure (pipeline vs manual) and flux scale",
+  "cell size, image size, masks, clean threshold and iterations",
+  "Spectral window/channel selection details for the CO exclusion",
+  "VLA image rms, cell and size, and clean parameters",
+  "How the 0.49 mJy at 338 GHz flux was derived",
+  "Method for per-epoch flux measurement"
+ ],
+ "missing_for_reproduction": [
+  "Imaging geometry and cleaning parameters",
+  "ALMA calibration details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and basic recipe are given, but imaging parameters are incomplete; the analysis is simple.",
+ "rediscovery_reason": "Public data, simple continuum fitting, numeric results.",
+ "source_card": "cards/2024RMxAA..60..355R/sonnet/card.md"
+}

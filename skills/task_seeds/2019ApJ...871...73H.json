@@ -1,0 +1,188 @@
+{
+ "bibcode": "2019ApJ...871...73H",
+ "title": "AT2018cow: A Luminous Millimeter Transient",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaf473",
+ "arxiv_id": "1810.10880",
+ "fields": [
+  "transients"
+ ],
+ "question": "What are the properties of the shock and the origin of the X-ray emission in the luminous millimeter transient AT2018cow?",
+ "alma_project_codes": [
+  "2017.A.00047.T"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 7, 8, 9",
+  "arrays": "not stated",
+  "angular_resolution": "3.3\"x2.5\" (Band 3) to 0.50\"x0.36\" (Band 9)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UVOIR bolometric luminosity and spectral evolution",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "the bolometric luminosity as measured in the UVOIR is $5 \\times 10^{42}\\,\\mbox{$\\rm erg\\,s^{-1}$}$ (cite: Perley2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Perley2018)"
+  },
+  {
+   "what": {
+    "value": "Peak frequencies/luminosities of other transients",
+    "evidence": [
+     {
+      "loc": "Appendix",
+      "quote": "we use the report in (cite: Soderberg2010) that from their first spectrum at $\\Delta t = 20\\,\\mbox{$\\rm days$}$"
+     }
+    ]
+   },
+   "citation": "(cite: Soderberg2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure multi-band flux densities",
+   "method": "Point-source fluxes from calibrated SMA/ATCA/ALMA data; ALMA via imaging after self-cal",
+   "software": [
+    "CASA",
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive shock properties from SED peak on Day 22",
+   "method": "Chevalier (1998) equations with nu_p=nu_a, F_p, p=3.2 mapped to p=3 constants",
+   "software": [],
+   "key_parameters": [
+    "nu_p ≈ 100 GHz, F_p ≈ 94 mJy, f=0.5"
+   ],
+   "assumptions": [
+    "eps_e=eps_B=1/3, d=60 Mpc, f=0.5"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compare with other transients and test X-ray origin",
+   "method": "Rederive velocity-energy using same equations for other events; compare IC and synchrotron extrapolations to X-rays",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak frequency Day 22",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "find $\\nu_p \\approx \\mbox{$\\rm 100\\,GHz$}$ and $F_p \\approx \\mbox{$\\rm 94\\,mJy$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Shock radius",
+   "value": "7e15",
+   "uncertainty": "0.15–0.3 dex",
+   "units": "cm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$R_p \\approx \\mbox{$\\rm 7 \\times 10^{15}\\,\\mbox{$\\rm cm$}$}$ and $B_p \\approx \\mbox{$\\rm 6\\,\\mbox{$\\rm G$}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total energy U",
+   "value": "4e48",
+   "uncertainty": "0.15–0.3 dex",
+   "units": "erg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We find that the total energy $U \\approx \\mbox{$\\rm 4 \\times 10^{48}\\,\\mbox{$\\rm erg$}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "c",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "is $v=R_p/t_p=\\mbox{$\\rm 0.13c$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron density",
+   "value": "3e5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$n_e \\approx \\mbox{$\\rm 3 \\times 10^{5}\\,\\mbox{$\\rm cm^{-3}$}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Optically thin spectral index Day 22",
+   "value": "-1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "On Day 22, we measure $\\alpha=-1.1$ where $F_\\nu \\propto \\nu^{\\alpha}$, which corresponds to $p=3.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature",
+   "value": ">=3e10",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Light curve",
+     "quote": "\\gtrsim 3 \\times 10^{10}\\,\\mbox{$\\rm K$}"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version",
+  "Self-calibration solution interval and imaging parameters (weighting, cell size, image size, masking)",
+  "Method and aperture used to measure ALMA flux densities",
+  "Details of Monte Carlo uncertainties beyond input percentages",
+  "Position of AT2018cow"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "imaging parameters",
+  "flux extraction method"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Flux table and equations given, but ALMA imaging details missing",
+ "rediscovery_reason": "Public DD data, analytic recipe, numeric results; imaging details partly missing.",
+ "source_card": "cards/2019ApJ...871...73H/sonnet/card.md"
+}

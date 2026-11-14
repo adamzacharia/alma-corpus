@@ -1,0 +1,187 @@
+{
+ "bibcode": "2020A&A...638L..13M",
+ "title": "ALMA full polarization observations of PKS 1830-211 during its record-breaking flare of 2019",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202038094",
+ "arxiv_id": "2006.06044",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "How do the polarization properties of the lensed blazar PKS 1830-211 differ between its two lensed images and vary on intra-hour timescales during its 2019 gamma-ray flare, and can differential polarimetry be validated with full-polarization data?",
+ "alma_project_codes": [
+  "2018.1.00692.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.47'' x 0.31'', PA -83 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate",
+   "method": "Standard calibration, flagging of absorption lines, polarization calibration with J1924-2914, phase-only self-cal on Stokes I",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "self-cal solint 6 s, all spws combined"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image Stokes I,Q,U and derive m and EVPA",
+   "method": "tclean per Stokes, immath pixel-wise m and phi",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Intra-observation variability via visibility fitting",
+   "method": "Each ~410 s scan split in three segments; Stokes I, Q, U of both images fitted independently with uvmultifit; differential NE/SW approach",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Both lensed images point-like within the beam"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Validate differential polarimetry",
+   "method": "Fit XX and YY flux ratios in 15 segments per scan, compute Rpol=(rho_X/rho_Y-1)/2 vs source rotation, compare with prediction from full-pol Stokes parameters",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "feed rotation beta = 45 deg in Band 6"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Faraday rotation fit of differential EVPA",
+   "method": "Thin Faraday screen (phi ∝ lambda^2) fit to NE-SW EVPA difference at each time bin",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak fractional polarization SW",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "a fractional polarization peak of 14% (in the SW image, with a flux density of 2.34 Jy)"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak fractional polarization NE",
+   "value": "5.4",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "5.4% (in the NE image, with a flux density of 2.10 Jy)"
+    }
+   ]
+  },
+  {
+   "quantity": "NE EVPA",
+   "value": "-24",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "its EVPA ($-24$ degrees) is rotated $\\sim$15 degrees with respect to that of the SW"
+    }
+   ]
+  },
+  {
+   "quantity": "Rate of differential EVPA increase",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "degrees per hour",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "a clear linear increase in the EVPA difference between the two images (see Fig. [2](#fig:curves)A) at a rate of about two degrees per hour"
+    }
+   ]
+  },
+  {
+   "quantity": "Delta alpha change",
+   "value": "-0.19 to -0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we estimate a variation from $\\Delta\\alpha \\sim -0.19$ to $\\Delta\\alpha \\sim -0.05$ between the start and end of the observations"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean RM of differential NE-SW",
+   "value": "3.4e4",
+   "uncertainty": "1.7e4",
+   "units": "rad m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Faraday rotation",
+     "quote": "The weighted average of all the RM measurements is $(3.4 \\pm 1.7)\\times 10^4$ rad m$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum Rpol",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The maximum $R_{pol}$ measured in our 2019 observations ($\\sim 0.1$; Fig. [4](#fig:diffpol))"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean cell size, image size, iteration/threshold and mask definition",
+  "CASA version",
+  "line-free channel selection and flagged absorption/atmospheric ranges",
+  "polarization calibrator model/reference antenna details",
+  "uvmultifit source-model settings and error estimation",
+  "fit method for Faraday RM and the NE/SW flux ratio function"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and tclean parameters",
+  "uvmultifit configuration and error treatment",
+  "Fermi-LAT light-curve processing"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Short letter; steps described qualitatively with many imaging/fit parameters missing, though data are a single public project.",
+ "rediscovery_reason": "Public single-project data, simple recipe, numeric results (polarization fractions, EVPA rate).",
+ "source_card": "cards/2020A%26A...638L..13M/sonnet/card.md"
+}

@@ -1,0 +1,247 @@
+{
+ "bibcode": "2021ApJ...908...54W",
+ "title": "ALMA Measures Rapidly Depleted Molecular Gas Reservoirs in Massive Quiescent Galaxies at z ∼ 1.5",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abcbf6",
+ "arxiv_id": "2012.01433",
+ "fields": [
+  "nearby_galaxies",
+  "high_z_galaxies"
+ ],
+ "question": "How much molecular gas (CO(2–1)) do massive quiescent galaxies at z~1.5 retain, and what does this imply for quenching, depletion times and models?",
+ "alma_project_codes": [
+  "2018.1.01739.S",
+  "2015.1.00853.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~1.5–2.5 arcsec synthesized beams",
+  "sensitivity": "50-65 uJy/beam per 400 km/s channel; continuum ~5-9 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Pilot galaxy 21434 CO(2–1) ALMA data, rescaled to r21=0.8",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "We combine the results from this program with ALMA data for one similar galaxy from a previous pilot program"
+     }
+    ]
+   },
+   "citation": "(cite: Bezanson2019)"
+  },
+  {
+   "what": {
+    "value": "UV+IR SFRs from the UltraVISTA catalog",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "SFR$_{\\rm UV+IR}$ values correspond to those published by the ULTRAVISTA survey"
+     }
+    ]
+   },
+   "citation": "(cite: Muzzin2013)"
+  },
+  {
+   "what": {
+    "value": "Literature gas fractions (PHIBSS, ASPECS, local surveys, Gobat2018 stack, etc.) for comparison",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "we compile measurements of molecular gas using CO as a tracer from the literature across redshifts."
+     }
+    ]
+   },
+   "citation": "(cite: Tacconi2018; Gobat2018; Spilker2018; Saintonge2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Refit SEDs for stellar mass, SFR, age",
+   "method": "Prospector (modified Prospector-alpha, non-parametric SFH, no AGN or dust emission) on UV–near-IR photometry",
+   "software": [
+    "Prospector",
+    "FSPS"
+   ],
+   "key_parameters": [
+    "default priors; NMBS photometry (UltraVISTA for 307881)"
+   ],
+   "assumptions": [
+    "Chabrier IMF; flat LCDM H0=70, Om=0.3"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract CO(2–1) spectra from visibilities",
+   "method": "fit point sources to visibilities with channels averaged to 50–800 km/s; position fixed at phase center; two point sources for 22260 and 34879",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "point-like source approximation valid"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure line flux or upper limits and convert to L'CO and M_H2",
+   "method": "Gaussian fit for detection; upper limits from channel noise with FWHM 500–600 km/s; convert with r21=0.8 and alpha_CO=4.4",
+   "software": [],
+   "key_parameters": [
+    "r21 = 0.8, alpha_CO = 4.4"
+   ],
+   "assumptions": [
+    "stellar velocity dispersion sets gas linewidth; Milky Way alpha_CO"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Stack the five non-detections",
+   "method": "weighted mean of 400 km/s channel maps (non-PB-corrected) at CO(2–1) rest frequency of each galaxy",
+   "software": [],
+   "key_parameters": [
+    "mean z=1.476; 400 km/s bins"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare gas fractions with scaling relations, toy models, bathtub models and SIMBA",
+   "method": "closed-box toy models with constant and varying t_dep (Tacconi2018, Liu2019); Dave2012 equilibrium model with Behroozi2010 halo mass via HALOTOOLS; SIMBA selection at z~1.5",
+   "software": [
+    "HALOTOOLS"
+   ],
+   "key_parameters": [
+    "30% mass return to ISM in constant-t_dep model; none in varying model"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2–1) line flux of 22260",
+   "value": "90",
+   "uncertainty": "19",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 22260$^d$ | 180 $\\pm$ 38 | 90$\\pm$ 19 | 19 $\\pm$ 4 | 10.5 $\\pm$ 2.2 | 3.2 $\\pm$ 0.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 of 22260",
+   "value": "10.5",
+   "uncertainty": "2.2",
+   "units": "1e9 Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 22260$^d$ | 180 $\\pm$ 38 | 90$\\pm$ 19 | 19 $\\pm$ 4 | 10.5 $\\pm$ 2.2 | 3.2 $\\pm$ 0.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "f_H2 of 22260",
+   "value": "3.2",
+   "uncertainty": "0.7",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 22260$^d$ | 180 $\\pm$ 38 | 90$\\pm$ 19 | 19 $\\pm$ 4 | 10.5 $\\pm$ 2.2 | 3.2 $\\pm$ 0.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "f_H2 3sigma upper limits of non-detections",
+   "value": "<4.3, <2.6, <3.0, <5.5, <2.1",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 20866 | 47.4 | 23.7 | 7.5 | 12.3 | $<$ 4.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stack f_H2 (3sigma)",
+   "value": "<1.6",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Stack of non-detections in CO(2–1)",
+     "quote": "this puts a 3$\\sigma$ upper limit on the molecular gas fraction of 1.6%"
+    }
+   ]
+  },
+  {
+   "quantity": "Stack M_H2 (3sigma)",
+   "value": "<4.7e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Stack of non-detections in CO(2–1)",
+     "quote": "$M_{\\rm{H_{2}}}$$<4.7\\times10^{9}$$\\rm{M}_\\odot$(3$\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stack rms",
+   "value": "25.6",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Stack of non-detections in CO(2–1)",
+     "quote": "an rms noise limit of 25.6$\\mu$Jy/beam for the 400 km/s channel width of the stack"
+    }
+   ]
+  },
+  {
+   "quantity": "Limiting depletion time",
+   "value": "<0.6",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Conclusions",
+     "quote": "We estimate an upper limit to the typical depletion time of $t_{\\rm{dep}}$$<0.6$ Gyr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact tclean/CASA version and task parameters (robust, niter, threshold per source)",
+  "Precise line-free channels and continuum subtraction method",
+  "Positions of offset sources fixed in uvmultifit for 22260 and 34879",
+  "Exact velocity widths used per galaxy for upper limits",
+  "Prospector configuration details beyond default priors",
+  "Model parameters for the bathtub and toy-model calculations",
+  "SIMBA selection details and halo mass assignments"
+ ],
+ "missing_for_reproduction": [
+  "Exact imaging parameters and CASA version",
+  "Details of toy-model and bathtub implementations",
+  "SIMBA data selection details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis, but imaging and modelling details are thin.",
+ "rediscovery_reason": "Public data, simple point-source extraction, numeric limits; but some settings missing.",
+ "source_card": "cards/2021ApJ...908...54W/sonnet/card.md"
+}

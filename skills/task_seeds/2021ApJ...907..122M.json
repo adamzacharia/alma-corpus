@@ -1,0 +1,782 @@
+{
+ "bibcode": "2021ApJ...907..122M",
+ "title": "FIR-luminous [C II] Emitters in the ALMA-SCUBA-2 COSMOS Survey (AS2COSMOS): The Nature of Submillimeter Galaxies in a 10 Comoving Megaparsec-scale Structure at z ∼ 4.6",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abcc72",
+ "arxiv_id": "2011.09917",
+ "fields": [
+  "high_z_galaxies",
+  "cosmology"
+ ],
+ "question": "Investigate the star-formation activity, gas dynamics, dark matter halo masses, and environment of [C II]-emitting submillimeter galaxies at z ~ 4.6 in the COSMOS field.",
+ "alma_project_codes": [
+  "2013.1.00034.S",
+  "2015.1.00137.S",
+  "2015.1.00568.S",
+  "2015.1.01074.S",
+  "2016.1.01604.S",
+  "2016.1.00478.S",
+  "2016.1.00463.S"
+ ],
+ "data": {
+  "bands": "Band 7 (344 GHz / 870 µm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.8'' x 0.8''",
+  "sensitivity": "~2.4 mJy beam^-1 per 27 km s^-1 channel (1-σ)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source IDs, coordinates, and full AS2COSMOS catalog of 260 continuum sources",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Source IDs and coordinates come from the full AS2COSMOS catalog presented in Simpson et al. (2020)."
+     },
+     {
+      "loc": "2. DATA",
+      "quote": "A more detailed description of reduction and the full catalogue of the 260 continuum sources are presented in Simpson et al. (2020)."
+     }
+    ]
+   },
+   "citation": "Simpson et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "3 GHz radio continuum fluxes",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "_c_ radio continuum fluxes from Smolˇci´c et al. (2017)."
+     }
+    ]
+   },
+   "citation": "Smolčić et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Multi-wavelength images (HST/ACS, UltraVISTA, Spitzer/IRAC, VLA 3 GHz)",
+    "evidence": [
+     {
+      "loc": "3.1. Line identification",
+      "quote": "Figure 5 shows multiwavelength images of the five emitters (Koekemoer et al. 2007; Sanders et al. 2007; McCracken et al. 2012; Smolˇci´c et al. 2017)."
+     }
+    ]
+   },
+   "citation": "Koekemoer et al. (2007); Sanders et al. (2007); McCracken et al. (2012); Smolčić et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "NOEMA Band 1 12CO(5-4) detections at z = 4.63 for AS2COS0001.1/1.2",
+    "evidence": [
+     {
+      "loc": "3.1. Line identification",
+      "quote": "observed the two line emitters (AS2COS0001.1/1.2) with NOrthern Extended Millimeter Array (NOEMA) Band 1 and detected"
+     }
+    ]
+   },
+   "citation": "Jiménez-Andrade et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "12CO(5-4) and [C I] detections at z = 4.62 for AS2COS0006.1",
+    "evidence": [
+     {
+      "loc": "3.1. Line identification",
+      "quote": "Birkin et al. (2020) also observed AS2COS0006.1 as a part of large CO surveys of luminous SMGs and detected 12 CO(5–4) and [C i] at _z_ = 4 _._ 62."
+     }
+    ]
+   },
+   "citation": "Birkin et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "12CO(5-4) redshift z = 4.596 for AS2COS0002.1",
+    "evidence": [
+     {
+      "loc": "3. ANALYSIS AND RESULTS",
+      "quote": "We confirm that AS2COS0002.1 (R.A. 150.106505 deg, Dec. 2.26362 deg) has a redshift of _z_ = 4 _._ 596 through the detection of [12] CO(5–4) (Chen et al. in prep)"
+     }
+    ]
+   },
+   "citation": "Chen et al. in prep"
+  },
+  {
+   "what": {
+    "value": "Foreground cluster mass at z = 0.73 and foreground galaxy redshifts and stellar masses",
+    "evidence": [
+     {
+      "loc": "3.2. Gravitational lensing",
+      "quote": "The foreground _z_ = 0 _._ 73 cluster has an estimated mass within _R_ 500 (84 arcsec) of _M_ _∼_ 1 _._ 7 _×_ 10 [14] M _⊙_ (Guzzo et al. 2007)."
+     },
+     {
+      "loc": "3.2. Gravitational lensing",
+      "quote": "A foreground galaxy at _z_ = 0 _._ 33 is located near AS2COS0001.1/1.2 (Faure et al. 2008). This galaxy has an estimated stellar mass of _M_ _⋆_ = 10 [11] _[.]_ [0] M _⊙_ and is classified as a quiescent galaxy (Laigle et al. 2016)."
+     },
+     {
+      "loc": "3.2. Gravitational lensing",
+      "quote": "Similarly, a foreground galaxy at _z_ = 0 _._ 73 is also located between AS2COS0034.1/34.2 (Lilly et al. 2007)."
+     }
+    ]
+   },
+   "citation": "Guzzo et al. (2007); Faure et al. (2008); Lilly et al. (2007); Laigle et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshifts of z = 4-5 SMGs from S2COSMOS and A3COSMOS, two AGNs at z = 4.64, and a protocluster at z = 4.53-4.60",
+    "evidence": [
+     {
+      "loc": "Figure 2 caption",
+      "quote": "green circles show the positions of the sources from S2COSMOS and A [3] COSMOS (An et al. 2019; Liu et al. 2019) with photometric redshift of _z_ = 4–5."
+     },
+     {
+      "loc": "Figure 2 caption",
+      "quote": "We also show two AGNs at _z_ = 4 _._ 64 (Hasinger et al. 2018, magenta circles) and a protocluster at _z_ = 4 _._ 53–4.60 (Lemaux et al. 2018, cyan circle)."
+     }
+    ]
+   },
+   "citation": "An et al. (2019); Liu et al. (2019); Hasinger et al. (2018); Lemaux et al. (2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search for emission lines in dirty cubes and assess completeness",
+   "method": "Bin non-primary-beam-corrected dirty cubes to 80, 140, 300, and 750 km s^-1; subtract continuum using iterative 2-σ clipped channel average per pixel; divide each channel by its full-field rms to create SNR cubes; search for peaks with SNR > 6.2 and velocity-integrated SNR > 8; test completeness by injecting 1.2 x 10^7 simulated Gaussian lines into pure noise cubes.",
+   "software": [
+    "CASA 5.6.1"
+   ],
+   "key_parameters": [
+    "Velocity bin widths: 80, 140, 300, 750 km s^-1",
+    "Peak SNR threshold > 6.2; velocity-integrated SNR > 8 within ±0.5 FWHM"
+   ],
+   "assumptions": [
+    "Gaussian emission line profiles for completeness simulation"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities, line fluxes, velocity widths, sizes, and moment maps",
+   "method": "Using primary-beam-corrected dirty cubes, re-calculate continuum excluding line channels to make line-free continuum maps and continuum-subtracted line cubes. Fit 2D Gaussians with CASA/imfit to measure continuum fluxes, velocity-integrated line fluxes, and beam-deconvolved sizes (for >3σ regions on moment 0 maps). Fit 1D Gaussians to spatially-integrated spectra for velocity widths and interpolate across spectral gaps. Generate moment 0 and moment 1 maps (with 3-σ clipping).",
+   "software": [
+    "CASA (imfit)"
+   ],
+   "key_parameters": [
+    ">3σ detection threshold on moment 0 maps for 2D Gaussian fitting and moment 1 clipping"
+   ],
+   "assumptions": [
+    "2D Gaussian spatial profiles and 1D single Gaussian spectral profiles for flux interpolation"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify emission lines for unconfirmed candidates",
+   "method": "Compare S_870µm / S_3GHz flux ratios with SMG SED templates as a redshift indicator, and compare observed-frame emission line equivalent widths (EW) with confirmed z ~ 4.4-4.6 [C II] emitters, intermediate-z high-J CO lines, and z ~ 9 [O III] lines.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Typical SMG SEDs (Arp220, Cosmic Eyelash, composite SMGs)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate gravitational lensing magnification factors",
+   "method": "Model foreground z = 0.73 cluster and nearby foreground galaxies (at z = 0.33 and z = 0.73) using a singular isothermal sphere (SIS) model. Convert galaxy stellar masses to velocity dispersion via the Faber-Jackson relation (for quiescent galaxy) or Tully-Fisher relation and σ^2 = V_rot^2 / 2 (for star-forming galaxy) to compute magnification µ.",
+   "software": [],
+   "key_parameters": [
+    "Cluster M(<84'') ~ 1.7 x 10^14 M_sun, V_vir = 1100 km s^-1, r_vir = 1200 kpc; z=0.33 galaxy M_* = 10^11.0 M_sun, σ = 170 ± 30 km s^-1; z=0.73 galaxy M_* = 10^10.6 M_sun, V_rot = 200 +70/-50 km s^-1"
+   ],
+   "assumptions": [
+    "Singular isothermal sphere (SIS) profile; σ^2 = V^2 / 2; Faber-Jackson relation (Gallazzi et al. 2006); Tully-Fisher relation (Di Teodoro et al. 2016)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive disk inclination, rotation velocity, dynamical mass, and dark matter halo masses",
+   "method": "Calculate inclination i = cos^-1(a_min / a_maj) from deconvolved axes, and rotation velocity V_rot = (1/γ) * FWHM_[C II] / sin(i) with γ = 2. Estimate individual halo masses M_h^ind using an idealised spherical collapse model assuming V_rot equals the halo circular velocity. For close pairs (AS2COS0001.1/1.2 and AS2COS0034.1/34.2), also estimate lower-limit common halo masses M_h^NFW from projected separation and velocity offset assuming an NFW profile.",
+   "software": [],
+   "key_parameters": [
+    "γ = 2; NFW concentration parameter c = 3.5"
+   ],
+   "assumptions": [
+    "Idealised spherical collapse model (Barkana & Loeb 2001); flat rotation curve V_rot equal to circular velocity of isothermal sphere host halo; thin circular disk geometry for inclination; NFW profile with c = 3.5; ΛCDM cosmology (Ω_M = 0.3, Ω_Λ = 0.7, H_0 = 70 km s^-1 Mpc^-1)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate duty cycle, [C II] luminosity function, baryon conversion efficiency, and cosmic SFRD contribution",
+   "method": "Compute cumulative halo number density and [C II] luminosity function using survey volume 2.2 x 10^6 cMpc^3. Compare halo number density to Angulo et al. (2012) z = 4.6 halo mass function to infer duty cycle. Convert halo mass function to model [C II] luminosity functions using mean baryon accretion rate (Eq. 1), baryon conversion efficiencies ε = 0.01, 0.1, 1.0, and the De Looze et al. (2014) SFR-L_[C II] relation (Eq. 2). Calculate cosmic SFRD contribution from the two bright continuum-complete SMGs (S_870µm >= 6.2 mJy).",
+   "software": [],
+   "key_parameters": [
+    "Full survey volume = 2.2 x 10^6 cMpc^3; baryon-to-dark matter ratio f_baryon ~ 1/6; ε = 0.01, 0.1, 1.0"
+   ],
+   "assumptions": [
+    "log SFR = -7.06 + 1.00 * log L_[C II] with 0.27 dex 1-σ dispersion (De Looze et al. 2014); baryon accretion rate formula from McBride et al. (2009); halo mass function from Angulo et al. (2012)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Full survey volume for [C II] search",
+   "value": "2.2e6",
+   "uncertainty": "not stated",
+   "units": "cMpc^3",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. DATA",
+     "quote": "We estimate that the full survey volume for the [C ii] line emission search in our study is 2 _._ 2 _×_ 10 [6] cMpc [3] ."
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 continuum flux density (µS_870µm)",
+   "value": "12.2",
+   "uncertainty": "±0.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_µS_ 870 _µ_ m (mJy) _[b]_ 12 _._ 2 _±_ 0 _._ 4 3 _._ 2 _±_ 0 _._ 2 12 _._ 5 _±_ 0 _._ 5 4 _._ 1 _±_ 0 _._ 3 3 _._ 7 _±_ 0 _._ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 continuum flux density (µS_870µm)",
+   "value": "3.2",
+   "uncertainty": "±0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_µS_ 870 _µ_ m (mJy) _[b]_ 12 _._ 2 _±_ 0 _._ 4 3 _._ 2 _±_ 0 _._ 2 12 _._ 5 _±_ 0 _._ 5 4 _._ 1 _±_ 0 _._ 3 3 _._ 7 _±_ 0 _._ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 continuum flux density (µS_870µm)",
+   "value": "12.5",
+   "uncertainty": "±0.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_µS_ 870 _µ_ m (mJy) _[b]_ 12 _._ 2 _±_ 0 _._ 4 3 _._ 2 _±_ 0 _._ 2 12 _._ 5 _±_ 0 _._ 5 4 _._ 1 _±_ 0 _._ 3 3 _._ 7 _±_ 0 _._ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 continuum flux density (µS_870µm)",
+   "value": "4.1",
+   "uncertainty": "±0.3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_µS_ 870 _µ_ m (mJy) _[b]_ 12 _._ 2 _±_ 0 _._ 4 3 _._ 2 _±_ 0 _._ 2 12 _._ 5 _±_ 0 _._ 5 4 _._ 1 _±_ 0 _._ 3 3 _._ 7 _±_ 0 _._ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 continuum flux density (µS_870µm)",
+   "value": "3.7",
+   "uncertainty": "±0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_µS_ 870 _µ_ m (mJy) _[b]_ 12 _._ 2 _±_ 0 _._ 4 3 _._ 2 _±_ 0 _._ 2 12 _._ 5 _±_ 0 _._ 5 4 _._ 1 _±_ 0 _._ 3 3 _._ 7 _±_ 0 _._ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 [C II] redshift (z_[C II])",
+   "value": "4.625",
+   "uncertainty": "±0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_z_ [C ii] 4 _._ 625 _±_ 0 _._ 001 4 _._ 635 _±_ 0 _._ 001 4 _._ 620 _±_ 0 _._ 001 4 _._ 615 _±_ 0 _._ 001 4 _._ 621 _±_ 0 _._ 001"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 [C II] redshift (z_[C II])",
+   "value": "4.635",
+   "uncertainty": "±0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_z_ [C ii] 4 _._ 625 _±_ 0 _._ 001 4 _._ 635 _±_ 0 _._ 001 4 _._ 620 _±_ 0 _._ 001 4 _._ 615 _±_ 0 _._ 001 4 _._ 621 _±_ 0 _._ 001"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 [C II] redshift (z_[C II])",
+   "value": "4.620",
+   "uncertainty": "±0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_z_ [C ii] 4 _._ 625 _±_ 0 _._ 001 4 _._ 635 _±_ 0 _._ 001 4 _._ 620 _±_ 0 _._ 001 4 _._ 615 _±_ 0 _._ 001 4 _._ 621 _±_ 0 _._ 001"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 [C II] redshift (z_[C II])",
+   "value": "4.615",
+   "uncertainty": "±0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_z_ [C ii] 4 _._ 625 _±_ 0 _._ 001 4 _._ 635 _±_ 0 _._ 001 4 _._ 620 _±_ 0 _._ 001 4 _._ 615 _±_ 0 _._ 001 4 _._ 621 _±_ 0 _._ 001"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 [C II] redshift (z_[C II])",
+   "value": "4.621",
+   "uncertainty": "±0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_z_ [C ii] 4 _._ 625 _±_ 0 _._ 001 4 _._ 635 _±_ 0 _._ 001 4 _._ 620 _±_ 0 _._ 001 4 _._ 615 _±_ 0 _._ 001 4 _._ 621 _±_ 0 _._ 001"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 FWHM_[C II]",
+   "value": "710",
+   "uncertainty": "±50",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM [C ii] (km s _[−]_ [1] ) 710 _±_ 50 560 _±_ 50 1090 _±_ 80 650 _±_ 80 540 _±_ 60"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 FWHM_[C II]",
+   "value": "560",
+   "uncertainty": "±50",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM [C ii] (km s _[−]_ [1] ) 710 _±_ 50 560 _±_ 50 1090 _±_ 80 650 _±_ 80 540 _±_ 60"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 FWHM_[C II]",
+   "value": "1090",
+   "uncertainty": "±80",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM [C ii] (km s _[−]_ [1] ) 710 _±_ 50 560 _±_ 50 1090 _±_ 80 650 _±_ 80 540 _±_ 60"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 FWHM_[C II]",
+   "value": "650",
+   "uncertainty": "±80",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM [C ii] (km s _[−]_ [1] ) 710 _±_ 50 560 _±_ 50 1090 _±_ 80 650 _±_ 80 540 _±_ 60"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 FWHM_[C II]",
+   "value": "540",
+   "uncertainty": "±60",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM [C ii] (km s _[−]_ [1] ) 710 _±_ 50 560 _±_ 50 1090 _±_ 80 650 _±_ 80 540 _±_ 60"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 [C II] line flux (Sdv_[C II])",
+   "value": "7.0",
+   "uncertainty": "+0.8/-1.3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_Sdv_ [C ii] (Jy km s _[−]_ [1] ) _[d]_ 7 _._ 0 [+0] _−_ 1 _[.]_ _._ [8] 3 4 _._ 7 [+0] _−_ 0 _[.]_ _._ [6] 6 15 _._ 9 _±_ 1 _._ 3 5 _._ 5 [+1] _−_ 1 _[.]_ _._ [0] 1 6 _._ 0 _−_ [+1] 1 _[.]_ _._ [1] 7"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 [C II] line flux (Sdv_[C II])",
+   "value": "4.7",
+   "uncertainty": "+0.6/-0.6",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_Sdv_ [C ii] (Jy km s _[−]_ [1] ) _[d]_ 7 _._ 0 [+0] _−_ 1 _[.]_ _._ [8] 3 4 _._ 7 [+0] _−_ 0 _[.]_ _._ [6] 6 15 _._ 9 _±_ 1 _._ 3 5 _._ 5 [+1] _−_ 1 _[.]_ _._ [0] 1 6 _._ 0 _−_ [+1] 1 _[.]_ _._ [1] 7"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 [C II] line flux (Sdv_[C II])",
+   "value": "15.9",
+   "uncertainty": "±1.3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_Sdv_ [C ii] (Jy km s _[−]_ [1] ) _[d]_ 7 _._ 0 [+0] _−_ 1 _[.]_ _._ [8] 3 4 _._ 7 [+0] _−_ 0 _[.]_ _._ [6] 6 15 _._ 9 _±_ 1 _._ 3 5 _._ 5 [+1] _−_ 1 _[.]_ _._ [0] 1 6 _._ 0 _−_ [+1] 1 _[.]_ _._ [1] 7"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 [C II] line flux (Sdv_[C II])",
+   "value": "5.5",
+   "uncertainty": "+1.0/-1.1",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_Sdv_ [C ii] (Jy km s _[−]_ [1] ) _[d]_ 7 _._ 0 [+0] _−_ 1 _[.]_ _._ [8] 3 4 _._ 7 [+0] _−_ 0 _[.]_ _._ [6] 6 15 _._ 9 _±_ 1 _._ 3 5 _._ 5 [+1] _−_ 1 _[.]_ _._ [0] 1 6 _._ 0 _−_ [+1] 1 _[.]_ _._ [1] 7"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 [C II] line flux (Sdv_[C II])",
+   "value": "6.0",
+   "uncertainty": "+1.1/-1.7",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_Sdv_ [C ii] (Jy km s _[−]_ [1] ) _[d]_ 7 _._ 0 [+0] _−_ 1 _[.]_ _._ [8] 3 4 _._ 7 [+0] _−_ 0 _[.]_ _._ [6] 6 15 _._ 9 _±_ 1 _._ 3 5 _._ 5 [+1] _−_ 1 _[.]_ _._ [0] 1 6 _._ 0 _−_ [+1] 1 _[.]_ _._ [1] 7"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 [C II] luminosity (L_[C II])",
+   "value": "4.4",
+   "uncertainty": "+0.5/-0.8",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [C ii] (10 [9] _L_ _⊙_ ) 4 _._ 4 [+0] _−_ 0 _[.]_ _._ [5] 8 3 _._ 0 [+0] _−_ 0 _[.]_ _._ [4] 4 10 _._ 1 _±_ 0 _._ 8 3 _._ 5 [+0] _−_ 0 _[.]_ _._ [6] 7 3 _._ 8 _−_ [+0] 1 _[.]_ _._ [7] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 [C II] luminosity (L_[C II])",
+   "value": "3.0",
+   "uncertainty": "+0.4/-0.4",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [C ii] (10 [9] _L_ _⊙_ ) 4 _._ 4 [+0] _−_ 0 _[.]_ _._ [5] 8 3 _._ 0 [+0] _−_ 0 _[.]_ _._ [4] 4 10 _._ 1 _±_ 0 _._ 8 3 _._ 5 [+0] _−_ 0 _[.]_ _._ [6] 7 3 _._ 8 _−_ [+0] 1 _[.]_ _._ [7] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 [C II] luminosity (L_[C II])",
+   "value": "10.1",
+   "uncertainty": "±0.8",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [C ii] (10 [9] _L_ _⊙_ ) 4 _._ 4 [+0] _−_ 0 _[.]_ _._ [5] 8 3 _._ 0 [+0] _−_ 0 _[.]_ _._ [4] 4 10 _._ 1 _±_ 0 _._ 8 3 _._ 5 [+0] _−_ 0 _[.]_ _._ [6] 7 3 _._ 8 _−_ [+0] 1 _[.]_ _._ [7] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 [C II] luminosity (L_[C II])",
+   "value": "3.5",
+   "uncertainty": "+0.6/-0.7",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [C ii] (10 [9] _L_ _⊙_ ) 4 _._ 4 [+0] _−_ 0 _[.]_ _._ [5] 8 3 _._ 0 [+0] _−_ 0 _[.]_ _._ [4] 4 10 _._ 1 _±_ 0 _._ 8 3 _._ 5 [+0] _−_ 0 _[.]_ _._ [6] 7 3 _._ 8 _−_ [+0] 1 _[.]_ _._ [7] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 [C II] luminosity (L_[C II])",
+   "value": "3.8",
+   "uncertainty": "+0.7/-1.1",
+   "units": "10^9 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [C ii] (10 [9] _L_ _⊙_ ) 4 _._ 4 [+0] _−_ 0 _[.]_ _._ [5] 8 3 _._ 0 [+0] _−_ 0 _[.]_ _._ [4] 4 10 _._ 1 _±_ 0 _._ 8 3 _._ 5 [+0] _−_ 0 _[.]_ _._ [6] 7 3 _._ 8 _−_ [+0] 1 _[.]_ _._ [7] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 rotation velocity (V_rot)",
+   "value": "470",
+   "uncertainty": "±80",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_V_ rot (km s _[−]_ [1] ) 470 _±_ 80 490 _−_ 180 _[h]_ 550 _±_ 40 330 [+50] _−_ 10 340 _−_ 70 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 rotation velocity (V_rot)",
+   "value": "490",
+   "uncertainty": "-180 (upper limit unconstrained)",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_V_ rot (km s _[−]_ [1] ) 470 _±_ 80 490 _−_ 180 _[h]_ 550 _±_ 40 330 [+50] _−_ 10 340 _−_ 70 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 rotation velocity (V_rot)",
+   "value": "550",
+   "uncertainty": "±40",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_V_ rot (km s _[−]_ [1] ) 470 _±_ 80 490 _−_ 180 _[h]_ 550 _±_ 40 330 [+50] _−_ 10 340 _−_ 70 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 rotation velocity (V_rot)",
+   "value": "330",
+   "uncertainty": "+50/-10",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_V_ rot (km s _[−]_ [1] ) 470 _±_ 80 490 _−_ 180 _[h]_ 550 _±_ 40 330 [+50] _−_ 10 340 _−_ 70 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 rotation velocity (V_rot)",
+   "value": "340",
+   "uncertainty": "-70 (upper limit unconstrained)",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_V_ rot (km s _[−]_ [1] ) 470 _±_ 80 490 _−_ 180 _[h]_ 550 _±_ 40 330 [+50] _−_ 10 340 _−_ 70 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.1 individual halo mass (M_h^ind)",
+   "value": "5.1",
+   "uncertainty": "±1.4",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [ind] (10 [12] M _⊙_ ) 5 _._ 1 _±_ 1 _._ 4 5 _._ 7 _−_ 3 _._ 6 _[h]_ 8 _._ 0 _±_ 1 _._ 1 1 _._ 7 [+0] _−_ 0 _[.]_ _._ [4] 1 1 _._ 9 _−_ 0 _._ 7 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001.2 individual halo mass (M_h^ind)",
+   "value": "5.7",
+   "uncertainty": "-3.6 (upper limit unconstrained)",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [ind] (10 [12] M _⊙_ ) 5 _._ 1 _±_ 1 _._ 4 5 _._ 7 _−_ 3 _._ 6 _[h]_ 8 _._ 0 _±_ 1 _._ 1 1 _._ 7 [+0] _−_ 0 _[.]_ _._ [4] 1 1 _._ 9 _−_ 0 _._ 7 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0006.1 individual halo mass (M_h^ind)",
+   "value": "8.0",
+   "uncertainty": "±1.1",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [ind] (10 [12] M _⊙_ ) 5 _._ 1 _±_ 1 _._ 4 5 _._ 7 _−_ 3 _._ 6 _[h]_ 8 _._ 0 _±_ 1 _._ 1 1 _._ 7 [+0] _−_ 0 _[.]_ _._ [4] 1 1 _._ 9 _−_ 0 _._ 7 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.1 individual halo mass (M_h^ind)",
+   "value": "1.7",
+   "uncertainty": "+0.4/-0.1",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [ind] (10 [12] M _⊙_ ) 5 _._ 1 _±_ 1 _._ 4 5 _._ 7 _−_ 3 _._ 6 _[h]_ 8 _._ 0 _±_ 1 _._ 1 1 _._ 7 [+0] _−_ 0 _[.]_ _._ [4] 1 1 _._ 9 _−_ 0 _._ 7 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034.2 individual halo mass (M_h^ind)",
+   "value": "1.9",
+   "uncertainty": "-0.7 (upper limit unconstrained)",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [ind] (10 [12] M _⊙_ ) 5 _._ 1 _±_ 1 _._ 4 5 _._ 7 _−_ 3 _._ 6 _[h]_ 8 _._ 0 _±_ 1 _._ 1 1 _._ 7 [+0] _−_ 0 _[.]_ _._ [4] 1 1 _._ 9 _−_ 0 _._ 7 _[h]_"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0001 pair common halo mass lower limit (M_h^NFW)",
+   "value": "6.4",
+   "uncertainty": "+2.3/-1.8",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [NFW] (10 [12] M _⊙_ ) _[i]_ 6 _._ 4 [+2] _−_ 1 _[.]_ _._ [3] 8 - 0 _._ 8 [+0] _−_ 0 _[.]_ _._ [6] 4"
+    },
+    {
+     "loc": "3.4. Dark matter halo mass",
+     "quote": "The estimated lower limits are 6 _._ 4 [+2] _−_ 1 _[.]_ _._ [3] 8 _[×]_ [10] [12] [ M] _[⊙]_ [for ASCOS0001 and 0] _[.]_ [8] [+0] _−_ 0 _[.]_ _._ [6] 4 _[×]_ [10] [12] [ M] _[⊙]_ for AS2COS0034"
+    }
+   ]
+  },
+  {
+   "quantity": "AS2COS0034 pair common halo mass lower limit (M_h^NFW)",
+   "value": "0.8",
+   "uncertainty": "+0.6/-0.4",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_M_ _h_ [NFW] (10 [12] M _⊙_ ) _[i]_ 6 _._ 4 [+2] _−_ 1 _[.]_ _._ [3] 8 - 0 _._ 8 [+0] _−_ 0 _[.]_ _._ [6] 4"
+    },
+    {
+     "loc": "3.4. Dark matter halo mass",
+     "quote": "The estimated lower limits are 6 _._ 4 [+2] _−_ 1 _[.]_ _._ [3] 8 _[×]_ [10] [12] [ M] _[⊙]_ [for ASCOS0001 and 0] _[.]_ [8] [+0] _−_ 0 _[.]_ _._ [6] 4 _[×]_ [10] [12] [ M] _[⊙]_ for AS2COS0034"
+    }
+   ]
+  },
+  {
+   "quantity": "Duty cycle of SMGs in M_h >= 4 x 10^12 M_sun halos at z = 4.6",
+   "value": "50-100",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "From their estimated halo masses and [C ii] luminosity function, we suggest that these galaxies have a high (50–100%) duty cycle and high ( _∼_ 0 _._ 1) baryon conversion efficiency"
+    },
+    {
+     "loc": "4.1. Nature of high-redshift SMGs",
+     "quote": "We find that the 50–100% halos at _z_ = 4 _._ 6 with a mass of _M_ _h_ ≳ 4 _×_ 10 [12] M _⊙_ host SMGs."
+    }
+   ]
+  },
+  {
+   "quantity": "Baryon conversion efficiency (ε)",
+   "value": "0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1. Nature of high-redshift SMGs",
+     "quote": "We find that the model luminosity function with a baryon conversion efficiency of _ϵ_ _∼_ 0 _._ 1 agrees well with the observed luminosity function at least at the bright end (where our survey is likely complete)."
+    }
+   ]
+  },
+  {
+   "quantity": "Contribution of bright SMGs (S_870µm >= 6.2 mJy) to cosmic SFRD at z = 4.6",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1. Nature of high-redshift SMGs",
+     "quote": "The contribution of the bright continuum-detected SMGs to the total SFRD is _≃_ 2 % at _z_ = 4 _._ 6."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Visibility weighting scheme (e.g., natural vs. Briggs robust parameter) and any uv-tapering used to produce the 0.8'' x 0.8'' dirty cubes",
+  "Pixel cell size and image dimensions (in pixels/arcsec) of the dirty image cubes",
+  "Exact frequency/channel ranges excluded when constructing the line-free continuum maps and moment 0 maps for each of the five sources",
+  "Aperture or region definition used to extract the spatially-integrated 1D spectra shown in Figure 2",
+  "Exact formula used to compute dynamical mass (M_dyn) reported in Table 1"
+ ],
+ "missing_for_reproduction": [
+  "Visibility weighting and uv-tapering parameters used in CASA to generate the 0.8'' x 0.8'' dirty cubes (delegated to Simpson et al. 2020)",
+  "Exact channel/frequency ranges excluded for continuum subtraction and integrated for the moment 0 maps of each source",
+  "Custom scripts used for the iterative 2-σ clipped continuum subtraction, SNR cube line search, and injection of 1.2 x 10^7 simulated Gaussian lines",
+  "Exact dynamical mass formula used to compute M_dyn in Table 1"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All ALMA project codes, CASA version (5.6.1), velocity binning widths, SNR thresholds, and analytic equations for halo mass, lensing, and baryon accretion are explicitly stated, and measurements are made directly on dirty cubes with CASA/imfit. However, low-level calibration/imaging parameters are delegated to Simpson et al. (2020), custom line-search scripts are not released, and exact channel integration windows and the M_dyn formula are unstated.",
+ "rediscovery_reason": "All seven ALMA project codes are public, the line search and CASA/imfit measurement procedures on dirty cubes are straightforward and well-specified, and Table 1 provides a complete numeric answer key for all five sources.",
+ "source_card": "cards/2021ApJ...907..122M/sonnet/card.md"
+}

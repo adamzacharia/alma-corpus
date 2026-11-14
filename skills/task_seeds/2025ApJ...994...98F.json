@@ -1,0 +1,223 @@
+{
+ "bibcode": "2025ApJ...994...98F",
+ "title": "Measuring the Two-dimensional Thermal Structures of Protoplanetary Disks",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ae0ca2",
+ "arxiv_id": "2509.15196",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How can the 2-D thermal structure T(r,z) of a protoplanetary disk be measured annulus by annulus from optically thick CO isotopologue emission, tested on synthetic models and applied to HD 163296?",
+ "alma_project_codes": [
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HD 163296 ALMA MAPS image cubes",
+    "evidence": [
+     {
+      "loc": "5.3 Demonstration with ALMA Data: HD 163296",
+      "quote": "We selected ALMA observations of the HD 163296 disk from the MAPS project (cite: Oberg21)."
+     }
+    ]
+   },
+   "citation": "Öberg et al. 2021 (cite: Oberg21)"
+  },
+  {
+   "what": {
+    "value": "HD 163296 geometric parameters from CO J=2-1",
+    "evidence": [
+     {
+      "loc": "5.3 Demonstration with ALMA Data: HD 163296",
+      "quote": "We adopted the geometric parameters measured from the same CO $J$=2$-$1 observations in (cite: Izquierdo23)"
+     }
+    ]
+   },
+   "citation": "(cite: Izquierdo23)"
+  },
+  {
+   "what": {
+    "value": "Law et al. best-fit temperature models for comparison",
+    "evidence": [
+     {
+      "loc": "5.3 Demonstration with ALMA Data: HD 163296",
+      "quote": "They deviate from the (cite: Law21) best-fit model profiles, indicating that a single power law is not a good match to the temperature profile."
+     }
+    ]
+   },
+   "citation": "(cite: Law21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate synthetic cubes",
+   "method": "RADMC-3D LTE raytracing of parametric disk, convolved with 0.1'' beam, noise 2 mJy/beam per channel",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO=5e-5, T_frz=20 K, sigma_crit=0.01 g cm-2, D_CO=1e-3, CO/13CO=69, CO/C18O=557"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract emission surfaces",
+   "method": "disksurf isovelocity-loop peak extraction in three passes, then binning into annuli of half beam FWHM",
+   "software": [
+    "disksurf"
+   ],
+   "key_parameters": [
+    "smooth=3, min_snr=[1,2,3], nbeams=[2.0,1.0]"
+   ],
+   "assumptions": [
+    "Axisymmetry, no external contamination"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure brightness temperature profiles",
+   "method": "Moment-8 map (RMS subtracted) via bettermoments, azimuthally averaged along surface with gofish, converted with Planck function",
+   "software": [
+    "bettermoments",
+    "gofish"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thick LTE gas so T_gas = T_b"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Correct beam dilution bias",
+   "method": "Forward model T_m with Gaussian or top-hat emitting-region kernel K based on Keplerian width of the emitting region; fit to measured intensity",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "16 walkers, 300 steps, 50 burn-in; uniform prior T_m 0-10,000 K"
+   ],
+   "assumptions": [
+    "Keplerian velocity, thermal broadening, small temperature gradient across emitting region"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Infer stellar mass",
+   "method": "Fit Keplerian v_peak(r) to extracted velocity profile excluding inner ~5 beams, over 200 surface draws",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "uniform prior M* 0-5 Msun, 32 walkers, 1000 steps, 300 burn-in"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Infer vertical T(z) in each annulus",
+   "method": "Fit T_mid, gamma, a_z per annulus to (z, T_b) of all lines, repeated over N surface realizations",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "uniform priors T_mid U(0,1500 K), gamma U(0,100), a_z U(0,1); 32 walkers, 50,000 steps, 10,000 burn-in (synthetic tests)"
+   ],
+   "assumptions": [
+    "Parametric form: isothermal midplane then exponential rise; lines optically thick where T_b>20 K"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Apply to HD 163296",
+   "method": "Same pipeline on MAPS cubes, geometry from Izquierdo23, M* fit from 12CO J=2-1, annuli fitted to r=3.0'' where at least two lines available",
+   "software": [
+    "disksurf",
+    "gofish",
+    "bettermoments",
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Recovered stellar mass, synthetic model",
+   "value": "0.99",
+   "uncertainty": "0.02",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Surface and Kinematic Uncertainties",
+     "quote": "we found $M_* = 0.99 \\pm 0.02M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 stellar mass",
+   "value": "1.93",
+   "uncertainty": "+0.11/-0.09",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.3 Demonstration with ALMA Data: HD 163296",
+     "quote": "found $M_*=1.93\\substack{+0.11\\\\-0.09}$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Surface bias for CO",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless (Δz/r)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1 Applications and Limitations",
+     "quote": "biasing them low by up to $\\Delta z/r \\approx0.1$ for CO and $\\Delta z/r \\approx0.15$ for C$^{18}$O"
+    }
+   ]
+  },
+  {
+   "quantity": "Resolution-bias intensity underestimate",
+   "value": "up to 50%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Applications and Limitations",
+     "quote": "The bias can extend up to 8 times the size of the beam, and the intensity can be underestimated by as much as 50%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which MAPS data products (image cubes, resolution, robust weighting) were used for HD 163296",
+  "Prior ranges for the HD 163296 fits if different from synthetic tests",
+  "Noise (RMS) values for the MAPS cubes",
+  "Distance adopted for HD 163296",
+  "Number of surface realizations N and radial annulus widths for HD 163296",
+  "Which lines were treated as optically thick beyond the T_b<20 K criterion"
+ ],
+ "missing_for_reproduction": [
+  "Analysis code for the correction and inference not stated as released",
+  "Exact MAPS cube versions and beams",
+  "HD 163296 distance and geometry numbers"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Method well specified with sampler settings and synthetic model parameters, but code release and exact HD 163296 inputs are not stated.",
+ "rediscovery_reason": "Public MAPS data and detailed recipe; numeric results such as M*=1.93 Msun can be checked, though some inputs are inherited.",
+ "source_card": "cards/2025ApJ...994...98F/sonnet/card.md"
+}

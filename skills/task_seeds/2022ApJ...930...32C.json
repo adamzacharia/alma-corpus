@@ -1,0 +1,423 @@
+{
+ "bibcode": "2022ApJ...930...32C",
+ "title": "Searching Far and Long. I. Pilot ALMA 2 mm Follow-up of Bright Dusty Galaxies as a Redshift Filter",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac616d",
+ "arxiv_id": "2203.14973",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "To identify the highest-z sources from a sample of bright 850 micron-selected DSFGs, provide an independent measurement of the volume density of z > 3 DSFGs, and test the practical utility of 2 mm follow up observations as a redshift filter.",
+ "alma_project_codes": [
+  "2019.1.00313.S"
+ ],
+ "data": {
+  "bands": "Band 4 (2 mm)",
+  "arrays": "12-m array (43 antennae)",
+  "angular_resolution": "1.7'' x 1.4'' (~1.5'')",
+  "sensitivity": "median rms 0.08 mJy beam^-1 (range 0.07 - 0.11 mJy beam^-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "S2CLS 850 um catalog, positions, and deboosted flux densities; UDS SCUBA-2 map",
+    "evidence": [
+     {
+      "loc": "Sample of DSFGs",
+      "quote": "To select our sample, we drew from the 850$\\,\\rm{\\mu m}$-selected submillimeter galaxies (SMGs) observed with SCUBA-2 as part of the SCUBA-2 Cosmology Legacy Survey (cite: s2cls)."
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "We adopt deboosted flux densities from S2CLS (cite: s2cls) to account for confusion and Eddington boosting, i.e. flux-limited sample bias wherein more sources have fluxes boosted rather than decreased by noise."
+     }
+    ]
+   },
+   "citation": "(cite: s2cls)"
+  },
+  {
+   "what": {
+    "value": "COSMOS SCUBA-2 map and catalog",
+    "evidence": [
+     {
+      "loc": "CSFRD Contribution",
+      "quote": "Given the overall rarity of $S_{850\\rm\\,\\mu m} > 5.55$\\,mJy sources among DSFGs, we estimate the impact of cosmic variance, and of incompleteness due to shallower S2CLS data of SSA22 relative to other fields like the UDS (cite: s2cls) and COSMOS (cite: 2019simpson) SCUBA-2 maps."
+     }
+    ]
+   },
+   "citation": "(cite: 2019simpson)"
+  },
+  {
+   "what": {
+    "value": "AzTEC 1.1 mm flux densities, AzTEC map, OIR and mm/radio photometric redshifts, and spectroscopic redshift of SSA.0001",
+    "evidence": [
+     {
+      "loc": "Redshifts from the Literature",
+      "quote": "About a third of our targets (14/39) also have optical-infrared (OIR) photometric redshifts and about one quarter (9/39) have mm/radio photometric redshifts (beyond those we calculate herein), both reported in (cite: umehata2014)."
+     },
+     {
+      "loc": "Ancillary Data",
+      "quote": "We crossmatch our SSA22 sources with reported AzTEC 1.1\\,mm flux densities from (cite: umehata2014) and find $\\sim70\\%$ (27/39) of our sample is detected down to SNR of 3.8."
+     }
+    ]
+   },
+   "citation": "(cite: umehata2014)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts for SSA.0007, SSA.0009, and SSA.0019",
+    "evidence": [
+     {
+      "loc": "Redshifts from the Literature",
+      "quote": "SSA.0007 is resolved into two components in our 2\\,mm data and is also spectroscopically confirmed as part of a dense group within the protocluster at $z = 3.09$, possibly in a multiple merger phase (cite: 2015umehata; 2016kubo; 2017umehata; 2018umehata; 2019umehata)."
+     },
+     {
+      "loc": "Redshifts from the Literature",
+      "quote": "In addition to the sources confirmed in the protocluster, three galaxies are confirmed spectroscopically to be in the foreground of the protocluster: SSA.0009 at $z = 2.555$ (cite: 2005chapman), SSA.0019 at $z = 2.278$ (cite: 2012alaghbandzadeh), and SSA.0031 at $z = 2.6814$ (confirmed via Lyman-$\\alpha$ emission; Cooper et al. in prep)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015umehata; 2016kubo; 2017umehata; 2018umehata; 2019umehata), (cite: 2005chapman), (cite: 2012alaghbandzadeh)"
+  },
+  {
+   "what": {
+    "value": "X-ray catalog for SSA22",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "We crossmatch our sample to the X-ray catalog for SSA22 presented in (cite: 2009lehmer) to check for the presence of luminous active galactic nuclei (AGN)."
+     }
+    ]
+   },
+   "citation": "(cite: 2009lehmer)"
+  },
+  {
+   "what": {
+    "value": "Herschel/SPIRE 250, 350, and 500 um deblended maps and catalogs using MIPS 24 um priors",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "*Herschel*/SPIRE measurements of SSA22 at 250$\\,\\rm{\\mu m}$, 350$\\,\\rm{\\mu m}$, and 500$\\,\\rm{\\mu m}$ were extracted using cross-matched positional priors from MIPS 24$\\,\\rm{\\mu m}$ data (cite: swinbank2014; 2016kato)."
+     }
+    ]
+   },
+   "citation": "(cite: swinbank2014; 2016kato)"
+  },
+  {
+   "what": {
+    "value": "Herschel/SPIRE confusion error limits",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "As the data are confusion limited, we adopt the confusion error from (cite: spire) for any sources with derived errors less than these confusion error limits."
+     }
+    ]
+   },
+   "citation": "(cite: spire)"
+  },
+  {
+   "what": {
+    "value": "ALESS 870 um and 2 mm sample for redshift and beta comparison",
+    "evidence": [
+     {
+      "loc": "Redshift Distribution of $S_{850\\rm\\,\\mu m} > 5.55\\,$mJy Sources",
+      "quote": "To compare to our sample, we take the subset of 25/99 ALESS sources with $S_{870\\rm\\,\\mu m} \\geq 5$\\,mJy from (cite: 2021dacunha), and find a median redshift and 68% confidence interval of $z_{\\rm med} = 3.2^{+0.4}_{-1.1}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2021dacunha)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure 2 mm continuum flux densities and noise from ALMA images",
+   "method": "Extract peak flux density and rms from primary-beam-corrected images within the SCUBA-2 beam (7.5 arcsec radius) using CASA imstat, adopting a 3 sigma detection threshold; sum components for resolved pair SSA.0007",
+   "software": [
+    "CASA",
+    "imstat",
+    "viewer"
+   ],
+   "key_parameters": [
+    "search radius = 7.5 arcsec (SCUBA-2 beam); detection threshold = 3 sigma"
+   ],
+   "assumptions": [
+    "Detected sources are unresolved at 1.7'' x 1.4'' resolution (except SSA.0007 which is resolved into two physically associated components)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Crossmatch and extract multiwavelength ancillary photometry and literature redshifts",
+   "method": "Crossmatch ALMA 2 mm positions (or S2CLS positions for <3 sigma sources) to literature redshifts, X-ray catalog, AzTEC 1.1 mm catalog/map, and Herschel/SPIRE 250, 350, 500 um maps/catalogs; combine statistical and absolute calibration uncertainties in quadrature",
+   "software": [],
+   "key_parameters": [
+    "Calibration uncertainties: 4% Herschel, 5% SCUBA-2, 10% AzTEC, 5% ALMA; MIPS 24 um FWHM = 7''"
+   ],
+   "assumptions": [
+    "Herschel/SPIRE measurements are confusion limited; deboosted S2CLS 850 um fluxes account for Eddington boosting"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate millimeter photometric redshifts and bin sample by redshift",
+   "method": "Fit FIR/mm photometry (250, 350, 500, 850, 1100, 2000 um) with MMpz to derive photo-z PDFs; integrate PDFs in delta_z = 0.1 intervals and use the 3 highest probability intervals to sort galaxies into low-z, mid-z (2.6 < z < 3.6), and high-z bins; also test mock SEDs with/without 2 mm",
+   "software": [
+    "MMpz"
+   ],
+   "key_parameters": [
+    "beta = 1.8 (fixed in MMpz); PDF integration width delta_z = 0.1; mid-z bin 2.6 < z < 3.6 centered on z = 3.1"
+   ],
+   "assumptions": [
+    "Empirical L_IR - lambda_peak relation with no redshift evolution of lambda_peak (and T_dust); fixed beta = 1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit IR SEDs and derive physical properties (beta, L_IR, T_dust, lambda_peak, SFR, M_gas, depletion time)",
+   "method": "Fix redshift to best available (spec-z, else OIR photo-z, else z_MMpz) and fit 6-band FIR/mm photometry to a modified blackbody added piecewise with a mid-IR power law using Bayesian MCMC; convert L_IR to SFR; derive M_gas from 2 mm continuum using Scoville et al. (2016) Eq. 16 and compute depletion time",
+   "software": [],
+   "key_parameters": [
+    "Fixed parameters: alpha_MIR = 2, lambda_0 = 200 um; Free parameters: beta, L_IR (8-1000 um), T_dust, lambda_peak; mass-weighted T_dust = 25 K for M_gas"
+   ],
+   "assumptions": [
+    "General opacity model with tau = 1 at lambda_rest = 200 um; CMB heating correction included; Chabrier IMF; Planck cosmology (H_0 = 67.7 km s^-1 Mpc^-1, Omega_lambda = 0.6911); gravitational lensing by foreground protocluster is negligible"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate CSFRD contribution, volume density, cosmic variance, and sample incompleteness",
+   "method": "Run 100-trial Monte Carlo sampling redshift and SFR PDFs across 0.28 deg^2 SSA22 survey area in z bins of width 0.5 from 1 < z < 5; estimate incompleteness by MC trials placing 0.28 deg^2 areas in UDS and COSMOS SCUBA-2 maps with and without noise boosting; adjust CSFRD by incompleteness factor",
+   "software": [],
+   "key_parameters": [
+    "100 MC trials; SSA22 area = 0.28 deg^2; redshift bins 1 < z < 5 with width delta_z = 0.5; incompleteness factor = 1.6 (+0.6/-0.8)"
+   ],
+   "assumptions": [
+    "UDS and COSMOS S2CLS fields represent cosmic average density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of ALMA 2 mm detected targets (>3 sigma)",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Observations",
+     "quote": "Out of the 39 targets, 35 targets were detected in the 2\\,mm observations above this threshold."
+    }
+   ]
+  },
+  {
+   "quantity": "Net average positional offset between S2CLS and ALMA 2 mm (>3 sigma sources)",
+   "value": "1.9",
+   "uncertainty": "1.2",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Observations",
+     "quote": "Comparing S2CLS reported coordinates to our measured coordinates of sources with flux densities $> 3\\sigma$, we find an average RA offset of $1.64\\ensuremath{''}\\pm0.92\\ensuremath{''}$ and an average Dec offset of $-1.0\\ensuremath{''}\\pm 0.7\\ensuremath{''}$, for a total net average offset of $1.9\\ensuremath{''}\\pm 1.2\\ensuremath{''}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of full sample",
+   "value": "2.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Photometric Redshifts",
+     "quote": "For the full sample, we find a median $\\langle z \\rangle = 2.7 \\pm 0.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of low-z bin (16 galaxies)",
+   "value": "2.08",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Photometric Redshifts",
+     "quote": "From our millimeter photo-$z$ measurements and ancillary redshift information, we find 16 low-$z$ galaxies with median $\\langle z_{\\rm{low}-z} \\rangle = 2.08 \\pm 0.16$, 17 mid-$z$ galaxies with median $\\langle z_{\\rm{mid}-z} \\rangle = 2.98 \\pm 0.11$, and 6 high-$z$ galaxies with median $\\langle z_{\\rm{high}-z} \\rangle = 3.8 \\pm 0.3$, as shown in Figure [2](#fig:zbins)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of mid-z bin (17 galaxies)",
+   "value": "2.98",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Photometric Redshifts",
+     "quote": "From our millimeter photo-$z$ measurements and ancillary redshift information, we find 16 low-$z$ galaxies with median $\\langle z_{\\rm{low}-z} \\rangle = 2.08 \\pm 0.16$, 17 mid-$z$ galaxies with median $\\langle z_{\\rm{mid}-z} \\rangle = 2.98 \\pm 0.11$, and 6 high-$z$ galaxies with median $\\langle z_{\\rm{high}-z} \\rangle = 3.8 \\pm 0.3$, as shown in Figure [2](#fig:zbins)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of high-z bin (6 galaxies)",
+   "value": "3.8",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Photometric Redshifts",
+     "quote": "From our millimeter photo-$z$ measurements and ancillary redshift information, we find 16 low-$z$ galaxies with median $\\langle z_{\\rm{low}-z} \\rangle = 2.08 \\pm 0.16$, 17 mid-$z$ galaxies with median $\\langle z_{\\rm{mid}-z} \\rangle = 2.98 \\pm 0.11$, and 6 high-$z$ galaxies with median $\\langle z_{\\rm{high}-z} \\rangle = 3.8 \\pm 0.3$, as shown in Figure [2](#fig:zbins)."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift accuracy Delta z/(1+z) with 2 mm data (from mock SEDs)",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Specifically, our models suggest the addition of 2\\,mm to a moderately constrained IR SED will improve the accuracy of a millimeter-derived redshift from $\\Delta z/(1+z) = 0.3$ to $\\Delta z/(1+z) = 0.2$."
+    },
+    {
+     "loc": "Utility of 2 mm as a Redshift Filter",
+     "quote": "From these simulated SEDs, the addition of the 2\\,mm point – provided $\\sim500$$\\,\\rm{\\mu m}$\\, constraints exist – improves accuracy from $\\Delta z/(1+z) = 0.3$ (without the 2\\,mm data) to $\\Delta z/(1+z) = 0.2$ (with the 2\\,mm data), in particular for galaxies at $z \\gtrsim 3.5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median log IR luminosity (log L_IR)",
+   "value": "12.7",
+   "uncertainty": "0.2",
+   "units": "log10(L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IR SED Characterization",
+     "quote": "As our targets are selected for being among the brightest 850$\\,\\rm{\\mu m}$-selected DSFGs in the SCUBA-2 survey, we find generally high IR luminosities such that all may be categorized as ultraluminous IR galaxies (ULIRGs, $L_{\\rm IR} \\geq 10^{12}$\\,L$_{\\rm \\odot}$), with a median of $\\rm log\\,L_{\\rm IR} = 12.7 \\pm 0.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median star formation rate (SFR)",
+   "value": "700",
+   "uncertainty": "400",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IR SED Characterization",
+     "quote": "We find characteristically high SFRs $\\sim 500 - 1000$ M$_{\\rm \\odot}$\\,yr$^{-1}$, with median SFR = $700 \\pm 400$ M$_{\\rm \\odot}$\\,yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust temperature (T_dust)",
+   "value": "45",
+   "uncertainty": "8",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IR SED Characterization",
+     "quote": "Peak wavelength measurements span 70\\,$\\,\\rm{\\mu m}$$< \\lambda_{\\rm peak} < 149$\\,$\\,\\rm{\\mu m}$, and consequently dust temperatures span $27 \\rm\\, K < \\rm T_{\\rm dust} < 72$ K, with a median $\\rm T_{\\rm dust} = 45 \\pm 8$\\,K."
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust emissivity spectral index (beta) for full sample",
+   "value": "2.4",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our IR SED characterizations provide evidence for relatively high emissivity spectral indices ($\\langle \\beta \\rangle = 2.4\\pm0.3$) in the sample."
+    },
+    {
+     "loc": "IR SED Characterization",
+     "quote": "Overall, the measured emissivity spectral index, $\\beta$, is consistent (within uncertainties) for the three subsamples at $\\beta \\sim 2.4$, with a median of $\\langle \\beta \\rangle = 2.4 \\pm 0.3$ for the full sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas depletion timescale (tau)",
+   "value": "220",
+   "uncertainty": "160",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "IR SED Characterization",
+     "quote": "We find gas depletion times around $\\tau \\sim 200$ Myr with median and standard deviation $\\tau = 220 \\pm 160$ Myr, consistent with the majority of $z \\gtrsim 1$ DSFGs (cite: swinbank2014; 2020dudz; 2021sun)."
+    }
+   ]
+  },
+  {
+   "quantity": "Contribution of S_850um > 5.55 mJy DSFGs to CSFRD (2 < z < 5)",
+   "value": "10",
+   "uncertainty": "range 8-13",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We measure that especially bright ($S_{850\\rm\\mu m}>5.55$\\,mJy) DSFGs contribute $\\sim10$% to the cosmic-averaged CSFRD from $2<z<5$, confirming findings from previous work with similar samples."
+    },
+    {
+     "loc": "CSFRD Contribution",
+     "quote": "Our 850$\\,\\rm{\\mu m}$-bright, obscured sources contribute $\\sim10$% (ranging 8-13%) to the cosmic-averaged CSFRD from $2<z<5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Volume density of S_850um > 5.55 mJy DSFGs at 4 < z < 5",
+   "value": "6.3e-7",
+   "uncertainty": "not stated",
+   "units": "Mpc^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CSFRD Contribution",
+     "quote": "For a 100-trail MC, we find the volume density of DSFGs from $4 < z < 5$ to be $6.3\\times10^{-7}\\rm\\,Mpc^{-3}$ based on our sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample incompleteness factor in SSA22",
+   "value": "1.6",
+   "uncertainty": "+0.6/-0.8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CSFRD Contribution",
+     "quote": "From this sampling of UDS/COSMOS maps, we determine that our SSA22 sample is not cosmologically over- or under-dense, but it is incomplete (in its representation of all $S_{850\\rm\\,\\mu m}>5.55\\,$mJy sources) by a factor of $1.6^{+0.6}_{-0.8}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA imaging task (e.g., tclean vs clean), cell size, image size, deconvolver, and stopping threshold/masking criteria used to create the 2 mm continuum images",
+  "Whether ALMA calibration was performed solely via the standard ALMA pipeline or with manual flagging/calibration, and what flux calibrator was used",
+  "The exact implementation and parameter priors of the Bayesian MCMC SED fitting code (Drew & Casey, submitted)",
+  "Complete table of the extracted Herschel/SPIRE (250, 350, 500 um) and AzTEC (1.1 mm) flux densities and uncertainties for the 39 targets (plotted in Figure 4, but only 850 um and 2 mm fluxes are tabulated in Table 1)"
+ ],
+ "missing_for_reproduction": [
+  "Tabulated Herschel/SPIRE (250, 350, 500 um) and AzTEC (1.1 mm) flux densities and uncertainties for each of the 39 targets (especially the 19 SPIRE and 12 AzTEC sources extracted directly from maps shared privately)",
+  "The Bayesian MCMC SED fitting software (Drew & Casey, submitted) and the exact prior distributions used for beta, T_dust, and L_IR",
+  "Detailed CASA tclean imaging parameters (cell size, image size, stopping criteria) for the ALMA Band 4 continuum maps"
+ ],
+ "reproducibility_score": 68,
+ "score_reason": "The ALMA 2 mm data reduction and peak flux measurement recipe (CASA 5.6.0, robust=2, PB correction, imstat within 7.5'' radius) is simple and fully reproducible, and Table 1 provides all 850 um and 2 mm fluxes. However, reproducing the full 6-band MMpz and Bayesian SED fits is blocked by the absence of a published table for the extracted Herschel/SPIRE and AzTEC fluxes (some extracted from privately shared maps) and reliance on an unpublished SED fitting code (Drew & Casey, submitted).",
+ "rediscovery_reason": "The ALMA project 2019.1.00313.S is public, the 39 continuum pointings are small and fast to image, and all 39 ALMA 2 mm flux densities, uncertainties, and astrometric offsets are explicitly tabulated in Table 1 for direct numerical verification.",
+ "source_card": "cards/2022ApJ...930...32C/sonnet/card.md"
+}

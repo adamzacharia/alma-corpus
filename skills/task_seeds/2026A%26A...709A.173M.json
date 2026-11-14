@@ -1,0 +1,668 @@
+{
+ "bibcode": "2026A&A...709A.173M",
+ "title": "ALMAGAL: VIII. Early phases of triggered star formation in source AG286.0716─1.8229",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202558787",
+ "arxiv_id": "2603.24817",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Confirm whether the disappearing cores in AG286.0716-1.8229 are gravitationally bound prestellar cores in an early phase of star formation, and investigate whether their formation is triggered by an expanding H II region.",
+ "alma_project_codes": [
+  "2023.1.01386.S",
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "Band 4 (150 GHz), Band 6 (219 GHz)",
+  "arrays": "12-m main array and 7-m array (7M)",
+  "angular_resolution": "Band 4: 0.83\"x0.59\" (0.70\", ~6000 au); Band 6 7m+tm2: ~0.89\" (~7600 au); Band 6 7m+tm2+tm1: ~0.17\" (~1400 au)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of H II regions and candidate H II regions",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Moreover, to have good candidates for this pilot study we searched for H ii regions or candidate H ii regions in the ALMAGAL fields in the catalog of (cite: anderson2014) closer than 1 pc to one or more disappearing cores."
+     }
+    ]
+   },
+   "citation": "(cite: anderson2014)"
+  },
+  {
+   "what": {
+    "value": "ALMAGAL 219 GHz CuTEx compact source extractions and core identifications",
+    "evidence": [
+     {
+      "loc": "Millimeter continuum emission",
+      "quote": "(cite: ALMAGAL3) and Coletta et al. in prep. used the algorithm CuTEx (cite: cutexmolinari2011; cutexsoftware) to identify the compact sources inside the ALMAGAL continuum 7M+TM2 and 7M+TM2+TM1 images."
+     }
+    ]
+   },
+   "citation": "(cite: ALMAGAL3)"
+  },
+  {
+   "what": {
+    "value": "Clump-scale temperature, mass, and radius from Hi-GAL infrared SED fits used to derive isothermal sound speed c_s = 0.2 km/s and initial volume density n_0 = 5.1x10^4 cm^-3",
+    "evidence": [
+     {
+      "loc": "Triggered star-formation?",
+      "quote": "We used the values derived from the Herschel infrared Galactic Plane Survey (Hi-Gal) (cite: elia2021), i.e. from the fit of the infrared SED at clump scale ($\\sim$1 pc), for the temperature of the clump, its mass, and radius to derive the best estimate of $c_s$ and $n_0$."
+     }
+    ]
+   },
+   "citation": "(cite: elia2021)"
+  },
+  {
+   "what": {
+    "value": "Thermal Jeans length (0.10 +/- 0.01 pc) and thermal Jeans mass (1.7 +/- 0.4 M_sun) at clump level",
+    "evidence": [
+     {
+      "loc": "Triggered star-formation?",
+      "quote": "We compare the mean separation and mass of the fragments also with the thermal Jeans length and the thermal Jeans mass, using the properties at clump level. These have been derived by (cite: schisano2025) to be 0.10 pc and 1.7 M$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: schisano2025)"
+  },
+  {
+   "what": {
+    "value": "Electron temperature vs galactocentric distance relation giving T_e ~ 9000 K (range 8000-10000 K)",
+    "evidence": [
+     {
+      "loc": "Centimeter continuum emission",
+      "quote": "(cite: balser2011) provided a relation between $T_e$ and the galactocentric distance of a source, that estimated at the galactocentric distance of AG286.0716$-$1.8229 ($\\sim10\\,$kpc) gives a value of $T_e\\sim 9000\\,$K."
+     }
+    ]
+   },
+   "citation": "(cite: balser2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract compact millimeter continuum cores and measure integrated fluxes and sizes",
+   "method": "Apply CuTEx (second-derivative curvature thresholding followed by 2D elliptical Gaussian plus 1st/2nd order polynomial background fitting) to 219 GHz (7M+TM2 and 7M+TM2+TM1) and 150 GHz (Band 4) continuum images; identify disappearing cores present at 7600 au but absent at 1400 au.",
+   "software": [
+    "CuTEx"
+   ],
+   "key_parameters": [
+    "r = d tan(theta) where theta = sqrt(theta_A * theta_B)"
+   ],
+   "assumptions": [
+    "Source distance d = 8.5 kpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Characterize the centimeter continuum SED, dust emissivity index, and ionizing photon rate of the H II region",
+   "method": "Perform 2D Gaussian fit in CARTA to check point-like nature, extract aperture photometry in ~20\" circular aperture across SMGPS (0.9-1.6 GHz) and RACS (0.88, 1.35, 1.65 GHz), fit spectral index alpha with MCMC, extrapolate and subtract free-free contribution at 150 and 220 GHz to derive dust spectral index and beta, and compute Lyman continuum photon rate N_Ly.",
+   "software": [
+    "CARTA"
+   ],
+   "key_parameters": [
+    "Circular aperture diameter ~20\" (2 times resolution)",
+    "S_nu = 10.5 mJy at 1.36 GHz from SMGPS"
+   ],
+   "assumptions": [
+    "S_nu proportional to nu^alpha; Rayleigh-Jeans regime beta = alpha - 2",
+    "Electron temperature T_e = 8000-10000 K (at galactocentric distance ~10 kpc) and distance D = 8.5 kpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Create masked moment maps, PV diagrams, and core-averaged spectra of molecular lines",
+   "method": "Compute pixel-by-pixel rms from first 500 channels; build 3D mask requiring >5 sigma seed voxels connected to two consecutive channels >2 sigma, expanded by 0.25x beam FWHM spatially and 2 channels spectrally; blank moment-0 pixels with S/N < 3; extract radial PV cuts of DCO+(2-1) and core-averaged spectra with Gaussian fits for FWHM.",
+   "software": [],
+   "key_parameters": [
+    "500 emission-free channels for rms; 5 sigma seed threshold; 2 consecutive channels > 2 sigma; expanded by 0.25*FWHM spatially and 2 channels spectrally; moment-0 blanked at S/N < 3; spectral detection threshold S/N > 5"
+   ],
+   "assumptions": [
+    "Hyperfine splitting of deuterated species is neglected in Gaussian FWHM fits, so FWHM values are upper limits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit CH3CCH (9-8) spectrum on Core #4 to derive gas temperature and column density",
+   "method": "Extract average spectrum towards core #4 and fit synthetic LTE spectra using MADCUBA SLIM and CDMS catalog entries.",
+   "software": [
+    "MADCUBA (SLIM)"
+   ],
+   "key_parameters": [
+    "Free parameters: column density N, excitation temperature T_ex, central velocity, FWHM"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) and Gaussian line profiles"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Construct and model radial continuum intensity profiles of the cores",
+   "method": "Using CuTEx ellipse parameters (x_0, y_0, PA, theta_A/theta_B) on ALMA Band 6 7m+tm2 continuum, bin pixel intensities by elliptical semi-major axis for cores #1 to #6 and visually compare with line-of-sight integrated singular isothermal sphere and Bonnor-Ebert sphere profiles convolved with the Band 6 7m+tm2 beam.",
+   "software": [
+    "CuTEx"
+   ],
+   "key_parameters": [
+    "Bonnor-Ebert critical radius R_0 = 500 au, 1500 au, 2000 au; power-law exponent alpha = 2"
+   ],
+   "assumptions": [
+    "Cores are isothermal and dust properties do not vary with radius (kappa_nu(r) = const.)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate core masses, volume densities, and virial parameters",
+   "method": "Assign temperature ranges to cores based on chemical evolutionary stage, compute optically thin dust masses from CuTEx integrated fluxes at 219 GHz (cores #2-#6) and 150 GHz (cores #7-#9), and compute virial parameters alpha_vir from core radii, masses, and mean molecular line FWHMs.",
+   "software": [],
+   "key_parameters": [
+    "T = 10-20 K (cores #2, #5, #6), T = 20-30 K (cores #3, #7, #8, #9), T = 39 +/- 5 K (core #4)",
+    "kappa_219 = 0.9 cm^2 g^-1, beta = 1.7, gas-to-dust ratio = 100, D = 8.5 kpc, sigma = FWHM / 2.35"
+   ],
+   "assumptions": [
+    "Gas and dust are thermally coupled; gas-to-dust ratio = 100; optically thin dust emission; bound criterion alpha_vir < 2"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test triggered star formation by comparing core separations and masses with collect-and-collapse and thermal Jeans predictions",
+   "method": "Measure projected and 3D-deprojected (factor 4/pi) separations between bound cores along the arch; calculate collect-and-collapse shell fragmentation length, mass, radius, and timescale using Whitworth et al. (1994) equations for n_0 = 5.1x10^4 cm^-3 and n_0 = 2x10^4 cm^-3; compare with observed values and thermal Jeans scales.",
+   "software": [],
+   "key_parameters": [
+    "N_Ly = 6.2x10^46 phot. s^-1, c_s = 0.2 km/s, n_0 = 5.1x10^4 cm^-3 (and n_0 = 2x10^4 cm^-3), 10% parameter error, deprojection factor 4/pi"
+   ],
+   "assumptions": [
+    "Mean clump-scale density from Hi-GAL represents initial density before H II region expansion; average 3D deprojection factor is 4/pi"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Arch radius of cores",
+   "value": "0.75",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimeter continuum emission",
+     "quote": "The radius of this arch is $\\sim$18.0\" which corresponds to $\\sim$0.75 pc at the distance of AG286.0716$-$1.8229."
+    }
+   ]
+  },
+  {
+   "quantity": "Candidate H II region radio spectral index alpha (with SMGPS 1.65 GHz point)",
+   "value": "-0.4",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Centimeter continuum emission",
+     "quote": "The spectral index $\\alpha$ (assuming $S_{\\nu}\\propto\\nu^{\\alpha}$) from the fit of the data is $-0.4\\pm0.4$, mostly driven by the point at 1.65 GHz from SMGPS"
+    }
+   ]
+  },
+  {
+   "quantity": "Candidate H II region radio spectral index alpha (with RACS 1.65 GHz point)",
+   "value": "-0.1",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Centimeter continuum emission",
+     "quote": "while the flux density from RACS data at the same frequency is consistent with a $-0.1\\pm0.4$ spectral index."
+    }
+   ]
+  },
+  {
+   "quantity": "Core #1 dust emissivity index beta",
+   "value": "0.7-2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Centimeter continuum emission",
+     "quote": "The value of the exponent of the power-law of dust emissivity $\beta$ (with $\beta=\\alpha-2$ in the Rayleigh-Jeans regime) for this source is in the range of 0.7-2.2."
+    }
+   ]
+  },
+  {
+   "quantity": "Lyman continuum photon rate N_Ly",
+   "value": "5.9-6.5e46",
+   "uncertainty": "not stated",
+   "units": "photons s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Centimeter continuum emission",
+     "quote": "Considering the flux density from the average continuum map of SMGPS to be 10.5 mJy at 1.36 GHz, and using the source distance of 8.5 kpc the rate of ionizing photon is in the range $5.9-6.5\times10^{46}$ photons s$^{-1}$, corresponding to a star of spectral type B0.5 (cite: panagia1973)."
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 CH3CCH excitation temperature T_ex",
+   "value": "39",
+   "uncertainty": "5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular emission",
+     "quote": "The derived temperature is of $T_{\rm{ex}}=39\\pm5\\,$K, while the column density of this species is $N=(2.1\\pm 0.2)\times10^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 CH3CCH column density N",
+   "value": "2.1e14",
+   "uncertainty": "0.2e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular emission",
+     "quote": "The derived temperature is of $T_{\rm{ex}}=39\\pm5\\,$K, while the column density of this species is $N=(2.1\\pm 0.2)\times10^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Core #2 integrated flux density at 219 GHz",
+   "value": "1.8",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2 | 286.07362 | -1.821405 | 1.8 | 4.7 | 10-20 | 3.1-8.3 | 1.2 | 0.8-2.2 | 0.9-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #2 mass",
+   "value": "3.1-8.3",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2 | 286.07362 | -1.821405 | 1.8 | 4.7 | 10-20 | 3.1-8.3 | 1.2 | 0.8-2.2 | 0.9-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #2 virial parameter",
+   "value": "0.8-2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2 | 286.07362 | -1.821405 | 1.8 | 4.7 | 10-20 | 3.1-8.3 | 1.2 | 0.8-2.2 | 0.9-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #5 integrated flux density at 219 GHz",
+   "value": "3.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 5 | 286.06904 | -1.821022 | 3.6 | 5.9 | 10-20 | 6.2-16.6 | 0.97 | 0.3-0.9 | 0.9-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #5 mass",
+   "value": "6.2-16.6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 5 | 286.06904 | -1.821022 | 3.6 | 5.9 | 10-20 | 6.2-16.6 | 0.97 | 0.3-0.9 | 0.9-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #5 virial parameter",
+   "value": "0.3-0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 5 | 286.06904 | -1.821022 | 3.6 | 5.9 | 10-20 | 6.2-16.6 | 0.97 | 0.3-0.9 | 0.9-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #6 integrated flux density at 219 GHz",
+   "value": "2.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 6 | 286.06992 | -1.820381 | 2.6 | 4.7 | 10-20 | 4.5-12.2 | 1.1 | 0.5-1.3 | 1.3-3.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #6 mass",
+   "value": "4.5-12.2",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 6 | 286.06992 | -1.820381 | 2.6 | 4.7 | 10-20 | 4.5-12.2 | 1.1 | 0.5-1.3 | 1.3-3.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #6 virial parameter",
+   "value": "0.5-1.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 6 | 286.06992 | -1.820381 | 2.6 | 4.7 | 10-20 | 4.5-12.2 | 1.1 | 0.5-1.3 | 1.3-3.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #3 mass",
+   "value": "1.9-3.2",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | 286.07318 | -1.821122 | 1.9 | 3.8 | 20-30 | 1.9-3.2 | 1.2 | 1.7-2.8 | 1.0-1.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #3 virial parameter",
+   "value": "1.7-2.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | 286.07318 | -1.821122 | 1.9 | 3.8 | 20-30 | 1.9-3.2 | 1.2 | 1.7-2.8 | 1.0-1.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 integrated flux density at 219 GHz",
+   "value": "10.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 4 | 286.07154 | -1.820783 | 10.6 | 4.9 | $39\\pm5$ | 8.2 | 1.8 | 2.0 | 2.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 mass",
+   "value": "8.2",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 4 | 286.07154 | -1.820783 | 10.6 | 4.9 | $39\\pm5$ | 8.2 | 1.8 | 2.0 | 2.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 virial parameter",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 4 | 286.07154 | -1.820783 | 10.6 | 4.9 | $39\\pm5$ | 8.2 | 1.8 | 2.0 | 2.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #7 mass",
+   "value": "1.9-3.1",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 7 | 286.06613 | -1.823351 | 0.48 | 3.5 | 20-30 | 1.9-3.1 | 1.7 | 3.3-5.3 | 1.4-2.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #7 virial parameter",
+   "value": "3.3-5.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 7 | 286.06613 | -1.823351 | 0.48 | 3.5 | 20-30 | 1.9-3.1 | 1.7 | 3.3-5.3 | 1.4-2.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #8 mass",
+   "value": "6.1-9.7",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 8 | 286.06620 | -1.823540 | 1.5 | 5.0 | 20-30 | 6.1-9.7 | 1.7 | 1.5-2.4 | 1.5-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #8 virial parameter",
+   "value": "1.5-2.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 8 | 286.06620 | -1.823540 | 1.5 | 5.0 | 20-30 | 6.1-9.7 | 1.7 | 1.5-2.4 | 1.5-2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #9 mass",
+   "value": "3.6-5.8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9 | 286.06559 | -1.825501 | 0.9 | 3.8 | 20-30 | 3.6-5.8 | 0.7 | 0.3-0.5 | 3.2-2.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #9 virial parameter",
+   "value": "0.3-0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9 | 286.06559 | -1.825501 | 0.9 | 3.8 | 20-30 | 3.6-5.8 | 0.7 | 0.3-0.5 | 3.2-2.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median projected separation of bound cores along arch",
+   "value": "0.25",
+   "uncertainty": "0.15",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "The median values in AG286.0716$-$1.8229 is $0.25\\pm0.15$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean deprojected separation of bound cores along arch",
+   "value": "0.34",
+   "uncertainty": "0.19",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "The mean deprojected value is $0.34\\pm0.19$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean observed core mass",
+   "value": "6",
+   "uncertainty": "4",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "is $6\\pm4$ M$_{\\odot}$. Therefore they are also compatible with the characteristic mass $M_{\\rm{shell}}\\sim6$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse fragmentation length lambda_shell (n_0 = 5.1e4 cm^-3)",
+   "value": "0.22",
+   "uncertainty": "0.05",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "Using these values, and assuming a 10% error for all the three parameters in Eq.s (5)-(8), we find $\\lambda_{\rm{shell}}\\sim 0.22\\pm0.05$ pc, $M_{\rm{shell}}\\sim6\\pm3$ M$_{\\odot}$, $R_{\rm{shell}}\\sim0.43\\pm0.04$ pc, and $t_{\rm{shell}}\\sim0.42\\pm0.05$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse fragment mass M_shell (n_0 = 5.1e4 cm^-3)",
+   "value": "6",
+   "uncertainty": "3",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "Using these values, and assuming a 10% error for all the three parameters in Eq.s (5)-(8), we find $\\lambda_{\rm{shell}}\\sim 0.22\\pm0.05$ pc, $M_{\rm{shell}}\\sim6\\pm3$ M$_{\\odot}$, $R_{\rm{shell}}\\sim0.43\\pm0.04$ pc, and $t_{\rm{shell}}\\sim0.42\\pm0.05$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse shell radius R_shell (n_0 = 5.1e4 cm^-3)",
+   "value": "0.43",
+   "uncertainty": "0.04",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "Using these values, and assuming a 10% error for all the three parameters in Eq.s (5)-(8), we find $\\lambda_{\rm{shell}}\\sim 0.22\\pm0.05$ pc, $M_{\rm{shell}}\\sim6\\pm3$ M$_{\\odot}$, $R_{\rm{shell}}\\sim0.43\\pm0.04$ pc, and $t_{\rm{shell}}\\sim0.42\\pm0.05$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse fragmentation timescale t_shell (n_0 = 5.1e4 cm^-3)",
+   "value": "0.42",
+   "uncertainty": "0.05",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "Using these values, and assuming a 10% error for all the three parameters in Eq.s (5)-(8), we find $\\lambda_{\rm{shell}}\\sim 0.22\\pm0.05$ pc, $M_{\rm{shell}}\\sim6\\pm3$ M$_{\\odot}$, $R_{\rm{shell}}\\sim0.43\\pm0.04$ pc, and $t_{\rm{shell}}\\sim0.42\\pm0.05$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse fragmentation length lambda_shell (n_0 = 2e4 cm^-3)",
+   "value": "0.34",
+   "uncertainty": "0.08",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "Using this new value of $n_0$ the estimates from Eq.s (5), (6), and (8) would be $\\lambda_{\rm{shell}}\\sim 0.34\\pm0.08$ pc, $M_{\rm{shell}}\\sim9\\pm4$ M$_{\\odot}$, and $t_{\rm{shell}}\\sim0.67\\pm0.08$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse fragment mass M_shell (n_0 = 2e4 cm^-3)",
+   "value": "9",
+   "uncertainty": "4",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Triggered star-formation?",
+     "quote": "Using this new value of $n_0$ the estimates from Eq.s (5), (6), and (8) would be $\\lambda_{\rm{shell}}\\sim 0.34\\pm0.08$ pc, $M_{\rm{shell}}\\sim9\\pm4$ M$_{\\odot}$, and $t_{\rm{shell}}\\sim0.67\\pm0.08$ Myr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Final continuum and spectral line rms noise levels for ALMA Band 4 and Band 6 maps and cubes",
+  "Exact CuTEx parameters (thresholding, fitting window sizes) and fitted elliptical Gaussian axes (theta_A, theta_B, PA) for each core",
+  "Flux calibrator and bandpass calibrator names for ALMA Band 4 observations",
+  "Exact aperture sizes/shapes used to extract the core-averaged molecular spectra in ALMA Band 4",
+  "Specific MCMC package and prior bounds used for the centimeter SED spectral index linear fit"
+ ],
+ "missing_for_reproduction": [
+  "Exact CuTEx configuration parameters and fitted ellipse parameters (semi-major axis theta_A, semi-minor axis theta_B, PA) for each core, which are needed both for core photometry and for constructing the elliptical radial profiles in Section 4.1",
+  "Exact polygon or elliptical regions used to extract the core-averaged spectra in ALMA Band 4",
+  "ALMAGAL custom pipeline joint-deconvolution products (7m+tm2 and 7m+tm2+tm1) if not publicly hosted as high-level science products in the ALMA archive"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The Band 4 data use standard ALMA pipeline products as-is, the 5-step moment-masking algorithm is explicitly specified, all analytic equations and parameter values for masses, virial parameters, and shell fragmentation are given, and numeric outputs are tabulated; only the exact CuTEx fitted ellipse parameters (theta_A, theta_B, PA) and spectral extraction apertures are omitted.",
+ "rediscovery_reason": "Both ALMA project codes (2019.1.00195.L and 2023.1.01386.S) and the radio survey datasets (SMGPS, RACS) are public, the Band 4 analysis uses standard pipeline products directly, and the main results (core fluxes, line FWHMs, CH3CCH LTE temperature, masses, virial parameters, and core separations) are concrete numeric benchmarks.",
+ "source_card": "cards/2026A%26A...709A.173M/sonnet/card.md"
+}

@@ -1,0 +1,348 @@
+{
+ "bibcode": "2022A&A...660A..14R",
+ "title": "The ALPINE-ALMA [CII] survey: The population of [CII]-undetected galaxies and their role in the L<SUB>[CII]</SUB>-SFR relation",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142265",
+ "arxiv_id": "2202.02334",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the average [CII] properties of the [CII]-undetected galaxies in the ALPINE survey at z ~ 5, and what is their role in the L_[CII]-SFR relation?",
+ "alma_project_codes": [
+  "2017.1.00428.L"
+ ],
+ "data": {
+  "bands": "Band 7 (275-373 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~1''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA DR1 continuum-subtracted data-cubes, [CII] detections and 3sigma upper limits",
+    "evidence": [
+     {
+      "loc": "Stacking of non-detections",
+      "quote": "In particular, we extract each spectrum from the original data-cubes of the ALPINE data release 1 (DR1; (cite: Bethermin20))"
+     },
+     {
+      "loc": "Results",
+      "quote": "The errors on the [CII] luminosities are taken from (cite: Bethermin20) for the ALPINE detections"
+     }
+    ]
+   },
+   "citation": "(cite: Bethermin20)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses and SED-fitted SFRs, multi-wavelength data and UV magnitudes",
+    "evidence": [
+     {
+      "loc": "Multi-wavelength and ALMA data",
+      "quote": "The stellar masses and SFRs are those from the SED-fitting (cite: Faisst20)."
+     }
+    ]
+   },
+   "citation": "(cite: Faisst20)"
+  },
+  {
+   "what": {
+    "value": "Observed velocity offset distribution between Ly-alpha and [CII] (Delta v_Lya)",
+    "evidence": [
+     {
+      "loc": "Stacking of non-detections",
+      "quote": "we apply to each source a spectral offset randomly extracted from the $\\Delta v_{\\mathrm{Ly}\\alpha}$ distribution obtained by (cite: Cassata20) from a sub-sample of the ALPINE detections"
+     }
+    ]
+   },
+   "citation": "(cite: Cassata20)"
+  },
+  {
+   "what": {
+    "value": "IRX-beta relation predictions for SFR(IR) of continuum-undetected galaxies",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "It is worth to specify that none of our 34 [CII] non-detections is detected in continuum. Therefore, the SFR(IR) for all of these galaxies comes from the IRX-$\\beta$ relation by (cite: Fudamoto20)."
+     }
+    ]
+   },
+   "citation": "(cite: Fudamoto20)"
+  },
+  {
+   "what": {
+    "value": "Optical galaxy coordinates from COSMOS2015 and 3D-HST catalogs",
+    "evidence": [
+     {
+      "loc": "Stacking of non-detections",
+      "quote": "The coordinates of each galaxy are taken either from the COSMOS2015 (cite: Laigle16) or 3D-HST (cite: Brammer12; Skelton14) catalogs"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle16; Brammer12; Skelton14)"
+  },
+  {
+   "what": {
+    "value": "L_[CII]-SFR relations from literature for comparison",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "summarizes the parameters describing the L$_\\mathrm{[CII]}$-SFR relations found in the literature and in this work."
+     }
+    ]
+   },
+   "citation": "(cite: DeLooze14; Lagache18; Arata20; Harikane20; Schaerer20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select sample of [CII] non-detections with robust UV spectroscopic redshifts",
+   "method": "Visually inspect optical/UV spectra of the 43 ALPINE [CII] non-detections to select sources with multiple high S/N spectral features and prominent Ly-alpha emission, excluding 9 sources with weak/no Ly-alpha and noisy spectra.",
+   "software": [],
+   "key_parameters": [
+    "34 selected out of 43 [CII] non-detections (S/N < 3.5 in [CII])"
+   ],
+   "assumptions": [
+    "Redshift obtained from the peak of the Ly-alpha line can be corrected using the observed velocity offset distribution between Ly-alpha and [CII]"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract 1D ALMA spectra and perform Monte Carlo mean spectral stacking",
+   "method": "Extract 1D spectra from ALPINE DR1 continuum-subtracted data-cubes in a 1'' radius aperture centered at optical positions over ~3 GHz around the Ly-alpha expected frequency. Align to Ly-alpha redshift, apply random velocity offsets drawn from the Cassata et al. (2020) Delta v_Lya distribution, compute mean stack, fit a Gaussian to check FWHM <= 400 km s^-1 until 1000 realizations are collected, and average the realizations weighted by S/N.",
+   "software": [],
+   "key_parameters": [
+    "aperture radius = 1''",
+    "spectral range = ~3 GHz",
+    "FWHM <= 400 km s^-1 filter for 1000 realizations",
+    "S/N weight w = S/N, with noise measured at |v| > 600 km s^-1 from peak"
+   ],
+   "assumptions": [
+    "0 < Delta v_Lya < 400 km s^-1 distribution from ALPINE detections applies to non-detections"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure velocity-integrated flux, [CII] luminosity, and uncertainties, and repeat in SFR bins",
+   "method": "Integrate the Gaussian-fitted stacked line to get velocity-integrated flux, convert to L_[CII] using Solomon et al. (1992) equation at z_med = 5.52, and estimate uncertainty via delete-d jackknife resampling (500 realizations removing 20% of the 34 spectra). Repeat stacking by splitting the 34 sources into two bins of 17 sources each at median log(SFR_TOT) = 1.16.",
+   "software": [],
+   "key_parameters": [
+    "z_med = 5.52",
+    "500 jackknife realizations removing 20% of spectra; 16th and 84th percentiles for error",
+    "2 SFR bins of 17 objects each divided at log(SFR_TOT,med / M_sun yr^-1) = 1.16"
+   ],
+   "assumptions": [
+    "Lambda-CDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7; Chabrier (2003) IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the L_[CII]-SFR linear relation",
+   "method": "Combine the stacked [CII] luminosity and mean total SFR of the non-detections with the individual ALPINE [CII] detections, and fit log(L_[CII]/L_sun) = a + b * log(SFR/M_sun yr^-1) using the Bayesian linear regression package linmix.",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "Average uncertainty on total SFR ~ 0.2 dex"
+   ],
+   "assumptions": [
+    "SFR_TOT = SFR(UV) + SFR(IR), where SFR(IR) for continuum-undetected galaxies comes from the IRX-beta relation of Fudamoto et al. (2020); Chabrier IMF (De Looze et al. 2014 relation scaled by dividing SFR by 1.06)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stacked [CII] signal-to-noise ratio (34 non-detections)",
+   "value": "5.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "By stacking their ALMA spectra, we obtain a signal detected at $\\sim5.1\\sigma$, resulting in a [CII] luminosity of $\\mathrm{log(L_\\mathrm{[CII]}}/\\mathrm{L_{\\odot}})$ $\\sim7.8$."
+    },
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "The computed S/N is $\\sim5.1$, revealing the presence of an underlying population of [CII] emitters"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked [CII] line center velocity (x_cent)",
+   "value": "-16",
+   "uncertainty": "+-13",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "By fitting the stacked line profile with a Gaussian function, we find the signal peaking at $\\mathrm{x_{cent}}=-16\\pm13$ km s$^{-1}$, consistent with the systemic velocity traced by the [CII] line, and having $\\mathrm{FWHM}=454\\pm31$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked [CII] line FWHM",
+   "value": "454",
+   "uncertainty": "+-31",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "By fitting the stacked line profile with a Gaussian function, we find the signal peaking at $\\mathrm{x_{cent}}=-16\\pm13$ km s$^{-1}$, consistent with the systemic velocity traced by the [CII] line, and having $\\mathrm{FWHM}=454\\pm31$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked [CII] velocity-integrated line flux (S_[CII] Delta v)",
+   "value": "73e-3",
+   "uncertainty": "+-11e-3",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "As a result, we obtain $S_\\mathrm{[CII]}~\\Delta v = (73 \\pm 11)\\times 10^{-3}$ Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked [CII] luminosity log(L_[CII]/L_sun) (34 non-detections)",
+   "value": "7.8",
+   "uncertainty": "+-0.3",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "We thus find $\\mathrm{log(L_\\mathrm{[CII]}}/\\mathrm{L_{\\odot}}) = 7.8\\pm0.3$, where the error is computed by propagating the uncertainty on the \\[CII\\] flux and the redshift"
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of the 34 [CII] non-detections (z_med)",
+   "value": "5.52",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "$D_L$ is the luminosity distance in Mpc at the median redshift of the sample (i.e., $z_\\mathrm{med}=5.52$), and $\\nu_{obs}$ is the observed peak frequency in GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Median total SFR of the 34 [CII] non-detections log(SFR_TOT,med / M_sun yr^-1)",
+   "value": "1.16",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "We use the median SFR of the sample ($\\mathrm{log(SFR_{TOT,med}/M_{\\odot}~yr^{-1}})=1.16$; as defined in Section [4]) to make two bins composed of 17 objects each"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean total SFR of the 34 [CII] non-detections log(SFR_TOT,mean / M_sun yr^-1)",
+   "value": "1.14",
+   "uncertainty": "+-0.20",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "adopting their mean $\\mathrm{SFR_{TOT}}$ (i.e., $\\mathrm{log(SFR_{TOT,mean}/M_{\\odot}~yr^{-1}})=1.14\\pm0.20$"
+    }
+   ]
+  },
+  {
+   "quantity": "High-SFR bin stacked [CII] S/N",
+   "value": "6.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "On the contrary, a S/N $\\sim6.8$ emission is produced in the high-SFR bin, suggesting that most of the signal in Figure [4] is due to the most massive SFGs."
+    }
+   ]
+  },
+  {
+   "quantity": "High-SFR bin stacked [CII] luminosity log(L_[CII]/L_sun)",
+   "value": "8.0",
+   "uncertainty": "+-0.2",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "By adopting the above-described stacking procedure on the whole sample, we find $\\mathrm{log(L_\\mathrm{[CII]}}/\\mathrm{L_{\\odot}}) = 8.0\\pm0.2$ in the high-SFR bin."
+    }
+   ]
+  },
+  {
+   "quantity": "Low-SFR bin average [CII] luminosity upper limit log(L_[CII]/L_sun)",
+   "value": "<=7.8",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking of non-detections",
+     "quote": "finding $\\mathrm{log(L_\\mathrm{[CII]}}/\\mathrm{L_{\\odot}}) \\lesssim 7.8$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]-SFR relation intercept (a)",
+   "value": "6.76",
+   "uncertainty": "+-0.17",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "With our stacked non-detections, we obtain a best-fit relation with $a=6.76\\pm0.17$ and $b=1.14\\pm0.11$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]-SFR relation slope (b)",
+   "value": "1.14",
+   "uncertainty": "+-0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "When combining this value with those from the [CII] detections, we find a $\\mathrm{L_{[CII]}}$-SFR relation with a slope $b=1.14\\pm0.11$"
+    },
+    {
+     "loc": "Results",
+     "quote": "With our stacked non-detections, we obtain a best-fit relation with $a=6.76\\pm0.17$ and $b=1.14\\pm0.11$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for the ALPINE DR1 reduction",
+  "Exact list of source IDs for the 9 excluded non-detections vs. the 34 stacked non-detections (can be inferred from Figure 3 cutouts, though a machine-readable table is not in the text)",
+  "Exact numerical values or histogram bins of the Delta v_Lya distribution from Cassata et al. (2020) used for random sampling"
+ ],
+ "missing_for_reproduction": [
+  "Exact numerical representation of the Delta v_Lya probability distribution from Cassata et al. (2020) used to draw the random spectral shifts",
+  "Exact details of how the single stacked point vs. 75 individual points were weighted in the linmix regression"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The ALPINE DR1 data cubes and ancillary catalogs are publicly released with a direct URL, the 34 stacked galaxies are explicitly named in Figure 3, and the 1D aperture extraction, Monte Carlo shifting, jackknife error estimation, and linmix fitting recipes are clearly described. Only minor details (the exact numerical distribution of Delta v_Lya from Cassata et al. 2020 and random seeds) are missing.",
+ "rediscovery_reason": "Public ALPINE DR1 data cubes and catalogs are available online, the 34 target names are shown in Figure 3, and the main results (stacked S/N, integrated flux, L_[CII], and L_[CII]-SFR slope/intercept) are well-defined numeric values.",
+ "source_card": "cards/2022A%26A...660A..14R/sonnet/card.md"
+}

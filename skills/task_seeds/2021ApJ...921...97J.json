@@ -1,0 +1,773 @@
+{
+ "bibcode": "2021ApJ...921...97J",
+ "title": "Molecular Line Observations in Two Dusty Star-forming Galaxies at z = 6.9",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac21db",
+ "arxiv_id": "2108.11319",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical properties of the molecular interstellar medium, gas mass, CO-to-H2 conversion factor, gas depletion timescales, and heating mechanisms in the two dusty star-forming galaxies of SPT0311-58 at z = 6.9?",
+ "alma_project_codes": [
+  "2017.1.01168.S",
+  "2015.1.00504.S",
+  "2016.1.01293.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 4 (primary); Band 3, 6, 7, and 8 (ancillary)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' at 95 GHz, ~0.3'' at 140 GHz; continuum beams: 0.31'' x 0.22'' (Tuning 1), 0.47'' x 0.36'' (Tuning 2), 0.27'' x 0.20'' (Tuning 3)",
+  "sensitivity": "Continuum rms: 16.19 uJy/beam (Tuning 1), 8.83 uJy/beam (Tuning 2), 8.27 uJy/beam (Tuning 3)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA B6, B7, B8 continuum flux densities, [CII] 240 GHz observations, and lens modeling magnifications",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "The source has been observed in previous ALMA cycles (2015.1.00504.S, PI: Strandet and 2016.1.01293.S, PI: Marrone) in B3, B6, B7, and B8 corresponding to 95, 240, 340, and 420 GHz, respectively."
+     },
+     {
+      "loc": "Ancillary Data",
+      "quote": "The intrinsic continuum flux densities (corrected for magnification) in W and E are obtained by performing lens modeling described in detail in (cite: marrone18)."
+     },
+     {
+      "loc": "Spectral Line Decomposition",
+      "quote": "Since the spectral lines are non-Gaussian and blended in the case of $\\rm CO(7-6)$ and \\[CI\\]$\\rm (2-1)$, and $\\rm CO(10-9)$ and p-$\\rm H_{2} O (3_{1,2}-2_{2,1})$, we use \\[CII\\] from the ALMA 240 GHz observations (cite: marrone18) as a template to derive the spectral properties."
+     }
+    ]
+   },
+   "citation": "(cite: marrone18)"
+  },
+  {
+   "what": {
+    "value": "ATCA CO(3-2) data reduction and line properties",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "We include $\\rm CO(3-2)$ data observed with ATCA to constrain the CO spectral line energy distribution (SLED). The data reduction and line properties are present in (cite: strandet17)."
+     }
+    ]
+   },
+   "citation": "(cite: strandet17)"
+  },
+  {
+   "what": {
+    "value": "Herschel/SPIRE photometry at 250, 350, and 500 um",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "We also include *Herschel*/SPIRE photometry at 250, 350, and 500 $\\mu$m (project ID: DDT$\\_$mstrande$\\_$1, (cite: strandet16))."
+     }
+    ]
+   },
+   "citation": "(cite: strandet16)"
+  },
+  {
+   "what": {
+    "value": "Maximum value of CO(13-12) scaled to CO(10-9) as upper limits for LVG modeling, and local ULIRG CO SLEDs",
+    "evidence": [
+     {
+      "loc": "N-component and Turbulence Models",
+      "quote": "To constrain the *2-component* model, which has more free parameters than *1-component* and *Turbulence*, we consider the maximum value of CO(13$-$12) from (cite: rosenberg15) scaled to $\\rm CO(10-9)$ in W and E as upper limits."
+     },
+     {
+      "loc": "CO SLED and AGN Fraction",
+      "quote": "The local ULIRGs sample includes 29 galaxies taken from (cite: rosenberg15), excluding NGC 6240 which is an outlier due to galaxy wide shocks (cite: meijerink13)."
+     }
+    ]
+   },
+   "citation": "(cite: rosenberg15)"
+  },
+  {
+   "what": {
+    "value": "Local and high-redshift galaxy continuum photometry and H2O luminosities for L_H2O - L_FIR correlation",
+    "evidence": [
+     {
+      "loc": "$L_{H_{2}O} - L_{FIR}$ Correlation",
+      "quote": "In case of the local galaxies, the continuum flux density values are from (cite: sanders03) and $\\rm L_{H_{2}O}$ from (cite: yang13)."
+     },
+     {
+      "loc": "$L_{H_{2}O} - L_{FIR}$ Correlation",
+      "quote": "The photometry and magnification in the high-redshift galaxies are from (cite: weiss07; riechers09; riechers13; bussmann13; cooray14) and $\\rm L_{H_{2}O}$ from (cite: omont13; yang16)."
+     }
+    ]
+   },
+   "citation": "(cite: sanders03; yang13; weiss07; riechers09; riechers13; bussmann13; cooray14; omont13; yang16; apostolovski19)"
+  },
+  {
+   "what": {
+    "value": "Main sequence, high-redshift SMG, and SPT-SMG samples for alpha_CO and depletion time comparisons",
+    "evidence": [
+     {
+      "loc": "Gas Mass Conversion Factor",
+      "quote": "The main sequence galaxy (MS) sample is taken from (cite: magnelli12), the high-redshift SMGs from (cite: carilli10; walter12; fu12; ivison13; fu13; alaghbandzadeh13), and the SPT-SMG sample is from (cite: aravena16) and (cite: reuter20)."
+     }
+    ]
+   },
+   "citation": "(cite: magnelli12; carilli10; walter12; fu12; ivison13; fu13; alaghbandzadeh13; aravena16; reuter20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and spectral lines and extract 1D spectra",
+   "method": "Image continuum by combining LSB and USB excluding line channels; subtract continuum in uv-plane using uvcontsub (order 1); image spectral cubes at 100 km/s resolution and single-channel moment 0 maps; extract 1D spectra using apertures of 2.5'' (W) and 1.2'' (E).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs weighting, robust = 0.5",
+    "Spectral cube velocity averaging = 100 km s^-1; Moment 0 single channel width = 1000 km s^-1 (W) and 500 km s^-1 (E)",
+    "Spectral extraction apertures: 2.5'' (W) and 1.2'' (E)"
+   ],
+   "assumptions": [
+    "Velocity separation of ~750 km s^-1 between W and E based on [CII] observations"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Decompose blended and non-Gaussian spectral lines and calculate line luminosities",
+   "method": "Re-image ALMA 240 GHz [CII] data with the same weighting and velocity averaging to use as a high-SNR template; scale the [CII] template to observed line spectra (jointly for blended lines) via least squares; integrate flux from line center - 3*sigma_v to + 3*sigma_v; repeat 3000 times with random Gaussian noise to get median and standard deviation; convert I_obs to L_line and L'_line using Solomon et al. (1997) equations.",
+   "software": [],
+   "key_parameters": [
+    "[CII] template FWHM = 779 +/- 25 km s^-1 (W) and 371 +/- 12 km s^-1 (E)",
+    "Integration range: line center - 3*sigma_v to line center + 3*sigma_v; 3000 Monte Carlo iterations"
+   ],
+   "assumptions": [
+    "Molecular lines share the same kinematic profile as the [CII] template; unresolved ATCA CO(3-2) flux distributed between W and E by scaling to CO(6-5); flat LambdaCDM cosmology (h = 0.677, Omega_m = 0.307, Omega_Lambda = 0.693)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform gravitational lens modeling in the visibility plane",
+   "method": "Fit parametric lens models to visibility data of 140 GHz and 101 GHz continuum and single-channel (1000 km/s) CO(6-5), CO(7-6), and CO(10-9) lines in W using visilens with SIE lens profile and Sersic source profile(s).",
+   "software": [
+    "visilens",
+    "emcee"
+   ],
+   "key_parameters": [
+    "1000 MCMC chains; lens parameters constrained within best-fit values of 140 GHz single-lens model"
+   ],
+   "assumptions": [
+    "SIE lens mass profile, Sersic source profile; fixed magnification mu = 1.3 for E and mu = 2.2 for p-H2O in W from Marrone et al. (2018)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit modified blackbody dust SED to derive dust temperature, dust mass, L_FIR, and L_IR",
+   "method": "Fit a uniform-temperature modified blackbody function (including CMB effect) to magnification-corrected rest-frame >50 um photometry using MCMC to sample M_dust and T_dust, then integrate rest-frame 8-1000 um for L_IR and 42.5-122.5 um for L_FIR.",
+   "software": [],
+   "key_parameters": [
+    "15% calibration/lensing error added in quadrature; upper limit on effective radius = 5000 pc (W) and 1300 pc (E)"
+   ],
+   "assumptions": [
+    "Uniform dust temperature; kappa_nu = 0.038 * (nu / 372.7 GHz)^beta_Td [m^2 kg^-1] from Draine (2003); beta_Td fixed to 2.0"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze L_H2O - L_FIR correlation and derive H2O-based SFR and [CI]-based gas mass",
+   "method": "Perform MCMC linear regression of log10(L_H2O/L_FIR) vs log10(L_FIR) across SPT0311-58 and literature sample; calibrate Kennicutt & Evans (2012) SFR relation with L_H2O; calculate molecular gas mass from [CI](2-1) luminosity using Weiss et al. (2003, 2005) equation with CMB correction.",
+   "software": [],
+   "key_parameters": [
+    "T_CMB = 21.5 K at z = 6.9; T_1 = 23.6 K, T_2 = 62.5 K"
+   ],
+   "assumptions": [
+    "No differential magnification between H2O and continuum; SFR [M_sun/yr] = 1.47e-10 L_IR [L_sun]; T_ex = 30 K for [CI]; [CI]/[H2] = (8.4 +/- 3.5)e-5; Helium correction factor = 1.36"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Perform non-LTE LVG radiative transfer modeling of dust, CO, and [CI] simultaneously",
+   "method": "Simultaneously fit dust continuum, CO SLED, and [CI](2-1) flux densities using non-LTE LVG radiative transfer models (1-component, 2-component, and Turbulence models, where Turbulence samples 50 densities from a log-normal PDF) optimized via the Monte Carlo Bees Algorithm.",
+   "software": [],
+   "key_parameters": [
+    "10 input parameters (1-component), 20 input parameters (2-component), 12 input parameters (Turbulence); 30 independent runs evaluating ~10^7 models total",
+    "Parameter priors/ranges in Table 3: log(n_H2) in [1, 7], T_K in [21, 600] K, T_K/T_dust in [0.5, 6.0], beta_TK in [-0.5, -0.05], beta_Tdust in [1.5, 2.0], R_eff in [0.1, 5000] pc, kappa_vir in [1, 3], dv_turb in [5, 200] km/s, GDMR in [90, 1100] (or [120, 150] for Z_sun), [CO/H2] in [1e-7, 2e-4] (or [1e-4, 2e-4] for Z_sun), [CI/H2] in [1e-7, 1e-4], beta_[CI] in [-5, 0]"
+   ],
+   "assumptions": [
+    "Dust opacity kappa_nu / m^2 kg^-1 = 0.04 * (nu / 250 GHz)^beta_Td; log-normal density PDF in supersonically isothermal turbulent gas; T_K and [CI] abundance coupled to density as power laws in Turbulence model; Helium factor 1.36"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive alpha_CO, gas depletion timescales, and neutral gas energy budget",
+   "method": "Calculate alpha_CO = M_gas / L'_CO(1-0) using LVG model L'_CO(1-0) and three M_gas estimates (LVG, dust mass with GDMR=100, and [CI](2-1)); test alpha_CO vs T_dust correlation via MCMC linear fit and F-test; compute t_dep = M_gas / SFR; compare integrated CO cooling energy over t_dep with turbulent kinetic energy and stellar wind/supernova feedback energy.",
+   "software": [],
+   "key_parameters": [
+    "F-test p-value < 0.05 for alpha_CO vs T_dust slope"
+   ],
+   "assumptions": [
+    "GDMR = 100 for dust-based M_gas; Kroupa IMF with 0.2% O-type stars (10^49-51 erg over 5 Myr) and 7% supernova progenitors (10-40 M_sun, 10^51 erg each, <=1% efficiency to turbulence)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Observed 95 GHz continuum flux density (SPT0311-58 W)",
+   "value": "1.26",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1 & 2 | W | 95 | 1.26 $\\pm$ 0.04 | 2.09 $\\pm$ 0.06 | 0.60 $\\pm$ 0.09 | 16 $\\pm$ 4 | 26 $\\pm$ 12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed 140 GHz continuum flux density (SPT0311-58 W)",
+   "value": "4.12",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | W | 140 | 4.12 $\\pm$ 0.01 | 2.09 $\\pm$ 0.10 | 1.97 $\\pm$ 0.31 | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed 95 GHz continuum flux density (SPT0311-58 E)",
+   "value": "0.04",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1 & 2 | E | 95 | 0.04 $\\pm$ 0.02 | 1.3 | 0.03 $\\pm$ 0.02 | 3.0 $\\pm$ 0.4 | 3.5 $\\pm$ 0.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed 140 GHz continuum flux density (SPT0311-58 E)",
+   "value": "0.24",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | E | 140 | 0.24 $\\pm$ 0.01 | 1.32 $\\pm$ 0.06 | 0.18 $\\pm$ 0.03 | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) velocity integrated observed flux I_obs (SPT0311-58 W)",
+   "value": "2.33",
+   "uncertainty": "0.09",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm CO(6-5)$ | W | 2.33 $\\pm$ 0.09 | 10.22 $\\pm$ 0.39 | 2.08 $\\pm$ 0.21 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) velocity integrated observed flux I_obs (SPT0311-58 E)",
+   "value": "0.18",
+   "uncertainty": "0.03",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | E | 0.18 $\\pm$ 0.03 | 0.79 $\\pm$ 0.13 | 1.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) velocity integrated observed flux I_obs (SPT0311-58 W)",
+   "value": "2.15",
+   "uncertainty": "0.12",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm CO(7-6)$ | W | 2.15 $\\pm$ 0.12 | 11.00 $\\pm$ 0.61 | 2.13 $\\pm$ 0.14 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) velocity integrated observed flux I_obs (SPT0311-58 E)",
+   "value": "0.17",
+   "uncertainty": "0.04",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | E | 0.17 $\\pm$ 0.04 | 0.87 $\\pm$ 0.20 | 1.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(10-9) velocity integrated observed flux I_obs (SPT0311-58 W)",
+   "value": "1.41",
+   "uncertainty": "0.10",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm CO(10-9)$ | W | 1.41 $\\pm$ 0.10 | 10.30 $\\pm$ 0.73 | 2.16 $\\pm$ 0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(10-9) velocity integrated observed flux I_obs (SPT0311-58 E)",
+   "value": "0.14",
+   "uncertainty": "0.04",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | E | 0.14 $\\pm$ 0.04 | 1.02 $\\pm$ 0.29 | 1.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) velocity integrated observed flux I_obs (SPT0311-58 W)",
+   "value": "1.42",
+   "uncertainty": "0.12",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| \\[CI\\]$\\rm (2-1)$ | W | 1.42 $\\pm$ 0.12 | 7.28 $\\pm$ 0.61 | 2.13 $\\pm$ 0.14 |"
+    }
+   ]
+  },
+  {
+   "quantity": "p-H2O(2_1,1-2_0,2) velocity integrated observed flux I_obs (SPT0311-58 W)",
+   "value": "0.97",
+   "uncertainty": "0.09",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| p-$\\rm H_{2} O (2_{1,1}-2_{0,2})$ | W | 0.97 $\\pm$ 0.09 | 4.63 $\\pm$ 0.43 | 2.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum magnification at 95 GHz (SPT0311-58 W)",
+   "value": "2.09",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1 & 2 | W | 95 | 1.26 $\\pm$ 0.04 | 2.09 $\\pm$ 0.06 | 0.60 $\\pm$ 0.09 | 16 $\\pm$ 4 | 26 $\\pm$ 12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum magnification at 140 GHz (SPT0311-58 W)",
+   "value": "2.09",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | W | 140 | 4.12 $\\pm$ 0.01 | 2.09 $\\pm$ 0.10 | 1.97 $\\pm$ 0.31 | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) magnification (SPT0311-58 W)",
+   "value": "2.08",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm CO(6-5)$ | W | 2.33 $\\pm$ 0.09 | 10.22 $\\pm$ 0.39 | 2.08 $\\pm$ 0.21 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) magnification (SPT0311-58 W)",
+   "value": "2.13",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm CO(7-6)$ | W | 2.15 $\\pm$ 0.12 | 11.00 $\\pm$ 0.61 | 2.13 $\\pm$ 0.14 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(10-9) magnification (SPT0311-58 W)",
+   "value": "2.16",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm CO(10-9)$ | W | 1.41 $\\pm$ 0.10 | 10.30 $\\pm$ 0.73 | 2.16 $\\pm$ 0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic far-infrared luminosity L_FIR from modified blackbody SED (SPT0311-58 W)",
+   "value": "16e12",
+   "uncertainty": "4e12",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The intrinsic far-infrared luminosity is (16 $\\pm$ 4)$\\times\\rm 10^{12} \\ \\rm L_{\\odot}$ in West and (27 $\\pm$ 4)$\\times\\rm 10^{11} \\ \\rm L_{\\odot}$ in East."
+    },
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "We estimate intrinsic $\\rm L_{IR}$ = (26 $\\pm$ 12)$\\times \\rm 10^{12}\\ \\rm L_{\\odot}$ and $\\rm L_{FIR}$ = (16 $\\pm$ 4)$\\times \\rm 10^{12}\\ \\rm L_{\\odot}$ in W, and $\\rm L_{IR}$ = (35 $\\pm$ 7)$\\times \\rm 10^{11}\\ \\rm L_{\\odot}$ and $\\rm L_{FIR}$ = (27 $\\pm$ 4)$\\times \\rm 10^{11}\\ \\rm L_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic far-infrared luminosity L_FIR from modified blackbody SED (SPT0311-58 E)",
+   "value": "27e11",
+   "uncertainty": "4e11",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The intrinsic far-infrared luminosity is (16 $\\pm$ 4)$\\times\\rm 10^{12} \\ \\rm L_{\\odot}$ in West and (27 $\\pm$ 4)$\\times\\rm 10^{11} \\ \\rm L_{\\odot}$ in East."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic total infrared luminosity L_IR from modified blackbody SED (SPT0311-58 W)",
+   "value": "26e12",
+   "uncertainty": "12e12",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "We estimate intrinsic $\\rm L_{IR}$ = (26 $\\pm$ 12)$\\times \\rm 10^{12}\\ \\rm L_{\\odot}$ and $\\rm L_{FIR}$ = (16 $\\pm$ 4)$\\times \\rm 10^{12}\\ \\rm L_{\\odot}$ in W, and $\\rm L_{IR}$ = (35 $\\pm$ 7)$\\times \\rm 10^{11}\\ \\rm L_{\\odot}$ and $\\rm L_{FIR}$ = (27 $\\pm$ 4)$\\times \\rm 10^{11}\\ \\rm L_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic total infrared luminosity L_IR from modified blackbody SED (SPT0311-58 E)",
+   "value": "35e11",
+   "uncertainty": "7e11",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "We estimate intrinsic $\\rm L_{IR}$ = (26 $\\pm$ 12)$\\times \\rm 10^{12}\\ \\rm L_{\\odot}$ and $\\rm L_{FIR}$ = (16 $\\pm$ 4)$\\times \\rm 10^{12}\\ \\rm L_{\\odot}$ in W, and $\\rm L_{IR}$ = (35 $\\pm$ 7)$\\times \\rm 10^{11}\\ \\rm L_{\\odot}$ and $\\rm L_{FIR}$ = (27 $\\pm$ 4)$\\times \\rm 10^{11}\\ \\rm L_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature T_dust from modified blackbody SED (SPT0311-58 W)",
+   "value": "69",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "From the SED modeling in SPT0311-58, we get $\\rm T_{dust} = 69 \\pm 20$ K in W and $49 \\pm 9$ K in E, and an intrinsic $\\rm M_{dust} = (1.3 \\pm 0.5)\\times10^{9}\\ M_{\\odot}$ in W and $\\rm (1.8 \\pm 0.6)\\times10^{8}\\ M_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature T_dust from modified blackbody SED (SPT0311-58 E)",
+   "value": "49",
+   "uncertainty": "9",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "From the SED modeling in SPT0311-58, we get $\\rm T_{dust} = 69 \\pm 20$ K in W and $49 \\pm 9$ K in E, and an intrinsic $\\rm M_{dust} = (1.3 \\pm 0.5)\\times10^{9}\\ M_{\\odot}$ in W and $\\rm (1.8 \\pm 0.6)\\times10^{8}\\ M_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic dust mass M_dust from modified blackbody SED (SPT0311-58 W)",
+   "value": "1.3e9",
+   "uncertainty": "0.5e9",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "From the SED modeling in SPT0311-58, we get $\\rm T_{dust} = 69 \\pm 20$ K in W and $49 \\pm 9$ K in E, and an intrinsic $\\rm M_{dust} = (1.3 \\pm 0.5)\\times10^{9}\\ M_{\\odot}$ in W and $\\rm (1.8 \\pm 0.6)\\times10^{8}\\ M_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic dust mass M_dust from modified blackbody SED (SPT0311-58 E)",
+   "value": "1.8e8",
+   "uncertainty": "0.6e8",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting and Dust Mass",
+     "quote": "From the SED modeling in SPT0311-58, we get $\\rm T_{dust} = 69 \\pm 20$ K in W and $49 \\pm 9$ K in E, and an intrinsic $\\rm M_{dust} = (1.3 \\pm 0.5)\\times10^{9}\\ M_{\\odot}$ in W and $\\rm (1.8 \\pm 0.6)\\times10^{8}\\ M_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O / L_FIR ratio (fixed zero slope fit)",
+   "value": "1.10e-5",
+   "uncertainty": "0.4e-5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "$L_{H_{2}O} - L_{FIR}$ Correlation",
+     "quote": "The fit with the slope fixed to zero gives: $$\\begin{equation} \\label{eqn:lh2o_lfir} \\rm \\frac{L_{H_{2}O}}{L_{FIR}} = (1.10 \\pm 0.4) \\times 10^{-5}\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic SFR from p-H2O(2_1,1-2_0,2) (SPT0311-58 W)",
+   "value": "4356",
+   "uncertainty": "2143",
+   "units": "M_sun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "$L_{H_{2}O} - L_{FIR}$ Correlation",
+     "quote": "We estimate an intrinsic SFR of (4356 $\\pm$ 2143) $\\rm M_{\\odot}$/yr in W and a 1$\\sigma$ upper limit of 385 $\\rm M_{\\odot}$/yr in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic gas mass from [CI](2-1) (SPT0311-58 W)",
+   "value": "24.9e10",
+   "uncertainty": "10.7e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas Mass from [CI]",
+     "quote": "We estimate an intrinsic gas mass of (24.9 $\\pm$ 10.7)$\\times 10^{10} \\ \\rm M_{\\odot}$ in W and (11.4 $\\pm$ 11.4)$\\times 10^{9} \\ \\rm M_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas density log(n_H2) from Turbulence LVG model (SPT0311-58 W)",
+   "value": "5.3",
+   "uncertainty": "1.3",
+   "units": "log(cm^-3)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model Outputs",
+     "quote": "The best-fit mean gas densities are log(n$_{\\rm H_{2}}$/cm$^{-3}$ ) = (5.3 $\\pm$ 1.3) in W and (4.7 $\\pm$ 2.4) in E from the *Turbulence* model."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas density log(n_H2) from Turbulence LVG model (SPT0311-58 E)",
+   "value": "4.7",
+   "uncertainty": "2.4",
+   "units": "log(cm^-3)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model Outputs",
+     "quote": "The best-fit mean gas densities are log(n$_{\\rm H_{2}}$/cm$^{-3}$ ) = (5.3 $\\pm$ 1.3) in W and (4.7 $\\pm$ 2.4) in E from the *Turbulence* model."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas kinetic temperature T_K from Turbulence LVG model (SPT0311-58 W)",
+   "value": "116",
+   "uncertainty": "42",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model Outputs",
+     "quote": "The kinetic temperature from the *Turbulence* model is (116 $\\pm$ 42) K in W and (166 $\\pm$ 65) K in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas kinetic temperature T_K from Turbulence LVG model (SPT0311-58 E)",
+   "value": "166",
+   "uncertainty": "65",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model Outputs",
+     "quote": "The kinetic temperature from the *Turbulence* model is (116 $\\pm$ 42) K in W and (166 $\\pm$ 65) K in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic gas mass M_gas from Turbulence LVG model (SPT0311-58 W, sub-solar prior)",
+   "value": "5.4e11",
+   "uncertainty": "3.4e11",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We model the dust, CO, and \\[CI\\] using non-local thermodynamic equilibrium radiative transfer models and estimate the intrinsic gas mass to be (5.4 $\\pm$ 3.4)$\\times\\rm 10^{11} \\ \\rm M_{\\odot}$ in West and (3.1 $\\pm$ 2.7)$\\times\\rm 10^{10} \\ \\rm M_{\\odot}$ in East."
+    },
+    {
+     "loc": "Gas Mass and SFR",
+     "quote": "From the *Turbulence* model, we get $\\rm M_{gas} = (5.4 \\pm 3.4) \\times 10^{11}\\ M_{\\odot}$ in W and ($\\rm 3.1 \\pm 2.7) \\times 10^{10}\\ M_{\\odot}$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic gas mass M_gas from Turbulence LVG model (SPT0311-58 E, sub-solar prior)",
+   "value": "3.1e10",
+   "uncertainty": "2.7e10",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We model the dust, CO, and \\[CI\\] using non-local thermodynamic equilibrium radiative transfer models and estimate the intrinsic gas mass to be (5.4 $\\pm$ 3.4)$\\times\\rm 10^{11} \\ \\rm M_{\\odot}$ in West and (3.1 $\\pm$ 2.7)$\\times\\rm 10^{10} \\ \\rm M_{\\odot}$ in East."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic SFR from Turbulence LVG model (SPT0311-58 W)",
+   "value": "5046",
+   "uncertainty": "944",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SFR | M$_{\\odot}$ yr$^{-1}$ | | 5046 $\\pm$ 944 | 5043 $\\pm$ 949 | 701 $\\pm$ 151 | 708 $\\pm$ 151 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic SFR from Turbulence LVG model (SPT0311-58 E)",
+   "value": "701",
+   "uncertainty": "151",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SFR | M$_{\\odot}$ yr$^{-1}$ | | 5046 $\\pm$ 944 | 5043 $\\pm$ 949 | 701 $\\pm$ 151 | 708 $\\pm$ 151 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-to-H2 conversion factor alpha_CO from Turbulence LVG model (SPT0311-58 W, sub-solar prior)",
+   "value": "7.1",
+   "uncertainty": "5.3",
+   "units": "M_sun / (K km s^-1 pc^2)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $\\rm \\alpha_{CO}$ | $\\rm M_{\\odot}/K \\ km\\ s^{-1} pc^{2}$ | | 7.1 $\\pm$ 5.3 | 5.3 $\\pm$ 2.7 | 3.9 $\\pm$ 4.4 | 2.5 $\\pm$ 0.8 |"
+    },
+    {
+     "loc": "Gas Mass Conversion Factor",
+     "quote": "Assuming less than solar metallicity in SPT0311-58, we obtain $\\rm \\alpha_{CO} = 7.1 \\pm 5.3$ in W and $\\rm 3.9 \\pm 4.4$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "CO-to-H2 conversion factor alpha_CO from Turbulence LVG model (SPT0311-58 E, sub-solar prior)",
+   "value": "3.9",
+   "uncertainty": "4.4",
+   "units": "M_sun / (K km s^-1 pc^2)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas Mass Conversion Factor",
+     "quote": "Assuming less than solar metallicity in SPT0311-58, we obtain $\\rm \\alpha_{CO} = 7.1 \\pm 5.3$ in W and $\\rm 3.9 \\pm 4.4$ in E."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean alpha_CO for high-redshift SMG and SPT-SMG sample",
+   "value": "3.2",
+   "uncertainty": "2.7",
+   "units": "M_sun / (K km s^-1 pc^2)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas Mass Conversion Factor",
+     "quote": "From the high-redshift SMG sample together with SPT-SMGs, we estimate a mean $\\rm \\alpha_{CO} = 3.2 \\pm 2.7$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale t_dep from Turbulence LVG model (SPT0311-58 W, sub-solar prior)",
+   "value": "107",
+   "uncertainty": "70",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Depletion Time",
+     "quote": "We estimate $\\rm t_{dep} = 107 \\pm 70 \\ Myr$ and $\\rm 44 \\pm 40 \\ Myr$ in W and E, respectively, assuming less than solar metallicity."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale t_dep from Turbulence LVG model (SPT0311-58 E, sub-solar prior)",
+   "value": "44",
+   "uncertainty": "40",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Depletion Time",
+     "quote": "We estimate $\\rm t_{dep} = 107 \\pm 70 \\ Myr$ and $\\rm 44 \\pm 40 \\ Myr$ in W and E, respectively, assuming less than solar metallicity."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging task (e.g., tclean vs clean), cell size, image size, stopping threshold, and masking strategy in CASA",
+  "Exact channel ranges excluded for continuum imaging and used for uvcontsub",
+  "Shape and exact centering coordinates of the 2.5'' and 1.2'' apertures used for spectral extraction",
+  "Visibility averaging time/frequency bin size used prior to visilens fitting",
+  "Full numerical values in Appendix Tables 4, 5, 6, and 7 (which are missing or truncated in the text/LaTeX)",
+  "Availability or public release of the N-component and Turbulence LVG radiative transfer codes"
+ ],
+ "missing_for_reproduction": [
+  "The non-LTE LVG radiative transfer codes (N-component and Turbulence) and the Monte Carlo Bees Algorithm implementation are not publicly linked or released in the paper.",
+  "Appendix Tables (FIR photometry table and best-fit values in Tables 4, 5, and 6 for lens modeling) are missing or truncated in the provided manuscript text.",
+  "Exact CASA imaging parameters (cell size, image size, stopping threshold, clean masks) and exact spectral extraction aperture centers are not stated."
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The observational setup, calibration provenance (standard ALMA pipeline in CASA 5.1.1), spectral template fitting, modified blackbody SED equations, and LVG model equations/priors are thoroughly documented, and visilens/emcee are public. However, the custom Turbulence/N-component LVG radiative transfer code is not publicly released, and several imaging/aperture details and Appendix table entries are incomplete in the text.",
+ "rediscovery_reason": "All ALMA project codes are public in the archive, standard pipeline calibration was used, visilens is open-source, and key numeric results (continuum fluxes, line fluxes via [CII] template deblending, lensing magnifications, MBB dust masses/temperatures, and [CI]/H2O-based gas mass and SFR) can be independently reproduced from the archival data.",
+ "source_card": "cards/2021ApJ...921...97J/sonnet/card.md"
+}

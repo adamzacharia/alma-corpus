@@ -1,0 +1,1159 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017Icar..286..289L",
+  "title": "Detection of CO and HCN in Pluto's atmosphere with ALMA",
+  "year": 2017,
+  "journal": "Icarus",
+  "first_author": "Lellouch, E.",
+  "n_authors": 19,
+  "arxiv_id": "1606.03293",
+  "doi": "10.1016/j.icarus.2016.10.013",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00446.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Observations of the Pluto-Charon system, acquired with the ALMA interferometer on June 12-13, 2015,"
+   },
+   {
+    "loc": "Summary",
+    "quote": "Based on high signal-to-noise ALMA observations performed in June 2015, we report the first observation of CO in Pluto’s atmosphere at sub-millimeter wavelengths, and the first detection of HCN."
+   }
+  ],
+  "science": {
+   "fields": [
+    "solar_system"
+   ],
+   "targets": [
+    {
+     "name": "Pluto (and Charon)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "31.958 AU (Jun 12), 31.952 AU (Jun 13) geocentric",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "2015-Jun-12 | 04:15–05:55 | 31.958 | 157 | 0.70"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "geometric parameters in Table 2 (source not stated)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "2015-Jun-12 | 04:15–05:55 | 31.958 | 157 | 0.70"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Detect CO and HCN (and search for HC3N, HC15N) in Pluto's atmosphere with ALMA and constrain the CO abundance, the thermal structure and the HCN distribution.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper, we report on searches for CO, HCN and HC$_3$N in Pluto’s atmosphere with ALMA, leading to the strong confirmation of CO and the first detection of HCN."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00446.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper is based on ALMA program 2013.1.00446.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (~350 GHz)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "Observations reported here were taken in Band 7, near 350 GHz."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "One TDM continuum window (354-356 GHz) and three FDM line windows: CO(3-2) at 0.141 MHz, HCN(4-3) at 0.282 MHz, HC15N(4-3) at 0.488 MHz",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "1 | 345.598–345.832 | 0.141 | CO(3-2); 345.796"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "2 | 354.380–354.849 | 0.282 | HCN(4-3); 354.505"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "3-2",
+     "rest_frequency": "345.796 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CO(3-2); 345.796"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "4-3",
+     "rest_frequency": "354.505 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HCN(4-3); 354.505"
+      }
+     ]
+    },
+    {
+     "species": "HC3N",
+     "transition": "38-37 and 39-38",
+     "rest_frequency": "345.609 and 354.697 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HC$_3$N(39-38); 354.697"
+      }
+     ]
+    },
+    {
+     "species": "HC15N",
+     "transition": "4-3",
+     "rest_frequency": "344.200 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HC$^{15}$N(4-3); 344.200"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m array, 39 antennas",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "There were 39 operating antennas in the array, in the C36-7 configuration."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C36-7",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "There were 39 operating antennas in the array, in the C36-7 configuration."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "max ~800 m",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "which has a maximum antenna separation of $\\sim$ 800 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.35 arcsec",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "yielded at these frequencies a $\\sim$0.35$^{\\prime\\prime}$ resolution (i.e., 8100 km at Pluto’s distance)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 3.28 mJy (CO, 141 kHz), 2.85 mJy (HCN, 282 kHz), 1.88 mJy (HC15N, 488 kHz)",
+    "evidence": [
+     {
+      "loc": "Data assessment",
+      "quote": "With 1-$\\sigma$ rms residuals of 3.28 mJy and 2.85 mJy, this gives a S/N detection of 19 for CO and 35 for HCN at the peak."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~55 min on Pluto/Charon per date (1 h 40 min total)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "On each date, the entire observation took 1 hour 40 minutes, of which about 55 minutes were on Pluto/Charon."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "June 12 and June 13, 2015",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The observations were undertaken on two separate dates, June 12 and June 13, 2015."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "New Horizons (Alice, REX)",
+     "provided": {
+      "value": "Temperature profile and N2/CH4 line-of-sight columns used as a priori and for consistency tests",
+      "evidence": [
+       {
+        "loc": "5.1.1 New Horizons/Alice",
+        "quote": "Fig. 11 compares the Alice LOS data (as shown in (cite: gladstone16), and kindly provided to us by J. Kammer) to models."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Stellar occultations (VLT/NaCO 2012 July 18)",
+     "provided": {
+      "value": "Occultation temperature profiles and lightcurve for comparison",
+      "evidence": [
+       {
+        "loc": "5.1.2 Stellar occultations",
+        "quote": "in practice, we used the high S/N 2012 July 18 occultation observed with VLT/NaCO."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "A priori temperature profile from stellar occultations",
+      "evidence": [
+       {
+        "loc": "4.1.2 Results",
+        "quote": "We started with the nominal temperature profile derived from stellar occultations by (cite: dias15)."
+       }
+      ]
+     },
+     "citation": "(cite: dias15)"
+    },
+    {
+     "what": {
+      "value": "New Horizons standard temperature profile (Alice + REX) used as a priori",
+      "evidence": [
+       {
+        "loc": "4.1.2 Results",
+        "quote": "the \"standard\" profile derived from New Horizons (cite: gladstone16), which combines results from Alice (above 200 km) and REX (below 60 km)"
+       }
+      ]
+     },
+     "citation": "(cite: gladstone16)"
+    },
+    {
+     "what": {
+      "value": "HCN vapor pressure law",
+      "evidence": [
+       {
+        "loc": "4.2.2 HCN initial fits",
+        "quote": "using for that purpose the HCN vapor pressure vs temperature dependence provided by (cite: fray09)"
+       }
+      ]
+     },
+     "citation": "(cite: fray09)"
+    },
+    {
+     "what": {
+      "value": "Line parameters for CO and HCN including hyperfine structure",
+      "evidence": [
+       {
+        "loc": "4 Modelling and analysis",
+        "quote": "Line opacities for CO and HCN were calculated using line parameters from the Cologne database (cite: muller01), including the hyperfine structure for HCN."
+       }
+      ]
+     },
+     "citation": "(cite: muller01)"
+    },
+    {
+     "what": {
+      "value": "N2 collisional broadening coefficients",
+      "evidence": [
+       {
+        "loc": "4 Modelling and analysis",
+        "quote": "Collisional broadening by N$_2$ were taken from (cite: koshelev09), (cite: priem00) and (cite: yang08)"
+       }
+      ]
+     },
+     "citation": "(cite: koshelev09), (cite: priem00), (cite: yang08)"
+    },
+    {
+     "what": {
+      "value": "HCN(4-3) collisional excitation coefficient by He",
+      "evidence": [
+       {
+        "loc": "4 Modelling and analysis",
+        "quote": "an excitation coefficient of 9$\\times$10$^{-12}$ cm$^3$s$^{-1}$ for HCN(4-3) by He (cite: dumouchel10)"
+       }
+      ]
+     },
+     "citation": "(cite: dumouchel10)"
+    },
+    {
+     "what": {
+      "value": "Titan flux density model used for absolute flux scale",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "using a standard model for Titan (cite: butler12)"
+       }
+      ]
+     },
+     "citation": "(cite: butler12)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Preliminary HCN profile from coupled photochemical-microphysical model (Lavvas et al., in prep.), rescaled by 1/2 and compared with the ALMA HCN line",
+     "evidence": [
+      {
+       "loc": "5.3 HCN profile",
+       "quote": "Testing it against the ALMA observations indicates that a good agreement is obtained by uniformly dividing the calculated HCN mixing ratio in the model by 2."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Initial calibration provided by the ALMA observatory in CASA; then self-calibration in AIPS",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Initial calibration of the data was provided by the ALMA observatory, and done in the CASA reduction package, version 4.3.1 (cite: muders14)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.3.1",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "done in the CASA reduction package, version 4.3.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan (bandpass/delay J1924-2914; phase J1911-2006)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "We observed the calibrator J1924-2914 to calibrate bandpass and delay, and Titan for absolute flux density calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "5%",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The expected overall flux density scale accuracy is 5%, using a standard model for Titan"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Phase self-cal on continuum window with solution intervals of 5, 2, 1 min; solutions applied to line windows",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "We did this iteratively with solution intervals of 5, 2, and 1 minute."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Spectra obtained by averaging continuum-subtracted visibilities per channel (no image); Doppler correction with fixplanets() and cvel()",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Finally, averaging continuum-subtracted visibilities for each spectral channel yielded the spectra in each of the target lines."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Visibility-domain subtraction using average of channels far outside the line (continuum 18.2 mJy CO, 18.9 mJy HCN)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "We did this in the visibility domain, using an average of spectral channels that were far outside the line emission region (cite: vanlange90)."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~0.35 arcsec HPBW",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "the beam ($\\sim$0.35\" HPBW), convolution effects amount to a typical 10 % flux loss."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Continuum subtraction technique",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "using an average of spectral channels that were far outside the line emission region (cite: vanlange90)"
+       }
+      ]
+     },
+     "from_reference": "(cite: vanlange90)"
+    },
+    {
+     "what": {
+      "value": "Temperature retrieval algorithm (constrained, regularized inversion)",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "we used a constrained and regularized algorithm following methods detailed in (cite: conrath98) and (cite: rodgers00)"
+       }
+      ]
+     },
+     "from_reference": "(cite: conrath98), (cite: rodgers00), (cite: fouchet16)"
+    },
+    {
+     "what": {
+      "value": "Diffusion model formalism for CH4-N2",
+      "evidence": [
+       {
+        "loc": "5.1.1 New Horizons/Alice",
+        "quote": "using the formalism of (cite: yelle06) for two gases in comparable abundance"
+       }
+      ]
+     },
+     "from_reference": "(cite: yelle06)"
+    },
+    {
+     "what": {
+      "value": "Continuum measurements to be described in a future publication",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "Continuum measurements have been briefly presented (cite: butler15) and will be described in detail in a future publication."
+       }
+      ]
+     },
+     "from_reference": "(cite: butler15)"
+    }
+   ],
+   "unstated_but_needed": [
+    "The radiative transfer and inversion code is custom and not released; reproduction requires reimplementation.",
+    "Which channels were treated as line-free and the AIPS imaging parameters for the continuum self-calibration (weighting, cell size) are not given.",
+    "Calibration scheduling-block names or pipeline script versions and flagging are not specified.",
+    "Exact a priori temperature profiles (mixed profile weights, correlation matrix details) and error covariance values are not tabulated.",
+    "Pluto position and ephemeris used for fixplanets are not stated.",
+    "Lavvas et al. HCN model profile is unpublished."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and prepare visibilities",
+    "method": {
+     "value": "ALMA-provided CASA calibration, Doppler correction with fixplanets and cvel, then AIPS self-calibration on continuum window applied to line windows",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "This correction was done with the CASA tasks *fixplanets()* and *cvel()*."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "AIPS"
+    ],
+    "key_parameters": [
+     {
+      "value": "Self-cal solution intervals 5, 2, 1 min",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "We did this iteratively with solution intervals of 5, 2, and 1 minute."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract continuum-subtracted line spectra",
+    "method": {
+     "value": "Visibility-domain continuum subtraction, then average visibilities per channel to obtain spectra; average June 12 and 13",
+     "evidence": [
+      {
+       "loc": "Data assessment",
+       "quote": "Data from the two days were therefore averaged for further analysis."
+      }
+     ]
+    },
+    "software": [
+     "AIPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Spectra represent central pointing flux; ~10% flux loss from beam convolution",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "convolution effects amount to a typical 10 % flux loss."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fits of CO line for day-to-day comparison",
+     "evidence": [
+      {
+       "loc": "Data assessment",
+       "quote": "gaussian fits of the CO line indicate peak contrasts of 58.1 and 62.8 mJy for June 12 and 13, respectively"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Two dates consistent within 1 sigma",
+     "evidence": [
+      {
+       "loc": "Data assessment",
+       "quote": "Data from the two different days do not show significant differences."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Retrieve CO mole fraction and temperature profile",
+    "method": {
+     "value": "Spherical-geometry LTE radiative transfer model (181 layers, 0-1300 km) convolved with 0.35\" beam; iterative regularized optimal-estimation inversion with fixed-CO and free-CO runs and several a priori profiles",
+     "evidence": [
+      {
+       "loc": "4 Modelling and analysis",
+       "quote": "The model covers the 0-1300 km altitude range by means of 181 layers, with an altitude-varying layer thickness."
+      }
+     ]
+    },
+    "software": [
+     "custom radiative transfer code"
+    ],
+    "key_parameters": [
+     {
+      "value": "Surface pressure 12 μbar nominal (10, 14 tested); CO uniformly mixed; correlation length = scale height; convergence when fit rms constant within 1%",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "Iterations were performed until convergence – defined by the constancy of the fit quality (rms between observations and models) within 1 % from an iteration to the next one – was reached."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE; molecular mass 27.94; surface radius 1190 km; Fresnel surface with dielectric constant 3.5",
+      "evidence": [
+       {
+        "loc": "4 Modelling and analysis",
+        "quote": "Emission from the surface was calculated by using a Fresnel-emission model with a dielectric constant of 3.5"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Optimal-estimation (Conrath/Rodgers) with alpha set by equalling traces of alpha K S K^T and E",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "an optimum choice of $\\alpha$ (in terms of stability and rapidity of the algorithm) was achieved by equalling the traces of the $\\alpha$**KSK$^T$** and **E** matrices."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi2 ~0.95; averaging kernels; tests of a priori, surface pressure and ±5% calibration",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "the best fit corresponded to a reduced $\\chi^2$ of $\\sim$0.95 over a $\\pm$15 MHz interval centered on the CO(3-2) line frequency"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Constrain HCN vertical distribution",
+    "method": {
+     "value": "Manual fits with parametrized HCN profiles (uniform, saturated, step, two-component) and inversion retrievals using the CO-derived nominal temperature profile; test warm-layer solutions",
+     "evidence": [
+      {
+       "loc": "4.2.2 HCN initial fits",
+       "quote": "At this stage, we obtained an optimum manual fit of the HCN spectrum (solid light blue line in Fig. 6) with a two-component HCN distribution"
+      }
+     ]
+    },
+    "software": [
+     "custom radiative transfer code"
+    ],
+    "key_parameters": [
+     {
+      "value": "Saturation from Fray & Schmitt vapor pressure; nominal profile has 106 K stratopause",
+      "evidence": [
+       {
+        "loc": "4.2.2 HCN initial fits",
+        "quote": "calculated as saturated HCN for the adopted temperature profile (with a 106 K stratopause)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Warm-layer tests required HCN at saturation everywhere",
+      "evidence": [
+       {
+        "loc": "4.2.4 Evidence for HCN supersaturation",
+        "quote": "requiring that HCN is at saturation throughout the atmosphere."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Manual fits plus optimal-estimation retrievals with several a priori HCN profiles",
+     "evidence": [
+      {
+       "loc": "4.2.3 HCN retrievals",
+       "quote": "Similar HCN profiles are returned for various a priori values of the HCN mole fraction"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Averaging kernels; consistency test against New Horizons/Alice CH4/N2 LOS columns and occultation lightcurve",
+     "evidence": [
+      {
+       "loc": "5.1.1 New Horizons/Alice",
+       "quote": "We conclude that alternate solutions with an HCN profile at saturation, while not excluded from the sole point-of-view of the ALMA data, are not viable"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Upper limits on HC15N and HC3N",
+    "method": {
+     "value": "Scale the best-fit HCN model by constant isotope ratio or assume HC3N has the HCN distribution; compare with non-detections at 2 sigma",
+     "evidence": [
+      {
+       "loc": "4.3 HC15N and HC3N upper limits",
+       "quote": "Using our best fit HCN model (light blue line from Fig. 6) and scaling it by a vertically constant isotopic ratio factor"
+      }
+     ]
+    },
+    "software": [
+     "custom radiative transfer code"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "HC3N has same vertical distribution as HCN",
+      "evidence": [
+       {
+        "loc": "4.3 HC15N and HC3N upper limits",
+        "quote": "Assuming here for simplicity that HC$_{3}$N has the same distribution as our best fit HCN model"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.1",
+    "used_for": {
+     "value": "Initial calibration; fixplanets and cvel Doppler correction",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "This correction was done with the CASA tasks *fixplanets()* and *cvel()*."
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Self-calibration, continuum subtraction and spectrum extraction",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "At this point we exported the data from CASA and continued the data reduction in the AIPS package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Custom radiative transfer and inversion code",
+    "version": "not stated",
+    "used_for": {
+     "value": "Spherical-geometry radiative transfer and retrievals",
+     "evidence": [
+      {
+       "loc": "4 Modelling and analysis",
+       "quote": "we developed our own radiative transfer code, fully accounting for the spherical geometry"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CO(3-2) peak S/N (averaged)",
+    "value": "19",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Data assessment",
+      "quote": "this gives a S/N detection of 19 for CO and 35 for HCN at the peak"
+     }
+    ]
+   },
+   {
+    "quantity": "CO mole fraction at 12 μbar",
+    "value": "515",
+    "uncertainty": "±40",
+    "units": "ppm",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1.2 Results",
+      "quote": "We conclude that the CO mole fraction in Pluto’s atmosphere is 515 $\\pm$ 40 ppm for p$_{surf}$ = 12 $\\mu$bar"
+     }
+    ]
+   },
+   {
+    "quantity": "CO surface-referred column density at 12 μbar",
+    "value": "0.100",
+    "uncertainty": "±0.008",
+    "units": "cm-am",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1.2 Results",
+      "quote": "(2.69$\\pm$0.21)$\\times$10$^{18}$ mol cm$^{-2}$ (0.100$\\pm$0.008 cm-am) for p$_{surf}$ = 12 $\\mu$bar"
+     }
+    ]
+   },
+   {
+    "quantity": "Temperature at 300 km",
+    "value": "70",
+    "uncertainty": "±2",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1.2 Results",
+      "quote": "with a best determined temperature of 70$\\pm$2 K at 300 km"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN column density",
+    "value": "1.6e14",
+    "uncertainty": "±0.4e14",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The HCN column is (1.6$\\pm$0.4)$\\times$10$^{14}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN mole fraction near 800 km",
+    "value": "4e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "a best determined value of 4$\\times$10$^{-5}$ near 800 km"
+     }
+    ]
+   },
+   {
+    "quantity": "HC3N column upper limit",
+    "value": "<2e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 HC15N and HC3N upper limits",
+      "quote": "corresponding to a maximum HC$_{3}$N column density of 2$\\times$10$^{13}$ cm$^{-2}$ (Fig. 10)"
+     }
+    ]
+   },
+   {
+    "quantity": "HC14N/HC15N lower limit (2 sigma)",
+    "value": "125",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 HC15N and HC3N upper limits",
+      "quote": "implies a lower limit of the HC$^{14}$N / HC$^{15}$N ratio equal to 125 at 2$\\sigma$ confidence level"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN surface-referred net production rate",
+    "value": "~2e7",
+    "uncertainty": "not stated",
+    "units": "cm^-2 s^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "This suggests a surface-referred net column production rate of $\\sim$2$\\times$10$^{7}$ cm$^{-2}$s$^{-1}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HCN hyperfine satellite lines detected; CO and HCN lines have large limb-emission contribution",
+    "evidence": [
+     {
+      "loc": "Data assessment",
+      "quote": "directly implies that a significant fraction of the emission originates from limb viewing"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is CO present in Pluto's atmosphere and at what abundance?",
+    "experiment": "Band 7 ALMA CO(3-2) spectrum and radiative transfer inversion",
+    "result": "CO mole fraction 515±40 ppm at 12 μbar",
+    "finding": "CO confirmed; much improved abundance, favoring ideal solid solution",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The CO mole fraction in Pluto’s atmosphere is 515$\\pm$40 ppm for a 12 $\\mu$bar surface pressure."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What is the upper-atmosphere temperature structure?",
+    "experiment": "Inversion of CO line with multiple a priori profiles",
+    "result": "70±2 K at 300 km with a mesosphere above the stratopause",
+    "finding": "Colder than occultation-derived 81±6 K, in agreement with Alice",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The CO line profile gives clear evidence for a well-marked temperature decrease over $\\sim$50-400 km altitude"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is HCN present, and how is it distributed?",
+    "experiment": "Fits and retrievals of HCN(4-3) main and satellite lines",
+    "result": "HCN mole fraction >1.5e-5 above 450 km, 4e-5 near 800 km, plus 1e-8–1e-7 in lower 100 km",
+    "finding": "HCN highly supersaturated (7-8 orders of magnitude) in the upper atmosphere",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the HCN mixing ratios imply a supersaturation of HCN in the upper atmosphere to a degree (7-8 orders of magnitude) hitherto unseen in planetary atmospheres"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can HCN cooling explain the cold upper atmosphere?",
+    "experiment": "Radiative-conductive calculations with several HCN profiles",
+    "result": "Observed HCN would require 20-200 times more to reach ~70 K",
+    "finding": "HCN cooling insufficient; heat budget unexplained",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the HCN amounts determined in this study appear unsufficient to explain the well-marked mesosphere and upper atmosphere temperature"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Nitriles have strong rotational lines well suited to mm/submm searches",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "nitriles exhibit strong rotational lines and are thus well suited to mm/submm searches"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Warm (92-98 K) upper layer allowing saturated HCN: consistent with ALMA but rejected using Alice CH4/N2 data",
+     "evidence": [
+      {
+       "loc": "5.1.1 New Horizons/Alice",
+       "quote": "alternate solutions with an HCN profile at saturation, while not excluded from the sole point-of-view of the ALMA data, are not viable"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Lower mesosphere and stratopause temperatures are more uncertain, and the HCN vertical distribution is not unique given moderate optical thickness",
+     "evidence": [
+      {
+       "loc": "5.1.2 Stellar occultations",
+       "quote": "the lower mesosphere and stratopause temperatures must be considered as more uncertain."
+      }
+     ]
+    },
+    {
+     "value": "Spatial resolution insufficient to resolve surface",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "This is sufficient to separate the emission of Pluto from Charon, but not enough to provide spatial resolution on the surface of these bodies."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Disk-integrated, unresolved data make temperature and HCN profiles degenerate and dependent on a priori.",
+    "CO abundance depends strongly on surface pressure (scales as p^-1.9).",
+    "Custom code unreleased; LTE assumed for HCN to ~1150 km.",
+    "Day-side only; comparison with occultations assumes no temporal/spatial variation."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA program 2013.1.00446.S named; public availability not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper is based on ALMA program 2013.1.00446.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Radiative transfer/inversion code",
+    "A priori profile details and the 'mixed' profile",
+    "AIPS imaging and line-free channel selection",
+    "Lavvas et al. HCN model profile",
+    "Alice LOS data provided privately"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB (two ~1.7 h execution blocks, Band 7, four spectral windows)",
+   "score_inferred": 3,
+   "score_reason": "Data identified and calibration/analysis described in good detail, but the custom retrieval code and several settings are unavailable.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results depend on a custom radiative transfer and inversion code and unstated a priori choices, so the recipe is not complete enough to redo."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: conrath98); (cite: rodgers00); (cite: fouchet16)",
+     "why": "Inversion formalism used for temperature retrieval"
+    },
+    {
+     "citation": "(cite: vanlange90)",
+     "why": "Visibility-domain continuum subtraction"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: gladstone16)",
+     "why": "New Horizons atmosphere results used as a priori and comparison"
+    },
+    {
+     "citation": "(cite: dias15)",
+     "why": "Occultation temperature profile used as a priori"
+    },
+    {
+     "citation": "(cite: butler15)",
+     "why": "Continuum measurements from the same ALMA data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "New Horizons",
+    "ALMA program 2013.1.00446.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-1e54f0d021f0ff229809620e3ebf532a",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:37",
+  "usage": {
+   "input_tokens": 44166,
+   "output_tokens": 10767,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.098608,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 82,
+  "quotes_ok": 82,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 87,
+   "stated": 61,
+   "rate": 0.701
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,402 @@
+{
+ "bibcode": "2026ApJ...997L..19Q",
+ "title": "Isotopic Ratios in the Disk of HD 163296",
+ "year": 2026,
+ "doi": "10.3847/2041-8213/ae2916",
+ "arxiv_id": "2601.02593",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Can rare CO isotopologue observations in an optically thin outer disk region beyond a sharp CO snowline empirically constrain carbon and oxygen isotopic ratios without detailed disk modeling?",
+ "alma_project_codes": [
+  "2016.1.00884.S",
+  "2018.1.01055.L",
+  "2021.1.00899.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.28'' x 0.25'' for 13C18O(2-1); 0.52'' circularized common beam for all transitions",
+  "sensitivity": "0.51 mJy/beam (C17O 1-0), 0.48 mJy/beam (C18O 1-0), 1.17 mJy/beam (13C18O 2-1), 2.54 mJy/beam (C17O 2-1) in 0.52'' common beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO molecular data from LAMDA database",
+    "evidence": [
+     {
+      "loc": "Constraining Optical Depths with Same-transition Isotopologue Flux Ratios",
+      "quote": "We adopted molecular data from the LAMDA database (cite: Schoier2005), using collisional rate coefficients from (cite: Yang2010)."
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2005)"
+  },
+  {
+   "what": {
+    "value": "CO collisional rate coefficients with ortho- and para-H2",
+    "evidence": [
+     {
+      "loc": "Constraining Optical Depths with Same-transition Isotopologue Flux Ratios",
+      "quote": "We adopted molecular data from the LAMDA database (cite: Schoier2005), using collisional rate coefficients from (cite: Yang2010)."
+     }
+    ]
+   },
+   "citation": "(cite: Yang2010)"
+  },
+  {
+   "what": {
+    "value": "Canonical ISM isotopic ratios (12C/13C = 69 +/- 6, 16O/18O = 557 +/- 30, 18O/17O = 3.6 +/- 0.2)",
+    "evidence": [
+     {
+      "loc": "Constraining Optical Depths with Same-transition Isotopologue Flux Ratios",
+      "quote": "We adopted canonical ISM isotopic ratios (cite: Wilson1999): $^{12}$C/$^{13}$C$= 69$, $^{16}$O/$^{18}$O$= 557$, and $^{18}$O/$^{17}$O$= 3.6$"
+     },
+     {
+      "loc": "MCMC Fitting to Constrain Isotopic Ratios",
+      "quote": "The best-fit isotopic ratios at 1.5$''$ and comparisons with ISM values (cite: Wilson1999) are as follows:"
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1999)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image native 13C18O(2-1) and verify Keplerian kinematics",
+   "method": "Standard pipeline calibration, self-calibration, tclean imaging with Briggs robust 0.5 to 3-sigma threshold, JvM and primary beam correction; generate moment-0 and moment-1 maps using bettermoments with 2-sigma clip",
+   "software": [
+    "CASA",
+    "bettermoments"
+   ],
+   "key_parameters": [
+    "robust = 0.5, 3-sigma CLEAN threshold, 0.28'' x 0.25'' beam, 2-sigma intensity clip for moments"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Reimage all four transitions to a common circularized beam and extract radial intensity and ratio profiles",
+   "method": "Reimage C17O(1-0), C18O(1-0), 13C18O(2-1), and C17O(2-1) with robust 0.5 and uv taper to a common 0.52'' circularized beam with JvM and PB corrections; extract deprojected azimuthally averaged radial profiles using GoFish radial_profile",
+   "software": [
+    "CASA",
+    "GoFish"
+   ],
+   "key_parameters": [
+    "common circularized beam FWHM = 0.52'', robust = 0.5, 7.1% systematic uncertainty added in quadrature for Band 6 ratio"
+   ],
+   "assumptions": [
+    "5% absolute flux calibration uncertainty per dataset; Band 3 lines share common flux scale (correlated, rho ~ 1); Band 6 datasets assumed uncorrelated (rho = 0) worst case"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Quantify same-transition isotopologue flux ratios as a function of optical depth using non-LTE radiative transfer grids",
+   "method": "Run non-LTE radiative transfer calculations over a grid of T_kin, n_H2, and N_CO using RADEX via SpectralRadex to compute line-center optical depth and flux ratios",
+   "software": [
+    "RADEX",
+    "SpectralRadex"
+   ],
+   "key_parameters": [
+    "T_kin = 30, 50, 70 K; n_H2 = 10^5 to 10^8 cm^-3; log N_CO = 16 to 19"
+   ],
+   "assumptions": [
+    "Ortho-to-para H2 ratio of 3:1; CMB background T_bg = 2.73 K; canonical ISM isotopic ratios: 12C/13C = 69, 16O/18O = 557, 18O/17O = 3.6"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain carbon and oxygen isotopic ratios at r = 1.5'' using MCMC fitting of beam-averaged line intensities",
+   "method": "Extract beam-averaged integrated intensities in an annulus centered at 1.5'' and fit them using an MCMC approach (emcee) coupled with RADEX over 7 free parameters",
+   "software": [
+    "GoFish",
+    "emcee",
+    "RADEX",
+    "SpectralRadex"
+   ],
+   "key_parameters": [
+    "Annulus centered at 1.5'' (~150 au), smoothed over 0.52'' beam; 7 free parameters"
+   ],
+   "assumptions": [
+    "Single uniform slab at 1.5'' where Delta V represents local thermal plus microturbulent FWHM"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO snowline radius (local minimum of radial derivative)",
+   "value": "0.75",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Results",
+     "quote": "The intensity decreases smoothly with radius, and the derivative exhibits a clear local minimum at 0.75$''$, coincident with the CO snowline radius inferred from other CO isotopologues (cite: Qi2024)."
+    }
+   ]
+  },
+  {
+   "quantity": "Optically thin inner boundary radius",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Both the C$^{17}$O/$^{13}$C$^{18}$O(2–1) and C$^{18}$O/C$^{17}$O(1–0) flux ratios rise sharply across the CO snowline and flatten beyond 1.5$''$ ($r \\gtrsim 150$ au), where the emission becomes optically thin."
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/13C18O(2-1) plateau flux ratio beyond 1.5''",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and Results",
+     "quote": "The C$^{17}$O/$^{13}$C$^{18}$O(2–1) ratio approaches approximately 20, consistent with the ISM value expected under optically thin emission conditions for both lines"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O/C17O(1-0) plateau flux ratio beyond 1.5''",
+   "value": "2.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and Results",
+     "quote": "while the C$^{18}$O/C$^{17}$O(1–0) ratio stabilizes near 2.7, implying moderate optical depth in the C$^{18}$O(1–0) line for ISM-like abundances"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of C17O(1-0) at 1.5'' (mJy/beam km/s)",
+   "value": "5.82",
+   "uncertainty": "0.29",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$^{17}$O(1–0) | $5.82 \\pm 0.29$ | $2.09 \\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of C17O(1-0) at 1.5'' (K km/s)",
+   "value": "2.09",
+   "uncertainty": "0.10",
+   "units": "K km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$^{17}$O(1–0) | $5.82 \\pm 0.29$ | $2.09 \\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of C18O(1-0) at 1.5'' (mJy/beam km/s)",
+   "value": "15.49",
+   "uncertainty": "0.25",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$^{18}$O(1–0) | $15.49 \\pm 0.25$ | $5.80 \\pm 0.09$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of C18O(1-0) at 1.5'' (K km/s)",
+   "value": "5.80",
+   "uncertainty": "0.09",
+   "units": "K km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$^{18}$O(1–0) | $15.49 \\pm 0.25$ | $5.80 \\pm 0.09$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of 13C18O(2-1) at 1.5'' (mJy/beam km/s)",
+   "value": "3.33",
+   "uncertainty": "0.41",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$C$^{18}$O(2–1) | $3.33 \\pm 0.41$ | $0.34 \\pm 0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of 13C18O(2-1) at 1.5'' (K km/s)",
+   "value": "0.34",
+   "uncertainty": "0.04",
+   "units": "K km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$C$^{18}$O(2–1) | $3.33 \\pm 0.41$ | $0.34 \\pm 0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of C17O(2-1) at 1.5'' (mJy/beam km/s)",
+   "value": "74.85",
+   "uncertainty": "1.17",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$^{17}$O(2–1) | $74.85 \\pm 1.17$ | $6.70 \\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged integrated intensity of C17O(2-1) at 1.5'' (K km/s)",
+   "value": "6.70",
+   "uncertainty": "0.10",
+   "units": "K km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$^{17}$O(2–1) | $74.85 \\pm 1.17$ | $6.70 \\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic temperature T_kin at 1.5''",
+   "value": "112.1",
+   "uncertainty": "+50.5/-38.3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $T_{\\rm kin}$ (K) | $112.1^{+50.5}_{-38.3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "log10(n_H2) at 1.5''",
+   "value": "6.05",
+   "uncertainty": "+1.34/-1.26",
+   "units": "log10(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\log_{10}(n_{\\rm H_2}$/cm$^{-3}$) | $6.05^{+1.34}_{-1.26}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "log10(N_CO) at 1.5''",
+   "value": "19.25",
+   "uncertainty": "+0.25/-0.32",
+   "units": "log10(cm^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\log_{10}(N_{\\rm CO}$/cm$^{-2}$) | $19.25^{+0.25}_{-0.32}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Line width Delta V at 1.5''",
+   "value": "0.32",
+   "uncertainty": "+0.18/-0.15",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\Delta V$ (km s$^{-1}$) | $0.32^{+0.18}_{-0.15}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C isotopic ratio at 1.5''",
+   "value": "75.3",
+   "uncertainty": "+14.7/-11.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "we derive isotopic ratios of $^{12}$C/$^{13}$C = $75.3^{+14.7}_{-11.4}$ and $^{18}$O/$^{17}$O = $3.28^{+0.31}_{-0.26}$, both consistent with local interstellar medium values."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $^{12}$C/$^{13}$C | $75.3^{+14.7}_{-11.4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "16O/18O isotopic ratio at 1.5''",
+   "value": "599",
+   "uncertainty": "+276/-310",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $^{16}$O/$^{18}$O | $599^{+276}_{-310}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "18O/17O isotopic ratio at 1.5''",
+   "value": "3.28",
+   "uncertainty": "+0.31/-0.26",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "we derive isotopic ratios of $^{12}$C/$^{13}$C = $75.3^{+14.7}_{-11.4}$ and $^{18}$O/$^{17}$O = $3.28^{+0.31}_{-0.26}$, both consistent with local interstellar medium values."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $^{18}$O/$^{17}$O | $3.28^{+0.31}_{-0.26}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Disk inclination and position angle used for deprojection in GoFish",
+  "Exact uv-taper parameters used for each transition to reach the 0.52'' circularized beam",
+  "Continuum subtraction procedure (e.g., uvcontsub order and line-free channel ranges)",
+  "Velocity range or Keplerian mask parameters used to compute the integrated intensity profiles in GoFish",
+  "Self-calibration solution intervals, number of rounds, and whether phase+amplitude self-cal was applied",
+  "Number of MCMC walkers, steps, and burn-in length in emcee"
+ ],
+ "missing_for_reproduction": [
+  "Exact disk geometry (inclination, position angle, stellar mass, systemic velocity) and velocity integration window passed to GoFish",
+  "Specific uv-taper values used in tclean for each of the four lines to reach the 0.52'' circularized beam",
+  "Self-calibration parameters for 2021.1.00899.S (deferred to T. Armitage et al., ApJ accepted)",
+  "Exact likelihood definition in the MCMC (whether statistical errors from Table 1 alone or including systematic calibration errors were used in the baseline MCMC likelihood)"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The core analysis (RADEX + emcee MCMC on the four beam-averaged fluxes in Table 1) is completely specified with explicit priors, molecular data sources, and tabular inputs/outputs, making the radiative transfer and MCMC steps immediately reproducible. The visibility imaging and GoFish profile extraction steps lose a few points because self-cal details are deferred to a companion paper and exact deprojection/uv-taper parameters are not explicitly listed.",
+ "rediscovery_reason": "All three ALMA datasets are public in the archive, the software stack (CASA, GoFish, bettermoments, SpectralRadex/RADEX, emcee) is standard and open-source, intermediate integrated intensities at 1.5'' are explicitly tabulated in Table 1, and the main scientific results are precise numeric isotopic ratios in Table 2.",
+ "source_card": "cards/2026ApJ...997L..19Q/sonnet/card.md"
+}

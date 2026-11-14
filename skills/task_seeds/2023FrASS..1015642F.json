@@ -1,0 +1,557 @@
+{
+ "bibcode": "2023FrASS..1015642F",
+ "title": "Photochemical origin of SiC2 in the circumstellar envelope of carbon-rich AGB stars revealed by ALMA",
+ "year": 2023,
+ "doi": "10.3389/fspas.2023.1215642",
+ "arxiv_id": "2307.13216",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "Whether SiC$_2$ is a parent species or a daughter species in the circumstellar envelopes of carbon-rich AGB stars.",
+ "alma_project_codes": [
+  "2013.1.00070.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12 m main array",
+  "angular_resolution": "AI Vol: 1.4'' x 0.9'' (1.51'' x 0.99'' in Table 1); RAFGL 4211: 1.00'' x 1.00''; II Lup: 0.75'' x 0.45''",
+  "sensitivity": "rms requirement: 3 mJy per 1'' beam per 0.9 MHz (~2.7 km s^-1); synthesized rms: 1.3 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mass loss rate, distance, V_LSR, V_exp, and CSE wind density for AI Vol and II Lup",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| AI Vol | IRAS 07454-7112 | $4.9(-6)^{(2)}$ | $710^{(2)}$ | $-39.0^{(2)}$ | $12.0^{(2)}$ | 1.51 $\\times$ 0.99$^{(1)}$ |"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: $^{(1)}$ This work. $^{(2)}$(cite: danilovich2018sulphur)."
+     }
+    ]
+   },
+   "citation": "(cite: danilovich2018sulphur)"
+  },
+  {
+   "what": {
+    "value": "Mass loss rate and expansion velocity for RAFGL 4211, and previous SiC2 fractional abundances",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| RAFGL 4211 | IRAS 15082-4808 | $1.0(-5)^{(3)}$ | $850^{(4)}$ | $-3.0^{(5)}$ | $19.5^{(3)}$ | 1.00 $\\times$ 1.00$^{(1)}$ |"
+     },
+     {
+      "loc": "Table 3",
+      "quote": "References: $^{(a)}$ (cite: woods2003molecular);$^{(b)}$ (cite: smith2015molecular);$^{(c)}$ (cite: danilovich2018sulphur)."
+     }
+    ]
+   },
+   "citation": "(cite: woods2003molecular)"
+  },
+  {
+   "what": {
+    "value": "Distance of 850 pc for RAFGL 4211",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| RAFGL 4211 | IRAS 15082-4808 | $1.0(-5)^{(3)}$ | $850^{(4)}$ | $-3.0^{(5)}$ | $19.5^{(3)}$ | 1.00 $\\times$ 1.00$^{(1)}$ |"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "$^{(4)}$(cite: groenewegen2002millimetre)."
+     }
+    ]
+   },
+   "citation": "(cite: groenewegen2002millimetre)"
+  },
+  {
+   "what": {
+    "value": "V_LSR for RAFGL 4211 and previous single-dish excitation temperatures and column densities of SiC2",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| RAFGL 4211 | IRAS 15082-4808 | $1.0(-5)^{(3)}$ | $850^{(4)}$ | $-3.0^{(5)}$ | $19.5^{(3)}$ | 1.00 $\\times$ 1.00$^{(1)}$ |"
+     },
+     {
+      "loc": "Table 3",
+      "quote": "References: $^{(a)}$ (cite: woods2003molecular);$^{(b)}$ (cite: smith2015molecular);$^{(c)}$ (cite: danilovich2018sulphur)."
+     }
+    ]
+   },
+   "citation": "(cite: smith2015molecular)"
+  },
+  {
+   "what": {
+    "value": "Expansion velocity V_exp = 12 km s^-1 for AI Vol",
+    "evidence": [
+     {
+      "loc": "4.2 Abundance",
+      "quote": "$V\\rm_{exp}$ the expansion velocity of 12 km s$^{-1}$ (cite: nyman1995molecular)"
+     }
+    ]
+   },
+   "citation": "(cite: nyman1995molecular)"
+  },
+  {
+   "what": {
+    "value": "Upper-level energy E_u/k and S*mu^2 of molecular SiC2 transitions",
+    "evidence": [
+     {
+      "loc": "4.2 Abundance",
+      "quote": "The values of $S \\mu^2$ and $E\\rm_u/k$ are taken from the splatalogue databases[^6]."
+     },
+     {
+      "loc": "Table 4",
+      "quote": ": Upper energy, $E$$\\rm_u$, and $S\\mu^2$ of molecular SiC$_2$ in the observed transitions, extracted from the “Splatalogue” database."
+     }
+    ]
+   },
+   "citation": "Splatalogue and CDMS databases (cite: Muller+2005)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image calibrated archival visibilities and measure channel map noise",
+   "method": "Manual imaging using the clean task in CASA with Briggs weighting (robust = 0.5), and calculating channel rms using imstat near the field center excluding emission.",
+   "software": [
+    "CASA 4.3.1",
+    "clean",
+    "imstat"
+   ],
+   "key_parameters": [
+    "Briggs weighting, robust = 0.5",
+    "pixel size = 0.2 arcseconds"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Analyze spatial distribution of SiC2 via channel maps and moment 0 maps",
+   "method": "Generate radial velocity channel maps and zeroth-order moment maps using Python to examine the shell morphology and compare SiC2 with parent species SiO.",
+   "software": [
+    "Python",
+    "astropy",
+    "matplotlib"
+   ],
+   "key_parameters": [
+    "Velocity channels around V_LSR (from -32.3 to -46.5 km s^-1 for AI Vol Fig 3)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectral line parameters via shell fitting",
+   "method": "Shell profile fitting in GILDAS software to obtain integrated intensity (int T_R dv), peak temperature (T_peak), and S/N for each observed SiC2 transition.",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive excitation temperature, column density, and fractional abundance of SiC2",
+   "method": "Linear fitting of rotational diagrams to derive T_ex and N(SiC2), calculation of average H2 column density within the SiC2 radius from mass-loss rate and expansion velocity, and computing fractional abundance f = N(SiC2)/N(H2).",
+   "software": [],
+   "key_parameters": [
+    "R = 3'' (for AI Vol)",
+    "E_u and S*mu^2 from Splatalogue"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE)",
+    "Mean molecular weight mu = 2.8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SiC2 ring diameter in AI Vol",
+   "value": "4-6 (2840.95 - 4258.08 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 AI Vol",
+     "quote": "Around the local standard of rest velocity $V\\rm_{LSR}$ of AI Vol (-39 km s$^{-1}$), SiC$_2$ shows a ring distribution around the center star with a diameter of $\\thicksim$ 4-6$^{\\prime \\prime}$ ($\\thicksim$ 2840.95 $-$ 4258.08 au), and the signal strength reaches 20.4 and 13.7$\\sigma$ for $4_{0,\\,4}-3_{0,\\,3}$ and $4_{2,\\,2} - 3_{2,\\,1}$ transitions."
+    }
+   ]
+  },
+  {
+   "quantity": "SiC2 maximum emission radius in AI Vol",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 AI Vol",
+     "quote": "We can see that the maximum emission of SiC$_2$ occurs at the radius $\\sim$ 3$^{\\prime \\prime}$, with a hole in the distance from the star $\\sim$ 2$^{\\prime \\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SiC2 brightness distribution radius in RAFGL 4211",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.2 RAFGL 4211 and II Lup",
+     "quote": "Brightness distribution radius is $\\sim$5$^{\\prime \\prime}$ around $V\\rm _{LSR}$ = - 3.0 km s$^{-1}$ velocity (distance from star center to peak intensity)."
+    }
+   ]
+  },
+  {
+   "quantity": "SiC2 spatial distribution range in RAFGL 4211",
+   "value": "6.36e16 - 8.90e16",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.2 RAFGL 4211 and II Lup",
+     "quote": "The SiC$_2$ spatial distribution range of RAFGL 4211 is found to be $\\sim$6.36 $\\times$ 10$^{16}$ - 8.90 $\\times$ 10$^{16}$ cm."
+    }
+   ]
+  },
+  {
+   "quantity": "SiC2 brightness distribution radius in II Lup",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.2 RAFGL 4211 and II Lup",
+     "quote": "The brightness distribution radius of the II Lup near $V\\rm_{LSR}$ = 15.5 km s$^{-1}$ velocity is $\\sim$10$^{\\prime \\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SiC2 spatial distribution range in II Lup",
+   "value": "3.74e16 - 7.48e16",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.2 RAFGL 4211 and II Lup",
+     "quote": "The SiC$_2$ spatial distribution range of II Lup is found to be $\\sim$3.74 $\\times$ 10$^{16}$ - 7.48 $\\times$ 10$^{16}$ cm."
+    }
+   ]
+  },
+  {
+   "quantity": "SiC2 spatial distribution range across the three sources",
+   "value": "2.12e16 - 8.90e16",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.3 Summary of morphology",
+     "quote": "In the analyzed observations of three sources, the SiC$_2$ spatial distribution range is about 2.12 $\\times$ 10$^{16}$ - 8.90 $\\times$ 10$^{16}$ cm."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_0,4 - 3_0,3) in AI Vol",
+   "value": "1.26",
+   "uncertainty": "0.21",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $4_{0,\\,4}-3_{0,\\,3}$ | 93.06363900 | 6.70 | 1.26 ($\\pm$ 0.21) | 0.14 | 20.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_2,3 - 3_2,2) in AI Vol",
+   "value": "0.29",
+   "uncertainty": "0.09",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $4_{2,\\,3}-3_{2,\\,2}$ | 94.24539300 | 2.73 | 0.29 ($\\pm$ 0.09) | 0.03 | 10.99 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_2,2 - 3_2,1) in AI Vol",
+   "value": "0.32",
+   "uncertainty": "0.08",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $4_{2,\\,2}-3_{2,\\,1}$ | 95.57938100 | 2.55 | 0.32 ($\\pm$ 0.08) | 0.04 | 13.73 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (5_0,5 - 4_0,4) in AI Vol",
+   "value": "0.48",
+   "uncertainty": "0.21",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $5_{0,\\,5}-4_{0,\\,4}$ | 115.38238880 | 6.64 | 0.48 ($\\pm$ 0.21) | 0.04 | 5.27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_0,4 - 3_0,3) in RAFGL 4211",
+   "value": "1.48",
+   "uncertainty": "0.52",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $4_{0,\\,4}-3_{0,\\,3}$ | 93.06363900 | 6.70 | 1.26 ($\\pm$ 0.21) | 0.14 | 20.45 | | 16.40 | 1.48 ($\\pm$ 0.52) | 0.14 | 8.60 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_2,3 - 3_2,2) in RAFGL 4211",
+   "value": "0.53",
+   "uncertainty": "0.34",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $4_{2,\\,3}-3_{2,\\,2}$ | 94.24539300 | 2.73 | 0.29 ($\\pm$ 0.09) | 0.03 | 10.99 | | 10.70 | 0.53 ($\\pm$ 0.34) | 0.06 | 5.51 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_2,2 - 3_2,1) in RAFGL 4211",
+   "value": "0.91",
+   "uncertainty": "0.52",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $4_{2,\\,2}-3_{2,\\,1}$ | 95.57938100 | 2.55 | 0.32 ($\\pm$ 0.08) | 0.04 | 13.73 | | 16.30 | 0.91 ($\\pm$ 0.52) | 0.10 | 6.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (5_0,5 - 4_0,4) in RAFGL 4211",
+   "value": "4.45",
+   "uncertainty": "1.30",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $J_{Ka,\\,Kc}$ = $5_{0,\\,5}-4_{0,\\,4}$ | 115.38238880 | 6.64 | 0.48 ($\\pm$ 0.21) | 0.04 | 5.27 | | 40.60 | 4.45 ($\\pm$ 1.30) | 0.33 | 8.08 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_0,4 - 3_0,3) in II Lup",
+   "value": "9.51",
+   "uncertainty": "0.75",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 21.49 | 9.51 ($\\pm$ 0.75) | 0.54 | 25.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (4_2,3 - 3_2,2) in II Lup",
+   "value": "6.82",
+   "uncertainty": "0.88",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 25.13 | 6.82 ($\\pm$ 0.88) | 0.37 | 14.82 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of SiC2 (5_0,5 - 4_0,4) in II Lup",
+   "value": "17.20",
+   "uncertainty": "2.55",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 72.80 | 17.20 ($\\pm$ 2.55) | 0.80 | 11.03 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density in AI Vol",
+   "value": "5.52e20",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Abundance",
+     "quote": "The derived column density of $\\rm H_2$ is 5.52 $\\times$ $10^{20}$ $\\rm cm^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature T_ex of SiC2 in AI Vol",
+   "value": "6.66",
+   "uncertainty": "1.33",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AI Vol | 6.66 ($\\pm$ 1.33) | 0.90 ($\\pm$ 0.49) | 1.64 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density N of SiC2 in AI Vol",
+   "value": "0.90e13",
+   "uncertainty": "0.49e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AI Vol | 6.66 ($\\pm$ 1.33) | 0.90 ($\\pm$ 0.49) | 1.64 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance f(SiC2) in AI Vol",
+   "value": "1.64e-8 (1.55e-8 in text)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AI Vol | 6.66 ($\\pm$ 1.33) | 0.90 ($\\pm$ 0.49) | 1.64 |"
+    },
+    {
+     "loc": "4.2 Abundance",
+     "quote": "In AI Vol, we obtained $f$ (SiC$_2$) = 1.55 $\\times$ $10^{-8}$, which is an order of magnitude lower than the SiC$_2$ abundance in IRC+10216, which is around $10^{-7}$ (cite: agundez2012molecular; velilla2018circumstellar; cernicharo2010high; 2014MNRAS.445.3289F)."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature T_ex of SiC2 in RAFGL 4211",
+   "value": "17.25",
+   "uncertainty": "13.07",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| RAFGL 4211 | 17.25 ($\\pm$ 13.07) | 1.60 ($\\pm$ 2.10) | 4.62 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density N of SiC2 in RAFGL 4211",
+   "value": "1.60e13",
+   "uncertainty": "2.10e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| RAFGL 4211 | 17.25 ($\\pm$ 13.07) | 1.60 ($\\pm$ 2.10) | 4.62 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance f(SiC2) in RAFGL 4211",
+   "value": "4.62e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| RAFGL 4211 | 17.25 ($\\pm$ 13.07) | 1.60 ($\\pm$ 2.10) | 4.62 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature T_ex of SiC2 in II Lup",
+   "value": "4.12",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| II Lup | 4.12 | 43.22 | 47.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density N of SiC2 in II Lup",
+   "value": "43.22e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| II Lup | 4.12 | 43.22 | 47.46 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance f(SiC2) in II Lup",
+   "value": "47.46e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| II Lup | 4.12 | 43.22 | 47.46 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether continuum subtraction (e.g., uvcontsub) was performed prior to imaging the spectral lines",
+  "Clean stopping threshold, number of iterations, and masking strategy in CASA clean",
+  "Aperture or spatial region over which the spectra were extracted before shell fitting in GILDAS",
+  "Exact partition function Q(T_ex) values or functional form used in the rotational diagram analysis",
+  "Radius R used in Equation 2 to calculate N_H2 for RAFGL 4211 and II Lup"
+ ],
+ "missing_for_reproduction": [
+  "Spatial aperture or region definition used to extract the 1D spectra from the ALMA cubes for GILDAS shell fitting",
+  "Exact partition function Q(T_ex) values or interpolation table used in Equation 1",
+  "Clean stopping threshold and masking strategy in CASA 4.3.1",
+  "Values of R used in Equation 2 for RAFGL 4211 and II Lup"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Public archival ALMA data (2013.1.00070.S), explicit CASA version and basic imaging parameters (clean, Briggs robust=0.5, 0.2'' pixel size), and explicit equations and line parameters (Tables 1-4) are provided, but the spectral extraction aperture for GILDAS shell fitting, partition function values, and R values for two targets are not stated.",
+ "rediscovery_reason": "Public ALMA dataset with straightforward spectral-line imaging, shell-profile fitting, and rotational diagram abundance derivations resulting in clear quantitative tables.",
+ "source_card": "cards/2023FrASS..1015642F/sonnet/card.md"
+}

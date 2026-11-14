@@ -1,0 +1,215 @@
+{
+ "bibcode": "2016A&A...589L...5M",
+ "title": "Detection of extragalactic CF<SUP>+</SUP> toward PKS 1830-211. Chemical differentiation in the absorbing gas",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201628494",
+ "arxiv_id": "1604.00414",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Is CF+ present in the z=0.89 molecular absorber toward PKS 1830-211, what is its abundance, and how does its line profile compare with other species?",
+ "alma_project_codes": [
+  "2013.1.01099.S",
+  "2011.0.00405.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.75'' x 0.55''",
+  "sensitivity": "NE rms ~0.001 of continuum per 2.6 km/s channel; opacity uncertainty 0.003 (1 sigma)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Line frequencies and molecular data from CDMS",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Frequencies and molecular data are taken from the Cologne Database for Molecular Spectroscopy ((cite: mul01))."
+     }
+    ]
+   },
+   "citation": "(cite: mul01)"
+  },
+  {
+   "what": {
+    "value": "H2 column density 2e22 cm-2 toward SW",
+    "evidence": [
+     {
+      "loc": "Results and discussion",
+      "quote": "With a H$_2$ column density of 2$\\times$10$^{22}$ cm$^{-2}$ ((cite: mul14a))"
+     }
+    ]
+   },
+   "citation": "(cite: mul14a)"
+  },
+  {
+   "what": {
+    "value": "2012 ALMA Cycle 0 spectra for comparison",
+    "evidence": [
+     {
+      "loc": "Results and discussion",
+      "quote": "we compare the new spectra obtained in 2014 with those of the same lines observed in 2012 ((cite: mul14a), ALMA Cycle 0 data)"
+     }
+    ]
+   },
+   "citation": "(cite: mul14a)"
+  },
+  {
+   "what": {
+    "value": "CMB temperature 5.14 K at z=0.89",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Hence their rotation temperature is equal to 5.14 K, the CMB temperature at z=0.89 ((cite: mul13))."
+     }
+    ]
+   },
+   "citation": "(cite: mul13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra of both lensed images",
+   "method": "Fit two-point-source model to visibilities with UVMULTIFIT",
+   "software": [
+    "CASA",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Integrated opacity and column density",
+   "method": "Integrate opacity over -20 to +20 km/s, convert with alpha assuming excitation coupled to CMB",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex = 5.14 K (CMB at z=0.89); hyperfine splitting neglected; optically thin"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fractional abundance and fluorine fraction",
+   "method": "Divide by N(H2)=2e22 cm-2; compare with cosmic fluorine abundance; steady-state CF+/HF ratio from rate coefficients",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Fluorine abundance in absorber similar to cosmic; T=100 K; [e]≈[C+]"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CF+ total column density (SW)",
+   "value": "5.5e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CF$^+$ (2-1) | 205.17052 | 108.796 | 4.9 | 2.0 | 1.13 | 26.2 | 0.21 | 5.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CF+ integrated opacity (-20 to +20 km/s)",
+   "value": "0.21",
+   "uncertainty": "0.003 (1 sigma)",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "The associated uncertainty is of 0.003 at 1$\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "[CF+]/[H2]",
+   "value": "~3e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results and discussion",
+     "quote": "averaged fractional abundance \\[CF$^+$\\]/\\[H$_2$\\] of $\\sim$3$\\times$10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of fluorine in CF+",
+   "value": "~1%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results and discussion",
+     "quote": "we conclude that only $\\sim$1% of the interstellar fluorine is captured in CF$^+$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum covering factor",
+   "value": "~94%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Results and discussion",
+     "quote": "yielding $f_c$$\\sim$94%"
+    }
+   ]
+  },
+  {
+   "quantity": "CF+ line FWHM",
+   "value": "~15",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Results and discussion",
+     "quote": "much narrower than the absorption line width ($\\sim$15 km s$^{-1}$, FWHM)"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted [CF+]/[HF] at T=100 K",
+   "value": "~7%",
+   "uncertainty": "factor 2-3 in coefficient",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results and discussion",
+     "quote": "gives the ratio \\[CF+\\]/\\[HF\\]$\\sim$7%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of antennas/array configuration and baselines",
+  "Flux calibrator and flux scale",
+  "Self-calibration solution intervals",
+  "Image size, cell size, and CLEAN parameters",
+  "Details of UVMULTIFIT fit (start positions, flux ratios)",
+  "Continuum normalization procedure",
+  "Archival data details for 2011.0.00405.S (2012 spectra) reprocessing"
+ ],
+ "missing_for_reproduction": [
+  "Antenna configuration, flux calibrator, self-cal parameters, UVMULTIFIT settings, continuum normalization"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short paper, public ALMA data with project codes, simple numeric chain, but processing details sparse.",
+ "rediscovery_reason": "Public ALMA data, short recipe (extract spectrum, integrate opacity, compute column), numeric results.",
+ "source_card": "cards/2016A%26A...589L...5M/sonnet/card.md"
+}

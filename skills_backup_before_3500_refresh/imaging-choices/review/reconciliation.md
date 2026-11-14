@@ -1,0 +1,21 @@
+# Reconciliation: imaging-choices
+- SR-01 | FIXED | Dropped the "2012-2018, 390/432 papers" frame; robust shares now come from stats/settings_long.csv (1061 value x field rows, 2012-2026, with a by-period table) and weighting/deconvolver counts from my per-paper count of the current key-parameter list (290 papers, 2012-2026); counting rules stated at the top of SKILL.md.
+- SR-02 | FIXED | Software table copies pack aggregate labels and counts exactly (tclean 71, casa tclean 14, casa clean 8, clean 7, miriad 27, uvcontsub 11, casa imfit 8, imfit 6, feather 5, ...) and notes that labels overlap.
+- SR-03 | FIXED | Recounted: 11 of 29 papers with an rms-unit threshold use about 2x rms (Codex's five added); 2015ApJ...814...22E removed (title only in pack).
+- SR-04 | FIXED | Ranges widened to the pack extremes: threshold 0.5 to about 5 sigma (2025A&A...697A..64V), taper 0.010" to 10" and 18.75 klambda to 1.5 Mlambda, cell 0.0037" to 1", niter up to 4 million.
+- SR-05 | FIXED | 2017ApJ...839...43O now listed as Hogbom to 3x rms with Briggs 0.5 (pack line 849); 2018A&A...620A.115B removed (title only).
+- SR-06 | FIXED | 2016ApJ...821..112K removed; beam-matching examples replaced with pack-supported ones (2019ApJ...876...72L, 2024A&A...684A..56K, 2020PASJ...72L...9F, 2024ApJ...963..164R).
+- SR-07 | FIXED | Audited every citation against non-title pack lines; all 39 title-only bibcodes removed or replaced (including 823S, 828A, 619C, 616A, 597V, 823W, 833R, 819S, 851L); all 104 remaining cited bibcodes have methods evidence in the pack.
+- SR-08 | FIXED | parameters.md rebuilt from current pack lines only; the unsupported scale rows (836W, 840B, 837L, 831K) and threshold rows (814E, 620B, 835U, 843W, 619F, 832Z, 850F, 461A) deleted.
+- SR-09 | FIXED | Prevalence words replaced by "examples include" with an explicit no-denominator note; "mostly European groups" and `npixels=2` removed.
+- SR-10 | FIXED | 2020MNRAS.493.4294B now described as image-plane convolution of natural maps, explicitly not a uvtaper.
+- SR-11 | FIXED | Referee check now requires a common final beam, comparable uv sampling and recoverable scales, and matched spectral resolution for channel ratios.
+- SR-12 | FIXED | Added that tapering only reweights sampled baselines; total flux needs short-spacing data or a qualified model estimate (2016PASJ...68...88K, 2020ApJ...898..146M).
+- SR-13 | FIXED | Clark described as a separate point-component CLEAN algorithm used in modern tclean work (2023PSJ.....4..142C).
+- SR-14 | FIXED | "Upper limits" claim replaced by observed vs deconvolved vs unresolved widths, with uncertainty and model tests.
+- SR-15 | FIXED | Step 7 and referee list now require checking the stop reason and listing channels not cleaned to threshold (2019A&A...631A..64B).
+- SR-16 | FIXED | Keplerian-mask assumptions (gas co-located with dust, near-Keplerian; 2026A&A...705A.198M) stated with a broader-mask comparison.
+- SR-17 | FIXED | Added the 5x rms intensity mask and the ~0.4 absolute alpha uncertainty (2018ApJ...852..122H) plus 2018ApJ...853..171G alpha cuts; flux-scale error propagated separately.
+- SR-18 | FIXED | Added clean-beam vs dirty-beam units pitfall with JvM residual scaling (2018ApJ...867..166S) and epsilon values (2024ApJ...974..102S), and a residual-flux referee check.
+- SR-19 | FIXED | Added correlated-pixel pitfall (2020MNRAS.496.4061D, 2019ApJ...881...10B, 2023PSJ.....4..142C) and the aperture-error formula as general practice.
+- SR-20 | FIXED | Added scale_pixels = scale_arcsec / cell_arcsec with a worked example, outertaper to uvtaper mapping, a valid uvtaper example (2021A&A...654A..35B), and taper vs achieved beam.

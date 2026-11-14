@@ -1,0 +1,502 @@
+{
+ "bibcode": "2023A&A...676A..67W",
+ "title": "Quantifying the energetics of molecular superbubbles in PHANGS galaxies",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346075",
+ "arxiv_id": "2302.03699",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How can we resolve, identify, and characterise molecular superbubbles in nearby PHANGS galaxies to quantify stellar feedback energetics and constrain feedback models and efficiencies?",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.01161.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00392.S",
+  "2017.1.00886.L",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12m, 7m, and Total Power (TP)",
+  "angular_resolution": "~1\" (~50-150 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy properties (SFR, M_star, M_HI, M_H2) for the 18 studied PHANGS-ALMA galaxies",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "List of the PHANGS–ALMA galaxies studied in this work, their properties, and the number of superbubbles found within them from (cite: leroy_phangsalma_2021)."
+     }
+    ]
+   },
+   "citation": "(cite: leroy_phangsalma_2021)"
+  },
+  {
+   "what": {
+    "value": "Galaxy distances",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Distances from (cite: anand_distances_2021), also see acknowledgements."
+     },
+     {
+      "loc": "Acknowledgements",
+      "quote": "Distances for the galaxies used in this work were measured in (cite: freedman_measurements_2021), (cite: nugent_toward_2006), (cite: jacobs_extragalactic_2009), (cite: kourkchi_galaxy_2017), (cite: shaya_action_2017), (cite: kourkchi_cosmicflows-3_2020), (cite: anand_distances_2021), and (cite: scheuermann_planetary_2022)."
+     }
+    ]
+   },
+   "citation": "(cite: anand_distances_2021), (cite: freedman_measurements_2021), (cite: nugent_toward_2006), (cite: jacobs_extragalactic_2009), (cite: kourkchi_galaxy_2017), (cite: shaya_action_2017), (cite: kourkchi_cosmicflows-3_2020), (cite: scheuermann_planetary_2022)"
+  },
+  {
+   "what": {
+    "value": "PHANGS-HST multi-scale stellar association catalogues (16, 32, and 64 pc scales, internal release v1.3)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "and the HST *B*-band data sets (cite: lee_phangs-hst_2022) and multi-scale stellar association catalogues (cite: larson_multi-scale_2022)."
+     },
+     {
+      "loc": "PHANGS–HST",
+      "quote": "We used the *B*-band (435/438 nm) to help identify superbubble candidates and the *V*-band 16–64 pc multi-scale stellar associations (internal release v1.3) to provide a benchmark for cluster properties derived using CO observations."
+     }
+    ]
+   },
+   "citation": "(cite: lee_phangs-hst_2022), (cite: larson_multi-scale_2022)"
+  },
+  {
+   "what": {
+    "value": "Galaxy morphological environment masks (internal release v5)",
+    "evidence": [
+     {
+      "loc": "Morphology and location",
+      "quote": "When using the environment masks outlined in (cite: querejeta_stellar_2021) (internal release v5) to assign environmental locations to the bubbles, we find around 39–47 are in the spiral arms of the galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: querejeta_stellar_2021)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor (alpha_CO) accounting for galactocentric variation via mass-metallicity relation",
+    "evidence": [
+     {
+      "loc": "Shell mass and expansion velocity",
+      "quote": "We converted the CO luminosity into mass using a CO-to-H$_2$ factor ($\\alpha_\\text{CO}$) from (cite: sun_molecular_2020) which accounts for the mean variation of $\\alpha_\\text{CO}$ with galactocentric radius using a mass-metallicity relationship."
+     }
+    ]
+   },
+   "citation": "(cite: sun_molecular_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Visually identify and kinematically confirm molecular superbubble candidates",
+   "method": "Visual search across 60\"x60\" tiles (performed twice per galaxy) using stacked RGB images of ALMA CO T_peak (sqrt stretch), MUSE Halpha (log stretch), and HST B-band (linear stretch) for CO ring/partial-ring features with central/edge Halpha and HST sources. Candidates are verified in CO channel maps (>=3 channels persistence), horizontal/vertical PV diagrams (hole or arc expansion signatures), and radial velocity spectra to reject line-of-sight contamination.",
+   "software": [],
+   "key_parameters": [
+    "Tile size ~60\" x 60\"; persistence >= 3 channels (~7.5 km s^-1); 25 candidates rejected via PV diagrams, leaving 325 bubbles"
+   ],
+   "assumptions": [
+    "Halpha emission limits detected single-burst bubble ages to <10 Myr"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit bubble centres and radii and classify sample via peer review",
+   "method": "Visually draw circular apertures on the CO peak temperature (T_peak) shell ridge to measure bubble centres and radii R. Four team members then visually ranked all 325 candidates in CO into four categories (Closed Rings, Broken Rings, Dubious, Indeterminable), selecting the 88 Closed Rings as the fiducial sample. Fit power-law index to large radii using Pareto's MLE.",
+   "software": [],
+   "key_parameters": [
+    "4 categories: 1. Closed Rings (88), 2. Broken Rings (167), 3. Dubious (65), 4. Indeterminable (5); Pareto MLE power-law fit to radius distribution"
+   ],
+   "assumptions": [
+    "Bubble features are well characterised by circular apertures; shell thickness is unresolved so T_peak ridge traces radius"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure molecular shell mass, expansion velocity, and kinetic energy",
+   "method": "Integrate CO luminosity within an aperture of 1.6R (based on the average radial T_peak profile) and convert to molecular shell mass M_sh using the radially varying alpha_CO from Sun et al. (2020). Measure receding and approaching velocities by hand from horizontal and vertical PV diagrams, apply spherical projection correction Eq. 1, and average the two directions to get v_exp. Compute kinetic energy as 0.5 * M_sh * v_exp^2.",
+   "software": [],
+   "key_parameters": [
+    "Mass aperture = 1.6R (15% additional mass uncertainty); velocity measurement uncertainty = 3.0 km s^-1 (channel width 2.5 km s^-1)"
+   ],
+   "assumptions": [
+    "Spherical expansion geometry (valid since average bubble radius ~130 pc is smaller than 3x molecular scale height ~300 pc); galactocentric metallicity-dependent alpha_CO from Sun et al. (2020)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Cross-match superbubbles with HST multi-scale stellar associations to derive stellar ages and masses",
+   "method": "Assign PHANGS-HST V-band multi-scale stellar associations (at 16, 32, and 64 pc scales) overlapping the bubble radius R to each superbubble, excluding outliers with age > 15 Myr. Compute total stellar mass per bubble by summing association masses weighted by the fractional area overlapping the bubble radius (uncertainty via rms), and compute a single stellar age per bubble via mass-weighted mean (uncertainty via Eq. 2, replacing 0 Myr uncertainties with 0.5 Myr).",
+   "software": [
+    "DOLPHOT",
+    "DAOStarFinder",
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Association scales = 16, 32, 64 pc; age cutoff < 15 Myr; 0 Myr age uncertainty replaced with 0.5 Myr"
+   ],
+   "assumptions": [
+    "Single stellar population models from Bruzual & Charlot (2003) at solar metallicity, Chabrier (2003) IMF, and Cardelli et al. (1989) internal extinction used in CIGALE SED fitting"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain expansion scaling law (eta), dynamical ages, feedback coupling efficiency (epsilon), and CO-derived cluster masses",
+   "method": "Combine CO radii and expansion velocities with HST association ages in the self-similar thin-shell relation t_dyn = eta * R_s / v_s (Eq. 3) to measure the scaling constant eta. Adopt eta = 1/4 to compute CO dynamical ages t_dyn. Combine shell kinetic energy, t_dyn, Starburst99 mechanical luminosity per unit mass L, and HST stellar mass in Eq. 5 to solve for mechanical energy injection efficiency epsilon, and compute CO-derived cluster masses M_cl assuming epsilon = 10%.",
+   "software": [
+    "Starburst99"
+   ],
+   "key_parameters": [
+    "gamma = 1 (radiative); eta = 1/4 adopted for t_dyn; L = 1 x 10^34 erg s^-1 M_sun^-1 (1 x 10^40 erg s^-1 per 10^6 M_sun); epsilon = 10% adopted for M_cl"
+   ],
+   "assumptions": [
+    "Self-similar thin-shell expansion with R_s = R and v_exp = v_ps = v_s (for radiative gamma = 1); dynamical age equals stellar population age; single dominant expansion mechanism; fully sampled Chabrier IMF at solar metallicity with constant mechanical luminosity per unit mass"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate theoretical population of superbubbles and evaluate shell mass sweep-up",
+   "method": "Estimate expected number of observable molecular superbubbles using Clarke & Oey (2002) Eq. 17 from average galaxy SFR in ALMA FoV, mean CO-derived cluster mass, mean bubble lifetime, and a 30% bubble merger fraction. Evaluate shell mass sweep-up by comparing stellar-to-shell mass ratios against a 1% star formation efficiency reference line as a function of bubble radius and age, and fitting shell mass increase between R = 100 and 200 pc.",
+   "software": [],
+   "key_parameters": [
+    "Mean CO-derived cluster mass = 4.8 x 10^5 M_sun; mean bubble lifetime = 3.6 Myr; average SFR in ALMA FoV = 2.5 M_sun yr^-1; bubble merger fraction = 30%; baseline SFE = 1%; ambient density = 50 cm^-3; molecular scale height = 100 pc"
+   ],
+   "assumptions": [
+    "Instantaneous star formation efficiency of 1%; negligible cluster mass loss from stellar ejections or winds/SNe"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total superbubble candidates identified across 18 galaxies",
+   "value": "325",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We visually find 325 cavities across 18 PHANGS–ALMA galaxies, 88 of which have clear superbubble signatures (unbroken shells, central clusters, kinematic signatures of expansion)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial sample of Closed Ring superbubbles",
+   "value": "88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Quality check via peer review",
+     "quote": "In total 88 bubbles are labelled as Closed Rings, 167 as Broken Rings, 65 as Dubious, and 5 as Indeterminable"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean bubble radius",
+   "value": "134",
+   "uncertainty": "59 (standard deviation); ~10% measurement accuracy",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sizes",
+     "quote": "We find that the mean and median bubble radii are 134 pc and 128 pc, respectively, with a standard deviation spread of 59 pc."
+    },
+    {
+     "loc": "Fitting bubble radii",
+     "quote": "These results indicate that our bubble sizes are accurate to within approximately 10%."
+    }
+   ]
+  },
+  {
+   "quantity": "Median bubble radius",
+   "value": "128",
+   "uncertainty": "59 (standard deviation)",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sizes",
+     "quote": "We find that the mean and median bubble radii are 134 pc and 128 pc, respectively, with a standard deviation spread of 59 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Bubble radius range",
+   "value": "30-330",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sizes",
+     "quote": "In total, the bubble radii are in the range 30–330 pc, which roughly corresponds to our resolution limit"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law index of bubble radius distribution (p)",
+   "value": "-3.2",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sizes",
+     "quote": "Using Pareto’s maximum likelihood estimator (MLE), we calculate that the index of the power law is $p=-3.2\\pm0.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular shell mass (M_sh)",
+   "value": "19e6",
+   "uncertainty": "18e6 (standard deviation); 15% aperture spread",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "The mean and median molecular mass of the bubbles are 19$\\times 10$$^6$ M$_\\odot$ and 13$\\times 10$$^6$ M$_\\odot$, respectively, with a standard deviation of 18$\\times 10$$^6$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median molecular shell mass (M_sh)",
+   "value": "13e6",
+   "uncertainty": "18e6 (standard deviation)",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "The mean and median molecular mass of the bubbles are 19$\\times 10$$^6$ M$_\\odot$ and 13$\\times 10$$^6$ M$_\\odot$, respectively, with a standard deviation of 18$\\times 10$$^6$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular shell mass range",
+   "value": "0.2e6 to 67e6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "The large standard deviation reflects the two order of magnitude spread in masses (0.2$\\times 10$$^6$ M$_\\odot$ to 67$\\times 10$$^6$ M$_\\odot$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of total galaxy molecular gas in superbubbles (88 Closed Rings / all 325)",
+   "value": "2 / 6",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "Altogether, we find 2% of all the molecular gas found within the 18 galaxies is contained within our sample of superbubbles (6% including all 325 superbubbles)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean expansion velocity (v_exp)",
+   "value": "9.8",
+   "uncertainty": "4.3 (standard deviation); 3.0 per bubble",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "The mean and median expansion velocity of the sample are 9.8 km s$^{-1}$ and 8.9 km s$^{-1}$, respectively, with a standard deviation of 4.3 km s$^{-1}$"
+    },
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "With channel widths of 2.5 km s$^{-1}$, we estimate the total measurement uncertainty is 3.0 km s$^{-1}$ for each bubble."
+    }
+   ]
+  },
+  {
+   "quantity": "Median expansion velocity (v_exp)",
+   "value": "8.9",
+   "uncertainty": "4.3 (standard deviation)",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "The mean and median expansion velocity of the sample are 9.8 km s$^{-1}$ and 8.9 km s$^{-1}$, respectively, with a standard deviation of 4.3 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean shell kinetic energy",
+   "value": "3.2e52",
+   "uncertainty": "6.1e52 (standard deviation)",
+   "units": "erg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "Finally, using the mass and expansion velocity, we calculate the kinetic energy ($\\frac{1}{2}M_\\text{sh}v_\\text{exp}^2$) and find that the mean and median are 3.2$\\times 10$$^{52}$ erg and 0.8$\\times 10$$^{52}$ erg, respectively, with a standard deviation of 6.1$\\times 10$$^{52}$ erg."
+    }
+   ]
+  },
+  {
+   "quantity": "Median shell kinetic energy",
+   "value": "0.8e52",
+   "uncertainty": "6.1e52 (standard deviation)",
+   "units": "erg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Shell mass and expansion velocity",
+     "quote": "Finally, using the mass and expansion velocity, we calculate the kinetic energy ($\\frac{1}{2}M_\\text{sh}v_\\text{exp}^2$) and find that the mean and median are 3.2$\\times 10$$^{52}$ erg and 0.8$\\times 10$$^{52}$ erg, respectively, with a standard deviation of 6.1$\\times 10$$^{52}$ erg."
+    }
+   ]
+  },
+  {
+   "quantity": "Median expansion scaling parameter eta (16 pc associations)",
+   "value": "0.26",
+   "uncertainty": "+0.25/-0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraining cluster masses and dynamical age using CO",
+     "quote": "We find the median $\\eta$ values for each stellar association scale are $0.26^{+0.25}_{-0.14}$, $0.24^{+0.26}_{-0.14}$, and $0.26^{+0.36}_{-0.17}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median expansion scaling parameter eta (32 pc associations)",
+   "value": "0.24",
+   "uncertainty": "+0.26/-0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraining cluster masses and dynamical age using CO",
+     "quote": "We find the median $\\eta$ values for each stellar association scale are $0.26^{+0.25}_{-0.14}$, $0.24^{+0.26}_{-0.14}$, and $0.26^{+0.36}_{-0.17}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median expansion scaling parameter eta (64 pc associations)",
+   "value": "0.26",
+   "uncertainty": "+0.36/-0.17",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraining cluster masses and dynamical age using CO",
+     "quote": "We find the median $\\eta$ values for each stellar association scale are $0.26^{+0.25}_{-0.14}$, $0.24^{+0.26}_{-0.14}$, and $0.26^{+0.36}_{-0.17}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO-derived dynamical age of superbubbles",
+   "value": "3.6",
+   "uncertainty": "range 0.7 to 7.5",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "With the feedback model known, we calculated the dynamical age of the superbubbles using CO derived properties and find they have an average dynamical age of 3.6 Myr and range from 0.7 to 7.5 Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Mechanical energy injection efficiency epsilon (16 pc scale)",
+   "value": "19",
+   "uncertainty": "+60/-14",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraining cluster masses and dynamical age using CO",
+     "quote": "Specifically for 16, 32, and 64 pc, we measure 19$^{+60}_{-14}$%, 12$^{+27}_{-9}$%, and 9$^{+36}_{-6}$% respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mechanical energy injection efficiency epsilon (32 pc scale)",
+   "value": "12",
+   "uncertainty": "+27/-9",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraining cluster masses and dynamical age using CO",
+     "quote": "Specifically for 16, 32, and 64 pc, we measure 19$^{+60}_{-14}$%, 12$^{+27}_{-9}$%, and 9$^{+36}_{-6}$% respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mechanical energy injection efficiency epsilon (64 pc scale)",
+   "value": "9",
+   "uncertainty": "+36/-6",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraining cluster masses and dynamical age using CO",
+     "quote": "Specifically for 16, 32, and 64 pc, we measure 19$^{+60}_{-14}$%, 12$^{+27}_{-9}$%, and 9$^{+36}_{-6}$% respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO-derived cluster mass",
+   "value": "4.8e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number of molecular superbubbles",
+     "quote": "Firstly, assuming that the CO-derived cluster masses follow a lognormal-like distribution, the mean CO-derived cluster mass is 4.8$\\times 10$$^5$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Shell mass gained as radius increases from 100 to 200 pc",
+   "value": "30e6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Origin of mass contained within bubble shell",
+     "quote": "By fitting the increase in mass as a function of radius, we find that superbubbles do increase in mass by $\\sim30$$\\times 10$$^6$ M$_\\odot$ as their radius increases from 100 to 200 pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact slice width and spatial extraction parameters for generating the horizontal and vertical position-velocity (PV) diagrams",
+  "Exact spatial locations (offsets r from bubble centre) where off-centre PV velocity measurements were taken for the 30 off-centre bubbles",
+  "Whether background/ambient CO emission outside the shell was subtracted when integrating the CO luminosity within the 1.6R circular aperture to compute shell mass",
+  "Access to internal release v1.3 of the PHANGS-HST V-band multi-scale stellar association catalogue and internal release v5 of the PHANGS environment masks"
+ ],
+ "missing_for_reproduction": [
+  "Exact PV slice widths and off-centre extraction coordinates r used for the manual velocity measurements of the 88 superbubbles",
+  "Internal release v1.3 of the PHANGS-HST V-band multi-scale stellar association catalogues (though per-bubble cross-matched values are provided in the CANFAR release table)",
+  "Internal release v5 of the PHANGS morphological environment masks",
+  "Analysis scripts used to compute the 1.6R aperture masses, association fractional overlaps, and statistical fits"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "High-level PHANGS-ALMA v1.0 data products are public and the authors publicly release the complete machine-readable tables of measured bubble coordinates, radii, velocities, shell masses, and cross-matched HST stellar association properties on CANFAR (allowing exact reproduction of all downstream energetic calculations), though the initial visual search, manual circular aperture fitting, and by-hand PV velocity measurements are inherently human-driven and rely on internal v1.3 HST catalogues.",
+ "rediscovery_reason": "The PHANGS-ALMA v1.0 data cubes/maps and the authors' complete catalogue of 88 superbubbles (including coordinates, radii, velocities, masses, and HST association properties on CANFAR) are publicly available, and the main results (radius distribution slope, shell masses, expansion velocities, dynamical scaling parameter eta, and ~10% SN feedback coupling efficiency) are well-defined quantitative metrics.",
+ "source_card": "cards/2023A%26A...676A..67W/sonnet/card.md"
+}

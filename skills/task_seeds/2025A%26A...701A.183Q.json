@@ -1,0 +1,576 @@
+{
+ "bibcode": "2025A&A...701A.183Q",
+ "title": "Azimuthal offsets in spiral arms of nearby galaxies",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202556175",
+ "arxiv_id": "2509.01668",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Quantify azimuthal offsets between molecular gas (CO), star formation (Halpha), and stellar mass peaks in spiral arms of nearby galaxies to test and differentiate between spiral arm formation theories.",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00886.L",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~1'' (~100 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disc inclination, position angle, and rotation curves from PHANGS sample table 1.6",
+    "evidence": [
+     {
+      "loc": "Methodology and expectations",
+      "quote": "First, we define a set of bins in fixed intervals of galactocentric radius, which results in elliptical annuli in the plane of the sky (according to the disc inclination and position angle from the PHANGS sample table 1.6; (cite: 2020ApJ...897..122L))."
+     }
+    ]
+   },
+   "citation": "(cite: 2020ApJ...897..122L)"
+  },
+  {
+   "what": {
+    "value": "Zeroth-order CO(2-1) moment maps with broad masks (PHANGS-ALMA version 4.0)",
+    "evidence": [
+     {
+      "loc": "CO as molecular gas tracer",
+      "quote": "We consider the zeroth-order (integrated intensity) CO moment maps using the ‘broad’ masks presented in (cite: 2021ApJS..255...19L) and publicly released in July 2022 (PHANGS–ALMA version 4.0)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021ApJS..255...19L)"
+  },
+  {
+   "what": {
+    "value": "PAWS 12CO(1-0) zeroth-order moment map for M51",
+    "evidence": [
+     {
+      "loc": "CO as molecular gas tracer",
+      "quote": "As a point of comparison with previous studies, we also considered M51 (NGC 5194) through the PAWS $^{12}$CO(1–0) dataset (cite: 2013ApJ...779...42S; 2013ApJ...779...43P), using the publicly delivered zeroth-order moment map."
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...779...42S; 2013ApJ...779...43P)"
+  },
+  {
+   "what": {
+    "value": "Environmental spiral masks and bar classifications",
+    "evidence": [
+     {
+      "loc": "Spiral masks",
+      "quote": "Throughout this paper, we use the spiral component of the environmental masks defined in (cite: 2021A&A...656A.133Q)."
+     },
+     {
+      "loc": "Spiral galaxy sample",
+      "quote": "The bar presence (1 for barred) reflects the environmental masks from (cite: 2021A&A...656A.133Q)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021A&A...656A.133Q)"
+  },
+  {
+   "what": {
+    "value": "ICA dust-corrected Spitzer 3.6 um stellar mass maps from S4G",
+    "evidence": [
+     {
+      "loc": "*Spitzer* IRAC $3.6$ $\\mu$m to trace stellar mass",
+      "quote": "The method, introduced in (cite: 2012ApJ...744...17M), was applied to the entire S$^4$G sample in (cite: 2015ApJS..219....5Q)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJS..219....5Q)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass and star formation rates of sample galaxies",
+    "evidence": [
+     {
+      "loc": "Spiral galaxy sample",
+      "quote": "Stellar mass and star formation rates are adopted from (cite: 2021ApJS..257...43L) who calculated them using the prescriptions and data from (cite: 2019ApJS..244...24L)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021ApJS..257...43L)"
+  },
+  {
+   "what": {
+    "value": "Optical isophotal radius R25 from RC3 via LEDA",
+    "evidence": [
+     {
+      "loc": "Spiral galaxy sample",
+      "quote": "The optical isophotal radius $R_{\\rm 25}$ is adopted from RC3 (cite: 1991rc3..book.....D) via LEDA, and distances come from (cite: 2021MNRAS.501.3621A)."
+     }
+    ]
+   },
+   "citation": "(cite: 1991rc3..book.....D)"
+  },
+  {
+   "what": {
+    "value": "Galaxy distances",
+    "evidence": [
+     {
+      "loc": "Spiral galaxy sample",
+      "quote": "The optical isophotal radius $R_{\\rm 25}$ is adopted from RC3 (cite: 1991rc3..book.....D) via LEDA, and distances come from (cite: 2021MNRAS.501.3621A)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021MNRAS.501.3621A)"
+  },
+  {
+   "what": {
+    "value": "Spiral arm morphological classifications",
+    "evidence": [
+     {
+      "loc": "Spiral galaxy sample",
+      "quote": "The spiral morphology lists the spiral family according to (cite: 2015ApJS..217...32B) or the definitions adopted in (cite: 2021ApJ...913..113M) for galaxies outside the S$^4$G survey"
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJS..217...32B; 2021ApJ...913..113M)"
+  },
+  {
+   "what": {
+    "value": "Tremaine-Weinberg pattern speeds from MUSE stellar and gas kinematics for comparison",
+    "evidence": [
+     {
+      "loc": "Deriving star formation timescales and pattern speeds",
+      "quote": "For a few galaxies in our sample, (cite: 2021AJ....161..185W) determined the pattern speed using the Tremaine-Weinberg (TW) method (cite: 1984ApJ...282L...5T)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021AJ....161..185W)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Construct spiral arm mask for M51 and adopt PHANGS environmental masks",
+   "method": "Identify bright 3.6 um emission along each spiral arm with an unsharp-mask approach, fit an analytic log-spiral function in the galaxy plane, dilate to an empirical width (~1-2 kpc) based on CO emission, and visually extend segments to enforce continuity.",
+   "software": [],
+   "key_parameters": [
+    "typical mask width ~1-2 kpc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure azimuthal offsets between CO, Halpha, and NIR peaks in radial bins",
+   "method": "Divide each galaxy into elliptical annuli of fixed galactocentric radial width matching the coarsest map resolution (~1'' or ~100 pc), subdivide each annulus into azimuthal boxes of matching physical size (~100 pc x 100 pc), compute mean intensity of CO, Halpha, and NIR in each box within each spiral arm mask, find the azimuth of maximum mean intensity for each tracer, and compute the rotation-corrected difference.",
+   "software": [],
+   "key_parameters": [
+    "radial bin width = max(CO resolution, Halpha resolution), typically ~1'' (~100 pc)",
+    "azimuthal box size ~100 pc x 100 pc",
+    "rotation direction factor eta = +1 (clockwise) or -1 (anti-clockwise)"
+   ],
+   "assumptions": [
+    "spiral arms are trailing",
+    "alpha_CO, R_21 line ratio, and stellar mass-to-light ratio variations at fixed radius within the spiral region are negligible",
+    "circular trajectories for gas and stars in the disc plane defined by inclination and position angle"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Classify galaxies by statistical significance of mean offsets and radial trends",
+   "method": "Compute mean and standard deviation of offsets across all radii, inner half, and outer half; perform a Kolmogorov-Smirnov (KS) test over 10,000 Monte Carlo runs against a normal distribution centred at zero with the same standard deviation; compute Spearman rank correlation coefficient rho with radius (or angular speed) and running means.",
+   "software": [],
+   "key_parameters": [
+    "KS test p-value threshold = 0.05 over 10,000 runs",
+    "rank correlation coefficient threshold rho < -0.2 with radius"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit spiral pattern speeds and star formation timescales for Class A galaxies",
+   "method": "Fit a linear relation to the azimuthal offset theta as a function of disc angular frequency Omega = v_rot / R (accounting for error bars) following Egusa et al. (2009) to simultaneously determine the pattern speed Omega_P and Halpha star formation timescale t_Halpha.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "constant pattern speed Omega_P and constant star formation timescale t_SF across the spiral arm",
+    "adopted rotation curve v_rot(R)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Sample mean CO-Halpha offset",
+   "value": "230",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between molecular gas and star formation",
+     "quote": "The typical mean offsets per galaxy are of several hundred parsecs (mean $230$ pc, median $220$ pc), ranging from $-400$ pc up to $740$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median CO-Halpha offset",
+   "value": "220",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between molecular gas and star formation",
+     "quote": "The typical mean offsets per galaxy are of several hundred parsecs (mean $230$ pc, median $220$ pc), ranging from $-400$ pc up to $740$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean inner-half CO-Halpha offset",
+   "value": "370",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Offsets between molecular gas and star formation",
+     "quote": "Overall, the mean offsets become closer to zero or even negative from the inner to the outer radii (from an average of $370$ pc down to $100$ pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean outer-half CO-Halpha offset",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Offsets between molecular gas and star formation",
+     "quote": "Overall, the mean offsets become closer to zero or even negative from the inner to the outer radii (from an average of $370$ pc down to $100$ pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of galaxies with positive mean CO-Halpha offsets",
+   "value": "58",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radial variation in the offsets",
+     "quote": "58% of the galaxies show positive offsets."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of galaxies with positive mean CO-Halpha offsets and declining radial trend (Class A)",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radial variation in the offsets",
+     "quote": "Among the galaxies with clear positive mean offsets, four galaxies (17% of the total) also show a significant declining radial trend, with a rank correlation coefficient $\\rho < -0.2$ (NGC 1385, NGC 1566, NGC 2283, NGC 4303)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of galaxies with positive mean CO-Halpha offsets and no clear radial trend (Class B)",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radial variation in the offsets",
+     "quote": "For the ten remaining galaxies with positive net offsets (42% of the total), the declining radial correlation is very poor or non-existent ($\\rho > -0.2$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of galaxies with zero or negative mean CO-Halpha offsets (Class C)",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radial variation in the offsets",
+     "quote": "For the remaining 42% of the galaxies, the offsets are either negative or indistinguishable from zero"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between individual CO-Halpha and CO-NIR offsets",
+   "value": "0.43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "This connection is also confirmed by the fact that despite significant scatter, the individual CO-H$\\alpha$ and CO-NIR offsets display a moderate correlation with each other ($\\rho = 0.43$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO-NIR offset using Spitzer ICA maps (JWST subsample)",
+   "value": "433",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "For the galaxies where JWST NIRCam mapping is available, the mean offset is $433$ pc for ICA and $291$ pc for NIRCam."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO-NIR offset using JWST NIRCam F200W maps (JWST subsample)",
+   "value": "291",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "For the galaxies where JWST NIRCam mapping is available, the mean offset is $433$ pc for ICA and $291$ pc for NIRCam."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1385 mean CO-Halpha offset",
+   "value": "265",
+   "uncertainty": "1040",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "| NGC1385 | 265 | 1040 | 503 | 1215 | 21.8$^\\star$ | 767 | 370$^\\star$ | 1272 | 451$^\\star$ | 1344 | 288$^\\star$ | 1205 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1566 mean CO-Halpha offset",
+   "value": "403",
+   "uncertainty": "1064",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "| NGC1566 | 403 | 1064 | 750 | 916 | 60.1 | 1094 | 545 | 1452 | 990 | 1627 | 105$^\\star$ | 1097 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 2283 mean CO-Halpha offset",
+   "value": "201",
+   "uncertainty": "752",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "| NGC2283 | 201 | 752 | 411 | 739 | -0.2$^\\star$ | 716 | 64.6 | 703 | 179$^\\star$ | 739 | -45.5$^\\star$ | 656 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4303 mean CO-Halpha offset",
+   "value": "691",
+   "uncertainty": "2070",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "| NGC4303 | 691 | 2070 | 1181$^\\star$ | 2191 | 316$^\\star$ | 1922 | -229$^\\star$ | 3911 | 681$^\\star$ | 5244 | -925$^\\star$ | 2317 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5194 mean CO-Halpha offset",
+   "value": "399",
+   "uncertainty": "1111",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Offsets between stellar mass and molecular gas",
+     "quote": "| NGC5194 | 399 | 1111 | 29.3$^\\star$ | 923 | 761 | 1164 | 335 | 761 | 152$^\\star$ | 481 | 516 | 927 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1385 pattern speed (all arms)",
+   "value": "26.1",
+   "uncertainty": "13.8",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC1385 | all | 0.31 | 26.1 | 13.8 | 8.96 | 3.32 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1385 Halpha star formation timescale (all arms)",
+   "value": "8.96",
+   "uncertainty": "3.32",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC1385 | all | 0.31 | 26.1 | 13.8 | 8.96 | 3.32 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1385 co-rotation radius",
+   "value": "4.8",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "Our value of $\\Omega_{\\rm P} = 26.1$ km s$^{-1}$ kpc$^{-1}$ corresponds to a co-rotation radius at $R_{\\rm CR}=4.8$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1566 pattern speed (all arms)",
+   "value": "25.0",
+   "uncertainty": "4.8",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC1566 | all | 0.56 | 25.0 | 4.8 | 2.47 | 0.32 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1566 Halpha star formation timescale (all arms)",
+   "value": "2.47",
+   "uncertainty": "0.32",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC1566 | all | 0.56 | 25.0 | 4.8 | 2.47 | 0.32 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1566 co-rotation radius",
+   "value": "7.6",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "The implied pattern speed, which is in excellent agreement between both spiral arms, is $25.0 \\pm 4.8$ km s$^{-1}$ kpc$^{-1}$ (which corresponds to $R_{\\rm CR}=7.6$ kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 2283 pattern speed (all arms)",
+   "value": "28.2",
+   "uncertainty": "7.0",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC2283 | all | 0.32 | 28.2 | 7.0 | 1.79 | 0.29 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 2283 Halpha star formation timescale (all arms)",
+   "value": "1.79",
+   "uncertainty": "0.29",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC2283 | all | 0.32 | 28.2 | 7.0 | 1.79 | 0.29 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4303 pattern speed (all arms)",
+   "value": "34.8",
+   "uncertainty": "20.1",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC4303 | all | 0.40 | 34.8 | 20.1 | 12.27 | 4.93 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4303 Halpha star formation timescale (all arms)",
+   "value": "12.27",
+   "uncertainty": "4.93",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "| NGC4303 | all | 0.40 | 34.8 | 20.1 | 12.27 | 4.93 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4303 co-rotation radius",
+   "value": "5.9",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Deriving star formation timescales and pattern speeds",
+     "quote": "Our pattern speed for NGC 4303 implies a co-rotation radius at $R_{\\rm CR}=5.9$ kpc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact radial bin widths and starting/ending radii (R_min^CO, R_max^CO) used for each individual galaxy",
+  "Exact rotation curves v_rot(R) and how they were interpolated or parameterized at each radial bin for the 24 galaxies (especially for M51 and galaxies without published Lang et al. 2020 curves)",
+  "Clockwise/anti-clockwise rotation direction sign (eta = +1 or -1) adopted for each of the 24 galaxies",
+  "Definition of the uncertainties (error bars) on individual radial offset measurements used when fitting pattern speeds and star formation timescales",
+  "Exact parameters of the newly constructed spiral mask for M51 (NGC 5194)"
+ ],
+ "missing_for_reproduction": [
+  "Custom analysis scripts for constructing the ~100 pc x 100 pc galactocentric radial/azimuthal grid and computing box-averaged peaks",
+  "Exact spiral mask file newly created for M51 (NGC 5194)",
+  "Public access link or release status for the Razza et al. (in prep.) Halpha maps for all 24 galaxies",
+  "Exact rotation curve tables v_rot(R) and error bar prescriptions used in the linear fits of theta vs Omega"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "High-level 2D image products (PHANGS-ALMA v4.0 moment-0 maps, S4G ICA maps, PHANGS environmental masks, PAWS maps) are publicly available and the geometric binning algorithm is clearly described, with complete per-galaxy numeric tables provided for verification. However, no analysis code is released, the Halpha dataset is cited as in prep., the new M51 mask is not provided, and exact binning/fitting error bar details are omitted.",
+ "rediscovery_reason": "The ALMA data are public 2D moment-0 maps (PHANGS-ALMA DR4), the geometric algorithm for measuring azimuthal offsets in elliptical annuli is straightforward to implement from the text, and comprehensive per-galaxy numerical benchmarks (mean offsets, standard deviations, correlation coefficients, pattern speeds, and star formation timescales) are tabulated.",
+ "source_card": "cards/2025A%26A...701A.183Q/sonnet/card.md"
+}

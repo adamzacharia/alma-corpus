@@ -1,0 +1,458 @@
+{
+ "bibcode": "2025ApJ...983...64C",
+ "title": "Polycyclic Aromatic Hydrocarbon and CO(2─1) Emission at 50─150 pc Scales in 70 Nearby Galaxies",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adbd40",
+ "arxiv_id": "2410.05397",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Characterize the relationship, scaling relations, environmental variations, and galaxy-to-galaxy scatter between CO(2-1) and polycyclic aromatic hydrocarbon (PAH) emission at 50-150 pc scales in 70 nearby star-forming galaxies.",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00886.L",
+  "2018.1.01321.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S",
+  "2019.1.01235.S",
+  "2019.2.00129.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "Includes short- and zero-spacing data",
+  "angular_resolution": "approx 1.0'' (median 98 pc, 16-84% range 63-129 pc)",
+  "sensitivity": "approx +- 1 K km s^-1 in flat CO maps"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PHANGS-ALMA CO(2-1) observations and strict masks",
+    "evidence": [
+     {
+      "loc": "ALMA CO(2-1)",
+      "quote": "We use PHANGS–ALMA CO (2-1) observations, which are described in (cite: leroy2021)."
+     },
+     {
+      "loc": "ALMA CO(2-1)",
+      "quote": "We additionally ensure that all significant CO emission is included by combining the fixed-width velocity mask with the “strict” mask from (cite: leroy2021)."
+     }
+    ]
+   },
+   "citation": "(cite: leroy2021)"
+  },
+  {
+   "what": {
+    "value": "Galaxy inclinations",
+    "evidence": [
+     {
+      "loc": "Analysis approach",
+      "quote": "We correct all intensities to face-on values by scaling by $\\cos i$, where $i$ is the galaxy inclination from (cite: lang2020) and/or (cite: leroy2021)."
+     }
+    ]
+   },
+   "citation": "(cite: lang2020) and/or (cite: leroy2021)"
+  },
+  {
+   "what": {
+    "value": "Galaxy stellar masses and star formation rates",
+    "evidence": [
+     {
+      "loc": "Appendix: Cycle 2 JWST Imaging of PHANGS Galaxies",
+      "quote": "lists the targets of both the Cycle 1 and Cycle 2 PHANGS Treasury, along with the list of bands observed and the stellar mass and SFR for each target"
+     },
+     {
+      "loc": "Fits for individual galaxies",
+      "quote": "We also report the stellar mass and SFR/$M_\\star$, adopted from (cite: leroy2019), the brightness of band $X$ in that galaxy at $I_{\\rm \\nu}^X = 1$ MJy sr$^{-1}$, the number of sight lines analyzed, and Spearman’s rank correlation coefficient relating the PAH and CO emission for each sightline."
+     }
+    ]
+   },
+   "citation": "(cite: leroy2019; leroy2021)"
+  },
+  {
+   "what": {
+    "value": "Galaxy center masks based on near-IR stellar morphology",
+    "evidence": [
+     {
+      "loc": "Environment masks",
+      "quote": "We define galaxy centers using the masks in (cite: querejeta2021), which are based on near-IR stellar morphology, and nebular regions following (cite: santoro2022; groves2023), which are based on ionized gas emission observed by the VLT/MUSE as part of the PHANGS-MUSE survey (cite: emsellem2022)."
+     }
+    ]
+   },
+   "citation": "(cite: querejeta2021)"
+  },
+  {
+   "what": {
+    "value": "Nebular / H II region masks from PHANGS-MUSE",
+    "evidence": [
+     {
+      "loc": "Environment masks",
+      "quote": "We define galaxy centers using the masks in (cite: querejeta2021), which are based on near-IR stellar morphology, and nebular regions following (cite: santoro2022; groves2023), which are based on ionized gas emission observed by the VLT/MUSE as part of the PHANGS-MUSE survey (cite: emsellem2022)."
+     }
+    ]
+   },
+   "citation": "(cite: santoro2022; groves2023)"
+  },
+  {
+   "what": {
+    "value": "PHANGS-JWST Cycle 1 imaging of 19 galaxies",
+    "evidence": [
+     {
+      "loc": "JWST imaging of PAH emission",
+      "quote": "We use JWST MIRI and NIRCam imaging of 19 galaxies from the PHANGS-JWST Cycle 1 Treasury (cite: lee2023)."
+     }
+    ]
+   },
+   "citation": "(cite: lee2023); (cite: williams2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST imaging and subtract stellar continuum to isolate PAH emission",
+   "method": "Reduce Cycle 1 and Cycle 2 JWST NIRCam and MIRI mosaics using pjpipe, mask bright stars and background galaxies with elliptical apertures, and subtract stellar continuum from F770W (using 0.13*F200W or 0.22*F300M) and F335M (using F300M and F360M).",
+   "software": [
+    "pjpipe",
+    "jwst"
+   ],
+   "key_parameters": [
+    "F770W_star = 0.22 * F300M (Cycle 2) or 0.13 * F200W (Cycle 1)"
+   ],
+   "assumptions": [
+    "Hot dust continuum in F770W and stellar continuum in F1130W are negligible and not subtracted"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Construct flat integrated ALMA CO(2-1) intensity maps",
+   "method": "Integrate PHANGS-ALMA CO(2-1) cubes over a fixed-width velocity window (20-200 km/s) around the local mean velocity combined with the strict mask to capture >90% of CO flux without S/N clipping bias.",
+   "software": [],
+   "key_parameters": [
+    "Velocity integration window = 20 to 200 km/s"
+   ],
+   "assumptions": [
+    "No CO-to-H2 conversion factor is adopted when analyzing intensities"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Match angular resolution, reproject to common grid, correct for inclination, and apply environment and surface brightness masks",
+   "method": "Convolve JWST images to CO(2-1) resolution using webbpsf PSFs, reproject CO, JWST, and environment masks onto a grid with pixel size 1/3 of CO PSF FWHM, multiply intensities by cos(i), and select bright pixels (I_F770W^PAH >= 0.5 MJy sr^-1; I_F335M^PAH > 0.1 MJy sr^-1).",
+   "software": [
+    "webbpsf"
+   ],
+   "key_parameters": [
+    "Grid pixel size = 1/3 * CO PSF FWHM",
+    "I_F770W^PAH >= 0.5 MJy sr^-1 threshold",
+    "I_F335M^PAH > 0.1 MJy sr^-1 threshold"
+   ],
+   "assumptions": [
+    "Regions with inclination-corrected I_F770W^PAH >= 0.5 MJy sr^-1 are dominated by molecular gas (Sigma_mol >= 4 M_sun pc^-2)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute CO-to-PAH ratios, correlation coefficients, and power-law scaling relations across environments and individual galaxies",
+   "method": "Compute Spearman rank correlation coefficients, median and MAD scatter of log10(CO/X), bin I_CO(2-1) in logarithmically-spaced bins of MIR intensity I_X, and fit power-law relations using linmix for the full sample, sub-environments, and individual galaxies, as well as fitting galaxy normalizations against M_star and SFR/M_star.",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "Pivot point x_0 = median(x)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median log10(CO(2-1) / F770W_PAH) ratio (all pixels)",
+   "value": "0.03",
+   "uncertainty": "0.35",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | 2090731 | $0.03 \\pm 0.35$ | $0.64$ | $1.39 \\pm 0.06$ | $0.90 \\pm 0.07$ | $1.44$ | $0.43$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope m for CO(2-1) vs F770W_PAH (all pixels)",
+   "value": "0.90",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | 2090731 | $0.03 \\pm 0.35$ | $0.64$ | $1.39 \\pm 0.06$ | $0.90 \\pm 0.07$ | $1.44$ | $0.43$ |"
+    },
+    {
+     "loc": "Results",
+     "quote": "$m=0.90\\pm 0.07$, agree reasonably well with previous work on much smaller samples or at lower resolution"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law intercept b for CO(2-1) vs F770W_PAH (all pixels, at x_0 = 1.44)",
+   "value": "1.39",
+   "uncertainty": "0.06",
+   "units": "dex (K km s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | 2090731 | $0.03 \\pm 0.35$ | $0.64$ | $1.39 \\pm 0.06$ | $0.90 \\pm 0.07$ | $1.44$ | $0.43$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient r for CO(2-1) vs F770W_PAH (all pixels)",
+   "value": "0.64",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | 2090731 | $0.03 \\pm 0.35$ | $0.64$ | $1.39 \\pm 0.06$ | $0.90 \\pm 0.07$ | $1.44$ | $0.43$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10(CO(2-1) / F335M_PAH) ratio (all pixels)",
+   "value": "1.27",
+   "uncertainty": "0.38",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F335M$_\\mathrm{PAH}$ | 19 | 296834 | $1.27 \\pm 0.38$ | $0.58$ | $1.38 \\pm 0.07$ | $1.01 \\pm 0.10$ | $0.10$ | $0.44$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope m for CO(2-1) vs F335M_PAH (all pixels)",
+   "value": "1.01",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F335M$_\\mathrm{PAH}$ | 19 | 296834 | $1.27 \\pm 0.38$ | $0.58$ | $1.38 \\pm 0.07$ | $1.01 \\pm 0.10$ | $0.10$ | $0.44$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10(CO(2-1) / F1130W) ratio (all pixels)",
+   "value": "-0.12",
+   "uncertainty": "0.37",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F1130W | 20 | 972892 | $-0.12 \\pm 0.37$ | $0.63$ | $1.20 \\pm 0.08$ | $1.02 \\pm 0.09$ | $1.34$ | $0.44$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope m for CO(2-1) vs F1130W (all pixels)",
+   "value": "1.02",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F1130W | 20 | 972892 | $-0.12 \\pm 0.37$ | $0.63$ | $1.20 \\pm 0.08$ | $1.02 \\pm 0.09$ | $1.34$ | $0.44$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10(CO(2-1) / F770W_PAH) ratio (outside centers)",
+   "value": "0.02",
+   "uncertainty": "0.35",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | 2041245 | $0.02 \\pm 0.35$ | $0.62$ | $1.12 \\pm 0.07$ | $0.98 \\pm 0.08$ | $1.16$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope m for CO(2-1) vs F770W_PAH (outside centers)",
+   "value": "0.98",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | 2041245 | $0.02 \\pm 0.35$ | $0.62$ | $1.12 \\pm 0.07$ | $0.98 \\pm 0.08$ | $1.16$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10(CO(2-1) / F770W_PAH) ratio (galaxy centers)",
+   "value": "0.18",
+   "uncertainty": "0.33",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 58 | 49469 | $0.18 \\pm 0.33$ | $0.88$ | $1.52 \\pm 0.07$ | $0.80 \\pm 0.07$ | $1.44$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope m for CO(2-1) vs F770W_PAH (galaxy centers)",
+   "value": "0.80",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 58 | 49469 | $0.18 \\pm 0.33$ | $0.88$ | $1.52 \\pm 0.07$ | $0.80 \\pm 0.07$ | $1.44$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10(CO(2-1) / F770W_PAH) ratio (nebular regions, Cycle 1)",
+   "value": "-0.02",
+   "uncertainty": "0.34",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 19 | 186605 | $-0.02 \\pm 0.34$ | $0.75$ | $1.02 \\pm 0.09$ | $1.03 \\pm 0.11$ | $1.09$ | $0.40$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log10(CO(2-1) / F770W_PAH) ratio (diffuse regions, Cycle 1)",
+   "value": "0.08",
+   "uncertainty": "0.38",
+   "units": "dex (K km s^-1 / (MJy sr^-1))",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 19 | 632119 | $0.08 \\pm 0.38$ | $0.52$ | $0.72 \\pm 0.13$ | $1.20 \\pm 0.27$ | $0.66$ | $0.47$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy-to-galaxy scatter in CO/F770W_PAH normalization",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Galaxy to galaxy variations",
+     "quote": "Specifically, the normalization of the CO-PAH relation scatters by $\\pm 0.17$ dex from galaxy to galaxy."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | $-0.21 \\pm 0.04$ | $0.03 \\pm 0.02$ | $-10.14$ | $-0.50$ | $0.13$ | $0.17$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log10(C_F770W^PAH) vs log10(SFR/M_star)",
+   "value": "-0.21",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Galaxy to galaxy variations",
+     "quote": "\\nonumber \\log_{10}\\ensuremath{C_\\mathrm{F770W}^\\mathrm{PAH}}= -0.21 \\pm 0.04~(\\log_{10}\\ensuremath{\\mathrm{SFR}/M_\\star}+10.14)\\\\ +0.03 \\pm 0.02."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | $-0.21 \\pm 0.04$ | $0.03 \\pm 0.02$ | $-10.14$ | $-0.50$ | $0.13$ | $0.17$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log10(C_F770W^PAH) vs log10(M_star)",
+   "value": "0.15",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Galaxy to galaxy variations",
+     "quote": "\\nonumber \\log_{10}\\ensuremath{C_\\mathrm{F770W}^\\mathrm{PAH}}= 0.15 \\pm 0.04~(\\log_{10} M_\\star -10.34) \\\\ +0.06 \\pm 0.02,"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "| F770W$_\\mathrm{PAH}$ | 70 | $0.15 \\pm 0.04$ | $0.06 \\pm 0.02$ | $10.34$ | $0.38$ | $0.16$ | $0.17$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Renormalized power-law slope m for CO(2-1) vs F770W_PAH (all pixels)",
+   "value": "0.88",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Galaxy to galaxy variations",
+     "quote": "\\log_{10}I_\\mathrm{CO(2-1)}=(0.88\\pm 0.06)(x-1.44)+(1.36\\pm 0.06),"
+    }
+   ]
+  },
+  {
+   "quantity": "Renormalized power-law intercept b for CO(2-1) vs F770W_PAH (all pixels, at x_0 = 1.44)",
+   "value": "1.36",
+   "uncertainty": "0.06",
+   "units": "dex (K km s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Galaxy to galaxy variations",
+     "quote": "\\log_{10}I_\\mathrm{CO(2-1)}=(0.88\\pm 0.06)(x-1.44)+(1.36\\pm 0.06),"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact velocity integration window widths and reference velocity tracer chosen for each individual galaxy's flat CO(2-1) map",
+  "Exact F335M continuum subtraction equations/coefficients from H. Koziol et al. (in preparation)",
+  "Coordinates and dimensions of the elliptical apertures used to mask bright foreground stars and background galaxies",
+  "Exact bin widths and spacing used for the logarithmically-spaced MIR intensity bins prior to linmix fitting",
+  "SpecificPHANGS-ALMA internal/public data release version used"
+ ],
+ "missing_for_reproduction": [
+  "Exact F335M continuum subtraction coefficients/recipe from Koziol et al. (in preparation)",
+  "Exact background anchoring procedures for Cycle 2 JWST images from Koziol et al. (in preparation) and Pathak et al. (in preparation)",
+  "Exact per-galaxy velocity window widths and reference velocity fields used to generate the flat CO(2-1) maps",
+  "Locations and sizes of manual elliptical masks for bright foreground stars and background galaxies",
+  "Exact number or width of logarithmic bins used before linmix regression"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The statistical analysis, pixel gridding, thresholds, and fitting methods (linmix, webbpsf, pjpipe) are clearly described and high-level PHANGS-ALMA and PHANGS-JWST products are publicly archived, but several preprocessing details (flat CO map velocity windows, F335M continuum subtraction coefficients from in-prep work, star masks, and exact bin widths) are not explicitly stated in the paper.",
+ "rediscovery_reason": "The main findings are clean numerical power-law scaling relations and correlation coefficients across 70 galaxies using public PHANGS-ALMA and PHANGS-JWST treasury datasets, making it well-suited for reproducing the CO-PAH scaling relations from processed maps.",
+ "source_card": "cards/2025ApJ...983...64C/sonnet/card.md"
+}

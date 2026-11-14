@@ -1,0 +1,405 @@
+{
+ "bibcode": "2026A&A...711A.118A",
+ "title": "ALMAGAL: IX. The chemical complexity of AG318.9477−00.1960: A line-identification template for ALMAGAL",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202659140",
+ "arxiv_id": "2606.07388",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Characterise the chemical inventory of high-mass core AG318-c9 as a line-identification template for the ALMAGAL survey, and assess whether ethylene glycol, glycolaldehyde, and methyl formate trace the innermost regions of hot molecular cores.",
+ "alma_project_codes": [
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "Band 6 (~1.38 mm, ~217 GHz)",
+  "arrays": "12 m array and 7 m Atacama Compact Array (7M)",
+  "angular_resolution": "0.46'' x 0.37'' (PA = 7 deg; ~4800 au x 3900 au)",
+  "sensitivity": "continuum rms ~ 0.28 mJy beam^-1; 5 sigma line detection threshold ~ 1.35 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Clump and core physical properties for AG318.9477-00.1960 and AG318-c9 (distance, coordinates, continuum fluxes, deconvolved size, mass, density, H2 column density, luminosity, systemic velocity)",
+    "evidence": [
+     {
+      "loc": "The source",
+      "quote": "Table notes: Parameters derived from (cite: almagal1) and (cite: almagal3)."
+     },
+     {
+      "loc": "AG318.9477$-$00.1960 clump",
+      "quote": "The clump has a mass of $M_{\\rm clump} \\sim 5870\\,M_{\\odot}$, a luminosity of $L_{\\rm clump}\\sim 2.7\\, \\times 10^{5}\\,L_{\\odot}$, an $L/M$ $\\sim 46.5\\,\\rm L_{\\odot}/M_{\\odot}$, and a systemic velocity of $V_{\\rm lsr}=-34.4$ km s$^{-1}$ (cite: almagal1)."
+     }
+    ]
+   },
+   "citation": "(cite: almagal1) and (cite: almagal3)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic catalogues CDMS and JPL accessed via Splatalogue",
+    "evidence": [
+     {
+      "loc": "Line identification",
+      "quote": "For the remaining unidentified lines, we used `Splatalogue` to search for additional molecular species with transitions consistent with the observed frequencies, drawing spectroscopic data from the CDMS (cite: cdms2001; cdms2005; cdms2016) and the JPL (cite: jpl) catalogues."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: cdms2001; cdms2005; cdms2016) and JPL (cite: jpl)"
+  },
+  {
+   "what": {
+    "value": "Galactocentric isotopic ratios 12C/13C = 46.6 +/- 10, 32S/33S = 88.9 +/- 7.7, and 32S/34S = 20.7 +/- 1.2",
+    "evidence": [
+     {
+      "loc": "Molecular inventory",
+      "quote": "Specifically, we adopted $\\rm ^{ 12}C/^{13}C = 46.6\\pm10$ (cite: Yan_2019), $\\rm ^{32}S/^{33}S = 88.9\\pm7.7$, and $\\rm ^{32}S/^{34}S = 20.7\\pm1.2$ (cite: yan2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Yan_2019); (cite: yan2023)"
+  },
+  {
+   "what": {
+    "value": "Column densities and abundances of molecular species in hot core G31.41+0.31 from the GUAPOS survey",
+    "evidence": [
+     {
+      "loc": "Comparison with the hot core G31.41+0.31",
+      "quote": "The GUAPOS survey (cite: guapos1; guapos2; guapos3; guapos4; guapos5; GUAPOS6) explored the chemical richness of G31, detecting numerous O- and N-bearing COMs as formamide (HC(O)NH$_2$), methyl isocyanate (CH$_3$NCO), and ethyl isocyanide (C$_2$H$_5$NC)."
+     }
+    ]
+   },
+   "citation": "(cite: guapos1; guapos2; guapos3; guapos4; guapos5; GUAPOS6)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract core-integrated spectra and select the chemically richest template core",
+   "method": "Integrate emission in spw0 and spw1 over the continuum core ellipse defined in the ALMAGAL core catalogue, then sort cores by intensity and S/N of CH3CN K=2 at 220.730 GHz and MF 17(3,14)->16(3,13) at 218.298 GHz, line density (~80 lines GHz^-1), simple kinematics, and core mass.",
+   "software": [
+    "CuTEx"
+   ],
+   "key_parameters": [
+    "CH3CN K=2 at 220.730 GHz; MF 17(3,14)->16(3,13) at 218.298 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify molecular lines and fit LTE synthetic spectra to derive physical parameters and abundances",
+   "method": "Search for molecular transitions with S/N >= 5 (~1.35 K) using Splatalogue (CDMS and JPL catalogues) and fit LTE synthetic spectra (accounting for line opacity) using SLIM and AUTOFIT in MADCUBA, both manually and via an automated two-round MADCUBA macro. Compute abundances relative to H2 and scale optically thick main isotopologues from rarer isotopologues using Galactocentric isotopic ratios.",
+   "software": [
+    "Splatalogue",
+    "MADCUBA",
+    "SLIM",
+    "AUTOFIT",
+    "RichValues"
+   ],
+   "key_parameters": [
+    "S/N >= 5 (~1.35 K)",
+    "Initial guesses: V = -34.4 km s^-1, FWHM = 5 km s^-1, theta_s = 0 (no beam dilution), initial T_ex from rotational diagram of 41 MF transitions (T_ex^CH3OCHO = 167 K)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), justified by n_H2 = 1.72 x 10^8 cm^-3",
+    "N_H2 = 7.35 x 10^24 cm^-2 derived from M_core = 124.2 M_sun, D_core = 6396 au, m_H = 1.67 x 10^-24 g, mu = 2.8",
+    "Isotopic ratios at D_GAL = 6.84 kpc: 12C/13C = 46.6 +/- 10, 32S/33S = 88.9 +/- 7.7, 32S/34S = 20.7 +/- 1.2"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compare the chemical inventory and abundances of AG318-c9 with hot core G31.41+0.31",
+   "method": "Compare column densities and relative abundances of species covered by both ALMAGAL and the GUAPOS survey of G31.41+0.31 over comparable spatial scales (~6400 au for AG318-c9 vs ~4500 au for G31), and estimate core luminosity by flux-scaling the clump luminosity.",
+   "software": [],
+   "key_parameters": [
+    "Excluded species not in both setups or with unpublished GUAPOS deuterated data"
+   ],
+   "assumptions": [
+    "Clump luminosity apportioned to core by ratio of peak continuum flux to sum of all 19 core peak fluxes"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Generate spatially resolved moment 0, N, and T_ex maps and radial profiles for EG, GA, and MF",
+   "method": "Generate moment 0, 1, and 2 maps using one representative unblended transition per molecule, then perform pixel-by-pixel LTE fits in MADCUBA SLIM/AUTOFIT on pixels with moment 0 S/N > 3, and average values within concentric 0.1'' annuli to derive radial profiles.",
+   "software": [
+    "MADCUBA",
+    "SLIM",
+    "AUTOFIT"
+   ],
+   "key_parameters": [
+    "Moment map transitions: GA 35(10,26)->35(9,27) at 220.055 GHz, EG 24(1,24)->23(1,23) at 217.45 GHz, MF 17(3,14)->16(3,13) at 218.298 GHz; pixel threshold S/N > 3; annulus width 0.1''"
+   ],
+   "assumptions": [
+    "Single-species LTE fit per pixel without contribution from other blending molecules"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total detected molecular species in AG318-c9",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMAGAL",
+     "quote": "We report the detection of 65 molecular species, including 31 main species and 34 isotopologues and vibrationally excited species."
+    }
+   ]
+  },
+  {
+   "quantity": "Detected COM species in AG318-c9",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular inventory",
+     "quote": "Overall, the identified molecular inventory reveals a chemically rich environment dominated by oxygen-bearing species (44), followed by nitrogen-bearing (28), sulphur-bearing (8), and silicon-bearing (2), with COMs accounting for more than half of the detections (33)."
+    }
+   ]
+  },
+  {
+   "quantity": "Unidentified spectral lines in AG318-c9",
+   "value": "91",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular inventory",
+     "quote": "A total of 91 lines remained unassigned and are labelled unidentified (U) in the spectra."
+    }
+   ]
+  },
+  {
+   "quantity": "Glycolaldehyde (CH2(OH)CHO) excitation temperature",
+   "value": "168",
+   "uncertainty": "13",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Glycolaldehyde",
+     "quote": "The resulting fit of the detected transitions of GA indicates $T_{\\rm ex} = 168\\pm 13\\,$K, $N=(1.45\\pm 0.12)\\times 10^{16}\\,\\rm cm^{-2}$ and $V=-36.89 \\pm 0.1\\,\\rm km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Glycolaldehyde (CH2(OH)CHO) column density",
+   "value": "1.45e16",
+   "uncertainty": "0.12e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Glycolaldehyde",
+     "quote": "The resulting fit of the detected transitions of GA indicates $T_{\\rm ex} = 168\\pm 13\\,$K, $N=(1.45\\pm 0.12)\\times 10^{16}\\,\\rm cm^{-2}$ and $V=-36.89 \\pm 0.1\\,\\rm km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Glycolaldehyde (CH2(OH)CHO) relative abundance X",
+   "value": "1.97e-9",
+   "uncertainty": "0.17e-9",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Complete version of physical parameters table",
+     "quote": "| CH$_2$(OH)CHO | $168 \\pm 13$ | $1.45 \\pm 0.12$ | $1.97 \\pm 0.17$ | $4.0$ | $-36.89 \\pm 0.10$ | 19 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Glycolaldehyde (CH2(OH)CHO) radial velocity",
+   "value": "-36.89",
+   "uncertainty": "0.10",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Complete version of physical parameters table",
+     "quote": "| CH$_2$(OH)CHO | $168 \\pm 13$ | $1.45 \\pm 0.12$ | $1.97 \\pm 0.17$ | $4.0$ | $-36.89 \\pm 0.10$ | 19 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ethylene glycol (aGg'-(CH2OH)2) excitation temperature",
+   "value": "240",
+   "uncertainty": "30",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ethylene glycol",
+     "quote": "The resulting fit of the detected transitions of a-EG indicates $T_{\\rm ex}$ = $240\\pm 30$ K, $N=(5.1\\pm 0.6)\\times 10^{16}$ cm$^{-2}$, $\\rm FWHM = 6.19\\pm 0.19 \\, km\\, s^{-1}$, and $V=-35.9 \\pm 0.08\\,\\rm km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ethylene glycol (aGg'-(CH2OH)2) column density",
+   "value": "5.1e16",
+   "uncertainty": "0.6e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ethylene glycol",
+     "quote": "The resulting fit of the detected transitions of a-EG indicates $T_{\\rm ex}$ = $240\\pm 30$ K, $N=(5.1\\pm 0.6)\\times 10^{16}$ cm$^{-2}$, $\\rm FWHM = 6.19\\pm 0.19 \\, km\\, s^{-1}$, and $V=-35.9 \\pm 0.08\\,\\rm km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ethylene glycol (aGg'-(CH2OH)2) relative abundance X",
+   "value": "6.9e-9",
+   "uncertainty": "0.9e-9",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Complete version of physical parameters table",
+     "quote": "| $\\rm aGg^{\\prime}-(CH_2OH)_2$ | $240 \\pm 30$ | $5.1 \\pm 0.6$ | $6.9 \\pm 0.9$ | $6.19 \\pm 0.19$ | $-35.90 \\pm 0.08$ | 37 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ethylene glycol (aGg'-(CH2OH)2) FWHM",
+   "value": "6.19",
+   "uncertainty": "0.19",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ethylene glycol",
+     "quote": "The resulting fit of the detected transitions of a-EG indicates $T_{\\rm ex}$ = $240\\pm 30$ K, $N=(5.1\\pm 0.6)\\times 10^{16}$ cm$^{-2}$, $\\rm FWHM = 6.19\\pm 0.19 \\, km\\, s^{-1}$, and $V=-35.9 \\pm 0.08\\,\\rm km\\,s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ethylene glycol (aGg'-(CH2OH)2) radial velocity",
+   "value": "-35.90",
+   "uncertainty": "0.08",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Complete version of physical parameters table",
+     "quote": "| $\\rm aGg^{\\prime}-(CH_2OH)_2$ | $240 \\pm 30$ | $5.1 \\pm 0.6$ | $6.9 \\pm 0.9$ | $6.19 \\pm 0.19$ | $-35.90 \\pm 0.08$ | 37 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Methyl formate (CH3OCHO) excitation temperature",
+   "value": "167",
+   "uncertainty": "3",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methyl formate",
+     "quote": "The estimated excitation temperature, $T_{\\rm ex} = 167\\pm 3$ K, is consistent with that derived for EG and GA."
+    }
+   ]
+  },
+  {
+   "quantity": "Methyl formate (CH3OCHO) column density",
+   "value": "22.0e16",
+   "uncertainty": "0.4e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Complete version of physical parameters table",
+     "quote": "| CH$_3$OCHO | $167 \\pm 3$ | $22.0 \\pm 0.4$ | $29.9 \\pm 0.6$ | $5.59 \\pm 0.08$ | $-35.22 \\pm 0.04$ | 41 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Methyl formate (CH3OCHO) relative abundance X",
+   "value": "29.9e-9",
+   "uncertainty": "0.6e-9",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Complete version of physical parameters table",
+     "quote": "| CH$_3$OCHO | $167 \\pm 3$ | $22.0 \\pm 0.4$ | $29.9 \\pm 0.6$ | $5.59 \\pm 0.08$ | $-35.22 \\pm 0.04$ | 41 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Methyl formate (CH3OCHO) FWHM",
+   "value": "5.59",
+   "uncertainty": "0.08",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methyl formate",
+     "quote": "We obtained a value for the $\\rm FWHM=5.59 \\pm 0.08$ km s$^{-1}$ and $V = -35.22 \\pm 0.04$ km s$^{-1}$, which are similar to those of EG and GA."
+    }
+   ]
+  },
+  {
+   "quantity": "Methyl formate (CH3OCHO) radial velocity",
+   "value": "-35.22",
+   "uncertainty": "0.04",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methyl formate",
+     "quote": "We obtained a value for the $\\rm FWHM=5.59 \\pm 0.08$ km s$^{-1}$ and $V = -35.22 \\pm 0.04$ km s$^{-1}$, which are similar to those of EG and GA."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated core luminosity L_core of AG318-c9",
+   "value": "1.2e5",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with the hot core G31.41+0.31",
+     "quote": "We apportioned the clump luminosity to AG318$-$c9 by scaling it by the ratio of its peak flux ($F_{\\rm peak_{core}}$) to the sum of all the core peak fluxes ($F_{\\rm peak_{all\\ cores}}$), leading to $L_{\\rm core}\\approx 1.2 \\times 10^5\\,L_{\\odot}$, which is almost three times higher than the luminosity of G31."
+    }
+   ]
+  },
+  {
+   "quantity": "MF T_ex range across spatially resolved map",
+   "value": "100 to 250",
+   "uncertainty": "~10%",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Integrated intensity, $T_{\\rm ex}$, and $N$ maps of EG, GA, and MF",
+     "quote": "The $T_{\\rm ex}(\\rm MF)$ map (Fig. [10](#fig:maps)) shows a robust temperature gradient, rising from $\\sim 100\\,$K in the outer parts of the core up to $\\sim 250\\,$K towards the centre."
+    },
+    {
+     "loc": "Integrated intensity, $T_{\\rm ex}$, and $N$ maps of EG, GA, and MF",
+     "quote": "Because MF has the most unblended transitions, its $T_{\\rm ex}$ map has the lowest relative error ($\\frac{\\Delta T_{\\rm ex}}{T_{\\rm ex}} \\sim 10\\,\\%$), which increases only in the outer regions with a lower S/N (Appendix [9.1](#error_maps))."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline parameters used in ALMAGAL data reduction (deferred to almagal2)",
+  "Imaging weighting (e.g. Briggs robust parameter), cell size, and continuum subtraction procedure for the spectral cubes (deferred to almagal2)",
+  "Exact velocity integration ranges used to construct the moment 0, 1, and 2 maps in MADCUBA"
+ ],
+ "missing_for_reproduction": [
+  "Combined 7M+TM1+TM2 calibrated and continuum-subtracted spectral cubes (spw0 and spw1) for AG318.9477-00.1960 from the ALMAGAL pipeline",
+  "Exact ellipse parameters (centre, semi-major/minor axes, PA) used to extract the core-integrated spectrum of AG318-c9, if different from the deconvolved size in Table 1",
+  "Exact list of the 41 MF transitions used for the pixel-by-pixel map generation (only the 1D fit table is linked on GitHub; Appendix B.2 lists map transitions only for EG and GA)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "The spectral analysis recipe is thoroughly documented (including flowcharts, initial seeds, transition tables, and public MADCUBA scripts on GitHub) and all derived parameters are tabulated; minor deductions only because cube imaging/calibration is deferred to ALMAGAL Paper II and exact velocity integration windows for moment maps are unstated.",
+ "rediscovery_reason": "ALMA project 2019.1.00195.L data are public, the analysis scripts and transition lists are publicly released on GitHub, and the paper provides a complete quantitative table of T_ex, N, FWHM, V, and X for 65 species as an answer key.",
+ "source_card": "cards/2026A%26A...711A.118A/sonnet/card.md"
+}

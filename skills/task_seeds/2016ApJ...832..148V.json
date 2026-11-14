@@ -1,0 +1,259 @@
+{
+ "bibcode": "2016ApJ...832..148V",
+ "title": "Molecular Gas Along a Bright Hα Filament in 2A 0335+096 Revealed by ALMA",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/832/2/148",
+ "arxiv_id": "1610.00716",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "What is the distribution, kinematics and origin of the molecular gas in the 2A 0335+096 BCG and its Halpha filament?",
+ "alma_project_codes": [
+  "2012.1.00837.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO 1-0) and Band 7 (CO 3-2)",
+  "arrays": "not stated",
+  "angular_resolution": "1.3''x0.92'' CO(1-0); 0.39''x0.23'' CO(3-2)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Halpha nebula image",
+    "evidence": [
+     {
+      "loc": "3.6 Spatial Correlation with X-ray and Halpha Filaments",
+      "quote": "Fig. [13](#fig:halpha) shows the H$\\alpha$ nebula from (cite: donahue07) overlaid with contours of the CO(1-0) emission."
+     }
+    ]
+   },
+   "citation": "(cite: donahue07)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30m CO(1-0) flux 11.4±1.1 Jy km/s",
+    "evidence": [
+     {
+      "loc": "3.1 Distribution of Molecular Gas",
+      "quote": "$11.4\\pm1.1\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$; (cite: edge01)"
+     }
+    ]
+   },
+   "citation": "(cite: edge01)"
+  },
+  {
+   "what": {
+    "value": "cluster total mass within 30 kpc 2.1e12 Msun",
+    "evidence": [
+     {
+      "loc": "4.3.2 Clouds in Gravitational Free-fall",
+      "quote": "the total mass interior to $30\\rm\\; kpc$ is $2.1\\ensuremath{\\times 10^{12}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+     }
+    ]
+   },
+   "citation": "(cite: main15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "CASA pipeline calibration, phase self-cal, CLEAN with Briggs weighting 2; 2015 CO(1-0) block excluded",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract and fit spectra",
+   "method": "Spectra from regions fitted with one to three Gaussians, corrected for primary beam and binning broadening",
+   "software": [
+    "LMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas masses",
+   "method": "Convert CO(1-0) flux with Galactic X_CO; CO(3-2) via flux ratio 7",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO = 2e-20 cm^-2 (K km/s)^-1; D_L = 150 Mpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Velocity maps and PV diagrams",
+   "method": "Per-pixel single then second Gaussian fits (2 sigma detection); PV slices of set widths",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Dust extinction map from HST",
+   "method": "Core-Sersic model of BCG plus Sersic companion fitted with Galfit-M; I/I0 converted to tau, N_H and dust mass",
+   "software": [
+    "Galfit-M",
+    "IRAF"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Galactic V-band extinction curve, N_H = 2.05e21 tau_V"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Free-fall model of filament",
+   "method": "Hernquist potential infall compared to PV diagram",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "scale length 7.4 kpc from 2MASS R_e; total mass from Main et al. 2015 NFW"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "1.13e9",
+   "uncertainty": "±0.15e9",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular Gas Mass",
+     "quote": "corresponds to a molecular gas mass of $1.13\\pm0.15\\ensuremath{\\times 10^{9}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Filament molecular gas mass",
+   "value": "7.8e8",
+   "uncertainty": "±0.9e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular Gas Mass",
+     "quote": "$7.8\\pm0.9\\ensuremath{\\times 10^{8}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ is contained in the elongated filament"
+    }
+   ]
+  },
+  {
+   "quantity": "BCG molecular gas mass",
+   "value": "3.2e8",
+   "uncertainty": "±0.4e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The central molecular gas component accounts for $3.2\\pm0.4\\ensuremath{\\times 10^{8}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) flux",
+   "value": "4.8",
+   "uncertainty": "±0.6",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Distribution of Molecular Gas",
+     "quote": "The total CO(1-0) flux recovered by these observations is $4.8\\pm0.6\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2)/CO(1-0) flux ratio",
+   "value": "7.2",
+   "uncertainty": "±1.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular Gas Mass",
+     "quote": "${\\rm CO(3-2)/CO(1-0)}=7.2\\pm1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear continuum flux at 109.84 GHz (July 2014)",
+   "value": "6.854",
+   "uncertainty": "±0.044",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and Data Reduction",
+     "quote": "the nuclear continuum flux is $6.854\\pm0.044\\rm\\; mJy$ in the July 2014 observation"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index",
+   "value": "1.61",
+   "uncertainty": "±0.27",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and Data Reduction",
+     "quote": "is $\\alpha=1.61\\pm0.27$"
+    }
+   ]
+  },
+  {
+   "quantity": "Filament gas-to-dust ratio",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 Spatial Correlation with Dust Extinction",
+     "quote": "the local gas-to-dust ratio is $66$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass in table",
+   "value": "173",
+   "uncertainty": "±8",
+   "units": "1e5 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Total |  |  |  |  |  | $173\\pm8$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum imaging",
+  "Image size, cell size, clean masks and threshold",
+  "Whether the 2015 CO(1-0) execution was fully excluded from the imaged cube (yes, but flux scale details not given)",
+  "Priors/initial guesses for LMFIT Gaussian fits and number-of-component selection details",
+  "Hernquist model free-fall parameters beyond inclination 25 deg and offset -200 km/s",
+  "Spatial regions' exact box definitions beyond figures"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (mask, threshold, image size, cell)",
+  "Line-free channel selection",
+  "Exact region boxes for spectra",
+  "Free-fall model parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and simple methods, but imaging and region details are incomplete.",
+ "rediscovery_reason": "Public data, numeric masses and Gaussian fits are redoable.",
+ "source_card": "cards/2016ApJ...832..148V/sonnet/card.md"
+}

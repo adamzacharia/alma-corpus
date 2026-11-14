@@ -1,0 +1,606 @@
+{
+ "bibcode": "2023A&A...673A.116K",
+ "title": "Exploring the environment, magnetic fields, and feedback effects of massive high-redshift galaxies with [C II]",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202141839",
+ "arxiv_id": "2305.03812",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Characterize the physical properties, environment, outflow signatures, and linear polarization (magnetic field limits) of the submillimeter galaxy AzTEC-3 at z = 5.3 and the lensed quasar BRI 0952-0115 at z = 4.4 using ALMA Band 7 [C II] and continuum observations.",
+ "alma_project_codes": [
+  "2018.1.01536.S",
+  "2017.1.01081.S",
+  "2015.1.00388.S"
+ ],
+ "data": {
+  "bands": "Band 7 (primary); Bands 3, 4, and 6 (archival)",
+  "arrays": "41 antennas (BRI0952), 48 antennas (AzTEC-3)",
+  "angular_resolution": "BRI0952: 0.48'' x 0.35'' ([C II]), 0.53'' x 0.41'' (Cont), 0.51'' x 0.40'' (Pol); AzTEC-3: 0.80'' x 0.56'' ([C II]), 0.91'' x 0.65'' (Cont), 0.91'' x 0.64'' (Pol)",
+  "sensitivity": "BRI0952: 0.5 mJy/beam ([C II]), 0.05 mJy/beam (Cont), 0.46 mJy/beam (Stokes Q, U); AzTEC-3: 0.2 mJy/beam ([C II]), 0.02 mJy/beam (Cont), 0.14 mJy/beam (Stokes Q, U)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gaia2 astrometric catalog",
+    "evidence": [
+     {
+      "loc": "Observations and analysis",
+      "quote": "For BRI0952, we used the WFPC2 F814W band with project code 8268 (PI Impey), cross-checked the astrometry with the Gaia2 catalog (cite: Gaia2), and used photometry from the WISE All-Sky Data Release (cite: Cutri12)."
+     }
+    ]
+   },
+   "citation": "(cite: Gaia2)"
+  },
+  {
+   "what": {
+    "value": "WISE All-Sky Data Release photometry",
+    "evidence": [
+     {
+      "loc": "Observations and analysis",
+      "quote": "For BRI0952, we used the WFPC2 F814W band with project code 8268 (PI Impey), cross-checked the astrometry with the Gaia2 catalog (cite: Gaia2), and used photometry from the WISE All-Sky Data Release (cite: Cutri12)."
+     }
+    ]
+   },
+   "citation": "(cite: Cutri12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract linear polarization spectra and derive 3-sigma upper limits",
+   "method": "Extract Stokes Q and U spectra and continuum in a single beam towards the peak of the [C II] lines and continuum; compute linear polarization spectrum I_p = sqrt(Q^2 + U^2 - sigma_p^2) where sigma_p = sqrt(sigma_Q^2 + sigma_U^2), and derive 3-sigma upper limits on linear polarization fraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Single beam extraction; 3-sigma upper limits including 0.1% ALMA calibration uncertainty"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model gravitational lensing for BRI0952 in the uv-plane",
+   "method": "Fit a single isothermal ellipsoid lens and a Sersic source directly to the Band 7 continuum uv-data using Visilens, then fix the lens parameters and fit the source profile on the continuum and [C II] line uv-data (including across five frequency bins)",
+   "software": [
+    "Visilens"
+   ],
+   "key_parameters": [
+    "Lens parameters: (x_L, y_L), ellipticity e_L, position angle phi_L; Source parameters: Sersic profile with (x_S, y_S), flux density, Sersic index, half-light radius, axis-ratio, position angle; 5 frequency bins across [C II]"
+   ],
+   "assumptions": [
+    "Lens is at z = 0.632; companion magnifications assumed to be mu_comp-N = mu_comp-SW = 1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract [C II] spectra, fit Gaussian line profiles, and measure deconvolved source sizes",
+   "method": "Extract [C II] spectra from elliptical/circular apertures around each target and companion, estimate channel rms from 25 emission-free regions of the same aperture size, fit single or double Gaussian line profiles, and measure deconvolved source sizes with CASA imfit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Apertures: BRI0952 (2.1'' x 1.45''), Comp-SW (1.13'' x 0.57''), Comp-N (1.3'' x 0.62''), AzTEC-3 (circle r = 2.4''), LBG-3 (1.2'' x 1.5''), Gal-S (2.6'' x 1.7''), Gal-SW (1.3'' x 0.90'')"
+   ],
+   "assumptions": [
+    "Emission in nearby companion sources is [C II] based on close spatial proximity to primary targets"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure continuum flux densities and deconvolved source sizes",
+   "method": "Fit continuum emission with CASA imfit; for AzTEC-3 companions, cross-check continuum flux using three methods: direct imfit on the continuum image, measurement on the imfit residual image with AzTEC-3 removed, and subtraction of a >9-sigma AzTEC-3 continuum model",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    ">9-sigma threshold for AzTEC-3 continuum subtraction model; 10% additional deblending error on AzTEC-3 companions; 30% additional lensing error on BRI0952 sizes"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit multi-wavelength SEDs and derive IR luminosities and star-formation rates",
+   "method": "For BRI0952, fit IR SED (WISE, MIPS 24 um, ALMA Bands 3, 4, 6, 7) using DecompIR to decompose AGN and SF contributions; for AzTEC-3, extract HST photometry with SExtractor and fit optical-to-mm SED with Bagpipes; for companions, use a modified blackbody approximation; integrate 8-1000 um for L_IR and compute SFR from L_IR and L_[CII]",
+   "software": [
+    "DecompIR",
+    "SExtractor",
+    "Bagpipes"
+   ],
+   "key_parameters": [
+    "L_IR integrated from 8-1000 um; Bagpipes mass range 10^8 - 10^14 M_sun, metallicity range 0.01 - 1.0 Z_sun; Modified blackbody T = 45 K, beta = 1.7"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7; Chabrier IMF; Constant star formation history and Calzetti reddening law for AzTEC-3; SFR ~ 10^-10 L_IR [L_sun]; De Looze et al. (2014) starburst relation for SFR_[CII]"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate mass outflow rates and virial dynamical masses",
+   "method": "Calculate outflow mass from the broad [C II] component luminosity using the Hailey-Dunsheath et al. (2010) equation and compute M_dot_out = M_out * v_out / R_out; calculate dynamical masses using a virial mass estimator following Riechers et al. (2014)",
+   "software": [],
+   "key_parameters": [
+    "R_out = 7.5 kpc (AzTEC-3), R_out = 2.3 kpc (BRI0952, lensing corrected with mu = 3); v_outf = 0.5 x FWHM_broad"
+   ],
+   "assumptions": [
+    "PDR conditions: X_C+ = 1.4 x 10^-4, T = 200 K, n >> n_crit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Linear polarization 3-sigma limit at [C II] peak (BRI0952)",
+   "value": "<4.8",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| BRI0952 | $<4.8\\%$ | $<0.7\\%$ | $<2.7\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear polarization 3-sigma limit on integrated [C II] (BRI0952)",
+   "value": "<0.7",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| BRI0952 | $<4.8\\%$ | $<0.7\\%$ | $<2.7\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear polarization 3-sigma limit on dust continuum (BRI0952)",
+   "value": "<2.7",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| BRI0952 | $<4.8\\%$ | $<0.7\\%$ | $<2.7\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear polarization 3-sigma limit at [C II] peak (AzTEC-3)",
+   "value": "<2.1",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| AzTEC-3 | $<2.1\\%$ | $<0.2\\%$ | $<2.1\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear polarization 3-sigma limit on integrated [C II] (AzTEC-3)",
+   "value": "<0.2",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| AzTEC-3 | $<2.1\\%$ | $<0.2\\%$ | $<2.1\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear polarization 3-sigma limit on dust continuum (AzTEC-3)",
+   "value": "<2.1",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| AzTEC-3 | $<2.1\\%$ | $<0.2\\%$ | $<2.1\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing magnification factor mu (BRI0952)",
+   "value": "3.92",
+   "uncertainty": "1.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.2 [C ii] emission",
+     "quote": "| 09:55:00.1 | -01:30:07.1 | $0.446$ | $0.003$ | $0.619 \\times 10^{11}$ | 0.055 | 191 | 0.011 | 63 | $3.92 \\pm 1.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens mass M (BRI0952 lens)",
+   "value": "0.619e11",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.2 [C ii] emission",
+     "quote": "| 09:55:00.1 | -01:30:07.1 | $0.446$ | $0.003$ | $0.619 \\times 10^{11}$ | 0.055 | 191 | 0.011 | 63 | $3.92 \\pm 1.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (BRI0952)",
+   "value": "15.45",
+   "uncertainty": "1.5",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| BRI0952 | N: 09:55:00.10 | $-$01:30:06.61 | | $4.433$ | $15.45 \\pm 1.5$ | $182 \\pm 5$ | ([$0.51 \\pm 0.19] \\times [(0.285 \\pm 0.12$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] narrow and broad FWHM (BRI0952)",
+   "value": "182, 410",
+   "uncertainty": "5, 21",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| BRI0952 | N: 09:55:00.10 | $-$01:30:06.61 | | $4.433$ | $15.45 \\pm 1.5$ | $182 \\pm 5$ | ([$0.51 \\pm 0.19] \\times [(0.285 \\pm 0.12$]) |"
+    },
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| | S: 09:55:00.06 | $-$01:30:07.29 | 1.0 | | | $410 \\pm 21$ | ([$0.36 \\pm 0.13] \\times [0.29 \\pm 0.21]$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (Comp-N)",
+   "value": "0.62",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| Comp-N | 09:55:00.09 | $-$01:30:05.89 | 0.75 | $4.432$ | $0.62 \\pm 0.06$ | $130 \\pm 10$ | ([$0.79 \\pm 0.32] \\times [0.23 \\pm 0.11$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (Comp-SW)",
+   "value": "0.30",
+   "uncertainty": "0.04",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| Comp-SW | 09:55:00.00 | $-$01:30:08.05 | 2.2 | $4.432$ | $0.30 \\pm 0.04$ | $122 \\pm 13$ | ([$0.76 \\pm 0.30] \\times [0.23 \\pm 0.13]$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (AzTEC-3)",
+   "value": "11.34",
+   "uncertainty": "1.0",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| AzTEC-3 | 10:00:20.696 | +02:35:20.35 | | $5.2988$ | $11.34 \\pm 1.0$ | $320 \\pm 12$ | ([$0.69 \\pm 0.06] \\times [0.42 \\pm 0.10$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] narrow and broad FWHM (AzTEC-3)",
+   "value": "320, 660",
+   "uncertainty": "12, 20",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| AzTEC-3 | 10:00:20.696 | +02:35:20.35 | | $5.2988$ | $11.34 \\pm 1.0$ | $320 \\pm 12$ | ([$0.69 \\pm 0.06] \\times [0.42 \\pm 0.10$]) |"
+    },
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| | | | | | | $660 \\pm 20$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (LBG-3)",
+   "value": "0.78",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| LBG-3 | 10:00:20.766 | +02:35:21.39 | 1.5 | $5.2841$ | $0.78 \\pm 0.07$ | $630 \\pm 36$ | ([$0.8 \\pm 0.02] \\times [0.46 \\pm 0.02$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (Gal-S)",
+   "value": "0.52",
+   "uncertainty": "0.05",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| Gal-S | 10:00:20.68 | +02:35:18.07 | 2.3 | $5.2919$ | $0.52 \\pm 0.05$ | $190 \\pm 10$ | ([$0.53 \\pm 0.10] \\times [0.41 \\pm 0.15$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] intensity I_[CII] (Gal-SW)",
+   "value": "0.15",
+   "uncertainty": "0.01",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 [C ii] emission",
+     "quote": "| Gal-SW | 10:00:20.60 | +02:35:19.28 | 1.8 | $5.2942$ | $0.15\\pm0.01$ | $325 \\pm 24$ | ([$0.36 \\pm 0.04] \\times [0.08 \\pm 0.10$]) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total lensing-corrected Band 7 continuum flux (BRI0952)",
+   "value": "1.96",
+   "uncertainty": "0.43",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3 Continuum",
+     "quote": "Using CASA's imfit, we fit both the north and south images of the quasar and report strong continuum emission totaling $1.96 \\pm 0.43$ mJy, which is corrected for lensing."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum flux (BRI0952_N, BRI0952_S)",
+   "value": "1.44, 0.52",
+   "uncertainty": "0.4, 0.14",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\rm BRI0952_{N}$ | ([$0.35\\pm0.15] \\times [0.20\\pm0.13$]) | $1.44\\pm0.4$ |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $\\rm BRI0952_{S}$ | ([$0.31\\pm0.15] \\times [0.26\\pm0.13$]) | $0.52\\pm0.14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum flux (AzTEC-3)",
+   "value": "6.06",
+   "uncertainty": "0.13",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| AzTEC-3 | ([$0.38\\pm0.03] \\times [0.27\\pm0.07$]) | $6.06 \\pm 0.13$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum flux (LBG-3)",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LBG-3 | ([$0.59\\pm0.07] \\times [0.35\\pm0.07$]) | $0.19 \\pm 0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum flux (Gal-SW)",
+   "value": "0.07",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Gal-SW | ($<0.91 \\times <0.66$) | $0.07 \\pm 0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum flux (ES)",
+   "value": "0.21",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| ES | ([$1.09\\pm0.38] \\times [0.37\\pm0.36$]) | $0.21 \\pm 0.05$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity L_[CII] (BRI0952)",
+   "value": "2.46e9",
+   "uncertainty": "0.23e9",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| BRI0952 | $2.46 \\pm 0.23$ | $7.66 \\pm 2.49$ | 770 | 247 | 0.37 | $98 \\pm 19$ | 0.90 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-forming IR luminosity L_IR_SF (BRI0952)",
+   "value": "7.66e12",
+   "uncertainty": "2.49e12",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "Specifically, we find that the IR luminosity due to star formation is $L_{\\rm{IR_{SF}}} = (7.66 \\pm 2.49) \\times 10^{12} \\,\\rm L_{\\odot}$ and the IR luminosity due to AGN is $L_{\\rm{IR_{AGN}}} = (2.23 \\pm 0.72) \\times 10^{14} \\,\\rm L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN IR luminosity L_IR_AGN (BRI0952)",
+   "value": "2.23e14",
+   "uncertainty": "0.72e14",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "Specifically, we find that the IR luminosity due to star formation is $L_{\\rm{IR_{SF}}} = (7.66 \\pm 2.49) \\times 10^{12} \\,\\rm L_{\\odot}$ and the IR luminosity due to AGN is $L_{\\rm{IR_{AGN}}} = (2.23 \\pm 0.72) \\times 10^{14} \\,\\rm L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation rate SFR_IR (BRI0952)",
+   "value": "770",
+   "uncertainty": "not stated",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| BRI0952 | $2.46 \\pm 0.23$ | $7.66 \\pm 2.49$ | 770 | 247 | 0.37 | $98 \\pm 19$ | 0.90 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity L_[CII] (AzTEC-3)",
+   "value": "9.3e9",
+   "uncertainty": "0.80e9",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| AzTEC-3 | $9.3 \\pm 0.80$ | $73.4\\pm 2$ | 7340 | 809 | $0.12 \\pm 0.01$ | $238 \\pm 30$ | 6.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IR luminosity L_IR (AzTEC-3)",
+   "value": "73.4e12",
+   "uncertainty": "2e12",
+   "units": "L_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| AzTEC-3 | $9.3 \\pm 0.80$ | $73.4\\pm 2$ | 7340 | 809 | $0.12 \\pm 0.01$ | $238 \\pm 30$ | 6.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation rate SFR_IR (AzTEC-3)",
+   "value": "7340",
+   "uncertainty": "not stated",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| AzTEC-3 | $9.3 \\pm 0.80$ | $73.4\\pm 2$ | 7340 | 809 | $0.12 \\pm 0.01$ | $238 \\pm 30$ | 6.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate M_dot_out (BRI0952)",
+   "value": "98",
+   "uncertainty": "19",
+   "units": "M_odot yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Outflows and turbulence",
+     "quote": "We find outflow rates of $\\dot{M}_{\\rm out} = 238 \\pm 30 \\mathrm{M_{\\odot}/yr}$ for AzTEC-3 and $\\dot{M}_{\\rm out} = 98 \\pm 19 \\mathrm{M_{\\odot}/yr}$ for BRI0952."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate M_dot_out (AzTEC-3)",
+   "value": "238",
+   "uncertainty": "30",
+   "units": "M_odot yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Outflows and turbulence",
+     "quote": "We find outflow rates of $\\dot{M}_{\\rm out} = 238 \\pm 30 \\mathrm{M_{\\odot}/yr}$ for AzTEC-3 and $\\dot{M}_{\\rm out} = 98 \\pm 19 \\mathrm{M_{\\odot}/yr}$ for BRI0952."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass M_dyn,[CII] (BRI0952)",
+   "value": "0.90e10",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| BRI0952 | $2.46 \\pm 0.23$ | $7.66 \\pm 2.49$ | 770 | 247 | 0.37 | $98 \\pm 19$ | 0.90 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass M_dyn,[CII] (AzTEC-3)",
+   "value": "6.5e10",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Infrared luminosity",
+     "quote": "| AzTEC-3 | $9.3 \\pm 0.80$ | $73.4\\pm 2$ | 7340 | 809 | $0.12 \\pm 0.01$ | $238 \\pm 30$ | 6.5 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Flux and bandpass calibrator identities for both sources",
+  "Exact tclean cell size, image size, stopping threshold, and niter parameters",
+  "Exact velocity/frequency ranges used to collapse the moment-0 maps and to isolate companion spectral extractions",
+  "Exact photometric values extracted from archival ALMA Bands 3, 4, 6, WISE, and Spitzer MIPS 24 um for BRI0952 used in DecompIR",
+  "Exact dust mass opacity coefficient (kappa_nu) used in the modified blackbody calculations for companion IR luminosities",
+  "Exact SExtractor aperture parameters used for HST photometry of AzTEC-3"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (cell size, image size, stopping threshold, niter, masking regions)",
+  "Exact velocity/frequency intervals integrated for each companion's [C II] spectrum and moment-0 map",
+  "Photometric table of WISE, Spitzer MIPS 24 um, and archival ALMA Bands 3, 4, and 6 flux densities for BRI0952 used in DecompIR",
+  "Exact dust mass opacity coefficient (kappa_nu) used in the modified blackbody formula for companion IR luminosities"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Calibration, continuum subtraction frequency ranges, robust weighting, extraction aperture sizes, and analysis software (CASA, Visilens, Bagpipes, DecompIR) are clearly documented, and primary numerical results are tabulated; however, exact velocity integration windows for companions and the multi-band photometric table for BRI0952 are omitted.",
+ "rediscovery_reason": "All ALMA datasets (2018.1.01536.S, 2017.1.01081.S, 2015.1.00388.S) are public in the ALMA archive, the calibration and imaging recipe is straightforward, and key quantitative results (polarization upper limits, continuum fluxes, [C II] line intensities/FWHMs, and lensing magnification) are well-defined answer keys.",
+ "source_card": "cards/2023A%26A...673A.116K/sonnet/card.md"
+}

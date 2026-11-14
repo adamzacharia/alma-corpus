@@ -1,0 +1,894 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...814..143A",
+  "title": "The Peculiar Distribution of CH3CN in IRC +10216 Seen by ALMA",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Agúndez, M.",
+  "n_authors": 7,
+  "arxiv_id": "1506.06951",
+  "doi": "10.1088/0004-637X/814/2/143",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00229.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA Cycle 0 band 6 observations of the $J=14-13$ rotational transition of CH$_3$CN in IRC +10216"
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IRC +10216",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "130 pc; Vsys = -26.5 km/s",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "The adopted mass loss rate and distance are $2\\times10^{-5}$ M$_{\\odot}$ yr$^{-1}$ and 130 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "adopted from Agundez et al. 2012 envelope model",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "The adopted mass loss rate and distance are $2\\times10^{-5}$ M$_{\\odot}$ yr$^{-1}$ and 130 pc"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Where is CH3CN distributed in the envelope of IRC +10216 at sub-arcsec resolution, and where is it formed?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The bulk of the emission is distributed as a hollow shell located at just $\\sim$2$''$ from the star, with a void of emission in the central region up to a radius of $\\sim$1$''$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00229.S",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00229.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The ALMA Cycle 0 observations of IRC +10216 were carried out in April 2012 using receiver band 6."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "255.3-260.2 GHz; spectral resolution 0.98 MHz, channel spacing 0.49 MHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "within the spectral setup covering the 255.3-260.2 GHz frequency range"
+     },
+     {
+      "loc": "Observations",
+      "quote": "The adopted spectral resolution is 0.98 MHz, with a channel spacing of 0.49 MHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3CN",
+     "transition": "J=14-13 (K=0-3)",
+     "rest_frequency": "~257.5 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "whose strongest $K$ components lie at 257.5 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "16 antennas of 12m array",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "An array of 16 antennas with baselines ranging from 15.7 m to 384.1 m was used"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.7 m to 384.1 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "An array of 16 antennas with baselines ranging from 15.7 m to 384.1 m was used"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.76\" x 0.61\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The resulting synthesized beam is $0\\mbox{\\rlap{.}$''$}76\\times0\\mbox{\\rlap{.}$''$}61$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "3.6 mJy/beam per 0.49 MHz channel",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the final rms per 0.49 MHz channel is 3.6 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "three tracks of 21 min on source",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "three observing tracks of 21 minutes of correlations on source"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "April 2012",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "were carried out in April 2012 using receiver band 6"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM 30m",
+     "provided": {
+      "value": "On-the-fly map at 257.5 GHz to estimate flux filtered out by ALMA and for short-spacing combination",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We carried out observations with the IRAM 30m telescope in June 2014 to estimate the degree of flux that could have been filtered out by ALMA."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Envelope physical model with revised inner density",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "We adopted the model of the envelope of (cite: agu2012), with the downward revision of the density of particles derived by (cite: cer2013) for the innermost layers"
+       }
+      ]
+     },
+     "citation": "(cite: agu2012); (cite: cer2013)"
+    },
+    {
+     "what": {
+      "value": "H2-CH3CN rotational collisional rate coefficients up to 140 K",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "We adopted the rate coefficients of pure rotational excitation through inelastic collisions with H$_2$ from the calculations by (cite: gre1986)"
+       }
+      ]
+     },
+     "citation": "(cite: gre1986)"
+    },
+    {
+     "what": {
+      "value": "Dipole moment 3.92197 D",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "the dipole moment of $3.92197\\pm0.00013$ D measured by (cite: gad1995)"
+       }
+      ]
+     },
+     "citation": "(cite: gad1995)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Calibration with CASA; further processing with GILDAS",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Calibration was done with the software CASA[^2] and further data processing was done using the package GILDAS[^3]."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0854+201 (bandpass and amplitude); J0909+013 phase",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the amplitude and phase were calibrated by observing J0854+201 and J0909+013 every 10 and 20 minutes, respectively."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "8 %",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The uncertainty in the flux calibration is estimated to be 8 %."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "Högbom clean, no support",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Image deconvolution was carried out using the Högbom clean algorithm with no support"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "Taper to simulate 5.9\" x 3.0\" beam (SMA comparison)",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "we have applied a tapering procedure to the ALMA data to suppress long baselines and simulate what would be seen with a synthesized beam of 5$''$9 $\\times$ 3$''$0"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Line-free spectral windows near the CH3CN lines",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The continuum was subtracted by carefully selecting spectral windows free of line emission located in spectral regions near the CH$_3$CN $J=14-13$ lines."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "ALMA combined with IRAM 30m short spacings",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "we have combined the ALMA data with the IRAM 30m short-spacing data to include visibilities at shorter baselines"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.76\" x 0.61\"",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The resulting synthesized beam is $0\\mbox{\\rlap{.}$''$}76\\times0\\mbox{\\rlap{.}$''$}61$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "3.6 mJy/beam per 0.49 MHz channel",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the final rms per 0.49 MHz channel is 3.6 mJy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Part of the ALMA data previously presented",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Part of these observations has been previously presented by (cite: cer2013) and by (cite: vel2015)."
+       }
+      ]
+     },
+     "from_reference": "(cite: cer2013); (cite: vel2015)"
+    },
+    {
+     "what": {
+      "value": "Envelope model parameters other than mass loss and distance",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "(see Table 9 of (cite: agu2012) for other parameters)"
+       }
+      ]
+     },
+     "from_reference": "(cite: agu2012)"
+    },
+    {
+     "what": {
+      "value": "Initial abundances of chemical model",
+      "evidence": [
+       {
+        "loc": "3 Chemical model",
+        "quote": "The initial abundances injected into the expanding envelope are taken from (cite: agu2012)"
+       }
+      ]
+     },
+     "from_reference": "(cite: agu2012)"
+    },
+    {
+     "what": {
+      "value": "Clumpiness parametrization",
+      "evidence": [
+       {
+        "loc": "3 Chemical model",
+        "quote": "adopting the same parametric treatment of clumpiness of (cite: dec2010)"
+       }
+      ]
+     },
+     "from_reference": "(cite: dec2010)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Channel ranges used for continuum subtraction",
+    "Clean mask/iteration count, weighting, cell and image size",
+    "How 30m and ALMA data were merged in GILDAS",
+    "CASA version",
+    "Description of the LVG code and fitting procedure for the abundance profile (no goodness-of-fit)",
+    "Phase center coordinates"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image CH3CN J=14-13",
+    "method": {
+     "value": "CASA calibration, GILDAS continuum subtraction and Högbom clean",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Calibration was done with the software CASA[^2] and further data processing was done using the package GILDAS[^3]."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "GILDAS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Dirty beam sidelobes <10 % of main beam",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The associated dirty beam has minor contributions from sidelobes (less than 10 % of the main beam"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Estimate flux filtered out by ALMA",
+    "method": {
+     "value": "Compare IRAM 30m spectrum with ALMA spectrum integrated over 9.4\" x 9.4\"; combine with 30m short spacings",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "compared in Fig. [2](#fig:spectrum) with the ALMA spectrum integrated over a region $9\\mbox{\\rlap{.}$''$}4\\times9\\mbox{\\rlap{.}$''$}4$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux loss negligible at line edges, up to 30-40 % in central channels",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "it can be as high as 30-40 % in some channels located around the center of the $K$ lines"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Excitation and radiative transfer modelling of radial brightness",
+    "method": {
+     "value": "Multi-shell LVG model with Gaussian-in-log-radius abundance profile, fit to observed J=14-13 radial brightness",
+     "evidence": [
+      {
+       "loc": "2 Excitation and radiative transfer model",
+       "quote": "we have carried out excitation and radiative transfer calculations based on a multi-shell LVG formalism."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Levels up to J=30 in ground and nu6=1 states; A:E ratio 1:1",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "We considered rotational levels within the ground and $\\nu_6=1$ vibrational states up to $J=30$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Distance 130 pc; mass loss 2e-5 Msun/yr; collisional rates scale as sqrt(T) above 140 K",
+      "evidence": [
+       {
+        "loc": "2 Excitation and radiative transfer model",
+        "quote": "extrapolated at higher temperatures assuming that the rate coefficients scale with the square root of temperature"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Best-reproducing profile chosen (method not stated)",
+     "evidence": [
+      {
+       "loc": "2 Excitation and radiative transfer model",
+       "quote": "The radial abundance profile which best reproduces the $J=14-13$ transition observed with ALMA"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared azimuthally averaged radial brightness for each K component",
+     "evidence": [
+      {
+       "loc": "2 Excitation and radiative transfer model",
+       "quote": "The radial brightness distributions calculated for the various $K$ components of the $J=14-13$ transition are confronted with the observed ones"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Compare with standard gas-phase chemical model",
+    "method": {
+     "value": "Gas-phase network from UMIST and KIDA; initial radius 2e14 cm; N2 abundance 4e-5; cosmic-ray ionization rate 1.2e-17 s-1; clumpy variant",
+     "evidence": [
+      {
+       "loc": "3 Chemical model",
+       "quote": "Here we have constructed a standard chemical model using a gas phase reaction network built up from the databases UMIST and KIDA"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Calibration was done with the software CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Further data processing, imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "further data processing was done using the package GILDAS"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Synthesized beam",
+    "value": "0.76 x 0.61",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The resulting synthesized beam is $0\\mbox{\\rlap{.}$''$}76\\times0\\mbox{\\rlap{.}$''$}61$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak abundance profile radius r0",
+    "value": "1.2e16",
+    "uncertainty": "not stated",
+    "units": "cm",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2 Excitation and radiative transfer model",
+      "quote": "$r_0=1.2\\times10^{16}$ cm, $f(r_0)=5\\times10^{-8}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak fractional abundance f(r0) relative to H2",
+    "value": "5e-8",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2 Excitation and radiative transfer model",
+      "quote": "reaches a maximum value of $5\\times10^{-8}$ at 6$''$"
+     }
+    ]
+   },
+   {
+    "quantity": "Delta log r",
+    "value": "0.45 (r<r0), 0.3 (r>r0)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2 Excitation and radiative transfer model",
+      "quote": "$\\Delta \\log r=0.45$ for $r<r_0$ and 0.3 for $r>r_0$"
+     }
+    ]
+   },
+   {
+    "quantity": "Maximum CH3CN volume density",
+    "value": "~0.02 at 2\"",
+    "uncertainty": "not stated",
+    "units": "molecules cm-3",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "reaching a maximum abundance of $\\sim0.02$ molecules cm$^{-3}$ at 2$''$ from the star"
+     }
+    ]
+   },
+   {
+    "quantity": "Ring radius / inner hole",
+    "value": "~2 / ~1",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the maximum of the emission appears as a ring with a radius of $\\sim2''$ and that there is a hole within $\\sim1''$"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux filtered out by ALMA in central channels",
+    "value": "up to 30-40",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "it can be as high as 30-40 % in some channels"
+     }
+    ]
+   },
+   {
+    "quantity": "Chemical model underestimate of CH3CN abundance",
+    "value": "> two orders of magnitude",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3 Chemical model",
+      "quote": "Our chemical model underestimates the abundance of CH$_3$CN by more than two orders of magnitude"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Hollow shell at ~2\" with a double-humped, non-uniform structure; the SMA compact distribution is explained by limited resolution",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the compact emission distribution observed is probably a consequence of the limited angular resolution"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CH3CN is concentrated near the star or in the ~15\" shell like other molecules",
+    "experiment": "ALMA band 6 J=14-13 imaging with 30m short-spacing check",
+    "result": "Hollow shell at ~2\" with hole within ~1\"",
+    "finding": "CH3CN distribution differs from all other molecules seen in this source",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This spatial distribution is markedly different from those found to date in this source for other molecules."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Standard chemical models can reproduce the CH3CN distribution",
+    "experiment": "Built gas-phase chemical model and compared to the LVG-derived abundance",
+    "result": "Model puts bulk at ~15\" and underestimates abundance by >2 orders of magnitude",
+    "finding": "Standard models fail; non-uniform envelope or grain-surface processes proposed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3 Chemical model",
+      "quote": "As long as a standard chemical model fails to explain the distribution of CH$_3$CN in IRC +10216"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Earlier compact SMA CH3CN emission conflicts with the ALMA hollow shell",
+    "experiment": "Tapered ALMA data to the SMA beam",
+    "result": "Inner hole not resolved at that resolution",
+    "finding": "No conflict",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We thus conclude that the hollow shell structure seen by ALMA in CH$_3$CN $J=14-13$ emission is not in conflict"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Högbom clean without support, since sidelobes are low and CH3CN structure is not simple",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "This choice is adequate because the sidelobes of the dirty beam are not important"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Clumpy envelope scenario gives a compact distribution rather than a hollow shell; higher CR ionization rate is constrained by HCO+",
+     "evidence": [
+      {
+       "loc": "3 Chemical model",
+       "quote": "although the distribution of molecules would appear compact around the star rather than as a hollow shell"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Smooth spherical shell model does not reproduce fine structure; infrared pumping only partly included",
+     "evidence": [
+      {
+       "loc": "2 Excitation and radiative transfer model",
+       "quote": "Our model of a smooth hollow spherical shell does not aim at reproducing these fine details"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Abundance profile fit has no quantitative goodness of fit or uncertainties",
+    "Spherical symmetry assumed despite arcs and spirals",
+    "30m data are low sensitivity, so flux recovery is only partial"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code printed in footnote; archive data",
+    "evidence": [
+     {
+      "loc": "footnote 1",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00229.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "IRAM 30m data not stated as public",
+    "LVG code not named",
+    "Imaging parameters"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB for the Cycle 0 raw data",
+   "score_inferred": 4,
+   "score_reason": "Imaging recipe and model details are incomplete; the LVG fit is unspecified and requires 30m data.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Modeling code is not named, the 30m data are not public, and the results rely on a custom fit."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: agu2012)",
+     "why": "Envelope model and chemical initial abundances"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: cer2013)",
+     "why": "Earlier presentation of the same ALMA Cycle 0 data"
+    },
+    {
+     "citation": "(cite: vel2015)",
+     "why": "Earlier presentation of part of the same ALMA data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e009440bb069125b2a7d3ffafca60048",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:21",
+  "usage": {
+   "input_tokens": 13957,
+   "output_tokens": 7401,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051569,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 60,
+  "quotes_ok": 60,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 45,
+   "rate": 0.643
+  },
+  "evidence_ok": true
+ }
+}

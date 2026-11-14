@@ -1,0 +1,215 @@
+{
+ "bibcode": "2013AJ....146...91I",
+ "title": "ALMA Detection of the Vibrationally Excited HCN J = 4-3 Emission Line in the AGN-hosting Luminous Infrared Galaxy IRAS 20551-4250",
+ "year": 2013,
+ "doi": "10.1088/0004-6256/146/4/91",
+ "arxiv_id": "1308.4414",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "agn_and_quasars"
+ ],
+ "question": "Is vibrationally excited HCN J=4-3 emission present in the AGN-hosting LIRG IRAS 20551-4250, and how does its HCN-to-HCO+ J=4-3 flux ratio compare with starburst galaxies?",
+ "alma_project_codes": [
+  "2011.0.00020.S"
+ ],
+ "data": {
+  "bands": "ALMA band 7",
+  "arrays": "17-19 antennas used",
+  "angular_resolution": "~0.6 x 0.4 arcsec (continuum-a)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAS FSC fluxes at 12, 25, 60, 100 um for IR luminosities",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "are *IRAS* fluxes at 12 $\\mu$m, 25 $\\mu$m, 60 $\\mu$m, and 100 $\\mu$m, respectively, taken from the IRAS *FSC* catalog."
+     }
+    ]
+   },
+   "citation": "IRAS FSC catalog"
+  },
+  {
+   "what": {
+    "value": "NGC 1614 HCN/HCO+ and HCN/HNC J=4-3 ratios for comparison",
+    "evidence": [
+     {
+      "loc": "Line Flux Ratio",
+      "quote": "The ratios at four different positions in the starburst galaxy NGC 1614, taken with our ALMA Cycle 0 observations (cite: ima13), are overplotted for comparison."
+     }
+    ]
+   },
+   "citation": "(cite: ima13)"
+  },
+  {
+   "what": {
+    "value": "HCN v2=1 to v=0 ratio in NGC 4418",
+    "evidence": [
+     {
+      "loc": "4.1 Vibrationally excited HCN J=4–3 emission line",
+      "quote": "which is a factor of $\\sim$5 smaller than the ratio observed in NGC 4418 (cite: sak10)."
+     }
+    ]
+   },
+   "citation": "(cite: sak10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "Subtract continuum from line-free channels, then clean with 40-channel binning and 0.1\" pixels",
+   "software": [
+    "CASA clean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and moment maps and fit Gaussians",
+   "method": "Moment 0 maps by combining channels with signal; Gaussian fits to spectra at continuum peak within beam",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate free-free contribution to continuum",
+   "method": "Use eq. (1) of Nakanishi et al. 2005 with far-infrared luminosity, assuming it is all starburst",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Far-infrared luminosity entirely starburst (upper limit on free-free)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare line flux ratios",
+   "method": "HCN/HCO+ and HCN/HNC J=4-3 flux ratios compared with NGC 1614; vib/v=0 HCN ratio compared with NGC 4418",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCN v2=1 J=4-3 (l=1f) line flux",
+   "value": "0.39",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.26(5.0$\\sigma$)"
+    },
+    {
+     "loc": "4.1 Vibrationally excited HCN J=4–3 emission line",
+     "quote": "0.39$\\pm$0.07 \\[Jy km s$^{-1}$\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=4-3 flux",
+   "value": "9.5",
+   "uncertainty": "0.2",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN J=4–3 | 8.1 (77$\\sigma$) | 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ J=4-3 flux",
+   "value": "14",
+   "uncertainty": "1",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCO$^{+}$ J=4–3 | 12 (85$\\sigma$) | 0.14"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC J=4-3 flux",
+   "value": "5.8",
+   "uncertainty": "0.2",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HNC J=4–3 | 5.1 (47$\\sigma$) | 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum-a peak flux at 346.7 GHz",
+   "value": "9.4",
+   "uncertainty": "rms 0.14",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| a | 346.7 | 9.4 (67$\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN v2=1 to v=0 flux ratio",
+   "value": "~0.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Vibrationally excited HCN J=4–3 emission line",
+     "quote": "The HCN J=4–3 v$_{2}$=1 (l=1f) to v=0 flux ratio is $\\sim$0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-to-HCO+ J=4-3 flux ratio",
+   "value": "~0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The HCN-to-HCO$^{+}$ J=4–3 flux ratio ($\\sim$0.7) is higher than in the other starburst-dominated galaxy ($\\sim$0.2)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the JAO calibration was the delivered scripts",
+  "clean weighting/robust, deconvolver, masks, threshold",
+  "specific line-free channel ranges",
+  "channel ranges used for moment 0 maps",
+  "Gaussian fitting method and uncertainty treatment",
+  "how the v2=1 line was fit with fixed FWHM=100 km/s (and the choice)",
+  "flux scale uncertainty",
+  "primary beam correction"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "line-free channel ranges",
+  "moment map channel ranges",
+  "fit procedure details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis, but imaging parameters and fit details are not given.",
+ "rediscovery_reason": "Public data, simple recipe, and numeric line fluxes can be checked, though details are sparse.",
+ "source_card": "cards/2013AJ....146...91I/sonnet/card.md"
+}

@@ -1,0 +1,409 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+ {"loc": "abstract", "quote": "We utilized new high-resolution ALMA CO(3-2) observations of a subset (11) of the 23 clouds in the XUV disk of M83."}
+],
+"fields": ["nearby_galaxies", "star_formation"],
+"question": {
+ "value": "Do clouds in the XUV disk of M83 have compact, dense CO(3-2)-emitting clumps embedded in CO-deficient envelopes (clump-envelope hypothesis of Koda et al. 2022), consistent with the CO(2-1) non-detection?",
+ "evidence": [
+  {"loc": "abstract", "quote": "We test the hypothesis introduced to explain the non-detections and recent detection simultaneously"},
+  {"loc": "Introduction", "quote": "This work aims to test this hypothesis with higher-resolution CO(3-2) observations, in conjunction with a consideration of the previous CO(2-1) non-detection."}
+ ]
+},
+"targets": [
+ {
+  "name": "M83 XUV disk (11 CO(3-2) clouds in the Cy9 field)",
+  "details": [
+   {"loc": "Observations and data reduction", "quote": "sensitivity contours at 70, 50, and 30% of the peak sensitivity at the center, which is (RA, Dec)$_{\\rm J2000}$=(13:37:05.18, -29:59:53.6)"},
+   {"loc": "Introduction", "quote": "M83 is one of the closest XUV disks at $d=4.5\\, {\\rm Mpc}$ (cite: Thim:2003aa)."}
+  ],
+  "coordinates": "(RA, Dec) J2000 = (13:37:05.18, -29:59:53.6) (field center, 3 pointings)",
+  "redshift_or_distance": "d = 4.5 Mpc",
+  "distance_source": "Thim et al. 2003 (cite: Thim:2003aa)"
+ }
+],
+"alma_project_codes": [
+ {"code": "2013.1.00861.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00861.S, 2017.1.00065.S, and 2022.1.00359.S."}]},
+ {"code": "2017.1.00065.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00861.S, 2017.1.00065.S, and 2022.1.00359.S."}]},
+ {"code": "2022.1.00359.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00861.S, 2017.1.00065.S, and 2022.1.00359.S."}]}
+],
+"data_settings": [
+ {"field": "frequencies_and_spectral_setup", "value": "Cy9: one spectral window on CO(3-2), 937.5 MHz band, 564.5 kHz (0.4894 km/s) channels; three further spectral windows for continuum; continuum central frequency 351.3 GHz (Cy7+Cy9)",
+  "evidence": [
+   {"loc": "Observations and data reduction", "quote": "with band and channel widths of 937.5 MHz ($812.8\\, {\\rm km \\, s^{-1}}$) and 564.5 kHz ($0.4894\\, {\\rm km \\, s^{-1}}$)"},
+   {"loc": "Observations and data reduction", "quote": "The central frequency of the continuum emission in the combination of the Cy7 and Cy9 data is 351.3 GHz"}
+  ]},
+ {"field": "continuum_bandwidth", "value": "3 continuum spectral windows, 1.875 GHz bandwidth each, 128 channels per spectral window",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "The other three spectral windows were configured to cover different sky frequencies for the continuum emission with a bandwidth of 1.875 GHz with 128 channels per spectral window."}]},
+ {"field": "arrays", "value": "ALMA 12-m array",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "with the ALMA 12-m array in CO(3-2) and dust continuum emission"}]},
+ {"field": "angular_resolution", "value": "CY7NA 0.89 arcsec (19 pc); CY9NA 0.40 arcsec (8.6 pc); CY9UN 0.28 arcsec (6.1 pc)",
+  "evidence": [{"loc": "Cloud and clump identifications and parameters", "quote": "The CY7NA cube has a resolution of 0.89\" (19 pc), approximately the diameter of a molecular cloud, and the CY9NA and CY9UN cubes have 0.40\" (8.6 pc) and 0.28\" (6.1 pc), respectively,"}]},
+ {"field": "max_recoverable_scale", "value": "uv-coverage at the CO(3-2) frequency spans angular scales 0.23-12.2 arcsec (largest scale ~12.2 arcsec); formal maximum recoverable scale not stated",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "The final $uv$-coverage at the CO(3-2) frequency ranges over angular scales of 0.23-12.2"}]},
+ {"field": "pi_or_archival_as_stated", "value": "Cy9 data newly observed by the authors; Cy3 and Cy7 data re-analysed (details in Koda et al. 2022)",
+  "evidence": [
+   {"loc": "Observations and data reduction", "quote": "We analyzed the Cy3, Cy7, and Cy9 data."},
+   {"loc": "Observations and data reduction", "quote": "The details of the Cy3 and Cy7 observations are in (cite: Koda:2022aa)."}
+  ]}
+],
+"lines_targeted": [
+ {"species": "CO", "transition": "J=3-2", "rest_frequency": "not stated",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "we configured one spectral window for the CO(3-2) line emission"}]},
+ {"species": "CO", "transition": "J=2-1 (Cy3 data)", "rest_frequency": "not stated",
+  "evidence": [{"loc": "Table 1", "quote": "Cy3 CO(2-1) | CY3NA | 2.54 | 0.15 | NA | 0.75, 0.54, -87.47 | 0.64 | 14 | 10.7 | 56.8"}]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+ {"what": {"value": "Previous Cy3 CO(2-1) ALMA data over a larger region of the XUV disk (non-detection), re-used for the CO(2-1) upper limits",
+           "evidence": [{"loc": "Introduction", "quote": "within the larger region of the non-detection in CO(2-1) (cite: Bicalho:2019aa)"}]},
+  "citation": "Bicalho et al. 2019 (cite: Bicalho:2019aa)"},
+ {"what": {"value": "Galactic, LMC, SMC and WLM cloud size-velocity dispersion data used as the comparison sample in Fig. 5",
+           "evidence": [{"loc": "The size-velocity dispersion relation", "quote": "For reference, it also shows clouds in the Milky Way, Large and Small Magellanic Clouds (LMC and SMC), and the dwarf galaxy WLM (cite: Solomon:1987pr; Bolatto:2008nz; Wong:2011fk; Rubio:2015aa)."}]},
+  "citation": "(cite: Solomon:1987pr; Bolatto:2008nz; Wong:2011fk; Rubio:2015aa)"},
+ {"what": {"value": "Orion A cloud diameter of 20 pc used as comparison for cloud/clump sizes",
+           "evidence": [{"loc": "Hypothesis and predictions", "quote": "For example, the Orion A cloud has a diameter of 20 pc (cite: Nakamura:2019wt)."}]},
+  "citation": "Nakamura et al. 2019 (cite: Nakamura:2019wt)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+ {"field": "pipeline_or_manual", "value": "ALMA Observatory-provided data reduction scripts run in CASA",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "The visibility data are calibrated using the data reduction scripts provided by the ALMA Observatory using the Common Astronomy Software Application"}]}
+],
+"imaging": [
+ {"field": "task", "value": "MIRIAD (not CASA tclean) used for imaging",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "For imaging, we used the Multichannel Image Reconstruction, Image Analysis, and Display package (cite: Sault:1995kl; Sault:1996uq)."}]},
+ {"field": "weighting_robust", "value": "natural (NA) and uniform (UN) weighting",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "We used the natural (NA) and uniform (UN) weightings."}]},
+ {"field": "cell_size", "value": "0.05 arcsec for all CO(3-2) cubes and the continuum; 0.15 arcsec for Cy3 CO(2-1)",
+  "evidence": [
+   {"loc": "Table 1", "quote": "Cy7 CO(3-2) | CY7NA | 2.54 | 0.05 | NA | 0.96, 0.82, -84.05 | 0.89 | 19 | 1.05 | 13.0"},
+   {"loc": "Table 1", "quote": "Cy3 CO(2-1) | CY3NA | 2.54 | 0.15 | NA | 0.75, 0.54, -87.47 | 0.64 | 14 | 10.7 | 56.8"}
+  ]},
+ {"field": "primary_beam_correction", "value": "peak intensities and fluxes corrected for primary beam attenuation",
+  "evidence": [{"loc": "Parameters", "quote": "are the values corrected for primary beam attenuation."}]},
+ {"field": "array_combination", "value": "Cy7 and Cy9 CO(3-2) data imaged separately and together; the combined cubes (CY7+9NA, CY7+9UN) are used for reference only, not for measurements",
+  "evidence": [
+   {"loc": "Observations and data reduction", "quote": "The CO(3-2) data from Cy7 and Cy9 were imaged separately and together."},
+   {"loc": "Observations and data reduction", "quote": "Since the sensitivity and beam shape vary in an asymmetric way across the field of the Cy7 and Cy9 combined data, CY7+9NA and CY7+9UN, they are used only for reference, but not for measurements."}
+  ]},
+ {"field": "final_beam", "value": "CY7NA 0.96x0.82 arcsec PA -84.05; CY9NA 0.41x0.38 arcsec PA -49.83; CY9UN 0.30x0.26 arcsec PA -44.73",
+  "evidence": [
+   {"loc": "Table 1", "quote": "Cy7 CO(3-2) | CY7NA | 2.54 | 0.05 | NA | 0.96, 0.82, -84.05 | 0.89 | 19 | 1.05 | 13.0"},
+   {"loc": "Table 1", "quote": "Cy9 CO(3-2) | CY9NA | 2.54 | 0.05 | NA | 0.41, 0.38, -49.83 | 0.40 | 8.6 | 0.98 | 65.6"},
+   {"loc": "Table 1", "quote": "Cy9 CO(3-2) | CY9UN | 2.54 | 0.05 | UN | 0.30, 0.26, -44.73 | 0.28 | 6.1 | 1.29"}
+  ]},
+ {"field": "final_rms", "value": "Per-channel RMS (2.54 km/s channels): CY7NA 1.05, CY9NA 0.98, CY9UN 1.29 mJy/beam; measured on dirty cubes where primary beam response > 0.95",
+  "evidence": [
+   {"loc": "Observations and data reduction", "quote": "The RMS noise per channel is calculated using the dirty cubes before deconvolution in the areas where the primary beam attenuation is practically negligible"},
+   {"loc": "Table 1", "quote": "Cy9 CO(3-2) | CY9NA | 2.54 | 0.05 | NA | 0.41, 0.38, -49.83 | 0.40 | 8.6 | 0.98 | 65.6"},
+   {"loc": "Table 1", "quote": "Cy9 CO(3-2) | CY9UN | 2.54 | 0.05 | UN | 0.30, 0.26, -44.73 | 0.28 | 6.1 | 1.29"}
+  ]}
+],
+"inherited": [
+ {"what": {"value": "Details of the Cy3 and Cy7 observations",
+           "evidence": [{"loc": "Observations and data reduction", "quote": "The details of the Cy3 and Cy7 observations are in (cite: Koda:2022aa)."}]},
+  "from_reference": "(cite: Koda:2022aa)"},
+ {"what": {"value": "Cloud identification procedure repeated as in Koda et al. 2022 on the new CY7NA cube",
+           "evidence": [{"loc": "Clouds", "quote": "For the sake of consistency, we repeated the same identification procedure on the new CY7NA data"}]},
+  "from_reference": "(cite: Koda:2022aa)"},
+ {"what": {"value": "Upper-limit treatment of sizes (R measurable only if size exceeds beam by 20%)",
+           "evidence": [{"loc": "Parameters", "quote": "We followed (cite: Koda:2022aa) to set the upper limit of their size"}]},
+  "from_reference": "(cite: Koda:2022aa)"},
+ {"what": {"value": "Radius definition R = 1.92 sigma_r",
+           "evidence": [{"loc": "Parameters", "quote": "the definition by (cite: Solomon:1987pr), which is supposed to represent the whole radial extent of the object."}]},
+  "from_reference": "(cite: Solomon:1987pr)"},
+ {"what": {"value": "Splitting of overlapping cloud envelopes with the watershed algorithm",
+           "evidence": [{"loc": "Clouds", "quote": "which are split with the watershed algorithm (cite: Williams:1994cq)"}]},
+  "from_reference": "(cite: Williams:1994cq)"},
+ {"what": {"value": "Crude clump mass estimate method",
+           "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "The masses of the clumps (i.e., CO(3-2)-emitting regions) can be crudely estimated (cite: Koda:2022aa)"}]},
+  "from_reference": "(cite: Koda:2022aa)"}
+],
+"unstated_but_needed": [
+ "CASA version and the version/name of the ALMA calibration scripts for each of the three projects",
+ "Which cycle corresponds to which project code (Cy3 vs 2013.1.00861.S, Cy7 vs 2017.1.00065.S is implied but not stated) and per-project array configurations, dates and on-source times",
+ "MIRIAD tasks and parameters (invert/clean/restor settings, clean threshold, niter, masks, gridding) and the exact uv-ranges and tapering used for each cube",
+ "CO(3-2) rest frequency, velocity frame and line-free channels / continuum subtraction method for the 351 GHz continuum and CO cubes",
+ "How the 2.54 and 0.85 km/s cubes were produced from the 0.4894 km/s native channels (regridding, averaging, smoothing)",
+ "How the S/N cubes were constructed (noise map definition across the primary-beam-varying field) and the exact clump-finder implementation",
+ "Re-reduction details of the Cy3 CO(2-1) data (CY3NA) and of the stacking procedure for the CO(2-1) cutouts, including the velocity ranges",
+ "Absolute flux calibration uncertainty used for the fluxes in Tables"
+],
+"analysis_steps": [
+ {"order": 1,
+  "goal": "calibrate and image the CO(3-2) and continuum data",
+  "method": {"value": "Calibrate with ALMA-provided scripts in CASA; image Cy7, Cy9 and combined data in MIRIAD with natural and uniform weighting; 2.54 and 0.85 km/s channel cubes",
+             "evidence": [
+              {"loc": "Observations and data reduction", "quote": "The visibility data are calibrated using the data reduction scripts provided by the ALMA Observatory using the Common Astronomy Software Application"},
+              {"loc": "Observations and data reduction", "quote": "The CO(3-2) data from Cy7 and Cy9 were imaged separately and together. We used the natural (NA) and uniform (UN) weightings."}]},
+  "software": ["CASA", "MIRIAD"],
+  "key_parameters": [
+   {"value": "Default channel width 2.54 km/s; 0.85 km/s cubes used for FWHM_v and sigma_v; cell 0.05 arcsec",
+    "evidence": [
+     {"loc": "Cloud and clump identifications and parameters", "quote": "Unless stated otherwise, we adopted the cubes with a $2.54\\, {\\rm km \\, s^{-1}}$ channel width."},
+     {"loc": "Table 1", "quote": "Cy9 CO(3-2) | CY9NA | 2.54 | 0.05 | NA | 0.41, 0.38, -49.83 | 0.40 | 8.6 | 0.98 | 65.6"}]},
+   {"value": "RMS per channel measured on the dirty cubes in the region with primary beam response > 0.95",
+    "evidence": [{"loc": "Observations and data reduction", "quote": "The RMS noise per channel is calculated using the dirty cubes before deconvolution in the areas where the primary beam attenuation is practically negligible"}]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Bandpass and gain calibrator amplitude and phase checked to be flat over time and frequency",
+                 "evidence": [{"loc": "Observations and data reduction", "quote": "The amplitude and phase of the bandpass and gain calibrators are confirmed to be flat over time and frequency after the calibrations."}]}},
+ {"order": 2,
+  "goal": "identify clouds in the CY7NA S/N cube",
+  "method": {"value": "S/N cubes; find pixels above 5 sigma and extend to 3 sigma per channel; split overlapping envelopes with watershed",
+             "evidence": [
+              {"loc": "Cloud and clump identifications and parameters", "quote": "To remove the effects of sensitivity variations across the observed fields, we generated and used signal-to-noise ratio (S/N) cubes for the identifications."},
+              {"loc": "Clouds", "quote": "In the S/N cube, we first find pixels with $>5\\sigma$ significance and extend their volumes down to pixels with $3\\sigma$ per channel."},
+              {"loc": "Clouds", "quote": "In some cases, the envelopes of two clouds overlap, which are split with the watershed algorithm (cite: Williams:1994cq)."}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Seed threshold 5 sigma, envelope threshold 3 sigma per channel, 2.54 km/s channels",
+    "evidence": [{"loc": "Clouds", "quote": "In the S/N cube, we first find pixels with $>5\\sigma$ significance and extend their volumes down to pixels with $3\\sigma$ per channel."}]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Recovers the same 23 clouds as Koda et al. 2022",
+                 "evidence": [{"loc": "Clouds", "quote": "We find the same set of 23 molecular clouds as in (cite: Koda:2022aa)."}]}},
+ {"order": 3,
+  "goal": "identify hierarchical Level A and Level B clumps",
+  "method": {"value": "Search CY9NA cube inside CY7NA cloud masks (Level A), then CY9UN cube inside CY9NA clump masks (Level B), with relaxed thresholds",
+             "evidence": [
+              {"loc": "Clumps (Level A and B)", "quote": "We first searched the CY9NA cube, finding clumps within the cloud volumes identified in CY7NA (in the CY7NA mask), and then searched the CY9UN cube to find clumps within the volumes of the CY9NA clumps."},
+              {"loc": "Clumps (Level A and B)", "quote": "For Level B clumps, we did the same as for the CY9UN cube, using the same detection thresholds, but within the volumes of the CY9NA clumps as masks."}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Level A and B thresholds: peaks above 4 sigma extended to 3 sigma envelopes",
+    "evidence": [{"loc": "Clumps (Level A and B)", "quote": "Hence, we started from $>4\\sigma$ peaks and extended them to the $3\\sigma$ envelopes."}]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 4,
+  "goal": "measure cloud and clump parameters",
+  "method": {"value": "Intensity-weighted centroids and second moments inside the 3D masks; FWHM = sqrt(8 ln2) sigma; correct sizes and velocity dispersions for beam and channel dilution; R = 1.92 sigma_r; sizes treated as upper limits unless 20% larger than the beam",
+             "evidence": [
+              {"loc": "Parameters", "quote": "The coordinates are the intensity-weighted centroid positions."},
+              {"loc": "Parameters", "quote": "To remove their effects, we calculated the second moments in radius and velocity as"},
+              {"loc": "Parameters", "quote": "considered $R$ to be measurable only when the measured size is at least 20% larger than the beam size."}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "R = 1.92 sigma_r",
+    "evidence": [{"loc": "Parameters", "quote": "R=1.92\\sigma_{\\rm r}"}]},
+   {"value": "Channel second moment sigma_ch = w/sqrt(12) for a top-hat channel; w = 0.85 km/s for sigma_v and FWHM_v",
+    "evidence": [{"loc": "Parameters", "quote": "$\\sigma_{\\rm ch}=w/\\sqrt{12}$ for a top-hat function with a full width of $w$."}]},
+   {"value": "Flux uncertainty from standard noise propagation using the number of beams in the object volume",
+    "evidence": [{"loc": "Parameters", "quote": "$\\Delta F$ was calculated with the standard noise propagation starting from $\\Delta I_{\\rm p}$ by taking into account the number of beams in the volume of objects."}]}
+  ],
+  "assumptions": [
+   {"value": "Gaussian profiles in space and velocity for the FWHM calculation",
+    "evidence": [{"loc": "Parameters", "quote": "assuming Gaussian profiles in space and velocity"}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Conclusion that no cloud or clump is spatially resolved",
+                 "evidence": [{"loc": "Parameters", "quote": "Therefore, we consider that none of the clouds nor the clumps are spatially resolved in any of the measurements."}]}},
+ {"order": 5,
+  "goal": "test compactness via clump/cloud peak-intensity and flux ratios and filling factor",
+  "method": {"value": "Compare peak intensity of the brightest clump and summed clump flux with the parent cloud, and compare with areal beam ratios; bound the beam filling factor from peak brightness temperature assuming optically thick CO",
+             "evidence": [
+              {"loc": "Implications of the peak intensities and fluxes", "quote": "Each row gives measurements within each cloud."},
+              {"loc": "Implications of the peak intensities and fluxes", "quote": "The high ratios indicate that approximately the same amount of flux is enclosed within the large and small beams, and hence, the CO(3-2) sources are not much spatially resolved even with the small beams."}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "T_p = f * Gamma(nu_32, T_32) * T_32 for T_32 = 10-30 K",
+    "evidence": [{"loc": "Implications of the peak intensities and fluxes", "quote": "This gives $T_{\\rm p}= (3.9 f$ - $22.5f)$ K for $T_{32}=$10-30 K with $f$ as an unknown factor."}]}
+  ],
+  "assumptions": [
+   {"value": "CO emission optically thick",
+    "evidence": [{"loc": "Implications of the peak intensities and fluxes", "quote": "The CO emission easily becomes optically thick on theoretical and empirical bases (cite: Goldreich:1974ab; Solomon:1979px), and thus, we assumed that it is optically thick."}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Authors caution that missing short spacings and uniform weighting reduce apparent flux",
+                 "evidence": [{"loc": "Implications of the peak intensities and fluxes", "quote": "We also caution that interferometer imaging without short spacing data (or with the uniform weighting) often reduces the apparent flux."}]}},
+ {"order": 6,
+  "goal": "predict CO(2-1) flux from CO(3-2) and compare with Cy3 limit and stack",
+  "method": {"value": "Minimum CO(2-1) flux from thermalized condition F21 = (4/9) alpha_th F32; compare with CY3NA noise; also non-thermalized case T32/T21 ~ 0.5; stack CO(2-1) cutouts of the 11 clouds",
+             "evidence": [
+              {"loc": "Non-detection in CO(2-1)", "quote": "The CO(2-1) flux of a CO(3-2)-emitting dense clump, without the cloud envelope, can be estimated from its CO(3-2) flux."},
+              {"loc": "The stacked cutout images", "quote": "A stacking analysis does not provide a significant CO(2-1) detection in this case."}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "alpha_th ~ 1.10, 1.16, 1.40 at T = 30, 20, 10 K",
+    "evidence": [{"loc": "Non-detection in CO(2-1)", "quote": "where $\\alpha_{\\rm th} \\approx$1.10, 1.16, and 1.40 for $T$=30, 20, and 10 K, respectively."}]}
+  ],
+  "assumptions": [
+   {"value": "Equal beam filling factors for CO(3-2) and CO(2-1)",
+    "evidence": [{"loc": "Non-detection in CO(2-1)", "quote": "We assumed that the beam filling factors of the two transitions are equal."}]},
+   {"value": "CMB contribution neglected",
+    "evidence": [{"loc": "Non-detection in CO(2-1)", "quote": "Here, we neglected the contribution of the cosmic microwave background radiation since its temperature is low for the CO(3-2)-emitting gas."}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Stacked CO(2-1) peak is only 1.9 sigma, consistent with but not conclusive for the thermalized prediction",
+                 "evidence": [{"loc": "The stacked cutout images", "quote": "The consistency is supportive of the model (Fig. [1](#fig:schematic)) but is not conclusive with this CO(2-1) data."}]}},
+ {"order": 7,
+  "goal": "estimate clump masses and radii",
+  "method": {"value": "Crude CO(3-2)-based clump mass with Galactic X_CO and thermalized R_3-2/1-0 = 1, including factor 1.37 for helium; convert mass to radius assuming n_H2 ~ 1e3 cm^-3; compare with virial mass",
+             "evidence": [
+              {"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "the clump mass, including helium and other heavier elements (i.e., multiplying the total hydrogen mass by 1.37), is"}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "X_CO(1-0) = 3e20 cm^-2 (K km/s)^-1",
+    "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "$X_{\\rm CO(1-0)}=3\\times 10^{20}\\,\\rm cm^{-2}\\,[K\\cdot \\, {\\rm km \\, s^{-1}}]^{-1}$ can be applied to the clumps"}]},
+   {"value": "n_H2 ~ 1e3 cm^-3 as average density of the CO(3-2)-emitting region",
+    "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "The CO(3-2) excitation requires a density of $n_{\\rm H_2}\\sim 10^3\\,\\rm cm^{-3}$, to within an order of magnitude."}]}
+  ],
+  "assumptions": [
+   {"value": "Thermalized gas, CO 3-2/1-0 brightness temperature ratio of unity",
+    "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "the gas is thermalized and hence the CO 3-2/1-0 brightness temperature ratio is unity"}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Mass estimates quoted as uncertain by a factor of 2-3 and roughly consistent with virial mass",
+                 "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "These mass estimations easily have a factor of 2-3 uncertainty."}]}},
+ {"order": 8,
+  "goal": "compare sigma_v and R upper limits with other galaxies' clouds",
+  "method": {"value": "Plot sigma_v against R upper limits for clouds and clumps together with Milky Way, LMC, SMC and WLM clouds from the literature",
+             "evidence": [{"loc": "The size-velocity dispersion relation", "quote": "For reference, it also shows clouds in the Milky Way, Large and Small Magellanic Clouds (LMC and SMC), and the dwarf galaxy WLM (cite: Solomon:1987pr; Bolatto:2008nz; Wong:2011fk; Rubio:2015aa)."}]},
+  "software": [],
+  "key_parameters": [],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Caveat that reference clouds are measured in lower-excitation CO transitions and that only R upper limits exist",
+                 "evidence": [{"loc": "The size-velocity dispersion relation", "quote": "There is also a caveat in this comparison, since these reference clouds are observed in the lower-excitation transitions, CO(1-0) or CO(2-1)."}]}}
+],
+"software": [
+ {"name": "CASA", "version": "not stated",
+  "used_for": {"value": "Calibration of the visibility data with ALMA-provided scripts",
+               "evidence": [{"loc": "Observations and data reduction", "quote": "The visibility data are calibrated using the data reduction scripts provided by the ALMA Observatory using the Common Astronomy Software Application (cite: McMullin:2007aa; CASA-Team:2022aa)."}]}},
+ {"name": "MIRIAD", "version": "not stated",
+  "used_for": {"value": "Imaging of the CO(3-2) cubes and continuum",
+               "evidence": [{"loc": "Observations and data reduction", "quote": "For imaging, we used the Multichannel Image Reconstruction, Image Analysis, and Display package (cite: Sault:1995kl; Sault:1996uq)."}]}}
+],
+"results_numeric": [
+ {"quantity": "Number of molecular clouds identified in CY7NA (full field)", "value": "23", "uncertainty": "not stated", "units": "count", "from_step": 2,
+  "evidence": [{"loc": "Clouds", "quote": "We find the same set of 23 molecular clouds as in (cite: Koda:2022aa)."}]},
+ {"quantity": "Number of Level A (CY9NA) clumps", "value": "11", "uncertainty": "not stated", "units": "count", "from_step": 3,
+  "evidence": [{"loc": "Clumps (Level A and B)", "quote": "the eleven CY9NA clumps are labeled in the format"}]},
+ {"quantity": "Number of Level B (CY9UN) clumps", "value": "9", "uncertainty": "not stated", "units": "count", "from_step": 3,
+  "evidence": [{"loc": "Clumps (Level A and B)", "quote": "We find nine CY9UN clumps."}]},
+ {"quantity": "Cloud 4 CO(3-2) integrated flux", "value": "258.2", "uncertainty": "11.2", "units": "mJy km/s", "from_step": 4,
+  "evidence": [{"loc": "Table A.1", "quote": "4 | 13:37:04.984 | -29:59:46.15 | 564.4 | 3973 | 1438 | 1.02 | 0.96 | 6.21 | 0.34 | 26.47 | 1.25 | 258.2 | 11.2"}]},
+ {"quantity": "Brightest clump peak brightness temperature (Clump 4-1-1)", "value": "2.49", "uncertainty": "not stated", "units": "K", "from_step": 4,
+  "evidence": [{"loc": "Table A.1", "quote": "4-1-1 | 13:37:05.010 | -29:59:46.22 | 562.7 | 77 | 61 | 0.26 | 0.22 | 2.32 | 2.49 | 19.04 | 1.92"}]},
+ {"quantity": "Minimum measurable radius R_min for clouds / Level A / Level B", "value": "0.50 arcsec (10.9 pc) / 0.22 arcsec (4.8 pc) / 0.16 arcsec (3.5 pc)", "uncertainty": "not stated", "units": "arcsec (pc)", "from_step": 4,
+  "evidence": [{"loc": "Parameters", "quote": "This is 0.50\" (10.9 pc), 0.22\" (4.8 pc), and 0.16\" (3.5 pc) for the clouds (CY7NA), Level A clumps (CY9NA), and Level B clumps (CY9UN), respectively."}]},
+ {"quantity": "Mean peak-intensity ratio of brightest clump to parent cloud", "value": "77% (Level A), 68% (Level B)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5,
+  "evidence": [{"loc": "Implications of the peak intensities and fluxes", "quote": "with the averages of 77% for Level A and 68% for Level B."}]},
+ {"quantity": "Beam filling factor upper bound from peak brightness temperature", "value": "f = 0.64 or smaller", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5,
+  "evidence": [{"loc": "Implications of the peak intensities and fluxes", "quote": "the filling factor is $f=0.64$ or smaller, again indicating unresolved or marginally resolved objects."}]},
+ {"quantity": "Minimum predicted CO(2-1) flux of Cloud 4 (thermalized, T = 30, 20, 10 K)", "value": "126.2, 133.1, 160.7", "uncertainty": "not stated", "units": "mJy km/s", "from_step": 6,
+  "evidence": [{"loc": "Non-detection in CO(2-1)", "quote": "this translates to the minimum expected CO(2-1) flux of $F_{21}=$126.2, 133.1, and 160.7"}]},
+ {"quantity": "Significance of predicted thermalized CO(2-1) in CY3NA data", "value": "1.9, 2.0, 2.4 sigma at 30, 20, 10 K", "uncertainty": "not stated", "units": "sigma", "from_step": 6,
+  "evidence": [{"loc": "Non-detection in CO(2-1)", "quote": "These are at 1.9, 2.0, and 2.4$\\sigma$ significance, respectively."}]},
+ {"quantity": "Significance expected in CY3NA if T32/T21 ~ 0.5 (T = 30, 20, 10 K)", "value": "5.2, 6.6, 15.2 sigma", "uncertainty": "not stated", "units": "sigma", "from_step": 6,
+  "evidence": [{"loc": "Non-detection in CO(2-1)", "quote": "It should have been detected in CO(2-1) at 5.2, 6.6, and 15.2$\\sigma$ in the CY3NA data."}]},
+ {"quantity": "Stacked CO(2-1) peak flux of the 11 clouds", "value": "263 (noise 140)", "uncertainty": "140", "units": "mJy km/s", "from_step": 6,
+  "evidence": [
+   {"loc": "The stacked cutout images", "quote": "Indeed, the peak flux is $F_{21}=263\\, {\\rm mJy}\\, {\\rm km \\, s^{-1}}$ in CO(2-1)"},
+   {"loc": "The stacked cutout images", "quote": "Thus, it is only at a $1.9\\sigma$ significance."}]},
+ {"quantity": "Stacked CO(3-2) peak flux of the 11 clouds", "value": "550 (noise 16)", "uncertainty": "16", "units": "mJy km/s", "from_step": 6,
+  "evidence": [{"loc": "The stacked cutout images", "quote": "Panel (a) shows the peak CO(3-2) flux of $F_{32}=550\\, {\\rm mJy} \\, {\\rm km \\, s^{-1}}$. The noise of this image is $16\\, {\\rm mJy} \\, {\\rm km \\, s^{-1}}$."}]},
+ {"quantity": "Clump mass range from CO(3-2) fluxes", "value": "2.1e2 to 9.3e3", "uncertainty": "factor of 2-3", "units": "Msun", "from_step": 7,
+  "evidence": [
+   {"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "give $M_{\\rm clump}=2.1\\times 10^2$-$9.3\\times 10^3{\\rm M_{\\odot}}$."},
+   {"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "These mass estimations easily have a factor of 2-3 uncertainty."}]},
+ {"quantity": "Implied clump radius", "value": "1-4", "uncertainty": "not stated", "units": "pc", "from_step": 7,
+  "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "The range of the clump masses estimated above then corresponds to $R=$1-4 pc."}]}
+],
+"findings_qualitative": [
+ {"value": "None of the eleven clouds is detected above 3 sigma in CO(2-1) or in 351 GHz continuum",
+  "evidence": [{"loc": "Clouds", "quote": "None of the eleven clouds is above the $3\\sigma$ detection limit in the CO(2-1) line and 351 GHz continuum emission."}]},
+ {"value": "Clumps are unresolved at 6-9 pc, with some indication they may begin to be resolved at 6 pc",
+  "evidence": [{"loc": "Summary", "quote": "but there is some indication that they may be starting to be resolved at the 6 pc resolution."}]},
+ {"value": "CO(3-2)-emitting regions in the XUV clouds must be close to thermalized",
+  "evidence": [{"loc": "Summary", "quote": "The CO(3-2)-emitting regions in the XUV clouds must be close to thermalized since, otherwise, the CO(2-1) flux would be brighter and thus would have been detected in past observations."}]}
+],
+"claims": [
+ {"hypothesis": "CO(3-2) in XUV-disk clouds comes from compact dense clumps much smaller than typical cloud sizes",
+  "experiment": "Hierarchical clump finding in CY7NA, CY9NA (0.40 arcsec) and CY9UN (0.28 arcsec) cubes; compare sizes, peak intensities and fluxes of clumps with parent clouds",
+  "result": "FWHM of clumps similar to beams; mean clump/cloud peak ratio 77% (A) and 68% (B); clump flux fractions mostly 50-100% (A)",
+  "finding": "CO(3-2) clumps are not resolved, with diameters below 6-9 pc, similar to the dense region of Orion A",
+  "support": "supported",
+  "evidence": [
+   {"loc": "abstract", "quote": "We confirm the compactness of the CO(3-2)-emitting dense clumps (or their concentrations), finding clump diameters below the spatial resolution of 6-9 pc."},
+   {"loc": "Summary", "quote": "This paper confirms the compactness of the dense, CO(3-2)-emitting clumps in the clouds as predicted by this hypothesis."}]},
+ {"hypothesis": "Dense clumps are close to thermalized so their CO(2-1) emission is faint and consistent with the earlier CO(2-1) non-detection",
+  "experiment": "Predict CO(2-1) flux from CO(3-2) flux for the brightest cloud and compare to CY3NA noise; stack CO(2-1) cutouts of the 11 clouds",
+  "result": "Thermalized prediction is 1.9-2.4 sigma in CY3NA (below detection); non-thermalized T32/T21 ~ 0.5 would give 5.2-15.2 sigma; stack shows 1.9 sigma only",
+  "finding": "The CO(3-2)-emitting gas must be close to thermalized and the envelopes cannot be CO-rich; the CO(2-1) data remain inconclusive",
+  "support": "supported",
+  "evidence": [
+   {"loc": "Non-detection in CO(2-1)", "quote": "Therefore, the excitation condition of the clump cannot deviate significantly from the thermalized condition, given the non-detection in CO(2-1)."},
+   {"loc": "The stacked cutout images", "quote": "The consistency is supportive of the model (Fig. [1](#fig:schematic)) but is not conclusive with this CO(2-1) data."}]},
+ {"hypothesis": "XUV-disk clouds follow a size-velocity dispersion relation like clouds in dwarfs and the Milky Way",
+  "experiment": "Plot sigma_v versus R upper limits for clouds and Level A/B clumps with literature cloud samples",
+  "result": "XUV clouds appear consistent with those in dwarf galaxies, with radii only upper limits",
+  "finding": "Consistency supports the hypothesis within the limitation of R upper limits",
+  "support": "partially",
+  "evidence": [
+   {"loc": "The size-velocity dispersion relation", "quote": "The clouds in the XUV disk of M83 appear consistent with those in the dwarfs, while their radii are only upper limits."}]},
+ {"hypothesis": "Dense star-forming clumps are common between normal and XUV disks",
+  "experiment": "Compare clump size to the dense CO(3-2)-bright region of Orion A (~10 pc) and estimate clump masses and radii",
+  "result": "Clump masses 2.1e2-9.3e3 Msun correspond to R of 1-4 pc, consistent with the unresolved sizes",
+  "finding": "XUV-disk clumps resemble Orion A dense regions; star formation may be governed by internal cloud physics",
+  "support": "partially",
+  "evidence": [
+   {"loc": "abstract", "quote": "The dense star-forming clumps are common between normal and XUV disks."},
+   {"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "This is consistent with the new measurements in this study."}]}
+],
+"reasoning": [
+ {"field": "why_this_data", "value": "Field chosen from earlier ALMA CO(2-1) and CO(3-2) observations of the XUV disk, with bright UV and H-alpha peaks and multiple clouds",
+  "evidence": [{"loc": "Observations and data reduction", "quote": "This region is selected based on previous ALMA observations"}]},
+ {"field": "why_this_method", "value": "Hierarchical search starting in the most sensitive cube (CY7NA), then relaxed thresholds inside its masks at higher resolution",
+  "evidence": [{"loc": "Cloud and clump identifications and parameters", "quote": "We adopted this approach because the CY7NA data have the highest sensitivity, albeit the lowest spatial resolution"}]}
+],
+"alternatives_considered_or_rejected": [
+ {"value": "Clouds may evolve and develop dense clumps only late in their lifetime, so CO(3-2) may trace only evolved clouds (not tested)",
+  "evidence": [{"loc": "Cloud evolution and distribution", "quote": "It is possible that the clouds evolve and develop dense clumps only at a later stage of their lifetime."}]}
+],
+"limitations_admitted": [
+ {"value": "Size measurements are not very accurate because the detection thresholds are low",
+  "evidence": [{"loc": "Size measurements", "quote": "We note that our size measurements are not very accurate because our clump detection thresholds are not high"}]},
+ {"value": "The planned deep CO(2-1) observations in Cy9 were not executed",
+  "evidence": [{"loc": "Hypothesis and predictions", "quote": "Such CO(2-1) observations were approved in ALMA Cy9, but were not executed due largely to the loss of observing times in small array configurations as a result of the cyberattack in 2022-2023."}]},
+ {"value": "Clump mass and radius estimates are crude, uncertain by a factor of 2-3",
+  "evidence": [{"loc": "Mass and radius of the CO(3-2)-emitting regions", "quote": "These mass estimations easily have a factor of 2-3 uncertainty."}]}
+],
+"referee_caveats_inferred": [
+ "Clump sizes are only upper limits at 6-9 pc; the compactness claim rests on unresolved sources whose detection thresholds (3-5 sigma) are low",
+ "CY7+9 combined cubes are excluded from measurements because of non-uniform sensitivity, so the highest-sensitivity data are unused for clump parameters",
+ "The thermalization argument relies on a single cloud and a low-significance (1.9-2.4 sigma) CY3NA limit; the stacked CO(2-1) is inconclusive",
+ "Clump masses use the Galactic X_CO and R_3-2/1-0 = 1, which are themselves the hypothesis being tested",
+ "Only 11 clouds in one small region of one galaxy; no independent CO(2-1) or CO(1-0) detection"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+ "MIRIAD imaging parameters and clean/mask settings for each cube",
+ "Clump-finder implementation and S/N cube construction details",
+ "CASA / calibration script versions and mapping of cycles to project codes",
+ "CO(3-2) line-free channel selection and continuum subtraction details",
+ "Cy3 CO(2-1) cube re-reduction and stacking details"
+],
+"estimated_data_volume_inferred": "Roughly 50-150 GB of raw data across the three ALMA projects (12-m array Band 7, one line SPW plus three continuum SPWs per execution); the imaged cubes themselves are small",
+"score_inferred": 3,
+"score_reason": "ALMA data come from three archive projects and the cloud/clump tables give many numeric answer keys, but imaging parameters, MIRIAD settings, line-free channels and the clump-finder implementation are not given and the paper does not state data availability.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Numeric results exist and the archive projects are identified, but the imaging and clump-finding recipe lacks the parameters needed to redo it, and public availability is not stated in the paper.",
+"methods_papers": [
+ {"citation": "Koda et al. 2022, ApJ, 941, 3 (cite: Koda:2022aa)", "why": "Original hypothesis, Cy3/Cy7 observations details, cloud identification, size upper limit and mass estimate methods"},
+ {"citation": "Sault et al. 1995 (cite: Sault:1995kl)", "why": "MIRIAD package used for imaging"}
+],
+"companion_papers": [
+ {"citation": "Bicalho et al. 2019, A&A, 623, A66 (cite: Bicalho:2019aa)", "why": "Previous sensitive ALMA CO(2-1) non-detection over a 2x4 kpc2 region of the M83 XUV disk"},
+ {"citation": "Lee et al. 2024, ApJ, 968, 97 (cite: Lee:2024aa)", "why": "Virial mass and X_CO dependence on cloud population"}
+],
+"related_projects_or_surveys": ["ALMA Cy3 project 2013.1.00861.S", "ALMA Cy7 project 2017.1.00065.S", "ALMA Cy9 project 2022.1.00359.S", "GALEX XUV disk surveys"]
+}

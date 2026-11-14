@@ -1,0 +1,163 @@
+{
+ "bibcode": "2016ApJ...827...68P",
+ "title": "Submillimeter H<SUB>2</SUB>O Megamasers in NGC 4945 and the Circinus Galaxy",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/827/1/68",
+ "arxiv_id": "1604.03789",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "Do the AGN host 321 GHz H2O megamasers, and how do the submillimeter masers and continuum compare with 22 GHz masers and galactic disks?",
+ "alma_project_codes": [
+  "2011.0.00121.S"
+ ],
+ "data": {
+  "bands": "Band 7, 321.226 GHz (NGC 5793 also 325.153 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to NGC 4945 of 3.7 Mpc",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Adopting a distance to NGC 4945 of 3.7 Mpc (cite: 2013AJ....146...86T)"
+     }
+    ]
+   },
+   "citation": "(cite: 2013AJ....146...86T)"
+  },
+  {
+   "what": {
+    "value": "Distance to Circinus 4.2 Mpc",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "At a distance to the galaxy of 4.2 Mpc"
+     }
+    ]
+   },
+   "citation": "(cite: 2013AJ....145..101K)"
+  },
+  {
+   "what": {
+    "value": "22 GHz spectra of NGC 4945 and Circinus",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "top panel of Figure [3](#fig:NGC4945_321GHz_spectra) has been reproduced from (cite: 2003ApJS..146..249B)"
+     }
+    ]
+   },
+   "citation": "(cite: 2003ApJS..146..249B)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "self-calibrate and image",
+   "method": "Phase-only self-cal using line (Circinus) or long-baseline continuum (NGC 4945), then clean imaging of line and continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "derive ISM mass from continuum",
+   "method": "Aperture flux density converted with Scoville et al. relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta=1.8, Td=25 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "maser isotropic luminosity",
+   "method": "L_iso = 0.335 D^2 integral S dv",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NGC 4945 maser integrated flux",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "the observed flux of $0.88$ Jy km s$^{-1}$ corresponds to an isotropic luminosity of $L_{\\text{iso}} = 4$ L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4945 L_iso",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$L_{\\text{iso}} = 4$ L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Circinus maser flux",
+   "value": "17.5",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "the observed flux of $17.5$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4945 continuum flux density",
+   "value": "90.8",
+   "uncertainty": "5.6",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\nu}$ (mJy)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "line-free channel ranges",
+  "image size and cell size",
+  "clean threshold, masks and iterations",
+  "spectral channel averaging details",
+  "maser flux integration velocity limits",
+  "number of self-cal iterations",
+  "flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "imaging parameters",
+  "line-free channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple method, but many imaging parameters unstated.",
+ "rediscovery_reason": "Public data; numeric fluxes and masses can be rechecked.",
+ "source_card": "cards/2016ApJ...827...68P/sonnet/card.md"
+}

@@ -1,0 +1,261 @@
+{
+ "bibcode": "2019ApJ...870...57V",
+ "title": "An Enormous Molecular Gas Flow in the RX J0821+0752 Galaxy Cluster",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaf1b4",
+ "arxiv_id": "1811.09653",
+ "fields": [
+  "star_formation",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "How did the ~10^10 Msun molecular gas reservoir in the RXJ0821 BCG form, and how is it related to X-ray cavities and ICM sloshing?",
+ "alma_project_codes": [
+  "2016.1.01269.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO 1-0) and Band 7 (CO 3-2)",
+  "arrays": "not stated",
+  "angular_resolution": "0.61x0.59 arcsec (CO1-0); 0.21x0.165 arcsec (CO3-2)",
+  "sensitivity": "RMS 0.5 and 1.1 mJy/beam in line-free channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "XCO = 1.05e20 cm-2 (K km/s)-1 and CO(3-2)/(1-0) flux ratio of 8",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "Following V17, CO(3-2) line fluxes have been converted to molecular gas masses by assuming a CO (3-2)/(1-0) flux ratio of $8$."
+     }
+    ]
+   },
+   "citation": "Vantyghem17"
+  },
+  {
+   "what": {
+    "value": "Cluster mass profiles used for gravity in buoyancy time",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "The acceleration under gravity is determined using the cluster mass profiles from (cite: Hogan17b)."
+     }
+    ]
+   },
+   "citation": "Hogan17b"
+  },
+  {
+   "what": {
+    "value": "Galactic NH = 2.01e20 cm-2",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The foreground hydrogen column density was fixed to the Galactic value of $N_H = 2.01\\ensuremath{\\times 10^{20}}\\hbox{$\\rm\\; cm^{-2}\\,$}$ (cite: Kalberla05)."
+     }
+    ]
+   },
+   "citation": "Kalberla05"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce Chandra data and make X-ray image",
+   "method": "Reprocess with ciao, clean flares with lc_clean, sum 0.5-7 keV events, remove point sources with wavdetect, blank-sky background",
+   "software": [
+    "ciao",
+    "wavdetect",
+    "lc_clean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive ICM radial profiles",
+   "method": "Deprojected spectra in eight annuli fit with phabs x apec; derive density, pressure, entropy, cooling time",
+   "software": [
+    "xspec",
+    "dsdeproj"
+   ],
+   "key_parameters": [
+    "min 2500 net counts per annulus; C-stat for projected, chi2 with 25 counts/bin for deprojected"
+   ],
+   "assumptions": [
+    "nH = ne/1.2; NH fixed to Galactic; Anders & Grevesse abundances"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Cavity energetics",
+   "method": "Ellipse fit to depression; E=4pV; age from buoyant rise and sound crossing time",
+   "software": [],
+   "key_parameters": [
+    "drag coefficient C=0.75; efficiency 0.1"
+   ],
+   "assumptions": [
+    "line-of-sight size sqrt(ab); pressure balance with surroundings"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Cooling flow mass deposition rate",
+   "method": "Add mkcflow component within r_cool=50 kpc, Tmin 0.1 keV",
+   "software": [
+    "xspec"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Map CO flux, velocity, FWHM",
+   "method": "Fit up to two Gaussians per pixel (beam-size averaging), 3 sigma detection, Monte Carlo significance test",
+   "software": [],
+   "key_parameters": [
+    "at least 2500 Monte Carlo iterations"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Molecular gas mass",
+   "method": "Mmol from CO(1-0) flux with sub-Galactic XCO; CO(3-2) scaled by ratio 8",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "XCO = 1.05e20, half Galactic"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Continuum flux in clumps",
+   "method": "Box fluxes grown until S/N 1.5 in regions A and B",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular gas mass",
+   "value": "1.07e10",
+   "uncertainty": "0.02e10",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "the molecular gas mass is $(1.07\\pm0.02)\\ensuremath{\\times 10^{10}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) flux",
+   "value": "8.06",
+   "uncertainty": "0.08",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$8.06\\pm0.08$ and $65.6\\pm1.5\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(3-2) flux",
+   "value": "65.6",
+   "uncertainty": "1.5",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$8.06\\pm0.08$ and $65.6\\pm1.5\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity power",
+   "value": "1.3e43",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$P_{\\rm cav}$ | $1.3\\ensuremath{\\times 10^{43}}\\hbox{$\\rm\\; erg\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity enthalpy 4pV",
+   "value": "4.2e57",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$4pV$ | $4.2\\ensuremath{\\times 10^{57}}\\rm\\; erg$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass deposition rate within 50 kpc",
+   "value": "34",
+   "uncertainty": "10",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "The best-fitting mass deposition rate is $\\dot{M}_{\\rm cool} = 34\\pm10\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic redshift",
+   "value": "0.11087",
+   "uncertainty": "0.00004",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2.1",
+     "quote": "we adopt a systemic redshift of $z=0.11087\\pm0.00004$"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot gas displaced by cavity",
+   "value": "2.4e8 (Table: 2.3e8)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.2.1",
+     "quote": "A total of $2.4\\ensuremath{\\times 10^{8}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$ of hot gas has been displaced in inflating the X-ray cavity."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Channels used for continuum fitting in uvcontsub",
+  "clean threshold, mask, cell and image size",
+  "Flux calibrator and flux-scale uncertainty",
+  "Pixel-fit Gaussian priors/initial guesses and Monte Carlo procedure details",
+  "Cavity ellipse region coordinates",
+  "Continuum image weighting/robust"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters and masks",
+  "line-free channels",
+  "pixel-fit details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and many formulas given, but imaging parameters and fitting details are sparse or inherited.",
+ "rediscovery_reason": "Public data and clear numeric targets (gas mass, fluxes) though imaging details missing.",
+ "source_card": "cards/2019ApJ...870...57V/sonnet/card.md"
+}

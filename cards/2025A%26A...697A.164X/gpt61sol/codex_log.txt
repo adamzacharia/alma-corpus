@@ -1,0 +1,452 @@
+.5 to 2.9–3.9",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Centimeter counterpart cross-match and free-free emission subtraction",
+          "quote": "Therefore, we evenly distribute the 1.3 cm flux to the five sources, and find that their spectral indices would increase from 2.6–3.5 to 2.9–3.9."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Mono-band catalogs prioritize completeness; dual-band catalogs improve robustness and recover faint or blended counterparts.",
+      "evidence": [
+        {
+          "loc": "Completeness and robustness of the catalogs",
+          "quote": "`mbcat`s are optimized for monochromatic completeness, while `dbcat` has improved robustness by dual-band cross check."
+        },
+        {
+          "loc": "Dual-band source catalogs",
+          "quote": "However, all eight sources were successfully separated and identified in the `dbcat`."
+        }
+      ]
+    },
+    {
+      "value": "Sources are marginally resolved with finite spatial extent.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "almost all the sources have total fluxes higher than peak intensities, suggesting that they have finite sizes rather than being true point sources."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "In this context, we refer to them as marginally resolved sources."
+        }
+      ]
+    },
+    {
+      "value": "Low spectral indices and low brightness temperatures are alternative descriptions of the MBB discrepancy.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "we find that $>70$% of the `dbcat` sources deviate from MBB, being characterized either as the “low spectral indices” problem or as the “low brightness temperature” problem."
+        }
+      ]
+    },
+    {
+      "value": "The three explanations may operate together.",
+      "evidence": [
+        {
+          "loc": "Possible explanations",
+          "quote": "We note that the three hypotheses are not mutually exclusive."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Dual-band source extraction improves the cloud-wide continuum census.",
+      "experiment": "Run getsf mono-band and combined dual-band extraction.",
+      "result": "563 sources at 1.3 mm, 330 at 3 mm and 450 dual-band sources.",
+      "finding": "Mono-band catalogs optimize completeness; dual-band detection improves robustness.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "We report 563 continuum sources at 1.3 mm and 330 at 3 mm, respectively, and a dual-band catalog with 450 continuum sources."
+        },
+        {
+          "loc": "Completeness and robustness of the catalogs",
+          "quote": "`mbcat`s are optimized for monochromatic completeness, while `dbcat` has improved robustness by dual-band cross check."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Beam-like detections have intrinsic spatial extent.",
+      "experiment": "Deconvolve elliptical beams and compare integrated fluxes with peak intensities.",
+      "result": "77% have intrinsic sizes smaller than the beam; almost all have total flux greater than peak intensity.",
+      "finding": "Most sources are marginally resolved rather than true point sources.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Source deconvolution",
+          "quote": "After beam deconvolution, 77% sources have intrinsic sizes smaller than the beam size; these are referred to as marginally resolved sources."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "almost all the sources have total fluxes higher than peak intensities, suggesting that they have finite sizes rather than being true point sources."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Commonly assumed MBB emission explains the dual-band intensities.",
+      "experiment": "Match uv ranges and beams; compare spectral indices and corrected brightnesses with MBB tracks.",
+      "result": "Mean α = 2.6 ± 0.5; more than 70% deviate from the comparison model.",
+      "finding": "The commonly assumed β = 1.8, unity-filling MBB model fails for most detections.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Low spectral indices versus low brightnesses",
+          "quote": "The mean and median values of $\\alpha$ are $2.6 \\pm 0.5$ and $2.6 \\pm 0.2$, respectively."
+        },
+        {
+          "loc": "Low spectral indices versus low brightnesses",
+          "quote": "the observed $\\alpha$ distribution deviates from the MBB emission with the commonly assumed $\\beta=1.8$ and with the assumed beam filling factor of unity."
+        },
+        {
+          "loc": "Low spectral indices versus low brightnesses",
+          "quote": "Such deviations account for more than 70% of the detections."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Compact optically thick class 0/I YSOs explain the low brightnesses and spectral indices.",
+      "experiment": "Compare 50–200 au optically thick tracks and simulated ALMASOP sources at the CMZ distance.",
+      "result": "Tracks cover observed points; simulated protostellar examples reach observed millimeter intensities.",
+      "finding": "Embedded class 0/I YSOs can explain a large fraction of the observed flux.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Beam diluted class 0/I YSOs",
+          "quote": "These models can cover the observed data points very well."
+        },
+        {
+          "loc": "Beam diluted class 0/I YSOs",
+          "quote": "a large fraction of the observed flux densities can be contributed by the embedded, optically thick low-mass class 0/I YSOs that are much smaller than the sizes of our synthesized beams."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Large dust grains and scattering explain the spectral-index distribution.",
+      "experiment": "Compare absorption/scattering isothermal tracks across grain sizes.",
+      "result": "Centimeter-sized grains explain low α; 1 mm grains cover the α ≃4 bump.",
+      "finding": "A range of maximum grain sizes 0.01–10 mm may explain the measurements.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Large dust grains",
+          "quote": "the 1 mm sized grain scenario can cover the “high $\\alpha$ bump” that includes detections with $\\alpha \\simeq 4$."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "We find that centimeter-sized grains can explain most of sources with low $\\alpha$ values"
+        },
+        {
+          "loc": "Large dust grains",
+          "quote": "Therefore, a range of maximum grain sizes of 0.01–10 mm may explain the $\\alpha$ and $I^{\\rm bf,peak}_{\\rm 1.3~mm}$ values in our observations."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Free-free contamination accounts for the low spectral indices.",
+      "experiment": "Cross-match JVLA emission, extrapolate radio fluxes and estimate faint contamination requirements.",
+      "result": "Some sources can be corrected; 30 μJy can change α by order unity for a milli-Jansky source.",
+      "finding": "Free-free contributes in individual cases, but explaining the widespread discrepancy requires an infeasible massive-protostar population; faint contamination remains unconstrained.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Our calculation shows that even if free-free emission is only 30 $\\mu$Jy in the K-band, it can still reduce $\\alpha$ by a magnitude of 1 for a milli-Jansky source in our sample."
+        },
+        {
+          "loc": "Free-free emission",
+          "quote": "Given that more than 70% of the sources exhibit low spectral indices, it is difficult to attribute them entirely to contamination by free-free emission."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "the number of massive protostars (embedded UCHii regions) needed is infeasible for the IMF of star clusters (even considering a top-heavy IMF)"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Cloud-wide dual-band mosaics address optical depth, mixed emission and limited single-pointing coverage.",
+      "evidence": [
+        {
+          "loc": "DUET: dual-band mosaic of three CMZ clouds",
+          "quote": "dust emission is not always optically thin"
+        },
+        {
+          "loc": "DUET: dual-band mosaic of three CMZ clouds",
+          "quote": "these sources may consist of a mix of thermal and non-thermal emissions"
+        },
+        {
+          "loc": "DUET: dual-band mosaic of three CMZ clouds",
+          "quote": "previous observations are mostly single pointings, which could miss the population outside fields."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "getsf handles multiscale and multiband data, complex interferometric backgrounds and crowded blends.",
+      "evidence": [
+        {
+          "loc": "Source extraction strategy",
+          "quote": "as it can identify sources from multi-scale and also from multiband data."
+        },
+        {
+          "loc": "Source extraction strategy",
+          "quote": "it effectively handles various backgrounds from filamentary structures to negative bowls originated from imperfect uv-sampling and can separate blended sources in crowded fields like protoclusters"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Maximum measured source size lies below the extraction cutoff; image-noise clipping continued to convergence.",
+      "evidence": [
+        {
+          "loc": "Source extraction procedure and catalogs",
+          "quote": "the maximum source size is $\\sim$0$.\\!\\ensuremath{''}$8, which is much smaller than the adopted maximum size."
+        },
+        {
+          "loc": "ALMA 3 mm",
+          "quote": "by iteratively clipping until convergence at $\\pm3\\sigma$ around its median"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Compact optically thick class 0/I YSOs, large grains and free-free contamination remain possible, non-exclusive explanations.",
+      "evidence": [
+        {
+          "loc": "Possible explanations",
+          "quote": "We note that the three hypotheses are not mutually exclusive."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "Future work aimed at quantifying the SFR in the CMZ based on the complete protostellar mass spectrum will need to resolve the ambiguity between these possible explanations."
+        }
+      ]
+    },
+    {
+      "value": "Micron-sized grains alone do not explain many α <3 detections.",
+      "evidence": [
+        {
+          "loc": "Large dust grains",
+          "quote": "with $a_{\\rm max}\\sim0.01$ mm, a large amount of sources with low spectral indices $\\alpha < 3$ cannot be explained."
+        }
+      ]
+    },
+    {
+      "value": "Further intensity-profile filtering of mono-band catalogs was omitted to preserve completeness.",
+      "evidence": [
+        {
+          "loc": "Mono-band source catalogs",
+          "quote": "We did not perform any further filtering criteria based on their intensity profiles, to maintain `mbcat`’s completeness for future studies at individual bands."
+        }
+      ]
+    },
+    {
+      "value": "Original-beam catalogs retained for publication because common-beam extraction loses blended detections.",
+      "evidence": [
+        {
+          "loc": "Low spectral indices versus low brightnesses",
+          "quote": "the source extractions are still from the images with original beams, because common-beam `dbcat` will miss detections of blended sources due to its coarser resolution."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Interferometric missing flux and negative bowls affect extended-source and flux measurements.",
+      "evidence": [
+        {
+          "loc": "Mono-band source catalogs",
+          "quote": "Due to the missing flux effect, prestellar cores may appear even fainter than expected."
+        },
+        {
+          "loc": "Flux measurement",
+          "quote": "this happens when there is a noisy background or the source is near an interferometric negative bowl"
+        }
+      ]
+    },
+    {
+      "value": "Common-beam spectral-index catalogs lose resolution and blended sources.",
+      "evidence": [
+        {
+          "loc": "Common $uv$-range at dual bands",
+          "quote": "The caveat of common-beam `dbcat` lies in losing the advantage of higher resolution at 1.3 mm, so some blended sources are not resolved."
+        }
+      ]
+    },
+    {
+      "value": "Fully unresolved sources have undetermined intrinsic sizes.",
+      "evidence": [
+        {
+          "loc": "Source deconvolution from beam",
+          "quote": "In such a case, the source size is undetermined."
+        }
+      ]
+    },
+    {
+      "value": "Current centimeter sensitivity cannot exclude faint free-free contamination.",
+      "evidence": [
+        {
+          "loc": "Free-free emission",
+          "quote": "This is well below the sensitivity of the current JVLA data."
+        },
+        {
+          "loc": "Free-free emission",
+          "quote": "To firmly exclude the possibility, the sensitivity needs to be at least (sub-)$\\mu$Jy."
+        }
+      ]
+    },
+    {
+      "value": "Radio resolution prevents unique counterpart assignment and some contamination corrections.",
+      "evidence": [
+        {
+          "loc": "Centimeter counterpart cross-match and free-free emission subtraction",
+          "quote": "But due to the limited resolution, we cannot tell which one of the DUET sources is associated with H1."
+        },
+        {
+          "loc": "Centimeter counterpart cross-match and free-free emission subtraction",
+          "quote": "the contaminated flux cannot be evaluated, because of the resolution difference between 1.3 cm and 3 mm images."
+        }
+      ]
+    },
+    {
+      "value": "The origin of millimeter/centimeter-sized grains is uncertain.",
+      "evidence": [
+        {
+          "loc": "Large dust grains",
+          "quote": "The origin of mm/cm-sized grains is uncertain."
+        }
+      ]
+    },
+    {
+      "value": "SFR measurement requires resolving the emission-origin ambiguity.",
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "A reliable measurement of the SFR at low protostellar masses will require future work to distinguish between these possible explanations."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Matching uv limits and restoring beams does not make the two-dimensional uv sampling identical.",
+    "Beam-filling corrections can be unstable when deconvolved sizes approach zero.",
+    "The reliable-spectral-index selection and meaning of the quoted mean/median uncertainties are insufficiently specified.",
+    "No injection-recovery completeness or false-positive experiment is described.",
+    "Two bands cannot uniquely distinguish compact optically thick emission, grain scattering and free-free contamination.",
+    "Check the reported cloud e spectral-index decrease after subtraction; preserve the printed value until independently recomputed.",
+    "The opacity-extrapolation wavelength interval printed in the appendix should be checked before implementation."
+  ],
+  "reproducibility": [
+    {
+      "field": "data_public_as_stated",
+      "value": "Continuum FITS files, mono-band and dual-band catalogs, and supplementary figures published at 10.5281/zenodo.15068333.",
+      "evidence": [
+        {
+          "loc": "Data availability",
+          "quote": "The 1.3 mm and 3 mm continuum fits files, monochromatic and dual-band continuum source catalogs, as well as the supplementary figures are published at"
+        },
+        {
+          "loc": "Data availability",
+          "quote": "10.5281/zenodo.15068333"
+        }
+      ]
+    },
+    {
+      "field": "products_in_archive",
+      "value": "Zenodo continuum images, catalogs and supplementary figures; interactive zoom-in images at https://xfengwei.github.io/magnifier/index.html.",
+      "evidence": [
+        {
+          "loc": "Data availability",
+          "quote": "The 1.3 mm and 3 mm continuum fits files, monochromatic and dual-band continuum source catalogs, as well as the supplementary figures are published at"
+        },
+        {
+          "loc": "Data availability",
+          "quote": "10.5281/zenodo.15068333"
+        },
+        {
+          "loc": "Data availability",
+          "quote": "The interactive zoom-in images can be accessed from the webpage <https://xfengwei.github.io/magnifier/index.html>."
+        }
+      ]
+    }
+  ],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Calibration and imaging details inherited from Lu2020Jeans and Lu2021Outflow.",
+    "Exact channel flags, complete tclean commands and per-cloud common beams.",
+    "getsf configuration and exact reliable-spectral-index sample definition.",
+    "Analysis scripts for covariance deconvolution, uncertainty propagation and beam-filling corrections.",
+    "Dust-model implementation, opacity-table selection and full numerical grids.",
+    "Complete simalma configuration and transformed ALMASOP sky models.",
+    "Exact centimeter counterpart apertures and flux-allocation inputs.",
+    "Explicit release of common-beam images and common-beam catalogs."
+  ],
+  "estimated_data_volume_inferred": "Not reliably estimable: visibility sizes, channel counts after averaging, image dimensions and file counts are not supplied.",
+  "score_inferred": 7,
+  "score_reason": "7/10: public images and catalogs, project codes, software versions and substantial processing details; exact spectral-index reproduction still depends on missing configurations, sample selection and inherited methods.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Public products and numeric answer keys are present, but the common-beam spectral-index recipe and reliable-source selection are not complete enough for an exact independent redo.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Hunter2023)",
+      "why": "Standard ALMA calibration pipeline."
+    },
+    {
+      "citation": "(cite: CASA2022)",
+      "why": "Calibration, imaging and simulation software."
+    },
+    {
+      "citation": "(cite: Men2021getsf)",
+      "why": "Multiscale/multiband extraction, filtering and dual-band combination."
+    },
+    {
+      "citation": "(cite: Stetson1987; SExtractor)",
+      "why": "Iterative clipped image-noise estimation."
+    },
+    {
+      "citation": "(cite: Motte2018NA)",
+      "why": "Sig >7 robust-detection convention."
+    },
+    {
+      "citation": "(cite: Ossenkopf1994)",
+      "why": "Ice-mantle protostellar dust opacities."
+    },
+    {
+      "citation": "(cite: Liu2019SelfScatter)",
+      "why": "Self-consistent dust absorption/scattering model."
+    },
+    {
+      "citation": "(cite: Birnstiel2018)",
+      "why": "Dust opacity tables and grain compositions."
+    },
+    {
+      "citation": "(cite: Dutta2020)",
+      "why": "ALMASOP observing, array-combination and imaging details."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: Lu2020Jeans; Lu2021Outflow)",
+      "why": "Earlier reports of the reused 1.3 mm data and their observing/calibration details."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "Dual-band Unified Exploration of three CMZ Clouds (DUET)",
+    "Coordinated Observations of Nebulae in the CMZ Exploring Gas Recycling and Transformation (CONCERT)",
+    "ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP)"
+  ]
+}
+tokens used
+85,281

@@ -1,0 +1,244 @@
+{
+ "bibcode": "2013PASJ...65L...7I",
+ "title": "Active Galactic Nucleus and Extended Starbursts in a Midstage Merger VV 114",
+ "year": 2013,
+ "doi": "10.1093/pasj/65.3.L7",
+ "arxiv_id": "1305.4535",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Where is the dense gas (HCN/HCO+ 4-3) distributed in the mid-stage merger VV114, and does it reveal an AGN and star formation activity?",
+ "alma_project_codes": [
+  "2011.0.00467.S"
+ ],
+ "data": {
+  "bands": "Band 7 (HCN/HCO+ 4-3 near 355 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.5\" x 0.4\" (PA 52 deg)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCN (1-0) = 7 Jy km/s",
+    "evidence": [
+     {
+      "loc": "Dense Gas and AGN /Starburst Activity",
+      "quote": "HCN (1–0) = 7 Jy km s$^{-1}$ (cite: imanishi07)"
+     }
+    ]
+   },
+   "citation": "(cite: imanishi07)"
+  },
+  {
+   "what": {
+    "value": "Pa-alpha star formation map",
+    "evidence": [
+     {
+      "loc": "Extended Dense Gas Filament",
+      "quote": "We compare the distribution of the HCO$^+$(4–3) and star formation activity traced in Pa$\\alpha$ line in Figure 4."
+     }
+    ]
+   },
+   "citation": "not stated"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes",
+   "method": "CLEAN to 1.5 sigma on delivered calibrated data, 30 km/s channels, continuum subtracted",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust=0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Dynamical mass limit for E0",
+   "method": "M_dyn = r sigma^2/G from line width and beam size, inclination 90 deg",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dense gas mass of E0",
+   "method": "Gao & Solomon 2004 conversion factor with HCN(4-3)/(1-0)=0.63",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCN emission optically thick"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Global gas conditions",
+   "method": "RADEX modeling of total HCO+ and HCN (4-3)/(1-0) ratios",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "[HCO+]/[H2]=1.0e-9; [HCN]/[HCO+]=0.1 to 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCO+(4-3) total integrated intensity",
+   "value": "15.3",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Distribution of HCN (4–3) and HCO$^+$(4–3)",
+     "quote": "$15.3 \\pm 0.4$ Jy km s$^{-1}$ and $4.4 \\pm 0.2$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3) total integrated intensity",
+   "value": "4.4",
+   "uncertainty": "0.2",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Distribution of HCN (4–3) and HCO$^+$(4–3)",
+     "quote": "$15.3 \\pm 0.4$ Jy km s$^{-1}$ and $4.4 \\pm 0.2$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "E0 HCN/HCO+ (4-3) flux ratio",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Relative Strengths",
+     "quote": "HCN (4–3)/HCO$^+$(4–3) = 1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "E0 HCN dispersion",
+   "value": "123",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Relative Strengths",
+     "quote": "peak = 9.0 mJy, $\\sigma = 123$ km s$^{-1}$ (for HCN (4–3))"
+    }
+   ]
+  },
+  {
+   "quantity": "E0 dynamical mass upper limit",
+   "value": "4e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dense Gas and AGN /Starburst Activity",
+     "quote": "estimated from the line-width and the beam size is $\\lesssim 4 \\times 10^8$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "E0 dense gas mass",
+   "value": "8.1e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dense Gas and AGN /Starburst Activity",
+     "quote": "dense gas mass of $\\sim 8.1 \\times 10^6$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/(1-0) ratio at E0",
+   "value": "0.63",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dense Gas and AGN /Starburst Activity",
+     "quote": "we derive HCN(4–3)/(1–0) = 0.63"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean clump size E1-E5, W0-W3",
+   "value": "230",
+   "uncertainty": "70",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Dense Gas Filament",
+     "quote": "is $230 \\pm 70$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "350 GHz/8.5 GHz flux ratio at E0",
+   "value": "1.2",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Dense Gas and AGN /Starburst Activity",
+     "quote": "The ratio is $1.2 \\pm 0.1$ for E0"
+    }
+   ]
+  },
+  {
+   "quantity": "RADEX gas density",
+   "value": "1e5 - 1e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Extended Dense Gas Filament",
+     "quote": "$n_{\\rm H_2} = 10^5$ – $10^6$ cm$^{-3}$ and T = 30 – 500 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges",
+  "Cell and image size",
+  "Clean mask and deconvolver",
+  "CASA version",
+  "Flux scale uncertainty",
+  "Integration velocity range and clump identification method",
+  "RADEX input details such as linewidth and column density",
+  "Pa-alpha data source"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Clump definition and integration limits",
+  "RADEX setup",
+  "Pa-alpha and NMA data"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public Cycle 0 data and simple analysis, but imaging and modeling details are sparse.",
+ "rediscovery_reason": "Data are in the archive, and the main results are numeric integrated fluxes and line widths. Imaging is simple, though some settings are missing.",
+ "source_card": "cards/2013PASJ...65L...7I/sonnet/card.md"
+}

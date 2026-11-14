@@ -1,0 +1,681 @@
+{
+ "bibcode": "2020MNRAS.496.4405H",
+ "title": "Far-infrared star formation rates of six GRB host galaxies with ALMA",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1865",
+ "arxiv_id": "2007.11874",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "transients"
+ ],
+ "question": "Do rest-frame FIR ALMA continuum data change the SED-derived SFRs, stellar masses and AGN/radio requirements of six IR-bright z~2 GRB host galaxies compared with earlier work without FIR data",
+ "alma_project_codes": [
+  "2015.1.00927.S",
+  "2016.1.00768.S"
+ ],
+ "data": {
+  "bands": "Band 7, four spectral windows; average observed frequency 343.47925 GHz (873 um)",
+  "arrays": "12-m antenna array",
+  "angular_resolution": "Clean beam major axis 0.32-0.54 arcsec across the six hosts (Table 1)",
+  "sensitivity": "Continuum sensitivities 0.04 uJy (2015.1.00927.S) and 0.02 uJy (2016.1.00768.S), as printed"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UV-to-radio photometry of the six hosts (Tables 2 to 7), each row with its own reference",
+    "evidence": [
+     {
+      "loc": "3 Data",
+      "quote": "We collected UV-to-radio photometric data of six GRB host galaxies reported in previous studies."
+     }
+    ]
+   },
+   "citation": "Hunt2011; Svensson2012; Perley2013a; Perley2013b; Hunt2014; Perley2015; Kruhler2011; Hjorth2012; Jaunsen2008; Afonso2008; Michalowski2012; Postigo2012 (as listed per row in Tables 2-7)"
+  },
+  {
+   "what": {
+    "value": "GRB080207 host ALMA Band 9 flux density 11900 +/- 1700 uJy",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "band9 | 11900.0$\\pm$1700.0"
+     }
+    ]
+   },
+   "citation": "(cite: Hashimoto2019)"
+  },
+  {
+   "what": {
+    "value": "GRB080207 host ALMA Band 8 flux density 3370 +/- 180 uJy",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "band8 | 3370$\\pm$180"
+     }
+    ]
+   },
+   "citation": "(cite: Hashimoto2019)"
+  },
+  {
+   "what": {
+    "value": "GRB080207 host ALMA Band 4 flux density 123.0 +/- 24 uJy",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "band4 | 123.0$\\pm$24"
+     }
+    ]
+   },
+   "citation": "(cite: Hatsukade2019)"
+  },
+  {
+   "what": {
+    "value": "Redshift z=1.923 for GRB060814 host",
+    "evidence": [
+     {
+      "loc": "2.2 GRB060814 host",
+      "quote": "The redshift of GRB060814 host galaxy was measured by (cite: Kruhler2012) to be $z=1.923$ by analysing several nebular emission lines in the near-infrared."
+     }
+    ]
+   },
+   "citation": "(cite: Kruhler2012)"
+  },
+  {
+   "what": {
+    "value": "Redshift z=2.260 for GRB081221",
+    "evidence": [
+     {
+      "loc": "2.4 GRB081221 host",
+      "quote": "The redshift of the GRB was spectroscopically measured to be $z=2.260$ (cite: Salvaterra2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Salvaterra2012)"
+  },
+  {
+   "what": {
+    "value": "Redshift z=2.452 for GRB071021",
+    "evidence": [
+     {
+      "loc": "2.5 GRB071021 host",
+      "quote": "The redshift of GRB071021 was spectroscopically measured to be $z=2.452$ (cite: Kruhler2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Kruhler2012)"
+  },
+  {
+   "what": {
+    "value": "Earlier SED-fit SFRs, stellar masses and IR luminosities used for comparison (Tables 12-13)",
+    "evidence": [
+     {
+      "loc": "4 SED Modelling and results",
+      "quote": "The derived physical properties are compared with previous works"
+     }
+    ]
+   },
+   "citation": "Hunt2014; Hashimoto2019; Perley2013a; Perley2015; Kruhler2011"
+  },
+  {
+   "what": {
+    "value": "IMF conversion factors Salpeter to Chabrier: 0.61 for stellar mass and 0.63 for SFR",
+    "evidence": [
+     {
+      "loc": "Table 12",
+      "quote": "Multiplied by a factor in (cite: Madau2014) (0.61 for stellar mass and 0.63 for SFR) from (cite: Salpeter1955) to (cite: Chabrier2003)."
+     }
+    ]
+   },
+   "citation": "(cite: Madau2014)"
+  },
+  {
+   "what": {
+    "value": "Effective wavelengths of photometric filters from the SVO Filter Profile Service",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This research has made use of the SVO Filter Profile Service"
+     }
+    ]
+   },
+   "citation": "SVO Filter Profile Service (http://svo2.cab.inta-csic.es/theory/fps/)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure ALMA Band 7 continuum flux and position of each host",
+   "method": "Fit the continuum images with CASA imfit to get flux, central position and errors",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Input is the ASC-reduced data; fit region and component model not stated"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Assemble multi-wavelength SED photometry",
+   "method": "Combine literature UV-to-radio photometry with the new Band 7 point; 3 sigma upper limits are not used in the fit; radio points are dropped in the no-radio configuration",
+   "software": [],
+   "key_parameters": [
+    "Filter effective wavelengths from the SVO Filter Profile Service"
+   ],
+   "assumptions": [
+    "Radio emission may be contaminated by a long-lived radio afterglow"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit the SEDs with CIGALE under several configurations",
+   "method": "CIGALE fits with sfh2exp or sfhdelayed SFH, bc03 SSP, nebular, power-law dust attenuation, Dale2014 dust+AGN (Draine2014 + Fritz2006 for GRB050915A) and redshifting modules; two IMFs (Salpeter, Chabrier); Group A fitted with/without AGN and with/without radio (4 configs), Group B with/without AGN (2 configs)",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Module choices and parameter grids listed in Tables 8 and 9"
+   ],
+   "assumptions": [
+    "Single IMF per fit, Salpeter or Chabrier, chosen by reduced chi2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Select best template and IMF per host",
+   "method": "Best-fit template chosen by reduced chi2 (closest to 1); fits with reduced chi2 well below 1 treated as over-fits and their AGN component rejected",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Reduced chi2 of the adopted fits: 2.32, 1.00, 2.34, 0.94, 0.99, 0.97 (GRB080207, 060814, 070306, 081221, 071021, 050915A)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Cross-check SED SFRs with the Kennicutt IR-luminosity relation",
+   "method": "Convert the CIGALE dust luminosity to SFR with the Kennicutt (1998) relation and compare with SED SFRs",
+   "software": [],
+   "key_parameters": [
+    "L_IR integrated 8 to 1000 um in the Kennicutt definition"
+   ],
+   "assumptions": [
+    "Hosts follow the Kennicutt law"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare with earlier SED fits after IMF conversion",
+   "method": "Convert earlier results to Chabrier IMF (Salpeter divided by 1.8 or 1.6 in the literature) and convert this work's Salpeter results with Madau & Dickinson factors, then tabulate differences",
+   "software": [],
+   "key_parameters": [
+    "0.61 for stellar mass and 0.63 for SFR"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 7 flux density, GRB080207 host",
+   "value": "1430",
+   "uncertainty": "130",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux ($\\mu$Jy) | 1430 | 145.3 | 50"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty of flux ($\\mu$Jy) | 130 | 9 | 11"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 flux density, GRB060814 host",
+   "value": "145.3",
+   "uncertainty": "9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux ($\\mu$Jy) | 1430 | 145.3 | 50"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty of flux ($\\mu$Jy) | 130 | 9 | 11"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 flux density, GRB070306 host",
+   "value": "50",
+   "uncertainty": "11",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux ($\\mu$Jy) | 1430 | 145.3 | 50"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty of flux ($\\mu$Jy) | 130 | 9 | 11"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 flux density, GRB081221 host",
+   "value": "735",
+   "uncertainty": "62",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux ($\\mu$Jy) | 735 | 422 | 308"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty of flux ($\\mu$Jy) | 62 | 107 | 87"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 flux density, GRB071021 host",
+   "value": "422",
+   "uncertainty": "107",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux ($\\mu$Jy) | 735 | 422 | 308"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty of flux ($\\mu$Jy) | 62 | 107 | 87"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 flux density, GRB050915A host",
+   "value": "308",
+   "uncertainty": "87",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux ($\\mu$Jy) | 735 | 422 | 308"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty of flux ($\\mu$Jy) | 62 | 107 | 87"
+    }
+   ]
+  },
+  {
+   "quantity": "Detection S/N, GRB080207 / 060814 / 070306 / 081221 / 071021 / 050915A hosts",
+   "value": "11 / ~16 / ~5 / ~12 / ~4 / ~3.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The rest-frame FIR continuum were detected for the GRB080207 host with S/N=11, the GRB060814 host with S/N$\\sim$16, the GRB070306 host with S/N$\\sim$5, the GRB081221 host with S/N$\\sim12$, the GRB071021 host with S/N$\\sim$4, and the GRB050915A host with S/N$\\sim$3.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED SFR, GRB080207 host (Salpeter IMF, with AGN)",
+   "value": "397",
+   "uncertainty": "20",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The SED fitting analyses indicate SFRs of $397\\pm20$, $56\\pm9$, $38\\pm2$, $56\\pm3$, $90\\pm5$ and $77\\pm4$ $M_{\\odot}$ yr$^{-1}$ for the GRB080207, GRB060814, GRB070306, GRB081221, GRB071021 and GRB050915A host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED SFR, GRB060814 host (Chabrier IMF, radio, no AGN)",
+   "value": "56",
+   "uncertainty": "9",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The SED fitting analyses indicate SFRs of $397\\pm20$, $56\\pm9$, $38\\pm2$, $56\\pm3$, $90\\pm5$ and $77\\pm4$ $M_{\\odot}$ yr$^{-1}$ for the GRB080207, GRB060814, GRB070306, GRB081221, GRB071021 and GRB050915A host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED SFR, GRB070306 host (Chabrier IMF, no AGN/no radio)",
+   "value": "38",
+   "uncertainty": "2",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The SED fitting analyses indicate SFRs of $397\\pm20$, $56\\pm9$, $38\\pm2$, $56\\pm3$, $90\\pm5$ and $77\\pm4$ $M_{\\odot}$ yr$^{-1}$ for the GRB080207, GRB060814, GRB070306, GRB081221, GRB071021 and GRB050915A host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED SFR, GRB081221 host (Salpeter IMF, no AGN)",
+   "value": "56",
+   "uncertainty": "3",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The SED fitting analyses indicate SFRs of $397\\pm20$, $56\\pm9$, $38\\pm2$, $56\\pm3$, $90\\pm5$ and $77\\pm4$ $M_{\\odot}$ yr$^{-1}$ for the GRB080207, GRB060814, GRB070306, GRB081221, GRB071021 and GRB050915A host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED SFR, GRB071021 host (Chabrier IMF, no AGN)",
+   "value": "90",
+   "uncertainty": "5",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The SED fitting analyses indicate SFRs of $397\\pm20$, $56\\pm9$, $38\\pm2$, $56\\pm3$, $90\\pm5$ and $77\\pm4$ $M_{\\odot}$ yr$^{-1}$ for the GRB080207, GRB060814, GRB070306, GRB081221, GRB071021 and GRB050915A host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED SFR, GRB050915A host (Chabrier IMF, no AGN)",
+   "value": "77",
+   "uncertainty": "4",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The SED fitting analyses indicate SFRs of $397\\pm20$, $56\\pm9$, $38\\pm2$, $56\\pm3$, $90\\pm5$ and $77\\pm4$ $M_{\\odot}$ yr$^{-1}$ for the GRB080207, GRB060814, GRB070306, GRB081221, GRB071021 and GRB050915A host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity, GRB080207 host (best fit)",
+   "value": "1.77e12",
+   "uncertainty": "0.09e12",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "$L_{\\rm IR}=(1.77\\pm0.09)\\times10^{12}L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN fraction, GRB080207 host (best fit)",
+   "value": "0.0012",
+   "uncertainty": "0.0007",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "The AGN fraction of the best-fit model is $0.0012\\pm0.0007$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, GRB080207 host (best fit, Salpeter IMF)",
+   "value": "3.25e11",
+   "uncertainty": "0.16e11",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 10",
+     "quote": "(3.25\\pm{0.16})\\times10^{11}"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, GRB060814 host (best fit)",
+   "value": "2.68e10",
+   "uncertainty": "0.76e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "$M_{*}=(2.68\\pm0.76)\\times10^{10}M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, GRB070306 host (best fit)",
+   "value": "3.05e10",
+   "uncertainty": "0.44e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "$M_{*}=(3.05\\pm0.44)\\times 10^{10} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, GRB081221 host (best fit, no AGN, Salpeter IMF)",
+   "value": "6.24e10",
+   "uncertainty": "0.31e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "(6.24\\pm{0.31})\\times10^{10}"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, GRB071021 host (best fit, no AGN, Chabrier IMF)",
+   "value": "1.21e11",
+   "uncertainty": "0.15e11",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "(1.21\\pm{0.15})\\times10^{11}"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, GRB050915A host (best fit, no AGN, Chabrier IMF)",
+   "value": "9.56e10",
+   "uncertainty": "0.48e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "(9.56\\pm{0.48})\\times10^{10}"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity, GRB060814 host (best fit)",
+   "value": "4.03e11",
+   "uncertainty": "1.07e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 10",
+     "quote": "(4.03\\pm{1.07})\\times10^{11}"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity, GRB070306 host (best fit)",
+   "value": "2.59e11",
+   "uncertainty": "0.26e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "$L_{\\rm IR}=(2.59\\pm0.26)\\times 10^{11} L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity, GRB081221 host (best fit)",
+   "value": "3.04e11",
+   "uncertainty": "0.15e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 13",
+     "quote": "(3.04\\pm{0.15})\\times10^{11}"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity, GRB071021 host (best fit)",
+   "value": "7.48e11",
+   "uncertainty": "1.63e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "(7.48\\pm{1.63})\\times10^{11}"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity, GRB050915A host (best fit)",
+   "value": "8.58e11",
+   "uncertainty": "0.43e11",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "(8.58\\pm{0.43})\\times10^{11}"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-law SFR, GRB080207 host (best template)",
+   "value": "305",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "The IR luminosity of the best-fit template corresponds to $\\rm{SFR}_{Kennicutt}=305(M_{\\odot} yr^{-1})$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-law SFR, GRB060814 host",
+   "value": "69",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "SFR$_{\\rm Kennicutt}=69 M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-law SFR, GRB070306 host (best template)",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "The best-fit template indicates SFR$_{\\rm Kennicutt}=45 M_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-law SFR, GRB081221 host",
+   "value": "52",
+   "uncertainty": "3",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "$\\rm{SFR}_{Kennicutt}=52\\pm3(M_{\\odot}yr^{-1})$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-law SFR, GRB071021 host",
+   "value": "129",
+   "uncertainty": "28",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "$\\rm{SFR}_{Kennicutt}= 129\\pm28(M_{\\odot}yr^{-1})$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-law SFR, GRB050915A host",
+   "value": "148",
+   "uncertainty": "7",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Discussion",
+     "quote": "$\\rm{SFR}_{Kennicutt}=148\\pm7(M_{\\odot}yr^{-1})$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "How the ASC reduction was done (pipeline vs manual, CASA version, flux calibrator) and which imaging parameters (weighting, robust, cell, size, CLEAN depth) produced the continuum images that imfit was run on",
+  "Which spectral windows/channels formed the continuum image and whether lines were excluded; the 0.04 and 0.02 uJy sensitivities look like typos and no image rms is given",
+  "imfit setup: fit region, component model (point vs Gaussian), whether fluxes are peak or integrated, and how S/N was defined",
+  "ALMA absolute flux-scale uncertainty and whether it was added to the flux errors",
+  "Redshifts of the GRB080207, GRB070306 and GRB050915A hosts (only z~2 and rest-frame wavelengths are given)",
+  "CIGALE run details: how the best-fit value and its error were extracted (best model vs Bayesian mean), the SFR averaging timescale, how upper limits and non-detections entered the chi2, and any systematic error floor on photometry",
+  "Parameter grids in Tables 8-9 contain apparent typos (e.g. age list '250,500,750,100,1250,1500' for GRB050915A, AGN fraction scaled by 10000) so the exact grids are ambiguous",
+  "Table 12 SFR/mass values for some hosts differ from the Table 10/11 values only by the IMF conversion, and Table 11 vs Table 13 differ slightly for GRB050915A (77 vs 76), so the exact reported number is ambiguous"
+ ],
+ "missing_for_reproduction": [
+  "imfit fit region and model, image-level details (weighting, rms, beam files)",
+  "CIGALE configuration files and exact grids (typos in Tables 8-9), output-extraction method, SFR timescale",
+  "Redshifts for three hosts",
+  "Exact photometry uncertainty treatment and upper-limit handling in the fit"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "ALMA project codes are given, all photometry and CIGALE parameter grids are tabulated with numeric results, but the imfit setup, image properties and CIGALE output conventions are missing and some table values are inconsistent",
+ "rediscovery_reason": "The ALMA projects are archival (codes given), photometry and CIGALE module grids are tabulated, and the main results (SFR, stellar mass, L_IR with errors) are numeric; the SED fit can be redone from the tables even without the visibilities",
+ "source_card": "cards/2020MNRAS.496.4405H/sonnet/card.md"
+}

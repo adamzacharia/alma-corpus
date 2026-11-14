@@ -1,0 +1,550 @@
+{
+ "bibcode": "2024MNRAS.530.4887W",
+ "title": "Little evolution of dust emissivity in bright infrared galaxies from 2 &lt; z &lt; 6",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae405",
+ "arxiv_id": "2402.05182",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Whether the dust emissivity index (\\beta) and dust temperature (T_{dust}) in dusty star-forming galaxies evolve with redshift over 2 < z < 6, and whether observed variations and correlations are intrinsic or caused by measurement errors.",
+ "alma_project_codes": [
+  "2018.1.00526.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm), Band 4 (2 mm), Band 6 (1.1-1.4 mm)",
+  "arrays": "ACA and 12-m array",
+  "angular_resolution": "~2\" (Band 4)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HerBS catalogue and 250, 350, 500, and 850 um photometry",
+    "evidence": [
+     {
+      "loc": "2.1 HerBS sub-sample",
+      "quote": "In our study we have used all HerBS sources with spectroscopic redshifts and photometry at 250, 350 and 500 \\mu m (Herschel-SPIRE), at 850 \\mu m (Bakx et al. 2018) and at 2 and 3 mm from ALMA (Bendo et al. 2023."
+     }
+    ]
+   },
+   "citation": "Bakx et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts and lensing magnifications for HerBS sources",
+    "evidence": [
+     {
+      "loc": "2.1 HerBS sub-sample",
+      "quote": "In total, Urquhart et al. (2022) measured 71 spectroscopic redshifts for 62 entries in the HerBS catalogue."
+     },
+     {
+      "loc": "3 SED FITTING",
+      "quote": "To estimate the mass and luminosity of the dust we require an estimate of the lensing magnifications, which we have taken to be those quoted in the lens modelling of Spilker et al. (2016) for the SPT sources and from the correlation between CO luminosity and line width as determined by Urquhart et al. (2022) for HerBS, building on the work of Harris et al. (2012)."
+     }
+    ]
+   },
+   "citation": "Urquhart et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "ALMA 2 and 3 mm continuum photometry for HerBS sources",
+    "evidence": [
+     {
+      "loc": "2.1 HerBS sub-sample",
+      "quote": "In our study we have used all HerBS sources with spectroscopic redshifts and photometry at 250, 350 and 500 \\mu m (Herschel-SPIRE), at 850 \\mu m (Bakx et al. 2018) and at 2 and 3 mm from ALMA (Bendo et al. 2023."
+     }
+    ]
+   },
+   "citation": "Bendo et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 6 (1.1-1.4 mm) photometry for HerBS sources from ALMARED survey",
+    "evidence": [
+     {
+      "loc": "2.1 HerBS sub-sample",
+      "quote": "We have also used photometry in ALMA band 6 (1.1–1.4 mm) from the ALMARED survey (Jianhang Chen et al., in preparation) of potentially ‘ultrared’ (see Ivison et al. 2016) sources in H-ATLAS (project code 2018.1.00526.S)."
+     }
+    ]
+   },
+   "citation": "Jianhang Chen et al., in preparation"
+  },
+  {
+   "what": {
+    "value": "SPT DSFG sample spectroscopic redshifts and multi-wavelength photometry (100 um to 3 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 SPT sub-sample",
+      "quote": "Redshifts for all SPT sources were obtained via blind searches targeting CO line emission (Weiß et al. 2013; Strandet et al. 2016; Reuter et al. 2020)."
+     },
+     {
+      "loc": "2.3 Restrictions on sample for this study",
+      "quote": "The photometry and redshifts of the HerBS-BEARS sources are tabulated in Appendix A1; the corresponding data used in this work for the SPT sources can be found in Reuter et al. (2020)."
+     }
+    ]
+   },
+   "citation": "Weiß et al. (2013); Strandet et al. (2016); Reuter et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Lensing magnification factors and submillimetre-emitting region sizes for SPT sources",
+    "evidence": [
+     {
+      "loc": "3 SED FITTING",
+      "quote": "Some of the SPT sources have measurements of the sizes of the submillimetre-emitting region, typically \\sim 1 kpc (Spilker et al. 2016)."
+     },
+     {
+      "loc": "3 SED FITTING",
+      "quote": "To estimate the mass and luminosity of the dust we require an estimate of the lensing magnifications, which we have taken to be those quoted in the lens modelling of Spilker et al. (2016) for the SPT sources and from the correlation between CO luminosity and line width as determined by Urquhart et al. (2022) for HerBS, building on the work of Harris et al. (2012)."
+     }
+    ]
+   },
+   "citation": "Spilker et al. (2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compile sample and filter by photometric coverage",
+   "method": "Select HerBS and SPT DSFGs with spectroscopic redshifts and restrict to sources having at least two photometric measurements at observed wavelengths beyond 1 mm; combine ALMA multiple components within Herschel beams if \\Delta z < 0.1.",
+   "software": [],
+   "key_parameters": [
+    "Minimum 2 photometric points at \\lambda_{obs} > 1 mm; \\Delta z < 0.1 for multiples"
+   ],
+   "assumptions": [
+    "Multiple ALMA sources within the Herschel beam with only one spectroscopic redshift are physically connected at that redshift."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit FIR-to-mm SEDs with CMB-adjusted modified blackbody models",
+   "method": "Fit a single modified blackbody combined with a mid-IR power-law (corrected for CMB heating and background contrast) using MCMC under four opacity cases: optically thin, \\lambda_1 = 100 \\mu m, \\lambda_1 = 200 \\mu m, and fixed physical area (for 37 SPT sources).",
+   "software": [],
+   "key_parameters": [
+    "Free parameters: M_{dust}, T_{dust}, \\beta, \\alpha (and \\nu_1 in general opacity models); L_{IR} integrated over rest-frame 8-1000 \\mu m"
+   ],
+   "assumptions": [
+    "\\Lambda CDM cosmology with H_0 = 67.7 km s^-1 Mpc^-1 and \\Omega_m = 0.31",
+    "\\kappa_0 = 0.077 m^2 kg^-1 at \\nu_0 = 353 GHz; T_{CMB,0} = 2.73 K; \\mu = 1 when unlensed",
+    "Calibration errors added in quadrature: 7% (PACS), 5.5% (SPIRE), 5% (SCUBA-2), 12% (LABOCA), 7% (SPT), 10% (ALMA)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Quantify correlation between beta and dust temperature",
+   "method": "Calculate Pearson (r_{Pearson}) and Spearman rank (\\rho_{Spearman}) correlation coefficients between \\beta and T_{dust} for the optically-thin model fits.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin dust emission"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simulate mock SEDs to assess parameter recovery, correlated errors, and intrinsic scatter in beta",
+   "method": "Generate mock SEDs from the optically-thin model with parameters drawn from uniform distributions, add normal observational errors, apply survey flux detection limits (>80 mJy at 500 \\mu m for HerBS; >25 mJy at 870 \\mu m for SPT), and refit with the same SED fitting routine.",
+   "software": [],
+   "key_parameters": [
+    "Flat bounds: log(\\mu L_{IR}) = 13-14 (HerBS) and 13-14.5 (SPT), T_{dust} = 20-50 K, \\beta = 0.5-4 (or 1\\sigma range 1.68-2.41 for SPT and 1.61-2.26 for HerBS in Section 5.2), \\alpha = 1-5; z = 2-4 (HerBS) and 2-6 (SPT)"
+   ],
+   "assumptions": [
+    "Lensing magnification \\mu = 5.5 for mock SPT galaxies and \\mu = 5.3 for mock HerBS galaxies"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test whether interferometric flux loss at 3 mm explains extreme beta values",
+   "method": "Repeat SED fitting without the 3-mm ALMA photometry and with fixed \\beta = 2 for five extreme-\\beta SPT sources, comparing predicted and observed 3-mm flux densities.",
+   "software": [],
+   "key_parameters": [
+    "\\beta = 2 fixed; 3-mm photometry omitted"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Measure evolution of dust temperature with redshift at fixed IR luminosity",
+   "method": "Select a luminosity-limited subset of galaxies, calculate peak dust temperature T_{peak} from \\lambda_{peak} using Wien's displacement law, and perform bootstrap fitting of a linear model of T_{peak} versus redshift.",
+   "software": [],
+   "key_parameters": [
+    "T_{peak} = 2.898 x 10^3 [\\mu m K] / \\lambda_{peak} [\\mu m]; detection limits calculated with T_{dust} = 32 K and \\beta = 2"
+   ],
+   "assumptions": [
+    "Wien's displacement law relates \\lambda_{peak} to T_{peak} independent of dust opacity model."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median dust emissivity index \\beta (combined sample, optically thin)",
+   "value": "1.96",
+   "uncertainty": "1.67 to 2.35 (16-84% confidence interval)",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find no evidence of a change in \\beta with redshift, with a median value of \\beta = 1.96 for the optically-thin model with a confidence interval (16–84%) of 1.67 to 2.35 for the population."
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median log(\\mu M_{dust}) (optically thin)",
+   "value": "9.92",
+   "uncertainty": "+0.30/-0.31",
+   "units": "log(M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log(\\mu M_{dust} [M_\\odot]) 9.92^{+0.30}_{-0.31} 9.77^{+0.31}_{-0.34} 9.49^{+0.37}_{-0.41}"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median T_{dust} (optically thin)",
+   "value": "32.07",
+   "uncertainty": "+8.43/-8.44",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_T_ dust [K] 32 _._ 07 [+8] _−_ 8 _[.]_ _._ [43] 44 40 _._ 77 [+10] _−_ 11 _[.]_ _._ [90] 77 55 _._ 63 [+11] _−_ 9 _._ 28 _[.]_ [20]"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median \\beta (optically thin)",
+   "value": "1.98",
+   "uncertainty": "+0.54/-0.39",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\beta 1.98^{+0.54}_{-0.39} 1.91^{+0.50}_{-0.32} 2.18^{+0.38}_{-0.30}"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median log(\\mu L_{IR}) (optically thin)",
+   "value": "13.98",
+   "uncertainty": "+0.19/-0.31",
+   "units": "log(L_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log(\\mu L_{IR} [L_\\odot]) 13.98^{+0.19}_{-0.31} 13.99^{+0.19}_{-0.30} 13.89^{+0.23}_{-0.27}"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median \\lambda_{peak} (optically thin)",
+   "value": "90.70",
+   "uncertainty": "+17.33/-12.72",
+   "units": "um",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\lambda_{peak} [\\mu m] 90.70^{+17.33}_{-12.72} 90.70^{+18.36}_{-13.02} 89.28^{+15.21}_{-13.39}"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median T_{dust} (\\lambda_1 = 100 um)",
+   "value": "40.77",
+   "uncertainty": "+10.90/-11.77",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_T_ dust [K] 32 _._ 07 [+8] _−_ 8 _[.]_ _._ [43] 44 40 _._ 77 [+10] _−_ 11 _[.]_ _._ [90] 77 55 _._ 63 [+11] _−_ 9 _._ 28 _[.]_ [20]"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median \\beta (\\lambda_1 = 100 um)",
+   "value": "1.91",
+   "uncertainty": "+0.50/-0.32",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\beta 1.98^{+0.54}_{-0.39} 1.91^{+0.50}_{-0.32} 2.18^{+0.38}_{-0.30}"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median T_{dust} (\\lambda_1 = 200 um)",
+   "value": "55.63",
+   "uncertainty": "+11.28/-9.20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_T_ dust [K] 32 _._ 07 [+8] _−_ 8 _[.]_ _._ [43] 44 40 _._ 77 [+10] _−_ 11 _[.]_ _._ [90] 77 55 _._ 63 [+11] _−_ 9 _._ 28 _[.]_ [20]"
+    }
+   ]
+  },
+  {
+   "quantity": "SPT stacked median \\beta (\\lambda_1 = 200 um)",
+   "value": "2.18",
+   "uncertainty": "+0.38/-0.30",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\beta 1.98^{+0.54}_{-0.39} 1.91^{+0.50}_{-0.32} 2.18^{+0.38}_{-0.30}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median log(\\mu M_{dust}) (optically thin)",
+   "value": "9.62",
+   "uncertainty": "+0.30/-0.22",
+   "units": "log(M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log(\\mu M_{dust} [M_\\odot]) 9.62^{+0.30}_{-0.22} 9.49^{+0.31}_{-0.22} 9.30^{+0.33}_{-0.26}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median T_{dust} (optically thin)",
+   "value": "32.73",
+   "uncertainty": "+5.85/-5.92",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "T_{dust} [K] 32.73^{+5.85}_{-5.92} 41.16^{+7.48}_{-8.20} 55.18^{+7.25}_{-9.23}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median \\beta (optically thin)",
+   "value": "1.92",
+   "uncertainty": "+0.39/-0.32",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\beta 1.92^{+0.39}_{-0.32} 1.85^{+0.34}_{-0.25} 2.08^{+0.26}_{-0.25}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median log(\\mu L_{IR}) (optically thin)",
+   "value": "13.55",
+   "uncertainty": "+0.27/-0.37",
+   "units": "log(L_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log(\\mu L_{IR} [L_\\odot]) 13.55^{+0.27}_{-0.37} 13.57^{+0.26}_{-0.37} 13.57^{+0.25}_{-0.34}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median \\lambda_{peak} (optically thin)",
+   "value": "90.03",
+   "uncertainty": "+12.28/-9.70",
+   "units": "um",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_λ_ peak [ _µ_ m] 90 _._ 03 [+12] _−_ 9 _._ 28 _[.]_ [70] 90 _._ 36 [+13] _−_ 9 _._ 46 _[.]_ [42] 89 _._ 96 [+14] _−_ 9 _._ 46 _[.]_ [92]"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median T_{dust} (\\lambda_1 = 100 um)",
+   "value": "41.16",
+   "uncertainty": "+7.48/-8.20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "T_{dust} [K] 32.73^{+5.85}_{-5.92} 41.16^{+7.48}_{-8.20} 55.18^{+7.25}_{-9.23}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median \\beta (\\lambda_1 = 100 um)",
+   "value": "1.85",
+   "uncertainty": "+0.34/-0.25",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\beta 1.92^{+0.39}_{-0.32} 1.85^{+0.34}_{-0.25} 2.08^{+0.26}_{-0.25}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median T_{dust} (\\lambda_1 = 200 um)",
+   "value": "55.18",
+   "uncertainty": "+7.25/-9.23",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "T_{dust} [K] 32.73^{+5.85}_{-5.92} 41.16^{+7.48}_{-8.20} 55.18^{+7.25}_{-9.23}"
+    }
+   ]
+  },
+  {
+   "quantity": "HerBS stacked median \\beta (\\lambda_1 = 200 um)",
+   "value": "2.08",
+   "uncertainty": "+0.26/-0.25",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "\\beta 1.92^{+0.39}_{-0.32} 1.85^{+0.34}_{-0.25} 2.08^{+0.26}_{-0.25}"
+    }
+   ]
+  },
+  {
+   "quantity": "Median wavelength where dust opacity reaches unity (\\lambda_1) for known-size SPT subset",
+   "value": "88",
+   "uncertainty": "44-224 (16th and 84th percentile range)",
+   "units": "um",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison between the optically thin and general opacity models",
+     "quote": "For this subset of galaxies we find a median value of \\lambda_1 = 88 \\mu m (16th and 84th percentile range 44–224 \\mu m)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient r_{Pearson} between \\beta and T_{dust} (SPT)",
+   "value": "-0.83",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The \\beta–dust temperature relationship",
+     "quote": "The values (r_{Pearson} = -0.83 and \\rho_{Spearman} = -0.87 for SPT; r_{Pearson} = -0.89 and \\rho_{Spearman} = -0.89 for HerBS) show that the SPT and HerBS galaxies exhibit a strong negative \\beta–T_{dust} correlation and the similarity between the two metrics suggests that few galaxies deviate from the trend."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient \\rho_{Spearman} between \\beta and T_{dust} (SPT)",
+   "value": "-0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The \\beta–dust temperature relationship",
+     "quote": "The values (r_{Pearson} = -0.83 and \\rho_{Spearman} = -0.87 for SPT; r_{Pearson} = -0.89 and \\rho_{Spearman} = -0.89 for HerBS) show that the SPT and HerBS galaxies exhibit a strong negative \\beta–T_{dust} correlation and the similarity between the two metrics suggests that few galaxies deviate from the trend."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson and Spearman correlation coefficients between \\beta and T_{dust} (HerBS)",
+   "value": "-0.89",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The \\beta–dust temperature relationship",
+     "quote": "The values (r_{Pearson} = -0.83 and \\rho_{Spearman} = -0.87 for SPT; r_{Pearson} = -0.89 and \\rho_{Spearman} = -0.89 for HerBS) show that the SPT and HerBS galaxies exhibit a strong negative \\beta–T_{dust} correlation and the similarity between the two metrics suggests that few galaxies deviate from the trend."
+    }
+   ]
+  },
+  {
+   "quantity": "Simulation parameter recovery RMSE for \\beta (SPT and HerBS)",
+   "value": "0.13 (SPT), 0.09 (HerBS)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Simulations",
+     "quote": "the dust temperatures to 1.63 K and 1.61 K and _β_ to 0.13 and 0.09 of the"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulation parameter recovery RMSE for T_{dust} (SPT and HerBS)",
+   "value": "1.63 (SPT), 1.61 (HerBS)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Simulations",
+     "quote": "The RMSE indicate that our fitting recovers the input dust masses to 0.05 dex and 0.03 dex, the dust temperatures to 1.63 K and 1.61 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust temperature redshift evolution rate dT_{peak}/dz (HerBS)",
+   "value": "5.20",
+   "uncertainty": "0.92",
+   "units": "K/z",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.4 Evolution of T_{dust} with redshift",
+     "quote": "Bootstrap fitting with a linear model gives an evolution rate of 5.20 \\pm 0.92 and -0.25 \\pm 0.52 T_{peak}/z for the HerBS and SPT galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust temperature redshift evolution rate dT_{peak}/dz (SPT)",
+   "value": "-0.25",
+   "uncertainty": "0.52",
+   "units": "K/z",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.4 Evolution of T_{dust} with redshift",
+     "quote": "Bootstrap fitting with a linear model gives an evolution rate of 5.20 \\pm 0.92 and -0.25 \\pm 0.52 T_{peak}/z for the HerBS and SPT galaxies, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "MCMC software package and sampler algorithm used for SED fitting",
+  "Number of MCMC walkers, burn-in steps, and total steps for SED fitting",
+  "Prior bounds used when fitting the real galaxy sample (bounds are only explicitly tabulated for the mock simulations in Table 2)",
+  "Exact luminosity and redshift box boundaries used in Figure 8 to select the unbiased luminosity-limited subsample",
+  "Calibration, imaging, and flux extraction details for the unpublished ALMARED Band 6 (1.2 mm) photometry (Jianhang Chen et al., in preparation)",
+  "List of the specific 37 SPT galaxies included in the fixed continuum size SED fitting subsample"
+ ],
+ "missing_for_reproduction": [
+  "Exact MCMC sampler software and configuration (walkers, steps, convergence criteria)",
+  "Explicit prior ranges used for the real data fits (if different from the simulation bounds in Table 2)",
+  "Exact numerical boundaries of the luminosity-redshift selection boxes in Figure 8",
+  "List of the 37 SPT sources used in the fixed-size opacity model fit"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "All input photometry, spectroscopic redshifts, lensing magnifications, equations, calibration uncertainties, and per-source best-fit parameters are explicitly provided in the paper (Appendices A and B) and Reuter et al. (2020). Minor deductions are due to omitted MCMC sampler details and the exact numerical bounds of the Figure 8 selection boxes.",
+ "rediscovery_reason": "The complete photometric tables are available in Appendix A1 and Reuter et al. (2020), the analytical SED equations are fully specified, and the paper provides a complete answer key of per-galaxy and population-level numeric results in Table 1 and Appendix B.",
+ "source_card": "cards/2024MNRAS.530.4887W/sonnet/card.md"
+}

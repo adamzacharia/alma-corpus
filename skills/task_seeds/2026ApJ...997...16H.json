@@ -1,0 +1,495 @@
+{
+ "bibcode": "2026ApJ...997...16H",
+ "title": "Ubiquity of Methanol and Its Related Chemical Segregation in Orion Starless Cores: The ALMASOP Sample",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae25fd",
+ "arxiv_id": "2512.00498",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "What are the detection rates, spatial distributions, and chemical segregation of CH3OH, N2H+, CCS, and c-C3HD in starless cores of the Orion A and B molecular clouds?",
+ "alma_project_codes": [
+  "2021.2.00094.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "Atacama Compact Array (ACA)",
+  "angular_resolution": "~20'' (~14'' for continuum, ~18'' for datacubes)",
+  "sensitivity": "0.5 mJy beam^-1 (0.2 mK) for continuum; 25 mJy beam^-1 (10 mK) per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Core masses (0.15 to 3.52 M_odot), JCMT 850 um continuum identification, and starless classifications based on WISE bands",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "All these cores were classified as starless by (cite: 2018Yi_PGCC_SCUBA2_II) based on the absence of detections in the WISE bands (3.4–22 $\\hbox{$\\mu$m}$)."
+     },
+     {
+      "loc": "Sample Selection",
+      "quote": "The core masses range from $0.15$ to $3.52$ $M_\\odot$, reported by (cite: 2018Yi_PGCC_SCUBA2_II) based on their 850 $\\mu$m dust continuum emission."
+     }
+    ]
+   },
+   "citation": "(cite: 2018Yi_PGCC_SCUBA2_II)"
+  },
+  {
+   "what": {
+    "value": "ALMASOP source catalog and target coordinate for G211.16-19.33N5",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "As a result, the coordinate of it here is the targeted coordinate, which was based on the ACA images of (cite: 2020Dutta_ALMASOP)."
+     },
+     {
+      "loc": "Sample Selection",
+      "quote": "In this study, we investigated 16 cold cores drawn from the ALMA Survey of Orion PGCCs (ALMASOP) project (cite: 2020Dutta_ALMASOP)."
+     }
+    ]
+   },
+   "citation": "(cite: 2020Dutta_ALMASOP)"
+  },
+  {
+   "what": {
+    "value": "Prestellar core classifications and peak densities (2-8 x 10^7 cm^-3) for five cores",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "Among the 16 cores, five of them show compact structures and extremely high peak densities (2-−8 $\\times 10^7$ cm$^{-3}$) and are thus classified as prestellar cores (cite: 2021Sahu_ALMASOP_presstellar)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021Sahu_ALMASOP_presstellar)"
+  },
+  {
+   "what": {
+    "value": "Molecular transition parameters from Splatalogue",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "The data were downloaded from the Splatalogue with their original references listed as follows. N$_2$H$^+$: (cite: 2009Pagani_trans_N2H+); CCS: (cite: 1990Yamamoto_trans_CCS); CH$_3$OH: (cite: 1997Xu_trans_CH3OH); c-C$_3$HD: (cite: 1987Bogey_trans_C3H2)."
+     }
+    ]
+   },
+   "citation": "Splatalogue; (cite: 2009Pagani_trans_N2H+); (cite: 1990Yamamoto_trans_CCS); (cite: 1997Xu_trans_CH3OH); (cite: 1987Bogey_trans_C3H2)"
+  },
+  {
+   "what": {
+    "value": "Collisional rate coefficients from LAMDA database",
+    "evidence": [
+     {
+      "loc": "Morphology",
+      "quote": "The collisional rate coefficient of this transition at 10 K is $7.6\\times10^{-11}$ cm$^{3}$ s$^{-1}$ (cite: LAMDA:2005), corresponding to a critical density of $4.5\\times10^{4}$ cm$^{-3}$."
+     },
+     {
+      "loc": "Segregation between Carbon-chain Molecules",
+      "quote": "The collision rate coefficient ($\\gamma_{ij}$) of the CCS transition at 10 K is $\\sim2\\times10^{-12}$ cm$^{3}$ s$^{-1}$ in the LAMDA  (cite: LAMDA:2005) database."
+     }
+    ]
+   },
+   "citation": "(cite: LAMDA:2005)"
+  },
+  {
+   "what": {
+    "value": "Chemical reactions for CCS and CCCS formation from KIDA",
+    "evidence": [
+     {
+      "loc": "Segregation between Carbon-chain Molecules",
+      "quote": "According to the reactions in KIDA (cite: KIDA:2012; KIDA:2024) and Fig. 1 in (cite: 2024Taniguchi_review), CCS can form from c-C$_3$H$_2$ via:"
+     }
+    ]
+   },
+   "citation": "(cite: KIDA:2012; KIDA:2024); (cite: 2024Taniguchi_review)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ACA Band 3 continuum and molecular line datacubes",
+   "method": "Clean continuum and spectral line visibilities using tclean with Briggs weighting",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 2.0",
+    "threshold = 1.2 mJy (continuum), 100 mJy (spectral channels)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify molecular line detections in ACA cubes",
+   "method": "Search for voxels exceeding 5 times the rms noise level within a spatial and velocity sub-cube on non-primary-beam-corrected cubes",
+   "software": [],
+   "key_parameters": [
+    "Circular region radius/aperture = 25'' (10,000 au), velocity range = v_LSR +/- 3 km s^-1, SNR threshold = 5"
+   ],
+   "assumptions": [
+    "Distance of ~400 pc for converting 25'' to 10,000 au"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Generate integrated intensity (moment 0) maps",
+   "method": "Integrate emission over the longest contiguous velocity channel range with signal > 3 sigma (and also a fixed v_LSR +/- 1 km s^-1 interval), then apply primary beam correction",
+   "software": [],
+   "key_parameters": [
+    "3 sigma contiguous channel threshold within 25'' and v_LSR +/- 3 km s^-1; fixed v_LSR +/- 1 km s^-1 for main text figures"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular column density maps and peak column densities",
+   "method": "Calculate upper state column density Nu from integrated intensity W and convert to total column density Ntot under optically thin LTE assumptions, measuring peak Ntot within a 25'' circular aperture",
+   "software": [],
+   "key_parameters": [
+    "T_rot = 10 K; aperture = 25'' (10,000 au)"
+   ],
+   "assumptions": [
+    "Optically thin emission and LTE at fixed rotational temperature T_rot = 10 K",
+    "N2H+ flux multiplied by a factor of 9 based on 1:5:3 hyperfine ratio for the F1=0-1 group"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Reduce Yebes 40-m single-dish spectra and compare with convolved ACA data to evaluate missing CH3OH flux",
+   "method": "Reduce Yebes Q-band CH3OH-3K spectra in CLASS/GILDAS, convolve ACA CH3OH-7K cubes to 36'' beam using CASA imsmooth, rescale ACA CH3OH-7K spectra to model CH3OH-3K spectra under LTE, and compare column densities",
+   "software": [
+    "GILDAS",
+    "CLASS",
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Convolved circular beam FWHM = 36''; Yebes extraction window = 5 MHz; modeled T_rot = 5 K and 10 K (and evaluated at 7.5 K)"
+   ],
+   "assumptions": [
+    "Optically thin emission and LTE across rotational temperatures (5 K, 7.5 K, 10 K)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ACA detection rate of N2H+",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "We report, in ACA observations, 100% detection rates for both N$_2$H$^+$ and CH$_3$OH, 62.5% for CCS, and 50% for c-C$_3$HD."
+    }
+   ]
+  },
+  {
+   "quantity": "ACA detection rate of CH3OH",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "We report, in ACA observations, 100% detection rates for both N$_2$H$^+$ and CH$_3$OH, 62.5% for CCS, and 50% for c-C$_3$HD."
+    }
+   ]
+  },
+  {
+   "quantity": "ACA detection rate of CCS",
+   "value": "62.5",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Detection",
+     "quote": "On the other hand, we detected CCS and c-C$_3$HD toward only 10 and 8 among 16 sources, respectively."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "We report, in ACA observations, 100% detection rates for both N$_2$H$^+$ and CH$_3$OH, 62.5% for CCS, and 50% for c-C$_3$HD."
+    }
+   ]
+  },
+  {
+   "quantity": "ACA detection rate of c-C3HD",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Detection",
+     "quote": "On the other hand, we detected CCS and c-C$_3$HD toward only 10 and 8 among 16 sources, respectively."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "We report, in ACA observations, 100% detection rates for both N$_2$H$^+$ and CH$_3$OH, 62.5% for CCS, and 50% for c-C$_3$HD."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G203.21E1",
+   "value": "1.9e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G203.21-11.20E1 | G203.21E1 | 1.97 | $5.6\\times10^{12}$ | 1.95 | $1.3\\times10^{12}$ | 2.27 | $1.9\\times10^{13}$ | 2.05 | $1.2\\times10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G205.46M3",
+   "value": "1.8e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205.46-14.56M3 | G205.46M3 | 2.56 | $1.1\\times10^{13}$ | 1.17 | $8.9\\times10^{11}$ | 3.41 | $1.8\\times10^{13}$ | 1.36 | $3.3\\times10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G206.21N",
+   "value": "6.9e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G206.21-16.17N | G206.21N | 1.77 | $6.4\\times10^{12}$ | ... | ... | 2.64 | $6.9\\times10^{12}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G206.21S",
+   "value": "3.8e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G206.21-16.17S | G206.21S | 1.18 | $7.8\\times10^{12}$ | ... | ... | 0.94 | $3.8\\times10^{12}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G208.68N2",
+   "value": "2.4e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G208.68-19.20N2 | G208.68N2 | 2.75 | $2.8\\times10^{13}$ | 0.97 | $8.4\\times10^{11}$ | 2.65 | $2.4\\times10^{13}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G209.29N1",
+   "value": "8.6e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.29-19.65N1 | G209.29N1 | 2.94 | $8.4\\times10^{12}$ | ... | ... | 2.46 | $8.6\\times10^{12}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G209.29S1",
+   "value": "1.6e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.29-19.65S1 | G209.29S1 | 3.93 | $1.3\\times10^{13}$ | 0.98 | $5.1\\times10^{11}$ | 4.54 | $1.6\\times10^{13}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G209.29S2",
+   "value": "2.4e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.29-19.65S2 | G209.29S2 | 3.92 | $9.8\\times10^{12}$ | ... | ... | 3.59 | $2.4\\times10^{13}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G209.55N2",
+   "value": "1.1e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.55-19.68N2 | G209.55N2 | 1.57 | $3.9\\times10^{12}$ | ... | ... | 1.32 | $1.1\\times10^{13}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G209.77E3",
+   "value": "1.3e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.77-19.40E3 | G209.77E3 | 1.77 | $2.8\\times10^{12}$ | 0.78 | $5.1\\times10^{11}$ | 1.71 | $1.3\\times10^{13}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G209.94N",
+   "value": "3.3e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.94-19.52N | G209.94N | 1.96 | $1.3\\times10^{13}$ | 1.56 | $7.1\\times10^{11}$ | 2.08 | $3.3\\times10^{13}$ | 2.38 | $9.6\\times10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G210.37N",
+   "value": "8.3e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G210.37-19.53N | G210.37N | 1.37 | $4.0\\times10^{12}$ | ... | ... | 1.89 | $8.3\\times10^{12}$ | 1.70 | $4.9\\times10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G210.82N2",
+   "value": "1.9e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G210.82-19.47N2 | G210.82N2 | 1.38 | $4.6\\times10^{12}$ | ... | ... | 1.70 | $1.9\\times10^{13}$ | 1.36 | $6.2\\times10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G211.16N4",
+   "value": "2.0e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G211.16-19.33N4 | G211.16N4 | 1.57 | $4.7\\times10^{12}$ | 1.56 | $2.2\\times10^{12}$ | 2.65 | $2.0\\times10^{13}$ | 1.71 | $1.3\\times10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G211.16N5",
+   "value": "1.6e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G211.16-19.33N5 | G211.16N5 | 2.16 | $9.3\\times10^{12}$ | 1.17 | $1.2\\times10^{12}$ | 1.89 | $1.6\\times10^{13}$ | 2.05 | $5.6\\times10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH column density in G212.10N1",
+   "value": "2.2e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G212.10-19.15N1 | G212.10N1 | 1.97 | $6.1\\times10^{12}$ | 2.33 | $6.3\\times10^{12}$ | 2.64 | $2.2\\times10^{13}$ | 2.04 | $2.8\\times10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N2H+ column density range across 16 cores",
+   "value": "2.8e12 to 2.8e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209.77-19.40E3 | G209.77E3 | 1.77 | $2.8\\times10^{12}$ | 0.78 | $5.1\\times10^{11}$ | 1.71 | $1.3\\times10^{13}$ | ... | ..."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "G208.68-19.20N2 | G208.68N2 | 2.75 | $2.8\\times10^{13}$ | 0.97 | $8.4\\times10^{11}$ | 2.65 | $2.4\\times10^{13}$ | ... | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of Yebes to ACA CH3OH column density at T_rot = 10 K",
+   "value": "up to 10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparisons with Single-dish Observations",
+     "quote": "At $T_\\mathrm{rot} = 10$ K, a typical gas temperature of starless cores (cite: 2024Scibelli_COM_Perseus), the observed column densities of the Yebes data can be up to ten times of those derived from the ACA observations."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration procedure (whether standard ALMA pipeline or manual calibration was used, and which CASA/pipeline version calibrated the visibilities)",
+  "Deconvolver algorithm (e.g., hogbom, clark, multiscale) and masking strategy in tclean",
+  "Image cell size (pixel scale) and image dimensions in tclean",
+  "Continuum subtraction procedure (e.g., uvcontsub) and line-free channel selection",
+  "Exact partition function Z(T_rot) values and tables used for N2H+, CCS, CH3OH, and c-C3HD at 5 K, 7.5 K, and 10 K",
+  "Exact J2000 coordinates and v_LSR for G208.68-19.20N2 and G209.29-19.65S1 (omitted from Table 1 in the manuscript)",
+  "Main-beam efficiency used to convert Yebes 40-m antenna temperatures to main-beam brightness temperatures"
+ ],
+ "missing_for_reproduction": [
+  "J2000 coordinates and v_LSR for G208.68-19.20N2 and G209.29-19.65S1 (missing from Table 1)",
+  "Partition function values Z(T_rot) used for each species in Equation 5",
+  "tclean imaging parameters: cell size, image size, deconvolver, masking, and continuum subtraction settings",
+  "Yebes 40-m raw/reduced spectral data (22A010) and beam efficiency used for temperature scaling"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "ACA project code, CASA version, robust weighting, cleaning thresholds, detection criteria, moment 0 integration windows, and LTE equations are clearly documented, and Table 1 provides numeric benchmarks for all 16 cores. However, two targets are accidentally omitted from the coordinates/v_LSR table, partition function values and several tclean parameters (cell size, deconvolver, masking) are unstated, and the Yebes single-dish spectra are not in the ALMA archive.",
+ "rediscovery_reason": "The primary ACA dataset (2021.2.00094.S) is public, the detection criteria (5 sigma within 25'' and +/- 3 km s^-1) and LTE column density formulas are explicit, and Table 1 gives exact velocity integration widths and peak column densities for all 16 cores across 4 molecular species.",
+ "source_card": "cards/2026ApJ...997...16H/sonnet/card.md"
+}

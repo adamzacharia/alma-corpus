@@ -1,0 +1,906 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...895...64L",
+  "title": "Radio Linear Polarization of GRB Afterglows: Instrumental Systematics in ALMA Observations of GRB 171205A",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Laskar, Tanmoy",
+  "n_authors": 3,
+  "arxiv_id": "2004.06730",
+  "doi": "10.3847/1538-4357/ab88cc",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2017.1.00801.T"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 QA2 calibration",
+    "quote": "We downloaded the raw data for full-Stokes ALMA Band 3 (3mm) observations of GRB 171205A taken on 2017 December 10 under project 2017.1.00801.T (PI: Urata) from the ALMA archive."
+   }
+  ],
+  "science": {
+   "fields": [
+    "transients"
+   ],
+   "targets": [
+    {
+     "name": "GRB 171205A",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the linear polarization of the GRB 171205A radio afterglow claimed by Urata et al. detected, or is it an ALMA instrumental systematic?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Using these tests to re-analyze and evaluate the archival ALMA data, we uncover systematics in the polarization calibration at the $\\approx0.09\\%$ level."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00801.T",
+     "evidence": [
+      {
+       "loc": "2.1 QA2 calibration",
+       "quote": "taken on 2017 December 10 under project 2017.1.00801.T (PI: Urata) from the ALMA archive."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm, 97.5 GHz), full-Stokes",
+    "evidence": [
+     {
+      "loc": "2.1 QA2 calibration",
+      "quote": "full-Stokes ALMA Band 3 (3mm) observations of GRB 171205A"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "LSB 89.5–93.5 GHz, USB 101.5–105.5 GHz; four spectral windows",
+    "evidence": [
+     {
+      "loc": "2.1 QA2 calibration",
+      "quote": "lower sideband (LSB; $89.5$–$93.5$ GHz) and upper sideband (USB; $101.5$–$105.5$ GHz)"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.28'' x 0.20'' at PA 85 deg",
+    "evidence": [
+     {
+      "loc": "2.3 Imaging",
+      "quote": "The clean beam is $0.28\\ensuremath{''}$ $\\times$ $0.20\\ensuremath{''}$ at a position angle of $85^\\circ$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms ≈7.3 uJy in Q, U, V (full data)",
+    "evidence": [
+     {
+      "loc": "2.1 QA2 calibration",
+      "quote": "The rms noise near the center of the $Q$, $U$, and $V$ images is ${\\approx7.3}~\\mu$Jy"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "≈9.4×10^3 s on source; 43 antennas",
+    "evidence": [
+     {
+      "loc": "2.3 Imaging",
+      "quote": "$t_{\\rm int}\\approx9.4\\times10^3$ s is the total integration time on source, $N=43$ is the number of antennas in the array"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 December 10; three SB executions at 5.135–5.245 days after burst",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "The times of the three SB executions (considering target and gain calibrator scans only) are: 5.135–5.169, 5.174–5.208, and 5.211–5.245 days, respectively."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival, PI Urata",
+    "evidence": [
+     {
+      "loc": "2.1 QA2 calibration",
+      "quote": "project 2017.1.00801.T (PI: Urata) from the ALMA archive"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Swift XRT",
+     "provided": {
+      "value": "X-ray light curve used to constrain jet break time",
+      "evidence": [
+       {
+        "loc": "4.2 Constraints on magnetic field geometry",
+        "quote": "The X-ray light curve for the afterglow of GRB 171205A exhibits a shallow, unbroken power law decay with $\\alpha\\approx-1.06$ to $\\gtrsim35$ days"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Previously claimed ALMA linear polarization (0.27±0.04)% and VLA cm spectral index 1.46±0.03",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "claimed a detection of $(0.27\\pm0.04)\\%$ linear polarization in the radio afterglow of GRB 171205A"
+       }
+      ]
+     },
+     "citation": "Urata et al. 2019 (cite: uth+19)"
+    },
+    {
+     "what": {
+      "value": "Compilation of radio polarization limits of other GRBs",
+      "evidence": [
+       {
+        "loc": "4.3 Radio Polarization of GRB Afterglows",
+        "quote": "Our compiled sample of radio linear polarization observations includes one detection (cite: lag+19), and several upper limits"
+       }
+      ]
+     },
+     "citation": "(cite: tfk+98; fyb+03; gt05; tfbk04; vdhpdb+14; lag+19)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Granot & Taylor 2005 polarization models compared with the limit",
+     "evidence": [
+      {
+       "loc": "4.2 Constraints on magnetic field geometry",
+       "quote": "we compare the models of (cite: gt05) together with the data in Fig. [7]"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Regenerated QA2 with archive scripts, then full independent manual reduction",
+     "evidence": [
+      {
+       "loc": "2.2 Detailed data analysis",
+       "quote": "we perform a full independent reduction of the data."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.6.1 (imaging)",
+     "evidence": [
+      {
+       "loc": "2.1 QA2 calibration",
+       "quote": "with CASA version 5.6.1 using a robust parameter of 0.0"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1127-1857 (≈1.05 Jy at 91.5 GHz, β=-0.51) from ALMA calibrator catalog",
+     "evidence": [
+      {
+       "loc": "2.2 Detailed data analysis",
+       "quote": "We set the flux density of J1127-1857 using measurements near the time of the GRB observations listed the ALMA calibrator catalog"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "Systematic polarization uncertainty 0.09% (1σ) estimated from gain calibrator variability",
+     "evidence": [
+      {
+       "loc": "2.5 Systematic calibration uncertainty",
+       "quote": "we estimate an additional $1\\sigma$ systematic calibration uncertainty of $\\approx0.16\\%/1.69\\approx0.09\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Phase-only 10 min then 2 min, then amp+phase 20 min, gain mode T, refant strict, per sideband",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "We correct for these by performing two rounds of phase-only self-calibration with solution intervals of 10 min and 2 min"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean, nterms=1",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "using `tclean` in CASA with a robust parameter of 0.0 and one Taylor term (i.e. nterms=1)"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 0.0",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "with a robust parameter of 0.0"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.05'' cell, 25''x25'' image",
+     "evidence": [
+      {
+       "loc": "footnote 6",
+       "quote": "across the $25\\ensuremath{''}\\times25\\ensuremath{''}$ image is $\\approx0.02\\ensuremath{''}$, which is a fraction of the $0.05\\ensuremath{''}$ cell size"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.28'' x 0.20'' PA 85 deg",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "The clean beam is $0.28\\ensuremath{''}$ $\\times$ $0.20\\ensuremath{''}$ at a position angle of $85^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Time splitting by scheduling block execution to test polarization stability",
+      "evidence": [
+       {
+        "loc": "2.1 QA2 calibration",
+        "quote": "We tested for stability of polarization calibration by dividing the data in time by each execution of the scheduling block (SB), as described in (cite: lag+19)."
+       }
+      ]
+     },
+     "from_reference": "(cite: lag+19)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Number of clean iterations, threshold and masks for tclean",
+    "Exact flagging selections beyond DV22 and the specific spectral window",
+    "Targeted source coordinates",
+    "Spectral windows' channelization",
+    "Whether the reduction scripts and CASA version for the manual reduction match 5.6.1"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Regenerate QA2 data and test stability",
+    "method": {
+     "value": "Run archive calibration scripts, image Stokes IQUV, fit point source with imfit, split by sideband and by SB execution",
+     "evidence": [
+      {
+       "loc": "2.1 QA2 calibration",
+       "quote": "we used the CASA (cite: mws+07) calibration scripts, associated with the data set and also available from the ALMA archive, to regenerate the calibrated Quality Assurance 2 (QA2) measurement set."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "imfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.0",
+      "evidence": [
+       {
+        "loc": "2.1 QA2 calibration",
+        "quote": "using a robust parameter of 0.0"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Point source fit with position fixed to Stokes I",
+     "evidence": [
+      {
+       "loc": "2.1 QA2 calibration",
+       "quote": "Fitting for the linearly polarized flux density with the position fixed to that derived from the Stokes $I$ image"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared Q,U with Urata et al.; sidebands differ by 32 uJy in Q",
+     "evidence": [
+      {
+       "loc": "2.1 QA2 calibration",
+       "quote": "we find that the Stokes $Q$ measurements differ between the two sidebands by $32~\\mu$Jy"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Independent polarization calibration",
+    "method": {
+     "value": "Tsys/wvr, bandpass, qufromgain, XYf+QU in gaincal, xyamb, polcal for D-terms, repeated with two reference antennas",
+     "evidence": [
+      {
+       "loc": "2.2 Detailed data analysis",
+       "quote": "We use DV06 as reference antenna, and validate our calibration by repeating the entire analysis separately using a nearby antenna with a different architecture, DA64."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "qufromgain",
+     "xyamb",
+     "gaincal",
+     "polcal"
+    ],
+    "key_parameters": [
+     {
+      "value": "cross-hand delays from scan 61 on polarization calibrator",
+      "evidence": [
+       {
+        "loc": "2.2 Detailed data analysis",
+        "quote": "we use scan 61 on the polarization calibrator as the scan with the strongest polarization signal"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Stokes V of polarization calibrator negligible",
+      "evidence": [
+       {
+        "loc": "2.4 Polarization measurements",
+        "quote": "Standard polarization calibration assumes negligible $V$ in the polarization calibrator."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Residual polarization of calibrator ≈0.1%",
+     "evidence": [
+      {
+       "loc": "2.2 Detailed data analysis",
+       "quote": "the final residual polarization, determined by running `qufromgain` on the calibrated calibrator data, is $\\approx0.1\\%$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Self-calibration and imaging",
+    "method": {
+     "value": "Phase-only then amp+phase self-cal per sideband, tclean imaging, imfit point source fits to IQUVP",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "We, therefore, perform one round of amplitude and phase self calibration, applying the pre-derived phase solutions on the fly."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "gaincal",
+     "tclean",
+     "imfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "amp solint 20 min, 14 solutions per pol per antenna, cross-hand phase fixed",
+      "evidence": [
+       {
+        "loc": "2.3 Imaging",
+        "quote": "we solve for one solution per 20 min, for a total of 14 solutions per polarization per antenna"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Point source model with imfit",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "We fit the Stokes $I$ image with a point source model using CASA `imfit`"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with 30 s self-cal as in Urata et al.; minimum solint ≳35 s",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "yields $t_{\\rm solint}\\gtrsim35$ s"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Quantify systematic uncertainty and upper limit",
+    "method": {
+     "value": "Use gain calibrator polarization variation across SB executions; range of three Gaussian draws gives 1σ systematic, combined with statistical error; Rician bias",
+     "evidence": [
+      {
+       "loc": "2.5 Systematic calibration uncertainty",
+       "quote": "Thus, we estimate an additional $1\\sigma$ systematic calibration uncertainty of $\\approx0.16\\%/1.69\\approx0.09\\%$ for these observations."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Gain calibrator intrinsic polarization constant over observations; systematic is Gaussian",
+      "evidence": [
+       {
+        "loc": "2.5 Systematic calibration uncertainty",
+        "quote": "assume that the calibrator’s intrinsic polarization is constant with time over our observations"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Interpret limit with jet magnetic field models",
+    "method": {
+     "value": "Compare with Granot & Taylor 2005 toroidal models and patch-coherence estimate",
+     "evidence": [
+      {
+       "loc": "4.2 Constraints on magnetic field geometry",
+       "quote": "The low degree of polarization disfavors models of polarization produced by toroidal magnetic fields in GRB jets."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "β≈-0.43 from Urata et al.",
+      "evidence": [
+       {
+        "loc": "4.2 Constraints on magnetic field geometry",
+        "quote": "for $\\beta\\approx-0.43$ (cite: uth+19)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.6.1",
+    "used_for": {
+     "value": "Calibration, tclean imaging, imfit, gaincal, polcal",
+     "evidence": [
+      {
+       "loc": "2.1 QA2 calibration",
+       "quote": "with CASA version 5.6.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "almapolhelpers (qufromgain, xyamb)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Estimating Q,U from gains and resolving QU phase ambiguity",
+     "evidence": [
+      {
+       "loc": "2.2 Detailed data analysis",
+       "quote": "using the python utility `qufromgain` from the ALMA polarization helpers module (`almapolhelpers.py`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "3σ upper limit on linearly polarized intensity",
+    "value": "97.2",
+    "uncertainty": "not stated",
+    "units": "uJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We derive a 3$\\sigma$ upper limit on the linearly polarized intensity of $P<97.2~\\mu$Jy"
+     }
+    ]
+   },
+   {
+    "quantity": "3σ upper limit on fractional linear polarization",
+    "value": "<0.30",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\Pi_{\\rm L}<0.30\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Additional 1σ systematic calibration uncertainty",
+    "value": "0.09",
+    "uncertainty": "not stated",
+    "units": "% of Stokes I",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.5 Systematic calibration uncertainty",
+      "quote": "$\\approx0.16\\%/1.69\\approx0.09\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Combined-data linear polarized flux (undebiased)",
+    "value": "41.7",
+    "uncertainty": "±32.4",
+    "units": "uJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.5 Systematic calibration uncertainty",
+      "quote": "This yields a linear polarization measurement of $41.7\\pm32.4~\\mu$Jy (undebiased)"
+     }
+    ]
+   },
+   {
+    "quantity": "Stokes I flux density (all data, self-calibrated)",
+    "value": "32.44",
+    "uncertainty": "±0.03",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "for which we derive a value of $32.44\\pm0.03$ mJy (statistical error)"
+     }
+    ]
+   },
+   {
+    "quantity": "Stokes V (all data)",
+    "value": "-73.4",
+    "uncertainty": "±7.3",
+    "units": "uJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| All | amp & phase | 20 min | $32.44\\pm0.03$ | 7.7 | $-31.5\\pm7.3$ | $9.6\\pm7.7$ | $-73.4\\pm7.3$ | $41.7\\pm10.6$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Magnetic patch scale limit",
+    "value": "4e-3 Gamma^-1",
+    "uncertainty": "not stated",
+    "units": "rad",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Constraints on magnetic field geometry",
+      "quote": "$\\theta_{\\rm B}\\lesssim \\Pi_{\\rm L,lim}\\Gamma^{-1}\\Pi_{\\rm max}^{-1}\\approx4\\times10^{-3}\\Gamma^{-1}$ rad"
+     }
+    ]
+   },
+   {
+    "quantity": "mm spectral index",
+    "value": "-0.51",
+    "uncertainty": "±0.04",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Constraints on magnetic field geometry",
+      "quote": "for which we calculate $\\beta_{\\rm mm}=-0.51\\pm0.04$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Polarization calibration varies with time and sideband for both GRB and gain calibrator, indicating instrumental systematics; spurious Stokes V ≈0.23% appears",
+    "evidence": [
+     {
+      "loc": "2.4 Polarization measurements",
+      "quote": "we find that the polarization measurements exhibit significant time variability."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the 0.27% linear polarization of GRB 171205A real?",
+    "experiment": "Independent re-reduction with time/frequency splitting and gain calibrator checks",
+    "result": "Q,U not reproduced; time variable; significance ≈1.3σ with systematics",
+    "finding": "No detection; 3σ limit Π<0.30%",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "in contrast to the previously claimed detection"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the polarization imply thermal electrons?",
+    "experiment": "Compare limit with optical polarization measurements and upper limits",
+    "result": "As many as 27% of optical observations lie below the limit",
+    "finding": "No strong evidence for non-accelerated electrons",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 No strong evidence for thermal electrons",
+      "quote": "Thus, the data do not provide direct observational evidence for non-accelerated particles."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the limit constrain jet magnetic geometry?",
+    "experiment": "Compare with Granot & Taylor models",
+    "result": "Toroidal field gives too high polarization for most viewing angles",
+    "finding": "Toroidal field disfavored for reverse shock",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "the upper limit rules out a toroidal magnetic field geometry for most viewing angles"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Time and frequency splitting and gain calibrator checks quantify stability of polarization calibration",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "we recommend basic sanity checks of (i) dividing the data in time and frequency to test for calibration stability"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "30 s amp+phase self-cal with independent X,Y gains (Urata et al.) rejected as shorter than minimum solution interval",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging",
+       "quote": "the 30 s solution interval used by (cite: uth+19) is shorter than the minimum possible $t_{\\rm solint}$ where stable solutions may be expected."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Origin of time-varying systematics (e.g. XY phase) not investigated; second-order corrections beyond scope",
+     "evidence": [
+      {
+       "loc": "2.4 Polarization measurements",
+       "quote": "investigating this requires second-order calibration corrections, which are beyond the scope of this work."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Systematic estimate rests on only three time bins of one gain calibrator",
+    "Assumes calibrator polarization is constant",
+    "Single dataset, no independent confirmation"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Raw data downloaded from ALMA archive",
+    "evidence": [
+     {
+      "loc": "2.1 QA2 calibration",
+      "quote": "We downloaded the raw data for full-Stokes ALMA Band 3 (3mm) observations of GRB 171205A"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Clean parameters beyond robust",
+    "Exact flagging and spw details",
+    "Scripts not released"
+   ],
+   "estimated_data_volume_inferred": "tens of GB raw",
+   "score_inferred": 4,
+   "score_reason": "Public data, detailed recipe and numeric tables; some tclean/flagging details missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public archival data, step-by-step recipe, numeric results in tables."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Nagai et al. 2016 (cite: nnp+16)",
+     "why": "ALMA polarization commissioning"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Urata et al. 2019 (cite: uth+19)",
+     "why": "Original claim being re-analyzed"
+    },
+    {
+     "citation": "Laskar et al. 2019 (cite: lag+19)",
+     "why": "GRB 190114C ALMA polarization, time-splitting method"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA calibrator catalog",
+    "AMAPOLA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-791240fe82edd4929341b0763a639fc3",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:31",
+  "usage": {
+   "input_tokens": 23700,
+   "output_tokens": 8028,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064447,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 45,
+   "rate": 0.608
+  },
+  "evidence_ok": true
+ }
+}

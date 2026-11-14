@@ -1,0 +1,752 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.485.1188B",
+  "title": "ALMA photometry of extragalactic radio sources",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Bonato, M.",
+  "n_authors": 10,
+  "arxiv_id": "1901.08976",
+  "doi": "10.1093/mnras/stz465",
+  "heldout": false,
+  "archival_class_ours": "unknown",
+  "alma_projects_obscore": []
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "data_release_or_catalog",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present a new catalogue of ALMA observations of 3,364 bright, compact radio sources, mostly blazars, used as calibrators."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "cosmology"
+   ],
+   "targets": [
+    {
+     "name": "3,364 ALMA calibrators (mostly blazars)",
+     "coordinates": {
+      "value": "equatorial J2000 coordinates given in the catalogue",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Almost all sources ($\\sim$97%) were found to be blazars."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "redshifts from literature for 2245 sources (67%)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Almost all sources ($\\sim$97%) were found to be blazars."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "literature search",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Almost all sources ($\\sim$97%) were found to be blazars."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can ALMA calibrator photometry validate the Planck PCNT photometry, positions and completeness, and be used to extrapolate 100 GHz radio source counts to higher ALMA bands?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We have exploited the ALMA data to validate the photometry given in the new *Planck* Multi-frequency Catalogue of Non-thermal sources (PCNT), for which an external validation was not possible so far."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Bands 3, 4, 6, 7, 8, 9, 10",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "25,907 observations of 3,310 different sources in band 3 (84$-$116 GHz), 671 observations of 171 sources in band 4 (125$-$163 GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "May 2011 to July 2018",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These sources were observed between May 2011 and July 2018, for a total of 47,115 pointings in different bands and epochs."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Planck (PCNT, PCCS2)",
+     "provided": {
+      "value": "Flux densities and positions of counterparts for validation",
+      "evidence": [
+       {
+        "loc": "2 Validation",
+        "quote": "we cross-matched the ACC with the PCNT outside the GAL070 mask"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel H-ATLAS",
+     "provided": {
+      "value": "PCCS2 completeness limits at 857 GHz",
+      "evidence": [
+       {
+        "loc": "2 Validation",
+        "quote": "These authors found PCCS2 90% completeness limits of $S_{\\rm Herschel}=650\\,$mJy at 857 GHz"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMACAL catalogue of 754 calibrators, 16,263 observations",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "have published a catalogue of ALMA flux density measurements of 754 calibrators for a total of 16,263 observations in different bands and epochs (ALMACAL catalogue)."
+       }
+      ]
+     },
+     "citation": "(cite: Bonato2018)"
+    },
+    {
+     "what": {
+      "value": "ALMA Calibrator Source Catalogue (ACSC) flux densities",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Combining such catalogue with the “ALMA Calibrator Source Catalogue” (ACSC)"
+       }
+      ]
+     },
+     "citation": "ACSC, almascience.eso.org/sc"
+    },
+    {
+     "what": {
+      "value": "Classifications from Roma Multi-frequency Catalogue of Blazars",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "About 41% (1391) of our sources are listed in the 5th edition of the Roma Multi-frequency Catalogue of Blazars"
+       }
+      ]
+     },
+     "citation": "(cite: Massaro2009)"
+    },
+    {
+     "what": {
+      "value": "100 GHz Euclidean counts from Planck and SPT",
+      "evidence": [
+       {
+        "loc": "3 High frequency number counts",
+        "quote": "The combination of *Planck* (cite: PCNT) and SPT (cite: Mocanu2013) data has provided an observational determination of radio source number counts"
+       }
+      ]
+     },
+     "citation": "(cite: PCNT), (cite: Mocanu2013)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Tucci et al. models C2Co and C2Ex for comparison of counts",
+     "evidence": [
+      {
+       "loc": "3 High frequency number counts",
+       "quote": "The comparison with the two preferred models by (cite: Tucci2011), “C2Co” and “C2Ex”"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "5% for ALMACAL sources; ACSC quoted uncertainties adopted",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "Following (cite: Bonato2018) we adopt at 5% calibration uncertainty for ALMACAL sources."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMACAL calibration and imaging analysis",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The calibration and imaging analyses are described in (cite: Bonato2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Bonato2018)"
+    },
+    {
+     "what": {
+      "value": "Classification of sources not in Roma-BZCAT",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We have classified the remaining objects following (cite: Bonato2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Bonato2018)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ACSC measurement procedure and raw flux values",
+    "How ACSC and ALMACAL entries were merged/duplicates handled",
+    "How characteristic band frequencies (e.g. 95 GHz) were derived",
+    "Cross-match procedure details beyond the 3 arcmin radius",
+    "Binning used for validation and completeness plots",
+    "Method for fitting polynomial representations of counts"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Build ALMA Calibrator Catalogue",
+    "method": {
+     "value": "Combine ALMACAL catalogue with ACSC; add redshifts and classification",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "Combining such catalogue with the “ALMA Calibrator Source Catalogue” (ACSC)[^2], we have collected ALMA observations for 3,364 bright, (mostly) compact radio sources."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "ACSC uncertainties adopted after median absolute differences of 6% (Bands 3, 6) and 8% (Band 7) within 30 d",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We have therefore adopted the ACSC uncertainties."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Cross-match with PCNT and compare photometry",
+    "method": {
+     "value": "Cross-match within 3 arcmin outside GAL070 mask; compare mean ALMA flux densities with MTFX photometry, frequency-shifted with fixed spectral indices",
+     "evidence": [
+      {
+       "loc": "2 Validation",
+       "quote": "The comparison with PCNT flux densities was made using the mean values and adopting the standard deviation, summed in quadrature with the calibration uncertainty, as an estimate of the uncertainty."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Band 7 to 353 GHz with S∝ν^-0.45; Bands 8/9 to 545 GHz with S∝ν^-0.62",
+      "evidence": [
+       {
+        "loc": "2 Validation",
+        "quote": "Band 7 flux densities were converted to 353 GHz with $S\\propto \\nu^{-0.45}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Expected spurious associations about 1 (0.1%)",
+     "evidence": [
+      {
+       "loc": "2 Validation",
+       "quote": "Thus the expected number of spurious associations is $\\simeq 1$, i.e. $\\simeq 0.1\\%$ of *Planck* counterparts."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Assess PCNT completeness",
+    "method": {
+     "value": "Fraction of ACC objects with PCNT counterparts (SNR>=3) versus ALMA flux density; 10,000 Gaussian simulations for 143 GHz",
+     "evidence": [
+      {
+       "loc": "2 Validation",
+       "quote": "we have performed 10,000 simulations of *Planck* observations of the 100 ALMA calibrators."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with PCCS2 90% completeness limits",
+     "evidence": [
+      {
+       "loc": "2 Validation",
+       "quote": "At 100, 217, 353 and 545 GHz our results are in excellent agreement with the estimates of the 90% completeness limits given by (cite: PCCS2)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Extrapolate 100 GHz counts to higher bands",
+    "method": {
+     "value": "Convolve the 100 GHz counts polynomial with Gaussian distribution of log(S95/Sν) from ALMA band ratios",
+     "evidence": [
+      {
+       "loc": "3 High frequency number counts",
+       "quote": "By convolving eq. ([\\[eq:100GHzcounts\\]](#eq:100GHzcounts)) with the appropriate distribution of flux density ratios, assumed to be a Gaussian"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Flux density ratio distribution is Gaussian",
+      "evidence": [
+       {
+        "loc": "3 High frequency number counts",
+        "quote": "assumed to be a Gaussian with mean and standard deviation given by Table"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to available data and Tucci et al. models C2Co, C2Ex",
+     "evidence": [
+      {
+       "loc": "3 High frequency number counts",
+       "quote": "The extrapolated counts are fully consistent with the available data."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [],
+  "results_numeric": [
+   {
+    "quantity": "ALMA-Planck position offset peak",
+    "value": "0.38",
+    "uncertainty": "not stated",
+    "units": "arcmin",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2 Validation",
+      "quote": "The positional differences peak at $\\sim0'.38$ and have a standard deviation $\\sigma \\simeq 0'.64$."
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA-Planck position offset standard deviation",
+    "value": "0.64",
+    "uncertainty": "not stated",
+    "units": "arcmin",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2 Validation",
+      "quote": "The positional differences peak at $\\sim0'.38$ and have a standard deviation $\\sigma \\simeq 0'.64$."
+     }
+    ]
+   },
+   {
+    "quantity": "Unique Planck counterparts with SNR>=3",
+    "value": "1120 of 3364",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2 Validation",
+      "quote": "We found unique *Planck* counterparts with $\\hbox{SNR}\\ge 3$ for 1,120 out of the 3,364 ALMA calibrators."
+     }
+    ]
+   },
+   {
+    "quantity": "PCNT 90% completeness at 100/143/217/353/545 GHz",
+    "value": "266/312/170/296/597",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 100 | 269 | 266 | 562 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean log(S95/Sν) band 6 (233 GHz)",
+    "value": "0.25",
+    "uncertainty": "sigma 0.14",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 6 | 233 | 859 | 0.25 | 0.14 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean log(S95/Sν) band 7 (285 GHz)",
+    "value": "0.37",
+    "uncertainty": "sigma 0.17",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 7 | 285 | 2102 | 0.37 | 0.17 |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Good consistency of MTFX and ALMA photometry above PCCS2 90% completeness limits; Eddington bias below",
+    "evidence": [
+     {
+      "loc": "2 Validation",
+      "quote": "Above the PCCS2 90% completeness limits (vertical dotted red lines) we find good consistency between the MTFX and the ALMA photometry."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "PCNT MTFX photometry is consistent with ALMA photometry",
+    "experiment": "Cross-match ACC with PCNT and compare flux densities",
+    "result": "Good agreement above PCCS2 90% completeness limits; dispersion about 0.2 dex ascribed to variability",
+    "finding": "MTFX photometry validated externally",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We found good agreement between the ALMA and the MTFX photometry above the 90% completeness limits given by (cite: PCCS2)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "PCNT completeness limits differ from PCCS2",
+    "experiment": "Fraction of ACC sources with PCNT counterparts versus flux",
+    "result": "Consistent at 100, 217, 353, 545 GHz; higher at 143 GHz but marginal",
+    "finding": "Completeness limits essentially unchanged",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We conclude that although the PCNT reaches fainter flux density levels than the PCCS2, the completeness limits do not change appreciably."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Extrapolated high-frequency counts discriminate between Tucci models",
+    "experiment": "Convolve 100 GHz counts with ALMA band ratio distributions",
+    "result": "C2Ex agrees; C2Co overpredicts above 145 GHz",
+    "finding": "C2Ex favoured, C2Co disfavoured",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The results agree with the available data and are consistent with the C2Ex model by (cite: Tucci2011), while their C2Co model is disfavoured."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Planck and ALMA data are non-simultaneous so blazar variability adds dispersion",
+     "evidence": [
+      {
+       "loc": "Footnote 5",
+       "quote": "Blazars are known to be strongly variable and *Planck* and ALMA measurements are non-simultaneous."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Calibrator sample is flux-biased and not a complete survey, which may bias band ratios",
+    "Non-simultaneous observations with variable sources",
+    "Gaussian assumption for ratios and a single spectral index for extrapolation"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Catalogue available online as supplementary material and on Italian ARC website",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The catalogue is available online as supplementary material and on the website of the Italian ALMA Regional Center (ARC; <http://arc.ia2.inaf.it>)."
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Original flux measurement pipeline lives in Bonato2018",
+    "PCNT catalogue needed",
+    "No code or scripts released"
+   ],
+   "estimated_data_volume_inferred": "Small: catalogue tables only (MB) if using released ACC; raw ALMA calibrator data would be very large",
+   "score_inferred": 3,
+   "score_reason": "Catalogue-level analysis is simple and data are public, but ACC construction and many details rely on other papers and no code is given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Underlying catalogues are inherited from other works and the statistical procedures are only briefly described, although results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Bonato2018)",
+     "why": "ALMACAL calibration, imaging and classification"
+    },
+    {
+     "citation": "(cite: Herranz2008; Herranz2009)",
+     "why": "MTFX photometry method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: PCNT)",
+     "why": "Planck catalogue being validated"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMACAL",
+    "Planck PCCS2",
+    "PCNT",
+    "ALMA Calibrator Source Catalogue"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-18fa0014e5d443ff8d655a7453be6aea",
+  "batch_id": "msgbatch_01LHB5XbVgqRG7wRXLZoxNAj",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:24:41",
+  "usage": {
+   "input_tokens": 13832,
+   "output_tokens": 5626,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042569,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 39,
+  "quotes_ok": 39,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2011.0.00001.CAL"
+  ],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 29,
+   "rate": 0.42
+  },
+  "evidence_ok": true
+ }
+}

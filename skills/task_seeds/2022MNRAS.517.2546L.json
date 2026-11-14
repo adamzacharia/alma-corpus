@@ -1,0 +1,704 @@
+{
+ "bibcode": "2022MNRAS.517.2546L",
+ "title": "High-resolution ALMA and HST imaging of κCrB: a broad debris disc around a post-main-sequence star with low-mass companions",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac2782",
+ "arxiv_id": "2209.12910",
+ "fields": [
+  "debris_disks",
+  "exoplanets",
+  "evolved_stars"
+ ],
+ "question": "Is the debris disc around the post-main-sequence star kappa CrB a single or multiple component debris disc, and how have possible disc-planet interactions carved the disc?",
+ "alma_project_codes": [
+  "2019.1.01443.T"
+ ],
+ "data": {
+  "bands": "Band 6 (1.1–1.4 mm / 1.3 mm)",
+  "arrays": "49 antennas",
+  "angular_resolution": "2.1 x 1.4'' (63.2 x 42.1 au)",
+  "sensitivity": "rms_inner = 0.32 mJy and rms_outer = 2.5 mJy (integrated over 0-60 au and 60-240 au in CO J=2-1 profiles)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical to far-IR photometry (BT, VT, HP, VJ, Gaia GBP/GGP/GRP, 2MASS JHKs, WISE W1-W4, AKARI IRC, IRAS, Spitzer MIPS, Herschel PACS) in Table 1 for SED fitting",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Values for the fluxes used to produce the flux density distribution in Fig. 6. a= (cite: 2006yCat.2168....0M), b= (cite: 2015A&A...580A..23P), c= (cite: 2000A&A...355L..27H), d= (cite: Gaia18), e= (cite: ESA97), f= (cite: 2003tmc), g= (cite: 2010AJ....140.1868W), h= (cite: 2010A&A...514A...1I), i= (cite: 1988iras6A), j= (cite: 2010ApJS..191..212S), k= (cite: Sibthorpe18), l= this work."
+     }
+    ]
+   },
+   "citation": "(cite: 2006yCat.2168....0M); (cite: 2015A&A...580A..23P); (cite: 2000A&A...355L..27H); (cite: Gaia18); (cite: ESA97); (cite: 2003tmc); (cite: 2010AJ....140.1868W); (cite: 2010A&A...514A...1I); (cite: 1988iras6A); (cite: 2010ApJS..191..212S); (cite: Sibthorpe18)"
+  },
+  {
+   "what": {
+    "value": "Distance of 30.1 pc, radial velocity of -24.98 +/- 0.14 km s^-1, and DR2/eDR3 astrometry",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "At a distance of 30.1 pc (cite: Gaia18), of the known sub-giants that host at least one planet and debris disc, $\\kappa\\,$CrB is the closest"
+     },
+     {
+      "loc": "CO J=2-1 Analysis",
+      "quote": "the radial velocity of the star, the disc morphology and stellar mass are all known, for which $v_{\\rm{rad}}{=}-24.98{\\pm}0.14\\,\\rm{kms^{-1}}$ (cite: Gaia18)."
+     },
+     {
+      "loc": "Table 5",
+      "quote": "Note that epoch 1 and 2 refer to Gaia data releases DR2 and eDR3 respectively (cite: Gaia18; Gaia21)."
+     }
+    ]
+   },
+   "citation": "(cite: Gaia18); (cite: Gaia21)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass ~1.8 M_sun, age >2.5 Gyr, and inner exo-Jupiter parameters",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "$\\kappa\\,$CrB (HD 142091, HIP 77655) is a K1 sub-giant star (an evolved A-type main sequence star), with a mass ${\\sim}1.8\\,M_\\odot$ and age ${>}2.5$ Gyr (cite: Johnson08)."
+     }
+    ]
+   },
+   "citation": "(cite: Johnson08)"
+  },
+  {
+   "what": {
+    "value": "Keck II adaptive optics limits on companions",
+    "evidence": [
+     {
+      "loc": "Planet-disc interactions in $\\kappa$ CrB’s planetary system",
+      "quote": "We define 3 categories, namely where an outer body *must* reside (in green), *can* reside (in amber), and *cannot* reside (in grey or red, depending on these constraints being based on (cite: Bonsor13), or this work, respectively)."
+     }
+    ]
+   },
+   "citation": "(cite: Bonsor13)"
+  },
+  {
+   "what": {
+    "value": "SONS sample of main sequence debris disc dust masses and main sequence debris disc radii sample for comparison",
+    "evidence": [
+     {
+      "loc": "The mass of $\\kappa\\,$CrB’s planetesimal belt",
+      "quote": "We next compare the modelled Band 6 dust mass of $\\kappa\\,$CrB with the values determined for the SONS sample of main sequence debris discs (cite: Holland17) on Fig. 11 (top)."
+     },
+     {
+      "loc": "The mass of $\\kappa\\,$CrB’s planetesimal belt",
+      "quote": "Further, by comparing the disc peak emission radius, extent and stellar luminosity of $\\kappa\\,$CrB with other main sequence debris discs (cite: Matra18), we show on Fig. 11 (bottom)"
+     }
+    ]
+   },
+   "citation": "(cite: Holland17); (cite: Matra18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, average, reweight, and image ALMA Band 6 continuum visibilities",
+   "method": "Calibrate visibilities with standard ALMA pipeline, inspect with plotms, purge calibrators, time average into 10-second bins, channel average into 4 channels per spectral window, run statwt to estimate visibility weights from variance, and image continuum with tclean using natural weighting.",
+   "software": [
+    "CASA",
+    "plotms",
+    "statwt",
+    "tclean"
+   ],
+   "key_parameters": [
+    "time averaging = 10-second bins; channel averaging = 4 channels per spectral window; weighting = natural"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract empirical disc geometry, radial profile, and fluxes from the ALMA Band 6 continuum image",
+   "method": "Measure PA by maximising total flux in 5 deg wedges within 250 au; subtract unresolved stellar emission with a 2D Gaussian matched to the beam and fit elliptical rings within 3-sigma contours to measure inclination; compute deprojected azimuthally averaged radial surface brightness and integrated flux profiles.",
+   "software": [],
+   "key_parameters": [
+    "PA = 146 +/- 5 deg; inclination = 61 +/- 5 deg"
+   ],
+   "assumptions": [
+    "10% ALMA flux calibration uncertainty"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Reduce HST/STIS coronagraphic images and extract scattered light radial profiles and albedo",
+   "method": "Register and median-combine STIS WEDGEA0.6 and WEDGEA2.0 images, subtract sky background and reference PSF star HD 139323, remove horizontal band artifact, derotate to North up, and extract radial surface brightness and r^2-scaled profiles in 10 deg wedges.",
+   "software": [],
+   "key_parameters": [
+    "WEDGEA2.0 IWA >= 1.7'' (51 au); conversion 1 cts sec^-1 pix^-1 = 177 uJy arcsec^-2"
+   ],
+   "assumptions": [
+    "PA = 146 deg, i = 40 deg for radial profile extraction; F = 2923 mJy, f = 5e-5, d_phi = 2-8'' for albedo estimation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the spectral energy distribution (SED) of star and disc",
+   "method": "Fit multi-wavelength photometry (including ALMA Band 6 total flux) with a stellar photosphere plus a single-component modified blackbody following Kennedy et al. (2014) and Yelverton et al. (2019).",
+   "software": [],
+   "key_parameters": [
+    "WISE1 and WISE2 excluded due to error flags"
+   ],
+   "assumptions": [
+    "2% calibration uncertainties on stellar luminosity and radius; modified blackbody modified by (lambda/lambda_0)^-beta_0 beyond lambda_0"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Parametric visibility modelling of the ALMA Band 6 continuum emission",
+   "method": "Compute dust temperatures and 1.3 mm model images with RADMC-3D for two radial surface density parameterisations (power-law 'SPL' with 9 free parameters and Gaussian 'SGR' with 8 free parameters), transform to model visibilities at the observed uv-baselines, and fit using MCMC with emcee.",
+   "software": [
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Free parameters: M_dust, r_1, i, PA, F_*_B6, x_off, y_off, plus (p_SPL, r_2) for SPL or (sigma_SGR) for SGR; N_Dat = 12,104,328"
+   ],
+   "assumptions": [
+    "Vertical aspect ratio h = H/r = 0.05 (fixed); circular orbits; grain sizes a_min = 1.0 um to a_max = 1 cm with power-law index alpha = 3.5; grain density rho = 2.7 g cm^-3; weighted mean dust opacity kappa = 1.88 cm^2 g^-1 (15% water-ice, 70% astrosilicates, 15% amorphous carbon)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Grid modelling of the HST scattered light emission",
+   "method": "Generate a grid of 0.6 um scattered light models based on the SPL power-law geometry using Henyey-Greenstein phase functions (and Mie theory test), apply a null map mask, scale by a dummy flux pre-factor, and minimise reduced chi^2 against the HST image.",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "r_in = 73 au, r_out = 280 au, PA = 148 deg; grid over i = 25 to 60 deg (step 5 deg), g = 0.1 to 0.9 (step 0.1), gamma = -2 to 2 (step 0.5)"
+   ],
+   "assumptions": [
+    "Henyey-Greenstein scattering phase function (also tested spherical grains with Mie theory)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Extract CO J=2-1 upper limits and constrain CO gas mass and planetesimal ice fraction",
+   "method": "Subtract continuum with uvcontsub, image dirty cube with tclean (0 iterations), apply Keplerian spectro-spatial filtering mask in both rotation directions over 0-60 au and 60-240 au to measure 3-sigma integrated flux upper limit, and compute NLTE CO gas mass upper limits.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Delta v = 1.269 km s^-1; effective bandwidth factor = 2.667; integration regions = 0-60 au and 60-240 au; gas temperatures = 10, 20, 50, 100 K"
+   ],
+   "assumptions": [
+    "v_rad = -24.98 +/- 0.14 km s^-1; M_* = 1.8 M_sun (also tested 1.32 M_sun); PA = 146 deg; i = 61 deg; unshielded CO photodissociation timescale = 120 yr"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Constrain planetary system architecture and collisional belt mass using RV, Gaia astrometry, and disc geometry",
+   "method": "Fit 17 years of RV data (236 data points) for N=0, 1, 2 planets with RadVel; combine the residual linear RV trend, Gaia DR2-eDR3 proper motion anomaly limit, and chaotic zone non-overlap with the 93-151 au belt to bound companion masses and semi-major axes; derive minimum planetesimal size and total belt mass from collisional cascade equations.",
+   "software": [
+    "RadVel"
+   ],
+   "key_parameters": [
+    "N_data = 236 RV points; system age = 2.5 Gyr; belt inner edge = 93 au"
+   ],
+   "assumptions": [
+    "M_* = 1.8 +/- 0.3 M_sun; gamma = 1 for PMA limit; Q*_D ~ 70 J kg^-1, v_rel = 660 +/- 130 m s^-1, rho = 2.7 g cm^-3, belt width = 50 au for collisional cascade calculation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 6 total 1.3 mm flux density (F_tot,B6)",
+   "value": "0.96",
+   "uncertainty": "0.10",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA analysis",
+     "quote": "Combined in quadrature with an assumed $10\\%$ ALMA calibration uncertainty, this results in a value of $F_{\\rm{tot,\\,B6}}{=}0.96\\pm0.10\\,$mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 6 1.3 mm stellar flux density (F_*,B6)",
+   "value": "191",
+   "uncertainty": "20",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA analysis",
+     "quote": "Since the star is unresolved, the emission peak at this location can be used to constrain the 1.3 mm stellar flux as $191{\\pm}8\\,\\mu$Jy, which combined with the 10% flux calibration uncertainty of ALMA results in $F_{\\rm{\\star,\\,B6}}{=}191{\\pm}20\\,\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical millimetre disc position angle (PA)",
+   "value": "146",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Summary of ALMA analysis",
+     "quote": "we have observationally constrained its position angle on the sky as ${\\rm{PA}}{=}146{\\pm}5^\\circ$, its inclination as $i{=}61{\\pm}5^\\circ$, the radial peak location of its disc emission at ${\\sim}$110 au, starting at ${\\sim}50\\,$au, and extending outwards to at least ${\\sim}$180 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical millimetre disc inclination (i)",
+   "value": "61",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Summary of ALMA analysis",
+     "quote": "we have observationally constrained its position angle on the sky as ${\\rm{PA}}{=}146{\\pm}5^\\circ$, its inclination as $i{=}61{\\pm}5^\\circ$, the radial peak location of its disc emission at ${\\sim}$110 au, starting at ${\\sim}50\\,$au, and extending outwards to at least ${\\sim}$180 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre disc emission radial extent",
+   "value": "50-180",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We present ALMA Band 6 (1.3 mm) and HST scattered light (0.6 $\\mu$m) images, demonstrating $\\kappa\\,$CrB’s broad debris disc, covering an extent $50{-}180\\,$au in the millimetre (peaking at $110$ au), and $51{-}280\\,$au in scattered light (peaking at 73 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre disc peak emission radius",
+   "value": "110",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We present ALMA Band 6 (1.3 mm) and HST scattered light (0.6 $\\mu$m) images, demonstrating $\\kappa\\,$CrB’s broad debris disc, covering an extent $50{-}180\\,$au in the millimetre (peaking at $110$ au), and $51{-}280\\,$au in scattered light (peaking at 73 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "Scattered light disc radial extent",
+   "value": "51-280",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We present ALMA Band 6 (1.3 mm) and HST scattered light (0.6 $\\mu$m) images, demonstrating $\\kappa\\,$CrB’s broad debris disc, covering an extent $50{-}180\\,$au in the millimetre (peaking at $110$ au), and $51{-}280\\,$au in scattered light (peaking at 73 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "Scattered light disc peak brightness radius",
+   "value": "73",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HST analysis",
+     "quote": "The brightness profile shows an initial ‘shoulder’ of emission (between 51-67 au), a sharp brightness peak (at 73 au, with intensity ${\\sim}100\\,\\mu$Jy arcsec$^{-2}$) and a decaying intensity profile outwards to ${\\sim}280$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust albedo (A)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HST analysis",
+     "quote": "We find $A{\\sim}10\\%$, based on $F{=}2923$ mJy, $f{=}5\\times10^{-5}$ (see $\\S$1), $d\\phi{=}$2-8$''$, and $i{=}40^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc blackbody temperature (T_bb)",
+   "value": "72",
+   "uncertainty": "4",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Flux distribution",
+     "quote": "The single-component model finds the disc is best-fitted with a blackbody temperature of $T_{\\rm{bb}}{=}72{\\pm}4\\,\\rm{K}$ (corresponding to an uncorrected blackbody radius of $r_{\\rm{bb}}{=}51{\\pm}6$ au), a relatively faint but significant fractional luminosity of $4.9{\\pm}0.5{\\times}10^{-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncorrected disc blackbody radius (r_bb)",
+   "value": "51",
+   "uncertainty": "6",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Flux distribution",
+     "quote": "The single-component model finds the disc is best-fitted with a blackbody temperature of $T_{\\rm{bb}}{=}72{\\pm}4\\,\\rm{K}$ (corresponding to an uncorrected blackbody radius of $r_{\\rm{bb}}{=}51{\\pm}6$ au), a relatively faint but significant fractional luminosity of $4.9{\\pm}0.5{\\times}10^{-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc fractional luminosity",
+   "value": "4.9e-5",
+   "uncertainty": "0.5e-5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Flux distribution",
+     "quote": "The single-component model finds the disc is best-fitted with a blackbody temperature of $T_{\\rm{bb}}{=}72{\\pm}4\\,\\rm{K}$ (corresponding to an uncorrected blackbody radius of $r_{\\rm{bb}}{=}51{\\pm}6$ au), a relatively faint but significant fractional luminosity of $4.9{\\pm}0.5{\\times}10^{-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SPL dust mass (M_dust)",
+   "value": "0.0158",
+   "uncertainty": "0.0026",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SPL | 0.0158 | 93 | 62.3 | 148 | 195 | 0.07 | -0.20 | -2.5 | ${>}151$ | \\- |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0026) | \\(8\\) | (3.4) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | (1.2) | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SPL inner edge radius (r_1)",
+   "value": "93",
+   "uncertainty": "8",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SPL | 0.0158 | 93 | 62.3 | 148 | 195 | 0.07 | -0.20 | -2.5 | ${>}151$ | \\- |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0026) | \\(8\\) | (3.4) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | (1.2) | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SPL outer edge radius (r_2)",
+   "value": ">151",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SPL | 0.0158 | 93 | 62.3 | 148 | 195 | 0.07 | -0.20 | -2.5 | ${>}151$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SPL inclination (i)",
+   "value": "62.3",
+   "uncertainty": "3.4",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SPL | 0.0158 | 93 | 62.3 | 148 | 195 | 0.07 | -0.20 | -2.5 | ${>}151$ | \\- |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0026) | \\(8\\) | (3.4) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | (1.2) | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SPL position angle (PA)",
+   "value": "148",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SPL | 0.0158 | 93 | 62.3 | 148 | 195 | 0.07 | -0.20 | -2.5 | ${>}151$ | \\- |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0026) | \\(8\\) | (3.4) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | (1.2) | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SPL surface density power-law index (p_SPL)",
+   "value": "-2.5",
+   "uncertainty": "1.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SPL | 0.0158 | 93 | 62.3 | 148 | 195 | 0.07 | -0.20 | -2.5 | ${>}151$ | \\- |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0026) | \\(8\\) | (3.4) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | (1.2) | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SGR dust mass (M_dust)",
+   "value": "0.0170",
+   "uncertainty": "0.0028",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SGR | 0.0170 | 131 | 61.1 | 151 | 193 | 0.07 | -0.20 | \\- | \\- | 98 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0028) | \\(9\\) | (3.8) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | \\- | \\- | \\(19\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SGR peak radius (r_1)",
+   "value": "131",
+   "uncertainty": "9",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SGR | 0.0170 | 131 | 61.1 | 151 | 193 | 0.07 | -0.20 | \\- | \\- | 98 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0028) | \\(9\\) | (3.8) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | \\- | \\- | \\(19\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Model SGR Gaussian width (sigma_SGR)",
+   "value": "98",
+   "uncertainty": "19",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SGR | 0.0170 | 131 | 61.1 | 151 | 193 | 0.07 | -0.20 | \\- | \\- | 98 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | (0.0028) | \\(9\\) | (3.8) | \\(5\\) | \\(13\\) | (0.04) | (0.07) | \\- | \\- | \\(19\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Strict lower limit on planetesimal belt radial extent",
+   "value": ">50.1",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A broad debris disc",
+     "quote": "We constrain this extent by finding the difference between the mcmc chains of the fitted inner and outer belt radii and find that over $99.7\\,\\%$ of these are separated by 50.1 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Scattered light modelled inclination (i)",
+   "value": "30-40",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Modelling the scattered light emission",
+     "quote": "This investigation found generally that to minimise $\\chi^2$, models required low inclinations in the range $i{=}30{-}40^\\circ$, highly anisotropic HG scattering factors in the range $g{\\sim}0.8{-}0.9$, and relatively flat surface density power-law indices in the range $\\gamma=-0.5{-}0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scattered light Henyey-Greenstein anisotropic scattering factor (g)",
+   "value": "0.8-0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Modelling the scattered light emission",
+     "quote": "This investigation found generally that to minimise $\\chi^2$, models required low inclinations in the range $i{=}30{-}40^\\circ$, highly anisotropic HG scattering factors in the range $g{\\sim}0.8{-}0.9$, and relatively flat surface density power-law indices in the range $\\gamma=-0.5{-}0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=2-1 3-sigma integrated flux upper limit (60-240 au)",
+   "value": "<25.4",
+   "uncertainty": "not stated",
+   "units": "mJy km s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO J=2-1 Analysis",
+     "quote": "Therefore, we place a $3\\,\\sigma$ limit on the integrated CO flux as $\\delta F_{\\rm{CO},3\\,\\sigma} {=} 2.667 \\times \\Delta v \\times \\rm{rms} {=} 25.4\\,\\rm{mJy\\,kms^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas mass upper limit (M_CO)",
+   "value": "<(4.2-13)e-7",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We place an upper limit on the CO gas mass of $M_{\\rm{CO}}{<}(4.2{-}13) \\times10^{-7}\\,M_\\oplus$, and show this to be consistent with levels expected from planetesimal collisions, or from CO-ice sublimation as $\\kappa\\,$CrB begins its giant branch ascent."
+    },
+    {
+     "loc": "CO gas: constraints on giant branch sublimation?",
+     "quote": "From this plot, we find an upper limit on the CO gas mass between $(4.2{-}13)\\times10^{-7}\\,M_\\oplus$ (i.e., based on the 100 K minima and maxima, which correspond to moderate and high electron collision partner densities)."
+    }
+   ]
+  },
+  {
+   "quantity": "Planetesimal CO+CO2 ice mass fraction upper limit (f_CO+CO2)",
+   "value": "<85-95",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO gas: constraints on giant branch sublimation?",
+     "quote": "We estimate this limit between $f_{\\rm{CO+CO_{2}}}{<}85{-}95\\%$, based on the 110 au belt radius, lower-limit on the disc extent of 50 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum planetesimal size lower limit (D_max)",
+   "value": ">=1",
+   "uncertainty": "not stated",
+   "units": "km",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "By modelling the millimetre emission, we estimate the dust mass as ${\\sim}0.016\\,M_\\oplus$, and constrain lower-limit planetesimal sizes as $D_{\\rm{max}}{\\gtrsim}1\\,$km and the planetesimal belt mass as $M_{\\rm{disc}}{\\gtrsim}1\\,M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Planetesimal belt total mass lower limit (M_disc)",
+   "value": ">=1",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "By modelling the millimetre emission, we estimate the dust mass as ${\\sim}0.016\\,M_\\oplus$, and constrain lower-limit planetesimal sizes as $D_{\\rm{max}}{\\gtrsim}1\\,$km and the planetesimal belt mass as $M_{\\rm{disc}}{\\gtrsim}1\\,M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner planet kappa CrB b orbital period (P_b, N=1 fit)",
+   "value": "1248.4",
+   "uncertainty": "+1.5/-1.6",
+   "units": "days",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Period ($P_{\\rm{b}}$) | 1248.4$^{+1.5}_{-1.6}$ | 1247.9$^{+4.9}_{-9.4}$ | days |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner planet kappa CrB b M sin i (M_b, N=1 fit)",
+   "value": "1.84",
+   "uncertainty": "0.14",
+   "units": "M_Jup",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Mass $\\sin{i}$ ($M_{\\rm{b}}$) | $1.84{\\pm}0.14$ | $1.78{\\pm}0.21$ | $M_{\\rm{Jup}}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear RV velocity trend (dot v, N=1 fit)",
+   "value": "0.73",
+   "uncertainty": "0.07",
+   "units": "m s^-1 yr^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| RV velocity trend ($\\dot v$) | $0.73{\\pm}0.07$ | $0.83{\\pm}0.27$ | m s$^{-1}$ yr$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Putative outer RV companion semi-major axis",
+   "value": "8-66",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We constrain the properties of an outer body causing a linear trend in 17 years of radial velocity data to have a semi-major axis $8{-}66$ au and a mass $0.4{-}120\\,M_{\\rm{Jup}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Putative outer RV companion mass",
+   "value": "0.4-120",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We constrain the properties of an outer body causing a linear trend in 17 years of radial velocity data to have a semi-major axis $8{-}66$ au and a mass $0.4{-}120\\,M_{\\rm{Jup}}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image cell size (pixel scale) and image size (number of pixels) used in CASA tclean for both the continuum map and the CO cube",
+  "Stopping threshold, niter, and masking strategy used in tclean for the Band 6 continuum image",
+  "Exact continuum rms noise level in the Band 6 continuum image (in uJy/beam)",
+  "Whether primary beam correction was applied to the ALMA continuum image or CO cube before flux extraction",
+  "Prior ranges and number of walkers/steps/burn-in length used in the emcee + RADMC-3D visibility fitting"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python visibility fitting wrapper connecting RADMC-3D and emcee (developed in Marino et al. 2018 / Lovell et al. 2021c)",
+  "Exact CASA tclean pixel cell size, image dimensions, and cleaning threshold/stopping criteria for the Band 6 continuum image",
+  "Exact prior distributions and MCMC chain configuration (number of walkers and steps) for the SPL and SGR visibility fits"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "ALMA project code, HST proposal ID, and RV supplementary data are all public; CASA version, time/channel averaging, statwt, natural weighting, uvcontsub parameters, and physical model assumptions (grain sizes, density, opacity, scale height) are clearly specified. Minor deductions for unstated tclean image dimensions/cell size/thresholds and unstated MCMC priors.",
+ "rediscovery_reason": "Single target, public ALMA Cycle 7 dataset (2019.1.01443.T) and supplementary RV file, straightforward calibration and natural-weighted continuum imaging, and well-defined numeric targets (total flux, stellar flux, disc PA/inclination/radius, dust mass, CO upper limit, and RadVel orbital parameters).",
+ "source_card": "cards/2022MNRAS.517.2546L/sonnet/card.md"
+}

@@ -1,0 +1,260 @@
+{
+ "bibcode": "2017ApJ...843...18V",
+ "title": "Quasar Feedback in the Ultraluminous Infrared Galaxy F11119+3257: Connecting the Accretion Disk Wind with the Large-scale Molecular Outflow",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa767d",
+ "arxiv_id": "1706.00443",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Does the CO(1-0) emission of the ULIRG F11119+3257 show broad wings confirming the molecular outflow, and what are its energetics compared with the OH-based estimates?",
+ "alma_project_codes": [
+  "2015.1.00305.S"
+ ],
+ "data": {
+  "bands": "Band 3, CO(1-0) at 96.9 GHz",
+  "arrays": "36 antennas, 12-m array",
+  "angular_resolution": "~2.8 arcsec (~9 kpc)",
+  "sensitivity": "target 140 uJy per 100 km/s channel; achieved 0.28 mJy per 20 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "OH-based outflow energetics, Herschel OH 119 um profile and X-ray wind properties",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "Local (“instantaneous”) quantities derived by T15 from the *Herschel* OH 119 $\\mu$m presented in V13."
+     }
+    ]
+   },
+   "citation": "Tombesi et al. 2015 (T15); Veilleux et al. 2013 (V13)"
+  },
+  {
+   "what": {
+    "value": "L_AGN = 1.5e46 erg/s from 15-to-30 um color",
+    "evidence": [
+     {
+      "loc": "4.1 Energetics of the CO Outflow",
+      "quote": "$L_{\\rm AGN}$ = 1.5 $\\times$ 10$^{46}$ ergs s$^{-1}$, derived from the infrared 15-to-30 $\\mu$m color and the prescription of Veilleux et al. (2009)"
+     }
+    ]
+   },
+   "citation": "Veilleux et al. 2009"
+  },
+  {
+   "what": {
+    "value": "alpha_CO values (Galactic 4.3, ULIRG 0.8, optically thin 0.34)",
+    "evidence": [
+     {
+      "loc": "4.1 Energetics of the CO Outflow",
+      "quote": "adopt a ULIRG-like $\\alpha_{\\rm CO}$ of 0.8 $M_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ as done by Cicone et al. (2014)"
+     }
+    ]
+   },
+   "citation": "Cicone et al. 2014; Bolatto et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the cube",
+   "method": "Continuum subtraction in uv plane, Briggs imaging at 20 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Two-Gaussian fit to integrated spectrum",
+   "method": "Simultaneous narrow plus broad Gaussian fit to 3 and 5 arcsec aperture spectra",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Remove rotating disk and isolate high-velocity gas",
+   "method": "Fit 2D Gaussian per channel; build smooth source model with linearly changing position, Gaussian intensity, constant size and orientation; subtract to obtain residual cube",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Velocity gradient represents galaxy rotation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure size and flux of the outflow",
+   "method": "Gaussian fit to high-velocity map and aperture photometry growth curve",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive outflow mass and energetics",
+   "method": "Mass from integrated flux with alpha_CO; Mdot = M V/R, Pdot = Mdot V, Edot = 1/2 Mdot V^2",
+   "software": [],
+   "key_parameters": [
+    "R_out = 7 kpc, V_out = 1000 km/s"
+   ],
+   "assumptions": [
+    "ULIRG-like alpha_CO = 0.8; luminosity distance 933 Mpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Broad Gaussian integrated flux, 3 arcsec aperture",
+   "value": "0.66",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Broad Gaussian  | $-$11 $\\pm$ 53    | 1113 $\\pm$ 171 | 0.66 $\\pm$ 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad Gaussian FWHM, 3 arcsec aperture",
+   "value": "1113",
+   "uncertainty": "171",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Broad Gaussian  | $-$11 $\\pm$ 53    | 1113 $\\pm$ 171"
+    }
+   ]
+  },
+  {
+   "quantity": "High-velocity integrated flux",
+   "value": "0.40",
+   "uncertainty": "0.10",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Blue + red wings | \\[$-$820, $-$400\\], \\[+280, +800\\] | 0.40 $\\pm$ 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum outflow radius",
+   "value": "15 (+5/-8)",
+   "uncertainty": "+5/-8",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "4$\\ensuremath{''}$8$^{+1.5}_{-2.7}$ = 15$^{+5}_{-8}$ kpc, is our best estimate of the maximum extent of the CO outflow."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflowing molecular mass (ULIRG-like alpha_CO)",
+   "value": "(0.6-1.4)e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Energetics of the CO Outflow",
+     "quote": "This results in an outflowing molecular gas mass of $\\sim$ (0.6 $-$ 1.4) $\\times$ 10$^9$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate",
+   "value": "80-200",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Energetics of the CO Outflow",
+     "quote": "$\\dot{M}_{\\rm out,CO}$ = (80 $-$ 200) $M_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Momentum flux",
+   "value": "(6-13)e35 dyne = 1.5-3.0 L_AGN/c",
+   "uncertainty": "not stated",
+   "units": "dyne",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Energetics of the CO Outflow",
+     "quote": "$\\dot{P}_{\\rm out,CO}$ = (6 $-$ 13) $\\times$ 10$^{35}$ dyne = (1.5 $-$ 3.0) $L_{\\rm AGN}/c$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mechanical power",
+   "value": "(3-6)e43 erg/s = 0.15-0.40% L_AGN",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Energetics of the CO Outflow",
+     "quote": "(3 $-$ 6) $\\times$ 10$^{43}$ ergs s$^{-1}$ = (0.15 $-$ 0.40)% $L_{\\rm AGN}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within ~1 kpc",
+   "value": "~5e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "a dynamical mass of $\\sim$5 $\\times$ 10$^9$ $M_\\odot$ within $\\sim$1 kpc from the center is derived"
+    }
+   ]
+  },
+  {
+   "quantity": "Efficiency f_CO",
+   "value": "0.02-0.03",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Comparisons with Published Models",
+     "quote": "we derive $f_{\\rm CO}$ = 0.02 – 0.03"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for the continuum fit",
+  "Number of clean iterations, threshold, cell and image size",
+  "Exact velocity range used for the two-Gaussian fits and the bootstrap setup",
+  "Flux calibrator and CASA/pipeline version",
+  "Source coordinates and phase center",
+  "How the rotation model velocity-gradient fit was parametrized in detail",
+  "How R_out and V_out nominal values map to the quoted mass ranges (aperture flux choices)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selection",
+  "Clean parameters and image size",
+  "Source model fitting details",
+  "Aperture centers and exact flux ranges behind mass ranges"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Single dataset with reasonably clear steps, but several imaging and fitting details are missing.",
+ "rediscovery_reason": "Single-project data, mainly numeric results (fluxes, rates), recipe mostly reproducible.",
+ "source_card": "cards/2017ApJ...843...18V/sonnet/card.md"
+}

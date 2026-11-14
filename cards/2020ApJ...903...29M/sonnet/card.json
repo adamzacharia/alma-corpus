@@ -1,0 +1,948 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...903...29M",
+  "title": "Reconstructing the EUV Spectrum of Star-forming Regions from Millimeter Recombination Lines of H I, He I, and He II",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Murchikova, Lena",
+  "n_authors": 12,
+  "arxiv_id": "2006.15153",
+  "doi": "10.3847/1538-4357/abb67c",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00111.S",
+   "2016.1.01015.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here we present a study based on ALMA observations of three Galactic ultra-compact HII regions and the starburst region Sgr B2(M), in which we reconstruct the key parameters of the EUV spectra"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "G330.9536",
+     "coordinates": {
+      "value": "16:09:52.60 -51:54:55",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "G330.9536 | 16:09:52.60 | -51:54:55 |  5.5 kpc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "5.5 kpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "G330.9536 | 16:09:52.60 | -51:54:55 |  5.5 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "G332.8254",
+     "coordinates": {
+      "value": "16:20:11.00 -50:53:16",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "G332.8254 | 16:20:11.00 | -50:53:16 |  4.4 kpc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "4.4 kpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "G332.8254 | 16:20:11.00 | -50:53:16 |  4.4 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "Sgr B2(M)",
+     "coordinates": {
+      "value": "17:47:20.15 -28:23:05",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "SgrB2(M)  | 17:47:20.15 | -28:23:05 |  8.3 kpc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "8.3 kpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "SgrB2(M)  | 17:47:20.15 | -28:23:05 |  8.3 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "G328.8076",
+     "coordinates": {
+      "value": "15:55:48.60 -52:43:07",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "G328.8076 | 15:55:48.60 | -52:43:07 | 11.7 kpc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "11.7 kpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "G328.8076 | 15:55:48.60 | -52:43:07 | 11.7 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can the EUV spectrum (13.6-54.4 eV slope and above) of star-forming regions be reconstructed from mm recombination lines H30a, He30a and He+48a, and does it agree with Starburst99 and BPASS models?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We compare the inferred values of the EUV spectral slopes with the values expected for a purely single stellar evolution model (Starburst99) and the Binary Population and Spectral Synthesis code (BPASS)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00111.S",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "Our data were obtained during two ALMA observational programs: Cycle 2 project 2013.1.00111.S and Cycle 4 project 2016.1.01015.S."
+      }
+     ]
+    },
+    {
+     "code": "2016.1.01015.S",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "Our data were obtained during two ALMA observational programs: Cycle 2 project 2013.1.00111.S and Cycle 4 project 2016.1.01015.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "were observed simultaneously in one tuning of ALMA in Band 6 with two spectrometers with a velocity resolution of $2.5 \\, \\mathrm{km \\, s^{-1}}.$"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Line windows with 2.5 km/s resolution; three continuum windows at 232.8, 232.3, 229.9 GHz with 40 km/s resolution",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "The other three spectral windows were set to observe the continuum at 232.8 GHz, 232.3 GHz and 229.9 GHz with a velocity resolution of 40 $\\mathrm{km \\, s^{-1}}.$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HI",
+     "transition": "H30alpha n=31->30",
+     "rest_frequency": "231.901 GHz",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "H30$\\alpha$ (HI: n=31$\\to$30 at 231.901 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "HeI",
+     "transition": "He30alpha n=31->30",
+     "rest_frequency": "231.995 GHz",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "He30$\\alpha$ (HeI: n=31$\\to$30 at 231.995 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "HeII",
+     "transition": "He+48alpha n=49->48",
+     "rest_frequency": "230.713 GHz",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "He$^{+}48\\alpha$ (HeII: n=49$\\to$48 at 230.713 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "38, 30 antennas (Cycle 2); 47-50 antennas (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "on June 16, 2015 (Sgr B2(M)) with 30 antennas and achieved resolution $0.53'' \\times 0.47''.$"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Cycle 2: 0.53''x0.47'' (1.24''x0.93'' for the first Sgr B2(M) run); Cycle 4: ~0.3''x0.28''",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "The achieved resolution was $\\sim 0.3''\\times 0.28''.$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~3.5'' (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "Maximum recoverable scale of the emission is $\\sim 3.5''.$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Cycle 2: 2 mJy/beam; Cycle 4: 0.4 mJy/beam in a 10 km/s channel",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "Achieved sensitivity is 0.4 mJy/beam in a 10 $\\mathrm{km \\, s^{-1}}$ velocity channel in each source."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Cycle 2: 9 min per G-source, 18 min Sgr B2(M); Cycle 4: ~120 min per target",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "The exposure times on target were 9 min on each of the G-sources and 18 minutes total on Sgr B2(M)."
+     },
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "The total exposure time on each target was $\\sim$120 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Cycle 2: 2015 Apr 23, Apr 24, Apr 27, Jun 16; Cycle 4: 2017 May 6, 7, 8",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "The observations of G330.9536 and G332.8254 in ALMA Cycle 4 were conducted on May 6 and 8, 2017 with 47 antennas and May 7, 2017 with 50 antennas."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Line emissivities of H30a, He+48a at n~1e4 cm-3, T~1e4 K",
+      "evidence": [
+       {
+        "loc": "2 Theory",
+        "quote": "are (cite: sto95a; sto95):"
+       }
+      ]
+     },
+     "citation": "Storey & Hummer 1995 (cite: sto95a; sto95)"
+    },
+    {
+     "what": {
+      "value": "Effective charge Z_eff=1.0002 for He30a emissivity scaling",
+      "evidence": [
+       {
+        "loc": "2 Theory",
+        "quote": "assume $Z_\\mathrm{eff}= 1.0002$ for the effective charge of the nucleus (cite: Towle96)"
+       }
+      ]
+     },
+     "citation": "Towle96"
+    },
+    {
+     "what": {
+      "value": "Target selection and classification of the ultra-compact HII regions",
+      "evidence": [
+       {
+        "loc": "3 Observations and Data reduction",
+        "quote": "The three ultra-compact HII regions are taken from the survey of (cite: 2010MNRAS.405.1560M)."
+       }
+      ]
+     },
+     "citation": "2010MNRAS.405.1560M"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Starburst99 v7.0.1 and BPASS v2.2.1 instantaneous 1e3 Msun starburst spectra, Z=0.02 (Z=0.014 for Geneva v00/v40)",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "We compare this observational result with model spectra of an instantaneous $10^3 M_{\\odot}$ starburst obtained with (i) Starburst99 v7.0.1"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Cycle 2: NAASC staff scripts; Cycle 4: ALMA pipeline script from NAASC",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "We used the calibration and data reduction scripts prepared by the staff at North American ALMA Science Center (NAASC) in Charlottesville, Virginia."
+      },
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "For calibration and data reduction we used the script automatically generated by the ALMA pipeline provided by the NAASC."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean (Cycle 4); CASA CLEAN (Cycle 2)",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "We imaged the data using the task `tclean` in CASA."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "Cycle 2: 0.08''; Cycle 4: 0.028''",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "The images created were $500\\times 500$ pixel with the pixel size $0.08''.$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "Cycle 2: 500x500 pix; Cycle 4: 1000x1000 pix",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "The images created were $1000\\times 1000$ pixel with the pixel size $0.028''.$"
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in CASA using carefully identified line-free channels",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "we performed subtraction of the continuum in the uv-plane with the `uvcontsub` task in CASA using the identified channels"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Theory of recombination line emission measures and emissivity scaling",
+      "evidence": [
+       {
+        "loc": "2 Theory",
+        "quote": "we can use scaling relation $\\varepsilon_{\\mathrm{He}\\, \\mathrm{n}\\alpha }(T,n) \\simeq Z_\\mathrm{eff}^{17/3} \\varepsilon_{\\mathrm{H}\\mathrm{n}\\alpha }(T,n)$ derived in SM13 Appendix C"
+       }
+      ]
+     },
+     "from_reference": "Scoville & Murchikova 2013 (cite: 2013ApJ...779...75S)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean weighting/robust, deconvolver, threshold, masking",
+    "CASA version",
+    "line-free channel ranges used for uvcontsub",
+    "exact extraction regions (coordinates/sizes) for sub-regions",
+    "Gaussian/Voigt fitting setup and code",
+    "flux calibrator and flux scale uncertainty",
+    "how He+48a upper limits were computed (confidence level)",
+    "BPASS/Starburst99 input parameters (IMF, etc.)",
+    "how <gamma> and its 0.4 uncertainty were averaged"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image and subtract continuum",
+    "method": {
+     "value": "Image with CASA, identify line-free channels, uv-plane continuum subtraction to get line and continuum cubes",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "Then we performed subtraction of the continuum in the uv-plane with the `uvcontsub` task in CASA using the identified channels to obtain separate continuum and line images"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract spectra and fit recombination lines",
+    "method": {
+     "value": "Spectra from sub-regions and tot_H30a region; fit Gaussian/Voigt profiles to get V, DeltaV and integrated flux, excluding molecular lines; HI fitted first and subtracted when HeI sits on its wing",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "we fitted the spectra with a combination of Gaussian and Voigt profiles and then used the fit to extract central velocity ($V$) of the H30$\\alpha$ and He30$\\alpha$ lines"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian and Voigt profile fits",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "we fitted the spectra with a combination of Gaussian and Voigt profiles"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "He+48a flux limit",
+    "method": {
+     "value": "Assume V and width equal to He30a and fit the expected profile to uncontaminated data points",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "we use the width and the velocity of He30$\\alpha$ lines to obtain the expected He$^+$48$\\alpha$ profile which we then fit under the uncontaminated spectral data points"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "V(He+48a)=V(H30a)~V(He30a); DeltaV(He+48a)=DeltaV(He30a)",
+      "evidence": [
+       {
+        "loc": "4 Data analysis",
+        "quote": "we assume that $V_\\mathrm{He^+48\\alpha } = V_\\mathrm{H30\\alpha } \\simeq V_\\mathrm{He30\\alpha }$ and $\\Delta V_\\mathrm{He^+48\\alpha } = \\Delta V_\\mathrm{He30\\alpha }.$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive EM, Q and EUV slopes",
+    "method": {
+     "value": "Convert line fluxes to emission measures (eq. SdVtoEM), then to Q0,Q1,Q2 via recombination coefficients, then solve for gamma, L0, gamma_2 of a broken power law",
+     "evidence": [
+      {
+       "loc": "2 Theory",
+       "quote": "Using eq. [\\[a\\]] we can solve for $\\gamma$, which we then substitute it into the rest of the equations to find $L_0, \\, L_2$ and $\\gamma_2,$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Radiation equilibrium, no EUV photon escape, no photon stealing by lower-threshold species; T=1e4 K",
+      "evidence": [
+       {
+        "loc": "Appendix",
+        "quote": "we assume (i) that the gas is in a radiation equilibrium, so that the number of recombinations of each ion species is equal to the number of ionizations"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Error propagation: ~4% on gamma for Cycle 4, ~10% Sgr B2(M); ~20% true uncertainty due to approximate equations",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "Since the equations are approximate, we expect the true uncertainties on the derived spectral parameters to be $\\sim 20 \\%.$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare with population synthesis models",
+    "method": {
+     "value": "Compare gamma and Q with Starburst99 v7.0.1 and BPASS v2.2.1 (binary and single) for 1e3 Msun instantaneous starburst as a function of age",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "We scale the simulations to $10^3 M_{\\odot}$ so that the production rate of $h\\nu > 13.6 \\, \\mathrm{eV}$ photons ($Q_0$) predicted by the models is similar to the observed values"
+      }
+     ]
+    },
+    "software": [
+     "Starburst99",
+     "BPASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging, CLEAN/tclean, uvcontsub",
+     "evidence": [
+      {
+       "loc": "3 Observations and Data reduction",
+       "quote": "We imaged and CLEANed the data using the Common Astronomy Software Applications package (CASA)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Starburst99",
+    "version": "v7.0.1",
+    "used_for": {
+     "value": "Model EUV spectra for comparison",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "We use BPASS v2.2.1 and Starburst 99 v7.0.1."
+      }
+     ]
+    }
+   },
+   {
+    "name": "BPASS",
+    "version": "v2.2.1",
+    "used_for": {
+     "value": "Binary and single star model EUV spectra for comparison",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "We use BPASS v2.2.1 and Starburst 99 v7.0.1."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "EUV spectral slope gamma (13.6-54.4 eV)",
+    "value": "4.5",
+    "uncertainty": "0.4",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\nu}\\propto \\nu^{-4.5 \\pm 0.4}.$"
+     }
+    ]
+   },
+   {
+    "quantity": "gamma_2 (>54.4 eV)",
+    "value": ">15",
+    "uncertainty": "lower limit",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "where $\\gamma_2>15$"
+     }
+    ]
+   },
+   {
+    "quantity": "gamma, G330.9536 tot_H30a",
+    "value": "4.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "tot$_\\mathrm{H30\\alpha }$ | 7.01 | -89.7 | 35.2 | 485.04 | 12.93 | 33.49"
+     }
+    ]
+   },
+   {
+    "quantity": "gamma, G328.8076",
+    "value": "~7.5",
+    "uncertainty": "unreliable",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "The spectral slope $\\gamma$ obtained for G328.8076 is $\\sim 7.5$."
+     }
+    ]
+   },
+   {
+    "quantity": "model slope for <7 Myr starburst",
+    "value": "~3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "$\\gamma_\\mathrm{sin} \\simeq \\gamma_\\mathrm{bin} \\simeq 3$"
+     }
+    ]
+   },
+   {
+    "quantity": "temperatures from continuum+line",
+    "value": "5,000-12,000",
+    "uncertainty": "highly uncertain",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4 Data analysis",
+      "quote": "The temperature estimates for the observed extraction regions obtained this way are between 5,000 K to 12,000 K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All four regions show similar EUV slopes irrespective of evolutionary stage; HeII recombination line not detected in any target.",
+    "evidence": [
+     {
+      "loc": "4 Data analysis",
+      "quote": "The HeII recombination line was not detected in any of our targets."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "mm H/He recombination lines can reconstruct EUV spectral slopes",
+    "experiment": "ALMA Band 6 observations of H30a, He30a, He+48a in four HII regions",
+    "result": "gamma = 4.5 +/- 0.4 in all reliable regions",
+    "finding": "Technique yields EUV spectral slopes",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that in all cases the EUV spectra between 13.6 and 54.4 eV have similar frequency dependence"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Observed slopes match Starburst99 and BPASS",
+    "experiment": "Compare gamma with model slopes vs age",
+    "result": "Observed slopes steeper than ~3 for <7 Myr; between models for older ages",
+    "finding": "Observations differ from models; binary fraction possibly lower than in BPASS",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This may imply that the fraction of interacting binaries in HII regions is substantially lower than assumed in BPASS."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Metallicity could explain the discrepancy",
+    "experiment": "Vary BPASS metallicity",
+    "result": "Variations obvious but insufficient",
+    "finding": "Metallicity alone cannot account for it",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "the metallicity alone cannot account for the discrepancy of the model and the observed spectral properties"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Lines chosen to be observable simultaneously in ALMA Band 6 and avoid molecular line confusion",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "H30$\\alpha ,$ He30$\\alpha ,$ and He$^+48\\alpha$ lines can be observed simultaneously with ALMA Band 6 making them our preferred choice."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Ages of all regions being the same (~2.5 Myr) was ruled out",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "We rule out this possibility."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Molecular line contamination dominates flux accuracy; G328.8076 slope unreliable; ages unknown; photon escape in evolved regions",
+     "evidence": [
+      {
+       "loc": "4 Data analysis",
+       "quote": "The accuracy of determining $[S\\Delta V],$ $V$ and $\\Delta V$ is dominated by molecular lines contamination, which is hard to quantify."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Sub-regions of the same HII region treated as independent probes",
+    "Slope uncertainty dominated by model assumptions, not propagated statistically",
+    "Dust absorption of EUV photons and photon stealing neglected",
+    "Only three sources give reliable slopes; age unknown so model comparison is ambiguous"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project codes given in acknowledgments",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00111.S and ADS/JAO.ALMA#2016.1.01015.S"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "tclean parameters",
+    "line-free channels",
+    "extraction region definitions",
+    "CASA version"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for two projects",
+   "score_inferred": 3,
+   "score_reason": "Analytic equations are fully given and data available, but imaging parameters and extraction regions are unspecified.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, explicit equations, and numeric results in Table 1, though imaging details are loosely specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Scoville & Murchikova 2013 (cite: 2013ApJ...779...75S)",
+     "why": "Theory of mm recombination lines as EUV probes"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": [
+    "Starburst99",
+    "BPASS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e488fa13d67bf67d9a9a3867d6b491bf",
+  "batch_id": "msgbatch_01AGJmWoowxdzxrBuhezyUD3",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:18:45",
+  "usage": {
+   "input_tokens": 31052,
+   "output_tokens": 8326,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.073289,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 61,
+  "quotes_ok": 61,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 44,
+   "rate": 0.55
+  },
+  "evidence_ok": true
+ }
+}

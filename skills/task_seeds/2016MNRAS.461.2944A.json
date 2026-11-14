@@ -1,0 +1,267 @@
+{
+ "bibcode": "2016MNRAS.461.2944A",
+ "title": "ALMA observations of a z ≈ 3.1 protocluster: star formation from active galactic nuclei and Lyman-alpha blobs in an overdense environment",
+ "year": 2016,
+ "doi": "10.1093/mnras/stw1509",
+ "arxiv_id": "1601.00682",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Is galaxy growth (star formation) of X-ray AGNs accelerated in the z~3.1 SSA 22 protocluster relative to field AGNs, and is star formation the power source of Lyman-alpha blobs?",
+ "alma_project_codes": [
+  "2011.0.00725.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um), centred on 344 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "median synthesized beam 1.10 x 0.61 arcsec",
+  "sensitivity": "rms 0.21–0.34 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Field X-ray AGN SFR comparison sample (ALMA 870 um)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "utilising the study of Mullaney et al. (2015), which primarily used ALMA 870 $\\mu$m data to measure SFRs for $z>1.5$ X-ray AGNs in the field."
+     }
+    ]
+   },
+   "citation": "Mullaney et al. (2015) (cite: 2015MNRAS.453L..83M)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1.1 mm data for protocluster core AGNs (incl. ADF 22a)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "Umehata et al. (2015) mapped this central region over 1.5$^{\\prime}$ $\\times$ 3.0$^{\\prime}$ ($\\approx$ 0.7 $\\times$ 1.4 Mpc) with ALMA at 1.1 mm"
+     }
+    ]
+   },
+   "citation": "Umehata et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses of protocluster AGNs",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The stellar masses of the protocluster AGNs have been calculated by Kubo et al. (2015)"
+     }
+    ]
+   },
+   "citation": "Kubo et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Ly alpha luminosities / LAB definitions and narrow-band imaging",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "All of our targets are detected in the narrow-band rest-frame Ly $\\alpha$ imaging of Matsuda et al. (2004)."
+     }
+    ]
+   },
+   "citation": "Matsuda et al. (2004)"
+  },
+  {
+   "what": {
+    "value": "SFR evolution of M* star-forming galaxies",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "we have assumed the measured SFR evolution for $M_{\\rm *}$ star-forming galaxies from Schreiber et al. (2015)"
+     }
+    ]
+   },
+   "citation": "Schreiber et al. (2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA maps",
+   "method": "Iterative CASA clean with natural weighting and tight clean boxes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "clean to 1.5 sigma within boxes around >5 sigma then >3.5 sigma sources; 0.1 arcsec pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect sources and set threshold",
+   "method": "Find >3.5 sigma peaks in non-PB-corrected maps, repeat on inverted maps; adopt >4.5 sigma threshold; point-source fit for extension",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "4.5 sigma threshold; upper limits = 4.5 x rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Match ALMA sources to X-ray AGNs",
+   "method": "Combine Chandra (1.5 x 80% confidence) and ALMA (0.4 arcsec) positional uncertainties",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive L_IR and SFR",
+   "method": "870 um flux to L_IR(8–1000 um) with Bethermin et al. (2015) average SEDs, then SFR = L_IR/3.778e43 erg/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF; L_IR uncertainty ~0.3 dex; z=3.09"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare protocluster and field AGN mean SFRs",
+   "method": "Mean SFR ranges bracketing upper limits as 0 and as the limit; field AGNs evolved to z=3.09 using Schreiber et al. (2015)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Field AGN SFR evolution follows M* star-forming galaxies"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Assess star formation as Lya power source in LABs",
+   "method": "Convert IR star-formation luminosity to 200–912 A luminosity with Geach et al. (2009) template; derive required escape fraction",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA-detected sources within primary beams",
+   "value": "6 (3 matched to X-ray AGNs)",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.3 ALMA Source Detection, Matching, and Properties",
+     "quote": "Overall we detect six ALMA sources at $>$ 4.5 $\\sigma$ within the primary beam of the ALMA maps"
+    }
+   ]
+  },
+  {
+   "quantity": "SFRs of ALMA-detected AGNs",
+   "value": "220–410",
+   "uncertainty": "L_IR ~0.3 dex",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the SFRs of the three ALMA-detected X-ray AGNs are $\\approx$ 220–410 $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR upper limits of undetected AGNs",
+   "value": "<130 to <210",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the SFR upper limits range from $<130$ $M_{\\odot}$ yr$^{-1}$ to $<210$ $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SFR range of protocluster AGNs",
+   "value": "110–210",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "110–210 $M_{\\odot}$ yr$^{-1}$ for the protocluster AGNs"
+    }
+   ]
+  },
+  {
+   "quantity": "Protocluster/field mean SFR enhancement",
+   "value": "0.7–2.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the mean SFRs of the protocluster AGNs are enhanced by a factor of $\\approx$ 0.7–2.3 over the mean SFRs of the field AGNs"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SFR of 6 core AGNs (with Umehata+15)",
+   "value": "500–530; enhancement 3.1–5.9",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "is 500–530 $M_{\\odot}$ yr$^{-1}$, a factor of $\\approx$ 3.1–5.9 enhancement in mean SFR over that measured in the field"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SFR of 4 LABs",
+   "value": "240 ± 110 (range 150–410)",
+   "uncertainty": "110 (std dev)",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "the mean and standard deviation is $240\\pm110$ $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape fractions of 200–912 A photons",
+   "value": "~5% (LAB 2), ~3% (LAB 3), ~0.3% (LAB 12), ~0.2% (LAB 14)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$\\approx$ 5% (LAB 2), $\\approx$ 3% (LAB 3), $\\approx$ 0.3% (LAB 12), and $\\approx$ 0.2% (LAB 14)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact clean parameters (niter, thresholds in Jy, mask definitions) and any uv-range selection",
+  "Flagging details and whether archive-delivered calibration was used or re-calibrated",
+  "Exact Bethermin et al. (2015) SED template and k-correction used to get L_IR from S_870",
+  "Individual field AGN SFRs from Mullaney et al. (2015) and Umehata et al. (2015) AGN values used for means",
+  "Method for the primary-beam-corrected upper limits for each non-detection"
+ ],
+ "missing_for_reproduction": [
+  "Detailed clean parameters",
+  "Exact SED templates and k-correction for L_IR",
+  "Field AGN SFR table values from Mullaney et al. (2015)"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public Cycle 0 data, simple continuum imaging and clear numeric results; some inherited steps (SED conversion, field comparison) require external papers.",
+ "rediscovery_reason": "Data are public, recipe is simple (clean, detect, flux to SFR) and results are numeric.",
+ "source_card": "cards/2016MNRAS.461.2944A/sonnet/card.md"
+}

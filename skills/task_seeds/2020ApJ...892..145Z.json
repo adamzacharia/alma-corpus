@@ -1,0 +1,264 @@
+{
+ "bibcode": "2020ApJ...892..145Z",
+ "title": "ALMA Imaging of the CO (7-6) Line Emission in the Submillimeter Galaxy LESS 073 at z = 4.755",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab75eb",
+ "arxiv_id": "2002.04816",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the CO(7-6) line, [CI] and continuum properties of SMG LESS 073 at z=4.755, and can line-ratio-based f60/f100 estimates be validated against SED fits?",
+ "alma_project_codes": [
+  "2015.1.00388.S"
+ ],
+ "data": {
+  "bands": "Band 4",
+  "arrays": "12-m, 42 and 38 antennas",
+  "angular_resolution": "1.22x0.95 arcsec line; 1.19x0.90 continuum",
+  "sensitivity": "0.3 mJy/beam per 100 km/s channel; continuum 40 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "FIR/submm photometric points for the SED",
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission",
+      "quote": "the remained photometric points are collected from the literature (De Breuck et al. 2014; Gilli et al. 2014 and see references therein)"
+     }
+    ]
+   },
+   "citation": "De Breuck et al. 2014; Gilli et al. 2014"
+  },
+  {
+   "what": {
+    "value": "[CII] and [NII] line fluxes for line ratios",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Reference for line (excluding CO (7$-$6)) fluxes: (1) De Breuck et al. (2014); (2) Nagao et al. (2012); (3) this work."
+     }
+    ]
+   },
+   "citation": "De Breuck et al. 2014; Nagao et al. 2012"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) luminosity",
+    "evidence": [
+     {
+      "loc": "3.1.1 CO (7-6) Emission",
+      "quote": "Comparing our $L^\\prime _{\\rm CO\\,(7-6)}$ with $L^\\prime _{\\rm CO\\,(2-1)}$ from Coppin et al. (2010)"
+     }
+    ]
+   },
+   "citation": "Coppin et al. 2010"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO(7-6) cube",
+   "method": "Combine calibrated data, clean with Briggs weighting; continuum from SPWs 0-3 excluding line channels; cube from SPW-0 binned to 100 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO(7-6) flux, width, size",
+   "method": "Average of aperture photometry, 1-d Gaussian spectrum fit, and imfit 2-d fit",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit FIR SED",
+   "method": "Single-temperature modified blackbody, optically thick vs thin",
+   "software": [],
+   "key_parameters": [
+    "beta fixed 1.8; nu0 = 1.5 THz (200 um)"
+   ],
+   "assumptions": [
+    "Filling factor 1 in Stefan-Boltzmann size"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gas mass",
+   "method": "[CI] luminosity times conversion 12.5 Msun/(K km/s pc2); average with CO(2-1) based mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 0.8"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Line-ratio f60/f100, SFR, depletion time",
+   "method": "Lu15 relations; SFR from CO(7-6), [NII], FIR; depletion time = Mgas/SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Salpeter IMF; L_FIR = L_IR/1.9"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(7-6) integrated flux",
+   "value": "0.86",
+   "uncertainty": "0.08",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "integrated flux of $0.86\\pm0.08$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) FWHM",
+   "value": "343",
+   "uncertainty": "40",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a line width of $343\\pm40$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density",
+   "value": "0.51",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Continuum Emission",
+     "quote": "the flux density of the continuum is $0.51\\pm0.02$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust (optically thick)",
+   "value": "57.6",
+   "uncertainty": "3.5",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$T_{\\rm dust}=57.6\\pm3.5$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "f60/f100 SED",
+   "value": "0.86",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$f_{60}/f_{100}=0.86\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR",
+   "value": "5.8e12",
+   "uncertainty": "0.9e12",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\rm IR}=(5.8\\pm0.9)\\times10^{12}~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "3.3e10",
+   "uncertainty": "1.7e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$(3.3\\pm1.7)\\times10^{10}~M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI] flux",
+   "value": "0.23",
+   "uncertainty": "0.08",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.2 [C I] Emission",
+     "quote": "$f_{\\rm [C\\,{\\scriptsize \\textsc{i}}]}=0.23\\pm0.08$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from [NII]",
+   "value": "760",
+   "uncertainty": "+590/-330",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.1 Estimation of the SFR",
+     "quote": "${\\rm SFR_{[N\\,{\\scriptsize\\textsc{ii}}]}}=760^{+590}_{-330}~M_\\odot~{\\rm yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average line-ratio f60/f100",
+   "value": "1.05",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Line Ratios",
+     "quote": "have an average value of $1.05\\pm0.09$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum channel selection",
+  "Clean mask, threshold, cell and image size",
+  "Which SED photometric points and values were used",
+  "SED fitting sampler/minimizer details",
+  "Which flux density exactly for the rest-frame 850 um gas mass",
+  "Primary beam and aperture spectrum extraction region details",
+  "Equation parameters for SFR from Lu15 not given"
+ ],
+ "missing_for_reproduction": [
+  "Imaging details (mask, cell size, line-free channels)",
+  "SED photometry table",
+  "Lu15 equation coefficients"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and basic imaging stated, but SED inputs and several imaging details missing.",
+ "rediscovery_reason": "Public data, short dataset, numeric line flux and continuum results reproducible.",
+ "source_card": "cards/2020ApJ...892..145Z/sonnet/card.md"
+}

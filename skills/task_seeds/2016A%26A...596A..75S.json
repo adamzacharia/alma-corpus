@@ -1,0 +1,292 @@
+{
+ "bibcode": "2016A&A...596A..75S",
+ "title": "Characterizing elusive, faint dusty star-forming galaxies: a lensed, optically undetected ALMA galaxy at z   3.3",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201629339",
+ "arxiv_id": "1610.08515",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the physical properties (redshift, stellar mass, SFR, dust mass, magnification) of a serendipitously detected, optically undetected, lensed faint submm galaxy at z~3.3 in COSMOS, and is it representative of elusive dust-obscured star-forming galaxies missing from the cosmic SFH census?",
+ "alma_project_codes": [
+  "2013.1.00034.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12 m antennae (32 and 39 in the two runs)",
+  "angular_resolution": "0.54x0.37 arcsec, PA -77.92 deg",
+  "sensitivity": "RMS 0.14 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UltraVISTA-DR1 Ks-selected catalogue photometry (30 bands) used for target selection",
+    "evidence": [
+     {
+      "loc": "2 Target identification",
+      "quote": "on the photometry from the UltraVISTA-DR1 $\\rm K_s$–selected catalogue of (cite: muzzin13) (30 photometric bands)"
+     }
+    ]
+   },
+   "citation": "(cite: muzzin13)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift of lens z=1.1458",
+    "evidence": [
+     {
+      "loc": "2 Target identification",
+      "quote": "spectroscopic redshift of $z$=1.1458 (from the Nov. 2015 zCOSMOS release, (cite: lilly09))"
+     }
+    ]
+   },
+   "citation": "(cite: lilly09)"
+  },
+  {
+   "what": {
+    "value": "VLA 20 cm radio flux of the counterpart",
+    "evidence": [
+     {
+      "loc": "5 Physical properties",
+      "quote": "In the 20 cm VLA catalogue of (cite: bondi08) we found a radio counterpart of our faint SMG"
+     }
+    ]
+   },
+   "citation": "(cite: bondi08)"
+  },
+  {
+   "what": {
+    "value": "Chandra X-ray catalogue (non-detection)",
+    "evidence": [
+     {
+      "loc": "5 Physical properties",
+      "quote": "we looked for X-ray counterparts in the *Chandra* catalogue of (cite: civano16) but found none"
+     }
+    ]
+   },
+   "citation": "(cite: civano16)"
+  },
+  {
+   "what": {
+    "value": "Main Sequence template used to model the lens FIR emission",
+    "evidence": [
+     {
+      "loc": "5 Physical properties",
+      "quote": "We assumed that the optical galaxy can be described by the Main Sequence template of (cite: elbaz11)"
+     }
+    ]
+   },
+   "citation": "(cite: elbaz11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure ALMA continuum flux and size",
+   "method": "Gaussian model fit directly to visibilities with uvmodelfit; checked by image-plane Gaussian fit deconvolved from beam",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "10% calibration error added in quadrature"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Deblended optical/NIR/IRAC photometry",
+   "method": "Ks-band detection with SExtractor; template-fitting photometry with T-PHOT using I814 priors (Ks priors for IRAC); HST flux scaled via colour",
+   "software": [
+    "SExtractor",
+    "T-PHOT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "ALMA source treated as point-like at Ks position in I814 prior"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Photometric redshift and stellar mass",
+   "method": "SED fit I814-IRAC with PEGASE 2.0 templates; stellar mass from BC03 with exponentially declining SFH at best-fit z",
+   "software": [
+    "zphot.exe"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF; LCDM H0=70, Om=0.3, OL=0.7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Deblend FIR fluxes and derive IR luminosity",
+   "method": "Assume 24um and part of Herschel flux belongs to lens (Elbaz Main Sequence template), subtract from Herschel photometry, iterate with Draine&Li fit (4 iterations); fit SMG templates of Michalowski10 and Pope08; adopt mean and dispersion of L_IR",
+   "software": [],
+   "key_parameters": [
+    "35% uncertainty on model added in quadrature"
+   ],
+   "assumptions": [
+    "All 24um emission initially attributed to the optical lens"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "SFR and dust mass",
+   "method": "SFR_IR+UV = 1e-10 L_bol with L_bol = 2.2 L_UV + L_IR; radio SFR via Barger12; dust mass from Draine&Li fit and modified blackbody (beta=2)",
+   "software": [],
+   "key_parameters": [
+    "kappa at 240um 5.17 cm2/g; 100um band excluded from MBB fit"
+   ],
+   "assumptions": [
+    "T~40K for ALMA-only dust mass"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate lensing magnification",
+   "method": "Singular isothermal sphere lens with velocity dispersion from Tully-Fisher relation at z~1 (Tiley16), distribution of mu; +10% for ellipticity correction",
+   "software": [],
+   "key_parameters": [
+    "sigma ~209+-20 km/s"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 870um integrated flux",
+   "value": "3.90",
+   "uncertainty": "0.41",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 ALMA observations and data analysis",
+     "quote": "The integrated flux over the source is $3.90 \\pm 0.41$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Photometric redshift",
+   "value": "3.28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 Physical properties",
+     "quote": "We infer a photometric redshift of 3.28"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR",
+   "value": "4.57e12",
+   "uncertainty": "1.38e12",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Physical properties",
+     "quote": "We obtain $L_{IR} = (4.57 \\pm 1.38) \\cdot 10^{12} L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_IR+UV",
+   "value": "463",
+   "uncertainty": "137",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Physical properties",
+     "quote": "We infer $\\rm SFR_{IR+UV} = 463 \\pm 137 M_\\odot/yr$."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio SFR",
+   "value": "237",
+   "uncertainty": "41",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Physical properties",
+     "quote": "translates into an SFR estimate of $237 \\pm 41 M_\\odot/yr$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (Draine&Li)",
+   "value": "1.12e9",
+   "uncertainty": "+0.16/-0.08 e9",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Physical properties",
+     "quote": "gives a dust mass of $M_{dust}=1.12^{+0.16}_{-0.08} \\cdot 10^9 M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust (modified blackbody)",
+   "value": "37",
+   "uncertainty": "+4/-3",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Physical properties",
+     "quote": "$T_{dust}=37^{+4}_{-3}K$"
+    }
+   ]
+  },
+  {
+   "quantity": "Magnification adopted",
+   "value": "1.54",
+   "uncertainty": "+0.13/-0.08",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Discussion and conclusions",
+     "quote": "We therefore adopted a value of $1.54$ as an estimate of the magnification factor."
+    }
+   ]
+  },
+  {
+   "quantity": "Starburstiness R_SB",
+   "value": "2 to 3.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "6 Discussion and conclusions",
+     "quote": "is between 2 and 3.8 (depending on the adopted SFR tracer)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value, cell size, image size and masking for clean",
+  "Which UltraVISTA/other files and cutouts exactly used; SExtractor parameter values",
+  "uvmodelfit starting parameters and spw/channel selection for continuum",
+  "Details of the lens model input (rotation velocity-K-band relation numbers) and the Monte Carlo realisation count",
+  "Full PEGASE/BC03 grid parameters (depends on Santini15 Table 1)",
+  "How the Herschel 100 micron upper limit was set in T-PHOT",
+  "CIGALE module and parameter choices"
+ ],
+ "missing_for_reproduction": [
+  "Briggs robust, image size and cell",
+  "SExtractor and T-PHOT configuration",
+  "Lens modelling Monte Carlo details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "ALMA data public and flux measurement simple, but SED/deblending analysis relies on external imaging, catalogs and unspecified parameters.",
+ "rediscovery_reason": "Public archival data, simple uvmodelfit flux and size measurement gives numeric result 3.90+-0.41 mJy.",
+ "source_card": "cards/2016A%26A...596A..75S/sonnet/card.md"
+}

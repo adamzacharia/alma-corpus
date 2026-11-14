@@ -1,0 +1,228 @@
+{
+ "bibcode": "2025A&A...693A.151M",
+ "title": "REsolved ALMA and SMA Observations of Nearby Stars (REASONS): A population of 74 resolved planetesimal belts at millimetre wavelengths",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202451397",
+ "arxiv_id": "2501.09058",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "What are the spatial properties (radius, width, vertical aspect ratio) and evolution of mm-resolved planetesimal belts across a uniformly modelled population of 74 systems?",
+ "alma_project_codes": [
+  "2017.1.00200.S",
+  "2017.1.00704.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.27 mm) for new ALMA data",
+  "arrays": "12-m array with 43-50 antennas; ACA for HD170773 and HD161868",
+  "angular_resolution": "not stated",
+  "sensitivity": "12-68 uJy continuum for beams 0.2-3.1 arcsec (ALMA); 100-290 uJy for SMA"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Protoplanetary ring widths (65 rings) from DSHARP, Taurus and ODISEA surveys",
+    "evidence": [
+     {
+      "loc": "5.2 The width of planetesimal belts",
+      "quote": "We compile a sample of 65 protoplanetary rings from three ALMA surveys: DSHARP (cite: Huang2018), the Taurus star-forming region survey (cite: Long2018), and ODISEA"
+     }
+    ]
+   },
+   "citation": "(cite: Huang2018; Long2018; Cieza2021)"
+  },
+  {
+   "what": {
+    "value": "Archival ALMA, SMA, CARMA calibrated data of resolved belts",
+    "evidence": [
+     {
+      "loc": "3.3 Archival observations",
+      "quote": "For SMA and CARMA archival observations, we obtained calibrated, science-ready visibilities from PIs/co-Is of the respective projects"
+     }
+    ]
+   },
+   "citation": "archival projects"
+  },
+  {
+   "what": {
+    "value": "Stellar ages and memberships from BANYAN Sigma",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Membership from BANYAN Sigma (cite: Gagne2018), or moving group age also from (cite: Gagne2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Gagne2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum",
+   "method": "Pipeline calibration, concatenation, tclean multiscale imaging",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit visibilities with belt model",
+   "method": "Radially and vertically Gaussian ring model from RADMC-3D images, Fourier transformed with GALARIO, fit with MCMC",
+   "software": [
+    "MIAO",
+    "RADMC-3D",
+    "GALARIO",
+    "emcee",
+    "CASA"
+   ],
+   "key_parameters": [
+    "h fixed to 0.03 unless vertically constrained; temperature r^-0.5"
+   ],
+   "assumptions": [
+    "Gaussian radial profile; large grains behave as blackbodies"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit SEDs",
+   "method": "Star + modified blackbody fit to multi-wavelength photometry",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive dust masses and test collisional evolution",
+   "method": "Mass at 1.33 mm from flux, kappa and blackbody temperature; compare with collisional isochrones with age groups",
+   "software": [],
+   "key_parameters": [
+    "t0 = 10 Myr, delta = 13/3, epsilon = 1, D ~2e-8 Myr Mearth au^-13/3"
+   ],
+   "assumptions": [
+    "T(R)=278.3 L^0.25 R^-0.5"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Selection bias maps",
+   "method": "Synthetic populations of 1000 belts per bin passed through selection criteria",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Radius-luminosity slope alpha",
+   "value": "0.14",
+   "uncertainty": "+0.03/-0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "leads to a slope $\\alpha=0.14^{+0.03}_{-0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter in R-L relation",
+   "value": "0.44",
+   "uncertainty": "+0.05/-0.04",
+   "units": "fraction of radius",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "an intrinsic scatter $f=0.44^{+0.05}_{-0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median fractional width of belts",
+   "value": "0.71",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "with a median fractional width of 0.71"
+    }
+   ]
+  },
+  {
+   "quantity": "Median fractional width of protoplanetary rings",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "with a median fractional width of 0.18 and only 9% having values above 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Kuiper belt radius and FWHM (L7 model)",
+   "value": "43 au, 12 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "estimate a central radius of 43 au and a FWHM of 12 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt aspect ratio range (24 belts)",
+   "value": "0.01-0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "We find well-constrained aspect ratios in the range between $\\sim$0.01 and 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass depletion exponent",
+   "value": "~1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "($\\epsilon\\sim1$, so Mass$_{\\rm 1.33mm}\\propto (t-t_0)^{-1}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Per-target weighting, robust and u-v taper values (only on Zenodo)",
+  "MCMC prior ranges and exact step counts per system",
+  "Line-free channels for continuum subtraction/ CO",
+  "Details of bias map selection thresholds per wavelength",
+  "Exact photometry compilations used in SED fits"
+ ],
+ "missing_for_reproduction": [
+  "Per-target imaging weightings and tapers (in Zenodo tables)",
+  "MCMC priors and steps per system",
+  "SED photometry compilation"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Code and calibrated data released and method well described, but many per-target settings only in external tables.",
+ "rediscovery_reason": "Public data and released visibilities; numeric results (R, width, h) for each belt can be re-derived.",
+ "source_card": "cards/2025A%26A...693A.151M/sonnet/card.md"
+}

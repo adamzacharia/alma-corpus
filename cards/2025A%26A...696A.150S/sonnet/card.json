@@ -1,0 +1,1069 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025A&A...696A.150S",
+  "title": "ALMAGAL: II. The ALMA evolutionary study of high-mass protocluster formation in the Galaxy: ALMA data processing and pipeline",
+  "year": 2025,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Sánchez-Monge, Á.",
+  "n_authors": 56,
+  "arxiv_id": "2503.05559",
+  "doi": "10.1051/0004-6361/202452703",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.00195.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we designed the ALMAGAL Large Program that observed 1017 high-mass star-forming regions distributed throughout the Galaxy"
+   },
+   {
+    "loc": "abstract",
+    "quote": "The main goal is to set up a robust pipeline that generates science-ready products"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "ALMAGAL sample (1017 fields)",
+     "coordinates": {
+      "value": "not stated (given in Molinari2024); l~30 to 215 deg, Dec<0",
+      "evidence": [
+       {
+        "loc": "2.1 ALMAGAL sample",
+        "quote": "The targets were selected to have distances $<7.5$ kpc from the Sun, clump masses $>500$ $M_\\odot$ (or $>250$ $M_\\odot$ in the outer Galaxy), and surface densities $>0.1$ g cm$^{-2}$."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "<7.5 kpc; Near <4.7 kpc, Far >4.7 kpc",
+      "evidence": [
+       {
+        "loc": "2.1 ALMAGAL sample",
+        "quote": "The targets were selected to have distances $<7.5$ kpc from the Sun, clump masses $>500$ $M_\\odot$ (or $>250$ $M_\\odot$ in the outer Galaxy), and surface densities $>0.1$ g cm$^{-2}$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Molinari2024",
+      "evidence": [
+       {
+        "loc": "2.1 ALMAGAL sample",
+        "quote": "The targets were selected to have distances $<7.5$ kpc from the Sun, clump masses $>500$ $M_\\odot$ (or $>250$ $M_\\odot$ in the outer Galaxy), and surface densities $>0.1$ g cm$^{-2}$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How can ALMAGAL data for 1017 high-mass star-forming regions be calibrated, imaged and combined across three arrays into uniform science-ready continuum images and line cubes?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The main goal is to set up a robust pipeline that generates science-ready products, that is, continuum and spectral cubes for each ALMAGAL field"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00195.L",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "The observation strategy for the ALMAGAL program (project code: 2019.1.00195.L)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.38 mm, 219 GHz)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "four spectral windows at around 219 GHz (1.38 mm), within the Band 6 of ALMA"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "spw0/spw1: 1.87 GHz each, 3840 channels of 488 kHz (~1.4 km/s); spw2/spw3: 0.468 GHz each, 122 kHz channels (~0.34 km/s)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "The other two (spw2 and spw3) cover a narrower frequency range of 0.468 GHz with an enhanced resolution[^2] of 122 kHz per channel"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H2CO, CH3CN",
+     "transition": "not stated",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "placed to cover key spectral line transitions of the molecular species H$_2$CO and CH$_3$CN"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "5–4",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "5.1 Studies of specific spectral lines",
+       "quote": "the SiO (5–4) line as a tracer of shocks and molecular outflows"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12m (TM1, TM2) and 7m ACA (7M)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "together with the ten 7m-size antennas of the Morita array (Atacama Compact Array or ACA)"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "Near: C-2 + C-5; Far: C-3 + C-6; plus 7M",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "This was achieved using the C-2 and C-5 configurations for the “Near sample”, and the C-3 and C-6 configurations for the “Far sample”."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "~0.1 pc",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "while being sensitive to large-spatial scales of about 0.1 pc"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "target 0.1 mJy/beam continuum; achieved median 0.05 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Median rms sensitivity"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2–4 min 7M, 1 min TM2, 2–3 min TM1 per source",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "Each source was observed for about 2–4 minutes in the 7M array, 1 minute in the TM2 array, and 2–3 minutes in the TM1 array."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Oct 2019–Mar 2020 and Mar 2021–Jul 2022",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "from October 2019 to March 2020, and from March 2021 to July 2022"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel Hi-GAL",
+     "provided": {
+      "value": "clump luminosity, mass, temperature",
+      "evidence": [
+       {
+        "loc": "5.2 Statistical characterization of the chemical richness",
+        "quote": "The clump parameters (i.e., luminosity, mass and temperature) are determined from the *Herschel* Hi-GAL measurements"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Sample catalogues and clump properties",
+      "evidence": [
+       {
+        "loc": "2.1 ALMAGAL sample",
+        "quote": "917 fields from the catalogue of dense clumps based on the Hi-GAL 70–500 $\\mu$m images (cite: Elia2017)"
+       }
+      ]
+     },
+     "citation": "Elia2017; Lumsden2013"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 0.899 cm2/g",
+      "evidence": [
+       {
+        "loc": "3.5 ALMAGAL science products",
+        "quote": "a dust opacity of 0.899 cm$^{2}$ g$^{-1}$ (cite: OssenkopfHenning1994)"
+       }
+      ]
+     },
+     "citation": "OssenkopfHenning1994"
+    },
+    {
+     "what": {
+      "value": "Field distances",
+      "evidence": [
+       {
+        "loc": "5.2 Statistical characterization of the chemical richness",
+        "quote": "where $D$ is the distance to the different ALMAGAL fields (cite: Molinari2024)"
+       }
+      ]
+     },
+     "citation": "Molinari2024"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard ALMA pipeline calibration (QA2 products), then ALMAGAL pipeline",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "the standard calibration products generated by the ALMA pipeline (cite: Hunter2023) were taken as a starting point for the ALMAGAL pipeline"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.6.1 for calibration and most steps; 6.2.0 for final joint-deconvolution imaging",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "version 5.6.1 for calibration and most of the steps within the ALMAGAL processing pipeline"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Calibrated data from ARC Europe, same as scriptForPI.py output",
+     "evidence": [
+      {
+       "loc": "4.1 Calibration and data staging",
+       "quote": "correspond to the same output that any user can generate when running the `scriptForPI.py` file"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Automatic phase-only self-cal, solint='int', applied if S/Nselfcal>3; kept if rms improves >7.5% and beam grows <15%",
+     "evidence": [
+      {
+       "loc": "4.3 Self-calibration",
+       "quote": "using a solution interval equal to the integration time $t_\\mathrm{int}$ (i.e., `solint=’int’`)"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean (CASA 5.6.1 first imaging; 6.2.0 final)",
+     "evidence": [
+      {
+       "loc": "4.4 Final joint-deconvolution imaging",
+       "quote": "we jointly image the different array configurations using the `tclean` task in `CASA`"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale",
+     "evidence": [
+      {
+       "loc": "4.4 Final joint-deconvolution imaging",
+       "quote": "All images were produced using the *multiscale* deconvolver and the multithresh automasking routines"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = +0.5",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "with a weighting robust Briggs parameter of $+0.5$"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "auto-multithresh with per-array parameters (Table), merged TM2 and 7M masks, final PB mask",
+     "evidence": [
+      {
+       "loc": "4.4.1 Continuum images",
+       "quote": "the pipeline uses a mask that is equal to the whole primary beam (PB)"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "7M [0,30,60]; TM2/TM1 [0,6,18,30]; 7MTM2 and 7MTM2TM1 [0,6,18,30,60]",
+     "evidence": [
+      {
+       "loc": "Table tclean parameters",
+       "quote": "— scales | \\[0, 30, 60\\] | \\[0, 6, 18, 30\\] | \\[0, 6, 18, 30\\] | \\[0, 6, 18, 30, 60\\] | \\[0, 6, 18, 30, 60\\]"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "findcont line-free ranges, refined with REFIND.py (up to 6 iterations)",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "the ALMAGAL pipeline includes the `REFIND.py` script, which runs a new instance of `findcont` on the CLEANed cube image."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "images not PB corrected; pb files supplied; FoV to 30% response",
+     "evidence": [
+      {
+       "loc": "4.5 Data products",
+       "quote": "The `image` files are not primary-beam corrected, which results in a homogeneous noise level across the whole image"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "cubes smoothed to the largest beam; beams not circularized",
+     "evidence": [
+      {
+       "loc": "4.4.2 Line-only cube images",
+       "quote": "The final stitched cube is smoothed to a common beam, corresponding to the largest beam in the originally stitched cube."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "median 0.47\"x0.38\" (Near), 0.28\"x0.19\" (Far) for 7M+TM2+TM1",
+     "evidence": [
+      {
+       "loc": "4.5.2 Angular resolution in final products",
+       "quote": "The combined 7M+TM2+TM1 images have slightly larger beam sizes with a median of $0.28\\ensuremath{''}\\times0.19\\ensuremath{''}$ and $0.47\\ensuremath{''}\\times0.38\\ensuremath{''}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.04–0.1 mJy/beam continuum (MAD); 2.1–2.4 (broad) and 4.3–5.1 (narrow) mJy/beam cubes",
+     "evidence": [
+      {
+       "loc": "4.5.3 Intensity and noise levels in final products",
+       "quote": "The final MAD noise level in the fully combined (7M+TM2+TM1) images ranges from 0.04 to 0.1 mJy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Automasking multi-thresh algorithm",
+      "evidence": [
+       {
+        "loc": "4.2 Continuum determination and first imaging",
+        "quote": "CLEANing masks are produced following the automasking multi-thresh functionality described by (cite: Kepley2020)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kepley2020)"
+    },
+    {
+     "what": {
+      "value": "Self-calibration S/N criterion",
+      "evidence": [
+       {
+        "loc": "4.3 Self-calibration",
+        "quote": "we followed the standard interferometric guidelines that suggest that for phase-only self-calibration we need to detect the target with a signal-to-noise ratio (S/N) $>3$"
+       }
+      ]
+     },
+     "from_reference": "(cite: Taylor1999)"
+    },
+    {
+     "what": {
+      "value": "RoI definition (8 sigma closed contour)",
+      "evidence": [
+       {
+        "loc": "5.2 Statistical characterization of the chemical richness",
+        "quote": "We follow the approach introduced in (cite: Molinari2024) and define these bright regions, or regions of interest"
+       }
+      ]
+     },
+     "from_reference": "(cite: Molinari2024)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact tclean niter/threshold/cell/imsize values (cell size, image size apart from ~900 pixels)",
+    "Per-source line-free channel lists (cont.dat) not in the paper",
+    "Exact line rest frequencies and the line-identification method",
+    "Spectral resolution/regridding parameters for cubes in detail",
+    "Which fields were self-calibrated per array (only counts)",
+    "Details of how the spectra for RoIs were extracted"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Stage calibrated data",
+    "method": {
+     "value": "Obtain calibrated MSs from ARC and split per source and EB with scriptToSplitSources.py",
+     "evidence": [
+      {
+       "loc": "4.1 Calibration and data staging",
+       "quote": "The ALMAGAL script[^4] `scriptToSplitSources.py` splits the data contained in the calibrated measurement sets of each EB into files containing only data for each individual scientific target"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "QA2 weblogs inspected for major problems",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "The weblogs produced by the ALMA observatory during the observation and the QA2 (quality assessment) phase were inspected to search for major calibration problems."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Determine continuum ranges and first images",
+    "method": {
+     "value": "findcont then REFIND.py iterative refinement using mom8_fc residuals; tclean first images per array",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "This proceeds iteratively until the criterion is met (i.e., no residual emission is identified in the `mom8_fc` images), or until 5 iterations have been completed"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "findcont"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust +0.5; 6th iteration removes remaining emission channels",
+      "evidence": [
+       {
+        "loc": "4.2 Continuum determination and first imaging",
+        "quote": "for the 6$^\\mathrm{th}$ iteration, we simply remove any remaining channels that have emission above the given threshold"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with STATCONT and LumberJack, within 5%",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "We obtained consistent results on the continuum emission level, within 5% differences, when using the three different software packages"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Automatic self-calibration",
+    "method": {
+     "value": "Iterative phase-only self-cal on continuum, cleaning to 4x, 3x, then 2x rms; solutions applied to all spws",
+     "evidence": [
+      {
+       "loc": "4.3 Self-calibration",
+       "quote": "From the fourth iteration on, the process is repeated, CLEANing down to a threshold of $2\\times$ rms."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "S/N_selfcal>3; minsnr=2.5; accept if rms improves >7.5% and beam <15% larger",
+      "evidence": [
+       {
+        "loc": "Footnote 8",
+        "quote": "This can happen because they do not meet the S/N criteria (`minsnr=2.5`) when determining new calibration solutions."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compare rms and beam before/after each iteration",
+     "evidence": [
+      {
+       "loc": "4.3 Self-calibration",
+       "quote": "Both images, before and after self-calibration, are compared"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Joint deconvolution imaging of continuum and cubes",
+    "method": {
+     "value": "Four-step iterative tclean in 500-iteration rounds, merging TM2 and 7M masks then PB mask; cubes in ~100-channel chunks then stitched and smoothed",
+     "evidence": [
+      {
+       "loc": "4.4.1 Continuum images",
+       "quote": "additional runs of `tclean` are executed iteratively, in rounds of 500 iterations, until one of these two conditions are met"
+      }
+     ]
+    },
+    "software": [
+     "CASA 6.2.0"
+    ],
+    "key_parameters": [
+     {
+      "value": "stop when model flux increases <1% or residual <2.5x theoretical noise",
+      "evidence": [
+       {
+        "loc": "4.4.1 Continuum images",
+        "quote": "(1) the flux in the model (or CLEAN components) does not increase by more than 1%, or (2) the emission in the residual is less than $2.5\\times$ the expected theoretical noise"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Convolved combined images compared to lower-resolution arrays, intensities and profiles consistent",
+     "evidence": [
+      {
+       "loc": "4.5.1 Quality assessment of data combination",
+       "quote": "The convolved images confirm that we recover the same structure and intensities."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Noise and mass sensitivity",
+    "method": {
+     "value": "MAD of residual image as rms; convert to mass sensitivity",
+     "evidence": [
+      {
+       "loc": "4.5.3 Intensity and noise levels in final products",
+       "quote": "The rms noise level shown in Fig. [23](#fig:continuum-properties) and throughout the paper correspond to the `AGMADRES` values."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T=20 K, kappa=0.899 cm2/g, gas-to-dust 100",
+      "evidence": [
+       {
+        "loc": "3.5 ALMAGAL science products",
+        "quote": "assuming a conservative temperature of 20 K, a dust opacity of 0.899 cm$^{2}$ g$^{-1}$ (cite: OssenkopfHenning1994), and a gas-to-dust ratio of 100"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Line richness of regions of interest",
+    "method": {
+     "value": "Define RoIs at 8 sigma continuum contours; extract spectra; measure line bandwidth fraction (5 sigma), line luminosity and line/total luminosity fraction",
+     "evidence": [
+      {
+       "loc": "5.2 Statistical characterization of the chemical richness",
+       "quote": "We characterize the line richness by defining three complementary parameters: the fraction of bandwidth with line emission, the luminosity contained in the lines, and the fraction of the line luminosity to the total luminosity"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "line threshold 5 sigma; assumed line width ~5 km/s",
+      "evidence": [
+       {
+        "loc": "5.2 Statistical characterization of the chemical richness",
+        "quote": "Assuming that each spectral line feature has a typical width of $\\approx5$ km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Sgr B2 hot cores",
+     "evidence": [
+      {
+       "loc": "5.2 Statistical characterization of the chemical richness",
+       "quote": "These line densities are comparable to those determined in the Sgr B2 region"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.6.1 and 6.2.0",
+    "used_for": {
+     "value": "calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "both calibration and imaging were done using the Common Astronomy Software Applications (`CASA`) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "findcont",
+    "version": "not stated",
+    "used_for": {
+     "value": "continuum frequency range determination",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "the frequency ranges for the continuum emission are determined using the standard ALMA-pipeline function `findcont`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "STATCONT",
+    "version": "not stated",
+    "used_for": {
+     "value": "alternative continuum determination (test)",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "other packages such as `STATCONT`[^5] (cite: SanchezMonge2018) and `LumberJack`[^6]"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LumberJack",
+    "version": "not stated",
+    "used_for": {
+     "value": "alternative continuum determination (test)",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "other packages such as `STATCONT`[^5] (cite: SanchezMonge2018) and `LumberJack`[^6]"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "analysis and figures",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made significant use of `Astropy`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median continuum rms (7M+TM2+TM1)",
+    "value": "0.05",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Median rms sensitivity"
+     }
+    ]
+   },
+   {
+    "quantity": "Fields satisfying self-cal condition (7M/TM2/TM1)",
+    "value": "177 / 342 / 225",
+    "uncertainty": "not stated",
+    "units": "fields",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Self-calibration",
+      "quote": "177 fields for the 7M array, 342 fields for the TM2 array, and 225 fields for the TM1 array"
+     }
+    ]
+   },
+   {
+    "quantity": "Self-cal success fraction (7M/TM2/TM1)",
+    "value": "81% / 66% / 45%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Self-calibration",
+      "quote": "a total of 81% for the 7M array, 66% for the TM2 array and 45% for the TM1 array"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of RoI",
+    "value": "2757 in 744 fields",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Statistical characterization of the chemical richness",
+      "quote": "We have identified a total of 2757 RoI in 744 of the 1017 ALMAGAL fields."
+     }
+    ]
+   },
+   {
+    "quantity": "Mass sensitivity",
+    "value": "0.02–0.07",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "corresponding to a gas and dust mass sensitivity in the range 0.02–0.07 $M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "JvM epsilon for 7M+TM2+TM1 continuum",
+    "value": "0.1–0.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Appendix JvM",
+      "quote": "The derived $\\epsilon$ correction factors for the combined 7M+TM2+TM1 continuum images cover a range between 0.1 and 0.3."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Line richness correlates with L/M and dust temperature of the clump",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the line richness, determined with three different parameters, is correlated with the luminosity to mass ratio of the hosting clump and with the dust temperature"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "An automated pipeline can give uniform quality products for 1017 fields",
+    "experiment": "Calibrate, refine continuum, self-calibrate, and jointly image 7M+TM2+TM1",
+    "result": "Median beam 0.47x0.38 (Near), 0.28x0.19 arcsec; rms ~0.05 mJy/beam",
+    "finding": "Pipeline reaches requested sensitivity, resolution slightly coarser than 1000 au in many fields",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The continuum sensitivity is $\\approx0.05$ mJy beam$^{-1}$ for most of the fields"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Automatic self-calibration improves images",
+    "experiment": "Phase-only self-cal on fields with S/N_selfcal>3",
+    "result": "S/N improved by >1.5 in ~16% of fields",
+    "finding": "Useful in a subset",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Self-calibration",
+      "quote": "self-calibration has improved the S/N of the images by a factor $>1.5$ in about 16% of the ALMAGAL fields"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Array combination recovers all emission",
+    "experiment": "Compare convolved combined images with lower-resolution arrays",
+    "result": "Same structures and intensities",
+    "finding": "Combination successful",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.5.1 Quality assessment of data combination",
+      "quote": "The similarity in the images and intensity profiles confirms a successful combination strategy"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Line richness traces evolution",
+    "experiment": "Compare line richness of RoIs with L/M and Tdust",
+    "result": "Positive correlations",
+    "finding": "Chemical richness increases with evolution",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2 Statistical characterization of the chemical richness",
+      "quote": "The two other relations also reveal a correlation of the line richness with the evolutionary indicator"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "findcont chosen for scripting structure compatibility",
+    "evidence": [
+     {
+      "loc": "4.2 Continuum determination and first imaging",
+      "quote": "The decision to use `findcont` in the ALMAGAL pipeline was essentially related to the scripting structure and functionality"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "JvM correction tested but not applied in first release",
+     "evidence": [
+      {
+       "loc": "4.4.1 Continuum images",
+       "quote": "Based on this, we discarded the application of such a correction factor to the first ALMAGAL data release."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "findcont conservative in line-rich sources; no manual continuum ranges",
+     "evidence": [
+      {
+       "loc": "4.2 Continuum determination and first imaging",
+       "quote": "we found that `findcont` is conservative when defining the frequency ranges in line-rich sources"
+      }
+     ]
+    },
+    {
+     "value": "TM1-only line cubes not produced in first release",
+     "evidence": [
+      {
+       "loc": "4.5 Data products",
+       "quote": "the line cubes for the TM1-only data using the new strategy are not generated in this first data release"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Flux scale accuracy not discussed",
+    "Image fidelity of non-JvM-corrected images unquantified",
+    "Cube noise values vary with beam smoothing"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data in ALMA archive; scripts on GitHub",
+    "evidence": [
+     {
+      "loc": "3 ALMAGAL processing workflow",
+      "quote": "The pipeline, including main functions and processing scripts, can be found on the GitHub repository[^3]."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "https://github.com/betacygni/ALMAGAL",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "<https://github.com/betacygni/ALMAGAL>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Enormous compute (~500 TB, 10+ million CPU hours)",
+    "Final FITS products hosted on ALMAGAL website"
+   ],
+   "estimated_data_volume_inferred": "~30 TB raw; ~500 TB products",
+   "score_inferred": 3,
+   "score_reason": "Pipeline parameters and code are public, but reproduction requires huge compute and storage.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Full reprocessing is impractical; results are mainly processing statistics."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Hunter2023",
+     "why": "ALMA pipeline and findcont refinement"
+    },
+    {
+     "citation": "Kepley2020",
+     "why": "auto-multithresh masking"
+    },
+    {
+     "citation": "Czekala2021",
+     "why": "JvM correction"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Molinari2024",
+     "why": "ALMAGAL overview paper I"
+    },
+    {
+     "citation": "Coletta2024",
+     "why": "compact core catalogue"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-IMF",
+    "Hi-GAL",
+    "RMS survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-d84525856fae4cc7fe4188c0864f0fa2",
+  "batch_id": "msgbatch_01Bs9o5DtesskHomW9ys8MMb",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:30:31",
+  "usage": {
+   "input_tokens": 39442,
+   "output_tokens": 9907,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.089583,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 76,
+  "quotes_ok": 76,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 83,
+   "stated": 61,
+   "rate": 0.735
+  },
+  "evidence_ok": true
+ }
+}

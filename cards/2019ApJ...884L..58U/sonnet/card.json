@@ -1,0 +1,731 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...884L..58U",
+  "title": "First Detection of Radio Linear Polarization in a Gamma-Ray Burst Afterglow",
+  "year": 2019,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Urata, Yuji",
+  "n_authors": 9,
+  "arxiv_id": "1904.08111",
+  "doi": "10.3847/2041-8213/ab48f3",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00801.T"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report the first detection of radio polarization of a GRB afterglow with the first intensive combined use of telescopes in the millimeter and submillimeter ranges for GRB171205A."
+   }
+  ],
+  "science": {
+   "fields": [
+    "transients"
+   ],
+   "targets": [
+    {
+     "name": "GRB 171205A",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.0368",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "announced a redshift of $z =$ 0.0368."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "VLT spectroscopy (Izzo et al. 2017 GCN)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "announced a redshift of $z =$ 0.0368."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the millimeter-band linear polarization of the GRB 171205A afterglow detectable, and does its low degree imply Faraday depolarization by non-accelerated electrons?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Here, we report the first detection of radio polarization of a GRB afterglow through observing low-luminosity GRB 171205A, and discuss implications for the Faraday depolarization model."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00801.T",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00801.T."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Band 3 (97.5 GHz) polarimetry; ACA Band 7 (345 GHz)",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "using the linear polarization mode at Band 3 (representative frequency of 97.5 GHz) on 10 and 16 December 2017."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four SPWs at 90.5, 92.5, 102.5, 104.5 GHz, 1.75 GHz bandwidth each",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "The correlator processed four spectral windows (SPWs) centered at 90.5, 92.5, 102.5, and 104.5 GHz with a bandwidth of 1.75 GHz each."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "ALMA 10 and 16 Dec 2017; ACA 10, 12, 16 Dec 2017",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "The Atacama Compact Array (ACA) observations were executed on 10, 12, and 16 December 2017 at 345 GHz (Band 7)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "230 and 345 GHz flux monitoring",
+      "evidence": [
+       {
+        "loc": "SMA",
+        "quote": "Intensive total flux monitoring was made using the Submillimeter Array (SMA) at 230 GHz starting 6 December 2017 with a total of six epochs."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "5-16 GHz total fluxes on 9 Dec 2017",
+      "evidence": [
+       {
+        "loc": "VLA",
+        "quote": "The Very Large Array (VLA) made total flux measurements for the afterglow on 9 December 2017"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Compilation of 84 optical afterglow polarization measurements for 13 GRBs",
+      "evidence": [
+       {
+        "loc": "Faraday depolarization effect",
+        "quote": "there are 84 polarimetric measurements for optical afterglows (i.e. excluding measurements for early-time reverse shock components that show high values) among 13 GRBs"
+       }
+      ]
+     },
+     "citation": "Covino & Gotz 2016 (cite: 12)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Raw data reduced at EA-ARC with CASA; polarization calibration with J1256-0547",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The raw data were reduced at the East Asian ALMA Regional Center (EA-ARC) using CASA (version 5.1.1)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The raw data were reduced at the East Asian ALMA Regional Center (EA-ARC) using CASA (version 5.1.1)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1127-1857 (bandpass and flux); J1130-1149 phase",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The bandpass and flux were calibrated using observations of J1127-1857, and J1130-1149 was used for the phase calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "amplitude and phase self-cal with infinite and then 30 s solution intervals",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "self-calibration both amplitude and phase with infinite and then 30s solution intervals"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "iterative CLEAN, up to 15000 iterations, threshold 0.02 mJy",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The Stokes $I, Q,$ and $U$ maps were CLEANed up to 15000 of CLEAN iterations with threshold of 0.02 mJy"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Absolute polarization angle accuracy of 0.3 deg",
+      "evidence": [
+       {
+        "loc": "ALMA",
+        "quote": "slightly larger than the absolute accuracy of $0.3^{\\circ}$(cite: nagai)."
+       }
+      ]
+     },
+     "from_reference": "(cite: nagai)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Weighting/robust, cell and image size",
+    "Mask used in CLEAN",
+    "Polarization calibration details and leakage handling",
+    "Target coordinates and ALMA array configuration",
+    "Fitting method for afterglow model and error treatment of P.A.",
+    "Time on source"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image Stokes I, Q, U",
+    "method": {
+     "value": "CLEAN with self-calibration on full band and per-SPW",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "we generated additional Stokes maps using the individual SPWs"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Phase calibrator polarization stability <0.02%",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "we confirm that the stability of linear polarization degree is $<0.02$%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive polarization degree and position angle",
+    "method": {
+     "value": "P=100 sqrt(Q^2+U^2)/I; P.A.=1/2 arctan(U/Q) via atan2",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The $atan2$ function in the python math module which returns a numeric value between $-\\pi$ and $\\pi$, was used to calculate the polarization position angle."
+      }
+     ]
+    },
+    "software": [
+     "Python"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Model afterglow SED and light curve",
+    "method": {
+     "value": "Granot & Sari 2002 forward shock with jet-break factor [1+(t/t_j)]^-3/4",
+     "evidence": [
+      {
+       "loc": "Afterglow modeling",
+       "quote": "we adopt the flux formula of (cite: 22) multiplied by the geometrical flux reduction factor $[1+(t/t_{j})]^{-3/4}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "ISM environment, slow cooling",
+      "evidence": [
+       {
+        "loc": "Afterglow modeling",
+        "quote": "Alternatively, we find that the ISM environment case can well fit it."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Computed X-ray light curve does not overwhelm the observed one",
+     "evidence": [
+      {
+       "loc": "Afterglow modeling",
+       "quote": "For these values we calculated X-ray light curve, which does not overwhelm the observed one."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Test Faraday depolarization",
+    "method": {
+     "value": "Compare observed P with model P0 sin(tau/2)/(tau/2) for non-accelerated electron fraction f",
+     "evidence": [
+      {
+       "loc": "Faraday depolarization effect",
+       "quote": "the polarization degree is given by $P_0 \\sin(\\tilde{\\tau}_V/2)/(\\tilde{\\tau}_V/2)$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "P0 = 1%, 0.5%, 10%",
+      "evidence": [
+       {
+        "loc": "Faraday depolarization effect",
+        "quote": "For the case of $P_{0} = 0.5\\%$ (Figure [3](#polspec)b), $1/f \\sim 10$ is still required."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Tangled magnetic field in random cells",
+      "evidence": [
+       {
+        "loc": "Faraday depolarization effect",
+        "quote": "the magnetic field in the shocked region has been assumed to be tangled on hydrodynamic scales"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1",
+    "used_for": {
+     "value": "ALMA/ACA reduction, imaging, self-calibration; SMA flux measurements; VLA",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The raw data were reduced at the East Asian ALMA Regional Center (EA-ARC) using CASA (version 5.1.1)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Miriad",
+    "version": "not stated",
+    "used_for": {
+     "value": "SMA imaging",
+     "evidence": [
+      {
+       "loc": "SMA",
+       "quote": "were then imaged using Miriad software (cite: 31)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIR",
+    "version": "not stated",
+    "used_for": {
+     "value": "SMA flagging and calibration",
+     "evidence": [
+      {
+       "loc": "SMA",
+       "quote": "The data were flagged and calibrated with the MIR data-reduction package using standard procedures"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Band 3 linear polarization degree (5.2 d)",
+    "value": "0.27",
+    "uncertainty": "0.04",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Polarization",
+      "quote": "yield a polarization degree of $0.27 \\pm 0.04\\%$ (including systematic error)."
+     }
+    ]
+   },
+   {
+    "quantity": "Band 3 polarization position angle",
+    "value": "-71.3",
+    "uncertainty": "3.3",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "0.27$\\pm$0.04     | $-$71.3$\\pm$3.3"
+     }
+    ]
+   },
+   {
+    "quantity": "Polarization upper limit at 11.2 d",
+    "value": "<0.27",
+    "uncertainty": "3 sigma",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Polarization",
+      "quote": "we measured the corresponding deep upper limit of the polarization degree ($<0.27\\%$, 3$\\sigma$ significance)"
+     }
+    ]
+   },
+   {
+    "quantity": "230 GHz decay index early (t<4 d)",
+    "value": "-0.30",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Lightcurve and SED",
+      "quote": "$\\alpha\n= -0.30 \\pm 0.07$ for $t\\lesssim4$ days"
+     }
+    ]
+   },
+   {
+    "quantity": "Required 1/f for P0=1%",
+    "value": "~12",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Faraday depolarization effect",
+      "quote": "$1/f \\sim 12\\;(E_{\\rm iso}/2\\times10^{50} {\\rm erg})^{-5/4}"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "P.A. varies with wavelength by at least 20 degrees across Band 3; constant or linear in lambda^2 fits are poor",
+    "evidence": [
+     {
+      "loc": "Polarization",
+      "quote": "We tried to fit the P.A. data including the upper limit (cite: 28) with constant or linear function of squared wavelength, but did not obtain a good fit"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Millimeter polarization of a GRB afterglow is detectable",
+    "experiment": "ALMA Band 3 full-polarization observations of GRB 171205A",
+    "result": "P = 0.27±0.04% at 5.2 days",
+    "finding": "First radio polarization detection of a GRB afterglow",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The linear polarization degree in the millimeter band at the sub-percent level ($0.27 \\pm\n0.04\\%$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Faraday depolarization by non-accelerated electrons explains the low polarization",
+    "experiment": "Compare with depolarization model assuming optical-like P0",
+    "result": "1/f ~ 10-60 required for P0 0.5-10%, but P0~0.33% needs none",
+    "finding": "Possible, implying ~10x larger energy; not unique",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Faraday depolarization effect",
+      "quote": "We should also note that the case of $P_0 \\simeq 0.33\\%$ is not ruled out"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Wind environment rejected for the shallow decay; ISM fits",
+     "evidence": [
+      {
+       "loc": "Afterglow modeling",
+       "quote": "Alternatively, we find that the ISM environment case can well fit it."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Non-simultaneous multi-wavelength polarimetry limits conclusions",
+     "evidence": [
+      {
+       "loc": "Faraday depolarization effect",
+       "quote": "Although the (semi-) simulataneous measurments in multiple wavelengths are required"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Intrinsic optical polarization unmeasured, so P0 is assumed",
+    "Low-significance polarization near the leakage/systematic floor",
+    "Model fit lacks stated fitting procedure or uncertainties"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging weighting and masks",
+    "Polarization calibration specifics",
+    "Afterglow fit procedure"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB for ALMA Band 3 polarization plus ACA",
+   "score_inferred": 3,
+   "score_reason": "Calibration sources and CASA version are given, but imaging parameters and fit procedures are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The data public status is not stated and imaging and modeling details are incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Granot & Sari 2002 (cite: 22)",
+     "why": "Afterglow synchrotron spectrum formula"
+    },
+    {
+     "citation": "Toma, Ioka & Nakamura 2008 (cite: 9)",
+     "why": "Faraday depolarization model"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ef19dee513015a03b021739514791191",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:16",
+  "usage": {
+   "input_tokens": 13943,
+   "output_tokens": 5248,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.040789,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 39,
+  "quotes_ok": 39,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 30,
+   "rate": 0.441
+  },
+  "evidence_ok": true
+ }
+}

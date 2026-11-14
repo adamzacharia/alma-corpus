@@ -1,0 +1,658 @@
+{
+ "bibcode": "2022A&A...666A.114S",
+ "title": "Toward the limits of complexity of interstellar chemistry: Rotational spectroscopy and astronomical search for n- and i-butanal",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142848",
+ "arxiv_id": "2203.07334",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Provide accurate rotational frequencies of n- and i-butanal in the millimeter-wave region, search for them toward Sgr B2(N) and G+0.693-0.027, and test the level of complexity that interstellar chemistry can reach in star-forming regions.",
+ "alma_project_codes": [
+  "2016.1.00074.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~0.3'' to ~0.8'' (median 0.6'')",
+  "sensitivity": "0.35 mJy beam^-1 to 1.1 mJy beam^-1 rms per spectral channel (median 0.8 mJy beam^-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previously measured microwave lines for n-butanal (7.5-18.5 GHz)",
+    "evidence": [
+     {
+      "loc": "Millimeter-wave spectra of n-PrCHO",
+      "quote": "All in all, we measured more than 2800 rotational transitions for the cis-gauche n-PrCHO along with 1375 transitions for the cis-trans conformer, including in the data set the microwave lines previously observed by Hotopp et al. (2012)."
+     }
+    ]
+   },
+   "citation": "Hotopp et al. (2012) (cite: 2012Hotopp)"
+  },
+  {
+   "what": {
+    "value": "Previously measured microwave data and dipole moments for i-butanal",
+    "evidence": [
+     {
+      "loc": "Millimeter-wave spectra of i-PrCHO",
+      "quote": "At the first stage of the spectral analysis, we employed predictions based on the spectroscopic parameters from (cite: 1986Stiefvatera), including the experimental values of the electric dipole-moment components."
+     },
+     {
+      "loc": "Millimeter-wave spectra of i-PrCHO",
+      "quote": "We note that a set of transitions from the previous microwave data from (cite: 1986Stiefvatera) was also included in the fit with an adequate weight."
+     }
+    ]
+   },
+   "citation": "(cite: 1986Stiefvatera)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic predictions for acetaldehyde",
+    "evidence": [
+     {
+      "loc": "Non-detection of butanal",
+      "quote": "We used the spectroscopic predictions of (cite: Smirnov14) for acetaldehyde."
+     }
+    ]
+   },
+   "citation": "(cite: Smirnov14)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic predictions for syn and gauche propanal from CDMS catalog (tag 58505 version 2 and tag 58519 version 1)",
+    "evidence": [
+     {
+      "loc": "Non-detection of butanal",
+      "quote": "We employed the spectroscopic predictions derived for butanal in Sect. 4 and the predictions available in the Cologne Database of Molecular Spectroscopy (CDMS) catalog (cite: Mueller05) for syn and gauche propanal (tag 58505 version 2 and tag 58519 version 1, respectively), which are based on (cite: Zingsheim17)."
+     }
+    ]
+   },
+   "citation": "(cite: Mueller05), (cite: Zingsheim17)"
+  },
+  {
+   "what": {
+    "value": "LTE results for s-C2H5CHO toward G+0.693-0.027",
+    "evidence": [
+     {
+      "loc": "Non-detection of butanal",
+      "quote": "We show in Table 6 the molecular ratios of the different aldehydes, using also the LTE results of s-C$_2$H$_5$CHO from (cite: rivilla2020)."
+     }
+    ]
+   },
+   "citation": "(cite: rivilla2020)"
+  },
+  {
+   "what": {
+    "value": "Methanol column density of 2 x 10^19 cm^-2 toward Sgr B2(N1S)",
+    "evidence": [
+     {
+      "loc": "Discussion: Interstellar chemistry of acetaldehyde, propanal, and butanal",
+      "quote": "This value coincides exactly with the observational ratio, using the methanol column density of $2 \\times 10^{19}$ cm$^{-2}$ provided by (cite: Motiyenko20) (see their Table 3)."
+     }
+    ]
+   },
+   "citation": "(cite: Motiyenko20)"
+  },
+  {
+   "what": {
+    "value": "LTE model of more than 120 species identified toward G+0.693-0.027",
+    "evidence": [
+     {
+      "loc": "Non-detection of butanal",
+      "quote": "To evaluate if the transitions are blended with emission from other species, we also considered the LTE model that predicts the total contribution of the more than 120 species identified so far toward G+0.693-0.027 (e.g., (cite: requenatorres2008; zeng2018; rivilla2019; rivilla2020; jimenez2020; rodriguez2021a; rodriguez2021b; rivilla2021discovery),b)."
+     }
+    ]
+   },
+   "citation": "(cite: requenatorres2008; zeng2018; rivilla2019; rivilla2020; jimenez2020; rodriguez2021a; rodriguez2021b; rivilla2021discovery)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Quantum chemical computations of n- and i-butanal conformers",
+   "method": "Geometry optimization and harmonic vibrational frequency calculations at B2PLYP-D3BJ/aug-cc-pVTZ and CCSD/cc-pVTZ levels, followed by single-point CCSD(T)/CBS energy calculations.",
+   "software": [
+    "Gaussian",
+    "CFOUR"
+   ],
+   "key_parameters": [
+    "n=3 (aug-cc-pVTZ) and n=4 (aug-cc-pVQZ) for CBS extrapolation"
+   ],
+   "assumptions": [
+    "Harmonic approximation for vibrational frequencies"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Laboratory measurement and spectroscopic fitting of millimeter-wave rotational spectra of n- and i-butanal",
+   "method": "Measure room-temperature absorption spectra from 75 to 325 GHz, assign transitions, fit rotational and centrifugal distortion constants using Watson's A-reduced Hamiltonian in the I^r-representation, and compute rotational and vibrational partition functions.",
+   "software": [
+    "AABS",
+    "XIAM",
+    "SPFIT/SPCAT"
+   ],
+   "key_parameters": [
+    "Gas pressure ~20 ubar, modulation frequency 10.2 kHz, modulation depth 20-35 kHz, 2f demodulation with 30 ms time constant",
+    "J up to 150 for Q_r calculation of gauche i-PrCHO; vibrational modes below 1000 cm^-1 for Q_v"
+   ],
+   "assumptions": [
+    "Experimental uncertainty of unblended symmetric lines is about 30 kHz; harmonic approximation for vibrational partition function"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "LTE spectral modeling and upper limit determination toward Sgr B2(N1S) using ALMA ReMoCA data",
+   "method": "Extract spectrum toward Sgr B2(N1S), build a population diagram for acetaldehyde across three torsional states to constrain temperature, compute LTE synthetic spectra in Weeds for acetaldehyde and all identified molecules, and derive column density upper limits for propanal and n-/i-butanal.",
+   "software": [
+    "Weeds"
+   ],
+   "key_parameters": [
+    "V_sys = 62 km s^-1, emitting size = 2.0'', T_rot = 250 K and 170 K, linewidth = 5.0 km s^-1, V_off = 0.0 km s^-1"
+   ],
+   "assumptions": [
+    "LTE assumption justified by high densities; torsional temperature equal to rotational temperature; propanal and butanal trace the same region and physical parameters as acetaldehyde."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "LTE spectral modeling and upper limit determination toward G+0.693-0.027",
+   "method": "Implement new spectroscopy into MADCUBA-SLIM, fit unblended transitions of CH3CHO, and determine 3-sigma integrated intensity upper limits for n- and i-butanal conformers using unblended transitions.",
+   "software": [
+    "MADCUBA",
+    "SLIM"
+   ],
+   "key_parameters": [
+    "For butanal upper limits: T_rot = 12 K, V_LSR = 69 km s^-1, Delta V = 21 km s^-1, Q_v = 1 (neglected)"
+   ],
+   "assumptions": [
+    "LTE assumption; conformers of n-butanal modeled as independent species without taking into account their zero-point energy due to low excitation temperature."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Comparison of observational aldehyde abundances and ratios with gas-grain astrochemical models",
+   "method": "Compare observed column density ratios and excitation temperatures toward Sgr B2(N1S) and G+0.693-0.027 with the hot-core chemical kinetics model of Garrod et al. (2021) and radical abundance proxies.",
+   "software": [],
+   "key_parameters": [
+    "Slow warm-up timescale model setup for Sgr B2(N1S); cold grain-surface ratios for G+0.693-0.027"
+   ],
+   "assumptions": [
+    "Ice radical ratios (C2H5:C3H7 and C3H7:C4H9) serve as proxies for gas-phase or grain-surface production rates of propanal and butanal."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rotational constant A of cis-gauche n-butanal",
+   "value": "8508.53795",
+   "uncertainty": "0.00016",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of n-PrCHO",
+     "quote": "| A$^{(a)}$(MHz) | 8508.53795 (16)$^{(f)}$ | 8508.527 (3) | 15069.38645 (92) | 15069.347 (5) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of cis-gauche n-butanal",
+   "value": "3588.81565",
+   "uncertainty": "0.00014",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of n-PrCHO",
+     "quote": "| B (MHz) | 3588.81565 (14) | 3588.809 (1) | 2555.992540 (85) | 2555.983(2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of cis-gauche n-butanal",
+   "value": "2928.57776",
+   "uncertainty": "0.00010",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of n-PrCHO",
+     "quote": "| C (MHz) | 2928.57776 (10) | 2928.5749 (9) | 2278.607628 (88) | 2278.608(1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of cis-trans n-butanal",
+   "value": "15069.38645",
+   "uncertainty": "0.00092",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of n-PrCHO",
+     "quote": "| A$^{(a)}$(MHz) | 8508.53795 (16)$^{(f)}$ | 8508.527 (3) | 15069.38645 (92) | 15069.347 (5) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of cis-trans n-butanal",
+   "value": "2555.992540",
+   "uncertainty": "0.000085",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of n-PrCHO",
+     "quote": "| B (MHz) | 3588.81565 (14) | 3588.809 (1) | 2555.992540 (85) | 2555.983(2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of cis-trans n-butanal",
+   "value": "2278.607628",
+   "uncertainty": "0.000088",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of n-PrCHO",
+     "quote": "| C (MHz) | 2928.57776 (10) | 2928.5749 (9) | 2278.607628 (88) | 2278.608(1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of gauche i-butanal",
+   "value": "7494.61375",
+   "uncertainty": "0.00019",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of i-PrCHO",
+     "quote": "| A$^{(a)}$(MHz) | 7494.61375 (19) $^{(f)}$ | 7494.62 (2) | 7707.8665 (48) | 7707.84 (3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of gauche i-butanal",
+   "value": "4107.511659",
+   "uncertainty": "0.000079",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of i-PrCHO",
+     "quote": "| B (MHz) | 4107.511659 (79) | 4107.51 (2) | 3736.66463 (78) | 3736.63 (2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of gauche i-butanal",
+   "value": "2980.699618",
+   "uncertainty": "0.000078",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of i-PrCHO",
+     "quote": "| C (MHz) | 2980.699618 (78) | 2980.70 (2) | 2815.08351 (21) | 2815.08 (2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of trans i-butanal",
+   "value": "7707.8665",
+   "uncertainty": "0.0048",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of i-PrCHO",
+     "quote": "| A$^{(a)}$(MHz) | 7494.61375 (19) $^{(f)}$ | 7494.62 (2) | 7707.8665 (48) | 7707.84 (3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of trans i-butanal",
+   "value": "3736.66463",
+   "uncertainty": "0.00078",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of i-PrCHO",
+     "quote": "| B (MHz) | 4107.511659 (79) | 4107.51 (2) | 3736.66463 (78) | 3736.63 (2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of trans i-butanal",
+   "value": "2815.08351",
+   "uncertainty": "0.00021",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimeter-wave spectra of i-PrCHO",
+     "quote": "| C (MHz) | 2980.699618 (78) | 2980.70 (2) | 2815.08351 (21) | 2815.08 (2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3CHO from population diagram toward Sgr B2(N1S)",
+   "value": "290",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| CH$_3$CHO | $\\varv_{\rm t}=0$, $\\varv_{\\rm t}=1$, $\\varv_{\\rm t}=2$ | 290 (20) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3CHO toward Sgr B2(N1S) (at T_rot = 250 K)",
+   "value": "6.7e17",
+   "uncertainty": "<10%",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| CH$_3$CHO, $\\varv_{\\rm t}=0$$^\\star$ | d | 15 | 2.0 | 250 | 6.7 (17) | 1.09 | – | 5.0 | 0.0 | 1 |"
+    },
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "Given that many lines of acetaldyde are detected with a high signal-to-noise ratio and that assuming LTE does not seem to be a limiting factor in reproducing the line intensities of this molecule, we expect that the uncertainty on its column density lies below 10%."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of s-C2H5CHO toward Sgr B2(N1S) (T_rot = 250 K)",
+   "value": "< 1.3e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| s-C$_2$H$_5$CHO, $\\varv=0$ | n | 0 | 2.0 | 250 | $<$ 1.3 (17) | 4.46 | – | 5.0 | 0.0 | $>$ 5.0 |"
+    },
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "These uncertainties could be as high as a factor of two."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of g-C2H5CHO toward Sgr B2(N1S) (T_rot = 250 K)",
+   "value": "< 4.5e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| g-C$_2$H$_5$CHO, $\\varv=0$ | n | 0 | 2.0 | 250 | $<$ 4.5 (17) | 4.46 | – | 5.0 | 0.0 | $>$ 1.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of ct-n-C3H7CHO toward Sgr B2(N1S) (T_rot = 250 K)",
+   "value": "< 3.4e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| ct-n-C$_3$H$_7$CHO, $\\varv=0$ | n | 0 | 2.0 | 250 | $<$ 3.4 (17) | 10.3 | 1.66 | 5.0 | 0.0 | $>$ 2.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of cg-n-C3H7CHO toward Sgr B2(N1S) (T_rot = 250 K)",
+   "value": "< 5.1e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| cg-n-C$_3$H$_7$CHO, $\\varv=0$ | n | 0 | 2.0 | 250 | $<$ 5.1 (17) | 8.11 | 2.52 | 5.0 | 0.0 | $>$ 1.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of g-i-C3H7CHO toward Sgr B2(N1S) (T_rot = 250 K)",
+   "value": "< 1.2e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| g-i-C$_3$H$_7$CHO, $\\varv=0$ | n | 0 | 2.0 | 250 | $<$ 1.2 (17) | 7.97 | – | 5.0 | 0.0 | $>$ 5.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of s-C2H5CHO toward Sgr B2(N1S) (T_rot = 170 K)",
+   "value": "< 6.2e16",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| s-C$_2$H$_5$CHO, $\\varv=0$ | n | 0 | 2.0 | 170 | $<$ 6.2 (16) | 2.07 | – | 5.0 | 0.0 | $>$ 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of ct-n-C3H7CHO toward Sgr B2(N1S) (T_rot = 170 K)",
+   "value": "< 1.2e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| ct-n-C$_3$H$_7$CHO, $\\varv=0$ | n | 0 | 2.0 | 170 | $<$ 1.2 (17) | 3.96 | 1.54 | 5.0 | 0.0 | $>$ 5.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of cg-n-C3H7CHO toward Sgr B2(N1S) (T_rot = 170 K)",
+   "value": "< 2.3e17",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| cg-n-C$_3$H$_7$CHO, $\\varv=0$ | n | 0 | 2.0 | 170 | $<$ 2.3 (17) | 3.26 | 2.85 | 5.0 | 0.0 | $>$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of g-i-C3H7CHO toward Sgr B2(N1S) (T_rot = 170 K)",
+   "value": "< 3.8e16",
+   "uncertainty": "up to a factor of two",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| g-i-C$_3$H$_7$CHO, $\\varv=0$ | n | 0 | 2.0 | 170 | $<$ 3.8 (16) | 3.13 | – | 5.0 | 0.0 | $>$ 18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio CH3CHO / C2H5CHO toward Sgr B2(N1S)",
+   "value": ">5-11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| CH$_3$CHO / C$_2$H$_5$CHO$^{(a)}$ | $>$5$-$11 | $\\sim$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio CH3CHO / n-C3H7CHO toward Sgr B2(N1S)",
+   "value": ">2-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| CH$_3$CHO / C$_3$H$_7$CHO$^{(b)}$ | $>$2$-$6 | $>$63 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio CH3CHO / i-C3H7CHO toward Sgr B2(N1S)",
+   "value": ">6-18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find that n- and i-butanal are at least 2–6 and 6–18 times less abundant than acetaldehyde toward Sgr B2(N1S), respectively"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "Depending on the assumed temperature, we find that propanal, n-butanal, and i-butanal are at least 5–11, 2–6, and 6-18 times less abundant than acetaldehyde, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3CHO toward G+0.693-0.027",
+   "value": "50e13",
+   "uncertainty": "1e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| CH$_3$CHO | 50$\\pm$1 | 9.4$\\pm$0.1 | 69.5$\\pm$0.1 | 21.0$\\pm$0.3 | 37 | (1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3CHO toward G+0.693-0.027",
+   "value": "9.4",
+   "uncertainty": "0.1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| CH$_3$CHO | 50$\\pm$1 | 9.4$\\pm$0.1 | 69.5$\\pm$0.1 | 21.0$\\pm$0.3 | 37 | (1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of ct-n-C3H7CHO toward G+0.693-0.027",
+   "value": "<0.8e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| $ct$-$n$-C$_3$H$_7$CHO$^c$ | $<$0.8 | 12 | 69 | 21 | $<$0.6 | (1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of cg-n-C3H7CHO toward G+0.693-0.027",
+   "value": "<0.5e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| $cg$-$n$-C$_3$H$_7$CHO$^c$ | $<$0.5 | 12 | 69 | 21 | $<$0.4 | (1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of g-i-C3H7CHO toward G+0.693-0.027",
+   "value": "<1.6e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "| $g$-$i$-C$_3$H$_7$CHO$^c$ | $<$1.6 | 12 | 69 | 21 | $<$1.2 | (1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio CH3CHO / s-C2H5CHO toward G+0.693-0.027",
+   "value": "~7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "The acetaldehyde / $s-$propanal ratio is $\\sim$7, the $s-$propanal / $ct-n-$butanal ratio is $>$9, and the acetaldehyde / $ct-n-$butanal ratio is $>$ 63 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio s-C2H5CHO / ct-n-C3H7CHO toward G+0.693-0.027",
+   "value": ">9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "The acetaldehyde / $s-$propanal ratio is $\\sim$7, the $s-$propanal / $ct-n-$butanal ratio is $>$9, and the acetaldehyde / $ct-n-$butanal ratio is $>$ 63 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio CH3CHO / ct-n-C3H7CHO toward G+0.693-0.027",
+   "value": ">63",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-detection of butanal",
+     "quote": "The acetaldehyde / $s-$propanal ratio is $\\sim$7, the $s-$propanal / $ct-n-$butanal ratio is $>$9, and the acetaldehyde / $ct-n-$butanal ratio is $>$ 63 ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging parameters (CASA version, weighting, continuum subtraction details) which are deferred to Belloche et al. (2019) and Melosso et al. (2020)",
+  "The full baseline-subtracted, all-species LTE model of Sgr B2(N1S) used to account for spectral confusion and blending in Weeds",
+  "The full LTE model of >120 species toward G+0.693-0.027 used in MADCUBA to identify unblended transitions",
+  "H2 column density assumed for G+0.693-0.027 to convert column densities into fractional abundances in Table 6"
+ ],
+ "missing_for_reproduction": [
+  "Reduced ReMoCA spectral cube or extracted 1D spectrum at Sgr B2(N1S) following the Melosso et al. (2020) reduction",
+  "Full Weeds LTE composite model of all identified species toward Sgr B2(N1S)",
+  "Reduced Yebes 40m and IRAM 30m spectra of G+0.693-0.027 and the full >120-species MADCUBA LTE model"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The laboratory spectroscopy, partition functions, target coordinates, and LTE model parameters (size, temperature, linewidth, velocity offset, vibrational/conformational correction factors) are thoroughly documented and transition lists are at CDS. However, reproducing the exact astronomical upper limits from scratch requires the custom-reduced ReMoCA spectrum (Melosso et al. 2020), the full background LTE model of all contaminating species in Sgr B2(N1S) and G+0.693-0.027, and the non-ALMA single-dish spectra.",
+ "rediscovery_reason": "The ALMA project 2016.1.00074.S is public, the spectroscopic catalogs are public at CDS, the exact pixel coordinate for Sgr B2(N1S) and all five Weeds LTE parameters are explicitly tabulated, and the main results are numeric column densities and upper limits.",
+ "source_card": "cards/2022A%26A...666A.114S/sonnet/card.md"
+}

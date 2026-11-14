@@ -1,0 +1,353 @@
+{
+ "bibcode": "2016MNRAS.455.2745K",
+ "title": "ALMA probes the molecular gas reservoirs in the changing-look Seyfert galaxy Mrk 590",
+ "year": 2016,
+ "doi": "10.1093/mnras/stv2495",
+ "arxiv_id": "1509.09203",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Is the AGN in Mrk 590 turning off because of a lack of central molecular gas to fuel it?",
+ "alma_project_codes": [
+  "2013.1.00534.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "CO cube beam 0.47'' x 0.42'' (P.A. -76 deg); Briggs continuum beam 0.34'' x 0.24''",
+  "sensitivity": "CO 1sigma ~0.5 mJy/beam per 20 km/s channel; continuum rms 0.031-0.109 mJy/beam depending on weighting"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Near-IR to far-IR and radio flux densities used for SED fit (UKIRT, VLT, ISO, IRAS, OVRO, VLA, MERLIN)",
+    "evidence": [
+     {
+      "loc": "4.4.1 Thermal Dust Emission",
+      "quote": "We include in our analysis published measurements (summarised in Table [\\[continuumfluxpub\\]]) of the near-IR to far-IR flux densities of Mrk 590"
+     }
+    ]
+   },
+   "citation": "(cite: wardetal87; horstetal09; garciaespinosa01; edelsonetal87; edelson87; kukulaetal95; theanetal01)"
+  },
+  {
+   "what": {
+    "value": "Narrow H-alpha flux 1.2e-14 erg/s/cm2 from 2013 LBT spectrum",
+    "evidence": [
+     {
+      "loc": "3.7.2 SFR from Halpha",
+      "quote": "The narrow H$\\alpha$ line has a flux of $1.2 \\times 10^{-14 }\\,\\rm erg\\,s^{-1}\\,cm^{-2}$ (cite: denneyetal14)"
+     }
+    ]
+   },
+   "citation": "(cite: denneyetal14)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass 4.75e7 Msun from reverberation mapping",
+    "evidence": [
+     {
+      "loc": "4.2.1 Gas Consumption Time-scales",
+      "quote": "based on a black hole mass of $4.75 \\times 10^7\\,{M}_{\\odot}$ measured from reverberation mapping (cite: petersonetal04)"
+     }
+    ]
+   },
+   "citation": "(cite: petersonetal04)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) single-dish fluxes of Mrk 590 (55'' beam)",
+    "evidence": [
+     {
+      "loc": "3.4 Molecular Gas Masses",
+      "quote": "Based on the single dish $^{12}$CO(1–0) integrated flux densities (cite: maiolinoetal97), we obtain $M({\\rm H_2}) \\sim 7.9 \\times 10^9 \\,M_{\\odot}$ within the 55$''$ beam"
+     }
+    ]
+   },
+   "citation": "(cite: maiolinoetal97)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and fit source",
+   "method": "Combine continuum + HCO+ spws, clean with three weightings, fit 2D Gaussian with imfit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make CO(3-2) cube and moment maps",
+   "method": "Continuum subtraction, tapered natural-weighted 20 km/s cube, masked clean, pb correction, moments with 3 sigma clip",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model inner ring kinematics",
+   "method": "Fit rotating annulus to velocity map",
+   "software": [
+    "KinMS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive H2 mass upper limits and masses",
+   "method": "3 sigma integrated flux limit assuming FWHM 230 km/s, convert to L'CO(3-2) and to M(H2) with alpha_CO and CO ratio",
+   "software": [],
+   "key_parameters": [
+    "sigma=0.5 mJy/beam, dv=20 km/s, FWHM=230 km/s"
+   ],
+   "assumptions": [
+    "alpha_CO=0.8 and L'32/L'10=0.9 (central); MW 4 and 0.27 (conservative)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Upper limits on HCO+ and CO(2-1)",
+   "method": "Same limit equation with assumed line widths",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Estimate star formation rates",
+   "method": "Kennicutt-Schmidt relation from M(H2); Halpha luminosity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "negligible HI in the centre"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit IR-mm SED",
+   "method": "Greybody plus near-IR power law fit with ALMA 344 GHz point (and separately SMA)",
+   "software": [
+    "Casey (2012) SED code"
+   ],
+   "key_parameters": [
+    "beta fixed at 1.5; other five parameters free"
+   ],
+   "assumptions": [
+    "dust to gas ratio ~0.01, solar metallicity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "M(H2) upper limit, central 150 pc (alpha_CO=0.8, ratio 0.9)",
+   "value": "1.6e5",
+   "uncertainty": "upper limit",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "constraining the central molecular gas mass to $M({\\rm H_2}) \\lesssim 1.6 \\times 10^5\\, {M_{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M(H2) upper limit, central 150 pc (MW values)",
+   "value": "5.3e6",
+   "uncertainty": "upper limit",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "This value of $5.3 \\times 10^6\\, {M_{\\odot}}$ is a very conservative upper limit of $M(\\rm H_2)$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) flux upper limit, central 150 pc",
+   "value": "0.1",
+   "uncertainty": "upper limit (3 sigma)",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$I _{\\rm CO(3-2)} \\leq 0.1\\,{\\rm  Jy\\,km\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO(3-2) flux, central 4''",
+   "value": "3.33",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we obtain an integrated flux density of 3.33 $\\rm Jy\\,km\\,s^{-1}$ over all channels with CO line emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO(3-2) flux, primary beam",
+   "value": "8.34",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we obtain a total velocity-integrated flux density of 8.34 $\\rm Jy\\,km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian FWHM of CO(3-2) spectrum, inner 4''",
+   "value": "231",
+   "uncertainty": "80",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we obtain FWHM widths of $231 \\pm 80 \\, \\rm km\\,s^{-1}$ for the inner 4$^{\\prime\\prime}$ integrated spectrum"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner ring annulus radius from KinMS model",
+   "value": "0.93",
+   "uncertainty": "0.01",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "a rotating annulus of radius (to midpoint) of 0.93$\\pm$0.01 kpc and a width of 65 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring inclination from model",
+   "value": "64",
+   "uncertainty": "+3/-1",
+   "units": "degrees",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "an inclination angle of 64$\\substack{+3\\\\-1}$ degrees to our line of sight and a mean rotational velocity of 117 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 344 GHz Briggs integrated flux density",
+   "value": "0.830",
+   "uncertainty": "0.048",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table (contprop)",
+     "quote": "Briggs                  | 0.036                   | $0.34 \\times 0.24$      | $-$67.45                | $0.263 \\times 0.069$    | $93.0^{\\circ}$          | $0.830 \\pm 0.048$"
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington-limited gas consumption time for 1.6e5 Msun",
+   "value": "2.6e5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "there is potentially sufficient gas to support the AGN activity in Mrk 590 for $2.6 \\times 10^5$ years at the Eddington accretion limit"
+    }
+   ]
+  },
+  {
+   "quantity": "SED dust temperature (ALMA fit)",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4.1",
+     "quote": "The dust temperature of the far-IR component is estimated from the model SED to be 53 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (ALMA fit)",
+   "value": "~1e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4.1",
+     "quote": "The model SED yields a dust mass of $M_{\\rm dust}\\sim 10^5\\, M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 8.4 GHz to 344 GHz",
+   "value": "-0.36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4.2",
+     "quote": "we estimate the spectral index to be $\\alpha^{8.4\\,{\\rm GHz}}_{344\\,{\\rm GHz}} \\sim −0.36$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3)/CO(3-2) ratio upper limit, central 4''",
+   "value": "0.14",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "We obtain upper limits of $R^{\\rm HCO43}_{\\rm CO32} \\lesssim 0.14$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Channel ranges treated as line-free for uvcontsub",
+  "CASA version",
+  "Exact uv-taper implementation parameters in clean",
+  "Details of KinMS fit priors, sampler and parameter grid",
+  "SED fit initial values/free-parameter bounds and uncertainty treatment",
+  "Region definitions for spectra extraction (apertures, components A-F)",
+  "Conversion from L_FIR to SFR and dust mass calculation (opacity)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selection",
+  "CASA version",
+  "KinMS fit details",
+  "SED fit code settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging recipe fairly detailed, and key numbers derive from simple equations, but several settings (versions, channel selection, KinMS, SED fit) are missing.",
+ "rediscovery_reason": "ALMA data are archival-public after proprietary period and the main results (gas mass limits, fluxes) are numeric and computable from described steps.",
+ "source_card": "cards/2016MNRAS.455.2745K/sonnet/card.md"
+}

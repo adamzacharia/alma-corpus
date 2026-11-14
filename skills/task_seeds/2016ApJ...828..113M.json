@@ -1,0 +1,272 @@
+{
+ "bibcode": "2016ApJ...828..113M",
+ "title": "ALMA Observations of the Debris Disk of Solar Analog τ Ceti",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/828/2/113",
+ "arxiv_id": "1607.02513",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "Where is the inner edge and how wide is the tau Ceti debris belt at 1.3 mm, what does that imply for the proposed five-planet system, and what is the origin of the unresolved central source?",
+ "alma_project_codes": [
+  "2013.1.00588.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "ALMA 12-m array (34 antennas) plus ACA (11 antennas)",
+  "angular_resolution": "~1'' (4 AU) longest baselines",
+  "sensitivity": "Natural-weight rms 30 uJy (12-m), 180 uJy (ACA)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inclination 35±10 deg and PA 105±10 deg from Herschel models, assumed for belt",
+    "evidence": [
+     {
+      "loc": "3.2 Emission Modeling Procedure",
+      "quote": "we assume that the millimeter belt emission is described by the same geometry."
+     }
+    ]
+   },
+   "citation": "(cite: law14)"
+  },
+  {
+   "what": {
+    "value": "850 um flux 5.8±0.6 mJy and 55 AU radius from SCUBA",
+    "evidence": [
+     {
+      "loc": "3.2 Emission Modeling Procedure",
+      "quote": "obtain a total flux density at 850 $\\mu$m for the disk of $5.8\\pm0.6$ mJy"
+     }
+    ]
+   },
+   "citation": "(cite: gre04)"
+  },
+  {
+   "what": {
+    "value": "Debris disk spectral index 2.58 used to extrapolate 850 um flux to 1.3 mm (1.2±0.2 mJy)",
+    "evidence": [
+     {
+      "loc": "3.2 Emission Modeling Procedure",
+      "quote": "using the typical spectral index of 2.58 for debris disks at (sub)millimeter wavelengths (cite: gas12)"
+     }
+    ]
+   },
+   "citation": "(cite: gas12)"
+  },
+  {
+   "what": {
+    "value": "VLA 8.7 mm flux 25.3±3.9 uJy and 2 cm upper limit",
+    "evidence": [
+     {
+      "loc": "4.2 Central Component",
+      "quote": "At 8.7 mm, the measured flux density is $25.3\\pm3.9$ $\\mu$Jy"
+     }
+    ]
+   },
+   "citation": "(cite: vill14)"
+  },
+  {
+   "what": {
+    "value": "Stellar radius 0.793±0.004 Rsun",
+    "evidence": [
+     {
+      "loc": "4.2 Central Component",
+      "quote": "adopt a value of $0.793\\pm0.004$ $R_\\odot$"
+     }
+    ]
+   },
+   "citation": "(cite: dif07)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and separate star from disk",
+   "method": "CLEAN with natural weights and 6'' taper; uvsub point-source subtraction for disk; baselines >40 klambda untapered for star",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit parametric belt plus point source to 12-m visibilities",
+   "method": "Thin axisymmetric belt with power-law surface density, model visibilities via python uvmodel implementation, multiplied by Gaussian primary beam, MCMC fit",
+   "software": [
+    "emcee",
+    "vis_sample"
+   ],
+   "key_parameters": [
+    "Free: Rin, Rout, Fbelt, Fcen, gamma; Rout <= 55 AU; gamma in -4 to 4; uniform priors",
+    "Gaussian prior 0.6 mJy <= Fbelt <= 1.6 mJy"
+   ],
+   "assumptions": [
+    "T ∝ r^-0.5 blackbody; i=35 deg, PA=105 deg from Herschel; no offsets fitted"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive belt width and stellar brightness temperature and spectral index",
+   "method": "Fractional width from Rin and Rout; Planck brightness temperature at 1.3 mm, 8.7 mm, 2 cm; spectral index between 1.3 and 8.7 mm",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Photospheric radius at mm/cm equals optical value 0.793 Rsun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Belt inner radius",
+   "value": "6.2",
+   "uncertainty": "+9.8/-4.6",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $R_\\text{in}$ | Belt inner radius (AU) | $6.2$ | $+9.8,-4.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt outer radius",
+   "value": "52",
+   "uncertainty": "+3/-8",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $R_\\text{out}$ | Belt outer radius (AU) | $52.$ | $+3.,-8.$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt flux density",
+   "value": "1.0",
+   "uncertainty": "+0.6/-0.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Results of Model Fits",
+     "quote": "The best-fit total belt flux density is $F_\\text{belt} = 1.0^{+0.6}_{-0.4}$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Surface density index gamma",
+   "value": "-0.3",
+   "uncertainty": "+1.9/-1.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Results of Model Fits",
+     "quote": "$\\gamma=-0.3^{+1.9}_{-1.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central source flux density at 1.3 mm",
+   "value": "0.69",
+   "uncertainty": "+0.02/-0.05",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Central Component",
+     "quote": "with a flux density of $0.69^{+0.02}_{-0.05}$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional width DeltaR/R",
+   "value": "1.6",
+   "uncertainty": "+0.3/-0.6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Location of the Disk Inner Edge and Belt Width",
+     "quote": "the fractional width of the $\\tau$ Ceti disk is $\\Delta R/R = 1.6^{+0.3}_{-0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "DeltaR/R lower limit (99%)",
+   "value": "> 0.75",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Location of the Disk Inner Edge and Belt Width",
+     "quote": "At $99\\%$ confidence, $\\Delta R/R > 0.75$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rin upper limit (99%)",
+   "value": "< 25",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Location of the Disk Inner Edge and Belt Width",
+     "quote": "we can place a strong upper limit, $R_\\text{in}<25$ AU with $99\\%$ ($3\\sigma$) confidence."
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 1.3 mm",
+   "value": "5,800",
+   "uncertainty": "±200",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Central Component",
+     "quote": "At 1.3 mm this analysis yields $T_B = 5,800\\pm200$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 1.3-8.7 mm of central source",
+   "value": "1.74",
+   "uncertainty": "±0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Central Component",
+     "quote": "the spectral index of the central peak in our observations of $\\tau$ Ceti is $1.74\\pm0.15$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of emcee walkers, steps, burn-in and convergence criteria",
+  "Exact Gaussian prior form (mean, sigma) on F_belt",
+  "Cell size, image size, clean threshold and masks",
+  "Flux calibrator/phase calibrator details beyond names; bandpass calibrator naming",
+  "Whether visibilities were averaged or channel-weighted before fitting",
+  "Holland et al. SCUBA-2 flux is in prep, unavailable",
+  "Stellar distance adopted for AU conversion"
+ ],
+ "missing_for_reproduction": [
+  "MCMC settings (walkers, steps, burn-in)",
+  "Imaging parameters (cell, size, thresholds)",
+  "Exact Gaussian prior parameters",
+  "Adopted distance"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and open code, clear model, but MCMC and imaging details missing",
+ "rediscovery_reason": "Public data, specified model and priors, numeric results (Rin, Rout, Fcen); some settings must be inferred.",
+ "source_card": "cards/2016ApJ...828..113M/sonnet/card.md"
+}

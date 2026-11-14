@@ -1,0 +1,336 @@
+{
+ "bibcode": "2020ApJ...898...75I",
+ "title": "ALMA Observations of Multiple CO and C Lines toward the Active Galactic Nucleus of NGC 7469: An X-Ray-dominated Region Caught in the Act",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab9cb1",
+ "arxiv_id": "2006.09406",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Does the [C I](1-0) to CO/13CO line ratio at ~100 pc scale distinguish the AGN (XDR) from the starburst ring in NGC 7469, and what are the gas conditions and CO/CI-to-H2 conversion factors?",
+ "alma_project_codes": [
+  "2017.1.00078.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 6, 7, 8",
+  "arrays": "12m array (two configurations, Bands 3-7); ACA in Band 8; no total power",
+  "angular_resolution": "~0.34-0.37 arcsec (~100-120 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish [CI], CO(2-1), 13CO(2-1) line fluxes of galaxy sample and NGC 7469 SD ratios",
+    "evidence": [
+     {
+      "loc": "3.3 The [C I](1-0) diagnostics",
+      "quote": "we again compiled line flux data of \\[C I\\](1–0), CO(2–1), and $^{13}$CO(2–1) from (cite: 2015A&A...578A..95I)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015A&A...578A..95I)"
+  },
+  {
+   "what": {
+    "value": "BH mass 1.06e7 Msun",
+    "evidence": [
+     {
+      "loc": "4.2 Impact on H2 mass measurements",
+      "quote": "$M_{\\rm BH} = 1.06 \\times 10^7~M_\\odot$ (cite: 2014ApJ...795..149P)"
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...795..149P)"
+  },
+  {
+   "what": {
+    "value": "Line excitation parameters from LAMDA",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Values are adopted from the LAMDA database (cite: 2005AA...432..369S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2005AA...432..369S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image cubes",
+   "method": "CASA pipeline calibration, uv-plane continuum subtraction, concat, clean with Briggs weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.0 (Bands 6-8); robust 0.5 with outertaper 0.2'' (Band 3); dV = 10 km/s (20 for 13CO)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps and measure line fluxes/spectra",
+   "method": "Moment-0 over 4650-5200 km/s; spectra at positions A-D with 0.38'' aperture; single/double Gaussian fits; luminosities",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Positions A-D defined from Band 7 860 um continuum peaks"
+   ],
+   "assumptions": [
+    "Missing flux ignored"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute line ratios and compare with single-dish sample",
+   "method": "T_B ratios of [CI]/CO(2-1) and [CI]/13CO(2-1) at A-D; compared with Israel et al. 2015 sample",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "LTE analysis and rotation diagrams",
+   "method": "Optically thin LTE R_CI/13CO as function of Tex and NC/NCO; CO rotation diagrams for Tex",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CO/13CO isotopic ratio = 40"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Non-LTE modeling",
+   "method": "RADEX grid over Tkin, nH2, C0/CO, N_CO/dV compared with observed ratios",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Tkin 50,100,200,300,500 K; nH2 1e3,1e4,1e5 cm-3; [C0]/[CO] 1,3,10; N_CO/dV 3e16,1e17,3e17"
+   ],
+   "assumptions": [
+    "[CO]/[H2] = 1e-4; Tbg = 2.73 K; [CO]/[13CO] = 40"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Tilted-ring kinematics and dynamical mass",
+   "method": "3DBarolo tilted-ring fits to [CI](1-0) and CO(2-1) cubes; Mdyn = r Vrot^2/G",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "50 rings, dr = 0.05'' from r = 0.10''; Vsys fixed 4920 km/s; center fixed to AGN; initial i = 45, PA = 128"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Stellar mass and conversion factors",
+   "method": "HST color-based M/L with MGE deprojection; Mmol = Mdyn - Mstar - MBH; alpha = Mmol/L'",
+   "software": [
+    "MGE"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "H2 dominates gas mass in CND; hydrogen nuclei fraction 71%; no dark matter"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "R_CI/13CO at position A",
+   "value": "19.5",
+   "uncertainty": "3.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "|       A       |   0.53 $\\pm$ 0.08    |       19.5 $\\pm$ 3.3        |"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CI/CO(2-1) at position A",
+   "value": "0.53",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "|       A       |   0.53 $\\pm$ 0.08    |       19.5 $\\pm$ 3.3        |"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CI/13CO at position A, channel 4900 km/s",
+   "value": "25.1",
+   "uncertainty": "4.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| A (ch)$^\\dag$ |   0.78 $\\pm$ 0.11    |       25.1 $\\pm$ 4.4        |"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CI/13CO in SB ring (B,C,D)",
+   "value": "2.68, 1.81, 2.22",
+   "uncertainty": "0.39, 0.26, 0.32",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "|       B       |   0.21 $\\pm$ 0.03    |       2.68 $\\pm$ 0.39       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Central concentration of [CI](1-0) flux (r<0.5'' / r<3'')",
+   "value": "20.0",
+   "uncertainty": "0.7",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Spatial distributions",
+     "quote": "but 20.0 $\\pm$ 0.7% for \\[C I\\](1–0), respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CO rotation temperature at A",
+   "value": "18.5",
+   "uncertainty": "3.2",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.1 LTE perspective",
+     "quote": "inferred $T_{\\rm ex}$ are 18.5 $\\pm$ 3.2 K (A)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within r=0.19''",
+   "value": "2.3e8",
+   "uncertainty": "~15%",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Impact on H2 mass measurements",
+     "quote": "we find $M_{\\rm dyn} = 2.3 \\times 10^8~M_\\odot$ after averaging \\[C I\\](1–0)-based and CO(2–1)-based values, which has $\\sim 15\\%$ uncertainty."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass within r=0.19''",
+   "value": "1.3e8",
+   "uncertainty": "~0.2 dex",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Impact on H2 mass measurements",
+     "quote": "The enclosed $M_\\star$ within the $r = 0\\ensuremath{''}.19$ is $1.3 \\times 10^8~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular mass within r<=0.19''",
+   "value": "9.5e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Impact on H2 mass measurements",
+     "quote": "we derive the total gas mass at $r \\leq 0\\ensuremath{''}.19$ as $M_{\\rm mol} = 9.5 \\times 10^7~M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO",
+   "value": "4.1",
+   "uncertainty": "~0.3 dex",
+   "units": "Msun (K km/s pc^2)^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Impact on H2 mass measurements",
+     "quote": "$\\alpha_{\\rm CO}$ = 4.1 $M_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ and $\\alpha_{\\rm CI}$ = 4.4"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CI",
+   "value": "4.4",
+   "uncertainty": "~0.3 dex",
+   "units": "Msun (K km/s pc^2)^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Impact on H2 mass measurements",
+     "quote": "$\\alpha_{\\rm CI}$ = 4.4 $M_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X_CO and X_CI",
+   "value": "1.9e20 and 2.1e20",
+   "uncertainty": "~0.3 dex",
+   "units": "cm^-2 (K km/s)^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Impact on H2 mass measurements",
+     "quote": "$X_{\\rm CO} = 1.9 \\times 10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$ and $X_{\\rm CI} = 2.1 \\times 10^{20}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](1-0) luminosity at A",
+   "value": "8.2e4",
+   "uncertainty": "0.2e4",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Spectra and Channel maps",
+     "quote": "$L_{\\rm line}$ of \\[C I\\](1–0) is $(8.2 \\pm 0.2) \\times 10^4~L_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum subtraction and rms",
+  "clean threshold, masking, niter and image size",
+  "Whether Band 7 compact-configuration data exclusion detail and flagging beyond pipeline",
+  "Exact aperture/spectrum extraction procedure and Gaussian-fit initial guesses",
+  "3DBarolo settings (mask, normalization, weighting) beyond ring geometry",
+  "MGE fitting details and HST stellar mass profile (deferred to Nguyen et al.)",
+  "RADEX line-width and grid details beyond parameter lists, and how models were compared with observed ratios",
+  "Band 8 phase-offset correction procedure"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "Line-free channel ranges",
+  "HST stellar mass profile (in prep paper)",
+  "Exact RADEX grid comparison method",
+  "3DBarolo configuration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and many key steps given, but imaging and modeling details and HST stellar mass are incomplete.",
+ "rediscovery_reason": "Data from a single Cycle 5 project, line fluxes and ratios are numeric, and the Gaussian-fit/ratio recipe is largely specified.",
+ "source_card": "cards/2020ApJ...898...75I/sonnet/card.md"
+}

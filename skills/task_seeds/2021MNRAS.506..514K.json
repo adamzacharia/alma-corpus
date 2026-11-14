@@ -1,0 +1,582 @@
+{
+ "bibcode": "2021MNRAS.506..514K",
+ "title": "H<SUB>2</SUB> molecular gas absorption-selected systems trace CO molecular gas-rich galaxy overdensities",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab1668",
+ "arxiv_id": "2106.04599",
+ "fields": [
+  "high_z_galaxies",
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Search for CO molecular gas emission from the host galaxies of H2-bearing UV absorption-selected systems at z <= 1 and identify whether the absorbing gas traces extended galaxy disks or dense gas pockets in the circum-galactic/intra-group medium.",
+ "alma_project_codes": [
+  "2018.1.01575.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 4",
+  "arrays": "not stated",
+  "angular_resolution": "0.9'' x 0.8'' to 1.6'' x 1.4'' (3 x 3 kpc to 12 x 10 kpc)",
+  "sensitivity": "0.33 to 0.90 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(3-2) detection and properties for Q2131-1207 G1 (FWHM = 184 +/- 50 km s^-1, S_int = 0.355 Jy km s^-1, M_mol = 5.29 x 10^9 M_sun)",
+    "evidence": [
+     {
+      "loc": "3 RESULTS",
+      "quote": "In addition to the detections from this work we use the results for Q2131-1207 presented by Szakacs et al. (2021)."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "Q2131–1207 G1 3-2 𝑎 H 52 184 ± 50 0.355 5.29"
+     }
+    ]
+   },
+   "citation": "Szakacs et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Physical properties of targeted quasar absorbers (redshifts, N(HI), N(H2), metallicities, impact parameters of optically identified hosts)",
+    "evidence": [
+     {
+      "loc": "2.1 Target selection",
+      "quote": "The absorber properties including optically identified host galaxies are listed in Table 1."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: 𝑎 Average metallicities ([S/H] or [Si/H]) from Muzahid et al. (2015) without ionization correction, 𝑏 Som et al. (2015), 𝑐 Reimers et al. (2003), 𝑑 Oliveira et al. (2014), 𝑒 Werk et al. (2013), 𝑓 Péroux et al. (2017),"
+     }
+    ]
+   },
+   "citation": "Muzahid et al. (2015); Som et al. (2015); Reimers et al. (2003); Oliveira et al. (2014); Werk et al. (2013); Péroux et al. (2017); Steidel et al. (1994); Crighton et al. (2013); Rao et al. (2006); Muzahid et al. (2016); Werk et al. (2014); Quast et al. (2008)"
+  },
+  {
+   "what": {
+    "value": "CO luminosity function used to calculate expected number of galaxies within the co-moving volume",
+    "evidence": [
+     {
+      "loc": "4.2 Absorption associated to galaxy overdensities rather than single galaxies",
+      "quote": "We use the CO luminosity function reported by Fletcher et al. (2021) and integrate with a lower limit of 10 9 K km s −1 which is equivalent to the faintest detections in our sample."
+     }
+    ]
+   },
+   "citation": "Fletcher et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Literature absorber and host galaxy measurements for comparison in correlation plots",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "Grey markers represent literature measurements from (Neeleman et al. 2016; Szakacs et al. 2021)."
+     },
+     {
+      "loc": "Figure 5 caption",
+      "quote": "and galaxies presented in the literature (Neeleman et al. 2016; Oliveira et al. 2014; Crighton et al. 2013; Szakacs et al. 2021)."
+     }
+    ]
+   },
+   "citation": "Neeleman et al. (2016); Oliveira et al. (2014); Crighton et al. (2013); Szakacs et al. (2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA spectral cubes and continuum",
+   "method": "Image pipeline-calibrated uv-data sets using tclean with natural weighting, a field of view of 1.5 times the primary beam, and 15-20 km s^-1 channel width.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "field of view = 1.5 x primary beam (1.4' in Band 3, 1.2' in Band 4)",
+    "weighting = natural",
+    "channel width = 15 - 20 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search for CO line emission and classify detection confidence",
+   "method": "Search for CO line emission in non-primary-beam-corrected image cubes both visually by-eye and using the line finder software SoFiA. Flag detections with FWHM < 300 km s^-1 as low significance (L) unless confirmed by independent observations, and FWHM >= 300 km s^-1 (or confirmed) as high significance (H).",
+   "software": [
+    "SoFiA"
+   ],
+   "key_parameters": [
+    "FWHM threshold = 300 km s^-1 for high/low confidence flag"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract CO spectra and measure line fluxes and upper limits",
+   "method": "Extract CO spectra from primary beam corrected image cubes by integrating over the region defined by the 3 sigma contour in the integrated flux map. For non-detections, calculate 5 sigma upper limits assuming a 300 km s^-1 linewidth.",
+   "software": [],
+   "key_parameters": [
+    "extraction aperture = 3 sigma contour in integrated flux map",
+    "upper limit threshold = 5 sigma over 300 km s^-1 linewidth"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO luminosities and molecular gas masses",
+   "method": "Convert observed CO line luminosities to CO(1-0) luminosity using Milky Way type line ratios from Carilli & Walter (2013), and multiply by a Galactic CO-to-H2 conversion factor alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7",
+    "Milky Way type CO excitation ladder (Carilli & Walter 2013; r_32 = 0.54 from Bolatto et al. 2013)",
+    "alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1 (including 1.36 helium factor)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure ionized gas SFR, depletion time, and kinematics from archival MUSE data for HE 0515-4414 G1",
+   "method": "Search archival MUSE cube of HE 0515-4414 for [OII] emission from CO-detected galaxies, compute non-dust-corrected SFR following Kennicutt (1998) and corresponding molecular gas depletion time, and compare line-of-sight velocity maps of CO(3-2) and [OII].",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Kennicutt (1998) [OII]-to-SFR calibration without dust correction"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Test for galaxy overdensities and correlations between absorber and host galaxy properties",
+   "method": "Integrate the Fletcher et al. (2021) CO luminosity function above 10^9 K km s^-1 pc^2 over the ALMA Band 3 and 4 co-moving volume within +/- 1000 km s^-1 to estimate expected background galaxy counts; test for correlations between N(HI), N(H2), f_mol, impact parameter, and host M_mol.",
+   "software": [],
+   "key_parameters": [
+    "L'_CO integration lower limit = 10^9 K km s^-1",
+    "velocity range = +/- 1000 km s^-1 from z_abs"
+   ],
+   "assumptions": [
+    "CO luminosity function from Fletcher et al. (2021)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1-0) integrated flux upper limit (QSO J0120-28)",
+   "value": "< 0.94",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "QSO J0120–28 - - - - - - < 0.94 - < 1.6 < 6.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass upper limit (QSO J0120-28)",
+   "value": "< 6.8",
+   "uncertainty": "not stated",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "QSO J0120–28 - - - - - - < 0.94 - < 1.6 < 6.8"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) integrated flux (QSO J1342-0053 G1)",
+   "value": "0.59",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "QSO J1342–0053 G1 H 13h42m51.85s -00d53m54.2s 35 -9 165 ± 8 0.59 ± 0.06 4.0 ± 0.7 1.5 ± 0.1 6.5 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) FWHM (QSO J1342-0053 G1)",
+   "value": "165",
+   "uncertainty": "8",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "QSO J1342–0053 G1 H 13h42m51.85s -00d53m54.2s 35 -9 165 ± 8 0.59 ± 0.06 4.0 ± 0.7 1.5 ± 0.1 6.5 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "CO luminosity L'_CO (QSO J1342-0053 G1)",
+   "value": "1.5",
+   "uncertainty": "0.1",
+   "units": "10^9 K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "QSO J1342–0053 G1 H 13h42m51.85s -00d53m54.2s 35 -9 165 ± 8 0.59 ± 0.06 4.0 ± 0.7 1.5 ± 0.1 6.5 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (QSO J1342-0053 G1)",
+   "value": "6.5",
+   "uncertainty": "0.6",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "QSO J1342–0053 G1 H 13h42m51.85s -00d53m54.2s 35 -9 165 ± 8 0.59 ± 0.06 4.0 ± 0.7 1.5 ± 0.1 6.5 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux upper limit (Q2131-1207 G1)",
+   "value": "< 1.57",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Q2131–1207 G1 2-1 - - - 52 - - < 1.57 - < 3.8 < 8.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass upper limit from CO(2-1) (Q2131-1207 G1)",
+   "value": "< 8.2",
+   "uncertainty": "not stated",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Q2131–1207 G1 2-1 - - - 52 - - < 1.57 - < 3.8 < 8.2"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux (PG 1241+176 G1)",
+   "value": "1.49",
+   "uncertainty": "0.19",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G1 H 12h44m09.59s +17d20m58.1s 120 620 500 ± 10 1.49 ± 0.19 7.0 ± 1.8 5.9 ± 0.8 12.8 ± 1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) FWHM (PG 1241+176 G1)",
+   "value": "500",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G1 H 12h44m09.59s +17d20m58.1s 120 620 500 ± 10 1.49 ± 0.19 7.0 ± 1.8 5.9 ± 0.8 12.8 ± 1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (PG 1241+176 G1)",
+   "value": "12.8",
+   "uncertainty": "1.6",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G1 H 12h44m09.59s +17d20m58.1s 120 620 500 ± 10 1.49 ± 0.19 7.0 ± 1.8 5.9 ± 0.8 12.8 ± 1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux (PG 1241+176 G2)",
+   "value": "0.64",
+   "uncertainty": "0.09",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G2 H 12h44m10.00s +17d20m58.1s 86 460 300 ± 10 0.64 ± 0.09 3.0 ± 0.8 2.5 ± 0.3 5.5 ± 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) FWHM (PG 1241+176 G2)",
+   "value": "300",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G2 H 12h44m10.00s +17d20m58.1s 86 460 300 ± 10 0.64 ± 0.09 3.0 ± 0.8 2.5 ± 0.3 5.5 ± 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (PG 1241+176 G2)",
+   "value": "5.5",
+   "uncertainty": "0.7",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G2 H 12h44m10.00s +17d20m58.1s 86 460 300 ± 10 0.64 ± 0.09 3.0 ± 0.8 2.5 ± 0.3 5.5 ± 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux (PG 1241+176 G3)",
+   "value": "0.41",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G3 H 12h44m10.64s +17d20m55.6s 60 100 360 ± 10 0.41 ± 0.06 2.2 ± 0.6 1.6 ± 0.2 3.5 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) FWHM (PG 1241+176 G3)",
+   "value": "360",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G3 H 12h44m10.64s +17d20m55.6s 60 100 360 ± 10 0.41 ± 0.06 2.2 ± 0.6 1.6 ± 0.2 3.5 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (PG 1241+176 G3)",
+   "value": "3.5",
+   "uncertainty": "0.5",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PG 1241+176 G3 H 12h44m10.64s +17d20m55.6s 60 100 360 ± 10 0.41 ± 0.06 2.2 ± 0.6 1.6 ± 0.2 3.5 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux (LBQS 0107-0232 G1)",
+   "value": "0.13",
+   "uncertainty": "0.02",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "LBQS 0107–0232 G1 L 01h10m14.22s -02d17m06.6s 63 -291 60 ± 10 0.13 ± 0.02 2.4 ± 0.6 0.5 ± 0.1 1.1 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (LBQS 0107-0232 G1)",
+   "value": "1.1",
+   "uncertainty": "0.2",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "LBQS 0107–0232 G1 L 01h10m14.22s -02d17m06.6s 63 -291 60 ± 10 0.13 ± 0.02 2.4 ± 0.6 0.5 ± 0.1 1.1 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux (LBQS 0107-0232 G2)",
+   "value": "0.39",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "LBQS 0107–0232 G2 L 01h10m15.56s -02d17m12.4s 144 449 240 ± 10 0.39 ± 0.07 4.7 ± 1.0 1.6 ± 0.3 3.4 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (LBQS 0107-0232 G2)",
+   "value": "3.4",
+   "uncertainty": "0.6",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "LBQS 0107–0232 G2 L 01h10m15.56s -02d17m12.4s 144 449 240 ± 10 0.39 ± 0.07 4.7 ± 1.0 1.6 ± 0.3 3.4 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated flux (LBQS 0107-0232 G3)",
+   "value": "0.17",
+   "uncertainty": "0.03",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "LBQS 0107–0232 G3 L 01h10m14.82s -02d17m06.6s 69 -651 140 ± 10 0.17 ± 0.03 1.7 ± 0.5 0.7 ± 0.1 1.5 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (LBQS 0107-0232 G3)",
+   "value": "1.5",
+   "uncertainty": "0.2",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "LBQS 0107–0232 G3 L 01h10m14.82s -02d17m06.6s 69 -651 140 ± 10 0.17 ± 0.03 1.7 ± 0.5 0.7 ± 0.1 1.5 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated flux (HE 05151-4414 G1)",
+   "value": "0.80",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HE 05151–4414 G1 H 05h17m08.51s -44d10m51.4s 82 -188 600 ± 10 0.80 ± 0.06 2.6 ± 0.5 6.2 ± 0.5 7.2 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) FWHM (HE 05151-4414 G1)",
+   "value": "600",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HE 05151–4414 G1 H 05h17m08.51s -44d10m51.4s 82 -188 600 ± 10 0.80 ± 0.06 2.6 ± 0.5 6.2 ± 0.5 7.2 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (HE 05151-4414 G1)",
+   "value": "7.2",
+   "uncertainty": "0.5",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HE 05151–4414 G1 H 05h17m08.51s -44d10m51.4s 82 -188 600 ± 10 0.80 ± 0.06 2.6 ± 0.5 6.2 ± 0.5 7.2 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated flux (HE 05151-4414 G2)",
+   "value": "0.08",
+   "uncertainty": "0.01",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HE 05151–4414 G2 L 05h17m07.12s -44d11m01.5s 67 -213 105 ± 8 0.08 ± 0.01 0.8 ± 0.3 0.6 ± 0.1 0.7 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (HE 05151-4414 G2)",
+   "value": "0.7",
+   "uncertainty": "0.1",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HE 05151–4414 G2 L 05h17m07.12s -44d11m01.5s 67 -213 105 ± 8 0.08 ± 0.01 0.8 ± 0.3 0.6 ± 0.1 0.7 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-dust-corrected star formation rate (HE 0515-4414 G1)",
+   "value": "9.4",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1 Notes on the individual quasar fields",
+     "quote": "Following the description by Kennicutt (1998) we measure a non dust-corrected SFR of 9.4 M ⊙ yr −1 which represents a lower limit on the true SFR."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas depletion time upper limit (HE 0515-4414 G1)",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1 Notes on the individual quasar fields",
+     "quote": "This translates to an upper limit for the molecular gas depletion time of 0.8 Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "Impact parameters of CO-detected galaxies",
+   "value": "35 - 144",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 CONCLUSIONS",
+     "quote": "We detect galaxies at impact parameters of 35 – 144 kpc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel cell size and image dimensions in pixels used in tclean",
+  "Stopping threshold and masking strategy in tclean",
+  "Whether continuum subtraction (e.g. uvcontsub) was performed prior to spectral cube imaging",
+  "SoFiA version and detection/reliability parameters used for the automated line search",
+  "Exact numerical values of the Carilli & Walter (2013) CO(2-1)/CO(1-0) and CO(3-2)/CO(1-0) line ratios used in Table 3 mass derivations",
+  "Velocity window over which the integrated intensity maps (moment 0) were collapsed for each detected galaxy"
+ ],
+ "missing_for_reproduction": [
+  "Exact SoFiA parameter file and detection threshold settings",
+  "Exact velocity integration ranges used to create the 3-sigma contour apertures in the integrated intensity maps for each galaxy",
+  "Exact numerical values used for the Carilli & Walter (2013) r_21 and r_31 CO line luminosity ratios (though back-calculable from L'_CO and M_mol in Table 3)",
+  "Details of the 'additional data reduction steps' performed in CASA 5.6 prior to tclean"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "All raw/calibrated archival datasets and project IDs are clearly stated, imaging uses standard pipeline uv-data with natural weighting in CASA 5.6, and coordinates, fluxes, linewidths, and conversion factors are tabulated in full. Minor deductions for unstated SoFiA parameters, exact moment-0 velocity windows, and tclean pixel/cleaning thresholds.",
+ "rediscovery_reason": "Public ALMA dataset (2018.1.01575.S) with straightforward natural-weighted spectral cube imaging and well-defined quantitative outputs (galaxy coordinates, CO line fluxes, FWHMs, and molecular gas masses in Table 3).",
+ "source_card": "cards/2021MNRAS.506..514K/sonnet/card.md"
+}

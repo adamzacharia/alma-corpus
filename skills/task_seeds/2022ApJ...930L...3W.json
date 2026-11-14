@@ -1,0 +1,504 @@
+{
+ "bibcode": "2022ApJ...930L...3W",
+ "title": "ALMA Discovery of a Disk around the Planetary-mass Companion SR 12 c",
+ "year": 2022,
+ "doi": "10.3847/2041-8213/ac6420",
+ "arxiv_id": "2204.06013",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "Can deep ALMA Band 7 observations detect and characterize the physical properties (flux density, dust mass, radius, and gas content) of the circumplanetary accretion disk around the wide planetary-mass companion SR 12 c?",
+ "alma_project_codes": [
+  "2019.1.01212.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.88 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.147'' x 0.090'' (natural weighting); 0.108'' x 0.066'' (Briggs robust = 0.5)",
+  "sensitivity": "10 uJy beam^-1 (continuum around map center); 19 uJy beam^-1 (continuum at SR 12 AB); ~0.7 mJy beam^-1 per 1 km s^-1 (CO-free channels)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gaia DR2 distance of 112.5 (+5.8/-5.3) pc, proper motion of SR 12 AB, and positions of SR 12 c in Gaia DR2 and EDR3",
+    "evidence": [
+     {
+      "loc": "SR 12",
+      "quote": "The separation between AB is 0.21$''$ (cite: K11), or about 24 au given the Gaia DR2[^1] distance of $112.5^{+5.8}_{-5.3}$ pc (cite: GaiaDR2; BJ18)."
+     },
+     {
+      "loc": "The SR 12 c Dust Disk",
+      "quote": "This is slightly different from the positions of SR 12 c in Gaia DR2 ($16^{\\mathrm{h}}27^{\\mathrm{m}}19.659s$, $-24\\ensuremath{^\\circ}41\\ensuremath{'}49.22\\ensuremath{''}$; epoch J2015.5) and EDR3 ($16^{\\mathrm{h}}27^{\\mathrm{m}}19.658s$, $-24\\ensuremath{^\\circ}41\\ensuremath{'}49.24\\ensuremath{''}$; epoch J2016), but as demonstrated in Figure 2, after accounting for the Gaia DR2 proper motion of the host binary ($\\mu_{\\alpha^\\ast} = -7.7\\pm1.1$ mas yr$^{-1}$, $\\mu_\\delta = -25.3\\pm0.8$ mas yr$^{-1}$), the expected position of SR 12 c at the time of our observations matches the position of this 0.88 mm source."
+     }
+    ]
+   },
+   "citation": "(cite: GaiaDR2; BJ18; GaiaEDR3)"
+  },
+  {
+   "what": {
+    "value": "Accretion rate of SR 12 c (10^(-11.08+-0.40) M_sun yr^-1), spectral type L0+-1, log g = 4+-0.5, effective temperature 2600+-100 K",
+    "evidence": [
+     {
+      "loc": "SR 12",
+      "quote": "The SED fitting in (cite: SM18) yields a spectral type of L$0\\pm1$, log *g* $=4\\pm0.5$, and an effective temperature of $2600\\pm100$ K, so the radius of SR 12 c using the Stefan–Boltzmann law is expected to be about 1.6 $R_{\\rm Jup}$."
+     },
+     {
+      "loc": "SR 12",
+      "quote": "X-shooter spectroscopy in (cite: SM18; SM19) reveals multiple hydrogen lines, in particular the prominent H$\\alpha$ emission, indicating that SR 12 c is accreting at a rate of $10^{-11.08\\pm0.40}~M_\\ensuremath{\\odot}$ yr$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: SM18; SM19)"
+  },
+  {
+   "what": {
+    "value": "J-band bolometric correction and evolutionary models for SR 12 c luminosity and mass",
+    "evidence": [
+     {
+      "loc": "SR 12",
+      "quote": "Using the Gaia DR2 distance, the *J*-band bolometric correction in (cite: Filippazzo15), and the models in (cite: Baraffe15), we find a slightly lower bolometric luminosity of log$(L/L_{\\odot})=-2.95\\pm0.11$ dex and a mass of $11\\pm3~M_{\\rm Jup}$."
+     }
+    ]
+   },
+   "citation": "(cite: Filippazzo15; Baraffe15)"
+  },
+  {
+   "what": {
+    "value": "850/870 um submillimeter galaxy differential number counts",
+    "evidence": [
+     {
+      "loc": "The SR 12 c Dust Disk",
+      "quote": "We calculate the probability of the point source being a distant galaxy by fitting a power law to the 850$/$870 $\\mu$m differential number counts in (cite: C14)."
+     }
+    ]
+   },
+   "citation": "(cite: C14)"
+  },
+  {
+   "what": {
+    "value": "PDS 70 c continuum flux density (86 uJy), outer radius (1 au), and distance (112.4 pc)",
+    "evidence": [
+     {
+      "loc": "Dust Disk Radius",
+      "quote": "It is about 1.5 times brighter than the CPD around PDS 70 c (86 $\\mu$Jy; (cite: B21)) given their very similar distances (112.5 pc to SR 12 and 112.4 pc to PDS 70)."
+     },
+     {
+      "loc": "Footnote 5",
+      "quote": "We find a mean disk temperature of 29 K for the PDS 70 c disk when integrating $T(r)$ to 1 au, the disk outer radius constrained by (cite: B21)."
+     }
+    ]
+   },
+   "citation": "(cite: B21)"
+  },
+  {
+   "what": {
+    "value": "OTS 44 accretion rate (7.6e-12 M_sun yr^-1), 1.3 mm flux density (101 uJy), spectral index (2.2), and Chamaeleon I distance (192 pc)",
+    "evidence": [
+     {
+      "loc": "Dust Mass",
+      "quote": "Another planetary-mass object whose disk has been detected by ALMA is OTS 44 (2MASS J11100934$-$7632178), a free-floating $\\sim$12 $M_{\\rm Jup}$ object accreting at $7.6\\times10^{-12}~M_\\ensuremath{\\odot}$ yr$^{-1}$ (cite: J13)."
+     },
+     {
+      "loc": "Dust Mass",
+      "quote": "Its disk has a 1.3 mm flux density of 101 $\\mu$Jy (cite: B17), translating to 238 $\\mu$Jy at 0.88 mm assuming a spectral index of 2.2 (cite: Ribas17)."
+     },
+     {
+      "loc": "Dust Mass",
+      "quote": "Adopting a Gaia DR2 distance of 192 pc to the Chamaeleon I star-forming region (cite: Dzib18) and assuming the same $T_{\\rm mean}$ and opacity as the SR 12 c disk,[^6] we find a dust mass of 0.064 $M_\\oplus$ (5.2 $M_{\\rm Moon}$) with $\\kappa_{\\rm 1\\, mm}$ and 0.295 $M_\\oplus$ (24 $M_{\\rm Moon}$) with $\\kappa_{\\rm 1\\, \\mu m}$."
+     }
+    ]
+   },
+   "citation": "(cite: J13; B17; Ribas17; Dzib18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Revise bolometric luminosity, mass, and radius of SR 12 c",
+   "method": "Combine Gaia DR2 distance, J-band bolometric correction, and evolutionary models for luminosity and mass; apply Stefan-Boltzmann law for radius",
+   "software": [],
+   "key_parameters": [
+    "T_eff = 2600 +- 100 K"
+   ],
+   "assumptions": [
+    "Age of 2 Myr, distance of 112.5 (+5.8/-5.3) pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum source position, flux density, and background galaxy contamination probability",
+   "method": "Elliptical Gaussian fitting in the image plane and point-source visibility fitting with uvmodelfit; integrate power-law fit to 850/870 um number counts",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "Number count integration threshold of 0.1 mJy to infinity within >=20% primary-beam response and within 0.1'' from SR 12 c"
+   ],
+   "assumptions": [
+    "Point source model for visibility fitting; 10% flux calibration error"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate dust disk outer radius under optically thick assumption",
+   "method": "Calculate radial temperature profile T(r) following Isella et al. (2014, 2019) and integrate Planck function B_nu(T(r)) from r_in to r_out to match observed flux density",
+   "software": [
+    "MATLAB"
+   ],
+   "key_parameters": [
+    "r_in = 1.6 R_Jup (PMC radius), D = 112.5 pc, <cos i> = 2/pi"
+   ],
+   "assumptions": [
+    "Optically thick continuum emission; irradiation from host binary ignored at 980 au; mean disk inclination <cos i> = 2/pi"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate dust mass of SR 12 c, PDS 70 c, OTS 44, and SR 12 AB upper limit",
+   "method": "Calculate optically thin dust mass using mean disk temperature T_mean and Hildebrand (1983) formula, and also fit a surface density profile Sigma(r) proportional to 1/r following Isella et al. (2014, 2019)",
+   "software": [
+    "MATLAB"
+   ],
+   "key_parameters": [
+    "T_mean = 24 K for SR 12 c (integrated from 1.6 R_Jup to 5 au); T_mean = 29 K for PDS 70 c (integrated to 1 au); T_mean = 20 K for SR 12 AB",
+    "Dust opacities: kappa_1mm = 3.63 cm^2 g^-1 and kappa_1um = 0.79 cm^2 g^-1"
+   ],
+   "assumptions": [
+    "Surface density Sigma(r) proportional to 1/r; spectral index of 2.2 for OTS 44 to scale 1.3 mm flux to 0.88 mm"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate gas mass, gas-to-dust ratio, and gas disk radius",
+   "method": "Multiply measured accretion rate by assumed 3 Myr remaining disk lifetime to get gas mass and divide by dust mass; compare 12CO (3-2) upper limit to radiative transfer models of Rab et al. (2019)",
+   "software": [],
+   "key_parameters": [
+    "Accretion rate = 10^(-11.08 +- 0.40) M_sun yr^-1; remaining lifetime = 3 Myr; CO channel rms = ~0.7 mJy beam^-1 per 1 km s^-1"
+   ],
+   "assumptions": [
+    "Constant accretion for 3 Myr; 12CO (3-2) emission is not absorbed by foreground clouds and CO is not heavily depleted onto grains"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SR 12 c bolometric luminosity log(L/L_sun)",
+   "value": "-2.95",
+   "uncertainty": "0.11",
+   "units": "dex",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SR 12",
+     "quote": "Using the Gaia DR2 distance, the *J*-band bolometric correction in (cite: Filippazzo15), and the models in (cite: Baraffe15), we find a slightly lower bolometric luminosity of log$(L/L_{\\odot})=-2.95\\pm0.11$ dex and a mass of $11\\pm3~M_{\\rm Jup}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c mass",
+   "value": "11",
+   "uncertainty": "3",
+   "units": "M_Jup",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SR 12",
+     "quote": "Using the Gaia DR2 distance, the *J*-band bolometric correction in (cite: Filippazzo15), and the models in (cite: Baraffe15), we find a slightly lower bolometric luminosity of log$(L/L_{\\odot})=-2.95\\pm0.11$ dex and a mass of $11\\pm3~M_{\\rm Jup}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c radius",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "R_Jup",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SR 12",
+     "quote": "The SED fitting in (cite: SM18) yields a spectral type of L$0\\pm1$, log *g* $=4\\pm0.5$, and an effective temperature of $2600\\pm100$ K, so the radius of SR 12 c using the Stefan–Boltzmann law is expected to be about 1.6 $R_{\\rm Jup}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c 0.88 mm continuum flux density (uvmodelfit)",
+   "value": "127",
+   "uncertainty": "14",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The disk has a flux density of $127 \\pm14~\\mu$Jy and is not resolved by the $\\sim$0.1$''$ beam, so the dust disk radius is likely less than 5 au and can be much smaller if the dust continuum is optically thick."
+    },
+    {
+     "loc": "Dust Disk Radius",
+     "quote": "We assume a point source model in the CASA task `uvmodelfit` and obtain a flux density of $127\\pm14~\\mu$Jy, where the uncertainty includes a 10% flux calibration error."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c 0.88 mm peak flux density (image)",
+   "value": "126",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust Disk Radius",
+     "quote": "This is consistent with the peak flux density of 126 $\\mu$Jy directly measured from the image, indicating that the disk is indeed not resolved."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA positional rms accuracy",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The SR 12 c Dust Disk",
+     "quote": "For our observations, this positional rms is 10 mas."
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of background galaxy within 0.1'' of SR 12 c",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The SR 12 c Dust Disk",
+     "quote": "The probability of one galaxy being within 0.1$''$ from SR 12 c is 0.02%."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c dust disk radius upper limit (from beam)",
+   "value": "<5",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The disk has a flux density of $127 \\pm14~\\mu$Jy and is not resolved by the $\\sim$0.1$''$ beam, so the dust disk radius is likely less than 5 au and can be much smaller if the dust continuum is optically thick."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c optically thick dust disk outer radius",
+   "value": "0.34",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust Disk Radius",
+     "quote": "After substituting the bolometric luminosity of SR 12 c into $T_{\\rm PMC,\\,irr}$ and the mass, radius, and accretion rate into $T_{\\rm acc}$, we find a disk outer radius of 0.34 au ($\\sim$720 $R_{\\rm Jup}$), much smaller than the minimum radius that can be resolved by the beam ($\\sim$5 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c mean disk temperature (integrated to 5 au)",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "Integrating $T(r) = (T_{\\rm PMC,\\,irr}^4 + T^4_{\\rm acc})^{0.25}$ from 1.6 $R_{\\rm Jup}$ to 5 au (the upper limit of the SR 12 c disk radius), we find a mean disk temperature of $T_{\\rm mean}=24$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c optically thin dust mass (1 mm grains, T_mean = 24 K)",
+   "value": "0.012",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "Assuming the disk only contains 1 mm grains with an opacity of $\\kappa_{\\rm 1\\,mm}=3.63$ cm$^2$ g$^{-1}$ (cite: Birnstiel18), we substitute $T_{\\rm mean}$ and $\\kappa_{\\rm 1\\,mm}$ into $M_{\\rm dust} = \\frac{F_\\nu D^2}{\\kappa B_\\nu(T_{\\rm mean})}$ (cite: H83) and find a dust mass of $0.012~M_{\\oplus}$ (0.95 $M_{\\rm Moon}$), two times more massive than the PDS 70 c disk, 0.006 $M_{\\oplus}$ (0.47 $M_{\\rm Moon}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c optically thin dust mass (1 um grains, T_mean = 24 K)",
+   "value": "0.054",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "If the millimeter-sized dust grains are already depleted such that only 1 $\\mu$m grains remain, we find a dust mass of $0.054~M_{\\oplus}$ (4.4 $M_{\\rm Moon}$) assuming an opacity of 0.79 cm$^2$ g$^{-1}$ (cite: Birnstiel18), again two times higher than the PDS 70 c CPD, 0.027 $M_{\\oplus}$ (2.2 $M_{\\rm Moon}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c dust mass from surface density model (1 mm grains)",
+   "value": "0.007",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust Ratio and Small Gas Disk",
+     "quote": "With the dust masses derived in Figure 3, 0.007 $M_\\oplus$ for 1 mm dust and 0.03 $M_\\oplus$ for 1 $\\mu$m dust, and the 0.40 dex uncertainty in the accretion rate, we find gas-to-dust ratios in the ranges of 470–3000 and 110–700, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c dust mass from surface density model (1 um grains)",
+   "value": "0.03",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust Ratio and Small Gas Disk",
+     "quote": "With the dust masses derived in Figure 3, 0.007 $M_\\oplus$ for 1 mm dust and 0.03 $M_\\oplus$ for 1 $\\mu$m dust, and the 0.40 dex uncertainty in the accretion rate, we find gas-to-dust ratios in the ranges of 470–3000 and 110–700, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 c optically thin dust mass (1 mm grains, T_mean = 29 K)",
+   "value": "0.006",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "Assuming the disk only contains 1 mm grains with an opacity of $\\kappa_{\\rm 1\\,mm}=3.63$ cm$^2$ g$^{-1}$ (cite: Birnstiel18), we substitute $T_{\\rm mean}$ and $\\kappa_{\\rm 1\\,mm}$ into $M_{\\rm dust} = \\frac{F_\\nu D^2}{\\kappa B_\\nu(T_{\\rm mean})}$ (cite: H83) and find a dust mass of $0.012~M_{\\oplus}$ (0.95 $M_{\\rm Moon}$), two times more massive than the PDS 70 c disk, 0.006 $M_{\\oplus}$ (0.47 $M_{\\rm Moon}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 c optically thin dust mass (1 um grains, T_mean = 29 K)",
+   "value": "0.027",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "If the millimeter-sized dust grains are already depleted such that only 1 $\\mu$m grains remain, we find a dust mass of $0.054~M_{\\oplus}$ (4.4 $M_{\\rm Moon}$) assuming an opacity of 0.79 cm$^2$ g$^{-1}$ (cite: Birnstiel18), again two times higher than the PDS 70 c CPD, 0.027 $M_{\\oplus}$ (2.2 $M_{\\rm Moon}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "OTS 44 optically thin dust mass (1 mm grains, T_mean = 24 K)",
+   "value": "0.064",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "Adopting a Gaia DR2 distance of 192 pc to the Chamaeleon I star-forming region (cite: Dzib18) and assuming the same $T_{\\rm mean}$ and opacity as the SR 12 c disk,[^6] we find a dust mass of 0.064 $M_\\oplus$ (5.2 $M_{\\rm Moon}$) with $\\kappa_{\\rm 1\\, mm}$ and 0.295 $M_\\oplus$ (24 $M_{\\rm Moon}$) with $\\kappa_{\\rm 1\\, \\mu m}$."
+    }
+   ]
+  },
+  {
+   "quantity": "OTS 44 optically thin dust mass (1 um grains, T_mean = 24 K)",
+   "value": "0.295",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Mass",
+     "quote": "Adopting a Gaia DR2 distance of 192 pc to the Chamaeleon I star-forming region (cite: Dzib18) and assuming the same $T_{\\rm mean}$ and opacity as the SR 12 c disk,[^6] we find a dust mass of 0.064 $M_\\oplus$ (5.2 $M_{\\rm Moon}$) with $\\kappa_{\\rm 1\\, mm}$ and 0.295 $M_\\oplus$ (24 $M_{\\rm Moon}$) with $\\kappa_{\\rm 1\\, \\mu m}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c disk gas mass",
+   "value": "0.03",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust Ratio and Small Gas Disk",
+     "quote": "The accretion rate of SR 12 c measured by (cite: SM19), $10^{-11.08\\pm0.40}~M_\\ensuremath{\\odot}$ yr$^{-1}$ ($\\sim$$9\\times10^{-9}~M_{\\rm Jup}$ yr$^{-1}$),[^7] implies a substantial amount of gas within the disk: on the order of 0.03 $M_{\\rm Jup}$, assuming that accretion at this rate can last for another 3 Myr before the disk may dissipate (e.g., (cite: H01))."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c gas-to-dust ratio (1 mm dust)",
+   "value": "470–3000",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust Ratio and Small Gas Disk",
+     "quote": "With the dust masses derived in Figure 3, 0.007 $M_\\oplus$ for 1 mm dust and 0.03 $M_\\oplus$ for 1 $\\mu$m dust, and the 0.40 dex uncertainty in the accretion rate, we find gas-to-dust ratios in the ranges of 470–3000 and 110–700, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c gas-to-dust ratio (1 um dust)",
+   "value": "110–700",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust Ratio and Small Gas Disk",
+     "quote": "With the dust masses derived in Figure 3, 0.007 $M_\\oplus$ for 1 mm dust and 0.03 $M_\\oplus$ for 1 $\\mu$m dust, and the 0.40 dex uncertainty in the accretion rate, we find gas-to-dust ratios in the ranges of 470–3000 and 110–700, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 c gas disk radius upper limit",
+   "value": "<10",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust Ratio and Small Gas Disk",
+     "quote": "Therefore, the gas disk of SR 12 c unlikely extends to 1$/$3 Hill radius ($\\sim$50 au) but instead may be smaller than 10 au."
+    }
+   ]
+  },
+  {
+   "quantity": "SR 12 AB 3-sigma dust mass upper limit",
+   "value": "<0.007",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Circumbinary Material around SR 12 AB",
+     "quote": "Circumbinary material may have mostly dispersed due to the orbital motion between the stars, and we find a 3$\\sigma$ dust-mass limit of $<$0.007 $M_{\\oplus}$ ($<$0.56 $M_{\\rm Moon}$) assuming identical $\\kappa_{\\rm 1\\,mm}$ and $T_{\\rm mean}$ $=$ 20 K."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean image cell size, image size (pixels), deconvolution algorithm, stopping threshold, and clean masking parameters",
+  "Exact parameter values (e.g., flaring angle or radiative transfer constants) used in the T_PMC,irr and T_acc equations from Isella et al. (2014, 2019)",
+  "Weighting scheme used for the 12CO(3-2) spectral cube imaging"
+ ],
+ "missing_for_reproduction": [
+  "MATLAB scripts used for calculating the radial temperature profile T(r) and fitting the surface density model Sigma(r)",
+  "Exact parameters (e.g., flaring angle) used in the Isella et al. (2014, 2019) temperature profile equations",
+  "tclean pixel size, image dimensions, and deconvolution stopping criteria"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "Calibration pipeline and CASA versions are explicitly stated, line-flagging velocity range (0.5-8 km/s) and weighting (natural and robust=0.5) are clear, and the primary measurement is a straightforward point-source fit with uvmodelfit. Minor deductions for unstated tclean imaging parameters and custom MATLAB scripts for analytical disk modeling.",
+ "rediscovery_reason": "Public single-project ALMA dataset (2019.1.01212.S) calibrated with standard pipeline; main discovery is a 127 uJy point source measurement and analytical dust mass/radius calculations that are straightforward to reproduce.",
+ "source_card": "cards/2022ApJ...930L...3W/sonnet/card.md"
+}

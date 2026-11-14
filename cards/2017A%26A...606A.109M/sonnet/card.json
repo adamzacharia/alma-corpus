@@ -1,0 +1,975 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017A&A...606A.109M",
+  "title": "Detection of CH<SUP>+</SUP>, SH<SUP>+</SUP>, and their <SUP>13</SUP>C- and <SUP>34</SUP>S-isotopologues toward PKS 1830-211",
+  "year": 2017,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Muller, S.",
+  "n_authors": 16,
+  "arxiv_id": "1707.07446",
+  "doi": "10.1051/0004-6361/201731405",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00056.S",
+   "2013.1.00020.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "The observations were carried out with the Atacama Large Millimeter/submillimeter Array (ALMA) during its early cycles (1 and 2)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "PKS 1830-211 (z=0.89 absorber, SW and NE lensed images)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "absorber z=0.88582 (heliocentric); quasar z=2.5",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The quasar, at $z$=2.5 ((cite: lid99)), is gravitationally lensed by the foreground absorber, a nearly face-on spiral galaxy ((cite: win02))."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Table 1 note for z=0.88582; lid99 for quasar z",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The quasar, at $z$=2.5 ((cite: lid99)), is gravitationally lensed by the foreground absorber, a nearly face-on spiral galaxy ((cite: win02))."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Are CH+, SH+ and their 13C and 34S isotopologues detected in the z=0.89 absorber toward PKS 1830-211, and what do their column densities and ratios along the two lensed sightlines say about gas molecular fraction and isotope ratios?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Here, we report the detection of CH$^+$, SH$^+$, and their $^{13}$C- and $^{34}$S- isotopologues in the $z$=0.89 absorber located in front of the quasar PKS 1830$-$211."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00056.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00056.S and #2013.1.00020.S."
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00020.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00056.S and #2013.1.00020.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 8 (~440 GHz) for CH+; Band 7 (~280 GHz) for SH+",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The CH$^+$ and $^{13}$CH$^+$ $J$=1-0 transitions, redshifted to $\\sim$440 GHz in ALMA band 8, were observed simultaneously on 2015 May 20."
+     },
+     {
+      "loc": "Observations",
+      "quote": "redshifted to $\\sim$280 GHz in ALMA band 7, were observed on 2014 May 5 (two executions) and July 18 (1 execution)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "1.875 GHz wide spectral windows, 1.1 MHz resolution (~0.8 km/s CH+, ~1.2 km/s SH+ after Hanning smoothing)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The correlator was configured with 1.875 GHz wide spectral windows and a spectral resolution of 1.1 MHz, corresponding to a velocity resolution, after Hanning smoothing, of $\\sim$0.8 km s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH+",
+     "transition": "J=1-0",
+     "rest_frequency": "835.137504 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CH$^+$ $J$=1-0                       | 2015 May 20         | 835.137504(20)   | 442.851          | 0.0                | 1.0              | 2.85                              |"
+      }
+     ]
+    },
+    {
+     "species": "13CH+",
+     "transition": "J=1-0",
+     "rest_frequency": "830.216096 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| $^{13}$CH$^+$ $J$=1-0                 | –                   | 830.216096(22)   | 440.241          | 0.0                | 1.0              | 2.79                              |"
+      }
+     ]
+    },
+    {
+     "species": "SH+",
+     "transition": "N_J=1_2-0_1 (F=2.5-1.5 strongest)",
+     "rest_frequency": "526.048023 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| $F$=2.5-1.5                          | –                   | 526.048023(50)   | 278.949          | 0.0                | 2.06             | 30.1                              |"
+      }
+     ]
+    },
+    {
+     "species": "34SH+",
+     "transition": "N_J=1_2-0_1",
+     "rest_frequency": "~525.09 GHz (J=2-1 components)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The SH$^+$ and $^{34}$SH$^+$ $N_J$=$1_2$-$0_1$ transitions, redshifted to $\\sim$280 GHz in ALMA band 7, were observed on 2014 May 5 (two executions) and July 18 (1 execution)."
+      }
+     ]
+    },
+    {
+     "species": "H2 18O",
+     "transition": "1_10-1_01",
+     "rest_frequency": "547.676 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The H$_2^{18}$O $(1_{10}$-$1_{01})$ line (rest frequency 547.676 GHz, redshifted to 290.4 GHz) was also observed with the same tuning."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "35 antennas (CH+ tuning); 30 antennas per execution (SH+ tuning)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The array was composed of 35 antennas, resulting in a synthesized beam of $\\sim$0.3$\\ensuremath{''}$, full-width at half maximum (FWHM)."
+     },
+     {
+      "loc": "Observations",
+      "quote": "In each execution, the array was composed of 30 antennas, resulting in a final synthesized beam smaller than 0.5$\\ensuremath{''}$ FWHM."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.3\" (CH+); <0.5\" (SH+)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The array was composed of 35 antennas, resulting in a synthesized beam of $\\sim$0.3$\\ensuremath{''}$, full-width at half maximum (FWHM)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "SH+ NE: better than 0.2% of continuum level",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Despite a sensitivity better than 0.2% of the continuum level, SH$^+$ is not detected toward the NE image."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~17 min (CH+); ~1 hour (SH+)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total on-source time was about 17 minutes."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The total on-source time comprised about 1 hour."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2015 May 20 (CH+); 2014 May 5 (two executions) and July 18 (SH+)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "were observed on 2014 May 5 (two executions) and July 18 (1 execution)."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SH+ rest frequencies from laboratory measurements",
+      "evidence": [
+       {
+        "loc": "Laboratory spectroscopic data",
+        "quote": "The rest frequencies for the SH$^+$ $N_J$=$1_2$-$0_1$ transitions are taken from laboratory measurements by (cite: hal15)."
+       }
+      ]
+     },
+     "citation": "(cite: hal15)"
+    },
+    {
+     "what": {
+      "value": "CH+ and 13CH+ rest frequencies from CDMS",
+      "evidence": [
+       {
+        "loc": "Laboratory spectroscopic data",
+        "quote": "The CH$^+$ and $^{13}$CH$^+$ rest frequencies were taken from the Cologne Database for Molecular Spectroscopy (CDMS)"
+       }
+      ]
+     },
+     "citation": "(cite: CDMS01; CDMS05)"
+    },
+    {
+     "what": {
+      "value": "Dipole moments: CH+ 1.68 D; SH+ 1.28 D",
+      "evidence": [
+       {
+        "loc": "Laboratory spectroscopic data",
+        "quote": "We adopt the electric dipole moment $\\mu_{{\\rm CH}^+} = 1.68$ Debye ((cite: che07))"
+       }
+      ]
+     },
+     "citation": "(cite: che07; sen85)"
+    },
+    {
+     "what": {
+      "value": "HI column densities from the kinematical model",
+      "evidence": [
+       {
+        "loc": "Time variations",
+        "quote": "we use those derived from the source kinematical model by (cite: koo05) and given in Table [\\[tab:ncol\\]]"
+       }
+      ]
+     },
+     "citation": "(cite: koo05)"
+    },
+    {
+     "what": {
+      "value": "Column densities of other species (ArH+, OH+, H2O+, CH, HF, HCO+ etc.) and H2 in comparison table",
+      "evidence": [
+       {
+        "loc": "Table 4 notes",
+        "quote": "$(b)$ (cite: hmul15a); $(c)$ (cite: mul16); $(d)$ (cite: mul14b); $(e)$ this work; $(f)$ (cite: kaw16); $(g)$ (cite: mul14a); $(h)$ (cite: mul11)"
+       }
+      ]
+     },
+     "citation": "hmul15a; mul16; mul14b; kaw16; mul14a; mul11"
+    },
+    {
+     "what": {
+      "value": "CMB temperature 5.14 K at z=0.89",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "$T_\\mathrm{CMB}$=5.14 K at $z$=0.89, (cite: mul13)"
+       }
+      ]
+     },
+     "citation": "(cite: mul13)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, standard procedure; bandpass from J1924-292; gain self-calibrated on PKS 1830-211 continuum",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the data calibration was done within the CASA[^1] package, following a standard procedure."
+      },
+      {
+       "loc": "Observations",
+       "quote": "The gain solutions were self-calibrated on the continuum of PKS 1830$-$211."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Covering factor and column density method (alpha coefficients, T_rot = T_CMB) following earlier work",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "are calculated for a given transition $i$-$j$ for $T_\\mathrm{rot}$=5.14 K (see e.g., (cite: mul14a))."
+       }
+      ]
+     },
+     "from_reference": "(cite: mul14a)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version",
+    "Flux calibrator and flux scale uncertainty",
+    "Phase/self-cal solution intervals",
+    "Exact UVMULTIFIT settings and starting parameters",
+    "Fitting algorithm, priors and initial guesses for Gaussian components",
+    "Channel/velocity range used to normalize continuum",
+    "Spectrum extraction for NE image continuum levels"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra toward both lensed images",
+    "method": {
+     "value": "Fit two-point-source model to visibilities with UVMULTIFIT per channel",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The final spectra were extracted toward both lensed images of PKS 1830$-$211 using the CASA-python task UVMULTIFIT ((cite: mar14)) and fitting a model of two point sources to the interferometric visibilities."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "UVMULTIFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit absorption profiles with Gaussian velocity components",
+    "method": {
+     "value": "Normalized spectra modelled as I = 1 - fc[1-exp(-sum tau_i)] with Gaussian opacity components; SH+ fit convolved with hyperfine structure, 34SH+ fitted jointly with shift delta",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "This profile was obtained by the fit of Gaussian velocity components convolved with the hyperfine structure."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "fc=1 assumed unless constrained (SW CH+ ~97%)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "In the absence of such constraints, we assume $f_c$=1 to derive apparent optical depths, and thus obtain lower limits to the column densities."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Excitation coupled to CMB, T=5.14 K",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "assuming that the excitation of CH$^+$ and SH$^+$ is strongly coupled to the cosmic microwave background"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian statistics assumed on errors; sampler not stated",
+     "evidence": [
+      {
+       "loc": "Column density ratios",
+       "quote": "For simplicity, we assume Gaussian statistics on the errors in the fit."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residuals at the noise level",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Only three Gaussian components are required to fit the profile, leaving residuals at the level of the noise"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive column densities",
+    "method": {
+     "value": "N = alpha * integral tau dv with alpha for T_rot=5.14 K; saturated CH+ lower limit by capping tau at 3",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "By cutting the optical depths at a threshold of $\\tau =3$, we estimate a lower limit of $6.4 \\times 10^{14}$ cm$^{-2}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Simultaneous fit of CH+, 13CH+ and OH+ for SW saturation correction and isotope ratio",
+    "method": {
+     "value": "Single intrinsic velocity profile, three Gaussians, common fc, constant [OH+]/[CH+] ratio assumed over the SW absorption",
+     "evidence": [
+      {
+       "loc": "Column density ratios",
+       "quote": "we can perform a simultaneous fit of the CH$^+$, $^{13}$CH$^+$, and OH$^+$ spectra, using Eq. [\\[eq:abs_function\\]] with a single intrinsic velocity profile for all species."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Reproduces spectra with residuals near noise",
+     "evidence": [
+      {
+       "loc": "Column density ratios",
+       "quote": "It reproduces well the spectra and leaves residuals close to the noise level."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare SW/NE column densities and molecular fraction tracers",
+    "method": {
+     "value": "Compute gamma_SW/NE and CH+/H abundances using HI and H2 from literature",
+     "evidence": [
+      {
+       "loc": "Comparison of the two lines of sight",
+       "quote": "(hereafter $\\gamma_{\\rm SW/NE}$) for a given species is a good indicator of what kind of gas it preferentially traces."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the data calibration was done within the CASA[^1] package, following a standard procedure."
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVMULTIFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extracting spectra of the two lensed images via visibility fitting",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using the CASA-python task UVMULTIFIT ((cite: mar14))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Rest frequencies and spectroscopic data",
+     "evidence": [
+      {
+       "loc": "Laboratory spectroscopic data",
+       "quote": "taken from the Cologne Database for Molecular Spectroscopy (CDMS)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CH+ NE total column density",
+    "value": "1.9e14",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The total CH$^+$ column density is about $1.9 \\times 10^{14}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "CH+ SW saturation-corrected column density",
+    "value": "9.7e14",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Column density ratios",
+      "quote": "we derive a new “saturation-corrected” total column density for CH$^+$ of $9.7 \\times 10^{14}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "[SH+]/[34SH+] SW",
+    "value": "16.2",
+    "uncertainty": "1.3",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "we also find a ratio SH$^+$/$^{34}$SH$^+$ of $16.2 \\pm 1.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "34SH+ frequency shift delta",
+    "value": "952.5",
+    "uncertainty": "1.9",
+    "units": "MHz",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We find $\\delta = 952.5 \\pm 1.9$ MHz"
+     }
+    ]
+   },
+   {
+    "quantity": "[CH+]/[13CH+] SW",
+    "value": "97",
+    "uncertainty": "6",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Column density ratios",
+      "quote": "\\[CH$^+$\\]/\\[$^{13}$CH$^+$\\] $= 97 \\pm 6$"
+     }
+    ]
+   },
+   {
+    "quantity": "[CH+]/[13CH+] NE",
+    "value": "146",
+    "uncertainty": "43",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "yields a \\[CH$^+$\\]/\\[$^{13}$CH$^+$\\] ratio of $146 \\pm 43$"
+     }
+    ]
+   },
+   {
+    "quantity": "SH+ SW column density",
+    "value": "3.9e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| SH$^+$        | 2014 $^{(e)}$      | $3.9 \\times 10^{13}$    | $< 3.2\\times 10^{11}$   | $> 120$              |"
+     }
+    ]
+   },
+   {
+    "quantity": "SH+ NE column density upper limit",
+    "value": "<3.2e11",
+    "uncertainty": "3 sigma",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "This corresponds to an upper limit of $3.2 \\times 10^{11}$ cm$^{-2}$ for the column density."
+     }
+    ]
+   },
+   {
+    "quantity": "fc SW from joint fit",
+    "value": "97.8",
+    "uncertainty": "0.3",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Column density ratios",
+      "quote": "The best fit with three Gaussian components yields $fc= 97.8 \\pm 0.3$ %"
+     }
+    ]
+   },
+   {
+    "quantity": "gamma_SW/NE for CH+",
+    "value": "5.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| CH$^+$        | 2015 $^{(e)}$      | $9.7 \\times 10^{14}$    | $1.9 \\times 10^{14}$    | 5.1                  |"
+     }
+    ]
+   },
+   {
+    "quantity": "[CH+]/[SH+] SW and NE",
+    "value": "~25 (SW); >600 (NE)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Column density ratios",
+      "quote": "$\\sim 25$ toward the SW image and $> 600$ toward the NE"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "First extragalactic detection of SH+ and first interstellar detection of 34SH+; SH+ is absent toward the NE sightline",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "We report the first interstellar detection of $^{34}$SH$^+$ in the same line of sight."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are CH+ and SH+ detectable in the z=0.89 absorber, and does SH+ differ between sightlines?",
+    "experiment": "ALMA band 7 and 8 absorption spectra toward both lensed images",
+    "result": "SH+ and 34SH+ detected SW only; SH+ NE upper limit; CH+ in both",
+    "finding": "SH+ resides in higher molecular fraction gas or NE conditions disfavour its formation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "In constrast, SH$^+$ is only detected toward the SW line of sight, characterized by an higher average molecular fraction $f_{\\rm H2}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does gamma_SW/NE trace molecular fraction?",
+    "experiment": "Compare SW/NE column density ratios for many species",
+    "result": "CH+ gamma=5, SH+ >120, ordered consistent with f_H2 trends",
+    "finding": "gamma_SW/NE is a good indicator of molecular fraction, consistent with chemical predictions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Comparison of the two lines of sight",
+      "quote": "When ordered with increasing value of $\\gamma_{\\rm SW/NE}$, there is a clear trend with tracers of increasing $f_{\\rm H2}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What are the 12C/13C ratios along the two sightlines?",
+    "experiment": "Joint fits of CH+ and 13CH+ spectra",
+    "result": "~97 SW, 146 NE",
+    "finding": "Higher ratio in NE suggests less processed material, with uncertainty",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The even larger (although somehow uncertain) value derived in the NE line of sight, intercepting the disk of the absorber at a larger galactocentric radius, suggests that the material might be less processed by stellar nucleosynthesis."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Covering factor unresolved; apparent opacities give lower limits for column densities",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "we assume $f_c$=1 to derive apparent optical depths, and thus obtain lower limits to the column densities."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Indirect SW 12C/13C ratio depends on assumed constant [OH+]/[CH+] ratio",
+    "Observations of different species at different epochs despite time variability",
+    "fc assumption affects column densities",
+    "Excitation assumed CMB-coupled"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and calibrator details",
+    "Component starting values and fit algorithm",
+    "Self-cal parameters"
+   ],
+   "estimated_data_volume_inferred": "Tens of GB (two projects, several executions)",
+   "score_inferred": 3,
+   "score_reason": "Data public in archive and method simple, but calibration and fitting details sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Fitting details and calibration settings are insufficiently specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: mar14)",
+     "why": "UVMULTIFIT visibility fitting"
+    },
+    {
+     "citation": "(cite: mul14a)",
+     "why": "Column density and covering factor method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: mul16)",
+     "why": "OH+, H2O+ observations in same source"
+    },
+    {
+     "citation": "(cite: hmul15a)",
+     "why": "ArH+ observations in same source"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-16fff3f401bb4f2b07d87bbe1ad14aab",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:38",
+  "usage": {
+   "input_tokens": 26796,
+   "output_tokens": 8283,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.068818,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 33,
+   "rate": 0.458
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:49",
+  "custom_id": "repair-sonnet-b9bedf7d4fbe284e85abc12716b7fbee",
+  "fixed": [
+   {
+    "path": "data.lines_targeted[3].evidence[0]",
+    "old": "| 1–0 | 2–1 | 2.5–1.5 | 525094.4 | 9.54 | 6 | 4 | 17.5153 | 0.0000 |",
+    "new": "The SH$^+$ and $^{34}$SH$^+$ $N_J$=$1_2$-$0_1$ transitions, redshifted to $\\sim$280 GHz in ALMA band 7, were observed on 2014 May 5 (two executions) and July 18 (1 execution)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

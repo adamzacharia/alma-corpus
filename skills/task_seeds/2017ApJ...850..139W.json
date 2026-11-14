@@ -1,0 +1,231 @@
+{
+ "bibcode": "2017ApJ...850..139W",
+ "title": "ALMA Observations of a Quiescent Molecular Cloud in the Large Magellanic Cloud",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa9333",
+ "arxiv_id": "1708.08890",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do size-linewidth, mass and virial properties of substructures differ between a quiescent LMC cloud (PCC) and the active 30 Dor cloud at matched 0.6 pc resolution?",
+ "alma_project_codes": [
+  "2013.1.00832.S",
+  "2011.0.00471.S"
+ ],
+ "data": {
+  "bands": "Band 6; 12CO(2-1), 13CO(2-1), C18O(2-1) plus continuum at 218 and 232 GHz",
+  "arrays": "12m, 7m (ACA) and total power; ACA not used in final analysis",
+  "angular_resolution": "PCC native 1.81x1.24 arcsec; both clouds convolved to 2.5 arcsec (0.6 pc)",
+  "sensitivity": "PCC 12CO rms 0.19 K (0.2 km/s channel) at 2.5 arcsec; continuum rms 0.21 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "30 Dor-10 ALMA Cycle 0 cubes",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA data",
+      "quote": "we have also analyzed ALMA data for an additional cloud, 30Dor-10 (cite: Indebetouw:13)"
+     }
+    ]
+   },
+   "citation": "Indebetouw:13"
+  },
+  {
+   "what": {
+    "value": "Southern IR source 24um flux and far-IR luminosity 330 Lsun",
+    "evidence": [
+     {
+      "loc": "4.1 The Southern IR Source",
+      "quote": "(cite: Seale:14) obtain a far-IR luminosity of 330$\\pm$74 $L_\\odot$ for this source"
+     }
+    ]
+   },
+   "citation": "Seale:14"
+  },
+  {
+   "what": {
+    "value": "Virial-based LMC CO-to-H2 factor ~2.4 times Milky Way",
+    "evidence": [
+     {
+      "loc": "3.3 Structural Decomposition",
+      "quote": "The CO(1–0) to H$_2$ conversion factor in the LMC is $\\sim$2.4 times the factor for the Milky Way, based on the virial analysis of the MAGMA GMC catalog by (cite: Hughes:10)."
+     }
+    ]
+   },
+   "citation": "Hughes:10"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and combine ALMA data",
+   "method": "Re-image 12m visibilities in CASA with clean, feather with TP, convolve to 2.5 arcsec",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Dendrogram decomposition and structure properties",
+   "method": "astrodendro on PPV cubes with bijection property measurement; derive R, L, M_vir, M_lum with bootstrap errors",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "local maxima >3 sigma, >=2.5 sigma above merge level, span at least two beams"
+   ],
+   "assumptions": [
+    "d=48 kpc; X2=4 (alpha_CO=4.3 x X2); M_vir=5 sigma_v^2 R/G"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit scaling relations",
+   "method": "Power-law fits in log space with effective variance weighting using kmpfit, initial guess from linregress; exclude points below resolution",
+   "software": [
+    "Kapteyn",
+    "scipy"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "LTE 13CO mass",
+   "method": "Derive Tex from 12CO peak, tau13, N(13CO), scale with H2/13CO=5e6; Monte Carlo errors",
+   "software": [],
+   "key_parameters": [
+    "Tex floor 8 K, varied 6-10 K in Monte Carlo"
+   ],
+   "assumptions": [
+    "12CO optically thick, common Tex, no beam dilution"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust temperature check",
+   "method": "Modified blackbody fit to 100-500 um SEDs with DUSTEM, beta in [0.8,2.8], Td in [5,55] K, 10% flux uncertainty",
+   "software": [
+    "DUSTEM"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "PCC TP CO(2-1) flux",
+   "value": "1691",
+   "uncertainty": "10",
+   "units": "Jy km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we measure a CO(2–1) flux of 1691$\\pm$10 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1)/13CO(2-1) flux ratio",
+   "value": "13.5",
+   "uncertainty": "1.6",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "implying a CO(2–1)/$^{13}$CO(2–1) flux ratio of 13.5$\\pm$1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "PCC dust temperature (mask 2)",
+   "value": "15.9",
+   "uncertainty": "1.0",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The PCC and 30 Dor clouds have dust temperatures of $15.9\\pm1.0$ K and $37\\pm5$ K respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "30 Dor dust temperature (mask 2)",
+   "value": "37",
+   "uncertainty": "5",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$15.9\\pm1.0$ K and $37\\pm5$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Max leaf sigma_v PCC / 30 Dor",
+   "value": "0.95 / 3.20",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.4.1",
+     "quote": "$\\sigma_v$ for leaves ranges up to 0.95 km s$^{-1}$ for the PCC (3.20 km s$^{-1}$ for 30 Dor)"
+    }
+   ]
+  },
+  {
+   "quantity": "Leaf share of kinetic energy PCC / 30 Dor",
+   "value": "5.5% / 5.1%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "the leaves as a whole contribute only 5.5% and 5.1% of the energy in PCC and 30 Dor respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) gas mass of PCC (MAGMA)",
+   "value": "2.7e4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 Mopra",
+     "quote": "which translates to a molecular gas mass (including helium) of $2.7 \\times 10^4$ $M_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "astrodendro min_value/min_delta/min_npix numeric values in sigma units beyond description, and the rms used",
+  "Imaging weighting, robust, cell and image size, clean thresholds, line-free channels",
+  "Exact CASA version",
+  "TP-to-12m feather scaling and TP calibration details",
+  "Regridded 30 Dor cube specifics (velocity resolution handling, mosaic size)",
+  "Dust SED masks, background region definitions in detail",
+  "How data cubes were smoothed to 2.5 arcsec including primary beam correction"
+ ],
+ "missing_for_reproduction": [
+  "Dendrogram exact parameters",
+  "Imaging parameters",
+  "Table of structure properties not given"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and named tools, but imaging and dendrogram parameters are incompletely specified.",
+ "rediscovery_reason": "Public archival data, numeric results (scaling relations, line widths) and a mostly described recipe, though imaging parameters are missing.",
+ "source_card": "cards/2017ApJ...850..139W/sonnet/card.md"
+}

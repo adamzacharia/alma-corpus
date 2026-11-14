@@ -1,0 +1,642 @@
+{
+ "bibcode": "2025ApJ...989...83B",
+ "title": "CO Emission and Absorption-line Survey of the M87 Nucleus Using Archival ALMA Imaging",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adea52",
+ "arxiv_id": "2503.03249",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Is there molecular gas in the inner kpc of M87 (CO emission from the circumnuclear disk, ionized-gas filaments and dusty clouds, or CO absorption against the nucleus), as probed by archival ALMA imaging?",
+ "alma_project_codes": [
+  "2011.0.00001.CAL",
+  "2012.1.00661.S",
+  "2013.1.00073.S",
+  "2013.1.01022.S",
+  "2015.1.00030.S",
+  "2015.1.01170.S",
+  "2015.1.01352.S",
+  "2016.1.00021.S",
+  "2016.1.01154.V",
+  "2017.1.00608.S",
+  "2017.1.00841.V",
+  "2017.1.00842.V",
+  "2019.1.00807.S",
+  "2021.1.01398.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 6 and 7 (ALMA 12-m); ACA 7-m in Bands 3 and 6",
+  "arrays": "ALMA 12-m (plus phased-array APP-mode .V data); ACA 7-m used only for continuum SED/light curve",
+  "angular_resolution": "Mean synthesized beam FWHM ~0.03 arcsec to 2.3 arcsec across 12-m data; Xa1 CO(1-0) cube ~0.21 arcsec",
+  "sensitivity": "Xa1 CO(1-0) cube: typical rms ~0.4 mJy/beam per 20 km/s channel; MFS rms per member OUS in Table 3"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance modulus m-M = 31.11 +/- 0.08 mag (D_L ~ 16.7 +/- 0.6 Mpc)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We adopt a distance modulus $m-M = 31.11\\pm0.08$ mag for M87 from surface brightness fluctuation methods corresponding to a luminosity distance $D_L \\sim 16.7\\pm0.6$ Mpc (cite: blakeslee09)."
+     }
+    ]
+   },
+   "citation": "(cite: blakeslee09)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity v_sys = cz_obs = 1284 +/- 5 km/s with heliocentric z_obs = 0.004283 from stellar absorption-line fits",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "from stellar absorption-line fits with a heliocentric $z_\\mathrm{obs} = 0.004283$ (cite: cappellari11)"
+     }
+    ]
+   },
+   "citation": "(cite: cappellari11)"
+  },
+  {
+   "what": {
+    "value": "Cosmology: H0 = 67.8 km/s/Mpc, Omega_m = 0.308, Omega_Lambda = 0.692",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we assume a standard $\\Lambda$CDM cosmology with $H_0 = 67.8$ km s$^{-1}$ Mpc$^{-1}$ along with $\\Omega_\\mathrm{m} = 0.308$ and $\\Omega_\\Lambda = 0.692$ (cite: planck2016)"
+     }
+    ]
+   },
+   "citation": "(cite: planck2016)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0)-to-H2 conversion factor alpha_CO = 3.1 Msun pc^-2 (K km/s)^-1",
+    "evidence": [
+     {
+      "loc": "CO Emission",
+      "quote": "For a standard CO(1$-$0)-to-H$_2$ conversion factor $\\alpha_\\mathrm{CO} = 3.1$ $M_\\odot$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$ (cite: Sandstrom2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Sandstrom2013)"
+  },
+  {
+   "what": {
+    "value": "Dust-to-gas mass ratio ~0.015 adopted for the dust-mass limit",
+    "evidence": [
+     {
+      "loc": "Circumnuclear Dust",
+      "quote": "For $T_\\mathrm{dust} = 25$ K and a standard dust-to-gas mass ratio of $\\sim$0.015 (cite: Sandstrom2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Sandstrom2013)"
+  },
+  {
+   "what": {
+    "value": "Previous SMA CO(2-1) tentative detection S_CO(2-1)dv ~ 8.8 +/- 2.2 (stat) +/- 1.8 (sys) Jy km/s in an ~80 pc aperture",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: tan08) reported a tentative $S_\\mathrm{CO(2-1)}\\Delta v \\approx 8.8\\pm2.2(\\mathrm{stat})\\pm1.8(\\mathrm{sys})$ Jy km s$^{-1}$ detection"
+     }
+    ]
+   },
+   "citation": "(cite: tan08)"
+  },
+  {
+   "what": {
+    "value": "Atomic-gas UV/optical absorption lines with v_LOS - v_sys ~ -131 +/- 19 km/s and FWHM <~ 300 km/s",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "and moderate intrinsic FWHM $\\lesssim 300$ km s$^{-1}$ (cite: tsvetanov99b; sabra03)"
+     }
+    ]
+   },
+   "citation": "(cite: tsvetanov99b; sabra03)"
+  },
+  {
+   "what": {
+    "value": "Total N_H ~ (2-5)e20 cm^-2 towards the nucleus from X-ray spectroscopy",
+    "evidence": [
+     {
+      "loc": "Column Densities",
+      "quote": "total $N_\\mathrm{H} \\sim (2-5)\\times 10^{20}$ cm$^{-2}$ towards the M87 nucleus from X-ray spectroscopy (cite: wilson02; dimatteo03)"
+     }
+    ]
+   },
+   "citation": "(cite: wilson02; dimatteo03)"
+  },
+  {
+   "what": {
+    "value": "CO/H2 abundance ratios: 3.2e-4 standard (Galactic dense gas); ~2e-6 and ~8e-7 for diffuse Galactic sight lines",
+    "evidence": [
+     {
+      "loc": "Column Densities",
+      "quote": "A standard CO/H$_2$ abundance ratio of $3.2\\times 10^{-4}$ (cite: sofia04; bolatto2013)"
+     },
+     {
+      "loc": "Column Densities",
+      "quote": "CO/H$_2$ abundances of $\\sim$2$\\times$10$^{-6}$ (cite: liszt19) to $\\sim$8$\\times$10$^{-7}$ (cite: pineda10)"
+     }
+    ]
+   },
+   "citation": "(cite: sofia04; bolatto2013; liszt19; pineda10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate 12-m ALMA data",
+   "method": "Standard CASA pipeline calibration with the pipeline version appropriate to each data set; additional manual flagging; X20f re-calibrated after removing mis-flagged ozone channels; flux calibrator fluxdensity rescaled by up to 2% per spw for two projects; .V programs used in APP mode",
+   "software": [
+    "CASA",
+    "setjy"
+   ],
+   "key_parameters": [
+    "setjy flux density rescaling of up to 2% for individual spws (2015.1.00030.S, 2016.1.00021.S)",
+    "Additional manual flagging for high antenna temperature, amplitude disagreement and poor bandpass calibration near spw edges"
+   ],
+   "assumptions": [
+    "APP-mode calibration adopted for the .V programs; no interferometric-mode phase self-calibration possible"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Self-calibrate and image continuum (MFS)",
+   "method": "Phase (and usually amplitude) self-calibration loops using gaincal with MFS Stokes I tclean images (Briggs weighting; some uniform/natural)",
+   "software": [
+    "CASA",
+    "tclean",
+    "gaincal"
+   ],
+   "key_parameters": [
+    "Final solution intervals per integration (per scan); resulting dynamic ranges from several hundred to ~9000"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make continuum-dominated spectral cubes and peak continuum spectra",
+   "method": "Image each spw (or set of overlapping spws) with tclean at native channel binning with a common restoring beam, then plot peak flux density per channel",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust r = 0.5 weighting, native channel binning"
+   ],
+   "assumptions": [
+    "Absolute flux uncertainty ~5% (Band 3) and 10% (Bands 6, 7)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Subtract continuum in the uv plane and image CO cubes",
+   "method": "uvcontsub with fitorder = 1 with three line-channel exclusion cases, then image continuum-subtracted data at native and coarser (~20-40 km/s) binning",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Case 1: exclude |v_LOS - v_sys| < 500 km/s (used for the main emission and absorption results)",
+    "Case 3 (CO(1-0) only): exclude 100 < |v_LOS - v_sys| < 2200 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Build HST dust and Halpha maps and define integration regions",
+   "method": "Subtract a Multi-Gaussian-Expansion stellar model fitted with GALFIT from WFC3 F475W and ACS F660N images, producing gas emission and dust absorption maps used to define CO integration regions",
+   "software": [
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "F475W from GO-14256 for dust; F660N polarized images from GO-12271 aligned and combined into a Stokes I image"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Search for CO(1-0) emission and set upper limits",
+   "method": "Integrate CO(1-0) line profiles from the Xa1 cube (20 km/s channels) over HST-defined regions, a 0.5 arcsec CND aperture and a 0.2-0.5 arcsec annulus, with MC region-shifting noise; convert limits to M_H2 with alpha_CO",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Integration velocity range: atomic-gas v_LOS range plus +/-100 km/s buffer; dust regions ~300 km/s centered on v_sys",
+    "200 MC iterations to build the noise spectrum"
+   ],
+   "assumptions": [
+    "alpha_CO = 3.1 Msun pc^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit CO absorption lines in peak continuum spectra",
+   "method": "Compute opacity tau_nu = -ln(T_nu/T_cont); fit each CO absorption feature with a Gaussian and linear continuum including Hanning smoothing; MC resampling for errors; weighted averages over data sets; Voronoi-binned refit of Xa1 across the central beam",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "MC resampling adding noise (std of line-free portions) to the best-fit model and shifting bin centers by a normal fraction (std = 1/4 channel width)",
+    "For CO(2-1) only the Xb APP-mode fit from 2016.1.01154.V is used among .V data"
+   ],
+   "assumptions": [
+    "Hanning smoothing incorporated to recover intrinsic line widths"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Derive excitation temperature and column density (LTE)",
+   "method": "Solve the opacity-ratio equation for T_ex(2-1), then N_CO from CO(1-0) opacity and Q_rot; error bars from Monte Carlo draws of tau_CO; N_H2 from CO/H2 abundance ratios",
+   "software": [
+    "Splatalogue"
+   ],
+   "key_parameters": [
+    "10^5 MC iterations with tau_CO drawn from normal distributions (std = 1-sigma uncertainty); 1-sigma and 3-sigma percentile ranges"
+   ],
+   "assumptions": [
+    "Single-zone LTE with adjacent transitions under the same conditions; beam filling factor ignored; CMB negligible; T_K = T_ex",
+    "Diffuse-gas CO/H2 abundance ratios (~2e-6 to ~8e-7) preferred over the standard 3.2e-4 for N_H2"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Non-LTE radiative transfer modelling of the absorber",
+   "method": "RADEX uniform-sphere LVG models fitted to the weighted-average peak opacities of CO(1-0), CO(2-1) and CO(3-2) on a grid of n_H2 and T_bg for T_K = 10 K and 30 K",
+   "software": [
+    "radex"
+   ],
+   "key_parameters": [
+    "N_CO = 1e15 cm^-2 fixed from LTE; CO FWHM fixed to 10 km/s",
+    "Grid n_H2 = 1e2-1e5 cm^-3 and T_bg = 30-300 K; T_K = 10 K and 30 K tested"
+   ],
+   "assumptions": [
+    "Uniform, isothermal, homogeneous sphere with large-velocity-gradient escape probability; 12CO traces the whole cloud because tau << 1"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Limit circumnuclear thermal dust from the continuum",
+   "method": "Fit the X2c2 uniform-weighted MFS image with a nuclear source plus an offset Gaussian for N2 (imfit); sample noise with random 0.05 arcsec apertures on the residual image; convert the 1-sigma limit to M_dust and gas mass with a modified blackbody",
+   "software": [
+    "CASA",
+    "imfit",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "1-sigma flux limit delta S_ext = 0.75 mJy"
+   ],
+   "assumptions": [
+    "Dust absorption coefficient at 850 micron (value not given) with beta = 2; T_dust = 25 K (or 100 K); dust-to-gas ratio ~0.015"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "Measure ACA/ALMA continuum light curve and spectral index",
+   "method": "Pipeline calibration and phase-only self-calibration of ACA data, MFS imaging, combine peak flux densities with SMA monitoring, fit mm/sub-mm spectral index; simulate DRW light curves to estimate non-contemporaneous index error",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Intrinsic alpha = -0.6 for the mock light curves; Band 6 light curve 2 yr with one-day cadence"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 12,
+   "goal": "Test telluric and bandpass origins of spurious spectral features",
+   "method": "Model atmospheric transmission with am for each spw, compare ozone residuals with line catalogs, and compare peak spectra across spws and EBs to evaluate bandpass stability",
+   "software": [
+    "am",
+    "CDMS/JPL catalogs"
+   ],
+   "key_parameters": [
+    "Ozone lines tabulated down to CDMS/JPL log intensity -5.3"
+   ],
+   "assumptions": [
+    "N_O3 scales linearly with the depth of unsaturated O3 absorption lines"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H2 mass upper limit over the atomic-gas CND",
+   "value": "< 2.3e5",
+   "uncertainty": "upper limit",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find no evidence for CO emission in the central $\\sim$kpc and place an upper limit of $M_\\mathrm{H_2} < 2.3\\times 10^5$ $M_\\odot$ in the atomic gas CND region"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear CO(1-0) integrated flux (R<0.5 arcsec)",
+   "value": "< 0.109",
+   "uncertainty": "1-sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO Emission-line Constraints",
+     "quote": "we estimated nuclear $S_\\mathrm{CO(1-0)} \\Delta v < 0.109$ Jy km s$^{-1}$ (1$\\sigma$ uncertainty)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) integrated flux, outer jet region (highest S/N candidate)",
+   "value": "1.19",
+   "uncertainty": "0.36",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO Emission-line Constraints",
+     "quote": "with an integrated $S_\\mathrm{CO(1-0)}\\Delta v \\approx 1.19 \\pm 0.36$ Jy km s$^{-1}$ that just exceeds the 3$\\sigma$ threshold"
+    }
+   ]
+  },
+  {
+   "quantity": "Global CO(1-0) flux over inner ~2 kpc",
+   "value": "< 4.8",
+   "uncertainty": "1-sigma upper limit",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO Emission-line Constraints",
+     "quote": "returns only an $S_\\mathrm{CO(1-0)}\\Delta v < 4.8$ Jy km s$^{-1}$ 1$\\sigma$ upper limit over the entire $\\pm$500 km s$^{-1}$ range"
+    }
+   ]
+  },
+  {
+   "quantity": "Global H2 mass upper limit (R = 2 kpc aperture)",
+   "value": "< 4e6",
+   "uncertainty": "upper limit",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO Emission",
+     "quote": "we find a similar $<$4$\\times$10$^6$ $M_\\odot$ global upper limit"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted-average peak opacity tau_0 CO(1-0)",
+   "value": "0.00239",
+   "uncertainty": "0.00054",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO Absorption-line Properties",
+     "quote": "we also constructed final weighted-average peak opacities $\\overline{\\tau}_\\mathrm{0,CO(1-0)} = 0.00239\\pm 0.00054$ and $\\overline{\\tau}_\\mathrm{0,CO(2-1)} = 0.00390\\pm 0.00063$"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted-average peak opacity tau_0 CO(2-1)",
+   "value": "0.00390",
+   "uncertainty": "0.00063",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO Absorption-line Properties",
+     "quote": "we also constructed final weighted-average peak opacities $\\overline{\\tau}_\\mathrm{0,CO(1-0)} = 0.00239\\pm 0.00054$ and $\\overline{\\tau}_\\mathrm{0,CO(2-1)} = 0.00390\\pm 0.00063$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated opacity tau_CO(1-0), weighted average",
+   "value": "0.0281",
+   "uncertainty": "0.0045",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO Absorption-line Properties",
+     "quote": "The integrated opacity $\\overline{\\tau}_\\mathrm{CO(1-0)} = 0.0281 \\pm 0.0045$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated opacity tau_CO(2-1), weighted average",
+   "value": "0.0410",
+   "uncertainty": "0.0041",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO Absorption-line Properties",
+     "quote": "$\\overline{\\tau}_\\mathrm{CO(2-1)} = 0.0410 \\pm 0.0041$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted-average absorber velocity offset v_LOS - v_sys (CO(1-0) and CO(2-1))",
+   "value": "-77.21",
+   "uncertainty": "0.44",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Kinematics",
+     "quote": "the weighted-average $\\overline{v}_\\mathrm{LOS} - \\ensuremath{v_\\mathrm{sys}}= -77.21 \\pm 0.44$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted-average absorber line width sigma_LOS",
+   "value": "4.65",
+   "uncertainty": "0.47",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Kinematics",
+     "quote": "the observed $\\overline{\\sigma}_\\mathrm{LOS} = 4.65\\pm0.47$ km s$^{-1}$ is typical of disk-like clouds"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient of CO(1-0) absorption across the central beam",
+   "value": "<= 3 km/s across ~10 pc",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO Absorption-line Properties",
+     "quote": "shows the velocity gradient to be no more than 3 km s$^{-1}$ across $\\sim$10 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature T_ex(2-1) (median)",
+   "value": "7.77",
+   "uncertainty": "+1.34/-1.94 (1-sigma); +14.88/-2.90 (3-sigma)",
+   "units": "K",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Temperature and Column Densities",
+     "quote": "we used the 15.9 to 84.1 (0.14 to 99.87) percentile levels of the $T^{21}_\\mathrm{ex}$ distribution to find a median $T^{21}_\\mathrm{ex} = 7.77^{+1.34}_{-1.94}\\left(^{+14.88}_{-2.90}\\right)$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "CO column density N_CO",
+   "value": "1.16e15",
+   "uncertainty": "+0.21/-0.28 (1-sigma); +3.55/-0.47 (3-sigma), in 1e15",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Temperature and Column Densities",
+     "quote": "$N_\\mathrm{CO}/10^{15}\\,\\mathrm{cm}\\ensuremath{^{-2}}= 1.16^{+0.21}_{-0.28}\\left(^{+3.55}_{-0.47}\\right)$ with 1$\\sigma$ (3$\\sigma$) error bars"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature T_ex(3-2) (median)",
+   "value": "28.6",
+   "uncertainty": "+26.7/-14.9",
+   "units": "K",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Temperature and Column Densities",
+     "quote": "we find higher median $T^{32}_\\mathrm{ex} = 28.6^{+26.7}_{-14.9}$ K with $N_\\mathrm{CO} \\sim 10^{16}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density range N_H2 (in 1e20)",
+   "value": "0.92 to 2.3",
+   "uncertainty": "+0.68/-0.36 and +1.7/-0.9 (1-sigma)",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "$N_\\mathrm{H_2}/10^{20}\\,\\mathrm{cm}\\ensuremath{^{-2}}= 0.92^{+0.68}_{-0.36} - 2.3^{+1.7}_{-0.9}$ (1$\\sigma$ uncertainties)"
+    }
+   ]
+  },
+  {
+   "quantity": "RADEX best-fit n_H2 and T_bg for T_K = 10 K",
+   "value": "n_H2 ~ 5100 cm^-3; T_bg ~ 62 K",
+   "uncertainty": "1-sigma contours do not close; lower limits n_H2 > 1100 cm^-3 and T_bg > 45 K",
+   "units": "cm^-3 and K",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Temperatures and Densities",
+     "quote": "best-fitting $n_\\mathrm{H_2} \\sim 5100$ cm$^{-3}$ and $T_\\mathrm{bg} \\sim 62$ K"
+    },
+    {
+     "loc": "Temperatures and Densities",
+     "quote": "they provide $n_\\mathrm{H_2} > 1100$ cm$^{-3}$ and $T_\\mathrm{bg} > 45$ K lower limits"
+    }
+   ]
+  },
+  {
+   "quantity": "Core and N2 integrated flux densities at 232.98 GHz (X2c2 imfit)",
+   "value": "1.220 Jy (core); 50.3 mJy (N2)",
+   "uncertainty": "not stated",
+   "units": "Jy; mJy",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "MFS imaging",
+     "quote": "flux densities of 1.220 Jy and 50.3 mJy, respectively, at 232.98 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit (T_dust = 25 K)",
+   "value": "< 1.1e4",
+   "uncertainty": "upper limit",
+   "units": "Msun",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Circumnuclear Dust",
+     "quote": "this modified black body $M_\\mathrm{dust} < 1.1\\times 10^4$ $M_\\odot$ would correspond to a total gas mass $M_\\mathrm{gas} \\lesssim 7.5\\times10^5$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "mm/sub-mm spectral index alpha' from ACA data (program 2021.1.01398.S)",
+   "value": "-0.60",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Light Curves and Spectral Slopes",
+     "quote": "we measured an apparent mm/sub-mm spectral index $\\alpha^{\\prime} = -0.60\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "mm/sub-mm spectral index alpha' from ALMA 12-m data (2012.1.00661.S and 2015.1.01352.S)",
+   "value": "-0.47",
+   "uncertainty": "0.11 (likely underestimated by >= 3x)",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Light Curves and Spectral Slopes",
+     "quote": "result in a best-fit $\\alpha^{\\prime} = -0.47\\pm0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Change in line-of-sight ozone column during a single EB",
+   "value": "up to ~6% over 30 min",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Atmospheric Modeling",
+     "quote": "suggest that either stratospheric or ground-layer $N_\\mathrm{O_3}$ along the line of sight changed by up to $\\sim$6% over just 30 min."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and pipeline versions used for each data set (only 'the appropriate pipeline version' is given)",
+  "Briggs robust value for MFS maps, cell size, image size, niter/threshold, deconvolver and masks for tclean MFS and cube imaging",
+  "Which flux calibrator and which spws had setjy rescaling, and the exact rescale factors per spw",
+  "Self-calibration details: refant, solint sequence, number of loops, which EBs received amplitude self-cal",
+  "Exact line-free channel/spw selections used in uvcontsub for each project and spw, and how overlapping spws were handled",
+  "Pixel/polygon definitions, coordinates and positions of the HST-based integration regions in Table 1, and MGE/GALFIT component parameters and image alignment details",
+  "Frequency windows and error model for the Gaussian + linear-continuum fits of the absorption lines; exact Hanning-smoothing kernel treatment",
+  "Collision-rate files, line-width treatment and chi-square definition (data points, errors) used in the RADEX grid; grid spacing",
+  "Dust absorption coefficient kappa(850 micron) value used for the dust-mass limit",
+  "Rest frequencies used for CO transitions and source coordinates / phase centre",
+  "Exact channel ranges flagged manually in each member OUS"
+ ],
+ "missing_for_reproduction": [
+  "CASA and pipeline versions and per-EB self-calibration parameters",
+  "Imaging parameters (robust for MFS, cell and image size, thresholds, masks) and exact spw and channel selections",
+  "Region definitions for the HST-derived integration regions and MGE parameters",
+  "Exact fitting windows and Hanning treatment for the absorption-line fits, and the RADEX chi-square setup",
+  "Kappa value for the dust mass limit",
+  "No analysis code released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the main results are numeric with clear equations and MC procedures, but many calibration, imaging and region-definition parameters are not stated and no code is released.",
+ "rediscovery_reason": "Public archival data, a mostly complete recipe (uvcontsub, Gaussian opacity fits, LTE and RADEX equations) and numeric results (tau, N_CO, M_H2 limit) allow an independent attempt, though region definitions and imaging parameters must be re-derived.",
+ "source_card": "cards/2025ApJ...989...83B/sonnet/card.md"
+}

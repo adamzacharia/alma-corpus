@@ -1,0 +1,331 @@
+{
+ "bibcode": "2019MNRAS.489.3939C",
+ "title": "Constraints on high-J CO emission lines in z ∼ 6 quasars",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz2410",
+ "arxiv_id": "1902.01413",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the dust properties and high-J CO line luminosities of two z~6 quasars (J2310, J1319), and how do their CO SLEDs compare with J1148 and local AGN/starbursts, constraining gas heating mechanisms?",
+ "alma_project_codes": [
+  "2013.1.00462.S",
+  "2015.1.01265.S",
+  "2012.1.00391.S"
+ ],
+ "data": {
+  "bands": "Band 6 and 7 (own program)",
+  "arrays": "not stated",
+  "angular_resolution": "0.6'' to 1.5''",
+  "sensitivity": "continuum ~42 uJy/beam; 0.35-0.4 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum flux densities of J2310 and J1319 at other frequencies (incl. band 8)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(j) reference; [1] (cite: Feruglio:2018) [2] (cite: Wang:2013) [3] (cite: Wang:2011) [4] (cite: Hashimoto:2018a)."
+     }
+    ]
+   },
+   "citation": "Feruglio:2018; Wang:2013; Wang:2011; Hashimoto:2018a"
+  },
+  {
+   "what": {
+    "value": "J1148 continuum flux densities for SED fit",
+    "evidence": [
+     {
+      "loc": "4.2 FIR luminosities",
+      "quote": "We retrieve from the literature all flux continuum densities (cite: Bertoldi:2003; Walter:2003; Riechers:2009; Cicone:2015)"
+     }
+    ]
+   },
+   "citation": "Bertoldi:2003; Walter:2003; Riechers:2009; Cicone:2015"
+  },
+  {
+   "what": {
+    "value": "Literature CO line luminosities (CO(6-5), CO(2-1), etc.) for SLEDs",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "REFERENCE: $^{a}$(cite: Shao:2019); $^{b}$(cite: Feruglio:2018); $^c$(cite: Wang:2013); $^d$(cite: Bertoldi:2003a)"
+     }
+    ]
+   },
+   "citation": "Shao:2019; Feruglio:2018; Wang:2013; Bertoldi:2003a; Stefan:2015; Walter:2003; Riechers:2009; Gallerani:2014"
+  },
+  {
+   "what": {
+    "value": "Average local AGN and starburst CO SLEDs",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "averaged CO(6-5)-normalised CO SLEDs from low-$z$ starburst galaxies and AGN, respectively (cite: Rosenberg:2015; Mashian:2015; Mingozzi:2018)"
+     }
+    ]
+   },
+   "citation": "Rosenberg:2015; Mashian:2015; Mingozzi:2018"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient k_nu=0.45 (nu/250 GHz)^beta cm2/g",
+    "evidence": [
+     {
+      "loc": "4.2 FIR luminosities",
+      "quote": "we assume k$_{\\nu}$ = 0.45$\\times(\\nu$/250 GHz)$^{\\beta}$ cm$^{2}$ g$^{-1}$ (cite: Beelen:2006)"
+     }
+    ]
+   },
+   "citation": "Beelen:2006"
+  },
+  {
+   "what": {
+    "value": "PDR/XDR models",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "adopting the PDR/XDR models by (cite: Meijerink:2005) and (cite: Meijerink:2007)"
+     }
+    ]
+   },
+   "citation": "Meijerink:2005; Meijerink:2007"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and cubes",
+   "method": "CASA calibration; tclean natural weighting; uvcontsub continuum subtraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit continuum size in uv-plane",
+   "method": "Sersic profile (n=1) fit to visibilities with GALARIO and emcee",
+   "software": [
+    "GALARIO",
+    "emcee",
+    "uvplot"
+   ],
+   "key_parameters": [
+    "40 walkers; priors p(log Ie)=U(-5,1), p(log Re)=U(-2,0), p(i)=U(0,90) deg, p(PA)=U(180,360) deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit dust SED for Mdust, Tdust, beta, LFIR",
+   "method": "CMB-corrected modified blackbody with finite optical depth, MCMC over Mdust, Tdust, beta",
+   "software": [],
+   "key_parameters": [
+    "uniform priors, 30 K<Tdust<90 K, 1.0<beta<2.0; 50 chains, 3000 trials",
+    "LFIR integrated 8-1000 um rest-frame"
+   ],
+   "assumptions": [
+    "k_nu = 0.45 (nu/250 GHz)^beta cm2/g; T0=2.73 K; solid angle from fitted continuum size"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure CO line fluxes and upper limits",
+   "method": "Integrate cubes; 3 sigma upper limits in 1.4''x1.4'' aperture with width 400 (J2310) or 500 (J1319) km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Build and compare CO SLEDs and interpret with PDR/XDR models",
+   "method": "CO(6-5)- and LFIR-normalised SLEDs compared with local AGN/starbursts and z~6 quasars; PDR/XDR models for J2310",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Half-light radius J2310",
+   "value": "0.66",
+   "uncertainty": "0.05",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum emission",
+     "quote": "$R_e=0.113\\ensuremath{''}\\pm0.008\\ensuremath{''}~(0.66\\pm0.05~{\\rm kpc})$ for J2310"
+    }
+   ]
+  },
+  {
+   "quantity": "Half-light radius J1319",
+   "value": "0.84",
+   "uncertainty": "0.09",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum emission",
+     "quote": "$R_e =0.146\\pm0.015\\ensuremath{''}~(0.84\\pm0.09~{\\rm kpc})$ for J1319"
+    }
+   ]
+  },
+  {
+   "quantity": "Log Mdust J2310",
+   "value": "8.75",
+   "uncertainty": "0.07",
+   "units": "log Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Log(M$_{\\rm dust}$/M$_\\odot$) | $8.75\\pm0.07$ | $8.8\\pm0.2$ | $8.5\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Log Mdust J1319",
+   "value": "8.8",
+   "uncertainty": "0.2",
+   "units": "log Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Log$(M_{\\rm dust}/M_{\\odot})=8.8\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tdust J2310",
+   "value": "76",
+   "uncertainty": "3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$T_{\\rm dust}=76\\pm3~{\\rm K}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tdust J1319",
+   "value": "66",
+   "uncertainty": "+15/-10",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$T_{\\rm dust}=66^{+15}_{-10}~{\\rm K}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LFIR J2310",
+   "value": "2.5",
+   "uncertainty": "0.4",
+   "units": "1e13 Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "L$_{\\rm FIR}$ \\[10$^{13}$ L${_\\odot}$\\] | $2.5\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(8-7) luminosity J2310",
+   "value": "7.1",
+   "uncertainty": "0.6",
+   "units": "1e8 Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "$(7.1\\pm0.6)\\times10^{8}$ L${_\\odot}$ and $(7.5\\pm0.9)\\times10^{8}$ L${_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) luminosity J2310",
+   "value": "7.5",
+   "uncertainty": "0.9",
+   "units": "1e8 Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO(9-8) | $7.5\\pm0.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(17-16) 3 sigma upper limit J2310",
+   "value": "<8.1",
+   "uncertainty": "not stated",
+   "units": "1e8 Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "yielding $L_{\\rm CO(17-16)}<8.1\\times10^{8}$ L${_\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(8-7) integrated flux J2310",
+   "value": "1.49",
+   "uncertainty": "0.13",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$1.49\\pm0.13$ Jy km s$^{-1}$ for CO(8-7)"
+    }
+   ]
+  },
+  {
+   "quantity": "PDR gas density J2310",
+   "value": "~4e5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "characterized by a density ${\\rm n\\sim4\\times10^{5} \\ cm^{-3}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version",
+  "Cleaning thresholds, masks, cell and image sizes",
+  "Line-free channel ranges for uvcontsub",
+  "Flux calibrator and flux scale uncertainty",
+  "Exact PDR/XDR model grid parameters and fitting procedure for J2310",
+  "Priors/limits on size and flux in the SED fit's solid angle treatment (adopted sizes for J1148)",
+  "Adopted velocity range for line flux integration of CO(8-7)/(9-8)",
+  "Details of the 50-chain MCMC convergence"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, imaging parameters, line-free channels",
+  "Final catalog of fit chains",
+  "PDR/XDR fit details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and fitting approach described with priors, but imaging and calibration details and some inputs are missing.",
+ "rediscovery_reason": "Public data, numeric continuum sizes, dust properties, and line luminosities with described recipe.",
+ "source_card": "cards/2019MNRAS.489.3939C/sonnet/card.md"
+}

@@ -1,0 +1,274 @@
+{
+ "bibcode": "2017Sci...355.1285N",
+ "title": "[C II] 158-μm emission from the host galaxies of damped Lyman-alpha systems",
+ "year": 2017,
+ "doi": "10.1126/science.aal1737",
+ "arxiv_id": "1703.07797",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Can the host galaxies of two high-metallicity z~4 damped Lyman-alpha absorbers be detected in [C II] 158 um and dust continuum, and how do they compare with emission-selected galaxies?",
+ "alma_project_codes": [
+  "2015.1.01564.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "Synthesized beams 1\"x0.9\" and 1.1\"x0.9\" (natural weighting)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "DLA redshift, N(HI) and metallicity from optical absorption spectra and Keck reductions",
+    "evidence": [
+     {
+      "loc": "Table S3 caption",
+      "quote": "are derived from the optical absorption spectra (*6*)"
+     }
+    ]
+   },
+   "citation": "Rafelski et al. 2012 (ref 6)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples of z>1 galaxies and local [CII]-SFR relation",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "Also plotted is the correlation for galaxies in the local Universe (blue line), along with the associated scatter (blue dashed lines) (cite: DeLooze2014)."
+     }
+    ]
+   },
+   "citation": "(cite: DeLooze2014); (cite: Carilli2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [C II] cube",
+   "method": "Natural-weighted imaging of three continuum bands; line band continuum-subtracted and imaged to cube, averaged by four channels",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum and line fluxes, sizes",
+   "method": "Integrate flux over emission extent; noise from annulus; derive FWHM, z and integrated flux; CASA fitter for sizes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive kinematic axis and p-v diagrams",
+   "method": "Straight line fit to positions of maximum flux in each velocity bin gives position angle",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate SFR and TIR luminosity",
+   "method": "SFR from 158 um continuum luminosity; TIR from modified blackbody models fit to single flux point",
+   "software": [],
+   "key_parameters": [
+    "alpha 1.5-2.5, beta 1.2-2.0, dust T 25-45 K"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate dynamical mass",
+   "method": "M_dyn = 1.16e5 v_circ^2 D; v_circ from exponential disk model fitted to cube with inclination fixed at 90 deg, giving lower limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Edge-on disk, inclination 90 deg"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "z_[CII] ALMA J081740.86+135138.2",
+   "value": "4.2601",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$4.2601 \\pm 0.0001$"
+    }
+   ]
+  },
+  {
+   "quantity": "z_[CII] ALMA J120110.26+211756.2",
+   "value": "3.7978",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$3.7978 \\pm 0.0001$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density (J0817 host)",
+   "value": "1.19",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$1.19 \\pm 0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density (J1201 host)",
+   "value": "0.31",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$0.31 \\pm 0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] flux (J0817 host)",
+   "value": "5.4",
+   "uncertainty": "0.6",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$5.4 \\pm 0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C II] flux (J1201 host)",
+   "value": "1.9",
+   "uncertainty": "0.3",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$1.9 \\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (J0817 host)",
+   "value": "110",
+   "uncertainty": "10",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "SFR of $110 \\pm 10$ M$_\\odot~{\\rm yr}^{-1}$ for ALMA J081740.86+135138.2"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (J1201 host)",
+   "value": "24",
+   "uncertainty": "8",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$24 \\pm 8$ M$_\\odot~{\\rm yr}^{-1}$ for ALMA J120110.26+211756.2"
+    }
+   ]
+  },
+  {
+   "quantity": "log L_TIR (J0817 host)",
+   "value": "12.0",
+   "uncertainty": "0.1 (stat) 0.4 (sys)",
+   "units": "log Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$12.0 \\pm 0.1 \\pm 0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L_[CII] (J0817 host)",
+   "value": "9.48",
+   "uncertainty": "0.05",
+   "units": "log Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$9.48 \\pm 0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_dyn (J0817 host)",
+   "value": ">10.8",
+   "uncertainty": "not stated",
+   "units": "log Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "$>10.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Impact parameters (proper)",
+   "value": "42 kpc and 18 kpc",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The observed impact parameters correspond to physical (proper) distances of 42 kpc and 18 kpc"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and AIPS versions",
+  "Which channels were flagged and flagging criteria",
+  "Line-free channels for continuum subtraction",
+  "Cell and image size, clean thresholds",
+  "Self-calibration solution intervals",
+  "Details of the exponential disk fitting code (ref 44) and fit parameters",
+  "Exact modified blackbody grid and how TIR was marginalised",
+  "Flux calibrator and flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Software versions and imaging parameters",
+  "Disk model code details",
+  "Exact SED model grid"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and a simple recipe, but CASA settings and disk-fit details are missing.",
+ "rediscovery_reason": "Public data, simple flux/line measurements with numeric results in Table S2.",
+ "source_card": "cards/2017Sci...355.1285N/sonnet/card.md"
+}

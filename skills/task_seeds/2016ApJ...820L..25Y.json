@@ -1,0 +1,230 @@
+{
+ "bibcode": "2016ApJ...820L..25Y",
+ "title": "Gas Gaps in the Protoplanetary Disk around the Young Protostar HL Tau",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/820/2/L25",
+ "arxiv_id": "1603.01378",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do the millimeter continuum gaps in the HL Tau disk have counterparts in the HCO+ (1-0) gas, and what do the gas gap widths and depths imply for their origin?",
+ "alma_project_codes": [
+  "2011.0.00015.SV"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "HCO+ ~0.1'' x 0.05''; CO ~0.07'' x 0.04''",
+  "sensitivity": "~2 mJy/beam (HCO+) and ~6 mJy/beam (CO) per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "3 mm continuum image and continuum gap/ring radii (D2, D5, D6, B5, B6)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We retrieved the 3 mm continuum image directly from the ALMA data archive"
+     }
+    ]
+   },
+   "citation": "ALMA Partnership 2015 (cite: ALMA15)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination 47 deg and position angle 138 deg",
+    "evidence": [
+     {
+      "loc": "3.1 HCO+ (1-0) Intensity Profile",
+      "quote": "The disk around HL Tau is inclined by 47$\\ensuremath{^\\circ}$ from the plane of the sky, and its major axis has a position angle of 138$\\ensuremath{^\\circ}$ from north to east (cite: ALMA15)."
+     }
+    ]
+   },
+   "citation": "(cite: ALMA15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image HCO+ and CO cubes",
+   "method": "Fourier transform of calibrated visibilities in CASA, no CLEAN, HCO+ continuum-subtracted",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust=-1, 0.4 km/s, no taper"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Azimuthally averaged radial HCO+ intensity profile",
+   "method": "Deprojected with i=47 deg, PA=138 deg; bins of half beam (~0.035''); pixels within ±45 deg of major axis; integrate 2-12 km/s excluding absorption and ±1 sigma channels",
+   "software": [],
+   "key_parameters": [
+    "uncertainty = sqrt(N_int) x sigma x dv"
+   ],
+   "assumptions": [
+    "axisymmetric disk for map reconstruction"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive continuum optical depth and HCO+ column density",
+   "method": "T from CO brightness temperature without continuum subtraction; tau_3mm from radiative transfer; correct HCO+ for continuum optical depth; column density from Mangum & Shirley formula",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "dust and gas thermally coupled with the same temperature; HCO+ thermalized; CO+continuum optically thick"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit gap widths and depths",
+   "method": "Power law fit near each gap, subtract, Gaussian fit to gap for FWHM and central column density; contrast vs power law",
+   "software": [],
+   "key_parameters": [
+    "10,000 Monte Carlo iterations"
+   ],
+   "assumptions": [
+    "HCO+ abundance constant across gaps"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate planet masses from gap depth",
+   "method": "Kanagawa15 gap formula using derived temperature and depths",
+   "software": [],
+   "key_parameters": [
+    "alpha = 0.001"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Inner HCO+ gap radius",
+   "value": "28",
+   "uncertainty": "2",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "5$\\pm$1 | 28$\\pm$2 | 14$\\pm$7 | 2.4$\\pm$0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer HCO+ gap radius",
+   "value": "69",
+   "uncertainty": "2",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.4$\\pm$0.4 | 69$\\pm$2 | 14$\\pm$7 | 5.0$\\pm$1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap FWHM widths",
+   "value": "14",
+   "uncertainty": "7",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 HCO+ Gaps",
+     "quote": "Both HCO$^+$ gaps have similar FWHM widths of $\\sim$14$\\pm$7 AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner gap contrast",
+   "value": "2.4",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 HCO+ Gaps",
+     "quote": "a factor of $\\sim$2.4$\\pm$0.5 and $\\sim$5.0$\\pm$1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer gap contrast",
+   "value": "5.0",
+   "uncertainty": "1.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 HCO+ Gaps",
+     "quote": "a factor of $\\sim$2.4$\\pm$0.5 and $\\sim$5.0$\\pm$1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ column density in inner gap",
+   "value": "5e15",
+   "uncertainty": "1e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 HCO+ Gaps",
+     "quote": "$\\sim$(5$\\pm$1) $\\times$ 10$^{15}$ cm$^{-2}$ and $\\sim$(1.4$\\pm$0.4) $\\times$ 10$^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ column density in outer gap",
+   "value": "1.4e15",
+   "uncertainty": "0.4e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 HCO+ Gaps",
+     "quote": "$\\sim$(5$\\pm$1) $\\times$ 10$^{15}$ cm$^{-2}$ and $\\sim$(1.4$\\pm$0.4) $\\times$ 10$^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied planet masses",
+   "value": "0.8 MJ at 28 AU; 2.1 MJ at 69 AU",
+   "uncertainty": "not stated",
+   "units": "MJ",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "planet masses of $\\sim$0.8 $M_J$ at $\\sim$28 AU and $\\sim$2.1 $M_J$ at $\\sim$69 AU"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Spectral window and execution block selection from the SV data set",
+  "uvcontsub line-free channels and fit order",
+  "Image size and cell size",
+  "Line-free channels for noise estimation in averaged spectra",
+  "Exact radial range used for the power-law fits near each gap",
+  "Continuum image and its beam used for tau_3mm",
+  "Whether the CO cube was primary-beam corrected"
+ ],
+ "missing_for_reproduction": [
+  "Spectral window and channel selection",
+  "uvcontsub channel ranges",
+  "image size and cell size",
+  "Exact power-law fit ranges"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear method, but several imaging and fitting details are missing.",
+ "rediscovery_reason": "Public data, a fairly clear recipe, and numeric results.",
+ "source_card": "cards/2016ApJ...820L..25Y/sonnet/card.md"
+}

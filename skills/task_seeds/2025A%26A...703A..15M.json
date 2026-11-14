@@ -1,0 +1,534 @@
+{
+ "bibcode": "2025A&A...703A..15M",
+ "title": "Discovery of carbon monoxide emission from five debris disks around young A-type stars",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202554848",
+ "arxiv_id": "2509.16104",
+ "fields": [
+  "debris_disks",
+  "protoplanetary_disks"
+ ],
+ "question": "Expand the sample of known CO-bearing debris disks around young intermediate-mass stars and explore the environmental conditions and origin (primordial vs. secondary) of their gas.",
+ "alma_project_codes": [
+  "2021.1.01487.S",
+  "2022.1.00968.S",
+  "2024.1.00852.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm)",
+  "arrays": "ALMA 12-m Array (42-47 antennas)",
+  "angular_resolution": "0.25 to 1.16 arcsec (mean 0.5 arcsec)",
+  "sensitivity": "Continuum: 13.0-27.3 uJy/beam; 12CO: 1.6-5.0 mJy/beam/ch; 13CO: 0.8-1.4 mJy/beam/ch; C18O: 0.6-1.2 mJy/beam/ch"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Geometric distance estimates based on Gaia EDR3 parallaxes",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "Distance estimates are taken from (cite: bailerjones2021) using their geometric approach that is based only on the Gaia EDR3 parallaxes."
+     }
+    ]
+   },
+   "citation": "(cite: bailerjones2021)"
+  },
+  {
+   "what": {
+    "value": "3D interstellar reddening map (Stilism)",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "The $B_\\mathrm{p}-R_\\mathrm{p}$ colors were dereddened using data from the `Stilism` 3D database (cite: capitanio2017; lallement2018)."
+     }
+    ]
+   },
+   "citation": "(cite: capitanio2017; lallement2018)"
+  },
+  {
+   "what": {
+    "value": "Table of stellar parameters of dwarf stars",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "The spectral type was estimated based on the $B_\\mathrm{p}-R_\\mathrm{p}$ color index, using the updated online database of stellar parameters of dwarf stars (cite: pecaut2013)."
+     }
+    ]
+   },
+   "citation": "(cite: pecaut2013)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of 46 young dust-rich debris disks with ALMA CO measurements",
+    "evidence": [
+     {
+      "loc": "Sample of young dust-rich debris disks observed by the ALMA",
+      "quote": "In the literature, we identified 46 additional debris disks around stars with spectral types from A to K that are similarly young and dust-rich and for which ALMA millimeter CO line measurements are available (cite: kospal2013; dent2014; lieman-sifry2016; marino2016; moor2017; moor2019; difolco2020; kral2020; schneiderman2021; lovell2021; rebollido2022)."
+     }
+    ]
+   },
+   "citation": "(cite: kospal2013; dent2014; lieman-sifry2016; marino2016; moor2017; moor2019; difolco2020; kral2020; schneiderman2021; lovell2021; rebollido2022)"
+  },
+  {
+   "what": {
+    "value": "Empirical belt radius vs stellar luminosity relationship",
+    "evidence": [
+     {
+      "loc": "Radial location of planetesimal belts in CO bearing debris systems",
+      "quote": "Using spatially resolved millimeter observations of debris disks, (cite: matra2018) derived an empirical relationship between the radius of the belts and the luminosity of the central star. Figure [7](#fig:rdiskls) shows the updated version of this relationship based on a larger sample (cite: matra2025)."
+     }
+    ]
+   },
+   "citation": "(cite: matra2018); (cite: matra2025)"
+  },
+  {
+   "what": {
+    "value": "Ages of Sco-Cen subgroups (US, UCL, LCC)",
+    "evidence": [
+     {
+      "loc": "Stellar ages and masses",
+      "quote": "The ages for the US, UCL, and LCC subgroups of the Sco-Cen association, 10$\\pm$3, 15$\\pm$3, and 16$\\pm$2 Myr, are taken from (cite: gagne2018)."
+     }
+    ]
+   },
+   "citation": "(cite: gagne2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate, and continuum-subtract ALMA visibility data",
+   "method": "Calibrate with standard ALMA pipeline, concatenate multi-epoch MSs with CONCAT, recalculate weights with STATWT, and subtract continuum in uv-space with UVCONTSUB using a 1st-order polynomial",
+   "software": [
+    "CASA",
+    "CONCAT",
+    "STATWT",
+    "UVCONTSUB"
+   ],
+   "key_parameters": [
+    "1st-order polynomial in UVCONTSUB"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image 1.33 mm dust continuum and fit visibility models to derive disk geometry and flux",
+   "method": "Image line-free channels with TCLEAN (multiscale) and fit visibilities using UVMULTIFIT with point source, elliptical Gaussian, single Gaussian ring, or double narrow ring models",
+   "software": [
+    "CASA",
+    "TCLEAN",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "multiscale scales = [0, 5, 15, 25] pixels; Briggs robust = 0.5 (natural for HD 144277, HD 176497; 1 arcsec taper for non-detections)",
+    "W_disk = 0.7 R_disk fixed for HD 176497, HD 112532, HD 141960, HD 145101"
+   ],
+   "assumptions": [
+    "10% absolute flux calibration uncertainty added in quadrature"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate millimeter dust masses",
+   "method": "Calculate optically thin dust mass from 1.33 mm flux density, distance, blackbody dust temperature, and dust opacity",
+   "software": [],
+   "key_parameters": [
+    "kappa_nu = 2.3 cm^2 g^-1"
+   ],
+   "assumptions": [
+    "Optically thin thermal emission at 1.33 mm dominated by large blackbody grains with T_BB(K) = 278 (L_*/L_sun)^0.25 (R_disk/au)^-0.5 (or T_BB = 60 K for HD 131960/HD 144277, 110 K for HD 31305 A, 20 K for HD 31305 B)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Image CO isotopolog cubes, create moment 0 maps, and extract integrated line fluxes",
+   "method": "Image with TCLEAN, integrate channels with >3sigma emission in continuum disk region using custom IDL routines to build moment 0 maps, and extract line fluxes using elliptical curve-of-growth apertures",
+   "software": [
+    "CASA",
+    "TCLEAN",
+    "IDL"
+   ],
+   "key_parameters": [
+    "Channel width 0.4 km/s (12CO) and 1.6 km/s (13CO, C18O); 20 random off-source apertures for uncertainty estimation; 9% upward scaling for HD 155853 12CO flux due to <60m baseline cut"
+   ],
+   "assumptions": [
+    "For non-detections, gas is co-located with dust in Keplerian rotation to define integration velocity range"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate CO optical depths and total CO gas masses",
+   "method": "Derive 12CO optical depth from 12CO/13CO flux ratios and compute total 12CO mass from optically thin isotopolog (13CO for CO-rich, 12CO for CO-poor, C18O for HD 31305 B) assuming LTE at 20 K",
+   "software": [],
+   "key_parameters": [
+    "T_ex = 20 K; [12C]/[13C] = 77; [16O]/[18O] = 560"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) at excitation temperature 20 K and ISM isotopic abundance ratios"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Analyze spatial distribution of CO gas via position-velocity (PV) diagrams and radial profiles",
+   "method": "Construct 12CO PV diagrams along the disk major axis and compare with Keplerian rotation curves; fit ellipses to radial intensity peaks of moment 0 maps for HD 9985 and HD 155853; fit 2D Gaussian to HD 145101 moment 0 map",
+   "software": [],
+   "key_parameters": [
+    "Radial cuts in 5 deg increments from 0 to 360 deg"
+   ],
+   "assumptions": [
+    "Keplerian rotation around central star"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Evaluate CO detection rates, line luminosity distributions, collisional mass loss rates, and disk stirring mechanisms",
+   "method": "Combine 11 targets with 46 literature disks; perform Fisher's exact tests on CO detection rates across stellar luminosity, fractional luminosity, and age; compute Kaplan-Meier CDFs with lifelines and logrank test; calculate steady-state collisional cascade mass loss rates; compute minimum self-stirring disk mass and planet stirring mass with MinSelfStirringDiscMass",
+   "software": [
+    "R",
+    "lifelines",
+    "MinSelfStirringDiscMass"
+   ],
+   "key_parameters": [
+    "Detection limit threshold L_12CO(2-1) > 9.5e16 W; planet eccentricity e = 0.3 for secular stirring"
+   ],
+   "assumptions": [
+    "Ideal steady-state collisional cascade; planetesimal belt inner/outer edges at R_disk +- 0.5 W_disk"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Derive fundamental stellar properties, association memberships, ages, and IR excess SEDs",
+   "method": "Fit optical/near-IR photometry with ATLAS9/NEXTGEN models; evaluate group membership with BANYAN Sigma; fit MIST isochrones and lithium EW with eagles; fit IR excess SEDs with modified blackbody models using MPFIT",
+   "software": [
+    "BANYAN Sigma",
+    "eagles",
+    "SkyPatrol",
+    "MPFIT",
+    "IDL"
+   ],
+   "key_parameters": [
+    "[Fe/H] = 0.0 +- 0.1; MBB break wavelength lambda_0 = 100 um; beta = 0.65 fixed when far-IR data absent"
+   ],
+   "assumptions": [
+    "Stars in young associations share the age of the association (except pre-MS star HD 145101)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HD 9985 1.33 mm continuum flux density",
+   "value": "1.26",
+   "uncertainty": "+-0.14 (0.06)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 9985     | 12.6                             | Gaussian ring | 1.26$\\pm$0.14 (0.06)    | 84$\\pm$9          | 57$\\pm$25         | 48$\\pm$3   | 104$\\pm$11 | 2.6$\\pm$0.3e-01   | 1     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 9985 continuum disk radius",
+   "value": "84",
+   "uncertainty": "+-9",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 9985     | 12.6                             | Gaussian ring | 1.26$\\pm$0.14 (0.06)    | 84$\\pm$9          | 57$\\pm$25         | 48$\\pm$3   | 104$\\pm$11 | 2.6$\\pm$0.3e-01   | 1     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 9985 dust mass",
+   "value": "2.6e-01",
+   "uncertainty": "+-0.3e-01",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 9985     | 12.6                             | Gaussian ring | 1.26$\\pm$0.14 (0.06)    | 84$\\pm$9          | 57$\\pm$25         | 48$\\pm$3   | 104$\\pm$11 | 2.6$\\pm$0.3e-01   | 1     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 9985 12CO (2-1) line flux",
+   "value": "559.1",
+   "uncertainty": "+-56.3 (6.9)",
+   "units": "10^-23 W m^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Imaging and CO line fluxes",
+     "quote": "| HD 9985             | 559.1$\\pm$56.3 (6.9)    | 316.9$\\pm$32.4 (6.6)    | 22.5$\\pm$5.6 (5.2)      | (2.2$\\pm$0.2)$\\times$10$^{-2}$  | 80$\\pm$22               |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 9985 CO gas mass",
+   "value": "2.2e-2",
+   "uncertainty": "+-0.2e-2",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Imaging and CO line fluxes",
+     "quote": "| HD 9985             | 559.1$\\pm$56.3 (6.9)    | 316.9$\\pm$32.4 (6.6)    | 22.5$\\pm$5.6 (5.2)      | (2.2$\\pm$0.2)$\\times$10$^{-2}$  | 80$\\pm$22               |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145101 1.33 mm continuum flux density",
+   "value": "0.061",
+   "uncertainty": "+-0.016 (0.015)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 145101   | 6.1                              | Point source  | 0.061$\\pm$0.016 (0.015) | $<$33             | …                 | …          | …          | 4.1$\\pm$1.4e-03   | 4     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145101 CO gas mass",
+   "value": "10.3e-4",
+   "uncertainty": "+-2.3e-4",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Imaging and CO line fluxes",
+     "quote": "| HD 145101           | 80.4$\\pm$10.3 (6.5)     | 19.3$\\pm$4.2 (3.7)      | $<$10.1                 | (10.3$\\pm$2.3)$\\times$10$^{-4}$ | 25$\\pm$8                |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145101 characteristic CO gas disk radius",
+   "value": "27",
+   "uncertainty": "+-8",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Spatial distribution of CO gas",
+     "quote": "By fitting a two-dimensional elliptical Gaussian model to the $^{12}$CO moment 0 map of HD 145101, we found that its gas disk is marginally resolved and has FWHMs of 0.39$''$$\\pm$0.11$''$$\\times$0.30$''$$\\pm$0.10$''$, implying a characteristic disk radius of 27$\\pm$8 au."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 152989 1.33 mm continuum flux density (single Gaussian ring)",
+   "value": "1.42",
+   "uncertainty": "+-0.15 (0.04)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 152989   | 75.8                             | Gaussian ring | 1.42$\\pm$0.15 (0.04)    | 103$\\pm$7         | 44$\\pm$9          | 79$\\pm$2   | 14$\\pm$1   | 2.1$\\pm$0.2e-01   | 5     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 152989 continuum disk radius (single Gaussian ring)",
+   "value": "103",
+   "uncertainty": "+-7",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 152989   | 75.8                             | Gaussian ring | 1.42$\\pm$0.15 (0.04)    | 103$\\pm$7         | 44$\\pm$9          | 79$\\pm$2   | 14$\\pm$1   | 2.1$\\pm$0.2e-01   | 5     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 152989 CO gas mass",
+   "value": "2.7e-5",
+   "uncertainty": "+-0.4e-5",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Imaging and CO line fluxes",
+     "quote": "| HD 152989           | 67.7$\\pm$10.7 (8.2)     | $<$21.2                 | $<$16.7                 | (2.7$\\pm$0.4)$\\times$10$^{-5}$  | …                       |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 155853 1.33 mm continuum flux density",
+   "value": "0.98",
+   "uncertainty": "+-0.11 (0.04)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 155853   | 16.8                             | Gaussian ring | 0.98$\\pm$0.11 (0.04)    | 117$\\pm$8         | 116$\\pm$16        | 77$\\pm$3   | 2$\\pm$1    | 1.9$\\pm$0.2e-01   | 6     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 155853 continuum disk radius",
+   "value": "117",
+   "uncertainty": "+-8",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 155853   | 16.8                             | Gaussian ring | 0.98$\\pm$0.11 (0.04)    | 117$\\pm$8         | 116$\\pm$16        | 77$\\pm$3   | 2$\\pm$1    | 1.9$\\pm$0.2e-01   | 6     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 155853 CO gas mass",
+   "value": "7.0e-3",
+   "uncertainty": "+-0.8e-3",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Imaging and CO line fluxes",
+     "quote": "| HD 155953           | 567.5$\\pm$60.8 (21.7)   | 134.5$\\pm$15.9 (8.5)    | 20.9$\\pm$6.7 (6.4)      | (7.0$\\pm$0.8)$\\times$10$^{-3}$  | 24$\\pm$4                |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 170116 1.33 mm continuum flux density",
+   "value": "1.03",
+   "uncertainty": "+-0.11 (0.04)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 170116   | 13.6                             | Gaussian ring | 1.03$\\pm$0.11 (0.04)    | 197$\\pm$25        | 141$\\pm$26        | 76$\\pm$3   | 10$\\pm$4   | 5.1$\\pm$0.7e-01   | 8     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 170116 continuum disk radius",
+   "value": "197",
+   "uncertainty": "+-25",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 170116   | 13.6                             | Gaussian ring | 1.03$\\pm$0.11 (0.04)    | 197$\\pm$25        | 141$\\pm$26        | 76$\\pm$3   | 10$\\pm$4   | 5.1$\\pm$0.7e-01   | 8     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 170116 CO gas mass",
+   "value": "4.4e-5",
+   "uncertainty": "+-0.9e-5",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Imaging and CO line fluxes",
+     "quote": "| HD 170116           | 40.5$\\pm$8.4 (7.3)      | $<$21.5                 | $<$18.8                 | (4.4$\\pm$0.9)$\\times$10$^{-5}$  | …                       |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 112532 1.33 mm continuum flux density",
+   "value": "0.119",
+   "uncertainty": "+-0.038 (0.036)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 112532   | 7.3                              | Gaussian      | 0.119$\\pm$0.038 (0.036) | 36$\\pm$17         | …                 | …          | 39$\\pm$7   | 8.9$\\pm$3.7e-03   | 2     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 141960 1.33 mm continuum flux density",
+   "value": "0.25",
+   "uncertainty": "+-0.03 (0.02)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 141960   | 23.1                             | Gaussian ring | 0.25$\\pm$0.03 (0.02)    | 41$\\pm$10         | 29                | 66$\\pm$13  | 166$\\pm$11 | 3.5$\\pm$0.6e-02   | 3     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 159595 1.33 mm continuum flux density",
+   "value": "1.79",
+   "uncertainty": "+-0.21 (0.10)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 159595   | 21.2                             | Gaussian ring | 1.79$\\pm$0.21 (0.10)    | 83$\\pm$7          | 72$\\pm$18         | 46$\\pm$10  | 60$\\pm$10  | 1.4$\\pm$0.2e-01   | 7     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 176497 1.33 mm continuum flux density",
+   "value": "0.135",
+   "uncertainty": "+-0.032 (0.029)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Modeling of the continuum emission",
+     "quote": "| HD 176497   | 17.0                             | Gaussian ring | 0.135$\\pm$0.032 (0.029) | 72$\\pm$17         | 50                | 78$\\pm$7   | 83$\\pm$7   | 2.7$\\pm$0.7e-02   | 9     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 31305 B 1.33 mm continuum flux density",
+   "value": "2.37",
+   "uncertainty": "+-0.24",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk of HD 31305 B",
+     "quote": "We obtained a flux density of 2.37$\\pm$0.24 mJy for the source, where the uncertainty is the quadratic sum of the measurement error (0.03 mJy) and the calibration error (assumed to be 10%)."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 31305 B CO disk mass",
+   "value": "2.05e-2",
+   "uncertainty": "+-0.42e-2",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk of HD 31305 B",
+     "quote": "Based on the C$^{18}$O measurement, assuming that the line is optically thin and taking into account the above abundance ratio, we obtained a CO disk mass of 2.05$\\pm$0.42$\\times$10$^{-2}$ M$_\\oplus$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel size (cell size) and image dimensions (imsize) used in TCLEAN for continuum and line cubes",
+  "Stopping criteria / threshold and masking strategy in TCLEAN",
+  "Whether primary beam correction was applied to continuum images and line cubes before flux extraction",
+  "Exact velocity intervals integrated to construct the moment 0 maps for HD 9985, HD 145101, HD 152989, and HD 155853",
+  "Exact aperture sizes (major/minor axes) determined by the curve-of-growth method for CO line flux extraction"
+ ],
+ "missing_for_reproduction": [
+  "Self-developed IDL scripts used for moment 0 map construction and curve-of-growth aperture flux extraction",
+  "Exact velocity integration windows and elliptical aperture dimensions for each target's CO moment 0 map",
+  "Exact TCLEAN pixel size, image size, and stopping threshold parameters"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Calibration,CASA versions, spectral setup, visibility modeling (UVMULTIFIT), and analytical equations for dust/gas masses and stirring are thoroughly documented with full parameter tables, though custom IDL scripts and exact moment-0 velocity windows/aperture sizes are not explicitly tabulated.",
+ "rediscovery_reason": "Public Cycle 8 ALMA dataset (2021.1.01487.S) with clear numeric answer keys (continuum fluxes, ring radii, CO isotopolog line fluxes, optical depths, dust and CO masses) and standard visibility/image analysis steps.",
+ "source_card": "cards/2025A%26A...703A..15M/sonnet/card.md"
+}

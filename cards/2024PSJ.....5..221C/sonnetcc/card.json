@@ -1,0 +1,1602 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024PSJ.....5..221C",
+  "title": "Evidence for Surprising Heavy Nitrogen Isotopic Enrichment in Comet 46P/Wirtanen's Hydrogen Cyanide",
+  "year": 2024,
+  "journal": "The Planetary Science Journal",
+  "first_author": "Cordiner, M. A.",
+  "n_authors": 12,
+  "arxiv_id": "2409.05711",
+  "doi": "10.3847/PSJ/ad7829",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.01114.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here we present observations of HCN, H$^{13}$CN and HC$^{15}$N emission from 46P using the Atacama Compact Array (ACA)."
+   },
+   {
+    "loc": "Introduction",
+    "quote": "which was observed by (cite: cor23) using the Atacama Large Millimeter/submillimeter Array (ALMA) during its exceptional 2018 apparition"
+   }
+  ],
+  "science": {
+   "fields": [
+    "solar_system",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Comet 46P/Wirtanen",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "around 0.1 au from Earth (0.09-0.12 au geocentric, by date); 1.06-1.07 au from the Sun",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "when the comet was around 0.1 au from Earth and 1.06–1.07 au from the Sun"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Derive the 12C/13C and 14N/15N ratios in HCN in the coma of Jupiter-family comet 46P/Wirtanen from ACA observations of HCN, H13CN and HC15N, using non-LTE radiative transfer modeling",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The data were analyzed using the SUBLIME non-LTE radiative transfer code to derive $^{12}$C/$^{13}$C and $^{14}$N/$^{15}$N ratios."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2018.1.01114.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This work makes use of ALMA data set ADS/JAO.ALMA#2018.1.01114.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 and 7",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "using the Band 6 and 7 receivers"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "HCN J=4-3 at 354.505477 GHz (Band 7); HC15N J=3-2 at 258.156996 GHz and H13CN J=3-2 at 259.011798 GHz plus CH3OH 5_K-4_K band at 241.7-241.9 GHz (Band 6); spectral resolution 122 kHz (HCN), 977 kHz (HC15N, H13CN), 244 kHz (CH3OH)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Multiple lines of the CH$_3$OH $J_K=5_K-4_K$ band were observed in the range 241–242 GHz in order to derive the coma kinetic temperature."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "354.505477"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "258.156996"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "J=4-3",
+     "rest_frequency": "354.505477 GHz (strongest hyperfine component)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Observations were conducted of the HCN ($J=4-3$), H$^{13}$CN ($J=3-2$) and HC$^{15}$N ($J=3-2$) transitions"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "354.505477"
+      }
+     ]
+    },
+    {
+     "species": "H13CN",
+     "transition": "J=3-2",
+     "rest_frequency": "259.011798 GHz (strongest hyperfine component)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Observations were conducted of the HCN ($J=4-3$), H$^{13}$CN ($J=3-2$) and HC$^{15}$N ($J=3-2$) transitions"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "259.011798"
+      }
+     ]
+    },
+    {
+     "species": "HC15N",
+     "transition": "J=3-2",
+     "rest_frequency": "258.156996 GHz (strongest hyperfine component)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Observations were conducted of the HCN ($J=4-3$), H$^{13}$CN ($J=3-2$) and HC$^{15}$N ($J=3-2$) transitions"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "258.156996"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "J_K = 5_K-4_K band (14 detected transitions)",
+     "rest_frequency": "241.7-241.9 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "For CH$_3$OH, the integrated line intensity was summed over the 14 detected transitions of the $J_K=5_K-4_K$ band."
+      },
+      {
+       "loc": "Table 1",
+       "quote": "241.7–241.9"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Atacama Compact Array (ACA), 12 x 7 m antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "This study focuses on the Atacama Compact Array (ACA) data, which incorporated $12\\times7$ m antennas covering baselines in the range 9-50 m."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "9-50 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "which incorporated $12\\times7$ m antennas covering baselines in the range 9-50 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "4.5'' x 2.8'' at 354 GHz (HCN); 7.6'' x 4.1'' for HC15N and H13CN; 7.0'' x 4.2'' for CH3OH",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the resulting synthesized beam size (angular resolution) was $\\theta_B=4.5''\\times2.8''$ at 354 GHz"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "Structures less than lambda/D, with D = 9 m minimum antenna separation (no angular value given)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the interferometer is only sensitive to structures less than $\\lambda/D$ in spatial extent, where $\\lambda$ is the observed wavelength and $D$ is the minimum antenna separation (9 m in this case)"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "sigma = 4.7 mJy per channel for HC15N; integrated-line statistical errors derived from the noise inside a +-90 km/s region adjacent to each line",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the four spectral channels that make up the line peak are all at a significance of greater than $3\\sigma$ (where $\\sigma=4.7$ mJy)"
+     },
+     {
+      "loc": "Observations",
+      "quote": "with $\\pm1\\sigma$ statistical errors derived from the actual noise level inside a $\\pm90$ km s$^{-1}$ region adjacent to each spectral line"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2018 December 2-7 (HCN 2018-12-02; HC15N, H13CN, CH3OH 2018-12-07)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Observations of comet 46P/Wirtanen were conducted using ALMA during 2018 December 2-7"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Data observed and previously presented by Cordiner et al. 2023 (cite: cor23); this paper analyses the ACA part",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "which was observed by (cite: cor23) using the Atacama Large Millimeter/submillimeter Array (ALMA) during its exceptional 2018 apparition"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "SOHO (Ly-alpha water production rates)",
+     "provided": {
+      "value": "H2O production rates at the observation times, via cubic spline interpolation of measurements by Combi et al. 2020",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "H$_2$O production rates for comet 46P ($Q({\\rm H_2O})$) were obtained for our observation times from cubic spline interpolation of the SOHO Ly-$\\alpha$-derived measurements by (cite: com20)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "IRAM 30-m",
+     "provided": {
+      "value": "Comparison tentative HC15N detection in 46P giving HCN/HC15N of 77+-26 (Biver et al. 2021)",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "A tentative ($3\\sigma$) detection of HC$^{15}$N was also obtained in comet 46P by (cite: biv21) using the IRAM 30-m telescope"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT (ultraviolet spectroscopy)",
+     "provided": {
+      "value": "Comparison CN/C15N ratio of 150+-30 one day after the HC15N observation (Moulane et al. 2023)",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "(cite: mou23) measured a nominal CN/C$^{15}$N ratio of $150\\pm30$ using VLT ultraviolet spectroscopy"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectral line frequencies from the CDMS database",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Spectral line frequencies were obtained from the CDMS database (cite: end16)."
+       }
+      ]
+     },
+     "citation": "(cite: end16)"
+    },
+    {
+     "what": {
+      "value": "HCN-H2O collision rates, assumed to apply to all three HCN isotopologues",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "HCN–H$_2$O collision rates are from (cite: dub19), and were assumed to apply equally for all three HCN isotopologues."
+       }
+      ]
+     },
+     "citation": "(cite: dub19)"
+    },
+    {
+     "what": {
+      "value": "CH3OH-H2O collision rates assumed equal to CH3OH-H2 rates",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "collision rates between CH$_3$OH and H$_2$O were assumed to be the same as CH$_3$OH with H$_2$ (cite: rab10)"
+       }
+      ]
+     },
+     "citation": "(cite: rab10)"
+    },
+    {
+     "what": {
+      "value": "Molecular data for rovibrational solar pumping of HCN and CH3OH (HITRAN and Planetary Spectrum Generator databases)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Rovibrational pumping due to the solar radiation field was calculated using molecular data for HCN and CH$_3$OH from the HITRAN and Planetary Spectrum Generator databases (cite: cor23; vil18)."
+       }
+      ]
+     },
+     "citation": "(cite: cor23; vil18)"
+    },
+    {
+     "what": {
+      "value": "H2O production rates Q(H2O) of comet 46P at the observation times (SOHO Ly-alpha derived)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "H$_2$O production rates for comet 46P ($Q({\\rm H_2O})$) were obtained for our observation times from cubic spline interpolation of the SOHO Ly-$\\alpha$-derived measurements by (cite: com20)"
+       }
+      ]
+     },
+     "citation": "(cite: com20)"
+    },
+    {
+     "what": {
+      "value": "Q(HCN)/Q(H2O) = 0.0020+-0.0001 from six infrared measurements, used to argue the HCN/H2O ratio was constant",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "the error-weighted mean was $Q({\\rm HCN})$/$Q({\\rm H_2O})$ = $0.0020\\pm0.0001$"
+       }
+      ]
+     },
+     "citation": "(cite: bon21; kha23)"
+    },
+    {
+     "what": {
+      "value": "Expected HCN/H13CN ratio of about 90 from 12C/13C in diverse Solar System bodies, used for the conservative HCN abundance",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "the expected HCN/H$^{13}$CN ratio ($\\approx90$; based on measurements of $^{12}$C/$^{13}$C ratios in a diverse range of comets and other solar system bodies; (cite: nom23))"
+       }
+      ]
+     },
+     "citation": "(cite: nom23)"
+    },
+    {
+     "what": {
+      "value": "Error-weighted average HCN/HC15N of 146+-11 in four previous comets",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "the (error-weighted) average of prior HCN/HC$^{15}$N measurements in four previous comets is $146\\pm11$ (cite: boc08; biv16)"
+       }
+      ]
+     },
+     "citation": "(cite: boc08; biv16)"
+    },
+    {
+     "what": {
+      "value": "Weighted average 14N/15N of 144+-3 from HCN, CN and NH2 in 31 comets",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "The weighted average $^{14}$N/$^{15}$N ratio for HCN, CN and NH$_2$ in a sample of 31 comets is $144\\pm3$ (cite: hil17)"
+       }
+      ]
+     },
+     "citation": "(cite: hil17)"
+    },
+    {
+     "what": {
+      "value": "Terrestrial and solar 14N/15N reference values of 273 and 459",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "compared to the bulk terrestrial and Solar values of 273 and 459, respectively (cite: nie50; mar11)"
+       }
+      ]
+     },
+     "citation": "(cite: nie50; mar11)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Initial best-fit SUBLIME model image cubes, spectrally integrated and processed with CASA simobserve, used to derive interferometric flux loss factors",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "These were derived based on initial best-fit SUBLIME model image cubes"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Flagging and calibration as described by Cordiner et al. 2023 (details not given here)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Data flagging, calibration and continuum subtraction were performed as described by (cite: cor23)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% uncertainty on Q(HCN) and Q(HC15N) for possible absolute ACA flux scale inaccuracies",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "combined with a further 10% uncertainty on $Q({\\rm HCN})$ and $Q({\\rm HC^{15}N})$ to account for possible inaccuracies in the absolute ACA flux scale"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging was performed using the CASA `tclean` (Högbom) algorithm with natural weighting and a pixel size of $0.5''$."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Hogbom",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging was performed using the CASA `tclean` (Högbom) algorithm with natural weighting and a pixel size of $0.5''$."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging was performed using the CASA `tclean` (Högbom) algorithm with natural weighting and a pixel size of $0.5''$."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.5''",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging was performed using the CASA `tclean` (Högbom) algorithm with natural weighting and a pixel size of $0.5''$."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "30''-diameter circular mask centered on the comet; flux threshold of twice the RMS noise",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Deconvolution was carried out within a $30''$-diameter circular mask centered on the comet, with a flux threshold of twice the RMS noise level ($\\sigma$)."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Performed as described by Cordiner et al. 2023 (details not given here)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Data flagging, calibration and continuum subtraction were performed as described by (cite: cor23)."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "4.5'' x 2.8'' at 354 GHz (HCN)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the resulting synthesized beam size (angular resolution) was $\\theta_B=4.5''\\times2.8''$ at 354 GHz"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data flagging, calibration and continuum subtraction",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Data flagging, calibration and continuum subtraction were performed as described by (cite: cor23)."
+       }
+      ]
+     },
+     "from_reference": "Cordiner et al. 2023 (cite: cor23)"
+    },
+    {
+     "what": {
+      "value": "RMS noise on each spectrum multiplied by 1.29 to account for correlation between adjacent channels from the ACA correlator",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the RMS noise measurement on each spectrum was multiplied by a factor of 1.29, following (cite: nix20)"
+       }
+      ]
+     },
+     "from_reference": "Nixon et al. 2020 (cite: nix20)"
+    },
+    {
+     "what": {
+      "value": "SUBLIME non-LTE coma radiative transfer code (1D version)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Spectral modeling was performed using the spherically symmetric (1D) version of SUBLIME: a time-dependent, non-LTE radiative transfer code for cometary comae (cite: cor22)"
+       }
+      ]
+     },
+     "from_reference": "Cordiner et al. 2022 (cite: cor22)"
+    },
+    {
+     "what": {
+      "value": "Molecular data for solar rovibrational pumping of HCN and CH3OH",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Rovibrational pumping due to the solar radiation field was calculated using molecular data for HCN and CH$_3$OH from the HITRAN and Planetary Spectrum Generator databases (cite: cor23; vil18)."
+       }
+      ]
+     },
+     "from_reference": "(cite: cor23; vil18)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Flux, bandpass and phase calibrators and the calibration route (manual or pipeline) and CASA version: all deferred to Cordiner et al. 2023",
+    "How the comet ephemeris tracking and the continuum subtraction (line-free channels, order) were done",
+    "tclean details: number of iterations, absolute threshold in mJy, channel width and velocity regridding of the cubes, execution blocks combined",
+    "SUBLIME input setup: gas temperature and outflow velocity profiles, parent photodissociation rates, grid, H2O collision-partner treatment, hyperfine line list, and exact sky position and time used for each line",
+    "Settings of the CASA simobserve runs used to derive the 0.79 and 0.73 flux loss factors (antenna configuration, integration times, number of iterations to the initial best-fit model)",
+    "How the quoted uncertainty of 67+-17 (Conclusion) versus 67+-16 and 67+-20 (Discussion) was computed, and the origin of the (9.27+-2.88)e-3 HCN abundance given in the Discussion (the Table gives 9.17e-4)",
+    "Position-extraction aperture: spectra are taken from the (0,0) pixel of each map, without aperture size stated",
+    "Whether and how primary-beam correction was applied"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image ACA cubes of the targeted lines",
+    "method": {
+     "value": "CASA tclean (Hogbom) with natural weighting after flagging, calibration and continuum subtraction as in Cordiner et al. 2023",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging was performed using the CASA `tclean` (Högbom) algorithm with natural weighting and a pixel size of $0.5''$."
+      },
+      {
+       "loc": "Observations",
+       "quote": "Data flagging, calibration and continuum subtraction were performed as described by (cite: cor23)."
+      }
+     ]
+    },
+    "software": [
+     "CASA tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "pixel size 0.5''; 30''-diameter circular mask; threshold 2 x RMS",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Deconvolution was carried out within a $30''$-diameter circular mask centered on the comet, with a flux threshold of twice the RMS noise level ($\\sigma$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make integrated flux maps and extract spectra",
+    "method": {
+     "value": "Integrate over +-1.2 km/s about each line rest velocity (ranges for weak lines set from the HCN line width); extract spectra at the (0,0) position of each map, with the origin at the HCN peak for HCN and the CH3OH peak for HC15N and H13CN",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "integrated over velocity ranges $\\pm1.2$ km s$^{-1}$ with respect to the line rest velocities"
+      },
+      {
+       "loc": "Results",
+       "quote": "Spectra were extracted from the (0,0) position in each map"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "For the weaker lines the integration ranges follow the velocity width of the HCN line",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "For the weaker (HC$^{15}$N and H$^{13}$CN) lines, the spectral integration ranges were determined based on the velocity width of the stronger (HCN) line."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Detections judged against the 3 sigma criterion for a source of known position; HC15N peak coincides with the CH3OH-derived nucleus position and line profile matches the HCN rest velocity and FWHM",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "a detection can be considered real if appears above the $3\\sigma$ level for a source with a known location"
+      },
+      {
+       "loc": "Results",
+       "quote": "the HC$^{15}$N emission peak coincides with the known location of the comet’s nucleus"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Correct for interferometric flux loss",
+    "method": {
+     "value": "Initial best-fit SUBLIME model cubes were spectrally integrated, run through CASA simobserve for each line's sky position and observation time, and cleaned and deconvolved as the data; the resulting loss factors were applied to the measured spectra",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "These were derived based on initial best-fit SUBLIME model image cubes"
+      },
+      {
+       "loc": "Results",
+       "quote": "the measured ACA spectra were corrected for interferometric flux loss factors of 0.79 for HCN and 0.73 for HC$^{15}$N and H$^{13}$CN"
+      }
+     ]
+    },
+    "software": [
+     "SUBLIME",
+     "CASA simobserve"
+    ],
+    "key_parameters": [
+     {
+      "value": "flux loss factors 0.79 (HCN) and 0.73 (HC15N, H13CN)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the measured ACA spectra were corrected for interferometric flux loss factors of 0.79 for HCN and 0.73 for HC$^{15}$N and H$^{13}$CN"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive coma kinetic temperature from CH3OH",
+    "method": {
+     "value": "Least-squares fit of SUBLIME model to the CH3OH 5_K-4_K spectrum",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "$T_{kin}=93\\pm3$ K was derived using a least-squares fit to the CH$_3$OH spectrum"
+      }
+     ]
+    },
+    "software": [
+     "SUBLIME"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CH3OH-H2O collision rates taken equal to CH3OH-H2 rates",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "collision rates between CH$_3$OH and H$_2$O were assumed to be the same as CH$_3$OH with H$_2$ (cite: rab10)"
+       }
+      ]
+     },
+     {
+      "value": "Spherically symmetric (1D) coma",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the 1D version of the model was found to provide a sufficiently good fit to these ACA data"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least-squares fit",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "$T_{kin}=93\\pm3$ K was derived using a least-squares fit to the CH$_3$OH spectrum"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit HCN line profile for coma outflow velocity and Doppler shift",
+    "method": {
+     "value": "Fit the well-resolved HCN J=4-3 profile; resulting values fixed in later fits to the isotopologue lines",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "these values were used in subsequent fits to the spectrally less well resolved (and lower signal-to-noise) HCN isotopologue lines"
+      }
+     ]
+    },
+    "software": [
+     "SUBLIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "outflow velocity 0.53+-0.01 km/s; Doppler shift -0.097+-0.006 km/s",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "a coma outflow velocity of $0.53\\pm0.01$ km s$^{-1}$, and Doppler shift of $-0.097\\pm0.006$ km s$^{-1}$ was derived"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "HCN-H2O collision rates identical for all three isotopologues; hyperfine components in equilibrium line-strength ratios",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Hyperfine structure was included in the model spectra for all three HCN isotopologues, assuming equilibrium line-strength ratios among the hyperfine components in a given $J$ state."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Optical depth check: line largely optically thin (max 0.2 at peak, mean 0.04 in beam), hyperfine satellites too weak to be detected",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The maximum optical depth of our radiative transfer model at the HCN central peak is 0.2"
+      },
+      {
+       "loc": "Results",
+       "quote": "the mean optical depth inside the ACA beam is only 0.04"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Fit production rates and abundances of HCN, HC15N and H13CN",
+    "method": {
+     "value": "Least-squares fit of SUBLIME 1D model spectra to the flux-loss-corrected spectra; abundances relative to H2O using Q(H2O) from SOHO Ly-alpha",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Best fitting production rates and abundances (relative to H$_2$O) for the three HCN isotopologues are given in Table [\\[tab:results\\]](#tab:results)."
+      },
+      {
+       "loc": "Results",
+       "quote": "Formal ($1\\sigma$) uncertainties were derived from the diagonal elements of the covariance matrix of the least-squares fit."
+      }
+     ]
+    },
+    "software": [
+     "SUBLIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "RMS noise multiplied by 1.29 for adjacent-channel correlation",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the RMS noise measurement on each spectrum was multiplied by a factor of 1.29, following (cite: nix20)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Q(H2O) from cubic spline interpolation of SOHO Ly-alpha measurements, taken as applicable at the ACA spatial resolution",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "implies that the SOHO water production rates should be applicable at the spatial resolution of our ACA data"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least-squares; 1 sigma errors from the diagonal of the covariance matrix",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Formal ($1\\sigma$) uncertainties were derived from the diagonal elements of the covariance matrix of the least-squares fit."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Q(H2O) cross-checked against SOFIA (8e27 s-1) and IRTF (7e27 s-1) values from other dates",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "These $Q({\\rm H_2O})$ values are consistent with the average water production rate of $8\\times10^{27}$ s$^{-1}$ measured by (cite: lis19) using the SOFIA telescope"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Derive isotopic ratios and propagate uncertainties",
+    "method": {
+     "value": "Ratios of production rates; uncertainties extended with 10% Q(H2O) scatter and 10% flux scale error added in quadrature; conservative alternative using H13CN abundance and an assumed HCN/H13CN of 90; delta15N relative to the terrestrial standard",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "gives a value of HCN/HC$^{15}$N = $67\\pm20$."
+      },
+      {
+       "loc": "Discussion",
+       "quote": "This leads to a more conservative HCN/HC$^{15}$N ratio (and uncertainty) of $68\\pm27$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Q(H2O) RMS scatter 7.6e26 s-1 (~10%) about the linear trend between 2018-11-28 and 2018-12-11",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "which amount to an RMS of $7.6\\times10^{26}$ s$^{-1}$ ($\\sim10$%) with respect to the best-fitting linear trend in $Q({\\rm H_2O})$ between 2018-11-28 and 2018-12-11"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "HCN/H2O abundance constant between observations (std of Q(HCN)/Q(H2O) is 6%), so its variation is negligible",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "It is therefore reasonable to assume that variations in the comet’s HCN/H$_2$O ratio contribute a negligible source of uncertainty to our result."
+       }
+      ]
+     },
+     {
+      "value": "Expected HCN/H13CN of about 90 in the conservative estimate",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "the expected HCN/H$^{13}$CN ratio ($\\approx90$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with IRAM 30-m HCN/HC15N of 77+-26 in 46P and with the 144+-3 average of 31 comets",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "leading to an HCN/HC$^{15}$N ratio of $77\\pm26$"
+      },
+      {
+       "loc": "Discussion",
+       "quote": "is $2.8\\sigma$ less than the weighted average of 144"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "tclean imaging and simobserve simulated observations for flux loss",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Imaging was performed using the CASA `tclean` (Högbom) algorithm with natural weighting and a pixel size of $0.5''$."
+      },
+      {
+       "loc": "Results",
+       "quote": "processed using CASA `simobserve` according to the particular sky position and observation time of each line"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SUBLIME",
+    "version": "1D (spherically symmetric) version",
+    "used_for": {
+     "value": "Time-dependent non-LTE radiative transfer modeling of cometary comae to fit spectra and derive production rates, abundances and Tkin",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Spectral modeling was performed using the spherically symmetric (1D) version of SUBLIME: a time-dependent, non-LTE radiative transfer code for cometary comae (cite: cor22)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Planetary Spectrum Generator",
+    "version": "not stated",
+    "used_for": {
+     "value": "Source of molecular data for solar rovibrational pumping (with HITRAN)",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "from the HITRAN and Planetary Spectrum Generator databases (cite: cor23; vil18)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "HCN J=4-3 integrated line intensity",
+    "value": "2,806",
+    "uncertainty": "+-37",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$2,806\\pm37$"
+     }
+    ]
+   },
+   {
+    "quantity": "HC15N J=3-2 integrated line intensity",
+    "value": "41",
+    "uncertainty": "+-9",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$41\\pm9$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN J=3-2 integrated line intensity",
+    "value": "32",
+    "uncertainty": "+-10",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$32\\pm10$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH 5_K-4_K summed integrated line intensity",
+    "value": "3,472",
+    "uncertainty": "+-68",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$3,472\\pm68$"
+     }
+    ]
+   },
+   {
+    "quantity": "Detection significance of HCN, HC15N, H13CN",
+    "value": "76 sigma, 4.6 sigma, 3.2 sigma",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "HCN is detected at a high significance ($76\\sigma$), while HC$^{15}$N and H$^{13}$CN are detected at $4.6\\sigma$ and $3.2\\sigma$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Interferometric flux loss factor, HCN",
+    "value": "0.79",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "interferometric flux loss factors of 0.79 for HCN and 0.73 for HC$^{15}$N and H$^{13}$CN"
+     }
+    ]
+   },
+   {
+    "quantity": "Interferometric flux loss factor, HC15N and H13CN",
+    "value": "0.73",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "interferometric flux loss factors of 0.79 for HCN and 0.73 for HC$^{15}$N and H$^{13}$CN"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas kinetic temperature (beam-averaged)",
+    "value": "93",
+    "uncertainty": "+-3",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$T_{kin}=93\\pm3$ K was derived using a least-squares fit to the CH$_3$OH spectrum"
+     }
+    ]
+   },
+   {
+    "quantity": "Coma outflow velocity",
+    "value": "0.53",
+    "uncertainty": "+-0.01",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a coma outflow velocity of $0.53\\pm0.01$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Doppler shift of the HCN line",
+    "value": "-0.097",
+    "uncertainty": "+-0.006",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Doppler shift of $-0.097\\pm0.006$ km s$^{-1}$ was derived"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN production rate (2018-12-02)",
+    "value": "5.20e24",
+    "uncertainty": "+-0.09e24",
+    "units": "s-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$(5.20\\pm0.09)\\times10^{24}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HC15N production rate (2018-12-07)",
+    "value": "1.03e23",
+    "uncertainty": "+-0.25e23",
+    "units": "s-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$(1.03\\pm0.25)\\times10^{23}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN production rate (2018-12-07)",
+    "value": "7.70e22",
+    "uncertainty": "+-2.49e22",
+    "units": "s-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$(7.70\\pm2.49)\\times10^{22}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN abundance relative to H2O",
+    "value": "9.17e-4",
+    "uncertainty": "+-0.16e-4",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$(9.17\\pm0.16)\\times10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HC15N abundance relative to H2O",
+    "value": "1.36e-5",
+    "uncertainty": "+-0.33e-5",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$(1.36\\pm0.33)\\times10^{-5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN abundance relative to H2O",
+    "value": "1.03e-5",
+    "uncertainty": "+-0.32e-5",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$(1.03\\pm0.32)\\times10^{-5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HC15N production rate ratio (statistical errors only)",
+    "value": "67",
+    "uncertainty": "+-16",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the HCN/HC$^{15}$N production rate ratio in comet 46P is $67\\pm16$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/H13CN production rate ratio (statistical errors only)",
+    "value": "90",
+    "uncertainty": "+-28",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "and the HCN/H$^{13}$CN ratio is $90\\pm28$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HC15N including Q(H2O) scatter and 10% flux-scale error",
+    "value": "67",
+    "uncertainty": "+-20",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "gives a value of HCN/HC$^{15}$N = $67\\pm20$."
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HC15N conservative value (from H13CN abundance and assumed HCN/H13CN of 90)",
+    "value": "68",
+    "uncertainty": "+-27",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "This leads to a more conservative HCN/HC$^{15}$N ratio (and uncertainty) of $68\\pm27$."
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HC15N production rate ratio quoted in the Conclusion",
+    "value": "67",
+    "uncertainty": "+-17",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "we derived a HCN/HC$^{15}$N production rate ratio of $67\\pm17$"
+     }
+    ]
+   },
+   {
+    "quantity": "delta15N relative to the terrestrial standard",
+    "value": "3015",
+    "uncertainty": "+-1200",
+    "units": "per mil",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "= ($3015\\pm1200$) (per mil)"
+     }
+    ]
+   },
+   {
+    "quantity": "Significance of 14N/15N below the 144 cometary weighted average",
+    "value": "2.8",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "is $2.8\\sigma$ less than the weighted average of 144"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN optical depth: maximum at peak and mean in ACA beam",
+    "value": "0.2 (peak), 0.04 (mean)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The maximum optical depth of our radiative transfer model at the HCN central peak is 0.2"
+     },
+     {
+      "loc": "Results",
+      "quote": "the mean optical depth inside the ACA beam is only 0.04"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The HCN/H13CN ratio is consistent with a lack of significant 13C fractionation in cometary HCN",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The HCN/H$^{13}$CN ratio is found to be consistent with a lack of significant $^{13}$C fractionation"
+     }
+    ]
+   },
+   {
+    "value": "HC15N mapped for the first time in a comet; 46P HCN is strongly enriched in 15N compared with solar and terrestrial values, similar to meteoritic hotspots",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "allowing HC$^{15}$N to be mapped for the first time in a comet"
+     },
+     {
+      "loc": "Conclusion",
+      "quote": "reaching a value similar to those found in the most $^{15}$N-enriched “hotspots” in spatially isolated meteoritic samples"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the 14N/15N ratio in HCN of Jupiter-family comet 46P consistent with the roughly 140 found in previous comets?",
+    "experiment": "ACA HCN and HC15N observations of 46P modeled with SUBLIME, comparing HCN/HC15N with prior comet measurements",
+    "result": "HCN/HC15N = 68+-27 (conservative); 2.8 sigma below the 144 cometary average; 67+-20 with Q(H2O) and flux-scale errors",
+    "finding": "46P HCN is strongly enriched in 15N relative to solar, terrestrial and prior cometary values",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "indicates a strong enhancement in $^{15}$N compared with the solar and terrestrial values"
+     },
+     {
+      "loc": "Discussion",
+      "quote": "Our new $^{14}$N/$^{15}$N value in comet 46P is $2.8\\sigma$ less than the weighted average of 144"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does cometary HCN show carbon isotopic fractionation in 46P?",
+    "experiment": "H13CN and HCN production rates from SUBLIME fits to ACA data",
+    "result": "HCN/H13CN = 90+-28",
+    "finding": "No strong 13C fractionation in cometary HCN, consistent with earlier comets and Solar System values",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "our HCN/H$^{13}$CN ratio in 46P is consistent with the values of $^{12}$C/$^{13}$C $\\sim90$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can Jupiter-family comets reach larger nitrogen isotopic enrichment than previously thought, possibly via isotopically heterogeneous nucleus material?",
+    "experiment": "Comparison of the ACA value with IRAM, VLT CN/C15N and meteoritic hotspot values, plus an estimate of the volatile mass within the ACA beam",
+    "result": "ACA HCN/HC15N is similar to meteoritic hotspots (65+-14) but a VLT CN/C15N of 150+-30 one day later is higher",
+    "finding": "Heterogeneity or a spatially isolated 15N enhancement is proposed as plausible but speculative",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "it is interesting to speculate that comets (or comet 46P in particular) could also contain isotopically heterogeneous material"
+     },
+     {
+      "loc": "Conclusion",
+      "quote": "This result implies that cometary $^{14}$N/$^{15}$N ratios could be more diverse, and potentially $^{15}$N rich, than previously thought."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is a spherically symmetric optically thin coma model adequate for the ACA HCN data?",
+    "experiment": "1D SUBLIME fits and optical depth evaluation",
+    "result": "Maximum optical depth 0.2 at the HCN peak and 0.04 mean in the beam",
+    "finding": "HCN J=4-3 is largely optically thin and the 1D model is sufficient",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Hence, the HCN $J=4-3$ line is largely optically thin"
+     },
+     {
+      "loc": "Results",
+      "quote": "the 1D version of the model was found to provide a sufficiently good fit to these ACA data"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "The exceptionally close Earth-comet distance allowed detection of weak lines not normally detectable in Jupiter-family comets; the ACA's short baselines are sensitive to extended coma emission",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The unusually close Earth-comet distance allowed the detection of weak spectral lines not typically detectable in Jupiter family comets from the ground"
+     },
+     {
+      "loc": "Observations",
+      "quote": "The shorter baselines of the ACA compared with the main (12 m) ALMA array make it more sensitive to extended coma emission"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "A 1D spherically symmetric non-LTE model suffices since cometary HCN data are typically well reproduced by such models",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Considering the cometary HCN data are typically well reproduced by a spherically-symmetric coma model"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "A more conservative HCN abundance and HCN/HC15N from H13CN and an assumed HCN/H13CN of about 90, in case Q(H2O) or HCN/H2O varies strongly with time",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The possibility of more extreme temporal variability in $Q({\\rm H_2O})$ (or greater variability in HCN/H$_2$O) as a function of time cannot be ruled out however."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Detection criterion of 3 sigma for a source with known location, met by HC15N and H13CN",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a detection can be considered real if appears above the $3\\sigma$ level for a source with a known location"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Raw statistical significance of the HC15N and H13CN detections is low",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The raw statistical significance of our HC$^{15}$N and H$^{13}$CN detections is less than optimal"
+      }
+     ]
+    },
+    {
+     "value": "HCN and isotopologues were observed on different dates, so variations in Q(H2O) and HCN/H2O enter the uncertainty",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Because HCN and its minor isotopologues were observed in comet 46P on different dates (almost 6 days apart)"
+      }
+     ]
+    },
+    {
+     "value": "CN may have an additional source beyond HCN photolysis, so CN/C15N need not equal HCN/HC15N",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "it should be noted that CN in cometary comae often has an additional source that cannot be explained by HCN photolysis alone"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "HC15N and H13CN detected at only 4.6 sigma and 3.2 sigma, so the headline ratio rests on a few channels",
+    "HCN and the isotopologues are measured on different days with different beams, so the ratio depends on Q(H2O) from SOHO and on flux-loss corrections of 0.79 and 0.73 derived from the same model",
+    "The tabulated HCN abundance (9.17e-4) differs by a factor of 10 from the conservative abundance quoted in the text ((9.27+-2.88)e-3), and the Conclusion quotes 67+-17 against 67+-16 or 67+-20 in the Discussion",
+    "Spherical-symmetry assumption applies although a solar-facing jet is invoked elsewhere for this comet",
+    "Nominal 2.8 sigma deviation from the comet average is modest for a claimed outlier"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration and imaging details deferred to Cordiner et al. 2023",
+    "SUBLIME input model parameters and fitting configuration",
+    "Flux-loss simulation setup",
+    "Q(H2O) values are taken from Combi et al. 2020 and must be obtained separately"
+   ],
+   "estimated_data_volume_inferred": "ACA execution blocks for one project (2018.1.01114.S), likely a few GB of raw data",
+   "score_inferred": 3,
+   "score_reason": "ALMA project code and most imaging choices are given and key numbers are tabulated, but calibration is deferred to a prior paper and the SUBLIME model setup and flux-loss simulations are not fully specified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Calibration is deferred to another paper and the non-LTE model configuration and simobserve settings are not given, so the main ratios cannot be redone from this text alone."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Cordiner et al. 2023 (cite: cor23)",
+     "why": "Describes the flagging, calibration and continuum subtraction and the earlier analysis of the same data"
+    },
+    {
+     "citation": "Cordiner et al. 2022 (cite: cor22)",
+     "why": "Describes the SUBLIME radiative transfer code"
+    },
+    {
+     "citation": "Nixon et al. 2020 (cite: nix20)",
+     "why": "Source of the 1.29 noise correction factor for ACA channel correlation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Cordiner et al. 2023 (cite: cor23)",
+     "why": "Earlier presentation of the same ALMA observations of 46P"
+    },
+    {
+     "citation": "Biver et al. 2021 (cite: biv21)",
+     "why": "IRAM 30-m tentative HC15N detection in 46P"
+    },
+    {
+     "citation": "Moulane et al. 2023 (cite: mou23)",
+     "why": "VLT CN/C15N measurement in 46P one day after the ACA HC15N observation"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "2018.1.01114.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024PSJ.....5..221C",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:12:10",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 132,
+  "quotes_ok": 132,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 24,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 103,
+   "stated": 75,
+   "rate": 0.728
+  },
+  "evidence_ok": true
+ }
+}

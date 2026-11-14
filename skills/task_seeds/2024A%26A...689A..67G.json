@@ -1,0 +1,537 @@
+{
+ "bibcode": "2024A&A...689A..67G",
+ "title": "Molecular gas excitation in the circumgalactic medium of MACS1931─26",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202449642",
+ "arxiv_id": "2406.09552",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "high_z_galaxies"
+ ],
+ "question": "What are the physical and thermodynamical properties (kinetic temperature, density, virialisation factor, and CO-poor molecular hydrogen mass) of the molecular gas in the BCG and circumgalactic medium (CGM) tail of the galaxy cluster MACS1931-26?",
+ "alma_project_codes": [
+  "2016.1.00784.S",
+  "2017.1.01205.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "12-m array (Band 3, 6, 7) and ACA (Band 6, 7)",
+  "angular_resolution": "0.54'' (Band 3), 0.74'' (Band 6), 0.81'' (Band 7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA 12CO(1-0), 12CO(3-2), and 12CO(4-3) line fluxes, best-fit Lorentzian line profiles, velocity offsets, and FWHMs for BCG and CGM tail",
+    "evidence": [
+     {
+      "loc": "2.3. Archival ALMA data",
+      "quote": "We used the CO line measurements of Fogarty et al. (2019) to complement our data and model the gas excitation."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "All line ratios are calculated using the ALMA interferometry [12] CO(1-0) (Fogarty et al. 2019) because we do not detect the tail 12 CO(1-0) peak in single-dish observations. Moreover, the 12 CO(32) and [12] CO(4-3) fluxes are obtained from Fogarty et al. (2019)."
+     }
+    ]
+   },
+   "citation": "Fogarty et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "CO and CI molecular collisional and radiative data from the Leiden Atomic and Molecular Database (LAMDA)",
+    "evidence": [
+     {
+      "loc": "3.2. Line ratio modelling",
+      "quote": "We used the CO and CI molecular data from the Leiden atomic and molecular database (LAMDA [8] ; Schöier et al. 2005) and assumed background temperature as the cosmic microwave background (CMB) temperature at the cluster redshift, _T_ back(z) = _T_ CMB(z) = 3.69 K."
+     }
+    ]
+   },
+   "citation": "Schöier et al. (2005)"
+  },
+  {
+   "what": {
+    "value": "Literature CO SLEDs for ULIRGs, SMGs, BzK galaxies, low-redshift Herschel galaxies, and QFeedS quasars, plus theoretical CO SLED from Narayanan & Krumholz (2014)",
+    "evidence": [
+     {
+      "loc": "Figure 2 caption",
+      "quote": "Additional average CO SLEDs from the literature are added for comparison: ULIRGs from Papadopoulos et al. (2012b, blue circles), SMGs from Bothwell et al. (2013, green circles), BzK galaxies from Daddi et al. (2015, purple circles), low-redshift Herschel galaxies from Kamenetzky et al. (2016, magenta circles), and quasars from the QFeedS sample published in Molyneux et al. (2023, cyan circles)."
+     },
+     {
+      "loc": "Figure 2 caption",
+      "quote": "The dashed black line shows the theoretical CO SLED for resolved objects with Σ SFR = 0.83 _M_ ⊙ yr [−][1] kpc [−][2] modelled by Narayanan & Krumholz (2014)."
+     }
+    ]
+   },
+   "citation": "Papadopoulos et al. (2012b); Bothwell et al. (2013); Daddi et al. (2015); Kamenetzky et al. (2016); Molyneux et al. (2023); Narayanan & Krumholz (2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce single-dish APEX and NRO 45-m spectra",
+   "method": "Flag bad scans/atmospheric absorption lines (near 595 and 600 GHz for APEX), subtract first-order baselines, average scans, smooth/bin velocity channels (82 km/s for APEX, 50 km/s for NRO 45-m), and convert antenna temperature to flux density using calibrated Jy/K gain factors.",
+   "software": [
+    "GILDAS/CLASS",
+    "NEWSTAR"
+   ],
+   "key_parameters": [
+    "APEX channel width = 82 km s^-1; RMS = 0.66 mK (47 mJy); gain Gamma = 72 +/- 8 Jy/K; HPBW = 9.89'' +/- 0.11''",
+    "NRO 45-m channel width = 50 km s^-1; RMS = 2.6 mJy; gain Gamma = 6.54 +/- 0.33 Jy/K; HPBW ~ 18''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit spectral line profiles, apply differential beam corrections, and compute line luminosities and ratios",
+   "method": "Fit both Gaussian and Lorentzian profiles to the BCG and CGM tail velocity components, estimate uncertainties via Monte Carlo realisations adding Gaussian noise equal to channel RMS, apply Gaussian beam response corrections for the offset tail, and compute L' luminosities and ratios combining with archival ALMA CO fluxes.",
+   "software": [
+    "Astropy",
+    "Specutils"
+   ],
+   "key_parameters": [
+    "Fixed tail velocity offset = 315.8 km s^-1 and fixed tail FWHM = 123 km s^-1 (from ALMA CO(3-2))",
+    "Beam response correction: +40% for APEX tail fluxes ([CI](2-1) and CO(7-6)) and +15% for NRO 45-m tail CO(1-0) upper limit"
+   ],
+   "assumptions": [
+    "Tail velocity offset and FWHM match the ALMA 12CO(3-2) second velocity component (C2) from Fogarty et al. (2019)",
+    "Tail is approximated as a point source at 4'' distance from the BCG and beam centre within a Gaussian single-dish beam"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model non-LTE molecular gas excitation (T_kin, n_H2, K_vir) for BCG and CGM tail",
+   "method": "Run non-LTE LVG radiative transfer models over a 3D grid of [n_H2, T_kin, K_vir] using MyRadex and LAMDA molecular data, constrained by observed CO line luminosity ratios and the [CI](2-1)/CO(1-0) ratio, and sample the posterior via MCMC.",
+   "software": [
+    "MyRadex",
+    "LSODE",
+    "ODEPACK"
+   ],
+   "key_parameters": [
+    "Grid: 0.7 < log(T_kin [K]) < 3 (step 0.11 dex), 1 < log(n_H2 [cm^-3]) < 7 (step 0.1 dex), 1 < K_vir < 100 (step 0.1 dex)",
+    "T_back(z) = T_CMB(z) = 3.69 K"
+   ],
+   "assumptions": [
+    "Large velocity gradient (LVG) approximation; optically thin [CI](2-1); Carbon abundance X_CI = [C]/[H2] = 3 x 10^-5; helium mass correction mu = 1.36; cloud density profile factor alpha = 1.5; A_21 = 2.68 x 10^-7 s^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular hydrogen mass from [CI](2-1) emission",
+   "method": "Calculate the CI excitation factor Q_21 from the LVG-derived T_kin and n_H2 distributions and apply the optically thin [CI](2-1) mass equation to compute H2 masses for the BCG, CGM tail, and total system.",
+   "software": [],
+   "key_parameters": [
+    "Q_21 = 0.13 +/- 0.05 (BCG); Q_21 = 0.03 +/- 0.02 (CGM tail); D_L = 1557 Mpc; z = 0.3525"
+   ],
+   "assumptions": [
+    "Optically thin [CI](2-1) emission; X_CI = 3 x 10^-5; A_21 = 2.68 x 10^-7 s^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CO(1-0) integrated flux (BCG, NRO 45-m, Gaussian fit)",
+   "value": "2.2",
+   "uncertainty": "0.6",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**CO(1-0)** **BCG** fixed 0 Gauss 285 ± 54 2.2 ± 0.6 - 9.8 ± 2.4 - 4.2"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) integrated flux (BCG, NRO 45-m, Lorentzian fit)",
+   "value": "2.5",
+   "uncertainty": "0.6",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Lorentz 207 ± 32 2.5 ± 0.6 11.0 ± 2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) luminosity L' (BCG, NRO 45-m, Gaussian fit)",
+   "value": "9.8e9",
+   "uncertainty": "2.4e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**CO(1-0)** **BCG** fixed 0 Gauss 285 ± 54 2.2 ± 0.6 - 9.8 ± 2.4 - 4.2"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) integrated flux upper limit (Tail, NRO 45-m, beam-corrected)",
+   "value": "<0.9",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**Tail** - Gauss fixed 123 <0.8 < 0.9 < 3.7 < 4.3"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(7-6) integrated flux (BCG, APEX, Gaussian fit)",
+   "value": "24.4",
+   "uncertainty": "10.3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**CO(7-6)** **BCG** fixed Gauss 233 ± 43 24.4 ± 10.3 - 2.2 ± 0.9 - 2.4"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(7-6) integrated flux (BCG, APEX, Lorentzian fit)",
+   "value": "36.7",
+   "uncertainty": "13.5",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "994.7 Lorentz 298 ± 83 36.7 ± 13.5 3.3 ± 1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(7-6) integrated flux upper limit (Tail, APEX, beam-corrected)",
+   "value": "<47.1",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**Tail** - Gauss fixed 123 <27.9 < 47.1 < 2.5 < 4.2"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) integrated flux (BCG, APEX, Gaussian fit)",
+   "value": "41.6",
+   "uncertainty": "13.2",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**[CI](2-1)** **BCG** fixed 0 Gauss 243 ± 103 41.6 ± 13.2 - 3.7 ± 1.2 - 3.7"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) integrated flux (BCG, APEX, Lorentzian fit)",
+   "value": "56.4",
+   "uncertainty": "14.7",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Lorentz 245 ± 174 56.4 ± 14.7 5.0 ± 1.3"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) integrated flux (Tail, APEX, Gaussian fit, uncorrected)",
+   "value": "8.4",
+   "uncertainty": "6.0",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**Tail** fixed Gauss fixed 123 8.4 ± 6.0 14.2 ± 10.1 0.7 ± 0.5 1.3 ± 0.9 1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) integrated flux (Tail, APEX, Gaussian fit, beam-corrected)",
+   "value": "14.2",
+   "uncertainty": "10.1",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "**Tail** fixed Gauss fixed 123 8.4 ± 6.0 14.2 ± 10.1 0.7 ± 0.5 1.3 ± 0.9 1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) integrated flux (Tail, APEX, Lorentzian fit, beam-corrected)",
+   "value": "14.5",
+   "uncertainty": "12.3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "315.8 Lorentz 8.6 ± 7.3 14.5 ± 12.3 0.8 ± 0.6 1.3 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2)/CO(1-0) line luminosity ratio (BCG)",
+   "value": "0.97",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "**CO(3-2)** / **CO(1-0)** 0.97 ± 0.09 0.67 ± 0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2)/CO(1-0) line luminosity ratio (Tail)",
+   "value": "0.67",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "**CO(3-2)** / **CO(1-0)** 0.97 ± 0.09 0.67 ± 0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3)/CO(1-0) line luminosity ratio (BCG)",
+   "value": "0.67",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "**CO(4-3)** / **CO(1-0)** 0.67 ± 0.07 0.22 ± 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3)/CO(1-0) line luminosity ratio (Tail)",
+   "value": "0.22",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "**CO(4-3)** / **CO(1-0)** 0.67 ± 0.07 0.22 ± 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6)/CO(1-0) line luminosity ratio (BCG, Gaussian)",
+   "value": "0.17",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.17 ± 0.07 **CO(7-6)** / **CO(1-0)** (0.25 ± 0.09 for Lorentzian)"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1)/CO(1-0) line luminosity ratio (BCG, Gaussian)",
+   "value": "0.28",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.28 ± 0.09 0.68 ± 0.48 **[CI](2-1)** / **CO(1-0)** (0.38 ± 0.09 (0.68 ± 0.53 for Lorentzian) for Lorentzian)"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1)/CO(1-0) line luminosity ratio (Tail, Gaussian)",
+   "value": "0.68",
+   "uncertainty": "0.48",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.28 ± 0.09 0.68 ± 0.48 **[CI](2-1)** / **CO(1-0)** (0.38 ± 0.09 (0.68 ± 0.53 for Lorentzian) for Lorentzian)"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic temperature T_kin (BCG)",
+   "value": "22.6",
+   "uncertainty": "+8.3/-4.3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Line ratio modelling",
+     "quote": "The best models predict the gas properties of T kin =22.6 [+] − [8] 4 [.] . [3] 3 [K, log] [cmn H [−] 2 [3] ] [=][ 4][.][5] − [+] 0 [1] . [.] 8 [3] [, and K] [vir] [=][ 4][.][6] − [+] 3 [15] .0 [.][0] [for BCG]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen number density log(n_H2) (BCG)",
+   "value": "4.5",
+   "uncertainty": "+1.3/-0.8",
+   "units": "log(cm^-3)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Line ratio modelling",
+     "quote": "The best models predict the gas properties of T kin =22.6 [+] − [8] 4 [.] . [3] 3 [K, log] [cmn H [−] 2 [3] ] [=][ 4][.][5] − [+] 0 [1] . [.] 8 [3] [, and K] [vir] [=][ 4][.][6] − [+] 3 [15] .0 [.][0] [for BCG]"
+    }
+   ]
+  },
+  {
+   "quantity": "Virialisation parameter K_vir (BCG)",
+   "value": "4.6",
+   "uncertainty": "+15.0/-3.0",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Line ratio modelling",
+     "quote": "The best models predict the gas properties of T kin =22.6 [+] − [8] 4 [.] . [3] 3 [K, log] [cmn H [−] 2 [3] ] [=][ 4][.][5] − [+] 0 [1] . [.] 8 [3] [, and K] [vir] [=][ 4][.][6] − [+] 3 [15] .0 [.][0] [for BCG]"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic temperature T_kin (CGM tail)",
+   "value": "15.3",
+   "uncertainty": "+15.6/-5.3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Line ratio modelling",
+     "quote": "and T kin =15.3 − [+] 5 [15] .3 [.][6] [K, log] [cmn H [−] 2 [3] ] [=][ 3][.][5] − [+] 1 [2] . [.] 6 [2] [, and K] [vir] [=][ 19][.][0] [+] − [83] 14 [.] . [5] 2 [for] tail."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen number density log(n_H2) (CGM tail)",
+   "value": "3.5",
+   "uncertainty": "+2.2/-1.6",
+   "units": "log(cm^-3)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Line ratio modelling",
+     "quote": "and T kin =15.3 − [+] 5 [15] .3 [.][6] [K, log] [cmn H [−] 2 [3] ] [=][ 3][.][5] − [+] 1 [2] . [.] 6 [2] [, and K] [vir] [=][ 19][.][0] [+] − [83] 14 [.] . [5] 2 [for] tail."
+    }
+   ]
+  },
+  {
+   "quantity": "Virialisation parameter K_vir (CGM tail)",
+   "value": "19.0",
+   "uncertainty": "+83.5/-14.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Line ratio modelling",
+     "quote": "and T kin =15.3 − [+] 5 [15] .3 [.][6] [K, log] [cmn H [−] 2 [3] ] [=][ 3][.][5] − [+] 1 [2] . [.] 6 [2] [, and K] [vir] [=][ 19][.][0] [+] − [83] 14 [.] . [5] 2 [for] tail."
+    }
+   ]
+  },
+  {
+   "quantity": "CI excitation factor Q_21 (BCG)",
+   "value": "0.13",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Molecular hydrogen mass inferred from [CI](2-1)",
+     "quote": "We calculate the probability distribution of this quantity from Papadopoulos et al. (2004) for the BCG of MACS1931 with T kin =22.6 − [+] 4 [8] . [.] 3 [3] [K] [and] log [cmn H [−] 2 [3] ] = 4.5 [+] − [1] 0 [.] . [3] 8 [to] [be] _[Q]_ [21] = 0.13 ± 0.05."
+    }
+   ]
+  },
+  {
+   "quantity": "CI excitation factor Q_21 (CGM tail)",
+   "value": "0.03",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Molecular hydrogen mass inferred from [CI](2-1)",
+     "quote": "We perform the same analysis for the CGM tail of MACS1931, using _Q_ 21 = 0.03 ± 0.02 for gas with T kin =15.3 [+] − [15] 5.3 [.][6] [K and log] [cmn H [−] 2 [3] ] [=][ 3][.][5] − [+] 1 [2] . [.] 6 [2] [.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen mass M_H2 (BCG, from [CI](2-1))",
+   "value": "10.0e10",
+   "uncertainty": "3.2e10",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Molecular hydrogen mass inferred from [CI](2-1)",
+     "quote": "Equation 4 gives M H 2 [BCG] = (10.0 ± 3.2) × 10 [10] M ⊙ as the molecular hydrogen mass in the BCG of MACS1931, traced by [CI](2-1) if we only consider the measurement errors."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen mass M_H2 (CGM tail, from [CI](2-1))",
+   "value": "13.4e10",
+   "uncertainty": "9.6e10",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Molecular hydrogen mass inferred from [CI](2-1)",
+     "quote": "Using the tail flux and its uncertainty from Table 1, we find M H 2 [CGM] = (13.4 ± 9.6) × 10 [10] M ⊙ as the molecular hydrogen mass in the tail of MACS1931."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular hydrogen mass M_H2 (BCG + tail, from [CI](2-1))",
+   "value": "23.4e10",
+   "uncertainty": "12.7e10",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Molecular hydrogen mass inferred from [CI](2-1)",
+     "quote": "Consequently, the total molecular hydrogen mass of MACS1931 in BCG and the tail is M H 2 [tot] = (23.4 ± 12.7) × 10 [10] M ⊙ based on [CI](2-1) observations."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging parameters (relying on Fogarty et al. 2019 products and published line fluxes)",
+  "Exact column density or velocity gradient input conventions passed to MyRadex when translating K_vir into LVG inputs",
+  "Which line profile fit (Gaussian vs Lorentzian) and whether beam-corrected or uncorrected tail [CI](2-1) flux was passed into the final MyRadex MCMC fit and H2 mass calculation",
+  "Details of the MCMC sampler (software package, number of walkers, number of steps, burn-in)"
+ ],
+ "missing_for_reproduction": [
+  "Reduced APEX and NRO 45-m 1D spectra (unless retrieved and re-reduced from raw observatory archives)",
+  "Exact MyRadex input parameters (e.g. how K_vir and line ratios are translated into column density / velocity gradient inputs) and the custom MCMC wrapper script",
+  "Clarification on whether maximum-likelihood or posterior median values are reported in Section 3.2 vs Appendix A, and whether Gaussian or Lorentzian ratios from Table 2 are fed to MyRadex"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The LVG modelling grid, equations, priors, and input line ratios (Table 1 and Table 2) are clearly documented and use open-source software (MyRadex, LAMDA, Astropy), making the excitation and mass derivation steps largely reproducible from the published tables. However, the raw single-dish spectra reduction relies on manual scan flagging and cross-calibration, and minor ambiguities exist between maximum-likelihood vs MCMC median parameter reporting.",
+ "rediscovery_reason": "All measured line fluxes and luminosity ratios are tabulated in Tables 1 and 2, the archival ALMA data are public, and the MyRadex LVG + MCMC analysis and H2 mass calculations yield concrete numeric outputs that can be directly reproduced from the published fluxes.",
+ "source_card": "cards/2024A%26A...689A..67G/sonnet/card.md"
+}

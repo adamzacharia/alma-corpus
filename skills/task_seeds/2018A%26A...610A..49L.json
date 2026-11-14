@@ -1,0 +1,217 @@
+{
+ "bibcode": "2018A&A...610A..49L",
+ "title": "ALMA observations of molecular absorption in four directions toward the Galactic bulge",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201731983",
+ "arxiv_id": "1712.03916",
+ "fields": [
+  "milky_way_ism",
+  "astrochemistry"
+ ],
+ "question": "Can diffuse molecular gas in the Galactic bulge be detected in absorption toward other mm-wave continuum sources, and how do its chemistry, kinematics and 12C/13C compare with disk and CMZ gas?",
+ "alma_project_codes": [
+  "2016.1.00132.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HI absorption profiles toward J1717 and J1744",
+    "evidence": [
+     {
+      "loc": "2.2 Other data",
+      "quote": "we use the H I absorption profiles of Dickey et al. (1983)"
+     }
+    ]
+   },
+   "citation": "Dickey et al. (1983)"
+  },
+  {
+   "what": {
+    "value": "Local-cloud CS, HCN, HCO+ and C2H absorption measurements for comparison",
+    "evidence": [
+     {
+      "loc": "2.2 Other data",
+      "quote": "We also use the CS and HCN absorption profiles for local clouds from Lucas & Liszt (2002) and Liszt & Lucas (2001), respectively"
+     }
+    ]
+   },
+   "citation": "Lucas & Liszt (2002); Liszt & Lucas (2001); Lucas & Liszt (2000)"
+  },
+  {
+   "what": {
+    "value": "K-band extinction A_K from 3-D bulge extinction map",
+    "evidence": [
+     {
+      "loc": "2.3 Extinction",
+      "quote": "the 3-D IR extinction map of the Galactic bulge of Schultheis et al. (2014)"
+     }
+    ]
+   },
+   "citation": "Schultheis et al. (2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract absorption spectra",
+   "method": "Spectra taken at peak continuum pixel from continuum-subtracted cubes and divided by continuum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive HCO+ and H13CO+ column densities and isotopic ratios",
+   "method": "Integrate optical depths in limit of no excitation above CMB; Monte Carlo for errors",
+   "software": [],
+   "key_parameters": [
+    "N(HCO+) = 1.10e12 cm-2 ∫τdv; N(H13CO+) = 1.135e12 cm-2 ∫τdv"
+   ],
+   "assumptions": [
+    "dipole moment 3.92 Debye"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive H2 and HI column densities and molecular fractions",
+   "method": "N(H2)=N(HCO+)/3e-9; optical-depth-corrected N(HI) from Eq. 1 with Dickey HI absorption",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCO+/H2 abundance 3e-9; R0 = 8500 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gaussian decomposition of HCN, CS and HI profiles",
+   "method": "Gaussian components fit to line profiles; CS fit subtracted to integrate remainder over HCN components",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Limit HI spin temperature of self-absorbing gas",
+   "method": "Solve two radiative transfer equations for foreground/background spin temperatures using HI absorption and emission",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "N(HCO+)/N(H13CO+) toward J1717 disk",
+   "value": "58",
+   "uncertainty": "±9",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J1717 -25..10 7.002(0.027) 0.117(0.018) 7.70(0.03) 58 ± 9"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCO+)/N(H13CO+) toward J1744 disk",
+   "value": "64",
+   "uncertainty": "±4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J1744 -33..13 21.852(0.056) 0.333(0.023) 24.03(0.06) 64 ± 4"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCO+)/N(H13CO+) bulge gas toward J1744",
+   "value": ">51 (3σ)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1 Absorption arising inside the Galactic disk",
+     "quote": "N(HCO + )/N(H 13 CO + ) > 51 (3σ) for the bulge gas toward J1744"
+    }
+   ]
+  },
+  {
+   "quantity": "HI self-absorbing component optical depth toward J1744",
+   "value": "0.686",
+   "uncertainty": "±0.081",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 H I spin temperature",
+     "quote": "τ fg = 0.686 ± 0.081 corresponding to T sp, fg = 16.2(+8.0, −10.2) K"
+    }
+   ]
+  },
+  {
+   "quantity": "Spin temperature of foreground self-absorbing HI",
+   "value": "16.2",
+   "uncertainty": "+8.0/-10.2",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 H I spin temperature",
+     "quote": "T sp, fg = 16.2(+8.0, −10.2) K"
+    }
+   ]
+  },
+  {
+   "quantity": "2N(H2) 3 kpc arm toward J1717",
+   "value": "6.4e19",
+   "uncertainty": "±1.8e19",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Inner-Galaxy gas along the line of sight to J1717",
+     "quote": "2N(H 2 ) = 6.4 ± 1.8 × 10 19 cm −2, or f H 2 ≈ 0.24"
+    }
+   ]
+  },
+  {
+   "quantity": "2N(H2) far-side 3 kpc arm toward J1744",
+   "value": "7.3e19",
+   "uncertainty": "±1.2e19",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.4 The far-side 3 kpc arm toward J1744",
+     "quote": "2N(H 2 ) = 7.3 ± 1.2 × 10 19 cm −2, ie, the gas is ≈ 48% molecular."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Observing dates, array configuration, beam and time on source",
+  "CASA/pipeline version",
+  "Imaging weighting and cube parameters",
+  "Continuum rms and per-channel noise values",
+  "HCO+ abundance relative to H2 justification (3e-9) is not explained",
+  "Velocity ranges and baselines used for integration were chosen by eye"
+ ],
+ "missing_for_reproduction": [
+  "Observing/array details and noise levels",
+  "Integration velocity limits beyond Table 2 and Gaussian fitting procedure details",
+  "Comparison data from earlier papers"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Simple pipeline-product spectra and clear formulae, but observation setup and fitting details are thin.",
+ "rediscovery_reason": "Data from a project that is likely public, simple recipe, numeric ratios and column densities.",
+ "source_card": "cards/2018A%26A...610A..49L/sonnet/card.md"
+}

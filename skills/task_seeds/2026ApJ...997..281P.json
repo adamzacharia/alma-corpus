@@ -1,0 +1,572 @@
+{
+ "bibcode": "2026ApJ...997..281P",
+ "title": "MINDS. Anatomy of a Water-rich, Inclined, Brown Dwarf Disk: Lack of Abundant Hydrocarbons",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae2793",
+ "arxiv_id": "2504.11424",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What are the inner disk volatile chemical inventory, variability, and dynamical properties (outflowing/infalling activity) of the highly inclined brown dwarf disk 2MASS J04381486+2611399, and why does it lack abundant hydrocarbons compared to other very low-mass star disks?",
+ "alma_project_codes": [
+  "2012.1.00743.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.3''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "System and disk properties of J0438 (distance, spectral type, mass, luminosity, Teff, accretion rate, accretion luminosity, 70 um, 0.89 mm, and 1.3 mm fluxes, inclination, inner and outer disk radii)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "| Distance, $d$ [pc] | $140.26 \\pm 10.38$ | 1, 2 |"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "| 0.89 mm Flux [mJy] | 1.36 $\\pm$ 0.11 | 7 |"
+     }
+    ]
+   },
+   "citation": "(cite: gaia2021; Manara2023; Luhman2004; Muzerolle2005; Xie2023; Bulger2014; Ward-Duong2018; Scholz2006; Luhman2007)"
+  },
+  {
+   "what": {
+    "value": "Line flux ratios and water complex fluxes for comparison samples of late M-type (M7.25-M4.5) and earlier-type (M3-G0) stars",
+    "evidence": [
+     {
+      "loc": "Line fluxes ratios",
+      "quote": "As in (cite: Xie2023), we include the sample of late M-type (M$7.25-$M4.5) stars from (cite: Pascucci2009a; Pascucci2013) and earlier-type (M$3-$G0) stars from (cite: banzatti2020). Additionally, we plot available lower limits from recent JWST-MIRI observations of late M-type stars (cite: Arabhavi2025b)."
+     }
+    ]
+   },
+   "citation": "(cite: Xie2023; Pascucci2009a; Pascucci2013; banzatti2020; Arabhavi2025b)"
+  },
+  {
+   "what": {
+    "value": "Accretion luminosity and millimeter flux compilation for Class II disks",
+    "evidence": [
+     {
+      "loc": "Accretion luminosity and millimeter flux",
+      "quote": "The values for $L_\\mathrm{acc}$ and $F_\\mathrm{mm}$ are taken from the data table of (cite: Manara2023) which collects measurements from several surveys"
+     }
+    ]
+   },
+   "citation": "(cite: Manara2023)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic molecular line parameters from LAMDA and HITRAN databases",
+    "evidence": [
+     {
+      "loc": "Slab modelling",
+      "quote": "Next, we generate synthetic spectra to reproduce the continuum-subtracted spectrum assuming plane-parallel slabs of gas in local thermodynamic equilibrium (LTE) using spectroscopic data from the LAMDA and HITRAN databases (cite: Schoier2005; Gordon2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2005; Gordon2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST-MIRI MRS data and extract 1D spectrum",
+   "method": "Process raw data with JWST Calibration Pipeline and VIP routines using pair-wise dither background subtraction, extract 1D spectra with 1.5-FWHM aperture photometry, apply aperture correction factors, and perform residual fringe correction.",
+   "software": [
+    "JWST Calibration Pipeline",
+    "VIP"
+   ],
+   "key_parameters": [
+    "CRDS context jwst_1253.pmap; 1.5-FWHM aperture"
+   ],
+   "assumptions": [
+    "Source is compact and unresolved for 1D extraction"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Subtract dust continuum from MIRI MRS spectrum",
+   "method": "Estimate dust continuum using a Savitzky-Golay filter with a third-order polynomial via pybaselines, iteratively mask emission lines above 2 sigma, subtract continuum, and mask remaining 3 sigma downward spikes.",
+   "software": [
+    "pybaselines"
+   ],
+   "key_parameters": [
+    "3rd order polynomial Savitzky-Golay filter; 2 sigma emission masking; 3 sigma downward spike masking"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Simultaneous LTE slab modelling and line flux measurement",
+   "method": "Generate 0D LTE synthetic spectra for H2O, CO2, 13CO2, C2H2, HCN, and OH between 13.4 and 18 um using LAMDA and HITRAN data, convolve to R~2500, resample with SpectRes, and fit all six species simultaneously with emcee MCMC. Integrate continuum-subtracted or best-fit synthetic spectra to obtain line fluxes.",
+   "software": [
+    "SpectRes",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Wavelength range 13.4 to 18 um; spectral resolution R ~ 2500; line width FWHM = 4.7 km/s (sigma = 2 km/s)"
+   ],
+   "assumptions": [
+    "Plane-parallel slabs of gas in local thermodynamic equilibrium (LTE); Gaussian line profile with FWHM = 4.7 km/s; d = 140.26 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test effect of disk inclination on hydrocarbon visibility and estimate water iceline",
+   "method": "Run thermochemical disk models varying inclination from 45 deg to 70 deg to measure change in C2H2 peak flux density; calculate water iceline location using Eq. 19 of Liu et al. (2019).",
+   "software": [],
+   "key_parameters": [
+    "Inclination varied from 45 deg to 70 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Analyze extended emission across HST/ACS, JWST-MIRI MRS, and ALMA Band 7",
+   "method": "Sharpen HST/ACS F814W image using 6 iterations of Lucy-Richardson deconvolution with a field star PSF; construct empirical PSF-subtracted moment 0 maps for MIRI MRS lines (H2 and [Ne+]); inspect archival ALMA Band 7 CO (J=3-2) blue- and red-shifted emission lobes and dust continuum map.",
+   "software": [],
+   "key_parameters": [
+    "6 iterations of Lucy-Richardson algorithm for HST; circular apertures of radii 0.5'', 1.0'', 2.5'' and median of 10 surrounding channels (excluding 4 closest) for MIRI PSF subtraction"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H2O excitation temperature",
+   "value": "469",
+   "uncertainty": "+18/-17",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| H$_2$O | 469 $^{+18}_{-17}$ | 18.7 $^{+0.17}_{-0.19}$ | 0.07 $^{+0.01}_{-0.01}$ | $1.7 \\times 10^{43}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density log10(N)",
+   "value": "18.7",
+   "uncertainty": "+0.17/-0.19",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| H$_2$O | 469 $^{+18}_{-17}$ | 18.7 $^{+0.17}_{-0.19}$ | 0.07 $^{+0.01}_{-0.01}$ | $1.7 \\times 10^{43}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O equivalent emitting radius R",
+   "value": "0.07",
+   "uncertainty": "+0.01/-0.01",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| H$_2$O | 469 $^{+18}_{-17}$ | 18.7 $^{+0.17}_{-0.19}$ | 0.07 $^{+0.01}_{-0.01}$ | $1.7 \\times 10^{43}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O total number of molecules",
+   "value": "1.7e43",
+   "uncertainty": "not stated",
+   "units": "molec.",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| H$_2$O | 469 $^{+18}_{-17}$ | 18.7 $^{+0.17}_{-0.19}$ | 0.07 $^{+0.01}_{-0.01}$ | $1.7 \\times 10^{43}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO2 excitation temperature",
+   "value": "534",
+   "uncertainty": "+138/-105",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| CO$_2$ | 534 $^{+138}_{-105}$ | $>$16.9 | 0.03 $^{+0.04}_{-0.01}$ | $>5.0 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO2 column density log10(N)",
+   "value": ">16.9",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| CO$_2$ | 534 $^{+138}_{-105}$ | $>$16.9 | 0.03 $^{+0.04}_{-0.01}$ | $>5.0 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO2 equivalent emitting radius R",
+   "value": "0.03",
+   "uncertainty": "+0.04/-0.01",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| CO$_2$ | 534 $^{+138}_{-105}$ | $>$16.9 | 0.03 $^{+0.04}_{-0.01}$ | $>5.0 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H2 excitation temperature",
+   "value": "684",
+   "uncertainty": "+276/-179",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| C$_2$H$_2$ | 684 $^{+276}_{-179}$ | 13.3 $^{+0.83}_{-0.29}$ | 0.92 $^{+0.41}_{-0.57}$ | $1.2 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H2 column density log10(N)",
+   "value": "13.3",
+   "uncertainty": "+0.83/-0.29",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| C$_2$H$_2$ | 684 $^{+276}_{-179}$ | 13.3 $^{+0.83}_{-0.29}$ | 0.92 $^{+0.41}_{-0.57}$ | $1.2 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H2 equivalent emitting radius R",
+   "value": "0.92",
+   "uncertainty": "+0.41/-0.57",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| C$_2$H$_2$ | 684 $^{+276}_{-179}$ | 13.3 $^{+0.83}_{-0.29}$ | 0.92 $^{+0.41}_{-0.57}$ | $1.2 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN excitation temperature",
+   "value": "694",
+   "uncertainty": "+110/-91",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| HCN | 694 $^{+110}_{-91}$ | 15.6 $^{+0.79}_{-0.40}$ | 0.13 $^{+0.07}_{-0.08}$ | $4.7 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN column density log10(N)",
+   "value": "15.6",
+   "uncertainty": "+0.79/-0.40",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| HCN | 694 $^{+110}_{-91}$ | 15.6 $^{+0.79}_{-0.40}$ | 0.13 $^{+0.07}_{-0.08}$ | $4.7 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN equivalent emitting radius R",
+   "value": "0.13",
+   "uncertainty": "+0.07/-0.08",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections",
+     "quote": "| HCN | 694 $^{+110}_{-91}$ | 15.6 $^{+0.79}_{-0.40}$ | 0.13 $^{+0.07}_{-0.08}$ | $4.7 \\times 10^{40}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[Ar+] integrated flux (6.98-6.99 um)",
+   "value": "1.02",
+   "uncertainty": "± 0.10",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| [Ar$^{+}$] | 6.98$-$6.99 | $1.02\\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[Ne+] integrated flux (12.80-12.82 um)",
+   "value": "5.48",
+   "uncertainty": "± 0.07",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| [Ne$^{+}$] | 12.80$-$12.82 | $5.48 \\pm 0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 (0,0) S(1) integrated flux (17.02-17.04 um)",
+   "value": "1.35",
+   "uncertainty": "± 0.03",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$ (0,0) $S$(1) | 17.02$-$17.04 | $1.35 \\pm 0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 (0,0) S(2) integrated flux (12.27-12.28 um)",
+   "value": "2.30",
+   "uncertainty": "± 0.06",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$ (0,0) $S$(2) | 12.27$-$12.28 | $2.30 \\pm 0.06$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 (0,0) S(3) integrated flux (9.66-9.67 um)",
+   "value": "3.45",
+   "uncertainty": "± 0.03",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$ (0,0) $S$(3) | 9.66$-$9.67 | $3.45 \\pm 0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 (0,0) S(4) integrated flux (8.02-8.03 um)",
+   "value": "1.24",
+   "uncertainty": "± 0.08",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$ (0,0) $S$(4) | 8.02$-$8.03 | $1.24 \\pm 0.08$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 (0,0) S(5) integrated flux (6.90-6.91 um)",
+   "value": "1.75",
+   "uncertainty": "± 0.07",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$ (0,0) $S$(5) | 6.90$-$6.91 | $1.75 \\pm 0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O integrated flux (17.19-17.25 um)",
+   "value": "3.26",
+   "uncertainty": "± 0.05",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$O$^a$ | 17.19$-$17.25 | $3.26 \\pm 0.05$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O integrated flux (18.13-18.23 um)",
+   "value": "3.24",
+   "uncertainty": "± 0.10",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| H$_2$O | 18.13$-$18.23 | $3.24 \\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H2 integrated flux (13.55-13.76 um)",
+   "value": "8.40",
+   "uncertainty": "± 0.22",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| C$_2$H$_2$$^b$ | 13.55$-$13.76 | $8.40 \\pm 0.22$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN integrated flux (13.83-14.07 um)",
+   "value": "12.76",
+   "uncertainty": "± 0.14",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| HCN$^b$ | 13.83$-$14.07 | $12.76 \\pm 0.14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO2 integrated flux (14.83-15.01 um)",
+   "value": "6.72",
+   "uncertainty": "± 0.19",
+   "units": "10^-16 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Slab modelling",
+     "quote": "| CO$_2$$^b$ | 14.83$-$15.01 | $6.72 \\pm 0.19$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated water iceline radius",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Sub-structures",
+     "quote": "According to the formalism presented in (cite: Liu_Beibei_2019) (Eq. 19), we estimate the water iceline to lie at approximately $0.02~$au in the J0438 system (Fig. 5)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA CO (J=3-2) red-shifted NE lobe spatial extent",
+   "value": "280",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio",
+     "quote": "The red-shifted NE lobe extends up to approximately 280 au whereas the blue-shifted emission spans up to $420~$au."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA CO (J=3-2) blue-shifted emission spatial extent",
+   "value": "420",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio",
+     "quote": "The red-shifted NE lobe extends up to approximately 280 au whereas the blue-shifted emission spans up to $420~$au."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA CO (J=3-2) velocity dispersion",
+   "value": "± 2",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio",
+     "quote": "revealed spatially extended CO ($J=3-2$) emission with a velocity dispersion of approximately $\\pm 2~$km s$^{-1}$ from the brown dwarf."
+    }
+   ]
+  },
+  {
+   "quantity": "HST/ACS candidate point source offset East",
+   "value": "0.49",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio",
+     "quote": "The point source is located 0.49$''$ east and 0.86$''$ south from J0438 and it is $6.6\\pm 0.2~$mag fainter than the central object ($25.6~$mag vs $19~$mag at $0.8\\,\\mu$m)."
+    }
+   ]
+  },
+  {
+   "quantity": "HST/ACS candidate point source offset South",
+   "value": "0.86",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio",
+     "quote": "The point source is located 0.49$''$ east and 0.86$''$ south from J0438 and it is $6.6\\pm 0.2~$mag fainter than the central object ($25.6~$mag vs $19~$mag at $0.8\\,\\mu$m)."
+    }
+   ]
+  },
+  {
+   "quantity": "HST/ACS candidate point source magnitude difference at 0.8 um",
+   "value": "6.6",
+   "uncertainty": "± 0.2",
+   "units": "mag",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radio",
+     "quote": "The point source is located 0.49$''$ east and 0.86$''$ south from J0438 and it is $6.6\\pm 0.2~$mag fainter than the central object ($25.6~$mag vs $19~$mag at $0.8\\,\\mu$m)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA CASA version, calibration details, and imaging parameters (tclean weighting/robust, channel width, velocity integration ranges for the blue- and red-shifted CO (J=3-2) moment maps, and continuum subtraction details), which are deferred to Ward-Duong et al. (2018), Pinilla et al. (2017), and Kurtovic et al. (2021)",
+  "Exact prior ranges for T, log10(N), and R in the emcee simultaneous 6-species LTE slab fitting",
+  "Exact Savitzky-Golay filter window size in the pybaselines continuum subtraction"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA CO (J=3-2) velocity integration ranges, channel spacing, and rms noise used to generate Figure 6",
+  "Exact parameter prior bounds for the 6-species simultaneous emcee LTE slab fit",
+  "Details of the Kurtovic et al. (in prep.) empirical PSF subtraction algorithm beyond the brief summary"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "JWST-MIRI MRS data reduction and LTE slab fitting are well documented with software versions and public pipeline citations, and quantitative line fluxes and slab parameters are tabulated; however, ALMA data processing/imaging details and velocity integration ranges are omitted (deferred to earlier literature) and the MIRI extended emission PSF subtraction references an in-prep paper.",
+ "rediscovery_reason": "Public archival JWST-MIRI MRS and ALMA Band 7 data with clear quantitative answer keys (tabulated molecular line fluxes and LTE slab parameters T, N, R).",
+ "source_card": "cards/2026ApJ...997..281P/sonnet/card.md"
+}

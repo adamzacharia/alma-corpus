@@ -1,0 +1,396 @@
+{
+ "bibcode": "2025AJ....170..319I",
+ "title": "An Improved Upper Limit of Cyanodiacetylene (HC<SUB>5</SUB>N) in the Atmosphere of Titan",
+ "year": 2025,
+ "doi": "10.3847/1538-3881/ae0621",
+ "arxiv_id": null,
+ "fields": [
+  "solar_system",
+  "astrochemistry"
+ ],
+ "question": "Search for cyanodiacetylene (HC5N) in Titan's atmosphere using ALMA archival data and constrain its abundance and photochemical models.",
+ "alma_project_codes": [
+  "2019.1.00783.S"
+ ],
+ "data": {
+  "bands": "Band 6 (215–275 GHz or 1.1–1.4 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "achievable 1.5 arcsec; individual beams 1.11 x 0.84 to 1.36 x 0.92 arcsec",
+  "sensitivity": "21 mK (J = 96-95), 23 mK (J = 99-98), 15 mK (~0.9 mJy/beam) stacked"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Atmospheric temperature profile of Titan inferred from ALMA observations",
+    "evidence": [
+     {
+      "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+      "quote": "For the atmospheric model, we used an atmospheric temperature profile inferred from recent ALMA observations by A. E. Thelen et al. (2018)."
+     }
+    ]
+   },
+   "citation": "A. E. Thelen et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Spectral parameters for HC5N from the Cologne Database for Molecular Spectroscopy (CDMS)",
+    "evidence": [
+     {
+      "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+      "quote": "The spectral parameters for HC 5 N used in the analysis are from the Cologne Database for Molecular Spectroscopy (H. S. P. Müller et al. 2001)."
+     }
+    ]
+   },
+   "citation": "H. S. P. Müller et al. (2001)"
+  },
+  {
+   "what": {
+    "value": "Collision Induced Absorption spectra of N2–N2, N2–CH4 and CH4–CH4 from HITRAN 2016 database",
+    "evidence": [
+     {
+      "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+      "quote": "To reproduce the baseline emission, the Collision Induced Absorption spectra of N 2 –N 2, N 2 –CH 4 and CH 4 –CH 4 provided by the HITRAN 2016 database (H. M. Picket et al. 1998) was applied."
+     }
+    ]
+   },
+   "citation": "H. M. Picket et al. (1998)"
+  },
+  {
+   "what": {
+    "value": "A priori HC5N vertical abundance profiles",
+    "evidence": [
+     {
+      "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+      "quote": "As the a priori HC 5 N vertical distribution, we used profiles predicted by the previous studies: E. Lellouch et al. (2010b), J. C. Loison et al. (2015), V. Vuitton et al. (2019) and V. A. Krasnopolsky (2009)."
+     }
+    ]
+   },
+   "citation": "E. Lellouch et al. (2010b), J. C. Loison et al. (2015), V. Vuitton et al. (2019), V. A. Krasnopolsky (2009)"
+  },
+  {
+   "what": {
+    "value": "HC3N column density above 60 km (2.3 x 10^14 molecules cm^-2)",
+    "evidence": [
+     {
+      "loc": "3. Discussion",
+      "quote": "A previous ALMA observation (M. A. Cordiner et al. 2014) measured HC 3 N column density above 60 km as 2.3 × 10 14 molecules cm –2 ."
+     }
+    ]
+   },
+   "citation": "M. A. Cordiner et al. (2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities, separate continuum, and image spectral cubes at common resolution",
+   "method": "Calibrate six archival datasets using standard JAO calibration scripts in CASA, separate continuum and line emission prior to CLEAN, CLEAN all cubes with a common 1.36 arcsec circular restoring beam, and smooth the J = 99-98 cubes from 244 kHz to 488 kHz spectral resolution.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Synthesized beam = 1.36 arcsec circular",
+    "Spectral resolution = 488 kHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract disk-averaged spectra and stack transitions",
+   "method": "Extract disk-averaged spectra from the disk center position determined from the continuum emission map, integrate the six spectra by transition (two for J=96-95, four for J=99-98), and combine the two transitions using noise-weighted averaging based on rms measured in line-absent spectral regions.",
+   "software": [],
+   "key_parameters": [
+    "Titan apparent disk size = 0.65 arcsec",
+    "Noise weights from line-free rms: 21 mK (J=96-95) and 23 mK (J=99-98)"
+   ],
+   "assumptions": [
+    "No temporal variation of HC5N abundance during the 14-day observation period"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Radiative transfer modeling and derivation of HC5N upper limits and [HC5N]/[HC3N] ratios",
+   "method": "Calculate synthetic spectra for J = 96-95 and J = 99-98 separately using the Planetary Spectrum Generator (PSG) for four literature a priori vertical abundance profiles and a two-layer model, co-add with the same weighting as observations, and scale each profile by a multiplication factor so that the synthesized peak emission equals 3 times the observed line-free rms noise.",
+   "software": [
+    "Planetary Spectrum Generator (PSG)"
+   ],
+   "key_parameters": [
+    "600 altitude layers from 0 to 1200 km with 2 km step"
+   ],
+   "assumptions": [
+    "Pressure broadening coefficient = 0.07 cm^-1 atm^-1 with power-law temperature dependence of 0.05",
+    "Atmospheric temperature profile from Thelen et al. (2018), extrapolated above ~10^-6 bar",
+    "Collision Induced Absorption of N2-N2, N2-CH4, and CH4-CH4 from HITRAN 2016"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "RMS noise level (J = 96-95 stacked spectrum)",
+   "value": "21",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1. Imaging and Spectral Stacking",
+     "quote": "Integration of two HC 5 N transitions was performed using the weighted averaging method according to the noise level measured in the line-absent spectral area of the data sets as 21 and 23 mK for J = 96–95 and J = 99–98 data, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS noise level (J = 99-98 stacked spectrum)",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1. Imaging and Spectral Stacking",
+     "quote": "Integration of two HC 5 N transitions was performed using the weighted averaging method according to the noise level measured in the line-absent spectral area of the data sets as 21 and 23 mK for J = 96–95 and J = 99–98 data, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS noise level (combined J = 96-95 and J = 99-98 stacked spectrum, brightness temperature)",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1. Imaging and Spectral Stacking",
+     "quote": "The achieved noise level was measured to be as low as 15 mK in the brightness temperature scale, ∼0.9 mJy beam –1 in the flux density scale."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS noise level (combined J = 96-95 and J = 99-98 stacked spectrum, flux density)",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1. Imaging and Spectral Stacking",
+     "quote": "The achieved noise level was measured to be as low as 15 mK in the brightness temperature scale, ∼0.9 mJy beam –1 in the flux density scale."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit multiplication factor (Lellouch et al. 2010b profile)",
+   "value": "0.074",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The derived best-fit multiplication factors and corresponding column densities for E. Lellouch et al. (2010b) and V. A. Krasnopolsky (2009) were 0.074 (2.3 × 10 13 molecules cm –2 ) and 0.00025 (0.90 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density (Lellouch et al. 2010b profile)",
+   "value": "2.3e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The derived best-fit multiplication factors and corresponding column densities for E. Lellouch et al. (2010b) and V. A. Krasnopolsky (2009) were 0.074 (2.3 × 10 13 molecules cm –2 ) and 0.00025 (0.90 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit multiplication factor (Krasnopolsky 2009 profile)",
+   "value": "0.00025",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The derived best-fit multiplication factors and corresponding column densities for E. Lellouch et al. (2010b) and V. A. Krasnopolsky (2009) were 0.074 (2.3 × 10 13 molecules cm –2 ) and 0.00025 (0.90 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density (Krasnopolsky 2009 profile, total)",
+   "value": "0.90e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The derived best-fit multiplication factors and corresponding column densities for E. Lellouch et al. (2010b) and V. A. Krasnopolsky (2009) were 0.074 (2.3 × 10 13 molecules cm –2 ) and 0.00025 (0.90 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density (Krasnopolsky 2009 profile, above 60 km)",
+   "value": "0.3e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. Discussion",
+     "quote": "Similarly, HC 5 N column density and [HC 5 N]/[HC 3 N] from V. A. Krasnopolsky (2009) changes to 0.3 × 10 13 molecules cm –2 and 0.012, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit multiplication factor (Vuitton et al. 2019 profile)",
+   "value": "5.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The corresponding best-fit multiplication factors and column densities were derived for V. Vuitton et al. (2019) and J. C. Loison et al. (2015) as 5.1 (46.0 × 10 13 molecules cm –2 ), 21.6 (3.9 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density (Vuitton et al. 2019 profile, total)",
+   "value": "46.0e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The corresponding best-fit multiplication factors and column densities were derived for V. Vuitton et al. (2019) and J. C. Loison et al. (2015) as 5.1 (46.0 × 10 13 molecules cm –2 ), 21.6 (3.9 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density (Vuitton et al. 2019 profile, above 60 km)",
+   "value": "10.0e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. Discussion",
+     "quote": "For the case of V. Vuitton et al. (2019), by considering the HC 5 N abundance only above 60 km, where HC 3 N is present (M. A. Cordiner et al. 2014), the [HC 5 N]/[HC 3 N] ratio is newly derived as <0.43. The corresponding column density is 10.0 × 10 13 molecules cm –2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit multiplication factor (Loison et al. 2015 profile)",
+   "value": "21.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The corresponding best-fit multiplication factors and column densities were derived for V. Vuitton et al. (2019) and J. C. Loison et al. (2015) as 5.1 (46.0 × 10 13 molecules cm –2 ), 21.6 (3.9 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density (Loison et al. 2015 profile)",
+   "value": "3.9e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2. Radiative Transfer Modeling of HC 5 N",
+     "quote": "The corresponding best-fit multiplication factors and column densities were derived for V. Vuitton et al. (2019) and J. C. Loison et al. (2015) as 5.1 (46.0 × 10 13 molecules cm –2 ), 21.6 (3.9 × 10 13 molecules cm –2 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit HC5N column density above ~60 km (range across models)",
+   "value": "0.3–10e13",
+   "uncertainty": "not stated",
+   "units": "molecules cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Using the Planetary Spectrum Generator for radiative transfer modeling and employing the previously predicted vertical distribution proposed by V. Vuitton et al., E. Lellouch et al., J. C. Loison et al., and V. A. Krasnopolsky, we derived the upper limit column density of HC 5 N, corresponding to 3 σ noise level, to be 0.3–10 × 10 13 molecules cm –2 above ∼60 km altitude (depending on the assumed vertical profile)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit [HC5N]/[HC3N] ratio (models other than Vuitton et al. 2019)",
+   "value": "0.04–0.17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. Discussion",
+     "quote": "Using models other than those of V. Vuitton et al. (2019), we obtained a lower upper limit for the [HC 5 N]/[HC 3 N] ratio, with a value of 0.04–0.17, which is lower than that found in protostellar objects."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit [HC5N]/[HC3N] ratio above 60 km (Vuitton et al. 2019 profile)",
+   "value": "<0.43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. Discussion",
+     "quote": "For the case of V. Vuitton et al. (2019), by considering the HC 5 N abundance only above 60 km, where HC 3 N is present (M. A. Cordiner et al. 2014), the [HC 5 N]/[HC 3 N] ratio is newly derived as <0.43."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit [HC5N]/[HC3N] ratio above 60 km (Krasnopolsky 2009 profile)",
+   "value": "0.012",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. Discussion",
+     "quote": "Similarly, HC 5 N column density and [HC 5 N]/[HC 3 N] from V. A. Krasnopolsky (2009) changes to 0.3 × 10 13 molecules cm –2 and 0.012, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "HC5N volume mixing ratio upper limit (two-layer model)",
+   "value": "5.2e-11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. Discussion",
+     "quote": "For comparison with their result, we have used a similar kind of the vertical profile (twolayer model) and obtained the upper limit as 13% of A. Marten et al. (2002)."
+    },
+    {
+     "loc": "4. Conclusion",
+     "quote": "Our abundance upper limit of 5.2 × 10 −11 above 60 km is 8 times lower than the previously published upper limit for this species, which demonstrates the power of ALMA for searching for new molecules on Titan."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "CLEAN parameters (weighting/robust, cell size, image size, stopping threshold, masking)",
+  "UV continuum subtraction task (e.g. uvcontsub), polynomial order, and exact line-free frequency ranges used",
+  "Exact frequency ranges used to measure the line-free RMS noise in the spectra",
+  "Method used to align frequencies to Titan rest frame (ephemeris tracking or post-imaging Doppler correction)",
+  "Exact functional form or values of the extrapolated temperature profile above ~10^-6 bar"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (cell size, weighting/robust, threshold, masking) and uvcontsub line-free channel definitions",
+  "Digitized tables or PSG configuration files for the four a priori vertical abundance profiles and the extrapolated temperature profile"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Archival ALMA project code, observing dates, transitions, target restoring beam (1.36 arcsec), target spectral resolution (488 kHz), extraction aperture (center pixel of continuum peak), noise weights, and radiative transfer tool (PSG) with spectroscopic parameters are clearly specified. Minor deductions for missing tclean/uvcontsub parameters and lack of machine-readable PSG input profiles.",
+ "rediscovery_reason": "Public archival ALMA dataset (2019.1.00783.S) with a straightforward stacking and PSG radiative transfer recipe yielding clear numeric upper limits on noise (15 mK) and column density.",
+ "source_card": "cards/2025AJ....170..319I/sonnet/card.md"
+}

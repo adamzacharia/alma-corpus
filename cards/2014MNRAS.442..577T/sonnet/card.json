@@ -1,0 +1,801 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014MNRAS.442..577T",
+  "title": "An ALMA survey of submillimetre galaxies in the Extended Chandra Deep Field South: radio properties and the far-infrared/radio correlation",
+  "year": 2014,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Thomson, A. P.",
+  "n_authors": 21,
+  "arxiv_id": "1404.7128",
+  "doi": "10.1093/mnras/stu839",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00294.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 ALMA 870-µm observations",
+    "quote": "These observations were presented in Hodge et al. (2013), in which detailed descriptions of the data reduction and imaging are given."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "ALESS SMGs in the ECDFS (76-source full sample)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "photometric redshifts, median <z_phot> = 2.57 for the stack 1 subset; individual values in Table 3",
+      "evidence": [
+       {
+        "loc": "2.5 Final sample",
+        "quote": "we restrict our analysis to the 76 ALMA 870 µm-detected SMGs with measured z phot"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Simpson et al. (2013)",
+      "evidence": [
+       {
+        "loc": "2.5 Final sample",
+        "quote": "we restrict our analysis to the 76 ALMA 870 µm-detected SMGs with measured z phot"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the radio spectral indices and far-infrared/radio correlation (q_IR) of ALMA-identified 870 µm SMGs in the ECDFS, and do q_IR and alpha evolve with age as starburst models predict?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We present a study of the radio properties of 870 µm-selected submillimetre galaxies (SMGs), observed at high resolution with ALMA in the Extended Chandra Deep Field South."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00294.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00294.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (870 µm)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870-µm observations",
+      "quote": "with ALMA’s Band 7 receivers (870-µm) in Cycle 0"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "typical synthesized beam ~1.6 x 1.2 arcsec",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870-µm observations",
+      "quote": "we achieve a typical synthesized beam of ∼ 1.6 × 1.2 [′′]"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "typical RMS ~0.4 mJy/beam",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870-µm observations",
+      "quote": "reach a typical RMS sensitivity of σ ∼ 0.4 mJy beam [−][1]"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~120 s per source",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870-µm observations",
+      "quote": "with on-source integration times of ∼ 120 s per source"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2011 October 18 – November 3",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870-µm observations",
+      "quote": "between 2011 October 18 – November 3"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLA 1.4 GHz",
+     "provided": {
+      "value": "Public ECDFS DR2 map, RMS 6 µJy/beam, 2.8x1.6 arcsec resolution",
+      "evidence": [
+       {
+        "loc": "2.3 VLA 1.4-GHz observations",
+        "quote": "reaches an RMS sensitivity at the centre of the field of 6 µJy beam [−][1]."
+       }
+      ]
+     }
+    },
+    {
+     "name": "GMRT 610 MHz",
+     "provided": {
+      "value": "New 610 MHz mosaic, RMS 45 µJy/beam, beam 4.4x3.0 arcsec",
+      "evidence": [
+       {
+        "loc": "2.2 GMRT 610-MHz observations",
+        "quote": "reaches an RMS sensitivity of 45 µJy beam [−][1] over 70 [′] × 70 [′]"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel SPIRE",
+     "provided": {
+      "value": "250-500 µm photometry used by Swinbank et al. for far-IR luminosities",
+      "evidence": [
+       {
+        "loc": "2.4 Optical–far-IR data and photometric redshifts",
+        "quote": "Swinbank et al. (2014) fit the deblended 250–500 µm _Her-_ _schel_ SPIRE photometry"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Photometric redshifts for the ALESS SMGs",
+      "evidence": [
+       {
+        "loc": "2.4 Optical–far-IR data and photometric redshifts",
+        "quote": "Simpson et al. (2013) derived photometric redshifts (z phot ) for the ALESS SMGs"
+       }
+      ]
+     },
+     "citation": "Simpson et al. (2013)"
+    },
+    {
+     "what": {
+      "value": "Far-IR luminosities, dust temperatures, SFR, dust and stellar masses",
+      "evidence": [
+       {
+        "loc": "2.4 Optical–far-IR data and photometric redshifts",
+        "quote": "Full details of the deblending process, and of the derived far-IR properties of each ALESS SMG are presented in Swinbank et al. (2014)."
+       }
+      ]
+     },
+     "citation": "Swinbank et al. (2014)"
+    },
+    {
+     "what": {
+      "value": "VLA 1.4 GHz ECDFS DR2 map",
+      "evidence": [
+       {
+        "loc": "2.3 VLA 1.4-GHz observations",
+        "quote": "We rely on data from the VLA 1.4-GHz Survey of the ECDFS DR2 (Miller et al. 2013)"
+       }
+      ]
+     },
+     "citation": "Miller et al. (2013)"
+    },
+    {
+     "what": {
+      "value": "Starburst evolutionary model tracks of alpha vs q_IR",
+      "evidence": [
+       {
+        "loc": "4.4 Trends in α and q IR in high-redshift ULIRGs",
+        "quote": "Bressan et al. (2002) provide model tracks of α and q IR for evolving starburst galaxies"
+       }
+      ]
+     },
+     "citation": "Bressan et al. (2002)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "GMRT data reduced with AIPS; ALMA reduction described in Hodge et al. (2013)",
+     "evidence": [
+      {
+       "loc": "2.2 GMRT 610-MHz observations",
+       "quote": "Data reduction was accomplished using AIPS."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "ALMA: natural weighting; GMRT: Briggs ROBUST = 0",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870-µm observations",
+       "quote": "using CLEAN with natural weighting"
+      },
+      {
+       "loc": "2.2 GMRT 610-MHz observations",
+       "quote": "with Briggs weighting ( RMODE = ‘norm’, ROBUST = 0)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "ALMA ~1.6x1.2 arcsec",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870-µm observations",
+       "quote": "typical synthesized beam of ∼ 1.6 × 1.2 [′′]"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA data reduction and imaging",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA 870-µm observations",
+        "quote": "in which detailed descriptions of the data reduction and imaging are given."
+       }
+      ]
+     },
+     "from_reference": "Hodge et al. (2013)"
+    },
+    {
+     "what": {
+      "value": "Bandwidth smearing map technique",
+      "evidence": [
+       {
+        "loc": "2.3 VLA 1.4-GHz observations",
+        "quote": "follow the technique of Arumugam et al. (2014, _in prep_ ) to create a map of BWS as a function of position"
+       }
+      ]
+     },
+     "from_reference": "Arumugam et al. (2014, in prep)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA reduction details (CASA version, calibrators) only in Hodge et al. 2013",
+    "Bandwidth smearing technique unpublished (Arumugam in prep)",
+    "Stacking implementation and bootstrap details",
+    "Exact rest-frame K-correction and q_IR calculation procedure for upper limits",
+    "Mock catalogue generation details for selection boundary",
+    "Age-bin assignment from Bressan tracks"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "measure radio flux densities",
+    "method": {
+     "value": "Peak pixel within 2 arcsec aperture at each ALMA position, with bandwidth-smearing correction; BLSUM in AIPS for extended sources; 3σ limits for non-detections",
+     "evidence": [
+      {
+       "loc": "3 ANALYSIS AND RESULTS",
+       "quote": "we measure the radio flux densities of these sources by taking the peak pixel value in each map within a 2arcsec aperture centred on each ALMA ID"
+      }
+     ]
+    },
+    "software": [
+     "AIPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "stack non-detections",
+    "method": {
+     "value": "Bootstrap median stacking of both maps at positions of undetected SMGs",
+     "evidence": [
+      {
+       "loc": "3 ANALYSIS AND RESULTS",
+       "quote": "we measure bootstrap median flux densities of S 1.4GHz = 10 ± 1 µJy and S 610MHz = 38 ± 5 µJy"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "derive spectral indices and q_IR",
+    "method": {
+     "value": "Power law S ∝ ν^α between 610 MHz and 1.4 GHz; K-correct VLA flux to rest-frame 1.4 GHz; q_IR from L_IR (Swinbank) and L_1.4GHz",
+     "evidence": [
+      {
+       "loc": "3.1 Radio spectral index measurement",
+       "quote": "which we assume to follow a simple power law, S ν ∝ ν [α]"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Cosmology H0 = 71, Ωm = 0.27, ΩΛ = 0.73",
+      "evidence": [
+       {
+        "loc": "1 INTRODUCTION",
+        "quote": "we use a cosmology with H 0 = 71 km s [−][1] Mpc [−][1], Ω m = 0.27, and Ω Λ = 0.73"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Fit q_IR ∝ (1+z)^γ",
+     "evidence": [
+      {
+       "loc": "4.2 Far-infrared/radio correlation",
+       "quote": "we fit q IR ∝ (1 + z) [γ], where γ = −0.15±0.17"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "test selection effects and compare with starburst tracks",
+    "method": {
+     "value": "500,000 mock galaxies with L_IR, α, q_IR drawn from the data and random z in 1.5-3.5; observability thresholds; compare with Bressan tracks in three age groups",
+     "evidence": [
+      {
+       "loc": "4.4 Trends in α and q IR in high-redshift ULIRGs",
+       "quote": "generating a catalogue of 500,000 mock galaxies with L IR, α and q IR drawn randomly from the data, with random redshifts in the range 1.5 < z < 3.5"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mock-catalogue selection boundary check",
+     "evidence": [
+      {
+       "loc": "4.4 Trends in α and q IR in high-redshift ULIRGs",
+       "quote": "We see no evidence of a selection boundary within the plot range affecting our ability to detect steep spectrum SMGs with low q IR ."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "GMRT data reduction and BLSUM flux measurements",
+     "evidence": [
+      {
+       "loc": "2.2 GMRT 610-MHz observations",
+       "quote": "Data reduction was accomplished using AIPS."
+      }
+     ]
+    }
+   },
+   {
+    "name": "HYPERZ",
+    "version": "not stated",
+    "used_for": {
+     "value": "photometric redshifts (by Simpson et al. 2013)",
+     "evidence": [
+      {
+       "loc": "2.4 Optical–far-IR data and photometric redshifts",
+       "quote": "Using the HYPERZ code of Bolzonella et al. (2000)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median spectral index alpha (610 MHz-1.4 GHz), 52 VLA-detected SMGs",
+    "value": "-0.79",
+    "uncertainty": "0.06",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Radio spectral index measurement",
+      "quote": "we measure a median spectral index of α all = −0.79 ± 0.06"
+     }
+    ]
+   },
+   {
+    "quantity": "Median q_IR, full sample",
+    "value": "2.56",
+    "uncertainty": "0.05",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Far-infrared/radio correlation",
+      "quote": "we measure a median q IR = 2.56 ± 0.05 for our full sample of SMGs"
+     }
+    ]
+   },
+   {
+    "quantity": "Median q_IR, VLA-detected",
+    "value": "2.58",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Far-infrared/radio correlation",
+      "quote": "Restricting our analysis to the 52 SMGs detected at the VLA gives q IR = 2.58 ± 0.07."
+     }
+    ]
+   },
+   {
+    "quantity": "Evolution index gamma of q_IR ∝ (1+z)^γ",
+    "value": "-0.15",
+    "uncertainty": "0.17",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Far-infrared/radio correlation",
+      "quote": "where γ = −0.15±0.17"
+     }
+    ]
+   },
+   {
+    "quantity": "Stack 1 spectral index",
+    "value": "-1.57",
+    "uncertainty": "0.08",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Radio spectral index measurement",
+      "quote": "we measure α stack = −1.57 ± 0.08"
+     }
+    ]
+   },
+   {
+    "quantity": "Stack 2 spectral index",
+    "value": "-0.29",
+    "uncertainty": "0.08",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Radio spectral index measurement",
+      "quote": "we measure α stack = −0.29 ± 0.08"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No ALMA-blank LABOCA fields show evidence of missed luminous SMGs; they likely reflect multiplicity or extended emission",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA-blank maps",
+      "quote": "we conclude that there is no reason to believe our ALMA source extraction process has missed a significant number of _bona-fide_ luminous z ∼ 2 SMGs."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "ALMA-identified SMGs have higher q_IR than single-dish selected samples because they are not radio-biased",
+    "experiment": "Measure q_IR with individual K-corrections for 76 ALMA SMGs",
+    "result": "median q_IR = 2.56 ± 0.05 vs ~2.4 previously",
+    "finding": "Higher q_IR consistent with removing radio-bias in counterpart identification",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "which may reflect the fact that our ALMA-based study is not biased to radio-bright counterparts, as previous samples were"
+     }
+    ]
+   },
+   {
+    "hypothesis": "q_IR evolves with redshift",
+    "experiment": "Fit q_IR ∝ (1+z)^γ",
+    "result": "γ = -0.15 ± 0.17",
+    "finding": "No compelling evidence for evolution",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "4.2 Far-infrared/radio correlation",
+      "quote": "We search for evolution in q IR, but find no compelling evidence for any such evolution"
+     }
+    ]
+   },
+   {
+    "hypothesis": "alpha and q_IR evolve with starburst age as in Bressan models",
+    "experiment": "Segregate SMGs into age groups along model tracks and compare M* and Mdust",
+    "result": "weak correlations of M* and Mdust with age",
+    "finding": "Tentative support for the models",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5 CONCLUSIONS",
+      "quote": "there is tentative evidence of a correlation between progress along the evolutionary track and both M ⋆ and M dust ."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALMA gives precise positions so radio counterparts are identified without statistical association",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "The ALMA observations allow us to obtain precise positions for a sample of SMGs"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small number of SMGs per age bin makes correlations weak; upper-limit spectral indices boost L1.4GHz and lower q_IR",
+     "evidence": [
+      {
+       "loc": "4.4 Trends in α and q IR in high-redshift ULIRGs",
+       "quote": "These correlations are weak due to the small number of SMGs in each “age” bin"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Photometric redshifts have large uncertainties that propagate into K-corrections and q_IR",
+    "Spectral index limits from 3σ GMRT limits bias results",
+    "Age-bin correlations are low significance",
+    "Median alpha is for the detected subset, which is biased"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "All ALMA, Herschel, VLA and Spitzer data available through public archives",
+    "evidence": [
+     {
+      "loc": "ACKNOWLEDGMENTS",
+      "quote": "All of the ALMA, Herschel, VLA and _Spitzer_ data employed in this analysis are available through the ESO, _Her-_ _schel_, VLA and _Spitzer_ archives."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "GMRT 610 MHz map not stated to be public",
+    "Bandwidth smearing method unpublished",
+    "Derived L_IR, z_phot taken from Swinbank 2014 and Simpson 2013"
+   ],
+   "estimated_data_volume_inferred": "Radio map analysis dominates; ALMA maps from the earlier release are small (~tens of GB raw)",
+   "score_inferred": 3,
+   "score_reason": "Simple measurements and Table 3 values enable checks, but the GMRT map and upstream catalogs are needed and ALMA plays only a minor role.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The GMRT map is not stated as public and the inputs depend on other papers' catalogs; ALMA is used only for positions."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Hodge et al. (2013)",
+     "why": "ALMA data reduction and source extraction"
+    },
+    {
+     "citation": "Arumugam et al. (2014, in prep)",
+     "why": "Bandwidth smearing correction"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Simpson et al. (2013)",
+     "why": "Photometric redshifts"
+    },
+    {
+     "citation": "Swinbank et al. (2014)",
+     "why": "Far-IR properties"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALESS",
+    "LESS",
+    "ECDFS",
+    "HerMES"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-448557f0de12fd7dfb81d6b6654fb3bb",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:24",
+  "usage": {
+   "input_tokens": 30393,
+   "output_tokens": 6584,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.06392,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 45,
+  "quotes_ok": 45,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 33,
+   "rate": 0.478
+  },
+  "evidence_ok": true
+ }
+}

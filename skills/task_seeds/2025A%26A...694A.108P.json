@@ -1,0 +1,392 @@
+{
+ "bibcode": "2025A&A...694A.108P",
+ "title": "The two-dimensional pressure structure of the HD 163296 protoplanetary disk as probed by multi-molecule kinematics",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202451307",
+ "arxiv_id": "2501.05517",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Whether the vertical (2D) thermal stratification of the HD 163296 disk is detectable in the rotation curves of seven molecular tracers, and what disk mass, scale radius and 2D pressure structure follow from a multi-molecule stratified fit",
+ "alma_project_codes": [
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.15'' for 12CO, 13CO, C18O, HCN, C2H (per Table 1); 0.3'' for H2CO and HCO+ (the two lower-resolution lines)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2D gas kinetic temperature structure T(R,z) (Dullemond et al. 2020 parameterization, seven fitted parameters in Table 1: T_atm,0=63 K, q_atm=-0.61, T_mid,0=24 K, q_mid=-0.18, alpha=3.01, z0=9 au, beta=0.42)",
+    "evidence": [
+     {
+      "loc": "3.1 Molecular optical depth profiles",
+      "quote": "we use the kinetic temperature by (cite: maps4) and the observed brightness temperature from the data"
+     }
+    ]
+   },
+   "citation": "(cite: maps4); parameterization from (cite: dullemond2020)"
+  },
+  {
+   "what": {
+    "value": "Parametric emitting-layer fits z(R) for each molecule (Z0, phi, r_taper, psi in Table 2), plus nonparametric emitting layers",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Best-fit parameters for the molecular emitting layers for HD 163296 fitted by (cite: paneque)."
+     },
+     {
+      "loc": "4.2 Dependence on the emitting layers",
+      "quote": "adopting nonparametric emitting layers for all the molecules, as retrieved by (cite: paneque)"
+     }
+    ]
+   },
+   "citation": "(cite: paneque)"
+  },
+  {
+   "what": {
+    "value": "Disk geometry: i=46.7 deg, PA=313.3 deg",
+    "evidence": [
+     {
+      "loc": "3.2 Rotation curves extraction",
+      "quote": "We assumed $i=46.7$°, $PA=313.3$° from (cite: maps1)"
+     }
+    ]
+   },
+   "citation": "(cite: maps1)"
+  },
+  {
+   "what": {
+    "value": "Hyperfine frequency shifts: 2.5 MHz (C2H), 2.09 MHz and 1.54 MHz (HCN)",
+    "evidence": [
+     {
+      "loc": "3.2.2 Multi-Gaussian methods",
+      "quote": "Cologne Database for Molecular Spectroscopy (CDMS)"
+     },
+     {
+      "loc": "3.2.2 Multi-Gaussian methods",
+      "quote": "$\\Delta \\nu = 2.5$ MHz (between the two transitions)"
+     }
+    ]
+   },
+   "citation": "(cite: sastry1981; muller2000) and (cite: ahrens2002), via CDMS"
+  },
+  {
+   "what": {
+    "value": "Isothermal comparison model: H/R=0.084 and q=-0.84",
+    "evidence": [
+     {
+      "loc": "4.1 Multi-molecule fit",
+      "quote": "with $H/R=0.084$ and $q=-0.84$ (cite: maps5)"
+     }
+    ]
+   },
+   "citation": "(cite: maps5)"
+  },
+  {
+   "what": {
+    "value": "Two-molecule stratified fit results (M_star, M_d, R_c) used for comparison in Table 3",
+    "evidence": [
+     {
+      "loc": "4.1 Multi-molecule fit",
+      "quote": "We also compare our results with the ones obtained by (cite: martire)"
+     }
+    ]
+   },
+   "citation": "(cite: martire)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select molecular lines from the MAPS cubes",
+   "method": "Visual cube exploration; lines chosen by brightness and high S/N",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive molecular optical depth profiles to check emitting layers",
+   "method": "Radial surface brightness from the data compared with the optically thick Planck brightness at the assumed emitting layer; tau = -ln(1 - I_data/I_Planck)",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "30 deg wedge along the disk major axis for the radial profile"
+   ],
+   "assumptions": [
+    "Kinetic temperature at the emitting layer from the Dullemond et al. (2020) T(R,z) with MAPS parameters; LTE, optically thick reference emission"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract rotation curves with eddy (SHO method)",
+   "method": "Fit each spectrum with a Gaussian to get its centroid, then fit centroids in each annulus with a cosine (harmonic) function to get v_theta",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "i=46.7 deg, PA=313.3 deg, zero center offsets",
+    "Extraction repeated 20 times with independent spectrum samples; uncertainty = weighted standard deviation"
+   ],
+   "assumptions": [
+    "Exponentially tapered power-law emitting layers z(R) with Paneque et al. parameters; azimuthal symmetry; front side dominates"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Rotation curves of hyperfine lines (C2H, HCN)",
+   "method": "New multi-Gaussian (double for C2H, triple for HCN) spectrum fit in eddy with shared width and fixed hyperfine velocity shifts",
+   "software": [
+    "eddy",
+    "CDMS"
+   ],
+   "key_parameters": [
+    "Equal Gaussian width for all components",
+    "Fixed shifts: 2.5 MHz (C2H), 2.09 and 1.54 MHz (HCN); sigma bounded to half the component separation; intensity ratio priors xi in [0.2,1.5] (C2H) and [0.1,1] (HCN)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Test beam smearing in rotation curves",
+   "method": "Correlate radial intensity gradient of the line with the velocity difference between C2H (or HCN) and 12CO rotation curves",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "12CO curve used as smooth Keplerian reference"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Simultaneous multi-molecule fit of the seven curves with the stratified model",
+   "method": "MCMC maximisation of the likelihood of one stratified rotation-curve model fitted to all seven curves for M_star, M_d, R_c",
+   "software": [
+    "DySc",
+    "emcee"
+   ],
+   "key_parameters": [
+    "200 walkers, 1000 burn-in steps, 2000 steps",
+    "95% credibility intervals used as uncertainties"
+   ],
+   "assumptions": [
+    "gamma = 1 in the surface density; temperature structure fixed from MAPS (uncertainties not propagated); emitting layers from Paneque et al."
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Map the 2D pressure structure",
+   "method": "Combine fitted disk mass and scale radius with the assumed T(R,z) to compute P(R,z)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Barotropic fluid; shape of P(R,z) set by the assumed temperature structure"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare stratified and isothermal predictions of velocity differences vs C18O",
+   "method": "Normalised difference of squared rotation velocities of each molecule relative to C18O, compared with isothermal and stratified model predictions",
+   "software": [],
+   "key_parameters": [
+    "Isothermal model with H/R=0.084 and q=-0.84"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Test dependence on the assumed emitting layers",
+   "method": "Repeat extraction and multi-molecule fit with (a) flat midplane emission for all molecules and (b) nonparametric emitting layers",
+   "software": [
+    "eddy",
+    "DySc"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar mass, stratified 7-molecule fit",
+   "value": "1.8905",
+   "uncertainty": "0.0002 (95% credibility interval extremes)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$1.8905 \\pm 0.0002$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass, stratified 7-molecule fit",
+   "value": "0.1161",
+   "uncertainty": "0.0003",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.1161 \\pm 0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale radius R_c, stratified 7-molecule fit",
+   "value": "143.1",
+   "uncertainty": "0.1",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$143.1 \\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass, isothermal 7-molecule fit",
+   "value": "0.1565",
+   "uncertainty": "0.0003",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.1565 \\pm 0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale radius R_c, isothermal 7-molecule fit",
+   "value": "48.1",
+   "uncertainty": "0.1",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$48.1 \\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, isothermal 7-molecule fit",
+   "value": "1.8905",
+   "uncertainty": "0.0002",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Multi-molecule fit",
+     "quote": "the estimate of the stellar mass does not change between the isothermal and stratified fits"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass, flat-emission test",
+   "value": "1.7827",
+   "uncertainty": "0.0003",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Dependence on the emitting layers",
+     "quote": "$M_\\star=1.7827\\pm 0.0003$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass, flat-emission test",
+   "value": "0.1396",
+   "uncertainty": "0.0003",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Dependence on the emitting layers",
+     "quote": "$M_\\text{d}=0.1396\\pm 0.0003$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale radius, flat-emission test",
+   "value": "174.8",
+   "uncertainty": "0.3",
+   "units": "au",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Dependence on the emitting layers",
+     "quote": "$R_\\text{c}=174.8\\pm 0.3$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Nonparametric vs parametric layers: M_d difference",
+   "value": "<~30%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Dependence on the emitting layers",
+     "quote": "$\\lesssim 1\\%$ for $M_\\star$, $\\lesssim 30\\%$ for $M_\\text{d}$, and $\\lesssim 13\\%$ for $R_\\text{c}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak optical depths of the two optically thin lines (molecule names missing in text)",
+   "value": "0.11 and 0.45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Molecular optical depth profiles",
+     "quote": "reaching maximum peaks at $\\tau \\sim 0.11$ and $\\tau \\sim 0.45$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN intensity peak radius",
+   "value": "109",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Molecular optical depth profiles",
+     "quote": "a local maximum around the radius of the intensity peak ($R=109$ au)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact MAPS data products used (which cube versions, weighting/robust, uv taper, channel width, continuum subtraction, JvM correction, file names)",
+  "Distance to HD 163296 and systemic velocity adopted",
+  "Radial range, annulus width and number of spectra per annulus used in the eddy extractions, and how the 20 independent subsamples were drawn",
+  "Version of eddy and whether the new multi-Gaussian hyperfine fit is in a public release",
+  "Priors, parameter bounds, initial walker positions and likelihood form (including how rotation-curve errors enter) in the DySc fit for M_star, M_d, R_c",
+  "Radial range of the rotation curves entering the fit and how bad radii (H2CO emission gap near 150 au) were masked",
+  "Value of q used inside the stratified model and the definition of f and g used numerically",
+  "S/N threshold and procedure for the initial visual selection of lines",
+  "Version of DySc and emcee",
+  "Which hyperfine components and rest frequencies were used for HCN and C2H when converting shifts to velocity"
+ ],
+ "missing_for_reproduction": [
+  "Exact MAPS cube versions and processing options",
+  "Priors and initial conditions of the DySc fit",
+  "eddy version with the new multi-Gaussian routine and annulus/radial-range settings",
+  "Distance and systemic velocity"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and public fitting code with a tabulated numeric result, but the MAPS products, eddy settings, radial ranges and fit priors are not given, and the modified eddy is not stated as released.",
+ "rediscovery_reason": "MAPS data are public, DySc is public, the model and emcee setup are described, and the main results are numeric (M_star, M_d, R_c), though eddy settings must be inferred.",
+ "source_card": "cards/2025A%26A...694A.108P/sonnet/card.md"
+}

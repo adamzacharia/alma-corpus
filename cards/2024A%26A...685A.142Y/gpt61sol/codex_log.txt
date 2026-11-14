@@ -1,0 +1,479 @@
+units": "h",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| c_fb_k | $-65.4$ | $1.22$ | $87.2$ | $1$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "c_fb_nk orbital period",
+      "value": "155.5",
+      "uncertainty": "not stated",
+      "units": "min",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| c_fb_nk | $-92.8$ | $2.05$ | $155.5$ | $52$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "c_fb_nk reduced χ²",
+      "value": "2.05",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| c_fb_nk | $-92.8$ | $2.05$ | $155.5$ | $52$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "nc_fb_nk background linear-polarization offsets Q_sha,U_sha",
+      "value": "0.11, -0.12",
+      "uncertainty": "not stated",
+      "units": "Jy",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| nc_fb_nk     |         $0.11$          |         $-0.12$         |"
+        }
+      ]
+    },
+    {
+      "quantity": "nc_fb_nk background I_BG,V_BG",
+      "value": "2.86, +0.24",
+      "uncertainty": "not stated",
+      "units": "Jy",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| nc_fb_nk | $2.86$ | $+0.24$ | $1.75$ | $-0.028$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "Mean Q and U deviations in resolution test",
+      "value": "2%, 1.5%",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Resolution",
+          "quote": "This amounts to $2\\%$ for $\\mathcal{Q}$ and $1.5\\%$ for $\\mathcal{U}$."
+        }
+      ]
+    },
+    {
+      "quantity": "Reduced χ² after changing best-bet spin to a_*=0",
+      "value": "∼1.5",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Spin estimates",
+          "quote": "only change the spin to $a_*=0$. While the difference is not dramatic (the model still produces $\\chi^2_{\\rm eff}\\sim1.5$), it is certainly noticeable."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Preferred spot model has no cooling, a non-Keplerian orbit, and magnetic field toward the observer.",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "made with a flipped $B_{\\textrm{field}}$, no cooling, and a non-Keplerian orbit."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "magnetic field vector arrow pointing toward the observer for viewing angles $i>90$ deg"
+        },
+        {
+          "loc": "Spot fitting",
+          "quote": "The low value of $\\chi_{\\rm eff}^2=0.34$ together with the log(Evidence) and the smooth posteriors make nc_fb_nk our best-bet model."
+        }
+      ]
+    },
+    {
+      "value": "Inferred viewing geometry implies clockwise hot-spot rotation on the sky.",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "The viewing angle close to 180 deg determines a clockwise hot-spot rotation on the sky."
+        }
+      ]
+    },
+    {
+      "value": "Spot-preferred magnetic polarity produces the wrong background circular-polarization sign.",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "the models with a magnetic field pointing toward the observer, which seem to produce better results for the spot fitting, have Stokes $\\mathcal{V}_{\\textrm{BG}}$ with the opposite sign to $\\mathcal{V}_{\\textrm{sha}}$ and the ALMA average value."
+        }
+      ]
+    },
+    {
+      "value": "Secondary-image emission drives the spin preference.",
+      "evidence": [
+        {
+          "loc": "Spin estimates",
+          "quote": "The dominant effect comes from the secondary image, which is formed by photons approaching the photon shell, which is located much closer to the black hole."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "A hot-spot model can describe the polarized ALMA loop and distinguish orbital and magnetic configurations.",
+      "experiment": "Fit eight combinations of cooling, magnetic polarity and orbital motion; compare evidence and reduced χ².",
+      "result": "nc_fb_nk has log Z=-50.4 and reduced χ²=0.34.",
+      "finding": "The preferred spot has no cooling, non-Keplerian motion and flipped magnetic polarity.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Spot fitting",
+          "quote": "We ran eight models that we list in Table [1](#tab:models) to fit the spot component to the ALMA observational data."
+        },
+        {
+          "loc": "Table 4",
+          "quote": "| nc_fb_nk | $-50.4$ | $0.34$ | $91.2$ | $77$ |"
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "made with a flipped $B_{\\textrm{field}}$, no cooling, and a non-Keplerian orbit."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The Q,U-preferred configuration should also agree with circular polarization.",
+      "experiment": "Inspect V light curves excluded from fitting.",
+      "result": "nc_fb_nk recovers observed V best; default-polarity models fail to recover its variability.",
+      "finding": "Circular polarization independently favors the best-bet spot model.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Cross-checking with other Stokes parameters",
+          "quote": "The goal is to verify the consistency of the models with the remaining observational information that was not used in the fitting procedure"
+        },
+        {
+          "loc": "Cross-checking with other Stokes parameters",
+          "quote": "In particular, the best-bet model nc_fb_nk recovers the observed Stokes $\\mathcal{V}$ best, which is a strong independent argument in support of the model."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "All models with a default magnetic field orientation fail to recover the Stokes $\\mathcal{V}$ variability."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Polarized hot-spot light curves constrain viewing geometry and orbital scale.",
+      "experiment": "Compare posterior estimates across all spot models.",
+      "result": "i∈(155,160) deg; r_s∈(9,12.5) M; preferred period approximately 90 minutes except one model.",
+      "finding": "The models consistently favor nearly face-on clockwise motion and similar orbital scales.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "all spot models show consistently similar best-fitting viewing angles $i \\in(155,160)$ deg and a spot orbital radius $r_s\\in(9,12.5)M$."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "The viewing angle close to 180 deg determines a clockwise hot-spot rotation on the sky."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "For all models (with one exception), the preferred period is approximately 90 minutes"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Radiative cooling explains disappearance of the loop on an approximately two-hour timescale.",
+      "experiment": "Calculate thermal synchrotron cooling times from fitted magnetic fields and electron temperatures.",
+      "result": "The best-bet nc_fb_nk gives 77 h; c_fb_k gives 1 h.",
+      "finding": "Only c_fb_k reasonably matches the disappearance timescale under the thermal-electron assumption.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| nc_fb_nk | $-50.4$ | $0.34$ | $91.2$ | $77$ |"
+        },
+        {
+          "loc": "Table 4",
+          "quote": "| c_fb_k | $-65.4$ | $1.22$ | $87.2$ | $1$ |"
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "there is only one model that matches this observational constraint reasonably well, the Keplerian model with cooling and a flipped magnetic field ($T_{\\textrm{cool}}=$1 h)."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Separately fitted spot and static background components provide a consistent polarized-emission description.",
+      "experiment": "Fit background Q,U offsets, then compare predicted background I,V with observed or shifted values.",
+      "result": "Background Q,U can be reproduced, but spot-preferred polarity gives the opposite background V sign.",
+      "finding": "The two-step approach passes a limited sanity check; different spot/disk field morphology or a combined model may be needed.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "Overall, the background fitting can consistently reproduce the Stokes $\\mathcal{Q}_{\\textrm{sha}}$, $\\mathcal{U}_{\\textrm{sha}}$ dictated by the spot models, which is its main purpose."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "the models with a magnetic field pointing toward the observer, which seem to produce better results for the spot fitting, have Stokes $\\mathcal{V}_{\\textrm{BG}}$ with the opposite sign to $\\mathcal{V}_{\\textrm{sha}}$ and the ALMA average value."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "A flipped magnetic field for the disk, or even better, a separate morphology entirely for the spot and disk, might be the optimal solution."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Post-X-ray-flare Q,U loops interpreted as an orbiting bright spot",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "We focused on 230 GHz data that were collected immediately following an X-ray flare detected by the *Chandra* observatory on April 11 2017 (cite: eht:2022_paperII; Wielgus2022_LC)."
+        },
+        {
+          "loc": "Two-step parameter estimation procedure",
+          "quote": "Stokes $\\mathcal{Q}-\\mathcal{U}$ loops, interpreted as a signature of a bright spot around the black hole, were observed within the first two hours of this observing window."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Nested sampling handles degenerate, potentially multimodal posteriors; subsampling reduces computational cost.",
+      "evidence": [
+        {
+          "loc": "Two-step parameter estimation procedure",
+          "quote": "it is compatible with low-dimensional but highly degenerate and potentially multimodal posteriors"
+        },
+        {
+          "loc": "Two-step parameter estimation procedure",
+          "quote": "To be able to produce a fit on timescales shorter than a year, we sub-sampled the ALMA data set"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Log-evidence stopping change 0.01; synthetic recovery; resolution differences below the adopted error level",
+      "evidence": [
+        {
+          "loc": "Two-step parameter estimation procedure",
+          "quote": "We used the default stopping criteria, meaning a terminating change in the log-evidence of 0.01."
+        },
+        {
+          "loc": "Two-step parameter estimation procedure",
+          "quote": "All truth values, indicated with red lines, are comfortably covered by the posteriors."
+        },
+        {
+          "loc": "Model",
+          "quote": "the general behavior remains very similar and the relative differences are below the error level of the data."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Cooling/no cooling, default/flipped magnetic polarity, Keplerian/non-Keplerian models",
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "We considered eight models with a varying level of complexity, distinguished by choices regarding dynamically important cooling, non-Keplerian motion, and magnetic field polarity."
+        }
+      ]
+    },
+    {
+      "value": "Keplerian background disk with a sub-Keplerian spot remains an alternative.",
+      "evidence": [
+        {
+          "loc": "Background emission",
+          "quote": "other possibilities could be meaningful as well, for instance, a Keplerian disk with a sub-Keplerian spot."
+        }
+      ]
+    },
+    {
+      "value": "Nonthermal electrons could change inferred cooling times.",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "A different assumption, for instance, a nonthermal electron distribution function, could lead to different $T_{\\textrm{cool}}$."
+        }
+      ]
+    },
+    {
+      "value": "Plasmoid formation as an alternative physical origin of hot spots",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "we note that there are other possibilities, such as the formation of plasmoids (cite: ripperda20; elmellah23; vos23)."
+        }
+      ]
+    },
+    {
+      "value": "Separate spot/disk magnetic morphology or lensing-induced background circular-polarization sign reversal",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "A flipped magnetic field for the disk, or even better, a separate morphology entirely for the spot and disk, might be the optimal solution."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "Another possibility is that the shadow component has a negative circular polarization due to the gravitational lensing effect"
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Static background omits emission inside ISCO and variability.",
+      "evidence": [
+        {
+          "loc": "Two-step parameter estimation procedure",
+          "quote": "our model for the background emission (the shadow component) neither includes emission from regions within the ISCO nor has any variability."
+        }
+      ]
+    },
+    {
+      "value": "Exponential temperature evolution is not a physical synchrotron-cooling model.",
+      "evidence": [
+        {
+          "loc": "Model",
+          "quote": "This is a simplistic general prescription that does not aim to simulate the synchrotron cooling, but rather enabled us to explore the impact of cooling without making additional assumptions regarding its physical mechanisms."
+        }
+      ]
+    },
+    {
+      "value": "Spot shearing and interactions with the background are omitted.",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "spot properties that we did not include in our simple model, such as the shearing of the spot or other spot interaction with the background flow (cite: Tiede2020)."
+        }
+      ]
+    },
+    {
+      "value": "Negative spins excluded; orbital period only weakly depends on spin.",
+      "evidence": [
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "For the expected orbital radii, the period"
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "only weakly depends on the black hole spin."
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "we did not consider negative spins in our priors. We therefore missed some of the parameter space."
+        }
+      ]
+    },
+    {
+      "value": "Background fit has limited inference power and remains dissociated from the spot component.",
+      "evidence": [
+        {
+          "loc": "Background emission",
+          "quote": "Overall, this second step does not offer much inferring power at this point"
+        },
+        {
+          "loc": "Discussion and conclusions",
+          "quote": "it remains somewhat dissociated from the spot component."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The preferred spin lies near the upper prior boundary; a wider spin prior and nuisance-model sensitivity tests are needed.",
+    "Temporal correlations motivate subsampling, but the supplied text does not give a covariance model or a quantitative full-cadence inference comparison.",
+    "The displayed likelihood and error prescription require implementation-level clarification before numerical answer keys can be reproduced.",
+    "A three-parameter background fitted to two Stokes values is strongly degenerate; its inferred plasma properties need additional constraints.",
+    "The magnetic polarity preferred for the spot conflicts with the background V sign under the shared model assumptions.",
+    "The quoted overall plasma and radius ranges are summaries across models, not stated credible intervals.",
+    "One synthetic recovery example and a resolution test at a random parameter combination do not establish coverage or numerical accuracy across the entire posterior."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Input polarized light-curve file and an explicit public access location.",
+    "Original calibration and polarization-processing recipe, or an identified ready-to-fit data product.",
+    "Exact sample selection and timestamp conventions.",
+    "Executable bipole source and configuration, including software versions.",
+    "Log-normal prior widths and background-fit priors.",
+    "Confirmed likelihood implementation and error units.",
+    "Posterior samples and numerical best-fit parameter vectors for all models.",
+    "Ray-tracing numerical tolerances and emission settings."
+  ],
+  "estimated_data_volume_inferred": "Small light-curve input: 35 retained epochs from 710 original points. Raw ALMA visibility volume cannot be estimated from the supplied text.",
+  "score_inferred": 5,
+  "score_reason": "5/10: project identification, model equations, parameter ranges, sampler settings and numerical comparisons are provided; input access, runnable code, prior widths and several implementation details are missing.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but public availability is not stated and the supplied recipe lacks input access, code and complete prior/likelihood specifications.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Vos:2022)",
+      "why": "Detailed semi-analytic model adopted and extended."
+    },
+    {
+      "citation": "(cite: Brod-Loeb2006); (cite: Fraga-Encinas:2016nft)",
+      "why": "Earlier hot-spot model inspiration."
+    },
+    {
+      "citation": "(cite: Monika2018)",
+      "why": "ipole polarized general relativistic radiative-transfer code."
+    },
+    {
+      "citation": "(cite: Speagle:2019ivv); (cite: sergey_koposov_2023_7995596)",
+      "why": "dynesty Bayesian sampling software."
+    },
+    {
+      "citation": "(cite: Higson:2019)",
+      "why": "Dynamic sampler."
+    },
+    {
+      "citation": "(cite: Buchner:2016)",
+      "why": "Bounding balls."
+    },
+    {
+      "citation": "(cite: Skilling:2006gxv)",
+      "why": "Nested sampling and random-walk sampling technique."
+    },
+    {
+      "citation": "(cite: moscibrodzka:2011)",
+      "why": "Synchrotron cooling-timescale calculation."
+    },
+    {
+      "citation": "(cite: Wielgus2022_LC)",
+      "why": "ALMA light-curve uncertainty characterization."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: W22)",
+      "why": "Published polarized observations and earlier interpretation of the same hot-spot event."
+    },
+    {
+      "citation": "(cite: Vos:2022)",
+      "why": "Previous model expanded in this work."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "Event Horizon Telescope (EHT)"
+  ]
+}
+tokens used
+59,346

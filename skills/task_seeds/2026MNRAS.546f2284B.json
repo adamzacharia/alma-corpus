@@ -1,0 +1,478 @@
+{
+ "bibcode": "2026MNRAS.546f2284B",
+ "title": "Probing infrared eXcess to investigate early-Universe dust (PIXIEDust)",
+ "year": 2026,
+ "doi": "10.1093/mnras/staf2284",
+ "arxiv_id": "2512.07964",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Examine the constraints on dust physics and obscured star formation in the z > 8 Universe by stacking deep (sub)mm observations of ten spectroscopically confirmed galaxies.",
+ "alma_project_codes": [
+  "2018.1.00236.S",
+  "2019.1.01634.L",
+  "2017.1.00486.S",
+  "2021.A.00022.S",
+  "2017.A.00026.S",
+  "2015.1.00428.S",
+  "2018.1.00616.S",
+  "2022.1.01401.S",
+  "2021.A.00023.S",
+  "2023.1.00336.S",
+  "2021.A.00020.S",
+  "2023.A.00017.S",
+  "2024.1.01645.S",
+  "2024.1.01771.S",
+  "2024.A.00007.S",
+  "2023.A.00037.S",
+  "2017.1.00225.S",
+  "2019.1.01350.S",
+  "2016.1.00117.S",
+  "2018.1.01241.S",
+  "2019.1.00343.S",
+  "2018.1.00295.S",
+  "2019.1.00327.S",
+  "2023.A.00003.S",
+  "2023.1.00180.L",
+  "2019.1.00397.S",
+  "2022.1.01562.S",
+  "2021.1.00389.S",
+  "2019.A.00015.S"
+ ],
+ "data": {
+  "bands": "Bands 5, 6, 7, and 8",
+  "arrays": "not stated",
+  "angular_resolution": "0.37 to 1.35 arcsec (stacked sample); down to 0.14 x 0.11 arcsec (MACS0416-Y1)",
+  "sensitivity": "3.0 to 65 uJy (individual observations); 2.0, 2.0, and 1.5 uJy 1-sigma depth in stacks at rest-frame 158, 88 um, and all data"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "NOEMA on-source time and continuum data for GN-z11",
+    "evidence": [
+     {
+      "loc": "Sample and Observations",
+      "quote": "For NOEMA data, the on-source time is taken from (cite: Fudamoto2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Fudamoto2024)"
+  },
+  {
+   "what": {
+    "value": "Published redshifts, M_UV, beta_UV, stellar masses, sizes, and lensing magnifications for the target galaxies",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Col. 7: The stellar mass estimate, corrected for lensing. The references can be found in the Appendix Section 6."
+     }
+    ]
+   },
+   "citation": "Appendix Section 6 references"
+  },
+  {
+   "what": {
+    "value": "ALPINE sample (4.4 < z < 6) and REBELS / individual galaxy measurements (6 < z < 8) for comparison",
+    "evidence": [
+     {
+      "loc": "Dust mass limits at $z > 8$",
+      "quote": "These are compared against lower redshift galaxies at $4.4 < z < 6$ from the ALPINE sample (cite: Sommovigo2022) and from REBELS and individual observations at $6 < z < 8$ (cite: Bakx2021; Sommovigo2022REBELS; Witstok2022; Fudamoto2022DustTemperatures; Algera2024; Algera2024REBELS25; Valentino2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Sommovigo2022; Bakx2021; Sommovigo2022REBELS; Witstok2022; Fudamoto2022DustTemperatures; Algera2024; Algera2024REBELS25; Valentino2024)"
+  },
+  {
+   "what": {
+    "value": "High-redshift stacking results converted to dust mass and dust-to-stellar mass ratio",
+    "evidence": [
+     {
+      "loc": "Dust mass limits at $z > 8$",
+      "quote": "The stacking experiment from (cite: Ciesla2024) is converted to a dust mass and dust-to-stellar mass ratio estimate assuming the same 50 K and $\\beta_{\\rm dust} = 2$."
+     }
+    ]
+   },
+   "citation": "(cite: Ciesla2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image individual ALMA continuum observations",
+   "method": "Re-calibrate archival ALMA data using provided pipeline scripts and image continuum with TCLEAN onto a common pixel grid, extracting central source flux densities and noise.",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "deconvolver = Hogbom, weighting = natural (robust = 2)"
+   ],
+   "assumptions": [
+    "Sources are unresolved at the scale of the ALMA/NOEMA beams"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Perform flux-weighted image-plane stacking",
+   "method": "Combine continuum images in the image plane using inverse-variance weighting at rest-frame 88 um, 158 um, across all data, and across bins of redshift, stellar mass, and beta_UV.",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [
+    "Bins: r.f. 88 um, r.f. 158 um, All, z > 9.5, z < 9.5, M_* > 10^9 M_sun, M_* < 10^9 M_sun, beta_UV > -2, beta_UV < -2"
+   ],
+   "assumptions": [
+    "Flux-based stacks are not corrected for gravitational lensing magnification"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate infrared-based dust masses and perform dust-mass-weighted stacking",
+   "method": "Convert individual continuum images from Jy/beam to M_dust/beam using a single-temperature optically-thin modified blackbody accounting for CMB heating, CMB contrast, and lensing magnification, then stack images with inverse-variance weighting; also compute conservative flux-based dust masses at average observing frequency and redshift.",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [
+    "T_dust(z=0) = 50 K, beta_dust = 2.0, kappa_0 = 10.41 cm^2 g^-1 at nu_0 = 1900 GHz"
+   ],
+   "assumptions": [
+    "Optically-thin dust emission; flat Lambda-CDM cosmology with Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.674"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Perform dust-to-stellar mass ratio stacking",
+   "method": "Divide per-pixel dust mass images by published stellar masses to create dust-to-stellar mass ratio maps and stack them weighting by the standard deviation in dust-to-stellar mass ratio.",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Gravitational lensing affects stellar and dust components equally (no differential lensing)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate UV-based optical dust masses and compare with infrared limits and theoretical models",
+   "method": "Compute optical dust masses from UV continuum slopes (beta_UV) and rest-frame UV/optical sizes using a foreground screen geometry and Meurer attenuation law, compute weighted averages across stacks, and compare against sub-mm limits and cosmological dust models.",
+   "software": [],
+   "key_parameters": [
+    "f_mu = 4/3, tau_0 = 2.17 x 10^-8 (SMC), tau_1500 = 1.99 (beta_UV - beta_UV,intrinsic), beta_UV,intrinsic = -2.63, r_d = 100 pc (for REBELS-24 and GS-z9-3)"
+   ],
+   "assumptions": [
+    "Homogeneous dusty sphere foreground screen geometry; dust-emitting radius equals optical size of the source"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stacked 1-sigma continuum depth (all data)",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "\\muJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "revealing no significant dust emission down to a $1 \\sigma$ depth of $2.0$, $2.0$, and $1.5 \\,\\mu$Jy at rest-frame 158, 88 $\\mu$m, and across all the data, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 1-sigma continuum depth (rest-frame 158 um)",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "\\muJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "revealing no significant dust emission down to a $1 \\sigma$ depth of $2.0$, $2.0$, and $1.5 \\,\\mu$Jy at rest-frame 158, 88 $\\mu$m, and across all the data, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 1-sigma continuum depth (rest-frame 88 um)",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "\\muJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "revealing no significant dust emission down to a $1 \\sigma$ depth of $2.0$, $2.0$, and $1.5 \\,\\mu$Jy at rest-frame 158, 88 $\\mu$m, and across all the data, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma flux density limit (All, N=14)",
+   "value": "< 4.6",
+   "uncertainty": "not stated",
+   "units": "\\muJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "All | ($14$) | $< 4.6$ | $< 9.1$ | $< 3.7$ | 57 | 46"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (All, N=14, dust-mass weighted)",
+   "value": "< 9.1",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "All | ($14$) | $< 4.6$ | $< 9.1$ | $< 3.7$ | 57 | 46"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "a deep upper limit on the dust mass, with a typically observed galaxy containing dust reservoir smaller than $9.1 \\times{} 10^4$ M$_{\\odot}$, assuming a dust temperature of $T_{z = 0} = 50$ K and $\\beta_{\\rm dust} = 2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (All, N=14, flux-based)",
+   "value": "46",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "All | ($14$) | $< 4.6$ | $< 9.1$ | $< 3.7$ | 57 | 46"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust-to-stellar mass ratio limit (All, N=14)",
+   "value": "< 3.7",
+   "uncertainty": "not stated",
+   "units": "10^{-4}",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "This constrains average dust masses to be below $< 10^{5}$ M$_{\\odot}$ at $3 \\sigma$ and dust-to-stellar mass ratios to be below $3.7 \\times{} 10^{-4}$ (assuming $T_{\\rm dust} = 50$ K and $\\beta_{\\rm dust} = 2.0$)."
+    },
+    {
+     "loc": "Stacking analysis",
+     "quote": "All | ($14$) | $< 4.6$ | $< 9.1$ | $< 3.7$ | 57 | 46"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (rest-frame 88 um, N=8)",
+   "value": "< 31.0",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "r.f. 88 $\\mu$m | ($8$) | $< 6.1$ | $< 31.0$ | $< 6.7$ | \\- | 61"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (rest-frame 158 um, N=5)",
+   "value": "< 8.6",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "r.f. 158 $\\mu$m | ($5$) | $< 6.1$ | $< 8.6$ | $< 5.5$ | \\- | 61"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (z > 9.5, N=7)",
+   "value": "< 66.1",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "$z > 9.5$ | ($7$) | $< 5.3$ | $< 66.1$ | $< 6.5$ | 292 | 53"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (z < 9.5, N=7)",
+   "value": "< 9.1",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "$z < 9.5$ | ($7$) | $< 10.0$ | $< 9.1$ | $< 4.6$ | 52 | 99"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (M_* > 10^9 M_sun, N=4)",
+   "value": "< 88.5",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "$M_{\\ast}  > 10^9 {\\rm\\, M_{\\odot}}$ | ($4$) | $< 9.2$ | $< 88.5$ | $< 7.3$ | 433 | 91"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (M_* < 10^9 M_sun, N=10)",
+   "value": "< 9.1",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "$M_{\\ast} <  10^9 {\\rm\\, M_{\\odot}}$ | ($10$) | $< 5.5$ | $< 9.1$ | $< 4.5$ | 53 | 55"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (beta_UV > -2, N=6)",
+   "value": "< 42.7",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "$\\beta_{\\rm UV} > -2$ | ($6$) | $< 9.8$ | $< 42.7$ | $< 5.9$ | 50 | 97"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3-sigma dust mass limit (beta_UV < -2, N=8)",
+   "value": "< 9.1",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "$\\beta_{\\rm UV} < -2$ | ($8$) | $< 5.4$ | $< 9.1$ | $< 4.8$ | 183 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "Optically-derived dust mass (All stack, N=14)",
+   "value": "57",
+   "uncertainty": "not stated",
+   "units": "10^4 M_{\\odot}",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "All | ($14$) | $< 4.6$ | $< 9.1$ | $< 3.7$ | 57 | 46"
+    }
+   ]
+  },
+  {
+   "quantity": "Individual 3-sigma dust mass limit for MACS1149-JD1",
+   "value": "<0.09",
+   "uncertainty": "not stated",
+   "units": "10^6 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "MACS1149-JD1 | $<$0.09 | $<$0.60 | 0.50"
+    }
+   ]
+  },
+  {
+   "quantity": "Individual 3-sigma dust mass limit for GHZ-2",
+   "value": "<0.94",
+   "uncertainty": "not stated",
+   "units": "10^6 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "GHZ-2 | $<$0.94 | $<$0.83 | 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Individual 3-sigma dust mass limit for GS-z14-0",
+   "value": "<2.42",
+   "uncertainty": "not stated",
+   "units": "10^6 M_{\\odot}",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stacking analysis",
+     "quote": "GS-z14-0 | $<$2.42 | $<$4.7 | 3.55"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed continuum flux density of REBELS-24 at 202 GHz",
+   "value": "-3.3",
+   "uncertainty": "9.3",
+   "units": "\\muJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Sample and Observations",
+     "quote": "REBELS-24 | 202 | $-3.3 \\pm 9.3$ | 2.2 | 1.26 $\\times$ 1.06 | 2018.1.00236.S, 2019.1.01634.L"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed continuum flux density of GS-z14-0 at 125 GHz",
+   "value": "-2.3",
+   "uncertainty": "3.0",
+   "units": "\\muJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Sample and Observations",
+     "quote": "GS-z14-0 | 125 | $-2.3 \\pm 3.0$ | 5.6 | 1.27 $\\times$ 0.93 | 2024.A.00007.S"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed continuum flux density of GHZ-2 at 248 GHz",
+   "value": "1.5",
+   "uncertainty": "3.4",
+   "units": "\\muJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Sample and Observations",
+     "quote": "GHZ-2 | 248 | $1.5 \\pm 3.4$ | 12.2 | 0.51 $\\times$ 0.43 | 2021.A.00020.S, 2023.A.00017.S"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel size (cell size) and image dimensions used when running TCLEAN so all maps share a common grid.",
+  "Specific CASA pipeline versions used for each individual archival project.",
+  "Line-free channel selection or velocity masking ranges for targets other than GHZ-2 (at 413 GHz) where emission lines such as [O III] 88 um or [C II] 158 um were detected (e.g., ID4590, MACS1149-JD1, GS-z11-0, GS-z14-0).",
+  "CLEAN stopping criteria (threshold, niter) and masking strategy in TCLEAN."
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel scale and image dimensions used in TCLEAN when re-imaging the raw visibilities from scratch (though the resulting FITS cutouts are provided in the GitHub repository).",
+  "Exact channel ranges masked for spectral lines during continuum imaging of line-detected targets other than GHZ-2."
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "The authors release both the continuum FITS images and the complete Python/LINESTACKER analysis code on GitHub, and clearly state the equations, cosmology, dust parameters, and weighting schemes; only minor TCLEAN imaging parameters (exact cell size and line-masking channels for raw visibility re-imaging) are omitted from the text.",
+ "rediscovery_reason": "All ALMA project codes are listed, the calibrated continuum images and stacking scripts are publicly released, and the main results are well-defined numeric upper limits on flux density, dust mass, and dust-to-stellar mass ratio.",
+ "source_card": "cards/2026MNRAS.546f2284B/sonnet/card.md"
+}

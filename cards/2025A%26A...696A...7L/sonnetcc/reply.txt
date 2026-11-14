@@ -1,0 +1,341 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "2 Observations", "quote": "The ALMA Band-7 data for 11 massive protoclusters were obtained between May 18 and May 20, 2018"},
+{"loc": "Introduction", "quote": "These data serve as a pilot project for the ALMA Three-millimeter Observations of Massive Star-Forming Regions (ATOMS) survey and are a subsample of ATOMS"}
+],
+"fields": ["star_formation", "astrochemistry"],
+"question": {
+"value": "How is acetone (CH3COCH3) spatially distributed in massive protostellar clumps, and how do its temperature and abundance correlate with CH3CHO, CH3OH and C2H5CN",
+"evidence": [
+{"loc": "Introduction", "quote": "The primary goal of this study is to investigate the physical and chemical properties of the"},
+{"loc": "abstract", "quote": "We observed 11 massive protostellar clumps using ALMA at 345 GHz, with an angular resolution of"}
+]
+},
+"targets": [
+{
+"name": "11 massive protostellar clumps (16 line-rich cores in 9 clumps show acetone)",
+"details": [
+{"loc": "Introduction", "quote": "fall between the early stages of massive star formation and the Hii region phase, with L/M ratios ranging from 12 to 80"},
+{"loc": "3.1 Line identifications", "quote": "lists the target source names, distances, core positions, deconvolved sizes, peak flux densities, integrated flux densities, core masses, and"},
+{"loc": "Table 1 notes", "quote": "The basic parameters for the dense cores are adopted from (cite: 2024ApJ...962...13C) and (cite: 2024MNRAS.533.1583L)."}
+],
+"coordinates": "per-core R.A./Dec. listed in the core-parameters table (clump names are not preserved in the table text)",
+"redshift_or_distance": "2.7 to 10.1 kpc per clump (core-parameters table)",
+"distance_source": "adopted from Chen et al. 2024 (cite: 2024ApJ...962...13C) and Li et al. 2024 (cite: 2024MNRAS.533.1583L) per the table notes"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.00545.S", "evidence": [{"loc": "2 Observations", "quote": "Project ID: 2017.1.00545.S; PI: Tie Liu"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (345 GHz)", "evidence": [
+{"loc": "Introduction", "quote": "using Band 7 of the Atacama Large Millimeter/submillimeter Array (ALMA)"},
+{"loc": "abstract", "quote": "using ALMA at 345 GHz"}]},
+{"field": "frequencies_and_spectral_setup", "value": "4 SPWs: 342.36-344.24 GHz (SPW 31), 344.25-346.09 GHz (SPW 29), 356.60-357.07 GHz (SPW 27), 354.27-354.74 GHz (SPW 25); SPW 31/29 are 1875 MHz wide at 0.98 km/s, SPW 27/25 are 469 MHz at 0.24 km/s; only SPW 31 and 29 line data are used", "evidence": [
+{"loc": "2 Observations", "quote": "The Band-7 observations included four spectral windows (SPWs): 342.36$-$344.24 GHz (SPW 31), 344.25$-$346.09 GHz (SPW 29), 356.60$-$357.07 GHz (SPW 27), and 354.27$-$354.74 GHz (SPW 25)."},
+{"loc": "2 Observations", "quote": "SPWs 27 and 25 provided a bandwidth of 469 MHz with a spectral resolution of 0.24 km s$^{-1}$, while SPWs 31 and 29 offered a bandwidth of 1875 MHz with a spectral resolution of 0.98 km s$^{-1}$"},
+{"loc": "2 Observations", "quote": "In this paper we present spectral line data from the broader SPWs, SPW 31 and SPW 29."}]},
+{"field": "arrays", "value": "12-m array, 43 antennas", "evidence": [{"loc": "2 Observations", "quote": "using 43 12-meter antennas in the C43-1 configuration"}]},
+{"field": "configurations", "value": "C43-1", "evidence": [{"loc": "2 Observations", "quote": "using 43 12-meter antennas in the C43-1 configuration"}]},
+{"field": "baselines", "value": "15.0 to 313.7 m", "evidence": [{"loc": "2 Observations", "quote": "with baselines ranging from 15.0 to 313.7 meters"}]},
+{"field": "angular_resolution", "value": "0.7 to 1.0 arcsec (continuum and line cubes)", "evidence": [{"loc": "2 Observations", "quote": "The final synthesized beam sizes for both the continuum images and line cubes range from 0.7 to 1.0 arcsec."}]},
+{"field": "sensitivity", "value": "continuum ~1.2 mJy/beam (average); line cubes ~4.7 mJy/beam per channel (mean)", "evidence": [{"loc": "2 Observations", "quote": "The average sensitivity of the continuum images is $\\sim$ 1.2 mJy beam$^{-1}$, and the mean sensitivity of the line cubes is $\\sim$ 4.7 mJy beam$^{-1}$ per channel."}]},
+{"field": "observing_dates", "value": "2018 May 18-20", "evidence": [{"loc": "2 Observations", "quote": "The ALMA Band-7 data for 11 massive protoclusters were obtained between May 18 and May 20, 2018"}]},
+{"field": "pi_or_archival_as_stated", "value": "Project 2017.1.00545.S, PI Tie Liu (a co-author); pilot project for the ATOMS survey", "evidence": [
+{"loc": "2 Observations", "quote": "Project ID: 2017.1.00545.S; PI: Tie Liu"},
+{"loc": "Introduction", "quote": "These data serve as a pilot project for the ALMA Three-millimeter Observations of Massive Star-Forming Regions (ATOMS) survey"}]}
+],
+"lines_targeted": [
+{"species": "CH3COCH3 (acetone)", "transition": "17(17,0)-16(16,0) EE (used for the integrated intensity map)", "rest_frequency": "342485.234 MHz", "evidence": [
+{"loc": "3.2 Spatial distribution", "quote": "integrated intensity maps of CH$_{3}$COCH$_{3}$ at 342485 MHz, CH$_{3}$CHO at 343779 MHz, CH$_{3}$OH at 342730 MHz, and C$_{2}$H$_{5}$CN at 343195 MHz"},
+{"loc": "Table 1 (molecular transitions)", "quote": "17(17,0)$-$16(16,0) EE"}]},
+{"species": "CH3CHO (acetaldehyde)", "transition": "18(2,17)-17(2,16) E (used for the map); the A component 18(2,17)-17(2,16) A at 343802.725 MHz is the second line", "rest_frequency": "343779.382 MHz", "evidence": [
+{"loc": "3.2 Spatial distribution", "quote": "integrated intensity maps of CH$_{3}$COCH$_{3}$ at 342485 MHz, CH$_{3}$CHO at 343779 MHz, CH$_{3}$OH at 342730 MHz, and C$_{2}$H$_{5}$CN at 343195 MHz"},
+{"loc": "Table 1 (molecular transitions)", "quote": "18(2,17)$-$17(2,16) E"}]},
+{"species": "CH3OH (methanol)", "transition": "13(1,12)-13(0,13) A (used for the map; optically thick)", "rest_frequency": "342729.796 MHz", "evidence": [
+{"loc": "3.2 Spatial distribution", "quote": "integrated intensity maps of CH$_{3}$COCH$_{3}$ at 342485 MHz, CH$_{3}$CHO at 343779 MHz, CH$_{3}$OH at 342730 MHz, and C$_{2}$H$_{5}$CN at 343195 MHz"},
+{"loc": "Table 1 (molecular transitions)", "quote": "13(1,12)$-$13(0,13) A"}]},
+{"species": "13CH3OH", "transition": "multiple transitions, E_up 36-144 K, fit instead of CH3OH", "rest_frequency": "not stated",  "evidence": [
+{"loc": "3.1 Line identifications", "quote": "we fit the isotopolog $^{13}$CH$_{3}$OH as an alternative in the 16 cores"}]},
+{"species": "C2H5CN (ethyl cyanide)", "transition": "38(5,33)-37(5,32) (used for the map)", "rest_frequency": "343194.574 MHz", "evidence": [
+{"loc": "3.2 Spatial distribution", "quote": "integrated intensity maps of CH$_{3}$COCH$_{3}$ at 342485 MHz, CH$_{3}$CHO at 343779 MHz, CH$_{3}$OH at 342730 MHz, and C$_{2}$H$_{5}$CN at 343195 MHz"},
+{"loc": "Table 1 (molecular transitions)", "quote": "38(5,33)$-$37(5,32)"}]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Dense-core positions, deconvolved sizes, peak and integrated flux densities, core masses and dust temperatures of the continuum cores", "evidence": [
+{"loc": "Table 1 notes", "quote": "The basic parameters for the dense cores are adopted from (cite: 2024ApJ...962...13C) and (cite: 2024MNRAS.533.1583L)."},
+{"loc": "3.1 Line identifications", "quote": "T is taken from (cite: 2024ApJ...962...13C), and it is assumed to be equal to the gas temperature of CH$_{3}$OCHO"}]}, "citation": "(cite: 2024ApJ...962...13C); (cite: 2024MNRAS.533.1583L)"},
+{"what": {"value": "CH3OH column densities for 15 of the 16 cores", "evidence": [
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The column densities of CH$_{3}$OH in 15 cores were taken from (cite: 2024MNRAS.533.1583L)"}]}, "citation": "(cite: 2024MNRAS.533.1583L)"},
+{"what": {"value": "12C/13C ratio relation with Galactic-center distance", "evidence": [
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The ratios of $^{12}$C / $^{13}$C follow (cite: 2019ApJ...877..154Y)"},
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "^{12}C / ^{13}C = (5.08 \\pm 1.10)R_{GC} + (11.86 \\pm 6.60)"}]}, "citation": "(cite: 2019ApJ...877..154Y)"},
+{"what": {"value": "Galactocentric distance R_GC of each source", "evidence": [
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "(in kpc) represents the distance from the Galactic Center (cite: 2020MNRAS.496.2790L)"}]}, "citation": "(cite: 2020MNRAS.496.2790L)"},
+{"what": {"value": "Dust mass absorption coefficient 1.89 cm2/g at 870 um", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "= 1.89 cm$^{2}$ g$^{-1}$ is the dust mass absorption coefficient (cite: 1994A&A...291..943O)"}]}, "citation": "(cite: 1994A&A...291..943O)"},
+{"what": {"value": "Gas-to-dust mass ratio of 100", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "= 100 is the gas-to-dust mass ratio (cite: 1991ApJ...380..429L; 1992ApJS...82..167H)"}]}, "citation": "(cite: 1991ApJ...380..429L; 1992ApJS...82..167H)"},
+{"what": {"value": "Mean molecular weight of 2.8", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "= 2.8 is the mean molecular weight of the gas (cite: 2008A&A...487..993K)"}]}, "citation": "(cite: 2008A&A...487..993K)"},
+{"what": {"value": "Vibrational frequencies used in the C2H5CN vibrational correction", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "is the vibrational frequency of mode i (cite: 1981JMoSp..90..531H)"}]}, "citation": "(cite: 1981JMoSp..90..531H)"},
+{"what": {"value": "Spectroscopic line parameters: JPL for CH3COCH3 and CH3CHO; CDMS for CH3OH, 13CH3OH, C2H5CN", "evidence": [
+{"loc": "Molecular transitions", "quote": "Molecular parameters for CH$_{3}$COCH$_{3}$ and CH$_{3}$CHO lines are taken from the JPL catalog, while parameters for CH$_{3}$OH, $^{13}$CH$_{3}$OH, and C$_{2}$H$_{5}$CN lines are sourced from the CDMS catalog."}]}, "citation": "JPL (cite: 1998JQSRT..60..883P); CDMS (cite: 2001A&A...370L..49M; 2005JMoSt.742..215M)"},
+{"what": {"value": "Identification of UC Hii regions through H40alpha emission in some clumps", "evidence": [
+{"loc": "Introduction", "quote": "Eight of the clumps enshroud ultra-compact (UC) Hii regions, as indicated by the presence of associated H40"}]}, "citation": "(cite: 2022MNRAS.511.3463Q; 2023MNRAS.520.3245Z)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Garrod et al. 2022 hot-core chemical model predictions of CH3COCH3 abundance for fast (5e4 yr), medium (2e5 yr) and slow (1e6 yr) warm-up: 6.4e-9, 7.0e-9, 1.4e-8", "evidence": [
+{"loc": "4.2 Chemistry", "quote": "The predicted CH$_{3}$COCH$_{3}$ abundances for these timescales are 6.4 $\\times$ 10$^{-9}$, 7.0 $\\times$ 10$^{-9}$, and 1.4 $\\times$ 10$^{-8}$, respectively."}]}
+],
+"calibration": [
+{"field": "casa_version", "value": "CASA 5.1.15 for data calibration; CASA 5.3 for tclean imaging", "evidence": [
+{"loc": "2 Observations", "quote": "Data calibration was carried out using Common Astronomy Software Applications (CASA; (cite: 2007ASPC..376..127M)) version 5.1.15."},
+{"loc": "2 Observations", "quote": "Continuum imaging and line cubes were generated with the TCLEAN task in CASA 5.3."}]},
+{"field": "flux_calibrator", "value": "J1427-4206, J1517-2422, J1924-2914 (flux and bandpass); phase calibrators J1524-5903, J1650-5044, J1733-3722", "evidence": [
+{"loc": "2 Observations", "quote": "The calibrators used for flux and bandpass calibration were J1427-4206, J1517-2422, and J1924-2914"},
+{"loc": "2 Observations", "quote": "while phase calibration was performed using J1524-5903, J1650-5044, and J1733-3722"}]},
+{"field": "self_calibration", "value": "Applied to the continuum images; solutions applied to line cubes (solint and iterations not stated)", "evidence": [
+{"loc": "2 Observations", "quote": "Self-calibration was applied to improve the quality of the continuum images."},
+{"loc": "2 Observations", "quote": "The self-calibration solutions derived from the continuum images were applied to the line cubes."}]}
+],
+"imaging": [
+{"field": "task", "value": "tclean (CASA 5.3)", "evidence": [{"loc": "2 Observations", "quote": "Continuum imaging and line cubes were generated with the TCLEAN task in CASA 5.3."}]},
+{"field": "deconvolver", "value": "hogbom", "evidence": [{"loc": "2 Observations", "quote": "The deconvolution was performed using the “hogbom” algorithm with a weighting parameter of “briggs,” and the robust parameter was set to 0.5 to balance sensitivity and resolution."}]},
+{"field": "weighting_robust", "value": "briggs, robust = 0.5", "evidence": [{"loc": "2 Observations", "quote": "The deconvolution was performed using the “hogbom” algorithm with a weighting parameter of “briggs,” and the robust parameter was set to 0.5 to balance sensitivity and resolution."}]},
+{"field": "line_free_channels", "value": "Continuum built from line-free channels across the four SPWs; fewer than 10% of channels were line-free (channel ranges not stated)", "evidence": [
+{"loc": "2 Observations", "quote": "The continuum images were constructed from line-free channels across four SPWs."},
+{"loc": "2 Observations", "quote": "Due to the rich spectral line features of the sample, fewer than 10% of the channels were available as line-free, resulting in relatively poor continuum sensitivity."}]},
+{"field": "primary_beam_correction", "value": "pblimit = 0.2", "evidence": [{"loc": "2 Observations", "quote": "Primary beam correction was applied using pblimit = 0.2."}]},
+{"field": "final_beam", "value": "0.7 to 1.0 arcsec", "evidence": [{"loc": "2 Observations", "quote": "The final synthesized beam sizes for both the continuum images and line cubes range from 0.7 to 1.0 arcsec."}]},
+{"field": "final_rms", "value": "continuum ~1.2 mJy/beam; line cubes ~4.7 mJy/beam per channel", "evidence": [{"loc": "2 Observations", "quote": "The average sensitivity of the continuum images is $\\sim$ 1.2 mJy beam$^{-1}$, and the mean sensitivity of the line cubes is $\\sim$ 4.7 mJy beam$^{-1}$ per channel."}]}
+],
+"inherited": [
+{"what": {"value": "Sample selection of the 11 clumps", "evidence": [{"loc": "2 Observations", "quote": "The sample selection for the ALMA observations is described in detail by (cite: 2024ApJS..270....9X) and (cite: 2024ApJ...962...13C)."}]}, "from_reference": "(cite: 2024ApJS..270....9X) and (cite: 2024ApJ...962...13C)"},
+{"what": {"value": "Data are a pilot/subsample of the ATOMS survey", "evidence": [{"loc": "Introduction", "quote": "These data serve as a pilot project for the ALMA Three-millimeter Observations of Massive Star-Forming Regions (ATOMS) survey and are a subsample of ATOMS (cite: 2020MNRAS.496.2790L; 2024ApJS..270....9X)."}]}, "from_reference": "(cite: 2020MNRAS.496.2790L; 2024ApJS..270....9X)"},
+{"what": {"value": "Dense-core identification and line-rich core classification (145 cores, 28 line-rich)", "evidence": [{"loc": "3.1 Line identifications", "quote": "A total of 145 dense cores were identified across the 11 clumps, and 28 cores from 9 clumps were classified as line-rich (cite: 2024ApJ...962...13C)."}]}, "from_reference": "(cite: 2024ApJ...962...13C)"},
+{"what": {"value": "Source size from 2D Gaussian fitting of the continuum in CASA", "evidence": [{"loc": "3.1 Line identifications", "quote": "which was derived from 2D Gaussian fitting in CASA (cite: 2024ApJ...962...13C)"}]}, "from_reference": "(cite: 2024ApJ...962...13C)"},
+{"what": {"value": "Dust temperature for N(H2), taken from earlier work and equated to the CH3OCHO gas temperature", "evidence": [{"loc": "3.1 Line identifications", "quote": "T is taken from (cite: 2024ApJ...962...13C), and it is assumed to be equal to the gas temperature of CH$_{3}$OCHO"}]}, "from_reference": "(cite: 2024ApJ...962...13C)"},
+{"what": {"value": "CH3OH column densities derived from 13CH3OH and 12C/13C", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The column densities of CH$_{3}$OH in 15 cores were taken from (cite: 2024MNRAS.533.1583L)"}]}, "from_reference": "(cite: 2024MNRAS.533.1583L)"},
+{"what": {"value": "CH3CHO treated as a precursor of CH3COCH3, so its fit temperature is set equal to that of CH3COCH3", "evidence": [{"loc": "3.1 Line identifications", "quote": "as CH$_{3}$CHO is considered a precursor to CH$_{3}$COCH$_{3}$ (cite: 2022ApJS..259....1G)"}]}, "from_reference": "(cite: 2022ApJS..259....1G)"},
+{"what": {"value": "Vibrational correction factor formula", "evidence": [{"loc": "3.1 Line identifications", "quote": "The vibrational correction factor (f$_{\\rm vib}$) can be given as (cite: 1966PASJ...18..127T)"}]}, "from_reference": "(cite: 1966PASJ...18..127T)"}
+],
+"unstated_but_needed": [
+"Which core in the core-parameters table belongs to which clump (the table text has no clump names, while the discussion uses names such as I15520 C3 and I16060 C2)",
+"Self-calibration solution intervals, number of iterations, reference antenna and the SPWs/channels used",
+"Line-free channel ranges used for the continuum, and whether line cubes were continuum-subtracted (uvcontsub) or smoothed to a common beam",
+"tclean settings beyond briggs 0.5, hogbom and pblimit 0.2: cell size, image size, niter, threshold, masking, channel width of the cubes",
+"Why calibration is quoted for CASA 5.1.15 but tclean for CASA 5.3, and whether the pipeline or manual calibration was used",
+"XCLASS version and MAGIX MCMC settings: chain count, iterations, priors/parameter ranges, starting values, frequency windows used for each fit",
+"Which transitions per molecule were kept or excluded in each core given the many blends listed in the transition tables",
+"Fitted linewidths and velocity offsets per core (only T and N are tabulated)",
+"Velocity range and masking used for the integrated-intensity maps",
+"Which correlation coefficient (Pearson vs rank) and what error handling was used for the abundance correlations",
+"Per-core R_GC values and 13CH3OH column densities (these live in Li et al. 2024)",
+"The full list of vibrational frequencies used for the C2H5CN correction"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image continuum and line cubes",
+"method": {"value": "CASA calibration, tclean continuum and cube imaging with briggs weighting (robust 0.5), hogbom, self-calibration from continuum applied to cubes, pblimit 0.2", "evidence": [
+{"loc": "2 Observations", "quote": "Continuum imaging and line cubes were generated with the TCLEAN task in CASA 5.3."},
+{"loc": "2 Observations", "quote": "The self-calibration solutions derived from the continuum images were applied to the line cubes."}]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "briggs, robust = 0.5, hogbom", "evidence": [{"loc": "2 Observations", "quote": "The deconvolution was performed using the “hogbom” algorithm with a weighting parameter of “briggs,” and the robust parameter was set to 0.5 to balance sensitivity and resolution."}]},
+{"value": "pblimit = 0.2", "evidence": [{"loc": "2 Observations", "quote": "Primary beam correction was applied using pblimit = 0.2."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Fit LTE synthetic spectra per core to get T, N for each molecule",
+"method": {"value": "Extract a single-pixel spectrum at each core continuum peak and fit LTE models with XCLASS; CH3OH is handled through 13CH3OH and a 12C/13C ratio", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "Spectra were extracted from a single pixel at the continuum peak position of the dense core and averaged over the beam."},
+{"loc": "3.1 Line identifications", "quote": "Under the assumption of local thermodynamic equilibrium (LTE), XCLASS solves the radiative transfer equation and generates synthetic spectra for specific molecular transitions"}]},
+"software": ["XCLASS", "MAGIX", "CDMS", "JPL"],
+"key_parameters": [
+{"value": "Free parameters per molecule: source size, rotation temperature, column density, line width, velocity offset", "evidence": [{"loc": "3.1 Line identifications", "quote": "rotation temperature (T), column density (N), line width"}]},
+{"value": "Source size fixed to the deconvolved continuum size", "evidence": [{"loc": "3.1 Line identifications", "quote": "In our study, the source size was taken as the deconvolved size of the continuum emission"}]},
+{"value": "Upper level energy ranges: 93-485 K CH3COCH3, 227-459 K CH3OH, 36-144 K 13CH3OH, 64-441 K C2H5CN; CH3CHO two lines at 166 K", "evidence": [{"loc": "3.1 Line identifications", "quote": "The upper level energy ranges of molecular transitions are 93$-$485 K for CH$_{3}$COCH$_{3}$, 227$-$459 K for CH$_{3}$OH, 36$-$144 K for $^{13}$CH$_{3}$OH, and 64$-$441 K for C$_{2}$H$_{5}$CN."}]},
+{"value": "C2H5CN partition function includes only the ground state, so its column densities are corrected by f_vib", "evidence": [{"loc": "3.1 Line identifications", "quote": "while the partition function of C$_{2}$H$_{5}$CN only considers the contribution from the ground state in the XCLASS fitting"}]}
+],
+"assumptions": [
+{"value": "LTE", "evidence": [{"loc": "3.1 Line identifications", "quote": "Under the assumption of local thermodynamic equilibrium (LTE), XCLASS solves the radiative transfer equation"}]},
+{"value": "CH3CHO fit temperature fixed to the CH3COCH3 excitation temperature", "evidence": [{"loc": "3.1 Line identifications", "quote": "We assumed that the fitting temperature of CH$_{3}$CHO is equal to the excitation temperature of CH$_{3}$COCH$_{3}$, as CH$_{3}$CHO is considered a precursor to CH$_{3}$COCH$_{3}$ (cite: 2022ApJS..259....1G)."}]},
+{"value": "CH3OH rotation temperature equal to that of 13CH3OH", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The rotation temperature of CH$_{3}$OH was assumed to be the same as that of $^{13}$CH$_{3}$OH."}]},
+{"value": "CH3OH column density = 13CH3OH column density times 12C/13C from the R_GC relation", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "which were calculated from the $^{12}$C / $^{13}$C ratios based on the column densities of $^{13}$CH$_{3}$OH"}]}
+],
+"fitting": {"value": "MAGIX with the Markov chain Monte Carlo algorithm; priors, chains and likelihood not stated", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "We obtained the final fitting parameters and error estimates for the molecules using the Markov chain Monte Carlo algorithm."}]},
+"validation": {"value": "A transition counts as detected if above 3 sigma and consistent with the XCLASS model across frequencies", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "Transitions are considered to be detected if their line intensities exceed 3"},
+{"loc": "3.1 Line identifications", "quote": "and the observed line intensities at different frequencies are consistent with the XCLASS model predictions"}]}
+},
+{
+"order": 3,
+"goal": "Derive H2 column density from continuum flux",
+"method": {"value": "Optically thin dust continuum formula for N(H2) using integrated flux density, solid angle, kappa and the Planck function", "evidence": [
+{"loc": "3.1 Line identifications", "quote": "The source-averaged H$_{2}$ column densities of the 16 cores are derived from the continuum flux using the following formula under the LTE assumption (cite: 2008A&A...487..993K)"}]},
+"software": [],
+"key_parameters": [
+{"value": "kappa(870 um) = 1.89 cm2/g", "evidence": [{"loc": "3.1 Line identifications", "quote": "= 1.89 cm$^{2}$ g$^{-1}$ is the dust mass absorption coefficient (cite: 1994A&A...291..943O)"}]},
+{"value": "Dust temperature taken from Chen et al. 2024", "evidence": [{"loc": "3.1 Line identifications", "quote": "T is taken from (cite: 2024ApJ...962...13C), and it is assumed to be equal to the gas temperature of CH$_{3}$OCHO"}]}
+],
+"assumptions": [
+{"value": "gas-to-dust mass ratio = 100", "evidence": [{"loc": "3.1 Line identifications", "quote": "= 100 is the gas-to-dust mass ratio (cite: 1991ApJ...380..429L; 1992ApJS...82..167H)"}]},
+{"value": "mean molecular weight = 2.8", "evidence": [{"loc": "3.1 Line identifications", "quote": "= 2.8 is the mean molecular weight of the gas (cite: 2008A&A...487..993K)"}]},
+{"value": "dust temperature equal to the CH3OCHO gas temperature", "evidence": [{"loc": "3.1 Line identifications", "quote": "T is taken from (cite: 2024ApJ...962...13C), and it is assumed to be equal to the gas temperature of CH$_{3}$OCHO"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Compute abundances relative to H2 and test correlations between molecules",
+"method": {"value": "Fractional abundance = N / N(H2) per core; correlation coefficients and significance between acetone and the other molecules; comparison of mean temperatures", "evidence": [
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "where N represents the column density of specific molecule and N (H$_{2}$) denotes the column density of molecular hydrogen"},
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The correlation coefficients of CH$_{3}$COCH$_{3}$ with CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN are 0.90, 0.61, and 0.91, respectively."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Temperature correlations checked to exclude temperature as the driver of abundance correlations", "evidence": [
+{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "This indicates that the abundance correlations of these molecules are not affected by temperature."}]}
+},
+{
+"order": 5,
+"goal": "Map line integrated intensities against the continuum",
+"method": {"value": "Integrated intensity maps of one transition per molecule toward nine clumps, compared with continuum peaks and UC Hii regions", "evidence": [
+{"loc": "3.2 Spatial distribution", "quote": "integrated intensity maps of CH$_{3}$COCH$_{3}$ at 342485 MHz, CH$_{3}$CHO at 343779 MHz, CH$_{3}$OH at 342730 MHz, and C$_{2}$H$_{5}$CN at 343195 MHz"}]},
+"software": [],
+"key_parameters": [
+{"value": "Transitions marked with asterisks in the transition tables are the ones used for the maps", "evidence": [{"loc": "Table 1 notes", "quote": "Asterisks mark the transitions of the molecules that are used for Fig."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Compare with literature sources and a grain-surface chemical model",
+"method": {"value": "Compare mean T, N and abundance of acetone in H, I, L cores with published high/intermediate/low-mass sources, and the mean abundance with Garrod et al. 2022 model predictions", "evidence": [
+{"loc": "4.1 Comparison of the physical parameters", "quote": "These comparisons suggest that the CH$_{3}$COCH$_{3}$ emitting gas in the H, I, and L cores may have similar physical and chemical conditions"},
+{"loc": "4.2 Chemistry", "quote": "The average abundance of CH$_{3}$COCH$_{3}$ is (6.2$\\pm$1.3)$\\times$10$^{-8}$, which is comparable to the slow timescale model prediction."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.1.15 (calibration); 5.3 (tclean)", "used_for": {"value": "Data calibration, imaging, and 2D Gaussian fitting of continuum cores", "evidence": [
+{"loc": "2 Observations", "quote": "Data calibration was carried out using Common Astronomy Software Applications (CASA; (cite: 2007ASPC..376..127M)) version 5.1.15."},
+{"loc": "3.1 Line identifications", "quote": "which was derived from 2D Gaussian fitting in CASA (cite: 2024ApJ...962...13C)"}]}},
+{"name": "tclean", "version": "CASA 5.3", "used_for": {"value": "Continuum and line cube imaging", "evidence": [{"loc": "2 Observations", "quote": "Continuum imaging and line cubes were generated with the TCLEAN task in CASA 5.3."}]}},
+{"name": "XCLASS", "version": "not stated", "used_for": {"value": "Line identification and LTE spectral fitting", "evidence": [{"loc": "3.1 Line identifications", "quote": "we used the eXtended CASA Line Analysis Software Suite (XCLASS[^1]; (cite: 2017A&A...598A...7M)) to identify spectral lines in the 28 line-rich cores"}]}},
+{"name": "MAGIX", "version": "not stated", "used_for": {"value": "Parameter optimisation and error estimation within XCLASS (MCMC)", "evidence": [{"loc": "3.1 Line identifications", "quote": "MAGIX optimizes the parameter solutions and provides error estimations using various algorithms."}]}},
+{"name": "CDMS catalog", "version": "not stated", "used_for": {"value": "Line parameters for CH3OH, 13CH3OH and C2H5CN", "evidence": [{"loc": "Molecular transitions", "quote": "Molecular parameters for CH$_{3}$COCH$_{3}$ and CH$_{3}$CHO lines are taken from the JPL catalog, while parameters for CH$_{3}$OH, $^{13}$CH$_{3}$OH, and C$_{2}$H$_{5}$CN lines are sourced from the CDMS catalog."}]}},
+{"name": "JPL catalog", "version": "not stated", "used_for": {"value": "Line parameters for CH3COCH3 and CH3CHO", "evidence": [{"loc": "Molecular transitions", "quote": "Molecular parameters for CH$_{3}$COCH$_{3}$ and CH$_{3}$CHO lines are taken from the JPL catalog"}]}}
+],
+"results_numeric": [
+{"quantity": "Number of cores with CH3COCH3 detected", "value": "16 (in 9 clumps)", "uncertainty": "not stated", "units": "cores", "from_step": 2, "evidence": [{"loc": "abstract", "quote": "CH$_{3}$COCH$_{3}$ is detected in 16 line-rich cores from 9 massive protostellar clumps"}]},
+{"quantity": "Number of cores with C2H5CN detected", "value": "15", "uncertainty": "not stated", "units": "cores", "from_step": 2, "evidence": [{"loc": "abstract", "quote": "while C$_{2}$H$_{5}$CN is detected in 15"}]},
+{"quantity": "CH3COCH3 rotation temperature range", "value": "92 to 163", "uncertainty": "not stated", "units": "K", "from_step": 2, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "the rotation temperatures range from 92 to 163 K for CH$_{3}$COCH$_{3}$, 95 to 250 K for C$_{2}$H$_{5}$CN, and 52 to 159 K for CH$_{3}$OH"}]},
+{"quantity": "C2H5CN rotation temperature range", "value": "95 to 250", "uncertainty": "not stated", "units": "K", "from_step": 2, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "the rotation temperatures range from 92 to 163 K for CH$_{3}$COCH$_{3}$, 95 to 250 K for C$_{2}$H$_{5}$CN, and 52 to 159 K for CH$_{3}$OH"}]},
+{"quantity": "CH3OH rotation temperature range", "value": "52 to 159", "uncertainty": "not stated", "units": "K", "from_step": 2, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "the rotation temperatures range from 92 to 163 K for CH$_{3}$COCH$_{3}$, 95 to 250 K for C$_{2}$H$_{5}$CN, and 52 to 159 K for CH$_{3}$OH"}]},
+{"quantity": "CH3COCH3 column density range", "value": "1e15 to 1e17", "uncertainty": "not stated", "units": "cm^-2", "from_step": 2, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The column densities span from 10$^{15}$ to 10$^{17}$ cm$^{-2}$ for CH$_{3}$COCH$_{3}$ and C$_{2}$H$_{5}$CN"}]},
+{"quantity": "13CH3OH column density in I17220 C2 (used with 12C/13C = 18 to give CH3OH N)", "value": "2.0e17", "uncertainty": "0.2e17", "units": "cm^-2", "from_step": 2, "evidence": [{"loc": "Table 3 notes", "quote": "Derived from a column density of $^{13}$CH$_{3}$OH of (2.0$\\pm$0.2)$\\times$10$^{17}$ cm$^{-2}$, using a $^{12}$C / $^{13}$C ratio of 18"}]},
+{"quantity": "CH3COCH3 abundance range relative to H2", "value": "1e-9 to 1e-7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "ranging from 10$^{-9}$ to 10$^{-7}$"}]},
+{"quantity": "Average CH3COCH3 abundance", "value": "6.2e-8", "uncertainty": "1.3e-8", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "(6.2$\\pm$1.3)$\\times$10$^{-8}$ for CH$_{3}$COCH$_{3}$"}]},
+{"quantity": "Average CH3CHO abundance", "value": "1.6e-8", "uncertainty": "0.4e-8", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "(1.6$\\pm$0.4)$\\times$10$^{-8}$ for CH$_{3}$CHO"}]},
+{"quantity": "Average CH3OH abundance", "value": "9.0e-6", "uncertainty": "1.7e-6", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "(9.0$\\pm$1.7)$\\times$10$^{-6}$ for CH$_{3}$OH"}]},
+{"quantity": "Average C2H5CN abundance", "value": "7.5e-8", "uncertainty": "1.9e-8", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "(7.5$\\pm$1.9)$\\times$10$^{-8}$ for C$_{2}$H$_{5}$CN"}]},
+{"quantity": "Abundance correlation coefficient CH3COCH3 vs CH3CHO", "value": "0.90", "uncertainty": "P<0.001 as stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The correlation coefficients of CH$_{3}$COCH$_{3}$ with CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN are 0.90, 0.61, and 0.91, respectively."}]},
+{"quantity": "Abundance correlation coefficient CH3COCH3 vs CH3OH", "value": "0.61", "uncertainty": "P<0.05 as stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The correlation coefficients of CH$_{3}$COCH$_{3}$ with CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN are 0.90, 0.61, and 0.91, respectively."}]},
+{"quantity": "Abundance correlation coefficient CH3COCH3 vs C2H5CN", "value": "0.91", "uncertainty": "P<0.001 as stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The correlation coefficients of CH$_{3}$COCH$_{3}$ with CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN are 0.90, 0.61, and 0.91, respectively."}]},
+{"quantity": "Average rotation temperature of CH3COCH3", "value": "129", "uncertainty": "6", "units": "K", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "129$\\pm$6 K for CH$_{3}$COCH$_{3}$, 119$\\pm$9 K for CH$_{3}$OH, and 141$\\pm$11 K for C$_{2}$H$_{5}$CN"}]},
+{"quantity": "Average rotation temperature of CH3OH", "value": "119", "uncertainty": "9", "units": "K", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "129$\\pm$6 K for CH$_{3}$COCH$_{3}$, 119$\\pm$9 K for CH$_{3}$OH, and 141$\\pm$11 K for C$_{2}$H$_{5}$CN"}]},
+{"quantity": "Average rotation temperature of C2H5CN", "value": "141", "uncertainty": "11", "units": "K", "from_step": 4, "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "129$\\pm$6 K for CH$_{3}$COCH$_{3}$, 119$\\pm$9 K for CH$_{3}$OH, and 141$\\pm$11 K for C$_{2}$H$_{5}$CN"}]},
+{"quantity": "Mean CH3COCH3 rotation temperature in H cores", "value": "134", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [{"loc": "4.1 Comparison of the physical parameters", "quote": "The mean rotation temperature of CH$_{3}$COCH$_{3}$ in the H cores from our study is 134 K"}]},
+{"quantity": "Mean CH3COCH3 column density in H cores", "value": "4.2e16", "uncertainty": "not stated", "units": "cm^-2", "from_step": 6, "evidence": [{"loc": "4.1 Comparison of the physical parameters", "quote": "the average column density is 4.2 $\\times$ 10$^{16}$ cm$^{-2}$"}]},
+{"quantity": "Mean CH3COCH3 abundance in H cores", "value": "7.5e-8", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "4.1 Comparison of the physical parameters", "quote": "and the mean abundance is 7.5 $\\times$ 10$^{-8}$"}]},
+{"quantity": "Mean CH3COCH3 column density in I cores", "value": "7.9e15", "uncertainty": "not stated", "units": "cm^-2", "from_step": 6, "evidence": [{"loc": "4.1 Comparison of the physical parameters", "quote": "In the I cores, the mean column density of CH$_{3}$COCH$_{3}$ is 7.9 $\\times$ 10$^{15}$ cm$^{-2}$"}]},
+{"quantity": "CH3COCH3 column density in the L core", "value": "1.6e15", "uncertainty": "not stated", "units": "cm^-2", "from_step": 6, "evidence": [{"loc": "4.1 Comparison of the physical parameters", "quote": "For the L cores, the CH$_{3}$COCH$_{3}$ column density of 1.6 $\\times$ 10$^{15}$ cm$^{-2}$"}]}
+],
+"findings_qualitative": [
+{"value": "Integrated intensity maps of CH3COCH3, CH3CHO, CH3OH and C2H5CN look similar", "evidence": [{"loc": "abstract", "quote": "The integrated intensity maps reveal similar spatial distributions for CH$_{3}$COCH$_{3}$, CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN."}]},
+{"value": "Line peaks coincide with continuum peaks in regions without UC Hii regions; in clumps with UC Hii regions line peaks are offset", "evidence": [
+{"loc": "abstract", "quote": "The line emission peaks of all four molecules coincide with the continuum emission peaks in regions without ultra-compact Hii regions."},
+{"loc": "3.2 Spatial distribution", "quote": "the observed line offsets are likely influenced by UC Hii regions"}]},
+{"value": "I16060 C2 has CH3COCH3 without detected C2H5CN, contradicting earlier claims that acetone needs C2H5CN", "evidence": [{"loc": "3.2 Spatial distribution", "quote": "Nonetheless, I16060 C2 provides a counterexample"}]},
+{"value": "Column densities of all four molecules in H cores are 1 to 2 orders of magnitude above those in I and L cores", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "In general, the column densities of the four molecules in the H cores are 1 to 2 orders of magnitude higher than those in the I and L cores."}]},
+{"value": "No significant correlations among the rotation temperatures of CH3COCH3, CH3OH and C2H5CN", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "showing no significant correlations in temperatures among these molecules"}]}
+],
+"claims": [
+{"hypothesis": "Acetone has the same spatial distribution as other O-bearing and N-bearing COMs in massive protostellar cores", "experiment": "Integrated-intensity maps of CH3COCH3, CH3CHO, CH3OH and C2H5CN in nine clumps at 0.7-1.0 arcsec", "result": "Similar morphologies; line peaks coincide with continuum peaks except in six cores in clumps with UC Hii regions", "finding": "In this larger sample acetone is associated with both O- and N-bearing molecules, unlike the Orion-KL result", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The integrated intensity maps reveal similar spatial distributions for CH$_{3}$COCH$_{3}$, CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN."},
+{"loc": "3.2 Spatial distribution", "quote": "in our larger sample, CH$_{3}$COCH$_{3}$ was found to be associated with the spatial distribution of both O- and N-bearing molecules"}]},
+{"hypothesis": "Acetone abundance is correlated with that of CH3CHO, CH3OH and C2H5CN", "experiment": "XCLASS LTE fits for 16 cores, abundances relative to N(H2), correlation coefficients", "result": "Coefficients 0.90 (CH3CHO), 0.61 (CH3OH), 0.91 (C2H5CN)", "finding": "Significant abundance correlations with all three molecules, highly significant for CH3CHO and C2H5CN", "support": "supported", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "The correlation coefficients of CH$_{3}$COCH$_{3}$ with CH$_{3}$CHO, CH$_{3}$OH, and C$_{2}$H$_{5}$CN are 0.90, 0.61, and 0.91, respectively."}]},
+{"hypothesis": "The molecules have similar rotation temperatures and the abundance correlations are not a temperature effect", "experiment": "Compared fitted rotation temperatures of CH3COCH3, CH3OH and C2H5CN across the 16 cores", "result": "No significant temperature correlations; mean T of 129, 119 and 141 K", "finding": "Average temperatures are comparable within errors", "support": "supported", "evidence": [{"loc": "3.3 Rotation temperatures, column densities, and abundances", "quote": "Considering the errors, the average temperatures of the three molecules are comparable."}]},
+{"hypothesis": "CH3COCH3, CH3CHO and CH3OH originate from the same gas via grain-surface chemistry", "experiment": "Combined morphology and abundance correlations with Garrod et al. 2022 warm-up model predictions", "result": "Mean abundance 6.2e-8 is comparable to the slow-warm-up prediction of 1.4e-8; no model links CH3COCH3 and C2H5CN", "finding": "The three O-bearing molecules likely share a grain-surface origin; C2H5CN may only coexist", "support": "supported", "evidence": [
+{"loc": "4.2 Chemistry", "quote": "The average abundance of CH$_{3}$COCH$_{3}$ is (6.2$\\pm$1.3)$\\times$10$^{-8}$, which is comparable to the slow timescale model prediction."},
+{"loc": "4.2 Chemistry", "quote": "However, no chemical models suggest a direct association between CH$_{3}$COCH$_{3}$ and C$_{2}$H$_{5}$CN."}]},
+{"hypothesis": "Acetone in H, I and L cores resembles that in high-, intermediate- and low-mass star-forming regions", "experiment": "Compared mean T, N and abundance by core class with published values", "result": "H-core mean T 134 K, N 4.2e16 cm^-2; I-core N 7.9e15; L-core N 1.6e15", "finding": "Emitting gas may have similar conditions to that in the respective literature regimes", "support": "partially", "evidence": [{"loc": "4.1 Comparison of the physical parameters", "quote": "These comparisons suggest that the CH$_{3}$COCH$_{3}$ emitting gas in the H, I, and L cores may have similar physical and chemical conditions"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Earlier acetone work was limited to single targets or small single-dish samples, so a larger interferometric sample with matched resolution and spectral setup was needed", "evidence": [{"loc": "Introduction", "quote": "comprehensive interferometric studies targeting CH$_{3}$COCH$_{3}$ and chemically associated molecules across a larger sample with a similar angular resolution and spectral setup are essential"}]},
+{"field": "why_this_method", "value": "13CH3OH is fitted instead of CH3OH because CH3OH lines are optically thick and blended", "evidence": [{"loc": "3.1 Line identifications", "quote": "Due to the optical thickness and blending of certain CH$_{3}$OH lines (see Appendix [8](#sec:mt)), we fit the isotopolog $^{13}$CH$_{3}$OH as an alternative in the 16 cores."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Fitting CH3OH directly was replaced by fitting 13CH3OH because of optical depth and blending", "evidence": [{"loc": "3.1 Line identifications", "quote": "we fit the isotopolog $^{13}$CH$_{3}$OH as an alternative in the 16 cores"}]}
+],
+"limitations_admitted": [
+{"value": "Source size from the continuum may underestimate the line-emitting size and so overestimate fitted column densities", "evidence": [{"loc": "3.1 Line identifications", "quote": "This may lead to an underestimation of the source size, resulting in an overestimate of the fitted column densities."}]},
+{"value": "Poor continuum sensitivity because fewer than 10% of channels are line-free", "evidence": [{"loc": "2 Observations", "quote": "resulting in relatively poor continuum sensitivity"}]},
+{"value": "Resolved scales above 2000 au are too coarse to see the Orion-KL-like differences between molecules", "evidence": [{"loc": "3.2 Spatial distribution", "quote": "whereas the resolved linear scales of our samples exceed 2000 au"}]}
+],
+"referee_caveats_inferred": [
+"Abundances share the same N(H2) denominator and CH3CHO shares the CH3COCH3 temperature, so the abundance correlations may be partly built in; no test against N(H2) alone is shown",
+"Dust temperature is set equal to the CH3OCHO gas temperature, which directly drives N(H2) and all abundances",
+"LTE with a single temperature and a continuum-based source size is applied to line emission that the authors say is more extended in some cores",
+"The intermediate-mass core count is 3 in the abstract and table but 4 in Section 3.1",
+"Several CH3OH abundance uncertainties in the table exceed the value (for example 3.1 +/- 9.6 e-6), suggesting an error propagation problem",
+"The correlation method (Pearson or rank) and how errors enter it are not described, with only 16 cores of heterogeneous distance (2.7 to 10.1 kpc)"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Core catalogue (positions, sizes, fluxes, T_dust, masses) lives in Chen et al. 2024 and CH3OH columns in Li et al. 2024",
+"Self-calibration parameters and tclean cube settings",
+"XCLASS/MAGIX run configuration (ranges, chain settings, windows, version)",
+"Per-core line selection and linewidths",
+"Integrated-intensity velocity ranges and masks"
+],
+"estimated_data_volume_inferred": "About 11 fields in one Band 7 C43-1 project with four SPWs; raw MS likely tens of GB, calibrated data a few tens of GB (inferred, not stated)",
+"score_inferred": 3,
+"score_reason": "Score on a 1-5 scale: data source and imaging basics are stated, but core table, CH3OH columns and XCLASS fit configuration depend on other papers or are missing",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The ALMA project code is given, but the core catalogue and CH3OH columns come from other papers and the XCLASS/MAGIX setup and self-calibration are unspecified, so the numeric results cannot be redone from this paper alone",
+"methods_papers": [
+{"citation": "(cite: 2017A&A...598A...7M)", "why": "XCLASS line identification and LTE fitting"},
+{"citation": "(cite: 2013A&A...549A..21M)", "why": "MAGIX optimiser used by XCLASS"},
+{"citation": "(cite: 2024ApJ...962...13C)", "why": "Dense-core extraction, sizes, fluxes, masses and temperatures"},
+{"citation": "(cite: 2024ApJS..270....9X)", "why": "ATOMS sample selection"}
+],
+"companion_papers": [
+{"citation": "(cite: 2024MNRAS.533.1583L)", "why": "Source of CH3OH column densities (13CH3OH-based)"},
+{"citation": "(cite: 2020MNRAS.496.2790L)", "why": "ATOMS survey overview"},
+{"citation": "(cite: 2022MNRAS.511.3463Q; 2023MNRAS.520.3245Z)", "why": "UC Hii regions traced by H40alpha"},
+{"citation": "(cite: 2022ApJS..259....1G)", "why": "Chemical model used for abundance comparison"}
+],
+"related_projects_or_surveys": ["ATOMS (ALMA Three-millimeter Observations of Massive Star-Forming Regions); this Band 7 project is a pilot"]
+}

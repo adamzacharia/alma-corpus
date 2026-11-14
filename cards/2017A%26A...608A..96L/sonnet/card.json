@@ -1,0 +1,762 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017A&A...608A..96L",
+  "title": "The ortho-to-para ratio of H<SUB>2</SUB>Cl<SUP>+</SUP>: Quasi-classical trajectory calculations and new simulations in light of new observations",
+  "year": 2017,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Le Gal, R.",
+  "n_authors": 6,
+  "arxiv_id": "1708.08980",
+  "doi": "10.1051/0004-6361/201731566",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00020.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "3.1 Description of the observations",
+    "quote": "The ortho and para forms of were observed with the Atacama Large Millimeter/submillimeter Array (ALMA) during Early Science cycle 2, in summer 2014."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "PKS 1830-211 (z=0.89 absorber, SW and NE lines of sight)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z_abs = 0.88582",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Sky frequencies are given assuming a redshift $z_{abs}=0.88582$, heliocentric frame."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the ortho-to-para ratio of H2Cl+ in the z=0.89 absorber toward PKS 1830-211, and which formation mechanism (H-abstraction vs full scrambling) explains it?",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "In both sightlines, we measured an OPR consistent with a 3:1 ratio."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00020.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: #2013.1.00020.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (ortho, ~100 GHz sky) and Band 6 (para, ~257 GHz sky)",
+    "evidence": [
+     {
+      "loc": "3.1 Description of the observations",
+      "quote": "redshifted to $\\sim 100$ GHz, within ALMA Band 3) and the $1_{11}$-$0_{00}$ transitions of para- (rest frequencies $\\sim 485$ GHz, redshifted to $\\sim 257$ GHz, within ALMA Band 6)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "1.875 GHz spectral windows; 1.3 km/s (Band 6) and 2.9 km/s (Band 3) after Hanning smoothing",
+    "evidence": [
+     {
+      "loc": "3.1 Description of the observations",
+      "quote": "The correlator was set up with spectral windows of 1.875 GHz, providing a velocity resolution of 1.3 km s$^{-1}$ (Band 6) and 2.9 km s$^{-1}$ (Band 3), after Hanning smoothing."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "ortho-H2Cl+",
+     "transition": "1_10-1_01",
+     "rest_frequency": "189.225 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "189.225 $^{(c)}$"
+      }
+     ]
+    },
+    {
+     "species": "para-H2Cl+",
+     "transition": "1_11-0_00",
+     "rest_frequency": "485.418 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "485.418 $^{(c)}$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "better than 0.5 arcsec",
+    "evidence": [
+     {
+      "loc": "3.1 Description of the observations",
+      "quote": "The array was maintained in a configuration providing a synthesized beam resolution of better than 0.5$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Ortho: 2014 Jul 21 and Aug 26; para: 2014 Jun 06 and Jul 29",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2014, Jul. 21 and Aug. 26"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Cosmic-ray ionization rates for SW (3e-14 s-1) and NE (5e-15 s-1) used in models",
+      "evidence": [
+       {
+        "loc": "4.1 Model description",
+        "quote": "we set equal to the values estimated by (cite: muller2016a)"
+       }
+      ]
+     },
+     "citation": "(cite: muller2016a)"
+    },
+    {
+     "what": {
+      "value": "Diffuse ISM gas-phase elemental abundances",
+      "evidence": [
+       {
+        "loc": "4.1 Model description",
+        "quote": "typical diffuse ISM gas-phase elemental abundances relative to total hydrogen (cite: gerin2016)"
+       }
+      ]
+     },
+     "citation": "(cite: gerin2016)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, standard procedure",
+     "evidence": [
+      {
+       "loc": "3.1 Description of the observations",
+       "quote": "The data calibration was performed within CASA[^1] following a standard procedure."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "One run of self-calibration on the bright continuum of PKS 1830-211",
+     "evidence": [
+      {
+       "loc": "3.1 Description of the observations",
+       "quote": "A further run of self-calibration using the bright continuum of PKS 1830$-$211 helped us to significantly improve the data quality."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Nuclear-spin network and QCT zero-point-energy treatment taken from earlier NH2 work",
+      "evidence": [
+       {
+        "loc": "4.1 Model description",
+        "quote": "We enlarged the nuclear spin chemical network used in (cite: legal2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: legal2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version",
+    "Line-free channels and continuum handling",
+    "Self-calibration solution intervals",
+    "Starting model, priors and fit method for the Gaussian velocity components",
+    "Number of ALMA data sets/executions used",
+    "Which model Av and density were adopted"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra toward both lensed images",
+    "method": {
+     "value": "Fit a two-point-source model to visibilities",
+     "evidence": [
+      {
+       "loc": "3.1 Description of the observations",
+       "quote": "by fitting a model of two point sources to the interferometric visibilities"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "UVMULTIFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit OPR from simultaneous ortho/para absorption",
+    "method": {
+     "value": "Simultaneous fit with five Gaussian components (four SW, one NE) with OPR free",
+     "evidence": [
+      {
+       "loc": "3.3 Observed absorption spectra",
+       "quote": "We perform a simultaneous fit of the ortho- and para- absorption profile with five Gaussian velocity components (four for the SW line-of-sight and one for the NE one), with the OPR as a free parameter of the fit."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Chemical modeling of OPR",
+    "method": {
+     "value": "Pseudo-time-dependent gas-phase models with nuclear-spin network, grid in density and temperature",
+     "evidence": [
+      {
+       "loc": "4.2 Modeling results",
+       "quote": "we ran grids of models where the density, $n_\\ce{H} = n(\\ce{H}) +\n2n(\\ce{H2})$, varies from $2\\ensuremath{{\\,\\times 10^{2}}}$ to $2\\ensuremath{{\\,\\times 10^{4}}}$  and the gas temperature from 10 to 100 K."
+      }
+     ]
+    },
+    "software": [
+     "NAUTILUS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "One to three magnitudes of visual extinction; dust grain radius 0.1 micron; dust-to-gas 1%",
+      "evidence": [
+       {
+        "loc": "4.1 Model description",
+        "quote": "We adopted a single dust grain radius of 0.1 $\\mu$m, satisfying a dust-to-gas mass ratio of 1%."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with analytic OPR0 model",
+     "evidence": [
+      {
+       "loc": "4.2 Modeling results",
+       "quote": "The excellent agreement at steady-state between these two latter models shows that the importance of reaction ([\\[reaction6\\]](#reaction6)) is negligible."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Ab initio PES, fit and QCT",
+    "method": {
+     "value": "B3LYP and MP2 searches, F12 coupled cluster refinement, PIP-NN PES fit, QCT trajectories",
+     "evidence": [
+      {
+       "loc": "5.2 PES fitting",
+       "quote": "A total of 37767 points below 69 kcal/mol relative to the global minimum on the PES were selected and fit using the permutation invariant polynomial-neural network (PIP-NN) method"
+      }
+     ]
+    },
+    "software": [
+     "Gaussian 09",
+     "MOLPRO",
+     "VENUS"
+    ],
+    "key_parameters": [
+     {
+      "value": "More than 20000 trajectories per temperature, 20-300 K",
+      "evidence": [
+       {
+        "loc": "5.3 QCT calculations",
+        "quote": "In the QCT calculations, more than 20000 trajectories were calculated at each temperature"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "PIP-NN with 90/5/5 train/validation/test split",
+     "evidence": [
+      {
+       "loc": "5.2 PES fitting",
+       "quote": "the training (90% of the data points), validation (5%), and testing (5%) sets"
+      }
+     ]
+    },
+    "validation": {
+     "value": "RMSE of averaged PES 23.0 cal/mol; geometries and frequencies compared to ab initio",
+     "evidence": [
+      {
+       "loc": "5.2 PES fitting",
+       "quote": "The RMSE of the averaged PIP-NN PES is 23.0 cal/mol"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration and self-calibration",
+     "evidence": [
+      {
+       "loc": "3.1 Description of the observations",
+       "quote": "The data calibration was performed within CASA[^1] following a standard procedure."
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVMULTIFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Spectra extraction by fitting point sources to visibilities",
+     "evidence": [
+      {
+       "loc": "3.1 Description of the observations",
+       "quote": "using the CASA-python task UVMULTIFIT (cite: marti-vidal2014)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NAUTILUS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gas-phase pseudo-time-dependent chemical simulations",
+     "evidence": [
+      {
+       "loc": "4.1 Model description",
+       "quote": "we coupled our network to the NAUTILUS code (cite: ruaud2016), used in the gas-phase mode"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Gaussian 09",
+    "version": "Revision B.01",
+    "used_for": {
+     "value": "Ab initio calculations",
+     "evidence": [
+      {
+       "loc": "5.1 Ab initio calculations",
+       "quote": "All calculations were carried out by Gaussian 09 software (cite: gaussian09)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MOLPRO",
+    "version": "2015.1",
+    "used_for": {
+     "value": "F12b coupled-cluster recalculation",
+     "evidence": [
+      {
+       "loc": "5.1 Ab initio calculations",
+       "quote": "as implemented in MOLPRO (cite: MOLPRO_brief)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "VENUS",
+    "version": "not stated",
+    "used_for": {
+     "value": "QCT calculations",
+     "evidence": [
+      {
+       "loc": "5.3 QCT calculations",
+       "quote": "QCT calculations in this work were implemented in VENUS (cite: hu1991)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "OPR of H2Cl+ SW line of sight",
+    "value": "3.15",
+    "uncertainty": "0.13",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.3 Observed absorption spectra",
+      "quote": "We obtained $\\rm OPR_{\\rm SW} = 3.15 \\pm 0.13$ and $\\rm OPR_{\\rm NE} =\n3.1 \\pm 0.5$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "OPR of H2Cl+ NE line of sight",
+    "value": "3.1",
+    "uncertainty": "0.5",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.3 Observed absorption spectra",
+      "quote": "We obtained $\\rm OPR_{\\rm SW} = 3.15 \\pm 0.13$ and $\\rm OPR_{\\rm NE} =\n3.1 \\pm 0.5$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "H-exchange to H-abstraction ratio at 20 K",
+    "value": "0.85%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.3 QCT calculations",
+      "quote": "at the lowest temperature studied, 20 K, the ratio between the H-exchange and H-abstraction channels is still small (0.85%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Barrier for H + H2Cl+ interconversion (TS3)",
+    "value": "14.547 kcal/mol (7320 K)",
+    "uncertainty": "not stated",
+    "units": "kcal/mol",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 Ab initio calculations",
+      "quote": "involves a very high energy barrier of 14.547 kcal/mol (7320 K)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The H-abstraction mechanism dominates and thermalization by H is blocked by a high barrier, so a 3:1 OPR is retained.",
+    "evidence": [
+     {
+      "loc": "5.3 QCT calculations",
+      "quote": "the reaction proceeds overwhelmingly by an H-abstraction mechanism, which leads to a 3:1 OPR"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "H2Cl+ OPR in the absorber is consistent with 3:1 in both sightlines",
+    "experiment": "Simultaneous Gaussian fit of ALMA ortho and para absorption",
+    "result": "OPR_SW=3.15±0.13, OPR_NE=3.1±0.5",
+    "finding": "Consistent with 3:1",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Observed absorption spectra",
+      "quote": "We obtained $\\rm OPR_{\\rm SW} = 3.15 \\pm 0.13$ and $\\rm OPR_{\\rm NE} =\n3.1 \\pm 0.5$, respectively."
+     }
+    ]
+   },
+   {
+    "hypothesis": "H2 + HCl+ forms H2Cl+ via H-abstraction rather than scrambling",
+    "experiment": "PES with QCT trajectories at 20-300 K",
+    "result": "H-exchange is a tiny fraction of trajectories",
+    "finding": "Abstraction dominates giving 3:1",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.3 QCT calculations",
+      "quote": "the H-abstraction products are dominant for all the studied temperatures ranging from 20 to 300 K"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Full scrambling excluded: it cannot give 3:1 even at 80 K.",
+     "evidence": [
+      {
+       "loc": "4.2 Modeling results",
+       "quote": "Thus we clearly see that an OPR of 3:1, even at a temperature as high as 80 K, is excluded with the consideration of a full scrambling mechanism."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "A more efficient thermalization route may be missed.",
+     "evidence": [
+      {
+       "loc": "4.2 Modeling results",
+       "quote": "it is possible that there is another and more efficient direction to thermal equilibrium, which we are missing, but it is, in our view, unlikely."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Observational fit details (priors, components) are not given",
+    "Calculated reaction energy about 3 kcal/mol below JANAF value",
+    "Uses constant-physical-condition models only"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and calibration scripts",
+    "Fit method and parameters for Gaussian components",
+    "Model network files and grid details"
+   ],
+   "estimated_data_volume_inferred": "tens of GB",
+   "score_inferred": 3,
+   "score_reason": "The ALMA part is brief; the theory part has well-specified methods but no released code.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The ALMA data processing recipe is incomplete and the main results involve custom theory calculations."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: marti-vidal2014)",
+     "why": "UVMULTIFIT"
+    },
+    {
+     "citation": "(cite: oka2004)",
+     "why": "nuclear-spin selection theory"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: muller2014b)",
+     "why": "Earlier para-H2Cl+ detection in the same absorber"
+    },
+    {
+     "citation": "(cite: legal2016)",
+     "why": "Prior NH2 OPR work with the same methods"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-49b81568f3a480acded09e2688d7adcc",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:11",
+  "usage": {
+   "input_tokens": 22056,
+   "output_tokens": 5775,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051537,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 39,
+  "quotes_ok": 39,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 29,
+   "rate": 0.42
+  },
+  "evidence_ok": true
+ }
+}

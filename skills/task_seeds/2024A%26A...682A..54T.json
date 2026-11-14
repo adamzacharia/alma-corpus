@@ -1,0 +1,309 @@
+{
+ "bibcode": "2024A&A...682A..54T",
+ "title": "HYPERION. Interacting companion and outflow in the most luminous z &gt; 6 quasar",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202347081",
+ "arxiv_id": "2306.01644",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Does deep, lower-resolution ALMA band 3 and 6 data of the z>6 quasar J0100+2802 reveal an interacting companion and a [CII] outflow, and what are their properties?",
+ "alma_project_codes": [
+  "2021.1.00211.S",
+  "2021.2.00151.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6",
+  "arrays": "ALMA 12m array",
+  "angular_resolution": "B6 cube beam 1.08x0.82 arcsec; B3 continuum 2.59x1.95 arcsec",
+  "sensitivity": "B6 continuum 0.01 mJy/beam, cube 0.2 mJy/beam per 9 km/s channel; B3 continuum 5 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "QSO dust properties (Tdust 48 K, Mdust 2.3e7 Msun, beta 2.6) and SFR 265 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The dust properties and SFR of the QSO host galaxy are taken from (cite: tripodi2023b)."
+     }
+    ]
+   },
+   "citation": "(cite: tripodi2023b)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity 4.29e14 Lsun",
+    "evidence": [
+     {
+      "loc": "3.4 Outflow properties and energetics",
+      "quote": "we adopted the bolometric luminosity of $L_{\\rm bol}= 4.29\\times10^{14}\\rm L_{\\odot}$ estimated by (cite: wu2015)"
+     }
+    ]
+   },
+   "citation": "(cite: wu2015)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient k0=0.45 cm2/g at 250 GHz",
+    "evidence": [
+     {
+      "loc": "3.3 Dust properties of the companion",
+      "quote": "$k_0 = 0.45\\  \\rm cm^{2}\\ g^{-1}$ the mass absorption coefficient (cite: beelen+2006)"
+     }
+    ]
+   },
+   "citation": "(cite: beelen+2006)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass 5.4e9 Msun",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "the molecular gas mass of $5.4\\times 10^9\\ \\rm M_\\odot$ found by (cite: wang2019)"
+     }
+    ]
+   },
+   "citation": "(cite: wang2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and cube",
+   "method": "tclean natural weighting; MFS continuum in line-free channels; uvcontsub order 0 for cube",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 sigma clean threshold; 9 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure fluxes of QSO and companion",
+   "method": "2D Gaussian fits and PSF subtraction normalized to QSO peak; flux in S/N>2 regions with RA offset <-1.3 arcsec",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "All elongated S/N>2 features attributed to a single companion"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit companion dust SED",
+   "method": "Modified black body with CMB correction; Mdust free, Tdust fixed to 50 K or 30 K, beta scanned 1-3 in steps of 0.1",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "20 chains, 1000 trials per beta; uniform prior 1e4-1e12 Msun"
+   ],
+   "assumptions": [
+    "k0=0.45 cm2/g at 250 GHz; source area ~4.0 arcsec2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive companion TIR and SFR",
+   "method": "Integrate best-fit models 8-1000 um; Kennicutt 1998 with Chabrier IMF",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Decompose [CII] line and find outflow",
+   "method": "Single Gaussian then two-Gaussian MCMC fit (6 free parameters) of spectrum from ~1.2 arcsec radius aperture",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "uniform priors; narrow and broad mean frequencies not overlapping"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Outflow energetics",
+   "method": "M_HI from Hailey-Dunsheath relation; Mdot = v M/R; kinetic power and momentum load vs L_bol/c",
+   "software": [],
+   "key_parameters": [
+    "R 2.4-5.5 kpc; v_out=560 km/s"
+   ],
+   "assumptions": [
+    "PDR L[CII]-to-gas mass conversion"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "QSO band 6 continuum flux",
+   "value": "1.19",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\rm cont,\\ 253 GHz}$ | \\[mJy\\] | $1.19 \\pm 0.06$ | $0.25 \\pm 0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion band 6 continuum flux",
+   "value": "0.25",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\rm cont,\\ 253 GHz}$ | \\[mJy\\] | $1.19 \\pm 0.06$ | $0.25 \\pm 0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion band 3 continuum flux",
+   "value": "0.007",
+   "uncertainty": "0.002",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\rm cont,\\ 99 GHz}$ | \\[mJy\\] | $0.043 \\pm 0.005$ | $0.007 \\pm 0.002$"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII] companion",
+   "value": "1.68e9",
+   "uncertainty": "0.06e9",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we derived $L_{\\rm [CII], comp}=(1.68\\pm 0.06)\\times 10^9\\ \\rm L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII] QSO host",
+   "value": "4.70e9",
+   "uncertainty": "0.12e9",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$L_{\\rm [CII], host}=(4.70\\pm 0.12)\\times 10^9\\ \\rm L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion dust mass range",
+   "value": "0.3-2.6e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{\\rm dust}$ | \\[$10^7 \\rm M_\\odot$\\] | 2.3$\\pm 0.8$ | 0.3-2.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion SFR range",
+   "value": "35-344",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "This implies an SFR in the range $[35-344]\\ \\rm M_{\\odot}\\ yr^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad component FWHM",
+   "value": "635",
+   "uncertainty": "20",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "FWHM$_{\\rm B}$ | \\[km s$^{-1}$\\] | $635 \\pm 20$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate",
+   "value": "118-269",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\dot{M}_{\\rm out}$ | \\[$\\rm M_\\odot\\ yr^{-1}$\\] | 118-269"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow momentum load",
+   "value": "0.01-0.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "=(0.01-0.02)"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass",
+   "value": "1.1e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "This yields $M_{\\rm out}=1.1\\times 10^9\\ \\rm M_{\\odot}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, clean mask and iteration/threshold values",
+  "Which MFS/line channels were combined exactly for continuum and moment maps",
+  "X_C+, gas temperature and density used in the HI mass equation",
+  "Outflow radius derivation details and L_out computation",
+  "Priors/initial values of the two-Gaussian MCMC",
+  "Exact PSF subtraction procedure and apertures",
+  "Archive pipeline version and calibrators",
+  "Whether the second project 2021.2.00151.S data was used"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, mask)",
+  "HI mass equation inputs",
+  "MCMC priors for line fit",
+  "Exact regions and PSF subtraction details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and broad method outlined, but many imaging and energetics parameters unstated.",
+ "rediscovery_reason": "Data from ALMA project likely public; numeric fluxes and fit results can be compared, though some settings missing.",
+ "source_card": "cards/2024A%26A...682A..54T/sonnet/card.md"
+}

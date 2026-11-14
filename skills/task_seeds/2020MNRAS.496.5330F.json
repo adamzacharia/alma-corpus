@@ -1,0 +1,521 @@
+{
+ "bibcode": "2020MNRAS.496.5330F",
+ "title": "Gas kinematics of key prebiotic molecules in GV Tau N revealed with an ALMA, PdBI, and Herschel synergy",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1919",
+ "arxiv_id": "2006.15065",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical structure, kinematics, and chemistry of the dense gas in the planet-forming region of GV Tau N, including the origin of water and organic molecules?",
+ "alma_project_codes": [
+  "2016.1.00813.S"
+ ],
+ "data": {
+  "bands": "1.1 mm",
+  "arrays": "not stated",
+  "angular_resolution": "0.07\" x 0.04\" PA 27 deg (~12 au x 7 au) for HCN 3→2; 0.06\" x 0.03\" PA 27 deg for 1.1 mm continuum",
+  "sensitivity": "2.4 mJy/beam (HCN 3→2 line); 0.13 mJy/beam (1.1 mm continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance (d=180±17 pc) and proper motions (+8.695±0.853, -25.085±0.672 mas yr^-1) of GV Tau N",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "GV Tau (Haro 6-10) is a T Tauri binary system embedded in the L1524 molecular cloud (d=180±17 pc) (Gaia Collaboration 2018)."
+     },
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "The most recent estimation of the proper motions of GV Tau N are (+8.695±0.853) mas yr [−][1] in right ascension, and (−25.085± 0.672) mas yr [−][1] in declination (Gaia Collaboration 2018)."
+     }
+    ]
+   },
+   "citation": "Gaia Collaboration 2018"
+  },
+  {
+   "what": {
+    "value": "3.6 cm continuum flux of 0.10±0.01 mJy towards GV Tau N",
+    "evidence": [
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "Reipurth et al. (2004) measured a 3.6 cm flux of 0.10±0.01 mJy towards GV Tau N."
+     }
+    ]
+   },
+   "citation": "Reipurth et al. (2004)"
+  },
+  {
+   "what": {
+    "value": "Previous PdBI 1.1 mm continuum position and HCN 3→2 total flux of 3.64±0.21 Jy km s^-1 in 0.32\" x 0.25\"",
+    "evidence": [
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "This position is offset 0.19 [′′] to the South as compared to the position measured by Fuente et al. (2012)"
+     },
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "Fuente et al. (2012) derived a total flux of 3.64±0.21 Jy×km s [−][1] in a region of 0.32 [′′] × 0.25 [′′] ."
+     }
+    ]
+   },
+   "citation": "Fuente et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "VLTI/MIDI mid-IR interferometric model temperatures, radii, and inclination i = 80 deg for GV Tau N disc",
+    "evidence": [
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "Mid-infrared interferometry (VLTI/MIDI) observations to probe the circumstellar material around GV Tau N and S were carried out by Roccatagliata et al. (2011)."
+     },
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "Based on the measureded visibilities, they estimate an inclination, i = 80 [◦] for the GV Tau N disc."
+     }
+    ]
+   },
+   "citation": "Roccatagliata et al. (2011)"
+  },
+  {
+   "what": {
+    "value": "Position angles of Herbig-Haro flows: PA=222 deg (Jet 1) and PA=195 deg (Jet 2)",
+    "evidence": [
+     {
+      "loc": "5 KINEMATICS OF THE MOLECULAR GAS",
+      "quote": "the red lobe is close to the direction defined by the giant Herbig Haro flow, PA=222 [◦] (Devine et al. 1999) (hereafter, Jet 1), and the blue lobe is placed at PA=195 [◦], the direction of the Herbig Haro jet detected by Movsessian & Magakian (1999) (hereafter, Jet 2)."
+     }
+    ]
+   },
+   "citation": "Devine et al. (1999); Movsessian & Magakian (1999)"
+  },
+  {
+   "what": {
+    "value": "NIR molecular absorption rotation temperatures and column densities of 12CO, 13CO, C18O, C2H2, CH4, CO2, and HCN, plus stellar mass M~0.8 M_sun and absorption velocity v_lsr = 8.7±0.3 km s^-1",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "Both stars have been classified as Class I objects with masses of M∼0.8 M ⊙ and ages of ∼ 3 Myr (Doppmann et al. 2008)."
+     },
+     {
+      "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+      "quote": "It is interesting to note that Doppmann et al. (2008) detected HCN and C 2 H 2 absorbing gas at v lsr = 8.7±0.3 km s [−][1]"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: (1) Gibb et al. 2007, 2008; (2) Doppmann et al. 2008; (3) Bast et al. 2013; (4) Gibb & Horne 2013"
+     }
+    ]
+   },
+   "citation": "Gibb et al. 2007, 2008; Doppmann et al. 2008; Bast et al. 2013; Gibb & Horne 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure 1.1 mm continuum source properties and spectral index of the extended jet",
+   "method": "Fit a 2D Gaussian to the compact 1.1 mm continuum source to derive flux, position, and size; measure flux of the extended jet component and compare with literature 3.6 cm flux to compute spectral index.",
+   "software": [],
+   "key_parameters": [
+    "Position of continuum source adopted as offset (0\",0\") at alpha(J2000)=04h29m23.731s, delta(J2000)=24d33m01.11s"
+   ],
+   "assumptions": [
+    "d = 180±17 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Map HCN 3→2 morphology and kinematics and extract PdBI/ALMA spectra",
+   "method": "Generate zero, first, and second moment maps (using channels >3sigma for moment 0), channel maps, and position-velocity diagrams along outflow axes (Jet 1 at PA=222 deg, Jet 2 at PA=195 deg) and perpendicular disc axes (D1, D2); overlay Keplerian velocity curves on D1 p-v diagram.",
+   "software": [],
+   "key_parameters": [
+    "Threshold >3sigma (sigma = 2.4 mJy/beam) for zero-moment map",
+    "Jet 1 PA = 222 deg, Jet 2 PA = 195 deg, systemic velocity v_lsr = 6.3 km s^-1"
+   ],
+   "assumptions": [
+    "Stellar mass M_* = 0.8 M_sun and trial inclinations i = 20 deg, 40 deg, and 65 deg for Keplerian curves"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Decompose and fit Herschel/HIFI far-IR line profiles",
+   "method": "Fit Gaussian components to Herschel/HIFI spectra of H2O, 13CO 10→9, HCN 7→6, and CN 5→4, decomposing water lines into a wide (FWHP ~ 8 km s^-1) and a narrow (FWHP ~ 2.7 km s^-1) component.",
+   "software": [
+    "HIPE",
+    "GILDAS/CLASS"
+   ],
+   "key_parameters": [
+    "HIFI beam sizes: 40\" (556.94 GHz, 566.95 GHz), 35\" (620.30 GHz), 20\" (987.93 GHz), 18.5\" (1101.35 GHz, 1113.34 GHz)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular column densities and abundance ratios across spatial scales",
+   "method": "Analyze line intensity ratios and fit line profiles under Local Thermodynamic Equilibrium (LTE) for FIR (H2O, 13CO, HCN, CN) and mm interferometric (PdBI 13CO 3→2 and R<0.18\" averaged ALMA HCN 3→2) transitions; compare with NIR absorption values.",
+   "software": [],
+   "key_parameters": [
+    "Averaging radius R < 0.18\" for ALMA HCN 3→2 to match PdBI 13CO 3→2 beam (~0.3\")"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE)",
+    "T_rot ~ 500 K and source size 0.5\" for wide FIR H2O component; T_rot = 250 K and source size 18.5\" for narrow FIR 13CO, HCN, and CN lines",
+    "T_rot = 250-500 K for mm interferometric 13CO 3→2 and HCN 3→2 emission"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.1 mm compact continuum source flux",
+   "value": "~48",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "The estimated flux is ∼48 mJy which is in good agreement with the previous measurement by Fuente et al. (2012)."
+    }
+   ]
+  },
+  {
+   "quantity": "1.1 mm compact continuum source size",
+   "value": "94 x 66",
+   "uncertainty": "±1 x ±1",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "The size of the compact source is 94±1 mas×66±1 mas, which constrains the radius of the dusty circumstellar disc to R∼8 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Dusty circumstellar disc radius",
+   "value": "~8",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "The size of the compact source is 94±1 mas×66±1 mas, which constrains the radius of the dusty circumstellar disc to R∼8 au."
+    }
+   ]
+  },
+  {
+   "quantity": "1.1 mm extended jet continuum flux",
+   "value": "4.6",
+   "uncertainty": "±0.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "We estimate a flux of 4.6±0.5 mJy for the extended component, which would imply a 3.6 cm to 1.1 mm spectral index, α 1 [3] . [.] 1 [6] mm [cm] [∼] [+][1.1.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index between 3.6 cm and 1.1 mm (alpha)",
+   "value": "~+1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "We estimate a flux of 4.6±0.5 mJy for the extended component, which would imply a 3.6 cm to 1.1 mm spectral index, α 1 [3] . [.] 1 [6] mm [cm] [∼] [+][1.1.]"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 3→2 velocity-integrated flux within R~0.18\"",
+   "value": "~1.4",
+   "uncertainty": "not stated",
+   "units": "Jy/beam km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "The total velocity integrated flux within R∼0.18” is ∼1.4 Jy/beam×km s [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 3→2 molecular ring inner radius (R_in)",
+   "value": "~0.04 (~6)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "The inner and outer radii of this ring are R in ∼0.04” (6 au) and R out ∼0.18” (17 au), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 3→2 molecular ring outer radius (R_out)",
+   "value": "~0.18 (~17)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 (SUB-)MILLIMETER INTERFEROMETRIC IMAGES",
+     "quote": "The inner and outer radii of this ring are R in ∼0.04” (6 au) and R out ∼0.18” (17 au), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disc inclination (assuming M_* = 0.8 M_sun)",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5 KINEMATICS OF THE MOLECULAR GAS",
+     "quote": "We find reasonable agreement between the observations in the inner R<20 au region and the Keplerian curves assuming i=40 [◦] curve."
+    }
+   ]
+  },
+  {
+   "quantity": "o-H2O 1_10→1_01 integrated intensity (Area)",
+   "value": "0.93",
+   "uncertainty": "0.02",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "o-H 2 O 1 10 →1 01 556.94 40 0.93 ( 0.02) 7.52 ( 0.09) 7.92 ( 0.23) 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "p-H2O 1_11→0_00 integrated intensity (Area)",
+   "value": "2.14",
+   "uncertainty": "0.05",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "p-H 2 O 1 11 →0 00 1113.34 18.5 2.14 ( 0.05) 7.58 ( 0.08) 7.42 (0.20) 0.27"
+    }
+   ]
+  },
+  {
+   "quantity": "p-H2O 2_02→1_11 integrated intensity (Area)",
+   "value": "1.79",
+   "uncertainty": "0.06",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "p-H 2 O 2 02 →1 11 987.93 20 1.79 ( 0.06) 7.32 ( 0.09) 6.64 (0.29) 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO 10→9 integrated intensity (Area)",
+   "value": "1.18",
+   "uncertainty": "0.03",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "13 CO 10→9 1101.35 18.5 1.18 ( 0.03) 6.72 ( 0.03) 2.97 ( 0.08) 0.37"
+    }
+   ]
+  },
+  {
+   "quantity": "CN 5→4 integrated intensity (Area)",
+   "value": "0.04",
+   "uncertainty": "0.01",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "CN 5→4 566.95 40 0.04 ( 0.01) 7.25 ( 0.13) 1.65 ( 0.25) 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 7→6 integrated intensity (Area)",
+   "value": "0.14",
+   "uncertainty": "0.03",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "HCN 7→6 620.30 35 0.14 ( 0.03) 7.02 ( 0.37) 3.71 ( 1.14) 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed p-H2O 987 GHz / 1113 GHz integrated intensity ratio R_obs",
+   "value": "1.0",
+   "uncertainty": "±0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 MOLECULAR CHEMISTRY",
+     "quote": "we derive an integrated intensity ratio, R obs (H 2 O@987 GHz/1113 GHz)= 1.0±0.1 for the two p-H 2 O lines observed."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed H2O 1113 GHz / 557 GHz intensity ratio R_obs",
+   "value": "~2.4",
+   "uncertainty": "±0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 MOLECULAR CHEMISTRY",
+     "quote": "Instead, the observed value is R obs (H 2 O@1113 GHz/557 GHz)∼2.4±0.1."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of o-H2O and p-H2O (FIR wide component)",
+   "value": ">10^17",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "o-H 2 O 500 >10 [17] Wide"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "p-H 2 O 500 >10 [17] Wide"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged column density N(13CO) from FIR (beam=18.5\")",
+   "value": "5.0x10^14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 MOLECULAR CHEMISTRY",
+     "quote": "With these assumptions we derive the following source-averaged column densities: N( [13] CO)=5.0×10 [14] cm [−][2], N(HCN)= 4.0×10 [11] cm [−][2], and N(HCN)= 6.0×10 [11] cm [−][2] ."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "13 CO 250 5.0×10 [14] Narrow [1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged column density N(HCN) from FIR (beam=18.5\")",
+   "value": "4.0x10^11",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCN 250 4.0×10 [11] Narrow [1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged column density N(CN) from FIR (beam=18.5\")",
+   "value": "6.0x10^11",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CN 250 6.0×10 [11] Narrow [1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density N(13CO) from mm interferometry",
+   "value": "(2.6-5.0)x10^17",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 MOLECULAR CHEMISTRY",
+     "quote": "We can fit the PdBI [13] CO 3→2 line profile, assuming LTE, T rot =250−500 K and N( [13] CO)=(2.6−5.0)×10 [17] cm [−][2] ."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "13 CO 250−500 (2.6−5.0)×10 [17] Wide"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density N(HCN) from mm interferometry (R<0.18\")",
+   "value": "(2.0-3.5)x10^15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 MOLECULAR CHEMISTRY",
+     "quote": "The R<0.18” averaged profile of the HCN 3→2 emission can be fitted with T rot =250−500 K and N(HCN)=(2.03.5)×10 [15] cm [−][2]"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "HCN 250−500 (2.0−3.5)×10 [15] Wide"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/13CO abundance ratio across envelope, gaseous disc, and inner 2-3 au",
+   "value": "~10^-3 (FIR envelope), ~10^-2 (mm disc), ~1 (inner NIR region)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 MOLECULAR CHEMISTRY",
+     "quote": "As shown in Table 1, we obtain that the HCN/ [13] CO abundance ratio is ∼10 [−][3] based on the FIR observations, ∼10 [−][2] in the gaseous disc traced with ALMA and PdBI observations, and ∼1 in the close vicinity of the star where NIR molecular absorptions arise."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA array configuration, antenna count, baseline lengths, and maximum recoverable scale for project 2016.1.00813.S",
+  "Calibrator sources used for manual ALMA calibration (flux, bandpass, phase)",
+  "Whether self-calibration was applied to the ALMA 1.1 mm continuum and HCN 3->2 data",
+  "CASA imaging task (e.g., clean vs tclean), weighting scheme and robust parameter, cell size, image size, deconvolver, and cleaning threshold",
+  "Whether continuum subtraction (e.g., uvcontsub) was applied prior to imaging the HCN 3->2 cube, and the exact channel ranges used",
+  "Width of the spatial extraction strips used to build the position-velocity diagrams along Jet 1, Jet 2, D1, and D2",
+  "Exact LTE radiative transfer tool or equations and partition functions used to compute column densities for 13CO, HCN, CN, and H2O"
+ ],
+ "missing_for_reproduction": [
+  "Manual calibration script and calibrator choices in CASA 4.7.1 for 2016.1.00813.S",
+  "Imaging parameters in CASA 5.4.1 (weighting, robust value, cell size, cleaning threshold, masks, continuum subtraction)",
+  "Exact extraction region for the extended 1.1 mm continuum jet flux measurement",
+  "Strip widths used to extract the position-velocity diagrams along Jet 1, Jet 2, D1, and D2",
+  "Parameters of the narrow Gaussian absorption/emission components subtracted from the HIFI H2O spectra in Figure 2",
+  "Raw or calibrated PdBI 2014 visibility data (13CO 3->2, C18O 3->2), which are not in a public archive linked in the paper"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "The ALMA project code (2016.1.00813.S) and Herschel observation ID (OT1_afuente_2) are publicly available, and the analysis steps (2D Gaussian fit, moment maps, PV diagrams, Gaussian line fits, and LTE column density estimates) are straightforward. However, the ALMA data were manually calibrated and imaged without stating the weighting, robust parameter, self-calibration, or continuum subtraction details, and the PdBI dataset is not directly linked.",
+ "rediscovery_reason": "The ALMA Cycle 4 dataset (2016.1.00813.S) is public in the ALMA archive, and the core ALMA results—compact 1.1 mm continuum flux (~48 mJy) and size (94x66 mas), extended jet flux (4.6 mJy), HCN 3->2 ring radii (0.04\"-0.18\"), integrated flux (~1.4 Jy/beam km/s), and PV diagram kinematics—are concrete quantitative measurements that an agent can attempt to reproduce from the raw archival data.",
+ "source_card": "cards/2020MNRAS.496.5330F/sonnet/card.md"
+}

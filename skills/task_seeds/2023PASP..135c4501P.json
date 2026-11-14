@@ -1,0 +1,285 @@
+{
+ "bibcode": "2023PASP..135c4501P",
+ "title": "Data Combination: Interferometry and Single-dish Imaging in Radio Astronomy",
+ "year": 2023,
+ "doi": "10.1088/1538-3873/acb9bd",
+ "arxiv_id": "2303.02177",
+ "fields": [
+  "instrumentation",
+  "nearby_galaxies"
+ ],
+ "question": "Which interferometer plus single-dish data combination methods recover the true sky flux best, and how can their performance be quantitatively assessed (new A-par, fidelity, power-spectrum and spectrogram diagnostics)",
+ "alma_project_codes": [
+  "2011.0.00004.SV"
+ ],
+ "data": {
+  "bands": "M100: ALMA Band 3 (CO 1-0, 115.271 GHz); Skymodel: simulated at 115 GHz",
+  "arrays": "M100: ALMA 12m mosaic (47 pointings), 7m mosaic (23 pointings), SD on-the-fly map; Skymodel: simulated 12m, ACA 7m and SD",
+  "angular_resolution": "Skymodel: 1.2'' (interferometer) and 57'' (SD); M100: 12m Array resolution <2''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Simulate ALMA observations of the skymodel",
+   "method": "Run simobserve on the synthetic skymodel for 12m (two configurations), ACA 7m and SD, with multiple fields and days",
+   "software": [
+    "CASA simobserve 5.6.1"
+   ],
+   "key_parameters": [
+    "12m (7m): 52 (17) fields, each visited 30 (90) times per session, 10 s integration per field",
+    "Skymodel 4096^2 pixels of 0.05'' (204.8'' per side)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Prepare the M100 SD and interferometer data",
+   "method": "Header manipulation, axis reordering and regridding of M100 12m/7m/SD data",
+   "software": [
+    "CASA",
+    "Python/astropy (DC_script)"
+   ],
+   "key_parameters": [
+    "Cube of 50 line channels plus 10 baseline channels on each side"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image interferometer-only data (int-CLEAN)",
+   "method": "tclean with Briggs weighting, mosaic gridder, 100,000 iterations and SD+auto-multithresh mask",
+   "software": [
+    "CASA 6.1 tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "Mask: >0.3 x SD max plus auto-multithresh"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Combine SD and interferometric data with each method",
+   "method": "Feather, SDINT (sdintimaging), MACF (tclean with SD image as startmodel, then feather) and FSSC applied to skymodel and M100; TP2VIS implemented in the script but not evaluated",
+   "software": [
+    "CASA 6.1 feather",
+    "CASA 6.1 sdintimaging",
+    "CASA 6.1 tclean",
+    "FSSC Python code",
+    "DC_script"
+   ],
+   "key_parameters": [
+    "Standard (default-like) values for briggs, sdfactor (Feather, MACF) and sdgain (SDINT); numbers not given",
+    "MACF: SD image (Jy per pixel) used as tclean startmodel, then feathered with the SD image"
+   ],
+   "assumptions": [
+    "Flux scales of the interferometer and SD data are aligned; astrometry aligned; images corrected for PB response"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Assess image quality with A-par, fidelity, flux vs signal, power spectra and spectrograms",
+   "method": "Pixel-by-pixel Accuracy parameter A=(I-R)/|R| and Fidelity inside an adaptive assessment mask, at the reference resolution; histograms, A-par vs flux bins, spatial power spectra (median in annuli of 2D FT) and per-channel A-par spectrograms",
+   "software": [
+    "DC_script",
+    "Python/astropy"
+   ],
+   "key_parameters": [
+    "Assessment mask threshold 3 x RMS_mask (off-source RMS at native resolution), corrected for PB response and for beam ratio",
+    "A-par computed per pixel/voxel after convolving and regridding to the reference image beam and grid"
+   ],
+   "assumptions": [
+    "For the skymodel the reference is the true model; for M100 the reference is the SD cube"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare combination methods",
+   "method": "Compare A-par distributions, flux recovery per signal bin, intensity and A-par power spectra, and M100 spectrograms for int-CLEAN, Feather, SDINT, MACF (FSSC nearly identical to Feather)",
+   "software": [
+    "DC_script"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Skymodel int-CLEAN A-par (mean, dispersion)",
+   "value": "-0.60",
+   "uncertainty": "0.43 (dispersion)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+     "quote": "(red histogram; A-par$\\approx-0.60\\pm0.43$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Skymodel Feather A-par (mean, dispersion)",
+   "value": "-0.08",
+   "uncertainty": "0.24 (dispersion)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+     "quote": "(here Feather, blue histogram; A-par$\\approx -0.08\\pm 0.24$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Skymodel total flux recovered by int-CLEAN",
+   "value": "~32%",
+   "uncertainty": "not stated",
+   "units": "% of reference flux",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+     "quote": "While int-CLEAN only recovers $\\sim$ 32% of the total reference flux, Feather manages to improve these values up to 89%."
+    }
+   ]
+  },
+  {
+   "quantity": "Skymodel total flux recovered by Feather",
+   "value": "~89%",
+   "uncertainty": "not stated",
+   "units": "% of reference flux",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+     "quote": "While int-CLEAN only recovers $\\sim$ 32% of the total reference flux, Feather manages to improve these values up to 89%."
+    }
+   ]
+  },
+  {
+   "quantity": "Skymodel total flux recovery by SDINT and MACF",
+   "value": "above ~92%",
+   "uncertainty": "not stated",
+   "units": "% of reference flux",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.3 Comparison between data combination methods",
+     "quote": "The total flux recovery is improved by the SDINT and MACF methods with total flux values above $\\sim$ 92% with respect to the true sky emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Skymodel SDINT A-par dispersion",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.3 Comparison between data combination methods",
+     "quote": "While SDINT shows a smaller dispersion of the A-par values ($\\sigma($A-par$)=0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Skymodel MACF mean A-par",
+   "value": "-0.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.3 Comparison between data combination methods",
+     "quote": "MACF shows a better mean A-par value (A-par = -0.08"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux loss of brightest compact skymodel source in int-CLEAN",
+   "value": "~40%",
+   "uncertainty": "not stated",
+   "units": "% of true peak",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.1 The indispensable short-spacing information",
+     "quote": "the peak flux of this source in the interferometric-alone int-CLEAN observations is reduced by a factor of $\\sim$ 40% compared to the true emission in our skymodel"
+    }
+   ]
+  },
+  {
+   "quantity": "M100 int-CLEAN mean A-par over channels",
+   "value": "-0.51",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.6 A-par spectrograms: analysis of spectral cubes",
+     "quote": "with mean 50% flux losses (A-par$=-0.51\\pm0.07$)"
+    }
+   ]
+  },
+  {
+   "quantity": "M100 Feather mean A-par over channels",
+   "value": "-0.07",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.6 A-par spectrograms: analysis of spectral cubes",
+     "quote": "respect to the SD flux per channel (A-par$=-0.07\\pm0.04$)"
+    }
+   ]
+  },
+  {
+   "quantity": "M100 SDINT A-par and dispersion at SD resolution",
+   "value": "|A-par| = -0.11 (as written)",
+   "uncertainty": "sigma(A-par) = 0.06",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.4 Single-dish flux recovery",
+     "quote": "while SDINT shows slightly larger differences with respect to the SD flux ($|$A-par$|=-0.11$ and $\\sigma($ A-par$)=0.06$)"
+    }
+   ]
+  },
+  {
+   "quantity": "M100 Feather and MACF A-par dispersion",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.4 Single-dish flux recovery",
+     "quote": "both showing narrow A-par distributions ($\\sigma($ A-par$)=0.04$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration of the M100 Science Verification data (manual vs pipeline, CASA version, flux scale) and which calibrated products/MS were used",
+  "Actual sdfactor / effdishdiam values for Feather and MACF, sdgain and dishdia for SDINT (paper only says 'standard values')",
+  "sdintimaging deconvolver, scales, thresholds, cell size and image size; tclean cell/imsize and stopping threshold",
+  "Power-law index and normalisation of the skymodel, and level of the added Gaussian noise in the simulated data",
+  "How the SD M100 cube and the skymodel SD image were generated/obtained (beam, units, header fixes) and exact regridding steps",
+  "Line-free channels and any continuum subtraction for M100",
+  "Values of the intermediate reference resolutions used for assessment (2'' versus 1.7'' stated inconsistently) and RMS_mask measurement region",
+  "Number of flux bins and binning scheme for A-par vs flux diagnostics beyond the 10-bin example"
+ ],
+ "missing_for_reproduction": [
+  "Numeric values of sdfactor/sdgain/effdishdiam/dishdia and tclean/sdintimaging threshold and cell parameters",
+  "M100 calibration details and which MS/SD products were used",
+  "Skymodel power-law index and noise level; random seeds"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public code and data on GitHub plus an explicit recipe and many numeric A-par/flux-recovery results; several tclean/combination parameters and M100 calibration are left to the scripts.",
+ "rediscovery_reason": "M100 SV data are public, the methods and metrics are clearly defined and the main results are numeric (A-par means, flux recovery fractions), though exact parameters must come from the released scripts.",
+ "source_card": "cards/2023PASP..135c4501P/sonnet/card.md"
+}

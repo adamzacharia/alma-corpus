@@ -1,0 +1,182 @@
+{
+ "bibcode": "2019ApJ...881...33H",
+ "title": "Constraining the Radio Emission of TRAPPIST-1",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab2be7",
+ "arxiv_id": "1907.02112",
+ "fields": [
+  "exoplanets",
+  "stellar_physics"
+ ],
+ "question": "Does TRAPPIST-1 emit gyrosynchrotron radio emission at 44 and 97.5 GHz, and what do upper limits imply for magnetic properties and energetic proton flux at its planets?",
+ "alma_project_codes": [
+  "2017.1.00986.S"
+ ],
+ "data": {
+  "bands": "Band 3, 97.5 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "0.835 x 0.738 arcsec, PA -86.4 deg",
+  "sensitivity": "3.52 uJy/beam RMS"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar parameters (mass, radius, Teff, Prot, B field, Lx, age, distance)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Stellar Parameters of TRAPPIST-1 taken from the literature."
+     }
+    ]
+   },
+   "citation": "van_groot, delrez, vida, rein_bas, wheatley, burg_mam, kane"
+  },
+  {
+   "what": {
+    "value": "6 GHz upper limit of <8.1 uJy for TRAPPIST-1",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $6$ | $< 8.1$ | $<1.5\\times10^{12}$ | (cite: pineda) |"
+     }
+    ]
+   },
+   "citation": "Pineda & Hallinan 2018 (cite: pineda)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and derive upper limits",
+   "method": "CLEANed images from pipeline-calibrated data; 3 sigma upper limits from image RMS",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search for variability per scan",
+   "method": "Analysed individual scans (~7 min ALMA, ~4 min VLA) for flares",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Assess significance of NE source candidates",
+   "method": "10^4 Gaussian noise images convolved with the beam; count peaks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Constrain emitting region size and proton flux",
+   "method": "Gyrosynchrotron equations: region size x, electron density N, scaled to outgoing proton flux at TRAPPIST-1e",
+   "software": [],
+   "key_parameters": [
+    "B = 600 G, delta = 2, d = 12.45 pc, nu = 97.5 GHz, S = 10.6 uJy"
+   ],
+   "assumptions": [
+    "Electron-to-proton ratio ~10^3 as in solar flares; flux scaled by R/r^2 with pi sr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 97.5 GHz 3 sigma upper limit",
+   "value": "10.6",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "we place $3 \\sigma$ upper flux limits of 10.6 and 16.2 $\\upmu$Jy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 44 GHz 3 sigma upper limit",
+   "value": "16.2",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "we place $3 \\sigma$ upper flux limits of 10.6 and 16.2 $\\upmu$Jy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA per-scan 3 sigma limit",
+   "value": "110",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Null detections of TRAPPIST-1",
+     "quote": "median $3 \\sigma$ upper limits of 110 $\\mu$Jy and 190$\\mu$Jy per scan for ALMA and the VLA"
+    }
+   ]
+  },
+  {
+   "quantity": "Emitting region size upper limit",
+   "value": "<= 0.02",
+   "uncertainty": "not stated",
+   "units": "R_J",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "the emitting region is constrained by our ALMA upper limits to $\\leq 0.02~ R_J$"
+    }
+   ]
+  },
+  {
+   "quantity": "Trapped electron density upper limit",
+   "value": "<= 5e8",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The resulting number density of electrons is $N \\leq  5 \\times 10^8~ cm^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Proton flux at TRAPPIST-1e",
+   "value": "1e5",
+   "uncertainty": "not stated",
+   "units": "pfu",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "We find a particle flux incident on the closest habitable planet, TRAPPIST-1e (0.02 au), to be $10^5 pfu$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters (weighting, robust, cell, image size, deconvolver, threshold)",
+  "How the 3-sigma limit was derived (3 x RMS at target position assumed)",
+  "Whether ALMA archive/pipeline products were used as delivered; flux calibrator flux density and scale uncertainty",
+  "Exact brightness temperature calculation and electron energy distribution details for Dulk equations",
+  "Details of per-scan imaging and noise simulation"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Exact upper-limit and brightness temperature procedure"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Simple non-detection with stated sensitivities and public data, but imaging settings are missing.",
+ "rediscovery_reason": "Public data, simple numeric upper limits, and short recipe.",
+ "source_card": "cards/2019ApJ...881...33H/sonnet/card.md"
+}

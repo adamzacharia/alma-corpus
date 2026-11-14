@@ -1,0 +1,254 @@
+{
+ "bibcode": "2014MNRAS.445.1412Z",
+ "title": "Two physical regimes for the giant H II regions and giant molecular clouds in the Antennae galaxies",
+ "year": 2014,
+ "doi": "10.1093/mnras/stu1847",
+ "arxiv_id": "1409.1251",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How do the physical properties of GMCs (ALMA CO(3-2)) and HII regions (GHaFaS Halpha) in the Antennae compare, and do they show two regimes (external pressure vs gravity dominated)?",
+ "alma_project_codes": [
+  "2011.0.00876.S",
+  "2011.0.00003.SV"
+ ],
+ "data": {
+  "bands": "Band 7 CO(3-2) (Science Verification Band 7 per URL)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.6x1.1 arcsec (SV); ~0.4x0.7 arcsec (ES)",
+  "sensitivity": "1-channel rms 3 mJy/beam (SV), 2 mJy/beam (ES), 10 km/s channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SMA CO(3-2) GMC catalogue of the Antennae, for comparison",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "shows the mass-radius relation for molecular clouds (blue) compared with data of the Antennae from (cite: 2012ApJ...745...65U) (green)"
+     }
+    ]
+   },
+   "citation": "Ueda et al. 2012 (cite: 2012ApJ...745...65U)"
+  },
+  {
+   "what": {
+    "value": "M51 GMC properties incl. virial parameter",
+    "evidence": [
+     {
+      "loc": "5 Gravitationally bound regime",
+      "quote": "We have added the GMCs detected in (cite: 2014ApJ...784....3C) for M51 since they estimated the virial parameter."
+     }
+    ]
+   },
+   "citation": "Colombo et al. 2014 (cite: 2014ApJ...784....3C)"
+  },
+  {
+   "what": {
+    "value": "Milky Way GMC properties",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "we were obliged to use the results of the GMC’s in the Milky Way from (cite: 2010ApJ...723..492R)"
+     }
+    ]
+   },
+   "citation": "Roman-Duval et al. 2010"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Prepare cubes and moment maps",
+   "method": "Primary-beam correct archival ALMA mosaics; build moment maps masked at 4 x rms",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify regions and measure size, sigma_v, flux",
+   "method": "Dendrogram (bijection paradigm) on ALMA and GHaFaS cubes; second moments give R=1.91*sqrt(sig_maj sig_min)",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "T_edge = 4 x l_rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive GMC masses and virial parameters",
+   "method": "CO luminosity (Solomon 1992) times alpha_CO, with factors 1.8 and 1.36; alpha_vir=5 sigma^2 R/(G M)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "D=22 Mpc, CO(1-0)/CO(3-2)=1.8, helium factor 1.36, spherical clouds"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive HII region properties",
+   "method": "Dust-correct Halpha with HST Balmer decrement pixel by pixel; ionized mass M=1.57e-17 sqrt(L R^3); SFR via Kennicutt 2009; subtract natural (3 km/s) and thermal (9.1 km/s) widths",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Calzetti curve K(Ha)=3.33, K(Hb)=4.60; spherical uniform density; T=1e4 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit mass-radius relations and find regime break",
+   "method": "Error-weighted linear fit for GMCs; double linear fit with free transition for HII regions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Test gravity vs pressure dominance",
+   "method": "L_Ha-sigma_v envelope fit (minimum sigma per luminosity bin), shifted envelope criterion L>Lenv/40, virial parameter vs mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of GMCs",
+   "value": "142",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "enabling us to identify 142 giant molecular clouds (GMCs) and 303 H regions"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of HII regions",
+   "value": "303",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "enabling us to identify 142 giant molecular clouds (GMCs) and 303 H regions"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass-radius slope",
+   "value": "2.62",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "\\log(M_{\\mathrm{mol}})=(2.4\\pm0.4)+(2.62\\pm0.10)\\log(R_{\\mathrm{CO}})"
+    }
+   ]
+  },
+  {
+   "quantity": "HII region slope, low-mass regime",
+   "value": "1.8",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "(1.6\\pm0.4)+(1.8\\pm0.3)\\log(R_{HII})"
+    }
+   ]
+  },
+  {
+   "quantity": "HII region slope, high-mass regime",
+   "value": "3.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "(-1.7\\pm0.5)+(3.7\\pm0.2)\\log(R_{HII})"
+    }
+   ]
+  },
+  {
+   "quantity": "HII transition mass",
+   "value": "log M=5.4",
+   "uncertainty": "not stated",
+   "units": "log Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "The transition at $\\log(R_{\\mathrm{HII}})=1.92$ corresponds to a transition at $\\log(M_{\\mathrm{HII}})=5.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass function break",
+   "value": "log M~6.7",
+   "uncertainty": "not stated",
+   "units": "log Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "We find a break in the molecular gas mass function at $\\log(M_{\\mathrm{mol}})\\sim6.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope fit",
+   "value": "beta1=2.3, beta0=38.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5",
+     "quote": "The result is $\\beta_1=2.3$, $\\beta_0=38.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized gas fraction",
+   "value": "~0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "the ionized gas to total gas fraction is $\\sim 0.05$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact SV and ES calibrated product file names and versions",
+  "Dendrogram parameters beyond 4 sigma (min_delta, min_npix numbers)",
+  "Whether SV and ES cubes were regridded or merged",
+  "Exact mosaic pointing/field coordinates",
+  "Weighted-fit/error treatment details for the double linear fit",
+  "Mass-function binning"
+ ],
+ "missing_for_reproduction": [
+  "Dendrogram parameters",
+  "Exact archive product versions",
+  "Fit implementation details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and clear formulas, but dendrogram settings and fitting details are missing.",
+ "rediscovery_reason": "Public ALMA data, clear recipe, numeric results (slopes, breaks), though some parameters missing.",
+ "source_card": "cards/2014MNRAS.445.1412Z/sonnet/card.md"
+}

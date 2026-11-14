@@ -1,0 +1,900 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.486.5552B",
+  "title": "Sub-millimetre non-contaminated detection of the disc around TWA 7 by ALMA",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Bayo, A.",
+  "n_authors": 12,
+  "arxiv_id": "1806.09252",
+  "doi": "10.1093/mnras/stz1133",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01015.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here, we present ALMA Cycle 3 Band 7 observations of the debris disk around the M2 star TWA 7"
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks"
+   ],
+   "targets": [
+    {
+     "name": "TWA 7",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "34.029 ± 0.076 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "one of the closest ($34.029 \\pm 0.076$ pc, (cite: Gaia2018)) and youngest low-mass stars with a debris disk"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 (Gaia2018)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "one of the closest ($34.029 \\pm 0.076$ pc, (cite: Gaia2018)) and youngest low-mass stars with a debris disk"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the sub-mm emission near TWA 7 from its debris disk or a contaminant, and can the SED be explained by a single dust belt?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We show that most of the emission at wavelengths longer than $\\sim 300$ $\\mu$m is in fact arising from a contaminant source"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01015.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "TWA 7 was observed twice with ALMA (project 2015.1.01015.S, PI: Bayo)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (346 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "in Band 7 (346 GHz), using two different configurations"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "continuum SPWs 334.352, 336.242, 348.35 GHz; gas SPW 345.950 GHz",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$334.352$, $336.242$, $348.35$"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "compact (2016-04-22, 42 antennas) and extended (2016-09-01 and 2016-09-15, 36 antennas)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Extended configuration - Pointed at $10$h$42$m$30.4$s $-33^{\\circ}40^{\\prime}16.7^{\\prime\\prime}$ - $36$ antennas"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.44\" x 0.33\" (compact); 0.11\" x 0.09\" (extended)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "led to a smaller beam size of $0.11\\ensuremath{''} \\times 0.09\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "3.908\" (compact); 2.046\" (extended)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "3.908"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 32 uJy/beam at image center (compact continuum)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "At the center of the image, we measure a root mean square of $32$ $\\mu$Jy.beam$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2016-04-22, 2016-09-01, 2016-09-15",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2016-09-15"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel PACS/SPIRE",
+     "provided": {
+      "value": "far-IR fluxes for SED",
+      "evidence": [
+       {
+        "loc": "2.3",
+        "quote": "Figure [3](#fig:jcmt) shows the *Herschel*/PACS observation at $100$ $\\mu$m"
+       }
+      ]
+     }
+    },
+    {
+     "name": "JCMT SCUBA-2",
+     "provided": {
+      "value": "850 um data, treated as non-detections in SED",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "we now treat the JCMT reported fluxes as non-detections"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Herschel/SPIRE fluxes",
+      "evidence": [
+       {
+        "loc": "2.3",
+        "quote": "the *Herschel*/SPIRE observations published in (cite: Cieza2013)"
+       }
+      ]
+     },
+     "citation": "(cite: Cieza2013)"
+    },
+    {
+     "what": {
+      "value": "Herschel PACS fluxes 77±7 and 42±9 mJy at 70 and 160 um",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "$77 \\pm 7$ and $42 \\pm 9$ mJy at $70$ and $160$ $\\mu$m for (cite: Riviere-Marichalar2013)"
+       }
+      ]
+     },
+     "citation": "(cite: Riviere-Marichalar2013)"
+    },
+    {
+     "what": {
+      "value": "JCMT upper limits derived from reported uncertainties",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "the $3\\sigma$ upper limits are estimated from the uncertainties reported by (cite: Matthews2007) and (cite: Holland2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Matthews2007); (cite: Holland2017)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% flux calibration uncertainty",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "a $10$% flux calibration uncertainty added in quadrature"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs weighting (robust not stated)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "where Briggs weighting was selected by default in the CLEAN algorithm"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "2\" u-v taper on combined compact+extended data",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "We then applied a $2\\ensuremath{''}$ u-v taper to down-weight long baselines"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "compact and extended configurations combined",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "First, we combined both the compact and extended configurations together"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~3\" with taper",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "likely marginally resolved at the $\\sim 3\\ensuremath{''}$ resolution attained with u-v tapering"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Stellar properties and SED modelling code",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "We refer the reader to (cite: Olofsson2018) for the description of the stellar properties and of the code used to model the SED."
+       }
+      ]
+     },
+     "from_reference": "(cite: Olofsson2018)"
+    },
+    {
+     "what": {
+      "value": "Analysis of CO line",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The analysis of the detected CO line is presented in (cite: Matra2019)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Matra2019)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Briggs robust value",
+    "Image size, cell size, clean threshold and masks",
+    "Calibrators and calibration details",
+    "Stellar parameters for the SED (in Olofsson2018)",
+    "Epochs/number of points in the proper-motion fit and how the PUC data were reduced",
+    "Which dataset (and pointing) went into the contaminant-subtracted image details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and locate sources",
+    "method": {
+     "value": "CASA Briggs-weighted continuum imaging, primary-beam corrected",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Figure [1](#fig:alma) shows the continuum primary beam corrected image for the first dataset"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Check proper motion of TWA 7",
+    "method": {
+     "value": "Linear fit of multi-epoch archival and new optical positions, excluding Herschel, JCMT and ALMA",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "The positions from Herschel, JCMT and ALMA were ignored in the final astrometric fitting process"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "parallax not fitted",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "we did not attempt to fit for parallax motion"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared with Gaia DR2 proper motion",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "consistent with previous values available in the literature"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Recover disk emission with tapering",
+    "method": {
+     "value": "Combine both configurations and apply a 2\" u-v taper",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "We then applied a $2\\ensuremath{''}$ u-v taper to down-weight long baselines"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "taper 2\"",
+      "evidence": [
+       {
+        "loc": "2.4",
+        "quote": "We then applied a $2\\ensuremath{''}$ u-v taper"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Subtract contaminant and measure disk flux",
+    "method": {
+     "value": "Fit 2D Gaussian to contaminant in uv-plane, subtract, re-image with taper, integrate emission above 2 sigma",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "we model it as a 2D Gaussian in u-v space using the `uvmodelfit` task within CASA"
+      }
+     ]
+    },
+    "software": [
+     "CASA uvmodelfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "confirm emission is not an imaging artifact of the nearby contaminant",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "To confirm that this extended emission component at the location of the star is not an artifact of imaging"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Single-belt SED modelling",
+    "method": {
+     "value": "Fit SED with one belt, r0=25 au and alpha_in=5 fixed, free alpha_out, s_min, composition; dust mass from least-squares scaling",
+     "evidence": [
+      {
+       "loc": "3 Revised SED model",
+       "quote": "we fix its reference radius $r_0 = 25.0$ au"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "p=-3.5, s_max=5 mm",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "with $p$ fixed to $-3.5$ following (cite: Dohnanyi1969), with fixed $s_{\\mathrm{max}} = 5$ mm"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "astro-silicates from Draine2003",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "we used the astro-silicates optical constant from (cite: Draine2003)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee, 20 walkers, 1000 burn-in, 2000 step chain, uniform priors",
+     "evidence": [
+      {
+       "loc": "3 Revised SED model",
+       "quote": "with $20$ “walkers”, a burn-in phase of $1,000$ steps, and a final chain of $2,000$ steps"
+      }
+     ]
+    },
+    "validation": {
+     "value": "acceptance ratio 0.44",
+     "evidence": [
+      {
+       "loc": "3 Revised SED model",
+       "quote": "We obtained an acceptance ratio of $0.44$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Stellar wind estimate",
+    "method": {
+     "value": "Solve beta + beta_wind = 0.5 at s_min with assumed wind speed 400 km/s",
+     "evidence": [
+      {
+       "loc": "3 Revised SED model",
+       "quote": "We find that $\\beta + \\beta_{\\mathrm{wind}} = 0.5$ can be reached for a size of $\\sim 0.16$ $\\mu$m"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "v_sw = 400 km/s, C_D ~2",
+      "evidence": [
+       {
+        "loc": "3 Revised SED model",
+        "quote": "(assumed to be $400$ km.s$^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7",
+    "used_for": {
+     "value": "data reduction, imaging, uvmodelfit",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Both datasets were reduced using CASA (version 4.7, (cite: McMullin2007))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC SED fit",
+     "evidence": [
+      {
+       "loc": "3 Revised SED model",
+       "quote": "we used the affine invariant ensemble sampler (`emcee`, (cite: Foreman-Mackey2012))"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk integrated flux density at 870 um",
+    "value": "2.1",
+    "uncertainty": "0.4",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.4",
+      "quote": "of $2.1 \\pm 0.4$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Contaminant offset from TWA 7",
+    "value": "6.6",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "a compact source is detected at about $\\sim 6.6\\ensuremath{''}$ East of TWA 7"
+     }
+    ]
+   },
+   {
+    "quantity": "Contaminant best-fit flux",
+    "value": "3.9",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.4",
+      "quote": "finding a best-fit flux of $3.9$ mJy, a FWHM of $0.27\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Proper motion mu_alpha cos delta",
+    "value": "-109",
+    "uncertainty": "1",
+    "units": "mas/yr",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.2",
+      "quote": "$\\mu_ \\alpha$ cos$(\\delta)=-109 \\pm 1$ mas.yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_out",
+    "value": "-4.5",
+    "uncertainty": "+0.2/-0.3",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$-4.5_{-0.3}^{+0.2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "s_min",
+    "value": "0.16",
+    "uncertainty": "+0.04/-0.02",
+    "units": "um",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$0.16_{-0.02}^{+0.04}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass",
+    "value": "0.018",
+    "uncertainty": "+0.002/-0.001",
+    "units": "M_earth",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$0.018_{-0.001}^{+0.002}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "Sub-mm emission near TWA 7 comes from the disk",
+    "experiment": "Band 7 imaging in two configurations",
+    "result": "compact source 6.6\" east; none at star in Briggs image",
+    "finding": "A background source dominates the sub-mm flux",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "demonstrate unambiguously that a background source dominates the sub-mm flux"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The disk can be detected after removing contaminant",
+    "experiment": "Tapered imaging after uvmodelfit subtraction",
+    "result": "2.1±0.4 mJy",
+    "finding": "Disk detected at 870 um",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The disk around TWA 7 is nonetheless detected, at its expected position"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Two dust belts are needed for the SED",
+    "experiment": "emcee SED fit with single belt",
+    "result": "good fit with one belt",
+    "finding": "Single belt suffices",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3 Revised SED model",
+      "quote": "the SED can be reproduced without invoking any additional belt"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "SPIRE 350 um may be contaminated and was excluded",
+     "evidence": [
+      {
+       "loc": "2.3",
+       "quote": "we cannot assess whether the background object is contributing significantly at those wavelengths"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Disk flux depends on taper and 2 sigma integration region",
+    "Single Gaussian contaminant model may leave residuals",
+    "Dust composition fixed to astro-silicate",
+    "Disk radius fixed from SPHERE"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data acknowledged by project code",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "ADS/JAO.ALMA#2015.1.01015.S"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Briggs robust, image parameters, clean settings",
+    "SED stellar model inputs",
+    "Contaminant-subtraction details"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw for three execution blocks",
+   "score_inferred": 5,
+   "score_reason": "Public data and clear approach but many imaging and SED details missing or deferred.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging parameters and SED inputs incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Olofsson2018)",
+     "why": "SED code and stellar properties"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Matra2019)",
+     "why": "CO line analysis"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-8cf8e8e339e4be73284e607f5f9cbc8d",
+  "batch_id": "msgbatch_01LHB5XbVgqRG7wRXLZoxNAj",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:24:42",
+  "usage": {
+   "input_tokens": 10565,
+   "output_tokens": 6270,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042521,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 53,
+  "quotes_ok": 53,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 41,
+   "rate": 0.539
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:19",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[3].fitting",
+    "old_value": "uvmodelfit single Gaussian"
+   },
+   {
+    "path": "analysis_steps[5].validation",
+    "old_value": "compared with AU Mic mass-loss rate"
+   }
+  ],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,389 @@
+{
+ "bibcode": "2023A&A...677A..80W",
+ "title": "ALMA and VLBA views on the outflow associated with an O-type protostar in G26.50+0.28",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202345893",
+ "arxiv_id": "2307.09517",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "How are jets and outflows associated with an O-type protostar candidate in G26.50+0.28 structured, precessing, rotating, and launched in the close vicinity of the protostar?",
+ "alma_project_codes": [
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "1.3 mm (216.8-220.8 GHz)",
+  "arrays": "ACA (7m) and 12-m array",
+  "angular_resolution": "~0.2\" (1260 au); continuum: 0.30\" x 0.17\" (P.A. ~ -65 deg); 13CO(2-1) and SiO(5-4): ~0.36\" x 0.24\" (PA ~ -57 deg)",
+  "sensitivity": "Continuum 1sigma = 0.3 mJy beam^-1; 13CO(2-1) and SiO(5-4) 1sigma <= 5.0 mJy beam^-1 per 1 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Maser parallax distance of 6.3+0.5/-0.4 kpc and detailed VLBA observation information",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Located at a maser parallax distance of 6.3$^{+0.5}_{-0.4}$ kpc (cite: 2021ApJS..253....1X), G26.50+0.28 (also known as IRAS 18360-0537)"
+     }
+    ]
+   },
+   "citation": "(cite: 2021ApJS..253....1X)"
+  },
+  {
+   "what": {
+    "value": "Far-infrared luminosity of 1.2 x 10^5 L_sun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "G26.50+0.28 (also known as IRAS 18360-0537) has a far-Infrared luminosity of 1.2$\\times$10$^5$ L$_{\\odot}$ (Molinari et al. 1996)."
+     }
+    ]
+   },
+   "citation": "Molinari et al. 1996"
+  },
+  {
+   "what": {
+    "value": "SMA 1.3 mm continuum, 13CO(2-1), SiO(5-4), CH3OH, CH3CN, and CN observations, infall rate of 1.5 x 10^-3 M_sun yr^-1, central star mass of 12 M_sun, and systemic velocity of ~104 km s^-1",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Furthermore, CN spectra, also from the SMA, present typical inverse P-Cygni profiles that demonstrate infall motions of about 1.5$\\times$10$^{-3}$ M$_{\\rm \\odot}$ yr$^{-1}$ (Qiu et al. 2012)."
+     },
+     {
+      "loc": "1.3 mm continuum",
+      "quote": "Then the derived mass of the central star $M_{\\star}$ is about 15 M$_{\\odot}$, which is consistent with the mass derived by (cite: 2012ApJ...756..170Q) of 12 M$_{\\odot}$."
+     },
+     {
+      "loc": "The reference spot",
+      "quote": "close to the systematic velocity ($\\approx$104 $\\hbox{${\\rm km\\,s}^{-1}$}$, derived from Gaussian fits of ALMA CH$_{3}$CN lines (cite: 2012ApJ...756..170Q))"
+     }
+    ]
+   },
+   "citation": "Qiu et al. 2012 (cite: 2012ApJ...756..170Q)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, combine, and image multi-configuration ALMA continuum and line data",
+   "method": "Run ALMA pipeline separately on 7m, C-4, and C-6 datasets, combine visibilities, subtract continuum with uvcontsub (order 1), and image continuum (MFS) and line cubes (1 km s^-1 channels over 70-140 km s^-1) using Briggs weighting (robust=0.5) and multiscale deconvolution.",
+   "software": [
+    "CASA",
+    "ALMA reduction pipeline",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "multiscale scales = [0, 6, 10, 20] pixels",
+    "uvcontsub fitorder = 1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure MM1 disk/toroid geometry, scale height, kinematics, and central protostellar mass",
+   "method": "Measure deconvolved major and minor axes of MM1 from 1.3 mm continuum, compute disk scale height H using the jet inclination, and derive central star mass from H, disk radius, and CH3OH line FWHM; examine velocity gradients in CH3OH and CH3CN moment-1 and position-velocity diagrams.",
+   "software": [],
+   "key_parameters": [
+    "a = 0.65\" (4088 au), b = 0.41\" (2608 au), R_disk = 0.325\"",
+    "FWHM(CH3OH) = 6 km s^-1"
+   ],
+   "assumptions": [
+    "Circular disk/toroid perpendicular to the jet with jet inclination i = 8 deg; distance = 6.3 kpc; 1.3 mm continuum dominated by dust"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map outflow/jet morphology, fit jet precession, and test for jet rotation in ALMA line cubes",
+   "method": "Construct velocity-integrated maps of 13CO(2-1) and SiO(5-4), fit a 2D projected sinusoidal precession model to the SiO(5-4) jet emission, and inspect the SiO(5-4) moment-1 map within a 2.0\"-wide belt along the jet axis for transverse velocity gradients.",
+   "software": [],
+   "key_parameters": [
+    "Jet belt width = 2.0\" for SiO(5-4) moment-1 map"
+   ],
+   "assumptions": [
+    "Inclination i fixed to 8.0 deg; distance = 6.3 kpc; jet velocity ~ 30 km s^-1 (or ~ 200 km s^-1) to estimate precession period"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calibrate 15-epoch VLBA water maser data, extract maser spot positions, and fit 3D proper motions and ring geometry",
+   "method": "Calibrate and image 15 epochs of VLBA 22.235 GHz data using AIPS/ParselTongue with inverse phase-referencing on a reference maser spot; fit 2D Gaussians with AIPS task SAD; fit a 3D ellipse to the MC-1 ring to derive inclination; fit linear constant-velocity proper motions to 216 spots persisting >= 5 epochs.",
+   "software": [
+    "AIPS",
+    "ParselTongue",
+    "SAD"
+   ],
+   "key_parameters": [
+    "Reference spot at V_LSR = 104.11 km s^-1 (channel 1000), (R.A., DEC)_J2000 = (18:38:40.1707, -05:35:42.7749)",
+    "Persistence threshold >= 5 epochs (216 spots)"
+   ],
+   "assumptions": [
+    "Reference maser spot is co-moving with systemic velocity (~104 km s^-1) and unaffected by outflow; MC-1 ring is a 3D circle perpendicular to the jet axis; maser flux is proportional to wind particle intensity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "MM1 deconvolved major diameter (a)",
+   "value": "0.65 (4088)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.3 mm continuum",
+     "quote": "where the deconvolved major and minor diameters $a$ and $b$ are 0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$65 (4088 au) and 0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$41 (2608 au), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 deconvolved minor diameter (b)",
+   "value": "0.41 (2608)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.3 mm continuum",
+     "quote": "where the deconvolved major and minor diameters $a$ and $b$ are 0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$65 (4088 au) and 0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$41 (2608 au), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on jet inclination from disk aspect ratio",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.3 mm continuum",
+     "quote": "Furthermore, the inclination of the jet to the plane of the sky should be smaller (due to the disk thickness) than $\\arctan(b/a)$ $\\approx$32$\\hbox{$^{\\circ}$}$, assuming a circular disk/toroid"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 disk/toroid scale height (H)",
+   "value": "0.33 (2060)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.3 mm continuum",
+     "quote": "Assuming the jet is perpendicular to the disk, then $H = (b-a \\times$ $\\sin$(8$\\hbox{$^{\\circ}$}$))/$\\cos(8$$^{\\circ}$$)$ $\\approx$ 0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$33 (2060 au), which is about half of the major diameter of the disk/toroid."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 6(1,5)-7(2,6) vt=1 FWHM linewidth",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.3 mm continuum",
+     "quote": "where the FWHM linewidth is set to 6 $\\hbox{${\\rm km\\,s}^{-1}$}$ which is the value found for the 217.3 GHz $\\nu_{t}$=1 6(1,5)–7(2,6) line of the typical disk tracer CH$_{3}$OH from the ALMA data."
+    }
+   ]
+  },
+  {
+   "quantity": "Central star mass (M_star)",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "1.3 mm continuum",
+     "quote": "Then the derived mass of the central star $M_{\\star}$ is about 15 M$_{\\odot}$, which is consistent with the mass derived by (cite: 2012ApJ...756..170Q) of 12 M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow cavity shells opening angle",
+   "value": "140",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "13CO (2-1) and SiO (5-4) maps",
+     "quote": "The shells have an opening angle of about 140$\\hbox{$^{\\circ}$}$, denoted by the gray lines in Fig. 3."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet symmetry axis position angle (psi)",
+   "value": "70.1",
+   "uncertainty": "0.13",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "70$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$13 | 0$\\hbox{$\\,.\\!\\!^{\\circ}$}$06$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$003 | 7$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$2$\\pm$0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$3 | 50$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$10$\\hbox{$\\,.\\!\\!^{\\circ}$}$6 | 8.0 $^{\\dag}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet precession amplitude (alpha)",
+   "value": "0.06",
+   "uncertainty": "0.003",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "70$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$13 | 0$\\hbox{$\\,.\\!\\!^{\\circ}$}$06$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$003 | 7$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$2$\\pm$0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$3 | 50$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$10$\\hbox{$\\,.\\!\\!^{\\circ}$}$6 | 8.0 $^{\\dag}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet precession length (lambda)",
+   "value": "7.2 (0.22)",
+   "uncertainty": "0.3 arcsec",
+   "units": "arcsec (pc)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Jet precession",
+     "quote": "The derived precession length $\\lambda$ is 7$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$2, which is 0.22 pc at a distance of 6.3 kpc."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "70$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$13 | 0$\\hbox{$\\,.\\!\\!^{\\circ}$}$06$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$003 | 7$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$2$\\pm$0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$3 | 50$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$10$\\hbox{$\\,.\\!\\!^{\\circ}$}$6 | 8.0 $^{\\dag}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet precession initial phase (phi_0)",
+   "value": "50.1",
+   "uncertainty": "10.6",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "70$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$13 | 0$\\hbox{$\\,.\\!\\!^{\\circ}$}$06$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$003 | 7$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$2$\\pm$0$\\hbox{$\\,.\\!\\!^{\\prime\\prime}$}$3 | 50$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$10$\\hbox{$\\,.\\!\\!^{\\circ}$}$6 | 8.0 $^{\\dag}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet precession period (assuming 30 km s^-1 jet velocity)",
+   "value": "7000",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Jet precession",
+     "quote": "Assuming a jet velocity of $\\sim$ 30 $\\hbox{${\\rm km\\,s}^{-1}$}$ (see Section 4.3), the precession period should be at the order of 7000 years."
+    }
+   ]
+  },
+  {
+   "quantity": "Total water maser spots detected across 15 epochs",
+   "value": "3448",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The reference spot",
+     "quote": "The left panel of Fig. 6 presents the plot of all (3448 in total) the water maser spots detected in the 15-epoch VLBA data."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "Total | 3448"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of blue-lobe maser flux in dense jet (MC-1 and MC-2)",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The distribution of the water maser spots",
+     "quote": "the total flux of the maser spots associated with the dense jet, i.e. the ones in MC-1 and MC-2, is about the 60% (median) of the total flux of the maser spots in the blue lobe."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination from MC-1 3D ellipse fit",
+   "value": "8.4",
+   "uncertainty": "0.5",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The distribution of the water maser spots",
+     "quote": "Assuming the ring is a 3D circle and perpendicular to the jet axis, we can directly derive the inclination of the jet, $i = \\arcsin(b/a)$ $\\approx$ 8$\\hbox{$\\,.\\!\\!^{\\circ}$}$4$\\pm$0$\\hbox{$\\,.\\!\\!^{\\circ}$}$5."
+    }
+   ]
+  },
+  {
+   "quantity": "MC-1 median 3D velocity (V_3D)",
+   "value": "35.6",
+   "uncertainty": "15.7",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Proper motions",
+     "quote": "MC-1 | 35.6$\\pm$15.7 | 35.5$\\pm$15.8 | -1.02$\\pm$4.6 | 1$\\hbox{$\\,.\\!\\!^{\\circ}$}$1$\\pm$8$\\hbox{$\\,.\\!\\!^{\\circ}$}$2"
+    }
+   ]
+  },
+  {
+   "quantity": "MC-2 median 3D velocity (V_3D)",
+   "value": "29.1",
+   "uncertainty": "13.4",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Proper motions",
+     "quote": "MC-2 | 29.1$\\pm$13.4 | 28.7$\\pm$13.6 | -7.62$\\pm$5.9 | 13$\\hbox{$\\,.\\!\\!^{\\circ}$}$8$\\pm$11$\\hbox{$\\,.\\!\\!^{\\circ}$}$0"
+    }
+   ]
+  },
+  {
+   "quantity": "MC-1 and MC-2 dynamical timescales",
+   "value": "300 and 200",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion and summary",
+     "quote": "the estimated dynamical timescales for MC-1 and MC-2 would be approximately 300 and 200 years, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel/cell size and image dimensions used in CASA imaging",
+  "Specific frequency ranges/channels identified as line-free for continuum imaging and uvcontsub",
+  "Whether self-calibration or primary beam correction was applied to the ALMA data",
+  "Weighting/scaling method used when combining 7m, C-4, and C-6 visibilities",
+  "Velocity integration ranges used for the 13CO(2-1) and SiO(5-4) integrated intensity (moment-0) and moment-1 maps",
+  "How loci/positions along the SiO(5-4) jet were extracted to fit the sinusoidal precession model"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel size and image size used in CASA tclean",
+  "Exact line-free frequency intervals used for MFS continuum imaging and uvcontsub",
+  "Velocity integration intervals used to create the redshifted and blueshifted moment-0 maps of 13CO(2-1) and SiO(5-4) in Fig. 3",
+  "How the SiO(5-4) jet ridge coordinates were sampled/extracted for fitting the sinusoidal precession equation (Eq. 2)",
+  "Catalog/table of the 3448 VLBA water maser spots and 216 proper motion spots"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA calibration and imaging parameters (CASA/pipeline versions, calibrators, robust=0.5, multiscale scales, channel width) and analytical equations are well specified, and the data are archival. However, pixel size, line-free channel ranges, moment map velocity ranges, and the exact locus extraction method for the precession fit are omitted.",
+ "rediscovery_reason": "Public archival ALMAGAL dataset (2019.1.00195.L) for a single target with short integration times; key ALMA results (MM1 deconvolved size, central star mass, jet P.A., outflow shell opening angle, and precession parameters) are quantitative and can be reproduced from the ALMA visibilities.",
+ "source_card": "cards/2023A%26A...677A..80W/sonnet/card.md"
+}

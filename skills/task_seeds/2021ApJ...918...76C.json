@@ -1,0 +1,593 @@
+{
+ "bibcode": "2021ApJ...918...76C",
+ "title": "Toward a More Complex Understanding of Natal Super Star Clusters with Multiwavelength Observations",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac0e93",
+ "arxiv_id": "2107.02695",
+ "fields": [
+  "star_formation",
+  "nearby_galaxies"
+ ],
+ "question": "Disentangle individual natal super star clusters in He 2-10 at ~0.3'' resolution using multiwavelength radio, submillimeter, and infrared observations to assess their ionizing photon rates, extinction, masses, and star formation efficiencies.",
+ "alma_project_codes": [
+  "2012.1.00413.S",
+  "2015.1.01569.S",
+  "2016.1.00027.S",
+  "2016.1.00419.S"
+ ],
+ "data": {
+  "bands": "Band 3 (113 GHz), 250 GHz (258 GHz), 340 GHz",
+  "arrays": "39 antennas (2015.1.01569), 42 antennas (2016.1.00027), 30-35 antennas (2012.1.00413)",
+  "angular_resolution": "113 GHz: 0.381'' x 0.206'', 250 GHz: 0.191'' x 0.157'', 340 GHz: 0.306'' x 0.265''; all convolved to 0.300''",
+  "sensitivity": "113 GHz: 0.017 mJy bm^-1 (0.019 convolved); 250 GHz: 0.013 mJy bm^-1 (0.025 convolved); 340 GHz: 0.052 mJy bm^-1 (0.048 convolved)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1995 VLA AK0400 FITS images at 5, 8, and 15 GHz for flux calibration comparison",
+    "evidence": [
+     {
+      "loc": "Source Extraction and Photometry",
+      "quote": "As a check, we convolved the 5, 8, and 15 GHz maps from programs AJ314 and 16B-067 to the synthesized beam from (cite: Johnson:2003) to compare the flux calibrations against their 1995 AK0400 program."
+     },
+     {
+      "loc": "Source Extraction and Photometry",
+      "quote": "We are in possession of the original FITS images used in (cite: Johnson:2003) and are able to make a direct comparison without needing to re-reduce the data from the archive."
+     }
+    ]
+   },
+   "citation": "(cite: Johnson:2003)"
+  },
+  {
+   "what": {
+    "value": "SMA 12CO(2-1), ALMA HCO+(1-0), and ALMA HCN(1-0) moment 0 maps and line strengths / ratios for 0.8'' apertures",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "and the white contours show ([7](#fig:normpar)a) SMA $^{12}$CO(2-1), ([7](#fig:normpar)b) ALMA HCO$^+$(1-0), and ([7](#fig:normpar)c) ALMA HCN(1-0) velocity-integrated intensity (moment 0) maps from (cite: Johnson:2018)."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "(cite: Johnson:2018) report HCN(1-0), HCO$^+$(1-0), and CO(2-1) line strengths for nineteen 0.8$''$ apertures, chosen to probe peaks in their ALMA and SMA maps of He 2-10."
+     }
+    ]
+   },
+   "citation": "(cite: Johnson:2018)"
+  },
+  {
+   "what": {
+    "value": "Metallicity range 12 + log(O/H) = 8.25 - 8.55 across He 2-10 from MUSE observations",
+    "evidence": [
+     {
+      "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+      "quote": "This is motivated by the results of (cite: Cresci:2017), who mapped the metallicity of He 2-10 from their MUSE (Multi Unit Spectroscopic Explorer) observations. They report a range of metallicities (12 + log(O/H) = 8.25 – 8.55) across He 2-10"
+     }
+    ]
+   },
+   "citation": "(cite: Cresci:2017)"
+  },
+  {
+   "what": {
+    "value": "HCN/HCO+ and HCO+/CO molecular line ratio diagram data for comparison",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "In Figure [8](#fig:molratios), we show an adaptation of Figure 13 from (cite: Johnson:2018) and Figure 13 of (cite: Finn:2019) to show this trend."
+     }
+    ]
+   },
+   "citation": "(cite: Finn:2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Convolve radio/mm/submm maps to a common beam, stack them to define source apertures, and extract multiwavelength continuum and Pa-alpha photometry",
+   "method": "Convolve all VLA and ALMA maps to a 0.3'' circular beam, stack the 8 convolved maps, define source footprints using the 20-sigma (73 uJy/bm) contour of the stacked map with manual masking in crowded regions, sum intensity divided by beam area, subtract median masked background; for HST/NICMOS Pa-alpha, shift by 1.33'', scale F187N by 3% and subtract F190N, and extract using the 33 GHz half-light radius contour (~2-sigma) with local background annuli.",
+   "software": [
+    "CASA",
+    "Photutils"
+   ],
+   "key_parameters": [
+    "Common synthesized beam = 0.300''",
+    "Stacked map contour level = 20 x rms (73 uJy bm^-1)",
+    "Pa-alpha background annulus = 1.5 to 2 times source size (2 to 3 times for Knot 4b)"
+   ],
+   "assumptions": [
+    "Rayleigh-Jeans tail of hot star SEDs makes continuum in F187N 3% brighter than in F190N",
+    "Systematic flux calibration errors: 10% for ALMA, 5% for VLA < 15 GHz, 15% for VLA >= 15 GHz"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit 2-component and 3-component power-law SED models to disentangle non-thermal, free-free, and dust emission",
+   "method": "Fit log S_model = log(S_0,nth nu^alpha_nth + S_0,ff nu^alpha_ff + S_0,dust nu^alpha_dust) via chi-squared minimization with fixed spectral indices, excluding the 33 GHz lower limit and modifying the 5 GHz and 15 GHz fluxes and uncertainties to account for archival calibration discrepancies.",
+   "software": [],
+   "key_parameters": [
+    "alpha_ff = -0.1, alpha_dust = 4, alpha_nth = -0.7 (-0.5 for Knot 3)",
+    "5 GHz flux modified to midpoint between Table 4 value and 0.5x value; 15 GHz flux modified to midpoint between Table 4 value and 1.4x value"
+   ],
+   "assumptions": [
+    "Free-free emission is optically thin above 5 GHz (alpha_ff = -0.1) and dust emission is optically thin (alpha_dust = 4)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate ionizing photon production rates (Q_Lyc), cluster stellar masses (M_fit), and visual extinction (A_V)",
+   "method": "Calculate Q_Lyc,fit from the SED-modeled 33 GHz thermal flux density (S_ff,fit) using Equation (2); convert Q_Lyc,fit to cluster stellar mass M_fit using Starburst99 models; calculate Q_Lyc,Pa-alpha from HST/NICMOS Pa-alpha flux density using Equations (2)-(4); derive extinction A_V = -17.7 log(Q_Lyc,Pa-alpha / Q_Lyc,fit).",
+   "software": [
+    "Starburst99"
+   ],
+   "key_parameters": [
+    "T_e = 10^4 K, nu = 33 GHz, D = 9 Mpc",
+    "Starburst99 conversion: Q_Lyc = (5.3 +/- 1.2) x 10^52 photons s^-1 per 10^6 M_sun cluster (< 1 Myr, Z = 0.008 and 0.014, Kroupa and Salpeter IMFs)",
+    "F(Pa-alpha) / F(H-beta) = 0.317, F187N FWHM = 0.0191 um, A_Pa-alpha / A_K ~ 1.24, A_V / A_K ~ 8.8 (R_V = 3.1)"
+   ],
+   "assumptions": [
+    "T_e = 10^4 K, Case B recombination, n_e = 10^6 cm^-3, cluster age < 1 Myr, optically thin free-free emission, R_V = 3.1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate dust masses, gas masses, total cluster masses, and instantaneous mass ratios (star formation efficiencies)",
+   "method": "Use SED-modeled 340 GHz dust flux density (S_dust,fit) to compute dust mass M_d = L_nu / (4 pi kappa_nu B_nu(T_d)) for T_d = (25, 40, 100) K; multiply by gas-to-dust ratio to get M_gas, add M_fit for total mass, and compute instantaneous mass ratio IMR(t) = (1 + M_* / M_gas)^-1 (or SFE).",
+   "software": [],
+   "key_parameters": [
+    "T_d = (25, 40, 100) K; nu_0 = 340 GHz; kappa_0 = 1.3 cm^2 g^-1; beta = alpha_dust - 2 = 2",
+    "Dust-to-gas ratio = 1:100 (also tested 1:300)"
+   ],
+   "assumptions": [
+    "Optically thin dust emission at 340 GHz, kappa_0 = 1.3 cm^2 g^-1 at 340 GHz, T_d = (25, 40, 100) K, dust-to-gas ratio of 1:100"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "113 GHz continuum flux density (Knot 1a)",
+   "value": "0.19",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "113 GHz continuum flux density (Knot 1b)",
+   "value": "0.17",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "113 GHz continuum flux density (Knot 2)",
+   "value": "0.38",
+   "uncertainty": "0.08",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "113 GHz continuum flux density (Knot 3)",
+   "value": "0.13",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "113 GHz continuum flux density (Knot 4a)",
+   "value": "0.55",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "113 GHz continuum flux density (Knot 4b)",
+   "value": "0.57",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "113 GHz continuum flux density (Knot 5)",
+   "value": "0.40",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "113 & 0.19 $\\pm$ 0.04 & 0.17 $\\pm$ 0.04 & 0.38 $\\pm$ 0.08 & 0.13 $\\pm$ 0.03 & 0.55 $\\pm$ 0.09 & 0.57 $\\pm$ 0.09 & 0.40 $\\pm$ 0.06\\"
+    }
+   ]
+  },
+  {
+   "quantity": "258 GHz continuum flux density (Knot 1a)",
+   "value": "0.24",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "258 & 0.24 $\\pm$ 0.05 & 0.22 $\\pm$ 0.05 & 0.47 $\\pm$ 0.09 & 0.07 $\\pm$ 0.03 & 0.51 $\\pm$ 0.10 & 0.44 $\\pm$ 0.10 & 0.37 $\\pm$ 0.08\\"
+    }
+   ]
+  },
+  {
+   "quantity": "258 GHz continuum flux density (Knot 2)",
+   "value": "0.47",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "258 & 0.24 $\\pm$ 0.05 & 0.22 $\\pm$ 0.05 & 0.47 $\\pm$ 0.09 & 0.07 $\\pm$ 0.03 & 0.51 $\\pm$ 0.10 & 0.44 $\\pm$ 0.10 & 0.37 $\\pm$ 0.08\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 1a)",
+   "value": "0.36",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 1b)",
+   "value": "0.37",
+   "uncertainty": "0.08",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 2)",
+   "value": "0.77",
+   "uncertainty": "0.16",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 3)",
+   "value": "0.13",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 4a)",
+   "value": "0.75",
+   "uncertainty": "0.17",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 4b)",
+   "value": "0.71",
+   "uncertainty": "0.15",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density (Knot 5)",
+   "value": "0.62",
+   "uncertainty": "0.15",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Identification and Photometry for Sources Extracted from the Convolved Maps",
+     "quote": "340 & 0.36 $\\pm$ 0.09 & 0.37 $\\pm$ 0.08 & 0.77 $\\pm$ 0.16 & 0.13 $\\pm$ 0.05 & 0.75 $\\pm$ 0.17 & 0.71 $\\pm$ 0.15 & 0.62 $\\pm$ 0.15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled 33 GHz thermal flux density S_ff,fit (Knot 1a)",
+   "value": "0.25",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distributions from 0.9 mm to 6 cm",
+     "quote": "1a & thermal+dust & UD H$\\,$ii region & 0.25 $\\pm$ 0.02 & 0.15 $\\pm$ 0.08\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled 340 GHz dust flux density S_dust,fit (Knot 1a)",
+   "value": "0.15",
+   "uncertainty": "0.08",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distributions from 0.9 mm to 6 cm",
+     "quote": "1a & thermal+dust & UD H$\\,$ii region & 0.25 $\\pm$ 0.02 & 0.15 $\\pm$ 0.08\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled 33 GHz thermal flux density S_ff,fit (Knot 2)",
+   "value": "0.47",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distributions from 0.9 mm to 6 cm",
+     "quote": "2 & thermal+dust & UD H$\\,$ii region & 0.47 $\\pm$ 0.04 & 0.37 $\\pm$ 0.14\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled 340 GHz dust flux density S_dust,fit (Knot 2)",
+   "value": "0.37",
+   "uncertainty": "0.14",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distributions from 0.9 mm to 6 cm",
+     "quote": "2 & thermal+dust & UD H$\\,$ii region & 0.47 $\\pm$ 0.04 & 0.37 $\\pm$ 0.14\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Ionizing photon production rate Q_Lyc,fit (Knot 1a)",
+   "value": "2.12",
+   "uncertainty": "0.18",
+   "units": "10^51 photons s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "1a & 2.12 $\\pm$ 0.18 & 0.40 $\\pm$ 0.10 & 0.34 $\\pm$ 0.26 & 14\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cluster stellar mass M_fit (Knot 1a)",
+   "value": "0.40",
+   "uncertainty": "0.10",
+   "units": "10^5 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "1a & 2.12 $\\pm$ 0.18 & 0.40 $\\pm$ 0.10 & 0.34 $\\pm$ 0.26 & 14\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cluster stellar mass M_fit (Knot 1b)",
+   "value": "0.40",
+   "uncertainty": "0.10",
+   "units": "10^5 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "1b & 2.10 $\\pm$ 0.18 & 0.40 $\\pm$ 0.10 & 1.17 $\\pm$ 0.24 & 4.5\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cluster stellar mass M_fit (Knot 2)",
+   "value": "0.77",
+   "uncertainty": "0.19",
+   "units": "10^5 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "2 & 4.05 $\\pm$ 0.34 & 0.77 $\\pm$ 0.19 & 2.67 $\\pm$ 0.27 & 3.2\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cluster stellar mass M_fit (Knot 4a)",
+   "value": "0.86",
+   "uncertainty": "0.26",
+   "units": "10^5 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "4a & 4.51 $\\pm$ 0.92 & 0.86 $\\pm$ 0.26 & 3.41 $\\pm$ 0.28 & 2.2\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cluster stellar mass M_fit (Knot 4b)",
+   "value": "1.00",
+   "uncertainty": "0.29",
+   "units": "10^5 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "4b & 5.25 $\\pm$ 0.95 & 1.00 $\\pm$ 0.29 & 3.38 $\\pm$ 0.27 & 3.4\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cluster stellar mass M_fit (Knot 5)",
+   "value": "0.86",
+   "uncertainty": "0.21",
+   "units": "10^5 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Production Rate of Ionizing Photons and Mass of the Clusters",
+     "quote": "5 & 4.51 $\\pm$ 0.35 & 0.86 $\\pm$ 0.21 & 0.60 $\\pm$ 0.23 & 16\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Visual extinction A_V range across radio knots",
+   "value": "2.2 - 16",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Extinction",
+     "quote": "The last column of Table [\\[tab:propertiescontour\\]](#tab:propertiescontour) gives the estimates of the extinction values towards the radio knots, which is between 2.2 – 16."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free fraction of 340 GHz flux density",
+   "value": "48 - 68",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Submillimeter Emission, Dust Mass, and Total Mass",
+     "quote": "Comparing the modeled dust emission, S$_{dust,fit}$ to the measured flux density at 340 GHz, we estimate that 48 – 68$\\%$ of the 340 GHz flux density is due to free-free emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass M_d range across knots (at T_d = 100 K)",
+   "value": "0.1 - 0.3",
+   "uncertainty": "not stated",
+   "units": "10^3 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "In Section [\\[sec:dustmass\\]](#sec:dustmass), we estimate the dust content associated with the knots from the SED models to be 0.1 – 0.3 $\\times$ 10$^3$ $\\textrm{M}_{\\odot}$ at 100K."
+    }
+   ]
+  },
+  {
+   "quantity": "Total cluster mass range (T_d = 100 K, dust-to-gas ratio 1:100)",
+   "value": "0.5 - 1.1",
+   "uncertainty": "not stated",
+   "units": "10^5 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Submillimeter Emission, Dust Mass, and Total Mass",
+     "quote": "Adopting a dust-to-gas ratio of 1:100 (cite: Wilson:2008) and assuming M$_{fit}$ is the stellar contribution to the total mass, the knots have total masses between 0.5 – 1.1 $\\times$ 10$^5$ $\\textrm{M}_{\\odot}$ for T$_d$ = 100 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Instantaneous mass ratio (IMR) / SFE range (T_d = 100 K, 1:100 dust-to-gas ratio)",
+   "value": "71 - 88",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "For T$_d$ = 100 K, the IMR is between $\\sim$71 – 88$\\%$ for the radio knots; for colder dust (25 K), the IMR is $\\sim$32 – 60$\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Instantaneous mass ratio (IMR) / SFE range (T_d = 25 K, 1:100 dust-to-gas ratio)",
+   "value": "32 - 60",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiency",
+     "quote": "For T$_d$ = 100 K, the IMR is between $\\sim$71 – 88$\\%$ for the radio knots; for colder dust (25 K), the IMR is $\\sim$32 – 60$\\%$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral window and line-free channel selections used to image the ALMA 113, 250, and 340 GHz continuum maps",
+  "Whether ALMA projects 2015.1.01569.S and 2016.1.00027.S were combined for the 113 GHz continuum map or if only 2016.1.00027.S was used (Table 2 lists only 2016.1.00027)",
+  "Image cell sizes, image dimensions, deconvolution algorithms, and clean stopping thresholds used in CASA tclean",
+  "Exact pixel masks used to separate overlapping knots in the 20-sigma stacked contour footprint",
+  "Whether primary beam corrections were applied to the VLA and ALMA continuum maps",
+  "Exact weighting or combination method (e.g., unweighted sum or mean) used when stacking the eight 0.3'' convolved radio/mm/submm maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel masks/regions used to split the 20-sigma contour of the stacked map between blended sources (Knots 1a/1b/2 and 4a/4b)",
+  "33 GHz half-light contour region files used for the HST/NICMOS Pa-alpha aperture photometry",
+  "CASA tclean imaging parameters (cell size, image size, stopping threshold, deconvolver, continuum spectral window / channel selections) for the re-imaged ALMA and VLA datasets",
+  "Exact astrometric shift vector (direction in RA and Dec) for the 1.33'' shift applied to the HST/NICMOS images"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "All ALMA, VLA, and HST data are in public archives, the SED fitting equations and analytic formulas for Q_Lyc, A_V, M_d, and SFE are explicitly given, and the intermediate photometry is tabulated in Table 4. However, full end-to-end reproduction from visibilities is hindered by unstated tclean imaging parameters, unstated continuum channel selections, and manual pixel masking of crowded contours.",
+ "rediscovery_reason": "All datasets are public in the ALMA, VLA, and HST archives, the main deliverables are numeric (continuum flux densities, SED component amplitudes, ionizing photon rates, stellar/dust masses, A_V, and SFE), and downstream reproduction from the tabulated photometry in Table 4 is completely specified.",
+ "source_card": "cards/2021ApJ...918...76C/sonnet/card.md"
+}

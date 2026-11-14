@@ -1,0 +1,567 @@
+{
+ "bibcode": "2021ApJS..257....6G",
+ "title": "Molecules with ALMA at Planet-forming Scales (MAPS). VI. Distribution of the Small Organics HCN, C<SUB>2</SUB>H, and H<SUB>2</SUB>CO",
+ "year": 2021,
+ "doi": "10.3847/1538-4365/ac1440",
+ "arxiv_id": "2109.06391",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Characterize the spatial distribution, column densities, and excitation temperatures of the small organic molecules HCN, C2H, and H2CO on planet-forming scales in five protoplanetary disks.",
+ "alma_project_codes": [
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "0.15'' (15-24 au) for 3-2 lines; 0.3'' (30-48 au) for 1-0 lines and tapered 3-2 / H2CO lines",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source characterization parameters (spectral type, distance, inclination, position angle, stellar mass)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Reproduced from (cite: oberg21), where additional source characteristics and a list of references are provided."
+     },
+     {
+      "loc": "Column densities",
+      "quote": "The stellar masses needed to compute the Keplerian velocities are taken from (cite: oberg21) and are estimated from gas dynamics in (cite: Teague21)."
+     }
+    ]
+   },
+   "citation": "(cite: oberg21); (cite: Teague21)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic constants and partition functions for HCN, C2H, and H2CO",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The spectroscopic constants are taken from the CDMS database (cite: cdmsA; cdmsB) for HCN, and from the JPL database (cite: jpl) for C$_2$H and H$_2$CO."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Measurements are provided by (cite: Ahrens2002) for HCN, by (cite: Sastry1981) and (cite: Padovani2009) for C$_2$H, and by (cite: Bocquet1996) for H$_2$CO."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: cdmsA; cdmsB), JPL (cite: jpl), (cite: Ahrens2002), (cite: Sastry1981), (cite: Padovani2009), (cite: Bocquet1996)"
+  },
+  {
+   "what": {
+    "value": "Gas temperatures inferred from peak brightness temperatures of 12CO 2-1 and 13CO lines, and emission surface heights",
+    "evidence": [
+     {
+      "loc": "HCN and C$_2$H fitting method",
+      "quote": "We thus restrict the rotational temperature between 10 K and the gas temperature inferred from the peak brightness temperature of the optically thick $^{12}$CO 2–1 line, $\\rm{T}_{\\rm{gas}}$($^{12}$CO) (cite: law21_surf), for both HCN and C$_2$H."
+     }
+    ]
+   },
+   "citation": "(cite: law21_surf)"
+  },
+  {
+   "what": {
+    "value": "CO column density profiles derived from C18O 2-1, CO snowline locations, and total water ice mass inside 50 au",
+    "evidence": [
+     {
+      "loc": "Comparison to CO column densities",
+      "quote": "Figure 6 shows the normalized column density profiles of HCN, C$_2$H, and H$_2$CO, as well as the CO column densities derived from the C$^{18}$O 2–1 line by (cite: zhang21)."
+     },
+     {
+      "loc": "Origin of the H$_2$CO emission",
+      "quote": "The light blue vertical lines in the bottom panels of Fig. 6 mark the estimated location of the CO snowline in each disk as measured by (cite: zhang21)."
+     },
+     {
+      "loc": "Small organics reservoir in the inner 50 au",
+      "quote": "The total water mass inside $50$ au was estimated from the models presented in (cite: zhang21), and are listed in Table 1 of (cite: oberg21)."
+     }
+    ]
+   },
+   "citation": "(cite: zhang21); (cite: oberg21)"
+  },
+  {
+   "what": {
+    "value": "Positions of dust continuum gaps and outer edge of the continuum disk",
+    "evidence": [
+     {
+      "loc": "Photochemistry of HCN and C$_2$H",
+      "quote": "The position of the dust continuum gaps, as measured by (cite: law21_rad), are marked by the gray dashed vertical lines in Fig. 6."
+     }
+    ]
+   },
+   "citation": "(cite: law21_rad)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate zeroth-moment maps and measure disk-integrated line fluxes",
+   "method": "Integrate velocity channels to create zeroth-moment maps and compute disk-integrated fluxes using elliptical masks based on disk inclination, PA, and observed emission extent.",
+   "software": [],
+   "key_parameters": [
+    "Disk inclinations and position angles from Table 1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract deprojected radial intensity profiles and radial spectra",
+   "method": "Deproject zeroth-moment maps using GoFish radial_profile and extract Keplerian-shifted deprojected spectra in radial bins of 1/4 beam major axis using GoFish radial_spectra.",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Radial bin size = 1/4 of the beam major axis",
+    "Averaging wedge = 30 degrees along disk major axis (or full azimuthal average for low S/N: C2H in IM Lup and GM Aur, and H2CO in all sources)"
+   ],
+   "assumptions": [
+    "Vertically flat disk geometry"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Retrieve HCN and C2H column density and excitation temperature profiles",
+   "method": "Two-step LTE hyperfine spectral fitting with thermal line width flux redistribution: first simultaneously fit 0.3'' 1-0 and tapered 3-2 spectra to constrain Tex,0; second fit 0.15'' 3-2 spectra using priors around Tex,0 (and fixed CO temperatures in inner blended regions).",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Free parameters: N_tot, FWHM line width Delta V, excitation temperature T_ex, velocity offset v_lsr",
+    "Background temperature T_bg fixed to max(continuum brightness temperature, CMB 2.73 K)"
+   ],
+   "assumptions": [
+    "Local thermal equilibrium (LTE), beam filling factor of 1, and identical excitation temperature for all hyperfine components",
+    "Flux computed with purely thermal line width and redistributed over observed broader line width to account for beam smearing"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Retrieve H2CO column density profiles",
+   "method": "Fit a single Gaussian to the 0.3'' H2CO 3_03-2_02 line in each radial bin under LTE for fixed excitation temperatures between 20 and 50 K.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Fixed excitation temperatures T_ex between 20 and 50 K"
+   ],
+   "assumptions": [
+    "LTE and excitation temperature between 20 and 50 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate inner 50 au organic gas and ice masses and abundances relative to water",
+   "method": "Integrate column density profiles within r < 50 au (extrapolating inward at constant column density where inner disk fits fail), multiply by an ice-to-gas ratio of 1000, and divide by modeled water ice mass inside 50 au.",
+   "software": [],
+   "key_parameters": [
+    "Outer integration radius = 50 au"
+   ],
+   "assumptions": [
+    "Constant column density extrapolation inward in the inner disk where fits are poor",
+    "Ice-to-gas ratio of 1000"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk-integrated flux of HCN J=1-0 (IM Lup)",
+   "value": "88.3",
+   "uncertainty": "14.4",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $J=1-0$, $F=1-1; F=2-1; F=0-1$ | 88.3$\\pm$ 14.4 | 113.4$\\pm$ 14.8 | 226.8$\\pm$ 15.9 | 736.3$\\pm$ 58.3 | 138.6$\\pm$ 19.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=1-0 (GM Aur)",
+   "value": "113.4",
+   "uncertainty": "14.8",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $J=1-0$, $F=1-1; F=2-1; F=0-1$ | 88.3$\\pm$ 14.4 | 113.4$\\pm$ 14.8 | 226.8$\\pm$ 15.9 | 736.3$\\pm$ 58.3 | 138.6$\\pm$ 19.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=1-0 (AS 209)",
+   "value": "226.8",
+   "uncertainty": "15.9",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $J=1-0$, $F=1-1; F=2-1; F=0-1$ | 88.3$\\pm$ 14.4 | 113.4$\\pm$ 14.8 | 226.8$\\pm$ 15.9 | 736.3$\\pm$ 58.3 | 138.6$\\pm$ 19.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=1-0 (HD 163296)",
+   "value": "736.3",
+   "uncertainty": "58.3",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $J=1-0$, $F=1-1; F=2-1; F=0-1$ | 88.3$\\pm$ 14.4 | 113.4$\\pm$ 14.8 | 226.8$\\pm$ 15.9 | 736.3$\\pm$ 58.3 | 138.6$\\pm$ 19.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=1-0 (MWC 480)",
+   "value": "138.6",
+   "uncertainty": "19.6",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HCN | $J=1-0$, $F=1-1; F=2-1; F=0-1$ | 88.3$\\pm$ 14.4 | 113.4$\\pm$ 14.8 | 226.8$\\pm$ 15.9 | 736.3$\\pm$ 58.3 | 138.6$\\pm$ 19.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=3-2 (IM Lup)",
+   "value": "2343.7",
+   "uncertainty": "86.3",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $J=3-2$, $F=3-2; F=3-3; F=2-2$ | 2343.7$\\pm$ 86.3 | 1814.6$\\pm$ 130.5 | 2940.8$\\pm$ 71.7 | 7043.3$\\pm$ 459.3 | 2494.4$\\pm$ 122.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=3-2 (GM Aur)",
+   "value": "1814.6",
+   "uncertainty": "130.5",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $J=3-2$, $F=3-2; F=3-3; F=2-2$ | 2343.7$\\pm$ 86.3 | 1814.6$\\pm$ 130.5 | 2940.8$\\pm$ 71.7 | 7043.3$\\pm$ 459.3 | 2494.4$\\pm$ 122.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=3-2 (AS 209)",
+   "value": "2940.8",
+   "uncertainty": "71.7",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $J=3-2$, $F=3-2; F=3-3; F=2-2$ | 2343.7$\\pm$ 86.3 | 1814.6$\\pm$ 130.5 | 2940.8$\\pm$ 71.7 | 7043.3$\\pm$ 459.3 | 2494.4$\\pm$ 122.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=3-2 (HD 163296)",
+   "value": "7043.3",
+   "uncertainty": "459.3",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $J=3-2$, $F=3-2; F=3-3; F=2-2$ | 2343.7$\\pm$ 86.3 | 1814.6$\\pm$ 130.5 | 2940.8$\\pm$ 71.7 | 7043.3$\\pm$ 459.3 | 2494.4$\\pm$ 122.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of HCN J=3-2 (MWC 480)",
+   "value": "2494.4",
+   "uncertainty": "122.8",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $J=3-2$, $F=3-2; F=3-3; F=2-2$ | 2343.7$\\pm$ 86.3 | 1814.6$\\pm$ 130.5 | 2940.8$\\pm$ 71.7 | 7043.3$\\pm$ 459.3 | 2494.4$\\pm$ 122.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of C2H N=3-2, J=7/2-5/2, F=4-3; F=3-2 (IM Lup)",
+   "value": "430.8",
+   "uncertainty": "59.3",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $N=3-2$, $J=7/2-5/2$, $F=4-3; F=3-2$ | 430.8$\\pm$ 59.3 | 294.2$\\pm$ 97.9 | 1716.6$\\pm$ 56.7 | 2527.5$\\pm$ 223.1 | 1076.4$\\pm$ 66.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of C2H N=3-2, J=7/2-5/2, F=4-3; F=3-2 (GM Aur)",
+   "value": "294.2",
+   "uncertainty": "97.9",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $N=3-2$, $J=7/2-5/2$, $F=4-3; F=3-2$ | 430.8$\\pm$ 59.3 | 294.2$\\pm$ 97.9 | 1716.6$\\pm$ 56.7 | 2527.5$\\pm$ 223.1 | 1076.4$\\pm$ 66.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of C2H N=3-2, J=7/2-5/2, F=4-3; F=3-2 (AS 209)",
+   "value": "1716.6",
+   "uncertainty": "56.7",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $N=3-2$, $J=7/2-5/2$, $F=4-3; F=3-2$ | 430.8$\\pm$ 59.3 | 294.2$\\pm$ 97.9 | 1716.6$\\pm$ 56.7 | 2527.5$\\pm$ 223.1 | 1076.4$\\pm$ 66.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of C2H N=3-2, J=7/2-5/2, F=4-3; F=3-2 (HD 163296)",
+   "value": "2527.5",
+   "uncertainty": "223.1",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $N=3-2$, $J=7/2-5/2$, $F=4-3; F=3-2$ | 430.8$\\pm$ 59.3 | 294.2$\\pm$ 97.9 | 1716.6$\\pm$ 56.7 | 2527.5$\\pm$ 223.1 | 1076.4$\\pm$ 66.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of C2H N=3-2, J=7/2-5/2, F=4-3; F=3-2 (MWC 480)",
+   "value": "1076.4",
+   "uncertainty": "66.6",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $N=3-2$, $J=7/2-5/2$, $F=4-3; F=3-2$ | 430.8$\\pm$ 59.3 | 294.2$\\pm$ 97.9 | 1716.6$\\pm$ 56.7 | 2527.5$\\pm$ 223.1 | 1076.4$\\pm$ 66.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of H2CO 3_03-2_02 (IM Lup)",
+   "value": "752.2",
+   "uncertainty": "72.1",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H$_2$CO | $3_{03}-2_{02}$ | 752.2$\\pm$ 72.1 | 900.0$\\pm$ 56.7 | 292.5$\\pm$ 27.9 | 813.4$\\pm$ 78.1 | 144.5$\\pm$ 38.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of H2CO 3_03-2_02 (GM Aur)",
+   "value": "900.0",
+   "uncertainty": "56.7",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H$_2$CO | $3_{03}-2_{02}$ | 752.2$\\pm$ 72.1 | 900.0$\\pm$ 56.7 | 292.5$\\pm$ 27.9 | 813.4$\\pm$ 78.1 | 144.5$\\pm$ 38.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of H2CO 3_03-2_02 (AS 209)",
+   "value": "292.5",
+   "uncertainty": "27.9",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H$_2$CO | $3_{03}-2_{02}$ | 752.2$\\pm$ 72.1 | 900.0$\\pm$ 56.7 | 292.5$\\pm$ 27.9 | 813.4$\\pm$ 78.1 | 144.5$\\pm$ 38.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of H2CO 3_03-2_02 (HD 163296)",
+   "value": "813.4",
+   "uncertainty": "78.1",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H$_2$CO | $3_{03}-2_{02}$ | 752.2$\\pm$ 72.1 | 900.0$\\pm$ 56.7 | 292.5$\\pm$ 27.9 | 813.4$\\pm$ 78.1 | 144.5$\\pm$ 38.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-integrated flux of H2CO 3_03-2_02 (MWC 480)",
+   "value": "144.5",
+   "uncertainty": "38.9",
+   "units": "mJy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H$_2$CO | $3_{03}-2_{02}$ | 752.2$\\pm$ 72.1 | 900.0$\\pm$ 56.7 | 292.5$\\pm$ 27.9 | 813.4$\\pm$ 78.1 | 144.5$\\pm$ 38.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN excitation temperature range",
+   "value": "20-30",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We derive column density and excitation temperature profiles for HCN and C$_2$H, and find that the HCN emission arises in a temperate ($20 - 30$ K) layer in the disk, while C$_2$H is present in relatively warmer ($20-60$ K) layers."
+    },
+    {
+     "loc": "HCN and C$_2$H excitation temperatures",
+     "quote": "HCN temperatures range from 20 to 30 K, while C$_2$H temperatures range from 20 to 60 K."
+    }
+   ]
+  },
+  {
+   "quantity": "C2H excitation temperature range",
+   "value": "20-60",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HCN and C$_2$H excitation temperatures",
+     "quote": "HCN temperatures range from 20 to 30 K, while C$_2$H temperatures range from 20 to 60 K."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN and C2H column density range",
+   "value": "10^12 to 10^15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HCN, C$_2$H, and H$_2$CO column density profiles",
+     "quote": "The HCN and C$_2$H column densities range from $10^{12}$ to $10^{15} ~\\rm{cm}^{-2}$, although the HCN column density may reach $\\gtrsim10^{16} ~\\rm{cm}^{-2}$ in the inner $30$ au of GM Aur, HD 163296, and MWC 480."
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO column density range in inner 200 au",
+   "value": "10^12 to 10^14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "HCN, C$_2$H, and H$_2$CO column density profiles",
+     "quote": "The H$_2$CO column density varies between the sources, ranging between $10^{12}$ and $10^{14} ~\\rm{cm}^{-2}$ in the inner 200 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass within 50 au (IM Lup: HCN, C2H, H2CO)",
+   "value": "0.03, 0.05, 0.20",
+   "uncertainty": "not stated",
+   "units": "10^22 g",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| IM Lup | 0.03 | 0.05 | 0.20 | $<0.001$ | $<0.001$ | 0.001 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass within 50 au (GM Aur: HCN, C2H, H2CO)",
+   "value": "19.63, 2.04, 0.79",
+   "uncertainty": "not stated",
+   "units": "10^22 g",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| GM Aur | 19.63 | 2.04 | 0.79 | 0.56 | 0.06 | 0.02 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass within 50 au (AS 209: HCN, C2H, H2CO)",
+   "value": "1.99, 3.27, 0.15",
+   "uncertainty": "not stated",
+   "units": "10^22 g",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AS 209 | 1.99 | 3.27 | 0.15 | 1.09 | 1.80 | 0.08 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass within 50 au (HD 163296: HCN, C2H, H2CO)",
+   "value": "46.36, 6.03, 0.24",
+   "uncertainty": "not stated",
+   "units": "10^22 g",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HD 163296 | 46.36 | 6.03 | 0.24 | 0.68 | 0.09 | 0.004 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass within 50 au (MWC 480: HCN, C2H, H2CO)",
+   "value": "59.92, 2.17, 1.21",
+   "uncertainty": "not stated",
+   "units": "10^22 g",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| MWC 480 | 59.92 | 2.17 | 1.21 | 0.45 | 0.02 | 0.01 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact outer radii used for the elliptical masks when computing disk-integrated line fluxes in Table 4",
+  "Number of walkers, steps, and burn-in length for the emcee MCMC sampler",
+  "Exact transition radii for each disk where the fit switches to fixed 12CO or 13CO gas temperatures in the inner disk",
+  "Exact imaging parameters (Briggs robust weighting, cell size, image size, continuum subtraction channels) which are delegated to Czekala et al. (2021) and Öberg et al. (2021)"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python/emcee scripts used for the LTE hyperfine spectral fitting with thermal line width flux redistribution",
+  "Exact outer radii of the elliptical masks used to compute the disk-integrated fluxes in Table 4",
+  "Exact inner radius cutoff for each disk and molecule where the excitation temperature was fixed to 12CO or 13CO gas temperature"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "High-level science products (image cubes, moment maps) are publicly hosted by the MAPS team, spectroscopic constants and equations are explicitly given in the text, and open-source tools (GoFish, emcee) are used, though the custom hyperfine fitting script and exact inner-disk cutoff radii are not provided.",
+ "rediscovery_reason": "The calibrated/imaged ALMA data cubes are publicly available, the radial extraction and LTE radiative transfer equations are fully specified, and key quantitative outputs (integrated line fluxes in Table 4, inner 50 au masses in Table 3, and column density/Tex profiles) provide clear numerical benchmarks.",
+ "source_card": "cards/2021ApJS..257....6G/sonnet/card.md"
+}

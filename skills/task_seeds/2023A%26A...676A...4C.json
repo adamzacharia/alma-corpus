@@ -1,0 +1,406 @@
+{
+ "bibcode": "2023A&A...676A...4C",
+ "title": "FAUST. IX. Multiband, multiscale dust study of L1527 IRS. Evidence for variations in dust properties within the envelope of a class 0/I young stellar object",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346204",
+ "arxiv_id": "2306.02852",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Characterize the dust continuum emission, spectral index, and dust emissivity index across disk and envelope scales (10 to 10^3 au) in the class 0/I YSO L1527 IRS to test for variations in dust properties and early grain growth.",
+ "alma_project_codes": [
+  "2015.1.00261.S",
+  "2016.1.01245.S",
+  "2016.1.01541.S",
+  "2017.1.00509.S",
+  "2018.1.01205.L",
+  "2016.1.01203.S",
+  "2012.1.00647.S",
+  "2013.1.01086.S",
+  "2013.1.00858.S",
+  "2012.1.00193.S",
+  "2017.1.01413.S",
+  "2011.0.00604.S",
+  "2011.0.00210.S",
+  "2013.1.01331.S",
+  "2012.1.00346.S",
+  "2015.1.01549.S",
+  "2016.A.00011.S",
+  "2018.1.00799.S",
+  "2016.2.00171.S",
+  "2016.2.00117.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 6, Band 7",
+  "arrays": "ALMA 12m array and ACA 7m array",
+  "angular_resolution": "12m array: 0.075'' to 2.4''; 7m array: 3.1'' to 13.2''",
+  "sensitivity": "FAUST B3: 0.025 mJy, FAUST B6: 0.026 mJy; 12m: 0.03-0.3 mJy; 7m: 0.2-1.44 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA flux density measurements of L1527 at 43.5, 22.5, 8.5, and 5 GHz (7.0, 13.3, 35.2, and 60 mm)",
+    "evidence": [
+     {
+      "loc": "The circumstellar disk",
+      "quote": "To offer a more comprehensive view to the reader, we extended the range of wavelengths by including literature Very Large Array (VLA) measurements from (cite: Melis2011), up to 6 cm."
+     }
+    ]
+   },
+   "citation": "(cite: Melis2011)"
+  },
+  {
+   "what": {
+    "value": "PdBI continuum visibility fluxes and dust emissivity index measurements of L1527 at 1.3 and 3.2 mm",
+    "evidence": [
+     {
+      "loc": "L1527 as seen in the visibility space",
+      "quote": "Among other class 0/Is of the CALYPSO survey, the continuum emission of the envelope infalling on L1527 has been studied in (cite: Galametz2019), hereafter G19, who used PdBI observations at 1.3 and 3.2 millimeter."
+     }
+    ]
+   },
+   "citation": "(cite: Galametz2019)"
+  },
+  {
+   "what": {
+    "value": "Target properties in Table 1: age, protostellar mass, bolometric luminosity, and envelope mass",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The age of the object has been roughly estimated by [1] (cite: Tobin2012) based on the mass loss rate of the source. The mass of the protostar has been estimated by means of kinematical analysis by [1] and [2] (cite: Aso2017)."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "The bolometric luminosity was reported by [3] (cite: Karska2018) and might suffer up to a factor two uncertainty due to the high inclination of the disk (e.g., (cite: Whitney2003)).The envelope mass was derived in [4] (cite: Motte2001)"
+     }
+    ]
+   },
+   "citation": "(cite: Tobin2012), (cite: Aso2017), (cite: Karska2018), (cite: Motte2001)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Prepare, align, rescale, self-calibrate, and concatenate multi-epoch ALMA/ACA continuum visibilities",
+   "method": "Split Band 3 into two frequency groups (88 and 100 GHz) to avoid frequency smearing; visually inspect cubes and flag spectral lines; channel-average spectral windows; fix visibility weights with statwt; image with tclean and fit Gaussian peak with imfit; shift phase center to peak with fixvis and align metadata coordinates with fixplanets; rescale fluxes across execution blocks in overlapping uv-ranges using gencal/applycal; perform 3 rounds of phase-only self-calibration (solint=inf, 60s, 10s); combine datasets with concat and cut at shortest common baseline of 9.8 klambda.",
+   "software": [
+    "CASA",
+    "statwt",
+    "tclean",
+    "imfit",
+    "fixvis",
+    "fixplanets",
+    "gencal",
+    "gaincal",
+    "applycal",
+    "concat"
+   ],
+   "key_parameters": [
+    "Five final frequencies: 88, 100, 141, 249, and 348 GHz",
+    "Shortest common baseline cut: 9.8 klambda",
+    "Self-calibration solution intervals: inf (gaintype='G'), 60s (gaintype='T'), 10s (gaintype='T')"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model visibilities to disentangle compact disk and extended envelope emission",
+   "method": "Fit a 10-parameter composite geometrical model (Gaussian for the compact disk plus a Plummer-like broken power law for the envelope) to the visibilities at each of the 5 frequencies using galario.",
+   "software": [
+    "galario"
+   ],
+   "key_parameters": [
+    "10 free parameters: I_0 (f_0), r, sigma, inc, PA, R_in, R_out, p, dRA, dDec"
+   ],
+   "assumptions": [
+    "Envelope emission is constant within R_i, follows Plummer power law between R_i and R_out, and is zero beyond R_out; compact disk is represented by a 2D Gaussian"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct and fit the circumstellar disk SED and estimate free-free contamination",
+   "method": "Combine the ALMA disk flux densities derived from the Gaussian model component at 5 frequencies with literature VLA measurements from Melis et al. (2011) up to 6 cm, and fit power-law spectral indices across 0.88-7 mm and 35-60 mm.",
+   "software": [],
+   "key_parameters": [
+    "Wavelength ranges fitted: 0.88-7 mm for dust disk SED, 35-60 mm for free-free slope"
+   ],
+   "assumptions": [
+    "Distance d = 140 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive the envelope spectral index as a function of spatial scale and position angle",
+   "method": "Subtract the best-fit galario Gaussian disk component from the visibilities, log-uniformly bin the residual envelope visibilities across uv-distance (starting from ~9 klambda), and perform a weighted linear regression to log10(F) vs log10(nu) across all 5 frequencies in each uv-bin, as well as in three position angle sectors (envelope, outflow, cavity walls) and between adjacent band pairs.",
+   "software": [],
+   "key_parameters": [
+    "Flux calibration uncertainty: 10% for B7, 5% for B3, B4, B6",
+    "Angle sectors: envelope (-20 deg < PA < 20 deg), outflow (70 deg < PA < 110 deg), cavity walls (remaining zones)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute temperature-corrected dust emissivity index beta(R) and fit its radial gradient",
+   "method": "Check optical depth by comparing specific intensity F_0.88mm/Omega to Planck function B(T_dust) using a centrally illuminated envelope temperature profile; correct for departures from the Rayleigh-Jeans approximation by fitting log10[F_nu / B_nu(T)] = beta * log10(nu) + A in each uv-bin; fit a linear relation between beta and log10(R_au) using Bayesian linear regression in linmix.",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "Radial scale range fitted: 50 to 2000 au"
+   ],
+   "assumptions": [
+    "Dust temperature profile T(R) = 38 L^0.2 (R / 100 au)^-0.4 with L_bol = 1.6 L_sun and d = 140 pc",
+    "Envelope continuum emission is optically thin at all studied wavelengths and scales, and temperature profile is exact so Delta_beta = Delta_alpha"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total visibility spectral index (alpha_0.88-3.4mm)",
+   "value": "1.5 to 2.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "L1527 as seen in the visibility space",
+     "quote": "We also show that the associated spectral index lies in the range $1.5 < \\alpha_{0.88-3.4mm} < 2.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Compact disk Gaussian deprojected width (sigma_fit)",
+   "value": "0.15 to 0.28",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Disentangling disk and envelope emission",
+     "quote": "In particular, we find that the compact emission has a deprojected width of $0.15\\ensuremath{''} < \\sigma_{fit} < 0.28\\ensuremath{''}$ on the sky, depending on the Band."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk radius in Band 7 (2 sigma contour)",
+   "value": "75",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Disentangling disk and envelope emission",
+     "quote": "If we define the radius of the disk to be the $2\\sigma$ contour of the Gaussian component, then $R_{disk} \\sim 75$ au in B7, consistent with what was found in the kinematical analysis of (cite: Aso2017)."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk flux density at 348 GHz (0.86 mm)",
+   "value": "324",
+   "uncertainty": "29",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "| 348 | 0.86 | 324 $\\pm$ 29 | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk flux density at 249 GHz (1.2 mm)",
+   "value": "132",
+   "uncertainty": "9",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "| 249 | 1.2 | 132 $\\pm$ 9 | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk flux density at 141 GHz (2.1 mm)",
+   "value": "52",
+   "uncertainty": "3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "| 141 | 2.1 | 52 $\\pm$ 3 | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk flux density at 101 GHz (3.0 mm)",
+   "value": "28",
+   "uncertainty": "0.6",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "| 101 | 3.0 | 28 $\\pm$ 0.6 | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk flux density at 88 GHz (3.4 mm)",
+   "value": "21",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "| 88 | 3.4 | 21 $\\pm$ 0.5 | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk spectral index (alpha_0.88-7mm)",
+   "value": "2.1",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "Fitting the SED in the 0.88 to 7-millimeter range using our measurements along with the values of (cite: Melis2011), we find an optically thick disk with $\\alpha = 2.1 \\pm 0.1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Long-wavelength centimeter spectral index (alpha_35-60mm)",
+   "value": "0.33",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The circumstellar disk",
+     "quote": "The slope at these longer wavelengths is $\\alpha_{35-60} = 0.33 \\pm 0.17$, as reported in Fig. 5 and is compatible with what is expected for free-free emission (cite: Panagia1975)."
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope spectral index (50 to 2000 au)",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The envelope",
+     "quote": "Figure 6 shows that the fitted spectral index of the envelope of L1527 appears roughly flat in the studied range that spans from $\\sim 2000$ down to 50 au, $\\alpha \\sim 3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope dust emissivity index range (50 to 2000 au)",
+   "value": "0.8 to 1.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust emissivity index",
+     "quote": "We find evidence for an outward increasing $\\beta$, rising from 0.8 to 1.6 between 50 and 2000 au radial scales"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of radial dust emissivity index gradient d(beta)/d(log10 R_au)",
+   "value": "0.37",
+   "uncertainty": "+0.17/-0.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust emissivity index",
+     "quote": "$$\\begin{equation} \\beta(R_{au}) = 0.37^{+0.17}_{-0.16} \\cdot \\log_{10}( R_{au}) - 0.23^{+0.45}_{-0.46}. \\label{eq:beta_grad} \\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of radial dust emissivity index relation",
+   "value": "-0.23",
+   "uncertainty": "+0.45/-0.46",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust emissivity index",
+     "quote": "$$\\begin{equation} \\beta(R_{au}) = 0.37^{+0.17}_{-0.16} \\cdot \\log_{10}( R_{au}) - 0.23^{+0.45}_{-0.46}. \\label{eq:beta_grad} \\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index at R = 300 au (and reported at 500 au)",
+   "value": "1.15",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust emissivity index",
+     "quote": "$$\\begin{equation} \\beta(R=300 au) = 1.15 \\pm 0.08. \\end{equation}$$"
+    },
+    {
+     "loc": "Literature comparison",
+     "quote": "Secondly, G19 reported a fitted $\\beta_{500 au} = 1.41 \\pm 0.16$ while we find $\\beta_{500 au} = 1.15 \\pm 0.08$ based on Eq.[\\[eq:beta\\]](#eq:beta)."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit disk inclination (inc across 5 frequency bands)",
+   "value": "78, 80, 80, 82, 78",
+   "uncertainty": "1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Fit results",
+     "quote": "| inc (deg) | $78 \\pm 1$ | $80 \\pm 1$ | $80 \\pm 1$ | $82\\pm1$ | $78 \\pm 1$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit Plummer power-law exponent (p across 5 frequency bands)",
+   "value": "2.62, 2.76, 2.75, 3.37, 2.54",
+   "uncertainty": "0.01, 0.03, 0.01, 0.01, 0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Fit results",
+     "quote": "| $p$ | $2.62\\pm0.01$ | $2.76 \\pm 0.03$ | $2.75 \\pm 0.01$ | $3.37 \\pm 0.01$ | $2.54 \\pm 0.02$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges flagged as spectral lines in each execution block",
+  "Common channel width used when averaging spectral windows for continuum extraction",
+  "Reference execution block chosen for flux rescaling in each frequency group and the exact overlapping uv-distance ranges used",
+  "Common sky coordinates set in metadata via fixplanets",
+  "Exact number and edges of the log-uniform uv-distance bins used for visibility modeling and spectral index derivation",
+  "Priors and parameter bounds used for the 10-parameter MCMC visibility fitting with galario",
+  "Exact MCMC sampler package coupled with galario (e.g. emcee)"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral window and channel flagging masks used to isolate line-free continuum in each of the 20 ALMA projects",
+  "Choice of reference execution block in each band for the Andrews et al. (2018) visibility amplitude rescaling, and the exact uv-distance overlap ranges used",
+  "Exact common phase center coordinates passed to fixplanets",
+  "Exact uv-binning scheme (number of bins, bin edges, and weighting) used for galario fitting and spectral index calculation",
+  "MCMC prior ranges and sampler setup for the 10-parameter galario visibility fits"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "All 20 ALMA project codes, execution dates, rescaling factors, CASA versions, self-calibration intervals, analytical equations, and best-fit parameter tables are provided. However, reproducing the exact visibility combination requires knowing the unstated line-free channel masks across ~48 execution blocks, the reference datasets for flux rescaling, and the exact uv-binning and MCMC prior bounds.",
+ "rediscovery_reason": "All 20 ALMA/ACA datasets are public in the ALMA archive, the visibility-plane modeling uses standard open-source tools (CASA, galario, linmix), and the main results (disk fluxes across 5 frequencies, 10-parameter model fits, and the radial beta gradient) are concrete numeric benchmarks.",
+ "source_card": "cards/2023A%26A...676A...4C/sonnet/card.md"
+}

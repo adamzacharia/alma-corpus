@@ -1,0 +1,276 @@
+{
+ "bibcode": "2019ApJ...887...40W",
+ "title": "Resolving the Interstellar Medium in the Nuclear Region of Two z = 5.78 Quasar Host Galaxies with ALMA",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab4d4b",
+ "arxiv_id": "1904.07749",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "How are [CII] and dust emission distributed and how does the gas move on kpc scales in two z=5.78 quasar hosts, and what do they imply for [CII]-FIR deficit and host dynamical mass?",
+ "alma_project_codes": [
+  "2012.1.00240.S",
+  "2011.0.00206.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.2'' (1.2 kpc)",
+  "sensitivity": "Cube rms 0.20 (J0129) and 0.36 (J1044) mJy/beam per 17 km/s; continuum rms 21 and 40 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Cycle 0 data, [CII] redshifts, FIR luminosities (T=47 K, beta=1.6), Cycle 0 fluxes",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$\\rm L_{FIR}$ is the FIR luminosity derived in (cite: wang13) assuming dust temperature of 47 K and emissivity index of $\\rm \\beta=1.6$"
+     }
+    ]
+   },
+   "citation": "(cite: wang13)"
+  },
+  {
+   "what": {
+    "value": "ULAS J1319+0950 [CII] and continuum data for comparison",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "We also include ULAS J1319+0950 in the comparison"
+     }
+    ]
+   },
+   "citation": "(cite: shao17)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples (GOALS, SMGs, LBGs, quasars) for [CII]-FIR vs surface brightness",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "We collect samples of star forming galaxies and quasars at low and high redshifts that have continuum source size measurements from ALMA"
+     }
+    ]
+   },
+   "citation": "(cite: diazsantos13; diazsantos17; shangguan19; gullberg18; rybak19)"
+  },
+  {
+   "what": {
+    "value": "CO(6-5) spectra of J0129 and J1044",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "compared to the CO (6-5) line spectrum published in Wang et al. (2011)"
+     }
+    ]
+   },
+   "citation": "(cite: wang11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [CII] cubes",
+   "method": "Combine Cycle 0 and Cycle 1 uv-data, subtract pseudo-continuum, clean with robust=0.5",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust=0.5; 17 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure fluxes and sizes",
+   "method": "Integrate within 2 sigma contour; elliptical Gaussian fits in image and uv planes",
+   "software": [
+    "CASA imfit",
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "uv bins 50 klambda (J0129), 75 klambda (J1044)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Radial [CII] and FIR surface brightness profiles",
+   "method": "Scale continuum map by L_FIR/S_con; mean in 0.1'' rings; fit beam-convolved exponential disk (n=1)",
+   "software": [],
+   "key_parameters": [
+    "rings at 0 to 0.6'' with width 0.1''"
+   ],
+   "assumptions": [
+    "T_dust=47 K, beta=1.6; FIR 42.5-122.5 um; H0=71, Om=0.27, OL=0.73"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit disk rotation to J0129 velocity map and derive dynamical mass",
+   "method": "ROTCUR circular rotating disk fit within 0.35''; M_dyn from V_c at 1.8 kpc",
+   "software": [
+    "GIPSY ROTCUR"
+   ],
+   "key_parameters": [
+    "Disk centre fixed at [CII] Gaussian peak; V_sys=0; radius 0.35''"
+   ],
+   "assumptions": [
+    "Simple circular rotating disk"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] line flux, J0129-0035",
+   "value": "2.11",
+   "uncertainty": "0.09",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| \\[C II\\] line flux ($\\rm Jy\\,km\\,s^{-1}$) | 2.11$\\pm$0.09 | 1.52$\\pm$0.15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line flux, J1044-0125",
+   "value": "1.52",
+   "uncertainty": "0.15",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| \\[C II\\] line flux ($\\rm Jy\\,km\\,s^{-1}$) | 2.11$\\pm$0.09 | 1.52$\\pm$0.15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux, J0129 / J1044",
+   "value": "2.82 / 3.02",
+   "uncertainty": "0.04 / 0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Continuum (mJy) | 2.82$\\pm$0.04 | 3.02$\\pm$0.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination of J0129 disk",
+   "value": "16",
+   "uncertainty": "20",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\rm \\phi=56\\pm1^{\\circ}$ and $\\rm incl=16\\pm20^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within 1.8 kpc, J0129",
+   "value": "2.6e10",
+   "uncertainty": "lower limit",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "we derive the dynamical mass within a radius of 1.8 kpc to be $\\rm M_{dyn}=2.6\\times10^{10}\\,M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Circular velocity at 1.8 kpc (incl=16 deg)",
+   "value": "250",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "the circular velocity at the largest radius (i.e., 1.8 kpc) is $\\rm V_c$=250 $\\rm km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass of J0129 (Eddington assumed)",
+   "value": "1.7e8",
+   "uncertainty": "+1.7/-0.9e8",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\rm M_{BH}=1.7^{+1.7}_{-0.9}\\times10^{8}\\,M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH/M_dyn for J0129 (Vc=250)",
+   "value": "0.007",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\rm M_{BH}/M_{dyn}=0.007$ with $\\rm V_c=250\\, km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII]/continuum size ratio, J0129 / J1044",
+   "value": "1.8 / 2.6",
+   "uncertainty": "0.2 / 0.5",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "1.8$\\pm$0.2 and 2.6$\\pm$0.5 times larger than that of the continuum"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset [CII] peak FWHM, J1044",
+   "value": "750",
+   "uncertainty": "190",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "yields a FWHM line width of $\\rm 750\\pm190\\,km\\,s^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters: cell size, image size, masks, thresholds, iterations, deconvolver",
+  "Line-free channel ranges and channels used for line moment maps",
+  "Moment-map thresholds for J0129 (J1044 uses >4 sigma)",
+  "Weight-correction details and exact Cycle 0 calibration state",
+  "Ring/pixel handling and fitting details for exponential disk surface-brightness model",
+  "ROTCUR ring widths, fixed parameters and initial guesses",
+  "Gaussian fit method for J1044 spectra",
+  "Cycle 0 CASA version used"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters and masks",
+  "ROTCUR setup details",
+  "Cycle 0 reduction details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear outline, but imaging and fitting parameters are incomplete.",
+ "rediscovery_reason": "Public data, numeric results (fluxes, sizes, inclination, M_dyn) can be redone.",
+ "source_card": "cards/2019ApJ...887...40W/sonnet/card.md"
+}

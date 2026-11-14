@@ -1,0 +1,444 @@
+{
+ "bibcode": "2022PASJ...74..407U",
+ "title": "Spatially-resolved relation between [C I] <SUP>3</SUP>P<SUB>1</SUB>-<SUP>3</SUP>P<SUB>0</SUB> and <SUP>12</SUP>CO (1-0) in Arp 220",
+ "year": 2022,
+ "doi": "10.1093/pasj/psac004",
+ "arxiv_id": "2201.07418",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Investigate the spatially-resolved relationship between [C I] (1-0) and CO (1-0) at ~100 pc scale in Arp 220, its dependence on the CO (3-2)/CO (1-0) ratio, and the properties of high-velocity outflow components.",
+ "alma_project_codes": [
+  "2013.1.00368.S",
+  "2015.1.00113.S",
+  "2017.1.00042.S"
+ ],
+ "data": {
+  "bands": "Band 8 ([C I] (1-0)), Band 3 (CO (1-0)), Band 7 (CO (3-2))",
+  "arrays": "12 m array (35 antennas available after calibration for [C I])",
+  "angular_resolution": "[C I] (1-0): 0.298'' x 0.219'', CO (1-0): 0.238'' x 0.200'', CO (3-2): 0.239'' x 0.158''; smoothed to 0.3'' (~114 pc) for pixel analysis",
+  "sensitivity": "[C I] (1-0): 6.3 mJy beam^-1; CO (1-0): 0.70 mJy beam^-1; CO (3-2): 1.42 mJy beam^-1 (all per 5 km s^-1 channel)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "JCMT integrated [C I] (1-0) line flux density of Arp 220 (1160 +/- 350 Jy km s^-1)",
+    "evidence": [
+     {
+      "loc": "Molecular mass",
+      "quote": "For example, we compare the integrated [C ] (1–0) line flux density with the measurement taken by the JCMT (1160 $\\pm$ 350 Jy km s$^{-1}$ ($\\Omega_{\\rm PB}$ = 10$''$); (cite: Papadopoulos2004a))."
+     }
+    ]
+   },
+   "citation": "(cite: Papadopoulos2004a)"
+  },
+  {
+   "what": {
+    "value": "Average [C I]/CO luminosity ratio (0.22 +/- 0.09) of 20 U/LIRGs and unresolved U/LIRG luminosities",
+    "evidence": [
+     {
+      "loc": "Molecular mass",
+      "quote": "The derived luminosity ratio is 0.22 $\\pm$ 0.04, which is comparable to the average [C ]/CO ratio (0.22 $\\pm$ 0.09) of 20 U/LIRGs presented in (cite: Valentino2018)."
+     },
+     {
+      "loc": "Molecular mass",
+      "quote": "which is comparable to the average \\[C \\]/CO ratio (0.22 $\\pm$ 0.09) of 20 U/LIRGs presented in (cite: Valentino2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Valentino2018), (cite: Liu2015), (cite: Kamenetzky2016)"
+  },
+  {
+   "what": {
+    "value": "[C I] (1-0) and CO (1-0) luminosities and linear relations of local galaxies (non-U/LIRGs) and average X_CI in local U/LIRGs",
+    "evidence": [
+     {
+      "loc": "Molecular mass",
+      "quote": "(cite: Jiao2019) suggest that $X_{\\rm CI}$ in local U/LIRGs (Avg. $X_{\\rm CI} = (8.3 \\pm 3.0) \\times 10^{-5}$) is about three times higher than $X_{\\rm CI}$ of spiral galaxies."
+     },
+     {
+      "loc": "The relation between [C I] and CO",
+      "quote": "We plot the \\[C \\] (1-0) and CO (1–0) luminosities of Arp 220 and the literature samples of local galaxies (non-U/LIRGs) (cite: Jiao2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Jiao2019)"
+  },
+  {
+   "what": {
+    "value": "[C I] (1-0) and CO (1-0) luminosities of proto-cluster galaxies at z = 2.2",
+    "evidence": [
+     {
+      "loc": "The relation between [C I] and CO",
+      "quote": "and proto-cluster galaxies at $z$ = 2.2 (cite: Emonts2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Emonts2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate, uv-clip, and image the archival ALMA visibilities",
+   "method": "Restore calibrated MS using observatory scripts, add flagging, image line-free continuum, perform phase-only self-calibration and apply to all data, subtract continuum, clip CO (1-0) and CO (3-2) visibilities to shortest uv distance >= 26.9 klambda to match [C I] (1-0), and image cubes with 5 km s^-1 velocity resolution using Briggs robust = 0.5.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5, velocity resolution = 5 km s^-1, shortest uv distance = 26.9 klambda"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create moment maps and measure kinematics",
+   "method": "Create integrated intensity maps without clipping intensities, and velocity field and velocity dispersion maps after clipping cleaned image cubes at the 4sigma level per channel.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "4sigma per channel clipping for moment 1 and 2 maps; no clipping for moment 0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure integrated line fluxes, luminosities, and molecular gas masses for central 5'' and high-velocity components",
+   "method": "Measure integrated fluxes within the central 5'' region (radius 2.5'') and within 0.8'' x 1.0'' ellipses around high-velocity outflow peaks (-510 to -370 km s^-1 and 270 to 540 km s^-1 relative to v_sys = 5355 km s^-1), then compute L'_line and M(H2) from [C I] and CO (1-0).",
+   "software": [],
+   "key_parameters": [
+    "Central aperture radius = 2.5''; outflow aperture = 0.8'' x 1.0''; blueshifted velocity range = -510 to -370 km s^-1; redshifted velocity range = 270 to 540 km s^-1"
+   ],
+   "assumptions": [
+    "Optically thin [C I] (1-0), D_L = 81 Mpc, A_10 = 7.93 x 10^-8 s^-1, Q_10 = 0.48 (central) or 0.47 (outflow), X_CI = 3 x 10^-5 or 8.3 x 10^-5 or 7.5 x 10^-5, alpha_CO = 0.8 M_sun pc^-2 (K km s^-1)^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit spatially-resolved pixel-by-pixel [C I] (1-0) vs CO (1-0) luminosity relation",
+   "method": "Smooth channel maps to beam-matched 0.3'' resolution, bin pixels to 57 pc x 57 pc (5 km s^-1 channels), exclude pixels < 3sigma, within 300 pc of each nucleus, or with log L'_[CI](1-0) < 5.3, and fit linear relation in log-log space using linmix.",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "beam = 0.3'', pixel size = 57 pc x 57 pc, dv = 5 km s^-1, SNR > 3sigma, r > 300 pc from nuclei, log L'_[CI](1-0) >= 5.3"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Analyze dependence of [C I]/CO ratio on CO (3-2)/CO (1-0) ratio (R_CO) using non-LTE RADEX radiative transfer models",
+   "method": "Use CO (3-2) data in 4845-5630 km s^-1, bin pixels by R_CO (delta R_CO = 0.2 and two groups R_CO >= 1 and R_CO < 1), and compare average L'_[CI](1-0)/L'_CO(1-0) and R_CO against non-LTE RADEX radiative transfer calculations varying N_CI, T_k, and n_H2.",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "dV = 5 km s^-1, N_CO = 5 x 10^17 cm^-2 (also tested 0.1, 0.5, 1.0 x 10^18 cm^-2), T_bg = 2.73 K, n_H2 = [0.5, 1.0, 5.0] x 10^4 cm^-3, T_k = [75, 100, 125] K"
+   ],
+   "assumptions": [
+    "Typical Galactic molecular cloud line width dV = 5 km s^-1; constant CO column density N_CO = 5 x 10^17 cm^-2 across the observed region"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C I] (1-0) velocity dispersion in the western nucleus",
+   "value": "186",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Distribution and Kinematics",
+     "quote": "The [C I] (1–0) velocity dispersion is 186 km s$^{-1}$ and 117 km s$^{-1}$ in the western and eastern nuclei, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] (1-0) velocity dispersion in the eastern nucleus",
+   "value": "117",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Distribution and Kinematics",
+     "quote": "The [C I] (1–0) velocity dispersion is 186 km s$^{-1}$ and 117 km s$^{-1}$ in the western and eastern nuclei, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO (1-0) velocity dispersion in the western nucleus",
+   "value": "133",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Distribution and Kinematics",
+     "quote": "On the other hand, the CO (1–0) velocity dispersion is 133 km s$^{-1}$ and 128 km s$^{-1}$ in the western and eastern nuclei, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO (1-0) velocity dispersion in the eastern nucleus",
+   "value": "128",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Distribution and Kinematics",
+     "quote": "On the other hand, the CO (1–0) velocity dispersion is 133 km s$^{-1}$ and 128 km s$^{-1}$ in the western and eastern nuclei, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C I] (1-0) line flux density within central 5''",
+   "value": "760",
+   "uncertainty": "150",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "The integrated [C ] (1–0) line flux density within the central 5$''$ (1.9 kpc) region is 760 $\\pm$ 150 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO (1-0) line flux density within central 5''",
+   "value": "190",
+   "uncertainty": "10",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "The integrated CO (1–0) line flux density within the same region is 190 $\\pm$ 10 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated [C I] (1-0)/CO (1-0) luminosity ratio of Arp 220",
+   "value": "0.22",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "The derived luminosity ratio is 0.22 $\\pm$ 0.04, which is comparable to the average [C ]/CO ratio (0.22 $\\pm$ 0.09) of 20 U/LIRGs presented in (cite: Valentino2018)."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_CI (for X_CI = 3 x 10^-5, Q_10 = 0.48)",
+   "value": "6.0e9",
+   "uncertainty": "1.2e9",
+   "units": "M_solar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "The derived $M_{\\rm CI}$ is $(6.0 \\pm 1.2) \\times 10^{9} M_{\\solar}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_CO (for alpha_CO = 0.8)",
+   "value": "2.4e9",
+   "uncertainty": "0.1e9",
+   "units": "M_solar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "In addition, we calculate the molecular gas mass ($M_{\\rm CO}$) from the integrated CO (1–0) line flux density by using a ULIRG-like CO luminosity-to-H2 mass conversion factor ($\\alpha_{\\rm CO}$ = 0.8 $M_{\\solar}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$; (cite: Bolatto2013)) and derive $M_{\\rm CO}$ of $(2.4 \\pm 0.1) \\times 10^{9} M_{\\solar}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_CI (for X_CI = 8.3 x 10^-5)",
+   "value": "2.2e9",
+   "uncertainty": "0.4e9",
+   "units": "M_solar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "When applying this abundance, $M_{\\rm CI}$ of Arp 220 results in $(2.2 \\pm 0.4) \\times 10^{9} M_{\\solar}$, which is similar to $M_{\\rm CO}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Derived C I relative abundance X_CI matching M_CI with M_CO",
+   "value": "7.5e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular mass",
+     "quote": "Assuming that $M_{\\rm CI}$ is consistent with $M_{\\rm CO}$ and the assumed $\\alpha_{\\rm CO}$ and $Q_{\\rm 10}$ are correct, we derive $X_{\\rm CI}$ of $7.5 \\times 10^{-5}$, which is consistent with the average $X_{\\rm CI}$ in local U/LILRGs (cite: Jiao2019) within the errors."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of spatially-resolved log L'_CO(1-0) vs log L'_[CI](1-0) relation",
+   "value": "0.76",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The relation between [C ] and CO",
+     "quote": "This gives the best-fit line, $$\\begin{equation}\n\\log L'_{\\rm CO(1-0)} = (0.76 \\pm 0.01) \\log L'_{\\rm [CI](1-0)} + (1.89 \\pm 0.05),\n\\end{equation}$$ but we exclude pixels in which the [C ] (1–0) luminosity is below log $L'_{\\rm [CI](1-0)}$ = 5.3 for fitting because the sampled data are dominated by noise."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of spatially-resolved log L'_CO(1-0) vs log L'_[CI](1-0) relation",
+   "value": "1.89",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The relation between [C ] and CO",
+     "quote": "This gives the best-fit line, $$\\begin{equation}\n\\log L'_{\\rm CO(1-0)} = (0.76 \\pm 0.01) \\log L'_{\\rm [CI](1-0)} + (1.89 \\pm 0.05),\n\\end{equation}$$ but we exclude pixels in which the [C ] (1–0) luminosity is below log $L'_{\\rm [CI](1-0)}$ = 5.3 for fitting because the sampled data are dominated by noise."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean L'_[CI](1-0)/L'_CO(1-0) for Group 1 (R_CO >= 1)",
+   "value": "0.30",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Variations in the C /CO abundance ratios",
+     "quote": "Group 1 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.30 $\\pm$ 0.12 and $R_{\\rm CO}$ = 1.27 $\\pm$ 0.29, and Group 2 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.26 $\\pm$ 0.10 and $R_{\\rm CO}$ = 0.80 $\\pm$ 0.14."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean R_CO for Group 1 (R_CO >= 1)",
+   "value": "1.27",
+   "uncertainty": "0.29",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Variations in the C /CO abundance ratios",
+     "quote": "Group 1 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.30 $\\pm$ 0.12 and $R_{\\rm CO}$ = 1.27 $\\pm$ 0.29, and Group 2 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.26 $\\pm$ 0.10 and $R_{\\rm CO}$ = 0.80 $\\pm$ 0.14."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean L'_[CI](1-0)/L'_CO(1-0) for Group 2 (R_CO < 1)",
+   "value": "0.26",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Variations in the C /CO abundance ratios",
+     "quote": "Group 1 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.30 $\\pm$ 0.12 and $R_{\\rm CO}$ = 1.27 $\\pm$ 0.29, and Group 2 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.26 $\\pm$ 0.10 and $R_{\\rm CO}$ = 0.80 $\\pm$ 0.14."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean R_CO for Group 2 (R_CO < 1)",
+   "value": "0.80",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Variations in the C /CO abundance ratios",
+     "quote": "Group 1 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.30 $\\pm$ 0.12 and $R_{\\rm CO}$ = 1.27 $\\pm$ 0.29, and Group 2 has $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ = 0.26 $\\pm$ 0.10 and $R_{\\rm CO}$ = 0.80 $\\pm$ 0.14."
+    }
+   ]
+  },
+  {
+   "quantity": "C I/CO abundance ratio for Group 1 (at n_H2 = 1 x 10^4 cm^-3)",
+   "value": "0.69 to 2.00",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Variations in the C /CO abundance ratios",
+     "quote": "For example, in the case of $n_{\\rm H_{2}} = 1 \\times 10^{4}$ cm$^{-3}$ (Figure 8 (middle)), the C /CO abundance ranges from 0.69 to 2.00 for Group 1, and it ranges from 0.18 to 1.32 for Group 2."
+    }
+   ]
+  },
+  {
+   "quantity": "C I/CO abundance ratio for Group 2 (at n_H2 = 1 x 10^4 cm^-3)",
+   "value": "0.18 to 1.32",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Variations in the C /CO abundance ratios",
+     "quote": "For example, in the case of $n_{\\rm H_{2}} = 1 \\times 10^{4}$ cm$^{-3}$ (Figure 8 (middle)), the C /CO abundance ranges from 0.69 to 2.00 for Group 1, and it ranges from 0.18 to 1.32 for Group 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Average L'_[CI](1-0)/L'_CO(1-0) in redshifted high-velocity component",
+   "value": "0.87",
+   "uncertainty": "0.28",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The [C ] (1–0)/CO (1–0) luminosity ratio in the putative outflow is 0.87 $\\pm$ 0.28, which is four times higher than the average ratio of Arp 220."
+    },
+    {
+     "loc": "High line ratio in the redshifted component",
+     "quote": "The average $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ of the redshifted component is 0.87 $\\pm$ 0.28, which is four times higher than the average $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ of Arp 220 (0.22 $\\pm$ 0.04) (see Figure 5)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average L'_[CI](1-0)/L'_CO(1-0) in blueshifted high-velocity component",
+   "value": "0.41",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "High line ratio in the redshifted component",
+     "quote": "The average $L'_{\\rm [CI](1-0)}/L'_{\\rm CO(1-0)}$ of the blueshifted component is 0.41 $\\pm$ 0.11, but only five pixels meet the threshold."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which two out of the three scheduling blocks (SBs) in project 2017.1.00042.S were selected",
+  "Exact manual flagging commands added to the observatory calibration scripts",
+  "Exact frequency/channel ranges used as line-free channels for continuum imaging and continuum subtraction",
+  "Self-calibration solution interval (solint) and number of iterations",
+  "Deconvolver, cleaning threshold, masking strategy, native cell size, and image size used in CASA 5.6.1 imaging",
+  "Exact coordinates of the pointing center and the centers of the eastern and western nuclei (used for the 2.5'' radius aperture and 300 pc nuclear exclusion masks)",
+  "Whether primary beam correction was applied to the cubes before flux extraction"
+ ],
+ "missing_for_reproduction": [
+  "Tables 1 and 2 are referenced in the text (§3.2 and §3.3) with a table footnote present at the end of the text, but the tabular bodies of Table 1 and Table 2 are missing from the paper text",
+  "Specific custom flagging commands added to the observatory calibration scripts",
+  "Exact self-calibration parameters (solution intervals, SNR thresholds) and tclean parameters (clean thresholds, masking, cell size, image size)",
+  "Exact coordinates used for the pointing center aperture (radius 2.5''), nuclear exclusion masks (radius 300 pc), and the two 0.8'' x 1.0'' outflow ellipses"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All three ALMA datasets are public archival projects with clearly stated CASA versions, spectral/velocity resolutions, uv-clipping thresholds, beam sizes, and analysis packages (linmix, RADEX) and equations; however, custom flagging commands, self-calibration/cleaning details, exact aperture coordinates, and the bodies of Tables 1 and 2 are omitted.",
+ "rediscovery_reason": "Public archival ALMA data with a well-defined processing and analysis workflow leading to clear quantitative results (integrated fluxes, luminosity ratios, linmix power-law slope, and RADEX abundance constraints).",
+ "source_card": "cards/2022PASJ...74..407U/sonnet/card.md"
+}

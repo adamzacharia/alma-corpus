@@ -1,0 +1,557 @@
+{
+ "bibcode": "2023ApJ...945..121U",
+ "title": "ALMA Lensing Cluster Survey: Properties of Millimeter Galaxies Hosting X-Ray-detected Active Galactic Nuclei",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acb4e9",
+ "arxiv_id": "2301.09275",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the multi-wavelength physical properties (X-ray luminosities, mass-accretion rates, star-formation rates, stellar masses) and evolutionary stages of millimeter galaxies hosting X-ray detected AGNs in the ALMA Lensing Cluster Survey?",
+ "alma_project_codes": [
+  "2018.1.00035.L",
+  "2013.1.00999.S",
+  "2015.1.01425.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.15 mm / 1.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~1'' (native), ~2'' (tapered)",
+  "sensitivity": "~60 uJy beam^-1 (1 sigma)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "180 secure ALCS 1.2 mm continuum source catalog and lensing magnification factors",
+    "evidence": [
+     {
+      "loc": "Chandra Counterparts",
+      "quote": "We cross-matched the *Chandra* detected sources with the secure ALCS source list comprising of 180 millimeter detected galaxies (see Fujimoto et al., in prep.)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(5) Magnification factor due to the lensing effect (Fujimoto et al., in prep.)."
+     }
+    ]
+   },
+   "citation": "Fujimoto et al., in prep."
+  },
+  {
+   "what": {
+    "value": "Reprocessed archival HST and Spitzer/IRAC 3.6 um and 4.5 um mosaics and source catalogs, and photometric redshift of M0329-ID11",
+    "evidence": [
+     {
+      "loc": "HST, Spitzer, and Herschel Counterparts",
+      "quote": "The images and source catalogs were built by reprocessing of available archival *HST* and *Spitzer*/IRAC 3.6 $\\mu$m and 4.5 $\\mu$m mosaics of ALCS fields (cite: 2022arXiv220707125K)."
+     },
+     {
+      "loc": "X-ray Spectral Analysis",
+      "quote": "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))."
+     }
+    ]
+   },
+   "citation": "(cite: 2022arXiv220707125K)"
+  },
+  {
+   "what": {
+    "value": "Spitzer IRAC ch3, ch4 and MIPS photometry for A370-ID110",
+    "evidence": [
+     {
+      "loc": "HST, Spitzer, and Herschel Counterparts",
+      "quote": "We also utilized IRAC (channel 3 and 4) and MIPS (cite: 2004ApJS..154...25R) photometric data from the Spitzer Enhanced Imaging Products (SEIP; (cite: https://doi.org/10.26131/irsa433))."
+     }
+    ]
+   },
+   "citation": "SEIP; (cite: https://doi.org/10.26131/irsa433)"
+  },
+  {
+   "what": {
+    "value": "Herschel PACS and SPIRE data and photometry in ALCS fields",
+    "evidence": [
+     {
+      "loc": "HST, Spitzer, and Herschel Counterparts",
+      "quote": "Details of the *Herschel* data in ALCS fields have been described in (cite: 2022ApJ...932...77S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJ...932...77S)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift of A370-ID110 (z=1.06)",
+    "evidence": [
+     {
+      "loc": "X-ray Spectral Analysis",
+      "quote": "The redshifts are fixed at the spectroscopic ones obtained by Canada-France-Hawaii Telescope in A370-ID110 ($z=1.06$; (cite: 1999A&A...343L..70S))"
+     }
+    ]
+   },
+   "citation": "(cite: 1999A&A...343L..70S)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift of M0416-ID117 (z=2.09)",
+    "evidence": [
+     {
+      "loc": "X-ray Spectral Analysis",
+      "quote": "and the Grism Lens-Amplified Survey from Space in M0416-ID117 ($z=2.09$; (cite: 2016ApJ...831..182H))"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJ...831..182H)"
+  },
+  {
+   "what": {
+    "value": "Galactic photoelectric absorption column density estimates",
+    "evidence": [
+     {
+      "loc": "X-ray Spectral Analysis",
+      "quote": "All the parameters are left as free parameters except for the galactic absorption column density and the redshift. The former is fixed at the values estimated by the method of (cite: 2013MNRAS.431..394W)."
+     }
+    ]
+   },
+   "citation": "(cite: 2013MNRAS.431..394W)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses, SFRs, and X-ray luminosities of comparison AGN samples (ALESS-XAGN, UDF-XAGN, ASAGAO-XAGN, AS2UDS-XAGN, SXDF-XAGN)",
+    "evidence": [
+     {
+      "loc": "Discussions",
+      "quote": "The stellar masses and SFRs of ALESS-XAGNs, UDF-XAGNs, ASAGAO-XAGNs, and AS2UDS-XAGN are estimated by the `MAGPHYS` code (cite: 2015ApJ...806..110D; 2020PASJ...72...69Y; 2020MNRAS.494.3828D), while those of SXDF-XAGNs are estimated by the `X-CIGALE` code (cite: 2021ApJ...909..188S)."
+     },
+     {
+      "loc": "Discussions",
+      "quote": "The X-ray luminosities of ALESS-XAGNs, UDF-XAGNs and ASAGAO-XAGNs, and AS2UDS-XAGNs are taken from (cite: 2013ApJ...778..179W), (cite: 2018ApJ...853...24U), and (cite: 2018ApJS..236...48K), respectively."
+     },
+     {
+      "loc": "Discussions",
+      "quote": "We also extract the X-ray luminosities of SXDF-XAGNs from (cite: 2012ApJ...761..143N)"
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJ...806..110D; 2020PASJ...72...69Y; 2020MNRAS.494.3828D; 2021ApJ...909..188S; 2013ApJ...778..179W; 2018ApJ...853...24U; 2018ApJS..236...48K; 2012ApJ...761..143N)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "ALMA data reduction, imaging, and continuum source extraction",
+   "method": "Calibrate and image ALMA Band 6 data with CASA pipeline using natural weighting (native ~1'' and uv-tapered ~2'' beams), then extract 1.2 mm continuum sources using SExtractor to build the 180-source ALCS catalog.",
+   "software": [
+    "CASA",
+    "SExtractor"
+   ],
+   "key_parameters": [
+    "natural weighting, native beam ~1'', uv-tapered beam ~2'', rms ~60 uJy beam^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Chandra X-ray data reduction, source detection, cross-matching, and spectrum extraction",
+   "method": "Process archival Chandra ACIS data up to 2017 with CIAO, combine with merge_obs, detect sources in 0.5–7.0 keV with wavdetect, cross-match with the 180 secure ALCS sources within Chandra positional uncertainty, and extract spectra in circular apertures.",
+   "software": [
+    "CIAO",
+    "CALDB",
+    "merge_obs",
+    "wavdetect"
+   ],
+   "key_parameters": [
+    "0.5–7.0 keV band; wavdetect false-positive probability threshold = 10^-8; wavelet scales = sqrt(2) sequence (1 to 16 pixels)",
+    "Cross-match radius = root sum square of 3 sigma statistical error and 99% Chandra absolute astrometry uncertainty (1.4'')",
+    "Spectral extraction aperture radius = 1.5'' (A370-ID110) and 2.0'' (M0416-ID117, M0329-ID11)"
+   ],
+   "assumptions": [
+    "ALMA positional uncertainty is negligible compared to Chandra"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "X-ray spectral fitting",
+   "method": "Fit observed (uncorrected for magnification) X-ray spectra with an absorbed power-law model (phabs*zphabs*zpowerlaw) in XSPEC, then correct intrinsic 0.5–8.0 keV luminosity for lensing magnification.",
+   "software": [
+    "XSPEC",
+    "HEAsoft"
+   ],
+   "key_parameters": [
+    "Fixed redshifts (z = 1.06, 2.09, 2.84) and fixed Galactic N_H from Willingale et al. (2013)"
+   ],
+   "assumptions": [
+    "Flat universe with H_0 = 70.4 km s^-1 Mpc^-1 and Omega_M = 0.272; lensing magnification factors mu = 1.19, 1.57, 2.46"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Multi-component X-ray to millimeter SED modeling",
+   "method": "Perform Bayesian multi-component SED modeling of magnification-corrected X-ray to millimeter photometry using CIGALE v2022.0.",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Delayed SFH, Bruzual & Charlot (2003) SSP, modified Calzetti attenuation, Inoue (2011) nebular emission, SKIRTOR AGN torus model, Jones et al. (2017) THEMIS dust emission, X-ray photon index fixed to 1.9; parameter grid in Table 2"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF, metallicity = 0.02, energy balance between UV/optical and IR, isotropic AGN X-ray radiation"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Comparison with star-forming main sequence and SMBH-galaxy co-evolution relations",
+   "method": "Compare derived M_*, SFR, and L_X with other ALMA+Chandra and X-ray AGN samples in the M_*-SFR and L_X-SFR planes, converting L_X to SMBH mass-accretion rate.",
+   "software": [],
+   "key_parameters": [
+    "Return fraction R = 0.41, mass ratio A = 200 (bulge) and 400 (stellar), bolometric correction kappa_0.5-8 = 13, radiation efficiency eta = 0.05"
+   ],
+   "assumptions": [
+    "Negligible systematic offset between CIGALE and MAGPHYS for high-sSFR galaxies (log sSFR > -9.6)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of X-ray detected AGNs among ALCS millimeter sources",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Utilizing the archival data of *Chandra*, we identify three AGNs at $z=$1.06, 2.09, and 2.84 among the 180 millimeter sources securely detected in the ALCS (of which 155 are inside the coverage of *Chandra*)."
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 X-ray absorption hydrogen column density (N_H)",
+   "value": "32.8",
+   "uncertainty": "+11.7/-10.6",
+   "units": "10^22 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\\^+11.7\\_-10.6 & 2.5\\^+0.8\\_-0.8 & 45.0\\^+0.7\\_-0.5 & 2.43\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 photon index (Gamma)",
+   "value": "2.5",
+   "uncertainty": "+0.8/-0.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\\^+11.7\\_-10.6 & 2.5\\^+0.8\\_-0.8 & 45.0\\^+0.7\\_-0.5 & 2.43\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 intrinsic 0.5-8.0 keV X-ray luminosity (log L_X)",
+   "value": "45.0",
+   "uncertainty": "+0.7/-0.5",
+   "units": "dex (erg s^-1)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\\^+11.7\\_-10.6 & 2.5\\^+0.8\\_-0.8 & 45.0\\^+0.7\\_-0.5 & 2.43\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 star-formation rate (log SFR)",
+   "value": "2.43",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\\^+11.7\\_-10.6 & 2.5\\^+0.8\\_-0.8 & 45.0\\^+0.7\\_-0.5 & 2.43\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 stellar mass (log M_*)",
+   "value": "11.81",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 dust luminosity (log L_dust)",
+   "value": "12.51",
+   "uncertainty": "not stated",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 dust mass (log M_dust)",
+   "value": "8.80",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\\"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID110 total IR luminosity (log L_IR)",
+   "value": "12.68",
+   "uncertainty": "not stated",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 X-ray absorption hydrogen column density (N_H)",
+   "value": "2.4",
+   "uncertainty": "+8.6/-2.4",
+   "units": "10^22 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\\^+8.6\\_-2.4 & 2.1\\^+0.9\\_-0.6 & 43.8\\^+0.6\\_-0.3 & 1.93\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 photon index (Gamma)",
+   "value": "2.1",
+   "uncertainty": "+0.9/-0.6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\\^+8.6\\_-2.4 & 2.1\\^+0.9\\_-0.6 & 43.8\\^+0.6\\_-0.3 & 1.93\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 intrinsic 0.5-8.0 keV X-ray luminosity (log L_X)",
+   "value": "43.8",
+   "uncertainty": "+0.6/-0.3",
+   "units": "dex (erg s^-1)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\\^+8.6\\_-2.4 & 2.1\\^+0.9\\_-0.6 & 43.8\\^+0.6\\_-0.3 & 1.93\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 star-formation rate (log SFR)",
+   "value": "1.93",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\\^+8.6\\_-2.4 & 2.1\\^+0.9\\_-0.6 & 43.8\\^+0.6\\_-0.3 & 1.93\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 stellar mass (log M_*)",
+   "value": "10.81",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 dust luminosity (log L_dust)",
+   "value": "12.01",
+   "uncertainty": "not stated",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 dust mass (log M_dust)",
+   "value": "7.98",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0416-ID117 total IR luminosity (log L_IR)",
+   "value": "12.07",
+   "uncertainty": "not stated",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 X-ray absorption hydrogen column density (N_H)",
+   "value": "0.1",
+   "uncertainty": "+5.9/-0.1",
+   "units": "10^22 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\\^+5.9\\_-0.1 & 1.7\\^+0.6\\_-0.4 & 44.4\\^+0.3\\_-0.2 & 2.18\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 photon index (Gamma)",
+   "value": "1.7",
+   "uncertainty": "+0.6/-0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\\^+5.9\\_-0.1 & 1.7\\^+0.6\\_-0.4 & 44.4\\^+0.3\\_-0.2 & 2.18\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 intrinsic 0.5-8.0 keV X-ray luminosity (log L_X)",
+   "value": "44.4",
+   "uncertainty": "+0.3/-0.2",
+   "units": "dex (erg s^-1)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\\^+5.9\\_-0.1 & 1.7\\^+0.6\\_-0.4 & 44.4\\^+0.3\\_-0.2 & 2.18\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 star-formation rate (log SFR)",
+   "value": "2.18",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\\^+5.9\\_-0.1 & 1.7\\^+0.6\\_-0.4 & 44.4\\^+0.3\\_-0.2 & 2.18\\"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 stellar mass (log M_*)",
+   "value": "10.74",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 dust luminosity (log L_dust)",
+   "value": "11.77",
+   "uncertainty": "not stated",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 dust mass (log M_dust)",
+   "value": "8.63",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40"
+    }
+   ]
+  },
+  {
+   "quantity": "M0329-ID11 total IR luminosity (log L_IR)",
+   "value": "12.40",
+   "uncertainty": "not stated",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "& 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMA imaging parameters (tclean cell size, image size, cleaning threshold, exact uv-taper parameter value, primary beam correction details)",
+  "SExtractor detection and extraction parameters used to build the 180-source ALCS catalog",
+  "Exact multi-wavelength photometric flux densities and uncertainties (from HST, Spitzer, Herschel, and ALMA) input to CIGALE for the three sources",
+  "Chandra ObsIDs combined for each of the three cluster fields and exact background region coordinates",
+  "Exact Galactic absorption column density (N_H) values fixed in XSPEC for each source",
+  "Specific lens models used to derive the magnification factors (deferred to Fujimoto et al., in prep.)"
+ ],
+ "missing_for_reproduction": [
+  "Table of multi-wavelength flux densities and uncertainties (HST, Spitzer, Herschel, ALMA) for A370-ID110, M0416-ID117, and M0329-ID11 used as input to CIGALE",
+  "Uncertainties on CIGALE output parameters in Table 1 (columns 9–17)",
+  "Exact Chandra ObsIDs used for each cluster field and background extraction coordinates",
+  "Exact ALMA imaging and SExtractor parameters (deferred to Fujimoto et al., in prep.)"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The X-ray spectral fitting (XSPEC model, extraction radii, redshifts) and CIGALE SED modeling (exact module names and full parameter grid in Table 2) are well specified, and all raw data are public in archives. However, the multi-wavelength photometric flux table for the 3 targets is not included in the paper, and the ALMA imaging/cataloging details are deferred to companion papers.",
+ "rediscovery_reason": "The ALMA, Chandra, HST, Spitzer, and Herschel data are publicly available, the three target coordinates and redshifts are explicitly given, and both the XSPEC model and the complete CIGALE parameter grid (Table 2) are provided to reproduce the numeric physical properties in Table 1.",
+ "source_card": "cards/2023ApJ...945..121U/sonnet/card.md"
+}

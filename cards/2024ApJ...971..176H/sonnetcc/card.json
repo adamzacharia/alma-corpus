@@ -1,0 +1,1907 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...971..176H",
+  "title": "Unraveling the Mystery of the Low CO-to-H<SUB>2</SUB> Conversion Factor in Starburst Galaxies: RADEX Modeling of the Antennae",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "He, Hao",
+  "n_authors": 6,
+  "arxiv_id": "2401.16476",
+  "doi": "10.3847/1538-4357/ad5544",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.00272.S",
+   "2021.1.00439.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "with multiple ALMA CO and $^{13}$CO transition observations at both giant molecular cloud (GMC) scale at 150 pc and kpc scale for one of the closest starburst mergers, the Antennae"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "The Antennae (NGC 4038/9)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "22 Mpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "At a distance of 22 Mpc (cite: schweizer2008), ALMA can readily resolve molecular gas at GMC scales."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Schweizer et al. 2008 (cite: schweizer2008)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "At a distance of 22 Mpc (cite: schweizer2008), ALMA can readily resolve molecular gas at GMC scales."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the CO-to-H2 conversion factor (alpha_CO) in the starburst merger the Antennae at GMC (150 pc) and kpc scales, how does it depend on CO intensity, 13CO/CO ratio and velocity dispersion, and what does it imply for GMC dynamical states",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper, we perform LVG modeling on high-resolution ($\\sim$ 150 pc) CO and $^{13}$CO molecular lines from ALMA observations of the Antennae to constrain the physical properties of the molecular gas and $\\alpha_{\\mathrm{CO}}$ at both GMC and kpc scales."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2018.1.00272.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We obtained ALMA Band 3, 6 and 7 observations from cycle 5 project 2018.1.00272.S and cycle 8 project 2021.00439.S to capture multiple CO and $^{13}$CO lines."
+      },
+      {
+       "loc": "Table 1",
+       "quote": "CO $J$=1-0 | 2018.1.00272.S | 3 | $0.84\\ensuremath{''}$, 90 pc | $14.5\\ensuremath{'}$, 93 kpc | 2.54 km s$^{-1}$ | 0.09 K | 0.05 K"
+      }
+     ]
+    },
+    {
+     "code": "2021.1.00439.S",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CO $J$=3-2 | 2021.1.00439.S | 7 | $0.67\\ensuremath{''}$, 71 pc | $4.5\\ensuremath{'}$, 29 kpc | 3.4 km s$^{-1}$ | 0.09 K | 0.04 K"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3, 6 and 7 (CO 1-0 and 13CO 1-0 in Band 3; CO 2-1 and 13CO 2-1 in Band 6; CO 3-2 and continuum in Band 7)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "We obtained ALMA Band 3, 6 and 7 observations from cycle 5 project 2018.1.00272.S and cycle 8 project 2021.00439.S to capture multiple CO and $^{13}$CO lines."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "continuum | 2021.1.00439.S | 7 | $0.65\\ensuremath{''}$, 72 pc | $0.34\\ensuremath{'}$, 2.2 kpc | – | 0.18 mJy/beam | 0.4 mJy/beam"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Five lines (CO 1-0, 2-1, 3-2, 13CO 1-0, 2-1); C18O 1-0 and 2-1 detected in same tuning as 13CO; velocity resolution 2.54 km/s (CO 1-0, 2-1), 3.4 km/s (CO 3-2), 2.7 km/s (13CO 1-0), 5.3 km/s (13CO 2-1); continuum has no TP data",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "we also have C$^{18}$O $J$=1-0 and 2-1 detected in the same spectral tuning as $^{13}$CO $J$=1-0 and 2-1, respectively."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "$^{13}$CO $J$=2-1 | 2018.1.00272.S | 6 | $0.71\\ensuremath{''}$, 76 pc | $6.9\\ensuremath{'}$, 44 kpc | 5.3 km s$^{-1}$ | 0.09 K | 0.05 K"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We use multiple CO lines (CO $J$=1-0, 2-1, 3-2 and $^{13}$CO $J$=1-0, 2-1) from the Atacama Large Millimeter/Submillimeter Array (ALMA)"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We use multiple CO lines (CO $J$=1-0, 2-1, 3-2 and $^{13}$CO $J$=1-0, 2-1) from the Atacama Large Millimeter/Submillimeter Array (ALMA)"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We use multiple CO lines (CO $J$=1-0, 2-1, 3-2 and $^{13}$CO $J$=1-0, 2-1) from the Atacama Large Millimeter/Submillimeter Array (ALMA)"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We use multiple CO lines (CO $J$=1-0, 2-1, 3-2 and $^{13}$CO $J$=1-0, 2-1) from the Atacama Large Millimeter/Submillimeter Array (ALMA)"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We use multiple CO lines (CO $J$=1-0, 2-1, 3-2 and $^{13}$CO $J$=1-0, 2-1) from the Atacama Large Millimeter/Submillimeter Array (ALMA)"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=1-0 and 2-1 (detected, not modeled)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "we also have C$^{18}$O $J$=1-0 and 2-1 detected in the same spectral tuning as $^{13}$CO $J$=1-0 and 2-1, respectively."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array (compact and extended configurations), 7 m array (ACA) and total power (TP); continuum has no TP",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "we have observations from the 12 m-array used in both a compact and extended configuration, 7 m-array (ACA) and total power (TP) array"
+     },
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "The continuum does not have TP observations."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "12 m array in compact and extended configurations (specific configuration names not given)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "we have observations from the 12 m-array used in both a compact and extended configuration"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Native (smallest round beam): 0.84 arcsec (90 pc) CO 1-0; 0.51 arcsec (54 pc) CO 2-1; 0.67 arcsec (71 pc) CO 3-2; 1.41 arcsec (150 pc) 13CO 1-0; 0.71 arcsec (76 pc) 13CO 2-1; 0.65 arcsec (72 pc) continuum. All smoothed to 150 pc (1.41 arcsec); also 1 kpc",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "CO $J$=2-1 | 2018.1.00272.S | 6 | $0.51\\ensuremath{''}$, 54 pc | $6.9\\ensuremath{'}$, 44 kpc | 2.54 km s$^{-1}$ | 0.24 K | 0.11 K"
+     },
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "We smooth all five image cubes to the resolution of 150 pc (1.41 arcsec)"
+     },
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "In Section 7, we will also use the five CO and $^{13}$CO maps at a resolution of 1 kpc."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "Largest angular scale: 14.5 arcmin (93 kpc) CO 1-0; 6.9 arcmin (44 kpc) CO 2-1 and 13CO 2-1; 4.5 arcmin (29 kpc) CO 3-2; 15 arcmin (96 kpc) 13CO 1-0; 0.34 arcmin (2.2 kpc) continuum",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(5) Largest angular scale."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "$^{13}$CO $J$=1-0 | 2021.1.00439.S | 3 | $1.41\\ensuremath{''}$, 150 pc | $15\\ensuremath{'}$, 96 kpc | 2.7 km s$^{-1}$ | 0.04 K | 0.04 K"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Cube noise at native / 150 pc: CO 1-0 0.09 / 0.05 K; CO 2-1 0.24 / 0.11 K; CO 3-2 0.09 / 0.04 K; 13CO 1-0 0.04 / 0.04 K; 13CO 2-1 0.09 / 0.05 K; continuum 0.18 / 0.4 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(7) Noise of the image cubes at the native resolution. (8) Noise of the image cubes after smoothing to the resolution of 150 pc."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "CO $J$=1-0 | 2018.1.00272.S | 3 | $0.84\\ensuremath{''}$, 90 pc | $14.5\\ensuremath{'}$, 93 kpc | 2.54 km s$^{-1}$ | 0.09 K | 0.05 K"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer",
+     "provided": {
+      "value": "3.6 um (Program 10136) and 4.5 um (Program 61068) images used for stellar mass surface density at kpc scale",
+      "evidence": [
+       {
+        "loc": "2.3 Spitzer Data",
+        "quote": "We use the *Spitzer* 3.6 $\\mu$m (Program 10136) and 4.5 $\\mu$m (Program 61068) data to calculate the stellar mass surface density of the Antennae at kpc scale."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust temperatures for each subregion and overall dust temperature of the galaxy (about 20 K)",
+      "evidence": [
+       {
+        "loc": "7.1 / 6.1 dust",
+        "quote": "We adopt the dust temperature from (cite: klaas2010) for pixels in each defined subregion"
+       },
+       {
+        "loc": "6.1 dust",
+        "quote": "The dust temperature calculated in (cite: klaas2010) is $\\sim$ 20 K"
+       }
+      ]
+     },
+     "citation": "Klaas et al. 2010 (cite: klaas2010)"
+    },
+    {
+     "what": {
+      "value": "Dust mass equation and fiducial dust opacity kappa = 0.9 g^-1 cm^2",
+      "evidence": [
+       {
+        "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+        "quote": "We chose 0.9 g$^{-1}$ cm$^{2}$ as the fiducial value for $\\kappa$ (cite: wilson_luminous_2008)"
+       }
+      ]
+     },
+     "citation": "Wilson et al. 2008 (cite: wilson_luminous_2008)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass equation from Spitzer 3.6 and 4.5 um fluxes",
+      "evidence": [
+       {
+        "loc": "2.3 Spitzer Data",
+        "quote": "We then calculate the stellar mass for each pixel with the equation (cite: eskew2012)"
+       }
+      ]
+     },
+     "citation": "Eskew et al. 2012 (cite: eskew2012)"
+    },
+    {
+     "what": {
+      "value": "[CO]/[H2] abundance ratio of 3e-4, commonly adopted for starburst systems",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+        "quote": "The value we assume (3$\\times 10^{-4}$) is commonly adopted for starburst systems (cite: sliwa2017)."
+       }
+      ]
+     },
+     "citation": "Sliwa et al. 2017 (cite: sliwa2017)"
+    },
+    {
+     "what": {
+      "value": "Distance to the Antennae of 22 Mpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "At a distance of 22 Mpc (cite: schweizer2008), ALMA can readily resolve molecular gas at GMC scales."
+       }
+      ]
+     },
+     "citation": "Schweizer et al. 2008 (cite: schweizer2008)"
+    },
+    {
+     "what": {
+      "value": "Simulation prediction relations of alpha_CO versus CO intensity (slope -0.32), compared with the observed fits",
+      "evidence": [
+       {
+        "loc": "5.1 Dependence on CO J=1-0 intensity",
+        "quote": "We can see that our power-law fit has almost the same slope as that predicted (slope of -0.32) in (cite: narayanan2012)."
+       }
+      ]
+     },
+     "citation": "Narayanan et al. 2012 (cite: narayanan2012); also Gong et al. 2020 (cite: gong2020), Hu et al. 2022 (cite: hu2022)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "RADEX one-component 5D model grids of integrated line intensities for the five lines (n, Tkin, NCO, X12/13, beam filling factor) fitted to observed intensities per pixel",
+     "evidence": [
+      {
+       "loc": "3.1 General Modeling Procedure",
+       "quote": "We adopt the one-component RADEX modeling to generate 5D grids of integrated line intensities for the five lines"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Observatory-supplied calibration scripts with the appropriate CASA pipeline version",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We calibrate the raw visibility data with the observatory-supplied calibration scripts and the appropriate version of the CASA pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Modified version of the PHANGS-ALMA imaging pipeline (Leroy et al. 2021); visibilities extracted and imaged per molecular line",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "we extract and image a relevant subset of visibility data for each molecular line using a modified version of the PHANGS–ALMA imaging pipeline (cite: leroy2021)"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "For the weighting of the visibility data, we adopt the *Briggs* method with robustness parameter of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Continuum: auto-multithresh. Moment-map masks: high-confidence mask of at least two consecutive channels with S/N above 5, expanded to S/N above 2 for at least two consecutive channels, combined over lines into a common 'combo' mask",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA continuum",
+       "quote": "We then use the `auto-multithresh` algorithm to clean the continuum data down to threshold of 2 $\\times$ RMS (RMS of $\\sim$ 0.18 mJy/beam)."
+      },
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "starts from a high-confidence mask including at least two consecutive channels with S/N above 5 and then expand the mask to include pixels with S/N above 2 for at least two consecutive channels."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "1st-order fit to line-free channels, subtracted before line imaging",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "Before imaging the lines, we performed continuum subtraction by subtracting the 1st-order fit modeling on line-free channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Applied after cleaning and feathering",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "After the cleaning, we then feather the cleaned image product with TP data and apply the primary beam correction to get final image cubes for each line."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "12m and 7m measurement sets combined before imaging; cleaned image feathered with TP data",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We then combine the 12m and 7m measurement sets together and perform the imaging."
+      },
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "we then feather the cleaned image product with TP data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "All cubes smoothed to 150 pc (1.41 arcsec) and matched to the CO 1-0 grid; moment 0 and effective width maps Nyquist-sampled; also 1 kpc version",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We smooth all five image cubes to the resolution of 150 pc (1.41 arcsec) and match all their spatial grids to the CO $J$=1-0 line."
+      },
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "we Nyquist-sample the moment 0 and effective width maps for all the lines to remove the spatial correlation between different pixels."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "Smallest round beam at native resolution; 150 pc (1.41 arcsec) for the common-resolution analysis",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We also smooth all the images to the smallest round beam."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "At 150 pc: CO 1-0 0.05 K, CO 2-1 0.11 K, CO 3-2 0.04 K, 13CO 1-0 0.04 K, 13CO 2-1 0.05 K, continuum 0.4 mJy/beam (continuum native RMS ~0.18 mJy/beam)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "(8) Noise of the image cubes after smoothing to the resolution of 150 pc."
+      },
+      {
+       "loc": "Table 1",
+       "quote": "CO $J$=2-1 | 2018.1.00272.S | 6 | $0.51\\ensuremath{''}$, 54 pc | $6.9\\ensuremath{'}$, 44 kpc | 2.54 km s$^{-1}$ | 0.24 K | 0.11 K"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging steps follow the PHANGS-ALMA imaging scheme, with a modified version of the PHANGS-ALMA imaging pipeline",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "The imaging steps generally follow the PHANGS imaging scheme (cite: leroy2021)."
+       }
+      ]
+     },
+     "from_reference": "Leroy et al. 2021 (cite: leroy2021)"
+    },
+    {
+     "what": {
+      "value": "Masking scheme for moment maps from the PHANGS-ALMA pipeline",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "we start with generating masks adopting the scheme of the PHANGS-ALMA pipeline"
+       }
+      ]
+     },
+     "from_reference": "PHANGS-ALMA pipeline (cite: leroy2021)"
+    },
+    {
+     "what": {
+      "value": "Continuum processing (combining 12m and 7m, extracting line-free channels) uses the PHANGS-ALMA pipeline",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA continuum",
+        "quote": "we use the PHANGS-ALMA pipeline (cite: leroy2021) to combine the 12m and 7m measurement sets and extract the line-free channels from the combined measurement set for the continuum imaging."
+       }
+      ]
+     },
+     "from_reference": "Leroy et al. 2021 (cite: leroy2021)"
+    },
+    {
+     "what": {
+      "value": "RADEX modeling code, Bayesian likelihood analysis and alpha_CO derivation adapted from earlier work",
+      "evidence": [
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "We briefly summarize the code and our adaptation below (cite: teng2022; teng2023)."
+       },
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "We then follow the Bayesian likelihood analyses in (cite: teng2022) to characterize the probability density function (PDF) for the five varying parameters"
+       }
+      ]
+     },
+     "from_reference": "Teng et al. 2022 (cite: teng2022); Teng et al. 2023 (cite: teng2023)"
+    },
+    {
+     "what": {
+      "value": "Fiducial linewidth of 15 km/s for the RADEX grid",
+      "evidence": [
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "The 15 km s$^{-1}$ is the fiducial value used in (cite: teng2022; teng2023)."
+       }
+      ]
+     },
+     "from_reference": "Teng et al. 2022, 2023 (cite: teng2022; teng2023)"
+    },
+    {
+     "what": {
+      "value": "alpha_CO definition and posterior derivation method",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+        "quote": "We then follow the method in (cite: teng2022) and (cite: teng2023) to derive the posterior probability of $\\alpha_{\\mathrm{CO}}$"
+       }
+      ]
+     },
+     "from_reference": "Teng et al. 2022, 2023 (cite: teng2022; teng2023)"
+    },
+    {
+     "what": {
+      "value": "Effective width as a velocity dispersion estimate rather than moment 2",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "because it gives a more stable estimate of velocity dispersion within clouds, specifically if two or more clouds are along the same line of sight (cite: heyer2001; sun_cloud-scale_2018)"
+       }
+      ]
+     },
+     "from_reference": "Heyer et al. 2001 (cite: heyer2001); Sun et al. 2018 (cite: sun_cloud-scale_2018)"
+    },
+    {
+     "what": {
+      "value": "Theoretical slope of -0.5 for alpha_CO versus velocity dispersion",
+      "evidence": [
+       {
+        "loc": "5.3 Dependence on GMC velocity dispersion",
+        "quote": "This power-law slope is derived from theoretical predictions under the LVG approximation for two-level optically thick systems"
+       }
+      ]
+     },
+     "from_reference": "Teng et al. 2024 (cite: teng2024)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and CASA pipeline version used for each project, and which calibration scripts and execution blocks were used",
+    "What the 'modified' PHANGS-ALMA imaging pipeline changes relative to the public one, and its version",
+    "Line-free channel ranges and continuum fit windows for the 1st-order continuum subtraction",
+    "tclean parameters for lines: deconvolver, cell and image size, niter, thresholds, line cleaning masks, mosaic pointings",
+    "Feathering details with the TP data (scaling, uv range) and units conversion to Kelvin",
+    "Flux calibrator, flux scale uncertainty and any self-calibration",
+    "Observing dates, PI and number of execution blocks or pointings",
+    "Per-pixel measurement uncertainty sigma_i used in the chi2 (how moment-0 errors were computed)",
+    "Fitting method for the power-law relations (least squares, orthogonal, weighting, treatment of correlated Nyquist pixels and alpha_CO uncertainties)",
+    "Subregion definitions and the dust temperature values assigned per subregion (from Klaas et al. 2010), and the assumed T_dust for subregion A1a",
+    "How the GMC virial parameter and surface density contours of the dynamical-state analysis are computed",
+    "Continuum frequency range and bandwidth",
+    "CO and 13CO rest frequencies and the RADEX collision-rate files used"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image the five CO and 13CO line cubes",
+    "method": {
+     "value": "Run observatory calibration scripts with CASA pipeline, then image per line with a modified PHANGS-ALMA imaging pipeline (continuum subtraction, 12m+7m combination, Briggs weighting, feathering with TP, primary beam correction, conversion to Kelvin)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We calibrate the raw visibility data with the observatory-supplied calibration scripts and the appropriate version of the CASA pipeline."
+      },
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "In the final step, we convert all the image cubes to units of Kelvin (K)."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "PHANGS-ALMA imaging pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs robust = 0.5; 1st-order continuum fit on line-free channels",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "For the weighting of the visibility data, we adopt the *Briggs* method with robustness parameter of 0.5."
+       },
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "we performed continuum subtraction by subtracting the 1st-order fit modeling on line-free channels."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Homogenize cubes to 150 pc and make moment and effective-width maps",
+    "method": {
+     "value": "Smooth all cubes to 150 pc (1.41 arcsec), regrid to the CO 1-0 grid, build a common combo mask, make moment 0 and effective width maps with error maps, apply S/N cut of 3 on moment 0, Nyquist-sample",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We run this scheme for each line and combine all the mask together to create a \"combo\" mask."
+      },
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We also apply a S/N cut of 3 to the moment 0 maps of each line to exclude noisy pixels in weak line maps."
+      }
+     ]
+    },
+    "software": [
+     "PHANGS-ALMA pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Effective width sigma_v = I / (sqrt(2 pi) T_peak), ratio of moment 0 to peak brightness temperature (moment 8)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "the effective width is measured as the ratio between integrated intensity (moment 0) and peak brightness temperature (moment 8) maps"
+       }
+      ]
+     },
+     {
+      "value": "Mask: at least two consecutive channels with S/N above 5, expanded to S/N above 2 for at least two consecutive channels",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "starts from a high-confidence mask including at least two consecutive channels with S/N above 5 and then expand the mask to include pixels with S/N above 2 for at least two consecutive channels."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "For a Gaussian line profile the effective width equals the moment 2 width",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Spectral Lines",
+        "quote": "For a perfect Gaussian line profile, the effective width is identical to the traditionally used moment 2 measurements."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image Band 7 continuum for dust mass",
+    "method": {
+     "value": "Combine 12m and 7m, extract line-free channels, collapse each spectral window to one channel, clean with auto-multithresh to 2 x RMS, smooth to 150 pc and regrid to the Nyquist-sampled CO images",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA continuum",
+       "quote": "We also collapse each spectral window into a single channel in order to speed up the continuum imaging process."
+      },
+      {
+       "loc": "2.2 ALMA continuum",
+       "quote": "After imaging, we smooth the dust continuum map to the resolution of 150 pc and regrid the map to the nyquist-sampled CO images."
+      }
+     ]
+    },
+    "software": [
+     "PHANGS-ALMA pipeline",
+     "auto-multithresh"
+    ],
+    "key_parameters": [
+     {
+      "value": "Clean threshold 2 x RMS, RMS ~0.18 mJy/beam",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA continuum",
+        "quote": "clean the continuum data down to threshold of 2 $\\times$ RMS (RMS of $\\sim$ 0.18 mJy/beam)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive stellar mass surface density from Spitzer images (kpc scale)",
+    "method": {
+     "value": "Background subtract Spitzer 3.6 and 4.5 um images, reproject to the CO 150 pc grid, compute stellar mass per pixel with the Eskew et al. equation, divide by pixel area, regrid to the 1 kpc CO map",
+     "evidence": [
+      {
+       "loc": "2.3 Spitzer Data",
+       "quote": "We estimate the background level of each image by calculating the mean of an aperture drawn outside the galaxy and perform background subtraction."
+      },
+      {
+       "loc": "2.3 Spitzer Data",
+       "quote": "At the final step, we regrid our calculated stellar surface density map to the grid of 1 kpc resolution nyquist sampled CO $J$=1-0 moment 0 map."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Stellar mass from F3.6 and F4.5 using the Eskew et al. 2012 relation with luminosity distance D",
+      "evidence": [
+       {
+        "loc": "2.3 Spitzer Data",
+        "quote": "We then calculate the stellar mass for each pixel with the equation (cite: eskew2012)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit non-LTE RADEX models to the five line intensities per pixel",
+    "method": {
+     "value": "Per-pixel one-component RADEX grid modeling with all five CO and 13CO lines, using adapted Teng et al. code; Bayesian likelihood over a 5D grid; median adopted for each parameter except X12/13 where the 1DMax is used",
+     "evidence": [
+      {
+       "loc": "3.1 General Modeling Procedure",
+       "quote": "to perform non-LTE radiative transfer modeling for each pixel with all five CO and $^{13}$CO lines detected at 150 pc."
+      },
+      {
+       "loc": "3.1 General Modeling Procedure",
+       "quote": "For all the parameters except for $X_{12/13}$, we use the median as the solution."
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "multiline-bayesian-modeling code (Teng et al. 2022)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Grid: log n 2-5.1 (step 0.2), log Tkin 1-2.4 (step 0.1), log NCO x 15 km/s / dv 16-21 (step 0.2)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "log ($n$) ($\\mathrm{cm^{-3}}$) | 2 – 5.1 | 0.2"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "log ($T_{\\mathrm{kin}}$) (K) | 1 – 2.4 | 0.1"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "log ($N_{\\mathrm{CO}} \\times \\frac{15 \\mathrm{km s^{-1}}}{\\Delta v}$) (cm$^{-2}$) | 16 – 21 | 0.2"
+       }
+      ]
+     },
+     {
+      "value": "Grid: X12/13 10-400 (step 10), beam filling factor 0.05-1 (step 0.05), [CO]/[H2] fixed at 3e-4",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "$X_{12/13}$ | 10 – 400 | 10"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "$\\Phi_{\\mathrm{bf}}$ | 0.05 – 1 | 0.05"
+       }
+      ]
+     },
+     {
+      "value": "Fiducial NCO per 15 km/s, rescaled to real NCO with Delta v = 2.35 sigma_v from the CO 1-0 velocity dispersion map; modeled intensity rescaled by the ratio of measured linewidth to 15 km/s",
+      "evidence": [
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "Later we will rescale this value to the real CO column density based on the measured $\\Delta v$ in the CO $J$=1-0 velocity dispersion map ($\\Delta v = 2.35 \\sigma_v$)."
+       },
+       {
+        "loc": "Appendix Bayesian Analyses in Our RADEX Modeling",
+        "quote": "we need to rescale modeled intensity by multiplying the ratio of measured linewidth to the fixed linewidth of 15 km s$^{-1}$ for each pixel."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Homogeneous medium, escape probability formalism, one component",
+      "evidence": [
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "which assumes a homogeneous medium and uses radiative transfer equations based on the escape probability formalism"
+       }
+      ]
+     },
+     {
+      "value": "Same beam filling factor for all five lines",
+      "evidence": [
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "In the modeling, we assume the same $\\Phi_{\\mathrm{bf}}$ for all 5 lines."
+       }
+      ]
+     },
+     {
+      "value": "[CO]/[H2] abundance ratio x_CO = 3e-4",
+      "evidence": [
+       {
+        "loc": "3.1 General Modeling Procedure",
+        "quote": "We also assume the $[\\mathrm{CO}]$/$[\\mathrm{H}_2]$ abundance ratio ($x_{\\mathrm{co}}$) of 3$\\times 10^{-4}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Grid-based Bayesian likelihood: chi2 against the five integrated intensities, posterior P = exp(-chi2/2)/Q over the 5D grid, marginalized 1D PDFs; no MCMC sampler; priors not stated beyond uniform grid sampling",
+     "evidence": [
+      {
+       "loc": "Appendix Bayesian Analyses in Our RADEX Modeling",
+       "quote": "For each pixel, the code calculates the $\\chi^2$ by comparing the modeled line intensities with the measured line intensities."
+      },
+      {
+       "loc": "Appendix Bayesian Analyses in Our RADEX Modeling",
+       "quote": "We can also calculate the marginalized 1D probability distribution for each individual modeled parameter by integrating the 5D $P(\\vec{\\theta}|\\vec{I}_{\\mathrm{obs}})$ over the rest of parameter space."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Median of the 1D PDF compared with the 1DMax value for an example pixel; excitation temperatures compared to kinetic temperature for LTE test",
+     "evidence": [
+      {
+       "loc": "Appendix Bayesian Analyses in Our RADEX Modeling",
+       "quote": "For most quantities, the median of the 1D probability distribution corresponds well with the ‘1DMax’ value of the distribution, which suggests that our modeling recovers the most probable solution."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive the alpha_CO posterior per pixel and select reliable pixels",
+    "method": {
+     "value": "alpha_CO = 1.36 m_H2 NCO Phi_bf / (x_CO I_CO(1-0)); posterior from summing 5D probabilities for each alpha_CO, divided by the alpha_CO prior probability in the sampling space; median with 16th and 84th percentiles adopted",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+       "quote": "For the rest of the paper, we choose the median value of the posterior as our derived $\\alpha_{\\mathrm{CO}}$, and 16$^{\\mathrm{th}}$ and 84$^{\\mathrm{th}}$ percentile as the $\\pm 1\\sigma$ values."
+      },
+      {
+       "loc": "Appendix Modeling of the CO-to-H2 conversion factor",
+       "quote": "To get the unbiased PDF, we calculate the normalized ratio of our biased $\\alpha_{\\mathrm{CO}}$ probability to the $\\alpha_{\\mathrm{CO}}$ prior probability in our sampling space"
+      }
+     ]
+    },
+    "software": [
+     "multiline-bayesian-modeling code (Teng et al. 2022)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Exclude pixels with median alpha_CO below 0.1, with chi2 greater than 10, with 1dMax values at the edge of the grid (X12/13 <= 30, log n >= 4.9, log NCO(15 km/s) <= 16.1, log Tkin < 1.1) and with alpha_CO pos1sig/neg1sig < 16 (uncertainty within a factor of 4)",
+      "evidence": [
+       {
+        "loc": "Appendix Modeling of the CO-to-H2 conversion factor",
+        "quote": "Therefore, we exclude the pixels with median $\\alpha_{\\mathrm{CO}}$ value below 0.1."
+       },
+       {
+        "loc": "Appendix Modeling of the CO-to-H2 conversion factor",
+        "quote": "We also exclude pixels with $\\chi^2$ value greater than 10."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Helium correction factor 1.36; x_CO = 3e-4 (alpha_CO scales as 3e-4 / x_CO)",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+        "quote": "This equation includes the correction coefficient of 1.36 for the contribution of helium."
+       },
+       {
+        "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+        "quote": "Note that our derived $\\alpha_{\\mathrm{CO}}$ is dependent on our assumed $x_{\\mathrm{CO}}$ value."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Posterior from the grid; no sampler",
+     "evidence": [
+      {
+       "loc": "Appendix Modeling of the CO-to-H2 conversion factor",
+       "quote": "We calculate the $\\alpha_{\\mathrm{CO}}$ 1D distribution by summing up all the probabilities of parameters in 5D space that yield a given $\\alpha_{\\mathrm{CO}}$ value"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Pixel selection by marginalized-distribution inspection; 508 pixels kept",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+       "quote": "After our selection procedure, we have 508 pixels with good RADEX model constraints."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Fit empirical relations between alpha_CO and observables",
+    "method": {
+     "value": "Power-law fits of alpha_CO versus CO 1-0 intensity, CO 1-0 optical depth, 13CO/CO 1-0 ratio (alone and with X12/13), velocity dispersion sigma_v (free slope and fixed -0.5), and 13CO/CO 2-1 ratio for S/N>10; correlation of alpha_CO with line ratios and Tkin",
+     "evidence": [
+      {
+       "loc": "5.1 Dependence on CO J=1-0 intensity",
+       "quote": "Fig. [8](#fig:alphaCO_Ico) shows a significant anti-correlation between $\\alpha_{\\mathrm{CO}}$ and $I_{\\text{CO 1-0}}$."
+      },
+      {
+       "loc": "5.3 Dependence on GMC velocity dispersion",
+       "quote": "We fit the anti-correlation with a power-law function, which is"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "13CO/CO 2-1 relation fitted only for pixels with S/N > 10",
+      "evidence": [
+       {
+        "loc": "Appendix alpha_CO versus 13CO/CO J=2-1 ratio",
+        "quote": "We perform the same power-law fit to the $\\alpha_{\\mathrm{CO}}$ versus $R_{\\mathrm{^{13}CO/CO 2{-}1}}$ relation for pixels with S/N$>10$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Theoretical slope of -0.5 for alpha_CO vs sigma_v under the LVG approximation for two-level optically thick systems",
+      "evidence": [
+       {
+        "loc": "5.3 Dependence on GMC velocity dispersion",
+        "quote": "This power-law slope is derived from theoretical predictions under the LVG approximation for two-level optically thick systems"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Power-law fits in log-log; fitting algorithm not stated",
+     "evidence": [
+      {
+       "loc": "5.1 Dependence on CO J=1-0 intensity",
+       "quote": "The value in the brackets indicates the 1-$\\sigma$ error for the fitted parameter."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with simulation predictions (Narayanan et al. 2012, Gong et al. 2020, Hu et al. 2022) and with Teng et al. 2023, 2024",
+     "evidence": [
+      {
+       "loc": "5.1 Dependence on CO J=1-0 intensity",
+       "quote": "We can see that our power-law fit has almost the same slope as that predicted (slope of -0.32) in (cite: narayanan2012)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Check the assumed x_CO with a dust-based gas-to-dust ratio",
+    "method": {
+     "value": "Compute dust mass and surface density from the 350 GHz (880 um) continuum with an assumed dust temperature and opacity, compare with modeled molecular gas surface density to get the gas-to-dust ratio",
+     "evidence": [
+      {
+       "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+       "quote": "From the dust continuum map, we calculate the dust mass as (cite: wilson_luminous_2008)"
+      },
+      {
+       "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+       "quote": "We can see that a high $x_{\\mathrm{CO}}$ value is favored in order to get a reasonable gas-to-dust ratio (GDR) below 200."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "kappa = 0.9 g^-1 cm^2; T_dust from Klaas et al. 2010 per subregion (about 20 K)",
+      "evidence": [
+       {
+        "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+        "quote": "We chose 0.9 g$^{-1}$ cm$^{2}$ as the fiducial value for $\\kappa$ (cite: wilson_luminous_2008)"
+       },
+       {
+        "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+        "quote": "We adopt the dust temperature from (cite: klaas2010) for pixels in each defined subregion"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dense GMCs expected to have GDR of 50-100 rather than 200; subregion A1a assumed to have the galaxy-integrated dust temperature",
+      "evidence": [
+       {
+        "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+        "quote": "we would expect them to have GDR values closer to dense gas values of 50 – 100 instead of more diffuse medium values of 200"
+       },
+       {
+        "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+        "quote": "For subregion A1a which does not have a temperature measurement, we assume the temperature to be the same as the overall dust temperature derived from the integrated fluxes of the entire galaxy"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Higher dust temperature or opacity would give higher GDR at fixed x_CO, so they do not reduce the preferred x_CO",
+     "evidence": [
+      {
+       "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+       "quote": "Therefore, increasing dust temperature and dust opacity does not help with reducing $x_{\\mathrm{CO}}$ value"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Reassess GMC dynamical states with modeled alpha_CO",
+    "method": {
+     "value": "Use modeled alpha_CO to compute GMC surface density and virial parameter, compare with a constant Milky Way alpha_CO",
+     "evidence": [
+      {
+       "loc": "6.2 GMC dynamical states in the Antennae",
+       "quote": "With our modeled $\\alpha_{\\mathrm{CO}}$, we can put a more accurate constraint on GMC dynamical states in the Antennae."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "x_CO = 3e-4 gives alpha_CO close to the U/LIRG value of 1.1",
+      "evidence": [
+       {
+        "loc": "6.2 GMC dynamical states in the Antennae",
+        "quote": "With $x_{\\mathrm{CO}}$ = $3 \\times 10^{-4}$, most of our modeled $\\alpha_{\\mathrm{CO}}$ are close to U/LIRG values of 1.1"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with merger simulation predictions of He et al. 2023",
+     "evidence": [
+      {
+       "loc": "6.2 GMC dynamical states in the Antennae",
+       "quote": "which is consistent with the simulation prediction from (cite: he2023)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Model alpha_CO at 1 kpc and compare with GMC scale",
+    "method": {
+     "value": "Repeat the RADEX procedure on 1 kpc cubes and moment maps with beam filling factor sampled in log space; compute the CO 1-0 luminosity-weighted average of 150 pc alpha_CO in each kpc pixel; compute GMC fraction f_GMC; test dependence on I_CO and total surface density",
+     "evidence": [
+      {
+       "loc": "7.1 Modeling setup",
+       "quote": "except that we sample the beam filling factor in log space ($\\log \\Phi_{\\mathrm{bf}}$ from -3 to 0 with step of 0.1)"
+      },
+      {
+       "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+       "quote": "$\\alpha_{\\mathrm{CO}}$ is calculated as the CO $J$=1-0 intensity averaged value of the smaller pixels that are associated with the regridded pixel"
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "multiline-bayesian-modeling code (Teng et al. 2022)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Extra exclusions at kpc scale: X12/13 1dmax <= 30, log Tkin 1dmax < 1.1 or > 2",
+      "evidence": [
+       {
+        "loc": "7.1 Modeling setup",
+        "quote": "specifically, pixels with $X_{\\mathrm{12/13, 1dmax}} \\leq 30$, $\\log T_{\\mathrm{kin, 1dmax}} < 1.1$ or $\\log T_{\\mathrm{kin, 1dmax}} > 2$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "RADEX assumes uniform spherical structure, more applicable to individual GMCs than to ensembles at kpc scale",
+      "evidence": [
+       {
+        "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+        "quote": "RADEX modeling generally assumes a uniform spherical structure, which is more applicable to individual GMCs than an ensemble of GMCs at kpc-scale resolution."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Same grid Bayesian procedure as step 5",
+     "evidence": [
+      {
+       "loc": "7.1 Modeling setup",
+       "quote": "In modeling $\\alpha_{\\mathrm{CO}}$ at kpc scales, we generally follow the same procedure as in Section [3.1](#subsec:RADEX_general)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Pearson correlation of the kpc/GMC alpha_CO ratio with f_GMC",
+     "evidence": [
+      {
+       "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+       "quote": "find a strong correlation between these two quantities with the coefficient of 0.62."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration pipeline for raw visibilities (appropriate CASA pipeline version) and listed in Software section",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "We calibrate the raw visibility data with the observatory-supplied calibration scripts and the appropriate version of the CASA pipeline."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHANGS-ALMA imaging pipeline (modified)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extracting and imaging visibilities per line, continuum imaging, and generating masks and moment maps",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Spectral Lines",
+       "quote": "using a modified version of the PHANGS–ALMA imaging pipeline (cite: leroy2021)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "auto-multithresh",
+    "version": "not stated",
+    "used_for": {
+     "value": "Cleaning the continuum data",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA continuum",
+       "quote": "We then use the `auto-multithresh` algorithm to clean the continuum data down to threshold of 2 $\\times$ RMS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE radiative transfer modeling with escape probability formalism for line intensity grids",
+     "evidence": [
+      {
+       "loc": "3.1 General Modeling Procedure",
+       "quote": "This code runs RADEX (cite: van_der_tak_computer_2007) modeling"
+      }
+     ]
+    }
+   },
+   {
+    "name": "multiline-bayesian-modeling (Teng et al. 2022 code, adapted)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Per-pixel RADEX grid generation and Bayesian likelihood analysis",
+     "evidence": [
+      {
+       "loc": "3.1 General Modeling Procedure",
+       "quote": "to perform non-LTE radiative transfer modeling for each pixel with all five CO and $^{13}$CO lines detected at 150 pc."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Pixels with good RADEX model constraints",
+    "value": "508",
+    "uncertainty": "not stated",
+    "units": "pixels",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+      "quote": "After our selection procedure, we have 508 pixels with good RADEX model constraints."
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO versus CO 1-0 intensity (log alpha_CO = a + b log I)",
+    "value": "intercept 0.77, slope -0.3",
+    "uncertainty": "+/-0.04 (intercept), +/-0.02 (slope)",
+    "units": "alpha_CO in Msun (K km/s pc^2)^-1; I in K km/s",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.1 Dependence on CO J=1-0 intensity",
+      "quote": "\\log \\alpha_{\\mathrm{CO}} = 0.77 (\\pm 0.04) - 0.3 (\\pm 0.02) \\log I_{\\mathrm{CO 1-0}}"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO versus CO 1-0 optical depth (log alpha_CO = log tau + c)",
+    "value": "c = -1.05",
+    "uncertainty": "+/-0.01",
+    "units": "dimensionless (log)",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.2 Dependence on CO 1-0 optical depth and 13CO/CO ratio",
+      "quote": "\\log \\alpha_{\\mathrm{CO}} = \\log \\tau_{\\mathrm{CO 1-0}} - 1.05 (\\pm 0.01)"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO versus 13CO/CO 1-0 ratio (log alpha_CO = a log R + b)",
+    "value": "slope 0.85, intercept 0.97",
+    "uncertainty": "+/-0.04, +/-0.04",
+    "units": "dimensionless (log)",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.2 Dependence on CO 1-0 optical depth and 13CO/CO ratio",
+      "quote": "\\log \\alpha_{\\mathrm{CO}} = 0.85 (\\pm 0.04) \\log R_{\\mathrm{^{13}CO/CO 1{-}0}} + 0.97 (\\pm 0.04)"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO versus 13CO/CO 1-0 ratio and X12/13 (two-variable fit)",
+    "value": "0.7 + 1.03 log R + 0.21 log X12/13",
+    "uncertainty": "+/-0.06 (intercept), +/-0.05 (R), +/-0.03 (X12/13)",
+    "units": "dimensionless (log)",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.2 Dependence on CO 1-0 optical depth and 13CO/CO ratio",
+      "quote": "1.03 (\\pm 0.05) \\log R_{\\mathrm{^{13}CO/CO 1-0}}"
+     },
+     {
+      "loc": "5.2 Dependence on CO 1-0 optical depth and 13CO/CO ratio",
+      "quote": "0.21 (\\pm 0.03) \\log X_{12/13} + 0.7 (\\pm 0.06)"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO versus velocity dispersion sigma_v (log alpha_CO = a + b log sigma_v)",
+    "value": "intercept 0.7, slope -0.46",
+    "uncertainty": "+/-0.04 (intercept), +/-0.03 (slope)",
+    "units": "alpha_CO in Msun (K km/s pc^2)^-1; sigma_v in km/s",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.3 Dependence on GMC velocity dispersion",
+      "quote": "\\log \\alpha_{\\mathrm{CO}} = 0.7 (\\pm 0.04) - 0.46 (\\pm 0.03) \\log \\sigma_{v}"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO versus 13CO/CO 2-1 ratio for S/N>10 (log alpha_CO = a log R + b)",
+    "value": "slope 0.58, intercept 0.65",
+    "uncertainty": "+/-0.04, +/-0.05",
+    "units": "dimensionless (log)",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Appendix alpha_CO versus 13CO/CO J=2-1 ratio",
+      "quote": "\\log \\alpha_{\\mathrm{CO}} = 0.58 (\\pm 0.04) \\log R_{\\mathrm{^{13}CO/CO 2{-}1}} + 0.65 (\\pm 0.05)"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient of alpha_CO versus 13CO/CO 2-1 ratio for S/N>10",
+    "value": "0.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Appendix alpha_CO versus 13CO/CO J=2-1 ratio",
+      "quote": "with a Pearson correlation coefficient of 0.7"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient of alpha_CO versus Tkin",
+    "value": "-0.17",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.5 Summary",
+      "quote": "only has a weak anti-correlation with $T_{\\mathrm{kin}}$ (Pearson coefficient of -0.17)"
+     }
+    ]
+   },
+   {
+    "quantity": "Typical X12/13 abundance ratio",
+    "value": "100 - 300 (about 200)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Modeling results and their connection to the line ratios",
+      "quote": "We also find most regions have $X_{12/13}$ values between 100 – 300."
+     }
+    ]
+   },
+   {
+    "quantity": "CO 2-1/1-0 line ratio",
+    "value": "close to 1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Line Ratios",
+      "quote": "the CO $J$=2-1/1-0 ratio is generally uniform with values close to 1 across the entire molecular gas detected regions"
+     }
+    ]
+   },
+   {
+    "quantity": "Average CO 3-2/1-0 line ratio",
+    "value": "~0.4 - 0.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Line Ratios",
+      "quote": "The average CO $J$=3-2/1-0 ratio is $\\sim$ 0.4 – 0.7"
+     }
+    ]
+   },
+   {
+    "quantity": "13CO/CO 1-0 and 2-1 line ratios",
+    "value": "~0.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Line Ratios",
+      "quote": "have values of $\\sim$ 0.1, similar to the typical $R_{\\mathrm{^{13}CO/CO 1{-}0}}$ ratio for normal spiral galaxies"
+     }
+    ]
+   },
+   {
+    "quantity": "Typical modeled alpha_CO at GMC scale (x_CO = 3e-4)",
+    "value": "close to 1.1",
+    "uncertainty": "not stated",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.2 GMC dynamical states in the Antennae",
+      "quote": "With $x_{\\mathrm{CO}}$ = $3 \\times 10^{-4}$, most of our modeled $\\alpha_{\\mathrm{CO}}$ are close to U/LIRG values of 1.1"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-to-dust ratio implied with x_CO = 3e-4",
+    "value": "~100",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "gives us reasonable gas-to-dust ratios of $\\sim$ 100"
+     }
+    ]
+   },
+   {
+    "quantity": "Ratio of kpc-scale alpha_CO to the CO 1-0 intensity averaged 150 pc alpha_CO",
+    "value": "about 60%",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+      "quote": "We can see that $\\alpha_{\\mathrm{CO}}$ values at kpc scale are about 60% of the CO $J$=1-0 intensity averaged $\\alpha_{\\mathrm{CO}}$ values at 150 pc scale."
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient between alpha_CO,1kpc / <alpha_CO,150pc> and f_GMC",
+    "value": "0.62",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+      "quote": "find a strong correlation between these two quantities with the coefficient of 0.62."
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient of kpc-scale alpha_CO versus total surface density (Antennae alone; Antennae plus other U/LIRGs)",
+    "value": "-0.11; -0.16",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "7.3 alpha_CO dependence at kpc scale",
+      "quote": "We also do not see a significant correlation between these two quantities for the Antennae alone (Pearson coefficient of -0.11) or the Antennae and other U/LIRGs combined (Pearson coefficient of -0.16)."
+     }
+    ]
+   },
+   {
+    "quantity": "Ratio of Narayanan et al. 2012 predicted alpha_CO to the GMC-scale measurement",
+    "value": "factor of 1.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.1 Dependence on CO J=1-0 intensity",
+      "quote": "are higher than our $\\alpha_{\\mathrm{CO}}$ measurement by a factor of 1.7"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Most GMCs in the Antennae have alpha_CO about 4 times smaller than the Milky Way value (4.3)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find that most GMCs in the Antennae have $\\alpha_{\\mathrm{CO}}$ values $\\sim$4 times smaller than the commonly adopted Milky Way value (4.3)"
+     }
+    ]
+   },
+   {
+    "value": "alpha_CO is mainly driven by CO optical depth rather than kinetic temperature",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "This suggests that $\\alpha_{\\mathrm{CO}}$ variations in starburst systems are mainly driven by optical depth variations rather than kinetic temperature variations"
+     }
+    ]
+   },
+   {
+    "value": "GMCs in the Antennae are less gravitationally bound than in normal spiral galaxies",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find that GMCs in the Antennae are less gravitationally bound than in normal spiral galaxies, which is more consistent with what is predicted by merger simulations"
+     }
+    ]
+   },
+   {
+    "value": "alpha_CO shows only a weak correlation with CO line ratios, so excitation conditions do not play a major role in its variation",
+    "evidence": [
+     {
+      "loc": "5.4 Dependence on CO line ratios",
+      "quote": "The weak correlation between $\\alpha_{\\mathrm{CO}}$ and CO line ratios suggest that excitation conditions does not play a major role in the $\\alpha_{\\mathrm{CO}}$ variation within starburst mergers."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is alpha_CO in the Antennae lower than the Milky Way value at GMC scale?",
+    "experiment": "Per-pixel RADEX modeling of five CO and 13CO lines at 150 pc with fixed x_CO = 3e-4, checked against dust-based gas-to-dust ratios",
+    "result": "Modeled alpha_CO is close to 1.1 Msun (K km/s pc^2)^-1 for most pixels, about 4 times below 4.3",
+    "finding": "The Antennae GMCs have alpha_CO close to U/LIRG values, not the Milky Way value; absolute values depend on the assumed x_CO",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find that most GMCs in the Antennae have $\\alpha_{\\mathrm{CO}}$ values $\\sim$4 times smaller than the commonly adopted Milky Way value (4.3)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does alpha_CO depend on CO intensity, 13CO/CO ratio and velocity dispersion as theory predicts?",
+    "experiment": "Power-law fits of modeled alpha_CO against I_CO(1-0), tau_CO, 13CO/CO 1-0 ratio and sigma_v",
+    "result": "Slope -0.3 versus intensity, tight linear relation with optical depth, slope 0.85 versus 13CO/CO, slope -0.46 versus sigma_v",
+    "finding": "The 13CO/CO ratio and sigma_v can be used to infer alpha_CO in starburst regions; sigma_v slope is near the theoretical -0.5",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Specifically, we suggest that the $^{13}$CO/CO line ratio and the velocity dispersion can be used to infer $\\alpha_{\\mathrm{CO}}$ in starburst regions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the low alpha_CO of starbursts driven by higher temperature or by optical depth and velocity dispersion?",
+    "experiment": "Correlated modeled alpha_CO with Tkin, tau_CO, CO line ratios and sigma_v",
+    "result": "Weak anti-correlation with Tkin (Pearson -0.17) and with CO line ratios; strong correlation with tau",
+    "finding": "Temperature is not the major factor in lowering alpha_CO; optical depth and velocity dispersion matter more",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.5 Summary",
+      "quote": "which suggests that an increase in temperature is not the major factor in reducing $\\alpha_{\\mathrm{CO}}$ values in starburst mergers"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are Antennae GMCs gravitationally bound when a modeled alpha_CO is used instead of the Milky Way value?",
+    "experiment": "Compute GMC surface density and virial state with the modeled alpha_CO",
+    "result": "Higher virial parameters, GMCs more turbulent",
+    "finding": "Most GMCs in the Antennae are out of virial equilibrium, consistent with merger simulations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "This $\\alpha_{\\mathrm{CO}}$ will put most GMCs in the Antennae out of virial equilibrium, which is consistent with simulation predictions of GMCs in starburst mergers"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is kpc-scale alpha_CO equal to the luminosity-weighted GMC-scale alpha_CO?",
+    "experiment": "RADEX modeling at 1 kpc compared with CO 1-0 intensity averaged 150 pc alpha_CO, with f_GMC correlation",
+    "result": "kpc-scale alpha_CO is about 60% of the averaged GMC-scale value; ratio correlates with f_GMC (Pearson 0.62)",
+    "finding": "A diffuse gas component with lower alpha_CO may lower the kpc-scale value, though the paper notes it is debated whether diffuse gas has higher or lower alpha_CO",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+      "quote": "This correlation suggests that an additional component of diffuse gas at kpc scale brings down the overall $\\alpha_{\\mathrm{CO}}$ value."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Diagnosing GMC physical states needs multiple CO and optically thin lines at about 100 pc resolution; the Antennae is one of the closest starburst mergers",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "it is necessary to observe multiple CO and other molecular lines (specifically optically thin lines) at GMC resolution ($\\sim$ 100 pc) to perform comprehensive LVG modeling."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "As one of the closest starburst mergers, NGC 4038/9 (the Antennae) is an ideal target for this study."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Effective width used because it is a more stable velocity dispersion estimate when clouds overlap along the line of sight",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Spectral Lines",
+      "quote": "We adopt this alternative method because it gives a more stable estimate of velocity dispersion within clouds"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Antennae might truly have a high gas-to-dust ratio; rejected because most regions have solar metallicity",
+     "evidence": [
+      {
+       "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+       "quote": "An alternative explanation is that the Antennae might actually have a high GDR values."
+      },
+      {
+       "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+       "quote": "Therefore, we would not expect the Antennae to have abnormally high GDR values."
+      }
+     ]
+    },
+    {
+     "value": "Higher dust temperature or dust opacity considered and found not to reduce the preferred x_CO",
+     "evidence": [
+      {
+       "loc": "6.1 Constraining the xCO abundance ratio with the dust mass",
+       "quote": "However, if we assume the higher dust temperature, we would obtain an even higher GDR value given a fixed $x_{\\mathrm{CO}}$ value."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "alpha_CO depends on the assumed x_CO, which the modeling cannot constrain",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling of the CO-to-H2 conversion factor",
+       "quote": "Note that our derived $\\alpha_{\\mathrm{CO}}$ is dependent on our assumed $x_{\\mathrm{CO}}$ value."
+      },
+      {
+       "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+       "quote": "We note that our modeling does not have the ability to constrain $x_{\\mathrm{CO}}$."
+      }
+     ]
+    },
+    {
+     "value": "13CO 1-0 assumed to share the CO beam filling factor, which may underestimate its excitation temperature",
+     "evidence": [
+      {
+       "loc": "4.2 Modeling results and their connection to the line ratios",
+       "quote": "our models assume $^{13}$CO $J$=1-0 has the same beam filling factor as the CO $J$=1-0 emission."
+      }
+     ]
+    },
+    {
+     "value": "Modeling restricted to regions with 13CO 1-0 and 2-1 detections, mostly nuclei and overlap region; cloud-scale average biased low",
+     "evidence": [
+      {
+       "loc": "4.2 Modeling results and their connection to the line ratios",
+       "quote": "Finally, we note that our modeling results are limited to regions with $^{13}$CO $J$=1-0 and $J$=2-1 detections."
+      },
+      {
+       "loc": "7.2 alpha_CO comparison at GMC and kpc scales",
+       "quote": "In other words, our cloud-scale averaged $\\alpha_{\\mathrm{CO}}$ values are biased towards lower values."
+      }
+     ]
+    },
+    {
+     "value": "Large uncertainty (factor of about 3) in modeled alpha_CO may smear out trends",
+     "evidence": [
+      {
+       "loc": "7.3 alpha_CO dependence at kpc scale",
+       "quote": "the large uncertainty (factor of $\\sim$3) in our modeled $\\alpha_{\\mathrm{CO}}$ values might act to smear out the trend."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Absolute alpha_CO is set by the fixed x_CO = 3e-4; the dust-based GDR check uses a literature T_dust (~20 K) and a single kappa, so it does not independently fix x_CO",
+    "alpha_CO is derived from the same modeled NCO, beam filling factor and I_CO that appear in the relations tested, so correlations with I_CO, tau and 13CO/CO are partly built in",
+    "The chi2 equation as printed has no square on the residual, so the exact likelihood used is ambiguous",
+    "One-component homogeneous RADEX with shared beam filling factor for all lines and optically thin 13CO assumption is a strong simplification",
+    "Sample is limited to 508 Nyquist pixels with 13CO detections in dense regions, so relations may not extend to diffuse gas",
+    "Fit methodology and error treatment for the power laws are not described"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Modeled maps are available from the corresponding author on request, not in a public archive",
+    "evidence": [
+     {
+      "loc": "Data Availability",
+      "quote": "The modeled maps of gas physical properties and CO-to-H$_2$ conversion factor are available from the corresponding author on request."
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "RADEX grid generation and Bayesian analysis code released on Zenodo and GitHub",
+     "evidence": [
+      {
+       "loc": "Data Availability",
+       "quote": "The code to generate RADEX modeling grids and perform Bayesian analysis on multiple CO and its isotopologue lines is available on both Zenodo"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact calibration and imaging parameters of the modified PHANGS-ALMA pipeline (versions, line-free channels, clean settings)",
+    "Per-subregion dust temperatures and subregion definitions",
+    "Measurement uncertainty definitions in the chi2 and power-law fitting algorithm",
+    "Statement of data public status, PI and observing dates for the two projects"
+   ],
+   "estimated_data_volume_inferred": "Likely several hundred GB to about 2 TB raw (12m, 7m and TP data for three bands over a mosaic of the Antennae; 5 lines plus continuum, 2 projects); processed cubes and moment maps much smaller",
+   "score_inferred": 3,
+   "score_reason": "ALMA project codes, RADEX grid ranges, selection cuts and numeric fit coefficients are given and the modeling code is public, but the imaging pipeline is a modified version with unstated parameters and the modeled maps are only available on request.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data public status is not stated by the paper and the line imaging recipe is incomplete, though the downstream modeling code and fit results are well specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Leroy et al. 2021 (cite: leroy2021)",
+     "why": "PHANGS-ALMA imaging pipeline and masking scheme used and modified"
+    },
+    {
+     "citation": "Teng et al. 2022 (cite: teng2022)",
+     "why": "Source of the multi-line RADEX Bayesian modeling code and alpha_CO derivation"
+    },
+    {
+     "citation": "Teng et al. 2023 (cite: teng2023)",
+     "why": "Adaptation of the code and 15 km/s fiducial linewidth; alpha_CO versus 13CO/CO relation"
+    },
+    {
+     "citation": "van der Tak et al. 2007 (cite: van_der_tak_computer_2007)",
+     "why": "RADEX non-LTE radiative transfer code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "He et al. 2023 (cite: he2023)",
+     "why": "Merger simulation predictions of alpha_CO effects on GMC virial parameters"
+    },
+    {
+     "citation": "Teng et al. 2024 (cite: teng2024)",
+     "why": "Calibrated alpha_CO versus sigma_v relation and theoretical slope"
+    },
+    {
+     "citation": "Sliwa et al. 2017 (cite: sliwa2017)",
+     "why": "x_CO and X12/13 values for starburst mergers"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024ApJ...971..176H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:21:53",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 167,
+  "quotes_ok": 167,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 19,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 127,
+   "stated": 96,
+   "rate": 0.756
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-30T03:30:51",
+  "custom_id": "sonnetcc-repair-claude-code",
+  "fixed": [
+   {
+    "path": "claims[3].evidence[0]",
+    "old": "This conclusion in general will increase the $\\alpha_{\\mathrm{CO}}$ of the Antennae",
+    "new": "This $\\alpha_{\\mathrm{CO}}$ will put most GMCs in the Antennae out of virial equilibrium, which is consistent with simulation predictions of GMCs in starburst mergers"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

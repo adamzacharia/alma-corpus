@@ -1,0 +1,819 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017PASP..129c5004M",
+  "title": "ALMA Long Baseline Campaigns: Phase Characteristics of Atmosphere at Long Baselines in the Millimeter and Submillimeter Wavelengths",
+  "year": 2017,
+  "journal": "Publications of the Astronomical Society of the Pacific",
+  "first_author": "Matsushita, Satoki",
+  "n_authors": 12,
+  "arxiv_id": "1701.03032",
+  "doi": "10.1088/1538-3873/aa5787",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00003.E"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "This paper presents the first detailed investigation of the characteristics of phase fluctuation and phase correction methods obtained with baseline lengths up to $\\sim15$ km."
+   }
+  ],
+  "science": {
+   "fields": [
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "Bright quasars observed as single source stares (e.g. 3C279, 3C454.3, 0522-364, 1924-292)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the atmospheric phase fluctuation characteristics at ALMA baselines up to ~15 km, how well does WVR correction work, and how well would fast switching work?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we present the detailed characterization of phase fluctuation, improvement of phase fluctuation after the water vapor radiometer (WVR) phase correction method"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Bands 3, 6, 7 for all campaigns; Band 8 only in 2014",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "We used Bands 3 (100 GHz band), 6 (200 GHz band), and 7 (300 GHz band) for all the campaigns, except for Band 8 (400 GHz band), which was only used in the 2014 campaign."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m antennas only, ten or more per measurement",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "We only used 12 m diameter antenna data and did not use data taken with 7 m diameter antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "longest 2 km (2012), 3 km (2013), 10-15 km (2014)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "starting from the longest baseline length of 600 m in 2010 and 2011, 2 km in 2012, 3 km in 2013, and finally $10-15$ km in 2014"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "10-40 min per stare, ~1 s integration",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "for tens of minutes (usually $10-40$ minutes, depending on the longest baseline length) with $\\sim1$ s integration time per data point"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012-2014 campaigns (Tables 3-5)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "measured between 2012 and 2014 of Atacama Large Millimeter/submillimeter Array (ALMA) long baseline campaigns"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Typical system temperatures per ALMA band used for thermal phase noise estimate",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "assume the source flux density is 1 Jy and the system temperature is a typical value for each ALMA Band (cite: rem15)"
+       }
+      ]
+     },
+     "citation": "(cite: rem15)"
+    },
+    {
+     "what": {
+      "value": "Site-testing radio seeing monitor 50% quartile slope 0.63 for comparison",
+      "evidence": [
+       {
+        "loc": "3.2.2 Slopes for the Spatial Structure Functions",
+        "quote": "consistent with the 50% quartile slope for the 3-year (1996 July – 1999 March) statistical data using the site testing 11.2 GHz radio seeing monitor of 0.63 (cite: but01)"
+       }
+      ]
+     },
+     "citation": "(cite: but01)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA standard ALMA calibration prescription; WVR correction with wvrgcal",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The data were reduced using the Common Astronomy Software Applications (CASA) package (cite: mcm07), using a standard ALMA calibration prescription."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Data averaged to 10 s to suppress thermal noise",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "After this, we averaged the data points for 10 s to take out phase errors due to thermal noise."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Antenna position error causing linear phase drift, details in earlier paper",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "see (cite: fom15) for details"
+       }
+      ]
+     },
+     "from_reference": "(cite: fom15)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and wvrgcal options",
+    "Exact ALMA project codes per execution block",
+    "How SSF fit ranges and turn-over were selected per dataset",
+    "Fast-switching simulation imaging parameters and self-cal solint",
+    "Coherence-time calculation details beyond 0.9 threshold",
+    "Data likely requires the 2014 long baseline science verification archive data"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Reduce and clean phase data",
+    "method": {
+     "value": "Apply WVR correction, remove linear phase drift, average to 10 s, compute rms phase per baseline as excess path length",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "We then calculated the rms phase fluctuation for each baseline. For the unit of phase, we express in path length."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "wvrgcal"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Thermal phase noise estimated below measured fluctuation at 15 m baselines",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "We can therefore conclude that we successfully suppressed the effect of instrumental noise in our data with 10 s averaging."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "WVR improvement factor",
+    "method": {
+     "value": "Ratio of rms excess path length without to with WVR, averaged over baselines, vs PWV",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The improvement factor of the WVR phase correction method has been calculated as the ratio of the rms excess path length for each baseline without the WVR phase correction to that with the correction."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit spatial structure function slopes and constants",
+    "method": {
+     "value": "Fit log10(dL)=a log10(d)+b for d<500 m and d>1 km",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We first fitted the slopes for the data points with baseline lengths shorter than 500 m and longer than 1 km for each SSF plot"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Linear fit in log-log space",
+     "evidence": [
+      {
+       "loc": "3.2.2 Slopes for the Spatial Structure Functions",
+       "quote": "The fitting function is expressed as $$\\begin{equation} \\log_{10}(\\Delta L) = a \\times \\log_{10}(d) + b,"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with VLA and site-test slopes",
+     "evidence": [
+      {
+       "loc": "3.2.2 Slopes for the Spatial Structure Functions",
+       "quote": "The average slope without the WVR phase correction of $0.65\\pm0.06$ is consistent with the 50% quartile slope for the 3-year (1996 July – 1999 March) statistical data using the site testing 11.2 GHz radio seeing monitor"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Coherence time",
+    "method": {
+     "value": "Median coherence time at >1 km baselines for coherence 0.9, calculation stopped at 400 s",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "Here, we calculate the coherence time that degrades the coherence to 0.9 (i.e., coherence loss of 10%)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fast switching simulation",
+    "method": {
+     "value": "Split 2014 stares into target, calibrator, slew; calibrate, image, compare peak flux with self-calibrated image for cycle times 28, 48, 68 s",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "The coherence of the fast switching method is estimated by calculating the ratio of the peak flux densities between the fast switching simulation image and the self-calibrated one."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Target time 3x calibrator time, 4 s slew",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "we used an integration time for the target of three times the integration time for the calibrator and a slew time of 4 s"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Target and calibrator share identical atmospheric phase",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "since the “target” and the “calibrator” do have the same atmospheric phase fluctuation in this simulation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Linear fits of coherence vs cycle time",
+     "evidence": [
+      {
+       "loc": "3.4 Fast Switching Simulation",
+       "quote": "We also overplotted linear fitting results of coherence as a function of cycle time as solid lines."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data reduction, imaging in fast switching simulation",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The data were reduced using the Common Astronomy Software Applications (CASA) package (cite: mcm07)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "wvrgcal",
+    "version": "not stated",
+    "used_for": {
+     "value": "WVR phase correction and PWV",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The WVR phase correction was applied using the program *wvrgcal* (cite: nik12) installed inside CASA."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Mean WVR improvement factor, all PWV",
+    "value": "2.1",
+    "uncertainty": "0.7",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The mean improvement factor over all PWV conditions is $2.1\\pm0.7$."
+     }
+    ]
+   },
+   {
+    "quantity": "Improvement factor PWV>1 mm",
+    "value": "2.4",
+    "uncertainty": "0.7",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "with a mean improvement factor of $2.4\\pm0.7$"
+     }
+    ]
+   },
+   {
+    "quantity": "Improvement factor PWV<1 mm",
+    "value": "1.7",
+    "uncertainty": "0.4",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "In the case of PWV $<$ 1 mm, however, the ratio is $1.7\\pm0.4$."
+     }
+    ]
+   },
+   {
+    "quantity": "SSF slope <500 m, no WVR",
+    "value": "0.65",
+    "uncertainty": "0.06",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$<500$ m        | $0.65\\pm0.06$"
+     }
+    ]
+   },
+   {
+    "quantity": "SSF slope >1 km, no WVR",
+    "value": "0.22",
+    "uncertainty": "0.15",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "The average slopes are $0.22\\pm0.15$ and $0.29\\pm0.13$ for the data before and after the WVR phase correction"
+     }
+    ]
+   },
+   {
+    "quantity": "SSF slope >1 km, with WVR",
+    "value": "0.29",
+    "uncertainty": "0.13",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "The average slopes are $0.22\\pm0.15$ and $0.29\\pm0.13$ for the data before and after the WVR phase correction"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean rms excess path at 10 km after WVR, PWV<1 mm",
+    "value": "206",
+    "uncertainty": "not stated",
+    "units": "micron",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.4",
+      "quote": "with a mean value of $206~\\mu$m even at PWV $<$ 1 mm"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean coherence time with WVR (0.9 coherence)",
+    "value": "184",
+    "uncertainty": "not stated",
+    "units": "s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "The average of the coherence time after the WVR phase correction is 184 s, about twice longer than that without (101 s)."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean coherence time without WVR",
+    "value": "101",
+    "uncertainty": "not stated",
+    "units": "s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "about twice longer than that without (101 s)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Most SSFs show a turn-over near 1 km, consistent with water vapor scale height; a few lack turn-over, implying a high scale-height constituent (water ice or dry component).",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "this large scale height turbulent constituent is likely to be water ice or a dry component."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does WVR correction reduce phase fluctuation at long baselines?",
+    "experiment": "Improvement factor vs PWV",
+    "result": "Mean factor 2.1, 2.4 for PWV>1 mm",
+    "finding": "WVR works well especially for PWV>1 mm",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The phase correction method using water vapor radiometers (WVRs) works well, especially for the cases where PWV $>1$ mm"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is water vapor the only turbulent constituent?",
+    "experiment": "SSFs with/without WVR, turn-over analysis",
+    "result": "Residual fluctuation remains; some SSFs without turn-over",
+    "finding": "Another high scale height constituent exists",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "phase fluctuations still remain after the WVR phase correction, suggesting the existence of other turbulent constituent"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does fast switching improve coherence?",
+    "experiment": "Simulation with 28, 48, 68 s cycle times",
+    "result": "Coherence decreases almost linearly with cycle time",
+    "finding": "Shorter cycles linearly improve coherence",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with shorter cycle times linearly improving the coherence"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Mountain-induced eddies, liquid water and LLC/correlator instrumental effects rejected as cause of residual phase fluctuation",
+     "evidence": [
+      {
+       "loc": "3.2.5",
+       "quote": "Since we are looking for the cause of the remaining phase fluctuation *after* successful WVR phase correction, liquid water cannot be the cause."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Fast switching simulation is idealized, ignoring target-calibrator separation",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "This simulation is an idealized case"
+      }
+     ]
+    },
+    {
+     "value": "Coherence time underestimated due to 400 s cutoff",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "since our calculation stops at 400 s, the coherence time is underestimated"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Large scatter makes PWV correlations weak",
+    "Turn-over identification is by eye with fixed ranges",
+    "Water ice/dry component attribution is speculative",
+    "Weather parameters not analysed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data acknowledged as ADS/JAO.ALMA#0000.0.00341.CSV",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#0000.0.00341.CSV."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Software versions",
+    "Fit selection criteria",
+    "Fast switching imaging parameters"
+   ],
+   "estimated_data_volume_inferred": "Tens to hundreds of GB (about 60 execution blocks)",
+   "score_inferred": 3,
+   "score_reason": "Execution blocks listed with IDs and methods clear, but versions, fit details and project codes missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data are listed but archive identification and several processing settings are unstated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: nik12)",
+     "why": "wvrgcal WVR correction"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: fom15)",
+     "why": "Overview of 2014 long baseline campaign"
+    },
+    {
+     "citation": "(cite: mat12; mat14; mat16)",
+     "why": "Earlier results replaced by this paper"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA long baseline campaigns 2012-2014"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-337dbd17b62a2c6606d79bb9b57f6121",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:36",
+  "usage": {
+   "input_tokens": 24063,
+   "output_tokens": 5742,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.05338,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 42,
+  "quotes_ok": 42,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00003.E"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 29,
+   "rate": 0.42
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:52",
+  "custom_id": "repair-sonnet-a7fe75b8755e8293e61548b116d93539",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "The fitting function is expressed as $$\\begin{equation} \\log_{10}(\\Delta L) = a \\times \\log_{10}(d) + b,"
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "The average slope without the WVR phase correction of $0.65\\pm0.06$ is consistent with the 50% quartile slope for the 3-year (1996 July – 1999 March) statistical data using the site testing 11.2 GHz radio seeing monitor"
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "We also overplotted linear fitting results of coherence as a function of cycle time as solid lines."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

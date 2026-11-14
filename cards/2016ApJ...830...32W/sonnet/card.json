@@ -1,0 +1,796 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...830...32W",
+  "title": "Measuring Protoplanetary Disk Gas Surface Density Profiles with ALMA",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Williams, Jonathan P.",
+  "n_authors": 2,
+  "arxiv_id": "1606.05646",
+  "doi": "10.3847/0004-637X/830/1/32",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00010.SV"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "The HD 163296 disk",
+    "quote": "early ALMA observations of $^{13}$CO and other lines are publicly available through its Science Verification program"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "HD 163296",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "122 pc",
+      "evidence": [
+       {
+        "loc": "The HD 163296 disk",
+        "quote": "The exceptional disk around the nearby (122 pc) Herbig Ae star HD 163296 is, fortunately, both big and bright."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can gas surface density profiles of protoplanetary disks be measured from 13CO integrated intensity images, and what resolution and sensitivity are needed for T Tauri disks?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We extend the modeling approach presented in (cite: 2014ApJ...788...59W) to show that gas surface density profiles can be measured from high fidelity $^{13}$CO integrated intensity images."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00010.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00010.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "fitting ALMA observations of the HD 163296 disk"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "The same parameters match the C$^{18}$O 2–1 image"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Public ALMA Science Verification data",
+    "evidence": [
+     {
+      "loc": "The HD 163296 disk",
+      "quote": "early ALMA observations of $^{13}$CO and other lines are publicly available through its Science Verification program"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Gas temperature structure T_gas(R,Z) for HD 163296",
+      "evidence": [
+       {
+        "loc": "2.1 Description of the model",
+        "quote": "we use the gas temperature structure, $T_{\\rm gas}(R,Z)$, described in (cite: 2013ApJ...774...16R)"
+       }
+      ]
+     },
+     "citation": "(cite: 2013ApJ...774...16R)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass 2.3 Msun and inclination 45 deg",
+      "evidence": [
+       {
+        "loc": "2.1 Description of the model",
+        "quote": "we set the stellar mass, $2.3\\,M_\\odot$, and inclination, $i=45^\\circ$, based on (cite: 2011ApJ...740...84Q)"
+       }
+      ]
+     },
+     "citation": "(cite: 2011ApJ...740...84Q)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Library of 748 RADMC-3D 13CO 2-1 models for HD 163296; 9900-model T Tauri grid used for simulated observations",
+     "evidence": [
+      {
+       "loc": "2.2 Image interpolation",
+       "quote": "We created an image library by running 748 models over the range of parameters shown in Table [1](#tab:HD163296_grid)."
+      },
+      {
+       "loc": "3.1 Description",
+       "quote": "The resulting image library consists of 9900 models."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Modeling methodology (CO isotopologue abundance, molecular layer, temperature parametrization)",
+      "evidence": [
+       {
+        "loc": "2.1 Description of the model",
+        "quote": "We follow the methodology in Paper I but create a library of resolved images rather than a table of total line luminosities."
+       }
+      ]
+     },
+     "from_reference": "Paper I (cite: 2014ApJ...788...59W)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibration and imaging procedure for the SV data, and how the zero-moment maps were made (channel range, clipping)",
+    "Beam size and noise of the HD 163296 maps",
+    "Fit region and masking, and how the model was convolved",
+    "MCMC settings (walkers, steps, burn-in)",
+    "Disk position angle and distance handling",
+    "T_gas parameters from Rosenfeld et al. used for the model"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Build model image library",
+    "method": {
+     "value": "RADMC-3D 13CO 2-1 radiative transfer of azimuthally symmetric Keplerian disks, grid in Mgas, Rc, gamma",
+     "evidence": [
+      {
+       "loc": "2.1 Description of the model",
+       "quote": "We then calculate the $^{13}$CO 2–1 line emission using the radiative transfer code RADMC-3D."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "CO freeze-out 20 K; dissociation N_H2 > 1.3e21 cm^-2; 12CO/H2 = 1e-4; 12CO/13CO = 70",
+      "evidence": [
+       {
+        "loc": "2.1 Description of the model",
+        "quote": "isotopologue ratio, \\[$^{12}$CO\\]/\\[$^{13}$CO\\]=70."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Hydrostatic equilibrium, Keplerian rotation, azimuthal symmetry",
+      "evidence": [
+       {
+        "loc": "2.1 Description of the model",
+        "quote": "The gas is assumed to be azimuthally symmetric, in hydrostatic equilibrium and under Keplerian rotation."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "LTE vs NLTE differ by <1 mJy km/s per pixel",
+     "evidence": [
+      {
+       "loc": "2.1 Description of the model",
+       "quote": "we compared models with LTE and NLTE excitation and found no substantial difference ($<1$ mJy ${\\rm km~s^{-1}}$ pixel$^{-1}$)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit HD 163296 zero-moment map with MCMC",
+    "method": {
+     "value": "Linear interpolation of image library over parameters, MCMC with flat priors",
+     "evidence": [
+      {
+       "loc": "2.3 Parameter estimation",
+       "quote": "The MCMC modeling was run with a flat prior for each parameter over the range shown in Table [1](#tab:HD163296_grid) using the `emcee` software package"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "emcee, flat priors over grid range; median and 68% intervals",
+     "evidence": [
+      {
+       "loc": "2.3 Parameter estimation",
+       "quote": "from which we calculate median and 68% ($\\pm 1\\sigma$) confidence intervals"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Interpolated images within 3% of full radiative transfer",
+     "evidence": [
+      {
+       "loc": "2.2 Image interpolation",
+       "quote": "we found that interpolated images averaged within 3% of a full radiative transfer calculation."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Test with C18O",
+    "method": {
+     "value": "Rerun RADMC-3D with median parameters, vary only CO/C18O abundance by least squares to the zero-moment map",
+     "evidence": [
+      {
+       "loc": "2.4 Comparison with the C18O image",
+       "quote": "only varied the \\[CO\\]/\\[C$^{18}$O\\] abundance to minimize the least squares difference with the zero-moment map."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "least squares on abundance",
+     "evidence": [
+      {
+       "loc": "Comparison with the C$^{18}$O image",
+       "quote": "only varied the \\[CO\\]/\\[C$^{18}$O\\] abundance to minimize the least squares difference with the zero-moment map."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Peak residuals about 10% of image maximum",
+     "evidence": [
+      {
+       "loc": "2.4 Comparison with the C18O image",
+       "quote": "The fit is very good with peak residuals at about 10% of the image maximum."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Simulate T Tauri observations and assess recoverability",
+    "method": {
+     "value": "Convolve grid images with 0.1-0.4 arcsec beams, add noise 1-30 mJy/beam km/s, KS test against elliptical gaussian fit, then fit with scipy.optimize and compare to inputs",
+     "evidence": [
+      {
+       "loc": "3.3 Accuracy of parameter estimation",
+       "quote": "find the best fit to a given simulated image using the python `scipy.optimize` routine."
+      }
+     ]
+    },
+    "software": [
+     "scipy.optimize"
+    ],
+    "key_parameters": [
+     {
+      "value": "150 pc, 5 au pixels, Mstar 0.5 Msun",
+      "evidence": [
+       {
+        "loc": "3.1 Description",
+        "quote": "for a distance of 150 pc and a pixel scale of 5 au ($0.03\\ensuremath{''}$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "scipy.optimize best fit, no errors estimated",
+     "evidence": [
+      {
+       "loc": "3.3 Accuracy of parameter estimation",
+       "quote": "We do not estimate errors in this case"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Histograms of fitted minus input parameters",
+     "evidence": [
+      {
+       "loc": "Accuracy of parameter estimation",
+       "quote": "plots histograms of the difference between the input and fitted parameters for all disks with mass $M_{\\rm gas}=10^{-2}\\,M_\\odot$"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "13CO and C18O 2-1 radiative transfer",
+     "evidence": [
+      {
+       "loc": "2.1 Description of the model",
+       "quote": "We then calculate the $^{13}$CO 2–1 line emission using the radiative transfer code RADMC-3D."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC parameter estimation",
+     "evidence": [
+      {
+       "loc": "2.3 Parameter estimation",
+       "quote": "using the `emcee` software package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy.optimize",
+    "version": "not stated",
+    "used_for": {
+     "value": "best-fit of simulated images",
+     "evidence": [
+      {
+       "loc": "3.3 Accuracy of parameter estimation",
+       "quote": "using the python `scipy.optimize` routine"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Python astronomy tools acknowledged",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "We thank the community developers of the Python packages for Astronomy in Astropy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "HD 163296 gas mass",
+    "value": "0.048",
+    "uncertainty": "+0.003/-0.003",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.3 Parameter estimation",
+      "quote": "$M_{\\rm gas}=0.048^{+0.003}_{-0.003}\\,M_\\odot,"
+     }
+    ]
+   },
+   {
+    "quantity": "Characteristic radius Rc",
+    "value": "213",
+    "uncertainty": "+7/-7",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.3 Parameter estimation",
+      "quote": "R_c=213^{+7}_{-7}\\,{\\rm AU},"
+     }
+    ]
+   },
+   {
+    "quantity": "Gradient gamma",
+    "value": "0.39",
+    "uncertainty": "+0.09/-0.08",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.3 Parameter estimation",
+      "quote": "\\gamma=0.39^{+0.09}_{-0.08}$."
+     }
+    ]
+   },
+   {
+    "quantity": "[CO]/[C18O] abundance ratio",
+    "value": "700",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.4 Comparison with the C18O image",
+      "quote": "The inferred abundance ratio is \\[CO\\]/\\[C$^{18}$O\\]=700"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual standard deviation",
+    "value": "27",
+    "uncertainty": "not stated",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.3 Parameter estimation",
+      "quote": "consistent with a gaussian with standard deviation 27 mJy ${\\rm km~s^{-1}}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Fits to 12CO 3-2 by earlier work give higher central densities, steeper profiles and smaller outer radii than the 13CO fit",
+    "evidence": [
+     {
+      "loc": "2.3 Parameter estimation",
+      "quote": "Both find higher central densities, steeper profiles, and smaller outer disk radii than our fits to $^{13}$CO."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas surface density profile parameters can be fit from a 13CO zero-moment map",
+    "experiment": "MCMC fit of image library to HD 163296 ALMA SV data",
+    "result": "Mgas=0.048 Msun, Rc=213 au, gamma=0.39 with a good fit",
+    "finding": "The method works for a bright disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "2.3 Parameter estimation",
+      "quote": "Given the simplicity of the model, the overall fit is good with peak residuals less than 10% of the image maximum"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The same parameters reproduce the C18O image",
+    "experiment": "Vary only the CO/C18O ratio",
+    "result": "Ratio 700, no obvious systematics",
+    "finding": "Abundance is not strongly radius dependent",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "2.4 Comparison with the C18O image",
+      "quote": "there are no obvious systematics in the difference image suggesting that the abundance does not greatly vary with disk radius."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Profiles of T Tauri disks can be measured economically",
+    "experiment": "Fit simulated 13CO images across beams and noise levels",
+    "result": "Rc within about 10 au and gamma within about 0.2 at 0.2-0.3 arcsec",
+    "finding": "Surveys are feasible with ~20 minute integrations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Accuracy of parameter estimation",
+      "quote": "we find that we can measure the disk size and gradient parameters to within about $\\Delta R_c = 10$ au, $\\Delta\\gamma = 0.2$."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "MCMC is too slow with direct radiative transfer, so images are interpolated; zero-moment maps suffice because Keplerian rotation separates regions",
+    "evidence": [
+     {
+      "loc": "2.1 Description of the model",
+      "quote": "we found that it is not necessary to make tomographic comparisons of channel maps to discriminate between models and that velocity integrated (zero-moment) maps suffice."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small errors reflect the rigid imposed temperature structure; allowing it to vary would increase errors",
+     "evidence": [
+      {
+       "loc": "2.3 Parameter estimation",
+       "quote": "The apparently high precision obtained here reflects the rigidity of the temperature structure imposed in our models"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Temperature structure, inclination and stellar mass are fixed, so errors are underestimated",
+    "Fit differs from 12CO-based profiles",
+    "CO abundance assumed constant at 1e-4",
+    "Simulated survey uses idealized noise and circular beams, not uv-plane noise"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public SV data",
+    "evidence": [
+     {
+      "loc": "The HD 163296 disk",
+      "quote": "early ALMA observations of $^{13}$CO and other lines are publicly available through its Science Verification program"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Moment-map construction and noise",
+    "Temperature structure parameters",
+    "MCMC configuration",
+    "Library and code not released"
+   ],
+   "estimated_data_volume_inferred": "~ a few GB (single SV dataset)",
+   "score_inferred": 3,
+   "score_reason": "Model and grid are described but the data reduction and fit details are missing and no code is released.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data are public, but the moment map construction, temperature model and MCMC setup are not fully specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2014ApJ...788...59W)",
+     "why": "Original modeling methodology (Paper I)"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2016arXiv160405719A)",
+     "why": "ALMA Lupus gas mass survey"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Science Verification HD 163296",
+    "ALMA Lupus survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c3dba964d46486c565fadeb1be9d9ffb",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:45",
+  "usage": {
+   "input_tokens": 13638,
+   "output_tokens": 5608,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042285,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 42,
+  "quotes_ok": 42,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 29,
+   "rate": 0.426
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:08:21",
+  "custom_id": "repair-sonnet-2ebbaed1f5e087266c96e02832b656df",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "only varied the \\[CO\\]/\\[C$^{18}$O\\] abundance to minimize the least squares difference with the zero-moment map."
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "plots histograms of the difference between the input and fitted parameters for all disks with mass $M_{\\rm gas}=10^{-2}\\,M_\\odot$"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

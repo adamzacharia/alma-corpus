@@ -1,0 +1,396 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "Observations", "quote": "These are the same data used in (cite: El-Abd:2019:129) but have since been reprocessed with the ALMA Cycle 8 pipeline"},
+{"loc": "abstract", "quote": "In this proof-of-concept work, we provide an overview of the fitting routine and apply it to"}
+],
+"fields": ["astrochemistry", "star_formation", "milky_way_ism"],
+"question": {"value": "Can an automated per-pixel spectral fitting routine (molsim-based) map excitation temperature, linewidth, velocity and column densities of 21 molecules across NGC 6334I MM1 and MM2, and do the isomer column-density trends of earlier work hold with the larger sample?",
+"evidence": [
+{"loc": "abstract", "quote": "We have developed an automated fitting routine that visits every pixel in the field of view of an ALMA data cube and determines the best-fit physical parameters, including excitation temperature and column densities, for a given list of molecules."},
+{"loc": "Collating the Column Density Results", "quote": "Reproducing such a plot with the plethora of new data points we have produced in this work would serve as an excellent indicator of whether the bimodal trend previously observed was due to the small sample size"}
+]},
+"targets": [
+{"name": "NGC 6334I (MM1 and MM2)",
+"details": [
+{"loc": "Observations", "quote": "The observations were centered at $\\alpha$(J2000) = 17$^h$:20$^m$:53$^s$.36, $\\delta$(J2000) = -35$^\\circ$:47$^\\prime$:00$^{\\prime\\prime}$.0"},
+{"loc": "Test Case: NGC 6334I", "quote": "At a distance of 1.3 kpc (cite: Reid2014; Chibueze2014)"}
+],
+"coordinates": "alpha(J2000) = 17h20m53.36s, delta(J2000) = -35d47m00.0s (observation phase center)",
+"redshift_or_distance": "1.3 kpc",
+"distance_source": "Reid2014; Chibueze2014"}
+],
+"alma_project_codes": [
+{"code": "2015.A.00022.T", "evidence": [
+{"loc": "Observations", "quote": "The ALMA data toward NGC 6334I used for this study were observed during Cycle 3 in 2016, under project code 2015.A.00022.T."},
+{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: #2015.A.00022.T."}
+]}
+],
+"data_settings": [
+{"field": "observing_dates", "value": "Cycle 3, 2016", "evidence": [
+{"loc": "Observations", "quote": "The ALMA data toward NGC 6334I used for this study were observed during Cycle 3 in 2016, under project code 2015.A.00022.T."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Two tunings, four spectral windows each, 1.87 GHz per pair of windows; centers 280.1, 282.0, 292.1, 294.0 GHz and 337.1, 339.0, 349.1, 351.0 GHz; channel width 976.6 kHz (cubes at 1.1 km/s); 7.48 GHz total, 280-351 GHz", "evidence": [
+{"loc": "Observations", "quote": "The observations consisted of two tunings, each with four spectral windows, with a bandwidth of 1.87 GHz per pair of windows."},
+{"loc": "Observations", "quote": "The first set of spectral windows were centered at 280.1, 282.0, 292.1, and 294.0 GHz."},
+{"loc": "Observations", "quote": "The second set of spectral windows were centered at 337.1, 339.0, 349.1, and 351.0 GHz."},
+{"loc": "Observations", "quote": "producing a channel width of 976.6 kHz"}
+]},
+{"field": "angular_resolution", "value": "smoothed to a uniform circular 0.26 arcsec", "evidence": [
+{"loc": "Observations", "quote": "The cubes were smoothed to a uniform circular angular resolution of $0.26\\ensuremath{''}$ before analysis"}
+]},
+{"field": "sensitivity", "value": "rms per channel 1.8 mJy/beam (lower tuning), 3.0 mJy/beam (upper tuning)", "evidence": [
+{"loc": "Observations", "quote": "with an rms noise per channel of 1.8 mJy beam$^{-1}$ for the lower tuning and 3.0 mJy beam$^{-1}$ for the upper tuning."}
+]}
+],
+"lines_targeted": [
+{"species": "21 molecules fitted over the full band (including methanol, methyl cyanide, formamide, methyl formate, glycolaldehyde, acetic acid and 13C isotopologues; full list in a garbled table)", "transition": "all transitions in the catalogs within 280-351 GHz", "rest_frequency": "not stated", "evidence": [
+{"loc": "Molecules Included in the Model", "quote": "a best-fit synthetic emission model containing rotational spectra from 21 different molecules"},
+{"loc": "Column Densities", "quote": "we will primarily be focusing on images for the three isomers: methyl formate, glycolaldehyde, and acetic acid"}
+]},
+{"species": "CS", "transition": "J=6-5", "rest_frequency": "not stated", "evidence": [
+{"loc": "Observations", "quote": "the most affected transition, CS (J=6-5)"}
+]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Rotational line catalogs (frequencies, upper-state energies, partition functions) from CDMS and JPL", "evidence": [
+{"loc": "Table 1", "quote": "The catalogs were obtained from both the CDMS (cite: Muller:2005:215) and JPL (cite: Pickett:1998:883) spectroscopic databases."}
+]}, "citation": "Muller:2005:215; Pickett:1998:883"},
+{"what": {"value": "Absolute flux calibration uncertainty of 10%", "evidence": [
+{"loc": "Excitation Temperature", "quote": "An additional factor of 10% of the final fitted value was added in quadrature with the final rms noise value to account for the absolute flux calibration uncertainty (cite: CortesPaulo:2023:)."}
+]}, "citation": "CortesPaulo:2023:"},
+{"what": {"value": "Source distance 1.3 kpc", "evidence": [
+{"loc": "Test Case: NGC 6334I", "quote": "At a distance of 1.3 kpc (cite: Reid2014; Chibueze2014)"}
+]}, "citation": "Reid2014; Chibueze2014"},
+{"what": {"value": "Previous isomer column densities / abundance trends for NGC 6334I and other star-forming regions used for comparison", "evidence": [
+{"loc": "Previous Findings", "quote": "the relative abundances of the three molecules were compared across select locations toward both MM1 and MM2 along with measurements for other star-forming regions that were found in the literature"}
+]}, "citation": "El-Abd:2019:129"}
+],
+"simulations_or_models_as_data": [
+{"value": "molsim forward-modeled synthetic spectra (LTE, shared Tex, linewidth, velocity per pixel) fitted to the observed cubes", "evidence": [
+{"loc": "Technique", "quote": "we derive values for excitation temperature ($T_{ex}$), linewidth ($\\Delta V$), velocity ($v_{LSR}$), and column density ($N_T$) by forward-modeling the spectra of each species"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "reprocessed with the ALMA Cycle 8 pipeline to correct the spectral renormalization issue", "evidence": [
+{"loc": "Observations", "quote": "have since been reprocessed with the ALMA Cycle 8 pipeline (cite: Hunter2023) to account for an ALMA renormalization issue"}
+]},
+{"field": "self_calibration", "value": "self-calibrated on the bright continuum; solutions also applied to continuum-subtracted line data", "evidence": [
+{"loc": "Observations", "quote": "The data were self-calibrated using the bright continuum emission, and the solutions were also applied to the continuum-subtracted line data"}
+]},
+{"field": "flux_scale_uncertainty", "value": "10% absolute flux calibration uncertainty added in quadrature", "evidence": [
+{"loc": "Excitation Temperature", "quote": "An additional factor of 10% of the final fitted value was added in quadrature with the final rms noise value to account for the absolute flux calibration uncertainty (cite: CortesPaulo:2023:)."}
+]}
+],
+"imaging": [
+{"field": "weighting_robust", "value": "robust = 0.2 (lower tuning), 0.5 (higher tuning)", "evidence": [
+{"loc": "Observations", "quote": "using `robust` image weighting values of 0.2 and 0.5 for the lower and higher frequency tunings, respectively"}
+]},
+{"field": "cell_size", "value": "beam oversampled by a factor of 5 relative to the minor axis", "evidence": [
+{"loc": "Observations", "quote": "the beam was oversampled by a factor of 5 relative to the minor axis of the synthesized beam"}
+]},
+{"field": "continuum_subtraction", "value": "as described in Brogan et al. 2018", "evidence": [
+{"loc": "Observations", "quote": "the continuum subtraction was performed as described in (cite: Brogan:2018:87)"}
+]},
+{"field": "primary_beam_correction", "value": "images corrected for the primary beam response", "evidence": [
+{"loc": "Observations", "quote": "the images were corrected for the primary beam response"}
+]},
+{"field": "smoothing", "value": "smoothed to uniform circular beam of 0.26 arcsec", "evidence": [
+{"loc": "Observations", "quote": "The cubes were smoothed to a uniform circular angular resolution of $0.26\\ensuremath{''}$ before analysis"}
+]},
+{"field": "final_rms", "value": "1.8 mJy/beam per channel (lower tuning), 3.0 mJy/beam (upper tuning)", "evidence": [
+{"loc": "Observations", "quote": "with an rms noise per channel of 1.8 mJy beam$^{-1}$ for the lower tuning and 3.0 mJy beam$^{-1}$ for the upper tuning."}
+]}
+],
+"inherited": [
+{"what": {"value": "Data are the same as in El-Abd et al. 2019 (reprocessed)", "evidence": [
+{"loc": "Observations", "quote": "These are the same data used in (cite: El-Abd:2019:129)"}
+]}, "from_reference": "El-Abd:2019:129"},
+{"what": {"value": "Continuum subtraction method", "evidence": [
+{"loc": "Observations", "quote": "the continuum subtraction was performed as described in (cite: Brogan:2018:87)"}
+]}, "from_reference": "Brogan:2018:87"},
+{"what": {"value": "Further data processing details", "evidence": [
+{"loc": "Observations", "quote": "Further data processing details are given in (cite: McGuire:2017:L46), (cite: Hunter:2017:L29), and (cite: Brogan:2018:87)."}
+]}, "from_reference": "McGuire:2017:L46; Hunter:2017:L29; Brogan:2018:87"},
+{"what": {"value": "Starting molecule list taken from earlier model", "evidence": [
+{"loc": "Molecules Included in the Model", "quote": "the molecules included in the models of (cite: El-Abd:2019:129) served as the starting point"}
+]}, "from_reference": "El-Abd:2019:129"},
+{"what": {"value": "Excitation temperature formalism for optically thick lines", "evidence": [
+{"loc": "Technique", "quote": "we can directly solve for the excitation temperature adopting the formalism of (cite: Turner:1991:617)"}
+]}, "from_reference": "Turner:1991:617"},
+{"what": {"value": "Column density equation for an optically thin transition", "evidence": [
+{"loc": "Column Density", "quote": "The column density can be related to the intensity of a single optically thin transition with the following equation (cite: Hollis:2004:L45)"}
+]}, "from_reference": "Hollis:2004:L45"},
+{"what": {"value": "Velocity uncertainty approximation for a Gaussian centre", "evidence": [
+{"loc": "$V_{LSR}$", "quote": "The uncertainty in the central value of a Gaussian can be approximated with the following equation (cite: Campbell:2018:)"}
+]}, "from_reference": "Campbell:2018:"}
+],
+"unstated_but_needed": [
+"CASA and ALMA pipeline version numbers and the exact imaging task, image size and cell size",
+"Self-calibration solution intervals, number of rounds and reference antennas",
+"Line-free channels used for continuum subtraction (deferred to Brogan et al. 2018)",
+"The complete list of the 21 molecules and vibrational states with partition functions (Table 1 is garbled in the text), and the actual E_up exclusion threshold values",
+"Initial column density value, absolute bounds on Tex/column density, and the minimizer tolerances for the bounded L-BFGS fit",
+"The peak-finding algorithm and histogram binning used for the linewidth estimate",
+"Whether the fitting code (beyond molsim) is released; pixel start positions for MM1 and MM2",
+"Whether the ALMA data are public and which product (calibrated MS or reprocessed cubes) to start from"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Prepare calibrated, smoothed cubes",
+"method": {"value": "Reprocess with ALMA Cycle 8 pipeline, self-calibrate on continuum, image with CASA, continuum-subtract, primary-beam correct and smooth to a common 0.26 arcsec beam", "evidence": [
+{"loc": "Observations", "quote": "have since been reprocessed with the ALMA Cycle 8 pipeline (cite: Hunter2023) to account for an ALMA renormalization issue"},
+{"loc": "Observations", "quote": "The cubes were smoothed to a uniform circular angular resolution of $0.26\\ensuremath{''}$ before analysis"}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "robust = 0.2 (lower tuning) and 0.5 (higher tuning); channel width 1.1 km/s", "evidence": [
+{"loc": "Observations", "quote": "using `robust` image weighting values of 0.2 and 0.5 for the lower and higher frequency tunings, respectively"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Measure background temperature and excitation temperature per pixel",
+"method": {"value": "Assume the brightest lines are optically thick and solve for Tex from the mean intensity of channels near peak intensity, using the background temperature from the continuum image of each spectral window", "evidence": [
+{"loc": "Technique", "quote": "The excitation temperature is measured by assuming the brightest lines in our spectral range are optically thick"},
+{"loc": "Technique", "quote": "the background temperature (measured from the continuum image of each spectral window)"}
+]},
+"software": ["molsim"],
+"key_parameters": [],
+"assumptions": [
+{"value": "Source fills the beam; brightest lines optically thick; LTE", "evidence": [
+{"loc": "Technique", "quote": "where the source is assumed to fill the beam"},
+{"loc": "Introduction", "quote": "(assuming local thermodynamic equilibrium)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Tex from optically thick lines gives fits to optically thin lines within expected uncertainties", "evidence": [
+{"loc": "Technique", "quote": "indeed find that the excitation temperatures derived from our optically thick lines result in fits to the optically thin lines well within expected uncertainties"}
+]}},
+{"order": 3, "goal": "Measure linewidth per pixel",
+"method": {"value": "Peak-finding over the full band, Gaussian fit to each peak, histogram of FWHMs fitted with a Gaussian whose centre is the pixel linewidth", "evidence": [
+{"loc": "Technique", "quote": "Another Gaussian is fit to the histogram itself, with the central value of this final Gaussian adopted as the canonical linewidth for the pixel in question."}
+]},
+"software": ["lmfit"],
+"key_parameters": [
+{"value": "peaks below 10 sigma excluded", "evidence": [
+{"loc": "Technique", "quote": "excluding any peaks below $10\\sigma$"}
+]}
+],
+"assumptions": [
+{"value": "All molecules share a single Tex, linewidth and velocity per pixel; column density varies per molecule", "evidence": [
+{"loc": "Technique", "quote": "we made the assumption that all of the molecules in the model share a single excitation temperature, linewidth, and velocity for each pixel while we allow the column density to vary on a molecule-by-molecule basis."}
+]}
+],
+"fitting": {"value": "Gaussian fits (lmfit) to line peaks and to the FWHM histogram", "evidence": [
+{"loc": "Linewidth", "quote": "taken directly from the uncertainty automatically calculated by the `lmfit` package used for the Gaussian fit to the histogram"}
+]},
+"validation": {"value": "Visual inspection of fits and residuals", "evidence": [
+{"loc": "Technique", "quote": "Visual inspection of the fits and examination of residuals in numerous spectra show that the values extracted from this procedure indeed robustly describe the vast majority of spectral lines."}
+]}},
+{"order": 4, "goal": "Exclude problematic channels",
+"method": {"value": "Mask channels contaminated by low-E_up transitions of methyl cyanide and formamide (threshold tied to local background temperature), by all methanol vt=0,1 transitions, and by molecules with few unblended lines", "evidence": [
+{"loc": "Exclusion of Channels", "quote": "The exclusion threshold is dependent on the mean background temperature at that pixel (measured for each of four spectral windows)"},
+{"loc": "Exclusion of Channels", "quote": "All of the $v_t = 0,1$ transitions were used to exclude channels from the observations as above regardless of their upper state energy."}
+]},
+"software": ["molsim"],
+"key_parameters": [
+{"value": "methanol fitted only with vt = 2 transitions", "evidence": [
+{"loc": "Exclusion of Channels", "quote": "splitting the catalog into separate vibrational states such that we only attempted to fit the $v_t = 2$ transitions"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Fit velocity and column densities pixel by pixel",
+"method": {"value": "Least-squares fit of the combined synthetic spectra; start at one pixel with all molecules at the same column density, then step north up the column, then launch parallel row scripts using the previous pixel as the starting point", "evidence": [
+{"loc": "Technique", "quote": "the fitting itself begins with a single pixel on the image with every molecule initialized to the same column density."},
+{"loc": "Technique", "quote": "Scripts are then launched in parallel that each use one of the pixels in this first column as a starting point and then moves across the rest of the corresponding row in the image."}
+]},
+"software": ["molsim", "scipy"],
+"key_parameters": [
+{"value": "velocity bound +/-1.0 km/s and column density bound +/-0.4 dex around the previous pixel's fit", "evidence": [
+{"loc": "Technique", "quote": "the velocity was allowed to vary by $\\pm$ 1.0 km s$^{-1}$ from pixel-to-pixel, while the column density for each molecule was allowed to vary by $\\pm$ 0.4 dex"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Bounded limited-memory BFGS least-squares minimizer; no priors", "evidence": [
+{"loc": "Technique", "quote": "specifically, the bounded limited-memory BFGS algorithm (cite: Zhu:1997:550)"}
+]},
+"validation": {"value": "Rerun excluding poorly constrained molecules gave well-matched parameters for the rest; MM1C pixel block masked as a poor fit", "evidence": [
+{"loc": "Molecules Included in the Model", "quote": "we conducted another run of the fitting routine that was identical in every way except for the exclusion of these molecules."},
+{"loc": "Identifying Areas of Concern", "quote": "we decided to mask the region in its entirety for the column density maps"}
+]}},
+{"order": 6, "goal": "Propagate uncertainties",
+"method": {"value": "Propagate rms and flux calibration uncertainty for Tex, lmfit uncertainty for linewidth, centroid formula for VLSR, intensity-weighted mean over optically thin transitions for column density", "evidence": [
+{"loc": "Uncertainties", "quote": "The uncertainties in the values produced by the fitting are estimated through the propagation of uncertainties in the fundamental measurements with the exception of the linewidth"}
+]},
+"software": ["lmfit"],
+"key_parameters": [
+{"value": "10% flux calibration uncertainty added in quadrature", "evidence": [
+{"loc": "Excitation Temperature", "quote": "An additional factor of 10% of the final fitted value was added in quadrature with the final rms noise value to account for the absolute flux calibration uncertainty (cite: CortesPaulo:2023:)."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 7, "goal": "Mask, map ratios and compare with literature trends and moment maps",
+"method": {"value": "Mask pixels with fewer than 3 transitions above 5x rms; build isomer column-density ratio maps and scatter plots (also coloured by Tex); compare column density and velocity images with moment 0 and 1 maps of 13-methyl formate", "evidence": [
+{"loc": "Column Densities", "quote": "any pixel with less than 3 transitions with intensities greater than 5x the rms noise was masked"},
+{"loc": "Comparison with Traditional Moment Maps", "quote": "The comparison of the two methods in this work was conducted with 13-methyl formate."}
+]},
+"software": ["Astropy", "APLpy"],
+"key_parameters": [],
+"assumptions": [
+{"value": "13C isotopologue of methyl formate used because the standard isotopologue is too optically thick", "evidence": [
+{"loc": "Collating the Column Density Results", "quote": "we are instead using the $^{13}$C isotopologue of methyl formate for this work, as the standard isotopologue was too optically thick for many of the positions in our field of view."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with El-Abd et al. 2019 trends", "evidence": [
+{"loc": "Collating the Column Density Results", "quote": "the conclusions of (cite: El-Abd:2019:129) would appear to be upheld"}
+]}}
+],
+"software": [
+{"name": "molsim", "version": "not stated", "used_for": {"value": "Forward-modeling synthetic rotational spectra of molecules for the per-pixel fit", "evidence": [
+{"loc": "Technique", "quote": "`molsim` is a publicly-available Python package tailored for the analysis of high spectral resolution spectroscopic observations of astronomical sources."}
+]}},
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Imaging of the cubes", "evidence": [
+{"loc": "Observations", "quote": "the images were created with CASA (cite: CASA2022)"}
+]}},
+{"name": "lmfit", "version": "not stated", "used_for": {"value": "Gaussian fit to the linewidth histogram and its uncertainty", "evidence": [
+{"loc": "Linewidth", "quote": "taken directly from the uncertainty automatically calculated by the `lmfit` package used for the Gaussian fit to the histogram"}
+]}},
+{"name": "scipy", "version": "not stated", "used_for": {"value": "Listed in the software section; use not otherwise stated", "evidence": [
+{"loc": "Software", "quote": "lmfit (cite: Newville:2014:), molsim (cite: Lee:2023:), scipy (cite: Gommers:2023:)"}
+]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Listed in the software section and acknowledgments; use not otherwise stated", "evidence": [
+{"loc": "Acknowledgments", "quote": "Astropy, a community-developed core Python package for Astronomy (cite: AstropyCollaboration:2022:167)"}
+]}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "Plotting of images", "evidence": [
+{"loc": "Acknowledgments", "quote": "APLpy, an open-source plotting package for Python (cite: aplpy2012)"}
+]}},
+{"name": "Jupyter", "version": "not stated", "used_for": {"value": "Listed in the software section; use not otherwise stated", "evidence": [
+{"loc": "Software", "quote": "Jupyter (cite: Kluyver:2016:87)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Number of molecules fitted", "value": "21", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "abstract", "quote": "Parameters were found for 21 distinct molecules by generating synthetic spectra across 7.48 GHz of spectral bandwidth between 280 and 351 GHz."}
+]},
+{"quantity": "Spectral bandwidth fitted", "value": "7.48", "uncertainty": "not stated", "units": "GHz", "from_step": 5, "evidence": [
+{"loc": "abstract", "quote": "Parameters were found for 21 distinct molecules by generating synthetic spectra across 7.48 GHz of spectral bandwidth between 280 and 351 GHz."}
+]},
+{"quantity": "Number of fitted pixels", "value": ">8000", "uncertainty": "not stated", "units": "pixels", "from_step": 5, "evidence": [
+{"loc": "abstract", "quote": "Spatial images of the derived parameters for each of the $>8000$ pixels are presented"}
+]},
+{"quantity": "Continuum peak brightness temperature MM1 (350 GHz)", "value": "222", "uncertainty": "not stated", "units": "K", "from_step": 1, "evidence": [
+{"loc": "Test Case: NGC 6334I", "quote": "MM2 (129 K continuum peak at 350 GHz) is a source with significantly lower brightness temperature than MM1 (222 K continuum peak)"}
+]},
+{"quantity": "Continuum peak brightness temperature MM2 (350 GHz)", "value": "129", "uncertainty": "not stated", "units": "K", "from_step": 1, "evidence": [
+{"loc": "Test Case: NGC 6334I", "quote": "MM2 (129 K continuum peak at 350 GHz) is a source with significantly lower brightness temperature than MM1 (222 K continuum peak)"}
+]},
+{"quantity": "Flux-scaling correction from reprocessing, CS (J=6-5)", "value": "of order 10%", "uncertainty": "not stated", "units": "percent", "from_step": 1, "evidence": [
+{"loc": "Observations", "quote": "these corrections were found to be of order 10% for the most affected transition, CS (J=6-5)"}
+]},
+{"quantity": "Rms noise per channel, lower tuning", "value": "1.8", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 1, "evidence": [
+{"loc": "Observations", "quote": "with an rms noise per channel of 1.8 mJy beam$^{-1}$ for the lower tuning and 3.0 mJy beam$^{-1}$ for the upper tuning."}
+]},
+{"quantity": "Rms noise per channel, upper tuning", "value": "3.0", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 1, "evidence": [
+{"loc": "Observations", "quote": "with an rms noise per channel of 1.8 mJy beam$^{-1}$ for the lower tuning and 3.0 mJy beam$^{-1}$ for the upper tuning."}
+]},
+{"quantity": "Moment 1 versus fitted velocity divergence around MM1F", "value": "several", "uncertainty": "not stated", "units": "km/s", "from_step": 7, "evidence": [
+{"loc": "Comparison in MM1", "quote": "with the greatest divergence occurring around MM1F on the order of several kilometers per second"}
+]}
+],
+"findings_qualitative": [
+{"value": "In MM1 the excitation temperature tracks the continuum, and linewidth broadening is seen to the north and south, consistent with the N-S outflow", "evidence": [
+{"loc": "The Shared Parameters - $T_{ex}$, $\\Delta V$, and $V_{LSR}$", "quote": "In MM1, the excitation temperature tracks rather well with the continuum emission with little to no variation otherwise."},
+{"loc": "The Shared Parameters - $T_{ex}$, $\\Delta V$, and $V_{LSR}$", "quote": "This broadening is consistent with our understanding of the kinematics of MM1"}
+]},
+{"value": "Glycolaldehyde is relatively depleted toward the continuum peak (possibly an optical-depth underestimate), while its ratio with acetic acid is remarkably constant", "evidence": [
+{"loc": "Column Density Ratios", "quote": "The stand-out feature is the relative depletion of glycolaldehyde towards the continuum peak"},
+{"loc": "Column Density Ratios", "quote": "The ratio with acetic acid, on the other hand, is remarkably constant over the field of view."}
+]},
+{"value": "Glycolaldehyde column densities in MM2 should be treated as upper limits", "evidence": [
+{"loc": "MM2 Results", "quote": "The presented column densities for glycolaldehyde in MM2 should be treated as upper limits."}
+]}
+],
+"claims": [
+{"hypothesis": "An automated per-pixel spectral fit can characterize physical conditions and molecular column densities across NGC 6334I-MM1 and MM2", "experiment": "Per-pixel molsim-based fit of 21 molecules over 7.48 GHz of ALMA data", "result": "Maps of Tex, linewidth, velocity and column densities for more than 8000 pixels", "finding": "The automated approach is feasible for this complex source", "support": "supported", "evidence": [
+{"loc": "Conclusions", "quote": "we have demonstrated the feasibility of an automated approach to the measurement of the physical conditions and molecular column densities in NGC 6334I-MM1 and -MM2."}
+]},
+{"hypothesis": "The bimodal isomer trends seen in El-Abd et al. 2019 persist with a much larger sample of pixels", "experiment": "Scatter plots of 13-methyl formate against acetic acid and glycolaldehyde column densities, colored by source and Tex", "result": "Trends broadened with several regimes; acetic acid forms a single trend across MM1 and MM2, glycolaldehyde two separate trends", "finding": "Conclusions of the earlier work are upheld", "support": "supported", "evidence": [
+{"loc": "Collating the Column Density Results", "quote": "while there still appears to be two wholly separate trends in the production of glycolaldehyde relative to 13-methyl formate between the two sources"}
+]},
+{"hypothesis": "Fitted velocity images are more reliable than moment 1 maps of a single transition", "experiment": "Compared velocity image with moment 1 map of 13-methyl formate in MM1 and MM2", "result": "Divergences of several km/s around MM1F and toward the warmer region in MM2", "finding": "The fitting routine more accurately represents the emission velocity", "support": "supported", "evidence": [
+{"loc": "Conclusions", "quote": "In comparing the moment 1 map and velocity image the fitting routine more accurately represented the velocity of the emission."}
+]},
+{"hypothesis": "Moment 0 maps are a good proxy for molecular column density", "experiment": "Compared integrated-intensity maps with fitted column-density images of 13-methyl formate", "result": "Dips in integrated intensity in MM1 due to high optical depth; better agreement in lower-opacity MM2", "finding": "Moment 0 maps are shortcomings-prone proxies for column density", "support": "refuted", "evidence": [
+{"loc": "Conclusions", "quote": "Comparing the moment 0 maps and column density images demonstrated shortcomings in attempting to use the moment 0 map as a proxy for the column density."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "NGC 6334I hosts two line-rich hot cores with distinct conditions, a challenging test case", "evidence": [
+{"loc": "Introduction", "quote": "This massive Galactic protocluster hosts two extremely rich hot core line sources, each with distinct physical conditions and kinematics"}
+]},
+{"field": "why_this_method", "value": "Independent per-pixel Tex and linewidth measurements, since a full minimizer fit failed in bright-continuum and absorption pixels", "evidence": [
+{"loc": "Technique", "quote": "we found that it would be better to make independent measurements of the excitation temperature and linewidth for each pixel and rely on the minimizer to fit the velocity and column densities"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Fitting all parameters (including Tex and linewidth) with the minimizer gave unsatisfactory results in pixels with bright continuum or absorption", "evidence": [
+{"loc": "Technique", "quote": "we were left with less than satisfactory results in pixels that had a particularly bright continuum or showed substantial absorption signals"}
+]},
+{"value": "Poorly constrained molecules dropped from later runs because they raised computation time", "evidence": [
+{"loc": "Molecules Included in the Model", "quote": "we continued to exclude these molecules from future runs of the fitting routine as their inclusion drastically increased the required computation time"}
+]}
+],
+"limitations_admitted": [
+{"value": "Per-pixel fit parameters are not claimed to be as accurate as manual fits of individual pixels", "evidence": [
+{"loc": "Introduction", "quote": "we are not claiming that the final fit parameters for each pixel are necessarily as accurate as those that would be derived were one to manually fit each of the molecules by hand in one of the pixels."}
+]},
+{"value": "A single Tex per pixel is required because molsim cannot do multi-temperature radiative transfer", "evidence": [
+{"loc": "Technique", "quote": "a full radiative transfer analysis would be needed in order to simulate contributions from molecules at more than one excitation temperature, which is not possible in the current version of `molsim`."}
+]},
+{"value": "A poor fit in one pixel can affect the next; MM1C block masked", "evidence": [
+{"loc": "Technique", "quote": "a poor fit in one pixel has the potential to adversely affect the fit in the subsequent pixel"}
+]}
+],
+"referee_caveats_inferred": [
+"Fits are initialised and bounded from the previous pixel, so results depend on the path through the image and on the starting pixel",
+"A single Tex shared by all molecules and optically thick Tex estimate may bias column densities of species with different emitting regions",
+"No independent validation against manual spectral fits is given beyond visual inspection",
+"Fitting code and exact molecule/threshold settings are not given, so the maps cannot be exactly regenerated"
+],
+"reproducibility": [],
+"code_released": [
+{"value": "molsim is publicly available; release of the per-pixel fitting routine itself is not stated", "evidence": [
+{"loc": "Technique", "quote": "`molsim` is a publicly-available Python package tailored for the analysis of high spectral resolution spectroscopic observations of astronomical sources."}
+]}
+],
+"missing_for_reproduction": [
+"Per-pixel fitting scripts and parameter files",
+"Full molecule list with vibrational states and E_up exclusion thresholds",
+"CASA/pipeline versions, imaging parameters, self-calibration and continuum-subtraction details",
+"Statement of data availability for the reprocessed cubes"
+],
+"estimated_data_volume_inferred": "Several tens of GB: two tunings of four spectral windows each, Cycle 3 single-field observations, plus the imaged cubes",
+"score_inferred": 2,
+"score_reason": "The ALMA project code and imaging choices are given, but processing details are deferred to earlier papers, the fitting code and exact molecule/threshold settings are not published, and public availability of the data is not stated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The fitting recipe is only partially described and the code is not released, and the main results are maps and qualitative trends rather than numeric answer-key values.",
+"methods_papers": [
+{"citation": "Brogan:2018:87", "why": "Continuum subtraction and further data processing"},
+{"citation": "Hunter2023", "why": "ALMA Cycle 8 pipeline reprocessing for spectral renormalization"},
+{"citation": "Lee:2023:", "why": "molsim package used for the spectral modeling"}
+],
+"companion_papers": [
+{"citation": "El-Abd:2019:129", "why": "Earlier analysis of the same data and isomer column-density trends"},
+{"citation": "Hunter:2017:L29", "why": "Further data processing details and the MM1 accretion outburst"},
+{"citation": "McGuire:2017:L46", "why": "Further data processing details"}
+],
+"related_projects_or_surveys": []
+}

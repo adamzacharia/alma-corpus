@@ -1,0 +1,200 @@
+{
+ "bibcode": "2019AJ....157..165A",
+ "title": "A Tail Structure Associated with a Protoplanetary Disk around SU Aurigae",
+ "year": 2019,
+ "doi": "10.3847/1538-3881/ab0ae4",
+ "arxiv_id": "1902.10306",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Is there a CO (J=2-1) gas counterpart to the tail-like structure seen in scattered light around the SU Aur disk, is it kinematically connected to the disk, and what could have produced it?",
+ "alma_project_codes": [
+  "2013.1.00426.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12-m antennas (36 and 40)",
+  "angular_resolution": "0.235 x 0.356 arcsec synthesized beam",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Subaru H-band polarized intensity of the tail, overlaid on CO map",
+    "evidence": [
+     {
+      "loc": "Figure 2 caption",
+      "quote": "with Subaru H-band polarized intensity (PI) (de Leon et al. 2015) in dark color contour"
+     }
+    ]
+   },
+   "citation": "de Leon et al. 2015"
+  },
+  {
+   "what": {
+    "value": "Tail dust mass ~6e-8 Msun",
+    "evidence": [
+     {
+      "loc": "3. RESULTS",
+      "quote": "the dust mass in the tail-like structure is estimated to be ∼ 6 × 10 [−][8] M ⊙ (de Leon et al. 2015)"
+     }
+    ]
+   },
+   "citation": "de Leon et al. 2015"
+  },
+  {
+   "what": {
+    "value": "Disk mass 9.0e-2 Msun (gas-to-dust 100) from PdBI",
+    "evidence": [
+     {
+      "loc": "4.2. Origin of the Tail-Like Structure",
+      "quote": "the disk mass can be 9.0 × 10 [−][2] M ⊙ under assumption of gas to dust ratio of 100 (Ricci et al. 2010)"
+     }
+    ]
+   },
+   "citation": "Ricci et al. 2010"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the CO(2-1) cube",
+   "method": "Self-calibrate on continuum, apply tables to line data, CLEAN with Briggs weighting, primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 1.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps, channel maps and velocity profiles",
+   "method": "Moments 0,1,2 from channels 1.87-10.87 km/s above 30 mJy/beam; velocity and dispersion curves along the tail; disk spectrum within 1.2 arcsec radius",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Subtract Keplerian disk model from moment 1",
+   "method": "Simple flat Keplerian disk model in same orientation, subtracted from observed moment 1 map in the disk region",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat disk geometry, circular orbits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate tail brightness temperature",
+   "method": "From a channel-map panel with beam size and CO(2-1) rest frequency",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Tail length in CO",
+   "value": ">1000",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "a tail-like structure more than 1000 au long extending from the northern part of the disk body to the southwest direction"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk peak integrated intensity",
+   "value": "400",
+   "uncertainty": "rms 28",
+   "units": "mJy/beam km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "The disk component has a peak intensity of 400 mJy beam [−][1] km s [−][1] in CO (J=2–1) emission"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak",
+   "value": "850",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "whose peak intensity of 850 mJy beam [−][1] , as displayed in white contour"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "5.8",
+   "uncertainty": "0.3",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "at 5.8 ± 0.3 km s [−][1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Tail velocity dispersion",
+   "value": "~0.7 (disk ~2)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "The tail component has a velocity dispersion of ∼ 0.7 km s [−][1] whereas the disk component has ∼ 2 km s [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Tail brightness temperature",
+   "value": "~16",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Origin of the Tail-Like Structure",
+     "quote": "the brightness temperature is about 16 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibrator for flux scale and the flux uncertainty",
+  "Pipeline vs manual calibration and whether delivered products were used",
+  "Self-calibration solution intervals and number of rounds",
+  "Continuum-subtraction method and line-free channels",
+  "Image size, cell size, masking, clean threshold, and deconvolver",
+  "Whether the image cube was smoothed or rebinned to ~0.3 km/s channels",
+  "Moment-map clipping beyond 30 mJy/beam and the channel range used for moment 0",
+  "Keplerian model parameters (stellar mass, inclination, PA, outer radius)",
+  "Tail extraction path/line for Figure 3b,c",
+  "Brightness temperature calculation details"
+ ],
+ "missing_for_reproduction": [
+  "Keplerian model parameters",
+  "self-calibration details",
+  "image/cell size and masks",
+  "tail extraction path"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and basic imaging settings are given, but many parameters for imaging, modelling and profile extraction are missing.",
+ "rediscovery_reason": "Data are public and moment maps and the tail detection are reproducible, though some settings are missing.",
+ "source_card": "cards/2019AJ....157..165A/sonnet/card.md"
+}

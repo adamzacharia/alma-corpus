@@ -1,0 +1,263 @@
+{
+ "bibcode": "2019ApJ...880...92J",
+ "title": "Spatially Resolved Water Emission from Gravitationally Lensed Dusty Star-forming Galaxies at z ∼ 3",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab290d",
+ "arxiv_id": "1906.05469",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Does L_H2O (p-H2O 2_{0,2}-1_{1,1}) correlate with L_FIR on resolved ~kpc scales in lensed high-z dusty star-forming galaxies, and can it serve as a resolved SFR calibrator?",
+ "alma_project_codes": [
+  "2016.1.01554.S",
+  "2015.1.01578.S",
+  "2012.1.00175.S",
+  "2012.1.00844.S",
+  "2011.0.00957.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' (~1 kpc); beams 0.5-1.1'' (Table 1)",
+  "sensitivity": "continuum sigma 0.17-1.07 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Magnifications and 870 um lens models/source sizes for SPT sources",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Magnification ($\\mu$) of the SPT sources are taken from ALMA 870 $\\mu$m lens models (cite: spilker16)."
+     }
+    ]
+   },
+   "citation": "(cite: spilker16)"
+  },
+  {
+   "what": {
+    "value": "Local and high-z literature H2O luminosities and L_FIR samples",
+    "evidence": [
+     {
+      "loc": "3.2 Literature Sample",
+      "quote": "The local sample is drawn from the *Herschel* Science Archive (cite: yang13)"
+     }
+    ]
+   },
+   "citation": "(cite: yang13); (cite: omont13); (cite: yang16)"
+  },
+  {
+   "what": {
+    "value": "CO(6-5) data for SPT0529-54, SPT0532-50, SPT1247-50",
+    "evidence": [
+     {
+      "loc": "4.4 H2O and CO",
+      "quote": "spatially and spectrally resolved observations of mid$-$J CO$(6-5)$ in SPT0529-54, SPT0532-50 (cite: dong19)"
+     }
+    ]
+   },
+   "citation": "(cite: dong19)"
+  },
+  {
+   "what": {
+    "value": "Gas masses for Sigma_gas",
+    "evidence": [
+     {
+      "loc": "4.3 Correlation with physical properties",
+      "quote": "The gas mass values from (cite: bothwell17) (estimated using \\[CI\\] observations) in SPT0529-54 and SPT0532-50"
+     }
+    ]
+   },
+   "citation": "(cite: bothwell17); (cite: aravena16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and line cubes",
+   "method": "ALMA pipeline calibration; CASA clean with natural weighting and tapers; continuum from line-free data; cubes at 50/100 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "taper 1.0'' (SPT0529-54), 0.5'' (Cloverleaf); natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit dust SED to get L_FIR",
+   "method": "Modified blackbody with MCMC to unresolved photometry, rest-frame >=50 um, beta fixed to 2; free amplitude, T_d, lambda_0",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "L_FIR integrated 42.5-122.5 um rest frame"
+   ],
+   "assumptions": [
+    "single T_d, uniform source; beta=2"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Resolved L_FIR per pixel",
+   "method": "Scale total L_FIR by each pixel's fraction of the continuum flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "uniform dust temperature and opacity across source"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract spectra and line luminosity",
+   "method": "Apply continuum mask to each channel, integrate; error = std of line-free channels; non-parametric second-moment FWHM; L_H2O from Solomon & Vanden Bout relation; per-pixel from moment 0",
+   "software": [],
+   "key_parameters": [
+    "L_H2O = 1.04e-3 I nu_rest D_L^2 (1+z)^-1"
+   ],
+   "assumptions": [
+    "Planck 2015 cosmology h=0.677, Om=0.307"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit L_H2O-L_FIR correlation global and resolved",
+   "method": "MCMC fits of log L_H2O vs log L_FIR including literature; slope-fixed-to-zero fit of ratio; resolved pixels binned in Sigma_LFIR; F-test between free and fixed slope",
+   "software": [],
+   "key_parameters": [
+    "bins of 0.05e12 Lsun kpc^-2"
+   ],
+   "assumptions": [
+    "H2O and FIR co-spatially lensed; differential lensing negligible"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Calibrate SFR and test dependence on physical properties",
+   "method": "SFR=1.47e-10 L_IR (Kennicutt & Evans), L_IR/L_FIR~1.38; compare ratio vs lambda_max, Sigma_gas, tau_100; compare with CO(6-5)",
+   "software": [],
+   "key_parameters": [
+    "kappa_lambda = 2.92e5 (lambda/um)^-2 cm^2/g"
+   ],
+   "assumptions": [
+    "dust and gas sizes similar"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Resolved mean L_H2O/L_FIR",
+   "value": "2.76",
+   "uncertainty": "+2.15/-1.21",
+   "units": "1e-5",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "\\frac{\\rm L_{H_{2}O}}{\\rm L_{FIR}} = 2.76^{+2.15}_{-1.21} \\times 10^{-5}"
+    }
+   ]
+  },
+  {
+   "quantity": "Global L_H2O/L_FIR (slope fixed to zero)",
+   "value": "1.69",
+   "uncertainty": "+0.79/-0.54",
+   "units": "1e-5",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "gives $\\rm L_{H_{2}O}$/$\\rm L_{FIR}$ = 1.69$^{+0.79}_{-0.54}$ $\\times$ 10$^{-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Global slope L_H2O ∝ L_FIR^x",
+   "value": "1.17",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "\\rm L_{H_{2}O} \\propto \\rm L_{FIR}^{\\hspace{0.5cm}(1.17 \\pm 0.21)}"
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved ratio slope",
+   "value": "0.14",
+   "uncertainty": "1.44",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "We obtain $\\rm L_{H_{2}O}$/$\\rm L_{FIR}$ $\\propto$ $\\rm L_{FIR}$$^{0.14 \\pm 1.44}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR calibration coefficient",
+   "value": "7.35",
+   "uncertainty": "+5.74/-3.22",
+   "units": "1e-6 Msun/yr per Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "\\rm SFR\\ [M_{\\odot}/yr] = 7.35^{+5.74}_{-3.22} \\times 10^{-6}\\ L_{H_{2}O}\\ [L_{\\odot}]"
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O/L_FIR SPT0532-50",
+   "value": "3.26",
+   "uncertainty": "0.47",
+   "units": "1e-5",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SPT0532-50 | 10.0 $\\pm$ 0.6 | 1.7 | 42.3 $\\pm$ 0.1 | 68.33 $\\pm$ 9.81 | 17.6 $\\pm$ 0.6 | 475 $\\pm$ 44 | 10.4 $\\pm$ 0.2 | 22.25 $\\pm$ 0.38 | 3.26 $\\pm$ 0.47 |"
+    }
+   ]
+  },
+  {
+   "quantity": "tau_100 for SPT0529-54, SPT0532-50, SPT0538-50",
+   "value": "0.34, 1.36, 0.46",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "we estimate $\\rm \\tau_{100}$ $\\sim$0.34, 1.36 and 0.46 for SPT0529-54, SPT0532-50 and SPT0538-54 respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold and clean mask details",
+  "Exact line-free channel ranges used for continuum and rms",
+  "Spectral window handling/continuum subtraction method for the cubes",
+  "Pixel size values and image sizes",
+  "Priors and number of walkers/steps in the emcee fits (SED and L_H2O-L_FIR)",
+  "Flux calibrators and flux scale uncertainty",
+  "CASA/pipeline versions",
+  "Binning details for resolved correlation and how the F-test was implemented",
+  "Whether primary beam correction was applied"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters, line-free channels, pixel sizes",
+  "MCMC priors and settings",
+  "Binning and error propagation details",
+  "Photometry tables for SED fits"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and equations given, but imaging and fitting settings are incomplete.",
+ "rediscovery_reason": "Public data, numeric results (ratio, SFR calibration), reasonably clear recipe.",
+ "source_card": "cards/2019ApJ...880...92J/sonnet/card.md"
+}

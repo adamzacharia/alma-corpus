@@ -1,0 +1,1038 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...863...61L",
+  "title": "An ALMA Survey of Faint Disks in the Chamaeleon I Star-forming Region: Why Are Some Class II Disks so Faint?",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Long, Feng",
+  "n_authors": 9,
+  "arxiv_id": "1806.04826",
+  "doi": "10.3847/1538-4357/aacce9",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00437.S",
+   "2015.1.00333.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA Cycle 3 follow-up observations for 14 Class II disks that were low S/N detections or non-detections in our Cycle 2 survey of the $\\sim 2$ Myr-old Chamaeleon I star-forming region."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "14 faintest Class II disks of the Hot sample in Chamaeleon I (e.g. CHXR71, CHXR30A, T54, CHXR20, ISO91, T51)",
+     "coordinates": {
+      "value": "2MASS names listed in Table 2 (e.g. J11023265-7729129 for CHXR71)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at an average distance of 190 pc"
+       },
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The name and spectral type for each of these sources are listed in Table [2](#tab:continuum)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~190 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at an average distance of 190 pc"
+       },
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The name and spectral type for each of these sources are listed in Table [2](#tab:continuum)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 parallaxes (cite: gaia2018)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at an average distance of 190 pc"
+       },
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The name and spectral type for each of these sources are listed in Table [2](#tab:continuum)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Why are some Class II disks in Chamaeleon I so faint at mm wavelengths, and does the stellar-disk mass scaling relation hold with deeper data?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The stellar-disk mass scaling relation reported in (cite: pascucci2016) is confirmed with these updated measurements."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00333.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00333.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (887 um / 882 um)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The ALMA Band 7 observational setup in Cycle 3 was similar to that in Cycle 2"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Continuum basebands at 333.8, 335.7, 347.5 GHz; weighted mean 340 GHz; line window on 12CO J=3-2",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The three continuum basebands were centered at 333.8, 335.7, and 347.5 GHz with an aggregated bandwidth of 5.9 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The spectral line window was set to target $^{12}$CO $J = 3-2$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "5.9 GHz aggregated",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The three continuum basebands were centered at 333.8, 335.7, and 347.5 GHz with an aggregated bandwidth of 5.9 GHz"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-331 m (Jan 25), 15-460 m (Mar 30)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2016 Mar 30 | 44      | 15-460         | 0.75   |"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.1\" x 0.7\" typical beam",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The typical continuum beam size is 1.$\\ensuremath{''}$1$\\times$0.$\\ensuremath{''}$7, when all baselines are included."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1 sigma rms 0.2 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "reaching a 1$\\sigma$ rms of 0.2 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "3.6 min per source",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "two sets of observations were executed for a total integration time of 3.6 min"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 Jan 25 and 2016 Mar 30",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2016 Jan 25 | 42      | 15-331         | 1.13   |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 3 program PI I. Pascucci",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "in our Cycle 3 program 2015.1.00333 (PI: I. Pascucci)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar masses",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "stellar masses are adopted from (cite: pascucci2016)"
+       }
+      ]
+     },
+     "citation": "(cite: pascucci2016)"
+    },
+    {
+     "what": {
+      "value": "Spectral types and accretion rates",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Spectral types are adopted from (cite: manara2016; manara2017)"
+       }
+      ]
+     },
+     "citation": "(cite: manara2016; manara2017)"
+    },
+    {
+     "what": {
+      "value": "Stellar multiplicity and separations",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "References for stellar multiplicity are (cite: lafrenire2008) and (cite: daemgen2013)."
+       }
+      ]
+     },
+     "citation": "(cite: lafrenire2008; daemgen2013)"
+    },
+    {
+     "what": {
+      "value": "Cycle 2 887um fluxes",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Column 6 and 7 are 887$\\mu$m fluxes in (cite: pascucci2016) and this work."
+       }
+      ]
+     },
+     "citation": "(cite: pascucci2016)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "RADMC-3D SED model of CHXR30A with a circumsecondary disk",
+     "evidence": [
+      {
+       "loc": "6.3 Disks around the secondary star",
+       "quote": "we use the radiative transfer code RADMC-3D (cite: dullemond2012) to model the SED of the binary system CHXR30A."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "NRAO-provided scripts",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "following the scripts provided by NRAO, including flux, phase, bandpass, and gain calibrations."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.6.0",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The data calibration was performed using CASA 4.6.0"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1107-4449",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 2016 Jan 25 | 42      | 15-331         | 1.13   | J1107-4449 | J1427-4206 | J1058-8003 |"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "We estimated the systematic flux uncertainty of $\\sim$10$\\%$ based on the amplitude and phase variations of the calibrators over time."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not applied",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Self-calibration was not applied on these weak sources."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "clean in CASA",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "with natural weighting in *clean*"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "with natural weighting in *clean*"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.1\" x 0.7\"",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The typical continuum beam size is 1.$\\ensuremath{''}$1$\\times$0.$\\ensuremath{''}$7, when all baselines are included."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Continuum flux measurement by uvmodelfit visibility fitting",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "we fit the visibility data using the CASA task *uvmodelfit*, following the description in (cite: barenfeld2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: barenfeld2016)"
+    },
+    {
+     "what": {
+      "value": "Dust mass calculation assumptions",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Dust masses in column 11 are calculated based on the same assumption as in (cite: pascucci2016) and for a constant temperature of 20 K."
+       }
+      ]
+     },
+     "from_reference": "(cite: pascucci2016)"
+    },
+    {
+     "what": {
+      "value": "Bayesian linear regression method for Fmm-M* relation",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "using a Bayesian linear regression method, following (cite: pascucci2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: pascucci2016)"
+    },
+    {
+     "what": {
+      "value": "Elliptical models applied to detected sources with S/N>5",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "As in our Cycle 2 survey, elliptical models are also applied in *uvmodelfit* to all detected sources with a signal-to-noise larger than 5"
+       }
+      ]
+     },
+     "from_reference": "Cycle 2 survey (cite: pascucci2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Dust opacity and gas-to-dust ratio values used for dust masses (deferred to Pascucci 2016)",
+    "Clean mask, threshold and image size/cell size",
+    "Line-free channel selection for continuum",
+    "Linmix priors and settings",
+    "How the random 7% of Cool-sample upper limits was drawn",
+    "RADMC-3D disk and stellar parameters (inner radius, scale height, grain sizes)",
+    "Cycle 3 data reduction details beyond NRAO scripts",
+    "Detail of the 12CO imaging"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum",
+    "method": {
+     "value": "Average continuum channels of calibrated visibilities, natural weighting in clean",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Continuum images were created using the calibrated visibilities by averaging all the continuum channels, with natural weighting in *clean*"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure continuum flux densities",
+    "method": {
+     "value": "uvmodelfit point-source or elliptical Gaussian fits to visibilities; uncertainties scaled by sqrt reduced chi2; non-detections refit with fixed offsets",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The uncertainties of the fitted parameters are scaled by the square root of the reduced $\\chi^{2}$ of the fit."
+      },
+      {
+       "loc": "Results",
+       "quote": "the continuum emission is re-calculated by fitting a point-source model with fixed phase center offsets"
+      }
+     ]
+    },
+    "software": [
+     "CASA uvmodelfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Detection if flux >3 sigma near expected position",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Flux densities that are brighter than three times the uncertainty and located near the expected source position are considered detections."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Least squares in uv plane; 3 free parameters for point source (F, dRA, dDec)",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "This model has three free parameters: the integrated flux density ($F_\\nu$), the phase center offsets in right ascension ($\\Delta\\alpha$) and in declination ($\\Delta\\delta$)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with Cycle 2 fluxes; flux ratios 0.8-1.5",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The flux ratios of the sources detected in both observations range from 0.8–1.5, with an average value of 1.2."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive dust masses",
+    "method": {
+     "value": "Same assumptions as Pascucci 2016, constant T=20 K, distance 190 pc",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "Dust masses in column 11 are calculated based on the same assumption as in (cite: pascucci2016) and for a constant temperature of 20 K."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T = 20 K; distance 190 pc",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "for a constant temperature of 20 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit Fmm-M* scaling relation",
+    "method": {
+     "value": "Linmix Bayesian linear regression in log-log plane including upper limits, with and without outliers",
+     "evidence": [
+      {
+       "loc": "Footnote 4",
+       "quote": "here we use the python equivalent *Linmix*"
+      }
+     ]
+    },
+    "software": [
+     "Linmix"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Linear relation in log-log plane with Gaussian scatter",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "assuming a linear scaling relation in the log-log plane"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Linmix (Kelly 2007 method)",
+     "evidence": [
+      {
+       "loc": "Footnote 4",
+       "quote": "(cite: pascucci2016) used the (cite: kelly2007) $IDL$ routine, while here we use the python equivalent *Linmix*"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared to Pascucci 2016 slope 1.9±0.2 and intercept 1.6±0.1",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The fitted parameters are consistent with the best-fit values from (cite: pascucci2016), with a slope of $1.9\\pm0.2$ and an intercept of $1.6\\pm0.1$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Model SED of CHXR30A with circumsecondary disk",
+    "method": {
+     "value": "RADMC-3D SED model; two stars 80 AU apart; secondary disk truncated at ~30 AU; disk-to-star mass ratio set to match mm upper limit",
+     "evidence": [
+      {
+       "loc": "6.3 Disks around the secondary star",
+       "quote": "The ratio of disk mass [^12] to stellar mass is adjusted to satisfy the millimeter flux upper limit."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "Secondary mass 0.28 Msun from Ks contrast 0.85",
+      "evidence": [
+       {
+        "loc": "Disks around the secondary star",
+        "quote": "The $K_s$-band contrast of 0.85 from (cite: lafrenire2008) leads to an estimated stellar mass of 0.28 $M_\\odot$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust: 25% carbon, 75% silicate amorphous grains",
+      "evidence": [
+       {
+        "loc": "Footnote 12",
+        "quote": "we include two populations of amorphous dust grains with 25% carbon and 75% silicate"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "No best-fit; illustrative",
+     "evidence": [
+      {
+       "loc": "6.3 Disks around the secondary star",
+       "quote": "While identifying the best-fit model for these systems is beyond the scope of this paper"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with observed SED",
+     "evidence": [
+      {
+       "loc": "6.3 Disks around the secondary star",
+       "quote": "The modeled SED reproduces well the observed SED structure"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.6.0",
+    "used_for": {
+     "value": "Calibration, clean imaging, uvmodelfit",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The data calibration was performed using CASA 4.6.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Linmix",
+    "version": "not stated",
+    "used_for": {
+     "value": "Bayesian linear regression of Fmm vs M*",
+     "evidence": [
+      {
+       "loc": "Footnote 4",
+       "quote": "here we use the python equivalent *Linmix*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED modelling of CHXR30A",
+     "evidence": [
+      {
+       "loc": "6.3 Disks around the secondary star",
+       "quote": "we use the radiative transfer code RADMC-3D (cite: dullemond2012) to model the SED"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Detection rate of Hot sample",
+    "value": "94% (51/54)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the detection rate for the *Hot* Sample is now 94% (51/54)"
+     }
+    ]
+   },
+   {
+    "quantity": "Fmm-M* slope",
+    "value": "1.89",
+    "uncertainty": "0.24",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$\\log(F_{mm}/{\\rm mJy})=1.89 (\\pm0.24)\\times \\log(M_\\star/M_\\odot)+1.57(\\pm 0.14)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fmm-M* intercept",
+    "value": "1.57",
+    "uncertainty": "0.14",
+    "units": "log mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$\\log(F_{mm}/{\\rm mJy})=1.89 (\\pm0.24)\\times \\log(M_\\star/M_\\odot)+1.57(\\pm 0.14)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Slope excluding outliers",
+    "value": "2.07",
+    "uncertainty": "0.21",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$\\log(F_{mm}/{\\rm mJy})=2.07 (\\pm0.21)\\times \\log(M_\\star/M_\\odot)+1.81(\\pm 0.13)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Intercept excluding outliers",
+    "value": "1.81",
+    "uncertainty": "0.13",
+    "units": "log mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$\\log(F_{mm}/{\\rm mJy})=2.07 (\\pm0.21)\\times \\log(M_\\star/M_\\odot)+1.81(\\pm 0.13)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gaussian scatter of residuals",
+    "value": "mean 0.12, sigma 0.26",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a Gaussian fit with a mean value of 0.12 and 1$\\sigma$ spread of 0.26"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass upper limits of non-detections",
+    "value": "~0.2",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Non-detections at mm wavelengths",
+      "quote": "The dust mass upper limits are only $\\sim$0.2 $M_\\ensuremath{\\oplus}$"
+     }
+    ]
+   },
+   {
+    "quantity": "T24 flux",
+    "value": "6.57",
+    "uncertainty": "0.25",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| J11071206-7632232 | T24 |  | M0 | -0.23 | 4.23$\\pm$0.81 | 6.57$\\pm$0.25"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Of 14 targets, 11 detected at >3 sigma; six previously undetected sources now detected.",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Of the 14 observed sources in our Cycle 3 program, 11 are detected with a signal-to-noise ratio of $>$3."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the stellar-disk mass relation survive deeper data?",
+    "experiment": "Refit Fmm-M* with Cycle 3 fluxes using Linmix",
+    "result": "Slope 1.89±0.24, intercept 1.57±0.14, consistent with Pascucci 2016",
+    "finding": "Relation is robust",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "We find that the stellar-disk mass relation reported in (cite: pascucci2016) is robust to the inclusion of updated millimeter fluxes and upper limits"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Why are three disks undetected?",
+    "experiment": "Compare SEDs, accretion and multiplicity",
+    "result": "All three have close companions <=100 AU, weak accretion and weak IR excess",
+    "finding": "Tidal interaction plus internal photoevaporation may hasten evolution",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "We suggest that the combined effects of tidal interactions and internal photoevaporation hastens the overall disk evolution in these systems."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Could a disk only around the secondary explain faint binary SEDs?",
+    "experiment": "RADMC-3D SED model of CHXR30A",
+    "result": "Model matches observed SED and mm upper limit",
+    "finding": "Circumsecondary-only disk is plausible",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "For CHXR30A, the model SED that includes only a circumsecondary disk matches the observations quite well."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Faintest Hot-sample disks targeted for deeper observation",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "we were able to request deeper observations of the faintest *Hot* stars in our Cycle 3 program"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Fast grain growth proposed for CHXR20 and other faint disks",
+     "evidence": [
+      {
+       "loc": "Individual disk evolution",
+       "quote": "Fast grain growth is capable of explaining the observed SED morphologies in these four disks"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Binaries at <~100 AU unresolved at the beam size",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "We note that systems with projected separations $\\lesssim$ 100 AU should remain unresolved at our spatial resolution."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Cycle 2 vs Cycle 3 flux differences (ratio ~1.2) attributed to Pallas calibrator without quantitative test",
+    "Outlier exclusion and random 7% of upper limits is ad hoc",
+    "SED model is illustrative and not fitted"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data acknowledged as ADS/JAO.ALMA#2015.1.00333.S",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00333.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Dust opacity and gas-to-dust values (in Pascucci 2016)",
+    "Clean parameters",
+    "RADMC-3D inputs"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB (14 short Band 7 observations)",
+   "score_inferred": 3,
+   "score_reason": "Simple measurements and public data, but dust-mass assumptions and several settings are deferred to earlier work.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, a simple uvmodelfit recipe, and numeric results (fluxes, scaling relation)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: pascucci2016)",
+     "why": "Cycle 2 survey, dust mass method, regression"
+    },
+    {
+     "citation": "(cite: barenfeld2016)",
+     "why": "uvmodelfit flux measurement"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: manara2016; manara2017)",
+     "why": "Accretion rates and spectral types"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 2 Chamaeleon I survey 2013.1.00437.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-a6262c5578891f6bad06843bf4cb6732",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:11",
+  "usage": {
+   "input_tokens": 25786,
+   "output_tokens": 8404,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.068413,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 72,
+  "quotes_ok": 72,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2013.1.00437.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 54,
+   "rate": 0.692
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T16:43:07",
+  "custom_id": "sonnet-repair-claude-code",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].key_parameters[0].evidence[0]",
+    "old": "The $K_s$-band contrast of 0.85 from (cite: lafrenire2008) leads to an estimated mass ratio",
+    "new": "The $K_s$-band contrast of 0.85 from (cite: lafrenire2008) leads to an estimated stellar mass of 0.28 $M_\\odot$"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00437",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "In our ALMA Cycle 2 program 2013.1.00437 (PI: I. Pascucci)"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

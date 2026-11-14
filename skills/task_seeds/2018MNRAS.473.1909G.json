@@ -1,0 +1,185 @@
+{
+ "bibcode": "2018MNRAS.473.1909G",
+ "title": "ALMA suggests outflows in z ∼ 5.5 galaxies",
+ "year": 2018,
+ "doi": "10.1093/mnras/stx2458",
+ "arxiv_id": "1604.05714",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Do the [CII] 158um lines of z~5.5 star-forming galaxies show broad wings indicating starburst-driven outflows?",
+ "alma_project_codes": [
+  "2012.1.00523.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~0.6 arcsec (~3.7 kpc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[CII] ALMA spectra and sample of galaxies (SFR, stellar masses)",
+    "evidence": [
+     {
+      "loc": "ALMA observations",
+      "quote": "spectra of the \\[CII\\]158$\\mu$m line have been obtained with ALMA at an angular resolution of[^1] $\\sim$0.6” by (cite: Capak15)"
+     }
+    ]
+   },
+   "citation": "Capak P. L. et al., 2015, Nature, 522, 455"
+  },
+  {
+   "what": {
+    "value": "Zoom-in RAMSES simulation of the galaxy Dahlia",
+    "evidence": [
+     {
+      "loc": "Numerical simulations",
+      "quote": "These simulations are fully described in (cite: pallottini:2017)"
+     }
+    ]
+   },
+   "citation": "(cite: pallottini:2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit Gaussians and compute normalized residuals",
+   "method": "Fit each [CII] line with a Gaussian (FWHM, peak, v0); noise from std at |v|>700 km/s; R=(Fobs-Fmod)/sigma_n",
+   "software": [],
+   "key_parameters": [
+    "v_cont = 700 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack residuals and test against Gaussian noise",
+   "method": "Average residuals of 9 galaxies; compare CDF with erf via KS and Anderson-Darling tests",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compare outflow, satellite and rotating-disk scenarios",
+   "method": "500 Monte Carlo synthetic spectra per scenario in sub-samples of 9, same fit/stack procedure, KS test against observed CDF",
+   "software": [],
+   "key_parameters": [
+    "Parameter ranges in Table 2"
+   ],
+   "assumptions": [
+    "One satellite per beam; halo occupation model"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate outflow rate and loading factor",
+   "method": "Mdot = v_outfl M_outfl / R_outfl",
+   "software": [],
+   "key_parameters": [
+    "v_outfl ~500 km/s; R_outfl ~1.9 kpc"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stacked flux excess",
+   "value": "~0.5 mJy over ~1000 km/s",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Method",
+     "quote": "We find a flux excess of $\\sim 0.5$ mJy extended over $\\sim 1000$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean broad component peak flux",
+   "value": "0.4",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\langle F_{\\rm peak}^{\\rm broad}\\rangle=0.4\\pm 0.1 \\rm ~mJy$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean broad component sigma",
+   "value": "360",
+   "uncertainty": "140",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\langle\\sigma^{\\rm broad}\\rangle=360\\pm 140 \\rm ~km~s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow rate",
+   "value": "54",
+   "uncertainty": "23",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "we infer an outflow rate of $\\rm \\dot{M}=54\\pm23~ M_{\\odot}~yr^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loading factor",
+   "value": "1.7",
+   "uncertainty": "1.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "$\\eta=\\dot{M}/SFR=1.7\\pm1.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "KS distance, outflow scenario",
+   "value": "0.05 (P_KS=1.0)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "We find that the distance from the observed CDF is minimized by the *Outflow* scenario ($D_{\\rm KS}=0.05$)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Spectral channel width and spectral extraction aperture per galaxy",
+  "Exact conversion from [CII] luminosity to outflow mass",
+  "Random seeds and ranges used for the Monte Carlo realization selection",
+  "Sample SFRs per galaxy",
+  "Gaussian fitting algorithm"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact reduction scripts",
+  "Monte Carlo seeds",
+  "Per-galaxy spectral extraction details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear statistical method, but several processing and fitting details are missing.",
+ "rediscovery_reason": "Public archival data, a simple residual-stacking recipe, and numeric results.",
+ "source_card": "cards/2018MNRAS.473.1909G/sonnet/card.md"
+}

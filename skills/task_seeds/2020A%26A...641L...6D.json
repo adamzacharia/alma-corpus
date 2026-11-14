@@ -1,0 +1,206 @@
+{
+ "bibcode": "2020A&A...641L...6D",
+ "title": "Discovery of molecular gas fueling galaxy growth in a protocluster at z = 1.7",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202038711",
+ "arxiv_id": "2008.13665",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Are there additional gas-rich members of the z=1.7 overdensity around the FRII radio galaxy, and how much molecular gas is in them and in the FRII host?",
+ "alma_project_codes": [
+  "2018.1.01601.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84 – 116 GHz), three-pointing mosaic",
+  "arrays": "not stated",
+  "angular_resolution": "beam 2.161 x 1.655 arcsec (robust 0.5)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(2-1) luminosity function used to estimate interlopers",
+    "evidence": [
+     {
+      "loc": "2.2 S/N cube and detections",
+      "quote": "based on the CO luminosity functions derived by the ASPECS project (cite: decarli_2019)"
+     }
+    ]
+   },
+   "citation": "(cite: decarli_2019)"
+  },
+  {
+   "what": {
+    "value": "r21 = 0.76",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "We assumed $r_{21}=0.76$ from the study of star-forming disk galaxies at z=1.5 by (cite: daddi_2015)"
+     }
+    ]
+   },
+   "citation": "(cite: daddi_2015)"
+  },
+  {
+   "what": {
+    "value": "X-ray column density N_H,X ~1.5e24 cm^-2 and MUSE members from Gilli et al.",
+    "evidence": [
+     {
+      "loc": "4.2 FRII host galaxy",
+      "quote": "derived from the X-ray spectrum ($N_{H,X}{\\sim}~1.5 \\times 10^{24}~ \\mathrm{cm^{-2}}$; )"
+     }
+    ]
+   },
+   "citation": "(cite: gilli_2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "make continuum-subtracted datacube",
+   "method": "Datacube of full mosaic within ±3000 km/s of 85.426 GHz, polynomial continuum subtraction, 30 km/s channels, robust 0.5",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "detect line emitters",
+   "method": "Custom sliding-window code on S/N cube (local rms in 10-beam regions); reliability assessed with negative cube; grid of S/N_w, N_ch, N_px",
+   "software": [],
+   "key_parameters": [
+    "S/N_w=1.5-3.0, N_ch=2-4, N_px=2-4"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "extract and fit spectra",
+   "method": "3σ-blanked cube defines the extraction region; integrated spectra fit with single or double Gaussian",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "derive line luminosity and H2 mass",
+   "method": "L'CO from Solomon 1992 formula; M_H2=(alpha_CO/r21) L'",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "r21=0.76, alpha_CO=4.3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "size of FRII CO emission",
+   "method": "2D Gaussian fit of 3σ moment 0 with CASA task, deconvolved",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "SFR, system mass and column density",
+   "method": "SFR from Schmidt-Kennicutt relation using gas mass and size; virial mass from velocity dispersion; N_H,ISM for edge-on thin disk",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "disk diameter = a, height 1 kpc, inclination 90 deg"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "FRII core M_H2",
+   "value": "19.3e10 (alpha_CO/4.3, 0.76/r21 scaled)",
+   "uncertainty": "+0.1/-0.1",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "19.3$\\mathrm{^{+0.1}_{-0.1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "FRII CO major axis",
+   "value": "3.2 (27 kpc)",
+   "uncertainty": "2.0 arcsec (17 kpc)",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "major axis $a =$ $3.2 \\pm 2.0$ arcsec and a minor axis $b =$ $2.0 \\pm 1.6$ arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "LOS velocity dispersion",
+   "value": "~440",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Gas-rich members",
+     "quote": "we derive a line-of-sight (LOS) velocity dispersion of ${\\sim}$440 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "N_H,ISM",
+   "value": "~5.5e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 FRII host galaxy",
+     "quote": "We found $N_{H,ISM}{\\sim}~5.5 \\times 10^{23} ~\\mathrm{cm^{-2}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "mean system redshift",
+   "value": "1.694",
+   "uncertainty": "0.001",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Gas-rich members",
+     "quote": "The mean redshift of the system (including all the known members) is z = 1.694 $\\pm$ 0.001."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version",
+  "tclean parameters: cell size, image size, deconvolver, threshold, masking",
+  "polynomial order and line-free channels for continuum subtraction",
+  "MCMC settings and priors",
+  "HST reduction (Morishita et al. in prep.)",
+  "how the ALMA luminosity-based 3 sigma mass upper limits were computed in detail"
+ ],
+ "missing_for_reproduction": [
+  "Detection code not released",
+  "tclean parameters",
+  "MCMC priors",
+  "HST data not yet published"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Archival ALMA data and clear formulae, but imaging parameters, versions and custom code are missing.",
+ "rediscovery_reason": "Public ALMA project code, numeric results (line fluxes, masses), mostly complete recipe.",
+ "source_card": "cards/2020A%26A...641L...6D/sonnet/card.md"
+}

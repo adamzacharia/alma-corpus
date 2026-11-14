@@ -1,0 +1,478 @@
+{
+ "bibcode": "2022MNRAS.511..877M",
+ "title": "Subterahertz radius and limb brightening of the Sun derived from SST and ALMA",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab3501",
+ "arxiv_id": "2111.15261",
+ "fields": [
+  "sun"
+ ],
+ "question": "Determine the average radius and limb brightening of the Sun at 100, 212, 230, and 405 GHz using SST and ALMA single-dish observations, and investigate how antenna beam size and limb brightening level affect radius measurements from the half-power and inflection-point methods.",
+ "alma_project_codes": [
+  "2011.0.00020.SV",
+  "2016.1.00050.S",
+  "2016.1.00070.S",
+  "2016.1.00156.S",
+  "2016.1.00166.S",
+  "2016.1.00182.S",
+  "2016.1.00201.S",
+  "2016.1.00202.S",
+  "2016.1.00423.S",
+  "2016.1.00572.S",
+  "2016.1.00788.S",
+  "2016.1.01129.S",
+  "2016.1.01408.S",
+  "2016.1.01532.S",
+  "2017.1.00009.S",
+  "2017.1.00870.S",
+  "2017.1.01138.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84–116 GHz, 100 GHz) and Band 6 (211–275 GHz, 230 GHz)",
+  "arrays": "12-meter single-dish",
+  "angular_resolution": "nominal HPBW0: 58″ (100 GHz), 25″ (230 GHz); Gaussian-fitted HPBW: 1.1′ (100 GHz), 0.44′ (230 GHz)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Canonical optical apparent solar radius (959.63″)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The canonical value at optical wavelengths of the mean apparent solar radius is 959.63″ (cite: auwers1891)."
+     }
+    ]
+   },
+   "citation": "(cite: auwers1891)"
+  },
+  {
+   "what": {
+    "value": "Limb brightening measurements at 100 and 230 GHz",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "At 100 GHz, (cite: selhor19) found that the average brightness above $T\\!_{qS}$ was 6.1% $\\pm$ 2.8% at the North pole and 5.1% $\\pm$ 2.7% at the South pole; whereas at 230 GHz, the average values were 9% $\\pm$ 5% and 9% $\\pm$ 4%, respectively for the South and North poles."
+     },
+     {
+      "loc": "Limb brightening estimate",
+      "quote": "Also, SSC profiles $L\\!B$~conv~ at 100 and 230 GHz are respectively lower, however close to the 10.5% and 17.8% levels reported by (cite: selhor19)."
+     }
+    ]
+   },
+   "citation": "(cite: selhor19)"
+  },
+  {
+   "what": {
+    "value": "SSC 2-D solar atmospheric model predictions for radius and brightness temperature profiles",
+    "evidence": [
+     {
+      "loc": "Radius Determination",
+      "quote": "Also listed on the last two columns of Table [\\[tab:radii\\]](#tab:radii) are the predicted values of the solar radius, *R*~ssc~, and the respective convolved values, $R_\\mathrm{ssc}^\\mathrm{conv}$, using the SSC atmospheric model (cite: selhor05), further explained in the next section."
+     }
+    ]
+   },
+   "citation": "(cite: selhor05)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reconstruct 1-D antenna beam profiles and measure reference HPBWs",
+   "method": "For ALMA, reconstruct 1-D beams by averaging the derivatives of solar equator brightness temperature profiles extracted from all solar maps; for SST, determine 2-D beams via solar scan tomography and average a 2′ band centered on the peak; fit 1-D beams with a Gaussian to get reference HPBW.",
+   "software": [],
+   "key_parameters": [
+    "2′ band width centered on 2-D profile peak for SST 1-D beam extraction"
+   ],
+   "assumptions": [
+    "Derivatives of solar equator brightness temperature profiles are good approximations for the ALMA single-dish beam due to high spatial resolution and averaging over many maps."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract solar limb coordinates and determine average solar radii from maps",
+   "method": "Correct maps for Earth's orbital eccentricity. Extract limb coordinates per scan using (1) inflection-point method (maxima and minima of numerical derivative) and (2) half-power method (mean TB between background mode outside disk and quiet-Sun median within 7.5′ radius). Perform iterative least-squares circle fits with outlier rejection to compute map radius as average center-to-limb distance.",
+   "software": [],
+   "key_parameters": [
+    "Quiet-Sun region radius: 7.5′",
+    "Initial limb point distance filter: 815″ (0.85 R_theta) to 1100″ (1.15 R_theta)",
+    "Iterative outlier rejection threshold: |r - R_bar| >= 10″; minimum 10 points (out of usual 34); maximum standard deviation 20″"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Forward model 1-D solar scan convolutions and estimate limb brightening ranges",
+   "method": "Generate 153 synthetic TB profiles by scaling SSC profiles across LB_synth (0% to 40%, step 5%) and R_synth (960″ to 976″, step 1″). Convolve in 1-D with reconstructed antenna beams. Measure R_conv (both methods) and LB_conv. Select the four R_conv closest to measured average radius R_bar within ±1 sigma for each R_synth, fit two linear bounds (lowest and highest LB vs R_synth), and evaluate the band at R_bar to estimate the LB range.",
+   "software": [],
+   "key_parameters": [
+    "LB_synth grid: 0% to 40% in 5% steps; R_synth grid: 960″ to 976″ in 1″ steps (153 profiles)"
+   ],
+   "assumptions": [
+    "Synthetic profiles follow scaled SSC atmospheric model shapes."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Gaussian-fitted antenna HPBW at 100 GHz (ALMA)",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "arcmin",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Antenna beam",
+     "quote": "These fits, also shown in each panel of Fig. [2](#fig:beams), yield values of 1.1′, 3.6′, 0.44′ and 3.3′ for 100, 212, 230, and 405 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian-fitted antenna HPBW at 212 GHz (SST)",
+   "value": "3.6",
+   "uncertainty": "not stated",
+   "units": "arcmin",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Antenna beam",
+     "quote": "These fits, also shown in each panel of Fig. [2](#fig:beams), yield values of 1.1′, 3.6′, 0.44′ and 3.3′ for 100, 212, 230, and 405 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian-fitted antenna HPBW at 230 GHz (ALMA)",
+   "value": "0.44",
+   "uncertainty": "not stated",
+   "units": "arcmin",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Antenna beam",
+     "quote": "These fits, also shown in each panel of Fig. [2](#fig:beams), yield values of 1.1′, 3.6′, 0.44′ and 3.3′ for 100, 212, 230, and 405 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian-fitted antenna HPBW at 405 GHz (SST)",
+   "value": "3.3",
+   "uncertainty": "not stated",
+   "units": "arcmin",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Antenna beam",
+     "quote": "These fits, also shown in each panel of Fig. [2](#fig:beams), yield values of 1.1′, 3.6′, 0.44′ and 3.3′ for 100, 212, 230, and 405 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 100 GHz (inflection-point method)",
+   "value": "968",
+   "uncertainty": "3",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "$\\ang{;;968}\\pm\\ang{;;3}$ (100 GHz), $\\ang{;;963}\\pm\\ang{;;3}$ (212 GHz), $\\ang{;;963}\\pm\\ang{;;2}$ (230 GHz), and $\\ang{;;963}\\pm\\ang{;;5}$ (405 GHz)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| 100 (ALMA) | $969\\pm2$ | $968\\pm3$ | 964.2 | 966.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 212 GHz (inflection-point method)",
+   "value": "963",
+   "uncertainty": "3",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "$\\ang{;;968}\\pm\\ang{;;3}$ (100 GHz), $\\ang{;;963}\\pm\\ang{;;3}$ (212 GHz), $\\ang{;;963}\\pm\\ang{;;2}$ (230 GHz), and $\\ang{;;963}\\pm\\ang{;;5}$ (405 GHz)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| 212 (SST) | $967\\pm3$ | $963\\pm3$ | 963.6 | 969.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 230 GHz (inflection-point method)",
+   "value": "963",
+   "uncertainty": "2",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "$\\ang{;;968}\\pm\\ang{;;3}$ (100 GHz), $\\ang{;;963}\\pm\\ang{;;3}$ (212 GHz), $\\ang{;;963}\\pm\\ang{;;2}$ (230 GHz), and $\\ang{;;963}\\pm\\ang{;;5}$ (405 GHz)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| 230 (ALMA) | $964.1\\pm1.7$ | $963\\pm2$ | 963.5 | 965.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 405 GHz (inflection-point method)",
+   "value": "963",
+   "uncertainty": "5",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "$\\ang{;;968}\\pm\\ang{;;3}$ (100 GHz), $\\ang{;;963}\\pm\\ang{;;3}$ (212 GHz), $\\ang{;;963}\\pm\\ang{;;2}$ (230 GHz), and $\\ang{;;963}\\pm\\ang{;;5}$ (405 GHz)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| 405 (SST) | $965\\pm5$ | $963\\pm5$ | 962.9 | 967.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 100 GHz (half-power method)",
+   "value": "969",
+   "uncertainty": "2",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 100 (ALMA) | $969\\pm2$ | $968\\pm3$ | 964.2 | 966.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 212 GHz (half-power method)",
+   "value": "967",
+   "uncertainty": "3",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 212 (SST) | $967\\pm3$ | $963\\pm3$ | 963.6 | 969.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 230 GHz (half-power method)",
+   "value": "964.1",
+   "uncertainty": "1.7",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 230 (ALMA) | $964.1\\pm1.7$ | $963\\pm2$ | 963.5 | 965.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average solar radius at 405 GHz (half-power method)",
+   "value": "965",
+   "uncertainty": "5",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 405 (SST) | $965\\pm5$ | $963\\pm5$ | 962.9 | 967.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model solar radius R_ssc^conv at 100 GHz",
+   "value": "966.4",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 100 (ALMA) | $969\\pm2$ | $968\\pm3$ | 964.2 | 966.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model solar radius R_ssc^conv at 212 GHz",
+   "value": "969.0",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 212 (SST) | $967\\pm3$ | $963\\pm3$ | 963.6 | 969.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model solar radius R_ssc^conv at 230 GHz",
+   "value": "965.0",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 230 (ALMA) | $964.1\\pm1.7$ | $963\\pm2$ | 963.5 | 965.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model solar radius R_ssc^conv at 405 GHz",
+   "value": "967.4",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 405 (SST) | $965\\pm5$ | $963\\pm5$ | 962.9 | 967.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Limb brightening range at 100 GHz",
+   "value": "5.0 - 18.7",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 100 (ALMA) | | 5.0 - 18.7 | | 33.6 | 8.9 |"
+    },
+    {
+     "loc": "Abstract",
+     "quote": "5%-19% (100 GHz), 2%-12% (212 GHz), 6%-18% (230 GHz), and 3%-17% (405 GHz)."
+    }
+   ]
+  },
+  {
+   "quantity": "Limb brightening range at 212 GHz",
+   "value": "1.6 - 12.0",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 212 (SST) | | 1.6 - 12.0 | | 36.5 | 4.2 |"
+    },
+    {
+     "loc": "Abstract",
+     "quote": "5%-19% (100 GHz), 2%-12% (212 GHz), 6%-18% (230 GHz), and 3%-17% (405 GHz)."
+    }
+   ]
+  },
+  {
+   "quantity": "Limb brightening range at 230 GHz",
+   "value": "6.4 - 17.6",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 230 (ALMA) | | 6.4 - 17.6 | | 37.4 | 16.3 |"
+    },
+    {
+     "loc": "Limb brightening estimate",
+     "quote": "Therefore, based on the lower and upper limits and on $\\bar{R}$ (average radii), $L\\!B$ estimate at 230 GHz ranges from 6.4% to 17.6%."
+    }
+   ]
+  },
+  {
+   "quantity": "Limb brightening range at 405 GHz",
+   "value": "3.3 - 17.0",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 405 (SST) | | 3.3 - 17.0 | | 39.3 | 3.2 |"
+    },
+    {
+     "loc": "Abstract",
+     "quote": "5%-19% (100 GHz), 2%-12% (212 GHz), 6%-18% (230 GHz), and 3%-17% (405 GHz)."
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model limb brightening LB_conv at 100 GHz",
+   "value": "8.9",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 100 (ALMA) | | 5.0 - 18.7 | | 33.6 | 8.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model limb brightening LB_conv at 212 GHz",
+   "value": "4.2",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 212 (SST) | | 1.6 - 12.0 | | 36.5 | 4.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model limb brightening LB_conv at 230 GHz",
+   "value": "16.3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 230 (ALMA) | | 6.4 - 17.6 | | 37.4 | 16.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Convolved SSC model limb brightening LB_conv at 405 GHz",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 405 (SST) | | 3.3 - 17.0 | | 39.3 | 3.2 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact list of the 125 Band 3 and 71 Band 6 FITS files used from the 17 listed ALMA project codes",
+  "Software environment and libraries used for map interpolation, numerical differentiation, circle fitting, and 1-D convolution",
+  "Exact functional form or parameterization used to scale the SSC brightness temperature profiles to arbitrary LB_synth and R_synth values",
+  "How the 34 scan directions or chords across the ALMA FITS images were defined (orientation and spacing) to extract the ~34 limb points per map"
+ ],
+ "missing_for_reproduction": [
+  "Exact list of the 125 Band 3 and 71 Band 6 ALMA single-dish FITS maps selected from the 17 project codes",
+  "Access to the proprietary SST solar maps (2148 at 212 GHz and 1256 at 405 GHz) and reconstructed 2-D SST beam profiles",
+  "Tabulated SSC model brightness temperature profiles at 100, 212, 230, and 405 GHz and the exact scaling formula used to generate the 153 synthetic profiles",
+  "Exact geometry/angles of the ~34 scans extracted across each solar map to find limb points"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The ALMA single-dish FITS images are public in the archive and the algorithmic steps for limb extraction, iterative circle fitting, and 1-D convolution are well described, but SST data require permission, no analysis code or software packages are named or released, the exact subset of 196 ALMA FITS files is not listed, and the SSC model profiles are not provided.",
+ "rediscovery_reason": " For the ALMA portion (100 and 230 GHz), the single-dish FITS maps are directly downloadable from the ALMA Science Archive and Science Verification page under the listed project codes, and the inflection-point and half-power radius algorithms are simple and fully specified with numeric answer keys in Table 1.",
+ "source_card": "cards/2022MNRAS.511..877M/sonnet/card.md"
+}

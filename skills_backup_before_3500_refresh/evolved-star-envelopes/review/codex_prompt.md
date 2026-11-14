@@ -1,0 +1,847 @@
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (evolved-star-envelopes) ===
+---
+name: alma-evolved-star-envelopes
+description: "Measure circumstellar envelopes of evolved stars with ALMA: gas and dust mass-loss rates, expansion velocities, shells, spirals, tori and bipolar outflows around AGB stars, red supergiants, yellow hypergiants and post-AGB nebulae, plus free-free mass-loss rates of hot massive-star winds (WR, LBV, B[e], OB supergiants). Use when asked for a mass-loss rate, an envelope or shell mass, a kinematic age, a 1D or 3D envelope model (Monte Carlo or LVG radiative transfer, SHAPE, LIME), or how much ALMA flux is resolved out in an extended CSE. Built from 24 ALMA papers (2014-2024)."
+---
+
+# Circumstellar envelopes of evolved stars and mass-loss rates
+
+Turns resolved CO (and SiO, SiS, CS, CI) line cubes, mm dust continuum, or mm/cm free-free flux into mass-loss
+rates, envelope masses, velocity fields and timescales. The two mistakes that matter most: (1) treating an
+interferometric map of an envelope that spans tens of arcsec as complete, when papers repeatedly lose 25% or more
+of the flux and their models then overpredict the extended emission (2017A&A...597L...5B, 2016A&A...593A..92B,
+2016A&A...586A...5M, 2017A&A...597A..99W); and (2) quoting a mass-loss rate as measured when it is degenerate with
+abundance, temperature and velocity profiles, or is a lower limit set by optical depth (2016A&A...586A...5M,
+2019A&A...629A.146V, 2020A&A...633A..13D).
+
+**Evidence base.** All counts below are my own count of the `evolved-star-envelopes` pack lines unless I say
+"pack aggregate". The pack has 24 papers; I treat 2020ApJ...892...52L (infrared colour classification of C- vs
+O-rich AGB stars from SiO maser detections) as off-topic for envelope modelling and leave it out of counts, which
+leaves 23. They fall into three groups, and the methods do not transfer between them:
+
+| Group | Papers (my count) | Main tracer |
+|---|---|---|
+| AGB, RSG and yellow hypergiant envelopes | 14 | CO lines, SiO/SiS/CS, dust continuum |
+| Post-AGB and pre-planetary nebulae (disk + outflow, jets, ultra-cold outflow) | 4 | CO, 13CO |
+| Hot massive-star ionized winds (WR, LBV, B[e], OB/BHG, eta Car) | 5 | mm/cm free-free continuum, RRLs |
+
+This is a small pack. Most methods are seen in one to three papers, so the defaults below are "what the few
+papers that did this used", not a consensus. Imaging settings are rarely stated: the pack aggregate lists CASA
+version (3), line-free channels (2), image and cell size (2) and self-cal intervals (2) as the most often missing.
+
+## When to use
+
+- Mass-loss rate of an AGB or RSG star from CO line profiles and maps (2017A&A...597A..99W, 2016A&A...586A...5M,
+  2019MNRAS.484.1865H, 2020A&A...633A..13D).
+- Detached shells, spirals, arcs and episodic mass loss: shell mass and temperature, shell-to-shell spacing,
+  kinematic ages (2016A&A...586A...5M, 2019A&A...629A.146V, 2020A&A...633A..13D).
+- Radial abundance profiles and photodissociation radii of parent molecules (SiO, SiS, CS, CO, CI)
+  (2019A&A...629A.146V, 2018A&A...612L..11S, 2015MNRAS.453.4324M).
+- 3D morpho-kinematic models of tori, bipolar outflows and binary-shaped winds (2017A&A...605A..28D,
+  2019MNRAS.484.1865H, 2018A&A...616L...3B, 2024A&A...691A..57M).
+- Post-AGB nebulae with a rotating disk plus an expanding outflow: masses, angular momentum, disk lifetime
+  (2016A&A...593A..92B, 2017A&A...597L...5B), and pre-planetary nebula jets and tori (2017ApJ...835L..13S,
+  2017ApJ...841..110S).
+- Dust mass and dust mass-loss rate from mm continuum around AGB stars or RSGs (2018A&A...615A..28D,
+  2015A&A...573L...1O).
+- Free-free mass-loss rates of hot, massive evolved stars from ALMA continuum alone or with ATCA
+  (2018A&A...617A.137F, 2019A&A...632A..38A, 2017MNRAS.464L..75F, 2017ApJ...841..130A).
+- Magnetic field morphology from line polarisation (Goldreich-Kylafis) in CSEs (2024A&A...686A.274V,
+  2020ApJ...899..152H).
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| Line identification in a CSE line survey | `line-identification` (2018A&A...615A..28D is a survey, but this skill only covers its dust and wind physics) |
+| Full non-LTE excitation theory, collisional rates, LVG grids in general | `non-lte-excitation` |
+| Chemical network modelling of the envelope beyond parent abundance profiles | `chemical-modelling` |
+| Free-free versus dust decomposition of the continuum in general | `free-free-synchrotron` |
+| Combining 12 m, ACA and Total Power (feather, UVSHORT) in detail | `array-combination` |
+| Linear polarisation calibration and debiasing in general | `polarization-magnetic-fields` |
+| Young-star outflows (protostellar jets, momentum, force) | `outflow-energetics` |
+| Keplerian disk mass and inclination around young stars | `keplerian-disk-kinematics` |
+| Classifying AGB populations from IR colours or maser surveys | not covered here (2020ApJ...892...52L is the only such pack paper) |
+
+## Steps
+
+1. **Recover the extended flux before modelling anything.**
+   - Goal: know how much emission the interferometer filtered out.
+   - Method seen: smooth ALMA cubes to each single-dish beam with CASA `imsmooth` and compare spectra with APEX,
+     SEST or IRAM 30 m spectra (2016A&A...586A...5M, card). Combine ACA with Total Power via `feather`, using the TP
+     map as the initial clean model (2017A&A...605A..28D, card). Merge ALMA with IRAM 30 m pseudo-visibilities with
+     GILDAS UVSHORT after continuum subtraction (2019A&A...629A.146V, card).
+   - Evidence of scale: about 25% of 12CO 3-2 flux filtered out (2017A&A...597L...5B); negative artefacts from
+     filtering of emission larger than 30 arcsec (2017A&A...597A..99W); Cycle 0 without ACA could not constrain
+     the mass-loss history (2016A&A...586A...5M); filtered CO flux inflated polarisation fractions by a factor 2-3
+     (2024A&A...686A.274V).
+   - If you cannot recover the flux, model the single-dish spectra for the integrated quantities and use ALMA only
+     for morphology, as 2016A&A...586A...5M did for the post-pulse wind.
+
+2. **Image lines and continuum.**
+   - Weighting seen: natural (2016A&A...586A...5M, 2017A&A...597A..99W, 2017A&A...605A..28D for 13CO); Briggs
+     robust 0.5 (2018A&A...615A..28D, 2024A&A...686A.274V); both a natural and a robust 0.5 cube
+     (2019A&A...629A.146V). All from cards.
+   - Deconvolution: iterative masks with decreasing CLEAN thresholds (2016A&A...586A...5M, 2017A&A...605A..28D);
+     Steer-Dewdney-Ito CLEAN because Hogbom CLEAN can add artificial clumpiness to extended emission
+     (2019A&A...629A.146V, card).
+   - Continuum: `uvcontsub` with a first-order polynomial (2017A&A...597A..99W, card) or unspecified order
+     (2024A&A...686A.274V). Self-calibrate on line-free continuum and apply to all data (2018A&A...615A..28D); two
+     rounds of phase-only self-cal with solint "inf" then "int" (2024A&A...686A.274V).
+   - Record what you used: cell, image size, threshold and line-free ranges are the settings the cards most often
+     flag as missing (pack aggregate).
+
+3. **Fix the star: position, systemic velocity, terminal velocity.**
+   - Locate the star from the continuum peak, a uniform-disk fit in the uv plane, and centroids of high-excitation
+     lines; check against Gaia (2018A&A...616L...3B: 15 mas disk, ±3 mas absolute).
+   - Expansion velocity from the line half-width: values used in the pack run from 2.5 km/s
+     (2018A&A...612L..11S) through 8.5 (2020ApJ...899..152H) and 14.3 (2016A&A...586A...5M) to 100 ± 10 km/s for a
+     yellow hypergiant (2017A&A...597A..99W).
+   - For aspherical winds, separate components: EP Aqr used Veq = 1.9 km/s and Vpole = 10.3/10.7 km/s with
+     V = Veq + (Vpole - Veq) sin^2(alpha) (2019MNRAS.484.1865H).
+
+4. **Choose the mass-loss method for the data you have** (table below), then derive Mdot.
+
+   | Method | Papers (my count) | Gives | Key assumptions |
+   |---|---|---|---|
+   | 1D Monte Carlo non-LTE RT on CO, grid + chi2 or manual fit | 3: 2017A&A...597A..99W, 2016A&A...586A...5M, 2018A&A...612L..11S | Mdot, v_exp, T(r) | constant isotropic Mdot, 1/r^2 density, CO/H2 |
+   | LVG + ray tracing, abundance profiles fitted at fixed Mdot | 1: 2019A&A...629A.146V | X(r), photodissociation radii | spherical, H2-only collisions |
+   | Integrate a fitted 3D density model (SHAPE/SHAPEMOL or own code) | 3: 2017A&A...605A..28D, 2016A&A...593A..92B, 2017A&A...597L...5B | mass, momentum, average Mdot over the kinematic age | LVG, mean particle mass |
+   | De-projection of temperature-corrected cubes into dM/dOmega | 1: 2019MNRAS.484.1865H | Mdot by direction | velocity law, CO/H |
+   | Optically thin CO mass formula over a velocity range | 1: 2020A&A...633A..13D | mass and Mdot of an eruption | thin, thermalised, Tex |
+   | Analytic optical depth (12CO/13CO ratio or absorption) | 2: 2017ApJ...835L..13S, 2017ApJ...841..110S | lower limits on Mdot | velocity law, abundance |
+   | Optically thin dust continuum | 2: 2018A&A...615A..28D, 2015A&A...573L...1O | dust mass, dust Mdot | kappa, T_d, drift or dust velocity |
+   | Free-free flux, Wright & Barlow / Panagia & Felli | 3: 2018A&A...617A.137F, 2019A&A...632A..38A, 2017MNRAS.464L..75F | ionized Mdot | Te, mu, Z, gamma, v_inf, smooth wind |
+   | Collimated ionized wind (Reynolds 1986) | 1: 2017ApJ...841..130A | Mdot for a jet-like wind | epsilon from spectral index, inclination |
+
+   - Constant-Mdot density (general practice): n_H2(r) = Mdot / (4 pi r^2 v_exp m_H2), which is the 1/r^2 law the
+     pack's 1D models assume (2016A&A...586A...5M, 2017A&A...597A..99W, 2018A&A...612L..11S, 2019A&A...629A.146V,
+     2024A&A...686A.274V).
+   - Free-free (general practice, Wright & Barlow form): Mdot [Msun/yr] = 0.095 mu v_inf S_nu^(3/4) d^(3/2) /
+     (Z gamma^(1/2) g_ff^(1/2) nu^(1/2)), with v_inf in km/s, S_nu in Jy, d in kpc, nu in Hz; it assumes a
+     spherical, isothermal, fully ionized wind at constant v_inf. Westerlund 1 papers used Te = 0.5 Teff and a
+     smooth wind (f_cl = 1) (2018A&A...617A.137F, 2019A&A...632A..38A), so the result is really Mdot f_cl^(1/2).
+   - Dust (general practice): M_d = S_nu d^2 / (kappa_nu B_nu(T_d)), valid only if optically thin. Then dust
+     Mdot = M_d / t_cross, with t_cross from the shell size over the dust velocity (2015A&A...573L...1O, 8 arcsec,
+     V_d about 60 km/s) or from a momentum-equation solution with drift velocity capped at 20 km/s
+     (2018A&A...615A..28D).
+
+5. **Model shells, arcs and episodic mass loss.**
+   - Detached shell (2016A&A...586A...5M, card): extract a ring of ±3 arcsec around the 19.5 arcsec shell from maps
+     smoothed to 4 arcsec and 1.5 km/s; fit a 1D Monte Carlo RT grid (shell mass 2.5e-3 to 4.75e-3 Msun in steps
+     of 0.25e-3, T 10-290 K in steps of 20 K, Gaussian shell FWHM 2 arcsec, 20% observational error) by chi2 on
+     integrated intensities; then convolve the best shell model to the single-dish beams, subtract it, and model
+     the residual as the present-day wind.
+   - Azimuthal averages: IRC+10216 shells at about 150, 315, 420 and 560 R* in SiO, SiS and CS coincide with dust
+     shells, taken as variable mass loss on timescales of hundreds of years (2019A&A...629A.146V, card).
+   - Kinematic age t = r / v_exp, for example 455 yr at R_out for 23 km/s (2017ApJ...835L..13S); 730 yr torus and
+     160 yr outflow (2017A&A...605A..28D); about 1000 yr for the IW Car outflow (2017A&A...597L...5B).
+   - Spirals and companions: compare with hydrodynamic models (PHANTOM SPH, orbits checked with REBOUND over 1000
+     outer periods; 2024A&A...691A..57M) or with a SHAPE/LIME model and simulated ALMA observations
+     (2020A&A...633A..13D, 2017A&A...605A..28D used `simobserve` with the real configurations and on-source times,
+     card).
+
+6. **Derive masses, momenta and lifetimes.**
+   - Integrate the fitted density with a mean particle mass: 3e-24 g (2017A&A...605A..28D), 2.35 amu
+     (2024A&A...686A.274V), mu = 2.38 (2024A&A...691A..57M).
+   - Post-AGB disks: disk lifetime = disk mass / outflow Mdot, about 8000 yr in both pack cases
+     (2016A&A...593A..92B, 2017A&A...597L...5B).
+   - Compare outflow momentum with L/c (2017A&A...605A..28D).
+
+7. **State uncertainties honestly** (see Pitfalls and Verification). Report Mdot with its distance, abundance and
+   velocity scalings written out, as 2017MNRAS.464L..75F ((d/5 kpc)^1.5), 2015A&A...573L...1O ((V_d/60 km/s)) and
+   2017ApJ...835L..13S ((V_AGB/23 km/s)) do.
+
+## Parameter defaults and ranges
+
+All from the pack; counts are my own count of pack lines. Longer table: `references/parameters.md`.
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| Density law | 1/r^2 (constant Mdot) | constant or from fitted 3D model | 5 | 2016A&A...586A...5M, 2017A&A...597A..99W, 2019A&A...629A.146V |
+| Turbulent velocity | 1 km/s | 1 km/s | 3 | 2017A&A...597A..99W, 2019A&A...629A.146V, 2024A&A...686A.274V |
+| CO/H2 (12CO) | no single default | 1e-4 to 5e-4 (CO/H 2.5e-4) | 4 | 1e-4 2017A&A...597A..99W; 4.3e-4 2016A&A...586A...5M (card); 5e-4 2018A&A...612L..11S; CO/H 2.5e-4 2019MNRAS.484.1865H |
+| Gas-to-dust | 300 for C-rich | 40 to 300 | 3 | 300 2019A&A...629A.146V, 2024A&A...686A.274V (CW Leo); 167 R Leo 2024A&A...686A.274V; 40 YHG 2017A&A...597A..99W |
+| Dust opacity type | amorphous carbon (C-rich), silicate (O-rich) | kappa about 7 cm^2/g at 345 GHz | 2 | 2024A&A...686A.274V, 2018A&A...615A..28D |
+| Gas temperature law | power law in r | exponent -0.6 to -0.85 | 2 | alpha 0.6 2020ApJ...899..152H; beta -0.85 2016A&A...586A...5M |
+| Velocity law | constant v_exp | beta law, or 3 to 14.3 km/s acceleration | 5 | constant 2019A&A...629A.146V, 2018A&A...612L..11S; beta law 2020ApJ...899..152H; gradual 2016A&A...586A...5M |
+| CO energy levels in RT | J up to 40, v=0 and v=1 | | 1 | 2017A&A...597A..99W |
+| RT radial grid | 100 log-spaced shells | | 1 | 2019A&A...629A.146V |
+| Dust temperature | single T | 200 K to 1530 K | 2 | 200 K 2015A&A...573L...1O; 200-650 K and 400-1530 K 2018A&A...615A..28D |
+| Free-free Te | 0.5 Teff | 10,000 K for cool stars | 2 | 2018A&A...617A.137F, 2019A&A...632A..38A |
+| Free-free mu | 1.4 OB | 1.4 to 4.7 by type | 2 | 2018A&A...617A.137F, 2019A&A...632A..38A |
+| Clumping f_cl | 1 (smooth) | | 2 | 2018A&A...617A.137F, 2019A&A...632A..38A |
+| Mass-loss rates found or adopted (AGB/YHG) | | 0.9e-7 to 8e-5 Msun/yr | 8 | 0.9e-7 2019MNRAS.484.1865H; 2.7e-5 2019A&A...629A.146V (adopted); 8e-5 2017A&A...597A..99W |
+| Mass-loss rates found (hot massive stars) | | about 2e-5 to 6.4e-5 Msun/yr | 4 | 2017ApJ...841..130A, 2018A&A...617A.137F, 2019A&A...632A..38A, 2017MNRAS.464L..75F |
+
+## Software
+
+Pack aggregate: every named tool appears in exactly one paper's matched steps, so there is no standard code. Card
+details add a few more.
+
+| Purpose | Software | Papers |
+|---|---|---|
+| 1D non-LTE CO radiative transfer | Monte Carlo code of Schoier & Olofsson 2001 (Bernes 1979) | 2016A&A...586A...5M, 2017A&A...597A..99W (pack aggregate, 1 each) |
+| 1D non-LTE RT with chemistry input | mcp, plus a UCL_CHEM-type CSE chemical model | 2018A&A...612L..11S |
+| LVG + ray tracing for SiO/SiS/CS | code of Agundez et al. 2012 | 2019A&A...629A.146V |
+| 3D morpho-kinematic + non-LTE RT | SHAPE + SHAPEMOL (public) | 2017A&A...605A..28D (card) |
+| 3D RT and line polarisation | LIME 1.9.5 + PORTAL | 2024A&A...686A.274V |
+| Envelope ODE (density from continuity) | SciPy `odeint` | 2020ApJ...899..152H |
+| Binary/triple wind hydrodynamics | PHANTOM (SPH), REBOUND (orbit stability) | 2024A&A...691A..57M |
+| Expected Mdot from stellar evolution | MESA | 2015MNRAS.453.4324M |
+| ALMA + single-dish merging | GILDAS UVSHORT; CASA `feather`; CASA `imsmooth` for comparison | 2019A&A...629A.146V, 2017A&A...605A..28D, 2016A&A...586A...5M (cards) |
+| Calibration, imaging, continuum subtraction | CASA (5.7.2 named once) | 2024A&A...686A.274V, 2018A&A...615A..28D, 2017A&A...597A..99W (cards) |
+
+Several model codes were not released or not named (2016A&A...593A..92B, 2017A&A...597L...5B, 2017ApJ...835L..13S).
+
+## Pitfalls
+
+- **Resolved-out flux biases everything downstream** (step 1). Models fitted to filtered maps overpredict extended
+  emission (2016A&A...593A..92B, 2017A&A...597L...5B); dust masses from filtered maps are low
+  (2015A&A...573L...1O, 2018A&A...615A..28D); polarisation fractions go up by 2-3x (2024A&A...686A.274V).
+- **Degeneracy.** Mdot, half-abundance radius, temperature and velocity profiles trade off
+  (2016A&A...586A...5M); density versus abundance with only one or two lines per molecule (2019A&A...629A.146V);
+  de-projection is under-determined (2019MNRAS.484.1865H); triple-system SPH parameter space is degenerate
+  (2024A&A...691A..57M). Fit several transitions at once where you can.
+- **Fits by eye.** Several models were not formally fit (2020A&A...633A..13D; 2017A&A...597L...5B per its card;
+  2019A&A...629A.146V matched azimuthal averages "on average"). Treat their numbers as indicative.
+- **Optical depth.** The thin-CO mass is a lower limit when tau is near 1 (2020A&A...633A..13D); dust in the
+  brightest clump may be thick (2015A&A...573L...1O); CO in absorption gives only a lower-limit size
+  (2017ApJ...841..110S).
+- **Spherical, constant-Mdot templates on non-spherical winds.** The AGB wind model applied to a yellow
+  hypergiant gives only an order-of-magnitude Mdot (2017A&A...597A..99W); LVG may not apply in a torus
+  (2017A&A...605A..28D); non-spherical shells make recombination-line fits degenerate (2014ApJ...791...95A).
+- **Distance.** CO-based Mdot scales roughly as d^2 (general practice); free-free Mdot scales as d^1.5
+  (2017MNRAS.464L..75F). R Scl distance was "very uncertain" (2016A&A...586A...5M). Carry the scaling explicitly.
+- **Contamination.** ISM CO along the line of sight must be masked out of the fitted spectrum
+  (2017A&A...597A..99W); diffuse cluster emission can be misattributed to stars (2019A&A...632A..38A);
+  non-thermal sources must be excluded before free-free Mdot (2018A&A...617A.137F).
+- **External UV.** The interstellar or cluster radiation field sets the CO and 13CO photodissociation radius and
+  can make CO undetectable (2015MNRAS.453.4324M, 2017ApJ...835L..13S, 2018A&A...612L..11S).
+- **Comparing models to data without the instrument.** 2024A&A...691A..57M did not apply an ALMA simulator;
+  2017A&A...605A..28D did (simobserve), which is the safer route.
+- **Not stated in cards** (pack aggregate): CASA version, line-free channels, image and cell size, self-cal
+  intervals, TP combination method, model grids. If you reuse a paper's numbers, you cannot rebuild their images.
+
+## Verification checks
+
+What the papers did:
+- Compare the integrated model with single-dish spectra of several transitions: IRAM 30 m (2019A&A...629A.146V);
+  JCMT CO 2-1, 3-2, 4-3 (2018A&A...612L..11S); emitting sizes against ALMA and single-dish limits
+  (2016A&A...586A...5M).
+- Compare Mdot with independent literature values or methods: free-free versus non-LTE models, within a factor
+  of about 2 (2018A&A...617A.137F); radio versus ALMA flux for clumping (2019A&A...632A..38A); CO model densities
+  against other CO Mdot models (2020ApJ...899..152H); collimated versus spherical wind, which differ by a factor
+  of 2 or more (2017ApJ...841..130A).
+- Vary parameters until the model is incompatible with data: about 50% on density and abundance, 30% on
+  temperature (2016A&A...593A..92B).
+- Quote chi2 errors from the 1 sigma ellipse (2017A&A...597A..99W).
+- Check a dynamical prediction against the measured expansion velocity (2014ApJ...791...95A: 19 km/s).
+- Test sensitivity to a velocity-law choice (2019MNRAS.484.1865H: Veq versus escape velocity, "very small"
+  difference) and to IR pumping (2019A&A...629A.146V).
+- Check astrometry against Gaia (2018A&A...616L...3B) and orbital stability with N-body integration
+  (2024A&A...691A..57M).
+
+What a careful referee adds:
+- A missing-flux number for every map used in a fit (ALMA smoothed to the single-dish beam versus single-dish).
+- Model images passed through `simobserve`/`tclean` with the real uv coverage before comparing to data.
+- Mdot quoted with explicit scalings for d, v_exp, CO/H2 (or Te, mu, f_cl for free-free), and an optical-depth
+  statement saying whether it is a lower limit.
+- At least two transitions (or a 12CO/13CO pair) before claiming a temperature or Mdot, given the degeneracies
+  above.
+
+## Source cards
+
+Full list with titles: `references/sources.md`. Most informative for methods:
+
+- 2016A&A...586A...5M: detached shell RT grid, single-dish shell subtraction, missing-flux comparison
+- 2017A&A...597A..99W: Monte Carlo CO RT grid with chi2 errors, ISM masking, YHG caveat
+- 2019A&A...629A.146V: UVSHORT merge, LVG abundance profiles, shells in azimuthal averages
+- 2017A&A...605A..28D: ACA + TP feather, SHAPEMOL 3D model, simobserve, outflow mass and momentum
+- 2020A&A...633A..13D: optically thin CO eruption mass, lower-limit reasoning
+- 2019MNRAS.484.1865H: de-projection of an aspherical wind into dM/dOmega
+- 2018A&A...615A..28D: dust mass and dust Mdot from 345 GHz continuum
+- 2015A&A...573L...1O: RSG dust mass-loss from resolved-out flux
+- 2018A&A...612L..11S: chemistry plus non-LTE RT for CI
+- 2016A&A...593A..92B: post-AGB disk and outflow, parameter-variation uncertainties
+- 2017A&A...597L...5B: post-AGB disk lifetime, filtered flux
+- 2017ApJ...835L..13S: 12CO/13CO Mdot lower limit, kinematic ages
+- 2017ApJ...841..110S: analytic optical-depth Mdot with radial dependence
+- 2024A&A...686A.274V: line polarisation in CSEs, LIME + PORTAL
+- 2024A&A...691A..57M: SPH triple-system wind shaping
+- 2018A&A...617A.137F: free-free Mdot census with Te, mu, Z, gamma choices
+- 2019A&A...632A..38A: radio versus ALMA free-free, clumping
+- 2017ApJ...841..130A: collimated versus spherical ionized wind Mdot
+
+=== references/parameters.md ===
+# Per-paper parameters for `evolved-star-envelopes`
+
+Every value below is from the `evolved-star-envelopes` evidence pack (aggregates or excerpts), or from the
+verified methods card of the same paper where marked "(card)". Values are what each paper adopted or found, not
+recommendations. Off-topic paper 2020ApJ...892...52L is left out.
+
+## Cool winds: AGB, RSG, yellow hypergiant
+
+| Paper | Star | Method | Adopted inputs | Result |
+|---|---|---|---|---|
+| 2016A&A...586A...5M | R Scl (C-rich AGB, detached shell) | 1D Monte Carlo RT (Schoier & Olofsson 2001), shell grid + chi2; SD residual by hand | a = 2.5; T_kin power law beta = -0.85; R0 = 3 R*; v from 3 to 14.3 km/s; blackbody Teff 2300 K, L 5200 Lsun; f(12CO) = 4.3e-4 (card); shell radius 19.5", FWHM 2", 20% obs error (card) | post-pulse Mdot 1.6e-5 Msun/yr (half-abundance radius 7.2"); recent Mdot 3.5e-6 Msun/yr |
+| 2017A&A...597A..99W | IRAS 17163-3907 (YHG) | Monte Carlo CSE RT grid, chi2 on CO spectrum excluding ISM and spur | CO/H2 = 1e-4; turbulence 1 km/s; gas-to-dust 40; d = 4 kpc; CO levels to J = 40, v = 0 and 1 | v_exp 100 ± 10 km/s; Mdot 8 ± 1.5e-5 Msun/yr; wind gas mass at least 0.04 Msun |
+| 2019A&A...629A.146V | IRC+10216 (C-rich AGB) | LVG + ray tracing, 100 log shells, abundance profiles adjusted by hand | d = 123 pc; R* = 4e13 cm; T* = 2330 K; Mdot = 2.7e-5 Msun/yr (input); v_exp 5/11/14.5 km/s; turbulence 1 km/s; gas-to-dust 300; H2-only collisions | SiO about 1e-7; CS about 1e-6 falling to 5e-7 at 100-300 R*; SiS 1-2e-6 to 70-100 R*; disappearance radii SiS 600, SiO 700-800, CS 1000 R* |
+| 2019MNRAS.484.1865H | EP Aqr (O-rich AGB) | de-projection of temperature-corrected cubes, dM/dOmega | Veq = 1.9 km/s; Vpole = 10.3 (blue) / 10.7 (red) km/s; CO/H about 2.5e-4 | Mdot 0.9e-7 Msun/yr (no absorption) |
+| 2020A&A...633A..13D | pi1 Gru (S-type AGB) | optically thin CO 3-2 mass formula (Olofsson & Nyman), intensity over high-velocity range x 2 | D = 160 pc; f = 6.5e-4; aperture efficiency 0.76; Tex = 15 K | eruption mass 4.3e-5 Msun; Mdot 3.3e-6 Msun/yr (lower limit) |
+| 2017A&A...605A..28D | pi1 Gru | integrate fitted 3D density (SHAPE + SHAPEMOL, card) | mean particle mass 3e-24 g | torus-phase Mdot 7.7e-7 Msun/yr; outflow mass 7.3e-4 Msun; momentum 9.6e37 g cm/s; ages 730 yr (torus), 160 yr (outflow) |
+| 2020ApJ...899..152H | R Leo (O-rich AGB; CARMA) | power-law T, beta-law v, continuity ODE (SciPy) | R* = 1.4 AU; T* = 1800 K; Rc = 10.7 AU; v_inf = 8.5 km/s; Mdot = 1.1e-7 Msun/yr; beta = 0-5; alpha = 0.6 | density range consistent with literature CO models |
+| 2018A&A...612L..11S | omi Cet (O-rich AGB) | chemistry model then Monte Carlo non-LTE RT (mcp) | Mdot 2.5e-7 Msun/yr; v_exp 2.5 km/s; 12CO/H2 = 5e-4; 13CO/H2 = 5e-5; ISRF only external UV | peak CI abundance 2.4e-5 |
+| 2024A&A...686A.274V | CW Leo, R Leo | LIME 1.9.5 + PORTAL polarised RT | turbulence 1 km/s; mean particle mass 2.35 amu; gas-to-dust 300 (CW Leo), 167 (R Leo); amorphous carbon or silicate opacity; CW Leo dipole inclined 45 deg, PA 125 deg | polarisation morphology qualitatively matched |
+| 2024A&A...691A..57M | R Aql (triple-system models) | PHANTOM SPH, REBOUND stability | M1 = 1.6, M2 = 0.4 Msun; ai = 5 au; ao = 35 au; Mdot = 1.1e-6 Msun/yr; T1 = 2800 K; v_ini 8 or 15 km/s; M3 = 0.1/0.6/1.2 Msun; gamma = 1.2; mu = 2.38 | flattening ratio about 0.5 for v08 triples; inner period 7.91 yr |
+| 2015MNRAS.453.4324M | 47 Tuc AGB stars | expected Mdot from Reimers/SC05 + MESA budget; 3D Monte Carlo cluster ISRF | 0.53 Msun final WD mass; one star at RGB tip per 80000 yr | expected Mdot 1.2-3.5e-7 Msun/yr; CO non-detection explained by dissociation |
+| 2018A&A...615A..28D | IK Tau, R Dor (AGB) | optically thin dust after subtracting a stellar point source | kappa about 7 cm^2/g; T_d 200-650 K (IK Tau), 400-1530 K (R Dor); drift velocity below 20 km/s | dust mass 3.7e-7 and 2e-8 Msun; dust Mdot about 1e-8 and 5e-9 Msun/yr; factor 5 uncertainty |
+| 2015A&A...573L...1O | VY CMa (RSG) | dust mass of resolved-out emission over 8" shell / timescale | V_d about 60 km/s; T = 200 K | dust Mdot 5e-6 (V_d/60 km/s) Msun/yr |
+| 2018A&A...616L...3B | R Aqr (symbiotic) | uniform disk fitted in uv plane; line centroids | | 15 mas disk; position ±3 mas, Gaia-consistent |
+
+## Post-AGB and pre-planetary nebulae
+
+| Paper | Object | Method | Adopted inputs | Result |
+|---|---|---|---|---|
+| 2016A&A...593A..92B | Red Rectangle | fitted disk + outflow model, parameters varied to incompatibility | outflow gas comes from disk; constant Mdot | disk 1.3e-2 Msun (about 50%); outflow 1.2e-3 Msun; lifetime about 8000 yr |
+| 2017A&A...597L...5B | IW Car | fitted model, kinematic time and Mdot | | outflow age about 1000 yr; disk lifetime about 8000 yr |
+| 2017ApJ...835L..13S | IRAS 16342-3814 | 12CO/13CO in 26 deg wedges, optical depth, Tex | 13CO photodissociated beyond R_out | Mdot above 3.5e-4 (V_AGB/23 km/s) Msun/yr; age 455 yr |
+| 2017ApJ...841..110S | Boomerang Nebula | analytic tau(1-0) with Mdot proportional to V^a, V linear in r | V0 = 164 km/s; R0 = 80"; r_in = 6"; f_CO = 1.3e-3; D = 1.5 kpc | Mdot at least 2.1e-3 Msun/yr at 80" (a = 0); cold mass at least 3.3 Msun; a 0.9-2.2 |
+
+## Hot massive-star ionized winds
+
+| Paper | Object | Method | Adopted inputs | Result |
+|---|---|---|---|---|
+| 2018A&A...617A.137F | Westerlund 1 (WR, OB, BHG) | Wright & Barlow with Gaunt factor, f_cl = 1 | Te = 0.5 Teff; d = 5 kpc; mu = 1.4, Z = 1, gamma = 1 (OB); mu = 4.0 (WN6 or earlier), 2.0 (later WN), 4.7 (WC8/9); mu = 1.6, gamma = 0.8, Z = 0.9 (BHG) | mean WR Mdot 3.6 ± 0.4e-5; WC 4.2 ± 0.7e-5 Msun/yr; LBV log Mdot about -4.6 |
+| 2019A&A...632A..38A | Westerlund 1 (ATCA vs ALMA) | Wright & Barlow; clumping from radio/ALMA ratio | d = 5 kpc; Te = 0.5 Teff (hot), 10,000 K (cool); mu 1.4/2.0/4/4.7 | mean WR Mdot 4.61e-5 Msun/yr |
+| 2017MNRAS.464L..75F | Wd1-9 (sgB[e]) | line-width velocity with mm and radio fluxes, Dougherty et al. model | v about 100 km/s; d = 5 kpc; spherical | Mdot about 6.4e-5 (d/5 kpc)^1.5 Msun/yr |
+| 2017ApJ...841..130A | RMC 127 (LBV) | Reynolds 1986 collimated wind; Panagia & Felli spherical for comparison | D = 48.5 kpc; T = 6420 K; v = 148 km/s; varphi = 75 deg; x0 = 1; mu = 1; theta0 = 0.5 rad; nu_max = 1e13 Hz | epsilon 1.34 (model 1); spherical Mdot 2.1 ± 0.4e-5 Msun/yr; collimated a factor 2 or more lower |
+| 2014ApJ...791...95A | eta Car | Weaver et al. wind-blown shell then snow-plow | t2 = 71 yr; ambient density 1e5 and 1e6 cm^-3 | predicted v2 = 19 km/s matches shell expansion |
+
+=== EVIDENCE PACK (evolved-star-envelopes) ===
+# Evidence pack: Circumstellar envelopes of evolved stars and mass-loss rates (`evolved-star-envelopes`)
+
+Scope: AGB/RSG envelopes, mass-loss rates, wind kinematics, shells and spirals
+
+Built from 24 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2014-2024.
+Matcher (regex over analysis steps): `mass[- ]loss rate|circumstellar envelope|\bagb\b|red supergiant|\bcse\b|post[- ]agb|planetary nebula|stellar wind`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- evolved_stars: 20
+- stellar_physics: 9
+- star_formation: 3
+- milky_way_ism: 3
+- astrochemistry: 3
+
+### Software named in the matched steps
+- portal: 1
+- lime 1.9.5: 1
+- mesa: 1
+- monte carlo radiative transfer code (schöier & olofsson 2001): 1
+- scipy: 1
+- phantom: 1
+- rebound: 1
+- code of agundez et al. 2012: 1
+- monte carlo cse code (bernes 1979; schoier & olofsson 2001): 1
+- ucl_chem-type cse chemical model (mcelroy13): 1
+- mcp: 1
+
+### Fitting methods (most common phrasings)
+- analytic solution: 1
+- Manual fit to SD spectra; model degenerate: 1
+- Manual adjustment of abundance profiles to match azimuthal averages on average; no formal fit stated: 1
+- chi2 minimisation over grid; errors from 1 sigma chi2 error ellipse: 1
+- Uniform round disk fitted in the uv plane: 1
+
+### Validation checks used
+- compared with spherical-wind Panagia & Felli Mdot: 1
+- Optical depth about unity, so mass is a lower limit: 1
+- Qualitative comparison of predicted and observed polarisation morphology and fractions: 1
+- Compared with radio mass-loss rates and non-LTE model values for WR F and S (within factor ~2): 1
+- compared with MWC349A and eta Carinae: 1
+- Predicted v2=19 km/s agrees with model expansion velocity: 1
+- Emitting region sizes consistent with ALMA/SD limits: 1
+- Density ranges compared across literature CO mass-loss models: 1
+- Mardling & Aarseth stability criterion and REBOUND N-body integration over 1000 outer periods: 1
+- Comparison with mm and optical literature mass-loss rates: 1
+- Synthetic spectra compared with IRAM-30m spectra; IR pumping test: 1
+- Known C-stars from Alksnis fall in C region; three CS-detected sources checked: 1
+- Compared with dust-to-gas ratios from SED/SPHERE studies in literature; uncertainty factor ~5: 1
+- CO(2-1,3-2,4-3) JCMT lines reasonably reproduced: 1
+- Uncertainty by varying parameters until predictions are incompatible with data (about 50% on density and abundance, 30%…: 1
+- Alternative Veq = escape velocity gives very small difference: 1
+- Compatible with GAIA DR2: 1
+
+### Key parameters and settings (bibcode: value)
+- 2017ApJ...841..130A: S at 349.5 GHz, D=48.5 kpc, T=6420 K, v=148 km/s, varphi=75 deg, x0=1, mu=1, theta0=0.5 rad, numax=1e13 Hz
+- 2020A&A...633A..13D: D=160 pc, f=6.5e-4, eta=0.76, Tex=15 K
+- 2024A&A...686A.274V: CW Leo dipole inclined 45 deg, PA 125 deg
+- 2024A&A...686A.274V: turbulent velocity 1 km/s; gas mean particle mass 2.35 AMU
+- 2018A&A...617A.137F: Te = 0.5 Teff; d = 5 kpc; mu=1.4,Z=1,gamma=1 for OB; mu=4.0 (WN6 or earlier), 2.0 (later WN), 4.7 (WC8/9); mu=1.6, gamma=0.8, Z=0.9 for BHGs
+- 2014ApJ...791...95A: t2 = 71 yr; ambient density 1e5 and 1e6 cm^-3
+- 2016A&A...586A...5M: a=2.5; T_kin power law beta=-0.85; R0 = 3 stellar radii; velocity 3 to 14.3 km/s
+- 2020ApJ...899..152H: R*=1.4 AU, T*=1800 K, Rc=10.7 AU, v_inf=8.5 km/s, Mdot=1.1e-7 Msun/yr, beta=0-5
+- 2024A&A...691A..57M: M1=1.6, M2=0.4 Msun, ai=5 au, ao=35 au, Mdot=1.1e-6 Msun/yr, T1=2800 K, v_ini 8 or 15 km/s, M3=0.1/0.6/1.2 Msun
+- 2019A&A...629A.146V: d = 123 pc; R* = 4e13 cm; T* = 2330 K; Mdot = 2.7e-5 Msun/yr; vexp 5/11/14.5 km/s; microturbulence 1 km/s; gas-to-dust 300
+- 2018A&A...615A..28D: Drift velocity forced below 20 km/s
+- 2017A&A...597A..99W: CO levels up to J=40, ground and first vibrationally excited states
+- 2018A&A...612L..11S: mass-loss 2.5e-7 Msun/yr, v_exp 2.5 km/s, 12CO/H2=5e-4, 13CO/H2=5e-5
+- 2017ApJ...841..110S: V0=164 km/s, R0=80", r_in=6", f_CO=1.3e-3
+- 2019MNRAS.484.1865H: Veq=1.9 km/s; Vpole=10.3 (blue)/10.7 (red) km/s
+
+
+### Assumptions (bibcode: value)
+- 2017ApJ...841..130A: isothermal, constant-velocity outflow; model 1 fully ionized conical, model 2 with recombinations qx=-0.2
+- 2020A&A...633A..13D: Optically thin CO 3-2, thermalised
+- 2024A&A...686A.274V: Spherically symmetric envelope expanding at constant velocity; amorphous carbon opacities (CW Leo), silicate (R Leo); gas-to-dust 300 (CW Leo), 167 (R Leo)
+- 2018A&A...617A.137F: mm flux not affected by binarity; wind emission thermal; two non-thermal sources excluded
+- 2015MNRAS.453.4324M: 0.53 Msun final WD mass; one star passes RGB tip every 80000 yr
+- 2017MNRAS.464L..75F: spherical geometry, distance 5 kpc, stellar parameters from Dougherty et al. 2010
+- 2016A&A...586A...5M: Constant mass-loss rate, 1/r^2 density, black-body Teff 2300 K, L 5200 Lsun
+- 2020ApJ...899..152H: alpha=0.6 temperature exponent; R0~R*
+- 2024A&A...691A..57M: gamma = 1.2, mu = 2.38
+- 2019A&A...632A..38A: Distance 5 kpc; Te = 0.5 Teff for hot stars, 10,000 K for cool stars; mu 1.4/2.0/4/4.7 by type; spherical smooth thermal wind
+- 2015A&A...573L...1O: Vd ~60 km/s, T = 200 K
+- 2019A&A...629A.146V: Spherical envelope, constant expansion velocity, collisions with H2 only
+- 2018A&A...615A..28D: Optically thin dust, opacity ~7 cm2/g, dust temperature 200-650 K (IK Tau) and 400-1530 K (R Dor)
+- 2017A&A...597A..99W: [CO]/[H2]=1e-4, turbulent velocity 1 km/s, gas-to-dust 40, distance 4 kpc, constant isotropic smooth mass-loss
+- 2018A&A...612L..11S: Spherical uniformly expanding envelope, ISRF only external UV
+- 2017ApJ...841..110S: Main-sequence mass <=8 Msun; central star ~0.61 Msun; D=1.5 kpc
+- 2016A&A...593A..92B: Outflow gas comes from the disk; mass-loss rate constant
+- 2017ApJ...835L..13S: photodissociation of 13CO beyond Rout limits outer mass-loss rate
+- 2017A&A...605A..28D: average particle mass 3e-24 g
+
+
+### Limitations the authors admit
+- 2017ApJ...841..130A: Planned ALMA sensitivity not reached, so nebula undetected
+- 2017ApJ...841..130A: Central-object size is an upper limit; flux systematics from differing beams and nebular contamination
+- 2020A&A...633A..13D: Model not formally fit; chosen by eye
+- 2020A&A...633A..13D: Mass-loss rate is a lower limit as optical depth is about unity
+- 2024A&A...686A.274V: Spatial filtering resolves out much CO flux, overestimating polarisation fractions by factor 2-3.
+- 2024A&A...686A.274V: Circular polarisation of extended lines dominated by beam effects; no test of anisotropic resonant scattering.
+- 2018A&A...617A.137F: Heterogeneous S/N precludes flux-limited survey; non-detections bias OB sample; mm flux of extended sources partly resolved out
+- 2015MNRAS.453.4324M: Predicted fluxes are only order-of-magnitude estimates
+- 2017MNRAS.464L..75F: Bipolar outflow versus rotating disc origin of H41alpha cannot be distinguished; filaments need more sensitive follow-up
+- 2014ApJ...791...95A: Departure from spherical symmetry would make the solution degenerate; finer resolution needed
+- 2014ApJ...791...95A: Wind parameters during eruption cannot be strictly constrained
+- 2016A&A...586A...5M: Cycle 0 lacks ACA, so extended flux is lost; mass-loss modelling degenerate
+- 2016A&A...586A...5M: Distance very uncertain
+- 2020ApJ...899..152H: Observations are sensitivity-limited; interferometric filtering may overestimate m_l
+- 2024A&A...691A..57M: Parameter space degenerate; no ALMA simulator applied; pulsations missing
+- 2019A&A...632A..38A: Diffuse emission may be misattributed to stars; errors are potentially underestimates
+- 2015A&A...573L...1O: Dust mass of C is a lower limit as it may not be optically thin; much flux is resolved out
+- 2019A&A...629A.146V: Model based on single line for SiO and CS, two for SiS; degeneracy between density and abundance
+- 2018A&A...615A..28D: Dust masses and dust-to-gas ratios uncertain by about a factor of 5
+- 2018A&A...615A..28D: Extended emission may be resolved out
+- 2017A&A...597A..99W: Wind model made for AGB stars and assumes constant isotropic mass loss; only order-of-magnitude estimate
+- 2017A&A...597A..99W: ISM emission and filtering of extended emission (>30'') cause contamination and negative artefacts
+- 2018A&A...612L..11S: Single-dish data cannot constrain the complex outflow; the CSE model is crude
+- 2017ApJ...841..110S: Envelope size only a lower limit because CO is in absorption
+- 2016A&A...593A..92B: Flux lost by interferometric over-resolution, especially in the outflow wings, makes the model overpredict outflow emission
+- 2019MNRAS.484.1865H: De-projection is under-determined; models of mass loss cannot be chosen among
+- 2018A&A...616L...3B: Absolute astrometry ~3 mas; WD position uncertainty ~±7 mas
+- 2017ApJ...835L..13S: Blob ages uncertain due to assumed uniform radial velocity
+- 2017A&A...605A..28D: Weak bimodal high-velocity emission not reproduced; 12CO 9-8 peak ~20% low; LVG may not apply to torus
+- 2017A&A...597L...5B: ~25% flux filtered out, model overpredicts faint extended emission
+- 2017A&A...597L...5B: Inclination poorly determined
+
+### Settings cards flag as needed but not stated
+- casa version: 3
+- line-free channel ranges: 2
+- image size and cell size: 2
+- self-calibration solution intervals and number of iterations: 2
+- source coordinates: 2
+- tclean/clean parameters (cell, image size, niter, threshold, masks): 1
+- how peak/central flux densities were extracted (position, box): 1
+- spectral-window flagging that yields 7.5 ghz usable bandwidth: 1
+- weighted fit method for the power law and the grey-body fitting procedure and priors: 1
+- sed photometry values used: 1
+- atca calibration details and robust-free parameters for 17/23 ghz: 1
+- the offline wvr continuum-subtraction prototype algorithm is not public: 1
+- clean parameters: weighting, robust, cell size, image size, masks, thresholds: 1
+- calibrators and calibration approach (manual or pipeline): 1
+- observing dates and execution blocks: 1
+- line-free channels and continuum subtraction: 1
+- tp combination method (feather or other): 1
+- exact shape/lime model files and parameters (arm width, flaring, r1, opening angle details): 1
+- simalma settings: 1
+- spiral line fit parameters: 1
+- sph setup details: 1
+- exact self-calibration solution interval values and spw/channel selection for continuum: 1
+- line-free channels used for uvcontsub and fit order: 1
+- image size, cell size, deconvolver, masking and clean threshold: 1
+- polarisation calibration script details and leakage solutions: 1
+- details of the amplitude re-normalisation correction: 1
+- portal/lime setup: grid, number of photons, magnetic field strength used for the co models, abundan…: 1
+- structure function fit details (bin sizes, vector selection, fitting range, turbulent velocity and …: 1
+- stellar velocity-based channel selection for radial profiles and centre position definition: 1
+- r leo co abundance and temperature profile specifics beyond table: 1
+- seac code availability/parameters beyond 5σ/3σ thresholds and 6x6 grid: 1
+- which pointings and model components were used in each self-cal iteration; solints: 1
+- clean threshold, mask, cell and image size, iteration counts: 1
+- exact scale-size units (listed '1, 14, 12, 37 & 119' appear garbled): 1
+- exact teff/v_inf choices for stars not in tables and values of fcl used (assumed 1): 1
+- remcloud parameters: 1
+- cleaning threshold, mask, niter and weighting/robust: 1
+- exact position and size of box used for upper limits and boxcar fit details: 1
+- flux-density scale uncertainty: 1
+- details of arepo modifications and smmol inputs beyond table 3: 1
+
+## Paper excerpts (24 of 24, chosen for detail and spread over fields/years)
+
+### 2017ApJ...841..130A: The Luminous Blue Variable RMC 127 as Seen with ALMA and ATCA (2017; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the nature of the radio/sub-mm emission from the LBV RMC 127's central object and outer nebula, and what does it imply for wind geometry, mass-loss rate and nebular shaping?
+- step 6: collimated ionized wind models and mass-loss rate
+  - method: Reynolds (1986) models 1 and 2 solved for jet width index epsilon from alpha, then Mdot from Reynolds equation [4.1 Collimated stellar wind models: "The mass-loss rate can be written in a general form that takes into account all these parameters (cite: 1986Reynolds)"]
+  - parameter: S at 349.5 GHz, D=48.5 kpc, T=6420 K, v=148 km/s, varphi=75 deg, x0=1, mu=1, theta0=0.5 rad, numax=1e13 Hz [4.1 Collimated stellar wind models: "Here we assume $\varphi=75\,\rm \deg$ (thus $i=15\,\rm \deg$)."] [4.1 Collimated stellar wind models: "A reasonable value for $\nu_{max}$ seems to be $10^{13}$ Hz."]
+  - assumption: isothermal, constant-velocity outflow; model 1 fully ionized conical, model 2 with recombinations qx=-0.2 [Table 2: "model 1 (isothermal, constant velocity, fully ionized conical outflow) and for model 2 (isothermal, constant velocity, well-collimated outflow with recombinations)"]
+  - fitting: analytic solution [4.1 Collimated stellar wind models: "Knowing the spectral index $\alpha$ of the wind, it is possible to determine how the jet width varies with distance (parameter $\varepsilon$)"]
+  - validation: compared with spherical-wind Panagia & Felli Mdot [4.1 Collimated stellar wind models: "The mass-loss rate can be a factor of two or more smaller than in the spherical case"]
+- result: jet width index epsilon (Model 1) = 1.34 ± +0.15/-0.12 dimensionless [Table 2: "| $\varepsilon$ | 1.34$^{+0.15}_{-0.12}$ | 1.03$^{+0.13}_{-0.10}$ |"]
+- result: mass-loss normalization C1 (x1e-6 Msun/yr) = 9.4 ± +2.6/-2.0 1e-6 Msun/yr [4.1 Collimated stellar wind models: "$C_1 = 9.4^{+2.6}_{-2.0}$ and $C_2 = 8.5^{+2.3}_{-1.8}$"]
+- result: mass-loss normalization C2 (x1e-6 Msun/yr) = 8.5 ± +2.3/-1.8 1e-6 Msun/yr [4.1 Collimated stellar wind models: "$C_1 = 9.4^{+2.6}_{-2.0}$ and $C_2 = 8.5^{+2.3}_{-1.8}$"]
+- result: spherical-wind mass-loss rate = 2.1e-5 ± 0.4e-5 Msun/yr [4.1 Collimated stellar wind models: "($2.1\pm0.4\times10^{-5} \,\rm M\odot\,yr^{-1}$)"]
+- limitation (authors): Planned ALMA sensitivity not reached, so nebula undetected [2.1 ALMA observation and data reduction: "The proposed sensitivity of $40\,\mu{\rm Jy}\,{\rm beam^{-1}}$ could not be achieved"]
+- limitation (authors): Central-object size is an upper limit; flux systematics from differing beams and nebular contamination [3.1 The ATCA and ALMA maps: "Hence, the size provided above must be considered an upper limit."]
+- not stated (card): tclean/clean parameters (cell, image size, niter, threshold, masks); how peak/central flux densities were extracted (position, box); spectral-window flagging that yields 7.5 GHz usable bandwidth; weighted fit method for the power law and the grey-body fitting procedure and priors; SED photometry values used; ATCA calibration details and robust-free parameters for 17/23 GHz; the offline WVR contin…
+
+### 2020A&A...633A..13D: The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. II. The spiral-outflow observed at high-angular resolu… (2020; evolved_stars; observational_alma_primary)
+- question: What are the morphology and kinematics of the circumstellar envelope of the AGB star pi1 Gru at high angular resolution, and what do they imply about an undetected close companion and a mass-loss eruption?
+- step 5: Estimate eruption mass and mass-loss rate
+  - method: Optically thin CO mass formula of Olofsson & Nyman, integrated intensity over high-velocity range times 2 [4.2 The mass-loss eruption: "The integrated intensity $I$ was first calculated over the high velocity range of the bipolar outflow, and then multiplied by a factor of 2."]
+  - parameter: D=160 pc, f=6.5e-4, eta=0.76, Tex=15 K [4.2 The mass-loss eruption: "the distance $D = 160$ pc, the effective area $A_{e}=\eta A_{g}$ with the aperture efficiency $\eta = 0.76$"]
+  - assumption: Optically thin CO 3-2, thermalised [4.2 The mass-loss eruption: "by assuming that the $J$=3-2 CO line emission is optically thin"]
+  - validation: Optical depth about unity, so mass is a lower limit [4.2 The mass-loss eruption: "the actual mass is probably underestimated and would be somewhat higher than the given value."]
+- result: Eruption gas mass = 4.3e-5 ± not stated Msun [4.2 The mass-loss eruption: "The estimated mass, $M$, is approximately $4.3 \times 10^{-5}$ M$_{\odot}$."]
+- result: Eruption mass-loss rate = 3.3e-6 ± not stated Msun/yr [4.2 The mass-loss eruption: "The corresponding mass-loss rate is $3.3 \times 10^{-6}$ M$_{\odot}$yr$^{-1}$"]
+- limitation (authors): Model not formally fit; chosen by eye [4.2 Modelling results: "no formal fitting procedure has been performed"]
+- limitation (authors): Mass-loss rate is a lower limit as optical depth is about unity [4.2 The mass-loss eruption: "the estimated mass-loss rate should be considered as a lower limit."]
+- not stated (card): CLEAN parameters: weighting, robust, cell size, image size, masks, thresholds; Calibrators and calibration approach (manual or pipeline); Observing dates and execution blocks; Line-free channels and continuum subtraction; TP combination method (feather or other); Exact SHAPE/LIME model files and parameters (arm width, flaring, R1, opening angle details); SIMALMA settings; Spiral line fit paramete…
+
+### 2024A&A...686A.274V: Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars (2024; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the large-scale magnetic field morphology and strength in AGB circumstellar envelopes, as traced by non-maser molecular line polarisation (GK effect and radiative alignment) in CW Leo and R Leo?
+- step 4: Polarised radiative transfer modelling
+  - method: PORTAL on converged LIME output with parameterised CSE (density, T, velocity, abundance profiles); compare radiative rates to magnetic precession rate; model radial alignment for CS/H13CN/SiS and dipole/toroidal B for CO of CW Leo, radial … [4 Polarised radiative transfer models: "The modelling of the line polarisation is performed with the PORTAL (POlarised Radiative Transfer Adapted to Lines) code (cite: Lankhaar20)."]
+  - software: PORTAL, LIME 1.9.5
+  - parameter: CW Leo dipole inclined 45 deg, PA 125 deg [4.2 CW Leo: "we assume it to be inclined at 45$^\circ$"]
+  - parameter: turbulent velocity 1 km/s; gas mean particle mass 2.35 AMU [4.1 Circumstellar envelope models: "contained a contribution from a constant turbulent velocity of 1 km s$^{-1}$"]
+  - assumption: Spherically symmetric envelope expanding at constant velocity; amorphous carbon opacities (CW Leo), silicate (R Leo); gas-to-dust 300 (CW Leo), 167 (R Leo) [4.1 Circumstellar envelope models: "In the case of C-rich CSEs, such as CW Leo, we adopted the opacities for amorphous carbon type of dust given by (cite: suh00)"]
+  - validation: Qualitative comparison of predicted and observed polarisation morphology and fractions [4.3 R Leo: "The predicted polarisation morphology appears to be consistent with the observations."]
+- limitation (authors): Spatial filtering resolves out much CO flux, overestimating polarisation fractions by factor 2-3. [2 Observations and data reduction: "this can lead to an overestimate of the polarisation fractions with a factor of $2-3$"]
+- limitation (authors): Circular polarisation of extended lines dominated by beam effects; no test of anisotropic resonant scattering. [5.2 Anisotropic Resonant Scattering: "we cannot directly investigate anisotropic resonance scattering through a study of the circular polarisation."]
+- not stated (card): Exact self-calibration solution interval values and spw/channel selection for continuum; Line-free channels used for uvcontsub and fit order; Image size, cell size, deconvolver, masking and clean threshold; Polarisation calibration script details and leakage solutions; Details of the amplitude re-normalisation correction; PORTAL/LIME setup: grid, number of photons, magnetic field strength used fo…
+
+### 2018A&A...617A.137F: An ALMA 3 mm continuum census of Westerlund 1 (2018; star_formation, stellar_physics, milky_way_ism; observational_alma_primary)
+- question: Determine mass-loss rates and mm properties of the post-main-sequence massive stars (WR, OB super/hypergiants, cool hypergiants) in the cluster Westerlund 1 from a 3 mm ALMA continuum census
+- step 7: Derive mass-loss rates
+  - method: Wright & Barlow free-free relation (Eq. 1) with Gaunt factor approximation, smooth wind (fcl=1) [3.1.3 Mass-loss determination: "A given flux can therefore be interpreted as a certain mass-loss rate for a smooth wind ( f cl = 1)"]
+  - parameter: Te = 0.5 Teff; d = 5 kpc; mu=1.4,Z=1,gamma=1 for OB; mu=4.0 (WN6 or earlier), 2.0 (later WN), 4.7 (WC8/9); mu=1.6, gamma=0.8, Z=0.9 for BHGs [3.1.3 Mass-loss determination: "we adopt T e = 0.5 T e f f (e.g. Drew 1989)"]
+  - assumption: mm flux not affected by binarity; wind emission thermal; two non-thermal sources excluded [3.1.3 Mass-loss determination: "Our mass-loss estimates assume the mm fluxes are not affected by binarity"]
+  - validation: Compared with radio mass-loss rates and non-LTE model values for WR F and S (within factor ~2) [4.2.2 Mass-loss rates: "shows an encouraging consistency in mass-loss rates to within a factor of ∼ 2."]
+- result: Mean WR mass-loss rate (excl. WR S, Wd1-13) = 3.6e-5 ± ±0.4e-5 Msun/yr [4.2.2 Mass-loss rates: "( M [˙] ∼ 3.6 ± 0.4 × 10 [−][5] _M_ ⊙ yr [−][1] ; excluding WR S and Wd1-13)"]
+- result: Mean WC mass-loss rate = 4.2e-5 ± ±0.7e-5 Msun/yr [4.2.2 Mass-loss rates: "∼ 4.2 ± 0.7 × 10 [−][5] _M_ ⊙ yr [−][1] ) are entirely consistent"]
+- result: Mass-loss rate of LBV Wd1-243 (3 mm) = log Mdot ~ -4.6 ± not stated log Msun/yr [6.2 The LBV Wd1-243: "mm determinations (log( M [˙] /M ⊙ yr [−][1] ) ∼−4.6; data obtained in 2015)"]
+- limitation (authors): Heterogeneous S/N precludes flux-limited survey; non-detections bias OB sample; mm flux of extended sources partly resolved out [6.1 The OB super- and hypergiants: "the heterogeneous S/N ratio across the field precludes consideration of our results as a flux-limited survey of OB stars within Wd1."]
+- not stated (card): SEAC code availability/parameters beyond 5σ/3σ thresholds and 6x6 grid; Which pointings and model components were used in each self-cal iteration; solints; CLEAN threshold, mask, cell and image size, iteration counts; Exact scale-size units (listed '1, 14, 12, 37 & 119' appear garbled); Exact Teff/v_inf choices for stars not in tables and values of fcl used (assumed 1); REMCLOUD parameters
+
+### 2015MNRAS.453.4324M: ALMA reveals sunburn: CO dissociation around AGB stars in the globular cluster 47 Tucanae (2015; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Is CO (2-1) emission detectable from winds of the four most luminous AGB stars in 47 Tuc, and does UV dissociation by the cluster radiation field explain a non-detection?
+- step 2: expected mass-loss rates
+  - method: Reimers/SC05 scaling plus evolutionary mass budget [3.2.3: "We can therefore expect the mass-loss rate from our four observed stars to lie in the range 1.2–3.5 $\times$ 10$^{-7}$ M$_\odot$ yr$^{-1}$."]
+  - software: MESA
+  - assumption: 0.53 Msun final WD mass; one star passes RGB tip every 80000 yr [3.2.2: "We assume these stars will end their lives as a 0.53 M$_\odot$ white dwarf"]
+- step 3: model ISRF at each star
+  - method: 3D Monte Carlo cluster model, 100 runs of 10^6 yr, post-AGB event every 80000 yr [3.3: "This model was run 100 times, in order to simulate different radial distributions of the radiation sources and observed targets."]
+- result: Expected mass-loss rate range = 1.2–3.5e-7 ± not stated Msun/yr [3.2.3: "in the range 1.2–3.5 $\times$ 10$^{-7}$ M$_\odot$ yr$^{-1}$"]
+- limitation (authors): Predicted fluxes are only order-of-magnitude estimates [3.5.2: "We stress that these fluxes are only order-of-magnitude estimates, as many wind parameters are not accurately known."]
+- not stated (card): Cleaning threshold, mask, niter and weighting/robust; CASA version; Exact position and size of box used for upper limits and boxcar fit details; Flux-density scale uncertainty; Details of arepo modifications and smmol inputs beyond Table 3
+
+### 2017MNRAS.464L..75F: ALMA observations of the supergiant B[e] star Wd1-9 (2017; stellar_physics, star_formation; observational_alma_primary)
+- question: What are the millimetre continuum and recombination-line properties of the supergiant B[e] star Wd1-9, what do they imply for its mass loss, and does it resemble MWC349A or eta Carinae?
+- step 5: derive mass-loss rate
+  - method: outflow velocity ~100 km/s from line width, with mm and radio fluxes and the Dougherty et al. emission model [Discussion: "we calculate a current mass-loss rate of Ṁ$\sim$ 6.4${\times}10^{-5}(d/5kpc)^ {1.5}$"]
+  - assumption: spherical geometry, distance 5 kpc, stellar parameters from Dougherty et al. 2010 [footnote 3: "Stellar parameters are those taken from (cite: dough10) and spherical geometry is assumed."]
+  - validation: compared with MWC349A and eta Carinae [Discussion: "the wind parameters for Wd1-9 are broadly comparable to those of MWC349A"]
+- result: mass-loss rate = 6.4e-5 (d/5kpc)^1.5 ± not stated Msun/yr [Discussion: "we calculate a current mass-loss rate of Ṁ$\sim$ 6.4${\times}10^{-5}(d/5kpc)^ {1.5}$"]
+- limitation (authors): Bipolar outflow versus rotating disc origin of H41alpha cannot be distinguished; filaments need more sensitive follow-up [Discussion: "we caution that further observations will be required to unambiguously distinguish between both options."]
+- not stated (card): Robust weighting details beyond R0, nterms for MFS; Channel ranges of the line and line-free continuum; Image size, cell size, clean threshold and masks; CASA version; Gaussian fit regions and procedure for compact source subtraction; Which spectral window held the line (identified only by frequency range); Stellar parameters and formulae for the mass-loss rate calculation; Flux scale uncertainty…
+
+### 2014ApJ...791...95A: η Carinae Baby Homunculus Uncovered by ALMA (2014; stellar_physics, milky_way_ism; observational_alma_primary)
+- question: What are the nature and physical parameters of the compact ionized region around eta Carinae, as probed by mm/submm continuum and H and He recombination lines?
+- step 4: Wind-blown shell dynamics
+  - method: Weaver et al. wind-driven shell then snow-plow expansion; derive mass-loss rate and wind velocity vs. ambient density [3.4 Dynamical evolution: "The dynamical evolution of an expanding shell driven by a continuous stellar wind is well described by the classical work of (cite: weaver77)."]
+  - parameter: t2 = 71 yr; ambient density 1e5 and 1e6 cm^-3 [3.4 Dynamical evolution: "it was taken as 71 yr, linking the beginning of the ejection to the luminosity increase observed in 1941"]
+  - validation: Predicted v2=19 km/s agrees with model expansion velocity [3.4 Dynamical evolution: "we immediately obtain $v_2(t_2)= 19$ km s$^{-1}$ in excellent agreement with the expansion velocity derived for the shell"]
+- limitation (authors): Departure from spherical symmetry would make the solution degenerate; finer resolution needed [3.2 Recombination line emission: "the velocity distribution necessary to fit the line profiles will depend on the density and temperature distributions and the solution will be degenerate."]
+- limitation (authors): Wind parameters during eruption cannot be strictly constrained [3.4 Dynamical evolution: "we cannot strictly constrain the wind parameters during the eruption"]
+- not stated (card): CASA version and calibration procedure; weighting/robust, deconvolver, masks, iterations, thresholds; line-free channel ranges; flux scale accuracy/Titan model; fitting procedure and goodness-of-fit criterion for the shell model; code for radiative transfer model; quantitative uncertainties on model parameters
+
+### 2016A&A...586A...5M: A detailed view of the gas shell around R Sculptoris with ALMA (2016; evolved_stars; observational_alma_primary)
+- question: What are the mass and temperature of the gas shell around R Scl, and how did the mass-loss rate evolve during and after the thermal pulse?
+- step 4: Model CSE mass-loss from shell-subtracted SD spectra
+  - method: Convolve best-fit shell model with SD beams, subtract from SD spectra, model residual with constant mass-loss rate radiative transfer [3.3 The recent evolution of the stellar…: "we convolved the best-fit model of the shell with the SD beams of the respective transitions (Fig. [7](#f:sdsub), top), and subtract it from the SD observations."]
+  - software: Monte Carlo radiative transfer code (Schöier & Olofsson 2001)
+  - parameter: a=2.5; T_kin power law beta=-0.85; R0 = 3 stellar radii; velocity 3 to 14.3 km/s [3.3 The recent evolution of the stellar…: "The velocity increases gradually from 3 km s$^{-1}$ to 14.3 km s$^{-1}$"]
+  - assumption: Constant mass-loss rate, 1/r^2 density, black-body Teff 2300 K, L 5200 Lsun [3.3 The recent evolution of the stellar…: "Assuming a constant mass-loss rate results in a 1/$r^2$ density distribution."]
+  - fitting: Manual fit to SD spectra; model degenerate [3.3 The recent evolution of the stellar…: "Finally, the models are very degenerate between the chosen mass-loss rate, half-abundance radius, temperature profile, and velocity profile."]
+  - validation: Emitting region sizes consistent with ALMA/SD limits [3.3 The recent evolution of the stellar…: "These results are consistent with the limits set by the ALMA and SD data"]
+- result: Average post-pulse mass-loss rate = 1.6e-5 ± not stated Msun/yr [3.3 The recent evolution of the stellar…: "using a mass-loss rate of 1.6$\times10^{-5}$ $M_{\odot}$ yr$^{-1}$ and a half-abundance radius of 7.2$''$."]
+- result: Recent mass-loss rate (IRAM CO 1-0, APEX CO 3-2) = 3.5e-6 ± not stated Msun/yr [3.3 The recent evolution of the stellar…: "a mass-loss rate of 3.5$\times10^{-6}$ $M_{\odot}$ yr$^{-1}$"]
+- limitation (authors): Cycle 0 lacks ACA, so extended flux is lost; mass-loss modelling degenerate [3.3 The recent evolution of the stellar…: "The loss of extended flux in the current ALMA data prevents using these observations to effectively constrain the mass-loss rate evolution"]
+- limitation (authors): Distance very uncertain [2.1 R Sculptoris: "Current distance estimates are very uncertain, ranging from 266 pc"]
+- not stated (card): Phase and other calibrator details, flagging and bandpass solutions; Exact CLEAN thresholds, cell and image size; Channel binning and line-free channels; Molecular data (collisional rates) used in radiative transfer; Details of shell subtraction normalisation and how SD data beam-matched; Treatment of ALMA flux scale across SBs; Model grid for the CSE fits (how the fit was chosen)
+
+### 2020ApJ...899..152H: Mapping Circumstellar Magnetic Fields of Late-type Evolved Stars with the Goldreich-Kylafis Effect: CARMA Observations at λ1.3 mm of R Crt and R Leo (2020; evolved_stars; multi_facility_alma_minor)
+- question: Can Goldreich-Kylafis linear polarization of thermal CO J=2-1 be detected with CARMA toward R Crt and R Leo, and is it consistent with G-K model predictions for the circumstellar magnetic field?
+- step 3: Build R Leo CSE model
+  - method: Power-law temperature, beta-law velocity, continuity ODE solved for n(r) [CSE parameters: "We used the SciPy[^7] package $\mathtt{odeint}$ to solve the differential equation in Equation [\[eq:ode_tosolve\]](#eq:ode_tosolve)"]
+  - software: SciPy
+  - parameter: R*=1.4 AU, T*=1800 K, Rc=10.7 AU, v_inf=8.5 km/s, Mdot=1.1e-7 Msun/yr, beta=0-5 [CSE parameters: "$R_*=1.4\ \rm{AU}$ (cite: debeck10), $T_*=1800\ \rm{K}$, (cite: schoier13), $R_c=10.7\ \rm{AU}$ (cite: success15)"]
+  - assumption: alpha=0.6 temperature exponent; R0~R* [CSE parameters: "where the exponent index, $\alpha$, is often adopted to be $0.6$"]
+  - validation: Density ranges compared across literature CO mass-loss models [CSE parameters: "these density ranges are broadly consistent."]
+- limitation (authors): Observations are sensitivity-limited; interferometric filtering may overestimate m_l [Conclusions: "These observations are profoundly sensitivity-limited compared to modern telescopes such as ALMA"]
+- not stated (card): Magnetic field and G-K code input grids (optical depth range, geometry details) not tabulated; Exact Stokes I/P noise values per cube used for masking; Calibrator-specific flagging details; Image size and cell size
+
+### 2024A&A...691A..57M: SPH modelling of AGB wind morphology in hierarchical triple systems and a comparison to observation of R Aql (2024; evolved_stars; theory_or_simulation_compared_to_alma)
+- question: How do coplanar hierarchical triple systems shape AGB outflows, and could R Aql's complex wind be shaped by such a system?
+- step 1: Run SPH simulations of triple and binary AGB winds
+  - method: PHANTOM SPH with sink particles and wind injection; free-wind approximation; H I cooling [2.1 Input physics SPH model: "We perform hydrodynamic simulations of an AGB outflow in a hierarchical triple system with the smoothed-particle hydrodynamics (SPH) code PHANTOM (cite: phantom)."]
+  - software: PHANTOM, REBOUND
+  - parameter: M1=1.6, M2=0.4 Msun, ai=5 au, ao=35 au, Mdot=1.1e-6 Msun/yr, T1=2800 K, v_ini 8 or 15 km/s, M3=0.1/0.6/1.2 Msun [Table 1: "$a_{\rm{o}}$ | \[au\] | $35$ |"]
+  - assumption: gamma = 1.2, mu = 2.38 [2.1 Input physics SPH model: "We adopt constant values of the polytropic index $\gamma = 1.2$ and the mean molecular weight $\mu = 2.38$"]
+  - validation: Mardling & Aarseth stability criterion and REBOUND N-body integration over 1000 outer periods [2.2 Grid setup triples: "the orbit of all systems is integrated with the REBOUND N-body code (cite: rebound) over $1000$ outer orbital periods $P_{\rm o}$, to confirm the stability of the orbits."]
+- result: Inner binary orbital period = 7.91 ± not stated yr [2.2 Grid setup triples: "The orbital period of the inner binary $M_{\rm 1}$–$M_{\rm 2}$ is $P_{\rm i} = 7.91 \, {\rm yrs}$"]
+- result: Outer orbital period for M3=0.6 Msun = 128.5 ± not stated yr [2.2 Grid setup triples: "$P_{\rm o} = 143.0, 128.5 \, {\rm and}\, 115.8 \, {\rm yrs}$"]
+- result: Measured flattening ratio, triple v08 models = ~0.5 ± not stated dimensionless [4.2 Impact of different wind velocity: "This measured $R_{\rm f}$ is approximately $0.5$ for all masses of $M_3$."]
+- limitation (authors): Parameter space degenerate; no ALMA simulator applied; pulsations missing [5.2 Comparison to synthetic observation: "the SPH models lack some physics such as the impact of the stellar pulsations, that may affect the wind morphology"]
+- not stated (card): ALMA project code and CASA/pipeline versions for the ATOMIUM R Aql data; SPH particle number and resolution; MAGRITTE grid/mesh settings, image resolution and velocity channel setup; Procedure used to measure arc spacing in observed channel maps; Why the simulated model was not convolved with the ALMA beam
+
+### 2019A&A...632A..38A: A radio census of the massive stellar cluster Westerlund 1 (2019; star_formation, stellar_physics; multi_facility_alma_minor)
+- question: Measure radio fluxes, spectral indices and mass-loss rates of massive stars in Westerlund 1 with ATCA (compared with earlier ALMA 100 GHz data) and characterise the diffuse cluster emission
+- step 4: Mass-loss rates and clumping ratios
+  - method: Wright & Barlow (1975) formula from flux; clumping ratio from ratio of Mdot*fcl^0.5 at radio vs ALMA assuming constant Mdot [6.1.1 Mass-loss rates: "The Wright and Barlow equation was applied to determine radio mass-loss rates"]
+  - assumption: Distance 5 kpc; Te = 0.5 Teff for hot stars, 10,000 K for cool stars; mu 1.4/2.0/4/4.7 by type; spherical smooth thermal wind [6.1.1 Mass-loss rates: "The distance, $D$, was assumed to be 5$\,$kpc, as justified in the Introduction."]
+  - validation: Comparison with mm and optical literature mass-loss rates [Mass-loss rates: "Our value for WR S, $\dot{M}f_{cl}^{\frac{1}{2}}$ 6.3$\,\pm\,$1.2$\,\times\,$10$^{-6}$ $M_{\odot}$$\,$yr$^{-1}$, is larger than determined by previous modelling of this object"]
+- result: Mean WR mass-loss rate = 4.61e-5 ± not stated Msun/yr [6.1.1 Mass-loss rates: "with a mean mass-loss rate over the total ensemble calculated to be 4.61 $\times$ 10$^{-5}$ M$_{\odot}$$\,$yr$^{-1}$"]
+- limitation (authors): Diffuse emission may be misattributed to stars; errors are potentially underestimates [3.2 Confirmation of ATCA detected Sourc…: "Errors quoted in this paper are therefore potentially underestimates of the true uncertainty on these values"]
+- not stated (card): Archival ALMA data reduction details (done in the earlier paper); Terminal velocities and Teff values adopted per star for the mass-loss rates; Exact taper parameters for TAPER5/TAPER9/TAPERALMA; SEAC grid cell number and per-source segmentation parameters; ATCA project codes and exact data location; Number of ALMA Band 3 data details (configuration, beam)
+
+### 2015A&A...573L...1O: ALMA observations of anisotropic dust mass loss in the inner circumstellar environment of the red supergiant VY Canis Majoris (2015; evolved_stars; archival_reuse)
+- question: What are the properties and distribution of dust in the inner circumstellar envelope of the red supergiant VY CMa, and what does it imply for mass-loss mechanisms?
+- step 5: Mass-loss rate from resolved-out emission
+  - method: Estimate resolved-out flux vs single-dish, dust mass over 8 arcsec shell at 200 K, divided by timescale [3.3 Dust mass-loss history and mechanis…: "We assume the dust to be extended over the $\sim8\ensuremath{''}$ size of the *HST* image"]
+  - assumption: Vd ~60 km/s, T = 200 K [3.3 Dust mass-loss history and mechanis…: "We assume an average temperature of 200 K throughout the shell."]
+- result: Dust mass-loss rate = 5e-6 (Vd/60 km/s) ± not stated Msun/yr [3.3 Dust mass-loss history and mechanis…: "a dust mass-loss rate of $5\times10^{-6}(V_{\rm{d}}/60~$km s$^{-1})\,$M$_{\odot}\,$yr$^{-1}$"]
+- limitation (authors): Dust mass of C is a lower limit as it may not be optically thin; much flux is resolved out [3.2 Properties of the dust: "The main component C may not be fully optically thin at both frequencies and so its dust mass estimates will be lower limits."]
+- not stated (card): CASA version, calibration and imaging parameters (weighting, robust, cell, clean settings); Line-free channel selection; Phase offset corrections beyond the quoted shift, and the beam sizes (in table not provided in the text); Dust temperature structure and masking used for the resolved-out flux estimate
+
+### 2019A&A...629A.146V: IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS (2019; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the large-scale spatial distribution and radial abundance profiles of SiO, SiS and CS in the envelope of IRC+10216, and what do they say about its mass-loss history and photo-dissociation?
+- step 3: Radiative transfer modelling of radial abundance profiles
+  - method: LVG statistical equilibrium plus ray-tracing in spherical CSE of 100 log-spaced shells; abundance profiles adjusted to reproduce azimuthal averages [Radiative transfer modelling: "It is divided according to a spherical shell gridding of 100 shells evenly spaced on a logarithmic scale for the radius."]
+  - software: code of Agundez et al. 2012
+  - parameter: d = 123 pc; R* = 4e13 cm; T* = 2330 K; Mdot = 2.7e-5 Msun/yr; vexp 5/11/14.5 km/s; microturbulence 1 km/s; gas-to-dust 300 [Radiative transfer modelling: "Mass-loss rate ($\dot{M}$) | 2.7$\times$10$^{-5}$ $M_{\odot}$ yr$^{-1}$"]
+  - assumption: Spherical envelope, constant expansion velocity, collisions with H2 only [Radiative transfer modelling: "The collisional rates taken into account to solve the statistical equilibrium equations consider only collisions with H$_2$."]
+  - fitting: Manual adjustment of abundance profiles to match azimuthal averages on average; no formal fit stated [Radiative transfer modelling: "Our purpose is to derive the radial abundance profiles that reproduce the azimuthal averages observed, at least up to a level where model predictions are on average compatible with the observations."]
+  - validation: Synthetic spectra compared with IRAM-30m spectra; IR pumping test [Radiative transfer modelling: "we tested the accuracy of the model to predict the observed spectrum of the emission lines towards IRC + 10$^{\circ}$216 as observed with the IRAM-30 m antenna"]
+- result: Fractional abundance of SiO = ~1e-7 ± not stated relative to H2 [Radiative transfer modelling: "For SiO, we derive a fractional abundance of $\sim$10$^{-7}$"]
+- result: Fractional abundance of CS in innermost CSE = ~1e-6, decreasing to ~5e-7 between ~100-300 R* ± not stated relative to H2 [Radiative transfer modelling: "we derive an average fractional abundance of $\sim$10$^{-6}$ in the innermost CSE, decreasing down to $\sim$5$\times$10$^{-7}$ between $\sim$100 and 300 $R_{*}$"]
+- result: SiS abundance = ~1-2e-6 up to ~70-100 R* ± not stated relative to H2 [Radiative transfer modelling: "For SiS, we find an average abundance of $\sim$1–2$\times$10$^{-6}$ in the region up to $\sim$70–100 $R_{*}$"]
+- result: Disappearance radii = SiS ~600 R*, SiO ~700-800 R*, CS ~1000 R* ± not stated R* [Radiative transfer modelling: "the first molecule to disappear from the gas phase is SiS (at $\sim$600 $R_{*}$), then SiO (at $\sim$700–800 $R_{*}$), and significantly farther, CS (at $\sim$1000 $R_{*}$)"]
+- limitation (authors): Model based on single line for SiO and CS, two for SiS; degeneracy between density and abundance [Radiative transfer modelling: "our study is based solely on the analysis of just a single line in the cases of SiO and CS, and two lines in the case of SiS"]
+- not stated (card): Continuum-free/line-free channels and continuum subtraction method; Cell size, image size, clean masks and iteration thresholds; Exact azimuthal-average procedure and fit goodness criterion for abundance profiles; Abundance profile values as a function of radius (only in figure); Details of the UVSHORT merging scaling; Spectral window assignments per track and time on source; Radiative transfer c…
+
+### 2020ApJ...892...52L: Carbon- and Oxygen-rich Asymptotic Giant Branch (AGB) Stars in the Bulge Asymmetries and Dynamical Evolution (BAaDE) Survey (2020; evolved_stars, milky_way_ism; multi_facility_alma_minor)
+- question: Where do O-rich AGB stars, C-rich AGB stars and YSOs lie in IR color-color diagrams, using SiO maser detection rates in the BAaDE survey, and what are their numbers and Galactic distributions?
+- step 3: Separate C-rich from O-rich AGB by Ks-A vs A-E
+  - method: Empirical dividing line using SiO detection rate in the color-color diagram [3.2 C-rich versus O-rich AGB populations: "Empirically we define: $$\begin{equation} [K_s]-[A]=4.5([A]-[E])-1.2 \end{equation}$$ as the division between the populations."]
+  - validation: Known C-stars from Alksnis fall in C region; three CS-detected sources checked [3.2.1 Candidate C-rich AGB stars: "the carbon-stars from Alksnis et al. (cite: alksnis) fall mostly into our C region."]
+- result: SiO detection rate in O-AGB region = 73% ± not stated percent [4.3 Detection rates within the O-AGB re…: "In the O-AGB region of Fig. [4](#fig:kaae), the SiO detection rate is 73%."]
+- result: SiO detection rate in C-AGB region = ~12% ± not stated percent [3.2 C-rich versus O-rich AGB populations: "a high SiO detection rate ($\sim$73%) and one with a low rate ($\sim$12%)"]
+- not stated (card): ALMA data reduction/calibration details and CASA version; Detection finding procedure and noise estimation; Gaussian fit procedure details for D-E; How the Ks-A vs A-E dividing line was optimized; Per-source list and quality flags for IR magnitudes; Cross-match radii
+
+### 2018A&A...615A..28D: ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz (2018; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the dominant physical, dynamical and chemical processes in the inner wind of the low mass-loss rate AGB star R Dor and the high mass-loss rate AGB star IK Tau, as traced by an ALMA band 7 spectral line and imaging survey?
+- step 2: Derive dust mass and dust mass-loss rate from continuum
+  - method: Subtract convolved stellar point source from continuum, convert the residual to dust mass assuming optically thin emission, and compute crossing time from the momentum equation solution [3 Continuum image: "we can estimate the 345 GHz emission from dust by subtracting a (stellar) point source, convolved with the natural synthesised beam, from the continuum"]
+  - parameter: Drift velocity forced below 20 km/s [3 Continuum image: "We force the drift velocity to be lower than 20 km/s"]
+  - assumption: Optically thin dust, opacity ~7 cm2/g, dust temperature 200-650 K (IK Tau) and 400-1530 K (R Dor) [3 Continuum image: "Assuming that the dust is optically thin and for an opacity of $\sim$7 cm$^2$/g"]
+  - validation: Compared with dust-to-gas ratios from SED/SPHERE studies in literature; uncertainty factor ~5 [3 Continuum image: "subject to large uncertainties (being around a factor of 5)"]
+- result: Dust mass IK Tau = 3.7e-7 ± factor ~5 Msun [3 Continuum image: "we obtain a dust mass within the 3$\sigma$ contour of $3.7 \times 10^{-7}$ M$_{\odot}$ and $2 \times 10^{-8}$ M$_{\odot}$"]
+- result: Dust mass R Dor = 2e-8 ± factor ~5 Msun [3 Continuum image: "we obtain a dust mass within the 3$\sigma$ contour of $3.7 \times 10^{-7}$ M$_{\odot}$ and $2 \times 10^{-8}$ M$_{\odot}$"]
+- result: Dust mass-loss rate IK Tau = ~1e-8 ± factor ~5 Msun/yr [3 Continuum image: "dust mass loss rate of $\sim$1$\times10^{-8}$ M$_{\odot}$/yr for IK Tau and of $\sim$5$\times10^{-9}$ M$_{\odot}$/yr for R Dor"]
+- result: Dust mass-loss rate R Dor = ~5e-9 ± factor ~5 Msun/yr [3 Continuum image: "dust mass loss rate of $\sim$1$\times10^{-8}$ M$_{\odot}$/yr for IK Tau and of $\sim$5$\times10^{-9}$ M$_{\odot}$/yr for R Dor"]
+- limitation (authors): Dust masses and dust-to-gas ratios uncertain by about a factor of 5 [3 Continuum image: "subject to large uncertainties (being around a factor of 5)"]
+- limitation (authors): Extended emission may be resolved out [2.2 Data reduction: "we have resolved-out extended emission"]
+- not stated (card): Number of execution blocks and exact calibrator assignment per spectral window; Line-free channel ranges used for continuum and self-calibration; Self-calibration solution intervals and number of iterations; tclean deconvolver, masks, clean thresholds and iteration counts; Per-cube beam and rms for each spectral window; Exact adopted stellar flux model at 345 GHz; Parameters of the RADEX models u…
+
+### 2017A&A...597A..99W: ALMA Compact Array observations of the Fried Egg nebula. Evidence for large-scale asymmetric mass-loss from the yellow hypergiant IRAS 17163-3907 (2017; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the morphology, kinematics and mass-loss of the circumstellar environment of the yellow hypergiant IRAS 17163-3907, as seen in CO 2-1 with the ACA?
+- step 2: fit stellar wind mass-loss rate and expansion velocity
+  - method: Grid of Monte Carlo CSE radiative transfer models fit by chi2 minimisation to CO spectrum at the star, excluding ISM and spur [3.3 The stellar wind: "we executed a grid of models over the parameter space and determined the best fit model by $\chi^2$ minimisation to the parts of the spectrum not contaminated with ISM or spur emission"]
+  - software: Monte Carlo CSE code (Bernes 1979; Schoier & Olofsson 2001)
+  - parameter: CO levels up to J=40, ground and first vibrationally excited states [3.3 The stellar wind: "It incorporates CO rotational energy levels up to J=40 for the vibrational ground state and the first vibrationally excited state"]
+  - assumption: [CO]/[H2]=1e-4, turbulent velocity 1 km/s, gas-to-dust 40, distance 4 kpc, constant isotropic smooth mass-loss [3.3 The stellar wind: "assume a \[CO\]/\[H$_2$\] ratio of 10$^{-4}$, a turbulent velocity of 1 $\mathrm{km\,s^{-1}}$, and a gas-to-dust ratio of 40"]
+  - fitting: chi2 minimisation over grid; errors from 1 sigma chi2 error ellipse [3.3 The stellar wind: "These errors are the statistical errors corresponding to the 1$\sigma$ $\chi^2$ error ellipse."]
+- result: CO expansion velocity = 100 ± ±10 km/s [3.3 The stellar wind: "We find an expansion velocity of 100$\pm$10 $\mathrm{km\,s^{-1}}$"]
+- result: mass-loss rate = 8e-5 ± ±1.5e-5 Msun/yr [3.3 The stellar wind: "a mass-loss rate of 8$\pm$1.5 $\times10^{-5}$ M$_\odot$ yr$^{-1}$"]
+- result: wind gas mass (lower bound) = 0.04 ± not stated Msun [3.3 The stellar wind: "we can estimate a total gas mass for this stellar wind of 0.04 M$_\odot$"]
+- limitation (authors): Wind model made for AGB stars and assumes constant isotropic mass loss; only order-of-magnitude estimate [3.3 The stellar wind: "this method provides an order of magnitude estimate of the mass-loss rate"]
+- limitation (authors): ISM emission and filtering of extended emission (>30'') cause contamination and negative artefacts [3.2 The interstellar surroundings: "This causes negative artefacts in the data, due to the filtering out of extended emission ($>30''$) by the interferometric observations."]
+- not stated (card): CASA version and pipeline details; Calibrators and flux scale; Image size, cell size, deconvolver, masking, clean threshold; Line-free channels used for uvcontsub; Mosaic imaging details and primary beam correction; Final rms noise; Model grid ranges and step sizes for mass-loss rate and expansion velocity; Spectral window used for the H30alpha Gaussian fit and baseline treatment; Which channels …
+
+### 2018A&A...612L..11S: Detection of CI line emission towards the oxygen-rich AGB star omi Ceti (2018; evolved_stars, astrochemistry; multi_facility_alma_minor)
+- question: Is CI emission present in the envelope of the O-rich AGB star omi Cet, and does it trace external ISRF dissociation or internal UV from the binary companion?
+- step 2: Shell chemistry plus non-LTE RT model
+  - method: Chemical model gives 12C and 13C abundance profiles used as input to Monte Carlo non-LTE RT [4.1.1 The circumstellar model: "We used the $^{12}$C and $^{13}$C abundance distributions that are shown in Fig. [3](#Chemi) as input files in the mcp."]
+  - software: mcp, UCL_CHEM-type CSE chemical model (McElroy13)
+  - parameter: mass-loss 2.5e-7 Msun/yr, v_exp 2.5 km/s, 12CO/H2=5e-4, 13CO/H2=5e-5 [Chemical modelling results: "We assumed the initial fractional abundances of $^{12}$CO/H$_2$=5$\times$10$^{-4}$ reported for omi Cet (RS01)"]
+  - assumption: Spherical uniformly expanding envelope, ISRF only external UV [4.1.1 The circumstellar model: "we assume a uniformly expanding spherical envelope which is formed due to a constant mass-loss"]
+  - validation: CO(2-1,3-2,4-3) JCMT lines reasonably reproduced [4.1.1 The circumstellar model: "Although the model reasonably reproduces the CO observations"]
+- result: Peak CI abundance in shell model = 2.4e-5 ± not stated dimensionless [abstract: "a peak atomic fractional abundance of 2.4 $\times$ 10$^{-5}$"]
+- limitation (authors): Single-dish data cannot constrain the complex outflow; the CSE model is crude [4.1.1 The circumstellar model: "it is not possible to constrain the complex outflow around omi Cet based on the single-dish observations"]
+- not stated (card): ALMA calibration, CASA version and imaging parameters for the CO(3-2) data; How the two ALMA projects were combined; Channel width and rms of the ALMA map; Source coordinates; Chemical network details (Saberi et al. in prep); How the 0.2 arcsec emitting radius was measured from the map; Baseline polynomial fitting windows and spectral resolution of APEX data
+
+### 2017ApJ...841..110S: The Coldest Place in the Universe: Probing the Ultra-cold Outflow and Dusty Disk in the Boomerang Nebula (2017; evolved_stars; observational_alma_primary)
+- question: What are the structure, kinematics, mass-loss history and dust content of the ultra-cold outflow and dusty waist of the Boomerang Nebula, and what formation mechanism do they imply?
+- step 3: Constrain mass-loss rate and mass of ultra-cold outflow
+  - method: Analytic tau_1,0 with Mdot proportional to V^a and V linear in r; require tau>=1 at 80" and 10" [3.2 Physical Properties of the Ultra-Co…: "We can therefore analytically express $\tau_{1,0}$ as a function of a radially-variable mass-loss rate"]
+  - parameter: V0=164 km/s, R0=80", r_in=6", f_CO=1.3e-3 [3.2 Physical Properties of the Ultra-Co…: "We set $V_0=164$ km s$^{-1}$ and $R_0=80{''}$."]
+  - assumption: Main-sequence mass <=8 Msun; central star ~0.61 Msun; D=1.5 kpc [3.2 Physical Properties of the Ultra-Co…: "which implies that its main-sequence mass is, $M_{ms}\lesssim8$ $M_{\odot}$"]
+- result: Mass-loss rate lower limit at r=80" (a=0) = >=2.1e-3 ± not stated Msun/yr [3.2 Physical Properties of the Ultra-Co…: "we find that $\mbox{$\dot{M}$}_0\ge2.1\times10^{-3}$ $M_{\odot}$ yr$^{-1}$"]
+- result: Mass in ultra-cold outflow = >=3.3 ± not stated Msun [3.2 Physical Properties of the Ultra-Co…: "$M_{cold}\gtrsim3.3$ $M_{\odot}$, and $M_{ms}\gtrsim4$ $M_{\odot}$"]
+- result: Exponent a (Mdot proportional to V^a) = 0.9-2.2 ± not stated dimensionless [3.2 Physical Properties of the Ultra-Co…: "we find that $a\gtrsim\,0.9$"]
+- limitation (authors): Envelope size only a lower limit because CO is in absorption [3.1.3 CO (J=1–0) Imaging: "We can only determine a lower-limit from the data because of the rather pathological conditions in this object"]
+- not stated (card): Imaging parameters for Band 7 (weighting, robust, cell size, clean threshold, masks); Continuum channel selection and line-free channels; Self-calibration use; Absolute flux scale uncertainty; Details of how HST image was reprojected; Dust opacity normalization and gas-to-dust assumptions used for the dust mass; Aperture and method for annulus spectra
+
+### 2016A&A...593A..92B: Further ALMA observations and detailed modeling of the Red Rectangle (2016; evolved_stars; observational_alma_primary)
+- question: What are the properties of the rotating disk and the expanding outflow in the Red Rectangle post-AGB nebula, and how are they related?
+- step 4: Derive masses, angular momentum and disk lifetime
+  - method: Integrate model density; estimate disk lifetime from mass divided by mass-loss rate to the outflow [7 Discussion and conclusions: "Therefore, the (future) lifetime of the disk derived at this typical distance is $t_{\rm disk}$ $\sim$ 8000 yr."]
+  - assumption: Outflow gas comes from the disk; mass-loss rate constant [7 Discussion and conclusions: "If the mass-loss rate from the disk does not significantly vary during the post-AGB phases, we can expect a total disk lifetime of about 7000 yr"]
+  - validation: Uncertainty by varying parameters until predictions are incompatible with data (about 50% on density and abundance, 30% on temperature) [5.4 Uncertainties in the model fitting: "We conclude (and quantitative calculations confirm this result) that 50% is a reasonable limit to the uncertainty of our estimates of the overall density and abundance distributions."]
+- result: Disk mass = 1.3e-2 ± about 50% (density/abundance) Msun [5.1 Fitting of CO line maps: "we find a total disk mass of $\sim$ 1.3 10$^{-2}$ $M_{\mbox{\ensuremath{\odot}}}$."]
+- result: Outflow mass = 1.2e-3 ± not stated Msun [5.1 Fitting of CO line maps: "The mass of the outflow is found to be $\sim$ 1.2 10$^{-3}$ $M_{\mbox{\ensuremath{\odot}}}$."]
+- result: Disk angular momentum = 9.1 ± not stated Msun AU km/s [5.1 Fitting of CO line maps: "2.7 10$^{52}$ g cm$^2$ s$^{-1}$, i.e. $\sim$ 9.1 $M_{\mbox{\ensuremath{\odot}}}$ AU km s$^{-1}$"]
+- result: Disk lifetime = ~8000 (outer/typical), ~10000 inner ± not stated yr [7 Discussion and conclusions: "We therefore deduce a typical lifetime of the Red Rectangle disk $t_{\rm disk}$ $\sim$ 8000 yr, probably $\sim$ 10000 yr for the inner disk regions."]
+- limitation (authors): Flux lost by interferometric over-resolution, especially in the outflow wings, makes the model overpredict outflow emission [5 Model fitting: "the brightness distributions of the mapped lines can be somewhat overestimated by our model calculations with respect to the observations"]
+- not stated (card): CASA version and calibration/flagging details (deferred to the 2013 paper); Exact channel widths, line-free channels and continuum fitting order; Image size and cell size, clean thresholds and masks; Rest frequencies of the ALMA lines; The radiative transfer code is not publicly available; Model grid, number of cells and iteration convergence criteria; Source coordinates; Quantitative goodness-of…
+
+### 2019MNRAS.484.1865H: The morpho-kinematics of the circumstellar envelope around the AGB star EP Aqr (2019; evolved_stars; observational_alma_primary)
+- question: What are the morphology, kinematics, temperature, density and mass-loss rate of the EP Aqr circumstellar envelope, from separate analysis of the narrow (equatorial) and broad (bipolar) CO components?
+- step 4: De-project to density, flux of matter and mass-loss rate
+  - method: De-project temperature-corrected cubes with V=Veq+(Vpole-Veq)sin^2(alpha); compute dM/dOmega; CO/H~2.5e-4 [6.3 Flux of matter and mass-loss rate: "Assuming a solar-like abundance ratio, $\rm{CO/H}\sim 2.5\,10^{-4}$, the total mass-loss rate is measured this way to be $0.9\,10^{-7}$ M$_{\odot}$yr$^{-1}$"]
+  - parameter: Veq=1.9 km/s; Vpole=10.3 (blue)/10.7 (red) km/s [6.2 Temperature: "$V_{eq}=1.9$ km s$^{-1}$ and $V_{pole}= 10.3 (10.7)$ km s$^{-1}$ for the blue(red)-shifted part of the spectrum"]
+  - validation: Alternative Veq = escape velocity gives very small difference [6.3 Flux of matter and mass-loss rate: "The difference with the $V_{eq}$ result is indeed very small"]
+- result: Mass-loss rate without absorption = 0.9e-7 ± not stated Msun/yr [6.3 Flux of matter and mass-loss rate: "the total mass-loss rate is measured this way to be $0.9\,10^{-7}$ M$_{\odot}$yr$^{-1}$"]
+- limitation (authors): De-projection is under-determined; models of mass loss cannot be chosen among [abstract: "cannot choose among them with confidence"]
+- not stated (card): CASA version and calibrator details; Cleaning parameters (weighting, robust, threshold, masks) in GILDAS; Merging weights between IRAM and ALMA; Code for the narrow/broad separation and de-projection; Parameters F_J in the absorption model; Whether archive products were used
+
+### 2018A&A...616L...3B: High-resolution observations of the symbiotic system R Aqr. Direct imaging of the gravitational effects of the secondary on the stellar wind (2018; evolved_stars, stellar_physics; observational_alma_primary)
+- question: How does the WD secondary gravitationally affect the AGB wind in the symbiotic system R Aqr, as seen in high-resolution continuum and CO maps?
+- step 3: Locate the AGB star
+  - method: Compare continuum peak, uv-plane disk fit, and centroids of high-excitation lines and 29SiO absorption [3.2: "gives the AGB photosphere centroid with an accuracy of $\pm$3 mas"]
+  - fitting: Uniform round disk fitted in the uv plane [3.1: "By fitting in the $uv$ plane a disk-like distribution, i.e. uniform and round, we find a 15-mas-wide disk"]
+  - validation: Compatible with GAIA DR2 [3.2: "We have checked that these coordinates are fully compatible with the GAIA DR2 data."]
+- result: AGB continuum peak position (ICRS) = RA 23:43:49.49657, Dec -15:17:04.7204 ± ±3 mas ICRS [3.2: "ICRS R.A. 23:43:49.49657, dec. –15:17:04.7204, gives the AGB photosphere centroid with an accuracy of $\pm$3 mas"]
+- result: Uniform disk width (uv fit) = 15 ± not stated mas [3.1: "we find a 15-mas-wide disk"]
+- limitation (authors): Absolute astrometry ~3 mas; WD position uncertainty ~±7 mas [3.1: "we thus expect absolute errors $\sim$ 3 mas"]
+- not stated (card): Line-free channel ranges; CASA version; Image size and cell size; Clean masks and iteration/threshold; Procedure for the uv-plane disk fit; Method for deriving the new orbit (fitting code); Line-map velocity resolution and smoothing; Exact method for the spectral index of components
+
+### 2017ApJ...835L..13S: ALMA Observations of the Water Fountain Pre-planetary Nebula IRAS 16342-3814: High-velocity Bipolar Jets and an Expanding Torus (2017; evolved_stars; observational_alma_primary)
+- question: What are the structure, kinematics and mass-loss history of the water-fountain pre-planetary nebula IRAS 16342-3814 (jets, torus, AGB envelope, central continuum source), and what do they imply for the jet-launching binary models?
+- step 6: Characterize AGB CSE and mass-loss rate
+  - method: Mean 12CO and 13CO intensities at 44 km/s in 26-deg wedges along PA 133/-47 vs radius; 12/13 ratio gives optical depth, Tex, mass-loss rate [3.4 The Progenitor AGB Circumstellar En…: "in two wedges of angular width $26\ensuremath{^\circ}$ oriented along $PA\sim133\ensuremath{^\circ}$ and $PA\sim-47\ensuremath{^\circ}$ as a function of radius, and average these"]
+  - assumption: photodissociation of 13CO beyond Rout limits outer mass-loss rate [3.4 The Progenitor AGB Circumstellar En…: "We therefore conclude that there is preferential photodissociation of $^{13}$CO over $^{12}$CO by the interstellar UV at $r\gtrsim1{''}$"]
+- result: AGB mass-loss rate = >3.5e-4 (Vagb/23 km/s) ± not stated Msun/yr [3.4 The Progenitor AGB Circumstellar En…: "a mass-loss rate $\mbox{$\dot{M}$}_{AGB}>3.5\times10^{-4}\,(V_{AGB}/23\,\mbox{km~s$^{-1}$})$ $M_{\odot}$ yr$^{-1}$"]
+- result: AGB CSE expansion age at Rout = 455 ± not stated yr [3.4 The Progenitor AGB Circumstellar En…: "The AGB expansion time-scale at $r=R_{out}$ is 455 yr (23 km s$^{-1}$/$V_{AGB}$)."]
+- limitation (authors): Blob ages uncertain due to assumed uniform radial velocity [3.1 High-Velocity Outflows: "the assumption of a uniform radial outflow velocity is likely not strictly true, and the derived ages are somewhat uncertain"]
+- not stated (card): Briggs robust value, cell size, image size, and clean masks/thresholds; Which images and cubes used (tclean parameters, deconvolver); CASA/pipeline version; Self-calibration solution intervals and number of iterations; Line-free channels and continuum-subtraction order; Method for radiative transfer/excitation giving Tex, tau, and mass-loss rate (code not named); Rest frequencies adopted for line…
+
+### 2017A&A...605A..28D: The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. I. Large-scale kinematic structure and CO excitation p… (2017; evolved_stars; observational_alma_primary)
+- question: What are the 3D structure, density and temperature distribution of the pi1 Gru circumstellar envelope, constrained by spatially resolved CO rotational lines?
+- step 4: Derive mass-loss rate, outflow mass and momentum
+  - method: Integrate best-fit density distribution; momentum = mass x velocity integrated; compare to L/c [5.3 Outflow linear momentum: "when applying an average particle mass of 3$\times$10$^{-24}$ g and integrating the density distribution across the structure."]
+  - assumption: average particle mass 3e-24 g [5.3 Outflow linear momentum: "when applying an average particle mass of 3$\times$10$^{-24}$ g"]
+- result: Average mass-loss rate during torus creation = 7.7e-7 ± not stated Msun/yr [5.3 Outflow linear momentum: "this corresponds to an average mass-loss rate of about 7.7$\times$10$^{-7}$ M$_{\odot}$ yr$^{-1}$."]
+- result: Bipolar outflow mass = 7.3e-4 ± not stated Msun [5.3 Outflow linear momentum: "$M_{\rm{outflow}}$=7.3$\times$10$^{-4}$ M$_{\odot}$"]
+- result: Outflow linear momentum = 9.6e37 ± not stated g cm/s [5.3 Outflow linear momentum: "$P_{\rm{outflow}}$=9.6$\times$10$^{37}$ g cm s$^{-1}$"]
+- result: Kinematic timescales of torus and outflow = 730 and 160 ± not stated yr [5.3 Outflow linear momentum: "the kinematic timescale of the torus and outflow is about 730 yrs and 160 yrs, respectively."]
+- limitation (authors): Weak bimodal high-velocity emission not reproduced; 12CO 9-8 peak ~20% low; LVG may not apply to torus [5.2 Best-fit model: "The weak bimodal emission distribution at very high-velocity channels (Fig. [2](#fig:maps12CO32)) was not reproduced by our model."]
+- not stated (card): Robust value and clean mask/threshold for ACA and SMA imaging; Line-free channels for continuum; SHAPE model files and the feather scaling; Stellar position and coordinates; Number of ACA configurations/pointings and SMA calibration details; Quantitative uncertainties on model parameters; chi-square values not given
+
+### 2017A&A...597L...5B: A second post-AGB nebula that contains gas in rotation and in expansion: ALMA maps of IW Carinae (2017; evolved_stars; observational_alma_primary)
+- question: Are rotation (Keplerian disk) and expansion (outflow) both present in the post-AGB nebula around IW Car, and what are its mass, central stellar mass and disk lifetime?
+- step 3: Derive masses and disk lifetime
+  - method: Total mass from fitted model; lifetime from outflow kinematical time and mass-loss rate [5 Summary and conclusions: "we can derive the typical kinematical time required to form the outflow ($\sim$ 1000 yr) and the average mass-loss rate of the disk."]
+- result: Disk future lifetime = ~8000 ± 5000-10000 yr range yr [5 Summary and conclusions: "We therefore estimate the disk’s future lifetime to be approximately 8000 yr."]
+- limitation (authors): ~25% flux filtered out, model overpredicts faint extended emission [2 Observations: "a small fraction of $\sim$ 25% of the flux has been filtered out in the maps of $^{12}$CO $J$=3$-$2."]
+- limitation (authors): Inclination poorly determined [3.1 Simple modeling: "The axis inclination with respect to the plane of the sky is poorly determined"]
+- not stated (card): Model code and its source are not named or released; Line-free channels and continuum subtraction method; Image size, cell size, and final rms; Rest frequencies and velocity reference; Fitting procedure and goodness-of-fit metric (apparently by eye); Calculation of kinematical age and disk lifetime; Disk width and shape details
+
+## All papers in this technique
+
+- 2014ApJ...791...95A (2014): η Carinae Baby Homunculus Uncovered by ALMA
+- 2015A&A...573L...1O (2015): ALMA observations of anisotropic dust mass loss in the inner circumstellar environment of the red supergiant VY Canis Majoris
+- 2015MNRAS.453.4324M (2015): ALMA reveals sunburn: CO dissociation around AGB stars in the globular cluster 47 Tucanae
+- 2016A&A...586A...5M (2016): A detailed view of the gas shell around R Sculptoris with ALMA
+- 2016A&A...593A..92B (2016): Further ALMA observations and detailed modeling of the Red Rectangle
+- 2017A&A...597A..99W (2017): ALMA Compact Array observations of the Fried Egg nebula. Evidence for large-scale asymmetric mass-loss from the yellow hypergiant IRAS 1716…
+- 2017A&A...597L...5B (2017): A second post-AGB nebula that contains gas in rotation and in expansion: ALMA maps of IW Carinae
+- 2017A&A...605A..28D (2017): The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. I. Large-scale kinematic structure…
+- 2017ApJ...835L..13S (2017): ALMA Observations of the Water Fountain Pre-planetary Nebula IRAS 16342-3814: High-velocity Bipolar Jets and an Expanding Torus
+- 2017ApJ...841..110S (2017): The Coldest Place in the Universe: Probing the Ultra-cold Outflow and Dusty Disk in the Boomerang Nebula
+- 2017ApJ...841..130A (2017): The Luminous Blue Variable RMC 127 as Seen with ALMA and ATCA
+- 2017MNRAS.464L..75F (2017): ALMA observations of the supergiant B[e] star Wd1-9
+- 2018A&A...612L..11S (2018): Detection of CI line emission towards the oxygen-rich AGB star omi Ceti
+- 2018A&A...615A..28D (2018): ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz
+- 2018A&A...616L...3B (2018): High-resolution observations of the symbiotic system R Aqr. Direct imaging of the gravitational effects of the secondary on the stellar wind
+- 2018A&A...617A.137F (2018): An ALMA 3 mm continuum census of Westerlund 1
+- 2019A&A...629A.146V (2019): IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS
+- 2019A&A...632A..38A (2019): A radio census of the massive stellar cluster Westerlund 1
+- 2019MNRAS.484.1865H (2019): The morpho-kinematics of the circumstellar envelope around the AGB star EP Aqr
+- 2020A&A...633A..13D (2020): The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. II. The spiral-outflow observed at…
+- 2020ApJ...892...52L (2020): Carbon- and Oxygen-rich Asymptotic Giant Branch (AGB) Stars in the Bulge Asymmetries and Dynamical Evolution (BAaDE) Survey
+- 2020ApJ...899..152H (2020): Mapping Circumstellar Magnetic Fields of Late-type Evolved Stars with the Goldreich-Kylafis Effect: CARMA Observations at λ1.3 mm of R Crt …
+- 2024A&A...686A.274V (2024): Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars
+- 2024A&A...691A..57M (2024): SPH modelling of AGB wind morphology in hierarchical triple systems and a comparison to observation of R Aql

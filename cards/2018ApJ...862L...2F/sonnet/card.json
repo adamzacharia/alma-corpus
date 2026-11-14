@@ -1,0 +1,952 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...862L...2F",
+  "title": "First Detection of the Simplest Organic Acid in a Protoplanetary Disk",
+  "year": 2018,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Favre, Cécile",
+  "n_authors": 17,
+  "arxiv_id": "1807.05768",
+  "doi": "10.3847/2041-8213/aad046",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00845.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we report the first detection of formic acid (HCOOH) towards the TW Hydrae protoplanetary disk. The observations of the trans-HCOOH 6$_{(1,6)-5(1,5)}$ transition were carried out at 129 GHz with ALMA."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "TW Hya",
+     "coordinates": {
+      "value": "11h01m51.875s, -34d42m17.155s (J2000, phase center)",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The phase-tracking center was: $\\alpha_{J2000}$ = 11$^{h}$01$^{m}$51.875s, $\\delta_{J2000}$ =$-$34$\\ensuremath{^\\circ}$42$\\ensuremath{'}$17$\\ensuremath{''}$155."
+       },
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "distance of 59 pc, consistent with the recent GAIA measurements (cite: Gaia-Collaboration:2016),"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "59 pc",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The phase-tracking center was: $\\alpha_{J2000}$ = 11$^{h}$01$^{m}$51.875s, $\\delta_{J2000}$ =$-$34$\\ensuremath{^\\circ}$42$\\ensuremath{'}$17$\\ensuremath{''}$155."
+       },
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "distance of 59 pc, consistent with the recent GAIA measurements (cite: Gaia-Collaboration:2016),"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "consistent with Gaia measurements (Gaia Collaboration 2016)",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The phase-tracking center was: $\\alpha_{J2000}$ = 11$^{h}$01$^{m}$51.875s, $\\delta_{J2000}$ =$-$34$\\ensuremath{^\\circ}$42$\\ensuremath{'}$17$\\ensuremath{''}$155."
+       },
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "distance of 59 pc, consistent with the recent GAIA measurements (cite: Gaia-Collaboration:2016),"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is formic acid (HCOOH) present in the TW Hya protoplanetary disk, at what column density, and can disk chemical modeling reproduce it?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we report the first detection of formic acid (HCOOH) towards the TW Hydrae protoplanetary disk."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00845.S",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "ADS/ JAO.ALMA$\\#$2015.1.00845.S (PI C. Favre)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "six spectral windows of 960 channels, 244.141 kHz width (~0.6 km/s), covering 129.538-132.405 GHz; one 2 GHz continuum window centred at 130.973 GHz (128 channels of 15.625 MHz)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "six spectral windows each of 960 channels with a channel width used during the observations of 244.141 kHz (about 0.6 km s$^{-1}$) covering about 1.4 GHz between 129.538 GHz and 132.405 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "trans-HCOOH",
+     "transition": "6(1,6)-5(1,5)",
+     "rest_frequency": "129671.82 MHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "emitting at 129671.82 MHz"
+      }
+     ]
+    },
+    {
+     "species": "c-C3H2",
+     "transition": "3-2",
+     "rest_frequency": "145089.6 MHz",
+     "evidence": [
+      {
+       "loc": "3.2 Data processing: keplerian mask",
+       "quote": "c-C$_3$H$_2$ (3-2) line emission at 145089.6 MHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.1 m (6.5 kλ) to 713.1 m (310.0 kλ)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "with 39 antennas and baselines from 15.1 m (6.5 k$\\lambda$) up to 713.1 m (310.0 k$\\lambda$)"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.28\" x 1.00\" (continuum), 1.29\" x 1.02\" (line)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The resulting synthesized beam sizes are 1.28$\\ensuremath{''}$ $\\times$ 1.00$\\ensuremath{''}$ at a P.A.$\\sim$ $-$89$\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "about 39 min",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "with an on source time of about 39 min with ALMA, during Cycle 3."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 May 31 and 2016 June 1",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The observations were performed toward TW Hya on 2016 May 31 and on 2016 June 1"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI C. Favre, project 2015.1.00845.S",
+    "evidence": [
+     {
+      "loc": "footnote",
+      "quote": "ADS/ JAO.ALMA$\\#$2015.1.00845.S (PI C. Favre)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM-30m (ASAI)",
+     "provided": {
+      "value": "Previous detection of the same HCOOH line in L1157-B1 and NGC1333-IRAS4A, used to support the identification",
+      "evidence": [
+       {
+        "loc": "3.1 t-HCOOH",
+        "quote": "the same line was clearly detected in the Solar-like regions L1157–B1 and NGC1333–IRAS4A with the IRAM-30m telescope"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "HCOOH spectroscopic parameters",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "We used the spectroscopic data parameters from (cite: Kuze:1982) that are available at the Cologne Database for Molecular Spectroscopy line catalog (cite: Muller:2005)."
+       }
+      ]
+     },
+     "citation": "(cite: Kuze:1982); (cite: Muller:2005)"
+    },
+    {
+     "what": {
+      "value": "Methanol observations in TW Hya used for the HCOOH/CH3OH ratio",
+      "evidence": [
+       {
+        "loc": "3.3 Column densities and relative abundances",
+        "quote": "As methanol was previously detected towards TW Hya (cite: Walsh:2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Walsh:2016)"
+    },
+    {
+     "what": {
+      "value": "Cometary HCOOH/CH3OH ratio for comparison",
+      "evidence": [
+       {
+        "loc": "3.3 Column densities and relative abundances",
+        "quote": "about one order of magnitude higher than the ratio measured in comets (cite: Biver:2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Biver:2014)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Thermochemical TW Hya disk structure (Gorti 2011) with ALCHEMIC chemistry run for 1 Myr and LIME line radiative transfer, synthetic ALMA observation via simobserve",
+     "evidence": [
+      {
+       "loc": "4.2 Radiative transfer modeling",
+       "quote": "These datacubes were then converted into visibilities using the simobserve task from the CASA package, using the same antenna positions as in the observations."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.5.3",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Data reduction and continuum subtraction were performed through the version 4.5.3 of the Common Astronomy Software Applications, CASA."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ganymede (May) and Titan (June); J1037-2934 and J1103-3251 for bandpass and phase",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Ganymede and Titan were used as flux calibrators for the observations performed in May and June, respectively."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Continuum self-calibrated at 129 GHz, solutions applied to molecular data",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The continuum emission at 129 GHz was self-calibrated with the solutions (gain tables) applied to the molecular data."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "the data were cleaned using a $``$Natural\" weighting."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "performed in CASA (method not detailed)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Data reduction and continuum subtraction were performed through the version 4.5.3 of the Common Astronomy Software Applications, CASA."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Gaussian kernel of 7\" x 7\" on the integrated map",
+     "evidence": [
+      {
+       "loc": "3.2 Data processing: keplerian mask",
+       "quote": "smoothed by a Gaussian kernel of 7$\\ensuremath{''}$ $\\times$ 7$\\ensuremath{''}$ to spatially enhance the signal to noise ratio."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.29\" x 1.02\", PA ~90 deg (line)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "1.29$\\ensuremath{''}$ $\\times$ 1.02$\\ensuremath{''}$ at a P.A. of about 90$\\ensuremath{^\\circ}$ for the continuum (see Fig. [1](#fg1)) and line images"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Keplerian mask technique",
+      "evidence": [
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "one can significantly improve the signal- to-noise by the use of a Keplerian mask (cite: Salinas:2017a; Carney:2017)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Salinas:2017a; Carney:2017)"
+    },
+    {
+     "what": {
+      "value": "Pixel spectral stacking method",
+      "evidence": [
+       {
+        "loc": "3.1 t-HCOOH",
+        "quote": "the HCOOH spectrum resulting from the pixel spectral stacking method (cite: Yen:2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Yen:2016)"
+    },
+    {
+     "what": {
+      "value": "Bootstrapped noise computation",
+      "evidence": [
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "to compute the \"bootstrapped\" noise, the same keplerian mask was applied to channels with no signal that were far away from the ones in which HCOOH is emitting (cite: Bergner:2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Bergner:2018)"
+    },
+    {
+     "what": {
+      "value": "Modeling suite and LIME setup",
+      "evidence": [
+       {
+        "loc": "4.2 Radiative transfer modeling",
+        "quote": "with a setup similar to the one used by (cite: Parfenov:2017) to reproduce methanol emission towards TW Hya by (cite: Walsh:2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Parfenov:2017)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Self-calibration solution intervals, number of iterations and reference channels",
+    "Line-free channels used for continuum subtraction",
+    "Clean threshold, image size, cell size and masks",
+    "How the column density was computed from F (line width, partition function, source size)",
+    "Aperture position and shape for the disk-averaged spectrum",
+    "Methanol column density used for the HCOOH/CH3OH ratio",
+    "Noise-estimation details for the 4 sigma and 12 sigma values",
+    "LIME grid and model parameters"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, self-calibrate and image",
+    "method": {
+     "value": "CASA reduction, continuum self-calibration with gain tables applied to line data, continuum subtraction, natural-weighted cleaning",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The continuum emission at 129 GHz was self-calibrated with the solutions (gain tables) applied to the molecular data."
+      }
+     ]
+    },
+    "software": [
+     "CASA 4.5.3"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract disk-averaged spectrum and confirm detection",
+    "method": {
+     "value": "Elliptical aperture of ~400 au on native data plus pixel spectral stacking",
+     "evidence": [
+      {
+       "loc": "3.1 t-HCOOH",
+       "quote": "disk-averaged spectrum extracted from the native dataset using an elliptical aperture of about 400 au"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Two independent methods above 4 sigma; line is the brightest expected in range",
+     "evidence": [
+      {
+       "loc": "3.1 t-HCOOH",
+       "quote": "two independent methods show a detection above the 4$\\sigma$ level"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Apply Keplerian mask and make integrated map",
+    "method": {
+     "value": "Keplerian mask, integrate v=0.9-3.4 km/s, smooth by 7\"x7\" Gaussian",
+     "evidence": [
+      {
+       "loc": "3.2 Data processing: keplerian mask",
+       "quote": "integrated over the line profile, from v=0.9 to 3.4 km s$^{-1}$ and smoothed by a Gaussian kernel of 7$\\ensuremath{''}$ $\\times$ 7$\\ensuremath{''}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "M*=0.7 Msun, i=7 deg, PA=155 deg, vsys=2.7 km/s, d=59 pc, Rout=400 au",
+      "evidence": [
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "outer radius of 400 au (to be consistent with the data)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Keplerian rotation",
+      "evidence": [
+       {
+        "loc": "3.2 Data processing: keplerian mask",
+        "quote": "Assuming that the disk is in Keplerian rotation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mask checked on c-C3H2 (3-2) detected above 12 sigma; S/N improved by factor ~5",
+     "evidence": [
+      {
+       "loc": "3.2 Data processing: keplerian mask",
+       "quote": "the signal to noise ratio was enhanced by a factor $\\sim$5."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive column density and HCOOH/CH3OH ratio",
+    "method": {
+     "value": "Convert disk-averaged integrated intensity to column density for Tex = 10 and 40 K; compare with methanol",
+     "evidence": [
+      {
+       "loc": "3.3 Column densities and relative abundances",
+       "quote": "corresponds to a t-HCOOH source averaged column density of (2.9$\\pm$1.3)$\\times$10$^{12}$ cm$^{-2}$ and (3.5$\\pm$0.8)$\\times$10$^{12}$ cm$^{-2}$ for an excitation temperature of 10 and 40 K, respectively."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Excitation temperature 10-40 K",
+      "evidence": [
+       {
+        "loc": "3.3 Column densities and relative abundances",
+        "quote": "The 10-40 K temperature range is the typical one where the molecular gas is expected to be emissive."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Model HCOOH chemistry and synthetic observation",
+    "method": {
+     "value": "Gorti 2011 disk structure, ALCHEMIC chemistry for 1 Myr, LIME LTE radiative transfer, simobserve and clean to compare with observations",
+     "evidence": [
+      {
+       "loc": "4.2 Radiative transfer modeling",
+       "quote": "we used the three-dimensional Monte-Carlo code Line Modeling Engine (cite: Brinch:2010)"
+      }
+     ]
+    },
+    "software": [
+     "ALCHEMIC",
+     "LIME",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "CR ionization 1.3e-17 s^-1; 1% chemical desorption; grain radius 7 micron; UV photodesorption yield 1e-5",
+      "evidence": [
+       {
+        "loc": "4.1 Physical and chemical model of TW Hya disk",
+        "quote": "A low UV-photodesorption yield of 10$^{-5}$ is adopted for all ices"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, gas-to-dust ratio 100, star mass 0.7 Msun",
+      "evidence": [
+       {
+        "loc": "4.1 Physical and chemical model of TW Hya disk",
+        "quote": "An accretion rate of 10$^{-9}$ M$_{\\odot}$ yr$^{-1}$ and a constant gas-to-dust mass ratio of 100 are assumed."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Model reproduces observed column densities within a factor 3",
+     "evidence": [
+      {
+       "loc": "4.3 Chemical desorption as the source of HCOOH in disks?",
+       "quote": "Our physico-chemical modeling reproduces well the observed column densities within a factor 3"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.3",
+    "used_for": {
+     "value": "Data reduction, continuum subtraction, self-calibration, imaging, simobserve",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "version 4.5.3 of the Common Astronomy Software Applications, CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D non-LTE-capable Monte-Carlo line radiative transfer (run in LTE)",
+     "evidence": [
+      {
+       "loc": "4.2 Radiative transfer modeling",
+       "quote": "The radiative transfer calculations were performed assuming local thermodynamic equilibrium (LTE)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALCHEMIC",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gas-grain disk chemical evolution",
+     "evidence": [
+      {
+       "loc": "4.1 Physical and chemical model of TW Hya disk",
+       "quote": "The chemical structure of the disk was computed with the public gas-grain ALCHEMIC code (cite: Semenov:2010)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "t-HCOOH line integrated intensity",
+    "value": "89e-3",
+    "uncertainty": "12e-3",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Column densities and relative abundances",
+      "quote": "F = (89$\\pm$12)$\\times$10$^{-3}$ Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "t-HCOOH column density (Tex=10 K)",
+    "value": "2.9e12",
+    "uncertainty": "1.3e12",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Column densities and relative abundances",
+      "quote": "(2.9$\\pm$1.3)$\\times$10$^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "t-HCOOH column density (Tex=40 K)",
+    "value": "3.5e12",
+    "uncertainty": "0.8e12",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Column densities and relative abundances",
+      "quote": "(3.5$\\pm$0.8)$\\times$10$^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak S/N of Keplerian-masked, smoothed map",
+    "value": "12",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Data processing: keplerian mask",
+      "quote": "with a detection at a peak to noise ratio of 12$\\sigma$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCOOH/CH3OH ratio",
+    "value": "<= 1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Column densities and relative abundances",
+      "quote": "we obtain an average abundance t-HCOOH/CH$_3$OH ratio lower than and/or equal to 1"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HCOOH is the first organic molecule with two oxygen atoms detected in a protoplanetary disk.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "HCOOH is the first organic molecules containing two oxygen atoms detected in a protoplanetary disk"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is HCOOH detectable in the TW Hya disk?",
+    "experiment": "ALMA band 3 spectrum extraction, pixel stacking and Keplerian-mask analysis",
+    "result": "Line detected at S/N ~4 in the spectrum and 12 sigma after masking and smoothing",
+    "finding": "First detection of formic acid in a protoplanetary disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 t-HCOOH",
+      "quote": "We detected the 129 GHz HCOOH line with a signal-to-noise ratio of about 4."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is HCOOH as abundant as methanol in the disk?",
+    "experiment": "Compared column densities with literature methanol",
+    "result": "Column density (2-4)e12 cm^-2, ratio <= 1",
+    "finding": "Abundance comparable to methanol, though spatial scales differ",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "namely as large as that of methanol"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can grain-surface formation with reactive desorption explain the HCOOH abundance?",
+    "experiment": "Disk chemical model with LIME synthetic observation",
+    "result": "Observed column densities reproduced within a factor 3",
+    "finding": "Chemical desorption model is consistent with observations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Chemical desorption as the source of HCOOH in disks?",
+      "quote": "Our physico-chemical modeling reproduces well the observed column densities within a factor 3"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Gas-phase ethanol-based scheme (Skouteris 2018) does not appear to dominate HCOOH production in a preliminary 0D model",
+     "evidence": [
+      {
+       "loc": "4.3 Chemical desorption as the source of HCOOH in disks?",
+       "quote": "this new set of reactions does not seem to dominate the production of formic acid in disks."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Low spatial and spectral resolution prevents resolving the emission structure and kinematics; at least 100 au uncertainty in spatial extent",
+     "evidence": [
+      {
+       "loc": "3.2 Data processing: keplerian mask",
+       "quote": "the low angular resolution observations along with the convolution procedure, lead to at least 100 au of uncertainty regarding the spatial extent of HCOOH."
+      }
+     ]
+    },
+    {
+     "value": "Non-LTE not possible because HCOOH collisional rates are unavailable",
+     "evidence": [
+      {
+       "loc": "4.2 Radiative transfer modeling",
+       "quote": "Non-LTE calculations could not be performed as the collisional rate coefficients for HCOOH are not available."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single line at S/N ~4 in the unmasked spectrum; the identification rests on the mask and stacking",
+    "Column density depends on an assumed emitting area and Tex",
+    "Methanol ratio compares different spatial scales",
+    "The Keplerian mask could bias the S/N"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2015.1.00845.S is cited with PI, so it is in the archive",
+    "evidence": [
+     {
+      "loc": "footnote",
+      "quote": "ADS/ JAO.ALMA$\\#$2015.1.00845.S (PI C. Favre)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Self-calibration parameters",
+    "Exact column density calculation",
+    "Clean parameters and line-free channels",
+    "LIME model setup details"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB raw",
+   "score_inferred": 3,
+   "score_reason": "Data are archival and the Keplerian mask parameters are given, but the imaging and self-calibration details and the column density derivation are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete, with a marginal detection that is sensitive to unstated imaging details."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Salinas:2017a); (cite: Carney:2017)",
+     "why": "Keplerian mask method"
+    },
+    {
+     "citation": "(cite: Yen:2016)",
+     "why": "Pixel spectral stacking"
+    },
+    {
+     "citation": "(cite: Parfenov:2017)",
+     "why": "Disk modeling suite"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Walsh:2016)",
+     "why": "Methanol detection in TW Hya"
+    },
+    {
+     "citation": "Favre et al. in prep",
+     "why": "c-C3H2 detection in the same project"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASAI (Astrochemical Surveys At IRAM)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-03d143b7d6f81b8c51c4d67e46b27bdf",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:38:00",
+  "usage": {
+   "input_tokens": 15666,
+   "output_tokens": 8581,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.059178,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 47,
+   "rate": 0.595
+  },
+  "evidence_ok": true
+ }
+}

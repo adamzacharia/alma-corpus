@@ -1,0 +1,424 @@
+{
+ "bibcode": "2023A&A...674A.101M",
+ "title": "Cosmo-tomography toward PKS 1830‒211: Variability of the quasar and of its foreground molecular absorption monitored with ALMA",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245768",
+ "arxiv_id": "2304.09002",
+ "fields": [
+  "agn_and_quasars",
+  "astrochemistry",
+  "high_z_galaxies"
+ ],
+ "question": "How do the submillimeter continuum emission and foreground molecular absorption of the lensed quasar PKS 1830-211 vary over time, and what constraints do these variations place on the quasar's activity and small-scale ISM structures in the z=0.89 absorber?",
+ "alma_project_codes": [
+  "2011.0.00405.S",
+  "2012.1.00056.S",
+  "2013.1.00020.S",
+  "2015.1.00075.S",
+  "2018.1.00051.S",
+  "2021.A.00028.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12m array (36 to 45 antennas)",
+  "angular_resolution": "< 0.5''",
+  "sensitivity": "0.47% to 2.14% of SW continuum per 0.6 km/s channel (individual visits); < 0.1%-0.2% (2016 averaged spectrum); 0.1% to 1.3% (complementary spectra)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA CH+ (1-0) spectrum from 2015",
+    "evidence": [
+     {
+      "loc": "Long-term variations (2012 - 2022)",
+      "quote": "To these water spectra, we can add the observations of the CH$^+$ (1-0) line in 2015 (reported by (cite: mul17))."
+     }
+    ]
+   },
+   "citation": "(cite: mul17)"
+  },
+  {
+   "what": {
+    "value": "Rest frequency of H2O",
+    "evidence": [
+     {
+      "loc": "Spectroscopic data",
+      "quote": "For H$_2$O, the frequency is taken from (cite: caz09)."
+     }
+    ]
+   },
+   "citation": "(cite: caz09)"
+  },
+  {
+   "what": {
+    "value": "Rest frequencies and relative intensities of CH",
+    "evidence": [
+     {
+      "loc": "Spectroscopic data",
+      "quote": "For CH, frequencies are taken from (cite: tru14) and line relative intensities ($S_{ul}$) from (cite: nij12)."
+     }
+    ]
+   },
+   "citation": "(cite: tru14), (cite: nij12)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic data for 13CH",
+    "evidence": [
+     {
+      "loc": "Spectroscopic data",
+      "quote": "For $^{13}$CH, spectroscopic data are taken from (cite: hal08) and the JPL molecular spectroscopy database."
+     }
+    ]
+   },
+   "citation": "(cite: hal08), JPL molecular spectroscopy database"
+  },
+  {
+   "what": {
+    "value": "Galactic abundance ratios [CH]/[H2] and [H2O]/[H2]",
+    "evidence": [
+     {
+      "loc": "Correlation H2O – CH",
+      "quote": "(cite: she08) derive a quasi-linear relationship between the column densities of CH and H$_2$, with an average abundance ratio of [CH]/[H$_2$] $= 3.5 _{-1.4}^{+2.1} \\times 10^{-8}$ along diffuse molecular sightlines and dark clouds."
+     },
+     {
+      "loc": "Correlation H2O – CH",
+      "quote": "For water, (cite: fla13) also find a remarkably constant abundance ratio relative to H$_2$ in Galactic translucent clouds, with [H$_2$O]/[H$_2$] $= (4.8 \\pm 0.3) \\times 10^{-8}$."
+     }
+    ]
+   },
+   "citation": "(cite: she08), (cite: fla13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum flux densities, flux-density ratios, differential polarimetry, and absorption spectra from calibrated visibilities",
+   "method": "Visibility fitting with a two point-source model in UVMultiFit on Stokes I, XX, and YY separately; extraction of spectral indices after flagging absorption channels",
+   "software": [
+    "UVMultiFit"
+   ],
+   "key_parameters": [
+    "Two point-like components; free parameters: f_NE and R = f_NE/f_SW"
+   ],
+   "assumptions": [
+    "Third lensed image and small Einstein ring extensions are negligible and ignored"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate time delay and differential magnification via randomness minimization",
+   "method": "Measure-of-randomness analysis on the combined NE and time-shifted, scaled SW light curves using the Von Neumann estimator",
+   "software": [],
+   "key_parameters": [
+    "Grid over time delay Delta t and differential magnification R_q"
+   ],
+   "assumptions": [
+    "Minimum randomness corresponds to the most likely values of Delta t and R_q"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model continuum light curve, spectral index evolution, and polarization with a core + ballistic plasmon model",
+   "method": "Simultaneous parametric fit to NE/SW flux densities, NE spectral index, and spectral-index difference using MCMC; qualitative extension to Stokes Q polarization",
+   "software": [],
+   "key_parameters": [
+    "Plasmon injection time t_0, core flux I_c (< 0.18 Jy), plasmon flux I_p, decay power beta, plasmon spectral index alpha_p, time delay Delta t, differential magnification R_q; for polarization exploration: Gaussian F(t-t0) with width 100 days, m_c = 0.05, m_p = 0.2"
+   ],
+   "assumptions": [
+    "No micro- or milli-lensing; stable optically thick core (alpha_c = 0, I_c < 0.18 Jy); single ballistic plasmon injection; adiabatic losses dominate over radiative losses; electron energy index p = 3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Characterize absorption line variability using Principal Component Analysis (PCA)",
+   "method": "PCA decomposition of monitoring absorption spectra to extract eigenspectra and time-evolving eigenvalues, followed by sinusoidal fitting to eigenvalue time series",
+   "software": [
+    "scikit-learn"
+   ],
+   "key_parameters": [
+    "Velocity intervals: SW H2O [-100, 100], [-100, 0], [0, 100] km/s; SW CH1 and CH2 [-60, 60] km/s; NE H2O [-240, -120] km/s"
+   ],
+   "assumptions": [
+    "All eigenvalues taken with equal weight in sine function fit"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Construct deep averaged 2016 spectra and measure 12CH/13CH ratio",
+   "method": "Remove first-order polynomial baseline from each visit's spectrum, compute inverse-variance weighted average, and simultaneously fit multi-Gaussian velocity components convolved with hyperfine structure to 12CH and 13CH doublets",
+   "software": [],
+   "key_parameters": [
+    "About 10 Gaussian velocity components"
+   ],
+   "assumptions": [
+    "Same intrinsic velocity profile for 12CH and 13CH; optically thin lines; no chemical fractionation"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive water isotopolog and oxygen isotopic ratios (16O/18O and 18O/17O)",
+   "method": "Simultaneous multi-Gaussian opacity profile fitting to H2(16)O, H2(18)O, H2(17)O, and CH spectra from 2014 and 2022 epochs, then combining with statistical weights",
+   "software": [],
+   "key_parameters": [
+    "N_gauss = 3, 5, or 9 Gaussian components; continuum covering factor f_c free (when H2(16)O included) or fixed to 1"
+   ],
+   "assumptions": [
+    "Same opacity velocity profile for all isotopologs and CH; no fractionation for water isotopologs"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Deconvolve CH hyperfine structure and correlate H2O and CH optical depths",
+   "method": "Convert absorption profiles to optical depth assuming f_c = 1, deconvolve CH hyperfine structure using a Clean algorithm, and compare tau(H2O) with tau(CH*)",
+   "software": [],
+   "key_parameters": [
+    "f_c = 1; T_CMB = 5.14 K at z = 0.89; H2O ortho-to-para ratio = 3"
+   ],
+   "assumptions": [
+    "f_c = 1 (excluding saturated [-10, +10] km/s center); hfs intensities follow statistical weights; LTE with CMB at 5.14 K; H2O OPR = 3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NE image continuum flux density drop (2016 monitoring)",
+   "value": "1.17 to 0.19",
+   "uncertainty": "20%",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2016 monitoring campaign",
+     "quote": "| 2016/03/05 | 7452.545 | 36 | 1.2 | Titan | 101 | 1.17 | 1.06 | 1.100 (3) | $44.3\\pm 1.3$ | 0.146(7) | 0.49 |"
+    },
+    {
+     "loc": "2016 monitoring campaign",
+     "quote": "| 2016/09/08 | 7639.162 | 39 | 0.6 | J 1924$-$292 | 104 | 0.19 | 0.19 | 1.010 (2) | $2.9\\pm 0.6$ | 0.111(21) | 1.16 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average flux-density ratio R (2016 monitoring)",
+   "value": "1.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Flux-density ratio",
+     "quote": "In contrast to the large decrease in flux density during the 2016 monitoring, the instantaneous flux-density ratios $\\Re = f_{\\rm NE}/f_{\\rm SW}$ show only mild ($\\sim 10$%) variations around an average value of $\\sim 1.04$, with extreme values of 0.96 and 1.15 (Fig. 1 b)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average ALMA flux-density ratio R (2012-2022)",
+   "value": "1.38",
+   "uncertainty": "0.35",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Flux-density ratio",
+     "quote": "Taken at face value, the average value of all the ALMA flux-density ratios measured between 2012 and 2022 is $1.38 \\pm 0.35$ (with 1$\\sigma$ dispersion) and the median is 1.29."
+    }
+   ]
+  },
+  {
+   "quantity": "Time delay between NE and SW images (Delta t)",
+   "value": "25",
+   "uncertainty": "3",
+   "units": "days",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We propose a simple parametric model of a core plus a ballistic plasmon to account for the continuum evolution, from which we constrain a time delay of $25 \\pm 3$ days between main lensed images."
+    },
+    {
+     "loc": "Simple scenario of the continuum evolution",
+     "quote": "| Lensing | Time delay (days) | $\\Delta t$ | 25 $\\pm$ 3 | depends on plasmon model and data weights |"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential magnification factor (R_q)",
+   "value": "1.24",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Simple scenario of the continuum evolution",
+     "quote": "| | Differential magnification | $\\mathcal{R}_q$ | 1.24 $\\pm$ 0.04 | weakly coupled to $\\Delta t$ |"
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "From this parametric model, we also obtain a new measurement of the time delay between the NE and SW images of $\\Delta t = 25 \\pm 3$ days, and of their differential magnification, namely $1.24 \\pm 0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Core flux density (I_c)",
+   "value": "0.178",
+   "uncertainty": "0.010",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Simple scenario of the continuum evolution",
+     "quote": "| Core | Flux density of the core (Jy) | $I_c$ | $0.178 \\pm 0.010$ | bounded $<0.18$ Jy |"
+    }
+   ]
+  },
+  {
+   "quantity": "Plasmon flux density at t_0 (I_p)",
+   "value": "1.51",
+   "uncertainty": "0.09",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Simple scenario of the continuum evolution",
+     "quote": "| | Flux density of the plasmon at $t_0$ (Jy) | $I_p$ | $1.51 \\pm 0.09$ | weakly coupled to $t_0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power of plasmon flux-density decay (beta)",
+   "value": "-2.2",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Simple scenario of the continuum evolution",
+     "quote": "| | Power of the plasmon flux-density decay | $\\beta$ | $-2.2 \\pm 0.4$ | strongly coupled to $t_0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Plasmon spectral index (alpha_p)",
+   "value": "-0.89",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Simple scenario of the continuum evolution",
+     "quote": "| | Plasmon spectral index | $\\alpha_p$ | $-0.89 \\pm 0.02$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "PCA PC1 period for SW H2O [-100, 100] km/s",
+   "value": "272",
+   "uncertainty": "15",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Principal component analysis",
+     "quote": "Fitting such a sinusoidal function, we find periods of $272 \\pm 15$ days, $186 \\pm 20$ days, and $117 \\pm 12$ days, for PC1, PC2, and PC3, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average PCA PC1 period across lines/sightlines",
+   "value": "230",
+   "uncertainty": "not stated",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Principal component analysis",
+     "quote": "All these measurements (Table 1; except overlapping velocity range for measurements from H$_2$O spectra) are independent, but still yield a consistent signal period of $\\sim 230$ days for PC1, within error bars."
+    }
+   ]
+  },
+  {
+   "quantity": "12CH/13CH abundance ratio toward SW image",
+   "value": "150",
+   "uncertainty": "10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Detection of 13CH",
+     "quote": "Our final $^{12}$CH/$^{13}$CH ratio is $150 \\pm 10$."
+    }
+   ]
+  },
+  {
+   "quantity": "16O/18O isotopic ratio in z=0.89 absorber",
+   "value": "65.3",
+   "uncertainty": "0.7",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We also measure the oxygen isotopic ratios, $^{16}$O/$^{18}$O $= 65.3 \\pm 0.7$ and $^{18}$O/$^{17}$O $= 11.5 \\pm 0.5$ in the $z=0.89$ absorber."
+    },
+    {
+     "loc": "Water isotopologs and oxygen isotopic ratios",
+     "quote": "The values of the $^{16}$O/$^{18}$O ($= 65.3 \\pm 0.7$ after combining the measurements with their statistical weights) and $^{18}$O/$^{17}$O ($= 11.5 \\pm 0.5$) ratios are consistent with the previous measurements made from the HCO$^+$ isotopologs by (cite: mul06; mul11), albeit with much better accuracy."
+    }
+   ]
+  },
+  {
+   "quantity": "18O/17O isotopic ratio in z=0.89 absorber",
+   "value": "11.5",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We also measure the oxygen isotopic ratios, $^{16}$O/$^{18}$O $= 65.3 \\pm 0.7$ and $^{18}$O/$^{17}$O $= 11.5 \\pm 0.5$ in the $z=0.89$ absorber."
+    }
+   ]
+  },
+  {
+   "quantity": "Width of broad shallow H2O absorption trough toward SW",
+   "value": "500",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Finally, we find a remarkable continuous shallow trough in the water absorption spanning a velocity interval of nearly 500 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Source-covering factor f_c of SW image (2016 monitoring)",
+   "value": "96",
+   "uncertainty": "1",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Analysis of the absorption profiles and their time variations",
+     "quote": "The covering factor is $\\sim 96$% with only mild variations of the order of 1%, which contrast with the large variations of the flux density between the beginning and the end of our monitoring (Fig. 1)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact relative positions or constraints on the two point-like components in UVMultiFit",
+  "Details of the MCMC sampler, number of walkers/steps, and prior distributions for the core+plasmon continuum model",
+  "Exact velocity channel masks used for flagging absorption lines during continuum spectral index and polynomial baseline fitting",
+  "Details of the Clean algorithm implementation used to deconvolve the CH hyperfine structure"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral channel masks used for continuum baseline and spectral index fitting",
+  "Initial guesses and priors for the MCMC continuum model fit",
+  "Initial parameters and bounds for the 10-component Gaussian hyperfine fits to CH/13CH and 3-9 component fits to H2O isotopologs"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "All ALMA project codes, calibration settings (CASA 4.7.2, 10s phase self-cal, calibrators), visibility fitting tool (UVMultiFit), PCA tool (scikit-learn), spectroscopic constants (Table A.1), and per-visit intermediate measurements (Table 1) are explicitly provided; only minor fitting priors and channel masks are omitted.",
+ "rediscovery_reason": "All six ALMA datasets are public, visibility modeling with UVMultiFit is straightforward for two point sources, and the main results (flux ratios, PCA periods, 12CH/13CH = 150 +/- 10, 16O/18O = 65.3 +/- 0.7, 18O/17O = 11.5 +/- 0.5, and time delay 25 +/- 3 days) are crisp numeric targets.",
+ "source_card": "cards/2023A%26A...674A.101M/sonnet/card.md"
+}

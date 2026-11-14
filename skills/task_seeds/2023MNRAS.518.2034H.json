@@ -1,0 +1,476 @@
+{
+ "bibcode": "2023MNRAS.518.2034H",
+ "title": "Evidence for episodic and patchy mass ejection in the circumstellar envelope of AGB star R Leonis",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3176",
+ "arxiv_id": "2211.02207",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "What is the morpho-kinematics and relative molecular abundance distribution of the circumstellar envelope of the oxygen-rich AGB star R Leonis across radial scales from the stellar disc to a few arcseconds?",
+ "alma_project_codes": [
+  "2016.1.01202.S",
+  "2017.1.00862.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211-275 GHz), Band 7 (275-373 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.2 arcsec (Band 6 low-res), ~0.03 arcsec (Band 6 high-res)",
+  "sensitivity": "0.06 to 2.1 mJy beam^-1 (see Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of 114 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In our analysis we use 114 pc, a value consistent with the distance obtained from the period-luminosity relation (cite: Haniff1995)."
+     }
+    ]
+   },
+   "citation": "vanLeeuwen2007; Haniff1995"
+  },
+  {
+   "what": {
+    "value": "Star systemic velocity of -0.5 km s^-1",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The Doppler velocity $V_\\text{z}$ spectrum is centred on a star systemic velocity of $-$0.5 km s$^{-1}$ (cite: Teyssier2006), which, however, is not known to better than $\\sim$$\\pm$0.5 km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "Teyssier2006"
+  },
+  {
+   "what": {
+    "value": "Single-dish relative molecular abundances for CO, 29SiO, H13CN, SO, SO2",
+    "evidence": [
+     {
+      "loc": "Discussion of the results",
+      "quote": "We also list, in the same table, abundances obtained from single dish observations using broad and isotropic radial distributions."
+     }
+    ]
+   },
+   "citation": "Table 5 references (a, b, c, e, g)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Phase-centre shift, self-calibration, and continuum/line imaging",
+   "method": "Shift the phase centre of the Band 6 high-resolution visibilities to the centre of the continuum emission, perform phase self-calibration on the continuum data, apply the solutions to the line data, and produce cleaned images without visibility-level continuum subtraction.",
+   "software": [
+    "CASA",
+    "GILDAS/IMAGER"
+   ],
+   "key_parameters": [
+    "Phase centre origin: RA=09h47m33.492315s, Dec=11d25m42.9081536s"
+   ],
+   "assumptions": [
+    "Systemic velocity V_z = -0.5 km s^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Morpho-kinematic analysis of the expanding CO(2-1) shell and quantification of inhomogeneity",
+   "method": "Construct channel maps, radial intensity profiles, position-velocity (V_z vs R and V_z vs omega) maps, and distributions of the elliptical shell parameter rho = sqrt((V_z/5.5)^2 + (R/6)^2). Divide the shell into twelve 30-degree position angle sectors and compute the rms deviation from unity of the ratio of each sector's rho distribution to the mean distribution.",
+   "software": [],
+   "key_parameters": [
+    "Shell mean radius = 6 arcsec, mean expansion velocity = 5.5 km s^-1, 12 sectors of 30 deg width, intervals |rho - 1| < 0.25 and |rho - 1| < 0.5"
+   ],
+   "assumptions": [
+    "Distance d = 114 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Kinematic and intensity characterization of three inner outflows (SE, SW, NW)",
+   "method": "Define three 3D data cube regions (SE, SW, NW) between R = 60 and 300 mas, each with volume 0.48 arcsec^2 km s^-1, and compute the integrated intensity, mean and rms Doppler velocity <V_z>, and mean and rms position angle <omega> for CO(2-1), 29SiO(5-4), SO(5_5-4_4), SO2(22_2,20-22_1,21), and SO2(13_2,12-12_1,11)/H13CN(4-3).",
+   "software": [],
+   "key_parameters": [
+    "Radial range: 60 to 300 mas; cube volume: 0.48 arcsec^2 km s^-1; SE: -5 < V_z < 2 km s^-1, 90 < omega < 180 deg; SW: -2 < V_z < 5 km s^-1, 180 < omega < 270 deg; NW: -2 < V_z < 5 km s^-1, 270 < omega < 360 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive relative molecular abundances in the inner outflows under LTE approximation",
+   "method": "Calculate the ratio of observed intensity in each region (SE, SW, NW) to the LTE factor F = A_ji (2J+1) k exp(-E_u/T) evaluated at T = 1000 K, and normalize to the 29SiO abundance as reference.",
+   "software": [],
+   "key_parameters": [
+    "Reference temperature T = 1000 K; F = 8.92e-3 (CO(2-1)), 4.53 (29SiO(5-4)), 14.3 (H13CN(4-3)), 0.44 (SO(5_5-4_4)), 0.069 (SO2(22_2,20-22_1,21)), 0.124 (SO2(13_2,12-12_1,11))"
+   ],
+   "assumptions": [
+    "LTE approximation, optically thin (neglecting absorption in 60-300 mas), T = 1000 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze vibrationally excited SiO maser emission and geometry",
+   "method": "Map channel maps, PV diagrams, and Doppler velocity spectra integrated within R < 0.3 arcsec and over the stellar disc (R < 30 mas and 30 < R < 50 mas) for 28SiO(v=1,5-4), 28SiO(v=2,5-4), and 28SiO(v=1,8-7), and compare line ratios with LTE predictions.",
+   "software": [],
+   "key_parameters": [
+    "Expansion velocity = 10.6 km s^-1 (from Vlemmings 2019), observed |V_z| ~ 6 km s^-1"
+   ],
+   "assumptions": [
+    "Actual expansion velocity of SiO maser layer equals the 10.6 km s^-1 continuum expansion velocity from Vlemmings (2019)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak origin RA",
+   "value": "09h47m33.492315s",
+   "uncertainty": "not stated",
+   "units": "hms",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The coordinates of the origin are: RA=09h47m33.492315s and Dec=11$^\\circ$25’42.9081536”."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak origin Dec",
+   "value": "11d25m42.9081536s",
+   "uncertainty": "not stated",
+   "units": "dms",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The coordinates of the origin are: RA=09h47m33.492315s and Dec=11$^\\circ$25’42.9081536”."
+    }
+   ]
+  },
+  {
+   "quantity": "Expanding CO(2-1) shell mean radius",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Evidence is found for an episode of enhanced mass loss, a few centuries ago, that produced a broad expanding shell of mean radius $\\sim$6 arcsec and mean radial expansion velocity $\\sim$5.5 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Expanding CO(2-1) shell mean radial expansion velocity",
+   "value": "5.5",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Evidence is found for an episode of enhanced mass loss, a few centuries ago, that produced a broad expanding shell of mean radius $\\sim$6 arcsec and mean radial expansion velocity $\\sim$5.5 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean rms inhomogeneity of CO(2-1) shell for |rho - 1| < 0.25",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO(2-1) line emission: a radially expanding shell",
+     "quote": "On average, they reach 37% and 73% for \\|$\\rho-1$\\|\\<0.25 and \\|$\\rho-1$\\|\\<0.5, respectively, illustrating the importance of inhomogeneity."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean rms inhomogeneity of CO(2-1) shell for |rho - 1| < 0.5",
+   "value": "73",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO(2-1) line emission: a radially expanding shell",
+     "quote": "On average, they reach 37% and 73% for \\|$\\rho-1$\\|\\<0.25 and \\|$\\rho-1$\\|\\<0.5, respectively, illustrating the importance of inhomogeneity."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Doppler velocity <V_z> in SE outflow (averaged over 5 lines)",
+   "value": "-0.8",
+   "uncertainty": "1.5 (rms)",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "\\<$V_\\text{z}$\\> | $-$1.2 | $-$0.3 | $-$0.4 | $-$1.4 | $-$1.1 | $-$0.8"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "SE | Rms($V_\\text{z}$) | 1.8 | 1.5 | 1.6 | 1.8 | 1.3 | 1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Doppler velocity <V_z> in SW outflow (averaged over 5 lines)",
+   "value": "1.1",
+   "uncertainty": "1.6 (rms)",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "\\<$V_\\text{z}$\\> | 1.2 | 1.1 | 1.7 | 1.4 | 0.6 | 1.1"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "SW | Rms($V_\\text{z}$) | 1.7 | 1.5 | 1.7 | 1.8 | 1.7 | 1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Doppler velocity <V_z> in NW outflow (averaged over 5 lines)",
+   "value": "0.8",
+   "uncertainty": "1.5 (rms)",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "\\<$V_\\text{z}$\\> | 0.6 | 1.0 | 1.0 | $-$ | 0.5 | 0.8"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "NW | Rms($V_\\text{z}$) | 1.6 | 1.5 | 1.0 | $-$ | 1.7 | 1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Total intensity in SE+SW+NW regions for CO(2-1)",
+   "value": "1.56",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Total intensity | 1.56 | 5.09 | 0.27 | 0.12 | 1.95 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total intensity in SE+SW+NW regions for 29SiO(5-4)",
+   "value": "5.09",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Total intensity | 1.56 | 5.09 | 0.27 | 0.12 | 1.95 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total intensity in SE+SW+NW regions for SO(5_5-4_4)",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Total intensity | 1.56 | 5.09 | 0.27 | 0.12 | 1.95 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total intensity in SE+SW+NW regions for SO2(22_2,20-22_1,21)",
+   "value": "0.12",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Total intensity | 1.56 | 5.09 | 0.27 | 0.12 | 1.95 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total intensity in SE+SW+NW regions for SO2(13_2,12-12_1,11)/H13CN(4-3)",
+   "value": "1.95",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Total intensity | 1.56 | 5.09 | 0.27 | 0.12 | 1.95 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial confinement of SO and SO2 emission",
+   "value": "0.15",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion of the results",
+     "quote": "Accordingly, we interpret the emission of the SO$_2$-HCN line as dominated by emission of the H$^{13}$CN(4-3) line for $R$\\>$\\sim$0.15 arcsec and the emissions of the SO(5$_5$-4$_4$), SO$_2$(22$_{2,20}$-22$_{1,21}$) and SO$_2$(13$_{2,12}$-12$_{1,11}$) lines as being confined within $\\sim$0.15 arcsec from the centre of the star"
+    }
+   ]
+  },
+  {
+   "quantity": "29SiO(5-4) absorption over stellar disc (R < 30 mas) at V_z ~ -3 km s^-1",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "% of continuum level",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion of the results",
+     "quote": "In percentage of the continuum level, it reaches $\\sim$70% at $V_z$$\\sim$$-$3 km s$^{-1}$ for $^{29}$SiO(5-4) and $\\sim$24% at $V_z$$\\sim$6 km s$^{-1}$ for CO(2-1)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) absorption over stellar disc (R < 30 mas) at V_z ~ 6 km s^-1",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "% of continuum level",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion of the results",
+     "quote": "In percentage of the continuum level, it reaches $\\sim$70% at $V_z$$\\sim$$-$3 km s$^{-1}$ for $^{29}$SiO(5-4) and $\\sim$24% at $V_z$$\\sim$6 km s$^{-1}$ for CO(2-1)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO / 29SiO abundance ratio A_SiO (SE, SW, NW)",
+   "value": "250 (SE), 140 (SW), 140 (NW)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "A$_{\\text{SiO}}$ this work | SE | 250 | 1 | \\< 0.36 | 1.9 | 7.2"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "SW | 140 | 1 | \\<0.089 | 0.6 | 1.2"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "NW | 140 | 1 | \\<0.076 | 0.1 | 0"
+    }
+   ]
+  },
+  {
+   "quantity": "SO / 29SiO abundance ratio A_SiO (SE, SW, NW)",
+   "value": "1.9 (SE), 0.6 (SW), 0.1 (NW)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "A$_{\\text{SiO}}$ this work | SE | 250 | 1 | \\< 0.36 | 1.9 | 7.2"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "SW | 140 | 1 | \\<0.089 | 0.6 | 1.2"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "NW | 140 | 1 | \\<0.076 | 0.1 | 0"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 / 29SiO abundance ratio A_SiO (SE, SW, NW)",
+   "value": "7.2 (SE), 1.2 (SW), 0 (NW)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "A$_{\\text{SiO}}$ this work | SE | 250 | 1 | \\< 0.36 | 1.9 | 7.2"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "SW | 140 | 1 | \\<0.089 | 0.6 | 1.2"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "NW | 140 | 1 | \\<0.076 | 0.1 | 0"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN / 29SiO abundance ratio in NW region",
+   "value": "7",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion of the results",
+     "quote": "The observed H$^{13}$CN/$^{29}$SiO abundance ratio, evaluated by assuming that H$^{13}$CN emission dominates over SO$_2$ emission in the NW region, is $\\sim$7%."
+    }
+   ]
+  },
+  {
+   "quantity": "Derived H12CN relative abundance",
+   "value": "10^-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion of the results",
+     "quote": "It corresponds to a relative abundance of H$^{12}$CN of $\\sim$10$^{-6}$, $\\sim$4 times larger than obtained from single dish analyses."
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination angle of SiO(v=1) masing clumps with respect to the plane of the sky",
+   "value": "30-40",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Vibrationally excited SiO lines",
+     "quote": "If the actual expansion velocity of the SiO masers seen on the $\\nu$=1 line is the same as the 10.6 km s$^{-1}$ inferred for the continuum, then a $|V_z|\\sim$6 km s$^{-1}$ would place the masing clumps at an inclination angle of 30-40$^\\circ$ with respect to the plane of the sky."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and GILDAS/IMAGER version",
+  "Self-calibration solution intervals (solint) and number of iterations",
+  "Deconvolver algorithms, clean stopping thresholds, and masking strategy in CASA and GILDAS/IMAGER",
+  "Image dimensions (number of pixels)",
+  "How multi-epoch Band 6 visibilities were aligned and weighted when merged for CO(2-1) given stellar proper motion and phase-centre offsets"
+ ],
+ "missing_for_reproduction": [
+  "Exact self-calibration parameters (solution intervals, SNR thresholds, number of rounds) for Band 6 continuum",
+  "Deconvolution stopping criteria (threshold, niter) and masking details in CASA and GILDAS/IMAGER",
+  "Procedure for aligning phase centres across the five Band 6 epochs before merging visibilities for the CO(2-1) cube"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Public archival data, explicit target/phase-centre coordinates, clear weighting and beam/channel tables (Table 1), and explicit equations and region bounds (Tables 2 and 4) for the LTE and kinematic analyses; minor deductions for unstated self-calibration and deconvolution parameters.",
+ "rediscovery_reason": "All raw ALMA data are public, the coordinate definitions and 3D integration boxes (SE, SW, NW) and shell parameter rho are explicitly specified, and the main results (Tables 1, 3, 4, 5) are numeric and straightforward to recompute from the image cubes.",
+ "source_card": "cards/2023MNRAS.518.2034H/sonnet/card.md"
+}

@@ -1,0 +1,250 @@
+{
+ "bibcode": "2015A&A...576L..15O",
+ "title": "ALMA view of the circumstellar environment of the post-common-envelope-evolution binary system HD 101584",
+ "year": 2015,
+ "doi": "10.1051/0004-6361/201526026",
+ "arxiv_id": "1503.08609",
+ "fields": [
+  "evolved_stars"
+ ],
+ "question": "What are the morphology, kinematics, masses and energetics of the circumstellar environment of the post-AGB binary HD 101584, and does it match common-envelope scenarios?",
+ "alma_project_codes": [
+  "2012.1.00248.S"
+ ],
+ "data": {
+  "bands": "Band 6 (cycle 1)",
+  "arrays": "ALMA 12 m array, 35 antennas",
+  "angular_resolution": "0.65×0.57 arcsec (12CO), 0.65×0.54 arcsec (13CO, C18O); continuum 0.56×0.49 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish 12CO(2-1) flux 850 Jy km/s",
+    "evidence": [
+     {
+      "loc": "3.1 Global characteristics",
+      "quote": "The single-dish 12 CO(2–1) flux is 850 Jy km s [−][1] (Olofsson & Nyman 1999)"
+     }
+    ]
+   },
+   "citation": "Olofsson & Nyman 1999"
+  },
+  {
+   "what": {
+    "value": "SED model and dust temperature 45 K, mass 0.6 Msun, distance 0.7 kpc",
+    "evidence": [
+     {
+      "loc": "3.3 Mass, energy, and momentum estimates",
+      "quote": "an adopted dust temperature of 45 K [from the SED in Bakker et al. (1996b)]"
+     }
+    ]
+   },
+   "citation": "Bakker et al. (1996b)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_230 = 0.5 cm2/g",
+    "evidence": [
+     {
+      "loc": "3.3 Mass, energy, and momentum estimates",
+      "quote": "the dust opacity κ 230 = 0.5 cm [2] g [−][1] (Liseau et al. 2015)"
+     }
+    ]
+   },
+   "citation": "Liseau et al. 2015"
+  },
+  {
+   "what": {
+    "value": "Orbital period 218 d and K1 = 3 km/s",
+    "evidence": [
+     {
+      "loc": "3.4 A scenario",
+      "quote": "Adopting the orbital parameters (period _P_ = 218 days and velocity semi-amplitude _K_ 1 = 3 km s [−][1] )"
+     }
+    ]
+   },
+   "citation": "Bakker et al. 1996a,b"
+  },
+  {
+   "what": {
+    "value": "Rotational temperature 30 K; proto-PN energy and momentum ranges",
+    "evidence": [
+     {
+      "loc": "3.3 Mass, energy, and momentum estimates",
+      "quote": "and _T_ rot =30 K (Bujarrabal et al. 2001)"
+     }
+    ]
+   },
+   "citation": "Bujarrabal et al. 2001"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum and global line fluxes",
+   "method": "Continuum map from line-free bandwidth; line fluxes integrated over global profiles; compared with SED and SEST",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Morphology and kinematics from channel maps and PV diagram",
+   "method": "Velocity-channel maps and PV diagram along PA=90 deg; age from projected length and velocity with tilt 10 deg",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination about half the hour-glass opening angle, ≈ 10 deg"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Dust and gas mass",
+   "method": "Dust mass from the 1.3 mm flux (Eq. 1); gas mass from C18O(2-1) (Eq. 2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "D = 0.7 kpc, kappa230 = 0.5 cm2/g, Td = 45 K, dust-to-gas 200",
+    "f_C18O = 4e-7, f_CO = 2e-4, Trot = 30 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Energetics and comparison with orbital energy",
+   "method": "Kinetic energy and momentum of gas at ≥10 km/s from C18O; orbital mass function and released orbital energy for the capture scenario",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "circular orbit, i=10 deg, M1=0.6 Msun, M1,i=1.6 Msun, a2,i=4 AU"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density at 230 GHz",
+   "value": "112",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Global characteristics",
+     "quote": "The total flux density, _S_ 230 = 112 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "42",
+   "uncertainty": "1",
+   "units": "km/s (LSR)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Global characteristics",
+     "quote": "estimated to be 42 ± 1 km s [−][1] (LSR)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "0.007",
+   "uncertainty": "at least a factor of four",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Mass, energy, and momentum estimates",
+     "quote": "gives _M_ d ≈ 0.007 _M_ ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass from C18O",
+   "value": "0.3",
+   "uncertainty": "considerable",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Mass, energy, and momentum estimates",
+     "quote": "we obtain _M_ g ≈ 0.3 _M_ ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic energy of accelerated gas",
+   "value": "4e45",
+   "uncertainty": "lower limit",
+   "units": "erg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Mass, energy, and momentum estimates",
+     "quote": "is ≈ 4 × 10 [45] erg (a lower limit since extended flux from accelerated gas is missed)"
+    }
+   ]
+  },
+  {
+   "quantity": "Released orbital energy",
+   "value": "2e45",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 A scenario",
+     "quote": "≈ 2 × 10 [45] erg, (4)"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of complex structure",
+   "value": "≈500",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 A jet, an hour-glass structure, and the central region",
+     "quote": "the age is estimated to be ≈ 500 yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion mass",
+   "value": "≈0.6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 A scenario",
+     "quote": "we estimate that _M_ 2 ≈ 0.6 _M_ ⊙ at a distance of _a_ ≈ 0.7 AU"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "clean threshold, number of iterations and masks",
+  "image size and cell size",
+  "line-free channels for continuum subtraction",
+  "self-calibration solution intervals",
+  "flagging details beyond the antennas mentioned",
+  "how the global line profiles were extracted (aperture)",
+  "details of the kinetic energy and momentum calculation",
+  "spectral resolution/velocity binning for the channel maps"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters and masks",
+  "aperture for global profiles",
+  "precise energy/momentum calculation details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single project and simple estimates with given equations, but imaging and extraction details are missing.",
+ "rediscovery_reason": "A single archival project; the main results are numeric and the analysis is simple, although some details are missing.",
+ "source_card": "cards/2015A%26A...576L..15O/sonnet/card.md"
+}

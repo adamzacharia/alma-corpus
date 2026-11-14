@@ -1,0 +1,407 @@
+{
+ "bibcode": "2025PASP..137l4501T",
+ "title": "The ViSta Method for Stacking in the Fourier Domain and its Application to the Dusty Star-forming Galaxies in the ALMA Science Archive",
+ "year": 2025,
+ "doi": "10.1088/1538-3873/ae1faf",
+ "arxiv_id": "2511.16753",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Can visibilities of galaxies at different redshifts be stacked directly in the Fourier domain after shifting them to the rest frame (ViSta), and does this recover faint line emission better than image-plane stacking, as tested on simulated data and on CO(3-2) in a sample of dusty star-forming galaxies from the ALMA archive?",
+ "alma_project_codes": [
+  "2019.1.01477.S",
+  "2021.1.01628.S",
+  "2022.1.00432.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m antennas assumed for the primary-beam model; ALMA 12-meter array",
+  "angular_resolution": "0.25 to 2.8 arcsec across the real sample; worst resolution (common convolution beam) 5.063 x 2.820 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic redshifts of the sources (from ALMA spectral scans), plus SED constraints and line detections for the sample",
+    "evidence": [
+     {
+      "loc": "Application to a real case",
+      "quote": "which provided spectroscopic redshifts through ALMA spectral scans"
+     }
+    ]
+   },
+   "citation": "BEARS I, II and III (cite: bearsI; bearsII; bearsIII)"
+  },
+  {
+   "what": {
+    "value": "Literature line properties used as a consistency comparison for the stacked CO(3-2) line",
+    "evidence": [
+     {
+      "loc": "Application to a real case",
+      "quote": "The resulting line properties are broadly consistent with other estimates in the literature"
+     }
+    ]
+   },
+   "citation": "(cite: bearsIII; spilker2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select sample and obtain calibrated measurement sets",
+   "method": "21 DSFGs with CO(3-2) from ALMA archival projects; calibrated MSs retrieved (mostly) from the EU ARC CalMS service; coordinates and observations checked",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Unlensed or moderately resolved sources only; spectroscopic redshift required"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Center each source at the phase center and correct for primary beam",
+   "method": "phaseshift to the source position, then PHASE_DIR/REFERENCE_DIR/DELAY_DIR and POINTING directions set to zero; visibilities divided by the Gaussian primary-beam response at the source offset",
+   "software": [
+    "CASA",
+    "casatasks.phaseshift",
+    "Python"
+   ],
+   "key_parameters": [
+    "Primary beam PB(theta) = exp[-4 ln2 (theta nu d / 1.2 c)^2] for a 12-m antenna"
+   ],
+   "assumptions": [
+    "Primary beam approximated by a normalized symmetric Gaussian"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Shift visibilities to the rest frame",
+   "method": "Frequencies and dependent SPECTRAL_WINDOW parameters scaled by (1+z); UVW, antenna positions and dish diameter divided by (1+z)",
+   "software": [
+    "Python",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Spectroscopic redshift of each source is accurate"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Rebin and regrid the spectral axis to a common grid",
+   "method": "mstransform to a common spectral resolution (optional Hanning smoothing first); flagged dummy channels added with flagdata and concat so all MSs have equal channel count, then mstransform to cut and regrid",
+   "software": [
+    "CASA",
+    "casatasks.mstransform",
+    "casatasks.hanningsmooth",
+    "casatasks.flagdata",
+    "casatasks.concat"
+   ],
+   "key_parameters": [
+    "Common finer spectral grid set by the dataset with the highest native resolution"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Rescale flux to a common reference redshift and concatenate",
+   "method": "Each visibility multiplied by w = D_L^2(z_source)/D_L^2(z_common) x (1+z_common)/(1+z_source), then concat; OBSERVATION table unified so all scans form one observation",
+   "software": [
+    "CASA",
+    "casatasks.concat",
+    "casatasks.mstransform"
+   ],
+   "key_parameters": [
+    "Reference redshift z_common = 2.5 for the real sample"
+   ],
+   "assumptions": [
+    "No lensing-magnification or other flux-normalization correction applied to the real sample",
+    "Flat LambdaCDM with h approx 0.67, Omega_m approx 0.3, Omega_Lambda approx 0.7"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Apply channel-coverage weights",
+   "method": "Per-channel weight w(nu) = sqrt(N_coverage(nu)/N), with weights of repeated observations of the same source divided by the number of repeats",
+   "software": [
+    "Python"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Extract the stacked CO(3-2) spectrum and fit the line",
+   "method": "Three methods: ViSta-uvFit (uvmultifit with a Gaussian model, spatial parameters free in each channel, one fit per channel); ViSta-ImFit (tclean of stacked MS, flux from moment-0-derived size); ImSta-ImFit (classical image stacking). A Gaussian (mu, sigma, A, continuum C) is fitted to each stacked spectrum; a continuum image was also made as post-processing",
+   "software": [
+    "CASA",
+    "UVMultiFit",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "uvmultifit with OneFitPerChannel = True, write = residuals; Gaussian or delta model",
+    "Natural weighting, Hogbom, cell = 1/5 of the beam major axis"
+   ],
+   "assumptions": [
+    "Source size from zero-order moment maps for the image-plane methods"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare visibility and image stacking SNR at the worst common resolution",
+   "method": "Convolve all datasets to the worst angular resolution, then compare spectra and RMS noise of ViSta-ImFit and ImSta-ImFit",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Common beam 5.063 x 2.820 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Test with artificially reduced sensitivity",
+   "method": "One fourth of the available data of each observation selected, analysis repeated at native resolution and at the worst resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "Validate ViSta on simulated ALMA datasets",
+   "method": "50 mock sources per case simulated with simobserve plus custom noise; compare ViSta-uvFit, ViSta-ImFit and ImSta-ImFit for unresolved and resolved (5 arcsec FWHM) sources at native size, fitted size and lowest resolution, and for continuum",
+   "software": [
+    "CASA",
+    "simobserve",
+    "UVMultiFit",
+    "imfit",
+    "Python"
+   ],
+   "key_parameters": [
+    "Unresolved case: flux taken as peak value in the image; resolved case: flux in circular aperture of radius 3 sigma of the Gaussian"
+   ],
+   "assumptions": [
+    "Continuum subtraction and weighting skipped; no redshift flux-scaling correction because all mock fluxes equal"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak SNR of stacked central channel, 50 mock point sources (ViSta-ImFit)",
+   "value": "17.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.1 Unresolved Source",
+     "quote": "giving a final peak SNR of approximately $17.3$ on stacking"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduction of average channel rms from stacking 50 mock datasets",
+   "value": "factor ~8 (from ~1.2 mJy)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.1 Unresolved Source",
+     "quote": "by a factor $\\sim 8$ consistent with this scaling"
+    }
+   ]
+  },
+  {
+   "quantity": "Accuracy of recovered line emission for point sources, all three methods",
+   "value": "about 90%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.1 Unresolved Source",
+     "quote": "recovering the true emission with about 90% accuracy"
+    }
+   ]
+  },
+  {
+   "quantity": "Central-channel flux densities at lowest resolution (two methods as listed, mock extended source)",
+   "value": "2.070 and 2.566",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.2.3 Estimated Source Size at Lowest Resolution",
+     "quote": "respectively $2.070$ and $2.566$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Gain of ViSta over image-plane stacking in the central channel (mock extended source, lowest resolution)",
+   "value": "~54%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.2.3 Estimated Source Size at Lowest Resolution",
+     "quote": "a gain of $\\sim54\\%$ in the central channel compared to the image-plane stacking"
+    }
+   ]
+  },
+  {
+   "quantity": "Mock continuum peak SNR, ImSta-ImFit",
+   "value": "6.966 (peak 0.404 mJy/beam, rms 0.058 mJy/beam)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.2.4 Continuum extraction at lowest resolution",
+     "quote": "the peak flux is $0.404$ mJy/beam with an RMS noise of $0.058$ mJy/beam, giving a SNR of 6.966"
+    }
+   ]
+  },
+  {
+   "quantity": "Mock continuum peak SNR, ViSta-ImFit",
+   "value": "8.216 (peak 0.419 mJy/beam, rms 0.051 mJy/beam)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.2.4 Continuum extraction at lowest resolution",
+     "quote": "the peak flux is $0.419$ mJy/beam and the RMS noise $0.051$ mJy/beam, resulting in a SNR of 8.216"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian fit to stacked CO(3-2), ViSta-uvFit: mu, sigma, A, C",
+   "value": "mu = -16.8184 km/s; sigma = 264.9165 km/s; A = 4.5835 mJy; C = 0.4636 mJy",
+   "uncertainty": "not stated (omitted in table)",
+   "units": "km/s, km/s, mJy, mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "-16.8184 | 264.9165 | 4.5835 | 0.4636"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian fit to stacked CO(3-2), ViSta-ImFit: mu, sigma, A, C",
+   "value": "mu = -52.6187 km/s; sigma = 317.8469 km/s; A = 4.9921 mJy; C = 0.2579 mJy",
+   "uncertainty": "not stated (omitted in table)",
+   "units": "km/s, km/s, mJy, mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "-52.6187 | 317.8469 | 4.9921 | 0.2579"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian fit to stacked CO(3-2), ImSta-ImFit: mu, sigma, A, C",
+   "value": "mu = 3.3452 km/s; sigma = 262.5233 km/s; A = 5.0738 mJy; C = 0.3467 mJy",
+   "uncertainty": "not stated (omitted in table)",
+   "units": "km/s, km/s, mJy, mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.3452 | 262.5233 | 5.0738 | 0.3467"
+    }
+   ]
+  },
+  {
+   "quantity": "Average continuum flux density of the stacked real sample",
+   "value": "0.832",
+   "uncertainty": "0.064",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6 Application to a real case",
+     "quote": "we estimate a continuum average flux density of $0.832 \\pm 0.064$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak SNR gain, ViSta-ImFit vs ImSta-ImFit at worst resolution, full-sensitivity data",
+   "value": "7.837 to 10.924 (~39%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6 Application to a real case",
+     "quote": "Quantitatively, the SNR increases from 7.837 for"
+    },
+    {
+     "loc": "6 Application to a real case",
+     "quote": "corresponding to an improvement of approximately 39%"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak SNR gain, ViSta-ImFit vs ImSta-ImFit at worst resolution, one-fourth data",
+   "value": "3.41 to 5.24 (~53%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "6 Application to a real case",
+     "quote": "the SNR increases from 3.41 to 5.24, resulting in a relative gain of about 53%"
+    }
+   ]
+  },
+  {
+   "quantity": "Worst angular resolution (common convolution beam) of the real sample",
+   "value": "5.063 x 2.820",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6 Application to a real case",
+     "quote": "corresponding to a synthesized beam of $5.063^{\\prime\\prime} \\times 2.820^{\\prime\\prime}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which MSs (and spectral windows) of the three projects were used for each HerBS source, and the ALMA band(s) of the real observations",
+  "How the source positions were refined per source (Gaussian fit to own continuum vs another archival observation)",
+  "CO(3-2) rest frequency and velocity-axis definition used for the stacked spectra (mu, sigma in km/s)",
+  "Final channel width and number of channels of the stacked cube, and which spectral window was chosen per MS",
+  "tclean parameters for the real data: imsize, niter, exact threshold, restoringbeam handling",
+  "uvmultifit settings for the real data: initial guesses, size priors, bounds, whether Monte Carlo perturbation was used",
+  "Region and aperture definition used to extract flux density from moment-0 maps for each source",
+  "How D_L was computed (the cosmology is given only as rounded values h approx 0.67, Omega_m approx 0.3)",
+  "How the one-fourth data subset was selected (which integrations or scans)",
+  "Per-observation sensitivity sigma_k values used in the threshold estimate",
+  "Flux-scale calibration choices and uncertainties of the archival MSs",
+  "Version or commit of the ViSta code used for the paper results"
+ ],
+ "missing_for_reproduction": [
+  "Mapping from each HerBS source to the specific MS and spectral window in the three projects",
+  "uvmultifit and tclean settings for the real sample (priors, imsize, niter, threshold)",
+  "Exact aperture/region definitions for flux extraction",
+  "CO(3-2) rest frequency and velocity convention used",
+  "The exact subset of data used in the one-fourth sensitivity test",
+  "Version of the ViSta code used"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archival data, named projects and sources, a detailed step-by-step recipe, released code and numeric results; but many real-data settings (spectral windows, fit priors, apertures, subset choice) are not given",
+ "rediscovery_reason": "Data are public in the ALMA archive, the pipeline is described step by step with released code, and the results (SNR gains, Gaussian parameters) are numeric; the simulations are fully specified",
+ "source_card": "cards/2025PASP..137l4501T/sonnet/card.md"
+}

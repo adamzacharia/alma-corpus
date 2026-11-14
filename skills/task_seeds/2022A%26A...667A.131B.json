@@ -1,0 +1,448 @@
+{
+ "bibcode": "2022A&A...667A.131B",
+ "title": "Understanding if molecular ratios can be used as diagnostics of AGN and starburst activity: The case of NGC 1068",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202244563",
+ "arxiv_id": "2209.05928",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "Whether molecular line ratios between HCN, HCO+, and CS are useful tracers of AGN-dominated versus starburst-dominated gas in NGC 1068 across spatial scales, and what physical or chemical differences drive the observed ratio variations.",
+ "alma_project_codes": [
+  "2013.1.00055.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 3, ALMA Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.7\" x 0.5\" (Band 3 HCN(1-0)/HCO+(1-0)); 0.6\" x 0.5\" to 6.6\" x 3.2\" across archival ALMA datasets",
+  "sensitivity": "sigma = 16 K km s^-1 (for HCN(1-0) and HCO+(1-0) moment 0 maps)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Published HCN, HCO+, and CS line intensity measurements and maps of NGC 1068 across multiple spatial resolutions",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "The published data displayed in the following papers were also used in this study: (cite: Sanchez_Garcia_2022), (cite: GarciaBurillo_S_2008), (cite: 2014_Garcia_Burillo), (cite: Viti2014), (cite: Perez_Beaupuits1009), (cite: Tan2018), (cite: Scourfield_2020), (cite: Takano_2014), (cite: Tacconi1997), (cite: Nakajima2015), (cite: Bayet_2009)."
+     }
+    ]
+   },
+   "citation": "(cite: Sanchez_Garcia_2022), (cite: GarciaBurillo_S_2008), (cite: 2014_Garcia_Burillo), (cite: Viti2014), (cite: Perez_Beaupuits1009), (cite: Tan2018), (cite: Scourfield_2020), (cite: Takano_2014), (cite: Tacconi1997), (cite: Nakajima2015), (cite: Bayet_2009)"
+  },
+  {
+   "what": {
+    "value": "Molecular spectroscopic data to compute partition functions",
+    "evidence": [
+     {
+      "loc": "LTE analysis",
+      "quote": "To compute the partition function, we made use of molecular data from the Cologne Database for Molecular Spectroscopy (CDMS) (cite: CDMS)."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: CDMS)"
+  },
+  {
+   "what": {
+    "value": "Collisional data between each molecule (HCN, HCO+, CS) and H2",
+    "evidence": [
+     {
+      "loc": "Non-LTE analysis",
+      "quote": "To do this, we took collisional data between each molecule and H$_2$ from the LAMDA database (cite: Schoier_2005)."
+     }
+    ]
+   },
+   "citation": "LAMDA database (cite: Schoier_2005)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce ALMA Band 3 data and generate moment 0 maps of HCN(1-0) and HCO+(1-0)",
+   "method": "Initial reduction and imaging with uniform weighting in CASA, RMS calculation in a line-free channel towards the galaxy centre, and velocity integration to create moment 0 maps",
+   "software": [
+    "CASA",
+    "PYTHON",
+    "Matplotlib",
+    "Astropy"
+   ],
+   "key_parameters": [
+    "uniform weighting, beam ~0.7\" x 0.5\" at PA -86 deg, conversion factor 32 K Jy^-1 beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Group multi-instrument observations by spatial resolution and sub-region, Correct for beam dilution, and compute molecular line ratios",
+   "method": "Group archival and new observations by spatial resolution (~40 pc high-res, >=100 pc low-res) and sub-region; deconvolve intensities using a beam-dilution scaling equation where the lowest resolution in the group defines the source size; compute intensity ratios HCN(1-0)/HCO+(1-0), HCN(4-3)/HCO+(4-3), HCN(4-3)/CS(7-6), and HCN(4-3)/CS(2-1)",
+   "software": [],
+   "key_parameters": [
+    "High-resolution group (~40 pc), low-resolution group (>=100 pc and ~1000 pc), 10 sub-regions across CND and SB ring"
+   ],
+   "assumptions": [
+    "Source size theta_s is equal to the lowest-resolution observation in each spatial resolution category"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate LTE column density bounds for HCN, HCO+, and CS",
+   "method": "Calculate upper-state column density N_u and total molecular column density N independently for each transition using LTE equations and CDMS partition functions to establish minimum and maximum column density limits for non-LTE grids",
+   "software": [],
+   "key_parameters": [
+    "T = 50 K to 400 K"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE)",
+    "Beam filling factor Delta Omega_a / Delta Omega_s = 1 (source completely fills the beam)",
+    "Optically thin limit tau = 0"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Perform non-LTE radiative transfer modelling and MCMC parameter estimation",
+   "method": "Run a grid of LVG non-LTE radiative transfer models using RADEX via SpectralRadex with LAMDA collisional data, compute modelled line ratios, and sample the chi^2 distribution using MCMC to infer posterior distributions of gas density, kinetic temperature, linewidth, column densities, and relative column density ratios",
+   "software": [
+    "RADEX",
+    "SpectralRadex"
+   ],
+   "key_parameters": [
+    "n_H2 = 10^3 to 10^7 cm^-3 (50 discrete values); T_K = 50 to 400 K (50 discrete values); N_Mol = N_min to N_max (50 discrete values); Delta v = 50 to 150 km s^-1 (3 discrete values)"
+   ],
+   "assumptions": [
+    "Large Velocity Gradient (LVG) escape probability approximation with uniform spherical geometry for sub-regions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCN(1-0)/HCO+(1-0) ratio at AGN (~40 pc)",
+   "value": "1.01",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1.01 | 0.14 | AGN"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0)/HCO+(1-0) ratio at CND-S (~40 pc)",
+   "value": "3.64",
+   "uncertainty": "0.51",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.64 | 0.51 | CND-S"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0)/HCO+(1-0) ratio at E Knot (~40 pc)",
+   "value": "2.01",
+   "uncertainty": "0.28",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2.01 | 0.28 | E Knot"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0)/HCO+(1-0) ratio at W Knot (~40 pc)",
+   "value": "2.19",
+   "uncertainty": "0.31",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2.19 | 0.31 | W Knot"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0)/HCO+(1-0) ratio at NSB-c (~40 pc)",
+   "value": "3.09",
+   "uncertainty": "0.44",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.09 | 0.44 | NSB-c"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0)/HCO+(1-0) ratio at NSB-a (~40 pc)",
+   "value": "0.62",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.62 | 0.09 | NSB-a"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(2-1) ratio at CND-N (~40 pc)",
+   "value": "5.83",
+   "uncertainty": "1.86",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5.83 | 1.86 | CND-N"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(2-1) ratio at E Knot (~40 pc)",
+   "value": "3.14",
+   "uncertainty": "0.31",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.14 | 0.31 | E Knot"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(2-1) ratio at W Knot (~40 pc)",
+   "value": "3.61",
+   "uncertainty": "0.56",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.61 | 0.56 | W Knot"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(2-1) ratio at NSB-a (~40 pc)",
+   "value": "0.5",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.5 | 0.07 | NSB-a"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(2-1) ratio at SSB-a (>=100 pc)",
+   "value": "5.39",
+   "uncertainty": "0.97",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5.39 | 0.97 | SSB-a"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(7-6) ratio at AGN (~40 pc)",
+   "value": "11.02",
+   "uncertainty": "1.81",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "11.02 | 1.81 | AGN"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(7-6) ratio at CND-N (~40 pc)",
+   "value": "20.3",
+   "uncertainty": "4.51",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "20.3 | 4.51 | CND-N"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/CS(7-6) ratio at SSB-c (~40 pc)",
+   "value": "7.12",
+   "uncertainty": "3.63",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "7.12 | 3.63 | SSB-c"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/HCO+(4-3) ratio at AGN (~40 pc)",
+   "value": "1.49",
+   "uncertainty": "0.19",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1.49 | 0.19 | AGN"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/HCO+(4-3) ratio at CND-S (~40 pc)",
+   "value": "8.19",
+   "uncertainty": "1.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8.19 | 1.01 | CND-S"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(4-3)/HCO+(4-3) ratio at NSB-a (~40 pc)",
+   "value": "0.48",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "0.48 | 0.07 | NSB-a"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density range for CS (N_min to N_max)",
+   "value": "3.34E+12 to 2.44E+16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CS | 3.34E+12 | 2.44E+16"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density range for HCO+ (N_min to N_max)",
+   "value": "1.73E+11 to 3.43E+16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HCO+ | 1.73E+11 | 3.43E+16"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density range for HCN (N_min to N_max)",
+   "value": "2.62E+13 to 7.38E+17",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HCN | 2.62E+13 | 7.38E+17"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit Log(n_H) at E Knot (~40 pc)",
+   "value": "5.31",
+   "uncertainty": "+0.25/-0.31",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "40.0 | E Knot | $5.31_{0.31}^{0.25}$ | $125.52_{49.54}^{209.49}$ | $96.99_{32.42}^{33.98}$ | $16.96_{0.45}^{0.73}$ | $15.50_{0.25}^{0.23}$ | $15.73_{0.3}^{0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit Log(n_H) at W Knot (~40 pc)",
+   "value": "5.12",
+   "uncertainty": "+0.35/-0.23",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "40.0 | W Knot | $5.12_{0.23}^{0.35}$ | $172.63_{94.41}^{165.44}$ | $95.87_{31.85}^{34.69}$ | $16.88_{0.4}^{0.72}$ | $15.40_{0.27}^{0.22}$ | $15.59_{0.31}^{0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit Log(n_H) at NSB-a (~40 pc)",
+   "value": "5.02",
+   "uncertainty": "+0.23/-0.17",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "40.0 | NSB-a | $5.02_{0.17}^{0.23}$ | $260.80_{125.93}^{97.43}$ | $83.62_{24.1}^{38.03}$ | $16.23_{0.31}^{0.19}$ | $15.90_{0.29}^{0.22}$ | $16.13_{0.31}^{0.18}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit Log(N_HCN) at AGN (~40 pc)",
+   "value": "16.84",
+   "uncertainty": "+0.52/-1.21",
+   "units": "log(cm^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "40.0 | AGN | $4.40_{0.83}^{0.57}$ | $240.19_{148.66}^{117.72}$ | $94.33_{31.79}^{36.44}$ | $16.84_{1.21}^{0.52}$ | $15.85_{1.06}^{0.41}$ | $15.74_{0.95}^{0.39}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and specific imaging parameters (cell size, image size, cleaning threshold, continuum subtraction method, velocity integration ranges for moment 0 maps) for the re-analysed Band 3 HCN(1-0) and HCO+(1-0) data.",
+  "Exact aperture size or pixel extraction method used to extract sub-region intensities from the moment 0 maps.",
+  "Which specific MCMC Python package (e.g., emcee) was used and how grid interpolation between discrete RADEX grid points was handled during continuous MCMC sampling.",
+  "Burn-in length and convergence criteria for the 12-walker, 100,000-step MCMC chains."
+ ],
+ "missing_for_reproduction": [
+  "Tabulated individual line intensities (I_Beam and deconvolved I_Source) for each sub-region before taking ratios; only the derived ratios are tabulated in Table 2.",
+  "Exact aperture definitions or pixel extraction method used to measure sub-region fluxes from the ALMA moment 0 maps.",
+  "Velocity integration windows and continuum subtraction details for the re-analysed Band 3 HCN(1-0) and HCO+(1-0) cubes.",
+  "Details on how the discrete 50x50x50x3 RADEX grid was interpolated or stepped through by the continuous MCMC walkers."
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The paper provides a clear table of computed line ratios (Table 2), LTE bounds (Table 3), RADEX grid bounds (Table 4), and MCMC posterior results (Table 5), making the radiative transfer and MCMC steps highly reproducible from Table 2 onwards. However, intermediate un-ratioed line intensities, exact sub-region aperture sizes, and CASA imaging parameters for the re-analysed Band 3 dataset are omitted.",
+ "rediscovery_reason": "Public ALMA archival data (2013.1.00055.S), explicit coordinates for all 10 sub-regions, tabulated line ratios, and a clearly parameterized RADEX + MCMC recipe with numeric answer keys in Tables 2, 3, and 5.",
+ "source_card": "cards/2022A%26A...667A.131B/sonnet/card.md"
+}

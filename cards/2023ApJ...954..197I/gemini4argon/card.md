@@ -1,0 +1,309 @@
+# ALMA Measurement of 10 kpc Scale Lensing-power Spectra toward the Lensed Quasar MG J0414+0534
+
+`2023ApJ...954..197I` | The Astrophysical Journal 2023 | first author: Inoue, Kaiki Taro | arXiv: 2109.01168 | DOI: 10.3847/1538-4357/aceb5f
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: agn_and_quasars, cosmology, high_z_galaxies
+- Question: Measure the 10 kpc-scale lensing power spectra for gravitational potential, astrometric shift, and convergence perturbations towards the quadruply lensed quasar MG J0414+0534 to test small-scale dark matter structures and CDM predictions.  
+  > "The lensing power spectra for gravitational potential, astrometric shift, and convergence perturbations are powerful probes to investigate dark matter structures on small scales." (Abstract); "We report the first lower and upper bounds of these lensing power spectra on angular scale $\sim 1''$ towards the anomalous quadruply lensed quasar MG$\,$J0414+0534 at a redshift $z=2.639$." (Abstract)
+- Target **MG J0414+0534**: coordinates _not stated_; z/distance z_S = 2.639, z_L = 0.9584  
+  > "The quasar at redshift $z_\textit{S}=2.639$ (cite: lawrence1995) is lensed by an elliptical galaxy G at redshift $z_{\textit{L}}=0.9584$ (cite: tonry1999)" (Review of MG J0414+0534); distance from (cite: lawrence1995); (cite: tonry1999)  
+  > "The quasar at redshift $z_\textit{S}=2.639$ (cite: lawrence1995) is lensed by an elliptical galaxy G at redshift $z_{\textit{L}}=0.9584$ (cite: tonry1999)" (Review of MG J0414+0534)
+- Target **Object Y**: coordinates (RA,Dec) = (4h14m37.818s, 5d34'42.810'')  
+  > "A faint continuum emission with a flux of 0.2-0.3\,mJy at (RA,Dec)$=(4^\textrm{h}14^\textrm{m}37.818^\textrm{s}, 5^\circ 34\ensuremath{'} 42.810\ensuremath{''})$, in the north east of A2, was first reported by (cite: inoue2017)." (Object Y); "We also studied perturbed Type B models in which object Y is modeled by an SIE at a redshift $z_\textrm{Y}=0.661$ in the smooth model (Figure 22)." (Source Plane Fit to ALMA image); z/distance z_Y = 0.661 (modeled)  
+  > "A faint continuum emission with a flux of 0.2-0.3\,mJy at (RA,Dec)$=(4^\textrm{h}14^\textrm{m}37.818^\textrm{s}, 5^\circ 34\ensuremath{'} 42.810\ensuremath{''})$, in the north east of A2, was first reported by (cite: inoue2017)." (Object Y); "We also studied perturbed Type B models in which object Y is modeled by an SIE at a redshift $z_\textrm{Y}=0.661$ in the smooth model (Figure 22)." (Source Plane Fit to ALMA image); distance from fitted parameter in Type B model  
+  > "A faint continuum emission with a flux of 0.2-0.3\,mJy at (RA,Dec)$=(4^\textrm{h}14^\textrm{m}37.818^\textrm{s}, 5^\circ 34\ensuremath{'} 42.810\ensuremath{''})$, in the north east of A2, was first reported by (cite: inoue2017)." (Object Y); "We also studied perturbed Type B models in which object Y is modeled by an SIE at a redshift $z_\textrm{Y}=0.661$ in the smooth model (Figure 22)." (Source Plane Fit to ALMA image)
+
+## Data provenance
+
+- ALMA projects: 2013.1.01110.S, 2016.1.00281.S
+- bands: _not stated_
+- frequencies and spectral setup: 340 GHz; 4 SPWs centered at 335.3 GHz, 336.6 GHz, 346.7 GHz, and 349.5 GHz with effective bandwidths of 1-2 GHz  
+  > "we conduct a mock analysis and apply the formalism to the submillimeter data of the lensed quasar MG\,J0414+0534, which were observed using ALMA at 340\, GHz (cite: inoue2017; inoue2020)." (Introduction); "averaged line-free channels in each of 4 spectral windows (SPWs), which produced 4 visibility data sets centerd at 335.3\,GHz, 336.6\,GHz, 346.7\,GHz, and 349.5\,GHz with $\sim 1.7\times 10^5$ elements." (Procedure of fitting visibilities to the ALMA data); "The effective bandwidths of the SPWs were $1-2$\,GHz" (Procedure of fitting visibilities to the ALMA data)
+- continuum bandwidth: ~4189 MHz line-free bandwidth  
+  > "The line-free band width was set to 4189\,MHz, approximately equal to the one for the actual observations." (Mock Observation)
+- arrays: _not stated_
+- configurations: _not stated_
+- baselines: Cycle 2: 15 m to 1.574 km; Cycle 4: 113 m to 13.894 km  
+  > "For the Cycle 2 and Cycle 4 observations, the maximum and minimum baselines were 1.574\,km and 15\,m, and 13.894\,km and 113\,m" (ALMA Observations)
+- angular resolution: Cycle 2: ~0.2''; Cycle 4: ~0.02''; combined: 0.02''-0.05''  
+  > "we conducted observations of MG$\,$J0414+0534 using the Atacama Large Millimeter/submillimeter Array (ALMA) with high angular resolution (0.02$''$-0.05$''$)." (Abstract); "the angular resolutions and maximum recoverable scales were $\sim 0.2\ensuremath{''}$ and $2''$, and $\sim 0.02\ensuremath{''}$ and $\sim 0.4\ensuremath{''}$" (ALMA Observations)
+- max recoverable scale: Cycle 2: ~2''; Cycle 4: ~0.4''  
+  > "the angular resolutions and maximum recoverable scales were $\sim 0.2\ensuremath{''}$ and $2''$, and $\sim 0.02\ensuremath{''}$ and $\sim 0.4\ensuremath{''}$" (ALMA Observations)
+- sensitivity: Cycle 2: ~20 uJy/beam; Cycle 4: ~30 uJy/beam  
+  > "and the rms noise were $\sim 20\,\mu$Jy/beam and $\sim 30\,\mu$Jy/beam, respectively (for details, refer to (cite: inoue2017; inoue2020))." (ALMA Observations)
+- time on source: _not stated_
+- observing dates: Cycle 2: June 13 and August 14, 2015; Cycle 4: November 1, 8, 10, and 11, 2017  
+  > "Our Cycle 2 and Cycle 4 observations of MG\,J0414+0534 were performed on June 13 and August 14, 2015 and on November 1, 8, 10, and 11, 2017, respectively." (ALMA Observations)
+- pi or archival as stated: PI observations (Cycle 2 PI: K.T. Inoue; Cycle 4 PI: S. Matsushita)  
+  > "To probe the origin, as part of ALMA Cycle 2 program, we performed observations of MG\,J0414+0534(Project ID: 2013.1.01110.S, PI: K.T. Inoue)." (Review of MG J0414+0534); "As part of ALMA Cycle 4 program, we performed high-resolution observations of MG\,J0414+0534(Project ID: 2016.1.00281.S, PI: S. Matsushita)." (Review of MG J0414+0534)
+- Other facility **HST (WFPC2/PC1, CASTLES database)**: Optical/NIR positions of lensed quasar images, primary lens galaxy G, and object X, plus I-band isophote ellipticity of G  
+  > "The lensed images of the quasar, galaxy G and object X were observed using the Hubble Space Telescope (HST) WFPC2/PC1 in the near infrared (NIR)/ optical (OPT) band (cite: falco1997)." (Review of MG J0414+0534); "we fitted the positions of quadruple images of a quasar core and the centroid of G and X observed in the OPT/NIR band in the CASTLES database." (Generation of Mock Data)
+- Other facility **VLBA**: 5 GHz and 8.4 GHz positions of radio core and jet components p, q, r, and s  
+  > "Very Long Baseline Array (VLBA) observations at 5\,GHz (cite: trotter2000) and 8.4\,GHz (cite: ros2000) resolved small-scale ($\lesssim 1\,$kpc) radio jet components p, q, r, and s." (Review of MG J0414+0534); "To obtain background lensing models from our ALMA data, we used lensed images of a compact radio component q in the VLBA map at 5\,GHz (cite: trotter2000) instead of the HST position of the quasar core." (Smooth Model)
+- Other facility **Subaru and Keck**: Mid-infrared (MIR) flux ratios of the quadruply lensed quasar images  
+  > "In order to obtain the smooth models, we only use the HST or VLBA data for the positions of quadruply lensed images and galaxies (objects) and our Subaru and the Keck MIR data for the flux ratios of quadruply lensed images." (Overall Procedure); "and the MIR flux ratios observed with the Subaru and Keck telescopes (cite: minezaki2009; macleod2013)." (Smooth Model)
+- External data: Source redshift z_S = 2.639  
+  > "The quasar at redshift $z_\textit{S}=2.639$ (cite: lawrence1995)" (Review of MG J0414+0534) [from (cite: lawrence1995)]
+- External data: Lens galaxy G redshift z_L = 0.9584  
+  > "is lensed by an elliptical galaxy G at redshift $z_{\textit{L}}=0.9584$ (cite: tonry1999)" (Review of MG J0414+0534) [from (cite: tonry1999)]
+- External data: HST WFPC2/PC1 optical/NIR positions of lensed images, galaxy G, object X, and ellipticity of G (e_G = 0.20 +/- 0.02)  
+  > "The lensed images of the quasar, galaxy G and object X were observed using the Hubble Space Telescope (HST) WFPC2/PC1 in the near infrared (NIR)/ optical (OPT) band (cite: falco1997)." (Review of MG J0414+0534); "For G, the mean ellipticity of isophotes in the HST $I$ band was measured as $e_\textrm{G}=0.20\pm 0.02$ (cite: falco1997)." (Smooth Model) [from (cite: falco1997)]
+- External data: VLBA 5 GHz positions of radio jet components p, q, r, and s  
+  > "Very Long Baseline Array (VLBA) observations at 5\,GHz (cite: trotter2000) and 8.4\,GHz (cite: ros2000) resolved small-scale ($\lesssim 1\,$kpc) radio jet components p, q, r, and s." (Review of MG J0414+0534) [from (cite: trotter2000)]
+- External data: Subaru and Keck mid-infrared flux ratios (A2/A1 = 0.919 +/- 0.021, B/A1 = 0.347 +/- 0.013, C/A1 = 0.139 +/- 0.014)  
+  > "and the MIR flux ratios observed with the Subaru and Keck telescopes (cite: minezaki2009; macleod2013)." (Smooth Model); "| MIR |  |  |  |  |  |  |  |  |  |  |  |  | $0.919$ | $0.347$ | $0.139$ |" (Table 4) [from (cite: minezaki2009; macleod2013)]
+- External data: Planck 2018 cosmological parameters (Omega_m,0 = 0.315, Omega_Lambda,0 = 0.685, H_0 = 67.4 km/s)  
+  > "In what follows, we adopt a *Planck* 2018 cosmology with matter density of $\Omega_{m,0}=0.315$, energy density of cosmological constant $\Omega_{\Lambda,0}=0.685$, and Hubble constant $H_0=67.4$\,km/s (cite: planck2018)." (Introduction) [from (cite: planck2018)]
+- External data: CDM theoretical predictions for convergence perturbations from subhalos and LOS structures  
+  > "the obtained value seems to be at odds with theoretical prediction $\delta \kappa_{\textrm{rms}}=0.0059^{+0.0006}_{-0.0004}$ (cite: inoue2016) at quadruple images with separation angle of $\sim 1''$" (Consistency with CDM Model); "If we add contribution from LOS structures to that from CDM subhalos, the CDM prediction yields $\delta \kappa_{\textrm{rms}}=0.018\pm 0.007$ (cite: inoue2016)" (Consistency with CDM Model) [from (cite: inoue2016)]
+- Simulation/model as data: ALMA mock continuum observations generated with CASA simobserve using a multi-Gaussian source model and a random Gaussian potential perturbation of 36 discrete Fourier modes  
+  > "Third, we added a random Gaussian perturbation consisting of $4\times 3^2=36$ discrete modes to the potential of the background lens model." (Generation of Mock Data); "We carried out ALMA mock continuum observations of the lensed ’true’ source using the $simobserve$ task in CASA." (Mock Observation)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: _not stated_
+- casa version: CASA 6.4 (used for visibility averaging)  
+  > "First, we averaged visibility data in each channel bin with an integration time of 60 seconds using CASA 6.4." (Procedure of fitting visibilities to the ALMA data)
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: <= 10%  
+  > "In order to assess possible systematic differences in amplitude of visibilities, we compared both continuum data with a common uv-range between 140\,m and 1400\,m. The difference was observed to be $\lesssim 10\%$" (ALMA Observations)
+- self calibration: phase-only self-calibration performed on both Cycle 2 and Cycle 4 data  
+  > "After performing phase-only self-calibration for both the Cycle2 and Cycle 4 data, we combined them with weights inversely proportional to the variance of errors." (ALMA Observations); "For each data set of Cycle 2 and 4 data, we subtracted off the components of line emission and carried out phase-only self calibration." (Object Y)
+
+### Imaging
+
+- task: tclean in CASA  
+  > "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2)." (ALMA Observations)
+- deconvolver: CLEAN  
+  > "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2)." (ALMA Observations)
+- weighting robust: Briggs weighting with robust = 0, 0.5, -1, and natural weighting  
+  > "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2). Imaging with $robust=-1$ was also used to fit positions of lensed images with data in other wavelengths." (ALMA Observations); "Note that the significance of object Y decreased to $<3.0\,\sigma$ for the natural weighting." (Object Y)
+- uv taper: _not stated_
+- cell size: 5 mas (0.005'')  
+  > "which are smaller than the pixel size of $5\,$mas used in the continuum maps." (Smooth Model); "we used a PSF-subtracted ALMA image with the magnification weighting over a square region with a sidelength of $6.0\ensuremath{''}$ and a pixel size of $0.005\ensuremath{''}$ (pixel number $N_c=1200$)." (Procedure of fitting visibilities to the ALMA data)
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: line emission subtracted before phase-only self-calibration; also imaged both line-free and full-band data  
+  > "For each data set of Cycle 2 and 4 data, we subtracted off the components of line emission and carried out phase-only self calibration." (Object Y); "To increase S/N, we also carried out imaging with $robust=0$ using the full-band data (self-calibrated line-free and line channels)" (Object Y)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: Cycle 2 and Cycle 4 visibilities concatenated with weights inversely proportional to error variance after relabeling Cycle 2 reference frame to ICRS  
+  > "After performing phase-only self-calibration for both the Cycle2 and Cycle 4 data, we combined them with weights inversely proportional to the variance of errors. Note that before combining the data, we relabeled the position reference frame of the Cycle 2 data as ICRS." (ALMA Observations)
+- smoothing: _not stated_
+- final beam: 0.02''-0.05'' (~0.03'' to ~0.04'')  
+  > "Then we performed imaging of the lensed extended source with high resolution ($0.02\ensuremath{''}-0.05\ensuremath{''}$)." (Review of MG J0414+0534); "The scale of the synthesized beam is $0.03\ensuremath{''}$, which corresponds to the baseline scale of $\sim 1500\,$m." (Object Y)
+- final rms: 22.9 uJy/beam (line-free, robust=0.5), 30.4 uJy/beam (line-free, robust=0), 22.6 uJy/beam (full-band, robust=0)  
+  > "| *Robust* | 0.5 | 0 | 0 |" (Table 6); "| Rms errors [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] | 22.9 | 30.4 | 22.6 |" (Table 6)
+
+### Inherited from earlier work
+
+- ALMA Cycle 2 and Cycle 4 observation details, calibration, and initial model parameter setups  
+  > "and the rms noise were $\sim 20\,\mu$Jy/beam and $\sim 30\,\mu$Jy/beam, respectively (for details, refer to (cite: inoue2017; inoue2020))." (ALMA Observations); "The error for X was relaxed because X may be a lensed image of the quasar host galaxy rather than that of a companion galaxy (see (cite: inoue2017) for details of model parameters)." (Generation of Mock Data) [from (cite: inoue2017; inoue2020)]
+- Modeling neighboring clusters and large-scale structures as an external shear centered at the SIE  
+  > "As conducted in (cite: macleod2013), possible effects from neighboring clusters and other large scale structures are modeled as an ES centered at the SIE." (Overall Procedure) [from (cite: macleod2013)]
+- Estimating visibility noise variance from the difference between adjacent spectral windows  
+  > "In other words, the variance in the subtracted visibilities in a particular bin were assumed to be twice the true noise variance (cite: hezaveh2016a; dye2018)." (Procedure of fitting visibilities to the ALMA data) [from (cite: hezaveh2016a; dye2018)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Exact solution intervals (solint) and S/N thresholds used during phase-only self-calibration of Cycle 2 and Cycle 4 data
+- Exact frequency channel ranges flagged as line emission vs. line-free continuum
+- Stopping threshold, niter, and masking strategy in CASA tclean
+- Specific numerical optimization algorithm/solver used to minimize the regularized chi^2 in the source-plane and lens-plane fits
+
+## Analysis recipe
+
+1. **Combine ALMA Cycle 2 and Cycle 4 visibilities and produce continuum images**: Subtract line emission, perform phase-only self-calibration on Cycle 2 and Cycle 4 datasets separately, relabel Cycle 2 reference frame from J2000 to ICRS, concatenate with inverse-variance weights, and image with CASA tclean using Briggs weighting (robust = -1, 0, 0.5) and natural weighting.  
+  > "After performing phase-only self-calibration for both the Cycle2 and Cycle 4 data, we combined them with weights inversely proportional to the variance of errors. Note that before combining the data, we relabeled the position reference frame of the Cycle 2 data as ICRS." (ALMA Observations); "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2). Imaging with $robust=-1$ was also used to fit positions of lensed images with data in other wavelengths." (ALMA Observations)
+   - software: CASA, tclean
+   - parameter: robust = 0, 0.5, -1  
+  > "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2). Imaging with $robust=-1$ was also used to fit positions of lensed images with data in other wavelengths." (ALMA Observations)
+   - parameter: pixel size = 5 mas (0.005'')  
+  > "which are smaller than the pixel size of $5\,$mas used in the continuum maps." (Smooth Model)
+   - assumption: Systematic amplitude difference <= 10% between Cycle 2 and Cycle 4 in common uv-range (140-1400 m) is acceptable.  
+  > "In order to assess possible systematic differences in amplitude of visibilities, we compared both continuum data with a common uv-range between 140\,m and 1400\,m. The difference was observed to be $\lesssim 10\%$" (ALMA Observations)
+   - fitting: _not stated_
+   - validation: Checked amplitude consistency in common uv-range (140 m to 1400 m) between Cycle 2 and Cycle 4.  
+  > "In order to assess possible systematic differences in amplitude of visibilities, we compared both continuum data with a common uv-range between 140\,m and 1400\,m." (ALMA Observations)
+2. **Align multi-wavelength astrometry and fit smooth background lens models (Type A and Type B)**: Rotate and translate the VLBA 5 GHz map by 1.76 deg (East of North) to match HST core positions, align the ALMA robust=-1 map to the VLBA p and q gravitational center in A1, and fit smooth lens models: Type A (SIE for G, ES, CIS for X) and Type B (adding an SIE for object Y) to VLBA q positions, HST G and X centroids, ALMA Y position, and Subaru/Keck MIR flux ratios.  
+  > "In order to match the VLBA positions to the HST positions, we translated and rotated the coordinates of the VLBA map to best-fit the positions of lensed q to the HST positions in the OPT/NIR band. The obtained rotation angle is $1.76^\circ$ (East of North)." (Smooth Model); "Then our ALMA maps were rotated by the same angle (assuming a perfect alignment with the coordinates in the VLBA image) and the position of a local peak in image A1 was placed on the brightest image A1 of the lensed gravitational center of p and q in the corresponding VLBA data" (Smooth Model); "First, we perturb our background Type A models (SIE-ES-CIS) in which object Y (see Section 6.5) is not explicitly modeled by discrete Fourier modes (see Section 4.6 for details) defined in the interior of a square that encompasses the lensed arcs. Then, we perturb Type B models in which object Y is modeled by an SIE (SIE-ES-CIS-SIE) by the Fourier modes." (Overall Procedure)
+   - parameter: VLBA position error = 2 mas; G centroid error = 5 mas; X and Y centroid error = 0.1''  
+  > "We assumed that the errors in the VLBA positions are $2\,\textrm{mas}$, which is the mean size of the synthesized beam." (Smooth Model); "Considering a possible misalignment of $\sim 2\,$mas, the positional error of the centroid of G was assumed to be $5\,$mas. The positional error of X and Y were assumed to be $0.1\ensuremath{''}$." (Smooth Model)
+   - assumption: VLBA 5 GHz component q corresponds to the quasar core; ellipticity priors e_G = 0.2 +/- 0.2 and e_Y = 0.5 +/- 0.2 for Type B.  
+  > "Second, as the position of the radio emission at 5\, GHz is very close to the OPT/NIR emission of the quasar core ($<2\,$mas), we can consider component q as the quasar core rather than a jet (cite: inoue2020)." (Smooth Model); "We assume a conservative error value $\delta e_\textrm{Y}=0.20$ for the ellipticity of Y. To include these constraints in fitting, we add a term" (Results of ALMA Observations, Smooth Model)
+   - fitting: Chi-squared minimization (chi^2_tot = chi^2_flux + chi^2_posG + chi^2_posX + chi^2_posY + chi^2_posq + chi^2_e)  
+  > "| Type | $\chi^2_{\textrm{flux}}$ | $\chi^2_{\textrm{posG}}$ | $\chi^2_{\textrm{posX}}$ | $\chi^2_{\textrm{posY}}$ | $\chi^2_{\textrm{posq}}$ | $\chi^2_{e}$ | $\chi^2_{\textrm{tot}}/$dof | A2/A1 | B/A1 | C/A1 |  |" (Table 3)
+   - validation: Checked residual positional differences between ALMA local peaks and VLBA gravitational centers of p and q (2.3, 4.0, 1.4 mas for A2, B, C).  
+  > "The differences between local peaks in the ALMA image and the gravitational centers of p and q for A2, B, and C were 2.3, 4.0, and $1.4\,\textrm{mas}$, which are smaller than the pixel size of $5\,$mas used in the continuum maps." (Smooth Model)
+3. **Validate the source-plane chi^2 formalism and weighting schemes via mock ALMA simulations**: Construct a parametric mock source (core + 2 bright spots + 2 elliptical Gaussians for dust) lensed by the Type A model plus a 36-mode random Gaussian potential perturbation; simulate Cycle 2 and Cycle 4 visibilities with CASA simobserve, image with tclean, subtract core peaks, and reconstruct potential perturbations and lensing power spectra on adaptive source-plane meshes using magnification and homogeneous weightings.  
+  > "Third, we added a random Gaussian perturbation consisting of $4\times 3^2=36$ discrete modes to the potential of the background lens model." (Generation of Mock Data); "We carried out ALMA mock continuum observations of the lensed ’true’ source using the $simobserve$ task in CASA." (Mock Observation); "The source plane at which the estimated signal in the source plane is larger than $5\,\sigma$ was covered with meshes with a side length of 6.66\,mas or 13.3\,mas." (Mock Analysis)
+   - software: CASA, simobserve, tclean
+   - parameter: N^2 = 36 modes (22 intermediate modes with 3.5 < sqrt(m^2+n^2) < 6.5), L = 3.6'', source mesh = 6.66 mas or 13.3 mas, |mu| <= 30  
+  > "For instance, for $N=6$, we use 22 intermediate-frequency modes for analysis of perturbation (Figure 9) in our mock simulations." (Mock Analysis); "In this mock analysis, we used the same square boundary with a side length of $L=3.6\ensuremath{''}$ and $N=6$." (Mock Analysis); "In order to avoid regions at which our weak lensing formalism breaks, we excluded meshes at which the maximum absolute magnification is larger than 30." (Mock Analysis)
+   - assumption: Dirichlet boundary condition (delta psi = 0) on square of side L; peak-subtracted CLEAN intensities scaled by 1/1.6 to correct ~60% CLEAN boost.  
+  > "to discretise the potential, we impose a Dirichlet boundary condition $\delta \psi=0$ at the boundary of a square R with a side length of $L$" (Fourier Mode Expansion); "Therefore, to test our mock analysis, we multiplied the mock observed intensities for peak-subtracted lensed images by a constant of $1/1.6$." (Mock Observation)
+   - fitting: Regularized source-plane chi^2 minimization (chi^2_reg = chi^2_ext + chi^2_core + chi^2_flux + R_s) with Newton's method for ray-tracing  
+  > "For a given set of smoothing parameters $\delta \psi_0, \delta \alpha_0$, and $\delta \kappa_0$, we minimize a regularized $\chi^2_{\textrm{reg}}$ defined as $\chi^2_{\textrm{reg}} = \chi^2+R_s,$" (Regularization of Fitting); "Using the first guess values, the corresponding accurate points in the lens plane was computed using Newton’s method." (Generation of Mock Data)
+   - validation: Compared reconstructed convergence maps and power spectra in 3 wavenumber bins against true input values, demonstrating that magnification weighting is better for real-space map fidelity while homogeneous weighting has lower relative error (16-47% vs 37-83%) for power spectra.  
+  > "In contrast, the homogeneous weighting gave much better results than the magnification weighting in reconstructing the lensing power spectra (Table 2). The relative errors between the mean value of the reconstructed power spectra are $40$ to $80$ percent for the magnification weighting and $20$ to $50$ percent for the homogeneous weighting" (Mock Result)
+4. **Reconstruct potential perturbations and measure lensing power spectra from the ALMA image in the source plane**: Subtract bright core components p and q from the ALMA continuum map (robust=0) using the CASA synthesized elliptical Gaussian beam with c_p + c_q = 0.95 at A2 and MIR flux ratios at A1, B, C; construct 6.66 mas source-plane meshes on pixels >3.8 sigma; fit 36 Fourier modes of potential perturbation in square boundaries of L = 3.6'' and L = 4.2'' by minimizing regularized source-plane chi^2; extract lensing power spectra using homogeneous weighting and real-space perturbation maps using magnification weighting.  
+  > "To subtract lensed images of bright core components p and q from a continuum image, we used the best-fitted elliptical Gaussian beam obtained from CASA." (Source Plane Fit to ALMA image); "We constructed multi-scale meshes in the source plane in a similar manner to our mock analysis but the mesh sizes was fixed to be $6.66$\,mas." (Source Plane Fit to ALMA image); "To analyze the perturbation in the real space, we used the magnification weighting and to analyze the lensing power spectra, we used the homogeneous weighting for de-lensing." (Source Plane Fit to ALMA image)
+   - software: CASA
+   - parameter: N^2 = 36 Fourier modes, L = 3.6'' centered at (-0.4'', 0.3'') and L = 4.2'' centered at (-0.7'', 0.3''), mesh size = 6.66 mas, S/N > 3.8 sigma, c_p + c_q = 0.95  
+  > "we considered two types of models to describe the potential perturbation due to subhalos and LOS structures: 36 modes with $L=3.6\ensuremath{''}$ centered at $(-0.4\ensuremath{''},0.3\ensuremath{''})$. To test the effect of possible masses in the vicinity of object Y, we also considered another model with 36 modes with $L=4.2\ensuremath{''}$ centered at $(-0.7\ensuremath{''},0.3\ensuremath{''})$." (Source Plane Fit to ALMA image); "$c_\textrm{p}+c_\textrm{q}$ was also constrained to be 0.95." (Source Plane Fit to ALMA image); "We used only pixels with $>3.8\,\sigma$ in the source plane." (Source Plane Fit to ALMA image)
+   - assumption: Weak lensing perturbation regime (|mu| <= 30); spatial pixel error correlations in the source plane are negligible (off-diagonal covariance <= 10%); Dirichlet boundary condition on square of side L.  
+  > "Using the data set, we found that the absolute values of the non-diagonal components in the covariance matrix of the difference in the weighted sum of the de-lensed source intensity is $\lesssim 10$ per cent of the diagonal components." (Source Plane Fit to ALMA image)
+   - assumption: Errors in source-plane intensity differences scale with S/N to the power beta, adjusted so unperturbed chi^2/dof ~ 2.8-3.0.  
+  > "Before performing $\chi^2$ analysis, we adjusted $\beta$ to satisfy the condition $\chi^2/\textrm{dof} \sim 3$ for an unperturbed model." (Source Plane Fit to ALMA image); "Similar to our mock analysis, the constant $\beta$ was chosen to satisfy $\chi^2/\textrm{dof}=2.8$ in the initial model without any perturbation." (Source Plane Fit to ALMA image)
+   - fitting: Regularized chi^2 minimization in the source plane; 1-sigma power spectrum errors computed from >10^6 random Gaussian potentials with Delta chi <= 1 and R_s/dof smaller than best-fit.  
+  > "The $1\,\sigma$ errors of the powers were calculated using random Gaussian potentials that give $\varDelta \chi \le 1$ with the smoothing term $R_s/\textrm{dof}$ smaller than that for the best-fitted model." (Source Plane Fit to ALMA image); "$1\,\sigma$ errors are calculated by considering $>10^6$ sets of random Gaussian potentials that give $\varDelta \chi \le 1$ with the smoothing term smaller than that for the best-fitted model." (Mock Result)
+   - validation: Checked a posteriori fit to VLBA jet components p, q, r, s in the lens plane (chi^2_pos/dof_pos = 0.80 for Type A with robust=0) and compared Type A and Type B power spectra across angular scales.  
+  > "the reduced $\chi^2$ for the best-fit Type A model based on the ALMA (Cycle 2 + Cycle 4) image reconstructed with $\textit{robust}=0$, magnification weighting and $L=3.6\ensuremath{''}$ or $L=4.2\ensuremath{''}$ is $\chi^2_{\textrm{pos}}/\textrm{dof}_\textrm{pos}=22.5/(36 - 8)=0.80$." (Source Plane Fit to ALMA image)
+5. **Verify lens model perturbations and Object Y via visibility-plane fitting and lens-plane VLBA fitting**: Average ALMA visibilities in 60s bins and 4 SPWs using CASA 6.4, bin onto polar grids (delta r = 100 m, azimuthal spacing delta theta), and fit overall amplitude scaling factors a (point sources) and b (FFTed zero-padded 18''x18'' extended source image) plus a Gaussian component for Object Y; additionally perform a direct lens-plane regularized chi^2 fit of the 22 intermediate Fourier modes to VLBA p, q, r, s positions, G and X centroids, and MIR flux ratios.  
+  > "First, we averaged visibility data in each channel bin with an integration time of 60 seconds using CASA 6.4." (Procedure of fitting visibilities to the ALMA data); "In our analysis, we used visibilities that are averaged on grids (denoted by $J$) in the polar coordinates $(r,\theta)$ with a radial bin size of $\delta r=100\,$m and an azimuthal size of $\delta \theta$ in the visibility plane $(u,v)$" (Procedure of fitting visibilities to the ALMA data); "We fitted the model to the positions of VLBA jet components p, q, r, and s, centroid of G and object X, and the MIR flux ratios of quadruple images with adjusting coefficients of the 22 intermediate frequency Fourier modes and translation." (Lens Plane Fit to VLBA Positions)
+   - software: CASA
+   - parameter: 60 s time averaging, 4 SPWs, polar grid delta r = 100 m, delta theta = 1 deg to 90 deg (optimal 10 deg; <= 1.5 deg for Object Y), zero-padded 18.0'' box (from 6.0'', N_c = 1200, 0.005'' pixels)  
+  > "For $1^\circ \lesssim \delta \theta \lesssim 90^\circ$, our visibility fitting showed that the perturbed model fits the ALMA data better than the corresponding unperturbed smooth model (Figure 27). We found that the optimal value of azimuthal separation that gives the best-fit is $\delta \theta =10^\circ$." (Lens Plane Fit to ALMA Visibilities); "Therefore, in order to retain the phase information of object Y, we needed to restrict the azimuthal separation of polar grids to $\delta \theta \lesssim \arctan{(40/1500)}=1.5\ensuremath{^\circ}$." (Object Y); "we used a PSF-subtracted ALMA image with the magnification weighting over a square region with a sidelength of $6.0\ensuremath{''}$ and a pixel size of $0.005\ensuremath{''}$ (pixel number $N_c=1200$). Then, we padded 0s around the edge of the matrix (i.e., equivalent to adding a blank field) so that the dimension of the matrix becomes three times larger." (Procedure of fitting visibilities to the ALMA data)
+   - assumption: Visibility noise variance estimated from half the squared difference between adjacent SPWs.  
+  > "In other words, the variance in the subtracted visibilities in a particular bin were assumed to be twice the true noise variance" (Appendix, Procedure of fitting visibilities to the ALMA data)
+   - fitting: Chi-squared minimization in the visibility plane (chi^2_v) and regularized chi-squared minimization in the lens plane for VLBA positions.  
+  > "Finally, a statistic $\chi_v^2$ ($\chi^2$ in the visibility plane) can be written as" (Appendix, Procedure of fitting visibilities to the ALMA data); "To do so, we minimized $\chi^2$ for the positions of G, X, and the VLBA jet components and MIR flux ratios plus the smoothing term $R_s$ defined in equation (10)." (Lens Plane Fit to VLBA Positions)
+   - validation: Compared visibility chi^2 between perturbed, unperturbed, and null models (and with A1/A2 core flux ratio fixed to unity), confirming that both point and extended components improve the fit.  
+  > "In order to have the evidence of improvement due to the extended source components, we fitted model visibilities in which the point source flux ratio of A1 to A2 is artificially fixed to be unity while the extended source components were intact." (Lens Plane Fit to ALMA Visibilities)
+6. **Compare measured convergence power with CDM theoretical predictions**: Account for cosmic variance across the 7 high-frequency Fourier modes, convert the measured convergence perturbation at l ~ 1.2x10^6 to an effective surface mass density scale, and compare against CDM subhalo-only and subhalo+LOS predictions.  
+  > "Assuming that the 7 modes are independent each other and obey a Gaussian distribution, the cosmic variance is at most $\varDelta \varDelta_\kappa^2/\varDelta_\kappa^2= \sqrt{2/7}\sim 0.53$. Therefore, the measured values including the error due to the cosmic variance is $\varDelta_\kappa=0.015-0.032$." (Consistency with CDM Model); "The mean of the measured convergence perturbation $\Delta \kappa=0.025$ for a source redshift $z_s=2.639$ and a lens redshift $z_l=0.9584$ is equal to $9.3 \times 10^8 M_{\odot}/\textrm{arcsec}^2$ if the total mass resides at $z_l$ (cite: takahashi-inoue2014)." (Consistency with CDM Model)
+   - parameter: 7 high-frequency modes at l ~ 1.2 x 10^6 (angular scale ~ 1.1'')  
+  > "As shown in Section 6.2, the range of measured amplitude of convergence perturbation within $1\,\sigma$ at an angular scale of $\sim 1.1\ensuremath{''}$ ($l \sim 1.2 \times 10^6$) was $\varDelta_\kappa=0.021-0.028$. The result was obtained using the 7 high frequency modes." (Consistency with CDM Model)
+   - assumption: 7 high-frequency modes are independent and obey Gaussian statistics; Planck 2018 cosmology; constant convergence power over Delta l ~ l.  
+  > "Assuming that the 7 modes are independent each other and obey a Gaussian distribution, the cosmic variance is at most $\varDelta \varDelta_\kappa^2/\varDelta_\kappa^2= \sqrt{2/7}\sim 0.53$." (Consistency with CDM Model); "Assuming a constant convergence power over a range of angular wavenumber $\Delta l\sim l$, the obtained value seems to be at odds with theoretical prediction" (Consistency with CDM Model)
+   - fitting: _not stated_
+   - validation: Also scaled convergence power to the redshifts of SDSS J0252+0039 (z_s = 0.982, z_l = 0.28) to check consistency with HST upper bounds.  
+  > "our result suggests that a convergence power $5 \times 10^8 M_{\odot}$ per $5\,$kpc scale for a source redshift $z_s=0.982$ and a lens redshift $z_l=0.28$, which is slightly larger than the recent upper bound of convergence power $3\times 10^8 M_{\odot}$ for a proper length scale of $3\,$kpc obtained from the HST observations of SDSS\,J0252+0039 (cite: bayer2023)." (Consistency with CDM Model)
+
+## Software
+
+- **CASA** 6.4: Self-calibration, visibility concatenation, CLEAN imaging (tclean), elliptical Gaussian beam fitting, mock observation simulation (simobserve), and visibility time/frequency averaging  
+  > "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2)." (ALMA Observations); "We carried out ALMA mock continuum observations of the lensed ’true’ source using the $simobserve$ task in CASA." (Mock Observation); "First, we averaged visibility data in each channel bin with an integration time of 60 seconds using CASA 6.4." (Procedure of fitting visibilities to the ALMA data)
+- **tclean** : CLEAN continuum imaging of real and mock ALMA visibilities  
+  > "Then we performed the CLEAN imaging with a Briggs weighting of $robust=0,0.5$ to measure the power spectra using a CASA task *tclean*(Figure 2)." (ALMA Observations); "Then continuum imaging was performed using the CLEAN algorithm (*tclean* in CASA) with a Briggs weighting of $\textit{robust}=0.5$ (Figure 7)." (Mock Observation)
+- **simobserve** : Generating mock ALMA Cycle 2 and Cycle 4 continuum observations  
+  > "We carried out ALMA mock continuum observations of the lensed ’true’ source using the $simobserve$ task in CASA." (Mock Observation)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Convergence power (Delta_kappa) at angular scale ~1.1'' (l = 1.2 x 10^6, ~9 kpc) | 0.021-0.028 | 1 sigma range | dimensionless | 4 | the range of measured convergence, astrometric shift, and potential powers at an angular scale of $\sim 1.1\ensuremath{''}$ (corresponding to an angular wave number of $l=1.2\times 10^6$ or $\sim 9\,$kpc in the primary lens plane) within $1\,\sigma$ are $\varDelta_\kappa=0.021-0.028$, $\varDelta_\alpha =7-9\,$mas, and $\varDelta_\psi=1.2-1.6\,$$\textrm{mas}^2$, respectively.; The range of measured convergence power within $1\,\sigma$ of the mean values at the two smallest angular scales $l= (1.11\pm 0.07) \times 10^6$ and $l= (1.30\pm 0.08) \times 10^6$ was $\Delta_{\kappa} =0.021-0.028$. |
+| Astrometric shift power (Delta_alpha) at angular scale ~1.1'' (l = 1.2 x 10^6) | 7-9 | 1 sigma range | mas | 4 | the range of measured convergence, astrometric shift, and potential powers at an angular scale of $\sim 1.1\ensuremath{''}$ (corresponding to an angular wave number of $l=1.2\times 10^6$ or $\sim 9\,$kpc in the primary lens plane) within $1\,\sigma$ are $\varDelta_\kappa=0.021-0.028$, $\varDelta_\alpha =7-9\,$mas, and $\varDelta_\psi=1.2-1.6\,$$\textrm{mas}^2$, respectively. |
+| Gravitational potential power (Delta_psi) at angular scale ~1.1'' (l = 1.2 x 10^6) | 1.2-1.6 | 1 sigma range | mas^2 | 4 | the range of measured convergence, astrometric shift, and potential powers at an angular scale of $\sim 1.1\ensuremath{''}$ (corresponding to an angular wave number of $l=1.2\times 10^6$ or $\sim 9\,$kpc in the primary lens plane) within $1\,\sigma$ are $\varDelta_\kappa=0.021-0.028$, $\varDelta_\alpha =7-9\,$mas, and $\varDelta_\psi=1.2-1.6\,$$\textrm{mas}^2$, respectively. |
+| Convergence power (Delta_kappa) including cosmic variance at l ~ 1.2 x 10^6 | 0.015-0.032 | 1 sigma + cosmic variance | dimensionless | 6 | Therefore, the measured values including the error due to the cosmic variance is $\varDelta_\kappa=0.015-0.032$. |
+| Intermediate-mode convergence power (Delta_kappa, Type A, L = 3.6'', l = (8.6 +/- 2.6) x 10^5) | 0.0079 | +/- 0.0005 | dimensionless | 4 | / A / hom. / 36 / $3.6\ensuremath{''}$ / $8.6\pm 2.6$ / $1.5\ensuremath{''}^{+0.64\ensuremath{''}}_{-0.35\ensuremath{''}}$ / $0.00070\pm0.00004$ / $0.0033\pm0.0002$ / $0.0079\pm0.0005$ / 1.2 / 0.12 / 18 / |
+| Intermediate-mode convergence power (Delta_kappa, Type A, L = 4.2'', l = (7.4 +/- 2.2) x 10^5) | 0.0066 | +/- 0.0003 | dimensionless | 4 | / A / hom. / 36 / $4.2\ensuremath{''}$ / $7.4 \pm 2.2$ / $1.75\ensuremath{''}^{+0.75\ensuremath{''}}_{-0.40\ensuremath{''}}$ / $0.00072\pm 0.00003$ / $0.0030\pm0.0002$ / $0.0066\pm0.0003$ / 1.2 / 0.12 / 18 / |
+| RMS convergence perturbation at quadruple images of q (delta_kappa_rms^q, Type A) | 0.017 | +/- 0.005 | dimensionless | 4 | For the four Type A models we analyzed, the rms of convergence perturbation $\delta \kappa_{\textrm{rms}}^q$ and that of shear perturbation $\delta \gamma_{\textrm{rms}}^q$ at the positions of the quadruple image of q are $0.017\pm 0.005$ and $0.010 \pm 0.002$, respectively. |
+| RMS shear perturbation at quadruple images of q (delta_gamma_rms^q, Type A) | 0.010 | +/- 0.002 | dimensionless | 4 | For the four Type A models we analyzed, the rms of convergence perturbation $\delta \kappa_{\textrm{rms}}^q$ and that of shear perturbation $\delta \gamma_{\textrm{rms}}^q$ at the positions of the quadruple image of q are $0.017\pm 0.005$ and $0.010 \pm 0.002$, respectively. |
+| Primary lens G effective Einstein radius b_G (Type A smooth model) | 1.094 | not stated | arcsec | 2 | / A / $1.094\ensuremath{''}$ / $(-0.0562\ensuremath{''}, 0.2654\ensuremath{''})$ / 0.307 / $-87.9\ensuremath{^\circ}$ / 0.0918 / $47.5\ensuremath{^\circ}$ / $(0.006\ensuremath{''},-0.009\ensuremath{''})$ / $0.219\ensuremath{''}$ / $(0.445\ensuremath{''},1.483\ensuremath{''})$ / $0.018\ensuremath{''}$ /  / |
+| Primary lens G effective Einstein radius b_G (Type B smooth model) | 1.107 | not stated | arcsec | 2 | / B / $1.107\ensuremath{''}$ / $(-0.0981\ensuremath{''}, 0.2254\ensuremath{''})$ / 0.280 / $-87.9\ensuremath{^\circ}$ / 0.0790 / $47.5\ensuremath{^\circ}$ / $(-0.001\ensuremath{''},-0.002\ensuremath{''})$ / $0.160\ensuremath{''}$ / $(0.316\ensuremath{''},1.490\ensuremath{''})$ / $0.019\ensuremath{''}$ /  / |
+| Object Y peak continuum flux density (line-free, robust = 0.5) | 81.8 | 22.9 (rms) | uJy beam^-1 | 1 | / Rms errors [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] / 22.9 / 30.4 / 22.6 /; / Peak flux [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] / 81.8 / 114.5 / 84.2 / |
+| Object Y peak continuum flux density (line-free, robust = 0) | 114.5 | 30.4 (rms) | uJy beam^-1 | 1 | / Rms errors [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] / 22.9 / 30.4 / 22.6 /; / Peak flux [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] / 81.8 / 114.5 / 84.2 / |
+| Object Y peak continuum flux density (full-band, robust = 0) | 84.2 | 22.6 (rms) | uJy beam^-1 | 1 | / Rms errors [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] / 22.9 / 30.4 / 22.6 /; / Peak flux [$\mu \textrm{Jy}\,\textrm{beam}^{-1}$] / 81.8 / 114.5 / 84.2 / |
+| Visibility fit amplitude scaling parameters at delta_theta = 10 deg | a = 1.8, b = 0.42 | a: +/- 1.5, b: +/- 0.39 | a: mJy, b: dimensionless | 5 | At $\delta \theta =10^\circ$, the coefficients of the point-source and extended source components in the perturbed model were $a=1.8\pm 1.5\,$mJy and $b=0.42\pm 0.39$. |
+
+## Qualitative findings
+
+- Homogeneous weighting in the source plane yields significantly smaller systematic biases and relative errors when estimating lensing power spectra, whereas magnification weighting provides better real-space fidelity near highly magnified images and achieves super-resolution in the source plane.  
+  > "In contrast, the homogeneous weighting gave much better results than the magnification weighting in reconstructing the lensing power spectra (Table 2)." (Mock Result); "The magnification weighting also gives a better fidelity of intensity in the source plane. As shown in Figure 12, two bright spots with a separation of $0.014\ensuremath{''}$, which is one third of the beam size were resolved for the magnification weighting." (Mock Result)
+- De-lensed source images reveal a bright spot centered at the radio core q and a bipolar structure aligned with the VLBA jet components.  
+  > "The de-lensed source images show a bright spot centered at a radio core with a bi-polar structure in the vicinity of the VLBA jet components." (Source Plane Fit to ALMA image)
+- Best-fitted lens models indicate a complex mass distribution with four clumps near the quadruple images, including one clump near image A2 that may be associated with Object Y.  
+  > "The best-fitted models show a complex mass distribution with four clumps near the quadruple images. One clump near image A2 may be associated with object Y." (Source Plane Fit to ALMA image)
+- Contribution to convergence perturbation from low-frequency Fourier modes (angular wavelength 2'' to 7'') is less than ~0.4% of the background convergence.  
+  > "The convergence perturbation $\delta \kappa$ due to the low frequency modes are less than $0.002$, corresponding to $\sim 0.4$ percent of the background convergence of $\kappa \sim 0.5$ in the effective Einstein radius." (Source Plane Fit to ALMA image)
+
+## Claim tuples
+
+- H: Lensing power spectra on ~10 kpc (~1.1'') scales towards MG J0414+0534 are consistent with Cold Dark Matter (CDM) predictions when line-of-sight (LOS) structures as well as subhalos are included. | E: Reconstructed 36 discrete Fourier modes of gravitational potential perturbation by minimizing a regularized source-plane chi^2 combining ALMA Cycle 2+4 continuum images, VLBA core positions, HST galaxy positions, and Subaru/Keck MIR flux ratios, and compared the high-frequency convergence power to CDM simulation predictions. | R: Measured 1-sigma bounds at l ~ 1.2 x 10^6 (~1.1'' or ~9 kpc) are Delta_kappa = 0.021-0.028 (0.015-0.032 with cosmic variance), Delta_alpha = 7-9 mas, and Delta_psi = 1.2-1.6 mas^2, exceeding subhalo-only predictions (0.0059) but matching CDM subhalo+LOS predictions (0.018 +/- 0.007). | F: The measured 10 kpc-scale lensing power spectra are consistent with CDM predictions and indicate that flux ratio and astrometric anomalies at z_s > 2 are primarily caused by intergalactic LOS structures rather than subhalos alone. | **supported**
+- H: Homogeneous weighting of de-lensed images is more accurate than magnification weighting for reconstructing lensing power spectra. | E: Performed CASA simobserve mock observations of a lensed source with a known 36-mode Gaussian potential perturbation and compared reconstructed lensing power spectra and real-space convergence maps between magnification weighting and homogeneous weighting. | R: Relative errors in reconstructed power spectra across three wavenumber bins were 20-50% (16-47%) for homogeneous weighting compared to 40-80% (37-83%) for magnification weighting, whereas magnification weighting resolved 0.014'' spot separation and improved real-space accuracy near bright arcs. | F: Homogeneous weighting is superior for estimating lensing power spectra because it weights multiple images equally and reduces spatial bias, while magnification weighting is preferable for real-space perturbation mapping near highly magnified images. | **supported**
+- H: The astrometric shifts and improved fits from Fourier potential perturbations reflect real gravitational perturbations by LOS structures/subhalos rather than interferometric systematics from CLEAN sidelobes or phase corruption. | E: Tested the source-plane best-fit perturbed model against unperturbed and null models directly in the visibility plane using polar-gridded Cycle 2+4 ALMA visibilities, including a test with A1/A2 core flux ratio fixed to unity. | R: For polar grid azimuthal separations of 1 deg to 90 deg (optimal at 10 deg), the perturbed model yielded lower visibility chi^2 than the unperturbed smooth model, even when core flux ratios were fixed to unity. | F: The detected astrometric shifts are caused by physical lensing perturbations rather than CLEAN deconvolution artifacts or phase corruption. | **supported**
+- H: Weak continuum emission from Object Y is present in the combined self-calibrated Cycle 2 and Cycle 4 ALMA data. | E: Performed line subtraction and phase-only self-calibration on Cycle 2 and Cycle 4 data, imaged the combined visibilities with robust = 0, 0.5, and natural weighting (line-free and full-band), and fitted a Gaussian source at Object Y's position in the visibility plane. | R: Detected peak emission of 81.8-114.5 uJy/beam at 3.6-3.8 sigma for robust = 0 and 0.5 and positive fitted visibility fluxes of 40-400 uJy, but significance dropped to <3.0 sigma with natural weighting. | F: Weak continuum emission from Object Y cannot be ruled out and appears stable in robust = 0 and 0.5 maps, but its physical reality is not definitively confirmed and requires deeper (<10 uJy/beam) ALMA observations. | **partially**
+
+## Reasoning
+
+- Why this data: MG J0414+0534 has a known MIR flux ratio anomaly (unaffected by stellar microlensing), highly accurate VLBA jet positions, and extended submillimeter dust emission at 340 GHz that provides radial profile constraints unavailable from compact radio jets alone.  
+  > "It has an anomaly in the flux ratio in the MIR band and the positions of jets in the low frequency radio band are measured very accurately. Combining these multi-wavelength data, we would be able to measure the lensing power spectra with unprecedented accuracy." (Introduction); "Inclusion of ALMA data is essential as it provides information of radial profile of mass that cannot be obtained using VLBA observations." (Conclusion and Discussion)
+- Why this method: Evaluating chi^2 in the source plane avoids lens-plane anisotropy bias from strong-lensing magnification, requires no prior parametric form for the complex source intensity, and suppresses noise/sidelobe correlations by combining multiple images and shrinking de-lensed PSFs.  
+  > "First, the bias for estimating the potential perturbation in the ’source plane $\chi^2$’ fit is expected to be smaller than that in the traditional ’lens plane $\chi^2$’ fit." (Source Plane \chi^2_{\textrm{ext}} for Extended Sources); "Second, we do not need to assume any functional forms for the source intensity. It can be obtained $\textit{a posteriori}$ rather than $\textit{a priori}$." (Source Plane \chi^2_{\textrm{ext}} for Extended Sources); "Third, systematic errors due to coupling between noises at different regions or coupling between signals and noises can be significantly suppressed in the source plane." (Source Plane \chi^2_{\textrm{ext}} for Extended Sources)
+- Alternative: Using ALMA spectral line data to constrain the lens potential was rejected because of insufficient S/N.  
+  > "In the subsequent analysis, we used only continuum data because the line data (cite: stacey2018; inoue2020) had insufficient S/N to constrain the lens potential." (ALMA Observations)
+- Alternative: Using ALMA images reconstructed with robust = 0.5 for the final power spectrum analysis was rejected in favor of robust = 0 because robust = 0.5 yielded a worse fit to VLBA positions (chi^2_pos/dof_pos = 1.8).  
+  > "We also conducted a similar analysis using the ALMA image reconstructed with $\textit{robust}=0.5$, but it yielded slightly worse fitting for the VLBA positions with $\chi^2_{\textrm{pos}}/\textrm{dof}_\textrm{pos}=49.5/(36 - 8)=1.8$ and $\beta = 0.456$ in Type A models. Therefore, we used only the ALMA image reconstructed with $\textit{robust}=0$ in the subsequent analysis." (Source Plane Fit to ALMA image)
+- Alternative: Fitting core amplitudes c_p and c_q independently without fixing their sum c_p + c_q = 0.95 was rejected because it produced unphysical negative fluxes/holes.  
+  > "If we allow independent change in both $c_\textrm{p}$ and $c_\textrm{q}$, $\chi^2$ minimization would give a solution with a negative hole in the peak-subtracted image due to over subtraction. Therefore, we fixed $c_\textrm{p}+c_\textrm{q}$ to be a constant." (Source Plane Fit to ALMA image)
+- Alternative: Fitting only apparent high-S/N visibilities in the visibility plane without polar grid averaging was rejected because it produced a positive amplitude bias.  
+  > "We also tried to perform $\chi^2$ analysis using visibilities that have an apparent ’high’ S/N ratio but it resulted in biased results." (Procedure of fitting visibilities to the ALMA data)
+- How they decided it was enough: Number of Fourier modes N^2 = 36 was chosen so that N^2 is smaller than the number of source-plane pixels, the boundary is at least half the shortest wavelength away from the lensed cores, and the square encloses objects X and Y.  
+  > "The number of modes, the size and position of the square region satisfy the following conditions: 1) the number of modes, a squared integer should be smaller than the number of pixels in the source plane. 2) the distance between the boundary of the square region and the lensed quasar core should be larger than the half of the shortest wavelength in the Fourier modes. 3) the square region includes the central positions of object X and Y." (Source Plane Fit to ALMA image)
+- Limitation (authors): The weak lensing perturbation formalism breaks down near critical curves where magnification is very large (|mu| > 30) and cannot account for changes in image multiplicity.  
+  > "Note that the above formalism applies only for the weak lensing regime: the perturbation does not change the number of lensed images as $d \delta {\boldsymbol{\alpha}}$ is sufficiently small." (Source Plane \chi^2_{\textrm{ext}} for Extended Sources); "In order to avoid regions at which our weak lensing formalism breaks, we excluded meshes at which the maximum absolute magnification is larger than 30." (Mock Analysis)
+- Limitation (authors): Perturbations on angular scales smaller than ~1.0'' were neglected due to limited S/N and angular resolution.  
+  > "However, note that our result cannot exclude the possibility of contribution from very small angular scale modes $<1.0\ensuremath{''}$, which we did not take into account." (Source Plane Fit to ALMA image); "In our analysis, we neglected perturbations whose fluctuation scale is less than $\sim 1\,\ensuremath{''}$ due to lack of S/N and angular resolution to resolve tiny distortion." (Conclusion and Discussion)
+- Limitation (authors): CLEAN deconvolution causes a systematic ~60% boost in extended flux amplitudes on large angular scales (>= 0.7'').  
+  > "We observed that our CLEANed image gives a $\sim 60$ per cent increase in intensities except for the brightest spot with S/N$\gtrsim 50$ that corresponds to the mock quasar core." (Mock Observation); "As we have seen in Section 5.2, our CLEAN deconvolution process gave a systematic boost in overall amplitudes of flux on large angular scales. Therefore, it can affect the model fit on large angular scales $\gtrsim 0.7\ensuremath{''}$" (Lens Plane Fit to ALMA Visibilities)
+- Limitation (authors): The physical origin of the weak continuum emission at Object Y remains unconfirmed because its significance drops below 3 sigma under natural weighting.  
+  > "Note that the significance of object Y decreased to $<3.0\,\sigma$ for the natural weighting. Thus, we cannot conclude the significance of the object Y." (Object Y); "However, it should be noted that the origin of the weak emission is still not confirmed." (Object Y)
+- Caveat (inferred, ours): Parameters of the background smooth lens model are held fixed during the Fourier perturbation fit rather than jointly optimized, which could underestimate parameter degeneracies.
+- Caveat (inferred, ours): The scaling parameter beta for source-plane pixel errors and the regularization weights (delta_psi0, delta_alpha0, delta_kappa0) are tuned manually to achieve target reduced chi^2 values (~2.8-3.0 before perturbation, ~1.0 after).
+- Caveat (inferred, ours): Performing the primary fit on CLEANed images rather than directly in the visibility domain introduces deconvolution artifacts (such as the ~60% extended flux discrepancy found in visibility checks).
+
+## Reproducibility
+
+- Data public (paper): Publicly available in the ALMA Science Archive under project codes 2013.1.01110.S and 2016.1.00281.S  
+  > "The ALMA data used in this work can be downloaded from the ALMA archive: https://almascience.nao.ac.jp/aq/. The corresponding project codes are ADS/JAO.ALMA$\#$2013.1.01 110.S. and 2016.1.00281.S." (Data Availability)
+- Products in archive: _not stated_
+- Missing: Custom source-plane adaptive mesh ray-tracing and regularized Fourier lens modeling code (not publicly released)
+- Missing: Custom polar-gridded visibility fitting scripts
+- Missing: Exact self-calibration parameters (solution intervals, reference antennas, clean masks) and exact line-free channel selections for Cycle 2 and Cycle 4 datasets
+- Data volume (inferred): Moderate (~20-100 GB raw measurement sets for combined Cycle 2 and high-resolution long-baseline Cycle 4 observations; compressed visibilities have ~1.7x10^5 elements per SPW)
+- Score (inferred): 55/5, The ALMA project codes are public, mathematical equations for the source-plane chi^2 and Fourier expansion are thoroughly documented, and smooth model / best-fit parameters are tabulated. However, the custom lensing and visibility-fitting codes are not released, and key calibration/imaging settings (self-calibration solint, line-free channel ranges, tclean stopping criteria) are omitted or deferred to earlier papers.
+- Rediscovery candidate: no, While the raw ALMA data are public and the main results are numeric, the core analysis relies on a bespoke, unreleased partially non-parametric source-plane lensing code with custom adaptive meshing and hand-tuned regularization parameters.
+
+## Links
+
+- Method: (cite: treu-koopmans2004; koopmans2005) (Regularization penalty approach for gravitational potential perturbations)
+- Method: (cite: hezaveh2016a; dye2018) (Visibility noise variance estimation from adjacent spectral windows)
+- Companion: (cite: inoue2017) (ALMA Cycle 2 observations of MG J0414+0534, initial report of Object Y, and lens model parameter details)
+- Companion: (cite: inoue2020) (ALMA Cycle 2 and Cycle 4 observations of MG J0414+0534 and source structure / jet-ISM interaction analysis)
+- Related: CASTLES database
+
+## Checks
+
+```json
+{
+ "quotes": 178,
+ "quotes_ok": 178,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 22,
+ "unsupported_facts": 0,
+ "project_codes": 2,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 14,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 107,
+  "stated": 88,
+  "rate": 0.822
+ },
+ "evidence_ok": true
+}
+```

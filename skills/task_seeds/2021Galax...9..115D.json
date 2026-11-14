@@ -1,0 +1,377 @@
+{
+ "bibcode": "2021Galax...9..115D",
+ "title": "Multi-Wavelength Study of a Proto-BCG at z = 1.7",
+ "year": 2021,
+ "doi": "10.3390/galaxies9040115",
+ "arxiv_id": "2112.03658",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Characterize the stellar mass, SFR, AGN bolometric luminosity, and 3.3 mm continuum origin of a z = 1.7 proto-BCG (FRII host galaxy), and search for radio galaxy-ICM interaction signatures via 1.4 GHz polarized emission.",
+ "alma_project_codes": [
+  "2018.1.01601.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84-116 GHz, 3.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "1.92 x 1.50 arcsec",
+  "sensitivity": "~9 uJy rms within primary beam half maximum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Broadband optical/IR/mm photometry of the FRII host galaxy from HST/ACS, CFHT/WIRCam, CTIO/ISPI, Spitzer/IRAC, Spitzer/MIPS, Herschel/PACS, Herschel/SPIRE, and AzTEC",
+    "evidence": [
+     {
+      "loc": "Broadband Optical/IR Photometry",
+      "quote": "Thus, in previous works we re-analyzed the data for HST and MUSYC. As for the WIRCam and IRAC channels, we followed the same photometry measurements as described in (cite: balmaverde_2017)."
+     }
+    ]
+   },
+   "citation": "(cite: stiavelli_2005), (cite: damato_2020b), (cite: balmaverde_2017), (cite: quadri_2007), (cite: gilli_2019), (cite: annunziatella_2018), (cite: leipski_2014), (cite: zeballos_2018)"
+  },
+  {
+   "what": {
+    "value": "NVSS mean polarized fraction and polarization angle of in-field calibrator J102921+051938",
+    "evidence": [
+     {
+      "loc": "Polarization Calibration",
+      "quote": "The mean polarized fraction ($\\overline{F}\\sim 4.73\\pm0.3\\%$) and mean polarization angle ($\\overline{\\tau}=6.8\\pm0.9$ deg) derived from the averaging of the two NVSS intermediate frequencies (IFs, 42 MHz bandwidth centered at 1365 MHz – IF1 – and 1435 MHz – IF2) of this source have been reported by (cite: condon_1998),"
+     }
+    ]
+   },
+   "citation": "(cite: condon_1998)"
+  },
+  {
+   "what": {
+    "value": "Rotation measure of J102921+051938 (RM = 11.7 +/- 7.5 deg/m^2)",
+    "evidence": [
+     {
+      "loc": "Polarization Calibration",
+      "quote": "while the rotation measure ($RM$ = 11.7 $\\pm$ 7.5 $\\mathrm{deg/m^2}$) has been reported by (cite: taylor_2009)."
+     }
+    ]
+   },
+   "citation": "(cite: taylor_2009)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas reservoir mass of the FRII host galaxy (M_H2 ~ 2 x 10^11 M_sun)",
+    "evidence": [
+     {
+      "loc": "The J1030 Protocluster: Summary of Previous Results",
+      "quote": "Based on Atacama Large Millimeter Array (ALMA) observations of the CO(2–1) transition line, ref. (cite: damato_2020b) reported the discovery of three new gas-rich members (magenta circles in Figure [\\[fig:alma_cont\\]](#fig:alma_cont)), in addition to a large molecular gas reservoir ($M_{H_2} \\sim 2 \\times 10^{11}$ $\\mathrm{M_{\\odot}}$)"
+     }
+    ]
+   },
+   "citation": "(cite: damato_2020b)"
+  },
+  {
+   "what": {
+    "value": "JVLA 1.4 GHz total intensity core flux density (S_1.4GHz = 315 +/- 25 uJy)",
+    "evidence": [
+     {
+      "loc": "Continuum Emission at 3.3 mm",
+      "quote": "This value is well below than that measured on the JVLA map ($S_{1.4~\\mathrm{GHz}}=315 \\pm 25$ $\\upmu$Jy, ref. (cite: damato_subm)), confirming that the flux density at 1.4 GHz is dominated by the AGN."
+     }
+    ]
+   },
+   "citation": "(cite: damato_subm)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA 3.3 mm continuum and measure FRII core flux density",
+   "method": "Multi-frequency synthesis continuum imaging of the three-pointing Band 3 mosaic excluding line-contaminated channels, followed by flux density measurement of the FRII core",
+   "software": [
+    "CASA 5.4.0-70"
+   ],
+   "key_parameters": [
+    "Excluded velocity range: +/- 1500 km/s around z = 1.694",
+    "Briggs weighting with robust = 0.5, mfs mode at 92.04 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit the broadband optical-to-mm SED of the FRII host galaxy and derive physical parameters",
+   "method": "Simultaneous three-component SED fitting (SSPs for stellar emission, dusty AGN torus, and cold dust heated by starburst) using two cold dust models (cold dust template vs. gray-body), excluding the ALMA 3.3 mm point; derive SFR, sSFR, intrinsic X-ray luminosity, gas depletion time, and SMBH accretion rate",
+   "software": [
+    "SED fitting code of Fritz et al. (2006) / Feltre et al. (2012)"
+   ],
+   "key_parameters": [
+    "Gray-body emissivity index beta = 2 (fixed)"
+   ],
+   "assumptions": [
+    "Fiducial uncertainties of 20% on L_bol and L_FIR, and 30% on stellar mass following Circosta et al. (2019)",
+    "Linear L_FIR - SFR calibration of Kennicutt (1998) after subtracting AGN fraction",
+    "AGN bolometric corrections from Duras et al. (2020) and BH accretion efficiency eta = 0.3"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Determine the physical origin (thermal dust vs. non-thermal synchrotron) of the 3.3 mm ALMA core emission",
+   "method": "Compare measured ALMA 3.3 mm flux density against gray-body and template SED predictions, and estimate non-thermal synchrotron contribution at 3 mm by subtracting SFR-driven 1.4 GHz flux from measured JVLA 1.4 GHz core flux and extrapolating to 3 mm",
+   "software": [],
+   "key_parameters": [
+    "Synchrotron spectral index alpha = 0.5 - 1.0 (S_nu proportional to nu^-alpha)"
+   ],
+   "assumptions": [
+    "Stellar mass- and redshift-dependent L_8-1000um - L_1.4GHz relation from Delvecchio et al. (2021)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calibrate and image JVLA 1.4 GHz linear polarization, fractional polarization, and magnetic field orientation",
+   "method": "Calibrate instrumental cross-hand delays and leakage using unpolarized calibrator 3C147; calibrate polarization angle and fraction using in-field NVSS source J102921+051938 in two 42 MHz IFs; image Stokes I, Q, U; compute debiased linear polarization, fractional polarization, and magnetic field orientation",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "IF1 centered at 1365 MHz (42 MHz bandwidth) with tau_1 = 8.4 deg; IF2 centered at 1435 MHz (42 MHz bandwidth) with tau_2 = 5.2 deg; mean polarized fraction F = 4.73 +/- 0.3%",
+    "Briggs robust = 0.5, uv-taper < 50 klambda (~2.5 arcsec beam), blanked at 3 sigma, B-field orientation = 0.5 arctan(U/Q) + pi/2 in steps of 3 pixels"
+   ],
+   "assumptions": [
+    "No magnetic field wrapping between IF1 and IF2 (valid for RM < 400 deg/m^2)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 3.3 mm (92.04 GHz) continuum flux density of FRII core",
+   "value": "55",
+   "uncertainty": "+/- 9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum Emission at 3.3 mm",
+     "quote": "In the ALMA continuum map at 3.3 mm, we detected the FRII core and the Western hot spot at $>$3$\\sigma$ level (Figure [\\[fig:alma_cont\\]](#fig:alma_cont)). The measured flux density of the core is $55 \\pm 9$ $\\upmu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN bolometric luminosity (gray-body SED fit)",
+   "value": "1.1e46",
+   "uncertainty": "20%",
+   "units": "erg/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "We derive: $L_{\\mathrm{bol,~AGN}} \\sim 1.1 \\times 10^{46}$ erg/s, $L_{8-1000~\\upmu\\mathrm{m}} \\sim 3.7 \\times 10^{12}$ $\\mathrm{L_{\\odot}}$ (24% of which is ascribed to the AGN), stellar mass $M_{\\ast} \\sim 3.7 \\times 10^{11}$ $\\mathrm{M_{\\odot}}$ and SFR = 570 $\\mathrm{M_{\\odot}}$/yr."
+    },
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "The fiducial errors are 20% for the bolometric and far-infrared (FIR) luminosity, and 30% for the stellar mass;"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN bolometric luminosity (cold dust template SED fit)",
+   "value": "1.5e46",
+   "uncertainty": "20%",
+   "units": "erg/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "As for the AGN bolometric luminosity derived from the SED fitting, we obtain $L_{\\mathrm{bol,~AGN}} \\sim 1.5 \\times 10^{46}$ erg/s and $L_{\\mathrm{bol,~AGN}} \\sim 1.1 \\times 10^{46}$ erg/s for the dust-template and gray-body, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total FIR luminosity L_8-1000um (gray-body SED fit)",
+   "value": "3.7e12",
+   "uncertainty": "20%",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "We derive: $L_{\\mathrm{bol,~AGN}} \\sim 1.1 \\times 10^{46}$ erg/s, $L_{8-1000~\\upmu\\mathrm{m}} \\sim 3.7 \\times 10^{12}$ $\\mathrm{L_{\\odot}}$ (24% of which is ascribed to the AGN), stellar mass $M_{\\ast} \\sim 3.7 \\times 10^{11}$ $\\mathrm{M_{\\odot}}$ and SFR = 570 $\\mathrm{M_{\\odot}}$/yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Total FIR luminosity L_8-1000um (cold dust template SED fit)",
+   "value": "3.2e12",
+   "uncertainty": "20%",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "even if the total FIR luminosity is comparable ($L_{8-1000~\\upmu\\mathrm{m}} \\sim 3.2 \\times 10^{12}$ $\\mathrm{L_{\\odot}}$ for the dust-template and $L_{8-1000~\\upmu\\mathrm{m}} \\sim 3.7 \\times 10^{12}$ $\\mathrm{L_{\\odot}}$ for the gray-body, respectively),"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN fraction in 8-1000 um range (gray-body vs. template fit)",
+   "value": "24% (gray-body), 3.1% (dust-template)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "The AGN fraction in the 8–1000 $\\upmu$m range of the gray-body model fitting is significantly higher (24%) that that derived from the dust-template fitting (3.1%),"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass M_* of FRII host galaxy",
+   "value": "3.7e11",
+   "uncertainty": "30%",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "We derive: $L_{\\mathrm{bol,~AGN}} \\sim 1.1 \\times 10^{46}$ erg/s, $L_{8-1000~\\upmu\\mathrm{m}} \\sim 3.7 \\times 10^{12}$ $\\mathrm{L_{\\odot}}$ (24% of which is ascribed to the AGN), stellar mass $M_{\\ast} \\sim 3.7 \\times 10^{11}$ $\\mathrm{M_{\\odot}}$ and SFR = 570 $\\mathrm{M_{\\odot}}$/yr."
+    },
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "The fiducial errors are 20% for the bolometric and far-infrared (FIR) luminosity, and 30% for the stellar mass;"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of FRII host galaxy",
+   "value": "570 (gray-body), 630 (dust-template)",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "thus, the SFRs derived exploiting the $L_{\\mathrm{FIR}}$ – SFR linear calibration presented by (cite: kennicutt_1998) and subtracting the AGN fraction are in agreement within 1$\\sigma$ for the two fittings (570–630 $\\mathrm{M_{\\odot}}$/yr)."
+    }
+   ]
+  },
+  {
+   "quantity": "Specific star formation rate (sSFR) of FRII host galaxy",
+   "value": "1.5",
+   "uncertainty": "+/- 0.5",
+   "units": "Gyr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "The high sSFR = $1.5 \\pm 0.5$ $\\mathrm{Gyr^{-1}}$ derived for the FRII host galaxy classifies this object as a starburst galaxy when compared with other SFGs at the same redshift (cite: schreiber_2015),"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas depletion timescale",
+   "value": "3.5e8",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "Indeed, we note that the derived SFR implies that the molecular gas reservoir measured by (cite: damato_2020b) will be depleted in ${\\sim}3.5 \\times 10^8$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH accretion rate",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "from the bolometric luminosity, we derive an accretion rate for the SMBH of $\\dot{M} = L_{\\mathrm{bol,~AGN}}/(\\eta c^2) \\approx 0.6$ $\\mathrm{M_{\\odot}}$/yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted intrinsic 2-10 keV AGN luminosity",
+   "value": "3.2e44 (gray-body), 3.8e44 (dust-template)",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SED Fitting: A Proto-BCG Caught at the Peak of Its Stellar Mass Building",
+     "quote": "we predict an intrinsic 2–10 keV luminosity of $L_{\\mathrm{2-10 keV}} \\sim 3.8 \\times 10^{44}$ erg/s and $L_{\\mathrm{2-10 keV}} \\sim 3.2 \\times 10^{44}$ erg/s, respectively,"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected SFR-driven flux density at 1.4 GHz (S_1.4GHz,SFR)",
+   "value": "90",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum Emission at 3.3 mm",
+     "quote": "Exploiting the stellar mass- and redshift-dependent $L_{8-1000~\\upmu\\mathrm{m}} - L_{1.4~\\mathrm{GHz}}$ relation recently presented by (cite: delvecchio_2021), we derive a SFR-driven flux density $S_{1.4~\\mathrm{GHz, SFR}}{\\sim}$90 $\\upmu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Expected synchrotron emission at 3 mm (S_3mm,sync)",
+   "value": "4-30",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum Emission at 3.3 mm",
+     "quote": "we derive an expected synchrotron emission at 3 mm $S_{3~\\mathrm{mm, sync}}$ = 4–30 $\\upmu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional polarization at 1.4 GHz in W-lobe hot spot and E-lobe warm spot",
+   "value": "10-20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Polarized Emission at 1.4 GHz: Signatures of AGN Feedback?",
+     "quote": "The fractional polarization in the W-lobe hot spot and E-lobe warm spot is in the 10–20% range in both IFs."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional polarization at 1.4 GHz in north-east elongated region of E-lobe",
+   "value": ">=50",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Polarized Emission at 1.4 GHz: Signatures of AGN Feedback?",
+     "quote": "The polarized emission detected in the north–east elongated region of the E-lobe extends along the northern edge of the lobe and shows an enhanced polarization fraction ($\\gtrsim$50%), suggesting the presence of another compression front."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA task name used for ALMA continuum imaging (likely tclean, but missing in the text due to a LaTeX macro formatting omission)",
+  "Cell size, image size, stopping threshold, and masking strategy for ALMA continuum imaging",
+  "Exact method or aperture/fitting procedure used to measure the 55 +/- 9 uJy ALMA 3.3 mm core flux density",
+  "Wavelengths in the first column of Table 1 (missing in text due to conversion/LaTeX formatting)",
+  "Dust temperature Value/prior in the gray-body SED fit"
+ ],
+ "missing_for_reproduction": [
+  "Wavelength column values in Table 1 (missing in text)",
+  "Exact CASA tasks and parameters (cell size, image size, stopping threshold) for ALMA and JVLA imaging",
+  "Exact method used to extract the 55 +/- 9 uJy ALMA core flux (peak pixel vs. aperture vs. Gaussian fit)",
+  "Specific SED template libraries and parameter grid settings from Circosta et al. (2019)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA continuum imaging setup (project code, CASA version, frequency ranges, velocity exclusion window, Briggs robust = 0.5, resulting beam and rms) and the non-standard JVLA polarization calibration workflow are well described, and key numerical outputs are clear. However, several CASA task names and Table 1 wavelengths are missing due to LaTeX macro omissions, the exact core flux extraction method is unstated, and the SED fitting relies heavily on external setup details in Circosta et al. (2019).",
+ "rediscovery_reason": "ALMA Cycle 6 dataset 2018.1.01601.S is now public in the ALMA archive, the continuum imaging parameters (robust = 0.5, excluding +/-1500 km/s around z = 1.694, mfs at 92.04 GHz) are explicitly specified, and the target answer (FRII core flux density = 55 +/- 9 uJy with ~9 uJy rms) is a clean numeric benchmark.",
+ "source_card": "cards/2021Galax...9..115D/sonnet/card.md"
+}

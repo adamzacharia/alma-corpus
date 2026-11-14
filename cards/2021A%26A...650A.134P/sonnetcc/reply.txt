@@ -1,0 +1,300 @@
+{
+"depth": "full",
+"paper_type": "large_program_or_survey",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Integral field spectroscopic data and radio-interferometric observations of $18$ galaxies were combined to explore the existence of the resolved star formation main sequence"},
+{"loc": "2.2 ALMA", "quote": "The $18$ galaxies have CO(2–1) data from the PHANGS-ALMA Large Program"}
+],
+"fields": ["nearby_galaxies", "star_formation"],
+"question": {
+"value": "Do the resolved star formation main sequence, resolved Kennicutt-Schmidt relation and resolved molecular gas main sequence exist at 100 pc to 1 kpc in PHANGS galaxies, and how do their slope and scatter depend on environment, spatial scale and the treatment of non-detections",
+"evidence": [
+{"loc": "1 Introduction", "quote": "In this paper we aim to probe these scaling relations to understand the mechanisms that locally regulate star formation, using ${\\sim}100$ pc spatial resolution data from the PHANGS survey."}
+]
+},
+"targets": [
+{
+"name": "18 PHANGS star-forming galaxies (NGC 1087, NGC 1300, NGC 1365, NGC 1385, NGC 1433, NGC 1512, NGC 1566, NGC 1672, NGC 2835, NGC 3351, NGC 3627, NGC 4254, NGC 4303, NGC 4321, NGC 4535, NGC 5068, NGC 7496, IC 5332)",
+"details": [
+{"loc": "2 Data", "quote": "We use a sample of $18$ star-forming galaxies, all of them are close to the SFMS of galaxies."},
+{"loc": "2 Data", "quote": "we use the global parameters as reported by (cite: Leroy2021b) based on the distance compilation of (cite: Anand2021) as well as the inclinations determined by (cite: Lang2020)"}
+],
+"coordinates": "per-galaxy RA/DEC in degrees given in the sample table",
+"redshift_or_distance": "5.2 to 19.57 Mpc (per-galaxy values in the sample table)",
+"distance_source": "distance compilation of Anand et al. 2021 as reported by Leroy et al. 2021b; inclinations from Lang et al. 2020"
+}
+],
+"alma_project_codes": [
+{"code": "2013.1.01161.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper also makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01161.S, ADS/JAO.ALMA#2015.1.00925.S, ADS/JAO.ALMA#2015.1.00956.S and ADS/JAO.ALMA#2017.1.00886.L."}]},
+{"code": "2015.1.00925.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper also makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01161.S, ADS/JAO.ALMA#2015.1.00925.S, ADS/JAO.ALMA#2015.1.00956.S and ADS/JAO.ALMA#2017.1.00886.L."}]},
+{"code": "2015.1.00956.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper also makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01161.S, ADS/JAO.ALMA#2015.1.00925.S, ADS/JAO.ALMA#2015.1.00956.S and ADS/JAO.ALMA#2017.1.00886.L."}]},
+{"code": "2017.1.00886.L", "evidence": [{"loc": "Acknowledgements", "quote": "This paper also makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01161.S, ADS/JAO.ALMA#2015.1.00925.S, ADS/JAO.ALMA#2015.1.00956.S and ADS/JAO.ALMA#2017.1.00886.L."}]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "CO(2-1)", "evidence": [{"loc": "2.2 ALMA", "quote": "The $18$ galaxies have CO(2–1) data from the PHANGS-ALMA Large Program"}]},
+{"field": "arrays", "value": "ALMA 12m and 7m arrays combined with total power antennas", "evidence": [{"loc": "2.2 ALMA", "quote": "We used the ALMA $12$m and $7$m arrays combined with the total power antennas to map CO emission"}]},
+{"field": "angular_resolution", "value": "1.0'' - 1.5''", "evidence": [{"loc": "2.2 ALMA", "quote": "to map CO emission at a spatial resolution of $1.0\\ensuremath{''} {-} 1.5\\ensuremath{''}$"}]},
+{"field": "max_recoverable_scale", "value": "sensitive to emission at all spatial scales (ACA 7m and total power included)", "evidence": [{"loc": "2.2 ALMA", "quote": "The inclusion of the Atacama Compact Array (ACA) $7$m and total power data means that these maps are sensitive to emission at all spatial scales."}]},
+{"field": "sensitivity", "value": "rms noise ~0.1 K per 2.5 km/s channel", "evidence": [{"loc": "2.2 ALMA", "quote": "The CO data cubes have an rms noise of ${\\sim}0.1$ K per $2.5$ km s$^{-1}$ channel"}]},
+{"field": "pi_or_archival_as_stated", "value": "PHANGS-ALMA Large Program; MUSE target selection used galaxies with ALMA data from the ALMA pilot project or the ALMA archive", "evidence": [{"loc": "2.2 ALMA", "quote": "The $18$ galaxies have CO(2–1) data from the PHANGS-ALMA Large Program"}, {"loc": "2.1 VLT/MUSE", "quote": "The target selection for the PHANGS-MUSE sample focused on galaxies from the PHANGS parent sample that had already available ALMA data, as part of the ALMA pilot project, or from the ALMA archival."}]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=2-1", "rest_frequency": "not stated", "evidence": [{"loc": "2.2 ALMA", "quote": "The $18$ galaxies have CO(2–1) data from the PHANGS-ALMA Large Program"}]}
+],
+"other_facilities": [
+{"name": "VLT/MUSE (PHANGS-MUSE survey)", "provided": {"value": "Optical IFU mosaics used for stellar mass (SSP fitting) and Halpha/Hbeta emission-line maps for SFR", "evidence": [{"loc": "2.1 VLT/MUSE", "quote": "We make use of the PHANGS-MUSE survey (PI: E. Schinnerer; Emsellem et al. in prep.)."}, {"loc": "2.1 VLT/MUSE", "quote": "The total on-source exposure time per pointing for galaxies in the PHANGS-MUSE Large Program is $43$ min."}]}},
+{"name": "Spitzer Survey of Stellar structure in Galaxies (S4G)", "provided": {"value": "Photometric data used to build the environmental masks", "evidence": [{"loc": "2.3 Environmental masks", "quote": "This classification was done using photometric data mostly from the Spitzer Survey of Stellar structure in Galaxies (cite: Sheth2010)."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Global galaxy parameters and distances (Leroy et al. 2021b; Anand et al. 2021) and inclinations (Lang et al. 2020)", "evidence": [{"loc": "2 Data", "quote": "we use the global parameters as reported by (cite: Leroy2021b) based on the distance compilation of (cite: Anand2021) as well as the inclinations determined by (cite: Lang2020)"}]}, "citation": "(cite: Leroy2021b); (cite: Anand2021); (cite: Lang2020)"},
+{"what": {"value": "PHANGS-ALMA CO(2-1) broad-mask integrated intensity maps", "evidence": [{"loc": "2.2 ALMA", "quote": "For our analysis we use the integrated intensity maps from the broad masking scheme"}, {"loc": "2.2 ALMA", "quote": "The strategy for observing, data reduction and product generation are described in (cite: Leroy2021a)."}]}, "citation": "(cite: Leroy2021a)"},
+{"what": {"value": "Environmental masks (disk, spiral arms, rings, bars, centers)", "evidence": [{"loc": "2.3 Environmental masks", "quote": "We have used the environmental masks described in (cite: Querejeta2021) to morphologically classify the different environments of each galaxy"}]}, "citation": "(cite: Querejeta2021)"},
+{"what": {"value": "Radially varying gas-phase metallicity profile used in the alpha_CO prescription", "evidence": [{"loc": "2.2 ALMA", "quote": "The radially-varying metallicity is estimated from the radial profile of gas-phase abundances"}]}, "citation": "(cite: Kreckel2020)"},
+{"what": {"value": "Offset from the global star formation main sequence (Delta MS) of each galaxy", "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "vertical offset of the galaxy from the global star formation main sequence of galaxies ($\\Delta$MS) as computed in (cite: Leroy2019)"}]}, "citation": "(cite: Leroy2019)"},
+{"what": {"value": "HII region catalog used for the strict HII-region masking test", "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "region catalog from F. Santoro et al. (in prep.)"}]}, "citation": "F. Santoro et al. (in prep.)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [
+{"field": "final_beam", "value": "1.0'' - 1.5'' CO resolution; maps then resampled to 100 pc, 500 pc and 1 kpc pixels", "evidence": [{"loc": "2.2 ALMA", "quote": "to map CO emission at a spatial resolution of $1.0\\ensuremath{''} {-} 1.5\\ensuremath{''}$"}]},
+{"field": "final_rms", "value": "~0.1 K per 2.5 km/s channel (1 sigma(Sigma_mol.gas) ~ 2 Msun pc^-2 per 5 km/s)", "evidence": [{"loc": "2.2 ALMA", "quote": "The CO data cubes have an rms noise of ${\\sim}0.1$ K per $2.5$ km s$^{-1}$ channel"}]},
+{"field": "masking", "value": "integrated intensity maps from the broad masking scheme", "evidence": [{"loc": "2.2 ALMA", "quote": "For our analysis we use the integrated intensity maps from the broad masking scheme, which are optimized for completeness"}]},
+{"field": "array_combination", "value": "12m + 7m (ACA) + total power", "evidence": [{"loc": "2.2 ALMA", "quote": "We used the ALMA $12$m and $7$m arrays combined with the total power antennas to map CO emission"}]},
+{"field": "smoothing", "value": "resampling into larger pixels only, no convolution before resampling", "evidence": [{"loc": "3.1 Sampling the data at larger spatial scales", "quote": "The degrading of the data to larger spatial scales is done by only resampling into larger pixel, rather than performing a convolution before resampling."}]}
+],
+"inherited": [
+{"what": {"value": "PHANGS-ALMA observing strategy, data reduction and product generation", "evidence": [{"loc": "2.2 ALMA", "quote": "The strategy for observing, data reduction and product generation are described in (cite: Leroy2021a)."}]}, "from_reference": "(cite: Leroy2021a)"},
+{"what": {"value": "PHANGS-MUSE reduction pipeline and data analysis pipeline (SSP fitting, emission-line measurements)", "evidence": [{"loc": "2.1 VLT/MUSE", "quote": "The DAP will be described in detail in Emsellem et al. (in prep.)."}]}, "from_reference": "Emsellem et al. (in prep.)"},
+{"what": {"value": "Metallicity-scaled alpha_CO prescription", "evidence": [{"loc": "2.2 ALMA", "quote": "scaled prescription as described in (cite: Accurso2017) and (cite: Sun2020)"}]}, "from_reference": "(cite: Accurso2017); (cite: Sun2020)"},
+{"what": {"value": "CO(2-1)-to-CO(1-0) ratio of 0.65", "evidence": [{"loc": "2.2 ALMA", "quote": "adopting a ratio CO(2-1)-to-CO(1-0) = 0.65 (cite: Leroy2013; denBrok2021)"}]}, "from_reference": "(cite: Leroy2013; denBrok2021)"},
+{"what": {"value": "Diffuse ionized gas correction of the Halpha flux", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "we followed the approach described in (cite: Blanc2009) with the modifications introduced in (cite: Kaplan2016)"}]}, "from_reference": "(cite: Blanc2009); (cite: Kaplan2016)"},
+{"what": {"value": "BPT AGN/LINER cut", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "to remove pixels that are dominated by AGN ionization from our sample"}]}, "from_reference": "(cite: Kewley2006)"},
+{"what": {"value": "Halpha to SFR conversion", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "we adopted the prescription described in (cite: Calzetti-book)"}]}, "from_reference": "(cite: Calzetti-book)"}
+],
+"unstated_but_needed": [
+"ALMA calibration details and CASA version: all deferred to Leroy et al. 2021a (ApJS submitted at the time); no pipeline or imaging settings in this paper",
+"Which PHANGS-ALMA data release / product version (and whether 'broad' maps at native resolution) was used; no download location or version given",
+"PHANGS-MUSE DAP outputs (stellar mass maps, line maps) are 'in prep.'; the code and exact version are needed to regenerate them",
+"Exact data-quality masks and pixel-level S/N cuts for CO and stellar mass maps (only a 1.5 S/N cut after resampling for the gas map is given)",
+"How the stellar mass surface density is derived from the pPXF weights (mass-to-light conversion details) is not spelled out",
+"Treatment of per-pixel uncertainty maps for stellar mass and SFR used in the bootstrap perturbation",
+"Definition and treatment of the nonzero detection threshold for Sigma_SFR and Sigma_stellar in the N/D classification beyond the S/N cuts",
+"Exact resampling algorithm (flux-conserving or not) used to degrade the maps to 100 pc, 500 pc, 1 kpc pixels",
+"Bootstrap random seeds; the 10th/90th percentile reference ratios for the DIG fit per galaxy"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Derive stellar mass surface density maps from MUSE",
+"method": {"value": "Voronoi-bin the MUSE mosaics and fit stellar population synthesis templates with pPXF, in two steps (Calzetti extinction fit, then fit with a multiplicative polynomial)", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "We use then the Penalized Pixel-Fitting (pPXF) code (cite: Capellari2004; Capellari2017) to fit the spectrum of each Voronoi bin."}, {"loc": "2.4 Stellar mass surface density maps", "quote": "The SSP fitting was done in two steps."}]},
+"software": ["pPXF", "Voronoi tessellation", "PHANGS-MUSE DAP"],
+"key_parameters": [
+{"value": "Voronoi bins to minimum S/N ~35 (measured at 5300-5500 Angstrom)", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "to bin our MUSE data to a minimum signal-to-noise ratio (S/N) of ${\\sim}35$"}]},
+{"value": "Template grid of 13 ages (30 Myr to 13.5 Gyr) and six metallicity bins", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "we used a grid of templates consisting of $13$ ages, ranging from $30$ Myr to $13.5$ Gyr, logarithmically-spaced"}]},
+{"value": "Fit range 4850-7000 Angstrom", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "We fit the wavelength range $4850{-}7000$ Å, in order to avoid spectral regions strongly affected by sky residuals."}]},
+{"value": "12 degree multiplicative polynomial in the second iteration", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "including a $12$ degree multiplicative polynomial in this iteration in the fit"}]}
+],
+"assumptions": [
+{"value": "eMILES templates, Chabrier IMF, BaSTI isochrones with Galactic abundance pattern", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "We used templates from the eMILES (cite: Vazdekis2010; Vazdekis2012) database, assuming a (cite: Chabrier2003) IMF and BaSTI isochrone (cite: Pietrinferni2004) with a Galactic abundance pattern."}]},
+{"value": "Milky Way extinction corrected with Cardelli et al. 1989 law and Schlafly & Finkbeiner E(B-V); internal extinction with Calzetti et al. 2000 law", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "we correct the full mosaic for Milky Way extinction assuming a (cite: Cardelli89) extinction law"}, {"loc": "2.4 Stellar mass surface density maps", "quote": "First, we fitted our data assuming a (cite: Calzetti2000) extinction law to correct for internal extinction."}]}
+],
+"fitting": {"value": "pPXF template fitting per Voronoi bin; foreign stars identified as velocity outliers and masked", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "we have identified foreground stars as velocity outliers in the SSP fitting"}]},
+"validation": {"value": "Bootstrapped data at different S/N levels to choose the bin S/N keeping mass uncertainty below 15%; compared overlapping MUSE pointings (~3% offsets)", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "we bootstrapped our data to have an estimate of the uncertainties at each S/N level"}]}
+},
+{
+"order": 2,
+"goal": "Derive SFR surface density maps from Halpha",
+"method": {"value": "Fit Gaussians to emission lines per pixel, de-redden Halpha with the Balmer decrement, remove AGN-dominated pixels with a BPT cut, correct for diffuse ionized gas, convert Halpha to SFR", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "we fit Gaussian profiles to a number of emission lines for each pixel of the final combined MUSE mosaic of each galaxy in our sample"}, {"loc": "2.5 Star formation rate measurements", "quote": "to remove pixels that are dominated by AGN ionization from our sample"}]},
+"software": ["PHANGS-MUSE DAP"],
+"key_parameters": [
+{"value": "Intrinsic Halpha/Hbeta = 2.86 (case B)", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "assuming that $\\mathrm{H}\\alpha_\\mathrm{corr} / \\mathrm{H}\\beta_\\mathrm{corr} = 2.86$"}]},
+{"value": "O'Donnell 1994 law: k_alpha = 2.52, k_beta = 3.66, R_V = 3.1", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "Opting for an (cite: ODonnell1994) extinction law, we use $k_{\\alpha} = 2.52$, $k_{\\beta} = 3.66$, and $R_\\mathrm{V} = 3.1$."}]},
+{"value": "S/N cut of 4 for Halpha and 2 for Hbeta", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "A S/N cut of 4 for H$\\alpha$ and 2 for H$\\beta$ was then applied"}]},
+{"value": "DIG and HII reference [SII]/Halpha ratios taken at the 10th and 90th percentile of the Halpha distribution", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "faint (10th percentile) and bright (90th percentile) end of the H$\\alpha$ distribution"}]},
+{"value": "SFR = 5.5e-42 x Halpha_corr (erg/s) in Msun/yr", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "= 5.5\\times10^{-42}"}]}
+],
+"assumptions": [
+{"value": "SFR conversion scaled to a Kroupa IMF, assumed to differ little from the Chabrier IMF used for SSP fitting", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "This equation is scaled to a Kroupa universal IMF (cite: Kroupa2001)"}]},
+{"value": "Fully sampled IMF assumed", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "We acknowledge that Eq. [\\[eq:sfr\\]](#eq:sfr) assumes a fully-sampled IMF"}]}
+],
+"fitting": {"value": "Least-squares fit of C_HII = 1 - (f0/Halpha)^beta per galaxy for the DIG fraction", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "Then, we perform a least squares fitting to find the best $\\beta$ and $f_{0}$ parameters such that:"}]},
+"validation": {"value": "Example C_HII fit shown in an appendix; tested setting SFR of non-star-forming pixels to zero and an alternative HII-region mask", "evidence": [{"loc": "2.5 Star formation rate measurements", "quote": "However, our main findings do not change qualitatively when we set to zero the SFR of these pixels"}]}
+},
+{
+"order": 3,
+"goal": "Convert CO(2-1) intensity to molecular gas surface density",
+"method": {"value": "Apply a metallicity-scaled alpha_CO to the PHANGS-ALMA broad-mask integrated intensity maps", "evidence": [{"loc": "2.2 ALMA", "quote": "For our analysis we use the integrated intensity maps from the broad masking scheme, which are optimized for completeness"}]},
+"software": [],
+"key_parameters": [
+{"value": "alpha_CO = 4.35 Z'^-1.6 Msun pc^-2 (K km/s)^-1 with CO(2-1)/CO(1-0) = 0.65", "evidence": [{"loc": "2.2 ALMA", "quote": "= 4.35 Z'^{-1.6}"}, {"loc": "2.2 ALMA", "quote": "adopting a ratio CO(2-1)-to-CO(1-0) = 0.65"}]},
+{"value": "IC 5332 excluded from rKS and rMGMS (no significant CO detection)", "evidence": [{"loc": "2.2 ALMA", "quote": "IC 5332 has no significant detection of CO(2–1) emission and therefore has been excluded from the rKS and rMGMS analysis."}]}
+],
+"assumptions": [
+{"value": "Metallicity from radial gas-phase abundance profile; azimuthal metallicity variations (0.04-0.05 dex) neglected", "evidence": [{"loc": "2.2 ALMA", "quote": "these variations are small ($0.04 - 0.05$ dex), implying variations of $\\sim0.06$ dex in $\\alpha_{\\mathrm{CO}}$) and therefore do not impact our results"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Tested a constant alpha_CO = 4.35 (Bolatto et al. 2013)", "evidence": [{"loc": "2.2 ALMA", "quote": "We test the robustness of our results against a constant $\\alpha_\\mathrm{CO} = 4.35$"}]}
+},
+{
+"order": 4,
+"goal": "Resample maps to 100 pc, 500 pc and 1 kpc and correct for inclination",
+"method": {"value": "Resample native MUSE and ALMA maps to larger pixels (no convolution), apply BPT/extinction/DIG correction at each scale, S/N cut on gas, multiply by cos(i)", "evidence": [{"loc": "3.1 Sampling the data at larger spatial scales", "quote": "we have resampled our native resolution MUSE and ALMA maps to pixel sizes of $100$ pc, $500$ pc and $1$ kpc"}, {"loc": "3.1 Sampling the data at larger spatial scales", "quote": "we have corrected the maps by inclination, using a multiplicative factor of $\\cos(i)$"}]},
+"software": [],
+"key_parameters": [
+{"value": "S/N cut of 1.5 on the molecular gas surface density after resampling", "evidence": [{"loc": "3.1 Sampling the data at larger spatial scales", "quote": "Additionally we have imposed a S/N cut of $1.5$ for the molecular gas mass surface density map after the resampling"}]},
+{"value": "DIG parameters f0 and beta measured only at native MUSE resolution; DIG correction done independently at each scale", "evidence": [{"loc": "3.1 Sampling the data at larger spatial scales", "quote": "The parameters $f_{0}$ and $\\beta$ used for the DIG correction are calculated only at the native MUSE resolution, and do not change with spatial scale."}]}
+],
+"assumptions": [
+{"value": "Typical DIG flux surface density does not vary with spatial scale", "evidence": [{"loc": "3.1 Sampling the data at larger spatial scales", "quote": "This assumes that the typical DIG flux surface density does not vary with spatial scale"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Fit the rSFMS, rKS and rMGMS power laws",
+"method": {"value": "Bin the x-axis in 0.15 dex steps, take the mean in linear space including non-detections as zeros, bootstrap the bin errors, fit a power law with weighted least squares", "evidence": [{"loc": "3.2 Fitting technique", "quote": "To fit each scaling relation, we binned the $x$-axis of our data in steps of $0.15$ dex, and calculated the mean within each bin."}, {"loc": "3.2 Fitting technique", "quote": "therefore we adopt the mean measured in linear space as our fiducial approach"}]},
+"software": [],
+"key_parameters": [
+{"value": "Minimum 5 nonzero points per bin at 100 pc for individual galaxies; minimum 10 per bin for the full sample at all scales", "evidence": [{"loc": "3.2 Fitting technique", "quote": "A minimum of 5 data points with nonzero signal per bin was imposed at the $100$ pc spatial scale for individual galaxies"}, {"loc": "3.2 Fitting technique", "quote": "For the full-sample relations, we imposed a minimum of 10 nonzero data points per bin at all spatial scales."}]},
+{"value": "100 bootstrap subsamples with data perturbed by their uncertainties; bin error = standard deviation of the 100 means", "evidence": [{"loc": "3.2 Fitting technique", "quote": "we repeatedly chose $100$ subsamples (allowing for repetitions), perturbed the data according to their uncertainties, and calculated their mean values."}]},
+{"value": "Scatter = median absolute deviation of detected points about the best-fitting power law", "evidence": [{"loc": "3.2 Fitting technique", "quote": "the scatter reported throughout the paper for the fitted power laws corresponds to the median absolute deviation of each data point, considering detections only, with respect to the best-fitting power law."}]}
+],
+"assumptions": [
+{"value": "x-axis uncertainty of each bin negligible compared with y-axis uncertainty", "evidence": [{"loc": "3.2 Fitting technique", "quote": "by construction, the $x$-axis uncertainty of each bin is negligible, compared to its $y$-axis uncertainty"}]}
+],
+"fitting": {"value": "Weighted least squares per bootstrap iteration, weights = inverse variance of each bin; final slope and error = mean and standard deviation of the 100 slopes", "evidence": [{"loc": "3.2 Fitting technique", "quote": "To do this, we use a weighted least square fitting routine (WLS), where each bin is weighted by the inverse of its variance."}, {"loc": "3.2 Fitting technique", "quote": "The final slope and its error correspond to the mean and standard deviation of the slopes distribution, respectively."}]},
+"validation": {"value": "Tested radial binning (rejected) and averaging in log space; compared binning schemes including/excluding non-detections", "evidence": [{"loc": "3.2 Fitting technique", "quote": "We have also tested radial binning in the $x$-axis (i.e., calculating the means in bins defined as data points located at similar galactocentric radius), but this raised the scatter within each bin"}]}
+},
+{
+"order": 6,
+"goal": "Compare relations across individual galaxies and environments",
+"method": {"value": "Fit each relation per galaxy; measure vertical offset Delta_env and slope of the binned relation in each morphological environment against the overall fit; correlate slope differences with global parameters (Delta MS) via the Pearson coefficient", "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "We use the offset ($\\Delta_\\mathrm{env}$) defined as the vertical offset between the binned scaling relation from each environment and the overall best-fitting power law"}, {"loc": "4.2 Scaling relations in individual galaxies", "quote": "Figure [10](#fig:slope_var_vs_SFR) shows the difference between the slope derived from the full sample and that of each individual galaxy"}]},
+"software": [],
+"key_parameters": [
+{"value": "Delta alpha_overall = alpha_gal - alpha_overall", "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "\\Delta\\alpha_\\mathrm{overall} = \\alpha_\\mathrm{gal} - \\alpha_\\mathrm{overall}"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "Test the role of non-detections and detection fraction",
+"method": {"value": "Refit excluding non-detections (alpha_D/O, sigma_D/O); measure the Halpha detection fraction in 1 kpc^2 boxes on the 100 pc maps and correlate its mean and standard deviation with slope changes", "evidence": [{"loc": "5.2.2 Slope changes in our scaling relations", "quote": "We define $\\alpha_{\\rm D/O}$ and $\\sigma_{\\rm D/O}$ as the measured slope and scatter considering pixels with nonzero detections only."}, {"loc": "5.2.3 Treatment of non-detections and its effect on the slope of the scaling relations", "quote": "We measured the detection fraction of the SFR inside $1$ kpc$^2$ boxes in the $100$ pc spatial scale maps."}]},
+"software": [],
+"key_parameters": [
+{"value": "Delta alpha_D/O = alpha - alpha_D/O", "evidence": [{"loc": "5.2.3 Treatment of non-detections and its effect on the slope of the scaling relations", "quote": "\\Delta\\alpha_\\mathrm{D/O} = \\alpha - \\alpha_\\mathrm{D/O}"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with simulation results of Hani et al. 2020 and Calzetti et al. 2012", "evidence": [{"loc": "5.2.2 Slope changes in our scaling relations", "quote": "This steepening of the rSFMS is mainly a consequence of the methodology used (i.e., excluding N/D in the fitting process)."}]}
+},
+{
+"order": 8,
+"goal": "Systematics tests: HII-region mask, constant alpha_CO, 150 Myr SFR tracer, baryonic surface density",
+"method": {"value": "Repeat the fits after (a) masking all emission outside HII regions identified with HIIphot/DAOStarFinder, (b) using a constant alpha_CO, (c) using an SFR from the SSP star formation histories over the last 150 Myr, (d) using Sigma_stellar + Sigma_mol.gas as x-axis", "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "are identified in the H$\\alpha$ map using HIIphot (cite: Thilker2000) for resolved sources and DAOStarFinder (cite: Bradley2020) for point-like sources"}, {"loc": "5.4.3 Probing SFR on a 150 Myr timescale with spectral fitting", "quote": "Multiplying this fraction with the stellar mass surface density and dividing it by $1.5\\times10^{7}$ yr results in a SFR surface density map that probes longer timescales."}]},
+"software": ["HIIphot", "DAOStarFinder"],
+"key_parameters": [
+{"value": "Constant alpha_CO = 4.35 Msun pc^-2 (K km/s)^-1", "evidence": [{"loc": "5.4.2 Impact of the chosen CO-to-H2 conversion factor", "quote": "assuming a constant conversion factor of $4.35$ M$_{\\odot}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$"}]},
+{"value": "Long-timescale SFR from mass fraction formed in the youngest 4 age bins (last 150 Myr)", "evidence": [{"loc": "5.4.3 Probing SFR on a 150 Myr timescale with spectral fitting", "quote": "(i.e., the youngest 4 age bins in our age–metallicity grid)"}]},
+{"value": "Sigma_b = Sigma_stellar + Sigma_mol.gas", "evidence": [{"loc": "5.3 Role of baryonic mass surface density in regulating SFR", "quote": "computed the “baryonic” mass surface density as $\\Sigma_\\mathrm{b} = \\Sigma_\\mathrm{stellar} + \\Sigma_\\mathrm{mol. gas}$"}]}
+],
+"assumptions": [],
+"fitting": {"value": "Same binned weighted least-squares fitting as the fiducial case", "evidence": [{"loc": "5.3 Role of baryonic mass surface density in regulating SFR", "quote": "We derived the $\\Sigma_\\mathrm{b}$ versus $\\Sigma_\\mathrm{SFR}$ relation at $100$ pc spatial scale"}]},
+"validation": {"value": "Results compared with the fiducial slopes and scatter at each scale", "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "The inferred slopes agree relatively well with those obtained using the fiducial method"}]}
+}
+],
+"software": [
+{"name": "pPXF", "version": "not stated", "used_for": {"value": "Stellar population (SSP) fitting of Voronoi-binned MUSE spectra", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "We use then the Penalized Pixel-Fitting (pPXF) code (cite: Capellari2004; Capellari2017) to fit the spectrum of each Voronoi bin."}]}},
+{"name": "Voronoi tessellation binning", "version": "not stated", "used_for": {"value": "Binning MUSE data to S/N ~35", "evidence": [{"loc": "2.4 Stellar mass surface density maps", "quote": "First, we used a Voronoi tessellation (cite: Capellari2003) to bin our MUSE data"}]}},
+{"name": "esorex-based PHANGS-MUSE reduction pipeline", "version": "not stated", "used_for": {"value": "Reduction of MUSE observations", "evidence": [{"loc": "2.1 VLT/MUSE", "quote": "Observations were reduced using a pipeline built on esorex and developed by the PHANGS team"}]}},
+{"name": "PHANGS-MUSE data analysis pipeline (DAP)", "version": "not stated", "used_for": {"value": "SSP fitting and emission line measurements for stellar mass and SFR maps", "evidence": [{"loc": "2.1 VLT/MUSE", "quote": "we have used the PHANGS data analysis pipeline (DAP, developed by Francesco Belfiore and Ismael Pessa) to derive various physical quantities."}]}},
+{"name": "HIIphot", "version": "not stated", "used_for": {"value": "Identifying resolved HII regions for the HII-region mask test", "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "are identified in the H$\\alpha$ map using HIIphot (cite: Thilker2000) for resolved sources and DAOStarFinder (cite: Bradley2020) for point-like sources"}]}},
+{"name": "DAOStarFinder", "version": "not stated", "used_for": {"value": "Identifying point-like HII regions for the HII-region mask test", "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "are identified in the H$\\alpha$ map using HIIphot (cite: Thilker2000) for resolved sources and DAOStarFinder (cite: Bradley2020) for point-like sources"}]}}
+],
+"results_numeric": [
+{"quantity": "rSFMS slope at 100 pc (full sample)", "value": "1.05", "uncertainty": "0.01", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "We have measured a slope of $1.05\\pm0.01$ for the rSFMS, $1.06\\pm0.01$ for the rKS, and $1.18\\pm0.01$ for the rMGMS."}]},
+{"quantity": "rKS slope at 100 pc (full sample)", "value": "1.06", "uncertainty": "0.01", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "We have measured a slope of $1.05\\pm0.01$ for the rSFMS, $1.06\\pm0.01$ for the rKS, and $1.18\\pm0.01$ for the rMGMS."}]},
+{"quantity": "rMGMS slope at 100 pc (full sample)", "value": "1.18", "uncertainty": "0.01", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "We have measured a slope of $1.05\\pm0.01$ for the rSFMS, $1.06\\pm0.01$ for the rKS, and $1.18\\pm0.01$ for the rMGMS."}]},
+{"quantity": "Intercepts of rSFMS, rKS, rMGMS at 100 pc", "value": "-10.63, -9.96, -2.23", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "the intercepts that set the normalization of these relations are $-10.63$, $-9.96$, $-2.23$."}]},
+{"quantity": "Scatter at 100 pc: rMGMS, rKS, rSFMS", "value": "0.34, 0.41, 0.51", "uncertainty": "not stated", "units": "dex", "from_step": 5, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "we find that the rMGMS has the lowest scatter ($\\sigma \\approx 0.34$ dex), followed by the rKS and the rSFMS with scatter $\\sigma \\approx 0.41$ dex and $\\sigma \\approx 0.51$ dex, respectively"}]},
+{"quantity": "Number of data points at 100 pc (rSFMS, rKS, rMGMS)", "value": "313227, 110084, 309569", "uncertainty": "not stated", "units": "pixels", "from_step": 4, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "The number of data points used is $313\\,227$, $110\\,084$ and $309\\,569$ for the rSFMS, rKS, and rMGMS, respectively."}]},
+{"quantity": "Detection fraction at 100 pc (rSFMS, rKS, rMGMS)", "value": "0.50, 0.84, 0.35", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4.1 Scaling relations using the full sample", "quote": "the total detection fraction, defined as the fraction of pixels with a nonzero detection in the $y$-axis ($1-f_\\mathrm{N/D}$), is $0.50$, $0.84$, and $0.35$."}]},
+{"quantity": "rKS scatter at 1 kpc", "value": "0.27", "uncertainty": "not stated", "units": "dex", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "with the resolved Kennicutt–Schmidt relation being the tightest ($0.27$ dex) at a spatial scale of $1$ kpc"}]},
+{"quantity": "Pixels at 1 kpc (rSFMS, rKS, rMGMS) and detection fractions", "value": "2860, 1510, 2820 pixels; detection fractions 0.62, 0.90, 0.52", "uncertainty": "not stated", "units": "pixels; dimensionless", "from_step": 4, "evidence": [{"loc": "4.3 Variation of slope and scatter as a function of spatial scale", "quote": "the number of pixels used at $1$ kpc resolution drops to $2860$, $1510$, and $2820$, and the fraction of pixels with detected signal increases to $0.62$, $0.90$, and $0.52$"}]},
+{"quantity": "Dispersion of per-galaxy slopes (rSFMS, rMGMS, rKS)", "value": "0.34, 0.32, 0.17", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "The rSFMS relation shows the largest dispersion in slopes among galaxies ($\\sigma\\approx0.34$), followed by the rMGMS ($\\sigma\\approx0.32$), and finally the rKS ($\\sigma\\approx0.17$)"}]},
+{"quantity": "Pearson correlation of rSFMS slope difference with Delta MS", "value": "~0.49", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "(Pearson correlation coefficient (PCC) of ${\\sim}0.49$)"}]},
+{"quantity": "Pearson correlation of slope change (excluding N/D) with mean Halpha detection fraction", "value": "-0.68", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "5.2.3 Treatment of non-detections and its effect on the slope of the scaling relations", "quote": "The figure shows a negative correlation ($\\mathrm{PCC} \\approx {-}0.68$)"}]},
+{"quantity": "Pearson correlation of Delta alpha_overall with sigma of the detection fraction distribution (rSFMS)", "value": "0.72", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "5.2.4 Role of detection fraction in the dispersion of slopes at 100 pc", "quote": "The figure shows a clear positive correlation ($\\mathrm{PCC} \\approx 0.72$)"}]},
+{"quantity": "Sigma_b vs Sigma_SFR slope and scatter at 100 pc", "value": "slope 1.21; scatter 0.49", "uncertainty": "slope 0.01", "units": "dimensionless; dex", "from_step": 8, "evidence": [{"loc": "5.3 Role of baryonic mass surface density in regulating SFR", "quote": "measured a slope of $1.21\\pm0.01$ and a scatter of $0.49$ dex"}]},
+{"quantity": "Sigma_b vs Sigma_SFR slope and scatter at 500 pc and 1 kpc", "value": "500 pc: slope 1.22, scatter 0.46; 1 kpc: slope 1.14, scatter 0.42", "uncertainty": "slope 0.02 (500 pc), 0.03 (1 kpc)", "units": "dimensionless; dex", "from_step": 8, "evidence": [{"loc": "5.3 Role of baryonic mass surface density in regulating SFR", "quote": "At $500$ pc we obtain a slope of $1.22\\pm0.02$ and a scatter of $0.46$ dex, and at $1$ kpc a slope of $1.14\\pm0.03$ and a scatter of $0.42$ dex."}]},
+{"quantity": "Slopes of rKS and rMGMS with constant alpha_CO at 100 pc", "value": "rKS 1.01; rMGMS 1.28", "uncertainty": "0.01 each", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "5.4.2 Impact of the chosen CO-to-H2 conversion factor", "quote": "the slope of the rKS decreases to $1.01\\pm0.01$ and that of the rMGMS increases to $1.28\\pm0.01$"}]},
+{"quantity": "Intercepts of rKS and rMGMS with constant alpha_CO", "value": "-9.29, -3.36", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "5.4.2 Impact of the chosen CO-to-H2 conversion factor", "quote": "we find an intercept of $-9.29$ for the rKS and $-3.36$ for the rMGMS"}]},
+{"quantity": "rSFMS and rKS slopes with 150 Myr SFR tracer at 100 pc", "value": "rSFMS 0.61; rKS 0.60", "uncertainty": "0.01 each", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "5.4.3 Probing SFR on a 150 Myr timescale with spectral fitting", "quote": "the slope of the rSFMS decreases to $0.61\\pm0.01$ and the slope of the rKS to $0.60\\pm0.01$."}]},
+{"quantity": "rSFMS and rKS scatter with 150 Myr SFR tracer", "value": "0.27, 0.24", "uncertainty": "not stated", "units": "dex", "from_step": 8, "evidence": [{"loc": "5.4.3 Probing SFR on a 150 Myr timescale with spectral fitting", "quote": "This also drastically reduces the scatter in both relations to $0.27$ dex and $0.24$ dex, respectively."}]},
+{"quantity": "Scatter increase with strict HII-region mask", "value": "factor ~1.1-1.4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "the scatter is systematically enhanced in both relations by a factor of $\\sim1.1 - 1.4$"}]},
+{"quantity": "Spiral arm offset above overall rSFMS and rMGMS", "value": "up to ~0.4", "uncertainty": "not stated", "units": "dex", "from_step": 6, "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "The spiral arms share a similar slope, but are systematically offset above the overall relations by up to ${\\sim}0.4$ dex."}]}
+],
+"findings_qualitative": [
+{"value": "The three resolved relations (rSFMS, rKS, rMGMS) are all recovered at 100 pc", "evidence": [{"loc": "abstract", "quote": "All three relations were recovered at the highest spatial resolution ($100$ pc)."}]},
+{"value": "The rKS shows the least variation across galaxies and environments, while rSFMS and rMGMS vary more", "evidence": [{"loc": "abstract", "quote": "Surprisingly, the resolved Kennicutt–Schmidt relation shows the least variation across galaxies and environments"}]},
+{"value": "Excluding non-detections systematically changes the inferred slope with spatial scale", "evidence": [{"loc": "abstract", "quote": "The exclusion of non-detections has a systematic impact on the inferred slope as a function of the spatial scale."}]},
+{"value": "Bars lie systematically below the overall relations, especially in the rSFMS", "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "Finally, bars lie systematically below the overall relations, especially in the case of the rSFMS"}]}
+],
+"claims": [
+{"hypothesis": "Do the rSFMS, rKS and rMGMS exist at 100 pc and how do their scatters rank", "experiment": "Binned weighted power-law fits to MUSE-derived Sigma_stellar and Sigma_SFR and ALMA CO-derived Sigma_mol.gas for 18 PHANGS galaxies at 100 pc", "result": "Slopes 1.05, 1.06, 1.18; scatter 0.51, 0.41, 0.34 dex for rSFMS, rKS, rMGMS", "finding": "All three relations are recovered at 100 pc, with rMGMS the tightest, consistent with the timescale ordering tau_Halpha < tau_CO < tau_stars", "support": "supported", "evidence": [{"loc": "abstract", "quote": "All three relations were recovered at the highest spatial resolution ($100$ pc)."}, {"loc": "6 Summary", "quote": "rMGMS shows the least scatter ($0.34$ dex) for our global data set"}]},
+{"hypothesis": "How do slope and scatter depend on spatial scale when non-detections are included", "experiment": "Resampled maps to 100 pc, 500 pc, 1 kpc and refit", "result": "Slopes consistent within 2 sigma across scales; scatter decreases at coarser scale; rKS tightest at 1 kpc (0.27 dex)", "finding": "No systematic slope dependence on spatial scale when non-detections are included; scatter falls with scale", "support": "supported", "evidence": [{"loc": "5.1.1 Variations with spatial scale between and within galaxies", "quote": "we do not find evidence for a systematic dependence of the slope of these relations on the spatial resolution of the data, and the measurements are consistent within $2\\sigma$ of their respective uncertainties."}]},
+{"hypothesis": "Does excluding non-detections bias the slope as a function of spatial scale", "experiment": "Refit excluding non-detected pixels at 100 pc, 500 pc and 1 kpc and relate slope change to Halpha detection fraction", "result": "Systematic steepening with larger scale in rSFMS and rMGMS; correlations with detection fraction (PCC -0.68, 0.72)", "finding": "Excluding non-detections artificially flattens relations at small scales", "support": "supported", "evidence": [{"loc": "5.2.2 Slope changes in our scaling relations", "quote": "When we exclude non-detected pixels from our analysis, we see a systematic steepening of the slope at larger spatial scales in the rSFMS and the rMGMS."}]},
+{"hypothesis": "Do the relations vary across galactic environments", "experiment": "Binned relations and offsets for disk, spiral arms, rings, bars and centers using the environmental masks", "result": "rKS slope and normalization are similar across environments; rSFMS and rMGMS vary by up to ~0.4 dex", "finding": "Environment strongly impacts rSFMS and rMGMS but little the rKS", "support": "supported", "evidence": [{"loc": "4.2 Scaling relations in individual galaxies", "quote": "It can be seen that the slope and normalization of the rKS are similar across different galactic environments while the variations for the rSFMS and rMGMS relations are substantially larger (up to ${\\sim}0.4$ dex)."}]},
+{"hypothesis": "Does baryonic surface density predict SFR better than molecular gas alone", "experiment": "Fit Sigma_SFR against Sigma_stellar + Sigma_mol.gas at three spatial scales", "result": "Scatter 0.49, 0.46, 0.42 dex at 100 pc, 500 pc, 1 kpc, higher than the rKS", "finding": "Molecular gas is a better predictor of SFR than baryonic mass surface density", "support": "supported", "evidence": [{"loc": "5.3 Role of baryonic mass surface density in regulating SFR", "quote": "Thus, we find that $\\Sigma_\\mathrm{mol. gas}$ is a better predictor of $\\Sigma_\\mathrm{SFR}$ than $\\Sigma_\\mathrm{b}$."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "PHANGS galaxies chosen within 20 Mpc and low inclination to resolve star-forming regions of 50-100 pc", "evidence": [{"loc": "2 Data", "quote": "have been selected to have a distance lower than $20$ Mpc to resolve the typical scale of star-forming regions ($50{-}100$ pc)"}]},
+{"field": "why_this_method", "value": "Bin the x-axis and fit bin means so outer disk regions with more pixels do not dominate; adopt linear-space mean including non-detections to compare consistently across scales", "evidence": [{"loc": "3.2 Fitting technique", "quote": "Fitting bins rather than single data points avoids giving statistically larger weight to the outer part of a galaxy, where more pixels are available."}, {"loc": "3.2 Fitting technique", "quote": "therefore we adopt the mean measured in linear space as our fiducial approach"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Radial binning on the x-axis rejected because it raised scatter within each bin; log-space averaging considered as a comparison", "evidence": [{"loc": "3.2 Fitting technique", "quote": "We have also tested radial binning in the $x$-axis (i.e., calculating the means in bins defined as data points located at similar galactocentric radius), but this raised the scatter within each bin"}]},
+{"value": "Strict HII-region mask, constant alpha_CO and 150 Myr SFR tracer tested as alternatives to the fiducial choices", "evidence": [{"loc": "6 Summary", "quote": "We applied a different approach to remove non-star-forming (diffuse) emission contaminating our SFR tracer before measuring the scaling relations, a different CO-to-H$_{2}$ conversion factor prescription, and a SFR tracer probing a longer timescale."}]}
+],
+"limitations_admitted": [
+{"value": "Quoted slope errors do not include systematic uncertainties", "evidence": [{"loc": "3.2 Fitting technique", "quote": "it does not reflect the uncertainties induced by systematic effects"}]},
+{"value": "Fiducial scatter is possibly underestimated because of contaminating Halpha emission boosting the faintest pixels", "evidence": [{"loc": "5.4.1 Role of diffuse gas emission", "quote": "Hence, in our fiducial approach the scatter of these relations is possibly underestimated due to contaminant H$\\alpha$ emission boosting the SFR of the faintest pixels."}]},
+{"value": "The rSFMS correlation with Delta MS is not robust given scatter and limited number of points", "evidence": [{"loc": "5.1.1 Variations with spatial scale between and within galaxies", "quote": "we stress here that even though the rSFMS shows hints of a correlation, the scatter and the limited number of data points make it hard to draw a robust conclusion."}]}
+],
+"referee_caveats_inferred": [
+"Pixels are resampled without convolution, so 100 pc pixels are smaller than the 1.0-1.5 arcsec CO beam for many galaxies; neighbouring pixels are not independent and bootstrap errors may be too small",
+"Non-detection definition depends on S/N cuts that differ between MUSE (4 and 2) and CO (1.5 after resampling), which may drive the detection fractions and thus the slopes",
+"Slope uncertainties (0.01) are statistical only and are tiny relative to the galaxy-to-galaxy dispersion",
+"Metallicity-dependent alpha_CO couples Sigma_mol.gas to the same metallicity gradient that varies with radius, which may induce correlations in the rKS and rMGMS"
+],
+"reproducibility": [],
+"code_released": [
+{"value": "PHANGS-MUSE DAP not released; to be described in Emsellem et al. (in prep.). No analysis code for the scaling-relation fits is mentioned", "evidence": [{"loc": "2.1 VLT/MUSE", "quote": "The DAP will be described in detail in Emsellem et al. (in prep.)."}]}
+],
+"missing_for_reproduction": [
+"PHANGS-MUSE DAP products (stellar mass, line flux maps) with version and download location",
+"Exact PHANGS-ALMA map release used and its processing parameters",
+"Per-galaxy DIG parameters (f0, beta) and the full environmental-mask files",
+"Resampling and error-propagation code used for the 100 pc/500 pc/1 kpc maps"
+],
+"estimated_data_volume_inferred": "Derived maps only: tens of GB if MUSE mosaics are re-processed; under 1 GB for CO integrated intensity maps and masks of 18 galaxies",
+"score_inferred": 3,
+"score_reason": "The fitting recipe (binning, bootstrap, WLS, scatter definition) and many numeric results are fully given, but the MUSE DAP outputs and PHANGS-ALMA products come from papers in preparation or submission and no data locations or code are given.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state that the input maps are public and the MUSE DAP is unpublished, so the upstream products cannot be regenerated from the text alone.",
+"methods_papers": [
+{"citation": "(cite: Leroy2021a)", "why": "PHANGS-ALMA observing strategy, data reduction and product generation"},
+{"citation": "(cite: Leroy2021b)", "why": "PHANGS-ALMA survey and global galaxy parameters"},
+{"citation": "Emsellem et al. (in prep.)", "why": "PHANGS-MUSE survey and data analysis pipeline"},
+{"citation": "(cite: Querejeta2021)", "why": "Environmental masks"},
+{"citation": "(cite: Blanc2009); (cite: Kaplan2016)", "why": "Diffuse ionized gas correction of Halpha"},
+{"citation": "(cite: Sun2020)", "why": "Metallicity-scaled alpha_CO prescription"}
+],
+"companion_papers": [
+{"citation": "(cite: Lin2019); (cite: Ellison2020); (cite: Morselli2020)", "why": "Earlier reports of the resolved molecular gas main sequence compared with the results"},
+{"citation": "(cite: Kruijssen2014); (cite: Kruijssen2018)", "why": "Uncertainty principle used to interpret the scatter versus spatial scale"},
+{"citation": "(cite: Barrera-Ballesteros2021)", "why": "Baryonic surface density relation at kpc scale compared with this work"}
+],
+"related_projects_or_surveys": ["PHANGS-ALMA", "PHANGS-MUSE", "Spitzer Survey of Stellar structure in Galaxies (S4G)"]
+}

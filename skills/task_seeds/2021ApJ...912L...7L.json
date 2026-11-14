@@ -1,0 +1,424 @@
+{
+ "bibcode": "2021ApJ...912L...7L",
+ "title": "A Low-mass Cold and Quiescent Core Population in a Massive Star Protocluster",
+ "year": 2021,
+ "doi": "10.3847/2041-8213/abf64f",
+ "arxiv_id": "2104.05493",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Characterize the initial conditions of star and cluster formation in massive star-forming regions by searching for and studying starless and pre-stellar cores in the massive infrared dark cloud NGC 6334S.",
+ "alma_project_codes": [
+  "2016.1.00951.S"
+ ],
+ "data": {
+  "bands": "3 mm (85.9-100.3 GHz)",
+  "arrays": "12 m array",
+  "angular_resolution": "3.6\" x 2.4\" (P.A. = 81 deg) for continuum; 4.1\" x 2.8\" (P.A. = 83 deg) for lines (~0.02 pc spatial resolution)",
+  "sensitivity": "6 mJy beam^-1 per 0.21 km s^-1 (lines); 30 uJy beam^-1 (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "49 continuum dense cores and their masses/kinematics in NGC 6334S, and clump mass of 1.3 x 10^3 M_sun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "With a mass of 1.3 $\\times \\, 10^{3} \\, M_{\\odot}$ (cite: 2020ApJ...896..110L)"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "A study of 49 continuum dense cores (hereafter continuum cores) revealed by the 3 mm wavelength continuum image was presented in (cite: 2020ApJ...896..110L)"
+     }
+    ]
+   },
+   "citation": "(cite: 2020ApJ...896..110L)"
+  },
+  {
+   "what": {
+    "value": "Young stellar object (YSO) counterparts in NGC 6334S",
+    "evidence": [
+     {
+      "loc": "Cold and Quiescent Cores",
+      "quote": "and with no young stellar object (YSO) counterparts (cite: 2013ApJ...778...96W)."
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...778...96W)"
+  },
+  {
+   "what": {
+    "value": "Herschel/PACS 70 um data and 3-sigma sensitivity of ~0.3 Jy",
+    "evidence": [
+     {
+      "loc": "Internal Luminosity",
+      "quote": "A 3$\\sigma$ sensitivity of $\\sim$0.3 Jy from `Herschel`/PACS 70 $\\mu{}$m observation is used to derived an upper limit ($\\sim$1.26 $L_{\\odot}$) of internal luminosity for the identified NH$_{2}$D cores (cite: 2017A&A...602A..77T)"
+     }
+    ]
+   },
+   "citation": "(cite: 2017A&A...602A..77T)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify compact NH2D cores and extract morphological and flux parameters",
+   "method": "Preselect compact structures from the NH2D velocity-integrated intensity map (-11.5 to 5.6 km s^-1) using astrodendro, filter out structures associated with continuum cores, YSOs, multiple peaks, or extreme elongation (major/minor >= 3), and fit 2D Gaussians with CASA-imfit.",
+   "software": [
+    "astrodendro",
+    "CASA"
+   ],
+   "key_parameters": [
+    "velocity integration range = -11.5 to 5.6 km s^-1; astrodendro min_value = 3 sigma (1 sigma ~ 0.02 Jy beam^-1 km s^-1), min_delta = 1 sigma, min_npix = 40, peak >= 6 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Check for protostellar activity and estimate internal luminosity upper limits",
+   "method": "Search for outflow signatures in HCO+, CS, HCN, SO, HNCO and H2O maser emission, inspect 3.6 to 70 um infrared images for continuum sources, and compute internal luminosity upper limits from Herschel/PACS 70 um 3-sigma flux.",
+   "software": [],
+   "key_parameters": [
+    "3 sigma sensitivity at 70 um ~ 0.3 Jy"
+   ],
+   "assumptions": [
+    "Empirical L_int - F_70 relationship from Dunham et al. (2008)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit NH2D line kinematics and derive velocity dispersions",
+   "method": "Fit the NH2D hyperfine line cube pixel-by-pixel and on core-averaged spectra, then remove channel-width smearing in quadrature to obtain intrinsic velocity dispersion and Mach number.",
+   "software": [
+    "PySpecKit"
+   ],
+   "key_parameters": [
+    "channel width sigma_ch = 0.089 km s^-1; sound speed c_s(10 K) = 0.19 km s^-1"
+   ],
+   "assumptions": [
+    "Temperature T = 10 K for thermal velocity dispersion and sound speed"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate core gas masses, H2 column densities, virial masses, and virial parameters",
+   "method": "Compute M_gas and N_H2 from 3 mm (98.5 GHz) continuum emission (or 3-sigma upper limits where peak <= 3 sigma) assuming optically thin modified blackbody emission, and compute M_vir and alpha_vir = M_vir/M_gas from effective radius and total velocity dispersion.",
+   "software": [],
+   "key_parameters": [
+    "nu = 98.5 GHz; 3-sigma mass sensitivity = 0.13 M_sun"
+   ],
+   "assumptions": [
+    "T_dust = 10 K; gas-to-dust ratio eta = 100; dust opacity kappa_98.5GHz = 0.235 cm^2 g^-1 (beta = 1.5); mean molecular weight mu = 2.8 for N_H2 and <m> = 2.37 m_H for sigma_tot; density profile power-law index b = 2; no external pressure"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive NH2D fractional abundances and NH3 deuterium fractionation",
+   "method": "Calculate N(NH2D) and abundance X(NH2D) = N(NH2D)/N(H2), fit JVLA core-averaged NH3 (1,1) and (2,2) spectra with PySpecKit to obtain T_k and N(NH3) (or 3-sigma upper limits), and compute D_NH3 = N(NH2D)/N(NH3).",
+   "software": [
+    "PySpecKit"
+   ],
+   "key_parameters": [
+    "3-sigma N(NH3) upper limit = 3.8 x 10^14 cm^-2"
+   ],
+   "assumptions": [
+    "Constant temperature of 10 K and ortho-to-para ratio of 3 for NH2D; ortho-to-para ratio of 1 for NH3; T_ex = 10 K for NH3 non-detections"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of identified low-mass starless NH2D core candidates",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "With the ALMA observations at a $\\sim$0.02 pc spatial resolution, we identified 17 low-mass starless core candidates that do not show any evidence of protostellar activity."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of gravitationally bound pre-stellar core candidates",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Nine out of the 17 cores are gravitationally bound, and therefore are identified as pre-stellar core candidates."
+    }
+   ]
+  },
+  {
+   "quantity": "NH2D core diameters",
+   "value": "0.018 to 0.04",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Cold and Quiescent Cores",
+     "quote": "They have diameters ranging from 0.018 to 0.04 pc (see Table 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on internal luminosity of NH2D cores",
+   "value": "1.26",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Cold and Quiescent Cores",
+     "quote": "The upper limit on the internal luminosity ($L_{\\rm int}$) of NH$_{2}$D cores is estimated to be $\\sim$1.26 $L_{\\odot}$ using `Herschel`/PACS 70 $\\mu{}$m data (cite: 2017A&A...602A..77T)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean observed velocity dispersion across NH2D cores",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Small Velocity Dispersions",
+     "quote": "All the NH$_{2}$D cores show small velocity dispersion ($\\langle \\sigma_{\\rm obs} \\rangle \\sim$ 0.16 km s$^{-1}$) and the majority of them are smaller than the sound speed, $c_{\\rm s}$(10 K) = 0.19 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean observed velocity dispersion of core M1",
+   "value": "0.107",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Small Velocity Dispersions",
+     "quote": "For M1, pixel by pixel fit to the NH$_{2}$D line cube yields a small mean velocity dispersion $\\langle \\sigma_{\\rm obs} \\rangle \\approx$ 0.107 km s$^{-1}$ (Figure 4)"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic observed velocity dispersion of core M1",
+   "value": "0.06",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Small Velocity Dispersions",
+     "quote": "corresponding to an intrinsic observed velocity dispersion of $\\sigma_{\\rm obs,int}$ = 0.06 km s$^{-1}$ after removing the smearing effect due to the channel width"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on gas kinetic temperature of core M1 from thermal broadening",
+   "value": "7",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Small Velocity Dispersions",
+     "quote": "Assuming the observed linewidths of the NH$_{2}$D line are caused only by thermal broadening, the gas temperature is found to be about 7 K, $\\sigma_{\\rm th,NH_{2}D}$(7 K) = $\\sigma_{\\rm obs,int}$ = 0.06 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass range of NH2D cores",
+   "value": "<0.13 to 0.87",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas Masses and Dynamical States",
+     "quote": "The derived cores masses are between $<$ 0.13 and 0.87 $M_{\\odot}$, with a mean value of 0.45 $M_{\\odot}$ (Table 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass of NH2D cores",
+   "value": "0.45",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas Masses and Dynamical States",
+     "quote": "The derived cores masses are between $<$ 0.13 and 0.87 $M_{\\odot}$, with a mean value of 0.45 $M_{\\odot}$ (Table 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Core-averaged H2 column density range",
+   "value": "<1.1e22 to 3.0e22",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas Masses and Dynamical States",
+     "quote": "the core-averaged H$_{2}$ column densities ($N_{\\rm H_{2}}$) are derived to be between $<$ 1.1 $\\times$ 10$^{22}$ and 3.0 $\\times$ 10$^{22}$ cm$^{-2}$ (Appendix 7), with a mean value of 2.0 $\\times$ 10$^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass range of NH2D cores",
+   "value": "0.43 to 2.54",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas Masses and Dynamical States",
+     "quote": "we estimated the virial masses ($M_{\\rm vir}$) that range from 0.43 to 2.54 $M_{\\odot}$ (see Appendix 7 for derivation of virial mass)."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter range of NH2D cores",
+   "value": "0.93 to 6.03",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas Masses and Dynamical States",
+     "quote": "The derived virial parameters, $\\alpha_{\\rm vir}$ = $M_{\\rm vir}/M_{\\rm gas}$, are between 0.93 and 6.03."
+    }
+   ]
+  },
+  {
+   "quantity": "NH2D column density range",
+   "value": "7.3e12 to 3.4e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "the estimated NH$_{2}$D column densities ($N(\\rm NH_{2}D)$) range from 7.3 $\\times$ 10$^{12}$ cm$^{-2}$ to 3.4 $\\times$ 10$^{15}$ cm$^{-2}$, with a mean value of 5.2 $\\times$ 10$^{14}$ cm$^{-2}$ (see Figure 4)."
+    }
+   ]
+  },
+  {
+   "quantity": "NH2D fractional abundance range X(NH2D)",
+   "value": "1.8e-9 to 2.0e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "The derived abundance $X(\\rm NH_{2}D)$ = $N(\\rm NH_{2}D)$/$N(\\rm H_{2})$ toward the NH$_{2}$D cores range from 1.8 $\\times$ 10$^{-9}$ to 2.0 $\\times$ 10$^{-7}$, with a mean value of 2.5 $\\times$ 10$^{-8}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic temperature of core M4 from NH3",
+   "value": "12.7",
+   "uncertainty": "+/- 3.1",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "we derive a kinetic temperature of $T_{\\rm k}$ = 12.7 $\\pm$ 3.1 K and a column density of $N_{\\rm NH_{3}}$ = $(4.4\\, \\pm \\,2.5) \\times 10^{14}$ cm$^{-2}$ for M4"
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 column density of core M4",
+   "value": "4.4e14",
+   "uncertainty": "+/- 2.5e14",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "we derive a kinetic temperature of $T_{\\rm k}$ = 12.7 $\\pm$ 3.1 K and a column density of $N_{\\rm NH_{3}}$ = $(4.4\\, \\pm \\,2.5) \\times 10^{14}$ cm$^{-2}$ for M4"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic temperature of core M10 from NH3",
+   "value": "12.1",
+   "uncertainty": "+/- 3.2",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "and the derived parameters are $T_{\\rm k}$ = 12.1 $\\pm$ 3.2 K and $N_{\\rm NH_{3}}$ = $(8.9 \\pm 5.0) \\times 10^{14}$ cm$^{-2}$ for M10"
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 column density of core M10",
+   "value": "8.9e14",
+   "uncertainty": "+/- 5.0e14",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "and the derived parameters are $T_{\\rm k}$ = 12.1 $\\pm$ 3.2 K and $N_{\\rm NH_{3}}$ = $(8.9 \\pm 5.0) \\times 10^{14}$ cm$^{-2}$ for M10"
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 deuterium fractionation D_NH3 of core M4",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "The column density ratio NH$_{2}$D-to-NH$_{3}$ ($D_{\\rm NH_{3}}$, also known as NH$_{3}$ deuterium fractionation) is found to be 0.25 and 0.11 for M4 and M10, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 deuterium fractionation D_NH3 range across cores",
+   "value": "0.11 to >0.39",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "NH$_{2}$D Abundances and NH$_{3}$ Deuterium Fractionation",
+     "quote": "The resulting lower limits $D_{\\rm NH_{3}}$ range from 0.11 to 0.39 (see Table 1)"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| M2 | 17:19:04.28 | -36:06:57.17 | 9.3$\\times$4.3 | 126.6 | 0.040 | 0.30 | -1.36 | 2.41 | 0.40 | 136.13 | 0.186 | 0.412 | 0.61 | 2.54 | 4.18 | 6.1E+14 | 1.6E+22 | 3.2E-08 | $>$0.39 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact source distance d in pc adopted for NGC 6334S (referred to Chibueze et al. 2014 and Li et al. 2020a, needed for physical sizes, gas masses, and internal luminosity)",
+  "Exact CASA imaging parameters (deconvolver, cell size, image size, masking, stopping threshold, continuum subtraction method, line-free channels)",
+  "Details of the NH2D hyperfine structure model and radiative transfer equations used to derive N(NH2D) (deferred to Li et al. 2020a)"
+ ],
+ "missing_for_reproduction": [
+  "Numerical value of source distance d adopted in calculations (must be retrieved from Li et al. 2020a or Chibueze et al. 2014)",
+  "Detailed CASA tclean/clean imaging parameters and continuum subtraction setup (deferred to Li et al. 2020a)",
+  "Exact equations and hyperfine component parameters used for NH2D column density calculation (deferred to Li et al. 2020a)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "ALMA and JVLA project IDs, software versions, astrodendro thresholds, mass/virial equations, and per-core measurements (Table 1) are clearly provided, though calibration/imaging details, hyperfine radiative transfer equations, and the numerical distance value require consulting the companion paper Li et al. (2020a).",
+ "rediscovery_reason": "Public ALMA data (2016.1.00951.S), explicit astrodendro and CASA-imfit core extraction criteria, explicit mass and virial equations, and a complete 17-core numeric answer key in Table 1.",
+ "source_card": "cards/2021ApJ...912L...7L/sonnet/card.md"
+}

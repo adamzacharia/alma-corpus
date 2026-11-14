@@ -1,0 +1,449 @@
+{
+ "bibcode": "2022MNRAS.514.5035L",
+ "title": "WISDOM project - XI. Star formation efficiency in the bulge of the AGN-host Galaxy NGC 3169 with SITELLE and ALMA",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1583",
+ "arxiv_id": "2206.03316",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "How does the star formation efficiency (and molecular gas depletion time) vary across the bulge of the AGN-host galaxy NGC 3169, and what physical mechanisms (AGN feedback, bulge morphology, or dynamics) govern it?",
+ "alma_project_codes": [
+  "2015.1.00598.S",
+  "2016.2.00053.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "thirty-eight 12-m antennae and eight 7-m antennae",
+  "angular_resolution": "0.99'' x 0.84'' (89 pc x 76 pc) at PA = -58 deg before smoothing; convolved to circular FWHM 1.1'' (99 pc); highest native resolution 0.58'' x 0.58'' (52 pc x 52 pc) with robust 0.5",
+  "sensitivity": "mean RMS noise level of 3.06 mJy beam^-1 per 2 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy morphology SA(s)a pec",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(1) Morphology of the galaxy taken from (cite: 1991rc3..book.....D)."
+     }
+    ]
+   },
+   "citation": "(cite: 1991rc3..book.....D)"
+  },
+  {
+   "what": {
+    "value": "Distance D = 18.7 Mpc",
+    "evidence": [
+     {
+      "loc": "NGC 3169",
+      "quote": "NGC 3169 is an S(a) spiral galaxy at a distance $D=18.7$ Mpc, according to the NASA Extragalactic Database redshift-independent distance catalogue (cite: steer2016redshift)."
+     }
+    ]
+   },
+   "citation": "(cite: steer2016redshift)"
+  },
+  {
+   "what": {
+    "value": "Inclination i = 54 deg, position angle PA = 45 deg, systemic heliocentric velocity V_sys = 1232 km s^-1, and H I gas mass (4.2 +/- 0.5) x 10^9 M_sun",
+    "evidence": [
+     {
+      "loc": "NGC 3169",
+      "quote": "It has an inclination $i=54^\\circ$, a position angle $PA=45^\\circ$ and a systemic heliocentric velocity $V_{\\rm sys}=1232$ km s$^{-1}$ (from the H i $21$-cm observations of (cite: lee2012pre), consistent with the best-fitting systemic velocity derived from our own CO data discussed in Section \\[vfield\\])."
+     },
+     {
+      "loc": "NGC 3169",
+      "quote": "The H i gas mass of NGC 3169 is $(4.2\\pm0.5)\\times10^{9}$ M$_\\odot$ (cite: lee2012pre)."
+     }
+    ]
+   },
+   "citation": "(cite: lee2012pre)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass log(M_*/M_sun) = 10.84 and total star formation rate log(SFR/M_sun yr^-1) = 0.29",
+    "evidence": [
+     {
+      "loc": "NGC 3169",
+      "quote": "The ultraviolet and infrared images from the *Wide-field Infrared Survey Explorer* (*WISE*) and *Galaxy Evolution Explorer* (*GALEX*) missions (cite: leroy2019z) indicate a stellar mass of $\\log (M_\\star/{\\rm M_\\odot})\\approx10.84$ and a star formation rate $\\log(\\rm SFR/{\\rm M_\\odot~yr^{-1}})\\approx0.29$ within a central aperture of diameter $\\approx19\\ensuremath{'}$."
+     }
+    ]
+   },
+   "citation": "(cite: leroy2019z)"
+  },
+  {
+   "what": {
+    "value": "Stellar velocity dispersion sigma_* = 163 km s^-1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(8) Stellar velocity dispersion taken from (cite: heraudeau1999stellar)."
+     }
+    ]
+   },
+   "citation": "(cite: heraudeau1999stellar)"
+  },
+  {
+   "what": {
+    "value": "K_s-band effective radius R_e,KS = 85.7''",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(11) $K_s$-band effective radius estimated from the $2~\\mu$m all-sky survey (2MASS; (cite: jarrett20032mass))."
+     }
+    ]
+   },
+   "citation": "2MASS; (cite: jarrett20032mass)"
+  },
+  {
+   "what": {
+    "value": "2MASS K_s-band bulge-disc decomposition (m_bul = 7.52, m_disc = 8.42, bulge effective radius 15.7'' or 1.4 kpc, Sersic index ~4.17)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "This galaxy has a dense bulge (with an effective radius $\\approx1.4$ kpc and a Sérsic index of $\\approx4.17$; from (cite: dong2006low)) and a low-luminosity AGN (LLAGN; e.g. (cite: ghosh2008low; mathur2008finding)), making it ideal for a deep investigation of various quenching mechanisms."
+     },
+     {
+      "loc": "NGC 3169",
+      "quote": "They reported bulge and disc $K_{\\rm s}$-band integrated apparent magnitudes $m_{\\rm bul}=7.52$ and $m_{\\rm disc}=8.42$. The effective radius of the bulge component is $15.7\\ensuremath{''}$ or $1.4$ kpc at our assumed distance."
+     }
+    ]
+   },
+   "citation": "(cite: dong2006low)"
+  },
+  {
+   "what": {
+    "value": "Eddington luminosity L_Edd ~ 10^46 erg s^-1 and Chandra X-ray properties of the LLAGN",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(14) Estimated Eddington luminosity of the supermassive black hole, taken from (cite: ghosh2008low)."
+     }
+    ]
+   },
+   "citation": "(cite: ghosh2008low)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, combine, continuum-subtract, and image ALMA CO(2-1) data",
+   "method": "Calibrate raw ALMA data with the CASA pipeline, combine 12-m and 7-m datasets with concat, subtract continuum in the uv plane using uvcontsub over line-free bandwidth, image with tclean at 2 km s^-1 (and 15 km s^-1 for kinematics) with Briggs robust=2.0 and 0.7'' uv-taper, convolve with a 2D Gaussian to a 1.1'' circular beam, and regrid to match SITELLE spaxels.",
+   "software": [
+    "CASA",
+    "concat",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "channel width = 2 km s^-1 (and 15 km s^-1 for kinematics)",
+    "Briggs robust = 2.0, uv-taper = 0.7'', final circular beam FWHM = 1.1''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Reduce SITELLE IFTS cubes and extract optical emission-line maps",
+   "method": "Reduce raw SITELLE interferograms with ORBS, calibrate wavelength using OH sky lines, subtract median sky spectrum from a 200x200 spaxel region, and fit sinc-Gauss emission line profiles per spaxel using ORCS with a 3-sigma detection threshold on Halpha+[N II] flux.",
+   "software": [
+    "ORBS",
+    "ORCS"
+   ],
+   "key_parameters": [
+    "sky region = 200 x 200 spaxels; detection threshold = 3 sigma on Halpha+[N II] flux"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive extinction-corrected SFR surface density map",
+   "method": "Compute Balmer decrement E(Hbeta-Halpha) where both Halpha and Hbeta are >=3 sigma, adopt nearest-neighbour A_Halpha where Hbeta is <3 sigma, correct F_Halpha for extinction, convert L_Halpha to SFR and divide by spaxel area.",
+   "software": [],
+   "key_parameters": [
+    "3 sigma detection threshold for Halpha and Hbeta"
+   ],
+   "assumptions": [
+    "Intrinsic Balmer decrement (Halpha/Hbeta)_init = 2.86 for case B recombination at T = 10^4 K (Osterbrock & Ferland 2006)",
+    "Fitzpatrick (1986) reddening curve k(lambda) and Kennicutt & Evans (2012) log(SFR) = log(L_Halpha) - 41.27 conversion with D = 18.7 Mpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas mass surface density map from CO(2-1)",
+   "method": "Divide CO(2-1) moment-0 flux by synthesised beam area in spaxels, convert F_CO(2-1) to luminosity L_CO(2-1), convert to M_H2 using M_H2/M_sun = 6.325 L_CO(2-1), and divide by spaxel area.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CO(2-1)/CO(1-0) brightness temperature ratio = 0.8 and X_CO = 2.3 x 10^20 cm^-2 (K km s^-1)^-1 including helium"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Classify ionisation mechanisms per spaxel using BPT diagnostics and compute depletion times",
+   "method": "Classify spaxels into H II (star-forming), composite, and AGN-ionised regions using O3N2 ([O III]/Hbeta vs [N II]/Halpha) and O3S2 ([O III]/Hbeta vs [S II]/Halpha) BPT diagrams with Kewley et al. (2006) and Law et al. (2021) demarcation lines, then compute depletion time tau_dep = Sigma_H2 / Sigma_SFR per spaxel and in radial annuli (width 200 pc, step 100 pc).",
+   "software": [],
+   "key_parameters": [
+    "S/N > 3 threshold for Halpha and CO; radial annuli width = 200 pc, step = 100 pc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Identify H II regions and compute ionised and molecular gas virial parameters",
+   "method": "Identify Halpha flux peaks and zone boundaries following Rousseau-Nepton et al. (2018), fit a 2D Gaussian to each H II region to obtain L_HII and R_HII, fit binned spectra with ORCS to measure sigma_HII, and calculate virial parameters alpha_vir,HII and cloud-scale alpha_vir,H2.",
+   "software": [
+    "ORCS"
+   ],
+   "key_parameters": [
+    "Peak criteria: >5 surrounding spaxels, 3x3 box > 3 sigma, minimum separation >= 1.1'' (99 pc); D_spaxel ~ 35 pc for CO virial parameter"
+   ],
+   "assumptions": [
+    "Spherical geometry and ionising photons from hot/massive stars to derive M_HII from L_HII and R_HII (Zaragoza-Cardiel et al. 2015)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Model molecular and ionised gas kinematics and non-circular motions",
+   "method": "Fit tilted-ring models to the 3D ALMA CO datacube using 3DBarolo (first with all parameters free, then fixing dynamical centre and inclination while allowing PA to vary), and fit tangential and radial velocity components of the Halpha velocity field using EMCEE with dynamical centre, inclination, and PA fixed to the 3DBarolo CO values.",
+   "software": [
+    "3DBarolo",
+    "EMCEE"
+   ],
+   "key_parameters": [
+    "15 km s^-1 channel width CO cube used for kinematics; dynamical centre and inclination fixed after initial free fit"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Measure molecular cloud lifecycle timescales and separation length",
+   "method": "Measure CO-to-Halpha flux ratios in apertures of varying sizes centred on CO and Halpha emission peaks and fit with the analytical model in the HEISENBERG code across three masking/filtering cases (Case A: full FOV; Case B: central 650 pc masked; Case C: central 650 pc masked plus diffuse emission removed via iterative Gaussian high-pass Fourier filtering).",
+   "software": [
+    "HEISENBERG"
+   ],
+   "key_parameters": [
+    "Central mask radius = 650 pc (Cases B and C); 77 CO flux peaks and 80 Halpha flux peaks identified"
+   ],
+   "assumptions": [
+    "Reference isolated stellar phase timescale t_star,ref = 4.3 Myr (Haydon et al. 2020)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular gas mass within ALMA FOV log(M_H2/M_sun)",
+   "value": "9.32",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| \\(5\\) | $\\log({\\rm M_{H_2}~/~M_\\odot})$ | $9.32$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas surface density within inner 2 kpc log(Sigma_H2, 2 kpc / M_sun pc^-2)",
+   "value": "2.31",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| \\(6\\) | $\\log({\\rm \\Sigma_{H_2,~2~kpc}~/~M_\\odot~pc^{-2}})$ | $2.31$ |"
+    },
+    {
+     "loc": "Molecular gas mass surface densities",
+     "quote": "The mean $\\Sigma_{\\rm H_2}$ in the central region of NGC 3169, $\\log({\\rm \\Sigma_{\\rm H_2,~2~kpc}~/~M_\\odot~pc^{-2}}) = 2.31$, is calculated from the total molecular gas mass within a radius of $\\approx 1.8$ kpc, as listed in Table 1."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SFR surface density within inner 2 kpc log(Sigma_SFR, 2 kpc / M_sun yr^-1 kpc^-2)",
+   "value": "-0.67",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun yr^-1 kpc^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| \\(13\\) | $\\log({\\rm \\Sigma_{SFR,~2~kpc}~/~M_\\odot~yr^{-1}~kpc^{-2}})$ | $-0.67$ |"
+    },
+    {
+     "loc": "SFR surface densities",
+     "quote": "The mean $\\Sigma_{\\rm SFR}$ in the central region of NGC 3169, $\\log({\\rm \\Sigma_{SFR,~2~kpc}~/~M_\\odot~yr^{-1}~kpc^{-2}}) = -0.67$, is calculated from the total SFR within a radius of $\\approx 1.8$ kpc, as listed in Table 1."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 230 GHz continuum flux at galaxy centre",
+   "value": "8.5",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Molecular gas data",
+     "quote": "The $230$ GHz continuum map is also shown in Figure 3 and reveals a bright region at the galaxy centre, slightly extended along the disc major axis and with an integrated flux of $8.5$ mJy, that could be explained by dust or a jet from the LLAGN."
+    }
+   ]
+  },
+  {
+   "quantity": "Global molecular gas depletion time within ALMA FOV (radius ~ 1.8 kpc)",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Radial trend of depletion time",
+     "quote": "For reference, the global depletion time ($0.9$ Gyr) is indicated by a grey horizontal line, calculated from the ratio of the total SFR to the total molecular gas mass within a radius of $\\approx1.8$ kpc that is the ALMA FOV."
+    }
+   ]
+  },
+  {
+   "quantity": "Average molecular gas depletion time in the star-forming ring (1.25 +/- 0.6 kpc)",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We identify a star-forming ring located at radii $1.25\\pm0.6$ kpc with an average $\\tau_{\\rm dep}$ of 0.3 Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas depletion time in star-forming regions at radius ~ 500 pc",
+   "value": "2.3",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "At radii $<0.9$ kpc, however, the molecular gas surface densities and depletion times increase with decreasing radius, the latter reaching approximately $2.3$ Gyr at a radius $\\approx500$ pc."
+    },
+    {
+     "loc": "Radial trend of depletion time",
+     "quote": "For exclusively star-forming regions (orange curve in Figure \\[fig:dept_rad\\]), the mean $\\tau_{\\rm dep}$ reaches $\\approx2.3$ Gyr at a radius of $\\approx500$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "CO rotation velocity in the star-forming ring (r > 650 pc)",
+   "value": "240-260",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Non-circular motions",
+     "quote": "Beyond the radius of $\\approx650$ pc, the derived rotation curve of CO gas suggests roughly constant rotation velocities of $240$–$260$ km s$^{-1}$ in the star-forming ring."
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha rotation velocity across the star-forming ring (650 to 1700 pc)",
+   "value": "200 to 280",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Non-circular motions",
+     "quote": "The rotation curve of H$\\alpha$ gas, however, increases from $200$ km s$^{-1}$ at $650$ pc to $280$ km s$^{-1}$ at $1700$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Central molecular gas velocity dispersion",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Non-circular motions",
+     "quote": "As shown in Figure \\[fig:vel_field_app\\], the molecular gas velocity dispersions are high throughout ($\\sigma_{\\rm gas}\\gtrsim20$ km s$^{-1}$) and rise rapidly with decreasing radius within the inner disc, reaching $\\approx70$ km s$^{-1}$ in the very centre."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas lifetime t_gas (Case C, reference case)",
+   "value": "6.7",
+   "uncertainty": "+5.0/-1.4",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $t_{\\rm gas}$ (Myr) | $7.1^{+5.3}_{-2.1}$ | $10.5^{+4.2}_{-2.6}$ | $6.7^{+5.0}_{-1.4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Feedback phase duration t_fb (Case C, reference case)",
+   "value": "<=1.5",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $t_{\\rm fb}$ (Myr) | $\\leq2.9$ | $\\leq3.3$ | $\\leq1.5$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Young stellar phase duration t_star (Case C, reference case)",
+   "value": "4.4",
+   "uncertainty": "+1.4/-0.16",
+   "units": "Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $t_{\\rm star}$ (Myr) | $5.5^{+1.5}_{-0.9}$ | $5.9^{+1.7}_{-0.9}$ | $4.4^{+1.4}_{-0.16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic separation length lambda (Case C, reference case)",
+   "value": "163",
+   "uncertainty": "+33/-21",
+   "units": "pc",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\lambda$ (pc) | $145^{+59}_{-38}$ | $148^{+53}_{-28}$ | $163^{+33}_{-21}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges / channel selections used as line-free channels in uvcontsub",
+  "tclean stopping threshold, niter, deconvolver, and masking strategy during ALMA cube and continuum imaging",
+  "Relative weighting of 12-m and 7-m visibilities during concat/tclean",
+  "Method and clipping thresholds used to generate the CO moment-0, moment-1, and moment-2 maps",
+  "Exact ring radii, ring width, and fixed dynamical centre / inclination values adopted in the 3DBarolo fit",
+  "Specific input parameter values for the HEISENBERG code (besides t_star,ref = 4.3 Myr)"
+ ],
+ "missing_for_reproduction": [
+  "Exact line-free frequency channels for uvcontsub and masking/threshold parameters for tclean",
+  "Moment map generation thresholds and velocity integration ranges for the CO(2-1) cube",
+  "Reduced SITELLE SN2 and SN3 datacubes or exact ORBS/ORCS configuration files",
+  "Exact 3DBarolo parameter file and fixed dynamical centre / inclination values",
+  "Complete HEISENBERG input configuration file"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "Both ALMA project codes (2015.1.00598.S, 2016.2.00053.S) and the CFHT SITELLE programme (20Bc25) are stated and publicly archived, CASA versions and major imaging parameters (robust=2.0, taper=0.7'', 1.1'' smoothed beam, 2 and 15 km/s channels, rms=3.06 mJy/beam) are clearly specified, and all conversion equations and analysis codes (ORBS, ORCS, 3DBarolo, EMCEE, HEISENBERG) are named. Some low-level imaging/moment-map thresholds and kinematics/HEISENBERG configuration parameters are omitted.",
+ "rediscovery_reason": "Public ALMA datasets with clear project codes, well-defined conversion recipes for molecular gas mass and continuum flux, and explicit numeric targets (log M_H2 = 9.32, log Sigma_H2 = 2.31, 230 GHz continuum flux = 8.5 mJy, CO rotation curve = 240-260 km/s) make the ALMA portion a strong rediscovery benchmark.",
+ "source_card": "cards/2022MNRAS.514.5035L/sonnet/card.md"
+}

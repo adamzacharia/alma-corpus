@@ -1,0 +1,1288 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...989....3D",
+  "title": "The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). III. Dust and Gas Disk Properties in the Lupus Star-forming Region",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Deng, Dingshan",
+  "n_authors": 23,
+  "arxiv_id": "2506.10734",
+  "doi": "10.3847/1538-4357/add43a",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2017.1.00569.S",
+   "2019.1.01135.S",
+   "2019.2.00054.S",
+   "2021.1.00128.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present Band 6 and Band 7 observations of 10 Lupus disks around M3-K6 stars from the ALMA survey of Gas Evolution in PROtoplanetary disks (AGE-PRO) Large Program."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Lupus 1-10 (Sz65, Sz71, J16124373-3815031, Sz72, Sz77, J16085324-3914401, Sz131, Sz66, Sz95, V1094Sco)",
+     "coordinates": {
+      "value": "Table 1 lists R.A./Decl. per source, e.g. Sz65 15:39:27.753 -34:46:17.577",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | Sz65 | 15:39:27.753 | -34:46:17.577 | 153.00 | I | K7 | 4060 | 0.869 | 0.6 | -9.480 |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Geometric distances are from *Gaia/r*-band (cite: Bailer-Jones_2021AJ_Gaia_geodistance)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "153.00-161.48 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | Sz65 | 15:39:27.753 | -34:46:17.577 | 153.00 | I | K7 | 4060 | 0.869 | 0.6 | -9.480 |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Geometric distances are from *Gaia/r*-band (cite: Bailer-Jones_2021AJ_Gaia_geodistance)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia geometric distances (Bailer-Jones et al. 2021)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | Sz65 | 15:39:27.753 | -34:46:17.577 | 153.00 | I | K7 | 4060 | 0.869 | 0.6 | -9.480 |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Geometric distances are from *Gaia/r*-band (cite: Bailer-Jones_2021AJ_Gaia_geodistance)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust and gas disk masses, sizes and line-flux correlations of 10 Lupus disks around M3-K6 stars observed in the AGE-PRO Large Program?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find strong correlations between the CO isotopologue line fluxes and the continuum flux densities."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We estimate gas disk masses by comparing $\\mathrm{C^{18}O}$ $J$=2-1 line fluxes with those predicted by the limited grid of self-consistent disk models of (cite: ruaud_C18O_2022)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00128.L",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "AGE-PRO; Project ID: 2021.1.00128.L, PI: K. Zhang"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00569.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "Band 6 long baseline data for Sz 65 were obtained in August 2018 (2017.1.00569.S, PI: Hsi-Wei Yen)"
+      }
+     ]
+    },
+    {
+     "code": "2019.1.01135.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "Band 7 data for Sz 65 and J16085324-3914401 were obtained between October and November 2019 (2019.1.01135.S, PI: Dana Anderson)"
+      }
+     ]
+    },
+    {
+     "code": "2019.2.00054.S",
+     "evidence": [
+      {
+       "loc": "4.3 Fluxes and Disk Radii",
+       "quote": "archival Band 8 ($\\sim$340 GHz) data (Project ID: 2019.2.00054.S, PI: M. Ansdell)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (234 GHz, 1.28 mm) and Band 7 (285 GHz, 1.05 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "ALMA 12 m array in Band 6 (234 GHz, or 1.28 mm)"
+     },
+     {
+      "loc": "2.2 Observations",
+      "quote": "Targets were also observed in Band 7 (285 GHz, or 1.05 mm)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 6: continuum, 12CO, 13CO, C18O 2-1 plus H2CO, DCN, N2D+; Band 7: N2H+ 3-2 plus DCO+, C34S, DCN, H2CO",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "our Band 6 setup covers the $\\mathrm{{}^{12}CO}$, $\\mathrm{{}^{13}CO}$ and $\\mathrm{C^{18}O}$ $J$=2-1 lines, while our Band 7 setup covers the $\\mathrm{N_2H^+}$ $J$=3-2 line"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.5 GHz",
+     "evidence": [
+      {
+       "loc": "4.1 Band 6 Images",
+       "quote": "$\\mathrm{{}^{12}CO}$ $J$=2-1 (230.5 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "220.3 GHz",
+     "evidence": [
+      {
+       "loc": "4.1 Band 6 Images",
+       "quote": "$\\mathrm{{}^{13}CO}$ $J$=2-1 (220.3 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "219.6 GHz",
+     "evidence": [
+      {
+       "loc": "4.1 Band 6 Images",
+       "quote": "$\\mathrm{C^{18}O}$ $J$=2-1 (219.6 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "N2H+",
+     "transition": "J=3-2",
+     "rest_frequency": "279.5 GHz",
+     "evidence": [
+      {
+       "loc": "4.2 Band 7 Images",
+       "quote": "the $\\mathrm{N_2H^+}$ $J$=3-2 (279.5 GHz) line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12 m array",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "observed between December 2021 and June 2022 with the ALMA 12 m array in Band 6"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "Band 6: C43-2 (short) and C43-5 (long); Band 7: C43-3 only",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "using the C43-2 (15-314 m) and C43-5 (15-1400 m) array configurations, which we refer to as ‘short’ and ‘long’ baselines, respectively."
+     },
+     {
+      "loc": "2.2 Observations",
+      "quote": "in April 2022 using only the C43-3 (15-500 m) configuration"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "C43-2 15-314 m; C43-5 15-1400 m; C43-3 15-500 m",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "C43-2 (15-314 m) and C43-5 (15-1400 m)"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.35'' continuum Band 6, ~0.70'' Band 7; weak lines ~0.50'' (B6), ~0.80'' (B7) at robust 1.0",
+    "evidence": [
+     {
+      "loc": "3.2 Imaging Strategy",
+      "quote": "a Briggs robust parameter of 0.5 to achieve an angular resolution of $\\sim 0.35\\,\\ensuremath{''}$ for Band 6 and $\\sim 0.70\\,\\ensuremath{''}$ for Band 7."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum ~0.1 mJy; 12CO ~7.0, 13CO and C18O ~4.0, N2H+ ~3.0 mJy km/s",
+    "evidence": [
+     {
+      "loc": "3.2 Imaging Strategy",
+      "quote": "typical noise level of $\\sigma \\sim 0.1 \\,\\mathrm{mJy}$ generated with robust = 0.5"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Dec 2021 - Jun 2022 (AGE-PRO); archival Aug 2018 and Oct-Nov 2019",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "Our targets were observed between December 2021 and June 2022"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar Teff, L*, A_V and accretion rates (rescaled to Gaia DR3 distances)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "are from (cite: Manara_2023_PPVII), summarizing (cite: alcala_x-shooter_2014; alcala_x-shooter_2017; alcala_hst_2019; Herczeg_n_Hillenbrand_TTauri_SpT)"
+       }
+      ]
+     },
+     "citation": "(cite: Manara_2023_PPVII)"
+    },
+    {
+     "what": {
+      "value": "Thermochemical model grid of C18O line luminosities vs dust mass",
+      "evidence": [
+       {
+        "loc": "5.3",
+        "quote": "Figure [13](#fig:derive_Mgas_ruaud) shows the AGE-PRO $\\mathrm{C^{18}O}\\,(2-1)$ line luminosities ($L_\\mathrm{C^{18}O\\,(2-1)}$) with model predictions from (cite: ruaud_C18O_2022)"
+       }
+      ]
+     },
+     "citation": "(cite: ruaud_C18O_2022)"
+    },
+    {
+     "what": {
+      "value": "Inclination and position angles from visibility fitting",
+      "evidence": [
+       {
+        "loc": "3.2 Imaging Strategy",
+        "quote": "we adopt the values from (cite: Vioque_AGEPRO_X_dust_disks) for consistency among the AGE-PRO papers."
+       }
+      ]
+     },
+     "citation": "(cite: Vioque_AGEPRO_X_dust_disks)"
+    },
+    {
+     "what": {
+      "value": "Gas masses from DALI models for comparison",
+      "evidence": [
+       {
+        "loc": "5.3",
+        "quote": "The second set is from an accompanying AGE-PRO paper, (cite: Trapman_AGEPRO_V_gas_masses) (blue points)"
+       }
+      ]
+     },
+     "citation": "(cite: Trapman_AGEPRO_V_gas_masses)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Ruaud et al. 2022 thermochemical disk model tracks (Rc=30 and 100 AU) used to scale C18O luminosity to gas mass",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "The two sets of models correspond to different disk sizes, one set with outer radius $R_{\\rm out} = 100\\,{\\rm AU}$ and critical radius $R_c = 30\\,{\\rm AU}$"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA staff CASA pipeline per execution block, then self-calibration of continuum",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "The execution blocks were initially calibrated individually by the ALMA staff using the CASA pipeline version `6.2.1-7-pipeline`"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "6.2.1-7-pipeline (Band 6 and 7); 5.6.1-8-pipeline for archival Band 7",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "`6.2.1-7-pipeline` for both short and long baseline Band 6 and Band 7 data, and `5.6.1-8-pipeline` for archival Band 7 data."
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase-only iterations from solint 300s or inf, then one amplitude round; SNR improved ~50%",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "We start with a large solution interval (`solint=‘300s’` or `‘inf’`)"
+      },
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "Self-calibration improves the SNR for the disks in AGE-PRO Lupus sample by $\\sim 50\\%$ within a few iterations."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean; cvel2 for velocity regridding",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "we use the `tclean` task with an elliptical mask"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust 0.5 for continuum and 12CO; robust 1.0 for 13CO, C18O, N2H+ and other lines",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "a robust value of 1.0 is chosen to generate images for other lines."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "uvrange '>50klambda' for Band 6 (except Lupus 10); uvtaper for circularized beam",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "We also use the constraint of `uvrange = ‘>50klambda’` for Band 6 data"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Interactive manual Keplerian masks with inflated Mstar, Rmax and emitting heights (z0/r1 0.23, 0.15, 0.10)",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "The `CLEAN` masks for the `tclean` tasks are adjusted manually in `interactive` mode and checked channel by channel by visual inspection"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum subtracted from self-calibrated visibilities",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "Then we subtract the continuum from these aligned and self-calibrated visibilities"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "Channels between -19.0 and 21.0 km/s flagged as line",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "we flag channels with velocities between -19.0 and 21.0 km s$^{-1}$ as spectral lines"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Short-baseline self-calibrated data concatenated with long baseline, then jointly self-calibrated",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "we concatenate the self-calibrated short-baseline data with the long-baseline data."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "imsmooth to perfectly circularize beam after uv taper",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "then we apply `imsmooth` to make a perfectly circularized image."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "Continuum ~0.1 mJy",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "typical noise level of $\\sigma \\sim 0.1 \\,\\mathrm{mJy}$ generated with robust = 0.5"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction procedure and scripts",
+      "evidence": [
+       {
+        "loc": "3. Data Reduction",
+        "quote": "The data reduction procedure is described in detail in the overview paper (cite: Zhang_AGEPRO_I_overview)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Zhang_AGEPRO_I_overview)"
+    },
+    {
+     "what": {
+      "value": "CLEAN stopping criterion rationale",
+      "evidence": [
+       {
+        "loc": "3.2 Imaging Strategy",
+        "quote": "More details on why we choose this `CLEAN` criterion is discussed in the accompanying AGE-PRO overview paper (cite: Zhang_AGEPRO_I_overview)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Zhang_AGEPRO_I_overview)"
+    },
+    {
+     "what": {
+      "value": "Curve-of-growth flux and radius method",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "measured from the curve-of-growth method following the same method adopted in the literature"
+       }
+      ]
+     },
+     "from_reference": "(cite: Ansdell_2016ApJ_Lupus; Ansdell_Lupus_2018ApJ; Andrews_DSHARP_2018ApJ...869L..41A; Sanchis_Lupus_radius_2021A&A...649A..19S)"
+    },
+    {
+     "what": {
+      "value": "Bayesian stellar mass/age inference",
+      "evidence": [
+       {
+        "loc": "2.1",
+        "quote": "We adopt a Bayesian framework as in (cite: Pascucci2016_massrelation)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Pascucci2016_massrelation)"
+    },
+    {
+     "what": {
+      "value": "Kendall tau test with censored data",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "To test whether correlations are present we follow (cite: pascucci_largedisks_2023)"
+       }
+      ]
+     },
+     "from_reference": "(cite: pascucci_largedisks_2023)"
+    },
+    {
+     "what": {
+      "value": "Spectral index error procedure",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "The errors are estimated with the same procedure described in (cite: Chiang_spectralindex_2012)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Chiang_spectralindex_2012)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact self-calibration solint sequence and number of iterations per source",
+    "Image size and cell size for tclean",
+    "Multiscale scales or deconvolver choice",
+    "Spectral windows used and exact channel flags per execution",
+    "Flux calibrator names and flux scale uncertainty",
+    "Final per-source beam sizes for non-circularized images",
+    "Details of aperture selection for 13CO/C18O spectra",
+    "Uncertainty prior details for stellar mass/age grids beyond uniform priors"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Derive stellar masses and ages",
+    "method": {
+     "value": "Bayesian inference on HR-diagram with evolutionary tracks",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "we use non-magnetic tracks: from (cite: baraffe_stellar_model_2015) for targets with $T_{\\rm eff} < 3900\\,{\\rm K}$ and from (cite: Feiden_YSO_tracks_2016) for hotter stars"
+      }
+     ]
+    },
+    "software": [
+     "ysoisochrone"
+    ],
+    "key_parameters": [
+     {
+      "value": "uniform priors on model properties; Teff and L* uncertainties from Alcala et al.",
+      "evidence": [
+       {
+        "loc": "2.1",
+        "quote": "The conditional likelihood function assumes uniform priors on the model properties"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Masses consistent with literature",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "The $M_{\\star}$ estimated here are consistent with the ones reported in the literature"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Calibrate and self-calibrate continuum visibilities",
+    "method": {
+     "value": "Pipeline calibration, flag line channels, average to 125 MHz, phase then amplitude self-cal, apply to line data, subtract continuum",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "averaging into a maximum 125 MHz channel width"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image continuum and lines",
+    "method": {
+     "value": "tclean with Keplerian masks, robust 0.5 or 1.0, circularized versions for radii",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "The line images are then produced with the `tclean` task."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean",
+     "cvel2"
+    ],
+    "key_parameters": [
+     {
+      "value": "velocity spacing 0.1 km/s for 12CO, 0.2 km/s other lines; CLEAN to 1 sigma",
+      "evidence": [
+       {
+        "loc": "3.2 Imaging Strategy",
+        "quote": "The emission is `CLEANed` down to $1 \\times \\mathrm{RMS}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Check detections with spectra and stacked profiles",
+    "method": {
+     "value": "Velocity-stacked spectra and radial profiles de-projected with disk geometry",
+     "evidence": [
+      {
+       "loc": "4.1 Band 6 Images",
+       "quote": "We also use `GoFish` code (cite: GoFish) to generate: i) the velocity-stacked spectra"
+      }
+     ]
+    },
+    "software": [
+     "GoFish"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Measure fluxes and radii",
+    "method": {
+     "value": "Curve-of-growth on moment 0 maps with elliptical apertures; R68 and R90; cloud-contamination correction using uncontaminated half doubled for Lupus 2, 3, 6",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "We report the $R\\mathrm{_{68}}$ and $R\\mathrm{_{90}}$ at the radius where the curve-of-growth flux is 68% and 90% of the total flux."
+      }
+     ]
+    },
+    "software": [
+     "bettermoments"
+    ],
+    "key_parameters": [
+     {
+      "value": "Rmax enlarged 1.5x for moment 0 masks",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "but with $1.5\\times$ larger $R_\\mathrm{max}$ to make sure all the emission is included"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "RMS uncertainties checked by bootstrapping (N=10^4) on Band 6 CO cubes",
+     "evidence": [
+      {
+       "loc": "Appendix 11",
+       "quote": "We bootstrap the emission-free part of the datacube for $N=10^{4}$ times"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive dust masses and spectral indices",
+    "method": {
+     "value": "Optically thin M_dust = d^2 F / (B_nu(T) kappa); alpha_mm from 234 and 285 GHz",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "assuming the dust continuum fluxes are optically thin and derive the dust disk masses from the equation"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T_dust = 20 K, kappa = 2.3 (nu/230 GHz) cm^2/g",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "We adopt the average dust temperature of 20 K, and the dust opacity as $\\kappa_\\nu = 2.3\\,(\\nu/{\\rm 230\\,GHz})\\,{\\rm cm^2\\,g^{-1}}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Test flux correlations",
+    "method": {
+     "value": "Kendall tau with censored data including uncertainties and upper limits",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "use the `pymccorrelation` routine v0.2.5 which carries out the non-parametric Kendall’s $\\tau$ test with censored data"
+      }
+     ]
+    },
+    "software": [
+     "pymccorrelation"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Estimate gas disk masses from C18O luminosity",
+    "method": {
+     "value": "Linear scaling of Ruaud et al. 2022 track at same dust mass: Mgas = Mgas,model x L_obs/L_model; Rc=100 AU model for Lupus 1, 2, 10, Rc=30 AU for others",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "we linearly scale the model track that has the same dust disk mass to match each source to derive the gas disk masses"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Uncertainties assigned manually as x3 and x1/3",
+      "evidence": [
+       {
+        "loc": "5.3",
+        "quote": "with the upper and lower limits of $M_{\\rm gas, derived} \\times 3$ and $\\times 1/3$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with DALI masses of Miotello 2017 and Trapman et al. 2025",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "there is good agreement for the mass estimates in (cite: Trapman_AGEPRO_V_gas_masses) and the values inferred from the (cite: ruaud_C18O_2022) tracks"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "pipeline 6.2.1-7 and 5.6.1-8",
+    "used_for": {
+     "value": "Calibration and imaging (tclean, cvel2, uvtaper, imsmooth)",
+     "evidence": [
+      {
+       "loc": "3.1 Calibration Strategy",
+       "quote": "using the CASA pipeline version `6.2.1-7-pipeline`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ysoisochrone",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stellar mass and age estimates",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "we use a new `Python` package `ysoisochrone`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "Velocity-stacked spectra and radial profiles",
+     "evidence": [
+      {
+       "loc": "4.1 Band 6 Images",
+       "quote": "We also use `GoFish` code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "First-moment maps and bootstrapping collapse",
+     "evidence": [
+      {
+       "loc": "Appendix 8",
+       "quote": "Here we use the `bettermoments`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "pymccorrelation",
+    "version": "v0.2.5",
+    "used_for": {
+     "value": "Kendall tau correlation tests with censored data",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "use the `pymccorrelation` routine v0.2.5"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Thermochemical models used by comparison works",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "both based on `DALI` (`DustAndLInes`) thermochemical models"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Band 6 234 GHz continuum flux, Lupus 10",
+    "value": "220.2",
+    "uncertainty": "0.5",
+    "units": "mJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4.3 fluxes",
+      "quote": "| Lupus 10 | 220.2$\\pm$0.5 | 382.7$\\pm$0.1 | 2.80$\\pm$0.01 | 149.32 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass, Lupus 10",
+    "value": "149.32",
+    "uncertainty": "not stated",
+    "units": "M_earth",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4.3 fluxes",
+      "quote": "| Lupus 10 | 220.2$\\pm$0.5 | 382.7$\\pm$0.1 | 2.80$\\pm$0.01 | 149.32 |"
+     }
+    ]
+   },
+   {
+    "quantity": "C18O 2-1 flux, Lupus 10",
+    "value": "970.0",
+    "uncertainty": "21.5",
+    "units": "mJy km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4.3 fluxes",
+      "quote": "970.0$\\pm$21.5$^{d}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ 3-2 flux, Lupus 2",
+    "value": "288.2",
+    "uncertainty": "6.4",
+    "units": "mJy km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4.3 fluxes",
+      "quote": "| Lupus 2 | 76.4$\\pm$0.1 | 109.4$\\pm$0.1 | 1.83$\\pm$0.01 | 49.96 | 2602.3$\\pm$10.4 | 3359.2$\\pm$9.0 | 574.4$\\pm$9.1 | 77.0$\\pm$6.1 | 288.2$\\pm$6.4 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral index, Lupus 1 after correction",
+    "value": "~2.0 (Band 7 archival flux corrected by factor 1.22)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "We find its flux density is off by a factor of 1.22 based on the analysis on Lupus 8"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas/dust radius ratio for Lupus 2 and 10",
+    "value": "~2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "their CO gas radii are about two times their dust radii (this is true for both $R_{68}$ and $R_{90}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Kendall p, C18O vs 234 GHz continuum",
+    "value": "2.47",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "positively correlated with $F_{\\rm 234\\,GHz\\,cont.}$ with $p \\sim 2.47\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Detection rate of 13CO / C18O vs earlier Band 6 survey",
+    "value": "10% to 100% and 0% to 90%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5. Discussion",
+      "quote": "AGE-PRO increases the detection rates of the rare isotopologue $\\mathrm{{}^{13}CO}$ and $\\mathrm{C^{18}O}$ from 10% to 100% and from 0% to 90%, respectively."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "AGE-PRO Lupus sample is representative of M3-K6 Lupus disks (K-S tests)",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "suggesting that the AGE-PRO sample is representative of the Lupus disks in the M3-K6 SpT range."
+     }
+    ]
+   },
+   {
+    "value": "Lupus 3 is an outlier, possibly CO depleted",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Lupus 3 shows enhanced $\\mathrm{N_2H^+}$ emission and may be depleted in CO."
+     }
+    ]
+   },
+   {
+    "value": "Gas-to-dust mass ratios between 10-100",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "gas-to-dust mass ratios are between $10-100$ in the AGE-PRO Lupus sample."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are CO isotopologue fluxes correlated with continuum flux?",
+    "experiment": "Kendall tau with censored data on Band 6 and 7 fluxes",
+    "result": "Positive correlations, p<1% for 12CO and 13CO; p~2.47% for C18O",
+    "finding": "Strong correlations between CO line fluxes and continuum",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "We find that all three CO isotopologue fluxes are positively correlated with the continuum fluxes (positive $\\tau$ and p$< 1$%)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do Lupus disks have similar CO abundance?",
+    "experiment": "Compare C18O and N2H+ fluxes",
+    "result": "Correlation with p<1% when excluding Lupus 3",
+    "finding": "Similar CO abundance except Lupus 3",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "By excluding Lupus 3 from the analysis, we find a positive correlation between $F_{\\mathrm{C^{18}O\\,(2-1)}}$ and $F_{\\mathrm{N_2H^+\\,(3-2)}}$ with $p<1\\%$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there significant radial drift in the resolved disks?",
+    "experiment": "Compare 12CO and continuum R68 and R90 for Lupus 2 and 10",
+    "result": "R_gas ~ 2 R_dust",
+    "finding": "No evidence of significant radial drift for large disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "Here we conclude that there is no evidence of significant radial drift for the large disks in our sample."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do C18O-based gas masses agree with Trapman et al. DALI masses?",
+    "experiment": "Scale Ruaud et al. tracks to C18O luminosities",
+    "result": "Good agreement for massive disks; differences below ~5x for small ones",
+    "finding": "Consistent within uncertainties",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "we still find reasonable concurrence for the disk masses between the (cite: ruaud_C18O_2022) and the (cite: Trapman_AGEPRO_V_gas_masses) models, with differences smaller than a factor of $\\sim 5$"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Robust 1.0 for weak lines to boost SNR and total fluxes",
+    "evidence": [
+     {
+      "loc": "3.2 Imaging Strategy",
+      "quote": "to boost the SNR and provide more accurate total fluxes, a robust value of 1.0 is chosen to generate images for other lines."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Robust 0.5 for weak lines rejected for low SNR",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging Strategy",
+       "quote": "the robust value of 0.5 resulted in a low SNR"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Radii are image-plane and not beam-deconvolved, so upper limits for unresolved disks",
+     "evidence": [
+      {
+       "loc": "5. Discussion",
+       "quote": "the AGE-PRO radii summarized here should be considered upper limits for unresolved disks"
+      }
+     ]
+    },
+    {
+     "value": "Gas mass uncertainties assigned manually from sparse model tracks",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "The uncertainties of these estimated masses are manually assigned to cover nearly an order of magnitude"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Gas masses rest on a very sparse model grid with arbitrary factor-3 uncertainties",
+    "Cloud contamination correction (doubling one half) is crude",
+    "Optically thin dust assumption with fixed 20 K temperature",
+    "Only 10 sources; correlation significance sensitive to outlier Lupus 3 and upper limits"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Products and scripts on AGE-PRO website; archival data from ALMA",
+    "evidence": [
+     {
+      "loc": "3.1 Calibration Strategy",
+      "quote": "The data products, continuum+line measurement sets and data reduction scripts are available for download from the AGE-PRO website."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Bootstrapping script released on Zenodo; data reduction scripts on AGE-PRO website",
+     "evidence": [
+      {
+       "loc": "Appendix 11",
+       "quote": "We provide the `Python` script [^7](cite: trapman_2025_ageproobs_pythoncode) to the community"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Image/cell sizes and exact tclean parameters",
+    "Self-calibration per-source details",
+    "Ruaud et al. 2022 model grid values",
+    "Exact apertures used"
+   ],
+   "estimated_data_volume_inferred": "Several hundred GB raw for ~20+ execution blocks; ~tens of GB with calibrated products",
+   "score_inferred": 6,
+   "score_reason": "Data and scripts are public and the flux methods are clear, but many tclean and self-cal settings sit in the overview paper or scripts and the gas masses depend on an external model grid.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are public, the flux measurement recipe is clear and results are numeric (fluxes, radii, dust masses)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Zhang_AGEPRO_I_overview)",
+     "why": "Data reduction and curve-of-growth details"
+    },
+    {
+     "citation": "(cite: Trapman_2025_ageproobs_pythoncode)",
+     "why": "Bootstrapping flux uncertainty code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Trapman_AGEPRO_V_gas_masses)",
+     "why": "DALI gas masses compared here"
+    },
+    {
+     "citation": "(cite: Vioque_AGEPRO_X_dust_disks)",
+     "why": "Dust disk geometry and radii from visibility fitting"
+    },
+    {
+     "citation": "(cite: Trapman_AGEPRO_XI_gas_disk_sizes)",
+     "why": "Beam-deconvolved gas sizes"
+    },
+    {
+     "citation": "(cite: Kurtovic_AGEPRO_VI_DustEvolution)",
+     "why": "Dust evolution from spectral indices"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "AGE-PRO",
+    "Ophiuchus (AGE-PRO II)",
+    "Upper Sco (AGE-PRO IV)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-1ae5bdb392a9a007987f66870224508c",
+  "batch_id": "msgbatch_011QjbLPHqMEK6drDa6QExga",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:40:50",
+  "usage": {
+   "input_tokens": 61756,
+   "output_tokens": 12601,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.125367,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 94,
+  "quotes_ok": 94,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 4,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 96,
+   "stated": 66,
+   "rate": 0.688
+  },
+  "evidence_ok": true
+ }
+}

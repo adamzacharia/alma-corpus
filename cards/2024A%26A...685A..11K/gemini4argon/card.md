@@ -1,0 +1,293 @@
+# An empirical view of the extended atmosphere and inner envelope of the asymptotic giant branch star R Doradus. I. Physical model based on CO lines
+
+`2024A&A...685A..11K` | Astronomy and Astrophysics 2024 | first author: Khouri, T. | arXiv: 2402.13676 | DOI: 10.1051/0004-6361/202348382
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: evolved_stars, stellar_physics
+- Question: Determine the density, temperature, and velocity distributions of the gas in the extended atmosphere and inner circumstellar envelope of the AGB star R Doradus.  
+  > "We aim to determine the density, temperature, and velocity distributions of the gas in the extended atmosphere of the AGB star R Dor." (abstract)
+- Target **R Doradus**: coordinates _not stated_; z/distance 59 pc  
+  > "The distance determined from the Hipparcos parallax (62 ± 3 pc, Perryman & ESA 1997) is in good agreement with the distance derived by reanalysing the Hipparcos measurements, 59 pc (Knapp et al. 2003)." (2. R Dor); "To be consistent with previous derivations of the mass-loss rate, we adopt a distance of 59 pc in this study." (2. R Dor); distance from Knapp et al. 2003  
+  > "The distance determined from the Hipparcos parallax (62 ± 3 pc, Perryman & ESA 1997) is in good agreement with the distance derived by reanalysing the Hipparcos measurements, 59 pc (Knapp et al. 2003)." (2. R Dor); "To be consistent with previous derivations of the mass-loss rate, we adopt a distance of 59 pc in this study." (2. R Dor)
+
+## Data provenance
+
+- ALMA projects: 2017.1.00824.S, 2017.1.00191.S, 2017.1.00595.S
+- bands: Band 6, Band 7  
+  > "R Dor was observed using ALMA in Band 6 (project ID 2017.1.00824.S, PI Decin) on October 24 and in Band 7 (project ID 2017.1.00191.S, PI Khouri) on November 9, 2017." (3. Observations)
+- frequencies and spectral setup: _not stated_
+- continuum bandwidth: _not stated_
+- arrays: main array, Atacama Compact Array (ACA), and total-power telescopes  
+  > "The highest-resolution images of the CO v = 0, J = 2 - 1 line towards R Dor that can be used for this purpose, and are available in the ALMA archive, were acquired with the Atacama Compact Array (ACA) and the total-power telescopes on Jan 1, 2018 (project ID 2017.1.00595.S)." (5.1. Missing flux); "These ACA data were obtained about two months later than the main array observations we focus on." (5.1. Missing flux)
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: ~28 mas (Band 6), ~20 mas (Band 7), 6''.9 x 5''.0 (ACA)  
+  > "The synthesised beams are ~ 28 mas and ~ 20 mas for the observations in bands 6 and 7, respectively." (3. Observations); "The beam has major and minor axis of 6''.9 and 5''.0, respectively, and a position angle of 78 degrees." (3. Observations)
+- max recoverable scale: 0''.6 (Band 6), 0''.42 (Band 7), ~31''.5 (ACA)  
+  > "The ALMA observations are not sensitive to emission smooth on scales of >= 0''.6 and >= 0''.42 for the observations in Bands 6 and 7, which corresponds to regions of radius ~ 10 and ~ 7 R_887um^*, respectively." (3. Observations); "The maximum recoverable scale of the maps obtained with the ACA is approximately 31''.5." (3. Observations)
+- sensitivity: _not stated_
+- time on source: _not stated_
+- observing dates: October 24, 2017 (Band 6); November 9, 2017 (Band 7); Jan 1, 2018 (ACA)  
+  > "R Dor was observed using ALMA in Band 6 (project ID 2017.1.00824.S, PI Decin) on October 24 and in Band 7 (project ID 2017.1.00191.S, PI Khouri) on November 9, 2017." (3. Observations); "The highest-resolution images of the CO v = 0, J = 2 - 1 line towards R Dor that can be used for this purpose, and are available in the ALMA archive, were acquired with the Atacama Compact Array (ACA) and the total-power telescopes on Jan 1, 2018 (project ID 2017.1.00595.S)." (5.1. Missing flux)
+- pi or archival as stated: PI Khouri (2017.1.00191.S), PI Decin (2017.1.00824.S), PI Ramstedt (2017.1.00595.S); products and calibrated measurement sets from ALMA archive  
+  > "R Dor was observed using ALMA in Band 6 (project ID 2017.1.00824.S, PI Decin) on October 24 and in Band 7 (project ID 2017.1.00191.S, PI Khouri) on November 9, 2017." (3. Observations); "As discussed in Section 5.1, we also use observations obtained with the Atacama Compact Array (ACA) in the context of project ID 2017.1.00595.S (PI Ramstedt) to constrain the large-scale emission of the low-excitation lines." (3. Observations); "We recovered the cubes comprising the lines mentioned above from the products associated with the projects in the ALMA archive." (3. Observations)
+- Line: 12CO v = 0, J = 2 - 1 (not stated)
+- Line: 12CO v = 1, J = 2 - 1 (not stated)
+- Line: 12CO v = 1, J = 3 - 2 (not stated)
+- Line: 13CO v = 0, J = 3 - 2 (not stated)
+- Line: SO2 eight lines (six in Band 7 and two in Band 6) (not stated)
+- External data: Stellar continuum diameter (~62.2 mas, radius R_887um^* = 1.835 AU = 2.7e10 m) and brightness temperature (~2370 K) at ~338 GHz (~887 um)  
+  > "Using the same Band 7 data employed in this paper, Vlemmings et al. (2019) studied the stellar continuum at ~ 338 GHz (~ 887 um). They report a size of ~ 62.2 mas and a brightness temperature at this frequency of ~ 2370 K between 330.15 and 344.17 GHz." (2. R Dor); "We use the stellar radius measured at 887 um, R_887um^* = 1.835 AU = 2.7 x 10^10 m, as a reference size in our calculations." (2. R Dor) [from Vlemmings et al. (2019)]
+- External data: CO collisional excitation rates up to J = 40 in v = 0, 1, 2  
+  > "The excitation of CO was calculated in non-local-thermodynamical (non-LTE) conditions by considering radiative and collisional excitation in rotational levels up to J = 40 in the ground, first and second vibrational states. The collisional rates employed are those provided by Castro et al. (2017)." (5. Modelling strategy) [from Castro et al. (2017)]
+- External data: Rotation of the star and inner circumstellar envelope (2 km/s about the south-north axis)  
+  > "The only non-spherically symmetric feature we included in our models from the start is the rotation of the star and the inner circumstellar envelope reported by Vlemmings et al. (2018). This is implemented as a 2 km/s rotation about the south-north axis." (5. Modelling strategy) [from Vlemmings et al. (2018)]
+- External data: Large-scale envelope mass-loss rate (~10^-7 M_sun yr^-1), expansion velocity (~5.5 km/s), and initial outer temperature profile  
+  > "In our model for the outermost region, the gas density and radial velocity match those expected from extrapolating inwards the mass-loss rate (~ 10^-7 M_sun yr^-1) and expansion velocity (~ 5.5 km/s) derived from models for the large-scale envelope (Van de Sande et al. 2018)." (5.2. Physical structure of the model) [from Van de Sande et al. (2018)]
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: calibrated measurement sets provided by ESO  
+  > "The CO v = 1, J = 3 - 2 and the 13CO v = 0, J = 3 - 2 lines were imaged using CASA 5.7 and the calibrated measurement sets provided by ESO." (3. Observations)
+- casa version: CASA 5.7 / 5.7.2  
+  > "The CO v = 1, J = 3 - 2 and the 13CO v = 0, J = 3 - 2 lines were imaged using CASA 5.7 and the calibrated measurement sets provided by ESO." (3. Observations); "We use CASA version 5.7.2 and the simalma task to create the synthetic visibilities for the appropriate array configurations." (5.1. Missing flux)
+- pipeline version: _not stated_
+- archive products used as is: CO v = 0, J = 2 - 1 and CO v = 1, J = 2 - 1 line cubes obtained from the ALMA archive  
+  > "We recovered the cubes comprising the lines mentioned above from the products associated with the projects in the ALMA archive." (3. Observations); "The CO v = 0 and v = 1 J = 2 - 1 line cubes were obtained from the ALMA archive." (3. Observations)
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: _not stated_
+
+### Imaging
+
+- task: tclean (used for synthetic visibilities)  
+  > "These synthetic visibilities were imaged using the task tclean to produce the synthetic cubes." (5.1. Missing flux)
+- deconvolver: _not stated_
+- weighting robust: _not stated_
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: continuum-subtracted line emission maps produced  
+  > "The brightness distribution in the continuum-subtracted CO lines integrated in frequency shows a bright, thin ring surrounded by weaker, more extended emission (Fig. 1)." (4.1. Line emission)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: ~28 mas (Band 6), ~20 mas (Band 7), 6''.9 x 5''.0, PA 78 deg (ACA)  
+  > "The synthesised beams are ~ 28 mas and ~ 20 mas for the observations in bands 6 and 7, respectively." (3. Observations); "The beam has major and minor axis of 6''.9 and 5''.0, respectively, and a position angle of 78 degrees." (3. Observations)
+- final rms: 0.4 mJy GHz/beam in Band 7 moment-zero maps of CO v=1, J=3-2 and 13CO v=0, J=3-2  
+  > "The root-mean-square noise is 0.4 mJy x GHz/beam in both images." (Figure 4 caption)
+
+### Inherited from earlier work
+
+- Distance of 59 pc  
+  > "The distance determined from the Hipparcos parallax (62 ± 3 pc, Perryman & ESA 1997) is in good agreement with the distance derived by reanalysing the Hipparcos measurements, 59 pc (Knapp et al. 2003)." (2. R Dor); "To be consistent with previous derivations of the mass-loss rate, we adopt a distance of 59 pc in this study." (2. R Dor) [from Knapp et al. 2003]
+- Stellar radius at 887 um (1.835 AU) and continuum brightness temperature (2370 K)  
+  > "Using the same Band 7 data employed in this paper, Vlemmings et al. (2019) studied the stellar continuum at ~ 338 GHz (~ 887 um). They report a size of ~ 62.2 mas and a brightness temperature at this frequency of ~ 2370 K between 330.15 and 344.17 GHz." (2. R Dor); "We approximate the central star by a black-body source with a temperature of 2370 K, based on the measurement of the stellar-continuum brightness temperature from the Band 7 observations (Vlemmings et al. 2019)." (5.4. Central star and radiation field) [from Vlemmings et al. (2019)]
+- Rotation of the star and inner circumstellar envelope (2 km/s about the south-north axis)  
+  > "The only non-spherically symmetric feature we included in our models from the start is the rotation of the star and the inner circumstellar envelope reported by Vlemmings et al. (2018). This is implemented as a 2 km/s rotation about the south-north axis." (5. Modelling strategy) [from Vlemmings et al. (2018)]
+- Outer wind mass-loss rate (~10^-7 M_sun yr^-1) and terminal expansion velocity (5.5 km/s)  
+  > "In our model for the outermost region, the gas density and radial velocity match those expected from extrapolating inwards the mass-loss rate (~ 10^-7 M_sun yr^-1) and expansion velocity (~ 5.5 km/s) derived from models for the large-scale envelope (Van de Sande et al. 2018)." (5.2. Physical structure of the model) [from Van de Sande et al. (2018)]
+- Population diagram procedure for deriving SO2 excitation temperature  
+  > "We derived an excitation temperature by fitting the distribution of level populations of SO2 molecules following the procedure described in Goldsmith & Langer (1999)." (6.6.1. Inner northwest blob) [from Goldsmith & Langer (1999)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Imaging parameters for CASA 5.7 imaging of the Band 7 lines and synthetic visibilities (weighting/robust parameter, cell size, image size, clean threshold, masking, continuum subtraction method/channels).
+- Exact ALMA antenna configuration files and integration times passed to CASA simalma.
+- Specific rotational transitions and rest frequencies of the eight SO2 lines used for the rotational diagram analysis of the two blobs.
+- LIME grid setup parameters (number of grid points, sink points, outer boundary radius of the computational domain, dust opacity inclusion if any).
+
+## Analysis recipe
+
+1. **Constrain stochastic velocity and systemic velocity of the large-scale outflow from sharp absorption feature**: Isolate the narrow CO v = 0, J = 2 - 1 absorption feature at ~1.9 km/s in a 45 mas aperture spectrum under two extreme baseline interpolation scenarios, and fit a Gaussian profile.  
+  > "The spectra without the absorption feature from the large-scale outflow were created by interpolating the profile in the region of the feature, as shown by the dashed lines in Fig. 3." (4.2.1. Absorption from the large-scale envelope); "In order to retrieve the broadness of the absorption profile in the large-scale envelope, we fitted a gaussian function to the spectra created as described above." (4.2.1. Absorption from the large-scale envelope)
+   - software: SciPy (optimize.curve_fit)
+   - parameter: Aperture diameter = 45 mas  
+  > "Spectrum of the CO v = 0, J = 2 - 1 line extracted from an aperture with a diameter of 45 mas towards the star (blue histogram)." (Figure 3 caption)
+   - assumption: Terminal expansion velocity of 5.5 km/s  
+  > "The central velocity of the fitted profile implies a systemic velocity of 7.4 km/s given the expansion velocity of 5.5 km/s reported in the literature." (4.2.1. Absorption from the large-scale envelope)
+   - fitting: Non-linear least squares Gaussian fit using SciPy optimize.curve_fit  
+  > "The best fits were obtained using the curve_fit function of the optimize module in the SciPy (Virtanen et al. 2020) package." (4.2.1. Absorption from the large-scale envelope)
+   - validation: Tested two extreme interpolation scenarios for the underlying atmospheric absorption depth  
+  > "We consider two extreme scenarios to isolate the absorption in the outer envelope: i) the absorption feature of the outer wind corresponds to only the line that can be clearly discerned in the absorption profile (green line in Fig. 3), or ii) it extends deep into the profile (yellow line in Fig. 3)." (4.2.1. Absorption from the large-scale envelope)
+2. **Model the large-scale outflow using ACA observations**: Compute 3D radiative transfer models in LIME, convolve with the ACA beam, and fit to the CO v = 0, J = 2 - 1 spectrum from the central ACA beam by varying the outer temperature power-law exponent.  
+  > "We obtain a spherically symmetric model that fits the large scales probed by the ACA observations. When comparing the large-scale model and the observations, we convolved the model with the ACA beam." (5.3. Modelling approach); "We varied the exponent of the temperature profile in the outflow, epsilon_Outer, to fit the emission in the CO J = 2 - 1 line in the central beam of the ACA observations." (5.2. Physical structure of the model)
+   - software: LIME
+   - parameter: R_in^Outer = 5.0 R_887um^*, T_0^Outer = 400 K, n_0^Outer = 4 x 10^7 cm^-3, v_0 = 2.0 km/s, v_f = 5.5 km/s from 10 R_887um^*  
+  > "5.0 x R_887um^*" (Table 1); "400 K" (Table 1); "4 x 10^7 cm^-3" (Table 1)
+   - assumption: Mass-loss rate ~10^-7 M_sun yr^-1, terminal expansion velocity 5.5 km/s reached via linear acceleration from 5 to 10 R_887um^*, CO/H2 = 4 x 10^-4  
+  > "In our model for the outermost region, the gas density and radial velocity match those expected from extrapolating inwards the mass-loss rate (~ 10^-7 M_sun yr^-1) and expansion velocity (~ 5.5 km/s) derived from models for the large-scale envelope (Van de Sande et al. 2018)." (5.2. Physical structure of the model); "We assume an expansion velocity of 2.0 km/s at the inner radius of the outermost region of the model (R_in^Outer) and a linear acceleration profile that reaches the maximum expansion velocity at 10 R_887um^*." (5.2. Physical structure of the model); "We adopt an abundance of CO relative to H2 by number equal to 4 x 10^-4 throughout the paper." (5. Modelling strategy)
+   - fitting: Visual comparison to central ACA beam spectrum, iteratively adjusting T_0^Outer and epsilon^Outer to maintain temperature continuity with the intermediate layer  
+  > "We adjust the large-scale model to make the temperature profile continuous, while still fitting the ACA observations. This consists of setting T_0^Outer to the temperature value at the outer radius of the intermediate region. Then, epsilon^Outer had to be modified to fit the lines observed by the ACA." (5.3. Modelling approach)
+   - validation: Checked that model produces sufficient emission at the systemic velocity to accurately account for interferometer filtering  
+  > "Particular care was taken to select a model which produced enough emission at the systemic velocity, because the emission region at this projected velocity is expected to be the largest." (6.1. Model for the large-scale outflow)
+3. **Model the inner and intermediate circumstellar envelope in 3D radiative transfer and simulate ALMA observations**: Calculate 3D non-LTE (for 12CO) and LTE (for 13CO) radiative transfer models with LIME using a three-zone power-law density and temperature structure and linear velocity laws, simulate interferometric visibilities for v=0 lines with CASA simalma and image with tclean, and modify the far-side velocity field to match asymmetric line profiles.  
+  > "Hence, we consider LTE for calculating the excitation of 13CO and non-LTE for calculating the excitation of CO, for which vibrationally excited lines are also observed." (5. Modelling strategy); "We use CASA version 5.7.2 and the simalma task to create the synthetic visibilities for the appropriate array configurations. These synthetic visibilities were imaged using the task tclean to produce the synthetic cubes." (5.1. Missing flux); "We investigate mismatches between our best model and observations that imply departure from spherical symmetry and we modify the velocity field to address two of these issues, as discussed in Section 6.4." (5.3. Modelling approach)
+   - software: LIME, CASA, simalma, tclean
+   - parameter: Five extraction aperture diameters: 45, 90, 135, 180, and 240 mas; stochastic velocity = 4 km/s in inner and intermediate regions; rotation = 2 km/s  
+  > "As shown in Fig. 2 and presented in Section 6.2, the best model is chosen by comparison by eye to the observed line profiles extracted from five different aperture sizes (45, 90, 135, 180, and 240 mas)." (5.3. Modelling approach); "We consider a stochastic velocity in the inner and intermediate regions of 4 km/s." (5.2. Physical structure of the model); "This is implemented as a 2 km/s rotation about the south-north axis." (5. Modelling strategy)
+   - assumption: Central black-body star with T = 2370 K and R_887um^* = 1.835 AU; CO/H2 = 4 x 10^-4; rotational levels up to J = 40 in v = 0, 1, 2  
+  > "We approximate the central star by a black-body source with a temperature of 2370 K, based on the measurement of the stellar-continuum brightness temperature from the Band 7 observations (Vlemmings et al. 2019)." (5.4. Central star and radiation field); "The excitation of CO was calculated in non-local-thermodynamical (non-LTE) conditions by considering radiative and collisional excitation in rotational levels up to J = 40 in the ground, first and second vibrational states." (5. Modelling strategy); "We adopt an abundance of CO relative to H2 by number equal to 4 x 10^-4 throughout the paper." (5. Modelling strategy)
+   - fitting: Comparison by eye to spectra extracted from five aperture sizes (45, 90, 135, 180, 240 mas) and channel maps; 13CO fit by varying only 13CO abundance  
+  > "As shown in Fig. 2 for the best-fit model, the models were compared to the data cubes for each of the four transitions considered by matching spectra extracted from the observed and modelled cubes using five different aperture sizes (45, 90, 135, 180, and 240 mas), which correspond to sizes ranging from smaller than the stellar photosphere at mm wavelengths up to ~ 4 stellar radii in radius." (5.3. Modelling approach); "The model structure was constrained using the CO lines and the 13CO line was fit by only varying the 13CO abundance." (5. Modelling strategy)
+   - validation: Compared models with and without far-side velocity reversal and with and without simalma interferometric filtering  
+  > "Comparison between the CO v = 1, J = 3 - 2 (upper panel) and CO v = 0, J = 2 - 1 (lower panel) line profiles of the model with symmetric radial velocity field (green dashed line) and the model with an outflow with the modifications to the velocity field discussed in Sections 6.4.1 and 6.4.2 (yellow solid line)." (Figure 8 caption); "Hence, the comparison between the red dotted line and the yellow solid line shows how much flux is being resolved out by simulating the interferometric observations." (Figure 8 caption)
+4. **Assess model sensitivity and parameter uncertainties via grid calculations and derive region gas masses**: Run two independent grids of LIME models for the inner (125 models) and intermediate (750 models) regions, convolve with ALMA beams, rank by sum of squared residuals against the best model in 5 apertures for CO v=0 J=2-1 and v=1 J=3-2, visually inspect top-ranked models, and integrate density profiles to obtain gas masses.  
+  > "The grid over the parameters for the inner and intermediate regions consisted of 125 and 750 models, respectively." (6.5. Model sensitivity assessment); "The models were ranked based on the sum of the squares of the residuals obtained from subtracting a given grid model from the best model from Section 6.2." (6.5. Model sensitivity assessment); "By integrating the profiles of the acceptable models from our sensitivity study (shown in Fig. 9), we obtain ~ (3 ± 1) x 10^-5 M_sun for the inner region and ~ 1.4 x 10^-6 M_sun, with an uncertainty of a factor of two, for the intermediate region." (7.3. Circumstellar gas mass)
+   - software: LIME
+   - parameter: 125 inner grid models (n_0, eta, epsilon) and 750 intermediate grid models (n_0, eta, epsilon, T_0)  
+  > "The grid over the parameters for the inner and intermediate regions consisted of 125 and 750 models, respectively." (6.5. Model sensitivity assessment)
+   - assumption: Discontinuous temperature profile allowed between regions in the grids; fixed velocity field and outer region parameters; beam convolution used instead of full simalma simulation  
+  > "Contrary to the models discussed up to this point, we did not require the temperature profile to be continuous in these calculations." (6.5. Model sensitivity assessment); "Both models were convolved with the respective ALMA beam before subtraction, but we did not perform simulation of ALMA observations with the respective array configuration for these comparisons." (6.5. Model sensitivity assessment)
+   - fitting: Sum of squared residuals relative to the best model followed by visual inspection of line profiles across five apertures  
+  > "The models were ranked based on the sum of the squares of the residuals obtained from subtracting a given grid model from the best model from Section 6.2." (6.5. Model sensitivity assessment); "Finally, we compared the top-ranked models by eye to judge whether the fits were indeed acceptable." (6.5. Model sensitivity assessment)
+   - validation: Visual verification of top-ranked residual models to reject unphysical trade-offs between small-aperture absorption and large-aperture emission  
+  > "The models shown in Fig. A.1 and A.2 exemplify why the selection based on the residuals was not enough to select acceptable models." (Appendix A: Model selection for grid calculation)
+5. **Characterise the physical properties, excitation temperatures, kinematics, and masses of the two emission blobs**: Extract CO v=0, J=2-1 and SO2 spectra towards the inner northwest blob (with southwest reference subtraction) and high-velocity southeast blob, fit Gaussian profiles to CO lines, fit SO2 rotational diagrams for excitation temperature, locate blobs radially using the model temperature profile, and derive gas masses and densities.  
+  > "We isolate the blob emission from that of the more extended outflow by subtracting the spectrum obtained towards the region in the southwest (away from the blob) from that obtained towards the northwest (towards the blob)." (6.6.1. Inner northwest blob); "To estimate the excitation temperature, we use eight SO2 lines, six in Band 7 and two in Band 6, identified in the spectrum extracted from the 60 mas aperture." (6.6.1. Inner northwest blob); "Similarly to the analysis of the inner northwest blob, we use seven SO2 lines in the ALMA Band 6 and Band 7 spectra towards the high-velocity blob to estimate the excitation temperature of SO2." (6.6.2. High-velocity southeast blob)
+   - software: SciPy (optimize.curve_fit)
+   - parameter: 60 mas diameter aperture at 0''.12 offset for inner blob; 0''.14 diameter aperture at 0''.36 offset for high-velocity blob  
+  > "Instead of attempting to integrate emission over the whole blob, we extracted spectra towards the blob using an aperture of 60 mas in diameter with a centre placed at 0.''12 (7.1 AU, 3.85 R_887um^*) from the centre of the star towards the northwest." (6.6.1. Inner northwest blob); "Using the spectrum extracted from an aperture of 0''.14 diameter towards the blob, we find an average line-of-sight velocity of the blob ~-14 km/s with respect to the systemic velocity." (6.6.2. High-velocity southeast blob)
+   - assumption: Optically thin CO emission in the blobs; CO excitation temperature equals SO2 excitation temperature equals model kinetic temperature at the blob radius  
+  > "Assuming optically thin emission towards the blob, an excitation temperature of CO of 550 K implies an excess gas mass of ~ 3 x 10^-8 M_sun is necessary to reproduce the emission measured within the 60 mas aperture towards the northwest with respect to the one towards the southwest (green line in Fig. 10)." (6.6.1. Inner northwest blob); "Assuming the excitation temperature for CO to be the same of SO2, we derive a gas mass of ~ 6 x 10^-8 M_sun. Additionally, the assumed excitation temperature of ~ 200 K is equal to the gas kinetic temperature in our model at ~ 16 R_887um^* from the star, implying an angle between the blob position and the plane of the sky ~ 45 deg." (6.6.2. High-velocity southeast blob)
+   - fitting: Population diagram fit using SciPy optimize.curve_fit following Goldsmith & Langer (1999); Gaussian fit to CO blob line profiles  
+  > "We derived an excitation temperature by fitting the distribution of level populations of SO2 molecules following the procedure described in Goldsmith & Langer (1999). The best fit and the associated uncertainty were obtained using the curve_fit function of the optimize module in the SciPy package." (6.6.1. Inner northwest blob)
+   - validation: Evaluated alternative orbital hypothesis for the high-velocity blob and rejected it based on Keplerian orbital speed (~7 km/s at 21.5 AU for 1.3 M_sun)  
+  > "The expected orbital velocities at 21.5 AU from a 1.3 M_sun star is ~ 7 km/s, considerably less than the observed velocity along the line of sight." (6.6.2. High-velocity southeast blob)
+
+## Software
+
+- **CASA** 5.7 / 5.7.2: Imaging CO v = 1, J = 3 - 2 and 13CO v = 0, J = 3 - 2 lines, and simulating and imaging synthetic ALMA visibilities via simalma and tclean  
+  > "The CO v = 1, J = 3 - 2 and the 13CO v = 0, J = 3 - 2 lines were imaged using CASA 5.7 and the calibrated measurement sets provided by ESO." (3. Observations); "We use CASA version 5.7.2 and the simalma task to create the synthetic visibilities for the appropriate array configurations." (5.1. Missing flux)
+- **simalma** : Creating synthetic visibilities of LIME models for the ALMA array configurations  
+  > "We use CASA version 5.7.2 and the simalma task to create the synthetic visibilities for the appropriate array configurations." (5.1. Missing flux)
+- **tclean** : Imaging synthetic visibilities to produce synthetic model cubes  
+  > "These synthetic visibilities were imaged using the task tclean to produce the synthetic cubes." (5.1. Missing flux)
+- **LIME** : 3D molecular excitation and radiative transfer modelling of CO and 13CO lines  
+  > "To constrain the properties and distribution of the gas, we calculated models to reproduce the observed spectral cubes using the 3D molecular excitation and radiative transfer code LIME (Brinch & Hogerheijde 2010)." (5. Modelling strategy)
+- **SciPy** : Fitting Gaussian functions to absorption profiles and fitting SO2 rotational population diagrams via optimize.curve_fit  
+  > "The best fits were obtained using the curve_fit function of the optimize module in the SciPy (Virtanen et al. 2020) package." (4.2.1. Absorption from the large-scale envelope); "The best fit and the associated uncertainty were obtained using the curve_fit function of the optimize module in the SciPy package." (6.6.1. Inner northwest blob)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Stochastic + thermal velocity dispersion in large-scale outflow | <= 0.4 | 2% | km/s | 1 | We find standard deviations for the gaussian functions of 0.43 and 0.32 km/s for scenarios i) and ii), respectively. The uncertainties on the derived values are at most at the 2% level. Hence, both scenarios imply a standard deviation of at most ~ 0.4 km/s. |
+| Systemic velocity from sharp absorption feature and inner-envelope lines | 7.4 | not stated | km/s | 1 | The central velocity of the fitted profile implies a systemic velocity of 7.4 km/s given the expansion velocity of 5.5 km/s reported in the literature.; To fit the line profiles of the inner regions, we apply a shift of 7.4 km/s to the modelled lines. |
+| Systemic velocity from ACA CO v=0, J=2-1 emission fit | 6.7 | not stated | km/s | 2 | To fit the line extracted from the central beam of the ACA observations, we find that our model requires a systemic velocity of 6.7 km/s and a value of epsilon^Outer approx 0.6 for a gas temperature at the inner radius of the outer region, T_0^Outer, approx 400 K, assuming a terminal velocity of 5.5 km/s. |
+| Inner region H2 density at inner boundary (n_0^Inner) | 3.5e11 | not stated | cm^-3 | 3 | n_0 None 3.5 x 10^11 cm^-3 < n_0^Inner 1 x 10^9 cm^-3 < n_0^Interm. 4 x 10^7 cm^-3 |
+| Inner region density power-law exponent (eta^Inner) | 7.0 | not stated | dimensionless | 3 | eta > 0 7.0 > 0 2.8 Linear acceleration up to 10 R_887um^* |
+| Inner region temperature power-law exponent (epsilon^Inner) | 2.0 | not stated | dimensionless | 3 | epsilon > 0 2.0 > 0 0.73 > 0 0.6 |
+| Boundary radius between inner and intermediate regions (R_in^Intermediate) | 1.6 | not stated | R_887um^* | 3 | We find the interface between the inner and intermediate region to be located at 1.6 R_887um^* and that between the intermediate and outer region to be located at 5.0 R_887um^*. |
+| Intermediate region H2 density at inner boundary (n_0^Interm) | 1e9 | not stated | cm^-3 | 3 | n_0 None 3.5 x 10^11 cm^-3 < n_0^Inner 1 x 10^9 cm^-3 < n_0^Interm. 4 x 10^7 cm^-3 |
+| Intermediate region density power-law exponent (eta^Interm) | 2.8 | not stated | dimensionless | 3 | eta > 0 7.0 > 0 2.8 Linear acceleration up to 10 R_887um^* |
+| Intermediate region temperature at inner boundary (T_0^Interm) | 940 | not stated | K | 3 | T_0 T^* T^* T at R_out^Inner 940 K T at R_out^Interm. 400 K |
+| Intermediate region temperature power-law exponent (epsilon^Interm) | 0.73 | not stated | dimensionless | 3 | epsilon > 0 2.0 > 0 0.73 > 0 0.6 |
+| 12CO/13CO isotopic ratio | 15 | not stated | dimensionless | 3 | We obtain a much better fit (shown in Fig. 2) using a 13CO abundance of 2.7 x 10^-5 relative to H2, which corresponds to a 12CO/13CO of 15. |
+| Gas mass in the inner region (1.0 to 1.6 R_887um^*) | 3e-5 | 1e-5 | M_sun | 4 | By integrating the profiles of the acceptable models from our sensitivity study (shown in Fig. 9), we obtain ~ (3 ± 1) x 10^-5 M_sun for the inner region and ~ 1.4 x 10^-6 M_sun, with an uncertainty of a factor of two, for the intermediate region. |
+| Gas mass in the intermediate region (1.6 to 5.0 R_887um^*) | 1.4e-6 | factor of 2 | M_sun | 4 | By integrating the profiles of the acceptable models from our sensitivity study (shown in Fig. 9), we obtain ~ (3 ± 1) x 10^-5 M_sun for the inner region and ~ 1.4 x 10^-6 M_sun, with an uncertainty of a factor of two, for the intermediate region. |
+| Inner northwest blob SO2 excitation temperature | 545 | 113 | K | 5 | We find an excitation temperature of SO2 of 545 ± 113 K (green points in Fig. 11). |
+| Inner northwest blob total excess gas mass | 6e-8 | not stated | M_sun | 5 | Assuming this region to be representative of the density of the blob and approximating the blob by an ellipse with minor and major axes equal to 70 and 110 mas, we find a total excess mass of ~ 6 x 10^-8 M_sun. |
+| High-velocity southeast blob SO2 excitation temperature | 202 | 12 | K | 5 | We find an excitation temperature of 202 ± 12 K (yellow points in Fig. 11). |
+| High-velocity southeast blob gas mass | 6e-8 | not stated | M_sun | 5 | Assuming the excitation temperature for CO to be the same of SO2, we derive a gas mass of ~ 6 x 10^-8 M_sun. |
+| High-velocity southeast blob radial expansion velocity | 16 to 28 | not stated | km/s | 5 | For an angle ranging from 30 deg to 60 deg, we estimate the radial expansion velocity of this blob (v_blob), its radial distance from R Dor (Delta r_blob) and the time since its ejection (Delta t_blob) to be 25 < Delta r_blob < 43 AU (13.5 < Delta r_blob < 23.4 R_887um^*), 16 <= v_blob <= 28 km/s and 4 <= Delta t_blob <= 12 years. |
+
+## Qualitative findings
+
+- The velocity field of the gas seen in absorption against the stellar disc in Band 7 is non-uniform across the disc, showing stronger absorption and an additional blue-shifted outflow component (up to ~15 km/s) towards the east compared to the west.  
+  > "The Band 7 observations also reveal that the spatial distribution of the absorption is not uniform against the stellar disc (Fig. 4)." (4.2. Line absorption); "For the CO v = 1, J = 3 - 2 line, a blue-shifted component seen towards the east has no counterpart above the noise level in the spectra extracted from the west." (4.2. Line absorption)
+- No evidence is found in the CO data for a circumstellar disc around R Dor.  
+  > "We find no evidence in the data examined by us of a disk around R Dor, as suggested by (Homan et al. 2018)." (7.6. Velocity distribution and wind-driving mechanism)
+- The vast majority of the gas in the innermost layer (1.0 to 1.6 R_887um^*) is gravitationally bound and will fall back to the star or remain in the extended atmosphere for hundreds of years, while the transition at 1.6 R_887um^* marks the onset of the wind.  
+  > "If the current gas density distribution is representative of the inner circumstellar environment of R Dor, these values suggest that the vast majority of gas in the innermost region would fall back to the star or remain in the extended atmosphere for hundreds of years, while a significant fraction (or even all) of the mass in the intermediate region would be expelled. Therefore, our circumstellar model is consistent with the transition between the inner and intermediate regions (at 1.6 R_887um^*) corresponding to the transition between extended atmosphere and wind." (7.3. Circumstellar gas mass)
+
+## Claim tuples
+
+- H: The gas in the extended atmosphere of R Dor is stratified into distinct kinematic layers with non-spherical asymmetries between the near and far hemispheres. | E: Analyse spatially resolved ALMA Band 6 and Band 7 absorption and emission line profiles of 12CO (v=0 J=2-1, v=1 J=2-1, v=1 J=3-2) and 13CO (v=0 J=3-2) and model them in 3D using LIME. | R: In the near-side hemisphere, the innermost layer (1.0-1.6 R_887um^*) is infalling at <= 6 km/s while the intermediate layer (1.6-5.0 R_887um^*) is outflowing up to 13 km/s; reproducing the full emission line profiles requires reversing this velocity pattern in the far-side hemisphere. | F: The extended atmosphere exhibits large-scale convective and pulsation-driven velocity asymmetries, with opposite average radial motions between the near and far hemispheres in the inner and intermediate layers. | **supported**
+- H: The gas density and temperature profiles close to R Dor are very steep before transitioning to the large-scale wind. | E: Fit multi-aperture spectra (45 to 240 mas) of four CO transitions with a three-zone power-law model in LIME and evaluate parameter uncertainties using model grids. | R: The inner layer (1.0-1.6 R_887um^*) requires n_0 = 3.5e11 cm^-3 with power-law index eta = 7.0 and temperature index epsilon = 2.0 (containing ~3e-5 M_sun), transitioning at 1.6 R_887um^* to shallower slopes (eta = 2.8, epsilon = 0.73) with mass ~1.4e-6 M_sun consistent with the outer wind mass-loss rate. | F: Very efficient cooling and steep density gradients occur within 1.6 R_887um^* (the gravitationally bound extended atmosphere), beyond which the envelope transitions to the outflow. | **supported**
+- H: The stochastic velocity dispersion in the large-scale outflow of R Dor can be directly constrained from the narrow terminal-velocity absorption feature seen against the stellar continuum. | E: Isolate the sharp absorption feature at 1.9 km/s in the 45 mas CO v = 0, J = 2 - 1 spectrum under two extreme baseline interpolation assumptions and fit Gaussian profiles. | R: The fitted Gaussian standard deviations are 0.43 km/s and 0.32 km/s for the two scenarios. | F: The combined thermal and stochastic velocity standard deviation in the large-scale outflow is at most ~0.4 km/s. | **supported**
+- H: Discrete, dense, fast-moving gas blobs exist in the inner envelope of R Dor and account for the high-velocity emission wings. | E: Extract CO v=0 J=2-1 and SO2 spectra towards two emission blobs (at ~0''.12 NW and ~0''.36 SE), derive SO2 rotational temperatures, locate the blobs via the model temperature profile, and compare their fluxes to the ACA high-velocity wings. | R: Both blobs have gas masses of ~6e-8 M_sun, higher densities than the surrounding wind, and high radial expansion velocities (~13 km/s at ~3.4 R_887um^* for the inner blob; 16-28 km/s at 13.5-23.4 R_887um^* for the SE blob), and together with the extended atmosphere they account for all high-velocity emission seen in the ACA spectrum. | F: The high-velocity emission in R Dor is produced by the extended atmosphere and discrete ejected blobs rather than a global high-velocity wind acceleration, and blobs are likely decelerated by interaction with the slower wind on ~10 yr timescales. | **supported**
+
+## Reasoning
+
+- Why this data: ALMA high angular resolution (~20-28 mas) spatially resolves the stellar sub-mm photosphere (~62 mas) and probes the extended atmosphere where dust forms and the wind is accelerated, while ground and vibrationally excited CO and 13CO lines trace different density and temperature regimes.  
+  > "The high angular resolution provided by ALMA allow us to probe the crucial region where dust formation and growth take place." (1. Introduction); "The high angular resolution of the sub-mm maps allows for even the stellar photosphere to be spatially resolved." (abstract)
+- Why this method: 3D non-LTE radiative transfer in LIME coupled with CASA simalma visibility simulations accounts for sub-thermal excitation of v = 1 CO levels, optical depth effects, and spatial filtering of extended emission by the interferometer.  
+  > "Hence, we consider LTE for calculating the excitation of 13CO and non-LTE for calculating the excitation of CO, for which vibrationally excited lines are also observed." (5. Modelling strategy); "It is essential in our modelling to take into account the effects of observing an extended source with an interferometer. Hence, we simulated how the the two lines with a large emission region, CO v = 0, J = 2 - 1 and 13CO v = 0, J = 3 - 2, would be seen by ALMA." (5.1. Missing flux)
+- Alternative: Higher optical depths instead of a steep temperature profile to explain strong absorption relative to emission (rejected because the four modelled transitions have very different optical depths and the maximum brightness temperature in the optically thick CO v=0 J=2-1 ring is ~450 K).  
+  > "Lines that are more optically thick in reality than in our models could increase the strength of absorption with respect to emission without the need to make the gas cooler." (7.4. Temperature profile); "However, two facts speak against even higher optical depths being responsible for the relatively strong absorption." (7.4. Temperature profile)
+- Alternative: Significant density asymmetry with more gas along the line of sight to the star than offset from it to explain the strong absorption (disfavoured because it requires a special envelope configuration).  
+  > "Another alternative for the steep temperature profile is a significant asymmetry in the gas densities, with more gas present in lines of sight towards the star than offset from it." (7.4. Temperature profile); "Although we cannot rule out this scenario, we disfavour it at this point because it requires a specific configuration of the envelope." (7.4. Temperature profile)
+- Alternative: Keplerian orbit or far-side infall for the high-velocity southeast blob (rejected because orbital velocity at 21.5 AU around a 1.3 M_sun star is only ~7 km/s vs ~14 km/s observed, and flow velocity becomes more negative with distance).  
+  > "The expected orbital velocities at 21.5 AU from a 1.3 M_sun star is ~ 7 km/s, considerably less than the observed velocity along the line of sight." (6.6.2. High-velocity southeast blob); "Given that the flow velocity gets more negative with increasing distance from the star, the explanation that the blob is moving away from R Dor (and towards us) is favoured." (6.6.2. High-velocity southeast blob)
+- Alternative: Lower terminal expansion velocity (4.8 km/s) to reconcile the systemic velocity discrepancy between ACA emission (6.7 km/s) and absorption against the star (7.4 km/s) (rejected because it produces a too-narrow CO v=0 J=2-1 line compared to the ACA profile).  
+  > "A maximum expansion velocity of 4.8 km/s would lead to a consistent value of v_sys = 6.7 km/s both for the fit to the ACA line and the absorption feature. However, this would produce a too-narrow CO v = 0, J = 2 - 1 line in comparison to the profile obtained with the ACA." (7.1. Systemic velocity)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Single transitions in the intermediate region (only CO v=0, J=2-1 detected) cannot break the degeneracy between density and temperature distributions in that zone.  
+  > "This single transition does not allow us to break the degeneracy between density and temperature distributions for the intermediate region." (6.5. Model sensitivity assessment)
+- Limitation (authors): The exact shape of the velocity profile and the boundary at 5.0 R_887um^* between the intermediate and outer regions are not strongly constrained and depend on model assumptions.  
+  > "However, the position of this second interface is not well constrained, and its purpose is only to mark the transition in the velocity profile as discussed in Section 6.2.2." (6.2. Model for the inner circumstellar envelope); "Hence, the exact shape of the velocity profile in the intermediate and outer regions is not very well constrained and, especially in the outer region, depends strongly on our assumptions." (6.2.2. The intermediate and outer regions)
+- Limitation (authors): The division of the velocity field into near-side and far-side hemispheres with opposite radial velocities is only a rough approximation to a complex 3D velocity field.  
+  > "As discussed in Section 4.2, we see signatures of different velocity components in the absorption profile of the CO v = 1, J = 3 - 2 line, which indicates that the far-side vs near-side division is only a rough approximation." (7.6. Velocity distribution and wind-driving mechanism)
+- Limitation (authors): For both blobs, the SO2 excitation temperature might differ from the gas kinetic temperature, and the kinetic temperature inside the denser blobs might differ from the surrounding model temperature profile used to infer their radial distances.  
+  > "Also, for both blobs the excitation temperature of SO2 might differ from the kinetic temperature, and the kinetic temperature within the blob might differ from that of the surrounding gas (and, hence, from our model) given the difference in density." (7.5.2. High-velocity blob)
+- Limitation (authors): Band 6, Band 7, and ACA observations were obtained at different epochs (Oct 24 2017, Nov 9 2017, Jan 1 2018), so stellar variability may affect comparisons between lines.  
+  > "Since the 13CO v = 0, J = 3 - 2 line was observed about two weeks later than the CO v = 0, J = 2 - 1 one, this could be at least partly due to variability." (7.4. Temperature profile)
+- Caveat (inferred, ours): Model selection relies heavily on visual ('by-eye') inspection of multi-aperture spectra rather than a formal statistical likelihood or automated optimization.
+- Caveat (inferred, ours): In the sensitivity grid analysis, temperature continuity across zone boundaries was relaxed, producing physically discontinuous profiles.
+- Caveat (inferred, ours): Inferring 3D line-of-sight positions of the blobs by matching their LTE SO2 excitation temperatures to the 1D spherically symmetric ambient CO kinetic temperature profile assumes thermal equilibrium and identical thermal structure inside overdense shocks/clumps.
+
+## Reproducibility
+
+- Data public (paper): ALMA data from project IDs 2017.1.00191.S, 2017.1.00824.S, and 2017.1.00595.S retrieved from the ALMA archive.  
+  > "We recovered the cubes comprising the lines mentioned above from the products associated with the projects in the ALMA archive." (3. Observations); "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00191.S, ADS/JAO.ALMA#2017.1.00824.S, and ADS/JAO.ALMA#2017.1.00595.S." (Acknowledgements)
+- Products in archive: CO v = 0 and v = 1 J = 2 - 1 cubes and ACA cubes were obtained from archive products; Band 7 cubes were imaged from calibrated measurement sets provided by ESO.  
+  > "The CO v = 1, J = 3 - 2 and the 13CO v = 0, J = 3 - 2 lines were imaged using CASA 5.7 and the calibrated measurement sets provided by ESO. The CO v = 0 and v = 1 J = 2 - 1 line cubes were obtained from the ALMA archive." (3. Observations)
+- Missing: LIME model input files and custom C functions defining the 3D asymmetric density, temperature, and velocity distributions.
+- Missing: Specific transitions, frequencies, upper state energies, and Einstein A-coefficients of the 8 SO2 lines used in the population diagrams.
+- Missing: CASA tclean and simalma execution scripts and imaging parameters (robust weighting, cell size, masking).
+- Data volume (inferred): ~10-50 GB (calibrated measurement sets for Band 6 and Band 7 long-baseline projects plus archival image cubes and ~875 LIME 3D radiative transfer model cubes)
+- Score (inferred): 6/5, The physical parameterization of the 3-zone model (Table 1) and the grid ranges (Table 2) are explicitly tabulated, and the archival data are public with stated project IDs. However, the exact SO2 transitions used for the blob temperature analysis, the CASA imaging/simulation parameters, and the LIME setup scripts are omitted, and final model selection relies on subjective visual inspection.
+- Rediscovery candidate: yes, All three ALMA datasets are public in the archive, the analytical parameterization of the 3-zone envelope is fully specified in Table 1, and the main scientific outputs (stochastic velocity dispersion, inner/intermediate gas masses, steep temperature/density exponents, and blob temperatures/masses) are concrete numerical values.
+
+## Links
+
+- Method: Brinch & Hogerheijde 2010 (3D molecular excitation and radiative transfer code LIME)
+- Method: Castro et al. 2017 (CO rovibrational and rotational collisional rate coefficients)
+- Method: Goldsmith & Langer 1999 (Population diagram method used to derive SO2 excitation temperatures)
+- Companion: Vlemmings et al. 2018 (Analyzed the same high-resolution ALMA data of R Dor to measure stellar rotation and reported the high-velocity feature in SiO)
+- Companion: Vlemmings et al. 2019 (Analyzed the stellar continuum from the same Band 7 ALMA dataset to determine the stellar radius and brightness temperature at 887 um)
+- Companion: Schirmer et al., in prep. (Upcoming companion study comparing the dust content of the inner blob to the gas properties derived in this paper)
+
+## Checks
+
+```json
+{
+ "quotes": 155,
+ "quotes_ok": 113,
+ "quote_pass_rate": 0.729,
+ "quotes_too_long": 33,
+ "unsupported_facts": 0,
+ "project_codes": 3,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 19,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 94,
+  "stated": 71,
+  "rate": 0.755
+ },
+ "evidence_ok": false
+}
+```

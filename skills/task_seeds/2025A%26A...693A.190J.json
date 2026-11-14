@@ -1,0 +1,385 @@
+{
+ "bibcode": "2025A&A...693A.190J",
+ "title": "ALMA Lensing Cluster Survey: Dust mass measurements as a function of redshift, stellar mass, and star formation rate from z = 1 to z = 5",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202346239",
+ "arxiv_id": "2411.11212",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How do average dust mass of galaxies evolve with redshift (z=1 to 5), stellar mass and SFR, measured by stacking ALCS band-6 continuum at HST-IRAC catalogue positions?",
+ "alma_project_codes": [
+  "2018.1.00035.L",
+  "2013.1.00999.S",
+  "2015.1.01425.S"
+ ],
+ "data": {
+  "bands": "Band 6 (lambda ~ 1.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "synthesized beam FWHM 2 arcsec (uv-tapered)",
+  "sensitivity": "average map RMS ~63 uJy/beam (per-cluster values in Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST-IRAC catalogue: positions, redshifts, SFRs, stellar masses, magnifications",
+    "evidence": [
+     {
+      "loc": "2.2 Source catalogue",
+      "quote": "We extracted the positions, redshifts, physical characteristics (SFRs and stellar masses) as well as lensing magnifications of galaxies at $1\\leq z \\leq 5$ from the HST-IRAC catalog presented in (cite: Kokorev2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Kokorev2022)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa = 0.0431 m^2/kg at nu0 = 352.6 GHz",
+    "evidence": [
+     {
+      "loc": "3.3 Measuring M_dust",
+      "quote": "We used $\\kappa_{\\nu_0}$=0.0431 m$^2$ kg$^{-1}$ with ${\\nu_0}=352.6$ GHz (cite: Li2001; Magnelli2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Li2001; Magnelli2020)"
+  },
+  {
+   "what": {
+    "value": "Dust emissivity index beta = 1.8 (Galactic, Planck)",
+    "evidence": [
+     {
+      "loc": "3.3 Measuring M_dust",
+      "quote": "We used $\\beta=1.8$, the Galactic dust emissivity index measurement from the *Planck* data (cite: Planck2011)"
+     }
+    ]
+   },
+   "citation": "(cite: Planck2011)"
+  },
+  {
+   "what": {
+    "value": "Main sequence SFR_MS for Delta(MS) (quiescence diagnostic)",
+    "evidence": [
+     {
+      "loc": "2.2 Source catalogue",
+      "quote": "the expected SFR for a galaxy with the same stellar mass and on the MS (cite: Speagle2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Speagle2014)"
+  },
+  {
+   "what": {
+    "value": "COSMOS2020 stellar mass function used for sample completeness check",
+    "evidence": [
+     {
+      "loc": "2.2 Source catalogue",
+      "quote": "we compare its stellar mass function (SMF) to the one derived in the COSMOS2020 sample (cite: Weaver2022; Weaver2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Weaver2022; Weaver2023)"
+  },
+  {
+   "what": {
+    "value": "CMB correction prescription (Equation 18)",
+    "evidence": [
+     {
+      "loc": "3.3 Measuring M_dust",
+      "quote": "This is corrected by following Equation 18 of (cite: DaCunha2013)."
+     }
+    ]
+   },
+   "citation": "(cite: DaCunha2013)"
+  },
+  {
+   "what": {
+    "value": "Magnification uncertainty of 20%",
+    "evidence": [
+     {
+      "loc": "3.4 Uncertainty computation",
+      "quote": "following (cite: Sun2022) and (cite: Fujimoto2023) we use a magnification uncertainty of 20% of the magnification associated to each subsample"
+     }
+    ]
+   },
+   "citation": "(cite: Sun2022; Fujimoto2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select the source sample from the HST-IRAC catalogue",
+   "method": "Sequential cuts on redshift, quality, mass, SFR, H-band magnitude, primary beam level, z range and magnification, leaving 4103 sources",
+   "software": [],
+   "key_parameters": [
+    "PB > 0.5; 1<=z<5; 10^8<=M*<=10^12 Msun; 0.001<=SFR<=10^3 Msun/yr; magnification <100"
+   ],
+   "assumptions": [
+    "Spectroscopic redshifts used where available, otherwise photometric; SFR and stellar mass corrected for magnification"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Bin sources into redshift, stellar mass and SFR subsamples",
+   "method": "Four redshift bins split by either four stellar-mass bins or five SFR bins",
+   "software": [],
+   "key_parameters": [
+    "Redshift bins 1-2, 2-3, 3-4, 4-5; individually detected sources not excluded"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Stack 1.2 mm continuum and measure stacked flux",
+   "method": "Unweighted mean stack, pixel to pixel, single channel mode, on uv-tapered images; flux integrated in a central circle of radius 2 arcsec and divided by beam area in pixels",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [
+    "Stamp size 9.76 x 9.76 arcsec^2 (61 x 61 pixels)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate stack noise and set detections / upper limits",
+   "method": "Empty stacks from random source-free coordinates with the same stamp size and number of targets, 1000 realisations per subsample; standard deviation gives RMS; flux below 3 RMS replaced by a 3 sigma upper limit",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Correct stacked flux for lensing magnification",
+   "method": "Divide the stacked flux by the average magnification of the subsample; alternative of correcting each stamp before stacking gives consistent fluxes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Noise is independent of magnification so per-stamp correction would reduce stacking efficiency"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Convert 1.2 mm flux to dust mass",
+   "method": "Single optically thin modified blackbody with CMB correction, using the Kovacs2010/Magnelli2020 equation",
+   "software": [],
+   "key_parameters": [
+    "beta = 1.8; kappa = 0.0431 m^2 kg^-1 at nu0 = 352.6 GHz",
+    "CMB flux correction ~1.03 at z~1 to ~1.31 at z~6; CMB dust-temperature heating ~3% at z=6"
+   ],
+   "assumptions": [
+    "Mass-weighted dust temperature T_rest = 25 K at all redshifts",
+    "Flat LCDM, Omega_m = 0.3, Omega_Lambda = 0.7, H0 = 70"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Propagate uncertainties on dust mass",
+   "method": "Bootstrap each subsample 1000 times, take 16th to 84th percentile and sum quadratically with stack RMS; propagate redshift percentile spread and a 20% magnification uncertainty",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Adding bootstrap and RMS errors quadratically is an approximation that slightly over-estimates the error (they are correlated)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Fit scaling relations of dust mass with M*, SFR and z",
+   "method": "Quadratic fits to detections only, ignoring upper limits, when at least 3 points are available",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Test robustness against quiescent galaxies",
+   "method": "Repeat stacking after removing sources with Delta(MS) < -0.5",
+   "software": [
+    "LINESTACKER"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Final stacked sample size",
+   "value": "4103",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2 Source catalogue",
+     "quote": "In total, our full sample finally adds up to a total of 4103 sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Average map RMS",
+   "value": "63",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Average: 63"
+    }
+   ]
+  },
+  {
+   "quantity": "Lowest stack standard deviation (z=1-2, lowest M* and SFR bins)",
+   "value": "~4.3e-3",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Mean stacking results",
+     "quote": "reaches levels as low as $\\sim4.3 \\times 10^{-3}$ mJy per beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked flux range for detections (before magnification correction)",
+   "value": "~1.78e-2 to ~1.04",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Mean stacking results",
+     "quote": "$\\sim1.78 \\times 10^{-2}$ mJy and $\\sim1.04$ mJy for stack detections"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of securely extracted dust masses (S/N > 3, after magnification correction)",
+   "value": "~2.8e6 to ~2.56e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Mean stacking results",
+     "quote": "$\\sim2.8 \\times 10^6$ M$_{\\odot}$ to $\\sim2.56 \\times 10^8$ M$_{\\odot}$ (after magnification correction)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust mass, <z>=1.41, log<M*>=10.42",
+   "value": "6.95e7",
+   "uncertainty": "1.84e7",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (stack results, stellar-mass bins)",
+     "quote": "$6.95\\times10^{7}$ $\\pm$ $1.84\\times10^{7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust mass, <z>=1.42, log<M*>=9.43",
+   "value": "1.61e7",
+   "uncertainty": "4.33e6",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (stack results, stellar-mass bins)",
+     "quote": "$1.61\\times10^{7}$ $\\pm$ $4.33\\times10^{6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust mass, <z>=2.84, <SFR>=133 Msun/yr",
+   "value": "2.54e8",
+   "uncertainty": "7.27e7",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (stack results, SFR bins)",
+     "quote": "$2.54\\times10^{8}$ $\\pm$ $7.27\\times10^{7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fit M_dust(z) at fixed SFR 10<SFR<50: coefficient a",
+   "value": "10.5e7",
+   "uncertainty": "1.6e7",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table (fit results)",
+     "quote": "$10.5 \\pm 1.6 \\times 10^{7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fit M_dust(z) at fixed SFR 10<SFR<50: coefficient b",
+   "value": "-1.1",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table (fit results)",
+     "quote": "$-1.1 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fit M_dust(z) at fixed M* 10^9<M*<10^10: coefficient b",
+   "value": "-1.8",
+   "uncertainty": "0.7",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table (fit results)",
+     "quote": "$-1.8 \\pm 0.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxies removed when excluding Delta(MS) < -0.5",
+   "value": "2157 (1946 remain)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Appendix A",
+     "quote": "In total, 2157 galaxies are removed from the sample, leading to a final size of 1946 after removing quiescent galaxies."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "LINESTACKER version and exact call settings (aperture/beam normalisation, handling of PB edge, random source-free coordinate selection and seeds)",
+  "tclean parameters used to make the tapered maps (niter, threshold, masking, robust-free natural weights, imaging channels) and whether the continuum was line-free or full bandwidth",
+  "Pipeline versus manual calibration, flux calibrators and flux scale uncertainty for ALCS and the concatenated Frontier Fields data",
+  "Exact stack/image positions and how concatenated multi-project fields were combined",
+  "The functional form of the quadratic fits (variables in log or linear space, parametrisation of a and b) and fitting method",
+  "Version/vintage of the Kokorev2022 catalogue and the exact SED-fitting-derived SFR and mass definitions (IMF, SFR timescale)",
+  "Exact CMB correction implementation (Equation 18 of DaCunha2013) and how the correction was applied per subsample",
+  "How cosmological D_L was computed per subsample (use of mean z versus per-source) and how the average magnification was computed (arithmetic mean)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging/tclean parameters and calibrated tapered maps are not described beyond weighting, taper and pixel size",
+  "LINESTACKER version and settings, and the catalogue version used for selection, are not given",
+  "Fit functional form and procedure are not specified"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Stacking recipe, dust-mass equation, assumed parameters and numeric tables are given, but imaging settings, code version and fit form are missing, and the catalogue comes from another paper",
+ "rediscovery_reason": "ALMA data are archival projects, selection and stacking recipe is largely stated and main results are tabulated numbers (stack fluxes, dust masses); needs the Kokorev2022 catalogue and LINESTACKER.",
+ "source_card": "cards/2025A%26A...693A.190J/sonnet/card.md"
+}

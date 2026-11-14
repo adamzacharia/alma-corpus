@@ -1,0 +1,346 @@
+{
+ "bibcode": "2025ApJ...993...85Y",
+ "title": "Peculiar Disk Substructures Associated with the Young Eruptive Star EX Lupi",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adff50",
+ "arxiv_id": "2508.14367",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Does the disk of the EXor EX Lupi host resolved substructures, and how do they relate to the disk surface/thermal structure and to episodic accretion?",
+ "alma_project_codes": [
+  "2017.1.00388.S"
+ ],
+ "data": {
+  "bands": "Band 3 (92.95 GHz, 3.2 mm) and Band 4 (152.95 GHz, 2.0 mm)",
+  "arrays": "12 m array, C40-9 configuration",
+  "angular_resolution": "CLEAN beams 0.103\"x0.068\" (B3), 0.064\"x0.042\" (B4); PRIISM effective 47x39 mas (B3), 47x35 mas (B4)",
+  "sensitivity": "rms 36 uJy/beam (B3), 46 uJy/beam (B4) in CLEAN images"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar luminosity 0.43 Lsun (quiescent)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "has a quiescent stellar luminosity of $0.43~L_{\\odot}$ (cite: Wang2023ApJ)"
+     }
+    ]
+   },
+   "citation": "(cite: Wang2023ApJ)"
+  },
+  {
+   "what": {
+    "value": "Dynamical stellar mass 0.5 Msun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "a dynamical stellar mass of $0.5~M_{\\odot}$ (cite: hales_circumstellar_2018)"
+     }
+    ]
+   },
+   "citation": "(cite: hales_circumstellar_2018)"
+  },
+  {
+   "what": {
+    "value": "Flaring index beta = 1.09 from SED fit",
+    "evidence": [
+     {
+      "loc": "4.2 Shape of Disk Surface",
+      "quote": "flaring index $\\beta (= 1.09)$ determined from a SED fit using a flared disk model (cite: sipos_ex_2009)"
+     }
+    ]
+   },
+   "citation": "(cite: sipos_ex_2009)"
+  },
+  {
+   "what": {
+    "value": "SPHERE H-band Q_phi image",
+    "evidence": [
+     {
+      "loc": "4.1 Scattered-light Asymmetry of Disk Surface",
+      "quote": "obtained with SPHERE at the VLT from (cite: rigliaco_circumstellar_2020)"
+     }
+    ]
+   },
+   "citation": "(cite: rigliaco_circumstellar_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, align and self-calibrate",
+   "method": "CASA pipeline calibration, phase-center shifting with fixvis/fixplanets, phase-only self-cal with CLEAN model",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "solint=inf, robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Super-resolution imaging with PRIISM",
+   "method": "l1+TSV regularized maximum likelihood with 10-fold CV over a grid of (Lambda_l, Lambda_tsv); restored image via beam convolution plus residuals",
+   "software": [
+    "PRIISM"
+   ],
+   "key_parameters": [
+    "B3 (1e5, 3e12); B4 (7e4, 3e12)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit outer ring geometry and width",
+   "method": "ellipse fit for PA/inclination; Gaussian fit to deprojected radial profile with emcee; deconvolve beam",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "100 walkers, 500 steps, 250 burn-in"
+   ],
+   "assumptions": [
+    "deprojected outer ring is circular; Gaussian ring and beam"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Inner arc elongation and spectral index",
+   "method": "PA profile of deprojected arc gives arc length/width; spectral index averaged over pixels >3 sigma in both bands",
+   "software": [],
+   "key_parameters": [
+    "PA sampling 10 deg; 3 sigma threshold"
+   ],
+   "assumptions": [
+    "arc coplanar with outer ring (same inclination and PA)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Disk-surface height from SPHERE ellipse",
+   "method": "Sobel edge detection on smoothed Q_phi image, ellipse fit with emcee, height from center offset H=Oc/sin(i)",
+   "software": [
+    "scikit-image",
+    "scipy",
+    "emcee"
+   ],
+   "key_parameters": [
+    "500 walkers, 2000 steps, 500 burn-in; PA fixed 51.7 deg; Gaussian smoothing FWHM 0.2\""
+   ],
+   "assumptions": [
+    "circular, azimuthally symmetric disk; beta=1.09"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Temperature profile, scale height, trapping ratio",
+   "method": "passively irradiated flared disk energy balance gives T_d(r); h_p=c_s/Omega; ratio of deconvolved width to h_p",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "mu=2.3, M*=0.5 Msun, L*=0.43 Lsun, stellar heating dominant"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Dust disk radius",
+   "method": "curve of growth on deprojected Band 4 PRIISM model, radius at 95% of total flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Outer ring inclination",
+   "value": "42.6",
+   "uncertainty": "2.4",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Detailed Geometry",
+     "quote": "an inclination of $42^{\\circ}.6 \\pm 2^{\\circ}.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer ring position angle",
+   "value": "51.7",
+   "uncertainty": "2.2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Detailed Geometry",
+     "quote": "yielding a PA of $51^{\\circ}.7 \\pm 2^{\\circ}.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius",
+   "value": "28.59",
+   "uncertainty": "0.04",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Detailed Geometry",
+     "quote": "$r_{\\rm ring} = 28.59\\pm 0.04 ~\\rm au$"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved ring width",
+   "value": "1.62",
+   "uncertainty": "0.04",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Detailed Geometry",
+     "quote": "deconvolved ring width of $\\hat{w}_{d} = 1.62\\pm 0.04$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring width / pressure scale height",
+   "value": "0.95",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1.2 Dust Trapping",
+     "quote": "$\\hat{w}_{\\rm d}/h_{\\rm p}(r_{\\rm ring}) = 0.95 \\pm 0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring integrated flux Band 3",
+   "value": "1.0",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Peculiar Disk Structures",
+     "quote": "are $1.0\\pm0.2$ mJy in Band 3 and $2.1\\pm0.4$ mJy in Band 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring integrated flux Band 4",
+   "value": "2.1",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Peculiar Disk Structures",
+     "quote": "are $1.0\\pm0.2$ mJy in Band 3 and $2.1\\pm0.4$ mJy in Band 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner arc elongation",
+   "value": ">7",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1 Elongation",
+     "quote": "These calculations yield a lower limit of $\\varepsilon > 7$ for the elongation"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner arc spectral index",
+   "value": "2.0",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 Spectral Index",
+     "quote": "This calculation yields $\\bar{\\alpha}_{\\rm mm}=2.0\\pm0.5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk surface height at 77 au",
+   "value": "8.2",
+   "uncertainty": "2.3",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Shape of Disk Surface",
+     "quote": "$H_{s}(r_{\\rm ridge}) = 8.2 \\pm 2.3$ au at $r_{\\rm ridge} = 77 \\pm 3$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged temperature",
+   "value": "18",
+   "uncertainty": "1",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1 Thermal Structure of the Disk",
+     "quote": "The resulting average disk temperatures yields $18\\pm1$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk radius",
+   "value": "34",
+   "uncertainty": "3",
+   "units": "au",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 Radial Extent of the Dust Disk",
+     "quote": "$r_{\\rm dust} = 0.22\\ensuremath{''}\\pm 0.02\\ensuremath{''}$ ($34\\pm3$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring-star center offset",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Detailed Geometry",
+     "quote": "The center of the ellipse has an offset of $\\sim 5$ au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "PRIISM pixel size, image size and PRIISM version",
+  "Exact CLEAN cell size, image size, masks, threshold and iterations",
+  "Self-calibration spectral/time details and number of rounds",
+  "Flux calibration scale uncertainty",
+  "Whether the SPHERE image reduction products are public/how to obtain them",
+  "Radial bin width and aperture settings for curve of growth",
+  "Exact pixel region and weighting for the inner-arc spectral index"
+ ],
+ "missing_for_reproduction": [
+  "PRIISM pixel/image settings",
+  "SPHERE image reduction file",
+  "CLEAN cell/mask settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and main numeric steps are stated, but PRIISM and imaging configuration details are partly missing.",
+ "rediscovery_reason": "Data are archival, and the PRIISM procedure plus ring-fit and numeric results are fairly well specified.",
+ "source_card": "cards/2025ApJ...993...85Y/sonnet/card.md"
+}

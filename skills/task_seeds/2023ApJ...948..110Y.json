@@ -1,0 +1,444 @@
+{
+ "bibcode": "2023ApJ...948..110Y",
+ "title": "Multiple Rings and Asymmetric Structures in the Disk of SR 21",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acc325",
+ "arxiv_id": "2303.05064",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Investigate the morphology, dust grain sizes, gas stability, and planet-formation mechanisms of the asymmetric structures and rings in the protoplanetary disk around SR 21 using high-resolution ALMA observations.",
+ "alma_project_codes": [
+  "2018.1.00689.S",
+  "2017.1.00884.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) and Band 3 (2.7-2.8 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.050'' x 0.047'' (Band 6 continuum); ~0.10'' x 0.10'' (Band 6 CO lines); 0.10'' x 0.09'' (Band 3 continuum)",
+  "sensitivity": "Band 6 continuum: 1.7e-5 Jy/beam (3e-5 Jy/beam when matched to Band 3); Band 3 continuum: 1.4e-5 Jy/beam; Band 6 CO channel rms: 0.001 Jy/beam; moment 0 rms: 0.035 (13CO), 0.03 (C18O), 0.04 (12CO) Jy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass (1.67 M_sun), luminosity (7.4 L_sun), age (~10 Myr), and extinction (A_V = 6.2) of SR 21",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: Herczeg2014-dm) suggested that this F7 type star has a stellar mass of about 1.67 $M_\\odot$, luminosity of about 7.4 $L_\\odot$ and an age of about 10 Myr through a low-resolution spectroscopic study."
+     },
+     {
+      "loc": "ALMA Band 6 CO Isotopologue Emissions",
+      "quote": "considering the large extinctions of SR 21 ($A_V$=6.2, (cite: Herczeg2014-dm)), one more reasonable explanation is that they are affected by the foreground adsorptions."
+     }
+    ]
+   },
+   "citation": "(cite: Herczeg2014-dm)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination (15 deg) and position angle (16 deg)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: Perez2014) also pointed out that its inclination is about 15$^\\circ$ and position angle is about 16$^\\circ$, so it is a nearly face-on disk and suitable for asymmetric structure study."
+     }
+    ]
+   },
+   "citation": "(cite: Perez2014)"
+  },
+  {
+   "what": {
+    "value": "Distance (138.4±1.1 pc), proper motion, and radial velocity (-7.3±1.64 km/s) of SR 21",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "SR 21 is a T-Tauri star located in the Ophiuchus Molecular Cloud at a distance of about 138.4$\\pm$1.1 pc from Earth (cite: GAIA2018)."
+     },
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "We quote the proper motion of the SR 21 from GAIA DR2 (cite: GAIA2018)."
+     },
+     {
+      "loc": "ALMA Band 6 CO Isotopologue Emissions",
+      "quote": "which is consistent with the radial velocity -7.3$\\pm$1.64 km/s calibrated by GAIA (cite: GAIA2018)."
+     }
+    ]
+   },
+   "citation": "(cite: GAIA2018)"
+  },
+  {
+   "what": {
+    "value": "Reduced ALMA Band 3 continuum image and VLT/SPHERE H-band image",
+    "evidence": [
+     {
+      "loc": "Comparison with ALMA Band 3 image",
+      "quote": "The Band 3 image (Project ID: 2017.1.00884.S, PI: Pinilla) shown in Figure 1(b) is the same as the image in (cite: Muro-Arena2020)"
+     },
+     {
+      "loc": "Comparison with VLT/SPHERE H-Band image",
+      "quote": "The SPHERE archival data were reduced by the IRDAP (IRDIS Data reduction for Accurate Polarimetry) pipeline (cite: 2020A&A...633A..64V; 2017SPIE10400E..15V), the same as (cite: Muro-Arena2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Muro-Arena2020)"
+  },
+  {
+   "what": {
+    "value": "Interstellar C18O to H2 abundance ratio of 1.79e-7",
+    "evidence": [
+     {
+      "loc": "ALMA Band 6 CO Isotopologue Emissions",
+      "quote": "here $\\chi$ is the ratio of $C^{18}O$ to $H_2$, and we use the interstellar abundance 1.79$\\times10^{-7}$ (cite: 1999RPPh...62..143W)."
+     }
+    ]
+   },
+   "citation": "(cite: 1999RPPh...62..143W)"
+  },
+  {
+   "what": {
+    "value": "DSHARP dust optical constants",
+    "evidence": [
+     {
+      "loc": "Dust Size",
+      "quote": "The DSHARP dust optical constants ((cite: Birnstiel2018-jb)) are employed in our fitting."
+     }
+    ]
+   },
+   "citation": "(cite: Birnstiel2018-jb)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract azimuthal profiles and assess clump significance in Band 6 and Band 3 continuum images",
+   "method": "Extract azimuthal intensity profiles for the inner ring (0.14''-0.28'') and outer ring (0.34''-0.48'') by averaging over 10 degree azimuthal bins, and measure brightness contrast between clump peaks and adjacent valleys.",
+   "software": [],
+   "key_parameters": [
+    "Inner ring radial range: 0.14''-0.28''; Outer ring radial range: 0.34''-0.48''; Bin width: 10 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create moment 0 maps and fit CO isotopologue spectra for emission and foreground absorption",
+   "method": "Generate moment 0 maps using immoments over selected velocity channels where >4 sigma emission within 0.5'' appears, and fit the spatially integrated spectra within 0.5'' using a sum of emission and absorption Gaussians.",
+   "software": [
+    "CASA",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Channel ranges: -1.96 to 8.09 km/s (12CO), -1.96 to 6.75 km/s (13CO), -0.62 to 6.75 km/s (C18O); spectral extraction radius: < 0.5''"
+   ],
+   "assumptions": [
+    "Emission and foreground absorption components follow Gaussian profiles since the disk is nearly face-on."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive gas surface density and Toomre Q parameter in the inner disk",
+   "method": "Smooth CO isotopologue cubes to 0.105''x0.105'' using imsmooth, create moment 8 maps of 13CO (with continuum) to derive gas temperature via Planck function, compute C18O peak optical depth from C18O moment 8 map, convert to C18O column density and H2 gas surface density, and calculate Toomre Q.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Common beam: 0.105'' x 0.105''"
+   ],
+   "assumptions": [
+    "13CO is optically thick and its brightness temperature equals the gas temperature and C18O excitation temperature; C18O/H2 ratio = 1.79e-7; Gaussian optical depth profile; epicyclic frequency equals Keplerian angular velocity with M_star = 1.67 M_sun."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute spectral index map and fit dust surface density and maximum grain size",
+   "method": "Re-image Band 6 continuum to match Band 3 uv-range (50-5000 kλ) and beam (0.10''x0.09'', PA=90 deg), register images using Gaia proper motion, compute spectral index map for >4 sigma pixels, and fit Band 3 and Band 6 azimuthal ring profiles using a radiative transfer slab model with dust scattering.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "nu_3 = 110.2 GHz, nu_6 = 217.0 GHz; threshold > 4 sigma; grid: 10 μm <= a_max <= 1 cm and 0.001 g/cm^2 <= Sigma_d <= 10 g/cm^2, 1000 logarithmic bins each; r_inner = 0.21'', r_outer = 0.41''"
+   ],
+   "assumptions": [
+    "Power-law dust size distribution index q = 3.5; DSHARP dust optical constants; inclination i = 15 deg; dust temperature fixed to passively heated flared disk mid-plane temperature profile of Huang et al. (2018)."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate the mass of a potential gap-opening planet between the inner and outer rings",
+   "method": "Measure gap width and gap center radius from Band 6 continuum, and apply analytical scaling relations for a dust-only gap (Hill radius scaling) and a gas+dust gap (Kanagawa et al. 2016 relation), comparing with the pebble isolation mass.",
+   "software": [],
+   "key_parameters": [
+    "Gap width = 0.06'', gap radius = 0.31'', T(0.31'') = 31 K, aspect ratio h/R = 0.06"
+   ],
+   "assumptions": [
+    "Proportionality constant 4.5 < C < 7 for dust gap; gas gap width equals dust gap width; viscosity alpha = 10^-4 to 10^-3."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Outer ring radial extent",
+   "value": "0.34-0.48 (47-66)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Band 6 Continuum image",
+     "quote": "The outer ring ($>25\\sigma$, 1$\\sigma\\sim1.7\\times10^{-5}$Jy/beam) extends between a radial separation from the central star of 0.34$\\ensuremath{''}$ to 0.48$\\ensuremath{''}$ (47-66 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner ring radial extent",
+   "value": "0.14-0.28 (19.5-39)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Band 6 Continuum image",
+     "quote": "As for the inner ring, it extends between a radial separation of 0.14$\\ensuremath{''}$ to 0.28$\\ensuremath{''}$ (19.5-39 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "South Arc peak position angle (Band 6)",
+   "value": "170",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Band 6 Continuum image",
+     "quote": "The outer ring has two asymmetric structures: South Arc (peak located at $\\sim170^\\circ$) and North Arc (peak located at $\\sim305^\\circ$)."
+    },
+    {
+     "loc": "Disk Morphology",
+     "quote": "The South Arc has a similar case: in Band 6, the peak is $5^\\circ\\pm5^\\circ$ ahead of Band 3 (170$^\\circ\\pm5^\\circ$ vs. 165$^\\circ\\pm5^\\circ$)."
+    }
+   ]
+  },
+  {
+   "quantity": "North Arc peak position angle (Band 6)",
+   "value": "305",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Band 6 Continuum image",
+     "quote": "The outer ring has two asymmetric structures: South Arc (peak located at $\\sim170^\\circ$) and North Arc (peak located at $\\sim305^\\circ$)."
+    },
+    {
+     "loc": "Disk Morphology",
+     "quote": "As for SR 21, the peak of North Arc in Band 3 is $300^\\circ\\pm5^\\circ$, while in Band 6, it is $305^\\circ\\pm5^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner Arc peak position angle (Band 6)",
+   "value": "165",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Band 6 Continuum image",
+     "quote": "While for the asymmetric structures of the inner ring, we refer to it as the Inner Arc (peak located at $\\sim165^\\circ$)."
+    },
+    {
+     "loc": "Disk Morphology",
+     "quote": "While for the Inner Arc, the peak in Band 6 is $5^\\circ\\pm5^\\circ$ below the peak in Band 3 (165$^\\circ\\pm5^\\circ$ vs. 170$^\\circ\\pm5^\\circ$)."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO emission amplitude A_emis",
+   "value": "7.354",
+   "uncertainty": "3.588",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$^{12}$CO | 7.354$\\pm$3.588 | 2.500$\\pm$0.284 | 0.616$\\pm$0.059 | -8.000$\\pm$3.591 | 3.134$\\pm$0.121 | 0.980$\\pm$0.162"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO emission velocity V_emis (LSRK)",
+   "value": "2.500",
+   "uncertainty": "0.284",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$^{12}$CO | 7.354$\\pm$3.588 | 2.500$\\pm$0.284 | 0.616$\\pm$0.059 | -8.000$\\pm$3.591 | 3.134$\\pm$0.121 | 0.980$\\pm$0.162"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO emission velocity V_emis (LSRK)",
+   "value": "2.841",
+   "uncertainty": "0.055",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$^{13}$CO | 4.065$\\pm$0.893 | 2.841$\\pm$0.055 | 0.626$\\pm$0.040 | -4.346$\\pm$0.870 | 3.039$\\pm$0.032 | 1.144$\\pm$0.096"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O emission velocity V_emis (LSRK)",
+   "value": "3.051",
+   "uncertainty": "0.128",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C$^{18}$O | 2.129$\\pm$1.231 | 3.051$\\pm$0.128 | 0.639$\\pm$0.116 | -1.716$\\pm$1.196 | 3.167$\\pm$0.108 | 1.216$\\pm$0.381"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 to Band 6 spectral index (disk)",
+   "value": "3.0-4.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Size",
+     "quote": "From the figures, one can see that the spectral indices of the disk are mainly between 3.0 and 4.0."
+    }
+   ]
+  },
+  {
+   "quantity": "Lowest spectral index in inner ring (at clump D)",
+   "value": "3.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Size",
+     "quote": "the lowest spectral index in the inner ring is at clump D, about 3.0, while the lowest spectral index in the outer ring is at clump I, about 3.3."
+    }
+   ]
+  },
+  {
+   "quantity": "Lowest spectral index in outer ring (at clump I)",
+   "value": "3.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Size",
+     "quote": "the lowest spectral index in the inner ring is at clump D, about 3.0, while the lowest spectral index in the outer ring is at clump I, about 3.3."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum dust grain size (small dust solution)",
+   "value": "<= 300",
+   "uncertainty": "not stated",
+   "units": "μm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Size",
+     "quote": "At each position, the fittings generally lead to two families of probable solutions, one with $a_{max}\\lesssim$300 $\\mu m$ and a higher surface density (small dust solution), and the other with $a_{max}\\gtrsim1 mm$ and lower surface density (large dust solution)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum dust grain size (large dust solution)",
+   "value": ">= 1",
+   "uncertainty": "not stated",
+   "units": "mm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust Size",
+     "quote": "At each position, the fittings generally lead to two families of probable solutions, one with $a_{max}\\lesssim$300 $\\mu m$ and a higher surface density (small dust solution), and the other with $a_{max}\\gtrsim1 mm$ and lower surface density (large dust solution)."
+    }
+   ]
+  },
+  {
+   "quantity": "Gap width and center radius",
+   "value": "0.06 and 0.31",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Potential Planet",
+     "quote": "In our Band 6 data, the gap size is about 0.$\\ensuremath{''}$06, and its center is about 0.$\\ensuremath{''}$31, so we tried to constrain the potential planet mass from the disk gap sizes."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass (dust-only gap scenario)",
+   "value": "12-44",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Potential Planet",
+     "quote": "Based on this, we can estimate the planet which opens the gap should be about 12-44$M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass (gas and dust gap scenario)",
+   "value": "18-58 (0.06-0.18)",
+   "uncertainty": "not stated",
+   "units": "M_earth (M_Jup)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Potential Planet",
+     "quote": "So we assume $\\alpha\\sim10^{-4}-10^{-3}$, and the result will be about 18-58 $M_\\oplus$ (0.06-0.18 $M_{Jup}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pebble isolation mass for SR 21",
+   "value": "30-50",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Potential Planet",
+     "quote": "According to equations 10 and 11 in (cite: Birnstiel2018-jb), the pebble isolation mass for SR 21 could be about 30-50 $M_\\oplus$; thus, one gas gap opened by the planet may exist."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges and polynomial order used in CASA uvcontsub",
+  "Number of self-calibration iterations and clean thresholding during self-calibration",
+  "Deconvolver algorithm (e.g., hogbom vs. multiscale), cell size, image size, and stopping threshold in CASA tclean and MIRIAD",
+  "Specific MIRIAD tasks used for line imaging (e.g., invert, clean, restor)",
+  "Whether primary beam correction was applied to the continuum and line images",
+  "Whether azimuthal profiles were extracted after deprojecting the disk (using i=15 deg, PA=16 deg) or in sky plane"
+ ],
+ "missing_for_reproduction": [
+  "Reduced Band 3 continuum FITS image from Muro-Arena et al. (2020) / P. Pinilla (or full imaging parameters to recreate it from 2017.1.00884.S)",
+  "Exact tclean and MIRIAD imaging parameters (cell size, image size, clean thresholds, masks)",
+  "Anibal Sierra's dust scattering SED fitting code (though equations and DSHARP opacities are fully specified in the text)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Calibration, self-calibration solution intervals, weighting, velocity channel ranges, and all analytical equations for CO line fitting, Toomre Q, dust scattering SED fitting, and planet mass estimation are explicitly provided, though minor imaging parameters (cell size, clean threshold) and the external Band 3 FITS file require archival reconstruction.",
+ "rediscovery_reason": "Both ALMA datasets (2018.1.00689.S and 2017.1.00884.S) are public in the ALMA archive, the analysis workflow and equations are explicitly written out, and the key results (ring radii, arc position angles, CO Gaussian fits, spectral indices, dust size branches, and planet mass ranges) are quantitative.",
+ "source_card": "cards/2023ApJ...948..110Y/sonnet/card.md"
+}

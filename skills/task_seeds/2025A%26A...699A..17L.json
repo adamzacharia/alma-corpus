@@ -1,0 +1,476 @@
+{
+ "bibcode": "2025A&A...699A..17L",
+ "title": "CO, CS, HCO, HCO<SUP>+</SUP>, C<SUB>2</SUB>H, and HCN in the diffuse interstellar medium",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202453182",
+ "arxiv_id": "2506.12518",
+ "fields": [
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Discuss absorption lines of HCO+, C2H, HCN, CS, and HCO in the diffuse interstellar medium across a large sample of 88 sight lines and compare them with HCO+ and CO emission.",
+ "alma_project_codes": [
+  "2016.1.00132.S",
+  "2016.1.00714.S",
+  "2018.1.00115.S",
+  "2019.1.00120.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "21cm HI emission line profile integrals from the Leiden, Argentine, and Bonn (LAB) All-Sky HI survey",
+    "evidence": [
+     {
+      "loc": "Section 2.3",
+      "quote": "HI column densities were derived from the Leiden, Argentine, and Bonn (LAB) All-Sky HI survey Kalberla et al."
+     }
+    ]
+   },
+   "citation": "Kalberla et al. (et al. 2005)"
+  },
+  {
+   "what": {
+    "value": "Optical reddening E_B-V values",
+    "evidence": [
+     {
+      "loc": "2.4. Conventions",
+      "quote": "Where we refer to optical reddening, the values cited were taken from the work of Schlegel et al. (1998)."
+     }
+    ]
+   },
+   "citation": "Schlegel et al. (1998)"
+  },
+  {
+   "what": {
+    "value": "PdBI absorption surveys of HCO+, C2H, HCN, and CS",
+    "evidence": [
+     {
+      "loc": "2.4. Conventions",
+      "quote": "the rubric PdBI denotes results taken from the earlier surveys of HCO+ (Lucas & Liszt, 1996), C2H (Lucas & Liszt, 2000), HCN Liszt & Lucas (2001), and CS (Lucas & Liszt, 2002)."
+     }
+    ]
+   },
+   "citation": "Lucas & Liszt (1996); Lucas & Liszt (2000); Liszt & Lucas (2001); Lucas & Liszt (2002)"
+  },
+  {
+   "what": {
+    "value": "ALMA absorption data for 4 sight lines in the inner Galaxy",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "In combination with ALMA observations of 4 sight lines at low latitude in the inner Galaxy (Gerin & Liszt, 2017; Liszt & Gerin, 2018)"
+     }
+    ]
+   },
+   "citation": "Gerin & Liszt (2017); Liszt & Gerin (2018)"
+  },
+  {
+   "what": {
+    "value": "ALMA HCO+ and CO absorption and DNM studies in Chamaeleon and the Galactic anticenter",
+    "evidence": [
+     {
+      "loc": "2.4. Conventions",
+      "quote": "The rubric Chamaeleon refers to new data taken incidental to the DNM studies of Liszt et al. (2018, 2019)"
+     },
+     {
+      "loc": "2.4. Conventions",
+      "quote": "New results incidental to DNM studies in the Galactic anticenter (Liszt & Gerin, 2023b) use the rubric Outer Galaxy."
+     }
+    ]
+   },
+   "citation": "Liszt et al. (2018, 2019); Liszt & Gerin (2023b)"
+  },
+  {
+   "what": {
+    "value": "HCO abundance toward BL Lac",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "BL Lac [2] 0.32 0.867 0.85(0.02) 0.98(0.02)"
+     }
+    ]
+   },
+   "citation": "Liszt et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Integrated HCO+ and CO emission profile results away from continuum background sources",
+    "evidence": [
+     {
+      "loc": "5.2. HCO+ absorption and CO emission",
+      "quote": "combining the new results with integrated profile results reported away from continuum background sources by Liszt (2020)"
+     }
+    ]
+   },
+   "citation": "Liszt (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract normalized absorption spectra and measure integrated optical depths and column densities",
+   "method": "Extract spectral line profiles from the continuum-peak pixels of standard pipeline datacubes, normalize by the continuum flux in the respective spectral window continuum map, integrate optical depth over the HCO+ line span (or 3 km/s for non-detections), and apply linear conversion factors to derive column densities.",
+   "software": [],
+   "key_parameters": [
+    "N(C2H) = 2.71 x 10^13 cm^-2 Y_CCH (with observed F=2-1 and F=1-0 components having 5/8 of total line strength)",
+    "N(HCN) = 1.89 x 10^12 cm^-2 Y_HCN",
+    "N(HCO+) = 1.10 x 10^12 cm^-2 Y_HCO+ and N(H2) = N(HCO+)/3 x 10^-9"
+   ],
+   "assumptions": [
+    "Permanent dipole moment of mu = 3.89 Debye for HCO+ and no collisional excitation above CMB",
+    "LTE hyperfine line strengths in 4:2:2:1 ratio for HCO"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Form pure emission spectra of HCO+, 12CO, and 13CO from IRAM 30m observations",
+   "method": "Average four HCO+ emission spectra displaced by 1.2 HPBW (30'') in the four cardinal directions from the continuum source to avoid absorption contamination; average five positions (on-source and four displaced by 1 HPBW = 22'') for 12CO and 13CO on the main-beam antenna temperature scale.",
+   "software": [],
+   "key_parameters": [
+    "Channel spacing 48.8 kHz (0.164 km s^-1) and spectral resolution 97.7 kHz (0.33 km s^-1) at 89.1885 GHz"
+   ],
+   "assumptions": [
+    "Emission displaced by 22''-30'' is representative of the gas along the continuum sight line"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Analyze Galactic-scale distributions and power-law abundance relations across the sample",
+   "method": "Perform power-law linear regressions in log-log space of E_B-V, N(HI), N(H2), and W_CO against sin(|b|), and of molecular column densities against E_B-V, N(HCO+), and N(C2H).",
+   "software": [],
+   "key_parameters": [
+    "N(HI) = 1.823 x 10^18 cm^-2 W_HI"
+   ],
+   "assumptions": [
+    "Optically thin 21cm HI emission"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Decompose HCO+, HCN, and C2H absorption profiles into Gaussian kinematic components",
+   "method": "Simultaneously fit all kinematic and hyperfine components by varying central optical depth, central velocity, and FWHM to minimize deviations from the observed line/continuum ratio exp(-tau), using HCO+ decomposition as an initial template for HCN and C2H, and match components across species.",
+   "software": [],
+   "key_parameters": [
+    "Velocity matching criterion: separation in central velocity < 1/3 of the FWHM of the narrower component"
+   ],
+   "assumptions": [
+    "Hyperfine components of HCN and C2H have optical depth ratios proportional to their intrinsic LTE line strengths"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare HCO+ and CO in absorption and emission to derive excitation temperature, gas density, and X_CO",
+   "method": "Interpolate ALMA absorption and IRAM 30m emission profiles onto common spectral grids for channel-by-channel comparison, and compare integrated profile quantities against weak-excitation radiative transfer models.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Weak excitation limit (including electron collisions in diffuse gas with ionization fraction > 10^-4)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCO+ detection rate (2sigma)",
+   "value": "72/86",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected HCO+ along 72 of 86 sight lines where it was observed, C2H along 53 of 76 sight lines, and HCN along 38 of 57 sight lines."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "HCO+ 72/86 0/4 8/12 10/16 24/24 17/17 6/6 7/7"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H detection rate (2sigma)",
+   "value": "53/76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected HCO+ along 72 of 86 sight lines where it was observed, C2H along 53 of 76 sight lines, and HCN along 38 of 57 sight lines."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "C2H 53/76 0/4 6/11 8/17 17/21 14/15 4/4 4/4"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN detection rate (2sigma)",
+   "value": "38/57",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected HCO+ along 72 of 86 sight lines where it was observed, C2H along 53 of 76 sight lines, and HCN along 38 of 57 sight lines."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "HCN 38/57 4/7 4/10 12/21 12/13 2/2 4/4"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO detection rate in new ALMA observations (2sigma)",
+   "value": "4/46",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "HCO was detected along only 4 of 46 sight lines that were newly observed at ALMA because its lines are intrinsically weak"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "HCO 4/46 0/6 1/10 1/20 2/10"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of N(HCO+) vs E_B-V",
+   "value": "1.025",
+   "uncertainty": "0.113",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "E B−V N(HCO [+] ) 73 0.656(0.948) mag 2.130(4.011)×10 [12] cm [−][2] 12.347(0.065) 1.025(0.113) 0.733"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of N(C2H) vs E_B-V",
+   "value": "0.828",
+   "uncertainty": "0.105",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "N(C 2 H) 53 0.650(1.040) mag 2.513(3.930)×10 [13] cm [−][2] 13.477(0.062) 0.828(0.105) 0.74"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of N(HCN) vs E_B-V",
+   "value": "1.355",
+   "uncertainty": "0.197",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "N(HCN) 38 0.754(1.176) mag 3.641(7.347)×10 [12] cm [−][2] 12.410(0.106) 1.355(0.197) 0.74"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of N(C2H) vs N(HCO+)",
+   "value": "0.667",
+   "uncertainty": "0.066",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "N(HCO [+] ) N(C 2 H) 51 2.469(0.456)×10 [12] cm [−][2] 2.619(4.018)×10 [13] cm [−][2] 5.138(0.799) 0.667(0.066) 0.82"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of N(HCN) vs N(HCO+)",
+   "value": "1.248",
+   "uncertainty": "0.060",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "N(HCN) 39 2.987(5.093)×10 [12] cm [−][2] 3.732(7.419)×10 [12] cm [−][2] -3.152(0.726) 1.248(0.060) 0.96"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean relative abundance <N(HCN)>/<N(HCO+)>",
+   "value": "1.25",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Section 3.4",
+     "quote": "The current sample mean is <N(HCN)> / <N(HCO [+] )>= 1.25 ±0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance N(HCO)/N(H2) toward J0325+2224",
+   "value": "1.08e-9",
+   "uncertainty": "0.34e-9",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0325+2224 0.21 0.371 0.40(0.13) 1.08(0.34)"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance N(HCO)/N(H2) toward J0433+0521",
+   "value": "1.33e-9",
+   "uncertainty": "0.49e-9",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0433+0521 0.30 0.127 0.17(0.06) 1.33(0.49)"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance N(HCO)/N(H2) toward J0438+3004",
+   "value": "1.23e-9",
+   "uncertainty": "0.11e-9",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0438+3004 0.95 2.293 2.82(0.25) 1.23(0.11)"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance N(HCO)/N(H2) toward J0439+3045",
+   "value": "1.17e-9",
+   "uncertainty": "0.44e-9",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0439+3045 0.87 1.850 2.16(0.82) 1.17(0.44)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean FWHM of matched HCO+ components (with HCN)",
+   "value": "1.03",
+   "uncertainty": "0.37",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "<FWHM> km s^-1 1.25(0.64) 1.03(0.37) 1.47(0.57) 1.03(0.52) 0.98(0.41) 1.51(1.19) 0.99(0.07)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean FWHM of matched HCN components (with HCO+)",
+   "value": "0.98",
+   "uncertainty": "0.41",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "<FWHM> km s^-1 1.25(0.64) 1.03(0.37) 1.47(0.57) 1.03(0.52) 0.98(0.41) 1.51(1.19) 0.99(0.07)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean FWHM of matched C2H components (with HCO+)",
+   "value": "1.15",
+   "uncertainty": "0.49",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "<FWHM> km s^-1 1.26(0.73) 1.03(0.37) 1.66(0.90) 1.20(0.56) 1.15(0.49) 1.48(0.82) 0.98(0.09)"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical HCO+ J=1-0 excitation temperature",
+   "value": "2.758",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1. HCO+ compared in absorption and emission",
+     "quote": "For most sources, the excitation temperature inferred from the regression line passing through 0.015 K emission brightness at tau = 1 is 2.758 K."
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ J=1-0 excitation temperature toward J0502+1338",
+   "value": "2.855",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1. HCO+ compared in absorption and emission",
+     "quote": "For J0502, the excitation temperature corresponding to a brightness of 0.09 K at tau = 2 is 2.855 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Total neutral hydrogen number density n(H) in host gas",
+   "value": "50-200",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Section 5.1",
+     "quote": "Almost all sources fall in the range n(H) = 50 − 200 cm [−][3]"
+    },
+    {
+     "loc": "5.1. HCO+ compared in absorption and emission",
+     "quote": "Almost all sources fall in the range n(H) = 50 - 200 cm^-3, with n(H) = 500 cm^-3 toward J0502."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used to produce the standard pipeline datacubes and continuum maps",
+  "Exact rest frequency and transition of CS observed in the 87-98 GHz setup (presumably CS J=2-1 at ~97.98 GHz)",
+  "Exact conversion factor used to convert integrated HCO optical depth into N(HCO)",
+  "Software or optimization routine used for simultaneous Gaussian and hyperfine component fitting of the absorption spectra",
+  "Exact velocity integration windows used for each sight line to compute integrated optical depths"
+ ],
+ "missing_for_reproduction": [
+  "Individual Gaussian component fit parameters (velocities, FWHMs, optical depths) for each sight line are only summarized statistically, not tabulated per source.",
+  "Exact velocity integration intervals used to compute the integrated optical depths in Table B.1.",
+  "Tabulated values for the older PdBI/NOEMA and Inner Galaxy sight lines included in the 88-sight-line combined regressions (must be gathered from the cited companion papers).",
+  "Reduced IRAM 30m emission datacubes/spectra from project 003-19."
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA data reduction relies directly on standard archive pipeline cubes (peak-pixel extraction and continuum normalization), explicit conversion factors are given for HCO+, HCN, and C2H, and per-sight-line measurements are tabulated in Table B.1. However, exact velocity integration windows, the HCO optical depth conversion factor, and individual Gaussian component tables are not provided.",
+ "rediscovery_reason": "All four ALMA project codes are public in the archive, the extraction from standard pipeline products is straightforward (continuum-peak pixel spectrum divided by continuum flux), and Table B.1 provides an exact numeric answer key for continuum fluxes and column densities across 46 sight lines.",
+ "source_card": "cards/2025A%26A...699A..17L/sonnet/card.md"
+}

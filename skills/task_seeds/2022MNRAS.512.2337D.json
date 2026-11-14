@@ -1,0 +1,487 @@
+{
+ "bibcode": "2022MNRAS.512.2337D",
+ "title": "The early afterglow of GRB 190829A",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac454",
+ "arxiv_id": "2111.14861",
+ "fields": [
+  "transients"
+ ],
+ "question": "Characterize the early stages of the multi-wavelength afterglow evolution of GRB 190829A and determine its emission mechanism, physics of the ejecta, and properties of the external medium.",
+ "alma_project_codes": [
+  "2018.1.01410.T",
+  "2018.1.01454.T"
+ ],
+ "data": {
+  "bands": "Band 3, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.230-0.31'' (Band 3), 0.67-0.89'' (Band 7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical and near-IR follow-up measurements from GROND, UKIRT, TNG, NOT, MMT, and Liverpool Telescope reported via GCN notices",
+    "evidence": [
+     {
+      "loc": "Swift/UVOT",
+      "quote": "We present in Figure 2 the IR measurements obtained by by GROND (cite: 2019GCN.25569....1C), UKIRT (cite: 2019GCN.25584....1P) and TNG (cite: 2019GCN.25591....1D) together with the optical fluxes measured by NOT (cite: 2019GCN.25563....1H), MMT (cite: 2019GCN.25583....1F) and the Liverpool Telescope (cite: 2019GCN.25585....1P; 2019GCN.25592....1B)."
+     }
+    ]
+   },
+   "citation": "GROND (cite: 2019GCN.25569....1C), UKIRT (cite: 2019GCN.25584....1P), TNG (cite: 2019GCN.25591....1D), NOT (cite: 2019GCN.25563....1H), MMT (cite: 2019GCN.25583....1F), Liverpool Telescope (cite: 2019GCN.25585....1P; 2019GCN.25592....1B)"
+  },
+  {
+   "what": {
+    "value": "Galactic hydrogen column density N_H = 5.6 x 10^20 cm^-2",
+    "evidence": [
+     {
+      "loc": "Swift/XRT",
+      "quote": "in addition to the Galactic value $N_H=5.6\\times 10^{20}$ cm$^{-2}$ (cite: Willingale2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Willingale2013)"
+  },
+  {
+   "what": {
+    "value": "Ratio log(E_K/n) ~ 54 used to infer circumburst density",
+    "evidence": [
+     {
+      "loc": "Burst Energetics and Environment",
+      "quote": "and the ratio log $(E_K/n) \\approx$ 54 from (cite: Salafia2021), we infer a circumburst density $n\\approx$0.01 - 0.1 cm$^{-3}$"
+     }
+    ]
+   },
+   "citation": "(cite: Salafia2021)"
+  },
+  {
+   "what": {
+    "value": "Fermi/GBM observed peak energy E_peak^obs = 130 +/- 20 keV for the first pulse",
+    "evidence": [
+     {
+      "loc": "Prompt emission",
+      "quote": "This value is consistent with the location of the peak energy close to the energy bandpass ($E_{peak}^{obs}$=$130 \\pm 20$ keV), as derived from the Fermi/GBM analysis (cite: 2019GCN.25575....1L; Chand20)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019GCN.25575....1L; Chand20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure ALMA millimeter/submillimeter flux densities and uncertainties",
+   "method": "Retrieve final calibrated images from the ALMA archive, perform Gaussian fits and RMS image noise measurements in identical regions using CASA VIEWER(), and sum RMS and flux calibration uncertainties in quadrature.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Calibration uncertainty = 5% (Band 3), 10% (Band 7); upper limits at 3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Reduce and image ATCA radio observations and extract flux densities",
+   "method": "Process public ATCA datasets in Miriad via splitting, manual or sumthreshold flagging (pgflag), calibration, clean & restore imaging, and phase decorrelation correction (calred).",
+   "software": [
+    "Miriad",
+    "pgflag",
+    "calred"
+   ],
+   "key_parameters": [
+    "robust = 0 (6C configuration until 2019 Sep 13, all antennas); robust = 2 (H168 configuration past 2019 Sep 13, antenna-6 excluded); multiplicative systematic error = 3% (2.1-9.5 GHz), 5% (16.7-21.2 GHz)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Reduce Swift BAT, XRT, and UVOT data and MASTER optical polarimetry",
+   "method": "Process BAT light curves and spectra with HEASOFT and XSPEC, retrieve and convert XRT light curves, perform host-subtracted aperture photometry on UVOT images with HEADAS/UVOTSOURCE, and perform aperture photometry and Stokes Q calculation on MASTER polarized images.",
+   "software": [
+    "HEASOFT",
+    "BATECONVERT",
+    "BATMASKWTEVT",
+    "BATTBLOCKS",
+    "XSPEC",
+    "HEADAS",
+    "UVOTSOURCE"
+   ],
+   "key_parameters": [
+    "UVOT extraction radius = 3'' aperture corrected to 5''; MASTER aperture size = 3.9''"
+   ],
+   "assumptions": [
+    "Galactic N_H = 5.6 x 10^20 cm^-2; afterglow and supernova negligible after 58 days in UVOT"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model multi-wavelength light curves and broadband SEDs with Forward Shock and Reverse Shock components",
+   "method": "Fit X-ray, UVOIR, and radio light curves with power laws and smoothly broken power laws; model broadband SEDs at 4 epochs (1200 s, 6800 s, 21600 s, 1 d) using two smoothly broken power-law components (FS and RS); test standard FS model using afterglowpy.",
+   "software": [
+    "afterglowpy"
+   ],
+   "key_parameters": [
+    "SED epochs: 1200 s, 6800 s, 21600 s, 1 d; FS spectral indices fixed to beta_low = -1/3 and beta_up = 0.75 (p ~ 2.50)"
+   ],
+   "assumptions": [
+    "Constant density external medium; standard fireball closure relations for FS"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive burst energetics, circumburst density, and jet opening angle",
+   "method": "Calculate isotropic-equivalent kinetic energy from X-ray luminosity at 14 d, infer circumburst density using log(E_K/n) from literature, and derive lower limits on jet opening angle and collimation-corrected energy from the non-detection of a jet break up to 100 d.",
+   "software": [],
+   "key_parameters": [
+    "t_j >= 100 d, nu_X ~ 5 keV at 14 d"
+   ],
+   "assumptions": [
+    "p = 2.5, fraction of emitting electrons xi = 1, epsilon_e = 0.1, epsilon_B = 10^-4, standard LambdaCDM cosmology"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 343.5 GHz flux density at 1.48 days",
+   "value": "9.9",
+   "uncertainty": "1.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 1.48 | 2019-08-31 | 6:59 | 8:09 | — | — | — | — | — | — | $9.9 \\pm 1.0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 97.5 GHz flux density at 1.56 days",
+   "value": "7.3",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 1.56 | 2019-08-31 | 9:20 | 9:34 | — | — | — | — | — | $7.3 \\pm 0.4$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 99.8 GHz flux density at 2.45 days",
+   "value": "6.0",
+   "uncertainty": "0.3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2.45 | 2019-09-01 | 6:42 | 6:56 | — | — | — | — | — | $6.0 \\pm 0.3$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 99.8 GHz flux density at 3.48 days",
+   "value": "4.6",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 3.48 | 2019-09-02 | 7:22 | 7:36 | — | — | — | — | — | $4.6 \\pm 0.2$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 99.8 GHz flux density at 5.49 days",
+   "value": "2.6",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 5.49 | 2019-09-04 | 7:47 | 8:01 | — | — | — | — | — | $2.6 \\pm 0.1$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 99.8 GHz flux density at 18.48 days",
+   "value": "0.38",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 18.48 | 2019-09-17 | 7:24 | 7:38 | — | — | — | — | — | $0.38 \\pm 0.04$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 343.5 GHz flux density at 21.41 days",
+   "value": "0.16",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 21.41 | 2019-09-20 | 5:15 | 6:23 | — | — | — | — | — | — | $0.16 \\pm 0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 343.5 GHz flux density upper limit at 30.37 days",
+   "value": "<0.10",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 30.37 | 2019-09-29 | 4:05 | 5:43 | — | — | — | — | — | $0.26 \\pm 0.03$ | $<0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 99.8 GHz flux density at 31.36 days",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 31.36 | 2019-09-30 | 4:36 | 4:50 | — | — | — | — | — | $0.19 \\pm 0.02$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "343 GHz temporal decay index",
+   "value": "1.65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A forward shock plus reverse shock scenario",
+     "quote": "At the highest frequency probed by ALMA (343 GHz), the afterglow rapidly decays as $t^{-1.65}$."
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz light curve break time",
+   "value": "3.6",
+   "uncertainty": "0.1",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A forward shock plus reverse shock scenario",
+     "quote": "The break times are 3.6$\\pm$0.1 days and 10.1$\\pm$2.9 days for 100 GHz and 17 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "17 GHz light curve break time",
+   "value": "10.1",
+   "uncertainty": "2.9",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A forward shock plus reverse shock scenario",
+     "quote": "The break times are 3.6$\\pm$0.1 days and 10.1$\\pm$2.9 days for 100 GHz and 17 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "5.5 GHz light curve peak time",
+   "value": "4.1",
+   "uncertainty": "0.4",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A forward shock plus reverse shock scenario",
+     "quote": "The radio flux at 5.5 GHz increases with a slope of -0.46 $\\pm$ 0.09 reaching its peak at 4.1 $\\pm$ 0.4 days, and then decays with slope of 1.13 $\\pm$ 0.12 (Figure 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "5.5 GHz post-peak decay slope",
+   "value": "1.13",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A forward shock plus reverse shock scenario",
+     "quote": "The radio flux at 5.5 GHz increases with a slope of -0.46 $\\pm$ 0.09 reaching its peak at 4.1 $\\pm$ 0.4 days, and then decays with slope of 1.13 $\\pm$ 0.12 (Figure 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Forward shock electron spectral index p",
+   "value": "2.50",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A forward shock plus reverse shock scenario",
+     "quote": "Using the standard closure relations for GRB afterglows, the post peak temporal slope, $\\alpha \\approx$1.1, is related to the spectral index of the accelerated electrons as $p$ = 4$\\alpha$/3 +1 = 2.50 $\\pm$0.16."
+    }
+   ]
+  },
+  {
+   "quantity": "Reverse shock electron spectral index p",
+   "value": "2.80",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distribution (SED)",
+     "quote": "The second spectral component tracks the reverse shock (RS) modeled with spectral slopes of $\\beta^{RS}_{low}$ $\\approx$ -1.0 $\\pm$0.2 and $\\beta^{RS}_{up}$ $\\approx$ 0.90$\\pm$0.02, leading to $p$=2.80$\\pm$0.04."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical polarization Stokes parameter Q upper limit (3 sigma)",
+   "value": "<= 6",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Polarization",
+     "quote": "In this interval, the time-averaged 3 $\\sigma$ upper limit is $Q$ $\\lesssim$6%, where $Q=\\left(F_{0}-F_{90}\\right)/\\left(F_0 + F_{90}\\right)$ is the Stokes parameter"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic reddening E(B-V)",
+   "value": "0.90",
+   "uncertainty": "0.05",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distribution (SED)",
+     "quote": "They are obtained for an intrinsic reddening of $E(B-V)$=$0.90 \\pm 0.05$ and an intrinsic hydrogen column desnity of $N_H=1.13 \\pm 0.06 \\times 10^{22}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic hydrogen column density N_H (from SED fit)",
+   "value": "1.13e22",
+   "uncertainty": "0.06e22",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distribution (SED)",
+     "quote": "They are obtained for an intrinsic reddening of $E(B-V)$=$0.90 \\pm 0.05$ and an intrinsic hydrogen column desnity of $N_H=1.13 \\pm 0.06 \\times 10^{22}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Prompt duration T90",
+   "value": "57",
+   "uncertainty": "3",
+   "units": "s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Swift/BAT",
+     "quote": "We used BATTBLOCKS to run the Bayesian Block algorithm over the 64 ms, background-subtracted, 15–350 keV light curve finding a $T_{90} = 57 \\pm 3$ s and $T_{50} = 5 \\pm 1$ s ."
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame minimum variability timescale Delta t_min / (1+z)",
+   "value": "1.5",
+   "uncertainty": "0.5",
+   "units": "s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Prompt emission",
+     "quote": "From this analysis, we found $\\Delta~t_{min}/(1+z)=1.5 \\pm 0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Isotropic-equivalent blastwave kinetic energy E_K,iso",
+   "value": "3e52",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Burst Energetics and Environment",
+     "quote": "$E_{K,\\rm iso} \\approx 3 \\times 10^{52} \\left(\\frac{\\epsilon_{e}}{0.1}\\right)^{-\\frac{4}{3}} \\left(\\frac{\\epsilon_{B}}{10^{-4}}\\right)^{-\\frac{1}{9}} {\\rm erg}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumburst density n",
+   "value": "0.01 - 0.1",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Burst Energetics and Environment",
+     "quote": "and the ratio log $(E_K/n) \\approx$ 54 from (cite: Salafia2021), we infer a circumburst density $n\\approx$0.01 - 0.1 cm$^{-3}$, typical of the interstellar medium."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet opening angle theta_j",
+   "value": ">= 16",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Burst Energetics and Environment",
+     "quote": "$\\theta_j \\gtrsim 16^{\\circ}  \\left(\\frac{t_j}{100~d}\\right)^{\\frac{3}{8}} \\left(\\frac{\\epsilon_{e}}{0.1}\\right)^{\\frac{1}{6}} \\left(\\frac{n}{0.1 {\\rm~cm}^{-3}}\\right)^{\\frac{1}{8}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Collimation-corrected kinetic energy E_K",
+   "value": ">= 5e50",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Burst Energetics and Environment",
+     "quote": "and a collimation-corrected energy release $E_K \\gtrsim 5 \\times 10^{50} {\\rm~erg}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact region coordinates and sizes used in the CASA viewer for ALMA Gaussian fitting and RMS noise extraction",
+  "Whether peak or integrated flux density from the Gaussian fits in CASA viewer was reported as the ALMA flux density",
+  "Exact cosmological parameters (H0, Omega_m, Omega_Lambda) from Planck 2018 used for luminosity calculations",
+  "Fitting algorithm/software and uncertainty estimation method used for the smoothly broken power-law light curve and SED fits"
+ ],
+ "missing_for_reproduction": [
+  "Exact region definitions for CASA VIEWER() Gaussian fitting and RMS noise estimation on the ALMA archival images",
+  "Custom scripts or software used to fit the smoothly broken power-law light curves and multi-epoch SEDs",
+  "Raw MASTER images (archived internally by the MASTER network)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "ALMA analysis uses standard archival calibrated images with straightforward Gaussian fitting in CASA 5.4, and all extracted flux densities are tabulated in Table 4; minor ambiguity in exact fitting regions and custom SED fitting routines.",
+ "rediscovery_reason": "Public ALMA archival calibrated images exist for both project codes, the measurement recipe (CASA Gaussian fitting + quadrature calibration uncertainty) is simple and well-specified, and all resulting flux densities and light-curve break parameters are explicitly tabulated.",
+ "source_card": "cards/2022MNRAS.512.2337D/sonnet/card.md"
+}

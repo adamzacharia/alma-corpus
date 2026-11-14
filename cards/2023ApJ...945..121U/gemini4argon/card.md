@@ -1,0 +1,330 @@
+# ALMA Lensing Cluster Survey: Properties of Millimeter Galaxies Hosting X-Ray-detected Active Galactic Nuclei
+
+`2023ApJ...945..121U` | The Astrophysical Journal 2023 | first author: Uematsu, Ryosuke | arXiv: 2301.09275 | DOI: 10.3847/1538-4357/acb4e9
+
+Card schema 1.0 | model gemini-4-argon | depth full | type large_program_or_survey
+
+## Science
+
+- Fields: high_z_galaxies, agn_and_quasars
+- Question: What are the multi-wavelength physical properties (X-ray luminosities, mass-accretion rates, star-formation rates, stellar masses) and evolutionary stages of millimeter galaxies hosting X-ray detected AGNs in the ALMA Lensing Cluster Survey?  
+  > "In this paper, we investigate the properties of the three millimeter galaxies hosting X-ray detected AGNs in the ALCS, using the archival data of *Chandra*." (Introduction); "We estimate the X-ray luminosities (or mass-accretion rates), star-formation rates, and stellar masses of this sample, and discuss their evolutional stages in comparison with other X-ray detected samples." (Introduction)
+- Target **A370-ID110**: coordinates R.A. 39.985689 deg, Decl. -1.5739784 deg  
+  > "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\" (Table 1); "The redshifts are fixed at the spectroscopic ones obtained by Canada-France-Hawaii Telescope in A370-ID110 ($z=1.06$; (cite: 1999A&A...343L..70S))" (X-ray Spectral Analysis); z/distance z = 1.06  
+  > "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\" (Table 1); "The redshifts are fixed at the spectroscopic ones obtained by Canada-France-Hawaii Telescope in A370-ID110 ($z=1.06$; (cite: 1999A&A...343L..70S))" (X-ray Spectral Analysis); distance from (cite: 1999A&A...343L..70S)  
+  > "A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\" (Table 1); "The redshifts are fixed at the spectroscopic ones obtained by Canada-France-Hawaii Telescope in A370-ID110 ($z=1.06$; (cite: 1999A&A...343L..70S))" (X-ray Spectral Analysis)
+- Target **M0416-ID117**: coordinates R.A. 64.0449843 deg, Decl. -24.0798771 deg  
+  > "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\" (Table 1); "and the Grism Lens-Amplified Survey from Space in M0416-ID117 ($z=2.09$; (cite: 2016ApJ...831..182H))" (X-ray Spectral Analysis); z/distance z = 2.09  
+  > "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\" (Table 1); "and the Grism Lens-Amplified Survey from Space in M0416-ID117 ($z=2.09$; (cite: 2016ApJ...831..182H))" (X-ray Spectral Analysis); distance from (cite: 2016ApJ...831..182H)  
+  > "M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\" (Table 1); "and the Grism Lens-Amplified Survey from Space in M0416-ID117 ($z=2.09$; (cite: 2016ApJ...831..182H))" (X-ray Spectral Analysis)
+- Target **M0329-ID11**: coordinates R.A. 52.4239873 deg, Decl. -2.1824407 deg  
+  > "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\" (Table 1); "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))." (X-ray Spectral Analysis); z/distance z = 2.84  
+  > "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\" (Table 1); "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))." (X-ray Spectral Analysis); distance from (cite: 2022arXiv220707125K)  
+  > "M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\" (Table 1); "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))." (X-ray Spectral Analysis)
+
+## Data provenance
+
+- ALMA projects: 2018.1.00035.L, 2013.1.00999.S, 2015.1.01425.S
+- bands: Band 6 (1.15 mm / 1.2 mm)  
+  > "covering an area of 133 arcmin$^2$ over 33 clusters with a 1.2 mm flux-density limit of ${\sim}$60 $\mathrm{\mu Jy}$ ($1\sigma$)." (Abstract); "ALMA Band-6 observations of the 33 lensing clusters were conducted between 2018 December and 2019 December" (Observations and Source Detection with ALMA); "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$" (Observations and Source Detection with ALMA)
+- frequencies and spectral setup: 250.0–257.5 GHz and 265.0–272.5 GHz  
+  > "with a 15 GHz total bandwidth covering 250.0–257.5 GHz and 265.0–272.5 GHz." (Observations and Source Detection with ALMA)
+- continuum bandwidth: 15 GHz  
+  > "with a 15 GHz total bandwidth covering 250.0–257.5 GHz and 265.0–272.5 GHz." (Observations and Source Detection with ALMA)
+- arrays: _not stated_
+- configurations: C43-1 and C43-2  
+  > "Two compact array configurations (C43-1 and C43-2) were used to obtain a moderate synthesized beam size ($\sim$1$''$)" (Observations and Source Detection with ALMA)
+- baselines: _not stated_
+- angular resolution: ~1'' (native), ~2'' (tapered)  
+  > "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$ with a native beam size of $\sim$1$''$ with the natural weighting." (Observations and Source Detection with ALMA); "We also produced lower resolution maps by applying a $uv$-taper, yielding a typical beam size of $\sim$2$''$" (Observations and Source Detection with ALMA)
+- max recoverable scale: _not stated_
+- sensitivity: ~60 uJy beam^-1 (1 sigma)  
+  > "with a 1.2 mm flux-density limit of ${\sim}$60 $\mathrm{\mu Jy}$ ($1\sigma$)." (Abstract); "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$ with a native beam size of $\sim$1$''$ with the natural weighting." (Observations and Source Detection with ALMA)
+- time on source: _not stated_
+- observing dates: 2018 December to 2019 December  
+  > "ALMA Band-6 observations of the 33 lensing clusters were conducted between 2018 December and 2019 December" (Observations and Source Detection with ALMA)
+- pi or archival as stated: 2018.1.00035.L (PI: K. Kohno) combined with archival 2013.1.00999.S and 2015.1.01425.S (PI: F. Bauer)  
+  > "through the program 2018.1.00035.L (PI: K. Kohno; Kohno et al., in prep.)" (Observations and Source Detection with ALMA); "For five Hubble Frontier Fields, we also combined the existing ALMA data from 2013.1.00999S and 2015.1.01425.S (PI: F. Bauer; (cite: 2017A&A...597A..41G; 2017A&A...608A.138G))." (Observations and Source Detection with ALMA)
+- Other facility **Chandra**: Archival ACIS 0.5–7.0 keV X-ray observations and spectra (96.3 ks for Abell370, 328 ks for MACSJ0416.1–2403, 77.5 ks for MACS0329.7–0211)  
+  > "*Chandra* (cite: 2002PASP..114....1W) observed the ALCS fields on multiple occasions since 1999 with the Advanced CCD Imaging Spectrometer (ACIS: (cite: 2003SPIE.4851...28G))." (Chandra Counterparts); "where the total exposure times of the *Chandra* observations are 96.3 ks, 328 ks, and 77.5 ks, respectively." (Chandra Counterparts)
+- Other facility **HST**: Optical and near-infrared ACS and WFC3 images and source catalogs  
+  > "Optical, near-infrared, and mid-infrared images of these three clusters with the ALCS-XAGNs have been taken using *HST* ACS and WFC3, and Spitzer Space Telescope (*Spitzer*) IRAC (cite: 2004ApJS..154...10F)." (HST, Spitzer, and Herschel Counterparts)
+- Other facility **Spitzer**: Mid-infrared IRAC (ch1–4) and MIPS photometry and images  
+  > "All three ALCS-XAGN sources have counterparts in ACS, WFC3, and IRAC (channel 1 and 2) images as shown in Figure 1." (HST, Spitzer, and Herschel Counterparts); "We also utilized IRAC (channel 3 and 4) and MIPS (cite: 2004ApJS..154...25R) photometric data from the Spitzer Enhanced Imaging Products (SEIP; (cite: https://doi.org/10.26131/irsa433))." (HST, Spitzer, and Herschel Counterparts)
+- Other facility **Herschel**: Far-infrared PACS and SPIRE images and photometry at 100–500 um  
+  > "Herschel Space Observatory (*Herschel*) PACS and SPIRE images at 100–500 $\mu$m bands have been obtained for the ALCS fields (mostly through the *Herschel* Lensing Survey, (cite: 2010A&A...518L..12E); (cite: 2021ApJ...908..192S))." (HST, Spitzer, and Herschel Counterparts)
+- External data: 180 secure ALCS 1.2 mm continuum source catalog and lensing magnification factors  
+  > "We cross-matched the *Chandra* detected sources with the secure ALCS source list comprising of 180 millimeter detected galaxies (see Fujimoto et al., in prep.)." (Chandra Counterparts); "(5) Magnification factor due to the lensing effect (Fujimoto et al., in prep.)." (Table 1) [from Fujimoto et al., in prep.]
+- External data: Reprocessed archival HST and Spitzer/IRAC 3.6 um and 4.5 um mosaics and source catalogs, and photometric redshift of M0329-ID11  
+  > "The images and source catalogs were built by reprocessing of available archival *HST* and *Spitzer*/IRAC 3.6 $\mu$m and 4.5 $\mu$m mosaics of ALCS fields (cite: 2022arXiv220707125K)." (HST, Spitzer, and Herschel Counterparts); "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))." (X-ray Spectral Analysis) [from (cite: 2022arXiv220707125K)]
+- External data: Spitzer IRAC ch3, ch4 and MIPS photometry for A370-ID110  
+  > "We also utilized IRAC (channel 3 and 4) and MIPS (cite: 2004ApJS..154...25R) photometric data from the Spitzer Enhanced Imaging Products (SEIP; (cite: https://doi.org/10.26131/irsa433))." (HST, Spitzer, and Herschel Counterparts) [from SEIP; (cite: https://doi.org/10.26131/irsa433)]
+- External data: Herschel PACS and SPIRE data and photometry in ALCS fields  
+  > "Details of the *Herschel* data in ALCS fields have been described in (cite: 2022ApJ...932...77S)." (HST, Spitzer, and Herschel Counterparts) [from (cite: 2022ApJ...932...77S)]
+- External data: Spectroscopic redshift of A370-ID110 (z=1.06)  
+  > "The redshifts are fixed at the spectroscopic ones obtained by Canada-France-Hawaii Telescope in A370-ID110 ($z=1.06$; (cite: 1999A&A...343L..70S))" (X-ray Spectral Analysis) [from (cite: 1999A&A...343L..70S)]
+- External data: Spectroscopic redshift of M0416-ID117 (z=2.09)  
+  > "and the Grism Lens-Amplified Survey from Space in M0416-ID117 ($z=2.09$; (cite: 2016ApJ...831..182H))" (X-ray Spectral Analysis) [from (cite: 2016ApJ...831..182H)]
+- External data: Galactic photoelectric absorption column density estimates  
+  > "All the parameters are left as free parameters except for the galactic absorption column density and the redshift. The former is fixed at the values estimated by the method of (cite: 2013MNRAS.431..394W)." (X-ray Spectral Analysis) [from (cite: 2013MNRAS.431..394W)]
+- External data: Stellar masses, SFRs, and X-ray luminosities of comparison AGN samples (ALESS-XAGN, UDF-XAGN, ASAGAO-XAGN, AS2UDS-XAGN, SXDF-XAGN)  
+  > "The stellar masses and SFRs of ALESS-XAGNs, UDF-XAGNs, ASAGAO-XAGNs, and AS2UDS-XAGN are estimated by the `MAGPHYS` code (cite: 2015ApJ...806..110D; 2020PASJ...72...69Y; 2020MNRAS.494.3828D), while those of SXDF-XAGNs are estimated by the `X-CIGALE` code (cite: 2021ApJ...909..188S)." (Discussions); "The X-ray luminosities of ALESS-XAGNs, UDF-XAGNs and ASAGAO-XAGNs, and AS2UDS-XAGNs are taken from (cite: 2013ApJ...778..179W), (cite: 2018ApJ...853...24U), and (cite: 2018ApJS..236...48K), respectively." (Discussions); "We also extract the X-ray luminosities of SXDF-XAGNs from (cite: 2012ApJ...761..143N)" (Discussions) [from (cite: 2015ApJ...806..110D; 2020PASJ...72...69Y; 2020MNRAS.494.3828D; 2021ApJ...909..188S; 2013ApJ...778..179W; 2018ApJ...853...24U; 2018ApJS..236...48K; 2012ApJ...761..143N)]
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: pipeline  
+  > "All the ALMA data were calibrated and reduced with the Common Astronomy Software Applications package (CASA; (cite: 2007ASPC..376..127M)) with the pipeline script in the standard manner." (Observations and Source Detection with ALMA)
+- casa version: v5.4.0 and v5.6.1  
+  > "Different pipeline versions were used for observations obtained in different cycles, i.e., v5.4.0 for 26 clusters observed in Cycle 6 and v5.6.1 for the remaining clusters in Cycle 7." (Observations and Source Detection with ALMA); "CASA v5.4.0 (cite: 2007ASPC..376..127M)" (Software)
+- pipeline version: v5.4.0 (Cycle 6) and v5.6.1 (Cycle 7)  
+  > "Different pipeline versions were used for observations obtained in different cycles, i.e., v5.4.0 for 26 clusters observed in Cycle 6 and v5.6.1 for the remaining clusters in Cycle 7." (Observations and Source Detection with ALMA)
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: _not stated_
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: _not stated_
+- weighting robust: natural weighting  
+  > "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$ with a native beam size of $\sim$1$''$ with the natural weighting." (Observations and Source Detection with ALMA)
+- uv taper: uv-taper applied to produce ~2'' beam maps  
+  > "We also produced lower resolution maps by applying a $uv$-taper, yielding a typical beam size of $\sim$2$''$, which is better suited for spatially elongated, low surface brightness emission." (Observations and Source Detection with ALMA)
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: _not stated_
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: Combined 2018.1.00035.L with existing ALMA data from 2013.1.00999.S and 2015.1.01425.S for five Hubble Frontier Fields  
+  > "For five Hubble Frontier Fields, we also combined the existing ALMA data from 2013.1.00999S and 2015.1.01425.S (PI: F. Bauer; (cite: 2017A&A...597A..41G; 2017A&A...608A.138G))." (Observations and Source Detection with ALMA)
+- smoothing: _not stated_
+- final beam: ~1'' (native) and ~2'' (uv-tapered)  
+  > "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$ with a native beam size of $\sim$1$''$ with the natural weighting." (Observations and Source Detection with ALMA); "We also produced lower resolution maps by applying a $uv$-taper, yielding a typical beam size of $\sim$2$''$" (Observations and Source Detection with ALMA)
+- final rms: ~60 uJy beam^-1  
+  > "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$ with a native beam size of $\sim$1$''$ with the natural weighting." (Observations and Source Detection with ALMA)
+
+### Inherited from earlier work
+
+- ALMA data analysis, SExtractor source extraction processes, ALCS 1.2 mm continuum source catalog, and lensing magnification factors  
+  > "Details of the ALMA data analysis, source extraction processes, and the ALCS 1.2 mm continuum source catalog will be presented in a separate paper (Fujimoto et al. in prep.)." (Observations and Source Detection with ALMA); "(5) Magnification factor due to the lensing effect (Fujimoto et al., in prep.)." (Table 1) [from Fujimoto et al., in prep.]
+- Chandra wavdetect false-positive probability threshold and wavelet scale settings  
+  > "In the detection, the false-positive probability threshold was set to $10^{-8}$ and the wavelet scales were set to “$\sqrt{2}$sequence" (i.e., 1, $\sqrt{2}$, 2, 2$\sqrt{2}$, 4, $\sqrt{2}$, 8, 8$\sqrt{2}$ and 16 pixels), which are the same settings as in (cite: 2008ApJS..179...19L)." (Chandra Counterparts) [from (cite: 2008ApJS..179...19L)]
+- Reprocessing of archival HST and Spitzer/IRAC mosaics and source catalogs, and EAZY photometric redshift of M0329-ID11  
+  > "The images and source catalogs were built by reprocessing of available archival *HST* and *Spitzer*/IRAC 3.6 $\mu$m and 4.5 $\mu$m mosaics of ALCS fields (cite: 2022arXiv220707125K)." (HST, Spitzer, and Herschel Counterparts); "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))." (X-ray Spectral Analysis) [from (cite: 2022arXiv220707125K)]
+- Herschel PACS and SPIRE data processing and photometry in ALCS fields  
+  > "Details of the *Herschel* data in ALCS fields have been described in (cite: 2022ApJ...932...77S)." (HST, Spitzer, and Herschel Counterparts) [from (cite: 2022ApJ...932...77S)]
+- Measurement method for power-law index of observed UV slope beta  
+  > "(15) Power-law index of observed UV slope, which is measured in the same way as (cite: 1994ApJ...429..582C)." (Table 1) [from (cite: 1994ApJ...429..582C)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Exact ALMA imaging parameters (tclean cell size, image size, cleaning threshold, exact uv-taper parameter value, primary beam correction details)
+- SExtractor detection and extraction parameters used to build the 180-source ALCS catalog
+- Exact multi-wavelength photometric flux densities and uncertainties (from HST, Spitzer, Herschel, and ALMA) input to CIGALE for the three sources
+- Chandra ObsIDs combined for each of the three cluster fields and exact background region coordinates
+- Exact Galactic absorption column density (N_H) values fixed in XSPEC for each source
+- Specific lens models used to derive the magnification factors (deferred to Fujimoto et al., in prep.)
+
+## Analysis recipe
+
+1. **ALMA data reduction, imaging, and continuum source extraction**: Calibrate and image ALMA Band 6 data with CASA pipeline using natural weighting (native ~1'' and uv-tapered ~2'' beams), then extract 1.2 mm continuum sources using SExtractor to build the 180-source ALCS catalog.  
+  > "All the ALMA data were calibrated and reduced with the Common Astronomy Software Applications package (CASA; (cite: 2007ASPC..376..127M)) with the pipeline script in the standard manner." (Observations and Source Detection with ALMA); "The continuum sources were extracted from the native and tapered maps with the natural weighting using the `SExtractor` version 2.5.0 (cite: 1996A&AS..117..393B)." (Observations and Source Detection with ALMA)
+   - software: CASA, SExtractor
+   - parameter: natural weighting, native beam ~1'', uv-tapered beam ~2'', rms ~60 uJy beam^-1  
+  > "The natural-weighted 1.15 mm continuum images have a typical noise level of $\sim$60 $\mu$Jy beam$^{-1}$ with a native beam size of $\sim$1$''$ with the natural weighting." (Observations and Source Detection with ALMA); "We also produced lower resolution maps by applying a $uv$-taper, yielding a typical beam size of $\sim$2$''$" (Observations and Source Detection with ALMA)
+   - fitting: _not stated_
+   - validation: _not stated_
+2. **Chandra X-ray data reduction, source detection, cross-matching, and spectrum extraction**: Process archival Chandra ACIS data up to 2017 with CIAO, combine with merge_obs, detect sources in 0.5–7.0 keV with wavdetect, cross-match with the 180 secure ALCS sources within Chandra positional uncertainty, and extract spectra in circular apertures.  
+  > "We processed all the data obtained by 2017, following the standard analysis procedures with the *Chandra* interactive analysis of observations (CIAO v4.12) software and calibration database (CALDB v4.9.1)." (Chandra Counterparts); "The products were combined by using `merge_obs` and sources were detected by running `wavdetect` (cite: 2002ApJS..138..185F) in the 0.5–7.0 keV band." (Chandra Counterparts); "We extracted the X-ray spectra from circular regions with radii of 1.5$''$ for A370-ID110 and of 2.0$''$ for M0416-ID117 and M0329-ID11 centered at the X-ray source positions" (Chandra Counterparts)
+   - software: CIAO, CALDB, merge_obs, wavdetect
+   - parameter: 0.5–7.0 keV band; wavdetect false-positive probability threshold = 10^-8; wavelet scales = sqrt(2) sequence (1 to 16 pixels)  
+  > "In the detection, the false-positive probability threshold was set to $10^{-8}$ and the wavelet scales were set to “$\sqrt{2}$sequence" (i.e., 1, $\sqrt{2}$, 2, 2$\sqrt{2}$, 4, $\sqrt{2}$, 8, 8$\sqrt{2}$ and 16 pixels)" (Chandra Counterparts)
+   - parameter: Cross-match radius = root sum square of 3 sigma statistical error and 99% Chandra absolute astrometry uncertainty (1.4'')  
+  > "for which we adopt the root sum square of the 3$\sigma$ statistical error and the 99% absolute astrometry uncertainty of *Chandra* (1.4$''$)." (Chandra Counterparts)
+   - parameter: Spectral extraction aperture radius = 1.5'' (A370-ID110) and 2.0'' (M0416-ID117, M0329-ID11)  
+  > "We extracted the X-ray spectra from circular regions with radii of 1.5$''$ for A370-ID110 and of 2.0$''$ for M0416-ID117 and M0329-ID11 centered at the X-ray source positions" (Chandra Counterparts)
+   - assumption: ALMA positional uncertainty is negligible compared to Chandra  
+  > "We ignored the positional uncertainty of ALMA, which is much smaller than that of *Chandra*." (Chandra Counterparts)
+   - fitting: _not stated_
+   - validation: _not stated_
+3. **X-ray spectral fitting**: Fit observed (uncorrected for magnification) X-ray spectra with an absorbed power-law model (phabs*zphabs*zpowerlaw) in XSPEC, then correct intrinsic 0.5–8.0 keV luminosity for lensing magnification.  
+  > "We fit the observed (magnification not corrected) X-ray spectra with a simple absorbed power-law model." (X-ray Spectral Analysis); "$$\begin{equation}
+\mathrm{\texttt{phabs}*\texttt{zphabs}*\texttt{zpowerlaw}}
+\end{equation}$$" (X-ray Spectral Analysis); "All physical quantities in this table are corrected for the lensing magnification; possible uncertainties in the magnification factors are ignored." (Table 1)
+   - software: XSPEC, HEAsoft
+   - parameter: Fixed redshifts (z = 1.06, 2.09, 2.84) and fixed Galactic N_H from Willingale et al. (2013)  
+  > "All the parameters are left as free parameters except for the galactic absorption column density and the redshift. The former is fixed at the values estimated by the method of (cite: 2013MNRAS.431..394W)." (X-ray Spectral Analysis)
+   - assumption: Flat universe with H_0 = 70.4 km s^-1 Mpc^-1 and Omega_M = 0.272; lensing magnification factors mu = 1.19, 1.57, 2.46  
+  > "Throughout the paper, we assume a flat universe with $H_0=70.4\ \mathrm{km\ s^{-1}\ Mpc^{-1}}$ and $\Omega_M=0.272$ (cite: 2011ApJS..192...18K)." (Introduction); "(5) Magnification factor due to the lensing effect (Fujimoto et al., in prep.)." (Table 1)
+   - fitting: Chi-square fitting in XSPEC with 90% confidence regions for errors  
+  > "We are able to adequately reproduce the X-ray spectra of the AGNs, with reduced chi-square values of less than 1 ($\chi^2/\mathrm{d.o.f.}<1$)." (X-ray Spectral Analysis); "Errors attached in (6)–(8) correspond to the 90% confidence regions" (Table 1)
+   - validation: Reduced chi-square < 1 and consistency of A370-ID110 absorption with previous X-ray study by Bautz et al. (2000)  
+  > "We are able to adequately reproduce the X-ray spectra of the AGNs, with reduced chi-square values of less than 1 ($\chi^2/\mathrm{d.o.f.}<1$)." (X-ray Spectral Analysis); "A370-ID110 shows a significant absorption in the X-ray spectrum. This is consistent with the previous X-ray study by (cite: 2000ApJ...543L.119B)." (X-ray Spectral Analysis)
+4. **Multi-component X-ray to millimeter SED modeling**: Perform Bayesian multi-component SED modeling of magnification-corrected X-ray to millimeter photometry using CIGALE v2022.0.  
+  > "We perform multi-component SED modelling of the X-ray to millimeter photometry, where we use the magnification-corrected photometries." (SED Modelling with CIGALE); "We employ the latest version of Code Investigating GALaxy Emission (`CIGALE` v2022.0; (cite: 2005MNRAS.360.1413B; 2009A&A...507.1793N; 2019A&A...622A.103B; 2020MNRAS.491..740Y; 2022ApJ...927..192Y)) to conduct X-ray to millimeter SED modeling" (SED Modelling with CIGALE)
+   - software: CIGALE
+   - parameter: Delayed SFH, Bruzual & Charlot (2003) SSP, modified Calzetti attenuation, Inoue (2011) nebular emission, SKIRTOR AGN torus model, Jones et al. (2017) THEMIS dust emission, X-ray photon index fixed to 1.9; parameter grid in Table 2  
+  > "For the AGN emission, we adopt the `SKIRTOR` model (cite: 2012MNRAS.420.2756S; 2016MNRAS.458.2288S), a clumpy two-phase torus model. The dust emission is modeled by the dust templates of (cite: 2017A.A...602A..46J)." (SED Modelling with CIGALE); "We assume an isotropic X-ray radiation from an AGN, where we fix the photon index of 1.9 as a common value" (SED Modelling with CIGALE)
+   - assumption: Chabrier (2003) IMF, metallicity = 0.02, energy balance between UV/optical and IR, isotropic AGN X-ray radiation  
+  > "The simple stellar population (SSP) is modeled with the stellar templates of (cite: 2003MNRAS.344.1000B), where we assume the (cite: 2003PASP..115..763C) IMF." (SED Modelling with CIGALE); "Metalicity of the stellar model & &0.02\" (Parameters used in the SED analysis)
+   - fitting: Bayesian estimation with log-uniform priors on SFR, M_*, L_dust, M_dust and uniform priors on U_min, IRX, and beta; 1 sigma confidence regions  
+  > "The physical properties are estimated by the Bayesian method, where we adopt log-uniform distributions for the prior probability distributions of star-formation rate (SFR), stellar mass ($M_*$), dust luminosity ($L_{\mathrm{dust}}$), and dust mass ($M_{\mathrm{dust}}$)" (SED Modelling with CIGALE); "while uniform distributions are assumed for those of minimum radiation field of interstellar dust ($U_{\mathrm{min}}$), infrared excess ($\mathrm{IRX}=\log L_{\mathrm{dust}}/L_{\mathrm{UV,SF}}$), and power-law index of observed UV slope ($\beta$)." (SED Modelling with CIGALE)
+   - validation: Reduced chi-square < 5; consistency of AGN type classification with X-ray N_H and NIR spectroscopy; consistency with previous studies  
+  > "We confirm that `CIGALE` successfully reproduces the SEDs from millimeter to X-ray of all the sources ($\chi^2/\mathrm{d.o.f.}<5$)." (SED Modelling with CIGALE); "We also confirm that the physical properties of A370-ID110 and M0416-ID117 are consistent with those reported in the previous studies (cite: 2002MNRAS.331..495S; 2017A&A...604A.132L)." (SED Modelling with CIGALE)
+5. **Comparison with star-forming main sequence and SMBH-galaxy co-evolution relations**: Compare derived M_*, SFR, and L_X with other ALMA+Chandra and X-ray AGN samples in the M_*-SFR and L_X-SFR planes, converting L_X to SMBH mass-accretion rate.  
+  > "The left panel of Figure 3 shows stellar masses versus SFRs for our 3 sources and other AGN samples (ALESS-XAGN, UDF-XAGN, ASAGAO-XAGN, AS2UDS-XAGN, and SXDF-XAGN)." (Stellar Mass versus SFR); "The right panel of Figure 3 shows X-ray luminosities versus SFRs. We also show the relation of galaxy-SMBH simultaneous evolution for the local $M_{\mathrm{BH}}$-vs-$M_{\mathrm{bulge}}$ and $M_{\mathrm{BH}}$-vs-$M_{\mathrm{stellar}}$ relations." (X-ray luminosity versus SFR)
+   - parameter: Return fraction R = 0.41, mass ratio A = 200 (bulge) and 400 (stellar), bolometric correction kappa_0.5-8 = 13, radiation efficiency eta = 0.05  
+  > "where $R$ is the return fraction ($R=0.41$ for a Chabrier IMF), and $A$ is the mass ratio ($M_{\mathrm{bulge}}/M_{\mathrm{BH}}=200$ and $M_{\mathrm{stellar}}/M_{\mathrm{BH}}=400$; see (cite: 2018ApJ...853...24U) for more details)." (X-ray luminosity versus SFR); "where $\kappa_{0.5-8}$ is the bolometric correction factor ($\kappa_{0.5-8}=13$ or $\kappa_{2-10}=20$ assuming a photon index of 1.9; (cite: 2007MNRAS.381.1235V)), $\eta$ is the radiation efficiency ($\eta=0.05$), and $c$ is the speed of light." (X-ray luminosity versus SFR)
+   - assumption: Negligible systematic offset between CIGALE and MAGPHYS for high-sSFR galaxies (log sSFR > -9.6)  
+  > "The sSFRs of the ALESS-XAGNs, UDF-XAGNs, ASAGAO-XAGNs, and AS2UDS-XAGNs are adequately high ($\log \mathrm{sSFR}[\mathrm{yr}^{-1}]>-9.6$), and hence we ignore the systematic difference between `CIGALE` and `MAGPHYS` as an approximation." (Discussions)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CASA** v5.4.0 and v5.6.1: ALMA data calibration and reduction via standard pipeline script  
+  > "All the ALMA data were calibrated and reduced with the Common Astronomy Software Applications package (CASA; (cite: 2007ASPC..376..127M)) with the pipeline script in the standard manner." (Observations and Source Detection with ALMA); "Different pipeline versions were used for observations obtained in different cycles, i.e., v5.4.0 for 26 clusters observed in Cycle 6 and v5.6.1 for the remaining clusters in Cycle 7." (Observations and Source Detection with ALMA)
+- **SExtractor** v2.5.0: Extracting 1.2 mm continuum sources from native and tapered ALMA maps  
+  > "The continuum sources were extracted from the native and tapered maps with the natural weighting using the `SExtractor` version 2.5.0 (cite: 1996A&AS..117..393B)." (Observations and Source Detection with ALMA)
+- **CIAO** v4.12: Chandra data processing, combining observations (merge_obs), and source detection (wavdetect)  
+  > "We processed all the data obtained by 2017, following the standard analysis procedures with the *Chandra* interactive analysis of observations (CIAO v4.12) software and calibration database (CALDB v4.9.1)." (Chandra Counterparts); "The products were combined by using `merge_obs` and sources were detected by running `wavdetect` (cite: 2002ApJS..138..185F) in the 0.5–7.0 keV band." (Chandra Counterparts)
+- **CALDB** v4.9.1: Chandra calibration database  
+  > "following the standard analysis procedures with the *Chandra* interactive analysis of observations (CIAO v4.12) software and calibration database (CALDB v4.9.1)." (Chandra Counterparts)
+- **HEAsoft** v6.27: X-ray spectral analysis suite (includes XSPEC)  
+  > "HEAsoft v6.27 (cite: 2014ascl.soft08004N), CIAO v4.12 (cite: 2006SPIE.6270E..1VF), CIGALE v2022.0 (cite: 2022ApJ...927..192Y), CASA v5.4.0 (cite: 2007ASPC..376..127M), SExtractor v2.5.0 (cite: 1996A&AS..117..393B), EAZY (cite: 2008ApJ...686.1503B)" (Software)
+- **XSPEC** : X-ray spectral fitting with absorbed power-law model  
+  > "We fit the observed (magnification not corrected) X-ray spectra with a simple absorbed power-law model. This model is represented as follows in the XSPEC (cite: 1996ASPC..101...17A) terminology:" (X-ray Spectral Analysis)
+- **CIGALE** v2022.0: Multi-component X-ray to millimeter SED modeling  
+  > "We employ the latest version of Code Investigating GALaxy Emission (`CIGALE` v2022.0; (cite: 2005MNRAS.360.1413B; 2009A&A...507.1793N; 2019A&A...622A.103B; 2020MNRAS.491..740Y; 2022ApJ...927..192Y)) to conduct X-ray to millimeter SED modeling" (SED Modelling with CIGALE)
+- **EAZY** : Optical to near-infrared SED analysis for photometric redshift estimation of M0329-ID11  
+  > "and at the photometric one estimated by the optical to near-infrared SED analysis with the `EAZY` code in M0329-ID11 ($z=2.84^{+0.10}_{-0.11}$; (cite: 2022arXiv220707125K))." (X-ray Spectral Analysis); "EAZY (cite: 2008ApJ...686.1503B)" (Software)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Number of X-ray detected AGNs among ALCS millimeter sources | 3 | not stated | dimensionless | 2 | Utilizing the archival data of *Chandra*, we identify three AGNs at $z=$1.06, 2.09, and 2.84 among the 180 millimeter sources securely detected in the ALCS (of which 155 are inside the coverage of *Chandra*). |
+| A370-ID110 X-ray absorption hydrogen column density (N_H) | 32.8 | +11.7/-10.6 | 10^22 cm^-2 | 3 | A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\ |
+| A370-ID110 photon index (Gamma) | 2.5 | +0.8/-0.8 | dimensionless | 3 | A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\ |
+| A370-ID110 intrinsic 0.5-8.0 keV X-ray luminosity (log L_X) | 45.0 | +0.7/-0.5 | dex (erg s^-1) | 3 | A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\ |
+| A370-ID110 star-formation rate (log SFR) | 2.43 | not stated | dex (M_sun yr^-1) | 4 | A370-ID110 & 39.985689 & -1.5739784 & 1.06 & 1.19 & 32.8\^+11.7\_-10.6 & 2.5\^+0.8\_-0.8 & 45.0\^+0.7\_-0.5 & 2.43\ |
+| A370-ID110 stellar mass (log M_*) | 11.81 | not stated | dex (M_sun) | 4 | & 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\ |
+| A370-ID110 dust luminosity (log L_dust) | 12.51 | not stated | dex (L_sun) | 4 | & 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\ |
+| A370-ID110 dust mass (log M_dust) | 8.80 | not stated | dex (M_sun) | 4 | & 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\ |
+| A370-ID110 total IR luminosity (log L_IR) | 12.68 | not stated | dex (L_sun) | 4 | & 11.81 & 12.51 & 8.80 & 25.0 & 2.14 & 0.49 & 0.23 & 12.68\ |
+| M0416-ID117 X-ray absorption hydrogen column density (N_H) | 2.4 | +8.6/-2.4 | 10^22 cm^-2 | 3 | M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\ |
+| M0416-ID117 photon index (Gamma) | 2.1 | +0.9/-0.6 | dimensionless | 3 | M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\ |
+| M0416-ID117 intrinsic 0.5-8.0 keV X-ray luminosity (log L_X) | 43.8 | +0.6/-0.3 | dex (erg s^-1) | 3 | M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\ |
+| M0416-ID117 star-formation rate (log SFR) | 1.93 | not stated | dex (M_sun yr^-1) | 4 | M0416-ID117 & 64.0449843 & -24.0798771 & 2.09 & 1.57 & 2.4\^+8.6\_-2.4 & 2.1\^+0.9\_-0.6 & 43.8\^+0.6\_-0.3 & 1.93\ |
+| M0416-ID117 stellar mass (log M_*) | 10.81 | not stated | dex (M_sun) | 4 | & 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\ |
+| M0416-ID117 dust luminosity (log L_dust) | 12.01 | not stated | dex (L_sun) | 4 | & 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\ |
+| M0416-ID117 dust mass (log M_dust) | 7.98 | not stated | dex (M_sun) | 4 | & 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\ |
+| M0416-ID117 total IR luminosity (log L_IR) | 12.07 | not stated | dex (L_sun) | 4 | & 10.81 & 12.01 & 7.98 & 51.2 & 0.84 & -1.85 & 0.05 & 12.07\ |
+| M0329-ID11 X-ray absorption hydrogen column density (N_H) | 0.1 | +5.9/-0.1 | 10^22 cm^-2 | 3 | M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\ |
+| M0329-ID11 photon index (Gamma) | 1.7 | +0.6/-0.4 | dimensionless | 3 | M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\ |
+| M0329-ID11 intrinsic 0.5-8.0 keV X-ray luminosity (log L_X) | 44.4 | +0.3/-0.2 | dex (erg s^-1) | 3 | M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\ |
+| M0329-ID11 star-formation rate (log SFR) | 2.18 | not stated | dex (M_sun yr^-1) | 4 | M0329-ID11 & 52.4239873 & -2.1824407 & 2.84 & 2.46 & 0.1\^+5.9\_-0.1 & 1.7\^+0.6\_-0.4 & 44.4\^+0.3\_-0.2 & 2.18\ |
+| M0329-ID11 stellar mass (log M_*) | 10.74 | not stated | dex (M_sun) | 4 | & 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40 |
+| M0329-ID11 dust luminosity (log L_dust) | 11.77 | not stated | dex (L_sun) | 4 | & 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40 |
+| M0329-ID11 dust mass (log M_dust) | 8.63 | not stated | dex (M_sun) | 4 | & 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40 |
+| M0329-ID11 total IR luminosity (log L_IR) | 12.40 | not stated | dex (L_sun) | 4 | & 10.74 & 11.77 & 8.63 & 7.3 & -0.03 & -2.03 & 0.55 & 12.40 |
+
+## Qualitative findings
+
+- Two of the three ALCS X-ray AGNs (M0416-ID117 and M0329-ID11) are not significantly absorbed in X-rays (log N_H < 23) and are classified as type 1 AGNs, while A370-ID110 shows moderate absorption (log N_H ~ 23.5) and is classified as a type 2 AGN.  
+  > "The X-ray spectral analysis shows that two AGNs are not significantly absorbed ($\log N_{\mathrm{H}}/\mathrm{cm}^{-2} < 23$), while the other shows signs of moderate absorption ($\log N_{\mathrm{H}}/\mathrm{cm}^{-2}\sim 23.5$)." (Abstract); "The SED analysis suggests that A370-ID110 is a type 2 AGN, whereas M0416-ID117 and M0329-ID11 are type 1 AGNs." (SED Modelling with CIGALE)
+- All three ALCS-XAGN sources are ultra-luminous infrared galaxies (L_IR > 10^12 L_sun) lying within 0.2 dex of the star-forming main sequence at z=1–3, showing no clear evidence for negative AGN feedback.  
+  > "We find that all the sources are classified as ultra-luminous infrared galaxies ($L_{\mathrm{IR}}/L_{\odot} > 10^{12}$) and show high star-formation rates ($\mathrm{SFR}\gtrsim 100\,M_{\odot}\,\mathrm{yr}^{-1}$)." (SED Modelling with CIGALE); "Our sample is distributed close to the main sequence lines (within 0.2 dex along the SFR axis). This indicates that our sources are normal star-forming galaxies at $z$=1–3, i.e. galaxies with no clear evidence for negative feedback by the AGNs." (Stellar Mass versus SFR)
+- ALCS-XAGNs lie on the galaxy-SMBH simultaneous evolution line or in the AGN-dominant phase, unlike other ALMA+Chandra selected samples that lie in the SF-dominant phase.  
+  > "ALCS-XAGNs are located on the “simultaneous evolution” line or in the AGN dominant phase, while the other ALMA and *Chandra* selected samples belong to the SF-dominant phase." (X-ray luminosity versus SFR)
+
+## Claim tuples
+
+- H: Millimeter galaxies hosting X-ray AGNs in the wide and deep ALCS survey can reveal intense simultaneous growth of both galaxies and SMBHs at z = 1–3. | E: Cross-match 180 secure ALCS 1.2 mm sources (155 with Chandra coverage) with archival Chandra X-ray detections, fit X-ray spectra with XSPEC, and model X-ray to millimeter SEDs with CIGALE. | R: Identified 3 X-ray AGNs at z = 1.06, 2.09, and 2.84 with intrinsic 0.5–8 keV X-ray luminosities of ~10^44–45 erg s^-1 and SFRs >= 100 M_sun yr^-1. | F: A wide-area and deep survey with ALMA combined with medium-depth Chandra data selectively detects the intense growth stage of both galaxies and SMBHs in the high-redshift universe. | **supported**
+- H: The host galaxies of the ALCS X-ray AGNs experience quenching of star formation due to negative AGN feedback. | E: Compare the derived stellar masses and star-formation rates of the 3 ALCS-XAGNs with the star-forming main sequence at z = 1–3. | R: All three ALCS-XAGN sources lie within 0.2 dex of the star-forming main sequence along the SFR axis. | F: The sources are normal star-forming galaxies at z = 1–3 with no clear evidence for negative feedback by the AGNs. | **refuted**
+- H: Selection effects (survey area and depth in millimeter and X-ray bands) govern the evolutionary phase of AGNs detected in combined ALMA and Chandra surveys. | E: Compare L_X (mass-accretion rate) and SFR of ALCS-XAGNs with deeper/narrower surveys (UDF, ASAGAO), shallower/wider millimeter surveys (ALESS, AS2UDS), and purely X-ray selected AGNs (SXDF). | R: ALCS-XAGNs lie on the simultaneous evolution line or in the AGN-dominant phase (higher L_X than UDF/ASAGAO, lower SFR than ALESS/AS2UDS, higher SFR than SXDF-XAGNs). | F: The unique location of ALCS-XAGNs in the L_X–SFR plane is explained by selection bias: wide/medium-depth X-ray data select rare high-L_X AGNs while deep lensing-assisted ALMA observations detect lower-SFR millimeter galaxies in the AGN-dominant phase. | **supported**
+
+## Reasoning
+
+- Why this data: Submillimeter/millimeter observations trace infrared radiation from star formation at z=1–3 while X-ray observations detect obscured AGNs; gravitational lensing clusters (ALCS) provide both wide area and high sensitivity to overcome depth vs. area limitations of previous surveys.  
+  > "This is because infrared radiation from star-formation activity at these redshifts is observed in millimeter band (submillimeter galaxies; SMGs), while X-ray observations can detect the obscured AGNs." (Introduction); "Lensed fields are excellent targets to perform deep surveys efficiently." (Introduction); "Two compact array configurations (C43-1 and C43-2) were used to obtain a moderate synthesized beam size ($\sim$1$''$) to avoid losing sensitivity for spatially extended sources, which can be expected for highly magnified cases." (Observations and Source Detection with ALMA)
+- Why this method: CIGALE v2022.0 allows multi-component SED modeling from X-ray to millimeter wavelengths by self-consistently considering the energy balance between UV/optical and IR.  
+  > "We employ the latest version of Code Investigating GALaxy Emission (`CIGALE` v2022.0; (cite: 2005MNRAS.360.1413B; 2009A&A...507.1793N; 2019A&A...622A.103B; 2020MNRAS.491..740Y; 2022ApJ...927..192Y)) to conduct X-ray to millimeter SED modeling by self-consistently considering the energy balance between the UV/optical and IR." (SED Modelling with CIGALE)
+- Alternative: Both merger-driven co-evolution and secular disk instability triggered by intense star formation are considered as possible triggering mechanisms for the AGN and star-formation activities.  
+  > "If this scenario is applicable, our sources may correspond to the transition stage where the merging has finished, but the star formation is not yet quenched." (X-ray luminosity versus SFR); "We note, however, that it is not clear whether the AGNs and star-formation activities in our sample are indeed triggered by merger processes or not." (X-ray luminosity versus SFR); "Given the high SFRs of ALCS-XAGNs, the AGN activities might be triggered by the intense star-formation activities in their host galaxies." (X-ray luminosity versus SFR)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Bright diffuse X-ray emission in cluster center regions makes point-source identification difficult, so cluster centers are excluded.  
+  > "It should be noted here that while clusters are good fields for submillimeter observations, they are challenging space for X-ray observation because of the bright diffuse emission of clusters (e.g., (cite: 2000MNRAS.315L...8F))." (Introduction); "The cluster center regions are excluded because of the difficulty in identifying point sources." (Chandra Counterparts)
+- Limitation (authors): Possible uncertainties in the gravitational lensing magnification factors are ignored.  
+  > "All physical quantities in this table are corrected for the lensing magnification; possible uncertainties in the magnification factors are ignored." (Table 1)
+- Limitation (authors): Because of poor far-infrared data for M0329-ID11, its IR luminosity may have a large uncertainty.  
+  > "Because of the poor far-infrared data of M0329-ID11, the IR luminosity may have a large uncertainty." (Table 1)
+- Limitation (authors): M0416-ID117 and M0329-ID11 are too faint in current imaging to examine their host galaxy morphology.  
+  > "In our X-ray AGN sample, only A370-ID110 is confirmed to have disk-like structure, while M0416-ID117 and M0329-ID11 are too faint to examine their morphology." (X-ray luminosity versus SFR)
+- Limitation (authors): Systematic differences between CIGALE and MAGPHYS for comparison samples are ignored as an approximation, and systematic errors of ~0.3 dex exist in M_* and SFR of comparison sources using photometric redshifts.  
+  > "Hence, the systematic errors in stellar masses and SFRs are estimated to be $\sim$0.3 dex, which does not affect our discussions." (Discussions); "and hence we ignore the systematic difference between `CIGALE` and `MAGPHYS` as an approximation." (Discussions)
+- Caveat (inferred, ours): Small sample size of only 3 X-ray detected AGNs limits statistical conclusions about the population.
+- Caveat (inferred, ours): The 1 sigma confidence intervals for the CIGALE-derived parameters (columns 9–16 in Table 1) are mentioned in the table notes as 'Errors attached in (6)–(8) correspond to the 90% confidence regions, whereas those in (9)–(16) show the 1 sigma confidence regions', but the actual uncertainty values for columns 9–17 are omitted from Table 1.
+- Caveat (inferred, ours): The multi-wavelength flux density table (HST, Spitzer, Herschel, ALMA photometry) for the 3 targets is not printed in the paper.
+
+## Reproducibility
+
+- Data public (paper): Archival Chandra, HST, and Spitzer data are used; ALMA project codes are provided.  
+  > "Utilizing the archival data of *Chandra*, we identify three AGNs at $z=$1.06, 2.09, and 2.84 among the 180 millimeter sources securely detected in the ALCS" (Abstract); "The images and source catalogs were built by reprocessing of available archival *HST* and *Spitzer*/IRAC 3.6 $\mu$m and 4.5 $\mu$m mosaics of ALCS fields (cite: 2022arXiv220707125K)." (HST, Spitzer, and Herschel Counterparts); "This publication uses data from the ALMA programs: ADS/JAO.ALMA#2018.1.00035.L, #2013.1.00999.S, and #2015.1.01425.S." (Acknowledgments)
+- Products in archive: _not stated_
+- Missing: Table of multi-wavelength flux densities and uncertainties (HST, Spitzer, Herschel, ALMA) for A370-ID110, M0416-ID117, and M0329-ID11 used as input to CIGALE
+- Missing: Uncertainties on CIGALE output parameters in Table 1 (columns 9–17)
+- Missing: Exact Chandra ObsIDs used for each cluster field and background extraction coordinates
+- Missing: Exact ALMA imaging and SExtractor parameters (deferred to Fujimoto et al., in prep.)
+- Data volume (inferred): Moderate to large (~1–5 TB for the full 33-cluster ALCS visibility dataset across 2018.1.00035.L, 2013.1.00999.S, and 2015.1.01425.S; <10 GB if starting from continuum maps and archival Chandra data for the 3 cluster fields).
+- Score (inferred): 6/5, The X-ray spectral fitting (XSPEC model, extraction radii, redshifts) and CIGALE SED modeling (exact module names and full parameter grid in Table 2) are well specified, and all raw data are public in archives. However, the multi-wavelength photometric flux table for the 3 targets is not included in the paper, and the ALMA imaging/cataloging details are deferred to companion papers.
+- Rediscovery candidate: yes, The ALMA, Chandra, HST, Spitzer, and Herschel data are publicly available, the three target coordinates and redshifts are explicitly given, and both the XSPEC model and the complete CIGALE parameter grid (Table 2) are provided to reproduce the numeric physical properties in Table 1.
+
+## Links
+
+- Method: (cite: 2008ApJS..179...19L) (Chandra wavdetect source detection threshold and wavelet scale settings)
+- Method: (cite: 2013MNRAS.431..394W) (Method for estimating Galactic photoelectric absorption column density in X-ray spectral fitting)
+- Method: (cite: 2022ApJ...927..192Y) (CIGALE v2022.0 code used for X-ray to millimeter SED modeling)
+- Method: (cite: 1994ApJ...429..582C) (Method for measuring the power-law index of the observed UV slope beta)
+- Companion: Kohno et al., in prep. (ALCS survey overview paper)
+- Companion: Fujimoto et al., in prep. (ALCS ALMA data reduction, SExtractor source extraction, 180-source 1.2 mm continuum catalog, and lensing magnification factors)
+- Companion: (cite: 2022arXiv220707125K) (Reprocessed archival HST and Spitzer/IRAC mosaics and source catalogs, and EAZY photometric redshifts in ALCS fields)
+- Companion: (cite: 2022ApJ...932...77S) (Herschel PACS and SPIRE data and far-IR properties in ALCS fields)
+- Companion: Uematsu et al., in prep. (Forthcoming paper on the SED analysis of all ALCS sources and systematic comparison between CIGALE and MAGPHYS)
+- Related: ALMA Lensing Cluster Survey (ALCS)
+- Related: CLASH
+- Related: Hubble Frontier Fields (HFF)
+- Related: RELICS
+- Related: Herschel Lensing Survey (HLS)
+- Related: PACS Evolutionary Probe (PEP)
+- Related: Spitzer Enhanced Imaging Products (SEIP)
+
+## Checks
+
+```json
+{
+ "quotes": 175,
+ "quotes_ok": 175,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 0,
+ "unsupported_facts": 0,
+ "project_codes": 3,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 25,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 109,
+  "stated": 83,
+  "rate": 0.761
+ },
+ "evidence_ok": true
+}
+```

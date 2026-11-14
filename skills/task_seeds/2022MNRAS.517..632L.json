@@ -1,0 +1,494 @@
+{
+ "bibcode": "2022MNRAS.517..632L",
+ "title": "WISDOM Project - XII. Clump properties and turbulence regulated by clump-clump collisions in the dwarf galaxy NGC 404",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac2287",
+ "arxiv_id": "2208.05303",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "high_z_galaxies"
+ ],
+ "question": "What are the properties of multiple-scale molecular structures (clumps and clouds) in the dwarf galaxy NGC 404, and how are their properties and gas turbulence regulated by clump-clump collisions?",
+ "alma_project_codes": [
+  "2015.1.00597.S",
+  "2017.1.00572.S",
+  "2017.1.00907.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "FWHM ~ 0.058'' x 0.034'' (~0.86 x 0.51 pc^2) at PA = 36 deg",
+  "sensitivity": "1.13 mJy beam^-1 per 2 km s^-1 channel (13.1 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total CO(1-0) flux detected by BIMA of 67.4 Jy km s^-1",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "The total CO(1-0) flux detected by BIMA is $67.4$ Jy km s$^{-1}$ (cite: taylor2015)."
+     },
+     {
+      "loc": "ALMA data",
+      "quote": "Comparing our CO(2-1) integrated intensity to that in CO(1-0) by (cite: taylor2015), we obtain a CO(2-1)/CO(1-0) line ratio of $\\approx0.78$ in temperature units"
+     }
+    ]
+   },
+   "citation": "(cite: taylor2015)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass model (stellar mass volume density rho_* and surface density Sigma_*,disc)",
+    "evidence": [
+     {
+      "loc": "Vertical support from collision-induced turbulence",
+      "quote": "where $\\rho_\\ast\\equiv \\rho_\\ast(R)$ is the stellar mass volume density at each galactocentric radius, here taken from the stellar mass model presented in (cite: nguyen2017) and (cite: davis2020)."
+     },
+     {
+      "loc": "Effect of stellar feedback on turbulence",
+      "quote": "The stellar mass surface density is taken from the stellar mass model presented in (cite: nguyen2017) and (cite: davis2020)."
+     }
+    ]
+   },
+   "citation": "(cite: nguyen2017) and (cite: davis2020)"
+  },
+  {
+   "what": {
+    "value": "Circular velocity curve, SMBH mass, and disc orientation (PA and inclination) from gas dynamical model",
+    "evidence": [
+     {
+      "loc": "Collision timescale",
+      "quote": "We adopt the circular velocity curve of (cite: davis2020), derived by creating a gas dynamical model using the Kinematic Molecular Simulation (KinMS) package of (cite: davis2013)."
+     }
+    ]
+   },
+   "citation": "(cite: davis2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create zeroth-moment integrated intensity map and estimate total molecular gas mass",
+   "method": "Smooth-masking moment technique: convolve cube spatially with a Gaussian of beam width, Hanning-smooth in velocity, clip at 0.3 sigma_rms, integrate, and compare to BIMA CO(1-0) flux",
+   "software": [],
+   "key_parameters": [
+    "clip threshold = 0.3 sigma_rms"
+   ],
+   "assumptions": [
+    "CO(2-1)/CO(1-0) line ratio = 0.78 in temperature units; X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify hierarchy of molecular structures (leaves/clumps, branches, trunks/clouds) and measure their physical properties",
+   "method": "Create 3D mask with CPROPSTOO, decompose hierarchy into leaves, branches, and trunks with ASTRODENDRO, and compute extrapolated and beam-deconvolved properties with modified CPROPSTOO",
+   "software": [
+    "CPROPSTOO",
+    "ASTRODENDRO"
+   ],
+   "key_parameters": [
+    "CPROPSTOO mask: peak T_b > 3 sigma_rms (~39 K), expanded to neighbouring pixels with T_b > 1.5 sigma_rms (~20 K), minimum island diameter ~ 3 pc (~100 spaxels)",
+    "ASTRODENDRO: min_value = 1.5 sigma_rms (~20 K), min_delta = 1.5 sigma_rms (~20 K), min_area = min_npix = 6"
+   ],
+   "assumptions": [
+    "eta = 1.91 for radius R_c; CO(2-1)/CO(1-0) = 0.78; X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (including helium); PA = 1 deg and i = 9.3 deg for R_gal; D = 3.06 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit clump mass distribution functions, size-linewidth relations, mass-size relations, and virial parameters across galactic regions",
+   "method": "Divide structures into central region (R_gal <= 15 pc) and molecular ring (15 < R_gal <= 50 pc); fit broken power-laws to differential mass functions, power-laws to cumulative mass functions, size-linewidth, mass-size, and virial parameter-mass relations; compute virial parameters and self-gravitating gas fractions",
+   "software": [],
+   "key_parameters": [
+    "M_comp = 1.8 x 10^3 M_sun; turnover mass ~ 4000 M_sun; alpha_vir,crit = 2"
+   ],
+   "assumptions": [
+    "Virial mass M_vir,c = 5 sigma_obs,los^2 R_c / G"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct analytical clump-clump collision model and compare with radially-binned galaxy and clump properties",
+   "method": "Compute radial profiles of Sigma_gas,disc, sigma_gas,disc, Oort's A, Omega, kappa, Q, Jeans and Toomre scales in 2 pc annuli; compare analytical collision predictions (t_coll, lambda_coll, M_c,coll, R_c,coll, energy injection rate, size-linewidth, mass-size) with observed properties and VLA SFR upper limits",
+   "software": [
+    "KinMS"
+   ],
+   "key_parameters": [
+    "Radial bin size = 2 pc, PA = 1 deg, i = 9.3 deg"
+   ],
+   "assumptions": [
+    "Infinitely thin 2D disc, circular orbits, spherical galaxy mass distribution for tidal radius, completely inelastic equal-mass clump collisions, Kolmogorov turbulence spectrum"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total integrated CO(2-1) intensity",
+   "value": "210",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA data",
+     "quote": "The integrated CO(2-1) intensity is $210$ Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1)/CO(1-0) line ratio",
+   "value": "0.78",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA data",
+     "quote": "Comparing our CO(2-1) integrated intensity to that in CO(1-0) by (cite: taylor2015), we obtain a CO(2-1)/CO(1-0) line ratio of $\\approx0.78$ in temperature units"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass of NGC 404",
+   "value": "9.4e6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA data",
+     "quote": "We thus estimate a total molecular gas mass of $\\approx9.4\\times10^{6}$ M$_\\odot$, derived using our integrated ALMA CO(2-1) intensity and the CO(2-1)/CO(1-0) line ratio of $0.78$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO(2-1) intensity within CPROPSTOO-masked region",
+   "value": "151",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Structural decomposition",
+     "quote": "The integrated CO(2-1) intensity within the masked region is $\\approx151$ Jy km s$^{-1}$, $\\approx72\\%$ of the total integrated ALMA CO(2-1) intensity."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of identified molecular structures",
+   "value": "3626",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Structural decomposition",
+     "quote": "The algorithm identifies $3626$ molecular structures in NGC 404: $50$ trunks, $1642$ branches and $1934$ leaves."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of resolved leaves (clumps)",
+   "value": "953",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Structural decomposition",
+     "quote": "About $50\\%$ ($953/1934$) of the identified leaves, $\\approx97\\%$ ($1592/1642$) of the identified branches and $\\approx94\\%$ ($47/50$) of the identified trunks are resolved"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump mass completeness limit (M_comp)",
+   "value": "1.8e3",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass function of clumps",
+     "quote": "The black vertical dashed line in each panel indicates the mass completeness limit $M_{\\rm comp}=1.8\\times10^3$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump mass function turn-over mass",
+   "value": "4000",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass function of clumps",
+     "quote": "We find “turn-overs”, that is break points in the single power-law functions, in all the normalised differential mass distributions, always at the same clump mass $M_{\\rm clump}\\approx4000$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Differential clump mass function low-mass slope (molecular ring, gamma^-_clump)",
+   "value": "0.37",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\gamma^{-}_{\\rm clump}=\\phantom{-}0.37\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential clump mass function high-mass slope (molecular ring, gamma^+_clump)",
+   "value": "-2.87",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\gamma^{+}_{\\rm clump}=-2.87\\pm0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential clump mass function high-mass slope (central region, gamma^+_clump)",
+   "value": "-2.63",
+   "uncertainty": "0.49",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\gamma^{+}_{\\rm clump}=-2.63\\pm0.49$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation slope (central region)",
+   "value": "0.82",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\sigma_{\\rm obs,los}=(3.24\\pm0.08)\\,R_{\\rm c}^{0.82\\pm0.11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation slope (molecular ring)",
+   "value": "0.30",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\sigma_{\\rm obs,los}=(2.95\\pm0.13)\\,R_{\\rm c}^{0.30\\pm0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size relation power-law index for clumps (molecular ring, D_m,clump)",
+   "value": "1.63",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$D_{\\rm m,clump}=1.63\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size relation power-law index for clouds (molecular ring, D_m,cloud)",
+   "value": "2.06",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\phantom{.}D_{\\rm m,cloud}=2.06\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size relation power-law index for clumps (central region, D_m,clump)",
+   "value": "2.07",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$D_{\\rm m,clump}=2.07\\pm0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size relation power-law index for clouds (central region, D_m,cloud)",
+   "value": "2.22",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\phantom{.}D_{\\rm m,cloud}=2.22\\pm0.10$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter of clumps in molecular ring (<alpha_vir,clump>)",
+   "value": "1.82",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\langle\\alpha_{\\rm vir,clump}\\rangle=1.82\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter of clouds in molecular ring (<alpha_vir,cloud>)",
+   "value": "0.41",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\phantom{.}\\langle\\alpha_{\\rm vir,cloud}\\rangle=0.41\\pm0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter of clumps in central region (<alpha_vir,clump>)",
+   "value": "1.52",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\langle\\alpha_{\\rm vir,clump}\\rangle=1.52\\pm0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter of clouds in central region (<alpha_vir,cloud>)",
+   "value": "1.14",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\phantom{.}\\langle\\alpha_{\\rm vir,cloud}\\rangle=1.14\\pm0.12$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter - mass relation slope in molecular ring (alpha_vir,c vs M_c)",
+   "value": "-0.27",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\phantom{_{\\rm lump}}\\alpha_{\\rm vir,c}\\propto M_{\\rm c}^{-0.27\\pm0.01}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre parameter Q in central region",
+   "value": "3 - 30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gravitational instabilities as the onset of clump-clump collisions",
+     "quote": "the central region of NGC 404 ($R_{\\rm gal}<15$ pc) has $Q$ significantly larger than unity at all radii ($Q=3$ – $30$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit to SFR surface density (Sigma_SFR)",
+   "value": "1e-6",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1 pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Effect of stellar feedback on turbulence",
+     "quote": "Thus, we derive a maximum SFR surface density of $\\Sigma_{\\rm SFR}\\approx1\\times10^{-6}$ M$_\\odot$ yr$^{-1}$ pc$^{-2}$ for NGC 404"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit to supernova energy injection rate per unit mass",
+   "value": "<= 2.5",
+   "uncertainty": "not stated",
+   "units": "km^2 s^-2 Myr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6.2 Effect of stellar feedback on turbulence",
+     "quote": "\\le2.5~{\\rm km}^2~{\\rm s}^{-2}~{\\rm Myr}^{-1}"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump inward migration timescale at R_0 = 15 pc",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Clump migration towards the galaxy centre",
+     "quote": "By adopting a galactocentric distance at the boundary between the central region and molecular ring, i.e. $R_0=15$ pc, we derive a migration timescale $t_{\\rm migrate}\\approx10$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Energy injection rate per unit mass from clump migration at R_0 = 15 pc",
+   "value": "230",
+   "uncertainty": "not stated",
+   "units": "km^2 s^-2 Myr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Clump migration towards the galaxy centre",
+     "quote": "At a galactocentric distance of $R_0=15$ pc, $\\dot{\\epsilon}_{\\rm inject,migrate}\\approx230$ km$^2$ s$^{-2}$ Myr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging",
+  "Deconvolver, masking, and stopping criteria in imaging",
+  "Line-free channels used for uv continuum subtraction",
+  "Number of bootstrap iterations in CPROPSTOO"
+ ],
+ "missing_for_reproduction": [
+  "Modified version of CPROPSTOO from Liu et al. (2021) is not linked to a public repository in this paper",
+  "Exact tabular circular velocity curve V_circ(R) and stellar mass density profile rho_*(R) from Davis et al. (2020) and Nguyen et al. (2017)",
+  "Specific clean parameters (masking, threshold, deconvolver) to reproduce the 2 km s^-1 data cube from raw visibilities"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "ALMA project codes and the full machine-readable catalog of 3626 identified structures are provided, and ASTRODENDRO/CPROPSTOO parameters and analytical equations are explicitly stated, though the modified CPROPSTOO code and external kinematic/stellar profiles must be obtained from companion papers.",
+ "rediscovery_reason": "Public ALMA data and complete parameterization of the dendrogram decomposition, statistical scaling relations, and parameter-free analytical model allow direct quantitative reproduction of all main numeric results.",
+ "source_card": "cards/2022MNRAS.517..632L/sonnet/card.md"
+}

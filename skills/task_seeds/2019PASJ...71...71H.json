@@ -1,0 +1,365 @@
+{
+ "bibcode": "2019PASJ...71...71H",
+ "title": "Big Three Dragons: A z = 7.15 Lyman-break galaxy detected in [O III] 88 μm, [C II] 158 μm, and dust continuum with ALMA",
+ "year": 2019,
+ "doi": "10.1093/pasj/psz049",
+ "arxiv_id": "1806.00486",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the kinematic, dust and ISM properties of the z=7.15 LBG B14-65666 from resolved [OIII] 88um, [CII] 158um and dust continuum, and is it a merger?",
+ "alma_project_codes": [
+  "2016.1.00954.S",
+  "2017.1.00190.S"
+ ],
+ "data": {
+  "bands": "Band 6 (Cycle 4) and Band 8 (Cycles 4+5)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 6 natural 0.29x0.23 arcsec; Briggs 0.23x0.12; Band 8 natural 0.39x0.37",
+  "sensitivity": "continuum rms 9.5 (B6 natural), 11.0 (B6 Briggs), 29.4 (B8) uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lya spectrum of B14-65666",
+    "evidence": [
+     {
+      "loc": "7 Lya velocity offset",
+      "quote": "We have remeasured $z_{\\rm Ly\\alpha}$ in the spectrum of (cite: furusawa2016)"
+     }
+    ]
+   },
+   "citation": "(cite: furusawa2016)"
+  },
+  {
+   "what": {
+    "value": "UV slope beta = -1.85 for B14-65666",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "We adopt $\\beta = -1.85^{+0.54}_{-0.53}$ in (cite: bowler2018) calculated with updated $J$- and $H$-band photometry values."
+     }
+    ]
+   },
+   "citation": "(cite: bowler2018)"
+  },
+  {
+   "what": {
+    "value": "Compilation of literature Lya velocity offsets, MUV, EW and [CII] luminosities at z~6-8",
+    "evidence": [
+     {
+      "loc": "7",
+      "quote": "We summarize these literature sample at $z\\approx6-8$ in Table [\\[tab:compilation\\]](#tab:compilation)."
+     }
+    ]
+   },
+   "citation": "(cite: erb2014; nakajima2018) and others in Table 7"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "CASA pipeline calibration, concat for Band 8, CLEAN imaging (natural and Briggs 0.3), uvcontsub",
+   "software": [
+    "CASA",
+    "CLEAN",
+    "uvcontsub",
+    "concat"
+   ],
+   "key_parameters": [
+    "robust = 0.3 for Briggs images"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line fluxes, sizes, redshifts, FWHM and luminosities",
+   "method": "Velocity-integrated maps over ~600 km/s; 2D Gaussian fits with imfit; Gaussian spectral fits; clump decomposition by velocity ranges; L_line from Carilli & Walter relation",
+   "software": [
+    "CASA imfit",
+    "immoments"
+   ],
+   "key_parameters": [
+    "Clump velocity ranges [+8,+280] and [-353,-52] km/s relative to z_sys"
+   ],
+   "assumptions": [
+    "Cosmology Om=0.272, H0=70.4"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Dynamical mass",
+   "method": "Virial estimate M_dyn = C r_1/2 sigma^2 / G with C = 6.7, r_1/2 from major semi-axis of 2D Gaussian",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Uncertain at least by factor of three due to C; virial theorem may not apply"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Dust continuum flux, T_d, L_TIR and M_d",
+   "method": "imfit two-component Gaussians at fixed clump positions; modified blackbody with CMB correction at fixed beta_d (1.5, 1.75, 2.0); L_TIR over 8-1000 um; dust mass with kappa0 = 10 cm2/g at 250 um",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa0 = 10 cm2 g-1 at 250 um (Hildebrand 1983); using Dunne 2000 doubles M_d",
+    "Clumps assumed to have same T_d, beta_d as whole system"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "IRX-beta and [OIII]/[CII] vs L_bol comparison with literature",
+   "method": "Uniform beta and L_UV for 11 z>6.5 galaxies, L_TIR assuming T_d = 50 K, beta_d = 1.5; compared to Calzetti and SMC curves (intrinsic beta -2.2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_d = 50 K, beta_d = 1.5 for literature sample"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "SED fitting",
+   "method": "GALAXEV BC03 with nebular emission, Calzetti law, Chabrier IMF, constant SFH, z fixed 7.1520, [OIII] flux and dust continuum included; least chi2 of Sawicki 2012; Monte Carlo N=300 errors",
+   "software": [
+    "KENSFIT",
+    "GALAXEV"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Constant SFH; Calzetti attenuation same for stellar and nebular; Chabrier IMF 0.1-100 Msun"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Lya velocity offset and correlations",
+   "method": "Gaussian peak of Lya in FOCAS spectrum; dv = c(zLya - zsys)/(1+zsys); Spearman rank tests on 17-galaxy z~6-8 compilation",
+   "software": [],
+   "key_parameters": [
+    "vacuum rest wavelength 1215.67 A; systematic ±100 km/s"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "z_sys (whole system)",
+   "value": "7.1521",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $z_{\\rm sys.}$ $^{a}$ | $7.1521\\pm0.0003$ | $7.1530\\pm0.0003$ | $7.1482\\pm0.0003$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] luminosity (total)",
+   "value": "34.4e8",
+   "uncertainty": "4.1e8",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We obtain $(11.0\\pm1.4) \\times 10^{8}$ $L_{\\rm \\odot}$ and $(34.4\\pm4.1) \\times 10^{8}$ $L_{\\rm \\odot}$ for the [Cii] and [Oiii] luminosity"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] luminosity (total)",
+   "value": "11.0e8",
+   "uncertainty": "1.4e8",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We obtain $(11.0\\pm1.4) \\times 10^{8}$ $L_{\\rm \\odot}$ and $(34.4\\pm4.1) \\times 10^{8}$ $L_{\\rm \\odot}$ for the [Cii] and [Oiii] luminosity"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII]/[CII] luminosity ratio (total)",
+   "value": "3.1",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "the line luminosity ratio is [Oiii]/[Cii] $= 3.1\\pm0.6$, $3.5\\pm0.8$, $2.7\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump velocity offset",
+   "value": "177",
+   "uncertainty": "16",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "the velocity offset of the two clumps is $177\\pm16$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_nu 163 um (total)",
+   "value": "130",
+   "uncertainty": "25",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Dust",
+     "quote": "$S_{\\nu, 163\\mu m} = 130 \\pm 25$ $\\mu$Jy and $S_{\\nu, 90\\mu m} = 470 \\pm 128$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "S_nu 90 um (total)",
+   "value": "470",
+   "uncertainty": "128",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Dust",
+     "quote": "$S_{\\nu, 163\\mu m} = 130 \\pm 25$ $\\mu$Jy and $S_{\\nu, 90\\mu m} = 470 \\pm 128$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "T_d (beta_d = 1.5, 1.75, 2.0)",
+   "value": "61, 54, 48",
+   "uncertainty": "~10 K",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Dust",
+     "quote": "we obtain the best-fit $T_{\\rm d}$ values of 61 K, 54 K, and 48 K for $\\beta_{\\rm d}=$ 1.5, 1.75, and 2.0"
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR (total)",
+   "value": "~1e12",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Dust",
+     "quote": "We obtain $L_{\\rm TIR}$ $\\approx 1 \\times 10^{12}$, $3 \\times 10^{11}$, and $7 \\times 10^{11}$ $L_{\\rm \\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dyn (total)",
+   "value": "8.8e10",
+   "uncertainty": "1.9e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "we obtain the total dynamical mass of ($8.8\\pm1.9) \\times 10^{10}$ $M_{\\rm \\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "IRX (fiducial)",
+   "value": "0.5",
+   "uncertainty": "+0.3/-0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "Therefore, we adopt IRX $=0.5^{+0.3}_{-0.1}$ as a fiducial value."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "7.7e8",
+   "uncertainty": "+1.0/-0.7 e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 SED fit",
+     "quote": "$M_{\\rm *} = 7.7^{+1.0}_{-0.7} \\times 10^{8}$ $M_{\\rm \\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR",
+   "value": "200",
+   "uncertainty": "+82/-38",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 SED fit",
+     "quote": "a very high current SFR, $200^{+82}_{-38}$ $M_{\\rm \\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "sSFR",
+   "value": "260",
+   "uncertainty": "+119/-57",
+   "units": "Gyr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "8.1",
+     "quote": "The sSFR of $260^{+119}_{-57}$ Gyr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lya velocity offset",
+   "value": "772",
+   "uncertainty": "±45 (stat) ±100 (sys)",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "7",
+     "quote": "Hereafter we adopt $\\Delta v_{\\rm Ly\\alpha}$ $= 772\\pm45\\pm100$ km s$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum and uvcontsub",
+  "Image size, cell size, clean threshold, masks and number of iterations",
+  "Band 8 Briggs/robust settings (natural only stated)",
+  "Exact imfit regions and starting parameters",
+  "Exact channel ranges for the Gaussian spectral fits and spectral extraction apertures",
+  "Details of the CMB-corrected modified blackbody fit (fit method, T_d uncertainties per clump)",
+  "Whether the QA2 archive products were used as delivered or re-calibrated manually",
+  "SED fitting model grid details (in cited Mawatari 2016)"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (image size, cell, mask, threshold)",
+  "Line-free channels",
+  "Fit regions for imfit",
+  "SED fit grid details",
+  "Literature compilation values for Spearman tests are in tables but exact sample selection partly implicit"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps are identifiable, with numeric results, but imaging parameters and the SED fit setup are partly unstated or inherited.",
+ "rediscovery_reason": "Archival data from two projects, numeric results (fluxes, redshifts, luminosities) in tables, and a reasonably described recipe.",
+ "source_card": "cards/2019PASJ...71...71H/sonnet/card.md"
+}

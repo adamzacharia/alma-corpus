@@ -1,0 +1,210 @@
+{
+ "bibcode": "2018ApJ...867....7S",
+ "title": "Molecular Clouds Associated with the Type Ia SNR N103B in the Large Magellanic Cloud",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aae07c",
+ "arxiv_id": "1806.10299",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Are there molecular clouds associated with the Type Ia SNR N103B in the LMC, and does their gas motion constrain the progenitor (single-degenerate) scenario?",
+ "alma_project_codes": [
+  "2015.1.01130.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84–119 GHz)",
+  "arrays": "12 m array, 38 antennas, mosaic of 100'' x 100''",
+  "angular_resolution": "1.92'' x 1.73'', PA 66.7 deg (~0.44 pc)",
+  "sensitivity": "~0.95 K at 0.4 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HI 21 cm cube (ATCA + Parkes)",
+    "evidence": [
+     {
+      "loc": "2.2 Hi",
+      "quote": "We also used archival Hi 21 cm line data published by (cite: 2003ApJS..148..473K)."
+     }
+    ]
+   },
+   "citation": "(cite: 2003ApJS..148..473K)"
+  },
+  {
+   "what": {
+    "value": "Mopra CO data used for missing-flux comparison",
+    "evidence": [
+     {
+      "loc": "2.1 CO",
+      "quote": "we compared the integrated intensity of the Mopra single-dish data (cite: 2011ApJS..197...16W; 2017ApJ...850..139W; 2017AIPC.1792d0038S; sano2018)"
+     }
+    ]
+   },
+   "citation": "(cite: 2011ApJS..197...16W; 2017ApJ...850..139W; 2017AIPC.1792d0038S; sano2018)"
+  },
+  {
+   "what": {
+    "value": "Balmer-dominant shock velocities ~2100 and ~1200 km/s",
+    "evidence": [
+     {
+      "loc": "4.1 Inhomogeneous Distribution",
+      "quote": "the velocity for Balmer-dominant shocks is $\\sim$2100 km s$^{-1}$ in the northern edge of the shell"
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...847..122G)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA CO(1-0)",
+   "method": "CASA calibration and multiscale CLEAN with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify cloud-SNR association and expansion",
+   "method": "Channel maps and position-velocity diagram; cavity-like structure gives expansion velocity ~5 km/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular cloud masses",
+   "method": "M = mu m_p D^2 Omega sum N(H2), N(H2)=X W(CO), regions >=3 sigma",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X = 7.0e20 cm-2 (K km/s)-1; mu = 2.38; D = 50 kpc; beam-filling factor ~1 for clumps"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test accretion-wind momentum budget",
+   "method": "Compare expanding shell momentum (M x 5 km/s) with wind momentum (1e-4 Msun/yr x 2000 km/s x 3e5 yr)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "wind duration ~3e5 yr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular cloud mass (ALMA)",
+   "value": "8e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Detailed CO Distribution with ALMA",
+     "quote": "We finally derive the total mass of the molecular cloud of $\\sim$$8 \\times 10^5$ $M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Expansion velocity",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Detailed CO Distribution with ALMA",
+     "quote": "with an expansion velocity of $\\sim$5 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Expanding shell mass",
+   "value": "5e3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Implications for the progenitor system",
+     "quote": "the mass of expanding shell is estimated to be $\\sim$$5 \\times 10^3$ $M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Momentum of expanding shell",
+   "value": "2.5e4",
+   "uncertainty": "not stated",
+   "units": "Msun km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Implications for the progenitor system",
+     "quote": "the momentum is calculated to be $\\sim$$2.5 \\times 10^4$ $M_\\ensuremath{\\odot}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump A mass",
+   "value": "110",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Tiny Molecular Clumps",
+     "quote": "$\\sim$110 $M_\\ensuremath{\\odot}$, $\\sim$1.2 pc, and $\\sim$2000 cm$^{-3}$ for clump A"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump B mass",
+   "value": "90",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Tiny Molecular Clumps",
+     "quote": "$\\sim$90 $M_\\ensuremath{\\odot}$, $\\sim$1.3 pc, and $\\sim$1400 cm$^{-3}$ for clump B"
+    }
+   ]
+  },
+  {
+   "quantity": "HI cloud mass",
+   "value": "2e4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1 Large-Scale Distribution",
+     "quote": "We finally obtain the mass of the Hi cloud is $\\sim$$2 \\times 10^4$ $M_\\ensuremath{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels / continuum handling for the CO cube",
+  "Cell size, image size, CLEAN threshold, mask and multiscale scales",
+  "Which execution blocks/MOUS were used and whether pipeline or manual calibration",
+  "Velocity range and region used for mass of the expanding shell (~5e3 Msun)",
+  "How PV cavity/expansion velocity was determined (fit vs by eye)",
+  "Wind duration assumption basis (3e5 yr)",
+  "Mosaic pointing count and primary beam correction details"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, threshold, masks)",
+  "PV extraction and expansion-velocity fitting details",
+  "Mass-integration regions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and clear mass equations, but imaging and PV analysis details are missing.",
+ "rediscovery_reason": "Public data, with numeric results (masses, expansion velocity) that can be redone.",
+ "source_card": "cards/2018ApJ...867....7S/sonnet/card.md"
+}

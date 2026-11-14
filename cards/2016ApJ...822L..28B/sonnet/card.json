@@ -1,0 +1,780 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...822L..28B",
+  "title": "Measurement of the Black Hole Mass in NGC 1332 from ALMA Observations at 0.044 arcsecond Resolution",
+  "year": 2016,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Barth, Aaron J.",
+  "n_authors": 7,
+  "arxiv_id": "1605.01346",
+  "doi": "10.3847/2041-8205/822/2/L28",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00896.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present Atacama Large Millimeter/submillimeter Array (ALMA) Cycle 3 observations of CO(2–1) emission from the circumnuclear disk in the E/S0 galaxy NGC 1332 at 0.044$''$ resolution."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1332",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "22.3 Mpc (1'' = 108.6 pc)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance of 22.3 Mpc to NGC 1332 for consistency with Paper I and with (cite: rusli2011); at this distance, 1$''$ corresponds to 108.6 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "adopted for consistency with Paper I and Rusli et al. 2011",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance of 22.3 Mpc to NGC 1332 for consistency with Paper I and with (cite: rusli2011); at this distance, 1$''$ corresponds to 108.6 pc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the mass of the central black hole in NGC 1332, measured from CO(2-1) gas kinematics that resolve the BH's gravitational radius of influence?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "fit the beam-smeared model line profiles directly to the ALMA data cube."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00896.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "NGC 1332 was observed in ALMA Band 6 as part of project 2015.1.00896.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "NGC 1332 was observed in ALMA Band 6 as part of project 2015.1.00896.S."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "band centered at 229.354 GHz; 75 channels of 15.4 MHz (20.1 km/s)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations were obtained in a frequency band centered at 229.354 GHz, corresponding to the redshifted $^{12}$CO(2–1) line in NGC 1332."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "corresponding to the redshifted $^{12}$CO(2–1) line in NGC 1332"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "beam 0.052'' x 0.037'', PA 64 deg; geometric mean 0.044''",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The synthesized beam has major and minor axis FWHM sizes of 0.052$''$ and 0.037$''$ with major axis position angle (PA) 64$^\\circ$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 0.142 mJy/beam per channel at 0.04'' binned pixels",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "the rms noise level is 0.142 mJy beam $^{-1}$ per channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "101 min on source",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "for a total on-source integration time of 101 min"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2015 September 16 and 23",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Three separate observations on 2015 September 16 and 23 were carried out"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Deprojected stellar luminosity profile (K-band VLT AO plus R-band)",
+      "evidence": [
+       {
+        "loc": "3 Dynamical Modeling",
+        "quote": "we use the deprojected stellar luminosity profile from (cite: rusli2011), based on a combination of $K$-band VLT adaptive-optics data at small radii"
+       }
+      ]
+     },
+     "citation": "Rusli et al. 2011 (cite: rusli2011)"
+    },
+    {
+     "what": {
+      "value": "R-band mass-to-light ratio 7.35 from best-fitting stellar-dynamical model (private communication)",
+      "evidence": [
+       {
+        "loc": "3 Dynamical Modeling",
+        "quote": "Their best-fitting stellar-dynamical model implies an $R$-band mass-to-light ratio of $\\Upsilon_R=7.35$ (J. Thomas, private communication)."
+       }
+      ]
+     },
+     "citation": "Rusli et al. 2011 (cite: rusli2011)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA; cube with 0.01'' pixels, 6.4'' x 6.4'' FOV, 75 channels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "to produce an emission-line data cube with $0.01\\ensuremath{''}$ pixels, a field of view of $6.4\\ensuremath{''}\\times6.4\\ensuremath{''}$, and 75 frequency channels"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "spatial block averaging 4x4 pixels to 0.04'' pixels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we first binned the data cube spatially by block averaging in $4\\times4$ pixel blocks, producing 0.04$''$ pixels"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.052'' x 0.037'' at PA 64 deg",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "major and minor axis FWHM sizes of 0.052$''$ and 0.037$''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.142 mJy/beam per channel (0.04'' pixels)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "the rms noise level is 0.142 mJy beam $^{-1}$ per channel"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Dynamical modeling methods follow Paper I (thin-disk model, chi2 at ~1 pixel per beam, stellar mass profile)",
+      "evidence": [
+       {
+        "loc": "3 Dynamical Modeling",
+        "quote": "Our dynamical modeling follows the methods described in Paper I."
+       }
+      ]
+     },
+     "from_reference": "Paper I (cite: barth2016)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass M*(r) profile plot and neglect of dark matter/gas masses",
+      "evidence": [
+       {
+        "loc": "3 Dynamical Modeling",
+        "quote": "(cite: rusli2011) give full details of the $L_\\star(r)$ measurement, and Paper I presents a plot of $M_\\star(r)$."
+       }
+      ]
+     },
+     "from_reference": "Rusli et al. 2011; Paper I"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration/imaging details (weighting, robust, cleaning, continuum subtraction)",
+    "Array configurations, baselines and calibrators",
+    "Spectral window and channel selection used for chi2 (56 of 75 channels)",
+    "How CO surface brightness map was made",
+    "Coordinates of the dynamical center and the target",
+    "IDL fitting code not released; amoeba convergence settings",
+    "Stellar luminosity profile table not provided"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Make and bin the CO(2-1) cube",
+    "method": {
+     "value": "Process in CASA to cube with 0.01'' pixels, then block-average 4x4 to 0.04'' pixels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we first binned the data cube spatially by block averaging in $4\\times4$ pixel blocks, producing 0.04$''$ pixels"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Kinematic maps",
+    "method": {
+     "value": "Gaussian line-profile fits to binned cube for intensity, v_LOS, sigma_LOS",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We created kinematic maps by fitting Gaussian line profiles to the data."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Thin-disk dynamical model fit to cube",
+    "method": {
+     "value": "Model circular-rotation disk in potential of BH plus stars, Gaussian profiles with turbulent dispersion, scaled to CO surface brightness, convolved with beam, rebinned to 0.04'', chi2 compared to data cube",
+     "evidence": [
+      {
+       "loc": "3 Dynamical Modeling",
+       "quote": "The goodness of fit (quantified by $\\chi^2$) is computed by direct comparison of the model cube with the binned ALMA data."
+      }
+     ]
+    },
+    "software": [
+     "IDL amoeba"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free parameters: M_BH, Upsilon, sigma_turb, i, Gamma, v_sys, (x0,y0), f0",
+      "evidence": [
+       {
+        "loc": "3 Dynamical Modeling",
+        "quote": "Free parameters include $M_\\mathrm{BH}$, $\\Upsilon$, $\\sigma_\\mathrm{turb}$, $i$, $\\Gamma$, $\\ensuremath{v_\\mathrm{sys}}$, the dynamical center position $(x_0,y_0)$, and an overall normalization factor $f_0$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Uniform sigma_turb; dark matter and molecular gas mass neglected; distance 22.3 Mpc",
+      "evidence": [
+       {
+        "loc": "3 Dynamical Modeling",
+        "quote": "We neglect the contributions of dark matter and of molecular gas, both of which are $\\lesssim10^8$ ${M}_{\\odot}$ within $r=250$ pc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimization with amoeba downhill simplex; confidence from delta chi2",
+     "evidence": [
+      {
+       "loc": "3 Dynamical Modeling",
+       "quote": "We optimize the model fits using the `amoeba` downhill simplex method in IDL."
+      }
+     ]
+    },
+    "validation": {
+     "value": "reduced chi2 checks; fits to varying r_fit",
+     "evidence": [
+      {
+       "loc": "Modeling Results, Fits to smaller regions",
+       "quote": "The expected range on $\\chi^2_{\\nu}$ for 2515 degrees of freedom is $1.00\\pm0.03$, so this result suggests that there is still a mild degree of systematic model-data mismatch within $\\ensuremath{r_\\mathrm{fit}}=50$ pc."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit smaller central regions to limit stellar-profile systematics",
+    "method": {
+     "value": "Fit within elliptical regions of semimajor axis r_fit; for r_fit=50 pc fix x0, y0, v_sys at best-fit values and grid in M_BH with five other parameters free",
+     "evidence": [
+      {
+       "loc": "4.2 Fits to smaller regions",
+       "quote": "we take the values of these three parameters and hold them fixed, calculating a grid of models with $\\ensuremath{r_\\mathrm{fit}}=50$ pc for a range of values of $M_\\mathrm{BH}$ with the remaining five parameters free."
+      }
+     ]
+    },
+    "software": [
+     "IDL amoeba"
+    ],
+    "key_parameters": [
+     {
+      "value": "r_fit = 50 pc, 45 spatial pixels, 2515 dof",
+      "evidence": [
+       {
+        "loc": "4.2 Fits to smaller regions",
+        "quote": "These constrained fits for $\\ensuremath{r_\\mathrm{fit}}=50$ pc (containing 45 spatial pixels) have 2515 degrees of freedom"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "68.3% and 99% confidence from chi2 vs M_BH",
+     "evidence": [
+      {
+       "loc": "Modeling Results, Fits to smaller regions",
+       "quote": "The 68.3% and 99% confidence ranges on $M_\\mathrm{BH}$ are $(6.64_{-0.63}^{+0.65})\\times10^8$ and $(6.64_{-1.66}^{+1.69})\\times10^8$ ${M}_{\\odot}$, respectively."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Smooth chi2 curve required; compared with Rusli stellar-dynamical and Humphrey X-ray masses",
+     "evidence": [
+      {
+       "loc": "Modeling Results, Fits to smaller regions",
+       "quote": "Our goal is to fit models over the smallest possible spatial region that permits successful fits with well-defined confidence limits on $M_\\mathrm{BH}$ (manifested by a smooth and regular curve of $\\chi^2$ vs. $M_\\mathrm{BH}$)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Producing the emission-line data cube",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We processed the data using the Common Astronomy Software Applications (cite: mcmullin2007) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "IDL amoeba",
+    "version": "not stated",
+    "used_for": {
+     "value": "Downhill simplex optimization of model fits",
+     "evidence": [
+      {
+       "loc": "3 Dynamical Modeling",
+       "quote": "We optimize the model fits using the `amoeba` downhill simplex method in IDL."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "M_BH (r_fit=50 pc, 68.3%)",
+    "value": "6.64e8",
+    "uncertainty": "+0.65/-0.63 e8",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find $\\ensuremath{M_\\mathrm{BH}}=(6.64_{-0.63}^{+0.65})\\times10^8$ ${M}_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_BH (full disk fit)",
+    "value": "6.86e8",
+    "uncertainty": "±0.14e8 (68.3%)",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Fits to the full disk",
+      "quote": "The 68.3% confidence region (corresponding to $\\Delta\\ensuremath{\\chi^2}=1$) is $(6.86\\pm0.14)\\times10^8$ ${M}_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Reduced chi2, r_fit=50 pc",
+    "value": "1.09",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Fits to smaller regions",
+      "quote": "the best-fitting model has $\\ensuremath{\\chi^2}=2739.8$ and $\\ensuremath{\\chi^2_{\\nu}}=1.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "sigma_turb (r_fit=50 pc)",
+    "value": "32.1",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Fits to smaller regions",
+      "quote": "$\\ensuremath{\\sigma_\\mathrm{turb}}=32.1$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gravitational radius of influence",
+    "value": "25 pc (0.23'')",
+    "uncertainty": "not stated",
+    "units": "pc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Fits to smaller regions",
+      "quote": "This model implies $\\ensuremath{r_\\mathrm{g}}= 25$ pc or 0.23$''$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Disk shows regular rotation with central high-velocity emission to ~500 km/s; no high central sigma_turb required.",
+    "evidence": [
+     {
+      "loc": "4.3 Turbulent velocity dispersion",
+      "quote": "This demonstrates that the Cycle 3 data do not require or prefer a high central $\\sigma_\\mathrm{turb}$."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can ALMA CO kinematics resolving r_g give a robust M_BH for NGC 1332?",
+    "experiment": "Beam-smeared thin-disk model fits to the cube within r_fit=50 pc",
+    "result": "M_BH=6.64e8 Msun, zero mass rejected at >99.99%",
+    "finding": "ALMA can measure BH masses by resolving r_g",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This observation demonstrates ALMA’s powerful capability to determine the masses of supermassive black holes"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the stellar-dynamical M_BH of 1.45e9 consistent with CO kinematics?",
+    "experiment": "Delta chi2 of constrained fits at that mass",
+    "result": "Delta chi2=101 at 1.45e9",
+    "finding": "Highly inconsistent; factor-two disagreement",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Discussion and Conclusions",
+      "quote": "we find $\\Delta\\ensuremath{\\chi^2}=101$ at $\\ensuremath{M_\\mathrm{BH}}=1.45\\times10^9$ ${M}_{\\odot}$"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Smaller-region fits reduce sensitivity to stellar mass profile shape and warp",
+    "evidence": [
+     {
+      "loc": "4.2 Fits to smaller regions",
+      "quote": "This makes the model-fitting results less susceptible to errors due to the shape of the stellar mass profile"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mild systematic model-data mismatch; distance uncertainty not in error budget; S/N limiting; minor-axis kinematics unresolved by factor of two",
+     "evidence": [
+      {
+       "loc": "4.2 Fits to smaller regions",
+       "quote": "The error budget does not incorporate uncertainty in the distance to NGC 1332"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Uniform sigma_turb and flat-disk assumptions with a known warp",
+    "Choice of r_fit=50 pc and fixing x0,y0,v_sys is somewhat ad hoc",
+    "Stellar M/L and profile taken from literature without uncertainty"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA program 2015.1.00896.S cited; public status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of data from ALMA program 2015.1.00896.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Custom IDL model code",
+    "Stellar luminosity profile table",
+    "CASA reduction parameters",
+    "CO surface brightness model details"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for 3 execution blocks",
+   "score_inferred": 3,
+   "score_reason": "Data public in archive, approach clear but model code and imaging details missing and inherited from Paper I.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Custom model and external stellar profile/M-L needed; imaging details unstated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Barth et al. 2016 (Paper I) (cite: barth2016)",
+     "why": "Modeling methods followed"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Rusli et al. 2011",
+     "why": "Stellar-dynamical M_BH and stellar profile"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-6a38bdfd6f0ee025e6eb39f563559b62",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:43",
+  "usage": {
+   "input_tokens": 11897,
+   "output_tokens": 6315,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.044078,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 44,
+  "quotes_ok": 44,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 34,
+   "rate": 0.515
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:08:21",
+  "custom_id": "repair-sonnet-e09ea338f6ca0a3fc50192501286b30a",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "The expected range on $\\chi^2_{\\nu}$ for 2515 degrees of freedom is $1.00\\pm0.03$, so this result suggests that there is still a mild degree of systematic model-data mismatch within $\\ensuremath{r_\\mathrm{fit}}=50$ pc."
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "The 68.3% and 99% confidence ranges on $M_\\mathrm{BH}$ are $(6.64_{-0.63}^{+0.65})\\times10^8$ and $(6.64_{-1.66}^{+1.69})\\times10^8$ ${M}_{\\odot}$, respectively."
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "Our goal is to fit models over the smallest possible spatial region that permits successful fits with well-defined confidence limits on $M_\\mathrm{BH}$ (manifested by a smooth and regular curve of $\\chi^2$ vs. $M_\\mathrm{BH}$)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

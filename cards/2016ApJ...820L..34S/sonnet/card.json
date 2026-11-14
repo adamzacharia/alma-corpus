@@ -1,0 +1,881 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...820L..34S",
+  "title": "Subarcsecond Analysis of the Infalling-Rotating Envelope around the Class I Protostar IRAS 04365+2535",
+  "year": 2016,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Sakai, Nami",
+  "n_authors": 13,
+  "arxiv_id": "1603.08608",
+  "doi": "10.3847/2041-8205/820/2/L34",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.01102.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Sub-arcsecond images of the rotational line emission of CS and SO have been obtained toward the Class I protostar IRAS 04365$+$2535 in TMC-1A with ALMA."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry",
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 04365+2535 (TMC-1A)",
+     "coordinates": {
+      "value": "04h39m35.2s, +25d41m44.35s (J2000, field center)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The field center is: ($\\alpha_{2000}, \\delta_{2000})$=$(04^{\\rm h} 39^{\\rm m} 35.2s, 25^{\\circ} 41^{\\prime} 44.35\\ensuremath{''})$."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "TMC-1A is located in the Heiles Cloud 2 ($d$=137 pc; Torres et al. 2007)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "137 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The field center is: ($\\alpha_{2000}, \\delta_{2000})$=$(04^{\\rm h} 39^{\\rm m} 35.2s, 25^{\\circ} 41^{\\prime} 44.35\\ensuremath{''})$."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "TMC-1A is located in the Heiles Cloud 2 ($d$=137 pc; Torres et al. 2007)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Torres et al. 2007",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The field center is: ($\\alpha_{2000}, \\delta_{2000})$=$(04^{\\rm h} 39^{\\rm m} 35.2s, 25^{\\circ} 41^{\\prime} 44.35\\ensuremath{''})$."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "TMC-1A is located in the Heiles Cloud 2 ($d$=137 pc; Torres et al. 2007)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the kinematics and chemical structure (CS, SO) of the infalling-rotating envelope around the Class I protostar TMC-1A, and does a chemical change occur at the centrifugal barrier?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In the present study, we extend such a chemical approach to the low-mass Class I source IRAS 04365+2535 in TMC-1A, whose luminosity is 2.5 $L_\\odot$ (Green et al. 2013)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observation of IRAS 04365$+$2535 in L1527 was carried out with ALMA (cycle 2) on 2014 June 15 (Band 6)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "59 MHz bandwidth, 122 kHz resolution (61 kHz channel spacing), velocity resolution 0.14 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The backend correlator was tuned to be 59 MHz bandwidth with 122 kHz resolution (channel spacing is 61 kHz). The velocity resolution is 0.14 km s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CS",
+     "transition": "J=5-4",
+     "rest_frequency": "244.9355565 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CS ($J$=5–4; 244.9355565 GHz $E_{\\rm u}$=35 K)"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "J_N=7_6-6_5",
+     "rest_frequency": "261.843721 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "SO ($J_N$=$7_6$–$6_5$, 261.843721 GHz $E_{\\rm u}$=48 K)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "31 antennas, max baseline 642 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Thirty-one antennas were used during the observation, and the maximum baseline length was 642 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.65\"x0.37\" (continuum), 0.69\"x0.40\" (CS), 0.65\"x0.37\" (SO)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The synthesized beam size is $0.65\\ensuremath{''} \\times 0.37\\ensuremath{''}$ (PA=13$^\\circ$), $0.69\\ensuremath{''} \\times 0.40\\ensuremath{''}$ (PA=11$^\\circ$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "27 min",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total on-source time was 27 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014 June 15 (Cycle 2)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "was carried out with ALMA (cycle 2) on 2014 June 15 (Band 6)."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Systemic velocity 6.5 km/s, average of literature values",
+      "evidence": [
+       {
+        "loc": "CS",
+        "quote": "A systemic velocity of this source is 6.5 km s$^{-1}$, which is an average of the reported values (Brown & Chandler 1999; Yen et al. 2013; Harsono et al. 2014)"
+       }
+      ]
+     },
+     "citation": "Brown & Chandler 1999; Yen et al. 2013; Harsono et al. 2014"
+    },
+    {
+     "what": {
+      "value": "Envelope extension angle 30 deg from K-band image",
+      "evidence": [
+       {
+        "loc": "CS",
+        "quote": "The extension angle of the envelope thickness is assumed to be 30$^\\circ$, judging from the K-band (1.92-2.55 $\\mu$m) image of this source"
+       }
+      ]
+     },
+     "citation": "Ishii, Tamura, and Itoh 2004"
+    },
+    {
+     "what": {
+      "value": "Distance 137 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "TMC-1A is located in the Heiles Cloud 2 ($d$=137 pc; Torres et al. 2007)"
+       }
+      ]
+     },
+     "citation": "Torres et al. 2007"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0423-013 (flux); J0510+1800 (phase and bandpass)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The absolute flux density scale was derived from J0423-013."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "less than 10 %",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data calibration was performed in the antenna-based manner, and uncertainties are less than 10 %."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not performed",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We did not conduct self-calibration for the data used in this paper."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we used the Briggs weighting for the UV data with the robust parameter of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum subtracted directly from visibilities; continuum from line-free channels",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The line images were obtained by CLEANing the dirty images after subtracting the continuum directly from the visibilities."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.65\"x0.37\" PA 13 (cont), 0.69\"x0.40\" PA 11 (CS), 0.65\"x0.37\" PA 12 (SO)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "for the continuum, CS, and SO images, respectively."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SO/CS abundance ratio derived with same non-LTE method",
+      "evidence": [
+       {
+        "loc": "SO",
+        "quote": "The abundance ratio of SO/CS at the centrifugal barrier is derived by using the same non-LTE method described in Sakai et al. (2014b)."
+       }
+      ]
+     },
+     "from_reference": "Sakai et al. 2014b"
+    },
+    {
+     "what": {
+      "value": "Simple ballistic infalling-rotating envelope model",
+      "evidence": [
+       {
+        "loc": "CS",
+        "quote": "a simple ballistic model of an infalling-rotating envelope which is previously applied to L1527 (Sakai et al. 2014a, b; Oya et al. 2015) and IRAS15398-3359 (Oya et al. 2014)"
+       }
+      ]
+     },
+     "from_reference": "Sakai et al. 2014a,b; Oya et al. 2014, 2015"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration pipeline/manual choice",
+    "Line-free channels used for continuum",
+    "Cell size, image size, clean threshold and masks",
+    "Ballistic model code and parameter grid, and how fit quality was judged (by eye)",
+    "Non-LTE code and collision/column density inputs for SO/CS ratio",
+    "PV cut widths and position angle details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure continuum",
+    "method": {
+     "value": "2D Gaussian fit to 260 GHz continuum image",
+     "evidence": [
+      {
+       "loc": "Continuum",
+       "quote": "The peak position derived by the two-dimensional Gaussian fit is"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with fluxes of Harsono et al. 2014 and Aso et al. 2015 with beta=1.46",
+     "evidence": [
+      {
+       "loc": "Continuum",
+       "quote": "The integrated flux is almost consistent with those reported by Harsono et al. (2014) (164 mJy at 220 GHz)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Moment maps and PV diagrams of CS and SO; determine PA",
+    "method": {
+     "value": "Moment 0/1 maps; PA from line through blue/red peaks and continuum peak; PV along envelope and outflow directions",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "We determined the position angle (PA) of the disk/envelope system to be 70$^\\circ$ using this line."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "blue/red components 2.5<|dV|<3.5 km/s from systemic 6.5 km/s",
+      "evidence": [
+       {
+        "loc": "CS",
+        "quote": "(3.5 km s$^{-1}$ $>|$$\\delta$V$|>$ 2.5 km s$^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with PA of Harsono et al. and Aso et al.",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "It is consistent with that reported by Harsono et al. (2014)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit ballistic infalling-rotating envelope model to PV diagrams",
+    "method": {
+     "value": "Simulated emission from particle motion under energy and angular momentum conservation; parameters rCB, M, inclination explored",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "the gas motion is approximated by the particle motion under conservation of kinetic energy and angular momentum."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "outer radius 350 AU; convolved with 0.5 km/s velocity width and 0.69\"x0.40\" beam",
+      "evidence": [
+       {
+        "loc": "CS",
+        "quote": "The model image is convolved by the velocity width of 0.5 km s$^{-1}$ and the beam size of $0.69\\ensuremath{''} \\times 0.40\\ensuremath{''}$ (PA=11$^\\circ$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "r^-1.5 density profile, constant abundances, optically thin, no excitation, envelope thickness extension angle 30 deg",
+      "evidence": [
+       {
+        "loc": "CS",
+        "quote": "we simply assume an $r^{-1.5}$ density profile and constant molecular abundances. The lines are assumed to be optically thin, and no excitation effect is considered for simplicity."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Parameter space searched; acceptable range judged by reproducing PV diagrams (no formal sampler stated)",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "We found a set of parameters which can reasonably reproduce the observed PV diagrams."
+      }
+     ]
+    },
+    "validation": {
+     "value": "0.2 km/s line width gives no significant change",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "the simulation does not change significantly by use of the 0.2 km s$^{-1}$ line width"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "SO/CS abundance ratio at centrifugal barrier",
+    "method": {
+     "value": "Non-LTE analysis of integrated intensities for red (7.9-9.3 km/s) and blue (3.7-5.1 km/s) components",
+     "evidence": [
+      {
+       "loc": "SO",
+       "quote": "we used the intensities integrated from 7.9 to 9.3 km s$^{-1}$ and from 3.7 to 5.1 km s$^{-1}$ for the red-shifted and blue-shifted components"
+      }
+     ]
+    },
+    "software": [
+     "LAMDA"
+    ],
+    "key_parameters": [
+     {
+      "value": "H2 density 3e6-3e8 cm-3, temperature 30-120 K",
+      "evidence": [
+       {
+        "loc": "SO",
+        "quote": "for the H$_2$ density range from $3 \\times 10^6$ to $3 \\times 10^8$ cm$^{-3}$ and the temperature range from 30 to 120 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with L1527 ratio",
+     "evidence": [
+      {
+       "loc": "SO",
+       "quote": "The ratio for the red-shifted component is comparable to that found in L1527 (4.6$-$5.9)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "LAMDA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Einstein A and collisional data for critical density",
+     "evidence": [
+      {
+       "loc": "SO",
+       "quote": "calculated from the Einstein A coefficient and the collisional cross section (LAMDA; Sch$\\rm \\ddot{o}$ier et al. 2005; Lique et al. 2006)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum peak flux",
+    "value": "166.9",
+    "uncertainty": "0.9",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "The peak flux is determined to be 166.9 $\\pm$0.9 mJy beam$^{-1}$ from the Gaussian fit"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum integrated flux",
+    "value": "268.2",
+    "uncertainty": "2.3",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "while the integrated flux is 268.2$\\pm$2.3 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk/envelope position angle",
+    "value": "70",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "CS",
+      "quote": "We determined the position angle (PA) of the disk/envelope system to be 70$^\\circ$ using this line."
+     }
+    ]
+   },
+   {
+    "quantity": "Centrifugal barrier radius (best)",
+    "value": "50 (acceptable 40-60)",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "CS",
+      "quote": "The acceptable range of $r_{\\rm CB}$ is from 40 AU to 60 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Protostellar mass (best)",
+    "value": "0.25 (range 0.20-0.30)",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "CS",
+      "quote": "that of the mass is from 0.20 $M_\\odot$ to 0.30 $M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination (best)",
+    "value": "20 (range 10-30)",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "CS",
+      "quote": "($r_{\\rm CB}$=50 AU, $M$=0.25 $M_\\odot$, and $i$=20$^\\circ$)"
+     }
+    ]
+   },
+   {
+    "quantity": "SO/CS ratio red-shifted",
+    "value": "4.6-8.8",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "SO",
+      "quote": "The SO/CS ratio is evaluated to be 4.6$-$8.8 and 1.9$-$3.2 for the red-shifted and blue-shifted components"
+     }
+    ]
+   },
+   {
+    "quantity": "SO/CS ratio blue-shifted",
+    "value": "1.9-3.2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "SO",
+      "quote": "The SO/CS ratio is evaluated to be 4.6$-$8.8 and 1.9$-$3.2 for the red-shifted and blue-shifted components"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CS shows infalling-rotating motion; rotation disappears at ~50 AU; infalling gas distribution asymmetric",
+    "evidence": [
+     {
+      "loc": "CS",
+      "quote": "The rotation motion traced by CS abruptly disappears around the radius of 50 AU from the protostar"
+     }
+    ]
+   },
+   {
+    "value": "SO is concentrated around the centrifugal barrier, more compact than CS",
+    "evidence": [
+     {
+      "loc": "SO",
+      "quote": "the distribution is concentrated around the protostar, and is more compact than that of CS."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CS kinematics in TMC-1A trace an infalling-rotating envelope rather than a Keplerian disk",
+    "experiment": "PV diagrams compared with a ballistic model",
+    "result": "rCB=50 AU, M=0.25 Msun, i=20 deg reproduce the PV diagrams",
+    "finding": "Infalling-rotating envelope conserving angular momentum down to ~50 AU",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "It is well explained by a ballistic model of an infalling-rotating envelope with the radius of the centrifugal barrier (a half of the centrifugal radius) of 50 AU"
+     }
+    ]
+   },
+   {
+    "hypothesis": "A chemical change occurs at the centrifugal barrier as in L1527",
+    "experiment": "Compare CS and SO distributions with model barrier",
+    "result": "SO concentrated near the barrier, CS outside",
+    "finding": "Infalling material is chemically processed (probably by accretion shock) before entering the disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "a drastic change in chemical composition of the gas infalling onto the protostar is found to occur at a 50 AU scale probably due to accretion shocks"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Simple ballistic model used because the main purpose is to account for velocity structure",
+    "evidence": [
+     {
+      "loc": "CS",
+      "quote": "Since our main purpose is to account for the velocity structure, we simply assume an $r^{-1.5}$ density profile"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Keplerian disk cannot explain CS features",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "All these characteristic features seen in the CS emission cannot be explained by a Keplerian disk"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Ballistic model may be oversimplified",
+     "evidence": [
+      {
+       "loc": "CS",
+       "quote": "our ballistic model could be oversimplified"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Model fit by eye with no quantitative goodness of fit or uncertainties",
+    "Mass 0.25 Msun disagrees with 0.68 Msun of Aso et al.",
+    "Source name misprinted as L1527 in Observations",
+    "Asymmetric envelope not modelled"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Ballistic model code and grid",
+    "Imaging parameters",
+    "Non-LTE inputs"
+   ],
+   "estimated_data_volume_inferred": "~5-20 GB",
+   "score_inferred": 3,
+   "score_reason": "Single ALMA dataset with robust 0.5 stated, but model and imaging details are sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Public status not stated in paper and model fit is by eye with incomplete recipe."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Sakai et al. 2014b",
+     "why": "non-LTE SO/CS method"
+    },
+    {
+     "citation": "Oya et al. 2014",
+     "why": "ballistic model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Aso et al. 2015",
+     "why": "C18O ALMA study of TMC-1A"
+    },
+    {
+     "citation": "Sakai et al. 2014a",
+     "why": "L1527 centrifugal barrier"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-68b3e0dbf6fc12d41b5bed3090956b0d",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:46",
+  "usage": {
+   "input_tokens": 10672,
+   "output_tokens": 7009,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.046323,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2013.1.01102.S"
+  ],
+  "codes_printed_but_missing": [
+   "2013.0.01102.S"
+  ],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 40,
+   "rate": 0.58
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:34:47",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.01102.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.0.01102.S."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,435 @@
+{
+ "bibcode": "2026A&A...710A.390O",
+ "title": "OH/IR stars in the inner Galactic bulge: I. Colour, CO line, and stellar light curve characteristics",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202660330",
+ "arxiv_id": "2605.26605",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "Obtain information on the mass loss of O-rich AGB stars, and on its transformations in geometry and kinematics that occur at the tip of the AGB.",
+ "alma_project_codes": [
+  "2023.1.00098.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "12 m array (32 to 46 antennas)",
+  "angular_resolution": "0.15'' to 0.4'' (B3: 0.45'' x 0.39''; B6: 0.25'' x 0.14''; B7: 0.18'' x 0.10'')",
+  "sensitivity": "Line rms: ~7, 4, 5 mJy/beam (B3 at 3 km/s, B6 at 2 km/s, B7 at 2 km/s); Continuum rms: ~0.06, 0.1, 0.2 mJy/beam (107, 233, 338 GHz)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Survey of OH/IR stars in the inner Galactic bulge (source catalog and OH 1612 MHz flux densities and velocities)",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "The survey of OH/IR stars by (cite: seveetal97a) forms the basis of our sample."
+     }
+    ]
+   },
+   "citation": "(cite: seveetal97a)"
+  },
+  {
+   "what": {
+    "value": "ALMA 13CO(3-2) data for three objects where part of the line was missed, and median luminosity (5400 L_sun) used for sample selection",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "We selected all objects, brighter than 0.3 Jy in the OH 1612 MHz line, that have an estimated luminosity within a factor of two of the median luminosity of the O+22 sample, 5400 $L_\\odot$."
+     },
+     {
+      "loc": "ALMA data",
+      "quote": "Despite this, part of the $^{13}$CO(3–2) line was missed for seven objects (for three of these objects the data of O+22 were used instead)."
+     }
+    ]
+   },
+   "citation": "O+22 (cite: olofetal22)"
+  },
+  {
+   "what": {
+    "value": "Distance to the Galactic centre of 8.2 kpc",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "The adopted distance to all of our sources is 8.2 kpc (cite: gravcoll19), even though some spread along the line of sight is most likely."
+     }
+    ]
+   },
+   "citation": "(cite: gravcoll19)"
+  },
+  {
+   "what": {
+    "value": "Reddening E(J - Ks) towards each source",
+    "evidence": [
+     {
+      "loc": "Photometry and light curves",
+      "quote": "The reddening $E$($J$ $-$ $K_{\\rm s}$) towards each source was calculated using the results of (cite: gonzetal18)"
+     }
+    ]
+   },
+   "citation": "(cite: gonzetal18)"
+  },
+  {
+   "what": {
+    "value": "Extinction conversion to A_Ks and extrapolation up to 8 um",
+    "evidence": [
+     {
+      "loc": "Photometry and light curves",
+      "quote": "converted into extinction in the $K_{\\rm s}$ band, $A_{K_{\\rm s}}$, and extrapolated up to 8 $\\mu$m using the relationships provided by (cite: nishetal09)."
+     }
+    ]
+   },
+   "citation": "(cite: nishetal09)"
+  },
+  {
+   "what": {
+    "value": "Extinction law in the range 8 to 30 um",
+    "evidence": [
+     {
+      "loc": "Photometry and light curves",
+      "quote": "In the range 8 to 30 $\\mu$m we use the extinction law provided by (cite: xueetal16)."
+     }
+    ]
+   },
+   "citation": "(cite: xueetal16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Determine source positions and continuum flux densities",
+   "method": "Fit two-dimensional Gaussians in the image plane to the continuum images and to the moment 0 images integrated over the circumstellar line velocity range (using 12CO(3-2) for canonical positions).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Effective continuum frequencies: 107, 233, and 338 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Characterize infrared SEDs, variability, and classify objects into four categories",
+   "method": "Correct Spitzer, MSX, and WISE photometry for extinction; construct mid-IR colour-colour diagrams to separate standard (SdE) and detached (DdE) dust envelopes; fit single-period sinusoids to VVV Ks and WISE W1/W2 light curves to separate regular large-amplitude pulsators (P) from non-periodic/low-amplitude (nP); inspect 12CO moment 8 maps and line profiles to separate standard (SgE) and complex (CgE) gas envelopes.",
+   "software": [
+    "CASA",
+    "VizieR Photometry tool"
+   ],
+   "key_parameters": [
+    "Colour borders: S_22.1/S_7.87 = 30 * (S_7.87/S_4.49)^-0.8 and S_21.34/S_14.65 = 40 * (S_14.65/S_8.28)^-3",
+    "Counterpart search radius: 6'' from ALMA coordinates"
+   ],
+   "assumptions": [
+    "Single pulsation period assumed for light curve fitting"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive and fit azimuthally averaged radial brightness profiles (AARPs) for SgE objects",
+   "method": "Convolve data cubes with a circular Gaussian of FWHM equal to the major axis of the synthesised beam, average within +-20% of the gas expansion velocity around the systemic velocity in concentric circular annuli of width equal to the convolving beam, and fit a Moffat function to determine Theta_0.5 and Theta_0.1.",
+   "software": [],
+   "key_parameters": [
+    "Velocity range: +-20% of gas expansion velocity centred on systemic velocity; size metric: Theta_0.1 (radius at 10% of peak)"
+   ],
+   "assumptions": [
+    "Distance of 8.2 kpc to the Galactic centre"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract multi-aperture CO line profiles and fit line shapes, intensities, and kinematics",
+   "method": "Convolve data cubes to circular Gaussian beams of FWHM 0.5'', 1'', 2'', and 3'' (or down to 0.2'' when affected by ISM contamination), extract spectra from the central source pixel, and fit the CLASS/GILDAS 'Shell' profile (or parabola for C18O) for SgE objects and Gaussian profiles (with visual kinematics) for CgE objects.",
+   "software": [
+    "CLASS/GILDAS"
+   ],
+   "key_parameters": [
+    "Convolved beam FWHMs: 0.5'', 1'', 2'', 3'' (and 0.2'' for contaminated cases); C18O extracted from 2'' data"
+   ],
+   "assumptions": [
+    "SgE objects have spherical CSEs formed by constant MLR expanding at constant velocity"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Reduce APEX single-dish spectra and compare with ALMA 3'' fluxes to estimate interferometric flux loss",
+   "method": "Subtract first-order polynomial baseline from APEX spectra, average polarisations, convert T_A* to Jy, bin to 2 km s^-1, and compute ALMA(3'')/APEX velocity-integrated line intensity ratios after excluding sources with CSM/ISM interaction contamination.",
+   "software": [
+    "CLASS/GILDAS",
+    "XS"
+   ],
+   "key_parameters": [
+    "Conversion factors: 35, 36, and 46 Jy K^-1 at 230, 345, and 461 GHz; velocity resolution: 2 km s^-1"
+   ],
+   "assumptions": [
+    "CO lines are essentially unpolarised"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median pulsation period of P-type sub-sample",
+   "value": "613",
+   "uncertainty": "not stated",
+   "units": "d",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Variability characteristics",
+     "quote": "The median period of this sub-sample is 613$^{\\rm d}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average AARP 10% peak extent Theta_0.1 for 12CO(1-0) (SgE)",
+   "value": "1.01",
+   "uncertainty": "0.33",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Azimuthally averaged CO line radial brightness profiles",
+     "quote": "| $\\Theta_{0.1}$ \\[$''$\\] | 1.01 $\\pm$ 0.33 (40) | 0.57 $\\pm$ 0.14 (45) | 0.36 $\\pm$ 0.07 (45) | 0.46 $\\pm$ 0.14 (40) | 0.29 $\\pm$ 0.08 (43) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average AARP 10% peak extent Theta_0.1 for 12CO(2-1) (SgE)",
+   "value": "0.57",
+   "uncertainty": "0.14",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Azimuthally averaged CO line radial brightness profiles",
+     "quote": "| $\\Theta_{0.1}$ \\[$''$\\] | 1.01 $\\pm$ 0.33 (40) | 0.57 $\\pm$ 0.14 (45) | 0.36 $\\pm$ 0.07 (45) | 0.46 $\\pm$ 0.14 (40) | 0.29 $\\pm$ 0.08 (43) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average AARP 10% peak extent Theta_0.1 for 12CO(3-2) (SgE)",
+   "value": "0.36",
+   "uncertainty": "0.07",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Azimuthally averaged CO line radial brightness profiles",
+     "quote": "| $\\Theta_{0.1}$ \\[$''$\\] | 1.01 $\\pm$ 0.33 (40) | 0.57 $\\pm$ 0.14 (45) | 0.36 $\\pm$ 0.07 (45) | 0.46 $\\pm$ 0.14 (40) | 0.29 $\\pm$ 0.08 (43) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average AARP 10% peak extent Theta_0.1 for 13CO(2-1) (SgE)",
+   "value": "0.46",
+   "uncertainty": "0.14",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Azimuthally averaged CO line radial brightness profiles",
+     "quote": "| $\\Theta_{0.1}$ \\[$''$\\] | 1.01 $\\pm$ 0.33 (40) | 0.57 $\\pm$ 0.14 (45) | 0.36 $\\pm$ 0.07 (45) | 0.46 $\\pm$ 0.14 (40) | 0.29 $\\pm$ 0.08 (43) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average AARP 10% peak extent Theta_0.1 for 13CO(3-2) (SgE)",
+   "value": "0.29",
+   "uncertainty": "0.08",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Azimuthally averaged CO line radial brightness profiles",
+     "quote": "| $\\Theta_{0.1}$ \\[$''$\\] | 1.01 $\\pm$ 0.33 (40) | 0.57 $\\pm$ 0.14 (45) | 0.36 $\\pm$ 0.07 (45) | 0.46 $\\pm$ 0.14 (40) | 0.29 $\\pm$ 0.08 (43) |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO 2-1/1-0 velocity-integrated line intensity ratio (SgE)",
+   "value": "4.05",
+   "uncertainty": "0.70",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2–1/1–0        | 4.05 $\\pm$ 0.70 (42) |                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO 3-2/2-1 velocity-integrated line intensity ratio (SgE)",
+   "value": "1.43",
+   "uncertainty": "0.22",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 3–2/2–1        | 1.43 $\\pm$ 0.22 (42) | 1.59 $\\pm$ 0.26 (37) |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO 3-2/2-1 velocity-integrated line intensity ratio (SgE)",
+   "value": "1.59",
+   "uncertainty": "0.26",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 3–2/2–1        | 1.43 $\\pm$ 0.22 (42) | 1.59 $\\pm$ 0.26 (37) |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO 4-3/3-2 velocity-integrated line intensity ratio (APEX, SgE)",
+   "value": "1.01",
+   "uncertainty": "0.27",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 4–3/3–2 ${^a}$ | 1.01$\\pm$ 0.27 (10)  |                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO/13CO (2-1) line intensity ratio (SgE)",
+   "value": "3.54",
+   "uncertainty": "1.34",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2–1            | 3.54 $\\pm$ 1.34 (42) |                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO/13CO (3-2) line intensity ratio (SgE)",
+   "value": "3.14",
+   "uncertainty": "1.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 3–2            | 3.14 $\\pm$ 1.12 (33) |                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average gas expansion velocity (SgE)",
+   "value": "15",
+   "uncertainty": "4",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Kinematics",
+     "quote": "The gas expansion velocities from our line fits form a relatively narrow distribution, from 5 to 24 km s$^{-1}$, Fig. [7](#f:kinematics_abcd). The average and standard deviation are 15 $\\pm$ 4 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index alpha (SgE)",
+   "value": "3.5",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "When detections are made in more than one band, the flux densities result in an average spectral index $\\alpha$ ($S_\\nu$ $\\propto$ $\\nu^\\alpha$) of 3.5 $\\pm$ 0.6 (ten objects)."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index alpha (CgE)",
+   "value": "3.3",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "As for SgE objects, the relative occurrence rates in the three bands are fully explained by a steep spectral index (3.3 $\\pm$ 0.3, seven objects)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA(3'')/APEX 12CO(2-1) intensity ratio",
+   "value": "0.87",
+   "uncertainty": "0.22",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| 2–1  | 0.87 $\\pm$ 0.22 (18) | 0.95 $\\pm$ 0.38 (15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA(3'')/APEX 12CO(3-2) intensity ratio",
+   "value": "0.72",
+   "uncertainty": "0.24",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| 3–2  | 0.72 $\\pm$ 0.24 (13) | 0.87 $\\pm$ 0.31 (10) |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA(3'')/APEX 13CO(2-1) intensity ratio",
+   "value": "0.95",
+   "uncertainty": "0.38",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| 2–1  | 0.87 $\\pm$ 0.22 (18) | 0.95 $\\pm$ 0.38 (15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA(3'')/APEX 13CO(3-2) intensity ratio",
+   "value": "0.87",
+   "uncertainty": "0.31",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| 3–2  | 0.72 $\\pm$ 0.24 (13) | 0.87 $\\pm$ 0.31 (10) |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean deconvolver, pixel/cell size, image dimensions, stopping threshold/niter, and masking strategy",
+  "Whether continuum subtraction (e.g., uvcontsub) was performed prior to imaging the CO lines",
+  "Exact line-free frequency channel ranges used to construct the continuum images",
+  "Specific uv-range cut in klambda or meters used for the two objects (OH359.161-0.055 and OH000.319-0.041) where 3'' uvcut data were adopted",
+  "How the C4 and C6 configuration visits in Band 3 were combined during imaging"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters (cell size, image size, stopping threshold/niter, deconvolver, masking)",
+  "Exact line-free channel ranges for continuum imaging and whether uvcontsub was applied",
+  "The specific maximum aperture selected per source/line when larger apertures were dropped due to low S/N or ISM contamination (available in electronic Table C.1 at CDS)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "ALMA project code, CASA pipeline version, calibrators, spectral setup, weighting, velocity binning, convolved beam sizes (0.5''-3''), and analytical fitting formulae (Moffat and Shell profiles) are all explicitly specified, with only standard tclean imaging parameters (cell size, stopping threshold, masking) left unstated.",
+ "rediscovery_reason": "Single public ALMA project (2023.1.00098.S) with a clear, well-specified observational recipe (pipeline calibration, robust=0.5 imaging, Gaussian beam convolution to 0.5''-3'', Moffat AARP fitting, and CLASS Shell profile fitting) yielding well-defined statistical and per-source numeric metrics.",
+ "source_card": "cards/2026A%26A...710A.390O/sonnet/card.md"
+}

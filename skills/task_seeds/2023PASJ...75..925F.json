@@ -1,0 +1,472 @@
+{
+ "bibcode": "2023PASJ...75..925F",
+ "title": "The correlation between the 500 pc scale molecular gas masses and AGN powers for massive elliptical galaxies",
+ "year": 2023,
+ "doi": "10.1093/pasj/psad050",
+ "arxiv_id": "2303.16927",
+ "fields": [
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "Is the molecular gas mass within a fixed 500 pc radius of the AGN in cluster-central massive elliptical galaxies correlated with jet power from X-ray cavities, with gas accretion rate and with continuum luminosity, and what is the origin of the mm/submm continuum?",
+ "alma_project_codes": [
+  "2011.0.00735.S",
+  "2012.1.00837.S",
+  "2015.1.00598.S",
+  "2015.1.00623.S",
+  "2015.1.00627.S",
+  "2015.1.00644.S",
+  "2015.1.01198.S",
+  "2016.1.01214.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "AGN jet powers P_cav estimated from X-ray cavities",
+    "evidence": [
+     {
+      "loc": "Table notes",
+      "quote": "Jet power from (cite: 2006ApJ...652..216R) and (cite: 2018ApJ...853..177P)."
+     },
+     {
+      "loc": "Circumnuclear gas and jet power",
+      "quote": "The data of $P_{\\rm cav}$ have been taken from the literature (cite: 2006ApJ...652..216R; 2018ApJ...853..177P)."
+     }
+    ]
+   },
+   "citation": "(cite: 2006ApJ...652..216R); (cite: 2018ApJ...853..177P)"
+  },
+  {
+   "what": {
+    "value": "1.4 GHz fluxes (NVSS), except Centaurus",
+    "evidence": [
+     {
+      "loc": "Table notes",
+      "quote": "GHz flux from (cite: 1998AJ....115.1693C) except for Centaurus (cite: 1981A&AS...45..367K)"
+     }
+    ]
+   },
+   "citation": "(cite: 1998AJ....115.1693C); Centaurus: (cite: 1981A&AS...45..367K)"
+  },
+  {
+   "what": {
+    "value": "Black hole masses",
+    "evidence": [
+     {
+      "loc": "Table notes",
+      "quote": "Black hole mass from (cite: 2006ApJ...652..216R) except for NGC 5044 (cite: 2009ApJ...705..624D)."
+     }
+    ]
+   },
+   "citation": "(cite: 2006ApJ...652..216R); NGC 5044: (cite: 2009ApJ...705..624D)"
+  },
+  {
+   "what": {
+    "value": "Optical galaxy redshifts",
+    "evidence": [
+     {
+      "loc": "Data Reduction",
+      "quote": "The galaxy redshifts $z$ are those determined by optical observations."
+     }
+    ]
+   },
+   "citation": "(cite: 2008AJ....135.2424O); (cite: 1992CORV..C...0000F); (cite: 2019A&A...631A..22O); (cite: 2017ApJS..233...25A); (cite: 2019ApJ...872..134Z); (cite: 2019MNRAS.485..229R)"
+  },
+  {
+   "what": {
+    "value": "CO excitation ratios: CO(2-1)/CO(1-0) = 3.2 and CO(3-2)/CO(1-0) = 7.2 in flux density scale",
+    "evidence": [
+     {
+      "loc": "Molecular gas mass",
+      "quote": "gives a CO(J=2-1)/CO(J=1-0) line ratio in flux density scale, 3.2"
+     },
+     {
+      "loc": "Molecular gas mass",
+      "quote": "is a CO(J=3-2)/CO(J=1-0) ratio of 7.2 (cite: 2019MNRAS.485..229R; 2019MNRAS.490.3025R)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.485..229R; 2019MNRAS.490.3025R)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature T = 10 K for the SED model",
+    "evidence": [
+     {
+      "loc": "The origin of the mm/submm continuum emission",
+      "quote": "which is obtained for massive elliptical galaxies at cluster centers (e.g. (cite: 2019ApJ...879..103F))."
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...879..103F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the archival CO and continuum data",
+   "method": "Calibrate with CASA and the ALMA Pipeline, image with tclean to 3 sigma using Briggs robust 2, subtract continuum with uvcontsub",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Briggs weighting, robust = 2 (natural weighting)",
+    "uvcontsub fitorder=1 using line-free channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps of the CO emission",
+   "method": "CASA immoments for integrated intensity, velocity centre and velocity dispersion maps",
+   "software": [
+    "CASA",
+    "immoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract central 500 pc spectra and fit Gaussian components",
+   "method": "Extract spectrum from the central 500 pc region centred on the AGN and fit one or two Gaussian components; ignore features with |v| >~ 500 km/s; for Hydra A exclude the innermost 160 pc and treat east and west separately",
+   "software": [],
+   "key_parameters": [
+    "Line components kept only if significance > 5 sigma and |v| below about 500 km/s relative to galaxy rest frame"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas mass within 500 pc",
+   "method": "Convert CO integrated intensity to M_mol with the Bolatto et al. relation, correcting higher-J lines to CO(1-0) with F_ul; sum two components when present",
+   "software": [],
+   "key_parameters": [
+    "F21 = 3.2 (CO(2-1)/CO(1-0)), F32 = 7.2 (CO(3-2)/CO(1-0)) in flux density scale"
+   ],
+   "assumptions": [
+    "X_CO = 2e20 cm^-2 (K km/s)^-1 (Milky Way value); H0=70, Omega_m=0.3, Omega_Lambda=0.7"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate gas accretion rate from turbulent diffusion",
+   "method": "Accretion time t_acc ~ r_g^2/nu with diffusion coefficient nu ~ l_t v_t, and accretion rate Mdot ~ M_mol/t_acc, with r_g = 500 pc",
+   "software": [
+    "3D-Barolo"
+   ],
+   "key_parameters": [
+    "v_t = FWHM/2.35, with flux-averaged FWHM when two Gaussian components are present",
+    "r_g = 500 pc, alpha = 0.15"
+   ],
+   "assumptions": [
+    "Turbulent angular momentum transport drives accretion regardless of disk-like morphology; derived v_t is an upper limit because rotation may contaminate it"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Correlate M_mol and Mdot with jet power",
+   "method": "Pearson correlation on logarithmic scales and BCES (Y|X) power-law fits of log P_cav against log M_mol and log Mdot, with and without Abell 262",
+   "software": [
+    "BCES"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Derive continuum luminosities and compare with M_mol",
+   "method": "Measure continuum flux at line-free channels, scale to rest-frame 115.3 GHz with a power law, compute L_con and L_1.4 from NVSS, and test correlation with M_mol",
+   "software": [],
+   "key_parameters": [
+    "Spectral index gamma = -0.75; eta = 1, ~2, ~3 for CO(1-0), (2-1), (3-2)"
+   ],
+   "assumptions": [
+    "Continuum is a power law S_nu ~ nu^gamma"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Constrain the origin of the mm/submm continuum",
+   "method": "Estimate spectral index from upper and lower sideband fluxes, compare L_con with L_1.4 by BCES, and build a power-law plus modified blackbody SED",
+   "software": [
+    "BCES"
+   ],
+   "key_parameters": [
+    "gamma = -0.75, nu_0 = 1.5 THz, b = 1.5"
+   ],
+   "assumptions": [
+    "Dust temperature T = 10 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Pearson r, log M_mol vs log P_cav (9 galaxies)",
+   "value": "0.754 (p = 0.019)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "Pearson correlation coefficient on the logarithmic scales is 0.754"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, M_mol vs P_cav excluding Abell 262",
+   "value": "0.906 (p = 0.0020)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "the correlation coefficient increases to 0.906 with $p$-value 0.0020"
+    }
+   ]
+  },
+  {
+   "quantity": "BCES slope A1 (log P_cav vs log M_mol)",
+   "value": "1.3",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "we obtain $A_1 = 1.3\\pm 0.4$ and $B_1 = -8.6\\pm 3.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "BCES intercept B1",
+   "value": "-8.6",
+   "uncertainty": "3.0",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "we obtain $A_1 = 1.3\\pm 0.4$ and $B_1 = -8.6\\pm 3.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, Mdot vs P_cav (9 galaxies)",
+   "value": "0.733 (p = 0.025)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "The correlation coefficient is 0.733 with $p$-value 0.025"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, Mdot vs P_cav excluding Abell 262",
+   "value": "0.871 (p = 0.0049)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "it is 0.871 with $p$-value 0.0049 if we exclude Abell 262"
+    }
+   ]
+  },
+  {
+   "quantity": "BCES slope A2 (log P_cav vs log Mdot)",
+   "value": "1.5",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "$A_2=1.5\\pm 0.6$ and $B_2=1.0\\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "BCES intercept B2",
+   "value": "1.0",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "$A_2=1.5\\pm 0.6$ and $B_2=1.0\\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "v_t from 3D-Barolo model, Abell 262",
+   "value": "~100",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "The model fit shows that $v_t\\sim 100\\rm\\: km\\: s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM/2.35 for Abell 262",
+   "value": "~90",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and jet power",
+     "quote": "which is close to FWHM/2.35$\\sim 90\\rm\\: km\\: s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, L_con vs M_mol",
+   "value": "0.386 (p = 0.30)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and continuum emission",
+     "quote": "The correlation coefficient is 0.386 and the $p$-value is 0.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, L_con vs M_mol excluding Abell 262",
+   "value": "0.740 (p = 0.036)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and continuum emission",
+     "quote": "the coefficient is 0.740 with $p$-value 0.036"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, L_1.4 vs M_mol",
+   "value": "0.556 (p = 0.12)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and continuum emission",
+     "quote": "The correlation coefficient is 0.556 with $p$-value 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, L_1.4 vs M_mol excluding Abell 262",
+   "value": "0.778 (p = 0.023)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Circumnuclear gas and continuum emission",
+     "quote": "the correlation coefficient is 0.778 with $p$-value 0.023"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, L_con vs L_1.4",
+   "value": "0.823 (p = 0.0059)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "The origin of the mm/submm continuum emission",
+     "quote": "the correlation coefficient is 0.823 with $p$-value 0.0059"
+    }
+   ]
+  },
+  {
+   "quantity": "BCES slope A3 (log L_con vs log L_1.4)",
+   "value": "0.43",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "The origin of the mm/submm continuum emission",
+     "quote": "The BCES $(Y|X)$ estimator gives $A_3=0.43\\pm 0.10$"
+    }
+   ]
+  },
+  {
+   "quantity": "BCES intercept B3",
+   "value": "-0.51",
+   "uncertainty": "0.18",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "The origin of the mm/submm continuum emission",
+     "quote": "The BCES $(Y|X)$ estimator gives $A_3=0.43\\pm 0.10$ and $B_3=-0.51\\pm"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, F_con vs F_1.4",
+   "value": "-0.2567 (p = 0.48)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "The origin of the mm/submm continuum emission",
+     "quote": "the correlation coefficient is -0.2567 and $p$-value is 0.48"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which CASA version was used for each project, and the exact EA-ARC recalibration products",
+  "Line-free channel ranges used for uvcontsub for each galaxy",
+  "Cell size, image size, channel width and clean masks for each cube",
+  "Number of clean iterations/threshold definition (rms used for the 3 sigma level) and deconvolver",
+  "Exact aperture shape and centre definition for the 500 pc region and how the AGN position was determined",
+  "Rest frequencies and velocity definition used for the line fits, and the fitting code and initial guesses for the Gaussian fits",
+  "Per-galaxy redshifts, luminosity distances, beam sizes and rms values (given only in tables not present in the text)",
+  "How continuum fluxes F_con and spectral indices were measured (task, region, fit method, uncertainties)",
+  "How the 3 sigma confidence bands and outlier criterion for Abell 262 were computed in the BCES fits",
+  "3D-Barolo configuration (ring parameters, inclination, position angle) for Abell 262",
+  "Normalisation of N_AGN and N_BB in the SED model (fitted to NGC 5044 observations, values not given)"
+ ],
+ "missing_for_reproduction": [
+  "Per-galaxy table of z, beam, rms, line fit results and continuum fluxes (not in the text)",
+  "Line-free channel selection, cell/image sizes, channel widths and masks",
+  "CASA versions and EA-ARC recalibration products for early-cycle data",
+  "Continuum flux measurement procedure and sideband index method",
+  "Number of galaxies per project code mapping"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "On an assumed 1-5 scale: archival public data, clear equations and correlation numbers, but imaging details, calibration versions and per-galaxy tables are missing from the text",
+ "rediscovery_reason": "Public archival data, a stated method (CO moment/spectra within 500 pc, X_CO and line ratios given), and numeric correlation results that can be checked, though imaging details must be reconstructed",
+ "source_card": "cards/2023PASJ...75..925F/sonnet/card.md"
+}

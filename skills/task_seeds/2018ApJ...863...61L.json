@@ -1,0 +1,256 @@
+{
+ "bibcode": "2018ApJ...863...61L",
+ "title": "An ALMA Survey of Faint Disks in the Chamaeleon I Star-forming Region: Why Are Some Class II Disks so Faint?",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aacce9",
+ "arxiv_id": "1806.04826",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Why are some Class II disks in Chamaeleon I so faint at mm wavelengths, and does the stellar-disk mass scaling relation hold with deeper data?",
+ "alma_project_codes": [
+  "2015.1.00333.S"
+ ],
+ "data": {
+  "bands": "Band 7 (887 um / 882 um)",
+  "arrays": "not stated",
+  "angular_resolution": "1.1\" x 0.7\" typical beam",
+  "sensitivity": "1 sigma rms 0.2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "stellar masses are adopted from (cite: pascucci2016)"
+     }
+    ]
+   },
+   "citation": "(cite: pascucci2016)"
+  },
+  {
+   "what": {
+    "value": "Spectral types and accretion rates",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Spectral types are adopted from (cite: manara2016; manara2017)"
+     }
+    ]
+   },
+   "citation": "(cite: manara2016; manara2017)"
+  },
+  {
+   "what": {
+    "value": "Stellar multiplicity and separations",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "References for stellar multiplicity are (cite: lafrenire2008) and (cite: daemgen2013)."
+     }
+    ]
+   },
+   "citation": "(cite: lafrenire2008; daemgen2013)"
+  },
+  {
+   "what": {
+    "value": "Cycle 2 887um fluxes",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Column 6 and 7 are 887$\\mu$m fluxes in (cite: pascucci2016) and this work."
+     }
+    ]
+   },
+   "citation": "(cite: pascucci2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "Average continuum channels of calibrated visibilities, natural weighting in clean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities",
+   "method": "uvmodelfit point-source or elliptical Gaussian fits to visibilities; uncertainties scaled by sqrt reduced chi2; non-detections refit with fixed offsets",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "Detection if flux >3 sigma near expected position"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust masses",
+   "method": "Same assumptions as Pascucci 2016, constant T=20 K, distance 190 pc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T = 20 K; distance 190 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit Fmm-M* scaling relation",
+   "method": "Linmix Bayesian linear regression in log-log plane including upper limits, with and without outliers",
+   "software": [
+    "Linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Linear relation in log-log plane with Gaussian scatter"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model SED of CHXR30A with circumsecondary disk",
+   "method": "RADMC-3D SED model; two stars 80 AU apart; secondary disk truncated at ~30 AU; disk-to-star mass ratio set to match mm upper limit",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "Secondary mass 0.28 Msun from Ks contrast 0.85"
+   ],
+   "assumptions": [
+    "Dust: 25% carbon, 75% silicate amorphous grains"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detection rate of Hot sample",
+   "value": "94% (51/54)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the detection rate for the *Hot* Sample is now 94% (51/54)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fmm-M* slope",
+   "value": "1.89",
+   "uncertainty": "0.24",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\log(F_{mm}/{\\rm mJy})=1.89 (\\pm0.24)\\times \\log(M_\\star/M_\\odot)+1.57(\\pm 0.14)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fmm-M* intercept",
+   "value": "1.57",
+   "uncertainty": "0.14",
+   "units": "log mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\log(F_{mm}/{\\rm mJy})=1.89 (\\pm0.24)\\times \\log(M_\\star/M_\\odot)+1.57(\\pm 0.14)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope excluding outliers",
+   "value": "2.07",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\log(F_{mm}/{\\rm mJy})=2.07 (\\pm0.21)\\times \\log(M_\\star/M_\\odot)+1.81(\\pm 0.13)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept excluding outliers",
+   "value": "1.81",
+   "uncertainty": "0.13",
+   "units": "log mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\log(F_{mm}/{\\rm mJy})=2.07 (\\pm0.21)\\times \\log(M_\\star/M_\\odot)+1.81(\\pm 0.13)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian scatter of residuals",
+   "value": "mean 0.12, sigma 0.26",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "a Gaussian fit with a mean value of 0.12 and 1$\\sigma$ spread of 0.26"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limits of non-detections",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Non-detections at mm wavelengths",
+     "quote": "The dust mass upper limits are only $\\sim$0.2 $M_\\ensuremath{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "T24 flux",
+   "value": "6.57",
+   "uncertainty": "0.25",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J11071206-7632232 | T24 |  | M0 | -0.23 | 4.23$\\pm$0.81 | 6.57$\\pm$0.25"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Dust opacity and gas-to-dust ratio values used for dust masses (deferred to Pascucci 2016)",
+  "Clean mask, threshold and image size/cell size",
+  "Line-free channel selection for continuum",
+  "Linmix priors and settings",
+  "How the random 7% of Cool-sample upper limits was drawn",
+  "RADMC-3D disk and stellar parameters (inner radius, scale height, grain sizes)",
+  "Cycle 3 data reduction details beyond NRAO scripts",
+  "Detail of the 12CO imaging"
+ ],
+ "missing_for_reproduction": [
+  "Dust opacity and gas-to-dust values (in Pascucci 2016)",
+  "Clean parameters",
+  "RADMC-3D inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple measurements and public data, but dust-mass assumptions and several settings are deferred to earlier work.",
+ "rediscovery_reason": "Public data, a simple uvmodelfit recipe, and numeric results (fluxes, scaling relation).",
+ "source_card": "cards/2018ApJ...863...61L/sonnet/card.md"
+}

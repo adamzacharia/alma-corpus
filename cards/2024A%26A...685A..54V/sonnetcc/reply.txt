@@ -1,0 +1,368 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present SPHERE/IRDIS H-band data for a sample of 23 stars in the Orion star-forming region observed within the DESTINYS (Disk Evolution Study Through Imaging of Nearby Young Stars) program."},
+{"loc": "abstract", "quote": "We furthermore used a combination of new and archival ALMA mm-continuum photometry to characterize the dust masses present in the circumstellar disks."}
+],
+"fields": ["protoplanetary_disks", "star_formation"],
+"question": {
+"value": "Examine planet-forming disks in scattered light in the high-mass star-forming region Orion to study the impact of the environment on disk evolution (ALMA provides 1.3 mm continuum fluxes and one disk geometry)",
+"evidence": [
+{"loc": "abstract", "quote": "We seek to examine planet-forming disks, in scattered light, within the high-mass star-forming region of Orion in order to study the impact of the environment in a higher-mass star-forming region on disk evolution."}
+]
+},
+"targets": [
+{"name": "Orion SPHERE sample (23 stars)", "details": [
+{"loc": "3 Sample and stellar properties", "quote": "Based on $Gaia$ DR3, their distances cover most of the Orion depth, spanning the range from 320 pc (V351 Ori) to 415 pc (TX Ori.)"}
+], "coordinates": "not stated", "redshift_or_distance": "320 pc (V351 Ori) to 415 pc (TX Ori)", "distance_source": "Gaia DR3"},
+{"name": "V351 Ori", "details": [
+{"loc": "Footnote 6", "quote": "This value is based on the distance of 323.8 pc that we adopt for this source."}
+], "coordinates": "not stated", "redshift_or_distance": "323.8 pc", "distance_source": "adopted by the authors (Gaia DR3 distances stated for the sample)"},
+{"name": "RY Ori", "details": [
+{"loc": "4.1.3 Possible substellar companion of RY Ori", "quote": "It is located at a projected separation of 0.39 mas, corresponding to 137 au at a distance of 350.5 pc."}
+], "coordinates": "not stated", "redshift_or_distance": "350.5 pc", "distance_source": "not stated"}
+],
+"alma_project_codes": [
+{"code": "2021.1.01705.S", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Millimeter photometry toward the sources in our sample were obtained with ALMA in the Cycle 8 program 2021.1.01705.S (PI: C. Ginski.)"},
+{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.1.01705.S."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "The Band 6 observations were carried out between June and September 2022 with a median precipitable water vapor level of 0.5 mm."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "continuum used, mean frequency 241 GHz (1.24 mm); one spectral window centered on CO J=2-1 (line not analysed here)", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "though here we concentrate only on the continuum data at a mean frequency of 241 GHz (1.24 mm.)"},
+{"loc": "2.2 ALMA Band 6 observations", "quote": "The correlator was configured with a spectral window centered on the $J=2-1$ transition of CO"}
+]},
+{"field": "baselines", "value": "~40-300 m", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Baseline lengths varied from $\\sim 40-300$ m, corresponding to a beam size $\\sim 0.35\\ensuremath{''} - 0.4\\ensuremath{''}$."}
+]},
+{"field": "angular_resolution", "value": "beam size ~0.35'' - 0.4''", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Baseline lengths varied from $\\sim 40-300$ m, corresponding to a beam size $\\sim 0.35\\ensuremath{''} - 0.4\\ensuremath{''}$."}
+]},
+{"field": "sensitivity", "value": "median 70 uJy/beam", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "the median sensitivity was $70\\,\\mu$Jy/beam."}
+]},
+{"field": "time_on_source", "value": "90 to 300 seconds per source (snapshot program)", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "The integration times on each source for this snapshot program ranged from 90 to 300 seconds"}
+]},
+{"field": "observing_dates", "value": "June to September 2022", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "The Band 6 observations were carried out between June and September 2022 with a median precipitable water vapor level of 0.5 mm."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Cycle 8 program 2021.1.01705.S (PI: C. Ginski), new observations; some 1.3 mm fluxes archival/literature", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Millimeter photometry toward the sources in our sample were obtained with ALMA in the Cycle 8 program 2021.1.01705.S (PI: C. Ginski.)"},
+{"loc": "abstract", "quote": "We furthermore used a combination of new and archival ALMA mm-continuum photometry to characterize the dust masses present in the circumstellar disks."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=2-1 (spectral window configured; line data not analysed in this paper)", "rest_frequency": "not stated", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "The correlator was configured with a spectral window centered on the $J=2-1$ transition of CO"}
+]}
+],
+"other_facilities": [
+{"name": "VLT/SPHERE (IRDIS)", "provided": {"value": "H-band polarimetric differential imaging (scattered light) and total intensity images of 23 Orion stars", "evidence": [
+{"loc": "abstract", "quote": "We present SPHERE/IRDIS H-band data for a sample of 23 stars in the Orion star-forming region observed within the DESTINYS (Disk Evolution Study Through Imaging of Nearby Young Stars) program."}
+]}},
+{"name": "VLT/X-shooter", "provided": {"value": "spectra used to determine stellar temperature and luminosity", "evidence": [
+{"loc": "abstract", "quote": "We used ancillary X-shooter spectroscopic observations to characterize the central stars in the systems."}
+]}},
+{"name": "Gaia DR3", "provided": {"value": "distances to the sample stars", "evidence": [
+{"loc": "3 Sample and stellar properties", "quote": "Based on $Gaia$ DR3, their distances cover most of the Orion depth, spanning the range from 320 pc (V351 Ori) to 415 pc (TX Ori.)"}
+]}},
+{"name": "2MASS", "provided": {"value": "H and K band photometry for companion masses and SED slopes", "evidence": [
+{"loc": "4.1.2 Description of the systems", "quote": "We used 2MASS H-band magnitudes (cite: 2003yCat.2246....0C) for the primary component"}
+]}},
+{"name": "WISE", "provided": {"value": "5 micron and 22 micron photometry for SED slopes", "evidence": [
+{"loc": "4.3 Disk brightness versus stellar and disk properties", "quote": "(WISE band W1 and W4)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "1.3 mm fluxes for several sources (Haro 5-38, HD 294268, RV Ori, TX Ori, V599 Ori, V606 Ori) taken from the literature", "evidence": [
+{"loc": "Table (photometry catalogs), Ref. 1.3mm column", "quote": "Ansdell et al. 2017"}
+]}, "citation": "Ansdell et al. 2017"},
+{"what": {"value": "1.3 mm flux for V1787 Ori taken from the literature", "evidence": [
+{"loc": "Table (photometry catalogs), Ref. 1.3mm column", "quote": "van Terwisga et al. 2022"}
+]}, "citation": "van Terwisga et al. 2022"},
+{"what": {"value": "Stellar parameters for Brun 252, V1650 Ori and V2149 Ori adopted from the literature", "evidence": [
+{"loc": "3.1 Stellar temperature and luminosity", "quote": "for Brun 252, V1650 Ori, and V2149 Ori we adopted the stellar parameters from (cite: 2021A&A...652A.133V)"}
+]}, "citation": "(cite: 2021A&A...652A.133V)"},
+{"what": {"value": "Stellar parameters for Brun 216, V599 Ori and V1012 Ori adopted from the literature", "evidence": [
+{"loc": "3.1 Stellar temperature and luminosity", "quote": "and for Brun 216 we adopted the stellar parameters from (cite: 2018A&A...620A.128V)"},
+{"loc": "3.1 Stellar temperature and luminosity", "quote": "For these two systems we therefore adopted the stellar parameters from (cite: 2018A&A...620A.128V)."}
+]}, "citation": "(cite: 2018A&A...620A.128V)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Siess et al. PMS evolution models used for stellar masses and ages", "evidence": [
+{"loc": "3.2 Stellar masses and ages", "quote": "The stellar mass and the stellar age were derived using (cite: 2000A&A...358..593S) PMS evolution models."}
+]},
+{"value": "DUSTY evolutionary tracks used for the RY Ori companion mass", "evidence": [
+{"loc": "4.1.3 Possible substellar companion of RY Ori", "quote": "we used in this case DUSTY evolutionary tracks ((cite: Chabrier2000)) to derive the mass of the object."}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "pipeline-reduced products used; fluxes measured on them", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Most sources were unresolved and fluxes were measured from the pipeline reduced data products using a $1''$ aperture."}
+]},
+{"field": "archive_products_used_as_is", "value": "pipeline reduced data products used for flux measurement", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Most sources were unresolved and fluxes were measured from the pipeline reduced data products using a $1''$ aperture."}
+]}
+],
+"imaging": [
+{"field": "final_beam", "value": "~0.35'' - 0.4''", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Baseline lengths varied from $\\sim 40-300$ m, corresponding to a beam size $\\sim 0.35\\ensuremath{''} - 0.4\\ensuremath{''}$."}
+]},
+{"field": "final_rms", "value": "median 70 uJy/beam", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "the median sensitivity was $70\\,\\mu$Jy/beam."}
+]}
+],
+"inherited": [
+{"what": {"value": "Disk ellipse-fitting procedure described in the companion Cha I paper", "evidence": [
+{"loc": "Appendix: Measuring inclination, PA, and radius", "quote": "The fitting procedure is described in detail in the companion paper to this study on the Cha I star-forming region (Ginski et al., submitted.)"}
+]}, "from_reference": "Ginski et al., submitted"},
+{"what": {"value": "Extinction estimate for stellar luminosity follows an earlier paper", "evidence": [
+{"loc": "3.1 Stellar temperature and luminosity", "quote": "by the method described in (cite: 2021A&A...652A.133V) (section 2.3)"}
+]}, "from_reference": "(cite: 2021A&A...652A.133V) section 2.3"},
+{"what": {"value": "Detailed V351 Ori modelling and ALMA CO line data deferred to other papers", "evidence": [
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "we refer to Ginski et al. (in prep.), in which we discuss the V351 Ori system in detail."},
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "Further ALMA CO emission line observations will also be presented by Stapper et al. (in prep..)"}
+]}, "from_reference": "Ginski et al. (in prep.); Stapper et al. (in prep.)"}
+],
+"unstated_but_needed": [
+"ALMA pipeline or CASA version and which pipeline release was applied to each execution block",
+"Exact continuum spectral window frequencies and bandwidth, and which sources used archival rather than new ALMA data",
+"Flux calibrator and absolute flux scale uncertainty for the 2021.1.01705.S data",
+"Imaging parameters of the pipeline products (weighting, robust, cell, image size, masking, primary beam correction) and the per-source rms",
+"Which sources got the custom 3-sigma aperture instead of the 1 arcsec aperture, and the aperture centres",
+"FrankFitter settings (hyperparameters, radial grid, uv data used, weights) behind the V351 Ori inclination and PA",
+"Whether the ALMA data are public and when the proprietary period ended",
+"Source of the dust opacity kappa = 2.3 cm^2 g^-1 and basis for T_dust = 20 K",
+"Which flux (and distance) was used for each source in the Kendall tau test with delta_pol"
+],
+"analysis_steps": [
+{"order": 1, "goal": "measure ALMA 1.3 mm continuum fluxes",
+"method": {"value": "aperture photometry on pipeline-reduced continuum products: 1 arcsec aperture for unresolved sources, custom aperture above 3 times the rms for larger sources", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "Most sources were unresolved and fluxes were measured from the pipeline reduced data products using a $1''$ aperture."},
+{"loc": "2.2 ALMA Band 6 observations", "quote": "For larger sources, we used a custom aperture that encompassed all the emission above three times the rms noise level."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "1'' aperture; custom aperture at 3x rms for extended sources", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "For larger sources, we used a custom aperture that encompassed all the emission above three times the rms noise level."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "get V351 Ori inclination and PA from ALMA visibilities",
+"method": {"value": "fit an axisymmetric model to the visibilities with FrankFitter, because the scattered light structure is complex and the disk is resolved in ALMA continuum", "evidence": [
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "by fitting an axisymmetric model to the visibileties using `FrankFitter`(cite: 2020MNRAS.495.3209J)"}
+]},
+"software": ["FrankFitter"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "reduce SPHERE polarimetric data to Q_phi images",
+"method": {"value": "IRDAP reduction with PDI, default settings", "evidence": [
+{"loc": "2.1 SPHERE polarimetric imaging", "quote": "(IRDAP, (cite: vanHolstein2020)) with default settings."}
+]},
+"software": ["IRDAP"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 4, "goal": "measure disk geometry and radius from Q_phi images",
+"method": {"value": "extract disk edge at 3 sigma along radial profiles, then least-squares ellipse fit", "evidence": [
+{"loc": "Appendix: Measuring inclination, PA, and radius", "quote": "we determined the point at which the disk flux drops below $3\\sigma$ of the noise background of the image and used this as the edge position."},
+{"loc": "Appendix: Measuring inclination, PA, and radius", "quote": "we used the least squares algorithm developed by (cite: oy1998NUMERICALLYSD) to obtain the ellipse solution that best fit the data points."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "sliding aperture of 4 pixels diameter; uncertainties from repeating the fit 10^5 times with data points drawn from normal distributions", "evidence": [
+{"loc": "Appendix: Measuring inclination, PA, and radius", "quote": "we repeated this process $10^5$ times, each time drawing the data points individually from a normal distribution centered on their original position"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "least-squares ellipse fit with Monte Carlo resampling of edge points", "evidence": [
+{"loc": "Appendix: Measuring inclination, PA, and radius", "quote": "we repeated this process $10^5$ times, each time drawing the data points individually from a normal distribution centered on their original position"}
+]},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "estimate dust and total disk mass of V351 Ori and V1012 Ori",
+"method": {"value": "optically thin isothermal dust mass from the 1.3 mm flux, then gas-to-dust ratio 100, to compare M_disk/M_* with gravitational instability threshold", "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "We therefore estimated the dust disk mass, assuming that there are optically thin conditions at $\\lambda=1.3$ mm ($\\nu=230$ Ghz) and that the dust is isothermal"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "T_dust = 20 K; kappa = 2.3 cm^2 g^-1", "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "We used the dust temperature, $T_{\\rm d}=20K$, and $\\kappa_{\\nu}=2.3\\,\\mbox{cm}^{2}\\,\\mbox{g}^{-1}$ for the absorption coefficient."}
+]}
+],
+"assumptions": [
+{"value": "gas-to-dust ratio of 100", "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "To obtain the total disk mass we then assumed a gas-to-dust ratio of 100."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "described as a crude approximation that ignores temperature effects", "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "Not taking the temperature effects into account, this crude approximation shows that gravitational instability could be a plausible explanation."}
+]}},
+{"order": 6, "goal": "test correlation of scattered light contrast with 1.3 mm flux, age and mass",
+"method": {"value": "Kendall tau coefficient between delta_pol and F_1.3mm, age and stellar mass", "evidence": [
+{"loc": "4.3 Disk brightness versus stellar and disk properties", "quote": "We find a correlation between the millimeter flux and $\\delta_{\\rm pol}$, $\\tau_{K}=0.23$, with a probability of $\\sim20\\%$ that the two quantities are independent of each other."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "FrankFitter", "version": "not stated", "used_for": {"value": "axisymmetric model fit to ALMA visibilities of V351 Ori", "evidence": [
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "by fitting an axisymmetric model to the visibileties using `FrankFitter`(cite: 2020MNRAS.495.3209J)"}
+]}},
+{"name": "IRDAP", "version": "not stated", "used_for": {"value": "SPHERE/IRDIS polarimetric data reduction", "evidence": [
+{"loc": "2.1 SPHERE polarimetric imaging", "quote": "(IRDAP, (cite: vanHolstein2020)) with default settings."}
+]}},
+{"name": "PyHammer", "version": "not stated", "used_for": {"value": "automatic first-guess spectral classification of X-shooter spectra", "evidence": [
+{"loc": "3.1 Stellar temperature and luminosity", "quote": "The first guess of spectral classes was done with the PyHammer code, a tool to automatically classify stars."}
+]}},
+{"name": "TRILEGAL", "version": "not stated", "used_for": {"value": "stellar density to estimate the field-star probability of the V599 Ori companion", "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "TRILEGAL estimates a stellar density of 1303 stars per deg$^2$ around V599 Ori with a limiting magnitude of 14.19 mag in the H band."}
+]}},
+{"name": "X-shooter pipeline", "version": "build 3.3.5", "used_for": {"value": "reduction of X-shooter spectra", "evidence": [
+{"loc": "2.3 X-shooter spectroscopy", "quote": "were reduced with the X-shooter pipeline build 3.3.5 (cite: Modigliani2010)."}
+]}},
+{"name": "ALMA pipeline (unnamed version)", "version": "not stated", "used_for": {"value": "produced the reduced continuum products from which fluxes were measured", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "fluxes were measured from the pipeline reduced data products using a $1''$ aperture."}
+]}}
+],
+"results_numeric": [
+{"quantity": "ALMA 1.3 mm flux, V351 Ori", "value": "92.59", "uncertainty": "0.26", "units": "mJy", "from_step": 1, "evidence": [
+{"loc": "Table (photometry catalogs)", "quote": "$92.59\\pm{0.26}$"}
+]},
+{"quantity": "ALMA 1.3 mm flux, HD 294260", "value": "41.51", "uncertainty": "0.12", "units": "mJy", "from_step": 1, "evidence": [
+{"loc": "Table (photometry catalogs)", "quote": "$41.51\\pm{0.12}$"}
+]},
+{"quantity": "ALMA 1.3 mm flux, V1012 Ori", "value": "26.48", "uncertainty": "0.10", "units": "mJy", "from_step": 1, "evidence": [
+{"loc": "Table (photometry catalogs)", "quote": "$26.48\\pm{0.10}$"}
+]},
+{"quantity": "V351 Ori inclination from ALMA (FrankFitter)", "value": "63.2", "uncertainty": "not stated", "units": "deg", "from_step": 2, "evidence": [
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "We obtain the inclination 63.2$^\\circ{}$ and PA 325.8$^\\circ{}$."}
+]},
+{"quantity": "V351 Ori position angle from ALMA (FrankFitter), as given in text", "value": "325.8", "uncertainty": "not stated", "units": "deg", "from_step": 2, "evidence": [
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "We obtain the inclination 63.2$^\\circ{}$ and PA 325.8$^\\circ{}$."}
+]},
+{"quantity": "V351 Ori scattered-light outer radius", "value": "1.12 arcsec (361 au)", "uncertainty": "+/-20 au", "units": "arcsec, au", "from_step": 4, "evidence": [
+{"loc": "4.2.1 Bright disk of V351 Ori", "quote": "with an outer radius of 1.12$''$ (361 au) along the major axis."}
+]},
+{"quantity": "M_disk/M_* of V351 Ori", "value": "0.039", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "The $M_{\\rm disk}/M_*$ then comes out as 0.039 and 0.024 for V351 Ori and V1012 Ori, respectively."}
+]},
+{"quantity": "M_disk/M_* of V1012 Ori", "value": "0.024", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "The $M_{\\rm disk}/M_*$ then comes out as 0.039 and 0.024 for V351 Ori and V1012 Ori, respectively."}
+]},
+{"quantity": "Kendall tau, delta_pol vs 1.3 mm flux", "value": "0.23", "uncertainty": "~20% probability of independence", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "4.3 Disk brightness versus stellar and disk properties", "quote": "We find a correlation between the millimeter flux and $\\delta_{\\rm pol}$, $\\tau_{K}=0.23$, with a probability of $\\sim20\\%$ that the two quantities are independent of each other."}
+]},
+{"quantity": "Kendall tau, delta_pol vs age", "value": "0.044", "uncertainty": "~77% probability of independence", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "4.3 Disk brightness versus stellar and disk properties", "quote": "We find for age $\\tau_{K}=0.044$ with a probability of $\\sim77\\%$ that the $\\delta_{\\rm pol}$ and age are independent of each other"}
+]},
+{"quantity": "Kendall tau, delta_pol vs stellar mass", "value": "0.068", "uncertainty": "~65% probability of independence", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "4.3 Disk brightness versus stellar and disk properties", "quote": "for mass $\\tau_{K}=0.068$ with a probability of $\\sim65\\%$ that that the $\\delta_{\\rm pol}$ and mass are independent of each other."}
+]},
+{"quantity": "Probability that V599 Ori companion is a field star", "value": "1.3e-3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 0, "evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "we find a probability of $1.3\\times10^{-3}$ that the star by chance could be a field star."}
+]},
+{"quantity": "Disks detected in scattered light", "value": "10 of 23", "uncertainty": "not stated", "units": "systems", "from_step": 4, "evidence": [
+{"loc": "abstract", "quote": "Within our sample, we detect extended circumstellar disks in ten of 23 systems."}
+]}
+],
+"findings_qualitative": [
+{"value": "Three disks (V351 Ori, V599 Ori, V1012 Ori) are exceptionally extended and show scattered light asymmetries", "evidence": [
+{"loc": "abstract", "quote": "Of these, three are exceptionally extended (V351 Ori, V599 Ori, and V1012 Ori) and show scattered light asymmetries"}
+]},
+{"value": "Disk detection is anticorrelated with multiplicity", "evidence": [
+{"loc": "abstract", "quote": "We find a strong anticorrelation between disk detection and multiplicity, with only two of our ten disk detections located in stellar multiple systems."}
+]}
+],
+"claims": [
+{"hypothesis": "Does scattered light contrast correlate with millimeter flux in the Orion sample?",
+"experiment": "Kendall tau test between delta_pol and 1.3 mm flux for detected disks",
+"result": "tau_K = 0.23, ~20% probability of independence",
+"finding": "Correlation exists and arises from the absence of extended, self-shadowed disks in the Orion sample",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "This trend is not captured by previous studies of a more diversified sample and is due to the absence of extended, self-shadowed disks in our Orion sample."}
+]},
+{"hypothesis": "Does stellar multiplicity affect disk detection?",
+"experiment": "SPHERE total-intensity companion search and Q_phi disk detection in 23 systems",
+"result": "9 systems with companions, 10 with disks, only two disks among the multiple systems",
+"finding": "Strong anticorrelation between disk detection and multiplicity",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "We find a strong anticorrelation between disk detection and multiplicity, with only two of our ten disk detections located in stellar multiple systems."}
+]},
+{"hypothesis": "Does the external FUV field set the scattered light disk radius?",
+"experiment": "FUV field from three O stars compared with measured scattered light radii",
+"result": "no direct correlation, but no extended disks above ~300 G0",
+"finding": "No clear environmental effect on disk radii from FUV in this sample",
+"support": "partially",
+"evidence": [
+{"loc": "abstract", "quote": "While we do not find a direct correlation, we notice that no extended disks are detected above an FUV field strength of $\\sim 300$G$_0$."}
+]},
+{"hypothesis": "Could gravitational instability explain the asymmetries of V351 Ori and V1012 Ori?",
+"experiment": "dust mass from ALMA 1.3 mm flux (optically thin, T=20 K, kappa=2.3, gas-to-dust 100) compared with M_disk/M_* above ~1e-2",
+"result": "M_disk/M_* = 0.039 (V351 Ori) and 0.024 (V1012 Ori)",
+"finding": "Gravitational instability is plausible, based on a crude estimate",
+"support": "partially",
+"evidence": [
+{"loc": "5.1 Disk asymmetries", "quote": "Not taking the temperature effects into account, this crude approximation shows that gravitational instability could be a plausible explanation."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Disks without previous ALMA data were selected for additional ALMA observations to obtain a flux measurement", "evidence": [
+{"loc": "3 Sample and stellar properties", "quote": "The disks in the sample that lacked previous ALMA data were also selected for additional ALMA observations with the aim of obtaining a flux measurement."}
+]}
+],
+"alternatives_considered_or_rejected": [],
+"limitations_admitted": [
+{"value": "ALMA data are only used for continuum fluxes in this paper; detailed analysis deferred", "evidence": [
+{"loc": "2.2 ALMA Band 6 observations", "quote": "A more detailed analysis will be performed in future papers."}
+]},
+{"value": "Sample is far from complete, to be regarded as a pilot study", "evidence": [
+{"loc": "3 Sample and stellar properties", "quote": "We note that our sample is in all likelihood[^4] far from complete and should be regarded in a sense as a pilot study of Orion"}
+]}
+],
+"referee_caveats_inferred": [
+"Kendall tau = 0.23 with ~20% chance of independence is a weak statistical case, from about 10 detected disks",
+"V351 Ori PA from FrankFitter is 325.8 deg in the text but 320.16 deg in the disk table",
+"Dust mass uses fixed T_dust = 20 K and kappa for all sources, ignoring luminosity-dependent temperature",
+"Some 1.3 mm fluxes come from other ALMA programs with different resolution and sensitivity, mixed with new data",
+"Upper limits and non-detections are not included in the correlation test"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"ALMA reduction and imaging settings",
+"Per-source continuum rms and the aperture choice per source",
+"FrankFitter configuration",
+"Statement on public availability of the ALMA data"
+],
+"estimated_data_volume_inferred": "small: Cycle 8 snapshot Band 6 continuum of ~15 sources, a few GB of calibrated measurement sets at most",
+"score_inferred": 2,
+"score_reason": "Project code and the key flux numbers are given, but processing, imaging and FrankFitter settings are not stated and the ALMA part is secondary to the SPHERE results.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA plays a minor role, data public status is not stated, and the recipe for the ALMA fluxes and FrankFitter fit is incomplete.",
+"methods_papers": [
+{"citation": "van Holstein et al. 2020 (IRDAP)", "why": "SPHERE polarimetric reduction"},
+{"citation": "(cite: 2020MNRAS.495.3209J)", "why": "FrankFitter visibility fitting"}
+],
+"companion_papers": [
+{"citation": "Ginski et al. (submitted) Cha I; Garufi et al. (submitted) Taurus", "why": "companion DESTINYS papers for other regions, including the ellipse-fitting procedure"},
+{"citation": "Ginski et al. (in prep.); Stapper et al. (in prep.)", "why": "detailed V351 Ori study and ALMA CO line data"}
+],
+"related_projects_or_surveys": ["DESTINYS", "ESO programme 0104.C-0195(A)"]
+}

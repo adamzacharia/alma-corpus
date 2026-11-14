@@ -1,0 +1,453 @@
+w 10 keV (cite: 2014ApJ...786..104U)."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Do faint lensed millimeter sources follow the star-forming main sequence?",
+      "experiment": "Compare SED-derived SFRs and stellar masses with the literature main sequence.",
+      "result": "82/162 [51%] main sequence; 69/162 [43%] starbursts; 11/162 [7%] below.",
+      "finding": "Most sources lie on the main sequence, with a smaller starburst fraction.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "SFR versus stellar mass",
+          "quote": "82/162 \\[51%\\] sources are in the ranges four times above or below the star-forming main sequence"
+        },
+        {
+          "loc": "SFR versus stellar mass",
+          "quote": "some of them show intense starburst activities (69/162 \\[43%\\]) and the others (11/162 \\[7%\\]) are below the main sequence."
+        },
+        {
+          "loc": "SFR versus stellar mass",
+          "quote": "For comparison, we plot the star-forming “main sequence” given by (cite: 2015A&A...575A..74S)."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Does ALCS contain extremely dust-obscured galaxies?",
+      "experiment": "Derive IRX and attenuation slopes from UV-to-millimeter SED fits.",
+      "result": "A2744-ID7 IRX=6.3±0.8; R0600-ID111 IRX=5.6±0.6.",
+      "finding": "Two extreme-IRX galaxies have steeper attenuation curves that may increase UV absorption.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "IRX versus stellar mass",
+          "quote": "A2744-ID7 \\[$\\mathrm{IRX}=6.3\\pm0.8$\\] and R0600-ID111 \\[$\\mathrm{IRX}=5.6\\pm0.6$\\]"
+        },
+        {
+          "loc": "Summary",
+          "quote": "These galaxies have steeper attenuation slopes than the average, which may result in more UV absorption and hence higher IRX."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Does lensing extend the dust-property range sampled by millimeter surveys?",
+      "experiment": "Compare characteristic dust temperatures and magnification-corrected dust masses with ALESS and AS2UDS.",
+      "result": "Wider dust-temperature range and larger scatter toward lower dust masses.",
+      "finding": "ALCS probes dust properties beyond conventional SMG samples.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Summary",
+          "quote": "We confirm that the ALCS sample exhibits a wider range in dust temperatures than the conventional SMG samples (ALESS, and AS2UDS) in the same redshift range."
+        },
+        {
+          "loc": "Summary",
+          "quote": "We also confirm that the ALCS sample shows a large scatter in a lower dust mass range than the conventional SMG samples after lensing correction."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Are SED-selected, X-ray-undetected AGNs heavily obscured?",
+      "experiment": "Select AGN components using BIC and compare bolometric luminosities with obscuration-dependent Chandra upperbounds.",
+      "result": "Six candidates; most require NHLOS>10^24.5 cm−2 under the adopted bolometric correction.",
+      "finding": "Heavily obscured or Compton-thick AGNs are suggested, with X-ray weakness an alternative.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Overall properties of ALCS sample",
+          "quote": "we identify six AGN candidates within the tier-1 sample (excluding ALCS-XAGNs)"
+        },
+        {
+          "loc": "Comparison with X-ray luminosity upperbounds",
+          "quote": "the line-of-sight hydrogen column density ($N_{\\mathrm{H}}^{\\mathrm{LOS}}$) is over $10^{24.5}\\,\\mathrm{cm}^{-2}$."
+        },
+        {
+          "loc": "Comparison with X-ray luminosity upperbounds",
+          "quote": "If this is applicable in our sample, the ALCS-nonXAGNs can be consistent with their X-ray luminosity upperbounds even in the less obscured cases"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Do X-ray surveys miss a substantial AGN contribution at z=2–3?",
+      "experiment": "Apply tier-1 AGN/infrared luminosity ratios to the U/LIRG infrared luminosity density and compare with X-ray surveys.",
+      "result": "Possible excess of AGN luminosity density at z=2–3.",
+      "finding": "A significant obscured AGN fraction may be missed by surveys below 10 keV.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Cosmological evolution of AGN luminosity density",
+          "quote": "We confirm a possible excess at $z=2$–3."
+        },
+        {
+          "loc": "Cosmological evolution of AGN luminosity density",
+          "quote": "This might show that a significant fraction of AGNs in this epoch are heavily obscured and might be missed in previous X-ray surveys."
+        },
+        {
+          "loc": "Cosmological evolution of AGN luminosity density",
+          "quote": "the AGN detection by SED analysis should have large uncertainties, and the results should highly depend on the model assumptions."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Use lensing to detect faint millimeter galaxies in fields covered by major HST treasury programs",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "in order to detect faint sources by utilizing the lensing effect."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "The ALMA observations were designed to target areas which were covered by the major HST treasury programs"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Energy-balanced galaxy/AGN SED modeling; extend dust-temperature coverage to avoid biased AGN contributions or infrared luminosities",
+      "evidence": [
+        {
+          "loc": "SED modeling with `CIGALE`",
+          "quote": "`CIGALE` assumes energy balance between UV/optical absorption and infrared re-emission, which enables us to self-consistently model the SED of each galaxy."
+        },
+        {
+          "loc": "Dust emission from host galaxy",
+          "quote": "This limitation in the higher temperature regimes may result in an overestimation of AGN contribution"
+        },
+        {
+          "loc": "Dust emission from host galaxy",
+          "quote": "or an underestimation of infrared luminosity from star-formation activity."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "SED fit quality χ²/dof<5; require ΔBIC>10 for an AGN component",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "We successfully reproduce the SEDs of the ALCS tier-1/2/3/4/5/6 samples with a fit quality of $\\chi^2/\\mathrm{dof}<5$."
+        },
+        {
+          "loc": "AGN emission",
+          "quote": "If the addition of an AGN component reduces BIC by more than 10"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Exclude tier-7/8 from SED analysis because photometry is insufficient",
+      "evidence": [
+        {
+          "loc": "SED modeling with `CIGALE`",
+          "quote": "The tier-7/8 samples are not analyzed in this paper because it is challenging to derive the physical properties from their limited photometric data."
+        }
+      ]
+    },
+    {
+      "value": "Exclude AGN components for tier-2/3/4/5/6 because limited photometry cannot identify them reliably",
+      "evidence": [
+        {
+          "loc": "AGN emission",
+          "quote": "For the tier-2/3/4/5/6 samples, the AGN component is always excluded, because it is challenging to identify the presence of an AGN from the limited photometry of those samples."
+        }
+      ]
+    },
+    {
+      "value": "Reject the BIC-selected AGN interpretation of R0032-ID57",
+      "evidence": [
+        {
+          "loc": "Overall properties of ALCS sample",
+          "quote": "However, the other multiple images (R0032-ID32/53/55/58) are not classified as AGNs, and no obvious signs of AGN are found in the SED of R0032-ID57."
+        },
+        {
+          "loc": "Overall properties of ALCS sample",
+          "quote": "Therefore, we do not consider R0032-ID57 as a host of an AGN."
+        }
+      ]
+    },
+    {
+      "value": "Use a simpler absorbed power-law X-ray model as an alternative",
+      "evidence": [
+        {
+          "loc": "Detailed Description of X-ray Analysis and X-ray Luminosity Upperbounds",
+          "quote": "X-ray spectra of distant AGNs are often analyzed with simpler models, such as an absorbed power law model. Accordingly, we also estimate the X-ray luminosity upperbounds with a simple model"
+        }
+      ]
+    },
+    {
+      "value": "Omit photoionized plasma, accretion-disk reflection, and star-formation X-ray emission from the adopted model",
+      "evidence": [
+        {
+          "loc": "Detailed Description of X-ray Analysis and X-ray Luminosity Upperbounds",
+          "quote": "Since the emission from photoionized plasma is not dominant above rest-frame 2 keV, we exclude this component from our model."
+        },
+        {
+          "loc": "Detailed Description of X-ray Analysis and X-ray Luminosity Upperbounds",
+          "quote": "We disregard the reflection component from the accretion disk, whose interpretation is under debate"
+        },
+        {
+          "loc": "Detailed Description of X-ray Analysis and X-ray Luminosity Upperbounds",
+          "quote": "we do not consider the X-ray emission from star-formation activity, which is much fainter than the AGN component above rest-frame 2 keV."
+        }
+      ]
+    },
+    {
+      "value": "X-ray weakness can allow less obscured interpretations of the AGN candidates",
+      "evidence": [
+        {
+          "loc": "Comparison with X-ray luminosity upperbounds",
+          "quote": "some AGNs in local ULIRGs show “X-ray weak” features"
+        },
+        {
+          "loc": "Comparison with X-ray luminosity upperbounds",
+          "quote": "If this is applicable in our sample, the ALCS-nonXAGNs can be consistent with their X-ray luminosity upperbounds even in the less obscured cases"
+        }
+      ]
+    },
+    {
+      "value": "Test Charlot–Fall attenuation in CIGALE; stellar masses then agree with MAGPHYS",
+      "evidence": [
+        {
+          "loc": "Comparison between `CIGALE` and `MAGPHYS`",
+          "quote": "In `CIGALE`, we can also choose the (cite: 2000ApJ...539..718C) model for the dust attenuation model."
+        },
+        {
+          "loc": "Comparison between `CIGALE` and `MAGPHYS`",
+          "quote": "In this case, we confirm good agreement between stellar mass estimated with `CIGALE` and that with `MAGPHYS`"
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Lens-model and magnification uncertainties are ignored",
+      "evidence": [
+        {
+          "loc": "Data quality, sample selection, and magnification",
+          "quote": "Here we note that the uncertainties in the lens models and magnification factors are not considered in this paper."
+        }
+      ]
+    },
+    {
+      "value": "Photometric-redshift uncertainties are ignored in the main analysis",
+      "evidence": [
+        {
+          "loc": "SED modeling with `CIGALE`",
+          "quote": "The uncertainties of the photometric redshifts are not considered in the main part of this paper."
+        }
+      ]
+    },
+    {
+      "value": "Model uncertainties make reported physical-property errors underestimated",
+      "evidence": [
+        {
+          "loc": "Comparison between `CIGALE` and `MAGPHYS`",
+          "quote": "This indicates that the reported errors in the physical properties are fairly underestimated, considering the uncertainties in the SED models."
+        }
+      ]
+    },
+    {
+      "value": "Herschel-selected comparison subsamples may be biased",
+      "evidence": [
+        {
+          "loc": "Dust temperature",
+          "quote": "One should be aware that these selections can cause biases and the subsamples might not reflect the averaged properties of the whole samples."
+        }
+      ]
+    },
+    {
+      "value": "M0416-ID156 high temperature is uncertain because its far-infrared SED is poorly fitted",
+      "evidence": [
+        {
+          "loc": "Dust temperature",
+          "quote": "the far-infrared SED of M0416-ID156 is not well-fitted by the EThemis model."
+        },
+        {
+          "loc": "Dust temperature",
+          "quote": "This may be attributed to the oversimplification of the model, and can cause large uncertainty in dust temperature and dust luminosity."
+        }
+      ]
+    },
+    {
+      "value": "A2537-ID24/66 high temperatures may reflect residual blending",
+      "evidence": [
+        {
+          "loc": "Dust temperature",
+          "quote": "Nevertheless, there remains a possibility that their high dust temperatures are actually caused by the remaining blending effect of low-redshift sources."
+        }
+      ]
+    },
+    {
+      "value": "Best-fit SEDs show substantial ALMA or Herschel discrepancies for some sources",
+      "evidence": [
+        {
+          "loc": "Detailed description of SED modeling",
+          "quote": "the best-fit SEDs of A383-ID50 and M0416-ID156 look inconsistent with the observed ALMA fluxes"
+        },
+        {
+          "loc": "Detailed description of SED modeling",
+          "quote": "the best-fit SED of ACT0102-ID50 looks inconsistent with the photometric data of Herschel"
+        }
+      ]
+    },
+    {
+      "value": "AGN identifications and luminosity-density conclusions depend strongly on SED-model assumptions",
+      "evidence": [
+        {
+          "loc": "Cosmological evolution of AGN luminosity density",
+          "quote": "the AGN detection by SED analysis should have large uncertainties, and the results should highly depend on the model assumptions."
+        }
+      ]
+    },
+    {
+      "value": "No Chandra upperbounds for RXC0032/RXC0600; BCGs excluded because cluster diffuse emission complicates extraction",
+      "evidence": [
+        {
+          "loc": "Chandra observations",
+          "quote": "Since there are no Chandra observations in RXC0032 and RXC0600, the X-ray luminosity upperbounds in those fields are not given."
+        },
+        {
+          "loc": "Chandra observations",
+          "quote": "We excluded the brightest cluster galaxies (BCGs) from the catalog because of the difficulty in separating the X-ray point sources from the diffuse X-ray emission of the galaxy clusters."
+        }
+      ]
+    },
+    {
+      "value": "Bolometric-to-X-ray conversion has large scatter and possible Eddington-ratio dependence",
+      "evidence": [
+        {
+          "loc": "Comparison with X-ray luminosity upperbounds",
+          "quote": "this relationship has a large scatter ($L_{\\mathrm{bol}}/L_{\\mathrm{2\\text{--}10\\,keV}}=6\\text{--}400$) and shows potential strong dependence on the Eddington ratio"
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Treat multiply imaged systems as correlated when evaluating population fractions and uncertainties.",
+    "The 51% main-sequence fraction is a narrow majority, and the classification allows a factor of four around the reference sequence.",
+    "The dust-mass discussion prints log M*/M⊙=8–9 while describing a dust-mass-selected sample; do not silently reinterpret that quantity.",
+    "The BIC parameter count is described as degrees of freedom; exact implementation is needed to reproduce candidate selection.",
+    "The basic-grid SECONDARY AGN restriction and the prose tier-based restriction require an explicit source-by-source configuration.",
+    "Do not treat the possible luminosity-density excess as a measured significance or a numeric density value.",
+    "The observations section prints 2013.1.00999S, while the acknowledgments print 2013.1.00999.S."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "The cited source catalogs, photometric measurements/errors/upper limits, redshifts, magnifications, and previous ALCS-XAGN SED results.",
+    "The referenced literature comparison tables and infrared luminosity-function parameters.",
+    "Executable EThemis model files, CIGALE configuration, and the exact mapping of grids and AGN restrictions to individual sources.",
+    "Source-extraction configuration and per-field ALMA calibration/imaging recipes.",
+    "Per-source X-ray response products and numerical luminosity upperbounds.",
+    "Numerical AGN/infrared ratios, luminosity densities, and uncertainty calculations.",
+    "A stated data-access/public-release declaration and a stated code-release location."
+  ],
+  "estimated_data_volume_inferred": "Cannot estimate reliably: visibility sizes, integration times, and per-field observation inventories are absent.",
+  "score_inferred": 6,
+  "score_reason": "6/10: software versions, SED grids, selection rules, model assumptions, and validation tests are described, but execution depends on external catalogs, custom EThemis files, and unspecified reduction and uncertainty details.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Numeric answer keys exist, but the supplied text does not state public availability of the ALCS data or provide a complete executable recipe and custom-model release.",
+  "methods_papers": [
+    {
+      "citation": "(cite: 2019A&A...622A.103B; 2022ApJ...927..192Y)",
+      "why": "CIGALE SED modeling and AGN components."
+    },
+    {
+      "citation": "(cite: 2011A&A...525A.103C)",
+      "why": "DustEM used to generate the extended dust-emission library."
+    },
+    {
+      "citation": "(cite: 2017A&A...602A..46J)",
+      "why": "Themis model underlying EThemis."
+    },
+    {
+      "citation": "(cite: 2012MNRAS.420.2756S; 2016MNRAS.458.2288S)",
+      "why": "Skirtor AGN optical/infrared model."
+    },
+    {
+      "citation": "(cite: 2015ApJ...806..110D; 2020ApJ...888..108B)",
+      "why": "MAGPHYS high-z extension used for independent physical-property estimates."
+    },
+    {
+      "citation": "(cite: 2019ApJ...882...61B)",
+      "why": "MAGPHYS photo-z extension used to test redshifts."
+    },
+    {
+      "citation": "(cite: 2019ApJ...877...95T)",
+      "why": "XCLUMPY reflection model and torus column-density geometry."
+    },
+    {
+      "citation": "(cite: 2013MNRAS.431..394W)",
+      "why": "Galactic absorption estimation from source positions."
+    },
+    {
+      "citation": "(cite: 1994ApJ...429..582C)",
+      "why": "Observed UV-slope measurement."
+    },
+    {
+      "citation": "(cite: 2019A&A...624A..80N)",
+      "why": "Intrinsic dust-temperature relation and EThemis graybody approximation."
+    },
+    {
+      "citation": "(cite: 2020ApJ...899...35T)",
+      "why": "ΔBIC threshold for accepting an AGN component."
+    },
+    {
+      "citation": "(cite: 2010PASJ...62.1017O)",
+      "why": "GLAFIC lens modeling underlying adopted magnifications."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: 2023arXiv230301658F)",
+      "why": "ALCS source catalog, redshifts, magnifications, multiple-image details, and infrared luminosity function."
+    },
+    {
+      "citation": "(cite: 2023arXiv230515126K)",
+      "why": "ALCS observing program."
+    },
+    {
+      "citation": "(cite: 2022ApJS..263...38K)",
+      "why": "HST/Spitzer images, photometry, deblending, and EAZY redshifts."
+    },
+    {
+      "citation": "(cite: 2022ApJ...932...77S)",
+      "why": "Herschel photometry, BCG classification, and earlier ALCS dust-temperature analysis."
+    },
+    {
+      "citation": "(cite: 2023ApJ...945..121U)",
+      "why": "Three ALCS-XAGNs and their inherited SED results."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "ALMA Lensing Cluster Survey (ALCS)",
+    "ALESS",
+    "AS2UDS",
+    "ASAGAO",
+    "ASPECS",
+    "ALPINE",
+    "CLASH",
+    "Hubble Frontier Fields (HFFs)",
+    "BUFFALO",
+    "RELICS"
+  ]
+}
+tokens used
+93,193

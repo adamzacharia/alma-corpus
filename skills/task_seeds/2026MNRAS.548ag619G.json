@@ -1,0 +1,369 @@
+{
+ "bibcode": "2026MNRAS.548ag619G",
+ "title": "Infrared synchrotron emission in the soft state of GX 339─4 and the mid-infrared/X-ray luminosity plane of black hole X-ray binaries",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag619",
+ "arxiv_id": "2510.01338",
+ "fields": [
+  "stellar_physics",
+  "transients"
+ ],
+ "question": "What physical processes drive the mid-infrared (MIR) emission and spectral-timing properties of the black hole X-ray binary GX 339-4 during a bright disc-dominated soft accretion state?",
+ "alma_project_codes": [
+  "2023.A.00018.T"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, and 6",
+  "arrays": "12m array (43 antennas)",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Physical parameters of GX 339-4 (distance, period, mass, inclination, mass ratio, extinction)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "1-$\\sigma$ uncertainties are stated for measured/adopted quantities, when available ((cite: Gandhi-2011; heida17; zdziarski19))."
+     }
+    ]
+   },
+   "citation": "(cite: Gandhi-2011; heida17; zdziarski19)"
+  },
+  {
+   "what": {
+    "value": "2010 hard-state WISE and broadband SED measurements of GX 339-4",
+    "evidence": [
+     {
+      "loc": "MIRI spectral-timing",
+      "quote": "Also overplotted are the r.m.s. measurements from the bright 2010 hard state as observed by *WISE* in the $W2$ (4.6 μm) and $W3$ (12 μm) filters (cite: Gandhi-2011)."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "These estimates are nearly identical to the source power during the *WISE* observations of the 2010 hard state for the same assumed $M_{\\rm BH}$, though the spectrum peaked in higher-energy X-rays at that time ((cite: Gandhi-2011))."
+     }
+    ]
+   },
+   "citation": "(cite: Gandhi-2011)"
+  },
+  {
+   "what": {
+    "value": "SXT ancillary response file (ARF) developed for MAXI J1820+070",
+    "evidence": [
+     {
+      "loc": "AstroSat",
+      "quote": "For bright sources, the standard ARF shows additional residuals, which can be mitigated through dedicated modelling, and we utilized the ARF developed for the SXT observation of the bright transient MAXI J1820+070 (cite: Banerjee2024ApJ...964..189B)."
+     }
+    ]
+   },
+   "citation": "(cite: Banerjee2024ApJ...964..189B)"
+  },
+  {
+   "what": {
+    "value": "H-alpha equivalent width from 2021 soft state of GX 339-4",
+    "evidence": [
+     {
+      "loc": "Wind reprocessing?",
+      "quote": "Using the H$\\alpha$ equivalent width $W$ = 10.5 Å reported by (cite: ambrifi25) during the 2021 soft state as a template together with our measured optical SED continuum, we predict a dereddened H$\\alpha$ emission line flux of $F_{\\rm H\\alpha}$ $\\approx$ 10$^{-13}$ erg s$^{-1}$ cm$^{-2}$ at the time of the MIRI campaign."
+     }
+    ]
+   },
+   "citation": "(cite: ambrifi25)"
+  },
+  {
+   "what": {
+    "value": "Archival MIR and X-ray luminosities and distances of transient black hole XRBs",
+    "evidence": [
+     {
+      "loc": "Archival quasi-simultaneous MIR and X-ray luminosities of black hole XRBs",
+      "quote": "This includes all the sources from the extensive compilation of (cite: john24) featuring MAXI and NEOWISE detections (cite: maxi; neowise), supplemented with several other works based on either ground-based MIR detections or detections in the quiescent state, including the present paper."
+     },
+     {
+      "loc": "Archival quasi-simultaneous MIR and X-ray luminosities of black hole XRBs",
+      "quote": "Distances are mostly taken from the recent compilation of XRBs from (cite: zhao23), or from (cite: blackcat) and references therein."
+     }
+    ]
+   },
+   "citation": "(cite: john24; zhao23; blackcat)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "ALMA and ATCA imaging and flux density extraction",
+   "method": "Multi-frequency synthesis imaging with natural weighting (ALMA) and Briggs robust=0 (ATCA), followed by point source fitting in the image plane",
+   "software": [
+    "CASA",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "natural weighting (ALMA); Briggs robust = 0 (ATCA)"
+   ],
+   "assumptions": [
+    "Point source morphology in the image plane"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "JWST/MIRI spectral-timing and variability analysis",
+   "method": "Extract 5-10 um spectra and light curves, fit median spectrum with a power-law, compute excess r.m.s., fit Fourier PSD, and compute cross-correlation functions (CCF and DCF) across bands",
+   "software": [
+    "JWST pipeline"
+   ],
+   "key_parameters": [
+    "Wavelength range 5-10 um; 1,470 integrations of 4.77 s each"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Broadband SED modelling and physical scenario testing",
+   "method": "Deredden multiwavelength data, fit broadband SED in XSPEC with absorbed irradiated disc (diskir), blackbody (circumbinary disc), and cutoff power-law, and evaluate analytical coronal synchrotron and wind models",
+   "software": [
+    "xspec"
+   ],
+   "key_parameters": [
+    "kT_e = 300 keV (fixed); SXT gain slope = 1.0 (fixed)"
+   ],
+   "assumptions": [
+    "Distance d = 8 kpc, M_BH = 6 M_sun, inclination i = 50 deg, extinction A_V = 3.5 +/- 0.5 mag using Cardelli et al. (1989) and Chiar & Tielens (2006) extinction curves"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compile MIR vs. X-ray luminosity plane and fit correlation",
+   "method": "Measure archival Spitzer photometry, compile quasi-simultaneous MIR (8 um) and X-ray (0.5-10 keV) luminosities of black hole XRBs, and perform linear regression in log-log space",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X-ray photon index Gamma = 1.7 for energy-band conversions; flat MIR flux density (F_nu propto nu^0) or W1-W2 extrapolation for 8 um conversions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 97.5 GHz (Band 3) flux density",
+   "value": "0.35",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA",
+     "quote": "We significantly detect the a source at 97.5 GHz and 145.0 GHz, with flux densities of $0.35\\pm0.03$ mJy and $0.26\\pm0.04$ mJy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 145.0 GHz (Band 4) flux density",
+   "value": "0.26",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA",
+     "quote": "We significantly detect the a source at 97.5 GHz and 145.0 GHz, with flux densities of $0.35\\pm0.03$ mJy and $0.26\\pm0.04$ mJy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 233.0 GHz (Band 6) 3-sigma flux density upper limit",
+   "value": "< 0.18",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA",
+     "quote": "However, we only achieve a non-detection at 233.0 GHz, with a 3–$\\sigma$ upper limit of 0.18 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 5.5 GHz flux density",
+   "value": "1.36",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ATCA",
+     "quote": "We detected a radio source associated with a jet ejection event from GX 339–4 with measured flux densities of 1.36$\\pm$0.03 mJy at 5.5 GHz and 0.89$\\pm$0.03 mJy at 9 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 9 GHz flux density",
+   "value": "0.89",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ATCA",
+     "quote": "We detected a radio source associated with a jet ejection event from GX 339–4 with measured flux densities of 1.36$\\pm$0.03 mJy at 5.5 GHz and 0.89$\\pm$0.03 mJy at 9 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-to-sub-mm spectral index (alpha_RS)",
+   "value": "-0.57",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Broadband Spectral Energy Distribution",
+     "quote": "By contrast, the radio–to–sub-mm (RS) power-law is optically-thin, with exponent $\\alpha_{\\rm RS}$ = –0.57 $\\pm$ 0.03."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio/sub-mm offset from optical Gaia DR3 position",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "On the origin of the radio and sub-mm emission: a discrete jet ejection",
+     "quote": "However, detailed imaging analysis of these data indicate that the radio and sub-mm counterparts do not arise from the core position of GX 339–4; instead the detections at these wavelengths are shifted from the optical *Gaia* DR3 position of GX 339–4 (cite: gaiamission; gaiadr3summarycontents) to the West by $\\approx$ 1.2$''$, along its known jet axis (cite: 2004MNRAS.347L..52G; mastroserio25)."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed MIRI spectral slope (alpha_MIRI^obs)",
+   "value": "+0.39",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "MIRI spectral-timing",
+     "quote": "The median spectrum, shown in Fig. [2](#fig:medspec), can be characterised by a simple power-law with exponent $\\alpha_{\\rm MIRI}^{\\rm obs}$ = +0.39 $\\pm$ 0.07 (with flux density $F_{\\rm \\nu} \\propto \\nu^{\\alpha_{\\rm MIRI}^{\\rm obs}}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dereddened MIRI spectral slope (alpha_MIRI)",
+   "value": "+0.36",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Broadband Spectral Energy Distribution",
+     "quote": "Dereddening corrections have only a small impact on the MIRI band, resulting in a corrected slope $\\alpha_{\\rm MIRI}$ = +0.36 $\\pm$ 0.07."
+    }
+   ]
+  },
+  {
+   "quantity": "Dereddened optical-to-near-IR spectral slope (alpha_ONIR)",
+   "value": "+1.80",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Broadband Spectral Energy Distribution",
+     "quote": "When dereddening the optical to near-IR (ONIR) range using the prescription from § [2.3](#sec:reddening), the ONIR slope approximates a simple power-law with $\\alpha_{\\rm ONIR}$ = +1.80 $\\pm$ 0.15, consistent with the long-wavelength tail of optically-thick emission (Figure [6](#fig:sedfit))."
+    }
+   ]
+  },
+  {
+   "quantity": "MIRI excess fractional r.m.s. variability",
+   "value": "4.7e-2",
+   "uncertainty": "0.1e-2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "MIRI spectral-timing",
+     "quote": "Bootstrapping the full light curve yields a mean and uncertainty of r.m.s. = 4.7 ($\\pm$ 0.1) $\\times$ 10$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "MIRI Fourier PSD power-law slope (beta)",
+   "value": "-1.58",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "MIRI spectral-timing",
+     "quote": "We fitted the PSD with a combination of a simple power-law–plus–constant as a function of Fourier frequency $f$, finding an acceptable fit with slope $\\beta$ = –1.58 $\\pm$ 0.14 (Power $P_f$ $\\propto$ $f^\\beta$)."
+    }
+   ]
+  },
+  {
+   "quantity": "HAWK-I 2.2 um (K_s) average flux density",
+   "value": "0.55",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "HAWK-I",
+     "quote": "The average flux density was measured to be $F_{\\rm 2.2\\,\\mu{\\rm m}}$ = 0.55 $\\pm$ 0.05 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Unabsorbed bolometric luminosity (L_Bol)",
+   "value": "1.2e38",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The unabsorbed bolometric luminosity of GX 339–4 during the observed state is dominated by the `diskir` model, $L_{\\rm Bol}$ = 1.2 $\\times$ 10$^{38}$ $(d/{\\rm 8\\,kpc})^2$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Coronal magnetic field (B)",
+   "value": "3.4e4",
+   "uncertainty": "not stated",
+   "units": "G",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Synchrotron from a hot flow overlying the disc?",
+     "quote": "Setting $r_{\\rm C}$ = $r_{\\rm C}^{\\rm min}$ and taking $L_{\\rm Sync}/L_{\\rm Compton}=10^{-3}$ (an estimate based on the ratio of the hard X-ray flux to the MIR flux), we find that $B\\approx3.4\\times10^4$ G."
+    }
+   ]
+  },
+  {
+   "quantity": "MIR-to-X-ray luminosity correlation slope for GX 339-4 (beta)",
+   "value": "0.53",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The MIR vs. X-ray luminosity parameter space",
+     "quote": "yields best-fit parameters of $\\alpha$ = 0.07 $\\pm$ 0.19 and $\\beta$ = 0.53 $\\pm$ 0.04 for the three quiescent and hard state detections of GX 339–4 alone."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA tclean imaging parameters (cell size, image size, stopping threshold, niter)",
+  "Synthesized beam sizes and exact image rms noise for ALMA Bands 3, 4, and 6",
+  "Exact coordinates of the offset radio/sub-mm jet knot fitted with imfit"
+ ],
+ "missing_for_reproduction": [
+  "Exact custom scripts/modifications applied to the JWST/MIRI pipeline v1.17",
+  "Custom radiative transfer / toy model code used to generate the coronal hot flow synchrotron SED curve in Fig. 6",
+  "ALMA tclean imaging parameters (cell size, image size, clean threshold) and imfit region/initial guesses"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Raw datasets across ALMA, JWST, and X-ray facilities are public with clear project/ObsID identifiers, and XSPEC model parameters are fully tabulated, but custom MIRI pipeline tweaks, hot-flow SED scripts, and minor ALMA imaging parameters are not explicitly provided.",
+ "rediscovery_reason": "Public archival data (ALMA 2023.A.00018.T, JWST ID 1586, NuSTAR, Swift) with clear numeric targets (ALMA flux densities, MIRI spectral slope, r.m.s., and XSPEC fit parameters).",
+ "source_card": "cards/2026MNRAS.548ag619G/sonnet/card.md"
+}

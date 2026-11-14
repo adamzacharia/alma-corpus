@@ -1,0 +1,166 @@
+{
+ "bibcode": "2016ApJ...827...69H",
+ "title": "A Search for Submillimeter H<SUB>2</SUB>O Masers in Active Galaxies: The Detection of 321 GHZ H<SUB>2</SUB>O Maser Emission in NGC 4945",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/827/1/69",
+ "arxiv_id": "1604.07937",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Do nearby AGN with strong 22 GHz nuclear H2O masers also host 321/325 GHz H2O masers, and what are their velocities and positions?",
+ "alma_project_codes": [
+  "2011.0.00121.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12-m antennas, 18–29 per observation",
+  "angular_resolution": "NGC 4945 beam 0.54x0.51 arcsec (PA 11)",
+  "sensitivity": "1 sigma ~20 mJy; NGC 4945 8–11 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "22 GHz maser position and Keplerian disk model (150 km/s at 0.3 pc, BH mass 1.4e6 Msun)",
+    "evidence": [
+     {
+      "loc": "6.3 High-Velocity Dense Gas",
+      "quote": "which yielded a black hole mass of 1.4 $\\times$ 10$^6$ M$_{\\ensuremath{\\odot}}\\;$."
+     }
+    ]
+   },
+   "citation": "Greenhill, Moran & Herrnstein 1997 (cite: linc97)"
+  },
+  {
+   "what": {
+    "value": "Luminosity distances of galaxies",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Luminosity distances, adopted from NED"
+     }
+    ]
+   },
+   "citation": "NED"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search spectra for maser emission",
+   "method": "Inspect continuum-subtracted cubes within ~18 arcsec field for features above 5 sigma",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [
+    "detection threshold 5 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure maser and continuum positions",
+   "method": "Gaussian fits of phase-referenced peak positions; compare maser with continuum peak with error beam/(2 SNR)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate radius of high-velocity feature",
+   "method": "Keplerian v ∝ r^-0.5 scaling from 22 GHz disk model",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "BH mass 1.4e6 Msun, edge-on disk"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Strongest 321 GHz maser peak flux, NGC 4945 (V_LSR=714.4)",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "peak flux densities of $\\sim$ 45 mJy beam$^{-1}$ at V$_{\\rm LSR}$= 714.4 km s$^{-1}\\;$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total integrated intensity of maser features",
+   "value": "~2.6",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "is $\\sim$ 2.6 Jy km s$^{-1}$, which corresponds to $\\sim$ 7.4 L$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "321 GHz continuum peak flux density",
+   "value": "136.5",
+   "uncertainty": "rms ~7 mJy/beam",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "The continuum peak flux density at this resolution is 136.5 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maser-continuum relative position error",
+   "value": "~0.055 (3.0 pc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "are $\\sim$0$\\ensuremath{''}$.055 or 3.0 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of high-velocity feature",
+   "value": "~0.020",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.3 High-Velocity Dense Gas",
+     "quote": "the maser is located at a distance of $\\sim$0.020 pc from the central engine"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and AIPS versions",
+  "Which steps used CASA vs AIPS",
+  "Line-free channel ranges for continuum subtraction",
+  "Phase-reference calibrator names and self-calibration",
+  "Cleaning threshold, mask, cell and image size",
+  "Method for the Gaussian fits and integrated intensity velocity limits"
+ ],
+ "missing_for_reproduction": [
+  "Software versions",
+  "Line-free channels",
+  "Clean parameters",
+  "Phase calibrator names"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public Cycle 0 data and simple spectra, but imaging and calibration details are sparse.",
+ "rediscovery_reason": "Public data, numeric results (peak fluxes, velocities), but recipe details partly missing.",
+ "source_card": "cards/2016ApJ...827...69H/sonnet/card.md"
+}

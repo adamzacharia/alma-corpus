@@ -1,0 +1,532 @@
+{
+ "bibcode": "2024A&A...689L...5M",
+ "title": "FAUST: XVIII. Evidence of annular substructure in a very young Class 0 disk",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202451166",
+ "arxiv_id": "2407.20074",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Does the very young Class 0 disk around Oph A SM1 show annular substructure (gap or ring) in 3 mm dust continuum, and is the emission at that location optically thin?",
+ "alma_project_codes": [
+  "2019.1.01074.S",
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "7 au (6.9 au); synthesized beam 0.060 x 0.042 arcsec at PA -79.5 deg",
+  "sensitivity": "25 uJy/beam rms near SM1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to SM1 of 137 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "at a distance of 137 pc (cite: 2018OrtizLeonGaia)"
+     }
+    ]
+   },
+   "citation": "(cite: 2018OrtizLeonGaia)"
+  },
+  {
+   "what": {
+    "value": "SED consistent with ~17 K core of 1.3 Msun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The spectral energy distribution (SED) is consistent with a cold $\\sim 17$ K core with a mass of 1.3 M$_\\odot$(cite: 2015PattkeOph)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015PattkeOph)"
+  },
+  {
+   "what": {
+    "value": "Maximum internal luminosity of ~1 Lsun from the 70 micron upper limit",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "derived a maximum internal luminosity of $\\sim$ 1 L$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2018FriesenALMA)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity at 3 mm of ~1 cm2/g",
+    "evidence": [
+     {
+      "loc": "Optical depth, temperature, and mass",
+      "quote": "Using an opacity at 3 mm of $\\sim$ 1 cm$^2$ gr$^{-1}$ (cite: 1990beckwithSurvey; 2018Birnsteil)"
+     }
+    ]
+   },
+   "citation": "(cite: 1990beckwithSurvey; 2018Birnsteil)"
+  },
+  {
+   "what": {
+    "value": "0.8% flux calibration error between spectral windows",
+    "evidence": [
+     {
+      "loc": "Optical depth, temperature, and mass",
+      "quote": "a 0.8% flux calibration error between spectral windows (cite: 2020FrancisFluxCal)"
+     }
+    ]
+   },
+   "citation": "(cite: 2020FrancisFluxCal)"
+  },
+  {
+   "what": {
+    "value": "Gap-width to planet-mass relation (Equation 4)",
+    "evidence": [
+     {
+      "loc": "Estimation of planetary mass from gap properties",
+      "quote": "Following Equation 4 in (cite: 2016KanagawaMassConstraint)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016KanagawaMassConstraint)"
+  },
+  {
+   "what": {
+    "value": "H/R ~0.1-0.3 taken from the IRS 63 derivation",
+    "evidence": [
+     {
+      "loc": "Estimation of planetary mass from gap properties",
+      "quote": "an aspect ratio H/R$\\sim$0.1-0.3 (following the (cite: 2020SeguraCoxRing) derivation for the Class I disk IRS 63)"
+     }
+    ]
+   },
+   "citation": "(cite: 2020SeguraCoxRing)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image the 3 mm continuum",
+   "method": "Self-calibration of C-10 and C-6 separately, then combined, with multiscale then mtmfs cleaning",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0, 4 scales, manual mask",
+    "S/N improved by ~40% (C-10) and ~10% (combined)",
+    "Combined data averaged to 9 s and 30 MHz channels"
+   ],
+   "assumptions": [
+    "Primary beam response at SM1 is 0.35 because the field target was VLA 1623-2417"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit disk geometry",
+   "method": "2D Gaussian fit to the 3 mm emission to get centre, inclination (circular geometry) and PA",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "inclination 15.6 deg, PA 147 +/- 35 deg"
+   ],
+   "assumptions": [
+    "Circular geometry"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Build the deprojected radial intensity profile in brightness temperature",
+   "method": "Deproject with the fitted geometry, azimuthally average, express as brightness temperature with the full Planck function; error sigma_std/sqrt(N)",
+   "software": [
+    "velocity_tools coordinate_offsets.py"
+   ],
+   "key_parameters": [
+    "brightness temperature calculated using the full Planck function"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit smooth, gap and ring models to the intensity profile",
+   "method": "Beam-convolved models fitted with emcee; log of model and data used in the likelihood to weight fractional errors",
+   "software": [
+    "emcee",
+    "scipy fftconvolve"
+   ],
+   "key_parameters": [
+    "50 walkers, max 300,000 steps, stop when steps > 100x autocorrelation time and autocorrelation estimate varied < 1%",
+    "burn-in twice the autocorrelation time, thinning half the autocorrelation time"
+   ],
+   "assumptions": [
+    "Gap and ring each modelled as a Gaussian annular feature"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare models",
+   "method": "Akaike Information Criterion; lowest AIC favoured; difference >~10 taken as significant",
+   "software": [
+    "astropy akaike_info_criterion"
+   ],
+   "key_parameters": [
+    "AIC 37.8 (smooth), 21.2 (gap), 19.8 (ring)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Measure the intra-band spectral index profile",
+   "method": "Image lower- and upper-sideband spectral windows separately with the same imaging parameters, build intensity profiles and compute alpha = ln(I1/I2)/ln(nu1/nu2)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "nu1 = 106.05 GHz, nu2 = 94.05 GHz",
+    "alpha constrained only within ~30 au (beyond that below 3 sigma)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Derive dust temperature and 3 mm optical depth",
+   "method": "Modified blackbody fit of the 106 and 94 GHz profiles; in the optically thick inner region temperature equals brightness temperature; outside r~15 au temperature extrapolated with a -0.5 power law",
+   "software": [],
+   "key_parameters": [
+    "temperature at gap/ring about 15/13 K, tau(3 mm) below 1"
+   ],
+   "assumptions": [
+    "Passive heating profile T ~ r^-0.5 beyond ~15 au"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate disk mass and protostar luminosity limit",
+   "method": "M_disk = 2 pi integral Sigma r dr with Sigma = tau/kappa; constant tau_3mm = 8 inside ~15 au, R = 40 au; luminosity from temperature scaling T ~ (phi L)^(1/4)/r^(1/2)",
+   "software": [],
+   "key_parameters": [
+    "R = 40 au"
+   ],
+   "assumptions": [
+    "kappa(3 mm) ~ 1 cm2/g and gas-to-dust ratio 100",
+    "Temperature difference to other embedded disks is due only to luminosity (similar flaring, irradiation heating only)"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Predict 1.3 mm intensity and optical depth",
+   "method": "Extrapolate tau_3mm to 1.3 mm with constant beta between 1 and 1.7, using the derived temperature profile; also test an inclination of 60 deg",
+   "software": [],
+   "key_parameters": [
+    "beta = 1 to 1.7"
+   ],
+   "assumptions": [
+    "Inclination of 60 deg raises optical depth by a factor of about 2"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Estimate possible planet mass from gap width",
+   "method": "Gap width relation from Kanagawa et al. (Eq. 4), cross-checked against Rosotti et al. simulations",
+   "software": [],
+   "key_parameters": [
+    "alpha_vis = 1e-3, H/R ~ 0.1-0.3, 1 Msun protostar"
+   ],
+   "assumptions": [
+    "Protostar mass of 1 Msun (unknown); planet mass scales linearly with it"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk inclination",
+   "value": "15.6",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "an inclination (assuming circular geometry) of $15.6^{\\circ}$ and P.A. of $147\\pm35^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "147",
+   "uncertainty": "35",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "an inclination (assuming circular geometry) of $15.6^{\\circ}$ and P.A. of $147\\pm35^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature",
+   "value": "57",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "with a brightness temperature peak of 57 K and a 3$\\sigma$ contour extending up to $\\sim$ 40 au from the center"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk extent (3 sigma contour)",
+   "value": "~40",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "a 3$\\sigma$ contour extending up to $\\sim$ 40 au from the center"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap radius",
+   "value": "27.9",
+   "uncertainty": "+0.6/-0.6",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The models with gap and ring locate the annular substructure at a radius of $27.9^{+0.6}_{-0.6}$ au and $34.4^{+1.7}_{-2.1}$ au, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius",
+   "value": "34.4",
+   "uncertainty": "+1.7/-2.1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The models with gap and ring locate the annular substructure at a radius of $27.9^{+0.6}_{-0.6}$ au and $34.4^{+1.7}_{-2.1}$ au, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Gap Gaussian width sigma_a",
+   "value": "1.4",
+   "uncertainty": "+2.3/-1.2",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The resultant $\\sigma_a$ are $1.4^{+2.3}_{-1.2}$ au and $3.9^{+2.0}_{-1.9}$ au, for the gap and the ring, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring Gaussian width sigma_a",
+   "value": "3.9",
+   "uncertainty": "+2.0/-1.9",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The resultant $\\sigma_a$ are $1.4^{+2.3}_{-1.2}$ au and $3.9^{+2.0}_{-1.9}$ au, for the gap and the ring, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner power-law index gamma_1 (smooth-profile fit)",
+   "value": "~-0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "we obtained a power-law exponent value $\\gamma_1\\sim-0.7$ from the intensity profile fit in the inner region of the disk"
+    }
+   ]
+  },
+  {
+   "quantity": "AIC smooth disk",
+   "value": "37.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The AIC values are 37.8, 21.2, and 19.8 for the smooth disk, disk with a gap and disk with a ring, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "AIC disk with gap",
+   "value": "21.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The AIC values are 37.8, 21.2, and 19.8 for the smooth disk, disk with a gap and disk with a ring, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "AIC disk with ring",
+   "value": "19.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Modelling the disk intensity profile",
+     "quote": "The AIC values are 37.8, 21.2, and 19.8 for the smooth disk, disk with a gap and disk with a ring, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index in optically thick inner region (~15 au)",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "At about 15 au the spectral index reaches the optically thick limit value of 2 and remains slightly below at small radii."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index outside ~15 au",
+   "value": "3 to 4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "Outside this radius it increases reaching values between 3 and 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature at gap / ring location",
+   "value": "15 / 13",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "The temperature in the region with the gap/ring is about 15/13 K while the optical depth at 3 mm is below 1 therein."
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm optical depth at gap/ring location",
+   "value": "<1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "The temperature in the region with the gap/ring is about 15/13 K while the optical depth at 3 mm is below 1 therein."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on SM1 luminosity",
+   "value": "~0.08",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "The 2$\\times$ difference in temperature implies a 16$\\times$ lower luminosity for SM1 of $\\sim$0.08 $L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass of the disk",
+   "value": "0.13",
+   "uncertainty": "factor 2-5",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "we estimate a total gas mass of 0.13 M$_\\odot$(or $\\sim$ 430 M$_{\\oplus}$ dust mass)"
+    },
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "the derived mass can be higher or lower in a factor of 2-5 due to uncertainties on the dust opacities"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of the disk",
+   "value": "~430",
+   "uncertainty": "factor 2-5",
+   "units": "Mearth",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Optical depth, temperature, and mass",
+     "quote": "we estimate a total gas mass of 0.13 M$_\\odot$(or $\\sim$ 430 M$_{\\oplus}$ dust mass)"
+    }
+   ]
+  },
+  {
+   "quantity": "Possible planet mass from gap",
+   "value": "few tens to 200",
+   "uncertainty": "not stated",
+   "units": "Mearth",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Estimation of planetary mass from gap properties",
+     "quote": "we obtain possible planet masses in the range from few tens to 200 M$_{\\oplus}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the pipeline or a manual calibration was used for each dataset",
+  "Image size and cell size for the final images",
+  "Values of the four multiscale scales",
+  "Line-free channel selection for the C-6 continuum model",
+  "Number of spectral windows and exact solint/combine choices per step for C-10 self-calibration beyond 'inf' to '10s'",
+  "Which channels/spectral windows define the lower- and upper-sideband images and their beams",
+  "Whether the images used for the radial profile are primary-beam corrected (PB response at SM1 is 0.35)",
+  "Radial bin width and number of annuli for the intensity profile",
+  "How the imfit region and the flux calibrator/uncertainty of the individual executions were set",
+  "Exact dust opacity index beta and opacity law used in the modified blackbody fit",
+  "Parameters of the emcee initialization and exact beam used in the convolution"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, calibration pipeline details and flux calibrators",
+  "Image and cell size, multiscale scale values, line-free channels",
+  "Radial binning of the intensity profile",
+  "Exact beams for the sideband images and the opacity/beta treatment in the temperature fit",
+  "Analysis scripts are not released (only a third-party helper script is linked)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes and the self-calibration recipe are given and results are numeric, but CASA version, image/cell size, scales, channel selection and binning are not stated and no code is released.",
+ "rediscovery_reason": "Both project codes are stated and the data are ALMA archive projects; the self-calibration, profile fitting and AIC steps are described with numeric results, though imaging details need to be inferred.",
+ "source_card": "cards/2024A%26A...689L...5M/sonnet/card.md"
+}

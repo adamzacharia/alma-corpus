@@ -1,0 +1,379 @@
+{
+ "bibcode": "2023ApJ...952L..28R",
+ "title": "A Tight Correlation between Millimeter and X-Ray Emission in Accreting Massive Black Holes from &lt;100 mas Resolution ALMA Observations",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/acda27",
+ "arxiv_id": "2306.04679",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What is the relation between nuclear 100 GHz millimeter continuum emission and X-ray emission in nearby hard X-ray selected radio-quiet AGN at <100 mas resolution, and can 100 GHz emission be used to probe AGN accretion and column density?",
+ "alma_project_codes": [
+  "2019.1.01230.S"
+ ],
+ "data": {
+  "bands": "Band 3 (100 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~60-100 mas (1.5-23 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Swift/BAT 70-month catalog for sample selection",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "Our sample was drawn from the Swift/BAT 70-month catalog (cite: Baumgartner:2013uq)."
+     }
+    ]
+   },
+   "citation": "(cite: Baumgartner:2013uq)"
+  },
+  {
+   "what": {
+    "value": "Broad-band (0.3-150 keV) X-ray fluxes and column densities",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "We use the X-ray fluxes and column densities obtained by (cite: Ricci:2017if) through broad-band (0.3–150 keV) X-ray spectral analysis."
+     }
+    ]
+   },
+   "citation": "(cite: Ricci:2017if)"
+  },
+  {
+   "what": {
+    "value": "Black hole masses from BASS DR2",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "We use the black hole masses reported in the second data release of BASS (cite: Koss:2022bb; Koss:2022vc; Mejia-Restrepo:2022mt)."
+     }
+    ]
+   },
+   "citation": "(cite: Koss:2022bb; Koss:2022vc; Mejia-Restrepo:2022mt)"
+  },
+  {
+   "what": {
+    "value": "Distances to AGN in the sample",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "All luminosities were calculated using the distances reported in (cite: Koss:2022bb), which include redshift-independent distance measurements for several of these nearby AGN."
+     }
+    ]
+   },
+   "citation": "(cite: Koss:2022bb)"
+  },
+  {
+   "what": {
+    "value": "X-ray spectral analysis results for NGC 5643",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "For NGC 5643 we used the results of the detailed study carried out by (cite: Annuar:2015rr), which used a similar spectral decomposition approach."
+     }
+    ]
+   },
+   "citation": "(cite: Annuar:2015rr)"
+  },
+  {
+   "what": {
+    "value": "Host galaxy star formation rates (SFR) from IR SED decomposition",
+    "evidence": [
+     {
+      "loc": "The relation between X-ray and 100 GHz emission",
+      "quote": "We also checked how this ratio varies with star formation rate (SFR) of the host galaxy (bottom right panel of Fig. [2](#fig:Ratios)), inferred through IR spectral energy distribution decomposition by (cite: Ichikawa:2017zk; Ichikawa:2019pz)."
+     }
+    ]
+   },
+   "citation": "(cite: Ichikawa:2017zk; Ichikawa:2019pz)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA Band 3 continuum observations and extract nuclear 100 GHz fluxes",
+   "method": "Calibrate and image Band 3 data with the ALMA pipeline in CASA using Briggs weighting (robust = 0.5), create primary-beam corrected aggregated continuum maps, and measure the peak flux for each source (using the brighter component in dual-source systems and a 3-sigma upper limit for the non-detection).",
+   "software": [
+    "CASA",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": [
+    "Brighter nuclear source used for dual systems NGC 3281 and NGC 4941"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive intrinsic X-ray luminosities, 2-10 keV fluxes/luminosities, bolometric luminosities, and Eddington ratios",
+   "method": "Combine literature broad-band X-ray measurements with new NuSTAR spectral analysis for eight Compton-thick sources, calculate luminosities using BASS DR2 distances, convert 14-150 keV to 2-10 keV assuming a power-law with photon index 1.8, and compute bolometric luminosities and Eddington ratios.",
+   "software": [],
+   "key_parameters": [
+    "14-150 keV bolometric correction kappa_14-150 = 8.48"
+   ],
+   "assumptions": [
+    "Cosmological parameters H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7",
+    "Pure power-law X-ray spectrum with photon index Gamma = 1.8"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit correlations between 100 GHz and X-ray luminosities and fluxes, and test dependence on AGN/host parameters",
+   "method": "Fit linear relations to the logarithms of 100 GHz and X-ray (14-150 keV and 2-10 keV) luminosities and fluxes using a standard linear least-squares method, compute median luminosity ratios, and check for correlations with column density, Eddington ratio, black hole mass, and star formation rate.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Calibrate relation between column density and observed 2-10 keV to 100 GHz flux ratio and compare with torus model",
+   "method": "Fit a linear relation between log(N_H) and log(F_2-10keV^obs / F_100GHz) in the range log(N_H) = 22-24.5, and compare against theoretical predictions from the REFLEX RXTORUSD dusty torus X-ray model.",
+   "software": [
+    "REFLEX",
+    "RXTORUSD"
+   ],
+   "key_parameters": [
+    "Gamma = 1.8, E_C = 200 keV, torus covering factor = 70%, f_scatt = 1.1%",
+    "Fitting interval log(N_H / cm^-2) = 22-24.5"
+   ],
+   "assumptions": [
+    "Constant log(F_2-10keV^obs / F_100GHz) = 2.7 for log(N_H / cm^-2) >= 24.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "100 GHz AGN detection rate",
+   "value": "94",
+   "uncertainty": "+3/-6",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find an extremely high detection rate (25/26 or $94^{+3}_{-6}\\%$), which shows that nuclear emission at mm-wavelengths is nearly ubiquitous in accreting SMBHs."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log L_100GHz vs log L_14-150keV relation",
+   "value": "1.22",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "$$\\begin{equation}\n\\label{eq:lum14150}\n\\log L_{100\\rm\\,GHz}=(-14.4\\pm0.8)+(1.22\\pm0.02) \\log  L_{14-150\\rm\\,keV},\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log L_100GHz vs log L_14-150keV relation",
+   "value": "-14.4",
+   "uncertainty": "±0.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "$$\\begin{equation}\n\\label{eq:lum14150}\n\\log L_{100\\rm\\,GHz}=(-14.4\\pm0.8)+(1.22\\pm0.02) \\log  L_{14-150\\rm\\,keV},\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "1-sigma scatter of 100 GHz vs X-ray luminosity and flux correlations",
+   "value": "0.22",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "The 1$\\sigma$ scatter of the correlation is $\\simeq 0.22$ dex."
+    },
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "A tight correlation is also obtained when using the 100 GHz and 14–195 keV fluxes (in $\\rm erg\\,s^{-1}\\,cm^{-2}$; right panel of Figure [1](#fig:Lum_lum)), with the same 1$\\sigma$ scatter (0.22 dex)."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log F_100GHz vs log F_14-150keV relation",
+   "value": "1.37",
+   "uncertainty": "±0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "$$\\begin{equation}\n\\label{eq:flux14150}\n\\log F_{100\\rm\\,GHz}=(-1.3\\pm0.4)+(1.37\\pm0.04)\\log F_{14-150\\rm\\,keV}.\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log F_100GHz vs log F_14-150keV relation",
+   "value": "-1.3",
+   "uncertainty": "±0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "$$\\begin{equation}\n\\label{eq:flux14150}\n\\log F_{100\\rm\\,GHz}=(-1.3\\pm0.4)+(1.37\\pm0.04)\\log F_{14-150\\rm\\,keV}.\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log L_100GHz vs log L_2-10keV relation",
+   "value": "-13.9",
+   "uncertainty": "±0.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "$$\\begin{equation}\n\\label{eq:lum210}\n\\log L_{100\\rm\\,GHz}=(-13.9\\pm0.8)+(1.22\\pm0.02)\\log L_{2-10\\rm\\,keV},\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log F_100GHz vs log F_2-10keV relation",
+   "value": "0.6",
+   "uncertainty": "±0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "$$\\begin{equation}\n\\label{eq:flux210}\n\\log F_{100\\rm\\,GHz}=(0.6\\pm0.4)+(1.37\\pm.04)\\log  F_{2-10\\rm\\,keV}.\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio log(L_100GHz / L_14-150keV)",
+   "value": "-5.00",
+   "uncertainty": "±0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "The typical ratio between the 100 GHz continuum and the 14–150 keV (2–10 keV) emission is $\\log(L_{100\\rm\\,GHz}/L_{14-150\\rm\\,keV})=-5.00\\pm0.06$ \\[$\\log(L_{100\\rm\\,GHz}/L_{2-10\\rm\\,keV})=-4.63\\pm0.06$\\]."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio log(L_100GHz / L_2-10keV)",
+   "value": "-4.63",
+   "uncertainty": "±0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The relation between X-ray and 100 GHz emission",
+     "quote": "The typical ratio between the 100 GHz continuum and the 14–150 keV (2–10 keV) emission is $\\log(L_{100\\rm\\,GHz}/L_{14-150\\rm\\,keV})=-5.00\\pm0.06$ \\[$\\log(L_{100\\rm\\,GHz}/L_{2-10\\rm\\,keV})=-4.63\\pm0.06$\\]."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log(N_H / cm^-2) vs log(F_2-10keV^obs / F_100GHz) relation",
+   "value": "28.2",
+   "uncertainty": "±0.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Estimating column densities from the X-ray/100 GHz relation",
+     "quote": "$$\\begin{equation}\n\\label{eq:NHvsRatio}\n\\log \\frac{N_{\\rm H}}{\\rm cm^{-2}}=(28.2\\pm 0.2)+(-1.30\\pm 0.05)\\log  \\frac{F_{2-10\\rm\\,keV}^{\\rm obs}}{F_{100\\rm\\,GHz}},\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(N_H / cm^-2) vs log(F_2-10keV^obs / F_100GHz) relation",
+   "value": "-1.30",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Estimating column densities from the X-ray/100 GHz relation",
+     "quote": "$$\\begin{equation}\n\\label{eq:NHvsRatio}\n\\log \\frac{N_{\\rm H}}{\\rm cm^{-2}}=(28.2\\pm 0.2)+(-1.30\\pm 0.05)\\log  \\frac{F_{2-10\\rm\\,keV}^{\\rm obs}}{F_{100\\rm\\,GHz}},\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1125 100 GHz flux (log F_100GHz) and luminosity (log L_100GHz)",
+   "value": "-15.40, 38.04",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 cm^-2, erg s^-1 (log)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SWIFT J0251.6$-$1639 | NGC 1125 | 48.0 | 24.45 | $-15.40$ | $-10.33$ | 38.04 | 43.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "MCG-05-14-012 100 GHz flux (log F_100GHz) and luminosity (log L_100GHz) 3-sigma upper limit",
+   "value": "<=-16.22, <=37.10",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 cm^-2, erg s^-1 (log)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SWIFT J0543.9$-$2749 | MCG$-$05$-$14$-$012 | 41.9 | 20.00 | $\\leq -16.22$ | $-10.75$ | $\\leq 37.10$ | 42.57 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4945 100 GHz flux (log F_100GHz) and luminosity (log L_100GHz)",
+   "value": "-14.09, 37.07",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 cm^-2, erg s^-1 (log)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SWIFT J1305.4$-$4928 | NGC 4945 | 3.5 | 24.60 | $-14.09$ | $-9.53$ | 37.07 | 41.63 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dual nuclear source separation and flux ratios in NGC 4941 and NGC 3281",
+   "value": "~0.3 arcsec separation; flux ratios 1.07 (NGC 4941) and 1.11 (NGC 3281)",
+   "uncertainty": "not stated",
+   "units": "arcsec, dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA data reduction",
+     "quote": "In two cases (NGC 3281 and NGC 4941) ALMA detected two nuclear sources (per galaxy), separated by $\\sim 0.3\\ensuremath{''}$. In both cases, the fluxes of the two nuclear sources were almost identical, with flux ratios of $1.07$ and $1.11$ for NGC 4941 and NGC 3281, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral window frequencies and bandwidths for the Band 3 observations",
+  "Line-free channel selection or continuum subtraction details in the ALMA pipeline",
+  "Cell size, image size, and cleaning threshold/masking parameters used in imaging",
+  "Per-source synthesized beam sizes and RMS noise levels (deferred to Chang et al. in prep.)",
+  "How the upper limit for MCG-05-14-012 was treated in the linear least-squares regression (excluded vs censored)"
+ ],
+ "missing_for_reproduction": [
+  "Per-source 100 GHz flux uncertainties and RMS noise values",
+  "Observed (absorbed) 2-10 keV fluxes used in Figure 3 and Equation 5 (only intrinsic 14-150 keV fluxes are tabulated in Table 1)",
+  "Exact cleaning parameters (cell size, image size, threshold, masking) if re-imaging from raw visibilities rather than using standard ALMA pipeline products"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "The ALMA data are processed with exact stated versions of CASA (6.1.1.15) and the ALMA pipeline (2020.1.0.40) using standard robust=0.5 aggregated continuum maps, peak flux extraction is straightforward, and all 26 target fluxes/luminosities are tabulated in Table 1, allowing direct reproduction of the main correlation fits.",
+ "rediscovery_reason": "Public ALMA dataset (2019.1.01230.S) reduced with the standard ALMA pipeline, simple peak-flux extraction on aggregated continuum maps, tabulated multi-wavelength data in Table 1, and clear numeric answer keys (detection fraction and linear regression slopes/intercepts/scatter).",
+ "source_card": "cards/2023ApJ...952L..28R/sonnet/card.md"
+}

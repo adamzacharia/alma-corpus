@@ -1,0 +1,419 @@
+{
+ "bibcode": "2026ApJ...999...47L",
+ "title": "The Extended Mapping Obscuration to Reionization with ALMA (Ex-MORA) Survey: 5σ Source Catalog and Redshift Distribution",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae2fda",
+ "arxiv_id": "2408.14546",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What is the prevalence, cumulative number density, redshift distribution, and volume density of heavily dust-obscured, star-forming galaxies at z > 3 selected via a 2 mm blank-field survey in the COSMOS-Web field?",
+ "alma_project_codes": [
+  "2021.1.00225.S",
+  "2019.1.01600.S",
+  "2021.1.00246.S"
+ ],
+ "data": {
+  "bands": "Band 4 (2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "1.68'' x 1.44''",
+  "sensitivity": "50-260 uJy beam^-1 across mosaic; deepest portion 51 uJy beam^-1; ~90% <= 90 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS2020 multi-wavelength catalog and photometric redshifts",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "We also include a wealth of ground and space-based optical/near-IR data from the COSMOS2020 catalog (cite: Weaver2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Weaver2022)"
+  },
+  {
+   "what": {
+    "value": "A3COSMOS archival ALMA datasets",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "Millimeter and submillimeter data includes SCUBA-2 maps at 850 $\\mu$m (cite: Simpson2019), and archival ALMA datasets collated in the A3COSMOS project (cite: Liu2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Liu2018)"
+  },
+  {
+   "what": {
+    "value": "SCUBA-2 850 um maps",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "Millimeter and submillimeter data includes SCUBA-2 maps at 850 $\\mu$m (cite: Simpson2019), and archival ALMA datasets collated in the A3COSMOS project (cite: Liu2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Simpson2019)"
+  },
+  {
+   "what": {
+    "value": "VLA-COSMOS 3 GHz survey data",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "For these analyses, we use data from the Chandra COSMOS-Legacy program (cite: Civano2016), the VLA-COSMOS 3 GHz Large Project (cite: Smolcic2017), and the MeerKAT MIGHTEE-COSMOS 1.28 GHz survey (cite: Heywood2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Smolcic2017)"
+  },
+  {
+   "what": {
+    "value": "MeerKAT MIGHTEE-COSMOS 1.28 GHz survey data",
+    "evidence": [
+     {
+      "loc": "Ancillary Data",
+      "quote": "For these analyses, we use data from the Chandra COSMOS-Legacy program (cite: Civano2016), the VLA-COSMOS 3 GHz Large Project (cite: Smolcic2017), and the MeerKAT MIGHTEE-COSMOS 1.28 GHz survey (cite: Heywood2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Heywood2022)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts from optical/UV and CO line surveys",
+    "evidence": [
+     {
+      "loc": "Source Redshifts",
+      "quote": "This includes the following original surveys: rest-frame optical / UV redshifts are from (cite: Lilly2007; Trump2007; Kriek2015; Stott2016; Nanayakkara2016; Marsan2017; Hasinger2018; Wisnioski2019); Vanderhoof et al. (in prep); Kartaltepe et al. (in prep); and Capak et al. (in prep); CO-derived redshifts are from (cite: Yun2015; Jin2019; Casey2019; Jimenez-Andrade2020; Chen2022); and Chen et al. (in prep)."
+     }
+    ]
+   },
+   "citation": "Khostovan et al. (in prep); (cite: Lilly2007; Trump2007; Kriek2015; Stott2016; Nanayakkara2016; Marsan2017; Hasinger2018; Wisnioski2019; Yun2015; Jin2019; Casey2019; Jimenez-Andrade2020; Chen2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Concatenate and image the ALMA 2 mm mosaic",
+   "method": "Concatenate measurement sets of individual scheduling blocks and image collectively as a mosaic with time-bin averaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting, robust = 2, cell size = 0.3'', time bin averaging = 10s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract >= 5 sigma 2 mm sources and quantify completeness, false detection rate, and flux boosting",
+   "method": "Identify >= 5 sigma peak pixels using a region grow algorithm; run 100 iterations of beam-convolved Gaussian mock noise maps for false detection rate and 100 iterations of artificial source injection for completeness and flux boosting",
+   "software": [],
+   "key_parameters": [
+    "SNR >= 5 sigma threshold; 100 simulation iterations"
+   ],
+   "assumptions": [
+    "Sources are unresolved point sources because the synthesized beam (~13 x 11 kpc at z=3) is well beyond the physical extent of dust emission"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify multi-wavelength counterparts, extract NIRCam/multi-wavelength photometry, and filter synchrotron-boosted sources",
+   "method": "Create 50''x50'' cutouts, generate F444W segmentation maps down to SNR-per-pixel of 3 using photutils inside diver, measure PSF-corrected multi-wavelength fluxes, and extrapolate 1.28 GHz and 3 GHz radio slopes to 2 mm to identify synchrotron-boosted sources",
+   "software": [
+    "JWST Calibration Pipeline",
+    "SE/SE++",
+    "diver",
+    "photutils"
+   ],
+   "key_parameters": [
+    "50'' x 50'' cutouts; segmentation boundary down to SNR-per-pixel of 3 in F444W"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compile spectroscopic redshifts and derive photometric redshifts via SED fitting",
+   "method": "Compile archival spectroscopic redshifts, resolve single-CO-line degeneracies using photo-z PDFs, and fit UV-to-near-IR photometry with BAGPIPES (or adopt COSMOS2020 / CIGALE for 6 outlier sources)",
+   "software": [
+    "BAGPIPES",
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "5 age bins (10, 30, 100, 300, 600 Myr), log U in [-3, -1], Av in [0, 6], M_star in [10^6, 10^13] M_sun, metallicity in [10^-3, 10^0.4]"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with Planck 2020 parameters (H0 = 67.4 km s^-1 Mpc^-1), Chabrier IMF, Calzetti (2000) dust attenuation law"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive 2 mm cumulative number densities, redshift CDF, volume densities, and compare with OIR-dark selection techniques",
+   "method": "Run 10^3 Monte Carlo realizations sampling source flux densities, contamination, completeness, and redshift PDFs to compute cumulative number counts N(>S), redshift CDF, and volume densities in dz = 1 bins (adding cosmic variance in quadrature), and test radio+OIR-dark and JWST OIR-dark selection criteria",
+   "software": [
+    "Astropy"
+   ],
+   "key_parameters": [
+    "A_eff = 577 arcmin^2; 10^3 Monte Carlo iterations; flux density bins of 100 uJy; redshift bins of dz = 1"
+   ],
+   "assumptions": [
+    "Cosmic variance calculated using standard assumptions and cookbook from Moster et al. (2011)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Survey area (Ex-MORA mosaic)",
+   "value": "577",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In this work, we present the Extended Mapping Obscuration to Reionization with ALMA (Ex-MORA) Survey – a 2 mm blank-field survey in the COSMOS-Web field, and the largest ever ALMA blank-field survey to-date covering 577 arcmin$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Deepest mosaic rms noise (sigma_2mm)",
+   "value": "51",
+   "uncertainty": "not stated",
+   "units": "uJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "The Extended Mapping Obscuration to Reionization with ALMA (Ex-MORA) Survey",
+     "quote": "The deepest portion of the mosaic has an rms of $\\sigma_\\mathrm{2\\,mm} = 51$ $\\mu$Jy beam$^{-1}$, with $\\sim$90% of the map ($\\sim$ 510 arcmin$^2$) at or below the proposed map depth of 90 $\\mu$Jy beam$^{-1}$ (Figure 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total >= 5 sigma sources detected",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We identify 37 significant ($>$ 5$\\sigma$) sources, 33 of which are robust thermal dust emitters."
+    }
+   ]
+  },
+  {
+   "quantity": "Robust thermal dust emitters detected",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We identify 37 significant ($>$ 5$\\sigma$) sources, 33 of which are robust thermal dust emitters."
+    }
+   ]
+  },
+  {
+   "quantity": "Expected false detections at >= 5 sigma in Ex-MORA map",
+   "value": "0.7",
+   "uncertainty": "+0.7/-0.5",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The Extended Mapping Obscuration to Reionization with ALMA (Ex-MORA) Survey",
+     "quote": "We repeat this process 100 times, and calculate an average of $0.7^{+0.7}_{-0.5}$ of false detections in the Ex-MORA map, with an average SNR of $5.3\\pm 0.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Highest SNR source (eMORA.0) 2 mm flux density",
+   "value": "1023",
+   "uncertainty": "52",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| eMORA.0 | MORA-0 | 10:00:15.62 | $+$02:15:49.14 | 19.8 | 1023 $\\pm$ 52 | 4.596 | 4.4 $_{-0.2}^{+0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightest 2 mm source (eMORA.2) 2 mm flux density",
+   "value": "1157",
+   "uncertainty": "67",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| eMORA.2 | MORA-3 | 10:00:08.05 | $+$02:26:12.24 | 17.2 | 1157 $\\pm$ 67 | 4.630 | 3.4 $_{-0.1}^{+0.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Photo-z normalized median absolute deviation (sigma_NMAD)",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Source Redshifts",
+     "quote": "We compare the calculated photo-$z$s to spectroscopic redshifts for the 18 available sources in Figure 4 and find good agreement, with a normalized median absolute deviation (cite: Brammer2008) of $\\sigma_\\mathrm{NMAD} = 0.04$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of Ex-MORA sample",
+   "value": "3.6",
+   "uncertainty": "+0.1/-0.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We measure a median redshift of $\\langle z \\rangle = 3.6^{+0.1}_{-0.2}$, with two-thirds of the sample at $z>3$, and just under half at $z>4$, demonstrating the overall success of the 2 mm–selection technique."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of 2 mm selected sources at z > 2",
+   "value": "95",
+   "uncertainty": "+2/-1",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Redshift Distribution of 2 mm Sources",
+     "quote": "Based on the CDF, we find that 95$^{+2}_{-1}$% of 2 mm selected sources are at $z>2$, 66$^{+3}_{-3}$% at $z>3$, and 43$^{+4}_{-4}$% at $z>4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of 2 mm selected sources at z > 3",
+   "value": "66",
+   "uncertainty": "+3/-3",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Redshift Distribution of 2 mm Sources",
+     "quote": "Based on the CDF, we find that 95$^{+2}_{-1}$% of 2 mm selected sources are at $z>2$, 66$^{+3}_{-3}$% at $z>3$, and 43$^{+4}_{-4}$% at $z>4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of 2 mm selected sources at z > 4",
+   "value": "43",
+   "uncertainty": "+4/-4",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Redshift Distribution of 2 mm Sources",
+     "quote": "Based on the CDF, we find that 95$^{+2}_{-1}$% of 2 mm selected sources are at $z>2$, 66$^{+3}_{-3}$% at $z>3$, and 43$^{+4}_{-4}$% at $z>4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative number density N(> 0.40 mJy) for cleaned sample",
+   "value": "134",
+   "uncertainty": "+15/-16",
+   "units": "deg^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2 mm Cumulative Number Density",
+     "quote": "0.40 & 152 & 17 & 16 & 134 & 16 & 15\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative number density N(> 1.00 mJy) for cleaned sample",
+   "value": "16",
+   "uncertainty": "+7/-8",
+   "units": "deg^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2 mm Cumulative Number Density",
+     "quote": "1.00 & 16 & 8 & 7 & 16 & 8 & 7\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated z > 3 volume density of Ex-MORA sources",
+   "value": "1-3e-5",
+   "uncertainty": "not stated",
+   "units": "Mpc^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find an integrated $z>3$ volume density of Ex-MORA sources of $\\sim1-3\\times10^{-5}$ Mpc$^{-3}$, consistent with other surveys of infrared luminous galaxies at similar epochs."
+    }
+   ]
+  },
+  {
+   "quantity": "Volume density log10(n/Mpc^-3) at 3 < z < 4",
+   "value": "-5.42",
+   "uncertainty": "0.07 (plus sigma_CV = 0.20)",
+   "units": "dex (Mpc^-3)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $3< z <4$ | $-5.42 \\pm 0.07$ | 0.20 | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Volume density log10(n/Mpc^-3) at 4 < z < 5",
+   "value": "-5.32",
+   "uncertainty": "0.07 (plus sigma_CV = 0.31)",
+   "units": "dex (Mpc^-3)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $4< z <5$ | $-5.32 \\pm 0.07$ | 0.31 | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Volume density log10(n/Mpc^-3) at 5 < z < 6",
+   "value": "-5.55",
+   "uncertainty": "0.12 (plus sigma_CV = 0.46)",
+   "units": "dex (Mpc^-3)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $5< z <6$ | $-5.55 \\pm 0.12$ | 0.46 | | |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and imaging",
+  "Exact tclean parameters (e.g., deconvolver, stopping threshold, niter, masking, primary beam limit)",
+  "ALMA project code for the original MORA survey data concatenated into the mosaic",
+  "Details of the diver code implementation and PSF correction factors (McKinney et al. in prep.)",
+  "Compiled spectroscopic redshift catalog details from Khostovan et al. (in prep.) and Chen et al. (in prep.)"
+ ],
+ "missing_for_reproduction": [
+  "Unpublished photometry software diver (McKinney et al. in prep.) and extracted multi-wavelength flux catalog for the 37 sources",
+  "Exact CASA version and tclean imaging script parameters (stopping criteria, deconvolver, primary beam cutoff)",
+  "Full redshift probability distribution functions p(z) for individual photo-z sources used in the Monte Carlo CDF and volume density calculations",
+  "Exact SNR-dependent completeness and contamination curves from the injection simulations"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA mosaic imaging parameters (natural weighting, robust=2, 0.3'' pixel size, 10s averaging) and 5-sigma source catalog (Table 2) are clearly provided, and number count / volume density methodologies are well described. However, full end-to-end reproduction of the multi-wavelength photometry and photo-z PDFs is blocked by reliance on unpublished software (diver) and unstated multi-wavelength flux tables.",
+ "rediscovery_reason": "The primary ALMA 2 mm source catalog (37 sources with positions, SNRs, and flux densities) and cumulative number counts depend only on the public ALMA mosaic (2021.1.00225.S + original MORA) and standard CASA imaging + 5-sigma peak finding, making the ALMA catalog and number counts directly reproducible.",
+ "source_card": "cards/2026ApJ...999...47L/sonnet/card.md"
+}

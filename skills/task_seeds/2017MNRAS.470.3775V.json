@@ -1,0 +1,262 @@
+{
+ "bibcode": "2017MNRAS.470.3775V",
+ "title": "VALES I: the molecular gas content in star-forming dusty H-ATLAS galaxies up to z = 0.35",
+ "year": 2017,
+ "doi": "10.1093/mnras/stx1338",
+ "arxiv_id": "1705.09826",
+ "fields": [
+  "nearby_galaxies",
+  "high_z_galaxies"
+ ],
+ "question": "What is the molecular gas content, size, star-formation law and star-formation efficiency of dusty H-ATLAS star-forming galaxies at z<0.35, measured via ALMA CO(1-0)?",
+ "alma_project_codes": [
+  "2012.1.01080.S",
+  "2013.1.00530.S"
+ ],
+ "data": {
+  "bands": "Band 3 (Cycles 1 and 2)",
+  "arrays": "not stated",
+  "angular_resolution": "~3''-4'' (most compact configuration)",
+  "sensitivity": "Cycle-1 design 1.5 mJy/beam at 50 km/s; Cycle-2 design 2 mJy/beam at 30 km/s; achieved average rms 1.6 mJy/beam at 50 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cycle-2 [CII] PACS spectroscopy and IR luminosities/stellar masses for comparison",
+    "evidence": [
+     {
+      "loc": "2.1 H-ATLAS sample",
+      "quote": "in Cycle-2 we targeted 27 galaxies that have previous Herschel PACS [C ii] spectroscopy as shown by Ibar et al. (2015)"
+     }
+    ]
+   },
+   "citation": "Ibar et al. 2015"
+  },
+  {
+   "what": {
+    "value": "HI mass estimator from photometry (Eqn 5)",
+    "evidence": [
+     {
+      "loc": "3.3 The Schmidt-Kennicutt relation",
+      "quote": "we estimate these using Eqn. 4 from Zhang et al. 2009"
+     }
+    ]
+   },
+   "citation": "Zhang et al. 2009"
+  },
+  {
+   "what": {
+    "value": "Literature CO samples (SMGs, BzK, local spirals, ULIRGs, etc.) combined in fits",
+    "evidence": [
+     {
+      "loc": "Figure 5 caption",
+      "quote": "Our sample is compared to other studies taken from the literature"
+     }
+    ]
+   },
+   "citation": "Daddi et al. 2010a; Solomon et al. 1997; Leroy et al. 2008; Ivison et al. 2011; Saintonge et al. 2011; others"
+  },
+  {
+   "what": {
+    "value": "MAGPHYS SED fits of GAMA (stellar masses)",
+    "evidence": [
+     {
+      "loc": "2.4.3 SED fitting",
+      "quote": "in our present study we use the derived stellar masses and their uncertainties"
+     }
+    ]
+   },
+   "citation": "Driver et al. 2016; da Cunha et al. 2008"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes at optimal velocity resolution",
+   "method": "Clean cubes at 20-100 km/s, pick resolution maximising number of >5 sigma point-like detections; 100 km/s if undetected; then re-clean with primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting, 256x256 pixels, 3 sigma clean threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit line and measure integrated CO flux",
+   "method": "Single Gaussian fit to spectrum for centre/FWHM; collapse cube over ±1 FWHM; fit 2D Gaussian with gaussfit (irregular aperture for 7 sources); non-detections collapsed ±250 km/s",
+   "software": [
+    "CASA gaussfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive IR luminosity, SFR, stellar mass",
+   "method": "Modified blackbody SED fit integrated 8-1000 um with Monte-Carlo errors (100 iterations); SFR = 1e-10 L_IR; stellar mass from MAGPHYS",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF; 1.72 factor Salpeter to Chabrier"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CO luminosity and molecular gas mass",
+   "method": "L'CO from Eqn 2; M_H2 = alpha_CO L'CO with morphology-dependent alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.6 for B/D galaxies, 0.8 for mergers/interacting"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Size comparison and Schmidt-Kennicutt relation",
+   "method": "Deconvolved CO sizes via gaussfit; Petrosian radii ratio; surface densities over two-sided disk area 2 pi R_FWHM^2; HI estimated via Zhang+09; linear regressions",
+   "software": [
+    "CASA gaussfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "For CO-unresolved galaxies, CO radius = optical Petrosian radius / 1.6"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Star formation efficiency and gas fraction",
+   "method": "SFE = SFR/M_H2, empirical arctan parametrisation vs L_IR (Eqn 7); f_H2 = M_H2/(M_H2+M*) with M_H2/M* = tau x sSFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spectrally detected galaxies (>5 sigma)",
+   "value": "49 of 67",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.4.1 CO emission",
+     "quote": "We identify 49 galaxies (out of 67) with a >5σ peak line detection"
+    }
+   ]
+  },
+  {
+   "quantity": "Average rms",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "mJy/beam at 50 km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.4.1 CO emission",
+     "quote": "We get an average rms level of 1.6 mJy beam−1 (at 50 km s−1)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO luminosity median",
+   "value": "0.3e10",
+   "uncertainty": "0.1e10",
+   "units": "K km/s pc2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Correlations between L IR and L′CO",
+     "quote": "with a median of (0.3 ± 0.1) × 1010 K km s−1 pc2"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR vs L'CO slope (B/D detected)",
+   "value": "0.95",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Correlations between L IR and L′CO",
+     "quote": "log[L IR / L⊙] = (0.95 ± 0.04) × log L CO′ /[K km s−1 pc2] + (2.0 ± 0.4)."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical-to-CO Petrosian radius ratio (21 resolved)",
+   "value": "1.6",
+   "uncertainty": "0.5 (scatter)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1 Morphological description",
+     "quote": "the mean and scatter of the R P,Opt /R P,CO distribution are 1.6 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Global Schmidt-Kennicutt slope (combined samples)",
+   "value": "1.26",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "log[Σ SFR / (M⊙ yr−1 kpc−2)] = (1.26 ± 0.02) × log[Σ M H2 / (M⊙ pc−2)] − (3.6 ± 0.2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFE of transition-zone sources",
+   "value": "8.5",
+   "uncertainty": "0.1",
+   "units": "Gyr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Star formation efficiency",
+     "quote": "with a median of 8.5 ± 0.1 Gyr−1"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_H2 range B/D galaxies",
+   "value": "8.9-10.9 (median 10.31)",
+   "uncertainty": "0.1",
+   "units": "log Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Correlations between L IR and L′CO",
+     "quote": "median of log(M H2 / M⊙) = 10.31 ± 0.1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which CASA task/parameters for flagging and the exact spectral window layout per execution block",
+  "Clean mask definitions and sigma used for 3-sigma threshold (rms estimation region)",
+  "Line-free channel definitions and whether continuum subtraction was done",
+  "Details of the Monte-Carlo and linear regression method (fitter, weights, treatment of limits)",
+  "Exact ALMA flux scale uncertainty",
+  "How the Gaussian fits were bounded for spectra binning choice",
+  "Detailed MAGPHYS settings and photometry used"
+ ],
+ "missing_for_reproduction": [
+  "Custom pipeline scripts not released",
+  "Clean mask and rms details",
+  "Regression method details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a fair description of methods and Table 2 values, but custom pipeline and several imaging/fit details are missing.",
+ "rediscovery_reason": "Archival data, simple per-source recipe (cube, Gaussian fit, flux, L'CO), numeric results in Table 2.",
+ "source_card": "cards/2017MNRAS.470.3775V/sonnet/card.md"
+}

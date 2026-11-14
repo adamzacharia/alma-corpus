@@ -1,0 +1,517 @@
+{
+ "bibcode": "2022A&A...661A.136G",
+ "title": "The molecular gas resolved by ALMA in the low-metallicity merging dwarf galaxy Haro 11",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142309",
+ "arxiv_id": "2202.06070",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How is star formation triggered and quenched in low-metallicity gas-rich dwarf galaxy mergers, specifically regarding molecular gas distribution, star formation efficiency, and gas depletion in Haro 11?",
+ "alma_project_codes": [
+  "2013.1.00350.S",
+  "2017.1.01457.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 8",
+  "arrays": "12-m array",
+  "angular_resolution": "CO(1-0): 1.1'' x 1.0'' (462 x 420 pc); [CI](1-0): 0.5'' x 0.5'' (210 x 210 pc)",
+  "sensitivity": "CO(1-0): ~1.2 mJy/beam; [CI](1-0): ~1.3 mJy/beam (per 5 km s^-1 channel)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gas-phase metallicities (12 + log(O/H)) for knots A, B, and C determined with the electron temperature method",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The gas-phase metallicities ($12+ \\log({\\rm O/H})$, $Z$), calculated from the electron temperature method, are about 8.09 (0.24 $Z_{\\odot}$), 8.25 (0.35 $Z_{\\odot}$) and 7.80 (0.12 $Z_{\\odot}$) for knots A, B and C, respectively (cite: james2013)."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: The metallicities ($12+ \\log({\\rm O/H})$) are determined with electron temperature method using the $\\hbox{[O\\,{\\sc iii}]}\\lambda4363$ emission line, collected from (cite: james2013)."
+     }
+    ]
+   },
+   "citation": "(cite: james2013)"
+  },
+  {
+   "what": {
+    "value": "HI 21 cm gas mass of Haro 11 (5.1 x 10^8 M_sun)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "(cite: Pardy2016) presented the first robust detection of ${\\rm HI}$ 21 cm emission for Haro 11 using the GBT telescope, and found the HI mass to be about $5.1 \\times 10^8 \\  M_{\\odot}$."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| $M_{{\\rm HI}}$ | $10^8 \\  M_{\\odot}$ | 5.1 | 5 |"
+     }
+    ]
+   },
+   "citation": "(cite: Pardy2016)"
+  },
+  {
+   "what": {
+    "value": "Total SFR (Halpha + TIR) and dust mass of Haro 11",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The total SFR is about $25.1^{+28.6}_{-13.4} \\  M_{\\odot}\\ \\rm yr^{-1}$ based on the $\\hbox{H$\\alpha$}$ and infrared luminosity (cite: remy-ruyer2015)."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "The dust mass derived from the dust Spectral Energy Distribution modeling of the mid-infrared to submillimeter observations which included *Spitzer* and *Herschel* data, is $9.9 \\times 10^6 \\  M_{\\odot}$ (cite: remy-ruyer2015)."
+     }
+    ]
+   },
+   "citation": "(cite: remy-ruyer2015)"
+  },
+  {
+   "what": {
+    "value": "Comparison galaxy samples for K-S law, main sequence, virial parameter, turbulent pressure, and molecular gas fraction (M33, NGC 4038/4039, spirals, (U)LIRGs, post-starbursts, merging dwarfs, high-z galaxies, SDSS DR8 MPA-JHU, Cold GASS, GOALS, ALFALFA, Little THINGS)",
+    "evidence": [
+     {
+      "loc": "Global star formation",
+      "quote": "In Fig. [7](#fig:KS_law), we present the Kennicutt-Schmidt (K-S) law and main sequence relation for Haro 11 and other galaxy samples."
+     },
+     {
+      "loc": "Turbulent pressure and viral parameter",
+      "quote": "In Fig. [9](#fig:viral_tub), we perform a comparison of the turbulent pressure and the viral parameter between Haro 11, (U)LIRGs, NGC 4038/4039, and post starburst galaxies."
+     },
+     {
+      "loc": "Neutral gas",
+      "quote": "These nearby galaxies include the normal SFGs at $M_* \\geq 10^{10}\\  M_{\\odot}$ in the Cold GASS survey (cite: Catinella2010; Catinella2012; Catinella2013), massive merger (U)LIRGs in GOALS survey (cite: armus2009; stierwalt2013; Shangguan2019a) with the ${\\rm HI}$ detection from ALFALFA survey (cite: Haynes2018a), as well as the dwarf irregular and compact galaxies from the Little THINGS survey (cite: Hunter2012; Hunter2019b)."
+     }
+    ]
+   },
+   "citation": "(cite: gratier2010; gao2001; Lahen2017; Tsuge2021; bigiel2008; shi2011; Shangguan2019a; Wilson2019; smercina2018; smercina2021; Paudel2018; tacconi2013; Shi2018; Catinella2010; Catinella2012; Catinella2013; armus2009; stierwalt2013; Haynes2018a; Hunter2012; Hunter2019b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA CO(1-0) and [CI](1-0) cubes and create moment maps",
+   "method": "Perform standard calibration in CASA, clean cubes with natural weighting and primary-beam correction using tclean, and generate moment maps with immoments using a 4x RMS threshold.",
+   "software": [
+    "CASA",
+    "tclean",
+    "immoments"
+   ],
+   "key_parameters": [
+    "natural weighting; pixel size ~0.1''; channel width 5 km s^-1; immoments threshold = 4 x RMS (RMS = 1.2 mJy/beam for CO(1-0), 1.3 mJy/beam for [CI](1-0))"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit stellar continuum and optical emission lines from VLT/MUSE cube",
+   "method": "Fit stellar continuum per spaxel using STARLIGHT with 45 Bruzual & Charlot (2003) SSP templates, integrate pixels with S/N > 5.0 for stellar mass, subtract stellar continuum, and fit multiple Gaussians to strong emission lines (Halpha, Hbeta, [OIII]).",
+   "software": [
+    "STARLIGHT"
+   ],
+   "key_parameters": [
+    "45 SSPs (3 metallicities, 15 stellar ages); continuum S/N > 5.0 threshold"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF converted to Kroupa (2001) IMF by adding 0.15 dex"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify star-forming knots and measure galaxy size",
+   "method": "Run Astrodendro on the Halpha map to identify star-forming clumps (knots A, B, C, T) and define equal-area circular apertures; use Statmorph and Photutils to calculate the 80% flux radius R_80 in r/V band to define galaxy area.",
+   "software": [
+    "Astrodendro",
+    "Statmorph",
+    "Photutils"
+   ],
+   "key_parameters": [
+    "min_npix = 16; R_80 (radius containing 80% flux)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas masses, SFRs, SFE, and sSFR maps",
+   "method": "Convert CO(1-0) integrated flux and [CI](1-0) luminosity to H2 mass; extinction-correct Halpha using Halpha/Hbeta and convert to SFR; smooth SFR and M_* maps to the CO(1-0) beam using CASA imsmooth to compute SFE (SFR/M_H2) and sSFR (SFR/M_*) maps.",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Target smoothing resolution = CO(1-0) beam (1.1'' x 1.0'')"
+   ],
+   "assumptions": [
+    "z = 0.0206467; D_L = 87.2 Mpc; area-weighted average 12+log(O/H) ~ 8.12; alpha_CO = 60 M_sun (K km s^-1 pc^-2)^-1 (range 10 - 110); Case B recombination; Calzetti et al. (2000) reddening; Kroupa (2001) IMF; Madden et al. (2020) [CI]-to-H2 calibration at 0.25 Z_sun and 0.1 Z_sun"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit regional CO(1-0) and Halpha spectra and compute velocity dispersion, turbulent pressure, and virial parameter",
+   "method": "Fit single Gaussian functions to regional CO(1-0) and Halpha spectra, subtract instrumental resolution to obtain velocity dispersion sigma_v, and compute internal turbulent pressure P_turb and virial parameter alpha_vir at the beam scale following Sun et al. (2018).",
+   "software": [],
+   "key_parameters": [
+    "r_beam ~ 220 pc; f = 10/9"
+   ],
+   "assumptions": [
+    "Beam size represents the relevant cloud size scale; cloud density profile rho(r) proportional to r^-1; pressure equilibrium"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Map and compare [CI](1-0)/CO(1-0) line intensity ratios",
+   "method": "Smooth both CO(1-0) and [CI](1-0) intensity images to a common 1.5'' x 1.5'' beam, rebin pixels to 0.4'', and compute the integrated intensity ratio R = I_[CI] / I_CO(1-0).",
+   "software": [],
+   "key_parameters": [
+    "common beam = 1.5'' x 1.5'' (~630 x 630 pc); rebinned pixel size = 0.4''"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Global CO(1-0) systemic velocity V_sys(CO)",
+   "value": "6051.3",
+   "uncertainty": "2.1",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $V_{\\rm sys}$ (CO) | km s$^{-1}$  | 6051.3 $\\pm$ 2.1 | 4 |"
+    },
+    {
+     "loc": "CO(1-0) distribution and kinematics",
+     "quote": "The systemic velocity ($V_{\\rm sys}$) of CO molecular gas in Haro 11 is estimated to be 6051.3 $\\pm$ 2.1 km s$^{-1}$ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Global CO(1-0) integrated flux",
+   "value": "3.3",
+   "uncertainty": "0.1",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CO(1-0) flux | Jy km s$^{-1}$  | 3.3 $\\pm$ 0.1 | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global [CI](1-0) integrated flux",
+   "value": "7.4",
+   "uncertainty": "0.3",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $[\\rm C {\\sc I}]\\ $ flux | Jy km s$^{-1}$  | 7.4 $\\pm$ 0.3 | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global H2 mass from CO(1-0) M_H2(CO)",
+   "value": "3.8",
+   "uncertainty": "+3.3/-3.1",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $M_{\\rm H_2}$(CO) | $10^9 \\  M_{\\odot}$ | 3.8$^{+3.3}_{-3.1}$ | 4 |"
+    },
+    {
+     "loc": "Global star formation",
+     "quote": "We calculate the gas mass from CO(1-0) luminisity is about $3.8^{+3.3}_{-3.1} \\times 10^9 \\  M_{\\odot}$, in which the uncertainty is caused by the $\\alpha_{\\rm CO}$ range and the three times of the CO intensity RMS."
+    }
+   ]
+  },
+  {
+   "quantity": "Global H2 mass from [CI](1-0) M_H2([CI])",
+   "value": "2.1-5.3",
+   "uncertainty": "0.3 dex",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $M_{\\rm H_2}$(\\[CI\\]) | $10^8 \\  M_{\\odot}$ | 2.1-5.3 | 4 |"
+    },
+    {
+     "loc": "[CI] distribution",
+     "quote": "Using the $[\\rm C {\\sc I}]\\ $ to H$_2$ conversion calibration of (cite: madden2020), we estimate the H$_2$ gas mass to be $\\sim 5.3 \\times 10^8  M_{\\odot}$ and $\\sim 2.1 \\times 10^8  M_{\\odot}$ (see Table [1](#table:1)) at the metallicity of 0.1 $Z_\\odot$ and 0.25 $Z_\\odot$, respectively. The calculation uncertainty is about 0.3 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Global stellar mass M_*",
+   "value": "2.6",
+   "uncertainty": "0.8",
+   "units": "10^9 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $M_*$ | $10^9 \\  M_{\\odot}$ | 2.6 $\\pm$ 0.8 | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global Halpha SFR",
+   "value": "25.1",
+   "uncertainty": "0.4",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\rm SFR_{\\hbox{H$\\alpha$}}$ | $M_{\\odot}\\ \\rm yr^{-1}$ | 25.1 $\\pm$ 0.4 | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy size (area from R_80)",
+   "value": "12.5",
+   "uncertainty": "not stated",
+   "units": "kpc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Size | kpc$^2$ | 12.5 | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global CO(1-0) velocity dispersion sigma_v",
+   "value": "17.2",
+   "uncertainty": "+8.3/-11.5",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\sigma_{v}$ | km s$^{-1}$  | 17.2$^{+8.3}_{-11.5}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global internal turbulent pressure P_turb",
+   "value": "3.4",
+   "uncertainty": "+10.2/-3.2",
+   "units": "10^6 K cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $P_{\\rm turb}$ | $10^6 \\rm \\ K \\ cm^{-3}$ | 3.4$^{+10.2}_{-3.2}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global virial parameter alpha_vir",
+   "value": "0.17",
+   "uncertainty": "+0.11/-0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\alpha_{\\rm vir}$ | ... | 0.17$^{+0.11}_{-0.06}$ | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot A molecular gas mass M_H2",
+   "value": "< 2.3",
+   "uncertainty": "not stated",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| A | 9.2177732 | -33.555504 | 1.7 (710.7) | 8.09 $\\pm$ 0.20 | 4.3 $\\pm$ 1.2 | 1.42 $\\pm$ 0.03 | $< 2.3$ | ... | ... | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot B molecular gas mass M_H2",
+   "value": "23",
+   "uncertainty": "+20/-19",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| B | 9.2182527 | -33.554668 | 3.0 (1254.2) | 8.25 $\\pm$ 0.15 | 8.9 $\\pm$ 2.6 | 10.92 $\\pm$ 0.08 | 23$^{+20}_{-19}$ | 23.8$^{+3.7}_{-12.1}$ | 8.7$^{+16.9}_{-8.1}$ | 0.17$^{+0.17}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot B CO(1-0) velocity dispersion sigma_v",
+   "value": "23.8",
+   "uncertainty": "+3.7/-12.1",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| B | 9.2182527 | -33.554668 | 3.0 (1254.2) | 8.25 $\\pm$ 0.15 | 8.9 $\\pm$ 2.6 | 10.92 $\\pm$ 0.08 | 23$^{+20}_{-19}$ | 23.8$^{+3.7}_{-12.1}$ | 8.7$^{+16.9}_{-8.1}$ | 0.17$^{+0.17}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot B turbulent pressure P_turb",
+   "value": "8.7",
+   "uncertainty": "+16.9/-8.1",
+   "units": "10^6 K cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| B | 9.2182527 | -33.554668 | 3.0 (1254.2) | 8.25 $\\pm$ 0.15 | 8.9 $\\pm$ 2.6 | 10.92 $\\pm$ 0.08 | 23$^{+20}_{-19}$ | 23.8$^{+3.7}_{-12.1}$ | 8.7$^{+16.9}_{-8.1}$ | 0.17$^{+0.17}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot B virial parameter alpha_vir",
+   "value": "0.17",
+   "uncertainty": "+0.17/-0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| B | 9.2182527 | -33.554668 | 3.0 (1254.2) | 8.25 $\\pm$ 0.15 | 8.9 $\\pm$ 2.6 | 10.92 $\\pm$ 0.08 | 23$^{+20}_{-19}$ | 23.8$^{+3.7}_{-12.1}$ | 8.7$^{+16.9}_{-8.1}$ | 0.17$^{+0.17}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot C molecular gas mass M_H2",
+   "value": "1.1",
+   "uncertainty": "+1.0/-0.9",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| C | 9.2192717 | -33.554783 | 1.1 (459.8) | 7.80 $\\pm$ 0.13 | 19.1 $\\pm$ 5.5 | 1.09 $\\pm$ 0.02 | 1.1$^{+1.0}_{-0.9}$ | 16.2$^{+6.6}_{-10.8}$ | 1.7$^{+4.0}_{-1.1}$ | 0.15$^{+0.09}_{-0.11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot C CO(1-0) velocity dispersion sigma_v",
+   "value": "16.2",
+   "uncertainty": "+6.6/-10.8",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| C | 9.2192717 | -33.554783 | 1.1 (459.8) | 7.80 $\\pm$ 0.13 | 19.1 $\\pm$ 5.5 | 1.09 $\\pm$ 0.02 | 1.1$^{+1.0}_{-0.9}$ | 16.2$^{+6.6}_{-10.8}$ | 1.7$^{+4.0}_{-1.1}$ | 0.15$^{+0.09}_{-0.11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot C turbulent pressure P_turb",
+   "value": "1.7",
+   "uncertainty": "+4.0/-1.1",
+   "units": "10^6 K cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| C | 9.2192717 | -33.554783 | 1.1 (459.8) | 7.80 $\\pm$ 0.13 | 19.1 $\\pm$ 5.5 | 1.09 $\\pm$ 0.02 | 1.1$^{+1.0}_{-0.9}$ | 16.2$^{+6.6}_{-10.8}$ | 1.7$^{+4.0}_{-1.1}$ | 0.15$^{+0.09}_{-0.11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot C virial parameter alpha_vir",
+   "value": "0.15",
+   "uncertainty": "+0.09/-0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| C | 9.2192717 | -33.554783 | 1.1 (459.8) | 7.80 $\\pm$ 0.13 | 19.1 $\\pm$ 5.5 | 1.09 $\\pm$ 0.02 | 1.1$^{+1.0}_{-0.9}$ | 16.2$^{+6.6}_{-10.8}$ | 1.7$^{+4.0}_{-1.1}$ | 0.15$^{+0.09}_{-0.11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Knot T molecular gas mass M_H2",
+   "value": "< 0.1",
+   "uncertainty": "not stated",
+   "units": "10^8 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| T | 9.2174637 | -33.554432 | 0.9 (376.3) | ... | 0.3 $\\pm$ 0.1 | 0.31 $\\pm$ 0.02 | $< 0.1$ | ... | ... | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI]/CO(1-0) line intensity ratio in peak molecular gas components",
+   "value": "0.35-0.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "[CI] distribution",
+     "quote": "We note the line ratios of \\[CI\\]/CO range from 0.35-0.55 within the two local peak molecular gas components, which are significantly enhanced concerning the values of normal spiral galaxies and (U)LIRGs while being similar to the outflow region of NGC 253."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit of total gas depletion time",
+   "value": "0.17",
+   "uncertainty": "+0.13/-0.12",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Neutral gas",
+     "quote": "The gas depletion time $(M_{\\rm H_2} + M_{{\\rm HI}}) / \\rm SFR$ will be shorter than 0.17$^{+0.13}_{-0.12}$ Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit of final stellar mass at quenching",
+   "value": "8.5",
+   "uncertainty": "+5.2/-5.0",
+   "units": "10^9 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Neutral gas",
+     "quote": "Assuming that all of the molecular and neutral gas will form stars, the final stellar mass $M_* + 1.36 (M_{\\rm H_2} + M_{{\\rm HI}})$ will be smaller than $8.5^{+5.2}_{-5.0} \\times 10^9 \\  M_{\\odot}$, including the factor 1.36 to account for the helium."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration, imaging, and moment creation",
+  "Exact continuum subtraction method (e.g., uvcontsub vs imcontsub) and line-free frequency channels for Band 3 and Band 8",
+  "Stopping threshold, niter, deconvolver algorithm, and masking strategy in CASA tclean",
+  "Values of min_value and min_delta parameters used in Astrodendro for clump identification",
+  "Velocity integration window used in CASA immoments to generate moment 0, 1, and 2 maps"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and tclean stopping criteria (niter, threshold, masking)",
+  "Continuum subtraction procedure for ALMA Band 3 and Band 8 cubes",
+  "Astrodendro min_value and min_delta parameters used on the Halpha map",
+  "Exact velocity integration ranges for the CO(1-0) and [CI](1-0) moment 0, 1, and 2 maps",
+  "Exact ESO programme ID or dataset identifier for the archival VLT/MUSE cube"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All ALMA and MUSE datasets are public in archives, key physical equations and conversion factors are explicitly written out, and knot coordinates/radii are tabulated in Table 2, though minor imaging/clump-finding parameters (tclean threshold, Astrodendro min_value/min_delta) are omitted.",
+ "rediscovery_reason": "Both ALMA datasets and the reduced MUSE cube are publicly available, the target regions (global and knots A, B, C, T) have exact coordinates and diameters in Table 2, and key numeric outputs (fluxes, masses, velocity dispersions, virial parameters, and [CI]/CO ratios) are clearly tabulated.",
+ "source_card": "cards/2022A%26A...661A.136G/sonnet/card.md"
+}

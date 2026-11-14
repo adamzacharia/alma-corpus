@@ -1,0 +1,898 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...813..118M",
+  "title": "Microwave Continuum Emission and Dense Gas Tracers in NGC 3627: Combining Jansky VLA and ALMA Observations",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Murphy, Eric J.",
+  "n_authors": 10,
+  "arxiv_id": "1508.06284",
+  "doi": "10.1088/0004-637X/813/2/118",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00456.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present Karl G. Jansky Very Large Array (VLA) Ka band (33 GHz) and Atacama Large Millimeter Array (ALMA) Band 3 (94.5 GHz) continuum images covering the nucleus and two extranuclear star-forming regions"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 3627 (nucleus, Enuc. 1, Enuc. 2)",
+     "coordinates": {
+      "value": "Nucleus 11 20 15.0 +12 59 30 (J2000)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of $9.38 \\pm 0.35$ Mpc (cite: hkp01)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "NGC 3627 Enuc. 1 &$11   ~20   ~16.2$&$+   11   ~20   ~16$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "9.38 ± 0.35 Mpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of $9.38 \\pm 0.35$ Mpc (cite: hkp01)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "NGC 3627 Enuc. 1 &$11   ~20   ~16.2$&$+   11   ~20   ~16$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Freedman et al. 2001 (cite: hkp01)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of $9.38 \\pm 0.35$ Mpc (cite: hkp01)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "NGC 3627 Enuc. 1 &$11   ~20   ~16.2$&$+   11   ~20   ~16$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do free-free continuum (33 and 94.5 GHz) and dense gas tracers (HCN, HCO+ J=1-0) compare on ~90 pc scales in three regions of NGC 3627, and how do dense gas fraction and star formation efficiency relate?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we combined new observations from ALMA and the VLA to report one of the first extragalactic cloud-scale comparisons of dense gas"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00456.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.00456.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Band 3 (94.5 GHz LO); VLA Ka band",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Atacama Large Millimeter Array (ALMA) Band 3 (94.5 GHz) continuum images"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four 1.875 GHz wide spectral windows centered at 87.5, 89.5, 99.5, 100.5 GHz",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Band-3 Data",
+      "quote": "centering the four 1.875 GHz wide spectral windows at 87.5, 89.5, 99.5, and 100.5 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "J=1-0",
+     "rest_frequency": "88.6318 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Band-3 Data",
+       "quote": "HCN ($J=1\\rightarrow0$)/88.6318 GHz"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=1-0",
+     "rest_frequency": "89.1885 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Band-3 Data",
+       "quote": "HCO$^{+}$ ($J=1\\rightarrow0$)/89.1885 GHz"
+      }
+     ]
+    },
+    {
+     "species": "H40alpha",
+     "transition": "H40α (not detected)",
+     "rest_frequency": "99.0229 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Band-3 Data",
+       "quote": "H40$\\alpha$/99.0229 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "chosen to match ≲2 arcsec beam of VLA 33 GHz data (specific configuration not stated)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Band-3 Data",
+      "quote": "The array configuration was chosen to match the $\\lesssim$2$''$ synthesized beam of the VLA 33 GHz data."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~2 arcsec (~90 pc)",
+    "evidence": [
+     {
+      "loc": "2 Data and Analysis",
+      "quote": "achieving a common resolution of $\\approx$2$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~25 arcsec ALMA; 44 arcsec VLA",
+    "evidence": [
+     {
+      "loc": "2.4 Continuum Imaging and Photometry",
+      "quote": "the largest angular scales that the ALMA and VLA images should be sensitive to are $\\approx$25$''$ and 44$''$, respectively"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "continuum rms 32 µJy/beam at 94.5 GHz; line channel rms ~1.2 mJy/beam in 10 km/s",
+    "evidence": [
+     {
+      "loc": "Line Imaging and Photometry",
+      "quote": "The rms noise of the ALMA channel maps is $\\approx$1.2 mJy bm$^{-1}$ in a 10 km s$^{-1}$ channel."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "ALMA December 2013 (Cycle 1); VLA Nov 2011 and Mar 2013",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Band-3 Data",
+      "quote": "In December 2013 as part of ALMA’s Cycle 1 observing campaign"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLA Ka band (SFRS)",
+     "provided": {
+      "value": "33 GHz continuum images",
+      "evidence": [
+       {
+        "loc": "2.1 VLA Ka-Band Data",
+        "quote": "D-configuration observations were obtained in November 2011 (VLA/11B-032) and March 2013 (VLA/13A-129)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "BIMA SONG",
+     "provided": {
+      "value": "CO J=1-0 map, beam 7.3x5.8 arcsec",
+      "evidence": [
+       {
+        "loc": "2.3 Archival CO Data",
+        "quote": "having a synthesized beam of $7.3\\ensuremath{''} \\times 5.8\\ensuremath{''}$"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "BIMA SONG CO J=1-0 data",
+      "evidence": [
+       {
+        "loc": "2.3 Archival CO Data",
+        "quote": "we make use of $J=1\\rightarrow0$ CO data taken as part of the BIMA SONG survey (cite: bimasong)"
+       }
+      ]
+     },
+     "citation": "(cite: bimasong)"
+    },
+    {
+     "what": {
+      "value": "Distance 9.38 Mpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of $9.38 \\pm 0.35$ Mpc (cite: hkp01)"
+       }
+      ]
+     },
+     "citation": "(cite: hkp01)"
+    },
+    {
+     "what": {
+      "value": "Non-thermal spectral index -0.85 from NGC 6946 regions",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral Indices",
+        "quote": "We took the non-thermal spectral index to be $\\alpha^{\\rm NT} = -0.85$"
+       }
+      ]
+     },
+     "citation": "(cite: ejm11b)"
+    },
+    {
+     "what": {
+      "value": "Disk rotation 204 km/s and bar pattern speed 55 km/s/kpc",
+      "evidence": [
+       {
+        "loc": "3.2 Spatial Offsets",
+        "quote": "The bar pattern speed for NGC 3627 is $\\approx$55 km s$^{-1}$ kpc$^{-1}$ (cite: kartik02)"
+       }
+      ]
+     },
+     "citation": "(cite: deBlok08); (cite: kartik02)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, standard procedures / ALMA QA",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Band-3 Data",
+       "quote": "the ALMA data were reduced and calibrated using CASA following standard procedures as part of the ALMA quality assurance process"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "VLA: 3C 286 (flux/bandpass)",
+     "evidence": [
+      {
+       "loc": "2.1 VLA Ka-Band Data",
+       "quote": "3C 286 was used as the flux density and bandpass calibrator"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "3% at 33 GHz, 5% at 94.5 GHz",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "an absolute calibration uncertainty of 3% at 33 GHz (cite: pb13fcal) and 5% at 94.5 GHz (ALMA Cycle 1 Technical Handbook)"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean, MFS, nterms=2",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "The mode of clean was set to multifrequency synthesis (cite: mfs1; mfs2)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust=0.5",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "We chose to use *Briggs* weighting with robust=0.5, and set the variable nterms=2"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "scales ≈1 and 3 times synthesized beam FWHM",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "searching for structures with scales $\\approx$1 and 3 times the FWHM of the synthesized beam"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub",
+     "evidence": [
+      {
+       "loc": "Line Imaging and Photometry",
+       "quote": "before the line images were created, the data were first continuum subtracted using the CASA task uvcontsub"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "CASA impbcor",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "A primary beam correction was applied using the CASA task impbcor before analyzing the images."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "imsmooth to CO beam 7.3x5.8 arcsec, regrid to common pixels",
+     "evidence": [
+      {
+       "loc": "2.5 Line Imaging and Photometry",
+       "quote": "The resolution matching was carried out using the task imsmooth in CASA, before re-gridding each image to a common pixel scale."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "94.5 GHz: 1.89x1.66 arcsec (nucleus)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$1.89\\ensuremath{''} \\times 1.66\\ensuremath{''}$ & 32"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "VLA SFRS Ka-band observations and reduction details deferred",
+      "evidence": [
+       {
+        "loc": "2.1 VLA Ka-Band Data",
+        "quote": "Details on all of the SFRS VLA Ka-band survey observations and data reduction can be found in E.J. Murphy et al. (2015, in preparation)."
+       }
+      ]
+     },
+     "from_reference": "E.J. Murphy et al. (2015, in preparation)"
+    },
+    {
+     "what": {
+      "value": "SFR calibration for 33 GHz thermal emission",
+      "evidence": [
+       {
+        "loc": "3.3 Dense Gas Fractions",
+        "quote": "using the calibration for pure thermal emission given in (cite: ejm11b; ejm12b)"
+       }
+      ]
+     },
+     "from_reference": "(cite: ejm11b; ejm12b)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels for uvcontsub",
+    "ALMA array configuration, baselines, and time on source",
+    "CASA version",
+    "Image size and cell size",
+    "Clean masks and thresholds",
+    "Velocity ranges for moment 0 integration",
+    "SFR calibration formula and how L33 converts to SFR",
+    "Monte Carlo details for velocity dispersion errors",
+    "Unit conversion from Jy/beam to K km/s for HCO+, HCN, CO"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and measure photometry",
+    "method": {
+     "value": "clean with MFS, nterms=2, multiscale, Briggs robust 0.5; imfit within 15 arcsec circular aperture",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "we used the task imfit in CASA to fit sources within a circular aperture having a radius of 15$''$"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust=0.5, nterms=2",
+      "evidence": [
+       {
+        "loc": "2.4 Continuum Imaging and Photometry",
+        "quote": "We chose to use *Briggs* weighting with robust=0.5, and set the variable nterms=2"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "imfit single-component Gaussian",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "Clearly for the case of Enuc. 2, which is an elongated structure at the end of the bar, a single-component fit is not the most appropriate."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image lines, extract spectra, fit line widths",
+    "method": {
+     "value": "uvcontsub, clean, moment 0 maps; spectra from circular aperture 20% larger than source major axis convolved with beam; Gaussian fits",
+     "evidence": [
+      {
+       "loc": "2.5 Line Imaging and Photometry",
+       "quote": "The spectra were extracted using a circular aperture centered on the 94.5 GHz source positions returned by imfit"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian line profile; Monte Carlo for uncertainties",
+     "evidence": [
+      {
+       "loc": "2.5 Line Imaging and Photometry",
+       "quote": "uncertainties that were estimated using the errors per channel along with a Monte Carlo approach"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Spectral index map and thermal fraction",
+    "method": {
+     "value": "Convolve 94.5 GHz to 33 GHz beam, regrid, compute alpha for >3 sigma pixels; thermal fraction with fixed non-thermal index",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral Indices",
+       "quote": "after convolving the slightly higher resolution 94.5 GHz data to match the beam of the 33 GHz data and putting the data on the same grid"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_NT = -0.85; free-free optically thin; negligible AME and thermal dust",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral Indices",
+        "quote": "We took the non-thermal spectral index to be $\\alpha^{\\rm NT} = -0.85$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested alpha_NT=-0.6; AGN contribution <3% estimated",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral Indices",
+       "quote": "by instead assuming $\\alpha^{\\rm NT} = -0.6$, the mean 33 GHz thermal fractions over the nucleus, Enuc. 1, and 2 are 80, 76, and 62%, respectively"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Dense gas fraction and SFE",
+    "method": {
+     "value": "Convolve to CO beam, take peak in 15 arcsec aperture; dense gas mass from HCO+ / total from CO; SFR from 33 GHz thermal luminosity",
+     "evidence": [
+      {
+       "loc": "3.3 Dense Gas Fractions",
+       "quote": "The dense molecular gas fraction is taken to be the mass ratio of dense molecular gas traced by the $J=1\\rightarrow0$ transition of HCO$^{+}$ to the total molecular gas"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_HCO+ ≈ 10, alpha_CO ≈ 4.3 Msun/(K km/s pc^2); mean 33 GHz thermal fraction 79%",
+      "evidence": [
+       {
+        "loc": "3.3 Dense Gas Fractions",
+        "quote": "$\\alpha_{\\rm CO} \\approx 4.3$ M${_\\odot}\\,{\\rm (K\\,km\\,s^{-1}\\,pc^{2})}^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Trend persists if HCN used for dense gas mass",
+     "evidence": [
+      {
+       "loc": "3.3 Dense Gas Fractions",
+       "quote": "the trend observed in the top panel of Figure [5](#fig:dgas) would persist even if we instead used the HCN-derived dense gas mass"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration, clean imaging, impbcor, imfit, uvcontsub, imsmooth",
+     "evidence": [
+      {
+       "loc": "2.4 Continuum Imaging and Photometry",
+       "quote": "Calibrated VLA and ALMA measurement sets for each source were imaged using the task clean in CASA."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "mean 33-94.5 GHz spectral index (nucleus, Enuc.1, Enuc.2)",
+    "value": "-0.10, -0.15, -0.27",
+    "uncertainty": "std 0.20, 0.18, 0.15",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral Indices",
+      "quote": "we measured mean spectral indices of $\\alpha_{\\rm 33\\,GHz}^{\\rm 94.5\\,GHz} = -0.10, -0.15,$ and $-0.27$"
+     }
+    ]
+   },
+   {
+    "quantity": "mean 33 GHz thermal fraction (nucleus, Enuc.1, Enuc.2)",
+    "value": "85, 82, 70",
+    "uncertainty": "std 19, 19, 20",
+    "units": "%",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Spectral Indices",
+      "quote": "we measure corresponding mean 33 GHz thermal fractions over the nucleus, Enuc. 1 and 2 of 85, 82 and 70%, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "continuum-HCN/HCO+ peak offset at Enuc. 2",
+    "value": "≈3 arcsec (≈130 pc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Spatial Offsets",
+      "quote": "The continuum and molecular gas are spatially offset in the plane of the sky by $\\approx$3$''$ ($\\approx$130 pc at the distance of NGC 3627)."
+     }
+    ]
+   },
+   {
+    "quantity": "33 GHz integrated flux density of nucleus",
+    "value": "2.09",
+    "uncertainty": "0.08",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$1.70\\pm0.06$   | $2.09\\pm0.08$"
+     }
+    ]
+   },
+   {
+    "quantity": "propagation time between stars and dense gas peaks",
+    "value": "≈3",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.2 Spatial Offsets",
+      "quote": "Thus, the propagation time is $\\approx$3 Myr, less than the age of typical OB stars."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Dense gas fraction decreases with increasing SFE; Enuc. 1 converts gas to stars ~3x faster",
+    "evidence": [
+     {
+      "loc": "3.3 Dense Gas Fractions",
+      "quote": "A clear trend of decreasing dense gas fraction with increasing star formation efficiency is observed."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can sites of current star formation be spatially separated from dense gas at ~90 pc?",
+    "experiment": "Compare 33/94.5 GHz continuum peaks with HCN/HCO+ moment 0 peaks",
+    "result": "Enuc. 2 peaks offset by ≈3 arcsec (~130 pc)",
+    "finding": "Resolution suffices to distinguish current star formation from fuel for future star formation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 Spatial Offsets",
+      "quote": "this offset suggests that we have reached the spatial resolution at which we can reliably separate the fuel stockpiles from the current generation of star formation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is 33 GHz emission dominated by thermal free-free at the HII region peaks?",
+    "experiment": "33-94.5 GHz spectral index and thermal decomposition",
+    "result": "mean thermal fractions 70-85%, near unity at peaks",
+    "finding": "Thermal fraction near unity at peaks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The mean thermal fraction at 33 GHz among the three regions studied is 79% with a dispersion of 19%."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does dense gas fraction or dynamical state control SFE?",
+    "experiment": "Plot dense gas fraction and HCO+ velocity dispersion vs SFE for three regions",
+    "result": "Both decrease with increasing SFE",
+    "finding": "Dynamical state of dense gas matters more than abundance",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.3 Dense Gas Fractions",
+      "quote": "the dynamical state of the dense gas appears to have a larger impact on the star formation process than the actual fraction of dense gas"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only three regions; nuclear HCN cut off by bandpass; single-component fit poor for Enuc. 2",
+     "evidence": [
+      {
+       "loc": "2.5 Line Imaging and Photometry",
+       "quote": "the detection of HCN towards the nucleus is cut off by the bandpass at a radial velocity of $v_\\mathrm{LSRK} \\approx 800\\mathrm{\\,km\\,s^{-1}}$"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Trends rest on three data points",
+    "Thermal fractions depend on assumed alpha_NT",
+    "Single conversion factors assumed for HCO+ and CO across very different environments",
+    "ALMA missing flux at large scales not corrected vs BIMA"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code cited in acknowledgments; BIMA SONG archival",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00456.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and exact clean parameters",
+    "VLA Ka-band reduction details deferred to unpublished paper",
+    "SFR calibration formula",
+    "line-free channels and moment ranges"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB (ALMA Cycle 1 Band 3 plus VLA Ka and BIMA maps)",
+   "score_inferred": 3,
+   "score_reason": "Public ALMA data and clear imaging recipe, but missing CASA version, configuration details, and VLA reduction deferred.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "VLA reduction is deferred to an unpublished paper and several processing parameters are missing, so the recipe is incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: ejm12b)",
+     "why": "SFRS thermal fraction and SFR calibration methodology"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "E.J. Murphy et al. (2015, in preparation)",
+     "why": "SFRS VLA Ka-band observations and reduction"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Star Formation in Radio Survey (SFRS)",
+    "SINGS",
+    "KINGFISH",
+    "BIMA SONG"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-466d3678a9aa6668df75f3240e8c1a15",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:20",
+  "usage": {
+   "input_tokens": 18881,
+   "output_tokens": 8163,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.060303,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 60,
+  "quotes_ok": 60,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 44,
+   "rate": 0.638
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:54",
+  "custom_id": "repair-sonnet-7751ed63f1476a2f90ef096f487cca04",
+  "fixed": [
+   {
+    "path": "processing.imaging.continuum_subtraction.evidence[0]",
+    "old": "the line data were first continuum subtracted using the CASA task uvcontsub",
+    "new": "before the line images were created, the data were first continuum subtracted using the CASA task uvcontsub"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

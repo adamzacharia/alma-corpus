@@ -1,0 +1,300 @@
+{
+ "bibcode": "2017PASJ...69...18T",
+ "title": "A statistical study of giant molecular clouds traced by <SUP>13</SUP>CO, C<SUP>18</SUP>O, CS, and CH<SUB>3</SUB>OH in the disk of NGC 1068 based on ALMA observations",
+ "year": 2017,
+ "doi": "10.1093/pasj/psw122",
+ "arxiv_id": "1612.00948",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What are the physical and chemical properties of GMCs in the disk of NGC 1068, and are they linked to the larger-scale galactic environment?",
+ "alma_project_codes": [
+  "2013.0.00060.S",
+  "2012.1.00060.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "1.4 arcsec (98 pc) after convolution",
+  "sensitivity": "1σ = 0.64, 0.61, 0.59, 0.70 mJy/beam (13CO, C18O, CS, CH3OH) at 1.5 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "NRO 45-m 13CO(1-0) flux 8.9±0.2 K km/s (in preparation)",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "(Takano et al., in preparation)"
+     }
+    ]
+   },
+   "citation": "Takano et al., in preparation"
+  },
+  {
+   "what": {
+    "value": "IRAM 30-m 13CO(1-0) flux 13.10±0.24 K km/s",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "the IRAM 30-m measurement gave $13.10 \\pm 0.24$ K km s$^{-1}$ ((cite: Aladro2015))"
+     }
+    ]
+   },
+   "citation": "(cite: Aladro2015)"
+  },
+  {
+   "what": {
+    "value": "Excitation temperature Tex = 8.5 K",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "an excitation temperature $T_{\\rm ex}$ of 8.5 K ((cite: Nakajima2015))"
+     }
+    ]
+   },
+   "citation": "(cite: Nakajima2015)"
+  },
+  {
+   "what": {
+    "value": "[H2]/[13CO] = 5.0e5",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "Adopting an abundance ratio of $[{\\rm H}_2]/[^{13}{\\rm CO}] = 5.0 \\times 10^5$ ((cite: Dickman1978))"
+     }
+    ]
+   },
+   "citation": "(cite: Dickman1978)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes",
+   "method": "CASA clean with Briggs weighting, multiscale, uvcontsub, convolution to 1.4 arcsec",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.4/0.4/0.2/0.1; multiscale [0,10,25]; cell 0.25 arcsec; 1.5 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Check recovered flux against single dish",
+   "method": "Convolve 13CO cube to 16\" and 21\", compare integrated flux with NRO 45-m and IRAM 30-m",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify GMCs",
+   "method": "CLUMPFIND on 13CO cube; remove clumps smaller than beam",
+   "software": [
+    "CLUMPFIND"
+   ],
+   "key_parameters": [
+    "threshold 8σ, increment 4σ; 265 clumps → 187 after excluding diameter < 1.4 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive LTE gas mass and virial mass",
+   "method": "Optically thin LTE column density × clump area; virial mass with beta=1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "[H2]/[13CO]=5.0e5, Tex=8.5 K, beta=1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit GMC mass function",
+   "method": "Fit truncated power law to integral mass distribution for M>1e5 Msun",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Line ratios and methanol vs velocity width",
+   "method": "Integrated intensities per GMC, ratios to 13CO, compare linewidths of methanol-detected vs non-detected GMCs with two-sample KS test",
+   "software": [],
+   "key_parameters": [
+    "detection = peak > 3σ"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of GMCs identified",
+   "value": "187",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "we have identified 187 high-significance ($> 8\\sigma$) GMCs"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass function slope γ (M≥1e5 Msun)",
+   "value": "-1.25",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "gives the slope $\\gamma=-1.25\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum mass M0",
+   "value": "5.92e7",
+   "uncertainty": "0.63e7",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$M_0 = (5.92 \\pm 0.63) \\times 10^7$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "N0",
+   "value": "54.4",
+   "uncertainty": "28.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$N_0$ = $54.4 \\pm 28.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC 13CO mass range",
+   "value": "1.8e4 – 4.2e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "ranging from $1.8 \\times 10^4$ to $4.2 \\times 10^7 M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean C18O/13CO ratio",
+   "value": "0.27",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "fairly uniform (0.27 $\\pm$ 0.05)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity width, methanol-detected GMCs",
+   "value": "16.56",
+   "uncertainty": "σ = 5.61",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "The mean and standard deviation are 16.56 km s$^{-1}$ and 5.61 km s$^{-1}$ for methanol-detected GMCs"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity width, methanol-lacking GMCs",
+   "value": "11.97",
+   "uncertainty": "σ = 4.87",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "11.97 km s$^{-1}$ and 4.87 km s$^{-1}$ for methanol-lacking GMCs"
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered flux ALMA/NRO45m",
+   "value": "0.84",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$(18.8 \\pm 0.9)}/(22.5 \\pm 3.4) = 0.84 \\pm 0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered flux ALMA/IRAM30m",
+   "value": "0.65",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "(37.2 \\pm 1.9)/(57.0 \\pm 5.7) = 0.65 \\pm 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean GMC size and velocity width",
+   "value": "102 pc; 14.9 km/s",
+   "uncertainty": "not stated",
+   "units": "pc; km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "The averaged size and velocity width of the identified clouds are 102 pc and 14.9 km s$^{-1}$, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for uvcontsub",
+  "Clean threshold, masks and iteration count",
+  "CLUMPFIND implementation and exact parameters beyond threshold and increment (e.g. velocity handling, pixel-based area)",
+  "Fitting method, binning and error estimation for the truncated power law",
+  "Calibration/flux-scaling details for datasets and which pipeline version per dataset",
+  "Primary-beam correction details",
+  "Velocity-width definition per cloud and treatment of beam deconvolution",
+  "Position of FOV centre (blank in text)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "Clean threshold/mask settings",
+  "Mass function fit procedure details",
+  "FOV center coordinates"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data public, imaging parameters mostly given and catalog tabulated, but CLUMPFIND settings and fit details partly missing.",
+ "rediscovery_reason": "Data public (project 2013.0.00060.S), recipe largely specified, results numeric (slope, ratios, catalog).",
+ "source_card": "cards/2017PASJ...69...18T/sonnet/card.md"
+}

@@ -1,0 +1,668 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 2,
+    "shows": "Maps of the 2.6 mm (112 GHz) continuum emission on the Arp 220 East and West nuclei at 0.08 x 0.1 arcsec resolution, with contours in mJy/beam relative to the continuum peaks.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "contours",
+      "quantity": "2.6 mm continuum flux density",
+      "units": "mJy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. West peak 13.1 mJy/beam (from caption)",
+     "approx. East peak 3.1 mJy/beam (from caption)",
+     "approx. West continuum extent about 0.4 arcsec across",
+     "approx. East elongated along NW-SE, about 0.4 arcsec long"
+    ],
+    "caption_quote": "The 2.6 mm continuum distribution on the East and West nuclei is shown at 0.08 × 0.1′′ resolution (33 × 41 pc) .",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "sed",
+    "panels": 1,
+    "shows": "Continuum flux densities of the East and West nuclei versus frequency from literature and this work, with reference power laws for non-thermal synchrotron and Rayleigh-Jeans blackbody emission.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "continuum flux density",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 3,
+    "validation_check": "Compares measured continuum fluxes with literature values and reference synchrotron and dust power laws.",
+    "readable_values": [
+     "approx. West flux near 110 GHz about 0.03 Jy",
+     "approx. East flux near 110 GHz about 0.015 Jy",
+     "approx. East and West low-frequency fluxes about 0.1 Jy near 5 GHz",
+     "approx. high-frequency fluxes about 0.2 to 0.6 Jy near 350 GHz"
+    ],
+    "caption_quote": "At long wavelengths, the dominant emission is non-thermal synchrotron emission with flux varying ν−0.5 to −0.7; at ν > 100 GHz the dominant emission is the dust continuum",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "other",
+    "panels": 4,
+    "shows": "CO(1-0) spectra of the East and West nuclei in 0.6 arcsec apertures (integrated flux in Jy) and 0.18 arcsec apertures (mean pixel value in Jy/beam).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "LSR velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "y",
+      "quantity": "CO(1-0) flux (integrated in top panels, mean per pixel in bottom panels)",
+      "units": "Jy or Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. East 0.6 arcsec peak 0.11 Jy at 5520 km/s",
+     "approx. West 0.6 arcsec peak 0.18 Jy at 5270 km/s",
+     "approx. West 0.6 arcsec line spans about 5000 to 5400 km/s",
+     "approx. East 0.18 arcsec peak 0.007 Jy/beam at 5500 km/s"
+    ],
+    "caption_quote": "The emission extends over 600 to 800 km s−1in both nuclei.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "moment_map",
+    "panels": 4,
+    "shows": "Integrated CO(1-0) line flux (top) and intensity-weighted mean velocity (bottom) maps of the East and West nuclei, with a central hole in the West nucleus coinciding with the dust continuum peak.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour (top)",
+      "quantity": "integrated CO(1-0) line flux",
+      "units": "Jy/beam km/s"
+     },
+     {
+      "axis": "colour (bottom)",
+      "quantity": "mean velocity <V>",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. East mean velocity range 5100 to 5700 km/s",
+     "approx. West mean velocity range 5100 to 5500 km/s",
+     "approx. East total flux range about 0.9 to 1.3 Jy/beam km/s in contours"
+    ],
+    "caption_quote": "In the West nucleus a hole is seen in the center coinciding with the dust continuum peak (see Section 4.1).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "pv_diagram",
+    "panels": 2,
+    "shows": "Position-velocity strip maps along the major axes of the East (PA 50 deg) and West (PA 265 deg) nuclei showing rotating kinematics of the CO(1-0) emission.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "offset along major axis",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "contours",
+      "quantity": "CO(1-0) intensity",
+      "units": "mJy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. East peaks near 5520 km/s at +0.2 arcsec and 5230 km/s at -0.25 arcsec",
+     "approx. West peak near 5250 km/s at -0.1 arcsec",
+     "approx. West velocity range about 4800 to 5700 km/s"
+    ],
+    "caption_quote": "Spatial-velocity strip maps along the major axes of Arp 220 East (PA=50◦) and West (PA = 265◦).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "model_vs_data",
+    "panels": 3,
+    "shows": "Derived rotation curves, enclosed dynamical mass, and face-on CO emissivity versus radius for the East and West disks from fitting high-resolution line profiles.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y (left)",
+      "quantity": "rotation velocity Vrot",
+      "units": "km/s"
+     },
+     {
+      "axis": "y (middle)",
+      "quantity": "enclosed dynamical mass M_R",
+      "units": "10^8 solar masses"
+     },
+     {
+      "axis": "y (right)",
+      "quantity": "face-on emissivity",
+      "units": "mJy km/s pc^-2"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. West peak rotation velocity about 750 km/s at about 5 pc",
+     "approx. West enclosed mass plateau about 0.8 x10^8 solar masses beyond 40 pc",
+     "approx. East rotation velocity about 300 km/s at 50 to 100 pc",
+     "approx. West central face-on emissivity about 5 mJy km/s pc^-2 at -75 pc"
+    ],
+    "caption_quote": "A central point mass of 8 × 108 M⊙is required in the West nucleus and only a limit of < 108 M⊙in the East nucleus.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "model_vs_data",
+    "panels": 1,
+    "shows": "Model circular velocity curves for a central black hole plus an r^-2 disk, comparing the full disk integration with the spherical approximation, to illustrate non-spherical gravitational effects.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "circular velocity",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "model",
+     "simulation"
+    ],
+    "supports_step": 7,
+    "validation_check": "Illustrates that the spherical approximation for dynamical mass can differ from the proper disk circular velocity.",
+    "readable_values": [
+     "approx. disk plus BH velocity peak about 380 km/s near 80 pc",
+     "approx. disk plus BH dip to about 170 km/s near 20 pc",
+     "approx. BH-only velocity about 150 km/s at 100 pc"
+    ],
+    "caption_quote": "The circular velocities are shown for a mass distribution including a central point-mass (BH) of 5×108 M⊙, and disk of mass 109 M⊙distributed with an r−2 density falloff between 20 and 80 pc.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Estimated disk scale heights H(R) for the West and East disks (left) and the corresponding disk crossing or turbulent dissipation timescales (right) as functions of radius.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y (left)",
+      "quantity": "disk thickness H",
+      "units": "pc"
+     },
+     {
+      "axis": "y (right)",
+      "quantity": "crossing time H/sigma_v(1d)",
+      "units": "Myr"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "Derived H and dissipation timescales depend on the adopted velocity dispersions (109 and 52 km/s) and rotation curves.",
+    "readable_values": [
+     "approx. West disk thickness about 40 pc at 80 pc radius",
+     "approx. East disk thickness about 20 pc at 120 pc radius",
+     "approx. West crossing time peak about 0.41 Myr at 80 pc",
+     "approx. East crossing time about 0.44 Myr at 120 pc"
+    ],
+    "caption_quote": "The disk crossing timescale (H/σv(1d)) which is equivalent to the turbulent dissipation timescales calculated from Equation 4 with fa = 1.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 8,
+  "caption_quotes_ok": 8,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 3,
+  "reproduction_targets": 4,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.994,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.997,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 8,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 2,
+    "shows": "Maps of the 2.6 mm (112 GHz) continuum emission on the Arp 220 East and West nuclei at 0.08 x 0.1 arcsec resolution, with contours in mJy/beam relative to the continuum peaks.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "contours",
+      "quantity": "2.6 mm continuum flux density",
+      "units": "mJy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. West peak 13.1 mJy/beam (from caption)",
+     "approx. East peak 3.1 mJy/beam (from caption)",
+     "approx. West continuum extent about 0.4 arcsec across",
+     "approx. East elongated along NW-SE, about 0.4 arcsec long"
+    ],
+    "caption_quote": "The 2.6 mm continuum distribution on the East and West nuclei is shown at 0.08 × 0.1′′ resolution (33 × 41 pc) .",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "sed",
+    "panels": 1,
+    "shows": "Continuum flux densities of the East and West nuclei versus frequency from literature and this work, with reference power laws for non-thermal synchrotron and Rayleigh-Jeans blackbody emission.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "continuum flux density",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 3,
+    "validation_check": "Compares measured continuum fluxes with literature values and reference synchrotron and dust power laws.",
+    "readable_values": [
+     "approx. West flux near 110 GHz about 0.03 Jy",
+     "approx. East flux near 110 GHz about 0.015 Jy",
+     "approx. East and West low-frequency fluxes about 0.1 Jy near 5 GHz",
+     "approx. high-frequency fluxes about 0.2 to 0.6 Jy near 350 GHz"
+    ],
+    "caption_quote": "At long wavelengths, the dominant emission is non-thermal synchrotron emission with flux varying ν−0.5 to −0.7; at ν > 100 GHz the dominant emission is the dust continuum",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "other",
+    "panels": 4,
+    "shows": "CO(1-0) spectra of the East and West nuclei in 0.6 arcsec apertures (integrated flux in Jy) and 0.18 arcsec apertures (mean pixel value in Jy/beam).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "LSR velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "y",
+      "quantity": "CO(1-0) flux (integrated in top panels, mean per pixel in bottom panels)",
+      "units": "Jy or Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. East 0.6 arcsec peak 0.11 Jy at 5520 km/s",
+     "approx. West 0.6 arcsec peak 0.18 Jy at 5270 km/s",
+     "approx. West 0.6 arcsec line spans about 5000 to 5400 km/s",
+     "approx. East 0.18 arcsec peak 0.007 Jy/beam at 5500 km/s"
+    ],
+    "caption_quote": "The emission extends over 600 to 800 km s−1in both nuclei.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "moment_map",
+    "panels": 4,
+    "shows": "Integrated CO(1-0) line flux (top) and intensity-weighted mean velocity (bottom) maps of the East and West nuclei, with a central hole in the West nucleus coinciding with the dust continuum peak.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset from 2.6 mm continuum peak",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour (top)",
+      "quantity": "integrated CO(1-0) line flux",
+      "units": "Jy/beam km/s"
+     },
+     {
+      "axis": "colour (bottom)",
+      "quantity": "mean velocity <V>",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. East mean velocity range 5100 to 5700 km/s",
+     "approx. West mean velocity range 5100 to 5500 km/s",
+     "approx. East total flux range about 0.9 to 1.3 Jy/beam km/s in contours"
+    ],
+    "caption_quote": "In the West nucleus a hole is seen in the center coinciding with the dust continuum peak (see Section 4.1).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "pv_diagram",
+    "panels": 2,
+    "shows": "Position-velocity strip maps along the major axes of the East (PA 50 deg) and West (PA 265 deg) nuclei showing rotating kinematics of the CO(1-0) emission.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "offset along major axis",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "contours",
+      "quantity": "CO(1-0) intensity",
+      "units": "mJy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. East peaks near 5520 km/s at +0.2 arcsec and 5230 km/s at -0.25 arcsec",
+     "approx. West peak near 5250 km/s at -0.1 arcsec",
+     "approx. West velocity range about 4800 to 5700 km/s"
+    ],
+    "caption_quote": "Spatial-velocity strip maps along the major axes of Arp 220 East (PA=50◦) and West (PA = 265◦).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "model_vs_data",
+    "panels": 3,
+    "shows": "Derived rotation curves, enclosed dynamical mass, and face-on CO emissivity versus radius for the East and West disks from fitting high-resolution line profiles.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y (left)",
+      "quantity": "rotation velocity Vrot",
+      "units": "km/s"
+     },
+     {
+      "axis": "y (middle)",
+      "quantity": "enclosed dynamical mass M_R",
+      "units": "10^8 solar masses"
+     },
+     {
+      "axis": "y (right)",
+      "quantity": "face-on emissivity",
+      "units": "mJy km/s pc^-2"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. West peak rotation velocity about 750 km/s at about 5 pc",
+     "approx. West enclosed mass plateau about 0.8 x10^8 solar masses beyond 40 pc",
+     "approx. East rotation velocity about 300 km/s at 50 to 100 pc",
+     "approx. West central face-on emissivity about 5 mJy km/s pc^-2 at -75 pc"
+    ],
+    "caption_quote": "A central point mass of 8 × 108 M⊙is required in the West nucleus and only a limit of < 108 M⊙in the East nucleus.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "model_vs_data",
+    "panels": 1,
+    "shows": "Model circular velocity curves for a central black hole plus an r^-2 disk, comparing the full disk integration with the spherical approximation, to illustrate non-spherical gravitational effects.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "circular velocity",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "model",
+     "simulation"
+    ],
+    "supports_step": 7,
+    "validation_check": "Illustrates that the spherical approximation for dynamical mass can differ from the proper disk circular velocity.",
+    "readable_values": [
+     "approx. disk plus BH velocity peak about 380 km/s near 80 pc",
+     "approx. disk plus BH dip to about 170 km/s near 20 pc",
+     "approx. BH-only velocity about 150 km/s at 100 pc"
+    ],
+    "caption_quote": "The circular velocities are shown for a mass distribution including a central point-mass (BH) of 5×108 M⊙, and disk of mass 109 M⊙distributed with an r−2 density falloff between 20 and 80 pc.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Estimated disk scale heights H(R) for the West and East disks (left) and the corresponding disk crossing or turbulent dissipation timescales (right) as functions of radius.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y (left)",
+      "quantity": "disk thickness H",
+      "units": "pc"
+     },
+     {
+      "axis": "y (right)",
+      "quantity": "crossing time H/sigma_v(1d)",
+      "units": "Myr"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "Derived H and dissipation timescales depend on the adopted velocity dispersions (109 and 52 km/s) and rotation curves.",
+    "readable_values": [
+     "approx. West disk thickness about 40 pc at 80 pc radius",
+     "approx. East disk thickness about 20 pc at 120 pc radius",
+     "approx. West crossing time peak about 0.41 Myr at 80 pc",
+     "approx. East crossing time about 0.44 Myr at 120 pc"
+    ],
+    "caption_quote": "The disk crossing timescale (H/σv(1d)) which is equivalent to the turbulent dissipation timescales calculated from Equation 4 with fa = 1.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

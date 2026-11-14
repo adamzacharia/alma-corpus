@@ -1,0 +1,285 @@
+{
+ "bibcode": "2016Sci...352.1559I",
+ "title": "Detection of an oxygen emission line from a high-redshift galaxy in the reionization epoch",
+ "year": 2016,
+ "doi": "10.1126/science.aaf0714",
+ "arxiv_id": "1606.04989",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the ISM properties (oxygen abundance, dust, neutral gas) of a z=7.2 Lyman-alpha emitter, probed via [O III] 88 um and [C II] 158 um, and do they allow ionizing photon escape?",
+ "alma_project_codes": [
+  "2013.1.01010.S",
+  "2012.1.00374.S"
+ ],
+ "data": {
+  "bands": "Band 8 ([O III]) and Band 6 ([C II])",
+  "arrays": "not stated",
+  "angular_resolution": "Band 8 natural 0.35x0.26 arcsec; tapered 0.45x0.38 arcsec; Band 6 0.80x0.60 arcsec",
+  "sensitivity": "Band 8: 0.53 mJy/beam (20 km/s cube), 0.042 mJy/beam continuum; Band 6: 0.26 and 0.014 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[O III]-SFR relation",
+    "evidence": [
+     {
+      "loc": "Empirical SFR estimation",
+      "quote": "If we assume the relation derived from the entire sample of (cite: delooze14), we obtain a SFR $>100$ M$_\\odot$ yr$^{-1}$"
+     }
+    ]
+   },
+   "citation": "De Looze et al. 2014 (cite: delooze14)"
+  },
+  {
+   "what": {
+    "value": "Ly-alpha redshift and NB1006 narrowband data",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "slightly lower than the redshift determined from the Ly$\\alpha$ emission line (cite: shibuya12)"
+     }
+    ]
+   },
+   "citation": "Shibuya et al. 2012 (cite: shibuya12)"
+  },
+  {
+   "what": {
+    "value": "[O III] line emission model",
+    "evidence": [
+     {
+      "loc": "Nebular emission",
+      "quote": "For the [O iii] 88 $\\mu$m line, the model presented in (cite: inoue14) is adopted."
+     }
+    ]
+   },
+   "citation": "Inoue et al. 2014 (cite: inoue14)"
+  },
+  {
+   "what": {
+    "value": "z~7 cosmic ionizing emissivity and UV luminosity functions",
+    "evidence": [
+     {
+      "loc": "Ionizing photon emission efficiency",
+      "quote": "$\\log_{10}(\\dot N_{\\rm ion} {\\rm [s^{-1}~Mpc^{-3}]})=50.79\\pm0.06$ at $z\\sim7$"
+     }
+    ]
+   },
+   "citation": "Bouwens et al. 2015b (cite: bouwens15b); Bouwens 2015 (cite: bouwens15); Finkelstein 2015 (cite: finkelstein15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "Standard CASA calibration, manual flagging, natural-weighted clean plus uv-tapered [O III] image",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure [O III] flux and redshift",
+   "method": "Gaussian fit to spectrum for redshift; imfit Gaussian fit of tapered integrated intensity image, beam-deconvolved",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Integrated over -300 to +230 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Upper limits on [C II] and continuum; TIR",
+   "method": "3 sigma limits; TIR from modified blackbody integrated 8–1000 um",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust = 40 K, beta = 1.5"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Lyα velocity offset",
+   "method": "Asymmetric Gaussian fit to Lyα profile vs [O III] systemic redshift, heliocentric correction",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "SED fitting for physical properties",
+   "method": "chi^2 minimization over PEGASE2 models with nebular lines and Lyα IGM transmission, using 8 constraints including [O III] flux and IR limit",
+   "software": [
+    "PEGASE",
+    "cloudy"
+   ],
+   "key_parameters": [
+    "Z grid 0.0004–0.05; T_IGM 0.20–0.45; Rgs = 1 or 2; age lower limit 1 Myr"
+   ],
+   "assumptions": [
+    "Salpeter IMF 0.1–100 Msun, constant SFH, Calzetti law"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Ionizing photon efficiency vs reionization requirement",
+   "method": "Compute fesc*xi_ion; Monte Carlo of Schechter fits to z~7 UV LFs to compare",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[O III] 88um line significance",
+   "value": "5.3",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The [O iii] line is detected with a significance of $5.3\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] integrated intensity",
+   "value": "0.45",
+   "uncertainty": "0.09",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table S1",
+     "quote": "Integrated intensity (Jy km s$^{-1}$) | $0.45 \\pm 0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] luminosity",
+   "value": "3.8e35",
+   "uncertainty": "0.8e35",
+   "units": "W",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$3.8(\\pm0.8)\\times10^{35}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] redshift",
+   "value": "7.2120",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Redshift of [O iii] 88 $\\mu$m | $7.2120 \\pm 0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] flux upper limit",
+   "value": "<5.3e-22",
+   "uncertainty": "3 sigma",
+   "units": "W m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table S1",
+     "quote": "$< 5.3\n     \\times 10^{-22}$ $(3\\sigma)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity limit (40 K)",
+   "value": "<2.9e37",
+   "uncertainty": "3 sigma",
+   "units": "W",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$<2.9\\times10^{37}$ ($3\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Lyα velocity offset",
+   "value": "+110",
+   "uncertainty": "30",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$+1.1(\\pm0.3)\\times10^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "log fesc*xi_ion",
+   "value": "25.44",
+   "uncertainty": "+0.46/-0.84",
+   "units": "Hz erg^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Ionizing photon emission efficiency",
+     "quote": "$\\log_{10}(f_{\\rm esc}\\xi_{\\rm ion}/{\\rm Hz~erg^{-1}})=25.44^{+0.46}_{-0.84}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape fraction of ionizing photons",
+   "value": "0.54",
+   "uncertainty": "+0.17/-0.54",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Escape fraction of ionizing photons | $0.54_{-0.54}^{+0.17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log stellar mass",
+   "value": "8.54",
+   "uncertainty": "+0.79/-0.22",
+   "units": "log Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$8.54_{-0.22}^{+0.79}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels / velocity-axis and channel settings for clean",
+  "Exact clean threshold in mJy, image size and cell size",
+  "Mask definition for clean",
+  "Details of the Monte Carlo Schechter integration",
+  "Grid spacing for SFR, age, E(B-V), fesc in SED fit",
+  "Aperture/position used for spectrum extraction"
+ ],
+ "missing_for_reproduction": [
+  "Clean mask and threshold details",
+  "SED fit code and grid",
+  "Simulation outputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and decent description, but SED and imaging details sparse.",
+ "rediscovery_reason": "Public ALMA data, clear imaging recipe, numeric results (flux, redshift).",
+ "source_card": "cards/2016Sci...352.1559I/sonnet/card.md"
+}

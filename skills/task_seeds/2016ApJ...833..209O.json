@@ -1,0 +1,219 @@
+{
+ "bibcode": "2016ApJ...833..209O",
+ "title": "Dense Core Properties in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA",
+ "year": 2016,
+ "doi": "10.3847/1538-4357/833/2/209",
+ "arxiv_id": "1610.08581",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the properties (masses, virial state, mass function) of dense cores in the IRDC G14.225-0.506 hub-filament systems, and what do they imply for high-mass star formation?",
+ "alma_project_codes": [
+  "2013.1.00312.S"
+ ],
+ "data": {
+  "bands": "Band 3 (103 GHz for continuum)",
+  "arrays": "12-m array (37 antennas) and ACA 7-m (10 antennas)",
+  "angular_resolution": "3.7x2.0 arcsec (field N), 3.1x2.1 arcsec (field S)",
+  "sensitivity": "rms 0.2 mJy/beam before primary beam correction"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Kinetic temperatures from NH3, NH3 linewidths, 870 um APEX maps, filament virial parameters",
+    "evidence": [
+     {
+      "loc": "Core properties",
+      "quote": "For the dust temperature, we use the kinetic temperature, $T_{\\rm kin}$, derived from NH$_3$ ($J,K$) $=$ ($1,1$) and $(2,2)$ emission lines (cite: bus13)."
+     }
+    ]
+   },
+   "citation": "(cite: bus13)"
+  },
+  {
+   "what": {
+    "value": "YSO and X-ray source catalog",
+    "evidence": [
+     {
+      "loc": "Core properties",
+      "quote": "The ID numbers of YSOs and X-ray sources are adopted from (cite: pov16)."
+     }
+    ]
+   },
+   "citation": "(cite: pov16)"
+  },
+  {
+   "what": {
+    "value": "N2H+ linewidths of cores",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The linewidths are measured from N$_2$H$^+$ (J=1-0) ALMA observations (Chen et al. in prep)."
+     }
+    ]
+   },
+   "citation": "Chen et al. 2016, in prep"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image combined 12-m+ACA continuum",
+   "method": "CASA CLEAN, natural weighting, 0.4 arcsec pixels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify dense cores",
+   "method": "Clumpfind with 2 sigma threshold and 2 sigma steps; keep peaks above 5 sigma",
+   "software": [
+    "Clumpfind"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Classify protostellar vs prestellar",
+   "method": "Core is protostellar if a YSO or X-ray source lies within 4 arcsec of core centre",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "YSO age 0.1 Myr, velocity dispersion width 0.8 km/s"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive core masses",
+   "method": "M = F d^2 / (kappa B_nu(Td)) x f_d",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas-to-dust 100, kappa=0.9(lambda/1.3mm)^beta cm2/g, beta=1.5; default T 22 K protostellar, 17 K prestellar"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Virial analysis of cores, clumps, filaments",
+   "method": "Mvir=210 r dv^2 (uniform density); alpha=Mvir/Mcore; clumps from APEX 870um via Clumpfind with NH3 linewidths",
+   "software": [
+    "Clumpfind"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "uniform density sphere; magnetic fields neglected"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit cumulative CMF of prestellar candidates",
+   "method": "N(>M)=kM^-alpha+c fit with Poisson errors N^1/2, mass range 2.4-14 Msun",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dense cores",
+   "value": "48",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Core properties",
+     "quote": "We identify a total of 48 cores (29 in the northern part and 19 in the southern part)."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar / prestellar cores",
+   "value": "20 / 28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Core properties",
+     "quote": "we identify 20 protostellar cores and 28 prestellar cores candidates"
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass range",
+   "value": "1.1 to 78",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Core properties",
+     "quote": "As a result, the core mass ranges from 1.1 to 78 $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Core virial parameters",
+   "value": "0.1-1.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The virial parameters of the dense cores are between 0.1 and 1.3"
+    }
+   ]
+  },
+  {
+   "quantity": "CMF cumulative slope alpha",
+   "value": "1.6",
+   "uncertainty": "0.7",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Core Mass Function",
+     "quote": "derived to be $1.6\\pm0.7$ using the mass range from 2.4 to 14 $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Max stellar mass expected (SFE 10%, 30%)",
+   "value": "40 and 47",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Star formation in G14.2",
+     "quote": "we derive the maximum stellar mass to be **40 and 47 $M_\\odot$, respectively**"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Clumpfind implementation and exact parameters/mask handling",
+  "Line-free channels and continuum bandwidth used for the 3 mm map",
+  "CLEAN threshold, iterations and masks",
+  "N2H+ hyperfine fitting details (in Chen et al. in prep)",
+  "Procedure for the size deconvolution and FWHM radius",
+  "Fitting method for the CMF slope (binning, range choice)",
+  "Which clumps' tmperature values were adopted per core"
+ ],
+ "missing_for_reproduction": [
+  "Chen et al. N2H+ linewidth data",
+  "Clumpfind parameter files",
+  "Table of per-core temperatures from Busquet 2013 already in Table 1"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear recipe for continuum cores and masses, but N2H+ linewidths and several imaging parameters are not given.",
+ "rediscovery_reason": "Public data, core table in the paper gives numeric answer keys, continuum recipe largely stated.",
+ "source_card": "cards/2016ApJ...833..209O/sonnet/card.md"
+}

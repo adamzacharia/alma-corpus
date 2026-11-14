@@ -1,0 +1,945 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...837..177C",
+  "title": "Thermal Physics of the Inner Coma: ALMA Studies of the Methanol Distribution and Excitation in Comet C/2012 K1 (PanSTARRS)",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Cordiner, M. A.",
+  "n_authors": 14,
+  "arxiv_id": "1701.08258",
+  "doi": "10.3847/1538-4357/aa6211",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.01061.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present spatially and spectrally-resolved observations of CH$_3$OH emission from comet C/2012 K1 (PanSTARRS) using The Atacama Large Millimeter/submillimeter Array (ALMA) on 2014 June 28-29."
+   }
+  ],
+  "science": {
+   "fields": [
+    "solar_system"
+   ],
+   "targets": [
+    {
+     "name": "C/2012 K1 (PanSTARRS)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "geocentric distance 1.96-1.97 AU",
+      "evidence": [
+       {
+        "loc": "2 ALMA CH$_3$OH observations",
+        "quote": "while the comet was at a heliocentric distance $r_H=1.42$-1.43 AU and geocentric distance $\\Delta=1.96$-1.97 AU"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the CH3OH distribution, rotational temperature and excitation vary with distance from the nucleus in the inner coma of comet C/2012 K1 (PanSTARRS)?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Two-dimensional maps of the line-of-sight average rotational temperature ($T_{rot}$) were derived, covering spatial scales $0.3''-1.8''$"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.01061.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "It makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01061.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (K=3-2 near 251.9 GHz) on June 28; Band 7 (J=7-6 near 338.5 GHz) on June 29",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "The CH$_3$OH $K=3-2$ rotational band near 251.9 GHz (in ALMA receiver band 6) was observed on June 28 and the $J=7-6$ band near 338.5 GHz (in band 7) was observed on June 29."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "single 976 kHz spectral window per band, 488 kHz resolution (0.58 km/s Band 6, 0.43 km/s Band 7)",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "in a single 976 kHz spectral window, using a spectral resolution of 488 kHz (0.58 km s$^{-1}$ in band 6 and 0.43 km s$^{-1}$ in band 7)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH",
+     "transition": "K=3-2 band (14 lines detected)",
+     "rest_frequency": "near 251.9 GHz",
+     "evidence": [
+      {
+       "loc": "4.1 Spectra and maps",
+       "quote": "Forteen individual emission lines of the $K=3-2$ band were detected on 28 June"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "J=7-6 band (16 lines detected)",
+     "rest_frequency": "near 338.5 GHz",
+     "evidence": [
+      {
+       "loc": "4.1 Spectra and maps",
+       "quote": "sixteen lines of the $J=7-6$ band were detected on 29 June"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "20-650 m, thirty 12-m antennae",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "Thirty 12-m antennae, with baseline lengths 20-650 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.80''x0.43'' at 252 GHz; 0.71''x0.33'' at 338 GHz",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "resulted in an angular resolution of $0.80''\\times0.43''$ at 252 GHz and $0.71''\\times0.33''$ at 338 GHz"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "≈7.4'' (≈10^4 km)",
+    "evidence": [
+     {
+      "loc": "4.1 Spectra and maps",
+      "quote": "the largest angular scale detectable in our observations is $\\approx7.4''$ (or $\\approx10^4$ km)"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "RMS per channel 1.8 mJy/beam (252 GHz), 3.0 mJy/beam (338 GHz)",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "the measured RMS noise levels per channel were 1.8 mJy bm$^{-1}$ and 3.0 mJy bm$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "46 min at 252 GHz; 38 min at 338 GHz",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "for a total of 46 min on-source at 252 GHz and 38 min on-source at 338 GHz"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014-06-28 19:07-20:05 and 2014-06-29 17:37-18:26",
+    "evidence": [
+     {
+      "loc": "2 ALMA CH$_3$OH observations",
+      "quote": "during 2014-06-28 19:07-20:05 and 2014-06-29 17:37-18:26"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Nançay radio telescope",
+     "provided": {
+      "value": "OH 18 cm lines giving Q(OH) and water production rate",
+      "evidence": [
+       {
+        "loc": "3 Nançay OH observations",
+        "quote": "The strengths of the 18 cm OH lines (at 1667 and 1665 MHz) in comet C/2012 K1 (PanSTARRS) were monitored using the Nançay radio telescope"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "OH photolysis branching ratio 0.86 and CH3OH photodissociation rate 1e-5 s-1",
+      "evidence": [
+       {
+        "loc": "3 Nançay OH observations",
+        "quote": "adopting a branching ratio of 0.86 for the H$_2$O + $h\\nu$ $\\longrightarrow$ OH + H photolysis channel (cite: hue92)"
+       }
+      ]
+     },
+     "citation": "(cite: hue92)"
+    },
+    {
+     "what": {
+      "value": "Radiative transfer model for CH3OH level populations",
+      "evidence": [
+       {
+        "loc": "5 Discussion",
+        "quote": "Using the radiative transfer model of (cite: biv99; biv15), which computes the CH$_3$OH level populations"
+       }
+      ]
+     },
+     "citation": "(cite: biv99; biv15)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard CASA routines",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "The data were flagged, calibrated and cleaned using standard CASA routines (cite: cor14)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ganymede",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "The data were flagged, calibrated and cleaned using standard CASA routines (cite: cor14), with Ganymede as the flux calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.05''",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "Imaging was performed using a grid size of $768\\times768$ pixels, with $0.05''$ pixel scale."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "768x768 pixels",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "Imaging was performed using a grid size of $768\\times768$ pixels"
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied to cubes",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "The resulting data cubes were corrected for the response of the ALMA primary beam"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "spectra convolved with 3 km/s FWHM Gaussian kernel before fitting",
+     "evidence": [
+      {
+       "loc": "4.3 Line modeling",
+       "quote": "each extracted spectrum was first convolved with a Gaussian broadening kernel of FWHM 3 km s$^{-1}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.80''x0.43'' (252 GHz), 0.71''x0.33'' (338 GHz)",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "angular resolution of $0.80''\\times0.43''$ at 252 GHz and $0.71''\\times0.33''$ at 338 GHz"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Flagging, calibration and cleaning with standard CASA routines",
+      "evidence": [
+       {
+        "loc": "2 ALMA CH$_3$OH observations",
+        "quote": "The data were flagged, calibrated and cleaned using standard CASA routines (cite: cor14)"
+       }
+      ]
+     },
+     "from_reference": "(cite: cor14)"
+    },
+    {
+     "what": {
+      "value": "Spectral line modeling algorithm (modified)",
+      "evidence": [
+       {
+        "loc": "4.3 Line modeling",
+        "quote": "Using a modified version of the spectral line modeling algorithm previously applied to interstellar rotational emission lines by (cite: cor13)"
+       }
+      ]
+     },
+     "from_reference": "(cite: cor13)"
+    },
+    {
+     "what": {
+      "value": "OH observation procedure and analysis",
+      "evidence": [
+       {
+        "loc": "3 Nançay OH observations",
+        "quote": "The observational procedure and data analysis were described previously by (cite: cro02)"
+       }
+      ]
+     },
+     "from_reference": "(cite: cro02)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and tclean parameters (weighting, robust, deconvolver, threshold, masks)",
+    "Bandpass and phase calibrator names and flux scale uncertainty",
+    "Continuum subtraction (comet continuum undetected, so procedure unclear)",
+    "Details of the modified line-fitting code, which is not released",
+    "Comet ephemeris file and ALMA simulator settings for Haser model",
+    "Details of the non-LTE model inputs (electron density, collision rates)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra and moment maps",
+    "method": {
+     "value": "Average over 1.5'' circular aperture at the emission peak; integrate line ranges for maps",
+     "evidence": [
+      {
+       "loc": "4.1 Spectra and maps",
+       "quote": "These spectra were extracted by averaging the data over a circular aperture $1.5''$ in diameter, centered on the peak of the CH$_3$OH emission."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Rotational diagram analysis",
+    "method": {
+     "value": "Rotational diagram at column density peak; integration limits ±1.5 km/s",
+     "evidence": [
+      {
+       "loc": "4.2 Rotational diagrams",
+       "quote": "for our data, we used integration limits of $\\pm1.5$ km s$^{-1}$ for all lines"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Equal A and E abundances",
+      "evidence": [
+       {
+        "loc": "4.2 Rotational diagrams",
+        "quote": "Thus, we assumed equal abundances of $A$ and $E$ CH$_3$OH in our analysis from here on."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Linear fit to the diagram; errors from gradient and intercept",
+     "evidence": [
+      {
+       "loc": "4.2 Rotational diagrams",
+       "quote": "Errors on $T_{rot}$ and $N$ were obtained from the errors on the gradient and intercept"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with line-modeling results",
+     "evidence": [
+      {
+       "loc": "4.3 Line modeling",
+       "quote": "are in good agreement with those obtained using the rotational diagram method"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Spectral line fitting for Trot and N",
+    "method": {
+     "value": "Nonlinear least-squares fit of Gaussian optical depth curves per pixel, parameters Trot, N, FWHM",
+     "evidence": [
+      {
+       "loc": "4.3 Line modeling",
+       "quote": "fitting Gaussian optical depth curves to each emission line (as a function of frequency), parameterised by $T_{rot}$, $N$ and the line FWHM"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Spectra smoothed by 3 km/s kernel; FWHM and Doppler shift held fixed",
+      "evidence": [
+       {
+        "loc": "4.3 Line modeling",
+        "quote": "allowing these values to be held fixed during the fitting"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "chi2 minimization; 300 Monte Carlo noise realizations, 1-sigma from ±68% percentiles",
+     "evidence": [
+      {
+       "loc": "4.3 Line modeling",
+       "quote": "300 synthetic, Gaussian, random noise spectra were generated"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi2 1.0-1.3",
+     "evidence": [
+      {
+       "loc": "4.3 Line modeling",
+       "quote": "with reduced $\\chi^2$ values in the range 1.0-1.3"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Maps and radial profiles",
+    "method": {
+     "value": "Pixel-by-pixel fit in 2''x2'' area; azimuthal averaging in 0.1'' annuli around column density peak; maps masked at >50% uncertainty",
+     "evidence": [
+      {
+       "loc": "4.5 Radial profiles",
+       "quote": "our data were binned into a series of $0.1''$-wide annuli"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "same as step 3",
+     "evidence": [
+      {
+       "loc": "Radial profiles",
+       "quote": "These $\\bar{S_{\\nu}}(\\rho)$ were subject to the same fitting procedure outlined in Section [4.3](#sec:modeling) to derive radial \\[$T_{rot}$, $N$\\] profiles"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Haser model of column density and production rates",
+    "method": {
+     "value": "Haser outflow model run through CASA ALMA simulator and compared with N(rho)",
+     "evidence": [
+      {
+       "loc": "4.5 Radial profiles",
+       "quote": "the model column density maps were run through the ALMA simulator in CASA with array configuration, imaging and cleaning parameters matching those of our observationions"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Constant outflow velocity 0.5 km/s, photodissociation rate 1e-5 s-1",
+      "evidence": [
+       {
+        "loc": "4.5 Radial profiles",
+        "quote": "constant velocity of 0.5 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual fit to observed N(rho)",
+     "evidence": [
+      {
+       "loc": "4.5 Radial profiles",
+       "quote": "provide an excellent fit to the observations on June 28, and a reasonably good fit on June 29"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Non-LTE excitation modelling of Trot vs Tkin",
+    "method": {
+     "value": "Radiative transfer model of Biver et al. with collisions with H2O and electrons and solar pumping; trial Tkin(r) profiles",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "A variety of different kinetic temperature profiles were tested in our radiative transfer model"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Q(H2O)=1e29 s-1, v=0.5 km/s, cross section 5e-14 cm-2",
+      "evidence": [
+       {
+        "loc": "5 Discussion",
+        "quote": "The H$_2$O production rate was taken to be $10^{29}$ s$^{-1}$ and outflow velocity 0.5 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Manual trial of Tkin(r) profiles",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "A variety of different kinetic temperature profiles were tested in our radiative transfer model, with the aim of reproducing the general behaviour of the observed $T_{rot}(r)$ profiles."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration, cleaning, ALMA simulator",
+     "evidence": [
+      {
+       "loc": "2 ALMA CH$_3$OH observations",
+       "quote": "calibrated and cleaned using standard CASA routines (cite: cor14)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Trot at peak, June 28 (line modeling)",
+    "value": "62.3",
+    "uncertainty": "±5.3",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Line modeling",
+      "quote": "$T_{rot}=62.3\\pm5.3$ K, $N=(2.8\\pm0.1)\\times10^{14}$ cm$^{-2}$ on June 28"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot at peak, June 29 (line modeling)",
+    "value": "116",
+    "uncertainty": "±18",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Line modeling",
+      "quote": "$T_{rot}=116\\pm18$ K, $N=(2.7\\pm0.4)\\times10^{14}$ cm$^{-2}$ on June 29"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot at peak, June 28 (rotational diagram)",
+    "value": "63.0",
+    "uncertainty": "±6.8",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2 Rotational diagrams",
+      "quote": "$T_{rot}=63.0\\pm6.8$ K, $N=(2.8\\pm0.7)\\times10^{14}$ cm$^{-2}$ on June 28"
+     }
+    ]
+   },
+   {
+    "quantity": "Water production rate",
+    "value": "1.05e29",
+    "uncertainty": "±0.20e29",
+    "units": "s-1",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3 Nançay OH observations",
+      "quote": "we obtain a water production rate of $(1.05\\pm0.20)\\times10^{29}$ s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH production rate",
+    "value": "1.9e27 (June 28), 1.4e27 (June 29)",
+    "uncertainty": "not stated",
+    "units": "s-1",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Radial profiles",
+      "quote": "CH$_3$OH production rates of $1.9\\times10^{27}$ s$^{-1}$ on June 28 and $1.4\\times10^{27}$ s$^{-1}$ on June 29"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH mixing ratio",
+    "value": "1.1-2.2",
+    "uncertainty": "not stated",
+    "units": "% relative to H2O",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Radial profiles",
+      "quote": "with mixing ratios of 1.1-2.2%"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot at rho=1000 km, June 29",
+    "value": "42",
+    "uncertainty": "±4",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.5 Radial profiles",
+      "quote": "decreased sharply from $116\\pm18$ K to $42\\pm4$ K between $\\rho=0$-1000 km"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot at rho=2500 km, June 28",
+    "value": "22",
+    "uncertainty": "±9",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.5 Radial profiles",
+      "quote": "followed by a relatively slow, steady decrease to $22\\pm9$ K at $\\rho=2500$ km"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CH3OH column density profile consistent with isotropic uniform outflow from nucleus; no extended source",
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "no evidence is found for significant production of CH$_3$OH in the coma, either from icy grain sublimation or photochemistry"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does coma Trot fall with distance beyond sub-thermal excitation?",
+    "experiment": "Line fitting of azimuthal spectra plus non-LTE modelling",
+    "result": "Observed Trot falls faster than for constant Tkin",
+    "finding": "Falling coma kinetic temperature required",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "Sub-thermal excitation is therefore insufficient to fully explain the observed $T_{rot}$ behaviour in comet K1/PanSTARRS, and a variable $T_{kin}(r)$ profile is required."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is CH3OH released directly from the nucleus?",
+    "experiment": "Haser model fit to N(rho)",
+    "result": "Good fits with isotropic outflow",
+    "finding": "Nuclear source, mixing ratio 1.1-2.2%",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.5 Radial profiles",
+      "quote": "these results imply that CH$_3$OH was sublimated directly from the nucleus of comet K1/PanSTARRS with mixing ratios of 1.1-2.2%."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do standard coma models explain the temperature drop?",
+    "experiment": "Compare with DSMC and multi-fluid models",
+    "result": "Observed drop less steep than models",
+    "finding": "Additional heating source needed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the observed temperature drop with distance is less steep than predicted by standard coma theoretical models"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Elliptical beam and filtering limit interpretation; June 29 Trot profile hard to fit",
+     "evidence": [
+      {
+       "loc": "4.5 Radial profiles",
+       "quote": "The elliptical shape of the telescope beam introduces some additional uncertainty into our radial temperature and column density profiles"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Tkin profiles chosen by eye without uncertainties",
+    "Line-of-sight averaging biases Trot",
+    "Two epochs only, different bands, so temporal comparison confounded by band excitation differences",
+    "Haser velocity assumed constant"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2013.1.01061.S cited",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "It makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01061.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Fitting code not released",
+    "Non-LTE model details and CASA imaging parameters"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear fitting approach, but imaging parameters, versions and model code are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging settings and the bespoke fitting and non-LTE codes are not specified well enough to redo the main results."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: cor13)",
+     "why": "Spectral line modeling algorithm"
+    },
+    {
+     "citation": "(cite: boc94)",
+     "why": "Rotational diagram method"
+    },
+    {
+     "citation": "(cite: biv99; biv15)",
+     "why": "Non-LTE excitation model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: cor14)",
+     "why": "Earlier ALMA comet observations and CASA procedure"
+    },
+    {
+     "citation": "(cite: cor16)",
+     "why": "Preliminary analysis of the same data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-a3e518e16ce45af10f62b7417f664510",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:11",
+  "usage": {
+   "input_tokens": 20745,
+   "output_tokens": 8016,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.061431,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 44,
+   "rate": 0.595
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:50:40",
+  "custom_id": "repair-sonnet-e1eba53494ba34d52f5669e8e8f58c0a",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "These $\\bar{S_{\\nu}}(\\rho)$ were subject to the same fitting procedure outlined in Section [4.3](#sec:modeling) to derive radial \\[$T_{rot}$, $N$\\] profiles"
+   },
+   {
+    "path": "analysis_steps[5].fitting.evidence[0]",
+    "old": null,
+    "new": "A variety of different kinetic temperature profiles were tested in our radiative transfer model, with the aim of reproducing the general behaviour of the observed $T_{rot}(r)$ profiles."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

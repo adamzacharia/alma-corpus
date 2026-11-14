@@ -1,0 +1,988 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...835..108S",
+  "title": "Kinematic Structure of Molecular Gas around High-mass YSO, Papillon Nebula, in N159 East in the Large Magellanic Cloud: A New Perspective with ALMA",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Saigo, Kazuya",
+  "n_authors": 23,
+  "arxiv_id": "1604.06010",
+  "doi": "10.3847/1538-4357/835/1/108",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00554.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the ALMA Band 3 and Band 6 results of $^{12}$CO(2-1), $^{13}$CO(2-1), H30$\\alpha$ recombination line, free-free emission around 98 GHz"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "nearby_galaxies",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "N159E (Papillon Nebula), LMC",
+     "coordinates": {
+      "value": "mosaic centre 05h40m08.0429s, -69d44m39.515s (J2000)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "(05$^{\\rm h}$40$^{\\rm m}$08$^{\\rm s}$.0429, -69$^{\\rm d}$44$^{\\rm m}$39$^{\\rm s}$.515)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The LMC is close to us at a distance of 50 kpc (cite: Schaefer2008; Grijs2014)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "50 kpc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "(05$^{\\rm h}$40$^{\\rm m}$08$^{\\rm s}$.0429, -69$^{\\rm d}$44$^{\\rm m}$39$^{\\rm s}$.515)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The LMC is close to us at a distance of 50 kpc (cite: Schaefer2008; Grijs2014)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Schaefer2008; de Grijs 2014",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "(05$^{\\rm h}$40$^{\\rm m}$08$^{\\rm s}$.0429, -69$^{\\rm d}$44$^{\\rm m}$39$^{\\rm s}$.515)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The LMC is close to us at a distance of 50 kpc (cite: Schaefer2008; Grijs2014)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How is molecular gas distributed and moving around the Papillon Nebula high-mass YSO in N159E (LMC), and was its formation triggered by filament collision?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The focuses will be on the filamentary distribution of the molecular clouds and the formation of the high-mass star \"Papillion Nebula\""
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00554.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "This observation is based on ALMA High Priority Project 2012.1.00554.S (PI:Yasuo Fukui)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (86-116 GHz) and Band 6 (211-275 GHz)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We carried out ALMA Cycle 1 Band 3 (86-116 GHz) and Band 6 (211-275 GHz) observations toward N159E"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "15.3 kHz x 3840 channels for lines; continuum 1875.0 MHz wide bandwidth (488.3 kHz channels)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with the frequency resolution of 15.3 kHz ($\\times$ 3840 channels)"
+     },
+     {
+      "loc": "Observations",
+      "quote": "We also observed the continuum emission with the wide bandwidth of 1875.0 MHz (488.3 kHz 3840 channels)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$^{12}$CO(J=2-1), $^{13}$CO(J=2-1) and C$^{18}$O(J=2-1)"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$^{12}$CO(J=2-1), $^{13}$CO(J=2-1) and C$^{18}$O(J=2-1)"
+      }
+     ]
+    },
+    {
+     "species": "H30alpha",
+     "transition": "recombination line",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The radio recombination lines of H30$\\alpha$ and H40$\\alpha$ were included in the wide bandwidth observations."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m main array plus ACA 7m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "both with the main array 12m antennas and the Atacama Compact Array (ACA) 7m antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "12m: 13-392 m (Band 6), 15-452 m (Band 3); ACA 8-36 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the projected baseline length of the 12m array range is from 13 m to 392 m."
+     },
+     {
+      "loc": "Observations",
+      "quote": "In the both Bands, projected baselines of ACA observation covers from 8 m to 36 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Band 6 1.21\" x 0.84\"; Band 3 2.68\" x 1.66\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "providing synthesized beam sizes of 1.21” $\\times$ 0.84” (0.3 pc $\\times$ 0.2 pc at 50 kpc) and 2.68” $\\times$ 1.66”"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "46 mJy/beam (Band 6), 26 mJy/beam (Band 3) at 0.2 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "are 46 mJy beam$^{-1}$ in Band 6 and 26 mJy beam$^{-1}$ in Band 3, in emission-free channels"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 6 25 min; Band 3 5 min",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with total on-source time of 25 minutes"
+     },
+     {
+      "loc": "Observations",
+      "quote": "with total on-source time of 5 minutes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Band 6: 2013 Dec 2 and 2014 Mar 7; Band 3: 2013 Dec 3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The ALMA Band 6 observations were carried out on December 2 2013 and March 7 2014"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "High Priority Project, PI Yasuo Fukui",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "This observation is based on ALMA High Priority Project 2012.1.00554.S (PI:Yasuo Fukui)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer/SAGE, 2MASS, Herschel/HERITAGE",
+     "provided": {
+      "value": "photometry for YSO SED fitting",
+      "evidence": [
+       {
+        "loc": "3.2 YSO characteristics",
+        "quote": "using the 2MASS near-IR (JHKs), Spitzer/SAGE (3.6-24), and Herschel/HERITAGE (100-500 um) photometry"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST WFPC2",
+     "provided": {
+      "value": "Halpha image of Papillon",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "shows the H$\\alpha$ image of WFPC2 HST around the Papillon HII blobs"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ASTE 10m",
+     "provided": {
+      "value": "12CO(3-2) contours",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "Gray contour shows the integrated intensity of $^{12}$CO(J=3-2) with ASTE 10m telescope"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "13CO/H2 abundance ratio 3.2e-7",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "the $^{13}$CO/H$_{2}$ abundance ratio of $3.2 \\times 10^{-7}$ (cite: Fujii2014)"
+       }
+      ]
+     },
+     "citation": "Fujii2014"
+    },
+    {
+     "what": {
+      "value": "X(CO) = (7±2)e20 cm-2",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "X(CO) = $(7 \\pm 2) \\times 10^{20}$ cm$^{-2}$ (cite: Fukui2008)"
+       }
+      ]
+     },
+     "citation": "Fukui2008"
+    },
+    {
+     "what": {
+      "value": "12CO(2-1)/(1-0) ratio 0.85",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "ratio toward HII regions of 0.85 (the ratio in the Orion-KL region of (cite: Nishimura2015))"
+       }
+      ]
+     },
+     "citation": "Nishimura2015"
+    },
+    {
+     "what": {
+      "value": "dust kappa 0.77 cm2/g at 1.2 mm; dust-to-gas 3.5e-3",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "is 0.77 cm$^2$ g$^{-1}$ and $3.5 \\times10^{-3}$, respectively (cite: Herrera2013; Fukui2015)"
+       }
+      ]
+     },
+     "citation": "Herrera2013; Fukui2015"
+    },
+    {
+     "what": {
+      "value": "YSO SED model grid",
+      "evidence": [
+       {
+        "loc": "3.2 YSO characteristics",
+        "quote": "we use the 2D radiative transfer YSO model grid of Robitaille et al. (2007)"
+       }
+      ]
+     },
+     "citation": "Robitaille et al. (2007)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA calibration with additional flagging of a few antennas",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we made additional flagging of a few antennas that have too low gain or show large amplitude dispersion in time."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Pallas and Ganymede (Band 6), Uranus (Band 3); Butler-JPL-Horizons 2012 model",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Flux calibration was carried out by using 3 solar system objects (Pallas and Ganymede in Band 6, Uranus in Bnad 3)."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting for both bands",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We used the natural weighting for both the Band 6 and Band 3 data"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "only 12m data used since 7m total flux differs <10%",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "thus we use only the 12m array data here"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.21\" x 0.84\" (Band 6); 2.68\" x 1.66\" (Band 3)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "providing synthesized beam sizes of 1.21” $\\times$ 0.84”"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "46 mJy/beam (Band 6), 26 mJy/beam (Band 3) at 0.2 km/s",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "are 46 mJy beam$^{-1}$ in Band 6 and 26 mJy beam$^{-1}$ in Band 3"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "CO-based mass estimation method",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "from the $^{12}$CO(2-1) intensities by the same method as (cite: Fukui2015)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Fukui2015)"
+    },
+    {
+     "what": {
+      "value": "Mezger & Henderson equations for HII parameters",
+      "evidence": [
+       {
+        "loc": "3.2 YSO characteristics",
+        "quote": "use the continuum emission and equations provided by Mezger & Henderson (1967)"
+       }
+      ]
+     },
+     "from_reference": "Mezger & Henderson (1967)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version",
+    "Continuum-free channels and continuum subtraction",
+    "Cell size, image size, deconvolver and masking",
+    "Per-line rest frequencies and moment-map velocity ranges/clipping",
+    "Excitation-temperature and column-density details of the 13CO LTE mass",
+    "SED-fitting settings (extinction, distance range, chi2 cut)",
+    "Electron temperature from H30alpha value",
+    "Which 12m/7m execution blocks went into the images"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Mass from 12CO(2-1)",
+    "method": {
+     "value": "Convert 12CO(2-1) intensity to 1-0 with ratio 0.85, apply X(CO)",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we assumed the typical $^{12}$CO(2-1)/$^{12}$CO(1-0) ratio toward HII regions of 0.85"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "X(CO) = (7±2)e20 cm-2",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "X(CO) = $(7 \\pm 2) \\times 10^{20}$ cm$^{-2}$ (cite: Fukui2008)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with 13CO mass",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "It is consistent with the mass derived from $^{12}$CO(2-1)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Mass from 13CO(2-1) in LTE",
+    "method": {
+     "value": "LTE with Tex from optically thick 12CO peak temperature, floor 20 K",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "were assumed to be 20 K where the calculated excitation temperatures were below 20 K"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "13CO/H2 = 3.2e-7",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "$^{13}$CO/H$_{2}$ abundance ratio of $3.2 \\times 10^{-7}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "YSO SED fitting",
+    "method": {
+     "value": "Robitaille 2007 model grid fit to 2MASS, Spitzer, Herschel photometry",
+     "evidence": [
+      {
+       "loc": "3.2 YSO characteristics",
+       "quote": "Mass, Luminosity and age are the best fit results of SED fitting."
+      }
+     ]
+    },
+    "software": [
+     "Robitaille SED fitter"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Chen 2010 and Meynadier 2004",
+     "evidence": [
+      {
+       "loc": "3.2 YSO characteristics",
+       "quote": "Our fittings result in higher mass and luminosity due to the addition of Herschel PACS and SPIRE photometry"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Ionized gas properties",
+    "method": {
+     "value": "Te from H30alpha, then Mezger & Henderson equations with 98 GHz continuum",
+     "evidence": [
+      {
+       "loc": "3.2 YSO characteristics",
+       "quote": "We determine the electron temperature of the gas using the H30$\\alpha$ emission"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "no ionizing photons escape",
+      "evidence": [
+       {
+        "loc": "3.2 YSO characteristics",
+        "quote": "therefore we are assuming that none of ionizing photons are escaping"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Dust mass in Papillon region",
+    "method": {
+     "value": "231 GHz continuum flux within 1 pc converted to mass",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "The total flux of 231GHz continuum emission around Papillon Nebula within the radius of 1pc is $\\sim$ 90 mJy."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Tdust 80 K scaling; kappa 0.77 cm2/g; dust-to-gas 3.5e-3",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "is 0.77 cm$^2$ g$^{-1}$ and $3.5 \\times10^{-3}$, respectively"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Filament kinematics",
+    "method": {
+     "value": "Velocity-component maps and PV diagrams along filaments; FWHM line widths",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "Figure [7](#N159E_Papillon_PV) shows the PV diagrams along each filament."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "blue -8.0 to -1.6, green -1.4 to +1.0, red +1.2 to +7.8 km/s",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "blue (-8.0 km s$^{-1}$ – -1.6 km s$^{-1}$), green (-1.4 km s$^{-1}$ – +1.0 km s$^{-1}$), and red (+1.2 km s$^{-1}$ – +7.8 km s$^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration, data reduction and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The calibration and data reduction were made using the Common Astronomy Software Application (CASA) package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total molecular mass from 12CO(2-1)",
+    "value": "1.3e5",
+    "uncertainty": "±0.4e5",
+    "units": "Msun",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "$(1.3 \\pm 0.4) \\times 10^{5}$ M$_{\\odot}$ from the $^{12}$CO(2-1) intensities"
+     }
+    ]
+   },
+   {
+    "quantity": "Total molecular mass from 13CO(2-1)",
+    "value": "0.92e5",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "calculated to be $0.92 \\times 10^{5}$ M$_{\\odot}$ from the $^{13}$CO(2-1) intensity"
+     }
+    ]
+   },
+   {
+    "quantity": "Papillon YSO mass",
+    "value": "35",
+    "uncertainty": "±2",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| J054004.40-694437.6 | Papillon Nebula YSO | 35 $\\pm$ 2 | (1.8 $\\pm$ 0.1) $\\times 10^{5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Ionized mass of Papillon",
+    "value": "65",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "The mass of the ionized dense gas is estimated to be 65 M$_{\\odot}$ from the H30$\\alpha$ observations"
+     }
+    ]
+   },
+   {
+    "quantity": "Max 12CO antenna temperature at hole edge",
+    "value": "76, 79, 65 K at PA 23, -37, -97 deg",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "reach 76 K, 79 K and 65 K, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust cloud mass",
+    "value": "5340 (Tdust/80 K)^-1",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "5340 $\\displaystyle(\\frac{T_{\\rm dust}}{80 \\rm K})^{-1}$ M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Filament FWHM near Papillon",
+    "value": "4-6",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "is 4 - 6 km s$^{-1}$ in a place near the Papillon and is 2 - 3 km s$^{-1}$ in a place far from the Papillon"
+     }
+    ]
+   },
+   {
+    "quantity": "Collision timescale",
+    "value": "2e5",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4",
+      "quote": "i.e., $2 \\times 10^{5}$ yrs."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No 12CO outflow wings detected toward the Papillon YSO.",
+    "evidence": [
+     {
+      "loc": "3.2 YSO characteristics",
+      "quote": "neither the Papillon Nebula YSO nor J054009.49-694453.5 have $^{12}$CO(2-1) outflow wing detections"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Was the Papillon YSO formation triggered by filament collision?",
+    "experiment": "PV diagrams and velocity components of three filaments",
+    "result": "Three velocity filaments merge at the YSO; broadened lines span ~9 km/s",
+    "finding": "Collision of filaments likely triggered the O star formation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4",
+      "quote": "It is natural that a similar filamentary collision, possibly a triple collision, took place in Papillon."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the Papillon YSO beginning to disperse its cloud?",
+    "experiment": "CO, H30alpha, continuum and temperature slices",
+    "result": "0.6 pc CO hole filled by ionized gas, ~80 K gas at its edge",
+    "finding": "The YSO has begun dispersing its parent cloud",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "The distribution of molecular gas toward the Papillon Nebula shows a CO-hole with a diameter of $\\sim 0.6$ pc."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "12CO-based mass may be inaccurate in optically thick or heated gas.",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The mass estimation from the $^{12}$CO intensity may be inaccurate in the optically thick region of the high column density"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Collision claim rests on two-point velocity coincidences and projected geometry",
+    "Mass accretion and timescale estimates are order-of-magnitude",
+    "Only two high-mass YSOs support the generalization"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; public status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2012.1.00554.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and imaging parameters",
+    "Velocity-integration ranges and mask thresholds",
+    "Details of LTE mass calculation"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB",
+   "score_inferred": 3,
+   "score_reason": "Project code and basic setup given, but imaging and analysis parameters are sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe lacks imaging and mass-calculation details."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Robitaille et al. (2007)",
+     "why": "YSO SED model grid"
+    },
+    {
+     "citation": "Mezger & Henderson (1967)",
+     "why": "HII region equations"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Fukui2015)",
+     "why": "N159W counterpart from the same project"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "NANTEN LMC GMC survey",
+    "SAGE",
+    "HERITAGE"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e1a10b15d6a04edcfb69044171d9b052",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:36",
+  "usage": {
+   "input_tokens": 21391,
+   "output_tokens": 7991,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.061953,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 67,
+  "quotes_ok": 67,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 46,
+   "rate": 0.582
+  },
+  "evidence_ok": true
+ }
+}

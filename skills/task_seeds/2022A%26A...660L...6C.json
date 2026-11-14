@@ -1,0 +1,336 @@
+{
+ "bibcode": "2022A&A...660L...6C",
+ "title": "The ALMA-PILS survey: First tentative detection of 3-hydroxypropenal (HOCHCHCHO) in the interstellar medium and chemical modeling of the C<SUB>3</SUB>H<SUB>4</SUB>O<SUB>2</SUB> isomers",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202243038",
+ "arxiv_id": "2203.14119",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Can 3-hydroxypropenal (HOCHCHCHO) and its C3H4O2 isomers be detected in the solar-type protostar IRAS 16293-2422, and how are they formed chemically?",
+ "alma_project_codes": [
+  "2013.1.00278.S",
+  "2012.1.00712.S"
+ ],
+ "data": {
+  "bands": "Band 7, Band 6, Band 3",
+  "arrays": "12m array and ACA",
+  "angular_resolution": "0.4 to 0.7 arcsec, restored with a circular beam of 0.5 arcsec",
+  "sensitivity": "4-5 mJy beam^-1 km s^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic data for HOCHCHCHO, C2H3OCHO, C2H3COOH, and CH2OHCH2CH2OH from CDMS",
+    "evidence": [
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "The spectroscopic data of HOCHCHCHO come from the Cologne Database for Molecular Spectroscopy (CDMS, (cite: Muller2001; Muller2005))."
+     },
+     {
+      "loc": "Analysis and results",
+      "quote": "Only C$_2$H$_3$OCHO (vinyl formate) and the s-cis and s-trans conformers of C$_2$H$_3$COOH (propenoic acid) are available in CDMS."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: Muller2001; Muller2005)"
+  },
+  {
+   "what": {
+    "value": "List of previously identified species in IRAS 16293 B and additional molecules for spectral overlay",
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "We added HONO (cite: Coutens2019), CH$_3$OCH$_2$OH, CH$_2$DCHO, t-C$_2$H$_5$OCH$_3$ (cite: Manigand2020), C$_2$H$_3$CHO, C$_3$H$_6$ (cite: Manigand2021), and CH$_3$OCHD$_2$ (cite: Richard2021) to the list presented in Appendix A of (cite: Coutens2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Coutens2019; Manigand2020; Manigand2021; Richard2021)"
+  },
+  {
+   "what": {
+    "value": "Initial abundances and physical model for chemical modeling",
+    "evidence": [
+     {
+      "loc": "Chemical modeling and discussion",
+      "quote": "the initial abundances listed in Table 3 of (cite: Manigand2021), and a duration of 10$^6$ years; and ii) the collapse phase described in (cite: Manigand2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Manigand2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Predict molecular presence with a convolutional neural network",
+   "method": "Apply a convolutional neural network (CNN) trained on multi-species LTE synthetic spectra to the PILS spectrum at the 0.5 arcsec offset position of IRAS 16293 B",
+   "software": [],
+   "key_parameters": [
+    "Offset position: alpha_J2000 = 16h32m22.58s, delta_J2000 = -24d28m32.8s (0.5 arcsec SW of continuum peak)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify unblended transitions and fit Gaussian line profiles",
+   "method": "Overlay synthetic spectra of previously identified molecules to exclude blended lines, lines with large spectroscopic uncertainties, and lines affected by absorption; fit Gaussians to detected HOCHCHCHO transitions",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "11 detected lines >= 20 mJy beam^-1 in Band 7, plus 5 undetected lines with small uncertainties"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Constrain column density and excitation temperature via LTE grid fitting",
+   "method": "Generate LTE synthetic spectra over two grids (coarse then fine) of column density N and excitation temperature T_ex, and compute chi-square on unblended and selected undetected lines; also derive upper limits for isomers and 1,3-propanediol",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Fine grid: N from 2 x 10^14 to 3 x 10^15 cm^-2 (step 2 x 10^14 cm^-2), T_ex from 50 to 350 K (step 25 K)",
+    "Fixed T_ex tests at 125 K and 300 K"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Produce moment 0 maps of HOCHCHCHO transitions",
+   "method": "Create integrated intensity (moment 0) maps for three transitions of HOCHCHCHO",
+   "software": [],
+   "key_parameters": [
+    "Transitions at 329.1843, 330.8262, and 335.3758 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Model chemical evolution of C3H4O2 isomers",
+   "method": "Run a three-phase time-dependent astrochemical model using Nautilus with an updated network including six C3H4O2 isomers and DFT-calculated reaction barriers",
+   "software": [
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "Pre-stellar stage: density = 5 x 10^4 cm^-3, T_gas = T_dust = 10 K, A_V = 4.5 mag, cosmic-ray ionization rate = 1.3 x 10^-17 s^-1, UV field = 1 G0, duration = 10^6 years; followed by protostellar collapse stage"
+   ],
+   "assumptions": [
+    "Isomeric ratio approximated by ratio of rovibrational densities of states at the isomerization barrier; barriers and imaginary frequencies calculated at M06-2X/AVTZ DFT level"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HOCHCHCHO column density (best-fit at T_ex = 350 K)",
+   "value": "2.2e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "The best-fit model was obtained for a column density $N$ of 2.2 $\\times$ 10$^{15}$ cm$^{-2}$ and an excitation temperature $T_{\\rm ex}$ of 350 K ($\\chi^2_{\\rm red}$ $\\sim$ 2.0)."
+    }
+   ]
+  },
+  {
+   "quantity": "HOCHCHCHO column density (assuming T_ex = 125 K)",
+   "value": "1.0e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "If we assume excitation temperatures of 125 and 300 K, we obtain column densities of 3-hydroxypropenal of 1.0 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0) and 1.8 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "HOCHCHCHO column density (assuming T_ex = 300 K)",
+   "value": "1.8e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "If we assume excitation temperatures of 125 and 300 K, we obtain column densities of 3-hydroxypropenal of 1.0 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0) and 1.8 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "HOCHCHCHO excitation temperature range",
+   "value": "75-350",
+   "uncertainty": "3 sigma",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "Our $\\chi^2$ analysis shows that various models with excitation temperatures in the 75–350 K range can properly reproduce the lines included in the calculation (3$\\sigma$ uncertainty)."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed HOCHCHCHO abundance relative to CH3OH",
+   "value": "1.0e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Based on the observed line intensities and assuming local thermodynamic equilibrium, its column density is constrained to be $\\sim$10$^{15}$ cm$^{-2}$, corresponding to an abundance of 10$^{-4}$ relative to methanol, CH$_3$OH."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| 3-Hydroxypropenal | HOCHCHCHO | 1.4 $\\times$ 10$^{-8}$ | 4.6 $\\times$ 10$^{-4}$ | 1.0 $\\times$ 10$^{-4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H3OCHO (vinyl formate) column density upper limit",
+   "value": "< 4e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "C$_2$H$_3$OCHO is not detected with an upper limit of 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ based on the undetected transition at 355.2462 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "s-cis C2H3COOH (propenoic acid) column density upper limit",
+   "value": "< 1e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "Upper limits of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ and 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ are also derived for the s-cis and s-trans conformers of C$_2$H$_3$COOH, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "s-trans C2H3COOH (propenoic acid) column density upper limit",
+   "value": "< 4e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "Upper limits of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ and 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ are also derived for the s-cis and s-trans conformers of C$_2$H$_3$COOH, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CH2OHCH2CH2OH (1,3-propanediol, conformer a'GG'g) column density upper limit",
+   "value": "< 1e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis and results",
+     "quote": "The lower energy conformer a’GG’g present in the CDMS database was searched for and an upper limit of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ was derived."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted HOCHCHCHO abundance relative to CH3OH",
+   "value": "4.6e-4",
+   "uncertainty": "factor of 10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3-Hydroxypropenal | HOCHCHCHO | 1.4 $\\times$ 10$^{-8}$ | 4.6 $\\times$ 10$^{-4}$ | 1.0 $\\times$ 10$^{-4}$ |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted CH3COCHO (methyl glyoxal) abundance relative to CH3OH",
+   "value": "2.4e-3",
+   "uncertainty": "factor of 10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Methyl glyoxal | CH$_3$COCHO | 7.4 $\\times$ 10$^{-8}$ | 2.4 $\\times$ 10$^{-3}$ | |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted CH2COHCHO (2-hydroxypropenal) abundance relative to CH3OH",
+   "value": "6.6e-4",
+   "uncertainty": "factor of 10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2-Hydroxypropenal | CH$_2$COHCHO | 2.0 $\\times$ 10$^{-8}$ | 6.6 $\\times$ 10$^{-4}$ | |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted HCOCH2CHO (propanedial) abundance relative to CH3OH",
+   "value": "9.9e-5",
+   "uncertainty": "factor of 10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Propanedial | HCOCH$_2$CHO | 3.0 $\\times$ 10$^{-9}$ | 9.9 $\\times$ 10$^{-5}$ | |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Source size (beam filling factor) assumed in the CASSIS LTE synthetic spectrum modeling",
+  "Assumed methanol (CH3OH) column density in IRAS 16293 B used to convert column densities into abundances relative to CH3OH",
+  "Exact coarse grid range and step sizes for the first LTE chi-square grid search",
+  "Line width (FWHM) and systemic velocity (v_LSR) fixed or varied during the CASSIS LTE grid fitting"
+ ],
+ "missing_for_reproduction": [
+  "Assumed source angular size (beam filling factor) for CASSIS LTE synthetic spectrum calculation",
+  "Reference CH3OH column density used to compute relative abundances",
+  "Full updated Nautilus chemical network files (only C3H4O2 and C2H3O subset is tabulated in Table E.1)",
+  "Trained CNN model weights and configuration from Boulanger et al. 2022"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The PILS dataset is public, the extraction coordinates, line lists, spectroscopic parameters (CDMS), LTE grid parameters, and new chemical reactions are thoroughly tabulated, though a few inherited parameters (source size, CH3OH reference column density, full Nautilus network file) require consulting companion papers.",
+ "rediscovery_reason": "Public ALMA-PILS archival data with exact extraction coordinates, complete line tables, and clear numeric column density targets reproducible via standard LTE spectral fitting (CASSIS).",
+ "source_card": "cards/2022A%26A...660L...6C/sonnet/card.md"
+}

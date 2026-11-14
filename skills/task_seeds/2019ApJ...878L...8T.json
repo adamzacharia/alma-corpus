@@ -1,0 +1,235 @@
+{
+ "bibcode": "2019ApJ...878L...8T",
+ "title": "Discovery of An au-scale Excess in Millimeter Emission from the Protoplanetary Disk around TW Hya",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab224c",
+ "arxiv_id": "1905.07891",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Is there small-scale (au-scale) non-axisymmetric substructure in the 1.3 mm dust continuum of the TW Hya disk, and what is its origin?",
+ "alma_project_codes": [
+  "2016.1.00842.S",
+  "2017.1.00520.S",
+  "2015.1.00308.S",
+  "2015.1.00686.S",
+  "2016.1.00229.S",
+  "2016.1.00311.S",
+  "2016.1.00440.S",
+  "2016.1.00464.S",
+  "2016.1.00629.S",
+  "2016.1.01495.S"
+ ],
+ "data": {
+  "bands": "Band 6 (233 GHz, 1.3 mm) new; Band 7 archival (center 325.4 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 6: 46.88x41.56 mas (2.79x2.48 au), PA -78.9 deg",
+  "sensitivity": "Band 6 rms 9.1 uJy/beam; Band 7 rms 27.7 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass opacity 2.8 cm2/g at 870 um, beta ~0.5",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "determined from $\\kappa_\\nu$ of 2.8 cm$^2$ g$^{-1}$ at a wavelength of 870 $\\mu$m (cite: bib:andrews2012)"
+     }
+    ]
+   },
+   "citation": "(cite: bib:andrews2012)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature 18 K at 52 au",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "Assuming $T_\\mathrm{dust}=18$ K (cite: bib:huang2018)"
+     }
+    ]
+   },
+   "citation": "(cite: bib:huang2018)"
+  },
+  {
+   "what": {
+    "value": "Proper motion of TW Hya system",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "according to the proper motion of the TW Hya system (cite: bib:gaia2016)"
+     }
+    ]
+   },
+   "citation": "(cite: bib:gaia2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image Band 6 and Band 7 continuum",
+   "method": "Pipeline calibration, concatenation, multiscale CLEAN with self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Band 6 robust 0.5, scales [0,42,126] mas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure excess relative to surrounding disk",
+   "method": "Compare peak intensity with mean of surrounding emission in azimuthal ranges; radial and azimuthal profiles",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Subtract axisymmetric disk and fit excess in uv domain",
+   "method": "Subtract axisymmetric emission in visibility domain, then least-squares single Gaussian fit with uvmodelfit",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "Single Gaussian component"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Brightness temperature and dust mass",
+   "method": "Planck function brightness temperature; M = F d^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 2.3 cm2/g at 233 GHz (beta ~0.5), T_dust = 18 K, d = 59.5 pc, uniform background"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Check against background-source hypothesis with Band 7",
+   "method": "Compare position of residual in Band 7 image (2 yr earlier) with Band 6 position versus expected proper motion",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Excess peak intensity",
+   "value": "308.4",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The peak intensity at this feature is measured to be 308.4 $\\mu$Jy beam$^{-1}$, corresponding to signal-to-noise (SN) ratio of 34."
+    }
+   ]
+  },
+  {
+   "quantity": "Excess above surroundings",
+   "value": "111.5",
+   "uncertainty": "9.1",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "hence the excess is calculated to be 111.5$\\pm$9.1 $\\mu$Jy beam$^{-1}$ ($\\sim12\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of feature",
+   "value": "51.5",
+   "uncertainty": "0.1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "or a radius of 51.5$\\pm$0.1 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian FWHM size",
+   "value": "4.4 x 1.0",
+   "uncertainty": "0.2, 0.2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "corresponding to (4.4$\\pm$0.2)$\\times$(1.0$\\pm$0.2) au"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density of excess",
+   "value": "250",
+   "uncertainty": "5",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The total intensity of the fitted Gaussian is 250$\\pm$5 $\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature",
+   "value": "11.6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the brightness temperature at the position of the emission feature is converted using the Planck function to be 11.6 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of excess",
+   "value": "2.83e-2",
+   "uncertainty": "0.06e-2",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the total dust mass of the emission feature is (2.83$\\pm$0.06)$\\times10^{-2}$ $M_\\oplus$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which of the listed Band 7 projects/execution blocks were used, and how they map to the eight datasets",
+  "CASA version and pipeline version",
+  "Self-calibration solution intervals, number of rounds and reference",
+  "CLEAN threshold, masks, cell/image size, iterations",
+  "Method and parameters of axisymmetric model subtraction in uv domain (radial profile used, center, inclination/PA)",
+  "uvmodelfit starting parameters",
+  "Line-free channel ranges for Band 7",
+  "Flux calibrator flux values and which calibrator for which EB",
+  "Stellar position/center determination"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters",
+  "Axisymmetric subtraction procedure details",
+  "CASA version",
+  "Which execution blocks included"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and main steps are named with key imaging parameters, but self-cal and axisymmetric subtraction details are missing.",
+ "rediscovery_reason": "Public data, numeric results, and reasonably clear recipe, though the axisymmetric subtraction is underspecified.",
+ "source_card": "cards/2019ApJ...878L...8T/sonnet/card.md"
+}

@@ -1,0 +1,25 @@
+# Refresh reconciliation: radiative-transfer-modelling
+- RR-01 | FIXED | Recounted the fitting aggregate: 40 distinct phrasings, 43 occurrences (chi2 grid search 3, Manual 2, 38 once); new first-match keyword rule gives sampler 10/10, retrieval 3/3, least squares 3/3, chi2 10 phrasings/12 occurrences, manual 6/7, other 8/8 (table in parameters.md); step 9 now separates phrasings from occurrences.
+- RR-02 | FIXED | Grain-size extrema now a_min 0.001 um (2022A&A...665A..82O) to 20.5 um (top of a searched grid, 2018ApJ...869...10M) and a_max 1 um to 10 cm (fixed inner-midplane value, 2023MNRAS.518.6092L); step 4 and a new parameters.md table separate searched ranges from fixed regional values.
+- RR-03 | FIXED | gamma range now 0-2 (grid, 2013A&A...557A.133D); H100 5-15 au and beta 1.0-1.2 from 2024ApJ...966...59S (card, verbatim "beta in [1.0, 1.2] and H_100 in [5,15]"); height exponent p = 1.25 (2021ApJ...908..250H) listed separately from aspect-ratio psi.
+- RR-04 | FIXED | Temperature index range now 0.2 (2014ApJ...796....1T) to 0.75; envelope turbulence row adds the radial 11 to 1 km/s profile (2020MNRAS.494.1323D) and a note to state b, dispersion or FWHM (2024ApJ...966L..13D quotes FWHM).
+- RR-05 | FIXED | Walker range now 16 (2024AJ....168..142L) to 500 (2018ApJ...859..111H) in SKILL.md; parameters.md sampler table adds the 16, 30 and 100x1200 rows and agrees with the main table.
+- RR-06 | FIXED | Provenance header rewritten: pack values plus card-checked values marked "(card)". Checked every bibliography-only citation against its sonnet card: 2017ApJ...836..223W 2.25 cm2/g and graphite mix, 2018ApJ...857...87L 3.95 cm2/g, 2016ApJ...819..102V H0 = 10 au, beta = 1.125 are verbatim in the cards and kept with (card); 2018MNRAS.474.4347C did not support "2.2 kappa_abs, a_max 3 mm" and was rewritten to its Beckwith law 10(nu/1000 GHz).
+- RR-07 | FIXED | Now "41 rotational levels in each of five vibrational states" (2026A&A...711A.159M).
+- RR-08 | FIXED | Step 10 limits <8% to x_ne = 1.0 over T_kin 20-70 K and describes x_ne = 0.2 separately (HCN 1.2e24 s^-1 at 20 K vs. nominal 7.0e23 s^-1).
+- RR-09 | FIXED | gamma = 1, q = 0.5 and ~1e8 photons now called illustrative starting values or visible examples; the table header says common choices are not modes unless a count is given.
+- RR-10 | FIXED | Mass ratio 1.4e-4 (2019ApJ...881..108J, "in mass") removed from the number range and flagged as not comparable; number range now 5e-5 (2014ApJ...791...42Z) to 2e-4 (H2/CO = 5000, 2014ApJ...792...68S); parameters.md has a separate "by mass" row (also 2017ApJ...846L..26W, whose card calls X_CO a mass fraction).
+- RR-11 | FIXED | Uses n_H = n(H) + 2 n(H2) (2021A&A...647A..10G), so n_H ~ 2 n(H2) in molecular gas; same fix in parameters.md.
+- RR-12 | FIXED | mu = 14 is reported as the papers' adopted value with "composition not stated in the cards"; general-practice note that pure CO gives ~28 and an equal-number C + O mix ~14; derive mu from the assumed mix.
+- RR-13 | FIXED | Pitfall renamed "Optical depth weakens mass constraints": thin-emission estimates become lower limits; full RT fits of thick lines (12CO in 2019ApJ...881..108J) constrain mass only under their assumptions.
+- RR-14 | FIXED | Added background field to the always-report box, step 5, the table (15 aggregate papers mention CMB or T_bg, my regex) and the referee checks: T_CMB = 2.73(1+z) K (2019ApJ...873...50D), 19.2 K at z = 6.02 (2022PASJ...74.1429T).
+- RR-15 | FIXED | Step 5 warns that chemical thermometers depend on UV field, initial C/O and network (equal HCN/HNC photodissociation in 2021A&A...647A.118L, HNC's possibly 2x); step 6 adds the omitted water photodesorption overpredicting gap HCO+ (2024A&A...687A.299L) and asks for chemical age/initial state.
+- RR-16 | FIXED | Step 6 adds a hyperfine/overlap check: LTE between components with overlap omitted (2025A&A...700A.141H), average source function (2025A&A...693A.160M), MOLLIE HCN hyperfine optical depths (2024MNRAS.532L..36R); referee list includes hyperfine treatment.
+- RR-17 | PARTLY | The SR-08 2e9 upper bound has no line in the current pack or a card I could find, so it is not restored; restored the per-task example from 2024NatAs...8.1148U (card: 1e7 continuum, 1e9 ALMA polarization, 1e11 NIR) and labelled all photon numbers as visible-pack examples, not the full range.
+- RR-18 | FIXED | SKILL.md cut from 418 to about 305 lines; full software list, fitting classification, photon, grain-size, scale-height and sampler tables moved to references/parameters.md.
+
+Counts used (all recomputed against the current pack): distinct papers among the 431 with Key parameters or
+Assumptions lines (truncated aggregates, 312 + 167 rows not shown), by my regex: -3.5 slope 45, LTE 68,
+non-LTE/LVG/collision 22, CO abundance 1e-4 about 21 (CO + 1e-4, excluding per-H, ranges, false matches),
+gas-to-dust 100 59, freeze-out 13, walkers 22, mu 15, 1.3 mm opacity 2.2-2.31 8, CMB/T_bg 15. Software and
+field counts copied from the pack aggregates.

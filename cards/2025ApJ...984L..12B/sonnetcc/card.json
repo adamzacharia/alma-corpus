@@ -1,0 +1,1406 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...984L..12B",
+  "title": "exoALMA. VII. Benchmarking Hydrodynamics and Radiative Transfer Codes",
+  "year": 2025,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Bae, Jaehan",
+  "n_authors": 32,
+  "arxiv_id": "2504.18643",
+  "doi": "10.3847/2041-8213/adc436",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.01123.L"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we conducted a systematic comparison of various hydrodynamics and radiative transfer codes"
+   },
+   {
+    "loc": "abstract",
+    "quote": "we retrieved the location of the planet from the synthetic cubes using"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "exoplanets"
+   ],
+   "targets": [
+    {
+     "name": "Synthetic benchmark disk with an embedded Jupiter-mass planet (no real source)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc (assumed)",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "we placed the planet at 100 au from the solar-mass central star."
+       },
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "The star was placed at 140 parsecs from the observer."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "assumed in the benchmark setup",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "we placed the planet at 100 au from the solar-mass central star."
+       },
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "The star was placed at 140 parsecs from the observer."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do widely used hydrodynamics (FARGO3D, Idefix, Athena++, PLUTO, Phantom) and radiative transfer (mcfost, RADMC-3D) codes give consistent planet-driven kinematic perturbations, temperatures and synthetic 12CO cubes, and consistent planet-location retrieval with DISCMINER?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "in this paper we tested if various hydrodynamics and radiative transfer codes produce consistent results."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.01123.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This Letter makes use of the following ALMA data: ADS/JAO.ALMA#2021.1.01123.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2 (synthetic)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "To generate synthetic $^{12}$CO $J=3-2$ line cubes, we first determined the dust temperature by running Monte Carlo simulations."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.15 arcsec Gaussian beam applied to synthetic cubes (fiducial exoALMA beam size)",
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "these are the beamsize and level of noise of fiducial exoALMA molecular line images"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1.5 K noise (std) per 100 m/s channel added to synthetic cubes (fiducial exoALMA level)",
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "and added random noises with a standard deviation of 1.5 K in each"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Fiducial exoALMA molecular-line beam (0.15 arcsec) and noise level (1.5 K per 100 m/s channel)",
+      "evidence": [
+       {
+        "loc": "Retrieval of Planet Location using DISCMINER",
+        "quote": "these are the beamsize and level of noise of fiducial exoALMA molecular line images"
+       }
+      ]
+     },
+     "citation": "(cite: Teague_exoALMA)"
+    },
+    {
+     "what": {
+      "value": "Typical noise in exoALMA molecular line images, about 1.5 K",
+      "evidence": [
+       {
+        "loc": "Channel Maps",
+        "quote": "the typical level of noise in the exoALMA molecular line images is about 1.5 K"
+       }
+      ]
+     },
+     "citation": "(cite: Teague_exoALMA)"
+    },
+    {
+     "what": {
+      "value": "Disk aspect ratio 0.1 motivated by exoALMA planet candidate locations and the inferred disk temperature profile",
+      "evidence": [
+       {
+        "loc": "Initial Disk Setup",
+        "quote": "when we adopt the temperature profile inferred in (cite: Galloway_exoALMA)."
+       }
+      ]
+     },
+     "citation": "(cite: Pinte_exoALMA); (cite: Galloway_exoALMA)"
+    },
+    {
+     "what": {
+      "value": "Gas surface density at planet location (0.52 g cm^-2) checked against values inferred for exoALMA disks",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "which is broadly consistent with the gas surface density inferred for exoALMA disks (cite: Rosotti_exoALMA)"
+       }
+      ]
+     },
+     "citation": "(cite: Rosotti_exoALMA)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Five 3D hydrodynamic planet-disk simulations (FARGO3D, Idefix, Athena++, PLUTO, Phantom), Mp = 1e-3 Mstar, output at 500 planetary orbits",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "we simulated a protoplanetary disk with an embedded giant planet"
+      },
+      {
+       "loc": "Radiative Transfer Calculations",
+       "quote": "using the outputs at 500 planetary orbits from the hydrodynamic simulations introduced in the previous Section."
+      }
+     ]
+    },
+    {
+     "value": "Nine hydro + radiative transfer combinations (mcfost on all five, RADMC-3D on four grid codes) producing synthetic 12CO cubes",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculations",
+       "quote": "This results in nine total combinations."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "raw synthetic cubes convolved with 0.15 arcsec Gaussian beam",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "To do so, we convolved the raw synthetic cubes with a"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "1.5 K per 100 m/s channel (added random noise)",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "and added random noises with a standard deviation of 1.5 K in each"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Detailed DISCMINER retrieval workflow",
+      "evidence": [
+       {
+        "loc": "Retrieval of Planet Location using DISCMINER",
+        "quote": "For the detailed workflow of the retrieval, we refer the reader to (cite: discminer; izquierdo2023)."
+       }
+      ]
+     },
+     "from_reference": "(cite: discminer; izquierdo2023)"
+    },
+    {
+     "what": {
+      "value": "Technical details of the hydrodynamics codes",
+      "evidence": [
+       {
+        "loc": "Grid-based Hydrodynamics Simulation Setup",
+        "quote": "While we refer the reader to the relevant papers listed above for technical details of these codes"
+       }
+      ]
+     },
+     "from_reference": "(cite: fargo3d; idefix; athena; pluto; Phantom)"
+    },
+    {
+     "what": {
+      "value": "Further details of the Phantom code",
+      "evidence": [
+       {
+        "loc": "Smoothed Particle Hydrodynamics Simulation Setup",
+        "quote": "We refer the reader to (cite: Phantom) for further details on the code."
+       }
+      ]
+     },
+     "from_reference": "(cite: Phantom)"
+    },
+    {
+     "what": {
+      "value": "Wave-killing damping zones at radial boundaries",
+      "evidence": [
+       {
+        "loc": "Boundary Conditions",
+        "quote": "we implemented a wave-killing zone at the radial boundaries (cite: devalborro2006)"
+       }
+      ]
+     },
+     "from_reference": "(cite: devalborro2006)"
+    },
+    {
+     "what": {
+      "value": "Phantom viscosity formulation ('two first derivatives')",
+      "evidence": [
+       {
+        "loc": "Smoothed Particle Hydrodynamics Simulation Setup",
+        "quote": "following the ‘two first derivatives’ formulation of the Navier Stokes terms outlined in Section 3.2.4 of (cite: lodato2010)"
+       }
+      ]
+     },
+     "from_reference": "(cite: lodato2010)"
+    },
+    {
+     "what": {
+      "value": "Beam size and noise level for synthetic observations taken from exoALMA fiducial images",
+      "evidence": [
+       {
+        "loc": "Retrieval of Planet Location using DISCMINER",
+        "quote": "these are the beamsize and level of noise of fiducial exoALMA molecular line images"
+       }
+      ]
+     },
+     "from_reference": "(cite: Teague_exoALMA)"
+    }
+   ],
+   "unstated_but_needed": [
+    "DISCMINER model setup: model components, fixed vs free parameters, priors, initial guesses, masks and fitting region used for each synthetic cube",
+    "How the folded velocity residual map, the peak residual and its significance (3.64 sigma) are computed (smoothing, azimuthal/radial binning, noise estimate)",
+    "Random seed or realization of the added noise (retrieved values depend on it)",
+    "Line radiative transfer setup: 12CO rest frequency, velocity channel grid, number of channels, image size/pixel scale and viewing grid for mcfost and RADMC-3D",
+    "Number of photon packages and wavelength grid beyond the stated 1e9 photons, and convergence criteria for mcfost vs RADMC-3D temperature runs",
+    "Hydrodynamic code numerical choices (reconstruction, Riemann solver, CFL number, time integrator) per code",
+    "Phantom smoothing-length settings, particle placement recipe, and how Voronoi cells map to mcfost cells",
+    "Inputs and scripts used to compute the grid-by-grid temperature and brightness-temperature comparisons"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "run planet-disk hydrodynamic simulations with five codes",
+    "method": {
+     "value": "3D spherical-coordinate simulations of a vertically isothermal disk with a prescribed-potential planet on a fixed circular orbit, evolved for 500 planetary orbits, in four grid codes and one SPH code",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "we simulated a protoplanetary disk with an embedded giant planet"
+      },
+      {
+       "loc": "Planet Potential",
+       "quote": "We fixed the planet on a circular orbit and did not allow orbital migration."
+      }
+     ]
+    },
+    "software": [
+     "FARGO3D",
+     "Idefix",
+     "Athena++",
+     "PLUTO",
+     "Phantom"
+    ],
+    "key_parameters": [
+     {
+      "value": "Grid: 288 log cells in r (0.3 to 3.0), 128 in theta, 784 in phi; about 12 cells per scale height",
+      "evidence": [
+       {
+        "loc": "Simulation Domain & Numerical Resolution",
+        "quote": "We used 288 logarithmically-spaced grid cells in $r$, 128 linear grid cells in $\\theta$, and 784 linear grid cells in $\\phi$, respectively."
+       },
+       {
+        "loc": "Simulation Domain & Numerical Resolution",
+        "quote": "a numerical resolution allowing about 12 grid cells per scale height"
+       }
+      ]
+     },
+     {
+      "value": "Phantom: 10 million SPH particles",
+      "evidence": [
+       {
+        "loc": "Smoothed Particle Hydrodynamics Simulation Setup",
+        "quote": "We used 10 million SPH particles"
+       }
+      ]
+     },
+     {
+      "value": "Planet mass ramped up over 100 orbits (sin^2 ramp), final Mp = 1e-3 Mstar",
+      "evidence": [
+       {
+        "loc": "Smoothed Particle Hydrodynamics Simulation Setup",
+        "quote": "The potential of the planet was ramped up over the initial 100 orbits"
+       }
+      ]
+     },
+     {
+      "value": "Kinematic viscosity nu = 1e-5 (alpha = 1e-3 at planet location)",
+      "evidence": [
+       {
+        "loc": "Initial Disk Setup",
+        "quote": "We adopted kinematic viscosity characterized by $\\nu = 10^{-5}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Temperature power law with q = -0.5, H/R = 0.1 at planet; vertically isothermal, isothermal equation of state",
+      "evidence": [
+       {
+        "loc": "Initial Disk Setup",
+        "quote": "We assumed that the disk is vertically isothermal and adopted an isothermal equation of state."
+       }
+      ]
+     },
+     {
+      "value": "Initial total disk mass 0.01 Msun, surface density proportional to R^-1 (outcome scalable)",
+      "evidence": [
+       {
+        "loc": "Initial Disk Setup",
+        "quote": "We chose $\\rho_p$ such that the total initial disk mass is $0.01~M_\\odot$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Additional simulations without FARGO orbital advection confirmed the outcome does not depend on it; resolution cited as sufficient for convergence",
+     "evidence": [
+      {
+       "loc": "Grid-based Hydrodynamics Simulation Setup",
+       "quote": "although we ran additional simulations without implementing FARGO and confirmed that the outcome of the simulations do not depend on the use of the FARGO algorithm"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "compare hydrodynamic outputs between codes",
+    "method": {
+     "value": "Compare 2D phi-r maps of density and velocity components at Z/R = 0, 0.1, 0.3 and azimuthally averaged radial profiles after 500 orbits",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "at three different heights after 500 planetary orbits of evolution"
+      },
+      {
+       "loc": "Results",
+       "quote": "in Figure [5](#fig:radial_profiles) we present azimuthally averaged radial profiles of the surface density and azimuthal velocity."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Heights Z/R = 0, 0.1, 0.3",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "These heights are chosen to cover a range of vertical layers which various molecular lines having different optical depths probe"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "compute dust temperature with Monte Carlo radiative transfer",
+    "method": {
+     "value": "Monte Carlo dust radiative transfer on the hydrodynamic grid (Voronoi cells per SPH particle for Phantom) with identical dust opacities in both codes",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "we first determined the dust temperature by running Monte Carlo simulations."
+      },
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "The same opacities were used for both `mcfost` and `RADMC-3D` Monte Carlo simulations."
+      }
+     ]
+    },
+    "software": [
+     "mcfost",
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "Star: 1 Msun, radius 2 Rsun, 4000 K; 1e9 photons",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "We placed a solar-mass star having a radius of $2~R_\\odot$ and a temperature of 4000 K at the center of the domain"
+       }
+      ]
+     },
+     {
+      "value": "Dust size distribution dn/da proportional to a^-3.5 from 0.03 micron to 1 mm; dust mass 1% of gas mass",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "Dust opacities were calculated assuming a power-law grain size distribution"
+       },
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "The total dust mass was assumed to be $1\\%$ of the gas mass in each grid cell."
+       }
+      ]
+     },
+     {
+      "value": "Physical scaling: planet at 100 au, solar-mass star, total gas mass 0.01 Msun, source at 140 pc",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "we placed the planet at 100 au from the solar-mass central star."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Astrosilicate grains, Mie theory, isotropic scattering only",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "We computed the dust optical properties using the Mie theory, considering isotropic scattering only."
+       },
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "Grain composition was assumed to be astrosilicates (cite: Weingartner2001)."
+       }
+      ]
+     },
+     {
+      "value": "Gas and dust in LTE sharing the same temperature",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "We assumed that the gas and dust are in local thermodynamic equilibrium, sharing the same temperature."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cross-check between mcfost and RADMC-3D temperatures",
+     "evidence": [
+      {
+       "loc": "Temperature",
+       "quote": "When `mcfost` models are compared with `RADMC-3D` models, we found a strong consistency between the models."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "generate synthetic 12CO line cubes",
+    "method": {
+     "value": "Line radiative transfer of 12CO J=3-2 with prescribed abundance, freeze-out below 20 K, thermal broadening only, disk inclined 45 deg, PA 90 deg, planet 45 deg west of south",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "The disk inclination was set to 45 degrees, with a position angle of 90 degree (from north to east)."
+      },
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "The disk was placed at 140 pc and positioned such that the planet is located 45 degrees west of south."
+      }
+     ]
+    },
+    "software": [
+     "mcfost",
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "12CO abundance 1e-4 relative to total gas for T > 20 K",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "We adopted a $^{12}$CO abundance of $10^{-4}$ relative to the total gas (by number) when the temperature is higher than 20 K."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "All CO frozen onto grains below 20 K",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "Below 20 K, we assumed that all CO molecules are frozen onto grains and no gas phase CO is present."
+       }
+      ]
+     },
+     {
+      "value": "Line width from thermal broadening only",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Calculation Setup",
+        "quote": "We made an assumption that the local line width is set by thermal broadening only and ignored any non-thermal broadening."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "compare temperatures and channel-map brightness temperatures across models",
+    "method": {
+     "value": "Grid-by-grid comparison of azimuthally averaged 2D temperature distributions (absolute and fractional), and brightness temperature along an iso-velocity contour relative to the FARGO3D + mcfost reference model",
+     "evidence": [
+      {
+       "loc": "Temperature",
+       "quote": "When the azimuthally averaged two-dimensional temperature distributions are compared grid by grid"
+      },
+      {
+       "loc": "Channel Maps",
+       "quote": "we present the brightness temperature of each model relative to the reference model (`FARGO3D` + `mcfost`), along the iso-velocity contour"
+      }
+     ]
+    },
+    "software": [
+     "mcfost",
+     "RADMC-3D"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Differences compared against the typical exoALMA line noise of about 1.5 K",
+     "evidence": [
+      {
+       "loc": "Channel Maps",
+       "quote": "Given that the typical level of noise in the exoALMA molecular line images is about 1.5 K"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "retrieve planet location from synthetic cubes",
+    "method": {
+     "value": "Convolve cubes with 0.15 arcsec beam, add 1.5 K noise per 100 m/s channel, run DISCMINER to build a folded velocity residual map and locate its peak (radius, azimuth, peak residual velocity)",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "to retrieve the planet location in synthetic cubes"
+      },
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "we present a folded velocity residual map for the"
+      }
+     ]
+    },
+    "software": [
+     "DISCMINER"
+    ],
+    "key_parameters": [
+     {
+      "value": "Beam 0.15 arcsec; noise 1.5 K per 100 m/s channel",
+      "evidence": [
+       {
+        "loc": "Retrieval of Planet Location using DISCMINER",
+        "quote": "and added random noises with a standard deviation of 1.5 K in each"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Retrieved radius and azimuth compared with the true planet location (100 au, -45 deg)",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "which are in a good agreement with the true planet location: 100 au and"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "compare retrieved planet location and peak residual across models",
+    "method": {
+     "value": "Plot retrieved radial and azimuthal location and peak residual velocity for all nine hydro + RT combinations and compare with the true location",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "To compare the inferred location of the planet and the associated peak velocity residual, we plot these quantities in Figure"
+      }
+     ]
+    },
+    "software": [
+     "DISCMINER"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mean retrieved radius compared with one beam (0.15 arcsec, 21 au at 140 pc)",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "Note, however, that the mean retrieved radial location is within one beam"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "FARGO3D",
+    "version": "2.01",
+    "used_for": {
+     "value": "Grid-based (finite-difference) hydrodynamic planet-disk simulation",
+     "evidence": [
+      {
+       "loc": "Grid-based Hydrodynamics Simulation Setup",
+       "quote": "Among the grid-based codes, `FARGO3D` employs a finite-difference scheme"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Idefix",
+    "version": "1.1.0",
+    "used_for": {
+     "value": "Grid-based (finite-volume) hydrodynamic simulation",
+     "evidence": [
+      {
+       "loc": "Grid-based Hydrodynamics Simulation Setup",
+       "quote": "The other three codes, namely `Idefix`, `Athena++`, and `PLUTO`, utilize a finite-volume scheme"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Athena++",
+    "version": "21.0",
+    "used_for": {
+     "value": "Grid-based (finite-volume) hydrodynamic simulation",
+     "evidence": [
+      {
+       "loc": "Grid-based Hydrodynamics Simulation Setup",
+       "quote": "The other three codes, namely `Idefix`, `Athena++`, and `PLUTO`, utilize a finite-volume scheme"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PLUTO",
+    "version": "4.3",
+    "used_for": {
+     "value": "Grid-based (finite-volume) hydrodynamic simulation",
+     "evidence": [
+      {
+       "loc": "Grid-based Hydrodynamics Simulation Setup",
+       "quote": "The other three codes, namely `Idefix`, `Athena++`, and `PLUTO`, utilize a finite-volume scheme"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Phantom",
+    "version": "2022.0.1",
+    "used_for": {
+     "value": "Smoothed particle hydrodynamics planet-disk simulation",
+     "evidence": [
+      {
+       "loc": "Smoothed Particle Hydrodynamics Simulation Setup",
+       "quote": "`Phantom` solves the equations of hydrodynamics in Lagrangian form."
+      }
+     ]
+    }
+   },
+   {
+    "name": "mcfost",
+    "version": "4.1.08",
+    "used_for": {
+     "value": "Monte Carlo dust temperature and synthetic 12CO line cubes for all five hydro models",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "The same opacities were used for both `mcfost` and `RADMC-3D` Monte Carlo simulations."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "2.0",
+    "used_for": {
+     "value": "Monte Carlo dust temperature and synthetic 12CO line cubes for the four grid-based hydro models",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculation Setup",
+       "quote": "The same opacities were used for both `mcfost` and `RADMC-3D` Monte Carlo simulations."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DISCMINER",
+    "version": "not stated",
+    "used_for": {
+     "value": "Retrieving planet location and peak velocity residual from synthetic cubes",
+     "evidence": [
+      {
+       "loc": "Retrieval of Planet Location using DISCMINER",
+       "quote": "to retrieve the planet location in synthetic cubes"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Max grid-by-grid temperature difference among the four grid-based mcfost models",
+    "value": "0.84",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Temperature",
+      "quote": "no two models have a temperature difference greater than 0.84 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Max fractional temperature difference among grid-based mcfost models (Idefix vs Athena++)",
+    "value": "2.7",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Temperature",
+      "quote": "no two models have a difference greater than $2.7~\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Max grid-by-grid temperature difference among RADMC-3D models",
+    "value": "0.51",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Temperature",
+      "quote": "we found no two models have a difference greater than 0.51 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Max fractional temperature difference among RADMC-3D models",
+    "value": "1.8",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Temperature",
+      "quote": "no two models have a difference greater than $1.8~\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fractional temperature difference mcfost vs RADMC-3D, Athena++ models (largest), everywhere in domain",
+    "value": "< 3",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Temperature",
+      "quote": "the fractional temperature difference is smaller than $3~\\%$ everywhere in the domain"
+     }
+    ]
+   },
+   {
+    "quantity": "Phantom + mcfost temperature difference from other mcfost models, individual cells and domain-averaged mean",
+    "value": "up to +/-15 in cells; about 5 domain-averaged",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Temperature",
+      "quote": "up to $\\pm 15~\\%$ in individual grid cells, with a domain-averaged mean difference of about $5~\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Brightness temperature difference among all models along iso-velocity contour",
+    "value": "within +/-1.5",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Channel Maps",
+      "quote": "all models agree with each other within $\\pm 1.5$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Brightness temperature difference among models at planet location",
+    "value": "< 0.5",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Channel Maps",
+      "quote": "the difference among the models is $<0.5$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Gap-center surface density suppression, grid-based codes",
+    "value": "about 70",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "is suppressed by $\\simeq 70~\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gap-center surface density decrease, Phantom",
+    "value": "about 10",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the surface density is decreased by only $\\simeq 10~\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of initial disk mass lost through inner boundary in Phantom after 500 orbits",
+    "value": "about 30",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Smoothed Particle Hydrodynamics Simulation Setup",
+      "quote": "We found that about 30% of the initial disk mass is lost through the inner boundary after 500 orbits."
+     }
+    ]
+   },
+   {
+    "quantity": "DISCMINER peak significance in folded velocity residual map, FARGO3D + mcfost cube",
+    "value": "3.64",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "found a peak in the folded velocity residual map with a $3.64\\sigma$ significance"
+     }
+    ]
+   },
+   {
+    "quantity": "Retrieved planet radius, FARGO3D + mcfost cube (true 100 au)",
+    "value": "107.8",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "inferred the planet to be at 107.8 au in radius"
+     }
+    ]
+   },
+   {
+    "quantity": "Retrieved planet azimuth, FARGO3D + mcfost cube (true -45 deg)",
+    "value": "-45.25",
+    "uncertainty": "not stated",
+    "units": "degrees",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "and $-45.25$ degrees in azimuth"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean retrieved planet radius across models (min 105.0 au Idefix+RADMC-3D, max 116.2 au Phantom+mcfost)",
+    "value": "109.0",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "with a mean distance of 109.0 au, a minimum distance of 105.0 au"
+     },
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "and a maximum distance of 116.2 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean retrieved planet azimuth across models (min -48.97 PLUTO+mcfost, max -41.49 PLUTO+RADMC-3D)",
+    "value": "-45.92",
+    "uncertainty": "not stated",
+    "units": "degrees",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "with a mean azimuthal angle of $-45.92$ degrees, a minimum azimuthal angle of $-48.97$ degrees"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean peak residual velocity across models (min 0.054 Idefix+RADMC-3D, max 0.088 Athena++ + mcfost)",
+    "value": "0.074",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "with a mean of $0.074~{\\rm km~s}^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Retrieved planet radii are systematically biased to larger radii, possibly because the peak residual is more sensitive to the outer spiral arm",
+    "evidence": [
+     {
+      "loc": "Retrieval of Planet Location using DISCMINER",
+      "quote": "we speculate that this bias is because the peak residual is generally more sensitive to the outer spiral arm"
+     }
+    ]
+   },
+   {
+    "value": "Phantom gap is shallower (boundary conditions, numerical viscosity), so gap-shape planet mass inference from Phantom may overestimate mass, but spiral morphology and perturbation level agree",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the overall morphology of the spirals driven by the planet and the level of density perturbation associated with the spirals seen in the `Phantom` simulation agree well with those seen in grid-based simulations"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Different hydrodynamics codes produce consistent planet-driven density and velocity perturbations",
+    "experiment": "Four grid codes and Phantom run with matched setup, compared in 2D maps and 1D profiles after 500 orbits",
+    "result": "Grid-based codes agree closely; Phantom agrees on spirals but has a shallower gap",
+    "finding": "Excellent agreement among grid-based codes; Phantom consistent for spiral perturbations only",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "Overall, we found an excellent agreement between grid-based codes, in terms of the density and velocity structure."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Phantom reproduces the same gap and azimuthal velocity structure as the grid codes",
+    "experiment": "Compared azimuthally averaged surface density and azimuthal velocity profiles",
+    "result": "Gap suppression about 10% vs about 70% in grid codes; azimuthal velocity variation about 1% vs about 6%",
+    "finding": "Planet-opened gap is shallower in Phantom, attributed to boundary conditions",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "the planet-opened gap is shallower than those in grid-based simulations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "mcfost and RADMC-3D give consistent disk temperature and 12CO channel maps",
+    "experiment": "Nine hydro + RT combinations compared grid-by-grid in temperature and along an iso-velocity contour in brightness temperature",
+    "result": "Temperature within about 3% (grid-based hydro) and brightness temperature within +/-1.5 K for all models",
+    "finding": "Differences are below typical exoALMA noise",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Channel Maps",
+      "quote": "all models agree with each other within $\\pm 1.5$ K"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Planet location retrieval from synthetic cubes is robust to the choice of hydro and RT code",
+    "experiment": "DISCMINER retrieval on all nine cubes after beam convolution and noise addition",
+    "result": "Mean radius 109.0 au and azimuth -45.92 deg versus true 100 au and -45 deg; peak residual 0.054 to 0.088 km/s",
+    "finding": "Any combination of tested codes gives consistent retrieval",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "the retrieved planet locations are consistent across all cubes and agree well with the true planet location."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "No prior systematic benchmark of hydro and RT codes for planet-induced kinematic perturbations",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "no systematic hydrodynamics or radiative transfer benchmark tests comparing kinematic perturbations induced by planets embedded in their birth protoplanetary disks have been carried out"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Hydrodynamic simulations plus radiative transfer forward modeling used to infer planet location and mass behind observed substructures",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Hydrodynamic planet-disk interaction simulations, combined with radiative transfer calculations, can give us deeper understanding of the nature of observed substructures."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Runs without FARGO orbital advection were done and gave the same outcome",
+     "evidence": [
+      {
+       "loc": "Grid-based Hydrodynamics Simulation Setup",
+       "quote": "although we ran additional simulations without implementing FARGO and confirmed that the outcome of the simulations do not depend on the use of the FARGO algorithm"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only a single base hydrodynamic model; planet mass, eccentricity/migration, temperature stratification, cooling time, viscosity and magnetic fields not varied",
+     "evidence": [
+      {
+       "loc": "Conclusion",
+       "quote": "Admittedly, we only considered a single base hydrodynamics model."
+      }
+     ]
+    },
+    {
+     "value": "Phantom + RADMC-3D not tested because no module reads Phantom outputs",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Calculations",
+       "quote": "This results in nine total combinations."
+      }
+     ]
+    },
+    {
+     "value": "Origin of larger Athena++ temperature differences left for future study",
+     "evidence": [
+      {
+       "loc": "Temperature",
+       "quote": "It is certainly worthwhile further investigating why `Athena++` models show larger differences"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No real ALMA data are used; the exoALMA data only motivate beam size and noise, so the work is a code benchmark on synthetic data",
+    "Single noise realization and single planet location; the scatter in retrieved location may not capture noise-driven variance",
+    "Isothermal hydro setup differs from the RT temperature structure used afterwards (temperatures are not fed back)",
+    "Retrieved radius is biased about 9 au high with only 3.64 sigma significance in the fiducial case"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "DISCMINER configuration and fit settings for the synthetic cubes",
+    "Exact simulation input/parameter files for each hydrodynamics code and RT code",
+    "Noise realization seed and image/channel grid details for the cubes",
+    "Scripts used for the temperature and brightness-temperature comparisons"
+   ],
+   "estimated_data_volume_inferred": "No ALMA data needed; simulation outputs and synthetic cubes only (compute-heavy: five 3D hydro runs to 500 orbits and nine RT runs)",
+   "score_inferred": 3,
+   "score_reason": "On an assumed 1-5 scale: codes and versions are public and setup parameters are largely given, but DISCMINER settings and RT numerical details are missing and the compute is heavy.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "No ALMA data are used; the results come from simulations and synthetic cubes, so there is no archive data to redo."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: discminer; izquierdo2023)",
+     "why": "DISCMINER workflow for planet location retrieval"
+    },
+    {
+     "citation": "(cite: Phantom)",
+     "why": "Phantom SPH code details"
+    },
+    {
+     "citation": "(cite: Pinte2006; Pinte2009)",
+     "why": "mcfost code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Teague_exoALMA)",
+     "why": "Fiducial exoALMA beam and noise level"
+    },
+    {
+     "citation": "(cite: Pinte_exoALMA)",
+     "why": "exoALMA planet candidates and detectable planet mass"
+    },
+    {
+     "citation": "(cite: Galloway_exoALMA)",
+     "why": "Temperature structure inferred for exoALMA disks"
+    },
+    {
+     "citation": "(cite: Rosotti_exoALMA)",
+     "why": "Gas surface density inferred for exoALMA disks"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "exoALMA (ALMA large program 2021.1.01123.L)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025ApJ...984L..12B",
+  "batch_id": null,
+  "run": "cc_pilot",
+  "collected_at": "2026-10-29T11:33:45",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 101,
+  "quotes_ok": 101,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 17,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 107,
+   "stated": 63,
+   "rate": 0.589
+  },
+  "evidence_ok": true
+ }
+}

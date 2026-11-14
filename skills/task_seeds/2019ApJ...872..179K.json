@@ -1,0 +1,196 @@
+{
+ "bibcode": "2019ApJ...872..179K",
+ "title": "The Synthetic ALMA Multiband Analysis of the Dust Properties of the TW Hya Protoplanetary Disk",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab0304",
+ "arxiv_id": "1902.00168",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Which ALMA band set best constrains dust temperature, optical depth and beta in the TW Hya disk, and do archival data agree with the synthetic predictions?",
+ "alma_project_codes": [
+  "2012.1.00422.S",
+  "2015.1.00005.S",
+  "2015.1.00686.S"
+ ],
+ "data": {
+  "bands": "Bands 4, 6, 7, 9 archival continuum",
+  "arrays": "not stated",
+  "angular_resolution": "Band 4 ~88.1x62.1 mas; Band 6 ~75.4x55.2 mas; Band 7 ~24x18 mas; Band 9 ~434x247 mas",
+  "sensitivity": "1 sigma: Band 4 0.0124, Band 6 0.0287, Band 7 0.0350, Band 9 ~10 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Band 4 and 6 continuum images and 190 GHz MFS intensity/spectral index profiles",
+    "evidence": [
+     {
+      "loc": "4 Applications",
+      "quote": "We use Band 4 and 6 data in (cite: Tsukagoshi2016) and Band 7 fits image at Sean Andrews’s science homepage"
+     }
+    ]
+   },
+   "citation": "(cite: Tsukagoshi2016)"
+  },
+  {
+   "what": {
+    "value": "Band 7 FITS image",
+    "evidence": [
+     {
+      "loc": "4 Applications",
+      "quote": "Band 7 fits image at Sean Andrews’s science homepage"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2016)"
+  },
+  {
+   "what": {
+    "value": "Band 9 observation of TW Hya",
+    "evidence": [
+     {
+      "loc": "4 Applications",
+      "quote": "we also find Band 9 observation of the TW Hya disk (cite: Schwarz2016) which is low spatial resolution data"
+     }
+    ]
+   },
+   "citation": "(cite: Schwarz2016)"
+  },
+  {
+   "what": {
+    "value": "Midplane dust temperature profile Td=26K(r/10AU)^-0.4 fitted from radiative transfer models",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "The $T_{d,model}(r)$ profile is obtained by fitting the temperature profile at the disk midplane in (cite: Andrews2012; Andrews2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2012; Andrews2016)"
+  },
+  {
+   "what": {
+    "value": "Amplitude calibration accuracy 10/15/20% by band",
+    "evidence": [
+     {
+      "loc": "2.2",
+      "quote": "the accuracy of amplitude calibration for ALMA data $x=10\\%$ for Band 3, 4, 5 and 6, $x=15\\%$ for Band 7 and 8, $x=20\\%$ for Band 9 and 10 (cite: ALMATech2018)"
+     }
+    ]
+   },
+   "citation": "(cite: ALMATech2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Build model intensity profiles",
+   "method": "Solve I=B(Td)[1-exp(-tau)] with tau=tau0(nu/nu0)^beta; derive tau0(r), beta(r) from observed 190 GHz intensity and alpha with assumed Td",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=26K(r/10AU)^-0.4, d=59 pc, constant Td and absorption along line of sight"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Sensitivity analysis over band sets",
+   "method": "For each of 56 three-band sets, range of Td (5-60 K), tau, beta whose synthetic intensities lie within calibration error x of model at all three bands",
+   "software": [],
+   "key_parameters": [
+    "x=10% B3-6, 15% B7-8, 20% B9-10; Td 5-60 K"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Monte Carlo degeneracy and general-condition test for Band [10,6,3]",
+   "method": "1000 random intensity combinations with errors within +-10% (B6,B3) and +-20% (B10); derive properties; +-1sigma ranges for grid of Td, tau190, beta",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Apply to archival TW Hya data",
+   "method": "Smooth images to common beam, azimuthally averaged deprojected profiles, derive Td, tau_B4, beta for [7,6,4] and [9,6,4] sets, with constraint ranges from observational errors",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Td,syn,max deviation for Band [10,6,3]",
+   "value": "~21",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "Band \\[10,6,3\\] set gives us $T_{d,syn,max}$ deviates $\\sim21\\%$ from $T_{d,model}$ in average within $20~AU<r<45~AU$."
+    }
+   ]
+  },
+  {
+   "quantity": "Td,syn,max deviation for Band [10,6,1]",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "The deviation of $T_{d,syn,max}$ for Band \\[10,6,1\\] set is $\\sim$10%"
+    }
+   ]
+  },
+  {
+   "quantity": "Monte Carlo points with solutions",
+   "value": "827 of 1000",
+   "uncertainty": "not stated",
+   "units": "points",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "The 827 points are plotted from 1000 combinations of the randomly generated synthetic intensities"
+    }
+   ]
+  },
+  {
+   "quantity": "Td from Band [9,6,4] set",
+   "value": "15-27 for r<=40 AU",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "having $T_{d}(r)\\approx15-27~K$ in $r\\leq40~AU$ region"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Disk inclination and position angle used for deprojection",
+  "Radial bin width and annulus averaging details",
+  "Grid of radii and parameter grid resolution for sensitivity analysis",
+  "Grid for tau and beta ranges",
+  "Reference frequency nu0 and tau0 definition",
+  "Exact archive files or project-to-band mapping",
+  "Treatment of beam convolution of Td model (mean beam)"
+ ],
+ "missing_for_reproduction": [
+  "Inclination/PA for deprojection",
+  "Radial grid details",
+  "Exact data files used"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Analytic synthetic method is clearly specified, but real-data processing details are sparse.",
+ "rediscovery_reason": "Public data, simple analytic recipe, numeric outputs like deviation percentages.",
+ "source_card": "cards/2019ApJ...872..179K/sonnet/card.md"
+}

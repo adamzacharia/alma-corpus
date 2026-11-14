@@ -1,0 +1,488 @@
+{
+ "bibcode": "2020MNRAS.498.4109J",
+ "title": "Gas and star formation from HD and dust emission in a strongly lensed galaxy",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa2689",
+ "arxiv_id": "2009.00674",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Can HD(1-0) emission in the lensed z=5.656 galaxy SPT 0346-52 be used as a molecular gas tracer, and how do HD and dust-SED based gas masses constrain alpha_CO and the starburst nature of the source?",
+ "alma_project_codes": [
+  "2016.1.01313.S",
+  "2015.1.01580.S",
+  "2013.1.01231.S",
+  "2016.1.00654.S"
+ ],
+ "data": {
+  "bands": "Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "0.19'' x 0.17'' at PA 57 deg (final continuum-subtracted cube)",
+  "sensitivity": "0.25 mJy/beam per 15.625 MHz channel (cube); 0.11 mJy/beam (continuum image)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lensing magnification mu=5.6 applied to all flux densities",
+    "evidence": [
+     {
+      "loc": "4.1.2 Model Implementation",
+      "quote": "Each observed flux density was corrected for magnification by assuming a constant lensing magnification of $\\mu=5.6$, based on the detailed modelling of $\\lambda_{obs}=870\\,\\mu$m continuum emission (cite: spil16)."
+     }
+    ]
+   },
+   "citation": "(cite: spil16)"
+  },
+  {
+   "what": {
+    "value": "Source radius R_gal ~0.76 kpc from averaged source-plane effective radii",
+    "evidence": [
+     {
+      "loc": "4.1.1 Model Description",
+      "quote": "we average the source-plane $\\lambda_{\\rm obs}=$2.0 mm and 3.0 mm effective radii of (cite: apos19), resulting in $R_{gal}\\sim0.76$ kpc."
+     }
+    ]
+   },
+   "citation": "(cite: apos19)"
+  },
+  {
+   "what": {
+    "value": "Dust absorption coefficient kappa_o = 0.04 m^2 kg^-1 at 250 GHz",
+    "evidence": [
+     {
+      "loc": "4.1.1 Model Description",
+      "quote": "we assume the dust absorption coefficient $\\kappa_o=0.04$ m$^2$ kg$^{-1}$ at $\\nu_o=250$ GHz (cite: beel06)."
+     }
+    ]
+   },
+   "citation": "(cite: beel06)"
+  },
+  {
+   "what": {
+    "value": "CO FWHM = 613+/-30 km/s used to set line-free channel exclusion and the assumed HD line width",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "based on FWHM$_{\\rm CO}=613\\pm30$ km s$^{-1}$ (cite: arav16)"
+     }
+    ]
+   },
+   "citation": "(cite: arav16)"
+  },
+  {
+   "what": {
+    "value": "Archival/published continuum flux densities used in the SED (Table 1 entries 1,3-11, 12; ALMA archive projects 2015.1.01580.S, 2013.1.01231.S, 2016.1.00654.S)",
+    "evidence": [
+     {
+      "loc": "Table 1 caption",
+      "quote": "Includes previously published values, values from the ALMA archive, and new values from this paper."
+     },
+     {
+      "loc": "4.1 SED Modeling",
+      "quote": "we use the ALMA-staff calibrated continuum images (i.e., no further calibration has been performed)."
+     }
+    ]
+   },
+   "citation": "(cite: ma15; spil16; jone19; mars14; apos19; dong19; arav16; ma16) and ALMA archive projects as listed in Table 1"
+  },
+  {
+   "what": {
+    "value": "Gas temperature T~60 K from CO LVG modelling, used for f_u in the HD mass",
+    "evidence": [
+     {
+      "loc": "4.2.1 HD-Based Estimate",
+      "quote": "We assume a gas temperature of $T\\sim60$ K, based on Large Velocity Gradient (LVG) modelling of CO(8-7) and CO(2-1) data (cite: dong19)."
+     }
+    ]
+   },
+   "citation": "(cite: dong19)"
+  },
+  {
+   "what": {
+    "value": "Primordial D/H = (2.6+/-0.1)e-5",
+    "evidence": [
+     {
+      "loc": "4.2.1 HD-Based Estimate",
+      "quote": "We also adopt the primordial value of D/H=$(2.6\\pm0.1)\\times10^{-5}$ ((cite: coc04; plan16; novo17))"
+     }
+    ]
+   },
+   "citation": "(cite: coc04; plan16; novo17)"
+  },
+  {
+   "what": {
+    "value": "Assumed (HD/H2)/(D/H)=1",
+    "evidence": [
+     {
+      "loc": "4.2.1 HD-Based Estimate",
+      "quote": "we assume that (HD/H$_2$)/(D/H)=1, based on observations of $z\\sim2.5$ galaxies with high metallicity and HI column density (cite: lisz15)."
+     }
+    ]
+   },
+   "citation": "(cite: lisz15)"
+  },
+  {
+   "what": {
+    "value": "L'CO(2-1)/L'CO(1-0)=0.85 and CO(2-1) flux of earlier work used for alpha_CO",
+    "evidence": [
+     {
+      "loc": "4.2.1 HD-Based Estimate",
+      "quote": "We convert the CO(2-1) integrated flux density of (cite: arav16) to a CO(1-0) luminosity using $L'_{CO(2-1)}/L'_{CO(1-0)}=0.85$ (appropriate for starburst galaxies) from table 2 of (cite: cari13)"
+     }
+    ]
+   },
+   "citation": "(cite: arav16; cari13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux density",
+   "method": "TCLEAN continuum image from line-free channels (natural weighting, MFS, 3 sigma threshold); total flux integrated inside the 2 sigma contour; 2D Gaussian fits to the three components",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "natural weighting, multi-frequency synthesis, 3 sigma clean threshold"
+   ],
+   "assumptions": [
+    "Observed image-plane (not de-lensed) values reported"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Continuum-subtract the cube",
+   "method": "Tested UVCONTSUB (1st-order, visibilities) and IMCONTSUB on both sidebands; adopted 1st-order IMCONTSUB on the upper sideband excluding +/-250 km/s around HD(1-0)",
+   "software": [
+    "CASA uvcontsub",
+    "CASA imcontsub"
+   ],
+   "key_parameters": [
+    "Initial conservative line exclusion: HD frequency +/-750 km/s (400.888-402.899 GHz) based on CO FWHM"
+   ],
+   "assumptions": [
+    "HD line width unknown, so conservative channel exclusion used"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Search for HD(1-0) and derive an upper limit on its flux",
+   "method": "Channel-by-channel cube search, immoments collapse over -350 to 350 km/s, and spectrum extraction from the 2 sigma continuum mask; undetected, so a 2 sigma upper limit from a Gaussian of FWHM 613 km/s on the RMS at the expected frequency",
+   "software": [
+    "CASA immoments"
+   ],
+   "key_parameters": [
+    "RMS ~2.15 mJy at the expected frequency; amplitude limit 2 sigma; FWHM 613 km/s"
+   ],
+   "assumptions": [
+    "HD emission has the same spatial distribution as the FIR continuum and the CO line width"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the dust SED with a modified blackbody",
+   "method": "Single-temperature optically-thick modified blackbody with CMB correction, fit to magnification-corrected flux densities (Herschel 24-75 um rest through ALMA/ACT/SPT to rest 451 um; 8 mm point excluded) with 3 free parameters",
+   "software": [
+    "MultiNest",
+    "PyMultiNest"
+   ],
+   "key_parameters": [
+    "kappa_o = 0.04 m^2 kg^-1 at 250 GHz; R_gal ~0.76 kpc; mu = 5.6; T_o = 2.73 K"
+   ],
+   "assumptions": [
+    "Constant magnification mu=5.6, circular source of constant radius, luminosity-weighted single dust temperature, no MIR power law, synchrotron or free-free"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive FIR luminosity and star formation rate",
+   "method": "Integrate the best-fit model over 42.5-122.5 um and convert with the Kennicutt (1998) scaling",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "HD-based molecular gas mass and alpha_CO limit",
+   "method": "Convert the HD(1-0) flux limit to M_H2 using N_HD, A10, f_u(T) and primordial D/H; divide by L'CO(1-0) derived from the literature CO(2-1) flux to get alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "T~60 K; D/H=(2.6+/-0.1)e-5; A10=5.44e-8 s^-1; D_L=1.70e27 m; F_L<3.8e-20 W m^-2"
+   ],
+   "assumptions": [
+    "(HD/H2)/(D/H)=1; near-primordial D/H at z=5.656; HD kinetic temperature equals CO temperature; only H2 mass (no He or heavy elements)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Continuum-based gas masses and alpha_CO",
+   "method": "Gas-to-dust ratio applied to the fitted dust mass (sub-solar metallicity limit) and the Scoville et al. (2016) long-wavelength estimator applied to four flux densities; alpha_CO from each M_H2",
+   "software": [],
+   "key_parameters": [
+    "Scoville estimator applied to the four points with lambda_rest>250 um (lambda_obs>1664 um); GDR = 100 x 10^(Z-Zsun)"
+   ],
+   "assumptions": [
+    "Sub-solar metallicity assumed (no metallicity information); Scoville calibration derived from high-metallicity z~0-3 galaxies"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total continuum flux density (rest ~114 um, Band 8)",
+   "value": "171.5",
+   "uncertainty": "1.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum",
+     "quote": "The total continuum flux density is $171.5\\pm1.0$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum continuum significance",
+   "value": "~185",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum",
+     "quote": "The continuum is well detected, with a maximum significance of $\\sim185\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sum of integrated flux densities of the three Gaussian components",
+   "value": "147",
+   "uncertainty": "5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum",
+     "quote": "This value is greater than the sum of each integrated flux density ($147\\pm5$ mJy)"
+    }
+   ]
+  },
+  {
+   "quantity": "HD(1-0) integrated intensity upper limit",
+   "value": "<3.8e-20",
+   "uncertainty": "not stated",
+   "units": "W m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 HD(J=1-0) Emission",
+     "quote": "resulting in a conservative upper limit on the integrated intensity of HD(1-0) of $F_L<3.8\\times10^{-20}$ W m$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS noise at the expected HD(1-0) frequency in the extracted spectrum",
+   "value": "~2.15",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 HD(J=1-0) Emission",
+     "quote": "finding an RMS noise level of $\\sim2.15$ mJy at the expected frequency."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from HD(1-0) (T~60 K), upper limit",
+   "value": "<6.4e11 (x 5.6/mu)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "While no HD(1-0) emission is detected, we are able to place an upper limit on the gas mass of $\\rm M_{H_2}<6.4\\times10^{11}\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO limit from HD",
+   "value": "<5.8",
+   "uncertainty": "not stated",
+   "units": "Msun (K km/s pc^2)^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 HD-Based Estimate",
+     "quote": "This results in a limit of $\\alpha_{CO}<5.8$."
+    }
+   ]
+  },
+  {
+   "quantity": "HD gas-mass limit if Tgas = Tdust = 78.6 K",
+   "value": "<4.4e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 HD-Based Estimate",
+     "quote": "resulting in a slightly less conservative upper limit on the gas mass: $\\rm M_{H_2}<4.4\\times10^{11}\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HD gas-mass limit if Tgas = 25 K (mass-weighted dust temperature)",
+   "value": "<9.9e12",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 HD-Based Estimate",
+     "quote": "then we find a more conservative gas mass limit of $\\rm M_{H_2}<9.9\\times10^{12}\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature (best fit)",
+   "value": "78.6",
+   "uncertainty": "0.5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.3 Model Results",
+     "quote": "Fitting a modified blackbody model to our combined dataset yields best-fit values of T$_d=78.6\\pm0.5$ K, $\\beta=1.81\\pm0.03$, and log($M_{dust}/M_{\\odot})=8.92\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity spectral index beta",
+   "value": "1.81",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.3 Model Results",
+     "quote": "Fitting a modified blackbody model to our combined dataset yields best-fit values of T$_d=78.6\\pm0.5$ K, $\\beta=1.81\\pm0.03$, and log($M_{dust}/M_{\\odot})=8.92\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "log10 dust mass",
+   "value": "8.92",
+   "uncertainty": "0.02",
+   "units": "log10(Msun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.3 Model Results",
+     "quote": "Fitting a modified blackbody model to our combined dataset yields best-fit values of T$_d=78.6\\pm0.5$ K, $\\beta=1.81\\pm0.03$, and log($M_{dust}/M_{\\odot})=8.92\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "FIR luminosity (42.5-122.5 um)",
+   "value": "2.2e13",
+   "uncertainty": "0.1e13",
+   "units": "Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.3 Model Results",
+     "quote": "This model exhibits a FIR luminosity (i.e., 42.5-122.5 $\\mu$m) of L$_{\\rm FIR}=(2.2\\pm0.1)\\times10^{13}\\,$L$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate",
+   "value": "3800",
+   "uncertainty": "100",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.3 Model Results",
+     "quote": "Using the scaling relation from (cite: kenn98A), this corresponds to a SFR=$3800\\pm100$ M$_{\\odot}$ year$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth range across the SED",
+   "value": "0.22 at lambda_obs=3.0 mm to 43.99 at lambda_obs=160 um; tau~1 at ~200 um",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.4 Discussion of Uncertainties",
+     "quote": "We find that $\\tau_{\\nu}$ ranges from the marginally optically thin regime (0.22 at $\\lambda_{obs}=3.0$ mm) to optically thick (43.99 at $\\lambda_{obs}=160$ $\\mu$m)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass from gas-to-dust ratio (sub-solar metallicity), upper limit",
+   "value": "<2.4e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.2 Continuum-Based Estimates",
+     "quote": "Since no metallicity information is available, we assume sub-solar metallicity for this early galaxy, resulting in M$_{H_2,GDR}<2.4\\times10^{11}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass from Scoville et al. 2016 estimator",
+   "value": "5.1e11",
+   "uncertainty": "0.3e11",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.2 Continuum-Based Estimates",
+     "quote": "this yields a magnification-corrected average value of $M_{H_2}=(5.1\\pm0.3)\\times10^{11}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO from GDR and Scoville methods",
+   "value": "<2.2 (GDR); 4.0 (Scoville)",
+   "uncertainty": "0.4 (Scoville)",
+   "units": "Msun (K km/s pc^2)^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "resulting in $<5.8$, $<2.2$, and $4.0\\pm0.4$ for the HD, GDR, and (cite: scov16) approaches, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and the exact recalibration script / flagging of atmospheric-line channels",
+  "Image cell size, image size, niter and mask for the TCLEAN cubes and continuum image",
+  "Exact channel ranges used for the continuum image and the upper-sideband continuum fit",
+  "How the 2 sigma continuum contour mask was built and how the spectrum (and 2.15 mJy RMS at the HD frequency) was extracted",
+  "Which images and apertures were used to measure each archival ALMA flux density in Table 1 (and which projects map to which points)",
+  "Flux uncertainty treatment (absolute calibration error) in the SED likelihood and MultiNest settings (live points, tolerance, likelihood form)",
+  "Partition function Q(T) source and the IMF/calibration behind the SFR scaling",
+  "Luminosity-distance calculation details and which dust-mass value (10^8.92 vs 10^9.38) enters the gas-to-dust estimate",
+  "Target coordinates and the source of the redshift z=5.656"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and recalibration script",
+  "Cell size, image size, niter and masks for tclean",
+  "Exact line-free channel lists for the continuum image",
+  "Measurement method for archival ALMA flux densities in Table 1",
+  "MultiNest configuration and flux error treatment"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data, an explicit continuum-subtraction recipe, priors and numeric results, but imaging parameters, recalibration details, CASA version and archival flux measurement methods are missing.",
+ "rediscovery_reason": "Data are public and the upper limit, SED fit (priors, formula, table of fluxes) and gas-mass numbers are explicit; some tclean parameters must be chosen by the reproducer.",
+ "source_card": "cards/2020MNRAS.498.4109J/sonnet/card.md"
+}

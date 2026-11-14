@@ -1,0 +1,261 @@
+{
+ "bibcode": "2018ApJ...861..123F",
+ "title": "Why Post-starburst Galaxies Are Now Quiescent",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac8de",
+ "arxiv_id": "1805.12132",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Do CO-luminous but quiescent post-starburst galaxies contain dense gas (HCN, HCO+), and does a lack of dense gas explain their low star formation rates?",
+ "alma_project_codes": [
+  "2016.1.00881.S",
+  "2015.1.00665.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84-116 GHz), two spectral windows",
+  "arrays": "12m array; 43 antennas for H02, 41-46 for S05",
+  "angular_resolution": "beam 1-1.5 arcsec (1.0-1.4 kpc)",
+  "sensitivity": "H02 HCN 5.5 mJy/beam, HCO+ 2.7 mJy/beam; S05 570 uJy/beam both"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO (1-0) luminosities and CO linewidths of H02 and S05",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^{a}$ (cite: French2015)"
+     }
+    ]
+   },
+   "citation": "(cite: French2015)"
+  },
+  {
+   "what": {
+    "value": "TIR, [CII] and [NeII]+[NeIII] SFRs and dust masses",
+    "evidence": [
+     {
+      "loc": "2.2 Star Formation Rates",
+      "quote": "S05 has a TIR SFR consistent with the other measures from the optical and radio, at 0.71 M$_\\ensuremath{\\odot}$yr$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Smercina2018)"
+  },
+  {
+   "what": {
+    "value": "HCN and CO comparison samples of star-forming and early-type galaxies",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "comparison samples of star-forming and early type galaxies with both HCN and CO measurements (cite: Gao2004; Crocker2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Gao2004; Crocker2012)"
+  },
+  {
+   "what": {
+    "value": "HCO+ comparison sample",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "The comparison samples of star-forming and starbursting galaxies are from (cite: Gracia2008)"
+     }
+    ]
+   },
+   "citation": "(cite: Gracia2008)"
+  },
+  {
+   "what": {
+    "value": "Early-type SFRs",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "For the early type galaxies, SFRs are from (cite: Davis2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Davis2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes and check for HCN/HCO+ detections",
+   "method": "Pipeline-calibrated data imaged; no lines detected; tests with 5 arcsec taper and matched filter",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute 3 sigma line luminosity upper limits",
+   "method": "L' = 3.25e7 (1+z)^-3 nu_obs^-2 S dv D_L^2 integrated over CO (1-0) linewidth",
+   "software": [],
+   "key_parameters": [
+    "Linewidths 172 km/s (H02), 350 km/s (S05)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Adopt SFRs",
+   "method": "Compare SFRs from Halpha, Dn4000, FIRST 1.4 GHz and infrared tracers; adopt SFR <1 Msun/yr for H02",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare with L'-SFR relations and HCN/CO ratios of comparison samples",
+   "method": "Monte-Carlo drawing pairs of galaxies from comparison samples to assess probability of ratios as low as post-starbursts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Early-type conversion from main beam temperature to flux density 4.73 Jy/K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test conversion factor variations",
+   "method": "DESPOTIC models of alpha_CO and alpha_HCN for MW GMC and ULIRG conditions",
+   "software": [
+    "DESPOTIC"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Same HCN-to-dense gas conversion for post-starbursts and other galaxies"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L'(HCN) upper limit H02",
+   "value": "<29.3e6",
+   "uncertainty": "3 sigma limit",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$<           29.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'(HCN) upper limit S05",
+   "value": "<8.9e6",
+   "uncertainty": "3 sigma limit",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$<            8.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'(HCO+) upper limit H02",
+   "value": "<28.1e6",
+   "uncertainty": "3 sigma limit",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$<           28.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'(HCO+) upper limit S05",
+   "value": "<8.8e6",
+   "uncertainty": "3 sigma limit",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$<            8.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Probability two galaxies from combined comparison sample have HCN/CO as low as post-starbursts",
+   "value": "5%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the probability of finding two galaxies with HCN/CO as low as the post-starbursts is 5%"
+    }
+   ]
+  },
+  {
+   "quantity": "Same probability, early-type sample only",
+   "value": "16%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "we find that two galaxies have HCN/CO luminosity ratios as low as the two post-starbursts 16% of the time"
+    }
+   ]
+  },
+  {
+   "quantity": "Same probability, normal star-forming sample",
+   "value": "2%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "we find two galaxies with HCN/CO as low as the post-starbursts only 2% of the time"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO ULIRG vs MW GMC ratio from DESPOTIC",
+   "value": "~5x lower (alpha_HCN lowered by same factor)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Variations in luminosity to mass conversion",
+     "quote": "However, $\\alpha_{\\rm HCN}$ is lowered by the same factor."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging task, weighting/robust, cell and image size, and cleaning parameters",
+  "Continuum subtraction and line-free channels",
+  "How the 3 sigma upper limits and noise were computed (channel width, integration window)",
+  "Luminosity distance/cosmology adopted",
+  "Monte Carlo procedure details (sample selection, draws, definition of 'as low as')",
+  "DESPOTIC input parameters",
+  "Self-calibration and flux calibrator details"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Noise/upper limit procedure",
+  "Monte Carlo details",
+  "Cosmology"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple non-detection analysis and archive data, but imaging and Monte Carlo details are missing.",
+ "rediscovery_reason": "Public ALMA data, simple recipe, numeric upper limits, though imaging details need to be inferred.",
+ "source_card": "cards/2018ApJ...861..123F/sonnet/card.md"
+}

@@ -1,0 +1,470 @@
+{
+ "bibcode": "2023MNRAS.524.1211M",
+ "title": "Rotational spectroscopy and astronomical search for the 2-hydroxyacetonitrile isotopologues HO<SUP>13</SUP>CH<SUB>2</SUB>CN, HOCH<SUB>2</SUB><SUP>13</SUP>CN, and DOCH<SUB>2</SUB>CN",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad1834",
+ "arxiv_id": null,
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Measure the laboratory rotational spectra of the 2-hydroxyacetonitrile isotopologues HO13CH2CN, HOCH213CN, and DOCH2CN from 150 to 530 GHz and search for them in the ISM towards Serpens SMM1-a and IRAS16293 B.",
+ "alma_project_codes": [
+  "2013.1.00352.S",
+  "2018.1.01496.S"
+ ],
+ "data": {
+  "bands": "Band 6 (SMM1-a); Bands 3, 4, 5, 6 (IRAS16293 B archival search)",
+  "arrays": "not stated",
+  "angular_resolution": "1.2\" (SMM1-a); 1 to 2\" (IRAS16293 B archival search)",
+  "sensitivity": "better than 6 mJy beam^-1 for a bin width of 1 km s^-1 (IRAS16293 B ATOMIS request)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ab initio dipole moments, ground vibrational state rotational constants, quartic centrifugal distortion constants, and vibrational band centers of hydroxyacetonitrile",
+    "evidence": [
+     {
+      "loc": "3 ANALYSIS OF THE ROTATIONAL SPECTRA",
+      "quote": "It is also the case of 2hydroxyacetonitrile: µ a = 2.32 D, µ b = 1.31 D, µ c = 1.23 D. These ab initio values are from Dalbouha et al. (2017)."
+     },
+     {
+      "loc": "3.1 13 C isotopologues",
+      "quote": "we used as starting parameters the ab initio ground vibrational state rotational constants of Table 2 in Dalbouha et al. (2017)"
+     },
+     {
+      "loc": "3.3 Partition function",
+      "quote": "The band centers values were taken from Table 3 in Dalbouha et al. (2017)."
+     }
+    ]
+   },
+   "citation": "Dalbouha et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters (centrifugal distortion, tunneling splitting, Coriolis coupling) of the main isotopologue HOCH2CN",
+    "evidence": [
+     {
+      "loc": "3.1 13 C isotopologues",
+      "quote": "all the other parameters (centrifugal distortion, tunneling splitting, and Coriolis coupling constants) were taken from Margulès et al. (2017)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "The first column of the table shows the parameters of the main isotopologue from Margulès et al. (2017)."
+     }
+    ]
+   },
+   "citation": "Margulès et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Centimeter-wave rotational parameters and tunneling energy difference estimation for DOCH2CN",
+    "evidence": [
+     {
+      "loc": "3.2 Deuterated isotopologue: DOCH 2 CN",
+      "quote": "The initial spectral predictions were calculated with Watson’s Hamiltonian in the I r representation, the rotational parameters from Cazzoli et al. (1973)"
+     }
+    ]
+   },
+   "citation": "Cazzoli et al. (1973)"
+  },
+  {
+   "what": {
+    "value": "HOCH2CN column density, excitation temperature, line width, and V_LSR in SMM1-a and column density in IRAS16293 B",
+    "evidence": [
+     {
+      "loc": "4.1 SMM1-a",
+      "quote": "Hydroxyacetonitrile was detected at N Tot = (7.4±0.9)×10 14 cm −2 , T ex = 260±45 K, ∆ V 2.5±0.3 km.s −1 , and V LSR = 6.8±0.2 km.s −1 (Ligterink et al. 2021)."
+     },
+     {
+      "loc": "4.2 IRAS16293 B",
+      "quote": "Using the column density of 3×10 15 cm −2 derived for the main isotopologue by Ligterink et al. (2021), we obtain a 13 C/ 12 C ≤ 0.5."
+     }
+    ]
+   },
+   "citation": "Ligterink et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Excitation temperature of HOCH2CN in IRAS16293 B",
+    "evidence": [
+     {
+      "loc": "4.2 IRAS16293 B",
+      "quote": "Assuming an excitation temperature of 150 K (similar to the one obtained by Zeng et al. 2019), a source size of 0.5 ′′ , a linewidth ∆ V = 1 km s −1 , and a V LSR = 2.7 km.s −1"
+     }
+    ]
+   },
+   "citation": "Zeng et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit laboratory rotational spectra and generate spectroscopic line lists and partition functions",
+   "method": "Least-squares fitting of measured submillimeter lines (150–530 GHz) using the Reduced Axis System (RAS) formalism and Watson's S-reduction Hamiltonian; partition functions computed from SPCAT rotational partition functions and harmonic vibrational approximations.",
+   "software": [
+    "SPFIT",
+    "SPCAT"
+   ],
+   "key_parameters": [
+    "J up to 90 and Ka up to 40 for Q_rot; four lowest vibrational excited states below 870 cm^-1 for Q_vib"
+   ],
+   "assumptions": [
+    "Some octic distortion constants (L_K, l_2, l_3) for 13C isotopologues fixed to main isotopologue values; dipole moments taken from ab initio calculations (µ_a = 2.32 D, µ_b = 1.31 D, µ_c = 1.23 D)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Search for isotopologues and derive column density upper limits in Serpens SMM1-a",
+   "method": "Extract single-beam spectrum towards the SMM1-a continuum peak, search for lines above 3 S/N, and compute LTE synthetic spectra in line-free regions to set upper limits on column density.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "T_ex = 260 K, ΔV = 2.5 km s^-1, V_LSR = 6.8 km s^-1, 3 S/N detection threshold"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE); T_ex, ΔV, and V_LSR fixed to main isotopologue values from Ligterink et al. (2021)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Search for isotopologues and derive column density upper limits in IRAS16293 B (PILS and archival data)",
+   "method": "Search for transitions at the half-beam offset position in the ALMA-PILS survey (329–363 GHz) to derive column density upper limits; query archival ALMA data at 1–2\" resolution using ATOMIS and inspect archival FITS cubes.",
+   "software": [
+    "ATOMIS",
+    "Aladin",
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "PILS search: T_ex = 150 K, source size = 0.5\", ΔV = 1 km s^-1, V_LSR = 2.7 km s^-1; ATOMIS query: angular resolution 1–2\", spectral resolution < 0.5 km s^-1, sensitivity < 6 mJy beam^-1 per 1 km s^-1, Bands 3–6, A_ij > 5 x 10^-5 s^-1"
+   ],
+   "assumptions": [
+    "T_ex = 150 K, source size = 0.5\", ΔV = 1 km s^-1, V_LSR = 2.7 km s^-1, and main isotopologue N = 3 x 10^15 cm^-2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rotational constant A of HO13CH2CN",
+   "value": "32787.31228",
+   "uncertainty": "0.00029",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A 33609.53194(27) b 32787.31228(29) 33569.30468(40) 30653.94661(70)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of HO13CH2CN",
+   "value": "4820.980595",
+   "uncertainty": "0.000068",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "B 4838.014347(41) 4820.980595(68) 4810.878790(83) 4725.725505(99)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of HO13CH2CN",
+   "value": "4349.083437",
+   "uncertainty": "0.000065",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C 4377.304462(40) 4349.083437(65) 4354.399428(80) 4262.86028(24)"
+    }
+   ]
+  },
+  {
+   "quantity": "Tunneling splitting constant E of HO13CH2CN",
+   "value": "112016.5779",
+   "uncertainty": "0.0041",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "E 112672.5526(30) 112016.5779(41) 112716.4480(55) 17567.0493(89)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of HOCH213CN",
+   "value": "33569.30468",
+   "uncertainty": "0.00040",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A 33609.53194(27) b 32787.31228(29) 33569.30468(40) 30653.94661(70)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of HOCH213CN",
+   "value": "4810.878790",
+   "uncertainty": "0.000083",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "B 4838.014347(41) 4820.980595(68) 4810.878790(83) 4725.725505(99)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of HOCH213CN",
+   "value": "4354.399428",
+   "uncertainty": "0.000080",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C 4377.304462(40) 4349.083437(65) 4354.399428(80) 4262.86028(24)"
+    }
+   ]
+  },
+  {
+   "quantity": "Tunneling splitting constant E of HOCH213CN",
+   "value": "112716.4480",
+   "uncertainty": "0.0055",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "E 112672.5526(30) 112016.5779(41) 112716.4480(55) 17567.0493(89)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of DOCH2CN",
+   "value": "30653.94661",
+   "uncertainty": "0.00070",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A 33609.53194(27) b 32787.31228(29) 33569.30468(40) 30653.94661(70)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of DOCH2CN",
+   "value": "4725.725505",
+   "uncertainty": "0.000099",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "B 4838.014347(41) 4820.980595(68) 4810.878790(83) 4725.725505(99)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of DOCH2CN",
+   "value": "4262.86028",
+   "uncertainty": "0.00024",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C 4377.304462(40) 4349.083437(65) 4354.399428(80) 4262.86028(24)"
+    }
+   ]
+  },
+  {
+   "quantity": "Tunneling splitting constant E of DOCH2CN",
+   "value": "17567.0493",
+   "uncertainty": "0.0089",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "E 112672.5526(30) 112016.5779(41) 112716.4480(55) 17567.0493(89)"
+    }
+   ]
+  },
+  {
+   "quantity": "Total partition function Q_tot(300 K) for HO13CH2CN",
+   "value": "195427.600",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "300 66349.366 2.945 195427.600 65599.953 2.983 195705.692 70508.718 3.448 243084.660"
+    }
+   ]
+  },
+  {
+   "quantity": "Total partition function Q_tot(300 K) for HOCH213CN",
+   "value": "195705.692",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "300 66349.366 2.945 195427.600 65599.953 2.983 195705.692 70508.718 3.448 243084.660"
+    }
+   ]
+  },
+  {
+   "quantity": "Total partition function Q_tot(300 K) for DOCH2CN",
+   "value": "243084.660",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "300 66349.366 2.945 195427.600 65599.953 2.983 195705.692 70508.718 3.448 243084.660"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of DOCH2CN in SMM1-a",
+   "value": "≤ 1 × 10^14",
+   "uncertainty": "upper limit",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 SMM1-a",
+     "quote": "For DOCH 2 CN N tot ≤ 1 × 10 14 cm −2 , while for both 13 C isotopologues it is set a N tot ≤ 2 × 10 14 cm −2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of HO13CH2CN and HOCH213CN in SMM1-a",
+   "value": "≤ 2 × 10^14",
+   "uncertainty": "upper limit",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 SMM1-a",
+     "quote": "For DOCH 2 CN N tot ≤ 1 × 10 14 cm −2 , while for both 13 C isotopologues it is set a N tot ≤ 2 × 10 14 cm −2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "D/H ratio ([DOCH2CN]/[HOCH2CN]) upper limit in SMM1-a",
+   "value": "≤ 0.14",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 SMM1-a",
+     "quote": "This results in [isotopologue]/[HOCH 2 CN] ratios of ≤ 0.14 and ≤ 0.27 for the deuterated and 13 C hydroxyacetonitrile isotopologues, respectively."
+    },
+    {
+     "loc": "Table 7",
+     "quote": "D/H ≲ 0.14 ≲ 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "13C/12C ratio upper limit in SMM1-a",
+   "value": "≤ 0.27",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 SMM1-a",
+     "quote": "This results in [isotopologue]/[HOCH 2 CN] ratios of ≤ 0.14 and ≤ 0.27 for the deuterated and 13 C hydroxyacetonitrile isotopologues, respectively."
+    },
+    {
+     "loc": "Table 7",
+     "quote": "13 C/ 12 C ≲ 0.27 ≲ 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density upper limit of HO13CH2CN, HOCH213CN, and DOCH2CN in IRAS16293 B",
+   "value": "≤ 1.5 × 10^15",
+   "uncertainty": "upper limit",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 IRAS16293 B",
+     "quote": "we derive an upper limit of 1.5×10 15 cm −2 for both HO 13 CH 2 CN and HOCH 13 [The] [upper] [limit] [would] [be] [lower] [if] [the] [excitation] 2 [CN.]"
+    },
+    {
+     "loc": "4.2 IRAS16293 B",
+     "quote": "DOCH 2 CN was also searched for in the PILS survey but is undetected with a column density lower than 1.5×10 15 cm −2 for T ex = 150 K."
+    }
+   ]
+  },
+  {
+   "quantity": "13C/12C ratio upper limit in IRAS16293 B",
+   "value": "≤ 0.5",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 IRAS16293 B",
+     "quote": "Using the column density of 3×10 15 cm −2 derived for the main isotopologue by Ligterink et al. (2021), we obtain a 13 C/ 12 C ≤ 0.5."
+    },
+    {
+     "loc": "Table 7",
+     "quote": "13 C/ 12 C ≲ 0.27 ≲ 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "D/H ratio upper limit in IRAS16293 B",
+   "value": "≤ 0.5",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 IRAS16293 B",
+     "quote": "This leads to an upper limit for the D/H ratio of 50%"
+    },
+    {
+     "loc": "Table 7",
+     "quote": "D/H ≲ 0.14 ≲ 0.5"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact coordinates of the half-beam offset position in IRAS16293 B where the PILS spectrum was extracted",
+  "Exact continuum peak pixel coordinates in SMM1-a where the single-beam spectrum was extracted",
+  "Assumed source size or beam dilution factor for the SMM1-a LTE column density upper limit calculation",
+  "Calibration and imaging parameters for SMM1-a and IRAS16293 B PILS data (inherited from Ligterink et al. 2021 and Jørgensen et al. 2016)"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel/sky coordinates for the IRAS16293 B half-beam offset position and SMM1-a continuum peak extraction",
+  "Assumed source size for SMM1-a LTE modeling in CASSIS",
+  "Raw laboratory absorption spectra (though fitted transition frequencies are at CDS)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The laboratory line lists and .cat predictions are publicly hosted at CDS and LSD, and the ALMA data are public in the archive with fixed LTE parameters explicitly stated, though the astronomical results are visual upper limits and rely on companion papers for spectrum extraction details.",
+ "rediscovery_reason": "All ALMA project codes are public, the spectroscopic catalogs (.cat files) and partition functions are publicly released, and the LTE parameters (T_ex, ΔV, V_LSR) used to derive the upper limits are explicitly stated.",
+ "source_card": "cards/2023MNRAS.524.1211M/sonnet/card.md"
+}

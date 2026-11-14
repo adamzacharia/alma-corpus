@@ -1,0 +1,254 @@
+{
+ "bibcode": "2024ApJ...976...29H",
+ "title": "ALMASOP. The Localized and Chemically Rich Features near the Bases of the Protostellar Jet in HOPS 87",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad7e25",
+ "arxiv_id": "2409.14445",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What is the physical origin and chemical composition of the localized, chemically rich regions near the bases of the bipolar molecular outflow in the Class 0 protostellar core HOPS 87?",
+ "alma_project_codes": [
+  "2018.1.00302.S",
+  "2015.1.00341.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm or 230 GHz)",
+  "arrays": "12-m array and 7-m array (ACA / Morita Array)",
+  "angular_resolution": "~0.42'' (2018.1.00302.S); ~0.16'' (2015.1.00341.S)",
+  "sensitivity": "2018.1.00302.S: ~12 uJy beam^-1 (continuum, also stated as 0.9 mJy beam^-1 in Fig 1) and ~3.3 mJy beam^-1 per channel; 2015.1.00341.S: ~6 mJy beam^-1 per 0.244 MHz channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric luminosity L_bol = 38 +/- 13 L_sun, bolometric temperature T_bol = 36.7 +/- 14.5 K, and v_LSR = 11.4 km s^-1 for HOPS 87",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "with a bolometric luminosity L bol of 38 ± 13 L ⊙, a bolometric temperature T bol of 36 . 7 ± 14 . 5 K, and local standard of rest velocity v LSR of 11 . 4 km s − 1 (Dutta et al. 2020)."
+     }
+    ]
+   },
+   "citation": "Dutta et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic line parameters from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "Table A1",
+      "quote": "Species E u f rest Quantum Number Database"
+     }
+    ]
+   },
+   "citation": "CDMS, JPL"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Evaluate 1.3 mm dust continuum optical depth and H2 column density at the continuum peak",
+   "method": "Measure peak continuum brightness temperature and apply Planck function radiative transfer and column density equations from Kauffmann et al. (2008)",
+   "software": [],
+   "key_parameters": [
+    "Beam size = 0.42''"
+   ],
+   "assumptions": [
+    "Dust temperature T_d = 60 K",
+    "Mean molecular weight per hydrogen molecule mu ~ 2.8",
+    "Dust opacity law kappa_nu = 0.1(nu/THz)^beta cm^2 g^-1 with beta = 1.70, giving kappa_nu = 0.0083 cm^2 g^-1 at 1.3 mm",
+    "Gas-to-dust ratio = 100"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create integrated intensity (moment-0) maps and channel maps of molecular transitions",
+   "method": "Integrate emission over specified velocity ranges for each molecular transition to map spatial distributions of outflows, hot corino, and two-lobe features, and inspect high-resolution Cycle 3 channel maps",
+   "software": [],
+   "key_parameters": [
+    "Velocity integration ranges: +/- 40 km s^-1 (CO, SiO), +/- 3 km s^-1 (13CS), +/- 7.5 km s^-1 (others)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and Position-Velocity (PV) diagrams to analyze kinematics and line ratios",
+   "method": "Extract continuum-subtracted spectra along the cavity/outflow axis (PA = -4 deg), generate PV diagrams along and across the outflow axis using CARTA 4.0, measure maximum velocity widths above 5 sigma, and compute flux density ratio PV diagrams",
+   "software": [
+    "CARTA"
+   ],
+   "key_parameters": [
+    "Outflow axis PA = -4 deg, centered at 1.3 mm continuum peak",
+    "PV cut width = 3 pixels (pixel size = 0.06'')",
+    "Detection threshold = 5 sigma for velocity width and PV ratio calculations"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum peak brightness temperature",
+   "value": "47",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1. 1.3 mm Dust Continuum",
+     "quote": "The brightness temperature of the 1.3 mm continuum peak is 47 K with a beam size of 0 ′′ . 42."
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum optical depth (tau_nu)",
+   "value": "1.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1. 1.3 mm Dust Continuum",
+     "quote": "Adopting the brightness temperature at the continuum peak, the derived optical depth τ ν is 1.55, indicating that the continuum is somewhat optically thick."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen column density N(H2)",
+   "value": "2.89e25",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1. 1.3 mm Dust Continuum",
+     "quote": "Assuming a gas-to-dust ratio of 100, the resulting molecular hydrogen column density N (H 2 ) is 2 . 89 × 10 25 cm − 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Position offset of northern localized blob (Delta p)",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "Finally, for all transitions, the position offsets of the northern blobs (∆ p ∼ 0 ′′ . 3) are generally higher than the southern blobs ( − 0 ′′ . 2), as also illustrated in Figure 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Position offset of southern localized blob (Delta p)",
+   "value": "-0.2",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "Finally, for all transitions, the position offsets of the northern blobs (∆ p ∼ 0 ′′ . 3) are generally higher than the southern blobs ( − 0 ′′ . 2), as also illustrated in Figure 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Position offset of H2CO northern blob",
+   "value": "0.40",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "The only exception is H 2 CO, which has slightly higher position offset of ∼ 0 ′′ . 40."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH velocity width at E_u = 45 K",
+   "value": "5.6",
+   "uncertainty": "1.4",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "As illustrated in Figure 5, the velocity width of CH 3 OH decreases from 5.6 km s − 1 at E u = 45 K to 2.8 km s − 1 at E u = 190 K."
+    },
+    {
+     "loc": "Figure 5 caption",
+     "quote": "The error bars are referred from the spectral channel widths ( ∼ 1.4 km s − 1 .)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH velocity width at E_u = 190 K",
+   "value": "2.8",
+   "uncertainty": "1.4",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "As illustrated in Figure 5, the velocity width of CH 3 OH decreases from 5.6 km s − 1 at E u = 45 K to 2.8 km s − 1 at E u = 190 K."
+    },
+    {
+     "loc": "Figure 5 caption",
+     "quote": "The error bars are referred from the spectral channel widths ( ∼ 1.4 km s − 1 .)"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO velocity width at E_u = 21 K",
+   "value": "9.8",
+   "uncertainty": "1.4",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "For H 2 CO, from the lowest ( E u = 21 K) to the highest upper energy ( E u = 174 K) transitions, the velocity width decreases from 9.8 to 2.8 km s − 1 ."
+    },
+    {
+     "loc": "Figure 5 caption",
+     "quote": "The error bars are referred from the spectral channel widths ( ∼ 1.4 km s − 1 .)"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO velocity width at E_u = 174 K",
+   "value": "2.8",
+   "uncertainty": "1.4",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Kinematics",
+     "quote": "For H 2 CO, from the lowest ( E u = 21 K) to the highest upper energy ( E u = 174 K) transitions, the velocity width decreases from 9.8 to 2.8 km s − 1 ."
+    },
+    {
+     "loc": "Figure 5 caption",
+     "quote": "The error bars are referred from the spectral channel widths ( ∼ 1.4 km s − 1 .)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for tclean of the Cycle 6 ALMASOP data",
+  "Deconvolver, masking, threshold, and stopping criteria in tclean for Cycle 6 data",
+  "Method and line-free channel selection used for continuum subtraction",
+  "Method of combining 12-m (C43-5, C43-2) and 7-m arrays",
+  "Exact rest frequency of CH3OH 5(1,4)-4(2,4) / 5(1,4)-4(2,3) transition in Cycle 3 data",
+  "Reconciliation of the discrepancy in stated Cycle 6 continuum sensitivity (12 uJy/beam in Section 2.1 vs 0.9 mJy/beam in Figure 1 caption)"
+ ],
+ "missing_for_reproduction": [
+  "Detailed tclean parameters (deconvolver, multiscale scales, stopping threshold, masking) and array combination weights for Cycle 6 data (inherited from Dutta et al. 2020)",
+  "Continuum subtraction channel ranges for Cycle 6 spectral windows",
+  "Exact rest frequency used for the Cycle 3 CH3OH 5_1,4 - 4_2,3 transition"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Both ALMA datasets are public (with ARI-L products directly usable for Cycle 3), and the kinematic analysis in CARTA and continuum calculations are straightforward and clearly parameterized, though full re-imaging of Cycle 6 requires consulting Dutta et al. (2020).",
+ "rediscovery_reason": "Public ALMA datasets, straightforward morphological and PV-diagram analysis, and clear quantitative metrics (continuum optical depth, column density, lobe offsets, and velocity widths).",
+ "source_card": "cards/2024ApJ...976...29H/sonnet/card.md"
+}

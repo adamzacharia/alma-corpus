@@ -1,0 +1,266 @@
+{
+ "bibcode": "2016PASJ...68...88K",
+ "title": "The Sunyaev-Zel'dovich effect at 5″: RX J1347.5-1145 imaged by ALMA",
+ "year": 2016,
+ "doi": "10.1093/pasj/psw082",
+ "arxiv_id": "1607.08833",
+ "fields": [
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Can ALMA (7-m plus 12-m arrays, Band 3) image the thermal SZE of RX J1347.5-1145 at 5 arcsec resolution, and how should missing flux be corrected and the map compared with X-ray and earlier SZE data?",
+ "alma_project_codes": [
+  "2013.1.00246.S",
+  "2013.1.00120.S",
+  "2013.1.01312.S"
+ ],
+ "data": {
+  "bands": "Band 3, central 92 GHz",
+  "arrays": "12-m and 7-m arrays, 13 execution blocks",
+  "angular_resolution": "12-m beam 4.1\"x2.4\"; 7-m 20.5\"x11.1\"; smoothed to 5\"",
+  "sensitivity": "0.017 mJy/beam at 5\" (0.12 mK_CMB); dirty-map rms 0.012 (12-m), 0.083 (7-m) mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spatially resolved deprojected electron temperatures for spherical SZE model",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "Spatially resolved and deprojected electron temperatures are taken from Table 7 of (cite: Ota08)"
+     }
+    ]
+   },
+   "citation": "(cite: Ota08)"
+  },
+  {
+   "what": {
+    "value": "Peculiar velocity of cluster",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "the peculiar velocity of this cluster $v_{\\rm pec}=-1040^{+870}_{-840}$ km/s reported by (cite: Sayers16)"
+     }
+    ]
+   },
+   "citation": "(cite: Sayers16)"
+  },
+  {
+   "what": {
+    "value": "MUSTANG and NOBA SZE maps used for comparison",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "comparison of the ALMA map with previous SZE observations of RX J1347.5–1145 by MUSTANG (cite: Mason10; Korngut11) and NOBA (cite: Komatsu01)"
+     }
+    ]
+   },
+   "citation": "(cite: Mason10; Korngut11; Komatsu01)"
+  },
+  {
+   "what": {
+    "value": "Peak y-parameter 8e-4 for simulation normalization",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$y_{\\rm   peak}=8\\times10^{-4}$ as inferred from the previous SZE measurements of this cluster (cite: Komatsu01; Kitayama04)"
+     }
+    ]
+   },
+   "citation": "(cite: Komatsu01; Kitayama04)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Dirty maps and noise",
+   "method": "Dirty images from calibrated visibilities; noise from half-split difference maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Subtract central AGN",
+   "method": "Point-source fit in uv plane for uv>30 kλ, separately for 84-88 and 96-100 GHz, subtracted from visibilities",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Deconvolve extended SZE",
+   "method": "Multi-Scale CLEAN with scale set chosen for minimal residuals and maximal recovered flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "loop gain 0.05, threshold 0.03 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "X-ray pseudo pressure map",
+   "method": "Chandra spectra in contour-binned regions give projected T and normalization; pseudo density and pressure",
+   "software": [
+    "CIAO",
+    "XSPEC"
+   ],
+   "key_parameters": [
+    "S/N threshold 83 (~7000 counts)"
+   ],
+   "assumptions": [
+    "Gas uniformly distributed over line-of-sight length L; CIE plasma; Anders & Grevesse abundances; NH=4.6e20"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Imaging simulations for missing flux",
+   "method": "Simulate ALMA observations of pressure-map model with simobserve; derive Fourier-space correction (i) and real-space linear relation (ii)",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "y_peak=8e-4; four spectral windows 1.875 GHz each"
+   ],
+   "assumptions": [
+    "Relativistic SZE correction of Nozawa05 with projected temperature"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Differential y map",
+   "method": "Divide by 0.88, subtract mean at 40\" from peak, convert to Δy with relativistic correction",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "AGN flux density at 86 GHz",
+   "value": "4.16",
+   "uncertainty": "±0.03 stat ±0.25 sys",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we find $F_\\nu=4.16 \\pm 0.03 \\pm 0.25$ mJy and $3.96 \\pm 0.03 \\pm 0.24$ mJy at the central frequencies of 86 GHz and 98 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN flux density at 98 GHz",
+   "value": "3.96",
+   "uncertainty": "±0.03 stat ±0.24 sys",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$3.96 \\pm 0.03 \\pm 0.24$ mJy at the central frequencies of 86 GHz and 98 GHz, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN spectral index 86-98 GHz",
+   "value": "-0.38",
+   "uncertainty": "±0.12",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The spectral index of the source inferred from the two measurements over a narrow range between 86 GHz and 98 GHz is $-0.38 \\pm 0.12$."
+    }
+   ]
+  },
+  {
+   "quantity": "SZE intensity at south-east peak",
+   "value": "-0.286",
+   "uncertainty": "±0.017 ±0.017",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$-0.286 \\pm 0.017 \\pm 0.017$ mJy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "SZE flux within 40\" of SE peak",
+   "value": "-12.4",
+   "uncertainty": "±0.2 ±0.8",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "The measured flux within a radius of $40''$ from the south-east peak is $-12.4 \\pm 0.2 \\pm 0.8$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Fit slope c1",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "with $c_1=0.88$ and $c_0=3.6 ~\\mu$Jy/arcsec$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak differential Compton y",
+   "value": "5.9e-4",
+   "uncertainty": "±0.4 ±0.8 (e-4)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "The peak value of the Compton $y$-parameter is $\\Delta y = (5.9 \\pm 0.4 \\pm 0.8) \\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated ΔY within 40\"",
+   "value": "1.6e-11",
+   "uncertainty": "±0.03 ±0.8 (e-11)",
+   "units": "sr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\Delta Y = \\int \\Delta y d\\Omega = (1.6 \\pm 0.03 \\pm 0.8)\\times 10^{-11}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Phase center coordinates (blank in text)",
+  "Exact CASA task parameters (niter, mask, spw selection) for tclean/clean",
+  "Simulation details: simobserve PWV and noise settings, exact large-scale fall-off factor shape",
+  "Contour-binning and XSPEC fit details for pseudo pressure map",
+  "Whether Band 3 7-m QA2 weights were rescaled",
+  "Number of pixels/image size"
+ ],
+ "missing_for_reproduction": [
+  "Phase center coordinates",
+  "Exact simulation configuration",
+  "Large-scale fall-off factor values"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Detailed recipe with parameters and public data; some simulation and X-ray details are unspecified.",
+ "rediscovery_reason": "Public ALMA and Chandra data, detailed imaging recipe, numeric results (flux, y, c1).",
+ "source_card": "cards/2016PASJ...68...88K/sonnet/card.md"
+}

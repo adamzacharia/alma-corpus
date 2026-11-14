@@ -1,0 +1,1686 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...995..211I",
+  "title": "ALMA Subparsec Resolution Dense Molecular Line Observations of the NGC 1068 Nucleus",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Imanishi, Masatoshi",
+  "n_authors": 6,
+  "arxiv_id": "2511.04772",
+  "doi": "10.3847/1538-4357/ae1caa",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.00037.S",
+   "2022.1.00005.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the results of our ALMA observations of the dense molecular HCN J=4–3 and HCO$^{+}$ J=4–3 lines at"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1068 nucleus",
+     "coordinates": {
+      "value": "C-peak (continuum peak, ICRS): 02h 42m 40.709s, -00d 00m 47.946s",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "(02$^{\\rm h}$ 42$^{\\rm m}$ 40.709$^{\\rm s}$, $-$00$^{\\circ}$ 00$'$ 47.946$''$) (C-peak)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "very nearby ($\\sim$14 Mpc, $z =$ 0.0038, 1 arcsec = 70 pc) type 2 AGN, NGC 1068"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~14 Mpc, z = 0.0038, 1 arcsec = 70 pc",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "(02$^{\\rm h}$ 42$^{\\rm m}$ 40.709$^{\\rm s}$, $-$00$^{\\circ}$ 00$'$ 47.946$''$) (C-peak)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "very nearby ($\\sim$14 Mpc, $z =$ 0.0038, 1 arcsec = 70 pc) type 2 AGN, NGC 1068"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dense-gas morphology, kinematics (apparent counter-rotation) and excitation of the NGC 1068 torus at sub-pc resolution in HCN and HCO+ J=4-3, and does a physically counter-rotating torus model reproduce them?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "line observations of the NGC 1068 nucleus to further scrutinize various properties of the dense molecular torus around the AGN in NGC 1068."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We apply a physically counter-rotating torus model, in which a compact dense gas clump collided with the western side of the existing rotating torus from the opposite direction"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2022.1.00005.S",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "Our HCN J=4–3 and HCO$^{+}$ J=4–3 line observations of the NGC 1068 nucleus were conducted in our ALMA Cycle 9 program 2022.1.00005.S (PI = M. Imanishi)."
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00037.S",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "line data taken in ALMA Cycle 6 (2018.1.00037.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "1.875 GHz mode, 1920 channels per spw; HCN and HCO+ J=4-3 (+HCN-VIB) in USB, CS J=7-6 in LSB",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "We employed the widest 1.875 GHz mode with 1920 channels for each spectral window."
+     },
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "lines were simultaneously observed in one sideband (USB)."
+     },
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "In LSB, the CS J=7–6 line"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "J=4-3",
+     "rest_frequency": "354.505 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "The HCN J=4–3 (rest frame frequency $\\nu_{\\rm rest}$ = 354.505 GHz) and HCO$^{+}$ J=4–3 ($\\nu_{\\rm rest}$ = 356.734 GHz) lines were simultaneously observed in one sideband (USB)."
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=4-3",
+     "rest_frequency": "356.734 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "The HCN J=4–3 (rest frame frequency $\\nu_{\\rm rest}$ = 354.505 GHz) and HCO$^{+}$ J=4–3 ($\\nu_{\\rm rest}$ = 356.734 GHz) lines were simultaneously observed in one sideband (USB)."
+      }
+     ]
+    },
+    {
+     "species": "HCN v2=1, l=1f (HCN-VIB)",
+     "transition": "J=4-3",
+     "rest_frequency": "356.256 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "The vibrationally excited HCN v$_{2}$=1, l=1f (HCN-VIB) J=4–3 line ($\\nu_{\\rm rest}$ = 356.256 GHz) is also covered in the USB"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=7-6",
+     "rest_frequency": "342.883 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "In LSB, the CS J=7–6 line ($\\nu_{\\rm rest}$ = 342.883 GHz) is covered."
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=3-2 (Cycle 6, reanalysed)",
+     "rest_frequency": "265.886 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "resolution HCN J=3–2 ($\\nu_{\\rm rest}$ = 265.886 GHz) and HCO$^{+}$ J=3–2 ($\\nu_{\\rm rest}$ = 267.558 GHz) line data taken in ALMA Cycle 6 (2018.1.00037.S)"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=3-2 (Cycle 6, reanalysed)",
+     "rest_frequency": "267.558 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "resolution HCN J=3–2 ($\\nu_{\\rm rest}$ = 265.886 GHz) and HCO$^{+}$ J=3–2 ($\\nu_{\\rm rest}$ = 267.558 GHz) line data taken in ALMA Cycle 6 (2018.1.00037.S)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "longest baseline (~16 km) configuration, Cycle 9",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "To achieve the highest angular resolution, the longest baseline"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "230–16196 m (first five executions); 83–16196 m (Aug 9 and 11)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "230–16196"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "83–16196"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~350 GHz continuum and J=4-3 lines: 0.014 x 0.013 arcsec (~1 pc); reanalysed ~260 GHz: 0.019 x 0.017 arcsec (continuum), 0.020 x 0.018 (J=3-2 lines)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the synthesized beam size (0.014$''$ $\\times$ 0.013$''$)"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "0.019$\\times$0.017 (56$^{\\circ}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "MRS >~ 0.14 arcsec (>~10 pc), from the Cycle 9 Proposer's Guide",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "The maximum recoverable scale (MRS) of our ALMA Cycle 9 data is $\\gtrsim$0.14$''$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms ~0.3 mJy/beam per 10 km/s channel for HCN and HCO+ J=4-3; ~0.2 mJy/beam for J=3-2",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "The derived rms noise level for the 10 km s$^{-1}$ velocity resolution is $\\sim$0.3 mJy beam$^{-1}$ for both HCN J=4–3 and HCO$^{+}$ J=4–3."
+     },
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "The derived rms noise level for the 10 km s$^{-1}$ velocity resolution is $\\sim$0.2 mJy beam$^{-1}$ for both HCN J=3–2 and HCO$^{+}$ J=3–2."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "44 min net on-source per execution, 7 executions (Cycle 9)",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Net on source integration time in minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2023 July 28 to 2023 August 11 (7 executions)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2023 July 28"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "2023 August 11"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 9 program 2022.1.00005.S (PI = M. Imanishi) for J=4-3; Cycle 6 2018.1.00037.S (published in Imanishi et al. 2020) reanalysed for J=3-2",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "were conducted in our ALMA Cycle 9 program 2022.1.00005.S (PI = M. Imanishi)."
+     },
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "We reanalyzed the HCN J=3–2 and HCO$^{+}$ J=3–2 data"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLBI 22 GHz H2O maser data (literature)",
+     "provided": {
+      "value": "Velocities and positions of redshifted 22 GHz H2O maser spots within ~0.5-1.2 pc of the SMBH, compared with the ALMA HCN J=4-3 velocity profile",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Figure [6](#fig:Wtorus) compares the velocity profiles of the VLBI-detected 22 GHz H$_{2}$O maser emitting spots and the ALMA-detected HCN J=4–3 emission."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "22 GHz H2O maser spot velocities and positions (VLBI), most redshifted at V ~ 1470 km/s ~0.5 pc NW of the SMBH",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The most redshifted H$_{2}$O maser emission has an intensity-weighted velocity of V $\\sim$ 1470 km s$^{-1}$"
+       }
+      ]
+     },
+     "citation": "(cite: gre97; gal04; mor23; gal23; gal24)"
+    },
+    {
+     "what": {
+      "value": "Best-fit analytical collision-induced counter-rotating torus model used for the position-velocity and spectra comparison",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "Figure [10](#fig:VollmerPV) shows a detailed comparison of the position-velocity diagrams of the HCN J=4–3 and HCO$^{+}$ J=4–3 lines between our new $\\lesssim$1 pc resolution data and the best-fit model of (cite: vol22)."
+       }
+      ]
+     },
+     "citation": "(cite: vol22)"
+    },
+    {
+     "what": {
+      "value": "Integrated torus fluxes HCN J=4-3 5.3 Jy km/s and HCO+ J=4-3 3.0 Jy km/s (their Table 4), compared with the new 6.8 pc aperture fluxes",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "This recovers $\\gtrsim$80% of the integrated HCN J=4–3 flux from the torus (5.3 Jy km s$^{-1}$) reported in Table 4 of (cite: vol22)."
+       }
+      ]
+     },
+     "citation": "(cite: vol22)"
+    },
+    {
+     "what": {
+      "value": "SMBH mass M_SMBH ~ 1e7 Msun, used for Keplerian velocity estimates",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "M$_{\\rm SMBH}$ $\\sim$ 1 $\\times$ 10$^{7}$M$_{\\odot}$ (cite: gre96; hur02; lod03; gal23; gal24)"
+       }
+      ]
+     },
+     "citation": "(cite: gre96; hur02; lod03; gal23; gal24)"
+    },
+    {
+     "what": {
+      "value": "Critical densities and upper energy levels of HCN and HCO+ transitions",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "are n$_{\\rm crit}$ $\\gtrsim$ 10$^{6}$ cm$^{-3}$ at a gas kinetic temperature of 50–100 K (cite: shi15)"
+       }
+      ]
+     },
+     "citation": "(cite: shi15)"
+    },
+    {
+     "what": {
+      "value": "Luminosity-to-dense-H2-mass conversion factors: 6-12 for HCN J=1-0 and 2-5 for HCO+ J=1-0 (Msun per K km/s pc2)",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "M$_{\\rm dense-H_2}$(HCN) = 6–12 $\\times$ L(HCN J=1–0)"
+       },
+       {
+        "loc": "Discussion",
+        "quote": "M$_{\\rm dense-H_2}$(HCO$^{+}$) = 2–5 $\\times$ L(HCO$^{+}$ J=1–0)"
+       }
+      ]
+     },
+     "citation": "(cite: gao04; kri08; ler17) for HCN; (cite: ler17) for HCO+"
+    },
+    {
+     "what": {
+      "value": "Beam-sized spectra and absorption features of the J=3-2 lines, and the Cycle 6 HCN/HCO+ J=3-2 maps",
+      "evidence": [
+       {
+        "loc": "Observations and Data Analysis",
+        "quote": "(cite: ima20) presented cleaned maps of"
+       }
+      ]
+     },
+     "citation": "(cite: ima20)"
+    },
+    {
+     "what": {
+      "value": "HCO+ column density of 3e15 cm-2 used in the RADEX absorbing-cloud model",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "column density of 3 $\\times$ 10$^{15}$ cm$^{-2}$ for HCO$^{+}$ (cite: gam25) and HCN"
+       }
+      ]
+     },
+     "citation": "(cite: gam25)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Analytical collision-induced counter-rotating torus model of Vollmer et al. (2022) compared with the new data",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "We applied the analytical model based on this assumption presented by (cite: vol22)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline-calibrated data used as starting point",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "We started our analysis with pipeline-calibrated data provided by ALMA, using CASA 6.5.4-9 (cite: CASA22; hun23)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.5.4-9",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "using CASA 6.5.4-9 (cite: CASA22; hun23)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Pipeline-calibrated data provided by ALMA",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "We started our analysis with pipeline-calibrated data provided by ALMA"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "J0238+1636 (also bandpass); phase calibrator J0239-0234",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "J0238$+$1636"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "J0239$-$0234"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "<~10% at ~350 GHz (Cycle 9); <~10% at ~260 GHz (Cycle 6)",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "The absolute flux calibration uncertainty is expected to be $\\lesssim$10% at the observed frequency ($\\sim$350 GHz) of the ALMA Cycle 9 data."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean (after uvcontsub), Briggs weighting, gain = 0.1",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "task (Briggs-weighting; robust $=$ 0.5, gain $=$ 0.1) to the continuum-subtracted molecular line and continuum data"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "task (Briggs-weighting; robust $=$ 0.5, gain $=$ 0.1) to the continuum-subtracted molecular line and continuum data"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.0015 arcsec/pixel (1.5 mas/pixel); velocity resolution 10 km/s",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "with a pixel scale of 0.0015$''$ pixel$^{-1}$ (1.5 mas pixel$^{-1}$) and a velocity resolution of 10 km s$^{-1}$."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "CASA uvcontsub with continuum level set from line-free channels (no obvious emission or absorption)",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "We determined the continuum level by selecting channels that did not show obvious emission or absorption lines and subtracted it using the CASA task"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "Continuum extracted from 340.4–344.2 and 352.4–356.2 GHz (~350 GHz) and 263.6–269.1 GHz (~260 GHz); lines excluded",
+     "evidence": [
+      {
+       "loc": "Table 2 notes",
+       "quote": "Frequency range (in GHz) used to extract continuum emission. Frequencies of obvious emission and absorption lines are excluded."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Synthesized beams made identical for J=4-3 / J=3-2 ratio maps",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "after making their synthesized beams identical"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "Continuum ~350 GHz: 0.014 x 0.013 arcsec, PA -86 deg; J=4-3 lines: 0.014 x 0.013, PA -83 deg",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "0.014$\\times$0.013 ($-$86$^{\\circ}$)"
+      },
+      {
+       "loc": "Table 3",
+       "quote": "0.014$\\times$0.013 ($-$83$^{\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Continuum ~350 GHz 0.059 mJy/beam; ~260 GHz 0.075 mJy/beam; HCN J=4-3 moment 0 0.056 Jy km/s/beam",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "0.059"
+      },
+      {
+       "loc": "Table 2",
+       "quote": "0.075"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Cycle 6 HCN/HCO+ J=3-2 data first presented and cleaned in earlier work, here reanalysed on a common 1.5 mas pixel and 10 km/s grid",
+      "evidence": [
+       {
+        "loc": "Observations and Data Analysis",
+        "quote": "We reanalyzed the HCN J=3–2 and HCO$^{+}$ J=3–2 data with pixel scale of 1.5 mas pixel$^{-1}$ and velocity resolution of 10 km s$^{-1}$ to compare them with the newly taken"
+       }
+      ]
+     },
+     "from_reference": "(cite: ima20)"
+    },
+    {
+     "what": {
+      "value": "Position-velocity diagram axis (PA = 114 deg east of north)",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "along the position angle PA = 114$^{\\circ}$ east of north, following (cite: gam25)"
+       }
+      ]
+     },
+     "from_reference": "(cite: gam25)"
+    },
+    {
+     "what": {
+      "value": "Line luminosity equation L' = 3.25e7 nu^-2 (1+z)^-1 D_L^2 S dV",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "from their fluxes (Table [4](#tab:Gauss)), using the following equation (cite: sol05)"
+       }
+      ]
+     },
+     "from_reference": "(cite: sol05)"
+    },
+    {
+     "what": {
+      "value": "Dense H2 mass conversion from HCN and HCO+ J=1-0 luminosities",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "M$_{\\rm dense-H_2}$(HCN) = 6–12 $\\times$ L(HCN J=1–0)"
+       },
+       {
+        "loc": "Discussion",
+        "quote": "M$_{\\rm dense-H_2}$(HCO$^{+}$) = 2–5 $\\times$ L(HCO$^{+}$ J=1–0)"
+       }
+      ]
+     },
+     "from_reference": "(cite: gao04; kri08; ler17)"
+    },
+    {
+     "what": {
+      "value": "Counter-rotating torus model compared with the data",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "Figure [10](#fig:VollmerPV) shows a detailed comparison of the position-velocity diagrams of the HCN J=4–3 and HCO$^{+}$ J=4–3 lines between our new $\\lesssim$1 pc resolution data and the best-fit model of (cite: vol22)."
+       }
+      ]
+     },
+     "from_reference": "(cite: vol22)"
+    },
+    {
+     "what": {
+      "value": "Foreground absorbing-cloud column density for RADEX",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "column density of 3 $\\times$ 10$^{15}$ cm$^{-2}$ for HCO$^{+}$ (cite: gam25) and HCN"
+       }
+      ]
+     },
+     "from_reference": "(cite: gam25)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean deconvolver, niter, threshold, cleaning masks and image size for the Cycle 9 cubes",
+    "Exact line-free channel ranges used for uvcontsub and the fit order for each spectral window",
+    "Weighting, uv taper and CASA version used for the reanalysed Cycle 6 J=3-2 cubes, and whether they were re-calibrated",
+    "Whether any self-calibration or uv-range cuts were applied; whether executions were combined before imaging",
+    "Primary-beam correction and the exact spectral frame/velocity definition used for cubes (optical V_sys = 1130 km/s is given)",
+    "Moment-map clipping thresholds and how the beam-sized and circular-aperture spectra were extracted (center pixel, units)",
+    "Gaussian-fit details in Appendix B (number of components, baseline treatment, error estimation)",
+    "Procedure for the J=4-3 / J=3-2 ratio maps (regridding, clipping, mask)",
+    "D_L value used in the luminosity equation",
+    "RADEX setup (collision data, molecular data files, beam-filling) and how optical depths were compared",
+    "Position-velocity slice width and how the VLBI maser spots were overplotted (the ~9 mas shift is stated, its direction/derivation is not)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image the Cycle 9 and Cycle 6 data",
+    "method": {
+     "value": "Start from pipeline-calibrated data, subtract continuum with uvcontsub, then tclean line and continuum cubes on a common 1.5 mas, 10 km/s grid",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "We started our analysis with pipeline-calibrated data provided by ALMA, using CASA 6.5.4-9 (cite: CASA22; hun23)."
+      },
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "with a pixel scale of 0.0015$''$ pixel$^{-1}$ (1.5 mas pixel$^{-1}$) and a velocity resolution of 10 km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "uvcontsub",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs weighting, robust = 0.5, gain = 0.1",
+      "evidence": [
+       {
+        "loc": "Observations and Data Analysis",
+        "quote": "task (Briggs-weighting; robust $=$ 0.5, gain $=$ 0.1) to the continuum-subtracted molecular line and continuum data"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure continuum and line moment-0 peaks",
+    "method": {
+     "value": "Continuum peak and integrated-intensity (moment 0) peaks of HCN, HCO+, CS at W-torus, E-torus and absorption peak, taking the highest-flux 1.5 mas pixel",
+     "evidence": [
+      {
+       "loc": "Table 2 notes",
+       "quote": "The value at the highest flux pixel (1.5 mas pixel$^{-1}$) is adopted."
+      },
+      {
+       "loc": "Table 3 notes",
+       "quote": "The value at the highest or most negative flux pixel (1.5 mas pixel$^{-1}$) in the integrated intensity (moment 0) map"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Continuum peak (C-peak) regarded as the position of the mass-accreting SMBH",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "which we regard as the position of the mass-accreting SMBH"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Extract beam-sized and area-integrated spectra",
+    "method": {
+     "value": "Beam-sized spectra at C-peak, W-peak, E-peak; circular-aperture spectra of 1.7 pc diameter around W-peak and E-peak, and 3.4 and 6.8 pc diameter around C-peak",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "obtained with a 1.7 pc (24 mas) diameter circle around the W-peak and E-peak"
+      },
+      {
+       "loc": "Results",
+       "quote": "obtained with 3.4 pc (48 mas) and 6.8 pc (96 mas) diameter circles around the C-peak"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit Gaussians to emission lines to get fluxes",
+    "method": {
+     "value": "Gaussian fits to HCN and HCO+ emission lines in area-integrated spectra (Appendix B) giving velocity-integrated fluxes",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Gaussian fits are applied to the detected HCN and HCO$^{+}$ emission lines in the area-integrated spectra (Appendix B)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian line profiles; sampler, priors and likelihood not stated",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Gaussian fits are applied to the detected HCN and HCO$^{+}$ emission lines in the area-integrated spectra (Appendix B)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Map kinematics: moment 1, moment 2, PV diagrams, compare with H2O masers",
+    "method": {
+     "value": "Intensity-weighted mean velocity (moment 1) and velocity dispersion (moment 2) maps, PV diagrams along PA = 114 deg, and comparison of the HCN J=4-3 velocity profile with VLBI H2O maser spots after a ~9 mas positional shift",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Figure [5](#fig:mom1) displays intensity-weighted mean velocity (moment 1) maps of the J=4–3 lines of HCN and HCO$^{+}$"
+      },
+      {
+       "loc": "Results",
+       "quote": "Intensity-weighted velocity dispersion (moment 2) maps of the J=4–3 lines of HCN and HCO$^{+}$"
+      },
+      {
+       "loc": "Results",
+       "quote": "Allowing for a slight ($\\sim$9 mas) positional shift between the ALMA $\\sim$350 GHz and VLBI $\\sim$22 GHz data"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Systemic velocity V_sys = 1130 km/s; moment-1 redshift/blueshift ranges V_sys ± 110 km/s (J=4-3) and ± 60 km/s (J=3-2) for Figures 5e,f",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "V$_{\\rm sys}$ ± 110 km s$^{-1}$ and V$_{\\rm sys}$ ± 60 km s$^{-1}$, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive J=4-3 / J=3-2 and HCN/HCO+ flux-ratio maps",
+    "method": {
+     "value": "Ratio maps in Jy beam-1 km s-1 after matching synthesized beams, compared with 16/9 expected for thermalised optically thick emission",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "after making their synthesized beams identical"
+      },
+      {
+       "loc": "Results",
+       "quote": "If the emission is thermalized and optically thick, the expected flux ratio is 16/9 (=1.8) when calculated in units of Jy beam$^{-1}$ km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Absolute flux calibration uncertainty <~10% per observation gives a maximum ratio ~2.2 for thermalised, optically thick emission",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "which could produce the ratio with maximum $\\sim$2.2 (=1.1/0.9 $\\times$ 1.8) for the thermalized, optically thick emission"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Convert fluxes to line luminosities",
+    "method": {
+     "value": "L' (K km/s pc2) = 3.25e7 nu_rest^-2 (1+z)^-1 D_L^2 S dV applied to the Gaussian-fit fluxes",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "where S$\\Delta$V is the Gaussian-fit, velocity-integrated emission line flux (in Jy km s$^{-1}$) and D$_{L}$ is the luminosity distance (in Mpc)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Compare data with the counter-rotating torus model",
+    "method": {
+     "value": "Compare PV diagrams and spectra along the major axis (PA = 110 deg) with the best-fit model of Vollmer et al. (2022)",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Observed and predicted spectra at multiple positions along the major axis (PA = 110$^{\\circ}$) are compared in Figure [11](#fig:VollmerSpectra)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "No new fit; existing best-fit model compared",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The overall properties largely agree between the model and observations, as in the case for other molecular lines (cite: vol22)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Qualitative agreement; east-west asymmetry not reproduced",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The observed east-west asymmetry of dense molecular line emission appears not to be adequately reproduced by the best-fit model of (cite: vol22)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Estimate dense H2 gas mass in the torus",
+    "method": {
+     "value": "Assume HCN (HCO+) J=1-0 luminosity equals the J=4-3 / J=3-2 luminosity (~20e4 and ~12e4 K km/s pc2 for the 6.8 pc aperture) and apply the literature conversion factors",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Assuming that the HCN J=1–0 luminosity in these units is also comparable to that of HCN J=3–2 and J=4–3"
+      },
+      {
+       "loc": "Discussion",
+       "quote": "Assuming that the HCO$^{+}$ J=1–0 luminosity in these units is comparable to that of HCO$^{+}$ J=4–3 and J=3–2"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Optically thick, thermalised emission; standard HCN and HCO+ abundances",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "because standard HCN and HCO$^{+}$ abundances are assumed for the above conversion from line luminosity to dense H$_{2}$ mass"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "HCO+ mass compared with the Vollmer et al. adopted value of 3.6e5 Msun",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The HCO$^{+}$-derived torus dense H$_{2}$ mass is roughly comparable to the value adopted (3.6 $\\times$ 10$^{5}$ M$_{\\odot}$) in the modeling of (cite: vol22)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Test the ~400 km/s redshifted HCO+ absorption scenarios with RADEX",
+    "method": {
+     "value": "RADEX models of a foreground absorbing cloud; compare HCO+ J=4-3 vs HCN J=3-2 absorption optical depth for background temperatures of ~3 K and ~350 K",
+     "evidence": [
+      {
+       "loc": "Appendix A",
+       "quote": "We ran RADEX calculations (cite: van07) for a foreground absorbing gas cloud"
+      },
+      {
+       "loc": "Appendix A",
+       "quote": "By inputting a background temperature of 350 K for our RADEX calculations"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "Volume density 1e5-1e6 cm-3, Tkin 50-150 K, N = 3e15 cm-2 for HCO+ and HCN, line width 300 km/s",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "for a volume density of 10$^{5-6}$ cm$^{-3}$, kinetic temperature of 50–150 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "HCN and HCO+ abundances comparable",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "The above comparison implicitly assumes that the HCN and HCO$^{+}$ abundances are comparable."
+       }
+      ]
+     },
+     {
+      "value": "Background temperature ~350 K from the continuum brightness temperature",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "We obtain a brightness temperature of $\\sim$350 K from these continuum data."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.5.4-9",
+    "used_for": {
+     "value": "Calibration products, continuum subtraction and imaging",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "using CASA 6.5.4-9 (cite: CASA22; hun23)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvcontsub",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum subtraction",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "subtracted it using the CASA task"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging of lines and continuum with Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations and Data Analysis",
+       "quote": "task (Briggs-weighting; robust $=$ 0.5, gain $=$ 0.1) to the continuum-subtracted molecular line and continuum data"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Absorption optical depth of foreground gas for HCO+ and HCN",
+     "evidence": [
+      {
+       "loc": "Appendix A",
+       "quote": "We ran RADEX calculations (cite: van07) for a foreground absorbing gas cloud"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum peak flux at ~350 GHz",
+    "value": "6.8",
+    "uncertainty": "116 sigma; rms 0.059 mJy/beam",
+    "units": "mJy/beam",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "6.8 (116$\\sigma$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum peak flux at ~260 GHz",
+    "value": "6.7",
+    "uncertainty": "89 sigma; rms 0.075 mJy/beam",
+    "units": "mJy/beam",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "6.7 (89$\\sigma$)"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 moment-0 peak, W-torus",
+    "value": "0.77",
+    "uncertainty": "13.9 sigma",
+    "units": "Jy km/s/beam",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "0.77 (13.9$\\sigma$)"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ J=4-3 moment-0 peak, W-torus",
+    "value": "0.68",
+    "uncertainty": "11.8 sigma",
+    "units": "Jy km/s/beam",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "0.68 (11.8$\\sigma$)"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 flux, W-torus (1.7 pc diameter)",
+    "value": "0.96",
+    "uncertainty": "0.10",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "0.96$\\pm$0.10"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 flux, E-torus (1.7 pc diameter)",
+    "value": "0.73",
+    "uncertainty": "0.05",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "0.73$\\pm$0.05"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 flux, 6.8 pc diameter aperture",
+    "value": "4.3",
+    "uncertainty": "0.3",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "We estimate the HCN J=4–3 emission line flux within the 6.8 pc diameter aperture around the central continuum-emitting AGN to be 4.3$\\pm$0.3 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ J=4-3 flux, 6.8 pc diameter aperture",
+    "value": "2.5",
+    "uncertainty": "0.2",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The HCO$^{+}$ J=4–3 emission line flux within the same 6.8 pc aperture is estimated to be 2.5$\\pm$0.2 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 luminosity, W-torus (1.7 pc)",
+    "value": "4.8e4",
+    "uncertainty": "0.5e4",
+    "units": "K km/s pc^2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "4.8$\\pm$0.5"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=3-2 luminosity, W-torus (1.7 pc)",
+    "value": "2.8e4",
+    "uncertainty": "0.6e4",
+    "units": "K km/s pc^2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "2.8$\\pm$0.6"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 luminosity, 6.8 pc aperture",
+    "value": "21.7e4",
+    "uncertainty": "1.5e4",
+    "units": "K km/s pc^2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "21.7$\\pm$1.5"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=3-2 luminosity, 6.8 pc aperture",
+    "value": "18.0e4",
+    "uncertainty": "0.9e4",
+    "units": "K km/s pc^2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "18.0$\\pm$0.9"
+     }
+    ]
+   },
+   {
+    "quantity": "J=4-3 to J=3-2 flux ratio near W-peak and innermost torus",
+    "value": ">~2.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "show flux ratios with $\\gtrsim$2.5."
+     }
+    ]
+   },
+   {
+    "quantity": "Most redshifted HCN J=4-3 velocity on NW side",
+    "value": "V ~ 1470 (dV_red ~ +340)",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the most redshifted component on the NW side has an intensity-weighted velocity as high as V $\\sim$ 1470 km s$^{-1}$ ($\\Delta$V$_{\\rm red}$ $\\sim$ $+$340 km s$^{-1}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer blueshifted HCN J=4-3 velocity along NW direction",
+    "value": "~ -40 relative to V_sys = 1130",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "but the outer blueshifted velocity is only $\\Delta$V$_{\\rm blue}$ $\\sim$ $-$40 km s$^{-1}$ relative to the systemic velocity"
+     }
+    ]
+   },
+   {
+    "quantity": "Dense H2 mass from HCN",
+    "value": "(1.2–2.4)e6",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we obtain HCN-derived torus dense molecular H$_{2}$ gas mass of M$_{\\rm dense-H_2}$(HCN) = (1.2–2.4) $\\times$ 10$^{6}$ M$_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dense H2 mass from HCO+",
+    "value": "(2.4–6.0)e5",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we obtain HCO$^{+}$-derived torus dense H$_{2}$ mass of M$_{\\rm dense-H_2}$(HCO$^{+}$) = (2.4–6.0) $\\times$ 10$^{5}$ M$_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "HCN-VIB J=4-3 absorption optical depth toward the continuum peak",
+    "value": "~0.08 (~7% of 6.8 mJy/beam continuum; dip ~0.5 mJy/beam)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "or $\\sim$7% ($\\tau$ $\\sim$ 0.08) for the $\\sim$350 GHz continuum flux of $\\sim$6.8 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Brightness temperature of the continuum",
+    "value": "~350",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "We obtain a brightness temperature of $\\sim$350 K from these continuum data."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HCN and HCO+ J=4-3 are in absorption at the continuum peak",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "At the C-peak, the HCN J=4–3 and HCO$^{+}$ J=4–3 lines are observed in absorption"
+     }
+    ]
+   },
+   {
+    "value": "J=4-3 emission is more compact than J=3-2 for both HCN and HCO+",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the J=4–3 emission is spatially more compact than the J=3–2 emission for both HCN and HCO$^{+}$."
+     }
+    ]
+   },
+   {
+    "value": "No gap at the putative collision interface is seen even at the highest resolution",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we see no clear signature of such a gap even in our highest-spatial-resolution"
+     }
+    ]
+   },
+   {
+    "value": "HCN is brighter than HCO+ in both the western and eastern torus, and the western torus is brighter than the eastern",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the western torus is brighter than the eastern torus for both the HCN J=4–3 and HCO$^{+}$ J=4–3 lines."
+     }
+    ]
+   },
+   {
+    "value": "Blueshifted absorption wing toward the SMBH is stronger in HCN than HCO+, consistent with enhanced HCN abundance",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "is stronger for HCN J=4–3 than for HCO$^{+}$ J=4–3"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the apparent counter-rotation seen at ~1.5 pc in J=3-2 persist at higher resolution in J=4-3?",
+    "experiment": "Moment-1 maps and spectra of HCN and HCO+ J=4-3 compared with reanalysed J=3-2",
+    "result": "Inner western torus is redshifted and outer part blueshifted for both J=4-3 lines; in the east the outer redshifted component is not clearly seen",
+    "finding": "Apparent counter-rotation is confirmed in the western torus",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "confirming apparent counter-rotation as previously found for HCN J=3–2 and HCO$^{+}$ J=3–2 lines."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is HCN brighter than HCO+ in the compact torus at J=4-3?",
+    "experiment": "Moment-0 maps and Gaussian-fit fluxes",
+    "result": "HCN J=4-3 brighter than HCO+ J=4-3 in the western and eastern torus",
+    "finding": "Consistent with enhanced HCN abundance, as at J=3-2",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "In both the western and eastern tori, HCN J=4–3 emission is brighter than HCO$^{+}$ J=4–3 emission, as previously seen at J=3–2."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is dense-gas emission near the W-peak and E-peak optically thin and turbulent?",
+    "experiment": "J=4-3 vs J=3-2 luminosities and flux ratios in 1.7 pc apertures versus the 6.8 pc aperture",
+    "result": "J=4-3 luminosity is a factor >~1.7 higher than J=3-2 in the 1.7 pc apertures, while the 6.8 pc values are within ~20%",
+    "finding": "Emission is optically thin there, with high turbulence a natural explanation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the luminosities of both HCN and HCO$^{+}$ are a factor of $\\gtrsim$1.7 higher"
+     },
+     {
+      "loc": "Summary",
+      "quote": "suggests that dense molecular line emission is optically thin in these small areas."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the collision-induced physically counter-rotating torus model of Vollmer et al. reproduce the J=4-3 data?",
+    "experiment": "Compare PV diagrams and spectra with the model; look for a predicted gap and shock excitation",
+    "result": "Absorption at the systemic velocity and overall properties agree; east-west asymmetry not reproduced; no gap or shock-driven line-ratio increase detected",
+    "finding": "Model largely reproduces the data but definitive confirmation is not possible at ~1 pc resolution",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "found that the overall properties of our new HCN J=4–3 and HCO$^{+}$ J=4–3 data are largely reproduced by this model"
+     },
+     {
+      "loc": "Discussion",
+      "quote": "we cannot provide definitive observational evidence to conclusively support the first collision-induced physically counter-rotating torus scenario"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the innermost redshifted HCN gas connected to the H2O maser disk?",
+    "experiment": "Compare HCN J=4-3 velocity profile with VLBI maser spots after a ~9 mas shift",
+    "result": "HCN J=4-3 reaches V ~ 1470 km/s on the NW side, similar to the redshifted maser",
+    "finding": "Redshifted HCN gas is physically connected to the redshifted maser-emitting disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "suggests that the redshifted HCN J=4–3 line-emitting dense molecular gas in the innermost ($\\lesssim$1 pc) western torus is physically connected to the VLBI-detected redshifted H$_{2}$O maser emitting rotating disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What causes the ~400 km/s redshifted HCO+ absorption: HCN-VIB at the systemic velocity or an infalling cloud?",
+    "experiment": "Frequency coincidence with HCN-VIB and RADEX absorption models with a ~350 K background",
+    "result": "Both scenarios can reproduce absorption seen in HCO+ but not HCN",
+    "finding": "Neither scenario can be excluded",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "both the HCN-VIB and infalling gas cloud scenarios could reproduce the $\\sim$400 km s$^{-1}$ redshifted absorption features"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Longest baseline and higher-frequency J=4-3 lines give sub-pc resolution and a more compact, warmer/denser gas probe",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "To achieve the highest angular resolution, the longest baseline"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "the highest-angular-resolution HCN J=4–3 line data will enable us to better elucidate the dense molecular gas properties of the NGC 1068 torus."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "J=3-2 data reanalysed on the same pixel and velocity grid for a straightforward comparison",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "We reanalyzed the HCN J=3–2 and HCO$^{+}$ J=3–2 data with pixel scale of 1.5 mas pixel$^{-1}$ and velocity resolution of 10 km s$^{-1}$ to compare them with the newly taken"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Outflow-origin scenario for the apparent counter-rotation: considered; difficult to reproduce the west-east asymmetry",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "the significant asymmetry of molecular gas emission observed between the western and eastern tori is difficult to reproduce solely with this outflow-origin model"
+      }
+     ]
+    },
+    {
+     "value": "Infalling cloud without strong torus interaction (Gamez Rosas et al.): considered; no direct way to reduce line opacity near the W-peak",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "has no direct way to reduce the opacity of molecular line emission in the small areas around the W-peak"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "~1 pc resolution is still insufficient to resolve the predicted collision interface",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "the achieved $\\lesssim$1 pc resolution is still insufficient to investigate the predicted collision interface between two counter-rotating gas components in detail."
+      }
+     ]
+    },
+    {
+     "value": "Systematic uncertainties from flux calibration and continuum level choice are not included in the quoted errors",
+     "evidence": [
+      {
+       "loc": "Table 2 notes",
+       "quote": "Possible systematic uncertainties coming from absolute flux calibration ambiguity in individual ALMA observations and the choice of frequency range to determine the continuum level are not taken into account."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Imaging details (mask, threshold, niter, deconvolver) are absent, so flux and moment values may depend on them",
+    "The J=3-2 and J=4-3 data come from different observations; ratios depend on beam matching and flux scale, and the 1.7 pc aperture ratio of ~1.7 is close to the stated 10% calibration effect only marginally",
+    "Dense-gas masses assume J=1-0 luminosity equals J=3-2 and J=4-3 luminosity, which is untested here",
+    "Optically thin interpretation at the peaks is inferred from luminosity ratios, not from radiative transfer fits",
+    "Astrometric alignment with VLBI used a ~9 mas shift that is larger than the stated ALMA astrometric accuracy",
+    "Only a qualitative comparison with the Vollmer model, no new model fit or goodness-of-fit metric"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Analysis starts from pipeline-calibrated data provided by ALMA",
+    "evidence": [
+     {
+      "loc": "Observations and Data Analysis",
+      "quote": "We started our analysis with pipeline-calibrated data provided by ALMA"
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Cleaning masks, thresholds and number of iterations",
+    "Exact line-free channels for continuum subtraction",
+    "Details of Gaussian fits (Appendix B)",
+    "D_L used for luminosities",
+    "RADEX inputs beyond those listed",
+    "Weighting and imaging parameters for the Cycle 6 reanalysis",
+    "Details of the model data from Vollmer et al. (2022)"
+   ],
+   "estimated_data_volume_inferred": "Seven long-baseline Band 7 execution blocks (44 min each) plus one Cycle 6 dataset; raw data likely hundreds of GB, imaged cubes a few GB",
+   "score_inferred": 3,
+   "score_reason": "Projects and key tclean parameters (robust 0.5, 1.5 mas pixel, 10 km/s) and the luminosity equation are given, but masking, line-free channels, fit details and the comparison model are not; many numeric results are tabulated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Both projects are cited by code and the recipe is mostly stated with tabulated numeric fluxes, luminosities and masses, though public status is not stated by the paper and cleaning details are missing."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "The CASA Team et al. 2022, PASP, 134, 114501 (cite: CASA22)",
+     "why": "CASA reference"
+    },
+    {
+     "citation": "Hunter et al. 2023, PASP, 135, 074501 (cite: hun23)",
+     "why": "Cited with CASA for the processing software"
+    },
+    {
+     "citation": "Solomon & Vanden Bout 2005, ARA&A, 43, 677 (cite: sol05)",
+     "why": "Line luminosity equation"
+    },
+    {
+     "citation": "van der Tak et al. 2007, A&A, 468, 627 (cite: van07)",
+     "why": "RADEX"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Imanishi et al. 2020, ApJ, 902, 99 (cite: ima20)",
+     "why": "Cycle 6 HCN/HCO+ J=3-2 data and earlier analysis"
+    },
+    {
+     "citation": "Impellizzeri et al. 2019, ApJL, 884, L28 (cite: imp19)",
+     "why": "Earlier J=3-2 counter-rotation result"
+    },
+    {
+     "citation": "Vollmer et al. 2022, A&A, 665, A102 (cite: vol22)",
+     "why": "Counter-rotating torus model compared with the data"
+    },
+    {
+     "citation": "Gamez Rosas et al. 2025, A&A, 699, A187 (cite: gam25)",
+     "why": "Concurrent HCO+ J=4-3 and CO J=3-2 observations with the infalling cloud scenario"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 6 project 2018.1.00037.S",
+    "VLBI 22 GHz H2O maser observations of NGC 1068"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025ApJ...995..211I",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:13:39",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 139,
+  "quotes_ok": 139,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 19,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 110,
+   "stated": 79,
+   "rate": 0.718
+  },
+  "evidence_ok": true
+ }
+}

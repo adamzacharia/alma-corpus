@@ -1,0 +1,511 @@
+{
+ "bibcode": "2023ApJ...953..164M",
+ "title": "ACA CO(J = 2-1) Mapping of the Nearest Spiral Galaxy M33. I. Initial Results and Identification of Molecular Clouds",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/ace4bd",
+ "arxiv_id": "2307.02039",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "To obtain the spatial distribution in CO(J=2-1) emission with higher sensitivity and angular resolution in M33, and to identify and investigate low-mass (< 10^5 M_sun) and high-mass (>= 10^5 M_sun) molecular clouds to understand hierarchical structures of molecular gas and cloud evolution.",
+ "alma_project_codes": [
+  "2018.A.00058.S",
+  "2017.1.00901.S",
+  "2019.1.01182.S",
+  "2017.1.00461.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211 - 275 GHz)",
+  "arrays": "ACA 7 m-array (stand-alone mode)",
+  "angular_resolution": "7.31'' x 6.50'' (30 pc x 26 pc) for 12CO, 7.72'' x 6.86'' for 13CO, 7.82'' x 6.96'' for C18O",
+  "sensitivity": "39 mK (12CO), 30 mK (13CO), 22 mK (C18O)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAM 30 m 12CO(J=2-1) map of M33",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "To evaluate the missing flux of the ACA observations, we measured the global $^{12}$CO($J=2-1$) luminosities over the M33 disk obtained by the ACA 7 m antennas and by the IRAM 30 m telescope (cite: druard2014)."
+     }
+    ]
+   },
+   "citation": "(cite: druard2014)"
+  },
+  {
+   "what": {
+    "value": "Atomic hydrogen (H I) data at 20'' original angular resolution",
+    "evidence": [
+     {
+      "loc": "CO Maps",
+      "quote": "To minimize the effect of the noise, we determined the velocity channel in which the CO emission is expected to appear using the atomic (H i) data (cite: koch2018) as follows."
+     }
+    ]
+   },
+   "citation": "(cite: koch2018)"
+  },
+  {
+   "what": {
+    "value": "Spitzer/IRAC 8 um emission map",
+    "evidence": [
+     {
+      "loc": "Luminosities and Masses",
+      "quote": "In addition, the spatial comparison between molecular clouds and $Spitzer$/IRAC $8\\,\\mu$m emission (cite: dale2009) is displayed."
+     }
+    ]
+   },
+   "citation": "(cite: dale2009)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30 m GMC catalog in M33 (566 GMCs total, 362 within ACA FOV)",
+    "evidence": [
+     {
+      "loc": "Abstract",
+      "quote": "We compared the cataloged clouds with GMCs observed by the IRAM 30 m telescope at 49 pc resolution (cite: corbelli2017),"
+     },
+     {
+      "loc": "Comparison with Earlier GMC catalog",
+      "quote": "To give a fair comparison between the two catalogs, we extracted 362 GMCs from the (cite: corbelli2017) catalog which are located within the ACA FOV."
+     }
+    ]
+   },
+   "citation": "(cite: corbelli2017)"
+  },
+  {
+   "what": {
+    "value": "Earlier GMC catalog in M33 used for R - sigma_v relation comparison",
+    "evidence": [
+     {
+      "loc": "Size–Line-width Relation",
+      "quote": "To explain the origin of such a smaller velocity dispersion, we examine the $R-\\sigma_v$ relations based on the two earlier GMC catalogs in M33 (cite: rosolowsky2007; corbelli2017)."
+     }
+    ]
+   },
+   "citation": "(cite: rosolowsky2007)"
+  },
+  {
+   "what": {
+    "value": "Single-dish measurements of 12CO(J=1-0) and 12CO(J=2-1) in M33 used to evaluate R_21",
+    "evidence": [
+     {
+      "loc": "Luminosities and Masses",
+      "quote": "To determine the appropriate $R_{21}$ value in this study, we examined the pre-existing single-dish measurements of $^{12}$CO in M33 for $J=1-0$ (cite: tosaki2011) and $J=2-1$ (cite: gratier2010; druard2014) transitions."
+     }
+    ]
+   },
+   "citation": "(cite: tosaki2011; gratier2010; druard2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate, image ACA visibilities, and feather with IRAM 30 m data",
+   "method": "Apply standard ALMA calibration, concatenate visibilities from 36 science goals across projects, image with tclean using multi-scale deconvolver, natural weighting, and auto-multithresh down to ~1 sigma, then combine 12CO(J=2-1) ACA data with IRAM 30 m data using feather.",
+   "software": [
+    "CASA",
+    "tclean",
+    "feather"
+   ],
+   "key_parameters": [
+    "natural weighting",
+    "threshold ~ 1 sigma noise level"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct velocity-integrated intensity (zeroth moment) maps for 12CO and 13CO",
+   "method": "Convolve H I data from 20'' to 40'', regrid to match CO data, determine representative H I velocity V_rep in each pixel, and integrate 12CO(J=2-1) and 13CO(J=2-1) emission from V_rep - 30 km/s to V_rep + 30 km/s.",
+   "software": [],
+   "key_parameters": [
+    "H I convolved resolution = 40''",
+    "Integration velocity window = V_rep +/- 30 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Decompose molecular clouds and measure basic cloud properties",
+   "method": "Convolve ACA+IRAM 12CO(J=2-1) cube to 7.5'' circular beam, mask emission using cprops_mask, identify local maxima and assign emission via watershed algorithm in PYCPROPS, deconvolve beam and channel width to obtain intrinsic radius R and velocity dispersion sigma_v, and filter out clouds with undefined radius or at the edge of ACA FOV.",
+   "software": [
+    "PYCPROPS",
+    "cprops_mask"
+   ],
+   "key_parameters": [
+    "Convolved circular beam = 7.5'' (30 pc)",
+    "High significance mask > 4 sigma in 3 continuous velocity channels; low significance mask > 3 sigma in 3 continuous velocity channels over 7.5'' beam",
+    "Local maxima merge threshold: T_max - T_merge >= 2 sigma; minimum spatial separation = 7.5''; minimum spectral separation = 7 km/s",
+    "Radius conversion coefficient = 1.91; channel width Delta V_chan = 0.7 km/s"
+   ],
+   "assumptions": [
+    "Distance D = 840 kpc (1'' = 4 pc)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate CO luminosities, luminosity-based masses, and virial masses",
+   "method": "Compute L_CO = S D^2, luminosity mass M_CO from L_CO using constant X_CO and R_21, and virial mass M_Vir = 1040 R sigma_v^2 and virial parameter alpha = M_Vir / M_CO.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance D = 840 kpc",
+    "Constant X_CO = 4.0 x 10^20 cm^-2 (K km s^-1)^-1 (includes helium contribution via factor 4.35)",
+    "Constant 12CO(J=2-1)/12CO(J=1-0) intensity ratio R_21 = 0.60 across M33",
+    "Spherical and virialized cloud with density profile rho proportional to r^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Detect 13CO(J=2-1) emission in cataloged clouds and measure R_13/12",
+   "method": "Extract 12CO and 13CO spectra at the 12CO peak position of each cloud; define line channels where significant 12CO emission exists; require 13CO to exceed 4 sigma for 2 successive channels or 3 sigma for 3 successive channels and integrated intensity S/N > 3; compute R_13/12.",
+   "software": [],
+   "key_parameters": [
+    "4 sigma for 2 successive channels or 3 sigma for 3 successive channels; integrated intensity S/N > 3"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Analyze scaling relations, cumulative mass functions, and velocity dispersion decomposition against IRAM GMCs",
+   "method": "Compute size-linewidth coefficient sigma_v R^-0.5; fit truncated power-law functions to cumulative mass distributions above completeness limits for ACA+IRAM clouds and 362 IRAM GMCs within ACA FOV; for 77 IRAM GMCs resolved into >=3 ACA+IRAM clouds, compute intensity-weighted inter-cloud velocity difference v_diff and mean internal dispersion sigma_v,mean and evaluate Spearman rank correlations.",
+   "software": [],
+   "key_parameters": [
+    "Completeness limits: 5 x 10^4 M_sun (ACA+IRAM catalog) and 8.4 x 10^4 M_sun (Corbelli et al. 2017 catalog)"
+   ],
+   "assumptions": [
+    "R_21 = 0.6 applied to recalculate Corbelli et al. (2017) GMC masses"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Evaluate association between molecular clouds and Spitzer/IRAC 8 um emission",
+   "method": "Regrid IRAC 8 um map to match ACA+IRAM 12CO(J=2-1) map, average pixel values within each cloud, and construct cumulative distribution functions (CDFs) for 423 high-mass (>= 10^5 M_sun) and 425 low-mass (< 10^5 M_sun) clouds.",
+   "software": [
+    "HIIphot"
+   ],
+   "key_parameters": [
+    "Strong 8 um emission threshold > 2 MJy sr^-1; cloud mass threshold = 10^5 M_sun"
+   ],
+   "assumptions": [
+    "8 um emission traces high-mass star-forming regions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Global 12CO(J=2-1) luminosity with stand-alone ACA 7 m antennas",
+   "value": "7.6e6",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Data Reduction",
+     "quote": "We found the global $^{12}$CO($J=2-1$) luminosity with ACA 7 m antennas $L_{\\rm CO}^{\\rm ACA} = 7.6 \\times 10^6$ K km s$^{-1}$ pc$^2$ over the observed region, and that with the IRAM 30 m telescope $L_{\\rm CO}^{\\rm IRAM} = 2.1 \\times 10^7$ K km s$^{-1}$ pc$^2$ for the same area."
+    }
+   ]
+  },
+  {
+   "quantity": "Global missing flux of 12CO(J=2-1) emission in stand-alone ACA observations",
+   "value": "60-70",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Data Reduction",
+     "quote": "This indicates the global missing flux of $^{12}$CO($J=2-1$) emission of $60-70$%, which mainly corresponds to diffuse components of molecular gas."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O(J=2-1) 3 sigma upper limit in ACA map",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "CO Maps",
+     "quote": "The rms noise level of 22 mK yields a 3 $\\sigma$ upper limit of 66 mK."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of molecular clouds cataloged in M33",
+   "value": "848",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on the ACA+IRAM $^{12}$CO($J=2-1$) cube data, we cataloged 848 molecular clouds with a mass range from $10^3$ $M_{\\odot}$ to $10^6$ $M_{\\odot}$."
+    },
+    {
+     "loc": "Cloud Decomposition",
+     "quote": "Thus, we consider 848 molecular clouds after excluding small clouds with undefined radius and clouds at the edge of ACA FOV from the originally identified clouds by `PYCPROPS`."
+    }
+   ]
+  },
+  {
+   "quantity": "Average 12CO(J=2-1)/12CO(J=1-0) intensity ratio R_21 in M33",
+   "value": "0.60",
+   "uncertainty": "30%",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Luminosities and Masses",
+     "quote": "We found that the average $R_{21}$ in M33 is 0.60, but this value is lower than the previously-reported $R_{21}$ of 0.8 (cite: druard2014)."
+    },
+    {
+     "loc": "Luminosities and Masses",
+     "quote": "Therefore we consider that the assumption of a constant $R_{2-1/1-0}$ over the M33 disk yields an error of about 30%."
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass of cataloged molecular clouds",
+   "value": "1.6e8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Luminosities and Masses",
+     "quote": "The total mass of the molecular clouds is derived to be $1.6 \\times 10^8\\,M_{\\odot}$ by summing up their $M_{\\rm CO}$ values."
+    }
+   ]
+  },
+  {
+   "quantity": "Global ACA+IRAM 12CO(J=2-1) luminosity",
+   "value": "2.0e7",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Luminosities and Masses",
+     "quote": "We calculated the global ACA+IRAM $^{12}$CO($J=2-1$) of $2.0 \\times 10^7$ K km s$^{-1}$ pc$^2$, which yields the total molecular gas mass of $2.9 \\times 10^8\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass in ACA-observed area",
+   "value": "2.9e8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Luminosities and Masses",
+     "quote": "We calculated the global ACA+IRAM $^{12}$CO($J=2-1$) of $2.0 \\times 10^7$ K km s$^{-1}$ pc$^2$, which yields the total molecular gas mass of $2.9 \\times 10^8\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass fraction of molecular clouds to total molecular gas",
+   "value": "55",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Luminosities and Masses",
+     "quote": "Thus, the mass fraction of molecular clouds to the total molecular gas is 55%."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of clouds with significant 13CO(J=2-1) detection",
+   "value": "173",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "13CO(J=2-1) Emission",
+     "quote": "We confirmed significant $^{13}$CO($J=2-1$) emission for 173 clouds, and thus the resultant $^{13}$CO($J=2-1$) detection rate is 20%."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical 13CO(J=2-1)/12CO(J=2-1) intensity ratio R_13/12",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "13CO(J=2-1) Emission",
+     "quote": "We found that $R_{13/12}$ in M33 is almost constant on the galactocentric radius as shown in Figure 7, and the typical $R_{13/12}$ is $\\sim0.1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud radius R range and median",
+   "value": "6.8 to 72 (median 34)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Basic Properties of Cataloged Molecular Clouds",
+     "quote": "$R$ ranges from 6.8 to 72 pc, and $\\sigma_v$ ranges from 1.0 to 6.1 km s$^{-1}$. Their medians are 34 pc and 2.8 km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud velocity dispersion sigma_v range and median",
+   "value": "1.0 to 6.1 (median 2.8)",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Basic Properties of Cataloged Molecular Clouds",
+     "quote": "$R$ ranges from 6.8 to 72 pc, and $\\sigma_v$ ranges from 1.0 to 6.1 km s$^{-1}$. Their medians are 34 pc and 2.8 km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud CO luminosity mass M_CO range and median",
+   "value": "6.7e3 to 2.6e6 (median 9.9e4)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Basic Properties of Cataloged Molecular Clouds",
+     "quote": "$M_{\\rm CO}$ ranges from $6.7 \\times 10^3$ to $2.6 \\times 10^6\\,M_{\\odot}$, and $M_{\\rm Vir}$ ranges from $1.1 \\times 10^4$ to $1.9 \\times 10^6\\,M_{\\odot}$. Their medians are $9.9 \\times 10^4\\,M_{\\odot}$ and $2.8 \\times 10^5\\,M_{\\odot}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud virial mass M_Vir range and median",
+   "value": "1.1e4 to 1.9e6 (median 2.8e5)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Basic Properties of Cataloged Molecular Clouds",
+     "quote": "$M_{\\rm CO}$ ranges from $6.7 \\times 10^3$ to $2.6 \\times 10^6\\,M_{\\odot}$, and $M_{\\rm Vir}$ ranges from $1.1 \\times 10^4$ to $1.9 \\times 10^6\\,M_{\\odot}$. Their medians are $9.9 \\times 10^4\\,M_{\\odot}$ and $2.8 \\times 10^5\\,M_{\\odot}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average size-linewidth coefficient sigma_v R^-0.5 for 848 clouds",
+   "value": "0.48",
+   "uncertainty": "0.13",
+   "units": "km s^-1 pc^-0.5",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Size–Line-width Relation",
+     "quote": "The average $\\sigma_v R^{0.5}$ for 848 clouds is $0.48 \\pm 0.13$, which is significantly smaller than the Galactic $\\sigma_v R^{0.5}$, 0.72."
+    }
+   ]
+  },
+  {
+   "quantity": "Median virial parameter alpha for high-S/N clouds",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO Luminosity Mass–Virial Mass Relation",
+     "quote": "On the other hand, the median of $\\alpha$ for the high-S/N clouds is 2.0, and 68% of the high-S/N clouds are gravitationally bound ($\\alpha \\leq 3$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median virial parameter alpha for low-S/N clouds",
+   "value": "5.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO Luminosity Mass–Virial Mass Relation",
+     "quote": "the median of the virial parameter $\\alpha$, which is defined as $M_{\\rm Vir}/M_{\\rm CO}$, is 5.3 for the low-S/N clouds."
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative mass distribution slope gamma for ACA+IRAM cloud catalog",
+   "value": "-1.60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Mass Function",
+     "quote": "We obtained $\\gamma = -1.60$ for the ACA+IRAM cloud catalog and $\\gamma = -1.48$ for the (cite: corbelli2017) catalog, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman's rank correlation coefficient r_s between IRAM GMC velocity dispersion and inter-cloud velocity difference v_diff",
+   "value": "0.59",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Origin of Velocity Dispersion in IRAM GMCs",
+     "quote": "A clear correlation between $v_{\\rm diff}$ and the velocity dispersion of the IRAM GMC, with the Spearman’s rank correlation coefficient $r_{\\rm s}$ of 0.59, can be seen, while $\\sigma_{v, {\\rm mean}}$ seems nearly constant (2 – 4 km s$^{-1}$) and its correlation with the velocity dispersion of the IRAM GMC is weak ($r_{\\rm s}$ = 0.28)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of high-mass (>= 10^5 M_sun) clouds with strong (> 2 MJy sr^-1) 8 um emission",
+   "value": "72",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Properties of Molecular Clouds and High-mass Star Formation",
+     "quote": "the strong ($> 2$ MJy sr$^{-1}$) $8\\,\\mu$m emission is found in 72% of high-mass clouds, but only in 36% of low-mass clouds, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of low-mass (< 10^5 M_sun) clouds with strong (> 2 MJy sr^-1) 8 um emission",
+   "value": "36",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Properties of Molecular Clouds and High-mass Star Formation",
+     "quote": "the strong ($> 2$ MJy sr$^{-1}$) $8\\,\\mu$m emission is found in 72% of high-mass clouds, but only in 36% of low-mass clouds, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact multi-scale scales used in CASA tclean",
+  "Cell size (pixel scale) and image dimensions (in pixels) used in tclean",
+  "Auto-multithresh sub-parameters in tclean (sidelobethreshold, noisethreshold, lownoisethreshold, minbeamfrac)",
+  "Whether continuum subtraction (e.g., uvcontsub) was performed prior to line imaging",
+  "Exact definition of the ACA FOV boundary used to reject edge clouds",
+  "Specific parameters used in HIIphot for diffuse 8 um emission subtraction"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (cell size, image pixel dimensions, multi-scale scale list, auto-multithresh sub-parameters)",
+  "Continuum subtraction procedure (if any) prior to imaging",
+  "Exact spatial polygon or primary beam response threshold used to reject clouds at the edge of the ACA FOV",
+  "Specific HIIphot settings used for diffuse 8 um subtraction"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The paper clearly states the ALMA project codes, CASA version, feathering data source, and provides detailed PYCPROPS cloud decomposition and physical parameter equations, plus the full catalog online. However, low-level tclean parameters (cell size, multiscale sizes, auto-multithresh parameters) and the exact FOV edge rejection mask are omitted.",
+ "rediscovery_reason": "All ALMA project codes and external datasets (IRAM 30m, Spitzer, HI) are public, the PYCPROPS decomposition thresholds and physical conversion formulas are explicitly given, and the main results (848 clouds, median radii/masses/dispersions, scaling relation coefficients, and mass function slopes) are concrete numeric targets.",
+ "source_card": "cards/2023ApJ...953..164M/sonnet/card.md"
+}

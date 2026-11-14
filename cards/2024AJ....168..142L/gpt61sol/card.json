@@ -1,0 +1,2207 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024AJ....168..142L",
+  "title": "Gemini Planet Imager Observations of a Resolved Low-inclination Debris Disk around HD 156623",
+  "year": 2024,
+  "journal": "The Astronomical Journal",
+  "first_author": "Lewis, Briley L.",
+  "n_authors": 15,
+  "arxiv_id": "2407.15986",
+  "doi": "10.3847/1538-3881/ad67e1",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2012.1.00688.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "Abstract",
+    "quote": "We present new analysis of the GPI *H*-band polarimetric detection of the HD 156623 debris disk, with particular interest in its unique morphology."
+   },
+   {
+    "loc": "Previous Observations of HD 156623",
+    "quote": "(cite: lieman2016debris) also reports a 1240 $\\mu$m continuum flux for HD 156623 of 720$\\pm$110 $\\mu$Jy."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks"
+   ],
+   "targets": [
+    {
+     "name": "HD 156623",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "111.75 ± 0.96 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| D (pc)              |   111.75 $\\pm$ 0.96    | (cite: gaia2018gaia)        |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: gaia2018gaia)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| D (pc)              |   111.75 $\\pm$ 0.96    | (cite: gaia2018gaia)        |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Constrain the presence and location of the hidden inner edge of HD 156623’s debris disk.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "with particular interest in constraining the presence and location of the hidden inner edge of the debris disk."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00688.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2012.1.00688.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "1240 μm continuum; previously detected 12CO(2-1).",
+    "evidence": [
+     {
+      "loc": "Previous Observations of HD 156623",
+      "quote": "(cite: lieman2016debris) also reports a 1240 $\\mu$m continuum flux for HD 156623 of 720$\\pm$110 $\\mu$Jy."
+     },
+     {
+      "loc": "Previous Observations of HD 156623",
+      "quote": "The disk around HD 156623 was also previously observed with ALMA, which marginally resolved the disk and found a strong $^{12}$CO(2-1) signature,"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Previous Observations of HD 156623",
+       "quote": "The disk around HD 156623 was also previously observed with ALMA, which marginally resolved the disk and found a strong $^{12}$CO(2-1) signature,"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Gemini Planet Imager",
+     "provided": {
+      "value": "2019 H-band polarized scattered-light imagery used for analysis.",
+      "evidence": [
+       {
+        "loc": "Gemini Planet Imager Observations",
+        "quote": "The debris disk around HD 156623 was detected by GPI in *H* band ($\\lambda_c$=1.65 $\\mu$m) polarized light ($\\mathcal{Q}_\\phi$), in both 2017 and 2019."
+       },
+       {
+        "loc": "Gemini Planet Imager Observations",
+        "quote": "The 2019 data was higher quality and is what will be used in our analysis."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Tycho 2",
+     "provided": {
+      "value": "B and V photometry.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| B | Tycho 2 | 0.44 | 4.75$\\pm$0.10 | (cite: hog2000tycho; cox2015allen) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| V | Tycho 2 | 0.55 | 4.71$\\pm$0.1 | (cite: hog2000tycho; cox2015allen) |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "2MASS",
+     "provided": {
+      "value": "J, H and Ks photometry.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| J | 2MASS | 1.24 | 2.33$\\pm$0.05 | (cite: cohen2003spectral; skrutskie2006two) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| *H* | 2MASS | 1.66 | 1.47$\\pm$0.03 | (cite: cohen2003spectral; skrutskie2006two) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| K$_s$ | 2MASS | 2.16 | 1.05$\\pm$0.02 | (cite: cohen2003spectral; skrutskie2006two) |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ALLWISE",
+     "provided": {
+      "value": "W1–W4 photometry.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| W1 | ALLWISE | 3.35 | 0.502$\\pm$0.027 | (cite: wright2010wide; mainzer2011preliminary) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| W2 | ALLWISE | 4.6 | 0.30 $\\pm$0.010 | (cite: wright2010wide; mainzer2011preliminary) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "Given the wide bandpasses of the *WISE* W3/W4 (cite: wright2010wide) and *AKARI* S9W (cite: fujiwaraakari) filters, we compute synthetic photometry"
+       }
+      ]
+     }
+    },
+    {
+     "name": "AKARI",
+     "provided": {
+      "value": "S9W photometry.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| S9W | *AKARI* | 9 | 0.215$\\pm$0.015 | (cite: murakami2007infrared; ishihara2010AKARI) |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Distance.",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| D (pc)              |   111.75 $\\pm$ 0.96    | (cite: gaia2018gaia)        |"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMA 1240 μm continuum flux: 720 ± 110 μJy.",
+      "evidence": [
+       {
+        "loc": "Previous Observations of HD 156623",
+        "quote": "(cite: lieman2016debris) also reports a 1240 $\\mu$m continuum flux for HD 156623 of 720$\\pm$110 $\\mu$Jy."
+       }
+      ]
+     },
+     "citation": "(cite: lieman2016debris)"
+    },
+    {
+     "what": {
+      "value": "CO gas mass ≥ 3.9 · 10^-4 M⊕ from the previously detected 12CO(2-1) signature.",
+      "evidence": [
+       {
+        "loc": "Previous Observations of HD 156623",
+        "quote": "indicating the presence of a mass of CO gas $\\geq 3.9 \\cdot 10^{-4} M_\\oplus$ (cite: lieman2016debris)."
+       }
+      ]
+     },
+     "citation": "(cite: lieman2016debris)"
+    },
+    {
+     "what": {
+      "value": "Distance: 111.75 ± 0.96 pc.",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| D (pc)              |   111.75 $\\pm$ 0.96    | (cite: gaia2018gaia)        |"
+       }
+      ]
+     },
+     "citation": "(cite: gaia2018gaia)"
+    },
+    {
+     "what": {
+      "value": "Stellar temperature: 9040 +240/-160 K; radius: 1.51 ± 0.09 R⊙; age: 16 ± 7 Myr.",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| T$_\\text{eff}$ (K)  |  9040$^{+240}_{-160}$  | (cite: mellon2019discovery) |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| R$_*$ (R$_\\odot$)   |    1.51 $\\pm$ 0.09     | (cite: mellon2019discovery) |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| Age (Myr)           |       16 $\\pm$ 7       | (cite: mellon2019discovery) |"
+       }
+      ]
+     },
+     "citation": "(cite: mellon2019discovery)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass: 1.90 +0.05/-0.04 M⊙; luminosity: 13.06 ± 1.80 L⊙; H magnitude: 7.0.",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| M$_*$ (M$_\\odot$)   | 1.90$^{+0.05}_{-0.04}$ | (cite: esposito2020debris)  |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| L$_*$ (L$_\\odot$)   |    13.06 $\\pm$ 1.80    | (cite: esposito2020debris)  |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| $H$ (mag)           |          7.0           | (cite: esposito2020debris)  |"
+       }
+      ]
+     },
+     "citation": "(cite: esposito2020debris)"
+    },
+    {
+     "what": {
+      "value": "Tycho 2 B: 4.75 ± 0.10 Jy at 0.44 μm; V: 4.71 ± 0.1 Jy at 0.55 μm.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| B | Tycho 2 | 0.44 | 4.75$\\pm$0.10 | (cite: hog2000tycho; cox2015allen) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| V | Tycho 2 | 0.55 | 4.71$\\pm$0.1 | (cite: hog2000tycho; cox2015allen) |"
+       }
+      ]
+     },
+     "citation": "(cite: hog2000tycho; cox2015allen)"
+    },
+    {
+     "what": {
+      "value": "2MASS J: 2.33 ± 0.05 Jy; H: 1.47 ± 0.03 Jy; Ks: 1.05 ± 0.02 Jy.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| J | 2MASS | 1.24 | 2.33$\\pm$0.05 | (cite: cohen2003spectral; skrutskie2006two) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| *H* | 2MASS | 1.66 | 1.47$\\pm$0.03 | (cite: cohen2003spectral; skrutskie2006two) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| K$_s$ | 2MASS | 2.16 | 1.05$\\pm$0.02 | (cite: cohen2003spectral; skrutskie2006two) |"
+       }
+      ]
+     },
+     "citation": "(cite: cohen2003spectral; skrutskie2006two)"
+    },
+    {
+     "what": {
+      "value": "ALLWISE W1: 0.502 ± 0.027 Jy; W2: 0.30 ± 0.010 Jy.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| W1 | ALLWISE | 3.35 | 0.502$\\pm$0.027 | (cite: wright2010wide; mainzer2011preliminary) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| W2 | ALLWISE | 4.6 | 0.30 $\\pm$0.010 | (cite: wright2010wide; mainzer2011preliminary) |"
+       }
+      ]
+     },
+     "citation": "(cite: wright2010wide; mainzer2011preliminary)"
+    },
+    {
+     "what": {
+      "value": "ALLWISE W3: 0.155 ± 0.007 Jy; W4: 0.626 ± 0.036 Jy.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| W3 | ALLWISE | 11.6 | 0.155$\\pm$0.007 | (cite: wright2010wide; mainzer2011preliminary) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "| W4 | ALLWISE | 22.1 | 0.626$\\pm$0.036 | (cite: wright2010wide; mainzer2011preliminary) |"
+       }
+      ]
+     },
+     "citation": "(cite: wright2010wide; mainzer2011preliminary)"
+    },
+    {
+     "what": {
+      "value": "AKARI S9W: 0.215 ± 0.015 Jy at 9 μm.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "| S9W | *AKARI* | 9 | 0.215$\\pm$0.015 | (cite: murakami2007infrared; ishihara2010AKARI) |"
+       }
+      ]
+     },
+     "citation": "(cite: murakami2007infrared; ishihara2010AKARI)"
+    },
+    {
+     "what": {
+      "value": "Filter transmission profiles for synthetic photometry.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "by integrating the model flux multiplied by the transmission profile for each filter (from (cite: rodrigo2020svo)) over its bandpass"
+       }
+      ]
+     },
+     "citation": "(cite: rodrigo2020svo)"
+    },
+    {
+     "what": {
+      "value": "Additional absolute calibration uncertainties for WISE and AKARI.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "Additional absolute calibration uncertainties were incorporated for the WISE data points (cite: cutri2012vizier) and AKARI data points (cite: tanabe2008absolute)."
+       }
+      ]
+     },
+     "citation": "(cite: cutri2012vizier); (cite: tanabe2008absolute)"
+    },
+    {
+     "what": {
+      "value": "Grain density: 3.3 g/cm^3.",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "$\\rho$ is the grain density (assumed to be 3.3 g/cm$^3$ from (cite: Draine1984ApJ; draine2003interstellar))"
+       }
+      ]
+     },
+     "citation": "(cite: Draine1984ApJ; draine2003interstellar)"
+    },
+    {
+     "what": {
+      "value": "Adopted blowout grain size: 3.5 μm for astrosilicate grains.",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "The blowout grain size of this system is estimated as $\\sim$3.5 $\\mu$m, according to (cite: arnold2019effect)"
+       },
+       {
+        "loc": "Discussion",
+        "quote": "We will adopt the blowout size of 3.5 $\\mu$m for the remainder of this discussion which assumes astrosilicate grains as we have in our modeling."
+       }
+      ]
+     },
+     "citation": "(cite: arnold2019effect)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Kurucz 9000 K model atmosphere.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "We set up this resolved model using a Kurucz 9000 K model atmosphere (cite: castelli2004new)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "GPI polarimetric data and reduction procedure; improved here with quadrupole correction.",
+      "evidence": [
+       {
+        "loc": "Gemini Planet Imager Observations",
+        "quote": "The polarimetric data presented herein were first published as part of a larger survey in (cite: esposito2020debris)."
+       },
+       {
+        "loc": "Data Reduction and Polarized Differential Imaging",
+        "quote": "The data reduction procedure for polarimetry data in particular, as well as sources of noise in GPI polarimetric data, are further described in (cite: perrin2015polarimetry) and Section 4.1 of (cite: esposito2020debris);"
+       }
+      ]
+     },
+     "from_reference": "(cite: perrin2015polarimetry); Section 4.1 of (cite: esposito2020debris)"
+    },
+    {
+     "what": {
+      "value": "GPI DRP calibrations.",
+      "evidence": [
+       {
+        "loc": "Data Reduction and Polarized Differential Imaging",
+        "quote": "Data for HD 156623 were reduced using the standard GPI Data Reduction Pipeline (DRP), documented in (cite: perrin2014gemini), (cite: perrin2016gemini), and (cite: wang2018automated)."
+       }
+      ]
+     },
+     "from_reference": "(cite: perrin2014gemini); (cite: perrin2016gemini); (cite: wang2018automated)"
+    },
+    {
+     "what": {
+      "value": "Satellite-spot and stellar H-magnitude surface-brightness calibration.",
+      "evidence": [
+       {
+        "loc": "Data Reduction and Polarized Differential Imaging",
+        "quote": "we converted those detector units into surface brightness units of mJy arcsec$^{-2}$ for the subsequent analysis, as in (cite: wang2014gemini), (cite: hung2016gemini), and (cite: esposito2020debris)."
+       }
+      ]
+     },
+     "from_reference": "(cite: wang2014gemini); (cite: hung2016gemini); (cite: esposito2020debris)"
+    },
+    {
+     "what": {
+      "value": "Extra quadrupole instrumental polarization subtraction.",
+      "evidence": [
+       {
+        "loc": "Data Reduction and Polarized Differential Imaging",
+        "quote": "was applied to the data to remove an instrumental polarization effect seen in GPI images (cite: 2020SPIE11447E..5AD)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2020SPIE11447E..5AD)"
+    },
+    {
+     "what": {
+      "value": "Morphological modeling parameters and procedure; chain 40% longer.",
+      "evidence": [
+       {
+        "loc": "Disk Morphology",
+        "quote": "This modeling is nearly identical to that of (cite: esposito2020debris), but run with a 40% longer chain."
+       },
+       {
+        "loc": "Disk Morphology",
+        "quote": "We additionally use the same disk parameters and procedure as described in (cite: esposito2020debris), as summarized below."
+       }
+      ]
+     },
+     "from_reference": "(cite: esposito2020debris)"
+    },
+    {
+     "what": {
+      "value": "Mie scattering from spherical grains in an azimuthally symmetric, optically thin disk.",
+      "evidence": [
+       {
+        "loc": "Disk Morphology",
+        "quote": "Following the procedure in (cite: esposito2018), our models assume Mie scattering from spherical grains in an azimuthally-symmetric, optically-thin disk centered on the star, observed at 1.65 microns (the *H* band peak wavelength)."
+       }
+      ]
+     },
+     "from_reference": "(cite: esposito2018)"
+    },
+    {
+     "what": {
+      "value": "Fixed surface-density indices manually tuned in earlier work; prose and parameter table reverse their labels.",
+      "evidence": [
+       {
+        "loc": "Disk Morphology",
+        "quote": "set to $\\alpha_\\text{in}=-3.5$, and one for the disk exterior to $R_\\text{c}$, set to $\\alpha_\\text{out}=1.5$ as in (cite: esposito2020debris);"
+       },
+       {
+        "loc": "Disk Morphology",
+        "quote": "| $\\alpha_\\text{in}$          | Fixed              | 1.5                        | 1.5                                       |"
+       },
+       {
+        "loc": "Disk Morphology",
+        "quote": "| $\\alpha_\\text{out}$         | Fixed              | -3.5                       | -3.5                                      |"
+       }
+      ]
+     },
+     "from_reference": "(cite: esposito2020debris)"
+    },
+    {
+     "what": {
+      "value": "Scale-height formalism for the radial surface-density fit.",
+      "evidence": [
+       {
+        "loc": "Radial Brightness Profiles",
+        "quote": "use the same formalism for $H(r) = H_0(r/r_H)^\\beta$ as (cite: esposito2020debris) where $\\beta$=0 and $H_0/r_H$=0.055"
+       }
+      ]
+     },
+     "from_reference": "(cite: esposito2020debris)"
+    },
+    {
+     "what": {
+      "value": "Synthetic photometry bandpass integration.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "over its bandpass via the following equation as in (cite: tokunaga2005mauna):"
+       }
+      ]
+     },
+     "from_reference": "(cite: tokunaga2005mauna)"
+    },
+    {
+     "what": {
+      "value": "Stellar radius and temperature fixed for blackbody fitting.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "The stellar radius ($R_*$) and temperature ($T_*$) are set using the values in Table [1](#tab:star) from (cite: mellon2019discovery)."
+       }
+      ]
+     },
+     "from_reference": "(cite: mellon2019discovery)"
+    },
+    {
+     "what": {
+      "value": "Modified wavelength-dependent emissivity formalism.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "using a single-temperature blackbody plus an additional modified wavelength-dependent emissivity, following the formalism in (cite: backman1992infrared)."
+       }
+      ]
+     },
+     "from_reference": "(cite: backman1992infrared)"
+    },
+    {
+     "what": {
+      "value": "Affine invariant MCMC ensemble sampler for SED fitting.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "We explore the posterior for those parameters again with a (cite: goodman2010ensemble) affine invariant MCMC ensemble sampler using the `emcee` package with 16 walkers and uniform priors,"
+       }
+      ]
+     },
+     "from_reference": "(cite: goodman2010ensemble)"
+    },
+    {
+     "what": {
+      "value": "Blowout-size calculation and adopted 3.5 μm comparison.",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "The blowout grain size of this system is estimated as $\\sim$3.5 $\\mu$m, according to (cite: arnold2019effect) which uses the equation below (cite: burns1979radiation)"
+       }
+      ]
+     },
+     "from_reference": "(cite: arnold2019effect); (cite: burns1979radiation)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA calibration, imaging, aperture and flux-extraction settings to independently reproduce the imported continuum measurement.",
+    "Software versions actually used.",
+    "Image-fitting likelihood, pixel noise covariance, fit masks and numerical prior bounds.",
+    "Full MCFOST input files, grain size-distribution limits and exponent, optical constants, grid and photon settings.",
+    "SED dust-mass prior bounds and likelihood.",
+    "Numerical WISE and AKARI calibration uncertainties and exact filter-profile identifiers.",
+    "Resolution of the reversed inner/outer surface-density indices between prose and table.",
+    "Exact radial-profile and phase-function bin edges and least-squares weighting."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit disk geometry",
+    "method": {
+     "value": "Fit MCFOST models simultaneously to Stokes Qphi, Q and U.",
+     "evidence": [
+      {
+       "loc": "Disk Morphology",
+       "quote": "Models were fit to Stokes $\\mathcal{Q}_\\phi$, $\\mathcal{Q}$ and $\\mathcal{U}$ data simultaneously, as $\\mathcal{Q}_\\phi$ is the only available data with the quadrupole noise signal removed."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free: minimum grain size, porosity, dust mass, PA, inclination, inner radius, outer radius and critical radius.",
+      "evidence": [
+       {
+        "loc": "Disk Morphology",
+        "quote": "the minimum grain size ($a_\\text{min}$), grain porosity, dust mass (within the grain size distribution used) $M_\\text{d}$, disk position angle (PA), inclination (*i*), dust inner radius $R_\\text{in}$, dust outer radius $R_\\text{out}$, and the critical radius $R_\\text{c}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Spherical grains; Mie scattering; azimuthally symmetric, optically thin disk; 1.65 microns.",
+      "evidence": [
+       {
+        "loc": "Disk Morphology",
+        "quote": "Following the procedure in (cite: esposito2018), our models assume Mie scattering from spherical grains in an azimuthally-symmetric, optically-thin disk centered on the star, observed at 1.65 microns (the *H* band peak wavelength)."
+       }
+      ]
+     },
+     {
+      "value": "Scale height/radius = 0.055.",
+      "evidence": [
+       {
+        "loc": "Disk Morphology",
+        "quote": "The disk has a vertical structure where the scale height is a constant fraction of the radius, set to 0.055,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Parallel-tempered MCMC: three temperatures, 120 walkers each, 3500 iterations; discard 2900, retain final 600 zeroth-temperature iterations.",
+     "evidence": [
+      {
+       "loc": "Disk Morphology",
+       "quote": "We used a parallel-tempered MCMC with three temperatures, each with 120 walkers."
+      },
+      {
+       "loc": "Disk Morphology",
+       "quote": "Walkers were initialized randomly from a uniform distribution and then simulated for 3500 iterations."
+      },
+      {
+       "loc": "Disk Morphology",
+       "quote": "We discarded the first 2900 iterations as “burn-in” where the ensemble of walkers had not yet converged to their peak in posterior space, and used the final 600 iterations of the zeroth temperature walkers"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Inspect posterior corner plot; use maximum likelihood or 99.7% bounds for strongly non-Gaussian posteriors.",
+     "evidence": [
+      {
+       "loc": "Disk Morphology",
+       "quote": "A corner plot of posteriors from the MCMC is shown in Figure [2](#mcfost-corner)."
+      },
+      {
+       "loc": "Disk Morphology",
+       "quote": "parameters with strongly non-Gaussian posteriors are reported as either maximum likelihood values or 99.7% confidence upper/lower limits."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure radial profiles",
+    "method": {
+     "value": "Deproject with diskmap; average radial wedges; estimate visual outer radius from profiles consistent with zero by 2σ; least-squares fit a smoothly broken power law.",
+     "evidence": [
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "we first deproject the disk based on our determined value of inclination, such that each radial cut traverses the same distance from the center of the disk, using the Python package `diskmap` (cite: 2016A&A...596A..70S)."
+      },
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "we rebin the brightness profiles to 5 pixel wide annuli, and determine where the signal becomes consistent with zero by 2$\\sigma$ in our images at each angle."
+      },
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "we fit a smoothly broken power law (as defined via MCFOST and below in Equation [\\[label:surfdens\\]](#label:surfdens)) to the average measured surface density profile using least-squares,"
+      }
+     ]
+    },
+    "software": [
+     "diskmap"
+    ],
+    "key_parameters": [
+     {
+      "value": "Wedges: 5 pixels radially, 45° wide; mask within 15 AU.",
+      "evidence": [
+       {
+        "loc": "Radial Brightness Profiles",
+        "quote": "Radial brightness profiles are the average of a wedge at the given angle range that is **5** pixels long in the radial direction and 45$^\\circ$"
+       },
+       {
+        "loc": "Radial Brightness Profiles",
+        "quote": "Pixels within 15 AU of the center are masked, as this region is within the influence of the FPM (FPM) and therefore contains large errors."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant z; β = 0, H0/rH = 0.055, γ = 1.",
+      "evidence": [
+       {
+        "loc": "Radial Brightness Profiles",
+        "quote": "We set the $z$ coordinate to a constant for simplicity,"
+       },
+       {
+        "loc": "Radial Brightness Profiles",
+        "quote": "where $\\beta$=0 and $H_0/r_H$=0.055, set the exponent $\\gamma$=1,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Free rc, αin, αout and normalization N; least-squares.",
+     "evidence": [
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "leave $r_c$, $\\alpha_\\text{in}$, and $\\alpha_\\text{out}$ as free parameters, along with an arbitrary scaling/normalization factor $N$."
+      },
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "to the average measured surface density profile using least-squares,"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Independent morphology check against scattered-light modeling; profile errors from wedge variance.",
+     "evidence": [
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "with its error as the variance of that slice of the wedge."
+      },
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "As an independent check on the disk morphology,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure scattering phase functions",
+    "method": {
+     "value": "Measure brightness at multiple radii, correct for surface density and r², average radii, and split East/West halves.",
+     "evidence": [
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "SPFs were instead determined by taking measurements of $B_\\text{obs}(r,\\theta)$ at multiple radii around the disk, then averaging over the varying radii."
+      },
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "f(\\theta) \\sim \\frac{B_\\text{obs}(r,\\theta)}{\\rho(r)} \\cdot r^2"
+      },
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "SPFs were measured separately for the East and West halves of the disk (divided approximately along the minor axis),"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "15–78 AU; surface-density proxy from average best-fit radial brightness profile, peak normalized to 1.",
+      "evidence": [
+       {
+        "loc": "Observed Polarized Scattering Phase Functions",
+        "quote": "this range is 15 AU (at the FPM limit) to 78 AU."
+       },
+       {
+        "loc": "Observed Polarized Scattering Phase Functions",
+        "quote": "The disk surface density, $\\rho(r)$, was approximated using the average best fit radial brightness profile where the peak surface brightness was normalized to 1."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Azimuthal symmetry, optical thinness and MCFOST morphology; scattering independent of azimuthal angle.",
+      "evidence": [
+       {
+        "loc": "Observed Polarized Scattering Phase Functions",
+        "quote": "we take the disk to be azimuthally symmetric (but radially varying, related to the observed surface brightness) and optically thin, with the previously-described morphological parameters inferred via `MCFOST`."
+       },
+       {
+        "loc": "Observed Polarized Scattering Phase Functions",
+        "quote": "We also assume that scattering is independent of azimuthal angle"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Fit Henyey-Greenstein functions after dividing polarized SPFs by a Rayleigh polarization curve.",
+     "evidence": [
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "We additionally fit a Henyey-Greenstein SPF (cite: henyey1941diffuse) to each of our observed scattering SPFs divided by a Rayleigh polarization curve (approximating the total intensity SPF),"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Propagate annular pixel variance; assess East/West HG fits.",
+     "evidence": [
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "Errors were derived by the variance of pixels in each annulus, similar to the procedure for the radial brightness profiles, and propagated appropriately through the calculation."
+      },
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "For the Eastern half of the disk, the HG function is a poor fit, even with the best fit value $g$ = 0.33;"
+      },
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "however, the HG function with $g$ = 0.45 is a reasonable approximation for the Western half."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Assemble SED constraints",
+    "method": {
+     "value": "Collect photometry, convert magnitudes to Jy, and synthesize W3/W4 and S9W photometry through filter transmission profiles.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "Most measurements were obtained in magnitudes from the IRSA or Vizier databases, and then converted to Janskys using the zero points provided by each mission/project’s documentation."
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "Given the wide bandpasses of the *WISE* W3/W4 (cite: wright2010wide) and *AKARI* S9W (cite: fujiwaraakari) filters, we compute synthetic photometry"
+      }
+     ]
+    },
+    "software": [
+     "IRSA",
+     "VizieR",
+     "Spanish Virtual Observatory"
+    ],
+    "key_parameters": [
+     {
+      "value": "ALMA 1240 μm flux: 0.00072 ± 0.00011 Jy; tabulated photometry before color corrections.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "|  | ALMA | 1240 | 0.00072$\\pm$0.00011 | (cite: lieman2016debris) |"
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "all data listed here are before color corrections,"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Reject IRAS photometry for poor quality flags; include WISE and AKARI absolute calibration uncertainties.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "Although photometric data from *IRAS* were available for this object, they were not used due to poor data quality flags present in the catalog."
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "Additional absolute calibration uncertainties were incorporated for the WISE data points (cite: cutri2012vizier) and AKARI data points (cite: tanabe2008absolute)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit blackbody temperatures",
+    "method": {
+     "value": "Two single-temperature blackbody curves for stellar and disk emission.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "We initially fit a simple model consisting of two single-temperature blackbody curves for the stellar emission plus the disk’s thermal emission"
+      }
+     ]
+    },
+    "software": [
+     "SciPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free disk temperature Td and emitting-area parameter A.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "The free parameters included are disk temperature ($T_d$) and a parameter proportional to the disk emitting area ($A$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Fixed stellar radius and temperature from Table 1; equilibrium blackbody grain for radius conversion.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "The stellar radius ($R_*$) and temperature ($T_*$) are set using the values in Table [1](#tab:star) from (cite: mellon2019discovery)."
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "if treated as an equilibrium temperature for a grain radiating as a blackbody."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "SciPy Levenberg-Marquardt least-squares.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "using a Levenberg-Marquardt least-squares fit implemented in `scipy`."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced χ² = 1.088; poor long-wavelength fit motivates modified emissivity.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "with a reduced chi squared $\\chi_\\nu^2$ value of 1.088,"
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "Given the poor fit at long wavelengths while using a single-temperature blackbody to represent thermal emission from dust,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Fit modified blackbody",
+    "method": {
+     "value": "Single-temperature blackbody with wavelength-dependent emissivity.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "using a single-temperature blackbody plus an additional modified wavelength-dependent emissivity, following the formalism in (cite: backman1992infrared)."
+      }
+     ]
+    },
+    "software": [
+     "SciPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fit temperature and λ0.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "This model was again fit using the `scipy` implementation of a Levenberg-Marquardt least-squares fit, now for both temperature and $\\lambda_0$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "No spatial distribution or grain size distribution assumed.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "Again, this model does not assume a spatial distribution or grain size distribution."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "SciPy Levenberg-Marquardt least-squares.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "This model was again fit using the `scipy` implementation of a Levenberg-Marquardt least-squares fit, now for both temperature and $\\lambda_0$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced χ² = 1.21; neither simple model captures AKARI 9 μm.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "with a $\\chi_\\nu^2$ value of 1.21,"
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "Neither model is able to capture the 9$\\mu$m *AKARI* point, and a modified emissivity is necessary to reproduce the flux observed by ALMA."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Constrain inner radius with radiative transfer",
+    "method": {
+     "value": "Fit spatially resolved, azimuthally symmetric MCFOST SED models.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "To constrain the inner radius, we then compute the SED for a spatially resolved, azimuthally symmetric disk using `MCFOST`."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free rin, amin and Md; uniform priors, 0 < rin < 15 and -2 < log amin < 1.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "leaving only $r_\\text{in}$, $a_\\text{min}$, and $M_\\text{d}$ as free parameters."
+       },
+       {
+        "loc": "Thermal Emission",
+        "quote": "with bounds on the priors for $r_{\\rm in}$ (0$< r_{\\rm in} <$15) and log$a_{\\rm min}$ (-2$< {\\rm log}a_{\\rm min} <$1)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Kurucz 9000 K atmosphere; same grain and disk assumptions as scattered-light model.",
+      "evidence": [
+       {
+        "loc": "Thermal Emission",
+        "quote": "We set up this resolved model using a Kurucz 9000 K model atmosphere (cite: castelli2004new) and the same parameters and assumptions (e.g. Mie scattering, dust grain size and composition) as the scattered-light model"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee affine invariant ensemble: 16 walkers, uniform initialization and priors, 1500 iterations, discard 100 and retain 1400.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "We explore the posterior for those parameters again with a (cite: goodman2010ensemble) affine invariant MCMC ensemble sampler using the `emcee` package with 16 walkers and uniform priors,"
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "Walkers were initialized randomly from a uniform distribution and then simulated for 1500 iterations."
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "We discarded the first 100 iterations as “burn-in” where the ensemble of walkers had not yet converged to their peak in posterior space, and used the remaining 1400 iterations"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare model with photometry and posterior corner plot; reduced χ² = 1.11, with AKARI and ALMA residuals.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "The maximum likelihood model SED is shown compared to available photometry in Figure [9](#fig:mcfost-sed), and a corner plot of the approximate posteriors is shown in Figure [10](#fig:mcfost-sed-corner)."
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "This best-fit MCFOST SED model has $\\chi_\\nu^2$ = 1.11, similar to the simpler models above."
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "Again, the *AKARI* and ALMA points are not fit well by this model;"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "GPI Data Reduction Pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "GPI data reduction.",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Polarized Differential Imaging",
+       "quote": "Data for HD 156623 were reduced using the standard GPI Data Reduction Pipeline (DRP),"
+      }
+     ]
+    }
+   },
+   {
+    "name": "pyKLIP",
+    "version": "not stated",
+    "used_for": {
+     "value": "Total-intensity stellar PSF subtraction.",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Polarized Differential Imaging",
+       "quote": "For total intensity, we must complete stellar point spread function (PSF) subtraction, for which we use the `pyKLIP` package (cite: wang2015pyklip)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MCFOST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Scattered-light morphology and SED radiative transfer models.",
+     "evidence": [
+      {
+       "loc": "Disk Morphology",
+       "quote": "morphological parameters of the disk were estimated by comparison to models from the Monte Carlo radiative transfer code `MCFOST` (cite: pinte2006monte; pinte2009benchmark)."
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "To constrain the inner radius, we then compute the SED for a spatially resolved, azimuthally symmetric disk using `MCFOST`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "diskmap",
+    "version": "not stated",
+    "used_for": {
+     "value": "Disk deprojection.",
+     "evidence": [
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "we first deproject the disk based on our determined value of inclination, such that each radial cut traverses the same distance from the center of the disk, using the Python package `diskmap` (cite: 2016A&A...596A..70S)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Levenberg-Marquardt least-squares SED fits.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "using a Levenberg-Marquardt least-squares fit implemented in `scipy`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "Affine invariant MCMC sampling of SED model parameters.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "We explore the posterior for those parameters again with a (cite: goodman2010ensemble) affine invariant MCMC ensemble sampler using the `emcee` package with 16 walkers and uniform priors,"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NumPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "IPython",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Jupyter Notebooks",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "pymcfost",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "diskmc",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "imgmasks",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "mcfost-python",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "IRSA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Photometric measurements.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "Most measurements were obtained in magnitudes from the IRSA or Vizier databases,"
+      }
+     ]
+    }
+   },
+   {
+    "name": "VizieR",
+    "version": "not stated",
+    "used_for": {
+     "value": "Photometric measurements.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "Most measurements were obtained in magnitudes from the IRSA or Vizier databases,"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Spanish Virtual Observatory",
+    "version": "not stated",
+    "used_for": {
+     "value": "Filter transmission profiles.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "by integrating the model flux multiplied by the transmission profile for each filter (from (cite: rodrigo2020svo)) over its bandpass"
+      },
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research has made use of the Spanish Virtual Observatory (https://svo.cab.inta-csic.es) project"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NASA’s Astrophysics Data System Bibliographic Services",
+    "version": "not stated",
+    "used_for": {
+     "value": "Bibliographic services.",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research has made use of NASA’s Astrophysics Data System Bibliographic Services,"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk position angle",
+    "value": "100.9",
+    "uncertainty": "+1.6/-2.2",
+    "units": "deg",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Disk Morphology",
+      "quote": "| PA (deg)                    | 102.081            | $100.9^{+1.6}_{-2.2}$      | 100.9$^{+1.9}_{-2.2}$                     |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk inclination",
+    "value": "36.6",
+    "uncertainty": "+2.1/-9.9",
+    "units": "deg",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Disk Morphology",
+      "quote": "| Inclination (deg)           | 38.978             | $36.6^{+2.1}_{-9.9}$       | 34.9$^{+3.6}_{-9.5}$                      |"
+     }
+    ]
+   },
+   {
+    "quantity": "Scattered-light inner-radius upper limit",
+    "value": "<26.6",
+    "uncertainty": "99.7% confidence",
+    "units": "AU",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Abstract",
+      "quote": "We find that HD 156623’s debris disk inner radius is constrained to less than 26.6 AU from scattered light imagery and less than 13.4 AU from SED modeling at a 99.7% confidence interval,"
+     }
+    ]
+   },
+   {
+    "quantity": "Scattered-light outer-radius lower limit",
+    "value": ">139.2",
+    "uncertainty": "99.7% confidence",
+    "units": "AU",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Disk Morphology",
+      "quote": "| $R_\\text{out}$(AU)          | 184.482            | $>$ 139.2                  | $>$ 139.3 (99.7% confidence)              |"
+     },
+     {
+      "loc": "Disk Morphology",
+      "quote": "parameters with strongly non-Gaussian posteriors are reported as either maximum likelihood values or 99.7% confidence upper/lower limits."
+     }
+    ]
+   },
+   {
+    "quantity": "Critical radius",
+    "value": "65.2",
+    "uncertainty": "+1.3/-2.3",
+    "units": "AU",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Disk Morphology",
+      "quote": "| $R_\\text{c}$(AU)            | 67.113             | $65.2^{+1.3}_{-2.3}$       | 64.4$\\pm$1.8                              |"
+     }
+    ]
+   },
+   {
+    "quantity": "Scattered-light maximum-likelihood minimum grain size",
+    "value": "1.13",
+    "uncertainty": "not stated",
+    "units": "μm",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "`MCFOST` scattered-light image modeling reports the maximum likelihood value for $a_{min}$ as 1.13 $\\mu$m,"
+     }
+    ]
+   },
+   {
+    "quantity": "Visual outer radius",
+    "value": "∼78",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Radial Brightness Profiles",
+      "quote": "We average those measurements across azimuthal angles to find a visual outer radius of $\\sim$78 AU."
+     }
+    ]
+   },
+   {
+    "quantity": "Radial surface-density fit critical radius",
+    "value": "78.8",
+    "uncertainty": "±6.0",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Radial Brightness Profiles",
+      "quote": "$r_c$=78.8$\\pm$6.0 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial surface-density inner power-law index",
+    "value": "0.58",
+    "uncertainty": "±0.15",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Radial Brightness Profiles",
+      "quote": "$\\alpha_\\text{in}$=0.58$\\pm$0.15"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial surface-density outer power-law index",
+    "value": "-1.31",
+    "uncertainty": "±0.15",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Radial Brightness Profiles",
+      "quote": "$\\alpha_\\text{out}$=-1.31$\\pm$0.15."
+     }
+    ]
+   },
+   {
+    "quantity": "Eastern HG asymmetry parameter",
+    "value": "0.33",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Observed Polarized Scattering Phase Functions",
+      "quote": "For the Eastern half of the disk, the HG function is a poor fit, even with the best fit value $g$ = 0.33;"
+     }
+    ]
+   },
+   {
+    "quantity": "Western HG asymmetry parameter",
+    "value": "0.45",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Observed Polarized Scattering Phase Functions",
+      "quote": "however, the HG function with $g$ = 0.45 is a reasonable approximation for the Western half."
+     }
+    ]
+   },
+   {
+    "quantity": "Blackbody dust temperature",
+    "value": "184",
+    "uncertainty": "±23",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "The best-fit dust temperature is 184$\\pm$23 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Blackbody equilibrium radius",
+    "value": "8.49",
+    "uncertainty": "+2.60/-1.78",
+    "units": "AU",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "corresponding to a radius of 8.49$^{+2.60}_{-1.78}$ AU if treated as an equilibrium temperature for a grain radiating as a blackbody."
+     }
+    ]
+   },
+   {
+    "quantity": "Blackbody reduced chi squared",
+    "value": "1.088",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "with a reduced chi squared $\\chi_\\nu^2$ value of 1.088,"
+     }
+    ]
+   },
+   {
+    "quantity": "Modified-blackbody disk temperature",
+    "value": "140",
+    "uncertainty": "±23",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "The best-fit disk temperature for this model is 140$\\pm$23 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Modified-blackbody radius",
+    "value": "14.7",
+    "uncertainty": "+6.34/-3.85",
+    "units": "AU",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "corresponding to a radius of 14.7$^{+6.34}_{-3.85}$ AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Modified-blackbody emissivity wavelength",
+    "value": "219",
+    "uncertainty": "unconstrained",
+    "units": "μm",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "with $\\lambda_0$ unconstrained (best fit value of 219 $\\mu$m, corresponding to a characteristic grain size of $\\sim$35 $\\mu$m)."
+     }
+    ]
+   },
+   {
+    "quantity": "Modified-blackbody characteristic grain size",
+    "value": "∼35",
+    "uncertainty": "not stated",
+    "units": "μm",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "with $\\lambda_0$ unconstrained (best fit value of 219 $\\mu$m, corresponding to a characteristic grain size of $\\sim$35 $\\mu$m)."
+     }
+    ]
+   },
+   {
+    "quantity": "Modified-blackbody reduced chi squared",
+    "value": "1.21",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "with a $\\chi_\\nu^2$ value of 1.21,"
+     }
+    ]
+   },
+   {
+    "quantity": "SED maximum-likelihood inner radius",
+    "value": "2.37",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "SED modeling, on the other hand, returns a maximum likelihood value of 2.37 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "SED inner-radius upper limit",
+    "value": "<13.4",
+    "uncertainty": "99.7% confidence",
+    "units": "AU",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "resulting in an upper limit of $<$13.4 AU at 99.7% confidence ($<$8.85 AU at 95% confidence)."
+     }
+    ]
+   },
+   {
+    "quantity": "SED inner-radius upper limit",
+    "value": "<8.85",
+    "uncertainty": "95% confidence",
+    "units": "AU",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "resulting in an upper limit of $<$13.4 AU at 99.7% confidence ($<$8.85 AU at 95% confidence)."
+     }
+    ]
+   },
+   {
+    "quantity": "SED minimum grain-size upper limit",
+    "value": "<0.21",
+    "uncertainty": "not stated",
+    "units": "μm",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "The minimum grain size $a_\\text{min}$ is much smaller as suggested by SED modeling, $<$0.21 $\\mu$m at compared to $\\sim$1 $\\mu$m from scattered-light image modeling."
+     }
+    ]
+   },
+   {
+    "quantity": "MCFOST SED reduced chi squared",
+    "value": "1.11",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "This best-fit MCFOST SED model has $\\chi_\\nu^2$ = 1.11, similar to the simpler models above."
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit midplane temperature at inner radius",
+    "value": "∼500",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "The maximum temperatures calculated by `MCFOST` at $r_\\text{in}$ and $R_\\text{c}$ at the disk midplane in the best fit model are $\\sim$500 K and 355 K respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit midplane temperature at critical radius",
+    "value": "355",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "The maximum temperatures calculated by `MCFOST` at $r_\\text{in}$ and $R_\\text{c}$ at the disk midplane in the best fit model are $\\sim$500 K and 355 K respectively."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No recovery of the disk in total intensity after PSF subtraction.",
+    "evidence": [
+     {
+      "loc": "Data Reduction and Polarized Differential Imaging",
+      "quote": "Even after applying PSF-subtraction, however, we were unable to recover the disk in total intensity light,"
+     }
+    ]
+   },
+   {
+    "value": "No tested model satisfactorily explains all photometric points.",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "no single model we have tested is able to satisfactorily explain the entire set of photometric data points available."
+     }
+    ]
+   },
+   {
+    "value": "Close-in warm dust with sub-blowout grains is favored under the adopted assumptions.",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the thermal signature of the disk is best explained by a population of close-in warm dust with sub-blowout size grains, and a modified emissivity trend at longer wavelengths."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The disk has an unresolved inner edge close to the star.",
+    "experiment": "Fit scattered-light morphology and the SED with radiative transfer models.",
+    "result": "Inner radius <26.6 AU from imagery and <13.4 AU from SED modeling at 99.7% confidence.",
+    "finding": "The inner clearing lies close to the star and is hidden by the focal-plane mask.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Abstract",
+      "quote": "We find that HD 156623’s debris disk inner radius is constrained to less than 26.6 AU from scattered light imagery and less than 13.4 AU from SED modeling at a 99.7% confidence interval,"
+     },
+     {
+      "loc": "Discussion",
+      "quote": "where the inner clearing is not visible due to its location behind the FPM (cite: bonnefoy2021narrow)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The dust population contains sub-blowout grains.",
+    "experiment": "Compare minimum grain sizes from scattered-light and SED modeling with the adopted blowout size.",
+    "result": "Scattered-light maximum likelihood amin = 1.13 μm; SED amin <0.21 μm; adopted blowout size 3.5 μm.",
+    "finding": "The disk appears to retain sub-blowout grains, conditional on grain-model assumptions.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "`MCFOST` scattered-light image modeling reports the maximum likelihood value for $a_{min}$ as 1.13 $\\mu$m,"
+     },
+     {
+      "loc": "Thermal Emission",
+      "quote": "The minimum grain size $a_\\text{min}$ is much smaller as suggested by SED modeling, $<$0.21 $\\mu$m at compared to $\\sim$1 $\\mu$m from scattered-light image modeling."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "We will adopt the blowout size of 3.5 $\\mu$m for the remainder of this discussion which assumes astrosilicate grains as we have in our modeling."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Gas drag enables retention of small grains.",
+    "experiment": "Interpret modeled small grains and inner edge in the context of the previously detected gas-rich disk.",
+    "result": "Models suggest small grains close to the star in a system known to contain CO gas.",
+    "finding": "Gas drag may explain retention, but further modeling is needed.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Abstract",
+      "quote": "and it is known to contain CO gas, positioning it as a candidate “hybrid” or “shielded” disk."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "small dust grains may be coupled to the gas, enabling their retention and explaining the observed inner edge and sub-blowout size grains."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "Further modeling is needed to fully understand the impact of the presence of gas in this disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "A single tested dust model can explain the complete SED.",
+    "experiment": "Fit blackbody, modified-blackbody and spatially resolved MCFOST models.",
+    "result": "AKARI 9 μm remains poorly reproduced; MCFOST also poorly fits the ALMA point.",
+    "finding": "Different grain properties, size distributions or disk components may be required.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "no single model we have tested is able to satisfactorily explain the entire set of photometric data points available."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "`MCFOST` modeling similarly has trouble reproducing the *AKARI* point, as well as the long wavelength flux measured by ALMA, indicating that different assumptions for grain composition and/or size distribution may be needed;"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Use higher-quality 2019 GPI data and visible-to-millimeter photometry to constrain the unseen inner edge.",
+    "evidence": [
+     {
+      "loc": "Gemini Planet Imager Observations",
+      "quote": "The 2019 data was higher quality and is what will be used in our analysis."
+     },
+     {
+      "loc": "Thermal Emission",
+      "quote": "The main goal of our investigation of HD 156623’s SED is to constrain the location of the disk’s unseen inner edge."
+     },
+     {
+      "loc": "Thermal Emission",
+      "quote": "Photometric measurements of HD 156623 were acquired from a variety of sources, ranging from visible to mid-infrared to millimeter ALMA observations."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Spatially resolved SED models explicitly constrain inner radius; single-temperature models do not.",
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "However, these simple models do not explicitly fit for the inner radius we are interested in, as they assume a single temperature across the entire disk."
+     },
+     {
+      "loc": "Thermal Emission",
+      "quote": "To constrain the inner radius, we then compute the SED for a spatially resolved, azimuthally symmetric disk using `MCFOST`."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "IRAS photometry rejected for poor catalog quality flags.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "Although photometric data from *IRAS* were available for this object, they were not used due to poor data quality flags present in the catalog."
+      }
+     ]
+    },
+    {
+     "value": "Additional total-intensity reductions such as NMF not pursued.",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Polarized Differential Imaging",
+       "quote": "Although other recent algorithms have focused on improving this issue of self-subtraction (e.g. non-negative matrix factorization (NMF), (cite: ren2018non)), we do not pursue additional reductions in this work;"
+      }
+     ]
+    },
+    {
+     "value": "Physical dust fits to phase functions not pursued because of limited scattering-angle coverage.",
+     "evidence": [
+      {
+       "loc": "Observed Polarized Scattering Phase Functions",
+       "quote": "we do not pursue physical dust model fits to our phase function given the limited range of scattering angles for the available data."
+      }
+     ]
+    },
+    {
+     "value": "Two-component cold outer disk and warm inner belt proposed for future work.",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "One could additionally imagine that the debris disk has two components: a cold outer disk imaged by GPI and ALMA, and a separate warm inner belt"
+      },
+      {
+       "loc": "Discussion",
+       "quote": "Future work may include exploring two-component models,"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Limit SED model complexity because four constraining photometric points already support three free parameters.",
+    "evidence": [
+     {
+      "loc": "Thermal Emission",
+      "quote": "given the limited number of photometric data points currently available (four data points–AKARI 9$\\mu$m, W3, W4, and ALMA–and currently three free parameters), we choose not to add further free parameters to our model"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Image-derived inner radius limited by focal-plane mask.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "Scattered-light image modeling is limited by the focal-plane mask in its determination of $r_\\text{in}$,"
+      }
+     ]
+    },
+    {
+     "value": "SED inner radius and minimum grain size reach prior boundaries.",
+     "evidence": [
+      {
+       "loc": "Thermal Emission",
+       "quote": "SED modeling, on the other hand, returns a maximum likelihood value of 2.37 AU and is limited by the prior bound at zero,"
+      },
+      {
+       "loc": "Thermal Emission",
+       "quote": "This $a_\\text{min}$ value from SED modeling reached a bound on the prior at 0.01 $\\mu$m,"
+      }
+     ]
+    },
+    {
+     "value": "Dust mass functions mainly as a brightness scaling factor.",
+     "evidence": [
+      {
+       "loc": "Disk Morphology",
+       "quote": "Additionally, we do not expect the dust mass $M_\\text{d}$ to be physically meaningful; instead, it essentially functions as a scaling factor for the global surface brightness of the disk."
+      }
+     ]
+    },
+    {
+     "value": "Radial surface-density profile may be biased by low back-scattering SNR or assumed scattering phase function.",
+     "evidence": [
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "this average profile may be biased due to a lower SNR detection of the back-scattering half of the disk, where the outer edge is much less well-defined,"
+      },
+      {
+       "loc": "Radial Brightness Profiles",
+       "quote": "or a different scattering phase function than that assumed by `MCFOST`, which may change the ratio of surface brightness to surface density."
+      }
+     ]
+    },
+    {
+     "value": "Scattered-light geometry and grain properties are degenerate.",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "the observed scattered-light distribution is a complicated and difficult-to-disentangle combination of disk geometry, grain size distribution, grain properties (e.g. porosity, scattering efficiency), and more (cite: stark2014revealing)."
+      }
+     ]
+    },
+    {
+     "value": "Surface-density assumptions can significantly change the inferred inner radius.",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "this modeling assumes a certain power law for surface density; different assumptions in that value may lead to significant changes in the value of $r_\\text{in}$,"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The ALMA contribution is an imported flux measurement; this paper does not provide an independent ALMA reduction recipe.",
+    "Inner/outer power-law labels are reversed between the morphology prose and table.",
+    "The morphology chain’s stated model count is inconsistent with retaining only 600 iterations from 120 zeroth-temperature walkers.",
+    "Prior-bound posteriors and only four constraining SED points weaken the robustness of the grain-size and inner-radius limits.",
+    "Gas drag is a proposed interpretation rather than a fitted gas–dust dynamical result.",
+    "A near-unity reduced chi squared does not resolve the acknowledged AKARI and ALMA residuals."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Exact reduced GPI images, noise maps, quadrupole-correction implementation and fit masks.",
+    "Executable analysis scripts and complete MCFOST parameter files.",
+    "Actual software versions, likelihood definitions and all prior bounds.",
+    "Clarification of the power-law label and morphology sample-count inconsistencies.",
+    "Numerical calibration-error additions and exact synthetic-photometry inputs.",
+    "ALMA reduction and flux-measurement details from (cite: lieman2016debris) if reproducing the millimeter input from observations."
+   ],
+   "estimated_data_volume_inferred": "Small tabulated SED input; raw ALMA and GPI data volumes cannot be estimated reliably from the supplied text.",
+   "score_inferred": 5,
+   "score_reason": "On a 0–10 scale: useful photometry, numeric outputs and sampling settings, but inherited procedures, missing model files and likelihoods, and internal inconsistencies prevent exact reproduction.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are numeric, but data public availability is not stated and the recipe lacks essential model and fitting inputs."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: perrin2014gemini); (cite: perrin2016gemini); (cite: wang2018automated)",
+     "why": "GPI DRP documentation, cited in Data Reduction and Polarized Differential Imaging."
+    },
+    {
+     "citation": "(cite: perrin2015polarimetry)",
+     "why": "Polarimetric reduction and radial Stokes conversion, cited in Data Reduction and Polarized Differential Imaging."
+    },
+    {
+     "citation": "(cite: 2020SPIE11447E..5AD)",
+     "why": "Instrumental polarization correction, cited in Data Reduction and Polarized Differential Imaging."
+    },
+    {
+     "citation": "(cite: wang2015pyklip); (cite: soummer2012KLIP)",
+     "why": "PSF subtraction package and KLIP method, cited in Data Reduction and Polarized Differential Imaging."
+    },
+    {
+     "citation": "(cite: pinte2006monte; pinte2009benchmark)",
+     "why": "MCFOST radiative transfer modeling, cited in Disk Morphology."
+    },
+    {
+     "citation": "(cite: esposito2018)",
+     "why": "Inherited scattered-light modeling procedure, cited in Disk Morphology."
+    },
+    {
+     "citation": "(cite: 2016A&A...596A..70S)",
+     "why": "diskmap deprojection, cited in Radial Brightness Profiles."
+    },
+    {
+     "citation": "(cite: henyey1941diffuse)",
+     "why": "Henyey-Greenstein phase function, cited in Observed Polarized Scattering Phase Functions."
+    },
+    {
+     "citation": "(cite: tokunaga2005mauna)",
+     "why": "Synthetic-photometry integration, cited in Thermal Emission."
+    },
+    {
+     "citation": "(cite: backman1992infrared)",
+     "why": "Modified-emissivity formalism, cited in Thermal Emission."
+    },
+    {
+     "citation": "(cite: goodman2010ensemble); (cite: foreman2013emcee; foreman2019emcee)",
+     "why": "Affine invariant ensemble sampling and emcee, cited in Thermal Emission and Software."
+    },
+    {
+     "citation": "(cite: arnold2019effect); (cite: burns1979radiation)",
+     "why": "Adopted blowout-size calculation, cited in Discussion."
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: esposito2020debris)",
+     "why": "First publication of the polarimetric data and source of the inherited morphology model."
+    },
+    {
+     "citation": "(cite: lieman2016debris)",
+     "why": "Prior ALMA observations, imported continuum flux, CO evidence and comparison modeling."
+    },
+    {
+     "citation": "(cite: crotts2024uniform)",
+     "why": "Comparison brightness-asymmetry results cited in Observed Polarized Scattering Phase Functions."
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Gemini Planet Imager Exoplanet Survey (GPIES)",
+    "GPI debris-disk survey (cite: esposito2020debris)",
+    "Sco-Cen disk sample (cite: lieman2016debris)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gpt-6.1-sol",
+  "custom_id": "codex-2024AJ....168..142L",
+  "batch_id": null,
+  "run": "codex_run2",
+  "collected_at": "2026-10-29T09:31:35",
+  "usage": {},
+  "usd": 0.0,
+  "effort": "high",
+  "seconds": 253.3,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 195,
+  "quotes_ok": 195,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 27,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 144,
+   "stated": 98,
+   "rate": 0.681
+  },
+  "evidence_ok": true
+ }
+}

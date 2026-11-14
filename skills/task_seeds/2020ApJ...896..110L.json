@@ -1,0 +1,197 @@
+{
+ "bibcode": "2020ApJ...896..110L",
+ "title": "ALMA Observations of NGC 6334S. I. Forming Massive Stars and Clusters in Subsonic and Transonic Filamentary Clouds",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab84f1",
+ "arxiv_id": "2003.13534",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Are non-thermal motions in the massive IRDC NGC 6334S subsonic/transonic at high resolution, and what is the dynamical state of its dense cores and velocity components?",
+ "alma_project_codes": [
+  "2016.1.00951.S"
+ ],
+ "data": {
+  "bands": "3 mm continuum; lines near 86 GHz",
+  "arrays": "12-m main array, 55-pointing mosaic",
+  "angular_resolution": "Continuum 3.6\"x2.4\"; lines ~4.1\"x2.8\"",
+  "sensitivity": "Continuum 0.03 mJy/beam; lines ~6 mJy/beam per 0.21 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance by trigonometric parallax",
+    "evidence": [
+     {
+      "loc": "3.3 Dense Core Properties",
+      "quote": "The uncertainty in distance from the trigonometric parallax measurement is about 20% (cite: 2014ApJ...784..114C)."
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...784..114C)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "identify dense cores in 3 mm continuum",
+   "method": "astrodendro leaves, properties measured with CASA imfit; extra >5 sigma sources added",
+   "software": [
+    "astrodendro",
+    "CASA"
+   ],
+   "key_parameters": [
+    "min_value = 3 sigma, min_delta = 1 sigma, min_npix = 40"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "fit line profiles and velocity components",
+   "method": "Pixel-by-pixel Gaussian fits to H13CO+ and NH2D (hyperfine) cubes; NH3 (1,1),(2,2) jointly fit for temperature",
+   "software": [
+    "PySpecKit"
+   ],
+   "key_parameters": [
+    "peaks >5 sigma separated by >2 channels are independent components; keep sigma_obs>3 err, -8<=vlsr<=0 km/s, I>3 err"
+   ],
+   "assumptions": [
+    "Uniform T = 15 K where NH3 unavailable"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "non-thermal dispersion and Mach number",
+   "method": "sigma_nt from sigma_obs minus channel and thermal terms; Mach = sqrt3 sigma_nt / c_s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Mean gas mass 2.37 m_H; T from NH3 or 15 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "core gas masses and densities",
+   "method": "Optically thin dust emission at 3 mm with Hildebrand opacity law; spherical density",
+   "software": [],
+   "key_parameters": [
+    "kappa_98.5GHz = 0.235 cm2/g, beta = 1.5"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio 100"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "virial parameters of decomposed structures",
+   "method": "Bertoldi & McKee virial mass with density power law and ellipsoidal geometry; component mass split by line intensity",
+   "software": [],
+   "key_parameters": [
+    "density profile index b = 1.6"
+   ],
+   "assumptions": [
+    "Prolate cores; intrinsic axis ratio from observed via Appell function"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "external pressure and energy budget",
+   "method": "P_cl = pi G Sigma_bar Sigma_r beta_cl with SED column density; compare Omega_P, Omega_G, Omega_K",
+   "software": [],
+   "key_parameters": [
+    "Mean cloud column density 0.15 g/cm2; Sigma_r = Sigma_obs/2"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dense cores",
+   "value": "49",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Dense core identification",
+     "quote": "We identified 49 dense cores"
+    }
+   ]
+  },
+  {
+   "quantity": "Core gas mass range",
+   "value": "0.17 to 14",
+   "uncertainty": "57%",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Dense Core Properties",
+     "quote": "The derived gas masses are between 0.17 and 14 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Mach number (H13CO+)",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Line width and Mach number",
+     "quote": "The derived Mach numbers range from 0.02 to 6.3, with a mean value of 1.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial ratio, H13CO+ structures (67)",
+   "value": "0.1-9.7; mean 1.8, median 1.4",
+   "uncertainty": "~46%",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Dense Core Properties",
+     "quote": "the virial ratios range from 0.1 to 9.7, with the mean and median value of 1.8 and 1.4, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean external pressure P_cl/k_B (H13CO+)",
+   "value": "3.8e7",
+   "uncertainty": "not stated",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Pressure",
+     "quote": "$\\langle P_{\\rm cl}/k_{\\rm B} \\rangle =  3.8\\times 10^{7} \\, \\rm K\\, cm^{-3}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method for the line cubes",
+  "CASA version and tclean parameters (cell, image size, masking, deconvolver, threshold)",
+  "Primary beam correction details",
+  "PySpecKit fitting initial guesses",
+  "Mapping of dendrogram/imfit to final core table (imfit regions)",
+  "Spatial smoothing used for the line-width vs beam size test",
+  "How the NH3 temperature maps were regridded to cores",
+  "Core line component assignment procedure and areas A_i",
+  "Distance value adopted"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA imaging parameters and version",
+  "Line-free channels",
+  "Fitting initial conditions",
+  "Adopted distance",
+  "JVLA data details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Main steps are described with numbers, but imaging and fitting details are partly missing and the archive data must be reprocessed.",
+ "rediscovery_reason": "ALMA data are archival with a project code, dendrogram parameters and mass recipe are given, and results are numeric.",
+ "source_card": "cards/2020ApJ...896..110L/sonnet/card.md"
+}

@@ -1,0 +1,342 @@
+{
+ "bibcode": "2024ApJ...977...60Q",
+ "title": "Evidence for a Sharp CO Snow Line Transition in a Protoplanetary Disk and Implications for Millimeter-wave Observations of CO Isotopologues",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad8d55",
+ "arxiv_id": "2410.23036",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Can a sharp CO snowline transition (from a thick vertically isothermal midplane layer, VIRaM) be detected in the derivative of the radial profile of optically thin CO isotopologue emission, is it present in HD 163296, and how does the thermal structure affect gas mass estimates",
+ "alma_project_codes": [
+  "2018.1.01055.L",
+  "2016.1.00884.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6 (MAPS data)",
+  "arrays": "not stated",
+  "angular_resolution": "0.27'' x 0.21'' (C17O and C18O 1-0); 0.14'' x 0.11'' (C18O 2-1); 0.52'' x 0.37'' (C17O 2-1)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Local ISM isotope ratios CO/C17O = 2005 and CO/C18O = 557",
+    "evidence": [
+     {
+      "loc": "CO Isotopologue Imaging Simulations",
+      "quote": "ratios of CO/C$^\\mathrm{17}$O = 2005 and CO/C$^\\mathrm{18}$O = 557 (cite: Wilson1999)"
+     }
+    ]
+   },
+   "citation": "Wilson1999 (cite: Wilson1999)"
+  },
+  {
+   "what": {
+    "value": "Known CO snowline location of HD 163296, around 0.8''",
+    "evidence": [
+     {
+      "loc": "Application to HD 163296",
+      "quote": "Given the known CO snowline location around 0.8$''$ (cite: Qi+2015)"
+     }
+    ]
+   },
+   "citation": "Qi+2015 (cite: Qi+2015)"
+  },
+  {
+   "what": {
+    "value": "CO depletion factor df = 5 for HD 163296 from the fit to ALMA C18O 2-1 data",
+    "evidence": [
+     {
+      "loc": "CO Depletion Factor",
+      "quote": "(cite: Qi+2015) derived a depletion factor of 5 ($df = 5$) to fit the ALMA $\\mathrm{C^{18}O}$ 2-1 data toward the HD 163296 disk"
+     }
+    ]
+   },
+   "citation": "Qi+2015 (cite: Qi+2015)"
+  },
+  {
+   "what": {
+    "value": "Vertical temperature structure of the thick VIRaM model taken from the analysis of HD 163296",
+    "evidence": [
+     {
+      "loc": "Disk Model Prescriptions",
+      "quote": "The vertical temperature profile mimics the structure found by (cite: Qi+2011) from analyzing observations of the HD 163296 disk,"
+     }
+    ]
+   },
+   "citation": "Qi+2011 (cite: Qi+2011)"
+  },
+  {
+   "what": {
+    "value": "MAPS thermal-chemical CO distribution model for HD 163296 (CO enhancement interior to the snowline), used as a comparison column density profile",
+    "evidence": [
+     {
+      "loc": "Comparison of HD 163296 CO Distribution Models",
+      "quote": "the model from the ALMA MAPS program, where the analysis of CO isotopologues suggested an enhancement in CO abundance interior to the snowline (cite: Zhang+2021)"
+     }
+    ]
+   },
+   "citation": "Zhang+2021 (cite: Zhang+2021)"
+  },
+  {
+   "what": {
+    "value": "MWC 480 CO snowline beyond 125 au (0.8'') from thermal-chemical modeling",
+    "evidence": [
+     {
+      "loc": "C18O 1-0 in Other MAPS Disks",
+      "quote": "thermal-chemical modeling of the MWC 480 disk places the CO snowline beyond 125 au (0.8$''$) (cite: Zhang+2021)"
+     }
+    ]
+   },
+   "citation": "Zhang+2021 (cite: Zhang+2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Build thin and thick VIRaM parametric disk models",
+   "method": "Power-law surface density with exponential taper; hydrostatic vertical density structure from the ideal gas law and a prescribed T(r,z); thin model uses the Dartois+2003 analytic profile, thick model is isothermal to 2H then cos^3 to 6H; CO in a layer bounded by photodissociation and 24 K freeze-out",
+   "software": [],
+   "key_parameters": [
+    "M* = 2 Msun; Mgas = 0.04 Msun",
+    "r_in = 1 au; r_c = 150 au; gamma = 0.9",
+    "T_mid = 24 (R/80 au)^-0.4; T_atm = 700 (R/1 au)^-0.55"
+   ],
+   "assumptions": [
+    "CO freeze-out temperature 24 K",
+    "Constant CO abundance 1e-4 in the emitting layer",
+    "CO photodissociation above H2 column of ~1e21 cm^-2",
+    "Depletion factor 320 below 24 K (CO abundance 3.1e-7)",
+    "Distance 100 pc (snowline at 80 au = 0.8'')"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Simulate ALMA and ngVLA observations of C17O and C18O",
+   "method": "RATRAN non-LTE radiative transfer with ISM isotope ratios, converted to visibilities with simobserve (ALMA cycle 7.5 config for 2-1 lines, ngVLA core config for 1-0 lines), thermal noise added, imaged with tclean, collapsed to integrated intensity maps with bettermoments",
+   "software": [
+    "RATRAN",
+    "CASA (simobserve, sm.setnoise, tclean)",
+    "bettermoments"
+   ],
+   "key_parameters": [
+    "Briggs weighting, robust = 2",
+    "60 channels of 0.5 km/s per line",
+    "Declination -22 deg; inclination 45 deg; position angle 90 deg",
+    "ALMA 2 h with alma.cycle7.5.cfg; ngVLA 4 h with ngvla-revD.core.cfg"
+   ],
+   "assumptions": [
+    "Local ISM ratios CO/C17O = 2005 and CO/C18O = 557"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract radial profiles and locate the snowline from the derivative",
+   "method": "Deprojected, azimuthally averaged radial profiles of integrated intensity with GoFish; a sharp snowline appears as a local minimum in the radial derivative if the emission is optically thin",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Apply the derivative method to archival HD 163296 ALMA data",
+   "method": "Radial profiles of integrated intensity and their derivatives for C17O 1-0, C18O 1-0, C18O 2-1 (MAPS) and C17O 2-1 (2016.1.00884.S); look for a local minimum near the known CO snowline",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance of 101 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test C18O 1-0 derivative profiles in other MAPS disks",
+   "method": "C18O 1-0 radial profiles and derivatives at 0.3'' beam from archival MAPS images for GM Aur, AS 209, IM Lup and MWC 480",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Constrain the CO depletion factor with RATRAN models",
+   "method": "RATRAN non-LTE models following Qi+2015, sampled with vis_sample at the ALMA uv coverage, radial profiles with GoFish radial_profile, flux profiles normalized at 0.65'' and compared with observed profiles for a grid of depletion factors",
+   "software": [
+    "RATRAN",
+    "vis_sample",
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Depletion factor grid: coarse logarithmic grid from 0.5 to 3.0 in steps of 0.5 (df = 5 and df = 10^2.5 = 320 shown in Figure 6)"
+   ],
+   "assumptions": [
+    "Snowline location fixed from the derivative minima; only depletion factor varied"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare CO column density models and optical depth thresholds",
+   "method": "Compare radial CO column density profiles of the df = 5, df = 320 and MAPS models; mark tau = 1 column densities from RADEX; compare normalized C18O 1-0 versus C17O 1-0 profiles",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "ISM ratios CO/C17O = 2005 and CO/C18O = 557"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test the effect of thermal structure on disk gas mass estimates",
+   "method": "Two models (thin VIRaM, 0.01 Msun; thick VIRaM, 0.04 Msun); compare CO column density profiles and C17O 1-0 integrated spectra at 1.5'' resolution",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO snowline radius in HD 163296",
+   "value": "~80 au (0.8'')",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "This provides clear evidence of a distinct CO snowline near 80 au, consistent with the location previously inferred from chemical signatures of CO depletion."
+    }
+   ]
+  },
+  {
+   "quantity": "Drop in CO column density between 70 and 90 au (df = 320 model)",
+   "value": "more than a factor of 20",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison of HD 163296 CO Distribution Models",
+     "quote": "the CO column density in the $df = 320$ model decreases by more than a factor of 20 between 70 and 90 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Drop in CO column density between 70 and 90 au (df = 5 model and MAPS model)",
+   "value": "factor of 5 (df = 5); factor of 2 (MAPS model)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison of HD 163296 CO Distribution Models",
+     "quote": "while the $df = 5$ model shows a decrease by a factor of 5, and the MAPS model shows a decrease by only a factor of 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Preferred CO depletion factor for HD 163296",
+   "value": "320 (10^2.5)",
+   "uncertainty": "not stated (coarse grid, steps of 0.5 in log)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO Depletion Factor",
+     "quote": "The model with a depletion factor of 320 matches the data more closely than the model with a depletion factor of 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density at tau = 1, C17O 1-0",
+   "value": "2e20",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison of HD 163296 CO Distribution Models",
+     "quote": "$2 \\times 10^{20} \\, \\text{cm}^{-2}$ for $\\tau = 1$ of C$^{17}$O 1-0"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density at tau = 1, C17O 2-1",
+   "value": "7e19",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison of HD 163296 CO Distribution Models",
+     "quote": "$7 \\times 10^{19} \\, \\text{cm}^{-2}$ for $\\tau = 1$ of C$^{17}$O 2-1"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density at tau = 1, C18O 1-0",
+   "value": "5.5e19",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison of HD 163296 CO Distribution Models",
+     "quote": "$5.5 \\times 10^{19} \\, \\text{cm}^{-2}$ for $\\tau = 1$ of C$^{18}$O 1-0"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density at tau = 1, C18O 2-1",
+   "value": "1.9e19",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison of HD 163296 CO Distribution Models",
+     "quote": "$1.9 \\times 10^{19} \\, \\text{cm}^{-2}$ for $\\tau = 1$ of C$^{18}$O 2-1"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA to ngVLA integration time ratio for the same noise (1-0 lines, ~0.3'' resolution)",
+   "value": "about 30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO Isotopologue Imaging Simulations",
+     "quote": "ALMA would require an integration time of about 30 times longer than ngVLA to reach the same noise level for these lines at this resolution"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the HD 163296 cubes are the delivered MAPS image products or were re-imaged, and which MAPS version/robust/taper was used for each line",
+  "For the 2016.1.00884.S C17O 2-1 data: calibration and imaging recipe (weighting, robust, cell size, image size, masks, continuum subtraction, line-free channels, channel width)",
+  "How the observed moment-0 maps were made (bettermoments clipping or masking, velocity range) for the archival data",
+  "GoFish radial_profile settings for the observed data: inclination, position angle, distance, radial bin width, azimuthal range",
+  "How the radial derivative was computed (finite difference, smoothing, binning) and how the local minimum was located and judged significant",
+  "RATRAN model of HD 163296 for the depletion test: DIAD parameters, grid, linewidth/turbulence, inclination and position angle, CO abundance layer boundaries",
+  "The CO column density profiles for the df = 5, df = 320 and MAPS models (Figure 7) are not tabulated",
+  "sigma_simple value and sm.setnoise parameters, weather (PWV), and simobserve settings for the simulations",
+  "How 'matches the data more closely' was assessed for the depletion factor (visual comparison of normalized profiles; no statistic given)"
+ ],
+ "missing_for_reproduction": [
+  "Exact image products or imaging recipe for the HD 163296 cubes, especially C17O 2-1 from 2016.1.00884.S",
+  "Parameters of the GoFish profiles and the derivative computation",
+  "Full RATRAN/DIAD model setup and column density profiles for the HD 163296 depletion models",
+  "Noise scaling and simobserve settings for the simulations",
+  "No code or model files released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the derivative-profile method is simple, but imaging products, profile settings and the HD 163296 RATRAN model are not specified, and no code is released.",
+ "rediscovery_reason": "Public MAPS and 2016.1.00884.S data; the derivative-minimum test near 80 au in C17O and C18O 1-0 can be redone from image cubes, and the main results (80 au, factor >20) are numeric, though the depletion modeling needs the unpublished model setup.",
+ "source_card": "cards/2024ApJ...977...60Q/sonnet/card.md"
+}

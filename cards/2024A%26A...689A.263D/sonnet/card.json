@@ -1,0 +1,820 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...689A.263D",
+  "title": "GATOS: missing molecular gas in the outflow of NGC 5728 revealed by JWST",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Davies, R.",
+  "n_authors": 52,
+  "arxiv_id": "2406.17072",
+  "doi": "10.1051/0004-6361/202449875",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2015.1.00086.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "3 Sample and target selection",
+    "quote": "These data are included in the analysis here to supplement the JWST observations."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 5728",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "39 Mpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "which is a strongly barred disk galaxy at a distance of 39 Mpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is molecular gas present in the ionisation cone/outflow of NGC 5728, where CO(2-1) is not detected, and how is it excited and kinematically behaving, as seen with JWST MIRI MRS pure rotational H2 lines?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "It is therefore expedient to look at the pure rotational H$_2$ lines present at mid-infrared wavelengths"
+     },
+     {
+      "loc": "1 Introduction",
+      "quote": "It is remarkable, however, that CO emission is not detected in the ionisation cone."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.5 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "The disk of NGC 5728 is generally well detected in the CO (2-1) 230.5 GHz line out to radii of 1.5–2 kpc"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.3 mm continuum position measured with a 0.5'' beam using ALMA",
+    "evidence": [
+     {
+      "loc": "4.1 Data reduction",
+      "quote": "the 1.3 mm continuum position measured with a 0.5$''$ beam using ALMA (cite: shi19)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "JWST MIRI MRS",
+     "provided": {
+      "value": "5-28 micron integral field spectroscopy with rotational H2 lines, program 1670",
+      "evidence": [
+       {
+        "loc": "4 Observations, data processing, map extraction",
+        "quote": "Observations of NGC 5728 were performed on 13–14 March 2023 using the Medium Resolution Spectrometer (MRS; (cite: wel15; arg23))"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/SINFONI",
+     "provided": {
+      "value": "near-infrared ro-vibrational H2 and Brgamma fluxes in the nucleus",
+      "evidence": [
+       {
+        "loc": "5.3 Non-LTE model of the nuclear region",
+        "quote": "These were measured from the reduced cubes analysed by (cite: shi19), who only included the 1-0 S(1) line in their work."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMA CO(2-1) data, maps and disk model fitted to CO kinematics",
+      "evidence": [
+       {
+        "loc": "4.3 Flux and kinematics maps",
+        "quote": "the residual velocity after subtracting the velocity field of the disk model fitted to the CO (2-1) kinematics in (cite: shi19)"
+       }
+      ]
+     },
+     "citation": "Shimizu et al. 2019 (cite: shi19)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Shock model library of Kristensen et al. 2023",
+     "evidence": [
+      {
+       "loc": "5.4 Shock models of the nuclear region",
+       "quote": "we use the library of models calculated by (cite: kri23), which are based on models of (cite: flo85) and (cite: god19)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "JWST Calibration pipeline (JWST data, not ALMA) with extra bad pixel steps",
+     "evidence": [
+      {
+       "loc": "4.1 Data reduction",
+       "quote": "We followed the standard MRS pipeline procedure adding some extra steps to correct for bad pixels."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "JWST data reduction described in detail elsewhere",
+      "evidence": [
+       {
+        "loc": "4.1 Data reduction",
+        "quote": "The data reduction is described in detail in (cite: gber22), (cite: gber24), and (cite: mps22)."
+       }
+      ]
+     },
+     "from_reference": "(cite: gber22), (cite: gber24), (cite: mps22)"
+    },
+    {
+     "what": {
+      "value": "Non-LTE model with RADEX adopted from earlier work",
+      "evidence": [
+       {
+        "loc": "5.3 Non-LTE model of the nuclear region",
+        "quote": "The model we adopt here is described in (cite: per14) which makes use of RADEX (cite: van07)."
+       }
+      ]
+     },
+     "from_reference": "Pereira-Santaella et al. 2014 (cite: per14)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA project code, calibration and imaging of the CO(2-1) cube (only via Shimizu et al. 2019)",
+    "CO(2-1) flux, beam and noise values for the hotspot and nucleus apertures used for column density",
+    "Fit method, priors and uncertainties for power-law and non-LTE fits",
+    "How the shock model chi2 was computed",
+    "Aperture definitions in machine-readable form"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Reduce MRS cubes and fix astrometry",
+    "method": {
+     "value": "JWST pipeline, median background subtraction, astrometry corrected with background galaxies",
+     "evidence": [
+      {
+       "loc": "4.1 Data reduction",
+       "quote": "we corrected the astrometry of the 12 individual MIRI MRS datacubes using background galaxies detected in the parallel imaging."
+      }
+     ]
+    },
+    "software": [
+     "JWST Calibration pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "pipeline 1.11.4, context 1130",
+      "evidence": [
+       {
+        "loc": "4.1 Data reduction",
+        "quote": "JWST Calibration pipeline (version 1.11.4) with the calibration context 1130"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "relative centering precision about 0.02'' rms",
+     "evidence": [
+      {
+       "loc": "4.1 Data reduction",
+       "quote": "we found that the relative centering precision was about 0.02$''$ rms"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract line flux and kinematics maps",
+    "method": {
+     "value": "Single Gaussian plus linear continuum per line; quadrature correction for instrumental resolution",
+     "evidence": [
+      {
+       "loc": "4.3 Flux and kinematics maps",
+       "quote": "Flux and kinematics maps for each line were extracted using a single Gaussian fit to the line profile and a linear continuum to match the local continuum."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit H2 excitation with power-law temperature LTE models",
+    "method": {
+     "value": "Aperture fluxes in five regions; power-law dN=T^-beta dT",
+     "evidence": [
+      {
+       "loc": "5.1 Thermal equilibrium models",
+       "quote": "a more physical approach is to adopt a power-law temperature distribution d$N = T^{-\\beta}$d$T$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "pixel grid 0.13'', apertures minimum width 0.8''",
+      "evidence": [
+       {
+        "loc": "5 Molecular gas excitation and temperature distribution",
+        "quote": "we extracted line fluxes in apertures with a minimum width of 0.8$''$ and mostly $>$1$''$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE; no PSF correction",
+      "evidence": [
+       {
+        "loc": "5 Molecular gas excitation and temperature distribution",
+        "quote": "We note that it would be incorrect to apply a PSF correction because of the extended nature of the spatial distributions of the lines."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "PSF effects tested to be at most 20% on fluxes",
+     "evidence": [
+      {
+       "loc": "5 Molecular gas excitation and temperature distribution",
+       "quote": "Tests indicate that in this case PSF effects have no more than a 20% impact on extracted fluxes from S(1) to S(8)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Non-LTE and shock model fits for nucleus",
+    "method": {
+     "value": "RADEX-based grid with power-law T; extinction from Brgamma/Pfalpha; compare shock library by chi2",
+     "evidence": [
+      {
+       "loc": "5.3 Non-LTE model of the nuclear region",
+       "quote": "The grids considered cover kinetic temperatures $T_{kin} = 10$–2800 K, H$_2$ density n$_{H_2} = 10^2$–10$^9$ cm$^{-3}$"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Fritz et al. 2011 extinction curve",
+      "evidence": [
+       {
+        "loc": "5.3 Non-LTE model of the nuclear region",
+        "quote": "so for the discussion here we simply adopt that of (cite: fri11)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "three extinction curves give consistent fits",
+     "evidence": [
+      {
+       "loc": "5.3 Non-LTE model of the nuclear region",
+       "quote": "Trying these different curves yields consistent fits to the extinction corrected data"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare H2 column with CO(2-1)-derived column",
+    "method": {
+     "value": "Convert CO(2-1) to column with alpha_CO and compare to H2 columns",
+     "evidence": [
+      {
+       "loc": "5.5 Gas Column Density",
+       "quote": "integrating over the hotspot aperture provides a marginal detection that would yield a column density similar to that above if one adopts $\\alpha_{CO}\\sim0.3$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO=1.1 in Shimizu et al.; ~0.3 in hotspot",
+      "evidence": [
+       {
+        "loc": "5.5 Gas Column Density",
+        "quote": "Those authors adopted a CO-to-H$_2$ ratio of $\\alpha_{CO}=1.1$ typical for the central regions of nearby galaxies."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Model molecular outflow kinematics",
+    "method": {
+     "value": "Add planar radial velocity profile to CO disk model and compare PV diagrams",
+     "evidence": [
+      {
+       "loc": "6.1 Planar molecular flow",
+       "quote": "This can be matched very well if one adds a planar radial component $v_{rad}$ to the disk model"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "v_max=400 km/s at r0=50 pc, r_out=750 pc",
+      "evidence": [
+       {
+        "loc": "6.1 Planar molecular flow",
+        "quote": "the radial velocity $v_{rad}$ reaches its maximum $v_{max} = 400$ km s$^{-1}$ at $r_0=50$ pc"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "JWST Calibration pipeline",
+    "version": "1.11.4",
+    "used_for": {
+     "value": "MIRI MRS reduction",
+     "evidence": [
+      {
+       "loc": "4.1 Data reduction",
+       "quote": "JWST Calibration pipeline (version 1.11.4)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE H2 excitation grid",
+     "evidence": [
+      {
+       "loc": "5.3 Non-LTE model of the nuclear region",
+       "quote": "which makes use of RADEX (cite: van07)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Power-law index beta, nucleus and hotspot",
+    "value": "4.4-4.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.1 Thermal equilibrium models",
+      "quote": "while the nucleus and hotspot have significantly shallower indices of $\\beta =$4.4–4.5"
+     }
+    ]
+   },
+   {
+    "quantity": "Power-law index beta, other apertures",
+    "value": "5.5-6.0",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.1 Thermal equilibrium models",
+      "quote": "have power-law indices in the range $\\beta =$5.5–6.0"
+     }
+    ]
+   },
+   {
+    "quantity": "Non-LTE beta, nucleus",
+    "value": "3.6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.3 Non-LTE model of the nuclear region",
+      "quote": "In this case we find $\\beta = 3.6$"
+     }
+    ]
+   },
+   {
+    "quantity": "A_Brgamma",
+    "value": "0.78",
+    "uncertainty": "not stated",
+    "units": "mag",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.3 Non-LTE model of the nuclear region",
+      "quote": "we find $A_{Br\\gamma} = 0.78$ mag"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak radial velocity of molecular outflow",
+    "value": "400",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.1 Planar molecular flow",
+      "quote": "$v_{max} = 400$ km s$^{-1}$ at $r_0=50$ pc"
+     }
+    ]
+   },
+   {
+    "quantity": "log N_H from CO(2-1) in nucleus with alpha_CO=0.3",
+    "value": "22.3",
+    "uncertainty": "not stated",
+    "units": "log cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.5 Gas Column Density",
+      "quote": "using the same value of $\\alpha_{CO}$ yields $\\log N_H = 22.3$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "H2 rotational lines are detected in the ionisation cone where CO(2-1) is not.",
+    "evidence": [
+     {
+      "loc": "4.3 Flux and kinematics maps",
+      "quote": "while CO is not detected in the ionisation cones, the rotational H$_2$ lines are detected."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Molecular gas survives in the ionisation cone but is missed by CO(2-1)",
+    "experiment": "MRS H2 line mapping compared to ALMA CO(2-1)",
+    "result": "H2 detected in the cone; hotspot CO column consistent with H2 only for alpha_CO~0.3",
+    "finding": "Gas in outflow is shock heated so CO is a poor tracer",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.5 Gas Column Density",
+      "quote": "Because the bulk of the molecular gas in the outflow is shock heated, the CO (2-1) line is no longer a good tracer."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The molecular outflow is planar and terminates",
+    "experiment": "PV diagrams with disk plus radial velocity model",
+    "result": "v_max 400 km/s at 50 pc falling to zero at 750 pc",
+    "finding": "Molecular outflow decelerates within 1 kpc in the disk plane",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.1 Planar molecular flow",
+      "quote": "we conclude that the molecular outflow is in the plane of the disk."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only qualitative arguments for the jet versus disk interaction",
+     "evidence": [
+      {
+       "loc": "5.2 Excitation distribution: jet or disk interaction?",
+       "quote": "while we can only use qualitative arguments"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "alpha_CO of 0.3 is tuned to match H2 columns, making the argument somewhat circular",
+    "Toy deceleration model is non-unique"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALMA CO(2-1) cube details",
+    "Fitting code and aperture masks"
+   ],
+   "estimated_data_volume_inferred": "JWST cubes plus one ALMA cube, tens of GB",
+   "score_inferred": 2,
+   "score_reason": "ALMA role minor; JWST analysis lacks fit details and ALMA processing is in a previous paper.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA data are secondary and the recipe is incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Shimizu et al. 2019 (cite: shi19)",
+     "why": "ALMA CO(2-1) data and disk model"
+    },
+    {
+     "citation": "Pereira-Santaella et al. 2014 (cite: per14)",
+     "why": "non-LTE power-law H2 model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "García-Bernete et al. 2024 (cite: gber24)",
+     "why": "first JWST GATOS analysis"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GATOS",
+    "LLAMA",
+    "JWST program 1670"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f791f68778ae4c2cb6b7a70285e6689e",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:45",
+  "usage": {
+   "input_tokens": 29663,
+   "output_tokens": 5830,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.05942,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 40,
+  "quotes_ok": 40,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2015.1.00086.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 29,
+   "rate": 0.377
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:40",
+  "custom_id": "repair-sonnet-26baa1b3de3a18f4b7ed3e233eaf8448",
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[5].fitting",
+    "old_value": "matched by eye"
+   }
+  ],
+  "dropped_items": []
+ }
+}

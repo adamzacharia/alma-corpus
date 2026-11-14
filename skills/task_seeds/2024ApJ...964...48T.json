@@ -1,0 +1,285 @@
+{
+ "bibcode": "2024ApJ...964...48T",
+ "title": "An Extremely Young Protostellar Core, MMS 1/OMC-3: Episodic Mass Ejection History Traced by the Micro SiO Jet",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad2268",
+ "arxiv_id": "2401.13204",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Does the OMC-3 source MMS 1 host a protostar, and what do its compact CO outflow and SiO jet reveal about its age and episodic mass ejection history?",
+ "alma_project_codes": [
+  "2015.1.00341.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "CO 0.18x0.15 arcsec, SiO 0.21x0.17 arcsec, continuum 0.19x0.16 arcsec (high res)",
+  "sensitivity": "continuum rms 0.24 mJy/beam (high res); CO 2.7, SiO 1.8 mJy/beam km/s in 5 km/s channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inclination of 45 deg from dust-disk axis ratio, used for dynamical timescales",
+    "evidence": [
+     {
+      "loc": "3.4.1 Outflow and Jet Dynamical Timescales",
+      "quote": "Here, we adopt $i=45^{\\circ}$, estimated from the axis ratio of the dust disk by (cite: Liu2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Liu2023)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 0.011 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "3.1 The 1.3 mm Continuum Emission",
+      "quote": "${\\kappa}_{\\rm{1.3mm}}$ = 0.011 cm$^2$ g$^{-1}$ from the dust coagulation model of the MRN (cite: mathis1977) with thin ice mantles at a number density of 10$^{8}$ cm$^{-3}$ (cite: ossenkopf1994)"
+     }
+    ]
+   },
+   "citation": "(cite: ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Distance 393 pc to OMC-3",
+    "evidence": [
+     {
+      "loc": "3.1 The 1.3 mm Continuum Emission",
+      "quote": "d$ = 393 pc (distance to the OMC-3 region measured from the $Gaia$ DR2 data; (cite: Tobin2020; McBride2019; Gaia2018))"
+     }
+    ]
+   },
+   "citation": "(cite: Tobin2020)"
+  },
+  {
+   "what": {
+    "value": "JCMT 850 um light curve of MMS 1 and flux calibration uncertainty <2%",
+    "evidence": [
+     {
+      "loc": "4.3 Episodic Mass Ejection and Accretion",
+      "quote": "For bright sources, such as MMS 1, the relative flux calibration uncertainty between epochs is better than 2% (cite: Mairs2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Herczeg2017); (cite: Mairs2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes",
+   "method": "tclean with Briggs weighting on high- and low-resolution data; compare line flux between them to check missing flux",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust 0.5; 5 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit continuum structure and estimate disk mass",
+   "method": "Two-component 2D Gaussian fit to high-resolution continuum; mass from optically thin dust emission equation",
+   "software": [],
+   "key_parameters": [
+    "Td = 30–100 K; kappa(1.3mm)=0.011 cm2/g; d=393 pc"
+   ],
+   "assumptions": [
+    "Gas-to-dust mass ratio of 100; thermal dust emission dominates; compact component traces disk with inclination from axis ratio"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure outflow and jet morphology, PV diagrams, velocities",
+   "method": "Moment maps and PV diagram cut along outflow axis p.a. = -137 deg from CO and SiO cubes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate dynamical timescales",
+   "method": "t_dyn = (l_obs/v_obs)(cos i / sin i) for jet, outflow and knots",
+   "software": [],
+   "key_parameters": [
+    "i = 45 deg"
+   ],
+   "assumptions": [
+    "Outflow extends to the bow-shock locations"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit jet precession",
+   "method": "3D spiral parametric model fit by eye to northern and southern jets separately",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination 45 deg"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare PV diagram with MHD simulation and JCMT light curve",
+   "method": "Qualitative comparison with Machida & Basu 2019 PV diagrams; inspect 850 um light curve for bursts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Compact continuum component flux density",
+   "value": "12",
+   "uncertainty": "0.51",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "9.4$\\pm$0.25 | 12 $\\pm$ 0.51"
+    }
+   ]
+  },
+  {
+   "quantity": "Extended continuum component flux density",
+   "value": "96",
+   "uncertainty": "6.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1.1$\\pm$0.073 | 96 $\\pm$ 6.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact component mass",
+   "value": "0.0051–0.020",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The 1.3 mm Continuum Emission",
+     "quote": "$M_{\\rm{H_2(comp.)}}{\\sim}$0.0051–0.020 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination from compact axis ratio",
+   "value": "~53",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The 1.3 mm Continuum Emission",
+     "quote": "an inclination angle of the disk ($i$) is estimated to be ${\\sim}53^{\\circ}$ using the axis ratio"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet dynamical timescale (blue/red)",
+   "value": "66 / 55",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4.1 Outflow and Jet Dynamical Timescales",
+     "quote": "the jet dynamical timescale is estimated to be 66 yr (blue-shifted jet) and 55 yr (red-shifted jet), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical timescale (blue/red)",
+   "value": "350 / 660",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4.1 Outflow and Jet Dynamical Timescales",
+     "quote": "the outflow dynamical timescales are estimated to be 350 yr (blue-shifted side) and 660 yr (red-shifted side), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Knot dynamical timescales K1–K4",
+   "value": "5, 18, 45, 53",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4.2 Dynamical Timescale to Each SiO Knot",
+     "quote": "which are 5 yr (K1), 18 yr (K2), 45 yr (K3), and 53 yr (K4)"
+    }
+   ]
+  },
+  {
+   "quantity": "Precession parameters (north/south) lambda",
+   "value": "7.8 / 6.8",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "North | 7.8 | 62 | 7.0 | 234 | 174"
+    }
+   ]
+  },
+  {
+   "quantity": "Precession period (north/south)",
+   "value": "234 / 138",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "South | 6.8 | 92 | 8.0 | 138 | 180"
+    }
+   ]
+  },
+  {
+   "quantity": "JCMT 850 um flux decline rate",
+   "value": "~0.5",
+   "uncertainty": "not stated",
+   "units": "% per year",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Episodic Mass Ejection and Accretion",
+     "quote": "There is, however, a distinct $\\sim$ 0.5% per year gradual decline in the brightness"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free channel ranges for continuum and any continuum subtraction method",
+  "Image size, cell size, masking, clean threshold and deconvolver for tclean",
+  "Self-calibration usage, flux scale uncertainty",
+  "Method for deriving PV-diagram cuts, moment-map thresholds and knot positions/velocities",
+  "Bandpass/flux standard model and flux density values for calibrators",
+  "JCMT light-curve reduction details"
+ ],
+ "missing_for_reproduction": [
+  "Image size/cell/mask/threshold",
+  "Line-free channels",
+  "Knot and PV extraction details",
+  "JCMT light curve data"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Basic imaging parameters given and data archival, but moment/PV extraction and many settings unstated; precession fit by eye.",
+ "rediscovery_reason": "Data from a single ALMA project; numeric results (Gaussian fits, timescales) can be redone with stated recipe.",
+ "source_card": "cards/2024ApJ...964...48T/sonnet/card.md"
+}

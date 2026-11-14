@@ -1,0 +1,2395 @@
+# Evidence pack: Molecular cloud decomposition and virial analysis (`gmc-decomposition-virial`)
+
+Scope: cloud catalogs, size-linewidth, virial parameters and dynamical state
+
+Built from 340 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `cprops|pycprops|giant molecular cloud|\bgmcs?\b|virial|larson|cloud decomposition|cloud catalog|turbulent pressure|free[- ]fall`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 238
+- nearby_galaxies: 136
+- milky_way_ism: 91
+- high_z_galaxies: 72
+- astrochemistry: 62
+- agn_and_quasars: 53
+- galaxy_clusters_and_sz: 18
+- protoplanetary_disks: 17
+- stellar_physics: 2
+- cosmology: 2
+- exoplanets: 1
+- evolved_stars: 1
+
+### Software named in the matched steps
+- cprops: 41
+- casa: 16
+- astrodendro: 12
+- radex: 10
+- clumpfind: 9
+- cpropstoo: 8
+- scipy: 6
+- pycprops: 5
+- astropy: 5
+- magickal: 4
+- radmc-3d: 4
+- pyspeckit: 4
+- casa imfit: 3
+- hiiphot: 2
+- casa simulator: 2
+- emcee: 2
+- spectralradex: 2
+- filfinder: 2
+- numpy: 2
+- nautilus: 2
+- pvextractor: 2
+- bagpipes: 2
+- quickclump: 2
+- uclchem: 2
+- cloudy: 2
+- scimes: 2
+- python: 2
+- gildas: 2
+- tclean: 1
+- simobserve: 1
+- imfit: 1
+- ucl_chem: 1
+- molecfit: 1
+- pyqsofit (modified): 1
+- pypeit: 1
+- lamda: 1
+- astrocook: 1
+- slim: 1
+- autofit: 1
+- madcuba: 1
+
+### Fitting methods (most common phrasings)
+- Gaussian fits to averaged spectra: 2
+- Truncated power law of Williams & McKee; median and MAD of bootstrap: 1
+- Manual adjustment, no objective function stated; theta0 uncertainty ~10 deg: 1
+- Gaussian fits to averaged transverse SO and CO profiles; t-stat = |mu_CO - mu_SO| / sqrt(sigma_CO^2 + sigma_SO^2): 1
+- Ordinary least squares: 1
+- Truncated power law with gamma, M_u, N_u free; fitting algorithm, priors and likelihood not stated: 1
+- Gaussian fits, two components for strips 1 and 3: 1
+- Quasar CO image: 2D Gaussian with imfit.: 1
+- chi2 grid search: 1
+- Biweight estimator with bootstrap uncertainties: 1
+- Qualitative matching of model and observed log column density ratios; no formal fit: 1
+- Monte Carlo: 1000 mock spectra with noise drawn from the noise spectrum; 16th/84th percentiles as limits: 1
+- Grid chi-square with posterior distributions; minimum chi2=10.4 for 3 dof: 1
+- emcee default sampler with logarithmic priors on n, Te and plasma beta: 1
+- Continuum subtraction followed by 1–3 Gaussian components; select lowest reduced χ²; median and standard deviation acro…: 1
+- Fit of velocity profile; sampler/priors not stated: 1
+- Non-linear least-squares fitting utilising the Levenberg-Marquardt algorithm in MADCUBA-AUTOFIT: 1
+- Markov Chain Monte Carlo (MCMC) sampling with emcee; 67% probability density interval around the most likely value used…: 1
+- Single or multiple Gaussian line fits in CLASS (details of priors not stated): 1
+- Best fit by minimizing the reduced chi-square; 15% calibration error and spectral rms included in integrated-flux uncer…: 1
+- Ordinary least squares on the Galactic 13CO measurements: 1
+- Simple polynomial bulk-motion model subtracted from decomposed velocity field.: 1
+- Power law S_s(ℓ) ∝ ℓ^ζ2.: 1
+- Uncertainty from propagation of errors: 1
+- Monte Carlo sampling (100,000 iterations); uniform prior on f_c in [0.77, 1.00], normal distribution on ΔI/I_c: 1
+- Uniform slab fit with fixed R_max = 2 R_Jup or T = 7000 K: 1
+- ODR with errors in both variables: 1
+- Visual comparison of all combinations of theta_0 and phi_0, no sampler or likelihood: 1
+- Power-law fit using Levenberg–Marquardt non-linear least squares minimization: 1
+- Nautilus sampler; uniform or log-uniform priors; likelihood exp(-chi^2/2): 1
+- formal best-fit lines; sampler and priors not stated: 1
+- chi2 grid with flux errors plus 5% (CO 2-1) and 10% (others) calibration error: 1
+- linear in log-log: 1
+- Template fitting, two-component power-law continuum fitting, and single/double Gaussian line profile fitting: 1
+- chi2 minimization; 14th/86th percentiles as 1 sigma: 1
+- 2D Gaussian fit to the moment 0 map (CASA lmfit): 1
+- NFWMASS model fit in XSPEC to Chandra annular spectra: 1
+- VT: scipy curve fit for rho0 and 1/Rs, 1000 iterations: 1
+- truncated power law N(M'>M)=N0[(M/M0)^(γ+1)-1]; fitting method not stated: 1
+- Single-component Gaussian fit to CO spectra at each core position: 1
+
+### Validation checks used
+- Tested threshold of 2 x beam area (6% more leaves, some smaller than beam): 1
+- Extrapolation factors compared with Gaussian expectation: 1
+- Two-sided KS test: 1
+- Association radius varied by +/-20%: 1
+- Considered IMF sampling and stellar age effects: 1
+- Midplane-only infall tested via the maximum azimuthal span (<110 deg) and rejected for S1: 1
+- Free-fall model reproduces observed strips; offsets seen in all four boundaries cannot come from image misalignment bec…: 1
+- Qualitative agreement with the observed rings, streamers, warm spots and envelope motion; no quantitative fit: 1
+- f_dg,DPF,0.15-0.65 compared with f_dg,MIREX: 1
+- compared with Orion Nebula Cluster eps_ff: 1
+- Visual inspection of line profiles; same search on the cube scaled by -1 found false positives only among single-channe…: 1
+- Mock-GMC simulations (step 8): 1
+- Ratio of directly measured to corrected radius examined versus radius; 154 of 233 GMCs resolved: 1
+- Re-ran K-S test on catalog corrected for CPROPS bias; p-values do not change much: 1
+- K-S test p-values as goodness of fit: 1
+- Correction factors applied to the catalog and K-S tests repeated; conclusions unchanged: 1
+- Compared 1.3 mm masses with Herschel masses; compared with DCO+ to pick the associated component: 1
+- Uncertainty budget: ~factor 2.5 absolute; T=15/30 K changes alpha by 0.6/1.9: 1
+- Errors are sampling errors only, assuming normal distribution: 1
+- Visual check of GMC boundaries on channel map, PV diagram and spectra; parameter variations (h, l) change mask flux by …: 1
+- Median properties compared with earlier GMC studies of the Antennae (massive GMCs, sigma_v 10-30 km/s): 1
+- v_col comparable to separation of most distant CO profile peaks; consistent with Tsuge+21 values of ~100 km/s; aperture…: 1
+- Qualitative trend compared with NGC 1300 (Maeda+21): 1
+- Three characteristic parameter spaces and the eps_CCC trend persist under all variations: 1
+- Quasar CO half-light radius agrees with 3-mm continuum size within uncertainties.: 1
+- Simplified tidal calculation disfavors significant stripping, but conflicts with the tentative PVD impression; tidal st…: 1
+- Compared with fixed M*=0.1 and 0.02 Msun models, which fail; refit high-velocity channels only for j: 1
+- two dispersion estimators agree; CO-only vs all redshifts: 1
+- Result compared with Miller et al. 2018 using the same 14 sources: 1
+- Total core gas mass compared with CO(2-1) estimate of Miller et al. 2018, consistent within a factor of a few: 1
+- RADEX density limit (>10^4 cm^-3) used to exclude models; ratios compared only at one time step: 1
+- Compared with values from the combined FIRE spectra: 1
+- Appendix test recovering representative conditions from mock SLEDs of 22 sources: 1
+- Repeated without Herschel data: 1
+- Check i/z photometry; compare overlapping XQz5 mass estimates after accounting for different Mg II calibrations: 1
+- Singular isothermal sphere gives indistinguishable fit: 1
+- Comparison of higher Tex models (10 K and 15 K) against observed PN(3-2) spectrum, and consistency check with non-LTE a…: 1
+- Comparison of non-LTE column density posterior with the LTE column density: 1
+- Qualitative comparison to observed bulk kinematics and clump position-velocity behaviour: 1
+- Compared with perchanweightdensity imaging: 1
+
+### Key parameters and settings (bibcode: value)
+- 2025A&A...701A.141L: theta_view and phi_view fixed to the SO ring values (theta_view = 45 deg during follow-up fitting)
+- 2025A&A...701A.141L: Free-fall velocities scaled down by ~1.5
+- 2025A&A...701A.141L: M = 0.5 Msun, R_C = 1'', theta_view = phi_view = 90 deg, theta0 = 45 deg, phi0 = 0 deg
+- 2025A&A...701A.141L: j(theta0) = 1; v_phi ~ r^-1 and v_r constant in the inner envelope
+- 2020MNRAS.493.5045M: THRESHOLD t = 4.0, EDGE e = 1.5
+- 2020MNRAS.493.5045M: SIGDISCONT = 0.0 (each local maximum is an independent cloud)
+- 2020MNRAS.493.5045M: NONUNIFORM flag used for spatially varying rms noise
+- 2020MNRAS.493.5045M: Islands allowed with pixels above 4 sigma in only one channel
+- 2020MNRAS.493.5045M: Distance 20.7 Mpc
+- 2020MNRAS.493.5045M: R = (3.4/sqrt(pi)) sigma_r
+- 2020MNRAS.493.5045M: Uncertainties from bootstrapping with 50 realizations
+- 2020MNRAS.493.5045M: Significant if p < 0.01, marginal for 0.01 to 0.05
+- 2020MNRAS.493.5045M: T_peak uncertainty taken as the cube rms, 0.36 K
+- 2020MNRAS.493.5045M: r_s >= 0.8 strong, 0.5 < r_s < 0.8 moderate
+- 2020MNRAS.493.5045M: 100 resampling realizations; median and MAD adopted as best fit and interval
+- 2020MNRAS.493.5045M: log Mmol 5.3-6.8, log R 1.5-2.2, log sigma_v 0.3-1.1; axis ratio 1.0; 12 repeats; S/N 4-10 extracted
+- 2020ApJ...894...87C: Surface pressure and magnetic terms ignored
+- 2020ApJ...894...87C: Deconvolved analysis excludes cores with area <1.5 x A_beam (34 of 76)
+- 2020ApJ...894...87C: R_cl = 1.54 pc; M ~ 2900 Msun; 50% mass uncertainty
+- 2025PASJ...77..616I: mask h = 5 sigma, l = 2 sigma, sigma = 0.14 K
+- 2025PASJ...77..616I: delta = 2 sigma
+- 2025PASJ...77..616I: compactness = 0.001
+- 2025PASJ...77..616I: sigdiscont = 0.0, specfriends = 0, friends = 0
+- 2025PASJ...77..616I: alpha_CO = 4.36 Msun (K km/s pc^2)^-1, single value for the whole region
+- 2025PASJ...77..616I: 876 apertures in total, 1-27 GMCs each
+- 2025PASJ...77..616I: apertures with a single GMC excluded; keep N_ap f_CCC > 0.1 per Myr (560 apertures)
+- 2025A&A...701A.120P: Quasar: systemic CO(4–3) linewidth; k=3/2; inclination 40 ± 10 deg from axial ratio.
+- 2025A&A...701A.120P: Real-space separation 10 kpc; measured dynamical/virial masses taken as total galaxy masses.
+- 2015ApJ...812..129Y: Free parameters M*, j, n0, T0; p = -1.5 or -2, q = -0.4; outer radius 3'' (450 AU); cavity of 60 deg
+- 2015ApJ...812..129Y: Grid: M* 0.03-0.07 Msun step 0.01; j 0-5e-5 step 1e-5; n0 5e6-4e7 factors of two; T0 20-60 K step 10 K
+- 2020MNRAS.495.3124H: Effective radius 90 kpc (primary beam response 0.5); removes galaxy C19
+- 2020MNRAS.495.3124H: r_{4,1} = 0.60+/-0.05; alpha_CO = 1 Msun/(K km/s pc^2); halo/gas factor 42.8
+- 2020MNRAS.495.3124H: Mean half-light radius 1.5+/-0.5 kpc adopted where R_1/2 not measured; double Gaussians treated as two components and masses summed
+- 2014A&A...570A..28V: Phase II temperature 100 K and 200 K
+- 2014A&A...570A..28V: Radiation field 1, 10 and 500 Draine
+- 2014A&A...570A..28V: Shock velocity 40 km/s
+- 2014A&A...570A..28V: Visual extinctions 2 and 10 mag
+- 2020ApJ...903...34A: Rest-frame continuum windows: 1285-1290, 1315-1325, 1350-1370, 1445-1465, 1580-1650, 2140-2300, 2340-2400, 2420-2480, 2630-2710, 2745-2765, 2850-3000 A
+- 2020ApJ...903...34A: Bolometric correction L_bol = 5.15 x lambda L_3000 (Richards et al. 2006)
+- 2014ApJ...785..149S: N_CO/dv=1e15-1e19, Tkin=12-300 K, nH2=10-1e6, 12CO/13CO=10-1e4; TCMB~11 K
+- 2019ApJ...881L...2B: Te >= Tb, 1e-3 < beta < 1e3; 20% uncertainty on 868 GHz
+- 2025A&A...698A.145B: 50 km s−1 bins
+- 2025A&A...698A.145B: 1000 realisations with Gaussian channel-flux errors
+- 2018ApJ...863..193V: Hernquist a = 5.2 kpc; stellar mass 5e11 Msun
+- 2022A&A...659A.158H: Source size fixed to theta_s = 1.6''
+- 2022A&A...659A.158H: FWHM fixed to 50 km s^-1 for PN and other P-bearing species
+- 2022A&A...659A.158H: For GMC 4 and non-detections, Tex fixed to 4.4 K (derived from GMC 6)
+- 2022A&A...659A.158H: FWHM and v_LSR fixed to values from Table 2 (FWHM = 50 km s^-1, v_LSR = 184 km s^-1)
+- 2017NatAs...1..709O: S = 0.15 pc, sigma_V = 22 km/s
+- 2017NatAs...1..709O: time step 4.6e3 yr; radial dispersion 0.2 pc; velocity dispersion 1.43 km/s; start (9.8, -0.65) pc; v=(-8.19, 0.4) km/s
+- 2025A&A...698A.261B: Detection threshold 3 sigma on the intensity peak
+- 2025A&A...698A.261B: Spectral rms from zeroth-order polynomial fit to line-free channels
+- 2025A&A...698A.261B: Beam-filling factor 0.5 for GMC scales (1.6'') and ~0.01 for pSSC scales (0.12'')
+- 2025A&A...698A.261B: Each of two blended transitions assigned 50% of total integrated intensity
+- 2025A&A...698A.261B: Species showing a single component evaluated for both emission sizes (1.6'' and 0.12'')
+- 2025NatAs...9..406L: Supervirial: alpha_vir > 1; subvirial: alpha_vir < 1; factor-of-two virial vs equipartition not distinguished
+- 2025NatAs...9..406L: Cosmic-ray ionization rate 1e-17 s^-1; ionization fraction ~1e-7; MHD cutoff wavelength <~0.01 pc
+- 2023ApJ...958...98F: T_bg = 2.7 K; T_ex = 21 K; inner disk exclusion radius = 265 au; d = 132 pc
+- 2017A&A...601A..48G: n_H = 2e8 cm-3 post-collapse; zeta = 1.3e-17 s-1; 0.1 micron grains
+- 2014ApJ...795L..25R: R ~0.04 pc
+- 2020NatAs...4.1064H: Cluster GMF data by position, centroid velocity and velocity dispersion.
+- 2020NatAs...4.1064H: CMZ column-density mask guided by henshaw16c centroid locations.
+- 2020NatAs...4.1064H: G0.253+0.016 substructure tree C from henshaw19.
+- 2020NatAs...4.1064H: Density tracers: arm CO (2-1), CMZ Herschel column density, GMC filament N2H+ (1-0).
+- 2020NatAs...4.1064H: Disc fitting range: 0.65–4 pc; CMZ fitting range: 0.07–0.7 pc.
+- 2020NatAs...4.1064H: GMC filament spacing 0.32 pc; sound speed 0.27 km s−1; temperature 20 K.
+- 2024ApJ...970...74P: Cluster mass 4.5 × 10^4 M⊙; King parameter 16; size 0.1 pc; initial location (0,3) pc
+- 2024ApJ...970...74P: N = 64, 248, 512; simulated time span about 0.0–0.3 Myr
+- 2024ApJ...970...74P: Sgr A* mass 4 × 10^6 M⊙; cusp about 5 × 10^5 M⊙; enclosed region 3 pc; α = 1.2
+- 2024ApJ...970...74P: Virial velocity reduced to 10% upon entering the NSC
+- 2024ApJ...970...74P: R_gas = 0.10 ± 0.01″ ≈ 825 ± 83 AU
+- 2024ApJ...970...74P: v_R = 130 ± 30 km s−1
+- 2026ApJ..1000..141K: 100,000 Monte Carlo realizations
+- 2026ApJ..1000..141K: f_c uniform distribution in [0.77, 1.00]
+- 2025A&A...702A..18D: Pre-shock velocities and densities: (v_0, n_0) = (30 km/s, 10^15 cm^-3) and (50 km/s, 10^12 cm^-3); mean molecular weight mu = 1.35; effective slab radius R_ma…
+- 2024ApJ...963....1O: free-fall: inclination 72 deg, v_ICM +600 km/s, drop height 16 kpc
+- 2015ApJ...811...92C: Stellar mass 1.8 Msun; outer disk i=20 deg, PA=-20 deg; inner disk relative inclination 70 deg, PA=-8 deg; warp between 20 and 23 AU; free-fall at 30 AU
+- 2017ApJ...842L..24A: thresholds 50%-90% of peak emission
+- 2018ApJ...857...19F: candidate clouds larger than one beam, peak >1 K above merge level
+- 2018ApJ...857...19F: D=1.93 Mpc; R21=0.7; alpha_CO,MW=4.35; Sigma100_GMC=0.69
+- 2025ApJ...985..166K: NW and NNW: i_s = 107 deg, theta_s = -45 deg, r_d = 55 au, M* = 0.14 Msun fixed; theta_0, phi_0 free
+- 2025ApJ...985..166K: Streamer edges set at 3 sigma in moment 0 maps
+- 2025ApJ...985..166K: Velocity ranges NE 3.6-4.7, NW -0.1-4.9, NNW 5.2-6.8 km/s
+- 2025ApJ...985..166K: Free-fall time t_ff = sqrt(R^3 / 2GM*)
+- 2025ApJ...985..166K: Lbol = 0.89 Lsun, Lacc = 50% of Lbol, R* = 3 Rsun
+- 2018ApJ...861...14C: T = 14 K; n = 1.8
+- 2022MNRAS.516.4612T: Age bin threshold: 10 Myr (also tested 5 Myr)
+- 2022MNRAS.516.4612T: 1000 bootstrapped samples for median separation standard deviation
+- 2022MNRAS.516.4612T: Radial association bins: <1 R_GMC, 1-2 R_GMC, 2-3 R_GMC, >3 R_GMC (unassociated)
+- 2022MNRAS.516.4612T: Velocity cutoff: v = 10 km s^-1 such that v * t(age) < 3 R_GMC
+- 2022MNRAS.516.4612T: Spiral arm pitch angle split thresholds: 20 degrees and 30 degrees
+- 2022MNRAS.516.4612T: Number of angular bins: tested 5, 10, 15, 20, and 25; 15 or 20 bins optimal
+- 2022MNRAS.516.4612T: Reference spatial scale for amplitude evaluation: 300 pc
+- 2022MNRAS.516.4612T: Number of angular bins: 10 bins chosen (tested 5, 10, 15, 20, and 25)
+- 2023MNRAS.523.6061L: Inherited cloud maxima: at least twice the local merge level
+- 2023MNRAS.523.6061L: Inherited cloud maxima: N > 0.25 Ω_bm/Ω_pix
+- 2023MNRAS.523.6061L: Only regions with both ALMA and HST coverage
+- 2023MNRAS.523.6061L: 64-pc association scale closest to ALMA beam size
+- 2025A&A...699A..70H: Moment images masked below 3 sigma (channel-based)
+- 2025A&A...699A..70H: GMC 5 (absorption) and GMC 10 (non-detections) excluded; 8 GMCs kept
+- 2025A&A...699A..70H: Priors (Table 2): n_H2 1e2-1e8 cm^-3 log-uniform; T_kin 10-800 K uniform; column densities 1e12-1e18 cm^-2 log-uniform; eta_ff 0-1 uniform
+- 2025A&A...699A..70H: T_kin outside the collisional-rate grid (3-250 K CH3OH, 10-300 K H2CO) is clamped to the nearest grid temperature
+- 2025A&A...699A..70H: Rescaling factor 0.63 for Mangum+2019 N_H2
+- 2026ApJ..1000..159M: Star formation start redshift z = 20 (GHZ2) and z = 30 (GS-z14-0)
+- 2026ApJ..1000..159M: Yield metallicity range = 10^-4 to 0.1 Z_sun
+- 2026ApJ..1000..159M: Larson IMF with α = 1.35 and M_ch = 0.35 M_sun (and M_ch = 10 M_sun for top-heavy test), mass range 0.1-100 M_sun
+- 2019MNRAS.486.2366M: 10<T<1000 K, 1e2<n<1e6 cm-3, 1e2<dv<1e6 m/s/pc, 0.1 dex steps
+- 2021ApJ...907...62R: Gas mass ratio taken as the CO(9-8) line flux ratio
+- 2023ApJ...943...25G: Power-law spectral index alpha_nu = -0.5; virial mass coefficients a = 0.774, b = 0.520, c = 2.06; magnification mu = 117; bolometric corrections BC_5100 = 9.5…
+- 2025ApJ...987L..37W: K(n) = 8.87 - 0.831n + 0.0241n^2 and K(q) = [0.87 + 0.38 exp(-3.71(1-q))]^2
+- 2025ApJ...987L..37W: For J0205-[C II], r_e = 2 sqrt(theta_400GHz)
+- 2020A&A...636A..29W: r0=6010 au, n0=1.54e7 cm-3, T0=135.5 K, alpha=1.5, q=0.38, nf=2.74e9 cm-3
+- 2020ApJ...891...90R: mu = 0.61; mu_e = 1.17; f_gas = 0.13
+- 2024ApJ...972..146S: Initial extinction 2 or 3 mag; final n_H from 2×10^6 to 2×10^10 cm^-3, including 6.32×10^7 cm^-3
+- 2024ApJ...972..146S: CRIR 1.30×10^-18 to 1.30×10^-15 s^-1; constant through both stages
+- 2024ApJ...972..146S: Warm-up timescales 2×10^4 to 2×10^6 yr; final temperature 400 K
+- 2025PASJ...77L..55S: r ~ 0.7 pc, 2*sigma_v ~ 56 km s^-1, elongated length ~ 16 pc
+- 2019A&A...628A..27B: Tmin = 10, 15, 20 K (plus 25, 28 K for N2)
+- 2017PASJ...69...18T: threshold 8σ, increment 4σ; 265 clumps → 187 after excluding diameter < 1.4 arcsec
+- 2017PASJ...69...18T: detection = peak > 3σ
+- 2024ApJ...968...10F: Extinction to column density: 1 mag = 9.4e20 cm^-2; mean surface density from pixels with Av > 3 mag
+- 2024ApJ...968...10F: n_CO = 250 cm^-3 for the CO-probed gas
+- 2017ApJ...849...25L: R~0.25 pc per sub-clump
+- 2023ApJ...953..164M: Convolved circular beam = 7.5'' (30 pc)
+- 2023ApJ...953..164M: High significance mask > 4 sigma in 3 continuous velocity channels; low significance mask > 3 sigma in 3 continuous velocity channels over 7.5'' beam
+- 2023ApJ...953..164M: Local maxima merge threshold: T_max - T_merge >= 2 sigma; minimum spatial separation = 7.5''; minimum spectral separation = 7 km/s
+- 2023ApJ...953..164M: Radius conversion coefficient = 1.91; channel width Delta V_chan = 0.7 km/s
+- 2023ApJ...953..164M: Completeness limits: 5 x 10^4 M_sun (ACA+IRAM catalog) and 8.4 x 10^4 M_sun (Corbelli et al. 2017 catalog)
+- 2020ApJ...888...56I: filfinder global threshold 0.17 (12CO) and 0.07 (13CO) of peak; flatten at 90%; smooth 3 beamwidths; size threshold 24 beam areas; adaptive threshold 14 beamwi…
+- 2020ApJ...888...56I: radius = 1.91 x second moment, deconvolved for resolution
+- 2024ApJ...977...38B: Temperature: 50–300 K; 15 linear points
+- 2024ApJ...977...38B: H2 volume density: 10^3–10^7 cm−3; 20 logarithmic points; buffer 10^2.6–10^7.4 with 24 points
+- 2024ApJ...977...38B: CRIR: 10–10^7 ζ0; 25 logarithmic points; ζ0 = 1.36×10−17 s−1
+- 2024ApJ...977...38B: H2 column density: 10^22–10^25 cm−2; 15 logarithmic points; buffer 10^21.6–10^25.4 with 19 points
+- 2024ApJ...977...38B: ∼170,000 initial combinations; ∼115,000 after filtering
+- 2024ApJ...977...38B: Inner versus outer CMZ divided near r = 100 pc
+- 2024MNRAS.527.8865B: Halo virial radius definition r_200 = 3M / (4 * pi * 200 * rho_crit(z_l))
+- 2014ApJ...786..114L: 7 free parameters: T0, n0, vr0, vphi0, m, q, x(HCO+)
+- 2014ApJ...786..114L: Disk outer radius 0.3 arcsec (120 AU), half thickness 0.1 arcsec, inner radius 0.01 arcsec; envelope outer radius 5 arcsec
+- 2023A&A...673A.116K: R_out = 7.5 kpc (AzTEC-3), R_out = 2.3 kpc (BRI0952, lensing corrected with mu = 3); v_outf = 0.5 x FWHM_broad
+- 2021MNRAS.504.4123N: M_BH = 1.78 x 10^7 M_sun; h/R_BLR ~ 0
+- 2025ApJ...995..108J: log(MBH/M⊙) = 4.38 log(σ*/200 km s−1) + 8.49.
+- 2025ApJ...995..108J: Lower-bound rSoI = 33 pc (σ*/200 km s−1)^2.38; upper-bound approximately four times larger.
+- 2016MNRAS.458.3134R: scale radius 10 kpc; total mass ~2e12 Msun (X-ray) or 1.8e13 (lensing)
+- 2023Ap&SS.368...44M: Fast (5x10^4–7.12x10^4 yr), medium (2x10^5–2.85x10^5 yr), and slow (1x10^6–1.43x10^6 yr) warm-up timescales
+- 2021A&A...654A..69S: NFW halo with concentration c = 6 for escape velocity
+- 2018MNRAS.481.1016G: peaks >4σ; emission >2σ in at least two continuous channels; shared contour 3.5σ
+- 2018MNRAS.481.1016G: unassociated defined as >3 R_GMC
+- 2018MNRAS.481.1016G: SFE of 1% and 3% used to match GMC and cluster mass limits
+- 2024JApA...45....3M: Phase I: nH increases from 300 cm−3 to 1×10^7 cm−3; dust temperature remains 10 K.
+- 2024JApA...45....3M: Initial AV = 2; cosmic ray ionization rate = 1.3×10−17 s−1.
+- 2024JApA...45....3M: Phase II: gas density 1×10^7 cm−3; gas temperature increases from 10 to 300 K during 1×10^5 yr.
+- 2024JApA...45....3M: Reaction pathways and coefficients from UMIST 2012; coefficients obtained by the Arrhenius equation.
+- 2017ApJ...834..178Y: q fixed -0.4; envelope within 80 deg of polar axis zero density
+- 2021A&A...645A..97Q: Local maxima must be 2 sigma_rms above the merge level
+- 2021A&A...645A..97Q: Maxima kept only if associated area exceeds one synthesised beam; islands of 1-2 beams not decomposed
+- 2021A&A...645A..97Q: Emission considered where primary beam response >= 20% (~80 x 70 arcsec)
+- 2021A&A...645A..97Q: M_lum = alpha_CO L_CO; M_vir = 1040 sigma_v^2 R (rho proportional to R^-1)
+- 2021A&A...645A..97Q: R = eta sigma_r with eta = 1.91
+- 2021A&A...645A..97Q: CPROPS bootstrap with 1000 iterations
+- 2021A&A...645A..97Q: M_GMC = alpha_CO^2-1 L_CO using all CPROPS clouds (extrapolated luminosities); 5 sigma completeness limit 5e4 Msun
+- 2021A&A...645A..97Q: H-alpha astrometry offsets dRA = 0.33 px (0.11 arcsec), dDec = 2.05 px (0.67 arcsec)
+- 2023A&A...678A.160E: Velocity intervals: 3.5 to 6 km s^-1 (redshifted lobe) and 0 to 3.5 km s^-1 (blueshifted lobe); minimum intensity threshold of 5-sigma
+- 2023A&A...678A.160E: Model parameters: initial distance r_0, radial velocity v_r,0, position angle theta_0, azimuthal angle phi_0, angular velocity Omega_0, central mass, inclinati…
+- 2025A&A...699L..11V: R≈rCO; σ∼σCO
+- 2025A&A...699L..11V: MJ=(5σ²G−1)^(3/2)(4πρ/3)^−1/2
+- 2025A&A...699L..11V: QT≈(σvc/r)/(πGΣ)
+- 2024A&A...684A.119P: Core galaxies: |dv_QSO| < 1000 km/s
+- 2024A&A...684A.119P: Uncertainties by Monte Carlo sampling, 5th, 50th and 95th percentiles
+- 2018NatAs...2...56Z: FWHM=400 km/s, R1/2~0.6 kpc
+- 2021MNRAS.503.5583B: Projected separation = 15 kpc, velocity separation = 170 km/s; inclinations = 52 deg (QSO host) and 61 deg (northern companion)
+- 2021A&A...645A..33B: Mdyn = 1.16e5 x (0.75 FWHM / sin i)^2 x D
+- 2025Natur.641.1137B: r_31 = 0.8, r_71 = 0.2, alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1; dust beta = 0.7, T_dust = 20 to 60 K.
+- 2018ApJ...864..120M: Bootstrap 10,000 resamplings per cloud
+- 2024MNRAS.535.1364Z: A_ul = 10^-4.41416 s-1, f_beam = 1, E_u = 4.16 K, g_u = 3
+- 2024MNRAS.535.1364Z: chi_H13CO+ = 3.6e-11 uniform for all regions
+- 2024MNRAS.535.1364Z: Virial ratio R_vir = 5 sigma^2 r / (M G)
+- 2018A&A...615A..58Y: Free parameters n(R0), p, Vin(R0); j fixed at 3e-5 km/s pc or 0; low-velocity channels 7.7–8.9 km/s excluded; R0=100 au; outer radius 700 au
+- 2023MNRAS.522.4078C: minvchan = 2, Delta T_max = 2 sigma_rms = 1.7 K, minarea = 96 to 24 spaxels (step 24), minpix = 96 to 24 pixels (step 24), convexity = 0.5
+- 2023MNRAS.522.4078C: Bootstrap samples = 500, T_edge = 0 K extrapolation
+- 2023MNRAS.522.4078C: M_comp = 2.4 x 10^5 M_sun, delta_M = 1.03 x 10^4 M_sun, RMS surface density sensitivity = 17.8 M_sun pc^-2, beam area = 565 pc^2; 5 most massive clouds exclude…
+- 2023MNRAS.522.4078C: Geometrical factor b_s = 1/5
+- 2023MNRAS.522.4078C: R_NR = 320 pc, V_c,NR = 150 km s^-1, bar end = 3.5 kpc, corotation radius = 4.2 kpc, V_c(4.2 kpc) = 220 km s^-1, D_c = 78 pc, sigma_cc = 10 km s^-1, elliptical…
+- 2020ApJ...902..140N: mu_mol = 2.3; beta = 1
+- 2025A&A...699A.183H: Aperture diameter 3 arcsec (~51 pc); uncertainties 10% for all data and 15% for ALMA
+- 2025A&A...699A.183H: Parameter ranges for all GMCs and per-GMC tuned ranges listed in Tables 2 and variable-parameter table
+- 2025A&A...699A.183H: Ages restricted to 10^6-11 or 10^6-12 yr
+- 2025A&A...699A.183H: 32S/34S range limited to values giving [Fe/H] <= 0.5 (ratio >= 13.3)
+- 2025A&A...704A.158C: BAGPIPES live points increased from 400 to 2000, ionization parameter up to log U = -1
+- 2015ApJ...812...27A: best model A: (v_out, R_kep, alpha, i)=(0.85, 100 AU, 0.3, 65 deg)
+- 2018MNRAS.477.4380S: r54 = 0.28±0.05; alpha_CO = 0.9±0.2
+- 2020MNRAS.493.4294B: r_1/2 = deconvolved major axis, 1.15 ± 0.35 kpc
+- 2023ApJ...942L..24K: Initial separation 230 pc
+- 2019ApJ...876..141I: 4 sigma seed, 2 sigma edge, 15 pc x 15 pc x 2 km/s moving box
+- 2025A&A...693A.199C: n_H2=M/[(4/3)πr^3 μ_H2 m_H]
+- 2025A&A...693A.199C: t_ff=[π²r³/(8GM)]^0.5; r is the effective core radius
+- 2019A&A...628A...6S: clusters within ±10% of core luminosity; median stellar mass
+- 2022AJ....164...43S: Spatial resolutions: 60, 90, 120, 150 pc
+- 2020MNRAS.499.2534K: mask above 4 sigma_rms, edge threshold 2.0–1.5 sigma
+- 2024MNRAS.531.4045C: high-threshold = 4.5 sigma_rms, low-threshold = 2.0 sigma_rms, minvchan = 2, convexity = 0.65, Delta T_max = 2 sigma_rms = 2.20 K, minarea = 120 to 24 spaxels …
+- 2024MNRAS.531.4045C: 500 bootstrap resamplings; Delta V_chan = 2 km s^-1
+- 2024A&A...688A.146A: Virial factor K = 5 +/- 0.1; M_star / M_h = 0.015 - 0.03; systemic redshift z_sys = 6.902 (at W galaxy)
+- 2014ApJ...796..131O: SO ring 70-120 AU, 32 K, SO abundance 9e-7 (5000x outside); disk 54 AU, 0.3 Msun; j=6.1e-4 km/s pc
+- 2023MNRAS.521.5508H: Minimum size set to 0.14 arcsec for 21 unresolved sources; inclination angle i = 55 deg for rotational mass
+- 2025MNRAS.542.3277F: T=11–19 K; sound speed approximately 0.18–0.24 km s^-1; μ=2.8
+- 2025MNRAS.542.3277F: Continuum source sizes defined by 2.5σ = 52.5 μJy beam^-1 contour
+- 2022MNRAS.517..632L: CPROPSTOO mask: peak T_b > 3 sigma_rms (~39 K), expanded to neighbouring pixels with T_b > 1.5 sigma_rms (~20 K), minimum island diameter ~ 3 pc (~100 spaxels)
+- 2022MNRAS.517..632L: ASTRODENDRO: min_value = 1.5 sigma_rms (~20 K), min_delta = 1.5 sigma_rms (~20 K), min_area = min_npix = 6
+- 2022MNRAS.517..632L: M_comp = 1.8 x 10^3 M_sun; turnover mass ~ 4000 M_sun; alpha_vir,crit = 2
+- 2022MNRAS.514..578W: guesses = [max amplitude, velocity at max amplitude, FWHM]; Gamma = 0.73 for pressure-bounded virial equation
+- 2024ApJ...971..176H: kappa = 0.9 g^-1 cm^2; T_dust from Klaas et al. 2010 per subregion (about 20 K)
+- 2024ApJ...971..176H: Extra exclusions at kpc scale: X12/13 1dmax <= 30, log Tkin 1dmax < 1.1 or > 2
+- 2024ApJ...977L...9Z: sigma = 79 +/- 25 km/s; r_1/2 = 39 +/- 11 pc or 105 +/- 9 pc
+- 2013A&A...560A.103M: M*=0.2 Msun, PA=35 deg, vlsr=4.0 km/s fixed; free: vwidth 0.1-1.0 km/s, i 0-90 deg, Rout 100-200 AU
+- 2022A&A...665L...7S: Completeness limit log(M_*/M_sun) > 9.7 at z=3.7; extrapolation down to 10^7 M_sun; 32'' radius aperture for X-ray; R_vir < 20'', velocity dispersion σ_V = 400…
+- 2017ApJ...839..133P: m = 4, e = 1.5; peak search box ~660 pc x 660 pc x 15 km/s; 50 bootstraps
+- 2025SciA...11.4512O: inclination 65 deg, P.A. disk -55 deg, centrifugal barrier 250 au
+- 2025SciA...11.4512O: T=100 K, kappa=1 cm2/g at 1.3 mm, R_dg=0.01, d=3.1 kpc, mu=2.33, alpha 0.1-1, v_ff=6 km/s, l=500 au
+- 2019A&A...623A..77S: H/R=0.1, inclination 10 deg, 20 Msun, CH3CN abundance 2e-8 at 500 au, grid 152x20
+- 2021MNRAS.504.4511P: R = 1.91 sigma_r
+- 2021MNRAS.504.4511P: 50 bootstrap iterations
+- 2021A&A...650A.202R: Constant gas temperature 10 K, and T_min from step 7
+- 2024A&A...687A..43B: HCN/CO sampled at -1.5″, -4″, and -6.5″ along the SW slice
+- 2024A&A...687A..43B: Region A: GMC 3 near D∼0 arcsec, V∼300 km s−1; region B: streamer base at D∼[-5,0] arcsec, V∼200 km s−1
+- 2024A&A...687A..43B: SiO/13CO enhanced-GMC contour 0.1; extended contour 0.04
+- 2024A&A...686A..85A: K = 6; G = 4.3e-3 pc Msun^-1 km^2 s^-2
+- 2024A&A...686A..85A: R_e = 4.522 (a b)^0.5 mu^-0.5 pc with a, b in mas (4.522 kpc/arcsec at z = 9.1092)
+- 2017MNRAS.468.1769F: maxima separated by at least 40 pc or 5.14 km/s; 2.5 sigma above saddle
+- 2024ApJ...961L..35M: Total velocity dispersion sigma_v^2 = sigma_th^2 + sigma_nt^2, with sigma_th = sqrt(k_B T / mu m_H)
+- 2018ApJ...869L..24I: R_in = 270 au fixed; R_out steps of ~150 au; mass steps of 5 Msun; infall at 40% of free-fall
+- 2020MNRAS.496.5308S: Initial density 10 cm^-3; collapse at 10 K; evolution for 10^7 years
+- 2020MNRAS.496.5308S: Final densities 10^4, 10^5, 10^6 cm^-3; corresponding A_v 10, 20, 50 mag; temperatures 50, 100, 300 K
+- 2020MNRAS.496.5308S: ζ = 1, 10, 10^2, 10^3 ζ0; 36 models stated
+- 2023MNRAS.526.4402B: kappa = 10 (nu/1.2 THz)^1.5 -> 1.55 cm2/g at 346.58 GHz; rho ~ r^-1.6; mu=30 (H13CO), 2.37 for c_s
+- 2024ApJ...964...12F: astrodendro: min_value=3 sigma, min_delta=2.5 sigma, min_npix=2 beams
+- 2024ApJ...964...12F: quickclump: Tcutoff=4 sigma, dTleaf=4 sigma, Npixmin=2 beams (65 voxels for NGC 1313, 70 for NGC 7793)
+- 2024ApJ...964...12F: Pi = 0.5 for external pressure; collapse threshold alpha_vir < 1, unbound above 2
+- 2025A&A...694A.218B: posterior virial radius of 105 kpc for the summed stellar mass
+- 2025A&A...699A.369V: THRESH=3sigma, EDGE=1.5sigma, MINAREA=0.5 beams, MINPEAK=3sigma, MINVCHAN=3, BOOTSTRAP=1000, /NONUNIFORM
+- 2019ApJ...884...48C: k=5/3 (constant density); core scale 1 arcsec; T +-5 K error bars
+- 2020ApJ...893..135M: Delta=2, minimum cloud size 25 pixels
+- 2020ApJ...893..135M: Upper integration limit 100x most massive object
+- 2023MNRAS.525.6146W: sigma_obs = 0.58 +/- 0.03 km/s (mean across FWHM size of MM4); radius ~2000 AU
+- 2024A&A...691A.121N: alpha_CO = 4.35 Msun pc^-2 (K km/s)^-1 (constant case)
+- 2024A&A...691A.121N: alpha_HCN = 14 Msun pc^-2 (K km/s)^-1
+- 2024A&A...691A.121N: R21 = 0.65 (constant); varying case uses a 4 arcsec R21 map from archival CO(1-0), median 0.54, scatter 0.16
+- 2024A&A...691A.121N: Metallicity from MUSE via Gaussian Process Regression; fiducial GMC surface density fixed at 100 Msun/pc^2; iterative solution
+- 2024ApJ...961...71F: M_H2 = 5.1e8 Msun, r = 27 pc
+- 2015A&A...579A.114M: inclination 55 deg; central mass 0.2 Msun; free-fall (DCO+) or Keplerian (C18O) velocity
+- 2018ApJ...868...95M: Tkin 5–6300 K, nH2 1e1–1e7 cm-3, NCO 1e12–1e22 cm-2, FF 1e-5–1, abundance ratios 1e-7–1e-3
+- 2025A&A...700A.123M: b = 0.87, c_s = 0.3 km/s, epsilon_core = 0.5 in all four tested models
+- 2025A&A...700A.123M: phi_t set to unity for the LN+PL formulation
+- 2025A&A...700A.123M: Comparison models: MFF and SFF with the smooth hybrid PDF (s_t = s_crit) and the same inputs
+- 2021PASJ...73S..35T: 20% of peak integrated intensity contour (~30 sigma) for cloud boundary and effective radius r = (A/pi)^0.5
+- 2021ApJ...907L..10R: Tpeak = 54.6 K; clump mass 0.07 M⊙; protostar upper bound 0.2 M⊙; diameter 78.5 au.
+- 2024MNRAS.535.1052B: Initial collision velocity ~ 120 km s^-1; impact parameter b = 0 to 6 pc in 0.5 pc increments; runtime = 0.5 Myr with 10^4 yr timestep
+- 2024MNRAS.535.1052B: RADMC-3D grid: 256 x 256 x 256 covering 60 x 60 x 60 pc; inclinations: 45, 60, and 75 deg
+- 2024A&A...682A..24A: unresolved sources: radius fixed to 2 kpc; disk case mean sin(i) = pi/4 ~ 0.79; R from circularized semi-axes
+- 2018ApJ...866..117C: dV deconvolved with 13.5 km/s channel; 10 km/s rotation removed; flux x1.731 for total
+- 2026A&A...709A.173M: T = 10-20 K (cores #2, #5, #6), T = 20-30 K (cores #3, #7, #8, #9), T = 39 +/- 5 K (core #4)
+- 2026A&A...709A.173M: kappa_219 = 0.9 cm^2 g^-1, beta = 1.7, gas-to-dust ratio = 100, D = 8.5 kpc, sigma = FWHM / 2.35
+- 2016ApJ...823..160D: N_total=56, n_Detectable=8.9e7 cm-3, n_Limit>2.8e5 cm-3
+- 2023ApJ...945...42B: T_e = 10^4 K, alpha_NT = 0.84, nu = 93 GHz, 10% dust correction, 30% SFR uncertainty
+- 2023ApJ...945...42B: c_s = 0.4 km s^-1, T_kin = 45 K, mu = 2.33, R = 100 pc
+- 2021A&A...653A.166C: Central object mass 0.05-0.26 Msun adopted from infall models
+- 2025ApJ...987...69N: Exclude unresolved dispersions below approximately half the channel width from radius-binned medians
+- 2025ApJ...987...69N: Compare virial parameters with disk clouds of order 10^5 M⊙
+- 2025ApJ...987...69N: Surface density Σ = Mmol/(πr²)
+- 2025ApJ...990..166D: structures within a factor of three of the virial relation considered bound
+- 2024ApJ...967..133S: Virial geometric factor f = 5/3 (rho ~ r^-2); sigma from HCN(1-0) effective width
+- 2024ApJ...967..133S: Psi ~ 1e3 Lsun/Msun for ages <~3 Myr (Starburst99, Kroupa IMF)
+- 2019ApJ...871..100H: Free: rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O; C18O fit at |V-Vlsr|<1.6 km/s, CO at >1.6 km/s
+- 2022A&A...663A..61P: Galaxy selection criteria: >= 3 environments, has bar and spiral arms, < 50% pixels removed by detection threshold (yields 8 galaxies with log M_* >= 10.6)
+- 2022A&A...663A..61P: 50 Monte Carlo simulations per galaxy for correlation uncertainty
+- 2020MNRAS.493.2872C: Inputs for tau_gal: angular velocity, Toomre Q, gas and stellar surface densities and dispersions, shear, number of spiral arms, pattern speed
+- 2024A&A...691A.197K: X_CO(1-0) = 3e20 cm^-2 (K km/s)^-1
+- 2024A&A...691A.197K: n_H2 ~ 1e3 cm^-3 as average density of the CO(3-2)-emitting region
+- 2017A&A...604A.117C: starburst age lower limit 10 Myr; cloud sizes 50-100 pc
+- 2024MNRAS.528.7383C: R = 1500 au; total mass 1-2 Msun
+- 2024MNRAS.528.7383C: Lbol(B) = 0.2-0.3 Lsun, M* = 1.7 Msun, R* = 2 Rsun
+- 2018MNRAS.477.2760M: sigma_theta ~0.38 rad; v_turb 0.1-1 km/s
+- 2020ApJ...895...21I: t=4, e=2, 15 pc x 15 pc x 2 km/s search box, EDGE=2
+- 2020ApJ...890...76N: Core radius from geometric mean of Clumpfind semi-axes
+- 2024ApJ...976..198H: Spearman correlation coefficient reported for each relation
+- 2017MNRAS.465.3461Z: alpha_CO = 4.8 Msun (K km/s pc2)^-1, multiplied by 1.8 for CO(3-2) in Arp 186 and 236; factor 1.36 for helium
+- 2025A&A...696A.202S: Total protocluster mass used for t_dep: ~2820 Msun (dust-based)
+- 2025A&A...696A.202S: Mean free-fall time of V-shape cores ~13.6 kyr
+- 2021ApJ...912L...7L: nu = 98.5 GHz; 3-sigma mass sensitivity = 0.13 M_sun
+- 2024MNRAS.530..597B: alpha_CO(2-1) = 4.35 / 0.70 = 6.25 M_sun pc^-2 (K km s^-1)^-1
+- 2025A&A...701A.234Z: |z_phot - z_spec,group| < 0.1(1 + z_spec,group)
+- 2025A&A...701A.234Z: r <= 1 R_vir (141 pkpc to 429 pkpc)
+- 2024ApJ...965...99T: Sigma0 ~5e24 cm^-2 at disk edge, r ~4 au, M* = 0.2 Msun
+- 2024ApJ...965...99T: Envelope density 1e-13 g cm^-3; free-fall velocity ~9 km/s at 4 au
+- 2018A&A...612A..72J: Freeze-out factor 0.01 below 30 K; abundances lowered by factor 5 for matching C18O
+- 2023ApJ...958...53S: Velocity range V_LSR = 285.5-287.8 km s^-1 for peak intensity maps
+- 2020ApJ...896..110L: density profile index b = 1.6
+- 2019ApJ...881...10B: distance D_L=35.8 and 28.0 Mpc for +-1 sigma
+- 2024ApJ...970L..40S: p = 1.8; two-component spectra use the average of the two component line widths
+- 2021ApJS..257...43L: Multiscale clean threshold: 4 sigma; Hogbom clean threshold: 1 sigma; strict mask: S/N > 4 in 2 channels expanded to S/N > 2 in 2 channels; moment 1 prior tole…
+- 2021RAA....21...26Y: Inner/outer boundary at impact parameter b = R/2; critical threshold CI = 0.3
+- 2024ApJ...966...51G: X(1-0)=2.4, X(2-1)=3 with R21=0.8
+- 2019ApJ...871..170M: Rgd=150, beta=1.5, Td=35 K, D=3.5 Mpc
+- 2022MNRAS.514.5035L: Peak criteria: >5 surrounding spaxels, 3x3 box > 3 sigma, minimum separation >= 1.1'' (99 pc); D_spaxel ~ 35 pc for CO virial parameter
+- 2020ApJ...903...50E: Sources not detected at 350 GHz: only stellar mass used in total
+- 2025MNRAS.541.3799K: alpha_CO = 6.69 M_sun pc^-2 (K km s^-1)^-1; CO(2-1)/CO(1-0) ratio = 0.70; Galactic alpha_CO(1-0) = 4.35 M_sun pc^-2 (K km s^-1)^-1
+- 2014AJ....147..141H: sigma_v ~4 km/s (mean 2nd moment), M=2e5 Msun, R=2.8 pc, T=20 K
+- 2026ApJ..1003..219W: Core mass 500 M⊙; radius 0.1 pc; central object 40 M⊙
+- 2020MNRAS.496.5243H: Pixel analysis: S/N = 4 cut on the 33 GHz image; pixels binned to 1.0 x 1.0 arcsec
+- 2021MNRAS.508.4639Z: v_out^r ~ 3.5 km s^-1, v_out^b ~ 3.8 km s^-1, v_gas^r ~ 1.0 km s^-1, v_gas^b ~ 1.1 km s^-1, lambda_max ~ 0.40 pc, R = 0.40 +/- 0.05 pc, Delta v ~ 1.46 km s^-1
+- 2025MNRAS.541.1276Z: drop clusters/associations with mass less than mass error; age cut 20 Myr
+- 2024A&A...682A..61C: Dust-to-gas ratio 0.01; free-fall time ~50 kyr
+- 2018ApJ...856..147O: M_vir = 210 r Dv^2 Msun (r in pc, Dv in km/s)
+- 2022A&A...661A.136G: r_beam ~ 220 pc; f = 10/9
+- 2020MNRAS.496..394R: DeltaV=1.4 km/s (C18O J=2-1), R=3000 AU
+- 2024ApJ...964..166K: Π=0.5
+- 2024ApJ...961....4B: Average dust temperature 50 K, gas-to-dust ratio 100, gas column ~3e24 cm^-2
+- 2020A&A...641A..97V: L_CO=611.5 S dv D^2; R=1.91 sigma_r D
+- 2025A&A...700A.165B: Low-res: +-30 km/s (three channels each side); high-res: 10 km/s width
+- 2025ApJS..280...33Y: star formation efficiency 50%
+- 2017MNRAS.464L..31H: min_value=3 sigma_rms; min_delta=1 sigma_rms; min_npix=60
+- 2023PASJ...75..646K: XCO = 2.0 x 10^20 cm^-2 (K km/s)^-1
+- 2021PASJ...73..205T: velocity range = -2 to +14 km s^-1; lowest detection level = 5 sigma (3 Jy beam^-1 km s^-1)
+- 2024ApJ...976..241Y: c_s = 0.3 km/s at 25 K for all condensations
+- 2018ApJ...863...55Y: M_vir = 210 R (ΔV)^2 Msun; mu = 2.38
+- 2023ApJ...944L..14W: Total massive cluster count = 30; Sample age interval = 10 Myr
+- 2020ApJ...893...63T: Tkin = 20 K, cs = 0.287 km/s; n_H2 = 3e6 for filaments without cores
+- 2025ApJ...988..215K: p_ref = 0.05; N_corr ~ 15
+- 2018ApJ...861L..18U: Default H = 100 pc; alternatives hydrostatic (h*=300 pc, M/L=0.5; median H 122 pc) and virial cloud (alpha_vir~2; median H 116 pc)
+- 2026A&A...713A.149V: Density profile power-law index p = 0 for prestellar cores and p = 2 for protostellar cores; core radius R = FWHM^dec
+- 2025MNRAS.544.4014Z: X_CO = 2e20 cm^-2 (K km/s)^-1
+- 2017ApJ...840L..11S: Briggs robust 0.5; channel widths 20 or 35 km/s
+- 2025ApJ...984L..58H: Thermal Mach number 10, Alfvenic Mach number 1, virial parameter 1, box 4.55 pc, mass scale 3110 Msun, mean field 31.6 microgauss
+- 2025ApJ...984L..58H: 512^3 base grid, 2 refinement levels, finest resolution 0.0022 pc (450 au), periodic boundaries, isothermal equation of state
+- 2020A&A...641A.104A: S = 0.051 Jy, kappa = 0.01 cm2/g, dv = 6.7 km/s, R = 0.01 pc
+- 2025PASJ...77....1K: Image size 512 x 640 pixels per transition
+- 2024A&A...686A.146Z: Only leaf structures, types 1 (single component) and 3 (blended component); structures with absorption removed
+- 2021ApJ...907L..15S: c_s,eff = 0.247 km/s from N2D+ linewidth 0.4 km/s
+- 2026ApJ...997..155M: virial parameter < 2 for gravitationally bound cores; getsf maximum source size = 10 arcsec
+- 2020A&A...634A.121H: alpha_CO(2-1) = 6.2 Msun (K km/s pc2)^-1
+- 2024ApJ...964...13F: KDE contours at 20% and 50% of the maximum density; free-fall line at alpha_vir = 2
+- 2024ApJ...967...56C: minimum deconvolved size of half the beam; critical alpha = 2
+- 2024ApJ...966..120L: density index i = 1.41; T = 15 K; B_3d = 1.25 B
+- 2025NatAs...9.1833L: b=2 density profile; M_tot=10 M_gas; V_disk=-3 km/s
+- 2019PASJ...71...73T: Tk = 9 K
+- 2020ApJ...899..158K: Gamma=0.73, f=5/3
+- 2026AJ....172..108L: R = 7000 au, Delta V = 0.9 km s^-1
+
+
+### Assumptions (bibcode: value)
+- 2018PASJ...70...73H: CO-to-H2 factor 2.0e20 cm-2 (K km/s)-1 with helium factor 1.36
+- 2018PASJ...70...73H: Cardelli extinction curve, intrinsic Halpha/Pabeta=17.1, median A_Halpha=1.9 mag outside Pabeta FOV
+- 2018PASJ...70...73H: GMC lifetime 15 Myr, alpha_fb=7.3 /Myr, T_HII=1e4 K, Case B
+- 2025A&A...701A.141L: Central mass 0.35 Msun
+- 2025A&A...701A.141L: Zero mechanical energy, non-zero specific angular momentum (parabolic orbit)
+- 2025A&A...701A.141L: SO layer undergoes free-fall infall rather than outflow
+- 2025A&A...701A.141L: Gas pressure ignored in the free-fall envelope; envelope self-gravity ignored; spherically symmetric accretion at large distance; no magnetic fields
+- 2018ApJ...855L..25K: T=20 K (15-30 K range), kappa=5.95e-3 cm2/g, dust-to-gas 1:141, mean particle mass 2.33 mH
+- 2018ApJ...855L..25K: eps_core = 0.5; steady SFR; Salpeter CMF 1-240 Msun; mm continuum is complete protostellar core census
+- 2020MNRAS.493.5045M: alpha_CO = 4.4 Msun (K km/s pc^2)^-1, including a factor 1.36 for helium
+- 2020MNRAS.493.5045M: Spherical cloud with rho proportional to r^-n, n = 1; magnetic fields and external pressure negligible
+- 2020MNRAS.493.5045M: alpha_CO 4.4 for mock clouds
+- 2020ApJ...894...87C: Distance 2.5 kpc; inclination 60 deg; T = 20 K; mu_p = 2.33
+- 2020ApJ...894...87C: T=20 K masses; k_rho=1.5, a=5/4; alpha_cr = 2a
+- 2020ApJ...894...87C: k_rho=1.5, a=5/4; gas mass only
+- 2025PASJ...77..616I: distance 22 Mpc
+- 2025PASJ...77..616I: 2D Gaussian surface brightness, eta ~1.18 in R = eta sqrt(sigma_maj sigma_min)
+- 2025PASJ...77..616I: GMCs move randomly in 3-dimensional space within the aperture
+- 2025A&A...701A.120P: Companion: spherical mass distribution; negligible pressure support, vcirc≈Vrot; add 20% uncertainty toward lower mass.
+- 2025A&A...701A.120P: Quasar alternatives: dispersion-dominated system or regular rotation.
+- 2025A&A...701A.120P: Spherically symmetric potentials; circular orbits around the two-body center of mass.
+- 2015ApJ...812..129Y: Inclination 80 deg, LTE, C18O abundance 3.7e-7, free-fall infall
+- 2019ApJ...883...92L: virialization (upper limit for unvirialized system)
+- 2019ApJ...883...92L: isotropic virial estimate of circular velocity for unresolved sources
+- 2020MNRAS.495.3124H: Core is virialized
+- 2020MNRAS.495.3124H: Gas is dispersion-dominated; alpha_CO chosen for simplicity and gas masses are order-of-magnitude
+- 2014A&A...570A..28V: Solar-metallicity elemental abundances; cosmic-ray rate used to mimic enhanced X-rays; free-fall collapse in Phase I
+- 2020ApJ...903...34A: Virial theorem valid for the BLR dynamics; systematic mass errors ~0.5 dex not included
+- 2014ApJ...785..149S: single homogeneous gas component; NGC253 abundance ratios for dense tracers
+- 2019ApJ...881L...2B: Relativistic effects and radiative cooling neglected; thermal electrons; constant ion temperature proportional to virial
+- 2025A&A...698A.145B: Spectroscopic–photometric differences primarily reflect slit losses
+- 2025A&A...698A.145B: Systematic uncertainties: black hole masses 0.5 dex; bolometric luminosities 0.3 dex
+- 2018ApJ...863..193V: Cloud starts at rest with respect to ICM; Hernquist potential
+- 2022A&A...659A.158H: Local thermodynamic equilibrium (LTE) conditions
+- 2022A&A...659A.158H: Beam filling factor of 1 (source size matches 1.6'' beam) and co-spatial distribution of species
+- 2022A&A...659A.158H: PN and dust trace similar volumes of gas
+- 2022A&A...659A.158H: Large velocity gradient (LVG) approximation and Gaussian spectral line profile
+- 2022A&A...659A.158H: Channel uncertainties are independent, Gaussian, and 15% of the channel value
+- 2017NatAs...1..709O: Tk = 60 K, n(H2) = 10^6.5 cm^-3
+- 2017NatAs...1..709O: VLSR of centre of gravity = -120 km/s; PA of orbital plane 41.6°
+- 2020ApJ...894...72S: Tex = 42 K, surface filling factor 1
+- 2025A&A...698A.261B: Low-Eu component arises from GMC scales (1.6''), high-Eu component from pSSC scales (0.12'', ~2 pc)
+- 2025A&A...698A.261B: Ratio of 1 between symmetry states for one species (symbol missing in the text), since kinetic temperature exceeds the ~0.1 K level difference
+- 2025A&A...698A.261B: A correlation does not necessarily imply a direct chemical link; it may reflect similar physical processes
+- 2025NatAs...9..406L: Uniform sphere (a = 1); a ~ 1.4 +/- 0.3 for realistic density profiles would lower alpha_vir
+- 2025NatAs...9..406L: External pressure neglected in the outer Galaxy; external magnetic field neglected (~10 uG vs ~100 uG required)
+- 2023ApJ...958...98F: LTE; optically thick 13CO and optically thin C18O; [12C]/[13C] = 77 and [16O]/[18O] = 560; X(C18O)/X(H2) = 3 x 10^-7; free-fall velocity from outermost edge
+- 2017A&A...601A..48G: Canonical cosmic-ray ionization rate 1.3e-17 s-1
+- 2014ApJ...795L..25R: density profile rho ∝ r^-1.8, k=1.16
+- 2020NatAs...4.1064H: Single components describe most arm CO emission despite likely optical thickness.
+- 2020NatAs...4.1064H: G035.39–00.33 isolated hyperfine is optically thin.
+- 2020NatAs...4.1064H: Lower limit is beam size; upper limit is approximate turnover scale from insufficient sampling.
+- 2020NatAs...4.1064H: Gravitational fragmentation of an isolated cylindrical filament in hydrostatic equilibrium; magnetic fields and shear omitted from the simple model.
+- 2024ApJ...970...74P: Equal particle masses; no stellar winds or local density fluctuations
+- 2024ApJ...970...74P: Gas fully virialized
+- 2026ApJ..1000..141K: Lognormal column density distribution with parameters from Orion A GMC (mean N(H2) ~ 1.5e22 cm^-2)
+- 2025A&A...702A..18D: Pre-shock velocity equals free-fall velocity v_0 = sqrt(2 G M_p / r); spatially constant mass flux falling on both sides of a circular slab
+- 2024ApJ...963....1O: Hernquist potential, M ~1e13 Msun within 30 kpc
+- 2015ApJ...811...92C: X_CO = 1e-4; HCO+ abundance 1e-9; T=70 K inside 30 AU, r^-0.5 beyond
+- 2017ApJ...842L..24A: Excitation dominated by 44Ti decay; kinetic temperature ~50 K; LVG optical depth cutoffs
+- 2014Sci...345.1584B: Radical-site bias favoring secondary carbon; other rates and binding energies identical between isomers
+- 2020A&A...644A..61H: Inclination 38 deg; no pulsation/dust effects
+- 2018ApJ...857...19F: Metallicity from radial gradient, CO(2-1)/CO(1-0)=0.7, R_H2/R_CO=1.2, truncated power-law density with beta=1
+- 2025ApJ...985..166K: NW and NNW streamers share the disk rotation axis and have centrifugal radius equal to the gas disk radius
+- 2025ApJ...985..166K: C18O abundance (1-2)e-7 and excitation temperature 10-30 K give the mass uncertainty
+- 2025ApJ...985..166K: Accretion luminosity is 50% of the bolometric luminosity
+- 2018ApJ...861...14C: 50% mass uncertainty
+- 2018ApJ...861...14C: constant accretion rate over the free-fall time
+- 2022MNRAS.516.4612T: GMC sizes are ignored in the nearest neighbour point-to-point separation analysis
+- 2022MNRAS.516.4612T: A star cluster can only be associated with a single GMC; if aligned with multiple GMCs, the most massive GMC is chosen
+- 2022MNRAS.516.4612T: Assumed galactic disk scale height of 100 pc for oblate spheroidal GMC radius modeling in PHANGS-ALMA
+- 2022MNRAS.516.4612T: Positions are not deprojected for disk inclination because moderate to low inclinations (<= 60 deg) have minimal impact
+- 2023MNRAS.523.6061L: Most massive line-of-sight cloud represents the collapsed comparison
+- 2023MNRAS.523.6061L: NUV selection excludes older associations and provides a more coeval selection
+- 2025A&A...699A..70H: Blended lines modelled separately and summed to compare with the measured blended intensity of each group
+- 2025A&A...699A..70H: Gaussian intensity uncertainties
+- 2025A&A...699A..70H: Beam filling factor eta_ff = theta_S^2 / (theta_MB^2 + theta_S^2)
+- 2025A&A...699A..70H: E- and A- (and o- and p-) column densities are equal within uncertainties so abundances are derived for both forms together
+- 2026ApJ..1000..159M: Exponentially rising SFH parameterization and Larson IMF
+- 2013ApJ...774...73I: Virial masses uncertain by at least factor 2
+- 2019MNRAS.486.2366M: x_CO and x_C ~1e-4; MH2 < Mdyn; virial K_vir>=1
+- 2021ApJ...907...62R: alpha_CO = 1.0 Msun (K km/s pc^2)^-1 adopted throughout
+- 2014MNRAS.445.1412Z: D=22 Mpc, CO(1-0)/CO(3-2)=1.8, helium factor 1.36, spherical clouds
+- 2023ApJ...943...25G: LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.30, Omega_Lambda = 0.70
+- 2014ApJ...796...84R: alpha_CO=0.8 Msun (K km/s pc^2)^-1 for gas mass (R10)
+- 2017ApJ...849...91M: Eddington luminosity L_Edd = 1.3e38 M_BH; L_bol = 5.15 lambda L3000
+- 2025ApJ...987L..37W: q = 1 and n = 1, which gives an upper limit on M_dyn^dis
+- 2025ApJ...987L..37W: Clouds are virialized and dispersion-dominated
+- 2017ApJ...836..130R: Hydrostatic spherical atmosphere; Re ~17 kpc, a=9.4 kpc
+- 2020A&A...636A..29W: alpha from Shu 1977, q from Terebey 1993; COM rotational temperature equals dust temperature
+- 2019ApJ...872..121U: X(H13CO+)=6e-11, X(C34S)=4.87e-10, distance 8.5 kpc, mu=2.35e-57 Msun, no external pressure or magnetic field
+- 2020ApJ...891...90R: NFW matter profile for VT; central 100 kpc excluded
+- 2024ApJ...972..146S: Uniform grain radius 0.1 micrometre; visual extinction capped at 500 mag
+- 2025PASJ...77L..55S: Molecular mass m_c ~ 10^5 M_sun (from Oka et al. 1999); bulge mass M_B ~ 2.5 x 10^7 M_sun inside R ~ 10 pc
+- 2020ApJ...904L...6A: Infall from rest with no energy dissipation; protostellar mass M_star
+- 2015MNRAS.449..715W: gas temperature 70 K, mu=2.8 mH
+- 2017PASJ...69...18T: [H2]/[13CO]=5.0e5, Tex=8.5 K, beta=1
+- 2024ApJ...968...10F: Continuous star formation rate
+- 2024ApJ...968...10F: T = 15 K for Orion B North cores with line width only
+- 2024ApJ...968...10F: T = 13 K for Ophiuchus cores with line width only; T = 10 K for Chamaeleon I
+- 2024ApJ...968...10F: Single-component Gaussian for CO spectra
+- 2017ApJ...849...25L: Tex=35 K, optically thin
+- 2023ApJ...953..164M: Distance D = 840 kpc (1'' = 4 pc)
+- 2023ApJ...953..164M: Distance D = 840 kpc
+- 2023ApJ...953..164M: Constant X_CO = 4.0 x 10^20 cm^-2 (K km s^-1)^-1 (includes helium contribution via factor 4.35)
+- 2023ApJ...953..164M: Constant 12CO(J=2-1)/12CO(J=1-0) intensity ratio R_21 = 0.60 across M33
+- 2023ApJ...953..164M: Spherical and virialized cloud with density profile rho proportional to r^-1
+- 2023ApJ...953..164M: R_21 = 0.6 applied to recalculate Corbelli et al. (2017) GMC masses
+- 2024ApJ...977...38B: Phase 2 inherits phase-1 abundances.
+- 2024ApJ...977...38B: Shielded cloud interior: Av = 10 mag; UV = 1 Habing in both phases; UV negligible
+- 2024ApJ...977...38B: X-ray ionization excluded.
+- 2024ApJ...977...38B: Non-thermal CRIR estimates average over the entire CMZ.
+- 2024MNRAS.527.8865B: Flat Lambda-CDM cosmology with Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.674
+- 2024MNRAS.527.8865B: Single Isothermal Sphere (SIS) mass profile with observed angular separation taken as Einstein radius theta_E
+- 2014ApJ...786..114L: Dust and gas same temperature; LTE; kappa from Beckwith1990 with beta=1; thermal line width only; free-fall infall and constant specific angular momentum in th…
+- 2017MNRAS.465.4390B: R=4 kpc for sources not resolved
+- 2023A&A...673A.116K: PDR conditions: X_C+ = 1.4 x 10^-4, T = 200 K, n >> n_crit
+- 2015Natur.525..218R: Distance 985 kpc
+- 2015Natur.525..218R: Thermal CO(1-0)/CO(3-2) ratio of 1 for APEX comparison
+- 2021MNRAS.504.4123N: Virial equilibrium in the BLR; geometrically thin planar BLR disc with (h/R_BLR) ~ 0
+- 2013A&A...559A..29C: Marconi et al. virial calibration, 0.3 dex systematic
+- 2019ApJ...887...24T: R = 0.75 x CO FWHM major axis
+- 2025ApJ...995..108J: Virialized, isotropic and spherically symmetric gas motions.
+- 2023Ap&SS.368...44M: Isothermal free-fall collapse phase (n_H from 3x10^3 to 10^7 cm^-3, T_dust from 16 K to 8 K) followed by static warm-up phase (n_H ~ 10^7 cm^-3, T_dust from 8 …
+- 2019ApJ...887...79H: gas-to-dust 100, kappa 0.9 cm2/g, Tdust 18±2 K, n=1.8, D=4.59 kpc, 30% uncertainty on R and kappa
+- 2018MNRAS.481.1016G: GMCs are significant CO peaks assumed to be cluster-forming structures
+- 2018MNRAS.481.1016G: each cluster assigned to only one (closest) GMC
+- 2018MNRAS.481.1016G: Fractal dimension D2 = α+2 ≈ 1.5 for ISM
+- 2024JApA...45....3M: Free-fall collapse followed by warm-up.
+- 2024JApA...45....3M: Solar O, C, N, and He abundances; S, Si, Mg, Cl, F, and P depleted by factors of 100.
+- 2024JApA...45....3M: Thermal evaporation following (cite: vi04); co-desorption with H2O, volcano desorption, and mono-molecular desorption following (cite: col04).
+- 2017ApJ...834..178Y: Free-fall infall, constant angular momentum, LTE
+- 2021A&A...645A..97Q: alpha_CO^2-1 = 4.4 Msun (K km/s pc^2)^-1; distance 14.5 Mpc; density profile rho proportional to R^-1 for virial mass
+- 2023A&A...678A.160E: Material is free-falling with conserved angular momentum towards the central mass
+- 2025A&A...699L..11V: CO spectral distribution primarily driven by molecular gas motions
+- 2025A&A...699L..11V: 1/r density law
+- 2025A&A...699L..11V: Masses are upper limits
+- 2025A&A...699L..11V: Upper limits due to resolution limitations
+- 2025A&A...699L..11V: Apparent internal rotation; vc∼0.7 km s−1
+- 2024A&A...684A.119P: Core galaxies virialized in one spherical halo; line-of-sight velocities purely peculiar
+- 2015ApJ...806...35J: n_H2/n_CO = 2e4; XCO = 0.5e20; kappa 0.9 cm2/g; gas-to-dust 120; Td 20 K; distance 21.5 Mpc
+- 2018NatAs...2...56Z: alpha=0.8 for starbursts
+- 2021MNRAS.503.5583B: Virial theorem with galaxies moving along the line-of-sight; or individual rotating disks with inclination = arccos(minor/major axis ratio)
+- 2015ApJ...798...31A: CS abundance ~1e-9; HCN abundance 1e-8
+- 2021A&A...645A..33B: Inclination from axis ratio for marginally resolved sources; rotation-dominated systems
+- 2013MNRAS.432....2K: Salpeter IMF; z>1
+- 2025Natur.641.1137B: CO excitation ratios r_31 = 0.8, r_71 = 0.2; CO-to-H2 conversion factor alpha = 0.8 M_sun (K km s^-1 pc^2)^-1; gray body dust spectrum with beta = 0.7 and T = …
+- 2016ApJ...832..148V: scale length 7.4 kpc from 2MASS R_e; total mass from Main et al. 2015 NFW
+- 2018ApJ...864..120M: Spherical virialized clouds with rho ∝ r^-1; Mvir = 189 dV^2 R
+- 2018ApJ...864..120M: R2-1/1-0 = 1 (measured 0.96 from TP vs SEST); factor 1.36 for helium; D=3.15 Mpc
+- 2018ApJ...864..120M: XCO = 4.1 for gas mass
+- 2024MNRAS.535.1364Z: Tex equals the clump-scale dust temperature
+- 2024MNRAS.535.1364Z: Constant density profile, no magnetic field, rotation or external pressure for the virial ratio
+- 2018A&A...615A..58Y: Distance 100 pc, inclination 87 deg, T=38 K (r/100au)^-0.4, polar cavity within 60 deg of axis empty
+- 2023MNRAS.522.4078C: Distance D = 21.4 Mpc, geometric parameter eta = 1.91, line ratio R_21 = 1, X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (alpha_CO(2-1) = 4.4 M_sun (K km s^-1 pc^2)^-…
+- 2023MNRAS.522.4078C: Homogeneous spherical cloud shapes (b_s = 1/5); alpha_obs,los = 1 for inferring X_CO variations
+- 2023MNRAS.522.4078C: Pattern speed of nuclear ring equals large-scale bar pattern speed; corotation radius is 1.2 times bar length; cloud-cloud velocity dispersion sigma_cc = 10 km…
+- 2020ApJ...902..140N: Spherical clumps with radial power-law density profile
+- 2025A&A...699A.183H: Distance 3.5 Mpc
+- 2025A&A...699A.183H: Chabrier IMF; flat LCDM with h about 0.7; N_MC=1 (isolated GMCs)
+- 2025A&A...699A.183H: LTE, single component; CDMS spectroscopy
+- 2025A&A...704A.158C: Chabrier (2003) IMF (or BPASS IMF cutoff 300 M_sun in BAGPIPES), Calzetti (2000) attenuation law, flat LambdaCDM (H0=70, Omega_M=0.30)
+- 2015ApJ...812...27A: flattened envelope to 900 AU; envelope surface density beyond 200 AU reduced by factor 2
+- 2018MNRAS.477.4380S: Clump spherical; sigma_tot ≈ sigma_bgs
+- 2020MNRAS.493.4294B: rotation-dominated system
+- 2014ApJ...792...94D: n_H2 = 100 cm^-3 for true GMCs
+- 2023ApJ...942L..24K: Stellar velocity dispersion estimated from virial theorem; hardening radius a_Hard << G(M_1 + M_2)/sigma_*^2
+- 2015ApJ...806L..17S: Mstar <~ 3e10 Msun upper limit; sigma_gas/sigma_star ~ 1 (varied 0.5–2)
+- 2016Natur.534..218T: Milky Way size-linewidth relation applies (upper limit); virial equilibrium
+- 2019ApJ...876..141I: alpha_CO = 4.35 Msun (K km/s pc^2)^-1; Mvir=1040 R sigma_v^2 (spherical, rho~R^-1)
+- 2019ApJ...876..141I: Single Milky Way alpha_CO for all clouds
+- 2025A&A...693A.199C: Spherical cores; mean molecular weight per hydrogen molecule μ_H2=2.8
+- 2025A&A...693A.199C: a=2±1; no infalling or out-falling material
+- 2019A&A...628A...6S: cores are spherical blackbodies
+- 2022AJ....164...43S: CO(2-1)-to-CO(1-0) line ratio R_21 = 0.65
+- 2022AJ....164...43S: Fiducial metallicity-dependent conversion factor alpha_CO(1-0) = 4.35 * Z'^-1.6 M_sun (K km s^-1 pc^2)^-1
+- 2022AJ....164...43S: Molecular gas disk thickness H = 100 pc
+- 2022AJ....164...43S: Inclination correction of cos(i) for surface density and (cos(i))^0.5 for velocity dispersion
+- 2022AJ....164...43S: Spherical symmetry for free-fall time calculation
+- 2022AJ....164...43S: Shear-induced cloud-cloud collision model with random spatial distribution of clouds on adjacent circular orbits
+- 2020MNRAS.499.2534K: Virial mass for spherical cloud with 1/r density profile; distance 59 kpc
+- 2024MNRAS.531.4045C: Geometric parameter eta = 1.91; Distance D = 17.5 Mpc; CO-to-molecule conversion factor X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (alpha_CO(1-0) = 4.4 M_sun (K km …
+- 2024MNRAS.531.4045C: Geometrical factor b_s = 1/5 assuming homogeneous spherical clouds
+- 2024A&A...688A.146A: NFW dark-matter halo profile; 0.4 dex stellar mass reduction for sources without MIRI photometry following Papovich et al. (2023) and Wang et al. (2024)
+- 2014ApJ...796..131O: edge-on, inclination 90 deg
+- 2023MNRAS.521.5508H: Systems are unlensed, self-gravitating, and dynamically relaxed; continuum size equals CO emitting size
+- 2012ApJ...760L..25E: X = 3.0e20 cm^-2 (K km/s)^-1, I(2-1)/I(1-0)=1.0, no He correction, distance 22 Mpc
+- 2021ApJ...908...53W: LEdd=1.26×10^38 MBH
+- 2019ApJ...880....2W: v_cir=0.75 FWHM/sin i; inclination from axis ratio
+- 2016ApJ...828...50K: CO(3-2) scaled to CO(1-0) with 10 K blackbody (6 K for cloud G)
+- 2016ApJ...828...50K: virial equilibrium; delta_GDR=650; Delta A_V=0.7
+- 2025MNRAS.542.3277F: Spherical cores
+- 2025MNRAS.542.3277F: New protostars would inherit the globule velocity
+- 2019ApJ...875...24C: mu = 2.33; uniform inclination distribution with max length 5-8 pc
+- 2022MNRAS.517..632L: eta = 1.91 for radius R_c; CO(2-1)/CO(1-0) = 0.78; X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (including helium); PA = 1 deg and i = 9.3 deg for R_gal; D = 3.06 Mpc
+- 2022MNRAS.517..632L: Virial mass M_vir,c = 5 sigma_obs,los^2 R_c / G
+- 2022MNRAS.514..578W: H2CO (3_{0,3}-2_{0,2}) traces the compact source kinematics; centrally concentrated density structure (Gamma = 0.73)
+- 2024ApJ...971..176H: Dense GMCs expected to have GDR of 50-100 rather than 200; subregion A1a assumed to have the galaxy-integrated dust temperature
+- 2024ApJ...971..176H: x_CO = 3e-4 gives alpha_CO close to the U/LIRG value of 1.1
+- 2024ApJ...971..176H: RADEX assumes uniform spherical structure, more applicable to individual GMCs than to ensembles at kpc scale
+- 2024ApJ...977L...9Z: Spherical geometry; virial radius equals the half-light radius
+- 2024ApJ...977L...9Z: Sersic n = 1 and 1.5, axis ratios q = 0.3-0.7 in the alternative approach
+- 2013A&A...560A.103M: d=120 pc; optically thin emission, constant density, adjusted temperature gradient
+- 2018Natur.556..469M: approximately virialized
+- 2022A&A...665L...7S: Field galaxy stellar mass function at 3 < z < 4 (Muzzin+2013); Planck cosmology mean density 7.77e-26 kg m^-3; collapsed structure for virial radius
+- 2017ApJ...839..133P: Galactic Xco = 2e20 cm^-2 (K km/s)^-1 constant across environments; galaxy rotation ignored
+- 2025SciA...11.4512O: Optically thin dust, dust-to-gas 0.01, Ossenkopf1994 opacity
+- 2019A&A...623A..77S: Gas-to-dust 100, dust opacity 1.0 cm2/g at 1.3 mm, dust and gas temperature equal, LTE
+- 2021MNRAS.504.4511P: Distance to M33 = 840 kpc
+- 2021MNRAS.504.4511P: 13CO(1-0)-to-H2 conversion factor X_13CO = 1.0 x 10^21 cm^-2 / (K km s^-1) (X_2 = 5), including 1.36 helium factor
+- 2021MNRAS.504.4511P: Truncated power-law density distribution rho propto R^-beta with beta = 1, and negligible magnetic fields and external pressure for virial mass
+- 2021A&A...650A.202R: Spherical uniform-density core; non-thermal component equal for all gas components
+- 2021A&A...650A.202R: Homogeneous spherical core with uniform magnetic field for Omega_B
+- 2024A&A...687A..43B: HCN/CO traces dense gas fraction; excitation-density comparison assumes ∼100 K
+- 2024A&A...687A..43B: SiO traces fast shocks; methanol traces slow shocks
+- 2024A&A...686A..85A: Kinematics compatible with a dispersion-dominated or slow-rotation system (Vrot/sigma = 0.69); magnification 11.5
+- 2014ApJ...791..123W: LTE and optically thin lines
+- 2014ApJ...791..123W: Source I Vsys same as MM1; dip optically thick
+- 2018ApJ...856...72O: Uniform spherical distribution for virial estimate; proto-cluster not virialized
+- 2017MNRAS.468.1769F: alpha_CO = 4.35 Msun pc^-2 (K km/s)^-1
+- 2024ApJ...961L..35M: Core-scale sigma_v applied to both condensations C1 and C2
+- 2024ApJ...961L..35M: Gas temperature 14.2 K fiducial (also 10 K and 6.5 K)
+- 2024ApJ...961L..35M: Magnetic field support ignored
+- 2018ApJ...869L..24I: Inclination ~70±10 deg from continuum aspect ratio of flat disk
+- 2020MNRAS.496.5308S: Diffuse atomic initial cloud; standard solar metallicity ISM abundances
+- 2020MNRAS.496.5308S: Collapse-stage ζ0 = 5 × 10^-17 s^-1
+- 2020MNRAS.496.5308S: Cloud size varied with density to obtain density-dependent extinction
+- 2020MNRAS.496.5308S: Enhanced cosmic ray ionisation intended to replicate enhanced X-ray flux
+- 2023MNRAS.526.4402B: gas-to-dust ratio 100; spherical symmetry; distance 3.8 kpc
+- 2023MNRAS.526.4402B: mean gas temperature 54 K
+- 2024ApJ...964...12F: Dendrograms count emission multiple times so are used only where multiple counting is allowed
+- 2024ApJ...964...12F: cloud in pressure equilibrium with surrounding medium for P_e
+- 2024ApJ...964...12F: only gravitational and kinetic energies considered; external pressure and magnetic fields neglected in the plot
+- 2025A&A...694A.218B: galaxy bias factor applied to the overdensity level (value not given)
+- 2015ApJ...804...37L: Td~30 K, beta=1, alpha between 1 and 5/3
+- 2017ApJ...834L..16U: cosmology Om=0.3, OL=0.7, H0=70
+- 2021ApJ...908..188F: Helium correction 1.36, neutral fraction 10%, NFW halo up to the virial radius
+- 2018ApJ...853..175N: Optically thin 13CO, LTE, same Tex for 12CO and 13CO; LMC distance; LTE/LVG scatter ~40%
+- 2025A&A...699A.369V: D=50 kpc; alpha_CO=8.4; R32/10~2; density profile r^-1
+- 2019ApJ...884...48C: rotation neglected
+- 2020ApJ...893..135M: alpha_CO = 4.35 Msun (K km/s pc^2)^-1; CO(2-1)/CO(1-0) = 0.8
+- 2020ApJ...893..135M: GMC mass uncertainty 0.3 dex
+- 2023MNRAS.525.6146W: flat density profile (n = 0), T_dust equal to gas temperature, DCN mu = 28
+- 2024A&A...691A.121N: Constant alpha_HCN, so f_dense is proportional to HCN/CO
+- 2024ApJ...961...71F: Virial equilibrium for the narrow component
+- 2019PASJ...71...71H: Uncertain at least by factor of three due to C; virial theorem may not apply
+- 2020A&A...642A.155Z: upper limit assumes structure virialized
+- 2018ApJ...868...95M: Tbg 2.73 K, FWHM 150 km/s, [CO/H2]=1e-4
+- 2025A&A...700A.123M: t_obs approximated by the cloud free-fall time t_ff(rho_0) for long-visibility SFR tracers
+- 2025A&A...700A.123M: Cloud number per 1.5 kpc region approximately conserved, so the time between cloud formation events is negligible
+- 2019MNRAS.486..283B: a = 2 ± 1; no magnetic fields, shear or external pressure
+- 2021PASJ...73S..35T: Uniform density sphere for virial mass: M_vir / M_sun = 210 r (dV)^2
+- 2021PASJ...73S..35T: CO-to-H2 conversion factor X_CO = 0.6 x 10^20 cm^-2 (K km s^-1)^-1
+- 2021PASJ...73S..35T: 12CO (3-2) to 12CO (1-0) ratios: 0.4 +/- 0.1 (SGMC 1), 0.3 +/- 0.1 (SGMC 2), 0.5 +/- 0.1 (SGMC 4-5), 0.3 +/- 0.1 (The Firecracker)
+- 2021PASJ...73S..35T: Distance of 22 Mpc
+- 2021ApJ...907L..10R: Ideal gas; mean molecular weight 2.37; potential energy −3GMclump²/(5Rclump).
+- 2024MNRAS.535.1052B: Large-scale spatial distribution and kinematics of CO and [S IV] are similar as they roughly trace the same gas mass
+- 2024A&A...682A..24A: Dark matter fraction negligible and ISM dominated by molecular gas within r_e
+- 2013A&A...555A.112P: Non-filament gas collapses at similar infall velocity
+- 2017MNRAS.469.4683C: inclination 63 deg; f_star~0.5; M_dark between 0 and 0.25 M_dyn
+- 2021MNRAS.502.1797R: Average 2-kpc radius assumed in SMG dynamical mass calculations; virial mass M_vir = 1e13 M_sun from Hill et al. (2020)
+- 2018ApJ...866..117C: T_d = 25 K
+- 2018ApJ...866..117C: alpha_CO = 0.8; CO(6-5)/CO(1-0) ~ 2
+- 2026A&A...709A.173M: Gas and dust are thermally coupled; gas-to-dust ratio = 100; optically thin dust emission; bound criterion alpha_vir < 2
+- 2016ApJ...823..160D: continuous star formation; free-fall evolution; simulations applicable
+- 2023ApJ...945...42B: Fixed half line-of-sight cloud depth R = 100 pc for all galaxies to estimate volume density rho = Sigma_mol / R
+- 2023ApJ...945...42B: Ideal gas equation of state with T_kin = 45 K and isotropic 3D velocity dispersion sigma_v,3D = sqrt(3) * sigma_v
+- 2021A&A...653A.166C: Maximum velocity difference along the line of sight occurs at the core center; envelope mass uses standard dust assumptions
+- 2025ApJ...987...69N: Virial parameter indicates gravitational binding through the kinetic-to-gravitational energy ratio.
+- 2025ApJ...990..166D: Velocity dispersions from single-Gaussian CO(2–1) fits, not corrected for ordered motions
+- 2014ApJ...793...37A: Tex = 30 K, X_HCO+ ~ 1e-9
+- 2017ApJ...850....1R: 100% of dynamical mass is molecular gas for alpha_CO upper limit
+- 2020A&A...641L...6D: disk diameter = a, height 1 kpc, inclination 90 deg
+- 2018ApJ...869..126L: Virial equilibrium; rho ~ r^-2
+- 2024ApJ...967..133S: Uniform gas sphere with central star cluster for the Eddington ratio
+- 2019ApJ...871..100H: X_CO=5e-4, X_CO/X_C18O=560, T0=70 K, T ∝ r^-0.4
+- 2022A&A...663A..61P: Typical stellar scale height h_* = 300 pc for free-fall time calculation; atomic gas neglected in mid-plane hydrostatic pressure P_h
+- 2020MNRAS.493.2872C: Spherical clouds for the free-fall time; CO flux-weighted averages per radial bin
+- 2024A&A...691A.197K: Thermalized gas, CO 3-2/1-0 brightness temperature ratio of unity
+- 2024ApJ...972..111L: Symmetric circular disk for inclination; virialized system
+- 2017A&A...600A.139H: Td = 25 K; Galactic dust properties; X_CO = 0.6e20; CO(3-2)/CO(1-0) ~0.6
+- 2024MNRAS.528.7383C: Lbol = Lacc (all luminosity from accretion)
+- 2018MNRAS.477.2760M: Free-fall density profile; v_turb 0.1 to 1 km/s
+- 2020ApJ...895...21I: Mvir=1040 R sigma_v^2, spherical clouds with rho ~ R^-1; Milky Way alpha_CO
+- 2020ApJ...890...76N: Rgd=100; k100GHz=0.21 cm2/g; mu_H2=2.8; virial equilibrium for 0.71<alpha<1.4
+- 2024ApJ...976..198H: S87 relations used as reference with Sigma ~200 Msun/pc2 and C = 0.72 km/s pc^-1/2
+- 2024ApJ...961..120C: <sin i> = pi/4 ≈ 0.79
+- 2015ApJ...804..141Z: Magnetic field 0.27 mG from G11.11 assumed
+- 2018A&A...613A..34P: gas virialized; inclination 54 deg from axial ratio
+- 2017MNRAS.465.3461Z: E(B-V)=0.4 constant attenuation correction; spherical uniform-density HII regions
+- 2017MNRAS.465.3461Z: Antennae average I_CO(1-0)/I_CO(3-2) ~ 1.8
+- 2025A&A...696A.202S: 45 deg average inclination; V-shape gas with no confirmed inflow onto a central mass may overestimate depletion
+- 2018A&A...618L...5N: density index n=2 for both cores, n=0 for core #6
+- 2020ApJ...896...36T: XCO 2.0e20, CO(2-1)/(1-0)=0.7, [H2]/[13CO]=1.4e6
+- 2020ApJ...896...36T: kappa1.3mm = 1 cm2/g, dust-to-gas 3e-3, Td = 20 K
+- 2021ApJ...912L...7L: T_dust = 10 K; gas-to-dust ratio eta = 100; dust opacity kappa_98.5GHz = 0.235 cm^2 g^-1 (beta = 1.5); mean molecular weight mu = 2.8 for N_H2 and <m> = 2.37 m…
+- 2024MNRAS.530..597B: 12CO J=2-1 / J=1-0 line ratio = 0.70 and Milky Way conversion factor (including helium and heavy elements) applies across NGC 4038/9
+- 2024MNRAS.530..597B: A single cloud roughly fills each synthesized beam and cloud density profile follows rho(r) proportional to r^-1
+- 2012A&A...544L...7P: spherical symmetry, free-fall, mu=2.3
+- 2018ApJ...863L..21K: alpha_CO(1-0)=4.4 Msun/pc^2 (K km/s)^-1; R21=0.61; SFR=5.37e-42 L(Halpha)
+- 2024ApJ...965...99T: Observed disk-edge densities not used for the infalling material because the disk is not smoothly connected to the envelope; envelope density adopted from nume…
+- 2018A&A...612A..72J: Gas and dust temperatures coupled; Keplerian rotation (PP-disk), Terebey et al. velocities (toroid), free-fall elsewhere; LIME model radius 2000 AU
+- 2023ApJ...958...53S: Virial equilibrium for cloud mass estimation
+- 2020ApJ...896..110L: Prolate cores; intrinsic axis ratio from observed via Appell function
+- 2025ApJ...979..217S: Linewidth is turbulently broadened; beam filling factor = 1; constant scale height H = 100 pc
+- 2014A&A...569A..11S: uniform density
+- 2017ApJ...841L..21H: sigma=720 km/s, R200=0.8 Mpc, H0=70, Om=0.3, OL=0.7
+- 2019ApJ...881...10B: M_BH proportional to adopted angular size distance
+- 2024ApJ...970L..40S: Cores with alpha_vir < 2 treated as supercritical and collapsing in the absence of other support such as magnetic fields
+- 2017ApJ...849...56A: M*=0.45 Msun, T=44 K, mean molecular weight 2.37 mH; infall velocity = alpha times free fall
+- 2021ApJS..257...43L: Spatial and spectral variations of the noise in each cube are separable; conversion to molecular gas mass assumes Milky Way alpha_CO^(1-0) = 4.35 M_sun pc^-2 (…
+- 2021RAA....21...26Y: Kolmogorov scaling law for statistically homogeneous and isotropic turbulence in non-collapsing cores; Singular Isothermal Sphere (SIS) free-fall velocity prof…
+- 2024ApJ...966...51G: Same Tex for 12CO and 13CO from 12CO; N(H2)/N(13CO)=3e6; spherical virialized clumps; distance 50 kpc
+- 2025A&A...701A..85K: Components may not be virialized, but estimates considered meaningful
+- 2013ApJ...779...96T: 0.5<m_A<2 range, f_g=1, alpha_vir,cl=1, phi_geom=1
+- 2019ApJ...871..170M: Thermal dust, optically thin; hydrogen dominated by H2
+- 2024ApJS..270....9X: Initial Jeans separation ~0.14 pc
+- 2024ApJS..270....9X: Clump radius 1 pc; density 10^4 cm−3; lifetime 0.2–1×10^5 yr
+- 2017ApJ...837...86T: binary mass 0.8 Msun, i=62 deg, Source A 0.675 Msun
+- 2022MNRAS.514.5035L: Spherical geometry and ionising photons from hot/massive stars to derive M_HII from L_HII and R_HII (Zaragoza-Cardiel et al. 2015)
+- 2020ApJ...903...50E: Free-fall time assumes gas with no support and the whole cluster mass in gas
+- 2025MNRAS.541.3799K: Constant Galactic conversion factor alpha_CO = 6.69 M_sun pc^-2 (K km s^-1)^-1; isotropic velocity distribution and spherical uniform density for virial mass
+- 2025ApJ...995..219F: spherical, virialized
+- 2017ApJ...835..278S: alpha_CO = 4.35 Msun pc^-2 (K km/s)^-1, R21 = 1 for luminous mass
+- 2026ApJ..1003..219W: Simple free-fall collapse
+- 2017MNRAS.468.3694C: gas-to-dust 100, kappa 1.45 cm2/g, T_dust 20 K, D 3.37 kpc, mu_H2 2.8, spherical
+- 2020MNRAS.496.5243H: 12CO 2-1/1-0 ratio 0.8; ULIRG alpha_CO
+- 2021MNRAS.508.4639Z: Spherical clump (a2 = 1), power-law density index p ~ 1.77, optically thin H13CO+ (1-0) and high-velocity HCO+ (1-0) wings, equal and constant excitation tempe…
+- 2025MNRAS.541.1276Z: typical GMC survival timescale 10-30 Myr
+- 2024ApJ...964...39G: BLR assumed a virial dynamical tracer; virial equilibrium acknowledged as unverified
+- 2014ApJ...791..108F: isothermal cylinder; ignores magnetic fields and external pressure
+- 2017PASJ...69...83M: R32/10=2 in CND; Mvir=1040 σ R, size ~30 pc
+- 2024A&A...682A..61C: Whole streamer falls onto the inner system; rate is an upper estimate
+- 2018ApJ...856..147O: Uniform density
+- 2022A&A...661A.136G: Beam size represents the relevant cloud size scale; cloud density profile rho(r) proportional to r^-1; pressure equilibrium
+- 2020MNRAS.496..394R: constant photoevaporation rate
+- 2024ApJ...964..166K: 10% flux error and factor of 4 X_CO variation define uncertainties
+- 2025MNRAS.536.3757A: All gas converted to stars; energy conserved; radius unchanged; beta ~5
+- 2018ApJ...860L..14K: Spherical clouds with truncated rho ~ r^-1 profile
+- 2024ApJ...961....4B: Magnetic fields do not contribute to core collapse support
+- 2016ApJ...833..209O: uniform density sphere; magnetic fields neglected
+- 2020A&A...641A..97V: spherical bound clouds with rho~r^-1; r21~1; D~60 kpc
+- 2020ApJ...895..142L: density profile rho ∝ r^-a
+- 2025A&A...700A.165B: Galaxy unresolved at ACA resolution; GMCs co-spatial with star clusters and unresolved
+- 2017ApJ...846...73T: Virialized cloud; r^-1 profile (r^-2 gives ~30% less)
+- 2025ApJS..280...33Y: total velocity dispersion ~0.4-0.8 km/s from literature high-mass prestellar cores
+- 2023PASJ...75..646K: cloud treated as a sphere for mass surface density; alpha_vir below about 1 means gravitationally bound
+- 2021PASJ...73..205T: LTE; T_ex = 30-50 K from 13CO_all brightness temperature; [16O]/[18O] = 550; [H2]/[12CO] = 10^4; uniform density sphere without magnetic field or external pres…
+- 2025A&A...696A..31G: Optically thin (tau<0.1; <0.3 with dilution 0.1) assuming Tex=15 K
+- 2016A&A...590A..25M: gas fraction 0.1
+- 2024ApJ...976..241Y: Turbulence negligible at condensation scales; temperature range 10-50 K considered for non-YSO and YSO-hosting condensations
+- 2018ApJ...863...55Y: N(H2) = 7.0e20 W(CO) cm^-2; distance 50 kpc
+- 2023ApJ...944L..14W: 30 clusters in the sample have masses of at least 10^6 M_sun and ages < 10 Myr
+- 2026A&A...713A.149V: Simplified virial theorem limited to volume terms (neglecting surface terms); central protostellar mass neglected (Class 0-like envelopes dominate); cylindrica…
+- 2018MNRAS.478.2505I: Teff ~1e4 K for the bloated protostar; free-free spectral index 1
+- 2020ApJ...901L...8S: D_beam (beam FWHM) is the line-of-sight depth
+- 2020ApJ...901L...8S: Single, spherical gas structure filling each beam; density profile proportional to r^-1 for alpha_vir
+- 2020ApJ...890..129K: spherical constant-density geometry
+- 2025MNRAS.544.4014Z: mu_H2 = 2.8
+- 2025ApJ...984L..58H: Core snapshot chosen to match the peak density of G205M3 (1e7 cm^-3)
+- 2017ApJ...844...98M: mu_H2 ~ 2.7
+- 2020ApJ...905L..23M: Nearby CO complex mass (1.2e6 Msun) taken as the mass of the cloud NGC 4725 B formed from; 100 pc gas layer thickness
+- 2020A&A...641A.104A: Tdust = Tkin = Trot; spherical geometry
+- 2025PASJ...77....1K: Negative values come from absorption lines near GMC 5 and are set to zero; NMF assumes emission only adds intensity if absorption is ignored
+- 2019Natur.569..519K: gas velocity dispersion 6 km/s from M33 HI
+- 2024A&A...686A.146Z: Local thermodynamic equilibrium for column density
+- 2020A&A...643A..89P: alpha 0.6–2.4
+- 2021ApJ...907L..15S: a = 2±1; mu_p = 2.37 for Jeans length
+- 2024PASA...41...76Z: free-fall gradient sqrt(GM/2R^3)
+- 2026ApJ...997..155M: Ignore external pressure and magnetic field in virial analysis
+- 2019Sci...366...90A: jet θ=10°, v=200 km/s, T=1e4 K; M*≈1.0 Msun; 15% flux error
+- 2020A&A...634A.121H: Galactic alpha_CO(1-0)=4.3 divided by R21=0.69
+- 2020ApJ...895..119T: Constant density sphere
+- 2017ApJ...835..213P: non-circular motion 50% of circular velocity
+- 2024ApJ...967...56C: mean molecular weight 2.33
+- 2020ApJ...892..147S: distance 1.38 Mpc
+- 2023PASJ...75..225M: Star mass 20±7 Msun
+- 2016ApJ...827...81I: Virialized, non-shadowing clouds; H0=70, Om=0.3, OL=0.7
+- 2024ApJ...966..120L: surface term, tension term and ordered velocity motion neglected; constant temperature 15 K
+- 2016ApJ...826..213L: infall velocity scales as r^-0.5
+- 2020ApJ...891..113R: uniform density, no magnetic fields or external pressure
+- 2018ApJ...867..165B: Brightness temperature ratio 0.82; cprops XCO 4.35e20
+- 2024ApJ...972L...6S: Spherical cloud with centrally peaked density profile
+- 2019A&A...622A..99L: n = 1.8
+- 2020ApJ...903...94M: Tdust 22 K, gas-to-dust 300, kappa_1.3mm 1 cm2/g
+- 2018ApJ...860..172S: Line-of-sight depth ~2 r_beam; density profile rho ~ r^-1 (f=10/9)
+- 2026AJ....172..108L: Power-law density index p = 2, non-spherical shape correction a_2 ~ 1 (aspect ratio < 2), stellar mass = 6.3 M_sun from Reipurth et al. (2023)
+- 2020MNRAS.496..364R: Milky Way sigma=D^0.5 relation holds; virial equilibrium
+- 2019ApJ...884..100H: Galactic GMC R=20 pc, M=1.5e5 Msun; N13CO=1e-6 NH2; inclination 24 deg
+- 2025ApJ...995..193Y: Uniform spherical structure; mu_p=2.33
+- 2018ApJ...861..123F: Same HCN-to-dense gas conversion for post-starbursts and other galaxies
+- 2016A&A...586A..45S: clump radius ~20 pc
+- 2017A&A...608A..98S: Turbulence in steady state, injection balanced by dissipation
+- 2025A&A...695A.236L: Spherical cloud, radius 5" (~7000 au)
+- 2024A&A...690A.375S: Factor of 3 omitted in m_vir (1D dispersion); mu_N2H+=29; inclination 45 deg for gradient estimates
+- 2024A&A...690A.376S: Fibers isothermal, sub-critical, pressure-confined filaments
+
+
+### Limitations the authors admit
+- 2018PASJ...70...73H: SFR may be underestimated by about a factor of 2; central region feedback uncertain
+- 2025A&A...701A.141L: L1527 SO2 temperature unconstrained because only one transition was observed
+- 2025A&A...701A.141L: DK Cha disk rotation direction uncertain
+- 2025A&A...701A.141L: Ring-fit errors are formal only; streamers and non-elliptical shape add systematics
+- 2025A&A...701A.141L: Magnetic fields and shock types not modeled
+- 2025A&A...701A.141L: Streamer S4 only plausible, S/N of the connecting emission <~3
+- 2018ApJ...855L..25K: Dust temperature assumption is the largest uncertainty (up to factor ~2); MIREX has zero-point offsets, saturation and MIR-source contamination.
+- 2020MNRAS.493.5045M: Many cataloged sigma_v values may be overestimated by ~1.5 because lines are narrow compared to the channel width
+- 2020MNRAS.493.5045M: Only 154 of 233 GMCs are resolved; radii near the beam are highly uncertain
+- 2020ApJ...894...87C: Large systematic uncertainties in virial parameters (temperature, mass, distance), so supervirial vs subvirial unclear
+- 2020ApJ...894...87C: Many cores are not well resolved
+- 2025PASJ...77..616I: Individual colliding cloud pairs cannot be identified at this resolution and sensitivity
+- 2025PASJ...77..616I: Only sub-kpc statistical properties examined; higher sensitivity and resolution data are desirable
+- 2025PASJ...77..616I: eps_CCC combines two factors that cannot be measured separately
+- 2025A&A...701A.120P: Gas-mass uncertainties omit conversion-factor systematics.
+- 2025A&A...701A.120P: Stellar mass has quasar-subtraction and limited-filter systematics; quoted aperture-flux errors exclude potential systematic errors.
+- 2025A&A...701A.120P: Ring parameters are correlated; kinematic uncertainties omit geometry uncertainty and are underestimated.
+- 2025A&A...701A.120P: Current S/N and resolution cannot investigate potential radial motions.
+- 2025A&A...701A.120P: Spherical mass distribution oversimplifies the companion; quasar virial estimates have large resolution-related uncertainties.
+- 2025A&A...701A.120P: Tidal analysis uses difficult-to-verify simplifying assumptions; projection and unknown outer mass budgets limit interpretation.
+- 2025A&A...701A.120P: Available information cannot distinguish merger and outflow origins.
+- 2015ApJ...812..129Y: Significant missing flux in the outer envelope; M* is a lower limit if infall slower than free fall
+- 2019ApJ...883...92L: Small samples, inhomogeneous literature selection, virialization assumption
+- 2020MNRAS.495.3124H: Dynamical masses uncertain to within a factor of a few
+- 2020MNRAS.495.3124H: Gas masses are order-of-magnitude estimates
+- 2020MNRAS.495.3124H: Continuum data do not reach the SED peak, so only Rayleigh-Jeans slopes constrain the dust temperature
+- 2020MNRAS.495.3124H: Large systematic uncertainties in the total mass are not incorporated
+- 2014A&A...570A..28V: RADEX assumes all transitions sample the same gas, and several ratios use degraded or low-resolution data
+- 2014A&A...570A..28V: Chemical modelling is preliminary and compares time-dependent models only at one time step
+- 2014A&A...570A..28V: Infrared pumping not considered
+- 2020ApJ...903...34A: Only two continuum points on the Rayleigh-Jeans tail, so dust temperature and SED shape unconstrained; dust mass has at least a factor of two systematic uncertainty
+- 2020ApJ...903...34A: Black hole mass systematic errors (~0.5 dex) not included; virial calibration may be inadequate for WLQs
+- 2020ApJ...903...34A: Shielding gas between disk and BLR cannot be excluded without X-ray spectroscopy
+- 2014ApJ...785..149S: Single-component modelling of a heterogeneous sample; no single model fits (chi2 min 10.4 for 3 dof); degeneracies remain; differential magnification not accounted
+- 2019ApJ...881L...2B: 868 GHz measured four days from the others, longer than variability coherence time
+- 2025A&A...698A.145B: Marginal resolution, moderate line significance, fixed inclination and non-circular beams limit dynamical masses.
+- 2025A&A...698A.145B: Molecular-mass errors omit ∼0.1 dex intrinsic calibration dispersion.
+- 2025A&A...698A.145B: Quasar-property error propagation ignores parameter degeneracies.
+- 2025A&A...698A.145B: BAL occurrence is unrepresentative because the original selection tried to avoid BALs.
+- 2025A&A...698A.145B: Low S/N may suppress weak C IV detections and inflate the fraction with associated N V.
+- 2025A&A...698A.145B: Luminosity selection may mimic redshift evolution of emission-line velocity shifts.
+- 2018ApJ...863..193V: The cavity is poorly defined and may not be real
+- 2018ApJ...863..193V: HST images manually aligned, so small-scale offsets between gas and UV may be missed
+- 2022A&A...659A.158H: If PN emission is confined to 0.6'' core sizes rather than the 1.6'' beam, beam-averaged column densities are underestimated by a factor of ~7.
+- 2022A&A...659A.158H: A 2-sigma tail-like emission feature of PN(2-1) in GMC 6 cannot be firmly confirmed due to current sensitivity limits.
+- 2022A&A...659A.158H: Gas kinetic temperature is poorly constrained in the non-LTE analysis (ranging from ~50 K to ~300 K).
+- 2022A&A...659A.158H: Transitions of HCP and PS, and some transitions of PN (4-3, 6-5) and PO, are heavily contaminated by other molecular species.
+- 2022A&A...659A.158H: Current upper limits on PO and PH3 are not deep enough to firmly confirm whether PO/PN < 1 or whether PH3 is equally or less abundant than PN in NGC 253.
+- 2020ApJ...894...72S: Spatial variability of absorption not confirmed; X_CO may overestimate mass
+- 2025A&A...698A.261B: Spectral resolution (10 km/s) is insufficient to separate blended E/A states and limits identification of gas components
+- 2025A&A...698A.261B: Derived T_rot are not true gas temperatures because rotational diagrams deviate from LTE fits
+- 2025A&A...698A.261B: Two-component treatment assumes the warm compact component contributes negligibly to the cold extended one
+- 2025A&A...698A.261B: Abundance study not performed (column densities only)
+- 2025NatAs...9..406L: Systematic errors are not propagated in the quoted uncertainties
+- 2025NatAs...9..406L: Slope of the alpha_vir versus Z trend is sensitive to the adopted H2/13CO abundance ratio
+- 2025NatAs...9..406L: Physical mechanisms for B-field-dominated dynamics are unclear
+- 2023ApJ...958...98F: Cloud contamination and interferometric filtering affect molecular channels near the systemic velocity and cause missing flux, making the C18O envelope mass a lower limit.
+- 2023ApJ...958...98F: Continuum over-subtraction causes negative absorption artifacts at the disk center in optically thick lines (all species except SO), and cannot be completely ruled out as the cause of the central dep…
+- 2023ApJ...958...98F: The 1.3 mm dust continuum is optically thick in the disk, so the derived dust masses are lower limits; Toomre Q also depends on the assumed gas-to-dust ratio of 100.
+- 2023ApJ...958...98F: The streamer parameters in the Mendoza et al. (2009) model were adjusted manually without mathematical optimization and are not unique solutions.
+- 2023ApJ...958...98F: The envelope-to-disk mass infall rate is only an order-of-magnitude estimate, subject to missing interferometric flux and the assumption of free-fall velocity.
+- 2023ApJ...958...98F: The gas-to-dust disk size ratio uses a kinematic break radius for gas rather than a flux-enclosed radius due to envelope contamination, making it not directly comparable to Class II disk studies.
+- 2017A&A...601A..48G: Cosmic-ray ionization rate poorly constrained; full sensitivity study left for future
+- 2014ApJ...795L..25R: Core unresolved so density is a lower limit; deviation may be from temperature
+- 2020NatAs...4.1064H: Observational density and velocity estimators can alter inferred structure functions.
+- 2020NatAs...4.1064H: Mock-field tests lack physical excitation and optical-depth treatment.
+- 2020NatAs...4.1064H: Randomly generated periodicity does not establish a physical origin.
+- 2020NatAs...4.1064H: Simple cylindrical fragmentation omits shear and magnetic fields.
+- 2020NatAs...4.1064H: Exact GMC scaling exponents require caution because centroids convolve density, velocity and excitation.
+- 2020NatAs...4.1064H: Directional anisotropy in the CMZ GMC is tentative and needs further investigation.
+- 2024ApJ...970...74P: Stellar Keplerian solutions lack individual radial velocities
+- 2024ApJ...970...74P: Some stellar orbits have less than 2% coverage
+- 2024ApJ...970...74P: Multiple orbital solutions are acceptable; quoted uncertainty ranges describe local solutions
+- 2024ApJ...970...74P: Gas–star radial-velocity link used for the cluster distance may be premature
+- 2024ApJ...970...74P: Simplified migration simulations omit stellar winds and ambient medium and use equal particle masses
+- 2024ApJ...970...74P: IMBH confirmation requires more detailed multiwavelength timing, spectroscopy, and rotating-gas studies
+- 2024ApJ...970...74P: Current X-ray sensitivity cannot access the expected IMBH variability timescale
+- 2026ApJ..1000..141K: The Band 3 and Band 4 observations were separated by ~9 months (October 2016 to July 2017) without simultaneous millimeter monitoring, though a few percent variability would shift T_CMB by < 0.1 K.
+- 2026ApJ..1000..141K: The -6 km/s component cannot constrain f_c due to lack of saturation, leaving its T_ex uncertain.
+- 2026ApJ..1000..141K: H13CN and H13CO+ transitions have low S/N (~3), limiting their statistical significance.
+- 2025A&A...702A..18D: Stellar spectral index between Band 3 and Band 4 (-0.7 +/- 0.8) is too noisy to distinguish partially thick free-free emission, variability, or a synchrotron component.
+- 2025A&A...702A..18D: Inter-band alignment with VisAlign could not be applied to Bands 7 and 9 because the central star is not detected and the ring morphology differs dramatically from Band 3, requiring reliance on absol…
+- 2025A&A...702A..18D: Diffuse emission near the cavity edge in Band 9 was not subtracted from the forced-photometry measurement, and PDS 70c's flux in Band 7 is affected by confusion with the cavity wall.
+- 2025A&A...702A..18D: The jet flux formula was developed for stellar jets and is extrapolated into the planetary mass regime.
+- 2025A&A...702A..18D: Magnetic disc viscosity estimates neglect external ionisation sources (interstellar UV and cosmic rays) at large radii.
+- 2025A&A...702A..18D: The atomic plasma model depends heavily on extrapolating H- free-free opacities from Gray (2022) (valid up to 10 um and T = 2500–10000 K) to millimetre wavelengths and cooler temperatures (T ~ 1000–2…
+- 2025A&A...702A..18D: Achieving a pre-shock free-fall velocity > 30 km/s at 62 R_Jup requires a minimum planetary mass of 15.7 M_Jup (above the 2 sigma dynamical upper limit of 13.6 M_Jup) and spatially constant mass flux…
+- 2024ApJ...963....1O: X_CO uncertainty may overestimate molecular mass by a factor of a few
+- 2024ApJ...963....1O: Chandra data too shallow to resolve cavity
+- 2015ApJ...811...92C: Model is parametric, not dynamically consistent, no systematic parameter search
+- 2015ApJ...811...92C: MEM resolution varies with image
+- 2017ApJ...842L..24A: Peak brightness cannot be converted to density without non-LTE excitation modelling, which needs more than one line.
+- 2017ApJ...842L..24A: Models are non-rotating and omit chemistry, so SASI signatures cannot be assessed.
+- 2014Sci...345.1584B: Preliminary LTE model not fully optimized for ALMA; abundance uncertainties exclude free-free contamination and dust property uncertainties
+- 2020A&A...644A..61H: Combined data miss 27-72% of diffuse CO flux
+- 2018ApJ...857...19F: Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission
+- 2018ApJ...857...19F: Sampled range of environments limited to inner rising rotation curve
+- 2025ApJ...985..166K: UCM trajectories are degenerate, so 3D lengths and infall rates are uncertain by up to a factor of four
+- 2025ApJ...985..166K: More, unidentified streamers may exist
+- 2025ApJ...985..166K: Axisymmetric envelope model does not fully explain the intensity distribution
+- 2025ApJ...985..166K: JCMT resolution could smooth out 1000 au cloudlets
+- 2025ApJ...985..166K: 12-m-only data may contain artifacts at low velocities
+- 2018ApJ...861...14C: Only 10% of single-dish flux recovered; temperature from clump scale
+- 2022MNRAS.516.4612T: Native resolution GMC catalogues have heterogeneous completeness and sensitivity limits across the galaxy sample.
+- 2022MNRAS.516.4612T: Class 3 compact associations may contain multiple stellar populations of different ages, causing large uncertainties in their age measurements.
+- 2022MNRAS.516.4612T: The 10 km/s velocity cutoff (v * t < 3 R_GMC) is a coarse approximation that influences the median age of unassociated clusters, and GMC radii and peak spacings are strongly tied to the CO data spati…
+- 2022MNRAS.516.4612T: SED fitting of PHANGS-HST clusters assumes solar metallicity for all sources, underestimating the ages of old globular clusters in galactic bulges (returning ~few 100 Myr instead of ~10 Gyr).
+- 2022MNRAS.516.4612T: UV-optical HST observations are insensitive to star clusters less massive than ~10^3 - 10^4 M_sun and to heavily embedded clusters.
+- 2022MNRAS.516.4612T: CPROPS blends overlapping GMCs with similar velocities into single clouds, artificially suppressing the GMC autocorrelation function at spatial separations below 2 R_GMC.
+- 2022MNRAS.516.4612T: Cross-correlation functions suffer from poor pair statistics in some galaxies, leading to empty separation bins ('gaps').
+- 2023MNRAS.523.6061L: Tracer sources are not guaranteed to be individual stars.
+- 2023MNRAS.523.6061L: Low-mass associations are susceptible to stochastic IMF sampling.
+- 2023MNRAS.523.6061L: BC03 track structure produces an artificial age-distribution gap.
+- 2023MNRAS.523.6061L: DOLPHOT splitting of slightly extended clusters can contaminate association samples.
+- 2023MNRAS.523.6061L: Larger associations may not be well described by a single-aged population.
+- 2023MNRAS.523.6061L: Different ALMA beam sizes may affect overlap fractions.
+- 2023MNRAS.523.6061L: UV and optical observations may miss embedded star formation in dense clouds.
+- 2023MNRAS.523.6061L: Distance effects require further work for consistent cross-galaxy comparisons.
+- 2025A&A...699A..70H: H2CO abundances and parameters are poorly constrained
+- 2025A&A...699A..70H: Derived EAR depends on the choice of CH3OH collisional rates
+
+### Settings cards flag as needed but not stated
+- continuum subtraction and line-free channels: 14
+- casa version: 14
+- flux scale uncertainty: 9
+- self-calibration solution intervals: 8
+- flux calibrator and flux scale uncertainty: 8
+- casa version and pipeline version: 7
+- primary-beam correction details: 7
+- line-free channels used for continuum: 6
+- line-free channels used for continuum subtraction: 6
+- self-calibration solution intervals and number of iterations: 6
+- line-free channels and continuum subtraction method: 5
+- primary beam correction details: 5
+- continuum subtraction method and line-free channels: 5
+- flux calibrator and flux-scale uncertainty: 4
+- line-free channel ranges for continuum: 4
+- line-free channel ranges for continuum subtraction: 4
+- image size and cell size: 4
+- casa version and whether the pipeline or manual calibration was used: 3
+- continuum-subtraction and line-free channels: 3
+- clean threshold, mask, cell and image size: 3
+- line-free channels / continuum subtraction: 3
+- moment-map velocity ranges and clipping: 3
+- line-free channels and continuum subtraction: 3
+- cprops parameters: 3
+- line-free channels for continuum subtraction: 3
+- exact uv-taper parameters: 2
+- line-free channels and continuum subtraction method for the line cubes: 2
+- source coordinates: 2
+- clean threshold, masks and iterations: 2
+- line-free channel ranges for uvcontsub: 2
+- line-free channels used for continuum and continuum subtraction method: 2
+- line-free channels and continuum subtraction method for line cubes: 2
+- clean masks, threshold, image size and cell size: 2
+- line-free channel selection for continuum: 2
+- flux-scale uncertainty: 2
+- cell size and image size: 2
+- line-free channel ranges for continuum and uvcontsub: 2
+- rest frequencies used for the lines: 2
+- casa version and whether archive pipeline products were used: 2
+- astrodendro parameters (min_value, min_delta, min_npix): 2
+
+## Paper excerpts (40 of 340, chosen for detail and spread over fields/years)
+
+### 2018PASJ...70...73H: ALMA <SUP>12</SUP>CO (J = 1-0) imaging of the nearby galaxy M 83: Variations in the efficiency of star formation in giant molecular clouds (2018; nearby_galaxies, star_formation; observational_alma_primary)
+- question: Do GMCs in M83 form stars with a uniform star formation efficiency per free-fall time, or does SFE_ff vary across galactic environments?
+- step 2: Identify GMCs
+  - method: astrodendro leaves on cube smoothed to 46 pc; peak SNR>3, 3 sigma above merge level, min pixels 3 x Abeam/Apixel; 3 dispersed leaves flagged, 179 remain [4.1 Cloud identification: "each *leaf* has a peak SNR over 3, and the peak SNR of each *leaf* is higher by at least 3 from the merging level to neighboring *leaves*."]
+  - software: astrodendro
+  - validation: Tested threshold of 2 x beam area (6% more leaves, some smaller than beam) [4.1 Cloud identification: "the number of identified *leaves* increased by approximately 6%"]
+- step 3: Derive cloud properties
+  - method: Moments extrapolated to 0 K, deconvolved by resolution; R=3.4/sqrt(pi) sqrt(sx sy); M=4.4 L_CO; virial mass with n=1; tau_ff from rho with factor 1.26 [4.2 Derivation of basic cloud parameters: "Uncertainties for the size parameters and CO luminosity are determined by performing bootstrap error estimates."]
+  - assumption: CO-to-H2 factor 2.0e20 cm-2 (K km/s)-1 with helium factor 1.36 [4.2.1 Adopted definition of physical qu…: "applying the CO-to-H$_{2}$ conversion factor of 2.0 $\times$ 10$^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$"]
+  - validation: Extrapolation factors compared with Gaussian expectation [4.2 Derivation of basic cloud parameters: "most of the data points for the identified GMCs agree with the expected line for a Gaussian profile."]
+- step 4: Fit GMC mass spectra
+  - method: Truncated power law fit to cumulative mass function for 1e6-3e7 Msun; 100 bootstrap draws; KS test [4.7 Mass spectrum of GMCs: "A bootstrap method with 100 draws was used to estimate the confidence interval of the fitted parameters"]
+  - fitting: Truncated power law of Williams & McKee; median and MAD of bootstrap [4.7 Mass spectrum of GMCs: "The most likely value and the confidence interval for each parameter were obtained by taking the median and the median absolute deviation (MAD) of 100 bootstrap realizations for each parameter."]
+  - validation: Two-sided KS test [4.7 Mass spectrum of GMCs: "the two-sided Kolmogorov–Smirnov (KS) test was performed to evaluate the goodness of fit"]
+- step 5: Derive SFR per HII region and GMC
+  - method: Halpha corrected for foreground, [NII], and internal extinction from Pa-beta; SFR from Calzetti calibration; HII regions cross-matched if center lies within GMC ellipse; SFR split by mass among multiple GMCs; upper limit 3.5e-4 Msun/yr for… [5.2 Cross-matching: "If the central position of an $\mathrm{H}\emissiontype{II}$ region is within the boundary of a GMC, then the $\mathrm{H}\emissiontype{II}$ region is judged to be associated with the GMC."]
+  - software: HIIphot
+  - assumption: Cardelli extinction curve, intrinsic Halpha/Pabeta=17.1, median A_Halpha=1.9 mag outside Pabeta FOV [5.1.1 Derivation of Halpha luminosity: "The extinction curve of (cite: Cardelli1989) and the intrinsic ratio of $I_{\mathrm{H}\alpha} / I_{\mathrm{Pa}\beta}$ = 17.1"]
+  - validation: Association radius varied by +/-20% [5.5 SFE_ff for individual GMCs: "By changing the association radius by $\pm$20% as was done in the previous subsection"]
+- step 6: Compute SFE_ff and test with cloud evolution model and feedback forces
+  - method: SFE_ff = SFR tau_ff / M; compare with Feldmann & Gnedin toy model (+/-0.4 dex); compare (F_rad+F_gas)/F_grav [6.1.1 Cloud mass evolution model: "we employ a toy model introduced by (cite: Feldmann2011)"]
+  - assumption: GMC lifetime 15 Myr, alpha_fb=7.3 /Myr, T_HII=1e4 K, Case B [6.1.1 Cloud mass evolution model: "we here adopt the smallest value of 15 Myr: $\alpha_{\mathrm{fb}}$ is derived as 7.3 Myr$^{-1}$."]
+  - validation: Considered IMF sampling and stellar age effects [6.1 Is there intrinsic environmental va…: "We consider three mechanisms here: (1) stochastic sampling of the stellar IMF, (2) uncertainty of stellar ages that affects the SFR calibration factor, and (3) mass consumption of GMCs due to stellar feedback."]
+- result: Number of GMCs = 179 ± not stated dimensionless [4.1 Cloud identification: "After manually flagging three *leaves* with too dispersed appearance, 179 *leaves* remained."]
+- result: Median GMC mass = 1.6e6 ± not stated Msun [Summary: "the median value of the cloud mass is found to be 1.6 $\times$ 10$^6$ ${M}_{\odot}$"]
+- result: Median virial parameter = ~1.4 ± not stated dimensionless [4.5.2 Variation in derived properties: "has a median value of $\sim$1.4 for all samples."]
+- result: Mass spectrum slope (all) = -1.6 ± 0.1 dimensionless [4.7 Mass spectrum of GMCs: "has a slope of $\sim$-1.6 $\pm$ 0.1"]
+- result: Mass-weighted mean SFE_ff = ~9.3e-3 ± not stated dimensionless [5.5 SFE_ff for individual GMCs: "for all GMC samples is $\sim$9.3 $\times$ 10$^{-3}$"]
+- result: Median SFE_ff = 3.0e-3 ± not stated dimensionless [5.5 SFE_ff for individual GMCs: "is 3.0 $\times$ 10$^{-3}$"]
+- result: Radially averaged SFE_ff = 5.8e-3 ± +1.8/-1.4 e-3 dimensionless [5.4 Radially averaged SFR to mass relat…: "5.8$^{+1.8}_{-1.4}$ $\times$ 10$^{-3}$"]
+- result: GMCs with (Frad+Fgas)/Fgrav>1 = 37 of 179, lifetime ~20 Myr ± not stated count [6.2 Impact of stellar feedback: "37 out of 179 are found to have"]
+- limitation (authors): SFR may be underestimated by about a factor of 2; central region feedback uncertain [5.1.2: "the SFR derived here could be underestimated by approximated a factor of 2."]
+- not stated (card): Exact 45-m to ALMA relative weighting factor; CASA version and any pipeline details; CLEAN threshold, masks, cell and image size; Line-free channels used for rms; Exact astrodendro min_delta/min_value in absolute units and pixel size; Bootstrap details for cloud parameter uncertainties; Center position, inclination and PA of M83 (blank in text)
+
+### 2025A&A...701A.141L: Sulfur oxides tracing streamers and shocks at low-mass protostellar disk─envelope interfaces (2025; star_formation, astrochemistry, protoplanetary_disks; observational_alma_primary)
+- question: Do SO and SO2 emission at the disk-envelope interface of nearby Class 0/I protostars with different disk inclinations show accretion-shock signatures (rings, streamers, warm spots), and can one disk-like inner envelope model explain them?
+- step 4: Model SO spiral features as free-fall streamers
+  - method: Ballistic parabolic free-fall trajectories projected onto the sky, parameters theta0, phi0, R_C adjusted by hand to match the morphology [3.1.2 SO spiral-like streamers of diffe…: "we adopt a simplified, hand-drawn, illustrative approach aimed at qualitatively matching the observed morphology"] [3.1.2 SO spiral-like streamers of diffe…: "we model them as gas streamers undergoing ballistic free-fall toward the disk"]
+  - parameter: theta_view and phi_view fixed to the SO ring values (theta_view = 45 deg during follow-up fitting) [3.1.1 SO ring: "During the follow-up fitting, we fixed $\theta_{\rm view}$ to 45$^\circ$."] [3.1.2 SO spiral-like streamers of diffe…: "we fix the viewing angles $\theta_{\rm view}$ and $\phi_{\rm view}$ to match the inclination and azimuth of the SO ring"]
+  - parameter: Free-fall velocities scaled down by ~1.5 [3.1.2 SO spiral-like streamers of diffe…: "we manually scale down the free-fall velocities by a factor of approximately 1.5."]
+  - assumption: Central mass 0.35 Msun [3.1.2 SO spiral-like streamers of diffe…: "The above fitting assumes a central stellar mass of 0.35 $M_\ensuremath{\odot}$"]
+  - assumption: Zero mechanical energy, non-zero specific angular momentum (parabolic orbit) [3.1.2 SO spiral-like streamers of diffe…: "The free-falling gas, characterized by zero mechanical energy and non-zero specific angular momentum, follows a parabolic trajectory in 3D space."]
+  - fitting: Manual adjustment, no objective function stated; theta0 uncertainty ~10 deg [3.1.2 SO spiral-like streamers of diffe…: "The uncertainty of $\theta_0$ is approximately $10^\circ$."]
+  - validation: Midplane-only infall tested via the maximum azimuthal span (<110 deg) and rejected for S1 [3.1.2 SO spiral-like streamers of diffe…: "indicating that their trajectories cannot be explained by midplane infall alone."]
+- step 11: Characterise the L1527 SO strips along the CO outflow boundaries
+  - method: Natural-weighted cube; outflow boundaries drawn by hand on the CO moment 0 and smoothed with cubic interpolation; SO strips modeled with free-fall trajectories in PV space; SO-CO transverse offsets measured with Gaussian fits and a t-stati… [3.3.3 Infalling layer of SO along the o…: "we model the strips in the PV maps using free-fall trajectories"] [Appendix: Emission along outflow bounda…: "The outflow boundaries are manually drawn on the moment 0 map of CO (2–1) of L1527"]
+  - parameter: M = 0.5 Msun, R_C = 1'', theta_view = phi_view = 90 deg, theta0 = 45 deg, phi0 = 0 deg [3.3.3 Infalling layer of SO along the o…: "a centrifugal barrier radius of $R_{\rm C} = 1\ensuremath{''}$, and viewing angles $\theta_{\rm view} = 90\ensuremath{^\circ}$, $\phi_{\rm view} = 90\ensuremath{^\circ}$, with initial trajectory angles $\theta_0 = 45\ensuremath{^\circ}$ and $\phi_0 = 0\ensuremath{^\circ}$"]
+  - assumption: SO layer undergoes free-fall infall rather than outflow [3.3.3 Infalling layer of SO along the o…: "This behavior suggests that the SO layer may be undergoing infalling motion rather than outflowing."]
+  - fitting: Gaussian fits to averaged transverse SO and CO profiles; t-stat = |mu_CO - mu_SO| / sqrt(sigma_CO^2 + sigma_SO^2) [Appendix: Emission along outflow bounda…: "To quantify the significance of the spatial separation between the CO and SO emission, we compute the $t$-statistic as"]
+  - validation: Free-fall model reproduces observed strips; offsets seen in all four boundaries cannot come from image misalignment because transverse directions differ [3.3.3 Infalling layer of SO along the o…: "Remarkably, the free-fall trajectories reproduce the observed strips very well"] [3.3.3 Infalling layer of SO along the o…: "Since the transverse directions differ for each boundary, these systematic offsets cannot be attributed to image misalignment between the CO and SO data."]
+- step 12: Build the semi-analytic constant-J disk-like inner envelope model
+  - method: Extend the CMU model with constant specific angular momentum, so that streams converge at R_C and form a hard-surface envelope with a shock-confined disk-like inner envelope [4 Shock confined outer and inner envelo…: "we constructed a self-consistent model of the disk-envelope system and the streamers"] [4.2 constant-J case: "we adopt a constant-$J$ case with"]
+  - parameter: j(theta0) = 1; v_phi ~ r^-1 and v_r constant in the inner envelope [4.2.2 Disk-like inner envelope confined…: "That is, $v_r$ is constrained to a constant value (with a power-law index $\beta = 0$)"]
+  - assumption: Gas pressure ignored in the free-fall envelope; envelope self-gravity ignored; spherically symmetric accretion at large distance; no magnetic fields [4.1 CMU model: "Under the gravity of the central star (ignoring the envelope’s self-gravity)"] [4.1 CMU model: "Assuming the accretion rate at large distances is spherically symmetric, mass conservation implies the gas density can be expressed as"]
+  - validation: Qualitative agreement with the observed rings, streamers, warm spots and envelope motion; no quantitative fit [5.2 Beyond the observations and models: "the good agreement between observations and our descriptive model suggests that the accretion shock framework remains a valid approach"]
+- result: Oph IRS 63 streamers S1 and S2 model parameters (theta0, phi0, R_C) = S1: 50 deg, 130 deg, 1'' (~130 au); S2: 80 deg, 200 deg, 0.6'' (~80 au) ± theta0 ~10 deg deg, deg, arcsec [Table 1: "S1 | 50 | 130"]
+- result: Oph IRS 63 streamers S3 and S4 model parameters (theta0, phi0, R_C) = S3: 125 deg, -63 deg, 0.6'' (~80 au); S4: 80 deg, -10 deg, 0.6'' (~80 au) ± theta0 ~10 deg deg, deg, arcsec [Table 1: "S3 | 125 | -63"]
+- result: Off-midplane angle of streamers = S1, S4 >~ 30; S2 ~10 ± ~10 deg in theta0 deg [3.1.2 SO spiral-like streamers of diffe…: "For S1 and S4, we find $\theta_0^{\rm off\,disk} \gtrsim 30^\circ$, whereas for S2, it is approximately $10^\circ$."]
+- result: L1527 SW SO strip transverse FWHM (SO, CO) = 1.3; 0.9 ± +/-0.1; +/-0.1 arcsec [3.3.3 Infalling layer of SO along the o…: "The FWHMs of the Gaussian fits are $1.3 \pm 0.1\ensuremath{''}$ for SO and $0.9 \pm 0.1\ensuremath{''}$ for CO."]
+- result: SO-CO transverse offsets (mu_CO - mu_SO) for NE, NW, SE; t-stat 15.3, 14.2, 3.7 = 0.78; 0.84; 0.48 ± +/-0.05; +/-0.06; +/-0.13 arcsec [Table 2: "NE | $-0.18 \pm 0.03$ | $0.60 \pm 0.04$ | $0.78 \pm 0.05$ | 15.3"]
+- result: SO-CO transverse offset for the SW boundary (t-stat 15.0) = 0.75 ± +/-0.05 arcsec [Table 2: "SW | $-0.46 \pm 0.03$ | $0.30 \pm 0.04$ | $0.75 \pm 0.05$ | 15.0"]
+- result: SO line width of the SW strip (stacked) = 0.44 ± +/-0.05 km/s [Appendix: Emission along outflow bounda…: "yielding a line width (FWHM) of $0.44 \pm 0.05$ km s$^{-1}$"]
+- limitation (authors): L1527 SO2 temperature unconstrained because only one transition was observed [3.3.1 Parallel slabs of SO: "Due to the limited data (only one transition), the temperature of the SO$_2$-emitting region cannot be well constrained."]
+- limitation (authors): DK Cha disk rotation direction uncertain [3.2.5 Discussion of the direction of ro…: "Despite the wealth of spatial and spectral information, the exact rotational direction of DK Cha’s disk remains uncertain."]
+- limitation (authors): Ring-fit errors are formal only; streamers and non-elliptical shape add systematics [Appendix: Fitting an elliptical ring: "We note, however, that the presence of streamers and deviations from a perfectly elliptical ring may introduce systematic uncertainties not captured in the formal error estimates."]
+- not stated (card): Which execution blocks / member OUS of 2022.1.01411.S and 2023.1.00592.S were used, and which pipeline version or reprocessing the archive products come from.; Continuum subtraction method and the line-free channels used before making the SO/SO2 cubes; also how the dust continuum image of DK Cha was made (bandwidth, SPWs, self-calibration).; tclean parameters beyond robust and the mask thresholds…
+
+### 2018ApJ...855L..25K: Core Emergence in a Massive Infrared Dark Cloud: A Comparison between Mid-IR Extinction and 1.3 mm Emission (2018; star_formation, milky_way_ism; observational_alma_primary)
+- question: How does the presence of 1.3 mm continuum emitting dense structures (cores) depend on the local mass surface density from MIR extinction in IRDC G28.37+0.07, and what dense gas fraction and star formation efficiency per free-fall time foll…
+- step 4: Estimate dense gas mass fractions
+  - method: Direct mm mass, MIREX mass of detected pixels, and DPF integrated with lognormal Sigma-PDF (inner IRDC and GMC) [3.3 Dense Gas Fraction: "Then the mass of dense, i.e., 1.3mm-emitting, gas is"]
+  - assumption: T=20 K (15-30 K range), kappa=5.95e-3 cm2/g, dust-to-gas 1:141, mean particle mass 2.33 mH [3.1 Comparison: "assuming a dust temperature of 20 K, $\kappa_\nu = 5.95\times 10^{-3}\:{\rm cm^2\:g^{-1}}$"]
+  - validation: f_dg,DPF,0.15-0.65 compared with f_dg,MIREX [4.1 Core/Star Formation Efficiency: "very similar to the values of $f_{\rm dg,MIREX}$ (also compare other values in columns 6 and 7), which indicates that the analytic approximations for the DPF are quite accurate."]
+- step 5: Estimate star formation efficiency per free-fall time
+  - method: Turbulent Core Model: t_*f/t_ff = 0.42 for Mc=5 Msun, M_cl=1e4 Msun; eps_ff from f_dg and eps_core [4.2 Star Formation Rates: "Under these two conditions, $t_{*f}/\bar{t}_{\rm ff,cl}\rightarrow0.42$."]
+  - assumption: eps_core = 0.5; steady SFR; Salpeter CMF 1-240 Msun; mm continuum is complete protostellar core census [4.2 Star Formation Rates: "Assuming the SFR is steady and the CMF is evenly populated"]
+  - validation: compared with Orion Nebula Cluster eps_ff [4.2 Star Formation Rates: "about a factor of two larger than the value estimate inside the half-mass radius of the Orion Nebula Cluster"]
+- result: total mm flux in analyzed region (>3 sigma_center) = 1.42 ± not stated Jy [3.3 Dense Gas Fraction: "is 1.42 Jy (based on detections above $3\sigma_{\rm center}$)"]
+- result: mm-derived dense gas mass = 1.16e3 ± not stated Msun [3.3 Dense Gas Fraction: "which translates into a total mass of $1.16\times10^3\:M_\odot$"]
+- result: total MIREX mass in mapped region = 1.21e4 ± ~30% Msun [3.3 Dense Gas Fraction: "this mass is $1.21\times10^4\:M_\odot$, with uncertainties at the level of about 30%"]
+- result: f_dg,mm (F>=3 sigma_center) = 9.5% ± +4.5/-3.7 % (14% at 30 K, 5.8% at 15 K as quoted) percent [3.3 Dense Gas Fraction: "Thus the direct measure of dense gas mass fraction (expressed as percentages) is $f_{\rm dg,mm}= 9.5\%$ for this case."]
+- result: f_dg,DPF,GMC (fiducial) = 6.5% to 8.2% ± not stated percent [Table 1: "SNR$\geq$3 | 0.044 | 4.6 | 3.3 | 8.7%$_{5.3\%}^{13\%}$ | 13% | 12% | 6.5%"]
+- result: total GMC-scale cloud mass = 170000 ± not stated Msun [3.3 Dense Gas Fraction: "which has a value of 170,000$\:M_\odot$"]
+- result: star formation efficiency per free-fall time = 0.11 ± +0.06/-0.041 (0.17 and 0.069 quoted) dimensionless [4.2 Star Formation Rates: "$\epsilon_{\rm ff}=0.11^{0.17}_{0.069}$"]
+- limitation (authors): Dust temperature assumption is the largest uncertainty (up to factor ~2); MIREX has zero-point offsets, saturation and MIR-source contamination. [3.3 Dense Gas Fraction: "Systematic variations arising from the choice of dust temperature are up to a factor of almost two and are the most significant source of uncertainty"]
+- not stated (card): Clean threshold, number of iterations and masks; Exact uv-taper parameters; Calibration pipeline/CASA version; Which pixels were flagged as MIR-bright sources (visual list); Rebinning and regridding procedure to MIREX grid; Mosaic phase centers/coordinates
+
+### 2020MNRAS.493.5045M: Properties of giant molecular clouds in the strongly barred galaxy NGC 1300 (2020; nearby_galaxies, star_formation; observational_alma_primary)
+- question: Do GMC properties (radius, velocity dispersion, mass, virial parameter) differ between bar, arm and bar-end regions of the strongly barred galaxy NGC 1300, where star formation efficiency differs?
+- step 2: Identify GMCs in the cube
+  - method: 3-D clump finding with CPROPS: islands above threshold, watershed decomposition into clouds [4.1 GMCs Identification: "we used 3-D clumps finding algorithm CPROPS (cite: RosolowskyLeroy) which is designed to identify GMCs well even at low sensitivities"] [4.1 GMCs Identification: "CPROPS searches for local maxima within a box of three times the beam and channel width"]
+  - software: CPROPS
+  - parameter: THRESHOLD t = 4.0, EDGE e = 1.5 [4.1 GMCs Identification: "We chose $t = 4.0$ and $e = 1.5$ to ensure consistency with ."]
+  - parameter: SIGDISCONT = 0.0 (each local maximum is an independent cloud) [4.1 GMCs Identification: "to 0.0 which makes no attempt to merge the two local maxima into a single cloud"]
+  - parameter: NONUNIFORM flag used for spatially varying rms noise [4.1 GMCs Identification: "Thus, we calculated a spatially varying of the rms noise in the map by calling"]
+  - parameter: Islands allowed with pixels above 4 sigma in only one channel [4.1 GMCs Identification: "we allowed CPROPS to identify an island which has pixels above"]
+  - validation: Visual inspection of line profiles; same search on the cube scaled by -1 found false positives only among single-channel detections (3 of 67) [5 Basic properties of GMCs: "We inspected the CO line profiles from each GMC CPROPS identified visually, and an obvious spurious signal was not found."] [5 Basic properties of GMCs: "CPROPS identified three false positives which have pixels above"]
+- step 3: Measure and derive GMC physical properties
+  - method: CPROPS moment measurements extrapolated to zero sensitivity and deconvolved; L_CO from F_CO and distance; M_mol = alpha_CO L_CO; virial mass, surface density, virial parameter and scaling coefficient from R and sigma_v [4.2.1 Size, velocity width and CO lumin…: "CPROPS determines the size, velocity width and flux of GMCs using moment methods."] [4.2.1 Size, velocity width and CO lumin…: "CPROPS corrects for the sensitivity by extrapolating GMC properties to those we would expect to measure with perfect sensitivity"]
+  - software: CPROPS
+  - parameter: Distance 20.7 Mpc [4.2.1 Size, velocity width and CO lumin…: "the distance to NGC 1300 of 20.7 Mpc"]
+  - parameter: R = (3.4/sqrt(pi)) sigma_r [4.2.1 Size, velocity width and CO lumin…: "The effective radius of the GMC is defined as $R = (3.4/\sqrt{\pi})\sigma_{r}$"]
+  - parameter: Uncertainties from bootstrapping with 50 realizations [4.2.2 Derived Properties: "CPROPS estimates the uncertainty of these GMC properties using a bootstrapping method"]
+  - assumption: alpha_CO = 4.4 Msun (K km/s pc^2)^-1, including a factor 1.36 for helium [4.2.2 Derived Properties: "includes a factor of 1.36 to account for the presence of helium"]
+  - assumption: Spherical cloud with rho proportional to r^-n, n = 1; magnetic fields and external pressure negligible [4.2.2 Derived Properties: "We assume that magnetic fields and external pressure are negligible."]
+  - validation: Mock-GMC simulations (step 8) [5.2.1 CPROPS bias: "In order to assess the reliability of the measurements of GMC properties, we simulated ALMA observation of mock GMCs"]
+- step 4: Define mass-complete and resolved samples
+  - method: Mass-completeness limit from minimum detectable GMC; resolved sample requires Mmol >= 5e5 Msun and R > 15 pc, mass-complete sample Mmol > 2e5 Msun [5 Basic properties of GMCs: "The mass completeness limit is estimated to be $2.0 \times 10^5 ~M_\odot$"] [5 Basic properties of GMCs: "we defined the GMCs with $M_{\rm mol} \geq 5.0 \times 10^5~M_\odot$ and $R > 15$ pc as a resolved sample"]
+  - validation: Ratio of directly measured to corrected radius examined versus radius; 154 of 233 GMCs resolved [5 Basic properties of GMCs: "We find that 154 of these 233 GMCs are resolved by the synthesized beam."]
+- step 5: Test environmental variation of GMC properties
+  - method: Two-sided two-sample K-S test between Bar, Arm and Bar-end; p-value and uncertainty from 100 resampled realizations (median and MAD) [5.1 Variation of GMC physical propertie…: "We used the two-sided Kolmogorov-Smirnov (K-S) test to statistically evaluate differences in GMC property distributions for different environments in NGC 1300."] [5.1 Variation of GMC physical propertie…: "To estimate the uncertainties of the $p$-values, we made resampling with 100 realizations."]
+  - software: SciPy
+  - parameter: Significant if p < 0.01, marginal for 0.01 to 0.05 [5.1 Variation of GMC physical propertie…: "the two cumulative distribution functions are considered to be significantly different if the $p$-value is less than 0.01"]
+  - parameter: T_peak uncertainty taken as the cube rms, 0.36 K [5.1 Variation of GMC physical propertie…: "we applied rms noise of the data cube, 0.36 K as the uncertainty"]
+  - validation: Re-ran K-S test on catalog corrected for CPROPS bias; p-values do not change much [CPROPS bias (Appendix): "We retested the environmental variation of the GMC properties using the corrected catalog."]
+- step 6: Examine scaling relations
+  - method: Spearman rank correlation and ordinary least-squares fits for size-velocity dispersion, virial-luminous mass, size-mass and sigma_v^2/R versus Sigma_mol for resolved GMCs [6 Scaling relations: "we calculate the Spearman’s rank correlation coefficient"] [6.2 Virial Equilibrium: "represents the best-fitted line determined by the ordinary least-squares method"]
+  - parameter: r_s >= 0.8 strong, 0.5 < r_s < 0.8 moderate [6 Scaling relations: "we regard $r_s \geq 0.8$ as a sign of strong correlation"]
+  - fitting: Ordinary least squares [6.2 Virial Equilibrium: "represents the best-fitted line determined by the ordinary least-squares method"]
+- step 7: Fit cumulative GMC mass spectra
+  - method: Truncated power-law cumulative mass function (Williams and McKee 1997) fitted to GMCs above 5e5 Msun; errors from 100 resampled realizations [7 GMC mass spectra: "a truncated power-law is suitable as a cumulative mass spectrum"] [7 GMC mass spectra: "Thus, we fitted the mass spectrum using the GMCs with"]
+  - parameter: 100 resampling realizations; median and MAD adopted as best fit and interval [7 GMC mass spectra: "The median and the MAD of 100 realizations for each parameter were adopted as the best-fitted value and the confidence interval"]
+  - fitting: Truncated power law with gamma, M_u, N_u free; fitting algorithm, priors and likelihood not stated [7 GMC mass spectra: "We fitted the cumulative GMC mass spectrum with equation"]
+  - validation: K-S test p-values as goodness of fit [7 GMC mass spectra: "We list the $p$-values of the K-S tests as an indication of the goodness-of-fit"]
+- step 8: Assess systematics: CPROPS bias and missing flux
+  - method: CASA simobserve of mock 3-D Gaussian GMCs followed by tclean and CPROPS; flux-recovery test with Gaussian sources and comparison with Nobeyama 45-m spectra [CPROPS bias (Appendix): "we simulate observation under the same configuration, pointings, and noise condition of our ALMA observations"] [5.2.2 Impact of the missing flux: "We find that the average recovery fraction is 54 % with typical uncertainty of 5 %"]
+  - software: CASA, simobserve, tclean, CPROPS
+  - parameter: log Mmol 5.3-6.8, log R 1.5-2.2, log sigma_v 0.3-1.1; axis ratio 1.0; 12 repeats; S/N 4-10 extracted [CPROPS bias (Appendix): "$1.5\leq \log(R/[{\rm pc}]) \leq 2.2$"] [CPROPS bias (Appendix): "The GMCs are round clouds (i.e., axis ratio = 1.0)."]
+  - assumption: alpha_CO 4.4 for mock clouds [CPROPS bias (Appendix): "Here, we assume the CO-to-H$_2$ conversion factor of $4.4~M_\odot~(\rm K~km~s^{-1}~pc^2)^{-1}$."]
+  - validation: Correction factors applied to the catalog and K-S tests repeated; conclusions unchanged [CPROPS bias (Appendix): "Therefore, the over/underestimation of the measurements does not influence on the discussion about the environmental variation"]
+- result: Number of GMCs identified = 233 ± not stated dimensionless [5 Basic properties of GMCs: "CPROPS identified 233 GMCs in the data cube."]
+- result: GMCs per environment (Bar, Arm, Bar-end) = 34, 119, 49 (31 in interarm) ± not stated dimensionless [5 Basic properties of GMCs: "We detected 34, 119, and 49 GMCs in"]
+- result: Mass completeness limit = 2.0e5 ± not stated Msun [5 Basic properties of GMCs: "The mass completeness limit is estimated to be $2.0 \times 10^5 ~M_\odot$"]
+- result: Median T_peak, Bar = 2.2 ± +0.2/-0.2 K [Table of GMC properties (Section 5.1): "$2.2^{+0.2}_{-0.2}$"]
+- result: Median T_peak, Arm = 2.6 ± +0.7/-0.4 K [Table of GMC properties (Section 5.1): "$2.6^{+0.7}_{-0.4}$"]
+- result: Median T_peak, Bar-end = 3.5 ± +0.8/-0.7 K [Table of GMC properties (Section 5.1): "$3.5^{+0.8}_{-0.7}$"]
+- result: Median sigma_v, Bar = 5.7 ± +0.8/-0.9 km/s [Table of GMC properties (Section 5.1): "$5.7^{+0.8}_{-0.9}$"]
+- result: Median sigma_v, Arm = 5.0 ± +1.5/-0.8 km/s [Table of GMC properties (Section 5.1): "$5.0^{+1.5}_{-0.8}$"]
+- result: Median sigma_v, Bar-end = 5.6 ± +2.0/-0.9 km/s [Table of GMC properties (Section 5.1): "$5.6^{+2.0}_{-0.9}$"]
+- result: Median M_mol, Bar = 5.5e5 ± +2.7/-1.8 (e5) Msun [Table of GMC properties (Section 5.1): "$5.5^{+2.7}_{-1.8}$"]
+- result: Median M_mol, Arm = 5.1e5 ± +4.6/-1.7 (e5) Msun [Table of GMC properties (Section 5.1): "$5.1^{+4.6}_{-1.7}$"]
+- result: Median M_mol, Bar-end = 8.4e5 ± +7.1/-3.4 (e5) Msun [Table of GMC properties (Section 5.1): "$8.4^{+7.1}_{-3.4}$"]
+- result: Median alpha_vir, Bar = 2.3 ± +0.6/-1.0 dimensionless [Table of GMC properties (Section 5.1): "$2.3^{+0.6}_{-1.0}$"]
+- result: Median alpha_vir, Arm = 1.7 ± +0.4/-0.7 dimensionless [Table of GMC properties (Section 5.1): "$1.7^{+0.4}_{-0.7}$"]
+- result: Median alpha_vir, Bar-end = 1.3 ± +0.9/-0.4 dimensionless [Table of GMC properties (Section 5.1): "$1.3^{+0.9}_{-0.4}$"]
+- result: Fraction of unbound GMCs (alpha_vir > 2), Bar = 58 % ± 8 % percent [5.1 Variation of GMC physical propertie…: "$58 \pm 8$ % of the GMCs in"]
+- result: Fraction of unbound GMCs, Arm and Bar-end = 33 % and 29 % ± 4 % and 3 % percent [5.1 Variation of GMC physical propertie…: "$33 \pm 4$ % and $29 \pm 3$ %"]
+- result: K-S p-value M_mol, Bar vs Bar-end = 0.027 ± 0.017 dimensionless [Table of K-S test results (Section 5.1): "$0.027 \pm 0.017 (0.037)$"]
+- result: K-S p-value M_mol, Arm vs Bar-end = 0.007 ± 0.004 dimensionless [Table of K-S test results (Section 5.1): "$0.007 \pm 0.004 (0.004)$"]
+- result: K-S p-value alpha_vir, Bar vs Arm = 0.183 ± 0.114 dimensionless [Table of K-S test results (Section 5.1): "$0.183 \pm 0.114 (0.050)$"]
+- result: Spearman r_s, size versus velocity dispersion = -0.04 ± not stated dimensionless [6.1 Size-velocity dispersion relation: "the correlation is not seen ($r_s = -0.04$)"]
+- result: M_vir versus M_mol power-law index, whole region = 0.70 ± 0.35 dimensionless [6.2 Virial Equilibrium: "$M_{\rm vir} \propto M_{\rm mol}^{0.70 \pm 0.35}$ in the whole region"]
+- result: Median P_int/k, Bar, Arm, Bar-end = 2.2, 2.9, 3.3 (x1e5) ± +6.2/-1.4, +4.6/-2.5, +10.5/-1.6 cm^-3 K [6.4 Relationship between sigma_v^2/R an…: "$2.2^{+6.2}_{-1.4}$, $2.9^{+4.6}_{-2.5}$, and $3.3^{+10.5}_{-1.6} \times 10^5~\rm cm^{-3}~K$"]
+- result: Mass spectrum slope gamma, Bar = -1.97 ± 0.20 dimensionless [Table 2: "$-1.97 \pm 0.20$"]
+- result: Mass spectrum slope gamma, Arm = -2.08 ± 0.10 dimensionless [Table 2: "$-2.08 \pm 0.10$"]
+- result: Mass spectrum slope gamma, Bar-end = -1.66 ± 0.07 dimensionless [Table 2: "$-1.66 \pm 0.07$"]
+- result: Upper cutoff mass M_u, Bar = 6.26e6 ± 3.04e6 Msun [Table 2: "$6.26 \pm 3.04$"]
+- result: Upper cutoff mass M_u, Arm = 5.31e6 ± 0.36e6 Msun [Table 2: "$5.31 \pm 0.36$"]
+- result: Upper cutoff mass M_u, Bar-end = 14.8e6 ± 0.93e6 Msun [Table 2: "$14.8 \pm 0.93$"]
+- result: ALMA flux recovery fraction versus Nobeyama 45-m = 54 % ± 5 % percent [5.2.2 Impact of the missing flux: "We find that the average recovery fraction is 54 % with typical uncertainty of 5 %"]
+- result: Overestimate of sigma_v by CPROPS for narrow lines = ~1.5 ± not stated dimensionless [CPROPS bias (Appendix): "CPROPS overestimates $\sigma_v$ by a factor of $\sim 1.5$ regardless of S/N"]
+- limitation (authors): Many cataloged sigma_v values may be overestimated by ~1.5 because lines are narrow compared to the channel width [5.2.1 CPROPS bias: "Therefore, a large number of cataloged GMCs may be overestimated in the"]
+- limitation (authors): Only 154 of 233 GMCs are resolved; radii near the beam are highly uncertain [5 Basic properties of GMCs: "We find that 154 of these 233 GMCs are resolved by the synthesized beam."]
+- not stated (card): tclean niter, cleaning threshold, mask and gridder settings are not given; Which channels or velocity range were cleaned, and how the 5 km/s cube was built (tclean width versus rebinning) are not stated; No continuum subtraction or line-free channels are mentioned for the 12CO cube; CPROPS parameters beyond THRESHOLD, EDGE, SIGDISCONT, NONUNIFORM and the one-channel island option are not given (e…
+
+### 2020ApJ...894...87C: Gas Kinematics of the Massive Protocluster G286.21+0.17 Revealed by ALMA (2020; star_formation, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: What are the gas kinematics and dynamical (virial) state of the massive protocluster G286 from clump to dense-core scales, as traced by C18O, N2D+, DCO+ and DCN?
+- step 3: Filament virial analysis of NE-SW filament
+  - method: Gaussian fit of C18O spectra in four 60x20 arcsec strips from 7m-only cube; compute m_f/m_vir,f with thermal correction; infall mass estimate from velocity gradient [4 Filamentary Virial Analysis: "We perform gaussian fitting to measure the average centroid velocity $\overline{v}_f$ and velocity dispersion $\sigma_{\rm C^{18}O}$."]
+  - parameter: Surface pressure and magnetic terms ignored [4 Filamentary Virial Analysis: "we ignore the surface term and magnetic energy term, i.e., only considering the balance between gravity and internal pressure support."]
+  - assumption: Distance 2.5 kpc; inclination 60 deg; T = 20 K; mu_p = 2.33 [4 Filamentary Virial Analysis: "we further assume the filament axis is inclined by an angle $i = 60^\circ$ to the line of sight"]
+  - fitting: Gaussian fits, two components for strips 1 and 3 [4 Filamentary Virial Analysis: "For strips 1 and 3, two Gaussian components are used for a better fitting."]
+  - validation: Compared 1.3 mm masses with Herschel masses; compared with DCO+ to pick the associated component [4 Filamentary Virial Analysis: "We find the 1.3 mm-derived mass estimates are about a factor of two smaller than that measured from the *Herschel*-SED fitting method."]
+- step 6: Core virial parameters
+  - method: alpha = 5 sigma_c^2 R_c/(G M_c) with thermal-corrected dispersion; two radius definitions (dendrogram and deconvolved) [5.5 Virial state of dense cores: "$$\begin{equation} \alpha \equiv 5\sigma_c^2R_c/(GM_{c}) = 2aE_K/|E_G|, \end{equation}$$"]
+  - parameter: Deconvolved analysis excludes cores with area <1.5 x A_beam (34 of 76) [5.5 Virial state of dense cores: "This criterion excludes 34 out of 76 cores."]
+  - assumption: T=20 K masses; k_rho=1.5, a=5/4; alpha_cr = 2a [5.5 Virial state of dense cores: "a virial parameter above a critical value $\alpha_{\rm cr}= 2a$ indicates that the core is unbound"]
+  - validation: Uncertainty budget: ~factor 2.5 absolute; T=15/30 K changes alpha by 0.6/1.9 [5.5 Virial state of dense cores: "we estimate the absolute virial parameter uncertainties to be about a factor of 2.5"]
+- step 7: Core-to-core velocity dispersion vs clump virial dispersion
+  - method: Standard deviation of core centroid velocities; compare with sigma_cl,vir = sqrt(aGM/5R) and TP C18O Gaussian width; split into blue and red groups [5.6 Core to core velocity dispersion: "We then calculate the standard deviation of these distributions"]
+  - parameter: R_cl = 1.54 pc; M ~ 2900 Msun; 50% mass uncertainty [5.6 Core to core velocity dispersion: "We choose a size of $R_{\rm cl} = 1.54$ pc"]
+  - assumption: k_rho=1.5, a=5/4; gas mass only [5.6 Core to core velocity dispersion: "As with cores, we again adopt $k_\rho=1.5$, so that $a=5/4$."]
+  - validation: Errors are sampling errors only, assuming normal distribution [5.6 Core to core velocity dispersion: "The uncertainties here only account for sampling errors due to limited sample size, assuming the data points are drawn from a normal distribution."]
+- result: Filament m_f/m_vir,f range over four strips = 0.60 to 2.39 ± ~50% systematic dimensionless [4 Filamentary Virial Analysis: "The values of $m_f/m_{\rm vir,f}$ of the four strips range from 0.60 to 2.39."]
+- result: Filament velocity gradient (plane of sky) = 2.84 ± not stated km/s/pc [4 Filamentary Virial Analysis: "which corresponds to an overall velocity gradient of $2.84\:{\rm km\:s^{-1}\:pc}^{-1}$ using plane-of-sky projected distance"]
+- result: Dynamical mass from filament infall (i=60 deg) = 1410 ± not stated Msun [4 Filamentary Virial Analysis: "we thus estimate the dynamical mass to be $1410\:M_\odot$, assuming $i = 60^{\circ}$"]
+- result: Median virial parameter (deconvolved radius, averaged tracers) = 1.22 ± std 0.88; factor ~2.5 systematic dimensionless [5.5 Virial state of dense cores: "we obtain a median value of 1.22, and a standard deviation of 0.88"]
+- result: Core-to-core velocity dispersion (C18O) = 1.27 ± 0.11 km/s [5.6 Core to core velocity dispersion: "obtaining 1.27 $\pm$ 0.11 km s$^{-1}$ for the $\rm C^{18}O$-detected sample"]
+- result: Clump virial velocity dispersion = 1.42 ± 0.36 km/s [5.6 Core to core velocity dispersion: "Thus, $\sigma_{\rm cl,vir}=1.42 \pm 0.36$ km s$^{-1}$"]
+- result: Clump gas velocity dispersion from TP C18O = 1.12 ± 0.01 km/s [5.6 Core to core velocity dispersion: "$\sigma_{\rm cl}$ (1.12 $\pm$ 0.01 km s$^{-1}$)"]
+- limitation (authors): Large systematic uncertainties in virial parameters (temperature, mass, distance), so supervirial vs subvirial unclear [5.5 Virial state of dense cores: "given the potentially large systematic uncertainties it is difficult to be more certain about whether the dense cores are actually closer to a supervirial or subvirial state"]
+- limitation (authors): Many cores are not well resolved [5.1 Review of the core sample: "indicating many cores are not well resolved"]
+- not stated (card): CLEAN threshold, niter, masking, cell and image size, multiscale settings; Line-free channels used for continuum; Flux calibrator and flux-scale uncertainty; Feathering procedure parameters; Velocity channel width of final cubes and spectral smoothing; Aperture/pixel selection used for core-averaged spectra; Initial guesses and bounds for Gaussian and hyperfine fits; Rest frequencies for DCO+ and…
+
+### 2025PASJ...77..616I: Cloud-cloud collisions in the Antennae galaxies: Does high-speed collision suppress star formation? (2025; nearby_galaxies, star_formation; archival_reuse)
+- question: How the star formation rate on a sub-kpc scale and the star formation efficiency of a colliding GMC depend on cloud-cloud collision velocity and GMC mass across the Antennae galaxies
+- step 4: identify GMCs in the CO cube
+  - method: Rosolowsky & Leroy (2006) significant-emission mask, then PYCPROPS decomposition (local maxima, watershed with compactness parameter) [4.1 GMC identification: "Second, we decomposed the significant emissions into individual GMCs by using 3D clump-finding algorithm PYCPROPS (cite: Rosolowsky+21)."]
+  - software: PYCPROPS, astrodendro
+  - parameter: mask h = 5 sigma, l = 2 sigma, sigma = 0.14 K [4.1 GMC identification: "We chose $h=5$ and $l=2$, and $\sigma=0.14$K."]
+  - parameter: delta = 2 sigma [4.1 GMC identification: "In this study, we used $\delta = 2\sigma$."]
+  - parameter: compactness = 0.001 [4.1 GMC identification: "Therefore, we adopted a small compactness parameter of 0.001."]
+  - parameter: sigdiscont = 0.0, specfriends = 0, friends = 0 [4.1 GMC identification: "each local maximum that satisfies the above conditions is assigned to an individual independent cloud (i.e., sigdiscont parameter is set to be 0.0)"] [4.1 GMC identification: "i.e., specfriends = 0 and friends = 0"]
+  - validation: Visual check of GMC boundaries on channel map, PV diagram and spectra; parameter variations (h, l) change mask flux by <6% [4.1 GMC identification: "Adopting $h$ of 4 or 6 and $l$ of 1.5 or 2.5 results in less than 6% change of the total flux in the mask."]
+- step 5: measure GMC mass, radius and line width
+  - method: PYCPROPS extrapolated, beam- and channel-deconvolved moments; luminosity mass M_mol = alpha_CO times summed brightness [4.2 Derivation of physical properties o…: "The luminosity mass of a GMC is derived by converting the integrated flux in the GMC as"]
+  - software: PYCPROPS
+  - parameter: alpha_CO = 4.36 Msun (K km/s pc^2)^-1, single value for the whole region [4.2 Derivation of physical properties o…: "In this study, we adopt a single value of $4.36$$M_\odot$(Kkms$^{-1}$pc$^2$)$^{-1}$ as $\alpha_{\mathrm{CO}}$ for the entire region"]
+  - assumption: distance 22 Mpc [2.1 12CO(1-0): "which corresponds to a physical scale of 76pc $\times$ 60pc at 22Mpc"]
+  - assumption: 2D Gaussian surface brightness, eta ~1.18 in R = eta sqrt(sigma_maj sigma_min) [4.2 Derivation of physical properties o…: "By assuming that the distribution of the surface brightness of a GMC is a two-dimensional Gaussian, $\eta$ is calculated to be $\sqrt{2\ln 2} \sim 1.18$"]
+  - validation: Median properties compared with earlier GMC studies of the Antennae (massive GMCs, sigma_v 10-30 km/s) [4.3 GMCs in the Antennae galaxies: "They found a significant population of massive GMCs ($\sim10^8$$M_\odot$) in the active overlap and nuclear regions"]
+- step 6: estimate collision velocity and typical mass per aperture
+  - method: Hexagon apertures (300 pc side) centred every 300 pc; median GMC mass per aperture; v_col = sqrt(3 sum (v_los - mean)^2 / N) over GMCs in the aperture [5 Aperture analysis: "we took hexagon apertures with 300pc side"] [5 Aperture analysis: "we estimated the typical value of the collision velocity of the GMCs in each aperture as"]
+  - parameter: 876 apertures in total, 1-27 GMCs each [5 Aperture analysis: "The total number of apertures is 876 and the number of the GMCs in an aperture is 1–27 with a typical value of 6."]
+  - parameter: apertures with a single GMC excluded; keep N_ap f_CCC > 0.1 per Myr (560 apertures) [5 Aperture analysis: "Out of 876 apertures, 560 apertures meet this criterion."]
+  - assumption: GMCs move randomly in 3-dimensional space within the aperture [5 Aperture analysis: "assuming that GMCs are moving randomly in 3-dimension space in the aperture"]
+  - validation: v_col comparable to separation of most distant CO profile peaks; consistent with Tsuge+21 values of ~100 km/s; aperture size 200 and 400 pc tested [5 Aperture analysis: "The estimated collision velocity is comparable to the difference of the velocity for the most separated peaks of the CO profile in the aperture."] [5 Aperture analysis: "If we use 200 and 400pc as a side of the hexagon of the apertures, the final conclusions are not affected"]
+- step 7: relate Sigma_SFR to v_col and GMC mass
+  - method: Plot Sigma_SFR of each aperture against <M_mol> and v_col, overall and by region; also <M_mol> divided into five bins [6 Results: "To explore this further, figure [11](#fig:CCC_SFRplot)b shows the $\Sigma_{\rm SFR}^{\rm ap}$ as a function of the $v_{\rm col}$, with the $\langle M_{\rm mol} \rangle$ divided into five bins (colored lines)."]
+  - validation: Qualitative trend compared with NGC 1300 (Maeda+21) [6 Results: "This trend is qualitatively similar to that seen in the nearby barred spiral galaxies (cite: Maeda+21)."]
+- step 9: test robustness to delta, compactness and aperture size
+  - method: Repeat the main plots with delta = 1.5 and 2.5, compactness = 0.1 and 0.00001, and aperture sides of 200 and 400 pc [Effects of Parameter Choices: "If we use $\delta=$1.5 and 2.5 instead of $\delta=2.0$, 2243 and 1415 GMCs are identified, respectively."]
+  - software: PYCPROPS
+  - validation: Three characteristic parameter spaces and the eps_CCC trend persist under all variations [Effects of Parameter Choices: "however, three characteristic parameter spaces discussed in section [6](#sec:results) remain."]
+- result: Number of GMCs identified = 1759 ± not stated dimensionless [4.3 GMCs in the Antennae galaxies: "We identified 1759 GMCs in the Antennae galaxies."]
+- result: Median GMC mass, radius, line width = M_mol ~10^6.5 Msun, R ~60 pc, sigma_v ~10 km/s ± not stated Msun; pc; km/s [4.3 GMCs in the Antennae galaxies: "with the median value of $M_{\mathrm{mol}}\sim 10^{6.5}$$M_\odot$, $R\sim60$pc, and $\sigma_v\sim10$kms$^{-1}$, respectively."]
+- result: Number of apertures; number kept for analysis = 876 total; 560 with N_ap f_CCC > 0.1 per Myr ± not stated dimensionless [5 Aperture analysis: "Out of 876 apertures, 560 apertures meet this criterion."]
+- result: Collision velocity range across the Antennae = ~10-150 ± not stated km/s [5 Aperture analysis: "The Antennae galaxies exhibit a wide range of the collision velocity of $\sim10$–$150$kms$^{-1}$."]
+- result: Number of GMCs for delta = 1.5 and 2.5 = 2243 and 1415 ± not stated dimensionless [Effects of Parameter Choices: "If we use $\delta=$1.5 and 2.5 instead of $\delta=2.0$, 2243 and 1415 GMCs are identified, respectively."]
+- limitation (authors): Individual colliding cloud pairs cannot be identified at this resolution and sensitivity [Introduction: "Unfortunately, the resolution and sensitivity of the data we use in this study are not good enough to identify individual colliding cloud pairs."]
+- limitation (authors): Only sub-kpc statistical properties examined; higher sensitivity and resolution data are desirable [Summary: "However, we only focused on the properties in sub-kpc regions and it is desirable to identify individual colliding clouds using more sensitive and high-resolution data"]
+- limitation (authors): eps_CCC combines two factors that cannot be measured separately [7 Star formation efficiency for a colli…: "However, since these two values cannot be measured separately, in this study we examine only $\epsilon_{\mathrm{CCC}}$."]
+- not stated (card): Which execution blocks / member OUS were used and how the EA ARC calibrated visibilities were produced (pipeline or manual, CASA version of calibration); Line-free channels and polynomial order for uvcontsub; Image size, phase centre, mosaic gridder and spw/velocity range of the cube; velocity start and channel grid; tclean niter, thresholds, automasking parameters and uv-taper (if any); Featheri…
+
+### 2025A&A...701A.120P: ALMA survey of a massive node of the Cosmic Web at z ∼ 3: II. A dynamically cold and massive disk galaxy in the proximity of a hyper-luminous quasar (2025; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Characterize the massive rotating disk MQN01-QC near QSO CTS G18.01 and test the origin of the quasar host's blueshifted CO(4–3) emission.
+- step 13: Estimate dynamical and virial masses
+  - method: Companion: Mdyn=vcirc²R/G. Quasar: imfit CO size, then dispersion-dominated and rotation-dominated mass estimators using systemic linewidth. [Dynamical and virial mass estimates of …: "$M_{\rm dyn}(<R)\,[M_{\astrosun}] = \frac{\varv^{2}_{\rm circ}}{G}R"] [Dynamical and virial mass estimates of …: "we modeled the CO(4–3) line map with a 2D Gaussian using the CASA task `imfit`"]
+  - software: CASA, imfit
+  - parameter: Quasar: systemic CO(4–3) linewidth; k=3/2; inclination 40 ± 10 deg from axial ratio. [Dynamical and virial mass estimates of …: "we employ $k=3/2$."] [Dynamical and virial mass estimates of …: "we use the width of the systemic component of the CO(4–3) line profile"]
+  - assumption: Companion: spherical mass distribution; negligible pressure support, vcirc≈Vrot; add 20% uncertainty toward lower mass. [Dynamical and virial mass estimates of …: "Under the assumption that the mass distribution is spherically symmetric"] [Dynamical and virial mass estimates of …: "negligible pressure support, thus making $\varv_{\rm circ}\approx V_{\rm rot}$."]
+  - assumption: Quasar alternatives: dispersion-dominated system or regular rotation. [Dynamical and virial mass estimates of …: "under the assumption of dispersion-dominated system"] [Dynamical and virial mass estimates of …: "the bulk of the emitting gas is dominated by regular rotation"]
+  - fitting: Quasar CO image: 2D Gaussian with imfit. [Dynamical and virial mass estimates of …: "we modeled the CO(4–3) line map with a 2D Gaussian using the CASA task `imfit`"]
+  - validation: Quasar CO half-light radius agrees with 3-mm continuum size within uncertainties. [Dynamical and virial mass estimates of …: "this size is consistent within the uncertainties with the half-light radius of quasar host galaxy as measured from the 3-mm continuum emission"]
+- step 15: Test tidal interaction as the blue-wing origin
+  - method: Inspect intergalaxy PVD for bridges; numerically calculate Jacobi radii from effective two-body potential; calculate minimum quasar mass needed to disturb the companion. [Origin of the blueshifted emission of t…: "we report the PVD extracted from a slit connecting the quasar host and the MQN01-QC galaxy."] [Origin of the blueshifted emission of t…: "we compute the tidal radius of the MQN01-QC galaxy ($R_{\rm J}$) and that of the quasar host ($r_{\rm J}$)"]
+  - parameter: Real-space separation 10 kpc; measured dynamical/virial masses taken as total galaxy masses. [Origin of the blueshifted emission of t…: "a conservative (i.e., lower limit) real-space physical separation between the galaxies of $10\,{\rm kpc}$"] [Origin of the blueshifted emission of t…: "as estimates of the total mass of the individual galaxies."]
+  - assumption: Spherically symmetric potentials; circular orbits around the two-body center of mass. [Origin of the blueshifted emission of t…: "under the hypotheses of spherically symmetric gravitational potentials and that galaxies are moving on circular orbits around the center of mass of the two-body system"]
+  - validation: Simplified tidal calculation disfavors significant stripping, but conflicts with the tentative PVD impression; tidal stripping remains possible. [Origin of the blueshifted emission of t…: "tidal effects are expected to be negligible in this system."] [Origin of the blueshifted emission of t…: "we cannot completely rule out the tidal stripping scenario"]
+- result: MQN01-QC dynamical mass within 4.1 kpc = 2.5 ± +0.6/-1.1 10^11 M_sun [Dynamical and virial mass estimates of …: "$M_{\rm dyn}^{\rm QC}(< 4.1\,{\rm kpc}) = 2.5^{+0.6}_{-1.1}\times 10^{11}\,M_{\astrosun}$."]
+- result: Quasar dispersion-dominated virial mass within 1.3 kpc = 1.3 ± +0.6/-0.4 10^10 M_sun [Dynamical and virial mass estimates of …: "$M_{\rm vir}^{\rm QSO}(< 1.3\,{\rm kpc}) = 1.3^{+0.6}_{-0.4}\times 10^{10}\,M_{\astrosun}$."]
+- result: Quasar rotation-dominated dynamical mass within 1.3 kpc = 0.7 ± +0.8/-0.3 10^11 M_sun [Dynamical and virial mass estimates of …: "$M_{\rm dyn}^{\rm QSO}(< 1.3\,{\rm kpc})=0.7^{+0.8}_{-0.3}\times 10^{11}\,M_{\astrosun}$."]
+- result: Quasar CO(4–3) half-light radius = 1.31 ± ±0.15 kpc [Dynamical and virial mass estimates of …: "$R_{\rm 1/2,\,CO(4-3)}^{\rm QSO} = 1.31\pm0.15\,{\rm kpc}$"]
+- result: Tentative blueshifted CO(4–3) extent in line-of-sight velocity = approximately −900 ± not stated km s−1 [Origin of the blueshifted emission of t…: "albeit tentatively (${\rm S/N\apprge 1}$) – blueshifted gas emission traced by the CO(4–3) line up to line-of-sight velocities of approximately $-900\,{\rm km\,s^{-1}}$"]
+- result: MQN01-QC tidal radius under adopted two-body assumptions = ≃7.8–5.5 ± not stated kpc [Origin of the blueshifted emission of t…: "$R_{\rm J}\simeq 7.8-5.5\,{\rm kpc}$"]
+- result: Quasar host tidal radius under adopted two-body assumptions = ≃2.1–4.5 ± not stated kpc [Origin of the blueshifted emission of t…: "$r_{\rm J}\simeq 2.1-4.5\,{\rm kpc}$."]
+- result: Minimum quasar host mass to strongly disturb MQN01-QC = ≃5 × 10^11 ± not stated M_sun [Origin of the blueshifted emission of t…: "This yields a minimum mass of the quasar host of $\simeq 5\times 10^{11}\,M_{\astrosun}$"]
+- limitation (authors): Gas-mass uncertainties omit conversion-factor systematics. [Molecular gas mass and dust characteris…: "the reported uncertainties on molecular gas masses do not take into account systematic uncertainties on the assumed conversion factors."]
+- limitation (authors): Stellar mass has quasar-subtraction and limited-filter systematics; quoted aperture-flux errors exclude potential systematic errors. [Stellar mass estimation of MQN01-QC fro…: "considering the photometric systematic uncertainties originating from the quasar light subtraction and the lack of flux measurements from other filters."]
+- not stated (card): Exact line-free channel ranges for continuum imaging and imcontsub.; Complete tclean calls, including image dimensions, spectral frame and velocity convention, clean iteration limit, and mask centers.; Explicit final cleaned-cube spectral grid; 25 km s−1 is specified for the initial dirty cube.; Detailed band 6 mosaic acquisition, calibration and imaging recipe deferred to Paper I.; Noise-estimat…
+
+### 2015ApJ...812..129Y: No Keplerian Disk &gt;10 AU Around the Protostar B335: Magnetic Braking or Young Age? (2015; star_formation; observational_alma_primary)
+- question: Does the Class 0 protostar B335 host a Keplerian disk larger than 10 AU, and is the small disk due to magnetic braking or young age?
+- step 4: Fit kinematic infall+rotation envelope models to C18O PV diagrams
+  - method: Power-law density/temperature envelope with free fall and constant j, LTE radiative transfer, processed with CASA simulator, chi2 grid fit of PV diagrams [4.1.2: "The model images are processed with the CASA simulator to mimic our observational $uv$ coverage."] [4.1.2: "we perform $\chi^2$ fitting of the model P–V diagrams to the observed ones."]
+  - software: CASA simulator
+  - parameter: Free parameters M*, j, n0, T0; p = -1.5 or -2, q = -0.4; outer radius 3'' (450 AU); cavity of 60 deg [4.1.2: "Our models have four free parameters: $M_*$, $j$, $n_0$, and $T_0$."]
+  - parameter: Grid: M* 0.03-0.07 Msun step 0.01; j 0-5e-5 step 1e-5; n0 5e6-4e7 factors of two; T0 20-60 K step 10 K [4.1.2: "$M_*$ from 0.03 $M_\ensuremath{\odot}$ to 0.07 $M_\ensuremath{\odot}$ in steps of 0.01 $M_\ensuremath{\odot}$"]
+  - assumption: Inclination 80 deg, LTE, C18O abundance 3.7e-7, free-fall infall [4.1.2: "on the assumption of the LTE condition and a constant C$^{18}$O abundance of 3.7 $\times$ 10$^{-7}$ (Frerking et al. 1982)"]
+  - fitting: chi2 grid search [Gas Kinematics, Kinematic Model Fitting…: "Then, P–V diagrams are generated along the minor and major axes from the simulated model images, and we perform $\chi^2$ fitting of the model P–V diagrams to the observed ones."]
+  - validation: Compared with fixed M*=0.1 and 0.02 Msun models, which fail; refit high-velocity channels only for j [4.1.2: "our ALMA observations cannot be well explained by the model with $M_*=0.1$ $M_\ensuremath{\odot}$"]
+- result: Protostellar mass = 0.05 ± not stated Msun [4.1.2: "The final best-fit parameters are $M_*=0.05$ $M_\ensuremath{\odot}$, $j$ = 2 $\times$ 10$^{-5}$ km s$^{-1}$ pc"]
+- result: Specific angular momentum at 100 AU (C18O) = 4.3e-5 ± 0.5e-5 km/s pc [abstract: "The specific angular momentum, on a 100 AU scale, is (4.3$\pm$0.5) $\times$ 10$^{-5}$ km s$^{-1}$ pc."]
+- limitation (authors): Significant missing flux in the outer envelope; M* is a lower limit if infall slower than free fall [4.1.1: "Due to this significant amount of missing flux, the complete velocity structures of the outer emission remain uncertain."]
+- not stated (card): CASA version and pipeline version; clean threshold, masks, cell and image size, number of iterations; line-free channels and continuum subtraction method for the line cubes; primary-beam correction details; exact moment 0/1 velocity ranges and PV slice widths; chi2 definition and noise used in model fitting; model grid details of the CASA simulator setup; how the H2 column density and sigma = 2e2…
+
+### 2019ApJ...883...92L: A Radio-to-millimeter Census of Star-forming Galaxies in Protocluster 4C 23.56 at z = 2.5: Global and Local Gas Kinematics (2019; high_z_galaxies, star_formation; observational_alma_primary)
+- question: Do star-forming galaxies in the z=2.5 protocluster 4C 23.56 differ from field galaxies in CO gas kinematics (line widths, sizes), and what is the protocluster halo mass and merger state?
+- step 3: Protocluster halo mass from velocity dispersion
+  - method: Biweight mean redshift, LOS velocities, biweight and gapper dispersions; halo mass from Finn2005 and Evrard2008 relations; clump masses for EC/WC [4.1 Overall halo estimates: "We finally derive the halo mass of the protocluster from the derived velocity dispersion, using two different calculations used in (cite: Finn2005) and (cite: Evrard2008)."]
+  - assumption: virialization (upper limit for unvirialized system) [4.1 Overall halo estimates: "Under the assumption of virialization, velocity dispersion offers a rough measure of the halo mass of the protocluster."]
+  - validation: two dispersion estimators agree; CO-only vs all redshifts [4.1 Overall halo estimates: "With 12 CO-detections, individual estimates agree well with each other within the errors."]
+- step 4: Compare CO line widths and L'CO with protocluster and field samples
+  - method: FWHM converted to v_rot via FWHM*sqrt(3/(8 ln2)); L'CO(1-0) via R1J ratios 1.2,1.8,2.4 for J=2,3,4; compare medians [5.2 CO line widths: "We assumed the line luminosity ratio of $R1J (=L'_{\rm CO1-0}/L'_{\rm COJ-(J-1)}) = 1.2, 1.8,$ and $2.4$ for $J= 2,3, {\rm and}~4$, respectively"]
+  - assumption: isotropic virial estimate of circular velocity for unresolved sources [5.2 CO line widths: "taking the isotropic virial estimate of the circular velocity (FWHM$\times \sqrt{3/(8\ln{2}})$"]
+- result: Protocluster redshift (CO biweight) = 2.4874 ± not stated dimensionless [4.1 Overall halo estimates: "the protocluster redshift is defined as $\bar{z}_{\rm BI, CO} = 2.4874$"]
+- result: LOS velocity dispersion (biweight) = 421 ± ±148 km/s [4.1 Overall halo estimates: "$\sigma_{\rm los, CO} = 421\pm148$ (biweight) and $365\pm 128$ (gapper) km s$^{-1}$"]
+- result: Protocluster halo mass log(Mcl/Msun) = 13.4-13.6 ± not stated dex [4.1 Overall halo estimates: "The range of halo masses from these two methods is $\log{(M_{\rm cl}/M_{\odot})} =$13.4-13.6"]
+- result: Median CO FWHM, 4C 23.56 vs other protoclusters = 433 vs 422 ± not stated km/s [5.2 CO line widths: "the median value for the 4C 23.56 protocluster galaxies is 433 km s$^{-1}$, compared to 422 km s$^{-1}$ for other protocluster galaxies"]
+- result: Median v_rot protocluster vs field = 304 vs 192 ± not stated km/s [5.2 CO line widths: "($v_{\rm rot, pc}$= 304 km s$^{-1}$) compared to the field galaxies ($v_{\rm rot, fd}$= 192 km s$^{-1}$)"]
+- limitation (authors): Small samples, inhomogeneous literature selection, virialization assumption [5.2 CO line widths: "with caveats of inhomogeneous selection and small sample sizes"]
+- not stated (card): tclean robust/weighting for natural image, cell and image size; line-free channels for uvcontsub and fit order; flux scale uncertainty; exact spectral cube velocity frame/rest frequency; how literature CO samples were homogenized and sample tables; GalPaK3D priors and bounds besides Vmax; how L'CO and gas fractions of HAEs were derived
+
+### 2020MNRAS.495.3124H: Megaparsec-scale structure around the protocluster core SPT2349-56 at z = 4.3 (2020; high_z_galaxies, galaxy_clusters_and_sz; observational_alma_primary)
+- question: Spectroscopically confirm new members of the z=4.3 proto-cluster core SPT2349-56 with [CII] and CO(4-3), and spatially resolve the galaxies responsible for the intense star formation
+- step 8: Velocity distribution and virial mass of the core
+  - method: Lilliefors test of Gaussianity; biweight velocity dispersion within 90 kpc radius; Evrard et al. scaling to M200; escape-speed envelope for outer groups [4.1 Velocity distribution: "To test the Gaussianity of our sample, we perform a Lilliefors test (cite: lilliefors1967)"] [4.2.1 Mass from velocity dispersion: "We then convert this velocity dispersion into a mass using the scaling relation found by (cite: evrard2008)"]
+  - parameter: Effective radius 90 kpc (primary beam response 0.5); removes galaxy C19 [4.2.1 Mass from velocity dispersion: "We therefore take this to be the effective radius of the core region where our data is approximately complete; this removes galaxy C19 from the analysis."]
+  - assumption: Core is virialized [4.2.1 Mass from velocity dispersion: "Under the assumption that the core of SPT2349$-$56 has virialized"]
+  - fitting: Biweight estimator with bootstrap uncertainties [4.2.1 Mass from velocity dispersion: "with the uncertainty estimated using bootstrap resampling"]
+  - validation: Result compared with Miller et al. 2018 using the same 14 sources [4.2.1 Mass from velocity dispersion: "which is entirely consistent with their result."]
+- step 9: Dynamical, gas and halo masses of individual galaxies
+  - method: Isotropic virial estimator for M_dyn; CO(4-3) luminosity to CO(1-0) to gas mass; gas mass scaled to halo mass [Table 4 footnote d: "Dynamical mass, calculated using the isotropic virial estimator"] [4.2.3 Galaxy gas and halo masses: "We have applied this factor to the galaxies in our sample and provide the results in Table"]
+  - parameter: r_{4,1} = 0.60+/-0.05; alpha_CO = 1 Msun/(K km/s pc^2); halo/gas factor 42.8 [4.2.3 Galaxy gas and halo masses: "for simplicity, we adopt a conversion factor of $\alpha_{\rm CO}\,{=}\,1$ M$_{\odot}$/(K km s$^{-1}$ pc$^2$) to obtain gas masses"]
+  - parameter: Mean half-light radius 1.5+/-0.5 kpc adopted where R_1/2 not measured; double Gaussians treated as two components and masses summed [4.2.2 Galaxy dynamical masses: "we treat each Gaussian separately and sum the two resulting masses to obtain the total dynamical mass"]
+  - assumption: Gas is dispersion-dominated; alpha_CO chosen for simplicity and gas masses are order-of-magnitude [4.2.2 Galaxy dynamical masses: "We note that this equation assumes the gas to be dispersion-dominated"] [4.2.3 Galaxy gas and halo masses: "and note that these quantities should be interpreted primarily as order-of-magnitude estimates"]
+  - validation: Total core gas mass compared with CO(2-1) estimate of Miller et al. 2018, consistent within a factor of a few [4.2.3 Galaxy gas and halo masses: "the two measurements do provide consistent results to within a factor of a few."]
+- result: Standard deviation of core relative radial velocities = 358 ± not stated km/s [4.1 Velocity distribution: "The standard deviation of relative radial velocities within the central region was calculated to be 358 km s$^{-1}$"]
+- result: Lilliefors p-value for Gaussian velocity distribution (max distance 0.15) = 0.20 ± not stated dimensionless [4.1 Velocity distribution: "to be 0.20, meaning that the probability of obtaining a maximum distance of 0.15 or greater is 20 per cent if the relative radial velocities are Gaussian-distributed."]
+- result: Biweight velocity dispersion of core galaxies = 370 ± +67/-89 km/s [4.2.1 Mass from velocity dispersion: "$\sigma_r\,{=}\,$370$_{-89}^{+67}$ km s$^{-1}$ using the biweight estimator"]
+- result: Core mass from velocity dispersion = 9e12 ± +/-5e12 Msun [4.2.1 Mass from velocity dispersion: "The resulting mass is (9$\pm$5)$\,{\times}\,$10$^{12}$ M$_{\odot}$"]
+- result: Sum of galaxy dynamical masses in the core = 1.3e12 ± not stated Msun [4.2.2 Galaxy dynamical masses: "the sum of the dynamical masses of the galaxies within the core is 1.3$\,{\times}\,10^{12}\,$M$_{\odot}$"]
+- result: Sum of galaxy gas masses in the core = 2.9e11 ± not stated Msun [4.2.3 Galaxy gas and halo masses: "the sum of the gas masses within the core reach a total value of 2.9 ${\times}\,10^{11}\,$M$_{\odot}$"]
+- result: Total halo mass summed over core, northern and SPIREc = 2.5e13 ± large systematics not included Msun [5.2 Cluster mass of SPT2349-56: "making the total mass about 2.5$\,{\times}\,$10$^{13}$ M$_{\odot}$"]
+- limitation (authors): Dynamical masses uncertain to within a factor of a few [4.2.2 Galaxy dynamical masses: "our dynamical mass estimates should therefore be treated as uncertain to within a factor of a few."]
+- limitation (authors): Gas masses are order-of-magnitude estimates [4.2.3 Galaxy gas and halo masses: "and note that these quantities should be interpreted primarily as order-of-magnitude estimates"]
+- limitation (authors): Continuum data do not reach the SED peak, so only Rayleigh-Jeans slopes constrain the dust temperature [3.4.2 Far-infrared luminosities: "The continuum flux density measurements presented in this paper do not reach the peak of this SED"]
+- not stated (card): CASA version and whether the pipeline or manual scripts were used for each execution block; Array configurations, baseline ranges, number of execution blocks and on-source times for each dataset; Flux, bandpass and phase calibrators and absolute flux scale uncertainty; Whether any self-calibration was applied; tclean parameters other than robust: deconvolver, niter, threshold, masks, cell size, i…
+
+### 2014A&A...570A..28V: Molecular line emission in NGC 1068 imaged with ALMA. II. The chemistry of the dense molecular gas (2014; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Are the different line intensity ratios within the CND, and between the CND and the SB ring, due to excitation effects (density, temperature) or to a different chemistry?
+- step 8: Chemical modelling and comparison with RADEX column density ratios
+  - method: Run 27 UCL_CHEM gas-grain models (two phases, optional shock) and compare theoretical column density ratios with RADEX-derived ratios at the last time step of Phase II [4 Chemical modelling: "we use the UCL_CHEM model (cite: Viti04; Viti11) to determine the best physical characteristics of each individual component within the CND"] [4 Chemical modelling: "all the analysis and comparisons of the abundances from the chemical models are performed at the last time step of Phase II"]
+  - software: UCL_CHEM
+  - parameter: Phase II temperature 100 K and 200 K [4 Chemical modelling: "(ii) the temperature (100 K and 200 K) during Phase II"]
+  - parameter: Radiation field 1, 10 and 500 Draine [4 Chemical modelling: "we picked three representative values of a low (1 Draine), medium (10 Draine) and high (500 Draine) radiation field"]
+  - parameter: Shock velocity 40 km/s [4 Chemical modelling: "we adopted a representative shock velocity of 40 km s$^{-1}$"]
+  - parameter: Visual extinctions 2 and 10 mag [4 Chemical modelling: "two representative visual extinctions of 2 and 10 mags"]
+  - assumption: Solar-metallicity elemental abundances; cosmic-ray rate used to mimic enhanced X-rays; free-fall collapse in Phase I [4 Chemical modelling: "We have kept fixed the initial elemental abundances at the standard solar metallicity ISM abundances compared to the total number of hydrogen nuclei"] [4 Chemical modelling: "For simplicity we adopt free-fall collapse."]
+  - fitting: Qualitative matching of model and observed log column density ratios; no formal fit [4 Chemical modelling: "This attempt at chemical modelling was preliminary"]
+  - validation: RADEX density limit (>10^4 cm^-3) used to exclude models; ratios compared only at one time step [4 Chemical modelling: "we shall exclude *a priori* all models with a gas density of 10$^4$ cm$^{-3}$ to start with"]
+- limitation (authors): RADEX assumes all transitions sample the same gas, and several ratios use degraded or low-resolution data [3.2 RADEX analysis of the CND: "Of course such modelling is limited by the assumption that all the molecular transitions sample the same gas."]
+- limitation (authors): Chemical modelling is preliminary and compares time-dependent models only at one time step [4 Chemical modelling: "This attempt at chemical modelling was preliminary"]
+- limitation (authors): Infrared pumping not considered [Conclusions: "this analysis did not take into consideration infrared pumping"]
+- not stated (card): ALMA calibration, imaging and reduction details (CASA version, calibrators, weighting, cleaning, continuum subtraction) are only in Paper I; Exact aperture sizes and positions used to extract the line intensities per sub-region; Rms noise levels, beam sizes and the sigma value used for the 3-sigma clipping; Spectroscopic constants and partition function source used in the LTE column densities; Li…
+
+### 2020ApJ...903...34A: Probing the Nature of High-redshift Weak Emission Line Quasars: A Young Quasar with a Starburst Host Galaxy (2020; agn_and_quasars, high_z_galaxies; multi_facility_alma_minor)
+- question: What is the nature of the weak emission line quasar PSO J083+11 at z=6.34 (young quasar vs lensing vs soft continuum), and what are the properties of its host galaxy from ALMA [C II] and dust continuum?
+- step 1: Fit GNIRS spectrum and derive black hole mass, Eddington ratio and line properties
+  - method: Multi-component fit (power law + UV Fe II continuum, single Gaussian broad lines) with a modified PyQSOFit; Mg II virial mass from the single-epoch scaling relation; L_bol = 5.15 x lambda L_3000 [Modeling the emission lines and underly…: "The global continuum was modelled using combined power-law and UV Fe II templates"] [Modeling the emission lines and underly…: "After subtracting the best-fit continuum and scaled iron templates, each broad emission line was modeled with single Gaussian functions."]
+  - software: PyQSOFit (modified), PypeIt, Molecfit
+  - parameter: Rest-frame continuum windows: 1285-1290, 1315-1325, 1350-1370, 1445-1465, 1580-1650, 2140-2300, 2340-2400, 2420-2480, 2630-2710, 2745-2765, 2850-3000 A [Modeling the emission lines and underly…: "The following wavelength ranges were selected as continuum windows: $\lambda_\mathrm{rest}=$ 1285–1290 Å, 1315–1325 Å, 1350–1370 Å, 1445–1465 Å, 1580–1650 Å, 2140–2300 Å, 2340–2400 Å, 2420–2480 Å, 2630–2710 Å, 2745–2765 Å, and 2850–3000 Å."]
+  - parameter: Bolometric correction L_bol = 5.15 x lambda L_3000 (Richards et al. 2006) [Modeling the emission lines and underly…: "Then, the bolometric luminosity $L_{\rm bol}$ was derived using the empirical correction from (cite: 2006ApJS..166..470R):"]
+  - assumption: Virial theorem valid for the BLR dynamics; systematic mass errors ~0.5 dex not included [Black hole mass and Eddington ratio: "With the assumption that the virial theorem is valid for the BLR dynamics"] [Black hole mass and Eddington ratio: "we did not explicitly add the systematic errors which tend to be larger ($\approx 0.5$ dex) compared to random measurement errors"]
+  - fitting: Monte Carlo: 1000 mock spectra with noise drawn from the noise spectrum; 16th/84th percentiles as limits [Modeling the emission lines and underly…: "Random flux density errors are drawn assuming a normal distribution using the noise spectrum, then applied to the raw spectrum with 1000 iterations."]
+  - validation: Compared with values from the combined FIRE spectra [Black hole mass and Eddington ratio: "As a comparison, we derived $\log (M_{\rm BH}/M_\odot) = 9.06^{+0.24}_{-0.16}$ and $L_{\rm bol}/L_{\rm Edd} = 0.77_{-0.33}^{+0.33}$ from the combined FIRE spectra."]
+- result: Black hole mass log(M_BH/Msun) (GNIRS) = 9.30 ± +0.16/-0.10 dex (Msun) [Black hole mass and Eddington ratio: "We obtained a black hole mass of $\log (M_{\rm BH}/M_\odot) = 9.30^{+0.16}_{-0.10}$ and normalized accretion rate of $L_{\rm bol}/L_{\rm Edd} = 0.51^{+0.13}_{-0.17}$ for the GNIRS spectrum."]
+- result: Eddington ratio L_bol/L_Edd (GNIRS) = 0.51 ± +0.13/-0.17 dimensionless [Black hole mass and Eddington ratio: "We obtained a black hole mass of $\log (M_{\rm BH}/M_\odot) = 9.30^{+0.16}_{-0.10}$ and normalized accretion rate of $L_{\rm bol}/L_{\rm Edd} = 0.51^{+0.13}_{-0.17}$ for the GNIRS spectrum."]
+- result: Mg II FWHM = 4140 ± +880/-430 km/s [Modeling the emission lines and underly…: "we found FWHM (Mg II) $=4140^{+880}_{-430}$ km s$^{-1}$ and EW (Mg II)$_\mathrm{rest}$ $=8.71^{+0.67}_{-0.64}$ Å"]
+- result: Rest-frame EW(Mg II) = 8.71 ± +0.67/-0.64 Angstrom [Modeling the emission lines and underly…: "we found FWHM (Mg II) $=4140^{+880}_{-430}$ km s$^{-1}$ and EW (Mg II)$_\mathrm{rest}$ $=8.71^{+0.67}_{-0.64}$ Å"]
+- result: UV power-law slope alpha_lambda = -1.66 ± +/-0.01 dimensionless [Soft continuum due to super-Eddington a…: "our measured power-law slope index is consistent with a typical quasar ($\alpha_\lambda = -1.66 \pm 0.01$)"]
+- limitation (authors): Only two continuum points on the Rayleigh-Jeans tail, so dust temperature and SED shape unconstrained; dust mass has at least a factor of two systematic uncertainty [Star formation rate: "Note that we only have 2 data points of continuum measurements – at 244 and 258 GHz – both of them located on the Rayleigh–Jeans tail and not reaching the dust SED peak."]
+- limitation (authors): Black hole mass systematic errors (~0.5 dex) not included; virial calibration may be inadequate for WLQs [Black hole mass and Eddington ratio: "However, please note that we did not explicitly add the systematic errors which tend to be larger ($\approx 0.5$ dex) compared to random measurement errors"]
+- limitation (authors): Shielding gas between disk and BLR cannot be excluded without X-ray spectroscopy [Summary and Conclusion: "However, we cannot completely rule out the possibility of the presence of shielding gas between accretion disk and BLR due to the lack of X-ray spectroscopy."]
+- not stated (card): CASA version and ALMA pipeline version/release used for calibration, and whether the archive products were used as delivered; Flux, bandpass and phase calibrators and the absolute flux scale uncertainty; Spectral window layout and which channels were treated as line-free for the median continuum model (and the [C II] channel range masked); tclean parameters not given: cell size, image size, decon…
+
+### 2014ApJ...785..149S: The Rest-frame Submillimeter Spectrum of High-redshift, Dusty, Star-forming Galaxies (2014; high_z_galaxies, astrochemistry; archival_reuse)
+- question: What is the average rest-frame 250-770 GHz spectrum of lensed SPT dusty star-forming galaxies, and what ISM conditions do its faint lines (13CO, HCN, HNC, HCO+, CN) imply?
+- step 4: Excitation modelling of 12CO/13CO and dense-gas tracers
+  - method: RADEX grid models (expanding sphere) fit to line ratios with 15% added uncertainty; priors tau<100 and virialized K_vir [5 Results: "line optical depths are constrained to be $\tau < 100$"]
+  - software: RADEX, LAMDA
+  - parameter: N_CO/dv=1e15-1e19, Tkin=12-300 K, nH2=10-1e6, 12CO/13CO=10-1e4; TCMB~11 K [5 Results: "Our grid of models spans $N_\mathrm{CO} / \Delta v = 10^{15}-10^{19}$ $\rm{cm}^{-2}(\rm{km}/\rm{s})^{-1}$, $\ensuremath{T_\mathrm{kin}}= 12-300$ K"]
+  - assumption: single homogeneous gas component; NGC253 abundance ratios for dense tracers [5 Results: "we assume the relative abundance ratios of CN, HCN, HNC, and $\rm{HCO}^+$ are the same as in the local starburst galaxy NGC253"]
+  - fitting: Grid chi-square with posterior distributions; minimum chi2=10.4 for 3 dof [5 Results: "We find that no single model fits all seven available line ratios well (minimum $\chi^2 = 10.4$ for three degrees of freedom)."]
+  - validation: Appendix test recovering representative conditions from mock SLEDs of 22 sources [Appendix B: "conditions representative of the inputs are recovered despite the variety of conditions used to generate the input spectra."]
+- result: Dense gas kinetic temperature = ~55 ± not stated K [5.2: "with $\ensuremath{T_\mathrm{kin}}\sim 55$ K and $\ensuremath{n_\mathrm{H_2}}\sim 10^{5.5}-10^{7.5}$ $\rm{cm}^{-3}$"]
+- result: 12CO/13CO abundance ratio for Td-coupled gas = ~100-200 ± not stated dimensionless [4.1: "an abundance ratio \[$^{12}\rm{CO}$/$^{13}\rm{CO}$\]$\sim 100-200$"]
+- limitation (authors): Single-component modelling of a heterogeneous sample; no single model fits (chi2 min 10.4 for 3 dof); degeneracies remain; differential magnification not accounted [4.1: "This likely reflects the simplicity of the modeling procedure, which represents a heterogeneous collection of galaxies as a single, homogeneous gas component of simple geometry."]
+- not stated (card): Calibrator names and flux scale uncertainty of the Cycle 0 data; CASA version and exact calibration scripts; Per-source SED fit parameters and photometry used for 1.4 mm scaling; Exact interpolation scheme onto the 500 km/s grid; RADEX grid sampling steps, likelihood and posterior/marginalisation details, K_vir cutoff; Source coordinates; Which sources are included for each line, beyond N_sources…
+
+### 2019ApJ...881L...2B: ALMA Observations of the Terahertz Spectrum of Sagittarius A* (2019; agn_and_quasars, milky_way_ism; observational_alma_primary)
+- question: What is the submm/THz spectrum of Sgr A* and what do the flat spectrum and one-zone thermal synchrotron model imply for the emitting plasma and its optical depth?
+- step 3: Fit one-zone thermal synchrotron model
+  - method: Uniform sphere of angular diameter 40 uas with n, Te, B; fit to ALMA data plus Herschel ranges; ν_p, L_bol, n, Te, B derived [Discussion and Conclusions: "We parameterize the emission region as a sphere of constant particle density $n$, electron temperature $T_e$, and magnetic field strength $B$."]
+  - software: emcee
+  - parameter: Te >= Tb, 1e-3 < beta < 1e3; 20% uncertainty on 868 GHz [Discussion and Conclusions: "Parameter bounds are $T_e \ge T_b$ the brightness temperature, necessary for obtaining a one zone solution, and $10^{-3} < \beta < 10^{3}$."]
+  - assumption: Relativistic effects and radiative cooling neglected; thermal electrons; constant ion temperature proportional to virial [Discussion and Conclusions: "We neglect all relativistic effects in the spatial and velocity distribution of the material and on the photon trajectories."]
+  - fitting: emcee default sampler with logarithmic priors on n, Te and plasma beta [Discussion and Conclusions: "We use the default sampler with logarithmic priors $n$, $T_e$, and plasma $\beta = p_g/p_B \propto n/B^2$"]
+  - validation: Repeated without Herschel data [Discussion and Conclusions: "We find similar results with somewhat larger ranges when leaving out the Herschel data"]
+- result: SED peak frequency = (1-2)e12 ± 68% interval Hz [Discussion and Conclusions: "The peak of the SED in $\nu L_\nu$ is well constrained to be at $\nu_p = (1-2) \times 10^{12}$ Hz"]
+- result: Bolometric luminosity of submm bump = (4-6)e35 ± not stated erg/s [Discussion and Conclusions: "The bolometric luminosity of the submm bump is found to be $L_{\rm bol} = (4-6) \times 10^{35}\,\ensuremath{{\rm erg\,s}}^{-1}$."]
+- result: Electron density, temperature, field = n=2-5e6 cm^-3, Te=1-3e11 K, B=10-50 G ± not stated cm^-3, K, G [Discussion and Conclusions: "$n = 2-5 \times 10^6 \hspace{2pt} \rm cm^{-3}$, $T_e = 1-3 \times 10^{11}$ K, $B = 10-50$ G."]
+- limitation (authors): 868 GHz measured four days from the others, longer than variability coherence time [Discussion and Conclusions: "the four-day separation with the 868 GHz measurements is significantly longer than the variability coherence time"]
+- not stated (card): Exact CASA version and whether the pipeline or manual scripts were used; Calibrator flux model details and extrapolation spectral index for J1924-2914; Antenna flagging and spectral-window handling; emcee settings (walkers, steps, burn-in); One-zone code is from von Fellenberg and not released; Exact prior ranges for n and Te; Uv-fit procedure details
+
+### 2025A&A...698A.145B: Multi-phase investigation of outflows in the circumgalactic and interstellar media of luminous quasars at z ∼ 5 (2025; agn_and_quasars, high_z_galaxies; multi_facility_alma_minor)
+- question: Link ionised outflows detected in absorption with galaxy and black hole properties inferred from UV and FIR emission lines.
+- step 1: Measure UV emission and black hole properties
+  - method: Normalise to z-band photometry; fit local power-law plus Fe II continua and 1–3 Gaussian line components; derive redshifts, virial masses, bolometric luminosities and Eddington ratios. [Modelling the quasar UV emission spectr…: "We construct a physically motivated model for the quasar UV emission spectrum, comprising a power law combined with a Fe II pseudo-continuum for the continuum, and multiple Gaussian components for the emission lines."] [Emission redshift, black hole mass, and…: "The black hole masses are estimated from the (cite: vestergaard_mass_2009) and (cite: vestergaard_determining_2006) scaling relations for Mg ii and C iv lines, respectively."]
+  - software: ASTROCOOK
+  - parameter: 50 km s−1 bins [Modelling the quasar UV emission spectr…: "we use ASTROCOOK to re-sample the X-Shooter spectra into 50 km s$^{-1}$-width bins to increase the S/N."]
+  - parameter: 1000 realisations with Gaussian channel-flux errors [Modelling the quasar UV emission spectr…: "For each source, we generate N=1000 realisations of the C iv and Mg ii line profiles and underlying continua"] [Modelling the quasar UV emission spectr…: "assuming that the flux in each spectral channel follows a Gaussian distribution with standard deviation equal to the associated spectral error."]
+  - assumption: Spectroscopic–photometric differences primarily reflect slit losses [Modelling the quasar UV emission spectr…: "We attribute potential discrepancies between spectroscopic and photometric data primarily to slit losses rather than intrinsic quasar variability over different times of observations."]
+  - assumption: Systematic uncertainties: black hole masses 0.5 dex; bolometric luminosities 0.3 dex [Quasar properties from UV emission lines: "Black hole masses and bolometric luminosities are also affected by systematic uncertainties of 0.5 dex and 0.3 dex, respectively."]
+  - fitting: Continuum subtraction followed by 1–3 Gaussian components; select lowest reduced χ²; median and standard deviation across realisations [Modelling the quasar UV emission spectr…: "After the subtraction of the best-fit continuum model from the data, we fit the residual emission lines with one to three Gaussian components."] [Modelling the quasar UV emission spectr…: "We then select the line model with the lowest reduced $\chi ^2$ value."]
+  - validation: Check i/z photometry; compare overlapping XQz5 mass estimates after accounting for different Mg II calibrations [Modelling the quasar UV emission spectr…: "We verify the flux calibration against *i* and *z* photometry from Pan-STARRS DR1 (cite: chambers_pan-starrs1_2016)"] [Emission redshift, black hole mass, and…: "our black hole mass estimates are consistent with those provided in (cite: lai_xqz5_2024), once accounted for the different adopted Mg ii mass calibrations."]
+- result: Mg II black hole mass range = 10^8.7 to 10^10.1 ± 0.5 dex systematic M_⊙ [Summary and conclusions: "Black hole masses derived using the Mg ii emission line span from $M_{\text{BH}, \text{\texorpdfstring{Mg ii}{Mg II}}} \simeq 10^{8.7}$ to $10^{10.1} M_\odot$."]
+- result: Bolometric luminosity range = ≃ 10^47 to 1.7 · 10^48 ± 0.3 dex systematic erg/s [Emission redshift, black hole mass, and…: "The distribution of bolometric luminosities in our sample spans from $L_{\text{bol}} \simeq 10^{47}$ to $1.7 \cdot 10^{48}$ erg/s, with median of $2.6 \cdot 10^{47}$ erg/s."]
+- result: Median bolometric luminosity = 2.6 · 10^47 ± not stated erg/s [Emission redshift, black hole mass, and…: "The distribution of bolometric luminosities in our sample spans from $L_{\text{bol}} \simeq 10^{47}$ to $1.7 \cdot 10^{48}$ erg/s, with median of $2.6 \cdot 10^{47}$ erg/s."]
+- result: Eddington ratio range for 37 objects with detected Mg II = 0.3 to 4 ± not stated dimensionless [Emission redshift, black hole mass, and…: "The associated Eddington ratios span from 0.3 to 4, with median (mean) of $\sim$0.9 ($\sim$1.2), for our sub-sample of 37 objects with detected Mg ii emission."]
+- result: Median Eddington ratio for 37 objects with detected Mg II = ∼0.9 ± not stated dimensionless [Emission redshift, black hole mass, and…: "The associated Eddington ratios span from 0.3 to 4, with median (mean) of $\sim$0.9 ($\sim$1.2), for our sub-sample of 37 objects with detected Mg ii emission."]
+- limitation (authors): Marginal resolution, moderate line significance, fixed inclination and non-circular beams limit dynamical masses. [[C II] luminosities and dynamical masses: "Because our targets are marginally resolved and with a single emission line measurement of moderate significance, $M_{\text{dyn}}$ estimates are strongly affected by the assumption of a fixed inclination angle and by non-circular beam shapes."]
+- limitation (authors): Molecular-mass errors omit ∼0.1 dex intrinsic calibration dispersion. [[C II] luminosities and dynamical masses: "The errors on $M_{mol}$ reported in Table [\[table-ALMA-cii-lines\]](#table-ALMA-cii-lines) are not taking into account the intrinsic dispersion of the relation, of $\sim0.1$ dex."]
+- limitation (authors): Quasar-property error propagation ignores parameter degeneracies. [Emission redshift, black hole mass, and…: "Statistical uncertainties on quasar properties are evaluated by propagating errors from line and continuum parameter uncertainties"]
+- not stated (card): Mapping of the six targets to project codes, execution blocks and calibrated measurement sets.; Exact spectral-window selections, line-free channel ranges and velocity-integration intervals for each source.; Source-specific cube channel widths within the stated 40–60 km s−1 range, spectral reference frame and velocity convention.; TCLEAN image dimensions, masks and stopping details beyond the 3σ …
+
+### 2018ApJ...863..193V: Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248 (2018; galaxy_clusters_and_sz, nearby_galaxies, star_formation; observational_alma_primary)
+- question: What are the mass, morphology, kinematics, origin and star formation of the molecular gas in the RXCJ1504 BCG, and how does it relate to an X-ray cavity?
+- step 6: Test free-fall of the filament
+  - method: Fit PV curve with Hernquist-potential free-fall model v_obs = v sin i + v_ICM; v_ICM and i free, r0 fixed at 17.5 kpc [4.2 Motion Along the Filament: "$v_{\rm ICM}$ and $i$ are allowed to vary, while $r_0$ is fixed to the maximum radial extent of the filament ($17.5\rm\; kpc$)."]
+  - parameter: Hernquist a = 5.2 kpc; stellar mass 5e11 Msun [4.2 Motion Along the Filament: "$a=5.2\rm\; kpc$ is a scale factor determined from the galaxy’s half-light radius"]
+  - assumption: Cloud starts at rest with respect to ICM; Hernquist potential [4.2 Motion Along the Filament: "For a hydrostatic atmosphere a condensing cloud should initially be at rest with respect to the ICM, so we take $v(r_0)=0$."]
+  - fitting: Fit of velocity profile; sampler/priors not stated [4.2 Motion Along the Filament: "The velocity profile of the filament is fitted with this expression. $v_{\rm ICM}$ and $i$ are allowed to vary, while $r_0$ is fixed to the maximum radial extent of the filament ($17.5\rm\; kpc$)."]
+  - validation: Singular isothermal sphere gives indistinguishable fit [4.2 Motion Along the Filament: "The best-fitting velocity profile for this potential is indistinguishable from the Hernquist profile"]
+- result: Free-fall inclination to plane of sky (r0=17.5 kpc) = -22 ± not stated deg [4.2 Motion Along the Filament: "requires an inclination angle of $-22^{\circ}$ with a bulk offset of $v_{\rm ICM}=140\hbox{$\rm\; km\rm\; s^{-1}\,$}$"]
+- limitation (authors): The cavity is poorly defined and may not be real [4.1 Gas Origin: "The feature identified as a potential cavity is poorly defined, so it is not clear if it is a real cavity."]
+- limitation (authors): HST images manually aligned, so small-scale offsets between gas and UV may be missed [3.5 Spatial Correlation with UV Emission: "Spatial offsets between the molecular gas and young stars could be present, but would be missed due to this manual alignment."]
+- not stated (card): Line-free channels and continuum-subtraction order for uvcontsub; Clean masks, threshold, niter, cell and image size; Self-calibration solution intervals; Exact HST data sets and pipeline products, and manual shifts beyond those quoted; Regions (polygon and extraction boxes) definitions for spectra and SFR; Flux calibrator and flux scale uncertainty; Extraction details of the Chandra surface brig…
+
+### 2022A&A...659A.158H: First extragalactic detection of a phosphorus-bearing molecule with ALCHEMI: Phosphorus nitride (PN) (2022; astrochemistry, nearby_galaxies, star_formation; large_program_or_survey)
+- question: Search for P-bearing molecules outside the Milky Way towards the nearby starburst Galaxy NGC 253 and investigate the interstellar chemistry regulating their abundances.
+- step 1: Inspect datacubes, extract spectra, and perform LTE line fitting and upper limit derivation
+  - method: Extract spectra towards the continuum emission peak pixel of each GMC; generate simulated LTE spectra with MADCUBA-SLIM and fit with MADCUBA-AUTOFIT (or compute 3-sigma integrated intensity upper limits for non-detections); calculate abund… [Data analysis and results: "The Spectral Line Identification and Modelling (SLIM) tool of MADCUBA generates a simulated spectrum assuming local thermodynamic equilibrium (LTE) conditions."] [Detections of phosphorus nitride (PN) a…: "To perform the molecular analysis, we extracted the spectra towards the pixel of the peak of the continuum emission of the GMCs."]
+  - software: MADCUBA, SLIM, AUTOFIT
+  - parameter: Source size fixed to theta_s = 1.6'' [Detections of phosphorus nitride (PN) a…: "We fixed the source size to $\theta_s$=1.6$''$, which matches the ALCHEMI synthesised beam, and hence the derived molecular column densities are beam-averaged."]
+  - parameter: FWHM fixed to 50 km s^-1 for PN and other P-bearing species [Detections of phosphorus nitride (PN) a…: "We also fixed the FWHM to the linewidth that reproduces well the PN(2$-$1) profiles, which is 50 km s$^{-1}$."]
+  - parameter: For GMC 4 and non-detections, Tex fixed to 4.4 K (derived from GMC 6) [Detections of phosphorus nitride (PN) a…: "For GMC 4, since the PN(3$-$2) is within the noise level (Fig. 2), we performed the LTE fit using only the PN(2$-$1) transition and fixing $T_{\rm ex}$ to the one derived in GMC 6."]
+  - assumption: Local thermodynamic equilibrium (LTE) conditions [Data analysis and results: "The Spectral Line Identification and Modelling (SLIM) tool of MADCUBA generates a simulated spectrum assuming local thermodynamic equilibrium (LTE) conditions."]
+  - assumption: Beam filling factor of 1 (source size matches 1.6'' beam) and co-spatial distribution of species [Detections of phosphorus nitride (PN) a…: "Since the uncertainty in the filling factor cancels when comparing species, assuming co-spatial distribution, the column density ratios between species still provide reliable constraints."]
+  - assumption: PN and dust trace similar volumes of gas [Detections of phosphorus nitride (PN) a…: "Assuming that PN and dust trace similar volumes of gas (we discuss this assumption in Sect. 4), we obtain an abundance of $\chi$=(0.8$\pm$0.1)$\times$10$^{-11}$ (see Table 2)."]
+  - fitting: Non-linear least-squares fitting utilising the Levenberg-Marquardt algorithm in MADCUBA-AUTOFIT [Data analysis and results: "The AUTOFIT tool performs a non-linear least-squares fitting of the simulated LTE spectrum to the observed data utilising the Levenberg-Marquardt algorithm (cite: Levenberg1944; Marquardt1963)"]
+  - validation: Comparison of higher Tex models (10 K and 15 K) against observed PN(3-2) spectrum, and consistency check with non-LTE analysis [Detections of phosphorus nitride (PN) a…: "Higher values of $T_{\rm ex}$ (e.g. 10 and 15 K) would result in higher intensities of the PN(3$-$2) transition, which are not consistent with the observations, as shown in Fig. 2."]
+- step 2: Perform non-LTE radiative transfer modelling of PN in GMC 6
+  - method: Convert spectral intensities from Jy beam^-1 to brightness temperature (K) and model PN excitation and optical depth using SpectralRadex (RADEX LVG approximation) coupled with emcee MCMC sampling. [Non-LTE analysis of PN: "We also performed a non-LTE analysis in GMC 6 using SpectralRadex (cite: Holdship2021)."] [Non-LTE analysis of PN: "SpectralRadex uses RADEX (cite: VanderTak2007) to calculate spectral line excitation and optical depth within the large velocity gradient approximation."]
+  - software: SpectralRadex, RADEX, SPECTCOL, emcee
+  - parameter: FWHM and v_LSR fixed to values from Table 2 (FWHM = 50 km s^-1, v_LSR = 184 km s^-1) [Non-LTE analysis of PN: "The FWHM and v$_{\rm LSR}$ of the lines are taken from Table 2."]
+  - assumption: Large velocity gradient (LVG) approximation and Gaussian spectral line profile [Non-LTE analysis of PN: "SpectralRadex uses RADEX (cite: VanderTak2007) to calculate spectral line excitation and optical depth within the large velocity gradient approximation. A Gaussian spectral line profile is assumed to produce model spectra."]
+  - assumption: Channel uncertainties are independent, Gaussian, and 15% of the channel value [Non-LTE analysis of PN: "We assume the uncertainty on each channel is independent from the other channels, Gaussian, and 15% of the channel value."]
+  - fitting: Markov Chain Monte Carlo (MCMC) sampling with emcee; 67% probability density interval around the most likely value used for uncertainty estimation [Non-LTE analysis of PN: "We combine this model with emcee (cite: ForemanMackey2013emcee) to perform a Markov Chain Monte Carlo (MCMC) sampling of the likelihood."] [Non-LTE analysis of PN: "To estimate the uncertainty on this value, we take the region around this most likely value which contains 67% of the probability density (similar to a 1$\sigma$ interval)."]
+  - validation: Comparison of non-LTE column density posterior with the LTE column density [Non-LTE analysis of PN: "The non-LTE analysis provides us with results that are similar to those seen in the LTE analysis."]
+- result: PN LTE column density (GMC 6) = 1.20e13 ± 0.09e13 (text) / 0.17e13 (Table 2) cm^-2 [Detections of phosphorus nitride (PN) a…: "We obtain a total PN column density *N*=(1.20$\pm$0.09)$\times$10$^{13}$ cm$^{-2}$ and excitation temperature $T_{\rm ex}$=4.4$\pm$1.3 K."]
+- result: PN excitation temperature Tex (GMC 6) = 4.4 ± 1.3 K [Detections of phosphorus nitride (PN) a…: "We obtain a total PN column density *N*=(1.20$\pm$0.09)$\times$10$^{13}$ cm$^{-2}$ and excitation temperature $T_{\rm ex}$=4.4$\pm$1.3 K."]
+- result: PN abundance relative to H2 (GMC 6) = 8.0e-12 ± 1.0e-12 (text) / 1.9e-12 (Table 2) dimensionless [abstract: "which translate into abundances with respect to H$_2$ of $\chi$=(8.0$\pm$1.0)$\times$10$^{-12}$ and $\chi$=(4.4$\pm$1.2)$\times$10$^{-12}$."]
+- result: PN LTE column density (GMC 4) = 6.5e12 ± 1.6e12 (text) / 1.7e12 (Table 2) cm^-2 [Detections of phosphorus nitride (PN) a…: "We obtain a total PN column density of *N*=(6.5$\pm$1.6)$\times$10$^{12}$ cm$^{-2}$, which translates into a PN abundance of $\chi$=(0.44$\pm$0.12)$\times$10$^{-11}$."]
+- result: PN abundance relative to H2 (GMC 4) = 4.4e-12 ± 1.2e-12 (text) / 1.7e-12 (Table 2) dimensionless [abstract: "which translate into abundances with respect to H$_2$ of $\chi$=(8.0$\pm$1.0)$\times$10$^{-12}$ and $\chi$=(4.4$\pm$1.2)$\times$10$^{-12}$."]
+- result: PN non-LTE column density (GMC 6) = 5e12 ± 67% interval: 6.3e11 to 1.8e13 cm^-2 [Non-LTE analysis of PN: "The most likely value of the column density of PN is 5$\times$10$^{12}$ cm$^{-2}$."]
+- result: Most likely gas density n(H2) from non-LTE analysis (GMC 6) = 3e4 ± < 1e6 cm^-3 [Non-LTE analysis of PN: "This non-LTE analysis gives a most likely gas density of 3$\times$10$^{4}$ cm$^{-3}$ and the majority of the probability density is at values lower than 10$^{6}$ cm$^{-3}$."]
+- result: PO column density upper limit (GMC 6) = <1.5e13 ± not stated cm^-2 [PO (phosphorus monoxide): "We obtain *N*$<$1.5$\times$10$^{13}$ cm$^{-2}$ for GMC 6 (Table 2), which gives a PO/PN ratio $<$1.3."]
+- result: PO/PN ratio upper limit (GMC 6) = <1.3 ± not stated dimensionless [PO (phosphorus monoxide): "We obtain *N*$<$1.5$\times$10$^{13}$ cm$^{-2}$ for GMC 6 (Table 2), which gives a PO/PN ratio $<$1.3."]
+- result: PO column density upper limit (GMC 4) = <1.1e13 ± not stated cm^-2 [PO (phosphorus monoxide): "The same was made for GMC 4 which results in *N*$<$1.1$\times$10$^{13}$ cm$^{-2}$ and a PO/PN ratio $<$1.7."]
+- result: PO/PN ratio upper limit (GMC 4) = <1.7 ± not stated dimensionless [PO (phosphorus monoxide): "The same was made for GMC 4 which results in *N*$<$1.1$\times$10$^{13}$ cm$^{-2}$ and a PO/PN ratio $<$1.7."]
+- result: PH3 column density upper limit (GMC 6) = <3.2e13 ± not stated cm^-2 [PH$_{3}$ (phosphine): "We obtained *N*$<$3.2$\times$10$^{13}$ cm$^{-2}$ (Table 2) for GMC 6, which gives a PH$_3$/PN ratio $<$2.7."]
+- result: PH3/PN ratio upper limit (GMC 6) = <2.7 ± not stated dimensionless [PH$_{3}$ (phosphine): "We obtained *N*$<$3.2$\times$10$^{13}$ cm$^{-2}$ (Table 2) for GMC 6, which gives a PH$_3$/PN ratio $<$2.7."]
+- result: PH3 column density upper limit (GMC 4) = <3.4e13 ± not stated cm^-2 [PH$_{3}$ (phosphine): "For GMC 4 the results obtained were *N*$<$3.4$\times$10$^{13}$ cm$^{-2}$ and a PH$_3$/PN ratio $<$5.3."]
+- result: PH3/PN ratio upper limit (GMC 4) = <5.3 (Sect. 3.4) / <5.2 (Table 3, Sect. 4.2) ± not stated dimensionless [PH$_{3}$ (phosphine): "For GMC 4 the results obtained were *N*$<$3.4$\times$10$^{13}$ cm$^{-2}$ and a PH$_3$/PN ratio $<$5.3."]
+- result: CP column density upper limit (GMC 6) = <3.0e13 ± not stated cm^-2 [Other P-bearing molecules: "The derived upper limits for CP and CCP are *N*$<$3.0$\times$10$^{13}$ cm$^{-2}$ and *N*$<$3.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 6"]
+- result: CCP column density upper limit (GMC 6) = <3.8e13 ± not stated cm^-2 [Other P-bearing molecules: "The derived upper limits for CP and CCP are *N*$<$3.0$\times$10$^{13}$ cm$^{-2}$ and *N*$<$3.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 6"]
+- result: CP column density upper limit (GMC 4) = <2.7e13 ± not stated cm^-2 [Other P-bearing molecules: "and *N*$<$2.7$\times$10$^{13}$ cm$^{-2}$ and *N*$<$2.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 4 (Table 2)."]
+- result: CCP column density upper limit (GMC 4) = <2.8e13 ± not stated cm^-2 [Other P-bearing molecules: "and *N*$<$2.7$\times$10$^{13}$ cm$^{-2}$ and *N*$<$2.8$\times$10$^{13}$ cm$^{-2}$, respectively for GMC 4 (Table 2)."]
+- result: 29SiO LTE column density (GMC 6) = 9.2e13 ± 1.8e13 cm^-2 [Table 2: "| $^{29}$SiO | 9.2$\pm$1.8 | 5.2$\pm$0.3 | 187.4$\pm$2.0 | 70.4 | 6.3$\pm$1.9 |"]
+- result: C34S LTE column density (GMC 6) = 57e13 ± 7e13 cm^-2 [Table 2: "| C$^{34}$S | 57$\pm$7 | 6.83$\pm$0.21 | 188.1$\pm$0.4 | 67.8$\pm$1.0 | 39$\pm$9 |"]
+- result: 29SiO LTE column density (GMC 4) = 6.1e13 ± 1.0e13 cm^-2 [Table 2: "| $^{29}$SiO | 6.1$\pm$1.0 | 5.20$\pm$0.23 | 246.4$\pm$1.8 | 74$\pm$4 | 4.1$\pm$1.2 |"]
+- result: C34S LTE column density (GMC 4) = 25e13 ± 3e13 cm^-2 [Table 2: "| C$^{34}$S | 25$\pm$3 | 7.9$\pm$0.5 | 237.7$\pm$1.0 | 74.4$\pm$2.3 | 17$\pm$5 |"]
+- limitation (authors): If PN emission is confined to 0.6'' core sizes rather than the 1.6'' beam, beam-averaged column densities are underestimated by a factor of ~7. [Detections of phosphorus nitride (PN) a…: "We note that if the PN emission would be confined to the $0.6"$ core sizes measured at higher resolution (cite: Ando2017), column densities in this work would be underestimated by a factor of $\sim$7."]
+- limitation (authors): A 2-sigma tail-like emission feature of PN(2-1) in GMC 6 cannot be firmly confirmed due to current sensitivity limits. [Detections of phosphorus nitride (PN) a…: "In GMC 6 it exhibits a tail-like structure towards the south-east at a 2$\sigma$ level. This emission might be a real feature, but the current sensitivity does not allow us to draw a firm conclusion."]
+- limitation (authors): Gas kinetic temperature is poorly constrained in the non-LTE analysis (ranging from ~50 K to ~300 K). [Non-LTE analysis of PN: "We find that the gas temperature is poorly constrained, showing a range for $T_{\rm K}$ between $\sim$50K to $\sim$300K."]
+- not stated (card): Exact sky coordinates (RA, Dec) of the continuum peak pixels extracted for GMCs 1-4 and 6-10; Exact numerical values of N(H2) from Mangum et al. (2019) adopted for GMCs 4 and 6; Priors, number of walkers, and number of steps used in the emcee MCMC sampling for the SpectralRadex non-LTE fit; Velocity integration ranges used to create the PN(2-1) integrated intensity maps in Figure 1; Complete cali…
+
+### 2017NatAs...1..709O: Millimetre-wave emission from an intermediate-mass black hole candidate in the Milky Way (2017; milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: Is there a compact object (IMBH candidate) at the centre of the broad-velocity-width cloud CO–0.40–0.22, as suggested by the gravitational kick model?
+- step 3: Estimate HCN clump mass and virial mass
+  - method: Excitation model mass from HCN J=3–2 integrated intensity; virial mass from size and velocity dispersion [main text: "The mass of the clump was estimated from the HCN *J*=3–2 integrated intensity to be $40$ $M_{\hbox{$\odot$}}$ according to an excitation model"]
+  - parameter: S = 0.15 pc, sigma_V = 22 km/s [main text: "the size parameter $S\!=\!0.15$ pc and velocity dispersion $\sigma_{\rm V}\!=\!22$ km s$^{-1}$"]
+  - assumption: Tk = 60 K, n(H2) = 10^6.5 cm^-3 [main text: "$T_{\rm k}\!=\!60$ K and $n({\rm H}_2)\!=\!10^{6.5}$ cm$^{-3}$"]
+- step 4: N-body gravitational kick simulation
+  - method: Leapfrog integration of a virialized cloud of 1000 particles passing a 10^5 Msun point mass, inclination 70° [N-body simulations: "We employed the leapfrog method to integrate Newton’s equaion of motion."]
+  - parameter: time step 4.6e3 yr; radial dispersion 0.2 pc; velocity dispersion 1.43 km/s; start (9.8, -0.65) pc; v=(-8.19, 0.4) km/s [N-body simulations: "The time step was set to $4.6\times 10^3$ yr."]
+  - assumption: VLSR of centre of gravity = -120 km/s; PA of orbital plane 41.6° [N-body simulations: "The line of sight velocity of the centre of gravity was set to $\hbox{$V_{\rm LSR}$}\!=\!-120$ km s$^{-1}$."]
+  - validation: Qualitative comparison to observed bulk kinematics and clump position-velocity behaviour [main text: "The simulated cloud just after the pericentre passage reproduced the bulk kinematics of CO–0.40–0.22 well."]
+- result: HCN clump mass (excitation model) = 40 ± not stated Msun [main text: "estimated from the HCN *J*=3–2 integrated intensity to be $40$ $M_{\hbox{$\odot$}}$"]
+- result: Virial mass of clump = 4.1e3 ± not stated Msun [main text: "$M_{\rm vir}\!\simeq\!4.1\!\times\! 10^3$ $M_{\hbox{$\odot$}}$"]
+- result: Lower limit on mean mass density of CO–0.40–0.22* = 10^9.4 ± not stated Msun pc^-3 [main text: "gives a lower limit to the average mass density of $\rho\!\simeq\! 10^{9.4}$ $M_{\hbox{$\odot$}} \mbox{pc}^{-3}$"]
+- not stated (card): Briggs robust value for continuum imaging; Line-free channels used for uvcontsub and fit order; Which calibrators were used in which epoch; Clean threshold, masks and iterations; Method for measuring continuum flux densities and their errors; Excitation model details for HCN clump mass (60 K, 10^6.5 cm^-3); Method for XMM-Newton upper limit; Mapping of simulation to observed PV diagram, how the s…
+
+### 2020ApJ...894...72S: Atacama Compact Array Measurements of the Molecular Mass in the NGC 5044 Cooling-flow Group (2020; galaxy_clusters_and_sz, nearby_galaxies, star_formation; observational_alma_primary)
+- question: How much molecular gas is in NGC 5044, how is it distributed in clouds and on which scales, and where are the absorbing clouds relative to the AGN, using ACA 7m+TP CO(2-1) data
+- step 4: Cloud sizes and virial parameter
+  - method: imfit on cloud moment maps, alpha=5R sigma^2/(GM) [4.3.1: "We applied the CASA task `imfit` to the moment maps of the individual clouds to measure the extent (beam deconvolved)"]
+  - software: CASA
+- step 5: Characterize AGN absorption lines
+  - method: Image 12m extended data with robust -2, baselines >1000 klambda; Gaussian fits; column density and virial mass [3.6: "we imaged the 12m cycle 4 extended array observation using a Briggs robust parameter of -2, selecting only baselines longer than $\SI{1000}{k\lambda}$"]
+  - software: CASA
+  - assumption: Tex = 42 K, surface filling factor 1 [3.6: "This assumes a surface filling factor of 1"]
+  - validation: Compared with perchanweightdensity imaging [3.6: "Setting this parameter to `True` increases the amplitude of this line"]
+- result: Mean virial parameter = 8.6 ± 3.4 dimensionless [4.3.1: "$\alpha = \num{8.6(34)}$"]
+- result: Absorption line velocities = 255.5 and 264.7 ± 0.3, 0.4 km/s [Table 3: "$\num{255.5(3)}$ | $\num{6.6(3)}$"]
+- result: H2 column density of absorbers = 1.5e20 ± not stated cm^-2 [3.6: "N_{\mathrm{H_2}} = \SI{1.5e20}{cm^{-2}}"]
+- limitation (authors): Spatial variability of absorption not confirmed; X_CO may overestimate mass [3.6: "Without deeper, high resolution data, unfortunately, we are unable to confirm the existence of a spatially variable absorption feature."]
+- not stated (card): Line-free channel ranges for uvcontsub and imcontsub; Image cell size and image size; Self-calibration solution intervals; Aperture centre coordinates; Details of the masked-moment method and Gaussian fitting settings; Which data selections for the uv-filtered mass vs scale test
+
+### 2025A&A...698A.261B: Complex organic molecules towards the central molecular zone of NGC 253 (2025; astrochemistry, nearby_galaxies, star_formation; archival_reuse)
+- question: Where do five selected O- and N-bearing iCOMs (acetaldehyde, ethanol, formamide, methylamine, methanimine) emit in the NGC 253 central molecular zone, what are their rotational temperatures and column densities, and do differences between …
+- step 2: Extract spectra and fit Gaussian lines
+  - method: Extract spectra from beam-sized regions centred on GMC 7, GMC 6, pSSC 5, pSSC 2; shift to LSRK of each transition; fit Gaussians to get integrated intensity, FWHM, Vpeak; reject lines contaminated at 15% or more [Spectra and line parameters: "We then centred each spectrum at the local standard of rest velocity (LSRK) corresponding to the rest frequency of each transition used in this work before performing a Gaussian line fitting to the detected transitions."] [Spectra and line parameters: "Transitions which were contaminated by more than 15% by a transition from another species (i.e., contributing to 15% or more of the total integrated intensity of our desired transition)"]
+  - software: GILDAS CLASS, WEEDS
+  - parameter: Detection threshold 3 sigma on the intensity peak [Spectra and line parameters: "A threshold of 3$\sigma$ on the intensity peak was set to consider a line to be detected."]
+  - parameter: Spectral rms from zeroth-order polynomial fit to line-free channels [Observations: "For each spectrum, we fitted a zeroth order polynomial to the line-free channels from the continuum-subtracted data cubes to retrieve the information about the spectral root-mean-square (rms)."]
+  - fitting: Single or multiple Gaussian line fits in CLASS (details of priors not stated) [Observations: "We used these same packages to extract the spectra and perform Gaussian line fitting."]
+  - validation: Line contamination checked with the ALCHEMI line identification and WEEDS (JPL and CDMS) [Spectra and line parameters: "performed an additional inspection using WEEDS (cite: maret_2011), an extension of CLASS, which uses both the Jet Propulsion Laboratory (JPL; (cite: pickett_1998)) and the Cologne Database for Molecular Spectroscopy (CDMS; e.g. (cite: muller_2005; endres2016)) databases"]
+- step 3: Derive T_rot and N_tot with rotational diagrams
+  - method: Rotational diagram per species and region assuming LTE, optically thin emission and Rayleigh-Jeans; one or two temperature components; blended transitions split 50/50 [Methodology: "This method assumes Local Thermodynamic Equilibrium (LTE) and optically thin emission."] [Methodology: "We also assume the Rayleigh-Jeans approximation holds."]
+  - parameter: Beam-filling factor 0.5 for GMC scales (1.6'') and ~0.01 for pSSC scales (0.12'') [Rotation diagrams: "The beam filling factor, (see Sec. [4.1](#subsec:methodology)), is 0.5 for GMC scales and $\sim 0.01$ for pSSC scales."]
+  - parameter: Each of two blended transitions assigned 50% of total integrated intensity [Methodology: "we thus assumed that each transition accounts for 50% of the total line integrated intensity."]
+  - parameter: Species showing a single component evaluated for both emission sizes (1.6'' and 0.12'') [Results from the rotational diagrams: "In these cases, since we do not know the region of emission of these species, we calculated column densities for the two emission sizes, i.e. for the GMC scale ($\theta_s=1.6\ensuremath{''}$) and the pSSC scale ($\theta_s=0.12\ensuremath{''}$)."]
+  - assumption: Low-Eu component arises from GMC scales (1.6''), high-Eu component from pSSC scales (0.12'', ~2 pc) [Methodology: "we assumed that the first component, traced by the lower upper-level energy transitions, arises from the GMCs whilst the second component, traced by the higher upper-level energy transitions, arises from the pSSCs."]
+  - assumption: Ratio of 1 between symmetry states for one species (symbol missing in the text), since kinetic temperature exceeds the ~0.1 K level difference [Methodology: "we assumed a / ratio of 1 since the kinetic temperature is higher than the energy difference of $\sim 0.1$ K between the levels of the different symmetry states (cite: matthews1985)"]
+  - fitting: Best fit by minimizing the reduced chi-square; 15% calibration error and spectral rms included in integrated-flux uncertainties [Methodology: "The best fit was calculated by minimizing the reduced chi-square"]
+  - validation: Second component justified by shifts in FWHM/Vpeak with Eu and by emission becoming more compact with Eu [Methodology: "Our choice is supported by the fact that higher upper-energy level transitions showed often a different FWHM or $V_\mathrm{peak}$ compared to the lower upper-energy transitions"]
+- step 4: Test two-component interpretation with mean FWHM and Vpeak vs Eu
+  - method: Use relatively isolated transitions to compute mean FWHM and Vpeak per component and compare as a function of Eu towards GMC 6, pSSC 5 and pSSC 2 [Gaussian fits and temperature components: "The uncertainties were derived by adding in quadrature the errors from the Gaussian fits with the spectral resolution of 10 km s$^{-1}$."]
+  - validation: Two components clear for one species only, not clear for the others, given the 10 km/s resolution [Gaussian fits and temperature components: "the presence of two components is only clear for whilst it is not clear for and"]
+- step 7: Compare column densities between species to infer chemical links and origin
+  - method: Plot column densities of iCOM pairs at GMC (1.6'') and pSSC (0.12'') scales and compare ratios and correlations with literature formation pathways [Discussion: "shows the relation between the column densities of the iCOMs, at both GMC scales (corresponding to a source size of $1.6\ensuremath{''}$) or pSSC scales"]
+  - assumption: A correlation does not necessarily imply a direct chemical link; it may reflect similar physical processes [Chemical link and formation pathways fo…: "However, it is worth noting that a correlation between two species does not always imply a direct chemical link."]
+- result: Beam-filling factor, GMC scale (1.6'') and pSSC scale (0.12'') = 0.5 (GMC); ~0.01 (pSSC) ± not stated dimensionless [Rotation diagrams: "The beam filling factor, (see Sec. [4.1](#subsec:methodology)), is 0.5 for GMC scales and $\sim 0.01$ for pSSC scales."]
+- result: Rotational temperatures, cold and warm components = cold <=20 K; warm ~30-80 K; GMC 7 only cold; all T_rot below 100 K, majority 10-40 K ± not stated K [Results from the rotational diagrams: "On the other hand, the other regions have two components, a cold ($T_{\text{rot}}\leq 20$ K) and a warmer component ($T_{\text{rot}}\sim 30-80$ K)."]
+- result: Typical FWHM of the cold gas component of the iCOMs = mostly 40-60 ± not stated km/s [Possible origins of the iCOMs in the CM…: "On average, we measured line widths mostly around $40-60$ km s$^{-1}$(see Table [3](#tab:av_GF)) for the cold gas component (component 1) of the iCOMs."]
+- result: [methylamine]/[formamide] column-density ratio = 3-10 towards GMC 7 and pSSC 5; 5 (GMC 6) and 10 (pSSC 2) ± not stated dimensionless [Possible origins of the iCOMs in the CM…: "The measured abundance ratio of $[\ce{CH3NH2}]/[\ce{NH2CHO}]= 3-10$ towards GMC 7 and pSSC 5"]
+- limitation (authors): Spectral resolution (10 km/s) is insufficient to separate blended E/A states and limits identification of gas components [Spectra and line parameters: "the E- and A- states are often completely blended together, the spectral resolution of 10 km s$^{-1}$ being insufficient to disentangle the two states."]
+- limitation (authors): Derived T_rot are not true gas temperatures because rotational diagrams deviate from LTE fits [Results from the rotational diagrams: "Due to the fact that we observe deviations from the fits in the RDs, it is clear that the derived $T_{\text{rot}}$ are not representative of the true gas temperature."]
+- limitation (authors): Two-component treatment assumes the warm compact component contributes negligibly to the cold extended one [Rotational Diagrams: "As a caveat, this implies that the contribution from the warm compact component to the cold extended one is negligible."]
+- not stated (card): Exact ALCHEMI cube versions/file names and how to obtain the processed cubes (public availability of the processed cubes is not stated).; Imaging parameters of the ALCHEMI cubes (weighting, deconvolver, 7m+12m combination, line-free channels for continuum subtraction) are deferred to the ALCHEMI summary paper.; Line-free channel ranges and velocity windows used for the per-spectrum rms and baseli…
+
+### 2025NatAs...9..406L: Inadequate turbulent support in low-metallicity molecular clouds (2025; milky_way_ism, nearby_galaxies, star_formation; observational_alma_primary)
+- question: Are molecular clouds in the low-metallicity Galactic outer disk and in metal-poor dwarf galaxies in virial equilibrium (virial parameter near unity), as measured from optically thin 13CO?
+- step 7: Compute virial parameter and its trend with metallicity
+  - method: alpha_vir = 5 sigma_v^2 R / (G M); galactic metallicity from the O/H gradient; ordinary least-squares fit of log alpha_vir versus log Z [The virial parameter: "\alpha_{\rm vir} = \frac{5\sigma_{\rm v}^{2}R_{\rm cloud}}{GM_{\rm mol}}"] [Metallicity estimate: "The gas-phase metallicities of the Galactic clouds were estimated using the Galactic radial gradient of O/H"]
+  - parameter: Supervirial: alpha_vir > 1; subvirial: alpha_vir < 1; factor-of-two virial vs equipartition not distinguished [The virial parameter: "we could not distinguish them in this work."]
+  - assumption: Uniform sphere (a = 1); a ~ 1.4 +/- 0.3 for realistic density profiles would lower alpha_vir [The general virial theorem: "Possible deviations from a uniform-spherical cloud ($a>1$) would even further consolidate our results."]
+  - fitting: Ordinary least squares on the Galactic 13CO measurements [Caveats of studying alpha_vir using low…: "This correlation was fitted using ordinary least squares for the"]
+  - validation: Selection-bias test comparing clouds at similar heliocentric distance; 2 pc smoothing test; 12CO-based sanity check [Selection bias: "have at least $\times$5 smaller"] [Possible bias in measuring cloud proper…: "Then, we followed the same procedures to measure the cloud"]
+- step 8: Estimate the magnetic field needed to support subvirial clouds
+  - method: General virial theorem with magnetic term, assuming efficient ion-neutral momentum transfer; compare required B with B versus nH relation from Zeeman data [main text: "Using the general virial theorem and assuming efficient momentum transfer between ions and neutral species"]
+  - parameter: Cosmic-ray ionization rate 1e-17 s^-1; ionization fraction ~1e-7; MHD cutoff wavelength <~0.01 pc [The general virial theorem: "($\zeta_{\rm H_{2}}=10^{-17}$ s$^{-1}$)"]
+  - assumption: External pressure neglected in the outer Galaxy; external magnetic field neglected (~10 uG vs ~100 uG required) [The general virial theorem: "Neglecting the minor contribution from $P_{\rm e}$ in the outer Galaxy"]
+  - validation: Required B is consistent with the Crutcher B versus nH relation [main text: "field strengths required to support subvirial clouds are consistent with expectations"]
+- result: Slope of log(alpha_vir) vs log(Z/Zsun), Galactic 13CO clouds (OLS) = 1.5 ± 0.1 dimensionless [Caveats of studying alpha_vir using low…: "$\log(\alpha_{\rm vir}) = (1.5\pm0.1)\times\log(Z [Z_{\odot}])+(0.56\pm0.03)$"]
+- result: Intercept of log(alpha_vir) vs log(Z/Zsun) fit = 0.56 ± 0.03 dimensionless [Caveats of studying alpha_vir using low…: "$\log(\alpha_{\rm vir}) = (1.5\pm0.1)\times\log(Z [Z_{\odot}])+(0.56\pm0.03)$"]
+- result: alpha_vir ratio of Rgc>20 kpc clouds to Rgc~13 kpc clouds at 15-20 kpc distance = at least 5 times smaller ± not stated dimensionless [Selection bias: "have at least $\times$5 smaller"]
+- limitation (authors): Systematic errors are not propagated in the quoted uncertainties [Physical properties of molecular clouds: "Systematic errors are not involved in error propagation."]
+- limitation (authors): Slope of the alpha_vir versus Z trend is sensitive to the adopted H2/13CO abundance ratio [main text: "The slope of this correlation is sensitive to the adopted"]
+- limitation (authors): Physical mechanisms for B-field-dominated dynamics are unclear [Possible mechanisms for B-field-dominat…: "However, the detailed underlying physical mechanisms are still unclear."]
+- not stated (card): ALMA TP (2021.2.00175.S): pipeline/CASA version, gridding and imaging parameters of the TP cubes, and line-free channels or baseline treatment are not given; tclean deconvolver, niter/threshold, masking and line-free channels / continuum subtraction for the SMC and NGC 6822 cubes; The LMC cubes (Wong et al. 2019) are used as-is; their processing is not described here; Which clouds have complement…
+
+### 2023ApJ...958...98F: Early Planet Formation in Embedded Disks (eDisk). XII. Accretion Streamers, Protoplanetary Disk, and Outflow in the Class I Source Oph IRS 63 (2023; protoplanetary_disks, star_formation, astrochemistry; large_program_or_survey)
+- question: Characterize the gas and dust structures, kinematics, accretion streamers, and mass budget (envelope infall versus stellar accretion) of the Class I source Oph IRS63 in the context of early planet formation.
+- step 6: Derive envelope mass and envelope-to-disk mass infall rate
+  - method: Verify C18O is optically thin and 13CO is optically thick using their brightness temperature ratio; compute gas excitation temperature T_ex from peak 13CO brightness temperature assuming LTE; compute C18O column density and total H2 envelo… [Mass infalling rate: "For the gas around Oph IRS63, we find that the ratio between the peak brightness temperature of the $^{13}$CO and C$^{18}$O lines is between 2 and 3 in the region where most of the CO gas is detected. This result confirms that C$^{18}$O is optically thin, and because the ratio is $<4$, it also confirms that $^{13}$CO …"] [Mass infalling rate: "From this equation, we measure a peak excitation temperature of 21 K in the envelope. Once the excitation temperature is obtained, we then use the C$^{18}$O emission to calculate the gas mass of the streamer according to equations ([\[eq:column_density\]](#eq:column_density)) and ([\[eq:mass\]](#eq:mass))"]
+  - parameter: T_bg = 2.7 K; T_ex = 21 K; inner disk exclusion radius = 265 au; d = 132 pc [Mass infalling rate: "for the microwave background temperature of 2.7 K."] [Mass infalling rate: "From this equation, we measure a peak excitation temperature of 21 K in the envelope."]
+  - assumption: LTE; optically thick 13CO and optically thin C18O; [12C]/[13C] = 77 and [16O]/[18O] = 560; X(C18O)/X(H2) = 3 x 10^-7; free-fall velocity from outermost edge [Mass infalling rate: "assuming standard isotope ratios of \[$^{12}$C\]/\[$^{13}$C\] = 77 and \[$^{16}$O\]/\[$^{18}$O\] = 560 (cite: Wilson1994)."] [Mass infalling rate: "Using a standard abundance of $3 \times 10^{-7}$ (cite: Frerking1982) for C$^{18}$O and $B_e$ value taken from the JPL database (cite: Pickett1998)"]
+  - validation: Compared derived envelope mass (0.04 M_sun) with Brinch & Jørgensen (2013) radiative transfer value (0.07 M_sun) [Mass infalling rate: "This is already suggested by the fact that our value is about half of the total envelope mass derived from (cite: Brinch2013), which was 0.07$~M\odot$."]
+- result: Envelope peak excitation temperature (T_ex) = 21 ± not stated K [Mass infalling rate: "From this equation, we measure a peak excitation temperature of 21 K in the envelope."]
+- result: C18O infalling envelope mass (M_envelope) = 0.04 ± not stated M_sun [Mass infalling rate: "we obtain a total C$^{18}$O mass of $M_{envelope} \sim 0.04~M_\odot$."]
+- result: Envelope-to-disk mass infall rate = 4e-6 ± not stated M_sun yr^-1 [Mass infalling rate: "Finally, we estimate a mass infalling rate from the envelope to the disk of $\dot{M}_{infall} \sim 4\times 10^{-6}$ $M_\odot \, yr^{-1}$."]
+- limitation (authors): Cloud contamination and interferometric filtering affect molecular channels near the systemic velocity and cause missing flux, making the C18O envelope mass a lower limit. [Molecular tracers: "In some molecular tracers, our observations suffer from cloud contamination at channel maps close to systemic velocity. This feature is most likely caused by gas being filtered out by the ALMA interferometer."]
+- limitation (authors): Continuum over-subtraction causes negative absorption artifacts at the disk center in optically thick lines (all species except SO), and cannot be completely ruled out as the cause of the central depression in SO. [Molecular tracers: "Additionally, we see a strong negative absorption at the disk position for all the molecular species (except in SO). This artifact is caused by continuum over-subtraction, resulting from optically thick molecular lines at the line center"]
+- limitation (authors): The 1.3 mm dust continuum is optically thick in the disk, so the derived dust masses are lower limits; Toomre Q also depends on the assumed gas-to-dust ratio of 100. [Millimeter continuum: "These values should be regarded as lower limits for the total disk mass of solids since the 1.3 mm emission in the disk is optically thick as discussed in (cite: Segura-Cox2020)."]
+- not stated (card): Self-calibration parameters (solution intervals, number of phase/amplitude rounds) which are deferred to Ohashi et al. (2023); Imaging parameters in tclean (pixel/cell size, image dimensions, cleaning threshold, masking strategy, multiscale scales); Whether the short-baseline continuum from 2019.A.00034.S was combined with the long-baseline continuum from 2015.1.01512.S or if 2015.1.01512.S was i…
+
+### 2017A&A...601A..48G: Exploring molecular complexity with ALMA (EMoCA): Simulations of branched carbon-chain chemistry in Sgr B2(N) (2017; astrochemistry, star_formation; theory_or_simulation_compared_to_alma)
+- question: Explain the observed i:n ratio of propyl cyanide in Sgr B2(N2), predict abundances of the four butyl cyanide isomers and alkanes up to pentane, and test for n-butyl cyanide in EMoCA data
+- step 1: Run collapse and warm-up chemical models
+  - method: MAGICKAL three-phase rate-equation model with free-fall collapse then warm-up from 8 to 400 K at three timescales [2.1 Physical model: "The physical model consists of two stages: free-fall collapse, followed by a dynamically-static warm-up."]
+  - software: MAGICKAL
+  - parameter: n_H = 2e8 cm-3 post-collapse; zeta = 1.3e-17 s-1; 0.1 micron grains [2.1 Physical model: "A post-collapse gas density of $n_{\mathrm{H}} = 2 \times 10^{8}$ cm$^{-3}$ is assumed"]
+  - assumption: Canonical cosmic-ray ionization rate 1.3e-17 s-1 [2.1 Physical model: "A canonical cosmic-ray ionization rate of $\zeta$ = $1.3 \times 10^{-17}$ s$^{-1}$ is assumed"]
+  - validation: Compared model ice abundances and i:n ratio with observations; tested high CN-addition barriers [3.6 High activation-energy models: "In order to test the dependence of the model results on these barriers, we re-ran the collapse model and the three subsequent warm-up models"]
+- result: Model i/n propyl cyanide, medium warm-up low EA = 0.24 ± not stated dimensionless [Table 7: "C$_3$H$_7$CN, $i$ / $n$ | | 3.0 | | 0.45 | | 0.24 | | 0.17 | | 1.8 | | 1.5"]
+- limitation (authors): Cosmic-ray ionization rate poorly constrained; full sensitivity study left for future [5 Discussion: "the cosmic-ray ionization rate for Sgr B2(N2) is poorly constrained by observations"]
+- not stated (card): EMoCA data reduction, line-survey spectral setup and calibration details are not given; Fitting/LTE modelling details (spectral modelling software, linewidth, rms) for the n-C4H9CN upper limit; Full MAGICKAL code and network files, and ODE solver settings; Warm-up timescale values for fast/medium/slow in this paper
+
+### 2014ApJ...795L..25R: Turbulence Sets the Initial Conditions for Star Formation in High-pressure Environments (2014; milky_way_ism, star_formation; observational_alma_primary)
+- question: Do theoretical predictions of supersonically turbulent, isothermal cloud structure and star formation thresholds, validated in solar neighbourhood clouds, hold in a high-pressure CMZ cloud?
+- step 4: Core mass, density and virial parameter
+  - method: Mass from 3 mm emission, alpha_vir = 3kσ²R/GM with k=1.16 and σ<1.4 km/s from H2CS [The column density PDF: "we determine the virial parameter, $\alpha_{\rm vir}$, defined as $\alpha_{\rm vir}=3k\sigma^2R/GM$"]
+  - parameter: R ~0.04 pc [The column density PDF: "we calculate the mass of this core (R$\sim$0.04 pc) to be 72 M$_{\odot}$"]
+  - assumption: density profile rho ∝ r^-1.8, k=1.16 [The column density PDF: "For high-mass star-forming cores with density profiles $\rho \propto r^{-1.8}$ (cite: Garay07), $k$ is 1.16."]
+- result: Star-forming core mass (T=20 K) = 72 ± not stated Msun [The column density PDF: "we calculate the mass of this core (R$\sim$0.04 pc) to be 72 M$_{\odot}$"]
+- result: Core volume density = >3.0e6 ± not stated cm^-3 [The column density PDF: "its volume density to be $>$3.0 $\times$ 10$^{6}$ ${\rm cm}^{-3}$"]
+- result: Virial parameter of core (M=72 Msun) = <1.1 ± not stated dimensionless [The column density PDF: "for a mass of 72 M$_{\odot}$ $\alpha_{\rm vir}$ $<$ 1.1"]
+- limitation (authors): Core unresolved so density is a lower limit; deviation may be from temperature [The column density PDF: "the density is a lower limit since this core is unresolved"]
+- not stated (card): Imaging weighting/robust, deconvolver, masks, and CLEAN parameters; Details of the SD+interferometer combination (feathering vs CLEAN model, scaling); N-PDF binning, fitting method, and range used for log-normal fits; Calibrator names and flux scale; Source coordinates and distance adopted; How the 72 Msun core was defined (aperture) and the velocity dispersion source line; CASA/Miriad versions
+
+### 2020NatAs...4.1064H: Ubiquitous velocity fluctuations throughout the molecular interstellar medium (2020; milky_way_ism, nearby_galaxies, star_formation; archival_reuse)
+- question: Gas flows across spatial scale and galactic environment, and their coupling to density structure.
+- step 3: Select coherent sub-regions
+  - method: Use brightest arm components and Glue selections; use acorns clustering for GMCs and the Galactic filament; retain G0.253+0.016 tree C. [Data selection for statistical analysis…: "We remove these additional components by selecting the brightest velocity component at each location."] [Data selection for statistical analysis…: "We further select the molecular cloud complexes which follow the coherent structure of the spiral using Glue(cite: glue15; glue17)."]
+  - software: Glue, acorns
+  - parameter: Cluster GMF data by position, centroid velocity and velocity dispersion. [Data selection for statistical analysis…: "We cluster the data based on position, centroid velocity, and the velocity dispersion information provided by our decomposition."]
+  - parameter: CMZ column-density mask guided by henshaw16c centroid locations. [Data selection for statistical analysis…: "using the location of the centroid velocity measurements from Ref. (cite: henshaw16c) as a guide for masking."]
+  - parameter: G0.253+0.016 substructure tree C from henshaw19. [Data selection for statistical analysis…: "labelled ‘tree C’ in Ref. (cite: henshaw19)"]
+  - assumption: Single components describe most arm CO emission despite likely optical thickness. [Data selection for statistical analysis…: "although the CO $(2-1)$ is most likely optically thick, single velocity components provide a suitable description for most of the CO $(2-1)$ emission along the arm."]
+  - assumption: G035.39–00.33 isolated hyperfine is optically thin. [Data selection for statistical analysis…: "the isolated hyperfine component of N$_{2}$H$^{+}$ $(1-0)$ is measured to be optically thin(cite: henshaw14)."]
+  - validation: GMF acorns cluster agrees with literature morphology; N2H+ clustering recovers three dominant sub-filaments. [Data selection for statistical analysis…: "Our acorns-identified cluster shows excellent agreement with the GMF extracted in Ref. (cite: ragan14)"] [Data selection for statistical analysis…: "Our clustering analysis is consistent with the results of Ref. (cite: henshaw14) in that the N$_{2}$H$^{+}$ $(1-0)$ emission is mainly distributed throughout three dominant sub-filaments"]
+- step 4: Extract crest profiles and residual velocities
+  - method: Find filament crests; average density and velocity perpendicular to crests with squared Gaussian-amplitude weights; subtract polynomial bulk velocity. [Analysis of filamentary structures: "We obtain the crest of each filamentary structure by applying FilFinder(cite: koch15) to our selected density tracer in each environment"] [Analysis of filamentary structures: "We perform a weighted mean of our selected density tracer (weighting by the square of the Gaussian fit amplitude value) orthogonal to the crest."]
+  - software: FilFinder
+  - parameter: Density tracers: arm CO (2-1), CMZ Herschel column density, GMC filament N2H+ (1-0). [Analysis of filamentary structures: "CO ($2-1$) in the spiral arm, the *Herschel*-derived column density map in the CMZ, and the N$_{2}$H$^{+}$ ($1-0$) emission in the GMC filament"]
+  - fitting: Simple polynomial bulk-motion model subtracted from decomposed velocity field. [Analysis of filamentary structures: "we remove the bulk motion motion by modelling it with a simple polynomial function and subtracting this model from the velocity field derived from our spectral decomposition"]
+- step 8: Measure GMC scale-free exponents
+  - method: Compute noise-corrected 2-D density and velocity structure functions averaged over azimuth; fit power laws; convert velocity exponent to dispersion-size exponent. [Analysis of multi-dimensional structures: "are computed in 2-D, thereby averaging the density and velocity fluctuations over all azimuthal angles in each GMC."] [Analysis of multi-dimensional structures: "We fit the structure functions with power-law functions"]
+  - software: statistical analysis codes
+  - parameter: Disc fitting range: 0.65–4 pc; CMZ fitting range: 0.07–0.7 pc. [Analysis of multi-dimensional structures: "(0.65 pc and 0.07 pc for the GMCs in the disc and CMZ, respectively)"] [Analysis of multi-dimensional structures: "(4 pc and 0.7 pc for the GMCs in the disc and CMZ, respectively)."]
+  - assumption: Lower limit is beam size; upper limit is approximate turnover scale from insufficient sampling. [Analysis of multi-dimensional structures: "On large-scales, the structure functions begin to flatten due to insufficient sampling(cite: ossenkopf02)"] [Analysis of multi-dimensional structures: "We set the lower and upper limits of our fitting range to the beam size(cite: koch20)"]
+  - fitting: Power law S_s(ℓ) ∝ ℓ^ζ2. [Analysis of multi-dimensional structures: "We fit the structure functions with power-law functions of the form $S_{s}(\ensuremath{\boldsymbol\ell})\propto\ensuremath{\boldsymbol\ell}\,^{\zeta_{2}}$."]
+  - validation: Mock-field tests recover characteristic scales but show estimator coupling can affect slopes. [2-D models: "even though the slopes of the structure functions can be affected by the interplay between the density and velocity fields."]
+- step 10: Compare periodic structure with gravitational fragmentation
+  - method: Compare characteristic spacings with deconvolved diameters; infer filament central density and instability growth timescale from observed spacing. [Analysis of filamentary structures: "The characteristic wavelengths derived above are therefore of the order $3$, $5$, and $3$ times the diameter of their parent structures, respectively."] [Origins of the periodic density fluctua…: "what would be the expected central density of a filament required to produce our observed periodic spacing of $0.32$ pc?"]
+  - parameter: GMC filament spacing 0.32 pc; sound speed 0.27 km s−1; temperature 20 K. [Origins of the periodic density fluctua…: "our observed periodic spacing of $0.32$ pc"] [Origins of the periodic density fluctua…: "If we assume a sound speed of $0.27$ ${\rm km}~{\rm s}^{-1}$ (relevant for cold molecular gas at a temperature of 20 K)"]
+  - assumption: Gravitational fragmentation of an isolated cylindrical filament in hydrostatic equilibrium; magnetic fields and shear omitted from the simple model. [Origins of the periodic density fluctua…: "The simplistic model outlined above, which describes the gravitational fragmentation of an isolated cylindrical filament in hydrostatic equilibrium, does not capture the important effects of shear and magnetic fields."]
+  - validation: Derived central density agrees with literature core and filament densities; replacing sound speed with measured dispersion changes density by <30%. [Origins of the periodic density fluctua…: "using our mean measured velocity dispersion of $\sim0.3$ ${\rm km}~{\rm s}^{-1}$ changes the central density by $<30\%$"] [Origins of the periodic density fluctua…: "This density is consistent with the estimated number density of star-forming cores within the cloud(cite: henshaw16b) and with the density of other high-mass filaments observed with similar spatial resolution(cite: peretto13; hacar17)."]
+- result: Galactic disc GMC density structure-function exponent ζ2 = 0.82 ± ±0.03 dimensionless [Analysis of multi-dimensional structures: "We find that the structure functions of density for our GMCs in the disc and CMZ increase with increasing spatial scale with scaling exponents $\zeta_{2} = {0.82\pm0.03}$ and ${0.91\pm0.01}$."]
+- result: CMZ GMC density structure-function exponent ζ2 = 0.91 ± ±0.01 dimensionless [Analysis of multi-dimensional structures: "We find that the structure functions of density for our GMCs in the disc and CMZ increase with increasing spatial scale with scaling exponents $\zeta_{2} = {0.82\pm0.03}$ and ${0.91\pm0.01}$."]
+- result: Galactic disc GMC velocity structure-function exponent ζ2 = 0.82 ± ±0.02 dimensionless [Analysis of multi-dimensional structures: "Similarly, we measure scaling exponents for the velocity structure functions of $\zeta_{2} = {0.82\pm0.02}$ and $\zeta_{2}={0.74\pm0.01}$, respectively."]
+- result: CMZ GMC velocity structure-function exponent ζ2 = 0.74 ± ±0.01 dimensionless [Analysis of multi-dimensional structures: "Similarly, we measure scaling exponents for the velocity structure functions of $\zeta_{2} = {0.82\pm0.02}$ and $\zeta_{2}={0.74\pm0.01}$, respectively."]
+- result: Galactic disc GMC velocity dispersion-size exponent γ = 0.41 ± ±0.01 dimensionless [Origins of scale-free density and veloc…: "For the GMCs in the Galactic disc and the CMZ we find $\gamma=0.41\pm0.01$ and $0.37\pm0.01$, respectively."]
+- result: CMZ GMC velocity dispersion-size exponent γ = 0.37 ± ±0.01 dimensionless [Origins of scale-free density and veloc…: "For the GMCs in the Galactic disc and the CMZ we find $\gamma=0.41\pm0.01$ and $0.37\pm0.01$, respectively."]
+- result: Density spacing / parent diameter, spiral arm, CMZ stream, GMC filament = 3, 5, 3 ± not stated dimensionless [Analysis of filamentary structures: "The characteristic wavelengths derived above are therefore of the order $3$, $5$, and $3$ times the diameter of their parent structures, respectively."]
+- result: GMC filament central density inferred from fragmentation model = 10^5 ± not stated cm−3 [Origins of the periodic density fluctua…: "we derive a central density and growth timescale of $10^{5}$ cm$^{-3}$ and 0.15 Myr, respectively"]
+- result: GMC filament instability growth timescale = 0.15 ± not stated Myr [Origins of the periodic density fluctua…: "we derive a central density and growth timescale of $10^{5}$ cm$^{-3}$ and 0.15 Myr, respectively"]
+- result: Spiral arm velocity-oscillation magnitude = of the order 5; up to 10 ± not stated km s−1 [Origins of the periodic velocity fluctu…: "The magnitude of the velocity oscillations (of the order 5 ${\rm km}~{\rm s}^{-1}$ but up to 10 ${\rm km}~{\rm s}^{-1}$"]
+- limitation (authors): Observational density and velocity estimators can alter inferred structure functions. [Structure functions and their applicati…: "since the velocity centroid is an emission weighted estimate of the velocity field, features in the structure function may be altered by the interaction between the velocity and the density fields."]
+- limitation (authors): Mock-field tests lack physical excitation and optical-depth treatment. [2-D models: "We note that these are simple mock data models without underlying physical basis and no treatment of excitation conditions or optical depth effects."]
+- limitation (authors): Randomly generated periodicity does not establish a physical origin. [1-D models: "If periodicity exists within data, even if it is generated randomly, it will be seen as an oscillation in the structure function."]
+- not stated (card): ALMA calibration software and pipeline versions, calibrators and flux-scale uncertainties.; Imaging weighting/robust, pixel scales, image dimensions, masks, stopping thresholds and multiscale scales for both ALMA data sets.; Detailed MALT90/ALMA combination procedure and relative flux scaling for G0.253+0.016.; Exact final cube versions and filenames, including the NGC 4321 mosaics.; ScousePy tol…
+
+### 2024ApJ...970...74P: The Evaporating Massive Embedded Stellar Cluster IRS 13 Close to Sgr A*. II. Kinematic Structure (2024; stellar_physics, star_formation, milky_way_ism; multi_facility_alma_minor)
+- question: Kinematic structure and inspiral of IRS 13; whether H30α gas kinematics and the E3 broadband SED support an IMBH
+- step 5: Test cluster migration timescales
+  - method: AMUSE N-body simulations in a static enclosed-mass potential; impose reduced virial velocities [N-body simulations: "For the model, we use the modules AMUSE-PhiGRAPE (cite: Harfst2007), AMUSE-BHtree (cite: Barnes1986), and AMUSE-ph4 (cite: Portegies-Wart2018) to perform the simulations."] [N-body simulations: "we use a static potential as a function of distance"]
+  - software: Astrophysical Multipurpose Software Environment, AMUSE-PhiGRAPE, AMUSE-BHtree, AMUSE-ph4
+  - parameter: Cluster mass 4.5 × 10^4 M⊙; King parameter 16; size 0.1 pc; initial location (0,3) pc [Table 4: "| Cluster Mass | 4.5$\times$10$^4 M_{\odot}$ |"] [Table 4: "| King parameter | 16 |"]
+  - parameter: N = 64, 248, 512; simulated time span about 0.0–0.3 Myr [N-body simulations: "we set the number of particles used for the model to 64, 248, and 512."] [N-body simulations: "we limit the simulations to a time span of about 0.0-0.3 Myr"]
+  - parameter: Sgr A* mass 4 × 10^6 M⊙; cusp about 5 × 10^5 M⊙; enclosed region 3 pc; α = 1.2 [N-body simulations: "We set the mass of Sgr A\* to $4\times10^6\,M_{\odot}$"] [N-body simulations: "We adapt the Ansatz of (cite: Hobbs2009) using a stellar cusp mass of about $5\,\times\,10^5\,M_{\odot}$."]
+  - parameter: Virial velocity reduced to 10% upon entering the NSC [N-body simulations: "we mimic by setting $v_{\rm virial}$ to 10$\%$ as soon as the cluster enters the NSC."]
+  - assumption: Equal particle masses; no stellar winds or local density fluctuations [N-body simulations: "stellar winds or local density fluctuations are not included"] [N-body simulations: "the modeled cluster encloses particles with the same mass"]
+  - validation: Vary particle number and compare migration timescales with published simulations [N-body simulations: "By using different particle numbers, we can furthermore investigate if the migration timescales depend on the number of stars in the cluster."] [N-body simulations: "we find a migration timescale for a cluster of $\leq$ 0.3 Myrs in agreement with the numerical simulations presented in (cite: Bonnell2008), (cite: Hobbs2009), and (cite: Jalali2014)."]
+- step 7: Estimate the E3 virial mass from ALMA gas
+  - method: Represent the velocity-resolved H30α ring; calculate M_IMBH = R_gas v_R²/G [IRS 13E3, a colliding wind product?: "choosing a different representation of the ionized ring of the H30$\alpha$ line distribution around the position of the E star E3"] [IRS 13E3, an IMBH?: "M_{\rm IMBH}=\frac{R_{\rm gas}v_{\rm R}^2}{G}\sim 31434 \pm 7422\,M_{\odot}"]
+  - parameter: R_gas = 0.10 ± 0.01″ ≈ 825 ± 83 AU [IRS 13E3, an IMBH?: "$R_{\rm gas}=0.10 \pm 0.01''\sim 825 \pm 83\,{\rm AU}$"]
+  - parameter: v_R = 130 ± 30 km s−1 [IRS 13E3, an IMBH?: "The line-of-sight velocity traced by the line is $v_{\rm R}=130 \pm 30\,{\rm km\,s^{-1}}$."]
+  - assumption: Gas fully virialized [IRS 13E3, an IMBH?: "Assuming that the gas is fully virialized"]
+  - fitting: Uncertainty from propagation of errors [IRS 13E3, an IMBH?: "where the uncertainty is given by the propagation of errors."]
+  - validation: Independent confirmation of the literature H30α ring representation [IRS 13E3, a colliding wind product?: "we independently confirm the results of (cite: tsuboi2019; Tsuboi2021)"]
+- result: Simulated cluster migration timescale = ≤ 0.3 ± not stated Myrs [N-body simulations: "we find a migration timescale for a cluster of $\leq$ 0.3 Myrs"]
+- result: Stars reaching the inner parsec, N = 64 = > 50 ± not stated % [IRS 13, an in-spiraling cluster: "We do find that for $N=64$, $>\,50\%$ of stars are able to migrate to the *inner parsec*."]
+- result: Stars reaching the inner parsec, N = 248 and N = 512 = ≲ 30 ± not stated % [IRS 13, an in-spiraling cluster: "only $\lesssim\,30\%$ of stellar members of the cluster with $N=248$ and $N=512$ enter the *inner parsec*"]
+- result: H30α gas-ring angular radius = 0.10 ± ±0.01 arcsec [IRS 13E3, an IMBH?: "$R_{\rm gas}=0.10 \pm 0.01''\sim 825 \pm 83\,{\rm AU}$"]
+- result: H30α gas-ring physical radius = 825 ± ±83 AU [IRS 13E3, an IMBH?: "$R_{\rm gas}=0.10 \pm 0.01''\sim 825 \pm 83\,{\rm AU}$"]
+- result: H30α line-of-sight velocity used for the virial mass = 130 ± ±30 km s−1 [IRS 13E3, an IMBH?: "The line-of-sight velocity traced by the line is $v_{\rm R}=130 \pm 30\,{\rm km\,s^{-1}}$."]
+- result: Putative IMBH virial mass, described as a lower limit = 31434 ± ±7422 M⊙ [IRS 13E3, an IMBH?: "M_{\rm IMBH}=\frac{R_{\rm gas}v_{\rm R}^2}{G}\sim 31434 \pm 7422\,M_{\odot}"]
+- limitation (authors): Stellar Keplerian solutions lack individual radial velocities [Limitations of the analysis: "The Keplerian solutions for the projected on-sky positions of the investigated sources lack radial velocities."]
+- limitation (authors): Some stellar orbits have less than 2% coverage [Orbits: "the orbital data coverage is less than 2$\%$ for some of the cluster members."]
+- limitation (authors): Multiple orbital solutions are acceptable; quoted uncertainty ranges describe local solutions [Cluster analysis: "multiple orbital solutions with comparable probabilities are acceptable."]
+- not stated (card): ALMA execution blocks, spectral windows, H30α rest frequency, channel width, and velocity reference frame.; ALMA calibration software/version, flagging, calibrators, and flux-scale uncertainty; reduction is deferred to Paper I.; Whether the ALMA inputs were raw visibilities, calibrated visibilities, or existing image products.; ALMA imaging weighting/robust value, beam, pixel size, masks, continu…
+
+### 2026ApJ..1000..141K: First Determination of the Cosmic Microwave Background Radiation Temperature at z = 0.68 Using Molecular Absorption Lines (2026; cosmology, agn_and_quasars, astrochemistry; archival_reuse)
+- question: What is the cosmic microwave background (CMB) radiation temperature at z = 0.68 derived from rotational molecular absorption lines toward the lensed quasar B0218+357, and is it consistent with the standard Big Bang cosmological model?
+- step 3: Compute optical depth profiles and propagate covering factor uncertainties
+  - method: Monte Carlo sampling of continuum covering factor f_c and continuum-normalized absorption depth to compute optical depth probability distribution, followed by correction for lognormal column-density nonuniformity [Continuum Covering Factor: "For each velocity bin and each transition, we drew random and independent samples of $f_\mathrm{c}$ and $\Delta I/I_\mathrm{c}$ from their respective distributions and computed the optical depth using Equation (\[eq:taudef\])."] [Correction for Nonuniformity: "The resulting relation between $\tau_{\rm obs}$ and $\tau_{\rm real}$ is shown in Figure 1 of (cite: Kotani_2025). We applied this nonuniformity correction to all data points in the absorption spectra."]
+  - software: NumPy, SciPy
+  - parameter: 100,000 Monte Carlo realizations [Continuum Covering Factor: "Repeating this procedure 100,000 times yielded the probability distribution of the optical depth."]
+  - parameter: f_c uniform distribution in [0.77, 1.00] [Continuum Covering Factor: "We assumed that $f_\mathrm{c}$ follows a uniform distribution between 0.77 and 1.00."]
+  - assumption: Lognormal column density distribution with parameters from Orion A GMC (mean N(H2) ~ 1.5e22 cm^-2) [Correction for Nonuniformity: "In this study, we adopted the N-PDF parameters derived by (cite: Ma_2020) for the Orion A giant molecular cloud, which has a comparable mean column density of $\sim 1.5\times10^{22}\,{\rm cm}^{-2}$ (cite: Ma_2020), to compute the correction."]
+  - fitting: Monte Carlo sampling (100,000 iterations); uniform prior on f_c in [0.77, 1.00], normal distribution on ΔI/I_c [Continuum Covering Factor: "We assumed that $f_\mathrm{c}$ follows a uniform distribution between 0.77 and 1.00."] [Continuum Covering Factor: "The absorption depth normalized by the continuum level, ${\Delta I/I_\mathrm{c}} = 1 - I_\mathrm{obs}$, is assumed to follow a normal distribution, with its mean and standard deviation given by the observed value and its uncertainty, respectively."]
+  - validation: Checked saturation bottom of HCN J=2-1 at +5 km/s yielding lower limit f_c ~ 0.8, consistent with f_c >= 0.77 [Optical Depth: "If we assume that the optical depth becomes infinite at the absorption minimum, Equation (\[eq:taudef\]) yields a lower limit of $f_{\rm c} \sim 0.8$, which is consistent with the constraint $f_{\rm c} \ge 0.77$."]
+- result: Peak optical depth of H13CN and H13CO+ J=2-1 lines = 0.10-0.15 ± not stated dimensionless [Optical Depth: "In contrast, the H$^{13}$CN and H$^{13}$CO$^{+}$ lines are optically thin in both transitions, with $\tau_{\rm max}\!\sim\!0.10$–0.15 for the *J*=2–1 lines and $\tau_{\rm max}\!\sim\!0.04$–0.05 for the *J*=3–2 lines."]
+- result: Peak optical depth of H13CN and H13CO+ J=3-2 lines = 0.04-0.05 ± not stated dimensionless [Optical Depth: "In contrast, the H$^{13}$CN and H$^{13}$CO$^{+}$ lines are optically thin in both transitions, with $\tau_{\rm max}\!\sim\!0.10$–0.15 for the *J*=2–1 lines and $\tau_{\rm max}\!\sim\!0.04$–0.05 for the *J*=3–2 lines."]
+- result: Continuum covering factor lower limit from HCN J=2-1 saturation = 0.8 ± not stated dimensionless [Optical Depth: "If we assume that the optical depth becomes infinite at the absorption minimum, Equation (\[eq:taudef\]) yields a lower limit of $f_{\rm c} \sim 0.8$, which is consistent with the constraint $f_{\rm c} \ge 0.77$."]
+- limitation (authors): The Band 3 and Band 4 observations were separated by ~9 months (October 2016 to July 2017) without simultaneous millimeter monitoring, though a few percent variability would shift T_CMB by < 0.1 K. [Time Variability: "The Band 3 and Band 4 observations used in this study are separated by approximately nine months (from October 2016 to July 2017)"]
+- limitation (authors): The -6 km/s component cannot constrain f_c due to lack of saturation, leaving its T_ex uncertain. [HCN, HCO+, and HNC: "In contrast, the $-6\,\mathrm{km\,s^{-1}}$ component shows no evidence of saturation, preventing a meaningful constraint on $f_\mathrm{c}$ in that velocity range; consequently, the associated $T_\mathrm{ex}$ remains uncertain."]
+- limitation (authors): H13CN and H13CO+ transitions have low S/N (~3), limiting their statistical significance. [Summary and Future Prospects: "The excitation temperatures derived from H$^{13}$CN and H$^{13}$CO$^{+}$ are also consistent with the prediction of the standard Big Bang model, although their statistical significance is limited by the lower S/N of the data."]
+- not stated (card): Exact CASA version and UVMULTIFIT version used for data reduction and visibility fitting; Rest frequencies, Einstein A coefficients, level energies, and partition function values/tables adopted for HCN, HCO+, HNC, H13CN, and H13CO+; Exact velocity ranges defining line-free continuum channels used in UVMULTIFIT to determine peak positions and normalize the absorption spectra; Explicit mathematical…
+
+### 2025A&A...702A..18D: Multi-frequency observations of PDS70c: Radio emission mechanisms in the circumplanetary environment (2025; protoplanetary_disks, exoplanets, star_formation; observational_alma_primary)
+- question: What is the radio emission mechanism of the circumplanetary environment around PDS 70c, and why is PDS 70c detected in the sub-millimetre continuum while PDS 70b is not?
+- step 5: Simulate CPD surface shock emission and test photospheric shock vs CPD surface shock scenarios
+  - method: Fit uniform slab model with fixed R_max = 2 R_Jup to test photospheric shock/accretion funnels; perform two 1D post-shock gas simulations following Aoyama et al. (2018) to compute optical depth and temperature profiles at 300 GHz and 600 G… [Surface shock on the CPD: "To firmly rule out photospheric shocks and accretion funnels, we estimated the temperature and EM needed for a fixed size of $R_{\rm max} = 2\,{R_{\rm Jup}}$ in the uniform slab model."] [Surface shock on the CPD: "To confirm that the post-shock emission on the CPD surface can indeed reproduce the observed radio emission, we performed two simulations of shock-heated gas following (cite: Aoyama2018ApJ...866...84A), whose results are shown in Figs. 15 and 16."]
+  - software: Nautilus
+  - parameter: Pre-shock velocities and densities: (v_0, n_0) = (30 km/s, 10^15 cm^-3) and (50 km/s, 10^12 cm^-3); mean molecular weight mu = 1.35; effective slab radius R_max = 62 R_Jup at 7000 K [Surface shock on the CPD: "These correspond to pre-shock velocities and neutral hydrogen number densities of $(\varv_0\, , n_0)=(30\,{\rm km\,s^{-1}}\, , 10^{15}\, \rm cm^{-3}$) and $(50\,{\rm km\,s^{-1}}\, , 10^{12}\, \rm cm^{-3}$) respectively."] [Surface shock on the CPD: "Using a mean molecular weight of $\mu=1.35$, $\varv_0=30\,{\rm km s^{-1}}$ and $n_0=10^{15} \,{\rm cc^{-1}}$ implies a mass flux of $\mu m_{\rm H} \times n_{0} \times \varv_{0} = 6.75 \times 10^{-3}\,{\rm cm^{-2}\, s^{-1} \,g}$."]
+  - assumption: Pre-shock velocity equals free-fall velocity v_0 = sqrt(2 G M_p / r); spatially constant mass flux falling on both sides of a circular slab [Surface shock on the CPD: "We can estimate the planetary mass required to achieve a pre-shock velocity of $\varv_0>30\,{\rm km\, s^{-1}}$ at $62\,R_{\rm Jup}$, by assuming that $\varv_0$ is the free-fall velocity"] [Surface shock on the CPD: "If this flux is is spatially constant and falls on both sides of a circular slab with a radius of $62\,R_{\rm Jup}$, the mass influx rate within this area is $0.1\, M_{\rm Jup}\,{\rm yr}^{-1}$."]
+  - fitting: Uniform slab fit with fixed R_max = 2 R_Jup or T = 7000 K [Surface shock on the CPD: "To firmly rule out photospheric shocks and accretion funnels, we estimated the temperature and EM needed for a fixed size of $R_{\rm max} = 2\,{R_{\rm Jup}}$ in the uniform slab model."] [Surface shock on the CPD: "A uniform slab at $7000$ K requires a radius of $R_{\rm max}=62\, R_{\rm Jup}$, which is in between the values obtained for the uniform slab models at $10^3$ K and $10^4$ K shown in Fig 11."]
+  - validation: Confirmed simulated post-shock optical depths match uniform slab best-fit values (tau_300GHz ~ 3, tau_600GHz ~ 0.6) [Surface shock on the CPD: "In both cases, the emission at 300 GHz is optically thick ($\tau>1$) but turns over into an optically thin spectrum at 600 GHz ($\tau \sim$ a few times $0.1$). This is also the case for the SED of PDS 70c obtained with the uniform slab model, with a best fit of $\tau_{300\,\rm GHz}\approx 3$ and $\tau_{600 \rm GHz}\ap…"]
+- result: Planetary accretion rate upper limit log(Mdot_p / (M_Jup yr^-1)) for B_ps = 610 G = -5.42 ± upper limit dex(M_Jup yr^-1) [Surface shock on the CPD: "Using the magnetic disc model from Sec. 3.5 with the best fit value of $B_{\rm ps}=610$ G, we obtain an upper limit of $\log \left(\dot{M}_{\rm p}/(M_{\rm Jup}/\rm yr)\right)<-5.42$ using the 3 $\sigma$ flux limit in Band 7."]
+- result: Planetary accretion rate upper limit log(Mdot_p / (M_Jup yr^-1)) for B_ps = 200 G = -5.77 ± upper limit dex(M_Jup yr^-1) [Surface shock on the CPD: "In the case of a smaller magnetic field (for example $B_{\rm ps}=200$ G), the upper limit for the accretion rate diminishes to $\log \left(\dot{M}_{\rm p}/(M_{\rm Jup}/\rm yr)\right)<-5.77$."]
+- limitation (authors): Stellar spectral index between Band 3 and Band 4 (-0.7 +/- 0.8) is too noisy to distinguish partially thick free-free emission, variability, or a synchrotron component. [Imaging, self-calibration and alignment: "Comparing $24\pm5\,\mu$Jy in Band 3 with $18\pm4\,\mu$Jy in Band 4 corresponds to a spectral index of $\alpha = -0.7\pm0.8$, which is too noisy to distinguish partially thick free-free emission (cite: WrightBarlow1975MNRAS.170...41W), variability, or a synchrotron component."]
+- limitation (authors): Inter-band alignment with VisAlign could not be applied to Bands 7 and 9 because the central star is not detected and the ring morphology differs dramatically from Band 3, requiring reliance on absolute pointing accuracy. [Imaging, self-calibration and alignment: "There is no counterpart of the star in Bands 7 or 9 with which to cross-check the inter-band alignment, and the ring appears dramatically different in radius and width compared to Band 3, hampering the application of `VisAlign`. We simply rely on the absolute pointing accuracy, of $\sim$10 mas in Band 7 and $\sim$5 ma…"]
+- limitation (authors): Diffuse emission near the cavity edge in Band 9 was not subtracted from the forced-photometry measurement, and PDS 70c's flux in Band 7 is affected by confusion with the cavity wall. [Point source measurements of PDS 70c: "However its flux density is difficult to measure because of confusion with the cavity wall."]
+- not stated (card): Exact CASA version and pipeline version used for initial data calibration; Exact spectral window frequencies, bandwidths, and channel widths for Bands 3, 4, 7, and 9, and whether spectral lines were flagged before continuum imaging; Pixel cell sizes, image dimensions, and regularisation parameters used in gpuvmem; Exact prior boundaries used in Nautilus for the H II disc and uniform slab model fi…
+
+### 2024ApJ...963....1O: "Beads-on-a-string" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster (2024; galaxy_clusters_and_sz, star_formation, agn_and_quasars; multi_facility_alma_minor)
+- question: How do the cooling ICM, an AGN outburst, the warm ionized gas, cold molecular gas and the 'beads on a string' star formation relate in the merging cool-core cluster SDSS 1531?
+- step 5: Compare CO with Halpha and test free-fall and ram-pressure scenarios
+  - method: Reproject ALMA maps onto GMOS grid for velocity difference; Hernquist free-fall model on PV diagram; ram-pressure separation timescale [3.4.5 Comparison with the Warm Ionized …: "Using the REPROJECT module from the ASTROPY package, the ALMA maps were resampled onto GMOS pixel grids."]
+  - software: astropy
+  - parameter: free-fall: inclination 72 deg, v_ICM +600 km/s, drop height 16 kpc [4.1.4: "The trajectory assumes an inclination angle of 72$^\circ$ and $v_{ICM}$ of $+600$ km s$^{-1}$."]
+  - assumption: Hernquist potential, M ~1e13 Msun within 30 kpc [4.1.4: "The BCGs’ total mass interior to 30 kpc is $\sim 10^{13} M_\odot$ (cite: sharon_mass_2014)."]
+  - validation: Free-fall model qualitatively reproduces PV velocity gradient [4.1.4: "This simple gravitational free-fall model broadly reproduces the observed velocity gradient and velocities spanned by the molecular gas"]
+- limitation (authors): X_CO uncertainty may overestimate molecular mass by a factor of a few [3.4.3 Mass Distribution: "we may overestimate the total molecular mass by a factor of a few"]
+- limitation (authors): Chandra data too shallow to resolve cavity [3.1.1: "the current X-ray data is too shallow to resolve"]
+- not stated (card): Briggs robust value tested; Line-free channels and order used for continuum subtraction; clean threshold, mask, niter, cell and image size; Which of the Compact/Extended execution blocks were combined in the final cube; Aperture definition and four-Gaussian fit initial guesses for spectrum; Rest frequency/velocity frame used for channel binning; Whether archive pipeline products were used or the …
+
+### 2015ApJ...811...92C: Accretion Kinematics through the Warped Transition Disk in HD142527 from Resolved CO(6-5) Observations (2015; protoplanetary_disks; observational_alma_primary)
+- question: What physical structure underlies the non-Keplerian intra-cavity gas kinematics in HD 142527, as seen in new CO(6-5) data?
+- step 3: Parametric warped accretion model with radiative transfer
+  - method: RADMC-3D line predictions for a warped disk with radial infall and steady-state surface density, smoothed to MEM resolution and compared with data [3.1 Parametric modeling: "Emergent specific intensity fields were predicted by transferring the stellar radiation through the model circumstellar material with the radmc3d"]
+  - software: RADMC-3D
+  - parameter: Stellar mass 1.8 Msun; outer disk i=20 deg, PA=-20 deg; inner disk relative inclination 70 deg, PA=-8 deg; warp between 20 and 23 AU; free-fall at 30 AU [3.1 Parametric modeling: "The stellar mass is set at $1.8~M_\odot$; higher masses produce higher velocities inside the cavity than observed."]
+  - assumption: X_CO = 1e-4; HCO+ abundance 1e-9; T=70 K inside 30 AU, r^-0.5 beyond [3.2.1 Adopted abundance fields and dept…: "We adopted a nominal H$_2$/$^{12}$CO ratio $X_{\mathrm{CO}}=10^{-4}$"]
+  - validation: Qualitative match to CO(6-5) centroid, CO isotopologue non-detections in cavity, and CRIRES spectro-astrometry [3.2.1 Adopted abundance fields and dept…: "The model is in agreement with the non-detection of $^{13}$CO and C$^{18}$O inside the gap."]
+- limitation (authors): Model is parametric, not dynamically consistent, no systematic parameter search [3.1 Parametric modeling: "It is not a dynamically consistent model."]
+- limitation (authors): MEM resolution varies with image [2.1 Choice of image-plane representatio…: "the resolution of the MEM images is variable and depends on the image."]
+- not stated (card): Calibrator and pipeline/CASA version, flux scale uncertainty; Self-calibration solution intervals; Line-free channels for continuum fit; Channel width and velocity resolution; uvmem code and regularization settings; Dust model, disk mass and dust SED parameters for the RADMC-3D model; Photodissociation/abundance taper details beyond Gaussian width
+
+### 2017ApJ...842L..24A: Very Deep inside the SN 1987A Core Ejecta: Molecular Structures Seen in 3D (2017; stellar_physics, astrochemistry; observational_alma_primary)
+- question: What is the 3D morphology of CO and SiO emission in the inner ejecta of SN 1987A, and how do clump size scales compare with 3D neutrino-driven explosion models?
+- step 3: Compare with explosion models
+  - method: Compare observed cubes with sqrt(12C x 16O) and sqrt(28Si x 16O) model densities, with and without density ceilings. Measure clump sizes (cprops, clumpfind), the radially averaged 3D Fourier transform, and pair-distance distributions at 50… [Comparison with hydrodynamical models: "Segmenting the cube into clumps using *cprops* (cite: Rosolowsky06) and *clumpfind* (cite: Williams94) algorithms reveals the clump size distribution."]
+  - software: cprops, clumpfind
+  - parameter: thresholds 50%-90% of peak emission [Comparison with hydrodynamical models: "thresholds between $50\%$ and $90\%$ of peak of emission were considered"]
+  - assumption: Excitation dominated by 44Ti decay; kinetic temperature ~50 K; LVG optical depth cutoffs [Comparison with hydrodynamical models: "it is reasonable to assume that excitation and heating are predominantly due to $^{44}$Ti decay."]
+  - validation: Results robust to different thresholds and segmentation parameters [Comparison with hydrodynamical models: "The results obtained for the clump sizes and distributions are robust to the different approaches."]
+- result: CO clump separation peak = ~0.25 ± not stated arcsec [Comparison with hydrodynamical models: "The clump separation of CO shows a clear peak at $\sim0.25\ensuremath{''}$"]
+- result: SiO clump separation minor peak = ~0.30 ± not stated arcsec [Comparison with hydrodynamical models: "the distribution of SiO shows a minor peak at $\sim0.30\ensuremath{''}$"]
+- limitation (authors): Peak brightness cannot be converted to density without non-LTE excitation modelling, which needs more than one line. [Observational Results: "requires modeling the non-LTE excitation of each clump, which we cannot do with only one emission line"]
+- limitation (authors): Models are non-rotating and omit chemistry, so SASI signatures cannot be assessed. [Conclusions: "The models compared here are non-rotating, and thus we cannot say how different the signatures of SASI would be."]
+- not stated (card): tclean weighting and robust value; CASA version and whether the pipeline or manual calibration was used; continuum subtraction and line-free channels; masks, thresholds and iteration limits; cycle 2 and 3 combination method and flux scale checks; cprops/clumpfind parameters; model cube preparation, convolution and scaling details; final beam and rms
+
+### 2014Sci...345.1584B: Detection of a branched alkyl molecule in the interstellar medium: iso-propyl cyanide (2014; astrochemistry, star_formation; observational_alma_primary)
+- question: Can a branched alkyl molecule (iso-propyl cyanide) be detected in the ISM, and how does its abundance compare with its straight-chain isomer and with chemical model predictions?
+- step 7: Simulate hot-core chemistry
+  - method: MAGICKAL: free-fall collapse to nH 2e8 cm-3, then static warm-up to 400 K, modified rate equations [Astrochemical numerical simulations: "The first is a free-fall collapse from a total hydrogen density, $n_{\rm H}$, of 3000 to $2 \times 10^8$ cm$^{-3}$."]
+  - software: MAGICKAL
+  - assumption: Radical-site bias favoring secondary carbon; other rates and binding energies identical between isomers [Astrochemical numerical simulations: "All other rates and binding energies are assumed to be identical between the *i*-PrCN and *n*-PrCN forms."]
+  - validation: Compared model peak temperatures with observed rotation temperature and abundance ratios [main text: "This agrees well with the rotation temperatures that we determine from observational data for these molecules."]
+- result: Model i-PrCN/n-PrCN peak ratio = 2.2 ± not stated dimensionless [main text: "they show a slight bias toward *i*-PrCN production (2.2:1), rather than the observed bias toward *n*-PrCN (0.4:1)."]
+- limitation (authors): Preliminary LTE model not fully optimized for ALMA; abundance uncertainties exclude free-free contamination and dust property uncertainties [Line identification and spectral modeli…: "This model has not been fully optimized for ALMA yet but it is already sufficiently reliable to allow for detecting new molecules in the ALMA spectra."]
+- not stated (card): Exact line-free channel ranges used for continuum subtraction; CLEAN parameters (weighting/robust, cell size, image size, masks, threshold); Which spectral line and reference antenna/solint used for self-calibration; Full list and frequencies of i-PrCN and n-PrCN transitions used in population diagrams; Weeds LTE parameters for all other molecules in the preliminary model; Details of free-free co…
+
+### 2020A&A...644A..61H: ATOMIUM: A high-resolution view on the highly asymmetric wind of the AGB star π<SUP>1</SUP>Gruis. I. First detection of a new companion and its effect on the i… (2020; evolved_stars; large_program_or_survey)
+- question: What is the morphology and inner-wind dynamics of the S-type AGB star pi1 Gru, and is there evidence for a close companion shaping its wind?
+- step 4: Companion mass from maser acceleration
+  - method: Free-fall mean acceleration over the blue-shifted maser trail equated to gravitational acceleration [5.3: "Assuming the gas is inside the companion’s potential well and undergoing free fall, we equate this acceleration to the theoretically expected mean gravitational acceleration"]
+  - assumption: Inclination 38 deg; no pulsation/dust effects [5.3: "no additional effects that contribute to the acceleration of the gas (e.g. pulsations, dust, ...) have been taken into account"]
+  - validation: Consistent with Mayer 2014 [5.3: "consistent with the rough estimate made by (cite: Mayer2014)"]
+- result: Companion mass upper limit = 1.1 ± not stated Msun [5.3: "or approximately 1.1 $\,{\rm M}_\odot$"]
+- limitation (authors): Combined data miss 27-72% of diffuse CO flux [4.1: "This means that between 27% and 72% of the diffuse, larger-scale emission is missing from the data."]
+- not stated (card): Calibration pipeline, CASA version, calibrators; Robust/weighting, cell size, multiscale scales, CLEAN thresholds and masks; Continuum-subtraction and line-free channels; Exact spiral-fit procedure for inclination (grid, uncertainty derivation); Channel selection details for arc measurements
+
+### 2018ApJ...857...19F: The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution (2018; nearby_galaxies, milky_way_ism, star_formation; observational_alma_primary)
+- question: Do GMCs in NGC 300, resolved at 10 pc and 1 km/s, follow the Milky Way scaling relations and mass spectrum, and what sets GMC properties (global vs local environment such as pressure)?
+- step 3: Identify and decompose GMCs
+  - method: Modified CPROPS: 4 sigma adjacent-voxel seeds, 2 sigma edge, local maxima in 15 pc x 15 pc x 2 km/s cube, SIGDISCONT=5, modified CLUMPFIND assignment; remove duplicates and clouds beyond 29 arcsec [3 Cloud identification and characteriza…: "For our final catalog presented here, we use `SIGDISCONT`=5"]
+  - software: CPROPS
+  - parameter: candidate clouds larger than one beam, peak >1 K above merge level [3 Cloud identification and characteriza…: "have a peak brightness temperature $>1~K$ ($\sim51$ mJy for the typical synthesized beam sizes in these observations) above the merge level"]
+  - validation: SIGDISCONT experiments (0,1,2,5,999), added-noise experiments, duplicate-cloud comparison [8 CPROPS parameter experiments: "We systematically tested `SIGDISCONT` values of 0, 1, 2, 5, and 999."]
+- step 4: Derive cloud properties
+  - method: R (eta=1.91, deconvolved, extrapolated to 0 K, x1.2), linewidth, L_CO, M_lum=alpha_CO/R21 L_CO, M_vir=189 dV^2 R, alpha_vir, Sigma; bootstrap uncertainties [3.1 Cloud properties: "Uncertainties in the independent properties are computed using a bootstrap method with 1000 iterations."]
+  - software: CPROPS
+  - parameter: D=1.93 Mpc; R21=0.7; alpha_CO,MW=4.35; Sigma100_GMC=0.69 [3.2 Improving physical parameter estima…: "arriving at $\Sigma^{100}_{\rm GMC} = 0.69$, i.e. a GMC surface density of $69~\ensuremath{M_{\odot}}$ pc$^{-2}$"]
+  - assumption: Metallicity from radial gradient, CO(2-1)/CO(1-0)=0.7, R_H2/R_CO=1.2, truncated power-law density with beta=1 [3.1 Cloud properties: "This formulation (cite: Solomon:1987uq) assumes a truncated power law density distribution $\rho \propto R^{-\beta}$, taking $\beta = 1$"]
+  - validation: Sizes below 5 pc discarded; final sample 121 clouds [4 Results: "We thus exclude all clouds with $R<5$ pc (approximately half our spatial resolution) from the majority of the remaining analysis presented here."]
+- step 6: Fit Larson relations
+  - method: Orthogonal distance regression in log space for size-linewidth, virial, mass-size and C_RdV-Sigma; Pearson correlation [5.2.1 Size-linewidth relation: "We formally fit a linear function to the logarithms of these two quantities using orthogonal distance regression (ODR)"]
+  - software: ODR
+  - fitting: ODR with errors in both variables [5.2.1 Size-linewidth relation: "which finds the maximum likelihood power law slope while accounting for errors in both variables simultaneously"]
+  - validation: Monte Carlo of 10^4 random model clouds shows slope 0.27, r=0.37 for covariance test [5.3 The size-linewidth coefficient and …: "We fit this model population as described above, and now find a slope of 0.27 with a correlation coefficient of 0.37."]
+- step 7: Resolution test vs M51
+  - method: Smooth cubes to 40 pc and 2 km/s with IMSMOOTH, SPECSMOOTH, IMREBIN, rerun CPROPS [6.3 The effects of resolution: "we used the `CASA` tasks `IMSMOOTH`, `SPECSMOOTH`, and `IMREBIN` to convolve our fully cleaned data cubes"]
+  - software: CASA, CPROPS
+  - validation: Flux preserved in convolution [6.3 The effects of resolution: "Basic tests demonstrated that the flux in the original data was fully preserved in the convolution."]
+- result: Number of GMCs (full sample after cuts) = 253 ± not stated clouds [4 Results: "our sample consists of 253 clouds across these 46 regions after removing duplicates (32 GMCs)"]
+- result: Final sample size (R>=5 pc) = 121 ± not stated clouds [4 Results: "our final cloud catalog comprises 121 GMCs"]
+- result: Size-linewidth slope = 0.48 ± 0.05 dimensionless [Table 4: "| Size-linewidth | $0.48\pm0.05$ | 0.55 | $4\times10^{-11}$ | $0.5\ensuremath{^{a}}$ |"]
+- result: Virial relation slope (M_lum vs M_vir) = 1.00 ± 0.05 dimensionless [5.2.2 Virial equilibrium: "we find (again via ODR fitting) a slope of $1.00\pm0.05$"]
+- result: Mass-size slope = 2.00 ± 0.12 dimensionless [5.2.3 The mass-size relation: "we find a power law slope of $2.00\pm0.12$"]
+- result: C_RdV-Sigma slope = 0.43 ± 0.04 dimensionless [5.3 The size-linewidth coefficient and …: "we find a best-fit slope of $0.43\pm0.04$"]
+- result: Median surface density (final sample) = 60.6 ± not stated Msun pc^-2 [Table 3: "| $\Sigma$ | $M_{\odot}$ pc$^{-2}$ | 13.8 | 397.0 | 60.6 |"]
+- result: Median deconvolved aspect ratio = 2.4 ± not stated dimensionless [4 Results: "with a median value of 2.4 within the final sample"]
+- result: Median C_RdV NGC 300 = 0.46 ± scatter 0.14 km s^-1 pc^-1/2 [6.2 The role of environment: NGC 300 vs…: "the median $C_{R \Delta V}$ in NGC 300 is 0.46 $\rm{km}~\rm{s}^{-1}$ pc$^{-1/2}$ with a scatter of 0.14"]
+- limitation (authors): Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission [2.5 Comparison to APEX single dish obse…: "This means there may be low surface brightness CO emission we are unable to detect in the ALMA data."]
+- limitation (authors): Sampled range of environments limited to inner rising rotation curve [4.2 The GMC distribution across NGC 300: "so the range of environments sampled in this study is somewhat limited"]
+- not stated (card): Exact CASA version used for re-imaging (only calibration version 4.3.0 given); Hand-drawn CLEAN polygons per region are not provided; Line-free channel ranges for noise estimation; Exact CPROPS modifications (elliptical beam) code not public (private communication); Per-region alpha_CO values from F14 not tabulated here; uv-taper/robust not needed (natural) but tclean parameters like gridder/nite…
+
+### 2025ApJ...985..166K: Early Planet Formation in Embedded Disks (eDisk). XXI. Limited Role of Streamers in Mass Supply to the Disk in the Class 0 Protostar IRAS 16544-1604 (2025; star_formation; observational_alma_primary)
+- question: What mass do streamers supply to the disk of the Class 0 protostar IRAS 16544-1604, compared with the extended envelope and the parental dense core?
+- step 7: Identify streamers and compare with UCM infall trajectories
+  - method: Inspect ALMA-only channel maps and moment 0 maps, overplot UCM free-fall trajectories, and check position-velocity diagrams cut along the trajectories [3.2.1 Spatial and velocity structures o…: "Blue and red lines in Figure [4](#fig_almamom0) represent the free-fall trajectories coincident with the elongated structures."] [3.2.1 Spatial and velocity structures o…: "Figure [5](#fig_streamerpv) presents the Position–Velocity (PV) diagrams of the elongated structures cut along the model infalling trajectories."]
+  - software: CASA, PVextractor
+  - parameter: NW and NNW: i_s = 107 deg, theta_s = -45 deg, r_d = 55 au, M* = 0.14 Msun fixed; theta_0, phi_0 free [3.2.1 Spatial and velocity structures o…: "we fix *i*$_\mathrm{s}$ $=$ 107$\ensuremath{^\circ}$, $\theta_\mathrm{s}$ $=$ $-$45$\ensuremath{^\circ}$, $r_\mathrm{d}$ $=$ 55 au, and $M_*$ $=$ 0.14 $M_\odot$"]
+  - parameter: Streamer edges set at 3 sigma in moment 0 maps [3.2.2 Mass infalling rates of streamers: "We set the 3$\sigma$ emissions in the moment 0 maps (Figure [4](#fig_almamom0)) as the edge of the streamers."]
+  - assumption: NW and NNW streamers share the disk rotation axis and have centrifugal radius equal to the gas disk radius [3.2.1 Spatial and velocity structures o…: "we assume that their rotational axes are aligned with the disk and that their centrifugal radii are the same as the gas disk radius"]
+  - fitting: Visual comparison of all combinations of theta_0 and phi_0, no sampler or likelihood [3.2.1 Spatial and velocity structures o…: "We visually inspect and compare the observed structures with the model trajectories of all combinations of the parameters"]
+  - validation: PV diagrams follow the UCM velocities; alternative parameter sets also reproduce the data (degeneracy) [3.2.1 Spatial and velocity structures o…: "These velocity structures are consistent with the UCM model."] [4.1 Degeneracy of the UCM model: "We note that these solutions are not unique because of the projection effect."]
+- step 8: Derive streamer masses, lengths, free-fall times and mass infall rates
+  - method: Moment 0 integrated over each streamer velocity range; LTE C18O mass as for the core; 3D length from the UCM trajectory; infall rate = mass / free-fall time [3.2.2 Mass infalling rates of streamers: "Then we calculate the integrated C$^{18}$O flux of the streamer in its moment 0 map and estimated its mass with the same method"] [3.2.2 Mass infalling rates of streamers: "the mass infalling rates are estimated to be"]
+  - software: CASA
+  - parameter: Velocity ranges NE 3.6-4.7, NW -0.1-4.9, NNW 5.2-6.8 km/s [3.2.2 Mass infalling rates of streamers: "The NE, NW, and NNW streamers are detected at velocities of $V_\mathrm{LSR}$ $=$ 3.6–4.7 km s$^{-1}$, $-$0.1–4.9 km s$^{-1}$, and 5.2–6.8 km s$^{-1}$, respectively"]
+  - parameter: Free-fall time t_ff = sqrt(R^3 / 2GM*) [3.2.2 Mass infalling rates of streamers: "($t_\mathrm{ff}$ $=$ $\sqrt{{R^3} / {2GM_*}}$)"]
+  - assumption: C18O abundance (1-2)e-7 and excitation temperature 10-30 K give the mass uncertainty [3.2.2 Mass infalling rates of streamers: "The uncertainties originate from the possible ranges of the C$^{18}$O abundance of (1–2)$\times$10$^{-7}$ (cite: 2022GOng) and the excitation temperature of 10–30 K."]
+  - validation: Conservative upper limit on the infall rate from the plane-of-sky length (~1300 au); mass recomputed from feathered data is 20-50% higher [4.1 Degeneracy of the UCM model: "This approach yields mass infalling rates of 1 to 2$\times$10$^{-7}$ $M_\odot$ yr$^{-1}$"] [3.4 Influence of the Missing Flux: "the estimated mass becomes 20% to 50% higher than the ALMA-only data"]
+- step 11: Compare streamer infall rate with envelope infall rate and protostellar accretion rate
+  - method: Envelope infall rate from JCMT core mass within 4000 au and the free-fall velocity at that radius from the protostellar mass; accretion rate from accretion luminosity: Macc = Lacc R* / (G M*) [4.2 Mass accretion via streamers: "With the dense core mass within a radius of 4000 au measured with JCMT and the free-fall velocity at this radius calculated from the central protostellar mass"] [4.2 Mass accretion via streamers: "The mass accretion rate ($\dot{M}_\mathrm{acc}$) onto the protostar in IRAS 16544 is estimated to be 3.0$\times$10$^{-7}$ $M_\odot$ yr$^{-1}$ from the luminosity of the protostar"]
+  - parameter: Lbol = 0.89 Lsun, Lacc = 50% of Lbol, R* = 3 Rsun [4.2 Mass accretion via streamers: "The bolometric luminosity ($L_\mathrm{bol}$) of IRAS 16544 is 0.89 $L_\odot$ (cite: 2023Ohashi)"] [4.2 Mass accretion via streamers: "the stellar radius is 3 $R_\odot$ (cite: 1988Stahler)"]
+  - assumption: Accretion luminosity is 50% of the bolometric luminosity [4.2 Mass accretion via streamers: "Assuming that the accretion luminosity is 50$\%$ of the bolometric luminosity (cite: 2008Dunham; 2008Antoniucci)"]
+  - validation: Compared with the theoretical isothermal-collapse rate of ~2e-6 Msun/yr and other Class 0 protostars [4.2 Mass accretion via streamers: "the theoretically expected mass infalling rate of $\sim$2$\times$10$^{-6}$ $M_\odot$ yr$^{-1}$ in a collapsing isothermal and spherical dense core"]
+- result: UCM theta_0, phi_0 for the NW streamer = 20 deg, -10 deg ± not stated deg [3.2.1 Spatial and velocity structures o…: "the model trajectory with $\theta_0$ of 20$\ensuremath{^\circ}$ and $\phi_0$ of $-$10$\ensuremath{^\circ}$ can match the NW elongated structure and that with $\theta_0$ of 70$\ensuremath{^\circ}$ and $\phi_0$ of $-$120$\ensuremath{^\circ}$ can match the NNW elongated structure"]
+- result: UCM theta_0, phi_0 for the NNW streamer = 70 deg, -120 deg ± not stated deg [3.2.1 Spatial and velocity structures o…: "the model trajectory with $\theta_0$ of 20$\ensuremath{^\circ}$ and $\phi_0$ of $-$10$\ensuremath{^\circ}$ can match the NW elongated structure and that with $\theta_0$ of 70$\ensuremath{^\circ}$ and $\phi_0$ of $-$120$\ensuremath{^\circ}$ can match the NNW elongated structure"]
+- result: Streamer widths (three streamers) = 450 to 900 ± not stated au [3.2.2 Mass infalling rates of streamers: "The widths of the three streamers are estimated to be 450 to 900 au,"]
+- result: Streamer projected lengths = ~1300 ± not stated au [3.2.2 Mass infalling rates of streamers: "the lengths are estimate to be $\sim$1300 au on the plane of the sky."]
+- result: NE streamer mass = 1.3e-3 ± +1.4/-0.2 (x1e-3) Msun [3.2.2 Mass infalling rates of streamers: "The masses of the NE, NW, and NNW streamers are estimated to be 1.3$^{+1.4}_{-0.2}$$\times$10$^{-3}$, 2.2$^{+2.1}_{-0.4}$$\times$10$^{-3}$, and 4.0$^{+4.0}_{-0.6}$$\times$10$^{-3}$ $M_{\odot}$, respectively."]
+- result: NW streamer mass = 2.2e-3 ± +2.1/-0.4 (x1e-3) Msun [3.2.2 Mass infalling rates of streamers: "The masses of the NE, NW, and NNW streamers are estimated to be 1.3$^{+1.4}_{-0.2}$$\times$10$^{-3}$, 2.2$^{+2.1}_{-0.4}$$\times$10$^{-3}$, and 4.0$^{+4.0}_{-0.6}$$\times$10$^{-3}$ $M_{\odot}$, respectively."]
+- result: NNW streamer mass = 4.0e-3 ± +4.0/-0.6 (x1e-3) Msun [3.2.2 Mass infalling rates of streamers: "The masses of the NE, NW, and NNW streamers are estimated to be 1.3$^{+1.4}_{-0.2}$$\times$10$^{-3}$, 2.2$^{+2.1}_{-0.4}$$\times$10$^{-3}$, and 4.0$^{+4.0}_{-0.6}$$\times$10$^{-3}$ $M_{\odot}$, respectively."]
+- result: 3D streamer lengths (NE, NW, NNW) = ~4790, ~2830, ~6130 ± not stated au [3.2.2 Mass infalling rates of streamers: "The lengths of the NE, NW, and NNW streamers in three-dimensional space are estimated to be $\sim$4790 au, $\sim$2830 au, and $\sim$6130 au, respectively"]
+- result: Free-fall timescales (NE, NW, NNW) = 1.0e5, 4.5e4, 1.4e5 ± not stated yr [3.2.2 Mass infalling rates of streamers: "Their free-fall timescales are calculated to be 1.0$\times$10$^5$, 4.5$\times$10$^4$, and 1.4$\times$10$^5$ yr"]
+- result: Streamer mass infall rates (NE, NW, NNW) = 1.3e-8, 4.8e-8, 2.8e-8 ± +1.4/-0.2, +4.7/-0.7, +2.7/-0.4 (x1e-8) Msun/yr [3.2.2 Mass infalling rates of streamers: "the mass infalling rates are estimated to be 1.3$^{+1.4}_{-0.2}$$\times$10$^{-8}$, 4.8$^{+4.7}_{-0.7}$$\times$10$^{-8}$, and 2.8$^{+2.7}_{-0.4}$$\times$10$^{-8}$ $M_{\odot}$ yr$^{-1}$"]
+- result: Conservative upper limit on streamer infall rates (projected length) = 1 to 2e-7 ± upper limit Msun/yr [4.1 Degeneracy of the UCM model: "This approach yields mass infalling rates of 1 to 2$\times$10$^{-7}$ $M_\odot$ yr$^{-1}$"]
+- result: Total streamer mass and fraction of the dense core mass (9000 au box) = ~7.5e-3 Msun, ~2% ± not stated Msun; percent [4.2 Mass accretion via streamers: "The total mass of the three streamers is estimated to be $\sim$7.5$\times$10$^{-3}$ $M_\odot$ and is only $\sim$2$\%$ of the total mass of the dense core"]
+- result: Streamer mass fraction of core mass within 4000 au = ~6 ± not stated percent [4.2 Mass accretion via streamers: "the mass of the streamers is still only $\sim$6$\%$ of the total core mass"]
+- result: Envelope mass infall rate (core mass within 4000 au) = 1 to 5e-6 ± range Msun/yr [4.2 Mass accretion via streamers: "the mass infalling rate in the protostellar envelope is estimated to be 1 to 5$\times$10$^{-6}$ $M_\odot$ yr$^{-1}$ in IRAS 16544"]
+- result: Mass accretion rate onto the protostar = 3.0e-7 ± not stated Msun/yr [4.2 Mass accretion via streamers: "is estimated to be 3.0$\times$10$^{-7}$ $M_\odot$ yr$^{-1}$ from the luminosity of the protostar"]
+- limitation (authors): UCM trajectories are degenerate, so 3D lengths and infall rates are uncertain by up to a factor of four [4.1 Degeneracy of the UCM model: "the mass infalling rates estimated with these different trajectories only vary within a factor of four"]
+- limitation (authors): More, unidentified streamers may exist [4.2 Mass accretion via streamers: "We note that there could be more, unidentified streamers existing in the dense core of IRAS 16544."]
+- limitation (authors): Axisymmetric envelope model does not fully explain the intensity distribution [3.3 Infalling protostellar envelope obs…: "the observed intensity distribution cannot be fully explained by our axisymmetric envelope model"]
+- not stated (card): Calibration details: pipeline versions and CASA version used for calibration of each eDisk, FAUST and DDT execution block, and any self-calibration applied to the line data; Which spectral windows and channel ranges were extracted with mstransform, and the line-free channels used for uvcontsub; tclean deconvolver, cell size, image size, field/phase center, niter and cleaning threshold, and weight…
+
+### 2018ApJ...861...14C: Infall Signatures in a Prestellar Core Embedded in the High-mass 70 μm Dark IRDC G331.372-00.116 (2018; star_formation, milky_way_ism; observational_alma_primary)
+- question: Does the most massive core (ALMA1) in the 70 um dark IRDC G331.372-00.116 show infall and prestellar properties, and what do they imply for competitive accretion versus turbulent core accretion?
+- step 4: Linewidths, Mach number and virial parameter
+  - method: Gaussian fits to N2D+ and DCO+ spectra; sigma_nt from sigma_v^2 = sigma_th^2 + sigma_nt^2; virial mass with density index n = 1.8 [5.1.1 Virial Equilibrium: "We fitted a Gaussian profile to each spectrum across the ALMA1 core."]
+  - parameter: T = 14 K; n = 1.8 [5.1.1 Virial Equilibrium: "Here we adopt a value of $n=1.8$"]
+  - assumption: 50% mass uncertainty [5.1.1 Virial Equilibrium: "assuming a 50% uncertainty in the mass value"]
+- step 6: Jeans mass, free-fall time and growth
+  - method: Thermal Jeans mass and free-fall time formulae; extrapolate constant accretion rate [5.2: "For ALMA1 the core free fall time is $t_{ff}=\sqrt{3\pi/(32G\rho)}=3.3\times10^4$ yr."]
+  - assumption: constant accretion rate over the free-fall time [5.2: "(assuming a constant accretion rate over the whole time)"]
+- result: ALMA1 virial mass = 2.4 ± 0.6 Msun [5.1.1 Virial Equilibrium: "$M_{vir}=2.4\pm0.6$ M$_\odot$"]
+- result: Virial parameter = 0.14 ± 0.08 dimensionless [5.1.1 Virial Equilibrium: "$\alpha_{vir}=0.14\pm0.08$"]
+- result: Mach number = 1.19 ± not stated dimensionless [5.1.1 Virial Equilibrium: "The Mach number ($\sigma_{nt}$/$\sigma_{th-H_2}$) is then 1.19"]
+- result: Magnetic field needed for virial equilibrium = 1.2 ± 0.4 mG [5.1.1 Virial Equilibrium: "1.2$\pm0.4$ mG"]
+- result: Free-fall time = 3.3e4 ± not stated yr [5.2: "$t_{ff}=\sqrt{3\pi/(32G\rho)}=3.3\times10^4$ yr"]
+- result: Jeans mass = 2.8 ± not stated Msun [5.2: "is only 2.8 M$_\odot$"]
+- limitation (authors): Only 10% of single-dish flux recovered; temperature from clump scale [4.1 Dust Structure: "Indeed only 10% of the flux observed by the single dish was detected by the 12 and 7 m ALMA arrays combined."]
+- not stated (card): Exact flux of continuum calibrators and flux-scale uncertainty; Line-free channel ranges for continuum; Feathering parameters (SD scaling); Image sizes and mosaic phase centers; Which spectra (pixel selection/averaging) define the ALMA1 average HCO+ spectrum; Hill5 fit fixed parameters (e.g. T0) and fit weights; Whether the continuum for dust analysis was primary-beam corrected; Dendrogram region…
+
+### 2022MNRAS.516.4612T: PHANGS: constraining star formation time-scales using the spatial correlations of star clusters and giant molecular clouds (2022; nearby_galaxies, star_formation; large_program_or_survey)
+- question: How long do young star clusters remain associated with their natal giant molecular clouds (GMCs), and how does the hierarchical spatial structure of star clusters and GMCs evolve over time across different galactic environments?
+- step 1: Filter catalogues to HST and ALMA footprint overlap and perform nearest-neighbour separation analysis
+  - method: Identify the overlap region between HST and ALMA footprints, filter star clusters (Classes 1, 2, 3) and GMCs to this region, compute 1st, 2nd, and 3rd nearest-neighbour separations between star clusters and GMC centres (ignoring GMC sizes)… [3.1 Associating Star Clusters with GMCs: "In order to accurately match the star clusters with their nearest neighbour and/or natal GMC, we first find the region of overlap between the HST and ALMA footprints and only consider clusters and clouds which lie within this overlap region."] [3.1 Associating Star Clusters with GMCs: "Then, as a first step in correlating the star clusters and GMCs, we perform a nearest neighbour analysis to find the separations between star clusters and the nearest GMC centres."]
+  - parameter: Age bin threshold: 10 Myr (also tested 5 Myr) [3.1 Associating Star Clusters with GMCs: "We then split the clusters into two age bins—$10$ Myr and younger and older than $10$ Myr."] [Footnote 4: "No significant differences are found if the age threshold is lowered to 5 Myr."]
+  - parameter: 1000 bootstrapped samples for median separation standard deviation [4.1 Nearest Neighbour Analysis: "where $\sigma_{ m old}$ and $\sigma_{ m young}$ represent the standard deviations in the median values for 1000 bootstrapped samples for the older and younger age bins, respectively."]
+  - assumption: GMC sizes are ignored in the nearest neighbour point-to-point separation analysis [3.1 Associating Star Clusters with GMCs: "In this analysis, the sizes of the GMCs are not taken into account."]
+  - validation: Checked second and third nearest neighbour separations and compared median separations to theoretical estimates from Kruijssen et al. (2019) and Chevance et al. (2020). [3.1 Associating Star Clusters with GMCs: "We also test the second and third nearest neighbour separations (not shown) and find the same trend."] [4.1 Nearest Neighbour Analysis: "Finally, we include in certain sub-panels of Figure 6 theoretical estimates for the expected nearest neighbour separations $r_n$."]
+- step 2: Associate star clusters with GMCs using GMC radii and derive cloud dispersal timescales
+  - method: Classify star clusters by line-of-sight overlap with the closest GMC into radial bins (< 1 R_GMC, 1-2 R_GMC, 2-3 R_GMC, or > 3 R_GMC unassociated) while applying a 10 km/s drift velocity cutoff (v * t(age) < 3 R_GMC). Compute median cluste… [3.1 Associating Star Clusters with GMCs: "Consistent with (cite: grasha18) and (cite: grasha19), in this analysis the radius of a GMC is considered which allows for a cluster to be classified as either: within the radius of the closest GMC; within 1 to 2 radii of the closest GMC; within 2 to 3 radii of the closest GMC; or beyond which we consider to be “unass…"] [3.1 Associating Star Clusters with GMCs: "We calculate the uncertainty on the medians via bootstrapping the cluster ages included in the PHANGS–HST catalog."]
+  - parameter: Radial association bins: <1 R_GMC, 1-2 R_GMC, 2-3 R_GMC, >3 R_GMC (unassociated) [3.1 Associating Star Clusters with GMCs: "Consistent with (cite: grasha18) and (cite: grasha19), in this analysis the radius of a GMC is considered which allows for a cluster to be classified as either: within the radius of the closest GMC; within 1 to 2 radii of the closest GMC; within 2 to 3 radii of the closest GMC; or beyond which we consider to be “unass…"]
+  - parameter: Velocity cutoff: v = 10 km s^-1 such that v * t(age) < 3 R_GMC [Footnote 3: "We have incorporated a $10$ km s$^{-1}$ velocity cutoff in our analysis to account for clusters that may have drifted during their lifetime into a chance line-of-sight alignment with a non-natal GMC; we require all cluster-GMC associations to satisfy $v imes t({ m age}) < 3 R_{ m GMC}$."]
+  - parameter: Spiral arm pitch angle split thresholds: 20 degrees and 30 degrees [4.3.1 Dependence on Spiral Arm Structure: "Spiral arms are split by pitch angle at 20 degrees."] [4.3.1 Dependence on Spiral Arm Structure: "A division at 30 degrees was also checked and showed no dependence on the pitch angle dividing threshold."]
+  - assumption: A star cluster can only be associated with a single GMC; if aligned with multiple GMCs, the most massive GMC is chosen [3.1 Associating Star Clusters with GMCs: "We only allow a star cluster to be associated with a single GMC; individual GMCs can still have multiple star clusters associated them. In cases where a star cluster is aligned with multiple GMCs, we opt for the most massive GMC to be the associated one."]
+  - assumption: Assumed galactic disk scale height of 100 pc for oblate spheroidal GMC radius modeling in PHANGS-ALMA [Data: "Therefore, the clouds are modeled to be oblate spheroidal if the spherical radius exceeds the assumed scale height ($100$ pc for the PHANGS–ALMA sample)."]
+  - validation: Compared derived dispersal timescale (~4-6 Myr) with independent measurements from M51 (Grasha et al. 2019) and the uncertainty principle for star formation (Chevance et al. 2020; Kim et al. 2021). [4.2 Star Clusters Associated with GMCs: "This result is consistent with the measurement from (cite: grasha19) in M51 using the LEGUS star clusters and CO(1–0) maps from PAWS."] [4.2 Star Clusters Associated with GMCs: "accounting for uncertainties and intrinsic variation between galaxies, our inferred ensemble-wide timescale for clusters is consistent with the sum of the embedded and unembedded timescales found by (cite: chevance20), (cite: kim21), and (cite: kim22)."]
+- step 3: Measure angular two-point autocorrelation functions and fit power-laws
+  - method: Generate random catalogues within the HST-ALMA overlap footprint with similar sample size as real catalogues. Compute 2D angular two-point autocorrelation functions using the Landy & Szalay (1993) estimator via astroML's bootstrap_two_poin… [3.2 Angular Two-Point Correlation Funct…: "In order to minimize errors in the generation of the random catalog, we only place the random objects within the region of the HST and ALMA footprint overlap and ensure the random catalogue has a similar sample size as the real catalogs."] [3.2 Angular Two-Point Correlation Funct…: "To measure the autocorrelation functions, we use the ASTROML function `bootstrap_two_point_angular` on both the star cluster and GMC catalogs."]
+  - software: astroML
+  - parameter: Number of angular bins: tested 5, 10, 15, 20, and 25; 15 or 20 bins optimal [3.2 Angular Two-Point Correlation Funct…: "We test the effects of angular bin sizes by running the analysis with 5, 10, 15, 20, and 25 angular bins and find the same trends for each galaxy; see Figure 4 for NGC 1566 for a typical example."] [3.2 Angular Two-Point Correlation Funct…: "Utilizing 15 or 20 bins appears to provide the optimal spatial resolution for our galaxy sample."]
+  - parameter: Reference spatial scale for amplitude evaluation: 300 pc [Table 4: "Table 4. Two-Point Autocorrelation Functions: Best-Fitting Power Law Slopes and Amplitudes at 300 pc"]
+  - assumption: Positions are not deprojected for disk inclination because moderate to low inclinations (<= 60 deg) have minimal impact [3.2 Angular Two-Point Correlation Funct…: "Our sample of galaxies has moderate to low disk inclinations ($\lesssim60$$^\circ$), and thus correcting for disk inclination has minimal impact and does not change our conclusions."]
+  - fitting: Power-law fit using Levenberg–Marquardt non-linear least squares minimization [3.2 Angular Two-Point Correlation Funct…: "We then fit power-laws to the autocorrelation functions using a Levenberg–Marquardt non-linear least squares minimization because in a fully hierarchical (or fractal) distribution a smooth power-law decline is expected and indicates a scale-free distribution (cite: calzetti89)."]
+  - validation: Tested sensitivity to number of angular bins (5, 10, 15, 20, 25) and age cut (5 Myr vs 10 Myr). [3.2 Angular Two-Point Correlation Funct…: "We test the effects of angular bin sizes by running the analysis with 5, 10, 15, 20, and 25 angular bins and find the same trends for each galaxy; see Figure 4 for NGC 1566 for a typical example."] [Footnote 4: "No significant differences are found if the age threshold is lowered to 5 Myr."]
+- step 4: Measure angular cross-correlation functions between star clusters and GMCs
+  - method: Generate random catalogues for both star clusters and GMCs within the overlap region and compute the two-point angular cross-correlation function using the Landy & Szalay (1993) cross-correlation estimator for all clusters, clusters <= 10 … [3.3 Angular cross-correlation Functions: "We generate random catalogs for both the cluster and the cloud populations, and measure the total sample sizes within each catalog:"] [3.3 Angular cross-correlation Functions: "Similar to the autocorrelation analysis, we estimate the cross-correlation functions of all the star clusters with the GMCs, clusters ${\leq}10$ Myr with the GMCs, and clusters ${>}10$ Myr with the GMCs. The largest angular bins are dropped in order to minimize edge effects."]
+  - parameter: Number of angular bins: 10 bins chosen (tested 5, 10, 15, 20, and 25) [3.3 Angular cross-correlation Functions: "We also test the cross-correlation estimations using $5, 10, 15, 20, ext{and\ } 25$ angular bins."] [3.3 Angular cross-correlation Functions: "In contrast to the 20 bins used for the autocorrelation functions, 10 bins was chosen here because there is less data (i.e., fewer star cluster-GMC pairs compared to cluster-cluster pairs)."]
+  - validation: Tested 5, 10, 15, 20, and 25 angular bins and verified that general trends hold regardless of bin count. [3.3 Angular cross-correlation Functions: "We also test the cross-correlation estimations using $5, 10, 15, 20, ext{and\ } 25$ angular bins. As with the autocorrelation functions, we find the same general trends for each galaxy regardless of the number of angular bins."]
+- result: Timescale for star clusters to become unassociated with GMCs (2 to 3 GMC radii) = 4-6 ± 0.5 Myr [Abstract: "We find that after $4{-}6$ Myr the star clusters are no longer associated with any gas clouds."]
+- result: Median GMC radius across the 11-galaxy sample (Section 3.1) = 60.5 ± 16th-84th percentile range 40.6-79.7 pc [3.1 Associating Star Clusters with GMCs: "In terms of the typical physical extent of the GMCs in this sample of 11 galaxies, the median radius is 60.5 pc with a $16^{ m th} {-} 84^{ m th}$ percentile range of $40.6{-}79.7$ pc."]
+- result: Median nearest-neighbour separation between all star clusters and GMCs across sample = 1.8 to 4.9 ± not stated arcsec [4.1 Nearest Neighbour Analysis: "For all star clusters, the median separations $ ilde{\Delta r}$ to the nearest neighbour GMC range from ${\sim}1.8\ensuremath{''}$ (NGC 1559) to $4.9\ensuremath{''}$ (NGC 4571)."]
+- result: Ensemble median star cluster age (all clusters) = 19 ± not stated Myr [Table 2: "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"]
+- result: Ensemble median star cluster age (< 1 R_GMC) = 1 ± not stated Myr [Table 2: "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"]
+- result: Ensemble median star cluster age (1 to 2 R_GMC) = 4 ± not stated Myr [Table 2: "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"]
+- result: Ensemble median star cluster age (2 to 3 R_GMC) = 5 ± not stated Myr [Table 2: "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"]
+- result: Ensemble median star cluster age (unassociated, > 3 R_GMC) = 46 ± not stated Myr [Table 2: "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"]
+- result: Median star cluster age in spiral arms (all clusters) = 9 ± not stated Myr [Table 3: "Spiral Arm & 09 & (1420) & 01 & (93) & 03 & (206) & 05 & (306) & 053 & (388)"]
+- result: Median star cluster age in interarm regions (all clusters) = 32 ± not stated Myr [Table 3: "Inter Arm & 32 & (1654) & 01 & (43) & 03 & (117) & 05 & (180) & 053 & (969)"]
+- result: Estimated cluster migration timescale out of spiral arms = 20 ± not stated Myr [4.3 Dependence on Galactic Environment: "The difference in the median ages of spiral and interarm clusters suggests it takes ${\sim}20$ Myr for clusters to migrate out of the spiral arms."]
+- result: Autocorrelation power-law slope alpha for NGC 0628 (SCs <= 10 Myr) = -0.39 ± 0.05 dimensionless [Table 4: "NGC 0628 | $-$0.28$\pm$0.02 | $-$0.39$\pm$0.05 | $-$0.20$\pm$0.03 | $-$0.24$\pm$0.04 | 2.20$\pm$0.20 | 2.46$\pm$0.35 | 1.86$\pm$0.37 | 2.15$\pm$0.19"]
+- result: Autocorrelation power-law slope alpha for NGC 0628 (SCs > 10 Myr) = -0.20 ± 0.03 dimensionless [Table 4: "NGC 0628 | $-$0.28$\pm$0.02 | $-$0.39$\pm$0.05 | $-$0.20$\pm$0.03 | $-$0.24$\pm$0.04 | 2.20$\pm$0.20 | 2.46$\pm$0.35 | 1.86$\pm$0.37 | 2.15$\pm$0.19"]
+- result: Autocorrelation power-law slope alpha for NGC 1566 (SCs <= 10 Myr) = -0.73 ± 0.05 dimensionless [Table 4: "NGC 1566 | $-$0.44$\pm$0.02 | $-$0.73$\pm$0.05 | $-$0.36$\pm$0.02 | $-$0.26$\pm$0.03 | 3.64$\pm$0.28 | 5.52$\pm$0.81 | 2.92$\pm$0.42 | 2.19$\pm$0.18"]
+- result: Autocorrelation power-law slope alpha for NGC 1566 (SCs > 10 Myr) = -0.36 ± 0.02 dimensionless [Table 4: "NGC 1566 | $-$0.44$\pm$0.02 | $-$0.73$\pm$0.05 | $-$0.36$\pm$0.02 | $-$0.26$\pm$0.03 | 3.64$\pm$0.28 | 5.52$\pm$0.81 | 2.92$\pm$0.42 | 2.19$\pm$0.18"]
+- result: Autocorrelation power-law slope alpha for NGC 1566 (GMCs) = -0.26 ± 0.03 dimensionless [Table 4: "NGC 1566 | $-$0.44$\pm$0.02 | $-$0.73$\pm$0.05 | $-$0.36$\pm$0.02 | $-$0.26$\pm$0.03 | 3.64$\pm$0.28 | 5.52$\pm$0.81 | 2.92$\pm$0.42 | 2.19$\pm$0.18"]
+- result: Autocorrelation amplitude 1 + omega(theta) at 300 pc for NGC 1566 (SCs <= 10 Myr) = 5.52 ± 0.81 dimensionless [Table 4: "NGC 1566 | $-$0.44$\pm$0.02 | $-$0.73$\pm$0.05 | $-$0.36$\pm$0.02 | $-$0.26$\pm$0.03 | 3.64$\pm$0.28 | 5.52$\pm$0.81 | 2.92$\pm$0.42 | 2.19$\pm$0.18"]
+- result: Autocorrelation amplitude 1 + omega(theta) at 300 pc for NGC 1566 (SCs > 10 Myr) = 2.92 ± 0.42 dimensionless [Table 4: "NGC 1566 | $-$0.44$\pm$0.02 | $-$0.73$\pm$0.05 | $-$0.36$\pm$0.02 | $-$0.26$\pm$0.03 | 3.64$\pm$0.28 | 5.52$\pm$0.81 | 2.92$\pm$0.42 | 2.19$\pm$0.18"]
+- result: Autocorrelation power-law slope alpha for NGC 3351 (SCs <= 10 Myr) = -0.84 ± 0.15 dimensionless [Table 4: "NGC 3351 | $-$0.73$\pm$0.10 | $-$0.84$\pm$0.15 | $-$0.29$\pm$0.11 | $-$0.76$\pm$0.02 | 3.12$\pm$0.53 | 3.85$\pm$0.70 | 1.61$\pm$0.65 | 1.83$\pm$0.23"]
+- limitation (authors): Native resolution GMC catalogues have heterogeneous completeness and sensitivity limits across the galaxy sample. [Data: "For this study, we use the ‘native resolution’ GMC catalogs which have been constructed with the best available resolution and noise for each galaxy. This leads to heterogeneous limits across the sample (cite: rosolowsky21)."]
+- limitation (authors): Class 3 compact associations may contain multiple stellar populations of different ages, causing large uncertainties in their age measurements. [Data: "The Class 3 compact associations, which are typically young, prove to be difficult to model given their potential for containing multiple ages within a single association, which causes large uncertainties in their age measurements."]
+- limitation (authors): The 10 km/s velocity cutoff (v * t < 3 R_GMC) is a coarse approximation that influences the median age of unassociated clusters, and GMC radii and peak spacings are strongly tied to the CO data spatial resolution and crowding. [4.2 Star Clusters Associated with GMCs: "However, we must acknowledge that this trend is influenced by our implementation of a velocity cutoff."]
+- not stated (card): Exact spatial polygon or mask coordinates defining the overlap region between HST and ALMA footprints for each of the 11 galaxies; Exact sample size of the random catalogues (NR) generated for the autocorrelation and cross-correlation Landy-Szalay estimators; Exact minimum and maximum angular/spatial separation bounds and specific bins dropped as 'largest-scale angular bins' when fitting the powe…
+
+### 2023MNRAS.523.6061L: Multiscale stellar associations across the star formation hierarchy in PHANGS-HST nearby galaxies: methodology and properties (2023; star_formation, nearby_galaxies; multi_facility_alma_minor)
+- question: Identify multi-scale stellar associations and compare their properties and spatial distribution with clusters, Hα emission, and molecular clouds.
+- step 8: Prepare molecular cloud comparison
+  - method: Use inherited PYCPROPS cloud catalogues and velocity-collapsed maps; select the most massive cloud along each line of sight. [Comparison to Molecular Cloud Population: "We use the molecular cloud catalogues developed by the PHANGS project using PYCPROPS, an updated version of the CPROPS algorithm (cite: rosolowsky06), described in detail in (cite: rosolowsky21)."] [Comparison to Molecular Cloud Population: "Since the *HST* data have no velocity information, we use a velocity-collapsed CPROPS map."]
+  - software: PYCPROPS, CPROPS
+  - parameter: Inherited cloud maxima: at least twice the local merge level [Comparison to Molecular Cloud Population: "Maxima must have a brightness that is as least twice as bright as the local ‘merge level’, the emission level that contains at least one neighbour."]
+  - parameter: Inherited cloud maxima: N > 0.25 Ω_bm/Ω_pix [Comparison to Molecular Cloud Population: "($N > 0.25\Omega_{\rm{bm}}/\Omega_{\rm{pix}}$)."]
+  - assumption: Most massive line-of-sight cloud represents the collapsed comparison [Comparison to Molecular Cloud Population: "When multiple CO clouds are detected along the same line of sight, we compare with the most massive cloud detected along the line of sight."]
+- step 9: Measure cloud–association overlap
+  - method: Pixel-by-pixel area comparison and region-overlap fractions for NUV associations and velocity-collapsed CPROPS clouds. [Comparison to Molecular Cloud Population: "We find the percent area of overlapping CPROPS and NUV-selected stellar association regions by doing a pixel-by-pixel comparison of the maps."] [Comparison to Molecular Cloud Population: "We also calculate the percentage of stellar association regions that overlap with CPROPS clouds at every stellar association scale level."]
+  - parameter: Only regions with both ALMA and HST coverage [Comparison to Molecular Cloud Population: "For consistency, we will only consider regions with both ALMA and *HST* coverage."]
+  - parameter: 64-pc association scale closest to ALMA beam size [Comparison to Molecular Cloud Population: "This means that our 64-pc scale level is closest to the beam size of the ALMA data."]
+  - assumption: NUV selection excludes older associations and provides a more coeval selection [Comparison to Molecular Cloud Population: "we use the *NUV*-selected associations since (i) we are not interested in the older associations found with the *V*-band and (ii) to ensure a more coeval selection of stellar associations."]
+- result: NGC 3351 CPROPS area overlapping NUV associations, 64 pc = 15 ± not stated per cent [Comparison to Molecular Cloud Population: "only $15$ per cent of the CPROPS area overlaps the NUV-selected stellar associations"]
+- result: NGC 3351 NUV association area overlapping CPROPS, 64 pc = 18 ± not stated per cent [Comparison to Molecular Cloud Population: "$18$ per cent of the area covered by the 64-pc scale level associations overlaps with the CPROPS regions"]
+- result: NGC 1566 NUV association area overlapping CPROPS, 64 pc = 55 ± not stated per cent [Comparison to Molecular Cloud Population: "$55$ per cent of the 64-pc scale level area overlapping with the CPROPS regions"]
+- result: NGC 1566 CPROPS area overlapping stellar associations, 64 pc = 12 ± not stated per cent [Comparison to Molecular Cloud Population: "the percentage of the CPROPS area that contains 64-pc stellar associations is similarly small at only $12$ per cent."]
+- result: CPROPS regions overlapping 64-pc stellar associations, both galaxies = 58 ± not stated per cent [Summary and Conclusions: "We find that the percentage of CPROPS regions that have overlap with 64-pc stellar associations is ${\sim}58$ per cent for both galaxies."]
+- result: NGC 3351 64-pc stellar associations overlapping CPROPS regions = 29 ± not stated per cent [Summary and Conclusions: "the percentage of 64-pc stellar associations that overlap with the CPROPS regions is only $29$ per cent for NGC 3351 and $67$ per cent for NGC 1566."]
+- result: NGC 1566 64-pc stellar associations overlapping CPROPS regions = 67 ± not stated per cent [Summary and Conclusions: "the percentage of 64-pc stellar associations that overlap with the CPROPS regions is only $29$ per cent for NGC 3351 and $67$ per cent for NGC 1566."]
+- limitation (authors): Tracer sources are not guaranteed to be individual stars. [Selection of Tracer Stars: "While our criteria for the tracer stars are designed to select point-like sources, they do not guarantee that all sources are in fact individual stars."]
+- limitation (authors): Low-mass associations are susceptible to stochastic IMF sampling. [Ages and Masses: "the regions which have the lowest mass also having the least number of DOLPHOT sources and therefore are more susceptible to stochastic sampling."]
+- limitation (authors): BC03 track structure produces an artificial age-distribution gap. [Ages and Masses: "Part of this effect is due to a well known (cite: chandar10b) artifact that produces a gap between log(age/yr) = 7.0 and 7.5."]
+- not stated (card): Exact PHANGS–ALMA cloud catalogue and velocity-collapsed map release identifiers.; Map registration, reprojection, pixel grid, and interpolation used for the HST–CPROPS pixel comparison.; Exact joint-coverage masks and treatment of partially covered association or cloud regions.; Minimum shared-pixel criterion for counting a region as overlapping.; DOLPHOT parameter files and foreground-star mask…
+
+### 2025A&A...699A..70H: Investigating the chemical link between H<SUB>2</SUB>CO and CH<SUB>3</SUB>OH within the central molecular zone of NGC 253 (2025; nearby_galaxies, astrochemistry; large_program_or_survey)
+- question: Investigate the physical and chemical properties traced by CH3OH and H2CO in NGC 253 and whether the two species are chemically linked
+- step 1: extract integrated line intensities at GMC positions
+  - method: CubeLineMoment spectral and spatial masks give moment 0, 1, 2 maps masked below 3 sigma; transitions selected by SNR and contamination criteria [2 Observations and data analysis: "to extract integrated spectral-line intensities from our data cubes"] [2 Observations and data analysis: "(1) the transition needs to be bright enough, specifically with signal-to-noise ratio (SNR) greater than 3; and (2) no significant contamination from other molecule(s) involved."]
+  - software: CubeLineMoment
+  - parameter: Moment images masked below 3 sigma (channel-based) [2 Observations and data analysis: "images masked below a $3\sigma$ threshold (channel-based)"]
+  - parameter: GMC 5 (absorption) and GMC 10 (non-detections) excluded; 8 GMCs kept [3 Molecular line emission: "As a result, we do not discuss these two regions (GMCs 5 and 10) any further."]
+  - assumption: Blended lines modelled separately and summed to compare with the measured blended intensity of each group [4 Non-LTE radiative transfer modeling a…: "for each blending group, we model the integrated intensities of the transitions that make up the blending group separately, sum up the emission from each of these lines"]
+  - validation: Tested impact of contaminating lines (SO2, NH2OH, NH2CN) on derived parameters: unchanged within uncertainties [2 Observations and data analysis: "We have tested the impact of these contaminants on our derivation of physical parameters performed in Section 4 and found that the derived physical parameters are unchanged within the uncertainties in each parameter fit."]
+- step 3: non-LTE radiative transfer fit of physical conditions
+  - method: RADEX via SpectralRadex coupled with Nautilus sampler; fit n_H2, T_kin, column densities of both spin isomers and beam filling factor per GMC [4 Non-LTE radiative transfer modeling a…: "for Bayesian posterior and evidence estimation."] [4 Non-LTE radiative transfer modeling a…: "The collisional excitation rates used for are from (cite: Dagdigian_2023) while the rates are from (cite: H2CO_mole_data)."]
+  - software: RADEX, SpectralRadex, Nautilus
+  - parameter: Priors (Table 2): n_H2 1e2-1e8 cm^-3 log-uniform; T_kin 10-800 K uniform; column densities 1e12-1e18 cm^-2 log-uniform; eta_ff 0-1 uniform [Table 2: "$10^{2}-10^{8}$"] [Table 2: "$10-800$"]
+  - parameter: T_kin outside the collisional-rate grid (3-250 K CH3OH, 10-300 K H2CO) is clamped to the nearest grid temperature [4 Non-LTE radiative transfer modeling a…: "uses the minimum or maximum kinetic temperature at which collisional excitation rates are provided"]
+  - assumption: Gaussian intensity uncertainties [4 Non-LTE radiative transfer modeling a…: "We also assume that the uncertainty on our measured intensities is Gaussian"]
+  - assumption: Beam filling factor eta_ff = theta_S^2 / (theta_MB^2 + theta_S^2) [4 Non-LTE radiative transfer modeling a…: "the beam filling factor ($\eta_{ff}=\frac{\theta^{2}_{S}}{\theta^{2}_{MB}+\theta^{2}_{S}}$)"]
+  - fitting: Nautilus sampler; uniform or log-uniform priors; likelihood exp(-chi^2/2) [4 Non-LTE radiative transfer modeling a…: "We assume priors of uniform or log-uniform distribution within the determined ranges"] [4 Non-LTE radiative transfer modeling a…: "our likelihood is given by $P(\theta | d) \sim \exp(-\frac{1}{2}\chi^2),$"]
+  - validation: Compared old (Rabli and Flower 2010) and new (Dagdigian 2023) CH3OH rates: the E/A ratio range changes from 0.85-2.84 to 0.25-1.26; Nautilus gave results indistinguishable from UltraNest [4 Non-LTE radiative transfer modeling a…: "With the (cite: CH3OH_mol_data_2010) rates, the average range for the best EAR was 0.85–2.84 whilst with the (cite: Dagdigian_2023) rates, the range is 0.25–1.26."] [Footnote 6: "while providing indistinguishable results."]
+- step 4: check for sub-thermal excitation
+  - method: Compare collisional and radiative excitation rates using fitted opacity, density and temperature in each GMC [4.1 Properties of the gas as traced by …: "we compared the collisional and radiative excitation rate (cite: Goldsmith+2012) based on the on-the-spot measurements of opacity, gas density, and gas temperature in each GMC."]
+- step 5: derive CH3OH and H2CO abundances
+  - method: Divide column densities by H2 column densities from Mangum+2019 (rescaled by 0.63; GMC 1a, 2b, 8a, 9a from Harada+2022), both scaled by the fitted beam filling factor; E- and A- (or o- and p-) combined [4.4 Derivation of H2CO and CH3OH abunda…: "we rescaled their H$_2$ column densities to match our angular resolution"] [4.4 Derivation of H2CO and CH3OH abunda…: "we applied a beam filling factor to the scaled H$_2$ column densities for each region"]
+  - parameter: Rescaling factor 0.63 for Mangum+2019 N_H2 [4.4 Derivation of H2CO and CH3OH abunda…: "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."]
+  - assumption: E- and A- (and o- and p-) column densities are equal within uncertainties so abundances are derived for both forms together [4.4 Derivation of H2CO and CH3OH abunda…: "we derived X$_{\rm{CH3OH}}$ for both forms together"]
+- result: CH3OH T_kin range across GMCs = 10.59-87.5 ± not stated K [Table (CH3OH Bayesian results): "$10.59-87.5$"]
+- result: CH3OH T_kin, GMC 1a = 76.06 ± +11.44/-9.69 K [Table (CH3OH Bayesian results): "$76.06^{+11.44}_{-9.69}$"]
+- result: CH3OH T_kin, GMC 2b = 11.14 ± +0.57/-0.55 K [Table (CH3OH Bayesian results): "$11.14^{+0.57}_{-0.55}$"]
+- result: CH3OH log n_H2 range across GMCs = 4.11-7.11 ± not stated log(cm^-3) [Table (CH3OH Bayesian results): "$4.11-7.11$"]
+- result: CH3OH beam filling factor range = 0.07-0.92 ± not stated dimensionless [Table (CH3OH Bayesian results): "$0.07-0.92$"]
+- result: CH3OH E-/A- column density ratio (best) range across GMCs = 0.25-1.26 ± not stated dimensionless [Table (CH3OH Bayesian results): "$0.25-1.26$"]
+- result: H2CO T_kin, GMC 4 = 266.73 ± +316.23/-122.64 K [Table (H2CO Bayesian results): "$266.73^{+316.23}_{-122.64}$"]
+- result: H2CO T_kin, GMC 3 = 129.71 ± +49.30/-32.99 K [Table (H2CO Bayesian results): "$129.71^{+49.30}_{-32.99}$"]
+- result: H2CO T_kin, all GMCs lower bound = >=67.23 ± not stated K [Table (H2CO Bayesian results): "$\geq67.23$"]
+- result: H2CO beam filling factor range = 0.04-0.67 ± not stated dimensionless [Table (H2CO Bayesian results): "$0.04-0.67$"]
+- result: CH3OH abundance range X(CH3OH) = 4.0e-10 to 1.4e-7 ± not stated dimensionless [4.4 Derivation of H2CO and CH3OH abunda…: "Overall, we derive X$_{\rm{CH3OH}}$ in the range $4.0\times 10^{-10} - 1.4 \times 10^{-7}$"]
+- result: H2CO abundance range X(H2CO) = 1.4e-10 to 1.4e-6 ± not stated dimensionless [4.4 Derivation of H2CO and CH3OH abunda…: "For X$_{\rm{H2CO}}$, the range is $1.4\times 10^{-10} - 1.4\times10^{-6}$."]
+- result: Rescaling factor applied to Mangum+2019 N_H2 = 0.63 ± not stated dimensionless [4.4 Derivation of H2CO and CH3OH abunda…: "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."]
+- limitation (authors): H2CO abundances and parameters are poorly constrained [abstract: "The H$_2$CO abundances are constant, though poorly constrained"]
+- limitation (authors): Derived EAR depends on the choice of CH3OH collisional rates [4 Non-LTE radiative transfer modeling a…: "The choice of the rates used for thus seem more critical if one aims to derive the EAR."]
+- limitation (authors): Very high H2CO temperatures in GMC 4 and 6 are not well constrained [5.1 Do methanol and formaldehyde trace …: "although not very well constrained"]
+- not stated (card): ALCHEMI imaging and calibration details (CASA version, robust, cell size, deconvolver, continuum subtraction, line-free channels, primary-beam correction) are only in the ALCHEMI main paper; Which ALCHEMI spectral-window cubes contain each of the 39 CH3OH and 10 H2CO transitions and how they were smoothed to a common 1.6 arcsec beam; Aperture used to extract integrated intensities at each GMC (wh…
+
+### 2026ApJ..1000..159M: Low Dust Mass and High Star Formation Efficiency at z &gt; 12 from Deep ALMA Observations (2026; high_z_galaxies; observational_alma_primary)
+- question: What are the dust mass build-up, dust production and growth mechanisms, and star formation efficiency of UV-bright galaxies at z > 12 (GHZ2 and GS-z14-0)?
+- step 4: Model dust production history from star formation histories and stellar yields
+  - method: Parameterize non-parametric SFHs (from Bagpipes and Prospector) with an exponential profile SFR(t) ∝ exp(t/τ) and integrate SN and AGB dust yields following Valiante et al. (2009) across stellar masses 0.1-100 M_sun to compare predicted du… [4.1. Dust production and evolution at c…: "The SFHs are parameterized with an exponential profile (SFR( _t_ ) _∝_ exp( _t/τ_ )), with star formation starting at _z_ = 20 for GHZ2 and _z_ = 30 for GS-z14-0."] [4.1. Dust production and evolution at c…: "Our predictions are based on a recipe presented in Valiante et al. (2009, see also, Schneider & Maiolino (2024) for recent review) with the SN dust yield from Bianchi & Schneider (2007) and Zhukovska et al. (2008), and the AGB dust yield from Ferrarotti & Gail (2006) and the ATON code (Dell’Agli et al. 2019)."]
+  - software: Bagpipes, Prospector, ATON
+  - parameter: Star formation start redshift z = 20 (GHZ2) and z = 30 (GS-z14-0) [4.1. Dust production and evolution at c…: "with star formation starting at _z_ = 20 for GHZ2 and _z_ = 30 for GS-z14-0."]
+  - parameter: Yield metallicity range = 10^-4 to 0.1 Z_sun [4.1. Dust production and evolution at c…: "Given the metalpoor nature of the galaxies at _z_ _>_ 12, we use the dust yield model with the metallicity of 10 _[−]_ [4] –0 _._ 1 _Z_ _⊙_ ."]
+  - parameter: Larson IMF with α = 1.35 and M_ch = 0.35 M_sun (and M_ch = 10 M_sun for top-heavy test), mass range 0.1-100 M_sun [4.1. Dust production and evolution at c…: "We integrate the dust yield from stars ranging 0 _._ 1–100 _M_ _⊙_ under a Larson (Larson 1998) IMF with _α_ = 1 _._ 35 and _M_ ch = 0 _._ 35, which is similar to a Salpeter IMF (Salpeter 1955)."] [4.1. Dust production and evolution at c…: "Specifically, ≲ 4% dust survival rate is required in GS-z14-0 under _M_ ch = 10 instead of _M_ ch = 0 _._ 35 in the Larson IMF (comparable to the top-heavy IMF)"]
+  - assumption: Exponentially rising SFH parameterization and Larson IMF [4.1. Dust production and evolution at c…: "The SFHs are parameterized with an exponential profile (SFR( _t_ ) _∝_ exp( _t/τ_ )), with star formation starting at _z_ = 20 for GHZ2 and _z_ = 30 for GS-z14-0."] [4.1. Dust production and evolution at c…: "We integrate the dust yield from stars ranging 0 _._ 1–100 _M_ _⊙_ under a Larson (Larson 1998) IMF with _α_ = 1 _._ 35 and _M_ ch = 0 _._ 35"]
+  - validation: Tested multiple SN yield tables (Bianchi & Schneider 2007; Zhukovska et al. 2008), AGB yield tables (Ferrarotti & Gail 2006; ATON), and varied IMF characteristic mass (M_ch = 0.35 vs 10). [4.1. Dust production and evolution at c…: "with the SN dust yield from Bianchi & Schneider (2007) and Zhukovska et al. (2008), and the AGB dust yield from Ferrarotti & Gail (2006) and the ATON code (Dell’Agli et al. 2019)."] [4.1. Dust production and evolution at c…: "Specifically, ≲ 4% dust survival rate is required in GS-z14-0 under _M_ ch = 10 instead of _M_ ch = 0 _._ 35 in the Larson IMF"]
+- result: SN reverse shock dust destruction efficiency required for GS-z14-0 = > 80 ± not stated % [4.1. Dust production and evolution at c…: "For GS-z14-0, a high _>_ 80% destruction efficiency by SN reverse shocks is necessary to reproduce the observed dust-to-stellar mass ratios, while destruction is not necessarily significant for GHZ2 (see Figure 4)."]
+- limitation (authors): It remains unclear whether an AGN contributes to the UV emission of GHZ2, requiring further observations to accurately constrain its stellar mass and potential AGN activity. [2.1. GHZ2: "Note that despite the rich dataset it is still unclear whether an active galactic nucleus (AGN) contributes to the UV emission of GHZ2 (see also, Calabro et al. 2024)."]
+- limitation (authors): Band-8 observations of GHZ2 are much shallower than Band-6 and less constraining on M_dust. [3.1. ALMA data: "For GHZ2, the Band-8 observations have an r.m.s depth of 54 _._ 6 _µ_ Jy beam _[−]_ [1] with a beamsize of 0 _[′′]_ _._ 71 _×_ 0 _[′′]_ _._ 63, which is much shallower than Band-6 depth and less constraining on _M_ dust even when taking _T_ dust variation into account."]
+- limitation (authors): If gas mass is not constrained via M_dyn - M_* and instead allowed to vary across f_gas = 0.1-0.9, it is impossible to disentangle dust models or place meaningful constraints on SFE without direct [C II] or CO observations. [4.1. Dust production and evolution at c…: "Nevertheless, it is impossible to disentangle any models with this broad _f_ gas range of 0.1–0.9. Further ALMA observations targetting [C ii] or CO lines will be a key to directly constrain _f_ gas and confirm the gas mass from the dynamical masses."]
+- not stated (card): Exact frequency ranges of the spectral windows and exact central frequencies used for the continuum maps; Cell size and image dimensions used when generating the dirty continuum maps; Exact aperture or region definition over which the continuum r.m.s. noise was measured; Exact exponential decay/rise timescale parameter tau used to smooth the non-parametric star formation histories in Figure 4
+
+## All papers in this technique
+
+- 2012A&A...538L...9H (2012): ALMA CO and VLT/SINFONI H<SUB>2</SUB> observations of the Antennae overlap region: mass and energy dissipation
+- 2012A&A...544L...7P (2012): The first ALMA view of IRAS 16293-2422. Direct detection of infall onto source B and high-resolution kinematics of source A
+- 2012ApJ...760L..25E (2012): Giant Molecular Clouds and Star Formation in the Tidal Molecular Arm of NGC 4039
+- 2013A&A...555A.112P (2013): Global collapse of molecular clouds as a formation mechanism for the most massive stars
+- 2013A&A...559A..29C (2013): Strongly star-forming rotating disks in a complex merging system at z = 4.7 as revealed by ALMA
+- 2013A&A...560A.103M (2013): A Keplerian disk around a Class 0 source: ALMA observations of VLA1623A
+- 2013ApJ...774...73I (2013): ALMA Resolves 30 Doradus: Sub-parsec Molecular Cloud Structure near the Closest Super Star Cluster
+- 2013ApJ...779...96T (2013): The Dynamics of Massive Starless Cores with ALMA
+- 2013MNRAS.432....2K (2013): An ALMA survey of submillimetre galaxies in the Extended Chandra Deep Field South: high-resolution 870 μm source counts
+- 2014A&A...568A..92M (2014): Herschel-ATLAS and ALMA. HATLAS J142935.3-002836, a lensed major merger at redshift 1.027
+- 2014A&A...569A..11S (2014): A necklace of dense cores in the high-mass star forming region G35.20-0.74 N: ALMA observations
+- 2014A&A...570A..28V (2014): Molecular line emission in NGC 1068 imaged with ALMA. II. The chemistry of the dense molecular gas
+- 2014AJ....147..141H (2014): ALMA View of G0.253+0.016: Can Cloud-Cloud Collision form the Cloud?
+- 2014ApJ...785..149S (2014): The Rest-frame Submillimeter Spectrum of High-redshift, Dusty, Star-forming Galaxies
+- 2014ApJ...786..114L (2014): ALMA Results of the Pseudodisk, Rotating Disk, and Jet in the Continuum and HCO<SUP>+</SUP> in the Protostellar System HH 212
+- 2014ApJ...791..108F (2014): Distributed Low-mass Star Formation in the IRDC G34.43+00.24
+- 2014ApJ...791..123W (2014): A Study of Dynamical Processes in the Orion KL Region Using ALMA—Probing Molecular Outflow and Inflow
+- 2014ApJ...792...94D (2014): Molecular Gas in the X-Ray Bright Group NGC 5044 as Revealed by ALMA
+- 2014ApJ...793...37A (2014): From Gas to Stars in Energetic Environments: Dense Gas Clumps in the 30 Doradus Region within the Large Magellanic Cloud
+- 2014ApJ...795..156W (2014): ALMA Observations of the Antennae Galaxies. I. A New Window on a Prototypical Merger
+- 2014ApJ...795L..25R (2014): Turbulence Sets the Initial Conditions for Star Formation in High-pressure Environments
+- 2014ApJ...796...84R (2014): ALMA Imaging of Gas and Dust in a Galaxy Protocluster at Redshift 5.3: [C II] Emission in "Typical" Galaxies and Dusty Starbursts ≈1 Billio…
+- 2014ApJ...796..131O (2014): Formation of a Keplerian Disk in the Infalling Envelope around L1527 IRS: Transformation from Infalling Motions to Kepler Motions
+- 2014MNRAS.445.1412Z (2014): Two physical regimes for the giant H II regions and giant molecular clouds in the Antennae galaxies
+- 2014Sci...345.1584B (2014): Detection of a branched alkyl molecule in the interstellar medium: iso-propyl cyanide
+- 2015A&A...579A.114M (2015): A low-mass protostar's disk-envelope interface: disk-shadowing evidence from ALMA DCO<SUP>+</SUP> observations of VLA1623
+- 2015ApJ...798...31A (2015): Suppression of Star Formation in NGC 1266
+- 2015ApJ...802..125R (2015): A Cluster in the Making: ALMA Reveals the Initial Conditions for High-mass Cluster Formation
+- 2015ApJ...804...37L (2015): ALMA Resolves the Spiraling Accretion Flow in the Luminous OB Cluster-forming Region G33.92+0.11
+- 2015ApJ...804..141Z (2015): Fragmentation of Molecular Clumps and Formation of a Protocluster
+- 2015ApJ...806...35J (2015): The Physical Conditions in a Pre-super Star Cluster Molecular Cloud in the Antennae Galaxies
+- 2015ApJ...806L..17S (2015): ALMA Resolves the Properties of Star-forming Regions in a Dense Gas Disk at z ∼ 3
+- 2015ApJ...811...92C (2015): Accretion Kinematics through the Warped Transition Disk in HD142527 from Resolved CO(6-5) Observations
+- 2015ApJ...812...27A (2015): ALMA Observations of the Transition from Infall Motion to Keplerian Rotation around the Late-phase Protostar TMC-1A
+- 2015ApJ...812..129Y (2015): No Keplerian Disk &gt;10 AU Around the Protostar B335: Magnetic Braking or Young Age?
+- 2015MNRAS.449..715W (2015): Tracing the conversion of gas into stars in Young Massive Cluster Progenitors
+- 2015Natur.525..218R (2015): Dense cloud cores revealed by CO in the low metallicity dwarf galaxy WLM
+- 2016A&A...586A..45S (2016): Star formation efficiency along the radio jet in Centaurus A
+- 2016A&A...590A..25M (2016): The unbearable opaqueness of Arp220
+- 2016A&A...593L..14F (2016): Magnetically regulated fragmentation of a massive, dense, and turbulent clump
+- 2016ApJ...823..160D (2016): An ALMA Search for Substructure, Fragmentation, and Hidden Protostars in Starless Cores in Chamaeleon I
+- 2016ApJ...826..213L (2016): Angular Momentum Loss in the Envelope-Disk Transition Region of the HH 111 Protostellar System: Evidence for Magnetic Braking?
+- 2016ApJ...827...34O (2016): Witnessing the Birth of the Red Sequence: ALMA High-resolution Imaging of [C II] and Dust in Two Interacting Ultra-red Starbursts at z = 4.…
+- 2016ApJ...827...81I (2016): Do Circumnuclear Dense Gas Disks Drive Mass Accretion onto Supermassive Black Holes?
+- 2016ApJ...828...50K (2016): The Molecular Clouds Fueling A 1/5 Solar Metallicity Starburst
+- 2016ApJ...831...16L (2016): A Portrait of Cold Gas in Galaxies at 60 pc Resolution and a Simple Method to Test Hypotheses That Link Small-scale ISM Structure to Galaxy…
+- 2016ApJ...831...32N (2016): A Study of the Relation between Star Formation and Molecular Clumps on Subparsec Scales in 30 Doradus
+- 2016ApJ...832..148V (2016): Molecular Gas Along a Bright Hα Filament in 2A 0335+096 Revealed by ALMA
+- 2016ApJ...833..209O (2016): Dense Core Properties in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA
+- 2016MNRAS.458.3134R (2016): ALMA observations of cold molecular gas filaments trailing rising radio bubbles in PKS 0745-191
+- 2016Natur.534..218T (2016): Cold, clumpy accretion onto an active supermassive black hole
+- 2016PASJ...68..103F (2016): A massive dense gas cloud close to the nucleus of the Seyfert galaxy NGC 1068
+- 2017A&A...600A.139H (2017): The impact of a massive star cluster on its surrounding matter in the Antennae overlap region
+- 2017A&A...601A..48G (2017): Exploring molecular complexity with ALMA (EMoCA): Simulations of branched carbon-chain chemistry in Sgr B2(N)
+- 2017A&A...604A.117C (2017): Planck's dusty GEMS. IV. Star formation and feedback in a maximum starburst at z = 3 seen at 60-pc resolution
+- 2017A&A...608A..98S (2017): Inefficient jet-induced star formation in Centaurus A. High resolution ALMA observations of the northern filaments
+- 2017ApJ...834..178Y (2017): Signs of Early-stage Disk Growth Revealed with ALMA
+- 2017ApJ...834..193K (2017): A Hunt for Massive Starless Cores
+- 2017ApJ...834L..16U (2017): ALMA Reveals Strong [C II] Emission in a Galaxy Embedded in a Giant Lyα Blob at z = 3.1
+- 2017ApJ...835..213P (2017): The Dense Molecular Gas and Nuclear Activity in the ULIRG IRAS 13120-5453
+- 2017ApJ...835..278S (2017): Physical Properties of Molecular Clouds at 2 pc Resolution in the Low-metallicity Dwarf Galaxy NGC 6822 and the Milky Way
+- 2017ApJ...836..130R (2017): Alma Observations of Massive Molecular Gas Filaments Encasing Radio Bubbles in the Phoenix Cluster
+- 2017ApJ...837...86T (2017): Spiral Arms, Infall, and Misalignment of the Circumbinary Disk from the Circumstellar Disks in the Protostellar Binary System L1551 NE
+- 2017ApJ...837..146V (2017): The Compact, ∼1 kpc Host Galaxy of a Quasar at a Redshift of 7.1
+- 2017ApJ...839..133P (2017): Variation in GMC Association Properties across the Bars, Spiral Arms, Inter-arms, and Circumnuclear Region of M100 (NGC 4321) Extracted fro…
+- 2017ApJ...840L..11S (2017): Extreme CO Isotopic Abundances in the ULIRG IRAS 13120-5453: An Extremely Young Starburst or Top-heavy Initial Mass Function
+- 2017ApJ...841L..21H (2017): Evolutionary Phases of Gas-rich Galaxies in a Galaxy Cluster at z = 1.46
+- 2017ApJ...842L..24A (2017): Very Deep inside the SN 1987A Core Ejecta: Molecular Structures Seen in 3D
+- 2017ApJ...844...98M (2017): ALMA Observations of N83C in the Early Stage of Star Formation in the Small Magellanic Cloud
+- 2017ApJ...844..123F (2017): The Circumgalactic Medium of Submillimeter Galaxies. II. Unobscured QSOs within Dusty Starbursts and QSO Sightlines with Impact Parameters …
+- 2017ApJ...846...73T (2017): ALMA Detects CO(3-2) within a Super Star Cluster in NGC 5253
+- 2017ApJ...849...25L (2017): ALMA Reveals Sequential High-mass Star Formation in the G9.62+0.19 Complex
+- 2017ApJ...849...56A (2017): ALMA Observations of the Protostar L1527 IRS: Probing Details of the Disk and the Envelope Structures
+- 2017ApJ...849...91M (2017): Physical Properties of 15 Quasars at z ≳ 6.5
+- 2017ApJ...850....1R (2017): Rise of the Titans: A Dusty, Hyper-luminous “870 μm Riser” Galaxy at z ∼ 6
+- 2017ApJ...850...54C (2017): ALMA CO(3-2) Observations of Star-forming Filaments in a Gas-poor Dwarf Spheroidal Galaxy
+- 2017MNRAS.464L..31H (2017): Unveiling the early-stage anatomy of a protocluster hub with ALMA
+- 2017MNRAS.465.3461Z (2017): Kinematics of the ionized and molecular gas in nearby luminous infrared interacting galaxies
+- 2017MNRAS.465.4390B (2017): The discovery of gas-rich, dusty starbursts in luminous reddened quasars at z ∼ 2.5 with ALMA
+- 2017MNRAS.468.1769F (2017): The varying mass distribution of molecular clouds across M83
+- 2017MNRAS.468.3694C (2017): Simultaneous low- and high-mass star formation in a massive protocluster: ALMA observations of G11.92-0.61<SUP>★</SUP>
+- 2017MNRAS.469.4683C (2017): ALMA constraints on star-forming gas in a prototypical z = 1.5 clumpy galaxy: the dearth of CO(5-4) emission from UV-bright clumps
+- 2017NatAs...1..709O (2017): Millimetre-wave emission from an intermediate-mass black hole candidate in the Milky Way
+- 2017PASJ...69...18T (2017): A statistical study of giant molecular clouds traced by <SUP>13</SUP>CO, C<SUP>18</SUP>O, CS, and CH<SUB>3</SUB>OH in the disk of NGC 1068 …
+- 2017PASJ...69...83M (2017): ALMA multiline observations toward the central region of NGC 613
+- 2018A&A...612A..72J (2018): The ALMA-PILS survey: 3D modeling of the envelope, disks and dust filament of IRAS 16293-2422
+- 2018A&A...613A..34P (2018): ALMA view of RX J1131-1231: Sub-kpc CO (2-1) mapping of a molecular disk in a lensed star-forming quasar host galaxy
+- 2018A&A...615A..58Y (2018): Constraint on ion-neutral drift velocity in the Class 0 protostar B335 from ALMA observations
+- 2018A&A...618L...5N (2018): Detection of a high-mass prestellar core candidate in W43-MM1
+- 2018ApJ...853..175N (2018): ALMA Reveals Molecular Cloud N55 in the Large Magellanic Cloud as a Site of Massive Star Formation
+- 2018ApJ...854...96O (2018): Chemical and Physical Picture of IRAS 16293-2422 Source B at a Sub-arcsecond Scale Studied with ALMA
+- 2018ApJ...855L..25K (2018): Core Emergence in a Massive Infrared Dark Cloud: A Comparison between Mid-IR Extinction and 1.3 mm Emission
+- 2018ApJ...856...72O (2018): An Extreme Protocluster of Luminous Dusty Starbursts in the Early Universe
+- 2018ApJ...856..147O (2018): Gravitationally Unstable Condensations Revealed by ALMA in the TUKH122 Prestellar Core in the Orion A Cloud
+- 2018ApJ...857...19F (2018): The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution
+- 2018ApJ...858...17T (2018): ALMA Observations of Molecular Clouds in Three Group-centered Elliptical Galaxies: NGC 5846, NGC 4636, and NGC 5044
+- 2018ApJ...860..172S (2018): Cloud-scale Molecular Gas Properties in 15 Nearby Galaxies
+- 2018ApJ...860L..14K (2018): Discovery of a Molecular Collision Front in Interacting Galaxies NGC 4567/4568 with ALMA
+- 2018ApJ...861...14C (2018): Infall Signatures in a Prestellar Core Embedded in the High-mass 70 μm Dark IRDC G331.372-00.116
+- 2018ApJ...861..123F (2018): Why Post-starburst Galaxies Are Now Quiescent
+- 2018ApJ...861L..18U (2018): Star Formation Efficiency per Free-fall Time in nearby Galaxies
+- 2018ApJ...863...55Y (2018): ALMA Observations of Supernova Remnant N49 in the LMC. I. Discovery of CO Clumps Associated with X-Ray and Radio Continuum Shells
+- 2018ApJ...863..193V (2018): Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248
+- 2018ApJ...863L..21K (2018): A 50 pc Scale View of Star Formation Efficiency across NGC 628
+- 2018ApJ...864..120M (2018): ALMA Observations toward the Starburst Dwarf Galaxy NGC 5253. I. Molecular Cloud Properties and Scaling Relations
+- 2018ApJ...866..117C (2018): ALMA Observation of NGC 5135: The Circumnuclear CO (6-5) and Dust Continuum Emission at 45 pc Resolution
+- 2018ApJ...867...94K (2018): Zooming in to Massive Star Birth
+- 2018ApJ...867..165B (2018): Dense Molecular Filaments Feeding a Starburst: ALMA Maps of CO(3-2) in Henize 2-10
+- 2018ApJ...868...95M (2018): ALMA Observations of HCN and HCO<SUP>+</SUP> Outflows in the Merging Galaxy NGC 3256
+- 2018ApJ...869..126L (2018): Forming Super Star Clusters in the Central Starburst of NGC 253
+- 2018ApJ...869L..24I (2018): G11.92-0.61 MM 1: A Fragmented Keplerian Disk Surrounding a Proto-O Star
+- 2018MNRAS.477.2760M (2018): Magnetically regulated collapse in the B335 protostar? I. ALMA observations of the polarized dust emission
+- 2018MNRAS.477.4380S (2018): Testing star formation laws in a starburst galaxy at redshift 3 resolved with ALMA
+- 2018MNRAS.478.2505I (2018): Radiative transfer modelling of W33A MM1: 3D structure and dynamics of a complex massive star-forming region
+- 2018MNRAS.481.1016G (2018): Connecting young star clusters to CO molecular gas in NGC 7793 with ALMA-LEGUS
+- 2018NatAs...2...56Z (2018): A dusty star-forming galaxy at z = 6 revealed by strong gravitational lensing
+- 2018Natur.556..469M (2018): A massive core for a cluster of galaxies at a redshift of 4.3
+- 2018PASJ...70...73H (2018): ALMA <SUP>12</SUP>CO (J = 1-0) imaging of the nearby galaxy M 83: Variations in the efficiency of star formation in giant molecular clouds
+- 2018Sci...362.1034D (2018): The multiple merger assembly of a hyperluminous obscured quasar at redshift 4.6
+- 2019A&A...622A..99L (2019): Lack of high-mass pre-stellar cores in the starless MDCs of NGC 6334
+- 2019A&A...623A..77S (2019): Discovery of a sub-Keplerian disk with jet around a 20 M<SUB>☉</SUB> young star. ALMA observations of G023.01-00.41
+- 2019A&A...628A...6S (2019): The physical and chemical structure of Sagittarius B2. IV. Converging filaments in the high-mass cluster forming region Sgr B2(N)
+- 2019A&A...628A..27B (2019): The complex chemistry of hot cores in Sgr B2(N): influence of cosmic-ray ionization and thermal history
+- 2019AJ....157..131B (2019): Kiloparsec-Scale Variations in the Star Formation Efficiency of Dense Gas: The Antennae Galaxies (NGC 4038/39)
+- 2019ApJ...871..100H (2019): ALMA Observations of the Protostellar Disk around the VeLLO IRAS 16253-2429
+- 2019ApJ...871..170M (2019): Fire in the Heart: A Characterization of the High Kinetic Temperatures and Heating Sources in the Nucleus of NGC 253
+- 2019ApJ...872..121U (2019): Molecular Cloud Cores in the Galactic Center 50 km s<SUP>-1</SUP> Molecular Cloud
+- 2019ApJ...875...24C (2019): Filamentary Accretion Flows in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA
+- 2019ApJ...876..141I (2019): ALMA Observations of Giant Molecular Clouds in the Starburst Dwarf Galaxy Henize 2-10
+- 2019ApJ...880....2W (2019): Spatially Resolved Interstellar Medium and Highly Excited Dense Molecular Gas in the Most Luminous Quasar at z = 6.327
+- 2019ApJ...880L..19K (2019): A Luminous Molecular Gas Pair beyond Redshift 7
+- 2019ApJ...881...10B (2019): A Precision Measurement of the Mass of the Black Hole in NGC 3258 from High-resolution ALMA Observations of Its Circumnuclear Disk
+- 2019ApJ...881L...2B (2019): ALMA Observations of the Terahertz Spectrum of Sagittarius A*
+- 2019ApJ...883...92L (2019): A Radio-to-millimeter Census of Star-forming Galaxies in Protocluster 4C 23.56 at z = 2.5: Global and Local Gas Kinematics
+- 2019ApJ...883..145J (2019): ALMA Unveils Widespread Molecular Gas Clumps in the Ram Pressure Stripped Tail of the Norma Jellyfish Galaxy
+- 2019ApJ...884...48C (2019): The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields
+- 2019ApJ...884..100H (2019): Chemical Evolution along the Circumnuclear Ring of M83
+- 2019ApJ...887...24T (2019): Resolving the Interstellar Medium in Ultraluminous Infrared QSO Hosts with ALMA
+- 2019ApJ...887...79H (2019): The Interaction between the Supernova Remnant W41 and the Filamentary Infrared Dark Cloud G23.33-0.30
+- 2019MNRAS.486..283B (2019): Young massive star cluster formation in the Galactic Centre is driven by global gravitational collapse of high-mass molecular clouds
+- 2019MNRAS.486.2366M (2019): The molecular gas properties in the gravitationally lensed merger HATLAS J142935.3-002836
+- 2019MNRAS.488.1180S (2019): No signs of star formation being regulated in the most luminous quasars at z ∼ 2 with ALMA
+- 2019NatAs...3.1115D (2019): Molecular clouds in the Cosmic Snake normal star-forming galaxy 8 billion years ago
+- 2019Natur.569..519K (2019): Fast and inefficient star formation due to short-lived molecular clouds and rapid feedback
+- 2019PASJ...71...44H (2019): Formation of high-mass stars in an isolated environment in the Large Magellanic Cloud
+- 2019PASJ...71...71H (2019): Big Three Dragons: A z = 7.15 Lyman-break galaxy detected in [O III] 88 μm, [C II] 158 μm, and dust continuum with ALMA
+- 2019PASJ...71...73T (2019): A centrally concentrated sub-solar-mass starless core in the Taurus L1495 filamentary complex
+- 2019Sci...366...90A (2019): Gas flow and accretion via spiral streamers and circumstellar disks in a young binary protostar
+- 2020A&A...634A.121H (2020): The headlight cloud in NGC 628: An extreme giant molecular cloud in a typical galaxy disk
+- 2020A&A...636A..29W (2020): Exploring molecular complexity with ALMA (EMoCA): complex isocyanides in Sgr B2(N)
+- 2020A&A...641A..97V (2020): ALMA resolves molecular clouds in metal-poor Magellanic Bridge A
+- 2020A&A...641A.104A (2020): Studying star-forming processes at core and clump scales: the case of the young stellar object G29.862-0.0044
+- 2020A&A...641L...6D (2020): Discovery of molecular gas fueling galaxy growth in a protocluster at z = 1.7
+- 2020A&A...642A.155Z (2020): GOODS-ALMA: Optically dark ALMA galaxies shed light on a cluster in formation at z = 3.5
+- 2020A&A...643A...5D (2020): The ALPINE-ALMA [C II] survey. Molecular gas budget in the early Universe as traced by [C II]
+- 2020A&A...643A..89P (2020): Excitation and acceleration of molecular outflows in LIRGs: The extended ESO 320-G030 outflow on 200-pc scales
+- 2020A&A...644A..61H (2020): ATOMIUM: A high-resolution view on the highly asymmetric wind of the AGB star π<SUP>1</SUP>Gruis. I. First detection of a new companion and…
+- 2020ApJ...888...56I (2020): Structural and Dynamical Analysis of 0.1 pc Cores and Filaments in the 30 Doradus-10 Giant Molecular Cloud
+- 2020ApJ...890...76N (2020): ALMA Observations of Two Massive and Dense MALT90 Clumps
+- 2020ApJ...890..129K (2020): Detection of Irregular, Submillimeter Opaque Structures in the Orion Molecular Clouds: Protostars within 10,000 yr of Formation?
+- 2020ApJ...891...64F (2020): Truth or Delusion? A Possible Gravitational Lensing Interpretation of the Ultraluminous Quasar SDSS J010013.02+280225.8 at z = 6.30
+- 2020ApJ...891...90R (2020): Pressure Profiles and Mass Estimates Using High-resolution Sunyaev-Zel'dovich Effect Observations of Zwicky 3146 with MUSTANG-2
+- 2020ApJ...891..113R (2020): Effect of Feedback of Massive Stars in the Fragmentation, Distribution, and Kinematics of the Gas in Two Star-forming Regions in the Carina…
+- 2020ApJ...892..147S (2020): Oversized Gas Clumps in an Extremely Metal-poor Molecular Cloud Revealed by ALMA's Parsec-scale Maps
+- 2020ApJ...893...63T (2020): Physical Conditions and Kinematics of the Filamentary Structure in Orion Molecular Cloud 1
+- 2020ApJ...893..135M (2020): Mass Functions of Giant Molecular Clouds and Young Star Clusters in Six Nearby Galaxies
+- 2020ApJ...894...72S (2020): Atacama Compact Array Measurements of the Molecular Mass in the NGC 5044 Cooling-flow Group
+- 2020ApJ...894...87C (2020): Gas Kinematics of the Massive Protocluster G286.21+0.17 Revealed by ALMA
+- 2020ApJ...895...21I (2020): ALMA Observations of the Molecular Clouds in NGC 625
+- 2020ApJ...895..119T (2020): ALMA ACA and Nobeyama Observations of Two Orion Cores in Deuterated Molecular Lines
+- 2020ApJ...895..142L (2020): Magnetic Fields in the Early Stages of Massive Star Formation as Revealed by ALMA
+- 2020ApJ...896...36T (2020): ALMA Observations of Giant Molecular Clouds in M33. I. Resolving Star Formation Activities in the Giant Molecular Filaments Possibly Formed…
+- 2020ApJ...896..110L (2020): ALMA Observations of NGC 6334S. I. Forming Massive Stars and Clusters in Subsonic and Transonic Filamentary Clouds
+- 2020ApJ...899..158K (2020): The Turbulent Gas Structure in the Centers of NGC 253 and the Milky Way
+- 2020ApJ...901L...8S (2020): Molecular Gas Properties on Cloud Scales across the Local Star-forming Galaxy Population
+- 2020ApJ...902..140N (2020): ALMA Observations of HCO<SUP>+</SUP> and HCN Emission in the Massive Star-forming Region N55 of the Large Magellanic Cloud
+- 2020ApJ...903...34A (2020): Probing the Nature of High-redshift Weak Emission Line Quasars: A Young Quasar with a Starburst Host Galaxy
+- 2020ApJ...903...50E (2020): Super Star Clusters in the Central Starburst of NGC 4945
+- 2020ApJ...903...94M (2020): ALMA Observations of Giant Molecular Clouds in M33. II. Triggered High-mass Star Formation by Multiple Gas Colliding Events at the NGC 604 …
+- 2020ApJ...904L...6A (2020): A Case of Simultaneous Star and Planet Formation
+- 2020ApJ...905L..23M (2020): Where's the Dust?: The Deepening Anomaly of Microwave Emission in NGC 4725 B
+- 2020MNRAS.491..178K (2020): Carina's pillars of destruction: the view from ALMA
+- 2020MNRAS.493.2872C (2020): The lifecycle of molecular clouds in nearby star-forming disc galaxies
+- 2020MNRAS.493.4294B (2020): ALMA uncovers the [C II] emission and warm dust continuum in a z = 8.31 Lyman break galaxy
+- 2020MNRAS.493.5045M (2020): Properties of giant molecular clouds in the strongly barred galaxy NGC 1300
+- 2020MNRAS.494.2131F (2020): Fast cloud-cloud collisions in a strongly barred galaxy: suppression of massive star formation
+- 2020MNRAS.495.3124H (2020): Megaparsec-scale structure around the protocluster core SPT2349-56 at z = 4.3
+- 2020MNRAS.495.3840M (2020): A large amount of diffuse molecular gases in the bar of the strongly barred galaxy NGC 1300: cause of the low star formation efficiency
+- 2020MNRAS.496..364R (2020): A molecular absorption line survey towards the AGN of Hydra-A
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2020MNRAS.496.5243H (2020): Is this an early stage merger? A case study on molecular gas and star formation properties of Arp 240
+- 2020MNRAS.496.5308S (2020): ALMA observations of CS in NGC 1068: chemistry and excitation
+- 2020MNRAS.499.2534K (2020): Resolved star formation in the metal-poor star-forming region Magellanic Bridge C
+- 2020NatAs...4.1064H (2020): Ubiquitous velocity fluctuations throughout the molecular interstellar medium
+- 2021A&A...645A..33B (2021): The WISSH quasars project. IX. Cold gas content and environment of luminous QSOs at z ∼ 2.4-4.7
+- 2021A&A...645A..97Q (2021): ALMA resolves giant molecular clouds in a tidal dwarf galaxy
+- 2021A&A...650A.202R (2021): Identification of pre-stellar cores in high-mass star forming clumps via H<SUB>2</SUB>D<SUP>+</SUP> observations with ALMA
+- 2021A&A...653A.166C (2021): Structured velocity field in the inner envelope of B335: ALMA observations of rare CO isotopologues
+- 2021A&A...654A..69S (2021): SEEDisCS. II. Molecular gas in galaxy clusters and their large-scale structure: low gas fraction galaxies, the case of CL1301.7‒1139
+- 2021ApJ...907...62R (2021): Rise of the Titans: Gas Excitation and Feedback in a Binary Hyperluminous Dusty Starburst Galaxy at z ∼ 6
+- 2021ApJ...907L..10R (2021): Kinematic Analysis of a Protostellar Multiple System: Measuring the Protostar Masses and Assessing Gravitational Instability in the Disks o…
+- 2021ApJ...907L..15S (2021): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Detection of Extremely High-density Compact Structure of Prestellar Cores and M…
+- 2021ApJ...908...53W (2021): Revealing the Accretion Physics of Supermassive Black Holes at Redshift z ∼ 7 with Chandra and Infrared Observations
+- 2021ApJ...908..188F (2021): A Long Stream of Metal-poor Cool Gas around a Massive Starburst Galaxy at z = 2.67
+- 2021ApJ...908L..43N (2021): ALMA Reveals a Cloud-Cloud Collision that Triggers Star Formation in the Small Magellanic Cloud
+- 2021ApJ...912L...7L (2021): A Low-mass Cold and Quiescent Core Population in a Massive Star Protocluster
+- 2021ApJS..257...43L (2021): PHANGS-ALMA: Arcsecond CO(2-1) Imaging of Nearby Star-forming Galaxies
+- 2021MNRAS.502.1797R (2021): Optical and near-infrared observations of the SPT2349-56 proto-cluster core at z = 4.3
+- 2021MNRAS.503.5583B (2021): Resolving discs and mergers in z ∼ 2 heavily reddened quasars and their companion galaxies with ALMA
+- 2021MNRAS.504.4123N (2021): Black hole mass measurement using ALMA observations of [CI] and CO emissions in the Seyfert 1 galaxy NGC 7469
+- 2021MNRAS.504.4511P (2021): ALMA <SUP>13</SUP>CO(J = 1-0) observations of NGC 604 in M33: physical properties of molecular clouds
+- 2021MNRAS.508.4639Z (2021): ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions-VI. On the formation of the 'L' type filament in G286.21+0.17
+- 2021PASJ...73..205T (2021): ALMA view of the Galactic super star cluster RCW 38 at 270 au resolution
+- 2021PASJ...73S..35T (2021): The formation of young massive clusters triggered by cloud-cloud collisions in the Antennae galaxies NGC 4038/NGC 4039
+- 2021RAA....21...26Y (2021): Collapsing index: a new method to identify star-forming cores based on ALMA images
+- 2022A&A...659A.158H (2022): First extragalactic detection of a phosphorus-bearing molecule with ALCHEMI: Phosphorus nitride (PN)
+- 2022A&A...661A.136G (2022): The molecular gas resolved by ALMA in the low-metallicity merging dwarf galaxy Haro 11
+- 2022A&A...663A..61P (2022): Variations in the Σ<SUB>SFR</SUB> ‒ Σ<SUB>mol</SUB> ‒ Σ<SUB>⋆</SUB> plane across galactic environments in PHANGS galaxies
+- 2022A&A...665L...7S (2022): A galaxy group candidate at z ≈ 3.7 in the COSMOS field
+- 2022AJ....164...43S (2022): Molecular Cloud Populations in the Context of Their Host Galaxy Environments: A Multiwavelength Perspective
+- 2022MNRAS.514..578W (2022): The initial conditions for young massive cluster formation in the Galactic Centre: convergence of large-scale gas flows
+- 2022MNRAS.514.5035L (2022): WISDOM project - XI. Star formation efficiency in the bulge of the AGN-host Galaxy NGC 3169 with SITELLE and ALMA
+- 2022MNRAS.516.4612T (2022): PHANGS: constraining star formation time-scales using the spatial correlations of star clusters and giant molecular clouds
+- 2022MNRAS.517..632L (2022): WISDOM Project - XII. Clump properties and turbulence regulated by clump-clump collisions in the dwarf galaxy NGC 404
+- 2023A&A...673A.116K (2023): Exploring the environment, magnetic fields, and feedback effects of massive high-redshift galaxies with [C II]
+- 2023A&A...678A.160E (2023): FAUST. X. Formaldehyde in the protobinary system [BHB2007] 11: Small-scale deuteration
+- 2023Ap&SS.368...44M (2023): Detection of complex nitrogen-bearing molecule ethyl cyanide towards the hot molecular core G10.47 + 0.03
+- 2023ApJ...942L..24K (2023): UGC 4211: A Confirmed Dual Active Galactic Nucleus in the Local Universe at 230 pc Nuclear Separation
+- 2023ApJ...943...25G (2023): A Highly Magnified Gravitationally Lensed Red QSO at z = 2.5 with a Significant Flux Ratio Anomaly
+- 2023ApJ...944L..14W (2023): PHANGS-JWST First Results: Massive Young Star Clusters and New Insights from JWST Observations of NGC 1365
+- 2023ApJ...945...42B (2023): Does the HCN/CO Ratio Trace the Star-forming Fraction of Gas? I. A Comparison with Analytical Models of Star Formation
+- 2023ApJ...953..164M (2023): ACA CO(J = 2-1) Mapping of the Nearest Spiral Galaxy M33. I. Initial Results and Identification of Molecular Clouds
+- 2023ApJ...958...53S (2023): ALMA Observations of Supernova Remnant N49 in the Large Magellanic Cloud. II. Non-LTE Analysis of Shock-heated Molecular Clouds
+- 2023ApJ...958...98F (2023): Early Planet Formation in Embedded Disks (eDisk). XII. Accretion Streamers, Protoplanetary Disk, and Outflow in the Class I Source Oph IRS …
+- 2023MNRAS.521.5508H (2023): Bright extragalactic ALMA redshift survey (BEARS) III: detailed study of emission lines from 71 Herschel targets
+- 2023MNRAS.522.4078C (2023): WISDOM Project - XV. Giant molecular clouds in the central region of the barred spiral galaxy NGC 5806
+- 2023MNRAS.523.6061L (2023): Multiscale stellar associations across the star formation hierarchy in PHANGS-HST nearby galaxies: methodology and properties
+- 2023MNRAS.525.6146W (2023): ALMA observations of the Extended Green Object G19.01-0.03 - II. A massive protostar with typical chemical abundances surrounded by four lo…
+- 2023MNRAS.526.4402B (2023): Fragmentation and dynamics of dense gas structures in the proximity of massive young stellar object W42-MME
+- 2023PASJ...75..225M (2023): An expanding ring of the hypercompact H II region W 49 N:A2
+- 2023PASJ...75..646K (2023): Investigating physical states of molecular gas in the overlapping region of interacting galaxies NGC 4567/4568 using ALMA
+- 2024A&A...682A..24A (2024): The ALMA Reionization Era Bright Emission Line Survey: The molecular gas content of galaxies at z 7
+- 2024A&A...682A..61C (2024): A dusty streamer infalling onto the disk of a class I protostar. ALMA dual-band constraints on grain properties and the mass-infall rate
+- 2024A&A...684A.119P (2024): ALMA survey of a massive node of the Cosmic Web at z ∼ 3. I. Discovery of a large overdensity of CO emitters
+- 2024A&A...686A..85A (2024): Spatially resolved Hα and ionizing photon production efficiency in the lensed galaxy MACS1149-JD1 at a redshift of 9.11
+- 2024A&A...686A.146Z (2024): Gas inflows from cloud to core scales in G332.83-0.55: Hierarchical hub-filament structures and tide-regulated gravitational collapse
+- 2024A&A...687A..43B (2024): Physical properties of the southwest outflow streamer in the starburst galaxy NGC 253 with ALCHEMI
+- 2024A&A...688A.146A (2024): GA-NIFS: The core of an extremely massive protocluster at the epoch of reionisation probed with JWST/NIRSpec
+- 2024A&A...690A..55S (2024): NOEMA formIng Cluster survEy (NICE): Characterizing eight massive galaxy groups at 1.5 &lt; z &lt; 4 in the COSMOS field
+- 2024A&A...690A.375S (2024): Emergence of high-mass stars in complex fiber networks (EMERGE): III. Fiber networks in Orion
+- 2024A&A...690A.376S (2024): Emergence of high-mass stars in complex fiber networks (EMERGE): IV. Environmental dependence of the fiber widths
+- 2024A&A...691A.121N (2024): A 260 pc resolution ALMA map of HCN(1─0) in the galaxy NGC 4321
+- 2024A&A...691A.197K (2024): Compact and high excitation molecular clumps in the extended ultraviolet disk of M83
+- 2024ApJ...961....4B (2024): Protostellar Cores in Sagittarius B2 N and M
+- 2024ApJ...961...71F (2024): The Extended [C II] under Construction? Observation of the Brightest High-z Lensed Star-forming Galaxy at z = 6.2
+- 2024ApJ...961..120C (2024): Brightest Cluster Galaxy Formation in the z = 4.3 Protocluster SPT 2349-56: Discovery of a Radio-loud Active Galactic Nucleus
+- 2024ApJ...961L..35M (2024): The ALMA-QUARKS Survey: Detection of Two Extremely Dense Substructures in a Massive Prestellar Core
+- 2024ApJ...963....1O (2024): "Beads-on-a-string" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster
+- 2024ApJ...964...12F (2024): ALMA-LEGUS. I. The Influence of Galaxy Morphology on Molecular Cloud Properties
+- 2024ApJ...964...13F (2024): ALMA-LEGUS. II. The Influence of Subgalactic Environments on Molecular Cloud Properties
+- 2024ApJ...964...39G (2024): UNCOVER Spectroscopy Confirms the Surprising Ubiquity of Active Galactic Nuclei in Red Sources at z &gt; 5
+- 2024ApJ...964..166K (2024): Physical Properties of Molecular Clouds in the Overlap Region of the Merging Antennae Galaxies
+- 2024ApJ...965...99T (2024): Discovery of Asymmetric Spike-like Structures of the 10 au Disk around the Very Low-luminosity Protostar Embedded in the Taurus Dense Core …
+- 2024ApJ...966...51G (2024): The Size─Linewidth Relation and Signatures of Feedback from Quiescent to Active Star Forming Regions in the LMC
+- 2024ApJ...966..120L (2024): Dark Dragon Breaks Magnetic Chain: Dynamical Substructures of IRDC G28.34 Form in Supported Environments
+- 2024ApJ...967...56C (2024): Investigations of Massive Filaments and Star Formation (INFANT). I. Core Identification and Core Mass Function
+- 2024ApJ...967..133S (2024): Hidden Gems on a Ring: Infant Massive Clusters and Their Formation Timeline Unveiled by ALMA, HST, and JWST in NGC 3351
+- 2024ApJ...968...10F (2024): An ALMA Search for Substructure and Fragmentation in Starless Cores in Orion B North
+- 2024ApJ...970...74P (2024): The Evaporating Massive Embedded Stellar Cluster IRS 13 Close to Sgr A*. II. Kinematic Structure
+- 2024ApJ...970L..40S (2024): Direct Observational Evidence of Multi-epoch Massive Star Formation in G24.47+0.49
+- 2024ApJ...971..176H (2024): Unraveling the Mystery of the Low CO-to-H<SUB>2</SUB> Conversion Factor in Starburst Galaxies: RADEX Modeling of the Antennae
+- 2024ApJ...972..111L (2024): Ongoing and Fossil Large-scale Outflows Detected in a High-redshift Radio Galaxy: [C II] Observations of TN J0924-2201 at z = 5.174
+- 2024ApJ...972..146S (2024): Interstellar Glycolaldehyde, Methyl Formate, and Acetic Acid. II. Chemical Modeling of the Bimodal Abundance Pattern in NGC 6334I
+- 2024ApJ...972L...6S (2024): Magnetic Fields in Massive Star-forming Regions (MagMaR): Unveiling an Hourglass Magnetic Field in G333.46─0.16 Using ALMA
+- 2024ApJ...976..198H (2024): Whole-disk Sampling of Molecular Clouds in M83
+- 2024ApJ...976..241Y (2024): The ALMA-QUARKS Survey: Fibers' Role in Star Formation Unveiled in an Intermediate-mass Protocluster Region of the Vela D Cloud
+- 2024ApJ...977...38B (2024): Neural Network Constraints on the Cosmic-Ray Ionization Rate and Other Physical Conditions in NGC 253 with ALCHEMI Measurements of HCN and …
+- 2024ApJ...977L...9Z (2024): ALMA Detection of [O III] 88 μm at z = 12.33: Exploring the Nature and Evolution of GHZ2 as a Massive Compact Stellar System
+- 2024ApJS..270....9X (2024): The ALMA Survey of Star Formation and Evolution in Massive Protoclusters with Blue Profiles (ASSEMBLE): Core Growth, Cluster Contraction, a…
+- 2024JApA...45....3M (2024): ACA observation and chemical modeling of phosphorus nitride towards hot molecular cores G10.47<inline-formula id="IEq1"><mml:math><mml:mrow…
+- 2024MNRAS.527.8865B (2024): FLASH: Faint Lenses from Associated Selection with Herschel
+- 2024MNRAS.528.7383C (2024): FAUST XII. Accretion streamers and jets in the VLA 1623-2417 protocluster
+- 2024MNRAS.530..597B (2024): Cloud-scale molecular gas properties of the ANTENNAE merger: a comparative study with PHANGS-ALMA galaxies and NGC 3256
+- 2024MNRAS.531.4045C (2024): WISDOM Project - XXI. Giant molecular clouds in the central region of the barred spiral galaxy NGC 613: a steep size-linewidth relation
+- 2024MNRAS.535.1052B (2024): The radio-infrared nebula in II Zw 40: clusters forming in colliding elongated clouds
+- 2024MNRAS.535.1364Z (2024): ATOMS: ALMA three-millimeter observations of massive star-forming regions - XVIII. On the origin and evolution of dense gas fragments in mo…
+- 2024PASA...41...76Z (2024): Hierarchical hub-filament structures and gas inflows on galaxy-cloud scales
+- 2025A&A...693A.199C (2025): Interaction between the supernova remnant W44 and the infrared dark cloud G034.77-00.55: Shock induced star formation
+- 2025A&A...694A.218B (2025): Revealing the hidden cosmic feast: A z = 4.3 galaxy group hosting two optically dark, efficiently star-forming galaxies
+- 2025A&A...695A..51B (2025): Hierarchical accretion flow from the G351 infrared dark filament to its central cores
+- 2025A&A...695A.236L (2025): Erosion of a dense molecular core by a strong outflow from a massive protostar
+- 2025A&A...696A..31G (2025): Shock-induced HCNH<SUP>+</SUP> abundance enhancement in the heart of the starburst galaxy NGC 253 unveiled by ALCHEMI
+- 2025A&A...696A.202S (2025): ALMA-IMF: XVIII. The assembly of a star cluster: Dense N<SUB>2</SUB>H<SUP>+</SUP> (1─0) kinematics in the massive G351.77 protocluster
+- 2025A&A...698A.145B (2025): Multi-phase investigation of outflows in the circumgalactic and interstellar media of luminous quasars at z ∼ 5
+- 2025A&A...698A.261B (2025): Complex organic molecules towards the central molecular zone of NGC 253
+- 2025A&A...699A..70H (2025): Investigating the chemical link between H<SUB>2</SUB>CO and CH<SUB>3</SUB>OH within the central molecular zone of NGC 253
+- 2025A&A...699A.183H (2025): Spatially resolved spectrophotometric SED modeling of NGC 253's central molecular zone: I. Star formation in extragalactic giant molecular …
+- 2025A&A...699A.369V (2025): Dense clumps survive in the vicinity of R136 in 30 Doradus
+- 2025A&A...699L..11V (2025): The CHIMERA Survey: The first CO detection in Leo T, the lowest mass known galaxy still hosting cold molecular gas
+- 2025A&A...700A.123M (2025): Reconciling extragalactic star formation efficiencies with theory: Insights from PHANGS
+- 2025A&A...700A.165B (2025): GAMA 526784: The progenitor of a globular cluster-rich ultra-diffuse galaxy?: II. Molecular gas, neutral gas, and environment
+- 2025A&A...701A..85K (2025): Early galaxy evolution: The complex interstellar medium distribution of the z ∼ 7 galaxy A1689-zD1
+- 2025A&A...701A.120P (2025): ALMA survey of a massive node of the Cosmic Web at z ∼ 3: II. A dynamically cold and massive disk galaxy in the proximity of a hyper-lumino…
+- 2025A&A...701A.141L (2025): Sulfur oxides tracing streamers and shocks at low-mass protostellar disk─envelope interfaces
+- 2025A&A...701A.234Z (2025): Noema formIng Cluster survEy (NICE): A census of star formation and cold gas properties in massive protoclusters at 1.5 &lt; z &lt; 4
+- 2025A&A...702A..18D (2025): Multi-frequency observations of PDS70c: Radio emission mechanisms in the circumplanetary environment
+- 2025A&A...704A.158C (2025): Pushing JWST to the extremes: Search and scrutiny of bright galaxy candidates at z ≃ 15─30
+- 2025ApJ...979..217S (2025): The Arp 240 Galaxy Merger: A Detailed Look at the Molecular Kennicutt─Schmidt Star Formation Law on Subkiloparsec Scales
+- 2025ApJ...984L..58H (2025): ALMASOP: Detection of Turbulence-induced Mass Assembly Shocks in Starless Cores
+- 2025ApJ...985..166K (2025): Early Planet Formation in Embedded Disks (eDisk). XXI. Limited Role of Streamers in Mass Supply to the Disk in the Class 0 Protostar IRAS 1…
+- 2025ApJ...986..195L (2025): The M<SUB>BH</SUB>─M<SUB>∗</SUB> Relation of the Hyperluminous Dust-obscured Quasars up to z ∼ 4
+- 2025ApJ...987...69N (2025): High-velocity Molecular Clouds in M83
+- 2025ApJ...987L..37W (2025): Gas-poor Hosts and Gas-rich Companions of z ≍ 3.5 Radio Active Galactic Nuclei: ALMA Insights into Jet Triggering and Feedback
+- 2025ApJ...988..215K (2025): Timescales of Polycyclic Aromatic Hydrocarbon and Dust Continuum Emission from Gas Clouds Compared to Molecular Gas Cloud Lifetimes in PHAN…
+- 2025ApJ...990..166D (2025): Quenching through Tidal Gas Removal: Molecular Gas and Star Formation in Tidal Tails of z ∼ 0.7 Post-starburst Galaxies
+- 2025ApJ...995..108J (2025): Molecular Gas in Major Mergers Hosting Dual and Single AGNs at &lt;10 kpc Nuclear Separations
+- 2025ApJ...995..193Y (2025): The ALMA-QUARKS Survey: Evidence of a Candidate High-mass Prestellar Core Aside a Bright-rimmed Cloud IRAS 18290-0924
+- 2025ApJ...995..219F (2025): PASSAGES: The Discovery of a Strongly Lensed Protocluster Core Candidate at Cosmic Noon
+- 2025ApJ...995L...7L (2025): The Rotation Dip in the Envelope─Disk Transition of HH 111: Evidence for Magnetic Braking
+- 2025ApJS..280...33Y (2025): The ALMA-QUARKS Survey. III. Clump-to-core Fragmentation and Searches for High-mass Starless Cores
+- 2025MNRAS.536.3757A (2025): The kinematics of massive high-redshift dusty star-forming galaxies
+- 2025MNRAS.541.1276Z (2025): The most massive star clusters in molecular clouds: insights from the integrated cloud-wide initial mass function (ICIMF) theory
+- 2025MNRAS.541.3799K (2025): Extreme cloud collisions in nearby barred galaxies
+- 2025MNRAS.542.3277F (2025): Thackeray's globules in IC 2944: the rocket effect revisited by ALMA
+- 2025MNRAS.544.4014Z (2025): Connecting star formation in the Milky Way and nearby galaxies ─ I. Comparability of molecular cloud physical properties
+- 2025NatAs...9..406L (2025): Inadequate turbulent support in low-metallicity molecular clouds
+- 2025NatAs...9.1833L (2025): Detection of a septuple stellar system in formation via disk fragmentation
+- 2025Natur.641.1137B (2025): Quasar radiation transforms the gas in a merging companion galaxy
+- 2025PASJ...77....1K (2025): Components of star formation in NGC 253: Non-negative matrix factorization analysis with the ALCHEMI integrated intensity images
+- 2025PASJ...77..616I (2025): Cloud-cloud collisions in the Antennae galaxies: Does high-speed collision suppress star formation?
+- 2025PASJ...77L..55S (2025): Circumnuclear eccentric gas flow in the Galactic Center revealed by ALMA CMZ Exploration Survey (ACES)
+- 2025SciA...11.4512O (2025): Massive extended streamers feed high-mass young stars
+- 2026A&A...709A.173M (2026): ALMAGAL: VIII. Early phases of triggered star formation in source AG286.0716─1.8229
+- 2026A&A...713A.149V (2026): Challenges in probing turbulent and magnetic support in cores: The W43-MM1 protocluster case study
+- 2026AJ....172..108L (2026): Formation of a Protostellar Multiple System via Rotational Fragmentation
+- 2026ApJ...997..155M (2026): The ALMA Survey of 70 µm Dark High-mass Clumps in Early Stages (ASHES). XIII. Core Mass Function, Lifetime, and Growth of Prestellar Cores
+- 2026ApJ..1000..141K (2026): First Determination of the Cosmic Microwave Background Radiation Temperature at z = 0.68 Using Molecular Absorption Lines
+- 2026ApJ..1000..159M (2026): Low Dust Mass and High Star Formation Efficiency at z &gt; 12 from Deep ALMA Observations
+- 2026ApJ..1003..219W (2026): The Keplerian Disk, Envelope, and Streamers Surrounding an Early O-type Protostar in the Sagittarius C Cloud of the Central Molecular Zone
+- 2026ApJ..1004..207M (2026): Global and Local Infall in the ASHES Sample (GLASHES). II. Asymmetric Line Profiles Around Dense Cores in 70 μm Dark Massive Clumps

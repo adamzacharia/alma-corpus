@@ -1,0 +1,299 @@
+{
+ "bibcode": "2020ApJ...899...10T",
+ "title": "FRagmentation and Evolution of Dense Cores Judged by ALMA (FREJA). I. Overview: Inner ∼1000 au Structures of Prestellar/Protostellar Cores in Taurus",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab9ca7",
+ "arxiv_id": "2006.06361",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What are the inner ~1000 au structures of prestellar/protostellar cores in Taurus, and how long do high-density prestellar cores last before protostar formation?",
+ "alma_project_codes": [
+  "2016.1.00928.S",
+  "2018.1.00756.S",
+  "2015.1.00340.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm); effective continuum frequency 225.3 GHz",
+  "arrays": "ACA 7 m array plus Total Power array, stand-alone",
+  "angular_resolution": "6.5'' geometric mean (~900 au)",
+  "sensitivity": "continuum rms ~0.4 mJy/beam (PROJ6)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distances to Taurus clouds (140 pc for L1521)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Distance measurements toward individual clouds in Taurus by (cite: Galli18)."
+     }
+    ]
+   },
+   "citation": "Galli18; Elias78"
+  },
+  {
+   "what": {
+    "value": "NH3 kinetic temperatures used as dust temperatures",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Kinematic temperature derived from NH$_3$ observations"
+     }
+    ]
+   },
+   "citation": "Benson89; Codella97; Seo15; Feh16; Friesen17"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_1.3mm = 0.005 cm2/g",
+    "evidence": [
+     {
+      "loc": "3.1 Prestellar Cores",
+      "quote": "$\\kappa_{\\rm 1.3\\,mm}$ = 0.005 cm${^2}$ g$^{-1}$ for prestellar cores (cite: Ossenkopf94; Preibisch93)"
+     }
+    ]
+   },
+   "citation": "Ossenkopf94; Preibisch93"
+  },
+  {
+   "what": {
+    "value": "Higher-resolution interferometric disk fluxes for protostellar sources",
+    "evidence": [
+     {
+      "loc": "3.2 Protostellar Cores",
+      "quote": "We compiled higher-resolution interferometric observations at the same frequency from the literature for all protostellar sources"
+     }
+    ]
+   },
+   "citation": "Table 4 footnotes"
+  },
+  {
+   "what": {
+    "value": "Prestellar core catalog of 44 cores and lifetime ~4e5 yr",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "(cite: Onishi02) discovered 44 prestellar cores with an average density of $\\gtrsim$10$^{5}$ cm$^{-3}$"
+     }
+    ]
+   },
+   "citation": "Onishi02"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure source properties",
+   "method": "tclean multiscale natural-weighted continuum imaging, then 2D Gaussian fits after primary beam correction; rms from emission-free pixels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "scales 0,6,18 pix; 1'' pixels; natural weighting; 3 sigma detection threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive masses and densities",
+   "method": "M = D^2 F / (kappa B(Td)); n(H2)=3M/(4 pi mu mH R^3)",
+   "software": [],
+   "key_parameters": [
+    "R_obs = sqrt(Major*Minor)/2; mu = 2.8"
+   ],
+   "assumptions": [
+    "kappa_1.3mm=0.005 cm2/g; Td equals NH3 gas temperature, uniform"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Test whether substructures are interferometric artifacts",
+   "method": "simobserve and tclean of smooth Plummer-like cores compared with observations; plus C18O and N2D+ line distributions",
+   "software": [
+    "CASA simobserve",
+    "tclean"
+   ],
+   "key_parameters": [
+    "p=2; R_flat 8000,2500,1500,900,300 au; aspect ratios 1.0 and 1.8; kappa=0.005, Td=10 K"
+   ],
+   "assumptions": [
+    "Td = 10 K, kappa = 0.005 cm2/g"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate lifetimes by statistical counting",
+   "method": "Divide 54 Taurus prestellar cores into categories I/II/III by continuum flux (21 mJy cut) and scale by total lifetime ~5e5 yr",
+   "software": [],
+   "key_parameters": [
+    "flux criterion 21 mJy (n >= 8e5 cm-3)"
+   ],
+   "assumptions": [
+    "unobserved cores are category I; constant evolution speed; total lifetime ~5e5 yr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Prestellar cores with continuum detection",
+   "value": "12 of 32 (about one-third)",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Prestellar Cores",
+     "quote": "we confirmed continuum detection toward 12 prestellar cores"
+    }
+   ]
+  },
+  {
+   "quantity": "Prestellar peak flux range",
+   "value": "2-5",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Prestellar Cores",
+     "quote": "are 2–5 mJy beam$^{-1}$ and 5–63 mJy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Prestellar total flux range",
+   "value": "5-63",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Prestellar Cores",
+     "quote": "are 2–5 mJy beam$^{-1}$ and 5–63 mJy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Prestellar mass range",
+   "value": "~1e-2 to 1e-1",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Prestellar Cores",
+     "quote": "The estimated masses ($M_{\\rm obs}$) are $\\sim$10$^{-2}$–10$^{-1}$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Prestellar derived density",
+   "value": "~(3-10)e5",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Prestellar Cores",
+     "quote": "The derived densities are $\\sim$(3–10)$\\times$10$^5$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar total flux range",
+   "value": "62-225",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2 Protostellar Cores",
+     "quote": "The observed total and peak fluxes are 62–225 mJy and $\\sim$14–202 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk contribution fraction",
+   "value": "35-90% except MC27",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2 Protostellar Cores",
+     "quote": "most of the flux is dominated by $F_{\\rm disk}$ with a range of 35–90% except for MC27"
+    }
+   ]
+  },
+  {
+   "quantity": "Category counts I/II/III",
+   "value": "45, 6, 3",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "The total numbers in categories I, II, and III are 45, 6, and 3, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Stage timescales I/II/III",
+   "value": "~3e5, ~6e4, ~3e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\sim$3 $\\times$ 10$^{5}$ yr (I), $\\sim$6 $\\times$ 10$^{4}$ yr (II), and $\\sim$3 $\\times$ 10$^{4}$ yr (III)"
+    }
+   ]
+  },
+  {
+   "quantity": "Detection limit of central density",
+   "value": "~4e5",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "gives us a detection limit of the central density, $\\sim$4 $\\times$ 10$^{5}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Missing flux relative to single dish",
+   "value": ">80%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Prestellar Cores",
+     "quote": "there is a large amount of missing flux, more than 80%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Rest frequencies and line windows per target",
+  "Phase calibrator selection per execution block and QA/flagging details",
+  "How the 7 m ms was calibrated (pipeline vs manual, pipeline version)",
+  "Mask definitions per target and exact rms measurement regions",
+  "How Table 3 category I/II/III counts for unobserved cores were assigned",
+  "Simulation integration time and noise treatment"
+ ],
+ "missing_for_reproduction": [
+  "Calibration pipeline details",
+  "Line-image processing parameters",
+  "Per-source mask choices and simobserve noise settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters and mass equations are given and data are archival, but calibration, masks and some statistics assumptions are vague.",
+ "rediscovery_reason": "Data are public ALMA projects, imaging recipe and mass equations are given, and the main results are numeric (fluxes, masses, detection counts).",
+ "source_card": "cards/2020ApJ...899...10T/sonnet/card.md"
+}

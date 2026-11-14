@@ -1,0 +1,161 @@
+{
+ "bibcode": "2017A&A...602A..49H",
+ "title": "VALES. II. The physical conditions of interstellar gas in normal star-forming galaxies up to z = 0.2 revealed by ALMA",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201629588",
+ "arxiv_id": "1611.05867",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism"
+ ],
+ "question": "What are the gas density and FUV radiation field in normal star-forming galaxies at 0.03<z<0.2, from [CII]/CO(1-0)/FIR PDR modelling, and does it evolve with redshift?",
+ "alma_project_codes": [
+  "2013.1.00530.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "2 mJy/beam at 30 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[CII] line fluxes and L_FIR, dust temperatures",
+    "evidence": [
+     {
+      "loc": "Ancillary data for far-infrared luminosities",
+      "quote": "We use previously published values of the far-infrared (FIR) luminosity, $L_{\\mathrm{FIR}}$"
+     }
+    ]
+   },
+   "citation": "(cite: ibar2015)"
+  },
+  {
+   "what": {
+    "value": "Literature samples and high-z [CII]/CO/FIR data for comparison",
+    "evidence": [
+     {
+      "loc": "Comparison with previous studies",
+      "quote": "together with the galaxy samples compared in Fig. 3 of (cite: hailey2010), from where this figure is taken"
+     }
+    ]
+   },
+   "citation": "(cite: hailey2010); (cite: gullberg2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure CO(1-0) flux",
+   "method": "Gaussian fit to spectrum, collapse cube over nu_obs±FWHM, Gaussian fit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "upper limit = 5x RMS at 100 km/s, FWHM 250 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute L_CO",
+   "method": "Solomon & Vanden Bout formula",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Excitation temperature/optical depth analysis",
+   "method": "Compare observed L[CII]/LCO with source-function equation varying Tex and tau",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "equal [CII] and CO filling factors; Tex,CO = dust temperature"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Apply adjustments and fit PDR model",
+   "method": "[CII] scaled to 70% (or 50%) PDR fraction, CO x2; KDTree search with chi2 minimisation to Kaufman PDR grid to get n and G0",
+   "software": [
+    "PDR Toolbox"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "each galaxy is a single PDR component; FIR not halved"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "mean L[CII]/LCO",
+   "value": "3500",
+   "uncertainty": "std 1200",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The [Cii] – CO luminosity correlation",
+     "quote": "average $L_{\\mathrm{[C{\\textsc{ii}}]}}$/$L_{\\mathrm{CO}}$ ratio for our sample is 3500 (median of $\\sim$2400) with a standard deviation of 1200"
+    }
+   ]
+  },
+  {
+   "quantity": "mean log G0 (unadjusted)",
+   "value": "2.63",
+   "uncertainty": "0.32",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Insights",
+     "quote": "The unadjusted observations yield a mean incident field strength of 2.63$\\pm$0.32 and density of 4.00$\\pm$0.95"
+    }
+   ]
+  },
+  {
+   "quantity": "mean log n (standard adjustments)",
+   "value": "4.52",
+   "uncertainty": "0.49",
+   "units": "log cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Insights",
+     "quote": "denser ($\\log n =$4.52$\\pm$0.49), warmer ($T$=207$\\pm$68 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "mean log G0 (standard adjustments)",
+   "value": "2.25",
+   "uncertainty": "0.25",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Insights",
+     "quote": "($\\log G_{0} =$2.25$\\pm$0.25)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction",
+  "Clean mask details, CASA version",
+  "Flux calibration uncertainty",
+  "Exact KDTree grid and chi2 setup",
+  "Table of per-galaxy beam/rms",
+  "Villanueva et al. in prep products"
+ ],
+ "missing_for_reproduction": [
+  "Details of CASA reduction in Villanueva et al. in prep",
+  "Herschel [CII] and L_FIR from Ibar 2015"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Final analysis uses tabulated fluxes and public PDR models, but the imaging details are deferred to an in-prep paper.",
+ "rediscovery_reason": "Table 1 gives fluxes and the PDR grid is public, so the PDR fitting can be redone; the data are public after the proprietary period.",
+ "source_card": "cards/2017A%26A...602A..49H/sonnet/card.md"
+}

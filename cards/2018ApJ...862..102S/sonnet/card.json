@@ -1,0 +1,1072 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...862..102S",
+  "title": "A Multiline Study of a High-mass Young Stellar Object in the Small Magellanic Cloud with ALMA: The Detection of Methanol Gas at 0.2 Solar Metallicity",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Shimonishi, Takashi",
+  "n_authors": 8,
+  "arxiv_id": "1806.07120",
+  "doi": "10.3847/1538-4357/aacd0c",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00394.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report the results of subparsec-scale submillimeter observations towards an embedded high-mass young stellar object in the Small Magellanic Cloud (SMC) with ALMA."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 01042-7215 (SMC high-mass YSO)",
+     "coordinates": {
+      "value": "RA 01h05m49.32s, Dec -71d59m48.4s (J2000)",
+      "evidence": [
+       {
+        "loc": "2.2 Observations",
+        "quote": "The telescopes were pointed to RA = 01$^\\mathrm{h}$05$^\\mathrm{m}$49$s$32 and Dec = -71$^\\circ$59$\\ensuremath{'}$48$\\ensuremath{''}$4 (J2000)"
+       },
+       {
+        "loc": "2.3 Data reduction",
+        "quote": "which corresponds to 0.11 pc $\\times$ 0.07 pc at the distance of the SMC (62.1 kpc)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "62.1 kpc",
+      "evidence": [
+       {
+        "loc": "2.2 Observations",
+        "quote": "The telescopes were pointed to RA = 01$^\\mathrm{h}$05$^\\mathrm{m}$49$s$32 and Dec = -71$^\\circ$59$\\ensuremath{'}$48$\\ensuremath{''}$4 (J2000)"
+       },
+       {
+        "loc": "2.3 Data reduction",
+        "quote": "which corresponds to 0.11 pc $\\times$ 0.07 pc at the distance of the SMC (62.1 kpc)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "assumed SMC distance (Graczyk et al. 2014 is cited for the SMC generally; the paper does not tie the 62.1 kpc value to it)",
+      "evidence": [
+       {
+        "loc": "2.2 Observations",
+        "quote": "The telescopes were pointed to RA = 01$^\\mathrm{h}$05$^\\mathrm{m}$49$s$32 and Dec = -71$^\\circ$59$\\ensuremath{'}$48$\\ensuremath{''}$4 (J2000)"
+       },
+       {
+        "loc": "2.3 Data reduction",
+        "quote": "which corresponds to 0.11 pc $\\times$ 0.07 pc at the distance of the SMC (62.1 kpc)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the physical and chemical properties of dense cores around a high-mass YSO in the SMC, and is CH3OH gas present at 0.2 solar metallicity?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The first detection of CH$_3$OH in the SMC has a strong impact on our understanding of the formation of complex organic molecules in metal-poor environments."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00394.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "Observations were carried out with ALMA in November 2016 as a part of the Cycle 4 program 2016.1.00394.S (PI T. Shimonishi)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "The target was observed in Band 6 with four spectral windows"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spectral windows: 241.48–243.36, 243.84–245.71, 256.99–258.87, 258.85–260.72 GHz; 977 kHz resolution before averaging",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "covering 241.48–243.36, 243.84-245.71, 256.99–258.87, and 258.85–260.72 GHz in the rest-frame frequency. The frequency resolution is 977 kHz before channel averaging."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CS",
+     "transition": "5–4",
+     "rest_frequency": "244.93556 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| CS | 5–4 | 35 | 244.93556 |"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "6_6–5_5",
+     "rest_frequency": "258.25583 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| SO | 6$_6$–5$_5$ | 57 | 258.25583 |"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "5_0–4_0 A+",
+     "rest_frequency": "241.79143 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| CH$_3$OH | 5$_{0}$–4$_{0}$ A$^+$ | 35 | 241.79143 |"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "3–2",
+     "rest_frequency": "260.25533 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| H$^{13}$CO$^+$ | 3–2 | 25 | 260.25533 |"
+      }
+     ]
+    },
+    {
+     "species": "HDS (tentative)",
+     "transition": "1_0,1–0_0,0",
+     "rest_frequency": "244.55558 GHz",
+     "evidence": [
+      {
+       "loc": "4.4 Tentative Detection of HDS",
+       "quote": "HDS ($1_{0,1}-0_{0,0}$), which is located at 244.55558 GHz and has the upper-state energy of 11.7 K according to the CDMS catalogue"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "19 m to 1.1 km, 43 antennas",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "In total 43 antennas are used for the observations with the minimum and maximum baseline length of 19 m and 1.1 km."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.35–0.37″ × 0.22–0.23″, PA -25 deg",
+    "evidence": [
+     {
+      "loc": "2.3 Data reduction",
+      "quote": "The synthesized beam size is 0.35–0.37$\\ensuremath{''}$ $\\times$ 0.22–0.23$\\ensuremath{''}$ with a position angle of -25 degree"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "about 3″",
+    "evidence": [
+     {
+      "loc": "2.3 Data reduction",
+      "quote": "the maximum recoverable angular scale is about 3$\\ensuremath{''}$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "39 minutes",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "The total on-source integration time is 39 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "November 2016",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "Observations were carried out with ALMA in November 2016"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 4 program, PI T. Shimonishi",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "Cycle 4 program 2016.1.00394.S (PI T. Shimonishi)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Gemini South T-ReCS",
+     "provided": {
+      "value": "mid-infrared N-band imaging",
+      "evidence": [
+       {
+        "loc": "2.4 Complementary infrared data",
+        "quote": "high spatial resolution mid-infrared imaging data obtained with T-ReCS at the Gemini South telescope"
+       }
+      ]
+     }
+    },
+    {
+     "name": "AKARI IRC",
+     "provided": {
+      "value": "2–5 micron spectrum for ice absorption",
+      "evidence": [
+       {
+        "loc": "2.4 Complementary infrared data",
+        "quote": "a near-infrared 2–5 $\\mu$m spectrum obtained with the Infrared Camera (IRC) on board *AKARI*"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust mass absorption coefficient for grains with thin ice mantles",
+      "evidence": [
+       {
+        "loc": "3.3.2",
+        "quote": "is the mass absorption coefficient of dust grains coated by thin ice mantles as taken from (cite: Oss94)"
+       }
+      ]
+     },
+     "citation": "(cite: Oss94)"
+    },
+    {
+     "what": {
+      "value": "32S/33S = 40 from 33SO2 in an LMC hot core",
+      "evidence": [
+       {
+        "loc": "3.3.3",
+        "quote": "We here assume $^{32}$S/$^{33}$S = 40, based on the $^{33}$SO$_2$ observations towards a hot core in the LMC (cite: ST16b)."
+       }
+      ]
+     },
+     "citation": "(cite: ST16b)"
+    },
+    {
+     "what": {
+      "value": "12C/13C = 50 from SMC N27",
+      "evidence": [
+       {
+        "loc": "3.3.3",
+        "quote": "We here assume $^{12}$C/$^{13}$C = 50 according to HCO$^+$/H$^{13}$CO$^+$ observations of the N27 region in the SMC (cite: Hei99)."
+       }
+      ]
+     },
+     "citation": "(cite: Hei99)"
+    },
+    {
+     "what": {
+      "value": "NH/E(B-V) = 4.6e22 cm-2 mag-1 for SMC",
+      "evidence": [
+       {
+        "loc": "3.3.2",
+        "quote": "(cite: Mar89) reported $N_{\\mathrm{H}}$/$E(B-V)$ = 4.6 $\\times$ 10$^{22}$ cm$^{-2}$ mag$^{-1}$ for the SMC."
+       }
+      ]
+     },
+     "citation": "(cite: Mar89)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "calibration with CASA 4.7.0",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The calibration is done with CASA 4.7.0 and the imaging is with CASA 4.7.2."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J2357-5311 (flux), J2056-4714 (bandpass), J0102-7546 (gain)",
+     "evidence": [
+      {
+       "loc": "2.2 Observations",
+       "quote": "We use J2357-5311, J2056-4714, and J0102-7546 as a flux, bandpass, and gain calibrator, respectively."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA 4.7.2 imaging",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The calibration is done with CASA 4.7.0 and the imaging is with CASA 4.7.2."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in CASA",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The continuum emission is subtracted from the spectral data using the uvcontsub task in CASA."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "impbcor in CASA",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The primary beam correction is done by using the impbcor task in CASA."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.35–0.37″ × 0.22–0.23″, PA -25 deg",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The synthesized beam size is 0.35–0.37$\\ensuremath{''}$ $\\times$ 0.22–0.23$\\ensuremath{''}$ with a position angle of -25 degree"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Optically thin dust emission treatment for N(H2)",
+      "evidence": [
+       {
+        "loc": "3.3.2",
+        "quote": "based on the standard treatment of optically thin dust emission (cite: ST16b)"
+       }
+      ]
+     },
+     "from_reference": "(cite: ST16b)"
+    },
+    {
+     "what": {
+      "value": "Standard rotation diagram formulae",
+      "evidence": [
+       {
+        "loc": "3.3.1",
+        "quote": "We use the following formulae based on the standard treatment of the rotation diagram analysis (cite: Sut95; Gol99)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sut95; Gol99)"
+    },
+    {
+     "what": {
+      "value": "Ice column density derivation from AKARI spectrum",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "ice column densities are estimated to be $N$(H$_2$O ice) = (17 $\\pm$ 5) $\\times$ 10$^{17}$ cm$^{-2}$"
+       }
+      ]
+     },
+     "from_reference": "(cite: ST16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CLEAN/tclean parameters: weighting, robust, deconvolver, threshold, masks, cell and image size",
+    "Line-free channels used for uvcontsub and the continuum bandwidth",
+    "Whether the CASA pipeline or manual scripts were used, and flux calibrator flux values",
+    "Velocity ranges for moment maps and polynomial order of baseline fits",
+    "Rest frequency/velocity reference for channel maps and how rotation diagram uncertainties were derived (fitting method)",
+    "Method and parameters used for the ice column density and SED integration",
+    "Continuum frequency/bandwidth used for the 1200 micron photometry"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra and continuum at three positions",
+    "method": {
+     "value": "Spectra and continuum flux extracted from 0.34″ diameter regions at P1, P2, P3 after uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The spectra and continuum flux are extracted from the 0.34$\\ensuremath{''}$ (0.10 pc) diameter region centered at the three positions"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "velocity resolution 1.5 km/s",
+      "evidence": [
+       {
+        "loc": "2.3 Data reduction",
+        "quote": "The velocity resolution of the extracted spectra is 1.5 km s$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure line parameters",
+    "method": {
+     "value": "Single Gaussian fits with optional polynomial local baseline; direct integration for two narrow CH3OH lines; 3 sigma detection criterion",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "Line parameters are measured by fitting a single Gaussian profile to observed lines."
+      },
+      {
+       "loc": "3.1 Spectra",
+       "quote": "The detection criteria adopted here are the 3$\\sigma$ significance level"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Velocity coincidence with systemic velocity of nearby clouds",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "the velocity coincidence with the systemic velocity of nearby clouds (cite: Isr93)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "CH3OH rotation diagram",
+    "method": {
+     "value": "Rotation diagram under optically thin LTE, straight-line fit, spectroscopy from CDMS",
+     "evidence": [
+      {
+       "loc": "3.3.1",
+       "quote": "An optically thin condition and the local thermodynamic equilibrium (LTE) are assumed here."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Blended 241.90416 GHz line intensity divided by two",
+      "evidence": [
+       {
+        "loc": "3.3.1",
+        "quote": "the measured intensity of the CH$_3$OH line at 241.90416 GHz is divided by two"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin, LTE",
+      "evidence": [
+       {
+        "loc": "3.3.1",
+        "quote": "An optically thin condition and the local thermodynamic equilibrium (LTE) are assumed here."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Straight-line fit in the rotation diagram; marginal detections and upper limits included",
+     "evidence": [
+      {
+       "loc": "3.3.1",
+       "quote": "the data points for two marginal CH$_3$OH detections (5$_{0}$–4$_{0}$ E and 5$_{\\pm2}$–4$_{\\pm2}$ E, $Eu$ = 48 K and 61 K) are included in the straight-line fit for P2."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared fits excluding marginal detections/upper limits; these gave higher T and were incompatible with upper limits",
+     "evidence": [
+      {
+       "loc": "3.3.1",
+       "quote": "However, these fits are incompatible with upper limits, and the fitted line deviates upward from the points."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "H2 column density and mass from dust continuum",
+    "method": {
+     "value": "Optically thin dust emission with Ossenkopf & Henning opacity, dust-to-gas ratio 1/5 of 0.008",
+     "evidence": [
+      {
+       "loc": "3.3.2",
+       "quote": "We assume that the dust-to-gas mass ratio in the SMC is lower than the typical Galactic value of 0.008 by a factor of five according to the metallicity."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Td 12 K (P2), 13 K (P3), 10–20 K (P1)",
+      "evidence": [
+       {
+        "loc": "3.3.2",
+        "quote": "The dust temperature at P2 and P3 is assumed to be 12 K and 13 K according to the rotation temperatures of CH$_3$OH"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust temperature equals CH3OH rotation temperature at P2/P3",
+      "evidence": [
+       {
+        "loc": "3.3.2",
+        "quote": "The dust temperature at P2 and P3 is assumed to be 12 K and 13 K according to the rotation temperatures of CH$_3$OH"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "AV estimates compared with Ward et al. 2017 value of 16±8 mag",
+     "evidence": [
+      {
+       "loc": "3.3.2",
+       "quote": "(cite: War17) estimate $A_{V}$ = 16 $\\pm$ 8 mag for the YSO at P1"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Column densities and abundances of other molecules",
+    "method": {
+     "value": "Solve rotation-diagram equation for N at assumed T; isotopologues for optically thick lines",
+     "evidence": [
+      {
+       "loc": "3.3.3",
+       "quote": "Column densities of molecular species other than CH$_3$OH and H$_2$ are estimated by solving Equation [\\[Eq_rd2\\]](#Eq_rd2) for $N$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "32S/33S = 40; 12C/13C = 50",
+      "evidence": [
+       {
+        "loc": "3.3.3",
+        "quote": "We here assume $^{32}$S/$^{33}$S = 40"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.0 (calibration), 4.7.2 (imaging)",
+    "used_for": {
+     "value": "calibration, imaging, impbcor, uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.3 Data reduction",
+       "quote": "The calibration is done with CASA 4.7.0 and the imaging is with CASA 4.7.2."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "line identification and spectroscopic parameters",
+     "evidence": [
+      {
+       "loc": "3.1 Spectra",
+       "quote": "Spectral lines are identified with the aid of the Cologne Database for Molecular Spectroscopy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CH3OH N at P2",
+    "value": "3.0e14",
+    "uncertainty": "+5.1/-1.9 e14 (2σ)",
+    "units": "cm-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3.1",
+      "quote": "$N$ = (3.0 $^{+5.1}_{-1.9}$) $\\times$ 10$^{14}$ cm$^{-2}$ and $T_{\\mathrm{rot}}$ = 12.3 $^{+5.3}_{-2.9}$ K for Position 2"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH Trot at P2",
+    "value": "12.3",
+    "uncertainty": "+5.3/-2.9 (2σ)",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3.1",
+      "quote": "$T_{\\mathrm{rot}}$ = 12.3 $^{+5.3}_{-2.9}$ K for Position 2"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH N at P3",
+    "value": "3.2e14",
+    "uncertainty": "+4.5/-1.9 e14 (2σ)",
+    "units": "cm-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3.1",
+      "quote": "$N$ = (3.2 $^{+4.5}_{-1.9}$) $\\times$ 10$^{14}$ cm$^{-2}$ and $T_{\\mathrm{rot}}$ = 13.1 $^{+4.9}_{-2.8}$ K for Position 3"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH Trot at P3",
+    "value": "13.1",
+    "uncertainty": "+4.9/-2.8 (2σ)",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3.1",
+      "quote": "$T_{\\mathrm{rot}}$ = 13.1 $^{+4.9}_{-2.8}$ K for Position 3"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH fractional abundance P2",
+    "value": "4.7e-9",
+    "uncertainty": "+8.0/-3.0 e-9",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "(4.7 $^{+8.0}_{-3.0}$) $\\times$ 10$^{-9}$ at P2"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH fractional abundance P3",
+    "value": "1.5e-8",
+    "uncertainty": "+2.2/-0.9 e-8",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "1.5$^{+2.2}_{-0.9}$ $\\times$ 10$^{-8}$ at P3"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2) at P2",
+    "value": "6.3e22",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "6.3 $\\times$ 10$^{22}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum brightness P1, P2, P3",
+    "value": "0.30, 0.16, 0.06",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.3.2",
+      "quote": "The measured continuum brightnesses are 0.30 mJy/beam for P1, 0.16 mJy/beam for P2, and 0.06 mJy/beam for P3."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas mass YSO core / East core",
+    "value": "~80 / ~50",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3.2",
+      "quote": "about 80 M$_{\\ensuremath{\\odot}}$ for the YSO core and about 50 M$_{\\ensuremath{\\odot}}$ for the East core"
+     }
+    ]
+   },
+   {
+    "quantity": "YSO bolometric luminosity",
+    "value": "2e4",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "The bolometric luminosity of the YSO is estimated to be 2 $\\times$ 10$^4$ L$_{\\ensuremath{\\odot}}$ by integrating the SED from 1 $\\mu$m to 1200 $\\mu$m."
+     }
+    ]
+   },
+   {
+    "quantity": "N(HDS) at P2 (tentative)",
+    "value": "5e13",
+    "uncertainty": "1.3e13",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "$N$(HDS) = (5 $\\pm$ 1.3) $\\times$ 10$^{13}$ cm$^{-2}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CH3OH, SO2, H2CS, C33S and H13CN detected for the first time in the SMC",
+    "evidence": [
+     {
+      "loc": "3.1 Spectra",
+      "quote": "CH$_3$OH, SO$_2$, H$_2$CS, C$^{33}$S, and H$^{13}$CN are for the first time detected in the SMC."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is CH3OH gas present in a low-metallicity SMC dense core, and at what temperature?",
+    "experiment": "Band 6 ALMA lines with CH3OH rotation diagram",
+    "result": "Multiple CH3OH lines detected at P2, P3 with Trot ~12–13 K",
+    "finding": "CH3OH gas detected in SMC; cold gas ~10 K",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The gas temperature is estimated to be $\\sim$10 K based on the rotation analysis of CH$_3$OH lines."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is CH3OH gas abundance reduced at 0.2 solar metallicity?",
+    "experiment": "Compare East core abundances with Galactic cold sources",
+    "result": "(0.5–1.5)e-8, comparable or marginally higher",
+    "finding": "No metallicity-scaled depletion of CH3OH in East core",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "comparable with or marginally higher than those of similar cold sources in our Galaxy despite a factor of five lower metallicity in the SMC"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are the YSO core and East core chemically distinct?",
+    "experiment": "Compare abundances at P1, P2, P3",
+    "result": "CS, H2CS, SiO underabundant at P1; P2 and P3 correlated (r=0.89)",
+    "finding": "Chemical differentiation between the cores",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "These results imply a chemical differentiation between the YSO core and the East core."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Warm gas components (>=50 K) cannot be ruled out given limited frequency coverage",
+     "evidence": [
+      {
+       "loc": "3.3.1",
+       "quote": "the presence of warm gas components ($\\gtrsim$50 K) within the core can not be ruled out from the limited frequency coverage of the present observations."
+      }
+     ]
+    },
+    {
+     "value": "Abundances carry systematic uncertainty from assumed dust temperature",
+     "evidence": [
+      {
+       "loc": "3.3.2",
+       "quote": "derived molecular abundances entail the systematic uncertainty depending on the assumption of dust temperatures"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dust temperature set equal to CH3OH Trot; abundance depends strongly on it",
+    "Rotation diagram with few lines, marginal detections and large uncertainties",
+    "Single source, so generality to SMC is unclear",
+    "LTE and optically thin assumptions untested"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; archive data",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "ADS/JAO.ALMA$\\#$2016.1.00394.S"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "tclean parameters and masks",
+    "line-free channels for continuum subtraction",
+    "fitting method for rotation diagram uncertainties",
+    "ice column density method details"
+   ],
+   "estimated_data_volume_inferred": "~5–20 GB raw for one Band 6 execution block set",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear analysis equations, but imaging parameters and fitting details are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public archive data, simple analysis (Gaussian fits, rotation diagram) with numeric results."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: ST16b)",
+     "why": "Dust-continuum N(H2) treatment and isotope ratio"
+    },
+    {
+     "citation": "(cite: Sut95; Gol99)",
+     "why": "Rotation diagram formalism"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Oli13)",
+     "why": "Previous infrared study of the YSO"
+    },
+    {
+     "citation": "(cite: War17)",
+     "why": "Near-infrared study of the source"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "AKARI IRC",
+    "Gemini T-ReCS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c56d1b35f26a2fd37773e91b32c426ab",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:09",
+  "usage": {
+   "input_tokens": 31478,
+   "output_tokens": 9329,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.078729,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 73,
+  "quotes_ok": 73,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 48,
+   "rate": 0.615
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:34:51",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[1].fitting",
+    "old_value": "Single Gaussian"
+   }
+  ],
+  "dropped_items": []
+ }
+}

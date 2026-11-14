@@ -1,0 +1,295 @@
+{
+ "bibcode": "2023FaDi..245..164B",
+ "title": "Streamers feeding the SVS13-A protobinary system: astrochemistry reveals accretion shocks?",
+ "year": 2023,
+ "doi": "10.1039/D3FD00018D",
+ "arxiv_id": "2306.08539",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What is the spatial distribution and physical origin of deuterated water (HDO), sulfur dioxide (SO2), and formamide (NH2CHO) emission in the SVS13-A protobinary system and its accretion streamer?",
+ "alma_project_codes": [
+  "2018.1.01461.S"
+ ],
+ "data": {
+  "bands": "1.2 mm",
+  "arrays": "not stated",
+  "angular_resolution": "~50 au; 0.19\" x 0.13\" (PA=+5°) for continuum; 0.21\" x 0.14\" (207 x 136 mas, PA=+5°) for line cubes",
+  "sensitivity": "4.8 mJy beam^-1 km s^-1 using 122 kHz (0.15 km s^-1) channels; 8σ = 3.35 mJy beam^-1 in continuum; 5σ = 20 mJy beam^-1 km s^-1 (16 mJy beam^-1 km s^-1 in most blue/red-shifted channels) in channel maps"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "NH2CHO 12(1,12)–11(1,11) transition data, integrated intensities, rotational temperatures, column densities, and methanol systemic velocities",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "The analysis is supported by the NH 2 CHO 12(1,12)– 11(1,11) transition at 243.521044 GHz, previously published in [1] ."
+     },
+     {
+      "loc": "4 Results",
+      "quote": "The NH 2 CHO rotational temperatures and column densities derived in [1], are T rot =140 K and N tot =5.9(0.9) × 10 15 cm − 2 in VLA4A and T rot =170 K and N tot =1.4(0.3) × 10 15 cm − 2 in VLA4B."
+     },
+     {
+      "loc": "4 Results",
+      "quote": "The central panels correspond to the systemic velocities of VLA4A and VLA4B, which are +7.7 km s − 1 and +8.5 km s − 1, respectively, and have been determined from methanol emission [1] ."
+     }
+    ]
+   },
+   "citation": "[1]"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters and frequencies for HDO, SO2, and NH2CHO from JPL and CDMS databases",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Frequencies and spectroscopic parameters have been provided by 31 for HDO, and retrieved from the Jet Propulsion Laboratory molecular database (https://spec.jpl.nasa.gov/) [32] ."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "For SO 2 spectroscopic parameters are provided by the Cologne Database for Molecular Spectroscopy (http://www.astro.unikoeln.de/cdms/) [33] ."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "For NH 2 CHO spectroscopic parameters are provided by [34] and retrieved from the CDMS database."
+     }
+    ]
+   },
+   "citation": "[31], [32], [33], [34]"
+  },
+  {
+   "what": {
+    "value": "Binding energies (BE) of HDO, SO2 and NH2CHO over an amorphous water surface",
+    "evidence": [
+     {
+      "loc": "5.1 Binding energies and sublimation temperatures",
+      "quote": "Table 2 list the BE of HDO, SO 2 and NH 2 CHO over an amorphous water surface, as computed by [41] and [42] on a ice model of 60 water molecules."
+     }
+    ]
+   },
+   "citation": "[41], [42]"
+  },
+  {
+   "what": {
+    "value": "Pre-exponential factors (ν) of H2O and NH2CHO",
+    "evidence": [
+     {
+      "loc": "5.1 Binding energies and sublimation temperatures",
+      "quote": "computed by [39] following the [43] formalism (Table 5 of [39] )."
+     }
+    ]
+   },
+   "citation": "[39], [43]"
+  },
+  {
+   "what": {
+    "value": "Grain temperature at 120 au assuming L_bol = 55 L_sun",
+    "evidence": [
+     {
+      "loc": "Figure 5 caption",
+      "quote": "The green area shows the grain temperature derived by [44] assuming a bolometric luminosity of 55 L o and a distance from the center of 120 au (see text)."
+     }
+    ]
+   },
+   "citation": "[44]"
+  },
+  {
+   "what": {
+    "value": "HDO rotational temperature (150-260 K) and column density (4 x 10^17 cm^-2) from IRAM-30m data",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "The HDO line intensity in the brighter source, VLA4A, is consistent with the rotational temperature of 150-260 K and a column density of 4 × 10 17 cm − 2, derived using IRAM-30m data collecting the emission from both protostars [24] ."
+     }
+    ]
+   },
+   "citation": "[24]"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Verify continuum streamer structures and map molecular emission",
+   "method": "Image 1.2 mm continuum with different beam tapering to verify northern/southern streamers against cleaning artifacts; produce moment 0 maps (integrated over the whole velocity interval) and velocity-binned channel maps for HDO, SO2, and NH2CHO.",
+   "software": [
+    "IRAM-GILDAS"
+   ],
+   "key_parameters": [
+    "HDO velocity intervals: 2.4-4.4, 4.6-6.5, 6.7-8.7, 8.8-10.5, and 10.6-11.8 km s^-1",
+    "SO2 velocity intervals: 6.6-8.7, 8.9-10.4, and 10.5-11.9 km s^-1 (velocities < +6.5 km s^-1 excluded due to CH2DOH contamination)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spatial intensity profiles and peak integrated intensities",
+   "method": "Extract radial and vertical intensity profiles from the moment 0 maps along a horizontal axis connecting VLA4A and VLA4B and a vertical axis crossing the northern streamer; extract velocity-integrated line intensities (in T_MB scale) at the continuum peak positions of VLA4A and VLA4B and compute VLA4A/VLA4B intensity ratios.",
+   "software": [],
+   "key_parameters": [
+    "Source distance = 299 pc (0.4\" corresponds to 120 au)"
+   ],
+   "assumptions": [
+    "20% calibration uncertainty included in integrated intensity errors"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate thermal sublimation temperatures and compare with streamer dust temperatures",
+   "method": "Compute the half-life time t_sub = ln(2)/k_des and desorption rate k_des = ν_des exp(-BE/T) for HDO, SO2, and NH2CHO over timescales of 10^3 to 10^5 yr using quantum chemical binding energy distributions and pre-exponential factors; compare sublimation curves with expected dust grain temperature at ≥ 120 au.",
+   "software": [],
+   "key_parameters": [
+    "HDO: BE = 3605–6111 K, ν = 5 x 10^15 s^-1; SO2: BE = 2105–5827 K, ν = 2 x 10^16 s^-1; NH2CHO: BE = 5793–10960 K, ν = 4 x 10^18 s^-1"
+   ],
+   "assumptions": [
+    "HDO binding energy is equal to that of H2O",
+    "BE has a Gaussian distribution of values where the average represents where most molecules thermally sublimate",
+    "Spherical envelope-like distribution with L_bol = 55 L_sun at distance ≥ 120 au yields temperature < 100 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HDO 2(1,1)–2(1,2) velocity integrated line intensity in VLA4A",
+   "value": "349",
+   "uncertainty": "70",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HDO 2(1,1)–2(1,2) 241.561550 95 0.4 349 (70) 177 (36) 2.0 (0.6)"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO 2(1,1)–2(1,2) velocity integrated line intensity in VLA4B",
+   "value": "177",
+   "uncertainty": "36",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HDO 2(1,1)–2(1,2) 241.561550 95 0.4 349 (70) 177 (36) 2.0 (0.6)"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO 2(1,1)–2(1,2) intensity ratio VLA4A/VLA4B",
+   "value": "2.0",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "The intensity ratio for HDO is 2.0 (0.6), suggesting that water is distributed in both the protostars, even if it is more abundant in VLA4A."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "HDO 2(1,1)–2(1,2) 241.561550 95 0.4 349 (70) 177 (36) 2.0 (0.6)"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 5(2,4)–4(1,3) velocity integrated line intensity in VLA4A",
+   "value": ">=126",
+   "uncertainty": "not stated",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SO 2 c 5(2,4)–4(1,3) 241.615797 24 5.7 ≥ 126 ≥ 175"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 5(2,4)–4(1,3) velocity integrated line intensity in VLA4B",
+   "value": ">=175",
+   "uncertainty": "not stated",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SO 2 c 5(2,4)–4(1,3) 241.615797 24 5.7 ≥ 126 ≥ 175"
+    }
+   ]
+  },
+  {
+   "quantity": "Distance of northern streamer molecular emission from protostars",
+   "value": ">=120",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Deuterated water reveals an additional emitting component spatially coincident with the dust accretion streamer, at a distance ≥ 120 au from the protostars, and at blue-shifted velocities ( > 3 km s − 1 from the systemic velocities)."
+    },
+    {
+     "loc": "6 Conclusions",
+     "quote": "The streamer traced by HDO is located at a distance ≥ 120 au from the VLA4A and VLA4B protostars."
+    }
+   ]
+  },
+  {
+   "quantity": "Blue-shifted velocity offset of HDO streamer component from systemic velocity",
+   "value": ">=3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Deuterated water reveals an additional emitting component spatially coincident with the dust accretion streamer, at a distance ≥ 120 au from the protostars, and at blue-shifted velocities ( > 3 km s − 1 from the systemic velocities)."
+    },
+    {
+     "loc": "4 Results",
+     "quote": "The overall line distribution confirms what previously reported by [1] but the HDO emission highlights an additional structure (i) with a peak spatially shifted with respect to the protostars position, and (ii) at velocities blue-shifted by ≥ 3 km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Pre-exponential factor ν for SO2",
+   "value": "2e16",
+   "uncertainty": "not stated",
+   "units": "s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1 Binding energies and sublimation temperatures",
+     "quote": "The pre-exponential factor of SO 2 was estimated by us using the formalism by [43] ."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "SO 2 2105 – 5827 2 × 10 16"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used for initial calibration",
+  "GILDAS version and specific sub-packages (e.g., MAPPING) used for self-calibration and imaging",
+  "Exact frequency ranges of line-free continuum channels",
+  "Self-calibration solution intervals, number of iterations, and SNR thresholds",
+  "Imaging weighting scheme (e.g., Briggs robust parameter) and deconvolution algorithm (e.g., Hogbom, Clark, MX)",
+  "Pixel cell size and image dimensions",
+  "Exact velocity range integrated over to produce the full moment 0 maps in Figure 2",
+  "Exact position angles and slice widths used to extract the radial and vertical intensity profiles in Figure 3"
+ ],
+ "missing_for_reproduction": [
+  "Exact self-calibration parameters in GILDAS (solution intervals, SNR thresholds, number of iterations)",
+  "Exact imaging and deconvolution parameters in GILDAS (weighting, robust value, cleaning thresholds, support masks)",
+  "Exact velocity integration range used for the full moment 0 maps in Figure 2",
+  "Exact coordinates/position angles of the slices used for the radial and vertical profiles in Figure 3"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project code (2018.1.01461.S), calibrators, spectral transitions, velocity bins, and sublimation equations/parameters (Table 2) are clearly stated. However, self-calibration and imaging parameters in GILDAS are inherited from Bianchi et al. (2022) [1] and not detailed here, and exact moment-0 integration ranges and profile slice geometries are omitted.",
+ "rediscovery_reason": "Public ALMA dataset (2018.1.01461.S) with clear target coordinates, specific molecular transitions (HDO at 241.561550 GHz, SO2 at 241.615797 GHz), and concrete numeric answer keys (peak integrated intensities and VLA4A/VLA4B intensity ratios in Table 1, and sublimation curves from analytic equations).",
+ "source_card": "cards/2023FaDi..245..164B/sonnet/card.md"
+}

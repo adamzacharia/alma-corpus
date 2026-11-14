@@ -1,0 +1,234 @@
+{
+ "bibcode": "2016A&A...590A.127W",
+ "title": "Resolving the extended atmosphere and the inner wind of Mira (o Ceti) with long ALMA baselines",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201527867",
+ "arxiv_id": "1603.03371",
+ "fields": [
+  "evolved_stars"
+ ],
+ "question": "What are the physical conditions (density, temperature, SiO/H2O abundance, infall/outflow velocities) in Mira's extended atmosphere and inner wind, as probed by long-baseline ALMA continuum and SiO/H2O lines, and how do hydrodynamical models compare?",
+ "alma_project_codes": [
+  "2011.0.00014.SV"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6 observed; Band 6 (229 GHz) lines analysed",
+  "arrays": "not stated",
+  "angular_resolution": "~30 mas at 220 GHz",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CODEX o54 model atmosphere structures (density, temperature, velocity) provided by developers",
+    "evidence": [
+     {
+      "loc": "Kinematics",
+      "quote": "From the CODEX developers we have obtained the atmospheric structure information of the `o54` model series"
+     }
+    ]
+   },
+   "citation": "Ireland et al. 2008, 2011; Scholz et al. 2014 (cite: ireland2008; ireland2011; scholz2014)"
+  },
+  {
+   "what": {
+    "value": "SiO-He collisional rate coefficients (scaled by 1.38 for H2)",
+    "evidence": [
+     {
+      "loc": "SiO molecular data",
+      "quote": "extrapolated from the scaled (by 1.38) rate coefficients between SiO–He collisions as derived by (cite: dayou2006)"
+     }
+    ]
+   },
+   "citation": "Dayou & Balança 2006 (cite: dayou2006)"
+  },
+  {
+   "what": {
+    "value": "Stellar radius R* = 12.3 mas",
+    "evidence": [
+     {
+      "loc": "Previous observations",
+      "quote": "we adopt the value of $R_{\\star}$ to be $12.3\\,{\\rm mas}$ (or $292\\,R_{\\astrosun}$) as determined by (cite: perrin2004)"
+     }
+    ]
+   },
+   "citation": "Perrin et al. 2004 (cite: perrin2004)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and fit continuum visibilities",
+   "method": "Fit uniform disk / Gaussian models to Band 6 continuum visibilities for Mira A and B",
+   "software": [
+    "Miriad uvfit",
+    "CASA uvmodelfit",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image SiO and H2O line cubes and extract spectra",
+   "method": "clean without continuum subtraction; spectra extracted at centre and at radii 32-160 mas along PA 0, 90, 180, 270 deg",
+   "software": [
+    "CASA clean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Radiative transfer modelling of SiO and H2O spectra",
+   "method": "1-D RATRAN Monte Carlo models with power-law density/temperature, SiO two-step abundance, pseudo-continuum core, mixed infall/outflow velocity (Model 3); models convolved with the clean beam and compared by eye",
+   "software": [
+    "RATRAN",
+    "NumPy",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "R_continuum = 3.60e13 cm, pseudo-continuum T = 2600 K",
+    "SiO abundance drop at r_cond = 1.0e14 cm (~5 R*), outer ~1% of inner; H2O abundance 5.0e-6 (5.0e-5 near photosphere)"
+   ],
+   "assumptions": [
+    "Collisional partner purely rotational ground-state H2; spherical symmetry; distance 110 pc; R* = 12.3 mas"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test CODEX hydrodynamical model structures",
+   "method": "Use CODEX o54 density (scaled by 1e4), temperature and velocity as RATRAN inputs; modify radio-continuum radius to hide strong shocks",
+   "software": [
+    "RATRAN"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "m_part = 0.7 m_H2 + 0.3 m_He, helium mass fraction 0.3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mira A radio photosphere brightness temperature (uniform disk)",
+   "value": "2611",
+   "uncertainty": "51 K (565 K incl. flux calibration)",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum",
+     "quote": "The brightness temperature of the uniform disk model of Mira A is found to be $2611 \\pm 51\\,{\\rm K}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A total continuum flux at 229.6 GHz",
+   "value": "149.70",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum",
+     "quote": "the total flux of Mira A is $149.70 \\pm 0.04\\,{\\rm mJy}$ and that of Mira B is $11.19 \\pm 0.04\\,{\\rm mJy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 spectral index",
+   "value": "1.82",
+   "uncertainty": "0.33",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum",
+     "quote": "we derive an independent spectral index (using the spectral line windows in Band 6 only) of $1.82 \\pm 0.33$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 1.3 mm photosphere radius",
+   "value": "22.90",
+   "uncertainty": "0.05",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Molecular layer",
+     "quote": "$R_{\\rm 229\\,GHz} = 22.90 \\pm 0.05\\,{\\rm mas}$ ($543\\,R_{\\astrosun}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Shock velocity above radio photosphere",
+   "value": "<~12",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Preferred model",
+     "quote": "with the shock velocity of $\\Delta V \\lesssim 12\\,\\ensuremath{\\,{\\rm km}\\,{\\rm s}^{-1}}$, near the radio photosphere of Mira"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO depletion radius and gas temperature",
+   "value": ">=4 R* (preferred 1.0e14 cm ~5 R*), T<~600 K",
+   "uncertainty": "not stated",
+   "units": "R*, K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust shells",
+     "quote": "gas-phase SiO starts to deplete at a radius of *at least* $4\\,R_{\\star}$ and a gas temperature of ${\\lesssim}600\\,{\\rm K}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas density just beyond radio photosphere",
+   "value": "1e12-1e13",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "The gas density reaches $10^{12}$–$10^{13}\\,{\\rm cm}^{-3}$ just beyond the radio photosphere."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum infall / expansion speeds",
+   "value": "~7.3 infall, ~4.0 expansion",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Preferred model",
+     "quote": "The infall velocity immediately above this expanding layer is about $7.3\\,\\ensuremath{\\,{\\rm km}\\,{\\rm s}^{-1}}$, and the expansion velocity below this layer is about $4.0\\,\\ensuremath{\\,{\\rm km}\\,{\\rm s}^{-1}}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free channel ranges used in uvcontsub (only said to differ from CASA Guide script)",
+  "Exact clean parameters (niter, masks, spw/channel regridding) and which self-cal tables",
+  "Full numerical RATRAN input profiles (density, T, velocity, abundance power-law indices) for Model 3",
+  "RATRAN grid, photon count and convergence settings",
+  "Formal fitting/goodness-of-fit method for the models (fit by eye, no stated metric)",
+  "CODEX file contents are private (provided by developers)"
+ ],
+ "missing_for_reproduction": [
+  "Exact RATRAN model input tables",
+  "CODEX model files (privately supplied)",
+  "Line-free channel ranges"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public SV data and detailed imaging settings, but modelling is empirical with unpublished input profiles and no fit statistics.",
+ "rediscovery_reason": "Public data, continuum fits and imaging recipe are numeric and redoable; the radiative transfer part is only partly reproducible.",
+ "source_card": "cards/2016A%26A...590A.127W/sonnet/card.md"
+}

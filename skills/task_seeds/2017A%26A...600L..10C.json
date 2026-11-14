@@ -1,0 +1,209 @@
+{
+ "bibcode": "2017A&A...600L..10C",
+ "title": "ALMA survey of massive cluster progenitors from ATLASGAL. Limited fragmentation at the early evolutionary stage of massive clumps",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201629754",
+ "arxiv_id": "1703.03273",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do infrared-quiet massive ATLASGAL clumps (d ≤ 4.5 kpc) fragment from 0.3 pc to 0.06 pc scales at an early evolutionary stage?",
+ "alma_project_codes": [
+  "2013.1.00960.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "ALMA 7m array (ACA), 9 to 11 antennas, Cycle 2",
+  "angular_resolution": "synthesized beam 3.5'' to 4.6'' (geometric mean)",
+  "sensitivity": "median rms 54 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Sample selection, clump masses, distances, T_d=18 K for clumps",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Column 10 gives the distance from Csengeri et al. (2017)."
+     }
+    ]
+   },
+   "citation": "Csengeri et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity κ870µm = 0.0185 g cm-2 (gas-to-dust 100)",
+    "evidence": [
+     {
+      "loc": "4. Results and analysis",
+      "quote": "κ 870µm = 0.0185g cm −2 from Ossenkopf & Henning (1994) accounting for a gas-to-dust ratio of 100"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning (1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make line-free continuum images",
+   "method": "Calibrate in CASA, average line-free channels, CLEAN with robust 0.5, primary beam correct",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract compact sources",
+   "method": "2D Gaussian fitting with Gaussclumps, sources down to ~7σ",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive core masses",
+   "method": "Optically thin dust: M = S d² κ⁻¹ B(Td)⁻¹",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 25 K for cores (factor of two mass uncertainty); κ870 = 0.0185 g cm-2; gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit core mass distribution slope",
+   "method": "Least-square power-law fit above 50 Msun completeness limit; Monte Carlo over Td",
+   "software": [],
+   "key_parameters": [
+    "not stated"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare with Jeans mass, turbulence and magnetic support",
+   "method": "Thermal Jeans mass, Turbulent Core model, magnetic critical mass (Bertoldi & McKee)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of fragments",
+   "value": "124",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "A total number of 124 fragments down to a ∼7 σ rms noise level"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fragments per clump",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "This gives on average, N¯ fr =3 sources per clump"
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass slope α",
+   "value": "-1.01",
+   "uncertainty": "0.20",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "gives α = −1.01 ± 0.20"
+    }
+   ]
+  },
+  {
+   "quantity": "Monte Carlo slope",
+   "value": "1.01",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "the normal temperature distribution gives α MC =1.01±0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core SDC335-MM1",
+   "value": "~400",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "the most massive core with ∼400 M ⊙ within a deconvolved FWHM size of 0.054pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean core mass",
+   "value": "~63",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "The extracted cores have a mean mass of ∼63 M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux recovered vs ATLASGAL",
+   "value": "16-47",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. Results and analysis",
+     "quote": "We recover between 16-47% of the flux"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which channels were line-free for each source",
+  "Cell size and image size",
+  "CLEAN threshold, masks and iteration count",
+  "Exact Gaussclumps settings",
+  "Flux calibrator assignment details and flux scale uncertainty",
+  "Monte Carlo sample count and convergence criterion",
+  "Clump masses used for CFE (from Csengeri et al. 2017)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging cell/image size and CLEAN threshold",
+  "Line-free channel selection",
+  "Gaussclumps parameters",
+  "Clump masses from Csengeri et al. 2017"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short letter; main steps and numbers given, but imaging and extraction parameters are sparse.",
+ "rediscovery_reason": "Data from a single public project; the recipe is simple and the results are numeric (mass table, slope).",
+ "source_card": "cards/2017A%26A...600L..10C/sonnet/card.md"
+}

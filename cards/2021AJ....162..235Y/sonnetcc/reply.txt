@@ -1,0 +1,555 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "Conclusion", "quote": "A new upper limit on pure rotational CO emission in ALMA data is presented, but is relatively insensitive."},
+{"loc": "abstract", "quote": "We present far- and near-ultraviolet absorption spectroscopy of the $\\sim$23 Myr edge-on debris disk surrounding the A0V star $\\eta$ Telescopii"}
+],
+"fields": ["debris_disks", "astrochemistry"],
+"question": {
+"value": "Is the circumstellar gas in the eta Tel debris disk bound or outflowing, what is its elemental composition (C/Fe, C/O), and how does stellar type set its dynamics (ALMA is used only for CO and dust upper limits)?",
+"evidence": [
+{"loc": "Introduction", "quote": "Thus, examining the gas in debris disks offers the chance to probe the chemical composition of the young extrasolar planetesimals themselves."},
+{"loc": "abstract", "quote": "The CS absorption components are blueshifted by $-16.9\\pm$2.6 km s$^{-1}$ in the star’s reference frame, indicating that they are outflowing in a radiatively driven disk wind."}
+]
+},
+"targets": [
+{
+"name": "eta Tel A (HD 181296, HR 7329)",
+"details": [
+{"loc": "Introduction", "quote": "is a young A0V star at 47.36 pc (cite: GaiaDR2)"},
+{"loc": "4.1 Radial velocity of the ISM", "quote": "the $\\eta$ Tel line of sight ($l=342.90^{\\circ}$, $b=-26.21^{\\circ}$, $d=47.36$ pc; (cite: Brown2018))"}
+],
+"coordinates": "Galactic l=342.90 deg, b=-26.21 deg (equatorial coordinates not stated)",
+"redshift_or_distance": "47.36 pc",
+"distance_source": "Gaia DR2 (cite: GaiaDR2)"
+}
+],
+"alma_project_codes": [
+{"code": "2013.1.01147.S", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "$\\eta$ Tel was observed with ALMA during Cycle 2 on 2015 July 23 and September 17 (2013.1.01147.S)."},
+{"loc": "Acknowledgments", "quote": "This paper also makes use of the following ALMA data: ADS/JAO.ALMA #2013.1.01147.S (PI: S. Pérez)."}
+]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "Two high-resolution spectral windows (12CO J=2-1 at 230.5 GHz; 220.4 GHz), each 3840 channels over 58593.8 kHz, 30.52 kHz resolution", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "one spectral window centered on the $^{12}$CO $J=2-1$ line at 230.5 GHz and a second centered at 220.4 GHz, both with 3840 channels covering 58593.8 kHz total bandwidth for a spectral resolution of 30.52 kHz"}
+]},
+{"field": "continuum_bandwidth", "value": "Two continuum windows at 218.5 and 233.0 GHz, 128 channels covering 2 GHz each (low spectral resolution)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "The remaining two spectral windows, centered at 218.5 and 233.0 GHz, were intended to detect only continuum emission at low spectral resolution (128 channels covering 2 GHz)."}
+]},
+{"field": "baselines", "value": "SB 1: 44 antennas, 15.1 m to 1.6 km; SB 2: 34 antennas, 41.4 m to 2.1 km", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "with 44 antennas in the array spanning baselines of 15.1 m to 1.6 km and good weather"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "The second SB had only 34 antennas with baselines between 41.4 m and 2.1 km"}
+]},
+{"field": "angular_resolution", "value": "beam 0.29 x 0.22 arcsec (natural weighting)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "for a beam size of $0.29\\ensuremath{''}\\times0.22\\ensuremath{''}$"}
+]},
+{"field": "sensitivity", "value": "continuum rms 0.051 mJy/beam; 12CO rms 11 mJy/beam in 0.2 km/s channels", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the continuum RMS is $0.051$ mJy beam$^{-1}$"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "The RMS for the $^{12}$CO line is $11$ mJy beam$^{-1}$ measured in channels with width $0.2$ km s$^{-1}$."}
+]},
+{"field": "time_on_source", "value": "14 min total on source (two SBs)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Between the two SBs, the total on-source integration time was 14 min."}
+]},
+{"field": "observing_dates", "value": "2015 July 23 and September 17 (Cycle 2)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "$\\eta$ Tel was observed with ALMA during Cycle 2 on 2015 July 23 and September 17 (2013.1.01147.S)."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA data from project 2013.1.01147.S, PI S. Pérez (not the authors)", "evidence": [
+{"loc": "Acknowledgments", "quote": "This paper also makes use of the following ALMA data: ADS/JAO.ALMA #2013.1.01147.S (PI: S. Pérez)."}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "230.5 GHz", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "one spectral window centered on the $^{12}$CO $J=2-1$ line at 230.5 GHz"}
+]}
+],
+"other_facilities": [
+{"name": "HST/STIS (program HST-GO-14207)", "provided": {"value": "Far- and near-UV echelle absorption spectra (E140H, E230H) of eta Tel, two visits in 2016 October; main dataset of the paper", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "The spectra were obtained with the E140H and E230H echelle gratings"},
+{"loc": "Acknowledgments", "quote": "These observations are associated with program HST-GO-14207 (PI: A. Roberge)."}
+]}},
+{"name": "Gemini South T-ReCS", "provided": {"value": "Earlier mid-IR imaging (11.7 and 18.3 micron) from which the disk geometry is taken", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the $\\eta$ Tel disk geometry inferred from imaging observations with T-ReCS on Gemini South at 11.7 and 18.3 $\\mu$m"}
+]}},
+{"name": "Gaia DR2", "provided": {"value": "Distance to eta Tel (47.36 pc)", "evidence": [
+{"loc": "Introduction", "quote": "is a young A0V star at 47.36 pc (cite: GaiaDR2)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Disk geometry (edge-on, inclination within 20 deg of edge-on) from Gemini T-ReCS imaging, used to assume the emission is spread over ~7 ALMA beams", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Assuming the $\\eta$ Tel disk geometry inferred from imaging observations with T-ReCS on Gemini South at 11.7 and 18.3 $\\mu$m (cite: Smith2009)"}
+]}, "citation": "Smith2009"},
+{"what": {"value": "Dust opacity kappa = 2.3 cm^2 g^-1", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "We use a dust opacity of $\\kappa_\\nu = 2.3$ cm$^2$ g$^{-1}$ as is common in the literature (cite: Beckwith1990)"}
+]}, "citation": "Beckwith1990"},
+{"what": {"value": "Neutral fractions n0/n+ for CS gas around an A0V star (ionization balance)", "evidence": [
+{"loc": "5.1 Ionization Balance in the CS Gas", "quote": "The neutral fractions (${n_0}/{n_+}$) from (cite: Fernandez:2006) appear in Table"}
+]}, "citation": "Fernandez:2006"},
+{"what": {"value": "Solar relative elemental ratios", "evidence": [
+{"loc": "5.3 Relative Elemental Abundances", "quote": "along with the solar relative elemental ratios from (cite: Lodders2003)"}
+]}, "citation": "Lodders2003"},
+{"what": {"value": "Vacuum rest wavelengths, oscillator strengths and damping constants for the Voigt profiles", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "The vacuum rest wavelengths, oscillator strengths, and radiation damping constants used in constructing the Voigt profiles are from (cite: Morton1994) and (cite: Morton2003)."}
+]}, "citation": "Morton1994; Morton2003"},
+{"what": {"value": "Stellar radius 1.61 Rsun", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "Assuming a stellar radius of 1.61 R$_{\\odot}$ (cite: Rhee2007)"}
+]}, "citation": "Rhee2007"}
+],
+"simulations_or_models_as_data": [
+{"value": "Castelli-Kurucz synthetic stellar spectrum (solar metallicity, Teff = 9750 K) used for the stellar flux in the radiation pressure calculation", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "we modeled the flux from the star using a synthetic spectrum from the Castelli-Kurucz atlas"},
+{"loc": "6.1 Radiation Pressure", "quote": "with solar metallicity and $T_\\mathrm{eff} = 9750$ K"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Archive reduction scripts for the project were run in CASA to regenerate calibrated visibilities", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "We executed the associated reduction scripts in"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "on the raw visibilities in order to regenerate the calibrated visibilities"}
+]},
+{"field": "casa_version", "value": "4.3.1 (given for the clean imaging; version used for calibration scripts not stated)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "(version 4.3.1)"}
+]},
+{"field": "archive_products_used_as_is", "value": "No: calibrated visibilities were regenerated by executing the delivered reduction scripts", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "on the raw visibilities in order to regenerate the calibrated visibilities"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA clean task (CASA 4.3.1) for all deconvolution and imaging", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "All deconvolution and imaging was performed using the"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "(version 4.3.1)"}
+]},
+{"field": "weighting_robust", "value": "natural weighting", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "With natural weighting, the continuum RMS is $0.051$ mJy beam$^{-1}$"}
+]},
+{"field": "final_beam", "value": "0.29 x 0.22 arcsec", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "for a beam size of $0.29\\ensuremath{''}\\times0.22\\ensuremath{''}$"}
+]},
+{"field": "final_rms", "value": "continuum 0.051 mJy/beam; 12CO 11 mJy/beam in 0.2 km/s channels", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the continuum RMS is $0.051$ mJy beam$^{-1}$"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "The RMS for the $^{12}$CO line is $11$ mJy beam$^{-1}$ measured in channels with width $0.2$ km s$^{-1}$."}
+]}
+],
+"inherited": [
+{"what": {"value": "Disk geometry assumed for the ALMA upper limits (~7 beams) taken from Gemini T-ReCS imaging", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Assuming the $\\eta$ Tel disk geometry inferred from imaging observations with T-ReCS on Gemini South at 11.7 and 18.3 $\\mu$m (cite: Smith2009)"}
+]}, "from_reference": "Smith2009"},
+{"what": {"value": "Dust opacity 2.3 cm^2 g^-1 adopted as common in the literature", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "We use a dust opacity of $\\kappa_\\nu = 2.3$ cm$^2$ g$^{-1}$ as is common in the literature (cite: Beckwith1990)"}
+]}, "from_reference": "Beckwith1990"},
+{"what": {"value": "Radiation pressure computed in the same manner as Beust & Tagger", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "computing the total radiation pressure in the same manner as (cite: Beust1993)"}
+]}, "from_reference": "Beust1993"}
+],
+"unstated_but_needed": [
+"CASA version used to run the ALMA reduction scripts (only the clean version 4.3.1 is given) and whether the scripts were modified",
+"Imaging parameters: cell size, image size, niter/threshold, masking, primary-beam correction, and which spectral windows/channels formed the continuum image",
+"Whether the 12CO cube was continuum-subtracted and which channels were line-free; the beam and spectral smoothing of the CO cube",
+"Whether the two scheduling blocks were combined for the image statistics or only SB 1 was used",
+"Region/method used to measure the continuum and CO rms, and the disk position angle and extent used for the ~7 beams assumption",
+"Velocity width over which the 12CO integrated-intensity upper limit was computed",
+"Distance used in the dust-mass equation (47.36 pc is quoted elsewhere but not restated for this step) and how the 1.1 mJy limit follows from 0.051 mJy/beam and 7 beams",
+"Where to obtain the exact STIS exposures (the sentence giving the MAST location is blank in the text)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Combine the HST/STIS spectra into a master spectrum",
+"method": {"value": "Individual spectra from both visits interpolated onto a common wavelength grid and averaged with weights; echelle order edges excised; scattered light subtracted by hand for saturated O I and C II lines", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "first interpolating all onto a common wavelength grid and then performing a weighted average"},
+{"loc": "2 Observations and Data Reduction", "quote": "We manually estimated and subtracted additional inter-order scattered light for strongly saturated absorption features"}
+]},
+"software": ["CALSTIS"],
+"key_parameters": [
+{"value": "Default CALSTIS v3.4.2 pipeline; first and last 10 grid points of each E140H order excised", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "The data were calibrated with the default CALSTIS v3.4.2 pipeline."},
+{"loc": "2 Observations and Data Reduction", "quote": "The first and last 10 grid points of each E140H echelle order were excised to avoid introduction of spurious features by edge effects"}
+]}
+],
+"assumptions": [
+{"value": "An ~8% inter-visit flux offset in the c1598 spectra was not corrected because the analysis is relative to the continuum", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "We did not correct this flux offset, as our absorption line analysis is performed relative to the continuum flux."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Checked for variability between visits; none besides one mystery feature", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "No significant variability in the spectra was seen"}
+]}
+},
+{
+"order": 2,
+"goal": "Fit UV absorption lines for velocities and column densities",
+"method": {"value": "Each lower-level line set modeled as a Voigt profile (v_r, N_l, b), convolved with the instrumental LSF and multiplied by a 2nd-order polynomial stellar continuum; extra IS component where needed; fit to the master spectrum per species", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "absorption lines arising from the different lower energy levels ($E_l$) were each modeled as a Voigt line profile"},
+{"loc": "3.1 Atomic and Ionic Species", "quote": "then multiplied by a model for the stellar continuum in the vicinity of the absorption feature (2nd order polynomial)"}
+]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "24-100 walkers depending on number of free parameters", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "we used $24-100$ walkers, depending on the number of free parameters"}
+]},
+{"value": "Chains run for at least 50 autocorrelation times (10^4-10^6 steps), burn-in removed by inspection of walkers", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "We ran the chains for at least 50 autocorrelation times (10$^4-10^6$ steps) to approximate convergence"},
+{"loc": "3.1 Atomic and Ionic Species", "quote": "removed an appropriate burn-in period based on the behavior of the walkers"}
+]}
+],
+"assumptions": [
+{"value": "Lines from the same lower level share N_l; each velocity component shares one b", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "Lines arising from the same $E_l$ of each species were assumed to have the same $N_l$, and each velocity component was assumed to have the same $b$."}
+]}
+],
+"fitting": {"value": "emcee affine-invariant ensemble sampler; Gaussian likelihood; uniform priors on all parameters; medians and 68% intervals reported", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "assumed a Gaussian likelihood and uniform priors for all parameters"},
+{"loc": "3.1 Atomic and Ionic Species", "quote": "The final models for each feature were fit to the master spectrum using a Markov Chain Monte Carlo (MCMC) affine-invariant ensemble sampler"}
+]},
+"validation": {"value": "Best-fit models and residuals normalized by data uncertainties shown for every species", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "show the data, best-fitting models, and residuals normalized by the data uncertainties"}
+]}
+},
+{
+"order": 3,
+"goal": "Set 3-sigma upper limits on CO column density from STIS",
+"method": {"value": "Models of the CO A-X absorption bands fit like the atomic lines, either with free column densities per rotational level or with a Boltzmann population", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "We calculated $3 \\sigma$ upper limits on the line of sight CO column densities by producing models of the absorption bands similar to those for the atomic lines and fitting them to the data to determine confidence intervals."}
+]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "v_r allowed -26 to -21 km/s; b allowed 0.1 to 5 km/s; T_ex allowed 1 to 500 K", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "The radial velocity was allowed to vary between $-26$ and $-21$ km s$^{-1}$ and $b$ was allowed to vary between 0.1 and 5 km s$^{-1}$."},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "$T_{\\rm ex}$ was allowed to vary between 1 and 500 K"}
+]}
+],
+"assumptions": [
+{"value": "Single velocity component in the CO models", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "In both cases, only a single velocity component was included in the models."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Measure the stellar radial velocity",
+"method": {"value": "Rotationally broadened Gaussian fit to the stellar Al II 1670 A photospheric line", "evidence": [
+{"loc": "4.2 Radial velocity of the star", "quote": "we fitted a rotationally broadened Gaussian model to a clean, single stellar photospheric absorption line in the STIS data"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Free parameters: v_star, FWHM, v sin i, linear limb darkening, within a range of reasonable values", "evidence": [
+{"loc": "4.2 Radial velocity of the star", "quote": "We allowed all model parameters ($v_\\star$, FWHM, $v \\sin i$, and linear limb darkening) to vary within a range of reasonable values"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with literature stellar RVs", "evidence": [
+{"loc": "4.2 Radial velocity of the star", "quote": "Our measured radial velocity is consistent with (cite: Rebollido:2018) and (cite: Rebollido:2020)."}
+]}
+},
+{
+"order": 5,
+"goal": "Derive total elemental column densities and abundance ratios",
+"method": {"value": "Ionization-balance fractions convert the measured ionization state into total element columns; errors and ratios from Monte Carlo draws of the fitted posteriors", "evidence": [
+{"loc": "5.1 Ionization Balance in the CS Gas", "quote": "Therefore, we make use of ionization balance calculations for the circumstellar environment of an A0V star."},
+{"loc": "5.2 Total Elemental Column Densities", "quote": "we determined the error bars for the total elemental column densities using a Monte Carlo routine"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "10^6 random draws from the marginalized posteriors to form each ratio", "evidence": [
+{"loc": "5.3 Relative Elemental Abundances", "quote": "10$^6$ random draws were made from the marginalized probability distributions representing the total C, N, O, Mg, Al, Si, S, Mn, and Fe column densities to construct a probability distribution for each ratio."}
+]}
+],
+"assumptions": [
+{"value": "Neutral fractions from Fernandez et al. 2006 for n_e=100 and d=100 au; N and O taken as fully neutral; Mn uses the Mg neutral fraction", "evidence": [
+{"loc": "Table 2 notes", "quote": "$n_e$=100 cm$^{-2}$ and $d$=100 au are assumed."},
+{"loc": "5.1 Ionization Balance in the CS Gas", "quote": "we adopted the measured N I and O I column densities as the total N and O column densities"},
+{"loc": "5.1 Ionization Balance in the CS Gas", "quote": "Therefore, we adopted the calculated Mg neutral fraction value from (cite: Fernandez:2006) for Mn."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Measured C I and C II columns used as a check on the ionization balance", "evidence": [
+{"loc": "5.1 Ionization Balance in the CS Gas", "quote": "provide a check on the ionization balance calculations"}
+]}
+},
+{
+"order": 6,
+"goal": "Compute radiation pressure ratio beta and compare gas velocities with the star",
+"method": {"value": "Beta = radiation force from a synthetic stellar spectrum and Kurucz line lists divided by gravity; CS radial velocities compared with beta and the stellar RV", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "we modeled the flux from the star using a synthetic spectrum from the Castelli-Kurucz atlas"},
+{"loc": "6.2 A Radiatively Driven Disk Wind", "quote": "we compare the radial velocities of the CS absorbers"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Synthetic spectrum with solar metallicity and Teff = 9750 K; stellar radius 1.61 Rsun; distance 47.36 pc; log g = 4.2", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "with solar metallicity and $T_\\mathrm{eff} = 9750$ K"},
+{"loc": "6.1 Radiation Pressure", "quote": "We assume log $g_* = 4.2$ based on expectations for A0V stars"}
+]}
+],
+"assumptions": [
+{"value": "Only E_l = 0 levels populated for the beta values; beta > 0.5 means ejection on hyperbolic orbits", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "we assume that only the $E_l = 0$ cm$^{-1}$ levels are populated"},
+{"loc": "6.1 Radiation Pressure", "quote": "Particles experiencing $\\beta > 0.5$ will be pushed onto hyperbolic orbits and ejected from the system."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Synthetic spectrum compared with the STIS spectrum (within 50% above 1600 A, up to a factor of 3 below 1600 A)", "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "we find that the synthetic spectrum matches the STIS spectrum within 50% in the $>$1600 Å spectral regions where they overlap"}
+]}
+},
+{
+"order": 7,
+"goal": "Regenerate and image the ALMA data",
+"method": {"value": "Run the project reduction scripts in CASA to regenerate calibrated visibilities, then image continuum and 12CO with clean using natural weighting; measure rms", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "on the raw visibilities in order to regenerate the calibrated visibilities"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "With natural weighting, the continuum RMS is $0.051$ mJy beam$^{-1}$"}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "clean in CASA 4.3.1; natural weighting; beam 0.29 x 0.22 arcsec", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "(version 4.3.1)"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "for a beam size of $0.29\\ensuremath{''}\\times0.22\\ensuremath{''}$"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 8,
+"goal": "Derive ALMA upper limits on continuum, dust mass and 12CO emission",
+"method": {"value": "Non-detections converted to 3-sigma limits assuming the disk emission spreads over ~7 beams; dust mass from M = F d^2 / (kappa B(T))", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the non-detection of continuum emission implies a $3 \\sigma$ upper limit on the disk continuum flux of $<1.1$ mJy at 1.33 mm"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "We can use this upper limit to estimate an upper limit on the total dust mass in the disk using $M_{dust} = F_\\nu d^2/(\\kappa_\\nu B_\\nu(T_{dust}))$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Disk emission spread over ~7 beams", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "we estimate that the disk emission would be spread over $\\sim7$ beams given the angular resolution of these ALMA observations"}
+]}
+],
+"assumptions": [
+{"value": "Dust opacity 2.3 cm^2 g^-1 (acknowledged to dominate the uncertainty)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the significant uncertainty on this value dominates the uncertainty in the resulting dust mass"}
+]},
+{"value": "Dust temperature 100 K (warm inner belt) or 40 K (cold outer belt)", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Assuming a dust temperature of 100 K (typical for a warm inner dust belt)"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "For a colder outer dust belt with a temperature of 40 K"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "100 K dust mass limit compared with the 162 K estimate from Herschel [C II] data", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "This is consistent with the $T_{dust}$=162 K estimate from (cite: RiviereMarichalar2014) based on *Herschel* \\[C II\\] data."}
+]}
+}
+],
+"software": [
+{"name": "CASA", "version": "4.3.1 (for clean)", "used_for": {"value": "Running the reduction scripts and clean imaging of the ALMA data", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "All deconvolution and imaging was performed using the"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "on the raw visibilities in order to regenerate the calibrated visibilities"}
+]}},
+{"name": "CALSTIS", "version": "v3.4.2", "used_for": {"value": "Calibration of the HST/STIS data", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "The data were calibrated with the default CALSTIS v3.4.2 pipeline."}
+]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC fitting of absorption-line models", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "affine-invariant ensemble sampler"}
+]}},
+{"name": "astropy, Matplotlib, NumPy, SciPy, IPython", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "astropy (cite: Robitaille2013), IPython (cite: Perez2007), Matplotlib (cite: Hunter2007), NumPy and SciPy (cite: VanderWalt2011)"}
+]}},
+{"name": "lyapy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "lyapy (cite: Youngblood2016)"}
+]}},
+{"name": "PyAstronomy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "PyAstronomy"}
+]}},
+{"name": "molecular-hydrogen", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "molecular-hydrogen"}
+]}}
+],
+"results_numeric": [
+{"quantity": "CS radial velocity (heliocentric, mean of species)", "value": "-22.7", "uncertainty": "0.5", "units": "km/s", "from_step": 2, "evidence": [
+{"loc": "abstract", "quote": "The lines show two clear absorption components at $-22.7\\pm0.5$ km s$^{-1}$ and $-17.8\\pm0.7$ km s$^{-1}$, which we attribute to circumstellar (CS) and interstellar (IS) gas, respectively."}
+]},
+{"quantity": "IS radial velocity (heliocentric, mean excluding Mg II)", "value": "-17.8", "uncertainty": "0.7", "units": "km/s", "from_step": 2, "evidence": [
+{"loc": "abstract", "quote": "The lines show two clear absorption components at $-22.7\\pm0.5$ km s$^{-1}$ and $-17.8\\pm0.7$ km s$^{-1}$, which we attribute to circumstellar (CS) and interstellar (IS) gas, respectively."}
+]},
+{"quantity": "Stellar radial velocity from Al II 1670 line", "value": "-5.6", "uncertainty": "2.8", "units": "km/s", "from_step": 4, "evidence": [
+{"loc": "4.2 Radial velocity of the star", "quote": "we find $v_\\star = -5.6 \\pm 2.8$ km s$^{-1}$ relative to the rest wavelength of Al II"}
+]},
+{"quantity": "CS gas velocity relative to the star", "value": "-16.9", "uncertainty": "2.6", "units": "km/s", "from_step": 6, "evidence": [
+{"loc": "6.2 A Radiatively Driven Disk Wind", "quote": "All of the CS absorbers are blueshifted with respect to the star by $-16.9\\pm2.6$ km s$^{-1}$"}
+]},
+{"quantity": "log10 total CS carbon column density", "value": "16.17", "uncertainty": "+0.18/-0.36", "units": "log10 cm^-2", "from_step": 5, "evidence": [
+{"loc": "Table 2", "quote": "C & 0.01 & $16.17^{+0.18}_{-0.36}$"}
+]},
+{"quantity": "log10 C/Fe in CS gas (solar 0.94 +/- 0.09)", "value": "2.69", "uncertainty": "+0.18/-0.36", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Table 2", "quote": "C/Fe & $2.69^{+0.18}_{-0.36}$ & $0.94 \\pm 0.09$"}
+]},
+{"quantity": "log10 C/O in CS gas", "value": "-0.03", "uncertainty": "+0.35/-0.40", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "5.3 Relative Elemental Abundances", "quote": "We derived the C/O ratio and 68% confidence interval ($\\log_{10} \\mathrm{C/O} = -0.03^{+0.35}_{-0.40}$)"}
+]},
+{"quantity": "CS C I neutral fraction", "value": "6e-5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "5.1 Ionization Balance in the CS Gas", "quote": "giving a neutral fraction of $6 \\times 10^{-5}$"}
+]},
+{"quantity": "beta for C I and C II", "value": "C I 51.7; C II 19.3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "6.2 A Radiatively Driven Disk Wind", "quote": "this increases the C I $\\beta$ value to 51.7 and the C II $\\beta$ value to 19.3"}
+]},
+{"quantity": "beta for CO", "value": "~11.6 below 20 K, 2.7 at 500 K", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "6.1 Radiation Pressure", "quote": "$\\beta$ is $\\sim 11.6$ for temperatures below 20 K and decreases to 2.7 at $T = 500$ K"}
+]},
+{"quantity": "Teff above which all considered species have beta > 0.5", "value": "~10200", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [
+{"loc": "7.2 Impact of Spectral Type on Debris Disk Winds", "quote": "at $T_\\mathrm{eff}$ above about 10 200 K (between A0V and B9V), all of the considered species have $\\beta > 0.5$"}
+]},
+{"quantity": "STIS 3-sigma upper limit on total CO column density (log10)", "value": "<13.05", "uncertainty": "not stated", "units": "log10 cm^-2", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "Total & & & CS & $<13.05$"}
+]},
+{"quantity": "ALMA continuum rms (natural weighting)", "value": "0.051", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 7, "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the continuum RMS is $0.051$ mJy beam$^{-1}$"}
+]},
+{"quantity": "ALMA 3-sigma continuum flux upper limit at 1.33 mm", "value": "<1.1", "uncertainty": "not stated", "units": "mJy", "from_step": 8, "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the non-detection of continuum emission implies a $3 \\sigma$ upper limit on the disk continuum flux of $<1.1$ mJy at 1.33 mm"}
+]},
+{"quantity": "Dust mass upper limit (T_dust = 100 K)", "value": "<7.22e25 g (0.012 Earth masses)", "uncertainty": "not stated", "units": "g", "from_step": 8, "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Assuming a dust temperature of 100 K (typical for a warm inner dust belt), yields a total dust mass of less than $7.22\\times10^{25}$ g or 0.012 $M_\\oplus$"}
+]},
+{"quantity": "Dust mass upper limit (T_dust = 40 K)", "value": "<1.96e26 g (0.033 Earth masses)", "uncertainty": "not stated", "units": "g", "from_step": 8, "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "For a colder outer dust belt with a temperature of 40 K, the total dust mass would be less than $1.96\\times10^{26}$ g or 0.033 $M_\\oplus$"}
+]},
+{"quantity": "ALMA 12CO J=2-1 rms per 0.2 km/s channel", "value": "11", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 7, "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "The RMS for the $^{12}$CO line is $11$ mJy beam$^{-1}$ measured in channels with width $0.2$ km s$^{-1}$."}
+]},
+{"quantity": "ALMA 3-sigma upper limit on integrated 12CO line intensity", "value": "<0.23 Jy km/s = 1.7e-21 W/m^2", "uncertainty": "not stated", "units": "Jy km/s", "from_step": 8, "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "this yields a $3\\sigma$ upper limit on the integrated line intensity of $0.23$ Jy km s$^{-1} = 1.7\\times10^{-21}$ W m$^{-2}$"}
+]}
+],
+"findings_qualitative": [
+{"value": "Absorption from C I, C II, O I, Mg II, Al II, Si II, S II, Mn II, Fe II and marginally N I is detected, in a circumstellar and an interstellar component", "evidence": [
+{"loc": "abstract", "quote": "We detect absorption lines from C I, C II, O I, Mg II, Al II, Si II, S II, Mn II, Fe II, and marginally N I."}
+]},
+{"value": "Neither continuum nor 12CO emission from eta Tel is detected in the ALMA data", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Neither continuum emission nor $^{12}$CO line emission from $\\eta$ Tel are detected in these ALMA data."}
+]},
+{"value": "C, O, Mg, Si, S and Mn are super-solar relative to Fe in the CS gas; Al/Fe is solar", "evidence": [
+{"loc": "5.3 Relative Elemental Abundances", "quote": "In the $\\eta$ Tel CS gas, C, O, Mg, Si, S, and Mn all show super-solar abundances relative to Fe."}
+]},
+{"value": "An unidentified absorption feature near 1594 A varies between the two visits and could not be identified", "evidence": [
+{"loc": "3.4 Mystery absorber at 1594 Å", "quote": "Therefore, we found no solid identification for the mystery species."}
+]}
+],
+"claims": [
+{"hypothesis": "Is the eta Tel circumstellar gas bound to the star or outflowing?",
+"experiment": "Voigt/MCMC fits of HST/STIS absorption lines, stellar RV from the Al II line, comparison of CS velocities with the star and with beta",
+"result": "CS components at -22.7 +/- 0.5 km/s, blueshifted by -16.9 +/- 2.6 km/s from the star, regardless of beta",
+"finding": "The CS gas is a single fluid flowing out in a radiatively driven disk wind",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "The CS absorption components are blueshifted by $-16.9\\pm$2.6 km s$^{-1}$ in the star’s reference frame, indicating that they are outflowing in a radiatively driven disk wind."}
+]},
+{"hypothesis": "Does the eta Tel CS gas share the carbon overabundance and super-solar C/O of beta Pic and 49 Cet?",
+"experiment": "Total column densities via ionization balance and Monte Carlo propagation of fitted posteriors",
+"result": "C/Fe is far above solar (log 2.69 vs 0.94) while log C/O = -0.03 +0.35/-0.40",
+"finding": "Carbon is overabundant relative to Fe, but C/O is consistent with solar, unlike beta Pic and 49 Cet",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "We find that the C/Fe ratio in the $\\eta$ Tel CS gas is significantly higher than the solar ratio, as is the case in the $\\beta$ Pic and 49 Cet debris disks."},
+{"loc": "abstract", "quote": "Unlike those disks, however, the measured C/O ratio in the $\\eta$ Tel CS gas is consistent with the solar value."}
+]},
+{"hypothesis": "Why does eta Tel have a wind while beta Pic and 49 Cet have bound gas?",
+"experiment": "Radiation-pressure coefficient beta from a Castelli-Kurucz spectrum for the A0V star, compared with beta Pic",
+"result": "Beta(C II) = 19.3 and beta(C I) = 51.7, so carbon cannot lower the mean beta of the fluid below 0.5",
+"finding": "Stronger C II radiation pressure from the earlier star prevents C II braking, producing a disk wind",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "this species cannot bind the CS gas disk to the star as it does for $\\beta$ Pic and 49 Cet, resulting in the disk wind."}
+]},
+{"hypothesis": "Is there CO gas or evidence for star-grazing exocomets toward eta Tel (UV and ALMA)?",
+"experiment": "CO band fits in STIS, comparison of two visits, 12CO J=2-1 and continuum imaging with ALMA",
+"result": "No CO absorption; no variability apart from the 1594 A feature; ALMA continuum <1.1 mJy and 12CO <0.23 Jy km/s",
+"finding": "No CO and no firm exocomet signature; the ALMA limits are too weak to be constraining",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "CO absorption is not detected, and we find no evidence for star-grazing exocomets."},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "This upper limit is high compared to $^{12}$CO gas emission measured with ALMA for other A-star debris disks"}
+]},
+{"hypothesis": "Does spectral type set whether debris gas is bound or in a wind?",
+"experiment": "Beta computed for many species as a function of Teff for A5V and earlier",
+"result": "Above Teff ~10 200 K all considered species have beta > 0.5",
+"finding": "Stars earlier than about A0V/B9V should show disk winds, with caveats from composition, activity and stellar winds",
+"support": "partially",
+"evidence": [
+{"loc": "7.2 Impact of Spectral Type on Debris Disk Winds", "quote": "We should therefore not expect to see bound gas in debris disks around stars with earlier spectral types, but rather disk winds."},
+{"loc": "7.2 Impact of Spectral Type on Debris Disk Winds", "quote": "although estimating the range is beyond the scope of this work"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Two STIS visits were taken to look for changes in absorption lines from star-grazing comets", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "The spectra were acquired in two visits to look for changes in CS absorption lines caused by star-grazing comets"}
+]},
+{"field": "how_they_decided_enough", "value": "MCMC chains run for at least 50 autocorrelation times to approximate convergence", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "We ran the chains for at least 50 autocorrelation times (10$^4-10^6$ steps) to approximate convergence"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Alternate Mg II models with different numbers of components and parameter restrictions (to place the IS component near -18 km/s) were poorly constrained, so a -10 km/s component was kept", "evidence": [
+{"loc": "4.1 Radial velocity of the ISM", "quote": "We created alternate models of the Mg II lines that contained different numbers of absorption components and fit them using various parameter restrictions"}
+]},
+{"value": "Much smaller dust opacities (1e-2 to 1e-3 cm^2/g) from Pollack et al. would raise the dust mass limit considerably", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "(cite: Pollack1994) obtain dust opacities that are several orders of magnitude smaller ($10^{-2}-10^{-3}$ cm$^2$ g$^{-1}$), which would increase the calculated dust masses considerably."}
+]}
+],
+"limitations_admitted": [
+{"value": "The dust opacity uncertainty dominates the dust-mass uncertainty", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "the significant uncertainty on this value dominates the uncertainty in the resulting dust mass"}
+]},
+{"value": "The second ALMA SB had only 34 antennas and adds little signal-to-noise", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "contributes little to the overall signal-to-noise of the ALMA observations"}
+]},
+{"value": "The disk inclination is only known to within 20 deg of edge-on, so STIS CO column limits cannot be turned into CO emission limits; the ALMA CO limit is high", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "Since the inclination of the $\\eta$ Tel disk is only constrained to be within $20^\\circ$ of edge-on"},
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "This upper limit is high compared to $^{12}$CO gas emission measured with ALMA for other A-star debris disks"}
+]},
+{"value": "The N I lower limit should be treated with caution because of low S/N near 1200 A", "evidence": [
+{"loc": "3.1 Atomic and Ionic Species", "quote": "the lower limit on the column density should be treated with caution"}
+]}
+],
+"referee_caveats_inferred": [
+"The ALMA 3-sigma flux limit (<1.1 mJy) appears to equal 3 x 0.051 x 7 beams, i.e. linear rather than root-N scaling; the derivation is not shown.",
+"Dust-mass limits rest on a single assumed opacity and temperature; no radial or grain-size treatment of the two-belt disk.",
+"ALMA imaging parameters (cell, niter, masks, SB combination) are not given, so the rms and beam cannot be checked independently.",
+"The Table 2 note gives n_e = 100 cm^-2 whereas the text says cm^-3, a unit slip in the ionization assumptions.",
+"The synthetic stellar spectrum misses the observed flux by up to a factor of 3 below 1600 A, which could shift beta, although the authors argue beta stays well above 0.5."
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "HST/STIS data from MAST (program HST-GO-14207); ALMA project 2013.1.01147.S is named but its public status is not stated", "evidence": [
+{"loc": "Acknowledgments", "quote": "obtained from the Mikulski Archive for Space Telescopes (MAST)"},
+{"loc": "Acknowledgments", "quote": "These observations are associated with program HST-GO-14207 (PI: A. Roberge)."}
+]},
+{"field": "products_in_archive", "value": "ALMA reduction scripts for the project were available and executed", "evidence": [
+{"loc": "3.3 Carbon Monoxide with STIS and ALMA", "quote": "We executed the associated reduction scripts in"}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Full clean parameters and the CASA version used for calibration of the ALMA data",
+"Exact STIS exposure list and location (the MAST sentence is blank in the text)",
+"Voigt-fit and emcee initial conditions and prior ranges for each species",
+"Derivation of the 7-beam scaling and the exact disk model used for the ALMA upper limits"
+],
+"estimated_data_volume_inferred": "ALMA: roughly 5-10 GB of raw data for two short Band 6 scheduling blocks (14 min on source); HST/STIS: under 1 GB",
+"score_inferred": 3,
+"score_reason": "HST data are public and the line-fitting recipe is described with sampler, priors and walkers, but the ALMA imaging details are sparse (only an upper limit comes from them), no code is released, and the exact STIS dataset location is missing.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA plays a minor role (non-detection upper limits) and imaging parameters are missing; the main numeric results are from HST/STIS, and ALMA public status is not stated.",
+"methods_papers": [
+{"citation": "Fernandez:2006", "why": "Ionization balance neutral fractions and beta Pic gas dynamics with Coulomb coupling"},
+{"citation": "Beust1993", "why": "Radiation pressure formula used for beta"},
+{"citation": "Foreman-Mackey2013", "why": "emcee sampler used for line fitting"},
+{"citation": "Smith2009", "why": "Gemini T-ReCS disk geometry used for the ALMA upper limits"}
+],
+"companion_papers": [
+{"citation": "Rebollido:2018; Rebollido:2020", "why": "Optical Ca II and Na I absorption toward eta Tel and stellar RV measurements"},
+{"citation": "Welsh2018", "why": "Optical search for exocomets toward eta Tel"},
+{"citation": "Roberge2006; Roberge2014", "why": "UV absorption studies of the beta Pic and 49 Cet gas disks"},
+{"citation": "RiviereMarichalar2014", "why": "Herschel PACS [C II] detection in the eta Tel disk"}
+],
+"related_projects_or_surveys": ["HST-GO-14207", "ALMA 2013.1.01147.S", "beta Pic Moving Group"]
+}

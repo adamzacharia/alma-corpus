@@ -1,0 +1,502 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present ALMA 1.3 mm continuum observations of the disk around the T Tauri star Haro 6-13"}
+],
+"fields": ["protoplanetary_disks", "star_formation"],
+"question": {
+"value": "Does the compact Haro 6-13 disk host millimeter continuum spiral arms at ~5 au resolution, and what could form them (gravitational instability, infall, companions, flybys)?",
+"evidence": [
+{"loc": "abstract", "quote": "Millimeter continuum spiral arms have so far only been detected in a handful of protoplanetary disks, and thus we have a limited understanding of the circumstances in which they can form."},
+{"loc": "Introduction", "quote": "To investigate the nature of the substructures in the Haro 6-13 disk, we used ALMA to obtain high angular resolution 1.3 mm continuum observations."}
+]
+},
+"targets": [
+{
+"name": "Haro 6-13",
+"details": [
+{"loc": "Introduction", "quote": "Haro 6-13 (ICRS coordinates RA=04:32:15.417, DEC= +24:28:59.58) is a K5.5 T Tauri star"},
+{"loc": "Introduction", "quote": "located $127.7\\substack{+1.7\\\\-1.6}$ pc away in the Taurus Molecular Cloud complex (cite: 2014ApJ...786...97H; 2021AA...649A...1G; 2021AJ....161..147B)"}
+],
+"coordinates": "ICRS RA=04:32:15.417, DEC=+24:28:59.58",
+"redshift_or_distance": "127.7 +1.7/-1.6 pc",
+"distance_source": "(cite: 2014ApJ...786...97H; 2021AA...649A...1G; 2021AJ....161..147B)"
+}
+],
+"alma_project_codes": [
+{"code": "2022.1.01365.S", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "Long-baseline 1.3 mm continuum observations of Haro 6-13 were obtained as part of ALMA program 2022.1.01365.S (PI: J. Huang)."}]},
+{"code": "2016.1.01042.S", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "we retrieved 1.3 mm observations of Haro 6-13 from program 2016.1.01042.S (PI: C. Chandler) via the ALMA archive."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "1.3 mm continuum (both programs)", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "Long-baseline 1.3 mm continuum observations of Haro 6-13 were obtained as part of ALMA program 2022.1.01365.S (PI: J. Huang)."}]},
+{"field": "frequencies_and_spectral_setup", "value": "2022.1.01365.S: four SPWs at 224, 226, 240, 242 GHz, 128 channels each over 2 GHz. 2016.1.01042.S: 8 SPWs incl. 232.4 and 217.0 GHz (2 GHz, 128 ch) and 468.75 MHz SPWs covering 12CO, 13CO, C18O J=2-1", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "The correlator was configured with four spectral windows (SPWs) centered at 224, 226, 240, and 242 GHz, each of which had 128 channels across a bandwidth of 2 GHz."},
+{"loc": "2 Observations and Data Reduction", "quote": "The correlator was configured with 8 SPWs. Two SPWs were centered at 232.4 and 217.0 GHz, respectively, each with bandwidths of 2 GHz and 128 channels."}
+]},
+{"field": "continuum_bandwidth", "value": "2022.1.01365.S: four 2 GHz SPWs", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "each of which had 128 channels across a bandwidth of 2 GHz."}]},
+{"field": "configurations", "value": "2022.1.01365.S long-baseline; a more compact configuration was requested but not taken, so 2016.1.01042.S was used for short baselines", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "Observations in a more compact antenna configuration were requested as part of the same program but ultimately were not taken."}]},
+{"field": "baselines", "value": "2016.1.01042.S: 15.1 m - 704.1 m (2016 Nov 28), 54.5 m - 3.3 km (2017 Aug 02); 2022.1.01365.S: 230.2 m - 15.2 km", "evidence": [
+{"loc": "Table 1", "quote": "15.1 m - 704.1 m"},
+{"loc": "Table 1", "quote": "54.5 m - 3.3 km"},
+{"loc": "Table 1", "quote": "230.2 m - 15.2 km"}
+]},
+{"field": "angular_resolution", "value": "~0.04 arcsec (~5 au); continuum beam 0.037 x 0.022 arcsec (19.08 deg)", "evidence": [
+{"loc": "abstract", "quote": "at a resolution of $\\sim0.04\\ensuremath{''}$ ($\\sim5$ au)"},
+{"loc": "Table 2", "quote": "$0.037\\ensuremath{''}\\times0.022\\ensuremath{''}$ $(19.08\\ensuremath{^\\circ})$"}
+]},
+{"field": "sensitivity", "value": "continuum rms 0.019 mJy/beam, measured from an off-source region", "evidence": [
+{"loc": "Table 2", "quote": "0.019"},
+{"loc": "Table 2 notes", "quote": "and from an off-source region for the continuum emission"}
+]},
+{"field": "time_on_source", "value": "2016.1.01042.S: 1.2 min and 3 min; 2022.1.01365.S: 32 min", "evidence": [
+{"loc": "Table 1", "quote": "1.2 min"},
+{"loc": "Table 1", "quote": "32 min"}
+]},
+{"field": "observing_dates", "value": "2016 Nov 28, 2017 Aug 02 (2016.1.01042.S); 2023 Jul 19 (2022.1.01365.S)", "evidence": [
+{"loc": "Table 1", "quote": "2016 November 28"},
+{"loc": "Table 1", "quote": "2017 August 02"},
+{"loc": "Table 1", "quote": "2023 July 19"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "2022.1.01365.S new program (PI J. Huang); 2016.1.01042.S archival (PI C. Chandler)", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "ALMA program 2022.1.01365.S (PI: J. Huang)"},
+{"loc": "2 Observations and Data Reduction", "quote": "program 2016.1.01042.S (PI: C. Chandler) via the ALMA archive"}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "230.538 GHz (Table 2 frequency)", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "230.7 GHz (960 channels, covering $^{12}$CO $J=2-1$"},
+{"loc": "Table 2", "quote": "230.538"}
+]},
+{"species": "13CO", "transition": "J=2-1", "rest_frequency": "220.3986842 GHz (Table 2 frequency)", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "219.7 and 220.2 GHz (480 channels each, covering C$^{18}$O and $^{13}$CO $J=2-1$, respectively)"},
+{"loc": "Table 2", "quote": "220.3986842"}
+]},
+{"species": "C18O", "transition": "J=2-1", "rest_frequency": "219.5603541 GHz (Table 2 frequency)", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "219.7 and 220.2 GHz (480 channels each, covering C$^{18}$O and $^{13}$CO $J=2-1$, respectively)"},
+{"loc": "Table 2", "quote": "219.5603541"}
+]}
+],
+"other_facilities": [
+{"name": "CARMA (literature)", "provided": {"value": "Disk fluxes at 229 and 113 GHz used for a consistency check of the spectral index", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "Using CARMA, (cite: 2015ApJ...808..102K) measured disk fluxes of 111.2 mJy at 229 GHz and 28.7 mJy at 113 GHz."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "3 mm (97.5 GHz) flux of 24.96 mJy", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "(cite: 2019ApJ...877L...2H) reported a flux of 24.96 mJy at 97.5 GHz (3 mm)."}]}, "citation": "(cite: 2019ApJ...877L...2H)"},
+{"what": {"value": "CARMA fluxes of 111.2 mJy at 229 GHz and 28.7 mJy at 113 GHz", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "measured disk fluxes of 111.2 mJy at 229 GHz and 28.7 mJy at 113 GHz."}]}, "citation": "(cite: 2015ApJ...808..102K)"},
+{"what": {"value": "Stellar luminosity L* = 0.79 Lsun", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "The luminosity of Haro 6-13 is $L_\\ast = 0.79$ $L_\\odot$ (cite: 2019ApJ...882...49L)."}]}, "citation": "(cite: 2019ApJ...882...49L)"},
+{"what": {"value": "Stellar mass M* = 0.91 Msun", "evidence": [{"loc": "Gravitational instability", "quote": "Finally, $Q$ is calculated assuming that $M_\\ast = 0.91$ $M_\\odot$ (cite: 2019ApJ...882...49L)"}]}, "citation": "(cite: 2019ApJ...882...49L)"},
+{"what": {"value": "Distance 127.7 +1.7/-1.6 pc", "evidence": [{"loc": "Introduction", "quote": "located $127.7\\substack{+1.7\\\\-1.6}$ pc away in the Taurus Molecular Cloud complex (cite: 2014ApJ...786...97H; 2021AA...649A...1G; 2021AJ....161..147B)"}]}, "citation": "(cite: 2014ApJ...786...97H; 2021AA...649A...1G; 2021AJ....161..147B)"},
+{"what": {"value": "Systemic velocity 5.9 km/s", "evidence": [{"loc": "CO isotopologue emission", "quote": "the systemic velocity of 5.9 km s$^{-1}$ (cite: 2021AA...645A.145G)"}]}, "citation": "(cite: 2021AA...645A.145G)"},
+{"what": {"value": "DSHARP dust opacities at 1.3 mm (kappa_abs = 0.4, 1.9, 1.0 cm2/g for a_max = 0.1, 1, 10 mm)", "evidence": [{"loc": "Gravitational instability", "quote": "These values correspond to the DSHARP dust opacities at a wavelength of 1.3 mm"}]}, "citation": "(cite: 2018ApJ...869L..45B; 2018zndo...1495277B)"},
+{"what": {"value": "Flaring angle phi = 0.02 for the passive-disk dust temperature", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "As in (cite: 2018ApJ...869L..46D), we set the flaring angle $\\varphi$ to 0.02."}]}, "citation": "(cite: 2018ApJ...869L..46D)"},
+{"what": {"value": "Grid of thermochemical models of compact disks used to turn the C18O flux into a disk mass", "evidence": [{"loc": "Gravitational instability", "quote": "Based on the grid of thermochemical models of compact disks presented in (cite: 2021AA...651A..48M), which assume an ISM-like CO:H$_2$ abundance"}]}, "citation": "(cite: 2021AA...651A..48M)"},
+{"what": {"value": "Gaia RUWE of 2.4", "evidence": [{"loc": "Planetary or stellar companions", "quote": "Haro 6-13’s RUWE value is 2.4 (cite: 2023AA...674A...1G)"}]}, "citation": "(cite: 2023AA...674A...1G)"},
+{"what": {"value": "Age 2.6 +2.1/-1.1 Myr", "evidence": [{"loc": "Introduction", "quote": "estimated an age of $2.6\\substack{+2.1\\\\-1.1}$ Myr"}]}, "citation": "(cite: 2019ApJ...882...49L)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Grid of thermochemical models of compact disks (Miotello et al. 2021) used to convert the C18O flux to a maximum disk mass", "evidence": [{"loc": "Gravitational instability", "quote": "the C$^{18}$O flux translates to a maximum disk mass of $\\sim10^{-2}$ $M_\\odot$"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "2022.1.01365.S: calibrated MS from ALMA staff (pipeline). 2016.1.01042.S: 2016 Nov 28 by pipeline, 2017 Aug 02 by manual archive scripts", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "A calibrated measurement set was produced by ALMA staff using the `CASA 6.4.1` pipeline"},
+{"loc": "2 Observations and Data Reduction", "quote": "while the data from 2017 August 02 were processed using manual calibration scripts from the archive."}
+]},
+{"field": "casa_version", "value": "CASA 6.4.1 pipeline (2022 data); CASA 4.7.2 pipeline (2016 Nov 28 EB); further processing with CASA 6.5", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "A calibrated measurement set was produced by ALMA staff using the `CASA 6.4.1` pipeline"},
+{"loc": "2 Observations and Data Reduction", "quote": "The raw data from 2016 November 28 were calibrated with the `CASA 4.7.2` pipeline"},
+{"loc": "2 Observations and Data Reduction", "quote": "Further processing of the datasets was performed with `CASA` 6.5."}
+]},
+{"field": "self_calibration", "value": "Short-baseline EBs combined: 3 phase rounds (scan length, 60 s, 15 s) + 1 amplitude (scan length). Long-baseline: 1 phase round (full-observation interval), aligned, combined; then 2 phase rounds (scan length, 30 s) + 1 amplitude (scan length)", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "We combined the two EBs and performed three rounds of phase self-calibration with intervals corresponding to the scan length, 60 s, and 15 s, and then one round of amplitude self-calibration with a scan-length solution interval."},
+{"loc": "2 Observations and Data Reduction", "quote": "performed one round of phase self-calibration with a solution interval spanning the length of the observation."},
+{"loc": "2 Observations and Data Reduction", "quote": "We performed two rounds of phase self-calibration on the combined data with scan-length and 30 s intervals, and then one round of amplitude self-calibration with a scan-length interval."}
+]},
+{"field": "flux_scale_uncertainty", "value": "10% systematic flux calibration uncertainty", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "the dominant source of uncertainty is the 10% systematic flux calibration uncertainty."}]}
+],
+"imaging": [
+{"field": "task", "value": "tclean (continuum images per EB); multiscale CLEAN for combined data and CO cubes", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "Separate continuum images were generated for the two execution blocks (EBs) using `tclean`."},
+{"loc": "2 Observations and Data Reduction", "quote": "The combined data were imaged with multiscale CLEAN and a robust value of 0.5."}
+]},
+{"field": "deconvolver", "value": "multiscale CLEAN", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "The combined data were imaged with multiscale CLEAN and a robust value of 0.5."}]},
+{"field": "weighting_robust", "value": "robust = 0.5 (combined continuum and CO cubes)", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "The combined data were imaged with multiscale CLEAN and a robust value of 0.5."},
+{"loc": "2 Observations and Data Reduction", "quote": "We used a robust value of 0.5 and applied a $uv$-taper of $0.3''$"}
+]},
+{"field": "uv_taper", "value": "CO cubes: 0.3 arcsec; residual-visibility continuum image: 0.02 arcsec", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "We used a robust value of 0.5 and applied a $uv$-taper of $0.3''$ to improve the signal-to-noise ratio of the fainter, larger-scale emission."},
+{"loc": "Spiral arm properties", "quote": "employing a $uv$ taper of $0.02\\ensuremath{''}$ to improve the signal-to-noise ratio of the residual emission."}
+]},
+{"field": "masking", "value": "auto-multithresh for CO cubes", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "the `auto-multithresh` algorithm (cite: 2020PASP..132b4505K) was used to create the CLEAN masks."}]},
+{"field": "continuum_subtraction", "value": "uv-plane subtraction with uvcontsub (for CO cubes)", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "Continuum subtraction was performed in the $uv$ plane using `uvcontsub`."}]},
+{"field": "line_free_channels", "value": "channels covered by CO isotopologue lines flagged before averaging to pseudo-continuum (ranges not given)", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "We began by flagging the channels covered by CO isotopologue line emission in the short-baseline measurement sets from program 2016.1.01042.S"}]},
+{"field": "primary_beam_correction", "value": "applied to CO cubes and to the final continuum image", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "After applying a primary beam correction to the image cubes"},
+{"loc": "2 Observations and Data Reduction", "quote": "Finally, a primary beam correction was applied."}
+]},
+{"field": "array_combination", "value": "short-baseline 2016.1.01042.S EBs self-calibrated, then long-baseline 2022.1.01365.S data aligned and combined", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "To provide coverage on shorter baselines, we retrieved 1.3 mm observations of Haro 6-13 from program 2016.1.01042.S"},
+{"loc": "2 Observations and Data Reduction", "quote": "Then, the long-baseline observations were spatially aligned with the self-calibrated short-baseline continuum observations using the same procedure described above."}
+]},
+{"field": "smoothing", "value": "CO integrated intensity maps use velocity resolution 0.65 km/s (12CO) and 1.35 km/s (13CO, C18O)", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "image $^{12}$CO at a velocity resolution of 0.65 km s$^{-1}$ and $^{13}$CO and C$^{18}$O at a resolution of 1.35 km s$^{-1}$"}]},
+{"field": "final_beam", "value": "continuum 0.037 x 0.022 arcsec (19.08 deg); 12CO 0.47 x 0.42 arcsec (-31.62 deg)", "evidence": [
+{"loc": "Table 2", "quote": "$0.037\\ensuremath{''}\\times0.022\\ensuremath{''}$ $(19.08\\ensuremath{^\\circ})$"},
+{"loc": "Table 2", "quote": "$0.47\\ensuremath{''}\\times0.42\\ensuremath{''}$ $(-31.62\\ensuremath{^\\circ})$"}
+]},
+{"field": "final_rms", "value": "continuum 0.019 mJy/beam; 12CO 7.5, 13CO 4.9, C18O 4.0 mJy/beam per channel", "evidence": [
+{"loc": "Table 2", "quote": "0.019"},
+{"loc": "Table 2 notes", "quote": "Measured from line-free channels for the image cubes ($\\Delta v = 0.65$ km s$^{-1}$ for $^{12}$CO and 1.35 km s$^{-1}$ for $^{13}$CO and C$^{18}$O)"}
+]}
+],
+"inherited": [
+{"what": {"value": "Procedure to locate the disk center (imfit 2D Gaussian), phaseshift to phase center and fixplanets to match EB coordinates", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "Following the procedure described in (cite: 2018ApJ...869L..41A), we used the `imfit` task in `CASA` to fit a 2D Gaussian to each continuum image in order to locate the disk center"}]}, "from_reference": "(cite: 2018ApJ...869L..41A)"},
+{"what": {"value": "Algorithm implemented in protomidpy (Fourier-Bessel series radial intensity model)", "evidence": [{"loc": "Spiral arm properties", "quote": "using the publicly available code `protomidpy`"}]}, "from_reference": "(cite: 2024MNRAS.532.1361A)"},
+{"what": {"value": "Method used by visread to rescale visibility weights", "evidence": [{"loc": "Spiral arm properties", "quote": "which implements the method described in (cite: 2023PASP..135f4503Z)"}]}, "from_reference": "(cite: 2023PASP..135f4503Z)"},
+{"what": {"value": "Flaring angle phi = 0.02 and passive-disk dust temperature formula", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "As in (cite: 2018ApJ...869L..46D), we set the flaring angle $\\varphi$ to 0.02."}]}, "from_reference": "(cite: 2018ApJ...869L..46D)"},
+{"what": {"value": "DSHARP dust composition for scattering and opacity estimates", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "Assuming a standard power-law grain size distribution and a DSHARP dust composition (cite: 2018ApJ...869L..45B)"}]}, "from_reference": "(cite: 2018ApJ...869L..45B)"}
+],
+"unstated_but_needed": [
+"tclean parameters for the continuum images (cell size, image size, multiscale scales, niter, threshold, continuum mask)",
+"gaincal settings for self-calibration (solution combine, spw mapping, minimum SNR, reference antenna, which flux/gain calibrators were used for the flux scale)",
+"Flux-scale alignment between the 2016/2017 EBs and the 2023 EB (not stated)",
+"Channel ranges flagged as CO line emission and uvcontsub fit order",
+"Exact imfit regions, phaseshift/fixplanets offsets used for alignment",
+"protomidpy version and settings (number and spacing of Fourier-Bessel terms, radial grid, outer radius, MCMC initialization, how the MAP I(r) was chosen)",
+"Per-SPW weight scaling factors from visread for each dataset (only the range ~1 to ~5 is given)",
+"Pixel scale of the residual image used for filfinder, and how filfinder branches were selected into S1/S2",
+"Whether the radial-profile and contrast measurements use the 5-au-inner masks or beam-matched sampling beyond what is stated",
+"Procedure for measuring the 1 arcsec aperture flux (center, background treatment)",
+"Spectral-index calculation details for CARMA fluxes beyond assuming 10% flux uncertainty"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Self-calibrate, combine and image the continuum",
+ "method": {"value": "Align EBs on disk center, self-calibrate short-baseline EBs, align and combine with long-baseline data, self-calibrate again and image with multiscale CLEAN at robust 0.5, then apply primary beam correction", "evidence": [
+  {"loc": "2 Observations and Data Reduction", "quote": "We combined the two EBs and performed three rounds of phase self-calibration with intervals corresponding to the scan length, 60 s, and 15 s, and then one round of amplitude self-calibration with a scan-length solution interval."},
+  {"loc": "2 Observations and Data Reduction", "quote": "We performed two rounds of phase self-calibration on the combined data with scan-length and 30 s intervals, and then one round of amplitude self-calibration with a scan-length interval."}]},
+ "software": ["CASA", "tclean", "imfit", "phaseshift", "fixplanets"],
+ "key_parameters": [
+  {"value": "robust = 0.5", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "The combined data were imaged with multiscale CLEAN and a robust value of 0.5."}]},
+  {"value": "Long-baseline data: 1 phase round with a solution interval spanning the observation before combining", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "performed one round of phase self-calibration with a solution interval spanning the length of the observation."}]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Image CO isotopologue cubes and moment maps",
+ "method": {"value": "uvcontsub, multiscale CLEAN with auto-multithresh, primary beam correction, integrated intensity and intensity-weighted velocity maps, spectra from circular apertures", "evidence": [
+  {"loc": "2 Observations and Data Reduction", "quote": "Continuum subtraction was performed in the $uv$ plane using `uvcontsub`."},
+  {"loc": "CO isotopologue emission", "quote": "The $^{12}$CO and $^{13}$CO spectra were extracted from circular apertures centered on the disk with radii of $6''$ (770 au)."}]},
+ "software": ["CASA", "uvcontsub", "tclean", "auto-multithresh"],
+ "key_parameters": [
+  {"value": "Velocity resolution 0.65 km/s (12CO), 1.35 km/s (13CO, C18O)", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "image $^{12}$CO at a velocity resolution of 0.65 km s$^{-1}$ and $^{13}$CO and C$^{18}$O at a resolution of 1.35 km s$^{-1}$"}]},
+  {"value": "robust 0.5 with 0.3 arcsec uv-taper", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "We used a robust value of 0.5 and applied a $uv$-taper of $0.3''$ to improve the signal-to-noise ratio of the fainter, larger-scale emission."}]},
+  {"value": "Integration ranges 0.2-10.6 km/s (12CO) and 2.75-8.15 km/s (13CO, C18O) in LSRK, negative pixels clipped", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "summing up emission at LSRK velocities between 0.2 and 10.6 km s$^{-1}$ and of $^{13}$CO and C$^{18}$O by summing emission between 2.75 and 8.15 km s$^{-1}$"}]},
+  {"value": "Velocity maps use a 4 sigma clip", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "Intensity-weighted velocity maps were then produced using a 4$\\sigma$ clip."}]},
+  {"value": "C18O spectrum aperture radius 1.5 arcsec", "evidence": [{"loc": "CO isotopologue emission", "quote": "was extracted with a circular aperture with a radius of $1.5\\ensuremath{''}$"}]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "The velocity ranges were chosen from emission above 3 sigma", "evidence": [{"loc": "2 Observations and Data Reduction", "quote": "The velocity ranges were chosen based on the detection of emission above the $3\\sigma$ level."}]}},
+{"order": 3, "goal": "Unsharp-mask image and azimuthally averaged radial profile",
+ "method": {"value": "Unsharp masking for visual enhancement; deprojected radial intensity profile from the original CLEAN image", "evidence": [
+  {"loc": "Overview of continuum morphology", "quote": "To enhance the spiral arm contrast, we applied unsharp masking, which subtracts a smoothed version of an image from the original image and then adds a scaled version of the difference image back to the original image."}]},
+ "software": ["scikit-image"],
+ "key_parameters": [
+  {"value": "scale factor 2, Gaussian filter sigma 0.06 arcsec", "evidence": [{"loc": "Overview of continuum morphology", "quote": "specifying a scale factor of 2 and a Gaussian filter with a sigma parameter of $0.06\\ensuremath{''}$"}]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Unsharp-masked image not used for quantitative analysis because it truncates the outer disk emission", "evidence": [{"loc": "Spiral arm properties", "quote": "We do not use the version of the image with unsharp masking for quantitative analysis because the process truncates the outer disk emission, which may bias spiral measurements"}]}},
+{"order": 4, "goal": "Rescale visibility weights",
+ "method": {"value": "Per-SPW correction of absolute weight scaling with visread", "evidence": [{"loc": "Spiral arm properties", "quote": "we used the `visread` package (cite: ian_czekala_2021_4432520), which implements the method described in (cite: 2023PASP..135f4503Z), to correct the absolute scaling of the weights in our measurement sets on a per-SPW basis."}]},
+ "software": ["visread"],
+ "key_parameters": [
+  {"value": "weights downscaled by factors from ~1 to ~5", "evidence": [{"loc": "Spiral arm properties", "quote": "the weights were ultimately downscaled by factors ranging from $\\sim1$ (weights were essentially correct) to $\\sim5$."}]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Fit non-parametric axisymmetric visibility model",
+ "method": {"value": "protomidpy fits the 1D radial intensity profile as a Fourier-Bessel series, with disk P.A., inclination and offsets, directly to the visibilities", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "`protomidpy` assumes that the disk is axisymmetric and geometrically thin and models the 1D radial intensity profile $I(r)$ as a Fourier-Bessel series."},
+  {"loc": "Spiral arm properties", "quote": "Model visibilities are calculated from the 1D radial intensity profile given the disk P.A., $i$, and offsets from the phase center ($\\Delta x$ and $\\Delta y$)."}]},
+ "software": ["protomidpy", "emcee"],
+ "key_parameters": [
+  {"value": "Flat priors: cos i [0,1]; P.A. [0,180] deg; dx, dy [-0.1,0.1] arcsec; gamma [0.01,0.15] arcsec; log alpha [-4,5]", "evidence": [{"loc": "Spiral arm properties", "quote": "We set flat priors with bounds of $[0,1]$ for $\\cos i$, $[0^\\circ, 180^\\circ]$ for P.A., $[-0.1\\ensuremath{''}, 0.1\\ensuremath{''}]$ for $\\Delta x$ and $\\Delta y$, $[0.01\\ensuremath{''}, 0.15\\ensuremath{''}]$ for $\\gamma$, and $[-4,5]$ for $\\log\\alpha$."}]},
+  {"value": "24 walkers, 15000 steps, first 1000 steps discarded as burn-in", "evidence": [
+   {"loc": "Spiral arm properties", "quote": "The MCMC modeling was performed using 24 walkers over 15000 steps."},
+   {"loc": "Spiral arm properties", "quote": "After discarding the first 1000 steps for each walker as burn-in, we computed the medians and the 68% confidence interval."}]}
+ ],
+ "assumptions": [
+  {"value": "Disk is axisymmetric and geometrically thin", "evidence": [{"loc": "Spiral arm properties", "quote": "`protomidpy` assumes that the disk is axisymmetric and geometrically thin"}]}
+ ],
+ "fitting": {"value": "Affine-invariant MCMC (emcee) sampling P.A., i, dx, dy, alpha, gamma while estimating I(r); radial basis function kernel regularization with hyperparameters alpha (weight) and gamma (scale)", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "`protomidpy` uses the affine invariant Markov Chain Monte Carlo (MCMC) code `emcee` (cite: 2013PASP..125..306F) to sample the posteriors for P.A., $i$, $\\Delta x$, $\\Delta y$, $\\alpha$, and $\\gamma$ while simultaneously estimating $I(r)$."},
+  {"loc": "Spiral arm properties", "quote": "The radial intensity profile model is regularized by a radial basis function kernel with hyperparameters $\\alpha$ (which controls the weight of this prior) and $\\gamma$ (which controls the spatial scale of the kernel)."}]},
+ "validation": {"value": "Chains at least 50x longer than the integrated autocorrelation time", "evidence": [{"loc": "Spiral arm properties", "quote": "The length of the chains was chosen to ensure that they were at least $50\\times$ longer than the integrated autocorrelation time."}]}},
+{"order": 6, "goal": "CLEAN the model and the residual visibilities",
+ "method": {"value": "CLEAN the maximum a posteriori model visibilities like the data, then CLEAN residual visibilities (observed minus model) with a uv taper", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "We then CLEANed the model visibilities generated by `protomidpy` from its *maximum a posteriori* estimate of $I(r)$ in the same manner as the observations"},
+  {"loc": "Spiral arm properties", "quote": "Next, we CLEANed the residual visibilities created by subtracting the model visibilities from the observed visibilities, employing a $uv$ taper of $0.02\\ensuremath{''}$ to improve the signal-to-noise ratio of the residual emission."}]},
+ "software": ["CASA", "protomidpy"],
+ "key_parameters": [
+  {"value": "residual image uv taper 0.02 arcsec; synthesized beam 0.046 x 0.030 arcsec (15.9 deg)", "evidence": [{"loc": "Spiral arm properties", "quote": "The resulting synthesized beam is $0.046\\ensuremath{''}\\times0.030\\ensuremath{''}$ $(15.9\\ensuremath{^\\circ})$."}]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Radial profiles of CLEANed model and observations compared", "evidence": [{"loc": "Spiral arm properties", "quote": "comparison of the radial profiles calculated from the CLEAN images of the model and observations"}]}},
+{"order": 7, "goal": "Extract spiral arm sky coordinates",
+ "method": {"value": "filfinder run on the protomidpy residual image; coordinates converted to disk R and theta", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "we used `filfinder` (cite: 2015MNRAS.452.3435K; 2016ascl.soft08009K) to extract the sky coordinates of the spiral arms from the `protomidpy` residual image."},
+  {"loc": "Spiral arm properties", "quote": "The spiral coordinates identified by `filfinder` were then converted to disk polar coordinates $R$ and $\\theta$"}]},
+ "software": ["filfinder"],
+ "key_parameters": [
+  {"value": "smoothing size 2 pixels (0.006 arcsec); intensity threshold 0.03 mJy/beam", "evidence": [{"loc": "Spiral arm properties", "quote": "we set a smoothing size of 2 pixels (corresponding to $0.006\\ensuremath{''}$), an intensity threshold of 0.03 mJy beam$^{-1}$,"}]},
+  {"value": "adaptive-threshold mask width 4 pixels (0.012 arcsec, ~1.5 au)", "evidence": [{"loc": "Spiral arm properties", "quote": "a threshold of 4 pixels (corresponding to $0.012\\ensuremath{''}\\sim1.5$ au) for the width of the adaptive thresholding mask,"}]},
+  {"value": "size threshold 300 au^2; minimum length 3 synthesized beams", "evidence": [{"loc": "Spiral arm properties", "quote": "a size threshold of 300 au$^2$, and a minimum length of 3 synthesized beams."}]}
+ ],
+ "assumptions": [
+  {"value": "For S2, points with R < 10 au not used because they belong to the central bar-like residual", "evidence": [{"loc": "Spiral arm properties", "quote": "For S2, the points identified by `filfinder` with $R<10$ au are not plotted because they are associated with the central bar-like residual."}]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Parameters set after some experimentation", "evidence": [{"loc": "Spiral arm properties", "quote": "After some experimentation, we set a smoothing size of 2 pixels"}]}},
+{"order": 8, "goal": "Fit Archimedean spirals with Gaussian-process regression and derive pitch angles",
+ "method": {"value": "Each arm fit independently with R(theta)=a-b*theta, GP regression (white noise + squared exponential kernel) in log parameter space; pitch angle from tan(beta)=|d ln R/d theta|", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "We thus model S1 and S2 as Archimedean spirals, which take the form $R(\\theta) = a-b\\theta$."},
+  {"loc": "Spiral arm properties", "quote": "we used the `george` package (cite: 2015ITPAM..38..252A) to perform Gaussian process regression."}]},
+ "software": ["george", "emcee"],
+ "key_parameters": [
+  {"value": "Priors: ln a [3,5] (S1), [1,4] (S2)", "evidence": [{"loc": "Spiral arm properties", "quote": "For $\\ln a$, we set a flat prior with bounds of $[3,5]$ for S1 and $[1,4]$ for S2."}]},
+  {"value": "Priors for both arms: ln b [1,3], ln sigma^2 [-5,5], ln A [-4,4], ln C [-10,0]", "evidence": [{"loc": "Spiral arm properties", "quote": "For both arms, we set flat priors with bounds of $[1,3]$ for $\\ln b$, $[-5, 5]$ for $\\ln \\sigma^2$, $[-4,4]$ for $\\ln A$, and $[-10, 0]$ for $\\ln C$."}]},
+  {"value": "30 walkers, 5,000 burn-in steps plus 10,000 steps per arm; median and 68% interval reported", "evidence": [{"loc": "Spiral arm properties", "quote": "an ensemble of 30 walkers was evolved for 5,000 burn-in steps and then an additional 10,000 steps."}]}
+ ],
+ "assumptions": [
+  {"value": "Continuum disk geometrically thin", "evidence": [{"loc": "Spiral arm properties", "quote": "Our spiral geometry measurements assume that the millimeter continuum disk is geometrically thin."}]},
+  {"value": "Adjacent pixels correlated because the beam is oversampled, modeled via GP kernel", "evidence": [{"loc": "Spiral arm properties", "quote": "Adjacent pixels are not independent because the synthesized beam is oversampled."}]}
+ ],
+ "fitting": {"value": "emcee posterior sampling of ln a, ln b, ln sigma^2, ln A, ln C with covariance K_ij = sigma^2 delta_ij + A exp[-(theta_i-theta_j)^2/(2C)]", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "The elements of the covariance matrix are modelled as the sum of a white noise component and a squared exponential kernel:"},
+  {"loc": "Spiral arm properties", "quote": "We used `emcee` to sample the posterior distributions."}]},
+ "validation": {"value": "Model spirals compared with data and appear to reproduce them reasonably", "evidence": [{"loc": "Spiral arm properties", "quote": "the model Archimedean spirals, which appear to reasonably reproduce the observations."}]}},
+{"order": 9, "goal": "Measure spiral arm contrast",
+ "method": {"value": "Extract intensities from the original CLEAN image along the best-fit spirals and divide by an interpolated background of per-1-au-bin minimum disk intensity", "evidence": [
+  {"loc": "Spiral arm properties", "quote": "The spiral arm intensities were extracted from the original CLEAN image of the disk"},
+  {"loc": "Spiral arm properties", "quote": "The “background” was estimated by measuring the minimum intensity of the disk in radial bins of 1 au and then interpolating at the radial locations of the pixels that fall along the model spiral arms."}]},
+ "software": [],
+ "key_parameters": [
+  {"value": "radial bins of 1 au for the background", "evidence": [{"loc": "Spiral arm properties", "quote": "measuring the minimum intensity of the disk in radial bins of 1 au"}]}
+ ],
+ "assumptions": [
+  {"value": "Uncertainty on arm and background intensity equals the image rms", "evidence": [{"loc": "Spiral arm properties", "quote": "The uncertainty on the spiral arm and background intensity measurements was assumed to be the rms of the image."}]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 10, "goal": "Measure continuum flux and disk-averaged spectral index",
+ "method": {"value": "Flux within a 1 arcsec radius circle at 229.5 GHz combined with literature 97.5 GHz flux; alpha computed from the two fluxes", "evidence": [
+  {"loc": "Evidence for high millimeter continuum optical depths", "quote": "we measure a flux of 144.8 mJy at 229.5 GHz (1.3 mm) inside a circular region with a $1''$ radius."},
+  {"loc": "Evidence for high millimeter continuum optical depths", "quote": "The flux measurements at 229.5 and 97.5 GHz yield a disk-averaged spectral index of $\\alpha = \\ln\\frac{I_{\\nu_1}}{I_{\\nu_2}}/\\ln{\\frac{\\nu_1}{\\nu_2}} = 2.1\\pm0.2$."}]},
+ "software": [],
+ "key_parameters": [
+  {"value": "10% systematic flux calibration uncertainty dominates", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "the dominant source of uncertainty is the 10% systematic flux calibration uncertainty."}]}
+ ],
+ "assumptions": [
+  {"value": "Disk-averaged index only; 3 mm data only marginally resolve the disk", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "Because the 3 mm observations from (cite: 2019ApJ...877L...2H) only marginally resolve the disk, we cannot meaningfully estimate a radially resolved spectral index profile."}]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Consistent with the index from CARMA fluxes (alpha = 1.9 +/- 0.2)", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "their measurements yield a disk-averaged $\\alpha = 1.9\\pm0.2$, which is consistent with our estimate from ALMA."}]}},
+{"order": 11, "goal": "Compare brightness temperature with dust temperature",
+ "method": {"value": "Analytic passively irradiated disk dust temperature compared with observed brightness temperature from the CLEAN image, with and without scattering (chi = 0.6)", "evidence": [
+  {"loc": "Evidence for high millimeter continuum optical depths", "quote": "We use the following analytic formula for a passively irradiated disk from (cite: 2018ApJ...869L..46D) to estimate the dust temperature:"},
+  {"loc": "Evidence for high millimeter continuum optical depths", "quote": "calculated from the CLEAN image using the full Planck function"}]},
+ "software": [],
+ "key_parameters": [
+  {"value": "flaring angle 0.02; L* = 0.79 Lsun", "evidence": [
+   {"loc": "Evidence for high millimeter continuum optical depths", "quote": "As in (cite: 2018ApJ...869L..46D), we set the flaring angle $\\varphi$ to 0.02."},
+   {"loc": "Evidence for high millimeter continuum optical depths", "quote": "The luminosity of Haro 6-13 is $L_\\ast = 0.79$ $L_\\odot$ (cite: 2019ApJ...882...49L)."}]},
+  {"value": "scattering case chi = I_nu/B_nu = 0.6 for DSHARP composition", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "with $\\chi \\equiv \\frac{I_\\nu}{B_\\nu}$ as low as $\\sim0.6$ for the DSHARP dust composition"}]}
+ ],
+ "assumptions": [
+  {"value": "Dust temperature set by passive irradiation; the estimate is crude", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "while we only have a crude estimate of the dust temperature"}]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 12, "goal": "Estimate Toomre Q from optically thick dust surface density",
+ "method": {"value": "Sigma_dust = tau/kappa_abs with tau = -cos i ln(1 - I/B(Td)); Q = c_s Omega_K/(pi G Sigma) with gas-to-dust 100; Td = max(observed brightness temperature, analytic Td)", "evidence": [
+  {"loc": "Gravitational instability", "quote": "The dust temperature at each value of $R$ is calculated by taking the maximum of either the observed brightness temperature or the dust temperature calculated with Equation"},
+  {"loc": "Gravitational instability", "quote": "Finally, $Q$ is calculated assuming that $M_\\ast = 0.91$ $M_\\odot$ (cite: 2019ApJ...882...49L) and the gas-to-dust ratio is 100."}]},
+ "software": ["dsharp_opac"],
+ "key_parameters": [
+  {"value": "tau estimated only for R > 5 au; tau = 4 set where brightness temperature exceeds dust temperature in the inner disk", "evidence": [
+   {"loc": "Gravitational instability", "quote": "We restrict the estimate of $\\tau$ to $R>5$ au because beam dilution leads to artificially low estimates of $\\tau$ in the inner disk."},
+   {"loc": "Gravitational instability", "quote": "we set $\\tau=4$ under the assumption that $\\tau$ is no lower than the values calculated outside this region."}]},
+  {"value": "kappa_abs = 0.4, 1.9, 1.0 cm2/g for a_max = 0.1, 1, 10 mm, n(a) ~ a^-3.5", "evidence": [
+   {"loc": "Gravitational instability", "quote": "Then, $\\Sigma_\\mathrm{dust}$ is calculated using values of $\\kappa_\\nu^\\mathrm{abs} = 0.4$, $1.9$, and $1.0$ cm$^{2}$ g$^{-1}$."},
+   {"loc": "Gravitational instability", "quote": "for a grain size distribution of $n(a)\\,da\\propto a^{-3.5}\\,da$ and maximum grain sizes of $a_\\mathrm{max} = 0.1$, $1$, and $10$ mm, respectively"}]}
+ ],
+ "assumptions": [
+  {"value": "mean molecular weight 2.37; gas-to-dust ratio 100; M* = 0.91 Msun; absorption-only opacity", "evidence": [
+   {"loc": "Gravitational instability", "quote": "$\\mu=2.37$ is the mean molecular weight"},
+   {"loc": "Gravitational instability", "quote": "In the absence of scattering, the dust surface density is given by"}]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Authors note Q is highly sensitive to the temperature profile; scattering could lower Q further", "evidence": [
+  {"loc": "Gravitational instability", "quote": "In the optically thick regime, the derived value of $Q$ is highly sensitive to the temperature profile, which is not well-constrained by our data."}]}},
+{"order": 13, "goal": "Estimate disk mass from C18O flux",
+ "method": {"value": "C18O flux within a 1 arcsec radius circle mapped to a maximum disk mass using a thermochemical model grid", "evidence": [
+  {"loc": "Gravitational instability", "quote": "The flux measured within a circle centered on the disk with a $1''$ radius (130 au) is 460 mJy km s$^{-1}$."},
+  {"loc": "Gravitational instability", "quote": "Based on the grid of thermochemical models of compact disks presented in (cite: 2021AA...651A..48M), which assume an ISM-like CO:H$_2$ abundance"}]},
+ "software": [],
+ "key_parameters": [],
+ "assumptions": [
+  {"value": "ISM-like CO:H2 abundance", "evidence": [{"loc": "Gravitational instability", "quote": "which assume an ISM-like CO:H$_2$ abundance"}]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Authors caution C18O may be affected by foreground absorption and continuum optical depth, so it may not trace the surface density in the arm region", "evidence": [{"loc": "Gravitational instability", "quote": "If C$^{18}$O is similarly afflicted, then it would not be a reliable probe of the surface density in the spiral arm region of the disk."}]}}
+],
+"software": [
+{"name": "CASA", "version": "6.4.1 (pipeline), 4.7.2 (pipeline, 2016 Nov 28 EB), 6.5 (further processing)", "used_for": {"value": "Pipeline calibration, tclean imaging, imfit, phaseshift, fixplanets, self-calibration, uvcontsub", "evidence": [
+ {"loc": "2 Observations and Data Reduction", "quote": "Further processing of the datasets was performed with `CASA` 6.5."},
+ {"loc": "2 Observations and Data Reduction", "quote": "Separate continuum images were generated for the two execution blocks (EBs) using `tclean`."}]}},
+{"name": "protomidpy", "version": "not stated", "used_for": {"value": "Non-parametric axisymmetric visibility fit and model/residual visibilities", "evidence": [{"loc": "Spiral arm properties", "quote": "we estimated and subtracted an axisymmetric intensity profile using the publicly available code"}]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC sampling for protomidpy and for the spiral fits", "evidence": [{"loc": "Spiral arm properties", "quote": "We used `emcee` to sample the posterior distributions."}]}},
+{"name": "visread", "version": "not stated", "used_for": {"value": "Rescaling visibility weights per SPW", "evidence": [{"loc": "Spiral arm properties", "quote": "we used the `visread` package (cite: ian_czekala_2021_4432520)"}]}},
+{"name": "filfinder", "version": "not stated", "used_for": {"value": "Extracting spiral arm coordinates from the residual image", "evidence": [{"loc": "Spiral arm properties", "quote": "we used `filfinder` (cite: 2015MNRAS.452.3435K; 2016ascl.soft08009K) to extract the sky coordinates of the spiral arms"}]}},
+{"name": "george", "version": "not stated", "used_for": {"value": "Gaussian process regression for spiral fits", "evidence": [{"loc": "Spiral arm properties", "quote": "we used the `george` package (cite: 2015ITPAM..38..252A) to perform Gaussian process regression."}]}},
+{"name": "scikit-image", "version": "not stated", "used_for": {"value": "Unsharp masking", "evidence": [{"loc": "Overview of continuum morphology", "quote": "We used the implementation from `scikit-image`"}]}},
+{"name": "dsharp_opac", "version": "v1.1.0 (from reference list)", "used_for": {"value": "DSHARP dust opacities (cited alongside kappa values)", "evidence": [{"loc": "Gravitational instability", "quote": "(cite: 2018ApJ...869L..45B; 2018zndo...1495277B)"}]}},
+{"name": "analysisUtils", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "AstroPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "cmasher", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "SciPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+{"quantity": "Continuum synthesized beam", "value": "0.037 x 0.022 arcsec, PA 19.08 deg", "uncertainty": "not stated", "units": "arcsec", "from_step": 1, "evidence": [{"loc": "Table 2", "quote": "$0.037\\ensuremath{''}\\times0.022\\ensuremath{''}$ $(19.08\\ensuremath{^\\circ})$"}]},
+{"quantity": "Continuum rms", "value": "0.019", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 1, "evidence": [{"loc": "Table 2", "quote": "0.019"}]},
+{"quantity": "Disk offset Delta x", "value": "3.61", "uncertainty": "0.06", "units": "mas", "from_step": 5, "evidence": [{"loc": "Table 3", "quote": "$3.61\\pm0.06$"}]},
+{"quantity": "Disk offset Delta y", "value": "0.81", "uncertainty": "0.08", "units": "mas", "from_step": 5, "evidence": [{"loc": "Table 3", "quote": "$0.81\\pm0.08$"}]},
+{"quantity": "Position angle", "value": "154.09", "uncertainty": "0.14", "units": "deg", "from_step": 5, "evidence": [{"loc": "Table 3", "quote": "$154.09\\pm0.14$"}]},
+{"quantity": "Inclination", "value": "39.47", "uncertainty": "0.09", "units": "deg", "from_step": 5, "evidence": [{"loc": "Table 3", "quote": "$39.47\\pm0.09$"}]},
+{"quantity": "Hyperparameter gamma", "value": "0.079", "uncertainty": "0.003", "units": "arcsec", "from_step": 5, "evidence": [{"loc": "Table 3", "quote": "$0.079\\pm0.003$"}]},
+{"quantity": "Hyperparameter log alpha", "value": "0.5", "uncertainty": "0.2", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Table 3", "quote": "$0.5\\pm0.2$"}]},
+{"quantity": "Residual image synthesized beam", "value": "0.046 x 0.030 arcsec, PA 15.9 deg", "uncertainty": "not stated", "units": "arcsec", "from_step": 6, "evidence": [{"loc": "Spiral arm properties", "quote": "The resulting synthesized beam is $0.046\\ensuremath{''}\\times0.030\\ensuremath{''}$ $(15.9\\ensuremath{^\\circ})$."}]},
+{"quantity": "Spiral S1 parameter a", "value": "37.6", "uncertainty": "0.7", "units": "au", "from_step": 8, "evidence": [{"loc": "Table 4", "quote": "$37.6\\pm0.7$"}]},
+{"quantity": "Spiral S1 parameter b", "value": "7.2", "uncertainty": "0.3", "units": "au", "from_step": 8, "evidence": [{"loc": "Table 4", "quote": "$7.2\\pm0.3$"}]},
+{"quantity": "Spiral S2 parameter a", "value": "14.6", "uncertainty": "0.5", "units": "au", "from_step": 8, "evidence": [{"loc": "Table 4", "quote": "$14.6\\pm0.5$"}]},
+{"quantity": "Spiral S2 parameter b", "value": "6.4", "uncertainty": "0.2", "units": "au", "from_step": 8, "evidence": [{"loc": "Table 4", "quote": "$6.4\\pm0.2$"}]},
+{"quantity": "S1 pitch angle range", "value": "25 deg at R=15 au to 13 deg at R=31 au", "uncertainty": "not stated", "units": "deg", "from_step": 8, "evidence": [{"loc": "Spiral arm properties", "quote": "For S1, the pitch angle ranges from $25^\\circ$ at $R=15$ au to $13^\\circ$ at $R=31$ au."}]},
+{"quantity": "S2 pitch angle range", "value": "33 deg at R=10 au to 10 deg at R=38 au", "uncertainty": "not stated", "units": "deg", "from_step": 8, "evidence": [{"loc": "Spiral arm properties", "quote": "For S2, the pitch angle ranges from $33^\\circ$ at $R=10$ au to $10^\\circ$ at $R=38$ au."}]},
+{"quantity": "Spiral arm contrast", "value": "<1.5 where both arms are detected", "uncertainty": "not stated", "units": "dimensionless", "from_step": 9, "evidence": [{"loc": "Spiral arm properties", "quote": "their contrasts are similar to one another and generally low ($<1.5$)"}]},
+{"quantity": "Flux within 1 arcsec radius at 229.5 GHz", "value": "144.8", "uncertainty": "10% systematic", "units": "mJy", "from_step": 10, "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "we measure a flux of 144.8 mJy at 229.5 GHz (1.3 mm) inside a circular region with a $1''$ radius."}]},
+{"quantity": "Disk-averaged spectral index 1.3-3 mm", "value": "2.1", "uncertainty": "0.2", "units": "dimensionless", "from_step": 10, "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "$\\alpha = \\ln\\frac{I_{\\nu_1}}{I_{\\nu_2}}/\\ln{\\frac{\\nu_1}{\\nu_2}} = 2.1\\pm0.2$"}]},
+{"quantity": "Spectral index from CARMA fluxes", "value": "1.9", "uncertainty": "0.2", "units": "dimensionless", "from_step": 10, "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "their measurements yield a disk-averaged $\\alpha = 1.9\\pm0.2$"}]},
+{"quantity": "Toomre Q over the spiral-arm radii", "value": "<4 generally; dips to <~2 for a_max = 100 um and 1 cm", "uncertainty": "not stated", "units": "dimensionless", "from_step": 12, "evidence": [
+ {"loc": "Gravitational instability", "quote": "the Toomre Q parameter values are generally low ($<4$)."},
+ {"loc": "Gravitational instability", "quote": "For certain choices of grain properties ($a_\\mathrm{max}$ = 100 $\\mu$m and $a_\\mathrm{max}$ = 1 cm), $Q$ dips into the gravitationally unstable regime ($\\lessapprox2$)."}]},
+{"quantity": "C18O flux within 1 arcsec radius", "value": "460", "uncertainty": "not stated", "units": "mJy km/s", "from_step": 13, "evidence": [{"loc": "Gravitational instability", "quote": "is 460 mJy km s$^{-1}$."}]},
+{"quantity": "Maximum disk mass from C18O", "value": "~1e-2", "uncertainty": "not stated", "units": "Msun", "from_step": 13, "evidence": [{"loc": "Gravitational instability", "quote": "the C$^{18}$O flux translates to a maximum disk mass of $\\sim10^{-2}$ $M_\\odot$, corresponding to a disk-to-stellar mass ratio of $\\sim0.01$."}]}
+],
+"findings_qualitative": [
+{"value": "A pair of low-contrast spiral arms is detected in the 1.3 mm continuum at disk radii of ~10-35 au", "evidence": [{"loc": "abstract", "quote": "A pair of low-contrast spiral arms are detected at disk radii from $\\sim10-35$ au."}]},
+{"value": "No clear gaps, rings or cavities in the azimuthally averaged profile; a slope change near 15 au may trace an unresolved gap", "evidence": [{"loc": "Overview of continuum morphology", "quote": "No clear gaps, rings, or cavities are visible, but it is possible that the slope change at $R\\sim15$ au traces an unresolved gap."}]},
+{"value": "S2 appears connected to a bar-like central structure whose reality needs higher resolution to confirm", "evidence": [{"loc": "Spiral arm properties", "quote": "S2 appears to be connected to a bar-like structure at the center of the disk."}]},
+{"value": "12CO and 13CO are dominated by envelope emission extending to hundreds of au south and west of the star", "evidence": [{"loc": "CO isotopologue emission", "quote": "$^{12}$CO and $^{13}$CO are dominated by envelope emission extending to hundreds of au south and west of the star."}]},
+{"value": "S2 pitch angle decreases with radius", "evidence": [{"loc": "Spiral arm properties", "quote": "S2 flattens out as $R$ increases, indicating that the pitch angle is decreasing with radius."}]}
+],
+"claims": [
+{"hypothesis": "Does the compact Haro 6-13 disk show millimeter continuum spiral arms?",
+ "experiment": "Long-baseline ALMA 1.3 mm imaging (~0.04 arcsec) with subtraction of an axisymmetric protomidpy model",
+ "result": "Two spiral arms (S1, S2) in the residuals at ~10-35 au, modelled as Archimedean spirals with pitch angles ~10-30 deg",
+ "finding": "Haro 6-13 is one of the smallest disks with millimeter continuum spiral arms",
+ "support": "supported",
+ "evidence": [{"loc": "Summary", "quote": "A pair of low-contrast spiral arms is detected, making the Haro 6-13 disk one of the smallest disks in which millimeter continuum spiral arms have been observed."}]},
+{"hypothesis": "Is the 1.3 mm continuum optically thick?",
+ "experiment": "Disk-averaged spectral index from 1.3 and 3 mm fluxes and brightness temperatures compared with an analytic dust temperature",
+ "result": "alpha = 2.1 +/- 0.2 and brightness temperatures near the dust temperature",
+ "finding": "Emission is likely optically thick, though optically thin large grains are not excluded by the index alone",
+ "support": "partially",
+ "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "Our low spectral index value is compatible with the disk being optically thick, but given the uncertainties, optically thin emission from large dust grains is not ruled out based on spectral index alone."}]},
+{"hypothesis": "Could the disk be gravitationally unstable?",
+ "experiment": "Lower-bound dust surface density from optically thick emission converted to an upper bound on Toomre Q; C18O disk mass from thermochemical grid",
+ "result": "Q generally <4 and <~2 for some opacities; C18O gives a maximum disk-to-star mass ratio of ~0.01",
+ "finding": "GI is plausible and worth further exploration but not established; C18O may be unreliable",
+ "support": "partially",
+ "evidence": [{"loc": "Gravitational instability", "quote": "these calculations indicate that the dust optical depths do not need to be extremely high for the disk to become gravitationally unstable."}]},
+{"hypothesis": "Do the spiral arms have constant pitch angle?",
+ "experiment": "Gaussian-process Archimedean spiral fits to filfinder-extracted arm coordinates",
+ "result": "S2 flattens in ln R vs theta, pitch angle decreasing with radius",
+ "finding": "Spirals modeled as Archimedean; decreasing pitch angle is at odds with constant-pitch GI simulations but similar to some massive cold-disk simulations",
+ "support": "supported",
+ "evidence": [{"loc": "Spiral arm properties", "quote": "S2 flattens out as $R$ increases, indicating that the pitch angle is decreasing with radius."}]},
+{"hypothesis": "Are companions or flybys a likely origin of the spirals?",
+ "experiment": "Literature review of companion searches, Gaia RUWE, imaging constraints and CO morphology",
+ "result": "No known companions, RUWE 2.4 within single-star range, no tidal CO structures reported",
+ "finding": "Companions and flybys are unlikely; infall or GI are favored",
+ "support": "partially",
+ "evidence": [{"loc": "Planetary or stellar companions", "quote": "However, Haro 6-13 has no known companions."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Earlier 0.1 arcsec data showed no clear substructure, so high-resolution long-baseline observations were requested", "evidence": [{"loc": "Introduction", "quote": "To investigate the nature of the substructures in the Haro 6-13 disk, we used ALMA to obtain high angular resolution 1.3 mm continuum observations."}]},
+{"field": "why_this_method", "value": "Subtract an axisymmetric model to isolate spirals; unsharp mask not used quantitatively because it truncates the outer disk", "evidence": [
+ {"loc": "Spiral arm properties", "quote": "To isolate the spiral structures from the disk background, we estimated and subtracted an axisymmetric intensity profile using the publicly available code"},
+ {"loc": "Spiral arm properties", "quote": "We do not use the version of the image with unsharp masking for quantitative analysis because the process truncates the outer disk emission, which may bias spiral measurements"}]},
+{"field": "how_they_decided_enough", "value": "MCMC chain length chosen to exceed 50x the autocorrelation time", "evidence": [{"loc": "Spiral arm properties", "quote": "The length of the chains was chosen to ensure that they were at least $50\\times$ longer than the integrated autocorrelation time."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "frank-like visibility modeling not used because it requires the user to specify orientation, offset and hyperparameters; protomidpy fits them", "evidence": [{"loc": "Spiral arm properties", "quote": "but the latter requires the user to specify the disk orientation, offset, and regularization hyperparameters."}]},
+{"value": "Flyby origin disfavored: no nearby perturber and no tidal CO structures", "evidence": [{"loc": "Stellar flybys", "quote": "Haro 6-13 does not have any known nearby stellar-mass perturbers."}]},
+{"value": "Constant-pitch GI simulations would be at odds with the observed decreasing pitch angle", "evidence": [{"loc": "Gravitational instability", "quote": "found that the pitch angles were approximately constant, which would be at odds with our observations"}]}
+],
+"limitations_admitted": [
+{"value": "Spiral geometry assumes a geometrically thin disk", "evidence": [{"loc": "Spiral arm properties", "quote": "Our spiral geometry measurements assume that the millimeter continuum disk is geometrically thin."}]},
+{"value": "Structure within about a beam of the center can be distorted, so the bar-like structure is unconfirmed", "evidence": [{"loc": "Spiral arm properties", "quote": "spiral structure can appear significantly distorted within a beam or so from the disk center"}]},
+{"value": "Toomre Q is highly sensitive to the poorly constrained temperature profile", "evidence": [{"loc": "Gravitational instability", "quote": "In the optically thick regime, the derived value of $Q$ is highly sensitive to the temperature profile, which is not well-constrained by our data."}]},
+{"value": "Coarse spectral resolution prevents separating disk and envelope in C18O", "evidence": [{"loc": "CO isotopologue emission", "quote": "Given the coarse spectral resolution of the data, it is not straightforward to distinguish disk and envelope contributions to the C$^{18}$O emission."}]},
+{"value": "Only a disk-averaged spectral index could be derived since the 3 mm data barely resolve the disk", "evidence": [{"loc": "Evidence for high millimeter continuum optical depths", "quote": "we cannot meaningfully estimate a radially resolved spectral index profile."}]}
+],
+"referee_caveats_inferred": [
+"Optical depth, dust temperature and Q rest on an analytic passive-disk temperature and absorption-only opacities with no independent mass constraint; conclusions about GI remain qualitative",
+"Spiral detection is made in residuals of a single axisymmetric model, so arm extent depends on the protomidpy fit and its regularization; no injection-recovery test is reported here",
+"Pitch-angle trends assume a thin disk and S1 covers a small angular range, so the radial pitch-angle behaviour of S1 is weakly constrained",
+"The 3 mm flux comes from a different observation and epoch, with calibration uncertainty only assumed at 10%"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Both ALMA programs obtained from the ALMA archive / acknowledged as public ALMA data", "evidence": [
+ {"loc": "2 Observations and Data Reduction", "quote": "we retrieved 1.3 mm observations of Haro 6-13 from program 2016.1.01042.S (PI: C. Chandler) via the ALMA archive."},
+ {"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2022.1.01365.S and #2016.1.01042.S."}]},
+{"field": "products_in_archive", "value": "ALMA-staff calibrated MS for 2022.1.01365.S; the authors' self-calibrated visibilities and images are on Zenodo (doi 10.5281/zenodo.15002753)", "evidence": [
+ {"loc": "2 Observations and Data Reduction", "quote": "A calibrated measurement set was produced by ALMA staff using the `CASA 6.4.1` pipeline"},
+ {"loc": "Footnote 1", "quote": "The visibilities and images can be downloaded from Zenodo:"}]}
+],
+"code_released": [
+{"value": "protomidpy is publicly available (GitHub link given); no authors' scripts for CASA processing, filfinder or george fits stated", "evidence": [{"loc": "Spiral arm properties", "quote": "we estimated and subtracted an axisymmetric intensity profile using the publicly available code"}]}
+],
+"missing_for_reproduction": [
+"tclean parameters and masks for the continuum images",
+"gaincal and flux-scale details for self-calibration",
+"protomidpy configuration (basis size, radial grid, version)",
+"filfinder pixel scale and branch selection",
+"Exact aperture and background choices for fluxes and contrast"
+],
+"estimated_data_volume_inferred": "~10-50 GB of raw/calibrated data for three EBs (rough estimate); Zenodo products are much smaller",
+"score_inferred": 4,
+"score_reason": "Public ALMA data, Zenodo self-calibrated products and a public fitting code with stated priors, walkers and filfinder parameters give a nearly complete recipe with many numeric results; tclean and calibration details are missing.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Data are public, Zenodo products exist, the protomidpy and spiral-fit recipe is largely specified, and the main results (orientation, spiral parameters, pitch angles, alpha, Q) are numeric.",
+"methods_papers": [
+{"citation": "(cite: 2024MNRAS.532.1361A)", "why": "Algorithm behind protomidpy non-parametric visibility fitting"},
+{"citation": "(cite: 2023PASP..135f4503Z)", "why": "Method used by visread for weight rescaling"},
+{"citation": "(cite: 2018ApJ...869L..41A)", "why": "Procedure for disk-center alignment of EBs"},
+{"citation": "(cite: 2018ApJ...869L..45B)", "why": "DSHARP dust opacities"},
+{"citation": "(cite: 2018ApJ...869L..46D)", "why": "Analytic passive-disk dust temperature"},
+{"citation": "(cite: 2020PASP..132b4505K)", "why": "auto-multithresh CLEAN masking"},
+{"citation": "(cite: 2021AA...651A..48M)", "why": "Thermochemical model grid for C18O disk masses"}
+],
+"companion_papers": [
+{"citation": "(cite: 2019ApJ...882...49L)", "why": "Earlier 0.1 arcsec Taurus survey including Haro 6-13; source of L*, M*, age"},
+{"citation": "(cite: 2021AA...645A.145G)", "why": "ALMA molecular line observations showing the envelope and Keplerian disk"},
+{"citation": "(cite: 2024PASJ...76..437Y)", "why": "Super-resolution imaging of the earlier data"},
+{"citation": "(cite: 2023ApJ...952..108Z)", "why": "Visibility modeling of the earlier data finding a gap at 16 au and ring at 20 au"},
+{"citation": "(cite: 2019ApJ...877L...2H)", "why": "3 mm flux used for the spectral index"}
+],
+"related_projects_or_surveys": ["DSHARP", "2016.1.01042.S", "2022.1.01365.S"]
+}

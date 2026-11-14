@@ -1,0 +1,237 @@
+{
+ "bibcode": "2015ApJ...808...69B",
+ "title": "ALMA Observations of the Largest Proto-Planetary Disk in the Orion Nebula, 114-426: A CO Silhouette",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/808/1/69",
+ "arxiv_id": "1506.03391",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What are the dust mass, gas tracers and CO kinematics (central star mass) of the largest silhouette disk in the Orion Nebula, 114-426, from ALMA Band 7 data?",
+ "alma_project_codes": [
+  "2011.0.00028.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "twenty-two 12 m antennas, Cycle 0",
+  "angular_resolution": "0.51'' x 0.46''",
+  "sensitivity": "continuum ~0.56 mJy/beam; line 0.025-0.1 Jy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish 12CO J=1-0 background used to estimate background temperature",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The background is estimated by interpolation of the $^{12}$CO emission in the J=1$-$0 emission from (cite: Shimajiri2011)"
+     }
+    ]
+   },
+   "citation": "Shimajiri2011; Shimajiri2014"
+  },
+  {
+   "what": {
+    "value": "12CO J=2-1 IRAM 30m background",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "the J=2$-$1 emission from (cite: Berne2014)"
+     }
+    ]
+   },
+   "citation": "Berne2014"
+  },
+  {
+   "what": {
+    "value": "Distance 414 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "950 AU at a distance of 414 pc (cite: Menten2007)"
+     }
+    ]
+   },
+   "citation": "Menten2007"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum flux and size",
+   "method": "Elliptical aperture flux sum divided by N_pix; beam deconvolved sizes",
+   "software": [],
+   "key_parameters": [
+    "aperture ~0.74'' by 1.55''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive disk mass from dust continuum",
+   "method": "Optically thin M = S D^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=0.034 cm^2/g, gas-to-dust 100, T_dust=20 K, D=414 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure CO absorption depths and velocities",
+   "method": "Locate deepest absorption per channel; convert Jy/beam to K; compare with interpolated single-dish background",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate central star mass",
+   "method": "Keplerian from separation and velocity difference of absorption minima; plus thin optically thick Keplerian disk model convolved with beam",
+   "software": [],
+   "key_parameters": [
+    "free parameters: inner hole radius R_in and M_*"
+   ],
+   "assumptions": [
+    "edge-on disk, Keplerian rotation, D=414 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk gas mass",
+   "value": "3.1",
+   "uncertainty": "0.6",
+   "units": "Jupiter masses",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Using these values, the disk mass is only 3.1$\\pm$0.6 times the mass of Jupiter ."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass",
+   "value": "5.9e30",
+   "uncertainty": "1.1e30",
+   "units": "g",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "\\approx 5.9 \\pm  1.1  \\times 10^{30}~{\\rm grams}"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated continuum flux",
+   "value": "6.0",
+   "uncertainty": "0.6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "is 6.0$\\pm$0.6 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum major axis FWHM",
+   "value": "1.11",
+   "uncertainty": "0.05",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "major axis FWHM diameter of 1.11$\\pm$0.05$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak continuum",
+   "value": "4.2",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The peak flux, 4.2 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO absorption depth north",
+   "value": "-0.63",
+   "uncertainty": "not stated",
+   "units": "Jy/beam (27 K)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "has the strongest CO absorption with a depth of $-$0.63 Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity difference of absorption peaks",
+   "value": "2.9",
+   "uncertainty": "0.2",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "differ in radial velocity by $\\Delta$V = 2.9 $\\pm$0.2 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central star mass (Keplerian)",
+   "value": "0.43",
+   "uncertainty": "0.11",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$0.43 \\pm 0.11$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk lifetime against photoevaporation",
+   "value": "(1.0-1.6)e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$\\tau \\sim M_{disk}  / \\dot M_{disk}  \\sim (1.0 - 1.6) \\times 10^4$ years"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration details, CASA version, calibrators",
+  "Imaging weighting/robust, deconvolver, masks",
+  "Continuum-subtraction and line-free channels",
+  "Details of the Keplerian CO absorption model fit (likelihood, grid, inclination, parameter ranges)",
+  "How the background CO temperature was interpolated per channel",
+  "Aperture used for flux measurement beyond its approximate size"
+ ],
+ "missing_for_reproduction": [
+  "Reduction/imaging parameters (in Mann et al. 2014)",
+  "Model fitting code and details",
+  "Single-dish background cubes"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple formulae, but calibration/imaging and the disk model are not specified.",
+ "rediscovery_reason": "Public data and simple numeric results (flux, mass, absorption depths), though imaging details must come from Mann et al. 2014.",
+ "source_card": "cards/2015ApJ...808...69B/sonnet/card.md"
+}

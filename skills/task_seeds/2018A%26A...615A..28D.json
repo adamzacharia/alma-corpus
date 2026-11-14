@@ -1,0 +1,321 @@
+{
+ "bibcode": "2018A&A...615A..28D",
+ "title": "ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201732216",
+ "arxiv_id": "1801.09291",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "What are the dominant physical, dynamical and chemical processes in the inner wind of the low mass-loss rate AGB star R Dor and the high mass-loss rate AGB star IK Tau, as traced by an ALMA band 7 spectral line and imaging survey?",
+ "alma_project_codes": [
+  "2013.1.00166.S"
+ ],
+ "data": {
+  "bands": "Band 7, 335-362 GHz",
+  "arrays": "An average of 39 good antennas",
+  "angular_resolution": "~150 mas",
+  "sensitivity": "Channel rms 3-9 mJy (IK Tau), 2.7-5.7 mJy (R Dor); continuum rms 0.047 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar and wind properties (D, L, T*, R*, Mdot, r_dust, v_inf) of both stars",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Overview of stellar and wind properties of R Dor and IK Tau (cite: Decin2017arXiv170405237D)."
+     }
+    ]
+   },
+   "citation": "(cite: Decin2017arXiv170405237D)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity ~7 cm2/g",
+    "evidence": [
+     {
+      "loc": "3 Continuum image",
+      "quote": "for an opacity of $\\sim$7 cm$^2$/g (cite: Demyk2017arXiv170609801D)"
+     }
+    ]
+   },
+   "citation": "(cite: Demyk2017arXiv170609801D)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature ranges 200-650 K (IK Tau) and 400-1530 K (R Dor)",
+    "evidence": [
+     {
+      "loc": "3 Continuum image",
+      "quote": "dust temperature of varying between 200–650 K for IK Tau and 400–1530 K for R Dor (cite: Decin2017arXiv170405237D)"
+     }
+    ]
+   },
+   "citation": "(cite: Decin2017arXiv170405237D)"
+  },
+  {
+   "what": {
+    "value": "Spectral line catalogues for line identification",
+    "evidence": [
+     {
+      "loc": "4.1 Line identification",
+      "quote": "spectral line catalogues of the Jet Propulsion Laboratory (cite: Pickett1998JQSRT..60..883P) and the Cologne Database for Molecular Spectroscopy"
+     }
+    ]
+   },
+   "citation": "(cite: Pickett1998JQSRT..60..883P); (cite: Muller2001A&A...370L..49M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and line cubes",
+   "method": "Standard CASA calibration scripts, self-calibration on continuum channels, continuum subtraction, imaging of full cubes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust mass and dust mass-loss rate from continuum",
+   "method": "Subtract convolved stellar point source from continuum, convert the residual to dust mass assuming optically thin emission, and compute crossing time from the momentum equation solution",
+   "software": [],
+   "key_parameters": [
+    "Drift velocity forced below 20 km/s"
+   ],
+   "assumptions": [
+    "Optically thin dust, opacity ~7 cm2/g, dust temperature 200-650 K (IK Tau) and 400-1530 K (R Dor)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify spectral lines",
+   "method": "Extract spectra in circular apertures, accept lines above 3x local rms, match with JPL/CDMS catalogues and the SMA VY CMa atlas, check with non-LTE spectra, fit soft-parabola to find blends",
+   "software": [
+    "RADEX",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Apertures 80/320/800 mas (IK Tau), 75/300/1000 mas (R Dor)"
+   ],
+   "assumptions": [
+    "vLSR 33 km/s (IK Tau), 7 km/s (R Dor)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure line widths, fluxes and angular extents",
+   "method": "Velocity span as continuous extent above 3.5 sigma; zeroth-moment maps; angular extent from annuli down to 1.5x off-source rms; azimuthal averages",
+   "software": [],
+   "key_parameters": [
+    "Annulus cutoff 1.5x off-source moment-map rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute isotopic ratios",
+   "method": "Intensity ratios of isotopologue lines with same quantum numbers, corrected for Einstein A / CDMS predicted intensity, frequency, partition function and lower energy",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin, LTE, no radiative pumping differences; masers excluded"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Trace wind velocity versus radius",
+   "method": "Plot half-width at zero intensity versus half the spatial FWHM and compare with beta-law velocity profiles from literature",
+   "software": [],
+   "key_parameters": [
+    "beta=1 (IK Tau), beta=5 (R Dor) from literature; beta=10 shown as guide"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak IK Tau",
+   "value": "0.069",
+   "uncertainty": "not stated",
+   "units": "Jy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Continuum image",
+     "quote": "The continuum peak is 0.069 Jy/beam for IK Tau and 0.596 Jy/beam for R Dor"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak R Dor",
+   "value": "0.596",
+   "uncertainty": "not stated",
+   "units": "Jy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Continuum image",
+     "quote": "The continuum peak is 0.069 Jy/beam for IK Tau and 0.596 Jy/beam for R Dor"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass IK Tau",
+   "value": "3.7e-7",
+   "uncertainty": "factor ~5",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Continuum image",
+     "quote": "we obtain a dust mass within the 3$\\sigma$ contour of $3.7 \\times 10^{-7}$ M$_{\\odot}$ and $2 \\times 10^{-8}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass R Dor",
+   "value": "2e-8",
+   "uncertainty": "factor ~5",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Continuum image",
+     "quote": "we obtain a dust mass within the 3$\\sigma$ contour of $3.7 \\times 10^{-7}$ M$_{\\odot}$ and $2 \\times 10^{-8}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass-loss rate IK Tau",
+   "value": "~1e-8",
+   "uncertainty": "factor ~5",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Continuum image",
+     "quote": "dust mass loss rate of $\\sim$1$\\times10^{-8}$ M$_{\\odot}$/yr for IK Tau and of $\\sim$5$\\times10^{-9}$ M$_{\\odot}$/yr for R Dor"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass-loss rate R Dor",
+   "value": "~5e-9",
+   "uncertainty": "factor ~5",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Continuum image",
+     "quote": "dust mass loss rate of $\\sim$1$\\times10^{-8}$ M$_{\\odot}$/yr for IK Tau and of $\\sim$5$\\times10^{-9}$ M$_{\\odot}$/yr for R Dor"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of lines detected",
+   "value": "168 (IK Tau), 197 (R Dor); 66 unidentified",
+   "uncertainty": "not stated",
+   "units": "lines",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Line identification",
+     "quote": "A total of 168 lines is detected in IK Tau and of 197 lines in R Dor arising from 15 molecules"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum wind velocity traced",
+   "value": "36 (IK Tau), 23 (R Dor)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Wind kinematics",
+     "quote": "the maximum velocity traced for IK Tau is 36 km/s and for R Dor 23 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "29Si/30Si IK Tau",
+   "value": "4.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 Isotopic ratios",
+     "quote": "For IK Tau, we derive that $^{29}$Si/$^{30}$Si$\\approx$4.1"
+    }
+   ]
+  },
+  {
+   "quantity": "34S/33S IK Tau",
+   "value": "5.6",
+   "uncertainty": "0.36",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 Isotopic ratios",
+     "quote": "$^{34}$S/$^{33}$S$\\approx$5.6$\\pm$0.36"
+    }
+   ]
+  },
+  {
+   "quantity": "35Cl/37Cl IK Tau",
+   "value": "1.1",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 Isotopic ratios",
+     "quote": "$^{35}$Cl/$^{37}$Cl$\\approx$1.1$\\pm$0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "34S/33S R Dor",
+   "value": "7.8",
+   "uncertainty": "0.7",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 Isotopic ratios",
+     "quote": "while for R Dor $^{34}$S/$^{33}$S$\\approx$7.8$\\pm$0.7"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of execution blocks and exact calibrator assignment per spectral window",
+  "Line-free channel ranges used for continuum and self-calibration",
+  "Self-calibration solution intervals and number of iterations",
+  "tclean deconvolver, masks, clean thresholds and iteration counts",
+  "Per-cube beam and rms for each spectral window",
+  "Exact adopted stellar flux model at 345 GHz",
+  "Parameters of the RADEX models used for line identification",
+  "Whether archive products or a re-reduction were used"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters and masks",
+  "Line-free channel selection",
+  "Self-calibration parameters",
+  "RADEX model parameters",
+  "Stellar flux model details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the line measurement recipe is clear, but imaging and self-calibration details are sparse and many results are tabulated measurements.",
+ "rediscovery_reason": "Public data, with numeric results (dust masses, line widths, isotope ratios), though processing details are incomplete.",
+ "source_card": "cards/2018A%26A...615A..28D/sonnet/card.md"
+}

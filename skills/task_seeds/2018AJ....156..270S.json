@@ -1,0 +1,230 @@
+{
+ "bibcode": "2018AJ....156..270S",
+ "title": "The Albedos, Sizes, Colors, and Satellites of Dwarf Planets Compared with Newly Measured Dwarf Planet 2013 FY27",
+ "year": 2018,
+ "doi": "10.3847/1538-3881/aae92a",
+ "arxiv_id": "1809.02184",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "What are the size, albedo, color and satellite properties of the dwarf planet 2013 FY27, and how do they compare with other large TNOs?",
+ "alma_project_codes": [
+  "2017.1.01662.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "0.50 x 0.42 arcsec (natural weighting)",
+  "sensitivity": "rms 5.5 microJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Phase integral q = 0.336 pV + 0.479 for TNOs",
+    "evidence": [
+     {
+      "loc": "Size and Albedo",
+      "quote": "As shown in Brown & Butler (2017), $q$ for TNOs can be approximated by $0.336p_V + 0.479$."
+     }
+    ]
+   },
+   "citation": "Brown & Butler (2017)"
+  },
+  {
+   "what": {
+    "value": "Beaming parameter eta=1.175 and emissivity 0.70 for TNOs",
+    "evidence": [
+     {
+      "loc": "Size and Albedo",
+      "quote": "Lellouch et al. (2017) advise using a value of $\\eta=1.175$ for TNOs observed with ALMA, so we adopt that value here."
+     }
+    ]
+   },
+   "citation": "Lellouch et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Sloan to BVRI transformation equations",
+    "evidence": [
+     {
+      "loc": "2 Magellan Optical Observations",
+      "quote": "using the transformation equations from Smith et al. (2002)"
+     }
+    ]
+   },
+   "citation": "Smith et al. (2002)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum and measure flux",
+   "method": "Calibrate with pipeline, combine three executions, natural-weighted continuum image, measure source flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "flux 25 microJy, rms 5.5 microJy, S/N about 4.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Optical photometry, colors, phase curve, absolute magnitude",
+   "method": "Aperture photometry on Magellan g, r, i images; linear phase function from March and May r-band; transformation to V",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Linear phase function"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Solve size and albedo with NEATM",
+   "method": "NEATM fit of thermal flux 25.0+-5.5 microJy at 3.075 mm and V=22.35+-0.03 for D and pV; errors at chi2=1",
+   "software": [],
+   "key_parameters": [
+    "eta = 1.175, emissivity 0.70, beta = 0.25"
+   ],
+   "assumptions": [
+    "Spherical, slow rotator, no nightside emission"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 3 flux density",
+   "value": "25",
+   "uncertainty": "5.5",
+   "units": "microJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Size and Albedo",
+     "quote": "$25.0\\pm5.5$ $\\mu$Jy at a wavelength of 3.075 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Geometric albedo pV",
+   "value": "0.17",
+   "uncertainty": "+0.045/-0.030",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$p_V = 0.17_{-0.030}^{+0.045}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Effective diameter",
+   "value": "765",
+   "uncertainty": "+80/-85",
+   "units": "km",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$D = 765_{-85}^{+80}$ km"
+    }
+   ]
+  },
+  {
+   "quantity": "Primary diameter with satellite",
+   "value": "740",
+   "uncertainty": "+85/-90",
+   "units": "km",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "making the primary $D = 740_{-90}^{+85}$ km"
+    }
+   ]
+  },
+  {
+   "quantity": "Phase coefficient beta",
+   "value": "0.25",
+   "uncertainty": "0.03",
+   "units": "mag/deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.3 Optical Phase Curve",
+     "quote": "$\\beta = 0.25\\pm 0.03$ mags per deg"
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute magnitude H (mV(1,1,0))",
+   "value": "3.15",
+   "uncertainty": "0.03",
+   "units": "mag",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.4 Optical Absolute Magnitude",
+     "quote": "we find $m_{V}(1,1,0)=3.15\\pm 0.03$ mags"
+    }
+   ]
+  },
+  {
+   "quantity": "g-r color",
+   "value": "0.76",
+   "uncertainty": "0.02",
+   "units": "mag",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Sloan Optical Colors",
+     "quote": "$g-r=0.76\\pm0.02$ and $r-i=0.31\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral gradient S",
+   "value": "17",
+   "uncertainty": "2",
+   "units": "per 100 nm (percent)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Sloan Optical Colors",
+     "quote": "we find the optical color spectral slope is $S=17\\pm 2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Satellite magnitude difference",
+   "value": "3.0",
+   "uncertainty": "0.2",
+   "units": "mag",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5 Satellite",
+     "quote": "The newly discovered satellite was $3.0\\pm0.2$ mags fainter than the primary in the optical."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters (cell size, image size, mask, niter, threshold)",
+  "CASA/pipeline version",
+  "how the source flux (25 microJy) was measured (peak vs fit)",
+  "spectral window setup and any flagging",
+  "calibrators other than J1127-1857 and J1058+0133 details",
+  "solar V magnitude and exact NEATM implementation code"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Flux extraction method",
+  "NEATM code"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple recipe with ALMA data public, but imaging and flux extraction details are missing.",
+ "rediscovery_reason": "Public data, a single-flux numeric result, and a simple NEATM model make the main result reproducible.",
+ "source_card": "cards/2018AJ....156..270S/sonnet/card.md"
+}

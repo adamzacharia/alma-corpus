@@ -1,0 +1,259 @@
+{
+ "bibcode": "2020ApJ...893..101L",
+ "title": "An Unbiased ALMA Spectral Survey of the LkCa 15 and MWC 480 Protoplanetary Disks",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab7cc8",
+ "arxiv_id": "2006.16187",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What are the molecular inventories of the MWC 480 and LkCa 15 disks from an unbiased Band 7 spectral line survey, and how do they differ?",
+ "alma_project_codes": [
+  "2015.1.00657.S",
+  "2013.1.00226.S"
+ ],
+ "data": {
+  "bands": "Band 7, 275–317 GHz covered",
+  "arrays": "not stated",
+  "angular_resolution": "Natural-weighted beams ~0.5–1.3 arcsec",
+  "sensitivity": "Per-channel rms 1.7–3.9 mJy/beam depending on SPW"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Prior ALMA observations of 12CO, 13CO, C18O, DCO+, H13CO+ used as template filters",
+    "evidence": [
+     {
+      "loc": "3.2 Matched filtering",
+      "quote": "We use prior observations of $^{12}$CO, $^{13}$CO, C$^{18}$O, DCO$^{+}$, and H$^{13}$CO$^{+}$ (cite: Huang_2017) to generate a bank of data-driven template filters"
+     }
+    ]
+   },
+   "citation": "(cite: Huang_2017)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination, PA, stellar and disk parameters in Table 1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 0.11$^{[6]}$ | 37$^{[7]}$ | 148$^{[7]}$ |"
+     }
+    ]
+   },
+   "citation": "(cite: Huang_2017); (cite: Chiang_2001); (cite: Isella_2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate",
+   "method": "Staff calibration, continuum self-calibration applied to full data, uvcontsub",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "solints 100s, 30s, 10s phase; one amplitude; robust -0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image full band and extract disk-integrated spectra",
+   "method": "Natural-weighted CLEAN per SPW with fixed elliptical masks; spectra extracted within masks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "clean threshold 4σ"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify lines by matched filtering",
+   "method": "Apply bank of Keplerian data-driven template filters to continuum-subtracted visibilities, yielding filter impulse response spectra",
+   "software": [
+    "VISIBLE"
+   ],
+   "key_parameters": [
+    "templates: 12CO, 13CO, C18O, DCO+, H13CO+, plus H2CO, N2H+, CS from survey"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Image individual lines and measure fluxes",
+   "method": "Natural-weighted CLEAN (robust 0.5 for >20σ lines), 1.5 km/s channels, integrate disk spectra over fixed velocity ranges, bootstrap errors",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "bootstrap 10000 draws on emission-free channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare inventories and derive ring radii and upper limits",
+   "method": "Flux ratios as proxy for abundance; deprojected azimuthal profiles for radii; CH3OH upper limit at assumed Tex",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin emission except CS and N2H+; CH3OH Tex = 25 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular species detected",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "species",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "we detect 14 molecular species (including isotopologues) at a $>$4$\\sigma$ significance toward MWC 480 and LkCa 15"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ 3–2 flux LkCa 15",
+   "value": "1750",
+   "uncertainty": "20",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "1750 $\\pm$ 20 vs 228 $\\pm$ 13 mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ 3–2 flux MWC 480",
+   "value": "228",
+   "uncertainty": "13",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "1750 $\\pm$ 20 vs 228 $\\pm$ 13 mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CS 6–5 flux LkCa 15",
+   "value": "1497",
+   "uncertainty": "19",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "1497 $\\pm$ 19 vs 811 $\\pm$ 19 mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "13C18O emission extent MWC 480",
+   "value": "~120",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "we find that the emission extends out to $\\sim$120 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ inner ring radius MWC 480",
+   "value": "~115",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "we find an inner ring radius of $\\sim$115 AU for MWC 480 and $\\sim$40 AU for LkCa 15"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ inner ring radius LkCa 15",
+   "value": "~40",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "we find an inner ring radius of $\\sim$115 AU for MWC 480 and $\\sim$40 AU for LkCa 15"
+    }
+   ]
+  },
+  {
+   "quantity": "DCO+ 4–3/3–2 flux ratio MWC 480",
+   "value": "~1.9",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.1",
+     "quote": "yields a DCO$^{+}$ 4–3/3–2 flux ratio of $\\sim$1.9$\\pm0.3$ in MWC 480"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 3σ upper limit column density",
+   "value": "~8e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.4",
+     "quote": "we find a 3$\\sigma$ upper limit column density of $\\sim$8$\\times$10$^{12}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SNR improvement from matched filtering",
+   "value": "~2-3",
+   "uncertainty": "not stated",
+   "units": "factor",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "7 Summary",
+     "quote": "improved SNR by factors of $\\sim$2-3"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum imaging and uvcontsub",
+  "Image size and cell size",
+  "Exact stacking procedure and filter normalisation details",
+  "Deprojection/radial profile procedure for ring radii",
+  "Rest-frequency sources and hyperfine handling",
+  "Whether the 2013.1.00226.S data were actually used",
+  "Template-filter cubes (Huang et al. 2017) availability"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges",
+  "Image/cell sizes",
+  "Template cubes from Huang et al. 2017",
+  "Radial-profile deprojection details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Recipe is mostly described and public software exists, but several imaging parameters and templates are missing, and old CASA is required.",
+ "rediscovery_reason": "Public data, tabulated numeric fluxes and a mostly complete recipe.",
+ "source_card": "cards/2020ApJ...893..101L/sonnet/card.md"
+}

@@ -1,0 +1,278 @@
+{
+ "bibcode": "2020A&A...643A...2B",
+ "title": "The ALPINE-ALMA [CII] survey: Data processing, catalogs, and statistical source properties",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202037649",
+ "arxiv_id": "2002.00962",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Process the ALPINE ALMA band-7 data into continuum and [CII] catalogs and derive basic dust and [CII] properties, number counts and redshift distribution of serendipitous continuum sources",
+ "alma_project_codes": [
+  "2017.1.00428.L"
+ ],
+ "data": {
+  "bands": "Band 7 (275–373 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "mean beam 1.13\" x 0.85\"",
+  "sensitivity": "continuum ~30 uJy RMS; [CII] 0.14 Jy km/s in 235 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ancillary properties (SFR, stellar mass, UV luminosity) of ALPINE targets",
+    "evidence": [
+     {
+      "loc": "7.5",
+      "quote": "The far-UV luminosity, L$_{FUV}$, is provided by the ancillary ALPINE catalog presented in (cite: Faisst2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Faisst2020)"
+  },
+  {
+   "what": {
+    "value": "SED templates (Bethermin2017 adopted; Schreiber2018, Alvarez-Marquez2016 compared)",
+    "evidence": [
+     {
+      "loc": "4.3 SED template",
+      "quote": "Since the $\\chi^2$ of (cite: Bethermin2017) is marginally better, we decided to use this template."
+     }
+    ]
+   },
+   "citation": "(cite: Bethermin2017)"
+  },
+  {
+   "what": {
+    "value": "Absolute CIB level used as reference",
+    "evidence": [
+     {
+      "loc": "5.4 Cosmic infrared background",
+      "quote": "Their values are used as the reference CIB level in this paper."
+     }
+    ]
+   },
+   "citation": "(cite: Odegard2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and flag data",
+   "method": "Observatory pipeline re-run with fracspw=0.03125 and extra antenna flagging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image cubes, continuum and moment-0 maps",
+   "method": "tclean natural weighting, MFS continuum, uvcontsub, tapered maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract continuum sources and set purity threshold",
+   "method": "Local maxima in S/N maps; purity from negative maps; 5 sigma in field, 3.5 sigma within 1 arcsec of targets",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure continuum photometry",
+   "method": "Peak, 2D Gaussian fit, 3 arcsec aperture, 2-sigma clipped; 2D-fit adopted",
+   "software": [
+    "astropy",
+    "photutils",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Completeness, flux boosting, effective area, number counts and CIB",
+   "method": "Inject Gaussian sources of 4 sizes and 18 fluxes (10 per pointing, 10 repeats); derive completeness, deboosting, effective area; counts as sum of 1/Omega_eff",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Fluxes converted to 850 um using z=2.5 main-sequence Bethermin2017 SED template"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive 158 um continuum to L_IR conversion via Herschel stacking",
+   "method": "Mean stacking of SFR>10 Msun/yr COSMOS sources at 4<z<5 and 5<z<6; fit templates with free normalization",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Bethermin2017 template with no evolution above z~4 (<U>=50)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Extract [CII] lines and catalog",
+   "method": "Running-average moment-0 cubes (2-40 channels) in 1\" cylinder, S/N>3 peaks, Gaussian fit, iterate 2-sigma region spectra; 95% purity at S/N>3.56",
+   "software": [
+    "findclumps"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Stack continuum by [CII] luminosity to get SFR-L[CII]",
+   "method": "Image-plane stacking in four L[CII] bins and z<5 / z>5, aperture photometry, SFR_tot=SFR_IR+SFR_UV",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa_IR=1.02e-10, kappa_FUV=1.47e-10 Msun/yr/Lsun (Chabrier IMF)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum detections of targets (S/N>3.5)",
+   "value": "23 of 118",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "We detected 23 of our 118 targets in continuum above 3.5 $\\sigma$ threshold corresponding to a 95 % purity."
+    }
+   ]
+  },
+  {
+   "quantity": "Nontarget continuum detections (>5 sigma)",
+   "value": "57",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "detected 57 nontarget additional continuum sources"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] detections",
+   "value": "75 of 118",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2",
+     "quote": "We obtained 75 \\[CII\\] detections out of our 118 targets."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean redshift of nontarget sources",
+   "value": "2.5",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "The mean redshift of our sample is z=2.5$\\pm$0.2 (median = 2.3$\\pm$0.3)"
+    }
+   ]
+  },
+  {
+   "quantity": "L_158um / L_IR",
+   "value": "0.093",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "(L$_{158\\,\\mu m}$ = 0.093 L$_{\\rm IR}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median [CII] luminosity",
+   "value": "4.8e8",
+   "uncertainty": "0.4e8",
+   "units": "Lsun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "7.4",
+     "quote": "We found a median luminosity of $(4.8 \\pm 0.4) \\times 10^{8}$ L$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median [CII] FWHM",
+   "value": "252",
+   "uncertainty": "13",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "7.3",
+     "quote": "a median FWHM of 252$\\pm$13 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CIB contribution of >0.35 mJy sources (full sample)",
+   "value": "0.093",
+   "uncertainty": "0.013",
+   "units": "MJy/sr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "0.093$\\pm$0.013 MJy/sr for the full sample and 0.054$\\pm$0.009 MJy/sr for the secure sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Total survey area (bright flux)",
+   "value": "24.92",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.10",
+     "quote": "the effective surface area is the total area of all our pointings[^5] (24.92 arcmin$^{2}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for pipeline and tclean",
+  "Number of clean iterations/mask specifics, spectral cube channelization for final cubes",
+  "Exact bootstrap settings for stacking and error bars",
+  "Line-free channel ranges per source (only rule given)",
+  "Exact catalog of manual spw fixes",
+  "Details of uv-fit and stacking in unpublished companion papers"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Ancillary catalog values (Faisst2020)",
+  "Stacking details (Khusanova in prep.)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a detailed recipe, but the ancillary catalogs, CASA version and several steps deferred to companion papers or unpublished work.",
+ "rediscovery_reason": "Data are public, the recipe is largely specified, and the results are numeric (detection counts, medians, conversion factors).",
+ "source_card": "cards/2020A%26A...643A...2B/sonnet/card.md"
+}

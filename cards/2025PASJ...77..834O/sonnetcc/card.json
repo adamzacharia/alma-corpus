@@ -1,0 +1,1356 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025PASJ...77..834O",
+  "title": "Detailed analysis of multiline molecular distributions in the Seyfert galaxy NGC 1068: Possible effect of the active galactic nucleus outflow to the starburst ring",
+  "year": 2025,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Okubo, Hiroma",
+  "n_authors": 8,
+  "arxiv_id": "2506.15999",
+  "doi": "10.1093/pasj/psaf054",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00061.S",
+   "2012.1.00657.S",
+   "2013.1.00060.S",
+   "2013.1.00279.S",
+   "2015.1.00960.S",
+   "2017.1.00586.S",
+   "2018.1.01506.S",
+   "2018.1.01684.S",
+   "2019.1.00130.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We apply principal component analysis (PCA) to the integrated intensity maps of 13 molecular lines of the nearby type-2 Seyfert galaxy NGC 1068 obtained by Atacama Large Millimeter/sub-millimeter Array (ALMA)"
+   },
+   {
+    "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+    "quote": "we retrieved and processed all publicly available archival Band 3 data for NGC 1068 as of summer 2021"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1068",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "systemic velocity 1116 km/s; distance not stated",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 1068 is a nearby type-2 Seyfert galaxy with both an Active Galactic Nucleus (AGN) and a starburst (SB) ring."
+       },
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "from 1116 km/s, which is the systemic velocity of NGC 1068"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "systemic velocity from (cite: GarcíaBurillo et al. 2014); distance not stated",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 1068 is a nearby type-2 Seyfert galaxy with both an Active Galactic Nucleus (AGN) and a starburst (SB) ring."
+       },
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "from 1116 km/s, which is the systemic velocity of NGC 1068"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can PCA of multi-line integrated intensity maps extract meaningful features in a galaxy hosting both an AGN and a starburst ring, and does the AGN outflow influence gas in the SB ring?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "The first objective is to assess the validity of PCA for feature extraction in galaxies that host both the AGN and the SB ring."
+     },
+     {
+      "loc": "1 Introduction",
+      "quote": "The second objective is to investigate the potential influence of the AGN outflow on the SB ring."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00279.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "using Band 3 of ALMA with its 12 m array (Project Code: 2013.1.00279.S, PI: T. Nakajima)"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00061.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00657.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00060.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00960.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00586.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01506.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01684.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    },
+    {
+     "code": "2019.1.00130.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "a final sample of eight projects: 2011.0.00061.S, 2012.1.00657.S, 2013.1.00060.S, 2015.1.00960.S, 2017.1.00586.S, 2018.1.01506.S, 2018.1.01684.S, and 2019.1.00130.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "We carried out an imaging spectral scan at 3 mm toward NGC 1068 using Band 3 of ALMA with its 12 m array"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "imaging spectral scan at 3 mm for 2013.1.00279.S; spectral setups of the archival projects not stated",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "We carried out an imaging spectral scan at 3 mm toward NGC 1068"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "C2H",
+     "transition": "N=1-0",
+     "rest_frequency": "87.316898 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "87.316898 | 0.49"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=1-0",
+     "rest_frequency": "88.631602 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "88.631602 | 0.80"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=1-0",
+     "rest_frequency": "89.188525 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "89.188525 | 0.97"
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "J=1-0",
+     "rest_frequency": "90.663568 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "90.663568 | 0.25"
+      }
+     ]
+    },
+    {
+     "species": "HC3N",
+     "transition": "J=10-9",
+     "rest_frequency": "90.979023 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "90.979023 | 0.12"
+      }
+     ]
+    },
+    {
+     "species": "N2H+",
+     "transition": "J=1-0",
+     "rest_frequency": "93.173977 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "93.173977 | 0.20"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "J=2_K-1_K",
+     "rest_frequency": "96.744550 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "96.744550 | 0.17"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=2-1",
+     "rest_frequency": "97.980953 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "97.980953 | 0.33"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=1-0",
+     "rest_frequency": "109.782173 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "109.782173 | 0.26"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=1-0",
+     "rest_frequency": "110.201354 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "110.201354 | 0.57"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "N=1_1/2-0_1/2",
+     "rest_frequency": "113.191279 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "113.191279 | 0.33"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "N=1_3/2-0_1/2",
+     "rest_frequency": "113.490970 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "113.490970 | 0.98"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.271202 GHz",
+     "evidence": [
+      {
+       "loc": "line table (Introduction)",
+       "quote": "115.271202 | 3.41"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array only (7 m and total power data not used)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "we restricted our analysis to data from the 12 m array to ensure consistent maximum recoverable scales across all detected lines"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "archival data selected with spatial resolution of 150 pc or better (angular resolution < 2.08 arcsec); cubes smoothed to 150 pc",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "we selected observations with a spatial resolution of 150 pc or better"
+     },
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "Next, we smoothed the cube data to a spatial resolution of 150 pc."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "2013.1.00279.S (PI: T. Nakajima) plus publicly available archival Band 3 data as of summer 2021",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "we retrieved and processed all publicly available archival Band 3 data for NGC 1068 as of summer 2021"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Systemic velocity of NGC 1068, 1116 km/s, used as the centre of the integration window",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "from 1116 km/s, which is the systemic velocity of NGC 1068"
+       }
+      ]
+     },
+     "citation": "(cite: GarcíaBurillo et al. 2014)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "observatory-delivered calibration with minor manual data flagging",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "We applied observatory-delivered calibration with minor manual data flagging using the appropriate CASA version."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "PHANGS-ALMA imaging pipeline (CLEAN)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we reconstructed the integrated intensity maps using the PHANGS-ALMA imaging pipeline"
+      },
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "We performed imaging and deconvolution using CLEAN."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "single-scale CLEAN only (no multiscale CLEAN)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "While the standard PHANGS-ALMA pipeline applies both single-scale CLEAN and multiscale CLEAN, we applied only single-scale CLEAN in this study."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "hexagonal grid with 150 pc grid size",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "We set the grid size to 150 pc"
+      },
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we choose the hexagonal grid to minimize the inter-pixel correlation"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uv-plane, first-degree polynomial fit, CASA uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "by fitting a first-degree polynomial function using the CASA uvcontsub task"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12 m array only; no 7 m or total power combination",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we restricted our analysis to data from the 12 m array to ensure consistent maximum recoverable scales across all detected lines"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "cubes smoothed to a spatial resolution of 150 pc",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "Next, we smoothed the cube data to a spatial resolution of 150 pc."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Details of the 2013.1.00279.S observations",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "Detailed information about these observations is available in (cite: Nakajima et al. 2023)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Nakajima et al. 2023)"
+    },
+    {
+     "what": {
+      "value": "Imaging and integrated-intensity-map construction follow the PHANGS-ALMA imaging pipeline",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "we reconstructed the integrated intensity maps using the PHANGS-ALMA imaging pipeline ((cite: Leroy et al. 2021))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Leroy et al. 2021)"
+    },
+    {
+     "what": {
+      "value": "Further details of the data processing are deferred to earlier work",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "For more details, refer to (cite: Leroy et al. 2021), (cite: Saito et al. 2022a) and (cite: Saito et al. 2022)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Leroy et al. 2021); (cite: Saito et al. 2022a); (cite: Saito et al. 2022)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version(s) used for each of the nine projects (paper says only 'the appropriate CASA version')",
+    "PHANGS-ALMA pipeline version and its configuration: weighting/robust, clean masks, thresholds, channel width, cell size of the intermediate cubes",
+    "Line-free channels used for the uvcontsub first-degree polynomial fit, per project and per line",
+    "Which project and spectral window supplied each of the 13 lines, and how lines observed in several projects were combined",
+    "Definition and computation of the 'error moment 0 map' and of S/N per hexagon (noise estimate, masking of the moment 0 integration)",
+    "Hexagonal grid origin, orientation and centre position, and the adopted distance that converts 150 pc to angular size",
+    "Exact definition of the overall region and SB ring region masks (centre, 10 arcsec and 27.5 arcsec annulus geometry) and how the 683 and 482 hexagons were selected",
+    "How the NGC 1068 centre/position and unit conversion to K km/s were set",
+    "Monte Carlo details: random seed, whether PCA axis sign/ordering was re-aligned across the 100,000 trials, and how the 1-sigma values were taken (percentiles)",
+    "scikit-learn version and PCA options (svd solver, whitening)",
+    "Correlation coefficient type and moment 2 map construction used for the PC2 and PC3 comparisons"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, image and build 150 pc integrated intensity maps",
+    "method": {
+     "value": "Observatory-delivered calibration with minor manual flagging; uv-plane continuum subtraction; single-scale CLEAN imaging with the PHANGS-ALMA pipeline; smoothing to 150 pc; integration over +-300 km/s around 1116 km/s; regridding to a hexagonal grid",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "We applied observatory-delivered calibration with minor manual data flagging using the appropriate CASA version."
+      },
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "Finally, we regridded the data into a hexagonal grid to minimize correlations between grids."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "PHANGS-ALMA pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Continuum subtraction: first-degree polynomial in the uv-plane (CASA uvcontsub)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "by fitting a first-degree polynomial function using the CASA uvcontsub task"
+       }
+      ]
+     },
+     {
+      "value": "Integration range +-300 km/s about 1116 km/s",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "integrating over the range of $\\pm$300 km/s from 1116 km/s"
+       }
+      ]
+     },
+     {
+      "value": "Final resolution and grid 150 pc, hexagonal",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "We set the grid size to 150 pc"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Same procedure applied to all molecular lines",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "These operations were applied to all molecular lines using the same procedure."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Select grid points and molecular lines for the PCA",
+    "method": {
+     "value": "Remove hexagons where CO(1-0) S/N <= 4; keep lines with at least 60 hexagons at S/N > 4 within the CO S/N > 4 region, leaving 13 lines",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we remove the grids from all molecular integrated intensity maps where the S/N of the CO"
+      },
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we set a threshold of 60 grid points where each molecular line has S/N"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Threshold of 60 grid points, about one-tenth of all grid points in the overall region",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "This threshold corresponds to approximately one-tenth of all grid points in the overall region."
+       }
+      ]
+     },
+     {
+      "value": "Final data sets (13, 683) overall region and (13, 482) SB ring region",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "The final data set is (13, 683) for the overall region"
+       },
+       {
+        "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+        "quote": "The data set of the SB ring region is (13, 482)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Standardize the integrated intensity maps",
+    "method": {
+     "value": "For each line, subtract the mean and divide by the standard deviation, separately for the overall and SB ring regions",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "For each molecular line, we subtract the mean and divide by the standard deviation of its integrated intensity."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Appendix repeats the PCA with min-max normalization (0 to 1) instead; differences generally minor, except for the PC3 negative score maps",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "Although the PCA score maps show some visual differences, they are generally minor and do not significantly alter the interpretation."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Run PCA on the overall and SB ring regions",
+    "method": {
+     "value": "PCA of the standardized maps (each hexagon a sample, 13 lines as features) with scikit-learn; PC scores mapped back on the sky, PC coefficients interpreted; axis sign set so that the maximum absolute score is positive",
+     "evidence": [
+      {
+       "loc": "2.2 Principal Component Analysis",
+       "quote": "We used the PCA implementation from the scikit-learn project"
+      },
+      {
+       "loc": "3 Results",
+       "quote": "we determined the axes such that the maximum absolute value of the PCA scores is positive"
+      }
+     ]
+    },
+    "software": [
+     "scikit-learn"
+    ],
+    "key_parameters": [
+     {
+      "value": "First three PCs retained (>97% of the variance in each region)",
+      "evidence": [
+       {
+        "loc": "3.1 Overall region",
+        "quote": "We will focus on these first three principal components since they explain more than 97% of the total information."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Each grid represents a single molecular cloud, inter-grid correlations ignored",
+      "evidence": [
+       {
+        "loc": "2.2 Principal Component Analysis",
+        "quote": "under the assumption that each grid represents a single molecular cloud, with no consideration of inter-grid correlations"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Estimate PCA coefficient errors by Monte Carlo",
+    "method": {
+     "value": "Add normally distributed noise (sigma from the error moment 0 map) to every grid and every map, redo the PCA, repeat 100,000 times; take +-1 sigma values of the coefficients as error bars",
+     "evidence": [
+      {
+       "loc": "2.3 Evaluation of error in PCA analysis",
+       "quote": "random values are drawn from a normal distribution with the error moment 0 map as the standard deviation"
+      },
+      {
+       "loc": "2.3 Evaluation of error in PCA analysis",
+       "quote": "This procedure is repeated 100,000 times."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "100,000 Monte Carlo realisations",
+      "evidence": [
+       {
+        "loc": "2.3 Evaluation of error in PCA analysis",
+        "quote": "This procedure is repeated 100,000 times."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Interpret PC maps with tracer roles and test with extra correlations",
+    "method": {
+     "value": "Interpret PC coefficients by tracer type (molecular gas, dense gas, shock, UV, high temperature); correlate PC2_OA scores with other Band 3 lines not used in the PCA and PC3_SB negative scores with velocity dispersion maps",
+     "evidence": [
+      {
+       "loc": "4.1.2 PC2_OA",
+       "quote": "Additionally, we use only integrated intensity maps with more than 5 grids satisfying S/N"
+      },
+      {
+       "loc": "4.2.3 PC3_SB",
+       "quote": "We examine the correlation between the velocity dispersion of"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "C2H velocity dispersion taken from the N=1_1/2-0_1/2 fine structure line only, since hyperfine splitting within each fine structure line is nearly identical",
+      "evidence": [
+       {
+        "loc": "4.2.3 PC3_SB",
+        "quote": "This study utilizes only C$_2$H ($N$=1$_{1/2}$-0$_{1/2}$) because the hyperfine splitting within each fine structure line is nearly identical"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Interpretations compared with earlier studies (e.g. Scourfield 2020, Tosaki 2017, Tsai 2012, Saito 2022); described as not contradicting them",
+     "evidence": [
+      {
+       "loc": "4.1.2 PC2_OA",
+       "quote": "Therefore, the PC2$_{\\rm OA}$ results do not contradict this study of (cite: Scourfield et al. 2020)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration (observatory-delivered, appropriate version) and uv-plane continuum subtraction with uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "We applied observatory-delivered calibration with minor manual data flagging using the appropriate CASA version."
+      },
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "by fitting a first-degree polynomial function using the CASA uvcontsub task"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHANGS-ALMA Pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging and construction of integrated intensity maps",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we reconstructed the integrated intensity maps using the PHANGS-ALMA imaging pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scikit-learn",
+    "version": "not stated",
+    "used_for": {
+     "value": "PCA implementation",
+     "evidence": [
+      {
+       "loc": "2.2 Principal Component Analysis",
+       "quote": "We used the PCA implementation from the scikit-learn project"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA Calibration Pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "NumPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "spectral-cube",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Contribution rates of PC1, PC2, PC3 (overall region)",
+    "value": "PC1 about 80%, PC2 approximately 15%, PC3 around 2%",
+    "uncertainty": "not stated",
+    "units": "percent of variance",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1 Overall region",
+      "quote": "The PC1$_{\\rm OA}$ score map retains about 80% of the information, PC2$_{\\rm OA}$ score map retains approximately 15%, and PC3$_{\\rm OA}$ score map retains around 2%."
+     }
+    ]
+   },
+   {
+    "quantity": "Contribution rates of PC1, PC2, PC3 (SB ring region)",
+    "value": "PC1 nearly 90%, PC2 5%, PC3 2%",
+    "uncertainty": "not stated",
+    "units": "percent of variance",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 SB ring region",
+      "quote": "PC1$_{\\rm SB}$, PC2$_{\\rm SB}$, and PC3$_{\\rm SB}$ retain nearly 90%, 5%, and 2% of the information, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of hexagons x lines, overall region",
+    "value": "(13, 683)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "The final data set is (13, 683) for the overall region"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of hexagons x lines, SB ring region",
+    "value": "(13, 482)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "The data set of the SB ring region is (13, 482)."
+     }
+    ]
+   },
+   {
+    "quantity": "PC2_OA coefficient of 13CO (J=1-0)",
+    "value": "-0.51",
+    "uncertainty": "+0.0018/-0.0018",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of PCA coefficients",
+      "quote": "$-0.51_{-0.0018}^{+0.0018}$"
+     }
+    ]
+   },
+   {
+    "quantity": "PC3_OA coefficient of CH3OH (J=2-1)",
+    "value": "0.66",
+    "uncertainty": "+0.025/-0.0089",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of PCA coefficients",
+      "quote": "$0.66_{-0.0089}^{+0.025}$"
+     }
+    ]
+   },
+   {
+    "quantity": "PC2_SB coefficient of CN (N=1_1/2-0_1/2)",
+    "value": "0.52",
+    "uncertainty": "+0.0061/-0.010",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of PCA coefficients",
+      "quote": "$0.52_{-0.010}^{+0.0061}$"
+     }
+    ]
+   },
+   {
+    "quantity": "PC3_SB coefficient of HC3N (J=10-9)",
+    "value": "0.66",
+    "uncertainty": "+0.052/-0.0050",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of PCA coefficients",
+      "quote": "$0.66_{-0.0050}^{+0.052}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "PC1 (both regions) has all-positive coefficients and resembles the line maps, interpreted as approximate H2 column density",
+    "evidence": [
+     {
+      "loc": "4.1.1 PC1_OA",
+      "quote": "suggesting that it reflects the approximate H$_2$ column density"
+     }
+    ]
+   },
+   {
+    "value": "PC3_SB negative scores lie along the AGN outflow direction and are contributed by CN, C2H and HCN, suggesting possible AGN outflow interaction with SB ring gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we suggest that the AGN outflow interacts with gas in the SB ring, as this feature is consistent with the direction of the AGN outflow"
+     }
+    ]
+   },
+   {
+    "value": "PCA is linear, so complex nonlinear phenomena make PC3 capture several features at once",
+    "evidence": [
+     {
+      "loc": "4.2.3 PC3_SB",
+      "quote": "However, PC3 appears to capture multiple pieces of information."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "PCA can effectively extract features in a galaxy with both an AGN and an SB ring",
+    "experiment": "PCA of standardized 150 pc integrated intensity maps of 13 lines, for the overall (~2 kpc) region and the SB ring region",
+    "result": "PC1 traces approximate H2 column density; PC2_OA separates CND/AGN from the SB ring; PC3 and PC2_SB separate bar-end, spiral-arm, SSC and outflow-direction features",
+    "finding": "PCA effectively extracts features even in AGN + SB ring galaxies",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Summary",
+      "quote": "This study demonstrated that PCA can effectively extract features even in complex galaxies with the AGN and the SB ring."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The overall-region PCA maps reflect H2 column density and density/chemistry differences between the CND and SB ring",
+    "experiment": "Inspection of PC1_OA and PC2_OA score maps and coefficients, with correlations to extra lines",
+    "result": "PC1_OA coefficients all positive; PC2_OA positive scores near AGN and CND, negative along the SB ring",
+    "finding": "PC1 reconstructs approximate H2 column density; PC2 reflects CND vs SB ring density and/or chemical composition",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "have a possibility to reconstruct a map representing the approximate H$_2$ column density and difference of volume density and/or chemical composition between the circumnuclear disk (CND) and the starburst ring (SB ring)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "SB ring PCA separates starburst-dominated from shock-dominated regions",
+    "experiment": "PCA of the SB ring region only; PC2_SB score map and coefficients compared with SSC positions and shock tracers",
+    "result": "PC2_SB positive scores at bar-end/SSCs (HC3N, N2H+, CN, C2H); negative scores at spiral arms (CH3OH, CO)",
+    "finding": "Approximate H2 column density and a starburst-versus-shock distinction",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "distinction between starburst dominated region and shock dominated region"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The AGN outflow interacts with gas in the SB ring",
+    "experiment": "PC3_SB negative score map compared with outflow direction, tracer coefficients and velocity dispersion maps",
+    "result": "Negative scores along the AGN outflow direction, with CN, C2H, HCN contributing, and anti-correlation with velocity dispersion for most lines",
+    "finding": "Possible interaction between the AGN outflow and SB ring gas; further investigation needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Although further investigation is required, we suggest that the AGN outflow interacts with gas in the SB ring"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Low-contribution PCs are interpretable by linear PCA",
+    "experiment": "Interpretation of PC3 for both regions",
+    "result": "PC1 and PC2 are easy to interpret, PC3 captures several pieces of information",
+    "finding": "Nonlinear methods may be needed for low-contribution maps",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.2.3 PC3_SB",
+      "quote": "However, PC3 appears to capture multiple pieces of information."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Band 3 archival data selected for resolution of 150 pc or better",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "we selected observations with a spatial resolution of 150 pc or better"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "PCA extracts key information through dimensionality reduction from many lines",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "PCA is a powerful unsupervised machine learning technique that extracts key information through dimensionality reduction."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Min-max normalization instead of standardization, presented in the Appendix; generally minor differences, except for PC3 negative score maps",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "For reference, the results using normalization, which is another common scaling method and sets the minimum and maximum values of each molecular line to 0 and 1, are provided in the Appendix."
+      }
+     ]
+    },
+    {
+     "value": "Only single-scale CLEAN used, not multiscale CLEAN",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+       "quote": "we applied only single-scale CLEAN in this study"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Lines kept only if detected over a sufficiently large part of the map (60 grid points at S/N > 4)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "it is necessary to use molecular lines that are detected across a sufficiently large portion of the map"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "PCA is a linear combination of the input data and does not precisely extract H2 column density",
+     "evidence": [
+      {
+       "loc": "4.1.1 PC1_OA",
+       "quote": "PCA is inherently a linear combination of the input data"
+      }
+     ]
+    },
+    {
+     "value": "PC3_SB negative scores overlap with the bar-end and may extract several features",
+     "evidence": [
+      {
+       "loc": "4.2.3 PC3_SB",
+       "quote": "On the other hand, a more detailed analysis is required because these regions also overlap with the bar-end and have possibility that multiple features are being extracted."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The AGN outflow interpretation of PC3_SB rests on map morphology and a correlation with velocity dispersion; no independent check of outflow-driven chemistry (e.g. line ratios, radiative transfer)",
+    "PCA is linear and PC3 mixes several effects; interpretation of coefficients by tracer roles is qualitative and partly circular",
+    "Choices such as standardization, the 60-hexagon line threshold and the SB ring mask can change low-order PCs (the appendix shows PC3 changes)",
+    "Spatial correlations between hexagons and CND/AGN contamination of the ring region are not treated; Monte Carlo errors include only moment 0 noise",
+    "Coefficient errors are tiny (1e-4 to 1e-2) and may understate systematic uncertainties from heterogeneous projects and calibration"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival Band 3 data are publicly available; 2013.1.00279.S is a PI project cited to Nakajima et al. 2023",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations, Ancillary Data, and Data Processing",
+      "quote": "we retrieved and processed all publicly available archival Band 3 data for NGC 1068 as of summer 2021"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "PHANGS-ALMA pipeline configuration and version, CASA versions, line-free channel choices",
+    "Hexagonal grid definition and SB ring / overall region masks",
+    "Mapping of lines to projects and the error moment 0 and S/N recipe",
+    "No released code or processed maps stated"
+   ],
+   "estimated_data_volume_inferred": "Nine Band 3 12 m projects, including a spectral scan; likely hundreds of GB of raw/calibrated data before imaging, with a few GB of cubes after 150 pc smoothing",
+   "score_inferred": 3,
+   "score_reason": "Data are public and the PCA recipe is clear, but the imaging pipeline settings, region masks, grid definition and line-to-project mapping are not given, and results are qualitative interpretations plus variance fractions.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Public data and a numeric PCA outcome exist, but the PHANGS pipeline settings, hexagon grid and region masks are not specified well enough to redo the maps and PCA exactly."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Leroy et al. 2021)",
+     "why": "PHANGS-ALMA imaging pipeline used for cubes and integrated intensity maps"
+    },
+    {
+     "citation": "(cite: Saito et al. 2022)",
+     "why": "Earlier processing and PCA-type analysis of the central region of NGC 1068, referred to for processing details"
+    },
+    {
+     "citation": "(cite: Pedregosa et al. 2011)",
+     "why": "scikit-learn PCA implementation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Nakajima et al. 2023)",
+     "why": "Observations of project 2013.1.00279.S and AGN outflow extent"
+    },
+    {
+     "citation": "(cite: Harada et al. 2024)",
+     "why": "PCA of ALCHEMI integrated intensity maps of NGC 253"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA",
+    "ALCHEMI"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025PASJ...77..834O",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T11:48:14",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 101,
+  "quotes_ok": 101,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 9,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 90,
+   "stated": 51,
+   "rate": 0.567
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T11:48:14",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[3].validation",
+    "old_value": "Monte Carlo error bars on the coefficients (step 5) and normalization-based re-run in the Appendix"
+   }
+  ],
+  "dropped_items": []
+ }
+}

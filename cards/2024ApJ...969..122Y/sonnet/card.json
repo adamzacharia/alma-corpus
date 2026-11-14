@@ -1,0 +1,1001 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...969..122Y",
+  "title": "ALMA Reveals Spatially Resolved Properties of Molecular Gas in the Host Galaxy of FRB 20191001A at z = 0.2340",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Yamanaka, Itsuki",
+  "n_authors": 8,
+  "arxiv_id": "2407.01889",
+  "doi": "10.3847/1538-4357/ad553f",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00027.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report the detection of the CO(2–1) emission line with a spatial resolution of $0.9\\ensuremath{''}$ ($\\SI{3.5}{kpc}$) from the host galaxy of the fast radio burst (FRB), FRB 20191001A at $z=0.2340$"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "transients"
+   ],
+   "targets": [
+    {
+     "name": "HG 20191001A (host of FRB 20191001A)",
+     "coordinates": {
+      "value": "21h33m24.44s, -54d44m54.65s (J2000)",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "localized to a host galaxy DESJ213324.44-544454.65 at $z=0.2340$ (hereafter HG 20191001A, or simply “the host”)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=0.2340; D_L=1179 Mpc",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "localized to a host galaxy DESJ213324.44-544454.65 at $z=0.2340$ (hereafter HG 20191001A, or simply “the host”)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "optical redshift (Bhandari2020; Heintz2020)",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "localized to a host galaxy DESJ213324.44-544454.65 at $z=0.2340$ (hereafter HG 20191001A, or simply “the host”)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "the western source (J213323.65-544453.6)",
+     "coordinates": {
+      "value": "21h33m23.65s, -54d44m53.6s (J2000)",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "The galaxy J213323.65-544453.6 at $z=0.2339$ (hereafter “the western source”) is located $\\sim\\SI{25}{kpc}$ to the west of this host"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=0.2339",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "The galaxy J213323.65-544453.6 at $z=0.2339$ (hereafter “the western source”) is located $\\sim\\SI{25}{kpc}$ to the west of this host"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the spatially resolved molecular gas properties and kinematics of the FRB 20191001A host galaxy and its companion, and the gas and continuum limits at the FRB site?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "We derive molecular gas properties of these galaxies and at the FRB location and discuss its progenitors and possible effects of the galactic interaction."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00027.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "with ALMA Band 5 (Project code is 2021.1.00027.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 5",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "with ALMA Band 5 (Project code is 2021.1.00027.S)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "SPWs 25, 27, 29, 31; 1.875 GHz each, 1920 channels",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "The spectral windows are 25, 27, 29, 31, and the correlator setup bandwidth was 1.875 GHz and subdivided into 1920 channels for each spectral window."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2–1",
+     "rest_frequency": "not stated (nu_obs = 186.822 GHz)",
+     "evidence": [
+      {
+       "loc": "3.1 HG 20191001A",
+       "quote": "we adopt $\\nu_{\\mathrm{obs}} = \\SI{186.822}{GHz}$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.1–500.2 m, 45 antennas",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "45 antennas were set up with baseline lengths of 15.1–500.2 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.94\" x 0.91\" (3.5x3.4 kpc2) cube beam",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "The synthesized beam sizes were $3.5\\times3.4\\,\\si{kpc^2}(0.94\\ensuremath{''} \\times 0.91\\ensuremath{''})$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.92 mJy/beam per 50 km/s channel; 3.0e-2 mJy/beam continuum",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "The rms noise level was $\\SI{0.92}{mJy.beam^{-1}}$ for each channel of the $\\SI{50}{km.s^{-1}}$ cube and $\\SI{3.0e-2}{mJy.beam^{-1}}$ for the continuum map."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "11 min 9 sec",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "The total integration time on the science target was 11 min 9 sec."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2022 September 25, 01:15:40–01:49:37 UTC",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "were made on 2022 September 25, from 01:15:40 to 01:49:37 UTC"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "ASKAP",
+     "provided": {
+      "value": "FRB detection and localization",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "FRB 20191001A was detected by the Australian Square Kilometre Array Pathfinder (ASKAP) on 2019 October 1"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Host stellar mass, SFR, metallicity",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "gas-phase metallicity is $12+\\log(\\mathrm{O/H})=\\num{8.94+-0.05}$ (cite: Heintz2020)"
+       }
+      ]
+     },
+     "citation": "(cite: Heintz2020)"
+    },
+    {
+     "what": {
+      "value": "Western source SFR from 1.4 GHz luminosity",
+      "evidence": [
+       {
+        "loc": "2.1 Target",
+        "quote": "The SFR of the western source is estimated to be about $\\SI{21}{M_\\odot.yr^{-1}}$ based on the 1.4 GHz luminosity (cite: Bhandari2020)."
+       }
+      ]
+     },
+     "citation": "(cite: Bhandari2020)"
+    },
+    {
+     "what": {
+      "value": "Comparison FRB host gas masses and SFRs",
+      "evidence": [
+       {
+        "loc": "3.1 HG 20191001A",
+        "quote": "previously observed FRB host galaxies (brown-filled squares from (cite: Hatsukade2022) and (cite: Chittidi2023))"
+       }
+      ]
+     },
+     "citation": "(cite: Hatsukade2022; Chittidi2023)"
+    },
+    {
+     "what": {
+      "value": "SN site column density distribution",
+      "evidence": [
+       {
+        "loc": "4.2 Molecular gas property at the FRB site",
+        "quote": "compares it with the cumulative distribution of the SNe (cite: Galbany2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Galbany2017)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "with the CASA pipeline version 6.4.1.12"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "6.4.1.12",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "with the CASA pipeline version 6.4.1.12"
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "Imaging was performed using the tclean task"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "briggs, robust = 2",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "a weighting of briggs, a robust parameter of 2"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.2\"",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "with a cell size of $0.2\\ensuremath{''}$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "mask of CO emission area; threshold 2x rms",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "a threshold of twice the rms noise, and used a mask of CO emission area"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum map made excluding CO channels",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "The continuum map was created by excluding channels with CO emission."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "cube 0.94\"x0.91\"; continuum 1.1\"x1.0\"",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "$4.1\\times3.8\\si{kpc^2}(1.1\\ensuremath{''} \\times 1.0\\ensuremath{''})$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.92 mJy/beam per channel; 3.0e-2 mJy/beam continuum",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "The rms noise level was $\\SI{0.92}{mJy.beam^{-1}}$ for each channel"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "CO(2-1)/CO(1-0) ratio 0.77 for typical star-forming galaxies",
+      "evidence": [
+       {
+        "loc": "3.1 HG 20191001A",
+        "quote": "assuming the typical star-forming galaxy value of $L'_\\mathrm{CO(2-1)}/L'_\\mathrm{CO(1-0)}=0.77$ (cite: Genzel2015; Tacconi)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Genzel2015; Tacconi)"
+    },
+    {
+     "what": {
+      "value": "L'CO equation",
+      "evidence": [
+       {
+        "loc": "3.1 HG 20191001A",
+        "quote": "CO luminosity is calculated from the following equation by (cite: Solomon2004)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Solomon2004)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels used for continuum",
+    "Cleaning iteration limits and primary beam correction details",
+    "Flux calibrator and flux scale uncertainty",
+    "Aperture/region used for spectrum extraction and moment-0 integration",
+    "3DBarolo parameter file details (initial guesses, mask, thresholds)",
+    "How FRB-site column density and upper limits were computed in detail",
+    "SFR/stellar mass uncertainty propagation for mu_gas and t_depl"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image cube and continuum",
+    "method": {
+     "value": "tclean with Briggs weighting, cube -1000 to 1000 km/s at 50 km/s; continuum from line-free channels",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "The data cube was generated over the velocity range from $\\SI{-1000}{km.s^{-1}}$ to $\\SI{1000}{km.s^{-1}}$ with a velocity resolution of $\\SI{50}{km.s^{-1}}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "cell 0.2\", robust 2",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA observations and data reduction",
+        "quote": "a cell size of $0.2\\ensuremath{''}$, a weighting of briggs, a robust parameter of 2"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract spectra, fit line width, flux",
+    "method": {
+     "value": "Gaussian fit to CO line profile for FWHM; integrated intensity map by summing channels",
+     "evidence": [
+      {
+       "loc": "3.1 HG 20191001A",
+       "quote": "Using the Gaussian function to fit the CO line profile, the velocity width of the galaxy (at the Full Width at Half Maximum; FWHM) was estimated"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian",
+     "evidence": [
+      {
+       "loc": "HG 20191001A",
+       "quote": "Using the Gaussian function to fit the CO line profile, the velocity width of the galaxy (at the Full Width at Half Maximum; FWHM) was estimated to be"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive CO luminosity and molecular gas mass",
+    "method": {
+     "value": "L'CO via Solomon & Vanden Bout; Mgas = alphaCO L'CO(1-0)",
+     "evidence": [
+      {
+       "loc": "3.1 HG 20191001A",
+       "quote": "$$\\begin{equation}\n    M_\\mathrm{gas}=\\alpha_{\\mathrm{CO}}L'_\\mathrm{CO(1-0)},\n\\end{equation}$$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "D_L=1179 Mpc, nu_obs=186.822 GHz",
+      "evidence": [
+       {
+        "loc": "3.1 HG 20191001A",
+        "quote": "we adopt $\\nu_{\\mathrm{obs}} = \\SI{186.822}{GHz}$, and $D_L=\\SI{1179}{Mpc}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "alphaCO = 4.3 (Galactic), r21 = 0.77",
+      "evidence": [
+       {
+        "loc": "3.1 HG 20191001A",
+        "quote": "we use the Galactic value $\\alpha_\\mathrm{CO}=\\SI{4.3}{M_\\odot. (K. km.s^{-1} pc^{-2})^{-1}}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "alphaCO upper limit from dynamical mass is consistent with assumed value",
+     "evidence": [
+      {
+       "loc": "3.4 Modelling CO disk dynamics",
+       "quote": "This result is consistent with the value of $\\alpha_\\mathrm{CO}$ assumed in this study."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Disk kinematic modelling and dynamical mass",
+    "method": {
+     "value": "3DBarolo tilted-ring fit, two passes (second with inclination and PA fixed), VRAD=0; Mdyn = R Vrot^2/G",
+     "evidence": [
+      {
+       "loc": "3.4 Modelling CO disk dynamics",
+       "quote": "$^\\mathrm{3D}$Barolo fits tilted-ring models to a data cube. The ring width was set to $0.25\\ensuremath{''}$"
+      }
+     ]
+    },
+    "software": [
+     "3DBarolo"
+    ],
+    "key_parameters": [
+     {
+      "value": "ring width 0.25\", normalization local",
+      "evidence": [
+       {
+        "loc": "3.4 Modelling CO disk dynamics",
+        "quote": "the normalization option was set to local"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "no radial motion (VRAD=0)",
+      "evidence": [
+       {
+        "loc": "3.4 Modelling CO disk dynamics",
+        "quote": "The parameter VRAD, the galactocentric radial velocity, was fixed to 0 in the modeling"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "PV diagrams and Vrot/sigma >1",
+     "evidence": [
+      {
+       "loc": "3.4 Modelling CO disk dynamics",
+       "quote": "These values are higher than 1, supporting the rotation-dominated systems (cite: Pelliccia2017)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "FRB-site limits",
+    "method": {
+     "value": "3 sigma upper limit on N(H2) with Galactic conversion factor and 100 km/s linewidth; 3 sigma 1.3 mm continuum limit",
+     "evidence": [
+      {
+       "loc": "3.3 FRB 20191001A site",
+       "quote": "That is obtained by assuming the Galactic conversion factor, and the CO linewidth at the site, $\\SI{100}{km.s^{-1}}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.4.1.12 (pipeline)",
+    "used_for": {
+     "value": "data reduction and tclean imaging",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations and data reduction",
+       "quote": "Data reduction was performed with the Common Astronomy Software Application (CASA; (cite: TheCASATeam_2022))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "3DBarolo",
+    "version": "not stated",
+    "used_for": {
+     "value": "tilted-ring modelling of CO disk dynamics",
+     "evidence": [
+      {
+       "loc": "3.4 Modelling CO disk dynamics",
+       "quote": "CO disk dynamics of both galaxies were modeled by $^\\mathrm{3D}$Barolo (cite: Teodoro2015)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Host CO(2-1) integrated flux",
+    "value": "6.0",
+    "uncertainty": "1.0",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$S_\\mathrm{CO}\\Delta V$($\\si{Jy.km.s^{-1}}$)   |  $\\num{6.0 +- 1.0}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Host molecular gas mass",
+    "value": "2.3e10",
+    "uncertainty": "0.4e10",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The inferred molecular gas mass of the host galaxy is $\\SI{2.3+-0.4e+10}{M_\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Host molecular gas fraction",
+    "value": "0.50",
+    "uncertainty": "0.22",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\mu_\\mathrm{gas}=\\num{0.50+-0.22}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Host CO FWHM",
+    "value": "346",
+    "uncertainty": "49",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 HG 20191001A",
+      "quote": "was estimated to be $\\SI{346+-49}{km.s^{-1}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Western source gas mass",
+    "value": "2.9e10",
+    "uncertainty": "0.3e10",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 the western source",
+      "quote": "$M_\\mathrm{gas}=\\SI{2.9+-0.3e+10}{M_\\odot}$ were calculated"
+     }
+    ]
+   },
+   {
+    "quantity": "Host dynamical mass at R=8.0 kpc",
+    "value": "7.8e10",
+    "uncertainty": "2.0e10",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.4 Modelling CO disk dynamics",
+      "quote": "$M_\\mathrm{dyn}=\\SI{7.8 +- 2.0e+10}{M_\\odot}$ for the host"
+     }
+    ]
+   },
+   {
+    "quantity": "Upper limit alphaCO",
+    "value": "<5.9",
+    "uncertainty": "not stated",
+    "units": "Msun/(K km/s pc^2)",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.4 Modelling CO disk dynamics",
+      "quote": "$\\alpha_\\mathrm{CO} < \\SI{5.9}{M_\\odot.(K .km.s^{-1}. pc^{-2})^{-1}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2) at FRB site (3 sigma)",
+    "value": "<2.1e21",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 FRB 20191001A site",
+      "quote": "is $< \\SI{2.1e+21}{cm^{-2}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Host half-light radius",
+    "value": "6.9",
+    "uncertainty": "0.7",
+    "units": "kpc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.4 Modelling CO disk dynamics",
+      "quote": "derive the half-light radius to be $\\SI{6.9+-0.7}{ kpc}$ for the host"
+     }
+    ]
+   },
+   {
+    "quantity": "Host inclination",
+    "value": "61",
+    "uncertainty": "5",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$i$(deg) | $\\num{61+-5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Host Vrot",
+    "value": "205",
+    "uncertainty": "26",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$V_\\mathrm{rot}$($\\si{km.s^{-1}}$) | $\\num{205+-26}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Both host and western source are rotation-dominated; no clear interaction signs in kinematics.",
+    "evidence": [
+     {
+      "loc": "3.4 Modelling CO disk dynamics",
+      "quote": "We do not find a clear sign of interaction between these galaxies."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the host of FRB 20191001A gas-rich compared to other FRB hosts?",
+    "experiment": "CO(2-1) mapping and conversion to gas mass",
+    "result": "Mgas = 2.3e10 Msun, mu_gas = 0.50",
+    "finding": "Expands the range of FRB host gas mass, favouring multiple progenitors or sources unrelated to recent star formation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "has expanded the parameter space for molecular gas mass in FRB host galaxies"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does galaxy interaction disturb the host's molecular gas and trigger FRB?",
+    "experiment": "3DBarolo kinematic modelling",
+    "result": "Velocity fields well fitted by rotation; Vrot/sigma 49 and 42",
+    "finding": "Interaction effect likely weak; FRB not likely triggered by it",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The effect of the interaction of HG 20191001A with the western source, both in terms of kinematics and star formation, is unlikely to be strong."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can molecular gas at the FRB site constrain the progenitor?",
+    "experiment": "3 sigma upper limit on N(H2) compared with SN sites",
+    "result": "<2.1e21 cm^-2, above median of SN types",
+    "finding": "Does not constrain progenitor",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.2 Molecular gas property at the FRB site",
+      "quote": "and thus does not constrain its progenitor."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Sample size too small for statistical conclusions; FRB-site limit not constraining.",
+     "evidence": [
+      {
+       "loc": "3.1 HG 20191001A",
+       "quote": "The sample size is insufficient to show that this difference is statistically significant"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Galactic alphaCO and r21=0.77 assumed; large systematic uncertainty",
+    "Short integration, low S/N (~10) limits kinematic fit; inclination 61 deg with beam ~ disk size",
+    "Robust=2 (natural weighting) cube coarse 50 km/s channels",
+    "Vdisp values consistent with zero within errors"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code given; public status not stated",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations and data reduction",
+      "quote": "(Project code is 2021.1.00027.S)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Spectrum extraction regions",
+    "3DBarolo detailed parameters",
+    "Line-free channels and flux calibrator"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB raw single-EB Band 5 dataset",
+   "score_inferred": 3,
+   "score_reason": "Single public dataset and basic recipe with clear numbers, but extraction regions and 3DBarolo settings are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Single archival dataset with stated imaging parameters and numeric results (gas mass, FWHM, flux)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Teodoro2015)",
+     "why": "3DBarolo"
+    },
+    {
+     "citation": "(cite: Solomon2004)",
+     "why": "L'CO formula"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Hatsukade2022)",
+     "why": "previous CO observations of FRB hosts"
+    },
+    {
+     "citation": "(cite: Heintz2020)",
+     "why": "host properties"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "EDGE-CALIFA",
+    "PHIBSS2"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e6ed5458a6100f5ca5c99ad4bf569d5b",
+  "batch_id": "msgbatch_015xvy2vr7Jjr74fC6RAsmHN",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:10:05",
+  "usage": {
+   "input_tokens": 15291,
+   "output_tokens": 8429,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.058042,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 47,
+   "rate": 0.61
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:02",
+  "custom_id": "repair-sonnet-cfadb618abd41c5e41595efa5ea449cd",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "Using the Gaussian function to fit the CO line profile, the velocity width of the galaxy (at the Full Width at Half Maximum; FWHM) was estimated to be"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

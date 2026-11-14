@@ -1,0 +1,382 @@
+{
+ "bibcode": "2021ApJ...912...21E",
+ "title": "Late-time Radio and Millimeter Observations of Superluminous Supernovae and Long Gamma-Ray Bursts: Implications for Central Engines, Fast Radio Bursts, and Obscured Star Formation",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abe9b8",
+ "arxiv_id": "2010.06612",
+ "fields": [
+  "transients",
+  "star_formation"
+ ],
+ "question": "Search for late-time non-thermal synchrotron radio and millimeter emission from superluminous supernovae (SLSNe) and long gamma-ray bursts (LGRBs) to constrain central engines (magnetar wind nebulae, off-axis relativistic jets), non-relativistic ejecta, fast radio bursts, and obscured star formation in host galaxies.",
+ "alma_project_codes": [
+  "2017.1.00280.S",
+  "2019.1.01663.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~100 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.25 x 0.21 arcsec to 3.82 x 2.39 arcsec",
+  "sensitivity": "12.08 - 22.18 uJy rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Existing radio observations of SLSNe from the literature (Table 1)",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "Of these, 3 events were previously observed in the radio at early time, leading to non-detections: PTF09cnd (cite: Chandra2009; Chandra2010), SN2012il (cite: Chomiuk2012), and SN2015bn (cite: Nicholl2016a; Nicholl2018); see Table [\\[tab:litslsne\\]](#tab:litslsne)."
+     }
+    ]
+   },
+   "citation": "(cite: Schulze2018; Law2019; Chandra2009; Chandra2010; Chomiuk2011; Coppejans2018; Hatsukade2018; Eftekhari2019; Mondal2020; Chomiuk2012; Kasliwal2016; Nicholl2016b; Nicholl2018; Bright2017; Bose2018)"
+  },
+  {
+   "what": {
+    "value": "Inferred magnetar birth and ejecta properties (P, B, M_ej, E_K, v_ej) from MOSFiT optical light curve fits",
+    "evidence": [
+     {
+      "loc": "Magnetar Wind Nebulae",
+      "quote": "To model the PWN radio emission from each newborn SLSN remnant, we use the inferred magnetar birth properties (ejecta mass and velocity, magnetar magnetic field and spin period) from (cite: Nicholl2017b) and (cite: Blanchard2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Nicholl2017b; Blanchard2018)"
+  },
+  {
+   "what": {
+    "value": "Optically-inferred star formation rates (Halpha or SED modeling) of SLSN and LGRB host galaxies",
+    "evidence": [
+     {
+      "loc": "Obscured Star Formation",
+      "quote": "In Figure [2](#fig:sfrs), we compare the radio/mm-inferred upper limits on SFR to the SFRs derived from H$\\alpha$ measurements or SED modeling (references are given in Appendix [\\[appendix:a\\]](#appendix:a))."
+     }
+    ]
+   },
+   "citation": "(cite: Leloudas2015; Angus2016; Schulze2018; Lunnan2014; Perley2016a; Neill2011; Chen2013; Chen2015; Thone2015; Hatsukade2018; Chen2017; Anderson2018; Michaowski2012; Greiner2016; Niino2017; Levesque2010; Perley2015; Perley2013a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum flux densities and image rms values from VLA and ALMA images",
+   "method": "Use archival ALMA pipeline continuum images (and CASA-imaged VLA maps) and extract flux densities and rms noise at transient positions using pwkit imtool.",
+   "software": [
+    "CASA",
+    "pwkit (imtool)"
+   ],
+   "key_parameters": [
+    "3sigma upper limits for non-detections; 5sigma detection threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search Phased-VLA observations for fast radio bursts (FRBs)",
+   "method": "Perform RFI excision with rfifind, incoherently dedisperse filterbank time series across 1000 trial DMs, remove red noise, and search scans with matched-filtering single_pulse_search.py.",
+   "software": [
+    "PRESTO (rfifind, single_pulse_search.py)"
+   ],
+   "key_parameters": [
+    "DM up to 5000 pc cm^-3 with step size 5; 256 us time resolution; 2 MHz channels; 7sigma threshold"
+   ],
+   "assumptions": [
+    "Phasing efficiency factor of 0.9, nominal pulse width W = 10 ms, and beaming fraction f_b = 0.5"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Constrain obscured star formation rates in host galaxies and stack images",
+   "method": "Calculate obscured SFR limits from 6 GHz and 100 GHz flux density limits using the k-corrected radio-SFR relation, and median-combine images centered on transient positions to constrain mean population SFRs.",
+   "software": [],
+   "key_parameters": [
+    "Spectral index alpha = 0.75; median redshifts z approx 0.3 (LGRBs) and z approx 0.23 (SLSNe) for stacked limits"
+   ],
+   "assumptions": [
+    "Planck cosmological parameters: H_0 = 67.8 km s^-1 Mpc^-1, Omega_m = 0.308, Omega_Lambda = 0.692"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain non-relativistic SN ejecta outflows",
+   "method": "Place limits on shock velocity and progenitor mass-loss rate for SLSNe using Chevalier (1998) synchrotron self-absorption model, and model spherical SN outflow light curves for LGRBs using Barniol Duran & Giannios (2015) and Kathirgamaraju et al. (2016).",
+   "software": [],
+   "key_parameters": [
+    "For LGRB SNe: epsilon_e = epsilon_B = 0.1, p = 2.5, E_SN = 10^52 erg, v_ej = 8 x 10^3 km s^-1, n = 10 and 100 cm^-3"
+   ],
+   "assumptions": [
+    "Peak luminosity extrapolates back in time as L_nu,pk proportional to t^-1 for optically thin SLSN emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain off-axis relativistic jets and minimum jet breakout energies",
+   "method": "Generate a grid of 6 and 100 GHz off-axis jet afterglow light curves using Boxfit v2 to determine ruled-out (E_iso, n) space, and compute minimum jet breakout energy E_min from optical light curve kinetic energies E_K derived with MOSFiT.",
+   "software": [
+    "Boxfit v2",
+    "MOSFiT"
+   ],
+   "key_parameters": [
+    "theta_j = 10 deg; theta_obs = 30, 60, 90 deg; epsilon_e = 0.1; epsilon_B = 0.01; p = 2.5; f_j = 0.5"
+   ],
+   "assumptions": [
+    "Constant density CSM; gamma_j = 1/(5 theta_j)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Calculate free-free transparency timescales and model magnetar wind nebulae (ion-electron and electron-positron)",
+   "method": "Compute free-free optical depth evolution at 6 and 100 GHz using CLOUDY, then compare radio/mm limits against ion-electron wind models (Margalit & Metzger 2018) and electron-positron PWN Boltzmann-equation models (Omand et al. 2018; Murase et al. 2016, 2020).",
+   "software": [
+    "CLOUDY",
+    "MOSFiT"
+   ],
+   "key_parameters": [
+    "Broken power-law injection spectrum with q_1 = 1.5, q_2 = 2.5, and peak Lorentz factor gamma_b = 10^5 (and 10^4 for PTF10hgi)"
+   ],
+   "assumptions": [
+    "Energy injection rate L proportional to t^-2 in CLOUDY; singly-ionized oxygen ejecta for free-free absorption in electron-positron PWN model; no ejecta feedback"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "6 GHz flux density of PTF12dam host galaxy (first epoch, B-config)",
+   "value": "117",
+   "uncertainty": "12",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "VLA Continuum Observations",
+     "quote": "we detect radio emission near the location of the SLSN PTF12dam with a flux density $F_\\nu = 117\\pm 12 \\ \\mu$Jy; see Figure [1](#fig:ptf12dam)."
+    }
+   ]
+  },
+  {
+   "quantity": "6 GHz flux density of PTF12dam host galaxy (second epoch, A-config)",
+   "value": "61.5",
+   "uncertainty": "10.8",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "VLA Continuum Observations",
+     "quote": "Indeed, the emission is resolved out in our second epoch, A-configuration observation with a decreased flux density $F_\\nu = 61.5 \\pm 10.8 \\ \\mu$Jy, indicative of an extended source."
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz 3sigma source flux density near SN2007bi (unrelated)",
+   "value": "55.3",
+   "uncertainty": "18.8",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Observations",
+     "quote": "We do not detect millimeter emission from any of our sources with the exception of a $3\\sigma$ detection near the location of SN2007bi, with a flux density $F_\\nu = 55.3 \\pm 18.8 \\ \\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz 3sigma upper limit for SN2018bsz",
+   "value": "<45.27",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "SN2018bsz | 0.03 | 58203 | – | 615 | – | <45.27 | <1.22 | 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz luminosity upper limit for SN2018bsz",
+   "value": "7.6e26",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 Hz^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Ion-Electron Wind",
+     "quote": "We find that the majority of our limits are consistent with the model light curves invoked for PTF10hgi, although several deep limits at 100 GHz, most notably SN2018bsz with $L_\\nu = 7.6\\times 10^{26} \\rm \\ erg \\ s^{-1} \\ Hz^{-1}$, strongly rule out the presence of such nebulae."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum detectable FRB flux density (7sigma, 10 ms)",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "no FRBs are detected to a limit of $16$ mJy ($7\\sigma$; 10 ms duration) in about 40 min on source per event."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum FRB burst energy upper limits",
+   "value": "<= 2e37 - 4e38",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Phased VLA Observations",
+     "quote": "For the range of redshifts probed by our initial VLA sample of SLSNe ($z \\sim 0.101 - 0.376$), we find $E_{\\rm b,max} \\lesssim 2 \\times 10^{37} - 4 \\times 10^{38}$ erg."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-inferred SFR of PTF12dam host galaxy",
+   "value": "6.7",
+   "uncertainty": "0.7",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "In the case of PTF12dam, our radio detection of the host galaxy corresponds to an SFR of $6.7\\pm 0.7 \\ \\rm M_{\\odot} \\ yr^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 100 GHz ALMA image rms for SLSNe",
+   "value": "3.7",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "The stacked ALMA image yields an rms of $3.7 \\ \\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 6 GHz VLA image rms for SLSNe",
+   "value": "1.9",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "We do not detect emission in either of the stacked populations, achieving 6 GHz rms values of about $2.6$ and $1.9$ $\\mu$Jy for LGRBs and SLSNe, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 6 GHz VLA image rms for LGRBs",
+   "value": "2.6",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "We do not detect emission in either of the stacked populations, achieving 6 GHz rms values of about $2.6$ and $1.9$ $\\mu$Jy for LGRBs and SLSNe, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean obscured SFR 3sigma limit for SLSNe from stacked 100 GHz image",
+   "value": "<= 27",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "For the SLSNe, the $3\\sigma$ SFR limits are $\\lesssim 1.7$ and $\\lesssim 27$ M$_{\\odot}$ yr$^{-1}$ based on the 6 GHz ($z \\approx 0.23$) and 100 GHz ($z \\approx 0.23$) images, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean obscured SFR 3sigma limit for SLSNe from stacked 6 GHz image",
+   "value": "<= 1.7",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "For the SLSNe, the $3\\sigma$ SFR limits are $\\lesssim 1.7$ and $\\lesssim 27$ M$_{\\odot}$ yr$^{-1}$ based on the 6 GHz ($z \\approx 0.23$) and 100 GHz ($z \\approx 0.23$) images, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean obscured SFR 3sigma limit for LGRBs from stacked 6 GHz image",
+   "value": "<= 4.2",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Obscured Star Formation",
+     "quote": "For the seven LGRBs in our sample, the non-detection corresponds to a $3\\sigma$ limit of ${\\rm SFR}\\lesssim 4.2$ M$_{\\odot}$ yr$^{-1}$ ($z\\approx 0.3$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum isotropic jet breakout energy range for SLSNe",
+   "value": "7e52 - 6e54",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Off-axis Relativistic Jets",
+     "quote": "Finally, we note that the range of jet breakout energies ($E_{\\rm min,iso} \\approx 7 \\times 10^{52} - 6 \\times 10^{54}$ erg) for the SLSNe in our sample suggests that we do not expect a population of off-axis jets with energies comparable to the lowest energy LGRBs"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free transparency timescale at 6 GHz for SLSNe",
+   "value": "1.3 - 16.7",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Magnetar Wind Nebulae",
+     "quote": "Assuming that the energy injection rate into the nebula is given by $L \\propto t^{-2}$, we find $t_{\\rm ff}\\approx 1.3 - 16.7$ yr at 6 GHz and $\\approx 1.2 - 4.6$ yr at 100 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free transparency timescale at 100 GHz for SLSNe",
+   "value": "1.2 - 4.6",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Magnetar Wind Nebulae",
+     "quote": "Assuming that the energy injection rate into the nebula is given by $L \\propto t^{-2}$, we find $t_{\\rm ff}\\approx 1.3 - 16.7$ yr at 6 GHz and $\\approx 1.2 - 4.6$ yr at 100 GHz."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for VLA processing and ALMA archival pipeline products",
+  "Exact ALMA array configurations and baseline ranges for the 2017 and 2019 campaigns",
+  "Exact pixel interpolation/regridding method used when median-combining ALMA images of different pixel scales (0.04-0.2 arcsec) and beam sizes for stacking",
+  "Exact fraction of magnetar spin-down power assumed to be deposited into ionizing radiation in the CLOUDY simulations"
+ ],
+ "missing_for_reproduction": [
+  "Exact CLOUDY input scripts and assumed ionizing radiation fraction of magnetar spin-down luminosity",
+  "Custom Boltzmann-equation PWN radiative transfer code from Omand et al. (2018) / Murase et al. (2020)",
+  "Exact Boxfit v2 configuration files and parameter grid resolution",
+  "Exact MOSFiT posterior chains for the newly fitted SLSNe (SN2010kd, SN2016els, SN2017gci, SN2017jan, SN2018hti, SN2018ibb)"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "For the ALMA portion, the authors used standard archival pipeline products directly and measured rms/fluxes with a public tool (pwkit/imtool), making the observational measurements trivial to reproduce; however, the downstream theoretical modeling (CLOUDY scripts and custom PWN Boltzmann code) is not fully specified or publicly linked.",
+ "rediscovery_reason": "Both ALMA project codes (2017.1.00280.S and 2019.1.01663.S) are public in the archive, the authors used the archive pipeline continuum images as-is, and all per-target rms values, 3sigma flux limits, and SFR limits are tabulated in Tables 3 and 4.",
+ "source_card": "cards/2021ApJ...912...21E/sonnet/card.md"
+}

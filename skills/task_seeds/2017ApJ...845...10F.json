@@ -1,0 +1,287 @@
+{
+ "bibcode": "2017ApJ...845...10F",
+ "title": "Strongly Misaligned Triple System in SR 24 Revealed by ALMA",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa7d51",
+ "arxiv_id": "1707.01128",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Are the disks of the young triple system SR24 misaligned, and what are their masses, kinematics and the extended gas structures around them?",
+ "alma_project_codes": [
+  "2013.1.000912.S",
+  "2013.1.00498.S"
+ ],
+ "data": {
+  "bands": "1.3 mm (227 GHz) continuum, CO (2-1) lines",
+  "arrays": "not stated",
+  "angular_resolution": "continuum 0.18x0.12 arcsec; C18O 0.21x0.16; 12CO 0.60x0.54 (tapered) and 0.25x0.21 (natural)",
+  "sensitivity": "continuum rms 44 uJy/beam; C18O 1.2 mJy/beam per 1.35 km/s; 12CO 4.6 (taper) and 5.2 mJy/beam per 0.6 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity 1.1 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission from the disks",
+      "quote": "a dust opacity of 1.1 cm$^2$ g$^{-1}$ at 1.3 mm appropriate for dust with thin ice mantles"
+     }
+    ]
+   },
+   "citation": "(cite: 1994Ossenkopf)"
+  },
+  {
+   "what": {
+    "value": "Opacity index beta=0.4",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission from the disks",
+      "quote": "an opacity spectral index with an exponent $\\beta=0.4$ for both sources"
+     }
+    ]
+   },
+   "citation": "(cite: 2009Isella; 2010Ricci; 2014Pinilla)"
+  },
+  {
+   "what": {
+    "value": "Binary SR24Nb/Nc orbit and mass of close binary",
+    "evidence": [
+     {
+      "loc": "3.2 12CO Molecular emission from the disks",
+      "quote": "is in good agreement with the total mass of the close binary system"
+     }
+    ]
+   },
+   "citation": "(cite: 2006Correia)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure disk properties",
+   "method": "Self-calibrated natural-weighted 1.3 mm image; source flux, size, PA from deconvolved ellipse; inclination = arccos(Rmin/Rmaj)",
+   "software": [
+    "CASA",
+    "MIRIAD",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate disk dust masses",
+   "method": "Optically thin isothermal dust emission",
+   "software": [],
+   "key_parameters": [
+    "kappa=1.1 cm2/g at 1.3 mm, beta=0.4, T_dust=30 K"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Characterize 12CO disk kinematics and SR24N dynamical mass",
+   "method": "2D Gaussian fits to moment 0, PV diagrams with Keplerian curves, M=0.00121*(dv/2)^2*r",
+   "software": [
+    "CASA",
+    "KARMA",
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit SR24S C18O velocity cube with kinematic model",
+   "method": "Thin rotating, accreting disk with tapered power-law surface density, r^-0.5 rotation and infall, no radiative transfer; 9 free parameters; M=v_rot^2 r/G",
+   "software": [
+    "MIRIAD (velmodel, velimage)"
+   ],
+   "key_parameters": [
+    "gamma=0.8; fiducial radius 1 arcsec (120 AU)"
+   ],
+   "assumptions": [
+    "distance 120 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Determine tilt/sense of rotation and misalignment angle",
+   "method": "PV cuts perpendicular to major axis compared with synthetic infall models; angle via cosΔ=cos i1 cos i2+sin i1 sin i2 cos(PA1-PA2)",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "SR24N disk rotates in same sense as the close binary; infall rather than outflow"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Mass of extended gas from SMA 12CO",
+   "method": "LTE optically thin mass formula with Tex=30 K, X_CO/X_H2=1e-4, d=0.12 kpc",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE, optically thin"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SR24S 1.3 mm flux density",
+   "value": "211",
+   "uncertainty": "4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "211$\\pm$4"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24N 1.3 mm flux density",
+   "value": "0.34",
+   "uncertainty": "0.07",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.34$\\pm$0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24S disk mass",
+   "value": "0.025",
+   "uncertainty": "0.007",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum emission from the disks",
+     "quote": "for SR24S we obtain a mass of 0.025$\\pm0.007$ $M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24N disk mass",
+   "value": "13",
+   "uncertainty": "7",
+   "units": "Mearth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum emission from the disks",
+     "quote": "$4\\times10^{-5}$ $M_{\\ensuremath{\\odot}}$ or 13$\\pm7$ $M_{\\ensuremath{\\oplus}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24S C18O dynamical mass",
+   "value": "1.5",
+   "uncertainty": "0.5",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Simple modeling of the SR24S disk kinematics",
+     "quote": "of 1.5$\\pm$0.5 $M_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24S fitted inclination (C18O)",
+   "value": "46",
+   "uncertainty": "8",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$i$                      | $46\\ensuremath{^\\circ}$  | $8\\ensuremath{^\\circ}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24S fitted characteristic radius",
+   "value": "1.3",
+   "uncertainty": "0.2",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$r_c$                    | $1.3\\ensuremath{''}$     | $0.2\\ensuremath{''}$   |"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24N dynamical mass",
+   "value": "0.8 (order-zero; abstract/summary quote 1.1)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 12CO Molecular emission from the disks",
+     "quote": "The resulting mass, 0.8 $M_{\\ensuremath{\\odot}}$, is in good agreement"
+    }
+   ]
+  },
+  {
+   "quantity": "Angle between disk angular momentum vectors",
+   "value": "108",
+   "uncertainty": "25",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Geometry of the disks",
+     "quote": "we derive an angle between the angular momentum vectors of the two disks[^8] of $108\\ensuremath{^\\circ}\\pm25\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Northern reservoir SMA 12CO flux",
+   "value": "11.3",
+   "uncertainty": "0.3",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Northern reservoir | 11.3$\\pm$0.3 | 16.5 | 13"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the pipeline or manual calibration was used",
+  "self-calibration solution intervals and reference",
+  "uv-taper value and clean parameters (threshold, niter, cell, image size)",
+  "line-free channels and continuum subtraction method",
+  "AGA code and parameter bounds/priors",
+  "how the 12CO disk velocity ranges and 2D Gaussian fits were done",
+  "how errors on inclination and PA were propagated",
+  "source of the 120 pc distance"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "AGA fitting code and settings",
+  "12CO velocity range specifics"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear simple recipe, but clean/selfcal parameters and fitting code details are missing.",
+ "rediscovery_reason": "Public data, numeric results (fluxes, masses, fitted parameters), moderately complete recipe.",
+ "source_card": "cards/2017ApJ...845...10F/sonnet/card.md"
+}

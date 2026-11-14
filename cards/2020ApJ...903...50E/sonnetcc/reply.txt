@@ -1,0 +1,535 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We use the Atacama Large Millimeter/submillimeter Array (ALMA) to image the 93 GHz (3.2 mm) free-free continuum and hydrogen recombination line emission (H40$\\alpha$ and H42$\\alpha$) at 2.2 pc (0.12$''$) resolution."}
+],
+"fields": ["star_formation", "nearby_galaxies", "agn_and_quasars"],
+"question": {
+"value": "Identify and characterize candidate super star clusters (size, ionizing photon rate, stellar mass, gas mass) in the central starburst of NGC 4945 using 93 GHz free-free continuum and H40alpha/H42alpha recombination lines, and constrain ionizing photons from the AGN",
+"evidence": [
+{"loc": "Introduction", "quote": "We identify candidate star clusters and estimate properties relating to their size, ionizing photon luminosity, stellar mass, and gas mass."},
+{"loc": "abstract", "quote": "We do not detect recombination line emission from the AGN and place an upper limit on the ionizing photons which leak into the starburst region of $Q_0 < 10^{52}$ s$^{-1}$."}
+]
+},
+"targets": [
+{
+"name": "NGC 4945",
+"details": [
+{"loc": "abstract", "quote": "NGC 4945 is a nearby (3.8 Mpc) galaxy hosting a nuclear starburst and Seyfert Type 2 AGN."},
+{"loc": "Introduction", "quote": "At the distance of 3.8 Mpc, 0.1$''$ corresponds to 1.84 pc."},
+{"loc": "3 Continuum Emission", "quote": "The brightest peak at 93 GHz, centered at $(\\alpha, \\delta)_{93} = (13\\mathrm{h}\\, 05\\mathrm{m}\\, 27.4798 \\mathrm{s} \\pm 0.004 \\mathrm{s}, -49^{\\circ}\\, 28\\ensuremath{'}\\, 05.404\\ensuremath{''} \\pm 0.06\\ensuremath{''})$"}
+],
+"coordinates": "brightest 93 GHz peak (presumed AGN core): 13h05m27.4798s, -49d28m05.404s",
+"redshift_or_distance": "3.8 Mpc",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2018.1.01236.S", "evidence": [{"loc": "Observations", "quote": "We used the ALMA Band 3 receivers to observe NGC 4945 as part of the project 2018.1.01236.S (PI: A. Leroy)."}]},
+{"code": "2016.1.01135.S", "evidence": [{"loc": "Observations", "quote": "We compare the continuum emission at 3 mm with archival ALMA imaging of the $\\nu = 350$ GHz ($\\lambda \\sim 850~\\mu$m) continuum (project 2016.1.01135.S, PI: N. Nagar)."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (93 GHz, 3.2 mm; project 2018.1.01236.S); archival 350 GHz (850 um) continuum from project 2016.1.01135.S", "evidence": [
+{"loc": "Observations", "quote": "We used the ALMA Band 3 receivers to observe NGC 4945 as part of the project 2018.1.01236.S (PI: A. Leroy)."},
+{"loc": "Observations", "quote": "We compare the continuum emission at 3 mm with archival ALMA imaging of the $\\nu = 350$ GHz ($\\lambda \\sim 850~\\mu$m) continuum (project 2016.1.01135.S, PI: N. Nagar)."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Four Band 3 spectral windows centered at 86.2, 88.4, 98.4, 100.1 GHz covering H42alpha and H40alpha; spws span 15 GHz; native channel width 0.488 MHz", "evidence": [
+{"loc": "Observations", "quote": "Four spectral windows in Band 3 – centered at 86.2, 88.4, 98.4, and 100.1 GHz"},
+{"loc": "3.3.1 Band 3 Spectral Index", "quote": "The spectral windows span 15 GHz, which we set up to have a large fractional bandwidth."},
+{"loc": "Observations", "quote": "We boxcar smoothed the spectral cubes from the native 0.488 MHz channel width to 2.93 MHz."}
+]},
+{"field": "continuum_bandwidth", "value": "full bandwidth of line-free channels (fiducial frequency 93.2 GHz); also per-spectral-window continuum images", "evidence": [
+{"loc": "Observations", "quote": "Then we create a continuum image using the full bandwidth of the line-free channels. We also make continuum images for each spectral window."},
+{"loc": "Observations", "quote": "the fiducial frequency is $\\nu = 93.2$ GHz"}
+]},
+{"field": "arrays", "value": "12 m array", "evidence": [
+{"loc": "Observations", "quote": "We observed NGC 4945 with the main 12 m array telescopes in intermediate and extended configurations."}
+]},
+{"field": "configurations", "value": "8 km extended configuration (used for main analysis) and 1 km intermediate configuration (comparison)", "evidence": [
+{"loc": "Observations", "quote": "We image the data from an 8 km extended configuration"},
+{"loc": "Observations", "quote": "we compare the high resolution data with observations taken in a 1 km intermediate configuration as part of the same observing project"}
+]},
+{"field": "angular_resolution", "value": "93 GHz continuum 0.12 arcsec (2.2 pc) after circularizing from 0.097 x 0.071 arcsec; H40alpha/H42alpha cubes 0.20 arcsec; intermediate configuration 0.7 arcsec; 350 GHz matched to 0.12 arcsec", "evidence": [
+{"loc": "Observations", "quote": "Before convolution to a round beam, the beam had a major and minor FWHM of 0.097$''$ $\\times$ 0.071$''$."},
+{"loc": "Observations", "quote": "For the H40$\\alpha$ and H42$\\alpha$ spectral cubes, the final FWHM beam size is 0.20$''$, convolved from 0.097$''$ $\\times$ 0.072$''$ and from 0.11$''$ $\\times$ 0.083$''$, respectively."},
+{"loc": "5.1 Size", "quote": "However, the lower end may reflect the resolution limit of our beam, with a FWHM size of 2.2 pc."}
+]},
+{"field": "max_recoverable_scale", "value": "extended configuration sensitive to spatial scales of 0.07-6 arcsec (2-100 pc)", "evidence": [
+{"loc": "Observations", "quote": "We image the data from an 8 km extended configuration, which are sensitive to spatial scales of 0.07$''$–6$''$ (2–100 pc)"}
+]},
+{"field": "sensitivity", "value": "93 GHz continuum rms ~0.017 mJy/beam; H40alpha cube 0.50 mJy/beam per 8.9 km/s channel; H42alpha cube 0.48 mJy/beam per 10.3 km/s channel; 350 GHz rms 0.7 mJy/beam; intermediate-config continuum rms 0.15 mJy/beam", "evidence": [
+{"loc": "Observations", "quote": "The rms noise away from the source is $\\approx$0.017 mJy beam$^{-1}$, equivalent to 0.2 K in Rayleigh-Jeans brightness temperature units."},
+{"loc": "Observations", "quote": "The typical rms in the H40$\\alpha$ cube is 0.50 mJy beam$^{-1}$ per 8.9 km s$^{-1}$ channel."},
+{"loc": "Observations", "quote": "The typical rms in the H42$\\alpha$ cube is 0.48 mJy beam$^{-1}$ per 10.3 km s$^{-1}$ channel."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "2018.1.01236.S PI A. Leroy (new data); 2016.1.01135.S PI N. Nagar, described as archival", "evidence": [
+{"loc": "Observations", "quote": "We used the ALMA Band 3 receivers to observe NGC 4945 as part of the project 2018.1.01236.S (PI: A. Leroy)."},
+{"loc": "Observations", "quote": "We compare the continuum emission at 3 mm with archival ALMA imaging of the $\\nu = 350$ GHz ($\\lambda \\sim 850~\\mu$m) continuum (project 2016.1.01135.S, PI: N. Nagar)."}
+]}
+],
+"lines_targeted": [
+{"species": "H I (hydrogen recombination line)", "transition": "H40alpha (n=40, Delta n=1)", "rest_frequency": "99.0230 GHz", "evidence": [{"loc": "Observations", "quote": "The rest frequency of H$40\\alpha$ is 99.0230 GHz and of H$42\\alpha$ is 85.6884 GHz."}]},
+{"species": "H I (hydrogen recombination line)", "transition": "H42alpha (n=42, Delta n=1)", "rest_frequency": "85.6884 GHz", "evidence": [{"loc": "Observations", "quote": "The rest frequency of H$40\\alpha$ is 99.0230 GHz and of H$42\\alpha$ is 85.6884 GHz."}]},
+{"species": "H I (hydrogen recombination line)", "transition": "effective H41alpha (synthesized by averaging H40alpha and H42alpha)", "rest_frequency": "92.034 GHz", "evidence": [{"loc": "4 Recombination Line Emission", "quote": "The averaged spectrum has an effective transition of H41$\\alpha$ at $\\nu_{\\mathrm{eff}} = 92.034$ GHz."}]}
+],
+"other_facilities": [
+{"name": "Australian Long Baseline Array (LBA) 2.3 GHz", "provided": {"value": "2.3 GHz continuum images (synchrotron tracer), Epoch 2, beam 0.080 x 0.032 arcsec, rms 0.082 mJy/beam, provided courtesy of E. Lenc", "evidence": [
+{"loc": "Observations", "quote": "We compare the ALMA data with Australian Long Baseline Array (LBA) imaging of $\\nu = 2.3$ GHz continuum emission (cite: Lenc2009)."},
+{"loc": "Observations", "quote": "We use the Epoch 2 images (courtesy of E. Lenc) that have a native angular resolution slightly higher than the 3 mm ALMA data"}
+]}},
+{"name": "Spitzer IRAC 8 um", "provided": {"value": "8 um image of the whole disk (Program 40410, PI G. Rieke) for context figure", "evidence": [
+{"loc": "3 Continuum Emission", "quote": "The whole disk of NGC 4945, as traced by *Spitzer* IRAC 8 $\\mu$m emission (Program 40410, PI: G. Rieke)"}
+]}},
+{"name": "HST Pa-alpha", "provided": {"value": "Pa-alpha emission image shown for comparison", "evidence": [
+{"loc": "Acknowledgments", "quote": "Paul van der Werf for the HST Pa-$\\alpha$ data"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "2.3 GHz LBA continuum images and low-frequency SED/free-free opacity modeling of compact radio sources", "evidence": [
+{"loc": "3.2 Point Source Flux Extraction", "quote": "We take the model fit by (cite: Lenc2009) and normalize it to the 2.3 GHz flux that we extract as an example"},
+{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "Using the optical depths derived in (cite: Lenc2009) and our fiducial electron temperature, we solve for the density through the relation,"}
+]}, "citation": "(cite: Lenc2009)"},
+{"what": {"value": "Non-LTE departure coefficient b_n = 0.73", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "take $b_{\\mathsf{n}} = 0.73$ (cite: Storey1995)"}]}, "citation": "(cite: Storey1995)"},
+{"what": {"value": "Helium ionization ratio y = 0.10", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "which we fix as $y = 0.10$ (cite: DePree1996; Mills2020)."}]}, "citation": "(cite: DePree1996; Mills2020)"},
+{"what": {"value": "Starburst99 ionizing photon output for a 5 Myr old population", "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "We use Starburst99 calculations (cite: Leitherer1999) to infer the stellar mass from the ionizing photon output of a 5 Myr old stellar population"}]}, "citation": "(cite: Leitherer1999)"},
+{"what": {"value": "Dust temperature of 130 K", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We assume a dust temperature of $T_{\\mathrm{dust}} = 130$ K, as has been determined for the gas kinetic temperature in the forming super star clusters in NGC 253 (cite: Gorski2017)."}]}, "citation": "(cite: Gorski2017)"},
+{"what": {"value": "Dust mass absorption coefficient kappa = 1.9 cm2/g at 350 GHz", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We adopt $\\kappa = 1.9$ cm$^2$ g$^{-1}$ which should be appropriate for $\\nu \\sim 350$ GHz and dust mixed with gas at a density of $\\sim 10^5 - 10^6$ cm$^{-3}$ (cite: Ossenkopf1994)"}]}, "citation": "(cite: Ossenkopf1994)"},
+{"what": {"value": "Dust-to-gas mass ratio of 1/100", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "an adopted dust-to-gas mass ratio (DGR) of 1-to-100, approximately the Milky Way value and similar to the value found for starburst galaxies by (cite: Wilson2008)"}]}, "citation": "(cite: Wilson2008)"},
+{"what": {"value": "Electron temperature to oxygen abundance relation", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "(cite: Shaver1983) established a relation,"}]}, "citation": "(cite: Shaver1983)"},
+{"what": {"value": "Disk metallicity 12+log(O/H) = 8.5 +/- 0.1 from strong-line ratios in 15 star-forming regions", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "(cite: Stanghellini2015) determined in 15 star-forming regions in the galactic plane of NGC 4945"}]}, "citation": "(cite: Stanghellini2015)"},
+{"what": {"value": "Lower-resolution H42alpha analysis (2.3 arcsec) used for flux/profile comparison; Te = 5400 +/- 600 K; Lbol = (2.0 +/- 0.2)e10 Lsun from FIR", "evidence": [
+{"loc": "5.3 Temperature and Metallicity", "quote": "which finds $T_e = (5400 \\pm 600)$ K (cite: Bendo2016)."},
+{"loc": "6.5 Total Burst of Star-formation", "quote": "$L_{\\mathrm{bol}} = (2.0 \\pm 0.2) \\times 10^{10}$ L$_{\\odot}$ (cite: Bendo2016)"}
+]}, "citation": "(cite: Bendo2016)"},
+{"what": {"value": "NGC 253 cluster population properties and mass function for comparison", "evidence": [{"loc": "6.3 Cluster Mass Function", "quote": "We include the SSCs of NGC 253, with stellar mass properties determined on similar spatial scales ($\\sim$2 pc resolution) and through H40$\\alpha$ recombination lines for a zero-age main sequence population (cite: Leroy2018; Mills2020)."}]}, "citation": "(cite: Leroy2018; Mills2020)"},
+{"what": {"value": "Cluster mass function slope of beta = -2.0 +/- 0.3 across six galaxies", "evidence": [{"loc": "6.3 Cluster Mass Function", "quote": "A main result from (cite: Mok2020) is that the cluster mass functions across the six galaxies are consistent with slopes of $\\beta = -2.0 \\pm 0.3$."}]}, "citation": "(cite: Mok2020)"},
+{"what": {"value": "AGN bolometric luminosity from X-ray luminosity (Lbol ~ 20 Lx) and ionizing fraction (Lbol/Lion ~ 3, 113 eV photons)", "evidence": [
+{"loc": "6.5 Role of the AGN", "quote": "which we determined using the relation for Seyfert AGN of $L_{\\mathrm{bol}} \\sim 20 L_{\\mathrm{X}}$ (cite: Hopkins2007)"},
+{"loc": "6.5 Role of the AGN", "quote": "We use the standard relation of (cite: Elvis1994), which posits $L_{\\mathrm{bol}} / L_{\\mathrm{ion}} \\sim 3$ with an average ionizing photon energy of 113 eV."}
+]}, "citation": "(cite: Hopkins2007); (cite: Elvis1994)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Starburst99 single 1e6 Msun population (Kroupa IMF, max mass 100 Msun, default tracks) giving 5 Myr ionizing photon output used to convert Q0 to stellar mass", "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "We arrive at this value by simulating a single $10^6$ M$_{\\odot}$ stellar population, with the initial mass function (IMF) of (cite: Kroupa2001), a maximum stellar mass of 100 M$_{\\odot}$, and the default stellar evolution tracks and tuning parameters."}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "observatory-provided calibrated visibilities (calibration details not given)", "evidence": [{"loc": "Observations", "quote": "We analyze the observatory-provided calibrated visibilities using version 5.4.0 of the Common Astronomy Software Application (cite: McMullin2007)."}]},
+{"field": "casa_version", "value": "CASA 5.4.0 (used to analyze the calibrated visibilities)", "evidence": [{"loc": "Observations", "quote": "We analyze the observatory-provided calibrated visibilities using version 5.4.0 of the Common Astronomy Software Application (cite: McMullin2007)."}]},
+{"field": "archive_products_used_as_is", "value": "observatory-calibrated visibilities used; 1 km configuration continuum image taken from the observatory pipeline", "evidence": [
+{"loc": "Observations", "quote": "We analyze the observatory-provided calibrated visibilities using version 5.4.0 of the Common Astronomy Software Application (cite: McMullin2007)."},
+{"loc": "Observations", "quote": "We use the continuum image provided by the observatory pipeline, which we convolve to have a circular beam FWHM of 0.7$''$"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean named for in-band spectral index comparison; imaging task settings otherwise not given", "evidence": [{"loc": "3.3.1 Band 3 Spectral Index", "quote": "The spectral indices measured in this way were consistent for the brightest sources with the index determined by `CASA tclean`"}]},
+{"field": "weighting_robust", "value": "Briggs robust = 0.5 for 93 GHz continuum and line cubes; robust = -2 for the 350 GHz image", "evidence": [
+{"loc": "Observations", "quote": "For all images, we use Briggs weighting with a robust parameter of $r=0.5$."},
+{"loc": "Observations", "quote": "We imaged the calibrated visibilities with a Briggs robust parameter of $r=-2$ (towards uniform weighting)"}
+]},
+{"field": "masking", "value": "CLEAN mask (all channels) derived from the full-bandwidth continuum image, for line cubes", "evidence": [{"loc": "Observations", "quote": "Then, we image by applying a CLEAN mask (to all channels) derived from the full-bandwidth continuum image."}]},
+{"field": "continuum_subtraction", "value": "uv-plane first-order polynomial fit", "evidence": [{"loc": "Observations", "quote": "When imaging the two spectral lines of interest, we first subtract the continuum in $uv$ space through a first order polynomial fit."}]},
+{"field": "line_free_channels", "value": "channels with strong spectral lines flagged for continuum imaging; channel ranges not given", "evidence": [{"loc": "Observations", "quote": "When imaging the continuum, we flag channels with strong spectral lines."}]},
+{"field": "array_combination", "value": "no joint imaging of configurations; extended and 1 km configurations imaged separately", "evidence": [{"loc": "Observations", "quote": "We do not jointly image the configurations because our main science goals are focused on compact, point-like objects."}]},
+{"field": "smoothing", "value": "convolved to circular beams; cubes boxcar smoothed from 0.488 MHz to 2.93 MHz channels", "evidence": [
+{"loc": "Observations", "quote": "After imaging, we convolved the continuum and line images to convert from an elliptical to a round beam shape."},
+{"loc": "Observations", "quote": "We boxcar smoothed the spectral cubes from the native 0.488 MHz channel width to 2.93 MHz."}
+]},
+{"field": "final_beam", "value": "continuum 0.12 arcsec circular; H40alpha/H42alpha cubes 0.20 arcsec circular", "evidence": [
+{"loc": "Observations", "quote": "For the H40$\\alpha$ and H42$\\alpha$ spectral cubes, the final FWHM beam size is 0.20$''$, convolved from 0.097$''$ $\\times$ 0.072$''$ and from 0.11$''$ $\\times$ 0.083$''$, respectively."},
+{"loc": "Observations", "quote": "the final full-width half maximum (FWHM) beam size is $\\theta = 0.12$$''$"}
+]},
+{"field": "final_rms", "value": "continuum ~0.017 mJy/beam; H40alpha 0.50 mJy/beam per 8.9 km/s; H42alpha 0.48 mJy/beam per 10.3 km/s", "evidence": [
+{"loc": "Observations", "quote": "The rms noise away from the source is $\\approx$0.017 mJy beam$^{-1}$, equivalent to 0.2 K in Rayleigh-Jeans brightness temperature units."},
+{"loc": "Observations", "quote": "The typical rms in the H40$\\alpha$ cube is 0.50 mJy beam$^{-1}$ per 8.9 km s$^{-1}$ channel."}
+]}
+],
+"inherited": [
+{"what": {"value": "Helium ionization ratio y = 0.10 adopted from earlier work", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "which we fix as $y = 0.10$ (cite: DePree1996; Mills2020)."}]}, "from_reference": "(cite: DePree1996; Mills2020)"},
+{"what": {"value": "Comparison apertures (N, C, S) matched to those of an earlier H42alpha analysis", "evidence": [{"loc": "4.2.2 H42alpha Contamination", "quote": "We approximately matched the locations of these apertures to those defined in (cite: Bendo2016), in which H42$\\alpha$ was analyzed at 2.3$''$ resolution"}]}, "from_reference": "(cite: Bendo2016)"},
+{"what": {"value": "Free-free absorption models of synchrotron sources taken from LBA 2.3 GHz work and associated by position (within 0.06 arcsec)", "evidence": [{"loc": "3.2 Point Source Flux Extraction", "quote": "When a source identified by (cite: Lenc2009) lies within 0.06$''$ (half the beam FWHM) of the 93 GHz source, we associate the low-frequency modeling with the 93 GHz source."}]}, "from_reference": "(cite: Lenc2009)"},
+{"what": {"value": "NGC 4945 is the second object of an ALMA campaign on massive star clusters in starbursts; NGC 253 analysis used as comparison and methodological parent", "evidence": [{"loc": "Introduction", "quote": "NGC 4945 is the second object we target in a campaign to characterize massive star clusters in local starbursts with ALMA."}]}, "from_reference": "(cite: Leroy2018; Mills2020)"}
+],
+"unstated_but_needed": [
+"Calibration details: pipeline vs manual, CASA/pipeline version used for calibration, flux/bandpass/phase calibrators, flux scale uncertainty, any self-calibration",
+"tclean parameters: deconvolver, niter/threshold, cell size, image size, CLEAN mask threshold and construction, number of Taylor terms, restoring beam commands",
+"Which channels were treated as line-free for continuum imaging and for the uv-plane polynomial continuum subtraction, and which spectral lines were flagged",
+"Details of how the 350 GHz and 2.3 GHz images were aligned astrometrically and convolved, and the 350 GHz cell/image settings",
+"The simulation used to decompose the in-band spectral index into free-free, synchrotron and dust fractions: assumed intrinsic indices and distributions, how errors on f_ff, f_syn, f_d were derived (referenced only to Section 3.3)",
+"PyBDSF parameters beyond the island (7 sigma) and peak (10 sigma) thresholds (rms box, adaptive rms, fitting options)",
+"Fitting method for the cluster mass function power law (binning, estimator, completeness limit values, error propagation)",
+"Starburst99 version and input parameters beyond IMF/maximum mass (metallicity, tracks, atmosphere models)",
+"Source of the adopted 3.8 Mpc distance",
+"Exact list of ALMA execution blocks / observation dates and total integration time per configuration"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Image continuum and recombination line cubes",
+"method": {"value": "Line-free-channel full-bandwidth continuum image plus per-spw images; uv-plane polynomial continuum subtraction for lines; CLEAN mask from continuum; Briggs r=0.5; convolve to circular beams; boxcar-smooth cubes", "evidence": [
+{"loc": "Observations", "quote": "Then we create a continuum image using the full bandwidth of the line-free channels."},
+{"loc": "Observations", "quote": "Then, we image by applying a CLEAN mask (to all channels) derived from the full-bandwidth continuum image."},
+{"loc": "Observations", "quote": "After imaging, we convolved the continuum and line images to convert from an elliptical to a round beam shape."}
+]},
+"software": ["CASA 5.4.0"],
+"key_parameters": [
+{"value": "Briggs robust = 0.5", "evidence": [{"loc": "Observations", "quote": "For all images, we use Briggs weighting with a robust parameter of $r=0.5$."}]},
+{"value": "line cubes smoothed to 2.93 MHz channels (8.9 and 10.3 km/s)", "evidence": [{"loc": "Observations", "quote": "We boxcar smoothed the spectral cubes from the native 0.488 MHz channel width to 2.93 MHz."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Identify candidate clusters as compact 93 GHz sources",
+"method": {"value": "PyBDSF island/Gaussian finding with 7 sigma island and 10 sigma peak thresholds; remove sources outside starburst, blended sources, and those below 10 sigma after aperture photometry", "evidence": [
+{"loc": "3.1 Point Source Identification", "quote": "Islands are defined as contiguous pixels above a threshold of seven times the global rms value of $\\sigma \\approx 0.017$ mJy beam$^{-1}$."},
+{"loc": "3.1 Point Source Identification", "quote": "Within each island, multiple Gaussians may be fit, each with a peak amplitude greater than the peak threshold, a threshold of ten times the global rms."},
+{"loc": "3.1 Point Source Identification", "quote": "As a result, we analyze 29 sources as candidate star clusters."}
+]},
+"software": ["PyBDSF"],
+"key_parameters": [
+{"value": "island threshold 7 x rms; peak threshold 10 x rms; blend rejection for offsets < 0.12 arcsec", "evidence": [{"loc": "3.1 Point Source Identification", "quote": "We also removed $3$ sources that appeared blended, with an offset $<0.12$$''$ from another source."}]}
+],
+"assumptions": [
+{"value": "Compact 93 GHz sources are candidate massive star clusters, with possible contamination by synchrotron-dominated supernova remnants or dusty protoclusters", "evidence": [{"loc": "3 Continuum Emission", "quote": "We take into consideration the point-like sources detected at 93 GHz as candidate massive star clusters, though some contamination by synchrotron-dominated supernova remnants or dusty protoclusters may still be possible."}]}
+],
+"fitting": {"value": "Gaussians fitted and subtracted starting from the brightest peak", "evidence": [{"loc": "3.1 Point Source Identification", "quote": "Starting with the brightest peak, Gaussians are fit and cleaned (i.e., subtracted)."}]},
+"validation": {"value": "Visual comparison", "evidence": [{"loc": "3.1 Point Source Identification", "quote": "The sources match well with what we would identify by eye."}]}
+},
+{
+"order": 3,
+"goal": "Measure source flux densities at 2.3, 93 and 350 GHz",
+"method": {"value": "Aperture photometry at the source peak with local median annulus background subtraction after convolving to common 0.12 arcsec resolution; 3 sigma upper limits for non-detections", "evidence": [
+{"loc": "3.2 Point Source Flux Extraction", "quote": "Before extracting the continuum flux at 2.3 GHz, we convolve the image to the common resolution of 0.12$''$."},
+{"loc": "3.2 Point Source Flux Extraction", "quote": "Then we subtract the extended background continuum that is local to the source by taking the median flux density within an annulus of inner diameter 0.24$''$ and outer diameter 0.30$''$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "aperture diameter 0.24 arcsec; background annulus 0.24-0.30 arcsec", "evidence": [{"loc": "3.2 Point Source Flux Extraction", "quote": "We extract the flux density at the location of the peak source within an aperture diameter of 0.24$''$."}]},
+{"value": "3 sigma upper limit when flux < 3 x global rms", "evidence": [{"loc": "3.2 Point Source Flux Extraction", "quote": "When the extracted flux density within an aperture is less than three times the global rms noise , we assign a three sigma upper limit to that flux measurement."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Derive in-band spectral index and free-free, synchrotron, dust fractions",
+"method": {"value": "First-order polynomial fit to five continuum flux measurements (four spws plus full band) per source; mixtures of the three emission mechanisms are simulated to match the observed in-band index and give fractional contributions", "evidence": [
+{"loc": "3.3.1 Band 3 Spectral Index", "quote": "We fit a first order polynomial to the five continuum measurements – four from each spectral window, one from the full bandwidth image."},
+{"loc": "3.3.2 Decomposing the fractional contributions of emission type", "quote": "To do this, we simulate how mixtures of synchrotron, free-free, and dust emission could combine to create the observed in-band index."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Same apertures as flux extraction; median uncertainty of spectral indices 0.13", "evidence": [{"loc": "3.3.1 Band 3 Spectral Index", "quote": "The median uncertainty of the spectral indices is 0.13."}]}
+],
+"assumptions": [
+{"value": "Free-free fraction defined via S_ff = f_ff * S_93", "evidence": [{"loc": "3.3 Free-free Fraction at 93 GHz", "quote": "We will determine a free-free fraction, $f_{\\mathrm{ff}}$, and let $S_{\\mathrm{ff}} = f_{\\mathrm{ff}} S_{93}$."}]}
+],
+"fitting": {"value": "Linear (first order) polynomial fit, 1 sigma uncertainty from fit", "evidence": [{"loc": "3.3.1 Band 3 Spectral Index", "quote": "The fit to the in-band spectral index is listed in Table [\\[tab:continuum\\]](#tab:continuum) with the one sigma uncertainty to the fit."}]},
+"validation": {"value": "Compared with the tclean spectral index for bright sources", "evidence": [{"loc": "3.3.1 Band 3 Spectral Index", "quote": "The spectral indices measured in this way were consistent for the brightest sources with the index determined by `CASA tclean`"}]}
+},
+{
+"order": 5,
+"goal": "Extract and fit recombination line spectra of individual sources",
+"method": {"value": "Extract H40alpha and H42alpha spectra in 0.4 arcsec apertures, interpolate to a 10.3 km/s grid, weight by inverse variance and average to an effective H41alpha profile, fit Gaussians", "evidence": [
+{"loc": "4 Recombination Line Emission", "quote": "We extract H40$\\alpha$ and H42$\\alpha$ spectra at the location of each source with an aperture diameter of 0.4$''$, or twice the beam FWHM."},
+{"loc": "4 Recombination Line Emission", "quote": "weight each spectrum by $\\sigma_{\\mathrm{rms}}^{-2}$ where $\\sigma_{\\mathrm{rms}}$ is the spectrum standard deviation, and average the spectra together lowering the final noise."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "detection threshold: integrated signal > 5 sigma_rms", "evidence": [{"loc": "4 Recombination Line Emission", "quote": "We report on detections with an integrated signal of $>5\\sigma_{\\mathrm{rms}}$."}]}
+],
+"assumptions": [
+{"value": "H40alpha and H42alpha spectra are virtually identical and can be averaged", "evidence": [{"loc": "4.2.2 H42alpha Contamination", "quote": "In principle, we expect the spectra to be virtually identical, which is why we average them to improve the signal-to-noise at high-resolution."}]}
+],
+"fitting": {"value": "Single Gaussian per feature; integrated S/N within +/- 1 sigma of the fit", "evidence": [{"loc": "4 Recombination Line Emission", "quote": "We fit spectral features with a Gaussian profile."}]},
+"validation": {"value": "Central velocities compared with disk rotation and the 0.7 arcsec H40alpha spectra", "evidence": [{"loc": "4 Recombination Line Emission", "quote": "To do this, we overlay our spectra on H40$\\alpha$ spectra extracted from the intermediate configuration observations (0.7$''$ resolution)."}]}
+},
+{
+"order": 6,
+"goal": "Measure total line flux of the starburst and test H42alpha contamination",
+"method": {"value": "Optimize elliptical aperture templates (T1 for extended, T2 for intermediate configuration) from a 2D Gaussian fit to the 0.7 arcsec continuum, extract total H40alpha spectra, fit two Gaussians; compare H40alpha and H42alpha fluxes in N, C, S apertures", "evidence": [
+{"loc": "4.2.1 Total Emission from the Starburst Region", "quote": "We independently vary the major and minor axes (in multiples of $0.5\\sigma_{\\mathrm{maj}}$ and $0.5\\sigma_{\\mathrm{min}}$, respectively) in order to determine the aperture which maximizes the total integrated signal in channels within $\\pm 170$ km s$^{-1}$."},
+{"loc": "4.2.1 Total Emission from the Starburst Region", "quote": "We fit the features with two Gaussians."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "T1 aperture 8.4 x 1.5 arcsec (extended cube); T2 aperture 12.0 x 2.9 arcsec (intermediate cube)", "evidence": [{"loc": "4.2.1 Total Emission from the Starburst Region", "quote": "we find the largest integrated line emission with an aperture of 8.4$''$ $\\times$ 1.5$''$, which we refer to as T1."}]}
+],
+"assumptions": [],
+"fitting": {"value": "Two Gaussian components for double-horn profiles", "evidence": [{"loc": "4 Recombination Line Emission", "quote": "We fit the spectrum using the sum of two Gaussian components."}]},
+"validation": {"value": "H42alpha fluxes consistent within 2 sigma with an earlier 2.3 arcsec analysis", "evidence": [{"loc": "4.2.2 H42alpha Contamination", "quote": "the integrated line emission is also consistent (within 2$\\sigma$)"}]}
+},
+{
+"order": 7,
+"goal": "Derive electron temperature and metallicity",
+"method": {"value": "Solve the line-to-continuum flux ratio (using the free-free fraction re-evaluated at 0.2 arcsec) for Te for 5 bright, well-fit sources; adopt mean Te; convert to O/H via the Shaver relation", "evidence": [
+{"loc": "5.3 Temperature and Metallicity", "quote": "Dependencies on the distance, emission measure, and (possible) beam-filling effects cancel out under the assumption that the two tracers arise in the same volume of gas."},
+{"loc": "5.3 Temperature and Metallicity", "quote": "To derive the temperatures, we re-evaluate the continuum (fraction of) free-free emission at the resolution of 0.2$''$, since the free-free fraction may change with resolution."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "b_n = 0.73; y = 0.10; 5 sources with peak S/N > 4.7 sigma", "evidence": [
+{"loc": "5.3 Temperature and Metallicity", "quote": "take $b_{\\mathsf{n}} = 0.73$ (cite: Storey1995)"},
+{"loc": "5.3 Temperature and Metallicity", "quote": "We focus on the 5 sources with bright (peak S/N $>4.7\\sigma$) and well-fit recombination line emission."}
+]}
+],
+"assumptions": [
+{"value": "Line and continuum arise in the same gas volume; b_n iterated once", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "We iterate (once) on the input $b_{\\mathsf{n}}$ and output temperature."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Te consistent with 5400 +/- 600 K from a 2.3 arcsec analysis", "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "which finds $T_e = (5400 \\pm 600)$ K (cite: Bendo2016)."}]}
+},
+{
+"order": 8,
+"goal": "Derive emission measure, electron density and ionized gas mass",
+"method": {"value": "EM from the free-free continuum (and line) using Te; density assuming a sphere of radius FWHM/2; ionized mass M = 1.36 m_H n V", "evidence": [
+{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "We use the emission measure determined from the free-free continuum, assume $n_e = n_+$, and consider a spherical volume with $r = \\mathrm{FWHM_{size}} / 2$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Te = 6000 K; uncertainty ~0.4 dex dominated by free-free fraction", "evidence": [{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "The uncertainty in the emission measures is $\\sim$0.4 dex and is dominated by the errors of the free-free fraction."}]}
+],
+"assumptions": [
+{"value": "1.36 factor for helium by mass; spherical geometry with r = FWHM/2", "evidence": [{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "where we have assumed a 1.36 contribution of helium by mass and we let $r = \\mathrm{FWHM_{size}} / 2$."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Density cross-checked using free-free optical depths of five matched 2.3 GHz sources", "evidence": [{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "This agrees well with the values we separately derive."}]}
+},
+{
+"order": 9,
+"goal": "Compute ionizing photon rate and stellar mass",
+"method": {"value": "Q0 from continuum EM with case B recombination coefficient; stellar mass from Q0 using Starburst99 5 Myr output per unit mass", "evidence": [
+{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "From the emission measure of ionized gas and the temperature-dependent recombination coefficient for case B recombination, the rate of ionizing photons"},
+{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "Then we divide the ionizing photon output at 5 Myr by the initial mass of the stellar population."}
+]},
+"software": ["Starburst99"],
+"key_parameters": [
+{"value": "Kroupa IMF, max stellar mass 100 Msun, default tracks, 1e6 Msun population", "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "We arrive at this value by simulating a single $10^6$ M$_{\\odot}$ stellar population, with the initial mass function (IMF) of (cite: Kroupa2001), a maximum stellar mass of 100 M$_{\\odot}$, and the default stellar evolution tracks and tuning parameters."}]}
+],
+"assumptions": [
+{"value": "Instantaneous burst about 5 Myr ago (uncertainty ~1 Myr)", "evidence": [{"loc": "5.2 Age", "quote": "Throughout our analysis, we assume that the candidate star clusters formed in an instantaneous burst of star-formation roughly 5 Myr ago (with a likely uncertainty of $\\sim$1 Myr)."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Admitted rough approximation, no correction for dust absorption, mass ejection or binaries", "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "We note that this is a rough approximation which has not accounted for the amount of ionizing photons absorbed by dust, mass ejected from the system, and/or enhanced emission from stellar binaries."}]}
+},
+{
+"order": 10,
+"goal": "Estimate gas mass from 350 GHz dust emission",
+"method": {"value": "Convert 350 GHz flux to intensity, solve optical depth with Planck function at Tdust, convert to gas surface density with kappa and DGR, multiply by source area", "evidence": [
+{"loc": "5.6 Gas Mass from Dust", "quote": "We determine the dust optical depth by comparing the measured intensity with that expected from an estimate of the true dust temperature."},
+{"loc": "5.6 Gas Mass from Dust", "quote": "We determine the gas mass by multiplying the gas surface density by the two dimensional area of the source size"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Tdust = 130 K", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We assume a dust temperature of $T_{\\mathrm{dust}} = 130$ K"}]},
+{"value": "kappa = 1.9 cm2/g", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We adopt $\\kappa = 1.9$ cm$^2$ g$^{-1}$"}]},
+{"value": "DGR = 1/100", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "an adopted dust-to-gas mass ratio (DGR) of 1-to-100"}]}
+],
+"assumptions": [
+{"value": "Optically thin dust emission (tau_350 ~0.02-0.10)", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We measure optical depths in the range $\\tau_{350} \\sim$ 0.02 – 0.10, with a median value of $\\tau_{350} \\sim 0.04$, justifying our optically thin assumption."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Admitted factor-of-2 kappa uncertainty; Tdust an approximation", "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "but we do note the large (factor of 2) uncertainties on this value."}]}
+},
+{
+"order": 11,
+"goal": "Compute total mass, surface density and free-fall time",
+"method": {"value": "M_Tot = M_gas + M_star; surface density within FWHM; t_ff = (pi r^3 / 8 G M_Tot)^(1/2)", "evidence": [
+{"loc": "5.7 Total Mass from Gas and Stars", "quote": "We estimate the current total mass of each candidate star cluster as the sum of the gas and star masses, where $M_{\\mathrm{Tot}} = M_{\\mathrm{gas}} + M_{\\star}$."},
+{"loc": "5.7 Total Mass from Gas and Stars", "quote": "we estimate the gravitational free fall time of the clusters, $t_{\\mathrm{ff}} = \\left( \\frac{ \\pi r^3 }{ 8 G M_{\\mathrm{Tot}} } \\right)^{1/2}$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Sources not detected at 350 GHz: only stellar mass used in total", "evidence": [{"loc": "5.7 Total Mass from Gas and Stars", "quote": "we only consider the stellar mass."}]}
+],
+"assumptions": [
+{"value": "Free-fall time assumes gas with no support and the whole cluster mass in gas", "evidence": [{"loc": "5.7 Total Mass from Gas and Stars", "quote": "This is the gravitational free fall time that would be experienced by gas with no support if all of the cluster mass were gas."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 12,
+"goal": "Fit the cluster stellar-mass function",
+"method": {"value": "Power-law fit to the cluster mass distribution of 22 sources above the completeness limit; compare with NGC 253 and literature slopes", "evidence": [
+{"loc": "6.3 Cluster Mass Function", "quote": "A power-law fit to the cluster mass distribution, of 22 sources down to $M_{\\star} = 2.4 \\times 10^5$ M$_{\\odot}$, in NGC 4945 results in a slope of $\\beta = -1.8 \\pm 0.4$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "completeness limit 2.4e5 Msun; adopted conservative uncertainty reflecting 0.4 dex mass error", "evidence": [{"loc": "6.3 Cluster Mass Function", "quote": "Note that the fit to the data results in $\\beta = -1.76 \\pm 0.07$, but given the uncertainty in our mass estimates (0.4 dex), we adopt the conservative figure."}]}
+],
+"assumptions": [],
+"fitting": {"value": "Power law; estimator, binning and priors not stated", "evidence": [{"loc": "6.3 Cluster Mass Function", "quote": "A power-law fit to the cluster mass distribution, of 22 sources down to $M_{\\star} = 2.4 \\times 10^5$ M$_{\\odot}$"}]},
+"validation": {"value": "Completeness limits estimated by eye; slope compared with NGC 253 and Mok et al.", "evidence": [{"loc": "6.3 Cluster Mass Function", "quote": "We estimated the completeness limits by eye."}]}
+},
+{
+"order": 13,
+"goal": "Compare cluster ionizing photons with the total burst, diffuse gas and AGN limit",
+"method": {"value": "Convert T1 and T2 H40alpha fluxes to Q with Te = 6000 K; compare cluster sum with T1/T2; test AGN contribution in 7 apertures along the major axis; AGN leakage limit from Q0 of the 93 GHz point source versus expected Lion from X-ray Lbol", "evidence": [
+{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "Assuming the temperature of $T_e = (6000\\pm400)$ K from Section [5.3](#sec:temp), the total ionized content, which accounts for the full star-formation rate of the starburst, yields an ionizing photon rate of $Q_{\\mathrm{T2}} = (3.9 \\pm 0.3) \\times 10^{53}$ s$^{-1}$."},
+{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "We test this scenario by extracting spectra from the 0.7$''$ intermediate-configuration data and the 0.2$''$ extended-configuration data in 7 non-overlapping apertures of 3$''$ diameter consecutively distributed along the major axis of the starburst region."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "AGN: Lbol ~ 20 Lx; Lbol/Lion ~ 3; Te = 6000 or 30000 K", "evidence": [{"loc": "6.5 Role of the AGN", "quote": "If we assume a temperature of $T_e = 6000$ (30 000) K this would correspond to $Q_0 = 1.1 \\,(0.5) \\times 10^{52}$ s$^{-1}$."}]}
+],
+"assumptions": [
+{"value": "Additional intermediate-configuration line emission assumed to come from a 5 Myr old population", "evidence": [{"loc": "6.5 Total Burst of Star-formation", "quote": "Also, this calculation assumes the source of the additional recombination line emission in the intermediate-configuration data is also characterized by a 5 Myr old stellar population."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Missing line flux in extended data treated as an upper limit because of low S/N and uv coverage", "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "However, a missing 70% of line flux in the 0.2$''$ resolution data should be considered as an upper limit."}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.4.0", "used_for": {"value": "analysis/imaging of the observatory-calibrated visibilities", "evidence": [{"loc": "Observations", "quote": "We analyze the observatory-provided calibrated visibilities using version 5.4.0 of the Common Astronomy Software Application (cite: McMullin2007)."}]}},
+{"name": "tclean (CASA)", "version": "not stated", "used_for": {"value": "comparison spectral index for bright sources", "evidence": [{"loc": "3.3.1 Band 3 Spectral Index", "quote": "The spectral indices measured in this way were consistent for the brightest sources with the index determined by `CASA tclean`"}]}},
+{"name": "PyBDSF", "version": "not stated", "used_for": {"value": "source finding and 2D Gaussian size fits of 93 GHz sources", "evidence": [{"loc": "5.1 Size", "quote": "The sources identified through `PyBDSF` in the 93 GHz continuum image are fit with two dimensional Gaussians."}]}},
+{"name": "Starburst99", "version": "not stated", "used_for": {"value": "ionizing photon output per unit stellar mass at 5 Myr; Lbol/L0 and mechanical output of the clusters", "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "We use Starburst99 calculations (cite: Leitherer1999) to infer the stellar mass from the ionizing photon output of a 5 Myr old stellar population"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "APLpy (cite: Robitaille2012), Astropy (cite: Astropy2018), CASA (cite: McMullin2007), CRRLpy (cite: Salas2016), Matplotlib (cite: Hunter2007), PyBDSF (cite: Mohan2015)."}]}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "APLpy (cite: Robitaille2012), Astropy (cite: Astropy2018), CASA (cite: McMullin2007), CRRLpy (cite: Salas2016), Matplotlib (cite: Hunter2007), PyBDSF (cite: Mohan2015)."}]}},
+{"name": "CRRLpy", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "APLpy (cite: Robitaille2012), Astropy (cite: Astropy2018), CASA (cite: McMullin2007), CRRLpy (cite: Salas2016), Matplotlib (cite: Hunter2007), PyBDSF (cite: Mohan2015)."}]}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "APLpy (cite: Robitaille2012), Astropy (cite: Astropy2018), CASA (cite: McMullin2007), CRRLpy (cite: Salas2016), Matplotlib (cite: Hunter2007), PyBDSF (cite: Mohan2015)."}]}}
+],
+"results_numeric": [
+{"quantity": "Number of candidate super star clusters", "value": "27", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "abstract", "quote": "Our observations reveal 27 bright, compact sources with FWHM sizes of 1.4–4.0 pc, which we identify as candidate super star clusters."}]},
+{"quantity": "FWHM sizes of candidate clusters", "value": "1.4-4.0", "uncertainty": "not stated", "units": "pc", "from_step": 2, "evidence": [{"loc": "abstract", "quote": "Our observations reveal 27 bright, compact sources with FWHM sizes of 1.4–4.0 pc, which we identify as candidate super star clusters."}]},
+{"quantity": "Sources with detected recombination lines", "value": "15", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "Recombination line emission, tracing the ionizing photon rate of the candidate clusters, is detected in 15 sources, 6 of which have a significant synchrotron component to the 93 GHz continuum."}]},
+{"quantity": "Median free-free fraction at 93 GHz", "value": "0.62", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3.3 Estimated free-free, synchrotron, and dust fractions to the 93 GHz continuum", "quote": "We find, at this 0.12$''$ resolution, the median free-free fraction of sources is $f_{\\mathrm{ff}} = 0.62$ ."}]},
+{"quantity": "Median synchrotron fraction at 93 GHz", "value": "0.36", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.3.3 Estimated free-free, synchrotron, and dust fractions to the 93 GHz continuum", "quote": "with a median fraction of $f_{\\mathrm{syn}} = 0.36$"}]},
+{"quantity": "Electron temperature (mean of 5 sources)", "value": "6000", "uncertainty": "+/-400", "units": "K", "from_step": 7, "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "We take the mean and standard deviation values of $T_e = (6000 \\pm 400)$ K as a representative electron temperature of the ionized plasma in the candidate star clusters."}]},
+{"quantity": "Representative metallicity 12+log10(O/H)", "value": "8.9", "uncertainty": "0.1", "units": "dex", "from_step": 7, "evidence": [{"loc": "5.3 Temperature and Metallicity", "quote": "We find a representative O/H metallicity of $12 + \\log_{10}(\\mathrm{O/H}) = 8.9 \\pm 0.1$."}]},
+{"quantity": "Continuum emission measure range (log EM_C)", "value": "7.3-8.7 (median 8.4)", "uncertainty": "~0.4 dex", "units": "cm^-6 pc^3", "from_step": 8, "evidence": [{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "Emission measures that we determine from the free-free continuum range from $\\log_{10} (EM_{\\mathrm{C}} / \\mathrm{cm^{-6} \\, pc^3}) \\sim 7.3$ – 8.7, with a median value of 8.4."}]},
+{"quantity": "Electron density range (log n_e)", "value": "3.1-3.9 (median 3.5)", "uncertainty": "not stated", "units": "cm^-3", "from_step": 8, "evidence": [{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "We arrive at densities between $\\log_{10} (n_e/\\mathrm{cm}^{-3})= 3.1$–3.9 with a median value of 3.5."}]},
+{"quantity": "Ionized gas mass range (log M+)", "value": "2.7-3.5 (median 3.1)", "uncertainty": "not stated", "units": "Msun", "from_step": 8, "evidence": [{"loc": "5.4 Ionized Gas: Emission Measure, Density and Mass", "quote": "The ionized gas masses of the candidate star clusters range from $\\log_{10} (M_+$ / M$_{\\odot}$) = 2.7 – 3.5 with a median value of 3.1."}]},
+{"quantity": "Ionizing photon rate range (log Q0)", "value": "50.4-51.8", "uncertainty": "~0.4 dex", "units": "s^-1", "from_step": 9, "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "Our candidate star clusters have ionizing photon rates in the range $\\log_{10} (Q_0 / \\mathrm{s}^{-1}) \\sim 50.4$ – 51.8."}]},
+{"quantity": "Sum of Q0 over all candidate clusters", "value": "5.3e52", "uncertainty": "not stated", "units": "s^-1", "from_step": 9, "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "The sum of the ionizing photon rate over all candidate, massive star clusters is $5.3 \\times 10^{52}$ s$^{-1}$."}]},
+{"quantity": "Cluster stellar mass range (log M*)", "value": "4.7-6.1 (median 5.5)", "uncertainty": "~0.4 dex", "units": "Msun", "from_step": 9, "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "Our candidate star clusters have stellar masses in the range $\\log_{10} ( M_{\\star} / \\mathrm{M_{\\odot}} ) \\sim$ 4.7–6.1 (see Table [\\[tab:props\\]](#tab:props)) with a median of 5.5."}]},
+{"quantity": "Sum of cluster stellar masses", "value": "1.1e7", "uncertainty": "not stated", "units": "Msun", "from_step": 9, "evidence": [{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "The sum of the stellar masses of the candidate stars clusters is $\\approx 1.1 \\times 10^7$ M$_{\\odot}$."}]},
+{"quantity": "Gas mass range (log M_gas)", "value": "4.4-5.1 (median 4.7)", "uncertainty": "not stated", "units": "Msun", "from_step": 10, "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We find values in the range of $\\log_{10} (M_{\\mathrm{gas}}$ / M$_{\\odot}$) = 4.4 – 5.1 with a median value of 4.7."}]},
+{"quantity": "350 GHz dust optical depth", "value": "0.02-0.10 (median 0.04)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 10, "evidence": [{"loc": "5.6 Gas Mass from Dust", "quote": "We measure optical depths in the range $\\tau_{350} \\sim$ 0.02 – 0.10, with a median value of $\\tau_{350} \\sim 0.04$"}]},
+{"quantity": "Gas mass fraction M_gas/M_Tot", "value": "0.04-0.22 (median 0.13)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 11, "evidence": [{"loc": "5.7 Total Mass from Gas and Stars", "quote": "we find low gas mass fractions of $M_{\\mathrm{gas}} / M_{\\mathrm{Tot}} =$ 0.04 – 0.22 and a median of 0.13"}]},
+{"quantity": "Free-fall time (log t_ff)", "value": "4.3-5.2 (median 4.6)", "uncertainty": "not stated", "units": "yr", "from_step": 11, "evidence": [{"loc": "5.7 Total Mass from Gas and Stars", "quote": "range from $\\log_{10} (t_{\\mathrm{ff}}$ / yr ) = 4.3 – 5.2 with a median of 4.6"}]},
+{"quantity": "Total mass within candidate clusters", "value": "1.5e7", "uncertainty": "not stated", "units": "Msun", "from_step": 11, "evidence": [{"loc": "5.7 Total Mass from Gas and Stars", "quote": "Summing all sources, we find a total mass within the candidate clusters of $M_{\\mathrm{Tot}} \\approx 1.5 \\times 10^7$ M$_{\\odot}$."}]},
+{"quantity": "Cluster mass function slope beta (NGC 4945)", "value": "-1.8", "uncertainty": "0.4", "units": "dimensionless", "from_step": 12, "evidence": [{"loc": "abstract", "quote": "We fit a slope to the cluster mass distribution and find $\\beta = -1.8 \\pm 0.4$."}]},
+{"quantity": "Cluster mass function slope beta (NGC 253)", "value": "-1.6", "uncertainty": "0.3", "units": "dimensionless", "from_step": 12, "evidence": [{"loc": "6.3 Cluster Mass Function", "quote": "A power-law fit to the cluster mass distribution of NGC 253, including 12 star clusters down to $M_{\\star} = 7.9\\times 10^4$ M$_{\\odot}$, results in a slope of $\\beta = -1.6 \\pm 0.3$."}]},
+{"quantity": "Total H40alpha flux in T2 aperture (0.7 arcsec data)", "value": "6.4", "uncertainty": "1.0", "units": "Jy km/s", "from_step": 6, "evidence": [{"loc": "4.2.1 Total Emission from the Starburst Region", "quote": "The sum total of their integrated line flux is ($6.4 \\pm 1.0$) Jy km s$^{-1}$."}]},
+{"quantity": "Total H40alpha flux in T1 aperture (0.2 arcsec data)", "value": "2.1", "uncertainty": "0.6", "units": "Jy km/s", "from_step": 6, "evidence": [{"loc": "4 Recombination Line Emission", "quote": "The sum total area of the fits is ($2.1\\pm0.6$) Jy km s$^{-1}$."}]},
+{"quantity": "Total ionizing photon rate of the burst (T2)", "value": "3.9e53", "uncertainty": "0.3e53", "units": "s^-1", "from_step": 13, "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "yields an ionizing photon rate of $Q_{\\mathrm{T2}} = (3.9 \\pm 0.3) \\times 10^{53}$ s$^{-1}$."}]},
+{"quantity": "Ionizing photon rate in T1 aperture", "value": "1.2e53", "uncertainty": "0.4e53", "units": "s^-1", "from_step": 13, "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "the integrated line flux corresponds to an ionizing photon rate of $Q_{\\mathrm{T1}} = (1.2 \\pm 0.4) \\times 10^{53}$ s$^{-1}$."}]},
+{"quantity": "Fraction of total ionizing photons attributed to the candidate SSCs", "value": "20-44", "uncertainty": "not stated", "units": "percent", "from_step": 13, "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "we conclude that 20% to 44% of the total ionizing photons in the starburst can be attributed to the candidate super star clusters identified in NGC 4945."}]},
+{"quantity": "Ratio of line flux in intermediate to extended configuration (7 apertures)", "value": "2.3", "uncertainty": "0.5", "units": "dimensionless", "from_step": 13, "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "the ratios in the seven regions have a mean and standard deviation of $2.3 \\pm 0.5$."}]},
+{"quantity": "In-band spectral index of the presumed AGN (alpha_93)", "value": "-0.85", "uncertainty": "0.05", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "6.5 Role of the AGN", "quote": "The Band 3 spectral index we derive is $\\alpha_{93} = -0.85 \\pm 0.05$"}]},
+{"quantity": "AGN 93 GHz flux density", "value": "9.7", "uncertainty": "1.0", "units": "mJy", "from_step": 3, "evidence": [{"loc": "6.5 Role of the AGN", "quote": "The flux of $9.7 \\pm 1.0$ mJy that we extract from the source is $\\sim10$% of the total continuum ($\\sim$120 mJy) flux in the 0.12$''$ resolution data."}]},
+{"quantity": "Upper limit on AGN ionizing photons leaking into the starburst", "value": "<1e52", "uncertainty": "not stated", "units": "s^-1", "from_step": 13, "evidence": [{"loc": "abstract", "quote": "We do not detect recombination line emission from the AGN and place an upper limit on the ionizing photons which leak into the starburst region of $Q_0 < 10^{52}$ s$^{-1}$."}]},
+{"quantity": "Inferred total stellar mass of the burst", "value": "8.5e7", "uncertainty": "not stated", "units": "Msun", "from_step": 13, "evidence": [{"loc": "6.5 Total Burst of Star-formation", "quote": "the inferred total stellar mass of the population is $\\sim 8.5 \\times 10^7$ M$_{\\odot}$."}]},
+{"quantity": "H42alpha / H40alpha integrated flux ratio over entire starburst", "value": "~2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "4.2 Line Emission from 0.7 arcsec resolution, Intermediate-configuration Observations", "quote": "We find that the integrated line emission of H42$\\alpha$ is enhanced compared with H40$\\alpha$, reaching a factor of 2 greater when integrated over the entire starburst region."}]}
+],
+"findings_qualitative": [
+{"value": "Candidate clusters are already largely converted to stars (low gas fractions, short free-fall times) and are likely to remain bound at least initially", "evidence": [
+{"loc": "5.7 Total Mass from Gas and Stars", "quote": "The fact that the gas mass fractions are low and that the age appears longer than the free fall time adds support to the idea that these clusters have mostly already formed."},
+{"loc": "6.2 Super Star Clusters", "quote": "these star clusters will likely remain bound, at least initially."}
+]},
+{"value": "Much of the recombination line flux in the low-resolution data comes from scales >100 pc, possibly diffuse ionized gas or low-mass clusters, and cannot be directly attributed to the AGN", "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "we find that up to $\\sim$70% of the total radio recombination line flux may originate on scales larger than $\\sim$100 pc; this emission cannot be directly attributed to the AGN."}]},
+{"value": "H42alpha is likely contaminated by another species (possibly c-C3H2) in low-resolution/broad profiles, overestimating recombination flux by about a factor of 2", "evidence": [{"loc": "Summary", "quote": "we find this spectral line is likely contaminated by line emission from other species, resulting in the recombination line flux (and star-formation rates derived from it) being overestimated by a factor of $\\sim$2, when compared to a similar analysis of H40$\\alpha$."}]},
+{"value": "Neither energetics nor momentum of the warm ionized outflow rule out it being driven by the star clusters", "evidence": [{"loc": "6.6 Star Clusters and the Central Wind", "quote": "Therefore, neither the energetics nor the inferred momentum of the outflow prevent it from being driven solely by the star clusters in NGC 4945, although there are very considerable uncertainties associated with this calculation."}]}
+],
+"claims": [
+{"hypothesis": "Compact 93 GHz sources in the NGC 4945 nuclear starburst are young massive (super) star clusters", "experiment": "Source finding in 0.12 arcsec ALMA Band 3 continuum, size fits, free-free/recombination-line derived ionizing photon rate and stellar mass", "result": "27 sources with FWHM 1.4-4.0 pc, log M* 4.7-6.1, RRLs detected in 15", "finding": "The sources meet criteria for super star clusters", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "Our observations reveal 27 bright, compact sources with FWHM sizes of 1.4–4.0 pc, which we identify as candidate super star clusters."},
+{"loc": "6.2 Super Star Clusters", "quote": "these sources can be considered super star clusters (SSCs)."}
+]},
+{"hypothesis": "The cluster mass function of NGC 4945 resembles that of NGC 253 and other galaxies", "experiment": "Power-law fit to the stellar mass distribution of 22 clusters above the completeness limit", "result": "beta = -1.8 +/- 0.4 versus -1.6 +/- 0.3 in NGC 253 and -2.0 +/- 0.3 for six galaxies from the literature", "finding": "Slopes are consistent", "support": "supported", "evidence": [
+{"loc": "6.3 Cluster Mass Function", "quote": "Our measurements for NGC 4945 and NGC 253 are consistent with these findings."}
+]},
+{"hypothesis": "The candidate clusters have already converted much of their natal gas into stars", "experiment": "Gas masses from 350 GHz dust emission compared with stellar masses; free-fall times from total mass", "result": "Gas mass fractions 0.04-0.22 (median 0.13); log t_ff 4.3-5.2 yr", "finding": "Clusters have converted a large fraction of dense natal material to stars and are surviving an early volatile phase", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "These candidate clusters appear to have already converted a large fraction of their dense natal material into stars"}
+]},
+{"hypothesis": "The candidate clusters account for the ionizing photons of the whole starburst", "experiment": "Compare summed cluster Q0 with total H40alpha line flux in extended (0.2 arcsec) and intermediate (0.7 arcsec) configurations", "result": "Clusters account for 20-44% of Q; intermediate data show ~2.3x more line flux than extended data", "finding": "A large part of the ionizing photons comes from larger scales (diffuse gas or low-mass clusters), not the clusters or AGN; treated as an upper limit", "support": "partially", "evidence": [
+{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "Therefore, we conclude that 20% to 44% of the total ionizing photons in the starburst can be attributed to the candidate super star clusters identified in NGC 4945."}
+]},
+{"hypothesis": "The AGN contributes ionizing photons to the surrounding starburst", "experiment": "Identify the 93 GHz point source, measure its spectral index, search for recombination lines, estimate leakage vs expected Lion from X-ray Lbol", "result": "alpha_93 = -0.85 +/- 0.05; no RRL detection; Q0 < 1e52 s^-1; <10% of expected AGN ionizing luminosity escapes", "finding": "UV ionizing radiation from the AGN is heavily obscured in all directions", "support": "supported", "evidence": [
+{"loc": "6.5 Role of the AGN", "quote": "This would imply that $<10$% of the ionizing photon luminosity of the AGN is escaping into the surrounding nuclear starburst and creating ionized gas."}
+]},
+{"hypothesis": "H42alpha is a reliable low-resolution tracer of ionizing radiation", "experiment": "Compare H40alpha and H42alpha profiles and fluxes in the 0.7 arcsec data in N, C, S and total regions", "result": "H42alpha/H40alpha flux ratios 1.4-2.0 with extra emission at +100 to +250 km/s", "finding": "H42alpha is contaminated by other species at low resolution and for broad profiles", "support": "supported", "evidence": [
+{"loc": "4.2.2 H42alpha Contamination", "quote": "To summarize, we find evidence that a spectral line may contaminate the H42$\\alpha$ measured line flux in broad (typically spatially unresolved) line profiles."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Free-free continuum and recombination lines are extinction-free probes of ionized gas around young clusters, and ALMA gives the resolution needed to resolve cluster scales", "evidence": [
+{"loc": "Introduction", "quote": "offer an alternative, extinction-free probe of the ionizing gas surrounding young star clusters"},
+{"loc": "Introduction", "quote": "has only recently become possible thanks to the Atacama Large Millimeter/submillimeter Array (ALMA)."}
+]},
+{"field": "why_this_method", "value": "Briggs robust 0.5 chosen as a resolution/sensitivity compromise; 10 sigma peak threshold chosen so sources are identifiable in per-spw continuum images", "evidence": [
+{"loc": "Observations", "quote": "which represents a good compromise between resolution and surface brightness sensitivity"},
+{"loc": "3.1 Point Source Identification", "quote": "We chose this peak threshold to ensure that significant emission can also be identified in the continuum images made from individual spectral windows."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Missing line flux in extended-configuration data attributed primarily to low-mass clusters: judged unlikely", "evidence": [{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "We do not find it likely that the deficit of line emission in the extended-configuration data can be attributed primarily to low mass clusters."}]},
+{"value": "Extra H42alpha emission as maser-like hydrogen recombination emission: rejected", "evidence": [{"loc": "4.2.2 H42alpha Contamination", "quote": "It is not likely to be a maser-like component of hydrogen recombination emission since the relative flux does not greatly vary in different extraction regions"}]},
+{"value": "tclean in-band spectral index versus the five-point polynomial fit: latter preferred for faint sources", "evidence": [{"loc": "3.3.1 Band 3 Spectral Index", "quote": "however, we found our method to be more reliable for the fainter sources."}]}
+],
+"limitations_admitted": [
+{"value": "Free-free fraction assumptions, especially synchrotron, affect individual clusters at ~30% level", "evidence": [{"loc": "6.1 Discussion of uncertainties", "quote": "Overall, the assumptions , especially regarding synchrotron emissions, likely affect individual clusters at the $\\sim 30\\%$ level."}]},
+{"value": "Assumed 5 Myr age is a large systematic: 1 Myr uncertainty changes stellar mass by a factor of four", "evidence": [{"loc": "6.1 Discussion of uncertainties", "quote": "An uncertainty of $\\sim$1 Myr about an age of 5 Myr of a star cluster results in an uncertainty in the inferred stellar mass by a factor of four."}]},
+{"value": "Dust opacity uncertain by a factor of 2 and dust temperature approximate", "evidence": [
+{"loc": "5.6 Gas Mass from Dust", "quote": "but we do note the large (factor of 2) uncertainties on this value."},
+{"loc": "5.6 Gas Mass from Dust", "quote": "This is an approximation, though the uncertainty is linear."}
+]},
+{"value": "Missing line flux at high resolution is an upper limit because of low S/N and incomplete uv coverage; negative bowls from missing short spacings", "evidence": [
+{"loc": "6.4 Ionizing Photons and Diffuse Ionized Gas", "quote": "However, a missing 70% of line flux in the 0.2$''$ resolution data should be considered as an upper limit."},
+{"loc": "3 Continuum Emission", "quote": "The extended, faint negative bowls flanking the main disk likely reflect the short spacing data missing from this image."}
+]},
+{"value": "Stellar mass conversion is a rough approximation; sources may break apart at higher resolution", "evidence": [
+{"loc": "5.5 Ionizing Photon Production and Stellar Mass", "quote": "We note that this is a rough approximation which has not accounted for the amount of ionizing photons absorbed by dust, mass ejected from the system, and/or enhanced emission from stellar binaries."},
+{"loc": "5.1 Size", "quote": "Based on high-resolution imaging of embedded clusters in the nucleus of the Milky Way and NGC 253, some of these clusters might break apart at higher resolution"}
+]}
+],
+"referee_caveats_inferred": [
+"Stellar masses rest on a single assumed 5 Myr age and an unmodelled dust/leakage correction, so mass-function slope and gas fractions inherit a systematic offset not captured by the 0.4 dex random error",
+"The spectral-index decomposition into free-free/synchrotron/dust is not specified well enough to reproduce, and the median uncertainty on alpha (0.13) is large for faint sources",
+"Electron temperature rests on only 5 sources with S/N ~5 and a single b_n value, and feeds all downstream EM, Q0 and mass numbers",
+"Dust-derived gas masses assume a single Tdust of 130 K taken from NGC 253, a fixed kappa and DGR, and a source size from a Gaussian fit near the resolution limit",
+"The 20-44% cluster ionizing photon fraction relies on recovering flux between configurations that were imaged separately, with possible deconvolution losses acknowledged by the authors",
+"Mass function fit is on 22 sources with a completeness limit set by eye and an inflated error"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "2016.1.01135.S described as archival ALMA imaging; public status of 2018.1.01236.S not stated; LBA 2.3 GHz images supplied courtesy of E. Lenc", "evidence": [
+{"loc": "Observations", "quote": "We compare the continuum emission at 3 mm with archival ALMA imaging of the $\\nu = 350$ GHz ($\\lambda \\sim 850~\\mu$m) continuum (project 2016.1.01135.S, PI: N. Nagar)."},
+{"loc": "Observations", "quote": "We use the Epoch 2 images (courtesy of E. Lenc) that have a native angular resolution slightly higher than the 3 mm ALMA data"}
+]},
+{"field": "products_in_archive", "value": "observatory-provided calibrated visibilities and observatory pipeline continuum image used", "evidence": [
+{"loc": "Observations", "quote": "We analyze the observatory-provided calibrated visibilities using version 5.4.0 of the Common Astronomy Software Application (cite: McMullin2007)."},
+{"loc": "Observations", "quote": "We use the continuum image provided by the observatory pipeline, which we convolve to have a circular beam FWHM of 0.7$''$"}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Spectral-index decomposition (free-free/synchrotron/dust fraction) recipe and its error model",
+"Full tclean settings and line-free channel ranges",
+"LBA 2.3 GHz Epoch 2 images (provided privately by E. Lenc) and their alignment with ALMA",
+"Starburst99 run configuration beyond IMF/max mass",
+"Mass-function fitting code/method details and completeness limit",
+"No analysis code or machine-readable tables explicitly released"
+],
+"estimated_data_volume_inferred": "Order 100-300 GB of raw measurement sets for two Band 3 configurations plus one Band 7 project (rough inference, not stated in paper)",
+"score_inferred": 3,
+"score_reason": "ALMA projects are identified and many numeric results and equations are given, but the decomposition recipe, imaging parameters, calibration details and the private LBA data limit exact reproduction",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public status of the main 3 mm data is not stated in the paper and the key spectral-index decomposition and imaging recipe are incomplete, although results are numeric",
+"methods_papers": [
+{"citation": "McMullin2007 (CASA)", "why": "Software used to process calibrated visibilities"},
+{"citation": "Mohan2015 (PyBDSF)", "why": "Source finder used to identify clusters and fit sizes"},
+{"citation": "Lenc2009", "why": "2.3 GHz LBA data and free-free absorption SED models for compact radio sources"},
+{"citation": "Bendo2016", "why": "Prior H42alpha analysis at 2.3 arcsec used to validate fluxes and apertures"}
+],
+"companion_papers": [
+{"citation": "Leroy2018", "why": "Companion NGC 253 ALMA super star cluster analysis used for comparison"},
+{"citation": "Mills2020", "why": "NGC 253 super star cluster properties and recombination line methods"},
+{"citation": "Mok2020", "why": "Homogeneous cluster mass distributions in other galaxies used for slope comparison"}
+],
+"related_projects_or_surveys": ["2018.1.01236.S (PI A. Leroy)", "2016.1.01135.S (PI N. Nagar)", "Spitzer IRAC Program 40410 (PI G. Rieke)"]
+}

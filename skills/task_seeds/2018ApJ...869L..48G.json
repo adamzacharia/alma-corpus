@@ -1,0 +1,194 @@
+{
+ "bibcode": "2018ApJ...869L..48G",
+ "title": "The Disk Substructures at High Angular Resolution Program (DSHARP). VIII. The Rich Ringed Substructures in the AS 209 Disk",
+ "year": 2018,
+ "doi": "10.3847/2041-8213/aaedae",
+ "arxiv_id": "1812.04046",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the ring/gap substructure of the AS 209 disk in 1.25 mm dust continuum and 12CO 2-1 emission at 5 au resolution, and what could cause it?",
+ "alma_project_codes": [
+  "2016.1.00484.L",
+  "2015.1.00486.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "continuum beam 38 mas x 36 mas; CO beam 95 mas x 70 mas",
+  "sensitivity": "continuum rms 19 uJy/beam; CO rms 0.8 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Midplane temperature profile used to estimate snowline locations",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "using the midplane temperature derived by (cite: Andrews2009)"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2009)"
+  },
+  {
+   "what": {
+    "value": "Hydrodynamical simulation of AS 209 (planet at 99 au, 0.087 MJ)",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The planet responsible for the gaps has a mass of 0.087 M$_J$."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO",
+   "method": "CASA clean with multiscale, taper (continuum), Keplerian mask (CO)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit radial profile of rings in uv-plane",
+   "method": "Sum of concentric Gaussian rings, Hankel transform to visibilities, fit to deprojected radially averaged binned visibilities",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "uv-points 10 to 10000 kλ in 10 kλ steps; 27 free parameters (23 ring, 4 geometry)"
+   ],
+   "assumptions": [
+    "Axisymmetric emission; number of rings chosen by visual inspection"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "CO moment map and radial profile",
+   "method": "Moment-zero integrated -3 to 14 km/s, clip S/N<3, azimuthally averaged deprojected profile of East side",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk inclination",
+   "value": "34.883",
+   "uncertainty": "+0.0151/-0.0042",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$34.883_{-0.0042}^{+0.0151}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle",
+   "value": "85.764",
+   "uncertainty": "+0.0184/-0.0061",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$85.764_{-0.0061}^{+0.0184}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring B74 radius",
+   "value": "74.08",
+   "uncertainty": "+0.02/-0.01",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$74.08_{-0.01}^{+0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring B120 radius",
+   "value": "120.42",
+   "uncertainty": "±0.02",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$120.42_{-0.02}^{+0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring B15 radius",
+   "value": "15.13",
+   "uncertainty": "+0.02/-0.03",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$15.13_{-0.03}^{+0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$F_{tot} \\equiv V(\\rho=0) = 0.27$ Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "CO gap radii",
+   "value": "45, 75, 120, 210",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "presents 4 main gaps or emission decrements in the outer disk, near 45, 75, 120 and 210 au."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and cell size",
+  "Multiscale scales and clean threshold/niter",
+  "Self-calibration solution intervals",
+  "Line-free channels and continuum subtraction for CO",
+  "Flux calibrator and flux scale uncertainty",
+  "MCMC walkers, steps, priors, burn-in",
+  "Weighting/relative weights when combining the three projects' data",
+  "Lines/spectral windows used for continuum"
+ ],
+ "missing_for_reproduction": [
+  "MCMC settings and priors",
+  "Imaging grid parameters",
+  "Self-cal details (in Andrews2018)",
+  "CO continuum subtraction channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear parametric model, but imaging and MCMC details are deferred to another paper or missing.",
+ "rediscovery_reason": "Public data, a well-defined ring model with numeric table of best-fit parameters.",
+ "source_card": "cards/2018ApJ...869L..48G/sonnet/card.md"
+}

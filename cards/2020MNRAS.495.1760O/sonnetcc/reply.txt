@@ -1,0 +1,249 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We assemble a sample of 278 nearby galaxies with measurements of radio continuum and total infrared emission"},
+{"loc": "2 Sample selection", "quote": "65 galaxies detected spectroscopically in low-$J$ CO ($J=1$–0 or $J=2$–1) using the Atacama Large Millimetre Array (ALMA) or the Atacama Pathfinder EXperiment (APEX)"}
+],
+"fields": ["nearby_galaxies", "high_z_galaxies", "cosmology"],
+"question": {
+"value": "Are there empirical relations among radio continuum, infrared and CO luminosities that can be used to estimate molecular gas mass and its cosmic evolution up to z = 1.5",
+"evidence": [
+{"loc": "abstract", "quote": "we look for empirical relations amongst the radio luminosity, the infrared luminosity, and the CO-based molecular gas mass."},
+{"loc": "abstract", "quote": "we explore the evolution of the molecular gas mass function and the cosmological molecular gas mass density in six redshift bins up to $z = 1.5$."}
+]
+},
+"targets": [
+{
+"name": "Compilation of 278 nearby galaxies (VALES, xCOLD GASS, Liu15, Pap12, ATLAS3D, ALLSMOG, Leroy05)",
+"details": [
+{"loc": "2.2 Final sample", "quote": "Our final catalogue contains 278 galaxies, where 42 are part of the VALES sample, 67 from Liu15, 75 from xCOLD GASS, 36 from Pap12, 28 from ATLAS$\\rm^{3D}$, 17 from ALLSMOG and 13 from Leroy05"},
+{"loc": "2.2 Final sample", "quote": "redshifts, $z\\leq 0.271$, with a median value, $z = 0.017$"},
+{"loc": "2.1 Radio data", "quote": "where $D_{\\rm L}$ is the luminosity distance and $S_{\\rm 1.4GHz}$ is the $k$-corrected flux density."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "z <= 0.271, median z = 0.017",
+"distance_source": "luminosity distance D_L from an assumed Lambda-CDM cosmology (H0 = 70, OmegaM = 0.3, OmegaL = 0.7)"
+}
+],
+"alma_project_codes": [
+{"code": "2012.1.01080.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.01080.S and ADS/JAO.ALMA#2013.1.00530.S."}]},
+{"code": "2013.1.00530.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.01080.S and ADS/JAO.ALMA#2013.1.00530.S."}]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "New JVLA radio continuum data for VALES galaxies at 3, 6, 10 and/or 15 GHz (JVLA, not ALMA); ALMA part is only CO(1-0)/(2-1) of VALES galaxies, setup not stated", "evidence": [{"loc": "2.1 Radio data", "quote": "(JVLA; VLA/13B-376, P.I.: E. Ibar) at 3, 6, 10 and/or 15 GHz"}]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA CO data come via the published VALES sample; JVLA program VLA/13B-376, P.I.: E. Ibar", "evidence": [{"loc": "2.1 Radio data", "quote": "(JVLA; VLA/13B-376, P.I.: E. Ibar)"}]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J = 1-0", "rest_frequency": "not stated", "evidence": [{"loc": "abstract", "quote": "and the $^{12}$CO ($J = 1$–0) emission line"}]},
+{"species": "12CO", "transition": "J = 2-1 (converted to J = 1-0 for VALES galaxies)", "rest_frequency": "not stated", "evidence": [{"loc": "2 Sample selection", "quote": "In order to homogenise the CO line measurements to $J=1$–0, we assume a luminosity ratio"}]}
+],
+"other_facilities": [
+{"name": "JVLA", "provided": {"value": "New radio continuum data for VALES galaxies at 3, 6, 10 and/or 15 GHz", "evidence": [{"loc": "2.1 Radio data", "quote": "(JVLA; VLA/13B-376, P.I.: E. Ibar) at 3, 6, 10 and/or 15 GHz"}]}},
+{"name": "FIRST", "provided": {"value": "1.4 GHz radio continuum for VALES and xCOLD GASS galaxies", "evidence": [{"loc": "2.1 Radio data", "quote": "For the xCOLD GASS catalogue, we match this sample with the FIRST survey, with a matching radius of 4"}]}},
+{"name": "NVSS", "provided": {"value": "1.4 GHz radio continuum for Leroy05, Pap12, ALLSMOG and ATLAS3D galaxies", "evidence": [{"loc": "2.1 Radio data", "quote": "the measurements at 1.4 GHz are taken from the NRAO VLA Sky Survey (NVSS; (cite: condon98))"}]}},
+{"name": "APEX", "provided": {"value": "CO line measurements for part of VALES and CO(2-1) in other samples", "evidence": [{"loc": "2 Sample selection", "quote": "using the Atacama Large Millimetre Array (ALMA) or the Atacama Pathfinder EXperiment (APEX)"}]}},
+{"name": "IRAM 30-m", "provided": {"value": "CO(1-0) for xCOLD GASS, ALLSMOG, ATLAS3D and Pap12 samples", "evidence": [{"loc": "2 Sample selection", "quote": "which have been observed with the IRAM 30-m telescope in CO($J=1$–0)"}]}},
+{"name": "IRAS", "provided": {"value": "Infrared photometry for total IR luminosity of several samples", "evidence": [{"loc": "2 Sample selection", "quote": "IR data from *IRAS*."}]}},
+{"name": "WISE (ALLWISE)", "provided": {"value": "12 micron photometry used to derive L_IR for ALLSMOG and ATLAS3D, and AGN colour-colour test", "evidence": [{"loc": "2.1 Radio data", "quote": "We also matched our final sample with the ALLWISE survey"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Seven literature galaxy samples (VALES, xCOLD GASS, Liu15, ALLSMOG, ATLAS3D, Leroy05, Pap12) with IR, RC and low-J CO measurements", "evidence": [{"loc": "2 Sample selection", "quote": "Our sample is constructed from seven surveys taken from the literature"}]}, "citation": "(cite: villanueva17; saintonge17; liu15; cicone17; cappellari11; leroy05; papadopolous12)"},
+{"what": {"value": "RC-IR correlation as a function of redshift (Magnelli et al. relation)", "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "For the RC–IR correlation, we use the result obtained by (cite: magnelli15)"}]}, "citation": "(cite: magnelli15)"},
+{"what": {"value": "IR-CO (L'CO-LIR) relation from the VALES sample", "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "we use the results obtained from (cite: villanueva17) based on the VALES sample"}]}, "citation": "(cite: villanueva17)"},
+{"what": {"value": "Radio continuum luminosity functions at several redshifts (NVSS/6dFGS, FIRST/SDSS, VLA/COSMOS, VLA/CDF-S)", "evidence": [{"loc": "Table 4", "quote": "Radio continuum luminosity function surveys."}]}, "citation": "(cite: mauch07; pracy16; smolcic09; padovani11; novak17)"},
+{"what": {"value": "Direct ASPECS measurements of molecular gas mass density used for comparison", "evidence": [{"loc": "3.3 Cosmic molecular gas mass content", "quote": "Our results fall inside the errors of the direct measurements obtained by (cite: decarli16)"}]}, "citation": "(cite: decarli16)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Semi-analytic molecular gas mass function models used for comparison (data supplied by their authors)", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "We compare our results with those obtained from the semi-analytic MGMF models developed by (cite: popping12) and (cite: lagos18)."}]}
+],
+"calibration": [
+{"field": "casa_version", "value": "CASA release 5.0.0 (used for imsmooth/imfit of JVLA images)", "evidence": [{"loc": "2.1 Radio data", "quote": "Common Astronomy Software Applications (CASA, release 5.0.0)"}]}
+],
+"imaging": [
+{"field": "task", "value": "imsmooth then imfit on JVLA images (no ALMA imaging described)", "evidence": [{"loc": "2.1 Radio data", "quote": "Then we measure the integrated flux density using the task"}]},
+{"field": "smoothing", "value": "Images smoothed to a common worst resolution before measuring flux densities", "evidence": [{"loc": "2.1 Radio data", "quote": "to degrade the resolution of the images to a common worst resolution"}]}
+],
+"inherited": [
+{"what": {"value": "Typical radio spectral index of -0.7 +/- 0.3 for galaxies with a single radio measurement", "evidence": [{"loc": "2.1 Radio data", "quote": "assuming the typical radio spectral index of $-0.7\\pm0.3$ ((cite: ibar09)) expected for star-forming galaxies"}]}, "from_reference": "(cite: ibar09)"},
+{"what": {"value": "CO(2-1)/CO(1-0) luminosity ratio of 0.85 for VALES", "evidence": [{"loc": "2 Sample selection", "quote": "0.85$ (cite: carilli13)"}]}, "from_reference": "(cite: carilli13)"},
+{"what": {"value": "L_IR from WISE 12 micron photometry for ALLSMOG and ATLAS3D", "evidence": [{"loc": "2 Sample selection", "quote": "at 12 $\\rm \\mu m$ following (cite: cluver14)"}]}, "from_reference": "(cite: cluver14)"},
+{"what": {"value": "L_IR from IRAS 60 and 100 micron photometry for Leroy05 sample", "evidence": [{"loc": "2 Sample selection", "quote": "photometry, following (cite: orellana17)"}]}, "from_reference": "(cite: orellana17)"},
+{"what": {"value": "Local radio luminosity function form and evolution parameters (alpha=0.84, sigma=0.94, alpha_L=2.1+/-0.2)", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "(for more details, see (cite: sadler02; smolcic09))"}]}, "from_reference": "(cite: sadler02; smolcic09)"},
+{"what": {"value": "alpha_CO = 3.6 Msun/(K km/s pc^2) adopted to match the reference sample", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "we adopt it considering that the reference sample to compare our resulting luminosity functions, (cite: decarli16), uses this value"}]}, "from_reference": "(cite: decarli16)"},
+{"what": {"value": "AGN identification via WISE colour-colour criteria", "evidence": [{"loc": "2.1 Radio data", "quote": "allowing us to apply the colour-colour criteria defined by (cite: jarrett11) to identify AGNs"}]}, "from_reference": "(cite: jarrett11)"}
+],
+"unstated_but_needed": [
+"ALMA band, spectral setup, array configuration and CO(1-0)/(2-1) flux measurement method for the VALES ALMA data (only the project codes are given)",
+"Fitting method and error treatment (OLS, orthogonal, weighting) for the pairwise relations in Table 3",
+"JVLA calibration, imaging parameters and the per-galaxy flux values beyond the 12-row table",
+"Per-galaxy tabulation of the final 278-galaxy sample with L_CO, L_IR and L_1.4GHz",
+"Exact tabulated RCLF data and binning used to build each MGMF in Fig. 2",
+"S/N and aperture cut details applied to the CO measurements of each sample",
+"SED fitting details used for L_IR of VALES galaxies"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Assemble the multi-survey galaxy sample",
+"method": {"value": "Combine seven literature surveys, match radio data from FIRST/NVSS, require S/N > 5 and remove galaxies with CO apertures smaller than optical size", "evidence": [{"loc": "2.2 Final sample", "quote": "we remove from the sample all galaxies with CO apertures smaller than the Petrosian aperture"}, {"loc": "2.2 Final sample", "quote": "(2) radio detections at S/N $>5$ resulting in a radio luminosity range"}]},
+"software": ["SIMBAD"],
+"key_parameters": [
+{"value": "FIRST match radius 4 arcsec for xCOLD GASS; NVSS match radius 20 arcsec for the other samples", "evidence": [{"loc": "2.1 Radio data", "quote": "using a matching radius of 20$\\ensuremath{''}$"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Mismatches checked against SIMBAD (optical minor axis and nearby dominant galaxies)", "evidence": [{"loc": "2.1 Radio data", "quote": "To discard possible mismatches, we use the SIMBAD"}]}
+},
+{
+"order": 2,
+"goal": "Measure radio flux densities and 1.4 GHz luminosities",
+"method": {"value": "Smooth JVLA images to a common resolution, measure integrated flux with a Gaussian fit, fit spectral index, k-correct to 1.4 GHz and compute L_1.4GHz = 4 pi D_L^2 S/(1+z)", "evidence": [{"loc": "2.1 Radio data", "quote": "which allows us to use the same Gaussian profile in each image."}, {"loc": "2.1 Radio data", "quote": "we $k$-correct the flux density, $S_{\\rm 1.4GHz}$, using the measured radio spectral index, including error propagation."}]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [
+{"value": "alpha_radio = -0.7 +/- 0.3 for galaxies with a single radio measurement", "evidence": [{"loc": "2.1 Radio data", "quote": "assuming the typical radio spectral index of $-0.7\\pm0.3$ ((cite: ibar09)) expected for star-forming galaxies"}]},
+{"value": "Lambda-CDM with H0 = 70 km/s/Mpc, OmegaM = 0.3, OmegaL = 0.7", "evidence": [{"loc": "1 Introduction", "quote": "Throughout the text, we assume a $\\Lambda$-CDM cosmology with $H_0=70$  km s$^{-1}$ Mpc$^{-1}$, $\\Omega_{\\rm M} = 0.3$ and $\\Omega_{\\Lambda} = 0.7$."}]}
+],
+"fitting": {"value": "Spectral index fitted to all available JVLA measurements per galaxy (method not stated)", "evidence": [{"loc": "2.1 Radio data", "quote": "These spectral indices and errors were obtained from the best fit based on all the JVLA measurements available"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Screen for AGN contamination",
+"method": {"value": "Match to the Veron-Cetty and Veron catalogue and apply WISE colour-colour criteria", "evidence": [{"loc": "2.1 Radio data", "quote": "we matched the entire sample with the 13$\\rm^{th}$ Edition of the Catalog of Quasar and AGNs (cite: veron10)"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Excess 1.4 GHz emission looked for in Fig. 1; none found, so no correction applied", "evidence": [{"loc": "2.1 Radio data", "quote": "confirming that making corrections for any excess in the RC emission is unnecessary."}]}
+},
+{
+"order": 4,
+"goal": "Fit pairwise L_1.4GHz, L_IR and L'_CO relations",
+"method": {"value": "Linear fits log(y) = m log(x) + b to the 278-galaxy sample", "evidence": [{"loc": "Table 3", "quote": "$\\log(y) = m \\times \\log(x) + b$"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with Magnelli and Villanueva relations; the new RC-CO relation closely matches the fit to the data", "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "closely matches the best fit of our sampled data."}]}
+},
+{
+"order": 5,
+"goal": "Derive RC-CO relation as a function of redshift",
+"method": {"value": "Combine the Magnelli RC-IR relation with the Villanueva IR-CO relation to obtain L'_CO(L_1.4GHz, z)", "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "we obtain an expression for the RC–CO relation as a function of redshift"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [{"value": "Validity constrained up to z = 1.5 by the redshift range of the input relations", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "our results are constrained up to $z=1.5$ based mainly on the redshift constraints"}]}],
+"fitting": {"value": "Errors propagated assuming a Gaussian probability distribution", "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "Errors were propagated assuming a Gaussian probability distribution."}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Convert radio luminosity functions to molecular gas mass functions",
+"method": {"value": "Apply the RC-CO relation to literature RCLFs to obtain CO luminosity functions, then M_mol = alpha_CO L'_CO", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "we use the conversion factor between $L^{'}_{\\rm CO}$ and the molecular gas mass"}]},
+"software": [],
+"key_parameters": [{"value": "Six redshift bins centred at z = 0.05, 0.2, 0.5, 0.8, 1.1 and 1.5", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "six redshift bins centred at $<z> = 0.05, 0.2, 0.5, 0.8, 1.1$ and $1.5$"}]}],
+"assumptions": [{"value": "Constant alpha_CO = 3.6 Msun/(K km/s pc^2), helium not included", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "Although this value for $\\alpha_{\\rm CO}$ does not take into account the helium contribution"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with semi-analytic MGMF models of Popping12 and Lagos18", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "We compare our results with those obtained from the semi-analytic MGMF models developed by (cite: popping12) and (cite: lagos18)."}]}
+},
+{
+"order": 7,
+"goal": "Integrate the MGMF to get the cosmic molecular gas mass density",
+"method": {"value": "Integrate MGMF over mass; also a fixed integration range using the continuous Smolcic09 RCLF model", "evidence": [{"loc": "3.3 Cosmic molecular gas mass content", "quote": "After fixing the integration mass limit in the range $9 < \\log(M_{\\rm mol}/{\\rm M}_\\odot)< 11$"}]},
+"software": [],
+"key_parameters": [{"value": "9 < log(Mmol/Msun) < 11 for fixed-limit density", "evidence": [{"loc": "3.3 Cosmic molecular gas mass content", "quote": "After fixing the integration mass limit in the range $9 < \\log(M_{\\rm mol}/{\\rm M}_\\odot)< 11$"}]}],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Results fall inside errors of the ASPECS direct measurements of Decarli16", "evidence": [{"loc": "3.3 Cosmic molecular gas mass content", "quote": "Our results fall inside the errors of the direct measurements obtained by (cite: decarli16)"}]}
+},
+{
+"order": 8,
+"goal": "Fit the CO-RC-IR plane",
+"method": {"value": "Fit a plane to L'_CO versus L_IR and L_1.4GHz with MPFIT", "evidence": [{"loc": "3.4 The empirical CO–RC–IR plane", "quote": "we obtained a numerical expression using the MPFIT algorithm"}]},
+"software": ["MPFIT"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "MPFIT least-squares; priors and likelihood not stated", "evidence": [{"loc": "3.4 The empirical CO–RC–IR plane", "quote": "we obtained a numerical expression using the MPFIT algorithm"}]},
+"validation": {"value": "Scatter between plane-predicted and measured L'_CO is 0.27 dex, lower than pairwise relations", "evidence": [{"loc": "5.2 Using the CO–RC–IR plane to predict CO emission in galaxies", "quote": "shows a scatter of 0.27 dex"}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.0.0", "used_for": {"value": "imsmooth to common resolution and imfit for flux densities of JVLA images", "evidence": [{"loc": "2.1 Radio data", "quote": "Common Astronomy Software Applications (CASA, release 5.0.0)"}]}},
+{"name": "MPFIT", "version": "not stated", "used_for": {"value": "Fitting the CO-RC-IR plane", "evidence": [{"loc": "3.4 The empirical CO–RC–IR plane", "quote": "we obtained a numerical expression using the MPFIT algorithm"}]}},
+{"name": "SIMBAD", "version": "not stated", "used_for": {"value": "Checking radio matches for mismatches", "evidence": [{"loc": "2.1 Radio data", "quote": "To discard possible mismatches, we use the SIMBAD"}]}},
+{"name": "NED", "version": "not stated", "used_for": {"value": "Optical angular diameters for the aperture cut", "evidence": [{"loc": "2.2 Final sample", "quote": "the optical angular diameter obtained from NED"}]}}
+],
+"results_numeric": [
+{"quantity": "Final sample size", "value": "278", "uncertainty": "not stated", "units": "galaxies", "from_step": 1, "evidence": [{"loc": "2.2 Final sample", "quote": "Our final catalogue contains 278 galaxies"}]},
+{"quantity": "Median redshift of sample", "value": "0.017", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "2.2 Final sample", "quote": "with a median value, $z = 0.017$"}]},
+{"quantity": "Fraction with possible AGN contamination", "value": "~3 per cent", "uncertainty": "not stated", "units": "per cent", "from_step": 3, "evidence": [{"loc": "2.1 Radio data", "quote": "In summary, $\\sim 3$ per cent of our final sample have possible AGN-related contamination of their RC emission."}]},
+{"quantity": "L_1.4GHz-L_IR slope", "value": "0.96", "uncertainty": "0.02", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Table 3", "quote": "$0.96\\pm0.02$"}]},
+{"quantity": "L'_CO-L_IR slope", "value": "0.94", "uncertainty": "0.02", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Table 3", "quote": "$0.94\\pm0.02$"}]},
+{"quantity": "L'_CO-L_1.4GHz slope", "value": "1.04", "uncertainty": "0.02", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Table 3", "quote": "$1.04\\pm0.02$"}]},
+{"quantity": "L'_CO-L_1.4GHz intercept", "value": "-14.09", "uncertainty": "0.21", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Table 3", "quote": "$-14.09\\pm0.21$"}]},
+{"quantity": "Scatter of the L'_CO-L_1.4GHz correlation", "value": "0.36", "uncertainty": "not stated", "units": "dex", "from_step": 4, "evidence": [{"loc": "abstract", "quote": "(with a scatter of 0.36 dex)"}]},
+{"quantity": "RC-CO relation coefficient on log L_1.4GHz", "value": "1.05", "uncertainty": "0.04", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "(1.05\\pm0.04)"}]},
+{"quantity": "RC-CO relation constant term", "value": "-16.5", "uncertainty": "0.8", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "3.1 The evolution of the RC–CO relation", "quote": "(16.5\\pm0.8)"}]},
+{"quantity": "Increase in molecular gas mass density across z = 0.05-1.5", "value": "4.4", "uncertainty": "not stated", "units": "factor", "from_step": 7, "evidence": [{"loc": "5.1 Cosmic evolution of molecular gas", "quote": "increases by a factor of $4.4\\times$ across $z=0.05$–1.5"}]},
+{"quantity": "Plane coefficient on log L_IR", "value": "0.61", "uncertainty": "0.05", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "3.4 The empirical CO–RC–IR plane", "quote": "(0.61\\pm0.05)"}]},
+{"quantity": "Plane coefficient on log L_1.4GHz", "value": "0.36", "uncertainty": "0.05", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "3.4 The empirical CO–RC–IR plane", "quote": "(0.36\\pm0.05)"}]},
+{"quantity": "Plane constant term", "value": "-5.4", "uncertainty": "0.7", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "3.4 The empirical CO–RC–IR plane", "quote": "(5.4\\pm0.7)"}]},
+{"quantity": "Scatter of plane-predicted L'_CO", "value": "0.27", "uncertainty": "not stated", "units": "dex", "from_step": 8, "evidence": [{"loc": "5.2 Using the CO–RC–IR plane to predict CO emission in galaxies", "quote": "shows a scatter of 0.27 dex"}]}
+],
+"findings_qualitative": [
+{"value": "The RC, IR and CO relations are robust enough to estimate CO emission where no CO measurement exists", "evidence": [{"loc": "abstract", "quote": "These correlations are sufficiently robust to be used for samples where no CO measurements exist."}]},
+{"value": "Estimates agree with semi-analytic models and the ASPECS ALMA large programme", "evidence": [{"loc": "6 Summary", "quote": "The agreement of our estimates with semi-analytical models, as well as with the results from the ALMA large programme, ASPECS"}]}
+],
+"claims": [
+{"hypothesis": "Radio continuum luminosity correlates with CO luminosity across galaxy types", "experiment": "Fit L'_CO versus L_1.4GHz for 278 galaxies from seven surveys", "result": "Slope 1.04 +/- 0.02 with scatter 0.36 dex", "finding": "A RC-CO correlation holds for a large sample of different galaxy kinds", "support": "supported", "evidence": [{"loc": "abstract", "quote": "We find a correlation between the radio continuum and the CO emission line (with a scatter of 0.36 dex)"}]},
+{"hypothesis": "The cosmic molecular gas density can be derived from radio luminosity functions", "experiment": "Apply the redshift-dependent RC-CO relation to literature RCLFs and integrate the MGMFs with fixed alpha_CO", "result": "Density increases by 4.4x across z = 0.05-1.5 and falls inside ASPECS errors", "finding": "The cosmic molecular gas density increases up to z = 1.5, consistent with semi-analytic models and direct measurements", "support": "supported", "evidence": [{"loc": "abstract", "quote": "the cosmic molecular gas density increases up to $z=1.5$."}]},
+{"hypothesis": "L'_CO, L_IR and L_1.4GHz form a single plane", "experiment": "Fit a plane to the three luminosities with MPFIT", "result": "Scatter 0.27 dex versus 0.29 and 0.36 dex for pairwise relations", "finding": "The CO-RC-IR plane predicts CO emission better than the pairwise relations", "support": "supported", "evidence": [{"loc": "abstract", "quote": "we find a single plane across five orders of magnitude for the explored luminosities, with a scatter of 0.27 dex."}]},
+{"hypothesis": "The method can be extended beyond z = 1.5 using RCLFs up to z = 5.7", "experiment": "Apply the relation to RCLFs at z > 1.5", "result": "Considerable over-estimate of MGMF compared with semi-analytic models", "finding": "Results are only reliable up to z = 1.5", "support": "refuted", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "our results for the MGMF show a considerable over-estimate in comparison with the semi-analytic models for RCLF at redshifts $z > 1.5$."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Large wide-area survey samples give more statistically robust results than earlier small samples", "evidence": [{"loc": "1 Introduction", "quote": "We base our work on large samples of galaxies built from wide-area surveys, resulting in more statistically robust work than was previously possible."}]}
+],
+"alternatives_considered_or_rejected": [],
+"limitations_admitted": [
+{"value": "MGMF over-estimates relative to semi-analytic models at z > 1.5", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "our results for the MGMF show a considerable over-estimate in comparison with the semi-analytic models for RCLF at redshifts $z > 1.5$."}]},
+{"value": "Constant alpha_CO ignores variation with galaxy properties such as metallicity", "evidence": [{"loc": "3.2 The RC–CO correlation used to estimate the molecular gas mass function", "quote": "with the assumption of a constant $\\alpha_{\\rm CO}$, we ignore any possible variation of the conversion factor as a function of galaxy properties"}]},
+{"value": "Main uncertainty in the density comes from the measured RC luminosity functions", "evidence": [{"loc": "3.3 Cosmic molecular gas mass content", "quote": "The main source of uncertainty in $\\rho_{(M_{\\rm mol})}$ comes from the uncertainty in the measured RC luminosity functions."}]}
+],
+"referee_caveats_inferred": [
+"The RC-CO relation is built by chaining two literature relations; the sample fit is only a consistency check",
+"Pairwise fit method and its treatment of upper limits and selection effects are not described",
+"A sample of nearby galaxies (median z = 0.017) is extrapolated to z = 1.5 without direct validation of redshift evolution",
+"Constant alpha_CO may bias the density at high z where starbursts are more common"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "FIRST survey is publicly available; other samples come from published surveys", "evidence": [{"loc": "2.1 Radio data", "quote": "Additionally we match the VALES sample with the publicly available Faint Images of the Radio Sky at Twenty-Centimeters"}]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Per-galaxy table of the 278-galaxy final sample",
+"ALMA observing setup and CO flux extraction for VALES",
+"Pairwise fitting method details",
+"RCLF data points used per redshift bin"
+],
+"estimated_data_volume_inferred": "Small: the analysis uses published catalogues and a few JVLA/ALMA flux tables; reprocessing raw ALMA/JVLA data would be tens of GB but is not needed for the main results",
+"score_inferred": 3,
+"score_reason": "Equations and numeric fit results are given and most inputs are public catalogues, but the full sample table, fit method and ALMA processing are not in the paper",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA data play a minor role (CO for part of VALES) and the sample table and fitting method needed to redo the numbers are not given",
+"methods_papers": [
+{"citation": "(cite: magnelli15)", "why": "RC-IR relation as a function of redshift used in the RC-CO derivation"},
+{"citation": "(cite: villanueva17)", "why": "IR-CO relation from VALES used in the RC-CO derivation"},
+{"citation": "(cite: smolcic09)", "why": "Radio luminosity function evolution model"},
+{"citation": "(cite: sadler02)", "why": "Local radio luminosity function form and parameters"},
+{"citation": "(cite: cluver14)", "why": "L_IR from WISE 12 micron photometry"}
+],
+"companion_papers": [
+{"citation": "(cite: villanueva17)", "why": "VALES CO data and L'CO-LIR relation"},
+{"citation": "(cite: cheng18)", "why": "VALES APEX CO data"},
+{"citation": "(cite: decarli16)", "why": "ASPECS molecular gas mass density used for comparison"},
+{"citation": "(cite: orellana17)", "why": "Earlier work on dust and gas scaling relations by the same lead author"}
+],
+"related_projects_or_surveys": ["VALES", "H-ATLAS", "GAMA", "xCOLD GASS", "ALLSMOG", "ATLAS3D", "ASPECS", "FIRST", "NVSS"]
+}

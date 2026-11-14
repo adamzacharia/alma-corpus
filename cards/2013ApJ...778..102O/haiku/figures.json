@@ -1,0 +1,812 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "ALMA 259 GHz (1.16 mm) continuum intensity map around Himiko, with sigma-level contours marking the non-detection at the galaxy position.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right ascension (J2000)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination (J2000)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "continuum intensity",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "significance (sigma levels, -3 to +3)",
+      "units": "sigma"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 1-sigma flux 17.4 uJy/beam (from caption)",
+     "approx. no significant continuum source at Himiko position (white cross)"
+    ],
+    "caption_quote": "The gray scale indicates the intensity at each position where darker regions imply higher intensities.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "channel_maps",
+    "panels": 6,
+    "shows": "ALMA [CII] velocity channel maps of Himiko in 200 km/s bins centred from -600 to +400 km/s, showing no significant line emission at the galaxy position.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right ascension (J2000)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination (J2000)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "line intensity per channel",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "significance",
+      "units": "sigma"
+     },
+     {
+      "axis": "channel",
+      "quantity": "velocity relative to z=6.595 [CII]",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "Checks for [CII] line emission at the Himiko position across velocity channels, giving upper limits.",
+    "readable_values": [
+     "approx. channel centres -600, -400, -200, 0, +200, +400 km/s",
+     "approx. 1-sigma 83.3 uJy/beam per channel (from caption)"
+    ],
+    "caption_quote": "The six panels present maps of 200 km−1 width at central velocities of −600, −400, −200, 0, +200, and +400 km s−1 from the top left to the bottom right.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Colour composite of Himiko with HST/WFC3 J125 and H160 continuum in blue and green and Subaru NB921 Lyman-alpha emission in red, with continuum clumps A, B and C labelled.",
+    "axes": [
+     {
+      "axis": "scale",
+      "quantity": "angular scale",
+      "units": "arcsec (1 arcsec bar)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. scale bar 1 arcsec"
+    ],
+    "caption_quote": "The three continuum clumps are labeled A, B and C.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "other",
+    "panels": 9,
+    "shows": "Multi-band image grid of Himiko (5 by 5 arcsec cutouts) in HST F098M, J125 and H160, Spitzer 3.6 and 4.5 micron, and Subaru Lyman-alpha continuum-subtracted with contours, marking apertures for clumps A-D and total photometry.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "relative position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "relative position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "Lyman-alpha intensity",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. aperture diameter 0.4 arcsec for clumps and 2 arcsec for total magnitudes (from caption)"
+    ],
+    "caption_quote": "The red-solid circles indicate the positions of 0′′.4-diameter apertures for Clumps A, B, C, and D photometry in the HST images",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "sed",
+    "panels": 1,
+    "shows": "Observed-frame optical to far-infrared SED of Himiko compared with redshifted local galaxy templates (Arp220, M82, M51, NGC6946, dwarf irregulars), with the ALMA Band 6 upper limit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "observed wavelength",
+      "units": "micron"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density f_nu",
+      "units": "mJy"
+     },
+     {
+      "axis": "templates",
+      "quantity": "local galaxy SED templates at z=6.595",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Compares Himiko's photometry and ALMA upper limit with redshifted local galaxy SED templates to constrain dust emission.",
+    "readable_values": [
+     "approx. ALMA 1100 micron upper limit ~0.05 mJy",
+     "approx. Arp220 peak ~50 mJy near 600 micron",
+     "approx. Spitzer 3.6 micron flux ~1e-3 mJy"
+    ],
+    "caption_quote": "The filled square shows the upper limit from our deep ALMA Band 6 observations and filled circles represent photometry from HST/WFC3 J125 and H160 photometry and Spitzer SEDS 3.6 and 4.5µm.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "[CII] luminosity versus star formation rate for local galaxies with the local scaling relation and scatter band, with Himiko's 3-sigma [CII] upper limit and HFLS3 plotted.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "log SFR",
+      "units": "log(M_sun/yr)"
+     },
+     {
+      "axis": "y",
+      "quantity": "log [CII] luminosity",
+      "units": "log(erg/s)"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 2,
+    "validation_check": "Places the Himiko [CII] upper limit against the local L[CII]-SFR relation to test consistency with low [CII] luminosity.",
+    "readable_values": [
+     "approx. Himiko upper limit log L[CII] ~41.3 erg/s at log SFR ~2.0",
+     "approx. HFLS3 at log SFR ~3.5"
+    ],
+    "caption_quote": "The filled square indicates the 3σ upper limit luminosity of Himiko and the open diamond presents estimates of HFLS3 (Riechers et al. 2013).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "sed",
+    "panels": 2,
+    "shows": "Optical to near-infrared SED of Himiko from deep HST and Spitzer data with best-fit stellar synthesis models with and without nebular lines.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "observed wavelength",
+      "units": "micron"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density f_nu",
+      "units": "uJy"
+     },
+     {
+      "axis": "model",
+      "quantity": "best-fit stellar synthesis SED",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 3,
+    "validation_check": "Fits stellar population models to the broadband photometry to derive SFR, stellar mass and extinction.",
+    "readable_values": [
+     "approx. HST WFC3 fluxes ~0.3-0.4 uJy",
+     "approx. Spitzer IRAC 4.5 micron flux ~1 uJy",
+     "approx. best-fit SFR 100 M_sun/yr (from caption)",
+     "approx. best-fit E(B-V) 0.15 (from caption)"
+    ],
+    "caption_quote": "For various assumptions the ﬁts indicate that Himiko has a SFR of 100M⊙ yr−1, stellar mass of 2 −3 × 1010M⊙, and a selective extinction of E(B −V ) = 0.15",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "UV continuum slope beta versus rest-frame Lyman-alpha equivalent width for the whole system and clumps A, B and C, compared with Raiter et al. (2010) starburst model tracks at several metallicities.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "rest-frame Lyman-alpha equivalent width",
+      "units": "Angstrom"
+     },
+     {
+      "axis": "y",
+      "quantity": "UV continuum slope beta",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "models",
+      "quantity": "Raiter et al. model tracks (PopIII, Z=1e-5, 0.01, 0.2 Zsun)",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "literature_comparison"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares measured clump UV slopes and Lyman-alpha equivalent widths with model predictions for different metallicities and dust.",
+    "readable_values": [
+     "approx. whole system beta ~ -2.0 at EW ~80 A",
+     "approx. Clump A beta ~ -2.05 at EW ~3 A",
+     "approx. Clump C beta ~ -2.8 at EW ~70 A"
+    ],
+    "caption_quote": "The ﬁlled circle, square, pentagon, and diamond denote measures for the entire system, Clumps A, B, and C, respectively.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Ratio of [CII] to FIR luminosity as a function of FIR luminosity for local normal galaxies, ULIRGs and high-redshift SF and AGN populations, with Himiko's FIR upper limit and an excluded shaded region.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "FIR luminosity",
+      "units": "log(L_sun)"
+     },
+     {
+      "axis": "y",
+      "quantity": "[CII] to FIR luminosity ratio",
+      "units": "log(L[CII]/L_FIR)"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 2,
+    "validation_check": "Places Himiko's FIR upper limit against literature [CII]/FIR ratios to test whether its [CII] deficit is consistent with known populations.",
+    "readable_values": [
+     "approx. Himiko limit log L_FIR ~11 L_sun",
+     "approx. Himiko log(L[CII]/L_FIR) ~ -2.1",
+     "approx. HFLS3 log(L[CII]/L_FIR) ~ -3.3 at log L_FIR ~13.4"
+    ],
+    "caption_quote": "The thick bar with the arrow presents the FIR upper limit for Himiko at the arbitrary position in the vertical axis, and the gray shaded region denotes the excluded range.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": [
+   {
+    "number": 9,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Ratio of UV to FIR luminosity log(LFIR/L1600) as a function of UV continuum slope beta, with the Meurer et al. (1999) local starburst relation and Himiko's upper limit and beta measurement.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "UV continuum slope beta",
+      "units": "not labelled (dimensionless)"
+     },
+     {
+      "axis": "y",
+      "quantity": "log(LFIR/L1600)",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares Himiko's IRX-beta position with the local starburst relation to assess dust attenuation.",
+    "readable_values": [
+     "approx. beta ~ -2.0 for total system",
+     "approx. log(LFIR/L1600) upper limit ~ -0.2"
+    ],
+    "caption_quote": "The UV continuum slope, β, as a function of rest-frame Lyα equivalent width.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 8
+   }
+  ]
+ },
+ "checks": {
+  "figures": 9,
+  "caption_quotes_ok": 9,
+  "renumbered": [],
+  "dropped_duplicates": 1,
+  "cropped_without_note": [
+   8
+  ],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 6,
+  "reproduction_targets": 5,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.994,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 9,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 10,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.994,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "ALMA 259 GHz (1.16 mm) continuum intensity map around Himiko, with sigma-level contours marking the non-detection at the galaxy position.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right ascension (J2000)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination (J2000)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "continuum intensity",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "significance (sigma levels, -3 to +3)",
+      "units": "sigma"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 1-sigma flux 17.4 uJy/beam (from caption)",
+     "approx. no significant continuum source at Himiko position (white cross)"
+    ],
+    "caption_quote": "The gray scale indicates the intensity at each position where darker regions imply higher intensities.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "channel_maps",
+    "panels": 6,
+    "shows": "ALMA [CII] velocity channel maps of Himiko in 200 km/s bins centred from -600 to +400 km/s, showing no significant line emission at the galaxy position.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Right ascension (J2000)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Declination (J2000)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "line intensity per channel",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "significance",
+      "units": "sigma"
+     },
+     {
+      "axis": "channel",
+      "quantity": "velocity relative to z=6.595 [CII]",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "Checks for [CII] line emission at the Himiko position across velocity channels, giving upper limits.",
+    "readable_values": [
+     "approx. channel centres -600, -400, -200, 0, +200, +400 km/s",
+     "approx. 1-sigma 83.3 uJy/beam per channel (from caption)"
+    ],
+    "caption_quote": "The six panels present maps of 200 km−1 width at central velocities of −600, −400, −200, 0, +200, and +400 km s−1 from the top left to the bottom right.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Colour composite of Himiko with HST/WFC3 J125 and H160 continuum in blue and green and Subaru NB921 Lyman-alpha emission in red, with continuum clumps A, B and C labelled.",
+    "axes": [
+     {
+      "axis": "scale",
+      "quantity": "angular scale",
+      "units": "arcsec (1 arcsec bar)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. scale bar 1 arcsec"
+    ],
+    "caption_quote": "The three continuum clumps are labeled A, B and C.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "other",
+    "panels": 9,
+    "shows": "Multi-band image grid of Himiko (5 by 5 arcsec cutouts) in HST F098M, J125 and H160, Spitzer 3.6 and 4.5 micron, and Subaru Lyman-alpha continuum-subtracted with contours, marking apertures for clumps A-D and total photometry.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "relative position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "relative position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "Lyman-alpha intensity",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. aperture diameter 0.4 arcsec for clumps and 2 arcsec for total magnitudes (from caption)"
+    ],
+    "caption_quote": "The red-solid circles indicate the positions of 0′′.4-diameter apertures for Clumps A, B, C, and D photometry in the HST images",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "sed",
+    "panels": 1,
+    "shows": "Observed-frame optical to far-infrared SED of Himiko compared with redshifted local galaxy templates (Arp220, M82, M51, NGC6946, dwarf irregulars), with the ALMA Band 6 upper limit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "observed wavelength",
+      "units": "micron"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density f_nu",
+      "units": "mJy"
+     },
+     {
+      "axis": "templates",
+      "quantity": "local galaxy SED templates at z=6.595",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Compares Himiko's photometry and ALMA upper limit with redshifted local galaxy SED templates to constrain dust emission.",
+    "readable_values": [
+     "approx. ALMA 1100 micron upper limit ~0.05 mJy",
+     "approx. Arp220 peak ~50 mJy near 600 micron",
+     "approx. Spitzer 3.6 micron flux ~1e-3 mJy"
+    ],
+    "caption_quote": "The filled square shows the upper limit from our deep ALMA Band 6 observations and filled circles represent photometry from HST/WFC3 J125 and H160 photometry and Spitzer SEDS 3.6 and 4.5µm.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "[CII] luminosity versus star formation rate for local galaxies with the local scaling relation and scatter band, with Himiko's 3-sigma [CII] upper limit and HFLS3 plotted.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "log SFR",
+      "units": "log(M_sun/yr)"
+     },
+     {
+      "axis": "y",
+      "quantity": "log [CII] luminosity",
+      "units": "log(erg/s)"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 2,
+    "validation_check": "Places the Himiko [CII] upper limit against the local L[CII]-SFR relation to test consistency with low [CII] luminosity.",
+    "readable_values": [
+     "approx. Himiko upper limit log L[CII] ~41.3 erg/s at log SFR ~2.0",
+     "approx. HFLS3 at log SFR ~3.5"
+    ],
+    "caption_quote": "The filled square indicates the 3σ upper limit luminosity of Himiko and the open diamond presents estimates of HFLS3 (Riechers et al. 2013).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "sed",
+    "panels": 2,
+    "shows": "Optical to near-infrared SED of Himiko from deep HST and Spitzer data with best-fit stellar synthesis models with and without nebular lines.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "observed wavelength",
+      "units": "micron"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density f_nu",
+      "units": "uJy"
+     },
+     {
+      "axis": "model",
+      "quantity": "best-fit stellar synthesis SED",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 3,
+    "validation_check": "Fits stellar population models to the broadband photometry to derive SFR, stellar mass and extinction.",
+    "readable_values": [
+     "approx. HST WFC3 fluxes ~0.3-0.4 uJy",
+     "approx. Spitzer IRAC 4.5 micron flux ~1 uJy",
+     "approx. best-fit SFR 100 M_sun/yr (from caption)",
+     "approx. best-fit E(B-V) 0.15 (from caption)"
+    ],
+    "caption_quote": "For various assumptions the ﬁts indicate that Himiko has a SFR of 100M⊙ yr−1, stellar mass of 2 −3 × 1010M⊙, and a selective extinction of E(B −V ) = 0.15",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Ratio of UV to FIR luminosity log(LFIR/L1600) as a function of UV continuum slope beta, with the Meurer et al. (1999) local starburst relation and Himiko's upper limit and beta measurement.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "UV continuum slope beta",
+      "units": "not labelled (dimensionless)"
+     },
+     {
+      "axis": "y",
+      "quantity": "log(LFIR/L1600)",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares Himiko's IRX-beta position with the local starburst relation to assess dust attenuation.",
+    "readable_values": [
+     "approx. beta ~ -2.0 for total system",
+     "approx. log(LFIR/L1600) upper limit ~ -0.2"
+    ],
+    "caption_quote": "The UV continuum slope, β, as a function of rest-frame Lyα equivalent width.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "UV continuum slope beta versus rest-frame Lyman-alpha equivalent width for the whole system and clumps A, B and C, compared with Raiter et al. (2010) starburst model tracks at several metallicities.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "rest-frame Lyman-alpha equivalent width",
+      "units": "Angstrom"
+     },
+     {
+      "axis": "y",
+      "quantity": "UV continuum slope beta",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "models",
+      "quantity": "Raiter et al. model tracks (PopIII, Z=1e-5, 0.01, 0.2 Zsun)",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "literature_comparison"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares measured clump UV slopes and Lyman-alpha equivalent widths with model predictions for different metallicities and dust.",
+    "readable_values": [
+     "approx. whole system beta ~ -2.0 at EW ~80 A",
+     "approx. Clump A beta ~ -2.05 at EW ~3 A",
+     "approx. Clump C beta ~ -2.8 at EW ~70 A"
+    ],
+    "caption_quote": "The ﬁlled circle, square, pentagon, and diamond denote measures for the entire system, Clumps A, B, and C, respectively.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Ratio of [CII] to FIR luminosity as a function of FIR luminosity for local normal galaxies, ULIRGs and high-redshift SF and AGN populations, with Himiko's FIR upper limit and an excluded shaded region.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "FIR luminosity",
+      "units": "log(L_sun)"
+     },
+     {
+      "axis": "y",
+      "quantity": "[CII] to FIR luminosity ratio",
+      "units": "log(L[CII]/L_FIR)"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 2,
+    "validation_check": "Places Himiko's FIR upper limit against literature [CII]/FIR ratios to test whether its [CII] deficit is consistent with known populations.",
+    "readable_values": [
+     "approx. Himiko limit log L_FIR ~11 L_sun",
+     "approx. Himiko log(L[CII]/L_FIR) ~ -2.1",
+     "approx. HFLS3 log(L[CII]/L_FIR) ~ -3.3 at log L_FIR ~13.4"
+    ],
+    "caption_quote": "The thick bar with the arrow presents the FIR upper limit for Himiko at the arbitrary position in the vertical axis, and the gray shaded region denotes the excluded range.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

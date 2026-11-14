@@ -1,0 +1,456 @@
+{
+ "bibcode": "2022MNRAS.514.6215Y",
+ "title": "Is there a sub-parsec-scale jet base in the nearby dwarf galaxy NGC 4395?",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1753",
+ "arxiv_id": "2206.10964",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Whether the sub-mJy outflow-like feature E in the dwarf galaxy NGC 4395 is a continuous jet with a sub-parsec-scale jet base physically coupled with the intermediate-mass black hole accretion disc.",
+ "alma_project_codes": [
+  "2017.1.00572.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "ALMA 12m array (44, 46, and 48 antennas)",
+  "angular_resolution": "nominal 0.8'' (extended configuration) and 1.9'' (compact configuration)",
+  "sensitivity": "0.03 to 0.05 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2005 HSA 1.4 GHz image, position, and total flux density (0.74 ± 0.05 mJy) of feature E",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In the high-resolution 1.4-GHz HSA image, it displays an outflow-like feature extending over 15 mas with a total flux density of 0.74$\\pm$0.05 mJy (cite: Wrobel2006)."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "HSA | 12$^{\\rm h}$25$^{\\rm m}$48.8774s | 6 | $+$33$\\ensuremath{^\\circ}$32$\\ensuremath{'}$48.715$''$ | 6 | (cite: Wrobel2006)"
+     }
+    ]
+   },
+   "citation": "(cite: Wrobel2006)"
+  },
+  {
+   "what": {
+    "value": "Gaia DR3 optical position and photometry of NGC 4395",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "*Gaia* DR3 | 12$^{\\rm h}$25$^{\\rm m}$48.85994s | 1.4 | $+$33$\\ensuremath{^\\circ}$32$\\ensuremath{'}$48.7110$''$ | 1.4 | (cite: Gaia2022)"
+     }
+    ]
+   },
+   "citation": "(cite: Gaia2021_EDR3; Gaia2022)"
+  },
+  {
+   "what": {
+    "value": "Pan-STARRS1 optical position of NGC 4395",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "Pan-STARRS1 | 12$^{\\rm h}$25$^{\\rm m}$48.86002s | 13.4 | $+$33$\\ensuremath{^\\circ}$32$\\ensuremath{'}$48.7063$''$ | 4.9 | (cite: Chambers2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Chambers2016)"
+  },
+  {
+   "what": {
+    "value": "Total flux densities from e-MERLIN at 1.4 GHz and VLA at 5 and 8.4 GHz used to derive low-frequency flux densities of component C",
+    "evidence": [
+     {
+      "loc": "Nature of the components E and C",
+      "quote": "Using the radio spectrum of the component E and the total flux densities observed by the *e*-MERLIN at 1.4 GHz (cite: Baldi2021) and the VLA at 5 and 8.4 GHz (cite: Sramek1992; Moran1999; King2013), we also derived the flux densities of the component C at frequencies $\\leq$8.4 GHz."
+     }
+    ]
+   },
+   "citation": "(cite: Baldi2021), (cite: Sramek1992; Moran1999; King2013)"
+  },
+  {
+   "what": {
+    "value": "IMBH mass (10^{4-5} M_sun) and stellar velocity dispersion (sigma_* = 18 km s^-1) used to estimate gravitational sphere of influence",
+    "evidence": [
+     {
+      "loc": "Nature of the components E and C",
+      "quote": "By adopting $M_{\\rm bh} = 10^{4-5} M_\\odot$ and velocity dispersion $\\sigma_\\star$ = 18 km s$^{-1}$ (cite: Woo2019), the estimated $R_{\\rm BH,sph}$ is $\\sim$1.0 pc according to Equation 3 in (cite: Netzer2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Woo2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image EVN 5 GHz and archival HSA 1.4 GHz VLBI visibility data",
+   "method": "Phase-referencing calibration in AIPS (called via ParselTongue for EVN) including fringe fitting, ionospheric and parallactic angle corrections, bandpass calibration, and calibrator self-calibration, followed by deconvolution in DIFMAP.",
+   "software": [
+    "AIPS",
+    "PARSELTONGUE",
+    "DIFMAP"
+   ],
+   "key_parameters": [
+    "Fringe-fitting solution interval ~1 min, median filter smoothing width 0.5 h on fringe rate",
+    "Arecibo (AR) excluded in final HSA imaging due to ~100 deg residual phase errors"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Calibrate and image archival Jansky VLA 12–18 GHz and ALMA 237 GHz continuum data",
+   "method": "Process VLA data with the VLA CASA pipeline; calibrate ALMA extended and compact configurations separately with the ALMA CASA pipeline, concatenate calibrated visibilities, and image line-free channels for individual epochs and combined data.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Aggregate continuum bandwidth 6.9 GHz centred around 237.1 GHz"
+   ],
+   "assumptions": [
+    "Assumed flux and spectral index at 230.3 GHz for J1229+0203: 4.8 Jy (alpha=-0.83) on 2018 Mar 22, 6.0 Jy (alpha=-0.75) on 2018 Aug 28, 3.6 Jy (alpha=-0.91) on 2019 Jan 23"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit source models to components E and C to measure positions, sizes, flux densities, and in-band spectral indices",
+   "method": "Fit each discrete feature starting with a point-source model, progressing to circular or elliptical Gaussian models if ~5 sigma residual peaks remained, and include in-band spectral index for broad-band VLA data.",
+   "software": [],
+   "key_parameters": [
+    "5 per cent systematic flux error added in quadrature to formal error for HSA 1.4 GHz flux density"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive multi-frequency radio spectra, brightness temperatures, luminosity limits, and physical scale of the torus",
+   "method": "Combine HSA, EVN, VLA, ALMA, and literature flux densities to fit power-law spectra S(nu) proportional to nu^alpha for components E and C, compute brightness temperatures and 5-sigma radio luminosity upper limits at the Gaia IMBH position, and compare component C size with the IMBH gravitational sphere of influence.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Standard LambdaCDM cosmology with H0 = 71 km s^-1 Mpc^-1, Omega_m = 0.27, Omega_Lambda = 0.73, giving luminosity distance 4.5 Mpc (scale ~0.021 pc mas^-1 at 4.3 Mpc)",
+    "No significant time variability when fitting non-simultaneous multi-frequency spectra"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 237 GHz total flux density of NGC 4395 (2018 March 22)",
+   "value": "0.20",
+   "uncertainty": "±0.08",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "In the ALMA archival continuum images at 237 GHz, Fig. 3, NGC 4395 is detected at SNR = 3.8 on 2018 March 22 and SNR = 4.5 on 2019 January 23. Its total flux densities are $0.20 \\pm 0.08$ and $0.19 \\pm 0.06$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 237 GHz total flux density of NGC 4395 (2019 January 23)",
+   "value": "0.19",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "In the ALMA archival continuum images at 237 GHz, Fig. 3, NGC 4395 is detected at SNR = 3.8 on 2018 March 22 and SNR = 4.5 on 2019 January 23. Its total flux densities are $0.20 \\pm 0.08$ and $0.19 \\pm 0.06$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 237 GHz combined image average flux density of NGC 4395",
+   "value": "0.18",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "The average flux density is $0.18 \\pm 0.06$ mJy. It is a slightly resolved feature with a size of ($0.89 \\pm 0.21$) $\\times$ ($0.72 \\pm 0.14$) mas."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 237 GHz combined image fitted feature size",
+   "value": "0.89 x 0.72",
+   "uncertainty": "±0.21 x ±0.14",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "It is a slightly resolved feature with a size of ($0.89 \\pm 0.21$) $\\times$ ($0.72 \\pm 0.14$) mas."
+    }
+   ]
+  },
+  {
+   "quantity": "Component E1 flux density at 1.41 GHz (HSA 2008)",
+   "value": "0.652",
+   "uncertainty": "±0.035",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "E1 | HSA | 1.41 | $+1.34\\pm0.21$ | $+2.47\\pm0.53$ | $0.652\\pm0.035$ | $17.5\\pm0.9$ | $9.9\\pm1.7$ | $7.7\\pm3.7$ | | EG"
+    }
+   ]
+  },
+  {
+   "quantity": "Component E1 angular size (major x minor axis) at 1.41 GHz (HSA 2008)",
+   "value": "17.5 x 9.9",
+   "uncertainty": "±0.9 x ±1.7",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "E1 | HSA | 1.41 | $+1.34\\pm0.21$ | $+2.47\\pm0.53$ | $0.652\\pm0.035$ | $17.5\\pm0.9$ | $9.9\\pm1.7$ | $7.7\\pm3.7$ | | EG"
+    }
+   ]
+  },
+  {
+   "quantity": "Component E2 flux density at 1.41 GHz (HSA 2008)",
+   "value": "0.069",
+   "uncertainty": "±0.009",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "E2 | HSA | 1.41 | $-0.23\\pm0.25$ | $-1.05\\pm0.47$ | $0.069\\pm0.009$ | | | | | PS"
+    }
+   ]
+  },
+  {
+   "quantity": "Component E total flux density (E1+E2) at 1.41 GHz (HSA 2008)",
+   "value": "0.72",
+   "uncertainty": "±0.05",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "With an elliptical Gaussian model (E1) and a point source model (E2), we recover a total flux density of $0.72 \\pm 0.05$ mJy, where the error is the quadratic sum of a 5 per cent systematic error and the formal error."
+    }
+   ]
+  },
+  {
+   "quantity": "Component E average brightness temperature at 1.4 GHz",
+   "value": "2.3e6",
+   "uncertainty": "±0.4e6",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "All these results are consistent with the HSA imaging results reported previously by (cite: Wrobel2006) and further confirms that it is a non-thermal component with an average brightness temperature of $T_{\\rm b}=(2.3\\pm0.4) \\times10^6$ K at 1.4 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Component E flux density at 15.00 GHz (VLA)",
+   "value": "0.158",
+   "uncertainty": "±0.011",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "E | VLA | 15.00 | $-8.52\\pm3.60$ | $15.59\\pm3.60$ | $0.158\\pm0.011$ | | | | $-1.6\\pm0.5$ | PS"
+    }
+   ]
+  },
+  {
+   "quantity": "Component E in-band spectral index at 15 GHz (VLA)",
+   "value": "-1.6",
+   "uncertainty": "±0.5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "E | VLA | 15.00 | $-8.52\\pm3.60$ | $15.59\\pm3.60$ | $0.158\\pm0.011$ | | | | $-1.6\\pm0.5$ | PS"
+    }
+   ]
+  },
+  {
+   "quantity": "Component E multi-frequency spectral index between 1.4 and 15 GHz",
+   "value": "-0.64",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "Assuming no significant time variability, we can derive a spectral index of $\\alpha=-0.64\\pm0.05$ for the component E in Fig. 4."
+    }
+   ]
+  },
+  {
+   "quantity": "Component C flux density at 15.00 GHz (VLA)",
+   "value": "0.213",
+   "uncertainty": "±0.022",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "C | VLA | 15.00 | $-198.76\\pm9.20$ | $9.87\\pm9.20$ | $0.213\\pm0.022$ | $143.0\\pm17.0$ | $143.0\\pm17.0$ | | $+0.6\\pm0.7$ | CG"
+    }
+   ]
+  },
+  {
+   "quantity": "Component C angular size at 15.00 GHz (VLA)",
+   "value": "143.0",
+   "uncertainty": "±17.0",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "C | VLA | 15.00 | $-198.76\\pm9.20$ | $9.87\\pm9.20$ | $0.213\\pm0.022$ | $143.0\\pm17.0$ | $143.0\\pm17.0$ | | $+0.6\\pm0.7$ | CG"
+    }
+   ]
+  },
+  {
+   "quantity": "Component C physical size at 15.00 GHz (VLA)",
+   "value": "3.0",
+   "uncertainty": "±0.3",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "The component C is located at the *Gaia* position, shows a diffuse structure with a size of $143\\pm17$ mas ($3.0\\pm0.3$ pc) and has an in-band spectral index $\\alpha=+0.6\\pm0.7$."
+    }
+   ]
+  },
+  {
+   "quantity": "Component C broad-band spectral index between 1.4 and 237 GHz",
+   "value": "-0.12",
+   "uncertainty": "±0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nature of the components E and C",
+     "quote": "The best-fitting model for the non-simultaneous spectrum between 1.4 and 237 GHz is $S_{\\nu} = (0.32\\pm0.08) \\nu^{-0.12\\pm0.08}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Component C average brightness temperature at 15 GHz",
+   "value": "56",
+   "uncertainty": "±9",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nature of the components E and C",
+     "quote": "Firstly, its average brightness temperatures are very low: $T_{\\rm b}=56\\pm9$ K in the 15 GHz VLA map and $\\leq5.9\\times10^5$ K in the 1.4-GHz HSA and 5-GHz EVN maps."
+    }
+   ]
+  },
+  {
+   "quantity": "Component C radio luminosity at 15 GHz",
+   "value": "8.6e34",
+   "uncertainty": "±1.0e34",
+   "units": "erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications",
+     "quote": "The component C has a radio luminosity of $L_{\\rm R} = (8.6 \\pm 1.0) \\times 10^{34}$ erg s$^{-1}$ at 15 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "5-sigma upper limit on compact feature peak brightness at 5 GHz (EVN)",
+   "value": "<=0.035",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "This gives us a 5$\\sigma$ upper limit of 0.035 mJy beam$^{-1}$ ($T_{\\rm b}= 5.9\\times10^5$ K) for the peak brightness at 5 GHz of any compact feature."
+    }
+   ]
+  },
+  {
+   "quantity": "5-sigma upper limit on jet base radio luminosity at 1.4 GHz",
+   "value": "<=1.3e33",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications",
+     "quote": "If there is a compact jet base formed by the central accreting IMBH of NGC 4395, the HSA and EVN non-detections at the *Gaia* position allow us to set the 5$\\sigma$ upper limits on its luminosity, $L_{\\rm R} = \\nu L_{\\nu} = 1.3\\times10^{33}$ erg s$^{-1}$ at 1.4 GHz and $L_{\\rm R} = 4.7\\times10^{33}$ erg s$^{-1}$ at 5.0 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "5-sigma upper limit on jet base radio luminosity at 5.0 GHz",
+   "value": "<=4.7e33",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications",
+     "quote": "If there is a compact jet base formed by the central accreting IMBH of NGC 4395, the HSA and EVN non-detections at the *Gaia* position allow us to set the 5$\\sigma$ upper limits on its luminosity, $L_{\\rm R} = \\nu L_{\\nu} = 1.3\\times10^{33}$ erg s$^{-1}$ at 1.4 GHz and $L_{\\rm R} = 4.7\\times10^{33}$ erg s$^{-1}$ at 5.0 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular separation between Gaia DR3 position and HSA feature E position",
+   "value": "218",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Multi-frequency imaging results",
+     "quote": "The *Gaia* position (cite: Gaia2021_EDR3) is marked as a white plus and has a separation of 218 mas (4.6 pc) with respect to the HSA position (cite: Wrobel2006)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on transverse speed of component E",
+   "value": "<0.01",
+   "uncertainty": "not stated",
+   "units": "c",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nature of the components E and C",
+     "quote": "The non-detection of the significant offset between the two HSA observations supports that the component E has a very low transverse speed, $<$0.01 $c$, where $c$ is the light speed."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA imaging parameters: deconvolution task (e.g., tclean), weighting scheme/robust parameter, cell size, image size, masking, and synthesized beam dimensions for each epoch and the combined image.",
+  "Exact spectral windows and line-free channel ranges selected to construct the 6.9 GHz ALMA continuum.",
+  "Why the 2018 August 28 ALMA epoch is omitted from the individual detection flux density reporting in Section 3 and whether it was included in the combined visibility image.",
+  "VLA 12-18 GHz imaging parameters (weighting, cell size, deconvolver, multi-term MFS settings) and VLA pipeline version."
+ ],
+ "missing_for_reproduction": [
+  "The custom ParselTongue/AIPS calibration script used for the EVN data reduction.",
+  "ALMA imaging parameters (tclean weighting/robust, cell size, image size, cleaning threshold/masking) and exact line-free channel selections.",
+  "Clarification on whether the 2018 Aug 28 ALMA execution was included in the combined ALMA continuum image and what its individual flux/upper limit was.",
+  "Exact software task used to fit the VLA and ALMA image/visibility components (e.g., DIFMAP modelfit vs CASA imfit/uvmodelfit)."
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "All raw archival datasets (ALMA, VLA, HSA, EVN) and software packages (CASA, AIPS, ParselTongue, DIFMAP) are explicitly identified with project codes, and CASA pipeline versions are given for ALMA. However, imaging parameters for ALMA and VLA (robust weighting, cell size, line-free channel ranges) and the custom ParselTongue script are not provided.",
+ "rediscovery_reason": "All raw data are publicly available in the ALMA, NRAO, and EVN archives with explicit project codes, standard CASA pipelines were used for ALMA and VLA calibration, and the main scientific conclusions rely on straightforward continuum flux density measurements, upper limits, and astrometric offsets.",
+ "source_card": "cards/2022MNRAS.514.6215Y/sonnet/card.md"
+}

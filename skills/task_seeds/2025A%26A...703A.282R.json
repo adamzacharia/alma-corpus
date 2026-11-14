@@ -1,0 +1,327 @@
+{
+ "bibcode": "2025A&A...703A.282R",
+ "title": "Observations of sulfuretted species in HL Tau",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202555440",
+ "arxiv_id": "2511.19148",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Investigate the chemical differences between the protoplanetary disk and the surrounding envelope of HL Tau by comparing column density ratios of CS, H2CO, H2S, and SO2.",
+ "alma_project_codes": [
+  "2018.1.01037.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular spectroscopic data from CDMS",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Table notes: Molecular data from CDMS (cite: Muller2005)."
+     }
+    ]
+   },
+   "citation": "(cite: Muller2005)"
+  },
+  {
+   "what": {
+    "value": "ALMA SO2 transition detections toward HL Tau",
+    "evidence": [
+     {
+      "loc": "SO$\\rm _2$",
+      "quote": "(cite: Garufi2022) detected emission from 5$\\rm _{2,4}$-4$\\rm _{1,3}$, 14$\\rm _{0,14}$-13$\\rm _{1,13}$, and 3$\\rm _{3,1}$-2$\\rm _{2,0}$."
+     }
+    ]
+   },
+   "citation": "(cite: Garufi2022)"
+  },
+  {
+   "what": {
+    "value": "Collisional rates for CS, H2S, and H2CO",
+    "evidence": [
+     {
+      "loc": "Molecular column densities",
+      "quote": "We derived critical densities for the studied transitions using the Einstein coefficients for spontaneous emission from Table [\\[Tab:line_fluxes\\]](#Tab:line_fluxes) and collisional rates from (cite: DenisAlpizar2013) for CS, (cite: Dagdigian2020) for H$\\rm _2$S, and (cite: Wiesenfeld2013) for H$\\rm _2$CO."
+     }
+    ]
+   },
+   "citation": "(cite: DenisAlpizar2013), (cite: Dagdigian2020), (cite: Wiesenfeld2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compute moment maps, Keplerian-masked maps, line fluxes, and radial profiles for CS, H2S, and H2CO",
+   "method": "Spectrally smooth cubes by a factor of 3, compute moment 0, 1, 2 maps (S/N > 4), apply Keplerian masks using bettermoments and make_mask, integrate fluxes within r = 1.6 arcsec masking out absorption, and compute deprojected azimuthally averaged radial profiles.",
+   "software": [
+    "Bettermoments",
+    "make_mask"
+   ],
+   "key_parameters": [
+    "S/N > 4 threshold for unmasked moment maps; spectral smoothing factor = 3; integration radius = 1.6 arcsec"
+   ],
+   "assumptions": [
+    "M_star = 2.1 M_sun, i = 46.7 deg, PA = 138 deg"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure SO2 line fluxes and perform rotational diagram analysis combining NOEMA and ALMA transitions",
+   "method": "Integrate SO2 emission inside the beam area of the 4(2,2)-4(1,3) transition centered on its peak, recompute ALMA fluxes from Garufi et al. (2022), and fit a rotational diagram for T_rot and N(SO2).",
+   "software": [],
+   "key_parameters": [
+    "Partition function computed for 198 rotational levels"
+   ],
+   "assumptions": [
+    "Optically thin emission and Rayleigh-Jeans limit"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular column densities and ratios in the envelope and protoplanetary disk",
+   "method": "Compute optical depth and column density in the envelope from central absorption features for T_ex = 5 K and T_ex -> 0 K; compute LTE optically thin column densities in the disk at CS, H2S, and H2CO peaks and disk mean for T = 20, 40, and 58 K.",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Envelope T_ex = 5 K and T_ex -> 0 K; Disk T = 20 K, 40 K, and 58 K; ortho-to-para correction factor of 1.33 (OPR = 3) for H2S and H2CO"
+   ],
+   "assumptions": [
+    "Continuum source fills the beam for absorption; LTE and optically thin emission in the disk; ortho-to-para ratio of 3 for H2S and H2CO"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CS 3-2 integrated line flux",
+   "value": "0.35",
+   "uncertainty": "0.05",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CS | 3-2 | 146.969 | 0.81 $\\times$ 0.31 | 14.10692 | 6.0517$\\rm \\times 10^{-5}$ | 0.35$\\rm \\pm$0.05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO 2(1,1)-1(1,0) integrated line flux",
+   "value": "0.26",
+   "uncertainty": "0.03",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| H$\\rm _2$CO | 2$\\rm _{1,1}$-1$\\rm _{1,0}$ | 150.498 | 0.81 $\\times$ 0.30 | 22.61771 | 3.5950$\\rm \\times 10^{-5}$ | 0.26$\\rm \\pm$0.03 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S 1(1,0)-1(0,1) integrated line flux",
+   "value": "0.27",
+   "uncertainty": "0.03",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| H$\\rm _2$S | 1$\\rm _{1,0}$-1$\\rm _{0,1}$ | 168.762 | 0.72 $\\times$ 0.26 | 27.87738 | 2.6773$\\rm \\times 10^{-5}$ | 0.27$\\rm \\pm$0.03 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 4(2,2)-4(1,3) integrated line flux",
+   "value": "0.028",
+   "uncertainty": "0.005",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SO$\\rm _2$ | 4$\\rm _{2,2}$-4$\\rm _{1,3}$ | 146.605 | 0.81 $\\times$ 0.31 | 19.02892 | 2.4697$\\rm \\times 10^{-5}$ | 0.028$\\rm \\pm$0.005 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 2(2,0)-2(1,1) integrated line flux",
+   "value": "0.014",
+   "uncertainty": "0.003",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SO$\\rm _2$ | 2$\\rm _{2,0}$-2$\\rm _{1,1}$ | 151.379 | 0.74 $\\times$ 0.27 | 12.58483 | 1.8752$\\rm \\times 10^{-5}$ | 0.014$\\rm \\pm$0.003 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 5(2,4)-5(1,5) integrated line flux",
+   "value": "0.035",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SO$\\rm _2$ | 5$\\rm _{2,4}$-5$\\rm _{1,5}$ | 165.144 | 0.74 $\\times$ 0.27 | 23.58866 | 3.1223$\\rm \\times 10^{-5}$ | 0.035$\\rm \\pm$0.06 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 14(1,13)-14(0,14) integrated line flux",
+   "value": "0.026",
+   "uncertainty": "0.005",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SO$\\rm _2$ | 14$\\rm _{1,13}$-14$\\rm _{0,14}$ | 163.605 | 0.75 $\\times$ 0.27 | 101.75216 | 3.0054$\\rm \\times 10^{-5}$ | 0.026$\\rm \\pm$0.005 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 5(2,4)-4(1,3) recomputed ALMA flux",
+   "value": "120",
+   "uncertainty": "8",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SO$\\rm _2$",
+     "quote": "We retrieved a flux of (120$\\rm \\pm$8) mJy km s$\\rm ^{-1}$ for the 5$\\rm _{2,4}$-4$\\rm _{1,3}$ transition and of (164$\\rm \\pm$8) mJy km s$\\rm ^{-1}$ for the 14$\\rm _{0,14}$-14$\\rm _{1,13}$ transition."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 14(0,14)-14(1,13) recomputed ALMA flux",
+   "value": "164",
+   "uncertainty": "8",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SO$\\rm _2$",
+     "quote": "We retrieved a flux of (120$\\rm \\pm$8) mJy km s$\\rm ^{-1}$ for the 5$\\rm _{2,4}$-4$\\rm _{1,3}$ transition and of (164$\\rm \\pm$8) mJy km s$\\rm ^{-1}$ for the 14$\\rm _{0,14}$-14$\\rm _{1,13}$ transition."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 rotational temperature (NOEMA only)",
+   "value": "60",
+   "uncertainty": "10",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SO$\\rm _2$",
+     "quote": "We derived a temperature of (60$\\rm \\pm$10) K and a column density of (3.0$\\rm \\pm$0.5)$\\rm \\times 10^{14}~cm^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density (NOEMA only)",
+   "value": "3.0e14",
+   "uncertainty": "0.5e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SO$\\rm _2$",
+     "quote": "We derived a temperature of (60$\\rm \\pm$10) K and a column density of (3.0$\\rm \\pm$0.5)$\\rm \\times 10^{14}~cm^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 rotational temperature (NOEMA + ALMA)",
+   "value": "56",
+   "uncertainty": "5",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SO$\\rm _2$",
+     "quote": "This resulted in a temperature of (56$\\rm \\pm$5) K and a column density of (3.0$\\rm \\pm$0.3)$\\rm \\times 10^{14}~cm^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density (NOEMA + ALMA)",
+   "value": "3.0e14",
+   "uncertainty": "0.3e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SO$\\rm _2$",
+     "quote": "This resulted in a temperature of (56$\\rm \\pm$5) K and a column density of (3.0$\\rm \\pm$0.3)$\\rm \\times 10^{14}~cm^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mean N(CS)/N(H2S) ratio at T = 58 K",
+   "value": "0.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Disk mean | (3.2$\\rm \\pm 1.4$)$\\rm \\times 10^{12}$ | (5.6$\\rm \\pm 2.6$)$\\rm \\times 10^{12}$ | (8.4$\\rm \\pm$4.0)$\\rm \\times 10^{12}$ | 0.7$\\rm \\pm$0.2 | 0.4$\\rm\\pm$0.1 | 0.6$\\rm \\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope N(CS)/N(H2S) ratio at T_ex = 5 K",
+   "value": "28",
+   "uncertainty": "12",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Envelope | (4.7$\\rm \\pm0.4$)$\\rm \\times 10^{14}$ | (3$\\rm \\pm$1)$\\rm \\times 10^{13}$ | (2.0$\\rm \\pm$0.9)$\\rm \\times 10^{14}$ | 28$\\rm \\pm$12 | 4$\\rm \\pm$2 | 0.15$\\rm \\pm$0.12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope N(CS)/N(H2S) ratio at T_ex -> 0 K",
+   "value": "16",
+   "uncertainty": "8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | (2.7$\\rm \\pm0.6$)$\\rm \\times 10^{14}$ | (1.3$\\rm \\pm$0.4)$\\rm \\times 10^{13}$ | (7$\\rm \\pm$3)$\\rm \\times 10^{13}$ | 16$\\rm \\pm$8 | 3$\\rm \\pm$2 | 0.19$\\rm \\pm$0.14 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Distance to HL Tau used to convert angular scales to physical scales (implicitly ~140 pc based on 0.75 arcsec = 105 au)",
+  "Exact pixel coordinates or mask definition for the central absorption region and the CS, H2S, and H2CO emission peaks",
+  "How the archival ALMA data (2018.1.01037.S) were calibrated and imaged or whether archive/literature products from Garufi et al. (2022) were used directly"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel coordinates of the CS, H2S, and H2CO emission peaks and the central absorption region",
+  "Exact beam area center coordinates used for the SO2 4(2,2)-4(1,3) integration",
+  "Details of the archival ALMA image cubes used to recompute the Garufi et al. (2022) SO2 fluxes"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Processed NOEMA data cubes are publicly hosted at CDS, equations for rotational diagrams and optical depth/column density are explicitly given, and analysis tools (bettermoments, make_mask, RADEX) are public, though exact aperture/pixel coordinates for peak extractions are not tabulated.",
+ "rediscovery_reason": "The calibrated/imaged data cubes are publicly available on CDS, the archival ALMA data (2018.1.01037.S) are public, and the analytical equations to derive fluxes, rotational temperatures, and column densities are straightforward and yield explicit numeric benchmarks.",
+ "source_card": "cards/2025A%26A...703A.282R/sonnet/card.md"
+}

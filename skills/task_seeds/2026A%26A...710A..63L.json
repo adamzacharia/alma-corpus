@@ -1,0 +1,237 @@
+{
+ "bibcode": "2026A&A...710A..63L",
+ "title": "Constraining the magnetic field strength of a flaring radio core in the compact steep spectrum source 3C 138",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202659759",
+ "arxiv_id": "2605.18283",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Estimate the synchrotron self-absorption (SSA) magnetic field ($B_{\\rm SSA}$) in the SSA core of the compact steep spectrum quasar 3C 138 during its high state and compare it with the equipartition magnetic field ($B_{\\rm eq}$) to assess the core field environment.",
+ "alma_project_codes": [
+  "2011.0.00001.CAL"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Calibrator Source Catalogue flux estimates (approximately 97.5-343 GHz)",
+    "evidence": [
+     {
+      "loc": "Archive data",
+      "quote": "We also used the Atacama Large Millimeter/submillimeter Array (ALMA) Calibrator Source Catalogue (cite: kneissl2023operational), which provides well-calibrated flux estimates for standard ALMA calibrators, thereby extending our spectral coverage to the millimeter/submillimeter regime (approximately $97.5$–$343$ GHz)."
+     }
+    ]
+   },
+   "citation": "(cite: kneissl2023operational)"
+  },
+  {
+   "what": {
+    "value": "Median jet-opening index epsilon = 0.97",
+    "evidence": [
+     {
+      "loc": "Size scaling for the SSA region",
+      "quote": "We adopt $k_{\\rm r}=1$ as a commonly used empirical value in core-shift scaling (cite: lobanov1998ultracompact), and the median $\\epsilon$ value of 0.97 from (cite: algaba2017resolving)."
+     }
+    ]
+   },
+   "citation": "(cite: algaba2017resolving)"
+  },
+  {
+   "what": {
+    "value": "Equipartition brightness temperature T_B,eq = 5 x 10^10 K",
+    "evidence": [
+     {
+      "loc": "Variability Doppler factor",
+      "quote": "Here we adopt $T_{\\rm B,eq}=5\\times10^{10}$ K (cite: hovatta2009)."
+     }
+    ]
+   },
+   "citation": "(cite: hovatta2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and model-fit KVN and VLBA visibilities",
+   "method": "Calibrate KVN visibilities with AIPS KVN pipeline; perform interferometric imaging and circular 2D Gaussian model fitting in Difmap for KVN and VLBA epochs.",
+   "software": [
+    "DiFX",
+    "AIPS",
+    "KVN pipeline",
+    "Difmap"
+   ],
+   "key_parameters": [
+    "Two circular Gaussian components (W and E) separated by ~5 mas"
+   ],
+   "assumptions": [
+    "Flux density uncertainties of 10% (22/43 GHz), 20% (86 GHz), and 30% (129 GHz)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit component spectra and broadband VLA+ALMA spectra",
+   "method": "Fit KVN eastern component with a power law (PL) and western component with a single-zone SSA model. Interpolate ALMA Calibrator Catalogue flux densities with Gaussian-process (GP) regression, pair with four VLA epochs, and fit combined VLA+ALMA spectra with PL and PL+SSA models.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Single-zone homogeneous synchrotron self-absorption model for the core"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate SSA core size, variability Doppler factor, and magnetic field strengths",
+   "method": "Scale 23.5 GHz VLBA core size to the SSA turnover frequency to get d_m; fit VLBA core light curve in log space to get variability timescale tau_var, T_B^var, and delta_var; compute B_SSA and B_eq and propagate uncertainties via Monte Carlo sampling.",
+   "software": [],
+   "key_parameters": [
+    "d_VLBA = 0.06 +/- 0.01 mas, k_r = 1, epsilon = 0.97, T_B,eq = 5 x 10^10 K, eta = 1"
+   ],
+   "assumptions": [
+    "Cosmology: H_0 = 67.8 km s^-1 Mpc^-1, Omega_m = 0.308, Omega_Lambda = 0.692",
+    "Factor 1.6 converts Gaussian FWHM to uniform disk angular diameter; eta = 1 for ratio of proton+electron to electron energy densities"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "KVN SSA core turnover frequency",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The KVN SSA core shows a turnover at about 33 GHz and a peak flux of about 1.45 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "KVN SSA core peak flux density",
+   "value": "1.45",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The KVN SSA core shows a turnover at about 33 GHz and a peak flux of about 1.45 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "SSA region size (d_m)",
+   "value": "0.07",
+   "uncertainty": "0.01",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Magnetic field strength",
+     "quote": "We adopted $d_{\\rm m}=0.07\\pm0.01$ mas and $\\delta_{\\rm var}=2.36^{+0.35}_{-0.38}$, noting that $\\delta_{\\rm var}$ is an approximate constraint and likely a lower limit given the sparse temporal sampling and possible unresolved substructure."
+    }
+   ]
+  },
+  {
+   "quantity": "Variability Doppler factor (delta_var)",
+   "value": "2.36",
+   "uncertainty": "+0.35/-0.38",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Magnetic field strength",
+     "quote": "We adopted $d_{\\rm m}=0.07\\pm0.01$ mas and $\\delta_{\\rm var}=2.36^{+0.35}_{-0.38}$, noting that $\\delta_{\\rm var}$ is an approximate constraint and likely a lower limit given the sparse temporal sampling and possible unresolved substructure."
+    }
+   ]
+  },
+  {
+   "quantity": "SSA magnetic field strength (B_SSA)",
+   "value": "10.12",
+   "uncertainty": "+9.59/-5.11",
+   "units": "mG",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Magnetic field strength",
+     "quote": "Using these parameters, we derived $B_{\\rm SSA}=10.12^{+9.59}_{-5.11}$ mG and $B_{\\rm eq}=200.77^{+44.08}_{-33.79}$ mG, which yields $B_{\\rm SSA}/B_{\\rm eq}=0.05^{+0.06}_{-0.03}\\ll 1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition magnetic field strength (B_eq)",
+   "value": "200.77",
+   "uncertainty": "+44.08/-33.79",
+   "units": "mG",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Magnetic field strength",
+     "quote": "Using these parameters, we derived $B_{\\rm SSA}=10.12^{+9.59}_{-5.11}$ mG and $B_{\\rm eq}=200.77^{+44.08}_{-33.79}$ mG, which yields $B_{\\rm SSA}/B_{\\rm eq}=0.05^{+0.06}_{-0.03}\\ll 1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field ratio (B_SSA / B_eq)",
+   "value": "0.05",
+   "uncertainty": "+0.06/-0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Magnetic field strength",
+     "quote": "Using these parameters, we derived $B_{\\rm SSA}=10.12^{+9.59}_{-5.11}$ mG and $B_{\\rm eq}=200.77^{+44.08}_{-33.79}$ mG, which yields $B_{\\rm SSA}/B_{\\rm eq}=0.05^{+0.06}_{-0.03}\\ll 1$."
+    }
+   ]
+  },
+  {
+   "quantity": "VLA+ALMA SSA turnover frequency (2024-12-20)",
+   "value": "52.88",
+   "uncertainty": "+28.84/-20.19",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2024-12-20 | $-0.53\\pm0.03$ | $0.62_{-0.25}^{+0.30}$ | $52.88_{-20.19}^{+28.84}$ | $-1.00_{-0.43}^{+0.20}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA+ALMA SSA turnover frequency (2025-01-19)",
+   "value": "70.61",
+   "uncertainty": "+29.34/-29.53",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2025-01-19 | $-0.50\\pm0.03$ | $0.63_{-0.24}^{+0.22}$ | $70.61_{-29.53}^{+29.34}$ | $-1.39_{-0.40}^{+0.43}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact dates and frequencies of the ALMA Calibrator Source Catalogue measurements used for the Gaussian-process interpolation",
+  "Kernel and hyperparameters used for the Gaussian-process regression of the ALMA light curves",
+  "Exact fixed value of the optically thick spectral index alpha_t in the PL+SSA fits to the VLA+ALMA spectra",
+  "Details of the sampler and priors used to obtain the SSA-fit posterior"
+ ],
+ "missing_for_reproduction": [
+  "Raw or calibrated KVN visibility data (not stated as publicly archived)",
+  "Exact ALMA Calibrator Catalogue query table (timestamps, frequencies, and flux values) used for GP interpolation",
+  "Gaussian-process regression kernel and hyperparameter settings",
+  "Exact fixed value of alpha_t used in the SSA spectral fits"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The analytic equations, assumptions, and intermediate component flux tables (KVN, VLBA, VLA) are thoroughly reported in the text and appendices, allowing direct reproduction of the magnetic field calculations and KVN spectral fits from the tables. However, the KVN raw visibilities are not stated to be public, and the exact GP interpolation settings and ALMA flux table are not explicitly provided.",
+ "rediscovery_reason": "The broadband VLA+ALMA spectral evolution and VLBA core variability can be fully reproduced from public NRAO archives (TCAL0009, UC003) and the public ALMA Calibrator Source Catalogue, and the magnetic field calculations can be reproduced directly from the published tables and equations.",
+ "source_card": "cards/2026A%26A...710A..63L/sonnet/card.md"
+}

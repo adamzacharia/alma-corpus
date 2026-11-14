@@ -1,0 +1,1252 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2022A&A...660L...6C",
+  "title": "The ALMA-PILS survey: First tentative detection of 3-hydroxypropenal (HOCHCHCHO) in the interstellar medium and chemical modeling of the C<SUB>3</SUB>H<SUB>4</SUB>O<SUB>2</SUB> isomers",
+  "year": 2022,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Coutens, A.",
+  "n_authors": 8,
+  "arxiv_id": "2203.14119",
+  "doi": "10.1051/0004-6361/202243038",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2012.1.00712.S",
+   "2013.1.00278.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In this work, we analyzed the Atacama Large Millimeter/submillimeter Array (ALMA) data of the Protostellar Interferometric Line Survey (PILS), an unbiased spectral survey of the solar-type protostar IRAS 16293–2422"
+   },
+   {
+    "loc": "Observations and spectroscopy",
+    "quote": "The ALMA/PILS survey is fully described in (cite: Jorgensen2016)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 16293–2422 B",
+     "coordinates": {
+      "value": "16h32m22.58s, -24d28m32.8s (J2000)",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "The applied spectrum corresponds to the component B of IRAS16293 at a position offset by 0.5$\\ensuremath{''}$ (one beam) with respect to the continuum peak position in the south-west direction ($\\alpha_{\\rm J2000}$=16$^{\\rm h}$32$^{\\rm m}$22.58s, $\\delta_{\\rm J2000}$=-24$\\ensuremath{^\\circ}$28$\\ensuremath{'}$32.8$\\ensuremath{''}$)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can 3-hydroxypropenal (HOCHCHCHO) and its C3H4O2 isomers be detected in the solar-type protostar IRAS 16293-2422, and how are they formed chemically?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In this work, we analyzed the Atacama Large Millimeter/submillimeter Array (ALMA) data of the Protostellar Interferometric Line Survey (PILS), an unbiased spectral survey of the solar-type protostar IRAS 16293–2422, and we tentatively detected 3-hydroxypropenal (HOCHCHCHO)"
+     },
+     {
+      "loc": "abstract",
+      "quote": "We included HOCHCHCHO and five of its isomers in the chemical network presented in (cite: Manigand2021) and we predicted their chemical evolution with the Nautilus code."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00278.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the ALMA data ADS/JAO.ALMA#2013.1.00278.S and ADS/JAO.ALMA#2012.1.00712.S."
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00712.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the ALMA data ADS/JAO.ALMA#2013.1.00278.S and ADS/JAO.ALMA#2012.1.00712.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7, Band 6, Band 3",
+    "evidence": [
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "In summary, these observations obtained with both the 12m array and the Atacama Compact Array (ACA) cover the entire range between 329.1 and 362.9 GHz (Band 7) with a resolution of 0.244 MHz ($\\sim$0.2 km s$^{-1}$)."
+     },
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "Besides the Band 7 observations, small spectral windows were also covered in Bands 3 and 6."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "329.1 to 362.9 GHz with 0.244 MHz (~0.2 km s^-1) resolution",
+    "evidence": [
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "In summary, these observations obtained with both the 12m array and the Atacama Compact Array (ACA) cover the entire range between 329.1 and 362.9 GHz (Band 7) with a resolution of 0.244 MHz ($\\sim$0.2 km s$^{-1}$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HOCHCHCHO",
+     "transition": "rotational and rotation-tunneling transitions in Band 7 and Band 6",
+     "rest_frequency": "329184.3 to 362238.2 MHz (Band 7), 239460.6 to 250459.9 MHz (Band 6)",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "In total, we found 11 lines ($\\gtrsim$ 20 mJy\\,beam$^{-1}$) that could be associated to HOCHCHCHO towards IRAS16293 B"
+      },
+      {
+       "loc": "Analysis and results",
+       "quote": "In Band 6, two faint lines are detected at 247.5312 and 250.4599 GHz and are in agreement with the model."
+      }
+     ]
+    },
+    {
+     "species": "C2H3OCHO",
+     "transition": "rotational transition",
+     "rest_frequency": "355.2462 GHz",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "C$_2$H$_3$OCHO is not detected with an upper limit of 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ based on the undetected transition at 355.2462 GHz."
+      }
+     ]
+    },
+    {
+     "species": "C2H3COOH",
+     "transition": "s-cis and s-trans conformers",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "Upper limits of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ and 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ are also derived for the s-cis and s-trans conformers of C$_2$H$_3$COOH, respectively."
+      }
+     ]
+    },
+    {
+     "species": "CH2OHCH2CH2OH",
+     "transition": "conformer a'GG'g",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "The lower energy conformer a’GG’g present in the CDMS database was searched for and an upper limit of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ was derived."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m array and ACA",
+    "evidence": [
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "In summary, these observations obtained with both the 12m array and the Atacama Compact Array (ACA) cover the entire range between 329.1 and 362.9 GHz (Band 7) with a resolution of 0.244 MHz ($\\sim$0.2 km s$^{-1}$)."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.4 to 0.7 arcsec, restored with a circular beam of 0.5 arcsec",
+    "evidence": [
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "The beam sizes vary between 0.4 and 0.7$\\ensuremath{''}$ and the observations were restored with a circular beam of 0.5$\\ensuremath{''}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "4-5 mJy beam^-1 km s^-1",
+    "evidence": [
+     {
+      "loc": "Observations and spectroscopy",
+      "quote": "The sensitivity of the combined 12m array and ACA observations is about 4-5 mJy beam$^{-1}$ km s$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectroscopic data for HOCHCHCHO, C2H3OCHO, C2H3COOH, and CH2OHCH2CH2OH from CDMS",
+      "evidence": [
+       {
+        "loc": "Observations and spectroscopy",
+        "quote": "The spectroscopic data of HOCHCHCHO come from the Cologne Database for Molecular Spectroscopy (CDMS, (cite: Muller2001; Muller2005))."
+       },
+       {
+        "loc": "Analysis and results",
+        "quote": "Only C$_2$H$_3$OCHO (vinyl formate) and the s-cis and s-trans conformers of C$_2$H$_3$COOH (propenoic acid) are available in CDMS."
+       }
+      ]
+     },
+     "citation": "CDMS (cite: Muller2001; Muller2005)"
+    },
+    {
+     "what": {
+      "value": "List of previously identified species in IRAS 16293 B and additional molecules for spectral overlay",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "We added HONO (cite: Coutens2019), CH$_3$OCH$_2$OH, CH$_2$DCHO, t-C$_2$H$_5$OCH$_3$ (cite: Manigand2020), C$_2$H$_3$CHO, C$_3$H$_6$ (cite: Manigand2021), and CH$_3$OCHD$_2$ (cite: Richard2021) to the list presented in Appendix A of (cite: Coutens2019)."
+       }
+      ]
+     },
+     "citation": "(cite: Coutens2019; Manigand2020; Manigand2021; Richard2021)"
+    },
+    {
+     "what": {
+      "value": "Initial abundances and physical model for chemical modeling",
+      "evidence": [
+       {
+        "loc": "Chemical modeling and discussion",
+        "quote": "the initial abundances listed in Table 3 of (cite: Manigand2021), and a duration of 10$^6$ years; and ii) the collapse phase described in (cite: Manigand2021)."
+       }
+      ]
+     },
+     "citation": "(cite: Manigand2021)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Three-phase gas, grain surface, and grain mantle time-dependent chemical model using the Nautilus code",
+     "evidence": [
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "To better understand the chemistry of HOCHCHCHO and its isomers, we used the Nautilus code (cite: Ruaud2016), a three-phase gas, grain surface, and grain mantle time-dependent chemical model."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "performed as described in Jorgensen et al. 2016",
+     "evidence": [
+      {
+       "loc": "Observations and spectroscopy",
+       "quote": "More information about the data reduction, the continuum subtraction, and these additional data can be found in (cite: Jorgensen2016)."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12m array and ACA combined",
+     "evidence": [
+      {
+       "loc": "Observations and spectroscopy",
+       "quote": "The sensitivity of the combined 12m array and ACA observations is about 4-5 mJy beam$^{-1}$ km s$^{-1}$."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.5 arcsec circular beam",
+     "evidence": [
+      {
+       "loc": "Observations and spectroscopy",
+       "quote": "The beam sizes vary between 0.4 and 0.7$\\ensuremath{''}$ and the observations were restored with a circular beam of 0.5$\\ensuremath{''}$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "4-5 mJy beam^-1 km s^-1",
+     "evidence": [
+      {
+       "loc": "Observations and spectroscopy",
+       "quote": "The sensitivity of the combined 12m array and ACA observations is about 4-5 mJy beam$^{-1}$ km s$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA PILS survey observations, data reduction, and continuum subtraction",
+      "evidence": [
+       {
+        "loc": "Observations and spectroscopy",
+        "quote": "The ALMA/PILS survey is fully described in (cite: Jorgensen2016)."
+       },
+       {
+        "loc": "Observations and spectroscopy",
+        "quote": "More information about the data reduction, the continuum subtraction, and these additional data can be found in (cite: Jorgensen2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Jorgensen2016)"
+    },
+    {
+     "what": {
+      "value": "LTE synthetic spectrum analysis and chi-square fitting methodology",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "Our analysis is similar to those presented in earlier studies (cite: Coutens2016; Coutens2019; Lykke2017; Ligterink2017)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Coutens2016; Coutens2019; Lykke2017; Ligterink2017)"
+    },
+    {
+     "what": {
+      "value": "Chemical network, initial abundances, and two-stage physical model of protostellar collapse",
+      "evidence": [
+       {
+        "loc": "Chemical modeling and discussion",
+        "quote": "We updated the chemical network described in (cite: Manigand2021) by including the reactions producing and consuming the C$_3$H$_4$O$_2$ isomers"
+       },
+       {
+        "loc": "Chemical modeling and discussion",
+        "quote": "For the physical model of the formation of a low-mass protostar, we considered two successive stages, similarly to (cite: Manigand2021)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Manigand2021)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Source size (beam filling factor) assumed in the CASSIS LTE synthetic spectrum modeling",
+    "Assumed methanol (CH3OH) column density in IRAS 16293 B used to convert column densities into abundances relative to CH3OH",
+    "Exact coarse grid range and step sizes for the first LTE chi-square grid search",
+    "Line width (FWHM) and systemic velocity (v_LSR) fixed or varied during the CASSIS LTE grid fitting"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Predict molecular presence with a convolutional neural network",
+    "method": {
+     "value": "Apply a convolutional neural network (CNN) trained on multi-species LTE synthetic spectra to the PILS spectrum at the 0.5 arcsec offset position of IRAS 16293 B",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "Using a dedicated convolutional neural network (CNN) on a large set of multi-species synthetic spectra assuming local thermodynamic equilibrium (LTE, (cite: Boulanger2022)), we predicted the presence of HOCHCHCHO in the PILS data with a probability greater than 50%."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Offset position: alpha_J2000 = 16h32m22.58s, delta_J2000 = -24d28m32.8s (0.5 arcsec SW of continuum peak)",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "The applied spectrum corresponds to the component B of IRAS16293 at a position offset by 0.5$\\ensuremath{''}$ (one beam) with respect to the continuum peak position in the south-west direction ($\\alpha_{\\rm J2000}$=16$^{\\rm h}$32$^{\\rm m}$22.58s, $\\delta_{\\rm J2000}$=-24$\\ensuremath{^\\circ}$28$\\ensuremath{'}$32.8$\\ensuremath{''}$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Local thermodynamic equilibrium (LTE)",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "Using a dedicated convolutional neural network (CNN) on a large set of multi-species synthetic spectra assuming local thermodynamic equilibrium (LTE, (cite: Boulanger2022)), we predicted the presence of HOCHCHCHO in the PILS data with a probability greater than 50%."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Confirmed line identifications with classical analysis using CASSIS",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "We confirm that several lines can be identified as HOCHCHCHO with a classical analysis using the CASSIS software."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify unblended transitions and fit Gaussian line profiles",
+    "method": {
+     "value": "Overlay synthetic spectra of previously identified molecules to exclude blended lines, lines with large spectroscopic uncertainties, and lines affected by absorption; fit Gaussians to detected HOCHCHCHO transitions",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "To ensure that the lines are not blended with other species, we overlaid the model including the species previously identified in this source."
+      },
+      {
+       "loc": "Additional tables and figures",
+       "quote": "Table [\\[List_line_parameters\\]](#List_line_parameters) lists the observational parameters of the detected HOCHCHCHO lines obtained after Gaussian fitting."
+      }
+     ]
+    },
+    "software": [
+     "CASSIS"
+    ],
+    "key_parameters": [
+     {
+      "value": "11 detected lines >= 20 mJy beam^-1 in Band 7, plus 5 undetected lines with small uncertainties",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "In total, we found 11 lines ($\\gtrsim$ 20 mJy\\,beam$^{-1}$) that could be associated to HOCHCHCHO towards IRAS16293 B"
+       },
+       {
+        "loc": "Analysis and results",
+        "quote": "To avoid overestimating the column density, we also included five undetected lines presenting small uncertainties in the $\\chi^2$ analysis"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Single or double Gaussian profile fitting",
+     "evidence": [
+      {
+       "loc": "Additional tables and figures",
+       "quote": "Table [\\[List_line_parameters\\]](#List_line_parameters) lists the observational parameters of the detected HOCHCHCHO lines obtained after Gaussian fitting."
+      },
+      {
+       "loc": "Table 2",
+       "quote": "$\\ddagger$ A double Gaussian is used to fit the observations."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Constrain column density and excitation temperature via LTE grid fitting",
+    "method": {
+     "value": "Generate LTE synthetic spectra over two grids (coarse then fine) of column density N and excitation temperature T_ex, and compute chi-square on unblended and selected undetected lines; also derive upper limits for isomers and 1,3-propanediol",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "Synthetic spectra are produced assuming LTE for various values of column densities, $N,$ and excitation temperatures, $T_{\\rm ex}$. A $\\chi^2$ method is then used on the unblended lines to derive the best fit parameters."
+      },
+      {
+       "loc": "Analysis and results",
+       "quote": "To constrain the best-fit parameters, we ran two grids: one with large steps followed by another one around the best model with smaller steps ($\\Delta N$ = 2 $\\times$ 10$^{14}$ cm$^{-2}$, $\\Delta T$ = 25 K)."
+      }
+     ]
+    },
+    "software": [
+     "CASSIS"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fine grid: N from 2 x 10^14 to 3 x 10^15 cm^-2 (step 2 x 10^14 cm^-2), T_ex from 50 to 350 K (step 25 K)",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "To constrain the best-fit parameters, we ran two grids: one with large steps followed by another one around the best model with smaller steps ($\\Delta N$ = 2 $\\times$ 10$^{14}$ cm$^{-2}$, $\\Delta T$ = 25 K)."
+       },
+       {
+        "loc": "Analysis and results",
+        "quote": "For this second grid, the column density ranged from 2 $\\times$ 10$^{14}$ to 3 $\\times$ 10$^{15}$ cm$^{-2}$, while the excitation temperature was between 50 and 350 K."
+       }
+      ]
+     },
+     {
+      "value": "Fixed T_ex tests at 125 K and 300 K",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "If we assume excitation temperatures of 125 and 300 K, we obtain column densities of 3-hydroxypropenal of 1.0 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0) and 1.8 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0), respectively."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Local thermodynamic equilibrium (LTE)",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "Synthetic spectra are produced assuming LTE for various values of column densities, $N,$ and excitation temperatures, $T_{\\rm ex}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Chi-square minimization over N and T_ex grid",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "A $\\chi^2$ method is then used on the unblended lines to derive the best fit parameters."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Checked consistency across Band 6 and Band 3 spectral windows and verified that no predicted lines are missing",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "We carefully checked that no HOCHCHCHO line is missing with this model in other parts of the PILS survey. In Band 6, two faint lines are detected at 247.5312 and 250.4599 GHz and are in agreement with the model."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Produce moment 0 maps of HOCHCHCHO transitions",
+    "method": {
+     "value": "Create integrated intensity (moment 0) maps for three transitions of HOCHCHCHO",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "The moment 0 maps of the transitions at 329.1843, 330.8262, and 335.3758 GHz are presented in Fig. [7](#fig_map)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Transitions at 329.1843, 330.8262, and 335.3758 GHz",
+      "evidence": [
+       {
+        "loc": "Analysis and results",
+        "quote": "The moment 0 maps of the transitions at 329.1843, 330.8262, and 335.3758 GHz are presented in Fig. [7](#fig_map)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared spatial morphology to other COMs detected in IRAS 16293 B",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "The emission is compact and similar to the other COMs detected in this source (see e.g., (cite: Lykke2017; Jorgensen2018; Calcutt2018))."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Model chemical evolution of C3H4O2 isomers",
+    "method": {
+     "value": "Run a three-phase time-dependent astrochemical model using Nautilus with an updated network including six C3H4O2 isomers and DFT-calculated reaction barriers",
+     "evidence": [
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "To better understand the chemistry of HOCHCHCHO and its isomers, we used the Nautilus code (cite: Ruaud2016), a three-phase gas, grain surface, and grain mantle time-dependent chemical model."
+      },
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "The barriers were calculated using the DFT method associated with the M06-2X functional."
+      }
+     ]
+    },
+    "software": [
+     "Nautilus"
+    ],
+    "key_parameters": [
+     {
+      "value": "Pre-stellar stage: density = 5 x 10^4 cm^-3, T_gas = T_dust = 10 K, A_V = 4.5 mag, cosmic-ray ionization rate = 1.3 x 10^-17 s^-1, UV field = 1 G0, duration = 10^6 years; followed by protostellar collapse stage",
+      "evidence": [
+       {
+        "loc": "Chemical modeling and discussion",
+        "quote": "i) a uniform and constant stage, corresponding to the pre-stellar phase, with a density of 5 $\\times$ 10$^4$ cm$^{-3}$, a temperature of 10\\,K for both gas and dust, a visual extinction of 4.5 mag, a cosmic-ray ionization rate of 1.3 $\\times$ 10$^{-17}$ s$^{-1}$, a standard external UV field of 1 G$_0$"
+       },
+       {
+        "loc": "Chemical modeling and discussion",
+        "quote": "the initial abundances listed in Table 3 of (cite: Manigand2021), and a duration of 10$^6$ years; and ii) the collapse phase described in (cite: Manigand2021)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Isomeric ratio approximated by ratio of rovibrational densities of states at the isomerization barrier; barriers and imaginary frequencies calculated at M06-2X/AVTZ DFT level",
+      "evidence": [
+       {
+        "loc": "Chemical modeling of 3-hydroxypropenal (HOCHCHCHO) and its isomers",
+        "quote": "In our network, we consider that the ratio between the isomeric forms is then approximated by the ratio of the rovibrational densities of states of the isomers at the barrier to isomerization."
+       },
+       {
+        "loc": "Chemical modeling and discussion",
+        "quote": "The barriers were calculated using the DFT method associated with the M06-2X functional."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared predicted abundances relative to CH3OH against observed values and upper limits",
+     "evidence": [
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "HOCHCHCHO has a predicted abundance with respect to CH$_3$OH of 4.6\\,$\\times$\\,10$^{-4}$ in agreement with the observations (1\\,$\\times$\\,10$^{-4}$)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASSIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Classical spectral line identification and LTE synthetic spectrum modeling",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "We confirm that several lines can be identified as HOCHCHCHO with a classical analysis using the CASSIS software."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Nautilus",
+    "version": "not stated",
+    "used_for": {
+     "value": "Three-phase gas, grain surface, and grain mantle time-dependent astrochemical modeling",
+     "evidence": [
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "To better understand the chemistry of HOCHCHCHO and its isomers, we used the Nautilus code (cite: Ruaud2016), a three-phase gas, grain surface, and grain mantle time-dependent chemical model."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "HOCHCHCHO column density (best-fit at T_ex = 350 K)",
+    "value": "2.2e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "The best-fit model was obtained for a column density $N$ of 2.2 $\\times$ 10$^{15}$ cm$^{-2}$ and an excitation temperature $T_{\\rm ex}$ of 350 K ($\\chi^2_{\\rm red}$ $\\sim$ 2.0)."
+     }
+    ]
+   },
+   {
+    "quantity": "HOCHCHCHO column density (assuming T_ex = 125 K)",
+    "value": "1.0e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "If we assume excitation temperatures of 125 and 300 K, we obtain column densities of 3-hydroxypropenal of 1.0 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0) and 1.8 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0), respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "HOCHCHCHO column density (assuming T_ex = 300 K)",
+    "value": "1.8e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "If we assume excitation temperatures of 125 and 300 K, we obtain column densities of 3-hydroxypropenal of 1.0 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0) and 1.8 $\\times$ 10$^{15}$ cm$^{-2}$ ($\\chi^2_{\\rm red}$ $\\sim$ 2.0), respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "HOCHCHCHO excitation temperature range",
+    "value": "75-350",
+    "uncertainty": "3 sigma",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "Our $\\chi^2$ analysis shows that various models with excitation temperatures in the 75–350 K range can properly reproduce the lines included in the calculation (3$\\sigma$ uncertainty)."
+     }
+    ]
+   },
+   {
+    "quantity": "Observed HOCHCHCHO abundance relative to CH3OH",
+    "value": "1.0e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Based on the observed line intensities and assuming local thermodynamic equilibrium, its column density is constrained to be $\\sim$10$^{15}$ cm$^{-2}$, corresponding to an abundance of 10$^{-4}$ relative to methanol, CH$_3$OH."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "| 3-Hydroxypropenal | HOCHCHCHO | 1.4 $\\times$ 10$^{-8}$ | 4.6 $\\times$ 10$^{-4}$ | 1.0 $\\times$ 10$^{-4}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H3OCHO (vinyl formate) column density upper limit",
+    "value": "< 4e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "C$_2$H$_3$OCHO is not detected with an upper limit of 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ based on the undetected transition at 355.2462 GHz."
+     }
+    ]
+   },
+   {
+    "quantity": "s-cis C2H3COOH (propenoic acid) column density upper limit",
+    "value": "< 1e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "Upper limits of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ and 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ are also derived for the s-cis and s-trans conformers of C$_2$H$_3$COOH, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "s-trans C2H3COOH (propenoic acid) column density upper limit",
+    "value": "< 4e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "Upper limits of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ and 4\\,$\\times$\\,10$^{15}$ cm$^{-2}$ are also derived for the s-cis and s-trans conformers of C$_2$H$_3$COOH, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "CH2OHCH2CH2OH (1,3-propanediol, conformer a'GG'g) column density upper limit",
+    "value": "< 1e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "The lower energy conformer a’GG’g present in the CDMS database was searched for and an upper limit of 1\\,$\\times$\\,10$^{15}$ cm$^{-2}$ was derived."
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted HOCHCHCHO abundance relative to CH3OH",
+    "value": "4.6e-4",
+    "uncertainty": "factor of 10",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 3-Hydroxypropenal | HOCHCHCHO | 1.4 $\\times$ 10$^{-8}$ | 4.6 $\\times$ 10$^{-4}$ | 1.0 $\\times$ 10$^{-4}$ |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted CH3COCHO (methyl glyoxal) abundance relative to CH3OH",
+    "value": "2.4e-3",
+    "uncertainty": "factor of 10",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Methyl glyoxal | CH$_3$COCHO | 7.4 $\\times$ 10$^{-8}$ | 2.4 $\\times$ 10$^{-3}$ | |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted CH2COHCHO (2-hydroxypropenal) abundance relative to CH3OH",
+    "value": "6.6e-4",
+    "uncertainty": "factor of 10",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 2-Hydroxypropenal | CH$_2$COHCHO | 2.0 $\\times$ 10$^{-8}$ | 6.6 $\\times$ 10$^{-4}$ | |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted HCOCH2CHO (propanedial) abundance relative to CH3OH",
+    "value": "9.9e-5",
+    "uncertainty": "factor of 10",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Propanedial | HCOCH$_2$CHO | 3.0 $\\times$ 10$^{-9}$ | 9.9 $\\times$ 10$^{-5}$ | |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: The total uncertainty on the predicted abundances is about a factor 10."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Tentative first detection of 3-hydroxypropenal (HOCHCHCHO) in the interstellar medium towards IRAS 16293-2422 B",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we tentatively detected 3-hydroxypropenal (HOCHCHCHO) for the first time in the interstellar medium towards source B."
+     }
+    ]
+   },
+   {
+    "value": "HOCHCHCHO is mainly formed via the grain surface reaction CH2CHO + HCO -> HCOCH2CHO followed by tautomerization into HOCHCHCHO",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This species is mainly formed through the grain surface reaction CH$_2$CHO + HCO $\\rightarrow$ HCOCH$_2$CHO, followed by the tautomerization of HCOCH$_2$CHO into HOCHCHCHO."
+     }
+    ]
+   },
+   {
+    "value": "Two isomers, CH3COCHO (methyl glyoxal) and CH2COHCHO (2-hydroxypropenal), are predicted to be more abundant than HOCHCHCHO",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Two isomers, CH$_3$COCHO and CH$_2$COHCHO, are predicted to be even more abundant than HOCHCHCHO."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "3-hydroxypropenal (HOCHCHCHO) is present and detectable in the solar-type protostar IRAS 16293-2422 B",
+    "experiment": "Applied a CNN to the ALMA-PILS spectrum of IRAS 16293 B and performed a classical LTE synthetic spectrum and chi-square analysis with CASSIS across Band 7 and Band 6",
+    "result": "11 lines in Band 7 (7 fully reproduced, 4 partially blended) and 2 faint lines in Band 6 match HOCHCHCHO, yielding N ~ 1.0 x 10^15 cm^-2 (at T_ex = 125 K) and an abundance of 10^-4 relative to CH3OH",
+    "finding": "3-hydroxypropenal is tentatively detected for the first time in the interstellar medium towards IRAS 16293 B",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we tentatively detected 3-hydroxypropenal (HOCHCHCHO) for the first time in the interstellar medium towards source B."
+     },
+     {
+      "loc": "Analysis and results",
+      "quote": "Seven lines are correctly reproduced by the model and can be identified as HOCHCHCHO. The lines at 333.1546, 341.8653, 356.3017, and 362.2382 GHz are only partially reproduced"
+     },
+     {
+      "loc": "Analysis and results",
+      "quote": "In Band 6, two faint lines are detected at 247.5312 and 250.4599 GHz and are in agreement with the model."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Grain-surface radical association reactions and keto-enol tautomerization can account for the observed abundance of HOCHCHCHO in IRAS 16293 B",
+    "experiment": "Updated the Nautilus three-phase chemical network with six C3H4O2 isomers and DFT-calculated reaction barriers, and simulated the pre-stellar and protostellar collapse phases",
+    "result": "The model predicts an HOCHCHCHO abundance relative to CH3OH of 4.6 x 10^-4 (within a factor of 10 uncertainty), consistent with the observed 1.0 x 10^-4, mainly via CH2CHO + HCO -> HCOCH2CHO followed by tautomerization",
+    "finding": "The chemical model reproduces the observed abundance of HOCHCHCHO within uncertainties through grain-surface radical association and tautomerization",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The model reproduces the abundance of HOCHCHCHO within the uncertainties. This species is mainly formed through the grain surface reaction CH$_2$CHO + HCO $\\rightarrow$ HCOCH$_2$CHO, followed by the tautomerization of HCOCH$_2$CHO into HOCHCHCHO."
+     },
+     {
+      "loc": "Chemical modeling and discussion",
+      "quote": "HOCHCHCHO has a predicted abundance with respect to CH$_3$OH of 4.6\\,$\\times$\\,10$^{-4}$ in agreement with the observations (1\\,$\\times$\\,10$^{-4}$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Other C3H4O2 isomers are also abundant and potentially detectable in IRAS 16293 B",
+    "experiment": "Predicted abundances of five other C3H4O2 isomers with the Nautilus code and searched for spectroscopically available isomers (C2H3OCHO and C2H3COOH) in PILS data",
+    "result": "C2H3OCHO and C2H3COOH are not detected (upper limits <= 4 x 10^-4 and <= 5 x 10^-4 relative to CH3OH, consistent with low predicted abundances of 2.8 x 10^-5 and 7.3 x 10^-9), whereas CH3COCHO and CH2COHCHO are predicted at 2.4 x 10^-3 and 6.6 x 10^-4 relative to CH3OH but lack spectroscopic catalog data",
+    "finding": "CH3COCHO and CH2COHCHO are predicted to be more abundant than HOCHCHCHO and potentially detectable once spectroscopic studies become available",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Two isomers, CH$_3$COCHO and CH$_2$COHCHO, are predicted to be even more abundant than HOCHCHCHO. Spectroscopic studies of these molecules are essential in searching for them in IRAS 16293–2422 and other astrophysical sources."
+     },
+     {
+      "loc": "Chemical modeling and discussion",
+      "quote": "In addition, CH$_3$COCHO and CH$_2$COHCHO also show high abundances (with respect to CH$_3$OH) of 2\\,$\\times$\\,10$^{-3}$ and 6\\,$\\times$\\,10$^{-4}$, respectively."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "The ALMA-PILS survey is an unbiased spectral survey of IRAS 16293-2422, ideal for identifying complex organic molecules, and the 0.5 arcsec offset position towards component B exhibits narrow (FWHM ~ 1 km s^-1), bright lines free of strong absorption",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The Protostellar Interferometric Line Survey (PILS, (cite: Jorgensen2016)), carried out with the Atacama Large Millimeter/submillimeter Array (ALMA), has contributed significantly to the characterization of the chemical content in this source."
+     },
+     {
+      "loc": "Analysis and results",
+      "quote": "This position is regularly used in the PILS studies to search for molecules and isotopologues, as the lines are relatively narrow ($FWHM$ $\\sim$ 1 km s$^{-1}$) and bright without being affected by absorption features (cite: Coutens2016; Lykke2017)."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "A CNN was used to rapidly screen the multi-species spectrum for candidate molecules, followed by standard CASSIS LTE synthetic spectrum fitting on unblended lines and Nautilus three-phase chemical modeling to understand formation pathways",
+    "evidence": [
+     {
+      "loc": "Analysis and results",
+      "quote": "Using a dedicated convolutional neural network (CNN) on a large set of multi-species synthetic spectra assuming local thermodynamic equilibrium (LTE, (cite: Boulanger2022)), we predicted the presence of HOCHCHCHO in the PILS data with a probability greater than 50%."
+     },
+     {
+      "loc": "Chemical modeling and discussion",
+      "quote": "To better understand the chemistry of HOCHCHCHO and its isomers, we used the Nautilus code (cite: Ruaud2016), a three-phase gas, grain surface, and grain mantle time-dependent chemical model."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Searching for HOCHCHCHO towards IRAS 16293 A was rejected because broader lines prevent identification of isolated transitions",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "As the lines are broader towards IRAS16293 A, it is not possible to identify isolated transitions of 3-hydroxypropenal toward that source."
+      }
+     ]
+    },
+    {
+     "value": "High excitation temperature (>= 300 K) for HOCHCHCHO was disfavored because transitions at 343.4656, 349.9189, and 350.0168 GHz are not detected within their spectroscopic uncertainties",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "However, there are a few exceptions for the transitions at 343.4656, 349.9189, and 350.0168 GHz that do not show lines within their uncertainties, which suggests that the excitation temperature could be lower than 300 K."
+      }
+     ]
+    },
+    {
+     "value": "Formation of C3H4O2 isomers via O or OH reactions with unsaturated C3HxO species on grains was found to be inefficient compared to HCO + C2H3O radical associations",
+     "evidence": [
+      {
+       "loc": "Chemical modeling of 3-hydroxypropenal (HOCHCHCHO) and its isomers",
+       "quote": "However, O mainly reacts with the abundant radicals on the grains (HCO, CH$_2$OH, and CH$_3$O) and the production of C$_3$H$_4$O$_2$ isomers from the reactions of O is limited."
+      },
+      {
+       "loc": "Chemical modeling of 3-hydroxypropenal (HOCHCHCHO) and its isomers",
+       "quote": "In contrast to the O + C$_3$H$_x$O reactions, the reactions with HCO are much more efficient because HCO is abundant and relatively mobile on the grains (cite: Wakelam2017; Minissale2016)."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Excitation temperature of HOCHCHCHO is poorly constrained (75-350 K) because detected unblended lines span a small range of E_up and high-J, low-K_a transitions have large spectroscopic uncertainties",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "However, the excitation temperature was not well constrained. Our $\\chi^2$ analysis shows that various models with excitation temperatures in the 75–350 K range can properly reproduce the lines included in the calculation (3$\\sigma$ uncertainty)."
+      },
+      {
+       "loc": "Analysis and results",
+       "quote": "It is due to the $E_{\\rm up}$ values of the detected lines that only span a small range"
+      }
+     ]
+    },
+    {
+     "value": "Four of the 11 detected Band 7 lines are only partially reproduced by the best-fit model, likely due to partial blending with unknown species",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "The lines at 333.1546, 341.8653, 356.3017, and 362.2382 GHz are only partially reproduced, which could mean that they are partially blended with unknown species."
+      }
+     ]
+    },
+    {
+     "value": "Three C3H4O2 isomers (HCOCH2CHO, CH3COCHO, CH2COHCHO) lack spectroscopic entries in CDMS and JPL and could not be searched for in the data",
+     "evidence": [
+      {
+       "loc": "Analysis and results",
+       "quote": "HCOCH$_2$CHO (propanedial), CH$_3$COCHO (methylglyoxal), and CH$_2$COHCHO (2-hydroxypropenal) are not in the spectroscopic databases CDMS and JPL (cite: Pickett1998)."
+      }
+     ]
+    },
+    {
+     "value": "Predicted chemical abundances have a total uncertainty of about a factor of 10 due to uncertain branching ratios (factor of 2) and H-atom destruction tunneling barriers (factor of 5), and grain isomerization of CH3COCHO into CH2COHCHO may be less favorable than modeled",
+     "evidence": [
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "For CH$_2$COHCHO, it is more ambiguous because one of the main pathways of formation is the isomerization of CH$_3$COCHO, which could be very less favorable on grains that the result given by the methodology used here."
+      },
+      {
+       "loc": "Chemical modeling and discussion",
+       "quote": "Thus, the total uncertainty on the predicted abundances of the C$_3$H$_4$O$_2$ isomers is about a factor of 10."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The detection is only tentative, relying on 7 unblended lines in a highly line-rich spectrum where confusion and partial blending (seen in 4 additional lines) are pervasive.",
+    "The source size (beam filling factor) assumed in the CASSIS LTE modeling and the exact reference CH3OH column density are not explicitly stated in this Letter, requiring consultation of earlier PILS papers."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Assumed source angular size (beam filling factor) for CASSIS LTE synthetic spectrum calculation",
+    "Reference CH3OH column density used to compute relative abundances",
+    "Full updated Nautilus chemical network files (only C3H4O2 and C2H3O subset is tabulated in Table E.1)",
+    "Trained CNN model weights and configuration from Boulanger et al. 2022"
+   ],
+   "estimated_data_volume_inferred": "~100 MB for the extracted 1D PILS spectrum at the offset position; ~100 GB if re-imaging the full PILS Band 7 cubes",
+   "score_inferred": 7,
+   "score_reason": "The PILS dataset is public, the extraction coordinates, line lists, spectroscopic parameters (CDMS), LTE grid parameters, and new chemical reactions are thoroughly tabulated, though a few inherited parameters (source size, CH3OH reference column density, full Nautilus network file) require consulting companion papers.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA-PILS archival data with exact extraction coordinates, complete line tables, and clear numeric column density targets reproducible via standard LTE spectral fitting (CASSIS)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Boulanger2022)",
+     "why": "Convolutional neural network (CNN) method used to predict the presence of HOCHCHCHO in the PILS spectrum"
+    },
+    {
+     "citation": "(cite: Ruaud2016)",
+     "why": "Nautilus three-phase astrochemical modeling code"
+    },
+    {
+     "citation": "(cite: Vastel2015)",
+     "why": "CASSIS spectral analysis software used for LTE modeling and line identification"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Jorgensen2016)",
+     "why": "ALMA-PILS survey overview, observations, data reduction, and continuum subtraction"
+    },
+    {
+     "citation": "(cite: Coutens2019)",
+     "why": "Baseline list of previously identified species in IRAS 16293 B used for spectral overlay"
+    },
+    {
+     "citation": "(cite: Manigand2021)",
+     "why": "Three-carbon molecule study in IRAS 16293 B providing the base chemical network, initial abundances, and two-stage physical collapse model"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-PILS (Protostellar Interferometric Line Survey)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2022A%26A...660L...6C",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-29T23:41:12",
+  "usage": {
+   "input": 28684,
+   "output": 10629,
+   "thoughts": 0
+  },
+  "usd": 0.163658,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "thinking": "low",
+  "seconds": 128.6,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 104,
+  "quotes_ok": 104,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 1,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 52,
+   "rate": 0.605
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-30T02:48:44",
+  "custom_id": "gemini4argon-repair-claude-code",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].assumptions[0].evidence[1]",
+    "old": "The barriers and imaginary frequencies are calculated at M06-2X/AVTZ level",
+    "new": "The barriers were calculated using the DFT method associated with the M06-2X functional."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

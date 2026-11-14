@@ -1,0 +1,253 @@
+{
+ "bibcode": "2015ApJ...806L...7Z",
+ "title": "Evidence of Fast Pebble Growth Near Condensation Fronts in the HL Tau Protoplanetary Disk",
+ "year": 2015,
+ "doi": "10.1088/2041-8205/806/1/L7",
+ "arxiv_id": "1505.00882",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Are the dark rings (emission dips) in the ALMA HL Tau continuum images due to fast pebble growth near condensation fronts of abundant volatiles?",
+ "alma_project_codes": [
+  "2011.0.00015.SV"
+ ],
+ "data": {
+  "bands": "Band 3, 6, 7 (2.9, 1.3, 0.87 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "11.9x8.6 AU, 4.9x3.1 AU, 4.2x2.7 AU at 2.9, 1.3, 0.87 mm (140 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Best-fit inclination 46.72 deg and PA 138.02 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "using the best-fit inclination angle $i$ = 46.72$^\\circ$ and PA = 138.02$^\\circ$ from APR"
+     }
+    ]
+   },
+   "citation": "(cite: Partnership15)"
+  },
+  {
+   "what": {
+    "value": "Mid-plane temperature T_mid = 665 (r/AU)^-0.6 K from radiative transfer model of HL Tau",
+    "evidence": [
+     {
+      "loc": "4 Condensation fronts",
+      "quote": "Their best-fit model results in T$_{\\rm mid}$ = 665 $(r/{\\rm AU})^{-0.6}$ K for the mid-plane temperature distribution."
+     }
+    ]
+   },
+   "citation": "(cite: Menshchikov99)"
+  },
+  {
+   "what": {
+    "value": "Clathrate hydrate condensation temperatures",
+    "evidence": [
+     {
+      "loc": "4 Condensation fronts",
+      "quote": "along with the condensation temperatures of clathrate hydrates from (cite: Lunine85) and (cite: Iro03)"
+     }
+    ]
+   },
+   "citation": "(cite: Lunine85); (cite: Iro03)"
+  },
+  {
+   "what": {
+    "value": "Opacity kappa = 0.01 cm2/g (nu/230 GHz)",
+    "evidence": [
+     {
+      "loc": "3 Characterizing the emission dips",
+      "quote": "$\\kappa_\\nu$ = 0.01 cm$^2$ g$^{-1}$$(\\nu/230 \\rm[GHz])$ throughout the disk (cite: Ossenkopf94)."
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf94)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Deproject visibilities and image",
+   "method": "Shift phase center to star, deproject visibilities with inclination/PA from APR, synthesize images in each band",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "i = 46.72 deg, PA = 138.02 deg"
+   ],
+   "assumptions": [
+    "Peak continuum emission marks the star; distance 140 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Spectral index map",
+   "method": "CLEAN nterms=2 on deprojected band 6 and 7 data",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Azimuthally averaged radial profiles and dip fits",
+   "method": "Radial profile in 0.5 AU steps; fit smooth isothermal model; divide data by model; Gaussian fits to normalized profile give dip center, FWHM, amplitude",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa_nu = 0.01 cm2/g (nu/230 GHz); vertically isothermal, power-law T, Sigma of steady accretion disk"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare dips with condensation fronts",
+   "method": "Compute condensation temperatures where desorption equals accretion rate, compare with brightness-temperature lower bound and MFH mid-plane temperature",
+   "software": [],
+   "key_parameters": [
+    "gas number densities 1e10-1e13 cm^-3"
+   ],
+   "assumptions": [
+    "T_mid = 665 (r/AU)^-0.6 K from MFH"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust properties with two-population opacity model",
+   "method": "Examine alpha(r) in cuts at 0, 45, 90, 135 deg and azimuthal average; model alpha vs mean size of second population with mass fraction f",
+   "software": [],
+   "key_parameters": [
+    "kappa_dust1 = 1 cm2/g (nu/230 GHz); rho = 1 g/cm3; f = 0.9"
+   ],
+   "assumptions": [
+    "Order-of-magnitude estimate; second population a >> lambda with geometric cross section"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 7 dip 1 center",
+   "value": "12.6",
+   "uncertainty": "0.1",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 12.6$\\pm$0.1 | 7.2$\\pm$0.3  | 0.56$\\pm$0.02 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 dip 1 FWHM",
+   "value": "7.2",
+   "uncertainty": "0.3",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 12.6$\\pm$0.1 | 7.2$\\pm$0.3  | 0.56$\\pm$0.02 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 dip 2 center",
+   "value": "32.2",
+   "uncertainty": "0.4",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "32.2$\\pm$0.4  | 5.3$\\pm$1.0  | 0.26$\\pm$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 dip 1 center",
+   "value": "12.7",
+   "uncertainty": "0.2",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "12.7$\\pm$0.2  | 7.4$\\pm$0.3  | 0.66$\\pm$0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "63 AU dip FWHM",
+   "value": "17-18",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Characterizing the emission dips",
+     "quote": "The 63 AU dip is resolved at all bands, with a FWHM of 17-18 AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Dip minimum relative to smooth continuum",
+   "value": "37% to 78%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Characterizing the emission dips",
+     "quote": "The minimum surface intensity of the dips range from 37% to 78% that of the smooth continuum from the best-fit models."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index inside 48 AU, peaks at 13 and 32 AU dips",
+   "value": "~2; ~2.6 at 13 AU, ~2.4 at 32 AU",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Dust properties inside the dips",
+     "quote": "inside of 48 AU $\\alpha$$\\sim$2, except for increases to values of $\\sim$2.6 and $\\sim$2.4 at the 13 AU and 32 AU dips, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Surface density needed for tau_1.3mm = 1 at 48 AU",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "g cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Dust properties inside the dips",
+     "quote": "a surface density of $\\Sigma_{\\rm gas}$=100  g cm$^{-2}$  at 48 AU is needed to reach $\\tau_{\\rm 1.3\\,mm}$ = 1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters: weighting/robust, cell and image size, masks, threshold, scales",
+  "Whether images for radial profiles were cleaned and how the beam was matched",
+  "Best-fit isothermal model parameters (T0, q, Sigma_c, r_c, gamma) and fitting method",
+  "Radial bin averaging details and spectral index uncertainty handling",
+  "Gas number density/pressure assumptions in detail",
+  "Calibrator and flux scale details (in APR)"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN imaging parameters",
+  "Smooth-model fit parameters and fit method",
+  "Radial profile extraction details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear outline, but imaging and fitting parameters are not given and calibrated data come from another paper.",
+ "rediscovery_reason": "Public SV data, numeric dip parameters in Table 1 can be checked, though some imaging details are missing.",
+ "source_card": "cards/2015ApJ...806L...7Z/sonnet/card.md"
+}

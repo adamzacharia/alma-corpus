@@ -1,0 +1,475 @@
+{
+ "bibcode": "2023A&A...669A..56Q",
+ "title": "History of two mass loss processes in VY CMa. Fast outflows carving older ejecta",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202244396",
+ "arxiv_id": "2210.16135",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics",
+  "astrochemistry"
+ ],
+ "question": "What are the spatio-kinematical characteristics and physical origins of the mass loss ejections in the red supergiant VY CMa?",
+ "alma_project_codes": [
+  "2017.1.00558.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "51 antennas",
+  "angular_resolution": "~0.025 arcsec (25-35 mas; synthetic beam 29 x 25 mas)",
+  "sensitivity": "~0.15 mJy Beam^-1 per channel; 0.028-0.052 mJy Beam^-1 in continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to VY CMa of 1.2 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "On the other hand, VY CMa, a RSG located at a distance of 1.2 kpc (cite: Zhang12), presents a massive ejecta very rich in molecular species with an oxygen-rich chemistry (cite: Zyuris07; Tenenbaum10) that can be studied in detail."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang12)"
+  },
+  {
+   "what": {
+    "value": "Inclination of blob D (~15 deg) used as upper limit for inclination of outflow C",
+    "evidence": [
+     {
+      "loc": "VY-A & VY-C ejecta",
+      "quote": "We thus can assume that the inclination of *C* is equal to or lower than that of blob *D*, which was $\\sim 15^\\circ$ (cite: Kaminski19)."
+     }
+    ]
+   },
+   "citation": "(cite: Kaminski19)"
+  },
+  {
+   "what": {
+    "value": "Dust mass of clump C and gas-to-dust ratio of 200 giving total mass of 0.05 M_sun",
+    "evidence": [
+     {
+      "loc": "CME-like ejections. Linear momentum estimate.",
+      "quote": "We adopt the higher value for the dust mass of *C* derived by (cite: ogorman15) with a gas-to-dust ratio of 200. The total mass of the outflow is therefore 0.05$M_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: ogorman15)"
+  },
+  {
+   "what": {
+    "value": "Size of cold spots in RSGs of 2.8 x 10^23 cm^2",
+    "evidence": [
+     {
+      "loc": "CME-like ejections. Linear momentum estimate.",
+      "quote": "The size of the cold spots in the RSGs has been found (cite: kunstler15) to reach sizes of $2.8 \\times10^{23}$ cm$^2$, and the time estimated for the formation of the *C*-outflow is $\\sim$50 years."
+     }
+    ]
+   },
+   "citation": "(cite: kunstler15)"
+  },
+  {
+   "what": {
+    "value": "Rotation velocity of RSGs (~1 km s^-1)",
+    "evidence": [
+     {
+      "loc": "CME-like ejections. Linear momentum estimate.",
+      "quote": "The rotation velocity of RSGs is estimated to be $\\sim$1km s$^{-1}$ (cite: Zhang12), while for some objects such as Betelgeuse values as high as 15km s$^{-1}$ have been derived (cite: Wheeler17)."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang12)"
+  },
+  {
+   "what": {
+    "value": "Stellar radius of VY CMa of R_* = 9.9 x 10^13 cm",
+    "evidence": [
+     {
+      "loc": "CME-like ejections. Linear momentum estimate.",
+      "quote": "With a stellar radius of VY CMa of $R_{\\star} = 9.9 \\times 10^{13}$cm (cite: Wittkowski12) the effect of the rotation should be seen in a collimated outflow with the formation times derived."
+     }
+    ]
+   },
+   "citation": "(cite: Wittkowski12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify molecular transitions in the spectral windows",
+   "method": "Line identification across the four spectral windows using the MADEX spectroscopic catalog",
+   "software": [
+    "MADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract position-velocity diagrams and fit expansion velocity law of localized outflows",
+   "method": "Construct position-velocity (PV) diagrams of NaCl v=0,1 and H2S emission along the main axes connecting VY to structures A and C, and fit a linear (Hubble-like) expansion velocity law V_exp proportional to r",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "Inclination of outflow C assumed <= 15 deg"
+   ],
+   "assumptions": [
+    "Hubble-like linear velocity field v proportional to r"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Reconstruct 3D spatial structure of the fast outflows and determine stellar position and V_LSR",
+   "method": "Convert spectral cubes (R.A., Dec., velocity) of H2S, NaCl, and o-H2O into 3D spatial coordinates by cropping below 3 sigma and transforming velocity into line-of-sight distance using the fitted Hubble-like velocity law",
+   "software": [
+    "Astructures"
+   ],
+   "key_parameters": [
+    "Noise threshold = 3 sigma"
+   ],
+   "assumptions": [
+    "Same Hubble-like velocity field applies to all fast outflows and inner o-H2O outflows"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare fast outflows with cavities in the extended regular ejecta",
+   "method": "Overplot velocity-shifted H2S emission onto SO channel maps to test spatial correspondence between fast jets and SO shell cavities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate linear momentum and required magnetic field for CME-like ejection of clump C",
+   "method": "Calculate linear momentum of clump C from adopted mass and Hubble velocity law, and use CME momentum transfer rate scaling from Welsch (2018) to derive required surface magnetic field strength",
+   "software": [],
+   "key_parameters": [
+    "Outflow C total mass = 0.05 M_sun; cold spot area = 2.8 x 10^23 cm^2; formation time = 50 yr"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio = 200; constant mass distribution along the ejecta; momentum transfer rate of 1 g cm s^-1 per cm^2 per s for B = 3 G proportional to B_perp"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model flattened outflows with a rotating stellar spot (Sprinkler model)",
+   "method": "Simulate gas ejection from active spots at latitude theta_i and initial rotation angle phi_i on a rotating star, with expansion velocity modulated by a sinusoid over activity duration t_e, and match to 3D H2S structures",
+   "software": [],
+   "key_parameters": [
+    "Rotation axis angle ~95 deg around R.A. axis; v_rot = 1 km s^-1 (also tested 15 km s^-1); R_* = 9.9 x 10^13 cm; V_16 = 94.4 and 85.9 km s^-1; t_e = 10 yr"
+   ],
+   "assumptions": [
+    "Distance = 1.2 kpc; stellar radius R_* = 9.9 x 10^13 cm; sinusoidal velocity modulation during spot activity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Expansion velocity law of outflow C",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "km s^-1 per 0.1 arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "Assuming this inclination for the *C* jet, we found we could fit the expansion velocity to $v = 17 \\times r/0\\mbox{\\rlap{.}$''$}1\\, \\mbox{km~s$^{-1}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (V_LSR) of VY CMa",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "In addition, the fitting of the outflow connecting $VY$ and $C$ suggests the systemic velocity at $VY$ might not be 22 km s$^{-1}$ as previously thought (cite: Decin16; Richards14), but $V_{LSR}=$12 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Alternative LSR velocity suggested by larger northern VY-A jet",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "The jet pointing away from us suggests a source velocity similar to that of jet *C*, while the larger jet suggests a LSR velocity of 26 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination of northern jet in VY-A",
+   "value": "4.5",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "If we impose the same velocity field, the inclination for the northern jet is 4.5$^\\circ$ and that of the rear jet is -30$^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination of rear jet in VY-A",
+   "value": "-30",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "If we impose the same velocity field, the inclination for the northern jet is 4.5$^\\circ$ and that of the rear jet is -30$^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular extent of VY-C and VY-A outflows",
+   "value": "0.7-0.8",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "The extent of the $VY$–$C$ and $VY$–$A$ outflows is similar, around $\\sim 0\\mbox{\\rlap{.}$''$}7-0\\mbox{\\rlap{.}$''$}8$, which corresponds to $1.3-1.5 \\times 10^{16}$cm, and reaches a velocity of $\\sim 120-140\\mbox{km~s$^{-1}$}$ at the tip of these outflows."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear extent of VY-C and VY-A outflows",
+   "value": "1.3-1.5e16",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "The extent of the $VY$–$C$ and $VY$–$A$ outflows is similar, around $\\sim 0\\mbox{\\rlap{.}$''$}7-0\\mbox{\\rlap{.}$''$}8$, which corresponds to $1.3-1.5 \\times 10^{16}$cm, and reaches a velocity of $\\sim 120-140\\mbox{km~s$^{-1}$}$ at the tip of these outflows."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum velocity at tip of VY-C and VY-A outflows",
+   "value": "120-140",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "The extent of the $VY$–$C$ and $VY$–$A$ outflows is similar, around $\\sim 0\\mbox{\\rlap{.}$''$}7-0\\mbox{\\rlap{.}$''$}8$, which corresponds to $1.3-1.5 \\times 10^{16}$cm, and reaches a velocity of $\\sim 120-140\\mbox{km~s$^{-1}$}$ at the tip of these outflows."
+    }
+   ]
+  },
+  {
+   "quantity": "Formation timescale of VY-C and VY-A outflows",
+   "value": "50-60",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY-A & VY-C ejecta",
+     "quote": "The formation of these structures took $\\sim 50-60$ years, confirming the timescales suggested above (cite: ogorman15)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of fast outflows identified in 3D H2S reconstruction",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Three-dimensional reconstruction",
+     "quote": "Thanks to the 3D reconstruction, at least six outflows can be identified in the structure obtained, especially from the H$_2$S maps (see red arrows in Fig. 4)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of inner outflows identified in o-H2O maser emission",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Inner ejecta",
+     "quote": "At least two inner outflows have been identified from the o-H$_2$O $5_{5,0}-6_{4,3}$ $v_2=1$ emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Width-to-height ratio of flattened fast outflows",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Sporadic outflows",
+     "quote": "The ratio of width to height is $\\sim\\,6$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total linear momentum of outflow C",
+   "value": "9.30e38",
+   "uncertainty": "not stated",
+   "units": "g cm s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CME-like ejections. Linear momentum estimate.",
+     "quote": "The total momentum driven by this ejection assuming the Hubble velocity field deduced above and a constant mass distribution along the ejecta is $P = 9.30 \\times 10^{38}$ g cm s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field strength needed to drive outflow C momentum",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "kG",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CME-like ejections. Linear momentum estimate.",
+     "quote": "The magnetic field needed to provide the amount of momentum derived above is $\\sim$5kG."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation axis angle around R.A. axis in Sprinkler model",
+   "value": "95",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Sprinkler model",
+     "quote": "In this sense, we have found a particular angle ($\\sim$95$^\\circ$) around the R.A. axis, which seems to be compatible with this scenario."
+    }
+   ]
+  },
+  {
+   "quantity": "Sprinkler model Hubble velocity at 10^16 cm (V_16) for outflows 1 and 2",
+   "value": "94.4",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1 | 100 | 190 | 94.4 | 10 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| 2 | 85 | 287 | 94.4 | 10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sprinkler model Hubble velocity at 10^16 cm (V_16) for outflows 3, 4, and 5",
+   "value": "85.9",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | 140 | 320 | 85.9 | 10 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| 4 | 100 | 260 | 85.9 | 10 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| 5 | 120 | 300 | 85.9 | 10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ejection activity duration (t_e) for V_rot = 1 km s^-1",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1 | 100 | 190 | 94.4 | 10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ejection activity duration (t_e) for V_rot = 15 km s^-1",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "months",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Sprinkler model",
+     "quote": "Therefore, for a $V_{rot}=15\\mbox{km~s$^{-1}$}$ the value of $t_e$ would be eight months."
+    }
+   ]
+  },
+  {
+   "quantity": "Time interval between ejections for V_rot = 1 km s^-1",
+   "value": "1-6 (11 between first and last)",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Sprinkler model",
+     "quote": "For a rotation velocity of 1km s$^{-1}$ we found that the time between the ejections was in the range $\\sim$1 – 6 years, being the time between the first and the last ejection $\\sim$11 years."
+    }
+   ]
+  },
+  {
+   "quantity": "Time interval between ejections for V_rot = 15 km s^-1",
+   "value": "1-5 (9 between first and last)",
+   "uncertainty": "not stated",
+   "units": "months",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Sprinkler model",
+     "quote": "For a $v_{rot}$ of 15km s$^{-1}$ the range would be $\\sim$1 – 5 months and $\\sim$9 months between the first and last ejection."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration",
+  "GILDAS version and specific tasks used for imaging/analysis",
+  "Exact Briggs robust parameter value",
+  "Self-calibration solution intervals and number of iterations",
+  "Exact frequency/channel ranges used as line-free for uv-plane continuum subtraction",
+  "Image pixel/cell size and image dimensions in pixels",
+  "Position angles of the PV diagram cuts for VY-C and VY-A"
+ ],
+ "missing_for_reproduction": [
+  "Exact self-calibration parameters (solution intervals, number of phase-only vs amplitude+phase rounds, S/N thresholds)",
+  "Exact Briggs robust value and SDI cleaning stopping criteria/masking",
+  "Exact channel ranges used for uv continuum subtraction in each spectral window",
+  "Exact position angles and widths of the PV diagram slices for VY-C and VY-A",
+  "Source code or exact mathematical equations for the Sprinkler kinematic model"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project code is stated, the 3D reconstruction tool (Astructures) is released on GitHub, and the kinematic assumptions and Sprinkler model parameters are tabulated, but low-level imaging/self-calibration parameters, PV slice position angles, and the Sprinkler model script are not specified.",
+ "rediscovery_reason": "Public Cycle 5 ALMA dataset (2017.1.00558.S) with clear quantitative findings (line identifications, PV velocity gradient, systemic velocity V_LSR = 12 km/s, maser and continuum peak positions, and 3D outflow geometry) and an open-source 3D reconstruction tool.",
+ "source_card": "cards/2023A%26A...669A..56Q/sonnet/card.md"
+}

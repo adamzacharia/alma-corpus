@@ -1,0 +1,314 @@
+{
+ "bibcode": "2020ApJ...898...10T",
+ "title": "Circumbinary Disks of the Protostellar Binary Systems in the L1551 Region",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab9b7c",
+ "arxiv_id": "2006.05723",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the structures, gas motions and temperatures of the circumbinary and circumstellar disks of the protobinary L1551 IRS 5, and how do they compare with L1551 NE and with hydrodynamical simulations?",
+ "alma_project_codes": [
+  "2016.1.00138.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.9 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.0788''x0.0652'' continuum (uniform); 0.116''x0.114'' C18O (natural)",
+  "sensitivity": "continuum 0.32 mJy/beam; C18O 5.3 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1.3-mm continuum image of L1551 IRS 5 used for spectral index",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "deduced from the present 0.9-mm and the published 1.3-mm data (cite: cru19)"
+     }
+    ]
+   },
+   "citation": "Cruz-Sáenz de Miera et al. 2019 (cite: cru19)"
+  },
+  {
+   "what": {
+    "value": "VLA 7-mm relative positions of binary in 2012",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "As compared to the relative position derived from the VLA 7-mm observations of L1551 IRS 5 made in 2012 (cite: lim16a)"
+     }
+    ]
+   },
+   "citation": "Lim et al. 2016a (cite: lim16a)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_250um = 0.1 cm2/g",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "$\\kappa_{\\rm 250\\mu m}$=0.1 cm$^{2}$ g$^{-1}$ (cite: hil83)"
+     }
+    ]
+   },
+   "citation": "Hildebrand 1983 (cite: hil83)"
+  },
+  {
+   "what": {
+    "value": "Canonical C18O abundance 1.7e-7",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "a factor of 3 higher than the canonical value of 1.7 $\\times$ 10$^{-7}$ (cite: cra04)"
+     }
+    ]
+   },
+   "citation": "Crapsi et al. 2004 (cite: cra04)"
+  },
+  {
+   "what": {
+    "value": "Line parameters from LAMDA",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "From LAMDA database (cite: sch05)"
+     }
+    ]
+   },
+   "citation": "Schöier et al. 2005 (cite: sch05)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "Continuum from line-free channels with uniform weighting and multiscale clean, phase self-cal (120 s); lines with natural weighting and multiscale clean after continuum subtraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "multiscale [0,4,20] continuum, [0,5,25] lines; cell 0.02''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Source positions, sizes and brightness temperatures",
+   "method": "2D Gaussian fits for centroids and deconvolved sizes; Rayleigh-Jeans conversion to T_B",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk PA 160 deg, inclination 60 deg, coplanar CBD and CSDs"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Spectral index map and CBD mass",
+   "method": "Alpha from 0.9 and 1.3 mm maps convolved to common beam, pixels >10 sigma; mass M=S d^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [
+    "T_d = 30-100 K; S_0.9mm = 1.40 Jy"
+   ],
+   "assumptions": [
+    "gas-to-dust 100; kappa_250um=0.1 cm2/g, beta=1.0 giving kappa_0.9mm=0.028; d=140 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Kinematics from channel maps, P-V diagrams and peak T_B maps",
+   "method": "Velocity channel maps, P-V cuts along major (PA 160) and minor (PA 70) axes with Keplerian curves, peak brightness temperature maps (moment 8)",
+   "software": [
+    "CASA",
+    "Miriad"
+   ],
+   "key_parameters": [
+    "v_sys = 6.4 km/s"
+   ],
+   "assumptions": [
+    "Binary mass 0.5 Msun, equal masses"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with hydrodynamic simulation",
+   "method": "SFUMATO isothermal simulation (T=100 K) tailored to IRS 5, LTE radiative transfer with fitted T(r) and C18O abundance, CASA observing simulation, same imaging",
+   "software": [
+    "SFUMATO",
+    "CASA"
+   ],
+   "key_parameters": [
+    "X(C18O)=5.1e-7; T(r)=max[62 K (r_N/100au)^-0.5, 48 K (r_S/100au)^-0.5]; snapshot at 58.7 orbital periods"
+   ],
+   "assumptions": [
+    "LTE"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak T_B Source N (0.9 mm)",
+   "value": ">=260",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The peak brightness temperature toward Source N exceeds $\\gtrsim$260 K and that toward Source S $\\gtrsim$160 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak T_B Source S (0.9 mm)",
+   "value": ">=160",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The peak brightness temperature toward Source N exceeds $\\gtrsim$260 K and that toward Source S $\\gtrsim$160 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Relative position of S wrt N (2017)",
+   "value": "(0.057'', -0.363'')",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the relative position of Source S with respect to Source N (dRA, dDec) = (0.057$''$,-0.363$''$) is adopted"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size CSD Source N",
+   "value": "0.175'' x 0.123'' (25 x 17 au), PA 160",
+   "uncertainty": "PA ±5 deg",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "0.175$''$ $\\times$ 0.123$''$ (25 au $\\times$ 17 au) (P.A.=160$\\ensuremath{^\\circ}$$\\pm$5$\\ensuremath{^\\circ}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CBD outer radius",
+   "value": "~150",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The outermost extent of the CBD is $\\sim$150 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index alpha in CBD",
+   "value": "3.0-3.7",
+   "uncertainty": "±0.5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The $\\alpha$ value in the CBD is $\\sim$3.0 - 3.7, while that in the CSDs is as low as $\\sim$2."
+    }
+   ]
+  },
+  {
+   "quantity": "CBD mass",
+   "value": "0.015-0.060",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "gives the disk mass of 0.015 – 0.060 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak molecular-line T_B (C18O, 13CO, CS, SO, OCS)",
+   "value": "78, 92, 88, 106, 86",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The peak values in the C$^{18}$O, $^{13}$CO, CS, SO, and OCS maps are 78, 92, 88, 106, and 86 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Fitted temperature profile normalizations at 100 au",
+   "value": "62 (N), 48 (S), exponent -0.5",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$T(r) = \\max\\left[ 62~{\\rm K} \\left(\\frac{r_N}{100~{\\rm au}}\\right)^{-0.5},"
+    }
+   ]
+  },
+  {
+   "quantity": "Model C18O abundance",
+   "value": "5.1e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$X$(C$^{18}$O) = 5.1 $\\times$ 10$^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LOS velocities of Source N and S",
+   "value": "6.85 and 5.95",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$V_{LSR}$ = 6.85 km s$^{-1}$ and 5.95 km s$^{-1}$, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum and continuum subtraction",
+  "Clean threshold, niter and masks",
+  "Self-calibration reference/model details and which antennas/spws",
+  "Spectral index map method details (regridding, alignment of 1.3 mm proper motion shift)",
+  "Simulation initial conditions, snapshot choice details, CASA simulobserve weather parameters",
+  "Continuum flux extraction region for CBD (1.40 Jy)",
+  "Velocity channel width used for maps"
+ ],
+ "missing_for_reproduction": [
+  "Simulation setup and outputs (in Matsumoto et al. 2019)",
+  "Clean parameters beyond scales/weighting",
+  "1.3-mm data from Cruz-Saenz de Miera et al. 2019"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Imaging recipe fairly well given and data public, but simulation and several clean/channel details are deferred or missing.",
+ "rediscovery_reason": "Data are public, imaging parameters mostly stated, and key results (T_B, sizes, spectral index, CBD mass) are numeric; simulation part is not reproducible from this paper alone.",
+ "source_card": "cards/2020ApJ...898...10T/sonnet/card.md"
+}

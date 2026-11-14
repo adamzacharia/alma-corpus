@@ -1,0 +1,424 @@
+{
+ "bibcode": "2026A&A...709A..93D",
+ "title": "Tentative detection of the glycine isomer glycolamide in a hot molecular core",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202659347",
+ "arxiv_id": "2603.23170",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Whether the glycine isomer glycolamide is present in the hot molecular core G358.93-0.03 MM1 and how its abundance compares to chemically related amides (formamide and acetamide) across environments.",
+ "alma_project_codes": [
+  "2019.1.00768.S"
+ ],
+ "data": {
+  "bands": "Band 7 (1 mm)",
+  "arrays": "47 antennas",
+  "angular_resolution": "0.15\" x 0.1\" (PA -87.1 deg)",
+  "sensitivity": "~20 uJy beam^-1 (continuum); ~0.5 K per 0.5 km s^-1 channel (line cube)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic catalogs and line lists from CDMS, JPL, and Lille Spectroscopic Database",
+    "evidence": [
+     {
+      "loc": "Molecular line identifications",
+      "quote": "The spectroscopic entries used in this model were retrieved from three main databases: CDMS (cite: Mul01; Mul05), the Jet Propulsion Laboratory database (cite: Pic98), and the Lille Spectroscopic Database (cite: Mot25)."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: Mul01; Mul05), JPL (cite: Pic98), Lille Spectroscopic Database (cite: Mot25)"
+  },
+  {
+   "what": {
+    "value": "12C/13C isotopic ratio of 28 +/- 5",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "the NH$_{2}$CHO column density was derived from NH$_{2}$$^{13}$CHO, scaled by the ratio $^{12}$C/$^{13}$C = 28$\\pm$5 (cite: 2023A&A...670A..98Y)."
+     }
+    ]
+   },
+   "citation": "Yan et al. 2023 (cite: 2023A&A...670A..98Y)"
+  },
+  {
+   "what": {
+    "value": "Amide abundances in G+0.693-0.027, Sgr B2(N2), and G31.41+0.41 for comparison",
+    "evidence": [
+     {
+      "loc": "Comparison with other sources and chemical models",
+      "quote": "For reference, observational data were compiled for the molecular cloud G+0.693-0.027 (cite: 2023ApJ...953L..20R; 2023MNRAS.523.1448Z) and two hot molecular cores including Sgr B2(N2) (cite: 2020A&A...639A.135S; 2017A&A...601A..49B) and G31.41+0.41 (cite: 2021A&A...653A.129C)."
+     }
+    ]
+   },
+   "citation": "Rivilla et al. 2023 (cite: 2023ApJ...953L..20R); Zeng et al. 2023 (cite: 2023MNRAS.523.1448Z); Sanz-Novo et al. 2020 (cite: 2020A&A...639A.135S); Belloche et al. 2017 (cite: 2017A&A...601A..49B); Colzi et al. 2021 (cite: 2021A&A...653A.129C)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities, perform continuum self-calibration, and image continuum and line cubes",
+   "method": "Initial calibration with ALMA pipeline, iterative line-free channel selection starting from findcont (< 3 sigma), three rounds of phase self-calibration with MT-MFS imaging, UV continuum subtraction with uvcontsub, and multiscale imaging of line cubes.",
+   "software": [
+    "CASA",
+    "findcont",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "solint = 'inf', '30.25s', 'int'",
+    "MT-MFS with two Taylor terms; multiscale scales = 0, 5, 15, 50, 150 pixels (continuum) and 0, 5, 15, 50 pixels (line)",
+    "Briggs weighting robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra from offset position and perform full-source and amide LTE spectral modeling",
+   "method": "Extract spectra from slightly offset position to reduce Doppler blending; construct a full source LTE model of all detected species in GILDAS CLASS/Weeds; optimize T_ex and N_t for GA, FA, NH2 13CHO, and AA using CLASS/ADJUST with SciPy Powell algorithm.",
+   "software": [
+    "GILDAS",
+    "CLASS/Weeds",
+    "CLASS/ADJUST",
+    "SciPy",
+    "STATCONT"
+   ],
+   "key_parameters": [
+    "V_LSR fixed to -16.5 km s^-1; source size theta fixed to deconvolved continuum size",
+    "Line widths fixed to 1.4 km s^-1 (GA), 2.8 km s^-1 (FA), 2.0 km s^-1 (NH2 13CHO), and 2.1 km s^-1 (AA)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE)",
+    "12C/13C = 28 +/- 5 to scale NH2 13CHO to total NH2CHO column density",
+    "Conservative 20% uncertainty on T_ex and N_t"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Verify GA excitation temperature via rotational diagram analysis",
+   "method": "Fit linear relation between ln(N_u/g_up) and E_up using integrated intensities of seven unblended GA transitions.",
+   "software": [],
+   "key_parameters": [
+    "7 unblended transitions of GA with E_u = 108 to 389 K"
+   ],
+   "assumptions": [
+    "LTE, optically thin emission, and beam-filling factor of unity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Map spatial distribution of FA, AA, and GA",
+   "method": "Generate integrated-intensity (moment 0) maps of verified unblended transitions using CARTA and compare with 1 mm continuum peak.",
+   "software": [
+    "CARTA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive H2 column density from 1 mm dust continuum and compute relative molecular abundances and ratios",
+   "method": "Calculate beam-averaged N(H2) from 1 mm dust continuum emission and compute fractional abundances chi = N_t / N(H2) and abundance ratios FA/AA, AA/GA, and FA/GA.",
+   "software": [],
+   "key_parameters": [
+    "R_gd = 100; mu = 2.8; kappa_nu = 2 cm^2 g^-1 at ~1 mm; T_dust = 150 K"
+   ],
+   "assumptions": [
+    "Optically thin thermal dust emission, R_gd = 100, mu = 2.8, kappa_nu = 2 cm^2 g^-1, T_dust = 150 K, and 20% uncertainty on N(H2)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Excitation temperature of syn-glycolamide (GA)",
+   "value": "102",
+   "uncertainty": "+-20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $syn$-HOCH$_{2}$C(O)NH$_{2}$ | 102$\\pm$20 | 5.3$\\pm$1.1 | 0.7$\\pm$0.2 |"
+    },
+    {
+     "loc": "Molecular line identifications",
+     "quote": "Under the LTE assumption, the best-fit model yields a column density of $N_{\\rm t}$(GA) = (5.3$\\pm$1.1)$\\times$10$^{14} \\rm cm^{-2}$ and an excitation temperature of $T_{\\rm ex}$(GA) = 102$\\pm$20 K, with the linewidth of GA set to 1.4 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of syn-glycolamide (GA)",
+   "value": "5.3e14",
+   "uncertainty": "+-1.1e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $syn$-HOCH$_{2}$C(O)NH$_{2}$ | 102$\\pm$20 | 5.3$\\pm$1.1 | 0.7$\\pm$0.2 |"
+    },
+    {
+     "loc": "Molecular line identifications",
+     "quote": "Under the LTE assumption, the best-fit model yields a column density of $N_{\\rm t}$(GA) = (5.3$\\pm$1.1)$\\times$10$^{14} \\rm cm^{-2}$ and an excitation temperature of $T_{\\rm ex}$(GA) = 102$\\pm$20 K, with the linewidth of GA set to 1.4 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of syn-glycolamide (GA) relative to H2 (Table 1 / Conclusions)",
+   "value": "6.8e-11",
+   "uncertainty": "+-2.0e-11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The derived abundance of GA relative to H$_{2}$ is (6.8$\\pm$2.0)$\\times$10$^{-11}$."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| $syn$-HOCH$_{2}$C(O)NH$_{2}$ | 102$\\pm$20 | 5.3$\\pm$1.1 | 0.7$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of glycolamide relative to H2 (as stated in abstract)",
+   "value": "1.7e-10",
+   "uncertainty": "+-0.2e-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Seven unblended or only mildly blended emission lines were identified, yielding an abundance of (1.7$\\pm$0.2)$\\times 10^{-10}$ relative to H$_{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of syn-glycolamide (GA)",
+   "value": "107",
+   "uncertainty": "+-21",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular line identifications",
+     "quote": "The derived rotational temperature, $T_{\\rm rot}$ = 107$\\pm$21 K, is in good agreement with the excitation temperature obtained from the best-fit, supporting the reliability of the adopted LTE treatment."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of GA from STATCONT-based analysis",
+   "value": "3.7e14",
+   "uncertainty": "+-0.7e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "STATCONT-based continuum subtraction and LTE modeling of GA",
+     "quote": "the derived column density and excitation temperature—$N = (3.7\\pm0.7)\\times10^{14}$ cm$^{-2}$ and $T_{\\rm ex} = 98\\pm20$ K—are consistent with those obtained from the CASA-based analysis within the adopted uncertainties."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of GA from STATCONT-based analysis",
+   "value": "98",
+   "uncertainty": "+-20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "STATCONT-based continuum subtraction and LTE modeling of GA",
+     "quote": "the derived column density and excitation temperature—$N = (3.7\\pm0.7)\\times10^{14}$ cm$^{-2}$ and $T_{\\rm ex} = 98\\pm20$ K—are consistent with those obtained from the CASA-based analysis within the adopted uncertainties."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of formamide (NH2CHO parent isotopologue)",
+   "value": "124",
+   "uncertainty": "+-25",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NH$_{2}$CHO$^{\\rm b}$ | 124$\\pm$25 | 18.8$\\pm$3.8 | 2.4$\\pm$0.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of formamide (NH2CHO parent isotopologue direct fit)",
+   "value": "18.8e14",
+   "uncertainty": "+-3.8e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NH$_{2}$CHO$^{\\rm b}$ | 124$\\pm$25 | 18.8$\\pm$3.8 | 2.4$\\pm$0.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of NH2 13CHO",
+   "value": "112",
+   "uncertainty": "+-22",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NH$_{2}$$^{13}$CHO | 112$\\pm$22 | 6.1$\\pm$1.2 | 0.8$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of NH2 13CHO",
+   "value": "6.1e14",
+   "uncertainty": "+-1.2e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NH$_{2}$$^{13}$CHO | 112$\\pm$22 | 6.1$\\pm$1.2 | 0.8$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of formamide (NH2CHO scaled from NH2 13CHO)",
+   "value": "170.8e14",
+   "uncertainty": "+-45.4e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NH$_{2}$CHO$^{\\rm c}$ | \\- | 170.8$\\pm$45.4 | 21.9$\\pm$6.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of formamide (NH2CHO scaled from NH2 13CHO) relative to H2",
+   "value": "21.9e-10",
+   "uncertainty": "+-6.2e-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NH$_{2}$CHO$^{\\rm c}$ | \\- | 170.8$\\pm$45.4 | 21.9$\\pm$6.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of acetamide (CH3C(O)NH2)",
+   "value": "171",
+   "uncertainty": "+-34",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_{3}$C(O)NH$_{2}$ | 171$\\pm$34 | 88.1$\\pm$17.6 | 11.3$\\pm$3.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of acetamide (CH3C(O)NH2)",
+   "value": "88.1e14",
+   "uncertainty": "+-17.6e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_{3}$C(O)NH$_{2}$ | 171$\\pm$34 | 88.1$\\pm$17.6 | 11.3$\\pm$3.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance of acetamide (CH3C(O)NH2) relative to H2",
+   "value": "11.3e-10",
+   "uncertainty": "+-3.1e-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_{3}$C(O)NH$_{2}$ | 171$\\pm$34 | 88.1$\\pm$17.6 | 11.3$\\pm$3.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density of G358.93 MM1",
+   "value": "7.82e24",
+   "uncertainty": "+-1.56e24",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "H2 column density from dust continuum",
+     "quote": "With these assumptions, we derive $N \\rm _{H_{2}}$ = (7.82$\\pm$1.56)$\\times$10$^{24}$ cm$^{-2}$ for G358.93 MM1, where a conservative uncertainty of 20% is assumed."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio FA/AA",
+   "value": "1.9",
+   "uncertainty": "+-0.6",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular line identifications",
+     "quote": "From these measurements, the molecular abundance ratios in G358.93 MM1 are FA/AA$\\sim$1.9$\\pm$0.6, AA/GA$\\sim$16.6$\\pm$4.8, and FA/GA$\\sim$32.3$\\pm$10.9."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio AA/GA",
+   "value": "16.6",
+   "uncertainty": "+-4.8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular line identifications",
+     "quote": "From these measurements, the molecular abundance ratios in G358.93 MM1 are FA/AA$\\sim$1.9$\\pm$0.6, AA/GA$\\sim$16.6$\\pm$4.8, and FA/GA$\\sim$32.3$\\pm$10.9."
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio FA/GA",
+   "value": "32.3",
+   "uncertainty": "+-10.9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular line identifications",
+     "quote": "From these measurements, the molecular abundance ratios in G358.93 MM1 are FA/AA$\\sim$1.9$\\pm$0.6, AA/GA$\\sim$16.6$\\pm$4.8, and FA/GA$\\sim$32.3$\\pm$10.9."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and imaging",
+  "Pixel cell size and image dimensions used during tclean imaging",
+  "Cleaning threshold/stopping criterion and masking strategy in tclean",
+  "Exact coordinates and aperture/beam size of the slightly offset position in G358.93 MM1 from which the analyzed spectra were extracted",
+  "Exact value of the deconvolved continuum source size theta fixed in the LTE modeling",
+  "Exact integrated continuum flux density S_nu at the spectral extraction position used to compute N(H2)"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates and extraction region size for the offset position where the spectra were extracted",
+  "Exact value of the deconvolved continuum size theta fixed in the CLASS/Weeds LTE models",
+  "CASA version, tclean cell size, image size, and cleaning threshold",
+  "Continuum flux density S_nu measured at the spectral extraction position"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Public archival ALMA data (2019.1.00768.S), supplementary line lists and full source model parameters hosted on Zenodo, and clear description of self-calibration, imaging, and LTE fitting steps; minor deductions for unstated spectral extraction coordinates, fixed source size value, and tclean pixel/threshold parameters, plus a typo in the abstract's GA abundance value.",
+ "rediscovery_reason": "Public ALMA dataset with well-defined self-calibration and LTE spectral fitting workflow producing quantitative column densities, excitation temperatures, and abundance ratios.",
+ "source_card": "cards/2026A%26A...709A..93D/sonnet/card.md"
+}

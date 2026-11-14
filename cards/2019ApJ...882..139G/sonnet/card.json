@@ -1,0 +1,1117 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...882..139G",
+  "title": "The Atacama Large Millimeter/submillimeter Array Spectroscopic Survey in the Hubble Ultra Deep Field: CO Emission Lines and 3 mm Continuum Sources",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "González-López, Jorge",
+  "n_authors": 32,
+  "arxiv_id": "1903.09161",
+  "doi": "10.3847/1538-4357/ab3105",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00324.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "The ALMA SPECtroscopic Survey in the *Hubble* Ultra Deep Field is an ALMA large program that obtained a frequency scan in the 3 mm band to detect emission lines from the molecular gas in distant galaxies."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "Hubble Ultra Deep Field (ASPECS-LP footprint)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "CO redshifts z=1.037-3.601 (Table 6); continuum sources median z~2.5",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design",
+        "quote": "was mapped with 17 Nyquist-spaced pointings in band 3 cover an area of 4.6 arcmin$^2$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "NIR spectroscopic/photometric counterpart redshifts, CO line",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design",
+        "quote": "was mapped with 17 Nyquist-spaced pointings in band 3 cover an area of 4.6 arcmin$^2$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How to reliably search for emission lines and continuum sources in the ASPECS-LP 3 mm cube, and what are the resulting CO line and 3 mm continuum samples and 3 mm number counts",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We here present our search strategy for emission lines and continuum sources in the HUDF. We compare several line search algorithms used in the literature"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00324.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This Paper makes use of the ALMA data\\\nADS/JAO.ALMA#2016.1.00324.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm), 84.176-114.928 GHz",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Emission lines rest-frequency and corresponding redshift ranges for the band 3 line scan (84.176–114.928 GHz)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "five tunings, FDM, 1875 MHz per spw, final channel 7.813 MHz (~23.5 km/s at 99.5 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design",
+      "quote": "with five tunings that cover most of the ALMA band 3"
+     },
+     {
+      "loc": "2.2 Data reduction, calibration and imaging",
+      "quote": "result in a final channel resolution of 7.813 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=1-0 to 7-6",
+     "rest_frequency": "115.271-806.652 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CO(2-1) | 230.538 | 1.0059 | 1.7387 |"
+      }
+     ]
+    },
+    {
+     "species": "[CI]",
+     "transition": "1-0, 2-1",
+     "rest_frequency": "492.161, 809.342 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| $[{{\\rm C}{\\rm \\scriptstyle I}}]_{1-0}$ | 492.161 | 3.2823 | 4.8468 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-3",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design",
+      "quote": "The ASPECS-LP observations in band 3 were made in antenna configuration C40-3."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.5''x1.31'' (high freq) to 2.05''x1.68'' (low freq)",
+    "evidence": [
+     {
+      "loc": "2.2 Data reduction, calibration and imaging",
+      "quote": "synthesized beam sizes between $1.5\\ensuremath{''}\\times1.31\\ensuremath{''}$ at the high frequencies and $2.05\\ensuremath{''}\\times1.68\\ensuremath{''}$ at low frequencies"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms 3.8 uJy/beam in deepest region",
+    "evidence": [
+     {
+      "loc": "2.2 Data reduction, calibration and imaging",
+      "quote": "The deepest region of the continuum image has an rms value of $3.8\\thinspace{\\rm \\mu Jy\\thinspace beam^{-1}}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "ALMA 1.2 mm map (ASPECS-Pilot + Dunlop2017)",
+     "provided": {
+      "value": "1.2 mm continuum flux densities for the 3 mm sources",
+      "evidence": [
+       {
+        "loc": "4.2 Detected continuum sources",
+        "quote": "created by combining the observations from ASPECS-Pilot at 1.2 mm and from 1.3 mm ALMA map in the UDF (cite: Dunlop2017)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "NIR/optical spectroscopy and photometry",
+     "provided": {
+      "value": "counterpart redshifts to identify lines",
+      "evidence": [
+       {
+        "loc": "4.1 Detected emission lines",
+        "quote": "Eleven of the candidates have NIR counterpart galaxies with spectroscopic redshifts, allowing for a secure identification of the detected emission lines."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ASPECS-Pilot band 3 data and source list for comparison",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design",
+        "quote": "The details about the ASPECS-Pilot observations were presented in (cite: Walter2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Walter2016)"
+    },
+    {
+     "what": {
+      "value": "1.1 mm number counts compiled for extrapolation to 3 mm",
+      "evidence": [
+       {
+        "loc": "5.3 3 mm number counts",
+        "quote": "We make use of the results obtained by (cite: Franco2018), which takes the number counts of several published studies"
+       }
+      ]
+     },
+     "citation": "(cite: Franco2018)"
+    },
+    {
+     "what": {
+      "value": "3 mm number counts from ALMA archive for comparison",
+      "evidence": [
+       {
+        "loc": "5.3 3 mm number counts",
+        "quote": "We also compare our number counts with the observed 3 mm number counts presented by (cite: Zavala2018)."
+       }
+      ]
+     },
+     "citation": "(cite: Zavala2018)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Simulated cubes via simobserve with injected Gaussian lines for method comparison",
+     "evidence": [
+      {
+       "loc": "3.2.1 Lines detected from Simulations",
+       "quote": "The data cubes were created using the CASA task simobserve with a similar setup to the ASPECS-LP band 3 observations."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline and own scripts similar to manual calibration; own cube used",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "The data was processed using both the CASA ALMA calibration pipeline (cite: McMullin2007) and our own scripts (cite: Aravena2016a)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "We imaged the 3 mm cube with natural weighting using the task tclean"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "none; analysis on dirty cube",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "The lack of very bright sources in our cubes allows us to perform our analysis on the ‘dirty’ cube"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "We imaged the 3 mm cube with natural weighting using the task tclean"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "mosaic PB correction; area with PB>=0.5 is 4.6 arcmin2, search area PB>=0.2",
+     "evidence": [
+      {
+       "loc": "3.3 Fidelity",
+       "quote": "which is of 7 arcmin$^2$ within mosaic primary beam correction $\\geq0.2$"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "continuum beam 2.08''x1.71''; per-channel beams in cube",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "a beam size of $2.08\\ensuremath{''}\\times1.71\\ensuremath{''}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "3.8 uJy/beam continuum (deepest)",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "The deepest region of the continuum image has an rms value of $3.8\\thinspace{\\rm \\mu Jy\\thinspace beam^{-1}}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Own calibration scripts",
+      "evidence": [
+       {
+        "loc": "2.2 Data reduction, calibration and imaging",
+        "quote": "our own scripts (cite: Aravena2016a), which follow a similar scheme to the ALMA manual calibration scripts"
+       }
+      ]
+     },
+     "from_reference": "(cite: Aravena2016a)"
+    },
+    {
+     "what": {
+      "value": "Spectral setup same as ASPECS-Pilot",
+      "evidence": [
+       {
+        "loc": "2.1 Survey design",
+        "quote": "The spectral setup of the ASPECS-LP is the same as the one used in the ASPECS-Pilot"
+       }
+      ]
+     },
+     "from_reference": "(cite: Walter2016)"
+    },
+    {
+     "what": {
+      "value": "LineSeeker method",
+      "evidence": [
+       {
+        "loc": "3.1.1 LineSeeker",
+        "quote": "LineSeeker is the method used in the search for emission lines in the ALMA Frontier Fields survey (cite: GL2017c)."
+       }
+      ]
+     },
+     "from_reference": "(cite: GL2017c)"
+    },
+    {
+     "what": {
+      "value": "Independent elements = twice number of beams",
+      "evidence": [
+       {
+        "loc": "3.3 Fidelity",
+        "quote": "A good estimate of the number of independent elements is twice the number of beams contained in the map (cite: Condon1997; Condon1998; Dunlop2017)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Condon1997; Condon1998; Dunlop2017)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Number and settings of LineSeeker S/N thresholds and DBSCAN parameters",
+    "tclean cell size, image size and mask details",
+    "Flux calibrators and flux scale uncertainty",
+    "MCMC sampler, priors and likelihood for Gaussian line fits",
+    "Which channels removed for continuum image",
+    "Details of mosaic PB correction (Decarli2019)",
+    "Dust SED extrapolation code and details for number counts"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image 3 mm cube and continuum",
+    "method": {
+     "value": "Pipeline plus own scripts; tclean natural weighting, per-channel beams, 7.813 MHz channels; continuum by collapsing all channels",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "Finally, the continuum image was created by collapsing all the spectral windows and channels."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared rms of own cube with pipeline cube",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "the final rms appears consistent with the one computed from the cube provided by the ALMA pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compare line search algorithms",
+    "method": {
+     "value": "Run LineSeeker, FindClump, MF3D on simulated cubes with injected lines and on real cube; compare S/N",
+     "evidence": [
+      {
+       "loc": "3.2.1 Lines detected from Simulations",
+       "quote": "The simulations were repeated until 5000 simulated lines were produced."
+      }
+     ]
+    },
+    "software": [
+     "LineSeeker",
+     "FindClump",
+     "MF3D",
+     "simobserve",
+     "SExtractor",
+     "scikit-learn"
+    ],
+    "key_parameters": [
+     {
+      "value": "Gaussian kernel sigma_GK 0-19 (LineSeeker); top-hat N=1-9 (FindClump); spatial kernels FWHM 0-4'' (MF3D)",
+      "evidence": [
+       {
+        "loc": "3.1.1 LineSeeker",
+        "quote": "which ranges from 0 up to 19"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "S/N ratios of methods agree; ~99% recovery in simulation",
+     "evidence": [
+      {
+       "loc": "3.2.1 Lines detected from Simulations",
+       "quote": "Both methods performed similarly in the detection of the injected emission lines, recovering around $\\approx99\\%$ of the lines."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Estimate fidelity",
+    "method": {
+     "value": "Fidelity = 1 - N_neg/N_pos using negative lines per kernel; erf function fit to negative S/N histogram; select Fidelity>=0.9",
+     "evidence": [
+      {
+       "loc": "3.3 Fidelity",
+       "quote": "we fit a function of the form $N(1 - \\mathop{\\mathrm{erf}}(\\rm SN / \\sqrt{2}\\sigma))$ to the S/N histogram of negative lines"
+      }
+     ]
+    },
+    "software": [
+     "LineSeeker"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fidelity >= 0.9",
+      "evidence": [
+       {
+        "loc": "3.3 Fidelity",
+        "quote": "We select as reliable all the emission lines that have ${\\rm Fidelity}\\geq0.9$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Negative lines are produced by noise only; noise symmetric around 0",
+      "evidence": [
+       {
+        "loc": "3.3 Fidelity",
+        "quote": "We use the negative lines as reference to estimate the fidelity, assuming noise around 0, typical of interferometric data."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "N and sigma free in erf function",
+     "evidence": [
+      {
+       "loc": "3.3 Fidelity",
+       "quote": "with $\\mathop{\\mathrm{erf}}$ being the error function and $N$ and $\\sigma$ free parameters"
+      }
+     ]
+    },
+    "validation": {
+     "value": "All 6 continuum sources detected at 1.2 mm; ASPECS-Pilot S/N>=6 confirmed by counterparts",
+     "evidence": [
+      {
+       "loc": "4.2 Detected continuum sources",
+       "quote": "The six candidates are detected in the 1.2 mm map, fully supporting the fidelity estimates and the reliability of the sample."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Compute completeness",
+    "method": {
+     "value": "Inject 5000 Gaussian point-source lines (50 per iteration) into real cube; recovered if Fidelity>=0.9; for continuum inject 10,000 point sources, recovered at S/N>=4.6",
+     "evidence": [
+      {
+       "loc": "3.4 Completeness",
+       "quote": "We repeated this process until 5000 emission lines were injected."
+      }
+     ]
+    },
+    "software": [
+     "LineSeeker"
+    ],
+    "key_parameters": [
+     {
+      "value": "peaks 0-2 mJy/beam, FWHM 0-~1000 km/s, 84.2-114.2 GHz",
+      "evidence": [
+       {
+        "loc": "3.4 Completeness",
+        "quote": "The line peaks range between 0 and 2 mJy beam$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Characterise detected lines and identify transitions",
+    "method": {
+     "value": "Gaussian profile fit with MCMC to PB-corrected spectra; resolved if voxel S/N>=2 flux >=10% above central; identify via NIR counterpart redshifts",
+     "evidence": [
+      {
+       "loc": "4.1 Detected emission lines",
+       "quote": "we present the results from fitting a Gaussian profile to the observed spectra using a Markov chain Monte Carlo (MCMC) sampling algorithm."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "NIR spectroscopic redshifts agree with CO redshifts",
+     "evidence": [
+      {
+       "loc": "4.1 Detected emission lines",
+       "quote": "In all cases the NIR spectroscopic redshift agrees very well with that obtain from the CO emission line."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive 3 mm number counts and compare with extrapolations",
+    "method": {
+     "value": "N(S_i)=(1/A) sum P_i/C_i with bins of 0.25 dex in logS, fidelity and PB-corrected completeness; compare with synchrotron extrapolations and 1.1 mm counts scaled to 3 mm",
+     "evidence": [
+      {
+       "loc": "5.3 3 mm number counts",
+       "quote": "The size of the bins is $\\log{S_{\\nu}}=0.25$ and we use all the source candidates with ${\\rm Fidelity}\\geq0.9$ listed in Tab. [7]"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Area A = 1.46e-3 deg2",
+      "evidence": [
+       {
+        "loc": "5.3 3 mm number counts",
+        "quote": "$A$ is the total area of the observations ($1.46\\times10^{-3}\\thinspace{\\rm deg^{2}}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Modified blackbody, beta=1.5-2.0, T=25-40 K, z=2.5, CMB effects",
+      "evidence": [
+       {
+        "loc": "5.3 3 mm number counts",
+        "quote": "For the dust emissivity index we use a range of $\\beta=1.5-2.0$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Sadler2008, Tucci2011, SPT and Zavala2018 counts",
+     "evidence": [
+      {
+       "loc": "5.3 3 mm number counts",
+       "quote": "We find that our number counts are $\\sim3\\times$ lower than the best-fit function"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Pipeline calibration, tclean imaging, simobserve",
+     "evidence": [
+      {
+       "loc": "2.2 Data reduction, calibration and imaging",
+       "quote": "We imaged the 3 mm cube with natural weighting using the task tclean"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LineSeeker",
+    "version": "not stated",
+    "used_for": {
+     "value": "Emission line and continuum search, fidelity, completeness",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "We have made available online LineSeeker, the code used to search for emission lines in this work."
+      }
+     ]
+    }
+   },
+   {
+    "name": "FindClump",
+    "version": "not stated",
+    "used_for": {
+     "value": "Alternative line search",
+     "evidence": [
+      {
+       "loc": "3.1.2 FindClump",
+       "quote": "FindClump uses a top-hat convolution of the data cubes in the spectral axis."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MF3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Alternative line search with spatial kernels",
+     "evidence": [
+      {
+       "loc": "3.1.3 MF3D",
+       "quote": "it also implements convolutions in the spatial axis to look for spatially resolved emission lines"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SExtractor",
+    "version": "not stated",
+    "used_for": {
+     "value": "Searching for features in FindClump",
+     "evidence": [
+      {
+       "loc": "3.1.2 FindClump",
+       "quote": "FindClump searches for high significance features in channel by channel basis using SExtractor (cite: Bertin1996)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "scikit-learn (DBSCAN)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Grouping voxels into line candidates",
+     "evidence": [
+      {
+       "loc": "3.1.1 LineSeeker",
+       "quote": "available in the Python package Scikit-learn (cite: scikit-learn)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in software section",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "astropy (cite: Astropy), SExtractor (cite: Bertin1996)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of emission lines with Fidelity>=0.9",
+    "value": "16",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Detected emission lines",
+      "quote": "We present all the 16 emission–line candidates for which the condition of ${\\rm Fidelity}\\geq0.9$ is fulfilled."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of continuum sources with Fidelity>=0.9",
+    "value": "6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "We identified six continuum source candidates with a ${\\rm Fidelity}\\geq0.9$."
+     }
+    ]
+   },
+   {
+    "quantity": "S/N ratio FindClump/LineSeeker",
+    "value": "1.00",
+    "uncertainty": "+0.06/-0.04",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2.1 Lines detected from Simulations",
+      "quote": "the ratio between the S/N obtained with FindClump and LineSeeker is of $1.00^{+0.06}_{-0.04}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median FWHM of secure lines",
+    "value": "331",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1 The distribution of emission line widths",
+      "quote": "the secure positive lines have a flat FWHM distribution and a median value of $\\approx331{{\\rm \\thinspace km\\thinspace s}^{-1}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative 3 mm counts, 17.78-31.62 uJy bin",
+    "value": "5940",
+    "uncertainty": "+2579/-1995",
+    "units": "deg^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 8",
+      "quote": "| 17.78–31.62 | -1.625 | 3 | 5940 | 1995 | 2579 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean beta of continuum sources (T=35 K)",
+    "value": "1.6",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 3 mm number counts",
+      "quote": "average value $\\beta=1.6\\pm0.2$ obtained for our continuum sources when assuming a dust temperature of 35 K"
+     }
+    ]
+   },
+   {
+    "quantity": "3 mm flux of ASPECS-LP-3mm.C01",
+    "value": "32.5",
+    "uncertainty": "3.8",
+    "units": "uJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 7",
+      "quote": "$32.5 \\pm 3.8$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All 16 line sources have optical/IR counterparts; 3 mm continuum sources all detected at 1.2 mm",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Comparing these sources to multi-wavelength data we find that all sources have optical/infrared counterparts."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Different line search algorithms give equivalent significance",
+    "experiment": "Compared LineSeeker, FindClump, MF3D on simulations and real cube",
+    "result": "S/N ratios agree within scatter; FindClump slightly higher at low S/N",
+    "finding": "Three methods effectively equivalent",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2.1 Lines detected from Simulations",
+      "quote": "we conclude that the S/N values obtained from FindClump and LineSeeker are equivalent"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Line width must be accounted for in significance",
+    "experiment": "Fidelity from negative lines per kernel width",
+    "result": "16 lines with fidelity>=0.9; four unconfirmed Pilot sources mostly narrow",
+    "finding": "Width-aware fidelity gives reliable sample",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 Detected emission lines",
+      "quote": "we should not have selected these sources in the pilot program"
+     }
+    ]
+   },
+   {
+    "hypothesis": "3 mm sub-mJy counts are dominated by dust rather than synchrotron",
+    "experiment": "Number counts from six sources, compared with extrapolations",
+    "result": "Counts order of magnitude above synchrotron extrapolation; match 1.1 mm counts with beta=1.5, T=35 K, z=2.5",
+    "finding": "Dust-dominated population",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the number counts are consistent with those derived at shorter wavelengths (0.85–1.3 mm) once extrapolating to 3 mm"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Matched filtering over varying widths with negative-detection fidelity for unbiased line search",
+    "evidence": [
+     {
+      "loc": "3.1 Methods",
+      "quote": "Without any priori knowledge of positions and frequencies for the lines, we need to use some unbiased method to search for emission lines."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Combining Pilot and LP data rejected due to artifacts",
+     "evidence": [
+      {
+       "loc": "2.1 Survey design",
+       "quote": "We chose to work with both datasets separately because the combination injected artifacts in the data cubes"
+      }
+     ]
+    },
+    {
+     "value": "MF3D.18 excluded as only found by one method",
+     "evidence": [
+      {
+       "loc": "3.2.2 Lines detected from observations",
+       "quote": "we leave it out of the list of selected line candidates"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Possible missed extended 3 mm sources beyond the beam",
+     "evidence": [
+      {
+       "loc": "5.3 3 mm number counts",
+       "quote": "We could be missing a large population of sources at 3 mm if their emission is extended beyond our already coarse beam size."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Small continuum sample (six sources) gives large Poisson uncertainties",
+    "Fidelity depends on Gaussian-noise assumption and negative-peak symmetry",
+    "Number-count discrepancy with Zavala2018 only partly explained"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data ADS/JAO.ALMA#2016.1.00324.L; LineSeeker code public on GitHub",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This Paper makes use of the ALMA data\\\nADS/JAO.ALMA#2016.1.00324.L."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "LineSeeker released at github.com/jigonzal/LineSeeker",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "[LineSeeker](https://github.com/jigonzal/LineSeeker)"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Detailed imaging parameters",
+    "Decarli2019 mosaic and PB details",
+    "MCMC fit setup",
+    "FindClump and MF3D code availability"
+   ],
+   "estimated_data_volume_inferred": "Several hundred GB raw; cubes tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and public LineSeeker code with detailed method, but imaging and calibration details are sparse and rely on companion papers.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are public, the search recipe is described and the results (line and continuum source lists, counts) are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: GL2017c)",
+     "why": "LineSeeker method"
+    },
+    {
+     "citation": "(cite: Walter2016)",
+     "why": "ASPECS-Pilot and FindClump"
+    },
+    {
+     "citation": "(cite: Pavesi2018)",
+     "why": "MF3D method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Decarli2019)",
+     "why": "ASPECS-LP overview, CO luminosity function"
+    },
+    {
+     "citation": "(cite: Boogaard2019)",
+     "why": "Properties of line galaxies with MUSE"
+    },
+    {
+     "citation": "(cite: Aravena2019)",
+     "why": "Molecular gas content of line galaxies"
+    },
+    {
+     "citation": "(cite: Popping2019)",
+     "why": "Cosmic molecular gas density implications"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASPECS-Pilot",
+    "ALMA Frontier Fields",
+    "COLDZ"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f5cc03b784567dfaa8e6affa99ad612e",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:16",
+  "usage": {
+   "input_tokens": 37240,
+   "output_tokens": 9641,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.086052,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 72,
+  "quotes_ok": 72,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 89,
+   "stated": 57,
+   "rate": 0.64
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:11",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "MCMC Gaussian fit, details not stated"
+   }
+  ],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,339 @@
+{
+ "bibcode": "2025ApJ...988...72S",
+ "title": "ALMA-JELLY. I. High Resolution CO(2─1) Observations of Ongoing Ram Pressure Stripping in NGC 4858 Reveal Asymmetrical Gas Tail Formation and Fallback",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adde47",
+ "arxiv_id": "2506.07262",
+ "fields": [
+  "nearby_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "How do strong, highly-inclined ram pressure stripping, rotation and torques shape the asymmetric inner molecular gas tail of NGC 4858, and is there evidence for gas fallback?",
+ "alma_project_codes": [
+  "2021.1.01616.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12m and 7m arrays, mosaics (5 pointings 7m, 13 pointings 12m)",
+  "angular_resolution": "~1\" (beam 1.35\" x 0.87\", PA 30 deg)",
+  "sensitivity": "RMS ~2.3 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass, SFR, HI mass of NGC 4858",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(6,7,8): Stellar mass, star formation rate measured using NUV and $22\\mu m$ luminosity, and HI gas mass estimates from (cite: molnar_westerbork_2022)."
+     }
+    ]
+   },
+   "citation": "(cite: molnar_westerbork_2022)"
+  },
+  {
+   "what": {
+    "value": "Subaru R-band and Halpha images",
+    "evidence": [
+     {
+      "loc": "2.2 Suprime Cam",
+      "quote": "Ground-based R-band and narrow-band (H$\\alpha$ at the Coma cluster) images of NGC 4858 come from (cite: yagi_dozen_2010)"
+     }
+    ]
+   },
+   "citation": "(cite: yagi_dozen_2010)"
+  },
+  {
+   "what": {
+    "value": "Coma NFW mass 1.2e15 Msun, c=9",
+    "evidence": [
+     {
+      "loc": "7.1 Estimating the 3D Tail Geometry",
+      "quote": "We model the Coma cluster mass distribution as an NFW profile with a total mass of $1.2\\times10^{15}M_\\odot$, with a concentration ($c=R_\\text{vir}/R_s =9$) (cite: lokas_dark_2003)."
+     }
+    ]
+   },
+   "citation": "(cite: lokas_dark_2003)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO cube and make moment maps",
+   "method": "PHANGS-ALMA pipeline tclean multi-scale with masks, natural weighting; masks and moment maps with MASKMOMENT",
+   "software": [
+    "CASA",
+    "PHANGS-ALMA Pipeline",
+    "MASKMOMENT"
+   ],
+   "key_parameters": [
+    "robust=2; 3.8 km/s channels; >3 sigma in 2 contiguous channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive CO flux, luminosity and H2 mass",
+   "method": "Integrate moment-0; L'CO from Solomon et al. formula; MH2 = alphaCO/R21 L'CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "R21 ~0.8; alphaCO = 4.3 Msun (K km/s pc^2)^-1; DL = 100 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Characterize stellar disk (PA, ellipticity, inclination, Sersic)",
+   "method": "Elliptical isophote fitting of Subaru R-band image and 1D Sersic fit; same for CO moment-0 profile",
+   "software": [
+    "GALPRIME",
+    "Photutils"
+   ],
+   "key_parameters": [
+    "Northern region heavily masked to avoid NGC 4860 light"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Azimuthal/quadrant analysis of CO distribution and tail angle",
+   "method": "Elliptical annuli with stellar PA/ellipticity; median flux in theta +/-5 deg; tail angle from LOFAR flux bisection; four quadrants",
+   "software": [
+    "MASKMOMENT"
+   ],
+   "key_parameters": [
+    "theta_wind = -15 deg equally divides radio flux at 18-27 kpc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit circular rotation model and obtain velocity residuals",
+   "method": "3DBarolo on moment-1 with fixed stellar PA, inclination, centre, Vsys; extend with tanh rotation curve; subtract model from moment-1",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "Vmax = 165 km/s from Tully-Fisher; rt free, best fit 2.4 kpc"
+   ],
+   "assumptions": [
+    "Motions in disk plane; tail in front of the disk"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate disk-wind angle",
+   "method": "Geometric dot product of wind and disk normal vectors using theta_tail, theta_maj, i and total velocity from GALA NFW orbit estimate",
+   "software": [
+    "GALA"
+   ],
+   "key_parameters": [
+    "Vtot = 3410 km/s; uncertainty = Coma velocity dispersion"
+   ],
+   "assumptions": [
+    "Projected distance equals true distance to cluster centre; NFW with M=1.2e15, c=9"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare with simulations and evaluate torque asymmetry",
+   "method": "Differential ram pressure R formula; qualitative comparison to simulation snapshots",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated CO(2-1) flux (disk+tail)",
+   "value": "46.2",
+   "uncertainty": "2.7",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA CO(2-1)",
+     "quote": "$S_{CO}\\Delta v = 46.2 \\pm 2.7$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen mass",
+   "value": "1.5e9",
+   "uncertainty": "0.1e9",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA CO(2-1)",
+     "quote": "M$_{\\text{H}_2} = 1.5\\pm0.1\\times10^9M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "MH2/M*",
+   "value": "0.31",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA CO(2-1)",
+     "quote": "{M_{H_2}}{M_*} = \\frac{1.5\\times10^9 M_\\odot}{4.9\\times10^9 M_\\odot} = 0.31"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar disk inclination",
+   "value": "38",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Stellar Distribution",
+     "quote": "This corresponds to an inclination of $38\\degree$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar major-axis PA",
+   "value": "32",
+   "uncertainty": "6",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Stellar Distribution",
+     "quote": "$\\theta_\\text{maj} = 32 \\pm 6\\deg$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sersic index",
+   "value": "0.98",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Stellar Distribution",
+     "quote": "a Sérsic index of $n=0.98$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO exponential scale length",
+   "value": "2.49\" = 1.16 kpc",
+   "uncertainty": "not stated",
+   "units": "arcsec / kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 CO Distribution & Comparisons with Other Wavelengths",
+     "quote": "exponential scale length of $h_R = 2.49\" = 1.16$kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "F_lead/F_trail in innermost annulus",
+   "value": "1.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 CO Brightness Azimuthal Distribution",
+     "quote": "$F_\\text{lead}/F_\\text{trail} = 1.25$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tail position angle",
+   "value": "-15",
+   "uncertainty": "20",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The Coma Cluster and NGC 4858",
+     "quote": "$\\theta_\\text{tail} = -15\\pm20\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tail rotation curve transition radius",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Residual Velocities",
+     "quote": "returns a transition radius of $r_t=2.4$kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-wind angle",
+   "value": "75",
+   "uncertainty": "+10/-27",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "7.1 Estimating the 3D Tail Geometry",
+     "quote": "a disk-wind angle of $\\phi_\\text{DW}=75_{-27}^{+10}$ degrees"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential ram pressure strength",
+   "value": "0.23",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "7.2 Role of Ram Pressure Torques",
+     "quote": "$\\mathcal{R} = 0.23$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO flux beyond leading-side truncation (inner tail)",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 CO Distribution & Comparisons with Other Wavelengths",
+     "quote": "14% of the total CO emission is located beyond the southern side truncation radius"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration details (CASA version, pipeline, flux calibrators, self-calibration)",
+  "Individual execution blocks, observing dates, configurations and on-source time",
+  "Whether 12m and 7m were combined before or inside tclean, and the feathering/combination method",
+  "Spectral line-free channels and continuum subtraction",
+  "MASKMOMENT parameters beyond the 3 sigma / 2 channel criteria (e.g. smoothing, low-threshold)",
+  "3DBarolo parameter settings (rings, widths, fit mode)",
+  "Tully-Fisher calibration details used to get Vmax=165 km/s",
+  "Isophote fitting settings in GALPRIME",
+  "Details of the Sersic fit",
+  "Simulation snapshots used in the comparison"
+ ],
+ "missing_for_reproduction": [
+  "Calibration and observing details",
+  "Pipeline and CASA versions",
+  "3DBarolo and MASKMOMENT settings",
+  "Simulation snapshots"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and pipeline named, with many numeric results, but key settings and calibration are not given.",
+ "rediscovery_reason": "Data are public, the pipeline is standard, and main results (CO flux, H2 mass, residual maps, angles) are numeric.",
+ "source_card": "cards/2025ApJ...988...72S/sonnet/card.md"
+}

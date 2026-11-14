@@ -1,0 +1,978 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...845...58Z",
+  "title": "ALMA Maps of Dust and Warm Dense Gas Emission in the Starburst Galaxy IC 5179",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Zhao, Yinghe",
+  "n_authors": 9,
+  "arxiv_id": "1707.04363",
+  "doi": "10.3847/1538-4357/aa7ff8",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00524.S",
+   "2015.1.00385.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present our high-resolution ($0^{\\prime\\prime}.15\\times0^{\\prime\\prime}.13$, $\\sim$34 pc) observations of the CO (6$-$5) line emission"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "IC 5179",
+     "coordinates": {
+      "value": "22:16:09.10 -36:50:37.4 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| IC 5179       | 22:16:09.10  | $-$36:50:37.4       | 51.4          | 3422          | SA(rs)bc      | Starburst     | 11.24         |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At its distance (angular size distance) of 50.2 Mpc, 1$''$ corresponds to 244 pc."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "D_L = 51.4 Mpc; cz = 3422 km/s",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| IC 5179       | 22:16:09.10  | $-$36:50:37.4       | 51.4          | 3422          | SA(rs)bc      | Starburst     | 11.24         |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At its distance (angular size distance) of 50.2 Mpc, 1$''$ corresponds to 244 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Table 1 (cz from NED; D_A = D_L/(1+z)^2)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| IC 5179       | 22:16:09.10  | $-$36:50:37.4       | 51.4          | 3422          | SA(rs)bc      | Starburst     | 11.24         |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At its distance (angular size distance) of 50.2 Mpc, 1$''$ corresponds to 244 pc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do warm dense gas (CO 6-5) and dust continuum emission compare, and what is the nuclear gas kinematics, at ~34 pc resolution in the starburst LIRG IC 5179?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In order to study the properties of warm molecular gas and cold dust, and their relations to star formation in more details, we have initiated a multi-cycle ALMA program"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00524.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "two in Cycle-2, program ID: 2013.1.00524.S, PI: N. Lu"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00385.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "one in Cycle-3, Program ID: 2015.1.00385.S, PI: N. Lu"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 9",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "were conducted using the Band 9 receivers of ALMA in the time division mode"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 SPWs centered at ~683.6, 685.4, 679.9, 681.8 GHz, ~2 GHz each; ~6.8 km/s velocity resolution",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "were centered at the sky frequencies of $\\sim$683.6, 685.4, 679.9, and 681.8 GHz, respectively, each with a bandwidth of about 2 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=6-5",
+     "rest_frequency": "691.473 GHz",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "CO (6$-$5) line emission (rest-frame frequency $=691.473$ GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m antennae",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using up to 32, 37 and 42 12-m antennae"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C34-5 and C36-4",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "the relatively extended configurations C34-5 and C36-4"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.15\" x 0.13\" (37 x 32 pc), PA -69 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "with the full width of half maximum (FWHM) of $\\sim$$0^{\\prime\\prime}.15\\times0^{\\prime\\prime}.13$, corresponding to physical scales of 37 pc$\\times$32 pc"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~2.1 arcsec",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "the maximum recoverable scale is $\\sim$$2^{\\prime\\prime}.1$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "channel rms 3.3-4.0 mJy/beam (14 km/s); continuum 0.4 mJy/beam; moment-0 0.46 Jy km/s/beam",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "For the continuum, the $1\\sigma$ rms noise is about 0.4 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~101 minutes total",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The total on-source integration time was $\\sim$101 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014/07/26, 2015/06/07, 2016/06/18",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| X87b480_Xb68  | 2014/07/26   | 03:10:59$-$04:48:15 | C34-5         | 27            | 820           | 39.44         | $637-752$     |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI N. Lu; the authors' own multi-cycle program",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "Cycle-3, Program ID: 2015.1.00385.S, PI: N. Lu"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel SPIRE FTS/photometry",
+     "provided": {
+      "value": "Total CO(6-5) flux and 350/500 um photometry for fractions recovered",
+      "evidence": [
+       {
+        "loc": "3.2 Continuum Emission at 434 um",
+        "quote": "By interpolating the *Herschel* SPIRE photometric measurements at 350 and 500 $\\mu$m, we estimated that the total flux density at 434 $\\mu$m is 3.01 Jy"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST",
+     "provided": {
+      "value": "Pa-alpha image (0.18\") for comparison",
+      "evidence": [
+       {
+        "loc": "3.4 Comparison with Pa-alpha Observations",
+        "quote": "The Pa-$\\alpha$ map was obtained from a set of *HST* NIR narrow-band images (Diáz-Santos et al. 2008)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Herschel SPIRE/FTS CO(6-5) flux of 802±52 Jy km/s",
+      "evidence": [
+       {
+        "loc": "3.1 CO (6-5) Line Emission",
+        "quote": "our SPIRE/FTS-measured flux of $802\\pm52$ Jy km s$^{-1}$ (Lu et al. 2017)"
+       }
+      ]
+     },
+     "citation": "Lu et al. 2017"
+    },
+    {
+     "what": {
+      "value": "HST Pa-alpha map and EW",
+      "evidence": [
+       {
+        "loc": "3.4 Comparison with Pa-alpha Observations",
+        "quote": "*HST* Pa-$\\alpha$ (Alonso-Herrero et al. 2006; Diáz-Santos et al. 2008) image"
+       }
+      ]
+     },
+     "citation": "Alonso-Herrero et al. 2006; Díaz-Santos et al. 2008"
+    },
+    {
+     "what": {
+      "value": "Optical PA of 57 deg and axis ratio",
+      "evidence": [
+       {
+        "loc": "3.3 Kinematics of the Nuclear Region",
+        "quote": "very similar to the one measured in the optical image (57$^\\circ$; Lehnert & Heckman 1995)"
+       }
+      ]
+     },
+     "citation": "Lehnert & Heckman 1995"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.6.0",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The data were reduced with CASA 4.6.0 (McMullin et al. 2007)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust=0.5 (robust=2.0 to match Pa-alpha resolution)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "cleaned using the Briggs weightings with *robust=0.5*"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "outertaper=100 kλ with robust=2.0 for 0.86\" beam test",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Line Emission",
+       "quote": "$robust=2.0$ and $uv$-taper ($\\mathrm{outertaper}=100 k \\lambda$)"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from SPWs 0-3 excluding line channels",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The continuum was measured using data in SPWs 0-3 by excluding the line emission channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "flux measurements on PB-corrected images; figures and noise before correction",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "flux measurements are based on the images after the primary beam correction, whereas all of the figures are produced using the results before the primary beam correction"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "three datasets combined and cleaned jointly",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The calibrated datasets were combined and cleaned"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "cubes binned to 14 km/s channels",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "we binned spectral cubes into channels with the width of $\\delta v=14$ km s$^{-1}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "~0.15\" x 0.13\", PA -69 deg",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "a position angle (P.A.; north to east) of $-69^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum 0.4 mJy/beam; channel 3.3-4.0 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The noise for these channel maps in CO (6$-$5) is in the range of $3.3-4.0$ mJy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Clump finding with the Williams et al. algorithm",
+      "evidence": [
+       {
+        "loc": "3.1 CO (6-5) Line Emission",
+        "quote": "Using the clump-finding algorithm of Williams et al. (1994)"
+       }
+      ]
+     },
+     "from_reference": "Williams et al. 1994"
+    },
+    {
+     "what": {
+      "value": "Constant CO/70um ratio assumption and 70um fractional flux for the recovered-flux estimate",
+      "evidence": [
+       {
+        "loc": "3.1 CO (6-5) Line Emission",
+        "quote": "we assume that the CO (6$-$5) (or dust continuum at 434 $\\mu$m) to the 70 micron flux ratio ($R_{{\\rm CO}/70\\,\\mu {\\rm m}}$) is constant, according to Lu et al. (2014) and Liu et al. (2015)"
+       }
+      ]
+     },
+     "from_reference": "Lu et al. 2014; Liu et al. 2015"
+    },
+    {
+     "what": {
+      "value": "Heating interpretation of CO/dust offsets",
+      "evidence": [
+       {
+        "loc": "3.2 Continuum Emission at 434 um",
+        "quote": "As discussed in detail in Zhao et al. (2016b), the displacement between the dust and line emission peaks"
+       }
+      ]
+     },
+     "from_reference": "Zhao et al. 2016b"
+    },
+    {
+     "what": {
+      "value": "Kinemetry method",
+      "evidence": [
+       {
+        "loc": "3.3 Kinematics of the Nuclear Region",
+        "quote": "(see Krajnović et al. 2006 for more details)"
+       }
+      ]
+     },
+     "from_reference": "Krajnović et al. 2006"
+    }
+   ],
+   "unstated_but_needed": [
+    "Flux/bandpass/phase calibrators per execution and flux-scale uncertainty",
+    "Line-free channels used for continuum",
+    "Clean threshold, mask, niter, cell and image size",
+    "Parameters for clump finding (contour levels, thresholds)",
+    "Kinemetry settings (ring spacing, center and fixed parameters)",
+    "Whether the 14 km/s channel binning was applied before the moment maps and moment masking/clipping",
+    "Pipeline vs manual calibration"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, combine and image",
+    "method": {
+     "value": "Reduce with CASA, combine three datasets, clean with Briggs weighting robust=0.5; continuum from SPWs 0-3 excluding line; cube from SPW-0",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The calibrated datasets were combined and cleaned using the Briggs weightings with *robust=0.5*"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust=0.5; 14 km/s channels",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "we binned spectral cubes into channels with the width of $\\delta v=14$ km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Each dataset imaged separately to check quality and flux consistency",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "we also imaged each dataset separately to check quality and flux consistency"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify CO clumps and measure fluxes",
+    "method": {
+     "value": "Clump-finding by contouring at multiple levels; Gaussian fits to spectra in elliptical apertures",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Line Emission",
+       "quote": "which performs a blind search for clumps by contouring the map at different levels to identify peaks, we identified 14 clumps"
+      }
+     ]
+    },
+    "software": [
+     "Williams et al. 1994 algorithm"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profile for the clump spectra",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "obtained by fitting a Gaussian profile to the spectrum extracted within an elliptical aperture"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Estimate flux recovered vs Herschel",
+    "method": {
+     "value": "Compare aperture flux to SPIRE/FTS flux scaled by fractional 70um flux in the beams, assuming constant CO/70um",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Line Emission",
+       "quote": "our observation recovers 40% ($\\equiv 0.8/0.4 \\times 20\\%$) of the total CO flux within the ALMA FOV"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "R_CO/70um constant across scales",
+      "evidence": [
+       {
+        "loc": "3.1 CO (6-5) Line Emission",
+        "quote": "this missing flux is a very crude estimation since $R_{{\\rm CO}/70\\,\\mu {\\rm m}}$ may vary at physical scales of $\\lesssim$kpc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared the integrated map with the sum of channel photometry and a coarser 0.86\" beam",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Line Emission",
+       "quote": "the measured flux is 1.4 times higher than the current value when a much larger beam ($0\\ensuremath{''}.86\\times0\\ensuremath{''}.86$) is used"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "CO-to-dust ratio map and Pa-alpha comparison",
+    "method": {
+     "value": "Ratio of CO luminosity to nu f_nu (cont), using 2 sigma where fluxes below 2 sigma; compare with HST Pa-alpha EW with matched resolution",
+     "evidence": [
+      {
+       "loc": "3.2 Continuum Emission at 434 um",
+       "quote": "For pixels with fluxes less than 2$\\sigma$, we used the 2$\\sigma$ flux to calculate the ratio."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Kinematic analysis",
+    "method": {
+     "value": "P-V diagram (width 0.175\", PA ~55 deg) and kinemetry of the first-moment map",
+     "evidence": [
+      {
+       "loc": "3.3 Kinematics of the Nuclear Region",
+       "quote": "which was extracted using a slice with the width of 0$''$.175 (7 pixels) and P.A. of $\\sim$55$^\\circ$"
+      }
+     ]
+    },
+    "software": [
+     "kinemetry"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "inclination i = arccos q",
+      "evidence": [
+       {
+        "loc": "3.3 Kinematics of the Nuclear Region",
+        "quote": "suggesting an inclination $i=\\arccos q \\sim 54^\\circ$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Best-fitting ellipses to the first-moment map",
+     "evidence": [
+      {
+       "loc": "3.3 Kinematics of the Nuclear Region",
+       "quote": "which does surface photometry to the first moment map by determining the best-fitting ellipse"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Kinematic PA compared with optical PA; vmax compared with the P-V diagram",
+     "evidence": [
+      {
+       "loc": "3.3 Kinematics of the Nuclear Region",
+       "quote": "The maximum $v_{\\rm rot}$ is similar to that estimated from the P-V diagram"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.6.0",
+    "used_for": {
+     "value": "Data reduction, combining and cleaning",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The data were reduced with CASA 4.6.0 (McMullin et al. 2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "kinemetry",
+    "version": "not stated",
+    "used_for": {
+     "value": "Kinemetric analysis of first moment map",
+     "evidence": [
+      {
+       "loc": "3.3 Kinematics of the Nuclear Region",
+       "quote": "we further quantify the kinemetric features using the code *kinemetry*"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CO(6-5) beam-matched flux within r=1.125\"",
+    "value": "160",
+    "uncertainty": "16",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 CO (6-5) Line Emission",
+      "quote": "is $160\\pm16$ Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(6-5) total flux from channel photometry",
+    "value": "180",
+    "uncertainty": "18",
+    "units": "Jy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "is $180\\pm18$ Jy km s$^{-1}$ ($71\\pm7$ mJy)"
+     }
+    ]
+   },
+   {
+    "quantity": "434 um continuum flux density",
+    "value": "71",
+    "uncertainty": "7",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission at 434 um",
+      "quote": "$f_{434\\,\\mu{\\rm m,\\,ALMA}}=71\\pm7$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of CO flux recovered within ALMA FOV",
+    "value": "40",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 CO (6-5) Line Emission",
+      "quote": "our observation recovers 40% ($\\equiv 0.8/0.4 \\times 20\\%$) of the total CO flux within the ALMA FOV"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotation velocity amplitude from P-V (uncorrected for inclination)",
+    "value": "~140",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Kinematics of the Nuclear Region",
+      "quote": "the velocity amplitude (uncorrected for the inclination) of this rotation is $\\sim$140 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median axis ratio q and inclination",
+    "value": "q=0.59, i~54",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Kinematics of the Nuclear Region",
+      "quote": "has a median value of 0.59, suggesting an inclination $i=\\arccos q \\sim 54^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux-weighted mean systemic velocity",
+    "value": "3345",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 CO (6-5) Line Emission",
+      "quote": "is 3345 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of clumps",
+    "value": "14",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 CO (6-5) Line Emission",
+      "quote": "we identified 14 clumps"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO(6-5) is filamentary with dense cores and shows rotating-disk velocity field",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The CO (6$-$5) emission displays a filamentary structure where many dense cores can be located"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do CO(6-5) and dust emit co-spatially at ~34 pc scales?",
+    "experiment": "Compared line and continuum maps and CO-to-continuum ratio",
+    "result": "Peaks do not always coincide; ratio varies by >10",
+    "finding": "Different excitation mechanisms are likely",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "their peaks do not always coincide with each other, and the CO-to-continuum ratio varies by at least an order of magnitude"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the nuclear CO gas in an ordered rotating disk?",
+    "experiment": "Moment maps, P-V diagram, kinemetry",
+    "result": "Spider-diagram velocity field, ~140 km/s amplitude, weak non-circular motions",
+    "finding": "Rotating disk with possible weak inflow/outflow",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Kinematics of the Nuclear Region",
+      "quote": "shows a clear velocity gradient along the southwest-northeast direction, which characterizes a rotating disk"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the SW region differ in heating mechanism?",
+    "experiment": "Compared CO/dust ratio, Pa-alpha EW and k5",
+    "result": "SW has higher CO/dust and ~10x smaller Pa-alpha EW",
+    "finding": "SW gas may be mechanically heated (indirect evidence)",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.4 Comparison with Pa-alpha Observations",
+      "quote": "provides indirect evidence that the gas in the southwest region could be mainly excited by mechanical heating"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Missing-flux estimate is crude; extended emission over 2.1\" is resolved out",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Line Emission",
+       "quote": "this missing flux is a very crude estimation"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Missing-flux estimate relies on a constant CO/70um ratio",
+    "No uncertainties on the kinematic quantities",
+    "Flux calibration inconsistencies among the three datasets (15% line, 37% continuum)",
+    "Heating interpretation is indirect"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project IDs given; public archive status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00524.S and #2015.1.00385.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibrator choices and flux scale",
+    "Cleaning parameters",
+    "Kinemetry and clump-finder settings"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw across three Band 9 executions",
+   "score_inferred": 3,
+   "score_reason": "Project codes, CASA version and robust are given, but cleaning, calibration and kinemetry details are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key steps such as clump finding and kinemetry lack parameters; the missing-flux estimate depends on external data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Krajnović et al. 2006",
+     "why": "Kinemetry method"
+    },
+    {
+     "citation": "Williams et al. 1994",
+     "why": "Clump-finding algorithm"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Zhao et al. 2016b",
+     "why": "NGC 7130 sister ALMA CO(6-5) study"
+    },
+    {
+     "citation": "Xu et al. 2014, 2015",
+     "why": "NGC 34 and NGC 1614 ALMA CO(6-5) studies"
+    },
+    {
+     "citation": "Lu et al. 2017",
+     "why": "Herschel FTS data for the sample"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GOALS",
+    "Herschel SPIRE FTS LIRG sample"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-60027b290a28411c110c253d2eedd578",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:32",
+  "usage": {
+   "input_tokens": 20251,
+   "output_tokens": 8762,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064668,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 68,
+  "quotes_ok": 68,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 50,
+   "rate": 0.676
+  },
+  "evidence_ok": true
+ }
+}

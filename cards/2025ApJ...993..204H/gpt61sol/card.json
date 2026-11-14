@@ -1,0 +1,3201 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...993..204H",
+  "title": "JWST and ALMA Joint Analysis with [O II] λλ3726, 3729, [O III] λ4363, [O III] 88 μm, and [O III] 52 μm: Multizone Evolution of Electron Densities at z ∼ 0─14 and its Impact on Metallicity Measurements",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Harikane, Yuichi",
+  "n_authors": 11,
+  "arxiv_id": "2505.09186",
+  "doi": "10.3847/1538-4357/ae0e53",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2022.1.00012.S",
+   "2023.1.00022.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Summary",
+    "quote": "We use our new JWST and ALMA observations, as well as data from the literature, and conduct a joint JWST and ALMA analysis to self-consistently reproduce all of the observed emission lines."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "J0217-0208",
+     "coordinates": {
+      "value": "R.A. 02:17:21.60; Decl. -02:08:52.7",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| J0217-0208 | 02:17:21.60 | $-$02:08:52.7 | $6.204$ | JWST/NIRCam | F150W,F200W,F300M,F410M | 0.2 hours |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 6.204",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| J0217-0208 | 02:17:21.60 | $-$02:08:52.7 | $6.204$ | JWST/NIRCam | F150W,F200W,F300M,F410M | 0.2 hours |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "SXDF-NB1006-2",
+     "coordinates": {
+      "value": "R.A. 02:18:56.54; Decl. -05:19:58.9",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| SXDF-NB1006-2 | 02:18:56.54 | $-$05:19:58.9 | $7.212$ | JWST/NIRCam | F150W,F200W,F360M,F430M | 0.6 hours |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 7.212",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| SXDF-NB1006-2 | 02:18:56.54 | $-$05:19:58.9 | $7.212$ | JWST/NIRCam | F150W,F200W,F360M,F430M | 0.6 hours |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "J1211-0118",
+     "coordinates": {
+      "value": "R.A. 12:11:37.09; Decl. -01:18:16.5",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| J1211-0118 | 12:11:37.09 | $-$01:18:16.5 | $6.031$ | JWST/NIRCam | F150W,F200W,F300M,F410M | 0.2 hours |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 6.031",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| J1211-0118 | 12:11:37.09 | $-$01:18:16.5 | $6.031$ | JWST/NIRCam | F150W,F200W,F300M,F410M | 0.2 hours |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "COS-3018555981",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 6.854",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "| COS-3018555981 | $6.854$ |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "MACS1149-JD1",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 9.110",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "| MACS1149-JD1 | $9.110$ |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Test the robustness of direct-Te metallicities by relaxing the single-density ISM assumption and jointly analyzing optical and FIR lines.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We aim to investigate the impact of assuming a 1-zone ISM model on the derived ISM properties by first relaxing the single-density criterion and evaluating the effects on measurements such as metallicity and the mass-metallicity relation."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2022.1.00012.S",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2022.1.00012.S, ADS/JAO.ALMA#2023.1.00022.S."
+      }
+     ]
+    },
+    {
+     "code": "2023.1.00022.S",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2022.1.00012.S, ADS/JAO.ALMA#2023.1.00022.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 9: SXDF-NB1006-2; Band 10: J0217-0208 and J1211-0118",
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "using Band 9 for SXDF-NB1006-2 and Band 10 for J0217-0208 and J1211-0118."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four 1.875 GHz SPWs in FDM; total 7.5 GHz; velocity resolution ~3 km/s; one SPW centered on the expected 52 μm line",
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "We used four spectral windows (SPWs) with 1.875 GHz bandwidths in Frequency Division Mode (FDM), yielding a total bandwidth of 7.5 GHz."
+     },
+     {
+      "loc": "ALMA Dataset",
+      "quote": "The velocity resolution was set to $\\sim3$ km/s."
+     },
+     {
+      "loc": "ALMA Dataset",
+      "quote": "One of the SPWs was centered on the 52$\\mu$m line frequency, expected from the redshift of the 88$\\mu$m emission reported in (cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[OIII]",
+     "transition": "52 μm",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "The best-fit 2-zone models for the four galaxies suggest that the FIR 88$\\mu$m and 52$\\mu$m luminosities are dominated by emission from the low-density region due to their low critical densities,"
+      },
+      {
+       "loc": "ALMA Dataset",
+       "quote": "we observed the 52$\\mu$m line, which has a higher critical density and thus provides complementary constraints to the 88$\\mu$m line."
+      }
+     ]
+    },
+    {
+     "species": "[OIII]",
+     "transition": "88 μm",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "The best-fit 2-zone models for the four galaxies suggest that the FIR 88$\\mu$m and 52$\\mu$m luminosities are dominated by emission from the low-density region due to their low critical densities,"
+      },
+      {
+       "loc": "ALMA Dataset",
+       "quote": "our three targets, J0217-0208, SXDF-NB1006-2, and J1211-0118, have previous detections of the 88$\\mu$m line."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C43-1, C43-2, and C43-3",
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "The antenna configurations were C43-1, C43-2, and C43-3, achieving beam sizes of $0.$$''$$3-0.$$''$$4$,"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.3–0.4 arcsec",
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "achieving beam sizes of $0.$$''$$3-0.$$''$$4$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "Total integration: 7.3, 17.7, and 12.8 hours for J0217-0208, SXDF-NB1006-2, and J1211-0118",
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "total integration times were 7.3, 17.7, and 12.8 hours for J0217-0208, SXDF-NB1006-2, and J1211-0118, respectively."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA Cycles 9 and 10; PI: Y. Harikane",
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "The 52$\\mu$m observations were carried out during ALMA Cycles 9 and 10 (2022.1.00012.S and 2023.1.00022.S, PI: Y. Harikane)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JWST/NIRCam",
+     "provided": {
+      "value": "Images for morphologies and stellar populations; GO-1657 and GO-1840",
+      "evidence": [
+       {
+        "loc": "NIRCam Image",
+        "quote": "NIRCam images of the three galaxies were taken to investigate their morphologies as well as stellar populations."
+       },
+       {
+        "loc": "JWST Datasets",
+        "quote": "We conducted JWST NIRCam (cite: 2023PASP..135b8001R) and NIRSpec/IFU (cite: 2022A&A...661A..80J) observations targeting the three galaxies (J0217-0208, SXDF-NB1006-2, and J1211-0118) in GO-1657 (PIs: Y. Harikane & R. Sanders)."
+       },
+       {
+        "loc": "NIRCam Image",
+        "quote": "In addition to the NIRCam data obtained in our program, we also use NIRCam images obtained in GO-1840 (PIs: J. Alvarez-Marquez & T. Hashimoto)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "JWST/NIRSpec IFU",
+     "provided": {
+      "value": "Rest-frame optical spectroscopy; G235H, G395H, and G395M; additional MACS1149-JD1 data from GTO-1262",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "For J0217$-$0208 and J1211$-$0118 at $z=6.0-6.2$, we used the grating-filter pairs G235H/F170LP for $\\lambda\\lambda$3726,3729 and G395H/F290LP for H$\\beta$, $\\lambda\\lambda$4959,5007, and H$\\alpha$."
+       },
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "additionally employed G395M/F290LP to fill the wavelength gap present in the G395H/F290LP coverage and observe $\\lambda\\lambda$4959,5007."
+       },
+       {
+        "loc": "Galaxy Sample for the Analysis",
+        "quote": "For the rest-frame optical emission lines in MACS1149-JD1, we reduced the NIRSpec IFU data taken in GTO-1262 (PI: N. Lützgendorf) and measured the emission line fluxes in the same manner as in Section [2.2.2](#ss_nirspec)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Subaru/HSC; HSC-SSP",
+     "provided": {
+      "value": "Ground-based morphology information used to select compact targets",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample",
+        "quote": "their compact morphologies in the ground-based Subaru/Hyper Suprime-Cam (HSC; (cite: 2018PASJ...70S...1M)) images obtained from the HSC-Subaru Strategic Program (HSC-SSP) survey (cite: 2018PASJ...70S...4A)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "GTC/OSIRIS and Subaru/FOCAS",
+     "provided": {
+      "value": "Previous spectroscopic confirmations of the target galaxies",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample",
+        "quote": "J0217-0208 and J1211-0118 were spectroscopically confirmed in (cite: 2018PASJ...70S..35M) via their Ly$\\alpha$ emission line and the Lyman break feature, respectively,"
+       },
+       {
+        "loc": "Galaxy Sample",
+        "quote": "with Gran Telescopio Canarias (GTC)/Optical System for Imaging and low-Intermediate-Resolution Integrated Spectroscopy (OSIRIS; (cite: 2000SPIE.4008..623C)) and Subaru/Faint Object Camera and Spectrograph (FOCAS; (cite: 2002PASJ...54..819K))"
+       },
+       {
+        "loc": "Galaxy Sample",
+        "quote": "SXDF-NB1006-2 was spectroscopically confirmed via its Ly$\\alpha$ emission line with Subaru/FOCAS in (cite: 2012ApJ...752..114S),"
+       }
+      ]
+     }
+    },
+    {
+     "name": "MAST",
+     "provided": {
+      "value": "Raw JWST data",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "We downloaded raw data from the MAST archive and ran Stage 1 calibration with `calwebb_detector1`."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "J0217-0208 and J1211-0118: existing ALMA 88 μm detections",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample",
+        "quote": "their 88$\\mu$m emission lines were detected with ALMA in (cite: 2020ApJ...896...93H)."
+       }
+      ]
+     },
+     "citation": "(cite: 2020ApJ...896...93H)"
+    },
+    {
+     "what": {
+      "value": "SXDF-NB1006-2: existing ALMA 88 μm detections",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample",
+        "quote": "its 88$\\mu$m emission line was reported in (cite: 2016Sci...352.1559I) and (cite: 2023ApJ...945...69R)."
+       }
+      ]
+     },
+     "citation": "(cite: 2016Sci...352.1559I) and (cite: 2023ApJ...945...69R)"
+    },
+    {
+     "what": {
+      "value": "88 μm redshifts and FWHMs used for spectral-window placement and 52 μm integration",
+      "evidence": [
+       {
+        "loc": "ALMA Dataset",
+        "quote": "One of the SPWs was centered on the 52$\\mu$m line frequency, expected from the redshift of the 88$\\mu$m emission reported in (cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)."
+       },
+       {
+        "loc": "ALMA Dataset",
+        "quote": "is the FWHM of the 88$\\mu$m line reported in (cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)."
+       }
+      ]
+     },
+     "citation": "(cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)"
+    },
+    {
+     "what": {
+      "value": "COS-3018555981: 88 μm and optical emission-line fluxes; sum of main, north, and south optical components",
+      "evidence": [
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "using the 88$\\mu$m and optical emission line fluxes reported by (cite: 2022MNRAS.515.1751W) and (cite: 2024arXiv241107695S), respectively."
+       },
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "We sum the fluxes of the main, north, and south components of COS-3018555981 defined in (cite: 2024arXiv241107695S) to obtain the total optical flux, which we compare with the ALMA 88$\\mu$m line flux."
+       }
+      ]
+     },
+     "citation": "(cite: 2022MNRAS.515.1751W) and (cite: 2024arXiv241107695S)"
+    },
+    {
+     "what": {
+      "value": "MACS1149-JD1: 88 μm line flux",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample for the Analysis",
+        "quote": "For the 88$\\mu$m line flux, we adopt the value obtained in (cite: 2018Natur.557..392H)."
+       }
+      ]
+     },
+     "citation": "(cite: 2018Natur.557..392H)"
+    },
+    {
+     "what": {
+      "value": "COS-3018555981: total stellar mass including main, north, and south components",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "Total stellar mass including the main, north, and south components in (cite: 2024arXiv241107695S)."
+       }
+      ]
+     },
+     "citation": "(cite: 2024arXiv241107695S)"
+    },
+    {
+     "what": {
+      "value": "MACS1149-JD1: stellar mass assuming magnification μ = 10",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "Taken from (cite: 2024MNRAS.533.2488M) assuming the magnification factor of $\\mu=10$."
+       }
+      ]
+     },
+     "citation": "(cite: 2024MNRAS.533.2488M)"
+    },
+    {
+     "what": {
+      "value": "Nearby-galaxy optical and FIR emission-line fluxes for density comparisons",
+      "evidence": [
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "(cite: 2006ApJS..164...81M) and (cite: 2008ApJS..178..280B) present rest-frame optical and FIR emission line fluxes of nearby galaxies, respectively."
+       }
+      ]
+     },
+     "citation": "(cite: 2006ApJS..164...81M) and (cite: 2008ApJS..178..280B)"
+    },
+    {
+     "what": {
+      "value": "Mrk71 and Haro3 optical/FIR electron densities",
+      "evidence": [
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "(cite: 2023NatAs...7..771C; 2024arXiv240518476C) measure the electron densities of local galaxies Mrk71 and Haro3,"
+       }
+      ]
+     },
+     "citation": "(cite: 2023NatAs...7..771C; 2024arXiv240518476C)"
+    },
+    {
+     "what": {
+      "value": "MACS1149-JD1: previous FIR and optical density measurements for comparison",
+      "evidence": [
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "(cite: 2023ApJ...957L..18S) report the electron density of MACS1149-JD1 at $z=9.1$ to be $n_\\mathrm{e,FIR}\\simeq400$ cm$^{-3}$"
+       },
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "$n_\\mathrm{e,optical}\\simeq700$ cm$^{-3}$ reported by (cite: 2024MNRAS.533.2488M) using the $\\lambda$3729/$\\lambda$3726 ratio."
+       }
+      ]
+     },
+     "citation": "(cite: 2023ApJ...957L..18S) and (cite: 2024MNRAS.533.2488M)"
+    },
+    {
+     "what": {
+      "value": "Literature electron-density measurements used for redshift-evolution comparisons",
+      "evidence": [
+       {
+        "loc": "Redshift Evolution",
+        "quote": "previous JWST studies using the optical and/or lines (cite: 2023ApJ...956..139I; 2025arXiv250208712T)."
+       },
+       {
+        "loc": "Redshift Evolution",
+        "quote": "are comparable to those of galaxies at $z\\sim0$ (cite: 2016ApJS..226...19F; 2008ApJS..178..280B)."
+       },
+       {
+        "loc": "Redshift Evolution",
+        "quote": "As reported in (cite: 2022ApJ...939..110M) and (cite: 2025arXiv250208712T), the densities measured with the rest-frame UV Ciii\\] lines are very high,"
+       }
+      ]
+     },
+     "citation": "(cite: 2023ApJ...956..139I; 2025arXiv250208712T); (cite: 2016ApJS..226...19F; 2008ApJS..178..280B); (cite: 2022ApJ...939..110M)"
+    },
+    {
+     "what": {
+      "value": "Additional z > 6 JWST/ALMA 88 μm detections used in the FIR density comparison",
+      "evidence": [
+       {
+        "loc": "Redshift Evolution",
+        "quote": "with detections of the 88$\\mu$m line (cite: 2024arXiv240920533C; 2024ApJ...964..146F; 2024ApJ...977L..36H; 2023ApJ...957L..18S; 2024arXiv241107695S; 2024arXiv240920549S; 2022MNRAS.515.1751W)."
+       }
+      ]
+     },
+     "citation": "(cite: 2024arXiv240920533C; 2024ApJ...964..146F; 2024ApJ...977L..36H; 2023ApJ...957L..18S; 2024arXiv241107695S; 2024arXiv240920549S; 2022MNRAS.515.1751W)"
+    },
+    {
+     "what": {
+      "value": "SXDF-NB1006-2 and MACS1149-JD1: deep ALMA continuum nondetections used to constrain obscured star formation",
+      "evidence": [
+       {
+        "loc": "1-Zone Model Fitting",
+        "quote": "SXDF-NB1006-2 and MACS1149-JD1 do not show dust continuum emission in the deep ALMA data in (cite: 2023ApJ...945...69R) and (cite: 2018Natur.557..392H)"
+       }
+      ]
+     },
+     "citation": "(cite: 2023ApJ...945...69R) and (cite: 2018Natur.557..392H)"
+    },
+    {
+     "what": {
+      "value": "J0217-0208 and COS-3018555981: dust-obscured SFRs ~15 M_sun yr^-1",
+      "evidence": [
+       {
+        "loc": "1-Zone Model Fitting",
+        "quote": "their dust-obscured SFRs are $\\sim15$ $M_\\odot\\ \\mathrm{yr^{-1}}$ (cite: 2020ApJ...896...93H; 2022MNRAS.515.1751W)."
+       }
+      ]
+     },
+     "citation": "(cite: 2020ApJ...896...93H; 2022MNRAS.515.1751W)"
+    },
+    {
+     "what": {
+      "value": "Observed mass-metallicity relations for comparison",
+      "evidence": [
+       {
+        "loc": "Comparison of Metallicities",
+        "quote": "mass-metallicity relations observationally constrained with low-mass galaxies in (cite: 2023ApJS..269...33N) and (cite: 2024A&A...684A..75C),"
+       },
+       {
+        "loc": "Comparison of Metallicities",
+        "quote": "recent determinations for massive galaxies at $z\\sim6-8$ in (cite: 2025arXiv250110559R)."
+       }
+      ]
+     },
+     "citation": "(cite: 2023ApJS..269...33N); (cite: 2024A&A...684A..75C); (cite: 2025arXiv250110559R)"
+    },
+    {
+     "what": {
+      "value": "Planck cosmology: Ωm = 0.3111, ΩΛ = 0.6899, Ωb = 0.0489, h = 0.6766, σ8 = 0.8102",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Throughout this paper, we adopt the Planck cosmological parameter sets from the TT, TE, EE+lowP+lensing+BAO results (cite: 2020A&A...641A...6P): $\\Omega_\\mathrm{m}=0.3111$, $\\Omega_\\Lambda=0.6899$, $\\Omega_\\mathrm{b}=0.0489$, $h=0.6766$, and $\\sigma_8=0.8102$."
+       }
+      ]
+     },
+     "citation": "(cite: 2020A&A...641A...6P)"
+    },
+    {
+     "what": {
+      "value": "Solar metallicity: 12+log(O/H) = 8.69; Z_sun = 0.0142",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We define the solar metallicity as $\\mathrm{12+log(O/H)}=8.69$ and $Z_\\odot=0.0142$ (cite: 2009ARA&A..47..481A)."
+       }
+      ]
+     },
+     "citation": "(cite: 2009ARA&A..47..481A)"
+    },
+    {
+     "what": {
+      "value": "Theoretical [OIII]5007/[OIII]4959 = 2.98",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "an assumed line ratio of $f_\\mathrm{\\sc[OIII]5007}/f_\\mathrm{[OIII]4959}=2.98$, based on theoretical calculations (cite: 2000MNRAS.312..813S)."
+       }
+      ]
+     },
+     "citation": "(cite: 2000MNRAS.312..813S)"
+    },
+    {
+     "what": {
+      "value": "Theoretical [NII]6584/[NII]6548 = 2.94",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "we assumed the line ratio of $f_\\mathrm{\\sc[NII]6584}/f_\\mathrm{[NII]6548}=2.94$, based on a theoretical value in (cite: 2020MNRAS.495.1016R)."
+       }
+      ]
+     },
+     "citation": "(cite: 2020MNRAS.495.1016R)"
+    },
+    {
+     "what": {
+      "value": "10,000 K intrinsic Balmer ratios: Hα/Hβ = 2.86; Hγ/Hβ = 0.468",
+      "evidence": [
+       {
+        "loc": "Dust Attenuation",
+        "quote": "We assume intrinsic line ratios for a temperature of 10,000 K from (cite: 1989agna.book.....O), namely $\\mathrm{H\\alpha/H\\beta=2.86}$ and $\\mathrm{H\\gamma/H\\beta=0.468}$,"
+       }
+      ]
+     },
+     "citation": "(cite: 1989agna.book.....O)"
+    },
+    {
+     "what": {
+      "value": "Ionic oxygen-abundance equations and O+/O2+ electron-temperature relation",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "We then estimate the ionic oxygen abundance ratios of O$^+$/H$^+$ and O$^{2+}$/H$^+$ using the equations in (cite: 2006A&A...448..955I),"
+       },
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "assuming an extrapolation of the electron temperature relation between O$^+$ and O$^{2+}$."
+       }
+      ]
+     },
+     "citation": "(cite: 2006A&A...448..955I)"
+    },
+    {
+     "what": {
+      "value": "Alternative O+/O2+ electron-temperature relation used for a robustness check",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "Adopting the more recent $\\mathrm{O}^+-\\mathrm{O}^{2+}$ electron temperature relation from (cite: 2025arXiv250403839C) changes the derived oxygen abundances by less than 5%."
+       }
+      ]
+     },
+     "citation": "(cite: 2025arXiv250403839C)"
+    },
+    {
+     "what": {
+      "value": "JWST-constrained R23 and O32 strong-line metallicity calibrations",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "we apply the R23 strong-line calibration, with parameters constrained by JWST spectroscopy in (cite: 2024ApJ...962...24S),"
+       },
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "if we instead use the O32 calibration in (cite: 2024ApJ...962...24S), we obtain a metallicity estimate of $12+\\mathrm{log(O/H)}\\simeq 8.2$,"
+       }
+      ]
+     },
+     "citation": "(cite: 2024ApJ...962...24S)"
+    },
+    {
+     "what": {
+      "value": "Hβ luminosity-to-SFR conversion factor",
+      "evidence": [
+       {
+        "loc": "Table 4",
+        "quote": "SFR estimated from $L_\\mathrm{H\\beta}$ adopting the conversion factor in (cite: 2024ApJ...977..133C)."
+       }
+      ]
+     },
+     "citation": "(cite: 2024ApJ...977..133C)"
+    },
+    {
+     "what": {
+      "value": "Stellar IMF, dust attenuation law, and IGM attenuation model used in SED fitting",
+      "evidence": [
+       {
+        "loc": "SED Fitting",
+        "quote": "We assume the stellar IMF from (cite: 2003PASP..115..763C), the dust attenuation law of (cite: 2000ApJ...533..682C), and the intergalactic medium (IGM) attenuation model by (cite: 1995ApJ...441...18M)."
+       }
+      ]
+     },
+     "citation": "(cite: 2003PASP..115..763C); (cite: 2000ApJ...533..682C); (cite: 1995ApJ...441...18M)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Flexible Stellar Population Synthesis with MIST isochrones, including rotation-enhanced ionizing flux production",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "Model spectra are generated using the Flexible Stellar Population Synthesis (cite: 2009ApJ...699..486C; 2010ApJ...712..833C) package with the Modules for Experiments in Stellar Astrophysics Isochrones and Stellar Tracks (MIST; (cite: 2016ApJ...823..102C))."
+      },
+      {
+       "loc": "SED Fitting",
+       "quote": "The boost in ionizing flux production from massive stars due to rotation is included in the MIST isochrones (cite: 2017ApJ...838..159C)."
+      }
+     ]
+    },
+    {
+     "value": "Cosmological mass-metallicity predictions from First Light, FLARES, and FIRE-2",
+     "evidence": [
+      {
+       "loc": "Comparison of Metallicities",
+       "quote": "some simulations predicting steep slopes in the relation, such as First Light (cite: 2023ApJ...953..140N), FLARES (cite: 2023MNRAS.518.3935W), and FIRE-2 (cite: 2024ApJ...967L..41M)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "The data were processed using the Common Astronomy Software (CASA; (cite: 2007ASPC..376..127M)) pipeline version 6.4.1.12."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "6.4.1.12",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "The data were processed using the Common Astronomy Software (CASA; (cite: 2007ASPC..376..127M)) pipeline version 6.4.1.12."
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "Using the task `tclean`, we produced images and cubes with natural weighting without taper to maximize point-source sensitivities."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "Using the task `tclean`, we produced images and cubes with natural weighting without taper to maximize point-source sensitivities."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "without taper",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "Using the task `tclean`, we produced images and cubes with natural weighting without taper to maximize point-source sensitivities."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub using off-line channels",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "To create a pure line image, we subtracted the continuum using off-line channels in the line cube with the CASA task `uvcontsub`."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.3–0.4 arcsec",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "achieving beam sizes of $0.$$''$$3-0.$$''$$4$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "52 μm tuning and velocity integration use previously measured 88 μm redshifts and FWHMs",
+      "evidence": [
+       {
+        "loc": "ALMA Dataset",
+        "quote": "One of the SPWs was centered on the 52$\\mu$m line frequency, expected from the redshift of the 88$\\mu$m emission reported in (cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)."
+       },
+       {
+        "loc": "ALMA Dataset",
+        "quote": "is the FWHM of the 88$\\mu$m line reported in (cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2020ApJ...896...93H) and (cite: 2023ApJ...945...69R)"
+    },
+    {
+     "what": {
+      "value": "Custom NIRCam pipeline modifications",
+      "evidence": [
+       {
+        "loc": "NIRCam Image",
+        "quote": "We reduced these data using the JWST Calibration Pipeline (versions 1.12.5) and the Calibration Reference Data System context file `jwst_1193.pmap` with custom modifications described in (cite: 2023ApJS..265....5H)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2023ApJS..265....5H)"
+    },
+    {
+     "what": {
+      "value": "NIRSpec pipeline modifications",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "We reduced the NIRSpec IFU data using the JWST Calibration Pipeline (versions 1.12.5) and the Calibration Reference Data System context file of `jwst_1189.pmap` with several modifications (cite: 2024ApJ...976..142X)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024ApJ...976..142X)"
+    },
+    {
+     "what": {
+      "value": "Q3D procedure for combining dithered cubes with reproject_interp",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "Following the procedure used by the Q3D team (cite: 2022ApJ...940L...7W; 2023ApJ...955...92V; 2023ApJ...953...56V),"
+       },
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "we used the reproject package (cite: 2023zndo...7584411R) to combine the 3D data cubes taken in different dither positions into a single data cube using the `reproject_interp` routine."
+       }
+      ]
+     },
+     "from_reference": "Q3D team (cite: 2022ApJ...940L...7W; 2023ApJ...955...92V; 2023ApJ...953...56V)"
+    },
+    {
+     "what": {
+      "value": "Rescale pipeline error spectra to the line-free standard deviation, accounting for spatial noise correlations",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "Following (cite: 2023A&A...677A.145U), we scaled an error spectrum from the pipeline to match the standard deviation in line-free regions, taking into account the spatial correlations of the noise due to the PSF size."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2023A&A...677A.145U)"
+    },
+    {
+     "what": {
+      "value": "Aperture-corrected NIRCam total magnitudes",
+      "evidence": [
+       {
+        "loc": "SED Fitting",
+        "quote": "with an aperture correction, following the method of (cite: 2023ApJS..265....5H)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2023ApJS..265....5H)"
+    },
+    {
+     "what": {
+      "value": "Planck TT, TE, EE+lowP+lensing+BAO cosmology",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Throughout this paper, we adopt the Planck cosmological parameter sets from the TT, TE, EE+lowP+lensing+BAO results (cite: 2020A&A...641A...6P):"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2020A&A...641A...6P)"
+    },
+    {
+     "what": {
+      "value": "SED stellar IMF, dust attenuation law, and IGM attenuation model",
+      "evidence": [
+       {
+        "loc": "SED Fitting",
+        "quote": "We assume the stellar IMF from (cite: 2003PASP..115..763C), the dust attenuation law of (cite: 2000ApJ...533..682C), and the intergalactic medium (IGM) attenuation model by (cite: 1995ApJ...441...18M)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2003PASP..115..763C); (cite: 2000ApJ...533..682C); (cite: 1995ApJ...441...18M)"
+    },
+    {
+     "what": {
+      "value": "Theoretical [OIII] and [NII] doublet ratios fixed in Gaussian fitting",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "an assumed line ratio of $f_\\mathrm{\\sc[OIII]5007}/f_\\mathrm{[OIII]4959}=2.98$, based on theoretical calculations (cite: 2000MNRAS.312..813S)."
+       },
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "we assumed the line ratio of $f_\\mathrm{\\sc[NII]6584}/f_\\mathrm{[NII]6548}=2.94$, based on a theoretical value in (cite: 2020MNRAS.495.1016R)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2000MNRAS.312..813S); (cite: 2020MNRAS.495.1016R)"
+    },
+    {
+     "what": {
+      "value": "Balmer-decrement dust law and intrinsic ratios at 10,000 K",
+      "evidence": [
+       {
+        "loc": "Dust Attenuation",
+        "quote": "calculate the color excess assuming the (cite: 2000ApJ...533..682C) dust attenuation law."
+       },
+       {
+        "loc": "Dust Attenuation",
+        "quote": "We assume intrinsic line ratios for a temperature of 10,000 K from (cite: 1989agna.book.....O), namely $\\mathrm{H\\alpha/H\\beta=2.86}$ and $\\mathrm{H\\gamma/H\\beta=0.468}$,"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2000ApJ...533..682C); (cite: 1989agna.book.....O)"
+    },
+    {
+     "what": {
+      "value": "Direct-Te ionic-abundance equations and extrapolated O+/O2+ temperature relation",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "We then estimate the ionic oxygen abundance ratios of O$^+$/H$^+$ and O$^{2+}$/H$^+$ using the equations in (cite: 2006A&A...448..955I),"
+       },
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "assuming an extrapolation of the electron temperature relation between O$^+$ and O$^{2+}$."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2006A&A...448..955I)"
+    },
+    {
+     "what": {
+      "value": "R23 calibration for J1211-0118; O32 calibration as an alternative",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "we apply the R23 strong-line calibration, with parameters constrained by JWST spectroscopy in (cite: 2024ApJ...962...24S),"
+       },
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "if we instead use the O32 calibration in (cite: 2024ApJ...962...24S), we obtain a metallicity estimate of $12+\\mathrm{log(O/H)}\\simeq 8.2$,"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024ApJ...962...24S)"
+    },
+    {
+     "what": {
+      "value": "Cloudy emission-line calculations follow the previous paper",
+      "evidence": [
+       {
+        "loc": "1-Zone Model Fitting",
+        "quote": "We use Cloudy version 17.01 and compute the emission-line luminosities in the same manner as (cite: 2020ApJ...896...93H)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2020ApJ...896...93H)"
+    },
+    {
+     "what": {
+      "value": "Hβ-to-SFR conversion",
+      "evidence": [
+       {
+        "loc": "Table 4",
+        "quote": "SFR estimated from $L_\\mathrm{H\\beta}$ adopting the conversion factor in (cite: 2024ApJ...977..133C)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024ApJ...977..133C)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact 52 μm observed frequencies, SPW channel selections, and final cube channel binning.",
+    "Numerical 88 μm redshifts and FWHMs used for each 52 μm tuning and integration interval.",
+    "tclean cell size, image size, deconvolver, masks, stopping threshold, and iteration limit.",
+    "Exact uvcontsub line-free channel ranges and polynomial order.",
+    "Primary-beam correction and per-target synthesized beam dimensions.",
+    "Aperture-noise calculation, correlated-noise treatment, and construction of ALMA line upper limits.",
+    "Flux calibrators, absolute flux-scale uncertainty, and whether calibration uncertainty enters the joint fit.",
+    "PyNeb version and atomic datasets.",
+    "Joint-model MCMC sampler, likelihood, treatment of upper limits and flux covariance, walkers, burn-in, and convergence criteria.",
+    "Priors and bounds for metallicity, O32, and the inter-zone λ5007 luminosity ratio.",
+    "Full inherited Cloudy inputs and configuration.",
+    "Numerical NIRCam aperture corrections and the referenced custom JWST reduction modifications."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure ALMA line and continuum emission",
+    "method": {
+     "value": "Integrate 52 μm cubes over 2 × FWHM of the literature 88 μm line; measure total fluxes or limits in 0.8-arcsec-diameter apertures; extract spectra and continuum images.",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "We generated 52$\\mu$m maps by integrating the ALMA data cubes over the velocity range corresponding to $2\\times \\mathrm{FWHM}_\\mathrm{[OIII]88\\mu m}$,"
+      },
+      {
+       "loc": "ALMA Dataset",
+       "quote": "The total line flux or the upper limits are measured on the 52$\\mu$m maps in a large $0.$$''$$8$-diameter circular aperture"
+      },
+      {
+       "loc": "ALMA Dataset",
+       "quote": "We also generated a dust continuum image but did not detect any dust continuum emission,"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean",
+     "uvcontsub"
+    ],
+    "key_parameters": [
+     {
+      "value": "1D spectra: 0.3-arcsec-diameter circular aperture",
+      "evidence": [
+       {
+        "loc": "ALMA Dataset",
+        "quote": "1D spectra were extracted from the data cube using a $0.$$''$$3$-diameter circular aperture."
+       }
+      ]
+     },
+     {
+      "value": "Continuum nondetections reported as 3σ upper limits",
+      "evidence": [
+       {
+        "loc": "ALMA Dataset",
+        "quote": "resulting in $3\\sigma$ upper limits of $0.61$, $0.25$, and $0.60$ mJy/beam for J0217-0208, SXDF-NB1006-2, and J1211-0118, respectively."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Planck cosmology: Ωm = 0.3111, ΩΛ = 0.6899, Ωb = 0.0489, h = 0.6766, σ8 = 0.8102",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Throughout this paper, we adopt the Planck cosmological parameter sets from the TT, TE, EE+lowP+lensing+BAO results (cite: 2020A&A...641A...6P): $\\Omega_\\mathrm{m}=0.3111$, $\\Omega_\\Lambda=0.6899$, $\\Omega_\\mathrm{b}=0.0489$, $h=0.6766$, and $\\sigma_8=0.8102$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Line fluxes remain consistent within uncertainties without continuum subtraction.",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "However, the measured line fluxes remain consistent within the uncertainties even without applying `uvcontsub`."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract and fit optical emission lines",
+    "method": {
+     "value": "Extract aperture-corrected 1D NIRSpec spectra; subtract a cubic-polynomial continuum fitted in line-free regions; fit Gaussian emission lines.",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "Aperture correction for each spectrum obtained with a filter-grating pair was calculated by comparing emission line fluxes in the spectrum with those in a large $2.$$''$$0$-diameter aperture."
+      },
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "By fitting line-free regions of each spectrum with a cubic polynomial, we estimated the continuum emission and subtracted it to make a continuum-subtracted spectrum."
+      },
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "We measured emission line fluxes by fitting each emission line with a Gaussian."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Extraction diameters: 0.6 arcsec for J0217-0208 and J1211-0118; 1.0 arcsec for SXDF-NB1006-2",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "We extracted a 1D spectrum from the data cube using a circular aperture whose diameter was $0.$$''$$6$ ($1.$$''$$0$) for J0217-0208 and J1211-0118 (for SXDF-NB1006-2)."
+       }
+      ]
+     },
+     {
+      "value": "Scale pipeline error spectra to line-free standard deviations, accounting for spatial correlations",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "Following (cite: 2023A&A...677A.145U), we scaled an error spectrum from the pipeline to match the standard deviation in line-free regions, taking into account the spatial correlations of the noise due to the PSF size."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "[OIII]5007/4959 = 2.98; [NII]6584/6548 = 2.94; equal widths within each doublet",
+      "evidence": [
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "an assumed line ratio of $f_\\mathrm{\\sc[OIII]5007}/f_\\mathrm{[OIII]4959}=2.98$, based on theoretical calculations (cite: 2000MNRAS.312..813S)."
+       },
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "we assumed the line ratio of $f_\\mathrm{\\sc[NII]6584}/f_\\mathrm{[NII]6548}=2.94$, based on a theoretical value in (cite: 2020MNRAS.495.1016R)."
+       },
+       {
+        "loc": "NIRSpec Spectrum",
+        "quote": "We assumed the same line width for each set of the doublet lines,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Determine redshift from Hβ and [OIII]4959,5007 and fix it for other lines; jointly fit the [OII] doublet with correlated uncertainties; use two Gaussian components for J0217-0208 [OIII]4959,5007 and Hα.",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "Then, we fit other emission lines with Gaussian functions with fixing the redshift to the value determined with the H$\\beta$ and $\\lambda\\lambda$4959,5007 lines."
+      },
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "We simultaneously fit the $\\lambda\\lambda$3726,3729 lines with two Gaussian functions to estimate the line ratio and its error with taking the correlated uncertainties into account."
+      },
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "Because the $\\lambda\\lambda$4959,5007 and H$\\alpha$ lines in J0217-0208 show a weak moderately broad component"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Conclusions do not change when using only narrow-component fluxes instead of total narrow-plus-broad fluxes.",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "the conclusions do not change if we use only the narrow-component flux given the small fraction of the broad-component flux ($\\sim10\\%$)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Infer stellar populations",
+    "method": {
+     "value": "Fit aperture-corrected photometry with PROSPECTOR and Flexible Stellar Population Synthesis/MIST model spectra.",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "For the SED fitting, we use PROSPECTOR (cite: 2021ApJS..254...22J),"
+      },
+      {
+       "loc": "SED Fitting",
+       "quote": "Model spectra are generated using the Flexible Stellar Population Synthesis (cite: 2009ApJ...699..486C; 2010ApJ...712..833C) package with the Modules for Experiments in Stellar Astrophysics Isochrones and Stellar Tracks (MIST; (cite: 2016ApJ...823..102C))."
+      }
+     ]
+    },
+    "software": [
+     "PROSPECTOR",
+     "Flexible Stellar Population Synthesis",
+     "MIST",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free parameters: V-band dust optical depth, metallicity, star formation history, total stellar mass; fixed spectroscopic redshift",
+      "evidence": [
+       {
+        "loc": "SED Fitting",
+        "quote": "varying the dust optical depth in the $V$-band, metallicity, star formation history, and total stellar mass as free parameters, while fixing the redshift to the spectroscopically determined value."
+       }
+      ]
+     },
+     {
+      "value": "Five SFH bins: 0–10 Myr first bin; remaining bins logarithmically spaced to z = 30; constant SFR in each bin",
+      "evidence": [
+       {
+        "loc": "SED Fitting",
+        "quote": "We adopt a flexible star formation history with five bins:"
+       },
+       {
+        "loc": "SED Fitting",
+        "quote": "the first bin is fixed at 0-10 Myr, and the other bins are spaced equally in logarithmic time between 10 Myr and a lookback time corresponding to $z=30$,"
+       },
+       {
+        "loc": "SED Fitting",
+        "quote": "assuming a constant SFR within each bin."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Referenced stellar IMF, dust attenuation law, and IGM attenuation model",
+      "evidence": [
+       {
+        "loc": "SED Fitting",
+        "quote": "We assume the stellar IMF from (cite: 2003PASP..115..763C), the dust attenuation law of (cite: 2000ApJ...533..682C), and the intergalactic medium (IGM) attenuation model by (cite: 1995ApJ...441...18M)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC with emcee; SFH continuity prior; flat priors 0 < τV < 2, -2.0 < log(Z/Zsun) < 0.4, 6 < log(M*/Msun) < 12",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "A continuity prior is applied to the star formation history, with flat priors for other parameters in the ranges $0<\\tau_\\mathrm{V}<2$, $-2.0<\\mathrm{log}(Z/Z_\\odot)<0.4$, and $6<\\mathrm{log}(M_*/M_\\ensuremath{\\odot})<12$."
+      },
+      {
+       "loc": "SED Fitting",
+       "quote": "We search for the best-fit model to the observed photometric data points using the Markov Chain Monte Carlo (MCMC) method with emcee (cite: 2013PASP..125..306F)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Correct nebular dust attenuation",
+    "method": {
+     "value": "Estimate E(B-V) from Hα, Hβ, and Hγ Balmer decrements and correct emission-line fluxes.",
+     "evidence": [
+      {
+       "loc": "Dust Attenuation",
+       "quote": "We evaluate the dust attenuation of our galaxies using the color excess, $E(B-V)$, estimated from the Balmer decrement."
+      },
+      {
+       "loc": "Dust Attenuation",
+       "quote": "we use emission line fluxes corrected for dust attenuation based on the $E(B-V)$ values measured from the Balmer decrement."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Dust law from (cite: 2000ApJ...533..682C); intrinsic ratios at 10,000 K: Hα/Hβ = 2.86 and Hγ/Hβ = 0.468",
+      "evidence": [
+       {
+        "loc": "Dust Attenuation",
+        "quote": "calculate the color excess assuming the (cite: 2000ApJ...533..682C) dust attenuation law."
+       },
+       {
+        "loc": "Dust Attenuation",
+        "quote": "We assume intrinsic line ratios for a temperature of 10,000 K from (cite: 1989agna.book.....O), namely $\\mathrm{H\\alpha/H\\beta=2.86}$ and $\\mathrm{H\\gamma/H\\beta=0.468}$,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "E(B-V) agrees with both Balmer ratios within errors; conclusions unchanged across the inferred temperature range.",
+     "evidence": [
+      {
+       "loc": "Dust Attenuation",
+       "quote": "The estimated $E(B-V)$ value for each galaxy is consistent with the $\\mathrm{H\\alpha/H\\beta}$ and $\\mathrm{H\\gamma/H\\beta}$ ratios within errors,"
+      },
+      {
+       "loc": "Dust Attenuation",
+       "quote": "although the conclusions of this paper do not change for the range of temperatures inferred in Section [5.3](#ss_2zone)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Measure optical and FIR electron densities",
+    "method": {
+     "value": "Use PyNeb with [OII]3729/3726 for optical densities and 52 μm/88 μm for FIR densities; derive spatially resolved optical density maps.",
+     "evidence": [
+      {
+       "loc": "Density from the $\\lambda\\lambda$3726,3729 Line Ratio",
+       "quote": "We calculate the electron densities of our galaxies from the measured $\\lambda$3729/$\\lambda$3726 ratios using PyNeb."
+      },
+      {
+       "loc": "Density from the 52$\\mu$m/88$\\mu$m Line Ratio",
+       "quote": "We use PyNeb to calculate the line ratio as a function of electron density and temperature."
+      },
+      {
+       "loc": "Density from the $\\lambda\\lambda$3726,3729 Line Ratio",
+       "quote": "Thanks to the IFU data, we can also investigate the spatially-resolved density map."
+      }
+     ]
+    },
+    "software": [
+     "PyNeb"
+    ],
+    "key_parameters": [
+     {
+      "value": "52 μm/88 μm = a(b+ne)/(c+ne); a = 10.53, b = 224.46, c = 4181.45 at Te = 13000 K",
+      "evidence": [
+       {
+        "loc": "Density from the 52$\\mu$m/88$\\mu$m Line Ratio",
+        "quote": "The ratio for an electron temperature of $T_\\mathrm{e}=13000$ K is well fitted by the following function:"
+       },
+       {
+        "loc": "Density from the 52$\\mu$m/88$\\mu$m Line Ratio",
+        "quote": "f_\\mathrm{[OIII]52\\mu m}/f_\\mathrm{[OIII]88\\mu m}=a\\frac{b+n_\\mathrm{e}}{c+n_\\mathrm{e}},"
+       },
+       {
+        "loc": "Density from the 52$\\mu$m/88$\\mu$m Line Ratio",
+        "quote": "where $a=10.53$, $b=224.46$, and $c=4181.45$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Te = 13000 K for optical density measurements",
+      "evidence": [
+       {
+        "loc": "Density from the $\\lambda\\lambda$3726,3729 Line Ratio",
+        "quote": "We assume the electron temperature of $T_\\mathrm{e}=13000$ K,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Optical densities agree within errors with the 10000 K literature calibration; changing ionization parameter does not significantly alter FIR estimates or limits.",
+     "evidence": [
+      {
+       "loc": "Density from the $\\lambda\\lambda$3726,3729 Line Ratio",
+       "quote": "using the calibration presented in (cite: 2016ApJ...816...23S) assuming $T_\\mathrm{e}=10000$ K gives results consistent within errors."
+      },
+      {
+       "loc": "Density from the 52$\\mu$m/88$\\mu$m Line Ratio",
+       "quote": "our estimates and upper limits do not significantly change by changing the ionization parameter."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive direct-Te metallicities",
+    "method": {
+     "value": "Calculate Te from λ4363/λ5007 with PyNeb; derive O+/H+ and O2+/H+ with the referenced ionic-abundance equations.",
+     "evidence": [
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "We calculate the electron temperatures based on the $\\lambda$4363/$\\lambda$5007 line ratios using PyNeb (cite: 2015A&A...573A..42L)."
+      },
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "We then estimate the ionic oxygen abundance ratios of O$^+$/H$^+$ and O$^{2+}$/H$^+$ using the equations in (cite: 2006A&A...448..955I),"
+      }
+     ]
+    },
+    "software": [
+     "PyNeb"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Adopt optical electron densities and extrapolate the O+/O2+ temperature relation",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "Here, we adopt the electron densities measured with the optical lines from Section [4.3.1](#ss_den_opt)."
+       },
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "assuming an extrapolation of the electron temperature relation between O$^+$ and O$^{2+}$."
+       }
+      ]
+     },
+     {
+      "value": "Ignore O3+/H+ because high-ionization lines are absent",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "We do not account for a higher ionization state of O$^{3+}$/H$^+$,"
+       },
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "our galaxies, which do not exhibit high-ionization lines (e.g., Heii)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Using FIR densities increases Te by up to 1%; an alternative O+/O2+ temperature relation changes oxygen abundance by less than 5%.",
+     "evidence": [
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "If we instead use the densities measured with the FIR lines from Section [4.3.2](#ss_den_fir), the obtained temperatures increase by up to 1%."
+      },
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "Adopting the more recent $\\mathrm{O}^+-\\mathrm{O}^{2+}$ electron temperature relation from (cite: 2025arXiv250403839C) changes the derived oxygen abundances by less than 5%."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Constrain J1211-0118 metallicity",
+    "method": {
+     "value": "Use the λ4363 nondetection for a Te upper limit and metallicity lower limit; apply the JWST-constrained R23 strong-line calibration.",
+     "evidence": [
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "We estimate an upper limit on the electron temperature of $T_\\mathrm{e}<12900$ K, which corresponds to a metallicity lower limit of $12+\\mathrm{log(O/H)}>8.1$."
+      },
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "we apply the R23 strong-line calibration, with parameters constrained by JWST spectroscopy in (cite: 2024ApJ...962...24S),"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Adopt the high-metallicity R23 branch because of the λ4363-based lower limit",
+      "evidence": [
+       {
+        "loc": "Electron Temperature and Metallicity",
+        "quote": "Given the lower limit of metallicity from $\\lambda$4363, we adopt the value for the high-metallicity branch as a fiducial value."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Alternative O32 calibration gives 12+log(O/H) ≃ 8.2, consistent with the λ4363 lower limit.",
+     "evidence": [
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "if we instead use the O32 calibration in (cite: 2024ApJ...962...24S), we obtain a metallicity estimate of $12+\\mathrm{log(O/H)}\\simeq 8.2$, consistent with the lower limit from $\\lambda$4363."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Extend density comparisons across redshift",
+    "method": {
+     "value": "Combine literature fluxes and densities with the new sample; infer FIR densities from dust-corrected 88 μm/λ5007 and λ4363 temperatures when 52 μm is unavailable; compare optical and FIR redshift trends.",
+     "evidence": [
+      {
+       "loc": "Comparison of Densities from Optical and FIR",
+       "quote": "$n_\\mathrm{e,FIR}$ can be calculated from the dust-corrected 88$\\mu$m/$\\lambda$5007 ratio combined with the $\\lambda$4363-based electron temperature,"
+      },
+      {
+       "loc": "Comparison of Densities from Optical and FIR",
+       "quote": "For these local galaxies, we derive $n_\\mathrm{e,optical}$ and $n_\\mathrm{e,FIR}$ using the optical $\\lambda$6716/$\\lambda$6731 and FIR 52$\\mu$m/88$\\mu$m line ratios reported therein."
+      },
+      {
+       "loc": "Redshift Evolution",
+       "quote": "Figure [12](#fig_ne_z) compiles the electron density measurements obtained in this study and from the literature using rest-frame UV, optical, and FIR lines."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "COS-3018555981: sum main, north, and south optical components before comparison with ALMA",
+      "evidence": [
+       {
+        "loc": "Comparison of Densities from Optical and FIR",
+        "quote": "We sum the fluxes of the main, north, and south components of COS-3018555981 defined in (cite: 2024arXiv241107695S) to obtain the total optical flux, which we compare with the ALMA 88$\\mu$m line flux."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "High-redshift optical/FIR density differences persist with either 52 μm/88 μm or 88 μm/λ5007.",
+     "evidence": [
+      {
+       "loc": "Comparison of Densities from Optical and FIR",
+       "quote": "regardless of whether $n_\\mathrm{e,FIR}$ is measured with 52$\\mu$m/88$\\mu$m or 88$\\mu$m/$\\lambda$5007 ratios."
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Test homogeneous ISM predictions",
+    "method": {
+     "value": "Predict 88 μm and 52 μm luminosities from optical-derived densities, temperatures, and metallicities with PyNeb; repeat with Cloudy 17.01; test obscured star formation as an explanation.",
+     "evidence": [
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "With these parameters, we can predict the luminosities of the 88$\\mu$m and 52$\\mu$m lines using PyNeb."
+      },
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "We use Cloudy version 17.01 and compute the emission-line luminosities in the same manner as (cite: 2020ApJ...896...93H)."
+      },
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "Clearly the 88$\\mu$m and 52$\\mu$m emission lines could originate in highly obscured dusty regions for which no optical emission emerges,"
+      }
+     ]
+    },
+    "software": [
+     "PyNeb",
+     "Cloudy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Joint sample: J0217-0208, SXDF-NB1006-2, COS-3018555981, MACS1149-JD1; exclude J1211-0118 because λ4363 is not detected",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample for the Analysis",
+        "quote": "From our three galaxies, we select J0217-0208 and SXDF-NB1006-2 for the joint analysis."
+       },
+       {
+        "loc": "Galaxy Sample for the Analysis",
+        "quote": "We do not include J1211-0118, as its $\\lambda$4363 line is not detected."
+       },
+       {
+        "loc": "Galaxy Sample for the Analysis",
+        "quote": "In addition, we analyze COS-3018555981 at $z=6.9$ and MACS1149-JD1 at $z=9.1$, taken from the literature."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "One homogeneous set of density, temperature, and metallicity",
+      "evidence": [
+       {
+        "loc": "1-Zone Model Fitting",
+        "quote": "We hereafter refer to this model as a 1-zone model, as we assume only one set of parameters with a homogeneous condition."
+       }
+      ]
+     },
+     {
+      "value": "Tdust = 40 K for obscured-SFR upper limits in SXDF-NB1006-2 and MACS1149-JD1",
+      "evidence": [
+       {
+        "loc": "1-Zone Model Fitting",
+        "quote": "with the $2\\sigma$ upper limits on the obscured SFRs of $<3$ and $<0.6\\ M_\\odot\\ \\mathrm{yr^{-1}}$, respectively, assuming the dust temperature of $T_\\mathrm{dust}=40$ K."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compare observed and predicted luminosities; Cloudy and PyNeb both underpredict FIR lines by ~2–10; obscured gas does not resolve the discrepancy.",
+     "evidence": [
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "We find that the JWST optical emission lines are well reproduced, whereas the ALMA 88$\\mu$m and 52$\\mu$m line luminosities are underestimated by a factor of $\\sim 2$-10, consistent with the results obtained using PyNeb."
+      },
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "These comparisons indicate that heavily obscured dusty gas cannot explain the discrepancies seen in the 1-zone modeling."
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Fit a two-zone ISM",
+    "method": {
+     "value": "Fit dust-corrected optical and FIR luminosities with PyNeb emission from two regions with different densities and temperatures.",
+     "evidence": [
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "We fit the dust-corrected luminosities of the $\\lambda\\lambda$3726,3729, $\\lambda$4363, H$\\beta$, $\\lambda\\lambda$4959,5007, 52$\\mu$m (if available), and 88$\\mu$m lines with the 2-zone model."
+      },
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "In the 2-zone model, the luminosities of the emission lines are calculated with PyNeb for each parameter set in each region,"
+      }
+     ]
+    },
+    "software": [
+     "PyNeb"
+    ],
+    "key_parameters": [
+     {
+      "value": "Seven free parameters: ne,1, ne,2, Te,1, Te,2, 12+log(O/H), O32, and L[OIII]5007,1/L[OIII]5007,2",
+      "evidence": [
+       {
+        "loc": "2-Zone Model Fitting",
+        "quote": "the densities in the two regions ($n_\\mathrm{e,1}$ and $n_\\mathrm{e,2}$), the temperatures in the two regions ($T_\\mathrm{e,1}$ and $T_\\mathrm{e,2}$), the metallicity ($\\mathrm{12+log(O/H)}$), the O32 ratio (O32),"
+       },
+       {
+        "loc": "2-Zone Model Fitting",
+        "quote": "the ratio of the $\\lambda$5007 line luminosities between the two regions ($L_\\mathrm{[OIII]5007,1}/L_\\mathrm{[OIII]5007,2}$),"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Two regions share metallicity and O32; region 1 is lower density",
+      "evidence": [
+       {
+        "loc": "2-Zone Model Fitting",
+        "quote": "we assume that the two ionized gas regions have different densities and temperatures but share the same metallicity and O32 ratio"
+       },
+       {
+        "loc": "2-Zone Model Fitting",
+        "quote": "where subscripts 1 and 2 refer to the low- and high-density regions, respectively."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC, 200,000 steps; ne,1 < ne,2; flat log-density priors 0 < log(ne,1/[cm^-3]), log(ne,2/[cm^-3]) < 5; flat linear-temperature priors 5000 < Te,1, Te,2 < 30000 K",
+     "evidence": [
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "We use the MCMC method with 200,000 steps to estimate the best-fit parameters."
+      },
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "We assume $n_\\mathrm{e,1}<n_\\mathrm{e,2}$ and flat priors for densities (in log space) and temperatures (in linear space)"
+      },
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "in the ranges of $0<\\mathrm{log}(n_\\mathrm{e,1}/\\mathrm{[cm^{-3}]})<5$, $0<\\mathrm{log}(n_\\mathrm{e,2}/\\mathrm{[cm^{-3}]})<5$, $5000<T_\\mathrm{e,1}/\\mathrm{[K]}<30000$, and $5000<T_\\mathrm{e,2}/\\mathrm{[K]}<30000$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare observed and predicted optical-to-FIR luminosities; two-zone modeling reproduces all observed lines.",
+     "evidence": [
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "Figure [14](#fig_2zone) compares the observed and predicted luminosities with the 2-zone model,"
+      },
+      {
+       "loc": "Comparison of Metallicities",
+       "quote": "the 2-zone model self-consistently reproduces all the emission line luminosities observed from the optical to FIR,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 11,
+    "goal": "Assess metallicity bias and model assumptions",
+    "method": {
+     "value": "Compare direct-Te and two-zone metallicities in the mass-metallicity plane; refit with different O32 values and analyze unequal zone metallicities.",
+     "evidence": [
+      {
+       "loc": "Comparison of Metallicities",
+       "quote": "we test the robustness of direct-$T_\\mathrm{e}$ metallicities assuming a 1-zone ISM by comparing them with metallicities derived from 2-zone modeling."
+      },
+      {
+       "loc": "Effect of Different Ionization Parameters",
+       "quote": "we conduct the MCMC fitting again, allowing different O32 ratios in the high- and low-density regions with $\\mathrm{O32}_\\mathrm{1}<\\mathrm{O32}_\\mathrm{2}$,"
+      },
+      {
+       "loc": "Effect of Different Metallicities",
+       "quote": "we discuss how the total hydrogen abundance changes if we change $L_\\mathrm{H\\beta,1}$ and $L_\\mathrm{H\\beta,2}$ while conserving the total observed H$\\beta$ luminosity"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Adopt two-zone metallicities as fiducial; test higher ionization parameter in the dense region and higher metallicity in the cooler low-density region",
+      "evidence": [
+       {
+        "loc": "Comparison of Metallicities",
+        "quote": "We adopt the metallicities from the 2-zone modeling as the fiducial values"
+       },
+       {
+        "loc": "Effect of Different Ionization Parameters",
+        "quote": "corresponding to different ionization parameters with $U_\\mathrm{ion,1}<U_\\mathrm{ion,2}$,"
+       },
+       {
+        "loc": "Effect of Different Metallicities",
+        "quote": "Since the temperature in the low-density region is lower, it is reasonable to assume that the metallicity in the low-density region is higher than that in the high-density region."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Repeat MCMC with O32,1 < O32,2",
+     "evidence": [
+      {
+       "loc": "Effect of Different Ionization Parameters",
+       "quote": "we conduct the MCMC fitting again, allowing different O32 ratios in the high- and low-density regions with $\\mathrm{O32}_\\mathrm{1}<\\mathrm{O32}_\\mathrm{2}$,"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Under the tested changes, J0217-0208 and COS-3018555981 metallicities remain above direct-Te values.",
+     "evidence": [
+      {
+       "loc": "Systematic Uncertainty of the 2-Zone Model",
+       "quote": "the inferred metallicities from the JWST and ALMA joint analysis for J0217-0208 and COS-3018555981 remain higher than those obtained with the direct-$T_\\mathrm{e}$ method."
+      }
+     ]
+    }
+   },
+   {
+    "order": 12,
+    "goal": "Construct joint optical/FIR metallicity estimators",
+    "method": {
+     "value": "Fit quadratic relations between two-zone metallicity and log(88 μm/Hβ) or log(88 μm/λ5007) for four galaxies.",
+     "evidence": [
+      {
+       "loc": "JWST+ALMA Metallicity Estimator",
+       "quote": "we plot the emission line ratios of 88$\\mu$m/H$\\beta$ and 88$\\mu$m/$\\lambda$5007 as a function of the metallicity obtained via the 2-zone modeling for the four galaxies analyzed here."
+      },
+      {
+       "loc": "JWST+ALMA Metallicity Estimator",
+       "quote": "We find that these line ratios correlate well with the metallicity, and obtain the best-fitting relations as follows:"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "x = 12+log(O/H) - 8.69",
+      "evidence": [
+       {
+        "loc": "JWST+ALMA Metallicity Estimator",
+        "quote": "where $x=12+\\mathrm{log(O/H)}-8.69$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA processing with pipeline version 6.4.1.12",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "The data were processed using the Common Astronomy Software (CASA; (cite: 2007ASPC..376..127M)) pipeline version 6.4.1.12."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Natural-weighted ALMA images and cubes without taper",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "Using the task `tclean`, we produced images and cubes with natural weighting without taper to maximize point-source sensitivities."
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvcontsub",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA continuum subtraction using off-line channels",
+     "evidence": [
+      {
+       "loc": "ALMA Dataset",
+       "quote": "To create a pure line image, we subtracted the continuum using off-line channels in the line cube with the CASA task `uvcontsub`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "JWST Calibration Pipeline",
+    "version": "1.12.5",
+    "used_for": {
+     "value": "NIRCam and NIRSpec IFU reduction",
+     "evidence": [
+      {
+       "loc": "NIRCam Image",
+       "quote": "We reduced these data using the JWST Calibration Pipeline (versions 1.12.5) and the Calibration Reference Data System context file `jwst_1193.pmap` with custom modifications described in (cite: 2023ApJS..265....5H)."
+      },
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "We reduced the NIRSpec IFU data using the JWST Calibration Pipeline (versions 1.12.5) and the Calibration Reference Data System context file of `jwst_1189.pmap` with several modifications (cite: 2024ApJ...976..142X)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Calibration Reference Data System",
+    "version": "not stated",
+    "used_for": {
+     "value": "Context files jwst_1193.pmap for NIRCam and jwst_1189.pmap for NIRSpec",
+     "evidence": [
+      {
+       "loc": "NIRCam Image",
+       "quote": "the Calibration Reference Data System context file `jwst_1193.pmap`"
+      },
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "the Calibration Reference Data System context file of `jwst_1189.pmap`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "calwebb_detector1",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stage 1 calibration of raw NIRSpec data",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "We downloaded raw data from the MAST archive and ran Stage 1 calibration with `calwebb_detector1`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "NSClean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Correct 1/f noise in count-rate frames",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "The resulting count-rate frames were corrected for 1/f noise using NSClean (cite: 2024PASP..136a5001R)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "calwebb_spec2",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stage 2 calibration and per-exposure 3D cubes with 0.05-arcsec pixels",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "We then ran Stage 2 calibration with `calwebb_spec2` and produced the 3D data cube for each exposure with a pixel scale of $0.$$''$$05$."
+      }
+     ]
+    }
+   },
+   {
+    "name": "reproject",
+    "version": "not stated",
+    "used_for": {
+     "value": "Combine dithered NIRSpec cubes",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "we used the reproject package (cite: 2023zndo...7584411R) to combine the 3D data cubes taken in different dither positions into a single data cube using the `reproject_interp` routine."
+      }
+     ]
+    }
+   },
+   {
+    "name": "reproject_interp",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reproject dithered 3D cubes for combination",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "we used the reproject package (cite: 2023zndo...7584411R) to combine the 3D data cubes taken in different dither positions into a single data cube using the `reproject_interp` routine."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PROSPECTOR",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "For the SED fitting, we use PROSPECTOR (cite: 2021ApJS..254...22J),"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Flexible Stellar Population Synthesis",
+    "version": "not stated",
+    "used_for": {
+     "value": "Generate stellar model spectra with MIST",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "Model spectra are generated using the Flexible Stellar Population Synthesis (cite: 2009ApJ...699..486C; 2010ApJ...712..833C) package with the Modules for Experiments in Stellar Astrophysics Isochrones and Stellar Tracks (MIST; (cite: 2016ApJ...823..102C))."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stellar isochrones and tracks for SED model spectra, including rotation",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "The boost in ionizing flux production from massive stars due to rotation is included in the MIST isochrones (cite: 2017ApJ...838..159C)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC SED fitting",
+     "evidence": [
+      {
+       "loc": "SED Fitting",
+       "quote": "We search for the best-fit model to the observed photometric data points using the Markov Chain Monte Carlo (MCMC) method with emcee (cite: 2013PASP..125..306F)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyNeb",
+    "version": "not stated",
+    "used_for": {
+     "value": "Electron temperatures, electron densities, and one-/two-zone emission-line luminosities",
+     "evidence": [
+      {
+       "loc": "Electron Temperature and Metallicity",
+       "quote": "We calculate the electron temperatures based on the $\\lambda$4363/$\\lambda$5007 line ratios using PyNeb (cite: 2015A&A...573A..42L)."
+      },
+      {
+       "loc": "Density from the $\\lambda\\lambda$3726,3729 Line Ratio",
+       "quote": "We calculate the electron densities of our galaxies from the measured $\\lambda$3729/$\\lambda$3726 ratios using PyNeb."
+      },
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "In the 2-zone model, the luminosities of the emission lines are calculated with PyNeb for each parameter set in each region,"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Cloudy",
+    "version": "17.01",
+    "used_for": {
+     "value": "Independent photoionization-model test of optical and FIR luminosities",
+     "evidence": [
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "We use Cloudy version 17.01 and compute the emission-line luminosities in the same manner as (cite: 2020ApJ...896...93H)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Download raw JWST data",
+     "evidence": [
+      {
+       "loc": "NIRSpec Spectrum",
+       "quote": "We downloaded raw data from the MAST archive and ran Stage 1 calibration with `calwebb_detector1`."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "J0217-0208: 52 μm detection significance",
+    "value": "6.7",
+    "uncertainty": "not stated",
+    "units": "σ",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "We clearly detect the 52$\\mu$m emission line in J0217-0208 at the $6.7\\sigma$ significance level."
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: L[OIII]52μm",
+    "value": "1.4×10^10",
+    "uncertainty": "±0.2×10^10",
+    "units": "L_sun",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| $L_\\mathrm{[OIII]52\\mu m}$ \\[$L_\\odot$\\] | $(1.4\\pm0.2)\\times10^{10}$ | $<1.0\\times10^{9}$ | $<3.8\\times10^{9}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: L[OIII]52μm",
+    "value": "<1.0×10^9",
+    "uncertainty": "2σ upper limit",
+    "units": "L_sun",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| $L_\\mathrm{[OIII]52\\mu m}$ \\[$L_\\odot$\\] | $(1.4\\pm0.2)\\times10^{10}$ | $<1.0\\times10^{9}$ | $<3.8\\times10^{9}$ |"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "Errors are $1\\sigma$ and upper limits are $2\\sigma$."
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: L[OIII]52μm",
+    "value": "<3.8×10^9",
+    "uncertainty": "2σ upper limit",
+    "units": "L_sun",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| $L_\\mathrm{[OIII]52\\mu m}$ \\[$L_\\odot$\\] | $(1.4\\pm0.2)\\times10^{10}$ | $<1.0\\times10^{9}$ | $<3.8\\times10^{9}$ |"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "Errors are $1\\sigma$ and upper limits are $2\\sigma$."
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: dust continuum",
+    "value": "<0.61",
+    "uncertainty": "3σ upper limit",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "resulting in $3\\sigma$ upper limits of $0.61$, $0.25$, and $0.60$ mJy/beam for J0217-0208, SXDF-NB1006-2, and J1211-0118, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: dust continuum",
+    "value": "<0.25",
+    "uncertainty": "3σ upper limit",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "resulting in $3\\sigma$ upper limits of $0.61$, $0.25$, and $0.60$ mJy/beam for J0217-0208, SXDF-NB1006-2, and J1211-0118, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: dust continuum",
+    "value": "<0.60",
+    "uncertainty": "3σ upper limit",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Dataset",
+      "quote": "resulting in $3\\sigma$ upper limits of $0.61$, $0.25$, and $0.60$ mJy/beam for J0217-0208, SXDF-NB1006-2, and J1211-0118, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: log M*",
+    "value": "10.2",
+    "uncertainty": "+0.1/-0.2",
+    "units": "log(M_sun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| J0217-0208 | $97.6_{-24.5}^{+0.1}$ | $10.2_{-0.2}^{+0.1}$ | $14.6_{-6.6}^{+4.3}$ | $0.05_{-0.02}^{+0.01}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: log M*",
+    "value": "8.7",
+    "uncertainty": "+0.1/-0.1",
+    "units": "log(M_sun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| SXDF-NB1006-2 | $8.1_{-0.1}^{+1.6}$ | $8.7_{-0.1}^{+0.1}$ | $1.8_{-0.4}^{+1.2}$ | $0.01_{-0.01}^{+0.01}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: log M*",
+    "value": "10.4",
+    "uncertainty": "+0.1/-0.2",
+    "units": "log(M_sun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| J1211-0118 | $102.4_{-20.5}^{+61.9}$ | $10.4_{-0.2}^{+0.1}$ | $23.3_{-1.5}^{+14.5}$ | $0.01_{-0.01}^{+0.02}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: Balmer-decrement E(B-V)",
+    "value": "0.10",
+    "uncertainty": "±0.08",
+    "units": "ABmag",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "$E(B-V)$"
+     },
+     {
+      "loc": "Table 5",
+      "quote": "| J0217-0208 | $6.204$ | $10.2_{-0.2}^{+0.1}$ | $3.23^{+0.23}_{-0.19}$ | $12300^{+1100}_{-1200}$ | $8.20^{+0.15}_{-0.11}$ | $0.10\\pm0.08$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: Balmer-decrement E(B-V)",
+    "value": "0.00",
+    "uncertainty": "±0.11",
+    "units": "ABmag",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| SXDF-NB1006-2 | $7.212$ | $8.7_{-0.1}^{+0.1}$ | $2.84^{+0.30}_{-0.29}$ | $13900^{+1000}_{-1100}$ | $7.99^{+0.10}_{-0.09}$ | $0.00\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: Balmer-decrement E(B-V)",
+    "value": "0.10",
+    "uncertainty": "±0.08",
+    "units": "ABmag",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Dust Attenuation",
+      "quote": "We find small but non-negligible dust attenuation, with $E(B-V)\\simeq0.1$, in J0217-0208 and J1211-0118."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "\\[ABmag\\] | $0.10\\pm0.08$ | $0.00\\pm0.11$ | $0.10\\pm0.08$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: ne,optical",
+    "value": "1782",
+    "uncertainty": "+1092/-584",
+    "units": "cm^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\[cm$^{-3}$\\] | $1782^{+1092}_{-584}$ | $774^{+695}_{-360}$ | $258^{+171}_{-127}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: ne,optical",
+    "value": "774",
+    "uncertainty": "+695/-360",
+    "units": "cm^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\[cm$^{-3}$\\] | $1782^{+1092}_{-584}$ | $774^{+695}_{-360}$ | $258^{+171}_{-127}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: ne,optical",
+    "value": "258",
+    "uncertainty": "+171/-127",
+    "units": "cm^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\[cm$^{-3}$\\] | $1782^{+1092}_{-584}$ | $774^{+695}_{-360}$ | $258^{+171}_{-127}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: ne,FIR",
+    "value": "505",
+    "uncertainty": "+253/-228",
+    "units": "cm^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\[cm$^{-3}$\\] | $505^{+253}_{-228}$ | $<87$ | $<97$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: ne,FIR",
+    "value": "<87",
+    "uncertainty": "2σ upper limit",
+    "units": "cm^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\[cm$^{-3}$\\] | $505^{+253}_{-228}$ | $<87$ | $<97$ |"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "Errors are $1\\sigma$ and upper limits are $2\\sigma$."
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: ne,FIR",
+    "value": "<97",
+    "uncertainty": "2σ upper limit",
+    "units": "cm^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\[cm$^{-3}$\\] | $505^{+253}_{-228}$ | $<87$ | $<97$ |"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "Errors are $1\\sigma$ and upper limits are $2\\sigma$."
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: direct-Te temperature",
+    "value": "12300",
+    "uncertainty": "+1100/-1200",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| J0217-0208 | $6.204$ | $10.2_{-0.2}^{+0.1}$ | $3.23^{+0.23}_{-0.19}$ | $12300^{+1100}_{-1200}$ | $8.20^{+0.15}_{-0.11}$ | $0.10\\pm0.08$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: direct-Te temperature",
+    "value": "13900",
+    "uncertainty": "+1000/-1100",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| SXDF-NB1006-2 | $7.212$ | $8.7_{-0.1}^{+0.1}$ | $2.84^{+0.30}_{-0.29}$ | $13900^{+1000}_{-1100}$ | $7.99^{+0.10}_{-0.09}$ | $0.00\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: direct-Te 12+log(O/H)",
+    "value": "8.20",
+    "uncertainty": "+0.15/-0.11",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| J0217-0208 | $6.204$ | $10.2_{-0.2}^{+0.1}$ | $3.23^{+0.23}_{-0.19}$ | $12300^{+1100}_{-1200}$ | $8.20^{+0.15}_{-0.11}$ | $0.10\\pm0.08$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: direct-Te 12+log(O/H)",
+    "value": "7.99",
+    "uncertainty": "+0.10/-0.09",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| SXDF-NB1006-2 | $7.212$ | $8.7_{-0.1}^{+0.1}$ | $2.84^{+0.30}_{-0.29}$ | $13900^{+1000}_{-1100}$ | $7.99^{+0.10}_{-0.09}$ | $0.00\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "COS-3018555981: direct-Te 12+log(O/H)",
+    "value": "8.06",
+    "uncertainty": "+0.06/-0.06",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "$13400^{+700}_{-700}$ | $8.06^{+0.06}_{-0.06}$ | $0.17\\pm0.01$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "MACS1149-JD1: direct-Te 12+log(O/H)",
+    "value": "7.89",
+    "uncertainty": "+0.14/-0.12",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "$15100^{+1500}_{-1500}$ | $7.89^{+0.14}_{-0.12}$ | $0.00\\pm0.18$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: Te upper limit",
+    "value": "<12900",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Electron Temperature and Metallicity",
+      "quote": "We estimate an upper limit on the electron temperature of $T_\\mathrm{e}<12900$ K, which corresponds to a metallicity lower limit of $12+\\mathrm{log(O/H)}>8.1$."
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: 12+log(O/H) lower limit",
+    "value": ">8.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Electron Temperature and Metallicity",
+      "quote": "We estimate an upper limit on the electron temperature of $T_\\mathrm{e}<12900$ K, which corresponds to a metallicity lower limit of $12+\\mathrm{log(O/H)}>8.1$."
+     }
+    ]
+   },
+   {
+    "quantity": "J1211-0118: R23 high-branch 12+log(O/H)",
+    "value": "8.51",
+    "uncertainty": "+0.13/-0.15",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| $12+\\mathrm{log(O/H)}$"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "| $8.20^{+0.15}_{-0.11}$ | $7.99^{+0.10}_{-0.09}$ | ($8.51^{+0.13}_{-0.15}$) |"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "the metallicity (in parentheses) is estimated based on the strong-line R23 calibrator"
+     }
+    ]
+   },
+   {
+    "quantity": "COS-3018555981: dust-corrected 88 μm/λ5007",
+    "value": "0.22",
+    "uncertainty": "±0.04",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Comparison of Densities from Optical and FIR",
+      "quote": "the dust-corrected 88$\\mu$m/$\\lambda$5007 ratio, $f_\\mathrm{[OIII]88\\mu m}/f_\\mathrm{[OIII]\\lambda 5007}=0.22\\pm0.04$,"
+     }
+    ]
+   },
+   {
+    "quantity": "COS-3018555981: ne,FIR",
+    "value": "<90",
+    "uncertainty": "2σ upper limit",
+    "units": "cm^-3",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Comparison of Densities from Optical and FIR",
+      "quote": "We derive a 2$\\sigma$ upper limit of $n_\\mathrm{e,FIR}<90$ cm$^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "One-zone predicted 88 μm luminosity deficit",
+    "value": "~2-10",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "1-Zone Model Fitting",
+      "quote": "with the predicted 88$\\mu$m luminosities being $\\sim2-10$ times lower than the observations."
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: two-zone 12+log(O/H)",
+    "value": "9.03",
+    "uncertainty": "+0.08/-0.10",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| J0217-0208 | $9.03^{+0.08}_{-0.10}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "COS-3018555981: two-zone 12+log(O/H)",
+    "value": "8.45",
+    "uncertainty": "+0.34/-0.31",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| COS-3018555981 | $8.45^{+0.34}_{-0.31}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SXDF-NB1006-2: two-zone 12+log(O/H)",
+    "value": "8.04",
+    "uncertainty": "+0.27/-0.07",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| SXDF-NB1006-2 | $8.04^{+0.27}_{-0.07}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "MACS1149-JD1: two-zone 12+log(O/H)",
+    "value": "7.86",
+    "uncertainty": "+0.14/-0.22",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| MACS1149-JD1 | $7.86^{+0.14}_{-0.22}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: low-density-zone temperature",
+    "value": "6200",
+    "uncertainty": "+800/-1200",
+    "units": "K",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| J0217-0208 | $9.03^{+0.08}_{-0.10}$ | $2.7^{+0.2}_{-0.3}$ | $3.7^{+1.3}_{-0.5}$ | $6200^{+800}_{-1200}$ | $15800^{+12900}_{-3600}$ | $0.59^{+0.04}_{-0.03}$ | $0.0^{+0.8}_{-0.7}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: high-density-zone temperature",
+    "value": "15800",
+    "uncertainty": "+12900/-3600",
+    "units": "K",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| J0217-0208 | $9.03^{+0.08}_{-0.10}$ | $2.7^{+0.2}_{-0.3}$ | $3.7^{+1.3}_{-0.5}$ | $6200^{+800}_{-1200}$ | $15800^{+12900}_{-3600}$ | $0.59^{+0.04}_{-0.03}$ | $0.0^{+0.8}_{-0.7}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Low-density-region electron density",
+    "value": "<1000",
+    "uncertainty": "not stated",
+    "units": "cm^-3",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "the low- and high-density regions have electron densities of $n_\\mathrm{e,1}<1000\\ \\mathrm{cm}^{-3}$ and $n_\\mathrm{e,2}>1000\\ \\mathrm{cm}^{-3}$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "High-density-region electron density",
+    "value": ">1000",
+    "uncertainty": "not stated",
+    "units": "cm^-3",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "the low- and high-density regions have electron densities of $n_\\mathrm{e,1}<1000\\ \\mathrm{cm}^{-3}$ and $n_\\mathrm{e,2}>1000\\ \\mathrm{cm}^{-3}$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Low-/high-density-region volume ratio",
+    "value": ">1000",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "the results also suggest that the volume of the low-density region is $>1000$ times larger than that of the high-density region,"
+     }
+    ]
+   },
+   {
+    "quantity": "COS-3018555981: direct-Te metallicity underestimate",
+    "value": "0.4",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 11,
+    "evidence": [
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "are significantly underestimated in the two more massive galaxies, COS-3018555981 and J0217-0208, by 0.4 and 0.8 dex, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "J0217-0208: direct-Te metallicity underestimate",
+    "value": "0.8",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 11,
+    "evidence": [
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "are significantly underestimated in the two more massive galaxies, COS-3018555981 and J0217-0208, by 0.4 and 0.8 dex, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "log([OIII]88μm/Hβ) calibration: constant, x, x² coefficients",
+    "value": "0.265, 0.428, -0.209",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 12,
+    "evidence": [
+     {
+      "loc": "JWST+ALMA Metallicity Estimator",
+      "quote": "\\mathrm{log\\left(\\frac{\\textsc{[Oiii]}88\\mu m}{H\\beta}\\right)}&=0.265+0.428x-0.209x^2"
+     }
+    ]
+   },
+   {
+    "quantity": "log([OIII]88μm/[OIII]λ5007) calibration: constant, x, x² coefficients",
+    "value": "-0.509, 0.376, -0.362",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 12,
+    "evidence": [
+     {
+      "loc": "JWST+ALMA Metallicity Estimator",
+      "quote": "\\mathrm{log\\left(\\frac{\\textsc{[Oiii]}88\\mu m}{\\textsc{[Oiii]}\\lambda 5007}\\right)}&=-0.509+0.376x-0.362x^2,"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "FIR-based electron densities are systematically lower than optical-based densities in the high-redshift sample.",
+    "evidence": [
+     {
+      "loc": "Comparison of Densities from Optical and FIR",
+      "quote": "The electron densities measured with the 52$\\mu$m/88$\\mu$m ratios (the red diamonds) are systematically lower than those measured with the $\\lambda$3729/$\\lambda$3726 ratios."
+     }
+    ]
+   },
+   {
+    "value": "FIR lines predominantly trace low-density gas; optical lines receive contributions from both density regions.",
+    "evidence": [
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "the FIR luminosities are dominated by emission from the low-density region."
+     },
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "The luminosities of the $\\lambda\\lambda$3726,3729 lines receive contributions from both low- and high-density regions,"
+     }
+    ]
+   },
+   {
+    "value": "Optical densities increase with redshift, while FIR densities show no redshift evolution.",
+    "evidence": [
+     {
+      "loc": "Redshift Evolution",
+      "quote": "Combined with results from the literature, it is clear that the density measured with the optical or lines increases toward higher redshifts."
+     },
+     {
+      "loc": "Redshift Evolution",
+      "quote": "These results indicate that $n_\\mathrm{e,FIR}$ of high-redshift galaxies are low and do not show redshift evolution,"
+     }
+    ]
+   },
+   {
+    "value": "A high-temperature dense component can dominate λ4363 and bias direct-Te metallicities downward.",
+    "evidence": [
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "the $\\lambda$4363 emission from the high-density, high-temperature region dominates the observed luminosity because its emissivity strongly depends on electron temperature."
+     },
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "As a result, the temperature estimated from $\\lambda$4363 is overestimated compared to the effective temperature of the whole system, and the derived metallicity is significantly underestimated."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Optical and FIR density diagnostics trace the same gas density.",
+    "experiment": "Compare [OII]3729/3726 densities with 52 μm/88 μm densities.",
+    "result": "FIR-derived densities are systematically lower.",
+    "finding": "The lines trace different density components, motivating multi-zone ISM models.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Comparison of Densities from Optical and FIR",
+      "quote": "The electron densities measured with the 52$\\mu$m/88$\\mu$m ratios (the red diamonds) are systematically lower than those measured with the $\\lambda$3729/$\\lambda$3726 ratios."
+     },
+     {
+      "loc": "Comparison of Densities from Optical and FIR",
+      "quote": "These results indicate that the FIR lines are tracing gas whose densities are, on average, lower than the gas emitting the optical lines,"
+     }
+    ]
+   },
+   {
+    "hypothesis": "A homogeneous one-zone model constrained by optical lines reproduces ALMA FIR luminosities.",
+    "experiment": "Predict FIR luminosities with PyNeb and Cloudy and compare with four galaxies.",
+    "result": "FIR luminosities are underestimated by ~2–10.",
+    "finding": "A one-zone model fails; heavily obscured gas does not explain the discrepancy.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "1-Zone Model Fitting",
+      "quote": "We find that the JWST optical emission lines are well reproduced, whereas the ALMA 88$\\mu$m and 52$\\mu$m line luminosities are underestimated by a factor of $\\sim 2$-10, consistent with the results obtained using PyNeb."
+     },
+     {
+      "loc": "1-Zone Model Fitting",
+      "quote": "These comparisons indicate that heavily obscured dusty gas cannot explain the discrepancies seen in the 1-zone modeling."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Two regions with different densities and temperatures can jointly reproduce optical and FIR emission.",
+    "experiment": "Fit dust-corrected line luminosities with a seven-parameter two-zone model.",
+    "result": "The model reproduces the optical-to-FIR luminosities, with substantial parameter degeneracies.",
+    "finding": "A low-density and high-density mixture explains the observed lines.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "the 2-zone model self-consistently reproduces all the emission line luminosities observed from the optical to FIR,"
+     },
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "As a result, most of the obtained parameters exhibit significant degeneracies, although some parameters, such as metallicity, are well constrained."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Direct-Te metallicities remain accurate when galaxies contain multiple density and temperature components.",
+    "experiment": "Compare direct-Te metallicities with fiducial two-zone metallicities.",
+    "result": "Agreement in the two less massive galaxies; underestimates of 0.4 and 0.8 dex in the two more massive galaxies.",
+    "finding": "Direct-Te metallicities can be significantly underestimated.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "the direct-$T_\\mathrm{e}$ metallicities are consistent with the 2-zone metallicities in the two less massive galaxies, MACS1149-JD1 and SXDF-NB1006-2,"
+     },
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "are significantly underestimated in the two more massive galaxies, COS-3018555981 and J0217-0208, by 0.4 and 0.8 dex, respectively."
+     }
+    ]
+   },
+   {
+    "hypothesis": "FIR-derived densities evolve with redshift in the same way as optical densities.",
+    "experiment": "Compile optical, UV, and FIR density measurements across redshift.",
+    "result": "Optical densities increase; FIR densities remain low and comparable to local values.",
+    "finding": "The diagnostics show contrasting redshift trends.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Redshift Evolution",
+      "quote": "Combined with results from the literature, it is clear that the density measured with the optical or lines increases toward higher redshifts."
+     },
+     {
+      "loc": "Redshift Evolution",
+      "quote": "These results indicate that $n_\\mathrm{e,FIR}$ of high-redshift galaxies are low and do not show redshift evolution,"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Joint optical/FIR line ratios can indicate metallicities and flag direct-Te underestimation.",
+    "experiment": "Fit line-ratio versus two-zone metallicity relations for four galaxies.",
+    "result": "88 μm/Hβ and 88 μm/λ5007 correlate with inferred metallicity.",
+    "finding": "The relations provide provisional guidelines requiring a larger calibration sample.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "JWST+ALMA Metallicity Estimator",
+      "quote": "We find that these line ratios correlate well with the metallicity, and obtain the best-fitting relations as follows:"
+     },
+     {
+      "loc": "JWST+ALMA Metallicity Estimator",
+      "quote": "Although the parameters in these relations are not tightly constrained due to the limited number of galaxies with 2-zone metallicity estimates,"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Existing 88 μm detections and compact HSC morphologies enable integrated-flux joint analysis; 52 μm adds complementary density constraints.",
+    "evidence": [
+     {
+      "loc": "Galaxy Sample",
+      "quote": "This sample was chosen based on existing 88$\\mu$m detections from ALMA,"
+     },
+     {
+      "loc": "Galaxy Sample",
+      "quote": "allowing us to conduct a JWST and ALMA joint analysis as simply as possible, based on the total line fluxes rather than a spatially resolved analysis."
+     },
+     {
+      "loc": "ALMA Dataset",
+      "quote": "we observed the 52$\\mu$m line, which has a higher critical density and thus provides complementary constraints to the 88$\\mu$m line."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "One-zone failures motivate relaxing the single-density and single-temperature assumptions; natural weighting without taper maximizes point-source sensitivity.",
+    "evidence": [
+     {
+      "loc": "2-Zone Model Fitting",
+      "quote": "Motivated by the failures of the 1-zone modeling in Section [5.2](#ss_1zone), we introduce a 2-zone model and relax the single-density and single-temperature assumptions"
+     },
+     {
+      "loc": "ALMA Dataset",
+      "quote": "Using the task `tclean`, we produced images and cubes with natural weighting without taper to maximize point-source sensitivities."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Heavily obscured dusty gas cannot explain the one-zone FIR discrepancy.",
+     "evidence": [
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "These comparisons indicate that heavily obscured dusty gas cannot explain the discrepancies seen in the 1-zone modeling."
+      }
+     ]
+    },
+    {
+     "value": "Cloudy independently reproduces the one-zone FIR underprediction found with PyNeb.",
+     "evidence": [
+      {
+       "loc": "1-Zone Model Fitting",
+       "quote": "We find that the JWST optical emission lines are well reproduced, whereas the ALMA 88$\\mu$m and 52$\\mu$m line luminosities are underestimated by a factor of $\\sim 2$-10, consistent with the results obtained using PyNeb."
+      }
+     ]
+    },
+    {
+     "value": "Spatially distinct ionic regions without mixing cannot reproduce J0217-0208.",
+     "evidence": [
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "a model with spatially distinct and regions without mixing cannot reproduce the observed lines of J0217-0208."
+      }
+     ]
+    },
+    {
+     "value": "Clumpy star formation and AGN activity are possible explanations of the density structure; neither is uniquely established.",
+     "evidence": [
+      {
+       "loc": "Evolution of the ISM Structure",
+       "quote": "Here, we discuss two scenarios that can explain this evolution: (a) clumpy galaxies and (b) AGN activity."
+      },
+      {
+       "loc": "Evolution of the ISM Structure",
+       "quote": "Although we do not observe any obvious AGN signatures, such as broad hydrogen Balmer lines, in the galaxies studied here,"
+      }
+     ]
+    },
+    {
+     "value": "Porous density-bounded Hii regions, shocks, and diffuse ionized gas may also contribute.",
+     "evidence": [
+      {
+       "loc": "Evolution of the ISM Structure",
+       "quote": "porous, density-bounded Hii regions with high Lyman continuum escape have been proposed to explain both optical and FIR line properties (cite: 2022A&A...667A..35R)."
+      },
+      {
+       "loc": "Evolution of the ISM Structure",
+       "quote": "Shocks, which can strongly affect the density structure of the ISM, may also play a role"
+      },
+      {
+       "loc": "Evolution of the ISM Structure",
+       "quote": "Moreover, diffuse ionized gas could influence both the observed line ratios and the inferred electron densities."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Adopt two-zone metallicities because the model reproduces optical and FIR luminosities simultaneously.",
+    "evidence": [
+     {
+      "loc": "Comparison of Metallicities",
+      "quote": "We adopt the metallicities from the 2-zone modeling as the fiducial values because the 2-zone model self-consistently reproduces all the emission line luminosities observed from the optical to FIR,"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Seven effective emission lines are insufficient to fully determine seven free parameters; most parameters are degenerate.",
+     "evidence": [
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "effectively we have seven emission lines, which are insufficient to fully determine the seven free parameters."
+      },
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "As a result, most of the obtained parameters exhibit significant degeneracies, although some parameters, such as metallicity, are well constrained."
+      }
+     ]
+    },
+    {
+     "value": "The lower limit of ne,1 and upper limit of ne,2 are not constrained.",
+     "evidence": [
+      {
+       "loc": "2-Zone Model Fitting",
+       "quote": "Although the lower limit of $n_\\mathrm{e,1}$ and the upper limit of $n_\\mathrm{e,2}$ are not constrained,"
+      }
+     ]
+    },
+    {
+     "value": "Equal metallicity and ionization parameter across zones are simplifying assumptions.",
+     "evidence": [
+      {
+       "loc": "Systematic Uncertainty of the 2-Zone Model",
+       "quote": "In the 2-zone modeling, we assume the same ionization parameters and metallicities in the high- and low-density regions to keep the model as simple as possible."
+      }
+     ]
+    },
+    {
+     "value": "The metallicity-estimator calibration is constrained by only four galaxies.",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "We provide strong-line metallicity calibrations using optical and FIR lines (Figure [18](#fig_Z_OIIIr)), although they are currently constrained by only four galaxies."
+      }
+     ]
+    },
+    {
+     "value": "A larger sample is required for firm conclusions about simulation comparisons.",
+     "evidence": [
+      {
+       "loc": "Comparison of Metallicities",
+       "quote": "Although a larger sample is needed for firm conclusions,"
+      }
+     ]
+    },
+    {
+     "value": "The sample is restricted to galaxies with ALMA 88 μm detections.",
+     "evidence": [
+      {
+       "loc": "Selection Bias",
+       "quote": "The galaxies studied here are limited to those with ALMA 88$\\mu$m detections."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The two-zone metallicities are conditional on a simplified model with strong degeneracies; successful line reproduction alone does not establish uniqueness.",
+    "The systematic tests impose directional changes in O32 and zone metallicity rather than exploring all possible structures.",
+    "The four-galaxy estimator has no stated independent validation sample or coefficient uncertainties.",
+    "A high detection fraction among previously observed galaxies does not establish an unbiased parent population; the joint analysis also requires λ4363 detection.",
+    "The Electron Temperature and Metallicity subsection initially names J1211-0118 as a λ4363 detection, contradicting its later nondetection statement, the tables, and the joint-sample selection.",
+    "Cross-facility aperture matching and flux-calibration covariance need explicit treatment when reproducing the joint fit."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Raw JWST data obtained from MAST",
+    "evidence": [
+     {
+      "loc": "NIRSpec Spectrum",
+      "quote": "We downloaded raw data from the MAST archive and ran Stage 1 calibration with `calwebb_detector1`."
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Public availability of the ALMA datasets is not explicitly stated.",
+    "No analysis-code release, fit chains, or machine-readable model implementation is identified.",
+    "ALMA imaging and continuum-subtraction parameters are incomplete.",
+    "Numerical 88 μm measurements and integration widths must be recovered from the cited papers.",
+    "Complete joint-fit likelihood, priors, normalization, upper-limit treatment, and convergence information are absent.",
+    "PyNeb atomic data and version are absent.",
+    "Custom JWST reduction and photometric corrections are delegated to earlier work.",
+    "Full COS-3018555981 and MACS1149-JD1 input fluxes and inherited Cloudy configuration require external papers."
+   ],
+   "estimated_data_volume_inferred": "Not reliably estimable from the text: antenna counts, execution details, visibility sampling, and final channel counts are absent.",
+   "score_inferred": 6,
+   "score_reason": "6/10: project codes, main extraction choices, diagnostics, model structure, several priors, and numeric answer keys are supplied; exact imaging, atomic data, likelihood, code, and inherited inputs remain incomplete.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The main results are numeric, but ALMA public availability is not stated and the joint-fitting recipe lacks essential implementation details."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2007ASPC..376..127M)",
+     "why": "CASA processing."
+    },
+    {
+     "citation": "(cite: 2023ApJS..265....5H)",
+     "why": "Inherited NIRCam reduction modifications and aperture-corrected photometry."
+    },
+    {
+     "citation": "(cite: 2024ApJ...976..142X)",
+     "why": "Inherited NIRSpec reduction modifications."
+    },
+    {
+     "citation": "(cite: 2024PASP..136a5001R)",
+     "why": "NSClean 1/f-noise correction."
+    },
+    {
+     "citation": "(cite: 2022ApJ...940L...7W; 2023ApJ...955...92V; 2023ApJ...953...56V)",
+     "why": "Q3D cube-combination procedure."
+    },
+    {
+     "citation": "(cite: 2023zndo...7584411R)",
+     "why": "reproject cube alignment."
+    },
+    {
+     "citation": "(cite: 2023A&A...677A.145U)",
+     "why": "Error-spectrum rescaling for correlated noise."
+    },
+    {
+     "citation": "(cite: 2021ApJS..254...22J)",
+     "why": "PROSPECTOR SED fitting."
+    },
+    {
+     "citation": "(cite: 2009ApJ...699..486C; 2010ApJ...712..833C)",
+     "why": "Flexible Stellar Population Synthesis."
+    },
+    {
+     "citation": "(cite: 2016ApJ...823..102C); (cite: 2017ApJ...838..159C)",
+     "why": "MIST tracks and rotation-enhanced ionizing flux."
+    },
+    {
+     "citation": "(cite: 2013PASP..125..306F)",
+     "why": "emcee SED sampling."
+    },
+    {
+     "citation": "(cite: 2015A&A...573A..42L)",
+     "why": "PyNeb density, temperature, and line-emissivity calculations."
+    },
+    {
+     "citation": "(cite: 2006A&A...448..955I)",
+     "why": "Ionic oxygen-abundance equations and temperature relation."
+    },
+    {
+     "citation": "(cite: 2025arXiv250403839C)",
+     "why": "Alternative ionic-temperature relation for robustness testing."
+    },
+    {
+     "citation": "(cite: 2024ApJ...962...24S)",
+     "why": "R23 and O32 strong-line metallicity calibrations."
+    },
+    {
+     "citation": "(cite: 2017RMxAA..53..385F)",
+     "why": "Cloudy photoionization modeling."
+    },
+    {
+     "citation": "(cite: 2020ApJ...896...93H)",
+     "why": "Inherited Cloudy emission-line calculation procedure and ALMA input measurements."
+    },
+    {
+     "citation": "(cite: 2000MNRAS.312..813S); (cite: 2020MNRAS.495.1016R)",
+     "why": "Fixed theoretical doublet ratios."
+    },
+    {
+     "citation": "(cite: 2000ApJ...533..682C); (cite: 1989agna.book.....O)",
+     "why": "Dust attenuation law and intrinsic Balmer ratios."
+    },
+    {
+     "citation": "(cite: 2024ApJ...977..133C)",
+     "why": "Hβ-to-SFR conversion."
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2020ApJ...896...93H)",
+     "why": "Previous J0217-0208 and J1211-0118 ALMA measurements."
+    },
+    {
+     "citation": "(cite: 2016Sci...352.1559I); (cite: 2023ApJ...945...69R)",
+     "why": "Previous SXDF-NB1006-2 ALMA measurements."
+    },
+    {
+     "citation": "(cite: 2022MNRAS.515.1751W); (cite: 2024arXiv241107695S)",
+     "why": "COS-3018555981 input fluxes and component information."
+    },
+    {
+     "citation": "(cite: 2018Natur.557..392H); (cite: 2024MNRAS.533.2488M)",
+     "why": "MACS1149-JD1 ALMA flux and stellar mass."
+    },
+    {
+     "citation": "(cite: 2025ApJ...991L..38U)",
+     "why": "Independent similar optical/FIR multi-zone analysis at z ~ 6.8."
+    }
+   ],
+   "related_projects_or_surveys": [
+    "HSC-Subaru Strategic Program (HSC-SSP)",
+    "JWST GO-1657",
+    "JWST GO-1840",
+    "JWST GTO-1262"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gpt-6.1-sol",
+  "custom_id": "gpt61sol-2025ApJ...993..204H",
+  "batch_id": null,
+  "run": "codex_run3",
+  "collected_at": "2026-10-29T15:03:03",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "effort": "high",
+  "seconds": 578.7
+ },
+ "checks": {
+  "quotes": 304,
+  "quotes_ok": 304,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 44,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 192,
+   "stated": 153,
+   "rate": 0.797
+  },
+  "evidence_ok": true
+ }
+}

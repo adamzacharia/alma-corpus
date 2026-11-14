@@ -1,0 +1,269 @@
+{
+ "bibcode": "2017A&A...597A..41G",
+ "title": "The ALMA Frontier Fields Survey. I. 1.1 mm continuum detections in Abell 2744, MACS J0416.1-2403 and MACS J1149.5+2223",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201628806",
+ "arxiv_id": "1607.03808",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Can ALMA 1.1 mm mosaics of three Frontier Fields lensing clusters detect sub-mJy dusty star-forming galaxies, and what are their fluxes, sizes and NIR counterpart offsets?",
+ "alma_project_codes": [
+  "2013.1.00999.S"
+ ],
+ "data": {
+  "bands": "1.1 mm, LO 263.14 GHz",
+  "arrays": "12 m array",
+  "angular_resolution": "natural beams 0.63x0.49'', 1.52x0.85'', 1.22x1.08''",
+  "sensitivity": "rms 55, 59, 71 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens models for magnification from FF archive teams",
+    "evidence": [
+     {
+      "loc": "4.3 Source sizes",
+      "quote": "We estimate the magnification values as in (cite: Coe2015), by taking the 16th, 50th and 84th percentiles of the magnification values given by the full range from all the models"
+     }
+    ]
+   },
+   "citation": "(cite: Coe2015)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples of sizes/fluxes (SMA, SDP.81, UDS, HerMES)",
+    "evidence": [
+     {
+      "loc": "4.3 Source sizes",
+      "quote": "objects from the UKIDSS ultra deep survey (UDS) part of the SCUBA-2 cosmology legacy survey and the un-lensed objects from the *Herschel* Multi-tiered Extragalactic Survey (HerMES)"
+     }
+    ]
+   },
+   "citation": "(cite: Simpson2015; Bussmann2015)"
+  },
+  {
+   "what": {
+    "value": "Source number density >0.084 mJy used for confusion estimate",
+    "evidence": [
+     {
+      "loc": "4.2.1 Image fit",
+      "quote": "We should expect a number density of $\\approx10^{4.8}\\,\\,{\\rm deg}^{-2}$ sources with flux densities $>0.084$ mJy (cite: Fujimoto2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Fujimoto2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image mosaics",
+   "method": "JAO-based reduction, edge channels reinstated, natural-weighted mfs mosaic CLEAN",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "niter=1000, threshold 4x rms, 0.1'' pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "detect sources and assess purity",
+   "method": "sigma-clip rms in PB>=0.5, S/N>=5 pixels grouped with DBSCAN, 2D Gaussian fits; purity from simobserve simulations and NIR counterparts",
+   "software": [
+    "scikit-learn",
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "S/N>=5 cut"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "measure flux densities and sizes in uv-plane",
+   "method": "uvmcmcfit elliptical Gaussian in uv-plane after PB-weighting pointings within 19''",
+   "software": [
+    "uvmcmcfit",
+    "emcee"
+   ],
+   "key_parameters": [
+    "10,000-240,000 iterations, 5,000 burn-in"
+   ],
+   "assumptions": [
+    "no magnification modeled in the fit (lensed image plane)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "demagnify sizes and fluxes",
+   "method": "magnification from 16/50/84th percentiles of FF lens models; r/sqrt(mu), F/mu",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "z=2 (range 1-3) for sources without spectroscopic redshift"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "measure ALMA-HST positional offsets",
+   "method": "2D Gaussian centroid of F160W counterpart vs ALMA; source plane offsets via Zitrin-NFWv3 and LTMv1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "rms A2744",
+   "value": "55",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Abell 2744 | Natural | 0.63 | 0.49 | 86.14 | 55 |"
+    }
+   ]
+  },
+  {
+   "quantity": "rms MACSJ0416",
+   "value": "59",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MACSJ0416 | Natural | 1.52 | 0.85 | -85.13 | 59 |"
+    }
+   ]
+  },
+  {
+   "quantity": "rms MACSJ1149",
+   "value": "71",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MACSJ1149 | Natural | 1.22 | 1.08 | -43.46 | 71 |"
+    }
+   ]
+  },
+  {
+   "quantity": "number of detections S/N>=5",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detect 12 dusty star-forming galaxies at $S/N\\geq5.0$ across the three clusters"
+    }
+   ]
+  },
+  {
+   "quantity": "A2744-ID01 uv-fit flux",
+   "value": "1.570",
+   "uncertainty": "0.073",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| A2744-ID01 | $1.495 \\pm 0.081$ | $1.545 \\pm 0.081$ | 1.7 | 1.6 | $1.570\\pm0.073$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "A2744-ID02 uv-fit flux",
+   "value": "2.816",
+   "uncertainty": "0.229",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| A2744-ID02 | $1.656 \\pm 0.131$ | $3.262 \\pm 0.213$ | 10.3 | 2.2 | $2.816\\pm0.229$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "size-flux regression slope m",
+   "value": "-0.08",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Source sizes",
+     "quote": "The best-fit regression values are $m=-0.08\\pm0.10$ and $b=-0.95\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "size-flux regression intercept b",
+   "value": "-0.95",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Source sizes",
+     "quote": "The best-fit regression values are $m=-0.08\\pm0.10$ and $b=-0.95\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "median offset Delta DEC (NIR-mm)",
+   "value": "-0.13",
+   "uncertainty": "0.02",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Positional Offsets",
+     "quote": "$\\Delta{\\rm DEC}$$=$$-$0.13$''$$\\pm$0.02$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "A2744-ID02 source-plane offset",
+   "value": "0.48",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Positional Offsets",
+     "quote": "is $0.48\\ensuremath{''}\\pm0.04\\ensuremath{''}$ including only the uncertainties"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "DBSCAN parameters (eps, min_samples)",
+  "Priors and initial parameter ranges for uvmcmcfit",
+  "Number of walkers",
+  "Exact simobserve settings (PWV, integration time)",
+  "Which lens models and versions exactly were used per cluster",
+  "Cosmology parameters",
+  "Details of fake point-source injection (flux grid, number)"
+ ],
+ "missing_for_reproduction": [
+  "DBSCAN settings",
+  "uvmcmcfit priors/walkers",
+  "simobserve parameters",
+  "exact lens model versions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a fairly clear recipe, but several analysis parameters are unstated and manual reduction is needed.",
+ "rediscovery_reason": "Data are public, the recipe is mostly complete, and results are numeric (rms, fluxes, sizes).",
+ "source_card": "cards/2017A%26A...597A..41G/sonnet/card.md"
+}

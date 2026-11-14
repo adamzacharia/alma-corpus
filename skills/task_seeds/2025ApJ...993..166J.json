@@ -1,0 +1,571 @@
+{
+ "bibcode": "2025ApJ...993..166J",
+ "title": "Puffed-up Inner Rings and Razor-thin Outer Rings in Structured Protoplanetary Disks",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ae089e",
+ "arxiv_id": "2509.13122",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How does the vertical dust scale height differ between inner and outer rings of resolved double-ring protoplanetary disks, measured from azimuthal intensity variations in ALMA Band 6 continuum rings?",
+ "alma_project_codes": [
+  "2015.1.00118.S",
+  "2016.1.00484.L",
+  "2017.1.01151.S",
+  "2017.1.01167.S",
+  "2018.1.00945.S",
+  "2018.1.01255.S",
+  "2018.1.01829.S"
+ ],
+ "data": {
+  "bands": "Band 6 continuum",
+  "arrays": "not stated",
+  "angular_resolution": "Beams: V1094 Sco 0.074'' x 0.096''; AA Tau 0.061'' x 0.068''; LkCa 15 tapered to circular 0.05'' x 0.05''",
+  "sensitivity": "rms measured in emission-free annuli; LkCa 15 9.3 mJy/beam (0.09 K) without JvM correction (other disks given in Table in K only)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk position angle and inclination (and Table disk parameters such as M_star, L_star, d via numbered references)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "we adopt values from previous studies, as summarized in Table"
+     }
+    ]
+   },
+   "citation": "previous studies, numbered references I-VI in the disk parameter table (not named in the text)"
+  },
+  {
+   "what": {
+    "value": "LkCa 15 continuum image (non-JvM-corrected and JvM-corrected versions)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "while the data for LkCa 15 were collected from"
+     }
+    ]
+   },
+   "citation": "(cite: LongEtal2022b)"
+  },
+  {
+   "what": {
+    "value": "GM Aur continuum image",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "The data for GM Aur were obtained from"
+     }
+    ]
+   },
+   "citation": "(cite: HuangEtal2020j)"
+  },
+  {
+   "what": {
+    "value": "HD 163296 and AS 209 continuum images (DSHARP fits files)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "the fits files for HD 163296 and AS 209 are publicly available from the DSHARP large program"
+     }
+    ]
+   },
+   "citation": "(cite: AndrewsEtal2018b; HuangEtal2018b)"
+  },
+  {
+   "what": {
+    "value": "Mid-plane gas temperatures from CO isotopologue fits, used for H_g,CO",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "we calculate $H_{g, \\rm CO}$ using the empirically estimated mid-plane temperature by fitting the CO isotopologues temperature"
+     }
+    ]
+   },
+   "citation": "(cite: LawEtal2021b; LawEtal2023b)"
+  },
+  {
+   "what": {
+    "value": "Flaring angle phi = 0.02 for the theoretical flaring-disk temperature",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$\\phi=0.02$ is the so-called flaring angle"
+     }
+    ]
+   },
+   "citation": "(cite: ChiangGoldreich1997)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Obtain continuum images",
+   "method": "Use published Band 6 images for AS 209, HD 163296, GM Aur, LkCa 15; for V1094 Sco and AA Tau, pipeline-calibrate archival data, self-calibrate in CASA 6.4.1 (short baselines first, then combined) and image with Briggs weighting 1 and 2, without primary-beam or JvM correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs weighting 1 (V1094 Sco) and 2 (AA Tau)"
+   ],
+   "assumptions": [
+    "Missing primary-beam correction is negligible because disk emission is much smaller than the primary beam"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure image rms noise",
+   "method": "Compute rms in concentric annuli, adopt the median beyond the emission where the radial rms profile is flat",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Set disk geometry, extract radial profiles and define ring masks",
+   "method": "Find the image center by rotating the image by 180 degrees and minimising the squared residuals of the difference; adopt PA and inclination from literature; extract radial intensity profile with gofish; fit only where the azimuthally averaged intensity exceeds half the ring peak",
+   "software": [
+    "gofish"
+   ],
+   "key_parameters": [
+    "Ring selection: radially resolved, fitted Gaussian width greater than the beam size, and sufficiently sharp; exactly two rings per disk"
+   ],
+   "assumptions": [
+    "PA and inclination taken from previous studies"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the ring model to the image with MCMC",
+   "method": "Fit each ring with an empirical model: Gaussian vertical optical depth profile, two half-Gaussian radial widths, single ring temperature, I_los = (1-exp(-tau_los)) B_nu(T_ring), convolved with the beam; five free parameters per ring (T, r0, w_i, w_o, H_d)",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "tau_0 fixed at 0.5",
+    "32 walkers, run until the autocorrelation time converges",
+    "Burn-in of twice the maximum autocorrelation time"
+   ],
+   "assumptions": [
+    "Single temperature per ring",
+    "Scattering neglected"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Summarise posteriors and set upper limits on scale height",
+   "method": "Report the 50th percentile with 16th and 84th percentiles as 1 sigma; where the MLE of H_d is below the 16th percentile and near zero, quote the 84th percentile as an upper bound",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive gas scale height and dust settling coefficient alpha_z/St",
+   "method": "H_g = c_s/Omega_K with isothermal hydrostatic gas; three temperatures (fitted ring T, flaring-disk T with phi = 0.02, CO-isotopologue mid-plane T); alpha_z/St = (H_d/H_g)^2 for partially settled dust",
+   "software": [],
+   "key_parameters": [
+    "mean molecular weight mu = 2.3",
+    "flaring angle phi = 0.02 for the flaring-disk temperature"
+   ],
+   "assumptions": [
+    "Dust vertical diffusion and settling in equilibrium",
+    "Gas temperature uncertain; H_g in the main table uses the fitted ring temperature equal to the gas temperature"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test whether grain-size (Stokes number) differences can explain the inner/outer contrast",
+   "method": "Assume fragmentation-limited St with constant v_frag and delta_frag = alpha_z, giving alpha_z,1/alpha_z,2 = sqrt(C T2/T1) with C = (alpha_z,1/alpha_z,2)(St2/St1); compare lower limit on C with the observed temperature ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Constant fragmentation velocity between rings; vertical diffusion dominates the collision velocity so delta_frag = alpha_z"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Inner-ring dust scale height H_d, HD 163296",
+   "value": "3.0",
+   "uncertainty": "+0.1/-0.1",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison with other works",
+     "quote": "we provide precise constraints of $3.0^{+0.1}_{-0.1}$ au on the inner ring scale height"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-ring dust scale height H_d, V1094 Sco",
+   "value": "3.7",
+   "uncertainty": "+0.8/-1.2",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$3.7^{+0.8}_{-1.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-ring dust scale height H_d, LkCa 15",
+   "value": "1.5",
+   "uncertainty": "+0.3/-0.4",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$1.5^{+0.3}_{-0.4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-ring dust scale height H_d, GM Aur",
+   "value": "1.6",
+   "uncertainty": "+0.2/-0.2",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$1.6^{+0.2}_{-0.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner-ring dust scale height H_d, AS 209 and AA Tau (upper limits)",
+   "value": "AS 209 <0.8; AA Tau <0.4",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$<0.8$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$<0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer-ring dust scale height H_d upper limits",
+   "value": "AS 209 <0.8; AA Tau <0.8; V1094 Sco <4.3; LkCa 15 <0.6; GM Aur <0.5; HD 163296 <0.7",
+   "uncertainty": "84th percentile upper bound",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$<4.3$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$<0.6$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$<0.5$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$<0.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "H_d/r of the well-constrained inner rings (V1094 Sco, LkCa 15, GM Aur, HD 163296)",
+   "value": "0.025 to 0.045",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "are well constrained with $H_d/r$ from 0.025 to 0.045"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0, HD 163296 (inner, outer)",
+   "value": "66.5, 98.6",
+   "uncertainty": "+0.3/-0.2, +0.3/-0.4",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$66.5^{+0.3}_{-0.2}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$98.6^{+0.3}_{-0.4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0, GM Aur (inner, outer)",
+   "value": "37.3, 84.1",
+   "uncertainty": "+0.2/-0.2, +0.2/-0.2",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$37.3^{+0.2}_{-0.2}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$84.1^{+0.2}_{-0.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0, LkCa 15 (inner, outer)",
+   "value": "68.1, 99.3",
+   "uncertainty": "+0.3/-0.3, +0.3/-0.3",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$68.1^{+0.3}_{-0.3}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$99.3^{+0.3}_{-0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0, V1094 Sco (inner, outer)",
+   "value": "140.7, 235.0",
+   "uncertainty": "+2.0/-2.0, +2.6/-2.5",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$140.7^{+2.0}_{-2.0}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$235.0^{+2.6}_{-2.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0, AA Tau (inner, outer)",
+   "value": "42.9, 92.9",
+   "uncertainty": "+0.5/-0.5, +1.4/-1.4",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$42.9^{+0.5}_{-0.5}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$92.9^{+1.4}_{-1.4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0, AS 209 (inner, outer)",
+   "value": "74.3, 119.1",
+   "uncertainty": "+0.6/-0.6, +0.5/-0.5",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$74.3^{+0.6}_{-0.6}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$119.1^{+0.5}_{-0.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring temperatures T (inner, outer), GM Aur",
+   "value": "38.8, 20.7",
+   "uncertainty": "+0.1/-0.1, +0.1/-0.1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$38.8^{+0.1}_{-0.1}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$20.7^{+0.1}_{-0.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring temperatures T (inner, outer), HD 163296",
+   "value": "33.1, 21.0",
+   "uncertainty": "+0.2/-0.2, +0.2/-0.2",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$33.1^{+0.2}_{-0.2}$"
+    },
+    {
+     "loc": "Table (best-fit parameters)",
+     "quote": "$21.0^{+0.2}_{-0.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_z/St, inner rings of GM Aur and HD 163296",
+   "value": "~0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "resulting in $\\alpha_z/{\\rm St}$ estimated to be $\\sim0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_z/St, inner rings of V1094 Sco and LkCa 15",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "leading to $\\alpha_z/{\\rm St}~0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_z/St, inner rings of AS 209 and AA Tau",
+   "value": "<0.02",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "thus $\\alpha_z/{\\rm St}<0.02$ is constrained for both"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_z/St, outer rings",
+   "value": "<0.04 (all outer rings)",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "suggesting strong settling with $\\alpha_z/{\\rm St}<0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical diffusivity alpha_z in outer regions for St = 0.01-0.1",
+   "value": "<1e-4 to 1e-3",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Taking a typical St = $0.01$-$0.1$, this implies the vertical diffusivity $\\alpha_z<10^{-4}-10^{-3}$ in the outer region of these disks."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on C = (alpha_z,1/alpha_z,2)(St2/St1)",
+   "value": "C >~ 10-100 (Table: >3 V1094 Sco, >12 LkCa 15, >63 GM Aur, >38 HD 163296)",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Discussions",
+     "quote": "Our measurement constrain the lower limit of $C\\gtrsim10-100$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of rings with MLE of H_d near zero and below the 16th percentile",
+   "value": "8 of 12",
+   "uncertainty": "not stated",
+   "units": "rings",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "which happens in 8 out of 12 rings in the 6 disks"
+    }
+   ]
+  },
+  {
+   "quantity": "LkCa 15 JvM-corrected fit: inner-ring H_d",
+   "value": "1.7",
+   "uncertainty": "+0.1/-0.1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (JvM comparison)",
+     "quote": "$1.7^{+0.1}_{-0.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LkCa 15 JvM-corrected fit: outer-ring H_d",
+   "value": "<0.4",
+   "uncertainty": "upper limit",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table (JvM comparison)",
+     "quote": "$<0.4$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Sources of the stellar masses, luminosities, distances, PA and inclination: the disk parameter table cites numbered references (I-VI) that are not named in the text",
+  "For V1094 Sco and AA Tau: which executions of 2017.1.01167.S and 2018.1.01829.S were used, flux/phase calibrators, self-calibration solution intervals and number of rounds, and the CASA pipeline version",
+  "For V1094 Sco and AA Tau: tclean parameters (cell size, image size, deconvolver, masks, niter, threshold, uv taper), and the continuum channel selection",
+  "Pixel scale of the sampled images and how the beam convolution of the model was implemented (kernel, resampling), needed for sigma_sample = sqrt(A_beam/A_pixel) x sigma",
+  "gofish settings (radial bins, azimuthal bins, deprojection options) used for the radial profiles and the masks",
+  "MCMC details: initial walker positions, number of steps, autocorrelation convergence criterion, number of free parameters per ring fit when both rings are fitted together (single-ring fit vs joint)",
+  "Exact bounds or handling of the 'strictly positive' prior and the grid used for the line-of-sight integration (vertical/radial sampling, azimuthal sampling)",
+  "Whether the 'ring' fit regions in image space (mask) were fitted per ring independently or jointly",
+  "Origin of the Table values of H_g,CO (which CO-isotopologue temperature profiles were used and at which radii)"
+ ],
+ "missing_for_reproduction": [
+  "Full tclean and self-calibration settings for V1094 Sco and AA Tau",
+  "Source references for stellar and geometric parameters (numbered references not resolved)",
+  "Number of MCMC steps, initialisation and implementation details of the beam-convolved forward model",
+  "No code or fitted-image products stated as released",
+  "Which CO isotopologue temperature values were used for H_g,CO"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the model, likelihood and sampler are specified, with numeric tables, but self-calibration/imaging details for two disks, parameter references and MCMC settings are missing and no code is released.",
+ "rediscovery_reason": "Public images exist for four of the six disks, the model equations and likelihood are given, and the main results are numeric (scale heights, alpha_z/St), so the fit can be redone for those disks, though two disks need unstated reprocessing.",
+ "source_card": "cards/2025ApJ...993..166J/sonnet/card.md"
+}

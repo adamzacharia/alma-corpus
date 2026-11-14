@@ -1,0 +1,477 @@
+{
+ "bibcode": "2023ApJ...944L..18M",
+ "title": "PHANGS-JWST First Results: Interstellar Medium Structure on the Turbulent Jeans Scale in Four Disk Galaxies Observed by JWST and the Atacama Large Millimeter/submillimeter Array",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/acaaa8",
+ "arxiv_id": "2212.06434",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism",
+  "star_formation"
+ ],
+ "question": "Examine whether the multi-scale network of filamentary features in four nearby disk galaxies observed with JWST/MIRI is consistent with the fragmentation of the gas disk through gravitational instability on the Toomre, turbulent Jeans, or disk scale height scales.",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.01161.S",
+  "2015.1.00956.S",
+  "2017.1.00886.L",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12m+7m+tp and 7m+tp",
+  "angular_resolution": "150 pc-scale (12m+7m+tp for NGC 628, NGC 1365, NGC 7496); convolved to 1.5 kpc resolution (7m+tp for IC 5332)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy properties (Distance, inclination, PA, stellar mass, SFR) for the four target galaxies",
+    "evidence": [
+     {
+      "loc": "PHANGS-JWST imaging",
+      "quote": "Table [\\[tab:props\\]](#tab:props) lists a number of relevant properties for the four target galaxies (cite: LEE_PHANGSJWST)."
+     }
+    ]
+   },
+   "citation": "(cite: LEE_PHANGSJWST)"
+  },
+  {
+   "what": {
+    "value": "Rotation curves measured from the CO velocity field and analytical fits for NGC 628, NGC 1365, and NGC 7496",
+    "evidence": [
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "For NGC 628, NGC 1365, and NGC 7496, we adopt the rotation curve measured from the CO velocity field by (cite: lang20) as our estimate of the circular velocity $V_c$."
+     },
+     {
+      "loc": "Estimating the Turbulent Jeans Length and the Toomre Length",
+      "quote": "derived from an analytical fit to the observed rotation curve (cite: lang20)."
+     }
+    ]
+   },
+   "citation": "(cite: lang20)"
+  },
+  {
+   "what": {
+    "value": "Semi-empirical rotation curve model implied by stellar mass and integrated atomic gas mass estimate for IC 5332",
+    "evidence": [
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "For IC 5332, we use the semi-empirical rotation curve model implied by this galaxy’s stellar mass (cite: leroy21b), following (cite: meidt18)."
+     },
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "The integrated mass of atomic gas then equals value estimated for this galaxy (cite: leroy21b)."
+     }
+    ]
+   },
+   "citation": "(cite: leroy21b); (cite: meidt18)"
+  },
+  {
+   "what": {
+    "value": "PHANGS mega-tables: 1-kpc hexagonal aperture molecular gas surface densities, 150-pc scale molecular gas velocity dispersions, stellar mass surface densities, and resolved HI observations for NGC 628",
+    "evidence": [
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "For the gas properties (velocity dispersion and surface density), where possible we adopt the values tabulated for the molecular gas in the PHANGS mega-tables recently presented by (cite: sun22)."
+     },
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "As our fiducial estimate of the molecular gas velocity dispersion in each aperture, we choose the average velocity dispersion measured specifically on 150 pc scales from the 12m+7m+tp CO(2-1) cubes for NGC 628, NGC 1365 and NGC 7496 (cite: sun22)."
+     },
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "In NGC 628, the azimuthally-averaged molecular gas mass fraction is $>$70% over the MIRI field of view using the atomic gas traced by resolved HI observations available for NGC 628 (cite: sun22)."
+     }
+    ]
+   },
+   "citation": "(cite: sun22)"
+  },
+  {
+   "what": {
+    "value": "Stellar scale height z_0 assigned to each galaxy from an empirical scaling relation between z_0 and disk scale length",
+    "evidence": [
+     {
+      "loc": "PHANGS-ALMA",
+      "quote": "Supplementing this set of measured gas properties, in each hexagonal 1-kpc mega-table aperture we also use the tabulated stellar mass surface density and the stellar scale height $z_0$ assigned uniquely to each galaxy according to an empirical scaling relation between $z_0$ and disk scale length (cite: sun20)."
+     }
+    ]
+   },
+   "citation": "(cite: sun20)"
+  },
+  {
+   "what": {
+    "value": "Catalog of bubble candidates in NGC 628 morphologically identified in MIRI images",
+    "evidence": [
+     {
+      "loc": "Filaments in relation to feedback",
+      "quote": "Consistent with this expectation, the catalog of bubble candidates in NGC 628 morphologically identified in the MIRI images and visually matched with a stellar counterpart (cite: WATKINS_PHANGSJWST) have average radii 20-30 pc, just at the scale height estimated here (see Figure [3](#fig:spacings)), although they can reach as large as 550 pc."
+     }
+    ]
+   },
+   "citation": "(cite: WATKINS_PHANGSJWST)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract gas dynamical properties, surface densities, and velocity dispersions from PHANGS-ALMA CO(2-1) and mega-tables",
+   "method": "Adopt rotation curves from CO velocity fields (NGC 628, NGC 1365, NGC 7496) or stellar-mass semi-empirical model (IC 5332) and interpolate onto the JWST map grid. Adopt 1-kpc hexagonal aperture molecular gas surface densities and 150-pc cloud-scale velocity dispersions from PHANGS mega-tables (12m+7m+tp for NGC 628, NGC 1365, NGC 7496). For IC 5332, convolve the 7m+tp moment-0 map to 1.5 kpc resolution, sample at hex centers, apply alpha_CO, and adopt a global minimum velocity dispersion of 1.25 km/s (plus an optional exponential atomic gas component).",
+   "software": [],
+   "key_parameters": [
+    "1-kpc hexagonal apertures; 150 pc scale for moment-0 and velocity dispersion (NGC 628, NGC 1365, NGC 7496)",
+    "1.5 kpc resolution convolved 7m+tp moment-0 map and minimum velocity dispersion sigma = 1.25 km s^-1 for IC 5332"
+   ],
+   "assumptions": [
+    "Aperture-dependent alpha_CO following Sun et al. (2022)",
+    "Principal fragmentation happens at/near the cloud scale (150 pc)",
+    "Optional atomic gas in IC 5332: exponential decline from maximum 10 M_sun pc^-2 with 3.6 kpc scale length and sigma = 7 km s^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify filamentary networks in JWST/MIRI F1130W images",
+   "method": "Create unsharp mask versions of the MIRI F1130W images by subtracting a Gaussian-smoothed version (sigma = 1.1\" or 10 pixels) from the native image, then run FilFinder with global intensity thresholds and minimum width and length cuts to generate filament masks.",
+   "software": [
+    "FilFinder"
+   ],
+   "key_parameters": [
+    "Unsharp mask Gaussian smoothing sigma = 1.1\" (10 image pixels)",
+    "Minimum filament width = 50 pc; minimum filament length = 100 pc (NGC 628, IC 5332) or 500 pc (NGC 1365, NGC 7496)",
+    "Unsharp mask global intensity threshold = 0.03 MJy/sr (NGC 628, IC 5332, NGC 7496) or 0.2 MJy/sr (NGC 1365)"
+   ],
+   "assumptions": [
+    "Shorter or narrower lower-intensity elongated structures do not contribute to the main filamentary web and originate from a different mechanism"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure characteristic azimuthal and radial spacings between filaments",
+   "method": "For NGC 628 and IC 5332, divide FilFinder masks into narrow elliptical annuli (width = 3 pixels or 1 resolution element) at the galaxy's inclination and PA, find intersections with >= 5 pixels, compute nearest-neighbor azimuthal separations in each ring, and average over 20 radial bins (300 pc-wide annuli). For NGC 1365 and NGC 7496, divide masks into 1-degree wide azimuthal segments, find radial intersections with >= 5 pixels, and calculate mean and standard deviation of nearest-neighbor radial separations in two radial zones (R < 2.5 kpc and R > 2.5 kpc) across azimuths away from bar ends.",
+   "software": [],
+   "key_parameters": [
+    "Annulus width = 1 resolution element (3 pixels, 15 pc at NGC 628); radial averaging over 20 bins (300 pc-wide annuli); intersection threshold N_pix = 5 pixels",
+    "Azimuthal segment width = 1 degree; radial zones R < 2.5 kpc and R > 2.5 kpc; intersection threshold N_pix = 5 pixels"
+   ],
+   "assumptions": [
+    "Galaxy inclination and position angle from Table 1 used to project elliptical annuli"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate Toomre length, 2D most unstable wavelength, Toomre Q, gas scale height, and 3D turbulent Jeans length, and compare with filament spacings",
+   "method": "In each 1-kpc hexagonal aperture, compute epicyclic frequency kappa from analytical rotation curve fits, Toomre length lambda_T = 4*pi^2*G*Sigma/kappa^2, 2D most unstable wavelength lambda_2D = 2*sigma^2/(G*Sigma), and Toomre Q. Estimate vertical gas scale height h either by assuming a fixed h = 100 pc or by solving the quadratic hydrostatic equilibrium equation with gas self-gravity and background stellar density rho_b, then compute mid-plane gas density rho = Sigma/(sqrt(2*pi)*h) and 3D turbulent Jeans length lambda_J = sigma*pi^(1/2)/(G*rho)^(1/2). Compare radial profiles of these scales against measured filament spacings.",
+   "software": [],
+   "key_parameters": [
+    "Fixed gas scale height h = 100 pc (for Table 1 values) or hydrostatic equilibrium h (typically 30 to 100 pc)"
+   ],
+   "assumptions": [
+    "Gas is isothermal and follows a Gaussian vertical distribution rho propto exp(-z^2/(2h^2)) such that Sigma = rho*sqrt(2*pi)*h",
+    "Background gravitational potential is dominated by the stellar distribution, omitting atomic gas and dark matter halo (unless specified for IC 5332)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean molecular gas surface density (Sigma_mol) in IC 5332",
+   "value": "0.5",
+   "uncertainty": "0.3 – 1.4 (16th and 84th percentiles)",
+   "units": "M_odot pc^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\Sigma_{mol}$(M$_\\odot$ pc$^{-2}$) | 0.5 (0.3 – 1.4) | 11.2 (5.8 – 19.3) | 8 (3.0 – 59.0) | 7.4 (2.0 – 17.8) |"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "The mean of the values measured in all hexagonal apertures (see $\\S$ [2.2](#sec:almadata)) sampling the analysis region. Indicated ranges denote the 16th and 84th percentiles of the measurements."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas surface density (Sigma_mol) in NGC 628",
+   "value": "11.2",
+   "uncertainty": "5.8 – 19.3 (16th and 84th percentiles)",
+   "units": "M_odot pc^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\Sigma_{mol}$(M$_\\odot$ pc$^{-2}$) | 0.5 (0.3 – 1.4) | 11.2 (5.8 – 19.3) | 8 (3.0 – 59.0) | 7.4 (2.0 – 17.8) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas surface density (Sigma_mol) in NGC 1365",
+   "value": "8",
+   "uncertainty": "3.0 – 59.0 (16th and 84th percentiles)",
+   "units": "M_odot pc^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\Sigma_{mol}$(M$_\\odot$ pc$^{-2}$) | 0.5 (0.3 – 1.4) | 11.2 (5.8 – 19.3) | 8 (3.0 – 59.0) | 7.4 (2.0 – 17.8) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas surface density (Sigma_mol) in NGC 7496",
+   "value": "7.4",
+   "uncertainty": "2.0 – 17.8 (16th and 84th percentiles)",
+   "units": "M_odot pc^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\Sigma_{mol}$(M$_\\odot$ pc$^{-2}$) | 0.5 (0.3 – 1.4) | 11.2 (5.8 – 19.3) | 8 (3.0 – 59.0) | 7.4 (2.0 – 17.8) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas velocity dispersion (sigma_mol) in IC 5332",
+   "value": "1.25",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\sigma_{mol}$(km s$^{-1}$) | 1.25 | 4.7 (3.9 – 5.5) | 8.7 (3.5 – 23) | 4.3 (3.4 – 6.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas velocity dispersion (sigma_mol) in NGC 628",
+   "value": "4.7",
+   "uncertainty": "3.9 – 5.5 (16th and 84th percentiles)",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\sigma_{mol}$(km s$^{-1}$) | 1.25 | 4.7 (3.9 – 5.5) | 8.7 (3.5 – 23) | 4.3 (3.4 – 6.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas velocity dispersion (sigma_mol) in NGC 1365",
+   "value": "8.7",
+   "uncertainty": "3.5 – 23 (16th and 84th percentiles)",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\sigma_{mol}$(km s$^{-1}$) | 1.25 | 4.7 (3.9 – 5.5) | 8.7 (3.5 – 23) | 4.3 (3.4 – 6.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas velocity dispersion (sigma_mol) in NGC 7496",
+   "value": "4.3",
+   "uncertainty": "3.4 – 6.2 (16th and 84th percentiles)",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\sigma_{mol}$(km s$^{-1}$) | 1.25 | 4.7 (3.9 – 5.5) | 8.7 (3.5 – 23) | 4.3 (3.4 – 6.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre length (lambda_T) in IC 5332",
+   "value": "1523",
+   "uncertainty": "594 – 2678 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_T$(pc) | 1523 (594 – 2678) | 9638 (4584 – 14367) | 5397 (625 – 8107) | 37782 (4504 – 39725) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre length (lambda_T) in NGC 628",
+   "value": "9638",
+   "uncertainty": "4584 – 14367 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_T$(pc) | 1523 (594 – 2678) | 9638 (4584 – 14367) | 5397 (625 – 8107) | 37782 (4504 – 39725) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre length (lambda_T) in NGC 1365",
+   "value": "5397",
+   "uncertainty": "625 – 8107 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_T$(pc) | 1523 (594 – 2678) | 9638 (4584 – 14367) | 5397 (625 – 8107) | 37782 (4504 – 39725) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre length (lambda_T) in NGC 7496",
+   "value": "37782",
+   "uncertainty": "4504 – 39725 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_T$(pc) | 1523 (594 – 2678) | 9638 (4584 – 14367) | 5397 (625 – 8107) | 37782 (4504 – 39725) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean turbulent Jeans length (lambda_J, assuming h=100 pc) in IC 5332",
+   "value": "673",
+   "uncertainty": "404 – 906 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_J$(pc) | 673 (404 – 906) | 590 (445 – 708) | 1145 (712 – 1603) | 742 (529 – 966) |"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "The mean of the values measured in all hexagonal apertures (see $\\S$ [2.2](#sec:almadata)) assuming a fixed gas scale height $h$=100 pc. Indicated ranges denote the 16th and 84th percentiles of the measurements."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean turbulent Jeans length (lambda_J, assuming h=100 pc) in NGC 628",
+   "value": "590",
+   "uncertainty": "445 – 708 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_J$(pc) | 673 (404 – 906) | 590 (445 – 708) | 1145 (712 – 1603) | 742 (529 – 966) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean turbulent Jeans length (lambda_J, assuming h=100 pc) in NGC 1365",
+   "value": "1145",
+   "uncertainty": "712 – 1603 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_J$(pc) | 673 (404 – 906) | 590 (445 – 708) | 1145 (712 – 1603) | 742 (529 – 966) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean turbulent Jeans length (lambda_J, assuming h=100 pc) in NGC 7496",
+   "value": "742",
+   "uncertainty": "529 – 966 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_J$(pc) | 673 (404 – 906) | 590 (445 – 708) | 1145 (712 – 1603) | 742 (529 – 966) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean filament azimuthal spacing (lambda_fil) in IC 5332",
+   "value": "660",
+   "uncertainty": "420 – 888 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_{fil}$(pc) | 660 (420 – 888) | 388 (335 – 437) | 1051 (647 – 1285) | 547 (434 – 652) |"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "The mean of all radially binned azimuthal spacings measured for IC 5332 and NGC 628 or the mean of all azimuthally binned radial spacings in NGC 1365 and NGC 7496, as plotted in Figure [3](#fig:spacings). Indicated ranges denote the 16th and 84th percentiles of the measurements."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean filament azimuthal spacing (lambda_fil) in NGC 628",
+   "value": "388",
+   "uncertainty": "335 – 437 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_{fil}$(pc) | 660 (420 – 888) | 388 (335 – 437) | 1051 (647 – 1285) | 547 (434 – 652) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean filament radial spacing (lambda_fil) in NGC 1365",
+   "value": "1051",
+   "uncertainty": "647 – 1285 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_{fil}$(pc) | 660 (420 – 888) | 388 (335 – 437) | 1051 (647 – 1285) | 547 (434 – 652) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean filament radial spacing (lambda_fil) in NGC 7496",
+   "value": "547",
+   "uncertainty": "434 – 652 (16th and 84th percentiles)",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\lambda_{fil}$(pc) | 660 (420 – 888) | 388 (335 – 437) | 1051 (647 – 1285) | 547 (434 – 652) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated hydrostatic gas scale height (h) across the four targets",
+   "value": "30 to 100",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Estimating the Turbulent Jeans Length and the Toomre Length",
+     "quote": "The gas scale heights estimated for our four targets lie typically in the range 30 to 100 pc and exhibit a modest amount of radial variation."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Complete set of FilFinder input parameters (such as adaptive threshold scale, smooth size, size threshold, and axis ratio parameters)",
+  "Exact azimuthal angle ranges used when averaging radial filament spacings away from the bar ends in NGC 1365 and NGC 7496",
+  "Numerical values of the stellar scale height z_0 and stellar mass surface density in each hexagonal aperture",
+  "Exact numerical values of alpha_CO per hexagonal aperture"
+ ],
+ "missing_for_reproduction": [
+  "Exact FilFinder parameter configuration file or function call arguments (adaptive threshold scale, smoothing size, axis ratio cut, etc.)",
+  "Specific azimuthal sector bounds used to exclude the bar ends when averaging radial spacings in NGC 1365 and NGC 7496",
+  "Custom scripts used to intersect FilFinder masks with elliptical annuli and azimuthal segments"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All underlying ALMA data products (PHANGS-ALMA moment maps and Sun et al. 2022 mega-tables) and JWST/MIRI images are publicly available, and the mathematical equations and primary spatial/intensity thresholds are clearly stated. However, a few secondary FilFinder parameters and the exact azimuthal ranges excluded near the bar ends in NGC 1365 and NGC 7496 are not explicitly specified.",
+ "rediscovery_reason": "Both the PHANGS-JWST MIRI images and the PHANGS-ALMA mega-tables/moment maps are public, the analytical formulas for Toomre and Jeans lengths are completely specified, and the primary numeric results (Table 1 means and 16th-84th percentile ranges for all four galaxies) provide a clear quantitative benchmark.",
+ "source_card": "cards/2023ApJ...944L..18M/sonnet/card.md"
+}

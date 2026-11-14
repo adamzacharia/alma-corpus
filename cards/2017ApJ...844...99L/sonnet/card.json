@@ -1,0 +1,1020 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...844...99L",
+  "title": "An ALMA Survey of CO Isotopologue Emission from Protoplanetary Disks in Chamaeleon I",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Long, Feng",
+  "n_authors": 11,
+  "arxiv_id": "1706.03320",
+  "doi": "10.3847/1538-4357/aa78fc",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00437.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we use ALMA to survey $^{13}$CO and C$^{18}$O J = $3-2$ line emission from a sample of 93 protoplanetary disks around stars and brown dwarfs"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Chamaeleon I Class II disks (93 sources)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "188 ± 12 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "nearby ($188\\pm12$ pc, see Appendix [8](#gaia))"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR1 TGAS parallaxes of Cha I members (Appendix)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "nearby ($188\\pm12$ pc, see Appendix [8](#gaia))"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can CO isotopologue (13CO, C18O J=3-2) emission serve as an alternate probe of disk gas mass in Cha I disks, and what gas masses and gas-to-dust ratios result?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "To investigate the utility of CO as an alternate probe of disk mass, we use ALMA to survey $^{13}$CO and C$^{18}$O J = $3-2$ line emission"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00437.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00437.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations",
+      "quote": "We use ALMA Band 7 to survey the Class II protoplanetary disks in Cha I in the Cycle 2 program 2013.1.00437 (PI: I. Pascucci)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "One baseband split into segments at 330.6 GHz (13CO) and 329.3 GHz (C18O), each 117.2 MHz bandwidth, 0.122 MHz channels (0.11 km/s); three other spws for continuum",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations",
+      "quote": "The correlator was configured to cover both lines, each with a bandwidth of 117.2 MHz and a channel separation of 0.122 MHz (0.11 km s$^{-1}$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "330.6 GHz (segment center)",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "centered at 330.6 GHz to target the $^{13}$CO J = 3-2"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=3-2",
+     "rest_frequency": "329.3 GHz (segment center)",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "at 329.3 GHz to target the C$^{18}$O J = 3-2"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.7'' x 0.5'' synthesized beam",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations",
+      "quote": "The resulting synthesized beam for the CO data cube is 0.$\\ensuremath{''}$7$\\times$0.$\\ensuremath{''}$5 for both samples"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1σ rms 30 (43) mJy/beam for 13CO (C18O) in Cool and 107 (126) mJy/beam in Hot sample at 0.25 km/s",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations",
+      "quote": "reach the 1$\\sigma$ noise rms of 30 (43) mJy beam$^{-1}$ and 107 (126) mJy beam$^{-1}$ for $^{13}$CO (C$^{18}$O) in the Cool and Hot samples"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "24 s per source (Hot sample), 120 s per source (Cool sample), two executions",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations",
+      "quote": "two sets of observations were executed for a total integration time of 24 s per source for the Hot sample and 120 s per source for the Cool sample."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 2 program, PI I. Pascucci",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations",
+      "quote": "in the Cycle 2 program 2013.1.00437 (PI: I. Pascucci)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia DR1 TGAS",
+     "provided": {
+      "value": "Parallaxes used for Cha I and Lupus distances",
+      "evidence": [
+       {
+        "loc": "Distances",
+        "quote": "We calculated a distance of $188\\pm12$ pc to Cha I from the average Gaia DR1 TGAS parallax"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Continuum flux densities, stellar masses, spectral types, phase-center offsets, dust masses",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "continuum flux densities and stellar masses[^4] of our sample are adopted from (cite: pascucci2016)"
+       }
+      ]
+     },
+     "citation": "(cite: pascucci2016)"
+    },
+    {
+     "what": {
+      "value": "Accretion rates",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "Accretion rates are obtained from (cite: manara2016a; manara17)"
+       }
+      ]
+     },
+     "citation": "(cite: manara2016a; manara17)"
+    },
+    {
+     "what": {
+      "value": "Disk model grids for CO luminosity to gas mass conversion (MvD16)",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "MvD16 developed hundreds of full thermal-chemical models that include isotope-selective photodissociation and CO freeze-out."
+       }
+      ]
+     },
+     "citation": "(cite: miotello2016)"
+    },
+    {
+     "what": {
+      "value": "Parametric disk model grids (WB14)",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "we derive the gas mass from WB14 model grids by adopting the same approach described in detail in (cite: ansdell2016)"
+       }
+      ]
+     },
+     "citation": "(cite: WilliamsBest2014); (cite: ansdell2016)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA with NRAO-provided data reduction scripts",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "following the data reduction scripts provided by NRAO, including flux, phase, bandpass, and gain calibrations."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10%",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "The absolute flux scale has a systematic uncertainty of 10$\\%$."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA concat, uvcontsub, clean",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "The two executions of each object are then concatenated using the *concat* task after flux calibration."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting, all baselines included",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "natural weighting is chosen in *clean* to favor shorter baselines and hence achieve a higher signal-to-noise ratio (S/N)."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uv-plane subtraction with uvcontsub",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "Continuum emission is subtracted in the uv-plane from the spectral windows containing CO isotopologue lines using *uvcontsub* task."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "imaged at 0.25 km/s spectral resolution",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "The CO transitions are imaged at a spectral resolution of 0.25 km s$^{-1}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.7'' x 0.5''",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "The resulting synthesized beam for the CO data cube is 0.$\\ensuremath{''}$7$\\times$0.$\\ensuremath{''}$5"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observation setup, calibrators and continuum results",
+      "evidence": [
+       {
+        "loc": "2 ALMA observations",
+        "quote": "The sample, observation calibrator setups, and results of the dust continuum are described in detail by (cite: pascucci2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: pascucci2016)"
+    },
+    {
+     "what": {
+      "value": "Gas mass derivation from WB14 grids follows Ansdell et al.",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "we derive the gas mass from WB14 model grids by adopting the same approach described in detail in (cite: ansdell2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: ansdell2016)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass-binning approach for Lupus comparison",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "following the same approach in (cite: andrews2013) and (cite: ansdell2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: andrews2013); (cite: ansdell2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and clean parameters (cell size, image size, niter, threshold, mask)",
+    "Line-free channels used in uvcontsub and fit order",
+    "Calibrator names and pipeline details",
+    "Priors ranges and emcee settings (walkers, steps) for the flux-stellar mass fit",
+    "Exact line-luminosity definition and unit conversion for MvD16 fits",
+    "Dust-mass values from Pascucci et al. needed for gas-to-dust ratios"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image CO cubes",
+    "method": {
+     "value": "CASA calibration with NRAO scripts, concat, uvcontsub, clean with natural weighting",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "The spectral line data cubes are then created with the *clean* algorithm using the continuum-subtracted visibilities."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Alternate reductions excluding baselines <40 kλ",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "In alternate reductions that exclude baselines shorter than $< 40$ k$\\lambda$, the flux differences are within uncertainty in most cases"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Define extraction region and velocity range by stacking",
+    "method": {
+     "value": "Stack images shifted to continuum centroid, weighted by noise; adopt 0.6'' radius (13CO), 0.3'' (C18O), 0-10 km/s",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we adopt extraction radii of $\\sim$ 0.$\\ensuremath{''}$6 for $^{13}$CO and 0.$\\ensuremath{''}$3 for C$^{18}$O, both centered at the continuum position."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "C18O has same velocity range as 13CO",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "we assume that C$^{18}$O and $^{13}$CO have the same emission velocity."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure flux uncertainties and detection significance",
+    "method": {
+     "value": "Standard deviation of fluxes in 20 random apertures in each of six 10 km/s control ranges; mean adopted as uncertainty; 3σ detection threshold",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we adopt the mean value from the six control channels as the flux uncertainty for each source"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Only 1 of 558 13CO control fluxes exceeds 3σ, consistent with Gaussian expectation",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "Only one of 558 $^{13}$CO and two of 558 C$^{18}$O data points have S/N larger than 3"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure fluxes for detections with adapted apertures",
+    "method": {
+     "value": "Increase circular aperture in 0.15'' steps on moment-0 map until flux flattens",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "We then measure the fluxes by increasing the circular aperture size in $0.15\\ensuremath{''}$ radius increments on the intensity map until the flux flattens."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit 13CO flux vs stellar mass and continuum",
+    "method": {
+     "value": "Bayesian power-law fit F=β M*^α with chi2 likelihood including intrinsic scatter; Linmix and cenken as checks",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "The posterior parameter space is sampled in a Markov Chain Monte Carlo (MCMC) algorithm with *emcee*"
+      }
+     ]
+    },
+    "software": [
+     "emcee",
+     "Linmix",
+     "R NADA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "emcee MCMC, uniform priors, chi2 likelihood; non-detections use measured fluxes",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "with $\\alpha$ and $\\beta$ sampled uniformly in prior range."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Linmix with 3σ limits gives consistent slope 1.14±0.27; cenken slope 1.07",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "yields a best fit with a slope of $1.14\\pm0.27$ and a lower intercept of $2.50\\pm0.20$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Convert line luminosities to gas masses",
+    "method": {
+     "value": "Fitted functions to median luminosity per mass bin of MvD16 grids (T Tauri, 1 Lsun); WB14 grids matched within uncertainties",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "we fit simple functions of disk mass with line luminosity using the median value in each mass bin from MvD16 model grids"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO-to-H2 ~1e-4 ISM abundance; distance 188 pc; MvD16 T Tauri models with stellar luminosity 1 Lsun",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "In this analysis, we adopt the T Tauri models with stellar luminosity of 1 $L_{\\odot}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Miotello et al. 2017 fits; our masses divided by 1.6 (10 deg) or 1.2 (80 deg) to match",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "by dividing our gas mass by factors of 1.6 for disks with an inclination angle of 10$\\ensuremath{^\\circ}$ and by 1.2 for an inclination angle of 80$\\ensuremath{^\\circ}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compute gas-to-dust ratios and compare with Lupus",
+    "method": {
+     "value": "Gas mass over dust mass (Td=20 K, 188 pc); Kaplan-Meier and cendiff two-sample tests for Cha I vs Lupus over 10^4 iterations",
+     "evidence": [
+      {
+       "loc": "6.1",
+       "quote": "We also perform the two-sample test with the *cendiff* routine including censored data in NADA package"
+      }
+     ]
+    },
+    "software": [
+     "R NADA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Dust temperature fixed at 20 K",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "assuming a fixed dust temperature of 20 K and then scaled to the 188 pc Gaia distance"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration, concat, uvcontsub, clean",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "The ALMA data are calibrated using the *Common Astronomy Software Application* (CASA) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fit of 13CO flux vs stellar mass",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "sampled in a Markov Chain Monte Carlo (MCMC) algorithm with *emcee*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Linmix",
+    "version": "not stated",
+    "used_for": {
+     "value": "Bayesian linear regression with upper limits",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "the Bayesian linear regression method *Linmix* [^5] (cite: Kelly2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "R NADA package (cendiff, cenken)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Kaplan-Meier estimator and censored two-sample tests",
+     "evidence": [
+      {
+       "loc": "6.1",
+       "quote": "The distributions are calculated using the Kaplan-Meier estimator in the R NADA package to include $3\\sigma$ upper limits."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "13CO detections",
+    "value": "17 of 93 (12 significant, 5 tentative)",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We detect $^{13}$CO emission from 17 out of 93 sources"
+     }
+    ]
+   },
+   {
+    "quantity": "log F13CO vs log M* slope",
+    "value": "1.16",
+    "uncertainty": "±0.13",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$\\log(F_{13CO}/{\\rm mJy})=1.16 (\\pm0.13)\\times \\log(M_*/M_\\odot)+2.84(\\pm 0.18)$"
+     }
+    ]
+   },
+   {
+    "quantity": "log F13CO vs log Fmm slope",
+    "value": "0.58",
+    "uncertainty": "±0.08",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$\\log(F_{\\rm 13CO}/{\\rm mJy}) = 0.58 (\\pm0.08)\\times \\log(F_{\\rm mm}/{\\rm mJy})+1.71 (\\pm0.16).$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked 13CO flux of detections",
+    "value": "574",
+    "uncertainty": "±31",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The mean signals are 574$\\pm$31 mJy km s$^{-1}$ in $^{13}$CO"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked 13CO flux of non-detections",
+    "value": "70",
+    "uncertainty": "±15",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "yields a noise-weighted average line flux of 70$\\pm$15 mJy km s$^{-1}$ in $^{13}$CO"
+     }
+    ]
+   },
+   {
+    "quantity": "log Mgas vs log M* slope (MvD16)",
+    "value": "1.27",
+    "uncertainty": "±0.14",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "log(M$_{\\rm gas}$/M$_{\\rm Jup}$)= 1.27 ($\\pm$0.14)$\\times$log(M$_*$/M$_\\odot$) – 0.76 ($\\pm$0.11)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median gas-to-dust ratio (MvD16)",
+    "value": "~4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "The median value of gas-to-dust ratio is $\\sim 4$ when the gas mass is evaluated from MvD16"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked gas mass Hot sample",
+    "value": "~0.07",
+    "uncertainty": "not stated",
+    "units": "MJup",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "$\\sim$ 0.07 M$_{\\rm Jup}$ (22 M$_{\\rm Earth}$) for the Hot sample"
+     }
+    ]
+   },
+   {
+    "quantity": "Median P value Cha I vs Lupus 13CO flux",
+    "value": "0.25",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6.1",
+      "quote": "with the median P value of 0.25"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "13CO emission is slightly more extended than dust, with FWHM 30% wider in stacked radial profile",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "with a radial profile FWHM 30$\\%$ wider in $^{13}$CO emission"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do CO isotopologues give plausible disk gas masses with ISM CO/H2?",
+    "experiment": "Convert 13CO/C18O luminosities to gas mass via MvD16 and WB14 grids",
+    "result": "Gas masses mostly 0.03-1 MJup, stacked ~0.05 MJup; gas-to-dust ~1-15",
+    "finding": "Gas masses and gas-to-dust ratios are implausibly low unless CO is depleted",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the resulting gas masses are implausibly low, with an average gas mass of $\\sim$ 0.05 M$_{Jup}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does 13CO flux correlate with stellar mass?",
+    "experiment": "Bayesian fit of flux vs M*",
+    "result": "Slope 1.16±0.13",
+    "finding": "13CO flux scales with stellar mass, shallower than continuum",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "the power law of 1.16 between stellar mass and $^{13}$CO flux is shallower than the power law of $1.9-2.1$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are Cha I and Lupus CO properties similar?",
+    "experiment": "Kaplan-Meier and censored two-sample tests",
+    "result": "Median P=0.25, but 0.003 with smaller-aperture limits",
+    "finding": "No firm conclusion possible",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6.1",
+      "quote": "differences in the beam sizes, sensitivities, and extraction methods prevent any firm conclusion on the similarity of CO gas properties"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Uniform stacking-based method to handle weak signals and upper limits",
+    "evidence": [
+     {
+      "loc": "3 Measuring CO Line Fluxes and Upper Limits",
+      "quote": "we develop a method to uniformly identify weak detections and measure line fluxes, uncertainties, and upper limits"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Excluding baselines <40 kλ rejected to retain total flux and consistency with continuum",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations",
+       "quote": "Since our primary objective is to measure the total flux from the disk, all baselines are included in *clean*."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "80% of sample undetected, so correlations are poorly constrained",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "Since 80$\\%$ of our sample is not detected in $^{13}$CO, more sensitive observations, especially for the low-mass end, are needed"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Gas masses depend on grids not matched to Cha I accretion rates and stellar luminosities",
+    "Results sensitive to choice of aperture for upper limits",
+    "Gas-to-dust ratios depend on assumed dust temperature"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2013.1.00437.S cited",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00437.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and clean parameters",
+    "Line-free channels for uvcontsub",
+    "Prior ranges and MCMC settings",
+    "Per-source dust masses from Pascucci et al. 2016"
+   ],
+   "estimated_data_volume_inferred": "Small: short snapshot Band 7 observations of 93 sources, likely tens of GB raw",
+   "score_inferred": 3,
+   "score_reason": "Data public and flux method well described with tables, but imaging parameters and software versions missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, a described aperture-photometry recipe, and numeric flux and gas-mass tables."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: miotello2016)",
+     "why": "MvD16 line luminosity to gas mass conversion"
+    },
+    {
+     "citation": "(cite: WilliamsBest2014)",
+     "why": "WB14 parametric gas mass models"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: pascucci2016)",
+     "why": "Continuum results and stellar properties for the same ALMA sample"
+    },
+    {
+     "citation": "(cite: ansdell2016)",
+     "why": "Lupus ALMA CO survey for comparison"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Lupus disk survey",
+    "ALMA Upper Sco survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-5cc9fbea0f1a3f25f3001d7ff4d382c0",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:35",
+  "usage": {
+   "input_tokens": 60685,
+   "output_tokens": 8930,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.105941,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 82,
+   "stated": 48,
+   "rate": 0.585
+  },
+  "evidence_ok": true
+ }
+}

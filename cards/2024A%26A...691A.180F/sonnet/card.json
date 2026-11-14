@@ -1,0 +1,1118 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...691A.180F",
+  "title": "CHEMOUT: CHEMical complexity in star-forming regions of the OUTer Galaxy: IV. ALMA observations of organic species at a galactocentric radius of  23 kpc",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Fontani, F.",
+  "n_authors": 9,
+  "arxiv_id": "2409.07243",
+  "doi": "10.1051/0004-6361/202451500",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2022.1.00911.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We observed several organic molecules with the Atacama Large Millimeter Array towards WB89-671, the source with the largest Galactocentric distance (23.4 kpc) of the project"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "WB89-670 (WB670)",
+     "coordinates": {
+      "value": "RA 05h37m41.9s, Dec +36d07m22s (J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The source is located at a $R_{\\rm GC}$ of $\\sim 23.4$ kpc (cite: fontani22a), in direction of the Galactic anticentre"
+       },
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The phase centre was set to the equatorial coordinates R.A.(J2000)=05$h$37$m$41.9$s$ and Dec(J2000)=36$^{\\circ}$07$^{\\prime}$22$^{\\prime\\prime}$."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "R_GC ~23.4 kpc; LSR velocity -17.4 km/s",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The source is located at a $R_{\\rm GC}$ of $\\sim 23.4$ kpc (cite: fontani22a), in direction of the Galactic anticentre"
+       },
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The phase centre was set to the equatorial coordinates R.A.(J2000)=05$h$37$m$41.9$s$ and Dec(J2000)=36$^{\\circ}$07$^{\\prime}$22$^{\\prime\\prime}$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "fontani22a",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The source is located at a $R_{\\rm GC}$ of $\\sim 23.4$ kpc (cite: fontani22a), in direction of the Galactic anticentre"
+       },
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The phase centre was set to the equatorial coordinates R.A.(J2000)=05$h$37$m$41.9$s$ and Dec(J2000)=36$^{\\circ}$07$^{\\prime}$22$^{\\prime\\prime}$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the spatially resolved molecular emission and abundances of organics in the outer-Galaxy star-forming region WB670 at R_GC 23.4 kpc, and do chemical models reproduce them?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "spatially resolved molecular emission maps are needed to link correctly measured abundances and local physical properties."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2022.1.00911.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "(project 2022.1.00911.S, P.I.: F. Fontani)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 and Band 4",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "We observed several spectral windows in bands 3 and 4."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "9 spws in Band 3 (84.5-99.4 GHz), 8 in Band 4 (139.7-153.5 GHz); 122 or 488 kHz channels",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 25  | 84.72719      | 122                | 0.43             | 480   | 3.9                 |"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "c-C3H2",
+     "transition": "2(1,2)-1(0,1)",
+     "rest_frequency": "85.3389 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $J(K_a,K_b)=2(1,2)-1(0,1)$       | 85.3389    | –4.6341             | 6.4          |"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "2(0,2)-1(0,1) A+",
+     "rest_frequency": "96.7414 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $J(K_a,K_b)=2(0,2)-1(0,1)$ A$^+$ | 96.7414    | –5.4675             | 7.0          |"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "J=1-0",
+     "rest_frequency": "86.7543 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $J=1-0$                          | 86.7543    | –4.4142             | 4.2          |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "2(1,2)-1(1,1)",
+     "rest_frequency": "140.8395 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $J(K_a,K_b)=2(1,2)-1(1,1)$       | 140.8395   | –4.2754             | 21.9         |"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "3(2)-2(1)",
+     "rest_frequency": "99.2999 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $J(K)=3(2)-2(1)$                 | 99.2999    | –4.9488             | 9.2          |"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=2-1",
+     "rest_frequency": "97.9810 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $J=2-1$                          | 97.9810    | –4.7763             | 7.1          |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~1.4-1.5 arcsec (~0.1 pc, ~20000 au)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The angular resolution in both ALMA bands is $\\sim 1.4-1.5$$^{\\prime\\prime}$, corresponding to $\\sim 0.1$ pc, or $\\sim 20000$ au."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~20 arcsec",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "In all the images, the maximum recoverable scale is $\\sim 20$$^{\\prime\\prime}$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Channel rms 1.8-3.9 mJy/beam (Band 3), 8.8-18 mJy/beam (Band 4); continuum rms ~0.025 (B3), ~0.1 (B4) mJy/beam",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "the root mean square (rms) varies between 1.8 and 3.9 mJy beam$^{-1}$ in band 3, and between 8.8 and 18 mJy beam$^{-1}$ in band 4."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "27 Dec 2022 (45 antennas); 8 and 9 Jan 2023 (41 antennas), Cycle 9",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "December 27, 2022, using 45 antennas, and January 8 and 9, 2023"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Project PI F. Fontani (own proposal)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "(project 2022.1.00911.S, P.I.: F. Fontani)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM 30m",
+     "provided": {
+      "value": "Single-dish spectra of c-C3H2, H13CO+, C4H used to check flux resolved out",
+      "evidence": [
+       {
+        "loc": "3.4 Comparison between ALMA and IRAM spectra",
+        "quote": "The *c-*C$_3$H$_2$, H$^{13}$CO$^+$, and C$_4$H lines in Table [2](#tab:lines) were observed also with the IRAM-30m telescope by (cite: fontani22a)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "2MASS and WISE",
+     "provided": {
+      "value": "Near/mid-infrared images of the source",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The source harbours near- and mid-infrared sources detected in the images of the Two Micron All-Sky Survey (cite: cutri03) and the Wide-field Infrared Survey Explorer (cite: wright10)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Gas-to-dust ratio vs R_GC relation (gamma ~3000 at 23.4 kpc)",
+      "evidence": [
+       {
+        "loc": "4.2 Fractional abundances in the continuum cores",
+        "quote": "Using the empirical relation between $\\gamma$ and $R_{\\rm GC}$ derived from (cite: giannetti17), we find $\\gamma \\sim 3000$ at $R_{\\rm GC}=23.4$ kpc."
+       }
+      ]
+     },
+     "citation": "(cite: giannetti17)"
+    },
+    {
+     "what": {
+      "value": "Elemental abundance gradients of O, C, N extrapolated to 23.4 kpc",
+      "evidence": [
+       {
+        "loc": "5.2 Comparison with local and inner Galaxy star-forming regions",
+        "quote": "Extrapolating the elemental abundance trends measured by (cite: mendez22) at the Galactocentric distance of WB670"
+       }
+      ]
+     },
+     "citation": "(cite: mendez22)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity kappa=0.899 at 230 GHz",
+      "evidence": [
+       {
+        "loc": "4.2 Fractional abundances in the continuum cores",
+        "quote": "$\\kappa_{\\nu_0}=0.899$ at $\\nu_0=230$ GHz (cite: oeh94)"
+       }
+      ]
+     },
+     "citation": "(cite: oeh94)"
+    },
+    {
+     "what": {
+      "value": "Hot-core WB789 abundances for comparison",
+      "evidence": [
+       {
+        "loc": "5.3 Comparison with sub-Solar metallicity hot-cores",
+        "quote": "Some species detected in WB670 were also detected in the hot core WB789 (cite: shimonishi21)"
+       }
+      ]
+     },
+     "citation": "(cite: shimonishi21)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "UCLCHEM static-cloud grid of 65536 models (710 retained) compared with observed ratios",
+     "evidence": [
+      {
+       "loc": "5.4 Chemical modelling",
+       "quote": "This results in a total of 710 models out of the original 65536."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA calibration pipeline",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The calibrated data were produced by the calibration pipeline of the Common Astronomy Software Applications"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "casapipe-6.4.1",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The pipeline version used is casapipe-6.4.1."
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0423-0120 (band 3), J0854+2006 (band 4)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "the sources used as flux and bandpass calibrators were J0423-0120 in band 3 and J0854+2006 in band 4"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~5%",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The uncertainties in the flux calibration are $\\sim 5\\%$."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Attempted, no improvement; not used",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "We attempted to perform self-calibration, but the self-calibrated images did not show any significant improvement"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "GILDAS imaging after converting MS to uvfits",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Imaging and deconvolution were then performed on the calibrated uv tables with the gildas[^1] software"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "the clean maps were created using natural weighting."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Primary-beam-corrected images analysed",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "we analyse the primary-beam-corrected images."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "Continuum ~0.025 mJy/beam (B3), ~0.1 mJy/beam (B4)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "the rms is $\\sim 0.025$ mJy beam$^{-1}$ in band 3 and $\\sim 0.1$ mJy beam$^{-1}$ in band 4."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Systemic LSR velocity of -17.4 km/s",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "The Local Standard of Rest velocity is –17.4 km s$^{-1}$ (cite: fontani22a)."
+       }
+      ]
+     },
+     "from_reference": "(cite: fontani22a)"
+    },
+    {
+     "what": {
+      "value": "Flux-density to temperature conversion",
+      "evidence": [
+       {
+        "loc": "3.4 Comparison between ALMA and IRAM spectra",
+        "quote": "through the equation (cite: fontani21)"
+       }
+      ]
+     },
+     "from_reference": "(cite: fontani21)"
+    },
+    {
+     "what": {
+      "value": "H2 column density equation",
+      "evidence": [
+       {
+        "loc": "4.2 Fractional abundances in the continuum cores",
+        "quote": "through the equation (cite: battersby14)"
+       }
+      ]
+     },
+     "from_reference": "(cite: battersby14)"
+    },
+    {
+     "what": {
+      "value": "Chemical model grid details",
+      "evidence": [
+       {
+        "loc": "5.4 Chemical modelling",
+        "quote": "The grid is discussed in more detail in Vermariën et al. (in prep.)."
+       }
+      ]
+     },
+     "from_reference": "Vermariën et al. (in prep.)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Clean parameters in GILDAS (iterations, threshold, masks, pixel size, image size)",
+    "Continuum-free channels and continuum subtraction method",
+    "Spectral line extraction regions definition (regions 1-7 are drawn roughly by eye)",
+    "Exact beam sizes per band",
+    "Which spws used for continuum and total bandwidth",
+    "UCLCHEM version, network and initial conditions beyond the table",
+    "Details of MSE ratio computation and model selection",
+    "Value of the dust temperature uncertainty treatment"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Continuum source detection and flux",
+    "method": {
+     "value": "Detect 3 mm and 2 mm continuum cores N and S; integrate flux inside 3 sigma contours",
+     "evidence": [
+      {
+       "loc": "3.1 Millimeter continuum emission",
+       "quote": "The flux densities, $F_{\\nu}$, integrated inside the 3$\\sigma$ rms contour levels are given in Table [\\[tab:cont\\]](#tab:cont) for both sources"
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Check for resolved-out flux",
+    "method": {
+     "value": "Compare ALMA spectra from a 27 arcsec circle with IRAM 30m spectra converted to flux density",
+     "evidence": [
+      {
+       "loc": "3.4 Comparison between ALMA and IRAM spectra",
+       "quote": "we conclude that the amount of extended flux resolved out by ALMA is negligible and does not affect significantly our analysis."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Agreement within <=10% for c-C3H2 and H13CO+",
+     "evidence": [
+      {
+       "loc": "3.4 Comparison between ALMA and IRAM spectra",
+       "quote": "consistent with those measured with the IRAM-30m telescope in *c-*C$_3$H$_2$ and H$^{13}$CO$^+$ within a factor $\\leq 10\\%$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "LTE column densities",
+    "method": {
+     "value": "AUTOFIT of SLIM for c-C3H2, CH3OH, H2CO, C4H, HCS+; CLASS integrated intensities for the rest, with Tex from CH3OH, optically thin",
+     "evidence": [
+      {
+       "loc": "4.1 Spectral analysis",
+       "quote": "We decided to adopt for all species the $T_{\\rm ex}$ measured from CH$_3$OH."
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA",
+     "GILDAS/CLASS"
+    ],
+    "key_parameters": [
+     {
+      "value": "No filling factor applied; Tex fixed to CH3OH value",
+      "evidence": [
+       {
+        "loc": "4.1 Spectral analysis",
+        "quote": "we assumed that the emission is more extended than the extraction region in all tracers, and hence no filling factor is appliyed"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, optically thin",
+      "evidence": [
+       {
+        "loc": "4.1 Spectral analysis",
+        "quote": "We assumed also optically thin conditions."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MADCUBA AUTOFIT, free N_tot, V, FWHM, common Tex",
+     "evidence": [
+      {
+       "loc": "4.1 Spectral analysis",
+       "quote": "This function produces the synthetic spectrum that best matches the data assuming a constant excitation temperature ($T_{\\rm ex}$) for all transitions of the same species."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tex varied to 30 K; N_tot changes up to factor ~2",
+     "evidence": [
+      {
+       "loc": "4.2 Fractional abundances in the continuum cores",
+       "quote": "$N_{\\rm tot}$ can vary up to a factor 2 depending on the species."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "H2 column density and abundances",
+    "method": {
+     "value": "N(H2) from continuum flux with Battersby equation; abundances = N_tot/N(H2)",
+     "evidence": [
+      {
+       "loc": "4.2 Fractional abundances in the continuum cores",
+       "quote": "We show the molecular fractional abundances derived from the $N_{\\rm tot}$-to-$N({\\rm H_2})$ ratio in Table [4](#tab:lines-cont)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "beta=1.7, kappa=0.899 at 230 GHz, mu=2.8, gamma~3000",
+      "evidence": [
+       {
+        "loc": "4.2 Fractional abundances in the continuum cores",
+        "quote": "We also assume dust opacity index $\\beta =1.7$, a typical value used for ice-coated dust grains in dense cores"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Td = CH3OH Tex (gas-dust coupling)",
+      "evidence": [
+       {
+        "loc": "4.2 Fractional abundances in the continuum cores",
+        "quote": "We adopt for $T_{\\rm d}$ the excitation temperature derived from CH$_3$OH (Table [4](#tab:lines-cont)) for each core, assuming coupling between gas and dust."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Alternative beta from 3mm/2mm fluxes gives N(H2) factor ~3 lower",
+     "evidence": [
+      {
+       "loc": "4.2 Fractional abundances in the continuum cores",
+       "quote": "i.e. a factor $\\sim 3$ smaller than those given in Table"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Chemical modelling comparison",
+    "method": {
+     "value": "UCLCHEM static grid of 65536 models; compare column density ratios at 1e6 yr; select 50 lowest-MSE models",
+     "evidence": [
+      {
+       "loc": "5.4 Chemical modelling",
+       "quote": "the 50 models with the lowest Mean Squared Error (MSE) are chosen."
+      }
+     ]
+    },
+    "software": [
+     "UCLCHEM"
+    ],
+    "key_parameters": [
+     {
+      "value": "R=0.5 pc, Av=1 mag, gas-to-dust 100, 12C/13C=10^1.8",
+      "evidence": [
+       {
+        "loc": "5.4 Chemical modelling",
+        "quote": "Each of the models is ran with an edge visual extinction of $A_v=1.0$ mag, and molecular ratios are computed at $10^6$ years."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Isothermal constant-density static cloud",
+      "evidence": [
+       {
+        "loc": "5.4 Chemical modelling",
+        "quote": "We considered a \"static model\", namely an isothermal cloud at constant density with a radius of $R=0.5$ pc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Grid sampled over density, T, zeta, F_UV, initial O and C abundances; ranking by MSE",
+     "evidence": [
+      {
+       "loc": "Table",
+       "quote": "| Density $n_\\mathrm{H}\\;(\\mathrm{cm}^{-3})$ | $1 \\times 10^3$ | $1 \\times 10^7$ | log |"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Test with gas-to-dust ~3000 at low and high density",
+     "evidence": [
+      {
+       "loc": "5.4 Chemical modelling",
+       "quote": "In the low density case, the results do not show any significant differences."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA pipeline",
+    "version": "casapipe-6.4.1",
+    "used_for": {
+     "value": "Calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The pipeline version used is casapipe-6.4.1."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS (CLASS)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging and deconvolution; line integrated intensities",
+     "evidence": [
+      {
+       "loc": "4.1 Spectral analysis",
+       "quote": "we obtained the integrated intensities of the lines with the class[^3] package of the gildas software."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MADCUBA (SLIM, AUTOFIT)",
+    "version": "not stated",
+    "used_for": {
+     "value": "LTE spectral fitting",
+     "evidence": [
+      {
+       "loc": "4.1 Spectral analysis",
+       "quote": "The lines were fitted with the AUTOFIT function of SLIM."
+      }
+     ]
+    }
+   },
+   {
+    "name": "UCLCHEM",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gas-grain chemical modelling",
+     "evidence": [
+      {
+       "loc": "5.4 Chemical modelling",
+       "quote": "We investigate these clouds with the open-source gas-grain chemistry code UCLCHEM (cite: holdship17)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Tex of CH3OH, core N",
+    "value": "9",
+    "uncertainty": "2",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| CH$_3$OH        | –17.4(0.1)   | 0.92(0.08)   | 9(2)          | 2.2(0.3)                   | 0.4              |"
+     }
+    ]
+   },
+   {
+    "quantity": "Tex of CH3OH, core S",
+    "value": "15",
+    "uncertainty": "3",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| CH$_3$OH        | –18.0(0.7)   | 1.1(0.5)     | 15(3)         | 23(3)                      | 11               |"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2) core N",
+    "value": "5.7e21",
+    "uncertainty": "1.2e21",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table",
+      "quote": "| N | 05:37:41.55 | 36:07:31.9 | $3.0\\times 10^{-4}$ | $8.3 \\times 10^{-4}$ | 2.4 | 0.18 | 5.7(1.2) | 2.9(1.5) | 1.1 | 0.34 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass core N",
+    "value": "2.9",
+    "uncertainty": "1.5",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table",
+      "quote": "| N | 05:37:41.55 | 36:07:31.9 | $3.0\\times 10^{-4}$ | $8.3 \\times 10^{-4}$ | 2.4 | 0.18 | 5.7(1.2) | 2.9(1.5) | 1.1 | 0.34 |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH abundance cores N and S",
+    "value": "0.4e-9 and 11e-9",
+    "uncertainty": "not stated",
+    "units": "relative to H2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.3 Comparison with sub-Solar metallicity hot-cores",
+      "quote": "while in N and S is $0.4\\times 10^{-9}$ and $11\\times 10^{-9}$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-to-dust ratio at 23.4 kpc",
+    "value": "3000",
+    "uncertainty": "+700/-2200",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Fractional abundances in the continuum cores",
+      "quote": "$\\gamma$ is $3000^{+700}_{-2200}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Average SO/CS column density ratio",
+    "value": "~1.2",
+    "uncertainty": "order of magnitude dispersion",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "Despite a dispersion of an order of magnitude, the average value is SO/CS$\\sim 1.2$."
+     }
+    ]
+   },
+   {
+    "quantity": "Best-model temperature range",
+    "value": "20-45",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.4 Chemical modelling",
+      "quote": "temperatures from 20 to 45 K, radiation fields lower than 5 Habing"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Emission is filamentary, SE-NW, with different morphology per tracer; narrow lines indicate quiescent gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The narrow linewidths across the filament indicate quiescent gas, despite the two embedded protostars."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are organics in the far outer Galaxy comparable to local ones?",
+    "experiment": "LTE column densities in seven regions",
+    "result": "Column densities comparable with local star-forming regions",
+    "finding": "Organics not strongly depleted at 23 kpc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Derived molecular column densities are comparable with those in local star-forming regions"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do gas-phase and surface-formed species differ spatially?",
+    "experiment": "Compare N_tot across regions",
+    "result": "Anti-correlation of hydrocarbons, ions, HCO, H2CO vs CH3OH and SO",
+    "finding": "Different formation routes",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggest anti-correlation between hydrocarbons, ions, HCO, and H$_2$CO on one side, and CH$_3$OH and SO on the other."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do static chemical models reproduce observed ratios and constrain C/H?",
+    "experiment": "UCLCHEM grid compared to ratios",
+    "result": "Low energetic conditions favoured; carbon ~3x above extrapolation",
+    "finding": "Flatter [C/H] gradient suggested; dynamical models needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "favour low energetic conditions, expected at large Galactocentric radii, but carbon elemental abundances 3 times higher than that derived extrapolating"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Natural weighting to be sensitive to source extension",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "To be sensitive to the source extension, the clean maps were created using natural weighting."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Self-calibration rejected: no improvement due to faint continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "the self-calibrated images did not show any significant improvement due to the faintness of the continuum emission"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Tex fixed to CH3OH value for all species; N_tot uncertain up to factor 2",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "$N_{\\rm tot}$ can vary up to a factor 2 depending on the species."
+      }
+     ]
+    },
+    {
+     "value": "Static models cannot reproduce all ratios; dynamical models needed",
+     "evidence": [
+      {
+       "loc": "5.4 Chemical modelling",
+       "quote": "Overall, it is very unlikely to find a model that fits all ratios well."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single Tex from CH3OH applied to all species despite possible sub-thermal excitation",
+    "Gas-to-dust ratio extrapolated with huge uncertainty drives abundances",
+    "Optical depth of CS and SO not checked",
+    "Model selection of top 50 by MSE is ad hoc"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; acknowledgement of ALMA data use",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2022.1.00911.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "GILDAS clean parameters",
+    "Region definition masks",
+    "Model grid details (Vermariën et al. in prep.)"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw (Cycle 9 Band 3 and 4 mosaic-like, 17 spws)",
+   "score_inferred": 5,
+   "score_reason": "Public data and software named, but imaging and region definitions are loosely specified and the model grid is in prep.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging parameters and region definitions are insufficiently specified, and the chemical grid is unpublished."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Martín et al. 2019 (cite: martin19)",
+     "why": "MADCUBA software"
+    },
+    {
+     "citation": "Battersby et al. 2014 (cite: battersby14)",
+     "why": "N(H2) equation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: fontani22a)",
+     "why": "IRAM 30m CHEMOUT survey"
+    },
+    {
+     "citation": "(cite: fontani22b)",
+     "why": "CHEMOUT paper"
+    },
+    {
+     "citation": "(cite: colzi22)",
+     "why": "CHEMOUT paper"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "CHEMOUT"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c940ae81e137d2de06a64ffa0dd0bc39",
+  "batch_id": "msgbatch_01NStQVmhFuPcZUGXVFrSWwc",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:59:54",
+  "usage": {
+   "input_tokens": 42693,
+   "output_tokens": 10109,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.093844,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 80,
+  "quotes_ok": 80,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 83,
+   "stated": 58,
+   "rate": 0.699
+  },
+  "evidence_ok": true
+ }
+}

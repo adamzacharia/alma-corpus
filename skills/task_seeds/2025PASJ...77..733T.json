@@ -1,0 +1,296 @@
+{
+ "bibcode": "2025PASJ...77..733T",
+ "title": "Nuclear stellar disk-like nature in the kinematics of SiO maser stars around Sagittarius A*",
+ "year": 2025,
+ "doi": "10.1093/pasj/psaf039",
+ "arxiv_id": "2502.03024",
+ "fields": [
+  "stellar_physics",
+  "evolved_stars",
+  "milky_way_ism"
+ ],
+ "question": "Whether the SiO maser stars around Sagittarius A* are members of the Nuclear Star Cluster (NSC) or the Nuclear Stellar Disk (NSD) based on statistical properties of their 3D kinematics.",
+ "alma_project_codes": [
+  "2016.1.00940.S",
+  "2019.1.00292.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-meter Array",
+  "angular_resolution": "0.091'' x 0.082'', PA = 43 deg (2017); 0.150'' x 0.091'', PA = 87 deg (2021)",
+  "sensitivity": "1.1 mJy/beam/5 km s^-1 (2017 center) and 1.4 mJy/beam/5 km s^-1 (2021 center); 5.5 mJy/beam/5 km s^-1 (2017 outer limit) and 7.0 mJy/beam/5 km s^-1 (2021 outer limit)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum map at 105 GHz",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "Positions of detected stars in the SiO v = 1 ,J = 2 - 1 emission line plotted on the continuum map at 105 GHz (pseudo color; Tsuboi et al. 2016) and the integrated intensity map of the CS J = 2 - 1 emission line (contours; Tsuboi et al. 2018)."
+     }
+    ]
+   },
+   "citation": "Tsuboi et al. 2016"
+  },
+  {
+   "what": {
+    "value": "Integrated intensity map of the CS J = 2 - 1 emission line",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "Positions of detected stars in the SiO v = 1 ,J = 2 - 1 emission line plotted on the continuum map at 105 GHz (pseudo color; Tsuboi et al. 2016) and the integrated intensity map of the CS J = 2 - 1 emission line (contours; Tsuboi et al. 2018)."
+     }
+    ]
+   },
+   "citation": "Tsuboi et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Proper motions of Wolf-Rayet (WR) and O stars in the Nuclear Star Cluster (NSC)",
+    "evidence": [
+     {
+      "loc": "Figure 7 caption",
+      "quote": "b Histogram of the position angle of the proper motions of the WR and O stars in the NSC, excluding the co-moving clusters IRS13E and IRS13N (Tsuboi et al. 2022)."
+     },
+     {
+      "loc": "4.1 Proper motion along the Galactic plane",
+      "quote": "of the proper motions of the WR and O stars in the NSC, excluding the co-moving clusters IRS13E and IRS13N (Tsuboi et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Tsuboi et al. 2022"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and channel map imaging",
+   "method": "Subtract continuum emission using uvcontsub (fitorder=0) and image both continuum and SiO maser line channel maps from V_LSR = -350 to +350 km s^-1 with 5 km s^-1 velocity integration width using tclean.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "fitorder = 0",
+    "Briggs weighting (robust = 0.5)",
+    "Delta_V = 5 km s^-1, V_LSR = -350 to +350 km s^-1",
+    "primary beam attenuation cutoff = 0.2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure ICRS positions of SiO maser stars and Sgr A*",
+   "method": "Perform 2D Gaussian fitting on the star images in the SiO v=1, J=2-1 channel maps and on Sgr A* in the continuum maps using the CASA task imfit, then subtract Sgr A* positions to obtain relative angular offsets (Delta_RA, Delta_Dec).",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "ICRS coordinate system"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract line profiles, LSR radial velocities, and primary-beam corrected line intensities",
+   "method": "Extract SiO v=1, J=2-1 line profiles from the channel maps, fit Gaussians to derive LSR radial velocities, and apply Gaussian primary beam attenuation correction based on angular distance from Sgr A*.",
+   "software": [],
+   "key_parameters": [
+    "FWHM = 67.5'' at 86.2 GHz"
+   ],
+   "assumptions": [
+    "Observed LSR velocities of SiO maser spots represent the stellar LSR velocities within ~10 km s^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive proper motions and position angles relative to Sgr A*",
+   "method": "Compute Cartesian angular differences between 2017 and 2021 relative positions (Delta_X, Delta_Y) over the time baseline Delta_t = 3.917 years, convert to proper motion speed |V_prop| and position angle PA.",
+   "software": [],
+   "key_parameters": [
+    "Delta_t = 3.917 years"
+   ],
+   "assumptions": [
+    "Distance d = 8.2 kpc (1'' corresponds to 0.03975 pc or 1.224 x 10^17 cm)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate 3D space velocities and compare with Keplerian orbital limits",
+   "method": "Combine proper motion speeds and LSR radial velocities in quadrature to obtain 3D space velocities V_space = sqrt(V_prop^2 + V_LSR^2), and compare as a function of projected distance r from Sgr A* against circular (sqrt(GM/r)) and parabolic/highly eccentric (sqrt(2GM/r)) Keplerian velocities.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "GCBH mass M = 4 x 10^6 M_sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of detected SiO v=1, J=2-1 maser stars",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected 37 SiO maser stars in the channel maps and"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of SiO maser stars with derived proper motions",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We derived the proper motions of 35 stars by comparing their angular offsets in the two epochs."
+    }
+   ]
+  },
+  {
+   "quantity": "Sgr A* RA (ICRS) on September 19, 2017",
+   "value": "17h45m40.033456s",
+   "uncertainty": "0.000002s",
+   "units": "hms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Proper motions of the SiO maser stars",
+     "quote": "(RA, Dec) ICRS = (17 [h] 45 [m] 40 _._ [s] 033456 _±_ 0 _._ [s] 000002, _−_ 29 _[◦]_ 00 _[′]_ 28 _._ _[′′]_ 22993 _±_ 0 _._ _[′′]_ 00002) at September 19, 2017"
+    }
+   ]
+  },
+  {
+   "quantity": "Sgr A* Dec (ICRS) on September 19, 2017",
+   "value": "-29d00m28.22993s",
+   "uncertainty": "0.00002''",
+   "units": "dms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Proper motions of the SiO maser stars",
+     "quote": "(RA, Dec) ICRS = (17 [h] 45 [m] 40 _._ [s] 033456 _±_ 0 _._ [s] 000002, _−_ 29 _[◦]_ 00 _[′]_ 28 _._ _[′′]_ 22993 _±_ 0 _._ _[′′]_ 00002) at September 19, 2017"
+    }
+   ]
+  },
+  {
+   "quantity": "Sgr A* RA (ICRS) on August 19, 2021",
+   "value": "17h45m40.032847s",
+   "uncertainty": "0.000005s",
+   "units": "hms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Proper motions of the SiO maser stars",
+     "quote": "(RA, Dec) ICRS = (17 [h] 45 [m] 40 _._ [s] 032847 _±_ 0 _._ [s] 000005, _−_ 29 _[◦]_ 00 _[′]_ 28 _._ _[′′]_ 26277 _±_ 0 _._ _[′′]_ 00003) at August 19, 2021"
+    }
+   ]
+  },
+  {
+   "quantity": "Sgr A* Dec (ICRS) on August 19, 2021",
+   "value": "-29d00m28.26277s",
+   "uncertainty": "0.00003''",
+   "units": "dms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Proper motions of the SiO maser stars",
+     "quote": "(RA, Dec) ICRS = (17 [h] 45 [m] 40 _._ [s] 032847 _±_ 0 _._ [s] 000005, _−_ 29 _[◦]_ 00 _[′]_ 28 _._ _[′′]_ 26277 _±_ 0 _._ _[′′]_ 00003) at August 19, 2021"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean LSR velocity of SiO maser stars (V_LSR)",
+   "value": "-24.9",
+   "uncertainty": "86.7",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Positions, Line intensities, and LSR velocities of the SiO maser stars",
+     "quote": "The mean LSR velocity is _V_ LSR = _−_ 24 _._ 9 _±_ 86 _._ 7 km s _[−]_ [1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Average SiO v=1, J=2-1 line intensity in 2017",
+   "value": "47.0",
+   "uncertainty": "43.6",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Positions, Line intensities, and LSR velocities of the SiO maser stars",
+     "quote": "The average line intensities are 47 _._ 0 _±_ 43 _._ 6 mJy in 2017."
+    }
+   ]
+  },
+  {
+   "quantity": "Average SiO v=1, J=2-1 line intensity in 2021",
+   "value": "55.4",
+   "uncertainty": "52.0",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Positions, Line intensities, and LSR velocities of the SiO maser stars",
+     "quote": "The average line intensities are 55 _._ 4 _±_ 52 _._ 0 mJy in 2021."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean proper motion amplitude of SiO maser stars (|V_prop|)",
+   "value": "153.2",
+   "uncertainty": "83.3",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disproportionate proper motion speed and LSR speed",
+     "quote": "The mean proper motion amplitude is derived to be _|V_ prop _|_ = 153 _._ 2 _±_ 83 _._ 3 km s _[−]_ [1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean LSR velocity amplitude of SiO maser stars (|V_LSR|)",
+   "value": "66.1",
+   "uncertainty": "60.6",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Disproportionate proper motion speed and LSR speed",
+     "quote": "While the mean amplitude of the LSR velocity is derived to be _|V_ LSR _|_ = 66 _._ 1 _±_ 60 _._ 6 km s _[−]_ [1]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for calibration and imaging",
+  "Whether self-calibration was performed on the bright continuum source Sgr A*",
+  "Specific line-free channel ranges used for uvcontsub",
+  "Image pixel/cell size and number of pixels in tclean",
+  "Deconvolver algorithm and clean stopping threshold/masking in tclean",
+  "Signal-to-noise detection threshold used to identify the 37 SiO maser stars in the channel maps",
+  "Note that Tables 1 and 2 are referenced in the text as containing the catalog of positions, line intensities, LSR velocities, and proper motions, but are missing from the provided preprint text"
+ ],
+ "missing_for_reproduction": [
+  "Tables 1 and 2 (containing the individual positions, flux densities, LSR velocities, and proper motions of the 37 stars) are referenced in the text but omitted from the manuscript pages",
+  "Exact CASA version and whether pipeline calibration or custom self-calibration on Sgr A* was used",
+  "tclean imaging parameters (cell size, image dimensions in pixels, deconvolver, stopping criteria)",
+  "Line-free frequency channels selected for uvcontsub",
+  "Exact SNR threshold used to detect the 37 maser stars"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The archival data are public and the overall reduction/analysis workflow (uvcontsub, tclean at 5 km/s with robust=0.5, imfit astrometry relative to Sgr A*, Gaussian line profile fitting, and algebraic proper motion formulas) is straightforward and clearly stated; however, low-level tclean/calibration parameters and the actual catalog tables (Tables 1 and 2) are missing from the text.",
+ "rediscovery_reason": "Both ALMA datasets (2016.1.00940.S and 2019.1.00292.S) are public in the ALMA archive, the astrometric and kinematic recipe is simple and explicitly given by equations (1)-(6), and key summary metrics (number of detections, Sgr A* coordinates, mean |V_prop| and |V_LSR|) provide clear numerical targets.",
+ "source_card": "cards/2025PASJ...77..733T/sonnet/card.md"
+}

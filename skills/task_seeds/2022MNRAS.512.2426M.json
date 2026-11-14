@@ -1,0 +1,762 @@
+{
+ "bibcode": "2022MNRAS.512.2426M",
+ "title": "Modelling high-resolution ALMA observations of strongly lensed dusty star-forming galaxies detected by Herschel",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac585",
+ "arxiv_id": "2111.09680",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Infer the mass profiles of seven lensing galaxies/groups and determine the magnification factors, intrinsic properties (luminosity, dust mass, gas mass, SFR), and morphologies of the lensed high-redshift sub-millimetre sources through uv-plane visibility lens modelling.",
+ "alma_project_codes": [
+  "2013.1.00358.S"
+ ],
+ "data": {
+  "bands": "Band 7 (873 um)",
+  "arrays": "12m array (forty-two 12m antennae)",
+  "angular_resolution": "0.12 arcsec",
+  "sensitivity": "~230 uJy/beam (H-ATLAS) and ~130 uJy/beam (HeLMS)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel SPIRE and PACS photometry for H-ATLAS and HeLMS sources",
+    "evidence": [
+     {
+      "loc": "DATA",
+      "quote": "SPIRE and PACS photometry for the H-ATLAS and HeLMS sources was taken from (cite: zhang) and (cite: Nayyeri_2016)."
+     }
+    ]
+   },
+   "citation": "(cite: zhang) and (cite: Nayyeri_2016)"
+  },
+  {
+   "what": {
+    "value": "850 um SCUBA-2 flux",
+    "evidence": [
+     {
+      "loc": "DATA",
+      "quote": "Where possible, we have also used 850 $\\mu$m Submillimeter Common User Bolometer Array 2 (SCUBA-2) fluxes (1 arcsec resolution) taken from (cite: bakx) and 880 $\\mu$m photometry taken from the Submillimeter Array (SMA) (0.6 arcsec resolution) as described in (cite: bussmann_2013)."
+     }
+    ]
+   },
+   "citation": "(cite: bakx)"
+  },
+  {
+   "what": {
+    "value": "880 um SMA photometry",
+    "evidence": [
+     {
+      "loc": "DATA",
+      "quote": "Where possible, we have also used 850 $\\mu$m Submillimeter Common User Bolometer Array 2 (SCUBA-2) fluxes (1 arcsec resolution) taken from (cite: bakx) and 880 $\\mu$m photometry taken from the Submillimeter Array (SMA) (0.6 arcsec resolution) as described in (cite: bussmann_2013)."
+     }
+    ]
+   },
+   "citation": "(cite: bussmann_2013)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 4 (1940 um) flux for H-ATLAS J083051.0+013225",
+    "evidence": [
+     {
+      "loc": "DATA",
+      "quote": "Finally, the ALMA band 4 (1940 $\\mu$m, 0.3 arcsec resolution) flux for H-ATLAS J083051.0+01322 was taken from (cite: yang)."
+     }
+    ]
+   },
+   "citation": "(cite: yang)"
+  },
+  {
+   "what": {
+    "value": "Lens and source redshifts for the seven systems",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The references from which the lens and source redshifts were obtained are as follows: $^{\\mathrm a}$(cite: bussmann_2013), $^{\\mathrm b}$(cite: negrello_2016), $^{\\mathrm{c}}$(cite: Nayyeri_2016), and $^{\\mathrm{d}}$(cite: z_helms18)."
+     }
+    ]
+   },
+   "citation": "(cite: bussmann_2013), (cite: negrello_2016), (cite: Nayyeri_2016), (cite: z_helms18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-calibrate archival ALMA visibilities, measure 873 um continuum flux, and estimate visibility noise",
+   "method": "Re-calibrate ALMA science archive visibilities using archive scripts in CASA 4.3.1, image with tclean in CASA 6.1.2.7 using natural weighting and primary beam correction to measure 873 um flux, and run CASA statwt to measure 1-sigma visibility scatter across all baselines.",
+   "software": [
+    "CASA",
+    "tclean",
+    "statwt"
+   ],
+   "key_parameters": [
+    "natural weighting, primary beam corrected, pixel scale 0.02 arcsec (H-ATLAS) and 0.03 arcsec (HeLMS)"
+   ],
+   "assumptions": [
+    "Uncorrelated visibility noise represented by diagonal covariance matrix"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Perform uv-plane strong lens modelling and pixelised source reconstruction",
+   "method": "Semi-linear inversion (SLI) directly on visibilities in the uv-plane using PyAutoLens, PyNUFFT, and PyLops, fitting elliptical power-law mass density profiles (1 for galaxy-scale, 2 for group-scale) plus optional external shear, first with magnification-adapted source pixelisation and then brightness-adapted source pixelisation.",
+   "software": [
+    "PyAutoLens",
+    "PyNUFFT",
+    "PyLops",
+    "DYNESTY"
+   ],
+   "key_parameters": [
+    "Constant-weight gradient regularisation; 6 to 14 lens mass model parameters plus regularisation and number of source pixels"
+   ],
+   "assumptions": [
+    "Elliptical power-law surface mass density profile (1 or 2 components) with optional external shear"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute source magnification profiles and total magnification factors",
+   "method": "Rank source plane pixels above a surface brightness threshold by flux density and compute the ratio of lensed image-plane flux (within the image-plane mask) to source-plane flux, repeating 100 times with randomised source plane pixelisation to average.",
+   "software": [
+    "PyAutoLens"
+   ],
+   "key_parameters": [
+    "100 realisations of randomised source plane pixelisation; surface brightness threshold; image plane mask"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit demagnified multi-wavelength SEDs and derive intrinsic dust mass, IR luminosity, gas mass, and SFR",
+   "method": "Demagnify observed sub-mm/mm photometry by total magnification factor, fit rest-frame photometry with both a single-temperature optically thick SED and a dual-temperature optically thin SED, integrate the optically thin SED from 3 to 1100 um for L_IR, compute dust mass bounds using 873 um flux, H2 gas mass via scaling relations, and SFR from L_IR.",
+   "software": [],
+   "key_parameters": [
+    "Dust emissivity index beta = 2.0; integration range 3-1100 um"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with h = 0.677 and Omega_m = 0.307",
+    "Dust mass absorption coefficient extrapolated from kappa_850 = 0.077 m^2 kg^-1 to 873 um, constant across sample",
+    "Kroupa IMF conversion log(SFR) = log(L_IR) - 43.41 assuming all IR emission is from star formation (no AGN contribution)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "873 um flux density (H-ATLAS J083051.0+013225)",
+   "value": "92",
+   "uncertainty": "9",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H-ATLAS J083051.0+013225 | 53 $\\pm$ 3 | 198 $\\pm$ 10 | 260 $\\pm$ 7 | 321 $\\pm$ 8 | 269 $\\pm$ 9 | 121 $\\pm$ 9 | 92 $\\pm$ 9 | 86 $\\pm$ 4 | 8.8 $\\pm$ 0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "873 um flux density (HeLMS J005159.4+062240)",
+   "value": "41",
+   "uncertainty": "4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HeLMS J005159.4+062240 | 31 $\\pm$ 3 | 91 $\\pm$ 15 | 166 $\\pm$ 6 | 195 $\\pm$ 6 | 135 $\\pm$ 7 | \\- | 41 $\\pm$ 4 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "873 um flux density (HeLMS J234051.5-041938)",
+   "value": "94",
+   "uncertainty": "9",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HeLMS J234051.5-041938 | 7 $\\pm$ 3 | 68 $\\pm$ 7 | 151 $\\pm$ 6 | 209 $\\pm$ 6 | 205 $\\pm$ 8 | \\- | 94 $\\pm$ 9 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "873 um flux density (HeLMS J232439.5-043935)",
+   "value": "36",
+   "uncertainty": "4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HeLMS J232439.5-043935 | 33 $\\pm$ 4 | 129 $\\pm$ 7 | 214 $\\pm$ 7 | 218 $\\pm$ 7 | 172 $\\pm$ 9 | \\- | 36 $\\pm$ 4 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "873 um flux density (HeLMS J233255.4-031134)",
+   "value": "75",
+   "uncertainty": "8",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HeLMS J233255.4-031134 | 25 $\\pm$ 4 | 146 $\\pm$ 14 | 271 $\\pm$ 6 | 336 $\\pm$ 6 | 263 $\\pm$ 8 | \\- | 75 $\\pm$ 8 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "873 um flux density (HeLMS J233255.6-053426)",
+   "value": "48",
+   "uncertainty": "5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HeLMS J233255.6-053426 | 14 $\\pm$ 3 | 44 $\\pm$ 8 | 148 $\\pm$ 6 | 187 $\\pm$ 6 | 147 $\\pm$ 9 | \\- | 48 $\\pm$ 5 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "873 um flux density (HeLMS J235331.9+031718)",
+   "value": "26",
+   "uncertainty": "3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HeLMS J235331.9+031718 | \\- | \\- | 102 $\\pm$ 6 | 123 $\\pm$ 7 | 111 $\\pm$ 7 | \\- | 26 $\\pm$ 3 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (H-ATLAS J083051.0+013225 lens 1)",
+   "value": "0.43",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H-ATLAS J083051.0+013225 (lens 1) | 0.43 $\\pm$ 0.01 | (-1.87 $\\pm$ 0.01, -0.78 $\\pm$ 0.01) | 7 $\\pm$ 1 | 0.51 $\\pm$ 0.01 | 2.18 $\\pm$ 0.02 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (H-ATLAS J083051.0+013225 lens 1)",
+   "value": "2.18",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H-ATLAS J083051.0+013225 (lens 1) | 0.43 $\\pm$ 0.01 | (-1.87 $\\pm$ 0.01, -0.78 $\\pm$ 0.01) | 7 $\\pm$ 1 | 0.51 $\\pm$ 0.01 | 2.18 $\\pm$ 0.02 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (H-ATLAS J083051.0+013225 lens 2)",
+   "value": "0.54",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H-ATLAS J083051.0+013225 (lens 2) | 0.54 $\\pm$ 0.01 | (-1.51 $\\pm$ 0.01, -0.08 $\\pm$ 0.01) | 9 $\\pm$ 2 | 0.90 $\\pm$ 0.01 | 2.03 $\\pm$ 0.08 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (H-ATLAS J083051.0+013225 lens 2)",
+   "value": "2.03",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H-ATLAS J083051.0+013225 (lens 2) | 0.54 $\\pm$ 0.01 | (-1.51 $\\pm$ 0.01, -0.08 $\\pm$ 0.01) | 9 $\\pm$ 2 | 0.90 $\\pm$ 0.01 | 2.03 $\\pm$ 0.08 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J005159.4+062240 lens 1)",
+   "value": "3.80",
+   "uncertainty": "0.02",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J005159.4+062240 (lens 1) | 3.80 $\\pm$ 0.02 | (-4.67 $\\pm$ 0.01, 4.02 $\\pm$ 0.01) | 156 $\\pm$ 2 | 0.37 $\\pm$ 0.05 | 2.05 $\\pm$ 0.03 | 0.17 $\\pm$ 0.02 | 102 $\\pm$ 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J005159.4+062240 lens 1)",
+   "value": "2.05",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J005159.4+062240 (lens 1) | 3.80 $\\pm$ 0.02 | (-4.67 $\\pm$ 0.01, 4.02 $\\pm$ 0.01) | 156 $\\pm$ 2 | 0.37 $\\pm$ 0.05 | 2.05 $\\pm$ 0.03 | 0.17 $\\pm$ 0.02 | 102 $\\pm$ 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J005159.4+062240 lens 2)",
+   "value": "1.46",
+   "uncertainty": "0.02",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J005159.4+062240 (lens 2) | 1.46 $\\pm$ 0.02 | (-0.63 $\\pm$ 0.01, 2.18 $\\pm$ 0.01) | 109 $\\pm$ 5 | 0.66 $\\pm$ 0.06 | 1.93 $\\pm$ 0.02 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J005159.4+062240 lens 2)",
+   "value": "1.93",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J005159.4+062240 (lens 2) | 1.46 $\\pm$ 0.02 | (-0.63 $\\pm$ 0.01, 2.18 $\\pm$ 0.01) | 109 $\\pm$ 5 | 0.66 $\\pm$ 0.06 | 1.93 $\\pm$ 0.02 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J234051.5-041938)",
+   "value": "0.75",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J234051.5-041938 | 0.75 $\\pm$ 0.01 | (-0.78 $\\pm$ 0.01, -1.88 $\\pm$ 0.01) | 97 $\\pm$ 1 | 0.27 $\\pm$ 0.01 | 2.37 $\\pm$ 0.01 | 0.17 $\\pm$ 0.01 | 103 $\\pm 1$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J234051.5-041938)",
+   "value": "2.37",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J234051.5-041938 | 0.75 $\\pm$ 0.01 | (-0.78 $\\pm$ 0.01, -1.88 $\\pm$ 0.01) | 97 $\\pm$ 1 | 0.27 $\\pm$ 0.01 | 2.37 $\\pm$ 0.01 | 0.17 $\\pm$ 0.01 | 103 $\\pm 1$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J232439.5-043935 lens 1)",
+   "value": "0.54",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J232439.5-043935 (lens 1) | 0.54 $\\pm$ 0.01 | (1.91 $\\pm$ 0.02, 1.09 $\\pm$ 0.02) | 23 $\\pm$ 1 | 0.79 $\\pm$ 0.02 | 2.08 $\\pm$ 0.06 | 0.13 $\\pm$ 0.01 | 165 $\\pm$ 2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J232439.5-043935 lens 1)",
+   "value": "2.08",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J232439.5-043935 (lens 1) | 0.54 $\\pm$ 0.01 | (1.91 $\\pm$ 0.02, 1.09 $\\pm$ 0.02) | 23 $\\pm$ 1 | 0.79 $\\pm$ 0.02 | 2.08 $\\pm$ 0.06 | 0.13 $\\pm$ 0.01 | 165 $\\pm$ 2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J232439.5-043935 lens 2)",
+   "value": "0.40",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J232439.5-043935 (lens 2) | 0.40 $\\pm$ 0.01 | (0.88 $\\pm$ 0.01, 1.24 $\\pm$ 0.01) | 84 $\\pm$ 2 | 0.27 $\\pm$ 0.02 | 1.84 $\\pm$ 0.03 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J232439.5-043935 lens 2)",
+   "value": "1.84",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J232439.5-043935 (lens 2) | 0.40 $\\pm$ 0.01 | (0.88 $\\pm$ 0.01, 1.24 $\\pm$ 0.01) | 84 $\\pm$ 2 | 0.27 $\\pm$ 0.02 | 1.84 $\\pm$ 0.03 | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J233255.4-031134)",
+   "value": "1.01",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J233255.4-031134 | 1.01 $\\pm$ 0.01 | (-0.06 $\\pm$ 0.01, -1.52 $\\pm$ 0.02) | 118 $\\pm$ 2 | 0.44 $\\pm$ 0.02 | 1.89 $\\pm$ 0.01 | 0.18 $\\pm$ 0.01 | 112 $\\pm$ 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J233255.4-031134)",
+   "value": "1.89",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J233255.4-031134 | 1.01 $\\pm$ 0.01 | (-0.06 $\\pm$ 0.01, -1.52 $\\pm$ 0.02) | 118 $\\pm$ 2 | 0.44 $\\pm$ 0.02 | 1.89 $\\pm$ 0.01 | 0.18 $\\pm$ 0.01 | 112 $\\pm$ 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J233255.6-053426)",
+   "value": "1.05",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J233255.6-053426 | 1.05 $\\pm$ 0.01 | (2.43 $\\pm$ 0.01, 0.18 $\\pm$ 0.01) | 150 $\\pm$ 1 | 0.56 $\\pm$ 0.01 | 1.99 $\\pm$ 0.03 | 0.12 $\\pm$ 0.01 | 48 $\\pm$ 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J233255.6-053426)",
+   "value": "1.99",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J233255.6-053426 | 1.05 $\\pm$ 0.01 | (2.43 $\\pm$ 0.01, 0.18 $\\pm$ 0.01) | 150 $\\pm$ 1 | 0.56 $\\pm$ 0.01 | 1.99 $\\pm$ 0.03 | 0.12 $\\pm$ 0.01 | 48 $\\pm$ 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius theta_E (HeLMS J235331.9+031718)",
+   "value": "0.21",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J235331.9+031718 | 0.21 $\\pm$ 0.01 | (1.81 $\\pm$ 0.01, 1.32 $\\pm$ 0.01) | 151 $\\pm$ 4 | 0.49 $\\pm$ 0.05 | 1.64 $\\pm$ 0.04 | 0.19 $\\pm$ 0.02 | 170 $\\pm$ 5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope alpha (HeLMS J235331.9+031718)",
+   "value": "1.64",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HeLMS J235331.9+031718 | 0.21 $\\pm$ 0.01 | (1.81 $\\pm$ 0.01, 1.32 $\\pm$ 0.01) | 151 $\\pm$ 4 | 0.49 $\\pm$ 0.05 | 1.64 $\\pm$ 0.04 | 0.19 $\\pm$ 0.02 | 170 $\\pm$ 5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (H-ATLAS J083051.0+013225)",
+   "value": "6.7",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H-ATLAS J083051.0+013225 | 6.7 $\\pm$ 0.3 | 8.5 | 9.2 | 70 | 32 / 70 | 3.1 | 13.4 $\\pm$ 0.1 | 11.4 $\\pm$ 0.1 | 3700 $\\pm$ 500 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (HeLMS J005159.4+062240)",
+   "value": "10.2",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J005159.4+062240 | 10.2 $\\pm$ 0.3 | 8.2 | 8.9 | 62 | 28 / 59 | 6.9 | 12.6 $\\pm$ 0.1 | 11.1 $\\pm$ 0.1 | 590 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (HeLMS J234051.5-041938)",
+   "value": "6.7",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J234051.5-041938 | 6.7 $\\pm$ 0.3 | 8.3 | 9.1 | 62 | 26 / 53 | 7.8 | 13.1 $\\pm$ 0.1 | 11.4 $\\pm$ 0.1 | 1900 $\\pm$ 300 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (HeLMS J232439.5-043935)",
+   "value": "4.9",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J232439.5-043935 | 4.9 $\\pm$ 0.3 | 8.5 | 9.1 | 63 | 30 / 55 | 4.2 | 13.0 $\\pm$ 0.1 | 11.3 $\\pm$ 0.1 | 1500 $\\pm$ 300 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (HeLMS J233255.4-031134)",
+   "value": "5.5",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J233255.4-031134 | 5.5 $\\pm$ 0.3 | 8.5 | 9.1 | 60 | 28 / 51 | 4.9 | 13.1 $\\pm$ 0.1 | 11.5 $\\pm$ 0.1 | 1900 $\\pm$ 300 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (HeLMS J233255.6-053426)",
+   "value": "9.2",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J233255.6-053426 | 9.2 $\\pm$ 0.3 | 8.5 | 9.0 | 48 | 28 / 63 | 4.9 | 12.5 $\\pm$ 0.1 | 11.2 $\\pm$ 0.1 | 500 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification mu_tot (HeLMS J235331.9+031718)",
+   "value": "8.7",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J235331.9+031718 (z=2.0) | 8.7 $\\pm$ 0.3 | 8.7 | 9.0 | 37 | 25 / 31 | 3.3 | 12.1 $\\pm$ 0.1 | 11.1 $\\pm$ 0.1 | 180 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (H-ATLAS J083051.0+013225)",
+   "value": "3700",
+   "uncertainty": "500",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| H-ATLAS J083051.0+013225 | 6.7 $\\pm$ 0.3 | 8.5 | 9.2 | 70 | 32 / 70 | 3.1 | 13.4 $\\pm$ 0.1 | 11.4 $\\pm$ 0.1 | 3700 $\\pm$ 500 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J005159.4+062240)",
+   "value": "590",
+   "uncertainty": "50",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J005159.4+062240 | 10.2 $\\pm$ 0.3 | 8.2 | 8.9 | 62 | 28 / 59 | 6.9 | 12.6 $\\pm$ 0.1 | 11.1 $\\pm$ 0.1 | 590 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J234051.5-041938)",
+   "value": "1900",
+   "uncertainty": "300",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J234051.5-041938 | 6.7 $\\pm$ 0.3 | 8.3 | 9.1 | 62 | 26 / 53 | 7.8 | 13.1 $\\pm$ 0.1 | 11.4 $\\pm$ 0.1 | 1900 $\\pm$ 300 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J232439.5-043935)",
+   "value": "1500",
+   "uncertainty": "300",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J232439.5-043935 | 4.9 $\\pm$ 0.3 | 8.5 | 9.1 | 63 | 30 / 55 | 4.2 | 13.0 $\\pm$ 0.1 | 11.3 $\\pm$ 0.1 | 1500 $\\pm$ 300 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J233255.4-031134)",
+   "value": "1900",
+   "uncertainty": "300",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J233255.4-031134 | 5.5 $\\pm$ 0.3 | 8.5 | 9.1 | 60 | 28 / 51 | 4.9 | 13.1 $\\pm$ 0.1 | 11.5 $\\pm$ 0.1 | 1900 $\\pm$ 300 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J233255.6-053426)",
+   "value": "500",
+   "uncertainty": "50",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J233255.6-053426 | 9.2 $\\pm$ 0.3 | 8.5 | 9.0 | 48 | 28 / 63 | 4.9 | 12.5 $\\pm$ 0.1 | 11.2 $\\pm$ 0.1 | 500 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J235331.9+031718, z=2.0)",
+   "value": "180",
+   "uncertainty": "50",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J235331.9+031718 (z=2.0) | 8.7 $\\pm$ 0.3 | 8.7 | 9.0 | 37 | 25 / 31 | 3.3 | 12.1 $\\pm$ 0.1 | 11.1 $\\pm$ 0.1 | 180 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (HeLMS J235331.9+031718, z=3.7)",
+   "value": "800",
+   "uncertainty": "50",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HeLMS J235331.9+031718 (z=3.7) | 8.7 $\\pm$ 0.3 | 8.2 | 8.5 | 59 | 20 / 40 | 1.4 | 12.7 $\\pm$ 0.1 | 10.8 $\\pm$ 0.1 | 800 $\\pm$ 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median IR luminosity of combined sample",
+   "value": "5.1e12",
+   "uncertainty": "2.5e12",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The median luminosity of the of the ALESS sample is $\\mathrm{L_{IR} = (3.0 \\pm 0.3) \\times 10^{12} L_{\\odot}}$, compared with the median luminosity of the HERUS sample of $\\mathrm{L_{IR} = (1.7 \\pm 0.3) \\times 10^{12} L_{\\odot}}$, and finally, that of our sample; $\\mathrm{L_{IR} = (5.1 \\pm 2.5) \\times 10^{12} L_{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median effective dust temperature of combined sample",
+   "value": "59",
+   "uncertainty": "3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The median dust temperature of our sample is significantly higher at $T = 59 \\pm 3$K."
+    }
+   ]
+  },
+  {
+   "quantity": "Increase factor in star formation efficiency compared to SMG/ULIRG relation",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "Fitting a line parallel to the SMG/ULIRG relation shown in Fig. [\\[fig:sfr_dm\\]](#fig:sfr_dm), treating the range of dust masses as the 1-$\\sigma$ error, we find an increase in SFE by a factor of 6 when compared with the value implied by the SMG/ULIRG relation from (cite: rowlands)."
+    }
+   ]
+  },
+  {
+   "quantity": "Increase factor in star formation efficiency compared to z < 0.5 H-ATLAS galaxies",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "This factor increases to 50 when compared to the $z < 0.5$ H-ATLAS galaxies."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Channel averaging or time averaging applied to the visibility data prior to uv-plane lens modelling with PyAutoLens",
+  "Exact image dimensions, cleaning threshold, mask definition, and niter used in CASA tclean for 873 um flux measurement",
+  "Exact prior distributions and bounds for the lens mass model parameters, regularisation strength, and number of source plane pixels in dynesty",
+  "Exact surface brightness threshold and image-plane mask geometry used when computing total magnification factors",
+  "Method or sampler used to fit the optically thick and two-temperature optically thin SEDs"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral/temporal averaging applied to visibilities before PyAutoLens fitting",
+  "Phase centre coordinates corresponding to the (0, 0) origin of the reported lens centre offsets (x_c, y_c) in Table 3",
+  "Priors on lens model and source pixelisation parameters in DYNESTY",
+  "Exact surface brightness threshold and image-plane mask used to compute total magnification mu_tot",
+  "Exact aperture or method used to measure 873 um total fluxes from the tclean images"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Archival ALMA data and all multi-wavelength photometry/redshifts are tabulated in the paper, and the open-source modelling stack (CASA, PyAutoLens, PyNUFFT, PyLops, DYNESTY) is clearly identified with explicit mathematical equations for the lens profile and SEDs. Score is reduced because visibility averaging, parameter priors, phase centre coordinates, and exact magnification threshold/mask definitions are not specified.",
+ "rediscovery_reason": "Public archival dataset (2013.1.00358.S) with small data volume, open-source modelling software (PyAutoLens + CASA), and clean numeric answer keys in Tables 2, 3, and 4 (873 um fluxes, Einstein radii, power-law slopes, magnifications, L_IR, dust masses, and SFRs).",
+ "source_card": "cards/2022MNRAS.512.2426M/sonnet/card.md"
+}

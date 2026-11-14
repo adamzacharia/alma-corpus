@@ -1,0 +1,440 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "In this paper, we present a deep search for $^{16}$O$^{18}$O emission in ALMA observations of TW Hya, a well-studied T Tauri protoplanetary disk."}
+],
+"fields": ["protoplanetary_disks", "astrochemistry"],
+"question": {
+"value": "Is a significant amount of oxygen in TW Hya hiding in gas-phase O2, searched via 16O18O emission (plus SO and SO2)?",
+"evidence": [
+{"loc": "Introduction", "quote": "Could oxygen be hiding in gas-phase O$_2$?"},
+{"loc": "abstract", "quote": "We conclude that gas-phase O$_2$ is not a major oxygen-carrier in TW Hya."}
+]
+},
+"targets": [
+{
+"name": "TW Hya",
+"details": [
+{"loc": "Observations", "quote": "equivalent to a spatial resolution of 30 to 35 au at a distance of 60.1 pc (cite: BailerJones2018)"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "60.1 pc",
+"distance_source": "Bailer-Jones et al. 2018"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.01177.S", "evidence": [{"loc": "Observations", "quote": "were carried out as part of ALMA program 2019.1.01177.S (PI: Eistrup)"}]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "16O18O 2_1-0_1 at 233.946 GHz; SO 219.949 GHz and SO2 235.152 GHz in the same set-up; original channel width 0.078 km/s", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "lines at 219.949 GHz and 235.152 GHz, respectively, were also included in the observational set-up."},
+{"loc": "Methods", "quote": "The original channel width of the data was 0.078 km s$^{-1}$"}
+]},
+{"field": "baselines", "value": "15-1398 m (April 4, 44 antennas); 15-1263 m (April 6, 45 antennas)", "evidence": [
+{"loc": "Observations", "quote": "On April 4, there were 44 antennas and baselines of 15-1398 meters, and on April 6, 45 antennas and baselines of 15-1263 meters."}
+]},
+{"field": "angular_resolution", "value": "0.59'' by 0.50'', PA -88 deg (natural weighting); 30 to 35 au at 60.1 pc", "evidence": [
+{"loc": "Observations", "quote": "The resulting beam is $0.59''$ by $0.50''$ with a position angle of $-88\\degree$"},
+{"loc": "Observations", "quote": "equivalent to a spatial resolution of 30 to 35 au at a distance of 60.1 pc (cite: BailerJones2018)"}
+]},
+{"field": "sensitivity", "value": "rms 2.59 mJy/beam per 0.235 km/s channel", "evidence": [
+{"loc": "Observations", "quote": "The rms noise is 2.59 mJy beam$^{-1}$ for a channel width of 0.235 km s$^{-1}$."}
+]},
+{"field": "time_on_source", "value": "91 minutes combined", "evidence": [
+{"loc": "Observations", "quote": "for a combined time of 91 minutes on source"}
+]},
+{"field": "observing_dates", "value": "2021 April 4 and April 6", "evidence": [
+{"loc": "Observations", "quote": "Observations occurred on two nights in 2021, April 4 and April 6"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA program 2019.1.01177.S (PI: Eistrup)", "evidence": [
+{"loc": "Observations", "quote": "were carried out as part of ALMA program 2019.1.01177.S (PI: Eistrup)"}
+]}
+],
+"lines_targeted": [
+{"species": "16O18O", "transition": "N_J = 2_1-0_1", "rest_frequency": "233.946 GHz (233.94618 GHz in the LTE calculation)", "evidence": [
+{"loc": "abstract", "quote": "($N_J=2_1-0_1$ line at 233.946 GHz)"},
+{"loc": "O2 Upper Limits", "quote": "$\\nu=233.94618$ GHz is the frequency of the $N_J=2_1-0_1$ transition"}
+]},
+{"species": "SO", "transition": "N_J = 5_6-4_5", "rest_frequency": "219.949 GHz", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "The SO $N_J=5_6-4_5$ and SO$_2$ $N_J=4_{(2,2)}-3_{(1,3)}$ lines at 219.949 GHz and 235.152 GHz, respectively"}
+]},
+{"species": "SO2", "transition": "N_J = 4(2,2)-3(1,3)", "rest_frequency": "235.152 GHz", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "The SO $N_J=5_6-4_5$ and SO$_2$ $N_J=4_{(2,2)}-3_{(1,3)}$ lines at 219.949 GHz and 235.152 GHz, respectively"}
+]},
+{"species": "C15N", "transition": "N_J = 2_{5/2}-1_{3/2}, F = 2-1 and F = 3-2", "rest_frequency": "219.93404 GHz and 219.93482 GHz", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "at 219.93404 GHz and 219.93482 GHz, respectively"}
+]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Disk mass 2.5e-2 Msun and surface density profile (used for hydrogen budget)", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "We adopt the (cite: Calahan2021) value of $2.5\\times10^{-2}$ M$_\\odot$ since it uses the HD line and multiple CO isotopologues to constrain the temperature structure."},
+{"loc": "O2 Upper Limits", "quote": "Within 120 au, we use the surface density profile from (cite: Calahan2021)"}
+]}, "citation": "Calahan et al. 2021 (cite: Calahan2021)"},
+{"what": {"value": "Distance to TW Hya of 60.1 pc", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "$D=60.1$ pc is the distance to TW Hya (cite: BailerJones2018)"}
+]}, "citation": "Bailer-Jones et al. 2018 (cite: BailerJones2018)"},
+{"what": {"value": "Systemic velocity 2.86 km/s for the Keplerian mask", "evidence": [
+{"loc": "Methods", "quote": "We assumed a systemic velocity of 2.86 km s$^{-1}$ (cite: Favre2013)"}
+]}, "citation": "Favre et al. 2013 (cite: Favre2013)"},
+{"what": {"value": "Inclination 5.8 deg, position angle 151 deg and stellar mass 0.81 Msun for the Keplerian mask", "evidence": [
+{"loc": "Methods", "quote": "inclination $= 5.8\\degree$, position angle $=151\\degree$, and stellar mass $= 0.81$ M$_\\odot$ (cite: Teague2019)"}
+]}, "citation": "Teague et al. 2019 (cite: Teague2019)"},
+{"what": {"value": "CO J=3-2 emission data for TW Hya used to build the Keplerian mask", "evidence": [
+{"loc": "Methods", "quote": "The mask was created using CO $J=3-2$ emission data for TW Hya from (cite: Huang2018)"}
+]}, "citation": "Huang et al. 2018 (cite: Huang2018)"},
+{"what": {"value": "Einstein A coefficient 1.33e-8 s^-1 and upper state energy 11.23 K for the 2_1-0_1 transition", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "is the Einstein A coefficient of the $N_J=2_1-0_1$ transition (cite: Marechal1997)"},
+{"loc": "O2 Upper Limits", "quote": "11.23 K is the upper state energy (cite: Marechal1997)"}
+]}, "citation": "Marechal et al. 1997 (cite: Marechal1997)"},
+{"what": {"value": "Partition function Q(T) from the JPL catalog, 9.4 K to 300.0 K", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "$Q(T)$ is the partition function from the JPL spectral line catalog (cite: Pickett1998; Mizushima1991; Crownover1990; Steinbach1975; Amano1974)"}
+]}, "citation": "Pickett et al. 1998 and others (cite: Pickett1998)"},
+{"what": {"value": "16O16O/16O18O ratio of 280", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "we assumed a $^{16}$O$^{16}$O/$^{16}$O$^{18}$O ratio of 280 (cite: Taquet2018; Wilson1994)"}
+]}, "citation": "Taquet et al. 2018; Wilson & Rood 1994 (cite: Taquet2018; Wilson1994)"},
+{"what": {"value": "Molecular mass per hydrogen molecule of 2.8", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "Assuming a molecular mass per hydrogen molecule of 2.8 (cite: Kauffman2008)"}
+]}, "citation": "Kauffmann et al. 2008 (cite: Kauffman2008)"},
+{"what": {"value": "Molecular line data for SO and SO2 from LAMDA and CDMS", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "using values from LAMDA (cite: Schoier2005) and CDMS (cite: Muller2001)"}
+]}, "citation": "Schoier et al. 2005 (cite: Schoier2005); Muller et al. 2001 (cite: Muller2001)"},
+{"what": {"value": "Earlier C15N 3-2 integrated fluxes in TW Hya of 150 +/- 20 and 160 +/- 13 mJy km/s", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "They used two methods to calculate an integrated flux of $150 \\pm 20$ mJy km s$^{-1}$ and $160 \\pm 13$ mJy km s$^{-1}$"}
+]}, "citation": "Hily-Blant et al. 2017 (cite: HilyBlant2017)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "standard ALMA pipeline", "evidence": [
+{"loc": "Observations", "quote": "The data were calibrated using the standard ALMA pipeline."}
+]},
+{"field": "casa_version", "value": "CASA 6.4 (stated for subsequent imaging and analysis)", "evidence": [
+{"loc": "Observations", "quote": "Subsequent imaging and analysis were carried out using the Common Astronomy Software Applications (CASA) version 6.4 (cite: CASA2007)."}
+]},
+{"field": "flux_calibrator", "value": "J1058+0133 (amplitude and bandpass); J1037-2934 for phase", "evidence": [
+{"loc": "Observations", "quote": "J1058+0133 was adopted as the amplitude and bandpass calibrator, while J1037-2934 was used for phase calibration."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "tclean (CASA 6.4), after uvcontsub; cvel for matched filtering", "evidence": [
+{"loc": "Observations", "quote": "The data were imaged using *tclean*, initially with a natural weighting scheme to improve line sensitivity."},
+{"loc": "Observations", "quote": "For the matched filtering analysis, Earth’s rotation was first corrected for using the CASA task *cvel*."}
+]},
+{"field": "weighting_robust", "value": "natural weighting initially; several Briggs robust values tried (not listed); robust = 2 for the C15N images", "evidence": [
+{"loc": "Methods", "quote": "We imaged the data with several combinations of the Briggs weighting robust parameter (cite: Briggs1995) and uvtaper."},
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "For these images, we used Briggs weighting (robust = 2) and a uvtaper of 0.3 arcsec."}
+]},
+{"field": "uv_taper", "value": "several tried (values not listed); 0.3 arcsec for the C15N images", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "For these images, we used Briggs weighting (robust = 2) and a uvtaper of 0.3 arcsec."}
+]},
+{"field": "masking", "value": "Keplerian masks of 120 au and 260 au radius (convolved), cleaning threshold 5 sigma", "evidence": [
+{"loc": "Methods", "quote": "Two masks were then created for the O$_2$ data, one with a radius set to 100 au (convolved to 120 au), and a second with a radius set to 240 au (convolved to 260 au, covering the extent of the CO emission)."},
+{"loc": "Methods", "quote": "Both masks were used separately in cleaning, using a $5\\sigma$ threshold."}
+]},
+{"field": "continuum_subtraction", "value": "uvcontsub, fit order 1, edge channels excluded", "evidence": [
+{"loc": "Observations", "quote": "Continuum emission was subtracted using the task *uvcontsub*, applying a fit order of 1 and excluding edge channels."}
+]},
+{"field": "smoothing", "value": "channel averaging of 2, 3 and 5 channels tried; final 0.235 km/s channels", "evidence": [
+{"loc": "Methods", "quote": "we experimented with averaging 2, 3, and 5 channels together."},
+{"loc": "Imaging Results", "quote": "shows the data imaged with natural weighting and velocity averaging to a channel size of 0.235 km s$^{-1}$."}
+]},
+{"field": "final_beam", "value": "0.59'' by 0.50'', PA -88 deg", "evidence": [
+{"loc": "Observations", "quote": "The resulting beam is $0.59''$ by $0.50''$ with a position angle of $-88\\degree$"}
+]},
+{"field": "final_rms", "value": "2.59 mJy/beam per 0.235 km/s channel", "evidence": [
+{"loc": "Observations", "quote": "The rms noise is 2.59 mJy beam$^{-1}$ for a channel width of 0.235 km s$^{-1}$."}
+]}
+],
+"inherited": [
+{"what": {"value": "Keplerian mask method and code", "evidence": [
+{"loc": "Methods", "quote": "We first created a Keplerian mask (cite: TeagueKepMask) to use with the CASA *tclean* task."}
+]}, "from_reference": "Teague keplerian_mask (cite: TeagueKepMask); Salinas et al. 2017 (cite: Salinas2017); Teague et al. 2022 (cite: Teague2022)"},
+{"what": {"value": "Matched filtering technique, including Keplerian mask as template", "evidence": [
+{"loc": "Matched Filter Results", "quote": "matched filtering has previously been successful at finding the signatures of line emission in other sources (cite: Loomis2020), including when using a Keplerian mask as a template (cite: Loomis2018)."}
+]}, "from_reference": "Loomis et al. 2018 (cite: Loomis2018); Loomis et al. 2020 (cite: Loomis2020)"},
+{"what": {"value": "Flux-to-number-of-molecules equation for the upper limits", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "we calculate the 1$\\sigma$ upper limit on the maximum number of O$_2$ molecules that could be present in TW Hya, using the following adapted from (cite: Bergin2013)."}
+]}, "from_reference": "Bergin et al. 2013 (cite: Bergin2013)"},
+{"what": {"value": "Disk parameters (v_sys, inclination, PA, stellar mass) for the Keplerian mask taken from earlier papers", "evidence": [
+{"loc": "Methods", "quote": "We assumed a systemic velocity of 2.86 km s$^{-1}$ (cite: Favre2013), distance of 60.1 pc (cite: BailerJones2018)"}
+]}, "from_reference": "Favre et al. 2013 (cite: Favre2013); Bailer-Jones et al. 2018 (cite: BailerJones2018); Teague et al. 2019 (cite: Teague2019)"}
+],
+"unstated_but_needed": [
+"Final Briggs robust and uvtaper values for each tclean run (only natural weighting and the C15N values are given)",
+"Image size, cell size, deconvolver, niter and cleaning threshold units for tclean",
+"Which channels count as edge channels excluded in uvcontsub",
+"Spectral windows and velocity grid (rest frequency and LSRK start) used for imaging and the flux velocity ranges",
+"How the 1-sigma uncertainty on the disk-integrated flux was computed (aperture, beam correction, number of channels, correlated noise)",
+"Whether primary beam correction was applied and the image or aperture shape used for the 120 au and 260 au fluxes",
+"Matched filter details: the filter spectral resolution, how the impulse response sigma was measured, and the VISIBLE version and settings",
+"Exact Q(T) values and the specific gas-temperature grid used in the LTE calculation",
+"Calahan et al. 2021 surface density profile values used inside 120 au",
+"ALMA pipeline and CASA pipeline version used for calibration, and the array (12 m) and number of execution blocks",
+"Source coordinates and phase centre"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Continuum subtraction and imaging of the 16O18O cube",
+"method": {"value": "uvcontsub (order 1) then tclean with natural weighting, with channel averaging and several Briggs robust and uvtaper combinations tried", "evidence": [
+{"loc": "Observations", "quote": "Continuum emission was subtracted using the task *uvcontsub*, applying a fit order of 1 and excluding edge channels."},
+{"loc": "Methods", "quote": "We imaged the data with several combinations of the Briggs weighting robust parameter (cite: Briggs1995) and uvtaper."}
+]},
+"software": ["CASA 6.4", "uvcontsub", "tclean"],
+"key_parameters": [
+{"value": "natural weighting; channel width 0.078 km/s averaged to 0.235 km/s; rms 2.59 mJy/beam", "evidence": [
+{"loc": "Observations", "quote": "The rms noise is 2.59 mJy beam$^{-1}$ for a channel width of 0.235 km s$^{-1}$."},
+{"loc": "Methods", "quote": "The original channel width of the data was 0.078 km s$^{-1}$, and we experimented with averaging 2, 3, and 5 channels together."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Keplerian-mask clean and disk-integrated flux limits in the image plane",
+"method": {"value": "Keplerian masks (120 au and 260 au) built from TW Hya parameters and CO J=3-2 data, used in tclean with a 5 sigma threshold; flux summed within 120 au and 260 au", "evidence": [
+{"loc": "Methods", "quote": "Both masks were used separately in cleaning, using a $5\\sigma$ threshold."},
+{"loc": "Imaging Results", "quote": "We calculated a disk integrated flux (for a velocity range of 4.69 km s$^{-1}$) of $-11.8 \\pm 14.2$ mJy km s$^{-1}$ within 120 au"}
+]},
+"software": ["CASA tclean", "Keplerian Mask"],
+"key_parameters": [
+{"value": "target_res = 0.4 arcsec, dV0 = 500 m/s", "evidence": [
+{"loc": "Methods", "quote": "Specifically, we set the *target_res* = 0.4, which convolves the mask with a circular beam of 0.4 arcsec FWHM, and *dV0* = 500 m s$^{-1}$, which affects the radially varying line width of emission."}
+]}
+],
+"assumptions": [
+{"value": "v_sys 2.86 km/s, distance 60.1 pc, inclination 5.8 deg, PA 151 deg, stellar mass 0.81 Msun", "evidence": [
+{"loc": "Methods", "quote": "inclination $= 5.8\\degree$, position angle $=151\\degree$, and stellar mass $= 0.81$ M$_\\odot$ (cite: Teague2019)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Both masks gave the same image because no values exceeded 5 sigma", "evidence": [
+{"loc": "Methods", "quote": "The resulting image was the same in both cases because there were no values above $5\\sigma$ within either mask."}
+]}
+},
+{
+"order": 3,
+"goal": "Matched filtering in the visibility plane",
+"method": {"value": "cvel to correct for Earth's rotation, then Keplerian masks (120 au and 260 au) used as filters, Fourier transformed to a kernel and cross-correlated with the visibilities to give an impulse response spectrum; a 3 sigma response at 0 km/s would indicate emission", "evidence": [
+{"loc": "Methods", "quote": "The filter is Fourier transformed to generate a kernel that is then cross-correlated with the data."},
+{"loc": "Matched Filter Results", "quote": "A $3\\sigma$ response at 0 km s$^{-1}$ would indicate emission from $^{16}$O$^{18}$O."}
+]},
+"software": ["VISIBLE", "CASA cvel", "Keplerian Mask"],
+"key_parameters": [
+{"value": "filters: Keplerian masks of 120 au and 260 au radius", "evidence": [
+{"loc": "Methods", "quote": "For matched filtering, we used both Keplerian masks as filters (one with a 120 au radius, and one with a 260 au radius)."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Convert flux limit to a limit on the number of O2 molecules",
+"method": {"value": "LTE single-line relation with the 1 sigma flux as F_l, over gas temperatures 9.4 K to 300.0 K, then scaled by 16O16O/16O18O = 280", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "we explore a range of temperatures and assume its emission is in local thermodynamic equilibrium (LTE)."},
+{"loc": "O2 Upper Limits", "quote": "we assumed a $^{16}$O$^{16}$O/$^{16}$O$^{18}$O ratio of 280 (cite: Taquet2018; Wilson1994)."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "A_20 = 1.33e-8 s^-1, nu = 233.94618 GHz, D = 60.1 pc, upper state energy 11.23 K, degeneracy 3", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "$\\nu=233.94618$ GHz is the frequency of the $N_J=2_1-0_1$ transition, and $D=60.1$ pc is the distance to TW Hya (cite: BailerJones2018)."}
+]}
+],
+"assumptions": [
+{"value": "LTE, temperature range 9.4 K to 300.0 K (set by the range of the JPL partition functions)", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "These partition functions are given for temperatures ranging from 9.4 K to 300.0 K, so this is the temperature range we use in our calculations."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Express the O2 limit as an abundance relative to H",
+"method": {"value": "Divide the O2 molecule limit by the number of hydrogen atoms from the Calahan et al. 2021 disk mass (whole disk) or surface density profile (within 120 au)", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "Assuming a molecular mass per hydrogen molecule of 2.8 (cite: Kauffman2008), this equates to $2.1\\times10^{55}$ hydrogen atoms in the whole disk."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "disk mass 2.5e-2 Msun (whole disk), 1.8e-2 Msun within 120 au; 2.1e55 and 1.5e55 H atoms", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "Within 120 au, we use the surface density profile from (cite: Calahan2021) to calculate a disk mass of $1.8\\times10^{-2}$ M$_\\odot$, which equates to $1.5\\times10^{55}$ hydrogen atoms."}
+]}
+],
+"assumptions": [
+{"value": "Disk mass from Calahan et al. 2021; the paper notes a wide range of literature disk masses", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "but we note that there are a wide range of mass values for the TW Hya disk in the literature (cite: Miotello2022)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Search for SO, SO2 and C15N in the same data",
+"method": {"value": "Same imaging and matched filtering approach as for 16O18O; limits for SO and SO2 from the modified LTE equation; C15N found by matched filtering with the 120 au mask and measured in images", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "we searched for emission from these lines using similar techniques as for $^{16}$O$^{18}$O."},
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "Using matched filtering with the 120 au Keplerian mask, we obtained a 7$\\sigma$ filter response."}
+]},
+"software": ["CASA tclean", "VISIBLE"],
+"key_parameters": [
+{"value": "C15N images: Briggs robust = 2, uvtaper 0.3 arcsec, 200 au circular region", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "calculated within a 200 au circular region covering visible emission. For these images, we used Briggs weighting (robust = 2) and a uvtaper of 0.3 arcsec."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "C15N found by matched filtering and confirmed in images; first integrated flux consistent with the earlier 3-2 measurement", "evidence": [
+{"loc": "abstract", "quote": "which we found via matched filtering and confirm through imaging."},
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "the first of which is consistent with our value"}
+]}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.4", "used_for": {"value": "imaging and analysis (uvcontsub, tclean, cvel)", "evidence": [
+{"loc": "Observations", "quote": "Subsequent imaging and analysis were carried out using the Common Astronomy Software Applications (CASA) version 6.4 (cite: CASA2007)."}
+]}},
+{"name": "Keplerian Mask", "version": "not stated", "used_for": {"value": "building Keplerian masks for cleaning and as matched filter templates", "evidence": [
+{"loc": "Methods", "quote": "We first created a Keplerian mask (cite: TeagueKepMask) to use with the CASA *tclean* task."}
+]}},
+{"name": "VISIBLE", "version": "not stated", "used_for": {"value": "listed in the Software section, matched filtering (VISibility-Based Line Extraction)", "evidence": [
+{"loc": "Software", "quote": "Astropy (cite: Astropy2013), CASA (cite: CASA2007), Keplerian Mask (cite: TeagueKepMask), VISIBLE (cite: LoomisVISIBLE)"}
+]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "Astropy (cite: Astropy2013), CASA (cite: CASA2007), Keplerian Mask (cite: TeagueKepMask), VISIBLE (cite: LoomisVISIBLE)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "16O18O disk-integrated flux within 120 au", "value": "-11.8", "uncertainty": "+/- 14.2", "units": "mJy km/s", "from_step": 2, "evidence": [
+{"loc": "Imaging Results", "quote": "We calculated a disk integrated flux (for a velocity range of 4.69 km s$^{-1}$) of $-11.8 \\pm 14.2$ mJy km s$^{-1}$ within 120 au"}
+]},
+{"quantity": "16O18O disk-integrated flux within 260 au", "value": "7.4", "uncertainty": "+/- 18.0", "units": "mJy km/s", "from_step": 2, "evidence": [
+{"loc": "Imaging Results", "quote": "and $7.4 \\pm 18.0$ mJy km s$^{-1}$ within 260 au"}
+]},
+{"quantity": "Upper limit on number of O2 molecules within 120 au (9.4-300 K)", "value": "(1.1-10.4)e49", "uncertainty": "not stated", "units": "molecules", "from_step": 4, "evidence": [
+{"loc": "O2 Upper Limits", "quote": "We obtained an upper limit of $(1.1-10.4)\\times10^{49}$ O$_2$ molecules within 120 au"}
+]},
+{"quantity": "Upper limit on number of O2 molecules within 260 au (9.4-300 K)", "value": "(1.4-13.2)e49", "uncertainty": "not stated", "units": "molecules", "from_step": 4, "evidence": [
+{"loc": "O2 Upper Limits", "quote": "and $(1.4-13.2)\\times10^{49}$ molecules within 260 au, for a temperature range of 9.4 K to 300.0 K."}
+]},
+{"quantity": "Hydrogen atoms in the whole disk", "value": "2.1e55", "uncertainty": "not stated", "units": "atoms", "from_step": 5, "evidence": [
+{"loc": "O2 Upper Limits", "quote": "this equates to $2.1\\times10^{55}$ hydrogen atoms in the whole disk."}
+]},
+{"quantity": "Disk mass within 120 au", "value": "1.8e-2", "uncertainty": "not stated", "units": "Msun", "from_step": 5, "evidence": [
+{"loc": "O2 Upper Limits", "quote": "to calculate a disk mass of $1.8\\times10^{-2}$ M$_\\odot$, which equates to $1.5\\times10^{55}$ hydrogen atoms."}
+]},
+{"quantity": "O2/H upper limit within 120 au", "value": "(7.2-70)e-7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "O2 Upper Limits", "quote": "we estimate an O$_2$/H abundance of $(7.2-70)\\times10^{-7}$ within 120 au"}
+]},
+{"quantity": "O2/H upper limit within 260 au", "value": "(6.4-62)e-7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "O2 Upper Limits", "quote": "and $(6.4-62)\\times10^{-7}$ within 260 au, for temperatures ranging from 9.4 K to 300.0 K."}
+]},
+{"quantity": "SO disk-integrated flux within 120 au", "value": "-0.05", "uncertainty": "+/- 12.5", "units": "mJy km/s", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "The disk integrated flux for the SO line is $-0.05 \\pm 12.5$ mJy km s$^{-1}$ within 120 au"}
+]},
+{"quantity": "SO disk-integrated flux within 260 au", "value": "-21.4", "uncertainty": "+/- 21.2", "units": "mJy km/s", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "and $-21.4 \\pm 21.2$ mJy km s$^{-1}$ within 260 au (covering a range of 4.99 km s$^{-1}$)"}
+]},
+{"quantity": "SO2 disk-integrated flux within 120 au", "value": "24.4", "uncertainty": "+/- 14.8", "units": "mJy km/s", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "For SO$_2$, the flux is $24.4 \\pm 14.8$ mJy km s$^{-1}$ within 120 au"}
+]},
+{"quantity": "SO2 disk-integrated flux within 260 au", "value": "34.3", "uncertainty": "+/- 24.5", "units": "mJy km/s", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "and $34.3 \\pm 24.5$ mJy km s$^{-1}$ within 260 au (covering a range of 4.67 km s$^{-1}$)"}
+]},
+{"quantity": "SO/H 1-sigma upper limit within 120 au and 260 au", "value": "(2.4-10)e-13 within 120 au; (2.9-12)e-13 within 260 au", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "We calculate a 1$\\sigma$ upper limit of SO/H = $(2.4-10)\\times10^{-13}$ within 120 au and $(2.9-12)\\times10^{-13}$ within 260 au"}
+]},
+{"quantity": "SO2/H 1-sigma upper limit within 120 au and 260 au", "value": "(7.9-197)e-13 within 120 au; (9.1-229)e-13 within 260 au", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "SO$_2$/H = $(7.9-197)\\times10^{-13}$ within 120 au and $(9.1-229)\\times10^{-13}$ within 260 au, for a temperature range of 9.4 K to 300.0 K."}
+]},
+{"quantity": "C15N matched filter response", "value": "7", "uncertainty": "not stated", "units": "sigma", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "Using matched filtering with the 120 au Keplerian mask, we obtained a 7$\\sigma$ filter response."}
+]},
+{"quantity": "C15N integrated flux (2.33 km/s range, 200 au region)", "value": "113.5", "uncertainty": "+/- 17.0", "units": "mJy km/s", "from_step": 6, "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "with an integrated flux of $113.5 \\pm 17.0$ mJy km s$^{-1}$ for a range of 2.33 km s$^{-1}$, calculated within a 200 au circular region covering visible emission."}
+]}
+],
+"findings_qualitative": [
+{"value": "16O18O is not detected in either imaging or matched filtering, so gas-phase O2 is not a major oxygen carrier in TW Hya", "evidence": [
+{"loc": "Matched Filter Results", "quote": "We can conclusively say that the $^{16}$O$^{18}$O 233.946 GHz line is not detected at the sensitivity of the present measurements."}
+]},
+{"value": "The main oxygen carrier(s) in TW Hya remain undetected", "evidence": [
+{"loc": "Conclusions", "quote": "Taking into account other existing molecular detections in TW Hya, the main oxygen-carrier(s) remain undetected."}
+]}
+],
+"claims": [
+{"hypothesis": "Gas-phase O2 is a major carrier of volatile oxygen in the TW Hya disk, as some astrochemical models predict", "experiment": "Image-plane search (Keplerian-mask tclean, natural weighting) and visibility-plane matched filtering for 16O18O at 233.946 GHz, then LTE upper limits scaled to O2/H", "result": "No detection; O2/H below (6.4-70)e-7", "finding": "Gas-phase O2 is not a major oxygen carrier in TW Hya", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "We conclude that gas-phase O$_2$ is not a major oxygen-carrier in TW Hya."},
+{"loc": "Matched Filter Results", "quote": "Neither filter resulted in a $3\\sigma$ impulse response."}
+]},
+{"hypothesis": "SO and SO2 might be prominent oxygen carriers in TW Hya", "experiment": "Same imaging and matched filtering applied to the SO and SO2 lines covered in the same set-up", "result": "Neither line detected above 3 sigma; SO/H and SO2/H upper limits derived", "finding": "Oxygen is not bound up with sulfur either", "support": "supported", "evidence": [
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "Neither line was detected above $3\\sigma$ with imaging or matched filtering (see Appendix [7](#appendix))."},
+{"loc": "Conclusions", "quote": "These results suggest oxygen is not bound up with sulfur either."}
+]},
+{"hypothesis": "Weak, unexpected lines in the data can be recovered by matched filtering", "experiment": "Matched filter with the 120 au Keplerian mask, followed by imaging with robust = 2 and a 0.3 arcsec uvtaper", "result": "C15N hyperfine detection at 7 sigma with an integrated flux of 113.5 +/- 17.0 mJy km/s", "finding": "C15N is detected in TW Hya, with a flux consistent with one earlier measurement", "support": "supported", "evidence": [
+{"loc": "Conclusions", "quote": "We detect the isotopologue C$^{15}$N at the 7$\\sigma$ level using matched filtering, and calculate an integrated flux of $113.5 \\pm 17.0$ mJy km s$^{-1}$."},
+{"loc": "Constraints from Serendipitous Molecular Lines", "quote": "the first of which is consistent with our value"}
+]},
+{"hypothesis": "Protoplanetary disks could be the origin of the O2 seen in comets", "experiment": "Compare the O2/H limits with water vapor abundance in TW Hya and the O2/H2O ratio of about 0.04 in comets", "result": "Limits are about two orders of magnitude above the detected water vapor abundance", "finding": "The limits are not constraining enough to rule out disks as the origin of cometary O2", "support": "partially", "evidence": [
+{"loc": "Discussion", "quote": "Our upper limits on gas-phase O$_2$ are not constraining enough to rule out protoplanetary disks as the origin of O$_2$ in comets"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "TW Hya is gas-rich and nearby, a good candidate for faint emission", "evidence": [
+{"loc": "Introduction", "quote": "TW Hya’s relatively gas-rich disk and nearby proximity make it a good candidate for searching for faint emission."}
+]},
+{"field": "why_this_method", "value": "Disk-integrated flux is the goal so full resolution was not needed; matched filtering works in the visibility plane without imaging", "evidence": [
+{"loc": "Methods", "quote": "Because we were mainly interested in looking at the disk integrated flux, we did not need the full spatial resolution of the observations."},
+{"loc": "Methods", "quote": "Matched filtering is applied in the visibility plane and therefore does not involve any imaging."}
+]},
+{"field": "how_they_decided_enough", "value": "Detection criterion of a 3 sigma response in imaging or matched filtering", "evidence": [
+{"loc": "Matched Filter Results", "quote": "A $3\\sigma$ response at 0 km s$^{-1}$ would indicate emission from $^{16}$O$^{18}$O."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Two Keplerian mask radii (120 au and 260 au) and several weighting, uvtaper and channel-averaging combinations were tried; none gave a detection", "evidence": [
+{"loc": "Imaging Results", "quote": "For all attempted combinations of imaging parameters, no significant detection was found within either choice of mask."}
+]}
+],
+"limitations_admitted": [
+{"value": "O2 emission could be confined to a smaller area than the masks and hidden in the noise", "evidence": [
+{"loc": "Methods", "quote": "It is possible that O$_2$ emission covers a smaller area than these radii and could be hidden in the noise."}
+]},
+{"value": "Wide range of literature disk masses for TW Hya, affecting the hydrogen budget", "evidence": [
+{"loc": "O2 Upper Limits", "quote": "but we note that there are a wide range of mass values for the TW Hya disk in the literature (cite: Miotello2022)"}
+]}
+],
+"referee_caveats_inferred": [
+"Abundance limits depend on a single disk mass (Calahan et al. 2021) and on an assumed 16O16O/16O18O of 280; gas-to-dust and mass uncertainties are not propagated",
+"LTE over 9.4-300 K is broad; no physical temperature structure or non-LTE or disk-model treatment of where O2 would emit",
+"Quoted limits are 1 sigma, not 3 sigma, which makes them weaker constraints than usual upper limits",
+"Image-plane versus matched-filter sensitivity is not compared quantitatively, and the flux uncertainty method is not described"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Final robust and uvtaper values for each tclean run and imaging geometry",
+"Matched filter implementation details and sigma estimation",
+"Partition function values and flux aperture/uncertainty method",
+"Pipeline version and exact set of execution blocks used"
+],
+"estimated_data_volume_inferred": "About 10-30 GB for two execution blocks (91 min on source, raw plus calibrated); a few GB if only calibrated spectral windows are kept",
+"score_inferred": 3,
+"score_reason": "One ALMA project code and a clear workflow, with numeric flux and abundance limits and fully given Keplerian mask parameters, but final tclean settings, matched-filter details and uncertainty method are not given",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Single named ALMA project and stated numeric limits; imaging and the LTE abundance calculation are reproducible within tolerance, though public release of the data is not stated in the paper",
+"methods_papers": [
+{"citation": "Loomis et al. 2018 (cite: Loomis2018)", "why": "Matched filtering technique with Keplerian mask templates"},
+{"citation": "Teague keplerian_mask (cite: TeagueKepMask)", "why": "Code used to build the Keplerian masks"},
+{"citation": "Bergin et al. 2013 (cite: Bergin2013)", "why": "Source of the LTE flux to molecule number relation"}
+],
+"companion_papers": [
+{"citation": "Calahan et al. 2021 (cite: Calahan2021)", "why": "TW Hya disk mass and surface density used for the hydrogen budget"},
+{"citation": "Eistrup et al. 2018 (cite: Eistrup2018)", "why": "Chemical model predicting abundant gas-phase O2 in disk midplanes"}
+],
+"related_projects_or_surveys": ["ALMA program 2019.1.01177.S (PI: Eistrup)"]
+}

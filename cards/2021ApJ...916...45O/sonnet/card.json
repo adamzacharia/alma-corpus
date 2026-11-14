@@ -1,0 +1,907 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021ApJ...916...45O",
+  "title": "The Core Mass Function across Galactic Environments. III. Massive Protoclusters",
+  "year": 2021,
+  "journal": "The Astrophysical Journal",
+  "first_author": "O'Neill, Theo J.",
+  "n_authors": 5,
+  "arxiv_id": "2104.08861",
+  "doi": "10.3847/1538-4357/ac062d",
+  "heldout": true,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2019.1.00195.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Source Selection",
+    "quote": "We selected sources from the ALMA Cycle 7 project “ALMAGAL: ALMA Evolutionary Study of High Mass Protocluster Formation in the Galaxy” (PI: S. Molinari)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "28 ALMAGAL clumps (e.g. G18.30, G345.50, G341.92)",
+     "coordinates": {
+      "value": "Galactic coordinates per clump in Table 1 (e.g. G18.30: l=18.30268, b=-0.38638)",
+      "evidence": [
+       {
+        "loc": "Source Selection",
+        "quote": "we limited our analysis to sources within 3.5 kpc that had 12m-array observations delivered to the *ALMA* archive by May 2020. This yields a sample of 28 sources"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "0.76-3.5 kpc (per clump, Table 1)",
+      "evidence": [
+       {
+        "loc": "Source Selection",
+        "quote": "we limited our analysis to sources within 3.5 kpc that had 12m-array observations delivered to the *ALMA* archive by May 2020. This yields a sample of 28 sources"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Hi-GAL (Elia et al. 2017)",
+      "evidence": [
+       {
+        "loc": "Source Selection",
+        "quote": "we limited our analysis to sources within 3.5 kpc that had 12m-array observations delivered to the *ALMA* archive by May 2020. This yields a sample of 28 sources"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the shape of the core mass function in 28 massive protocluster clumps observed by ALMAGAL, does it show a break, and does it differ from the G286 protocluster and IRDC CMFs?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we measure the CMF in 28 dense clumps within 3.5 kpc that are likely to be central regions of massive protoclusters, observed via $1.3\\:{\\rm{mm}}$ dust continuum emission by the ALMAGAL project."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00195.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2019.1.00195.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "1.3 mm (near 1.4 mm) continuum, 12m array",
+    "evidence": [
+     {
+      "loc": "Source Selection",
+      "quote": "ALMAGAL was designed to observe continuum and line emission near $1.4\\:$mm from $\\gtrsim$1000 high-mass Galactic clumps"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m array",
+    "evidence": [
+     {
+      "loc": "Source Selection",
+      "quote": "we limited our analysis to sources within 3.5 kpc that had 12m-array observations delivered to the *ALMA* archive by May 2020."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "median 1σ RMS 0.30 mJy/beam (range 0.13-1.38)",
+    "evidence": [
+     {
+      "loc": "Core Identification",
+      "quote": "The median value of $\\sigma$ was 0.30 mJy $\\textrm{beam}^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel Hi-GAL",
+     "provided": {
+      "value": "Clump selection, distances, masses, radii, surface densities, evolutionary type",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "The radius, mass, $\\Sigma_{\\rm cl}$, and type were derived by (cite: elia_hi-gal_2017)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Clump distances, radii, masses, surface densities and type from Hi-GAL",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "The radius, mass, $\\Sigma_{\\rm cl}$, and type were derived by (cite: elia_hi-gal_2017)"
+       }
+      ]
+     },
+     "citation": "(cite: elia_hi-gal_2017)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 0.899 cm2/g (Ossenkopf & Henning thin ice mantle model)",
+      "evidence": [
+       {
+        "loc": "Core Mass Estimation",
+        "quote": "the value from the moderately coagulated thin ice mantle model of (cite: ossenkopf_dust_1994)"
+       }
+      ]
+     },
+     "citation": "(cite: ossenkopf_dust_1994)"
+    },
+    {
+     "what": {
+      "value": "G286 and IRDC CMFs for comparison",
+      "evidence": [
+       {
+        "loc": "Comparison of CMFs",
+        "quote": "compares the “true” CMFs that we have derived for the massive protocluster sample to those derived in Paper I for the G286 protocluster and Paper II for the IRDC clumps."
+       }
+      ]
+     },
+     "citation": "(cite: cheng_core_2018); (cite: liu_core_2018)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Cores identified in images not corrected for primary beam",
+     "evidence": [
+      {
+       "loc": "Core Identification",
+       "quote": "we diverge from Paper I’s methods and follow those used in Paper II by identifying cores in images that have not been corrected for the primary beam."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Core identification method (dendrogram parameters)",
+      "evidence": [
+       {
+        "loc": "Core Identification",
+        "quote": "To identify cores, we followed the methods used in our studies of the G286 protocluster (Paper I) and IRDCs (Paper II)"
+       }
+      ]
+     },
+     "from_reference": "Papers I and II (cite: cheng_core_2018; liu_core_2018)"
+    },
+    {
+     "what": {
+      "value": "Mass estimation, binning and WLS fitting methods",
+      "evidence": [
+       {
+        "loc": "Core Mass Estimation",
+        "quote": "We estimated masses of cores by assuming optically thin thermal emission from dust, as in Papers I and II."
+       }
+      ]
+     },
+     "from_reference": "Papers I and II"
+    },
+    {
+     "what": {
+      "value": "Flux and number recovery correction curves from artificial core insertion",
+      "evidence": [
+       {
+        "loc": "Core Flux Recovery and Completeness Corrections",
+        "quote": "In Papers I and II, we derived correction factors to estimate a complete, i.e., “true”, CMF from an observed “raw” CMF."
+       }
+      ]
+     },
+     "from_reference": "Papers I and II"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging details of the ALMAGAL continuum images (CASA version, weighting, robust, beam, cell size, line-free channels)",
+    "Whether archive-delivered products were used and their pipeline version",
+    "Final synthesized beam sizes per clump",
+    "Exact correction curve values f_flux and f_num as functions of normalized flux",
+    "Random seeds and number of core insertions",
+    "Which statistical code was used for PPL fitting"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure noise and identify cores",
+    "method": {
+     "value": "astrodendro dendrogram on non-primary-beam-corrected images; cores are leaves",
+     "evidence": [
+      {
+       "loc": "Core Identification",
+       "quote": "We defined cores as the leaves of the dendrogram."
+      }
+     ]
+    },
+    "software": [
+     "astrodendro"
+    ],
+    "key_parameters": [
+     {
+      "value": "F_min=4σ, δ=1σ, S_min=half synthesized beam; σ from 50 random beam-sized areas",
+      "evidence": [
+       {
+        "loc": "Core Identification",
+        "quote": "We required parent structures (trunks) in the dendrogram to have a minimum intensity $F_{\\rm min}$ of $4\\sigma$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Varied F_min (3,4,5σ) and S_min (0.5,1 beam): 128-293 cores, alpha 0.94-1.10",
+     "evidence": [
+      {
+       "loc": "Effects of Dendrogram Parameters",
+       "quote": "For the true CMF, $M_{\\rm{min}}$ typically ranged between 3 and $8\\:M_{\\odot}$ with $\\alpha$’s between 0.94 and 1.10."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Estimate core masses",
+    "method": {
+     "value": "optically thin dust emission mass from integrated flux",
+     "evidence": [
+      {
+       "loc": "Core Mass Estimation",
+       "quote": "We estimated masses of cores by assuming optically thin thermal emission from dust, as in Papers I and II."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Td=20 K; kappa_1.3mm,d=0.899 cm2/g; gas-to-dust 141; Hi-GAL distances",
+      "evidence": [
+       {
+        "loc": "Core Mass Estimation",
+        "quote": "In the absence of measurements of temperature for each source, we assumed dust temperatures $T_{d} =$ 20 K."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Temperature 15 K or 30 K changes masses by factors 1.48 and 0.604",
+     "evidence": [
+      {
+       "loc": "Core Mass Estimation",
+       "quote": "If temperatures of 15 K or 30 K were to be adopted, the mass estimates would differ by factors of 1.48 and 0.604, respectively."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Apply flux and number completeness corrections and build CMF",
+    "method": {
+     "value": "median f_flux and f_num from artificial core insertion as function of flux/σ; five bins per dex, Poisson errors",
+     "evidence": [
+      {
+       "loc": "Construction of the CMF",
+       "quote": "with all bins equal in size in $\\Delta \\rm{log_{10}}M$ with five bins per dex, and a bin centered on 1 $M_{\\odot}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit single power laws and find optimal M_min",
+    "method": {
+     "value": "WLS, MLE (unbinned) and MLE-B (binned); M_min chosen via KS and Anderson-Darling distance; bootstrap p-values with 3000 synthetic CMFs",
+     "evidence": [
+      {
+       "loc": "Single Power-Law Fits",
+       "quote": "We then repeated this procedure $N=3000$ times, i.e., with 3000 different synthetic CMFs for each $M_{\\rm min}$"
+      }
+     ]
+    },
+    "software": [
+     "powerlaw"
+    ],
+    "key_parameters": [
+     {
+      "value": "best fit chosen at lowest M_min with p>=0.10 from A^2",
+      "evidence": [
+       {
+        "loc": "Single Power-Law Fits",
+        "quote": "we report final “best” fits that begin at the lowest significant ($p \\geq .10$) $M_{\\rm min}$ value as assessed by $A^2$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "MLE following Clauset et al. 2009; binned MLE following Virkar & Clauset 2014",
+     "evidence": [
+      {
+       "loc": "Results, Single Power-Law Fits to the CMF",
+       "quote": "This method is based on that proposed by (cite: virkar_power-law_2014), with a log-likelihood function above some minimum bin $M_{\\rm{min}}$ of the form:"
+      }
+     ]
+    },
+    "validation": {
+     "value": "bootstrap goodness-of-fit p-values",
+     "evidence": [
+      {
+       "loc": "Results, Single Power-Law Fits to the CMF",
+       "quote": "To circumvent this issue, correct $p$-values can instead be estimated via bootstrap resampling (cite: babu_goodness–fit_2004; clauset_power-law_2009)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Test for break with piecewise power laws",
+    "method": {
+     "value": "non-linear WLS fits of single, double and triple PPL; AICc and Akaike weights vs M_min",
+     "evidence": [
+      {
+       "loc": "PPL fits",
+       "quote": "we fit a single power-law, a double PPL, and a triple PPL by performing non-linear WLS regression."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "WLS, AICc",
+     "evidence": [
+      {
+       "loc": "Results, PPL fits and evidence for a break in the CMF",
+       "quote": "we fit a single power-law, a double PPL, and a triple PPL by performing non-linear WLS regression."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistent transition from double to single PPL as M_min increases",
+     "evidence": [
+      {
+       "loc": "PPL fits",
+       "quote": "We conclude that this consistent transition from a double to single power-law as $M_{\\rm min}$ increases indicates the presence of a break"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare log-normal vs power law and CMFs between environments, clustering",
+    "method": {
+     "value": "Vuong log-likelihood ratio, AICc; KS tests vs Papers I/II; MST Q parameter",
+     "evidence": [
+      {
+       "loc": "Spatial Distribution of Cores",
+       "quote": "For each clump, we calculated the dimensionless $Q$ parameter"
+      }
+     ]
+    },
+    "software": [
+     "powerlaw",
+     "networkx"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "astrodendro",
+    "version": "not stated",
+    "used_for": {
+     "value": "core identification",
+     "evidence": [
+      {
+       "loc": "Core Identification",
+       "quote": "We used the dendrogram algorithm (cite: rosolowsky_structural_2008) as implemented in the python package `astrodendro` to identify cores."
+      }
+     ]
+    }
+   },
+   {
+    "name": "powerlaw",
+    "version": "not stated",
+    "used_for": {
+     "value": "significance of log-normal vs power-law",
+     "evidence": [
+      {
+       "loc": "Comparison to log-normal",
+       "quote": "The significance levels of this test were calculated through the `powerlaw` Python package (cite: alstott_powerlaw_2014)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "networkx",
+    "version": "not stated",
+    "used_for": {
+     "value": "minimum spanning trees",
+     "evidence": [
+      {
+       "loc": "Spatial Distribution of Cores",
+       "quote": "which were generated using the Python package $\\tt{networkx}$ (cite: SciPyProceedings_11)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of cores",
+    "value": "222",
+    "uncertainty": "not stated",
+    "units": "cores",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Continuum Images",
+      "quote": "We found 222 cores in total"
+     }
+    ]
+   },
+   {
+    "quantity": "True CMF power-law index above ~5 Msun",
+    "value": "0.94",
+    "uncertainty": "0.08",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Single Power-Law Fits",
+      "quote": "The best fit to the true CMF is $\\alpha = 0.94 \\pm 0.08$ above the bin with a lower limit of $M_{\\rm{min}}$ $\\sim 5.0 \\ M_{\\odot}$ ($p=.12$)."
+     }
+    ]
+   },
+   {
+    "quantity": "True CMF alpha, WLS, M>=0.79 Msun",
+    "value": "0.50",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "True  |  WLS  |    0.79\\*     |   0.50   |      0.07      | $<$.001"
+     }
+    ]
+   },
+   {
+    "quantity": "True CMF alpha, MLE-B, M>=0.79 Msun",
+    "value": "0.60",
+    "uncertainty": "0.05",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Single Power-Law Fits",
+      "quote": "for the true CMF we derived $\\alpha=0.60 \\pm 0.05$ (via MLE-B)"
+     }
+    ]
+   },
+   {
+    "quantity": "Double PPL for true CMF: break mass",
+    "value": "15",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "PPL fits",
+      "quote": "For the true CMF the best fit results are $M_{1} = 15 \\: M_{\\odot}$, $\\alpha_1 = 0.11 \\pm 0.12$, and $\\alpha_2 = 1.29 \\pm 0.26$."
+     }
+    ]
+   },
+   {
+    "quantity": "Raw core mass range",
+    "value": "0.04-252, median 3.0",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Continuum Images",
+      "quote": "“Raw” masses ranged from 0.04 to 252 $M_{\\odot}$ with a median mass of 3.0 $M_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Q parameter range for clumps with >=10 cores",
+    "value": "0.64-0.82",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Spatial Distribution of Cores",
+      "quote": "with values of $Q$ ranging from 0.64 to 0.82"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Massive protocluster CMF has more high-mass cores than G286 and IRDC CMFs; attributed to higher clump surface density",
+    "evidence": [
+     {
+      "loc": "Comparison of CMFs",
+      "quote": "Thus, we conclude that this difference in environmental conditions is the factor that is most likely to be responsible for the variation in the observed CMFs."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the massive protocluster CMF show a break in power-law behavior?",
+    "experiment": "Single vs piecewise power-law fits with AICc and KS/AD M_min analysis",
+    "result": "Double PPL preferred for M_min~1 Msun, single power law above ~5 Msun",
+    "finding": "A break exists between ~5 and 15 Msun",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find evidence of a break in this power-law behavior between $\\sim5$ and $15\\:M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the high-mass CMF consistent with the Salpeter-like IMF slope?",
+    "experiment": "Power-law fit above M_min~5 Msun",
+    "result": "alpha=0.94±0.08",
+    "finding": "Shallower than Salpeter 1.35",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion and Conclusions",
+      "quote": "The power-law index we derived is significantly shallower than the standard Salpeter IMF where $\\alpha = 1.35$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the CMF differ among environments?",
+    "experiment": "KS tests vs G286 and IRDC true CMFs for M>=0.79 Msun",
+    "result": "p<0.001 for both",
+    "finding": "Massive protocluster CMF is more top-heavy",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Comparison of CMFs",
+      "quote": "The true CMF is significantly different than the true CMFs of Paper I ($p < .001$) and Paper II ($p < .001$)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Log-normal fit to true CMF not preferred over double PPL (w=0.03 vs 0.85)",
+     "evidence": [
+      {
+       "loc": "Comparison to log-normal",
+       "quote": "for the true CMF a log-normal fit was not the best description ($w_{i}$(AIC)$_{\\rm{ln}}=0.03$) and a double PPL was preferred"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Masses uncertain due to assumed 20 K temperature and no local background correction",
+     "evidence": [
+      {
+       "loc": "Discussion and Conclusions",
+       "quote": "The core masses we report have significant uncertainties due to no correction being made for the local backgrounds within which the cores are embedded, and also from a lack of temperature information on the scales of the cores."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Low-mass number corrections large and uncertain",
+    "Single temperature for all cores",
+    "Sample not complete or necessarily unbiased",
+    "Poisson uncertainties underestimate the true errors"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data delivered to the ALMA archive",
+    "evidence": [
+     {
+      "loc": "Source Selection",
+      "quote": "had 12m-array observations delivered to the *ALMA* archive by May 2020"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters and exact images used",
+    "Correction curve tables",
+    "Analysis code"
+   ],
+   "estimated_data_volume_inferred": "Tens of GB (28 pointings of continuum images)",
+   "score_inferred": 3,
+   "score_reason": "Methods and statistics are described in detail and the core table is given, but imaging details and correction curves are not provided.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public archive data, the recipe is largely specified, and results are numeric (alpha, break mass, core table)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: cheng_core_2018)",
+     "why": "Paper I methods for CMF and completeness corrections"
+    },
+    {
+     "citation": "(cite: liu_core_2018)",
+     "why": "Paper II methods for non-primary-beam corrected identification"
+    },
+    {
+     "citation": "(cite: clauset_power-law_2009)",
+     "why": "MLE power-law fitting and bootstrap"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: cheng_core_2018)",
+     "why": "G286 CMF"
+    },
+    {
+     "citation": "(cite: liu_core_2018)",
+     "why": "IRDC CMF"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMAGAL",
+    "Hi-GAL"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-caaa521cd216d6e21cfc46a0f6d75400",
+  "batch_id": "msgbatch_01Wqx8zKsXeudsaRDPY1S9JC",
+  "run": "pilot",
+  "collected_at": "2026-10-27T23:21:20",
+  "usage": {
+   "input_tokens": 49820,
+   "output_tokens": 6926,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.085056,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 49,
+  "quotes_ok": 49,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 37,
+   "rate": 0.481
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T01:52:34",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "This method is based on that proposed by (cite: virkar_power-law_2014), with a log-likelihood function above some minimum bin $M_{\\rm{min}}$ of the form:"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "To circumvent this issue, correct $p$-values can instead be estimated via bootstrap resampling (cite: babu_goodness–fit_2004; clauset_power-law_2009)."
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "we fit a single power-law, a double PPL, and a triple PPL by performing non-linear WLS regression."
+   }
+  ],
+  "removed_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

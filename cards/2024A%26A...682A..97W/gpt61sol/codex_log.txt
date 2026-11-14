@@ -1,0 +1,436 @@
+rnal-screen interpretation favored",
+      "evidence": [
+        {
+          "loc": "Faraday rotation",
+          "quote": "This implies that about half of the Faraday rotation occurs internally with respect to the 93 GHz emission region, that is, at most several $r_{\\rm g}$ away from the SMBH’s event horizon."
+        }
+      ]
+    },
+    {
+      "value": "Derotation does not substantially reduce EVPA variability; intrinsic emitter variability dominates",
+      "evidence": [
+        {
+          "loc": "Faraday rotation",
+          "quote": "we conclude that the intrinsic variability of the emitter dominates over the variability in the external Faraday screen"
+        }
+      ]
+    },
+    {
+      "value": "A reasonable simple RIAF can produce an internal Faraday screen dominated by compact scales",
+      "evidence": [
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "an internal Faraday screen in , dominated by the contribution from very compact scales, is to be expected for a reasonable set of physical parameters in a RIAF system."
+        }
+      ]
+    },
+    {
+      "value": "Selected GRMHD model has excessively turbulent and variable magnetic fields compared with observations",
+      "evidence": [
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "It appears that the magnetic field is far more turbulent and variable in the simulations than in reality"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Polarization changes strongly between the two ALMA bands.",
+      "experiment": "Extract full-Stokes light curves, measure polarization fractions and fit sub-band spectral indices.",
+      "result": "Band 3 LP scales as nu^3, Band 6 LP as nu; Band 3 absolute fractional CP is below 0.3%.",
+      "finding": "The source undergoes steep low-frequency depolarization.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Depolarization at lower frequencies",
+          "quote": "In band 3, we measured a steep depolarization toward lower frequencies $p \\propto \\nu^3$, inconsistent with the milder depolarization $p \\propto \\nu$ seen in band 6."
+        },
+        {
+          "loc": "Depolarization at lower frequencies",
+          "quote": "which we give as $|v| < 0.3\\%$, based on the time-resolved analysis."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The Faraday screen is largely internal to the compact emission region.",
+      "experiment": "Compare time-dependent RM, derotated EVPA variability and RM structure functions between Bands 3 and 6.",
+      "result": "RM differs between bands; derotation leaves similar EVPA variability.",
+      "finding": "A substantial internal Faraday-screen component is favored, but simultaneous multi-band LP is needed for a definitive wavelength-law test.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Faraday rotation",
+          "quote": "While the time-dependent model linear in $\\lambda^2$ provides a good fit quality across each ALMA band individually, the resulting RM measurements significantly differ between the two bands."
+        },
+        {
+          "loc": "Faraday rotation",
+          "quote": "the shape of derotated $\\chi_0(t)$ and its measured variability remain overall very similar to those of the observed $\\chi(t)$"
+        },
+        {
+          "loc": "Faraday rotation",
+          "quote": "Simultaneous measurements of LP at distinct frequencies are necessary in order to provide an ultimate and bulletproof argument for the $\\lambda^2$ relation violation"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Relativistic-electron Faraday suppression prevents a compact internal screen in a RIAF.",
+      "experiment": "Fit a spherical power-law RIAF to the two RM measurements including relativistic-electron suppression.",
+      "result": "A solution with alpha + beta = -3.5 reproduces the RM constraints.",
+      "finding": "A compact internal Faraday screen remains feasible for reasonable RIAF parameters.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "The presence of this correction factor was raised as an argument against the internal Faraday screen in a RIAF system"
+        },
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "\\alpha + \\beta = -3.5"
+        },
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "regardless of its presence Faraday rotation may be dominated by the plasma in the innermost part of the accretion flow."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The selected EHT best-bet GRMHD model reproduces the observed polarimetric properties.",
+      "experiment": "Ray-trace four frequencies and compare simulated full-Stokes light curves and RM variability with ALMA.",
+      "result": "Simulated LP is 4 ± 2% without low-band depolarization; CP variability is about seven times the observed variability.",
+      "finding": "The selected model fails the quantitative polarization comparison and suggests excessive simulated magnetic-field variability.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "The modeled fractional LP is $p = 4 \\pm 2$% across frequencies, with no sign of depolarization in the lower band."
+        },
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "there is about seven times more variability in the simulation than is observed."
+        },
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "It appears that the magnetic field is far more turbulent and variable in the simulations than in reality"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Different radio frequencies probe distinct accretion-flow regions; April 3 and 6 light curves are closest in time and have similar duration.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "Therefore, observations at different radio frequencies can be used to probe distinct regions of the accretion flow."
+        },
+        {
+          "loc": "Intensity and polarization",
+          "quote": "We focus on comparisons between band 3 observations on 2017 April 3 and band 6 observations on 2017 April 6, given that these light curves are closest in time and of similar total duration."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Stable extended emission permits gain self-calibration; wide Band 3 fractional bandwidth requires frequency-dependent extended-emission modeling.",
+      "evidence": [
+        {
+          "loc": "Data reduction and conventions",
+          "quote": "allowing to self-calibrate to the extended source structure and extract the time-dependent point source component, reducing the impact of fluctuating amplitude gains."
+        },
+        {
+          "loc": "Data reduction and conventions",
+          "quote": "The only difference with respect to the procedure of (cite: Wielgus2022_LC) was motivated by the wide total fractional bandwidth in band 3 observations $\\sim$15%, as opposed to $\\sim$7% in band 6."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Independent CLEAN deconvolution per sub-band tested; first-order CLEAN multi-frequency synthesis adopted after consistent results",
+      "evidence": [
+        {
+          "loc": "Data reduction and conventions",
+          "quote": "carrying out an independent CLEAN deconvolution of each sub-band and using a CLEAN multi-frequency-synthesis first-order expansion (cite: Conway1990; Casa2007)."
+        },
+        {
+          "loc": "Data reduction and conventions",
+          "quote": "Both variants of the extended emission modeling resulted in very consistent light curves of the compact component, fitted individually in each sub-band."
+        },
+        {
+          "loc": "Data reduction and conventions",
+          "quote": "The latter approach was adopted for the final data set presented in this paper."
+        }
+      ]
+    },
+    {
+      "value": "Coherent orbital interpretation of polarization loop challenged by opposite rotation direction",
+      "evidence": [
+        {
+          "loc": "Intensity and polarization",
+          "quote": "If we attempted to explain this loop in the framework of a coherent orbital motion, we would conclude Keplerian orbit of $\\sim$20$r_{\\rm g}$ radius."
+        },
+        {
+          "loc": "Intensity and polarization",
+          "quote": "However, the direction of the loop’s direction is opposite to the one observed by (cite: Wielgus2022_LP) and (cite: gravity2023), challenging that interpretation."
+        }
+      ]
+    },
+    {
+      "value": "Low-frequency depolarization may reflect magnetic-field changes or increased optical depth; uniform-opacity explanation is oversimplified",
+      "evidence": [
+        {
+          "loc": "Depolarization at lower frequencies",
+          "quote": "possibly separating strong and ordered magnetic fields near the event horizon (cite: Johnson2015) from a weaker and more chaotic component further away."
+        },
+        {
+          "loc": "Depolarization at lower frequencies",
+          "quote": "Hence, an increase in the optical depth by $\\Delta \\tau \\lesssim 2$ would suffice to explain the change in fractional polarization."
+        },
+        {
+          "loc": "Depolarization at lower frequencies",
+          "quote": "However, the opacity interpretation is only straightforward under the assumption of a uniform optical depth in the emission zone, which is likely an oversimplification."
+        }
+      ]
+    },
+    {
+      "value": "Multiple unresolved Faraday screens versus an internal screen; simple compact VLBI morphology favors the internal interpretation",
+      "evidence": [
+        {
+          "loc": "Faraday rotation",
+          "quote": "implying either a complex unresolved source structure involving multiple Faraday screens, or an internal Faraday screen overlapping with the emission zone at some wavelengths (cite: Burn1966; Brentjens2005)."
+        },
+        {
+          "loc": "Faraday rotation",
+          "quote": "VLBI observations reveal a persistent, simple, compact, single-component source morphology across frequencies, hence the internal Faraday screen interpretation is favored."
+        }
+      ]
+    },
+    {
+      "value": "Unusually low wavelength-independent RM on April 3 remains an alternative because bands were not observed simultaneously",
+      "evidence": [
+        {
+          "loc": "Faraday rotation",
+          "quote": "otherwise one could still attempt to explain our results with an unusually low, but $\\lambda$-independent RM on 2017 April 3."
+        }
+      ]
+    },
+    {
+      "value": "230 GHz temperature-profile deviation may reflect optically thin nonthermal emission or Doppler-deboosted plunging plasma",
+      "evidence": [
+        {
+          "loc": "Electrons temperature profile",
+          "quote": "is optically thin and non-thermal, violating assumptions of the $T_{\\rm b}$ calculation"
+        },
+        {
+          "loc": "Electrons temperature profile",
+          "quote": "and/or that the emission is produced by plasma plunging into the black hole with a relativistic radial velocity component and thus experiencing Doppler deboosting."
+        }
+      ]
+    },
+    {
+      "value": "A jet-sheath emission origin is suggested as a possible alternative to turbulent disk emission in GRMHD",
+      "evidence": [
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "An interesting alternative is the observed mm radiation originating predominantly in the jet sheath region, which is typically threaded by a more stable, nearly-vertical magnetic field in GRMHD simulations (cite: Moscibrodzka2013)."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Table uncertainties are dominated by intrinsic variability rather than measurement noise",
+      "evidence": [
+        {
+          "loc": "Intensity and polarization",
+          "quote": "The reported uncertainties are strongly dominated by the intrinsic source variability"
+        }
+      ]
+    },
+    {
+      "value": "Definitive wavelength-law violation requires simultaneous polarization measurements at distinct frequencies",
+      "evidence": [
+        {
+          "loc": "Faraday rotation",
+          "quote": "Simultaneous measurements of LP at distinct frequencies are necessary in order to provide an ultimate and bulletproof argument for the $\\lambda^2$ relation violation"
+        }
+      ]
+    },
+    {
+      "value": "Band 3 observing duration likely prevents identifying the structure-function flattening",
+      "evidence": [
+        {
+          "loc": "Quantifying the RM variability",
+          "quote": "A similar flattening is not apparent at 93 GHz, but the reason is most likely related to the short total duration of the observed light curve."
+        }
+      ]
+    },
+    {
+      "value": "Magnetar background RM is variable and may contain a contribution from the magnetar's vicinity",
+      "evidence": [
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "with a caveat that the RM toward the magnetar is itself variable, and may involve a contribution from its compact vicinity."
+        }
+      ]
+    },
+    {
+      "value": "Onion-model emission radii are only effective approximations, especially at low optical depth",
+      "evidence": [
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "Particularly in case of a low optical depth these radii may only have an effective, approximate sense."
+        }
+      ]
+    },
+    {
+      "value": "Simple RIAF model demonstrates feasibility; quantitative conclusions are limited",
+      "evidence": [
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "Since the presented model constitutes an extreme simplification of reality"
+        },
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "Any more quantitative conclusions should be taken with a sizeable grain of salt."
+        }
+      ]
+    },
+    {
+      "value": "Modeled lower-frequency photospheres are too small",
+      "evidence": [
+        {
+          "loc": "RM in a RIAF model",
+          "quote": "At lower frequencies $r_{\\rm ph}$ are too low and generally smaller than $20 r_{\\rm g}$."
+        }
+      ]
+    },
+    {
+      "value": "Only the innermost 300 r_g is ray-traced, excluding a large-scale Faraday screen",
+      "evidence": [
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "We only ray-trace the innermost $300\\,r_{\\rm g}$ zone of the GRMHD simulation, hence there is no large scale Faraday screen present."
+        }
+      ]
+    },
+    {
+      "value": "Only one selected GRMHD model is quantitatively examined; broader library comparisons remain future work",
+      "evidence": [
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "Here we investigate one of the models favored by the EHT analysis"
+        },
+        {
+          "loc": "Comparisons to GRMHD",
+          "quote": "A subsequent detailed comparison of the simulations from the EHT library (and beyond it) with polarimetric observations at different wavelengths should provide more insight in the future."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The three-day separation confounds wavelength dependence with temporal changes in RM.",
+    "Tabulated standard deviations must not be treated as uncertainties on the mean or as independent measurement errors.",
+    "Two RM measurements constrain only combined RIAF parameters, not separate density and magnetic-field profiles.",
+    "A single GRMHD model cannot establish that the entire model family fails.",
+    "RM sign reversal and background shifting in the model comparison should be reproduced explicitly.",
+    "Temperature-profile fitting relies on three points and model-dependent source sizes and redshift corrections."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Executable time-dependent calibration and compact-source extraction recipe from Wielgus2022_LC and polarization processing from Wielgus2022_LP.",
+    "QA2 calibration products, software versions, self-calibration settings and exact visibility/channel selections.",
+    "Final light curves with flags, per-measurement errors and cross-sub-band covariances.",
+    "Exact imaging, RM regression, spectral-index fitting and structure-function settings.",
+    "Numerical implementation and uncertainty treatment for the RIAF and temperature-profile fits.",
+    "Identifiable GRMHD snapshot data and complete KHARMA/ipole configurations.",
+    "Explicit data-publicity statement and locations of released analysis products or code."
+  ],
+  "estimated_data_volume_inferred": "Cannot estimate reliably: visibility sampling, antenna count, channelization and simulation snapshot sizes are absent.",
+  "score_inferred": 5,
+  "score_reason": "Project codes, numerical results and the main analysis sequence are provided, but calibration depends on earlier papers and many implementation settings and simulation products are unspecified.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The supplied text does not state public availability, and the calibration and simulation recipes require external details despite having clear numeric results.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Wielgus2022_LC)",
+      "why": "ALMA-only time-dependent calibration and compact-source extraction."
+    },
+    {
+      "citation": "(cite: Wielgus2022_LP)",
+      "why": "Band 6 polarization analysis and time-dependent RM comparison."
+    },
+    {
+      "citation": "(cite: Goddi2019)",
+      "why": "ALMA QA2 calibration and phased-array observations."
+    },
+    {
+      "citation": "(cite: Conway1990; Casa2007)",
+      "why": "CLEAN multi-frequency-synthesis first-order expansion."
+    },
+    {
+      "citation": "(cite: Simonetti1985)",
+      "why": "Structure-function analysis of RM variability."
+    },
+    {
+      "citation": "(cite: Johnson2018)",
+      "why": "Descattered intrinsic VLBI source sizes."
+    },
+    {
+      "citation": "(cite: Gralla2020; Wielgus2021)",
+      "why": "Approximate geometric-lensing correction to emission radius."
+    },
+    {
+      "citation": "(cite: Moscibrodzka2017)",
+      "why": "Line-of-sight RM integration."
+    },
+    {
+      "citation": "(cite: Quatertaet2000; Ressler2023)",
+      "why": "Relativistic-electron suppression of Faraday rotation."
+    },
+    {
+      "citation": "(cite: Mahadevan1996)",
+      "why": "Thermal synchrotron opacity calculation."
+    },
+    {
+      "citation": "(cite: Moscibrodzka2016; SgraP5)",
+      "why": "GRMHD electron-temperature prescription and selected model."
+    },
+    {
+      "citation": "(cite: Prather2021)",
+      "why": "KHARMA GRMHD code."
+    },
+    {
+      "citation": "(cite: Moscibrodzka2018)",
+      "why": "ipole ray tracing."
+    },
+    {
+      "citation": "(cite: Wong2022)",
+      "why": "Simulation generation pipeline details."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: Wielgus2022_LC)",
+      "why": "Earlier analysis of the same April 2017 Band 6 light curves and the inherited extraction procedure."
+    },
+    {
+      "citation": "(cite: Wielgus2022_LP)",
+      "why": "Earlier Band 6 polarimetric light curves and RM results."
+    },
+    {
+      "citation": "(cite: Goddi2021)",
+      "why": "Preliminary polarization analysis of the same ALMA observations under a static-source assumption."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "April 2017 Global mm-VLBI Array campaign",
+    "April 2017 Event Horizon Telescope campaign",
+    "EHT GRMHD simulation library"
+  ]
+}
+tokens used
+68,318

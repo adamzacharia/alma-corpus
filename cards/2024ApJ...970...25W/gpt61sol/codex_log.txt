@@ -1,0 +1,483 @@
+       "value": "Mock ALMA and JVLA observations",
+        "evidence": [
+          {
+            "loc": "Simobserve",
+            "quote": "we used the `SIMOBSERVE` and `SIMANALYZE` functions within the `CASA 6.4.9` package (cite: CASA2007), converting synthetic images into Fourier domain visibility data sets."
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIMOBSERVE",
+      "version": "not stated",
+      "used_for": {
+        "value": "Mock observations from synthetic images",
+        "evidence": [
+          {
+            "loc": "Simobserve",
+            "quote": "we used the `SIMOBSERVE` and `SIMANALYZE` functions within the `CASA 6.4.9` package (cite: CASA2007), converting synthetic images into Fourier domain visibility data sets."
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIMANALYZE",
+      "version": "not stated",
+      "used_for": {
+        "value": "Mock observations from synthetic images",
+        "evidence": [
+          {
+            "loc": "Simobserve",
+            "quote": "we used the `SIMOBSERVE` and `SIMANALYZE` functions within the `CASA 6.4.9` package (cite: CASA2007), converting synthetic images into Fourier domain visibility data sets."
+          }
+        ]
+      }
+    },
+    {
+      "name": "DiRAC Data Intensive service",
+      "version": "not stated",
+      "used_for": {
+        "value": "Research computing",
+        "evidence": [
+          {
+            "loc": "Aknowledgement",
+            "quote": "This research used DiRAC Data Intensive service at Leicester, operated by the University of Leicester IT Services, which forms part of the STFC DiRAC HPC Facility"
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "Fiducial wind parameter selected by morphological comparison",
+      "value": "0.076",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "when $\\alpha_{\\rm dw}=0.076$ and $\\alpha_{\\rm v}=0.002$, our fiducial model matches the observations very well."
+        }
+      ]
+    },
+    {
+      "quantity": "Fiducial viscosity parameter selected by morphological comparison",
+      "value": "0.002",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "when $\\alpha_{\\rm dw}=0.076$ and $\\alpha_{\\rm v}=0.002$, our fiducial model matches the observations very well."
+        }
+      ]
+    },
+    {
+      "quantity": "Wind contribution to accretion in the fiducial model",
+      "value": "~97%",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "At this point, the MHD disk wind contributes $\\sim97\\%$ of the accretion rate in the system, while viscosity accounts for the remaining $\\sim3\\%$."
+        }
+      ]
+    },
+    {
+      "quantity": "Viscosity contribution to accretion in the fiducial model",
+      "value": "~3%",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "At this point, the MHD disk wind contributes $\\sim97\\%$ of the accretion rate in the system, while viscosity accounts for the remaining $\\sim3\\%$."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Combined wind and viscosity reproduce some observed substructures",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Through planet-disk interaction and wind-viscosity interaction, we successfully fit some observational characteristics of DM Tau in different wavelength (ALMA Band 6 and JVLA Q Band)"
+        }
+      ]
+    },
+    {
+      "value": "Appropriate viscosity breaks large clumps into smaller clumps while retaining a dust ring",
+      "evidence": [
+        {
+          "loc": "Asymmetry in Ring",
+          "quote": "Upon incorporating appropriate viscosity, the interaction between wind and viscosity tends to break down large clumps into smaller, numerous clumps distributed across the ring."
+        }
+      ]
+    },
+    {
+      "value": "A gas giant of 1 or 10 Jupiter masses is not required by the proposed model",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "the formation of a gap consistent with observational structures does not require the presence of a gas giant planet as large as 1 $M_J$ or even 10 $M_J$."
+        }
+      ]
+    },
+    {
+      "value": "The model’s inner-disk inference need not contradict turbulence measurements at larger radii and heights",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "the turbulence level measured by (cite: Flaherty2020) comes from regions beyond 100 au from DM Tau and above the midplane ($\\sim 2h$), whereas our focus is on the midplane and the region within $\\sim$ 20 au."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "A medium-mass planet with combined wind and viscosity can explain DM Tau’s morphology and high accretion.",
+      "experiment": "Compare multi-fluid wind–viscosity simulations with ALMA Band 6 and JVLA Q Band morphology.",
+      "result": "The fiducial model uses alpha_dw = 0.076 and alpha_v = 0.002, corresponding to approximately 97% wind and 3% viscosity contributions.",
+      "finding": "The combined mechanism explains some observed features, with remaining image discrepancies.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "when $\\alpha_{\\rm dw}=0.076$ and $\\alpha_{\\rm v}=0.002$, our fiducial model matches the observations very well."
+        },
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "At this point, the MHD disk wind contributes $\\sim97\\%$ of the accretion rate in the system, while viscosity accounts for the remaining $\\sim3\\%$."
+        },
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "our fiducial model currently cannot produce synthetic images at 1.3 mm wavelength that match the actual observations."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Pure viscosity or pure wind can reproduce the observed morphology for the adopted planet.",
+      "experiment": "Run pure-viscosity and pure-wind reference cases at alpha = 0.078.",
+      "result": "Pure viscosity gives an insufficient gap; pure wind gives excessive crescent asymmetry.",
+      "finding": "Both pure cases fail the morphological comparison in this model setup.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Pure Wind or Pure Viscosity Cases",
+          "quote": "when $\\alpha_{\\rm v}=\\alpha=0.078$, a planet with 53 $M_{\\oplus}$ is unable to carve out a gap that is sufficiently deep and wide"
+        },
+        {
+          "loc": "Pure Wind or Pure Viscosity Cases",
+          "quote": "when $\\alpha_{\\rm dw}=\\alpha=0.078$, the strong wind interacting with the planet causes dust to accumulate on the ring in a crescent-shaped structure"
+        },
+        {
+          "loc": "Pure Wind or Pure Viscosity Cases",
+          "quote": "creating a very pronounced and intense asymmetric structure that contrasts sharply with the surrounding ring, which does not match current observations."
+        }
+      ]
+    },
+    {
+      "hypothesis": "DM Tau’s gap requires a Jupiter-mass or larger planet.",
+      "experiment": "Model the disk with a fixed approximately 53-Earth-mass planet and wind–viscosity interaction.",
+      "result": "The model reproduces some observed gap and ring characteristics.",
+      "finding": "A 1- or 10-Jupiter-mass gas giant is not required within the proposed scenario.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "Which corresponds to approximately 53 times Earth mass in DM Tau."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "Through planet-disk interaction and wind-viscosity interaction, we successfully fit some observational characteristics of DM Tau in different wavelength (ALMA Band 6 and JVLA Q Band)"
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "the formation of a gap consistent with observational structures does not require the presence of a gas giant planet as large as 1 $M_J$ or even 10 $M_J$."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Additional emission contributes to the observed 7 mm inner-gap brightness.",
+      "experiment": "Compare dust-only radiative-transfer predictions with JVLA 7 mm observations.",
+      "result": "The observed gap is shallower than the simulated gap.",
+      "finding": "The discrepancy supports the literature interpretation involving dust and time-varying free-free emission.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "the latest 7 mm observations show the gap within 20 au of DM Tau to be a bit more shallow."
+        },
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "our radiative transfer calculations at 1.3 mm and 7 mm wavelengths considered only dust thermal emission."
+        },
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "The differences between observations and simulations in this regard precisely validate this conclusions about varying emissions contributed at different wavelengths in DM Tau."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Different asymmetries at ALMA and JVLA wavelengths require a theoretical explanation",
+      "evidence": [
+        {
+          "loc": "The DM Tau Disk System",
+          "quote": "the two asymmetric structures on the DM Tau ring exhibit different observational characteristics at different wavelengths."
+        },
+        {
+          "loc": "The DM Tau Disk System",
+          "quote": "These observational results suggest that the formation of substructures in DM Tau requires a new theoretical explanation."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Simplified 2D wind prescription permits longer simulations, wider parameter exploration and dust dynamics",
+      "evidence": [
+        {
+          "loc": "Caveats and Outlook",
+          "quote": "Unlike real 3D MHD simulations, our simplified 2D MHD disk wind prescription allows for longer run times and a wider range of parameter exploration, and the dust dynamics can be considered in simulations."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Single planet chosen for simplicity; multiple planets not ruled out",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "It need be noticed that the hypothesis of multi-planet cannot be ruled out in DM Tau system (cite: Xu-Wang-2024)."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "However, for the sake of simplicity, we only consider the case of single-planet in this exploratory work."
+        }
+      ]
+    },
+    {
+      "value": "Pure viscosity fails to make a sufficiently deep and wide gap",
+      "evidence": [
+        {
+          "loc": "Pure Wind or Pure Viscosity Cases",
+          "quote": "when $\\alpha_{\\rm v}=\\alpha=0.078$, a planet with 53 $M_{\\oplus}$ is unable to carve out a gap that is sufficiently deep and wide"
+        }
+      ]
+    },
+    {
+      "value": "Pure wind produces excessive crescent asymmetry",
+      "evidence": [
+        {
+          "loc": "Pure Wind or Pure Viscosity Cases",
+          "quote": "creating a very pronounced and intense asymmetric structure that contrasts sharply with the surrounding ring, which does not match current observations."
+        }
+      ]
+    },
+    {
+      "value": "Gravitational instability models discussed as failing to explain gap opening",
+      "evidence": [
+        {
+          "loc": "Discussions",
+          "quote": "Other models, such as the gravitational instability model (cite: Xu2022; Xu2023), can reproduce asymmetric clumps and high accretion rates but fail to account for the gap opening issue."
+        }
+      ]
+    },
+    {
+      "value": "Dusty Rossby wave instability discussed as failing to explain high accretion",
+      "evidence": [
+        {
+          "loc": "Discussions",
+          "quote": "the dusty Rossby wave instability (cite: Liu-Bai-2023) can explain the asymmetry and gap opening in the ring but fails to account for the high accretion rate observed in DM Tau."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "2D torque prescription cannot capture magnetic-field or wind-profile feedback during gap opening",
+      "evidence": [
+        {
+          "loc": "Caveats and Outlook",
+          "quote": "This approximation cannot capture feedback effects on the initial magnetic field structure or wind profiles during gap opening."
+        }
+      ]
+    },
+    {
+      "value": "Disk mass and scale height remain poorly constrained",
+      "evidence": [
+        {
+          "loc": "Caveats and Outlook",
+          "quote": "despite many observations of DM Tau, some key parameters like disk mass and scale height remain unclear, yet these parameters are crucial for observational structures."
+        }
+      ]
+    },
+    {
+      "value": "Actual 1.3 mm images are not matched; dust composition may be responsible",
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "our fiducial model currently cannot produce synthetic images at 1.3 mm wavelength that match the actual observations."
+        },
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "This might be because we currently do not have a sufficient understanding of the dust species composition in DM Tau."
+        }
+      ]
+    },
+    {
+      "value": "Dust-only emission gives a deeper 7 mm gap than observed",
+      "evidence": [
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "the latest 7 mm observations show the gap within 20 au of DM Tau to be a bit more shallow."
+        },
+        {
+          "loc": "Observation at 1.3 mm and 7 mm",
+          "quote": "our radiative transfer calculations at 1.3 mm and 7 mm wavelengths considered only dust thermal emission."
+        }
+      ]
+    },
+    {
+      "value": "Planet migration, accretion and disk self-gravity omitted",
+      "evidence": [
+        {
+          "loc": "Hydrodynamic Model",
+          "quote": "We neglect the disk self-gravity, planet migration and accretion in all of our simulations."
+        }
+      ]
+    },
+    {
+      "value": "Inner disk within 4 au not covered",
+      "evidence": [
+        {
+          "loc": "Caveats and Outlook",
+          "quote": "our simulations do not cover the inner disk within 4 au of DM Tau"
+        }
+      ]
+    },
+    {
+      "value": "Vertical dust settling can affect flux and substructure even at low inclination",
+      "evidence": [
+        {
+          "loc": "Radiative Transfer Calculations",
+          "quote": "some works indicate that the vertical setting of particles can affect several observables, such as the total millimeter flux and shape of the substructures, even if the disk inclination is low (cite: Pinilla_2021)."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Morphological agreement is qualitative; no likelihood, residual metric, uncertainty intervals or parameter degeneracy analysis is supplied.",
+    "The approximately 97% wind contribution is conditional on the adopted prescription and fixed planet, disk and dust parameters.",
+    "Matching image noise does not establish matching angular response or uv coverage.",
+    "The stated dust internal densities differ between hydrodynamics and radiative transfer.",
+    "The claimed agreement must be read alongside the explicit admission that the 1.3 mm images are not matched."
+  ],
+  "reproducibility": [],
+  "code_released": [
+    {
+      "value": "RADMC-3D and fargo2radmc3d described as publicly available",
+      "evidence": [
+        {
+          "loc": "Simobserve",
+          "quote": "We utilized the publicly software package `RADMC-3D` code (cite: RADMC-3D) to conduct our dust radiative transfer calculations."
+        },
+        {
+          "loc": "Simobserve",
+          "quote": "Then to process our `FARGO3D` simulation results for use as inputs in `RADMC-3D`, we used the publicly available code `fargo2radmc3d` (cite: fargo2radmc3d-dust)."
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "Paper-specific simulation code, configuration files and modified wind implementation.",
+    "Simulation outputs are offered on request rather than through a stated public repository.",
+    "Observed comparison products and their precise ALMA/JVLA provenance.",
+    "Complete synthetic-observation and imaging settings.",
+    "Quantitative fitting criterion, parameter search and uncertainty estimation.",
+    "Complete radiative-transfer inputs and resolution of the grain-density inconsistency."
+  ],
+  "estimated_data_volume_inferred": "Cannot estimate storage volume: output cadence, retained fields and visibility dimensions are unspecified.",
+  "score_inferred": 3,
+  "score_reason": "Core simulation geometry and fiducial parameters are given, but observation provenance, execution inputs, imaging settings and quantitative fitting details are incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Public availability of the comparison data is not stated; simulation outputs require a request, and the numerical results are conditional model selections with an incomplete reproduction recipe.",
+  "methods_papers": [
+    {
+      "citation": "(cite: FARGO3D)",
+      "why": "Hydrodynamic code."
+    },
+    {
+      "citation": "(cite: FARGO3D-multifluid)",
+      "why": "Multi-fluid implementation."
+    },
+    {
+      "citation": "(cite: MHD-wind-Elbakyan)",
+      "why": "Simplified wind prescription and wind-modified gap-opening criterion."
+    },
+    {
+      "citation": "(cite: Tabone22; Tabone2022-2)",
+      "why": "Underlying 1D wind prescription."
+    },
+    {
+      "citation": "(cite: WU_Chen_jiang_2023)",
+      "why": "Wind–viscosity parameter space, fixed planet mass ratio and vortex interpretation."
+    },
+    {
+      "citation": "(cite: MRN)",
+      "why": "Initial dust size distribution."
+    },
+    {
+      "citation": "(cite: RADMC-3D)",
+      "why": "Dust radiative transfer."
+    },
+    {
+      "citation": "(cite: fargo2radmc3d-dust)",
+      "why": "Conversion of hydrodynamic outputs to radiative-transfer inputs."
+    },
+    {
+      "citation": "(cite: optool-2021)",
+      "why": "Mie opacity calculations."
+    },
+    {
+      "citation": "(cite: DSHARP-V; 2018ZhangDSHARP)",
+      "why": "Dust composition and opacity prescription."
+    },
+    {
+      "citation": "(cite: CASA2007)",
+      "why": "Synthetic interferometric observations."
+    },
+    {
+      "citation": "(cite: Miranda2017)",
+      "why": "Adopted uniform dust scale height."
+    },
+    {
+      "citation": "(cite: Crida2006)",
+      "why": "Traditional gap-opening criterion used for interpretation."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: WU_Chen_jiang_2023)",
+      "why": "Earlier parameter-space study directly reused in constructing the model."
+    },
+    {
+      "citation": "Wu & Chen 2024 in prep",
+      "why": "Planned follow-up on planet migration within MHD disk wind."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "DSHARP"
+  ]
+}
+tokens used
+62,105

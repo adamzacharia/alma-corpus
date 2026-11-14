@@ -1,0 +1,214 @@
+{
+ "bibcode": "2015MNRAS.447.3936M",
+ "title": "CO mass upper limits in the Fomalhaut ring - the importance of NLTE excitation in debris discs and future prospects with ALMA",
+ "year": 2015,
+ "doi": "10.1093/mnras/stu2619",
+ "arxiv_id": "1412.2757",
+ "fields": [
+  "debris_disks",
+  "astrochemistry"
+ ],
+ "question": "Is CO J=3-2 emission detectable in the Fomalhaut ring, and how does non-LTE CO excitation affect the derived CO mass upper limit and planetesimal CO/H2O ice ratio?",
+ "alma_project_codes": [
+  "2011.0.00191.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "1.5\" x 1.2\" beam",
+  "sensitivity": "~60 uJy/beam continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust model: Gaussian radial profile FWHM 16 AU centred at 143 AU, exponential vertical profile with 1 deg opening angle; dust temperature 48 K; ALMA continuum flux",
+    "evidence": [
+     {
+      "loc": "4.1 The radiation environment",
+      "quote": "This consists of a Gaussian radial profile with FWHM of 16 AU and centred at a radius of 143 AU, and an exponential vertical profile with an opening angle of 1$^{\\circ}$."
+     }
+    ]
+   },
+   "citation": "(cite: Boley2012)"
+  },
+  {
+   "what": {
+    "value": "Ring orbital parameters used for velocity assignment",
+    "evidence": [
+     {
+      "loc": "2 Observations and Results",
+      "quote": "using orbital parameters from (cite: Kalas2005)"
+     }
+    ]
+   },
+   "citation": "(cite: Kalas2005)"
+  },
+  {
+   "what": {
+    "value": "CO-H2 collisional rate coefficients",
+    "evidence": [
+     {
+      "loc": "4.2 Collisional excitation",
+      "quote": "Coefficients for H$_2$-CO collisions are obtained from the LAMDA database (cite: Schoier2005)."
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2005)"
+  },
+  {
+   "what": {
+    "value": "Collisional rates dust mass-loss rate 6.0e17 kg/yr",
+    "evidence": [
+     {
+      "loc": "5.1 Production and destruction",
+      "quote": "has been estimated as $6.0\\times10^{17}$ kg/yr (cite: Wyatt2002)"
+     }
+    ]
+   },
+   "citation": "(cite: Wyatt2002)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-image line cube",
+   "method": "Repeat imaging of calibrated data at native channel resolution, 200-channel window around CO 3-2",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "channel width 0.424 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search for CO emission with velocity-matched extraction",
+   "method": "Select ring pixels from 4 sigma continuum, assign Keplerian velocity channel per pixel, sum flux in expected channels; also moment-0 map and unshifted integrated spectrum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "1-sigma single-channel error 30 mJy; 3-sigma 90 mJy"
+   ],
+   "assumptions": [
+    "CO co-located with dust, Keplerian, axisymmetric ring"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute flux upper limit",
+   "method": "3-sigma plus 10% calibration error, converted to Jy km/s, rescaled by whole-ring/partial-ring continuum ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Non-LTE CO excitation and mass upper limit",
+   "method": "Solve statistical equilibrium for levels up to jmax=24 over grid of f_cp, T_k (10-150 K) and CO/H2O ice ratio, with radiation field from CMB, star and dust model; convert flux limit to mass with Eq. 2",
+   "software": [],
+   "key_parameters": [
+    "T_k 10 to 150 K"
+   ],
+   "assumptions": [
+    "Dust, colliders and CO co-located, axisymmetric; uniform T_k; colliders H2 (primordial) or e- and H2O (secondary)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain planetesimal CO/H2O ice ratio",
+   "method": "Compare CO destruction rate upper limit (mass / photodissociation lifetime ~120 yr) to production rate from collisional cascade assuming steady state",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Comet-like composition, ice/rock about 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "3-sigma upper limit on integrated CO J=3-2 line flux",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2 Observations and Results",
+     "quote": "This yields a final 3-$\\sigma$ CO J=3-2 line flux upper limit of 0.16 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Strict 3-sigma CO mass upper limit (radiation-dominated)",
+   "value": "4.9e-4",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Results for the primordial gas scenario",
+     "quote": "the 3$\\sigma$ upper limit on the mass of CO in the Fomalhaut ring is thus 4.9 $\\times$ $10^{-4}$ M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limit, secondary scenario",
+   "value": "2.5e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Results for the secondary gas scenario",
+     "quote": "lead to upper limits on the CO and H$_2$O gas mass in the Fomalhaut ring of 2.5 $\\times$ $10^{-6}$ M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on CO/H2O ice ratio in planetesimals (steady state)",
+   "value": "~55% (~3% if LTE)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "allows us to set an upper limit of $\\sim$55% on the CO/H$_2$O ice ratio in the parent planetesimals. This could drop to $\\sim$3% if LTE applies"
+    }
+   ]
+  },
+  {
+   "quantity": "CO photodissociation timescale",
+   "value": "~120",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.1 Production and destruction",
+     "quote": "hence assume the photodissociation timescale of CO to be $\\tau_{phd}\\sim120$ years"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters (weighting/robust, cell size, image size, deconvolver, cleaning threshold)",
+  "Calibration details are only in Boley2012 (calibrators, pipeline)",
+  "Velocity assigned per pixel: stellar radial velocity value and ring inclination/PA not given",
+  "Code for the non-LTE statistical equilibrium and radiative transfer model not named or released",
+  "Exact mapping from 3-sigma flux to mass over grid and grid resolution",
+  "Sensitivity calculator settings (PWV, configuration) for prospects"
+ ],
+ "missing_for_reproduction": [
+  "Non-LTE excitation code",
+  "Imaging parameters",
+  "Stellar velocity and ring geometry values",
+  "Calibration scripts (in Boley2012)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear flux-limit procedure, but imaging parameters and the excitation code are unstated.",
+ "rediscovery_reason": "Public archival data, stated procedure and numeric flux/mass limits; some imaging details need inference.",
+ "source_card": "cards/2015MNRAS.447.3936M/sonnet/card.md"
+}

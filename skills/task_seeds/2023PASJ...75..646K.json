@@ -1,0 +1,500 @@
+{
+ "bibcode": "2023PASJ...75..646K",
+ "title": "Investigating physical states of molecular gas in the overlapping region of interacting galaxies NGC 4567/4568 using ALMA",
+ "year": 2023,
+ "doi": "10.1093/pasj/psad025",
+ "arxiv_id": "2303.17638",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Do molecular clouds in the filament and overlapping region of the early-stage interacting pair NGC 4567/4568 show higher virial parameters and a higher CO(3-2)/CO(1-0) ratio (denser gas) than disc clouds, as simulations of collisional compression predict?",
+ "alma_project_codes": [
+  "2015.1.01161.S",
+  "2012.1.00759.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO 1-0), Band 7 (CO 3-2)",
+  "arrays": "12-m array and ACA 7-m array (49 + 9 antennas in Band 3; 37 + 8 antennas in Band 7)",
+  "angular_resolution": "CO(1-0): 126 pc x 99 pc at 16 Mpc (combined cube); CO(3-2): 43 pc x 36 pc at 16 Mpc (arcsec beam values not legible in the text)",
+  "sensitivity": "rms 1.5 mJy/beam in both CO(1-0) and CO(3-2) cubes (CO(1-0): 0.067 mK); CO(1-0) disc region 4.0 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to the galaxy pair, 16 Mpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "the close proximity (16 Mpc: (cite: Mei07))"
+     }
+    ]
+   },
+   "citation": "Mei et al. 2007 (cite: Mei07)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor XCO = 2.0 x 10^20 cm^-2 (K km/s)^-1",
+    "evidence": [
+     {
+      "loc": "3.1 CO(J = 1-0)",
+      "quote": "Adopting $X_{\\rm CO}$ = 2.0 $\\times$ 10$^{20}$"
+     }
+    ]
+   },
+   "citation": "Bolatto et al. 2013 (cite: Bolatto13)"
+  },
+  {
+   "what": {
+    "value": "Earlier ALMA Cycle 1 CO(1-0) data and filament cloud properties (four clouds, alpha_vir 0.18 +/- 0.10, radius 30.8 +/- 5.8 pc, sigma 3.3 +/- 2.0 km/s) used for comparison and for 3D-BAROLO modelling",
+    "evidence": [
+     {
+      "loc": "4.2 Physical properties of molecular clouds",
+      "quote": "their radius and velocity dispersion are 30.8 $\\pm$ 5.8 pc and 3.3 $\\pm$ 2.0 km s$^{-1}$, respectively"
+     },
+     {
+      "loc": "4.4 Evolutionary and collisional stages",
+      "quote": "compare them with the observed data of each galaxy pair obtained in the ALMA Cycle 1 program"
+     }
+    ]
+   },
+   "citation": "Kaneko et al. 2018 (cite: Kaneko18)"
+  },
+  {
+   "what": {
+    "value": "Total molecular gas mass of the pair and Nobeyama 45-m CO(1-0) data",
+    "evidence": [
+     {
+      "loc": "3.1 CO(J = 1-0)",
+      "quote": "Since the total amount of molecular gas of the NGC 4567/4568 pair is"
+     }
+    ]
+   },
+   "citation": "Kaneko et al. 2013 (cite: Kaneko13)"
+  },
+  {
+   "what": {
+    "value": "HI image of the pair",
+    "evidence": [
+     {
+      "loc": "4.3 Formation process of the filamentary molecular structure",
+      "quote": "image (cite: Iono05) overlaid with CO($J$ = 1–0) contours obtained by the Nobeyama 45-m telescope"
+     }
+    ]
+   },
+   "citation": "Iono et al. 2005 (cite: Iono05)"
+  },
+  {
+   "what": {
+    "value": "HI deficiency of NGC 4567 (0.13 +/- 0.12) and NGC 4568 (0.38 +/- 0.12)",
+    "evidence": [
+     {
+      "loc": "4.3 Formation process of the filamentary molecular structure",
+      "quote": "(cite: Chung09) estimated that NGC 4567 and NGC 4568 have H deficiency of 0.13 $\\pm$ 0.12 and 0.38 $\\pm$ 0.12, respectively."
+     }
+    ]
+   },
+   "citation": "Chung et al. 2009 (cite: Chung09)"
+  },
+  {
+   "what": {
+    "value": "H-alpha image used as star formation tracer",
+    "evidence": [
+     {
+      "loc": "4.2 Physical properties of molecular clouds",
+      "quote": "a star formation tracer, H$\\alpha$ (cite: Xu00)"
+     }
+    ]
+   },
+   "citation": "Xu et al. 2000 (cite: Xu00)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image the CO(1-0) and CO(3-2) cubes",
+   "method": "Calibration and imaging in CASA; continuum undetected; continuum subtraction with uvcontsub; primary beam correction; tclean with Briggs weighting; 12-m and ACA combined",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5",
+    "velocity resolution 5 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "make moment maps and measure integrated intensities and luminosity mass",
+   "method": "Moment maps clipped at 3 sigma (CO 3-2 integrated intensity) and 5 sigma (velocity field and dispersion); luminosity mass from CO(1-0) flux with the Kenney and Young relation",
+   "software": [],
+   "key_parameters": [
+    "clip level 5 sigma on CO(1-0) velocity field and dispersion maps (1 sigma = 1.5 mJy/beam)"
+   ],
+   "assumptions": [
+    "XCO = 2.0 x 10^20 cm^-2 (K km/s)^-1; distance 16 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "build position-velocity diagrams across the filament",
+   "method": "P-V diagrams perpendicular to the filament from the CO(1-0) cube",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "identify molecular clouds in the CO(1-0) cube and assign them to regions",
+   "method": "CLUMPFIND in 3D with contour levels starting at 3 sigma and spaced by 2 sigma; separate noise levels for overlapping and disc regions; filament membership from position and P-V velocity criteria",
+   "software": [
+    "CLUMPFIND"
+   ],
+   "key_parameters": [
+    "cloud must exceed beam size (~100 pc) and the 5 km/s velocity resolution; clouds truncated at the field edge excluded",
+    "filament defined as integrated intensity > 0.5 Jy km/s in the white box and emission above 4.5 mJy/beam (3 sigma) in the P-V diagram"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "derive cloud physical properties and virial parameters",
+   "method": "Radius and velocity dispersion from CLUMPFIND after deconvolution; luminosity mass from CO(1-0) integrated intensity, projected area and XCO; surface density = mass / area for a spherical cloud; alpha_vir = 5 sigma^2 R / (G M_CO)",
+   "software": [
+    "CLUMPFIND"
+   ],
+   "key_parameters": [
+    "XCO = 2.0 x 10^20 cm^-2 (K km/s)^-1"
+   ],
+   "assumptions": [
+    "cloud treated as a sphere for mass surface density; alpha_vir below about 1 means gravitationally bound"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "compare cloud populations between disc and overlapping regions",
+   "method": "Two-sample Kolmogorov-Smirnov test on each cloud property at the 1% significance level",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "measure CO(3-2)/CO(1-0) intensity ratio per cloud",
+   "method": "R3-2/1-0 = I(CO 3-2)/I(CO 1-0) from pixel values inside the clouds identified in the CO(1-0) cube; clouds in the disc region not plotted",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "test cluster stripping and compare CO with HI and H-alpha",
+   "method": "Compare galaxy-scale HI and CO distributions; split NGC 4568 into northern and southern discs using an ellipse fit to the HI 3 sigma level; compare HI mass in the two halves; overlay R3-2/1-0 with H-alpha",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thin HI emission"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "model the disc kinematics and look for departures from circular motion",
+   "method": "3D-BAROLO kinematic models assuming circular motion compared with the Cycle 1 CO(1-0) data of each galaxy",
+   "software": [
+    "3D-BAROLO"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "circular motion"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1-0) integrated intensity in the field of view",
+   "value": "205",
+   "uncertainty": "3",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(J = 1-0)",
+     "quote": "The CO($J$ = 1–0) integrated intensity in the field of view is 205 $\\pm$ 3 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) luminosity mass of observed region",
+   "value": "4.1e8",
+   "uncertainty": "0.1e8",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(J = 1-0)",
+     "quote": "the luminosity mass is (4.1 $\\pm$ 0.1) $\\times$ 10$^{8}$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of the pair's molecular gas in the observed region",
+   "value": "9%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(J = 1-0)",
+     "quote": "this corresponds to 9% of molecular gas of this pair"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) missing flux fraction",
+   "value": "63%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "found that the missing flux accounts for 63% of the total flux"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated intensity",
+   "value": "7.4",
+   "uncertainty": "1.0",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 CO(J = 3-2)",
+     "quote": "The CO($J$ = 3–2) integrated intensity is 7.4 $\\pm$ 1.0 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) integrated intensity within the CO(3-2) field of view",
+   "value": "30",
+   "uncertainty": "1",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 CO(J = 3-2)",
+     "quote": "Within the CO($J$ = 3–2) field of view, the CO($J$ = 1–0) integrated intensity is 30$\\pm$1 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Global CO(3-2)/CO(1-0) intensity ratio",
+   "value": "0.25",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 CO(J = 3-2)",
+     "quote": "Therefore, the global CO($J$ = 3–2)/CO($J$ = 1–0) intensity ratio is 0.25 $\\pm$ 0.03."
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma continuum upper limit, 3 mm",
+   "value": "1.7e-1",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "1.7 $\\times$ 10$^{-1}$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma continuum upper limit, 1 mm",
+   "value": "2.4e-1",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "2.4 $\\times$ 10$^{-1}$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular clouds identified (total)",
+   "value": "114",
+   "uncertainty": "not stated",
+   "units": "clouds",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "We identified 114 molecular clouds using CO($J$ = 1–0) data."
+    }
+   ]
+  },
+  {
+   "quantity": "Clouds per region: disc / overlapping (excl. filament) / filament",
+   "value": "62 / 44 / 8",
+   "uncertainty": "not stated",
+   "units": "clouds",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular cloud identification",
+     "quote": "As a result, 62 molecular clouds are identified in the disc region, 44 molecular clouds in the overlapping region (excluding those in the filament), and eight molecular clouds associated with the filament."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter, filament clouds",
+   "value": "0.56",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a factor of two higher an average virial parameter (0.56 $\\pm$ 0.14) than that in the overlapping region (0.28 $\\pm$ 0.12) and in the disc region (0.26 $\\pm$ 0.16)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter, overlapping-region clouds",
+   "value": "0.28",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a factor of two higher an average virial parameter (0.56 $\\pm$ 0.14) than that in the overlapping region (0.28 $\\pm$ 0.12) and in the disc region (0.26 $\\pm$ 0.16)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter, disc-region clouds",
+   "value": "0.26",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a factor of two higher an average virial parameter (0.56 $\\pm$ 0.14) than that in the overlapping region (0.28 $\\pm$ 0.12) and in the disc region (0.26 $\\pm$ 0.16)"
+    }
+   ]
+  },
+  {
+   "quantity": "K-S p-values, radius and virial parameter (overlapping vs disc)",
+   "value": "0.23 and 0.67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties of molecular clouds",
+     "quote": "The *p*-values of the K–S test for the radius and virial parameters above 1%, specifically 0.23 and 0.67, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "K-S p-values, velocity dispersion, luminosity mass, mass surface density",
+   "value": "1.9e-3, 3.1e-6, 2.8e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties of molecular clouds",
+     "quote": "precisely 1.9 $\\times$ 10$^{-3}$, 3.1 $\\times$ 10$^{-6}$, and 2.8 $\\times$ 10$^{-5}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Average R3-2/1-0 of clouds in the overlapping region",
+   "value": "0.05",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties of molecular clouds",
+     "quote": "The average $R_{3-2/1-0}$ for each molecular cloud in the overlapping region is 0.05 $\\pm$ 0.04."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum R3-2/1-0 over all clouds",
+   "value": "0.17",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties of molecular clouds",
+     "quote": "the maximum value of $R_{3-2/1-0}$ for all molecular clouds, including the overlapping region, is 0.17 $\\pm$ 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "R3-2/1-0 of filament clouds",
+   "value": "less than 0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties of molecular clouds",
+     "quote": "All molecular clouds in the filaments have an $R_{3-2/1-0}$ of less than 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between CO(1-0) and CO(3-2) cloud integrated intensities",
+   "value": "0.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties of molecular clouds",
+     "quote": "The correlation coefficient between CO($J$ = 1–0) and CO($J$ = 3–2) integrated intensity of each molecular cloud is 0.84"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the standard pipeline or manual scripts were used",
+  "Flux calibrator and any flux-scale corrections",
+  "Whether self-calibration was applied",
+  "Line-free channels and fit order used in uvcontsub",
+  "tclean deconvolver, cell size, interactive mask choices, stopping threshold, and primary-beam cutoff for the CO(3-2) mosaic",
+  "Beam sizes in arcsec and position angles (not legible in the provided text)",
+  "How the 12-m and ACA visibilities were weighted or combined, and the CO(3-2) mosaic setup",
+  "CLUMPFIND implementation and version, and exact deconvolution of radius and velocity dispersion",
+  "How cloud pixels were matched between the CO(1-0) and CO(3-2) cubes for R3-2/1-0 (beam matching, masks) and how its uncertainty was derived",
+  "Reduction details of the Cycle 1 data (2012.1.00759.S) used for comparison and 3D-BAROLO input",
+  "3D-BAROLO parameters (rings, inclination, position angle, systemic velocity) and the HI image source data"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, calibrators, tclean mask and cell settings, and line-free channels",
+  "Beam sizes and position angles for the final cubes",
+  "CLUMPFIND implementation and cloud catalogue",
+  "Cycle 1 reduction and 3D-BAROLO parameters",
+  "Nobeyama 45-m data and the HI and H-alpha images"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA project codes and the main analysis recipe (tclean Briggs 0.5, uvcontsub, CLUMPFIND 3 sigma/2 sigma, formulae) are given with numeric results, but CASA version, masks, cell sizes, beam sizes and several external datasets are missing.",
+ "rediscovery_reason": "Project codes are given and the cloud identification and ratio analysis are simple and numeric, so a rough reproduction of cloud counts, virial parameters and R3-2/1-0 is plausible, although exact numbers need unstated settings.",
+ "source_card": "cards/2023PASJ...75..646K/sonnet/card.md"
+}

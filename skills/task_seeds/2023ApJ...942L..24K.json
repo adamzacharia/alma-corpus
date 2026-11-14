@@ -1,0 +1,561 @@
+{
+ "bibcode": "2023ApJ...942L..24K",
+ "title": "UGC 4211: A Confirmed Dual Active Galactic Nucleus in the Local Universe at 230 pc Nuclear Separation",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/aca8f0",
+ "arxiv_id": "2301.03609",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Whether the two close-separation (~230 pc) near-IR nuclei in the late-stage major galaxy merger UGC 4211 are both powered by accreting supermassive black holes (a confirmed dual AGN).",
+ "alma_project_codes": [
+  "2021.1.01019.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~230 GHz)",
+  "arrays": "12 m array (46 antennae in C-8, 44 antennae in C-5)",
+  "angular_resolution": "~0''.06 (0''.061 x 0''.073 for CO cube with robust 0.5; ~0''.07 and ~0''.04 with robust -0.5 for continuum)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Host galaxy stellar mass log(M*/M_sun)=11.1, molecular gas mass log(M_H2/M_sun)=9.7, and star formation rate log(SFR/M_sun yr^-1)=0.9",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "From a compilation study of BAT AGN (cite: Koss:2021:29), the host galaxy was found to be relatively massive compared to nearby galaxies hosting AGN (\\log (M_{*}/M_{\\odot}) =11.1), with significant molecular gas (\\log (M_{H2}/M_{\\odot} )=9.7) and a high star formation rate (\\log({\\rm SFR}/ M_{\\odot} \\,{\\rm yr}^{-1}){=}0.9)"
+     }
+    ]
+   },
+   "citation": "(cite: Koss:2021:29)"
+  },
+  {
+   "what": {
+    "value": "Chandra and NuSTAR single-nucleus X-ray spectral analysis column density log(N_H/cm^-2)=22.95+/-0.05 and intrinsic luminosity log(L^int_2-10keV/erg s^-1)=43.3",
+    "evidence": [
+     {
+      "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+      "quote": "An X-ray spectral analysis using Chandra (from 2019) and NuSTAR (from 2017) data assuming a single nucleus suggested a moderate column density of \\log(N_{\\rm H} /{\\rm cm}^{-2} )=22.95\\pm0.05 (cite: Zhao:2021:A57) with an intrinsic luminosity of \\log(L^{\\rm int}_{\\mathrm{2-10\\ keV}} /{\\rm erg\\,s}^{-1} )=43.3"
+     }
+    ]
+   },
+   "citation": "(cite: Zhao:2021:A57)"
+  },
+  {
+   "what": {
+    "value": "Swift/XRT and Swift/BAT X-ray intrinsic luminosity log(L^int_2-10keV/erg s^-1)=42.7+/-0.2",
+    "evidence": [
+     {
+      "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+      "quote": "A previous analysis using Swift/XRT (from 2010) and Swift/BAT data (cite: Ricci:2017:17), had \\log(L^{\\rm int}_{\\mathrm{2-10\\ keV}} /{\\rm erg\\,s}^{-1} )=42.7\\pm0.2"
+     }
+    ]
+   },
+   "citation": "(cite: Ricci:2017:17)"
+  },
+  {
+   "what": {
+    "value": "X-Shooter Spectral Library DR2 stellar templates used for pPXF fitting",
+    "evidence": [
+     {
+      "loc": "Emission and absorption line fitting",
+      "quote": "We used the X-Shooter Spectral Library (XSL, specifically DR2; (cite: Gonneau:2020:A133))."
+     }
+    ]
+   },
+   "citation": "(cite: Gonneau:2020:A133)"
+  },
+  {
+   "what": {
+    "value": "Keck/NIRC2+AO J and K' band imaging",
+    "evidence": [
+     {
+      "loc": "High Resolution Imaging with HST and Keck",
+      "quote": "The Near Infrared Camera 2 (NIRC2)+AO imaging in the J and K^\\prime bands (0''04 pix^{-1}) of nearby (z<0.075) hard X-ray selected AGN from the Swift BAT is described in (cite: Koss:2018:214a)."
+     }
+    ]
+   },
+   "citation": "(cite: Koss:2018:214a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure ALMA 231 GHz nuclear continuum positions, flux densities, separation, and spectral index",
+   "method": "Coadd line-free channels in four spectral windows (221-240 GHz) to make high-resolution (~0''.07 and ~0''.04 with robust -0.5) continuum maps, and fit spatial 2D Gaussian models using CASA imfit.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Frequency 221-240 GHz (231 GHz); resolution ~0''.07 and ~0''.04 (robust = -0.5)"
+   ],
+   "assumptions": [
+    "Cosmology: Omega_m=0.3, Omega_Lambda=0.7, H_0=70 km s^-1 Mpc^-1, scale 0''.69 kpc^-1 at z=0.03474"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract and fit optical and NIR nuclear emission line spectra and BPT diagnostics",
+   "method": "Extract 1D spectra from HST/STIS (0''.25 x 0''.2), Keck/OSIRIS (0''.3 diameter apertures), and VLT/MUSE (three 0''.15 diameter apertures N, S, M and Voronoi-binned spaxels), fit continuum and Gaussian emission lines, and place line ratios on BPT diagrams.",
+   "software": [
+    "stistools",
+    "Reflex",
+    "QFitsView",
+    "MPDAF",
+    "xtellcor",
+    "PySpecKit",
+    "vorbin"
+   ],
+   "key_parameters": [
+    "STIS aperture 5 pixels (0''.25); OSIRIS aperture 0''.3 diameter; MUSE apertures 0''.15 diameter; Voronoi binning S/N=10 for [O III]; 3 pixel median filter on MUSE cube"
+   ],
+   "assumptions": [
+    "Kewley et al. (2006) strong-line AGN diagnostic classifications"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure nuclear stellar kinematics, [O III] kinematics, and ALMA CO(2-1) gas velocity distribution",
+   "method": "Fit MUSE Ca II triplet absorption (8350-8900 Å) using pPXF on Voronoi-binned data (S/N=35) and N, S, M apertures; fit [O III] emission velocities; generate ALMA 12CO(2-1) velocity map from 15 km s^-1 channel cube.",
+   "software": [
+    "pPXF",
+    "vorbin",
+    "PySpecKit",
+    "CASA"
+   ],
+   "key_parameters": [
+    "CaT region 8350–8900 Å; Voronoi S/N = 35 for stellar kinematics, S/N = 10 for [O III]; ALMA CO(2-1) cube channel width 15 km s^-1, robust = 0.5"
+   ],
+   "assumptions": [
+    "X-Shooter Spectral Library DR2 stellar templates"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive AGN bolometric luminosities, black hole masses, sphere of influence, and Eddington ratios",
+   "method": "Convert ALMA nuclear mm luminosity to intrinsic 2-10 keV luminosity using Kawamuro et al. (2022) relation and apply bolometric correction of 20; compute M_BH from broad Pa beta (south) and stellar velocity dispersion sigma_* (north and south); compute Eddington ratios.",
+   "software": [],
+   "key_parameters": [
+    "Bolometric correction factor = 20 from 2-10 keV luminosity"
+   ],
+   "assumptions": [
+    "Kawamuro et al. (2022) mm-to-X-ray correlation; den Brok et al. (2022) Pa beta M_BH relation; Kormendy & Ho (2013) M_BH-sigma_* relation; SOI = 33 pc (sigma_*/200 km s^-1)^2.38"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test for dual X-ray point sources, X-ray variability, and 22 GHz radio continuum counterpart",
+   "method": "Fit Chandra image with ChaRT PSF + 2D Gaussian and run BAYMAX to compute Bayes factor for two vs. one point source; analyze Chandra and NuSTAR light curves with XRONOS lcstats; self-calibrate and fit JVLA 22 GHz continuum with CASA imfit.",
+   "software": [
+    "CIAO",
+    "ChaRT",
+    "BAYMAX",
+    "NuSTARDAS",
+    "XRONOS",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Chandra subpixel repositioning 0''.25 pix^-1; BAYMAX 20''x20'' box and 1''x1'' prior box; light curve 500s bins; JVLA gaincal solint 180 s"
+   ],
+   "assumptions": [
+    "Uniform spatial priors on primary and secondary X-ray source positions in BAYMAX (full 20''x20'' FOV or 1''x1'' boxes around IR cores)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate SMBH binary orbital evolution and hardening timescales",
+   "method": "Calculate binary hardening rates due to dynamical friction, stellar hardening, gas-driven inspiral, and GW emission following Goulding et al. (2019) using observed UGC 4211 properties and 230 pc separation.",
+   "software": [],
+   "key_parameters": [
+    "Initial separation 230 pc"
+   ],
+   "assumptions": [
+    "Stellar velocity dispersion estimated from virial theorem; hardening radius a_Hard << G(M_1 + M_2)/sigma_*^2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 231 GHz continuum flux density (southern nucleus)",
+   "value": "1.705",
+   "uncertainty": "0.037",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "The positions of the two emitters are R.A.=08:04:46.3902, decl.=+10:46:35.9407, for the brighter southern source, with a flux density of 1.705\\pm0.037 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 231 GHz continuum flux density (northern nucleus)",
+   "value": "0.140",
+   "uncertainty": "0.032",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "and R.A.=8:04:46.3921, decl.=+10:46:36.2723 for the fainter northern one, with a flux density of 0.140\\pm0.032 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA continuum nuclear separation (angular)",
+   "value": "0.33",
+   "uncertainty": "0.01",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "This corresponds to a separation of 0''33\\pm0''01 or 229\\pm7 pc at a position angle (PA) of 4.8^\\circ\\pm3."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA continuum nuclear separation (physical)",
+   "value": "229",
+   "uncertainty": "7",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "This corresponds to a separation of 0''33\\pm0''01 or 229\\pm7 pc at a position angle (PA) of 4.8^\\circ\\pm3."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA continuum position angle",
+   "value": "4.8",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "This corresponds to a separation of 0''33\\pm0''01 or 229\\pm7 pc at a position angle (PA) of 4.8^\\circ\\pm3."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA millimeter spectral index alpha (southern nucleus)",
+   "value": "0.02",
+   "uncertainty": "0.26",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "The brighter southern source had a spectral index (S_{\\nu} \\propto\\nu^{-\\alpha}) of \\alpha=0.02\\pm0.26"
+    }
+   ]
+  },
+  {
+   "quantity": "NIR K' nuclear separation",
+   "value": "0.32",
+   "uncertainty": "0.03",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging Analysis",
+     "quote": "Using the brightest pixel in the NIR K^\\prime emission for each of the two nuclei, we find a separation of 0''32\\pm0''03, with a PA of 7.5^\\circ\\pm5^\\circ."
+    }
+   ]
+  },
+  {
+   "quantity": "Broad Pa beta FWHM (southern nucleus)",
+   "value": "1996",
+   "uncertainty": "180",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Nuclear Emission Line Analysis",
+     "quote": "A hidden broad-line region (BLR) component (>1000 km s^{-1}) is also found in the NIR hydrogen recombination lines (e.g. Pa\\beta, FWHM=1996\\pm180 km s^{-1}; Br\\gamma, FWHM=2530\\pm160 km s^{-1}) of the southern nucleus"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad Br gamma FWHM (southern nucleus)",
+   "value": "2530",
+   "uncertainty": "160",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Nuclear Emission Line Analysis",
+     "quote": "A hidden broad-line region (BLR) component (>1000 km s^{-1}) is also found in the NIR hydrogen recombination lines (e.g. Pa\\beta, FWHM=1996\\pm180 km s^{-1}; Br\\gamma, FWHM=2530\\pm160 km s^{-1}) of the southern nucleus"
+    }
+   ]
+  },
+  {
+   "quantity": "Balmer decrement (MUSE N aperture)",
+   "value": "15.1",
+   "uncertainty": "2.1",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Nuclear Emission Line Analysis",
+     "quote": "Overall, the Balmer decrement for the N, S, and M apertures are consistent with each other with 15.1\\pm2.1, 15.0\\pm2.1, and 16.2\\pm3.5, for the N, S, and M regions, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Balmer decrement (MUSE S aperture)",
+   "value": "15.0",
+   "uncertainty": "2.1",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Nuclear Emission Line Analysis",
+     "quote": "Overall, the Balmer decrement for the N, S, and M apertures are consistent with each other with 15.1\\pm2.1, 15.0\\pm2.1, and 16.2\\pm3.5, for the N, S, and M regions, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Balmer decrement (MUSE M aperture)",
+   "value": "16.2",
+   "uncertainty": "3.5",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Nuclear Emission Line Analysis",
+     "quote": "Overall, the Balmer decrement for the N, S, and M apertures are consistent with each other with 15.1\\pm2.1, 15.0\\pm2.1, and 16.2\\pm3.5, for the N, S, and M regions, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] velocity offset between northern and southern nuclei",
+   "value": "132",
+   "uncertainty": "22",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Redshift and Kinematics of the Nuclei",
+     "quote": "with an offset of 132\\pm22 {\\rm\\thinspace km}{\\rm\\thinspace s}^{-1}\\,based on \\[O iii\\], and 168\\pm36 km s^{-1} based on the stellar absorption lines in CaT."
+    }
+   ]
+  },
+  {
+   "quantity": "CaT stellar absorption velocity offset between northern and southern nuclei",
+   "value": "168",
+   "uncertainty": "36",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Redshift and Kinematics of the Nuclei",
+     "quote": "with an offset of 132\\pm22 {\\rm\\thinspace km}{\\rm\\thinspace s}^{-1}\\,based on \\[O iii\\], and 168\\pm36 km s^{-1} based on the stellar absorption lines in CaT."
+    }
+   ]
+  },
+  {
+   "quantity": "MUSE north [O III] velocity offset from z=0.03474",
+   "value": "96",
+   "uncertainty": "14",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "MUSE north | 96\\pm14 | 105\\pm22"
+    }
+   ]
+  },
+  {
+   "quantity": "MUSE north CaT velocity offset from z=0.03474",
+   "value": "105",
+   "uncertainty": "22",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "MUSE north | 96\\pm14 | 105\\pm22"
+    }
+   ]
+  },
+  {
+   "quantity": "MUSE south [O III] velocity offset from z=0.03474",
+   "value": "-36",
+   "uncertainty": "17",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "MUSE south | -36\\pm17 | -63\\pm28"
+    }
+   ]
+  },
+  {
+   "quantity": "MUSE south CaT velocity offset from z=0.03474",
+   "value": "-63",
+   "uncertainty": "28",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "MUSE south | -36\\pm17 | -63\\pm28"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA-inferred intrinsic 2-10 keV luminosity log(L^int_2-10keV) (northern nucleus)",
+   "value": "42.48",
+   "uncertainty": "0.49",
+   "units": "log(erg s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "giving an absorption-corrected 2-10\\,{\\rm keV} luminosity of \\log(L^{\\rm int}_{\\mathrm{2-10\\ keV}} /{\\rm erg\\,s}^{-1} )=42.48\\pm0.49 for the northern nucleus and \\log(L^{\\rm int}_{\\mathrm{2-10\\ keV}} /{\\rm erg\\,s}^{-1} )=43.98\\pm0.47 for the southern nucleus."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA-inferred intrinsic 2-10 keV luminosity log(L^int_2-10keV) (southern nucleus)",
+   "value": "43.98",
+   "uncertainty": "0.47",
+   "units": "log(erg s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "giving an absorption-corrected 2-10\\,{\\rm keV} luminosity of \\log(L^{\\rm int}_{\\mathrm{2-10\\ keV}} /{\\rm erg\\,s}^{-1} )=42.48\\pm0.49 for the northern nucleus and \\log(L^{\\rm int}_{\\mathrm{2-10\\ keV}} /{\\rm erg\\,s}^{-1} )=43.98\\pm0.47 for the southern nucleus."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity log(L_bol) (northern nucleus)",
+   "value": "43.8",
+   "uncertainty": "not stated",
+   "units": "log(erg s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "Assuming a fixed correction factor of 20 to convert to bolometric luminosity this yields \\log\\left(L_{\\rm bol} /{\\rm erg\\,s}^{-1} \\right)=43.8 and \\log\\left(L_{\\rm bol} /{\\rm erg\\,s}^{-1} \\right)=45.3, for the northern and southern nuclei respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity log(L_bol) (southern nucleus)",
+   "value": "45.3",
+   "uncertainty": "not stated",
+   "units": "log(erg s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "Assuming a fixed correction factor of 20 to convert to bolometric luminosity this yields \\log\\left(L_{\\rm bol} /{\\rm erg\\,s}^{-1} \\right)=43.8 and \\log\\left(L_{\\rm bol} /{\\rm erg\\,s}^{-1} \\right)=45.3, for the northern and southern nuclei respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole mass log(M_BH/M_sun) (southern nucleus, Pa beta and sigma_*)",
+   "value": "8.1",
+   "uncertainty": "not stated",
+   "units": "log(M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "We use the Pa\\beta M_{\\rm BH} relation from (cite: Brok:2022:7) yielding \\log(M_{\\rm BH} /M_{\\odot} )=8.1 for the southern nucleus."
+    },
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "Using our data with the \\sigma_{*} relation derived by (cite: Kormendy:2013:511). We find \\log(M_{\\rm BH} /M_{\\odot} )=8.4 and 8.1 for the northern and southern nuclei (respectively)."
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole mass log(M_BH/M_sun) (northern nucleus, sigma_*)",
+   "value": "8.4 (8.3 in Abstract)",
+   "uncertainty": "not stated",
+   "units": "log(M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "Using our data with the \\sigma_{*} relation derived by (cite: Kormendy:2013:511). We find \\log(M_{\\rm BH} /M_{\\odot} )=8.4 and 8.1 for the northern and southern nuclei (respectively)."
+    },
+    {
+     "loc": "Abstract",
+     "quote": "Our data, combined with common black hole mass prescriptions, suggests that both SMBHs have similar masses, \\log\\left(M_{\\rm BH} /M_{\\odot} \\right)\\sim8.1 (south) and \\log\\left(M_{\\rm BH} /M_{\\odot} \\right)\\sim8.3 (north), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington ratio L_bol/L_Edd (northern nucleus)",
+   "value": "0.002",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "we find Eddington ratios of L_{\\rm bol}/L_{\\rm Edd}=0.002 and L_{\\rm bol}/L_{\\rm Edd}=0.1 for the northern and southern nucleus, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington ratio L_bol/L_Edd (southern nucleus)",
+   "value": "0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "AGN Bolometric Luminosity, Black Hole Mass, and Eddington ratio",
+     "quote": "we find Eddington ratios of L_{\\rm bol}/L_{\\rm Edd}=0.002 and L_{\\rm bol}/L_{\\rm Edd}=0.1 for the northern and southern nucleus, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA 22 GHz flux density within 6''",
+   "value": "3.74",
+   "uncertainty": "0.017",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "JVLA",
+     "quote": "Using CASA task imfit the centroid position of the single detection is R.A.=08:04:46.391, decl.=+10:46:36.01 with a flux of 3.74\\pm0.017 mJy within 6^{\\prime \\prime} and 3.2741\\pm0.0072 mJy."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ExactCASA version used alongside ALMA pipeline v2021.2.0.128",
+  "Exact frequency ranges of the line-free channels in the four ALMA spectral windows used for continuum imaging",
+  "Briggs robust parameter used to generate the primary ~0''.07 ALMA continuum map",
+  "Cell size, image size, deconvolver, and masking parameters for ALMA continuum and CO(2-1) cube imaging",
+  "Whether self-calibration was performed on the ALMA Band 6 data",
+  "Method used to extract the ALMA CO(2-1) velocity map (e.g., moment 1, Gaussian fitting, threshold)",
+  "Explicit values of the measured stellar velocity dispersions (sigma_*) and Pa beta broad line flux/luminosity used to compute M_BH"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA continuum line-free frequency channel selections across the four spectral windows",
+  "ALMA tclean imaging parameters (cell size, image size, deconvolver, stopping threshold, robust parameter for the ~0''.07 continuum map)",
+  "Method/parameters used to extract the ALMA CO(2-1) velocity map",
+  "Measured numerical values of stellar velocity dispersion sigma_* for the northern and southern nuclei",
+  "Measured broad Pa beta flux/luminosity for the southern nucleus used in the den Brok et al. (2022) M_BH relation",
+  "Exact parameter values (e.g., stellar density profile, gas disk parameters) input into the Goulding et al. (2019) binary hardening timescale equations"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA project code (2021.1.01019.S), pipeline version (v2021.2.0.128), spectral setup, and CASA imfit measurement steps are clearly stated, making the core ALMA continuum flux densities and separation straightforward to reproduce; however, detailed ALMA imaging parameters and the intermediate kinematic measurements (sigma_*, Pa beta flux) are omitted or deferred to a companion paper.",
+ "rediscovery_reason": "The ALMA Band 6 dataset (2021.1.01019.S) is public in the ALMA archive, and the core ALMA numeric results (231 GHz continuum positions, flux densities of 1.705 and 0.140 mJy, separation of 0''.33, and inferred X-ray/bolometric luminosities) can be directly reproduced from continuum imaging and CASA imfit.",
+ "source_card": "cards/2023ApJ...942L..24K/sonnet/card.md"
+}

@@ -1,0 +1,526 @@
+{
+ "bibcode": "2023MNRAS.521.3348N",
+ "title": "The ALMOND survey: molecular cloud properties and gas density tracers across 25 nearby spiral galaxies with ALMA",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad424",
+ "arxiv_id": "2302.03042",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Characterise the impact of cloud-scale structural and dynamical molecular gas properties (surface density, velocity dispersion, virial parameter, internal turbulent pressure) on the kpc-scale dense gas fraction (traced by HCN/CO) and dense gas star formation efficiency (traced by SFR/HCN) across 25 nearby spiral galaxies.",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.01161.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00230.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00815.S",
+  "2017.1.00886.L",
+  "2018.1.01171.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S",
+  "2019.2.00134.S",
+  "2021.1.00740.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMOND: ACA (7-m array + 12-m TP); PHANGS-ALMA: 12-m array + ACA (7-m + TP)",
+  "angular_resolution": "ALMOND (HCN): 16.8\"-22.9\" (0.40-2.11 kpc); PHANGS-ALMA (CO): 1.08\"-1.93\" (27-182 pc)",
+  "sensitivity": "ALMOND: ~1 mK per 10 km s^-1 channel (NGC 2903, NGC 4321), ~3 mK (other 23 galaxies); PHANGS-ALMA: 0.2-0.3 K per 2.5 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PHANGS-ALMA CO(2-1) line cubes and integrated galaxy properties (stellar mass, H2 mass, global SFR)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Integrated galaxy properties (6-8) are taken from (cite: Leroy2021b)."
+     },
+     {
+      "loc": "CO(2--1) – Bulk Molecular Gas",
+      "quote": "We trace the bulk molecular gas via the $\\text{CO(2--1)}$ emission line as observed by the PHANGS–ALMA survey (cite: Leroy2021b)."
+     }
+    ]
+   },
+   "citation": "(cite: Leroy2021b)"
+  },
+  {
+   "what": {
+    "value": "Star formation rate maps at 15\" resolution from z0MGS (WISE4 + GALEX-FUV)",
+    "evidence": [
+     {
+      "loc": "UV + IR – Star Formation Rate",
+      "quote": "We use star formation rate maps from the \"z = 0 Multiwavelength Galaxy Synthesis\" study (z0MGS; (cite: Leroy2019)) adopting a combination of 22 $\\mu$ m (WISE4) and GALEX-FUV 154 nm emission."
+     },
+     {
+      "loc": "UV + IR – Star Formation Rate",
+      "quote": "We downloaded the SFR maps for our galaxy sample at a resolution of 15″ from the public z0MGS repository"
+     }
+    ]
+   },
+   "citation": "(cite: Leroy2019)"
+  },
+  {
+   "what": {
+    "value": "Galaxy distances",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "(4) distance (cite: Anand2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Anand2021)"
+  },
+  {
+   "what": {
+    "value": "Galaxy inclination angles",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "(5) inclination angle (cite: Lang2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Lang2020)"
+  },
+  {
+   "what": {
+    "value": "Bar classifications",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Columns (10) and (11) specify if a galaxy is barred (Y) or unbarred (N) (cite: Querejeta2021b)"
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta2021b)"
+  },
+  {
+   "what": {
+    "value": "AGN classifications",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "and if it contains an AGN (Y) or not (N) (cite: Veron2010)."
+     }
+    ]
+   },
+   "citation": "(cite: Veron2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Homogenise spatial resolution, sample on hexagonal grids, and create 3D CO-based masks and integrated intensity maps",
+   "method": "Convolve CO(2-1) cubes to cloud-scale resolution (150 pc, and 120 pc / 75 pc for sub-samples) and CO(2-1), HCN(1-0), HCO+(1-0), CS(2-1) cubes and SFR maps to kpc-scale resolution (2.1 kpc, and 1.5 kpc / 1.0 kpc for sub-samples). Resample onto hexagonal grids (2 samples per beam FWHM at cloud scale, 1 sample per beam FWHM at kpc scale). Build 3D PPV masks from CO(2-1) by finding cores with S/N >= 4 in >= 3 adjacent channels and iteratively growing into regions with S/N >= 2 in >= 3 adjacent channels. Collapse masked cubes along velocity axis to get integrated intensities and compute uncertainties from emission-free channel rms.",
+   "software": [
+    "NumPy",
+    "SciPy",
+    "Astropy"
+   ],
+   "key_parameters": [
+    "High S/N mask threshold: S/N >= 4 in >= 3 adjacent channels; Low S/N mask threshold: S/N >= 2 in >= 3 adjacent channels",
+    "Target resolutions: 150 pc (cloud-scale) and 2.1 kpc (kpc-scale) for full sample; 120 pc / 1.5 kpc and 75 pc / 1.0 kpc for sub-samples"
+   ],
+   "assumptions": [
+    "CO(2-1) emission regions encompass the regions of dense gas tracer (HCN, HCO+, CS) emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute kpc-scale dense gas ratios (HCN/CO, SFR/HCN, HCO+/CO, SFR/HCO+, CS/CO, SFR/CS) and physical proxies (f_dense, SFE_dense)",
+   "method": "Take ratios of kpc-scale integrated intensities W_HCN / W_CO(2-1) and Sigma_SFR / W_HCN (and analogously for HCO+ and CS). Convert to f_dense and SFE_dense using constant conversion factors.",
+   "software": [
+    "NumPy"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.3 M_sun pc^-2 (K km s^-1)^-1, R_21 = 0.64, alpha_HCN = 14 M_sun pc^-2 (K km s^-1)^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive cloud-scale molecular gas properties (Sigma_mol, sigma_mol, alpha_vir, P_turb) at 150 pc resolution",
+   "method": "Compute pixel-by-pixel Sigma_mol from W_CO(2-1), sigma_mol from the Heyer (2001) effective line width deconvolved for instrumental response, alpha_vir from sigma_mol^2 / Sigma_mol, and P_turb from Sigma_mol * sigma_mol^2.",
+   "software": [
+    "NumPy"
+   ],
+   "key_parameters": [
+    "D_beam = 150 pc (and 120 pc, 75 pc for sub-samples)"
+   ],
+   "assumptions": [
+    "Constant alpha_CO = 4.3 M_sun pc^-2 (K km s^-1)^-1 and R_21 = 0.64; spherical clouds with radius R = D_beam / 2 and density profile rho propto r^-1 (f = 10/9)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute CO intensity-weighted averages of cloud-scale properties at kpc scale",
+   "method": "Multiply each cloud-scale map X by W_CO(2-1), convolve with a Gaussian kernel Omega to the kpc-scale resolution (2.1 kpc), and divide by the convolved W_CO(2-1) map. Resample to 1 sample per kpc-scale beam FWHM. Estimate uncertainties via 100 Monte Carlo realisations adding Gaussian noise.",
+   "software": [
+    "NumPy",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "100 Monte Carlo iterations for uncertainty estimation; Gaussian convolution kernel to 2.1 kpc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Bin kpc-scale data by <Sigma_mol> and perform Bayesian linear regression and correlation analysis",
+   "method": "Bin each galaxy's data into 20 equally spaced bins in <Sigma_mol> (18 bins for discs-only when separating centres). Compute bin ratios as mean(numerator)/mean(denominator). Define 3-sigma upper limits for HCN/CO and lower limits for SFR/HCN when S/N < 3. Fit log-log linear relations using Bayesian MCMC linear regression in LinMix accounting for heteroscedastic errors on both axes, intrinsic scatter, and censored data.",
+   "software": [
+    "LinMix",
+    "NumPy",
+    "SciPy",
+    "pandas"
+   ],
+   "key_parameters": [
+    "20 bins per galaxy (18 bins for discs only); S/N >= 3 detection threshold; x_off = {2.5, 1.1, 6.5} for {Sigma_mol, sigma_mol, P_turb}; >= 10000 MCMC steps after convergence"
+   ],
+   "assumptions": [
+    "Covariance between x- and y-axis uncertainties is negligible because HCN/CO uncertainties are dominated by HCN measurement uncertainties"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total independent sightlines observed across 25 galaxies",
+   "value": "4566",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "New HCN(1--0) observations",
+     "quote": "Across all galaxies, we observe in total 4566 independent sightlines, whereof 242 sightlines show significant HCN emission, i.e. integrated intensities with $\\text{S/N}\\geq3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sightlines with significant HCN(1-0) detection (S/N >= 3)",
+   "value": "242",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "New HCN(1--0) observations",
+     "quote": "Across all galaxies, we observe in total 4566 independent sightlines, whereof 242 sightlines show significant HCN emission, i.e. integrated intensities with $\\text{S/N}\\geq3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(HCN/CO) vs log(<Sigma_mol>) (centres + discs, lowres)",
+   "value": "0.35",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    },
+    {
+     "loc": "HCN/CO vs. Molecular Gas Surface Mass Density",
+     "quote": "we find a strong positive correlation between HCN/CO and $\\langle\\Sigma_{\\text{mol}}\\rangle$(see Figure 6) with Pearson correlation coefficient $\\rho=0.88$ ($p$-values smaller than  × 10^−5^) and a linear regression slope of $m_\\mathrm{f,\\Sigma}=0.35\\pm0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log(HCN/CO) vs log(<Sigma_mol>) at log(<Sigma_mol>)=2.5 (centres + discs, lowres)",
+   "value": "-1.49",
+   "uncertainty": "0.01",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(HCN/CO) vs log(<Sigma_mol>) (centres + discs, lowres)",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of log(HCN/CO) vs log(<Sigma_mol>) (centres + discs, lowres)",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(HCN/CO) vs log(<sigma_mol>) (centres + discs, lowres)",
+   "value": "0.66",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.66 (0.04)  | -1.5 (0.01)    | 0.85 (0.0)         | 0.12    |   | -0.63 (0.07) | -0.83 (0.02)   | -0.60 (0.0)        | 0.23    |"
+    },
+    {
+     "loc": "HCN/CO vs. Velocity Dispersion",
+     "quote": "The regression slope is $m_\\mathrm{f,\\sigma}=0.66\\pm0.04$ and we find small scatter of 0.12 indicating a strong and tight correlation."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(HCN/CO) vs log(<sigma_mol>) (centres + discs, lowres)",
+   "value": "0.85",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.66 (0.04)  | -1.5 (0.01)    | 0.85 (0.0)         | 0.12    |   | -0.63 (0.07) | -0.83 (0.02)   | -0.60 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(HCN/CO) vs log(<alpha_vir>) (centres + discs, lowres)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | ...          | ...            | 0.21 (0.028)       | ...     |   | ...          | ...            | -0.11 (0.226)      | ...     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(HCN/CO) vs log(<P_turb>) (centres + discs, lowres)",
+   "value": "0.17",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.17 (0.01)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.15 (0.02) | -0.83 (0.02)   | -0.62 (0.0)        | 0.22    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(HCN/CO) vs log(<P_turb>) (centres + discs, lowres)",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.17 (0.01)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.15 (0.02) | -0.83 (0.02)   | -0.62 (0.0)        | 0.22    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(SFR/HCN) vs log(<Sigma_mol>) (centres + discs, lowres)",
+   "value": "-0.33",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    },
+    {
+     "loc": "SFR/HCN vs. Molecular Gas Surface Mass Density",
+     "quote": "The regression slope is $m_\\mathrm{S,\\Sigma}=-0.33\\pm0.04$ indicating a sub-linear anti-correlation, where the scatter is 0.23."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(SFR/HCN) vs log(<Sigma_mol>) (centres + discs, lowres)",
+   "value": "-0.63",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of log(SFR/HCN) vs log(<Sigma_mol>) (centres + discs, lowres)",
+   "value": "0.23",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.35 (0.02)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.33 (0.04) | -0.84 (0.02)   | -0.63 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(SFR/HCN) vs log(<sigma_mol>) (centres + discs, lowres)",
+   "value": "-0.63",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.66 (0.04)  | -1.5 (0.01)    | 0.85 (0.0)         | 0.12    |   | -0.63 (0.07) | -0.83 (0.02)   | -0.60 (0.0)        | 0.23    |"
+    },
+    {
+     "loc": "SFR/HCN vs. Velocity Dispersion",
+     "quote": "We report a regression slope of $m_\\mathrm{S,\\sigma}=-0.63\\pm0.07$ with moderate scatter 0.23."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(SFR/HCN) vs log(<sigma_mol>) (centres + discs, lowres)",
+   "value": "-0.60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.66 (0.04)  | -1.5 (0.01)    | 0.85 (0.0)         | 0.12    |   | -0.63 (0.07) | -0.83 (0.02)   | -0.60 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(SFR/HCN) vs log(<alpha_vir>) (centres + discs, lowres)",
+   "value": "-0.11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | ...          | ...            | 0.21 (0.028)       | ...     |   | ...          | ...            | -0.11 (0.226)      | ...     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(SFR/HCN) vs log(<P_turb>) (centres + discs, lowres)",
+   "value": "-0.15",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.17 (0.01)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.15 (0.02) | -0.83 (0.02)   | -0.62 (0.0)        | 0.22    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(SFR/HCN) vs log(<P_turb>) (centres + discs, lowres)",
+   "value": "-0.62",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| centres + discs | 0.17 (0.01)  | -1.49 (0.01)   | 0.88 (0.0)         | 0.11    |   | -0.15 (0.02) | -0.83 (0.02)   | -0.62 (0.0)        | 0.22    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(HCO+/CO) vs log(<Sigma_mol>) (lowres)",
+   "value": "0.3",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "| $\\langle\\Sigma_{\\text{mol}}\\rangle$ | lowres         | 0.3 (0.02)   | -1.51 (0.01)   | 0.77 (0.0)         | 0.17    |   | -0.27 (0.03) | -0.84 (0.02)   | -0.56 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(SFR/HCO+) vs log(<Sigma_mol>) (lowres)",
+   "value": "-0.27",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "| $\\langle\\Sigma_{\\text{mol}}\\rangle$ | lowres         | 0.3 (0.02)   | -1.51 (0.01)   | 0.77 (0.0)         | 0.17    |   | -0.27 (0.03) | -0.84 (0.02)   | -0.56 (0.0)        | 0.23    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(CS/CO) vs log(<Sigma_mol>) (lowres)",
+   "value": "0.27",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| $\\langle\\Sigma_{\\text{mol}}\\rangle$ | lowres         | 0.27 (0.05)  | -1.95 (0.03)   | 0.56 (0.0)         | 0.26    |   | -0.27 (0.06) | -0.38 (0.03)   | -0.45 (0.0)        | 0.32    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(SFR/CS) vs log(<Sigma_mol>) (lowres)",
+   "value": "-0.27",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| $\\langle\\Sigma_{\\text{mol}}\\rangle$ | lowres         | 0.27 (0.05)  | -1.95 (0.03)   | 0.56 (0.0)         | 0.26    |   | -0.27 (0.06) | -0.38 (0.03)   | -0.45 (0.0)        | 0.32    |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and PHANGS-ALMA pipeline version used for ALMOND data reduction",
+  "Exact imaging parameters for ALMOND ACA + TP cubes (tclean weighting/robust, cell size, image size, feather/tp2vis combination settings, continuum subtraction channels)",
+  "Exact rest frequencies and spectral window configurations for the ALMOND observations",
+  "Galaxy-specific log10(C_WISE4) and log10(C_FUV) coefficients used in the z0MGS SFR maps",
+  "Channel-to-channel correlation coefficient values used to compute sigma_response for line width deconvolution"
+ ],
+ "missing_for_reproduction": [
+  "Processed ALMOND 7m+TP data cubes (stated as available on request rather than in a public repository, though raw ALMA data are in the ALMA archive)",
+  "Custom scripts used for 3D CO-based PPV masking, hexagonal grid resampling, and intensity-weighted convolution averaging",
+  "Exact galaxy-by-galaxy log10(C_WISE4) and log10(C_FUV) values used to construct the z0MGS SFR maps",
+  "Channel-to-channel correlation coefficient used in instrumental line width deconvolution"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "All 14 ALMA project codes and all 25 targets are explicitly listed, external datasets (PHANGS-ALMA, z0MGS) are public, and the mathematical equations for every derived quantity, binning scheme, and Bayesian regression (LinMix) are thoroughly specified. However, the reduced ALMOND cubes and custom masking/resampling scripts are not publicly hosted, and raw-to-cube imaging parameters are delegated to the PHANGS-ALMA pipeline paper.",
+ "rediscovery_reason": "All raw ALMA project codes are listed and public in the ALMA archive, PHANGS-ALMA CO(2-1) cubes and z0MGS SFR maps are publicly released, the post-processing equations and binning/fitting steps are explicitly given, and the main results are precise numeric regression slopes and correlation coefficients.",
+ "source_card": "cards/2023MNRAS.521.3348N/sonnet/card.md"
+}

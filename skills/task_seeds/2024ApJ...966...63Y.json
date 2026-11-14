@@ -1,0 +1,306 @@
+{
+ "bibcode": "2024ApJ...966...63Y",
+ "title": "The First Spatially Resolved Detection of <SUP>13</SUP>CN in a Protoplanetary Disk and Evidence for Complex Carbon Isotope Fractionation",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad2fb4",
+ "arxiv_id": "2403.00626",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Detect 13CN in the TW Hya disk and measure the spatially resolved 12CN/13CN ratio to constrain carbon isotope fractionation in disks",
+ "alma_project_codes": [
+  "2016.1.01375.S",
+  "2018.A.00021.S",
+  "2017.1.01199.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "All cubes convolved to a circular 0.5 arcsec FWHM beam, the smallest common resolution",
+  "sensitivity": "13CN cube RMS 1.0 mJy (per channel, after beam matching)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust optical depth at each wavelength used in the three-layer model",
+    "evidence": [
+     {
+      "loc": "Analysis and Results / non-LTE modeling",
+      "quote": "are the dust optical depth at each wavelength taken from (cite: maci21)"
+     }
+    ]
+   },
+   "citation": "Macias et al. 2021 (cite: maci21)"
+  },
+  {
+   "what": {
+    "value": "Fiducial TW Hya disk model (gas surface density and scale height at r=60 au) used to convert n(H2) to altitude z/r",
+    "evidence": [
+     {
+      "loc": "Analysis and Results / Fitting Results",
+      "quote": "in the fiducial TW Hya disk model of (cite: cala21)"
+     }
+    ]
+   },
+   "citation": "Calahan et al. 2021 (cite: cala21)"
+  },
+  {
+   "what": {
+    "value": "Disk geometry and stellar mass used for the Keplerian mask and stacking (i=5.8 deg, PA=151.6 deg, M*=0.81 Msun, vsys=2.84 km/s)",
+    "evidence": [
+     {
+      "loc": "Observations / 13CN",
+      "quote": "following (cite: teag19)"
+     }
+    ]
+   },
+   "citation": "Teague et al. 2019 (cite: teag19)"
+  },
+  {
+   "what": {
+    "value": "LTE relative optical depth spectrum at T=40 K for the matched filter figure",
+    "evidence": [
+     {
+      "loc": "Analysis and Results / matched filter",
+      "quote": "a predicted relative optical depth spectrum at $T=40$ K suggested by (cite: teag20)"
+     }
+    ]
+   },
+   "citation": "Teague & Loomis 2020 (cite: teag20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate, self-calibrate and image archival cubes",
+   "method": "Pipeline calibration, phase+amplitude self-calibration on continuum, application to line SPWs, uvcontsub, tclean with Keplerian mask, imsmooth to 0.5 arcsec circular beam, impbcor",
+   "software": [
+    "CASA",
+    "Keplerian_mask"
+   ],
+   "key_parameters": [
+    "13CN cube channel spacing 0.34 km/s (half the velocity resolution), robust 0.5",
+    "12CN N=2-1 cube channel width 0.1 km/s, robust 1.0"
+   ],
+   "assumptions": [
+    "Keplerian mask geometry: i=5.8 deg, PA=151.6 deg, M*=0.81 Msun, vsys=2.84 km/s"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "check absolute flux consistency across datasets",
+   "method": "Continuum peak intensities at 0.5 arcsec resolution fitted with a power-law SED; deviations of the three datasets compared",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "detect 13CN via moment maps and matched filter",
+   "method": "Stacked moment-zero maps of the three brightest hyperfine lines with the Keplerian mask; matched filter cross-correlating visibilities with a Keplerian-mask kernel",
+   "software": [
+    "CASA",
+    "VISIBLE"
+   ],
+   "key_parameters": [
+    "Filter-kernel mask outer radius 1.6 arcsec"
+   ],
+   "assumptions": [
+    "LTE relative optical depth spectrum at T=40 K overplotted for comparison"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "azimuthally stack spectra by radius",
+   "method": "Shift-and-stack of spectra assuming Keplerian rotation with gofish, using the CLEAN-mask geometry and disk centre from 2D Gaussian fit to continuum",
+   "software": [
+    "gofish"
+   ],
+   "key_parameters": [
+    "Same geometry as for the CLEAN mask; disk outer radius 3.0 arcsec for the 13CN disk-integrated spectrum"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "build non-LTE RADEX grids",
+   "method": "3D grids of Tk, column density and n(H2) giving peak optical depth and excitation temperature of each hyperfine line, via SpectralRadex",
+   "software": [
+    "RADEX",
+    "SpectralRadex"
+   ],
+   "key_parameters": [
+    "100 grid points per dimension; Tk linear, N and n(H2) logarithmic",
+    "Ranges: log10 n(H2) [6,12] cm^-3; log10 N [11,16] cm^-2; Tk [10,100] K"
+   ],
+   "assumptions": [
+    "All lines share the same Tk and n(H2); line width equals thermal width",
+    "Background black body at 2.73 K",
+    "Only collisions with para-H2 (rate coefficients available only for para-H2); ortho-H2 ignored"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "fit synthetic spectra to stacked spectra with MCMC",
+   "method": "Three-layer model (molecules behind, dust at midplane, molecules in front) giving synthetic spectra convolved with Gaussian broadening, compared with stacked spectra at each radius",
+   "software": [
+    "emcee",
+    "SpectralRadex"
+   ],
+   "key_parameters": [
+    "Nine free parameters per radius: n(H2), Tk, N(12CN), N(13CN), vsys, and Delta v_j for four SPWs",
+    "Model spectrum generated with a 15 kHz interval",
+    "13CN sigma multiplied by sqrt(2) because channel width is half the velocity resolution"
+   ],
+   "assumptions": [
+    "Molecular and dust emitting regions are vertically distinct: dust settled at midplane, molecular emission from higher altitudes"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "convert n(H2) to emitting-layer altitude and compare with literature",
+   "method": "Compare fitted n(H2) with the fiducial TW Hya disk model of Calahan et al. at r=60 and 100 au to infer z/r",
+   "software": [],
+   "key_parameters": [
+    "At r=60 au model gas surface density ~4 g/cm^2 and scale height ~5 au"
+   ],
+   "assumptions": [
+    "Mean molecular weight 2.37; Gaussian vertical gas distribution"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CN/13CN column density ratio at 30<r<80 au",
+   "value": "70",
+   "uncertainty": "+9/-6",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The $\\rm ^{12}CN$/$\\rm ^{13}CN$ ratio is measured to be $70^{+9}_{-6}$ at $30 < r < 80$ au from the central star"
+    }
+   ]
+  },
+  {
+   "quantity": "12CN/13CN ratio at the local minimum near r~100 au",
+   "value": "48",
+   "uncertainty": "+5/-4",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "At the local minimum, $\\rm ^{12}CN$/$\\rm ^{13}CN$ is estimated to be $48^{+5}_{-4}$."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 volume density range",
+   "value": "(4-10)x10^7",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The ${\\rm H_2}$ volume density is found to range between $(4 - 10)\\times10^7 \\ {\\rm cm^{-3}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CN column density at r=30-120 au",
+   "value": "10^14-10^15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "The column density of $\\rm ^{12}CN$ ranges $10^{14-15}\\ {\\rm cm^{-2}}$ at r = $30-120$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Altitude of CN emission at r=60 au (n(H2)=4e7 cm^-3)",
+   "value": "z/r ~0.27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "corresponds to an altitude of $z/r\\sim0.27$ in the model"
+    }
+   ]
+  },
+  {
+   "quantity": "Altitude of CN emission at r=100 au (n(H2)~1e8 cm^-3)",
+   "value": "z/r ~0.22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Fitting Results",
+     "quote": "which corresponds to $z/r\\sim0.22$ in the fiducial model of (cite: cala21)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum SED power-law index across the three datasets",
+   "value": "2.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations / 12CN",
+     "quote": "The SED can be well fitted by a power-law curve with an index of 2.13"
+    }
+   ]
+  },
+  {
+   "quantity": "13CN cube RMS noise",
+   "value": "1.0",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations / 13CN",
+     "quote": "The root mean square (RMS) noise level is estimated to be 1.0 mJy"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters: cell size, image size, deconvolver, niter, threshold, weighting for the continuum and line cubes (beyond robust and channel width)",
+  "Which channels/frequencies were flagged as line emission for continuum imaging and which are the line-free channels for uvcontsub",
+  "Exact self-calibration solution intervals for the 12CN N=1-0 data and intermediate solints for the 12CN N=2-1 data (six phase rounds, only first and last given)",
+  "Which 12CN N=2-1 execution block was flagged",
+  "Robust value for 13CN is 0.5 in text but 0.0 in Table 1; a reproducer must decide which",
+  "CASA version used for the original pipeline calibration of each dataset",
+  "Distance to TW Hya used to convert arcsec to au",
+  "Disk centre positions from the 2D Gaussian fits and radial bin width/annulus spacing for gofish stacking",
+  "Dust optical depth values tau_d and the continuum intensity I_c actually used at each radius",
+  "MCMC initialisation, convergence diagnostics and how the 16/84 percentile uncertainties were propagated into the ratio",
+  "How sigma_obs was derived per bin for the 12CN cubes after beam matching and correlated noise between oversampled channels",
+  "Which hyperfine groups define the four SPWs (j=1-4) and the reference line used in each group for the velocity axis",
+  "Primary beam correction details for the 12CN cubes"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration intermediate solints for 12CN N=2-1 and details for 12CN N=1-0",
+  "Complete tclean parameters (imsize, cell, niter, threshold) and line-free channel ranges",
+  "Distance used for au conversion and gofish binning parameters",
+  "Exact dust optical depths tau_d used and the continuum intensity I_c per radius",
+  "No analysis scripts or machine-readable results released",
+  "Resolution of the robust discrepancy for the 13CN cube"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public with project codes and the radiative-transfer and MCMC recipe is described with equations, priors, grids and chain settings, but imaging parameters, line-free channels, distance and several self-calibration details are missing.",
+ "rediscovery_reason": "Archival data, a described pipeline (self-cal, tclean, matched filter, RADEX grids, emcee) and numeric key results (70 +9/-6 and 48 +5/-4) make the headline ratio redoable, with some gaps to fill.",
+ "source_card": "cards/2024ApJ...966...63Y/sonnet/card.md"
+}

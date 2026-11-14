@@ -1,0 +1,409 @@
+{
+ "bibcode": "2023MNRAS.518.3222B",
+ "title": "A multiwavelength study of multiple spectral component jets in AGN: testing the IC/CMB model for the large-scale-jet X-ray emission",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3081",
+ "arxiv_id": "2210.13104",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Whether the inverse-Compton scattering of the cosmic microwave background (IC/CMB) model can explain the anomalous large-scale X-ray emission in 45 extragalactic Multiple Spectral Component (MSC) AGN jets when tested against Fermi/LAT gamma-ray observations and multi-wavelength SEDs.",
+ "alma_project_codes": [
+  "2015.1.00932.S",
+  "2016.1.01481.S",
+  "2017.1.01572.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Black hole mass measurements",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Black hole mass measurements are obtained from the following literature sources (corresponding to the superscripts in the M BH column): (a) Kozłowski (2017), (b) Lewis & Eracleous (2006), (c) Liu et al. (2006), (d) Wang et al. (2004), (e) Woo & Urry (2002), (f) Wu et al. (2002), (g) van den Bosch (2016), (h) Xie et al. (2005)."
+     }
+    ]
+   },
+   "citation": "Kozłowski (2017), Lewis & Eracleous (2006), Liu et al. (2006), Wang et al. (2004), Woo & Urry (2002), Wu et al. (2002), van den Bosch (2016), Xie et al. (2005)"
+  },
+  {
+   "what": {
+    "value": "VLBI maximum apparent speed (beta_max) measurements",
+    "evidence": [
+     {
+      "loc": "Table 7",
+      "quote": "𝛽 max measurements are obtained from the following literature sources (corresponding to the superscripts in the 𝛽 max column): (a) Frey et al. (2015), (b) Homan et al. (2001), (c) Jiang et al. (2002), (d) Jorstad et al. (2005), (e) Jorstad et al. (2017), (f) Kellermann et al. (2004), (g) Lister et al. (2009), (h) Lister et al. (2013), (i) Lu et al. (2012), (j) Piner et al. (2001), (k) Piner et al. (2012), (l) Sudou & Iguchi (2011)."
+     }
+    ]
+   },
+   "citation": "Frey et al. (2015), Homan et al. (2001), Jiang et al. (2002), Jorstad et al. (2005), Jorstad et al. (2017), Kellermann et al. (2004), Lister et al. (2009), Lister et al. (2013), Lu et al. (2012), Piner et al. (2001), Piner et al. (2012), Sudou & Iguchi (2011)"
+  },
+  {
+   "what": {
+    "value": "Fermi/LAT analysis results for 9 previously published X-ray jets",
+    "evidence": [
+     {
+      "loc": "3 RESULTS",
+      "quote": "This includes the addition of nine X-ray jets for which we have already published the Fermi/LAT analysis (Meyer & Georganopoulos 2014; Meyer et al. 2015; Breiding et al. 2017; Meyer et al. 2019; Roychowdhury et al. 2022)"
+     }
+    ]
+   },
+   "citation": "Meyer & Georganopoulos 2014; Meyer et al. 2015; Breiding et al. 2017; Meyer et al. 2019; Roychowdhury et al. 2022"
+  },
+  {
+   "what": {
+    "value": "Multi-wavelength flux densities and X-ray spectral indexes for individual jet SEDs",
+    "evidence": [
+     {
+      "loc": "A3 Jet X-ray/Radio Images & Broadband SEDs",
+      "quote": "The flux densities used in these SEDs were often taken from the literature, except for cases in which we used our own analysis (as described on a source-by-source basis in section A2)."
+     }
+    ]
+   },
+   "citation": "Multiple discovery and follow-up papers cited in Section A2 (e.g., Massaro et al. 2009; Kharb et al. 2012; Worrall et al. 2001; Perlman et al. 2011; Sambruna et al. 2004b, 2006, 2008; Marshall et al. 2005, 2011; etc.)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image radio/sub-mm interferometric data (VLA, ALMA, ATCA) and measure jet knot flux densities",
+   "method": "Calibrate visibilities via CASA pipeline (scriptForPI.py for ALMA) or manual calibration, image with tclean/clean using Briggs robust=0.5 and MTMFS (nterms=2), apply phase and amplitude self-calibration, and extract flux densities or 95% upper limits.",
+   "software": [
+    "CASA",
+    "tclean",
+    "clean",
+    "scriptForPI.py",
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Briggs weighting robust = 0.5, MTMFS nterms = 2"
+   ],
+   "assumptions": [
+    "35% uncertainty on measured jet component flux densities (~20% absolute flux calibration, ~15% cross-frequency comparison)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce HST archival optical/IR/UV imaging and measure jet knot photometry",
+   "method": "Download flat-fielded images processed by calwf3 from MAST, fit and subtract core PSF and host galaxy Sersic models in GALFIT, combine dithered frames with Astrodrizzle, and measure jet flux densities or RMS upper limits.",
+   "software": [
+    "calwf3",
+    "GALFIT",
+    "TinyTim",
+    "Astrodrizzle"
+   ],
+   "key_parameters": [
+    "Single Sersic component for host galaxy; nearby stars, TinyTim, or dedicated PSF star for PSF model"
+   ],
+   "assumptions": [
+    "Extinction corrections from Schlafly & Finkbeiner (2011) and aperture corrections from Bohlin (2016)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Reprocess Chandra X-ray observations and fit X-ray knot spectra",
+   "method": "Reprocess events with chandra_repro (0.4-8 keV), filter flares >2 sigma above mean, align and merge multi-epoch observations with merge_obs, sub-pixel bin by 0.2, extract spectra with spectract, and fit absorbed power-law in SHERPA.",
+   "software": [
+    "CIAO",
+    "chandra_repro",
+    "merge_obs",
+    "spectract",
+    "SHERPA",
+    "WebPIMMS",
+    "SAOImageDS9"
+   ],
+   "key_parameters": [
+    "Energy range 0.4-8 keV, flare cut > 2 sigma, image binning 0.2 ACIS-S pixel, spectral binning 1 ct/bin"
+   ],
+   "assumptions": [
+    "Galactic hydrogen absorption column density fixed to reference sky location value from WebPIMMS"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract Fermi/LAT gamma-ray flux upper limits or minimum steady fluxes using recombined light curves",
+   "method": "Perform binned likelihood analysis in 5 energy bands over 100 MeV-100 GeV. For non-4FGL sources, compute 95% upper limits over the full dataset. For 4FGL sources, bin into 3-week GTI light curves, sort bins from lowest to highest TS, and contiguously recombine bins to find minimum flux/upper limits.",
+   "software": [
+    "Fermi science tools",
+    "make4FGLxml.py",
+    "gtobssim"
+   ],
+   "key_parameters": [
+    "ROI = 10 deg, energy = 100 MeV-100 GeV, zenith cut = 90 deg, event class = 128, event type = 3, 30 log energy bins, 0.2 deg spatial bins, 3-week GTI time bins, detection threshold TS = 10"
+   ],
+   "assumptions": [
+    "Galactic diffuse model gll_iem_v07.fits, isotropic template iso_P8R3_SOURCE_V3_v1.txt, photon index fixed at 2 for non-4FGL point sources"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Construct broadband SEDs, fit synchrotron and IC/CMB models, and derive Doppler and Lorentz factor upper limits",
+   "method": "Fit phenomenological power-law with exponential cutoff models by eye to radio-to-optical synchrotron SEDs, shift in frequency and luminosity via IC/CMB equations to match X-ray flux, compare predicted GeV flux against Fermi limits, and calculate equipartition magnetic fields B_eq, Doppler factor limits delta, and kpc-scale Lorentz factor limits Gamma_max,kpc.",
+   "software": [],
+   "key_parameters": [
+    "gamma_min = 10 for EED in equipartition calculation"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H0 = 67.74 km s^-1 Mpc^-1, Omega_lambda = 0.69, Omega_m = 0.31; equipartition magnetic field; kpc-scale jet viewing angle theta < theta_max from pc-scale VLBI"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Decompose radio spectra, compute orientation indicators, and perform sample correlation and beaming analyses",
+   "method": "Decompose NED radio spectra into core and lobe components to compute R_CE, L_ext, L_kin, and orientation indicator OI; perform 10,000-trial bootstrap Spearman rank correlation tests and OLS linear regression on (alpha_r, alpha_x) and (log R_x, log R_CE); compare with single-zone and two-zone spine-sheath beaming models.",
+   "software": [],
+   "key_parameters": [
+    "10,000 bootstrap trials, significance threshold p-value < 0.05, well-measured spectral index error threshold < 0.4"
+   ],
+   "assumptions": [
+    "Core spectral index = 0, large-scale jet radio spectral index = 0.7, initial jet alignment = 5 degrees for misalignment curves"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Fraction of X-ray jets in this study with IC/CMB model ruled out",
+   "value": "21/45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3 RESULTS",
+     "quote": "Applying the criteria for assessing the viability of the IC/CMB model described above, we find the IC/CMB model to be ruled out in 21/45 of the X-ray jets analyzed in this study"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of confirmed MSC X-ray jets in this study with IC/CMB model ruled out",
+   "value": "18/36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3 RESULTS",
+     "quote": "Furthermore, we have ruled out the IC/CMB model in 18/36 of the jets from this sample which are unquestionably MSC X-ray jets"
+    }
+   ]
+  },
+  {
+   "quantity": "Total fraction of MSC X-ray jets with IC/CMB model ruled out (including previous works)",
+   "value": "24/45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Including this and previous works, we now find the IC/CMB model to be ruled out in a total of 24/45 MSC X-ray jets due to its over-prediction for the observed MeV-to-GeV gamma-ray flux."
+    }
+   ]
+  },
+  {
+   "quantity": "Total fraction of all tested X-ray jets with IC/CMB model ruled out (including previous works)",
+   "value": "27/54",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3 RESULTS",
+     "quote": "In total, the IC/CMB model is now ruled out in 27/54 X-ray jets in which we have used the Fermi/LAT to search for the required levels of gamma-ray flux under the IC/CMB model 6 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Doppler factor upper limit for J1153+4931 (PKS 1150+497)",
+   "value": "< 6.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1153+4931 617349822 1 0.1 0.3 22.6 4.06 × 10 −13 < 1.08 × 10 −12 < 6.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition magnetic field B_eq for J1153+4931 (PKS 1150+497)",
+   "value": "0.742",
+   "uncertainty": "not stated",
+   "units": "10^-4 G",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "J1153+4931 † PKS 1150+497 0.334 4.9 8.6 c 45.1 0.19 42.5 0.742 1.27 Y"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J0108+0135 (PKS B0106+013)",
+   "value": "4.35",
+   "uncertainty": "+2.77/-1.40",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J0108+0135 † PKS B0106+013 26.8 c 4.27 4.35 +2.77 −1.40"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J0607-0834 (PKS 0605-085)",
+   "value": "6.42",
+   "uncertainty": "+5.98/-2.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J0607−0834 † PKS 0605−085 32.8 a 3.49 6.42 +5.98 −2.16"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J0728+6748 (3C 179)",
+   "value": "1.54",
+   "uncertainty": "+0.768/-0.350",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J0728+6748 † 3C 179 8.99 i 12.7 1.54 +0.768 −0.350"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J0840+1312 (4C 13.38)",
+   "value": "2.27",
+   "uncertainty": "+1.28/-0.659",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J0840+1312 † 4C 13.38 13.3 e 8.60 2.27 +1.28 −0.659"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J0922-3959 (PKS 0920-397)",
+   "value": "2.23",
+   "uncertainty": "+0.893/-0.584",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J0922−3959 † PKS 0920−397 30.8 d 3.72 2.23 +0.893 −0.584"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J1058+1951 (4C 20.24)",
+   "value": "1.48",
+   "uncertainty": "+0.589/-0.315",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J1058+1951 † 4C 20.24 10.5 l 10.9 1.48 +0.589 −0.315"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J1130-1449 (PKS 1127-145)",
+   "value": "2.33",
+   "uncertainty": "+0.937/-0.619",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J1130−1449 † PKS 1127-145 31.6 k 3.63 2.33 +0.937 −0.619"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J1153+4931 (PKS 1150+497)",
+   "value": "3.71",
+   "uncertainty": "+3.24/-1.27",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J1153+4931 † PKS 1150+497 18.2 a 6.29 3.71 +3.24 −1.27"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum kpc-scale bulk-flow Lorentz factor Gamma_max,kpc for J1642+6856 (4C 69.21)",
+   "value": "2.17",
+   "uncertainty": "+0.864/-0.557",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "J1642+6856 † 4C 69.21 24.9 c 4.60 2.17 +0.864 −0.557"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient rho_s between radio and X-ray spectral indexes (All subset, N=32)",
+   "value": "-0.07",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "All -0.07 0.17 [0.28,0.91] 32 98"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient rho_s between log(R_x) and log(R_CE) (All subset, N=54)",
+   "value": "0.39",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "All 0.39 0.11 [0.00007,0.02] 54 8"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for data reduction",
+  "Full contents of machine-readable Tables 2 and 3 (which list specific ALMA archival project codes, frequencies, RMS, beam sizes, and per-source Fermi limits)",
+  "Self-calibration solution intervals (solint), S/N thresholds, and number of iterations for ALMA and VLA imaging",
+  "Exact spatial aperture definitions (sizes and coordinates) used to extract jet knot flux densities and volumes across radio, ALMA, HST, and Chandra images",
+  "Numerical parameter values (N, nu_1, gamma, beta) for the by-eye phenomenological synchrotron and IC/CMB SED fits"
+ ],
+ "missing_for_reproduction": [
+  "Complete machine-readable Tables 2 and 3 (only stub rows are printed in the article text)",
+  "Exact extraction region definitions (ds9/CASA region files) for all 45 jet knots across radio, ALMA, HST, and Chandra images",
+  "Fitted parameter values (N, gamma, nu_1, beta, B/delta) for the phenomenological synchrotron and IC/CMB SED curves",
+  "Specific CASA, CIAO, and Fermi Science Tools software versions"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "Raw data are public and the high-level multi-wavelength reduction and Fermi light-curve recombination workflows are clearly described, but full reproduction is hindered by by-eye SED fitting with unstated model parameters, missing aperture region definitions, and reliance on external online-only tables for the observation log and numeric flux/limit tables.",
+ "rediscovery_reason": "All raw radio/ALMA, HST, Chandra, and Fermi/LAT data are public, and the core scientific outcome—whether IC/CMB gamma-ray predictions exceed Fermi/LAT limits and the resulting kpc-scale Lorentz factor limits and sample correlation statistics—is numeric and well-defined.",
+ "source_card": "cards/2023MNRAS.518.3222B/sonnet/card.md"
+}

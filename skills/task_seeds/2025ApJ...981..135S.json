@@ -1,0 +1,518 @@
+{
+ "bibcode": "2025ApJ...981..135S",
+ "title": "RIOJA. Complex Dusty Starbursts in a Major Merger B14-65666 at z = 7.15",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adb02a",
+ "arxiv_id": "2403.17133",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Investigate the spatially resolved stellar, gaseous, and dusty properties in morphology and star formation of the bright major-merger galaxy system B14-65666 at z = 7.15 during the epoch of reionization by combining JWST NIRCam and ALMA observations.",
+ "alma_project_codes": [
+  "2016.1.00954.S",
+  "2017.1.00190.S",
+  "2019.1.01491.S"
+ ],
+ "data": {
+  "bands": "Band 6 (rest-frame 158.7 um), Band 7 (rest-frame 122.6 um), Band 8 (rest-frame 88.84 um)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 6: 0.28x0.20 arcsec (or 0.29x0.23 arcsec); Band 7: 1.17x0.98 arcsec (or 1.15x0.97 arcsec); Band 8: 0.39x0.36 arcsec (or 0.39x0.37 arcsec)",
+  "sensitivity": "5-sigma depth: Band 8 = 141 uJy/beam, Band 7 = 45.5 uJy/beam, Band 6 = 42.3 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Band 6 and Band 8 continuum flux densities, [O III] 88 um line fluxes, and IR luminosities L_IR",
+    "evidence": [
+     {
+      "loc": "SED fitting",
+      "quote": "The ALMA [O iii] 88 \\mathrm{\\mu m} line and continuum fluxes were taken from (cite: Hashimoto.T:2019a)."
+     },
+     {
+      "loc": "IRX–\\beta_\\text{UV} relation",
+      "quote": "The IR luminosity L_\\text{IR} was taken from (cite: Hashimoto.T:2019a), who estimated it by the modified blackbody fitting under the assumption of the dust temperature of T_\\text{d} = 48 K and the dust emissivity of \\beta_\\text{d} = 2.0."
+     }
+    ]
+   },
+   "citation": "(cite: Hashimoto.T:2019a)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 7 continuum flux density",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Total | 0.374\\pm0.100 | 0.447\\pm0.043 | 0.429\\pm0.112 | 0.661\\pm0.047 | 0.705\\pm0.046 | 1.346\\pm0.070 | 470\\pm128 | 218\\pm19 | 130\\pm25 | 1.50\\pm0.18 |"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: ^{\\dagger}(cite: Hashimoto.T:2019a), ^{\\dagger\\dagger}(cite: Sugahara.Y:2021a)"
+     }
+    ]
+   },
+   "citation": "(cite: Sugahara.Y:2021a)"
+  },
+  {
+   "what": {
+    "value": "Systemic redshift z = 7.1520 +/- 0.0003 and dynamical masses of E and W",
+    "evidence": [
+     {
+      "loc": "Summary of Previous Observations of B14-65666",
+      "quote": "The systemic redshift was determined from the [O iii] and [C ii] emission lines to be z = 7.1520\\pm0.0003 (cite: Hashimoto.T:2019a)."
+     },
+     {
+      "loc": "Resolved components",
+      "quote": "This mass ratio is comparable to the dynamical mass ratio of the galaxy E (5.7\\pm1.6\\times10^{10} \\mathrm{M_\\ensuremath{\\odot}}) to the galaxy W (3.1\\pm1.1\\times10^{10} \\mathrm{M_\\ensuremath{\\odot}}) that are inferred from the [O iii] 88 \\mathrm{\\mu m} line widths on the assumption of the virial theorem (cite: Hashimoto.T:2019a)."
+     }
+    ]
+   },
+   "citation": "(cite: Hashimoto.T:2019a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST NIRCam images and align astrometry",
+   "method": "Reduce NIRCam data using custom pipeline based on JWST pipeline v1.9.4 with snowball/wisp removal and 1/f background homogenization, then align astrometry to three Gaia DR3 stars.",
+   "software": [
+    "JWST Calibration Pipeline"
+   ],
+   "key_parameters": [
+    "CRDS context jwst_1041.pmap",
+    "Pixel scale = 0.03 arcsec/pixel"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Homogenize PSFs, resample images, and measure aperture photometry and optical [O III] line map",
+   "method": "Construct effective PSFs using photutils, create convolution kernels with PyPHER to match F444W (or ALMA clean beam), resample with reproject, perform fixed-aperture photometry with local sky annulus subtraction, and derive optical [O III] flux map from F356W-F444W excess.",
+   "software": [
+    "photutils",
+    "IRAFStarFinder",
+    "PyPHER",
+    "reproject"
+   ],
+   "key_parameters": [
+    "Total circular aperture diameter = 1.8''",
+    "Sky background annulus = 0.95'' to 1.95''",
+    "Component apertures: E = 1.4x0.80, W = 1.1x0.66, E-core = 0.44x0.44, W-core = 0.44x0.44, N-tail = 0.70x0.40, S-tail = 1.0x0.50 arcsec^2"
+   ],
+   "assumptions": [
+    "5% absolute flux uncertainty included in photometric uncertainties"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform UV-to-FIR SED fitting for total system and resolved components",
+   "method": "Fit NIRCam photometry with and without ALMA Band 6, 7, 8 dust continuum and [O III] 88 um line fluxes using Bagpipes with BPASS v2.3 stellar models, CLOUDY nebular emission, and CIGALE Draine et al. (2014) dust emission models.",
+   "software": [
+    "Bagpipes",
+    "CLOUDY",
+    "CIGALE",
+    "BPASS"
+   ],
+   "key_parameters": [
+    "z = 7.1520 (fixed)",
+    "n_H = 100 cm^-3 (fixed in Bagpipes CLOUDY models)",
+    "Old stellar component: constant SF from 600 to 100 Myr ago with Z_star = 0.5 Z_sun",
+    "Dust parameters fixed: alpha_U = 2, U_max = 10^7, q_PAH = 2.5%"
+   ],
+   "assumptions": [
+    "Calzetti (2000) dust attenuation law",
+    "Kroupa (2001) IMF from 0.1 to 300 M_sun and BPASS Delta log(alpha/Fe) = +0.6",
+    "Gas-phase metallicity identical to stellar metallicity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analyze the IRX-beta_UV relation",
+   "method": "Compute monochromatic UV luminosity L_UV at 1600 A and UV spectral slope beta_UV via linear fitting to 500 posterior SED models (from NIRCam-only fits) in Calzetti et al. (1994) windows, combine with ALMA L_IR from Hashimoto et al. (2019), and compare against canonical Meurer and SMC relations.",
+   "software": [],
+   "key_parameters": [
+    "beta_UV,0 = -2.62 (fiducial intrinsic UV slope)"
+   ],
+   "assumptions": [
+    "Modified blackbody T_d = 48 K and beta_d = 2.0 for L_IR"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Construct optical-to-FIR [O III] line ratio map and model gas-phase metallicity",
+   "method": "Correct F356W and F444W images for dust attenuation using best-fit A_V, convolve optical [O III] map to ALMA 0.38'' beam, divide by ALMA [O III] 88 um moment-0 map, and compare ratios with CLOUDY v17.02 photoionization models as a function of Z_gas, U, and n_e (computed with PyNeb).",
+   "software": [
+    "CLOUDY",
+    "BPASS",
+    "PyNeb"
+   ],
+   "key_parameters": [
+    "Aperture dust attenuation corrections: E (A_V = 1.2 mag), W (0.34 mag), E-core (0.72 mag)",
+    "Convolved beam = 0.38''",
+    "CLOUDY stopping criterion: electron fraction = 10^-2; SFH = 10-Myr constant star formation"
+   ],
+   "assumptions": [
+    "Plane-parallel geometry under constant pressure; electron density n_e ~ 200-400 cm^-3; T_e = 1.2x10^4 K for PyNeb n_e calculation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Deconvolved effective radius r_e of E-core in F115W",
+   "value": "< 0.016 (< 85)",
+   "uncertainty": "2-sigma upper limit",
+   "units": "arcsec (pc)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Morphology, Colors, and Optical [O iii] Line Map",
+     "quote": "Under an assumption that the core of the galaxy E has an exponential surface brightness profile, the deconvolved effective radius in F115W is r_\\text{e} < 0.016 arcsec (85 pc) at the 2\\sigma significance limit."
+    }
+   ]
+  },
+  {
+   "quantity": "Total F115W flux density",
+   "value": "0.374",
+   "uncertainty": "+/- 0.100",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Total | 0.374\\pm0.100 | 0.447\\pm0.043 | 0.429\\pm0.112 | 0.661\\pm0.047 | 0.705\\pm0.046 | 1.346\\pm0.070 | 470\\pm128 | 218\\pm19 | 130\\pm25 | 1.50\\pm0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total F444W flux density",
+   "value": "1.346",
+   "uncertainty": "+/- 0.070",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Total | 0.374\\pm0.100 | 0.447\\pm0.043 | 0.429\\pm0.112 | 0.661\\pm0.047 | 0.705\\pm0.046 | 1.346\\pm0.070 | 470\\pm128 | 218\\pm19 | 130\\pm25 | 1.50\\pm0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical [O III]4960,5008 flux (Total)",
+   "value": "10.1",
+   "uncertainty": "+/- 1.3",
+   "units": "10^-17 erg s^-1 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Total | 1.8 \\times1.8 | 10.1\\pm1.3 | 1140\\pm220 | 225^{+71}_{-56} | 52^{+56}_{-28} | 207^{+65}_{-51} | -1.57^{+0.11}_{-0.13} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical [O III]4960,5008 flux (E-core)",
+   "value": "4.3",
+   "uncertainty": "+/- 0.4",
+   "units": "10^-17 erg s^-1 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E-core | 0.44 \\times0.44 | 4.3\\pm0.4 | 2050\\pm290 | 180^{+113}_{-58} | 506^{+253}_{-182} | 34^{+13}_{-9} | -1.78^{+0.11}_{-0.13} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical [O III]4960,5008 flux (W-core)",
+   "value": "2.0",
+   "uncertainty": "+/- 0.3",
+   "units": "10^-17 erg s^-1 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| W-core | 0.44\\times0.44 | 2.0\\pm0.3 | 740\\pm170 | 29^{+13}_{-7} | 27^{+28}_{-12} | 29^{+14}_{-6} | -2.24^{+0.13}_{-0.10} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame [O III] equivalent width EW0 (E-core)",
+   "value": "2050",
+   "uncertainty": "+/- 290",
+   "units": "A",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E-core | 0.44 \\times0.44 | 4.3\\pm0.4 | 2050\\pm290 | 180^{+113}_{-58} | 506^{+253}_{-182} | 34^{+13}_{-9} | -1.78^{+0.11}_{-0.13} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame [O III] equivalent width EW0 (W-core)",
+   "value": "740",
+   "uncertainty": "+/- 170",
+   "units": "A",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| W-core | 0.44\\times0.44 | 2.0\\pm0.3 | 740\\pm170 | 29^{+13}_{-7} | 27^{+28}_{-12} | 29^{+14}_{-6} | -2.24^{+0.13}_{-0.10} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total stellar mass log M* (NIRCam + ALMA)",
+   "value": "9.78",
+   "uncertainty": "+0.16/-0.18",
+   "units": "log M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "|  Total | 35^{+20}_{-12} | 9.78^{+0.16}_{-0.18} | 0.78^{+0.07}_{-0.06} | -2.09^{+0.58}_{-0.34} | 0.21^{+0.05}_{-0.04} | <9.59 | >10.45 | 0.88^{+0.07}_{-0.07} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy E stellar mass log M* (NIRCam + ALMA)",
+   "value": "9.55",
+   "uncertainty": "+0.19/-0.20",
+   "units": "log M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| E | <93 | 9.55^{+0.19}_{-0.20} | 0.98^{+0.08}_{-0.07} | -2.06^{+0.61}_{-0.34} | 0.19^{+0.04}_{-0.04} | <9.55 | >16.33 | >0.83 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy W stellar mass log M* (NIRCam + ALMA)",
+   "value": "9.09",
+   "uncertainty": "+0.16/-0.18",
+   "units": "log M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| W | 22^{+13}_{-8} | 9.09^{+0.16}_{-0.18} | 0.46^{+0.08}_{-0.06} | -1.95^{+0.54}_{-0.39} | 0.32^{+0.06}_{-0.05} | <8.95 | >7.61 | <0.80 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass ratio of galaxy E to galaxy W",
+   "value": "3:1 to 2:1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Resolved components",
+     "quote": "Finally, the stellar-mass ratio of the galaxies E and W is estimated to be 3:1 to 2:1."
+    }
+   ]
+  },
+  {
+   "quantity": "Instant star-formation rate SFR_0 (Total)",
+   "value": "225",
+   "uncertainty": "+71/-56",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Total | 1.8 \\times1.8 | 10.1\\pm1.3 | 1140\\pm220 | 225^{+71}_{-56} | 52^{+56}_{-28} | 207^{+65}_{-51} | -1.57^{+0.11}_{-0.13} |"
+    }
+   ]
+  },
+  {
+   "quantity": "10-Myr averaged star-formation rate SFR_10Myr (Galaxy E)",
+   "value": "178",
+   "uncertainty": "+50/-39",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E | 1.4 \\times0.80 | 6.6\\pm0.7 | 1480\\pm260 | 178^{+52}_{-39} | 53^{+26}_{-20} | 178^{+50}_{-39} | -1.18^{+0.15}_{-0.16} |"
+    }
+   ]
+  },
+  {
+   "quantity": "10-Myr averaged star-formation rate SFR_10Myr (Galaxy W)",
+   "value": "37",
+   "uncertainty": "+12/-8",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| W | 1.1 \\times0.66 | 2.6\\pm0.4 | 750\\pm170 | 37^{+12}_{-8} | 23^{+15}_{-11} | 37^{+12}_{-8} | -2.19^{+0.11}_{-0.09} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic dust temperature T_d,char (Total)",
+   "value": "48",
+   "uncertainty": "+2/-3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Entire Merging System",
+     "quote": "The characteristic dust temperature, derived from Equation (33) in (cite: Draine.B:2007a) and Equation (13) in (cite: Draine.B:2014a), is T_\\text{d, char} \\simeq 18 \\langle \\mathcal{U} \\rangle ^{1/6}\\,\\text{K} = 48^{+2}_{-3} K, which is consistent with the dust temperature obtained from the modified blackbody fitting (cite: Sugahara.Y:2021a)."
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic dust temperature T_d,char (Galaxy E)",
+   "value": "50",
+   "uncertainty": "+1/-2",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Resolved components",
+     "quote": "The characteristic dust temperatures are T_\\text{d, char} = 50^{+1}_{-2} and 40^{+4}_{-3} K for the galaxies E and W, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic dust temperature T_d,char (Galaxy W)",
+   "value": "40",
+   "uncertainty": "+4/-3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Resolved components",
+     "quote": "The characteristic dust temperatures are T_\\text{d, char} = 50^{+1}_{-2} and 40^{+4}_{-3} K for the galaxies E and W, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "UV spectral slope beta_UV (Total)",
+   "value": "-1.57",
+   "uncertainty": "+0.11/-0.13",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Total | 1.8 \\times1.8 | 10.1\\pm1.3 | 1140\\pm220 | 225^{+71}_{-56} | 52^{+56}_{-28} | 207^{+65}_{-51} | -1.57^{+0.11}_{-0.13} |"
+    }
+   ]
+  },
+  {
+   "quantity": "UV spectral slope beta_UV (Galaxy E)",
+   "value": "-1.18",
+   "uncertainty": "+0.15/-0.16",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E | 1.4 \\times0.80 | 6.6\\pm0.7 | 1480\\pm260 | 178^{+52}_{-39} | 53^{+26}_{-20} | 178^{+50}_{-39} | -1.18^{+0.15}_{-0.16} |"
+    }
+   ]
+  },
+  {
+   "quantity": "UV spectral slope beta_UV (Galaxy W)",
+   "value": "-2.19",
+   "uncertainty": "+0.11/-0.09",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| W | 1.1 \\times0.66 | 2.6\\pm0.4 | 750\\pm170 | 37^{+12}_{-8} | 23^{+15}_{-11} | 37^{+12}_{-8} | -2.19^{+0.11}_{-0.09} |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical-to-FIR [O III] line ratio",
+   "value": "10.6",
+   "uncertainty": "+/- 1.9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": " [O iii] Line Ratio: Insights into Gas-phase Metallicity",
+     "quote": "The line ratio at the peak of the [O iii] 88 \\mathrm{\\mu m} surface brightness is \\simeq7.8, and 10.6\\pm1.9 for the integrated flux, where the error does not include the uncertainty of A_\\text{V}."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical-to-FIR [O III] line ratio at peak of E-core",
+   "value": "9.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": " [O iii] Line Ratio: Insights into Gas-phase Metallicity",
+     "quote": "At the peak positions of the E-core and W-core, the [O iii] line ratios are 9.2 and 5.6, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical-to-FIR [O III] line ratio at peak of W-core",
+   "value": "5.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": " [O iii] Line Ratio: Insights into Gas-phase Metallicity",
+     "quote": "At the peak positions of the E-core and W-core, the [O iii] line ratios are 9.2 and 5.6, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase metallicity Z_gas from [O III] line ratio (Total and E-core)",
+   "value": "0.2-0.4",
+   "uncertainty": "not stated",
+   "units": "Z_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": " [O iii] Line Ratio: Insights into Gas-phase Metallicity",
+     "quote": "The estimated gas-phase metallicity is \\ensuremath{Z_\\text{gas}}\\sim 0.2\\mbox{--}0.4 Z_\\text{\\(\\odot\\)} for the total, at an assumed electron density of n_\\text{e} \\sim 200\\mbox{--}400 \\mathrm{cm^{-3}}, which is a typical estimate from optical-to-FIR [O iii] line ratios at high redshift (cite: Stiavelli.M:2023a; Fujimoto.S:2024b)."
+    },
+    {
+     "loc": " [O iii] Line Ratio: Insights into Gas-phase Metallicity",
+     "quote": "Using the line ratios at the peak positions of the E-core and W-core, the E-core exhibits a lower gas-phase metallicity of Z\\sim 0.2\\mbox{--}0.4 Z_\\text{\\(\\odot\\)} than the W-core (> 0.4 Z_\\text{\\(\\odot\\)})."
+    }
+   ]
+  },
+  {
+   "quantity": "Instant SFR surface density Sigma_SFR,0 of E-core",
+   "value": ">= 4x10^3",
+   "uncertainty": "lower limit",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion, Overall scenario for B14-65666 system",
+     "quote": "the $\\ensuremath{\\mathrm{SFR}}_0$ surface density of the E-core is $\\Sigma_{\\ensuremath{\\mathrm{SFR}}, 0}\\gtrsim4\\times10^3$ $\\mathrm{M_\\ensuremath{\\odot}\\ yr^{-1}\\ kpc^{-2}}$, which is comparable to IR $\\mathrm{SFR}$ surface densities of local ULIRGs or obscured AGN"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for reducing the ALMA datasets",
+  "Exact clean parameters (threshold, niter, cell size, image size, masking) used in Hashimoto et al. (2019) and Sugahara et al. (2021) for ALMA imaging",
+  "Exact coordinates and position angles of the elliptical/rectangular apertures used for components E, W, N-tail, and S-tail in NIRCam photometry",
+  "Exact conversion equation or continuum subtraction formula used to derive the optical [O III] 4960,5008 line flux and EW0 map from the F356W and F444W filters"
+ ],
+ "missing_for_reproduction": [
+  "Exact coordinates, centers, and position angles of the apertures used for resolved NIRCam photometry (shown visually in Fig. 2 but not tabulated numerically)",
+  "Custom Bagpipes modification code integrating CIGALE Draine et al. (2014) dust models and BPASS v2.3 alpha-enhanced grids",
+  "Exact formula used to convert F356W and F444W flux densities into the optical [O III] line map and equivalent width map"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "All ALMA and JWST datasets are public, full photometry tables (Table 2) and SED prior ranges (Table 5) are explicitly provided, and standard open-source tools (Bagpipes, CLOUDY, photutils, PyPHER) are used; however, exact aperture coordinates/orientations and the custom Bagpipes+CIGALE+BPASS integration scripts are not released.",
+ "rediscovery_reason": "Public JWST and ALMA archival data, complete photometric tables, and clearly specified SED fitting and CLOUDY modeling parameters make the main numeric results (stellar masses, SFRs, beta_UV, and [O III] line ratios/metallicities) well-suited for reproduction.",
+ "source_card": "cards/2025ApJ...981..135S/sonnet/card.md"
+}

@@ -1,0 +1,406 @@
+{
+ "bibcode": "2025A&A...693A..17D",
+ "title": "Unveiling dust, molecular gas, and high star-formation efficiency in extremely UV bright star-forming galaxies at z ∼ 2.1─3.6",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202451832",
+ "arxiv_id": "2410.11121",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How much dust, cold molecular gas, obscured star formation, depletion time and star-formation efficiency do 12 extremely UV-bright starburst galaxies at z = 2.08-3.61 have",
+ "alma_project_codes": [
+  "2018.1.00932.S",
+  "2021.1.01438.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO line) and Band 6 (1.3 mm / 240 GHz continuum)",
+  "arrays": "12m-array configurations C43-x (see configurations)",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO excitation corrections r31 = 0.77 +/- 0.14 and r41 = 0.61 +/- 0.13",
+    "evidence": [
+     {
+      "loc": "From the CO emission line to molecular gas masses",
+      "quote": "we applied the CO luminosity correction factors $r_{3,1} = 0.77\\pm 0.14$ and $r_{4,1} = 0.61\\pm 0.13$, respectively, derived by (cite: Boogaard+20)"
+     }
+    ]
+   },
+   "citation": "(cite: Boogaard+20)"
+  },
+  {
+   "what": {
+    "value": "UV, spectroscopic and stellar-population properties of the targets (z_nebular, M_UV, beta_UV, metallicities, ages) from previous work for 7/12 targets",
+    "evidence": [
+     {
+      "loc": "Target sample and their properties",
+      "quote": "The rest-frame UV and optical properties of a fraction (7/12) of these targets were analysed in detail in previous works"
+     }
+    ]
+   },
+   "citation": "(cite: Marques+20b; Marques+21; Marques+22; Marques+24; Alvarez+21; Upadhyaya+24)"
+  },
+  {
+   "what": {
+    "value": "T_dust = 40 K assumed for the starburst dust",
+    "evidence": [
+     {
+      "loc": "From the FIR dust continuum to IR luminosities and dust masses",
+      "quote": "We assumed $T_{\\rm dust} = 40~\\rm K$ for the dust associated with the starburst regions of our targets"
+     }
+    ]
+   },
+   "citation": "(cite: Schreiber+18; Sommovigo+22; Viero+22; Witstok+23)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity law beta = 1.4, kappa_0 = 40 cm2/g at lambda_0 = 100 um",
+    "evidence": [
+     {
+      "loc": "From the FIR dust continuum to IR luminosities and dust masses",
+      "quote": "we assumed $\\beta = 1.4$, $\\kappa_0 = 40~\\rm cm^2~g^{-1}$, and $\\lambda_0 = 100$ $\\mu$m (cite: BianchiSchneider07)"
+     }
+    ]
+   },
+   "citation": "(cite: BianchiSchneider07)"
+  },
+  {
+   "what": {
+    "value": "Seven kappa dust-composition models used to set L_IR and M_dust uncertainties",
+    "evidence": [
+     {
+      "loc": "From the FIR dust continuum to IR luminosities and dust masses",
+      "quote": "seven different $\\kappa$ models of dust composition listed in (cite: Ginolfi+19)"
+     }
+    ]
+   },
+   "citation": "(cite: Ginolfi+19)"
+  },
+  {
+   "what": {
+    "value": "UV SFR conversion kappa_UV = 1.3e-28 Msun/yr per (erg/s/Hz) from BPASS binary models",
+    "evidence": [
+     {
+      "loc": "Target sample and their properties",
+      "quote": "derived using the Binary Population and Spectral Synthesis (BPASS) binary models (cite: Eldridge+17; StanwayEldridge18; Byrne+22)"
+     }
+    ]
+   },
+   "citation": "(cite: Eldridge+17; StanwayEldridge18; Byrne+22)"
+  },
+  {
+   "what": {
+    "value": "Dust production model M_dust = (0.004 +/- 0.002) M_stars for SNe (Chabrier IMF)",
+    "evidence": [
+     {
+      "loc": "Dust mass content",
+      "quote": "derived $\\mu_{\\rm dust} = 0.004\\pm 0.002$ for the (cite: Chabrier03) IMF"
+     }
+    ]
+   },
+   "citation": "(cite: GallHjorth18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image ALMA band 6 continuum and band 3 CO cubes",
+   "method": "Standard ALMA pipeline calibration, then CASA tclean imaging (MFS continuum over four spws; CO cubes of all channels), cleaned to 4x dirty-image RMS, then primary beam correction",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Pixel size 0.1'' / 0.15'' (continuum) and 0.1'' / 0.05'' (CO); natural weighting for continuum; Briggs robust 1.0 or natural for CO; threshold 4x RMS"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "build CO moment-0 maps and spectra and measure I_CO, z_CO, FWHM",
+   "method": "immoments over the optimum channel range (maximising S/N of the 1D spectrum extracted in a custom polygonal aperture), multi-component Gaussian fits to the spectra; upper limits from 4 sigma RMS over ~350 km/s for non-detections",
+   "software": [
+    "CASA",
+    "immoments"
+   ],
+   "key_parameters": [
+    "Custom (polygonal) aperture including all flux above the RMS and typically bigger than the beam; no aperture correction"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "convert CO flux to L'_CO and molecular gas mass",
+   "method": "L'_CO from Solomon+97 Eq. 3; M_molgas = alpha_CO * L'_CO / r_J1",
+   "software": [],
+   "key_parameters": [
+    "r31 = 0.77 +/- 0.14, r41 = 0.61 +/- 0.13 (from Boogaard+20, ASPECS stacking)"
+   ],
+   "assumptions": [
+    "alpha_CO = 1 Msun/(K km/s pc2) (nearby starburst value); MW value 4.36 discussed as alternative"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "measure 1.3 mm continuum fluxes and FIR sizes",
+   "method": "Aperture photometry on the primary-beam-corrected maps; elliptical 2D Gaussian fits in the uv plane with GILDAS UV_FIT; Reff,FIR from deconvolved FWHMs; 4 sigma upper limits from dirty-image RMS for non-detections",
+   "software": [
+    "GILDAS UV_FIT"
+   ],
+   "key_parameters": [
+    "Free parameters: centre, flux, FWHM major, FWHM minor, position angle; Reff,FIR = half-emission radius from the circularised FWHM"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "derive L_IR and dust masses from the single 1.3 mm flux",
+   "method": "Scale an optically thin modified black body to S_1.3mm and integrate 8-1000 um for L_IR; M_dust = D_L S / (kappa B_nu(T_dust))",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 40 K; beta = 1.4; kappa_0 = 40 cm2/g at 100 um"
+   ],
+   "assumptions": [
+    "Optically thin emission because E(B-V) <= 0.1; no CMB correction applied"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "measure rest-UV/optical sizes from near-IR imaging",
+   "method": "Single 2D Gaussian fit with GALFIT convolved with a PSF measured from bright field stars, on 10''x10'' background-subtracted cutouts; an extra component for J0146-0220 and J0006+2452",
+   "software": [
+    "GALFIT",
+    "ESO HAWK-I pipeline"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "derive SFRs, depletion times, gas fractions and star-formation efficiency and compare with literature relations",
+   "method": "SFR_IR = L_IR/1e10 (Kennicutt98, Chabrier IMF); SFR_UV+IR = SFR_UV+SFR_IR; t_depl = M_molgas/SFR_UV+IR; f_molgas = M_molgas/(M_molgas+M_stars); eps_SF = M_stars(young)/(M_molgas+M_stars(young))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "M_stars from SFR_UV x 10 Myr (dust-corrected with beta_UV), Chabrier IMF, kappa_UV from BPASS binaries at 0.5 Zsun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Infrared luminosity range (detected targets)",
+   "value": "5.9-28.3 e11",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "with $L_{\\rm IR} = (5.9-28.3)\\times 10^{11}~L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass range",
+   "value": "2.3-11.1 e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The high dust masses $M_{\\rm dust} = (2.3-11.1)\\times 10^7~M_{\\odot}$ of our galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-to-gas mass ratio range (alpha_CO = 1)",
+   "value": "log < -2.9 to -2.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust mass content",
+     "quote": "are spread out between $\\log (\\delta_{\\rm DGR}) < -2.9$ and $-2.1$ for $\\alpha_{\\rm CO}^{\\rm SB}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Obscured star-formation rate range",
+   "value": "59 to 283",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dust-obscured star formation",
+     "quote": "They reach $\\rm SFR_{IR} = 59~M_{\\odot}~\\rm yr^{-1}$ to $283~M_{\\odot}~\\rm yr^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Obscured fraction of star formation",
+   "value": "<~14% to 42% for most; max 57%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dust-obscured star formation",
+     "quote": "ranging between $\\lesssim 14$% and 42%"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset above the main sequence",
+   "value": "~30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "considerably above (a factor of $\\sim 30$) the main sequence of star-forming galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass range (alpha_CO = 1)",
+   "value": "<0.63e10 to 3.67e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass content and depletion timescale",
+     "quote": "range between $M_{\\rm molgas} <0.63\\times 10^{10}~M_{\\odot}$ and $3.67\\times 10^{10}~M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean depletion timescale (alpha_CO = 1)",
+   "value": "49",
+   "uncertainty": "12 Myr",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass content and depletion timescale",
+     "quote": "with a mean of $\\rm 49~Myr \\pm 12~Myr$ for $\\alpha_{\\rm CO}^{\\rm SB}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion timescale range",
+   "value": "36 to 71 (detected); J1316+2614 <13",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "amazingly short $t_{\\rm depl}$ between 36 Myr and 71 Myr"
+    },
+    {
+     "loc": "Molecular gas mass content and depletion timescale",
+     "quote": "is depleted in $<13$ Myr!"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas fraction (alpha_CO = 1)",
+   "value": "82",
+   "uncertainty": "10%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass content and depletion timescale",
+     "quote": "have very high $f_{\\rm molgas}$ with a mean of $82\\%\\pm 10\\%$ for $\\alpha_{\\rm CO}^{\\rm SB}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas-to-stellar mass ratio",
+   "value": "6",
+   "uncertainty": "3",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass content and depletion timescale",
+     "quote": "mean molecular gas mass to stellar mass ratio ($\\mu_{\\rm molgas} = M_{\\rm molgas}/M_{\\rm stars}$) of $6\\pm 3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean star-formation efficiency (alpha_CO = 1)",
+   "value": "18",
+   "uncertainty": "9%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Star-formation efficiency",
+     "quote": "with a mean of $18\\% \\pm 9\\%$ for $\\alpha_{\\rm CO}^{\\rm SB}$"
+    },
+    {
+     "loc": "Star-formation efficiency",
+     "quote": "We find $\\epsilon_{\\rm SF}$ ranging from 8% to 37%"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR effective radius range",
+   "value": "1.7 to 5.0",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "FIR dust continuum and rest-frame UV/optical sizes",
+     "quote": "They range between $R_{\\rm eff,FIR} = 1.7$ kpc and 5.0 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ratio of rest-UV/optical to FIR effective radius",
+   "value": "0.43",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "FIR dust continuum and rest-frame UV/optical sizes",
+     "quote": "the mean $R_{\\rm eff,UV/opt}/R_{\\rm eff,FIR} =0.43\\pm 0.17$ ratio of our galaxies"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version/release used for calibration and imaging; whether archive products or reprocessed data were used",
+  "Flux, bandpass and phase calibrators and the absolute flux-scale uncertainty",
+  "Deconvolver, mask definition, niter, spw/channel width used in imaging; the uv taper (if any)",
+  "Which galaxies got Briggs robust=1.0 versus natural weighting for CO",
+  "Channel ranges excluded as CO-contaminated for the band 3 continuum, and the channel ranges adopted for each moment-0 map",
+  "Coordinates and shapes of the custom polygonal apertures used for I_CO and S_1.3mm (they set the fluxes)",
+  "Exact rest frequencies used for CO(3-2)/(4-3) and the cosmic-microwave-background correction choice (stated as not applied)",
+  "Details of GALFIT fits (initial guesses, PSF stars, masks) and conversion of Reff to kpc",
+  "How SFR_UV, M_stars and sSFR in Table 1 were derived for targets not published before (SED/UV spectral measurements are in companion papers)",
+  "Stacking/archival tables for the comparison samples shown in the figures"
+ ],
+ "missing_for_reproduction": [
+  "CASA/pipeline versions and calibrators",
+  "Aperture definitions and CO channel ranges per target",
+  "Companion-paper UV/SED measurements (M_UV, beta_UV, M_stars, SFR_UV) for the Table 1 inputs",
+  "Deconvolution masks and stopping criteria for imaging"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Programme IDs, targets, imaging weighting/pixel size and the derived-quantity recipe (MBB, alpha_CO, r_J1, SFR) are given and numeric results are tabulated, but aperture choices, CASA/pipeline versions, calibrators, masks and companion-paper inputs are missing.",
+ "rediscovery_reason": "Cycle 6 and Cycle 8 PI data of known project codes are likely public by now (the paper does not state it); the recipe for fluxes, L'_CO, M_molgas, L_IR, M_dust is explicit and results are numeric, though aperture choices would shift values within errors.",
+ "source_card": "cards/2025A%26A...693A..17D/sonnet/card.md"
+}

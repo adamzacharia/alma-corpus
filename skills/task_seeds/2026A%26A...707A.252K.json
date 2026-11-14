@@ -1,0 +1,579 @@
+{
+ "bibcode": "2026A&A...707A.252K",
+ "title": "Detailed lens modeling and kinematics of the submillimeter galaxy G09v1.97: An analysis of CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP>, and dust continuum emission",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202451460",
+ "arxiv_id": "2601.14685",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Constrain the ongoing processes, source-plane morphology, and kinematics (disk versus merger) in the z = 3.63 gravitationally lensed submillimeter galaxy H-ATLAS J083051.0+013224 (G09v1.97) using high angular resolution dust continuum, CO(6-5), H2O, and H2O+ emission.",
+ "alma_project_codes": [
+  "2018.1.01710.S",
+  "2015.1.01320.S"
+ ],
+ "data": {
+  "bands": "Band 4",
+  "arrays": "41 antennas",
+  "angular_resolution": "~0.1 arcsec (CO(6-5): 0.11'' x 0.085''; H2O: 0.11'' x 0.081''; H2O+ combined: 0.34'' x 0.31'')",
+  "sensitivity": "Continuum: 0.02 mJy/beam; CO(6-5): 0.19 mJy/beam; H2O: 0.50 mJy/beam; H2O+: 0.13 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens galaxy spectroscopic redshifts (z = 0.636 and z = 1.002), initial lens offsets and Einstein radii, total infrared luminosity L_IR = (1.4 +/- 0.7) x 10^13 L_odot, and expected emission region mask",
+    "evidence": [
+     {
+      "loc": "Parametric source modeling",
+      "quote": "The SMG G09v1.97 is lensed by two galaxies with spectroscopic redshifts of $z = 0.636$ and $z = 1.002$, visible in optical wavelengths (cite: Yang19)."
+     },
+     {
+      "loc": "Physical properties of the warm rotating disk G09v1.97",
+      "quote": "G09v1.97 has been previously shown to be one of the most luminous dusty star-forming galaxies in the high-redshift universe with a total infrared luminosity of $L_{\\mathrm{IR}} = (1.4 \\pm 0.7) \\times 10^{13} L_{\\odot}$ (cite: Yang19)."
+     },
+     {
+      "loc": "Observations and data reduction",
+      "quote": "Imaging of the calibrated data was performed in CASA using the tclean task, cleaning in the region of expected emission using the mask encompassing the region of emission for the deep continuum and CO(6–5) emission images reported in (cite: Yang19)."
+     }
+    ]
+   },
+   "citation": "(cite: Yang19)"
+  },
+  {
+   "what": {
+    "value": "Initial priors/ranges for lens (x, y) offset and Einstein radius",
+    "evidence": [
+     {
+      "loc": "Parametric source modeling",
+      "quote": "The ($x, y$) offset and Einstein radius were allowed to vary around previously reported values from (cite: Yang19) and (cite: Maresca22)."
+     }
+    ]
+   },
+   "citation": "(cite: Maresca22)"
+  },
+  {
+   "what": {
+    "value": "Conversion ratio between CO(6–5) and CO(1–0) emission from LVG CO SLED modeling, and helium contribution of 36%",
+    "evidence": [
+     {
+      "loc": "Physical properties of the warm rotating disk G09v1.97",
+      "quote": "We use the conversion ratio between the CO(6–5) and CO(1–0) emission based on single component large velocity gradient (LVG) modeling of the observed CO spectral line energy distribution (SLED) performed in (cite: Yang17)"
+     },
+     {
+      "loc": "Physical properties of the warm rotating disk G09v1.97",
+      "quote": "Assuming $\\alpha_{\\rm CO} = 0.8$ (cite: Downes98) and a helium contribution of 36% (cite: Yang17), we obtain a gas mass in the region of CO(6–5) emission of $M_{\\mathrm{gas}} = (1.8 \\pm 0.74) \\times 10^{10}$M$_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: Yang17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure image-plane continuum flux, extract line spectra, fit line profiles, and compute moment maps and line luminosities",
+   "method": "Extract continuum flux and molecular line spectra from the expected emission region of Yang19; fit asymmetric line profiles with double Gaussian profiles; compute moment-0 and moment-1 maps (clipping <3 sigma in moment-1); calculate line luminosities using Solomon97 formula.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 sigma cut for moment-1 maps"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_Lambda = 0.7, Omega_m = 0.3"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Perform parametric gravitational lens modeling on visibilities",
+   "method": "Fit two foreground lens galaxies as single isothermal ellipsoid (SIE) mass profiles and the background source as a single linear Sérsic profile directly on the interferometric visibilities in PyAutoLens; optimize the lens mass model on dust continuum first, then fix the lens mass model to fit CO(6-5), H2O, and H2O+ emission.",
+   "software": [
+    "PyAutoLens"
+   ],
+   "key_parameters": [
+    "Lens redshifts fixed at z = 0.626 (or 0.636 in text) and z = 1.002; 1000 posterior samples for magnification error"
+   ],
+   "assumptions": [
+    "Two SIE lens mass profiles and a single Sérsic source profile"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform non-parametric pixelated source-plane reconstructions and reconstruct the de-magnified CO(6-5) spectral cube",
+   "method": "Using the continuum-optimized lens mass model, reconstruct source-plane emission on a magnification-weighted adaptive Voronoi pixel mesh with constant regularization in PyAutoLens; bin CO(6-5) into 50 km/s channels, reconstruct each bin non-parametrically, and interpolate onto a square pixel grid to form a de-magnified spectral cube; compute source-plane error maps from lens posterior sampling and visibility covariance matrix (via CASA STATWT).",
+   "software": [
+    "PyAutoLens",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Circular region of radius 1.5 arcsec (11 kpc); CO(6-5) cube spectral resolution ~50 km/s; static source-plane beam of 0.035'' x 0.027'' (5 pixels per beam); 1000 samples for sigma_l; 100 samples for pixelized magnification error"
+   ],
+   "assumptions": [
+    "Static source-plane beam defined as theta_maj/sqrt(mu) x theta_min/sqrt(mu) with 5 pixels per beam; Gaussian distribution of lens model parameters over 1000 samples"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model source-plane CO(6-5) kinematics and classify disk vs. merger",
+   "method": "Fit tilted rings to the de-magnified source-plane CO(6-5) spectral cube using 3DBarolo (first with PA and inclination free, then fixing them to their averages and refitting); calculate PVsplit parameters from the major-axis PV diagram to test disk vs. merger classification.",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "Smooth & Search masking with 3 sigma cut; 11 rings with radial separation 0.0138'' (theta_maj / 2.5); center fixed via 2D-Gaussian fit to moment-0 map; fixed i = 50 deg and PA = 6.7 deg"
+   ],
+   "assumptions": [
+    "Static source-plane beam of 0.035'' x 0.027''; V_rot in the outermost ring approximates V_max"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive physical properties: SFR, dynamical mass, gas mass, gas mass fraction, and depletion time",
+   "method": "Calculate SFR from L_IR and from CO(6-5) emission; fit source-plane CO(6-5) spatial extent to derive Sigma_SFR; calculate dynamical mass from outermost 3DBarolo ring (Vc = 386 km/s, r = 1.07 kpc); convert CO(6-5) to CO(1-0) using LVG modeling from Yang17 to derive gas mass, gas mass fraction, and depletion time.",
+   "software": [],
+   "key_parameters": [
+    "V_c = 386 km/s, r = 1.07 kpc"
+   ],
+   "assumptions": [
+    "Chabrier IMF; SFR ~ 10^-10 L_IR [L_odot]; alpha_CO = 0.8 (with error incorporating range 0.8-4.0); helium contribution of 36%; CO(6-5) to CO(1-0) ratio from Yang17 LVG modeling; CO(6-5) and CO(7-6) emission are very similar"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.940 mm continuum flux density",
+   "value": "7.00",
+   "uncertainty": "±0.32",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "We find a 1.940 mm continuum flux of $7.00 \\pm 0.32$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6–5) velocity-integrated flux density (I_mol)",
+   "value": "12.7",
+   "uncertainty": "±1.3",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "| CO(6–5) | 691.47 | $8.3 \\pm 1.3$ | $340 \\pm 103$ | $12.7 \\pm 1.3$ | $2.1 \\pm 0.21$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6–5) line luminosity (L_mol)",
+   "value": "2.1",
+   "uncertainty": "±0.21",
+   "units": "10^9 L_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "| CO(6–5) | 691.47 | $8.3 \\pm 1.3$ | $340 \\pm 103$ | $12.7 \\pm 1.3$ | $2.1 \\pm 0.21$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O(2_11-2_02) velocity-integrated flux density (I_mol)",
+   "value": "9.8",
+   "uncertainty": "±1.7",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "|  | 752.03 | $9.0 \\pm 1.5$ | $470 \\pm 124$ | $9.8 \\pm 1.7$ | $1.8 \\pm 0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O(2_11-2_02) line luminosity (L_mol)",
+   "value": "1.8",
+   "uncertainty": "±0.3",
+   "units": "10^9 L_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "|  | 752.03 | $9.0 \\pm 1.5$ | $470 \\pm 124$ | $9.8 \\pm 1.7$ | $1.8 \\pm 0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O+(2_02-1_11) velocity-integrated flux density (I_mol)",
+   "value": "1.1",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "| $^+$ | 742.15 | $3.8 \\pm 0.3$ | $241 \\pm 26$ | $1.1 \\pm 0.2$ | $0.20 \\pm 0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O+(2_02-1_11) line luminosity (L_mol)",
+   "value": "0.20",
+   "uncertainty": "±0.03",
+   "units": "10^9 L_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "| $^+$ | 742.15 | $3.8 \\pm 0.3$ | $241 \\pm 26$ | $1.1 \\pm 0.2$ | $0.20 \\pm 0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens SE Einstein radius",
+   "value": "0.44",
+   "uncertainty": "+0.01/-0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Lens modeling",
+     "quote": "| Lens SE | 0.626 | $-0.21^{+0.02}_{-0.02}$ | $-0.08^{+0.02}_{-0.02}$ | $0.51 ^{+0.04} _{-0.04}$ | $18.97 ^{+4.03} _{-3.78}$ | $0.44^{+0.01}_{-0.01}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens NW Einstein radius",
+   "value": "0.48",
+   "uncertainty": "+0.01/-0.01",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Lens modeling",
+     "quote": "| Lens NW | 1.002 | $0.14^{+0.02}_{-0.02}$ | $0.38^{+0.02}_{-0.02}$ | $0.77 ^{+0.05} _{-0.06}$ | $-73.53 ^{+7.12} _{-6.08}$ | $0.48^{+0.01}_{-0.01}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Parametric lensing magnification factor for continuum (mu_continuum)",
+   "value": "10.55",
+   "uncertainty": "±0.26 (or ±0.36 in Table)",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum emission",
+     "quote": "Through this methodology, we obtain a lensing magnification factor of $\\mu_{\\rm continuum} = 10.55 \\pm 0.26$."
+    },
+    {
+     "loc": " $^+$ emission",
+     "quote": "| Continuum | $0.04^{+0.01}_{-0.01}$ | $0.05^{+0.01}_{-0.01}$ | $0.38 ^{+0.04} _{-0.04}$ | $-80.93 ^{+3.06} _{-3.09}$ | $0.08^{+0.02}_{-0.01}$ | $2.12^{+0.67}_{-0.45}$ | $10.55 \\pm 0.36$ | $9.83 \\pm 0.26$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Pixelized lensing magnification factor for continuum (mu_pixel)",
+   "value": "9.83",
+   "uncertainty": "±0.26",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": " $^+$ emission",
+     "quote": "| Continuum | $0.04^{+0.01}_{-0.01}$ | $0.05^{+0.01}_{-0.01}$ | $0.38 ^{+0.04} _{-0.04}$ | $-80.93 ^{+3.06} _{-3.09}$ | $0.08^{+0.02}_{-0.01}$ | $2.12^{+0.67}_{-0.45}$ | $10.55 \\pm 0.36$ | $9.83 \\pm 0.26$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Parametric lensing magnification factor for CO(6–5) (mu_CO(6-5))",
+   "value": "9.72",
+   "uncertainty": "±0.27",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO(6–5) emission",
+     "quote": "Through this methodology, we obtain a lensing magnification factor of $\\mu_{\\rm CO(6-5)} = 9.72 \\pm 0.27$."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixelized lensing magnification factor for CO(6–5) (mu_pixel)",
+   "value": "12.23",
+   "uncertainty": "±0.38",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": " $^+$ emission",
+     "quote": "| CO(6–5) | $0.01^{+0.49}_{-0.51}$ | $0.02^{+0.48}_{-0.51}$ | $0.48 ^{+0.48} _{-0.50}$ | $-0.29 ^{+89.57} _{-89.98}$ | $0.51^{+0.49}_{-0.50}$ | $2.86^{+2.13}_{-2.06}$ | $9.72 \\pm 0.27$ | $12.23 \\pm 0.38$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Parametric lensing magnification factor for H2O (mu_H2O)",
+   "value": "11.60",
+   "uncertainty": "±0.41",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": " emission",
+     "quote": "Through this methodology, we obtain a lensing magnification factor of $\\mu_{\\rm H_{2}O} = 11.60 \\pm 0.41$."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixelized lensing magnification factor for H2O (mu_pixel)",
+   "value": "10.23",
+   "uncertainty": "±0.33",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": " $^+$ emission",
+     "quote": "|  | $0.03^{+0.01}_{-0.01}$ | $0.06^{+0.02}_{-0.02}$ | $0.46 ^{+0.19} _{-0.28}$ | $-68.06 ^{+19.23} _{-21.20}$ | $0.17^{+0.64}_{-0.11}$ | $3.23^{+1.77}_{-2.39}$ | $11.60 \\pm 0.41$ | $10.23 \\pm 0.33$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Parametric lensing magnification factor for H2O+ (mu_H2O+)",
+   "value": "14.86",
+   "uncertainty": "±0.48",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": " $^+$ emission",
+     "quote": "Through this methodology, we obtain a lensing magnification factor of $\\mu_{\\rm H_{2}O^{+}} = 14.86 \\pm 0.48$."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixelized lensing magnification factor for H2O+ (mu_pixel)",
+   "value": "13.39",
+   "uncertainty": "±0.32",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": " $^+$ emission",
+     "quote": "| $^+$ | $0.040^{+0.002}_{-0.002}$ | $0.084^{+0.005}_{-0.005}$ | $0.35 ^{+0.02} _{-0.02}$ | $-83.76 ^{+1.52} _{-1.55}$ | $0.094^{+0.003}_{-0.003}$ | $0.80^{+0.024}_{-0.0029}$ | $14.86 \\pm 0.48$ | $13.39 \\pm 0.32$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic position angle (PA_kin)",
+   "value": "6.7",
+   "uncertainty": "±1.7",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling with $^{\\rm 3D}$Barolo",
+     "quote": "The inclination ($i$), at 50 degrees, did not vary at all, and the position angle varied from $\\approx 1$ to $\\approx 19$ degrees, resulting in an average of $(6.7 \\pm 1.7)^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic inclination (i)",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling with $^{\\rm 3D}$Barolo",
+     "quote": "| i$^{\\circ, b}$ | 50 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity offset (V_sys)",
+   "value": "109",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling results",
+     "quote": "The best-fit systemic velocity of the CO(6–5) emission from the kinematic fitting, $\\rm V_{sys} = 109$ km/s, corresponds to a redshift of $z = 3.6300017$, slightly higher than previously reported."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotational velocity (V_rot,max)",
+   "value": "388",
+   "uncertainty": "+55/-36",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling with $^{\\rm 3D}$Barolo",
+     "quote": "| $\\rm V_{rot, max}^{d}$ \\[km/s\\] | $388^{55}_{-36}$ |"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "a rotating disk with a maximum rotational velocity of $\\rm V_{max} = 388^{+55}_{-36}$ km/s and an average dispersion of"
+    }
+   ]
+  },
+  {
+   "quantity": "Average velocity dispersion (sigma_bar)",
+   "value": "138",
+   "uncertainty": "+7/-6",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Modeling with $^{\\rm 3D}$Barolo",
+     "quote": "| $\\bar{\\sigma}^{e}$ \\[km/s\\] | $138^{+7}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of maximum rotational velocity to average velocity dispersion (V_max / sigma_bar)",
+   "value": "2.8",
+   "uncertainty": "±0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Instead, we find that G09v1.97 resembles a rotating disk with $\\rm V_{max}/\\bar{\\sigma} = 2.8 \\pm 0.4$"
+    },
+    {
+     "loc": "Modeling with $^{\\rm 3D}$Barolo",
+     "quote": "| $\\rm V_{rot, max} / \\bar{\\sigma}^{f}$ | $2.8 \\pm 0.4$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source-plane CO(6–5) spatial extent",
+   "value": "0.21 x 0.12 (1.5 x 0.88 kpc)",
+   "uncertainty": "±0.03 x ±0.02 arcsec",
+   "units": "arcsec (kpc)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "Fitting the CO(6–5) emission in the source plane, we find a spatial extent of $0''.21 \\pm 0''.03 \\times 0''.12 \\pm 0''.02$, corresponding to $1.5 \\rm\\, kpc \\times 0.88\\,kpc$ at $z = 3.63$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation rate from L_IR (SFR_LIR)",
+   "value": "1400",
+   "uncertainty": "±700",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "Assuming a Chabrier initial mass function (cite: Chabrier03) and the relation between SFR and $L_{\\rm IR}$ as SFR $\\sim 10^{-10} L_{\\rm IR} [L_{\\odot}]$, this implies a SFR of $1400 \\pm 700$ M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Surface star formation rate density (Sigma_SFR)",
+   "value": "340",
+   "uncertainty": "not stated",
+   "units": "M_odot yr^-1 kpc^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "This implies a surface star formation rate density of $\\Sigma_{\\rm SFR} \\approx 340$ M$_{\\odot}$ yr$^{-1}$ kpc${^{-2}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass (M_dyn)",
+   "value": "3.7",
+   "uncertainty": "±0.1",
+   "units": "10^10 M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "We consider the radius and rotational velocity in the outermost ring from $^{\\rm 3D}$Barolo, corresponding to $\\rm V_c = 386$ km/s and r = 1.07 kpc, resulting in $M_{\\mathrm{dyn}}= (3.7 \\pm 0.1) \\times 10^{10}$ M$_{\\odot}$ [^7]."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass (M_gas)",
+   "value": "1.8",
+   "uncertainty": "±0.74",
+   "units": "10^10 M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "Assuming $\\alpha_{\\rm CO} = 0.8$ (cite: Downes98) and a helium contribution of 36% (cite: Yang17), we obtain a gas mass in the region of CO(6–5) emission of $M_{\\mathrm{gas}} = (1.8 \\pm 0.74) \\times 10^{10}$M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion time (t_dep)",
+   "value": "13",
+   "uncertainty": "±8",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "This implies a depletion time (defined as $t_{\\rm dep} = M_{\\rm gas}/\\mathrm{SFR}$) for G09v1.97 of $13 \\pm 8$ Myr, lower than the value found for G09v1.97 by (cite: Yang17) but within the error range."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass fraction (M_gas / M_dyn)",
+   "value": "0.5",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "This implies a gas mass fraction ($M_{\\rm gas}$/$M_{\\rm dyn}$) of $0.5 \\pm 0.02$, lower than reported in (cite: Yang17) but still within an expected range for strongly lensed SMGs (cite: Yang17)."
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation rate from CO (SFR_CO)",
+   "value": "2515",
+   "uncertainty": "±260",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical properties of the warm rotating disk G09v1.97",
+     "quote": "we obtain $\\rm SFR_{CO} \\approx (2515 \\pm 260)$ M$_{\\odot}$ yr$^{-1}$ using the conversion between CO(7–6) and SFR given in (cite: Lu15)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for data reduction and imaging",
+  "Cell size and image size (pixel dimensions) used in tclean",
+  "Exact frequency ranges of the line-free channels used in uvcontsub",
+  "Exact boundaries of the uniform priors used for lens and source parameters in PyAutoLens",
+  "Non-linear sampler/optimizer used within PyAutoLens (e.g., dynesty, emcee) and its hyperparameters",
+  "Exact numerical value of the CO(6-5) to CO(1-0) conversion factor taken from Yang et al. (2017)"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial mask region file (from Yang et al. 2019) used for tclean and spectral extraction",
+  "Line-free frequency channel selections for uvcontsub",
+  "Cell size and image dimensions in tclean and in the interpolated square source-plane grid",
+  "Regularization coefficient values used in PyAutoLens non-parametric reconstructions (visible only in figure filenames as 1000000.0, 50000, 750000, 50000.0)",
+  "Phase center coordinates used to define the (x_off, y_off) lens and source offsets"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Both ALMA project codes, main calibration/imaging parameters, lens model best-fit parameters, and kinematic modeling settings are clearly documented, and public tools (CASA, PyAutoLens, 3DBarolo) are used. Some low-level parameters (exact clean/extraction mask coordinates, line-free channels, cell sizes, and PyAutoLens regularization coefficients in text) are omitted.",
+ "rediscovery_reason": "Both ALMA datasets are public in the archive, the analysis uses standard open-source packages (CASA, PyAutoLens, 3DBarolo), and the main conclusions rely on well-defined numeric outputs (fluxes, lens Einstein radii and magnifications, V_max/sigma, and M_dyn).",
+ "source_card": "cards/2026A%26A...707A.252K/sonnet/card.md"
+}

@@ -1,0 +1,929 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...900...81O",
+  "title": "Solving Grain Size Inconsistency between ALMA Polarization and VLA Continuum in the Ophiuchus IRS 48 Protoplanetary Disk",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Ohashi, Satoshi",
+  "n_authors": 9,
+  "arxiv_id": "2007.15014",
+  "doi": "10.3847/1538-4357/abaab4",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00834.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In this paper, we present 860 $\\mu$m ALMA observations of polarized dust emission of this disk."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "Ophiuchus IRS 48",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "120 pc (revised to 134 pc by Gaia, but 120 pc used)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Ophiuchus IRS 48 is a young A-type star with a distance of 120 pc[^1] (cite: loi08)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Loinard et al. 2008 (cite: loi08)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Ophiuchus IRS 48 is a young A-type star with a distance of 120 pc[^1] (cite: loi08)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can the ALMA 860 um polarization (self-scattering, ~100 um grains) and the VLA 8.8 mm continuum (previously read as cm grains) of the IRS 48 dust trap be explained together?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "To explain both, ALMA polarization and previous ALMA and VLA observations, we suggest that the thermal emission at 860 $\\mu$m wavelength is optically thick"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00834.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The 860 $\\mu$m ALMA dust polarization observations (2017.1.00834.S, PI: Adriana Pohl) were carried out on 2018 August 19."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (860 um)",
+    "evidence": [
+     {
+      "loc": "Radiative Transfer Modeling",
+      "quote": "Figure [5](#test1) shows the comparisons of ALMA Band 7 polarization and VLA continuum observations"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spws (2 per sideband), 64 channels each, 31.25 MHz channel width; centres 349.7, 351.5, 361.6, 363.5 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The central frequencies in spws are 349.7 GHz, 351.5 GHz, 361.6 GHz, and 363.5 GHz, respectively."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "~7.5 GHz in total",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "providing a bandwidth of $\\sim7.5$ GHz in total"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C43-2, 45 antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The antenna configurations were C43-2 with 45 antennas."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.49\"x0.39\" (~59x47 au at 120 pc)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The beam size of the final product is $0.49\\ensuremath{''}\\times0.39\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms I 33, Q 30, U 33, PI 44 uJy/beam",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "$\\sigma_{\\rm PI}=4.4\\times10$ $\\mu$Jy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~90 min on target",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total integration time for the target was about 90 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2018 August 19",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "were carried out on 2018 August 19"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI Adriana Pohl",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "(2017.1.00834.S, PI: Adriana Pohl)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLA 8.8 mm",
+     "provided": {
+      "value": "34 GHz continuum image from van der Marel et al. 2015, CnB and B configurations",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We also utilize the VLA data taken by (cite: van15)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "VLA 8.8 mm continuum image (peak 138 uJy/beam)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We also utilize the VLA data taken by (cite: van15)."
+       }
+      ]
+     },
+     "citation": "van der Marel et al. 2015 (cite: van15)"
+    },
+    {
+     "what": {
+      "value": "ALMA 440 um crescent model parameters rc=61 AU, rw=14 AU, phic=100 deg, phiw=41 deg",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Modeling",
+        "quote": "(cite: van15) found the best fit for $r_{\\rm c}=61$ AU, $r_{\\rm w}=14$ AU, $\\phi_{\\rm c}=100^\\circ$, and $\\phi_{\\rm w}=41^\\circ$."
+       }
+      ]
+     },
+     "citation": "van der Marel et al. 2015 (cite: van15)"
+    },
+    {
+     "what": {
+      "value": "Dust temperature 60 K at 60 au, inclination 50 deg",
+      "evidence": [
+       {
+        "loc": "An Optically Thin Case",
+        "quote": "We assume a dust temperature of 60 K at 60 au (cite: bru14)."
+       }
+      ]
+     },
+     "citation": "Bruderer et al. 2014 (cite: bru14)"
+    },
+    {
+     "what": {
+      "value": "Gas surface density 0.5 g cm-2 at the ring",
+      "evidence": [
+       {
+        "loc": "Dust trapping model for ALMA polarization observations",
+        "quote": "they derived the gas surface density of 0.5 g cm$^{-2}$ at the ring"
+       }
+      ]
+     },
+     "citation": "van der Marel et al. 2016 (cite: van16)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard manner; details in Nagai et al. 2016",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The reduction and calibration of the data were done with CASA version 5.1.1 (cite: mcm07) in a standard manner."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CASA version 5.1.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "bandpass J1427-4206; gain J1625-2527; polarization J1427-4206",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The bandpass and the gain calibrations were performed by observations of J1427-4206 and J1625-2527, respectively"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean for Stokes I, Q, U",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "All images (Stokes *I*, *Q*, and *U*) were reconstructed with the CASA task *tclean*"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Briggs weighting with a robust parameter of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.49\"x0.39\"",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The beam size of the final product is $0.49\\ensuremath{''}\\times0.39\\ensuremath{''}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "I 33 uJy/beam",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$\\sigma_{\\it I}=3.3\\times10$ $\\mu$Jy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Detailed data reduction description",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "A detailed description of the data reduction is given in (cite: nag16)."
+       }
+      ]
+     },
+     "from_reference": "Nagai et al. 2016 (cite: nag16)"
+    },
+    {
+     "what": {
+      "value": "Radiative transfer with multiple scattering",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Modeling",
+        "quote": "we performed radiative transfer calculations with RADMC-3D[^2] (cite: dul12) that take into account multiple scattering, as done by (cite: kat15)"
+       }
+      ]
+     },
+     "from_reference": "Kataoka et al. 2015 (cite: kat15)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity calculation",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Modeling",
+        "quote": "The dust opacity is calculated following (cite: kat16)."
+       }
+      ]
+     },
+     "from_reference": "Kataoka et al. 2016 (cite: kat16)"
+    },
+    {
+     "what": {
+      "value": "Fourth-power Gaussian intensity profile",
+      "evidence": [
+       {
+        "loc": "Radiative Transfer Modeling",
+        "quote": "following (cite: van13; van15)"
+       }
+      ]
+     },
+     "from_reference": "van der Marel et al. 2013, 2015"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging details: cell size, image size, masks, niter and threshold",
+    "Self-calibration and pipeline version",
+    "Flux calibrator flux density and flux scale uncertainty for Band 7",
+    "Procedure for proper-motion correction of images",
+    "Stellar luminosity/mass used for Toomre Q",
+    "Number of photons and grid settings in RADMC-3D",
+    "Details of polarization calibration in CASA (not stated beyond reference)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image Stokes I, Q, U and derive polarization",
+    "method": {
+     "value": "tclean with Briggs weighting; PI debiased; Pfrac computed above 3 sigma_PI",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We thus debiased the polarized intensity map as $PI=\\sqrt{Q^2+U^2-\\sigma_{\\rm PI}^2}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5; Pfrac only where PI > 3 sigma_PI",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The polarization fraction ($P_{\\rm frac}=PI/I$) was derived only where detection was above the threshold 3$\\sigma_{\\rm PI}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Stokes V ignored",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "we ignore the Stokes *V* component in this study because it has not been well characterized for ALMA"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure continuum peak offset and proper motion; N-S contrast",
+    "method": {
+     "value": "Compare ALMA and VLA peak positions; two-component Gaussian fit to intensity profile along PA=36+-15 deg",
+     "evidence": [
+      {
+       "loc": "Stokes I Continuum Data",
+       "quote": "We fit the profile with a two component Gaussian profile"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "two-component Gaussian",
+     "evidence": [
+      {
+       "loc": "Stokes I Continuum Data",
+       "quote": "We fit the profile with a two component Gaussian profile"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Radiative transfer models of self-scattering for three dust scenarios",
+    "method": {
+     "value": "RADMC-3D models with Mie opacity (silicate+water ice 50/50, Maxwell-Garnett), q=-3.5, i=50 deg, PA=110 deg, fset=10; models 1 (thin, 140 um), 2 (140 um + 5 cm), 3 (thick, 140 um); also a 10/20/40-population dust-trap model",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Modeling",
+       "quote": "The opacity was calculated using Mie theory."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "amax=140 um; Sigma0 0.26 (model1), 0.65 and 0.1 (model2), 8.2 g cm-2 (model3); T=60 K (thin), 35 K (thick) at 60 au",
+      "evidence": [
+       {
+        "loc": "An Optically Thick Case",
+        "quote": "The temperature is assumed to be 35 K at 60 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Distance 120 pc; VLA emission dominated by dust",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "Therefore, we assume that the most of the VLA emission comes from dust grains in this study."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Surface density tuned by hand to match intensities; no optimal fit",
+     "evidence": [
+      {
+       "loc": "An Optically Thin Case",
+       "quote": "It should be noted that this study does not make an optimal fitting"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared model Stokes Q/U, polarization fraction and VLA/ALMA 440 um peak intensities with observations",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The both models follow the observed peak intensities at 440 $\\mu$m (ALMA Band 9), 860 $\\mu$m (ALMA Band 7), and 8.8 mm (VLA) wavelengths."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Test gravitational stability and dependence on optical depth and scale height",
+    "method": {
+     "value": "Toomre Q with gas-to-dust 100; vary Sigma0 and fset in model 3",
+     "evidence": [
+      {
+       "loc": "Is the disk gravitationally unstable",
+       "quote": "the Toomre $Q$ is derived to be $Q\\sim0.1$"
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "gas-to-dust mass ratio 100",
+      "evidence": [
+       {
+        "loc": "Is the disk gravitationally unstable",
+        "quote": "By assuming the gas to dust mass ratio of 100"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1",
+    "used_for": {
+     "value": "data reduction, calibration and tclean imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The reduction and calibration of the data were done with CASA version 5.1.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "radiative transfer with self-scattering",
+     "evidence": [
+      {
+       "loc": "Radiative Transfer Modeling",
+       "quote": "we performed radiative transfer calculations with RADMC-3D"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Stokes I peak",
+    "value": "120",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Polarization Data",
+      "quote": "The peak emission is 120 mJy beam$^{-1}$ toward the southeast of the disk, corresponding to 13 K in brightness temperature."
+     }
+    ]
+   },
+   {
+    "quantity": "Integrated continuum flux",
+    "value": "190",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Polarization Data",
+      "quote": "The integrated flux of the continuum emission is 190 mJy."
+     }
+    ]
+   },
+   {
+    "quantity": "Polarization fraction",
+    "value": "1-2",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Polarization Data",
+      "quote": "is on average $\\sim1-2$%"
+     }
+    ]
+   },
+   {
+    "quantity": "Proper motion (RA, Dec)",
+    "value": "(-24.2, -32.5)",
+    "uncertainty": "5.7, 5.7",
+    "units": "mas/yr",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "The proper motion of IRS 48",
+      "quote": "($-24.2\\pm5.7,-32.5\\pm5.7$) mas yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "North-South brightness contrast",
+    "value": "~170",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Stokes I Continuum Data",
+      "quote": "The brightness contrast between the southern and northern sides of the disk is $\\sim170$"
+     }
+    ]
+   },
+   {
+    "quantity": "Optical depth at 860 um in thick model",
+    "value": "7.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "An Optically Thick Case",
+      "quote": "The optical depth corresponds to $\\tau_{\\rm abs}=7.3$ at 860 $\\mu$m"
+     }
+    ]
+   },
+   {
+    "quantity": "Surface density in thick model",
+    "value": "8.2",
+    "uncertainty": "not stated",
+    "units": "g cm-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "An Optically Thick Case",
+      "quote": "the surface density needs to be $\\Sigma_{0}\\sim8.2$ g cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Toomre Q",
+    "value": "~0.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Is the disk gravitationally unstable",
+      "quote": "the Toomre $Q$ is derived to be $Q\\sim0.1$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Polarization vectors parallel to the disk minor axis, consistent with self-scattering",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "These characteristics are consistent with the dust self-scattering in inclined disks."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is 860 um polarization consistent with self-scattering by ~100 um grains?",
+    "experiment": "ALMA polarization imaging and RADMC-3D model",
+    "result": "Pfrac 1-2%, vectors parallel to minor axis, model 3.5% for 140 um",
+    "finding": "Self-scattering with amax~100 um explains polarization",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These characteristics are consistent with models of self-scattering of submillimeter-wave emission"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can optically thin dust trap with cm grains explain both datasets?",
+    "experiment": "Two-population and 40-population dust trap models",
+    "result": "Pfrac ~0.2% in trap model, Q/U drop at peak in two-population",
+    "finding": "Simple optically thin trapping is disfavoured but not ruled out at this resolution",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Dust trapping model for ALMA polarization observations",
+      "quote": "Our calculations thus indicate that the dust trapping model cannot explain the ALMA polarization observations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does an optically thick 860 um model with amax~140 um reproduce ALMA and VLA?",
+    "experiment": "Model 3 with T=35 K, Sigma0=8.2 g cm-2",
+    "result": "Pfrac 1.3% model vs 1.1+-0.1% observed; VLA matched",
+    "finding": "Optically thick model is more likely",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "An Optically Thick Case",
+      "quote": "Therefore, the optically thick model matches the observations."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Single optically thin 140 um population rejected because VLA peak ~10 times too low",
+     "evidence": [
+      {
+       "loc": "An Optically Thin Case",
+       "quote": "Therefore, this model with a single population of dust grains with $a_{\\rm max}\\sim100$ $\\mu$m cannot explain the VLA observations."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Beam too large to resolve structure or constrain dust scale height",
+     "evidence": [
+      {
+       "loc": "Dependence of polarization on Dust Scale Height",
+       "quote": "our current polarization observations are not enough to constrain the dust scale height due to the large beam size"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Models tuned by hand, no formal fit or uncertainties",
+    "Large gas surface density Toomre result implies unrealistic gas-to-dust ratio, possibly signalling the thick model is questionable",
+    "Degenerate with larger grains settled in midplane",
+    "Proper motion claim based on offset smaller than beam"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code printed; archival data credit given",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00834.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, masks, cleaning threshold)",
+    "RADMC-3D configuration details",
+    "Calibrator fluxes and proper-motion correction procedure"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and most imaging parameters given, but the modelling is hand-tuned with missing RADMC-3D settings.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results depend on hand-tuned radiative transfer models and inherited VLA data and parameters."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Kataoka et al. 2015 (cite: kat15)",
+     "why": "Self-scattering radiative transfer method"
+    },
+    {
+     "citation": "Nagai et al. 2016 (cite: nag16)",
+     "why": "Detailed data reduction"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "van der Marel et al. 2015 (cite: van15)",
+     "why": "VLA 8.8 mm data and ALMA 440 um model"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f768a81c89ce6b9c84b8b9c5a3eea77c",
+  "batch_id": "msgbatch_01738UhKcCZ47ngwXo2uybPT",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-29T00:13:41",
+  "usage": {
+   "input_tokens": 29060,
+   "output_tokens": 7387,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.066601,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 46,
+   "rate": 0.622
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T16:58:01",
+  "custom_id": "sonnet-repair-claude-code",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].key_parameters[0].evidence[0]",
+    "old": "The temperature is assumed to be 35 K at 60 au in equation ([\\ref{temp}])",
+    "new": "The temperature is assumed to be 35 K at 60 au"
+   },
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "We fit the profile with a two component Gaussian profile"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

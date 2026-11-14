@@ -1,0 +1,317 @@
+{
+ "bibcode": "2017AJ....154..225S",
+ "title": "ALMA 1.3 mm Map of the HD 95086 System",
+ "year": 2017,
+ "doi": "10.3847/1538-3881/aa906b",
+ "arxiv_id": "1709.10129",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "Where is the Kuiper-belt analog (cold planetesimal disk) of HD 95086 located and how broad is it; what is the nature of the bright source near the ring; what constraints follow for planet b",
+ "alma_project_codes": [
+  "2013.1.00773.S",
+  "2013.1.00612.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 single-pointing executions, 35–39 antennae",
+  "angular_resolution": "combined beam 1.22\"×1.03\", P.A. 77.4°",
+  "sensitivity": "rms 8.7 (A), 11.0 (B), 7.5 (combined) μJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 83.8±1.9 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "the Gaia DR1 catalog gives a slightly closer distance, 83.8$\\pm$1.9 pc (cite: gaia16)"
+     }
+    ]
+   },
+   "citation": "(cite: gaia16)"
+  },
+  {
+   "what": {
+    "value": "Planet b orbital parameters",
+    "evidence": [
+     {
+      "loc": "4.4 Constraints for the HD 95086 b from the Disk Perspective",
+      "quote": "The most recent orbital parameters for HD 95086 b are from (cite: rameau16)"
+     }
+    ]
+   },
+   "citation": "(cite: rameau16)"
+  },
+  {
+   "what": {
+    "value": "Schechter function parameters for background galaxy counts",
+    "evidence": [
+     {
+      "loc": "4.3.4 Alignment of a Background Galaxy",
+      "quote": "Using the parameters of the Schechter function in (cite: carniani15)"
+     }
+    ]
+   },
+   "citation": "(cite: carniani15)"
+  },
+  {
+   "what": {
+    "value": "CO upper limits and gas mass limits",
+    "evidence": [
+     {
+      "loc": "4.3.1 Debris Phase of a Circumplanetary Disk?",
+      "quote": "(Booth et al. in prep.)"
+     }
+    ]
+   },
+   "citation": "Booth et al. in prep."
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Produce continuum images",
+   "method": "Split, bin to 30 s and 128 channels, export to FITS, MIRIAD invert with natural weighting, clean, restore; sets A, B and combined",
+   "software": [
+    "CASA",
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit disk and point source in visibilities",
+   "method": "MCMC fit of two-boundary power-law disk or Gaussian ring plus point source to both data sets simultaneously, with model-minus-data residual imaging",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "8/9 free parameters; disk centered on star"
+   ],
+   "assumptions": [
+    "Optically and geometrically thin disk; Td = 278.3 L*^0.25 r^-0.5; L* = 6 Lsun; d = 83.8 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit disk in image plane",
+   "method": "MCMC fit to combined dirty map with ring center free; correlated-noise factor sqrt(beam pixels)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Characterize point sources and minimize contamination",
+   "method": "Long-baseline (>80 kλ) map, uvmodelfit of two point sources, subtraction to make disk-only map, refit with fixed sources, masking >0.1 mJy/beam, or Gaussian source",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Radial and azimuthal profiles and SED, bright source nature, planet constraints",
+   "method": "Elliptical annuli of 0.4\" and 27° wedges; revised SED model; background galaxy probabilities from Schechter function; chaotic zone width formulas",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust opacity 2.3 cm2/g at 1.3 mm, Td 30–60 K for CPD; M*=1.6 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total disk flux density at 1.3 mm",
+   "value": "2.79",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "The disk has a total flux density of 2.79$\\pm$0.1 mJy at 1.3 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "30",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "is inclined by 30$^\\circ$$\\pm$3$^\\circ$ from face-on with a P.A. of 97$^\\circ$$\\pm$3$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "97",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "with a P.A. of 97$^\\circ$$\\pm$3$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Two-boundary Rin",
+   "value": "106",
+   "uncertainty": "5",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "$R_{in}=$106$\\pm$5 au and $R_{out}=$320$\\pm$10 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Two-boundary Rout",
+   "value": "320",
+   "uncertainty": "10",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "$R_{in}=$106$\\pm$5 au and $R_{out}=$320$\\pm$10 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Surface density index",
+   "value": "–0.5",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "surface density power index of –0.5$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian ring peak radius",
+   "value": "200",
+   "uncertainty": "6",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "$R_p=$200$\\pm$6 au with a width of $R_w=$168$\\pm$7 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian ring FWHM",
+   "value": "168",
+   "uncertainty": "7",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "$R_p=$200$\\pm$6 au with a width of $R_w=$168$\\pm$7 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi-squared (two-boundary / Gaussian ring)",
+   "value": "1.20 / 1.15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Best-Fit Disk Parameters by Minimizing Other Contamination",
+     "quote": "The reduced chi-squared ($\\chi^2$) is 1.20 for the two-boundary model, but 1.15 for the Gaussian ring model"
+    }
+   ]
+  },
+  {
+   "quantity": "Bright point source flux (long baseline)",
+   "value": "0.81",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.81 $\\pm$0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Faint source flux",
+   "value": "0.10",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.10$\\pm$0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Bright source spectral index",
+   "value": "3.0–4.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.4 Alignment of a Background Galaxy",
+     "quote": "The bright source has a spectral index of 3.0$\\sim$4.0 derived from the combined data."
+    }
+   ]
+  },
+  {
+   "quantity": "Eccentricity limit for shepherding planet",
+   "value": "<0.17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Constraints for the HD 95086 b from the Disk Perspective",
+     "quote": "The non-detection of an offset suggests $e<0.17$ for the shepherding planet"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "MCMC sampler details, number of walkers/steps, burn-in",
+  "Details of the image-plane noise-correlation factor",
+  "uv-range and weighting in the MIRIAD imaging beyond natural",
+  "Flux scale handling when combining sets A and B",
+  "Whether uvmodelfit initial guesses were used",
+  "SED model code and photometry table",
+  "Spectral index map method",
+  "CO data processing (deferred to Booth et al. in prep.)"
+ ],
+ "missing_for_reproduction": [
+  "MCMC code and settings",
+  "SED model code and photometry",
+  "Details of CO analysis"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear model definitions, but MCMC setup and codes are not given.",
+ "rediscovery_reason": "Public data, recipe mostly specified, numeric disk parameters; some details missing.",
+ "source_card": "cards/2017AJ....154..225S/sonnet/card.md"
+}

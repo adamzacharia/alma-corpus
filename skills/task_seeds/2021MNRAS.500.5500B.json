@@ -1,0 +1,533 @@
+{
+ "bibcode": "2021MNRAS.500.5500B",
+ "title": "A warm molecular ring in AG Car: composing the mass-loss puzzle",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3606",
+ "arxiv_id": "2011.08161",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Confirm and characterize the spatial distribution, kinematics, physical parameters, and origin of the molecular gas around the luminous blue variable star AG Car.",
+ "alma_project_codes": [
+  "2019.1.01056.S"
+ ],
+ "data": {
+  "bands": "1.3 mm",
+  "arrays": "ALMA 7-m (ACA, 10 antennas) and Total Power (TP, 3 antennas)",
+  "angular_resolution": "ACA: 7.0x5.2 arcsec (CO J=2-1), 7.2x6.0 arcsec (13CO J=2-1); TP: 28.2 arcsec (CO J=2-1), 29.5 arcsec (13CO J=2-1)",
+  "sensitivity": "Line cubes: 5 to 10 mK per 1.3 km s^-1 channel; continuum map: ~1.2 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Coordinates of AG Car from Gaia DR2",
+    "evidence": [
+     {
+      "loc": "ALMA observations",
+      "quote": "(4) positions are offsets from the coordinates of AG Car, $\\alpha =10^\\mathrm{h}56^\\mathrm{m}11^\\mathrm{s}.5779, \\,\\delta=-60^\\circ 27\\ensuremath{'} 12\\ensuremath{''}.8095$ (J2000) (cite: 2018yCat.1345....0G)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018yCat.1345....0G)"
+  },
+  {
+   "what": {
+    "value": "Canonical distance of 6 +/- 1 kpc to AG Car",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Located in the far side of the Carina arm, the literature establishes a canonical distance of $6\\pm1$ kpc (cite: 1989A&A...218L..17H)."
+     }
+    ]
+   },
+   "citation": "(cite: 1989A&A...218L..17H)"
+  },
+  {
+   "what": {
+    "value": "ATCA 5.5 and 8.8 GHz radio continuum flux and spectral index (-0.1)",
+    "evidence": [
+     {
+      "loc": "Radio continuum emission",
+      "quote": "The resulting value does not match the expected flux density obtained by extrapolating the spectral index $\\alpha=-0.1$ reported by (cite: 2002MNRAS.330...63D), which is 0.89 mJy."
+     }
+    ]
+   },
+   "citation": "(cite: 2002MNRAS.330...63D)"
+  },
+  {
+   "what": {
+    "value": "Ionised gas mass (6.6 +/- 1.9 M_sun), dust mass (0.20 +/- 0.05 M_sun), total nebular mass (15 +/- 4.5 M_sun), and shell radii/kinematic duration from Herschel/infrared analysis",
+    "evidence": [
+     {
+      "loc": "Mass loss history of AG Car",
+      "quote": "VN15 estimated a total mass of ionised gas of $6.6\\pm1.9 \\,\\mathrm{M}_{\\ensuremath{\\odot}}$, from the H$\\alpha$ and radio continuum fluxes."
+     },
+     {
+      "loc": "Mass loss history of AG Car",
+      "quote": "Following this method, VN15 derived a kinematic duration of $1.1\\times10^4$ years for the mass-loss episode that created the infrared nebula, taking an inner and outer radii of 0.4 and 1.2 pc respectively."
+     }
+    ]
+   },
+   "citation": "(cite: 2015A&A...578A.108V)"
+  },
+  {
+   "what": {
+    "value": "Collisional coefficients from the LAMDA database used in LIME",
+    "evidence": [
+     {
+      "loc": "A closer view to CO kinematics",
+      "quote": "To do so, we used LIME (cite: 2010A&A...523A..25B), a 3D non-LTE code that solves radiative transfer by simulating ballistic photon propagation through unstructured Delaunay grids, calculating level populations and predicting the resulting spectra for a given transition, according to the LAMDA database collisional coefficients (cite: 2005A&A...432..369S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2005A&A...432..369S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce APEX CO J=3-2 single-dish observations",
+   "method": "Remove bad scans, fit a linear baseline, smooth velocity to 1 km s^-1, and convert antenna temperature (T_A*) to main-beam brightness temperature (T_mb) using forward and beam efficiencies.",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "F_eff = 0.97, B_eff = 0.73 at 345 GHz; velocity resolution = 1 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Calibrate, image, and feather ALMA ACA and Total Power data",
+   "method": "Calibrate ACA and TP data with the ALMA pipeline, subtract continuum and CLEAN ACA line visibilities, combine ACA and TP cubes using CASA feather, and rescale flux density to T_mb.",
+   "software": [
+    "CASA",
+    "ALMA pipeline",
+    "feather"
+   ],
+   "key_parameters": [
+    "K-to-Jy factor ~41.5 K/Jy for TP; channel width ~1.3 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure 225 GHz radio continuum fluxes and derive current mass-loss rate and ionised gas mass",
+   "method": "Fit a 2D Gaussian to the central compact source, subtract the point source to measure the extended nebular flux, and apply the Panagia & Felli (1975) free-free wind formula and VN15 approach to derive current mass-loss rate and nebular ionised mass.",
+   "software": [],
+   "key_parameters": [
+    "nu = 225 GHz; calibration error = 5%"
+   ],
+   "assumptions": [
+    "Full ionization, standard cosmic abundances, terminal wind velocity v_inf = 100 km s^-1, wind plasma temperature T = 10^4 K, distance d = 6 kpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Characterize ring morphology, inclination, expansion velocity, and kinematic timescales",
+   "method": "Integrate CO J=2-1 emission over (+29, +36) km s^-1, fit an ellipse to the lobes to determine angular size, position angle, and inclination (from axial ratio), and compute deprojected radius, expansion velocity, kinematic age, and outflow duration.",
+   "software": [],
+   "key_parameters": [
+    "Velocity integration range (+29, +36) km s^-1; systemic velocity = 32.5 km s^-1; ring reference width = 7 arcsec (ACA beam)"
+   ],
+   "assumptions": [
+    "Axisymmetric ring geometry at distance d = 6 kpc, constant expansion velocity with no velocity dispersion across the ring"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Extract single-dish line intensities, line ratios, and excitation conditions via non-LTE RADEX modelling",
+   "method": "Compute beam-averaged single-dish spectra at the stellar position, smooth to 1.3 km s^-1, fit Gaussians to components C1-C4 in CLASS, compute beam-dilution-corrected line ratios R_32 and R_12/13, and minimize reduced chi^2 over a RADEX non-LTE model grid.",
+   "software": [
+    "CLASS",
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Grid: T_k = 10 to 200 K, N(CO) = 10^13 to 10^19 cm^-2, n(H2) = 10^2 to 10^5 cm^-3; CMB = 2.73 K; representative FWHM = 6 km s^-1"
+   ],
+   "assumptions": [
+    "Each component C_i has the same FWHM across all three transitions; homogeneous medium; beam-filling factors F <= 0.2 at 230.538 GHz and F <= 0.38 at 345.799 GHz for C4 (no beam dilution correction for C1-C3)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate total molecular gas mass and average mass-loss rate of the ring",
+   "method": "Compute molecular gas mass from RADEX average CO column density, source area, and CO abundance via Eq. 5, and divide by the kinematic duration of the ring outflow to get the average mass-loss rate.",
+   "software": [],
+   "key_parameters": [
+    "N(CO) = 2.4x10^16 cm^-2; area ~0.63 pc^2; kinematic duration = 5.6x10^4 yr"
+   ],
+   "assumptions": [
+    "Cosmic [CO/H2] abundance X_CO = 10^-4; distance d = 6 kpc"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Model 3D ring kinematics and radiative transfer with LIME",
+   "method": "Construct four 3D non-LTE radiative transfer models in LIME (rotation, expansion, expansion+rotation, expansion+turbulence), convolve synthetic CO J=2-1 cubes to the ACA beam, regrid, and qualitatively compare channel maps and integrated intensity with observations.",
+   "software": [
+    "LIME"
+   ],
+   "key_parameters": [
+    "Inner radius = 0.3 pc, half opening angle = 10 deg, inclination = 70 deg, PA = 135 deg; v_phi = 1 km s^-1, v_exp = 3.5 km s^-1, v_turb = 0.25 km s^-1"
+   ],
+   "assumptions": [
+    "Axisymmetric ring at d = 6 kpc with r^-2 power-law density and temperature profiles anchored to RADEX outputs"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular ring angular size",
+   "value": "35x15",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO and 13CO emission",
+     "quote": "By fitting an ellipse to the lobes, we derive an approximate angular size of 35$\\times$15 arcsec, with a position angle of 135 degrees east of north."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular ring position angle",
+   "value": "135",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO and 13CO emission",
+     "quote": "By fitting an ellipse to the lobes, we derive an approximate angular size of 35$\\times$15 arcsec, with a position angle of 135 degrees east of north."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular ring viewing inclination angle (theta_i)",
+   "value": "68",
+   "uncertainty": "3",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Morphology and kinematics",
+     "quote": "This method yields an angle of $\\theta_i = 68\\pm3$ degrees, which implies that the ring is viewed nearly edge-on, with its semimajor axis following the direction in which the infrared shell is slightly elongated (cite: 2000A&A...356..501V)."
+    }
+   ]
+  },
+  {
+   "quantity": "Deprojected characteristic radius of molecular ring",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Morphology and kinematics",
+     "quote": "The deprojected characteristic radius of the structure is thus 15 arcsec, which is equivalent to $\\sim$0.4 pc at a distance of 6 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity of the CO ring",
+   "value": "32.5",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Morphology and kinematics",
+     "quote": "The ring extends from 29 to 36 km s$^{-1}$, with a central velocity of 32.5 km s$^{-1}$."
+    },
+    {
+     "loc": "Morphology and kinematics",
+     "quote": "Therefore, in our analysis, we consider a systemic velocity of 32.5 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring expansion velocity (v_exp)",
+   "value": "3.5",
+   "uncertainty": "0.5",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Morphology and kinematics",
+     "quote": "Correcting for the inclination, we estimate an expansion velocity of $v_\\mathrm{exp}=3.5\\pm0.5$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic age of the molecular ring (upper limit)",
+   "value": "10^5",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Morphology and kinematics",
+     "quote": "For a characteristic radius of 0.4 pc, the kinematic age of the ring would be $\\sim10^5$ years."
+    }
+   ]
+  },
+  {
+   "quantity": "225 GHz continuum flux density of compact central source",
+   "value": "30.2",
+   "uncertainty": "2.2",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radio continuum emission",
+     "quote": "We fitted a two-dimensional gaussian to the compact source, measuring a flux density of $30.2\\pm2.2$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "225 GHz continuum flux density of extended nebula",
+   "value": "40",
+   "uncertainty": "15",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radio continuum emission",
+     "quote": "We determined a nebular flux of $40\\pm15$ mJy after subtracting the contribution of the point source."
+    }
+   ]
+  },
+  {
+   "quantity": "Line ratio R_32 (CO 3-2 / CO 2-1) in the ring (C4)",
+   "value": "0.45",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "In the ring (component C4) we measure a $R_\\mathrm{32} = 0.45\\pm0.07$."
+    }
+   ]
+  },
+  {
+   "quantity": "Line ratio R_12/13 (CO 2-1 / 13CO 2-1) in the ring (C4)",
+   "value": "25",
+   "uncertainty": "4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "On the other hand, we measure a $R_\\mathrm{12/13}$ of $25\\pm4$ in C4."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring (C4) CO J=2-1 integrated intensity (W)",
+   "value": "4.79",
+   "uncertainty": "0.24",
+   "units": "K km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C4 | 33.7 | 5.7 | 0.79 | 4.79 (0.24) | 33.7 | 5.7 | 0.03 | 0.19 (0.03) | 33.7 | 5.7 | 0.67 | 4.09 (0.62)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring (C4) 13CO J=2-1 integrated intensity (W)",
+   "value": "0.19",
+   "uncertainty": "0.03",
+   "units": "K km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C4 | 33.7 | 5.7 | 0.79 | 4.79 (0.24) | 33.7 | 5.7 | 0.03 | 0.19 (0.03) | 33.7 | 5.7 | 0.67 | 4.09 (0.62)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring (C4) CO J=3-2 integrated intensity (W)",
+   "value": "4.09",
+   "uncertainty": "0.62",
+   "units": "K km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "C4 | 33.7 | 5.7 | 0.79 | 4.79 (0.24) | 33.7 | 5.7 | 0.03 | 0.19 (0.03) | 33.7 | 5.7 | 0.67 | 4.09 (0.62)"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit kinetic temperature of the ring (T_k)",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "We find that the model that best fits the observations is that with $T_\\mathrm{k}$ = 50 K, $N(\\mathrm{CO})$ = 2.4$\\times10^{16}$ cm$^{-2}$ and $n\\mathrm{(H_2)}$ = 1.3$\\times10^3$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit CO column density of the ring N(CO)",
+   "value": "2.4e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "We find that the model that best fits the observations is that with $T_\\mathrm{k}$ = 50 K, $N(\\mathrm{CO})$ = 2.4$\\times10^{16}$ cm$^{-2}$ and $n\\mathrm{(H_2)}$ = 1.3$\\times10^3$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit H2 volume density of the ring n(H2)",
+   "value": "1.3e3",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "We find that the model that best fits the observations is that with $T_\\mathrm{k}$ = 50 K, $N(\\mathrm{CO})$ = 2.4$\\times10^{16}$ cm$^{-2}$ and $n\\mathrm{(H_2)}$ = 1.3$\\times10^3$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit 13CO column density of the ring N(13CO)",
+   "value": "7.5e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "The best match is obtained for $N(^{13}\\mathrm{CO}) = 7.5\\times10^{14}$ cm$^{-2}$, which yields an isotopic ratio of $\\sim$ 30."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth of CO J=2-1 in the ring (tau_21 at 50 K)",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "The solution points to a moderately thick opacity in the emitting medium, with optical depths of $\\tau_{21}=1.2$ and $\\tau_{32}=0.8$ for this temperature range."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth of CO J=3-2 in the ring (tau_32 at 50 K)",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical parameters of the gas",
+     "quote": "The solution points to a moderately thick opacity in the emitting medium, with optical depths of $\\tau_{21}=1.2$ and $\\tau_{32}=0.8$ for this temperature range."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass in the ring",
+   "value": "2.7",
+   "uncertainty": "0.9",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The total mass of molecular gas in the ring is $2.7\\pm0.9$ M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Nebular ionised gas mass from ACA continuum",
+   "value": "3.9",
+   "uncertainty": "1.9",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass loss history of AG Car",
+     "quote": "Using our continuum data and following their approach, we obtain a nebular ionised mass of 3.9$\\pm1.9\\, \\mathrm{M}_{\\ensuremath{\\odot}}$, smaller but still in agreement within uncertainties with VN15’s estimate."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic duration of the molecular ring outflow",
+   "value": "5.6e4",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Mass loss history of AG Car",
+     "quote": "For $v_\\mathrm{exp}=3.5$ km s$^{-1}$, we obtain an approximate duration of $5.6\\times10^4$ years."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass-loss rate that produced the molecular ring",
+   "value": "4.8e-5",
+   "uncertainty": "1.6e-5",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Mass loss history of AG Car",
+     "quote": "The average mass-loss rate that produced the molecular ring is thus $\\dot M = (4.8\\pm1.6)\\times10^{-5}\\,\\mathrm{M}_{\\ensuremath{\\odot}}$ yr$^{-1}$, but it could be substantially higher if the structure is more compact than the ACA beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Current stellar wind mass-loss rate of AG Car",
+   "value": "1.55e-5",
+   "uncertainty": "0.21e-5",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "From the flux of the point-like source, we derived a current mass-loss rate of $\\dot M = (1.55\\pm0.21)\\times10^{-5}\\, \\mathrm{M}_{\\ensuremath{\\odot}}$ yr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN weighting scheme and robust parameter used for ACA line cubes and continuum imaging",
+  "Pixel cell size and image dimensions for ACA and feathered cubes",
+  "CLEAN stopping threshold and masking strategy",
+  "Frequency ranges or channels used for UV continuum subtraction",
+  "Exact frequency and bandwidth of the two continuum spectral windows",
+  "Exact value of the Helium correction factor (f_He) used in Equation 5 for the ring molecular mass",
+  "Outer radius or radial truncation used for the LIME 3D radiative transfer models",
+  "Exact functional form of the differential rotation law in LIME models 1 and 3"
+ ],
+ "missing_for_reproduction": [
+  "Exact CLEAN imaging parameters (weighting/robust, cell size, image size, stopping threshold, mask)",
+  "Continuum window frequencies and line-free channel ranges used for UV continuum subtraction",
+  "Exact Helium correction factor (f_He) used in Equation 5",
+  "LIME model input script (outer radius, radial reference radius r_0 for power laws, exact differential rotation law)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Raw ALMA data (2019.1.01056.S), CASA/pipeline versions, calibrators, spectral setup, RADEX grid bounds, beam-filling factors, and analytical equations are clearly stated. Minor deductions for unstated CLEAN imaging parameters, LIME outer boundary/rotation law details, and non-public custom scripts.",
+ "rediscovery_reason": "The ALMA ACA and Total Power data (2019.1.01056.S) are public in the ALMA archive, the calibration uses the standard ALMA pipeline (v42686 in CASA 5.6.1-8), and the core scientific results (ring dimensions, expansion velocity, 225 GHz continuum flux, current mass-loss rate, and RADEX excitation parameters) are concrete numerical targets.",
+ "source_card": "cards/2021MNRAS.500.5500B/sonnet/card.md"
+}

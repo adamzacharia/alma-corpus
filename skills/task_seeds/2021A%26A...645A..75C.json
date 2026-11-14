@@ -1,0 +1,346 @@
+{
+ "bibcode": "2021A&A...645A..75C",
+ "title": "Comprehensive rotational study and astronomical search for cyclopropanecarboxaldehyde",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039924",
+ "arxiv_id": null,
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Measure accurate rotational parameters and isomer stabilities of cyclopropanecarboxaldehyde (c-C3H5CHO) in the laboratory and search for its emission in Orion KL and Sgr B2(N).",
+ "alma_project_codes": [
+  "2011.0.00009.SV"
+ ],
+ "data": {
+  "bands": "1 mm",
+  "arrays": "not stated",
+  "angular_resolution": "~1.9 x 1.4 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Physical parameters and CH3CHO column densities of Orion KL components",
+    "evidence": [
+     {
+      "loc": "5. Search for cyclopropanecarboxaldehyde in space",
+      "quote": "To model the CPCA emission in these components, we adopted physical parameters according to those derived by Cernicharo et al. (2016) and Tercero et al. (2018)."
+     },
+     {
+      "loc": "Table 7",
+      "quote": "( b ) Cernicharo et al. (2016)."
+     }
+    ]
+   },
+   "citation": "Cernicharo et al. (2016); Tercero et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30 m 3 mm survey data, physical parameters, and CH3CHO column density of Sgr B2(N)",
+    "evidence": [
+     {
+      "loc": "5. Search for cyclopropanecarboxaldehyde in space",
+      "quote": "To estimate upper limits to the CPCA column density in the region, we adopted the physical parameters derived by Belloche et al. (2013) for CH 3 CHO (see Table 6)."
+     },
+     {
+      "loc": "Table 7",
+      "quote": "( d ) Belloche et al. (2013)."
+     }
+    ]
+   },
+   "citation": "Belloche et al. (2013)"
+  },
+  {
+   "what": {
+    "value": "Experimental dipole moments of trans and cis CPCA isomers",
+    "evidence": [
+     {
+      "loc": "4. Rotational spectrum and analysis",
+      "quote": "The two CPCA isomers are near symmetric tops with moderate dipole moments that have been experimentally determined by Volltrauer & Schwendeman (1971)."
+     }
+    ]
+   },
+   "citation": "Volltrauer & Schwendeman (1971)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Perform quantum chemical calculations of CPCA isomers",
+   "method": "Structural optimisation and harmonic/anharmonic vibrational frequency calculations using B3LYP, B97D, MP2, and CCSD with 6-311++G(d,p), cc-pVTZ, and aug-cc-pVTZ basis sets",
+   "software": [
+    "Gaussian16"
+   ],
+   "key_parameters": [
+    "MP2/6-311++G(d,p) level of theory for vibrational frequencies and vibration-rotation constants"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure and fit laboratory rotational spectra of cis and trans CPCA",
+   "method": "Measure broadband rotational spectra in 31.5–50 GHz and 72–116.5 GHz with GACELA and fit rotational and centrifugal distortion constants using Watson's S-reduced Hamiltonian",
+   "software": [
+    "SPFIT",
+    "ASFIT"
+   ],
+   "key_parameters": [
+    "Watson S-reduction in I^r representation (trans) and III^r representation (cis); frequency predictions up to 300 GHz; J_max = 90 for partition function"
+   ],
+   "assumptions": [
+    "T = 350 K for laboratory gas-phase relative stability; dipole moments from Volltrauer & Schwendeman (1971)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Search for CPCA and derive column density upper limits in Orion KL and Sgr B2(N)",
+   "method": "Generate LTE synthetic spectra with MADEX using fixed source physical parameters and compare to ALMA SV, IRAM 30 m, and GBT PRIMOS spectra to derive upper limits on column density",
+   "software": [
+    "MADEX"
+   ],
+   "key_parameters": [
+    "Orion KL: d_sou = 3 arcsec, T_rot = 150 K, v_LSR = 8.0 / 7.5 / 5.0 km s^-1, FWHM = 3.0 / 2.0 / 3.0 km s^-1; Sgr B2(N): d_sou = 3 arcsec, T_rot = 100 K, v_LSR = 63 / 73 km s^-1, FWHM = 8.0 km s^-1"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), uniform disc-type source model for beam dilution correction"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rotational constant A of trans-CPCA ground state",
+   "value": "15885.549",
+   "uncertainty": "0.045",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "A /MHz 15 885.549(45)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of trans-CPCA ground state",
+   "value": "3195.10235",
+   "uncertainty": "0.00026",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "B /MHz 3195.10235(26)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of trans-CPCA ground state",
+   "value": "3040.93992",
+   "uncertainty": "0.00025",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "C /MHz 3040.93992(25)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A of cis-CPCA ground state",
+   "value": "11417.32304",
+   "uncertainty": "0.00039",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "A /MHz 11 417.32304(39)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B of cis-CPCA ground state",
+   "value": "3994.186538",
+   "uncertainty": "0.000085",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "B /MHz 3994.186538(85)"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C of cis-CPCA ground state",
+   "value": "3849.930881",
+   "uncertainty": "0.000087",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "C /MHz 3849.930881(87)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase trans/cis relative intensity ratio at 350 K",
+   "value": "1.1985",
+   "uncertainty": "0.0037",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. Rotational spectrum and analysis",
+     "quote": "we find that the transitions for the trans isomer are 1.1985(37) times more intense than those"
+    }
+   ]
+  },
+  {
+   "quantity": "Energy difference between trans and cis CPCA isomers in gas phase",
+   "value": "44.05",
+   "uncertainty": "0.75",
+   "units": "cm^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. Rotational spectrum and analysis",
+     "quote": "Assuming a temperature for our experiment of 350K, this implies an energy difference between both isomers of 44.05(75) cm −1 , with the trans species being the most stable."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on N(trans-CPCA) in Orion KL Hot core",
+   "value": "<= 2.5e14",
+   "uncertainty": "1.2e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "(ALMA SV) ∼1.9 × 1.4 213.7–246.7 8.0 3.0 3 150 ≤(2.5 ± 1.2) ≤(6.0 ± 3.0)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on N(cis-CPCA) in Orion KL Hot core",
+   "value": "<= 6.0e14",
+   "uncertainty": "3.0e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "(ALMA SV) ∼1.9 × 1.4 213.7–246.7 8.0 3.0 3 150 ≤(2.5 ± 1.2) ≤(6.0 ± 3.0)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on N(trans-CPCA) in Orion KL Compact ridge and MM4",
+   "value": "<= 2.0e14",
+   "uncertainty": "1.0e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "(ALMA SV) ∼1.9 × 1.4 213.7–246.7 7.5 2.0 3 150 ≤(2.0 ± 1.0) ≤(5.0 ± 2.5)"
+    },
+    {
+     "loc": "Table 6",
+     "quote": "(ALMA SV) ∼1.9 × 1.4 213.7–246.7 5.0 3.0 3 150 ≤(2.0 ± 1.0) ≤(5.0 ± 2.5)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on N(cis-CPCA) in Orion KL Compact ridge and MM4",
+   "value": "<= 5.0e14",
+   "uncertainty": "2.5e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "(ALMA SV) ∼1.9 × 1.4 213.7–246.7 7.5 2.0 3 150 ≤(2.0 ± 1.0) ≤(5.0 ± 2.5)"
+    },
+    {
+     "loc": "Table 6",
+     "quote": "(ALMA SV) ∼1.9 × 1.4 213.7–246.7 5.0 3.0 3 150 ≤(2.0 ± 1.0) ≤(5.0 ± 2.5)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on N(trans-CPCA) in Sgr B2(N)",
+   "value": "<= 1.0e16",
+   "uncertainty": "0.5e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "63 8.0 3 100 ≤(100 ± 50) ≤(200 ± 100)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on N(cis-CPCA) in Sgr B2(N)",
+   "value": "<= 2.0e16",
+   "uncertainty": "1.0e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "63 8.0 3 100 ≤(100 ± 50) ≤(200 ± 100)"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on N(CH3CHO)/N(CPCA) ratio in Orion KL (HC and MM4)",
+   "value": ">= 2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "Orion KL (HC) 1.6 × 10 15 ( b ) ≥2"
+    },
+    {
+     "loc": "Table 7",
+     "quote": "Orion KL (MM4) 1.4 × 10 15 ( b ) ≥2"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on N(CH3CHO)/N(CPCA) ratio in Sgr B2",
+   "value": ">= 4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "Sgr B2 ( c ) 2.2 × 10 17 ( d ) ≥4"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA data calibration and imaging parameters (inherited from Tercero et al. 2015, 2018)",
+  "Aperture size or pixel extraction method used to extract spectra for the three Orion KL positions from the ALMA SV cubes",
+  "Exact criterion used to set the column density upper limits against the confusion/detection limit in MADEX"
+ ],
+ "missing_for_reproduction": [
+  "Calibrated and imaged ALMA SV spectral cubes for Orion KL (or exact imaging scripts from Tercero et al. 2015, 2018)",
+  "Raw laboratory broadband spectra from the GACELA spectrometer (only fitted line lists and predictions are at CDS)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Laboratory line lists, spectroscopic constants, partition functions, and frequency predictions are publicly archived at CDS, and the ALMA SV and GBT PRIMOS datasets are public with clear LTE model parameters in Table 6, though ALMA cube imaging details are deferred to earlier papers and upper limits rely on visual comparison in MADEX.",
+ "rediscovery_reason": "The CDS line lists and public ALMA SV / PRIMOS / IRAM 30 m datasets allow straightforward reproduction of the Hamiltonian fits (using SPFIT/ASFIT) and LTE column density upper limits.",
+ "source_card": "cards/2021A%26A...645A..75C/sonnet/card.md"
+}

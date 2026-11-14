@@ -1,0 +1,625 @@
+{
+ "bibcode": "2026AJ....172...75M",
+ "title": "ALMA Observations of Magnetic Fields in the Massive Star-forming Region IRAS 18360-0537",
+ "year": 2026,
+ "doi": "10.3847/1538-3881/ae78c8",
+ "arxiv_id": "2607.04822",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Reveal the magnetic field structure at high angular resolutions and investigate the importance of the magnetic field, gravity, and turbulence in the formation of high-mass stars in IRAS18360-0537.",
+ "alma_project_codes": [
+  "2017.1.00793.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 m array (43 to 47 antennas)",
+  "angular_resolution": "1''.37 x 1''.03 (C43-1); 0''.38 x 0''.30 (C43-4 and C43-5)",
+  "sensitivity": "C43-1: 1.3 mJy beam^-1 (Stokes I), 90 uJy beam^-1 (Stokes Q/U); C43-4/5: 0.35 mJy beam^-1 (Stokes I), 95 uJy beam^-1 (Stokes Q/U)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Kinematic distance of 6.3 kpc",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "This region is located at a kinematic distance of 6.3 kpc (Xu et al. 2021) with a far-IR luminosity of 1 . 2 × 10 [5] L ⊙ (Molinari et al. 1996)."
+     }
+    ]
+   },
+   "citation": "Xu et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Far-IR luminosity of 1.2 x 10^5 L_sun",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "This region is located at a kinematic distance of 6.3 kpc (Xu et al. 2021) with a far-IR luminosity of 1 . 2 × 10 [5] L ⊙ (Molinari et al. 1996)."
+     }
+    ]
+   },
+   "citation": "Molinari et al. 1996"
+  },
+  {
+   "what": {
+    "value": "Outflow mass of ~54 M_sun, gas mass of 80 M_sun, dust opacity beta = 0.82, protostar mass M1 = 10 M_sun, and distance between condensations 2L = 9500 AU",
+    "evidence": [
+     {
+      "loc": "4.2. Quantitative Comparisons",
+      "quote": "First, we adopted the outflow mass of ∼ 54 M ⊙ obtained by Qiu et al. (2012) from combined SMA and IRAM 30m CO data."
+     },
+     {
+      "loc": "A.2. Temperature and volume density",
+      "quote": "The mass density is calculated based on the gas mass of 80 M ⊙ from SMA observations (Qiu et al. 2012)."
+     },
+     {
+      "loc": "4.2. Quantitative Comparisons",
+      "quote": "The cylinder length, representing the distance between the two condensations’ centers, is 2 L = 9500 AU (Qiu et al. 2012)."
+     }
+    ]
+   },
+   "citation": "Qiu et al. 2012"
+  },
+  {
+   "what": {
+    "value": "SMA 1.3 mm polarization observations",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "(c) The 1.3 dust continuum contours and magnetic field segments observed by 1.3mm SMA polarization observations (Zhang et al. 2014)."
+     }
+    ]
+   },
+   "citation": "Zhang et al. 2014"
+  },
+  {
+   "what": {
+    "value": "Archival VLA observations of NH3 (1,1) and NH3 (2,2) lines",
+    "evidence": [
+     {
+      "loc": "5. SUMMARY AND CONCLUSIONS",
+      "quote": "Our analysis is based on the high-resolution ALMA Band 6 polarization observations, combined with archival VLA observations of NH 3 (1,1) and NH 3 (2,2) lines (Lu et al. 2014),"
+     }
+    ]
+   },
+   "citation": "Lu et al. 2014"
+  },
+  {
+   "what": {
+    "value": "Sample of magnetic-detected dense cores for beta_rot vs. core radius comparison",
+    "evidence": [
+     {
+      "loc": "Figure 5 caption",
+      "quote": "Data for the sources shown are taken from Hull & Zhang (2019) and Pattle et al. (2021) except IRAS 18360 (this work)."
+     }
+    ]
+   },
+   "citation": "Hull & Zhang (2019) and Pattle et al. (2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compute debiased polarized intensity, polarization fraction, and magnetic field position angles",
+   "method": "Compute polarized intensity from quadrature sum of Stokes Q and U, debias following Vaillancourt (2006), apply 3 sigma_P cutoff, compute polarization percentage p = P/I and position angle, and rotate by 90 degrees to get magnetic field orientation.",
+   "software": [],
+   "key_parameters": [
+    "Threshold = 3 sigma_P"
+   ],
+   "assumptions": [
+    "sigma_P approx sigma_Q approx sigma_U"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate magnetic field angular dispersion",
+   "method": "Fit analytical hourglass models (parabolic model of Girart et al. 2006 and Green's function model of Ewertowski & Basu 2013) by minimizing chi^2 of position angle residuals, and independently apply the structure function method (Falceta-Goncalves et al. 2008; Hildebrand et al. 2009) and angle dispersion function (ADF; Houde et al. 2016).",
+   "software": [],
+   "key_parameters": [
+    "Pixel size = 0.15'', angle measurement uncertainty sigma_phi = 1.4 deg; structure function fit range 1.1'' < l < 2.2''"
+   ],
+   "assumptions": [
+    "B0 = 1 in Ewertowski & Basu (2013) model; only first three terms in series considered; symmetry center and axis fixed to parabolic fit values"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate gas temperature, mass, and volume density",
+   "method": "Derive upper temperature limit via rotational diagram method on six unblended CH3OH lines; derive lower temperature limit by fitting VLA NH3 (1,1) and (2,2) hyperfine structure in GILDAS/CLASS; calculate gas mass and H2 volume density from 1.3 mm dust continuum and SMA mass.",
+   "software": [
+    "GILDAS",
+    "CLASS"
+   ],
+   "key_parameters": [
+    "Detected magnetic field region = 2.5'' x 1.95''; 3 sigma flux threshold for CH3OH transitions"
+   ],
+   "assumptions": [
+    "Optically thin dust emission, gas-to-dust ratio Lambda = 100, dust opacity kappa_nu = 2.9 cm^2 g^-1 with beta = 0.82, distance D = 6.3 kpc, LTE and optically thin CH3OH lines, line of sight axis aligned with minor axis of elliptical region, mean molecular weight mu = 2.86"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Determine turbulent velocity dispersion",
+   "method": "Measure CH3OH(10_2,9-9_3,9) linewidth, deduct bulk motions from centroid velocity dispersion following Yue et al. (2021), and use RADMC-3D envelope-disk radiative transfer model from Mo & Qiu (2023) to remove infall and rotational bulk motions.",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "Protostar mass = 60 M_sun, envelope mass = 80 M_sun, inner radius r0 = 730 AU, outer radius R = 12600 AU, density profile rho prop r^-2.5"
+   ],
+   "assumptions": [
+    "Thermal velocity is negligible"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate magnetic field strength, mass-to-flux ratio, and B-field-to-gravity force ratio",
+   "method": "Calculate plane-of-sky magnetic field strength B_pos via DCF equation (Crutcher et al. 2004), compute normalized mass-to-flux ratio lambda_obs and turbulent-to-magnetic energy ratio beta_turb, and apply the polarization-intensity gradient technique (Koch et al. 2012) to map Sigma_B = F_B / F_G.",
+   "software": [],
+   "key_parameters": [
+    "Q = 0.28, n(H2) = 1.0 x 10^6 cm^-3, delta_v_turb = 1.4 km s^-1, geometric correction factor f = 3/4"
+   ],
+   "assumptions": [
+    "Equipartition of turbulent kinetic and magnetic energy for DCF (noted as likely violated, making B_pos an upper limit); oblately compressed spheroid core geometry (f = 3/4)."
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Quantitatively compare magnetic field with outflow, rotation, and accretion kinematics",
+   "method": "Estimate outflow kinetic energy from SiO dynamics using two outflow mass estimates; calculate rotational-to-magnetic energy ratio beta_r-B, angular-velocity-to-B criterion omega/B, and rotational-to-gravitational energy ratio beta_r-G; perform centroid velocity fitting on CH3OH(10_2,9-9_3,9) to derive enclosed mass; model accretion flow velocity between MM2 and MM1.",
+   "software": [],
+   "key_parameters": [
+    "B_pos,u = 1.7 mG; M_out = 54 M_sun and 10 M_sun; v_rot = 2.4 km s^-1; V_A = 2.5 km s^-1; density power-law index n = 0 and 1.5; pseudo-disk radius R ~ 2500 AU; bandpass phase noise Phi_BP approx 3 deg; cylinder length 2L = 9500 AU; M1 = 10 M_sun"
+   ],
+   "assumptions": [
+    "Solid-body rotation and spherical moment of inertia for energy ratios; transitions localized on a fixed-radius disk (R ~ 2500 AU) for centroid velocity slope; cylindrical accretion flow between MM2 and MM1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Polarization percentage range (C43-1)",
+   "value": "0.5 to 6",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. The Dust Continuum Emission and the Magnetic Field Morphology",
+     "quote": "The polarization percentage spans from approximately 0.5% to 6%, with a median fraction of 3%."
+    }
+   ]
+  },
+  {
+   "quantity": "Median polarization percentage (C43-1)",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1. The Dust Continuum Emission and the Magnetic Field Morphology",
+     "quote": "The polarization percentage spans from approximately 0.5% to 6%, with a median fraction of 3%."
+    }
+   ]
+  },
+  {
+   "quantity": "Average magnetic field position angle",
+   "value": "127",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5. SUMMARY AND CONCLUSIONS",
+     "quote": "The field is predominantly oriented northwest-southeast, with an average position angle of ϕ [¯] P A = 127 [◦] ."
+    },
+    {
+     "loc": "A.1. The angular dispersion",
+     "quote": "the symmetry axis angle is θ [¯] B = 127 [◦] and the shape controlling parameter is C = 0 . 009 in the unit of pixel size (0.15 [′′] )."
+    }
+   ]
+  },
+  {
+   "quantity": "Corrected angular dispersion (parabolic hourglass model)",
+   "value": "5.6",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "A.1. The angular dispersion",
+     "quote": "Therefore, the corrected dispersion comes to δϕ cor,parab = 5 . 6 [◦], considering the angle measurement uncertainty of σ ¯ ϕ = 1 . 4 [◦] based on S/N of the polarized emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Corrected angular dispersion (Ewertowski & Basu 2013 hourglass model)",
+   "value": "4.7",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "A.1. The angular dispersion",
+     "quote": "Figure 8(b) shows the histogram of residual angles derived by this model, yielding a standard deviation of δϕ Emodel = 4 . 9 [◦] and the corrected dispersion of δϕ cor,Emodel = 4 . 7 [◦] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular dispersion (structure function method)",
+   "value": "9.2",
+   "uncertainty": "1.8",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "A.1. The angular dispersion",
+     "quote": "We find the turbulent contribution b ≈ 13 . 0 [◦] ± 2 . 5 [◦] (0 . 22 ± 0 . 04 rad ), equivalent to angle dispersion δϕ = 9 . 2 [◦] ± 1 . 8 [◦] and the turbulent to large-scale magnetic field strength ratio ⟨δB [2] ⟩ [1] [/] [2] /B 0 = 0 . 16 ± 0 . 03."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent to large-scale magnetic field strength ratio (structure function)",
+   "value": "0.16",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "A.1. The angular dispersion",
+     "quote": "We find the turbulent contribution b ≈ 13 . 0 [◦] ± 2 . 5 [◦] (0 . 22 ± 0 . 04 rad ), equivalent to angle dispersion δϕ = 9 . 2 [◦] ± 1 . 8 [◦] and the turbulent to large-scale magnetic field strength ratio ⟨δB [2] ⟩ [1] [/] [2] /B 0 = 0 . 16 ± 0 . 03."
+    }
+   ]
+  },
+  {
+   "quantity": "Average CH3OH rotational temperature",
+   "value": "160",
+   "uncertainty": "50",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "The average temperature of the center region is T R,CH 3 OH = 160 ± 50 K (see Figure 7)."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum gas mass limit (from T_R,CH3OH)",
+   "value": "39",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "The minimum gas mass limit derived from this rotational temperature map is M min = 39 M ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum H2 volume density (from T_R,CH3OH)",
+   "value": "4.9e5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "The average volume density of n ( H 2 ) min = 4 . 9 × 10 [5] cm [−] [3] ."
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 rotational temperature",
+   "value": "34.5",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "The rotational temperature of ammonia molecules is estimated to be T R,NH 3 = 34 . 5 K ."
+    }
+   ]
+  },
+  {
+   "quantity": "NH3 kinetic temperature",
+   "value": "55",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "We estimated the kinetic temperature of T K,NH 3 = 55 K, and considered it as the lower limit of the average dust temperature."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum gas mass limit (from T_K,NH3)",
+   "value": "105",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "The maximum values for mass and volume density as M max = 105 M ⊙ and n ( H 2) max = 1 . 3 × 10 [6] cm [−] [3], respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum H2 volume density (from T_K,NH3)",
+   "value": "1.3e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.2. Temperature and volume density",
+     "quote": "The maximum values for mass and volume density as M max = 105 M ⊙ and n ( H 2) max = 1 . 3 × 10 [6] cm [−] [3], respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted H2 volume density",
+   "value": "1.0e6",
+   "uncertainty": "0.7 to 1.15 times",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "The volume density is computed to be 1 . 0 × 10 [6] cm [−] [3] . The upper and lower limits of the gas mass result in a volume density error bar ranging from 0.7 to 1.15 times."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulence velocity dispersion (RADMC-3D model)",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "A.3. The turbulence velocity",
+     "quote": "Therefore, we ultimately derived a turbulence velocity of 1.4 km/s ."
+    }
+   ]
+  },
+  {
+   "quantity": "Plane-of-sky magnetic field strength (hourglass model fit)",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "mG",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "In summary, the magnetic field strength is estimated to be B hmodel = 3 . 2 mG and B sf = 1 . 7 mG by equation A1."
+    }
+   ]
+  },
+  {
+   "quantity": "Plane-of-sky magnetic field strength (structure function / upper limit)",
+   "value": "1.7",
+   "uncertainty": "not stated",
+   "units": "mG",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "In summary, the magnetic field strength is estimated to be B hmodel = 3 . 2 mG and B sf = 1 . 7 mG by equation A1."
+    },
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "Furthermore, when combined with the upper limit for gas mass, we provide an upper limit for magnetic field strength of B pos,u = 1 . 7 mG ."
+    }
+   ]
+  },
+  {
+   "quantity": "Normalized mass-to-flux ratio lambda_obs (hourglass model)",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "The mass-to-flux ratio within is computed as 0.88 for the model fitting method and 1.74 for the structure function method."
+    }
+   ]
+  },
+  {
+   "quantity": "Normalized mass-to-flux ratio lambda_obs (structure function)",
+   "value": "1.74",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "The mass-to-flux ratio within is computed as 0.88 for the model fitting method and 1.74 for the structure function method."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean B-field-to-gravity force ratio <Sigma_B>",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A.4. Comparison of the magnetic field, gravity, and turbulence",
+     "quote": "We determine the mean ratio of the same region as the DCF method to be ⟨ Σ B ⟩ = 0 . 4, indicating that the magnetic field does not dominate gravity (shown in Figure 10)."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic energy",
+   "value": "4.3e46 and 8.0e45",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "From these two mass estimates, we computed the corresponding kinetic energies to be 4 . 3 × 10 [46] erg and 8 . 0 × 10 [45] erg, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic energy (for B = 1.7 mG)",
+   "value": "4.6e45",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "Both values exceed the magnetic energy of 4 . 6 × 10 [45] erg derived from the 1 . 7 mG upper limit of magnetic field strength."
+    }
+   ]
+  },
+  {
+   "quantity": "Average rotational velocity",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "Assuming this gradient purely represents rotation, we estimate the average rotational velocity to be 2.4 km s [−] [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Alfven velocity",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "The Alfv´en velocity derived from the magnetic field strength is V A ∼ 2 . 5km s [−] [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational-to-magnetic energy ratio beta_r-B",
+   "value": "0.44 (n=0) and 0.29 (n=1.5)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "We obtain a β r−B = E rot /E B ratio of 0.44 for a uniform density distribution( n = 0) and 0.29 for a density profile with n =1.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed angular velocity to magnetic field ratio (omega/B)_obs",
+   "value": "2.0e-8",
+   "uncertainty": "not stated",
+   "units": "yr^-1 uG^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "Our evaluation of the observed ratio gives ( ω/B ) obs ∼ 2 . 0 × 10 [−] [8] yr [−] [1] µG [−] [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-gravity energy ratio beta_r-G",
+   "value": "0.34 (n=0) and 0.19 (n=1.5)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "For IRAS 18360, β r−G values are 0.34 (uniform density profile n =0) and 0.19 ( n =1.5), exceeding the median value by nearly an order of magnitude."
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed mass from CH3OH centroid velocity (blue-shifted lobe)",
+   "value": "49.6",
+   "uncertainty": "1.1",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "We therefore performed separate linear regression on the blue-shifted and red-shifted position-velocity slopes, obtaining an estimated enclosed mass of 49.6 ± 1.1 M ⊙ to 162.4 ± 7.3 M ⊙, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed mass from CH3OH centroid velocity (red-shifted lobe)",
+   "value": "162.4",
+   "uncertainty": "7.3",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "We therefore performed separate linear regression on the blue-shifted and red-shifted position-velocity slopes, obtaining an estimated enclosed mass of 49.6 ± 1.1 M ⊙ to 162.4 ± 7.3 M ⊙, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Accretion flow velocity (cylindrical toy model)",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "Consequently, for a protostar mass M 1 = 10 M ⊙ (Qiu et al. 2012), we estimate v flow ∼ � GM 1 /L ∼ 1.4 km s [−] [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Average infall velocity (RADMC-3D model)",
+   "value": "1.9",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Quantitative Comparisons",
+     "quote": "Weighting the velocity by [√] ρ to reflect the total infall energy, we estimate the average infall velocity of v ¯ model ≃ 1.9 km s [−] [1],"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Self-calibration solution intervals (solint) for the phase-only and amplitude+phase iterations",
+  "Line-free channel selection or continuum subtraction method for the TDM continuum windows and spectral line cubes",
+  "Cell size and image size for the high-resolution C43-4/5 imaging and spectral line cubes"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and pipeline version used for calibration and imaging",
+  "Self-calibration parameters (solution intervals, S/N thresholds, clean masking during self-cal)",
+  "Frequency ranges / channel selections used for continuum extraction and continuum subtraction in the TDM windows",
+  "Archival VLA NH3 cubes (Lu et al. 2014) and SMA continuum/polarization maps (Qiu et al. 2012; Zhang et al. 2014) used in the multi-facility steps",
+  "RADMC-3D model setup files from Mo & Qiu (2023)"
+ ],
+ "reproducibility_score": 68,
+ "score_reason": "The ALMA project code, calibrators, imaging weighting, beam sizes, sensitivities, and mathematical equations for all post-processing steps (debiasing, hourglass model fitting, structure function, rotational diagram, DCF, and kinematic models) are clearly specified. However, key dependencies (VLA NH3 data, SMA masses, and RADMC-3D modeling in Mo & Qiu 2023) are external, and low-level CASA self-calibration and continuum subtraction parameters are omitted.",
+ "rediscovery_reason": "The ALMA Cycle 5 dataset (2017.1.00793.S) is public in the archive, the continuum polarization debiasing, hourglass model fitting, structure function analysis, CH3OH rotational diagram, and CH3OH centroid velocity fitting follow standard, explicitly written equations, and the paper reports concrete numeric targets for all of them.",
+ "source_card": "cards/2026AJ....172...75M/sonnet/card.md"
+}

@@ -1,0 +1,203 @@
+{
+ "bibcode": "2020ApJ...899...94R",
+ "title": "Recombination Lines and Molecular Gas from Hypercompact H II regions in W51 A",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/aba749",
+ "arxiv_id": "2007.12276",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the physical properties, ionized-gas kinematics and molecular-gas kinematics of compact (hypercompact) HII regions in W51 A?",
+ "alma_project_codes": [
+  "2013.1.00308.S"
+ ],
+ "data": {
+  "bands": "VLA Ku-band (2 cm); ALMA lines near 218-232 GHz",
+  "arrays": "ALMA 12m array, two configurations; VLA D and B configurations",
+  "angular_resolution": "H30alpha beam 0.32\"x0.31\"; all RL/continuum images convolved to 0.40\"",
+  "sensitivity": "H30alpha rms about 3.53 mJy/beam per channel; 2-cm continuum rms about 50 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of cm-continuum sources in W51 A used for source selection",
+    "evidence": [
+     {
+      "loc": "Source Selection",
+      "quote": "We first impose a size cut to the catalog of (cite: Ginsburg16)"
+     }
+    ]
+   },
+   "citation": "Ginsburg16"
+  },
+  {
+   "what": {
+    "value": "Molecular-line cubes (H2CO, SO) from ALMA data release",
+    "evidence": [
+     {
+      "loc": "Observational Data",
+      "quote": "We also use the molecular-line cubes from the data release of (cite: Ginsburg17)."
+     }
+    ]
+   },
+   "citation": "Ginsburg17"
+  },
+  {
+   "what": {
+    "value": "Atomic and molecular line parameters from Splatalogue, mainly CDMS",
+    "evidence": [
+     {
+      "loc": "Observational Data",
+      "quote": "We retrieved atomic and molecular parameters from *Splatalogue*[^1], mainly taking the laboratory measurements from the Cologne Database for Molecular Spectroscopy (CDMS)"
+     }
+    ]
+   },
+   "citation": "Muller05"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select compact cm sources",
+   "method": "Size cut radii<1\" on Ginsburg16 catalog gives catalog A (29); sources within ALMA field give catalog B (20)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "d = 5.4 kpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure sizes, fluxes, optical depths, EM, ne, Lyman rate from 2-cm continuum",
+   "method": "Interactive 2D Gaussian fits; background-subtracted flux; brightness temperature, tau, EM, ne,c, Lc from equations",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Te = 7500 K; alpha_B = 2e-13 cm3/s"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract RL spectra and derive broadening and ne,RL",
+   "method": "Spectra from 2sigma aperture, scaled by 1/0.95; Gaussian fits; thermal, dynamical, pressure broadening via Voigt; ne from GM12 eq. A.4",
+   "software": [
+    "PySpecKit"
+   ],
+   "key_parameters": [
+    "R_apert = 2 x 0.42465 Theta_conv"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Classify molecular line profiles for infall/expansion",
+   "method": "Extract H2CO and SO spectra in same apertures; qualitative profile classification (blue/red-peaked, inverse P-Cygni); compare with H30alpha centroid",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "not stated"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Deconvolved diameter of sources with valid fits",
+   "value": "1e-3 to 1e-2 pc (10/20 sources)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We derive diameters for 10/20 sources in the range $D \\sim 10^{-3}$ to $\\sim 10^{-2}$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum electron density ne,c",
+   "value": "1e4 to 1e5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2-cm Continuum",
+     "quote": "electron densities are of order $n_{\\rm e, c} \\sim 10^4$ to $10^5$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "e2 H30alpha peak flux",
+   "value": "1365.84",
+   "uncertainty": "3.11",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "e2 | $3.26\\pm0.10$ | $56.84\\pm0.53$ | $34.42\\pm1.25$ | $1365.84\\pm3.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "e2 RL electron density",
+   "value": "3.62e5",
+   "uncertainty": "0.29e5",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "e2$^a$ | 18.52 | 9.68 | 21.18 $\\pm$ 1.70 | 7500 | 3.62 $\\pm$ 0.29"
+    }
+   ]
+  },
+  {
+   "quantity": "H77-H30 velocity differences",
+   "value": "-1 to -4",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Recombination Lines",
+     "quote": "The velocity differences range from $\\Delta v_{77-30} \\approx - 1$ to $- 4$ km s$^{-1}$  for all sources except for d2"
+    }
+   ]
+  },
+  {
+   "quantity": "Infall candidates",
+   "value": "3 of 8 embedded HC HII (e2, e3, e4)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular morphology and profiles",
+     "quote": "we have 3 out of 8 HC HII’s (e2, e3, e4) whose local molecular gas appears to have bulk infall motions"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging details (CASA version, robust, continuum subtraction) are only in Ginsburg17",
+  "Exact aperture positions and background ring radii for flux extraction",
+  "PySpecKit baseline and fit settings",
+  "Velocity ranges used for baseline fitting",
+  "Moment-0 integration ranges"
+ ],
+ "missing_for_reproduction": [
+  "Reduced cubes from Ginsburg17 data release",
+  "Aperture and background ring definitions",
+  "Fit initial guesses"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Analytic equations are given, but data reduction is deferred to earlier papers and many extraction details are missing.",
+ "rediscovery_reason": "Public data, equations and numeric tables are given, though processed cubes are needed.",
+ "source_card": "cards/2020ApJ...899...94R/sonnet/card.md"
+}

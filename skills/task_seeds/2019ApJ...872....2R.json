@@ -1,0 +1,190 @@
+{
+ "bibcode": "2019ApJ...872....2R",
+ "title": "ALMA Detection of Extreme Blueshifted Ionized Gas within 0.2 pc of Sgr A* from -480 to -300 km s<SUP>-1</SUP>",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aafd38",
+ "arxiv_id": "1901.03715",
+ "fields": [
+  "milky_way_ism"
+ ],
+ "question": "Is there extreme high-velocity blue-shifted ionized gas within the inner parsec of Sgr A*, and does it indicate a jet or wind-driven outflow?",
+ "alma_project_codes": [
+  "2015.A.00021.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.46\" x 0.35\" (PA = -67.8 deg)",
+  "sensitivity": "H30a cube sigma = 0.4 mJy per channel at 3 km/s; continuum ~0.8 mJy/beam (Jul 12/13), ~1.6 (Jul 18/19)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Proper motion transverse velocities of K25 (865 km/s), K33 (313 km/s), K32 (656), K41 (215)",
+    "evidence": [
+     {
+      "loc": "4.1 Unbound Mini-cavity",
+      "quote": "consider the K25 and K33 sources (cite: zhao09), which are 0$.\\!\\!^{\\prime\\prime}$52 and 0$.\\!\\!^{\\prime\\prime}$41 away from C1"
+     }
+    ]
+   },
+   "citation": "Zhao et al. 2009 (cite: zhao09)"
+  },
+  {
+   "what": {
+    "value": "Radio recombination line relation for line intensity vs EM",
+    "evidence": [
+     {
+      "loc": "3.1.4 The Gas Density",
+      "quote": "The line intensity at 231.9 GHz can be expressed as (cite: wilson12):"
+     }
+    ]
+   },
+   "citation": "(cite: wilson12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image continuum and H30a cube",
+   "method": "Combine spws, phase self-cal three times then amp+phase, apply to cube after uv linear continuum subtraction; Briggs 0.5",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 km/s channels, robust 0.5, PB cutoff 20%"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Locate and characterize high-velocity components C1-C4",
+   "method": "Elliptical Gaussian fits to integrated intensity in narrow velocity ranges; multi-Gaussian spectral fits; PV diagrams",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate electron density and mass",
+   "method": "EM from line intensity with Te = 7.5e3-12.5e3 K, path length = source size; density lower limit; total mass of region",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Te 7.5-12.5e3 K (1e4 K for total mass); path length equal to source size"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Assess boundness and outflow rates",
+   "method": "Escape velocity for 4e6 Msun BH combined with literature proper motions; momentum deposition rate for jet (gamma~2.7) or wind (1250 km/s) outflow",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Central mass 4e6 Msun, distance 8.5 kpc, flat mass profile"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "C1 peak velocity",
+   "value": "-455",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C1 | –0.68, –2.06 | 2.17 | –163 | 320 | 2.06 | –455 | 37.0 | 3.39 - 4.97 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C1 electron density lower limit",
+   "value": "3.39-4.97e4",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C1 | –0.68, –2.06 | 2.17 | –163 | 320 | 2.06 | –455 | 37.0 | 3.39 - 4.97 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass of blue-shifted gas",
+   "value": "0.052",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.4 The Gas Density",
+     "quote": "an average electron density of 1.6$\\times 10^4$ cm$^{-3}$ and total mass of 0.052 M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet mass outflow rate (mini-cavity)",
+   "value": "1.8e-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Mass Outflow Rate",
+     "quote": "a mass outflow rate of $1.8\\times10^{-7}$ M$_{\\odot}$ year$^{-1}$ would satisfy a jet origin"
+    }
+   ]
+  },
+  {
+   "quantity": "Wind mass-loss rate",
+   "value": "4e-5",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Mass Outflow Rate",
+     "quote": "the required mass-loss rate is $4\\times10^{-5}$ M$_{\\odot}$  yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape velocity at 0.09 pc projected",
+   "value": "~620",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Unbound Mini-cavity",
+     "quote": "the escape velocity at a *projected* distance of 0.09 pc (2$.\\!\\!^{\\prime\\prime}$2) is then $\\sim$ 620 km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels for continuum subtraction",
+  "Self-calibration solution intervals and reference antenna",
+  "Cell size, image size, deconvolver, masking and clean threshold",
+  "How the coordinate shift of +61/-123 mas was derived and which reference dataset",
+  "Flux calibrator and flux-scale details",
+  "Gaussian fitting details and the line-fit procedure",
+  "Origin of the 'size' deconvolution choice and uncertainties on measured values"
+ ],
+ "missing_for_reproduction": [
+  "Self-cal parameters",
+  "Line-free channels",
+  "Cleaning parameters (cell, size, mask)",
+  "Astrometric shift derivation",
+  "Fit uncertainties"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and key weighting and version given, but many imaging and self-cal details missing and no uncertainties.",
+ "rediscovery_reason": "Public data, main results (velocities, densities) are numeric, and the recipe is mostly stated, though details are missing.",
+ "source_card": "cards/2019ApJ...872....2R/sonnet/card.md"
+}

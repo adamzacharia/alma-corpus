@@ -1,0 +1,511 @@
+{
+ "bibcode": "2023MNRAS.518.3183L",
+ "title": "An extended [C II] halo around a massive star-forming galaxy at z = 5.3",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3016",
+ "arxiv_id": "2210.10023",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the morphological and kinematic properties of the [CII] 158 um emission in the z=5.25 main sequence galaxy HZ7 at high angular resolution, and does it host an extended [CII] halo relative to its rest-frame UV emission?",
+ "alma_project_codes": [
+  "2018.1.01359.S"
+ ],
+ "data": {
+  "bands": "Band 7 (275 GHz - 373 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.27\" average beam size (0.3\" resolution)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previous compact-configuration ALMA [CII] visibility data, spectroscopic redshift, coordinates, SFR, IR luminosity upper limit, stellar mass, dynamical mass, and initial [CII] measurements of HZ7",
+    "evidence": [
+     {
+      "loc": "Target Selection and Physical Properties",
+      "quote": "(cite: Capak2015) also estimated a SFR of $21_{-2}^{+5}$ $\\rm{M}_{\\odot} \\rm{yr}^{-1}$ using the (cite: Kennicutt1998) relation (cite: Ota2014; Capak2015) and a combination of UV and far-infrared data, as well as an upper limit of 10.35 L$_{\\odot}$ for the IR luminosity."
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "We concatenated the new ALMA observations with that obtained by (cite: Capak2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Capak2015)"
+  },
+  {
+   "what": {
+    "value": "HST magnitudes Y_105W, J_125W, H_160W and upper FIR luminosity limit log(L_FIR/L_sun) < 10.35",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| $Y_{\\rm 105W}$ | $24.56 \\pm 0.04$ | (cite: Barisic2017) |"
+     },
+     {
+      "loc": "Physical Interpretations",
+      "quote": "(cite: Barisic2017) calculates an upper FIR limit of $\\log\\left(L_{\\rm FIR}/L_{\\odot}\\right) < 10.35$, resulting in a lower limit ratio $\\log\\left(L_{\\rm [CII]}/L_{\\rm FIR}\\right)>1.5$, which would imply shock-enhanced [CII] emission according to (cite: appleton2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Barisic2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate, and image ALMA visibility data with JvM correction",
+   "method": "Perform initial pipeline calibration, apply manual flagging of bad time periods and channels, concatenate with compact-configuration data from Capak et al. (2015), interactively CLEAN with natural weighting and manual masking, and apply the JvM residual flux scaling correction.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting",
+    "average beam size of 0.27\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Astrometrically calibrate archival HST/WFC3 images",
+   "method": "Query GAIA DR2 using astroquery.gaia, manually associate GAIA stars with stars in the HST F105W, F125W, and F160W images, compute positional offset, and apply average offset to HST images.",
+   "software": [
+    "astroquery.gaia",
+    "Align.py"
+   ],
+   "key_parameters": [
+    "Average astrometric offset ~ 0.300 +/- 0.008\" (Delta alpha = -0.128\"; Delta delta = 0.283\")"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spatially integrated [CII] spectrum and measure line properties",
+   "method": "Iterative aperture and masking procedure following Bethermin et al. (2020): place beam-area aperture at source center, extract spectrum, fit Gaussian to get FWHM, create moment-0 map over FWHM, mask cube at >3 sigma, and repeat until spectrum converges.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Initial aperture center: alpha = 09:59:30.459, delta = 2.08.02.586; area equal to beam width",
+    "3 sigma moment-0 threshold mask"
+   ],
+   "assumptions": [
+    "Vanilla LambdaCDM cosmology with Omega_m = 0.3, Omega_Lambda = 0.7, H_0 = 70 km s^-1 Mpc^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Generate [CII] moment-0, velocity field (moment-1), and velocity dispersion (moment-2) maps",
+   "method": "Collapse channels within the fitted [CII] FWHM (18 channels on either side of central channel, 540 km s^-1 range) to form moment-0 map; mask velocity field and dispersion maps using >3 sigma region of the moment-0 map.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "18 channels on either side of central emission channel (velocity range of 540 km s^-1)",
+    "3 sigma moment-0 mask for moment-1 and moment-2 maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Extract surface brightness radial profiles and fit Sersic models to [CII] and UV maps",
+   "method": "Convolve HST images with the ALMA beam. Determine emission peaks via independent 1D Gaussian fits to RA- and Dec-summed profiles. Place concentric annuli in 0.1\" bins around the peak, compute area-normalized flux and uncertainties (Eqs. 1 and 2), and fit Sersic profiles (both free n and fixed n=1) using emcee.",
+   "software": [
+    "CASA",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Annulus bin width = 0.1\"",
+    "Sersic index n free, and fixed n = 1.0"
+   ],
+   "assumptions": [
+    "Independent centering of HST and [CII] profiles removes residual systematic astrometric offsets"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Test [CII] halo detection criteria and search for outflow signatures in multi-aperture spectra",
+   "method": "Apply Fujimoto et al. (2020) and Herrera-Camus et al. (2021) >4 sigma halo tests. Place seven small circular apertures (radii 0.05\" and 0.02\") around the source and inspect [CII] line profiles for velocity offsets or broad secondary components.",
+   "software": [],
+   "key_parameters": [
+    "Halo detection threshold: > 4 sigma outside central beam (up to 10 kpc) or beyond rest-frame UV emission",
+    "Seven circular apertures with radii of 0.05\" and 0.02\""
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] integrated flux density (S_[CII])",
+   "value": "0.86",
+   "uncertainty": "0.11",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spatially integrated emission line",
+     "quote": "The shape and integrated flux of the spectrum is similar with that obtained by (cite: Capak2015) with a FWHM of $298 \\pm 27$ km s$^{-1}$ and an integrated flux density ($S_{\\rm [CII]}$) of $0.86~\\pm~0.11$ Jy km s$^{-1}$ (as compared to $380 \\pm 42$ km s$^{-1}$ and 0.71 $\\pm$ 0.07 Jy km s$^{-1}$)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| $S_{ \\rm [CII]}$ | $0.86 \\pm 0.11$ Jy km s$^{-1}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line luminosity log(L_[CII]/L_sun)",
+   "value": "8.8",
+   "uncertainty": "0.1",
+   "units": "dex (log L_sun)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spatially integrated emission line",
+     "quote": "We calculate the [CII] line luminosity to be $\\log\\left(L_{\\rm [CII]}/L_{\\odot}\\right)~=~8.8 \\pm 0.1$—very close to the value of 8.74, estimated by (cite: Capak2015)."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| log$\\left(L_{\\rm [CII]}\\right / L_{\\odot})$ | $8.8 \\pm 0.1$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line FWHM",
+   "value": "298",
+   "uncertainty": "27",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| [CII] FWHM | $298 \\pm 27$ km s$^{-1}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] velocity dispersion (sigma_[CII])",
+   "value": "127",
+   "uncertainty": "12",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\sigma_{\\rm [CII]}$ | $127 \\pm 12$ km s$^{-1}$ | this work |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] effective radius R_e (free Sersic index)",
+   "value": "0.59",
+   "uncertainty": "+0.08/-0.10",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | $0.59^{+0.08}_{-0.10}$ | $3.60^{+0.49}_{-0.64}$ | $1.28^{+0.21}_{-0.27}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] effective radius R_e (free Sersic index)",
+   "value": "3.60",
+   "uncertainty": "+0.49/-0.64",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | $0.59^{+0.08}_{-0.10}$ | $3.60^{+0.49}_{-0.64}$ | $1.28^{+0.21}_{-0.27}$ |"
+    },
+    {
+     "loc": "Summary and Conclusions",
+     "quote": "The [CII] emission has an effective radius of 3.60$^{+0.49}_{-0.64}$ kpc, for a free Sérsic index (and an effective radius of $3.07^{+0.23}_{-0.25}$ for a fixed Sérsic index of 1) whilst the average UV emission amongst the three filters $\\sim 1.4$ kpc—indicating a [CII] halo extending 3.3 times the UV emission."
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] Sersic index n (free fit)",
+   "value": "1.28",
+   "uncertainty": "+0.21/-0.27",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | $0.59^{+0.08}_{-0.10}$ | $3.60^{+0.49}_{-0.64}$ | $1.28^{+0.21}_{-0.27}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] effective radius R_e (fixed Sersic index n=1)",
+   "value": "0.50",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For a matched Sérsic profile with n = 1, we measured a [CII] effective radius of $0.50\\pm 0.04$\" (3.07$\\pm 0.25$ kpc) and an average rest-frame UV effective radius of $0.2\\pm0.04$\" ($1.48\\pm0.16$ kpc)."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| | $0.50^{+0.04}_{-0.04}$ | $3.07^{+0.23}_{-0.25}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] effective radius R_e (fixed Sersic index n=1)",
+   "value": "3.07",
+   "uncertainty": "+0.23/-0.25",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | $0.50^{+0.04}_{-0.04}$ | $3.07^{+0.23}_{-0.25}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST Y_105W effective radius R_e (free Sersic index)",
+   "value": "0.20",
+   "uncertainty": "+0.02/-0.03",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Y$_{105W}$ | $0.20^{+0.02}_{-0.03}$ | $1.23^{+0.11}_{-0.16}$ | $0.55^{+0.13}_{-0.22}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST Y_105W effective radius R_e (free Sersic index)",
+   "value": "1.23",
+   "uncertainty": "+0.11/-0.16",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Y$_{105W}$ | $0.20^{+0.02}_{-0.03}$ | $1.23^{+0.11}_{-0.16}$ | $0.55^{+0.13}_{-0.22}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST Y_105W Sersic index n (free fit)",
+   "value": "0.55",
+   "uncertainty": "+0.13/-0.22",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Y$_{105W}$ | $0.20^{+0.02}_{-0.03}$ | $1.23^{+0.11}_{-0.16}$ | $0.55^{+0.13}_{-0.22}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST J_125W effective radius R_e (free Sersic index)",
+   "value": "0.24",
+   "uncertainty": "+0.04/-0.11",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J$_{125W}$ | $0.24^{+0.04}_{-0.11}$ | $1.47^{+0.24}_{-0.69}$ | $1.04^{+0.37}_{-0.87}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST J_125W effective radius R_e (free Sersic index)",
+   "value": "1.47",
+   "uncertainty": "+0.24/-0.69",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J$_{125W}$ | $0.24^{+0.04}_{-0.11}$ | $1.47^{+0.24}_{-0.69}$ | $1.04^{+0.37}_{-0.87}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST J_125W Sersic index n (free fit)",
+   "value": "1.04",
+   "uncertainty": "+0.37/-0.87",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J$_{125W}$ | $0.24^{+0.04}_{-0.11}$ | $1.47^{+0.24}_{-0.69}$ | $1.04^{+0.37}_{-0.87}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST H_160W effective radius R_e (free Sersic index)",
+   "value": "0.23",
+   "uncertainty": "+0.04/-0.10",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_{160W}$ | $0.23^{+0.04}_{-0.10}$ | $1.41^{+0.21}_{-0.58}$ | $0.83^{+0.29}_{-0.74}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST H_160W effective radius R_e (free Sersic index)",
+   "value": "1.41",
+   "uncertainty": "+0.21/-0.58",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_{160W}$ | $0.23^{+0.04}_{-0.10}$ | $1.41^{+0.21}_{-0.58}$ | $0.83^{+0.29}_{-0.74}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST H_160W Sersic index n (free fit)",
+   "value": "0.83",
+   "uncertainty": "+0.29/-0.74",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_{160W}$ | $0.23^{+0.04}_{-0.10}$ | $1.41^{+0.21}_{-0.58}$ | $0.83^{+0.29}_{-0.74}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST Y_105W effective radius R_e (fixed Sersic index n=1)",
+   "value": "0.24",
+   "uncertainty": "+0.02/-0.03",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Y$_{105W}$ | $0.24^{+0.02}_{-0.03}$ | $1.48^{+0.15}_{-0.16}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST Y_105W effective radius R_e (fixed Sersic index n=1)",
+   "value": "1.48",
+   "uncertainty": "+0.15/-0.16",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Y$_{105W}$ | $0.24^{+0.02}_{-0.03}$ | $1.48^{+0.15}_{-0.16}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST J_125W effective radius R_e (fixed Sersic index n=1)",
+   "value": "0.24",
+   "uncertainty": "+0.02/-0.03",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J$_{125W}$ | $0.24^{+0.02}_{-0.03}$ | $1.44^{+0.14}_{-0.15}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST J_125W effective radius R_e (fixed Sersic index n=1)",
+   "value": "1.44",
+   "uncertainty": "+0.14/-0.15",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| J$_{125W}$ | $0.24^{+0.02}_{-0.03}$ | $1.44^{+0.14}_{-0.15}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST H_160W effective radius R_e (fixed Sersic index n=1)",
+   "value": "0.23",
+   "uncertainty": "+0.03/-0.03",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_{160W}$ | $0.23^{+0.03}_{-0.03}$ | $1.51^{+0.17}_{-0.18}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HST H_160W effective radius R_e (fixed Sersic index n=1)",
+   "value": "1.51",
+   "uncertainty": "+0.17/-0.18",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_{160W}$ | $0.23^{+0.03}_{-0.03}$ | $1.51^{+0.17}_{-0.18}$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average rest-frame UV effective radius R_e (fixed Sersic index n=1)",
+   "value": "0.2",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For a matched Sérsic profile with n = 1, we measured a [CII] effective radius of $0.50\\pm 0.04$\" (3.07$\\pm 0.25$ kpc) and an average rest-frame UV effective radius of $0.2\\pm0.04$\" ($1.48\\pm0.16$ kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average rest-frame UV effective radius R_e (fixed Sersic index n=1)",
+   "value": "1.48",
+   "uncertainty": "0.16",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For a matched Sérsic profile with n = 1, we measured a [CII] effective radius of $0.50\\pm 0.04$\" (3.07$\\pm 0.25$ kpc) and an average rest-frame UV effective radius of $0.2\\pm0.04$\" ($1.48\\pm0.16$ kpc)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and imaging",
+  "Exact imaging cell size, image dimensions, and CLEAN stopping threshold / niter",
+  "Channel width of the spectral cube (implied 15 km/s from 36 channels spanning 540 km/s, but not explicitly stated in setup)",
+  "Exact RMS noise levels (sigma) of the continuum map, moment-0 map, and spectral cube",
+  "Whether continuum subtraction (e.g. uvcontsub) was performed on the visibility data prior to imaging the [CII] line",
+  "Exact priors and number of walkers/steps used in the emcee MCMC fitting of the Sersic radial profiles"
+ ],
+ "missing_for_reproduction": [
+  "Project code of the earlier Capak et al. (2015) ALMA dataset (not printed in this paper, though cited)",
+  "Exact manual flagging commands and interactive CLEAN masks used during imaging",
+  "Exact pixel scale, image size, and channel width used in tclean/clean",
+  "Exact RMS noise values in the final continuum and moment-0 maps"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Both ALMA and HST datasets are publicly available, the astrometric script is on GitHub, and the spectral extraction, moment map creation, and radial profile fitting steps are clearly explained with equations; however, low-level CASA imaging parameters, manual CLEAN masks, and RMS values are not explicitly tabulated.",
+ "rediscovery_reason": "Public single-target ALMA and HST data with well-defined quantitative outputs ([CII] line flux, FWHM, luminosity, and Sersic effective radii for [CII] and three HST filters) and a robust main result that holds even with the 2018 ALMA dataset alone.",
+ "source_card": "cards/2023MNRAS.518.3183L/sonnet/card.md"
+}

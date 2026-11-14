@@ -1,0 +1,221 @@
+{
+ "bibcode": "2024ApJ...965..147B",
+ "title": "The Carbon Isotopic Ratio and Planet Formation",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad3443",
+ "arxiv_id": "2403.09739",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What is the 12C/13C ratio in C2H in the TW Hya disk, does it differ from that in CO, and can thermochemical models with isotopic fractionation produce two separate carbon isotopic reservoirs?",
+ "alma_project_codes": [
+  "2013.1.00198.S",
+  "2015.1.00308.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "13CCH 0.32\" x 0.30\" PA 4.4 deg; C2H 0.50\" x 0.41\" PA 59.0 deg",
+  "sensitivity": "3.6 mJy/beam per 210 m/s channel (13CCH)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "C2H ALMA data and imaging (2013.1.00198.S)",
+    "evidence": [
+     {
+      "loc": "2.1 C$_2$H",
+      "quote": "We refer the reader to the original article for details on the data reduction and imaging."
+     }
+    ]
+   },
+   "citation": "Bergin et al. 2016 (cite: Bergin16)"
+  },
+  {
+   "what": {
+    "value": "CO 12C/13C ratio 21±5 at 70-110 au",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 70 – 110 | / | 21$^{+5}_{-5}$ | (cite: Yoshida22) |"
+     }
+    ]
+   },
+   "citation": "(cite: Yoshida22)"
+  },
+  {
+   "what": {
+    "value": "Other TW Hya 12C/13C ratios (Zhang17, Hily-Blant19, Yoshida24)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| $<$ 60 | / | 86$^{+4}_{-4}$ | (cite: Hily-Blant19) |"
+     }
+    ]
+   },
+   "citation": "(cite: Zhang17; Hily-Blant19; Yoshida24)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Integrated C2H flux",
+   "method": "Keplerian-masked moment-0 map; integrated over disk and annulus 0.52-1.68 arcsec; uncertainties following Teague19",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "i=6.8 deg, PA=151 deg, Mstar=0.6 Msun, d=60.1 pc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract 13CCH stacked spectrum",
+   "method": "Shift spectra by Keplerian velocity, stack in annuli 0.52-1.68 arcsec weighted by area, integrate",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Annulus width 1/4 beam FWHM (~80 mas); weights proportional to r^2; centre offset (-52, -155) mas"
+   ],
+   "assumptions": [
+    "13CCH radial profile follows C2H"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive C2H/13CCH ratio",
+   "method": "Ratio of integrated flux (and peak) densities, assuming optically thin, correcting 11% A-coefficient difference",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "C2H optically thin"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model carbon isotope fractionation",
+   "method": "DALI late-stage and early-stage disk models with isotope network, vertical cuts at 63 au",
+   "software": [
+    "DALI"
+   ],
+   "key_parameters": [
+    "zeta 1e-19 (late) vs 5e-17 s-1 (early); small-grain fraction 1% vs 10%; run 1 Myr; initial 12C/13C 77"
+   ],
+   "assumptions": [
+    "C/O ~2 late-stage, half of gas carbon in CH4; early stage ISM CO 2.7e-4"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "13CCH integrated flux, bright annulus",
+   "value": "56.9",
+   "uncertainty": "14.1",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 $^{13}$CCH",
+     "quote": "yields an integrated flux of $56.9 \\pm 14.1~{\\rm mJy~km\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H integrated flux, annulus",
+   "value": "4.20",
+   "uncertainty": "0.68",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 C$_2$H",
+     "quote": "we find $4.20 \\pm 0.68~{\\rm Jy~km\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H/13CCH flux ratio, bright annulus",
+   "value": "74",
+   "uncertainty": "22",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we find a C$_2$H / $^{13}$CCH ratio of $74 \\pm 22$ in the bright annulus"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CCH)/N(13CCH)",
+   "value": "65",
+   "uncertainty": "20",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "N(CCH)/N($^{13}$CCH) = 65$\\pm$20"
+    }
+   ]
+  },
+  {
+   "quantity": "Model CO 12C/13C at 63 au, late stage",
+   "value": "79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The gaseous CO isotopic ratio estimated from column density ratios at 63 au is 79"
+    }
+   ]
+  },
+  {
+   "quantity": "Model C2H ratio, late stage",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The gaseous C$_2$H isotopic ratio estimated from column density ratios is 78"
+    }
+   ]
+  },
+  {
+   "quantity": "Early-stage model CO 12C/13C",
+   "value": "~50",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$^{13}$CO gas becomes modestly enriched with $^{12}$C/$^{13}$C $\\sim$ 50"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, deconvolver, threshold and masking for CLEAN of 13CCH",
+  "Line-free channels used for self-calibration and solint",
+  "Rest frequencies and hyperfine line parameters",
+  "Velocity integration limits for line fluxes",
+  "Flux calibrator flux values",
+  "Full DALI chemical network files and grid setup"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond robust",
+  "Full DALI model inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and extraction method clear, but imaging details and DALI setup rely on prior papers.",
+ "rediscovery_reason": "Public data, stacking recipe described, numeric flux and ratio results.",
+ "source_card": "cards/2024ApJ...965..147B/sonnet/card.md"
+}

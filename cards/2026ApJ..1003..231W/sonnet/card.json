@@ -1,0 +1,867 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2026ApJ..1003..231W",
+  "title": "Multiscale Gas Structure and Dynamics in an Extragalactic Central Molecular Zone",
+  "year": 2026,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Wang, Liam M.",
+  "n_authors": 7,
+  "arxiv_id": "2604.06354",
+  "doi": "10.3847/1538-4357/ae6448",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00059.S",
+   "2022.1.00159.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "This paper uses ALMA CO (3–2) observations at $0.1\\ensuremath{''}\\approx5$ pc resolution to examine the scale dependence of molecular gas structure and dynamics in the central molecular zone (CMZ) of a nearby galaxy, NGC 3351."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "NGC 3351",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated (0.1'' ≈ 5 pc, 2.1'' ~ 100 pc)",
+      "evidence": [
+       {
+        "loc": "2 Data and Method",
+        "quote": "We convert this angular size into a physical size, $r_\\mathrm{phy}$, according to the distance to NGC 3351."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "possibly Anand2021 (cite given for proximity)",
+      "evidence": [
+       {
+        "loc": "2 Data and Method",
+        "quote": "We convert this angular size into a physical size, $r_\\mathrm{phy}$, according to the distance to NGC 3351."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do molecular gas structure, ordered versus random motions, and self-gravity vary with spatial scale in the CMZ of NGC 3351?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "examine the scale dependence of molecular gas structure and dynamics in the central molecular zone (CMZ) of a nearby galaxy, NGC 3351."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00059.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA# 2021.1.00059.S, 2022.1.00159.S."
+      }
+     ]
+    },
+    {
+     "code": "2022.1.00159.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA# 2021.1.00059.S, 2022.1.00159.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2 Data and Method",
+       "quote": "We use ALMA $\\mathrm{CO}\\,(3\\text{--}2)$ data targeting the central $\\sim$1 kpc$^2$ of NGC 3351"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "two 12m array configurations plus the 7m array",
+    "evidence": [
+     {
+      "loc": "footnote 1",
+      "quote": "We combine data from two 12m array configurations and the 7m array to recover flux on spatial scales up to the full size of the CMZ in NGC 3351."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.1'' ~ 5 pc",
+    "evidence": [
+     {
+      "loc": "2 Data and Method",
+      "quote": "to achieve both high resolution ($0.1''\\sim5$ pc) and full recovery of flux on larger scales"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "noise 1.3 K per 2.5 km/s channel",
+    "evidence": [
+     {
+      "loc": "2 Data and Method",
+      "quote": "has a velocity channel width of 2.5 km/s and a noise level of 1.3 K."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO isotopologue data (incl. CO 1-0) at 2.1'' resolution used for LVG alpha_CO modeling",
+      "evidence": [
+       {
+        "loc": "2.2 Gas Mass",
+        "quote": "using all the CO isotopologue data in (cite: Teng2022)"
+       }
+      ]
+     },
+     "citation": "(cite: Teng2022)"
+    },
+    {
+     "what": {
+      "value": "Arctan rotation curve of NGC 3351 (V0=206.8 km/s, Rt=0.3 kpc)",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "We use the arctan model of the galactic rotation curve fitted in (cite: Lang2020)"
+       }
+      ]
+     },
+     "citation": "(cite: Lang2020)"
+    },
+    {
+     "what": {
+      "value": "Size-linewidth relations for NGC 253 and Milky Way CMZ for comparison",
+      "evidence": [
+       {
+        "loc": "3.1 Larson's Relations",
+        "quote": "compares this relation with those found with $\\mathrm{CO}\\,(3\\text{--}2)$ data for the CMZs of NGC 253 and our Milky Way"
+       }
+      ]
+     },
+     "citation": "(cite: Krieger2020)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "strict mask: >2σ over 4 consecutive channels, expanded to connected >2σ over 2 channels",
+     "evidence": [
+      {
+       "loc": "footnote 2",
+       "quote": "we include CO detection above 2$\\sigma$ over 4 consecutive channels, and then expand to all morphologically connected CO emission above 2$\\sigma$ over 2 channels in the cube."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "two 12m configurations + 7m combined",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "We combine data from two 12m array configurations and the 7m array to recover flux on spatial scales up to the full size of the CMZ in NGC 3351."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "convolved to 2.1'' common beam for alpha_CO",
+     "evidence": [
+      {
+       "loc": "2.2 Gas Mass",
+       "quote": "we convolve our $\\mathrm{CO}\\,(3\\text{--}2)$ data to match the minimum common beam size of $2.1''$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observational design and data reduction taken from Sun2024",
+      "evidence": [
+       {
+        "loc": "2 Data and Method",
+        "quote": "Interested readers are encouraged to consult (cite: Sun2024) for more details about the observational design and data reduction."
+       }
+      ]
+     },
+     "from_reference": "(cite: Sun2024)"
+    },
+    {
+     "what": {
+      "value": "Strict masking scheme",
+      "evidence": [
+       {
+        "loc": "2 Data and Method",
+        "quote": "following the “strict” masking scheme[^2] defined by (cite: Leroy2021)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Leroy2021)"
+    },
+    {
+     "what": {
+      "value": "alpha_CO via LVG modeling procedure",
+      "evidence": [
+       {
+        "loc": "2.2 Gas Mass",
+        "quote": "following their procedure for measuring $\\alpha_\\mathrm{CO}$ based on Large Velocity Gradient (LVG) modeling (cite: Teng2023)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Teng2022; Teng2023)"
+    }
+   ],
+   "unstated_but_needed": [
+    "astrodendro min_value, min_delta values in K and min_npix beyond 'beam size'",
+    "Adopted distance to NGC 3351",
+    "Exact pixel size and beam of the cube and details of outer-ring mask",
+    "Whether sigma_v and radius use astrodendro defaults (e.g. bijection/ scaling factors)",
+    "Binning for running median",
+    "Fit weighting details for np.polyfit (log space, errors)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Build dendrogram",
+    "method": {
+     "value": "astrodendro on PPV cube within strict signal mask over the outer ring",
+     "evidence": [
+      {
+       "loc": "2 Data and Method",
+       "quote": "we create a dendrogram from the CO PPV data cube with `astrodendro`"
+      }
+     ]
+    },
+    "software": [
+     "astrodendro"
+    ],
+    "key_parameters": [
+     {
+      "value": "structures no smaller than the beam; child brighter than parent by at least 2 rms",
+      "evidence": [
+       {
+        "loc": "2 Data and Method",
+        "quote": "each “child” structure should be brighter than its “parent” structure by at least twice the rms noise."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Structure size and gas mass",
+    "method": {
+     "value": "radius from second moment converted with distance; M = alpha_CO(3-2) L_CO(3-2) with alpha from LVG map at ~100 pc",
+     "evidence": [
+      {
+       "loc": "2.2 Gas Mass",
+       "quote": "we derive a $\\alpha_\\mathrm{CO(3{-}2)}$ map at $\\sim$100 pc resolution"
+      }
+     ]
+    },
+    "software": [
+     "astrodendro"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO(3-2) 0.3-0.7 Msun pc^-2 (K km/s)^-1 from one-component LVG, median of probability distribution",
+      "evidence": [
+       {
+        "loc": "2.2 Gas Mass",
+        "quote": "we extract the median value of each probability distribution to be our $\\alpha_\\mathrm{CO(3{-}2)}$ solutions."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Bayesian likelihood LVG modeling following Teng2022",
+     "evidence": [
+      {
+       "loc": "2.2 Gas Mass",
+       "quote": "We then incorporate the convolved $\\mathrm{CO}\\,(3\\text{--}2)$ data into their one-component LVG modeling and Bayesian likelihood analysis."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Separate ordered and random motions",
+    "method": {
+     "value": "fit linear velocity gradient per structure weighted by brightness temperature; sigma_rand = rms residual; sigma_ord by quadrature difference; alternative method uses moment-1 as ordered model",
+     "evidence": [
+      {
+       "loc": "2.4 Velocity Dispersions",
+       "quote": "We then fit our velocity gradient model for each structure in PPV space, weighted by the brightness temperature at each pixel."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "two methods give upper/lower bounds",
+     "evidence": [
+      {
+       "loc": "2.4 Velocity Dispersions",
+       "quote": "Using two different methods for separating ordered and random motions, we assess the level of systematic uncertainties associated with this process."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Timescales and scaling relations",
+    "method": {
+     "value": "t_ff assuming spherical symmetry, t_cr = r/sigma; power-law fits with np.polyfit",
+     "evidence": [
+      {
+       "loc": "2.3 Free-Fall Time",
+       "quote": "Here we assume spherical symmetry and use the gas mass and physical radius"
+      }
+     ]
+    },
+    "software": [
+     "NumPy"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "linear np.polyfit on power-law dependence",
+     "evidence": [
+      {
+       "loc": "3.1 Larson's Relations",
+       "quote": "found using a linear `np.polyfit` fit on a power law dependence"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare with galactic rotation model",
+    "method": {
+     "value": "project arctan rotation curve, fit linear gradients per structure, compare amplitude and PA with observed",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "we fit a linear velocity gradient to the galactic rotation model within the footprint of each gas structure"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "systemic velocity 778 km/s, inclination 45.1°, PA 188.4°",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "systemic velocity (778 km/s), inclination angle (45.1$^\\circ$), and position angle (188.4$^\\circ$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "astrodendro",
+    "version": "not stated",
+    "used_for": {
+     "value": "dendrogram, sizes, luminosities, velocity dispersions",
+     "evidence": [
+      {
+       "loc": "2 Data and Method",
+       "quote": "we create a dendrogram from the CO PPV data cube with `astrodendro`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NumPy (np.polyfit)",
+    "version": "not stated",
+    "used_for": {
+     "value": "power-law fits",
+     "evidence": [
+      {
+       "loc": "3.1 Larson's Relations",
+       "quote": "found using a linear `np.polyfit` fit on a power law dependence"
+      }
+     ]
+    }
+   },
+   {
+    "name": "spectral-cube",
+    "version": "v0.4.5",
+    "used_for": {
+     "value": "listed in software",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`spectral-cube` (cite: spectralcube)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CARTA",
+    "version": "2.0.0",
+    "used_for": {
+     "value": "listed in software",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`CARTA` (cite: CARTA_2.0.0)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of unique dendrogram structures",
+    "value": "398",
+    "uncertainty": "not stated",
+    "units": "structures",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 Data and Method",
+      "quote": "the dendrogram includes 398 unique gas structures"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of trunks",
+    "value": "16",
+    "uncertainty": "not stated",
+    "units": "trunks",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2 Data and Method",
+      "quote": "can be traced down to 16 unique “trunks”"
+     }
+    ]
+   },
+   {
+    "quantity": "Size–linewidth slope",
+    "value": "0.58",
+    "uncertainty": "0.02",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1 Larson's Relations",
+      "quote": "\\left(\\frac{r_\\mathrm{phy}}{10\\rm\\,pc}\\right)^{0.58 \\pm 0.02}"
+     }
+    ]
+   },
+   {
+    "quantity": "Size–linewidth normalization at 10 pc",
+    "value": "7.2",
+    "uncertainty": "0.3",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1 Larson's Relations",
+      "quote": "(7.2 \\pm 0.3)"
+     }
+    ]
+   },
+   {
+    "quantity": "Size–mass slope",
+    "value": "2.54",
+    "uncertainty": "0.04",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1 Larson's Relations",
+      "quote": "\\left(\\frac{r_\\mathrm{phy}}{10\\rm\\,pc}\\right)^{2.54 \\pm 0.04}"
+     }
+    ]
+   },
+   {
+    "quantity": "Size–mass normalization at 10 pc",
+    "value": "4.1e5",
+    "uncertainty": "0.4e5",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1 Larson's Relations",
+      "quote": "(4.1 \\pm 0.4)"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of <10 pc structures with t_ff < t_cr,ord",
+    "value": "43",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Timescale Comparisons",
+      "quote": "$43\\%$ of structures under $10$ pc have $t_\\mathrm{ff}$ shorter than $t_\\mathrm{cr,\\,ord}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of <10 pc structures with t_ff < t_cr,rand",
+    "value": "21",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Timescale Comparisons",
+      "quote": "only $21\\%$ have $t_\\mathrm{ff}$ shorter than $t_\\mathrm{cr,\\,rand}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Random motions dominate below ~30 pc; ordered motions dominate in the largest structures, consistent with galactic rotation",
+    "evidence": [
+     {
+      "loc": "3.2 Ordered versus Random Motions",
+      "quote": "we find that most structures on $\\lesssim30$ pc scales tend to have larger random motion than ordered motion."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Size–linewidth relation in NGC 3351 CMZ resembles other CMZs",
+    "experiment": "Power-law fit to 398 dendrogram structures",
+    "result": "slope 0.58±0.02, normalization 7.2 km/s at 10 pc",
+    "finding": "Similar slope to NGC 253 and MW, normalization below NGC 253",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 Larson's Relations",
+      "quote": "We find a similar power law slope as that reported for NGC 253"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Ordered vs random motion dominance depends on scale",
+    "experiment": "Velocity gradient and moment-1 decomposition",
+    "result": "random dominant ≲30 pc, ordered at larger scales",
+    "finding": "Ordered motion driven by large-scale processes",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The former appears stronger in gas structures at $\\gtrsim30$ pc while the latter becomes more dominant at $\\lesssim30$ pc."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Self-gravity vs motions at different scales",
+    "experiment": "Compare t_ff with t_cr of ordered and random motions",
+    "result": "t_ff comparable to t_cr,ord at all scales; longer than t_cr,rand below ~10 pc",
+    "finding": "Random motions can counter self-gravity at small scales, modulo alpha_CO uncertainty",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Modulo uncertainties with the CO-to-H$_2$ conversion factor, the estimated gravitational free-fall time is comparable to the crossing time of ordered motions for structures on all spatial scales"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Low-resolution alpha_CO may bias small-structure masses",
+     "evidence": [
+      {
+       "loc": "3.1 Larson's Relations",
+       "quote": "our gas mass estimates for most structures smaller than $\\sim50$ pc may not be totally accurate"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "alpha_CO at 100 pc applied to ~5 pc structures",
+    "Velocity-gradient model bounds are crude",
+    "No uncertainties propagated to individual structures"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibrated/combined CO(3-2) cube from Sun2024",
+    "alpha_CO map from Teng2022/2023 data",
+    "astrodendro numerical thresholds",
+    "distance adopted"
+   ],
+   "estimated_data_volume_inferred": "tens of GB raw; cube ~ a few GB",
+   "score_inferred": 3,
+   "score_reason": "Analysis is clearly described but input cube, distance, and dendrogram thresholds are not given, and the alpha_CO map relies on other papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data rely on a previously reduced cube and alpha_CO map from other papers; public status is not stated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Rosolowsky2008)",
+     "why": "dendrogram technique"
+    },
+    {
+     "citation": "(cite: Teng2023)",
+     "why": "LVG alpha_CO procedure"
+    },
+    {
+     "citation": "(cite: Leroy2021)",
+     "why": "strict masking"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Sun2024)",
+     "why": "observations and data reduction"
+    },
+    {
+     "citation": "(cite: Teng2022)",
+     "why": "multi-line CO data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-cbd4f70460dbda1da7d0f455921f746a",
+  "batch_id": "msgbatch_01UpDVsyBtWjxy9v24Eo24ek",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T18:01:21",
+  "usage": {
+   "input_tokens": 17804,
+   "output_tokens": 6595,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051386,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 47,
+  "quotes_ok": 47,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 73,
+   "stated": 32,
+   "rate": 0.438
+  },
+  "evidence_ok": true
+ }
+}

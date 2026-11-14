@@ -1,0 +1,655 @@
+{
+ "bibcode": "2022MNRAS.514.2346K",
+ "title": "CO excitation and line energy distributions in gas-selected galaxies",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1190",
+ "arxiv_id": "2204.09698",
+ "fields": [
+  "high_z_galaxies",
+  "milky_way_ism"
+ ],
+ "question": "What are the CO excitation conditions and spectral line energy distributions (SLEDs) in the interstellar medium of high-metallicity damped Ly-alpha (DLA) absorption-selected galaxies at intermediate and high redshifts?",
+ "alma_project_codes": [
+  "2019.1.01457.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "1.1 x 0.76 arcsec to 1.8 x 1.5 arcsec",
+  "sensitivity": "0.27 to 0.58 mJy beam^-1 per 40 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(2–1) FWHM, integrated flux density, and luminosity for J2335+1501",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "J2335+1501 | 2–1 | 250 \\pm 50 | 0.601 \\pm 0.064 | 1 | 3.70 \\pm 0.40 | 1 | 1 | (cite: Kanekar2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Kanekar2018)"
+  },
+  {
+   "what": {
+    "value": "CO(4–3) FWHM, integrated flux density, and luminosity for B0551–366",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "B0551–366 | 4–3 | 300 \\pm 25 | 0.433 \\pm 0.052 | 1 | 5.15 \\pm 0.62 | 1 | 1 | (cite: Kanekar2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Kanekar2020)"
+  },
+  {
+   "what": {
+    "value": "CO(3–2) FWHM, integrated flux density, and luminosity, plus 3 mm continuum measurement for B1228–113",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "B1228–113 | 3–2 | 600 \\pm 22 | 0.726 \\pm 0.031 | 1 | 18.69 \\pm 0.80 | 1 | 1 | (cite: Neeleman2018)"
+     },
+     {
+      "loc": "SED Fitting",
+      "quote": "For DLA B1228–113 at z = 2.1929, we combine our ALMA 1.3 mm flux density measurement with the 3 mm measurement of (cite: Neeleman2018), and use Very Large Telescope Multi Unit Spectroscopic Explorer (VLT/MUSE) archival data (programme ID 197.A-84, PI: Fumagalli) for the optical photometry."
+     }
+    ]
+   },
+   "citation": "(cite: Neeleman2018)"
+  },
+  {
+   "what": {
+    "value": "CO(3–2) FWHM, integrated flux density, and luminosity, plus optical and near-IR photometry for J0918+1636",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "J0918+1636 | 3–2 | 350 \\pm 25 | 0.736 \\pm 0.045 | 1 | 25.1 \\pm 1.6 | 1 | 1 | (cite: Fynbo2018)"
+     },
+     {
+      "loc": "SED Fitting",
+      "quote": "For DLA J0918+1636 at z = 2.5832 galaxy, we combine the new ALMA 2mm flux density with the existing optical and near-IR photometry (cite: Fynbo2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Fynbo2018)"
+  },
+  {
+   "what": {
+    "value": "Milky Way inner disk CO line luminosity ratios and 3 sigma upper limits",
+    "evidence": [
+     {
+      "loc": "CO Excitation and Line Energy Distribution",
+      "quote": "The same ratios for the inner disk of the Milky Way based on CO line observations (cite: Fixsen1999) are also listed in"
+     }
+    ]
+   },
+   "citation": "(cite: Fixsen1999)"
+  },
+  {
+   "what": {
+    "value": "Galactic reddening E_{B-V} = 0.0335 for B1228–113",
+    "evidence": [
+     {
+      "loc": "SED Fitting",
+      "quote": "The photometry is corrected for a Galactic reddening E_{B-V}=0.0335 (cite: Schlafly2011)."
+     }
+    ]
+   },
+   "citation": "(cite: Schlafly2011)"
+  },
+  {
+   "what": {
+    "value": "Comparison CO SLEDs for absorption-selected galaxies, main-sequence galaxies, and starburst galaxies",
+    "evidence": [
+     {
+      "loc": "CO Excitation and Line Energy Distribution",
+      "quote": "The CO SLEDs of absorption-selected galaxies from this work are compared to the CO SLEDs of three absorption-selected galaxies at z \\sim 0.5 (cite: Klitsch2018; Klitsch2019), the inner disk of the Milky Way (cite: Fixsen1999), main-sequence galaxies at z = 1.2-2.2 (cite: Daddi2015; Brisbin2019; Boogaard2020; Valentino2020a; Henriquez-Brocal2021), starburst and extreme starburst galaxies at z \\sim 1.5 (cite: Valentino2020a)."
+     }
+    ]
+   },
+   "citation": "(cite: Klitsch2018; Klitsch2019; Fixsen1999; Daddi2015; Brisbin2019; Boogaard2020; Valentino2020a; Henriquez-Brocal2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Automatic source finding in spectral line cubes",
+   "method": "Run automated source finding on spectral windows covering the targeted CO lines using the Smooth + Clip Finder",
+   "software": [
+    "SOFIA"
+   ],
+   "key_parameters": [
+    "4 sigma detection threshold; standard configuration of Smooth + Clip Finder"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract CO spectra and measure line fluxes, FWHMs, and luminosities",
+   "method": "Determine optimal velocity range for integrated flux density maps iteratively, extract spectra from regions defined by the 3 sigma contour in the moment-0 maps, and measure FWHM directly at 50 per cent of peak flux density",
+   "software": [],
+   "key_parameters": [
+    "3 sigma contour aperture in integrated flux density images; FWHM at 50 per cent of peak flux density"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute CO line ratios and construct CO SLEDs",
+   "method": "Calculate CO line flux density ratios S_u/S_l and line luminosity ratios r_ul = L'_CO(u-[u-1]) / L'_CO(l-[l-1]) anchored to the lowest available CO transition for each galaxy",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "5 per cent systematic flux density scale uncertainty interpreted as 2 sigma"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract optical photometry and perform broad-band SED fitting and modified black body dust modelling",
+   "method": "Extract 1D MUSE spectrum in 1 arcsec aperture for B1228-113 and integrate with SDSS g, r, i filters; fit broad-band optical-to-mm SEDs of B1228-113 and J0918+1636 with MAGPHYS; rescale mm photometry with a modified black body (MBB) curve to derive M_dust and L_850um",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [
+    "1 arcsec diameter aperture for MUSE extraction; E_{B-V} = 0.0335 Galactic reddening correction"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF",
+    "MBB parameters: beta = 1.8 +/- 0.2, k_0 = 5.1 cm^2 g^-1 at rest-frame 250 um, T_dust = 35 +/- 5 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive CO(1-0) luminosities and molecular gas masses from dust and mid-J CO",
+   "method": "Compute L'_CO(1-0) and M_mol from rest-frame 850 um luminosity using Scoville et al. (2016) scaling; compute L'_CO(1-0) and M_mol from mid-J CO using r_31 = 0.55 and r_31 = 1; compute M_mol^dust from MBB dust mass and metallicity-dependent gas-to-dust ratio delta_GDR",
+   "software": [],
+   "key_parameters": [
+    "r_31 = 0.55 and r_31 = 1.0"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1",
+    "M_HI approx M_mol, so delta_GDR * M_dust approx 2 * M_mol",
+    "Fundamental Mass Metallicity relation (Mannucci et al. 2010) rescaled to Pettini & Pagel (2004)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "J2335+1501 CO(3-2) FWHM",
+   "value": "226",
+   "uncertainty": "45",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J2335+1501 | 0.791 | 0.6798 | 23h35m44.19s | +15d01m14.3s | 3–2 | 29 | 226 \\pm 45 | 0.722 \\pm 0.066 | 3.88 \\pm 0.50 | 1.97 \\pm 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "J2335+1501 CO(3-2) integrated flux density S_int",
+   "value": "0.722",
+   "uncertainty": "0.066",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J2335+1501 | 0.791 | 0.6798 | 23h35m44.19s | +15d01m14.3s | 3–2 | 29 | 226 \\pm 45 | 0.722 \\pm 0.066 | 3.88 \\pm 0.50 | 1.97 \\pm 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "J2335+1501 CO(3-2) line luminosity L'_CO",
+   "value": "1.97e9",
+   "uncertainty": "0.18e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J2335+1501 | 0.791 | 0.6798 | 23h35m44.19s | +15d01m14.3s | 3–2 | 29 | 226 \\pm 45 | 0.722 \\pm 0.066 | 3.88 \\pm 0.50 | 1.97 \\pm 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "J2335+1501 line luminosity ratio r_32",
+   "value": "0.532",
+   "uncertainty": "0.075",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "3–2 | 226 \\pm 45 | 0.722 \\pm 0.066 | 1.20 \\pm 0.17 | 1.97 \\pm 0.18 | 0.532 \\pm 0.075 | 0.490\\pm 0.058 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 CO(5-4) integrated flux density S_int",
+   "value": "0.346",
+   "uncertainty": "0.078",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B0551–366 | 2.317 | 1.9622 | 05h52m46.17s | –36d37m25.9s | 5–4 | 14 | 357 \\pm 40 | 0.346 \\pm 0.078 | 1.93 \\pm 0.60 | 2.64 \\pm 0.60"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 CO(5-4) line luminosity L'_CO",
+   "value": "2.64e9",
+   "uncertainty": "0.60e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B0551–366 | 2.317 | 1.9622 | 05h52m46.17s | –36d37m25.9s | 5–4 | 14 | 357 \\pm 40 | 0.346 \\pm 0.078 | 1.93 \\pm 0.60 | 2.64 \\pm 0.60"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 line luminosity ratio r_54",
+   "value": "0.51",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "5–4 | 357 \\pm 40 | 0.346 \\pm 0.078 | 0.80 \\pm 0.20 | 2.64 \\pm 0.60 | 0.51 \\pm 0.13 | 0.437 \\pm 0.098 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 CO(6-5) integrated flux density S_int",
+   "value": "0.136",
+   "uncertainty": "0.023",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "6–5 | | 239 \\pm 40 | 0.136 \\pm 0.023 | 0.76 \\pm 0.21 | 0.72 \\pm 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 CO(6-5) line luminosity L'_CO",
+   "value": "0.72e9",
+   "uncertainty": "0.12e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "6–5 | | 239 \\pm 40 | 0.136 \\pm 0.023 | 0.76 \\pm 0.21 | 0.72 \\pm 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 line luminosity ratio r_64",
+   "value": "0.140",
+   "uncertainty": "0.029",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "6–5 | 239 \\pm 40 | 0.136 \\pm 0.023 | 0.314 \\pm 0.065 | 0.72 \\pm 0.12 | 0.140 \\pm 0.029 | < 0.23 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 CO(7-6) integrated flux density S_int",
+   "value": "<0.24",
+   "uncertainty": "3 sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "7–6 | | n.a. | <0.24 | n.a. | <0.93"
+    }
+   ]
+  },
+  {
+   "quantity": "B0551–366 line luminosity ratio r_74",
+   "value": "<0.17",
+   "uncertainty": "3 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "7–6 | n.a. | <0.24 | <0.55 | <0.93 | <0.17 | <0.18 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 CO(6-5) integrated flux density S_int",
+   "value": "0.624",
+   "uncertainty": "0.064",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B1228–113 | 3.528 | 2.1929 | 12h30m57.07s | –11d39m29.0s | 6–5 | 28 | 595 \\pm 40 | 0.624 \\pm 0.064 | 1.92 \\pm 0.37 | 4.01 \\pm 0.41"
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 CO(6-5) line luminosity L'_CO",
+   "value": "4.01e9",
+   "uncertainty": "0.41e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "B1228–113 | 3.528 | 2.1929 | 12h30m57.07s | –11d39m29.0s | 6–5 | 28 | 595 \\pm 40 | 0.624 \\pm 0.064 | 1.92 \\pm 0.37 | 4.01 \\pm 0.41"
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 line luminosity ratio r_63",
+   "value": "0.215",
+   "uncertainty": "0.024",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "6–5 | 595 \\pm 40 | 0.624 \\pm 0.064 | 0.860 \\pm 0.095 | 4.01 \\pm 0.41 | 0.215 \\pm 0.024 | < 0.086 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 CO(4-3) integrated flux density S_int",
+   "value": "1.35",
+   "uncertainty": "0.15",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J0918+1636 | 3.096 | 2.5832 | 09h18m26.26s | +16d35m55.4s | 4–3 | 117 | 320 \\pm 40 | 1.35 \\pm 0.15 | 5.1 \\pm 1.0 | 25.9 \\pm 2.9"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 CO(4-3) line luminosity L'_CO",
+   "value": "25.9e9",
+   "uncertainty": "2.9e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "J0918+1636 | 3.096 | 2.5832 | 09h18m26.26s | +16d35m55.4s | 4–3 | 117 | 320 \\pm 40 | 1.35 \\pm 0.15 | 5.1 \\pm 1.0 | 25.9 \\pm 2.9"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 line luminosity ratio r_43",
+   "value": "1.03",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4–3 | 320 \\pm 40 | 1.35 \\pm 0.15 | 1.83 \\pm 0.24 | 25.9 \\pm 2.9 | 1.03 \\pm 0.13 | 0.377 \\pm 0.045 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 CO(5-4) integrated flux density S_int",
+   "value": "0.803",
+   "uncertainty": "0.092",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5–4 | | 119 \\pm 40 | 0.803 \\pm 0.092 | 3.43 \\pm 0.69 | 9.9 \\pm 1.1"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 CO(5-4) line luminosity L'_CO",
+   "value": "9.9e9",
+   "uncertainty": "1.1e9",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5–4 | | 119 \\pm 40 | 0.803 \\pm 0.092 | 3.43 \\pm 0.69 | 9.9 \\pm 1.1"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 line luminosity ratio r_53",
+   "value": "0.394",
+   "uncertainty": "0.051",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "5–4 | 119 \\pm 40 | 0.803 \\pm 0.092 | 1.09 \\pm 0.14 | 9.9 \\pm 1.1 | 0.394\\pm 0.051 | 0.165 \\pm 0.037 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 stellar mass log(M_star/M_sun)",
+   "value": "10.49",
+   "uncertainty": "+0.16/-0.11",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "We obtain a stellar mass of log(M_{\\star}/M_{\\odot}) = 10.49^{+0.16}_{-0.11}, consistent with the estimate in (cite: Fynbo2018)."
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 star formation rate",
+   "value": "229",
+   "uncertainty": "+151/-91",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "Our fit yields an SFR of 229^{+151}_{-91} \\ {\\rm M}_\\odot yr^{-1}, higher than the earlier estimate, albeit consistent within the errors."
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 stellar mass log(M_star/M_sun)",
+   "value": "10.13",
+   "uncertainty": "+0.34/-0.23",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "The best SED fit with MAGPHYS yields a stellar mass of \\log(M_*/M_{\\odot}) = 10.13^{+0.34}_{-0.23} and a total SFR of 87^{+39}_{-28} \\; {\\rm M_{\\odot} \\; yr^{-1}}, in agreement with the dust-corrected SFR derived from the H\\alpha emission (cite: Neeleman2018)."
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 star formation rate",
+   "value": "87",
+   "uncertainty": "+39/-28",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "The best SED fit with MAGPHYS yields a stellar mass of \\log(M_*/M_{\\odot}) = 10.13^{+0.34}_{-0.23} and a total SFR of 87^{+39}_{-28} \\; {\\rm M_{\\odot} \\; yr^{-1}}, in agreement with the dust-corrected SFR derived from the H\\alpha emission (cite: Neeleman2018)."
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 MBB dust mass log(M_dust/M_sun)",
+   "value": "8.83",
+   "uncertainty": "0.28",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "For T_{\\rm dust}=35 K typical for galaxies at z\\sim2-2.5 ((cite: Schreiber2018) and references therein), we find \\log(M_{\\rm dust}/M_{\\odot}) = 8.83 \\pm 0.28 for DLA B1228–113 and \\log(M_{\\rm dust}/M_{\\odot})= 8.72 \\pm 0.27 for DLA J0918+1636."
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 MBB dust mass log(M_dust/M_sun)",
+   "value": "8.72",
+   "uncertainty": "0.27",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "For T_{\\rm dust}=35 K typical for galaxies at z\\sim2-2.5 ((cite: Schreiber2018) and references therein), we find \\log(M_{\\rm dust}/M_{\\odot}) = 8.83 \\pm 0.28 for DLA B1228–113 and \\log(M_{\\rm dust}/M_{\\odot})= 8.72 \\pm 0.27 for DLA J0918+1636."
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 rest-frame 850 um luminosity log(L_850um)",
+   "value": "30.80",
+   "uncertainty": "0.12",
+   "units": "dex (erg s^-1 Hz^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "This yields \\log(L_{\\rm 850\\mu m}/\\mathrm{erg\\,s^{-1}\\,Hz^{-1}})=30.80 \\pm 0.12 and 30.88\\pm0.13 for DLA B1228–113 and DLA J0918+1636, respectively, assuming the same ranges of T_{\\rm dust} and \\beta as above."
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 rest-frame 850 um luminosity log(L_850um)",
+   "value": "30.88",
+   "uncertainty": "0.13",
+   "units": "dex (erg s^-1 Hz^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED Fitting",
+     "quote": "This yields \\log(L_{\\rm 850\\mu m}/\\mathrm{erg\\,s^{-1}\\,Hz^{-1}})=30.80 \\pm 0.12 and 30.88\\pm0.13 for DLA B1228–113 and DLA J0918+1636, respectively, assuming the same ranges of T_{\\rm dust} and \\beta as above."
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 molecular gas mass M_mol^CO (for r_31 = 1)",
+   "value": "8.15e10",
+   "uncertainty": "0.35e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "B1228-113 | 3.40 \\pm 0.15 | 1.869 \\pm 0.080 | 1.91^{+0.78}_{-0.67} | 8.3 ^{+3.4}_{-2.9} | 14.82 \\pm 0.65 | 8.15 \\pm 0.35 | 4.6^{+8.5}_{-3.5}"
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 molecular gas mass M_mol^850um",
+   "value": "8.3e10",
+   "uncertainty": "+3.4e10/-2.9e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "B1228-113 | 3.40 \\pm 0.15 | 1.869 \\pm 0.080 | 1.91^{+0.78}_{-0.67} | 8.3 ^{+3.4}_{-2.9} | 14.82 \\pm 0.65 | 8.15 \\pm 0.35 | 4.6^{+8.5}_{-3.5}"
+    }
+   ]
+  },
+  {
+   "quantity": "B1228–113 molecular gas mass M_mol^dust",
+   "value": "4.6e10",
+   "uncertainty": "+8.5e10/-3.5e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "B1228-113 | 3.40 \\pm 0.15 | 1.869 \\pm 0.080 | 1.91^{+0.78}_{-0.67} | 8.3 ^{+3.4}_{-2.9} | 14.82 \\pm 0.65 | 8.15 \\pm 0.35 | 4.6^{+8.5}_{-3.5}"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 molecular gas mass M_mol^CO (for r_31 = 1)",
+   "value": "10.94e10",
+   "uncertainty": "0.70e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0918+1636 | 4.56 \\pm 0.29 | 2.51 \\pm 0.16 | 2.29^{+0.99}_{-0.83} | 9.98^{+4.3}_{-3.6} | 19.9 \\pm 1.3 | 10.94 \\pm 0.70 | 2.8^{+5.6}_{-1.8}"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 molecular gas mass M_mol^850um",
+   "value": "9.98e10",
+   "uncertainty": "+4.3e10/-3.6e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0918+1636 | 4.56 \\pm 0.29 | 2.51 \\pm 0.16 | 2.29^{+0.99}_{-0.83} | 9.98^{+4.3}_{-3.6} | 19.9 \\pm 1.3 | 10.94 \\pm 0.70 | 2.8^{+5.6}_{-1.8}"
+    }
+   ]
+  },
+  {
+   "quantity": "J0918+1636 molecular gas mass M_mol^dust",
+   "value": "2.8e10",
+   "uncertainty": "+5.6e10/-1.8e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J0918+1636 | 4.56 \\pm 0.29 | 2.51 \\pm 0.16 | 2.29^{+0.99}_{-0.83} | 9.98^{+4.3}_{-3.6} | 19.9 \\pm 1.3 | 10.94 \\pm 0.70 | 2.8^{+5.6}_{-1.8}"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA pipeline version used by JAO for initial calibration",
+  "Exact solution intervals and number of iterations used in gaincalR self-calibration of PKS B1228-113",
+  "Cell size and image size (imsize) used in tclean",
+  "Exact velocity or channel ranges considered line-free for imcontsub and continuum imaging",
+  "Exact velocity integration windows used for the moment-0 integrated flux density maps",
+  "The numerical values of the ALMA continuum flux densities and optical/NIR photometry (referenced as Table A1 / tab:appendix_phot, which is missing from the main text)"
+ ],
+ "missing_for_reproduction": [
+  "Table A1 (tab:appendix_phot) containing the measured ALMA continuum flux densities and multi-wavelength photometry used as input to MAGPHYS and MBB fitting",
+  "Exact velocity ranges integrated for each galaxy's moment-0 map",
+  "Exact line-free channel ranges used in imcontsub",
+  "Specific parameters for the gaincalR self-calibration of PKS B1228-113"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Raw data and pipeline calibrations are public in the ALMA and ESO archives, and imaging/analysis parameters (CASA version, weighting, velocity binning, clean threshold, aperture threshold, MBB parameters, scaling relations) are well specified. However, the appendix tables containing the continuum photometry and exact velocity integration windows are missing from the provided text.",
+ "rediscovery_reason": "All ALMA data (2019.1.01457.S) are public, the reduction and spectral extraction recipe is straightforward and well-documented, and the primary results are concrete numeric line fluxes, FWHMs, and luminosity ratios in Tables 2 and 3.",
+ "source_card": "cards/2022MNRAS.514.2346K/sonnet/card.md"
+}

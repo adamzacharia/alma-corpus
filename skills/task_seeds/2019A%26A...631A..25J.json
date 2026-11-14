@@ -1,0 +1,155 @@
+{
+ "bibcode": "2019A&A...631A..25J",
+ "title": "ALMA observations of water deuteration: a physical diagnostic of the formation of protostars",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201936012",
+ "arxiv_id": "1909.10533",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What is the HDO/H2O ratio in the inner warm gas of three isolated Class 0 protostars, and does it differ from clustered protostars?",
+ "alma_project_codes": [
+  "2017.1.00693.S"
+ ],
+ "data": {
+  "bands": "Band 6 (HDO) and Band 5 (H2 18O)",
+  "arrays": "not stated",
+  "angular_resolution": "HDO beams 0.4\"x0.3\" to 0.7\"x0.5\"; H2 18O 0.8\"x0.5\" to 1.2\"x1.0\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HDO/H2O ratios of clustered protostars and comets for comparison",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| NGC1333 IRAS 2A | $7.4\\pm2.1$ | HDO, H$_{2}^{18}$O | 14 |"
+     }
+    ]
+   },
+   "citation": "Persson et al. 2014 (cite: persson2014)"
+  },
+  {
+   "what": {
+    "value": "16O/18O = 560",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "assuming the Galactic oxygen isotope ratio of $^{16}$O/$^{18}$O$= 560$ (cite: wilson1994)"
+     }
+    ]
+   },
+   "citation": "Wilson & Rood 1994 (cite: wilson1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Pipeline calibration, phase self-cal, uvcontsub, tclean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = -0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract and fit line spectra",
+   "method": "Spectra at continuum peak after beam-matching; Gaussian fits (two for L483); CH3OCH3 blend subtracted for BHR71",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive column densities and HDO/H2O",
+   "method": "Optically thin LTE, Tex=124 K; H2O from H2 18O with 16O/18O=560; HDO weighted average of two lines",
+   "software": [],
+   "key_parameters": [
+    "Tex = 124 K"
+   ],
+   "assumptions": [
+    "16O/18O = 560"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HDO/H2O L483",
+   "value": "2.2e-3",
+   "uncertainty": "0.4e-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The estimated HDO/H$_2$O ratios for L483, B335, and BHR71–IRS1 are ($2.2\\pm0.4$)$\\times 10^{-3}$, ($1.7\\pm0.3$)$\\times 10^{-3}$, and ($1.8\\pm0.4$)$\\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO/H2O B335",
+   "value": "1.7e-3",
+   "uncertainty": "0.3e-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "($2.2\\pm0.4$)$\\times 10^{-3}$, ($1.7\\pm0.3$)$\\times 10^{-3}$, and ($1.8\\pm0.4$)$\\times 10^{-3}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO/H2O BHR71-IRS1",
+   "value": "1.8e-3",
+   "uncertainty": "0.4e-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "($2.2\\pm0.4$)$\\times 10^{-3}$, ($1.7\\pm0.3$)$\\times 10^{-3}$, and ($1.8\\pm0.4$)$\\times 10^{-3}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO excitation temperatures (L483, B335, BHR71-IRS1)",
+   "value": "127, 174, 103",
+   "uncertainty": "24, 59, 21",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The excitation temperatures are 127$\\pm24$ K, 174$\\pm59$ K, and 103$\\pm$21 K for L483, B335, and BHR71–IRS1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels for uvcontsub",
+  "Image size, cell size, masking, deconvolution threshold",
+  "Self-calibration solution intervals",
+  "Integration windows and spectral extraction aperture details",
+  "HDO/H2 18O partition functions and spectroscopic constants used",
+  "Final rms values per cube"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "Imaging grid and masks",
+  "Self-cal parameters",
+  "Spectroscopic constants/partition functions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple LTE recipe, but imaging and extraction details are sparse.",
+ "rediscovery_reason": "Data public, simple LTE analysis, numeric ratios to compare.",
+ "source_card": "cards/2019A%26A...631A..25J/sonnet/card.md"
+}

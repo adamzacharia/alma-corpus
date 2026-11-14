@@ -1,0 +1,379 @@
+{
+ "bibcode": "2024RAA....24c5009N",
+ "title": "EP Aquarii: A New Picture of the Circumstellar Envelope",
+ "year": 2024,
+ "doi": "10.1088/1674-4527/ad18a4",
+ "arxiv_id": "2304.01520",
+ "fields": [
+  "evolved_stars"
+ ],
+ "question": "Re-evaluate the morpho-kinematics of the circumstellar envelope of EP Aquarii—specifically the origin of the high-velocity wings, the formation and spiral nature of the equatorial density enhancement, the bipolar outflows, and the western depression in SiO(5-4) emission—using new analyses of archival ALMA CO(2-1) and SiO(5-4) data.",
+ "alma_project_codes": [
+  "2016.1.00057.S",
+  "2018.1.00750.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "ACA, 12m array (~46 antennas in 2019)",
+  "angular_resolution": "2016: 170 x 150 mas^2; Combined: 87 x 79 mas^2 (CO(2-1)), 85 x 79 mas^2 (SiO(5-4)); TM0: 31.7 x 28.0 mas^2 (CO(2-1)), 32.4 x 30.0 mas^2 (SiO(5-4))",
+  "sensitivity": "1.25 mJy beam^-1 (2016); 0.65 mJy beam^-1 (Combined); 1.0 mJy beam^-1 (TM0 CO(2-1)), 1.34 mJy beam^-1 (TM0 SiO(5-4))"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Combined 2016 and 2019 ALMA data cubes for CO(2-1) and SiO(5-4)",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS AND DATA REDUCTION",
+      "quote": "The combined data are obtained from Homan et al. (2020a) via the CDS (http://cdsarc.u-strasbg.fr/viz-bin/cat/J/A+A/642/A93)."
+     }
+    ]
+   },
+   "citation": "Homan et al. (2020a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image high-resolution 2019 (TM0) visibility data separately",
+   "method": "Merge June 5 and June 14, 2019 observations with equal weights, group into velocity channels, and clean using natural weighting with circular masks without continuum subtraction or self-calibration.",
+   "software": [],
+   "key_parameters": [
+    "Channel widths: 0.95 km s^-1 for CO(2-1), 0.34 km s^-1 for SiO(5-4)",
+    "Image size: 2000 x 2000 pixels covering ±4 arcsec; natural weighting",
+    "Cleaning mask radius: 1 arcsec for CO(2-1), 2 arcsec for SiO(5-4)"
+   ],
+   "assumptions": [
+    "Systemic star velocity of -33.6 km s^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Characterize the inner and outer Equatorial Density Enhancement (EDE) morpho-kinematics",
+   "method": "Extract Doppler velocity spectra and Vz vs omega position-velocity (PV) maps in 100 mas concentric rings (100-500 mas) for CO(2-1) and SiO(5-4); compute mean and rms of Vz over |Vz| < 2 km s^-1 in 10 deg x 100 mas (omega, R) bins across 1.2 < R < 5.2 arcsec; average central channels (-0.75 < Vz < 0.53 km s^-1) to correct for EDE plane tilt and evaluate spiral vs offset-circle geometry.",
+   "software": [],
+   "key_parameters": [
+    "Inner rings: 100 mas width from R = 100 to 500 mas",
+    "Outer EDE region: 1.2 < R < 5.2 arcsec, |Vz| < 2 km s^-1, bin size 10 deg x 100 mas"
+   ],
+   "assumptions": [
+    "EDE inclination of 10 deg with respect to the plane of the sky and rms flaring angle of ~15 deg"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Analyze polar outflow arcs and latitudinal velocity dependence in CO(2-1)",
+   "method": "Inspect 51 velocity channels (-8.2 to +8.2 km s^-1) over 1.2 < R < 5.2 arcsec in x-y, omega-R, Vz-R, and Vz-omega projections; divide brightness by power-law radial fits to test for radial-decline bias; compare Vz vs R maps in narrow position angle wedges against parametric latitudinal expansion velocity curves f(alpha) = sin^n(alpha).",
+   "software": [],
+   "key_parameters": [
+    "51 frequency channels (-8.2 < Vz < +8.2 km s^-1), radial range 1.2 < R < 5.2 arcsec"
+   ],
+   "assumptions": [
+    "Thin radially expanding shell geometry where Vz = V sin(alpha) and R = r cos(alpha)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Quantify SiO(5-4) inhomogeneity, the western and northern emission voids, and correlation with CO(2-1)",
+   "method": "Compare observed SiO(5-4) intensity in 0.5 < R < 2.3 arcsec to the smooth normalized product U(R) x S(Vz) in red and blue hemispheres; construct Vz vs omega maps in 100 mas inner rings and Vz vs R maps integrated over 240 deg < omega < 300 deg (western void) and 280 deg < omega < 360 deg (northern void) for both SiO and CO; normalize brightness by power-law fits A*R^b in 0.7 < R < 2.0 arcsec (excluding 240 < omega < 300 deg in blue) and perform linear correlation fits between normalized SiO and CO maps.",
+   "software": [],
+   "key_parameters": [
+    "Smoothness test volume: 0.5 < R < 2.3 arcsec, 0 < |Vz| < 8 km s^-1",
+    "Void position angle sectors: 240 deg < omega < 300 deg (western) and 280 deg < omega < 360 deg (northern)",
+    "Correlation region: 0.7 < R < 2.0 arcsec (excluding 240 deg < omega < 300 deg in blue-shifted hemisphere)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Separate and quantify the two components of the high Doppler velocity wings",
+   "method": "Integrate TM0 SiO(5-4) spectra in 20 mas wide annular rings from mean radius 10 mas to 390 mas; measure the full width at 10% of maximum (FWTM) as a function of R; extrapolate the red-shifted spectrum edge down to continuum level in the combined data to measure V_max as a function of R and omega; construct |Vz| vs R PV maps and intensity maps in 8 < |Vz| < 12 km s^-1 and 12 < |Vz| < 20 km s^-1.",
+   "software": [],
+   "key_parameters": [
+    "20 annular rings of 20 mas width, mean radii from 10 mas to 390 mas; FWTM threshold at 10% of maximum"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "EDE inner detection radius in CO(2-1)",
+   "value": "100-200",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "and 200 mas, and its kinematics is dominated by rotation at a few km s − 1 scale."
+    }
+   ]
+  },
+  {
+   "quantity": "EDE mean Doppler velocity in NW / SE directions (R < 3 arcsec)",
+   "value": "±0.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "it reaches values of ∼ 0.3 km s − 1 in the NW direction and of ∼− 0.3 km s − 1 in the SE direction."
+    }
+   ]
+  },
+  {
+   "quantity": "EDE radial expansion velocity",
+   "value": "1.7",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "This suggests a radial expansion velocity at the scale of ∼ 0.3/sin10 ◦ =1.7 km s − 1, consistent with the low value of 1.9 km s − 1 retained in earlier studies (Hoai et al. 2019)."
+    }
+   ]
+  },
+  {
+   "quantity": "EDE Doppler velocity rms deviation (|Vz| < 2 km s^-1)",
+   "value": "1",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "They display remarkable uniformity, the rms value staying near 1 km s − 1 over the whole radial range and the mean value near zero."
+    }
+   ]
+  },
+  {
+   "quantity": "EDE intrinsic velocity width (rms)",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO(2-1) emission",
+     "quote": "The rms deviation of 1 km s − 1 combines the effect of the known rms flaring angle of ∼ 15 ◦, sin15 ◦ × 1.7=0.44 km s − 1 to an intrinsic width of ∼ 0.9 km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum age of the EDE disc (for 10 arcsec radius)",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "centuries",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Patterns of enhanced CO(2-1) emission",
+     "quote": "Assuming a 10 arcsec disc radius (Figure 6 of Homan et al. 2018), it implies that the disc is at least thirty centuries old."
+    }
+   ]
+  },
+  {
+   "quantity": "Latitudinal expansion velocity exponent n (in sin^n(alpha))",
+   "value": "< 1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 CO(2-1) emission",
+     "quote": "Comparison with low latitude observations, as shown in the right panels of Figure 11 (see also Figure S3), favours clearly values of n smaller than 1, in contradiction with the arbitrary assumption made in Hoai et al. (2019)."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4) radial confinement distance",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 SiO(5-4) emission: general features",
+     "quote": "In contrast to CO(2-1) emission, SiO(5-4) emission is confined within radial distances of ∼ 3 arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4) intensity fluctuation amplitude relative to smooth U(R) x S(Vz) in red hemisphere",
+   "value": "±20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 SiO(5-4) emission: general features",
+     "quote": "At the same time as the result reveals clearly the morpho-kinematics of the observed deviations with respect to a smooth distribution, it shows that their amplitude is relatively modest, typically at the level of ± 20%."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4) blue-shifted hemisphere intensity reduction relative to red-shifted hemisphere",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 SiO(5-4) emission: general features",
+     "quote": "The main difference with the red-shifted hemisphere is a lower intensity, by ∼ 33%, dominated by an important depression in"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak-to-valley ratio of western blue-shifted SiO(5-4) depression",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 SiO(5-4) emission in the close neighbourhood of the star",
+     "quote": "the western blue-shifted depression of SiO(5-4) emission is stronger than the northern red-shifted one, with a peak-to-valley ratio of ∼ 6 compared with ∼ 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak-to-valley ratio of northern red-shifted SiO(5-4) depression",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 SiO(5-4) emission in the close neighbourhood of the star",
+     "quote": "the western blue-shifted depression of SiO(5-4) emission is stronger than the northern red-shifted one, with a peak-to-valley ratio of ∼ 6 compared with ∼ 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean radius of ejected shell ahead of western void",
+   "value": "0.5-1",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 SiO(5-4) emission in the close neighbourhood of the star",
+     "quote": "in the form of a shell having a mean radius between 0.5 and 1 arcsec and a mean radial velocity between 5 and 10 km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean radial velocity of ejected shell ahead of western void",
+   "value": "5-10",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 SiO(5-4) emission in the close neighbourhood of the star",
+     "quote": "in the form of a shell having a mean radius between 0.5 and 1 arcsec and a mean radial velocity between 5 and 10 km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear correlation slope G0 between normalized SiO(5-4) and CO(2-1) maps",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 SiO(5-4) emission: patterns of enhanced emission",
+     "quote": "the value of G 0, which measures the strength of the correlation, is 0.18 in both hemispheres."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4) FWTM asymptotic bulk CSE width",
+   "value": "21.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 HIGH DOPPLER VELOCITIES",
+     "quote": "It is well described by a fit of the form 21.3+19.0 exp( −R /0.10) km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4) FWTM inner line-broadening amplitude",
+   "value": "19.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 HIGH DOPPLER VELOCITIES",
+     "quote": "It is well described by a fit of the form 21.3+19.0 exp( −R /0.10) km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(5-4) FWTM inner exponential radial decay scale",
+   "value": "0.10",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 HIGH DOPPLER VELOCITIES",
+     "quote": "It is well described by a fit of the form 21.3+19.0 exp( −R /0.10) km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner confinement radius of high Doppler velocity line broadening (|Vz| up to 20 km s^-1)",
+   "value": "200",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "and an effective line broadening, confined within 200 mas from the centre of the star, reaching above ± 20 km s − 1"
+    },
+    {
+     "loc": "5 HIGH DOPPLER VELOCITIES",
+     "quote": "The dependence of FWTM on R gives evidence for confinement within some 200 mas (Figure 19b)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper Doppler velocity end of the bulk polar outflows",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 HIGH DOPPLER VELOCITIES",
+     "quote": "This analysis gives therefore evidence for two major contributions to the high velocity wings of the SiO(5-4) Doppler velocity spectrum: one, extending up to some 12 km s − 1, is simply the upper edge of the velocity distribution of the polar outflows"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Specific software package and version (e.g., CASA / GILDAS) used to calibrate and clean the 2019 TM0 visibility data",
+  "Stopping threshold or niter parameter used during the cleaning of TM0 data",
+  "Exact phase center coordinates used to define R = 0 in the image cubes",
+  "Fitting algorithm/software used for power-law radial profiles, linear pixel-to-pixel correlations, and exponential FWTM fits"
+ ],
+ "missing_for_reproduction": [
+  "Software package and version used for calibration and imaging of the 2019 TM0 visibilities",
+  "CLEAN stopping threshold / number of iterations for TM0 imaging",
+  "Exact stellar centre coordinates (RA, Dec) adopted as the origin (x=0, y=0) in the TM0 and combined cubes"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The combined FITS cubes are directly downloadable from CDS, the raw ALMA datasets are public, and the imaging settings (pixel size, image dimensions, channel widths, natural weighting, mask radii, no continuum subtraction, no self-cal) and mathematical definitions of all slices and fits are clearly specified, lacking only the specific software name and clean stopping criterion.",
+ "rediscovery_reason": "Public FITS cubes on CDS and public ALMA raw data allow direct reproduction of all PV diagrams, annular spectra, FWTM exponential fits, and CO/SiO correlation slopes through straightforward cube slicing and 1D fitting.",
+ "source_card": "cards/2024RAA....24c5009N/sonnet/card.md"
+}

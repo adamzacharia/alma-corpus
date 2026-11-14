@@ -1,0 +1,340 @@
+{
+ "bibcode": "2026ApJ...998..111C",
+ "title": "Continued Rapid Radio Brightening of the Tidal Disruption Event AT2018hyz",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae286d",
+ "arxiv_id": "2507.08998",
+ "fields": [
+  "transients"
+ ],
+ "question": "What is the physical origin and geometry of the continued, rapidly rising late-time radio and millimeter emission from the tidal disruption event AT2018hyz?",
+ "alma_project_codes": [
+  "2021.1.01210.T"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galactic neutral hydrogen column density in the direction of AT2018hyz ($N_{H,\\rm MW}=2.67\\times 10^{20}\\,\\rm{cm^{-2}}$)",
+    "evidence": [
+     {
+      "loc": "X-ray Observations",
+      "quote": "The Galactic neutral hydrogen column density in the direction of AT2018hyz is $N_{H,\\rm MW}=2.67\\times 10^{20}\\,\\rm{cm^{-2}}$ (cite: Kalberla05)."
+     }
+    ]
+   },
+   "citation": "(cite: Kalberla05)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass $M_{\\rm BH}\\approx 5.2\\times 10^{6} M_{\\odot}$ for AT2018hyz",
+    "evidence": [
+     {
+      "loc": "Circumnuclear Density",
+      "quote": "Here we use $M_{\\rm BH}\\approx 5.2\\times 10^{6} M_{\\odot}$ for AT2018hyz, as inferred by (cite: Gomez2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Gomez2020)"
+  },
+  {
+   "what": {
+    "value": "Earlier radio observations of AT2018hyz from 972 to 1282 days",
+    "evidence": [
+     {
+      "loc": "Radio Observations",
+      "quote": "In (cite: p1) we presented observations of AT2018hyz from $\\delta_{t} =972- 1282$ days after optical discovery (on 2018 Oct 14)"
+     }
+    ]
+   },
+   "citation": "(cite: p1)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and extract radio and millimeter flux densities",
+   "method": "Calibrate and image VLA, MeerKAT, ATCA, ALMA, and SMA datasets using standard pipelines/tasks, and extract point-source flux densities",
+   "software": [
+    "CASA",
+    "tclean",
+    "pwkit",
+    "MIRIAD",
+    "SARAO Science Data Processor (SDP)",
+    "SMA COMPASS pipeline"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Point source fit for VLA flux density extraction"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract and fit Chandra X-ray spectrum",
+   "method": "Reprocess Chandra ACIS-S exposures, detect source with wavdetect, extract spectra with specextract, and simultaneously fit an absorbed power-law model in Xspec",
+   "software": [
+    "CIAO",
+    "CALDB",
+    "Xspec"
+   ],
+   "key_parameters": [
+    "1.5'' source region radius and 30'' background region radius"
+   ],
+   "assumptions": [
+    "Galactic column density $N_{H,\\rm MW}=2.67\\times 10^{20}\\,\\rm{cm^{-2}}$ and intrinsic absorption $N_{H, \\rm int} = 0\\,\\rm{cm^{-2}}$"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit multi-frequency radio/mm Spectral Energy Distributions (SEDs)",
+   "method": "Fit each epoch's SED with a weighted Granot & Sari (2002) synchrotron model accounting for both $\\nu_a \\ll \\nu_m$ and $\\nu_m \\ll \\nu_a$ regimes",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "$s_1= 1.06$, $s_2= 1.76 + 0.05p$, $s_4 = 3.63p - 1.60$, weights $w_1 = (\\nu_m/\\nu_a)^2$ and $w_2 = (\\nu_a/\\nu_m)^2$"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive physical outflow parameters for spherical geometry via equipartition analysis",
+   "method": "Minimum energy equipartition analysis using SED peak parameters and cooling break constraint from combined radio+mm+Chandra SED",
+   "software": [],
+   "key_parameters": [
+    "Fixed $\\nu_p=2.9$ GHz (with 0.6 GHz RMS propagated into errors), $p=2.16$, $\\epsilon_B = 10^{-3}$, launch time $t_0=622$ days"
+   ],
+   "assumptions": [
+    "Spherical outflow geometry and $\\epsilon_B \\approx 10^{-3}$"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model off-axis relativistic jet scenarios (generalized equipartition and structured jet forward modeling)",
+   "method": "Apply generalized off-axis equipartition analysis of Matsumoto & Piran (2023) using $\\nu_m$ constraint, and forward model afterglow emission from a steep angular structured jet",
+   "software": [],
+   "key_parameters": [
+    "Top-hat jet: $f_A=f_V=(\\Gamma\\theta_j)^2$, $\\theta_j=0.1$, $\\epsilon_e=0.1$, $\\epsilon_B=10^{-3}$, $\\eta=1$; Structured jet: $k=0$, $q\\approx 12$, $a\\approx b\\approx 12$"
+   ],
+   "assumptions": [
+    "Thin-shell geometry, locally spherical dynamics without lateral spreading, constant density external medium ($k=0$), and ad-hoc $\\epsilon_e\\propto t^4$ at early times for the structured jet"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) flux density at 1367 days",
+   "value": "2.172",
+   "uncertainty": "0.061",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2022 July 12 | ALMA | 2021.1.01210.T | 1367 | 97.5 | 2.172$\\pm$0.061 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 6 (240 GHz) flux density at 1367 days",
+   "value": "1.11",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | | | | 240 | 1.11$\\pm$0.04 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) flux density at 1421/1441 days",
+   "value": "3.035",
+   "uncertainty": "0.33",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2022 Sept 24 | ALMA | 2021.1.01210.T | 1421 | 97.5 | 3.035$\\pm$0.33 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SMA 225.5 GHz flux density at 2198 days",
+   "value": "6.32",
+   "uncertainty": "0.31",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2024 Oct 20 | SMA | POETS | 2198 | 225.5 | 6.32$\\pm$0.31 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Chandra X-ray photon index (Gamma_X) at 1934 days",
+   "value": "1.3",
+   "uncertainty": "+0.5/-0.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "X-ray Observations",
+     "quote": "The photon index is constrained to $\\Gamma_{\\rm X}=1.3_{-0.3}^{+0.5}$ ($1\\,\\sigma$ confidence level)"
+    }
+   ]
+  },
+  {
+   "quantity": "Chandra 0.3-10 keV unabsorbed X-ray flux at 1934 days",
+   "value": "2.0e-14",
+   "uncertainty": "+0.4e-14/-0.3e-14",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "X-ray Observations",
+     "quote": "The $0.3-10$ keV unabsorbed flux is $F_x=2.0_{-0.3}^{+0.4} \\times 10^{-14}\\,\\rm{erg\\,s^{-1}cm^{-2}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SED peak frequency (nu_p)",
+   "value": "2.9",
+   "uncertainty": "0.7",
+   "units": "GHz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distributions",
+     "quote": "While $F_{\\nu,p}$ exhibits a steady rise over time (by a factor of $\\approx10$), $\\nu_p$ remains steady overall (despite some epoch-to-epoch scatter) with a mean value of $2.9\\pm 0.7$ GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean electron energy power-law index (p)",
+   "value": "2.16",
+   "uncertainty": "0.26",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spectral Energy Distributions",
+     "quote": "The value of $p$ exhibits some scatter as well, but remains steady, with a mean of $2.16\\pm 0.26$; we thus adopt $p=2.16$ in the subsequent analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "SED peak flux density at 2160 days",
+   "value": "36.01",
+   "uncertainty": "1.29",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2160 | $36.01\\pm 1.29$ | $3.56\\pm 0.04$ | $2.08\\pm 0.03$ | $0.07\\pm 0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Synchrotron cooling frequency (nu_c) at ~1950 days",
+   "value": "250",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spherical Outflow Equipartition Analysis",
+     "quote": "Fitting this model to the data we find $\\nu_c\\approx 250$ GHz at $\\approx 1950$ days."
+    }
+   ]
+  },
+  {
+   "quantity": "Spherical outflow launch time (t_0)",
+   "value": "620",
+   "uncertainty": "+24/-22",
+   "units": "d",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "For $\\Gamma$ and $\\beta$ we have accounted for the uncertainty in the launch date ($t_{0}=620\\substack{+24 \\\\ -22}$ days)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spherical outflow equipartition radius log(R_eq) at 2160 days",
+   "value": "18.13",
+   "uncertainty": "+0.08/-0.08",
+   "units": "log(cm)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2160 | $18.13\\substack{+0.08 \\\\ -0.08}$ | $50.33\\substack{+0.09 \\\\ -0.09}$ | $-1.20\\substack{+0.01 \\\\ -0.01}$ | $55.08\\substack{+0.03 \\\\ -0.03}$ | $0.08\\substack{+0.01 \\\\ -0.01}$ | $1.04\\substack{+0.01 \\\\ -0.01}$ | $0.32\\substack{+0.01 \\\\ -0.01}$ | $128 \\substack{+1 \\\\ -1}$ | $375\\substack{+1 \\\\ -1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spherical outflow equipartition energy log(E_eq) at 2160 days",
+   "value": "50.33",
+   "uncertainty": "+0.09/-0.09",
+   "units": "log(erg)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 2160 | $18.13\\substack{+0.08 \\\\ -0.08}$ | $50.33\\substack{+0.09 \\\\ -0.09}$ | $-1.20\\substack{+0.01 \\\\ -0.01}$ | $55.08\\substack{+0.03 \\\\ -0.03}$ | $0.08\\substack{+0.01 \\\\ -0.01}$ | $1.04\\substack{+0.01 \\\\ -0.01}$ | $0.32\\substack{+0.01 \\\\ -0.01}$ | $128 \\substack{+1 \\\\ -1}$ | $375\\substack{+1 \\\\ -1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spherical outflow velocity (beta)",
+   "value": "0.33",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spherical Outflow",
+     "quote": "The inferred outflow velocity using all epochs is $\\beta\\approx 0.33$."
+    }
+   ]
+  },
+  {
+   "quantity": "Off-axis jet viewing angle (theta_obs)",
+   "value": "80-90",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Generalized Equipartition Analysis",
+     "quote": "We therefore conclude that if AT2018hyz harbors an off-axis jet, then its viewing angle is $\\approx 80-90^{\\circ}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "How ALMA flux densities were extracted (e.g., whether pwkit imtool fitsrc, CASA imfit, or peak pixel was used on ALMA images)",
+  "Exact forward-modeling parameters for the structured jet (e.g., exact values of core energy, core Lorentz factor, core opening angle, and external density normalization A)",
+  "Cosmological parameters assumed to convert redshift z=0.0457 to luminosity distance"
+ ],
+ "missing_for_reproduction": [
+  "Exact flux extraction method for the ALMA continuum images",
+  "Complete list of best-fit input parameters (e.g., E_k,iso(0), Gamma_c, theta_c, external density A) for the structured jet forward model",
+  "Scripts for the MCMC SED fitting and equipartition calculations"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All extracted flux densities across all facilities (including ALMA) are tabulated in Table 3, and the analytical equations for the SED fitting (emcee) and equipartition models are explicitly provided or cited from Paper I, making the main SED and equipartition results highly reproducible from the table, though structured jet forward-modeling parameters and ALMA image flux extraction details are incomplete.",
+ "rediscovery_reason": "The ALMA project 2021.1.01210.T is public, calibrated with the standard CASA pipeline, and the continuum flux densities and subsequent MCMC SED fits and equipartition parameters are numeric and clearly tabulated.",
+ "source_card": "cards/2026ApJ...998..111C/sonnet/card.md"
+}

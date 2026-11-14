@@ -1,0 +1,474 @@
+{
+ "bibcode": "2020ApJ...904..131N",
+ "title": "No Evidence for [C II] Halos or High-velocity Outflows in z ≳ 6 Quasar Host Galaxies",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abc33f",
+ "arxiv_id": "2010.14875",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Do z>~6 quasar host galaxies show extended [C II] / dust halos or high-velocity [C II] outflows, tested with uv-plane stacking of ~1 kpc resolution ALMA data of 27 hosts?",
+ "alma_project_codes": [
+  "2012.1.00240.S",
+  "2012.1.00882.S",
+  "2013.1.00273.S",
+  "2015.1.00399.S",
+  "2015.1.00606.S",
+  "2015.1.00692.S",
+  "2015.1.00997.S",
+  "2015.1.01115.S",
+  "2016.1.00544.S",
+  "2016.A.00018.S",
+  "2017.1.00396.S",
+  "2017.1.01301.S",
+  "2018.1.00908.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12 m and 7 m (ACA) arrays; datasets are 12 m unless noted in Table 1",
+  "angular_resolution": "~1 kpc high-resolution dataset per source, plus lower-resolution archival datasets for 20 objects; beam sizes per dataset in Table 1 (computed 0.574 lambda/L80)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshifts, [C II] line fluxes, FWHMs and source coordinates in Table 1 (measured from aperture spectra / intensity maps)",
+    "evidence": [
+     {
+      "loc": "2.1 New and archival ALMA data",
+      "quote": "whereas coordinates are measured from the"
+     },
+     {
+      "loc": "2.1 New and archival ALMA data",
+      "quote": "as reported in (cite: venemans20)"
+     }
+    ]
+   },
+   "citation": "(cite: venemans20)"
+  },
+  {
+   "what": {
+    "value": "Mean of individual dust continuum measurements used to check the stacked continuum flux",
+    "evidence": [
+     {
+      "loc": "4.2 Spatial extent of the dust continuum emission",
+      "quote": "is consistent with the mean of individual continuum measurements (cite: venemans20)"
+     }
+    ]
+   },
+   "citation": "(cite: venemans20)"
+  },
+  {
+   "what": {
+    "value": "Assumed stellar masses of 10^10.5-11 Msun for quasar hosts",
+    "evidence": [
+     {
+      "loc": "5.1 Spatial extent of the [C II] and dust emission",
+      "quote": "Based on the simulations of (cite: marshall19b), which probe the properties of quasar host galaxies, we assume that galaxies in our sample have stellar masses of"
+     }
+    ]
+   },
+   "citation": "(cite: marshall19b)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass - size evolution giving stellar half-light radii of 1 - 2 kpc at z~7",
+    "evidence": [
+     {
+      "loc": "5.1 Spatial extent of the [C II] and dust emission",
+      "quote": "the stellar mass - size evolution fit by (cite: allen17) indicates that our sample should have stellar half-light radii of 1 – 2 kpc"
+     }
+    ]
+   },
+   "citation": "(cite: allen17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and quality-check the visibilities",
+   "method": "Default pipeline restoration scripts in the original CASA version; datasets with wrong Ceres/Pallas models recalibrated; full pipeline rerun in CASA 5.6.1-8 as a flux-scale check",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Original CASA 4.1 to 5.4.0-68; recheck with CASA 5.6.1-8"
+   ],
+   "assumptions": [
+    "10% flux calibration accuracy"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "image each source and cycle, subtract continuum, make [C II] maps",
+   "method": "tclean per source/cycle (Högbom, robust 0.5, 30 MHz channels), uvcontsub continuum subtraction, [C II] intensity map from channels over 1.2xFWHM",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "robust = 0.5; clean to 2 sigma within 2 arcsec radius mask",
+    "uvcontsub with fitorder = 1, excluding 2.5xFWHM around the line"
+   ],
+   "assumptions": [
+    "Gaussian line profile when correcting for the tails beyond 1.2xFWHM (factor 1.19)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "measure aperture fluxes with residual scaling and uv-plane diagnostics",
+   "method": "Circular-aperture fluxes from dirty, residual and clean-component maps with residual scaling; imfit 2D Gaussians in image plane; uvmodelfit and radially averaged visibility amplitudes in the uv-plane",
+   "software": [
+    "CASA",
+    "imfit",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "Corrected flux F = C + eps R = eps D, eps = C/(D-R) in the aperture",
+    "Aperture error approximated by rms x sqrt(N beams)"
+   ],
+   "assumptions": [
+    "Apertures chosen manually at the radius where the curve of growth flattens"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "extract aperture spectra and stack them in velocity/sigma_line units",
+   "method": "Residual-scaled aperture flux per channel, Gaussian plus constant fit, spectra rescaled by line width, constant continuum subtracted, stacked without weights",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Average sigma_line of 150 km/s"
+   ],
+   "assumptions": [
+    "Continuum flat within the bandwidth of interest"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "prepare and image the uv-stacked data",
+   "method": "Split channels from continuum-subtracted visibilities, time-average to 30 s, set ICRS, phase-shift to the [C II] centroid with fixvis, recompute weights with statwt, then tclean (mfs, multi-scale) all sources together; each velocity bin imaged separately and joined with ia.imageconcat",
+   "software": [
+    "CASA",
+    "tclean",
+    "fixvis",
+    "statwt",
+    "im.advisechansel",
+    "ia.imageconcat"
+   ],
+   "key_parameters": [
+    "specmode = mfs; multi-scale scales 0, 1, 3, 5, 10 beams; 2 arcsec radius mask to 2 sigma",
+    "Velocity bins of fixed 30 km/s or 0.2 sigma_line; channels chosen with im.advisechansel in LSRK, nearest neighbour"
+   ],
+   "assumptions": [
+    "Recomputed weights comparable across datasets so no single source dominates the average"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "measure spatial extent of stacked [C II] and dust emission",
+   "method": "Curve of growth and azimuthally averaged surface brightness profile of the uv-stacked [C II] map and continuum map (clean sample); half-light radius at 50% of flux at 10 kpc; exponential fit to the extended component",
+   "software": [
+    "CASA",
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "No residual scaling used for the profile; mean pixel value in annuli, since corrections are negligible"
+   ],
+   "assumptions": [
+    "Extended component described by an exponential function"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "search the stacked spectrum for a broad (outflow) component",
+   "method": "uv-stacked cube of the clean (and full) sample in 0.2 sigma_line slices; 2 arcsec aperture and single-beam spectra fit with one Gaussian; residuals inspected; wings map stacked between 3 and 6 sigma_line; upper limit from wings rms",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "100 slices of 0.2 sigma_line covering +-10 sigma_line; sigma_line = 150 km/s"
+   ],
+   "assumptions": [
+    "3 sigma upper limit derived from the wings-map rms and its bandwidth"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "compare extended dust profile with MassiveFIRE simulation",
+   "method": "Stack predicted 1.2 mm ALMA maps of simulated galaxies and average in radial annuli; compare with observed profiles",
+   "software": [
+    "SKIRT"
+   ],
+   "key_parameters": [
+    "Simulated halos of (2-6)x10^12 Msun, SFR 70-400 Msun/yr, total IR luminosity ~1e12 Lsun matched to the sample"
+   ],
+   "assumptions": [
+    "SMBH feedback does not severely affect the host at radii beyond 2 kpc; simulated galaxies matched in FIR luminosity only"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C II] half-light radius of the uv-stacked clean sample",
+   "value": "1.6",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial extent of the [C II] emission",
+     "quote": "The $\\text{\\textsc{[C ii]}}$ emission half-light radius is $1.6 \\pm 0.1$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust continuum half-light radius of the uv-stacked clean sample",
+   "value": "0.86",
+   "uncertainty": "0.03",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Spatial extent of the dust continuum emission",
+     "quote": "The dust continuum half-light radius, defined as in the previous section, is $0.86 \\pm 0.03$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative [C II] flux of the stack at saturation (10 kpc)",
+   "value": "2.5",
+   "uncertainty": "0.1",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial extent of the [C II] emission",
+     "quote": "The value at which the cumulative flux saturates ($2.5\\pm0.1$ $\\text{Jy\\,km\\,s}^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked dust continuum flux density",
+   "value": "2.05",
+   "uncertainty": "0.07",
+   "units": "mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Spatial extent of the dust continuum emission",
+     "quote": "The final value of $2.05 \\pm 0.07$ mJy is consistent with the mean of individual continuum measurements (cite: venemans20)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of stacked [C II] flux within 2, 3, 4, 5, 10 kpc",
+   "value": "55%, 65%, 75%, 80%, 100%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial extent of the [C II] emission",
+     "quote": "the region within 2, 3, 4, 5 and 10 kpc contains 55%, 65%, 75%, 80% and 100% of the flux, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of stacked dust continuum flux within 2, 3, 4, 5, 10 kpc",
+   "value": "75%, 80%, 85%, 90%, 100%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Spatial extent of the dust continuum emission",
+     "quote": "the emission contained within 2, 3, 4, 5 and 10 kpc corresponds to 75%, 80%, 85%, 90% and 100% of the total, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Exponential scale length of the extended [C II] component (image plane)",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial extent of the [C II] emission",
+     "quote": "is well described by an exponential function with a scale length of 2 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "uv-plane fit, compact [C II] component: flux and scale length",
+   "value": "F = 2.8 mJy; l = 0.43 kpc",
+   "uncertainty": "F +-0.1 mJy; l +-0.02 kpc",
+   "units": "mJy; kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Appendix: Fitting the stacked data in the uv-plane",
+     "quote": "$F_{\\ensuremath{\\text{\\textsc{[C ii]}}}}^{\\mathrm{comp.}} = 2.8 \\pm 0.1$ mJy with $l=0.43 \\pm 0.02$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "uv-plane fit, extended [C II] component: flux and scale length",
+   "value": "F = 3.4 mJy; l = 2.6 kpc",
+   "uncertainty": "F +-0.2 mJy; l +-0.2 kpc",
+   "units": "mJy; kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Appendix: Fitting the stacked data in the uv-plane",
+     "quote": "$F_{\\ensuremath{\\text{\\textsc{[C ii]}}}}^{\\mathrm{ext.}} = 3.4 \\pm 0.2$ mJy with $l=2.6 \\pm 0.2$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "uv-plane fit, compact dust component: flux and scale length",
+   "value": "F = 1.19 mJy; l = 0.20 kpc",
+   "uncertainty": "F +-0.03 mJy; l +-0.01 kpc",
+   "units": "mJy; kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Appendix: Fitting the stacked data in the uv-plane",
+     "quote": "$F_{\\mathrm{dust}}^{\\mathrm{comp.}} = 1.19 \\pm 0.03$ mJy with $l=0.20 \\pm 0.01$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "uv-plane fit, extended dust component: flux and scale length",
+   "value": "F = 0.76 mJy; l = 1.3 kpc",
+   "uncertainty": "F +-0.03 mJy; l +-0.1 kpc",
+   "units": "mJy; kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Appendix: Fitting the stacked data in the uv-plane",
+     "quote": "$F_{\\mathrm{dust}}^{\\mathrm{ext.}} = 0.76 \\pm 0.03$ mJy with $l=1.3 \\pm 0.1$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak S/N of the stacked aperture [C II] spectrum in 0.2 sigma_line bins",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 High-velocity outflows",
+     "quote": "is detected at a S/N of 32 in velocity bins of"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] flux in single Gaussian fit to the uv-stacked spectrum (sigma_line = 150 km/s)",
+   "value": "2.9",
+   "uncertainty": "0.1",
+   "units": "Jy km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 High-velocity outflows",
+     "quote": "is equal to $2.9 \\pm 0.1\\,\\ensuremath{\\text{Jy\\,km\\,s}^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "rms noise per 0.2 sigma_line channel in the uv-stack (clean sample, within +-6 sigma_line)",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 High-velocity outflows",
+     "quote": "The rms noise in the velocity range between $\\pm6\\sigma_{\\mathrm{line}}$ is 60 $\\mu\\mathrm{Jy}\\,\\mathrm{beam}^{-1}$ per channel of $0.2\\sigma_{\\mathrm{line}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "rms noise of the wings map (+-3 to 6 sigma_line, clean sample)",
+   "value": "10.8",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 High-velocity outflows",
+     "quote": "This map has an rms noise level of $10.8\\,\\ensuremath{\\mu\\mathrm{Jy}\\,\\mathrm{beam}^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit on outflow flux in the core (single ~1 kpc beam)",
+   "value": "0.03 (<5% of core peak emission)",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 High-velocity outflows",
+     "quote": "we estimate a $3\\sigma$ upper limit on the outflow in the very core (single $\\sim1$ kpc beam) of 0.03 $\\text{Jy\\,km\\,s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of observed [C II] emission collected by a single Gaussian",
+   "value": "99%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.3 Outflows",
+     "quote": "A single Gaussian collects 99% of the observed emission, based on the cumulative flux integral."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean flux reduction after recalibrating the nine Ceres/Pallas datasets",
+   "value": "15%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2.1 Flux calibration accuracy",
+     "quote": "with the mean flux level reduction of 15% for these nine datasets"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Robust/weighting for the uv-stack tclean runs (only given for per-source imaging; figure file names hint at robust weighting)",
+  "Cell size, image size and primary-beam correction settings for tclean",
+  "Per-source aperture radii (chosen manually after visual inspection) and the line-free channels per source",
+  "Exact rms used to define the 2 sigma clean threshold and number of tclean iterations",
+  "statwt parameters (time bin, channel bin) beyond 'same time and channels bin for all datasets'",
+  "Which exact datasets were excluded for each of the four samples (only footnote markers in Table 1)",
+  "CASA version actually used for each individual dataset and the five datasets where the 5.6.1 rerun failed",
+  "Per-source flux fix factors applied after Ceres/Pallas recalibration",
+  "Annulus widths and centering for the surface brightness profiles and error definition",
+  "Fitting priors and error treatment for the Gaussian+constant and uvmultifit fits",
+  "MassiveFIRE maps and SKIRT outputs (from Liang et al. 2019) needed to repeat the comparison"
+ ],
+ "missing_for_reproduction": [
+  "Robust weighting, cell size, image size, primary-beam correction and clean iterations for the uv-stack tclean runs",
+  "Per-source aperture radii and line-free channel ranges",
+  "Exact dataset list per sample (only footnote markers in Table 1) and per-dataset CASA versions",
+  "No analysis code released or referenced",
+  "MassiveFIRE/SKIRT simulation maps are from other work and not provided"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Scale 1-5. Data and the multi-step recipe (uv-stacking, residual scaling, profile measurement) are described in good detail with quoted numbers, but many tclean and aperture settings are unstated and the heavy data volume plus inherited choices from companion papers make exact reproduction hard.",
+ "rediscovery_reason": "ALMA data of cycles 1-6 for the 13 listed projects are known to be public in the archive; the recipe is mostly complete and results (half-light radii, fluxes, rms, outflow limit) are numeric, though reproduction is data-heavy.",
+ "source_card": "cards/2020ApJ...904..131N/sonnet/card.md"
+}

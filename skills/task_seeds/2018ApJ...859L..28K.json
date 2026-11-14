@@ -1,0 +1,206 @@
+{
+ "bibcode": "2018ApJ...859L..28K",
+ "title": "Probing Signatures of a Distant Planet around the Young T-Tauri Star CI Tau Hosting a Possible Hot Jupiter",
+ "year": 2018,
+ "doi": "10.3847/2041-8213/aac6d2",
+ "arxiv_id": "1805.07498",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "Does the disk of CI Tau, which hosts a hot Jupiter candidate, show a gap that could be created by a distant planet?",
+ "alma_project_codes": [
+  "2015.1.01207.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.25\" x 0.17\" (superuniform); 0.29\" x 0.28\" after taper",
+  "sensitivity": "1 sigma ~0.17 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust midplane temperature profile T_d(R)=178±3 (R/1 au)^-0.57±0.02, q=1/2",
+    "evidence": [
+     {
+      "loc": "3 Disk modeling",
+      "quote": "the dust temperature at the disk midplane given in (cite: andr07), $T_d(R) = 178\\pm3\\ (R/1\\ {\\rm au})^{-0.57\\pm0.02}$"
+     }
+    ]
+   },
+   "citation": "Andrews & Williams 2007 (cite: andr07)"
+  },
+  {
+   "what": {
+    "value": "Distance 158.7±1.2 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "the distance of 158.7$\\pm$1.2 pc (cite: bailer-jones+18)"
+     }
+    ]
+   },
+   "citation": "(cite: bailer-jones+18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure geometry",
+   "method": "CLEAN continuum image, tapered to a circular beam; fit ellipse to 20σ contour with orthogonal distance regression",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "i=44.6 deg, PA=11.8 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Radial surface brightness and brightness temperature profile",
+   "method": "Deproject visibilities in uv plane, image, average azimuthally; Planck function for brightness temperature",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit gapped disk model to visibilities",
+   "method": "Exponentially tapered power-law brightness profile with gap; model image converted to visibilities with vis_sample; MCMC fit to azimuthally averaged deprojected visibilities",
+   "software": [
+    "vis_sample",
+    "emcee"
+   ],
+   "key_parameters": [
+    "6 free parameters: gamma, R_gap_in, R_gap_out, delta, R_c, F_total; 100 walkers, 1000 iterations, 500 burn-in"
+   ],
+   "assumptions": [
+    "Optically thin emission, I ∝ T_d τ; q=1/2; fixed i and PA from the image"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate planet mass from gap",
+   "method": "Empirical gap-opening formulas with aspect ratio 0.122 and alpha=1e-3 or 1e-4",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha = 1e-3 and 1e-4"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Gap location (deprojected radius)",
+   "value": "104.5",
+   "uncertainty": "±1.6",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the gap is located at a deprojected radius of 104.5$\\pm$1.6 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap width",
+   "value": "36.9",
+   "uncertainty": "±2.9",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "has a width of 36.9$\\pm$2.9 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap depth",
+   "value": "0.41",
+   "uncertainty": "+0.04/-0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "gap width and depth (0.41$^{+0.04}_{-0.06}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature drop at gap",
+   "value": "~2.3",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The brightness temperature around the gap was calculated to be $\\sim$2.3 K lower than that of the ambient disk."
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density F_total",
+   "value": "140.6",
+   "uncertainty": "±0.6",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "140.6$^{+0.6}_{-0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "44.6",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2 Data Reduction",
+     "quote": "obtaining values of $i=$44.6$^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass from gap",
+   "value": "0.25–0.8",
+   "uncertainty": "not stated",
+   "units": "M_Jupiter",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "we find the mass of a planet to be 0.8 $M_{\\rm Jupiter}$ and 0.25 $M_{\\rm Jupiter}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters (cell, image size, mask, threshold, niter, uvtaper value)",
+  "Which spectral windows were line-free and any channel flagging",
+  "Self-calibration solution intervals",
+  "MCMC initial walker positions and likelihood form/uncertainties",
+  "Dust opacity and aspect-ratio derivation (h/r=0.122) details",
+  "Number of azimuthal bins/radial bins in the visibility profile"
+ ],
+ "missing_for_reproduction": [
+  "Exact clean parameters",
+  "MCMC likelihood details and initial conditions",
+  "Radial binning of visibilities"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear model/MCMC setup, but imaging parameters and likelihood details are missing.",
+ "rediscovery_reason": "Public data, a clear modelling recipe and numeric results (gap radius, width, depth) allow reproduction.",
+ "source_card": "cards/2018ApJ...859L..28K/sonnet/card.md"
+}

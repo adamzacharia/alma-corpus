@@ -1,0 +1,475 @@
+{
+ "bibcode": "2026ApJS..282...64S",
+ "title": "Magellanic Outflow and Chemistry Survey (MAGOS): Hot Cores in the LMC",
+ "year": 2026,
+ "doi": "10.3847/1538-4365/ae2d22",
+ "arxiv_id": "2512.15983",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "nearby_galaxies"
+ ],
+ "question": "What are the chemical compositions, molecular tracers, and physical and environmental drivers of chemical diversity (particularly COM-poor chemistry) in hot molecular cores in the subsolar-metallicity Large Magellanic Cloud?",
+ "alma_project_codes": [
+  "2019.1.01770.S"
+ ],
+ "data": {
+  "bands": "Band 7 (350 GHz / 850 um)",
+  "arrays": "12 m array (41-46 antennas)",
+  "angular_resolution": "0.30''-0.31'' x 0.37''-0.39'' (original), 0.40'' (0.1 pc, restored line images)",
+  "sensitivity": "continuum rms 0.1-0.2 mJy/beam; spectral rms 0.24-0.30 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of 277 LMC young stellar objects and infrared spectral classifications",
+    "evidence": [
+     {
+      "loc": "Target selection",
+      "quote": "The target sources were selected from the catalog of young stellar objects (YSOs) presented by (cite: Sea09), which includes 277 sources."
+     }
+    ]
+   },
+   "citation": "(cite: Sea09)"
+  },
+  {
+   "what": {
+    "value": "2MASS, Spitzer SAGE, and Herschel HERITAGE photometric catalogs",
+    "evidence": [
+     {
+      "loc": "Target selection",
+      "quote": "The sources in the (cite: Sea09) catalog include near-infrared and mid-infrared photometric data, which are based on the 2MASS and Spitzer SAGE catalogs (cite: Skr06; Mei06)."
+     },
+     {
+      "loc": "Target selection",
+      "quote": "Far-infrared data were obtained by performing positional cross-matching between the (cite: Sea09) sources and the Herschel HERITAGE catalog (cite: Mei10), resulting in spectral energy distributions (SEDs) covering the 1–500 $\\mu$m range."
+     }
+    ]
+   },
+   "citation": "(cite: Skr06; Mei06; Mei10)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient of 1.96 cm^2 g^-1 at 850 um for grains with thin ice mantles",
+    "evidence": [
+     {
+      "loc": "H2 column density and abundances",
+      "quote": "$\\kappa_{\\nu}$ is the mass absorption coefficient of dust grains coated by thin ice mantles taken from (cite: Oss94) and we use 1.96 cm$^2$ g$^{-1}$ at 850 $\\mu$m"
+     }
+    ]
+   },
+   "citation": "(cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "LMC isotope ratios 12C/13C = 49 and 32S/34S = 15",
+    "evidence": [
+     {
+      "loc": "Optical thickness of CH3OH and SO2 lines",
+      "quote": "These values are about 1.0 to 2.5 times lower than the $^{32}$S/$^{34}$S ratio reported for the LMC (cite: Wan09; ST20; Gon23)."
+     },
+     {
+      "loc": "Optical thickness of CH3OH and SO2 lines",
+      "quote": "We adopt $^{12}$C/$^{13}$C = 49 and $^{32}$S/$^{34}$S = 15, as reported in the references above."
+     }
+    ]
+   },
+   "citation": "(cite: Wan09; ST20; Gon23)"
+  },
+  {
+   "what": {
+    "value": "SMC, extreme outer Galaxy, and Galactic hot core molecular abundances for cross-metallicity comparison",
+    "evidence": [
+     {
+      "loc": "Molecular abundances variation within LMC hot cores",
+      "quote": "For the SMC hot cores plotted in the figure, $N_{\\mathrm{H_2}}$ has been recalculated using the same method as in this study, based on the data from (cite: ST23)."
+     },
+     {
+      "loc": "Molecular abundances variation within LMC hot cores",
+      "quote": "For comparison, we include Galactic hot core data: CH$_3$OH values are taken from 28 hot cores reported by (cite: Bae22), while SO$_2$ values are taken from 10 hot cores"
+     },
+     {
+      "loc": "Molecular abundances variation within LMC hot cores",
+      "quote": "For comparison, Galactic hot cores with gas temperatures above 100 K from the massive protostar sample in (cite: vanGel22a) and (cite: San24) are also plotted."
+     }
+    ]
+   },
+   "citation": "(cite: ST23; ST21; Bae22; Sut95; Mac96; Hel97; Hat98b; Qin10; Zer12; Xu13; vanGel22a; San24)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calculate bolometric luminosities and select target sample",
+   "method": "Cross-match YSO catalog with 2MASS, Spitzer SAGE, and Herschel HERITAGE catalogs to build 1-500 um SEDs, integrate fluxes to get bolometric luminosity, and divide luminosity among resolved ALMA continuum components proportional to 850 um flux.",
+   "software": [],
+   "key_parameters": [
+    "Luminosity bins: 10^4-10^4.5 L_sun, 10^4.5-10^5 L_sun, 10^5-10^5.5 L_sun (10 sources each)"
+   ],
+   "assumptions": [
+    "Multiple resolved submillimeter components share the infrared luminosity in proportion to their 850 um continuum flux"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and spectral lines, and extract source spectra",
+   "method": "Subtract continuum with uvcontsub, image continuum and lines with tclean using Briggs robust=0.5 and auto-multithresh, restore line cubes to 0.40'' circular beam, apply primary beam correction with impbcor, and extract spectra and continuum fluxes from 0.41'' (0.1 pc) apertures centered on continuum peaks.",
+   "software": [
+    "CASA",
+    "tclean",
+    "impbcor",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Aperture: 0.41'' diameter circle (0.62'' x 0.41'', PA=65 deg ellipse for Lh09)",
+    "Detection criterion: 3 sigma significance and velocity consistency with V_sys; 2 or 3 channels binned for weak lines"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate rotational temperatures and column densities via rotation diagrams and LTE equations",
+   "method": "Construct rotation diagrams for species with multiple lines (CH3OH, SO2, 34SO2, CH3OCH3, HCOOCH3, C2H5OH, trans-HCOOH) to fit T_rot and N; for other species, compute LTE column density using assumed T_rot; correct CH3OH and SO2 for optical depth using 13CH3OH and 34SO2 isotopologues where detected.",
+   "software": [],
+   "key_parameters": [
+    "Hot core classification threshold: T_rot > 100 K",
+    "Two-component fit boundary for SO2 and 34SO2: E_u <= 80 K and E_u >= 90 K"
+   ],
+   "assumptions": [
+    "Optically thin condition, LTE, beam filling factor of unity, and T_rot >> T_bg (T_bg = 2.73 K)",
+    "T_rot(SO, SO+) = T_rot(high-T SO2); T_rot(other COMs) = T_rot(CH3OH); T_rot(SiO) = T_rot(high-T SO2 or CH3OH or average) with 50% uncertainty; T_rot(H13CO+) = 30-60 K",
+    "Isotope ratios: 12C/13C = 49 (+/- 30%) and 32S/34S = 15 (+/- 10%)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive H2 column densities, fractional molecular abundances, and environmental correlations",
+   "method": "Calculate N_H2 from 850 um dust continuum brightness using optically thin dust emission formula, compute fractional abundances N(X)/N_H2, and evaluate correlation coefficients between line intensities, abundances, T_rot, FWHM, L_bol, Spitzer IR types, and 24 um surface brightness.",
+   "software": [],
+   "key_parameters": [
+    "kappa_nu = 1.96 cm^2 g^-1 at 850 um; dust-to-gas mass ratio Z = 0.0027"
+   ],
+   "assumptions": [
+    "Optically thin 850 um dust continuum; T_d equals T_rot of high-temperature SO2, CH3OH, or their average; 30% uncertainty in N_H2; for Lh09, N_H2 = (8 +/- 4) x 10^23 cm^-2 assumed due to free-free contamination"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of continuum sources identified",
+   "value": "36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Continuum imaging reveals 36 compact sources in total, among which line analyses identify 9 hot cores and 1 hot-core candidate, including two newly identified sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of hot cores identified",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Continuum imaging reveals 36 compact sources in total, among which line analyses identify 9 hot cores and 1 hot-core candidate, including two newly identified sources."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density range of hot cores",
+   "value": "1 to 8 x 10^23",
+   "uncertainty": "30%",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2 column density and abundances",
+     "quote": "The $N_{\\mathrm{H_2}}$ values of the present hot-core sources range from 1 to 8 $\\times$ 10$^{23}$ cm$^{-2}$, corresponding to gas number densities of $n_{\\mathrm{H_2}}$ = 0.5–4 $\\times$ 10$^6$ cm$^{-3}$, assuming a source diameter of 0.1 pc and a uniform spherical gas distribution around each protostar."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 gas number density range of hot cores",
+   "value": "0.5-4 x 10^6",
+   "uncertainty": "lower limit",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2 column density and abundances",
+     "quote": "The $N_{\\mathrm{H_2}}$ values of the present hot-core sources range from 1 to 8 $\\times$ 10$^{23}$ cm$^{-2}$, corresponding to gas number densities of $n_{\\mathrm{H_2}}$ = 0.5–4 $\\times$ 10$^6$ cm$^{-3}$, assuming a source diameter of 0.1 pc and a uniform spherical gas distribution around each protostar."
+    }
+   ]
+  },
+  {
+   "quantity": "12CH3OH/13CH3OH column density ratio in Lh07",
+   "value": "34",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Optical thickness of CH3OH and SO2 lines",
+     "quote": "Using the rotational temperature derived from $^{12}$CH$_3$OH, the column density of $^{13}$CH$_3$OH is calculated, yielding a $^{12}$CH$_3$OH/$^{13}$CH$_3$OH column density ratio of $(3.4 \\times 10^{16}) / (1.0 \\times 10^{15}) = 34$."
+    }
+   ]
+  },
+  {
+   "quantity": "12CH3OH optical depth in Lh07",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Optical thickness of CH3OH and SO2 lines",
+     "quote": "Even if we assume that the intrinsic $^{12}$C/$^{13}$C ratio of CH$_3$OH is 49, the optical depth of the $^{12}$CH$_3$OH emission is estimated to be $\\tau \\sim 0.7$ (cite: Gol99)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum 32SO2 optical depth in hot cores",
+   "value": "2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Optical thickness of CH3OH and SO2 lines",
+     "quote": "Based on these results, the optical depth of the $^{32}$SO$_2$ emission is estimated to be up to $\\tau \\sim2.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Lh07 CH3OH rotational temperature",
+   "value": "155",
+   "uncertainty": "+4/-4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OH | 155$^{+4}_{-4}$ | (3.4 $\\pm$ 0.1 ) $\\times$ 10$^{16}$ | ... | \\(3\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lh07 CH3OH (13C-corrected) fractional abundance N(CH3OH)/N_H2",
+   "value": "1.3 x 10^-7",
+   "uncertainty": "+/- 0.6 x 10^-7",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OH ($^{13}$C) | ... | (4.9 $\\pm$ 1.8 ) $\\times$ 10$^{16}$ | (1.3 $\\pm$ 0.6 ) $\\times$ 10$^{-7 }$ | \\(8\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lh07 SO2 (high-T) rotational temperature",
+   "value": "363",
+   "uncertainty": "+10/-10",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | SO$_2$ (high-$T$) | 363$^{+10}_{-10}$ | (1.2 $\\pm$ 0.1 ) $\\times$ 10$^{16}$ | ... | \\(3\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lh07 SO2 (34S-corrected, high-T) fractional abundance N(SO2)/N_H2",
+   "value": "4.6 x 10^-8",
+   "uncertainty": "+/- 1.5 x 10^-8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | SO$_2$ ($^{34}$S, high-$T$) | ... | (1.7 $\\pm$ 0.2 ) $\\times$ 10$^{16}$ | (4.6 $\\pm$ 1.5 ) $\\times$ 10$^{-8 }$ | \\(4\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lm10 CH3OH rotational temperature",
+   "value": "169",
+   "uncertainty": "+15/-13",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OH | 169$^{+15}_{-13}$ | (1.6 $\\pm$ 0.3 ) $\\times$ 10$^{16}$ | (6.7 $\\pm$ 2.3 ) $\\times$ 10$^{-8 }$ | \\(3\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lm10 CH3OH fractional abundance N(CH3OH)/N_H2",
+   "value": "6.7 x 10^-8",
+   "uncertainty": "+/- 2.3 x 10^-8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OH | 169$^{+15}_{-13}$ | (1.6 $\\pm$ 0.3 ) $\\times$ 10$^{16}$ | (6.7 $\\pm$ 2.3 ) $\\times$ 10$^{-8 }$ | \\(3\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lm10 CH3OCH3 fractional abundance N(CH3OCH3)/N_H2",
+   "value": "3.3 x 10^-9",
+   "uncertainty": "+/- 1.4 x 10^-9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OCH$_3$ | 83$^{+30}_{-17}$ | (8.0 $\\pm$ 2.4 ) $\\times$ 10$^{14}$ | (3.3 $\\pm$ 1.4 ) $\\times$ 10$^{-9 }$ | \\(3\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lh10 CH3OH fractional abundance upper limit",
+   "value": "<9 x 10^-10",
+   "uncertainty": "2 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OH | 172 | $<$7 $\\times$ 10$^{14}$ | $<$9 $\\times$ 10$^{-10}$ | \\(2\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Lh09 CH3OH fractional abundance upper limit",
+   "value": "<4 x 10^-10",
+   "uncertainty": "2 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| | CH$_3$OH | 113 | $<$3 $\\times$ 10$^{14}$ | $<$4 $\\times$ 10$^{-10}$ | \\(2\\) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between SO2 abundance and rotational temperature",
+   "value": "0.91",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "vs. Rotational temperatures",
+     "quote": "A strong correlation is observed for SO$_2$ (correlation coefficient = 0.91), suggesting that temperature rise in hot core regions contribute to enhanced SO$_2$ abundances."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between CH3OH abundance and rotational temperature",
+   "value": "0.10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "vs. Rotational temperatures",
+     "quote": "The correlation coefficient based on eight hot cores with high-temperature CH$_3$OH detections, including two literature samples from (cite: Sew22a), is 0.10."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between HCO+(4-3) FWHM and 850 um continuum brightness",
+   "value": "0.93",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "vs. Line widths",
+     "quote": "As shown in the figure, a strong correlation is found regardless of the presence or absence of hot cores (correlation coefficient = 0.93)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH abundance variation factor across LMC hot cores",
+   "value": ">350",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular abundances variation within LMC hot cores",
+     "quote": "Among the LMC sources, the CH$_3$OH abundance varies by a factor of $>$350 between the most enriched and most depleted sources, while the variation for SO$_2$ is a factor of 12."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 abundance variation factor across LMC hot cores",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular abundances variation within LMC hot cores",
+     "quote": "Among the LMC sources, the CH$_3$OH abundance varies by a factor of $>$350 between the most enriched and most depleted sources, while the variation for SO$_2$ is a factor of 12."
+    }
+   ]
+  },
+  {
+   "quantity": "Spread factor for CH3OH abundance in LMC hot cores",
+   "value": ">6.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular abundances variation within LMC hot cores",
+     "quote": "The spread factor, defined as 10 to the power of the 1$\\sigma$ standard deviation in log$_{10}$ space (cite: Naz22b), is calculated to be $>$6.8 for CH$_3$OH and 2.2 for SO$_2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Spread factor for SO2 abundance in LMC hot cores",
+   "value": "2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular abundances variation within LMC hot cores",
+     "quote": "The spread factor, defined as 10 to the power of the 1$\\sigma$ standard deviation in log$_{10}$ space (cite: Naz22b), is calculated to be $>$6.8 for CH$_3$OH and 2.2 for SO$_2$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for pipeline calibration and tclean imaging",
+  "Exact auto-multithresh parameters, stopping threshold, and niter in tclean",
+  "Cell size and image size (pixel dimensions) used in tclean",
+  "Specific frequency/channel ranges selected as line-free for uvcontsub and aggregate continuum imaging",
+  "Exact list of transitions and upper state energies stacked for the high-excitation CH3OH and SO2 integrated intensity maps",
+  "Exact distance to the LMC adopted in numerical conversions (implied ~50 kpc from 0.40'' = 0.1 pc)"
+ ],
+ "missing_for_reproduction": [
+  "Complete table of all individual spectral transitions (rest frequencies, quantum numbers, E_u, S*mu^2, and fitted integrated intensities) used to construct the rotation diagrams in Figures 3-5",
+  "Exact line-free frequency intervals used for uvcontsub and continuum imaging",
+  "Exact tclean imaging parameters (cell size, image size, stopping threshold, auto-multithresh settings) and CASA version"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA project code, target coordinates, extraction apertures (0.41'' circle and Lh09 ellipse), restoring beam (0.40''), key line intensities (Table 3), and all physical/chemical equations and constants (kappa_nu, dust-to-gas ratio, isotope ratios, assumed T_rot) are explicitly documented. Some minor imaging parameters (cell size, line-free channels) and the full per-transition line list for the rotation diagrams are omitted.",
+ "rediscovery_reason": "Public Cycle 7 ALMA dataset (2019.1.01770.S) with well-defined extraction apertures, standard LTE rotation diagram methodology, and comprehensive numerical tables of continuum fluxes, line intensities, rotational temperatures, and column densities.",
+ "source_card": "cards/2026ApJS..282...64S/sonnet/card.md"
+}

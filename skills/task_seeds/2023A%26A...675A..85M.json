@@ -1,0 +1,457 @@
+{
+ "bibcode": "2023A&A...675A..85M",
+ "title": "The ALMA Frontier Fields Survey. VI. Lensing-corrected 1.1 mm number counts in Abell 2744, MACSJ0416.1-2403, MACSJ1149.5+2223, Abell 370, and Abell S1063",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202243528",
+ "arxiv_id": "2203.06195",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz",
+  "cosmology"
+ ],
+ "question": "Derive lensing-corrected 1.1 mm number counts down to flux densities fainter than 0.1 mJy towards five Hubble Frontier Fields galaxy clusters and determine their contribution to the extragalactic background light (EBL).",
+ "alma_project_codes": [
+  "2013.1.00999.S",
+  "2015.1.01425.S",
+  "2017.1.01219.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.5'' - 1.5'' (synthesized beam sizes)",
+  "sensitivity": "55-71 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Photometric redshift probability distributions from HFF-DeepSpace catalog",
+    "evidence": [
+     {
+      "loc": "Source redshifts",
+      "quote": "We restrict our photometric redshift search to those data providing full posterior probability distributions, i.e. the HFF-DeepSpace project."
+     },
+     {
+      "loc": "Source redshifts",
+      "quote": "(cite: Shipley2018) derived photometric redshifts using up to 22 filters in the wavelength range $0.2-8\\,\\mu\\textmd{m}$ and the EAZY fitting code (cite: Brammer2008)."
+     }
+    ]
+   },
+   "citation": "(cite: Shipley2018)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts from the GLASS survey using HST grism spectroscopy",
+    "evidence": [
+     {
+      "loc": "Source redshifts",
+      "quote": "These include spectroscopic redshifts from the GLASS survey using grism spectroscopy at HST (cite: Treu2015), and photometric redshifts (including full probability distributions) derived in Paper II for our high-significance detections via spectral energy distribution (SED) fitting."
+     }
+    ]
+   },
+   "citation": "(cite: Treu2015)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift for A370-ID03 from VLT/MUSE",
+    "evidence": [
+     {
+      "loc": "Source redshifts",
+      "quote": "A370-ID03 has a $z_{\\textmd{spec}}=1.258$ (secure) counterpart within $\\approx0.2\\ensuremath{''}$ from (cite: Lagattuta2022) using MUSE at VLT."
+     }
+    ]
+   },
+   "citation": "(cite: Lagattuta2022)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift for AS1063-ID04 from CLASH VLT/MUSE",
+    "evidence": [
+     {
+      "loc": "Source redshifts",
+      "quote": "It also has a $z_{\\textmd{spec}}=0.611$ (secure) counterpart within $\\approx0.9\\ensuremath{''}$ from CLASH using MUSE at VLT. We adopt the latter value for this work."
+     }
+    ]
+   },
+   "citation": "(cite: Karman2015; Caminha2016; Karman2017; Mercurio2021)"
+  },
+  {
+   "what": {
+    "value": "Planck and COBE/FIRAS Extragalactic Background Light (EBL) estimates at 263.14 GHz",
+    "evidence": [
+     {
+      "loc": "Extragalactic background light",
+      "quote": "We compare our estimates to that by the Planck collaboration (using their best-fit extended halo model, see (cite: Ade2014)) and a recent determination based on COBE/FIRAS and Planck observations (cite: Odegard2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Ade2014), (cite: Odegard2019)"
+  },
+  {
+   "what": {
+    "value": "Public Frontier Fields gravitational lens models (Bradac v4/v4.1, Caminha v4, CATS v4/v4.1, Diego v4/v4.1, GLAFIC v4, Keeton v4, Sharon v4, Williams v4/v4.1)",
+    "evidence": [
+     {
+      "loc": "Lensing models",
+      "quote": "Table [\\[tab_models\\]](#tab_models) lists these models, together with the models considered for the two FF clusters introduced in this work; we adopt for use eight, nine, seven, nine, and nine lens models for A2744, MACSJ0416, MACSJ1149, A370, and AS1063, respectively."
+     }
+    ]
+   },
+   "citation": "Table 3 references: (cite: Bradac2005; Bradac2009; Strait2018; Caminha2017; Jullo2009; Richard2014; Jauzac2014; Jauzac2015b; Jauzac2016; Lagattuta2017; Lagattuta2019; Diego2005; Diego2007; Diego2015; Diego2016; Diego2018; Vega-Ferrero2019; Oguri2010; Kawamata2016; Kawamata2018; Keeton2010; Ammons2014; McCully2014; Jullo2007; Johnson2014; Liesenborgs2006; Liesenborgs2007; Sebesta2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Source detection and extraction in ALMA 1.1 mm mosaics",
+   "method": "Search for pixels with S/N >= 4.5 within the PB > 0.3 region and group pixels into individual sources using the DBSCAN algorithm.",
+   "software": [
+    "DBSCAN"
+   ],
+   "key_parameters": [
+    "S/N >= 4.5 threshold, PB > 0.3 region"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure integrated flux densities and sizes of detected sources",
+   "method": "For high-significance (S/N >= 5) sources, fit elliptical Gaussians in the uv-plane using UVMCMCFIT. For low-significance (4.5 <= S/N < 5) sources, scale peak intensities using median size parameters from high-S/N sources and source injection simulations.",
+   "software": [
+    "UVMCMCFIT"
+   ],
+   "key_parameters": [
+    "Peak-to-integrated flux ratios of 0.80 (A370) and 0.71 (AS1063) for 4.5 <= S/N < 5 sources"
+   ],
+   "assumptions": [
+    "Low-significance detections have observed effective radius r_eff,obs = 0.23'' and axial ratio q_obs = 0.58 (median of high-S/N sources)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Assign source redshifts",
+   "method": "Cross-match ALMA detections with spectroscopic (ALMA linescan, GLASS, VLT/MUSE, Gemini/GMOS) and photometric (HFF-DeepSpace EAZY posteriors, Paper II) catalogs; assign Gaussian redshift prior to unassociated sources.",
+   "software": [],
+   "key_parameters": [
+    "Matching radius <= 0.5'' for photometric counterparts (up to ~1'' for spectroscopic), redshift quality parameter p_Delta_z ~ 1"
+   ],
+   "assumptions": [
+    "Gaussian redshift distribution z = 2 +/- 0.5 for sources without counterparts"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate image-plane completeness, flux deboosting, and spurious source fractions",
+   "method": "Perform image-plane source injection simulations to derive completeness as a function of flux and size, and flux deboosting as a function of S/N. Extract sources from 300 simulated noise maps per cluster to determine spurious fraction p_false(S/N).",
+   "software": [],
+   "key_parameters": [
+    "300 simulated noise maps per cluster; 10^4 simulated SIDES point sources for Eddington bias check"
+   ],
+   "assumptions": [
+    "Skip separate Eddington bias corrections since SIDES simulation flux enhancements match deboosting corrections"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute source-plane magnification maps and effective areas from lens models",
+   "method": "Reproject surface mass density and shear maps from public v4/v4.1 lens models to ALMA resolution, deflect magnification and PB-corrected rms maps to the source plane over a redshift grid, and integrate pixels where S_demag,peak / sigma_demag >= 4.5.",
+   "software": [],
+   "key_parameters": [
+    "Redshift grid z_min = 0.4 to z_max = 4 with step Delta z = 0.2; 8, 9, 7, 9, and 9 lens models for A2744, MACSJ0416, MACSJ1149, A370, and AS1063"
+   ],
+   "assumptions": [
+    "No magnification (mu = 1) for pixels missing in lens model maps; neglect differential magnification; flat LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive lensing-corrected differential and cumulative number counts via Monte Carlo simulations",
+   "method": "Run 1000 Monte Carlo realizations per lens model per cluster drawing observed fluxes, peak intensities, redshifts, and lens mass reconstructions, computing demagnified fluxes and summing weights X_i = (1 - p_false,i) / (C_i * A_eff,i). Combine by taking medians and adding 16th/84th percentile errors in quadrature with Gehrels Poisson uncertainties.",
+   "software": [],
+   "key_parameters": [
+    "1000 realizations per lens model per cluster field"
+   ],
+   "assumptions": [
+    "Modified black body with beta = 1.5, T_dust = 35 K, z = 2.5 when scaling literature counts from 850 um, 1.2 mm, and 1.3 mm to 1.1 mm"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compute resolved and extrapolated Extragalactic Background Light (EBL) at 1.1 mm",
+   "method": "Sum the integrated flux contribution across differential count bins in each Monte Carlo realization, and fit a double power-law function to non-zero bins of each realization to integrate down to S_lim = 0, 0.013, and 0.133 mJy.",
+   "software": [],
+   "key_parameters": [
+    "Parameter bounds: N_0 = 10^3 - 10^6 mJy deg^-2, S_0 = 0.01 - 1 mJy, alpha = 0 - 5, beta = -1 to 1"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of ALMA 1.1 mm detections (S/N >= 4.5) across 5 clusters",
+   "value": "29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "The ALMA Frontier Fields Survey",
+     "quote": "We created a source catalog that includes ALMA $1.1\\,\\textmd{mm}$ continuum detections around two new FF galaxy clusters, together with the sources previously detected around three FF galaxy clusters, making a total of 29 detected sources down to a $4.5\\sigma$ significance."
+    }
+   ]
+  },
+  {
+   "quantity": "Total observed image-plane area across 5 clusters (PB > 0.3)",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "Each cluster field covers an observed area of $\\sim5.2\\,\\textmd{arcmin}^2$ ($\\textmd{PB}>0.3$ region). The five clusters sum to a total image-plane area of $\\sim26\\,\\textmd{arcmin}^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID01 uv-fitted integrated flux density at 1.1 mm",
+   "value": "1.925",
+   "uncertainty": "+/- 0.088",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "| A370-ID01$^{a}$ | 02:39:56.57 | $-$01:34:26.40 | 25.1 | $1.624\\pm0.065$ | $1.925\\pm0.088$ | $0.22\\pm0.03$ | 1.06$^{f}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID02 uv-fitted integrated flux density at 1.1 mm",
+   "value": "1.778",
+   "uncertainty": "+/- 0.192",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "| A370-ID02$^{a}$ | 02:39:57.58 | $-$01:34:53.67 | 9.1 | $1.656\\pm0.182$ | $1.778\\pm0.192$ | $0.10\\pm0.05$ | $2.581_{-0.180}^{+0.193}$$^{g}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "A370-ID03 uv-fitted integrated flux density at 1.1 mm",
+   "value": "1.007",
+   "uncertainty": "+/- 0.205",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "| A370-ID03$^{a}$ | 02:39:58.15 | $-$01:34:24.52 | 7.0 | $0.655\\pm0.094$ | $1.007\\pm0.205$ | $0.42\\pm0.13$ | $1.258$$^{h}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1063-ID01 uv-fitted integrated flux density at 1.1 mm",
+   "value": "6.806",
+   "uncertainty": "+/- 0.119",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "| AS1063-ID01$^{a}$ | 22:48:49.06 | $-$44:32:25.39 | 89.3 | $6.295\\pm0.071$ | $6.806\\pm0.119$ | $0.14\\pm0.01$ | $2.511_{-0.113}^{+0.111}$$^{g}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1063-ID02 uv-fitted integrated flux density at 1.1 mm",
+   "value": "1.273",
+   "uncertainty": "+/- 0.142",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "| AS1063-ID02$^{a}$ | 22:48:47.29 | $-$44:30:48.06 | 10.9 | $1.282\\pm0.118$ | $1.273\\pm0.142$ | $0.10\\pm0.05$ | 1.438$^{f}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1063-ID03 uv-fitted integrated flux density at 1.1 mm",
+   "value": "1.396",
+   "uncertainty": "+/- 0.399",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations with ALMA",
+     "quote": "| AS1063-ID03$^{a}$ | 22:48:46.58 | $-$44:30:46.83 | 5.2 | $0.648\\pm0.124$ | $1.396\\pm0.399$ | $0.45\\pm0.14$ | $1.468_{-0.063}^{+0.065}$$^{g}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined cumulative number counts N(>S) at S > 0.013 mJy",
+   "value": "7.026e4",
+   "uncertainty": "+19.59e4/-5.263e4 (MC), +5.528e4/-3.350e4 (Poisson)",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number counts for each Frontier Fields galaxy cluster",
+     "quote": "| Combined | 0.024 | $0.000_{-0.000}^{+0.000}$ | $0.0_{-0.0}^{+0.0}\\,_{-0.0}^{+1.8}$ | 0.013 | $(7.026_{-5.263}^{+19.59}\\,_{-3.350}^{+5.528})\\times10^4$ | $4.0_{-1.0}^{+4.0}\\,_{-1.9}^{+3.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined cumulative number counts N(>S) at S > 0.042 mJy",
+   "value": "5.486e4",
+   "uncertainty": "+15.01e4/-3.883e4 (MC), +4.316e4/-2.616e4 (Poisson)",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number counts for each Frontier Fields galaxy cluster",
+     "quote": "|  | 0.075 | $<1.013\\times10^6$ | \\<3.0 | 0.042 | $(5.486_{-3.883}^{+15.01}\\,_{-2.616}^{+4.316})\\times10^4$ | $4.0_{-1.0}^{+4.0}\\,_{-1.9}^{+3.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined cumulative number counts N(>S) at S > 0.133 mJy",
+   "value": "1.740e4",
+   "uncertainty": "+2.579e4/-1.089e4 (MC), +1.685e4/-0.944e4 (Poisson)",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number counts for each Frontier Fields galaxy cluster",
+     "quote": "|  | 0.237 | $(2.416_{-2.416}^{+5.012}\\,_{-1.995}^{+5.529})\\times10^4$ | $1.0_{-1.0}^{+2.0}\\,_{-0.8}^{+2.3}$ | 0.133 | $(1.740_{-1.089}^{+2.579}\\,_{-0.944}^{+1.685})\\times10^4$ | $3.0_{-1.0}^{+4.0}\\,_{-1.6}^{+2.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined cumulative number counts N(>S) at S > 0.422 mJy",
+   "value": "5.470e3",
+   "uncertainty": "+4.068e3/-3.800e3 (MC), +7.180e3/-3.523e3 (Poisson)",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number counts for each Frontier Fields galaxy cluster",
+     "quote": "|  | 0.750 | $(7.929_{-4.688}^{+9.890}\\,_{-5.106}^{+10.41})\\times10^3$ | $2.0_{-1.0}^{+1.0}\\,_{-1.3}^{+2.6}$ | 0.422 | $(5.470_{-3.800}^{+4.068}\\,_{-3.523}^{+7.180})\\times10^3$ | $2.0_{-1.0}^{+1.0}\\,_{-1.3}^{+2.6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined differential number counts dN/dlog(S) at S = 0.237 mJy",
+   "value": "2.416e4",
+   "uncertainty": "+5.012e4/-2.416e4 (MC), +5.529e4/-1.995e4 (Poisson)",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number counts for each Frontier Fields galaxy cluster",
+     "quote": "|  | 0.237 | $(2.416_{-2.416}^{+5.012}\\,_{-1.995}^{+5.529})\\times10^4$ | $1.0_{-1.0}^{+2.0}\\,_{-0.8}^{+2.3}$ | 0.133 | $(1.740_{-1.089}^{+2.579}\\,_{-0.944}^{+1.685})\\times10^4$ | $3.0_{-1.0}^{+4.0}\\,_{-1.6}^{+2.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined differential number counts dN/dlog(S) at S = 0.750 mJy",
+   "value": "7.929e3",
+   "uncertainty": "+9.890e3/-4.688e3 (MC), +10.41e3/-5.106e3 (Poisson)",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Number counts for each Frontier Fields galaxy cluster",
+     "quote": "|  | 0.750 | $(7.929_{-4.688}^{+9.890}\\,_{-5.106}^{+10.41})\\times10^3$ | $2.0_{-1.0}^{+1.0}\\,_{-1.3}^{+2.6}$ | 0.422 | $(5.470_{-3.800}^{+4.068}\\,_{-3.523}^{+7.180})\\times10^3$ | $2.0_{-1.0}^{+1.0}\\,_{-1.3}^{+2.6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical field-to-field cosmic variance down to 0.013 mJy",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Cosmic variance",
+     "quote": "First, we derive the field-to-field variance directly from our cumulative counts, computing the variance from the median counts per cluster field down to $0.013\\,\\textmd{mJy}$. Dividing its square root by the number of clusters and the corresponding median combined counts, we obtain a relative uncertainty of 17%."
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved EBL contribution at 1.1 mm down to 0.013 mJy (direct summation)",
+   "value": "14.3",
+   "uncertainty": "+12.2/-7.4",
+   "units": "Jy deg^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Extragalactic background light",
+     "quote": "We find a median contribution of $14.3_{-7.4}^{+12.2}$ ($7.5_{-3.9}^{+6.4}$) $\\textmd{Jy}\\,\\textmd{deg}^{-2}$ resolved in our demagnified sources at $1.1\\,\\textmd{mm}$ down to $0.013$ ($0.133$) $\\textmd{mJy}$; here, uncertainties are computed from the 16th and 84th percentiles."
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved EBL contribution at 1.1 mm down to 0.133 mJy (direct summation)",
+   "value": "7.5",
+   "uncertainty": "+6.4/-3.9",
+   "units": "Jy deg^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Extragalactic background light",
+     "quote": "We find a median contribution of $14.3_{-7.4}^{+12.2}$ ($7.5_{-3.9}^{+6.4}$) $\\textmd{Jy}\\,\\textmd{deg}^{-2}$ resolved in our demagnified sources at $1.1\\,\\textmd{mm}$ down to $0.013$ ($0.133$) $\\textmd{mJy}$; here, uncertainties are computed from the 16th and 84th percentiles."
+    }
+   ]
+  },
+  {
+   "quantity": "Double power-law fit parameter S_0 (turnover flux density)",
+   "value": "3.6e-2",
+   "uncertainty": "+2.5e-2/-2.3e-2",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Extragalactic background light",
+     "quote": "From these fits, we find median parameters and associated uncertainties (from 16th and 84th percentiles) of $N_0=2.7_{-1.7}^{+5.0}\\times10^5\\,\\textmd{mJy}\\,\\textmd{deg}^{-2}$, $S_0=3.6_{-2.3}^{+2.5}\\times10^{-2}\\,\\textmd{mJy}$, $\\alpha=2.8_{-0.8}^{+1.0}$, and $\\beta=0.6_{-1.6}^{+0.4}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total extrapolated EBL at 1.1 mm (double power-law fit integrated down to S_lim = 0 mJy)",
+   "value": "21.2",
+   "uncertainty": "+40.4/-9.6",
+   "units": "Jy deg^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Extragalactic background light",
+     "quote": "Using Eq. [\\[eq_dpl_ebl\\]](#eq_dpl_ebl) with the parameters found for each realization and $S_{\\textmd{lim}}=0\\,\\textmd{mJy}$, we estimate a median total EBL associated with $1.1\\,\\textmd{mm}$ galaxies in the FFs of $21.2_{-9.6}^{+40.4}\\,\\textmd{Jy}\\,\\textmd{deg}^{-2}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Calibration details (pipeline vs manual, calibrators, self-calibration)",
+  "Exact continuum bandwidth and spectral window configuration",
+  "ALMA array configurations and baseline lengths for the observations",
+  "DBSCAN clustering hyperparameters (e.g., eps and min_samples) used for pixel grouping in source extraction",
+  "Method used to generate the 300 simulated noise maps for spurious fraction estimation",
+  "Exact fitting algorithm/sampler used to fit the double power-law function to the differential number counts realizations"
+ ],
+ "missing_for_reproduction": [
+  "Custom Monte Carlo number counts and lensing deflection code is not publicly released",
+  "Full photometric redshift probability distribution curves from Paper II (Laporte et al. 2017) and HFF-DeepSpace for the specific counterparts are not tabulated in the paper",
+  "Exact numerical tables for the completeness, deboosting, spurious fraction, and effective area curves (shown only as plots in Figs. 2-4 and 7)",
+  "DBSCAN clustering parameters (eps, min_samples) used for source extraction",
+  "Noise map generation recipe for the 300 simulated noise realizations per cluster"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project codes, public MAST lens model versions, source catalog (positions, peak and uv-fitted fluxes, sizes, and redshifts), and final number count tables are thoroughly documented. However, full end-to-end reproduction requires custom Monte Carlo lensing simulation scripts that are not released, reduction details deferred to Paper I/III/IV, and unstated DBSCAN and noise-simulation parameters.",
+ "rediscovery_reason": "All ALMA datasets (2013.1.00999.S, 2015.1.01425.S, 2017.1.01219.S) and MAST Frontier Fields lens models are public, and the main results (source catalog fluxes/sizes, lensing-corrected differential/cumulative number counts, and EBL contributions) are concrete numeric benchmarks.",
+ "source_card": "cards/2023A%26A...675A..85M/sonnet/card.md"
+}

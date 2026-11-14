@@ -1,0 +1,216 @@
+{
+ "bibcode": "2023Natur.621..483G",
+ "title": "Polarized thermal emission from dust in a galaxy at redshift 2.6",
+ "year": 2023,
+ "doi": "10.1038/s41586-023-06346-4",
+ "arxiv_id": "2309.02034",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is there a large-scale ordered magnetic field in a z=2.6 lensed starburst galaxy, as traced by polarized dust emission?",
+ "alma_project_codes": [
+  "2021.1.01461.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA 12 m array",
+  "angular_resolution": "1.2'' x 0.9'' at PA 68 deg",
+  "sensitivity": "sigma_I = 47 uJy/beam; sigma_Q ~ sigma_U = 9 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens model parameters (SIE+shear) and CO(4-3) disk model (Rmax, Vmax, tilt, inclination)",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "Extended Data Table 1 summarises the best-fit lens model parameters from$^5$."
+     }
+    ]
+   },
+   "citation": "Geach2018"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass, velocity dispersion and disk height from CO",
+    "evidence": [
+     {
+      "loc": "Energy equipartition",
+      "quote": "The total molecular mass is estimated from the CO luminosity$^5$ as $M_{\\rm{H_{2}}} = (7.5\\pm0.1)\\times10^{10}$ M$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "Geach2018"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image Stokes IQU",
+   "method": "ALMA pipeline plus polarization calibration; tclean on all Stokes with common beam",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "clean threshold 10 uJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure polarization fraction and B-field angle",
+   "method": "Debiased P from mean Q,U,I for pixels with P/sigma_P>=3; chi_B = 0.5 arctan(U/Q)+pi/2; mean from independent beams",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Constrain source-plane B-field orientation via lens simulation",
+   "method": "Lens source-plane Gaussian disk with constant chi_B and P=1%, lensed with SIE+shear, simulated with simobserve, cleaned like data; compare Stokes U detection",
+   "software": [
+    "lenstronomy",
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "801x801 grid, 0.01'' pixel; pwv 0.6 mm; antenna configuration 2 (Cycle 8)"
+   ],
+   "assumptions": [
+    "Constant polarization fraction of unity/1% and constant B orientation in source plane; continuum matches CO morphology"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Equipartition B-field strength",
+   "method": "B_eq = sqrt(4 pi rho) sigma_v with rho from H2 mass over disk volume",
+   "software": [],
+   "key_parameters": [
+    "r=2647 pc, h<=600 pc, M_H2=7.5e10 Msun, sigma_v=73 km/s"
+   ],
+   "assumptions": [
+    "Equipartition of turbulent kinetic and magnetic energy"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Mean-field dynamo ordering timescale",
+   "method": "Ordering timescale and dynamo number following Arshakian et al.",
+   "software": [],
+   "key_parameters": [
+    "h=300 pc, l_c=0.5-2 kpc, l=1-10 pc"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated flux density",
+   "value": "62",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We measure an image plane integrated flux density of $I=62$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated polarization fraction",
+   "value": "0.6",
+   "uncertainty": "0.1",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "integrated polarization fraction of $P=0.6\\pm 0.1$%"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean polarization fraction",
+   "value": "0.6",
+   "uncertainty": "0.3",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$\\langle P \\rangle = 0.6\\pm0.3$%"
+    }
+   ]
+  },
+  {
+   "quantity": "Source-plane B-field orientation",
+   "value": "5",
+   "uncertainty": "+5/-10",
+   "units": "deg east of north",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "orientated $\\chi_{\\rm B} =5^{+5}_{-10}$ degrees east of north"
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition B-field upper limit",
+   "value": "514",
+   "uncertainty": "not stated",
+   "units": "uG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Energy equipartition",
+     "quote": "$B_{\\rm{eq}} \\le514~\\mu$G"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamo number",
+   "value": "3.2",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Ordering timescale",
+     "quote": "We estimate a dynamo number $D_{\\rm{d}} = 3.2\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ordering timescale",
+   "value": "0.4-18",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Ordering timescale",
+     "quote": "the ordering timescale is estimated to be in the range of $\\tilde{t} \\approx 0.4$–$18$ Gyr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and cell size for tclean",
+  "Polarization calibration script details and polarization calibrator model",
+  "Self-calibration, if any",
+  "Pipeline version",
+  "Masking used in cleaning",
+  "Exact sensitivity-weighted selection of pixels for averages",
+  "Total on-source time"
+ ],
+ "missing_for_reproduction": [
+  "Image/cell size",
+  "Polarization calibration script",
+  "Pixel selection details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and main steps described, but several imaging settings and the polarization script are missing.",
+ "rediscovery_reason": "Public data, numeric results (P, chi_B) are reproducible via CASA polarization imaging.",
+ "source_card": "cards/2023Natur.621..483G/sonnet/card.md"
+}

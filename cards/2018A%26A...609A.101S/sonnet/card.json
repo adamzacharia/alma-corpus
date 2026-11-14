@@ -1,0 +1,711 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...609A.101S",
+  "title": "STATCONT: A statistical continuum level determination method for line-rich sources",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Sánchez-Monge, Á.",
+  "n_authors": 5,
+  "arxiv_id": "1710.02419",
+  "doi": "10.1051/0004-6361/201730425",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00332.S",
+   "2013.1.00489.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this paper we present `STATCONT`, a python-based tool, that automatically determines the continuum level of line-rich sources in a statistical way."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation",
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "Sgr B2(N)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "G29.96-0.02",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How can the continuum level of line-rich spectra and datacubes be determined automatically and accurately with a statistical method?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper we present `STATCONT`, a python-based tool, that automatically determines the continuum level of line-rich sources in a statistical way."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00332.S",
+     "evidence": [
+      {
+       "loc": "3 Application to real datasets",
+       "quote": "project 2013.1.00332.S (PI: P. Schilke) targeting the well-known hot molecular cores Sgr B2(M) and Sgr B2(N)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00489.S",
+     "evidence": [
+      {
+       "loc": "3 Application to real datasets",
+       "quote": "project 2013.1.00489.S (PI: R. Cesaroni) targeting a list of six high-mass star forming regions"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA band 6",
+    "evidence": [
+     {
+      "loc": "3 Application to real datasets",
+      "quote": "observed different frequency ranges of the ALMA band 6."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Sgr B2(N): 211-213 GHz, 1875 MHz effective bandwidth, 3480 channels, 0.7 km/s; G29.96: 256 MHz bandwidth centered at 231.85 GHz, 0.6 km/s",
+    "evidence": [
+     {
+      "loc": "3 Application to real datasets",
+      "quote": "The selected spectral window of Sgr B2(N) covers the frequency range 211 GHz to 213 GHz, with an effective bandwidth of 1875 MHz and 3480 channels"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Synthetic spectra (five types, then 750 spectra with noise 1, 3, 5 K) and a synthetic datacube generated with XCLASS, continuum 50 K",
+     "evidence": [
+      {
+       "loc": "2 Determination of the continuum level",
+       "quote": "All these spectra have been produced with the XCLASS[^1] software package"
+      },
+      {
+       "loc": "2.2 Statistical comparison of continuum methods",
+       "quote": "The final statistically significant sample consists of 750 different synthetic spectra."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Classical approach: line-free channels identified in average spectrum around position A; compared to c-SCM continuum",
+     "evidence": [
+      {
+       "loc": "3 Application to real datasets",
+       "quote": "are produced after identifying line-free channels in an average spectrum extracted around position A"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observation details of the ALMA datasets",
+      "evidence": [
+       {
+        "loc": "3 Application to real datasets",
+        "quote": "Details of the observations can be found in (cite: Cesaroni2017), and in (cite: SanchezMonge2017)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Cesaroni2017), (cite: SanchezMonge2017)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Sigma-clipping alpha value, tolerance and iteration limit",
+    "Calibration and imaging parameters of the ALMA cubes (beam, rms, CASA version)",
+    "Line-free channel ranges used for the classical maps",
+    "Random seeds and XCLASS parameters for the synthetic spectra",
+    "Positions of A and B in the real data"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Generate synthetic spectra",
+    "method": {
+     "value": "XCLASS spectra with 50 K continuum, emission/absorption components, Gaussian noise; 50 per group x 5 groups x 3 noise levels",
+     "evidence": [
+      {
+       "loc": "2.2 Statistical comparison of continuum methods",
+       "quote": "we randomly modify the number of molecules and components as well as the molecular abundances, temperatures and velocities of each component."
+      }
+     ]
+    },
+    "software": [
+     "XCLASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compare continuum estimators",
+    "method": {
+     "value": "Maximum, mean, median, percentiles, Gaussian, KDE maximum and sigma-clipping applied to intensity distributions and scored by discrepancy from 50 K",
+     "evidence": [
+      {
+       "loc": "2.2 Statistical comparison of continuum methods",
+       "quote": "We determine the continuum level for all the spectra using all the methods described in Section"
+      }
+     ]
+    },
+    "software": [
+     "STATCONT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Histogram bin size set by rms noise; KDE Gaussian kernel with Silverman's rule",
+      "evidence": [
+       {
+        "loc": "2.1 Continuum level in spectral data: statistical methods",
+        "quote": "In `STATCONT` the size of the bins is defined by the rms noise level of the observations"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Success rate vs discrepancy from known continuum",
+     "evidence": [
+      {
+       "loc": "Statistical comparison of continuum methods",
+       "quote": "we list the success rate determined as the number (in percentage) of synthetic spectra for which the continuum level has been determined with a certain level of accuracy"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Correct sigma-clipping (c-SCM)",
+    "method": {
+     "value": "Add or subtract sigma_SCM (+1, +0.5, 0, -0.5, -1) based on fractions of emission/absorption channels relative to oSCL±rms (33% and 25% thresholds)",
+     "evidence": [
+      {
+       "loc": "2.4 Corrected sigma-clipping continuum level",
+       "quote": "the continuum emission level is corrected by adding or subtracting the value of the uncertainty to the continuum level"
+      }
+     ]
+    },
+    "software": [
+     "STATCONT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested on 750 synthetic spectra",
+     "evidence": [
+      {
+       "loc": "Statistical comparison of continuum methods",
+       "quote": "The final statistically significant sample consists of 750 different synthetic spectra."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Apply to ALMA cubes",
+    "method": {
+     "value": "Pixel-by-pixel c-SCM to produce continuum, noise and line cubes; compare with classical line-free-channel continuum",
+     "evidence": [
+      {
+       "loc": "3 Application to real datasets",
+       "quote": "We apply the c-SCM in `STATCONT` to determine the continuum level in real observational data."
+      }
+     ]
+    },
+    "software": [
+     "STATCONT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with classical continuum maps",
+     "evidence": [
+      {
+       "loc": "Application to real datasets",
+       "quote": "In the top-right panel, we compare with the continuum map that is created after searching for line-free channels following the classical approach."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "STATCONT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum level determination in spectra and datacubes",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "a python-based tool, that automatically determines the continuum level of line-rich sources"
+      }
+     ]
+    }
+   },
+   {
+    "name": "XCLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Synthetic spectra and datacube",
+     "evidence": [
+      {
+       "loc": "2 Determination of the continuum level",
+       "quote": "All these spectra have been produced with the XCLASS[^1] software package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS/CLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Zeroth-order baseline fits to line-free channels; GREG for figures",
+     "evidence": [
+      {
+       "loc": "2.3 Effect of noise",
+       "quote": "fit a 0$^\\mathrm{th}$-order polynomial baseline to the line-free channels"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "c-SCM success rate (discrepancy <5%)",
+    "value": "87.9",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "*(L)* c-SCM | 50.19 | 50.22 | $\\phantom{0}$8.2 | 48.8             | 87.9"
+     }
+    ]
+   },
+   {
+    "quantity": "c-SCM success rate (discrepancy <1%)",
+    "value": "48.8",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "*(L)* c-SCM | 50.19 | 50.22 | $\\phantom{0}$8.2 | 48.8             | 87.9"
+     }
+    ]
+   },
+   {
+    "quantity": "SCM success rate (discrepancy <5%)",
+    "value": "77.1",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "*(K)* SCM                      | 50.60 | 50.49  | $\\phantom{0}$8.4 | 33.8             | 77.1"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Sigma-clipping is the most accurate and gives an uncertainty; correction makes it successful in >90% of cases when >10% of channels are line-free",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "If the spectrum to be analyzed contains more than 10% of line-free channels, c-SCM is accurate in the determination of the continuum level."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "A statistical sigma-clipping method can recover the continuum of line-rich spectra",
+    "experiment": "Compare 12 estimators on 750 synthetic spectra",
+    "result": "c-SCM discrepancy <5% in 87.9% of cases",
+    "finding": "c-SCM is the best default method",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "better than 5% in almost 90% of the cases"
+     }
+    ]
+   },
+   {
+    "hypothesis": "STATCONT works on real ALMA data",
+    "experiment": "Apply to Sgr B2(N) and G29.96-0.02 cubes and compare to classical continuum maps",
+    "result": "Uncertainties of about 1-5%, up to 10% in chemically rich positions; avoids line contamination seen in classical map",
+    "finding": "STATCONT gives continuum maps without line structure",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3 Application to real datasets",
+      "quote": "The noise map obtained with c-SCM corresponds to uncertainties of about 1–5%"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Mean, median, percentile, Gaussian, KDE and maximum methods were less accurate or depended on binning",
+     "evidence": [
+      {
+       "loc": "Statistical comparison of continuum methods",
+       "quote": "The mean, median and Gaussian methods have a large standard deviation when applied to the whole spectral histogram, i.e., broad distributions resulting in low success rates"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "c-SCM assumes a flat continuum and can fail with <10% line-free channels for complex spectra",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "A current limitation of `STATCONT` is that it assumes that the continuum level, or baseline of the spectrum, is flat"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Real-data validation is only qualitative, with no ground truth",
+    "Synthetic spectra from one code may not represent real line forests",
+    "Correction thresholds look empirical and tuned on the test set"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Code freely available; ALMA data acknowledged by project code",
+    "evidence": [
+     {
+      "loc": "5 Description of the STATCONT procedures",
+      "quote": "The code is freely available for download[^4] from GitHub or as a `STATCONT.tar.gz` file."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "STATCONT available from GitHub and the author's webpage",
+     "evidence": [
+      {
+       "loc": "5 Description of the STATCONT procedures",
+       "quote": "The code is freely available for download[^4] from GitHub or as a `STATCONT.tar.gz` file."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Synthetic spectra generation parameters",
+    "Sigma-clipping parameters",
+    "Calibrated ALMA cubes"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for two ALMA spectral windows",
+   "score_inferred": 3,
+   "score_reason": "Code is public and the method is described, but the synthetic generation and clipping parameters are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The synthetic test setup is not specified enough to redo, and the real-data results are not numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Moeller2017)",
+     "why": "XCLASS used for synthetic spectra"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: SanchezMonge2017)",
+     "why": "Applies STATCONT to Sgr B2 ALMA data"
+    },
+    {
+     "citation": "(cite: Cesaroni2017)",
+     "why": "Observation details of G29.96 and G31.41 data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ff3dd97e985992bc2c9cdb622ebcd364",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:32",
+  "usage": {
+   "input_tokens": 28369,
+   "output_tokens": 4470,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051326,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 31,
+  "quotes_ok": 31,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 22,
+   "rate": 0.324
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:37:08",
+  "custom_id": "repair-sonnet-5f791eb4e5fcbcdb8057e368ca1d503f",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].validation.evidence[0]",
+    "old": null,
+    "new": "we list the success rate determined as the number (in percentage) of synthetic spectra for which the continuum level has been determined with a certain level of accuracy"
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "The final statistically significant sample consists of 750 different synthetic spectra."
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "In the top-right panel, we compare with the continuum map that is created after searching for line-free channels following the classical approach."
+   },
+   {
+    "path": "reasoning.alternatives_considered_or_rejected[0].evidence[0]",
+    "old": null,
+    "new": "The mean, median and Gaussian methods have a large standard deviation when applied to the whole spectral histogram, i.e., broad distributions resulting in low success rates"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

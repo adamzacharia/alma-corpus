@@ -1,0 +1,318 @@
+# Repair task for a Claude Code subagent
+
+A methods card has evidence quotes that were not found verbatim in the paper. Below are the rules, the paper, and the failing items. Write ONE JSON object, nothing else, of the form {"repairs": [{"path": ..., "found": true|false, "loc": ..., "quote": ...}, ...]} with one entry per item (path unchanged) to:
+
+    C:\Users\adama\alma-corpus\cards\2026A%26A...706A.328L\sonnetcc\repair_reply.txt
+
+Use the Write tool for that file. Copy each quote character for character from the paper text below; a returned quote is checked mechanically and dropped if it is not in the paper. Do not read any other file, do not run commands, and do not change anything else. Reply with one line when done.
+
+---
+
+## Rules
+
+You check evidence quotes for a methods card extracted from an astronomy paper. Some quotes could not be found verbatim in the paper text, and some stated values came without a quote. For each item: find the passage in the paper that supports the value and copy it VERBATIM (same words and order, at most 40 words; LaTeX markup may be dropped) with its loc (section heading, "abstract", "Table N" or "Figure N caption"). If the paper does not support the value, return found = false and leave quote and loc empty. Use only the paper text. Return one entry per item, with the item's path unchanged.
+
+## Paper
+
+<paper>
+# SiO emission in the filamentary Infrared Dark Cloud G035.39-00.33: An ALMA view
+
+Filamentary infrared dark clouds (IRDCs) are believed to represent the initial conditions for massive star and cluster formation. We investigate the IRDC G035.39-00.33 using SiO, H$^{13}$CO$^{+}$, CH$_3$OH, and CS emission observed with ALMA at 3.5$''$ resolution ($\sim$0.05 pc). The analysis of the SiO emission provides a record of shock activity within the cloud, offering insights into both the current level of star formation and the cloud’s formation mechanisms. We identify several regions with broad SiO emission clearly associated with outflows, pinpointing the locations of ongoing star formation across the cloud. The ALMA images also reveal a series of spatially extended SiO emission spots with narrow line profiles, aligned along an arc-like path that is also seen in CS and CH$_3$OH emission. While the broad SiO emission is mainly associated with the main cloud filament, as seen in visual extinction, the narrow SiO arch is located at the edge of the cloud, far from the identified sites of star formation activity. The presence of these arc-like morphologies suggests that large-scale shocks may have compressed the gas in the surroundings of the G035.39-00.33 cloud, shaping its filamentary structure. By inspecting the large-scale radio continuum emission around G035.39-00.33, we find that this IRDC is part of a larger star-forming complex where the densest and coolest material appears at the interacting regions between a Supernova Remnant (SNR) and an expanding HII region. In particular, we hypothesize that this IRDC may be spatially coincident with the ionized expanding gas associated with the previously identified SNR G35.6-0.4. We suggest that collisions between giant molecular clouds and expanding gas flows from interacting SNRs and HII regions may be responsible for the observed arc-like structures. Such shock compressions could play an important role in the formation of IRDCs and in the potential triggering of star formation.
+
+# Introduction
+
+Giant molecular clouds (GMCs) are the largest reservoirs of molecular gas in galaxies, with masses above 10$^4$$M_{\odot}$ (cite: Chevance2021AAS). They provide the primary sites for star formation, particularly for massive star formation (cite: McKee2007). Within GMCs, infrared dark clouds (IRDCs) are the coldest and densest regions, often regarded as potential precursors of high mass star-forming regions (cite: Rathborne2006). They are characterized by their low temperatures (cite: Pillai2006A&A; Peretto2010A&A; Ragan2011ApJ), massive reservoirs of molecular gas ($\sim$ 10$^2$ - 10$^5$$M_{\odot}$), and high column densities (cite: Rathborne2006). IRDCs were first discovered by the *Infrared Space Observatory (ISO)* as dark silhouettes against the diffuse mid-infrared (mid-IR) Galactic background (cite: Perault1996). These clouds exhibit a broad range of morphologies, from elongated filaments to more compact globular shapes (cite: vanLoo2007). Thanks to their large reservoir of dense and cold material, IRDCs have the potential to host the formation of even massive stars and stellar clusters (cite: Rathborne2006; Molinari2010PASP; Sokolov2018A&A). Infrared and sub-millimetre observations have subsequently revealed that IRDCs fragment into dense and massive cores, displaying a variety of star formation stages. Prestellar cores remain dark and cold, devoid of any internal heating sources (cite: Zhang2007A&A; Rathborne2008ApJ). In contrast, active cores are infrared-bright and chemically enriched, often exhibiting clear signatures of star formation, such as embedded protostars and molecular outflows driven by accreting young stellar objects (YSOs) (cite: Pillai2006A&A; Sanhueza2012ApJ; Tan2014prpl.conf; Wang2014MNRAS; Sokolov2017A&A; Moser2020ApJ). Hence, IRDCs are thought to host the pristine conditions from which stars form. However, the mechanisms responsible for initiating star formation in these objects are still under debate.
+
+Current scenarios suggest that star formation in IRDCs is either triggered during the cloud formation process itself or driven by external feedback such as nearby HII regions or Supernova Remnants (SNRs). In the flow-driven model, molecular clouds are the result of the collision of high-velocity, diffuse atomic gas flows (cite: Ballesteros-Paredes1999; Heitsch2009). In the shock-induced scenario, pre-existing molecular clouds are compressed by propagating large-scale shocks. These shocks, with high Mach numbers, primarily transmit momentum and pressure, rapidly compressing the gas and triggering fragmentation and subsequent star formation (cite: Koyama2000; Koyama2002; vanLoo2007; VanLoo2013ApJ; Wang2014MNRAS). Such shocks can arise from stellar feedback (cite: Inutsuka2015A&A), cloud-cloud collisions (cite: Tasker&Tan2009ApJ), and galaxy interactions (cite: Appleton2006ApJ). While both mechanisms involve converging gas motions, flow-driven accumulation proceeds gradually on global scales, whereas shock compression represents a rapid, localized process that leaves distinct kinematic and chemical imprints.
+
+From an observational point of view, large-scale shocks are expected to leave an imprint of the gas dynamics and kinematics within the impacted cloud. A unique molecular tracer of this imprint is Silicon Monoxide (SiO). This molecule is highly depleted in the quiescent gas of molecular clouds, but it is observed to be enhanced by several orders of magnitude in regions affected by shocks (cite: martin1992sio; 2005Jimnez; jimenez2010parsec; Cosentino2019). SiO emission is typically observed in regions where shocks destroy and/or erode dust grains, releasing silicon atoms into the gas phase and yielding SiO (cite: schilke1997sio; 1997Caselli; 2008Jimnez). The SiO line emission often presents either a broad velocity profile and/or a narrow velocity profile. The broad components, typically presenting a compact morphology in IRDCs, reflect the kinematic signatures of powerful outflows from protostellar objects (cite: qiu2007high; jimenez2010parsec; duarte2014sio; Rong2022). In contrast, the narrow SiO emission typically shows a more extended distribution, even over parsec scales (cite: jimenez2010parsec; louvet2016tracing; Cosentino2020). This emission has been interpreted either as decelerated entrained material (cite: lefloch1998widespread), or as a product of large-scale shocks due to cloud-cloud collisions and/or stellar feedback in the form of HII regions and SNRs (cite: Cosentino2019; Cosentino2020; Cosentino2022; Rong2025; Cosentino2025A&A).
+
+![](Figure/Figure1/Figure1_new.pdf)
+
+Examples of spectrally broad (narrow) and spatially compact (extended) SiO emission have been reported in the literature (cite: jimenez2010parsec; duarte2014sio; louvet2016tracing; Cosentino2020). Among these, (cite: jimenez2010parsec) used IRAM-30m observations of SiO (2-1) and SiO (3-2) to investigate the morphology and kinematics of shocked gas in the IRDC G035.39-00.33 (cite: Butler&Tan2009). Cloud H is located at a distance of 2.9 kpc (cite: Simon2006), with a total mass of $\sim$16700 $M_{\odot}$, derived from combined near-IR (NIR) and mid-IR (MIR) extinction maps (cite: Kainulainen&Tan2013). Toward this source, (cite: jimenez2010parsec) reported not only broad SiO emission localized in the dense regions, indicating ongoing star formation, but also faint, widespread SiO emission on parsec scales, suggesting that this emission could be due to large-scale shock interactions induced by cloud-cloud collisions. Subsequent studies revealed widespread CO depletion (cite: Hernandez2011II) and a high deuterium fractionation (D$\rm{_{N_2H^+}}$) of N$_2$H$^+$ (cite: Barnes2016) in Cloud H, indicating that Cloud H is chemically evolved but has been influenced by less stellar feedback. Furthermore, the dust temperature exhibits a decrease from the edge of Cloud H toward its inner regions, where the most massive protostellar cores are located, with no significant extended heating from ongoing star formation (cite: Nguyen2011A&A). However, observations of NH$_3$ have shown that the kinetic gas temperature is generally elevated in the vicinity of massive protostellar cores, suggesting localized heating due to embedded star formation activity (cite: Sokolov2017A&A).
+
+The kinematics of Cloud H reveal the merging of three filaments, each characterized by different velocity components: Filament 1 (42$\sim$44 km s$^{-1}$), Filament 2 (44$\sim$46 km s$^{-1}$, and Filament 3 (46$\sim$48 km s$^{-1}$) (cite: Henshaw2013; jimenez2014; Henshaw2014). High-resolution observations further indicate that Cloud H is undergoing a multi-scale fragmentation process, where interactions between velocity-coherent narrow fibers ($\sim$0.028 pc) are observed (cite: Henshaw2016; Henshaw2017). This fragmentation behavior suggests a strong influence of magnetic fields, as further supported by (cite: Liu2018ApJ). Additionally, (cite: jimenez2010parsec; Liu2018ApJ; Bisbas2018MNRAS) propose that Cloud H may have formed via cloud-cloud collision (CCC). However, due to the lack of high-angular resolution observations, the origin of the SiO emission remains uncertain, making it challenging to establish whether it is truly associated with a large-scale shock interaction or with a population of deeply embedded low-mass protostars.
+
+In this paper, we present new high-angular resolution images of the SiO emission obtained with ALMA toward Cloud H. These images resolve the compact broad SiO emission and the extended narrow SiO component across the cloud, providing further insights into the formation mechanism of Cloud H. The paper is organized as follows: Details of the ALMA observations are provided in Sect. [2](#sec2), followed by the main results in Sect. [3](#sec3). The possible formation scenario of Cloud H is discussed in Sect. [4](#sec4), and a summary of our findings is presented in Sect. [5](#sec5).
+
+![](Figure/Figure2/Figure2_v2.pdf)
+
+# Observations
+
+We utilized data from ALMA project 2016.1.01363.S (PI: I. Jiménez-Serra), which includes observations from both the Atacama Compact Array (ACA) and the 12-m array in the C40-1 configuration. The observations were conducted in Band 3 during Cycle 4, spanning December 2016, January 2017, and March 2017. The 12-m array baselines range from 15 m to 331 m, while the ACA baselines span from 8.9 m to 45 m. The central coordinates of Cloud H are $\alpha$(J2000) = 18$^h$57$^m$08$^s$, $\delta$(J2000) = 02$^{\circ}$10$^{\prime}$30$^{\prime\prime}$ (l = 35.517$^{\circ}$, b = -0.274$^{\circ}$). The synthesized beam sizes for the ACA and 12-m array observations are 15.1$^{\prime\prime}$ and 3.5$^{\prime\prime}$, respectively. The maximum recoverable scale (MRS) is 56.8$^{\prime\prime}$$\sim$76$^{\prime\prime}$ for the ACA, and 28.5$^{\prime\prime}$$\sim$30.6$^{\prime\prime}$ for the 12-m array. The spectral line sensitivity per 0.061 MHz channel (equivalent to $\sim$0.2 km s$^{-1}$) is 0.027 Jy (0.36 K) for the ACA and 0.01 Jy (0.13 K) for the 12-m array.
+
+The spectral setup includes seven spectral windows (SPWs) ranging from 86.31 to 99.39 GHz.
+
+These windows covered the molecular lines of H$^{13}$CO$^+$ $J$=1-0, SiO $J$=2-1, CH$_{3}$OH $J$=2-1 and CS $J$=2-1. All data calibration and imaging were carried out using the CASA software package version 5.6 (cite: McMullin2007casa). For data reduction, the ACA and 12-m array data were calibrated separately, with continuum subtraction performed using line-free channels. The two datasets were then combined using the concat task, and imaging was carried out with Briggs weighting (robust = 0.5). The final synthesized beam sizes for the SiO, H$^{13}$CO$^+$, CH$_{3}$OH, and CS data are 4.34$^{\prime\prime}$ $\times$ 2.93$^{\prime\prime}$, 4.35$^{\prime\prime}$ $\times$ 2.93$^{\prime\prime}$, 3.93$^{\prime\prime}$ $\times$ 2.63$^{\prime\prime}$, and 3.89$^{\prime\prime}$ $\times$ 2.59$^{\prime\prime}$, respectively. To assess the missing flux in the ACA and 12-m combined data, we deconvolved the SiO images to match the resolution of the IRAM observations at 3$\,$mm and found that the ALMA SiO images recovered about 60% of the total flux measured with the IRAM 30m$\,$ telescope. However, due to the limited sensitivity of the IRAM 30m data, they were not included in the final SiO combination. In contrast, for the CH$_3$OH data cube, the combination of IRAM 30m, ALMA 12m, and ACA data successfully recovered the majority of the flux.
+
+# Results
+
+In Figure [1](#fig1), the left panel shows the three-color map (red = 8 $\upmu$m, green = 4.5 $\upmu$m, blue = 3.6 $\upmu$m) obtained from (cite: benjamin2003; Carey2009), with white contours highlighting the cloud structure and encompassing material denser than 0.044 g cm$^{-2}$ (A$_{\rm V}$=10 mag) in the IRDCs, as reported by (cite: Kainulainen&Tan2013). The white- and yellow-dashed rectangles indicate the fields of view for the IRAM 30m (cite: jimenez2010parsec) and ALMA observations, respectively. Zooming in on the ALMA field of view (right panels), we present the SiO and H$^{13}$CO$^+$ emission as black contours, integrated over the velocity ranges of -20 – 120 km s$^{-1}$ and 40 – 50 km s$^{-1}$, respectively, which cover the main velocity components of the region. The SiO data were spatially smoothed to a resolution of 6$^{\prime\prime}$, and the spectral resolution was degraded from 0.21 to 0.6 km s$^{-1}$. Moment masking was then applied using the Behind The Spectrum (BTS) procedure to improve the noise level and ensure a more robust detection (cite: Clarke2018MNRAS). The grayscale contours show the mass surface density and correspond to extinction levels of $A_{\rm V}$ = 10, 20, 30, and 40 mag.
+
+The flux lower limits for the 8 $\upmu$m sources (indicated by red open circles) and the 24 $\upmu$m sources (shown as medium green rectangles) are 3.5 mJy and 2 mJy, respectively, from (cite: jimenez2010parsec).
+
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| Position | $F$ | ${\upsilon}_{\rm LSR}$ | $\Delta {\upsilon}$ | noise | Area | Position | $F$ | ${\upsilon}_{\rm LSR}$ | $\Delta {\upsilon}$ | noise | Area |  |  |  |  |  |
+|  | mJy beam$^{-1}$ | km s$^{-1}$ | km s$^{-1}$ | mJy beam$^{-1}$ | arcsec$^{2}$ |  | mJy beam$^{-1}$ | km s$^{-1}$ | km s$^{-1}$ | mJy beam$^{-1}$ | arcsec$^{2}$ |  |  |  |  |  |
+| 1 | 6.9±0.2 | 45.3 | 1.2 | 0.6 | 36.0$\times$20.2 | 11 | 2.7±0.9 | 45.1 | 3.9 | 1.3 | 12.5$\times$12.5 |  |  |  |  |  |
+|  | 4.5±0.4 | 46.4 | 4.3 |  |  | 12 | \- | \- | \- | 1.5 | 12.5$\times$12.5 |  |  |  |  |  |
+| 2 | 3.3±0.9 | 45.7 | 3.5 | 1.5 | 12.5$\times$12.5 | 13 | 14.7±0.8 | 47.3 | 2.2 | 1.6 | 12$\times$12 |  |  |  |  |  |
+| 3 | 9.7±2.7 | 62.4 | 28.5 | 1.5 | 12.5$\times$12.0 | 14 | 10.1±0.5 | 45.6 | 1 | 1.5 | 12$\times$12 |  |  |  |  |  |
+| 4 | 13.2±2.1 | 32.4 | 19.5 | 1.4 | 12$\times$12 | 15 | 3.5±0.9 | 47.1 | 6 | 1.2 | 16.3$\times$12.0 |  |  |  |  |  |
+| 5 | 7.7±1.4 | 53.5 | 10.2 | 1.3 | 12.5$\times$15.4 | 16 | 3±0.7 | 47.1 | 8.7 | 0.7 | 26.4$\times$24.0 |  |  |  |  |  |
+| 6 | 11.7±0.6 | 47.1 | 1.9 | 1.4 | 12.0$\times$13.4 | 17 | 1.7±2.1 | 36.7 | 19.4 | 1.4 | 12.5$\times$12.5 |  |  |  |  |  |
+|  | 8.6±0.9 | 49.2 | 3.8 |  |  | 18 | 3.0±1.1 | 39.7 | 5.8 | 1.5 | 13.4$\times$12.0 |  |  |  |  |  |
+| 7 | 11.3±0.5 | 43.1 | 4.7 | 0.6 | 23.0$\times$32.2 |  | 7.4±0.7 | 43.8 | 2 |  |  |  |  |  |  |  |
+|  | 14.5±0.3 | 44.8 | 1.7 |  |  | 19 | 17.6±0.5 | 45.9 | 2 | 1.1 | 16.8$\times$21.6 |  |  |  |  |  |
+| 8 | 4.6±0.4 | 44.9 | 2.1 | 0.9 | 16.3$\times$24.0 |  | 16.9±0.7 | 48.4 | 4.2 |  |  |  |  |  |  |  |
+| 9 | 3.2±1.6 | 39.1 | 7.8 | 1.7 | 12.5$\times$12.5 | 20 | 4.4±1.2 | 41 | 14.1 | 0.9 | 16.8$\times$21.6 |  |  |  |  |  |
+| 10 | 4.2±1.3 | 43.9 | 4.7 | 1.8 | 12.5$\times$12.5 |  | 12.9±0.6 | 44.1 | 4.1 |  |  |  |  |  |  |  |
+
+In the middle panel of Figure [1](#fig1), we observe a northern SiO emission associated with the MM7 core (marked by a magenta cross) and an 8 $\upmu$m source. The MM7 core, located within the densest part of the cloud, was identified by (cite: Rathborne2006) based on 1.2 mm continuum emission. Further south along the cloud, the SiO emission is associated with both 8 $\upmu$m and 24 $\upmu$m sources and spatially associated with the previously identified core MM6 (cite: Rathborne2006; Butler&Tan2009). This southern SiO emission exhibits two clearly elongated tails: one extends toward north-east (with north being the direction of increasing declination and east being the direction of increasing Right Ascension), appearing adjacent to an unipolar outflow; while the other extends north-west, connecting to a weaker, discontinuous arc-shaped structure (inner arc) oriented from south to north, as indicated by dark blue dashed lines. At the bottom of the middle panel, we find an outer arc, which displays an arc-shaped morphology, also marked by dark blue dotted lines. Although this structure is located at the edge of the mosaic, its morphology is similar to the arc-shaped emission seen in CS toward the same part of the cloud (see Figure [4](#fig4)). Notably, both arcs lack associated 8 $\upmu$m and 24 $\upmu$m sources. The H$^{13}$CO$^+$ emission in the right panel is tightly associated with the dense material in Cloud H and exhibits a bow-shaped structure extending toward the northeast at the bottom of the map, which is spatially similar to the SiO emission.
+
+In Figure [2](#fig2), we show the spatial distribution of SiO emission (red scale) along with the average spectra of SiO and H$^{13}$CO$^+$ extracted from 20 selected regions across the map. The H$^{13}$CO$^+$ intensities have been divided by a factor of two for clarity. These regions, labeled 1 to 20, are indicated by green dashed rectangles in Figure [2](#fig2). The purple dashed circular regions (with a diameter of about 12$^{\prime\prime}$), labeled 1 to 3, mark the positions with no detectable SiO emission. The size of each extracted rectangle area is listed in Table [\[tab1\]](#tab1), and all are larger than the beam size. By comparing the SiO line widths with the broadest H$^{13}$CO$^+$ linewidth (2.3 km s$^{-1}$), as done in (cite: Rong2025), we find that most of the SiO spectra display complex line profiles. These include broad SiO emission (e.g., positions 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 15, 16, 17, 18, 19, and 20), some of which exhibit red-shifted and/or blue-shifted line wings, and narrow SiO emission (e.g., positions 1, 6, 7, 8, 13, 14, 18, 19, and 20). Additionally, we note that the SiO emission at positions 2, 9, 10, 11, 12, and 17 is very weak, with peak intensities around the 2$\sigma$ noise levels in Figure [2](#fig2). Therefore, we compared these spectra with those from the three circular regions with no detectable SiO emission, as shown in Figure [7](#figA1). Except for position 12, the peak intensities of the SiO spectra at the other positions are higher than the 3$\sigma$ noise level measured in the non–emission regions. In Table [\[tab1\]](#tab1), we summarize the line parameters (peak intensity, $F$; central velocity, ${\upsilon}_{\rm LSR}$; and linewidth, $\Delta {\upsilon}$) for the SiO (2-1) spectra at positions 1 to 20 in Figure [2](#fig2). These parameters were obtained by fitting the molecular line profiles with Gaussian functions using $\textit{pyspeckit}$. The rms noise level of each spectrum was estimated as the standard deviation over a velocity range of 50 km s$^{-1}$ in line-free channels. Details of the SiO and H$^{13}$CO$^+$ spectral fitting procedures can be found in Appendix [6](#AppendixA).
+
+Figure [8](#figA2) presents the SiO spectra with their Gaussian fittings, while Figure [9](#figA3) shows the Gaussian fitting results of the H$^{13}$CO$^+$ spectra at positions 1, 6, 9, 13, and 20, where the spectra do not exhibit absorption features. The H$^{13}$CO$^+$ spectra at the remaining positions display absorption and are therefore shown only as spectra. Upon inspection, we find that the H$^{13}$CO$^+$ spectra show absorption features at positions 2, 3, 4, 5, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, and 19, which may be due to the missing flux or the presence of strong continuum sources (cite: Ohashi2022ApJ; Codella2024MNRAS). Notably, positions 3, 4, 5, 7, 8, 18, and 19 are located near outflows (as described in Section [3.1](#sec3.1)); positions 9, 10, 11, 12 and 17 fall within the outer arc structure, while positions 13, 14, 15, 16, and 18 lie along the inner arc region. We note that the SiO spectra at the positions in the outer arc are weak and located near the edge of the map, and therefore have larger uncertainties. The average H$^{13}$CO$^+$ line width at positions 1, 6, 13, and 20, which are located within Filament 2, is 1.6 km s$^{-1}$. In contrast, position 9, situated in the outer arc region, shows the broadest line width of 2.3 km s$^{-1}$. This enhanced linewidth at the outer arc region suggests the presence of strong turbulent motions, possibly driven by CCC or external shocks.
+
+The linewidths of the broad SiO emission range from 3.5 to 28.5 km s$^{-1}$, with an average width of 9.3 km s$^{-1}$, while those of the narrow SiO emission range from 1 to 2.2 km s$^{-1}$, with an average width of 2 km s$^{-1}$. At positions 1, 2, 5, 6, 7, 9, 10, 11, 15, 16, 17, 18, and 19, the SiO linewidths are broader than the broadest H$^{13}$CO$^+$ linewidth (2.3 km s$^{-1}$); however, the line wings are either unresolved or faint, with peak intensities below 2 $\sigma$. In contrast, positions 3, 4, and 20 exhibit clear high-velocity wings exceeding 10 km s$^{-1}$ in the red-shifted and/or blue-shifted velocity regimes. These positions are also spatially associated with either the MM cores from (cite: Rathborne2006) or with 8$\,$$\mu$m and 24$\,$$\mu$m sources. Therefore, we propose that the extended high-velocity SiO wings observed in these positions are most likely attributed to outflow activity. Furthermore, considering the unipolar outflow morphology observed at position 7 and the spatial continuity between the red-shifted lobe at position 20 and the corresponding blue-shifted emission at position 19, we also include positions 7 and 19 as likely outflow candidates.
+
+## Identified outflow
+
+In Figure [3](#fig3) a) panel, we display the blue- and red-shifted SiO emission overlaid with 8 $\upmu$m (dark red open circles) and 24 $\upmu$m (green rectangles) sources. Around positions 3 and 4, 8 $\upmu$m and 24 $\upmu$m sources are detected $\sim$8$^{\prime\prime}$ to the west, although no continuum core has been identified in our ALMA 3$\,$mm continuum images. At positions 19 and 20, the SiO emission is spatially coincident with both 8 $\upmu$m and 24 $\upmu$m sources and the identified core MM6 (cite: Rathborne2006). Based on the observed bipolar morphology of the blue- and red-shifted SiO emission and the associated infrared sources, we confirm that the SiO emission at positions 3, 4, 19, and 20 is due to outflows. For the outflow at position 7, however, the SiO emission lacks any associated infrared source, although the morphology of this emission resembles a clear outflow cavity. This suggests that the SiO emission toward this position is likely driven by a deeply embedded source.
+
+|  |  |  |  |  |  |  |  |  |  |  |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| Position | $\int{T_\textup{MB}\mathrm{d}{\upsilon}}$ | $N$(SiO)$\times{10^{12}}$ | $X$(SiO)$\times{10^{-10}}$ | Position | $\int{T_\textup{MB}\mathrm{d}{\upsilon}}$ | $N$(SiO)$\times{10^{12}}$ | $X$(SiO)$\times{10^{-10}}$ |  |  |  |
+|  | (mK km s$^{-1}$) | (cm$^{-2}$) |  |  | (mK km s$^{-1}$) | (cm$^{-2}$) |  |  |  |  |
+| 1 | 110±4 | 0.19±0.01 | 0.82±0.06 | 11 | 142±45 | 0.8±0.2 | 1.34±0.33 |  |  |  |
+|  | 260±25 | 1.4±0.1 |  | 12 | \- | \- | \- |  |  |  |
+| 2\* | 153±41 | 0.8±0.2 | 1.8±0.5 | 13 | 429±22 | 0.74±0.04 | 0.33±0.02 |  |  |  |
+| 3 | 3738±1023 | 20.3±5.6 | 12.2±3.4 | 14\* | 141±7 | 0.24±0.01 | 0.54±0.02 |  |  |  |
+| 4 | 3476±541 | 18.9±2.9 | 10.7±1.6 | 15\* | 285±76 | 1.5±0.4 | 3.4±0.9 |  |  |  |
+| 5 | 1053±192 | 5.7±1 | 10.1±1.8 | 16\* | 348±76 | 1.9±0.4 | 4.3±0.9 |  |  |  |
+| 6 | 296±16 | 0.51±0.03 | 1.52±0.02 | 17\* | 451±541 | 2.5±2.9 | 5.7±6.6 |  |  |  |
+|  | 439±45 | 2.4±0.2 |  | 18 | 234±89 | 1.3±0.5 | 2.2±0.9 |  |  |  |
+| 7\* | 718±29 | 3.9±0.2 | 10.2±0.5 |  | 200±18 | 0.35±0.03 |  |  |  |  |
+|  | 336±6 | 0.58±0.01 |  | 19 | 484±14 | 0.84±0.02 | 4.9±0.2 |  |  |  |
+| 8 | 132±12 | 0.23±0.02 | 0.24±0.02 |  | 952±40 | 5.2±0.2 |  |  |  |  |
+| 9 | 339±165 | 1.8±0.9 | 0.9±0.4 | 20 | 830±218 | 4.5±1.2 | 5.6±1.2 |  |  |  |
+| 10 | 268±80 | 1.5±0.4 | 0.53±0.14 |  | 704±34 | 1.22±0.06 |  |  |  |  |
+
+The symbol ‘\*’ after a position indicates that the mass surface density at that location is lower than 0.021 g cm$^{-2}$ (3$\sigma$), for which we adopt 3$\sigma$ as an upper limit.
+
+In Figure [3](#fig3) panels (b), (c), and (d), we present zoom-in views of the identified outflow regions. The integrated velocity ranges used for the blue- and red-shifted SiO emission are based on their corresponding SiO spectra. Panel (b) exhibits intense outflow activity, with high-velocity SiO emission reaching up to terminal velocities of 28 km s$^{-1}$ with respect to the V$_{\rm LSR}$ of the cloud. One infrared source is detected approximately 8$^{\prime\prime}$ to the west, located between the blue and red lobes of the outflow, and another coincides with the red-shifted SiO emission at position 3. The outflow in panel (c) presents a possible unipolar morphology with the absence of an infrared source. However, note that its red-shifted counterpart may be overlapping along the line of sight with the red-shifted emission of the molecular outflow found in positions 19 and 20 (see panel d). In panel (d), the cyan cross marks the core MM6, which is located between the red and blue lobes, with 8 $\upmu$m and 24 $\upmu$m sources detected. The red-shifted SiO emission presents tails extending toward the northeast, which is likely associated with the red-shifted counterpart of the blue-shifted outflow cavity seen in position 7. The SiO spectra extracted from positions 19 and 20 (see lower-right panel) show two clear blue-shifted and red-shifted velocity components, typical of an outflowing source. However, given that the physical scale of the ALMA beam at this distance is 0.05 pc, the current resolution is insufficient to resolve the cavity substructures within the SiO emission. Higher-resolution observations will therefore be required to confirm and characterize the presence of multiple outflows. The extent of the outflow lobes is estimated by measuring the maximum spatial separation between the putative outflow-driving protostars (cyan stars) and the 3$\sigma$ contour levels measured in the SiO emission, as indicated by the yellow lines in the panels of Figure [3](#fig3).
+
+The estimated length of the blue and red lobes ($l_\mathrm{maxb}$ and $l_\mathrm{maxr}$) are $\sim$0.18 pc and 0.2 pc for positions 3 and 4, $\sim$0.18 pc and 0.16 pc for positions 19 and 20, and $\sim$0.21 pc for the blue lobe at position 7.
+
+By inspecting the outflow properties, we can provide information about the physical properties of the driving sources. The column densities in the outflow regions are estimated as described in Section [3.2](#sec3.2). The SiO column densities ($N_\textup{SiO}$) are 2.0$\times$10$^{13}$ and 1.9$\times$10$^{13}$ cm$^{-2}$ for outflow positions 3 and 4, 4.5$\times$10$^{12}$ cm$^{-2}$ for outflow position 7, and 6.0$\times$10$^{12}$ and 5.7$\times$10$^{12}$ cm$^{-2}$ for outflow positions 19 and 20, respectively. We adopt a typical SiO abundance ($\chi_\textup{SiO}$) of $\sim$10$^{-8}$, consistent with values reported for mid-infrared-dark sources by (cite: Sanchez-Monge2013A&A). By converting the $N_\textup{SiO}$ to the H$_2$ column density ($N{_\mathrm{H_{2}}}$), we estimate the masses of the blue and red outflow lobes ($M_\textup{b/r}$), from which the total outflow mass ($M_\textup{out}$) is derived.
+
+$$\begin{equation}
+M_\mathrm{out} = (N_\mathrm{b}\times A_\mathrm{b}+N_\mathrm{r}\times A_\mathrm{r})m_\mathrm{H_2}
+\label{eq:eq1}
+\end{equation}$$ $$\begin{equation}
+P = M_\mathrm{b}\lvert V_\mathrm{b}\rvert +M_\mathrm{r} \lvert V_\mathrm{r}\rvert 
+\label{eq:eq2}
+\end{equation}$$ $$\begin{equation}
+E = \frac{1}{2}M_\mathrm{b}{V_\mathrm{b}}^2+\frac{1}{2}M_\mathrm{r}{V_\mathrm{r}}^2 
+\label{eq:eq3}
+\end{equation}$$ where $A_\mathrm{b/r}$ is the surface area of the blue and red lobes, and $N_\mathrm{b/r}$ is the corresponding $N_\mathrm{H_2}$ column density. $m_\mathrm{H_2}$ represents the mass of a hydrogen molecule. $V_\mathrm{b/r}$ is the velocity offset of the centroid velocities of the blue and red lobes, derived from the Gaussian fitting, with respect to the systemic velocity of Cloud H (45.5 km $^{-1}$). $P$ and $E$ represent the outflow momentum and kinetic energy, respectively. The area $A_\mathrm{b/r}$ is calculated using the same threshold employed for deriving $T_\mathrm{MB}$ values in Table [\[tab1\]](#tab1). $M_\mathrm{out}$ is estimated to be 1.8 $M_{\odot}$ for positions 3 and 4, and 1.4 $M_{\odot}$ for positions 19 and 20. For position 7, we assume that the red lobe has the same $N_\mathrm{r}$ and $A_\mathrm{r}$ as the blue lobe, yielding $M_\mathrm{out}$ = 2.1 $M_{\odot}$. $P$ is 27.5 $M_{\odot}$ km s$^{-1}$ for positions 3 and 4, 5.1 $M_{\odot}$ km s$^{-1}$ for position 7, and 5.0 $M_{\odot}$ km s$^{-1}$ for positions 19 and 20. The corresponding $E$ is 4.2$\times{10^{45}}$ erg, 1.2 $\times{10^{44}}$ erg, and 1.9 $\times{10^{44}}$ erg, respectively. These outflow parameters are consistent with those typically found in high-mass protostellar sources (cite: Beuther2002A&A).
+
+The parameter $l_\mathrm{max}$ represents the maximum extent of each outflow lobe ($l_\mathrm{maxb/maxr}$), as shown by the yellow lines in Figure [3](#fig3). Using this, we estimate the outflow dynamical age ($t_\mathrm{dy}$), mass-outflow rate ($\dot{M}_\mathrm{out}$), mechanical force ($F_\mathrm{SiO}$), and outflow luminosity ($L_\mathrm{SiO}$) using the following equations: $$\begin{equation}
+\begin{split}
+
+V_\mathrm{maxb/maxr} = V_\mathrm{edge} - V_\mathrm{sys} \\
+\end{split}
+\label{eq:eq4}
+\end{equation}$$
+
+$$\begin{equation}
+\begin{split}
+t_\mathrm{dy} = \frac{l_\mathrm{max}}{(V_\mathrm{maxb}+V_\mathrm{maxb})/2} 
+\label{eq:eq5}
+\end{split}
+\end{equation}$$ $$\begin{equation}
+\dot{M}_\mathrm{out} = \frac{M_\mathrm{out}}{t}
+\label{eq:eq6}
+\end{equation}$$ $$\begin{equation}
+F_\mathrm{SiO} = \frac{P}{t}
+\label{eq:eq7}
+\end{equation}$$ $$\begin{equation}
+L_\mathrm{SiO} = \frac{E}{t}
+\label{eq:eq8}
+\end{equation}$$
+
+where V$_\mathrm{edge}$ corresponds to the most blue-shifted or red-shifted velocity, and V$_\mathrm{sys}$ is the systemic velocity of Cloud H (45.5 km$^{-1}$). The maximum velocity offsets, $V_\mathrm{maxb/r}$, are defined as the velocity offset between $V_\mathrm{edge}$ and $V_\mathrm{sys}$. The resulting values are: V$_\mathrm{maxb}$ = 32.6 km s$^{-1}$ and V$_\mathrm{maxr}$ = 45.4 km s$^{-1}$ for positions 3 and 4; V$_\mathrm{maxb}$ = 7.1 km s$^{-1}$ for position 7; and V$_\mathrm{maxb}$ = 18.6 km s$^{-1}$ and V$_\mathrm{maxr}$ = 7.1 km s$^{-1}$ for positions 19 and 20. To correct for the unknown inclination angle between the outflow axis and the line of sight, we assume an average inclination angle of $\theta$ = 57.3$^{\circ}$ (cite: Beuther2002A&A). The estimated $l_\mathrm{max}$ values are $\sim$0.37 pc for positions 3 and 4, $\sim$0.39 pc for position 7, and $\sim$0.33 pc for positions 19 and 20. The corresponding $t_\mathrm{dy}$ are estimated to be 9.3$\times$${10^{3}}$, 5.4$\times{10^{4}}$, and 2.5$\times{10^{4}}$ yr, respectively. (cite: Liu2021ApJ) identified outflows using SiO (5–4) emission toward Cloud H, and their calculated $t_\mathrm{dy}$ is approximately 5$\pm$4 $\times$10$^3$ yr, which is younger than the outflows we have identified. The $\dot{M}_\mathrm{out}$ are 2$\times{10^{-4}}$, 3.9$\times{10^{-5}}$, and 5.4$\times{10^{-5}}$ $M_{\odot}$ yr$^{-1}$, respectively. The $F_\mathrm{SiO}$ are derived to be 3$\times{10^{-3}}$, 9.4$\times{10^{-5}}$, and 2$\times{10^{-4}}$ $M_{\odot}$ km s$^{-1}$ yr$^{-1}$ for the same positions. The derived $L_\mathrm{SiO}$ for positions 3, 4, 7, 19, and 20 are 3.7 $L_\odot$, 0.02 $L_\odot$, and 0.06 $L_{\odot}$, respectively. We adopt a ratio between the mass loss rate of the jet and the accretion rate of 0.3, following (cite: Tomisaka1998ApJ; Shu1999ASIC; Beuther2002A&A), and drive the accretion rate with the spread between 1.3$\times{10^{-4}}$ $M_{\odot}$ yr$^{-1}$ and 6.5$\times{10^{-4}}$ $M_{\odot}$ yr$^{-1}$, which are consistent with typical values observed in high-mass protostellar cores (cite: Beuther2002A&A; Yang2018ApJS).
+
+![](Figure/Figure4/CS_moment0_overlaid_SiOandC18O_v2.pdf)
+
+## Column density and abundance
+
+We estimate SiO column density ($N_\textup{SiO}$) and abundance with respect to H$_2$ toward all positions. Assuming local thermodynamic equilibrium (LTE) and that the SiO emission is optically thin (cite: jimenez2010parsec), the column density of SiO can be calculated as follows: $$\begin{equation}
+N = \frac{3 k^2}{4 \uppi^3 h \nu^2} \frac{1}{S{\mu}^2}{T_\textup{ex}}
+{{\rm e}^{\frac{E_{u}}{kT_\textup{ex}}}}{\int{T_\textup{MB}\mathrm{d}{\upsilon}}}
+\label{eq:eq9}
+\end{equation}$$
+
+where $h$ represents the Planck constant and $k$ is the Boltzmann constant. The line strength ($S\mu^{2}$) is 19.2 for the SiO (2-1) line, and the SiO line frequency ($\nu$) is 86.847 GHz. The upper-level energy $E_u/k$ is 6.25 K. We utilized an excitation temperature ($T_\textup{ex}$) of 9 K for narrow components, as estimated for Cloud H (cite: jimenez2010parsec), and 50 K for the broad component, as estimated for the shocked gas in molecular outflows (cite: 2005Jimnez). The term $\int{T_\mathrm{MB}\mathrm{d}{\upsilon}}$ represents the integrated intensity of SiO emission in units of \[mK km s$^{-1}$\]. The values of $\int{T_\textup{MB}\mathrm{d}{\upsilon}}$ and $N_\textup{SiO}$ are provided in Table [\[tab2\]](#tab2).
+
+![](Figure/Figure5/CH3OH_moment0_overlaid_SiOandC18O_v2.pdf)
+
+For the identified outflow regions (positions 3, 4, 7, 19, and 20), $N_\textup{SiO}$ ranges from 4.5$\times{10^{12}}$ to 2.0$\times{10^{13}}$ cm$^{-2}$. In the adjacent outflow regions (positions 1, 5, 6, and 8), $N_\textup{SiO}$ ranges from 2.3$\times{10^{11}}$ to 5.7$\times{10^{12}}$ cm$^{-2}$. The average $N_\textup{SiO}$ in the outflow and adjacent regions is 7.3$\times{10^{12}}$ cm$^{-2}$. For the SiO inner arc-shaped regions (positions 13, 14, 15, 16, and 18), $N_\textup{SiO}$ ranges from 2.4$\times{10^{11}}$ to 1.9$\times{10^{12}}$ cm$^{-2}$, with an average $N_\textup{SiO}$ of 1.2$\times{10^{12}}$ cm$^{-2}$. For the SiO outer arc-shaped regions (positions 9, 10, 11, and 17), $N_\textup{SiO}$ ranges from 8$\times{10^{11}}$ to 2.5$\times{10^{12}}$ cm$^{-2}$, with an average $N_\textup{SiO}$ of 1.7$\times{10^{12}}$ cm$^{-2}$. Note that the derived column densities of the narrow SiO change by less than a factor of 1.3 when assuming an excitation temperature of 15 K instead of 9 K, and those of the broad SiO column vary by more than a factor of 1.4 when assuming 75 K instead of 50 K.
+
+To estimate the SiO abundance ($\chi_\textup{SiO}$), we calculate the H$_2$ column density using the mass surface density at the same 20 positions. For the position (2, 7, 14, 15, 16, and 17) with the mass surface density lower than 0.021 g cm$^{-2}$ (3$\sigma$), we adopt 3$\sigma$ as an upper limit. The derived $\chi_\textup{SiO}$ values are presented in Table [\[tab2\]](#tab2) and range from 2.4$\times10^{-11}$ to 1.2$\times10^{-9}$. For the identified outflow and adjacent regions, the average $\chi_\textup{SiO}$ is $\sim$6.3$\times{10^{-10}}$. The average $\chi_\textup{SiO}$ in the inner arc-shaped regions is $\sim$2.2$\times{10^{-10}}$, while in the outer arc-shaped regions, it is $\sim$2.1$\times{10^{-10}}$. These results imply that the SiO abundances in both the inner and outer arcs are lower by a factor of $\sim$3 compared to those measured in the outflow regions. As discussed in Section [4](#sec4), this may indicate a different shock origin for the inner and outer arcs. However, note that these values should be considered as lower limits since the SiO images suffer from missing flux (see Section [2](#sec2)).
+
+![](Figure/Figure6/Figure5_1.3_5.8GHZ_13CO_v2.pdf)
+
+# Discussion
+
+The formation of molecular clouds, particularly the filamentary structures found in IRDCs, has long been a topic of interest to understand the early stages of massive star and cluster formation. Several theoretical models have been proposed to explain their formation. Among these, the flow-driven formation models suggest that flows of warm atomic gas may converge at relatively high velocities and molecular material may form as a result of gas cooling at the converging layer (cite: benjamin2003; vanLoo2007; Hennebelle2008A&A). However, this model faces significant challenges, as magnetic fields can inhibit compression to the high densities required for star formation (cite: Kortgen2015MNRAS). Another possible mechanism is shock-induced star formation triggered by stellar feedback (cite: Koyama2000; Koyama2002; vanLoo2007; Inutsuka2015A&A). In this scenario, molecular clouds and/or clump already formed may be further compressed by shocks driven by the expanding shells of HII regions and SNRs, setting favourable conditions for star formation to occur (cite: Inoue2018PASJ). In this shock-driven scenario, narrow SiO emission can be witnessed (cite: Cosentino2019), with features similar to those expected in cloud-cloud collisions (cite: jimenez2010parsec; 2018Cosentino; Cosentino2020).
+
+Previous studies point to a cloud-cloud collision as the likely mechanism responsible for the formation of the IRDC G035.39-00.33. (cite: jimenez2010parsec) indeed found widespread narrow SiO emission across parsec-scales toward this filament, which was interpreted as a fossil record of the cloud-cloud collision within Cloud H. By using $^{13}$CO (1–0) and CII emission, (cite: Liu2018ApJ; Bisbas2018MNRAS) proposed that a large-scale cloud-cloud collision could be causing the observed velocity gradients and the collision of the filaments. However, the origin of such a collision remains unknown. By carrying out a detailed analysis of the kinematics of the molecular emission of $^{13}$CO and C$^{18}$O, (cite: jimenez2014) found three velocity-coherent molecular filaments within the cloud with a common velocity gradient of $\sim$0.4-0.8 km s$^{-1}$ pc$^{-1}$ in the north-south direction. These authors proposed that the common velocity gradient could be explained by the global gravitational collapse of the cloud, which would induce the gentle collision of the individual filaments, yielding the observed widespread and narrow SiO emission (cite: jimenez2014). These observations, however, lacked high enough angular resolution. Additionally, the presence of velocity-coherent fibres in the IRDC may also support a shock-driven scenario. Numerical simulations by (cite: Clarke2017MNRAS; Clarke2020MNRAS) show that fibres can arise from internal turbulence generated by shocks, which convert inflowing kinetic energy into turbulent motions within filaments. The observed fibres could hence be kinematic artefacts rather than true density structures (cite: Clarke2018MNRAS).
+
+In Figure [2](#fig2), we report an arc-like structure in SiO emission located outside the densest material of cloud H as seen in extinction. In Figure [4](#fig4), we present the CS integrated intensity maps overlaid on the observed SiO emission for different velocity ranges. The brightest CS emission is detected for the central component between 45.5 and 46.5 km s$^{-1}$. However, for the blue-shifted (44.5 to 45.5 km s$^{-1}$) and red-shifted (46.5 to 48 km s$^{-1}$) CS gas components, one can see two arc-like structures (indicated with green dashed and dotted lines) extending from south to north that closely follow the SiO emission. While one arc is located on the inner side (inner arc), the other one is positioned along the edge of the map (outer arc). To confirm that these structures are real, in Figure [5](#fig5) we also present the integrated intensity map of another shock tracer, CH$_3$OH, over the blue-shifted velocity range 43.8-44.5 km s$^{-1}$. The red color scale highlights both the inner arc and outer arcs, as indicated by the green dashed and dotted lines. Additionally, we include the C$^{18}$O emission observed with the GBT telescope in Figures [4](#fig4) and [5](#fig5) (Law et al. in prep.), shown in grayscale. The C$^{18}$O data have a beam size of 7.7$^{\prime\prime}$, a velocity resolution of 0.19 km s$^{-1}$, and an rms noise level of 0.47 K per channel. The blue-shifted C$^{18}$O emission, represented by Filament 1 (see Section [1](#sec1)), also follows these arc-like structures. In the next sections, we discuss possible scenarios that could explain the arc-like structures seen in SiO, CH$_3$OH, and CS emission with ALMA toward Cloud H.
+
+## Interaction with Supernova Remnants
+
+(cite: Cosentino2019) analyzed ALMA images of SiO (2-1) emission toward the SNR W44. The authors reported evidence of non-stationary MHD shocks driven by the SNR into the nearby IRDC G034.77-00.55. Interestingly, Cloud H is also located nearby the SNR G35.6-0.6 (cite: Paredes2014A&A). Initially reported to be at a kinematic distance of 3.6 kpc, subsequent CO observations (cite: Zhang2022ApJ) have shown that the SNR is composed of two shells located at 3.4 and 3.0 kpc, respectively. The shell at 3 kpc is not only at the same distance as Cloud H but it is also located closest on the plane of the sky. Therefore, in this section, we explore the feasibility of the arc-like structures being produced by the interaction between Cloud H and the nearby SNR G35.6-0.6 (cite: Paredes2014A&A).
+
+Figure [6](#fig6) shows the MeerKAT 1.3 $\mathrm{GHz}$ image (cite: Goedhart2024MNRAS), the GLOSTAR 5.8 $\mathrm{GHz}$ image (cite: Medina2019A&A), and the FUGIN $^{13}$CO (1-0) image (cite: Umemoto2017PASJ). The images are overlaid with the 610 $\mathrm{MHz}$ emission (shown as yellow dashed contours) obtained with the GMRT by (cite: Paredes2014A&A).
+
+These radio frequencies trace both non-thermal synchrotron emission, particularly at lower frequencies such as 610 MHz, and thermal free-free emission from ionized gas, which becomes more prominent at higher frequencies such as 5.8 GHz. The white contours represent the 850 $\upmu$m continuum emission obtained with JCMT/SCUBA-2 (cite: Shen2024). The overall appearance of the 1.3 $\mathrm{GHz}$ emission closely resembles that of the 610 $\mathrm{MHz}$ emission, while the 5.8 $\mathrm{GHz}$ emission shows similar but comparatively weaker structures. Owing to the higher angular resolution of the 1.3 $\mathrm{GHz}$ and 5.8 $\mathrm{GHz}$ observations, more detailed features are revealed. The bright rings associated with SNR G35.6-0.4 are visible at both wavelengths as shown in Figure [6](#fig6), and are located to the east of Cloud H. Note that the 610 $\mathrm{MHz}$ emission lacks coverage westward of $\alpha$(J2000)=18:57:00. Nevertheless, based on the available data not only at 610 MHz but also at 1.3 $\mathrm{GHz}$ and 5.8 $\mathrm{GHz}$, we find two possible shell structures related to SNR G35.6-0.4, one of which spatially overlaps with Cloud H not only in the plane of the sky but it is also located at the same distance of 3.0 kpc (cite: Zhang2022ApJ). Interestingly, the arc-shaped structure seen in SiO, CH$_3$OH, and CS in the ALMA images of cloud H has the same spatial orientation as the morphology of the SNR shell (see Figures [4](#fig4) and [5](#fig5) and discussion below). At 1.3 GHz and 5.8 GHz maps, we also observe a second spherical shell located toward the south-western part of Cloud H. This object, located at $\alpha$(J2000)=18:56:55, $\delta$(J2000)=02:06:03, exhibits a brighter, circular morphology in 5.8 GHz emission compared to other radio emission, suggesting that it is likely an HII region.
+
+In the right panel of Figure [6](#fig6), the $^{13}$CO (1-0) emission closely traces the dust continuum emission (shown as white contours), revealing the overall morphology of the giant molecular clouds in this region. These observations indicate that Cloud H is embedded within a complex star-forming environment, where the densest and coolest material appears to be concentrated at the interface between SNR G35.6-0.4 and the expanding HII region. Note that the $^{13}$CO (1-0) map has been obtained for the velocity range between 40 and 50 km s$^{-1}$, which is also the velocity range of the molecular gas in Cloud H.
+
+If we zoom-into the second shell of SNR G35.6-0.4, we observe that the 610 $\mathrm{MHz}$ emission (blue contours in Figures [4](#fig4) and [5](#fig5), and yellow contours in the left and middle panels of Figure [6](#fig6)) delineates the morphology of Filament 1 in Cloud H, as reported by (cite: jimenez2014) and traced by $^{18}$CO (1–0) emission (see the left panel grayscale in Figure [4](#fig4) and [5](#fig5)). Note that the dense gas of Cloud H bends toward the southern part of the cloud following the morphology of the second shell of SNR G35.6-0.4, suggesting a possible interaction. Furthermore, the observed SiO, CS, and CH$_3$OH arc structures follow the outline of the 610 $\mathrm{MHz}$ emission, which may further support the interaction between the SNR G35.6-0.4 and Cloud H. A possible explanation is that the expansion of SNR G35.6-0.4 produced a shock interaction with the preexisting Cloud H. This interaction shaped the arc structure of Filament 1 seen in SiO, CH$_3$OH, and CS in the same fashion as the outer shell of SNR G35.6-0.4. The fact that the associated SiO abundances are factors of at least 3 lower than those detected in outflows, supports a scenario of a gentle interaction with the expanding swept-up material from the SNR. However, due to the limited westward coverage of the 610 $\mathrm{MHz}$ observations, the actual overlap between the radio emission from SNR G35.6–0.4 and Cloud H remains uncertain. Furthermore, it is unclear whether the mass and momentum of the swept-up gas are sufficient compared to those of the IRDC and whether this scenario can account for the observed deuteration (cite: Barnes2016) and the relatively quiescent kinematics in the filament (cite: jimenez2014; Henshaw2013). Therefore, at this stage it is not possible to undoubtedly confirm this scenario.
+
+We finally note that the overlapping radio emission could originate from the second spherical shell located toward the south-western region of Cloud H. This object, which could be either another SNR or an HII region, could also be interacting with Cloud H. We have measured the integrated flux across this source at 1.3 GHz (cite: Goedhart2024MNRAS) and at 5.8 GHz (cite: Medina2019A&A), deriving 1.4 mJy and 7 mJy, respectively. The inferred spectral index is $\alpha$$\sim$1, which suggests that this spherical shell is likely associated with an optically thick HII region. This object has indeed been classified as an HII region (cite: Shen2024). Furthermore, radio recombination lines from this object show a velocity similar to that of Cloud H, indicating that they belong to the same star-forming cloud complex. Therefore, an interaction between the expanding gas of the HII region and Cloud H could be possible. Future observations of shock tracers, such as SiO, toward the southern part of Cloud H will be crucial to assess whether such large-scale interaction is currently ongoing (cite: Cosentino2025A&A).
+
+## Global gravitational collapse and cloud-cloud collisions
+
+As mentioned above, an alternative scenario proposed by (cite: jimenez2014) is that the molecular filaments in Cloud H are undergoing gravitational collapse and as they approach to each other, they experience a cloud-cloud collision. This collision, which would be more gentle than in the SNR scenario, would be responsible for the widespread and narrow SiO emission. (cite: Hernandez2015ApJ) used $^{13}$CO observations to find disturbed kinematics in Cloud H, suggesting that GMC–GMC collisions can trigger star formation within the cloud. Similarly, (cite: Liu2018ApJ) proposed that Cloud H may have formed through a large-scale ($\sim$10 pc) cloud–cloud collision, as indicated by the velocity gradients observed in $^{13}$CO emission. Furthermore, (cite: Bisbas2018MNRAS) supported this scenario by comparing their modeled \[C$_\mathrm{II}$\] emission with observations, finding results consistent with predictions from the colliding-cloud scenario.
+
+In our results, the shock tracers exhibit spatially extended emission with relatively narrow linewidths, indicating that they may originate from low-velocity shocks. Previous studies have also reported quiescent kinematics within Cloud H (cite: Henshaw2013), further suggesting the presence of gentle dynamical processes involved in its formation. Taken together, these findings provide an alternative scenario in which both the observed arc-like structures and the formation of Cloud H may be the result of a collision between giant molecular clouds. However, note that this scenario does not explain the morphological coincidence between the 610 MHz emission associated with the SNR G35.6-0.4 and the arc-like structures seen with ALMA in SiO, CH$_3$OH, and CS, as described in Section 4.1.
+
+## A widespread population of low-mass protostars?
+
+A final scenario that could explain the observed narrow SiO in Cloud H is the presence of a population of low-mass protostars. Narrow SiO would then arise from either decelerated shocked gas from large-scale outflows, as proposed by (cite: lefloch1998widespread; Beuther2007ApJ), or from material recently processed in the magnetic precursor of MHD shocks from young molecular outflows (cite: 2004Jimnez; 2005Jimnez; Rong2025). However, note that the arc-like structures are found away from the densest material in Cloud H, and therefore, the probability of finding such a low-mass protostellar population outside the main filament of Cloud H seems rather unlikely. In addition, as shown in Figure [1](#fig1), there are not 8 $\mu$m sources associated with the arc-like structures, which supports the idea of these structures not being produced by protostellar activity.
+
+Future ALMA observations, including 12m-array, ACA, and TP observations with higher sensitivity, are needed to determine which mechanism of the ones presented above is primarily responsible for the observed SiO arc-like structures detected toward Cloud H.
+
+# Conclusions
+
+We have conducted an analysis of SiO emission toward the filamentary IRDC G035.39-00.33 using ALMA data, complemented by observations of C$^{18}$O, CH$_3$OH, and CS to trace shock signatures within this cloud. Our main conclusions are as follows:
+
+1.  From ALMA SiO observations, we have identified three outflows within the cloud. The derived outflow properties suggest that we are witnessing the formation of a cluster of high-mass stars, which provides clear evidence for ongoing star formation in these cores.
+
+2.  The presence of two large-scale arc-like structures seen in SiO, CH$_3$OH, and CS emission in the high-angular resolution ALMA images, along with C$^{18}$O blue-shifted gas, provides strong evidence of a large-scale shock interaction within the filamentary G035.39-00.33 cloud. These shocks may have been induced by larger-scale processes.
+
+3.  Using MeerKAT 1.3 $\mathrm{GHz}$, GLOSTAR 5.8 $\mathrm{GHz}$, FUGIN $^{13}$CO emission, and 610 $\mathrm{MHz}$ GMRT observations, we suggest that the expansion of SNRs and cloud-cloud collisions may be responsible for the arc-like structures observed in SiO, CH$_3$OH, and CS emission. These structures indicate that external shocks have compressed the molecular gas, shaping and compressing the dense ridge of Cloud H.
+
+# Acknowledgements
+
+We would like to thank Prof. J. M. Paredes for kindly sharing his GMRT 610 MHz image of the SNR G35.6-0.4. R.L., G.C. and I.J.-S. acknowledge funding from grant No. PID2022-136814NB-I00 from MICIU/AEI/10.13039/501100011033 and by “ERDF—A way of making Europe”. This publication makes use of data from FUGIN, the FOREST Unbiased Galactic plane Imaging survey with the Nobeyama 45-m telescope, a legacy project in the Nobeyama 45-m radio telescope. T.L. acknowledges the supports by the National Key R&D Program of China (no. 2022YFA1603100), National Natural Science Foundation of China (NSFC) through grants no. 12073061 and no. 12122307, and the Tianchi Talent Program of Xinjiang Uygur Autonomous Region.
+
+# Details of the spectral fitting
+
+Figure [7](#figA1) presents the low signal-to-noise SiO spectra extracted from positions 2, 9, 10, 11, 12, and 17, compared with those from the non–SiO emission regions (purple circles 1, 2, and 3, as indicated in Figure [2](#fig2)), respectively. Figure [8](#figA2) shows the Gaussian fitting of the molecular line emission using $\textit{pyspeckit}$ for positions 1–20, except position 12, where no emission is detected. Figure [9](#figA3) presents the Gaussian fitting results of the H$^{13}$CO$^+$ spectra at positions 1, 6, 9, 13, and 20, where the spectra do not show absorption features. The H$^{13}$CO$^+$ spectra at the other positions exhibit absorption and are therefore shown only as spectra.
+
+We obtained the central velocity (${\upsilon}_{\rm LSR}$, km s$^{-1}$), linewidth ($\Delta {\upsilon}$ km s$^{-1}$), and peak intensity ($F$ mJy beam$^{-1}$) from $\textit{pyspeckit}$. These parameters, including the uncertainties and the noise levels, are listed in Table [\[tab1\]](#tab1). The rms noise levels of each spectrum were estimated from the standard deviation over a velocity range of 50 km s$^{-1}$ in line-free channels. The corresponding uncertainties ($\sigma_{\rm I}$, mJy beam$^{-1}$) were derived as follows: $$\begin{equation}
+\sigma_{\rm I} = \sigma_{\rm rms}\times\sqrt{N_{\rm chan}}\times\Delta {\upsilon}. 
+\label{eqA1}
+\end{equation}$$ where $\sigma_{\rm rms}$, $N_{\rm chan}$, and $\Delta {\upsilon}$ represent the rms noise level, the number of channels used in the Gaussian fitting, and the velocity width per channel, respectively.
+
+![](Figure/Appendix/FigureA1_weakall.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position1_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position2_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position3_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position4_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position5_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position6_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position7_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position8_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position9_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position10_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position11_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position12_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position13_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position14_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position15_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position16_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position17_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position18_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position19_v2.pdf)
+
+![](Figure/Appendix/SiO_fitting/SiO_position20_v2.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position1_G.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position2.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position3.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position4.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position5.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position6_G.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position7.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position8.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position9_G.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position10.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position11.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position12.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position13_G.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position14.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position15.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position16.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position17.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position18.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position19.pdf)
+
+![](Figure/Appendix/H13COP_fitting/H13COP_position20_G.pdf)
+
+</paper>
+
+## Items to check
+
+```json
+[
+ {
+  "path": "data.other_facilities[1].provided.evidence[0]",
+  "value": "C18O emission (Law et al. in prep.): 7.7 arcsec beam, 0.19 km/s resolution, 0.47 K rms per channel",
+  "failed_quote": "we also include the C$^{18}$O emission observed with the GBT telescope"
+ }
+]
+```

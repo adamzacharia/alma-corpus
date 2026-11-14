@@ -1,0 +1,490 @@
+{
+ "bibcode": "2023Natur.617..261K",
+ "title": "Compact [C II] emitters around a C IV absorption complex at redshift 5.7",
+ "year": 2023,
+ "doi": "10.1038/s41586-023-05901-3",
+ "arxiv_id": "2305.13550",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the properties and environment of galaxies associated with a complex high-ionization C IV absorption system at redshift z ≈ 5.7 toward QSO J1030+0524?",
+ "alma_project_codes": [
+  "2017.1.00621.S",
+  "2017.1.000621.S",
+  "2011.0.01234.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "43 12 m antennas",
+  "angular_resolution": "0.35\" FWHM",
+  "sensitivity": "31 μJy per beam (1σ continuum); 4.1 and 4.2 mJy km s^-1 per beam (1σ in 4-channel / 66 km s^-1 moment-0 maps at [C II]1030A and B)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Four Lyα emitters (LAEs) discovered with VLT/MUSE within ±1500 km s^-1 of the C IV absorbers",
+    "evidence": [
+     {
+      "loc": "Main",
+      "quote": "Figures 1a and 2d mark these LAEs (purple circles) detected within ± 1500 km s − 1 of the C iv absorbers with the Multi-Unit Spectroscopic Explore (MUSE) on the Very Large Telescope (VLT) [5]."
+     }
+    ]
+   },
+   "citation": "[5] Díaz et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Published CO Schechter luminosity functions for z = 0 to 6 used to estimate expected foreground CO interloper counts",
+    "evidence": [
+     {
+      "loc": "Line identification",
+      "quote": "Using published CO luminosity functions for the redshift range between 0 and 6 [37], we estimated that the expected number of CO sources within the whole datacube should be approximately 0.4 sources."
+     }
+    ]
+   },
+   "citation": "[37] Popping et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Optical coordinates of background QSO J1030+0524",
+    "evidence": [
+     {
+      "loc": "ALMA observations and data reduction",
+      "quote": "centered on the optical coordinate of the background QSO J1030+0524 (10 h 30 m 27 s . 092, +05 ◦ 24 ′ 55 . 02 '' ; [33])"
+     }
+    ]
+   },
+   "citation": "[33] Alam et al. (2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA mosaic datacubes and continuum",
+   "method": "Standard CASA pipeline calibration followed by CASA tclean imaging of the 7-pointing mosaic with natural weighting and a Gaussian uv-taper to circularize the beam; collapse 4 channels over 66 km s^-1 for moment-0 maps.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting",
+    "uvtaper = 0 x 220 mas, PA = 119 deg",
+    "moment-0 collapsed over 4 channels (62.5 MHz; ≈ 66 km s^-1)",
+    "survey radius ≈ 23\" where primary beam response > 20%"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Blind search for emission lines and fidelity assessment",
+   "method": "Run findclumps top-hat convolution over 4 to 17 channels on the datacubes for positive and negative peaks, crop duplicates within 1\" and 280 MHz, fit an error function to positive/negative peak counts to compute detection fidelity, and verify detections by splitting data by polarization (XX vs YY), mosaic pointings, and exposure time halves.",
+   "software": [
+    "interferopy",
+    "findclumps"
+   ],
+   "key_parameters": [
+    "frequency window sizes = 4 to 17 channels (≈ 66–282 km s^-1)",
+    "duplicate cropping offsets = 1\" and 280 MHz (300 km s^-1)",
+    "S/N > 6.0 selection threshold"
+   ],
+   "assumptions": [
+    "Relevant velocity interval for absorber association is ±700 km s^-1 around each absorber (contiguous 2280 km s^-1 interval)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify line transition and estimate low-z CO interloper probability",
+   "method": "Calculate expected number counts of foreground CO(3-2) to CO(8-7) interlopers brighter than [C II]1030A in the survey volume using published Schechter luminosity functions, and compute probability of two interlopers falling within the 2280 km s^-1 velocity window.",
+   "software": [],
+   "key_parameters": [
+    "Survey volume: circular radius 23\" across 4 SPWs (7380 km s^-1 total velocity interval)"
+   ],
+   "assumptions": [
+    "CO(6-5) luminosity function at z = 2 also applies to CO(7-6) and CO(8-7)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure [C II] line properties, FIR continuum upper limits, and derive SFRs",
+   "method": "Extract 1D spectra within 0.24\" radius of peak position, fit a single Gaussian profile, correct for primary beam response and 20% aperture loss, and convert [C II] luminosities and 2σ continuum upper limits to SFRs.",
+   "software": [],
+   "key_parameters": [
+    "extraction aperture radius = 0.24\"",
+    "primary beam response = 67% ([C II]1030A), 47% ([C II]1030B)",
+    "aperture loss correction ≈ 20%"
+   ],
+   "assumptions": [
+    "Flat ΛCDM cosmology with Ω_Λ = 0.69, Ω_M = 0.31, H_0 = 67.7 km s^-1 Mpc^-1",
+    "log10(SFR) = -7.06 + 1.0 log10(L_[C II] / L_sun)",
+    "νL_ν / L_IR = 0.13 at ν = 1900 GHz (modified blackbody with β = 1.8, T_dust = 41 K)",
+    "SFR_IR (M_sun yr^-1) = 1.01 x 10^-10 L_IR (L_sun) for Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit C IV and Si IV Voigt profiles in QSO J1030+0524 spectra",
+   "method": "Reduce VLT/X-Shooter and Magellan/FIRE spectra, normalize continuum via iterative cubic spline fits, and simultaneously fit a hierarchical Voigt profile model of 3 absorption components convolved to instrument resolutions using MCMC.",
+   "software": [
+    "PypeIt",
+    "FIREHOSE",
+    "xtellcor",
+    "emcee"
+   ],
+   "key_parameters": [
+    "X-Shooter spectral resolution λ/Δλ = 5300 (0.9\" slit); FIRE spectral resolution λ/Δλ = 6000 (0.6\" slit)"
+   ],
+   "assumptions": [
+    "Redshifts of C IV and Si IV components are constrained to align in velocity space"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Search for rest-frame UV and Lyα counterparts in HST and VLT/MUSE data",
+   "method": "Co-add HST images with DrizzlePac and perform 0.7\"-diameter aperture photometry at [C II] positions and random sky positions; reduce MUSE cube with MUSE pipeline and CubEx, calibrate astrometry via HST F775W and Gaia, and search for Lyα within 3\" and ±500 km s^-1.",
+   "software": [
+    "DrizzlePac",
+    "MUSE pipeline",
+    "CubEx"
+   ],
+   "key_parameters": [
+    "HST aperture diameter = 0.7\"",
+    "MUSE search radius ≈ 3\" (20 pkpc) and ±500 km s^-1"
+   ],
+   "assumptions": [
+    "SFR_FUV (M_sun yr^-1) = 0.72 x 10^-28 L_ν (erg s^-1 Hz^-1)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Redshift of [C II]1030A",
+   "value": "5.7354",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Redshift 5.7354 5.7101"
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift of [C II]1030B",
+   "value": "5.7101",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Redshift 5.7354 5.7101"
+    }
+   ]
+  },
+  {
+   "quantity": "Impact parameter of [C II]1030A",
+   "value": "86",
+   "uncertainty": "not stated",
+   "units": "pkpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Impact parameter (pkpc) 86 109"
+    }
+   ]
+  },
+  {
+   "quantity": "Impact parameter of [C II]1030B",
+   "value": "109",
+   "uncertainty": "not stated",
+   "units": "pkpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Impact parameter (pkpc) 86 109"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM spatial size of [C II]1030A and [C II]1030B",
+   "value": "< 2.4",
+   "uncertainty": "not stated",
+   "units": "pkpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM spatial size (pkpc) < 2 . 4 < 2 . 4"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] velocity-integrated flux of [C II]1030A",
+   "value": "0.174",
+   "uncertainty": "± 0.027",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[C ii] flux (Jy km s − 1 ) 0 . 174 ± 0 . 027 0 . 276 ± 0 . 044"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] velocity-integrated flux of [C II]1030B",
+   "value": "0.276",
+   "uncertainty": "± 0.044",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[C ii] flux (Jy km s − 1 ) 0 . 174 ± 0 . 027 0 . 276 ± 0 . 044"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM line width of [C II]1030A",
+   "value": "64",
+   "uncertainty": "± 11",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM line width (km s − 1 ) 64 ± 11 62 ± 11"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM line width of [C II]1030B",
+   "value": "62",
+   "uncertainty": "± 11",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM line width (km s − 1 ) 64 ± 11 62 ± 11"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity of [C II]1030A",
+   "value": "1.61",
+   "uncertainty": "± 0.24",
+   "units": "10^8 L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[C ii] luminosity (10 8 L ⊙ ) 1 . 61 ± 0 . 24 2 . 21 ± 0 . 36"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity of [C II]1030B",
+   "value": "2.21",
+   "uncertainty": "± 0.36",
+   "units": "10^8 L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[C ii] luminosity (10 8 L ⊙ ) 1 . 61 ± 0 . 24 2 . 21 ± 0 . 36"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II]-based SFR of [C II]1030A",
+   "value": "14",
+   "uncertainty": "0.3 dex (factor of 2)",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "An empirical conversion relation of SFR = − 7 . 06 + 1 . 0 log 10 (L [C ii] /L ⊙ ) yields a [C ii]-based SFR of SFR [C ii] = 14 M ⊙ yr − 1 ([C ii]1030A) and 19 M ⊙ yr − 1 (B), respectively, with 0.3 dex uncertainty [24]."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II]-based SFR of [C II]1030B",
+   "value": "19",
+   "uncertainty": "0.3 dex (factor of 2)",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "An empirical conversion relation of SFR = − 7 . 06 + 1 . 0 log 10 (L [C ii] /L ⊙ ) yields a [C ii]-based SFR of SFR [C ii] = 14 M ⊙ yr − 1 ([C ii]1030A) and 19 M ⊙ yr − 1 (B), respectively, with 0.3 dex uncertainty [24]."
+    }
+   ]
+  },
+  {
+   "quantity": "FIR continuum flux 2σ upper limit of [C II]1030A",
+   "value": "< 106",
+   "uncertainty": "2σ upper limit",
+   "units": "μJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "We found no detection of the continuum at the positions of the [C ii] sources and inferred a 2 σ upper limit of 106 µ Jy ([C ii]1030A) and 158 µ Jy (B)."
+    }
+   ]
+  },
+  {
+   "quantity": "FIR continuum flux 2σ upper limit of [C II]1030B",
+   "value": "< 158",
+   "uncertainty": "2σ upper limit",
+   "units": "μJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "We found no detection of the continuum at the positions of the [C ii] sources and inferred a 2 σ upper limit of 106 µ Jy ([C ii]1030A) and 158 µ Jy (B)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity (L_IR) 2σ upper limit of [C II]1030A",
+   "value": "< 2.3 x 10^11",
+   "uncertainty": "2σ upper limit",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "This conversion resulted in a 2 σ upper limit of L IR = 2 . 3 × 10 11 L ⊙ (A) and 3 . 3 × 10 11 L ⊙ (B)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity (L_IR) 2σ upper limit of [C II]1030B",
+   "value": "< 3.3 x 10^11",
+   "uncertainty": "2σ upper limit",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "This conversion resulted in a 2 σ upper limit of L IR = 2 . 3 × 10 11 L ⊙ (A) and 3 . 3 × 10 11 L ⊙ (B)."
+    }
+   ]
+  },
+  {
+   "quantity": "Obscured SFR (SFR_IR) 2σ upper limit of [C II]1030A",
+   "value": "< 23",
+   "uncertainty": "2σ upper limit",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "and obtained SFR IR < 23 M ⊙ yr − 1 (A) and < 34 M ⊙ yr − 1 (B) at 2 σ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Obscured SFR (SFR_IR) 2σ upper limit of [C II]1030B",
+   "value": "< 34",
+   "uncertainty": "2σ upper limit",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The properties of the [C ii] sources",
+     "quote": "and obtained SFR IR < 23 M ⊙ yr − 1 (A) and < 34 M ⊙ yr − 1 (B) at 2 σ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Unobscured UV-based SFR (SFR_UV) 2σ upper limit",
+   "value": "< 2.4",
+   "uncertainty": "2σ upper limit",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HST broadband imaging",
+     "quote": "We converted the F850LP fluxes to the UV-based SFR UV adopting a relation (SFR FUV ( M ⊙ yr − 1 ) = 0 . 72 × 10 − 28 L ν (erg s − 1 Hz − 1 )) [40], yielding SFR UV < 2 . 4 M ⊙ yr − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Radial velocity dispersion of all 6 galaxies (2 [C II] emitters + 4 LAEs)",
+   "value": "830",
+   "uncertainty": "± 270",
+   "units": "km s^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Main",
+     "quote": "However, the radial velocity dispersion of all six sources, σ ( v r ) = 830 ± 270 km s − 1 , is larger than expected for such halos ( ∼ 200 km s − 1 )."
+    }
+   ]
+  },
+  {
+   "quantity": "C IV column density log N(C IV) at z_abs = 5.72457",
+   "value": "14.55",
+   "uncertainty": "[14.52, 14.63]",
+   "units": "cm^-2 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "5.72457 [5.72455, 5.72460] 1 14.55 [14.52, 14.63] 13.70 [13.68, 13.72] 40.6 [35.0, 42.6]"
+    }
+   ]
+  },
+  {
+   "quantity": "C IV column density log N(C IV) at z_abs = 5.74106",
+   "value": "13.08",
+   "uncertainty": "[12.68, 13.20]",
+   "units": "cm^-2 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "5.74106 [5.74102, 5.74110] 13.08 [12.68, 13.20] 13.26 [13.23, 13.29] 20.8 [7.0, 22.6]"
+    }
+   ]
+  },
+  {
+   "quantity": "C IV column density log N(C IV) at z_abs = 5.74426",
+   "value": "13.81",
+   "uncertainty": "[13.77, 13.85]",
+   "units": "cm^-2 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "5.74426 [5.74422, 5.74428] 13.81 [13.77, 13.85] 13.31 [13.28, 13.35] 23.0 [20.6, 30.6]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pixel/cell size and image dimensions (imsize) used in CASA tclean",
+  "Deconvolver, cleaning threshold, niter, and masking strategy in tclean",
+  "Whether continuum subtraction (e.g. uvcontsub) was performed prior to imaging the line cubes",
+  "Whether line channels were flagged when imaging the continuum",
+  "Exact rest frequency adopted for the [C II] 158 μm transition to derive redshifts"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean cell size, image size, deconvolver, and stopping criteria (niter/threshold)",
+  "Whether continuum subtraction was applied to the visibilities before imaging the line cubes",
+  "Custom hierarchical MCMC Voigt-profile fitting code used for the X-Shooter and FIRE spectra",
+  "Modified version of the xtellcor package used for FIRE telluric correction"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Public archival data across all facilities, explicit CASA version (5.4), weighting, uv-taper parameters, findclumps search parameters, and extraction aperture size are clearly documented; minor deductions for unstated tclean cell/cleaning parameters and unreleased custom Voigt-fitting scripts.",
+ "rediscovery_reason": "Public ALMA dataset (2017.1.00621.S) with a well-specified blind line search recipe (CASA tclean + interferopy findclumps) and clear numeric targets (coordinates, redshifts, fluxes, and line widths of [C II]1030A and B).",
+ "source_card": "cards/2023Natur.617..261K/sonnet/card.md"
+}

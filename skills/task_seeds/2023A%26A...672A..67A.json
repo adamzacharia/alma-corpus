@@ -1,0 +1,297 @@
+{
+ "bibcode": "2023A&A...672A..67A",
+ "title": "Robust analysis of differential Faraday rotation based on interferometric closure observables",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202244573",
+ "arxiv_id": "2303.04052",
+ "fields": [
+  "agn_and_quasars",
+  "instrumentation"
+ ],
+ "question": "Can newly-introduced complex interferometric closure observables (closure traces) be used to extract robust, calibration-independent information on source polarization structure and differential Faraday Rotation across frequency?",
+ "alma_project_codes": [
+  "2016.1.01154.V"
+ ],
+ "data": {
+  "bands": "Band 6 (212 GHz to 230 GHz)",
+  "arrays": "12-m array (33 antennas)",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Polarization structure image of M87 AGN and jet and Rotation Measure (~1.5 x 10^5 rad/m^2) from ALMA EHT observations",
+    "evidence": [
+     {
+      "loc": "Observations and simulated data",
+      "quote": "Figure 1 shows the polarization structure of the AGN and the jet of M87, obtained from the ALMA data (cite: Goddi2021complete)."
+     },
+     {
+      "loc": "Simulations and model parameters",
+      "quote": "compared to the value of $\\sim 1.5 \\times 10^5$ rad/m$^{2}$ for M87*, obtained from the ALMA EHT data (cite: Goddi2021complete; TFM)."
+     }
+    ]
+   },
+   "citation": "Goddi et al. 2021 (cite: Goddi2021complete)"
+  },
+  {
+   "what": {
+    "value": "RM map of M87",
+    "evidence": [
+     {
+      "loc": "Observations and simulated data",
+      "quote": "In Fig. 2, we show the RM map of M87, obtained from the results presented in (cite: TFG)."
+     }
+    ]
+   },
+   "citation": "Albentosa-Ruiz 2020 (cite: TFG)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Simulate full-polarization visibilities for an M87-like three-component model",
+   "method": "Discrete Fourier transform of Stokes parameters (I, Q, U, V) for three point-source (delta) components (core, knot A, knot B) on the exact ALMA baseline coordinates across 4 spectral windows, adding 0.5 mJy uncorrelated Gaussian noise per integration time",
+   "software": [
+    "Python"
+   ],
+   "key_parameters": [
+    "Core position (l, m) = (0, 0), I = 1.2 Jy; Knot A position (l, m) = (-11.28, 4.35), I = 0.1 Jy; Knot B position (l, m) = (-13.92, 4.95), I = 0.05 Jy",
+    "Simulated core RM ~ 0.35 x 10^7 rad/m^2; Gaussian visibility noise std = 0.5 mJy"
+   ],
+   "assumptions": [
+    "Source polarization structure represented by three compact (delta) components with Stokes V = 0"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute complex closure traces on a 13-antenna subset",
+   "method": "Select a subset of 13 ALMA antennas preserving Fourier space coverage and compute complex closure traces T_ABCD from visibility matrices on all 4-antenna quadrangles using a custom Python module",
+   "software": [
+    "Python"
+   ],
+   "key_parameters": [
+    "13 antennas selected out of 33 ALMA antennas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit core-only polarization per spectral window via 2D grid search and linear RM fit",
+   "method": "Perform a 2D grid search minimizing the squared differences of closure traces for each spectral window independently (fixing RM parameter p_2 = 0 and jet knots A and B to image values), followed by a linear fit of core EVPA versus wavelength squared to recover RM",
+   "software": [
+    "Python"
+   ],
+   "key_parameters": [
+    "Free parameters per spw: core EVPA (p_0) and core polarized flux density (p_1 = m * I_core); fixed parameters: p_2 = 0, knot A and knot B Stokes parameters"
+   ],
+   "assumptions": [
+    "Equal weights for all visibilities; chi^2 temperature T estimated from the standard deviation of closure trace residuals at the minimum"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simultaneously fit multi-component polarization and RM across all spectral windows using MCMC",
+   "method": "Combine all 4 spectral windows and fit the polarization (EVPA, polarized flux, and RM) of the core and one jet knot simultaneously while fixing the remaining knot (with V = 0), using circular statistics reparameterization and affine-invariant MCMC sampling on both simulated and real ALMA data",
+   "software": [
+    "Python",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Reference wavelength lambda_0 = 0; 6 free parameters (q_0, q_1, q_2, q_3, and two component RMs)"
+   ],
+   "assumptions": [
+    "One component is fixed with Stokes V = 0 to break the latitudinal degeneracy in the Poincare sphere and serve as differential polarization reference"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Average deviation of Stokes I model visibilities between spw 0 and spw 3",
+   "value": "1.2",
+   "uncertainty": "0.7",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Prior discussion on the behaviour of the closure traces",
+     "quote": "We retrieve an average deviation of the model visibilities at spws $0$ and $3$ of $(1.2\\pm0.7)\\%$, much lower than the average deviation computed directly from the visibilities, of $(10\\pm20)\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average deviation of observed visibilities between spw 0 and spw 3",
+   "value": "10",
+   "uncertainty": "20",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Prior discussion on the behaviour of the closure traces",
+     "quote": "We retrieve an average deviation of the model visibilities at spws $0$ and $3$ of $(1.2\\pm0.7)\\%$, much lower than the average deviation computed directly from the visibilities, of $(10\\pm20)\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarization angle phi (grid-search, spw 0)",
+   "value": "30.11",
+   "uncertainty": "0.05",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0 | 30.11 $\\pm$ 0.05 | 30 | 0.200 $\\pm$ 0.001 | 0.200"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarized flux m*I (grid-search, spw 0)",
+   "value": "0.200",
+   "uncertainty": "0.001",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0 | 30.11 $\\pm$ 0.05 | 30 | 0.200 $\\pm$ 0.001 | 0.200"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarization angle phi (grid-search, spw 1)",
+   "value": "14.37",
+   "uncertainty": "0.05",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1 | 14.37 $\\pm$ 0.05 | 15 | 0.347 $\\pm$ 0.001 | 0.346"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarized flux m*I (grid-search, spw 1)",
+   "value": "0.347",
+   "uncertainty": "0.001",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1 | 14.37 $\\pm$ 0.05 | 15 | 0.347 $\\pm$ 0.001 | 0.346"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarization angle phi (grid-search, spw 2)",
+   "value": "-13.66",
+   "uncertainty": "0.11",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2 | -13.66 $\\pm$ 0.11 | -15 | 0.348 $\\pm$ 0.002 | 0.346"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarized flux m*I (grid-search, spw 2)",
+   "value": "0.348",
+   "uncertainty": "0.002",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2 | -13.66 $\\pm$ 0.11 | -15 | 0.348 $\\pm$ 0.002 | 0.346"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarization angle phi (grid-search, spw 3)",
+   "value": "-25.2",
+   "uncertainty": "0.3",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3 | -25.2 $\\pm$ 0.3 | -30 | 0.203 $\\pm$ 0.005 | 0.200"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated core polarized flux m*I (grid-search, spw 3)",
+   "value": "0.203",
+   "uncertainty": "0.005",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3 | -25.2 $\\pm$ 0.3 | -30 | 0.203 $\\pm$ 0.005 | 0.200"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated M87 core Rotation Measure (grid-search + linear fit)",
+   "value": "0.32e7",
+   "uncertainty": "0.04e7",
+   "units": "rad/m^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Grid Search",
+     "quote": "By doing so, we obtain a value of the RM of the core component, $RM = (0.32 \\pm 0.04) \\times 10^7$ rad/m$^{2}$, as shown in Fig. 6, which is compatible with the expected value of $(0.35 \\pm 0.04) \\times 10^7$ rad/m$^{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated M87 core Rotation Measure (MCMC)",
+   "value": "(0.2-0.4)e7",
+   "uncertainty": "not stated",
+   "units": "rad/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Markov chains",
+     "quote": "We obtain a RM posterior distribution spread around $RM \\sim (0.2-0.4) \\times 10^7$ rad/m$^{-2}$, which is close to, albeit a bit lower than, the expected value of $(0.35 \\pm 0.04) \\times 10^7$ rad/m$^{2}$ (see Fig. 6)."
+    }
+   ]
+  },
+  {
+   "quantity": "Real ALMA M87 core Rotation Measure (MCMC)",
+   "value": "(0.8-1.6)e5",
+   "uncertainty": "not stated",
+   "units": "rad/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Real ALMA Observations",
+     "quote": "We get a RM posterior distribution peaked around $RM \\sim (0.8-1.6) \\times 10^5$ rad/m$^{-2}$, being consistent with the values obtained from the image analysis."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "List of the exact 13 ALMA antenna names selected for the closure-trace subset analysis",
+  "MCMC setup details for emcee (number of walkers, number of steps, burn-in length, and parameter priors)",
+  "Grid resolution and parameter range bounds used in the 2D grid-search exploration",
+  "Visibility time-averaging and frequency channel-averaging intervals used before computing closure traces"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python module for closure trace computation and model fitting is not publicly released",
+  "Exact list of the 13 ALMA antennas selected (only 4 station names DA50, DA52, DV05, DV12 are mentioned in the text, and positions are plotted in Fig. 4)",
+  "MCMC hyperparameters (number of walkers, chain length, burn-in, prior distributions)",
+  "Exact time and spectral averaging applied to the visibility data prior to forming closure traces",
+  "Resolution of the text/equation discrepancy regarding whether knot A or knot B is varied in the MCMC fit and the typo in Eq. 7"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "The mathematical formalism, simulated source table (Table 1/unnumbered table), and ALMA project code/date/time are clearly specified, allowing the simulated experiments to be closely approximated; however, the custom Python code is not released, the exact 13-antenna subset is only shown graphically, MCMC settings/priors are omitted, and there are minor text/equation inconsistencies in the two-component parameterization.",
+ "rediscovery_reason": "The archival ALMA data (2016.1.01154.V) and synthetic model parameters are fully specified in the paper, the mathematical definition of closure traces and the chi^2 objective function are explicit, and the main results are quantitative (recovered EVPA, polarized flux, and RM values).",
+ "source_card": "cards/2023A%26A...672A..67A/sonnet/card.md"
+}

@@ -1,0 +1,976 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...874..136S",
+  "title": "High-precision Dynamical Masses of Pre-main-sequence Stars with ALMA and Gaia",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Sheehan, Patrick D.",
+  "n_authors": 4,
+  "arxiv_id": "1903.00032",
+  "doi": "10.3847/1538-4357/ab09f9",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00773.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present Atacama Large Millimeter/submillimeter Array (ALMA) observations of spatially and spectrally resolved $^{12}$CO (2–1) emission towards the disks around 2MASS J16262774–2527247"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "2M1626-2527 (2MASS J16262774-2527247)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "138.258 pc",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "2M1626–2527 has a parallax of $7.232 \\pm 0.074$ mas and a distance of $138.258^{+1.426}_{-1.396}$ pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia parallax (Gaia Collaboration 2018)",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "2M1626–2527 has a parallax of $7.232 \\pm 0.074$ mas and a distance of $138.258^{+1.426}_{-1.396}$ pc"
+       }
+      ]
+     }
+    },
+    {
+     "name": "CT Cha",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "191.775 pc",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "CT Cha has a parallax of $5.214 \\pm 0.021$ mas and a distance of $191.775^{+0.781}_{-0.774}$ pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia parallax (Gaia Collaboration 2018)",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "CT Cha has a parallax of $5.214 \\pm 0.021$ mas and a distance of $191.775^{+0.781}_{-0.774}$ pc"
+       }
+      ]
+     }
+    },
+    {
+     "name": "DH Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "135.355 pc",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "DH Tau has a parallax of $7.388 \\pm 0.069$ mas and a distance of $135.355^{+1.282}_{-1.258}$ pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia parallax (Gaia Collaboration 2018)",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "DH Tau has a parallax of $7.388 \\pm 0.069$ mas and a distance of $135.355^{+1.282}_{-1.258}$ pc"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can Keplerian-rotation modeling of ALMA 12CO(2-1) disk emission combined with Gaia distances give high-precision dynamical masses of pre-main-sequence stars, and how do they compare with evolutionary-track masses?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We employ detailed modeling of the Keplerian rotation profile, coupled with accurate distances from $Gaia$, to directly measure the stellar masses with $\\sim$2% precision."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00773.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00773.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (Cycle 3)",
+    "evidence": [
+     {
+      "loc": "2 Observations & Data Reduction",
+      "quote": "Our targets were observed with ALMA Band 6 during Cycle 3, in September 2016."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Three continuum basebands of 2 GHz centered at 233, 246, 248 GHz; 12CO(2-1) baseband with 3840 0.122 MHz channels centered at 230.538 GHz (0.32 km/s, Hanning smoothed)",
+    "evidence": [
+     {
+      "loc": "2 Observations & Data Reduction",
+      "quote": "The final baseband was configured for $^{12}$CO (2–1) observations, with 3840 0.122 MHz channels centered at 230.538 GHz (0.32 km s$^{-1}$ velocity resolution; Hanning smoothed)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "with 3840 0.122 MHz channels centered at 230.538 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-3247 m (DH Tau, CT Cha), 15-3143 m (2M1626)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| DH Tau | Sep. 14 2016 | 15$\\,$-$\\,$3247 | 13 | 0.30\" $\\times$ 0.17\" | 4 | J0510+1800, J0433+2905 |"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.30x0.17\" (DH Tau), 0.21x0.18\" (2M1626), 0.27x0.14\" (CT Cha)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2M1626-2527 | Sep. 16 2016 | 15$\\,$-$\\,$3143 | 12 | 0.21\" $\\times$ 0.18\" | 3.1 | J1517-2422, J1634-2058 |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "RMS 4, 3.1, 3.8 mJy (DH Tau, 2M1626, CT Cha)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| CT Cha | Sep. 27 2016 | 15$\\,$-$\\,$3247 | 13.5 | 0.27\" $\\times$ 0.14\" | 3.8 |"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~12-13.5 min integration per target",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| CT Cha | Sep. 27 2016 | 15$\\,$-$\\,$3247 | 13.5 | 0.27\" $\\times$ 0.14\" | 3.8 | J1107-4449, J1058-8003 |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Sep 14, 16, 27 2016",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| DH Tau | Sep. 14 2016 |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Parallaxes/distances used as prior",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "we use direct measurements of source distances from trigonometric parallaxes by $Gaia$ to place a prior constraint on the distance."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Optical/near-IR photometry used for SED fits",
+      "evidence": [
+       {
+        "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+        "quote": "fitting optical and near-infrared photometry collected from the literature"
+       }
+      ]
+     },
+     "citation": "Vrba1989; Epchtein1999; Briceno2002; Ducati2002; Cutri2003; Monet2003; Zacharias2003; Torres2006; Robberto2012; Muinos2014; Henden2016; Bowler2017"
+    },
+    {
+     "what": {
+      "value": "Literature Teff for Gaussian prior",
+      "evidence": [
+       {
+        "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+        "quote": "using temperatures collected from the literature (cite: Herczeg2014; Bowler2017; Manara2016a)"
+       }
+      ]
+     },
+     "citation": "Herczeg2014; Bowler2017; Manara2016a"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "BT-Settl atmospheres and evolutionary tracks (Baraffe2015, PARSEC Bressan2012/Chen2014, Feiden2016 non-magnetic and magnetic)",
+     "evidence": [
+      {
+       "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+       "quote": "the (cite: Baraffe2015) models, the PARSEC models (cite: Bressan2012) and subsequent updates to low-mass ($<0.75~M_\\ensuremath{\\odot}$) stars (cite: Chen2014)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA Pipeline in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "The data were calibrated using the ALMA Pipeline in the `CASA` software package (cite: McMullin2007)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Single iteration of phase-only self-cal, one solution per scan, on continuum basebands, applied to line window",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "we employed a single iteration of phase-only self-calibration, with one solution per scan, to the continuum basebands and applied these phase solutions to our spectral line window."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean, spectral cube mode",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "the data were imaged and deconvolved using the spectral cube mode of the CASA *clean* task."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting, 0.4 km/s channels",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "The imaging was done using natural weighting to increase the sensitivity of the channel maps"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Evolutionary-track mass method",
+      "evidence": [
+       {
+        "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+        "quote": "following the method outlined in (cite: Andrews2013) and (cite: Czekala2015)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Andrews2013); (cite: Czekala2015)"
+    },
+    {
+     "what": {
+      "value": "Excluding channels affected by cloud absorption",
+      "evidence": [
+       {
+        "loc": "2 Observations & Data Reduction",
+        "quote": "A similar effect (and resolution) were adopted by (cite: Czekala2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Czekala2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Which channel range was used in each fit and exact channels excluded for DH Tau",
+    "CASA version and pipeline version",
+    "Clean mask, threshold, cell and image size",
+    "MCMC initial walker ranges and burn-in length",
+    "Source coordinates and field centers",
+    "Model grid sizes/RADMC-3D settings (photon count, image resolution)",
+    "Prior form for gamma, v_sys, and Gaussian prior parameters for extinction model",
+    "Flux calibrator flux scale uncertainty"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image CO(2-1) data",
+    "method": {
+     "value": "ALMA pipeline calibration, phase-only self-cal, CASA clean spectral cube with natural weighting, 0.4 km/s channels",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "The imaging was done using natural weighting to increase the sensitivity of the channel maps, as the emission is often faint, and with 0.4 km s$^{-1}$ channels."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit Keplerian disk model to visibilities",
+    "method": {
+     "value": "RADMC-3D channel maps (LTE) transformed to visibilities with GALARIO, fit in uv-plane with emcee; 14 free parameters",
+     "evidence": [
+      {
+       "loc": "3.1 Dynamical Stellar Masses",
+       "quote": "We fit the model channel map visibilities generated by RADMC-3D and GALARIO to our data in the $uv$-plane using the MCMC fitting code `emcee`"
+      }
+     ]
+    },
+    "software": [
+     "pdspy",
+     "RADMC-3D",
+     "GALARIO",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "200 walkers; ~5000 post-burn-in steps; autocorrelation time ~1000 steps; walkers with chi2-chi2min>44 discarded",
+      "evidence": [
+       {
+        "loc": "Appendix: The MCMC Fitting Procedure",
+        "quote": "Instead, we discard any walkers with $(\\chi^2 - \\chi^2_{min}) > 44$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "X_CO = 1e-4, mu = 2.37, vertically isothermal disk, Keplerian rotation, tapered power-law surface density, LTE",
+      "evidence": [
+       {
+        "loc": "3.1 Dynamical Stellar Masses",
+        "quote": "We typically assume that $X_{\\rm CO} = 1.0\\times10^{-4}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Likelihood exp(-chi2/2) on complex visibilities; uniform priors on most parameters (log-uniform for some), Chabrier IMF prior on M*, Gaussian Gaia parallax prior on distance; i<90 deg",
+     "evidence": [
+      {
+       "loc": "Appendix: The MCMC Fitting Procedure",
+       "quote": "We assume a Gaussian prior on the parallax, with a mean given by the measured $Gaia$ parallax and the standard deviation given by the $Gaia$ uncertainty."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Convergence judged by median walker position stability; walker step plots and triangle plots; residual channel maps",
+     "evidence": [
+      {
+       "loc": "Appendix: The MCMC Fitting Procedure",
+       "quote": "We consider a fit to be “converged\" when the median walker position does not change significantly compared to the spread of the walkers over a significant number of steps."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit stellar SEDs for Teff and L*",
+    "method": {
+     "value": "BT-Settl models fit to photometry with emcee; Gaussian priors on d (Gaia) and Teff (literature, sigma 150 K)",
+     "evidence": [
+      {
+       "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+       "quote": "We assumed a Gaussian prior on $d_{pc}$ derived from $Gaia$ parallaxes"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Weingartner & Draine extinction with R_V = 5.5",
+      "evidence": [
+       {
+        "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+        "quote": "using the extinction curves from (cite: Weingartner2001) with $R_V = 5.5$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Map Teff, L* onto evolutionary tracks",
+    "method": {
+     "value": "Each post-burn-in sample mapped onto five sets of tracks to build mass and age distributions; compare with dynamical mass",
+     "evidence": [
+      {
+       "loc": "3.2 Masses and Stellar Parameters from Evolutionary Tracks",
+       "quote": "For each post-burn in MCMC sample, we mapped $T_{eff}$ and $L_*$ on to evolutionary tracks to build up a probabilistic sample of stellar masses"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Test foreground extinction in DH Tau",
+    "method": {
+     "value": "Add Gaussian optical-depth absorption exp(-tau) per channel with 3 extra parameters and refit",
+     "evidence": [
+      {
+       "loc": "4.3 DH Tau",
+       "quote": "We assume that each channel is extincted by an amount of $\\exp{(-\\tau_{\\nu})}$."
+      }
+     ]
+    },
+    "software": [
+     "pdspy"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations & Data Reduction",
+       "quote": "The data were calibrated using the ALMA Pipeline in the `CASA` software package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "pdspy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Disk modeling and MCMC fitting",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "using our new code `pdspy`[^1] (cite: Sheehan2018b)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer synthetic channel maps",
+     "evidence": [
+      {
+       "loc": "3.1 Dynamical Stellar Masses",
+       "quote": "generate synthetic channel maps for a given set of model parameters"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALARIO",
+    "version": "not stated",
+    "used_for": {
+     "value": "Fourier transform to synthetic visibilities",
+     "evidence": [
+      {
+       "loc": "3.1 Dynamical Stellar Masses",
+       "quote": "using the GALARIO code (cite: Tazzari2017; Tazzari2018)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fitting",
+     "evidence": [
+      {
+       "loc": "3.1 Dynamical Stellar Masses",
+       "quote": "using the MCMC fitting code `emcee`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "2M1626-2527 dynamical mass",
+    "value": "0.535",
+    "uncertainty": "+0.006/-0.007",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$0.535^{+0.006}_{-0.007}~M_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CT Cha dynamical mass",
+    "value": "0.796",
+    "uncertainty": "+0.015/-0.014",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$0.796^{+0.015}_{-0.014}~M_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "DH Tau dynamical mass",
+    "value": "0.101",
+    "uncertainty": "+0.004/-0.003",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$0.101^{+0.004}_{-0.003}~M_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "DH Tau mass with extinction model",
+    "value": "0.141",
+    "uncertainty": "+0.016/-0.011",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 DH Tau",
+      "quote": "this new model does increase the stellar mass to $0.141^{+0.016}_{-0.011}$ $M_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CT Cha inclination",
+    "value": "54.0",
+    "uncertainty": "+1.0/-0.9",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$54.0^{+ 1.0}_{- 0.9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CT Cha Baraffe2015 track mass",
+    "value": "1.06",
+    "uncertainty": "+0.20/-0.20",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Baraffe et al. 2015 | $0.53^{+0.12}_{-0.10}$ | $1.06^{+0.20}_{-0.20}$ | $0.40^{+0.05}_{-0.03}$ |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Magnetic Feiden2016 tracks overestimate masses for all three sources.",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "The magnetic tracks from (cite: Feiden2016), however, seem to universally over-estimate the masses for all three sources."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gaia distances plus ALMA CO Keplerian modeling yield percent-level dynamical masses",
+    "experiment": "pdspy visibility-plane fit of CO(2-1) with Gaia parallax prior",
+    "result": "Mass uncertainties 2-4%",
+    "finding": "Mass uncertainty no longer dominated by distance",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "we are able to make high precision ($\\sim$2–4%) direct measurements of their masses."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dynamical masses agree with evolutionary tracks",
+    "experiment": "Compare with five track sets",
+    "result": "2M1626 and CT Cha within <2 sigma of most models; differences remain",
+    "finding": "Reasonable but not perfect agreement; magnetic tracks poor",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "we find that both 2M1626–2527 and CT Cha are in reasonable agreement with most models ($<$ 2$\\sigma$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "DH Tau mass discrepancy is due to foreground cloud absorption",
+    "experiment": "Add Gaussian absorption model",
+    "result": "Mass rises to 0.141 Msun, still below tracks",
+    "finding": "Simple extinction does not reconcile; unclear",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3 DH Tau",
+      "quote": "Although this simple model cannot fully reconcile the mass discrepancy between our measurement and the evolutionary tracks"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Keplerian rotation with precise Gaia distance breaks mass-distance degeneracy",
+    "evidence": [
+     {
+      "loc": "Appendix: The MCMC Fitting Procedure",
+      "quote": "As stellar mass is highly degenerate with source distance (cite: Czekala2015), placing some constraint on source distance is important."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Inclinations above 90 deg not distinguished; limited i<90",
+     "evidence": [
+      {
+       "loc": "Appendix: The MCMC Fitting Procedure",
+       "quote": "so we limit $i < 90^{\\circ}$."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "DH Tau mass may be affected by strong foreground absorption",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "but it suffers from strong foreground absorption that may affect our mass estimate."
+      }
+     ]
+    },
+    {
+     "value": "Some walkers not converged and discarded for computational cost",
+     "evidence": [
+      {
+       "loc": "Appendix: The MCMC Fitting Procedure",
+       "quote": "the computational demands of these fits are significant, so we opt not to continue running the fits."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Simplified disk model (vertically isothermal, no radial/vertical velocity) may bias masses at percent level",
+    "Walker-discarding cut is ad hoc",
+    "Dynamical mass depends on assumed inclination and CO emission geometry",
+    "Only three sources"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data cited; pdspy public on GitHub",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00773.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "pdspy publicly available at github.com/psheehan/pdspy",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "`pdspy` can handle both spectral line and continuum observations, and is now publicly available."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "CASA version",
+    "exact clean parameters and channel selection",
+    "fit configuration files",
+    "photometry values"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB total for three short Band 6 execution blocks",
+   "score_inferred": 3,
+   "score_reason": "Public data and public code, with MCMC setup well described, but imaging parameters and many fit configuration details are missing, and compute is heavy.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA data, public code, and numeric stellar masses with stated priors and method."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Sheehan2018b)",
+     "why": "pdspy code"
+    },
+    {
+     "citation": "(cite: Czekala2015)",
+     "why": "Keplerian disk dynamical mass methodology"
+    },
+    {
+     "citation": "(cite: Andrews2013)",
+     "why": "evolutionary track mass method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Wu2017a; Wu2017b; Wu2017c)",
+     "why": "Same ALMA program, companion results"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Gaia DR2"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-d7cbc02f97d36a434d3f63f01b89da9a",
+  "batch_id": "msgbatch_019YWVxz74gaBdDUmtwUveVm",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:54:03",
+  "usage": {
+   "input_tokens": 23121,
+   "output_tokens": 8309,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.065272,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 83,
+   "stated": 46,
+   "rate": 0.554
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:07",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "emcee"
+   },
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "same as step 2"
+   }
+  ],
+  "dropped_items": []
+ }
+}

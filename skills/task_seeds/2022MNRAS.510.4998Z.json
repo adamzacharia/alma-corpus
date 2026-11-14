@@ -1,0 +1,619 @@
+{
+ "bibcode": "2022MNRAS.510.4998Z",
+ "title": "ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - IV. Radio recombination lines and evolution of star formation efficiencies",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab2733",
+ "arxiv_id": "2110.00370",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Can millimeter radio recombination line H40alpha trace UC HII regions and star formation rates in Galactic massive clumps, how do bolometric luminosities correlate with CS J=2-1 and HC3N J=11-10 molecular line luminosities, and how do formed OB stars affect star formation efficiency?",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "Atacama Compact 7 m Array (ACA; Morita Array)",
+  "angular_resolution": "~13.1'' - 13.8''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Effective excitation densities and upper state energies for spectral lines",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Table 1. spectral lines (The E D /k and effective excitation density are from Shirley 2015)."
+     }
+    ]
+   },
+   "citation": "Shirley 2015"
+  },
+  {
+   "what": {
+    "value": "Sample selection of 146 targets from CS J=2-1 survey",
+    "evidence": [
+     {
+      "loc": "2.1 The sample",
+      "quote": "These 146 sources were selected from the CS J = 2-1 survey of Bronfman et al. (1996), a complete and homogeneous molecular line survey of ultra compact (UC) Hii region candidates in the Galactic plane."
+     }
+    ]
+   },
+   "citation": "Bronfman et al. (1996)"
+  },
+  {
+   "what": {
+    "value": "3mm continuum emission parameters and J=1-0 line luminosities of H13CN, H13CO+, HCN and HCO+",
+    "evidence": [
+     {
+      "loc": "3.1 Extraction of compact objects",
+      "quote": "We also show the 3mm continuum emission for comparison, with parameters derived by Liu et al. (2020b), in the figure."
+     },
+     {
+      "loc": "3.4 The Lbol-to-L'mol ratios",
+      "quote": "Line luminosities for the J = 1-0 transitions of H 13 CN, H 13 CO + , HCN and HCO + were compiled in Liu et al. (2020b)."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2020b)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosities (Lbol) from integrating full SEDs",
+    "evidence": [
+     {
+      "loc": "3.3 The Lbol-L'mol scaling relations",
+      "quote": "L bol values for the ATOMS sources are calculated from integrating the whole SEDs (Faúndez et al. 2004; Urquhart et al. 2018) and listed in the seventh column of Table 5."
+     }
+    ]
+   },
+   "citation": "Faúndez et al. 2004; Urquhart et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Literature CS J=2-1 and Lbol measurements for comparison",
+    "evidence": [
+     {
+      "loc": "3.3 The Lbol-L'mol scaling relations",
+      "quote": "In left panel of Figure 2, we plot the L bol as a function of the L 0 CS for the ATOMS measurements (yellow dots) and literature measurements compiled by Wu et al. (2010) (black squares)."
+     }
+    ]
+   },
+   "citation": "Wu et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "Source distances, galactocentric distances (RGC), and clump molecular gas masses (Mmol or Mclump)",
+    "evidence": [
+     {
+      "loc": "4.2 The differences between sources with and without H40alpha emission",
+      "quote": "the masses of molecular gas (M mol or M clump ) compiled by Liu et al. (2020a), which are estimated from dust continuum observations with single dishes."
+     },
+     {
+      "loc": "4.2 The differences between sources with and without H40alpha emission",
+      "quote": "Because neither the molecular lines nor 3 mm continuum emission in the ATOMS data are well calibrated to determine mass, we use the masses of molecular gas (M mol or M clump ) compiled by Liu et al. (2020a), which are estimated from dust continuum observations with single dishes."
+     },
+     {
+      "loc": "APPENDIX A",
+      "quote": "The distances to sources were taken from Paper I of this series (Liu et al. 2020a)."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2020a)"
+  },
+  {
+   "what": {
+    "value": "Atomic/recombination parameters for H40alpha: departure coefficient b_n, LTE fractional population g_n(LTE), and spontaneous emission coefficient A_n,m",
+    "evidence": [
+     {
+      "loc": "APPENDIX A",
+      "quote": "From various sources, we determine that 1 D = 0 . 7866 (Zhu et al. 2019), 5 D ( !)⇢ ) = 7 . 03 ⇥ 10 −19 (Peters et al. 2012), 퐴 D; = 54 . 7973 s −1 (Brocklehurst 1971), and a D; = 99 . 023 ⇥ 10 9 Hz (Liu et al. 2020a), yielding n = 1 . 99 ⇥ 10 −32 ."
+     }
+    ]
+   },
+   "citation": "Zhu et al. 2019; Peters et al. 2012; Brocklehurst 1971"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract compact objects and measure sizes and line fluxes",
+   "method": "Fit 2D elliptical Gaussians to the integrated intensity maps of CS J=2-1, HC3N J=11-10, and H40alpha to obtain offsets, aspect ratios, effective radii, peak flux densities, and total velocity-integrated flux densities; sum multiple objects per targeted source to obtain overall clump properties.",
+   "software": [],
+   "key_parameters": [
+    "R_eff = sqrt(a * b), aspect ratio = a / b where a and b are deconvolved semi-major and semi-minor sizes"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive ionized gas properties (ionization rate Q0, electron density ne, and ionized gas mass Mion) from H40alpha",
+   "method": "Compute H40alpha line luminosity from integrated flux and distance, then calculate recombination/ionization rate Q0, electron density ne, and ionized gas mass Mion using Case B recombination equations.",
+   "software": [],
+   "key_parameters": [
+    "alpha_B = 2.54 x 10^-13 cm^3 s^-1, b_n = 0.7866, g_n(LTE) = 7.03 x 10^-19, A_nm = 54.7973 s^-1, nu_nm = 99.023 x 10^9 Hz, epsilon = 1.99 x 10^-32"
+   ],
+   "assumptions": [
+    "T_e = 10^4 K and n_e = 10^4 cm^-3 for excitation efficiency, weak maser effects, Case B recombination in steady state (Q0 = R_rec), helium ionization neglected (n_p = n_e), mean mass per proton mu = 1.27 for 27% helium"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate molecular line luminosities and fit Lbol-L'mol scaling relations",
+   "method": "Convert velocity-integrated fluxes of CS J=2-1 and HC3N J=11-10 into molecular line luminosities L'mol using Solomon et al. (1997) Equation 1, and perform linear least squares fits in log-log space against Lbol.",
+   "software": [],
+   "key_parameters": [
+    "L'_mol = 32.5 * nu_obs^-2 * S_mol*Delta_V * D^2"
+   ],
+   "assumptions": [
+    "Distances taken from Liu et al. (2020a) and Lbol from SED integration (Faúndez et al. 2004; Urquhart et al. 2018)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare Lbol-to-L'mol ratios across Galactocentric distance and between clumps with and without H40alpha emission",
+   "method": "Plot Lbol/L'mol against Galactocentric distance RGC and perform Kolmogorov-Smirnov tests on the log(Lbol/L'mol) distributions of clumps with and without H40alpha emission across six molecular tracers (CS 2-1, HC3N 11-10, H13CN 1-0, H13CO+ 1-0, HCN 1-0, HCO+ 1-0).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate star formation rates (SFRbol and SFRH40alpha) and gas depletion times",
+   "method": "Calculate SFRbol from Lbol and SFRH40alpha from H40alpha line luminosity; compare SFRH40alpha/SFRbol for sources with SFR >= 5 Msun Myr^-1; compute ionized-to-molecular mass ratios Mion/Mmol and gas depletion times t_dep = Mass/SFR.",
+   "software": [],
+   "key_parameters": [
+    "log(SFR / Msun Myr^-1) = log(Lbol / ergs s^-1) - 37.41; SFR(H40alpha) / (Msun Myr^-1) = 3.008 x 10^-3 * [L(H40alpha) / (Jy km/s kpc^2)]; threshold SFR >= 5 Msun Myr^-1"
+   ],
+   "assumptions": [
+    "Well-sampled Kroupa & Weidner (2003) IMF and steady-state massive star birth/death for SFR >= 5 Msun Myr^-1 (Lbol >= 10^4.5 Lsun); molecular clump masses taken from single-dish dust continuum in Liu et al. (2020a)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of compact objects detected in CS J=2-1",
+   "value": "177",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "In total, we detected 177, 185 and 75 sources in emission from CS J=2-1, HC 3 N J=11-10 and H 40 U , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of compact objects detected in HC3N J=11-10",
+   "value": "185",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "In total, we detected 177, 185 and 75 sources in emission from CS J=2-1, HC 3 N J=11-10 and H 40 U , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of compact objects detected in H40alpha",
+   "value": "75",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "In total, we detected 177, 185 and 75 sources in emission from CS J=2-1, HC 3 N J=11-10 and H 40 U , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median peak flux density of CS J=2-1",
+   "value": "65.6",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "For CS, HC 3 N and H 40 U , the median values for ( peak are 65.6, 22.3 and 46.7 Jy beam −1 km s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median peak flux density of HC3N J=11-10",
+   "value": "22.3",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "For CS, HC 3 N and H 40 U , the median values for ( peak are 65.6, 22.3 and 46.7 Jy beam −1 km s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median peak flux density of H40alpha",
+   "value": "46.7",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "For CS, HC 3 N and H 40 U , the median values for ( peak are 65.6, 22.3 and 46.7 Jy beam −1 km s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median total flux density of CS J=2-1",
+   "value": "188.9",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "The median values for ( total of CS, HC 3 N and H 40 U lines are 188.9, 49.8 and 53 Jy km s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median total flux density of HC3N J=11-10",
+   "value": "49.8",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "The median values for ( total of CS, HC 3 N and H 40 U lines are 188.9, 49.8 and 53 Jy km s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median total flux density of H40alpha",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "The median values for ( total of CS, HC 3 N and H 40 U lines are 188.9, 49.8 and 53 Jy km s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median effective radius of CS J=2-1 clumps",
+   "value": "0.46",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "The ' eff of CS ranges from 0.04 pc to 1.40 pc with a median value of 0.46 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median effective radius of HC3N J=11-10 clumps",
+   "value": "0.39",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "The ' eff of HC 3 N ranges from 0.03 pc to 1.28 pc with a median value of 0.39 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median effective radius of H40alpha clumps",
+   "value": "0.33",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Extraction of compact objects",
+     "quote": "The ' eff of H 40 U ranges from 0.08 pc to 0.91 pc with a median value of 0.33 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ionization rate Q0",
+   "value": "1.7e48",
+   "uncertainty": "not stated",
+   "units": "s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Properties of the Ionized Gas",
+     "quote": "The median, mean and standard deviation of & 0 are 1.7 ⇥ 10 48 , 9.1 ⇥ 10 48 and 2.5 ⇥ 10 49 s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ionization rate Q0",
+   "value": "9.1e48",
+   "uncertainty": "2.5e49",
+   "units": "s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Properties of the Ionized Gas",
+     "quote": "The median, mean and standard deviation of & 0 are 1.7 ⇥ 10 48 , 9.1 ⇥ 10 48 and 2.5 ⇥ 10 49 s −1 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median electron density n_e",
+   "value": "1465.1",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Properties of the Ionized Gas",
+     "quote": "The min, max, median, mean and standard deviation of n 4 are 543.9, 8968.8, 1465.1, 2190.5 and 1864.6 cm −3 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean electron density n_e",
+   "value": "2190.5",
+   "uncertainty": "1864.6",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Properties of the Ionized Gas",
+     "quote": "The min, max, median, mean and standard deviation of n 4 are 543.9, 8968.8, 1465.1, 2190.5 and 1864.6 cm −3 , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ionized gas mass M_ion",
+   "value": "4.67",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Properties of the Ionized Gas",
+     "quote": "The min, max, median, mean, and standard deviation are 0.14, 200.74, 4.67, 16.12 and 33.71 M ⊙ , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ionized gas mass M_ion",
+   "value": "16.12",
+   "uncertainty": "33.71",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Properties of the Ionized Gas",
+     "quote": "The min, max, median, mean, and standard deviation are 0.14, 200.74, 4.67, 16.12 and 33.71 M ⊙ , respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(Lbol) vs log(L'CS) relation for ATOMS",
+   "value": "0.98",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 The Lbol-L'mol scaling relations",
+     "quote": "Both indicate that the underlying relations are close to linear (the slope of the correlation for ATOMS data alone is 0 . 98 ± 0 . 07), but the ATOMS data lies mostly above the data from Wu et al. (2010)."
+    },
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The slope and offset of blue dashed line are 0.98 ± 0.07 and 3.83 ± 0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of log(Lbol) vs log(L'CS) relation for ATOMS",
+   "value": "3.83",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The slope and offset of blue dashed line are 0.98 ± 0.07 and 3.83 ± 0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(Lbol) vs log(L'HC3N) relation for ATOMS",
+   "value": "0.96",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 The Lbol-L'mol scaling relations",
+     "quote": "The relation also has a slope near unity (0.96 ± 0.08)."
+    },
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The slope and offset of black dashed line are 0.96 ± 0.08 and 4.45 ± 0.06."
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of log(Lbol) vs log(L'HC3N) relation for ATOMS",
+   "value": "4.45",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The slope and offset of black dashed line are 0.96 ± 0.08 and 4.45 ± 0.06."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean offset in log(Lbol/L'mol) between sources with and without H40alpha emission across all tracers",
+   "value": "0.52",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 The Lbol-to-L'mol ratios",
+     "quote": "The mean values of log(L bol -to-L 0 mol ) ratios between two samples offset by ⇠0.5 dex."
+    },
+    {
+     "loc": "3.4 The Lbol-to-L'mol ratios",
+     "quote": "In fact, this offset is remarkably constant over all tracers with a mean value of 0 . 52 ± 0 . 04."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(Lbol/L'CS) for all ATOMS sources",
+   "value": "3.80",
+   "uncertainty": "0.49",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "CS(2-1) 2.77 5.67 3.80 3.76 0.49 1.86e-8"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(Lbol/L'HC3N) for all ATOMS sources",
+   "value": "4.44",
+   "uncertainty": "0.55",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "HC 3 N(11-10) 2.70 6.64 4.44 4.36 0.55 1.10e-10"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(SFR_H40alpha / SFR_bol) for SFR >= 5 Msun Myr^-1",
+   "value": "-0.01",
+   "uncertainty": "0.29",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Star formation rates",
+     "quote": "The mean, median and std of the log values of SFR H 40 U /SFR bol ratio are −0 . 01, 0.02 and 0.29, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median of log(SFR_H40alpha / SFR_bol) for SFR >= 5 Msun Myr^-1",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Star formation rates",
+     "quote": "The mean, median and std of the log values of SFR H 40 U /SFR bol ratio are −0 . 01, 0.02 and 0.29, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(M_ion / M_mol)",
+   "value": "-2.70",
+   "uncertainty": "0.47",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 The differences between sources with and without H40alpha emission",
+     "quote": "The min, max, mean, median and std of the log values of M 8>= /M mol are -4.56, -1.90, -2.70, -2.66 and 0.47, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median of log(M_ion / M_mol)",
+   "value": "-2.66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 The differences between sources with and without H40alpha emission",
+     "quote": "The min, max, mean, median and std of the log values of M 8>= /M mol are -4.56, -1.90, -2.70, -2.66 and 0.47, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(t_dep / Myr) for all sources with SFR >= 5 Msun Myr^-1",
+   "value": "2.15",
+   "uncertainty": "0.35",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 The differences between sources with and without H40alpha emission",
+     "quote": "The median, mean and std of log( g 34? /Myr) of all sources are 2.09, 2.15 and 0.35, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(t_dep / Myr) for sources with HII regions",
+   "value": "2.05",
+   "uncertainty": "0.32",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 The differences between sources with and without H40alpha emission",
+     "quote": "For sources associated with Hii regions, the median, mean and std of log( g 34? /Myr) are 1.98, 2.05 and 0.32, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of log(t_dep / Myr) for sources without HII regions",
+   "value": "2.31",
+   "uncertainty": "0.33",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 The differences between sources with and without H40alpha emission",
+     "quote": "For sources without Hii regions, the median, mean and std of log( g 34? /Myr) are 2.26, 2.31 and 0.33, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters for ACA cubes (tclean weighting/robust, cell size, image size, masking, continuum subtraction method, line-free channels, primary beam correction) which are deferred to Liu et al. (2020a,b)",
+  "Velocity integration ranges used to construct the integrated intensity maps for CS J=2-1, HC3N J=11-10, and H40alpha",
+  "Specific software or task used for performing the 2D elliptical Gaussian fits to the integrated intensity maps"
+ ],
+ "missing_for_reproduction": [
+  "ACA cube imaging parameters (weighting, cell size, cleaning thresholds, continuum subtraction) which are only in companion papers Liu et al. (2020a,b)",
+  "Velocity integration windows used for each of the 146 targets to produce the moment-0 / integrated intensity maps",
+  "Initial guesses or bounding boxes for the 2D elliptical Gaussian fits, especially for the targeted sources decomposed into multiple objects"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The analytical equations for line luminosities, ionized gas properties, and SFRs are explicitly and thoroughly documented in Appendices A and B, and full measurement tables are provided in online supplementary material. However, raw-to-image cube generation is deferred to earlier ATOMS papers and velocity integration ranges for the moment-0 maps are not specified.",
+ "rediscovery_reason": "ALMA project 2019.1.00685.S is public, the paper provides explicit analytical equations in Appendices A and B and full source catalogs online, and the main results are clear numeric scaling slopes, KS tests, and summary statistics.",
+ "source_card": "cards/2022MNRAS.510.4998Z/sonnet/card.md"
+}

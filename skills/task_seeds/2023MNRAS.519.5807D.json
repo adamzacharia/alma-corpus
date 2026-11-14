@@ -1,0 +1,286 @@
+{
+ "bibcode": "2023MNRAS.519.5807D",
+ "title": "Deep Herschel observations of the 2 Jy sample: assessing the non-thermal and AGN contributions to the far-IR continuum",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3465",
+ "arxiv_id": "2211.13031",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Assess the incidence of non-thermal synchrotron contamination and the role of AGN radiative heating in the far-IR continuum of a complete sample of 46 powerful 2Jy radio AGN.",
+ "alma_project_codes": [
+  "2019.1.01022.S",
+  "2017.1.00629.S"
+ ],
+ "data": {
+  "bands": "~100 GHz (~3 mm)",
+  "arrays": "12m array (43 to 50 dishes)",
+  "angular_resolution": "1.4 – 3.7 arcsec",
+  "sensitivity": "0.01 – 0.03 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spitzer MIPS 24 and 70 um fluxes and high frequency VLA/ATCA radio core data",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "In addition to the new photometric results, for completeness we also present 24 and 70$\\mu$m fluxes from (cite: dicken08) in Table [\\[tab:1\\]](#tab:1)."
+     },
+     {
+      "loc": "Spectral Energy Distributions",
+      "quote": "our *Spitzer* programme (cite: dicken08), which first determined the SEDs for the 2Jy sample objects, including mid- to far-IR photometry and high frequency radio core data from the *VLA* and *ATCA* observatories."
+     }
+    ]
+   },
+   "citation": "Dicken et al. 2008 (cite: dicken08)"
+  },
+  {
+   "what": {
+    "value": "Spitzer IRS mid-IR spectra from 5 to 30 um and recent star formation (RSF) classifications",
+    "evidence": [
+     {
+      "loc": "Spectral Energy Distributions",
+      "quote": "The SEDs now include *Spitzer* IRS spectra from 5 to 30$\\mu$m presented in (cite: dicken12)"
+     }
+    ]
+   },
+   "citation": "(cite: dicken12)"
+  },
+  {
+   "what": {
+    "value": "mm flux measurements for PKS0023-26 and PKS1934-63",
+    "evidence": [
+     {
+      "loc": "*APEX*/LABOCA data",
+      "quote": "To complement the LABOCA results we also added flux measurements from the literature: mm data from (cite: steppe95) and (cite: partridge16) for PKS0023-26 and PKS1934-63 respectively."
+     }
+    ]
+   },
+   "citation": "(cite: steppe95) and (cite: partridge16)"
+  },
+  {
+   "what": {
+    "value": "Gemini optical imaging used to identify nearby companion galaxies",
+    "evidence": [
+     {
+      "loc": "Confused sources",
+      "quote": "Gemini imaging of our 2Jy sample (cite: ramos11a; ramos12) enables us to identify the optical counterparts of any sources that may be confused with our targets at mid- and far-IR wavelengths."
+     }
+    ]
+   },
+   "citation": "(cite: ramos11a; ramos12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure Herschel PACS and SPIRE far-IR photometry and deblend confused sources",
+   "method": "Processed PACS images in HIPE 14.2 with ScanmapPhotProject using aperture photometry (10 or 5 arcsec radius); extracted SPIRE fluxes from level 2 archive products with sourceExtractorSussextractor PRF fitting; deblended confused sources using GetSources.",
+   "software": [
+    "HIPE",
+    "SUSSEXtractor",
+    "GetSources"
+   ],
+   "key_parameters": [
+    "PACS apertures: 10 arcsec radius (or 5 arcsec for faint <20 mJy / confused sources); 48 blank sky apertures for uncertainty"
+   ],
+   "assumptions": [
+    "Power-law continuum SED (F_nu proportional to nu^-alpha) iterated from 250 and 350 um fluxes for SPIRE colour/aperture corrections"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure APEX LABOCA 870 um sub-mm continuum fluxes",
+   "method": "Reduced chopped photometry scans with CRUSH and performed circular aperture photometry (49 arcsec diameter) on maps for two sources (PKS0023-26 and PKS2135-20).",
+   "software": [
+    "CRUSH"
+   ],
+   "key_parameters": [
+    "49 arcsec diameter circular aperture (2.5 beam FWHM) and 8 blank sky apertures for map photometry"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure ALMA ~100 GHz non-thermal core continuum fluxes",
+   "method": "Measured peak mJy/beam flux of the point-like core from standard pipeline-processed average continuum images from the ALMA archive.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Cores are point-like within the 1.4-3.7 arcsec ALMA beam and absolute flux calibration uncertainty is ~5%"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct radio-to-IR SEDs and classify/correct non-thermal synchrotron contamination",
+   "method": "Constructed radio-to-IR SEDs, classified sources as dominated (D), potentially contaminated (P), or correctable (C) for lobe/hotspot and core emission in <200 um and >200 um bands, and subtracted power-law extrapolations of radio/mm/sub-mm data for 6 C-class objects.",
+   "software": [],
+   "key_parameters": [
+    "Criterion for potential core contamination (P): highest frequency radio-to-sub-mm core flux > 50% of the far-IR flux"
+   ],
+   "assumptions": [
+    "Non-thermal core SED remains flat up to far-IR wavelengths for P classification; power-law shape for C subtraction"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute rest-frame 100 and 160 um luminosities and test correlations with AGN power indicators",
+   "method": "Calculated rest-frame L_100 and L_160 with modified black-body K-corrections, and computed Spearman rank and partial rank correlation coefficients against L_[OIII] and L_24 across sub-samples.",
+   "software": [],
+   "key_parameters": [
+    "Modified black-body emissivity index beta = 1.2; 100 Monte Carlo iterations for 160 um upper limits"
+   ],
+   "assumptions": [
+    "Cosmology: H_o = 71 km s^-1 Mpc^-1, Omega_m = 0.27, Omega_lambda = 0.73; modified black-body with beta = 1.2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Incidence of non-thermal contamination in PACS bands (<200 um)",
+   "value": "28 - 43",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find that the overall incidence of non-thermal contamination in the PACS bands ($<$200 $\\mu$m) is in the range 28 – 43%; however, this rises to 30 – 72% for wavelengths ($>$200 $\\mu$m) sampled by the SPIRE instrument."
+    }
+   ]
+  },
+  {
+   "quantity": "Incidence of non-thermal contamination in SPIRE bands (>200 um)",
+   "value": "30 - 72",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find that the overall incidence of non-thermal contamination in the PACS bands ($<$200 $\\mu$m) is in the range 28 – 43%; however, this rises to 30 – 72% for wavelengths ($>$200 $\\mu$m) sampled by the SPIRE instrument."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA ~3000 um core flux density of PKS 0035-02",
+   "value": "186",
+   "uncertainty": "9",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data, Table 1",
+     "quote": "0035$-$02 | 0.220 | 12.2$\\pm$0.1 | 23.6$\\pm$5.3 | 34.4$\\pm$4.3 | 38.9$\\pm$5.3 | 68.4$\\pm$6.4 | 112.7$\\pm$7.5 | 157.6$\\pm$8.6 | $<$225 | 186$\\pm$9"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA ~3000 um core flux density of PKS 0625-35",
+   "value": "208",
+   "uncertainty": "10",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data, Table 1",
+     "quote": "0625$-$35 | 0.055 | 24.7$\\pm$0.3 | 44.8$\\pm$5.0 | 75.8$\\pm$4.0 | 88.6$\\pm$8.4 | 104.0$\\pm$7.5 | 124.8$\\pm$8.4 | 149.3$\\pm$8.0 | 205$\\pm$26 | 208$\\pm$10"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA ~3000 um core flux density of PKS 0915-11",
+   "value": "92",
+   "uncertainty": "5",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data, Table 1",
+     "quote": "0915$-$11 | 0.054 | 8.9$\\pm$0.2 | 110.5$\\pm$5.6 [^6] | 170.4$\\pm$6.6 | 149.0$\\pm$5.3 | 93.8$\\pm$4.5 | 69.0$\\pm$6.8 | 80.0$\\pm$9.3 | 106$\\pm$3 | 92$\\pm$5"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA ~3000 um core flux density of PKS 1814-63",
+   "value": "339",
+   "uncertainty": "17",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data, Table 1",
+     "quote": "1814$-$63 | 0.063 | 60.6$\\pm$0.4 | 142.1$\\pm$14.0 | 186.3$\\pm$5.2 | 189.0$\\pm$7.6 | 135.1$\\pm$7.7 | 128.3$\\pm$9.4 | 140.8$\\pm$12.6 | 193$\\pm$10 | 339$\\pm$17"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman partial rank correlation (L_[OIII] vs L_100, clean N=26 sample)",
+   "value": "0.764",
+   "uncertainty": "p < 0.5%",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Correlations between far-IR luminosities and AGN power indicators",
+     "quote": "$L_{\\rm [OIII]}$ vs $L_{100}$ | 0.849 ($<$0.5%) | 0.764 ($<$0.5%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman partial rank correlation (L_24 vs L_100, clean N=26 sample)",
+   "value": "0.823",
+   "uncertainty": "p < 0.5%",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Correlations between far-IR luminosities and AGN power indicators",
+     "quote": "$L_{24}$ vs $L_{100}$ | 0.886 ($<$0.5%) | 0.823 ($<$0.5%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman partial rank correlation (L_[OIII] vs L_160, clean N=26 sample)",
+   "value": "0.478",
+   "uncertainty": "p < 0.5%",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Correlations between far-IR luminosities and AGN power indicators",
+     "quote": "$L_{\\rm [OIII]}$ vs $L_{160}$ | 0.659 ($<$0.5%) | 0.478 ($<$0.5%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman partial rank correlation (L_24 vs L_160, clean N=26 sample)",
+   "value": "0.672",
+   "uncertainty": "p < 0.5%",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Correlations between far-IR luminosities and AGN power indicators",
+     "quote": "$L_{24}$ vs $L_{160}$ | 0.818 ($<$0.5%) | 0.672 ($<$0.5%)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Table 2 (tab:obs_param) and Table A1 (tab:luminosities) are referenced in the text as containing observation parameters, mean frequencies, and derived luminosities, but are omitted from the main paper text (likely in online-only/appendix material).",
+  "Exact frequency ranges used for the power-law fits when extrapolating and subtracting non-thermal core and lobe emission."
+ ],
+ "missing_for_reproduction": [
+  "APEX LABOCA raw/reduced data (only available upon request to the authors).",
+  "Online Appendix tables (Table 2 / tab:obs_param and Table A1 / tab:luminosities) containing observation logs, [OIII] luminosities, and derived 100/160 um luminosities.",
+  "Which specific PACS targets used the 5 arcsec aperture instead of the default 10 arcsec aperture.",
+  "Exact frequency ranges/points used to fit the non-thermal power-laws for the 6 C-class corrected objects."
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "ALMA core fluxes are measured directly as peak mJy/beam from public pipeline-processed archive continuum images, and all photometric fluxes are tabulated in Table 1, though APEX LABOCA data are only available on request and some per-object fitting/aperture choices are not fully specified.",
+ "rediscovery_reason": "The ALMA part is trivial to reproduce from public archival pipeline continuum images (peak flux measurement of 29 targets), and the main photometric and correlation tables provide clear numeric benchmarks.",
+ "source_card": "cards/2023MNRAS.519.5807D/sonnet/card.md"
+}

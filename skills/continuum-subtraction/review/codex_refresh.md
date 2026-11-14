@@ -1,0 +1,52 @@
+# Codex refresh review: continuum-subtraction
+VERDICT: FIX
+REFRESH: PARTIAL
+## Findings
+
+- RR-01 | medium | attribution | “694 uv, 99 image plane”; “416 papers”; “94 of the 358” | These processing-field censuses, including 1417 populated cards, fit-order counts and mask-frequency counts, are not supplied pack aggregates. The truncated parameter list cannot establish them. Software-label counts of 128 uvcontsub and 9 imcontsub measure something different. | Supply a reproducible census with matched bibcodes and denominators, including provenance for 94/358, or remove the unverifiable counts.
+
+- RR-02 | medium | attribution | “unstated in 64% of 3498 cards (`stats/README.md`)” | The supplied pack contains neither that statistic nor stats/README.md. Its scope line establishes 1551 technique papers, not the full-corpus missingness rate. | Include the supporting corpus-statistics excerpt or omit this claim; retain 1551 in the description.
+
+- RR-03 | medium | attribution | “+-15 to +-60”; “+-300 to +-1500”; “assume 300 km/s”; “Savitzky-Golay order 3” | The supplied method entries do not establish these complete ranges or several numerical examples. In particular, 2020A&A...637A..84P, 2020A&A...641A.155V and 2019ApJ...870L..26C appear only in the bibliography. The alpha=2 STATCONT examples likewise have no supplied settings entries. | Restrict the table to evidenced values or add the missing method excerpts; distinguish observed choices from methodological failure thresholds.
+
+- RR-04 | medium | attribution | “+-20: 2021AJ....162...99F”; “+-30: 2025A&A...703A..15M” | The former pack entry explicitly says ±20 applies to the self-calibration continuum and that uvcontsub channels are unstated. The latter excerpt defines ±30 as the line-search interval and excludes channels with detected emission, rather than establishing a blanket ±30 exclusion. | Label the first as a continuum/self-calibration mask and the second as a search interval with detected-line masking.
+
+- RR-05 | medium | attribution | “UV-BASELINE degree zero”; “CLASS baselines”; “AIPS visibility-domain average” | 2021A&A...652A..98G, 2020ApJ...890...29F, 2019A&A...628A..27B and 2019A&A...632A..19T have no supplied method entries. The 2017Icar..286..289L parameter entry supports visibility averaging but does not name AIPS. Aggregate software labels cannot supply those paper-specific attributions. | Add supporting excerpts or remove the unsupported task, degree and software assignments.
+
+- RR-06 | medium | attribution | “5.3% to 36.6%”; “after convolving all cubes”; “not optimal” | The supplied entries for 2021A&A...656A..46M establish per-pixel STATCONT with default clipping, but do not establish these percentages, common-beam processing, tuning anomalies or noisy-region failure claims. | Include the relevant excerpts or retain only the supported STATCONT description. Common-beam smoothing is independently evidenced by 2025A&A...702A.133K.
+
+- RR-07 | medium | attribution | “chosen to mitigate the JvM effect”; “because uvcontsub over-subtracted” | 2024AJ....167...66Y and 2024ApJ...977..251H occur only in the supplied bibliography; their claimed motivations are not evidenced here. The CS-residual claim for 2014ApJ...792L..25V is likewise bibliography-only. | Supply the motivating passages or use supported comparisons such as 2020MNRAS.498.4109J and the phase-center explanation in 2025PASJ...77..139I.
+
+- RR-08 | medium | attribution | “no improvement at S/N < 100”; “125 MHz”; “phaseshift, uvcontsub, then cvel2” | The cited 2024ApJ...961..228S, 2021A&A...648A..19W, 2024A&A...689A..85G and 2025NatAs...9.1476C lack the necessary method entries. The comet’s second-order attribution and both cited self-calibration-after-subtraction sequences are also unverified in this pack. | Add those excerpts or remove the specific settings/sequences. Retain the supported conditional self-calibration example, 2021ApJ...910...53V.
+
+- RR-09 | medium | attribution | “free parameter together with the absorption Gaussians”; “then fitted Gaussian plus constant” | The 2020ApJ...905...85S assumption supports a constant continuum and alternate-sideband/SED estimates, but not the stated joint fit or “no appreciable differences” test. The 2026ApJ..1002L..28Y entries establish linear uvcontsub, not the subsequent residual-baseline fit. | Preserve the SR-02 distinction, but supply its missing fit evidence before retaining these detailed examples.
+
+- RR-10 | medium | attribution | “fit the continuum spws and apply the model”; “Per data set: 2014A&A...572L...9R” | Several cited cross-spw and combination sequences are bibliography-only. The 2014A&A...570L..14R parameter entry establishes subtraction before imaging, but not the claimed combine–self-calibrate–subtract sequence. | Use directly evidenced examples: 2013A&A...559A..29C for cross-spw extrapolation; 2025A&A...703A..15M and 2026ApJ..1005...94N for combine-first processing.
+
+- RR-11 | medium | attribution | “1000 random regions”; “Var(S/sigma) = 1”; “10% subtraction error” | The supplied 2024ApJ...966...59S, 2019MNRAS.485.2092C and 2013ApJ...773L..34K entries do not establish these claims. Other unverified checks include the first-order comparison for 2019A&A...628A.118B and the residual check for 2024A&A...689A.317G. | Supply the relevant validation/error passages or replace them with evidenced checks, such as the random Keplerian masks in 2025ApJ...985...84L.
+
+- RR-12 | medium | lost-fix | “2024MNRAS.527.9343L against JCMT” | SR-10 removed the unsupported single-dish bullet. Its JCMT attribution has returned without a supporting comparison entry; this bibcode has only assumptions and bibliography here. The refreshed pack does support the separate 2014ApJ...797...90S recovery check. | Remove the JCMT attribution pending evidence; retain the supported recovery example.
+
+- RR-13 | medium | unsupported | “A bright compact source dominates the field. Remove a model of it first” | The 2019AJ....157..251T entry establishes one limb-darkened-model subtraction before deconvolution. It does not establish brightness dominance as a general requirement for this operation. | Present source-model subtraction as an optional approach requiring an adequate model and residual validation.
+
+- RR-14 | medium | science | “When not to use — Absorption against a bright continuum” | The categorical heading obscures that absorption studies can also use subtracted products: 2025ApJ...989...83B explicitly applies uvcontsub for its main emission and absorption results, while separately fitting the continuum for opacity. 2015ApJ...814...22E also subtracts in the image plane. | Require preservation of the continuum-bearing spectrum/model for absorption analysis, while allowing validated subtraction for other products.
+
+- RR-15 | medium | science | “`imcontsub(imagename, linefile, contfile, fitorder, chans)`” | This positional sketch can bind the fifth argument to `region`, rather than `chans`, in CASA’s task signature. | Use explicit keywords: `imcontsub(imagename=..., linefile=..., contfile=..., fitorder=..., chans=...)`, checked against installed help.
+
+- RR-16 | medium | broken-edit | “1.25 to 2.5 x FWHM” | The summary mixes half-width and total-width conventions despite distinguishing them in the examples. The 2020ApJ...904..131N entry explicitly specifies **total** exclusion width 2.5×FWHM. | Give separate total-width and half-width columns; that example has half-width 1.25×FWHM. Leave other conventions unspecified unless evidenced.
+
+- RR-17 | medium | broken-edit | “Line-free fraction … about 5% to 20%” | This is not a valid corpus bound: 2021A&A...647A..87L reports **at least** 20%, and 2019A&A...630A..59B describes fitted channels as approximately one quarter of each spw. The row also counts a method failure threshold as though it were an observed bandwidth choice. | Replace the bounded range and count with explicitly identified examples; separate failure thresholds from measured fractions.
+
+- RR-18 | medium | omission | “remember a fitted baseline correlates errors across channels” | This covers fit-induced covariance but omits instrumental/smoothing covariance. The 2021MNRAS.506.1978L excerpt explicitly states that adjacent ALMA channels are not independent; 2025ApJ...989...83B incorporates Hanning smoothing in absorption fits. | Add a check for spectral response and channel covariance when fitting widths or integrating flux uncertainties; do not transfer one paper’s bandwidth factor universally.
+
+- RR-19 | medium | omission | “Uncertainties” | The absorption discussion omits the explicitly admitted, unquantified bandpass-calibration effects on optical depth in 2025ApJ...989...83B. | Require a bandpass-residual assessment for weak absorption and report any unquantified contribution separately from continuum-fit and flux-scale errors.
+
+- RR-20 | medium | omission | “Remove a model of it first” | The pack supplies a directly relevant model-fidelity warning: 2023NatAs...7.1048C says a uniform Jupiter disk misses zone/belt structure and alters line-to-continuum ratios by up to 30%. The 2022MNRAS.514.2994G excerpt additionally assumes similar spatial distributions of line and continuum under filtering. | Add validation of the spatial continuum model and matched line/continuum filtering before interpreting ratios.
+
+- RR-21 | low | length | “Parameter defaults and ranges”; “Software”; “Source cards” | SKILL.md exceeds approximately 300 lines, with extensive example inventories interrupting the executable workflow. | Move the detailed parameter table, census methodology and extended software/examples to references/parameters.md; retain decisions, essential caveats and verification steps.
+
+## Notes
+The description’s 1551 papers, displayed software-aggregate counts and 323 overlapping not-stated occurrences match the supplied pack.
+Do not replace the technique count with the approximately 3500-paper full-corpus size.
+Missing support above means unverified in the supplied, truncated pack—not that the underlying paper necessarily contradicts the claim.
+Most reconciliation fixes remain structurally intact; updated evidence can legitimately support previously removed examples.

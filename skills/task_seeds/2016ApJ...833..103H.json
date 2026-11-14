@@ -1,0 +1,223 @@
+{
+ "bibcode": "2016ApJ...833..103H",
+ "title": "Kiloparsec-scale Dust Disks in High-redshift Luminous Submillimeter Galaxies",
+ "year": 2016,
+ "doi": "10.3847/1538-4357/833/1/103",
+ "arxiv_id": "1609.09649",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How is the dust-obscured star formation distributed (size, profile, clumpiness) in luminous z~2.5 SMGs at ~1 kpc resolution, and how does it compare with the stellar emission?",
+ "alma_project_codes": [
+  "2012.1.00307.S"
+ ],
+ "data": {
+  "bands": "Band 7, 344 GHz / 870 um",
+  "arrays": "not stated",
+  "angular_resolution": "0.17x0.15 arcsec natural; 0.12x0.11 arcsec robust -0.5",
+  "sensitivity": "~64 uJy/beam natural; ~130 uJy/beam robust -0.5"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cycle 0 ALESS 870um flux densities, flux-boost corrected",
+    "evidence": [
+     {
+      "loc": "2.3 Recovered Flux Density",
+      "quote": "The Cycle 0 flux densities were taken from (cite: 2013ApJ...768...91H) and have been corrected for the effect of flux boosting"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...768...91H); (cite: 2015ApJ...807..128S)"
+  },
+  {
+   "what": {
+    "value": "LFIR, Tdust, SFR, dust masses and redshifts for SMGs",
+    "evidence": [
+     {
+      "loc": "3.4 The L_IR–T relation and gas surface densities",
+      "quote": "we have used the $L_{\\rm FIR}$ and $T_{\\rm dust}$ values reported in (cite: 2014MNRAS.438.1267S)"
+     }
+    ]
+   },
+   "citation": "(cite: 2014MNRAS.438.1267S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the data",
+   "method": "CASA clean with natural, R=-0.5 and uv-tapered weightings; multi-scale clean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "scales 0, 0.3, 0.6, 1.2 arcsec; R=-0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Check recovered flux versus Cycle 0",
+   "method": "Mask below 2 sigma, sum in aperture of 3 x b_maj, compare with Cycle 0 flux across resolutions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure sizes and profiles",
+   "method": "Fit 2D Gaussian and 2D Sérsic in image plane; stack rotated 2 arcsec cutouts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "uv-plane size fits",
+   "method": "Radially average visibilities in 75 klambda bins; fit Gaussian and Gaussian+constant",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare to HST stellar emission",
+   "method": "Curves of growth in 1.5 arcsec aperture on ALMA and H160 images",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Search for clumps",
+   "method": "Image at R=-0.5, subtract 2D Gaussian, compare with 16 simulated smooth exponential disks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Re=0.26 arcsec, axis ratio 0.5, S870~6.5 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Tdust–LIR–size and gas surface density",
+   "method": "Compare sizes with blackbody Stefan–Boltzmann predictions; convert SED dust mass to gas surface density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thick blackbody; gas-to-dust ratio 100"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median Sérsic effective radius",
+   "value": "0.24",
+   "uncertainty": "±0.02",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "median effective radius of $R_e=0.24$$''$$\\pm$0.02$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median physical Re",
+   "value": "1.8",
+   "uncertainty": "±0.2",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "typical physical size of $R_{e}=1.8\\pm$0.2 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Sérsic index",
+   "value": "0.9",
+   "uncertainty": "±0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "median Sérsic index of $n=0.9$$\\pm$0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Gaussian FWHM",
+   "value": "0.42",
+   "uncertainty": "±0.04",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Image plane",
+     "quote": "FWHM$=$0.42$''$$\\pm$0.04$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median ALMA half-light radius (curve of growth)",
+   "value": "0.16",
+   "uncertainty": "±0.02",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Comparison to stellar emission",
+     "quote": "the median half–light radius of the ALMA 870$\\mu$m emission is 0.16$''$$\\pm$0.02$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median H160 half-light radius",
+   "value": "0.5",
+   "uncertainty": "±0.1",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Comparison to stellar emission",
+     "quote": "the median half–light radius of the *H*$_{\\rm 160}$–band imaging is 0.5$''$$\\pm$0.1$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median recovered flux fraction, natural weighting",
+   "value": "101",
+   "uncertainty": "±6",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.3 Recovered Flux Density",
+     "quote": "median fraction of $f=101\\pm6\\%$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which calibrator was used for which role (flux vs phase) is ambiguous in the order given",
+  "Fitting software and uncertainty method for the image-plane 2D Gaussian/Sérsic fits",
+  "Priors/likelihood and tool for the uv-plane fits",
+  "CASA simulation setup (simobserve parameters, noise injection) for disk simulations",
+  "Exact SED-derived dust masses and temperatures used for gas surface densities",
+  "Whether the ALMA project 2011.0.00294.S Cycle 0 data were re-reduced"
+ ],
+ "missing_for_reproduction": [
+  "Fitting code and error estimation details",
+  "Simulation scripts"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging and analysis recipe mostly described but fitting tools and some parameters missing.",
+ "rediscovery_reason": "Public data, clear imaging recipe, numeric size/index results.",
+ "source_card": "cards/2016ApJ...833..103H/sonnet/card.md"
+}

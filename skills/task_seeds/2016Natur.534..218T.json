@@ -1,0 +1,225 @@
+{
+ "bibcode": "2016Natur.534..218T",
+ "title": "Cold, clumpy accretion onto an active supermassive black hole",
+ "year": 2016,
+ "doi": "10.1038/nature17969",
+ "arxiv_id": "1606.02304",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "agn_and_quasars"
+ ],
+ "question": "Is cold molecular gas falling in clumps toward the active supermassive black hole in the Abell 2597 BCG, as predicted by cold-accretion models?",
+ "alma_project_codes": [
+  "2012.1.00988.S"
+ ],
+ "data": {
+  "bands": "Band 6, tuned to 213 GHz",
+  "arrays": "12m Array, 29 antennae, Cycle 1",
+  "angular_resolution": "~0.7 arcsec at 213 GHz; beam 0.715x0.533 arcsec",
+  "sensitivity": "0.16 mJy per beam per 40 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar velocity dispersion 220 ± 19 km/s",
+    "evidence": [
+     {
+      "loc": "Estimating physical properties of the redshifted absorbing gas.",
+      "quote": "The stellar velocity dispersion of the BCG(cite: 24) is $\\sigma_v = 220 \\pm\n19$ km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "Smith, Heckman & Illingworth 1990 (cite: 24)"
+  },
+  {
+   "what": {
+    "value": "VLBA radio continuum and HI absorption data",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "given existing Very Long Baseline Array (VLBA) radio observations at extremely high spatial resolution(cite: 15)"
+     }
+    ]
+   },
+   "citation": "(cite: 15) Tremblay et al. 2012"
+  },
+  {
+   "what": {
+    "value": "Size-linewidth relation sigma_v = 1.0 S^0.5 km/s",
+    "evidence": [
+     {
+      "loc": "Estimating physical properties of the redshifted absorbing gas.",
+      "quote": "$\\sigma_v = \\left(1.0 \\pm 0.1 \\right) S^{0.5\\pm0.05}~\\mathrm{km~s}^{-1}$"
+     }
+    ]
+   },
+   "citation": "Solomon et al. 1987 (cite: 26)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image the cube",
+   "method": "ARC-provided CASA scripts, self-calibration on continuum, natural-weight imaging, continuum subtraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive total molecular gas mass",
+   "method": "Single Gaussian fit to integrated CO(2-1) spectrum, convert to H2 mass",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO = 2e20 cm^-2 (K km/s)^-1; CO(2-1)/CO(1-0) flux ratio 3.2; D_L=373.3 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Detect and characterise absorption against the nuclear continuum",
+   "method": "Extract CO(2-1) spectrum from central beam; Gaussian fits to absorption lines; tau from I_total = I_cont exp(-tau)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate cloud size and mass",
+   "method": "Solomon et al. size-linewidth relation for size; virial relation for mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Milky Way size-linewidth relation applies (upper limit); virial equilibrium"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total H2 gas mass",
+   "value": "1.80e9",
+   "uncertainty": "0.19e9",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Mass Estimates.",
+     "quote": "$M_{\\mathrm{H}_2}  = \\left(1.80 \\pm 0.19\\right) \\times 10^9$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) emission integral",
+   "value": "4.2",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Mass Estimates.",
+     "quote": "$S_{\\mathrm{CO}}\\Delta v = 4.2\\pm0.4$ Jy km s$^{-1}$ with a line FWHM of $252 \\pm 14$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) line FWHM",
+   "value": "252",
+   "uncertainty": "14",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Mass Estimates.",
+     "quote": "with a line FWHM of $252 \\pm 14$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption line centres",
+   "value": "+240, +275, +335",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "redshifted line centres at $+240$, $+275$, and $+335$ km s$^{-1}$ relative to the systemic (stellar) velocity"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear continuum flux",
+   "value": "13.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "13.6 mJy at rest-frame 230 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorber linewidth",
+   "value": "<~6",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "narrow linewidths of $\\sigma_v \\mathrel{<\\kern-1.0em\\lower 0.9ex\\hbox{$\\sim$}}6$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorber optical depth",
+   "value": "0.1-0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$0.1 \\mathrel{<\\kern-1.0em\\lower 0.9ex\\hbox{$\\sim$}}\\tau_{\\mathrm{CO(2-1)}} \\mathrel{<\\kern-1.0em\\lower 0.9ex\\hbox{$\\sim$}}0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial cloud mass",
+   "value": "1.7e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Estimating physical properties of the redshifted absorbing gas.",
+     "quote": "\\approx 1.7\\times10^5~M_\\odot,"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum-subtraction channel ranges and method",
+  "Image size, cell size, deconvolution/clean threshold and masks",
+  "Aperture used for total CO(2-1) flux",
+  "Self-calibration solution intervals and iterations",
+  "Gaussian fitting details for absorption lines (errors, continuum level)",
+  "Pixel/region for central-beam spectrum extraction",
+  "Sky coordinates of target"
+ ],
+ "missing_for_reproduction": [
+  "Details of line-fitting apertures and continuum channel selection (may be in released code)"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, released code, simple analysis, few settings missing from the text.",
+ "rediscovery_reason": "Public data, code released, numeric results (mass, line centres, tau) reproducible.",
+ "source_card": "cards/2016Natur.534..218T/sonnet/card.md"
+}

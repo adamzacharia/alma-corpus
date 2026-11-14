@@ -1,0 +1,418 @@
+{
+ "bibcode": "2026A&A...709A.174F",
+ "title": "The circumbinary disc of HD 34700A: II. Analysis of a strong dust asymmetry",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202558212",
+ "arxiv_id": "2603.25541",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Characterise the crescent morphology of the circumbinary disc around HD 34700A and compare it with IRS 48 and HD 142527, discuss their possible origin, and assess the efficiency of dust trapping in the vortex scenario.",
+ "alma_project_codes": [
+  "2022.1.00760.S",
+  "2019.1.01059.S",
+  "2013.1.00305.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) for HD 34700A; Band 7 (0.87 mm) for IRS 48 and HD 142527",
+  "arrays": "not stated",
+  "angular_resolution": "HD 34700A: 114 x 94 mas; IRS 48: 108 x 72 mas; HD 142527: 299 x 203 mas",
+  "sensitivity": "HD 34700A: 7 uJy beam^-1; IRS 48: 16 uJy beam^-1; HD 142527: 252 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "13CO discminer geometrical fit (inclination and PA) for HD 34700A used as narrow priors",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "For the inclination and PA of HD 34700 A, we consider narrow priors around the values resulting from the $^{13}$CO `discminer` (cite: Izquierdo_2021) fit in (cite: Stadler_2026) to help achieve convergence, and be consistent with their analysis."
+     }
+    ]
+   },
+   "citation": "(cite: Stadler_2026)"
+  },
+  {
+   "what": {
+    "value": "Inclination and PA for IRS 48 used as narrow priors",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "We use the same procedure for IRS 48, using the inclination and PA reported in (cite: Yang2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Yang2023)"
+  },
+  {
+   "what": {
+    "value": "Inclination and PA for HD 142527 used for prior setup",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "For HD 142527, instead, we setup wider priors around the inclination and PA reported in (cite: vdM2021)."
+     }
+    ]
+   },
+   "citation": "(cite: vdM2021)"
+  },
+  {
+   "what": {
+    "value": "DSHARP-mixture absorption opacity",
+    "evidence": [
+     {
+      "loc": "Dust trapping",
+      "quote": "we compute the optical depth $\\tau=\\sum_i \\Sigma_i\\kappa_{\\mathrm{abs},i}$, with $\\Sigma_i$ and $\\kappa_{\\mathrm{abs},i}$ the surface density and “DSHARP\"-mixture absorption opacity associated with grains of size $i$, taken from (cite: Birnstiel_2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Birnstiel_2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Remove secondary companion HD 34700B from visibility table",
+   "method": "Create a CLEAN model of HD 34700B within an elliptic mask and subtract model visibilities using CASA uvsub()",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvsub"
+   ],
+   "key_parameters": [
+    "CLEAN threshold = 5 uJy/beam (~1 sigma), elliptic mask R = 0.625'', i = 41.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum emission and measure RMS noise, peak intensity, and azimuthal contrast",
+   "method": "CLEAN continuum visibilities with CASA tclean, compute RMS in outer annulus and deproject to polar coordinates with gofish, and compute azimuthal contrast",
+   "software": [
+    "CASA",
+    "tclean",
+    "gofish"
+   ],
+   "key_parameters": [
+    "CLEAN threshold = 3 sigma, robust = 0.0 (or 0.5 for IRS 48 in Table 1), pixel sizes 0.015'', 0.009'', 0.025''",
+    "Polar interpolation grid: 501 x 2001 (R, theta) with R in [0, 4]'' and theta in [-180, 180] deg"
+   ],
+   "assumptions": [
+    "10% ALMA flux calibration uncertainty for Band 6 and 7"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Parametric visibility modelling of circular and eccentric disc morphologies",
+   "method": "Fit 2D parametric brightness models (central/offset Gaussian + Gaussian ring + 1 or 2 asymmetric Gaussian arcs) to visibilities using galario and emcee",
+   "software": [
+    "galario",
+    "emcee",
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "15 parameters for HD 34700A, 13 for IRS 48, 23 for HD 142527 (plus eccentricity e and argument of periastron omega for eccentric models)",
+    "Preliminary run: 100 walkers, ~10^3 steps; Fiducial run: 120 walkers, 2x10^4 steps, 25% burn-in"
+   ],
+   "assumptions": [
+    "Inner Gaussian fixed to image centre for HD 34700A; no inner Gaussian for IRS 48; same eccentricity for all ring and arc components in eccentric fits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analytical dust trapping modelling of the azimuthal intensity profile",
+   "method": "Compute steady-state dust size distribution and azimuthal drift-mixing equilibrium following Birnstiel et al. (2011, 2013), calculate optical depth and intensity, and manually tune parameters to match observed azimuthal profile at 137 au",
+   "software": [
+    "azimuthal_profile"
+   ],
+   "key_parameters": [
+    "A_gas = 1.1, sigma_y = 75 deg, alpha = 5x10^-4, Sigma_c = 50 g cm^-2 at R_c = 1 au, v_frag = 5 m s^-1, epsilon = 0.1"
+   ],
+   "assumptions": [
+    "Vertically isothermal disc with T_dust = T_c(R/R_c)^-0.5, T_c = 20 K at R_c = 100 au; DSHARP dust absorption opacities; steady-state dust size distribution"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Hydrodynamical simulation of dust distribution around a massive vortex and synthetic continuum imaging",
+   "method": "Run 2D cylindrical gas+6-dust-fluid hydrodynamical simulation of a Rossby-wave-unstable cavity edge in PLUTO for 100 orbits, compute 230 GHz intensity map, convolve with ALMA beam and add Gaussian noise",
+   "software": [
+    "PLUTO"
+   ],
+   "key_parameters": [
+    "R_0 = 150 au, grid 0.4-2.5 R_0, N_R x N_phi = 512 x 1024, M_star = 4 M_sun, alpha = 10^-4, 6 dust sizes a_d = {10^-4, 0.001, 0.003, 0.01, 0.03, 0.1} cm, rho_bulk = 2.08 g cm^-3, integrated for 100 orbits at R_0"
+   ],
+   "assumptions": [
+    "Single central star M_star = 4 M_sun, locally isothermal EOS, h = 0.15(R/R_0)^1/4, Sigma_g = 1 g cm^-2 (R/R_0)^-1, Sigma_d = 0.01 Sigma_g, MRN initial grain size slope q = -3.5, Epstein drag"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HD 34700A continuum peak intensity",
+   "value": "1.90",
+   "uncertainty": "0.19",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 34700 A | 0.0, 114 $\\times$ 94 | 87 | 7 | $1.90\\pm0.19$ | 62 | $35.09_{-0.06}^{+0.12}$ | $92.9_{-0.3}^{+0.3}$ | $-48_{-1}^{+1}$ | $14_{-1}^{+1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A azimuthal contrast (peak-to-azimuthal-average)",
+   "value": "62",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 34700 A | 0.0, 114 $\\times$ 94 | 87 | 7 | $1.90\\pm0.19$ | 62 | $35.09_{-0.06}^{+0.12}$ | $92.9_{-0.3}^{+0.3}$ | $-48_{-1}^{+1}$ | $14_{-1}^{+1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A azimuthal contrast (peak-to-opposite-side)",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum images",
+     "quote": "For reference, we also report a contrast of $45$, $365$ and $33$ if defined as the ratio between the peak intensity and the emission at the opposite side of the disc (i.e., same radius and PA shifted by $180\\degree$)."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A cavity radius",
+   "value": "0.46 (161 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detect a $0.46\\ensuremath{''}$ ($161~\\rm au$) large cavity and resolve a ring with an asymmetric crescent and an extended tail at $0.53\\ensuremath{''}$ ($186~\\rm au$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A ring radius r_1",
+   "value": "525",
+   "uncertainty": "+2/-2",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HD 34700 A | $8.10_{-0.03}^{+0.03}$ | $-$ | $-$ | $130_{-6}^{+6}$ | $8.15_{-0.01}^{+0.01}$ | $525_{-2}^{+2}$ | $84_{-3}^{+3}$ | $10.148_{-0.002}^{+0.002}$ | $394_{-2}^{+2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A ring radial width sigma_r,1",
+   "value": "84",
+   "uncertainty": "+3/-3",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HD 34700 A | $8.10_{-0.03}^{+0.03}$ | $-$ | $-$ | $130_{-6}^{+6}$ | $8.15_{-0.01}^{+0.01}$ | $525_{-2}^{+2}$ | $84_{-3}^{+3}$ | $10.148_{-0.002}^{+0.002}$ | $394_{-2}^{+2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A arc radial position r^a_1",
+   "value": "394",
+   "uncertainty": "+2/-2",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HD 34700 A | $8.10_{-0.03}^{+0.03}$ | $-$ | $-$ | $130_{-6}^{+6}$ | $8.15_{-0.01}^{+0.01}$ | $525_{-2}^{+2}$ | $84_{-3}^{+3}$ | $10.148_{-0.002}^{+0.002}$ | $394_{-2}^{+2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A arc radial width sigma^a_r,1",
+   "value": "27.8",
+   "uncertainty": "+0.2/-0.2",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HD 34700 A | $27.8_{-0.2}^{+0.2}$ | $327.7_{-0.3}^{+0.3}$ | $23.5_{-0.1}^{+0.1}$ | $13.2_{-0.1}^{+0.1}$ | $-$ | $-$ | $-$ | $-$ | $-$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A arc azimuthal FWHM",
+   "value": "43.2",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "galario model and residuals",
+     "quote": "an arc centred at $(\\sim0.39\\ensuremath{''},328\\degree)$ ($137~\\rm au$) with radial width $\\sim0.03\\ensuremath{''}$ ($11~\\rm au$) and an azimuthal Full Width Half Maximum (FWHM) of $43.2\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A disc inclination i",
+   "value": "35.09",
+   "uncertainty": "+0.12/-0.06",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 34700 A | 0.0, 114 $\\times$ 94 | 87 | 7 | $1.90\\pm0.19$ | 62 | $35.09_{-0.06}^{+0.12}$ | $92.9_{-0.3}^{+0.3}$ | $-48_{-1}^{+1}$ | $14_{-1}^{+1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A disc position angle PA",
+   "value": "92.9",
+   "uncertainty": "+0.3/-0.3",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 34700 A | 0.0, 114 $\\times$ 94 | 87 | 7 | $1.90\\pm0.19$ | 62 | $35.09_{-0.06}^{+0.12}$ | $92.9_{-0.3}^{+0.3}$ | $-48_{-1}^{+1}$ | $14_{-1}^{+1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A eccentric model eccentricity e",
+   "value": "0.109",
+   "uncertainty": "+0.005/-0.004",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disc eccentricity",
+     "quote": "The HD 34700 A model converges to a solution with $a = 529^{+3}_{-3}~\\rm mas$, $e = 0.109^{+0.005}_{-0.004}$, $\\omega = 105^{+7}_{-7}~ \\rm deg$, $\\Delta\\rm RA = 99.6^{+0.6}_{-0.3}~\\mu as$, $\\Delta\\rm Dec = 19^{+6}_{-5}~\\mu as$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 34700A eccentric model semi-major axis a",
+   "value": "529",
+   "uncertainty": "+3/-3",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disc eccentricity",
+     "quote": "The HD 34700 A model converges to a solution with $a = 529^{+3}_{-3}~\\rm mas$, $e = 0.109^{+0.005}_{-0.004}$, $\\omega = 105^{+7}_{-7}~ \\rm deg$, $\\Delta\\rm RA = 99.6^{+0.6}_{-0.3}~\\mu as$, $\\Delta\\rm Dec = 19^{+6}_{-5}~\\mu as$"
+    }
+   ]
+  },
+  {
+   "quantity": "IRS 48 continuum peak intensity",
+   "value": "18.0",
+   "uncertainty": "1.8",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| IRS 48 | 0.5, 108 $\\times$ 72 | $-73$ | 16 | $18.0\\pm1.8$ | 259 | $50.996_{-0.005}^{+0.003}$ | $100.12_{-0.04}^{+0.04}$ | $83.8_{-0.3}^{+0.3}$ | $107.8_{-0.2}^{+0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRS 48 azimuthal contrast (peak-to-azimuthal-average)",
+   "value": "259",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| IRS 48 | 0.5, 108 $\\times$ 72 | $-73$ | 16 | $18.0\\pm1.8$ | 259 | $50.996_{-0.005}^{+0.003}$ | $100.12_{-0.04}^{+0.04}$ | $83.8_{-0.3}^{+0.3}$ | $107.8_{-0.2}^{+0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRS 48 arc azimuthal FWHM",
+   "value": "79.0",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "galario model and residuals",
+     "quote": "and an arc centred at $(\\sim0.42\\ensuremath{''},197\\degree)$ ($56~\\rm au$) with radial width $\\sim0.07\\ensuremath{''}$ ($9~\\rm au$) and an FWHM of $79.0\\degree$."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142527 continuum peak intensity",
+   "value": "85.8",
+   "uncertainty": "8.6",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 142527 | 0.0, 299 $\\times$ 203 | 79 | 252 | $85.8\\pm8.6$ | 37 | $29.079_{-0.004}^{+0.008}$ | $182.96_{-0.03}^{+0.05}$ | $-38.1_{-0.2}^{+0.2}$ | $-154.6_{-0.2}^{+0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142527 azimuthal contrast (peak-to-azimuthal-average)",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 142527 | 0.0, 299 $\\times$ 203 | 79 | 252 | $85.8\\pm8.6$ | 37 | $29.079_{-0.004}^{+0.008}$ | $182.96_{-0.03}^{+0.05}$ | $-38.1_{-0.2}^{+0.2}$ | $-154.6_{-0.2}^{+0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142527 two arcs azimuthal FWHMs",
+   "value": "82 and 107",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "galario model and residuals",
+     "quote": "and two asymmetric arcs centred at $(\\sim1.2\\ensuremath{''},298\\degree)$ and $(\\sim1.3\\ensuremath{''},227\\degree)$, with radial width of $\\sim0.14\\ensuremath{''}$ and $\\sim0.18\\ensuremath{''}$ and an azimuthal FWHM of $82\\degree$ and $107\\degree$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Distance adopted for HD 34700A to convert angular sizes to physical units (implied ~350 pc from 0.46'' = 161 au and 0.53'' = 186 au, but not explicitly stated in the text)",
+  "Deconvolver algorithm (e.g. hogbom vs multiscale) and nterms in CASA tclean",
+  "Time and spectral averaging applied to the visibility tables prior to galario fitting",
+  "Exact coordinates and PA of the elliptic mask used to subtract companion HD 34700B",
+  "Resolution of discrepancy between text (robust = 0.0 for all targets) and Table 1 (robust = 0.5 for IRS 48)",
+  "Resolution of discrepancy between Section 2.2 (Band 6 at 218.0 and 232.6 GHz, Lmax = 500 m and 2.5 km) and Appendix Table 2 (344-355 GHz, baselines 33-214 m and 158-1417 m)"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibrated measurement sets from Stadler et al. (2026), Yang et al. (2023), and Temmink et al. (2023), or exact self-calibration scripts",
+  "Exact spectral/temporal averaging applied to visibilities before running galario",
+  "Exact normalization/functional prefactors of G, Go, GR, and GAa in Equations 1-3",
+  "Opacity table file used for the 230 GHz synthetic image of the PLUTO simulation"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The imaging parameters, parametric visibility model equations, priors, MCMC setup, analytical dust trapping parameters, and PLUTO hydrodynamic setup are all thoroughly documented, and all three ALMA project codes are public. However, self-calibration is inherited from external papers, visibility averaging prior to galario fitting is not specified, and minor unit/table inconsistencies exist.",
+ "rediscovery_reason": "All three ALMA datasets are publicly available in the archive, the continuum imaging and galario visibility modelling recipe is well-specified using standard open-source tools (CASA, gofish, galario, emcee), and the main morphological parameters and contrasts are crisp numeric benchmarks.",
+ "source_card": "cards/2026A%26A...709A.174F/sonnet/card.md"
+}

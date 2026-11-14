@@ -1,0 +1,973 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...882..136A",
+  "title": "The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Evolution of the Molecular Gas in CO-selected Galaxies",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Aravena, Manuel",
+  "n_authors": 34,
+  "arxiv_id": "1903.09162",
+  "doi": "10.3847/1538-4357/ab30df",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00324.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We analyze the interstellar medium properties of a sample of sixteen bright CO line emitting galaxies identified in the ALMA Spectroscopic Survey in the Hubble Ultra Deep Field (ASPECS) Large Program."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "Hubble Ultra Deep Field (ASPECS LP 17-pointing mosaic)",
+     "coordinates": {
+      "value": "03:32:38.0, -27:47:00 (mosaic center)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA band 3",
+        "quote": "The observations were performed using a 17-point mosaic centered at (R.A., Decl)=(03:32:38.0, $-27$:47:00) in the HUDF."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "CO sources at z=1.037-3.601",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA band 3",
+        "quote": "The observations were performed using a 17-point mosaic centered at (R.A., Decl)=(03:32:38.0, $-27$:47:00) in the HUDF."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "CO redshifts of detected lines, matched to optical/MUSE counterparts",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA band 3",
+        "quote": "The observations were performed using a 17-point mosaic centered at (R.A., Decl)=(03:32:38.0, $-27$:47:00) in the HUDF."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the molecular gas properties (depletion times, gas fractions, main-sequence offset) of CO-selected ASPECS galaxies compare with targeted CO samples, and what is the contribution of starburst, main-sequence and passive galaxies to the cosmic molecular gas density?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we measure the contribution of galaxies above, below, and on the galaxy main sequence to the total cosmic molecular gas density at different lookback times."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00324.L",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "ALMA band 3 observations were obtained during Cycle 4 as part of the large program project 2016.1.00324.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3, 84.0-115.0 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA band 3",
+      "quote": "covering the ALMA band 3, from 84.0 to 115.0 GHz in 5 frequency setups."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1, 3-2, 4-3 (1-0 also covered)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "Our ALMA band 3 scan provides coverage for the redshifted line emission from CO(1-0), CO(2-1), CO(3-2) and CO(4-3)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-3",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA band 3",
+      "quote": "Observations were performed in a compact array configuration, C40-3, yielding a synthesized beam of $1.75''\\times1.49''$ at 99.5 GHz."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.75'' x 1.49'' at 99.5 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA band 3",
+      "quote": "yielding a synthesized beam of $1.75''\\times1.49''$ at 99.5 GHz."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "~0.2 mJy/beam per 23.5 km/s channel",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA band 3",
+      "quote": "The final cube reaches a sensitivity of $\\sim 0.2$ mJy beam$^{-1}$ per 23.5 km s$^{-1}$ channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST / CANDELS / XDF",
+     "provided": {
+      "value": "optical/near-IR photometry and photo-z",
+      "evidence": [
+       {
+        "loc": "2.3 Ancillary data and SEDs",
+        "quote": "we make use of this optical and infrared coverage of the XDF, including the photometric and spectroscopic redshift information available from (cite: skelton14)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "MUSE",
+     "provided": {
+      "value": "spectroscopic redshifts",
+      "evidence": [
+       {
+        "loc": "2.3 Ancillary data and SEDs",
+        "quote": "The MUSE spectroscopic survey provides spectroscopic redshifts for optically faint galaxies at the $\\sim30$ magnitude level"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "PHIBSS1/2 CO z>1 comparison sample (87 sources)",
+      "evidence": [
+       {
+        "loc": "4.1 CO-selected galaxies in context",
+        "quote": "This yields a sample of 87 PHIBSS1/2 CO sources at $z>1$, compared to the 18 ASPECS CO sources"
+       }
+      ]
+     },
+     "citation": "(cite: tacconi18)"
+    },
+    {
+     "what": {
+      "value": "CO excitation ratios r21=0.76, r31=0.42, r41=0.31",
+      "evidence": [
+       {
+        "loc": "3.1 CO measurements",
+        "quote": "we adopt $r_{21}=0.76\\pm0.09$, $r_{31}=0.42\\pm0.07$ and $r_{41}=0.31\\pm0.06$."
+       }
+      ]
+     },
+     "citation": "(cite: daddi15)"
+    },
+    {
+     "what": {
+      "value": "MS relation used to normalize sSFR",
+      "evidence": [
+       {
+        "loc": "4.1 CO-selected galaxies in context",
+        "quote": "Also shown, are the observational relationships derived for the MS galaxies as a function of redshift (cite: schreiber15)."
+       }
+      ]
+     },
+     "citation": "(cite: schreiber15)"
+    },
+    {
+     "what": {
+      "value": "Cosmic molecular gas density from ASPECS",
+      "evidence": [
+       {
+        "loc": "4.3 Molecular gas budget",
+        "quote": "total molecular gas mass obtained from the recent measurement of cosmic molecular gas density ($\\rho_{{\\rm H}_2}$) using ASPECS data (cite: decarli19)."
+       }
+      ]
+     },
+     "citation": "(cite: decarli19)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, independent procedure following the ALMA pipeline closely",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "The data were calibrated and imaged using the CASA software, using an independent procedure, which follows the ALMA pipeline closely."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "TCLEAN",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "The visibilities were inverted using the TCLEAN task."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "none; dirty cubes used",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "Since no very bright sources are found in the data cube, we used the ‘dirty’ cubes."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "~3'' taper for a test cube",
+     "evidence": [
+      {
+       "loc": "Appendix: Flux measurements in tapered cubes",
+       "quote": "we created a new version of the ASPECS band-3 data cube, tapered to an angular resolution of $\\sim3''$"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "rebinned to 7.813 MHz channels (23.5 km/s)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "The data were rebinned to a channel resolution of 7.813 MHz, corresponding to 23.5 km s$^{-1}$ at 99.5 GHz."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Survey setup and data reduction",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The ASPECS LP band 3 survey setup and data reduction steps are discussed in detail by (cite: decarli19)."
+       }
+      ]
+     },
+     "from_reference": "(cite: decarli19)"
+    },
+    {
+     "what": {
+      "value": "Line search procedures and CO flux measurement",
+      "evidence": [
+       {
+        "loc": "3.1 CO measurements",
+        "quote": "Following (cite: gonzalezlopez19), the total CO intensities were derived from the ASPECS band-3 data cube by creating moment-0 images"
+       }
+      ]
+     },
+     "from_reference": "(cite: gonzalezlopez19)"
+    },
+    {
+     "what": {
+      "value": "MAGPHYS SED fitting setup",
+      "evidence": [
+       {
+        "loc": "2.3 Ancillary data and SEDs",
+        "quote": "We fit the SED of the continuum-detected galaxies using the high-redshift extension of MAGPHYS (cite: dacunha08; dacunha15), as described in detail in (cite: boogaard19)."
+       }
+      ]
+     },
+     "from_reference": "(cite: boogaard19)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Number of channels/velocity range used in moment-0 and spatial integration region for fluxes",
+    "Details of the CASA version, tclean parameters (weighting, robust, cell, size)",
+    "MAGPHYS priors and photometry catalog details (in companion papers)",
+    "Exact PHIBSS1/2 subsample selection list",
+    "Uncertainty treatment for gas budget, including binomial errors"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Select CO line emitters",
+    "method": {
+     "value": "LineSeeker search with kernels 50-500 km/s; fidelity F=1-Nneg/Npos >0.9",
+     "evidence": [
+      {
+       "loc": "2.2 CO sample",
+       "quote": "The probability of each line candidate of not being due to noise peaks, or *Fidelity*, $F$, was assessed by using the number of negative line sources in the data cube, with $F=1-N_{\\rm Neg}/N_{\\rm Pos}$."
+      }
+     ]
+    },
+    "software": [
+     "LineSeeker",
+     "findclumps",
+     "MF3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "fidelity > 0.9 gives 16 candidates",
+      "evidence": [
+       {
+        "loc": "2.2 CO sample",
+        "quote": "We select the sources for which the *fidelity* is above 0.9. This yields 16 selected line candidates."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Two other independent line searches (findclumps, MF3D) agree",
+     "evidence": [
+      {
+       "loc": "2.2 CO sample",
+       "quote": "All the algorithms coincide in the statistical reliability of these sources."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure CO fluxes and luminosities",
+    "method": {
+     "value": "Moment-0 maps, integrated flux, L'CO from Solomon 1997 formula, converted to CO(1-0) with r_J1",
+     "evidence": [
+      {
+       "loc": "3.1 CO measurements",
+       "quote": "We compute the CO luminosities, $L'_{\\rm CO}$ in units of K km s$^{-1}$ pc$^{2}$, following (cite: solomon97):"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "r21=0.76, r31=0.42, r41=0.31 from Daddi et al.",
+      "evidence": [
+       {
+        "loc": "3.1 CO measurements",
+        "quote": "we adopt $r_{21}=0.76\\pm0.09$, $r_{31}=0.42\\pm0.07$ and $r_{41}=0.31\\pm0.06$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Fluxes compared with tapered (~3'') cube; agree within uncertainties",
+     "evidence": [
+      {
+       "loc": "Appendix: Flux measurements in tapered cubes",
+       "quote": "The flux estimates for almost all sources are in excellent agreement within the uncertainties."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive molecular gas masses",
+    "method": {
+     "value": "M_H2 = alpha_CO L'CO(1-0)",
+     "evidence": [
+      {
+       "loc": "3.1 CO measurements",
+       "quote": "we assume a value $\\alpha_{\\rm CO}=3.6$ $M_\\ensuremath{\\odot}$ (K km s$^{-1}$ pc$^2$)$^{-1}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO = 3.6 Msun (K km/s pc^2)^-1",
+      "evidence": [
+       {
+        "loc": "3.1 CO measurements",
+        "quote": "we assume a value $\\alpha_{\\rm CO}=3.6$ $M_\\ensuremath{\\odot}$ (K km s$^{-1}$ pc$^2$)$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with metallicity-dependent alpha_CO (Tacconi18): median 4.4, <0.1 dex difference",
+     "evidence": [
+      {
+       "loc": "3.1 CO measurements",
+       "quote": "This will yield $<0.1$ dex differences in the molecular gas mass estimates throughout this study with respect to the metallicity dependent approach."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive SFR and stellar mass by SED fitting",
+    "method": {
+     "value": "MAGPHYS high-z extension fitted to UV-to-IR photometry plus ALMA 1.2 and 3 mm fluxes at the CO redshift",
+     "evidence": [
+      {
+       "loc": "2.3 Ancillary data and SEDs",
+       "quote": "For each individual galaxy, we perform SED fits to the photometry fixed at the CO redshift."
+      }
+     ]
+    },
+    "software": [
+     "MAGPHYS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "MAGPHYS energy-balance; Herschel SPIRE excluded",
+     "evidence": [
+      {
+       "loc": "2.3 Ancillary data and SEDs",
+       "quote": "We do not include *Herschel* SPIRE photometry in the fits since its angular resolution is very poor"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare with PHIBSS1/2 and scaling relations",
+    "method": {
+     "value": "KS tests of distributions; offsets from Schreiber15 MS; t_dep=Mmol/SFR, mu_mol=Mmol/Mstars",
+     "evidence": [
+      {
+       "loc": "4.1 CO-selected galaxies in context",
+       "quote": "we computed the two sided Kolmogorov Smirnov (KS) statistic, which yields the probability that two datasets are drawn from the same distribution."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "starburst log(delta_MS)>0.4; passive <-0.4",
+      "evidence": [
+       {
+        "loc": "4.3 Molecular gas budget",
+        "quote": "with log$(\\delta_{\\rm MS})= log$(sSFR/sSFR$_{\\rm MS})$ above 0.4 (“starburst”); galaxies below the MS, with log$(\\delta_{\\rm MS})<-0.4$ (“passive”)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Molecular gas budget by galaxy type",
+    "method": {
+     "value": "Sum of gas masses per type in two z bins divided by total cosmic H2 density from ASPECS",
+     "evidence": [
+      {
+       "loc": "4.3 Molecular gas budget",
+       "quote": "we thus compute this contribution as the sum of all the molecular gas masses from galaxies of this particular type divided by the total molecular gas mass"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "bins 1.0<z<1.7 (10 sources) and 2.0<z<3.1 (4 sources)",
+      "evidence": [
+       {
+        "loc": "4.3 Molecular gas budget",
+        "quote": "Each of these redshift bins contains 10 and 4 sources, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration, imaging (tclean), imfit for CO sizes",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA band 3",
+       "quote": "The data were calibrated and imaged using the CASA software"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LineSeeker",
+    "version": "not stated",
+    "used_for": {
+     "value": "line search in the data cube",
+     "evidence": [
+      {
+       "loc": "2.2 CO sample",
+       "quote": "To inspect the data cubes we used the `LineSeeker` line search routine (cite: gonzalezlopez17)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGPHYS",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting for SFR, Mstar",
+     "evidence": [
+      {
+       "loc": "2.3 Ancillary data and SEDs",
+       "quote": "MAGPHYS delivers estimates for the stellar mass, star-formation rate (SFR), dust mass, and IR luminosity."
+      }
+     ]
+    }
+   },
+   {
+    "name": "3DBarolo",
+    "version": "not stated",
+    "used_for": {
+     "value": "tilted-ring modeling of velocity fields",
+     "evidence": [
+      {
+       "loc": "Appendix: CO kinematics",
+       "quote": "We take advantage of the software $^{\\rm 3D}$Barolo (cite: diteodoro15) to perform a tilted-ring modeling of the gas velocity field."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Fraction of CO-selected sample off the MS",
+    "value": "~30% (5 of 16)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find that $\\sim30\\%$ of the galaxies (5 out of 16) are offset from the galaxy main sequence"
+     }
+    ]
+   },
+   {
+    "quantity": "KS probability for SFR distribution vs PHIBSS1/2",
+    "value": "2.3e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 CO-selected galaxies in context",
+      "quote": "We find KS probabilities of 0.05, 2.3$\\times10^{-4}$ and 0.06 for the stellar mass, SFR and molecular gas mass, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "KS probabilities for mu_mol and t_dep",
+    "value": "0.33 and 0.0012",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Gas depletion timescales and gas fractions",
+      "quote": "A KS test comparing the distributions of $\\mu_{\\rm mol}$ and $t_{\\rm dep}$ yields probabilities of 0.33 and 0.0012, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Median alpha_CO (metallicity-dependent, excluding 3mm.13)",
+    "value": "4.4",
+    "uncertainty": "std 0.5",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 CO measurements",
+      "quote": "we find a median of 4.4 $M_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ and a standard deviation of 0.5"
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical masses of 3mm.4, 3mm.5, 3mm.7",
+    "value": "8.1e10, 2.7e11, 1.4e11",
+    "uncertainty": "2.4e10, 0.8e11, 0.5e11",
+    "units": "Msun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Appendix: CO kinematics",
+      "quote": "$(8.1\\pm2.4)\\times10^{10}$ M$_\\odot$, $(2.7\\pm0.8)\\times10^{11}$ M$_\\odot$ and $(1.4\\pm0.5)\\times10^{11}$ M$_\\odot$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "[CI]-based H2 mass limit for 3mm.13",
+    "value": "<1.9e10",
+    "uncertainty": "3 sigma",
+    "units": "Msun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Appendix: Search for [CI]",
+      "quote": "we find a $3\\sigma$ limit for the \\[CI\\]-based molecular gas mass $M({\\rm H}_2)^{\\rm CI}<1.9\\times10^{10}$ $M_\\odot$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "ASPECS CO galaxies follow standard t_dep and mu_mol scaling relations with sSFR and redshift despite wider parameter range",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "the ASPECS CO-selected sources follow remarkably the standard scaling relations trends of $t_{\\rm dep}$ and $\\mu_{\\rm mol}$ with sSFR and redshift."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CO-selected galaxies cover a different range of properties than targeted CO samples",
+    "experiment": "Compare distributions of Mstar, SFR, Mmol with PHIBSS1/2 z>1 via KS tests",
+    "result": "Lower median Mstar and SFR; KS p=0.05 and 2.3e-4",
+    "finding": "ASPECS probes lower SFR and Mstar parameter space",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 CO-selected galaxies in context",
+      "quote": "These low values of the KS probability for the stellar mass and SFR distributions point to the differences in the selection between the ASPECS and PHIBSS1/2 surveys"
+     }
+    ]
+   },
+   {
+    "hypothesis": "CO-selected galaxies follow standard scaling relations",
+    "experiment": "t_dep and mu_mol versus sSFR, redshift",
+    "result": "Most follow t_dep~1 Gyr and expected trends",
+    "finding": "Standard relations extend to CO-selected sample",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "The ASPECS CO galaxies are found to tightly follow the SFR-$M_{\\rm mol}$ relation, with a typical molecular gas depletion timescale of 1 Gyr"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which galaxy types dominate the cosmic molecular gas density",
+    "experiment": "Split sample into starburst/MS/passive and compute fractions of the ASPECS rho_H2",
+    "result": "MS dominant; passive contribution tentatively rises toward z~1",
+    "finding": "MS galaxies are the largest contributor",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We conclude that main sequence galaxies are the largest contributor to the molecular gas density at any redshift probed by our observations (z$\\sim$1$-$3)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "CO selection avoids biases of galaxies pre-selected from optical/near-IR surveys",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Under this approach, galaxies are selected purely based on their molecular gas content."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Metallicity-dependent alpha_CO checked; fixed 3.6 adopted",
+     "evidence": [
+      {
+       "loc": "3.1 CO measurements",
+       "quote": "for consistency with other papers in this series, in the following we assume a fixed $\\alpha_{\\rm CO}=3.6$"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Low number of sources gives large statistical uncertainties; half the sample unresolved in CO",
+     "evidence": [
+      {
+       "loc": "4.3 Molecular gas budget",
+       "quote": "While the analysis is still limited by the admittedly low number of sources (and thus large statistical uncertainties)"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Fixed alpha_CO and literature CO excitation ratios dominate systematic uncertainty in gas masses",
+    "SED-derived SFR and Mstar systematics up to 0.3 dex affect MS classification",
+    "Tiny samples (4 sources in high-z bin) make budget fractions weak",
+    "No fitting details for t_dep comparisons"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Large program data referenced by project code; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: 2016.1.00324.L."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Full companion-paper procedures (Decarli19, Gonzalez-Lopez19, Boogaard19)",
+    "Source SED catalog and PHIBSS subsample list"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB (band 3 mosaic cubes, 5 setups)",
+   "score_inferred": 3,
+   "score_reason": "Key reduction and measurements are delegated to companion papers; table values are given, so the downstream analysis is largely reproducible.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe depends on companion papers' catalogs and SED fits; not self-contained."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: decarli19)",
+     "why": "survey strategy, data reduction, CO LF"
+    },
+    {
+     "citation": "(cite: gonzalezlopez19)",
+     "why": "line search and CO flux measurements"
+    },
+    {
+     "citation": "(cite: boogaard19)",
+     "why": "optical IDs and SED fitting"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: popping19)",
+     "why": "theoretical CO LF predictions"
+    },
+    {
+     "citation": "(cite: walter16)",
+     "why": "ASPECS pilot"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASPECS",
+    "PHIBSS1/2",
+    "MUSE HUDF"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-a2bb77f1dd49d4a2caa769f0e263a4e3",
+  "batch_id": "msgbatch_01MY66sGvKajpLU4bUBXRVRf",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:58:16",
+  "usage": {
+   "input_tokens": 37546,
+   "output_tokens": 8607,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.081187,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 82,
+   "stated": 46,
+   "rate": 0.561
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:10",
+  "custom_id": "repair-sonnet-32a937eff68d42c0a9f62567a794ad1c",
+  "fixed": [
+   {
+    "path": "reproducibility.data_public_as_stated.evidence[0]",
+    "old": null,
+    "new": "This paper makes use of the following ALMA data: 2016.1.00324.L."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

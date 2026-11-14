@@ -1,0 +1,291 @@
+{
+ "bibcode": "2026ApJ..1003...64Y",
+ "title": "Compact Hydrogen Sulfide Emission Indicates Sulfur-bearing Ice Sublimation in the Inner Disk of HD 163296",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae5f95",
+ "arxiv_id": "2604.11408",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Where do H2S, SO and SO2 emit in the HD 163296 disk, and do they trace sulfur-bearing ice sublimation in the inner disk?",
+ "alma_project_codes": [
+  "2021.1.00535.S",
+  "2015.1.01259.S",
+  "2011.0.00863.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "≈0.3'' (≈30 au)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "High-resolution 0.88 mm dust continuum image",
+    "evidence": [
+     {
+      "loc": "3 Analysis & results",
+      "quote": "along with the high-resolution 0.88 mm dust continuum image taken from (cite: Guidi2022)"
+     }
+    ]
+   },
+   "citation": "(cite: Guidi2022)"
+  },
+  {
+   "what": {
+    "value": "Disk geometry P.A.=133.3 deg, i=46.7 deg",
+    "evidence": [
+     {
+      "loc": "3 Analysis & results",
+      "quote": "known disk geometries ($\\mathrm{P.A.}=133.3\\ensuremath{^\\circ}$, $i=46.7\\ensuremath{^\\circ}$; (cite: Huang2018))"
+     }
+    ]
+   },
+   "citation": "(cite: Huang2018)"
+  },
+  {
+   "what": {
+    "value": "C34S J=6-5 radial profile",
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "radial intensity profiles of the C$^{34}$S $J=6$–5 line (taken from (cite: Law2025))"
+     }
+    ]
+   },
+   "citation": "(cite: Law2025)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass 2.0 Msun and systemic velocity 5.76 km/s",
+    "evidence": [
+     {
+      "loc": "3 Analysis & results",
+      "quote": "$v_\\mathrm{sys}\\approx5.76$ km s$^{-1}$ (cite: Teague2019; Teague2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Teague2021)"
+  },
+  {
+   "what": {
+    "value": "Comet 67P and molecular cloud NIR38 abundances relative to water",
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "compare them with those in the molecular cloud NIR38 (cite: McClure2023) and comet 67P/C-G (cite: Calmonte2016)"
+     }
+    ]
+   },
+   "citation": "(cite: McClure2023; Calmonte2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image",
+   "method": "Align execution blocks, self-calibrate continuum, apply to full data, subtract continuum, tclean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5, multiscale [0,5,15,25]"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and spectra",
+   "method": "Integrate ±20 km/s about vsys; extract spectra from two-beam elliptical aperture",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Confirm detections",
+   "method": "Matched filter with Keplerian disk (Rout 10 au) and SO2 stacking",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit line profiles",
+   "method": "Thin Keplerian disk, LTE, thermal broadening; free R, T, N per species plus common vsys (9 params)",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "100 walkers, 15,000 steps, 2,000 burn-in"
+   ],
+   "assumptions": [
+    "H2S ortho-to-para ratio 3; LTE; SO2 radius same as SO; M*=2.0 Msun; i=46.7 deg"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Column density ratios and water-relative abundances",
+   "method": "Ratios from posterior samples with T>300 K; reanalyze archival water data for 3 sigma upper limits and compute abundances relative to water",
+   "software": [],
+   "key_parameters": [
+    "line width 40 km/s; point source; H2O/H2(18)O=557; HDO/H2O=2e-3; H2O abundance 1e-4"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H2S emitting radius",
+   "value": "3.0",
+   "uncertainty": "+0.6/-0.3",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| H$_2$S  | $3.0_{-0.3}^{+0.6}$ | $>120$ | $>1.0\\times10^{16}$  | $5.7^{+0.7}_{-0.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO emitting radius",
+   "value": "4.6",
+   "uncertainty": "+0.5/-0.6",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SO      | $4.6^{+0.5}_{-0.6}$ | $>92$  | $>5.7\\times 10^{15}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S temperature lower limit",
+   "value": ">120",
+   "uncertainty": "95% HDI lower end",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$>120$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S column density lower limit",
+   "value": ">1.0e16",
+   "uncertainty": "95% HDI lower end",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$>1.0\\times10^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO/H2S column ratio (T>300 K)",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "to be 0.13 and 0.46, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2/H2S column ratio (T>300 K)",
+   "value": "0.46",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "to be 0.13 and 0.46, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "H2S flux",
+   "value": "39",
+   "uncertainty": "10",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$39\\pm10$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO flux",
+   "value": "52",
+   "uncertainty": "12",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$52\\pm12$"
+    }
+   ]
+  },
+  {
+   "quantity": "Water 3σ flux upper limits (H2O, H2-18O, HDO)",
+   "value": "69, 96, 48",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "to be 69, 96, and 48  mJy km s$^{-1}$ for H$_2$O, H$_2$$^{18}$O, and HDO lines"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2CN column density",
+   "value": "1.1e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Additional Line Detections",
+     "quote": "we derived a disk-averaged CH$_2$CN column density of $\\approx1.1\\times10^{13}$ cm$^{-2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum",
+  "Self-calibration solution intervals",
+  "Image size and cell size",
+  "Mean of the two SO2 line partition functions/molecular weights used",
+  "Water line frequencies and ARI-L product specifics for 2015.1.01259.S reanalysis",
+  "How the 1.2 km/s model was binned/convolved to channel resolution"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "Self-cal solints",
+  "Image size/cell",
+  "Exact model binning"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear fitting recipe with priors, but several imaging and self-cal details unstated.",
+ "rediscovery_reason": "Public data, nearly complete recipe, numeric results (R, T, N limits).",
+ "source_card": "cards/2026ApJ..1003...64Y/sonnet/card.md"
+}

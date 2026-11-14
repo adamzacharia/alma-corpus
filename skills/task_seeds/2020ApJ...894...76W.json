@@ -1,0 +1,269 @@
+{
+ "bibcode": "2020ApJ...894...76W",
+ "title": "The MESAS Project: ALMA Observations of the F-type Stars γ Lep, γ Vir A, and γ Vir B",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab8467",
+ "arxiv_id": "2003.12284",
+ "fields": [
+  "stellar_physics",
+  "debris_disks"
+ ],
+ "question": "What are the submm/mm fluxes and chromospheric structure of debris-poor F-type stars, and is there short-term variability or bias for debris disk studies?",
+ "alma_project_codes": [
+  "2017.1.00698.S",
+  "2018.1.01149.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.29 mm) and Band 7 (0.87 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "gamma Lep 0.25x0.20\" (B7), 0.36x0.30\" (B6); gamma Vir 0.79x0.69\" (B7), 1.43x1.25\" (B6)",
+  "sensitivity": "gamma Lep 30 (B7), 10 (B6) uJy/beam; gamma Vir 15 (B7), 10 (B6) uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel/PACS fluxes for gamma Lep",
+    "evidence": [
+     {
+      "loc": "3.3 Stellar atmosphere models",
+      "quote": "the *Herschel*/PACS data for $\\gamma$ Lep (cite: montesinos16)"
+     }
+    ]
+   },
+   "citation": "Montesinos et al. 2016 (cite: montesinos16)"
+  },
+  {
+   "what": {
+    "value": "Solar semi-empirical model used as starting atmosphere",
+    "evidence": [
+     {
+      "loc": "3.3 Stellar atmosphere models",
+      "quote": "a semi-empirical Solar model (cite: avrett) in hydrostatic equilibrium was adopted as the starting point"
+     }
+    ]
+   },
+   "citation": "Avrett & Loeser 2008 (cite: avrett)"
+  },
+  {
+   "what": {
+    "value": "Stellar parameters (distance, radius, Teff) in Table",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Effective temperature, T$_{eff}$ (K) | 5800$\\pm$5$^c$ | 6255$\\pm$70$^b$ | 6730$\\pm$300$^d$ | 6694$^e$"
+     }
+    ]
+   },
+   "citation": "footnotes a-e not given in text"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "CLEAN with natural weighting, threshold 1/2 sigma_rms",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure stellar fluxes",
+   "method": "Point-source uvmodelfit to visibilities per EB",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Stars are point sources; absolute flux uncertainty ~10%"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Characterize background source near gamma Vir",
+   "method": "Point and Gaussian uvmodelfit; Gaussian preferred; spectral index and beta from two bands",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Rayleigh-Jeans regime, S_nu ∝ nu^(2+beta)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit semi-empirical chromosphere models",
+   "method": "KINICH-PAKAL iteratively modifies temperature/density profiles, ionization and opacity of a solar base model to fit ALMA and Herschel data",
+   "software": [
+    "KINICH-PAKAL"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Non-LTE ionization-excitation and radiative transfer; hydrostatic equilibrium Avrett & Loeser solar starting model"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Assess short-term variability",
+   "method": "uvmodelfit applied to each on-source scan (6-8 min between phase calibrations); compare stars with background source",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Background source has constant flux"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate debris excess and mass for gamma Vir B",
+   "method": "Compare Band 6 flux with Sirius-like (~0.6 TB) and full-blackbody extrapolations; debris masses per White et al. 2017",
+   "software": [],
+   "key_parameters": [
+    "ring at 4 au; grain density 2.5 g cm^-3; 2-4 au disk, 10 um to 25 km, q~3.5"
+   ],
+   "assumptions": [
+    "Grains perfect emitters (mm-grain case)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "gamma Lep flux 0.87 mm",
+   "value": "707",
+   "uncertainty": "17 (model); 30 obs",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\gamma$ Lep | 0.87 | 2018 Sep 22 | J0522-3627 | 707 | 17 | 30 | 2.83 |"
+    }
+   ]
+  },
+  {
+   "quantity": "gamma Lep flux 1.29 mm",
+   "value": "345",
+   "uncertainty": "6 (model); 10 obs",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\gamma$ Lep | 1.29 | 2018 Sep 28 | J0522-3627 | 345 | 6 | 10 | 2.82 |"
+    }
+   ]
+  },
+  {
+   "quantity": "gamma Vir B flux 1.29 mm (2019 Mar 18)",
+   "value": "356",
+   "uncertainty": "8 (model)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\gamma$ Vir B | 1.29 | 2019 Mar 18 | J1256-0547 | 356 | 8 | 14 | 3.48 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Background source Band 7 flux",
+   "value": "430",
+   "uncertainty": "25",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Additional source",
+     "quote": "The Band 7 total flux is $430\\pm25~\\mu \\rm Jy$ and the Band 6 total flux is $160\\pm16~\\mu \\rm Jy$."
+    }
+   ]
+  },
+  {
+   "quantity": "Background source Band 6 flux",
+   "value": "160",
+   "uncertainty": "16",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Additional source",
+     "quote": "The Band 7 total flux is $430\\pm25~\\mu \\rm Jy$ and the Band 6 total flux is $160\\pm16~\\mu \\rm Jy$."
+    }
+   ]
+  },
+  {
+   "quantity": "Background source spectral index",
+   "value": "≈2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Additional source",
+     "quote": "This corresponds to a spectral index $\\alpha\\approx 2.5$ and a dust emissivity $\\beta\\approx 0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "gamma Lep temperature minimum",
+   "value": "4800 K at 750 km (Teff/TRmin = 0.76)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Semi-empirical chromospheric model",
+     "quote": "we see a temperature minimum of T$_{R, min}$ = 4800 K (T$_{eff}$/T$_{R, min}$ = 0.76) at a height of 750 km above the photosphere"
+    }
+   ]
+  },
+  {
+   "quantity": "Debris excess for gamma Vir B (Sirius-like / blackbody)",
+   "value": "180 / 65",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Relevance for debris disk studies",
+     "quote": "we would get an excess of 180 $\\mu$Jy and 65 $\\mu$Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total debris mass in disk (size distribution)",
+   "value": "0.02-0.07",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Relevance for debris disk studies",
+     "quote": "This would lead us to infer $0.02-0.07\\,\\rm M_{\\oplus}$ of total debris in the disk"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN mask, niter, cell and image size",
+  "Whether pipeline products were used or manually re-imaged; spectral line flagging",
+  "uvmodelfit starting parameters",
+  "KINICH-PAKAL settings, convergence criteria and weighting of data points",
+  "Source of stellar parameters (footnotes a-e)",
+  "How per-scan time series were binned and uncertainties assigned",
+  "Gamma Vir EB combination procedure"
+ ],
+ "missing_for_reproduction": [
+  "Model parameter files and fitting setup for KINICH-PAKAL",
+  "Imaging parameters",
+  "Time series binning details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Flux measurement is easily repeatable with archival data, but atmospheric modeling and variability analysis lack details.",
+ "rediscovery_reason": "Data are from ALMA cycle 5/6 projects likely public, and fluxes via uvmodelfit are numeric and reproducible.",
+ "source_card": "cards/2020ApJ...894...76W/sonnet/card.md"
+}

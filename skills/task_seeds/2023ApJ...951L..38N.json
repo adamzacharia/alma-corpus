@@ -1,0 +1,246 @@
+{
+ "bibcode": "2023ApJ...951L..38N",
+ "title": "Evidence for Ubiquitous Carbon Grain Destruction in Hot Protostellar Envelopes",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/acdde4",
+ "arxiv_id": "2306.11778",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Search for signatures of carbon grain (refractory organics) destruction in hot protostellar envelopes by comparing hot and warm gas components of oxygen-rich and oxygen-poor organic molecules across 37 high-mass protostars.",
+ "alma_project_codes": [
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' to ~1.5''",
+  "sensitivity": "line rms ~0.2 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Warm column densities and emitting areas for CH3OH, CH3CN, HNCO, and C2H3CN (measured from 13C or 18O isotopologues)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We take the warm column densities for the above species from (cite: Nazari2022ALMAGAL), who measure them from the $^{13}$C or $^{18}$O isotopologues of the targeted molecules"
+     },
+     {
+      "loc": "Spectral fitting",
+      "quote": "We use the CASSIS spectral analysis tool ((cite: Vastel2015)) to fit the spectra assuming the same emitting area that was used in (cite: Nazari2022ALMAGAL) for the warm component."
+     }
+    ]
+   },
+   "citation": "(cite: Nazari2022ALMAGAL)"
+  },
+  {
+   "what": {
+    "value": "Line lists, frequencies, quantum numbers, E_up, and A_ij of considered lines",
+    "evidence": [
+     {
+      "loc": "Spectral fitting",
+      "quote": "The line lists are taken from the Cologne Database for Molecular Spectroscopy (CDMS; (cite: Muller2001); (cite: Muller2005))."
+     },
+     {
+      "loc": "Spectral fitting",
+      "quote": "Frequencies, quantum numbers, $E_{\\rm up}$ and $A_{\\rm ij}$ of the considered lines are given in Tables B.1 and E.7 of (cite: vanGelder2022) and (cite: Nazari2022ALMAGAL)."
+     }
+    ]
+   },
+   "citation": "CDMS ((cite: Muller2001); (cite: Muller2005)), (cite: vanGelder2022), (cite: Nazari2022ALMAGAL)"
+  },
+  {
+   "what": {
+    "value": "Isotope ratio relations as a function of Galactic center distance",
+    "evidence": [
+     {
+      "loc": "Spectral fitting",
+      "quote": "The isotope ratios in that work were calculated from the relations given in (cite: Wilson1994) and (cite: Milam2005) and the distances of the objects from the Galactic center."
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1994), (cite: Milam2005)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract single-pixel spectra toward 37 protostars",
+   "method": "Use pre-extracted spectra from the peak pixel of the CH3CN 12_4-11_4 moment zero map as prepared in earlier work.",
+   "software": [],
+   "key_parameters": [
+    "CH3CN 12_4-11_4 moment zero peak pixel"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit hot gas column densities and excitation temperatures",
+   "method": "Fit optically thin high-excitation lines (E_up >= 400 K) of main isotopologues of CH3CN, CH3OH, HNCO, and C2H3CN using a fit-by-eye LTE spectral model in CASSIS while ignoring E_up < 400 K lines.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "E_up > 400 K lines only (CH3CN: 419, 526, 782, 931 K; CH3OH: 746, 776, 802, 1181 K, ignoring 508 K; HNCO: 448, 750, 1050, 1450 K; C2H3CN: ~435.0 K)",
+    "Fixed T_ex = 300 K when highest-E_up temperature-sensitive lines are not detected (and for all C2H3CN fits); omit hot N if T_ex upper limit <= 200 K"
+   ],
+   "assumptions": [
+    "Thermal excitation conditions (LTE) and optically thin emission for E_up > 400 K lines",
+    "Same emitting area as the warm component in Nazari et al. (2022b)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute and compare hot-to-warm total molecule number ratios",
+   "method": "Calculate total number of molecules (N_tot = A * N) in the hot and warm components for CH3OH, HNCO, CH3CN, and C2H3CN, and compute the weighted mean and scatter of N_hot / N_warm across the sample.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Lines are optically thin so N_tot = A * N is independent of the assumed emitting area."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare observed ratios with an analytical spherical envelope model",
+   "method": "Derive analytical expectation for N_hot / N_warm in a power-law spherical protostellar envelope assuming pure ice sublimation at T_sub without additional hot gas-phase chemistry, and compare with observed ratios.",
+   "software": [],
+   "key_parameters": [
+    "Density power-law index p = -1.5, temperature power-law index q = -0.4, T_hot = 300 K, T_warm = 150 K"
+   ],
+   "assumptions": [
+    "Spherical envelope with power-law density and temperature profiles, sublimation temperatures <= 100-150 K, and constant abundance X_hot / X_warm = 1 if no hot gas chemistry occurs."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Weighted mean hot-to-warm molecule number ratio for CH3OH",
+   "value": "0.12",
+   "uncertainty": "factor 1.78 spread around the mean",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "The hot to warm ratios of methanol have a weighted mean of 0.12 while that for methyl cyanide is 0.48."
+    },
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "The spread around the mean is tight for the two molecules with only a spread of a factor 1.78 and 1.33 around the mean for methanol and methyl cyanide, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean hot-to-warm molecule number ratio for CH3CN",
+   "value": "0.48",
+   "uncertainty": "factor 1.33 spread around the mean",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "The hot to warm ratios of methanol have a weighted mean of 0.12 while that for methyl cyanide is 0.48."
+    },
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "The spread around the mean is tight for the two molecules with only a spread of a factor 1.78 and 1.33 around the mean for methanol and methyl cyanide, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spread around the mean hot-to-warm ratio for HNCO",
+   "value": "1.77",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "Figure 3 shows that HNCO has a similar mean and a similar standard deviation to methanol (factor of 1.77 around the mean)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean hot-to-warm molecule number ratio for C2H3CN",
+   "value": "1.47",
+   "uncertainty": "factor of 1.44 scatter around the mean",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "Moreover, the number of hot to the number of warm vinyl cyanide molecules are more similar to those of methyl cyanide with a mean of 1.47 and a factor of 1.44 scatter around the mean."
+    }
+   ]
+  },
+  {
+   "quantity": "Enhancement factor of hot-to-warm ratio for oxygen-poor vs oxygen-rich molecules",
+   "value": "~5 (~0.7 dex)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In contrast, nitrogen-containing, oxygen-poor molecules (CH$_3$CN and C$_2$H$_3$CN) systematically show an enhancement of a factor ${\\sim} 5$ in their hot component"
+    },
+    {
+     "loc": "Observational comparison of hot and warm components",
+     "quote": "This results in two distinct population of molecules, with at least a ${\\sim}0.7$ dex (factor of ${\\sim}$5) difference between the mean of the ratios."
+    }
+   ]
+  },
+  {
+   "quantity": "Analytical model expectation for N_hot / N_warm without hot gas chemistry (q = -0.4)",
+   "value": "0.07 (~0.1)",
+   "uncertainty": "0.07 to 0.13 for q = -0.4 to -0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Envelope-only analytical model",
+     "quote": "Assuming $T_{\\rm hot} = 300$ K and $T_{\\rm warm} = 150$ K consistent with the average excitation temperatures of the hot and warm gas for the studied molecules (see Appendix 9), $(T_{i,\\rm{hot}}/T_{i,\\rm{warm}})^{-3.75} =0.07$."
+    },
+    {
+     "loc": "Envelope-only analytical model",
+     "quote": "Therefore, if there is no additional gas phase chemistry in the hot gas (i.e., $X_{i,\\rm hot}/X_{i,\\rm warm} = 1$), $$\\begin{equation} \\frac{\\mathcal{N}_{i, \\rm hot}}{\\mathcal{N}_{i, \\rm warm}} \\sim 0.1. \\end{equation}$$"
+    },
+    {
+     "loc": "Envelope-only analytical model",
+     "quote": "This will change the power of -3.75 to -3.0 and the value of $\\mathcal{N}_{i, \\rm hot}/\\mathcal{N}_{i, \\rm warm}$ from 0.07 to 0.13."
+    }
+   ]
+  },
+  {
+   "quantity": "Hot-to-warm abundance enhancement (X_hot / X_warm) for oxygen-poor molecules",
+   "value": ">=5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion and conclusions",
+     "quote": "This means an enhancement of oxygen-poor species in the hot gas and $X_{i,\\rm hot}/X_{i,\\rm warm}$ of ${\\gtrsim}5$ for these molecules"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Full CASA calibration and imaging parameters (handled in Nazari et al. 2022b / van Gelder et al. 2022a)",
+  "Exact source coordinates, systemic velocities, line widths (FWHM), and assumed emitting areas for each of the 37 protostars",
+  "Exact numerical values of the warm column densities for each of the 37 sources (taken from Nazari et al. 2022b)",
+  "Objective criteria/grid ranges used in the fit-by-eye method in CASSIS to determine best-fit values and uncertainties"
+ ],
+ "missing_for_reproduction": [
+  "Extracted peak-pixel spectral files for the 37 sources",
+  "Table of warm column densities and emitting areas from Nazari et al. (2022b)",
+  "Exact line widths, systemic velocities, and continuum subtraction details used in CASSIS fits",
+  "Quantitative fitting criteria for the fit-by-eye procedure"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA project code is public, spectral fitting software (CASSIS) and molecular line databases (CDMS) are public, and full per-source hot column densities and temperatures are tabulated. However, data reduction, spectra extraction, warm column densities, and exact line lists are inherited from companion papers, and the fitting relies on a subjective fit-by-eye method.",
+ "rediscovery_reason": "The ALMAGAL data are public, the 37 targets and targeted molecular transitions are well-defined (with full details in Nazari et al. 2022b), and the main results are concrete numeric column densities, excitation temperatures, and hot-to-warm ratios.",
+ "source_card": "cards/2023ApJ...951L..38N/sonnet/card.md"
+}

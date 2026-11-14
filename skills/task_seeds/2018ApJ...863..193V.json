@@ -1,0 +1,329 @@
+{
+ "bibcode": "2018ApJ...863..193V",
+ "title": "Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aad2e0",
+ "arxiv_id": "1807.04331",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the mass, morphology, kinematics, origin and star formation of the molecular gas in the RXCJ1504 BCG, and how does it relate to an X-ray cavity?",
+ "alma_project_codes": [
+  "2016.1.01269.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.71x0.61 arcsec (CO 1-0); 0.25x0.19 arcsec (CO 3-2)",
+  "sensitivity": "RMS 0.2 mJy/beam (CO 1-0, 20 km/s) and 0.65 mJy/beam (CO 3-2, 10 km/s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Global extinction-corrected SFR of 136 Msun/yr (GALEX NUV)",
+    "evidence": [
+     {
+      "loc": "4.3 Star Formation Along the Filament",
+      "quote": "was measured using NUV GALEX observations (rest-frame FUV) to be $136\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$ (cite: Ogrean10)."
+     }
+    ]
+   },
+   "citation": "(cite: Ogrean10)"
+  },
+  {
+   "what": {
+    "value": "IRAM-30m CO(1-0) flux 3.84 Jy km/s (unpublished)",
+    "evidence": [
+     {
+      "loc": "3.2 Integrated Spectra",
+      "quote": "recovered an integrated CO(1-0) flux of $3.84\\pm0.62\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$ (Edge, unpublished)."
+     }
+    ]
+   },
+   "citation": "Edge, unpublished"
+  },
+  {
+   "what": {
+    "value": "Redshift z=0.216902 from optical emission lines",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "with $z=0.216902\\pm0.000016$ (cite: SDSS16)."
+     }
+    ]
+   },
+   "citation": "(cite: SDSS16)"
+  },
+  {
+   "what": {
+    "value": "Radio SED points (GMRT 327 MHz, VLA 1.4 GHz AGN components, VLBI)",
+    "evidence": [
+     {
+      "loc": "3.1 AGN Continuum",
+      "quote": "(cite: Giacintucci11) isolated the contribution from the AGN by modelling the spatial distribution with a two dimensional Gaussian."
+     }
+    ]
+   },
+   "citation": "(cite: Giacintucci11); (cite: Bourda10); (cite: Petrov13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO cubes and continuum",
+   "method": "CASA pipeline calibration, uvcontsub, clean with Briggs weighting, uv taper for CO(3-2), phase self-calibration of continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5; velocity bins 20 and 10 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit AGN continuum SED",
+   "method": "Power law S ∝ nu^-alpha to ALMA plus literature radio points",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract and fit integrated and regional spectra",
+   "method": "One or two Gaussian components fitted with LMFIT; Monte Carlo test with at least 1000 iterations and 3 sigma detection; numerical integration also done",
+   "software": [
+    "LMFIT"
+   ],
+   "key_parameters": [
+    "2500 MC iterations for per-pixel maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas masses",
+   "method": "M_mol = 1.05e4 (X_CO/X_CO,gal) S Dv D_L^2/(1+z); CO(3-2) converted with ratio 9",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Galactic X_CO = 2e20 cm^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Map flux, velocity, FWHM and extract position-velocity curve",
+   "method": "Per-pixel Gaussian fitting; PV from CO(3-2) along filament path in 0.6 arcsec intervals with 0.75 arcsec width",
+   "software": [
+    "PVExtractor",
+    "LMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Test free-fall of the filament",
+   "method": "Fit PV curve with Hernquist-potential free-fall model v_obs = v sin i + v_ICM; v_ICM and i free, r0 fixed at 17.5 kpc",
+   "software": [],
+   "key_parameters": [
+    "Hernquist a = 5.2 kpc; stellar mass 5e11 Msun"
+   ],
+   "assumptions": [
+    "Cloud starts at rest with respect to ICM; Hernquist potential"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compute local SFRs from HST FUV and fit star formation law",
+   "method": "FUV count rates in regions scaled to global SFR; fit Sigma_SFR = A (Sigma_H2/100)^N in log space",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "SFR uncertainty factor of two; Salim07 UV calibration (Chabrier IMF)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass (CO 3-2)",
+   "value": "1.9e10",
+   "uncertainty": "0.1e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular Gas Mass",
+     "quote": "the total molecular gas mass measured with the higher-fidelity CO(3-2) spectrum is $1.9\\pm0.1\\ensuremath{\\times 10^{10}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2)/(1-0) flux ratio",
+   "value": "9.0",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Integrated Spectra",
+     "quote": "${\\rm CO~(3-2)/(1-0)} = 9.0\\pm0.4$ in flux units"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN continuum spectral index",
+   "value": "0.41",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 AGN Continuum",
+     "quote": "The spectral index of the power law is $\\alpha=0.41\\pm0.03$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 101.7945 GHz",
+   "value": "8.734",
+   "uncertainty": "0.015",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and Data Reduction",
+     "quote": "a flux density of $8.734\\pm0.015\\rm\\; mJy$ at $101.7945\\rm\\; GHz$"
+    }
+   ]
+  },
+  {
+   "quantity": "Filament molecular gas mass",
+   "value": "4.8e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Molecular Gas Distribution and Kinematics",
+     "quote": "The total molecular gas mass in the filament is $4.8\\ensuremath{\\times 10^{9}}\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Filament velocity gradient",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "km/s/kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Motion Along the Filament",
+     "quote": "the velocity gradient is $16\\hbox{$\\rm\\; km\\rm\\; s^{-1}\\,$}\\rm\\; kpc^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Filament mass flow rate",
+   "value": "75",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Motion Along the Filament",
+     "quote": "we estimate a mass flow rate of $75\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fall inclination to plane of sky (r0=17.5 kpc)",
+   "value": "-22",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Motion Along the Filament",
+     "quote": "requires an inclination angle of $-22^{\\circ}$ with a bulk offset of $v_{\\rm ICM}=140\\hbox{$\\rm\\; km\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation law fit, all gas: A and N",
+   "value": "A=0.58, N=0.64",
+   "uncertainty": "A ±0.11, N ±0.18",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Star Formation Along the Filament",
+     "quote": "Fitting this SF law to the entire gas distribution yields $A=0.58\\pm0.11$ and $N=0.64\\pm0.18$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation law fit, central gas: A and N",
+   "value": "A=0.23, N=1.18",
+   "uncertainty": "A ±0.13, N ±0.37",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Star Formation Along the Filament",
+     "quote": "gives $A=0.23\\pm0.13$ and $N=1.18\\pm0.37$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity jet power",
+   "value": "9.1e44",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Gas Origin",
+     "quote": "$5.6\\ensuremath{\\times 10^{59}}\\rm\\; erg$, $20\\rm\\; Myr$, and $9.1\\ensuremath{\\times 10^{44}}\\hbox{$\\; erg\\rm\\; s^{-1}\\,$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas consumption time",
+   "value": "1.4e8",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Star Formation Along the Filament",
+     "quote": "will be consumed in $1.4\\ensuremath{\\times 10^{8}}\\rm\\; yr$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum-subtraction order for uvcontsub",
+  "Clean masks, threshold, niter, cell and image size",
+  "Self-calibration solution intervals",
+  "Exact HST data sets and pipeline products, and manual shifts beyond those quoted",
+  "Regions (polygon and extraction boxes) definitions for spectra and SFR",
+  "Flux calibrator and flux scale uncertainty",
+  "Extraction details of the Chandra surface brightness profile and cavity region",
+  "Background region for FUV count rates"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (masks, thresholds, cell/image size)",
+  "Region definitions for spectra and SFRs",
+  "HST data identifiers and alignment details",
+  "Chandra analysis details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data are public and main steps are described with many numeric results, but imaging parameters, regions and several inputs (HST alignment, unpublished IRAM flux) are not fully given.",
+ "rediscovery_reason": "Public data, numeric masses, line ratios and fits that can be re-derived, though some settings are missing.",
+ "source_card": "cards/2018ApJ...863..193V/sonnet/card.md"
+}

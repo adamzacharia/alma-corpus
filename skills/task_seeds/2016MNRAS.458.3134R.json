@@ -1,0 +1,274 @@
+{
+ "bibcode": "2016MNRAS.458.3134R",
+ "title": "ALMA observations of cold molecular gas filaments trailing rising radio bubbles in PKS 0745-191",
+ "year": 2016,
+ "doi": "10.1093/mnras/stw409",
+ "arxiv_id": "1602.05962",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "What are the distribution, kinematics and origin of the cold molecular gas in the PKS 0745-191 BCG, and is it lifted by radio bubbles, cooled in situ, or inflowing?",
+ "alma_project_codes": [
+  "2012.1.00837.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO(1-0)) and Band 7 (CO(3-2)), Cycle 1",
+  "arrays": "not stated",
+  "angular_resolution": "1.6''x1.2'' (PA 79.7°) at CO(1-0); 0.27''x0.19'' (PA 78.3°) at CO(3-2)",
+  "sensitivity": "rms 0.6 mJy (CO(1-0)) and 1 mJy (CO(3-2)) per 10 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAM 30m CO(1-0) flux 1.8±0.4 Jy km/s and single-dish mass",
+    "evidence": [
+     {
+      "loc": "3.1 Gas distribution",
+      "quote": "IRAM $30\\rm\\; m$ single dish signal of $1.8\\pm0.4\\hbox{$\\rm\\; Jy\\rm\\; km\\rm\\; s^{-1}\\,$}$ ((cite: Salome03))"
+     }
+    ]
+   },
+   "citation": "(cite: Salome03)"
+  },
+  {
+   "what": {
+    "value": "X-ray cooling rate 270±90 Msun/yr, hot gas pressure, g, metallicity",
+    "evidence": [
+     {
+      "loc": "4.1 Origin of the molecular gas",
+      "quote": "the X-ray cooling rate of $270\\pm90\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$ determined from XMM-RGS spectroscopy ((cite: Sanders14))"
+     }
+    ]
+   },
+   "citation": "(cite: Sanders14)"
+  },
+  {
+   "what": {
+    "value": "K-band effective radius 9.5 arcsec from 2MASS",
+    "evidence": [
+     {
+      "loc": "4.2 free-fall",
+      "quote": "estimated from the K-band effective radius of $9.5\\rm\\; arcsec$ given by the 2MASS extended source catalogue"
+     }
+    ]
+   },
+   "citation": "(cite: Skrutskie06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "ALMA pipeline calibration in CASA, self-calibration, CLEAN continuum-subtracted cubes with Briggs weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5 (Band 3), 2 (Band 7); 10 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit total spectra",
+   "method": "Single Gaussian fit to spectra from 6''x6'' (CO 1-0) and 4''x4'' (CO 3-2) regions, corrected for primary beam and instrumental broadening",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Line ratios",
+   "method": "Convolve CO(3-2) to CO(1-0) beam, fit integrated intensities in K km/s in matched regions, ratio",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thick, thermalized CO gives excitation temperature"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Velocity maps",
+   "method": "Fit one or two Gaussians to beam-sized spectra at each pixel; require 3 sigma detection via Monte Carlo",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "systemic velocity from optical emission lines (z=0.1028)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "PV cuts",
+   "method": "Position-velocity cuts along each CO(3-2) filament, summed across 0.2-0.3 arcsec width",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Molecular gas mass",
+   "method": "M_mol from CO(1-0) integrated intensity with Galactic X_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO = 2e20 cm^-2 (K km/s)^-1; filament masses assume CO(1-0) and CO(3-2) distributed similarly"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Free-fall comparison",
+   "method": "Hernquist-potential free-fall velocity vs radius, varying inclination",
+   "software": [],
+   "key_parameters": [
+    "scale radius 10 kpc; total mass ~2e12 Msun (X-ray) or 1.8e13 (lensing)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "4.6e9",
+   "uncertainty": "±0.3e9",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Molecular gas mass",
+     "quote": "the total molecular gas mass is $(4.6\\pm0.3)\\times10^9\\hbox{$\\rm\\thinspace M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) integrated intensity",
+   "value": "2.2",
+   "uncertainty": "±0.1",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Total | 1079/1061 | $2.2\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(3-2) integrated intensity",
+   "value": "18.6",
+   "uncertainty": "±1.4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Total | 350/357 | $18.6\\pm1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2)/CO(1-0) line ratio, BCG centre",
+   "value": "0.81",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Line ratio",
+     "quote": "CO(3-2)/CO(1-0)$=0.81\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2)/CO(1-0) line ratio, SW filament",
+   "value": "0.53",
+   "uncertainty": "±0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Line ratio",
+     "quote": "CO(3-2)/CO(1-0)$=0.53\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux at 103.8 GHz",
+   "value": "9.30",
+   "uncertainty": "±0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Data reduction",
+     "quote": "flux $9.30\\pm0.04\\rm\\; mJy$ at $103.8\\rm\\; GHz$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux at 314.8 GHz",
+   "value": "4.6",
+   "uncertainty": "±0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Data reduction",
+     "quote": "$4.6\\pm0.2\\rm\\; mJy$ at $314.8\\rm\\; GHz$"
+    }
+   ]
+  },
+  {
+   "quantity": "SE filament mass",
+   "value": "~1.9e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Molecular gas mass",
+     "quote": "The SE filament is likely the most massive with $\\sim1.9\\times10^{9}\\hbox{$\\rm\\thinspace M_{\\odot}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Required magnetic field strength",
+   "value": "~400",
+   "uncertainty": "not stated",
+   "units": "microG",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.5 Forming molecular gas",
+     "quote": "The corresponding magnetic field strength $B\\sim400\\hbox{$\\rm\\thinspace {\\mu}\\mathrm{G}$}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum subtraction",
+  "Self-calibration solution intervals and number of iterations",
+  "Clean masks, thresholds, image size and cell size",
+  "Flux calibrator and flux scale uncertainty",
+  "Channel binning applied to each cube",
+  "Distance/luminosity distance value used in mass formula",
+  "Exact region definitions for filaments (beyond figures)"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters",
+  "Clean masks and image/cell sizes",
+  "Line-free channel ranges",
+  "Region definitions for spectral extraction in filaments",
+  "Luminosity distance used"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and a fairly clear recipe with key numbers, but imaging and self-calibration details are missing.",
+ "rediscovery_reason": "Public data, simple Gaussian fits and mass formula, numeric results such as the 4.6e9 Msun mass and line ratios.",
+ "source_card": "cards/2016MNRAS.458.3134R/sonnet/card.md"
+}

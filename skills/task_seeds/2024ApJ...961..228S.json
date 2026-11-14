@@ -1,0 +1,345 @@
+{
+ "bibcode": "2024ApJ...961..228S",
+ "title": "Ring Gap Structure around Class I Protostar WL 17",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad12b5",
+ "arxiv_id": "2312.02504",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "Does the Class I protostar WL 17 have a ring-hole or a ring-gap structure, is an outflow associated with it, and what do these imply for ring formation timescale and planet formation?",
+ "alma_project_codes": [
+  "2019.1.00458.S",
+  "2019.1.01792.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "ALMA main array",
+  "angular_resolution": "0.037'' x 0.031'' (5.1 x 4.2 au), PA -65.9 deg (continuum); 1.21'' x 0.93'' (lines)",
+  "sensitivity": "18 uJy/beam continuum (high-res); 0.33 mJy/beam continuum and 0.35 K per 0.1 km/s for CO lines (low-res)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Band 3 ring-hole results (hole radius ~10-13 au, outer ring ~20 au, 0.06''x0.05'' beam, 36 uJy/beam)",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "They found that WL 17 has a ring–hole structure based on high angular resolution ALMA Band 3 observations, where the radius of the hole is $\\sim10$ au and the outer radius of the ring is $\\sim20$ au."
+     }
+    ]
+   },
+   "citation": "(cite: Sheehan_2017)"
+  },
+  {
+   "what": {
+    "value": "Single-dish 12CO(3-2) outflow properties (lengths, masses, velocities, t_dyn, rate) and v_sys = 4 km/s",
+    "evidence": [
+     {
+      "loc": "3.3 Outflow Physical Quantities",
+      "quote": "We determined the outflow maximum velocity $v_{\\rm max}$ with the system velocity $v_{\\rm sys}=$ 4 km s$^{-1}$ (cite: van_der_Marel_2013)."
+     }
+    ]
+   },
+   "citation": "(cite: van_der_Marel_2013)"
+  },
+  {
+   "what": {
+    "value": "Inner disk radii, fluxes and ring radii of ring-gap protoplanetary disks for comparison",
+    "evidence": [
+     {
+      "loc": "3.1 High-spatial Resolution Continuum Image",
+      "quote": "We compare the properties of the inner disk of the WL 17 system with those of other inner disks of objects associated with the ring–gap structure presented in (cite: Francis_2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Francis_2020)"
+  },
+  {
+   "what": {
+    "value": "Spectral index alpha=2 assumed for converting sensitivity to 3 mm",
+    "evidence": [
+     {
+      "loc": "3.1 High-spatial Resolution Continuum Image",
+      "quote": "Assuming a spectral index $\\alpha$=2 (cite: Ilseing_2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Ilseing_2023)"
+  },
+  {
+   "what": {
+    "value": "Herschel column density map of the region",
+    "evidence": [
+     {
+      "loc": "4.1 Remaining Mass of Core and Envelope around WL 17",
+      "quote": "Figure [9](#fig:herschel) shows the column density map derived from the Herschel Gould Belt Survey data (cite: Andre_2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Andre_2010; Ladjelate_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line data",
+   "method": "tclean with Briggs weighting; imcontsub for lines",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5; cell 0.0037'' (cont), 0.140'' (lines); 0.1 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit ring geometry and radial profile",
+   "method": "Peak radius every 1 deg in polar coordinates fitted with an ellipse; deproject; azimuthally average; Gaussian fits to inner disk and outer ring peaks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dust and gas mass of ring/disk",
+   "method": "Optically thin M_dust = F d^2 /(kappa B(T)) on flux above 5 sigma",
+   "software": [],
+   "key_parameters": [
+    "5 sigma threshold, sigma = 18 uJy/beam"
+   ],
+   "assumptions": [
+    "kappa=2 cm2/g, T_dust=20 K, gas-to-dust 100, d=137 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Outflow velocity, timescale, mass, mass-loss rate",
+   "method": "PV diagrams give v_max; t_dyn = r_out/v_max tan(i); M_out = mu m_H A N_ave with N = X_CO W_CO; Mdot = M_out/t_dyn",
+   "software": [],
+   "key_parameters": [
+    "Outflow area: intensity > 0.5 K km/s; v_sys = 4 km/s; i_out = i_ring"
+   ],
+   "assumptions": [
+    "mu = 2.8; X_CO = 2.0e20; protostellar mass 1 Msun for Keplerian; constant mass loss rate"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Envelope mass from C18O and Herschel",
+   "method": "Optical depth from T_B (Tex = 10, 20 K), column density, convert to H2 and mass over area; Herschel mass within 1000, 2000, 3000 au minus background 1.5e22 cm-2",
+   "software": [],
+   "key_parameters": [
+    "T_B ~1.1 K; Delta v ~0.8 km/s from Gaussian fit; nu = 220 GHz"
+   ],
+   "assumptions": [
+    "Tex = 10 and 20 K; N(C18O)=1.7e-7 N(H2); mu=2.8"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Disk growth timescale",
+   "method": "t_grow = M_disk/Mdot_acc with Mdot_acc = epsilon Mdot_out",
+   "software": [],
+   "key_parameters": [
+    "epsilon = 10; M_disk = 0.01 Msun; Mdot_acc ~1e-6 Msun/yr"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Ring inner and outer edge radii",
+   "value": "11 and 21",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 High-spatial Resolution Continuum Image",
+     "quote": "the inner and outer edge radius of the outer ring are 11 and 21 au, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk radius upper limit",
+   "value": "<5 (FWHM 5.2)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 High-spatial Resolution Continuum Image",
+     "quote": "the estimated FWHM ($5.2$ au) as the upper limit of the radius"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring inclination and PA",
+   "value": "i = 33.8, PA = 68.7",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 High-spatial Resolution Continuum Image",
+     "quote": "we estimated an inclination angle $i_{\\rm ring}$ of 33.8$^{\\circ}$ and a PA of 68.7$^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring peak radius and FWHM",
+   "value": "15.7 and 8.8",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 High-spatial Resolution Continuum Image",
+     "quote": "the peak radius of the outer ring is 15.7 au and the FWHM is 8.8 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum flux",
+   "value": "4.37e-2 (inner disk 6.6e-4, ring 4.3e-2)",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 High-spatial Resolution Continuum Image",
+     "quote": "The total flux is $F_{\\nu} = 4.37 \\times$10$^{-2}$ Jy, which is the sum of the inner disk (6.6$\\times$10$^{-4}$ Jy) and outer ring (4.3$\\times$10$^{-2}$ Jy)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "7.4e-5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 High-spatial Resolution Continuum Image",
+     "quote": "The total dust mass was estimated to be $M_{\\rm dust}$=7.4$\\times$10$^{-5}\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow total mass",
+   "value": "8.7e-4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Outflow Physical Quantities",
+     "quote": "The total mass of the blue-shifted and red-shifted outflows is $M_{\\rm out,total}=$8.7$\\times$10$^{-4}\\, M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow max velocities (blue, red)",
+   "value": "2.0 and 3.5",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Outflow Physical Quantities",
+     "quote": "$v_{\\rm blue,max}=$2.0$\\,{\\rm km\\,s^{-1}}$ and $v_{\\rm red,max}=$3.5$\\,{\\rm km\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean outflow dynamical timescale",
+   "value": "3.0e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Outflow Physical Quantities",
+     "quote": "is $t_{\\rm dyn}=$ 3.0 $\\times 10^3$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass ejection rate",
+   "value": "3.6e-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Outflow Physical Quantities",
+     "quote": "we estimated the total mass loss rate (sum of the red and blue shifted outflows) of 3.6$\\times$10$^{-7}$ $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass from C18O",
+   "value": "4e-3 (3.6e-3 to 4.4e-3 for Tex 20/10 K)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Remaining Mass of Core and Envelope around WL 17",
+     "quote": "The mass of molecular hydrogen estimated from C$^{18}$O is $4\\times10^{-3}\\,{M}_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Herschel H2 mass within 1000/2000/3000 au",
+   "value": "1.0e-2 / 5.5e-2 / 1.1e-1",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "H$_2$ & Black circle (c) in Fig. [9](#fig:herschel), $R < 3000$ au & 0.9$^\\ast$ & 2.8 & 1.1$\\times$10$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk growth timescale",
+   "value": "~1e4",
+   "uncertainty": "order of magnitude; epsilon factor ~3",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Disk Growth Timescale",
+     "quote": "the disk growth timescale is as short as $(M_{\\rm disk}/\\dot{M}_{\\rm acc}) \\sim 10^4$ yr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Spectral window/channel ranges used for continuum vs line, and line-free channels for imcontsub",
+  "Image size (pixels) and deconvolution settings (deconvolver, threshold, mask, niter)",
+  "Calibrators and flux scale; whether the pipeline or manual scripts were used",
+  "Rest frequencies and the velocity range used to define the blue/red outflow moment maps",
+  "Exact outflow area definition, 0.5 K km/s contour and the outflow lengths and mean column density per lobe",
+  "Primary-beam correction treatment",
+  "Dipole moment, J and partition-function inputs used in C18O column density; how the C18O area was defined",
+  "Uncertainties on fitted ring parameters",
+  "Details of the pixel-peak ellipse fit and Gaussian fits to radial profile"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels and continuum spw handling",
+  "Deconvolution and masking parameters and image sizes",
+  "Outflow region definitions and velocity channel ranges",
+  "Exact area and spectrum extraction regions for C18O",
+  "Herschel map processing details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear recipe for the main numbers, but imaging details, regions and several assumptions are not fully stated.",
+ "rediscovery_reason": "Data are public, the continuum recipe (tclean, robust 0.5, 0.0037'' cell) is given and the main results (ring radii, flux, masses, rates) are numeric.",
+ "source_card": "cards/2024ApJ...961..228S/sonnet/card.md"
+}

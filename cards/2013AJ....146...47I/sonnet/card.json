@@ -1,0 +1,837 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2013AJ....146...47I",
+  "title": "High-density Molecular Gas Properties of the Starburst Galaxy NGC 1614 Revealed with ALMA",
+  "year": 2013,
+  "journal": "The Astronomical Journal",
+  "first_author": "Imanishi, Masatoshi",
+  "n_authors": 2,
+  "arxiv_id": "1307.3694",
+  "doi": "10.1088/0004-6256/146/3/47",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00020.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the results of HCN/HCO$^{+}$/HNC J = 4–3 transition line observations of the nearby starburst galaxy NGC 1614, obtained with ALMA Cycle 0."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1614",
+     "coordinates": {
+      "value": "continuum peak (04 34 00.01, -08 34 44.9) J2000",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 1614 (z = 0.016; L$_{\\rm IR}$ = 10$^{11.6}$L$_{\\odot}$) is a well-studied, nearby LIRG."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "where 1$''$ corresponds to $\\sim$320 pc at the distance of NGC 1614 (z = 0.016)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.016; 1'' ~ 320 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 1614 (z = 0.016; L$_{\\rm IR}$ = 10$^{11.6}$L$_{\\odot}$) is a well-studied, nearby LIRG."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "where 1$''$ corresponds to $\\sim$320 pc at the distance of NGC 1614 (z = 0.016)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "redshift with H0=71, OmegaM=0.27, OmegaLambda=0.73 (Komatsu et al. 2009)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 1614 (z = 0.016; L$_{\\rm IR}$ = 10$^{11.6}$L$_{\\odot}$) is a well-studied, nearby LIRG."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "where 1$''$ corresponds to $\\sim$320 pc at the distance of NGC 1614 (z = 0.016)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the spatial distribution, dynamics and HCN/HCO+/HNC J=4-3 flux ratios of high-density molecular gas in the starburst LIRG NGC 1614?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "We thus performed ALMA band 7 (275–373 GHz) observations of NGC 1614 to study the emission properties of HCN J = 4–3, HCO$^{+}$ J = 4–3, and HNC J = 4–3 lines."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00020.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "All observations were made during ALMA Cycle 0 within the program 2011.0.00020.S (PI = M. Imanishi)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (275–373 GHz)",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "We thus performed ALMA band 7 (275–373 GHz) observations of NGC 1614"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "1.875 GHz mode, 3840 channels; HCN center 348.922 GHz, HCO+ 350.920 GHz, continuum 337.106 and 338.681 GHz; HNC 356.920 GHz, continuum 345.079 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Analysis",
+      "quote": "We adopted the widest 1.875 GHz band mode, and the total channel number was 3840."
+     },
+     {
+      "loc": "2 Observations and Data Analysis",
+      "quote": "The HNC line was covered with one spectral window ($\\nu_{\\rm center}$ = 356.920 GHz)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "J=4-3",
+     "rest_frequency": "354.505 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "HCN J = 4–3 ($\\nu_{\\rm rest}$ = 354.505 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=4-3",
+     "rest_frequency": "356.734 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "HCO$^{+}$ J = 4–3 ($\\nu_{\\rm rest}$ = 356.734 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "J=4-3",
+     "rest_frequency": "362.630 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "HNC J = 4–3 line ($\\nu_{\\rm rest}$ = 362.630 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=7-6",
+     "rest_frequency": "342.883 GHz",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "CS J = 7–6 line at $\\nu_{\\rm rest}$ = 342.883 GHz is covered in a spectral window"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.5'' x 1.3''",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "Our ALMA map has a resolution of 1.5$\"$ $\\times$ 1.3$\"$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~6'' at ~350 GHz",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "it is not sensitive to spatially extended structure beyond the maximum scale, which is $\\sim$6$''$ at $\\sim$350 GHz in ALMA Cycle 0"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "~26 min (HCN/HCO+), ~25 min (HNC)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Analysis",
+      "quote": "The net on-source exposure time for the HCN/HCO$^{+}$ J = 4–3 line observation of NGC 1614 was $\\sim$26 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2011 November 15, 16 antennas",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| HCN/HCO$^{+}$ J=4–3 | 2011 November 15 | 16      | 3C454.3  | Callisto | J0423$-$013 |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI M. Imanishi, Cycle 0",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Analysis",
+      "quote": "within the program 2011.0.00020.S (PI = M. Imanishi)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "HCN J=1-0 flux of 7.2 Jy km/s from single dish",
+      "evidence": [
+       {
+        "loc": "4.3 Flux ratios of dense gas tracers",
+        "quote": "The HCN J = 1–0 flux of NGC 1614 was found to be 7.2 \\[Jy km s$^{-1}$\\] by (cite: gao04)"
+       }
+      ]
+     },
+     "citation": "(cite: gao04)"
+    },
+    {
+     "what": {
+      "value": "Inclination i = 51 deg",
+      "evidence": [
+       {
+        "loc": "4.2 Dynamics of dense molecular gas",
+        "quote": "where the inclination angle i = 51$^{\\circ}$ is adopted (cite: der88; alo01)"
+       }
+      ]
+     },
+     "citation": "(cite: der88; alo01)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Started from calibrated data provided by JAO",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We started data analysis from calibrated data provided by the Joint ALMA Observatory."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Calibrated data from JAO used",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We started data analysis from calibrated data provided by the Joint ALMA Observatory."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "Callisto (bandpass 3C454.3, phase J0423-013)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| HNC J=4–3           | 2011 November 15 | 16      | 3C454.3  | Callisto | J0423$-$013 |"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "clean",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We subtracted this continuum level and performed the task “clean” for molecular emission lines."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.3'' per pixel",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We employed 40-channel spectral binning ($\\sim$17 km s$^{-1}$) and 0.3$''$ pixel$^{-1}$ spatial binning in this clean procedure."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum level estimated from line-free channels and subtracted",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We then selected channels that were free from strong line emission to estimate the continuum flux level."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "40-channel spectral binning (~17 km/s)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We employed 40-channel spectral binning ($\\sim$17 km s$^{-1}$)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.5x1.3 (76 deg) lines HCN/HCO+; 1.3x1.3 HNC",
+     "evidence": [
+      {
+       "loc": "Table 4",
+       "quote": "| HCN J=4–3       | all       | 1.7 (12$\\sigma$)               | 0.14                           | 1.5 $\\times$ 1.3 (76$^{\\circ}$)         |"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [],
+   "unstated_but_needed": [
+    "CASA version",
+    "clean weighting/robust, deconvolver, threshold, masks",
+    "line-free channel ranges",
+    "image size",
+    "flux calibrator model and flux scale uncertainty",
+    "primary beam correction",
+    "Gaussian fitting software and procedure",
+    "how line luminosity was computed in detail"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and lines",
+    "method": {
+     "value": "Subtract continuum from line-free channels; clean lines and continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "We subtracted this continuum level and performed the task “clean” for molecular emission lines."
+      }
+     ]
+    },
+    "software": [
+     "CASA clean"
+    ],
+    "key_parameters": [
+     {
+      "value": "40-channel binning, 0.3'' pixels",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Analysis",
+        "quote": "We employed 40-channel spectral binning ($\\sim$17 km s$^{-1}$) and 0.3$''$ pixel$^{-1}$ spatial binning in this clean procedure."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Continuum well subtracted in spectra",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "Continuum emission is found to be well subtracted in the spectra (Figure 2 right panels)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Moment maps and spectra, Gaussian fits, line luminosity",
+    "method": {
+     "value": "Moment 0/1/2 maps; red (>4800) and blue (<4800 km/s) components; double Gaussian fits to spectra; luminosities from Solomon & Vanden Bout equations",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "We applied double Gaussian fits."
+      },
+      {
+       "loc": "3 Results",
+       "quote": "where we adopted equations (2) and (3) of (cite: sol05)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "nuclear v_opt = 4800 km/s",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "(v$_{\\rm opt}$ = 4800 \\[km s$^{-1}$\\] for z = 0.016)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Double Gaussian (triple for HCO+) fits",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "For HCO$^{+}$ J = 4–3 emission, a triple Gaussian fit was also applied because three emission peaks were seen."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Dynamical mass",
+    "method": {
+     "value": "M_dyn = r v^2/G/sin(i)^2 from HCO+ moment 1, v~100 km/s at 1.5-2''",
+     "evidence": [
+      {
+       "loc": "4.2 Dynamics of dense molecular gas",
+       "quote": "M$_{\\rm dyn}$ = rv$^{2}$/G/sin(i)$^{2}$ = 1.5–2.5 $\\times$ 10$^{9}$M$_{\\odot}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Rotating disk, inclination 51 deg",
+      "evidence": [
+       {
+        "loc": "4.2 Dynamics of dense molecular gas",
+        "quote": "where the inclination angle i = 51$^{\\circ}$ is adopted (cite: der88; alo01)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with previous estimates",
+     "evidence": [
+      {
+       "loc": "4.2 Dynamics of dense molecular gas",
+       "quote": "This mass is comparable to the previously estimated values (cite: shi94; alo01; ols10)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Flux ratios and excitation",
+    "method": {
+     "value": "Compare HCN/HCO+ and HCN/HNC ratios; compare HCN 4-3 with thermal expectation from single-dish J=1-0",
+     "evidence": [
+      {
+       "loc": "4.3 Flux ratios of dense gas tracers",
+       "quote": "Under thermal excitation, the HCN J = 4–3 flux is expected to be 16 times higher than J = 1–0, and so $\\sim$115 \\[Jy km s$^{-1}$\\]."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Missing flux factor ~2",
+      "evidence": [
+       {
+        "loc": "4.3 Flux ratios of dense gas tracers",
+        "quote": "Even assuming a missing flux of a factor of $\\sim$2, the HCN J = 4–3 flux of NGC 1614 is 5.6 \\[Jy km s$^{-1}$\\]"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA clean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging of lines and continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Analysis",
+       "quote": "The “clean” procedure was applied also to the continuum data."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Dynamical mass within 1.5–2'' radius",
+    "value": "1.5–2.5e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Dynamics of dense molecular gas",
+      "quote": "M$_{\\rm dyn}$ = rv$^{2}$/G/sin(i)$^{2}$ = 1.5–2.5 $\\times$ 10$^{9}$M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 total flux",
+    "value": "2.8",
+    "uncertainty": "0.8",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| HCN J=4–3       | all       | 4733$\\pm$25 + 4857$\\pm$14            | 11$\\pm$2 + 12$\\pm$4            | 171$\\pm$52 + 73$\\pm$30           | 2.8$\\pm$0.8        |"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ J=4-3 total flux (double Gaussian)",
+    "value": "16.0",
+    "uncertainty": "1.4",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "16.0$\\pm$1.4$^{a}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HNC J=4-3 total flux",
+    "value": "1.7",
+    "uncertainty": "0.5",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "| HNC J=4–3       | all       | 4718$\\pm$11 + 4859$\\pm$16            | 10$\\pm$2 + 7.8$\\pm$2.7         | 125$\\pm$27 + 50$\\pm$45           | 1.7$\\pm$0.5        |"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum a peak flux at 344 GHz",
+    "value": "14.6",
+    "uncertainty": "rms 0.32",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| a | 344 | 14.6 (45$\\sigma$) $^{a}$ | (04 34 00.01, $-$08 34 44.9) | 0.32 | 1.5 $\\times$ 1.3 (81$^{\\circ}$) |"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN J=4-3 luminosity",
+    "value": "4.8e3",
+    "uncertainty": "1.4e3",
+    "units": "Lsun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| HCN J=4–3 | (4.8$\\pm$1.4)$\\times$10$^{3}$ | (3.4$\\pm$1.0)$\\times$10$^{6}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak velocity dispersion in nucleus",
+    "value": "~80",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2 Dynamics of dense molecular gas",
+      "quote": "The observed velocity dispersion is highest in the nuclear region with $\\sim$80 km s$^{-1}$ (Figure 4)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Northern gas redshifted, southern blueshifted; red/blue peaks 0.6'' N/S of nucleus, coinciding with dusty starburst ring regions",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the northern (southern) side of the nucleus is redshifted (blueshifted) with respect to the nuclear velocity of this galaxy."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Dense gas traces active dusty starbursts",
+    "experiment": "Mapped HCN/HCO+/HNC 4-3 kinematics and compared with IR/radio",
+    "result": "Red/blue peaks ~0.6'' N/S coincide with strong 3.3um PAH regions",
+    "finding": "Starbursts occur in dense gas",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "supporting the picture that high-density molecular gas is the site of active starbursts"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dense-gas dynamics give a mass consistent with earlier estimates",
+    "experiment": "Rotation from HCO+ moment 1",
+    "result": "1.5–2.5e9 Msun within 1.5–2''",
+    "finding": "Consistent with previous estimates",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "is 1.5–2.5 $\\times$ 10$^{9}$M$_{\\odot}$ within $\\sim$2$''$ in radius"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Starburst line ratios at J=4-3 resemble J=1-0",
+    "experiment": "Compared line fluxes",
+    "result": "HCN<HCO+ and HCN>HNC in all regions",
+    "finding": "Similar trend to J=1-0 starbursts",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Flux ratios of dense gas tracers",
+      "quote": "In all data, HCN J = 4–3 flux is smaller than that of HCO$^{+}$ J = 4–3, but higher than HNC J = 4–3 flux."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Compact (~2'') starburst-dominated nucleus suits ALMA Cycle 0 limited maximum scale",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "make NGC 1614 an ideal target to investigate the spatial distribution and dynamics of dense molecular gas in merging LIRG nuclei"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Missing flux for emission >6''; HCN 4-3 sub-thermal conclusion depends on it",
+     "evidence": [
+      {
+       "loc": "4.3 Flux ratios of dense gas tracers",
+       "quote": "The smaller flux of our ALMA data could partly be caused by missing flux"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Low resolution (1.5'') and beam smearing affect dynamical mass",
+    "Single inclination adopted; no kinematic modelling",
+    "Missing-flux factor of 2 is assumed",
+    "Low S/N for HNC and HCN"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Cycle 0 program ID given; public status not explicit",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00020.S ."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and clean parameters",
+    "line-free channel selection",
+    "Gaussian fit details"
+   ],
+   "estimated_data_volume_inferred": "~ a few GB",
+   "score_inferred": 3,
+   "score_reason": "Data identified and simple analysis, but imaging parameters and versions unstated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Archive data, simple moment/Gaussian analysis with numeric results, though settings need guessing."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "Imanishi et al., in preparation",
+     "why": "Other ALMA targets with AGN HCN/HCO+ 4-3 ratios"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-13adb519e29905d870fb366f9957d162",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:24",
+  "usage": {
+   "input_tokens": 22875,
+   "output_tokens": 7392,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.060442,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 64,
+   "stated": 37,
+   "rate": 0.578
+  },
+  "evidence_ok": true
+ }
+}

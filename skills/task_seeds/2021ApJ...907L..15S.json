@@ -1,0 +1,242 @@
+{
+ "bibcode": "2021ApJ...907L..15S",
+ "title": "ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Detection of Extremely High-density Compact Structure of Prestellar Cores and Multiple Substructures Within",
+ "year": 2021,
+ "doi": "10.3847/2041-8213/abd3aa",
+ "arxiv_id": "2012.08737",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Do prestellar cores in Orion host extremely dense compact central structures, and do these contain ~1000 au fragments that could seed multiple stellar systems?",
+ "alma_project_codes": [
+  "2018.1.00302.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12m C43-5 (TM1), 12m C43-2 (TM2), 7m ACA",
+  "angular_resolution": "0.34\" - 5.5\" overall; ACA ~6\", ACA+TM2 ~1.2\", tapered 0.8\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N2D+ and N2H+ linewidths, gas temperatures 10.8-17.3 K, FWHMs for virial parameters",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "found from $\\mathrm{N_2H^+}$ and $\\mathrm{N_2D^+}$ line observations that under LTE conditions the gas temperatures of the five cores are in the range of 10.8-17.3 K"
+     }
+    ]
+   },
+   "citation": "(cite: Kim2020)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa = 0.009 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "$\\kappa$ = 0.009 cm$^2$ g$^{-1}$ at the observing wavelength for grains with thick icy mantles after 10$^5$ yr of coagulation"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "image continuum",
+   "method": "Joint tclean imaging of ACA, TM2, TM1 data; uv-tapering to vary resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, hogbom, automask"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "measure flux, size, mass, density",
+   "method": "2D Gaussian fits; mass from dust emission at 10 K and 6.5 K; R_core = sqrt(major*minor)/2; N and n assuming sphere",
+   "software": [],
+   "key_parameters": [
+    "T = 6.5-10 K"
+   ],
+   "assumptions": [
+    "kappa = 0.009 cm2/g, gas-to-dust 100, mu_H2 = 2.8, spherical geometry"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "identify substructures with dendrogram",
+   "method": "dendrogram with min_value=4σ, min_delta=2σ on 150 kλ-tapered combined image",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "density profile from enclosed flux",
+   "method": "aperture fluxes at several radii give M ∝ r^1.2, density ∝ r^-1.8",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "uniform temperature and dust properties"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "stability and dynamics",
+   "method": "Jeans length, virial parameter, free-fall vs crossing time, binding condition",
+   "software": [],
+   "key_parameters": [
+    "c_s,eff = 0.247 km/s from N2D+ linewidth 0.4 km/s"
+   ],
+   "assumptions": [
+    "a = 2±1; mu_p = 2.37 for Jeans length"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "B1 mass",
+   "value": "0.38-0.84",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The masses of B1 and B2 are 0.38-0.84 M$_\\odot$ and 0.08-0.19 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "B2 mass",
+   "value": "0.08-0.19",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The masses of B1 and B2 are 0.38-0.84 M$_\\odot$ and 0.08-0.19 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "B1-B2 separation (dendrogram)",
+   "value": "1148",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dendrogram analysis",
+     "quote": "is 1148 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "B1-B2 separation (Gaussian fits)",
+   "value": "1360",
+   "uncertainty": "±140",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dendrogram analysis",
+     "quote": "the separation is given by 1360 $\\pm$ 140 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed mass scaling",
+   "value": "M ∝ r^1.2 (density ∝ r^-1.8)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "enclosed masses will scale as $r^{1.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter B1",
+   "value": "0.36a to 0.79a",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\alpha_{\\rm vir} = 0.36a$ to $0.79a$ for B1"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter B2",
+   "value": "0.74a to 1.76a",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\alpha_{\\rm vir} = 0.74a$ to $1.76a$ for B2"
+    }
+   ]
+  },
+  {
+   "quantity": "Crossing time",
+   "value": "2.3e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "$t_{cross} = 5.0$ yr $s/c_{\\rm s, eff} = 2.3\\ensuremath{\\times 10^{4}}$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fall time",
+   "value": "<7.06e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "$t_{\\rm ff} < 7.06\\ensuremath{\\times 10^{3}}$ yr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum channel selection / line-free channels",
+  "Image size, cell size, clean threshold and masks",
+  "Per-source image rms and beams",
+  "Distance to Orion used for au conversions",
+  "Fitting region and tool for 2D Gaussian fits",
+  "Primary-beam correction details",
+  "Dendrogram image rms (sigma) value",
+  "Aperture-flux procedure details"
+ ],
+ "missing_for_reproduction": [
+  "Imaging grid, cleaning thresholds, rms",
+  "Distance assumption",
+  "Dendrogram sigma"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging recipe partly given and formulas explicit, but many imaging details and the distance are missing.",
+ "rediscovery_reason": "Archival data, simple Gaussian fit and mass formulas, numeric table.",
+ "source_card": "cards/2021ApJ...907L..15S/sonnet/card.md"
+}

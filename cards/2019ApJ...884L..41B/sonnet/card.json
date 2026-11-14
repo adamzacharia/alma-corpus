@@ -1,0 +1,789 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...884L..41B",
+  "title": "An Ideal Testbed for Planet-Disk Interaction: Two Giant Protoplanets in Resonance Shaping the PDS 70 Protoplanetary Disk",
+  "year": 2019,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Bae, Jaehan",
+  "n_authors": 10,
+  "arxiv_id": "1909.09476",
+  "doi": "10.3847/2041-8213/ab46b0",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2015.1.00888.S",
+   "2017.A.00006.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Using two-dimensional hydrodynamic simulations we show that the observed features can be well explained with the two planets in formation"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "exoplanets"
+   ],
+   "targets": [
+    {
+     "name": "PDS 70",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "113 pc",
+      "evidence": [
+       {
+        "loc": "1 INTRODUCTION",
+        "quote": "the $5.4$ Myr-old, K7 pre-main sequence star PDS 70"
+       },
+       {
+        "loc": "4.2 Circumplanetary Disks",
+        "quote": "Adopting the distance $d=113$ pc (cite: gaia16; gaia18)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: gaia16; gaia18)",
+      "evidence": [
+       {
+        "loc": "1 INTRODUCTION",
+        "quote": "the $5.4$ Myr-old, K7 pre-main sequence star PDS 70"
+       },
+       {
+        "loc": "4.2 Circumplanetary Disks",
+        "quote": "Adopting the distance $d=113$ pc (cite: gaia16; gaia18)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can 2D hydrodynamic simulations of two growing planets in the PDS 70 disk reproduce the observed disk features (cavity, sub-mm ring, resonance, CPD emission)?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "PDS 70 offers an ideal testbed for planet-disk interaction studies."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00888.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA #2015.1.00888.S, ADS/JAO.ALMA #2017.A.00006.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.A.00006.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA #2015.1.00888.S, ADS/JAO.ALMA #2017.A.00006.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Observed 855 micron continuum image and CPD continuum flux (~100 uJy) of PDS 70",
+      "evidence": [
+       {
+        "loc": "4.2 Circumplanetary Disks",
+        "quote": "far too small to explain the observed continuum flux of $\\sim100~\\mu$Jy (cite: isella19)"
+       }
+      ]
+     },
+     "citation": "(cite: isella19)"
+    },
+    {
+     "what": {
+      "value": "Sub-mm continuum ring at ~74 au, gas pressure/CO constraints, stellar mass 0.85 Msun, disk gas mass model",
+      "evidence": [
+       {
+        "loc": "2.1 Initial Gas Disk",
+        "quote": "Adopting a stellar mass of $0.85~M_\\odot$ (cite: keppler19)"
+       }
+      ]
+     },
+     "citation": "(cite: keppler19)"
+    },
+    {
+     "what": {
+      "value": "Planet accretion rates from Halpha 1e-8 to 1e-7 MJup/yr",
+      "evidence": [
+       {
+        "loc": "2.2 Planets",
+        "quote": "consistent with the estimates based on H$\\alpha$ observations (cite: wagner18; haffert19)"
+       }
+      ]
+     },
+     "citation": "(cite: wagner18; haffert19)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "2D locally isothermal Dusty FARGO-ADSG simulations with Lagrangian test particles, plus RADMC-3D MCRT simulated continuum images",
+     "evidence": [
+      {
+       "loc": "2.3 Hydrodynamic Simulations",
+       "quote": "We carry out two-dimensional, locally isothermal hydrodynamical simulations using the Dusty FARGO-ADSG code (cite: baruteau19)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Disk gas mass model and stellar mass",
+      "evidence": [
+       {
+        "loc": "2.1 Initial Gas Disk",
+        "quote": "similar to the model used in (cite: keppler19)"
+       }
+      ]
+     },
+     "from_reference": "(cite: keppler19)"
+    },
+    {
+     "what": {
+      "value": "Gas accretion onto planets prescription",
+      "evidence": [
+       {
+        "loc": "2.2 Planets",
+        "quote": "following the approach presented in (cite: kley99) and (cite: durmann17)"
+       }
+      ]
+     },
+     "from_reference": "(cite: kley99), (cite: durmann17)"
+    },
+    {
+     "what": {
+      "value": "Turbulent diffusion of particles",
+      "evidence": [
+       {
+        "loc": "2.3 Hydrodynamic Simulations",
+        "quote": "following the method presented in (cite: charnoz11)"
+       }
+      ]
+     },
+     "from_reference": "(cite: charnoz11)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Details of the ALMA observed image used in Figure 5 (beam, rms, calibration), not described",
+    "Beam and noise used to convolve the simulated images",
+    "Inclination and position angle used for the simulated images",
+    "Dust opacity file / Jena database version"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Set up disk temperature",
+    "method": {
+     "value": "Iterate RADMC-3D Monte Carlo radiative transfer with hydrostatic density until the temperature changes by less than 1%",
+     "evidence": [
+      {
+       "loc": "Initial Disk Temperature",
+       "quote": "does not vary more than $1\\%$ at each radius from the previous iteration"
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "1e9 photon packages; f=0.1; L*=0.35 Lsun",
+      "evidence": [
+       {
+        "loc": "Initial Disk Temperature",
+        "quote": "In each Monte Carlo calculation we use $10^9$ photon packages."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Run hydrodynamic planet-disk simulations",
+    "method": {
+     "value": "2D locally isothermal gas plus Lagrangian dust test particles, 2 Myr, PDS 70c mass 2.5, 5 or 10 MJup, plus a b-only run",
+     "evidence": [
+      {
+       "loc": "2.2 Planets",
+       "quote": "We test three different masses for PDS 70c: 2.5, 5, and 10 $M_{\\rm Jup}$."
+      }
+     ]
+    },
+    "software": [
+     "Dusty FARGO-ADSG"
+    ],
+    "key_parameters": [
+     {
+      "value": "alpha=1e-3; grid 672x936; domain 2.2-198 au",
+      "evidence": [
+       {
+        "loc": "2.3 Hydrodynamic Simulations",
+        "quote": "We adopt 672 logarithmically-spaced grid cells in the radial direction and 936 uniformly-spaced grid cells in the azimuthal direction."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust bulk density 1.26 g cm-3; particle sizes 0.1 um to 1 mm; dust-to-gas 2.5% between 50 and 100 au",
+      "evidence": [
+       {
+        "loc": "2.3 Hydrodynamic Simulations",
+        "quote": "We assume a dust bulk density of $1.26~{\\rm g~cm}^{-3}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Produce simulated continuum images and compare with ALMA",
+    "method": {
+     "value": "MCRT on the t=0.6 Myr density with Hill spheres filled, size-distribution opacities, Henyey-Greenstein scattering",
+     "evidence": [
+      {
+       "loc": "Simulated Continuum Observation",
+       "quote": "Simulated continuum images are produced considering both absorption and anisotropic scattering using the Henyey-Greenstein approximation."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Grains 30% silicate and 70% water ice; size distribution exponent -3.5; 0.1 um to 1 mm",
+      "evidence": [
+       {
+        "loc": "Simulated Continuum Observation",
+        "quote": "We assume that grains are composed of $30~\\%$ silicate matrix and $70~\\%$ water ice"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate CPD dust mass and flux analytically",
+    "method": {
+     "value": "Steady-state M_dust,CPD = Mdot_acc * tau_vis; optically thin flux with kappa ~2 cm2/g",
+     "evidence": [
+      {
+       "loc": "4.2 Circumplanetary Disks",
+       "quote": "With an opacity of $\\sim 2~{\\rm cm}^2~{\\rm g}^{-1}$ for sub-$\\mu$m grains at $855~\\mu$m"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "not stated",
+      "evidence": []
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "Dusty FARGO-ADSG",
+    "version": "not stated",
+    "used_for": {
+     "value": "2D hydrodynamic simulations with dust test particles",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`Dusty FARGO-ADSG` (cite: baruteau19), `RADMC-3D` (cite: radmc3d)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Monte Carlo radiative transfer for temperature and simulated images",
+     "evidence": [
+      {
+       "loc": "2.1 Initial Gas Disk",
+       "quote": "we iterate Monte Carlo radiative transfer (MCRT) calculations using RADMC-3D (cite: radmc3d)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk temperature fit at 22 au",
+    "value": "44",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.1 Initial Gas Disk",
+      "quote": "\\bar{T}(R) = 44~{\\rm K} \\left( {R \\over 22~{\\rm au}} \\right)^{-0.24}"
+     }
+    ]
+   },
+   {
+    "quantity": "Sub-mm particle trap radius, two-planet models (Mc=2.5, 5 MJup)",
+    "value": "~63",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Disk Evolution",
+      "quote": "sub-mm particles are trapped in the pressure peak at $\\sim63$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas density peak, PDS 70b-only model",
+    "value": "~45",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Disk Evolution",
+      "quote": "PDS 70b opens a wide gap with the gas density peaking at about 45 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Steady-state CPD dust mass (b, c)",
+    "value": "2.2e-5 and 4.5e-5",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Circumplanetary Disks",
+      "quote": "This results in $M_{\\rm dust, CPD}$ of $2.2\\times10^{-5}~M_\\ensuremath{\\oplus}$ and $4.5\\times10^{-5}~M_\\ensuremath{\\oplus}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Simulated CPD dust mass at 0.6 Myr (Mc=2.5)",
+    "value": "(2-3)e-3",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2 Circumplanetary Disks",
+      "quote": "the total dust mass in the CPDs at $t=0.6$ Myr reaches $(2-3) \\times10^{-3}~M_\\ensuremath{\\oplus}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Resonance settling time",
+    "value": "within 0.1 Myr",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Planets' Orbital Evolution",
+      "quote": "settle into 2:1 mean motion resonance within the first 0.1 Myr of the simulations for all three cases"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Two-planet models place the dust ring further out than the b-only model and match the observed ring; Mc=10 MJup gives ring eccentricity too large",
+    "evidence": [
+     {
+      "loc": "3.1 Disk Evolution",
+      "quote": "we conclude that PDS 70c’s mass has to be smaller than 10 $M_{\\rm Jup}$"
+     }
+    ]
+   }
+  ],
+  "claims": [],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "PDS 70b-only model rejected because the ring lies too close in (45 au vs ~74 au observed)",
+     "evidence": [
+      {
+       "loc": "3.1 Disk Evolution",
+       "quote": "this is insufficient to explain the continuum peak at $\\sim74$ au in the sub-mm observation"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Simulations do not address how the planets reached the resonant configuration",
+     "evidence": [
+      {
+       "loc": "5 CONCLUSION",
+       "quote": "our simulations do not address how the two planets have reached such a configuration in the first place"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Fixed parameters (alpha, planet masses, dust size cut-off) not explored widely",
+    "Agreement with observations is qualitative and not a quantitative fit",
+    "2D locally isothermal setup with no dust feedback"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Observed ALMA image and its reduction details",
+    "Simulation parameter files",
+    "Exact inclination and beam for the simulated observations"
+   ],
+   "estimated_data_volume_inferred": "Not needed to reproduce simulations; ALMA continuum images are small (<10 GB)",
+   "score_inferred": 3,
+   "score_reason": "Simulation setup is well described and uses public codes, but the ALMA comparison details are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper is simulation-driven, the ALMA data are only used for a qualitative comparison, and the results are not mainly numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: baruteau19)",
+     "why": "Dusty FARGO-ADSG code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: keppler19)",
+     "why": "ALMA observations of the PDS 70 disk"
+    },
+    {
+     "citation": "(cite: isella19)",
+     "why": "ALMA detection of sub-mm emission near the planets"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-b4ac403352071ac39461b92f601252c8",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:16",
+  "usage": {
+   "input_tokens": 20373,
+   "output_tokens": 5384,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.047899,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 34,
+  "quotes_ok": 34,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 23,
+   "rate": 0.319
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:13",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[1].validation",
+    "old_value": "Compared ring location and eccentricity with sub-mm observations"
+   },
+   {
+    "path": "analysis_steps[2].validation",
+    "old_value": "Visual comparison with the observed 855 um image"
+   },
+   {
+    "path": "analysis_steps[3].assumptions[0]",
+    "old_value": "d=113 pc; CPD T~30-35 K; alpha_CPD=1e-3; f_dtg~1e-3"
+   },
+   {
+    "path": "analysis_steps[3].validation",
+    "old_value": "Consistent with Zhu et al. 2018 CPD models"
+   }
+  ],
+  "dropped_items": [
+   {
+    "list": "claims",
+    "reason": "no quote",
+    "item": {
+     "hypothesis": "Two planets in resonance explain the PDS 70 cavity and ring",
+     "experiment": "Hydro simulations with b and c",
+     "result": "Planets settle into 2:1 resonance and trap sub-mm dust at ~63 au",
+     "finding": "PDS 70b and c are likely in 2:1 resonance and the ring is explained",
+     "support": "supported",
+     "evidence": []
+    }
+   },
+   {
+    "list": "claims",
+    "reason": "no quote",
+    "item": {
+     "hypothesis": "Steady-state CPD dust explains the observed sub-mm flux",
+     "experiment": "Analytic estimate and simulated images",
+     "result": "Flux <1 uJy versus ~100 uJy observed",
+     "finding": "Needs dust accumulation over multiple viscous timescales or warmer CPDs",
+     "support": "partially",
+     "evidence": []
+    }
+   },
+   {
+    "list": "claims",
+    "reason": "no quote",
+    "item": {
+     "hypothesis": "Planet growth destabilizes the resonance",
+     "experiment": "Gas accretion at 1e-8 to 1e-7 MJup/yr",
+     "result": "Resonance preserved over 2 Myr",
+     "finding": "Observed accretion rates do not destabilize it",
+     "support": "supported",
+     "evidence": []
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,539 @@
+{
+ "bibcode": "2026ApJ...997..218A",
+ "title": "Tentative Detection of Neutral Gas in a Little Red Dot at z = 4.46",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae2c77",
+ "arxiv_id": "2503.00998",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Characterize the molecular and neutral gas reservoirs, dust continuum, and dynamical masses of the host galaxies of Little Red Dots (LRDs) at z=3.10-7.04.",
+ "alma_project_codes": [
+  "2024.1.01085.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 5",
+  "arrays": "not stated",
+  "angular_resolution": "0.92'' (RUBIES-BLAGN-1), 1.56'' (A2744-45924), 2.50'' (A2744-QSO1)",
+  "sensitivity": "Cube RMS: 102.5, 96.7, 68.3 uJy/beam; Cont RMS: 9.7, 7.5, 5.3 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic redshift of RUBIES-BLAGN-1 (z=3.1034)",
+    "evidence": [
+     {
+      "loc": "ALMA observations and data reduction",
+      "quote": "We targeted three LRDs with existing (spectroscopic) redshifts from *JWST*: RUBIES-BLAGN-1 at $z=3.1034$ (cite: wangRUBIES2024a), A2744-45924 at $z=4.4655$ (cite: labbeUnambiguous2024), and A2744-QSO1 at $z=7.0367$ (cite: furtakHigh2024)."
+     }
+    ]
+   },
+   "citation": "(cite: wangRUBIES2024a)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift (z=4.4655), effective radii (R_e <= 70 pc and extended R_e ~ 700 pc), and stellar mass (M_* ~ 8 x 10^10 M_sun) of A2744-45924",
+    "evidence": [
+     {
+      "loc": "ALMA observations and data reduction",
+      "quote": "We targeted three LRDs with existing (spectroscopic) redshifts from *JWST*: RUBIES-BLAGN-1 at $z=3.1034$ (cite: wangRUBIES2024a), A2744-45924 at $z=4.4655$ (cite: labbeUnambiguous2024), and A2744-QSO1 at $z=7.0367$ (cite: furtakHigh2024)."
+     },
+     {
+      "loc": "Dynamical mass",
+      "quote": "(cite: labbeUnambiguous2024) also find evidence for a faint, extended ($R_e \\sim 700$ pc) structure alongside the dominant unresolved component."
+     },
+     {
+      "loc": "Implications for the host galaxies of LRDs",
+      "quote": "Moreover, our derived dynamical mass for A2744-45924 is more than an order of magnitude below the stellar mass derived in ($M_\\star \\sim 8\\times 10^{10}\\,M_\\odot$), which is based on the assumption that the strong Balmer break observed in the NIRSpec spectrum is associated with an old stellar population."
+     }
+    ]
+   },
+   "citation": "(cite: labbeUnambiguous2024)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshift (z=7.0367) and lensing magnifications (mu=6.2 and mu=7.3) of A2744-QSO1",
+    "evidence": [
+     {
+      "loc": "ALMA observations and data reduction",
+      "quote": "We targeted three LRDs with existing (spectroscopic) redshifts from *JWST*: RUBIES-BLAGN-1 at $z=3.1034$ (cite: wangRUBIES2024a), A2744-45924 at $z=4.4655$ (cite: labbeUnambiguous2024), and A2744-QSO1 at $z=7.0367$ (cite: furtakHigh2024)."
+     },
+     {
+      "loc": "ALMA observations and data reduction",
+      "quote": "RUBIES-BLAGN-1 and A2744-45924 are among the brightest LRDs known, and A2744-QSO1, while intrinsically fainter and at much higher redshift, is strongly lensed, with images A ($\\mu=6.2$) and B ($\\mu=7.3$) fitting into the same ALMA pointing."
+     }
+    ]
+   },
+   "citation": "(cite: furtakHigh2024)"
+  },
+  {
+   "what": {
+    "value": "Dynamical mass and black hole-to-dynamical mass ratio of A2744-QSO1",
+    "evidence": [
+     {
+      "loc": "Implications for the host galaxies of LRDs",
+      "quote": "We also show A2744-QSO1; though not detected in \\[C I\\] or CO, the dynamical mass has recently been measured from the narrow component of H$\\beta$ via high-resolution *JWST* IFU spectroscopy (cite: jiBlackTHUNDER2025)."
+     }
+    ]
+   },
+   "citation": "(cite: jiBlackTHUNDER2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA datacubes and continuum maps",
+   "method": "Adopt standard ALMA pipeline calibration and perform custom imaging with tclean using natural weighting, auto-multithresh automasking, and native channel width.",
+   "software": [
+    "CASA",
+    "tclean",
+    "auto-multithresh"
+   ],
+   "key_parameters": [
+    "natural weighting",
+    "native channel width (~70 km/s)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust continuum flux and dust mass upper limits",
+   "method": "Measure continuum RMS in maps and derive 3sigma upper limits on dust mass in the optically-thin Rayleigh-Jeans tail following Scoville et al. (2016).",
+   "software": [],
+   "key_parameters": [
+    "3sigma upper limits"
+   ],
+   "assumptions": [
+    "T_dust = 25 K and dust emissivity index beta = 1.8",
+    "Lensing magnification correction for A2744-QSO1 (mu=6.2 for A, mu=7.3 for B)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract 1D spectra, create moment-0 map, and fit [CI](2-1) line profile in A2744-45924",
+   "method": "Integrate over four channels at the ~3.9sigma spectral peak to make moment-0 map (4.9sigma integrated SNR), extract 1D spectrum at peak position, and fit with a Gaussian line profile using emcee.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Moment-0 integrated over 4 channels"
+   ],
+   "assumptions": [
+    "Nominal redshift z = 4.4655 for A2744-45924"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas masses and upper limits from CO(7-6) and [CI](2-1)",
+   "method": "Convert line fluxes and 3sigma upper limits to line luminosities L' and scale to H2 masses using both standard quasar and conservative Milky Way/SMG conversion factors for CO(7-6), and empirical conversion factor for [CI](2-1).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Assumed line width of 300 km/s for non-detected lines",
+    "Standard quasar assumptions: alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 and L'_CO(7-6)/L'_CO(1-0) = 0.60",
+    "Conservative assumptions: alpha_CO = 4.5 M_sun (K km s^-1 pc^2)^-1 and L'_CO(7-6)/L'_CO(1-0) = 0.1",
+    "[CI]-to-H2 conversion factor alpha_[CI](2-1) = 34 with 0.4 dex uncertainty"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate dynamical mass of A2744-45924 from [CI](2-1) kinematics",
+   "method": "Calculate M_dyn = 5 * R_e * sigma^2 / G using the [CI] velocity dispersion and effective radius, multiplied by 3/2 to account for unknown inclination.",
+   "software": [],
+   "key_parameters": [
+    "sigma_gas = 34 +16/-9 km/s"
+   ],
+   "assumptions": [
+    "Fiducial effective radius R_e ~ 700 pc from extended NIRCam component; conservative upper limit R_e < 4.8 kpc from ALMA beam HWHM",
+    "Inclination correction factor of 3/2 (reciprocal of expectation value of sin^2(i))"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "I_[CI](2-1) line flux (A2744-45924)",
+   "value": "36.9",
+   "uncertainty": "+10.6/-8.4",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detection of [CI](2–1) in A2744-45924",
+     "quote": "We measure a total line flux of $I_{[{\\rm C}\\,\\textsc{i}]} = 36.9_{-8.4}^{+10.6}$ mJy km s$^{-1}$ and a luminosity of $L_{[{\\rm C}\\,\\textsc{i}]} = 1.0^{+0.3}_{-0.2}\\times 10^7\\,L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CI](2-1) luminosity (A2744-45924)",
+   "value": "1.0e7",
+   "uncertainty": "+0.3e7/-0.2e7",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detection of [CI](2–1) in A2744-45924",
+     "quote": "We measure a total line flux of $I_{[{\\rm C}\\,\\textsc{i}]} = 36.9_{-8.4}^{+10.6}$ mJy km s$^{-1}$ and a luminosity of $L_{[{\\rm C}\\,\\textsc{i}]} = 1.0^{+0.3}_{-0.2}\\times 10^7\\,L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "L'_[CI](2-1) luminosity (A2744-45924)",
+   "value": "5.8e8",
+   "uncertainty": "+1.7e8/-1.4e8",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "For A2744-45924, we derive a \\[C I\\] luminosity of $L'_{[{\\rm C}\\,\\textsc{i}]} = 5.8^{+1.7}_{-1.4}\\times10^8$ K km s$^{-1}$ pc$^2$, which corresponds to a molecular gas mass of $M_{{\\rm H}_2} = 2.0^{+3.1}_{-1.2}\\times 10^{10}\\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) velocity offset (A2744-45924)",
+   "value": "19",
+   "uncertainty": "+9/-14",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detection of [CI](2–1) in A2744-45924",
+     "quote": "The line center is offset $19^{+9}_{-14}$ km s$^{-1}$ from the nominal redshift, consistent with 0, and we derive a line FWHM of $80^{+38}_{-22}$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) line FWHM (A2744-45924)",
+   "value": "80",
+   "uncertainty": "+38/-22",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detection of [CI](2–1) in A2744-45924",
+     "quote": "The line center is offset $19^{+9}_{-14}$ km s$^{-1}$ from the nominal redshift, consistent with 0, and we derive a line FWHM of $80^{+38}_{-22}$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) gas velocity dispersion sigma_gas (A2744-45924)",
+   "value": "34",
+   "uncertainty": "+16/-9",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dynamical mass",
+     "quote": "The dynamical mass is estimated as $$\\begin{equation}\n M_{\\rm dyn} = \\frac{5 R_e \\sigma^2}{G}\n\\end{equation}$$ where $G$ is the gravitational constant, $R_e$ is the effective radius, and $\\sigma$ is the velocity dispersion of the gas, in this case from the \\[C I\\] line, $\\sigma_{\\rm gas} = 34^{+16}_{-9}$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial dynamical mass M_dyn (A2744-45924)",
+   "value": "1.4e9",
+   "uncertainty": "+1.7e9/-0.6e9",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dynamical mass",
+     "quote": "We adopt this size for our fiducial measurement of the dynamical mass, for which we derive $M_{\\rm dyn} = 1.4^{+1.7}_{-0.6}\\times 10^9\\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Conservative dynamical mass upper limit M_dyn (A2744-45924)",
+   "value": "<9.4e9",
+   "uncertainty": "+11.4e9/-4.9e9",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dynamical mass",
+     "quote": "This yields a dynamical mass limit of $M_{\\rm dyn} < 9.4^{+11.4}_{-4.9}\\times 10^9\\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from [CI](2-1) M_H2,[CI] (A2744-45924)",
+   "value": "2.0e10",
+   "uncertainty": "+3.1e10/-1.2e10",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "For A2744-45924, we derive a \\[C I\\] luminosity of $L'_{[{\\rm C}\\,\\textsc{i}]} = 5.8^{+1.7}_{-1.4}\\times10^8$ K km s$^{-1}$ pc$^2$, which corresponds to a molecular gas mass of $M_{{\\rm H}_2} = 2.0^{+3.1}_{-1.2}\\times 10^{10}\\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass upper limit from [CI](2-1) M_H2,[CI] (RUBIES-BLAGN-1)",
+   "value": "<1.1e10",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{{\\rm H}_2,[{\\rm C}\\,\\textsc{i}]}$ & $10^{10}~M_\\odot$ & \\<1.1 & 2.0\\^+3.1\\_-1.2 & \\<3.9\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass upper limit from [CI](2-1) M_H2,[CI] (A2744-QSO1)",
+   "value": "<3.9e10",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{{\\rm H}_2,[{\\rm C}\\,\\textsc{i}]}$ & $10^{10}~M_\\odot$ & \\<1.1 & 2.0\\^+3.1\\_-1.2 & \\<3.9\\"
+    }
+   ]
+  },
+  {
+   "quantity": "I_CO(7-6) line flux upper limit (RUBIES-BLAGN-1)",
+   "value": "<35",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$I_{\\rm CO(7-6)}$ & mJy km s$^{-1}$ & \\<35 & \\<43 & \\<37\\"
+    }
+   ]
+  },
+  {
+   "quantity": "I_CO(7-6) line flux upper limit (A2744-45924)",
+   "value": "<43",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$I_{\\rm CO(7-6)}$ & mJy km s$^{-1}$ & \\<35 & \\<43 & \\<37\\"
+    }
+   ]
+  },
+  {
+   "quantity": "I_CO(7-6) line flux upper limit (A2744-QSO1)",
+   "value": "<37",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$I_{\\rm CO(7-6)}$ & mJy km s$^{-1}$ & \\<35 & \\<43 & \\<37\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Conservative molecular gas mass upper limit M_H2,CO (RUBIES-BLAGN-1)",
+   "value": "<1.4e10",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{{\\rm H}_2,{\\rm CO}}$ & $10^{10}~M_\\odot$ & \\<1.4 & \\<3.1 & \\<5.1\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Conservative molecular gas mass upper limit M_H2,CO (A2744-45924)",
+   "value": "<3.1e10",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{{\\rm H}_2,{\\rm CO}}$ & $10^{10}~M_\\odot$ & \\<1.4 & \\<3.1 & \\<5.1\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Conservative molecular gas mass upper limit M_H2,CO (A2744-QSO1)",
+   "value": "<5.1e10",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{{\\rm H}_2,{\\rm CO}}$ & $10^{10}~M_\\odot$ & \\<1.4 & \\<3.1 & \\<5.1\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar-assumption molecular gas mass upper limit M_H2,CO (RUBIES-BLAGN-1)",
+   "value": "<4e8",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "These assumptions give us 3$\\sigma$ molecular gas mass limits of $M_{{\\rm H}_2,{\\rm CO}} <4\\times10^8$, $<9\\times10^8$, and $<2\\times10^9\\,M_\\odot$ for RUBIES-BLAGN-1, A2744-45924, and A2744-QSO1, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar-assumption molecular gas mass upper limit M_H2,CO (A2744-45924)",
+   "value": "<9e8",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "These assumptions give us 3$\\sigma$ molecular gas mass limits of $M_{{\\rm H}_2,{\\rm CO}} <4\\times10^8$, $<9\\times10^8$, and $<2\\times10^9\\,M_\\odot$ for RUBIES-BLAGN-1, A2744-45924, and A2744-QSO1, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar-assumption molecular gas mass upper limit M_H2,CO (A2744-QSO1)",
+   "value": "<2e9",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "These assumptions give us 3$\\sigma$ molecular gas mass limits of $M_{{\\rm H}_2,{\\rm CO}} <4\\times10^8$, $<9\\times10^8$, and $<2\\times10^9\\,M_\\odot$ for RUBIES-BLAGN-1, A2744-45924, and A2744-QSO1, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame 370 um continuum flux density upper limit S_370um (RUBIES-BLAGN-1)",
+   "value": "<29.1",
+   "uncertainty": "3sigma upper limit",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$S_{{\\rm 370}\\,\\mu{\\rm m}}$ & $\\mu$Jy & \\<29.1 & \\<22.5 & \\<2.4\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame 370 um continuum flux density upper limit S_370um (A2744-45924)",
+   "value": "<22.5",
+   "uncertainty": "3sigma upper limit",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$S_{{\\rm 370}\\,\\mu{\\rm m}}$ & $\\mu$Jy & \\<29.1 & \\<22.5 & \\<2.4\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame 370 um continuum flux density upper limit S_370um (A2744-QSO1)",
+   "value": "<2.4",
+   "uncertainty": "3sigma upper limit",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$S_{{\\rm 370}\\,\\mu{\\rm m}}$ & $\\mu$Jy & \\<29.1 & \\<22.5 & \\<2.4\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit M_dust (RUBIES-BLAGN-1)",
+   "value": "<6.8e7",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\rm dust}$ & $10^7~M_\\odot$ & \\<6.8 & \\<13.9 & \\<5.9\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit M_dust (A2744-45924)",
+   "value": "<13.9e7",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\rm dust}$ & $10^7~M_\\odot$ & \\<6.8 & \\<13.9 & \\<5.9\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit M_dust (A2744-QSO1)",
+   "value": "<5.9e7",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\rm dust}$ & $10^7~M_\\odot$ & \\<6.8 & \\<13.9 & \\<5.9\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (RUBIES-BLAGN-1)",
+   "value": "<20",
+   "uncertainty": "upper limit",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications for the host galaxies of LRDs",
+     "quote": "However, the CO and \\[C I\\] observations imply low gas fractions: adopting typical assumptions for quasar host galaxies, our derived gas mass limits imply $f_{\\rm gas} = M_{\\rm gas} / (M_\\star + M_{\\rm gas}) < 20\\%$ for RUBIES-BLAGN-1 and $<1\\%$ for A2744-45924."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (A2744-45924)",
+   "value": "<1",
+   "uncertainty": "upper limit",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications for the host galaxies of LRDs",
+     "quote": "However, the CO and \\[C I\\] observations imply low gas fractions: adopting typical assumptions for quasar host galaxies, our derived gas mass limits imply $f_{\\rm gas} = M_{\\rm gas} / (M_\\star + M_{\\rm gas}) < 20\\%$ for RUBIES-BLAGN-1 and $<1\\%$ for A2744-45924."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version",
+  "Exact target sky coordinates (RA, Dec) and phase centers",
+  "Image cell size and image dimensions in tclean",
+  "Cleaning stopping threshold and niter in tclean",
+  "Aperture size or pixel extraction method used to extract 1D spectra",
+  "Cosmological parameters assumed (H0, Omega_m, Omega_Lambda) for luminosity and physical size calculations",
+  "Priors and MCMC walker/step setup for emcee Gaussian line fitting"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates of the three targets and of the 0.4'' SE offset position where the A2744-45924 spectrum was extracted",
+  "Specific channel range or frequencies of the 4 channels integrated for the [CI](2-1) moment-0 map",
+  "Aperture definition (single pixel vs circular aperture vs beam-integrated) used to extract the 1D spectra in Figures 1 and 2",
+  "CASA and pipeline versions, cell size, image size, and stopping criteria in tclean",
+  "Cosmological parameters assumed for luminosity distance and angular scale calculations"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The data come from a single clearly identified ALMA program (2024.1.01085.S) using standard pipeline calibration, natural weighting, native channel width, and default auto-multithresh parameters, and all conversion factors and equations are explicitly stated. Some minor imaging/extraction details (exact extraction aperture, cell size, cosmology) are omitted.",
+ "rediscovery_reason": "Single ALMA project code with straightforward imaging (natural weighting, native channel width) and clear, quantitative main results (line flux, FWHM, upper limits, and derived masses) that can be directly checked against Table 1 and Table 2.",
+ "source_card": "cards/2026ApJ...997..218A/sonnet/card.md"
+}

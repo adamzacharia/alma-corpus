@@ -1,0 +1,464 @@
+{
+ "bibcode": "2026A&A...705A..49Z",
+ "title": "The <SUP>12</SUP>CO gas structures of protoplanetary disks in the Upper Scorpius region",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202557366",
+ "arxiv_id": "2511.16734",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Infer bulk gas-disk properties (radius, 12CO emission-layer height, brightness temperature, integrated flux) for the Upper Scorpius disks by fitting 12CO J=3-2 visibilities with parametric models",
+ "alma_project_codes": [
+  "2011.0.00526.S",
+  "2012.1.00688.S",
+  "2013.1.00395.S",
+  "2018.1.00564.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12-m array, 43 to 50 antennas",
+  "angular_resolution": "0.1-0.3 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "12CO J=3-2 ALMA data, calibration and list of 83 detections (S/N>=3) among 202 Upper Sco sources",
+    "evidence": [
+     {
+      "loc": "2 Sample selection",
+      "quote": "identified 83 $^{12}$CO $J=3 - 2$ detections with S/N $\\geq3$; these are the sources we analyzed."
+     }
+    ]
+   },
+   "citation": "(cite: Carpenter2025)"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosities (log L*) used in Tables 4 and 5",
+    "evidence": [
+     {
+      "loc": "Table 4 notes",
+      "quote": "The stellar luminosities were taken from Empey et al., in prep."
+     }
+    ]
+   },
+   "citation": "Empey et al., in prep."
+  },
+  {
+   "what": {
+    "value": "Source distances",
+    "evidence": [
+     {
+      "loc": "Table 4 notes",
+      "quote": "The distances were taken from the Gaia DR3 collaboration"
+     }
+    ]
+   },
+   "citation": "(cite: Gaia_DR3_2023)"
+  },
+  {
+   "what": {
+    "value": "Literature aspect-ratio values for comparison (Law+22,23,24 and Galloway-Sprietsma+25)",
+    "evidence": [
+     {
+      "loc": "Table 7 notes",
+      "quote": "values were collected from the works of"
+     }
+    ]
+   },
+   "citation": "(cite: Law_2022; Law_2023; Law_2024), (cite: Galloway2025)"
+  },
+  {
+   "what": {
+    "value": "Image-plane R90 values for the same sources used for the CCDF comparison",
+    "evidence": [
+     {
+      "loc": "3.2.2 Gas-disk radii extraction",
+      "quote": "which analyzed the same sources of our sample, but using an image-plane analysis as described above."
+     }
+    ]
+   },
+   "citation": "Zagaria et al., in prep."
+  },
+  {
+   "what": {
+    "value": "AGE-PRO Upper Sco gas-disk radii used for CDF comparison",
+    "evidence": [
+     {
+      "loc": "4.1 Gas-disk radii",
+      "quote": "compare it with that of"
+     }
+    ]
+   },
+   "citation": "(cite: Trapman_2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select the sample",
+   "method": "Take the 12CO J=3-2 detections with S/N>=3 from the earlier ALMA survey of Upper Sco (83 sources) and attempt to fit all",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit 12CO visibilities with parametric disk models (A: two-layer, B: midplane) using csalt and emcee",
+   "method": "Model visibility spectra in LSRK at each timestamp, convolve with the ALMA correlator SRF, likelihood with spectral covariance, sample posterior with emcee; prescription A for 33 resolved disks, B for 4 marginally resolved disks; cloud-absorbed frequency ranges excluded from the likelihood",
+   "software": [
+    "csalt",
+    "emcee"
+   ],
+   "key_parameters": [
+    "250 burn-in steps; 90 walkers; 1000 steps before first convergence check",
+    "Stop when relative change in the median of each parameter is below 5% over the last 500 steps; otherwise continue",
+    "Priors chosen per disk for inc, PA, v_sys, M*, r_tau and r_z from the channel maps; Gaussian and uniform priors (example in Table 3)",
+    "Best fit = median, uncertainties = 68% interval of posterior"
+   ],
+   "assumptions": [
+    "Emission from two thin layers, back surface mirrored from front (z_b = -z_f)",
+    "Pure Keplerian rotation and purely thermal line width",
+    "Temperature and optical depth profiles equal for front and back surfaces",
+    "Model B: emission in the midplane with constant optical depth out to R_out",
+    "Distances from Gaia DR3"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Image data, best-fit model and residual visibilities for channel-map comparison",
+   "method": "tclean on data, best-fit model visibilities and residual visibilities with identical parameters",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "image size 1500 pix, cell 0.01 arcsec, scales (0, 10, 30, 60), robust=1, threshold 20 mJy per beam, Keplerian mask"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive gas-disk radii R68 and R90",
+   "method": "Compute the peak surface-brightness profile of the front surface at the 12CO J=3-2 rest frequency from the best-fit model, integrate in cylindrical coordinates, take radii enclosing 68% and 90% of the emission; uncertainties from MCMC draws (16th and 84th percentiles)",
+   "software": [
+    "csalt"
+   ],
+   "key_parameters": [
+    "rest frequency 345.7959 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure data and model integrated 12CO fluxes",
+   "method": "Moment-0 maps over +/-15 km/s around systemic velocity, summed inside a geometric mask from the best-fit geometry with size R90+0.2 arcsec; uncertainty from the scatter of the mask moved to 8 emission-free positions; model fluxes from best-fit cubes with bootstrapped uncertainty",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Fit the 12CO size-luminosity correlation",
+   "method": "Linear regression of log R90 against log L_CO (flux scaled to 140 pc) with linmix; compared with Long2022 slope and intercept",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "L_CO = F_CO x (d/140 pc)^2"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive emission-surface heights and aspect ratio <z/r>",
+   "method": "Evaluate z(r) from random MCMC draws (median, 16th and 84th percentiles); r_cut is where the height profile stops increasing, r_taper = 0.8 r_cut, <z/r> averaged over 0<=r<=r_taper; compare with literature via Kaplan-Meier estimator and log-rank test",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Relate 12CO brightness temperature at 10 au to stellar luminosity and dust temperature",
+   "method": "Fit T_b,10 against L*; compare with blackbody equilibrium temperature and the superheated-dust temperature from Dullemond2001 Eq. 7 using Planck mean opacities of pure silicate; infer opacity-temperature exponent beta",
+   "software": [
+    "dsharp_opac"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust opacity: pure silicate composition"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Test the <z/r> versus R90 correlation",
+   "method": "Linear fit of <z/r> on R90 after removing the face-on disk J16042165-2130284 and treating three disks as upper limits; compared with Galloway-Sprietsma+25 best fit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disks fitted (prescription A + B) out of 83 12CO detections",
+   "value": "37 (33 + 4)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "We were able to fit 37 sources out of a sample of 83, 33 with prescription A and four with prescription B."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-disk size R90",
+   "value": "~82",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Gas-disk radii",
+     "quote": "We find a median gas-disk size of $R_{90\\%} \\sim 82$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "R90 of J16042165-2130284 (largest disk)",
+   "value": "247",
+   "uncertainty": "+/-1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Gas-disk radii",
+     "quote": "for which we derive $R_{90\\%}=247\\pm1$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "R90 of J16095933-1800090 (most compact disk)",
+   "value": "22",
+   "uncertainty": "+/-3",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Gas-disk radii",
+     "quote": "for which we derive $R_{90\\%}=22\\pm3$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "R90 of compact disk J16062861-2121297",
+   "value": "56",
+   "uncertainty": "+/-1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3 Fitting small disks with prescription A",
+     "quote": "gas-disk size $R_{90\\%} = 56\\pm1$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "AD p-value, R90 distribution vs image-plane analysis",
+   "value": "0.8",
+   "uncertainty": "range [0.6, 0.9]",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 Gas-disk radii extraction",
+     "quote": "we obtained an AD $p$-value $p=0.8$ in the range of $[0.6, 0.9]$"
+    }
+   ]
+  },
+  {
+   "quantity": "AD p-value, R90 distribution vs AGE-PRO",
+   "value": "0.7",
+   "uncertainty": "range [0.5, 0.8]",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Gas-disk radii",
+     "quote": "we obtained a $p$-value $p=0.7$ in the range of $[0.5, 0.8]$"
+    }
+   ]
+  },
+  {
+   "quantity": "R90 - L_CO fit: intercept and slope of log10 R90 vs log10 L_CO",
+   "value": "intercept 1.77, slope 0.49",
+   "uncertainty": "+/-0.03 (intercept), +/-0.05 (slope)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 12CO flux - size correlation",
+     "quote": "(1.77\\pm0.03) + (0.49\\pm0.05)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median aspect ratio <z/r>",
+   "value": "~0.16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Vertical heights",
+     "quote": "We find a median value of $\\langle z/r \\rangle \\sim0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Log-rank p-value of <z/r> vs Galloway-Sprietsma+25",
+   "value": "0.05",
+   "uncertainty": "range [0.02, 0.12]",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Vertical heights",
+     "quote": "($p=0.05$ in a range $[0.02, 0.12]$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Log-rank p-value of <z/r> vs Law+22,23,24",
+   "value": "0.03",
+   "uncertainty": "range [0.01, 0.08]",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Vertical heights",
+     "quote": "($p=0.03$ in a range $[0.01, 0.08]$)"
+    }
+   ]
+  },
+  {
+   "quantity": "log T_b,10 vs log L* correlation (intercept, slope)",
+   "value": "intercept 2.10, slope 0.24",
+   "uncertainty": "+/-0.05 (intercept), +/-0.07 (slope)",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness temperature - stellar luminosity correlation",
+     "quote": "(2.10 \\pm 0.05) + (0.24 \\pm 0.07)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson coefficient of T_b,10 - L*",
+   "value": "0.6",
+   "uncertainty": "range [0.4, 0.7]",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness temperature - stellar luminosity correlation",
+     "quote": "with a Pearson correlation coefficient of 0.6 in a range $[0.4, 0.7]$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_b,10 vs R90 relation (intercept, slope)",
+   "value": "intercept 70 K, slope 0.2 K/au",
+   "uncertainty": "+/-12 (intercept), +/-0.1 (slope)",
+   "units": "K; K per au",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness temperature - stellar luminosity correlation",
+     "quote": "(70\\pm12) + (0.2\\pm0.1)"
+    }
+   ]
+  },
+  {
+   "quantity": "Planck mean opacity temperature exponent beta",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness temperature - stellar luminosity correlation",
+     "quote": "from this we found $\\beta\\sim0.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "<z/r> vs R90 relation (intercept, slope)",
+   "value": "intercept 0.05, slope 0.0009 per au",
+   "uncertainty": "+/-0.03 (intercept), +/-0.0003 (slope)",
+   "units": "dimensionless; per au",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 <z/r> - disk size correlation",
+     "quote": "(0.05 \\pm 0.03) + (0.0009 \\pm 0.0003)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson coefficient of <z/r> - R90",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 <z/r> - disk size correlation",
+     "quote": "and it is found with a Pearson correlation coefficient of $0.6$."
+    }
+   ]
+  },
+  {
+   "quantity": "Overestimate of moment-0 R90 for a 70 deg inclined disk with <z/r>=0.14",
+   "value": "~40",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "9 Appendix (R90 vs inclination)",
+     "quote": "can be $\\sim 40\\%$ greater than the true value."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "csalt version or commit (the code is cited as in prep.)",
+  "Which measurement sets and spectral windows were passed to csalt, and any time or channel averaging of the visibilities",
+  "Velocity or channel range used per disk in the likelihood and the exact frequency ranges excluded for cloud absorption (only partly given in the flux table)",
+  "Per-disk priors for all 37 sources (only the J16213469-2612269 example is tabulated; rest on GitHub)",
+  "Whether the Carpenter2025 pipeline products or re-calibrated data were used and any continuum subtraction applied",
+  "Random seeds, walker initialisation and exact number of extra steps needed until convergence",
+  "Radial grid and resolution used to integrate the peak-intensity profile for R68 and R90",
+  "Details of the bootstrap behind the quoted AD and log-rank p-value ranges",
+  "linmix and Pearson-coefficient settings for the correlation fits, and how upper limits entered them",
+  "Unit of the multiscale scales (0, 10, 30, 60) and clean threshold per channel"
+ ],
+ "missing_for_reproduction": [
+  "csalt release or commit (cited as in preparation)",
+  "Exact visibility input products and data selection per disk",
+  "Stellar luminosities from Empey et al. in prep.",
+  "Image-plane radii of Zagaria et al. in prep. used in the CCDF comparison"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data come from public ALMA archive projects and the priors, scripts and csalt are on GitHub, with numeric tables, but csalt is in prep. and key inputs (visibility selection, stellar luminosities, per-disk setup) are external or unstated.",
+ "rediscovery_reason": "Project codes are listed, per-disk fit tables and flux tables are numeric, and the csalt code and priors are on GitHub, so R90 and <z/r> for a few disks could be redone, though the full pipeline needs the csalt release.",
+ "source_card": "cards/2026A%26A...705A..49Z/sonnet/card.md"
+}

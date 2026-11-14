@@ -1,0 +1,469 @@
+{
+ "bibcode": "2024ApJ...967...68H",
+ "title": "Radial and Vertical Constraints on the Icy Origin of H<SUB>2</SUB>CO in the HD 163296 Protoplanetary Disk",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad3cdb",
+ "arxiv_id": "2404.06133",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Which formation pathway (grain-surface versus gas-phase) dominates H2CO in the HD 163296 disk, constrained by radial, vertical, excitation-temperature and ortho-to-para-ratio (OPR) profiles",
+ "alma_project_codes": [
+  "2016.1.00884.S",
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "Bands 3, 6 and 7",
+  "arrays": "12 m array (Bands 6, 7 and MAPS) plus Atacama Compact Array (Band 7 short baselines)",
+  "angular_resolution": "common circularized beam of 0.6 x 0.6 arcsec for all lines",
+  "sensitivity": "Channel rms 0.70 (Band 3), 1.20-1.52 (Band 6), 2.47-2.61 (Band 7) mJy/beam; moment-zero rms 0.38-0.84 mJy/beam km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar and disk parameters of HD 163296 (distance, inclination, position angle, stellar mass, luminosity, spectral type, systemic velocity)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Values reproduced from (cite: Oberg2021I), where additional source properties are included."
+     }
+    ]
+   },
+   "citation": "Gaia (cite: Gaia2018); Huang (cite: Huang2018); Teague (cite: Teague2021); Fairlamb (cite: Fairlamb2015); Teague (cite: Teague2019); reproduced from (cite: Oberg2021I)"
+  },
+  {
+   "what": {
+    "value": "CO snowline location of 75 au",
+    "evidence": [
+     {
+      "loc": "3.4.2 Radially Resolved Analysis",
+      "quote": "a global peak close to the CO snowline located at $75$ au (cite: Qi2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Qi2015)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic constants (frequency, A_ul, E_u, g_u, collisional coefficients)",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "The rest frequency and Einstein $A$ coefficient are taken from the JPL database (cite: Pickett1998)"
+     }
+    ]
+   },
+   "citation": "(cite: Pickett1998); (cite: Schöier2005)"
+  },
+  {
+   "what": {
+    "value": "Ortho and para partition functions from ExoMol with LAMDA-consistent degeneracies",
+    "evidence": [
+     {
+      "loc": "3.4 H2CO Excitation Conditions and OPR",
+      "quote": "taken from the ExoMol database (cite: Al-Refaie2015; Wang2020) but using state degeneracies consistent with the ones from LAMDA (cite: Schöier2005)"
+     }
+    ]
+   },
+   "citation": "(cite: Al-Refaie2015; Wang2020)"
+  },
+  {
+   "what": {
+    "value": "CH3OH/H2CO upper limit in HD 163296 of < 0.24 used in discussion",
+    "evidence": [
+     {
+      "loc": "4.3 H2CO in T Tauri versus Herbig Ae/Be disks",
+      "quote": "but not so in HD 163296 (CH$_3$OH/H$_2$CO $< 0.24$), according to the upper limits derived by (cite: Carney2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Carney2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate visibilities, subtract continuum",
+   "method": "Standard JAO pipeline output, pseudo-continuum from line-flagged channels, phase-only then phase-amplitude self-calibration on short baselines then combined data, applied to line data, then uvcontsub",
+   "software": [
+    "CASA",
+    "fixvis",
+    "fixplanets",
+    "gaincal",
+    "applycal",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Phase-only solints: inf, 360, 180, 60, 30, 18, 6 s (two to seven iterations depending on band and baseline set); one amplitude round with inf"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image line cubes to a common 0.6 arcsec circular beam with JvM correction",
+   "method": "tclean with Briggs weighting plus per-line UV taper, multiscale CLEAN with Keplerian mask, threshold 4x rms, then JvM correction",
+   "software": [
+    "CASA",
+    "tclean",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "Robust 0.0-0.5 and per-line UV taper (Table 4); pixel about 1/7 beam; channel width 0.2 km/s (0.5 km/s for Band 3)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure disk-integrated flux densities",
+   "method": "Extract disk-integrated spectrum within the Keplerian mask; uncertainty from 1000 off-source masks",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Integrated within outer radius of 4.5 arcsec and between -1.8 and 13.4 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Make zeroth-moment maps with bootstrapped noise",
+   "method": "Collapse cubes with bettermoments using one Keplerian mask for all lines, no clipping; rms from 1000 off-source moment maps",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Deproject radial intensity profiles and define the continuum edge",
+   "method": "Deproject and azimuthally average the moment maps; R_edge defined as the radius where continuum emission falls below 5 sigma",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [
+    "Geometry from Table 1: inclination 46.7 deg, PA 133.3 deg, distance 101 pc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Fit disk-averaged LTE excitation conditions and OPR",
+   "method": "Simultaneous LTE fit of ortho and para lines for N_T, T_ex, OPR and line width on the Keplerian-corrected disk-averaged spectrum",
+   "software": [
+    "GoFish",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Free parameters N_T, T_rot, OPR and Delta v"
+   ],
+   "assumptions": [
+    "LTE",
+    "Same excitation temperature for ortho and para",
+    "Gaussian line profile centred at v_sys = 5.8 km/s",
+    "Emitting layer in the midplane (z/r = 0) for the disk-averaged case",
+    "Background temperature is the maximum of dust continuum brightness temperature and the CMB (2.73 K)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit radially resolved excitation conditions and OPR",
+   "method": "Deproject spectra into radial annuli with GoFish radial_spectra, shift and stack for Keplerian motion, and repeat the LTE fit in each bin",
+   "software": [
+    "GoFish",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Annulus width equals one-quarter of the beam major axis"
+   ],
+   "assumptions": [
+    "LTE, shared T_ex for ortho and para, same emitting region for all lines (acknowledged in footnote)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Measure the vertical height of the emission",
+   "method": "ALFAHOR geometrical method on manually masked channel emission for the four brightest lines",
+   "software": [
+    "ALFAHOR"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Stellar and geometric parameters from Table 1"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Derive spin temperature from OPR and compare with T_ex",
+   "method": "Convert resolved OPR profile to spin temperature and compare with excitation temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk-averaged total H2CO column density N_T (Gaussian fit)",
+   "value": "3.89e12",
+   "uncertainty": "+0.18/-0.18 e12",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4.1 Disk-averaged Analysis",
+     "quote": "$N_{\\mathrm{T}} = 3.89_{-0.18}^{+0.18} \\times 10^{12}$ cm$^{-2}$, $T_{\\mathrm{ex}} = 19.42_{-1.51}^{+1.59}$ K, and $\\mathrm{OPR} = 2.70_{-0.19}^{+0.20}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged excitation temperature T_ex",
+   "value": "19.42",
+   "uncertainty": "+1.59/-1.51",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4.1 Disk-averaged Analysis",
+     "quote": "$T_{\\mathrm{ex}} = 19.42_{-1.51}^{+1.59}$ K, and $\\mathrm{OPR} = 2.70_{-0.19}^{+0.20}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged ortho-to-para ratio",
+   "value": "2.70",
+   "uncertainty": "+0.20/-0.19",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4.1 Disk-averaged Analysis",
+     "quote": "$\\mathrm{OPR} = 2.70_{-0.19}^{+0.20}$ for a Gaussian line width of $\\Delta v = 0.80_{-0.03}^{+0.03}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian line width Delta v (disk-averaged)",
+   "value": "0.80",
+   "uncertainty": "+0.03/-0.03",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4.1 Disk-averaged Analysis",
+     "quote": "for a Gaussian line width of $\\Delta v = 0.80_{-0.03}^{+0.03}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged line optical depth range",
+   "value": "0.003 to 0.074",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4.1 Disk-averaged Analysis",
+     "quote": "The disk-averaged line optical depths are between $\\tau_\\nu = 0.003$ and $0.074$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer edge of the millimeter continuum R_edge",
+   "value": "~260",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Radial Distribution of H2CO Emission",
+     "quote": "we estimated an $R_{\\mathrm{edge}}$ value of $\\sim$$260$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial extent of the four brightest H2CO lines",
+   "value": "~450",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Radial Distribution of H2CO Emission",
+     "quote": "reaching distances up to $\\sim$$450$ au in the case of the four brightest transitions"
+    }
+   ]
+  },
+  {
+   "quantity": "Radially resolved total column density range",
+   "value": "~1.3e12 to ~2.0e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.4.2 Radially Resolved Analysis",
+     "quote": "Total column density values range from $\\sim 2.0 \\times 10^{13} - 1.3\\times 10^{12}$ cm$^{-2}$ within a radius of $\\sim450$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial T_ex profile range (about 30 K near CO snowline, about 20 K at R_edge)",
+   "value": "decreases from 50 to 10",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.4.2 Radially Resolved Analysis",
+     "quote": "We find that the $T_{\\mathrm{ex}}$ profile decreases smoothly from $50$ to $10$ K"
+    },
+    {
+     "loc": "3.4.2 Radially Resolved Analysis",
+     "quote": "where a temperature of $\\sim$$30$ K is reached close to CO snowline and $\\sim$$20$ K at $R_{\\mathrm{edge}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial OPR profile level",
+   "value": "~2.7, consistent with 3.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.4.2 Radially Resolved Analysis",
+     "quote": "mostly centered at $\\mathrm{OPR}\\sim 2.7$ but with uncertainties that remain compatible with the statistically expected value of $\\mathrm{OPR}=3.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical emission height z/r",
+   "value": "~0.1 (lower limit)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.5 Vertical Height of the Emission",
+     "quote": "H$_2$CO is apparently tracing an emission surface close to $z/r \\sim 0.1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density p-H2CO 3_03-2_02",
+   "value": "1011",
+   "uncertainty": "13",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $47.71$ | $1.20$ | $0.48$ | $1011 \\pm 13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density o-H2CO 3_12-2_11",
+   "value": "1595",
+   "uncertainty": "13",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $45.21$ | $1.52$ | $0.54$ | $1595 \\pm 13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density p-H2CO 4_04-3_03",
+   "value": "1519",
+   "uncertainty": "11",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $-46.72$ | $2.47$ | $0.83$ | $1519 \\pm 11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density p-H2CO 4_23-3_22",
+   "value": "137",
+   "uncertainty": "11",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $-71.43$ | $2.51$ | $0.79$ | $137 \\pm 11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density p-H2CO 4_22-3_21",
+   "value": "141",
+   "uncertainty": "11",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $52.56$ | $2.61$ | $0.84$ | $141 \\pm 11$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density o-H2CO 4_13-3_12",
+   "value": "2541",
+   "uncertainty": "13",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $3.84$ | $2.53$ | $0.81$ | $2541 \\pm 13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density o-H2CO 6_15-6_16 (upper limit)",
+   "value": "<26",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.6 \\times 0.6$ | $-41.20$ | $0.70$ | $0.38$ | $<26$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration details per band and baseline set: which solution intervals, reference antenna, spw combination, S/N thresholds, and the continuum channel selection",
+  "Line-free channel ranges used for pseudo-continuum and uvcontsub fit order",
+  "Image size, number of CLEAN iterations, and the self-calibration continuum mask",
+  "Whether primary beam correction was applied and how",
+  "MCMC settings for emcee: priors and bounds, number of walkers, steps, burn-in and convergence tests",
+  "Line-width treatment per radial bin (is Delta v free in every bin) and the Voigt profile parametrization",
+  "Exact Keplerian mask parameters (velocity range, beam-convolution) and the elliptical continuum mask",
+  "Which LAMDA/ExoMol partition function table versions and the exact radial bin edges",
+  "Dust-continuum brightness temperature used for T_bg and how it was derived",
+  "ALFAHOR masks drawn manually per channel and fit settings for the vertical profile",
+  "Flux correction between Band 6/7 executions and the MAPS data (absolute flux alignment) is not discussed"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration scripts and parameters for 2016.1.00884.S",
+  "emcee priors, walkers and steps",
+  "Line-free channels and mask definitions",
+  "Radial bin edges and dust brightness temperature profile used for T_bg",
+  "Analysis code not released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the LTE modeling recipe and numeric results are given, but self-calibration, masks, MCMC settings and code are not provided.",
+ "rediscovery_reason": "Public ALMA data, a clear LTE disk-averaged fit, and numeric results (N_T, T_ex, OPR) make the disk-averaged analysis redoable from MAPS and 2016.1.00884.S data; some settings must be chosen by the reproducer.",
+ "source_card": "cards/2024ApJ...967...68H/sonnet/card.md"
+}

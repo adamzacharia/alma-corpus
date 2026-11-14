@@ -1,0 +1,920 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.489.3670K",
+  "title": "Imaging [CI] around HD 131835: reinterpreting young debris discs with protoplanetary disc levels of CO gas as shielded secondary discs",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Kral, Quentin",
+  "n_authors": 5,
+  "arxiv_id": "1811.08439",
+  "doi": "10.1093/mnras/sty2923",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01253.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "New ALMA observations are presented of HD131835 that detect $\\sim 3 \\times 10^{-3}$ M$_\\oplus$ of C$^0$, the majority 40-200au from the star, in sufficient quantity to shield the previously detected CO."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "HD 131835",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "145±9 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "HD 131835 is a 15-16 Myr old (cite: 2002AJ....124.1670M; 2012ApJ...746..154P) A-type star located at a distance[^3] of 145$\\pm$9 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR1 (Gaia Collaboration 2016a,b)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "HD 131835 is a 15-16 Myr old (cite: 2002AJ....124.1670M; 2012ApJ...746..154P) A-type star located at a distance[^3] of 145$\\pm$9 pc"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can debris discs with protoplanetary-disc levels of CO be secondary (shielded by accumulated neutral carbon) rather than hybrid, tested with new ALMA [CI] and continuum data of HD 131835 plus a semi-analytic model?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we show that both the dust and gas in such systems could instead be secondary, with the high CO content caused by accumulation of neutral carbon (C$^0$) that shields CO from photodissociating"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 8",
+    "evidence": [
+     {
+      "loc": "3 ALMA continuum observation of HD 131835",
+      "quote": "HD 131835 was observed by ALMA in band 8 on 22$^{\\rm nd}$ March 2017"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "3 continuum SPWs (128 channels, centred 480.201, 482.159, 494.201 GHz); 1 line SPW at 492.160651 GHz, 488.281 kHz (0.297 km/s) over 3840 channels",
+    "evidence": [
+     {
+      "loc": "3 ALMA continuum observation of HD 131835",
+      "quote": "with a higher spectral resolution of 488.281 kHz (0.297 km/s at the rest frenquency of the line) over 3840 channels"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CI",
+     "transition": "3P0-3P1",
+     "rest_frequency": "492.160651 GHz",
+     "evidence": [
+      {
+       "loc": "3 ALMA continuum observation of HD 131835",
+       "quote": "targeted the CI ($^{3}$P$_0$-$^{3}$P$_1$) transition at 492.160651 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15 to 160 m, 42 antennas",
+    "evidence": [
+     {
+      "loc": "3 ALMA continuum observation of HD 131835",
+      "quote": "The observations were carried out using 42 antennas with baselines ranging from 15 to 160m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.89 x 0.68 arcsec continuum (robust 0.5); 0.89 x 0.63 arcsec [CI]",
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum observations",
+      "quote": "This yields a synthesised beam of 0.89 $\\times$ 0.68 arcsec"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "14.1 min, mean PWV 0.57 mm",
+    "evidence": [
+     {
+      "loc": "3 ALMA continuum observation of HD 131835",
+      "quote": "The total observing time on source (excluding overheads) was 14.1min and the mean PWV was 0.57mm."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "ALMA Band 6 (Moór 2017) and Herschel/APEX",
+     "provided": {
+      "value": "CO mass 0.04 Mearth from optically thin line; C+ and OI upper limits",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the total CO mass derived (using an optically thin line) is $\\sim$ 0.04 M$_\\oplus$ (cite: 2017ApJ...849..123M)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO mass 0.04 Mearth of HD 131835 (optically thin line)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the total CO mass derived (using an optically thin line) is $\\sim$ 0.04 M$_\\oplus$ (cite: 2017ApJ...849..123M)"
+       }
+      ]
+     },
+     "citation": "(cite: 2017ApJ...849..123M)"
+    },
+    {
+     "what": {
+      "value": "C+ upper limit from Herschel 2e-3 Mearth",
+      "evidence": [
+       {
+        "loc": "5.1",
+        "quote": "The C$^{+}$ upper limit from Herschel (at 30 K, assuming LTE) is $2\\times 10^{-3}$ M$_\\oplus$ (cite: 2015ApJ...814...42M)."
+       }
+      ]
+     },
+     "citation": "(cite: 2015ApJ...814...42M)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA-provided pipeline",
+     "evidence": [
+      {
+       "loc": "3 ALMA continuum observation of HD 131835",
+       "quote": "We used the pipeline provided by ALMA to apply calibrations."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan",
+     "evidence": [
+      {
+       "loc": "3 ALMA continuum observation of HD 131835",
+       "quote": "Titan was used as a flux calibrator"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "3.1 Dust continuum observations",
+       "quote": "flux calibration uncertainties ($\\sim$ 10%) added in quadrature"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "3.1 Dust continuum observations",
+       "quote": "We deconvolved the image using the CLEAN algorithm and Briggs weighting with a robust parameter of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in CASA on line-free channels",
+     "evidence": [
+      {
+       "loc": "4.1 C0 gas detection",
+       "quote": "we first subtract the continuum emission directly from the visibilities (with the task uvcontsub in CASA) using only channels where no [CI] emission is expected."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "250 uJy/beam continuum; 66 mJy km/s/beam moment-0",
+     "evidence": [
+      {
+       "loc": "3.1 Dust continuum observations",
+       "quote": "The image rms around the disc is $\\sigma=250\\,\\mu$Jy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Dust model setup for RADMC-3D imaging",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "to compute images for a given dust model (cite: 2016MNRAS.460.2933M)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2016MNRAS.460.2933M)"
+    },
+    {
+     "what": {
+      "value": "mu=14 mean molecular weight",
+      "evidence": [
+       {
+        "loc": "4.2.1",
+        "quote": "We have thus chosen $\\mu=14$ as in (cite: 2017MNRAS.469..521K)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017MNRAS.469..521K)"
+    },
+    {
+     "what": {
+      "value": "double power-law temperature profile",
+      "evidence": [
+       {
+        "loc": "4.2.1",
+        "quote": "The temperature profile is assumed to be a double power law profile (cite: 2016MNRAS.461..845K)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2016MNRAS.461..845K)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for uvcontsub",
+    "Image size, cell size, CLEAN threshold/masks",
+    "CASA and pipeline versions",
+    "MCMC prior bounds and burn-in length",
+    "Velocity range used for moment-0",
+    "Grid ranges for the 1000-model semi-analytic grid",
+    "Whether the archive pipeline products were used as delivered"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit continuum visibilities with dust ring model",
+    "method": {
+     "value": "RADMC-3D images converted to visibilities with GALARIO; emcee MCMC over 8 parameters",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We use a Bayesian MCMC approach to constrain the 8 free parameters of the model."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "GALARIO",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "100 walkers, 1200 steps after burn-in",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "We ran the MCMC with 100 walkers and for 1200 steps after the burn-in period."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "astrosilicate, 2.7 g/cm3, kappa=2.5 cm2/g at 610 um, sizes 2.5 um to 1 cm, slope -3.5",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "we assume an astrosilicate composition with a density of 2.7 g$\\,$cm$^{-3}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "uniform priors, likelihood ∝ exp(-chi2/2)",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We assume that the priors are uniform"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Best-fit model subtracted in image plane; residuals within noise",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "checked that the remaining residuals were all within the expected noise level"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit [CI] cube with Gaussian and double power-law gas models",
+    "method": {
+     "value": "RADMC-3D in LTE plus GALARIO, MCMC on visibility cube; LTE checked with LIME",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We also use RADMC-3D to produce the [CI] gas image and convert to visibilities using GALARIO"
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "GALARIO",
+     "LIME",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "10 free parameters for double power law",
+      "evidence": [
+       {
+        "loc": "4.2.2",
+        "quote": "This leaves us with 10 free parameters that are $R_0$, $\\Sigma_0$, $T_0$, $\\beta_1^s$ $\\beta_2^s$, $\\beta_1^t$, $\\beta_2^t$, $i$, PA and $v_\\star$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, mu=14, axisymmetric",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "We thus assume that LTE is a good approximation even for very low carbon ionisation fractions."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "same MCMC procedure as continuum",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "We explore the parameter space with the same MCMC procedure as presented for the continuum"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared model and data moment-0 visibilities; some residuals remain",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "leaves a few significant residuals probably linked to the detailed structure of the emission"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit semi-analytic CO/C0 evolution model to CO mass",
+    "method": {
+     "value": "0D box model of CO and C evolution with C0 and self-shielding; grid of 1000 models in Mdot_CO and alpha compared with CO mass 0.04 Mearth (0.5 dex uncertainty)",
+     "evidence": [
+      {
+       "loc": "5.2.3",
+       "quote": "We ran a grid of 1000 models for different $\\dot{M}_{\\rm CO}$ and $\\alpha$ values"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "R0=90 au, DR=70 au, T~30 K, ionisation fraction ~0",
+      "evidence": [
+       {
+        "loc": "5.2.2",
+        "quote": "we assume that $R_0=90$ au, the ionisation fraction is close to 0, the temperature is $\\sim 30$ K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "contours at 1, 3, 5 sigma from observed CO mass",
+     "evidence": [
+      {
+       "loc": "5.2.3",
+       "quote": "the uncertainty $\\sigma_{\\rm CO}$ is assumed to be 0.5 dex from the observed mass"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Predicted C0 mass compared to [CI] fit",
+     "evidence": [
+      {
+       "loc": "5.2.3",
+       "quote": "which is similar to what we deduced from the [CI] observations"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "uvcontsub continuum subtraction",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "with the task uvcontsub in CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "dust and [CI] model images",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We then use the line radiative transfer code RADMC-3D"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALARIO",
+    "version": "not stated",
+    "used_for": {
+     "value": "model visibilities",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "GALARIO (cite: 2018MNRAS.tmp..402T) to convert them into model visibilities"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC sampling",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We sample the parameter space by using the emcee module"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE check",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We first used the radiative transfer code LIME"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "ionisation fraction and temperature of a shielded disc",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "We now use the DALI 2D code"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum total flux",
+    "value": "17.9",
+    "uncertainty": "2.1",
+    "units": "mJy",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The total flux in the Briggs-weighted image is 17.9$\\pm$2.1 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "[CI] integrated flux",
+    "value": "2.8",
+    "uncertainty": "0.4",
+    "units": "Jy km/s",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The total integrated flux is 2.8$\\pm$0.4 Jy$\\,$km/s"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass",
+    "value": "0.71",
+    "uncertainty": "+0.03/-0.05",
+    "units": "Mearth",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$M_{\\rm dust}$ (M$_\\oplus$) | $0.71^{+0.03}_{-0.05}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust ring radius R0",
+    "value": "90.5",
+    "uncertainty": "+3.8/-3.7",
+    "units": "au",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$R_0$ (au)                  |  $90.5^{+3.8}_{-3.7}$"
+     }
+    ]
+   },
+   {
+    "quantity": "C0 mass",
+    "value": "3.1e-3 best fit; 2.7e-3 to 1.2e-2 (16-84%)",
+    "uncertainty": "percentile range",
+    "units": "Mearth",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "we find that the best fit is for a mass $M_{{\\rm C}^0}=3.1 \\times 10^{-3}$ M$_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas temperature T0 (double power law)",
+    "value": "30",
+    "uncertainty": "+5/-4",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$T_0$ (K)                     | $28^{+4}_{-4}$      | $30^{+5}_{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar radial velocity",
+    "value": "3.57",
+    "uncertainty": "0.1",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "3.57$\\pm$0.1 km/s (heliocentric frame)"
+     }
+    ]
+   },
+   {
+    "quantity": "Viscosity alpha",
+    "value": "1e-3 < alpha < 1e-2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.2.3",
+      "quote": "we conclude that $10^{-3}<\\alpha<10^{-2}$ can explain the observed CO mass"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Gas disc is not clearly at steady state; outer slope steep and gas extends at least to 35 au",
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "this would imply that steady state is not reached, which is most likely the case here"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "HD 131835 has enough C0 to shield CO",
+    "experiment": "ALMA band 8 [CI] visibility fitting",
+    "result": "M_C0 = 2.7e-3 to 1.2e-2 Mearth",
+    "finding": "C0 is sufficient to shield CO",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6",
+      "quote": "with a mass that is $2.7 \\times 10^{-3}<M_{{\\rm C}^0}<1.2 \\times 10^{-2}$ M$_\\oplus$, which is high enough to shield CO"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Secondary gas with C0 shielding explains the high CO mass",
+    "experiment": "semi-analytic evolution model grid",
+    "result": "alpha ~1e-3 to 1e-2 fits",
+    "finding": "HD 131835 may be a shielded secondary disc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2.3",
+      "quote": "we conclude that $10^{-3}<\\alpha<10^{-2}$ can explain the observed CO mass"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Other hybrid discs are also shielded",
+    "experiment": "same model applied to 5 systems",
+    "result": "overlapping Mdot_CO ranges",
+    "finding": "consistent but untested; primordial origin not ruled out",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.5",
+      "quote": "all hybrid discs with accurate CO masses observed so far may be consistent with being shielded discs of secondary origin"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Low resolution gives large uncertainties; [CI] optically thick so mass poorly constrained",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "The C$^0$ mass is not well constrained because the line is optically thick in the whole disc"
+      }
+     ]
+    },
+    {
+     "value": "DALI outside its validated range",
+     "evidence": [
+      {
+       "loc": "footnote 5",
+       "quote": "is strictly outside the parameter range for which DALI – a protoplanetary disc code – is validated to give correct results."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Model is 0D and degenerate with resolution",
+    "LTE assumed",
+    "Primordial origin not excluded"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data acknowledged; public status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.0.01253.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "MCMC priors",
+    "Semi-analytic model code"
+   ],
+   "estimated_data_volume_inferred": "~10-20 GB raw",
+   "score_inferred": 3,
+   "score_reason": "Data and methods mostly described but many imaging/prior details and model code missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results depend on unreleased models and unstated priors."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2018MNRAS.tmp..402T)",
+     "why": "GALARIO visibility modelling"
+    },
+    {
+     "citation": "(cite: 2017MNRAS.469..521K)",
+     "why": "secondary gas model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2017ApJ...849..123M)",
+     "why": "CO mass of HD 131835"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-fefcbea6c6dfd986c17829c3b0db1d3a",
+  "batch_id": "msgbatch_01LHB5XbVgqRG7wRXLZoxNAj",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:24:42",
+  "usage": {
+   "input_tokens": 41547,
+   "output_tokens": 7082,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.077563,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 57,
+  "quotes_ok": 57,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2016.1.01253.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 44,
+   "rate": 0.611
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:34:47",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2016.1.0.01253",
+     "evidence": [
+      {
+       "loc": "3 ALMA continuum observation of HD 131835",
+       "quote": "as part of the cycle 4 project 2016.1.0.01253."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

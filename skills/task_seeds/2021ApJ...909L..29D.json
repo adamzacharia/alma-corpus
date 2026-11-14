@@ -1,0 +1,339 @@
+{
+ "bibcode": "2021ApJ...909L..29D",
+ "title": "A CO Survey of SpARCS Star-forming Brightest Cluster Galaxies: Evidence for Uniformity in BCG Molecular Gas Processing across Cosmic Time",
+ "year": 2021,
+ "doi": "10.3847/2041-8213/abeb6f",
+ "arxiv_id": "2103.02463",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "high_z_galaxies"
+ ],
+ "question": "How common is molecular gas in star-forming SpARCS BCGs at 0.2<z<1.2, and do their gas mass versus sSFR correlations match those of low-redshift cooling-flow BCGs",
+ "alma_project_codes": [
+  "2019.1.01529.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4 and 5",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "3 sigma image RMS 1.2 mJy/beam (z~0.2) to 0.6 mJy/beam (z~1.2) over 100 km/s channels; designed for constant gas mass depth >= 1e10 Msun"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular gas masses of the low-redshift Edge BCG comparison sample (corrected to H0 = 70)",
+    "evidence": [
+     {
+      "loc": "A Low-Redshift BCG Comparison Sample",
+      "quote": "We take the molecular gas masses from (cite: edge2001detection), correcting the values for"
+     }
+    ]
+   },
+   "citation": "(cite: edge2001detection)"
+  },
+  {
+   "what": {
+    "value": "3.6 um fluxes for the Edge sample",
+    "evidence": [
+     {
+      "loc": "A Low-Redshift BCG Comparison Sample",
+      "quote": "We take 3.6 $\\mu$m flux values from (cite: quillen2008infrared), (cite: Yamagishi_2010), and (cite: landt_2010))"
+     }
+    ]
+   },
+   "citation": "(cite: quillen2008infrared); (cite: Yamagishi_2010); (cite: landt_2010)"
+  },
+  {
+   "what": {
+    "value": "MIPS 24 um photometry for the Edge sample",
+    "evidence": [
+     {
+      "loc": "A Low-Redshift BCG Comparison Sample",
+      "quote": "(cite: shi_2005), and the Spitzer Science Source List"
+     }
+    ]
+   },
+   "citation": "(cite: quillen2008infrared); (cite: Yamagishi_2010); (cite: shi_2005); (cite: 2010ASPC..434..437T)"
+  },
+  {
+   "what": {
+    "value": "Halo masses of the Edge BCGs based on SDSS DR7",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "and halo masses based on SDSS DR7 ((cite: popesso2020_edgemcluster); (cite: yang2005galaxy)) for the (cite: edge2001detection) BCGs."
+     }
+    ]
+   },
+   "citation": "(cite: popesso2020_edgemcluster); (cite: yang2005galaxy)"
+  },
+  {
+   "what": {
+    "value": "Non-BCG cluster galaxy gas masses used in the comparison figure",
+    "evidence": [
+     {
+      "loc": "footnote 2",
+      "quote": "Non-BCG cluster galaxies are taken from (cite: noble2019_clustergalmgas), (cite: noble_2017) and (cite: Jablonka_2013)."
+     }
+    ]
+   },
+   "citation": "(cite: noble2019_clustergalmgas); (cite: noble_2017); (cite: Jablonka_2013)"
+  },
+  {
+   "what": {
+    "value": "SED template for K-correction (11 Gyr SSP, solar metallicity, Salpeter IMF)",
+    "evidence": [
+     {
+      "loc": "Stellar Masses and Star Formation Rates",
+      "quote": "We use an SED template from (cite: bruzual2003stellar) to calculate the"
+     }
+    ]
+   },
+   "citation": "(cite: bruzual2003stellar)"
+  },
+  {
+   "what": {
+    "value": "ALMA nominal flux density calibration uncertainty",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The nominal flux density calibration uncertainty for ALMA sources in these bands is"
+     }
+    ]
+   },
+   "citation": "(cite: remijan2019alma)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image the CO cubes",
+   "method": "ALMA pipeline calibration in CASA, then minimally cleaned natural-weighted cubes, continuum-subtracted and primary-beam corrected",
+   "software": [
+    "CASA 5.4.0"
+   ],
+   "key_parameters": [
+    "pixel size 0.2 to 0.4 arcsec; spectral resolution chosen per source from detection strength"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "first-pass spectra and Gaussian fit",
+   "method": "Extract spectrum from an elliptical aperture at the BCG centre, twice the synthesized beam axes and with the same orientation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "build Moment-0 map and fit its spatial extent",
+   "method": "Collapse cube over channels with significant emission from the first Gaussian fit, then fit a 2D elliptical Gaussian",
+   "software": [],
+   "key_parameters": [
+    "channels kept within 2 sigma of the mean of the Gaussian fit"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "extract final spectra, fit line flux and derive gas masses",
+   "method": "Second-pass spectrum from an elliptical aperture with axes three times the 2D Gaussian FWHM, fit with single or double Gaussian; line flux converted to CO luminosity and gas mass",
+   "software": [],
+   "key_parameters": [
+    "aperture axes = 3 x Gaussian FWHM; line flux = area under the fit"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.36 and r21 = 0.8 (Galactic values)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "stack and set limits for non-detections",
+   "method": "Stack spectra of the 6 non-detections centred on OzDES redshifts; upper limits from collapsing cubes over the mean detected FWHM and taking the 3 sigma RMS",
+   "software": [],
+   "key_parameters": [
+    "collapse bandwidth = 356 km/s (mean FWHM of detected peaks)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "derive stellar masses and SFRs",
+   "method": "Stellar mass from IRAC 3.6 um rest-frame K-band luminosity with a template K-correction and a calibrated mass-to-light ratio; SFR from MIPS 24 um luminosity using Kennicutt (1998) eq. 4",
+   "software": [
+    "FAST"
+   ],
+   "key_parameters": [
+    "mass-to-light ratio 0.83; stellar mass uncertainty 0.3 dex; SFR uncertainty 0.15 dex"
+   ],
+   "assumptions": [
+    "11 Gyr simple stellar population, solar metallicity, Salpeter IMF"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "build a homogeneous low-z comparison sample and remove AGN",
+   "method": "Recompute stellar masses and SFRs for the Edge BCGs with the same methods; flag AGN with the Donley IRAC wedge and exclude them from the analysis",
+   "software": [],
+   "key_parameters": [
+    "Donley AGN wedge criteria applied to IRAC colours"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "compare the Mgas-sSFR correlation of the two BCG samples",
+   "method": "Fit a straight line to each sample separately in log space with orthogonal distance regression, restricted to the BCGs with z<0.6 for the main comparison",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO detection rate",
+   "value": "24 of 30 pointings (80%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "in 24 of 30 pointings, or at a detection rate of 80%."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass range of the BCGs",
+   "value": "0.7-11.0 x 10^10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find these galaxies have molecular gas masses of $0.7-11.0\\times 10^{10}\\ \\mathrm{M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma image RMS depth at z~0.2",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "mJy/beam (100 km/s channels)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "3$\\sigma$ image RMS depths between 1.2 mJy/beam (z $\\sim 0.2$) and 0.6 mJy/beam (z $\\sim 1.2$) over 100 km/s channels."
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma image RMS depth at z~1.2",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "mJy/beam (100 km/s channels)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "3$\\sigma$ image RMS depths between 1.2 mJy/beam (z $\\sim 0.2$) and 0.6 mJy/beam (z $\\sim 1.2$) over 100 km/s channels."
+    }
+   ]
+  },
+  {
+   "quantity": "Average FWHM of detected CO peaks",
+   "value": "356",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CO (2-1) Molecular Gas Measurements",
+     "quote": "the average FWHM of the detected CO peaks ($356\\ \\mathrm{km}\\ \\mathrm{s}^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-to-light ratio",
+   "value": "0.83",
+   "uncertainty": "0.3 dex scatter",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Stellar Masses and Star Formation Rates",
+     "quote": "We determine a mass-to-light ratio of 0.83 by comparing our sample of"
+    },
+    {
+     "loc": "Stellar Masses and Star Formation Rates",
+     "quote": "We take the scatter in this relation (0.3 dex) as the uncertainty in the stellar masses."
+    }
+   ]
+  },
+  {
+   "quantity": "log(sSFR) vs log(Mgas) slope, SpARCS BCGs at z<0.6",
+   "value": "0.9",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Direct comparison with lower-redshift BCGs",
+     "quote": "With (logarithmic) slopes of $0.9 \\pm 0.3$ and $0.9 \\pm 0.2$ and offsets of $-10 \\pm 3$ and $-10 \\pm 2$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "log(sSFR) vs log(Mgas) slope, Edge BCGs at z<0.6",
+   "value": "0.9",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Direct comparison with lower-redshift BCGs",
+     "quote": "With (logarithmic) slopes of $0.9 \\pm 0.3$ and $0.9 \\pm 0.2$ and offsets of $-10 \\pm 3$ and $-10 \\pm 2$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Average cluster mass of the SpARCS sample",
+   "value": "~1.5e14",
+   "uncertainty": "0.7e14",
+   "units": "Msun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "our clusters have an average cluster mass $\\sim (1.5 \\pm 0.7)\\times10^{14} \\ \\mathrm{M}_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters: niter, threshold, masking, spectral channel width per source (only an unlabeled table column), and whether imaging used the pipeline cubes or custom runs",
+  "Method and line-free channels used for continuum subtraction (uvcontsub or image-plane)",
+  "Flux, bandpass and phase calibrators and any manual flagging beyond the pipeline",
+  "Pipeline version and whether the archive pipeline products were used as delivered",
+  "CO (2-1) rest frequency and how the observed-frame line frequency was set per source",
+  "How the 2 sigma channel selection for the Moment-0 map is defined (mean and sigma of the first Gaussian fit) and the exact noise/significance definition for the 3 sigma detection",
+  "Which table columns are channel width, beam size and noise (column headers are partly blank), needed to reproduce the per-source cubes",
+  "Details of the FAST SED fit (templates, grid, photometry) and how the 0.83 mass-to-light factor and the 'FAST conversion factor' applied to the Edge SFRs are applied",
+  "ODR implementation and how the 1 sigma confidence regions of the fits are computed",
+  "No code or measured spectra released"
+ ],
+ "missing_for_reproduction": [
+  "imaging task parameters and per-source spectral channel width",
+  "continuum subtraction method and line-free channels",
+  "flux, bandpass and phase calibrators",
+  "FAST SED fit configuration and the SFR rescaling factor",
+  "no released spectra, code or analysis scripts"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and the spectral-extraction recipe are given, and results are tabulated, but imaging and continuum-subtraction settings, calibrators and the SED-fit configuration are not stated.",
+ "rediscovery_reason": "Single project code printed and the extraction/fitting recipe is stated with a numeric table of gas masses, but data publicness is not stated in the paper and imaging parameters are missing.",
+ "source_card": "cards/2021ApJ...909L..29D/sonnet/card.md"
+}

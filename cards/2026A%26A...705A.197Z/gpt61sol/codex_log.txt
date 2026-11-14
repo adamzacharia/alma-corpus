@@ -1,0 +1,267 @@
+xponential, Lorentzian and double Gaussian parameterizations with AIC and BIC.",
+      "result": "10/13 disks are significantly better fit by thick-tailed profiles.",
+      "finding": "Non-Gaussian profiles are common; multiple dynamical populations are a possible interpretation.",
+      "support": "refuted",
+      "evidence": [
+        {"loc":"Model comparison","quote":"We compared different model parameterizations using the Akaike and Bayesian Information Criteria (AIC and BIC, respectively)"},
+        {"loc":"Non-Gaussian vertical distributions as the new norm","quote":"We find that most sources analyzed here (10/13) are significantly better fit with a thick-tailed vertical density distribution (i.e., either a Lorentzian or a double Gaussian) compared to a single Gaussian distribution."},
+        {"loc":"Conclusions","quote":"Lorentzian (or otherwise thick-tailed) vertical dust distributions are common, suggesting that systems may commonly host multiple dynamical populations within the disk."}
+      ]
+    },
+    {
+      "hypothesis": "Vertical thickness can constrain total disk solids mass under internal stirring and damping.",
+      "experiment": "Use fiducial aspect ratios and dust masses in the Pan_2012 cascade model.",
+      "result": "5/13 disks have inferred masses below Neptune; thicker and wider belts tend to be more massive.",
+      "finding": "Disk masses span sub-Neptune to several Neptune masses under the adopted internal-process model.",
+      "support": "supported",
+      "evidence": [
+        {"loc":"Constraints on the disk mass","quote":"We also estimated the total mass of each disk using the collisional cascade model of (cite: Pan_2012)."},
+        {"loc":"Constraints on the disk mass","quote":"Under half of the disks (5/13) contain less than the mass of Neptune, while the more massive disks reach up to several times the mass of Neptune."},
+        {"loc":"Constraints on the disk mass","quote":"We find that belts which are vertically thicker and radially wider tend to be more massive."}
+      ]
+    },
+    {
+      "hypothesis": "The adopted self-stirring scenario can excite every disk within its system age.",
+      "experiment": "Calculate stirring timescales with Krivov_2018 Eqn. 28 and compare with ages.",
+      "result": "HD 32297, HD 131488 and HD 197481 fail the timescale comparison.",
+      "finding": "Self-stirring alone is insufficient for these three disks under the adopted assumptions.",
+      "support": "refuted",
+      "evidence": [
+        {"loc":"Constraints on the disk mass","quote":"we compute the stirring timescale $T_{\\rm stir}$ using Eqn. 28 in (cite: Krivov_2018)."},
+        {"loc":"Constraints on the disk mass","quote":"We find that all but three disks (HD 32297, HD 131488, and HD 197481) could have been self-stirred within the age of the system."},
+        {"loc":"Constraints on the disk mass","quote":"The disks that cannot be explained solely by self-stirring require an alternative mechanism"}
+      ]
+    },
+    {
+      "hypothesis": "The new millimeter heights reveal an increase of vertical excitation with age.",
+      "experiment": "Compare ARKS parametric aspect ratios with disk ages and REASONS measurements.",
+      "result": "Some evidence of increasing inclination dispersion with age.",
+      "finding": "The trend is tentative and needs higher-resolution follow-up.",
+      "support": "partially",
+      "evidence": [
+        {"loc":"Comparison to other vertical measurements","quote":"we find some evidence of an increase in $\\langle i^2\\rangle$ with disk age in the ARKS scale height measurements."},
+        {"loc":"Conclusions","quote":"However, because the disks are so thin, follow-up observations at higher resolution could help us better understand this trend."}
+      ]
+    },
+    {
+      "hypothesis": "Scattered light and millimeter heights reveal differences associated with gas content.",
+      "experiment": "Convert scattered light opening angles to HWHM and compare gas-bearing and gas-poor systems.",
+      "result": "Scattered light heights tend to be similar or larger; no clear gas-content trend.",
+      "finding": "The comparison does not establish gas-driven vertical settling across the sample.",
+      "support": "partially",
+      "evidence": [
+        {"loc":"Comparison to other vertical measurements","quote":"the corresponding aspect ratio is $h_{\\rm HWHM}=\\sqrt{2\\ln{2}} \\tan \\psi$."},
+        {"loc":"Conclusions","quote":"Aspect ratios obtained from scattered light observations tend to be similar to or larger than the corresponding ALMA millimeter aspect ratios"},
+        {"loc":"Conclusions","quote":"We do not observe a clear trend when comparing the gas-bearing debris disks against those with no detected gas, though several of the disks are not well resolved vertically in scattered light."}
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Highly inclined, high-resolution disks permit vertical recovery; millimeter grains trace large-body dynamics with little radiation-pressure influence.",
+      "evidence": [
+        {"loc":"Introduction","quote":"In order to resolve the vertical distribution of dust, observations of highly inclined (i.e., close to edge-on) debris disks at high angular resolution are necessary."},
+        {"loc":"Introduction","quote":"At (sub)millimeter wavelengths, dust grains are largely unaffected by radiation pressure and allow direct probing of the mass distribution and level of dynamical excitation of large planetesimals in the system."}
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Visibility modeling retains small-scale spatial information; flexible radial profiles address radial–vertical degeneracy; constant aspect ratio limits free parameters.",
+      "evidence": [
+        {"loc":"Analysis","quote":"Because our parametric modeling occurs in the visibility domain, we retain spatial information up to the nominal resolution of the interferometer"},
+        {"loc":"Parametric modeling","quote":"Careful treatment of the radial structures is critical, as they can be degenerate with the vertical structure of the disk."},
+        {"loc":"Parametric modeling","quote":"the vertical aspect ratio $h$ is constant throughout the disk in order to minimize additional free parameters."}
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Observations designed for at least two vertical-FWHM resolution elements at h_sigma=0.05; MCMC required at least 10^5 post-convergence samples; most residuals clean at 5 sigma.",
+      "evidence": [
+        {"loc":"Observations","quote":"The new Band 7 observations were configured to resolve the vertical FWHM of the disks with at least two resolution elements, assuming a vertical aspect ratio"},
+        {"loc":"Model parameters","quote":"we required at least $10^{5}$ samples after convergence, which corresponds to approximately $1500$ steps for each of the 64 walkers."},
+        {"loc":"Analysis","quote":"For most sources the fiducial models closely match the observations, with no positive or negative features in the residuals at the 5$\\sigma$ level."}
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "AIC and BIC can select different models because BIC penalizes additional parameters more strongly.",
+      "evidence": [
+        {"loc":"Non-Gaussian vertical distributions as the new norm","quote":"four of the 13 sources (HD 9672, HD 10647, HD 39060, and HD 161868) have a vertical double Gaussian model which is most strongly favored by the AIC, while no sources have a vertical double Gaussian model which is most strongly favored by the BIC."}
+      ]
+    },
+    {
+      "value": "Planet migration and secular planet–disk interactions are alternative explanations for thick-tailed profiles.",
+      "evidence": [
+        {"loc":"Conclusions","quote":"This could hint at Neptune-like migration histories in these systems or could be a remnant of long-term planet-disk interactions in general."}
+      ]
+    },
+    {
+      "value": "Wavelength-dependent vertical grain distributions can produce non-Gaussian emission even for Gaussian solids.",
+      "evidence": [
+        {"loc":"Non-Gaussian vertical distributions as the new norm","quote":"if the vertical distribution of solids changes with observing wavelength, then even a Gaussian vertical distribution of solids could produce a non-Gaussian emission profile (cite: Terrill_2023)."}
+      ]
+    },
+    {
+      "value": "Alternative minimum cascade mass framework gives incompatible rescaled masses for three of seven compared disks.",
+      "evidence": [
+        {"loc":"Comparison of disk mass estimates","quote":"and incompatible for HD 61005, HD 131488, and HD 197481."}
+      ]
+    },
+    {
+      "value": "Full planet-driven dynamical inference deferred to a future study.",
+      "evidence": [
+        {"loc":"Constraints on planetary companions","quote":"A full exploration of planet-driven dynamical excitation scenarios is outside the scope of this study."}
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Axisymmetric, midplane-peaked models can obscure asymmetric structures and inflate heights in warped disks.",
+      "evidence": [
+        {"loc":"Limitations","quote":"First, we consider only axisymmetric disks with vertical distributions that peak at the disk midplane."},
+        {"loc":"Limitations","quote":"the presence of a warp could bias the axisymmetric models to larger scale heights in order to account for the warped material sitting further from the midplane."}
+      ]
+    },
+    {
+      "value": "Constant aspect ratio excludes radial variation supported by some other studies.",
+      "evidence": [
+        {"loc":"Limitations","quote":"Second, in this work we assume that aspect ratio is constant with radius."},
+        {"loc":"Limitations","quote":"The work presented here only considers the case of a radially constant $h$, but follow-up studies with nonconstant $h$ would be beneficial to fully understand how common scale height variability is in debris disks."}
+      ]
+    },
+    {
+      "value": "Chosen radial and vertical functions may bias heights or fail to capture source morphology.",
+      "evidence": [
+        {"loc":"Limitations","quote":"A poor choice of radial profile can result in biased vertical results, (and vice versa)."},
+        {"loc":"Limitations","quote":"it is possible that the radial and/or vertical density distributions adopted in this work do not fully capture the morphology of certain sources."}
+      ]
+    },
+    {
+      "value": "HD 109573 and HD 131488 heights are limited by resolution; AU Mic's smallest inferred height may also be inadequately resolved.",
+      "evidence": [
+        {"loc":"HD 109573 (HR 4796A)","quote":"we may still be limited by the data resolution of the data ($\\theta_{\\rm min}=3.63$ au)."},
+        {"loc":"HD 131488","quote":"the interpretation of our measured values of $h_{\\rm HWHM}$ may be limited by the resolution of the data."},
+        {"loc":"HD 197481 (AU Mic)","quote":"it remains unclear whether the data resolution is sufficient to fully resolve such a small aspect ratio."}
+      ]
+    },
+    {
+      "value": "Height–mass correlation is partly imposed by the model; gas effects are omitted.",
+      "evidence": [
+        {"loc":"Constraints on the disk mass","quote":"the positive correlation occurs due to the model specification, as $h_{\\rm HWHM}$ is used to obtain the typical grain velocity, which directly affects the derived disk mass"},
+        {"loc":"Constraints on the disk mass","quote":"gas is not considered in the collisional cascade model used to obtain our estimates on $M_{\\rm{disk}}$."}
+      ]
+    },
+    {
+      "value": "Inclination conversions are not strictly valid for non-Gaussian vertical profiles; quoted inclination errors omit these assumptions.",
+      "evidence": [
+        {"loc":"Theoretical implications","quote":"there is additional uncertainty stemming from the approximations and assumptions used to compute $\\langle i_{\\rm rms} \\rangle$."},
+        {"loc":"Theoretical implications","quote":"However, the non-Gaussianity of most vertical profiles means that neither of these equations are strictly true for this application."}
+      ]
+    },
+    {
+      "value": "Mixed modeling methods and resolutions prevent firm multiwavelength conclusions.",
+      "evidence": [
+        {"loc":"Theoretical implications","quote":"The predictions come with the caveat that results are difficult to directly compare if the $h$ measurements were obtained with different methods or with different data resolutions."},
+        {"loc":"Theoretical implications","quote":"Unfortunately, this makes it impossible to draw firm conclusions with the current data and analyses."}
+      ]
+    },
+    {
+      "value": "Some scattered light disks are vertically unresolved and scale heights depend on dataset signal-to-noise.",
+      "evidence": [
+        {"loc":"Comparison to other vertical measurements","quote":"First, not all disks are well resolved vertically in scattered light."},
+        {"loc":"Comparison to other vertical measurements","quote":"the scale height may be different, mostly because the signal-to-noise of the scattered light observations is not the same."}
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Injection-and-recovery tests would better establish the smallest recoverable heights than extrapolating non-Gaussian posteriors toward zero.",
+    "Visual convergence checks and removal of low-likelihood walkers need sensitivity tests against initialization, priors and multimodality.",
+    "Model-dependent mass uncertainties should include vertical-profile choice and uncertain inclination–height conversions.",
+    "The supplied text contains inconsistent repeated aspect ratios and uncertainties, particularly in the summary tables; preserve source-specific prose values rather than silently reconcile them.",
+    "The association of the mass-table columns relies on its notes because the converted header is damaged.",
+    "AIC/BIC disagreement leaves evidence for multiple populations dependent on the selection criterion."
+  ],
+  "reproducibility": [
+    {
+      "field": "data_public_as_stated",
+      "value": "ARKS data available through the ARKS dataverse.",
+      "evidence": [
+        {"loc":"Data Availability","quote":"The ARKS data used in this paper and others can be found in the [ARKS dataverse](https://dataverse.harvard.edu/dataverse/arkslp)."}
+      ]
+    },
+    {
+      "field": "products_in_archive",
+      "value": "Work products at https://doi.org/10.7910/DVN/6NNKLY; ARKS data in its dataverse.",
+      "evidence": [
+        {"loc":"Data Availability","quote":"The data products produced by this work can be found at <https://doi.org/10.7910/DVN/6NNKLY>."},
+        {"loc":"Data Availability","quote":"The ARKS data used in this paper and others can be found in the [ARKS dataverse](https://dataverse.harvard.edu/dataverse/arkslp)."}
+      ]
+    }
+  ],
+  "code_released": [
+    {
+      "value": "Specific frank implementation publicly available at https://github.com/jeffjennings/arksia.",
+      "evidence": [
+        {"loc":"frank","quote":"The specific implementation of `frank` used for analyzing the ARKS sample (cite: Jennings_arksia) is publicly available"},
+        {"loc":"frank","quote":"https://github.com/jeffjennings/arksia"}
+      ]
+    },
+    {
+      "value": "Upstream parametric disk code publicly available; release of this paper's adapted version not stated.",
+      "evidence": [
+        {"loc":"Parametric modeling","quote":"We use a parametric debris disk modeling code adapted from the publicly available code described in (cite: Flaherty_2015)"},
+        {"loc":"Parametric modeling","quote":"https://github.com/kevin-flaherty/disk_model3"}
+      ]
+    },
+    {
+      "value": "rave described as open-source.",
+      "evidence": [
+        {"loc":"rave","quote":"`rave` is an open-source package for recovering the radial brightness profiles of edge-on disks by fitting models of concentric annuli in the image domain (cite: Han_2022)."}
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "Companion-paper calibration corrections, imaging recipes, geometry, stellar properties and radial-profile inputs.",
+    "Exact adapted parametric model code, software revisions and numerical rendering configuration.",
+    "Priors, bounds, chain initialization and exact convergence/burn-in decisions.",
+    "Source-specific frank and rave fit configurations and input images.",
+    "Executable collisional-cascade and stirring-timescale calculations with uncertainty propagation.",
+    "System ages and scattered light comparison inputs.",
+    "Resolution of discrepancies between repeated numerical results and damaged table labels in the supplied text."
+  ],
+  "estimated_data_volume_inferred": "Not quantifiable from the text; multiple continuum visibility datasets for 24 disks, including archival observations.",
+  "score_inferred": 6,
+  "score_reason": "Public data and numeric results, explicit likelihoods and substantial modeling detail; exact reproduction still depends on companion papers, unstated numerical settings and unreleased adapted code.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Data availability and numeric results qualify, but the supplied text alone does not give a complete executable recipe or all inherited inputs.",
+  "methods_papers": [
+    {"citation":"(cite: Flaherty_2015)","why":"Public parametric disk modeling code adapted for this work."},
+    {"citation":"(cite: Fehr_2023)","why":"Detailed parametric continuum modeling framework."},
+    {"citation":"(cite: Dartois_2003; Rosenfeld_2012; Rosenfeld_2013)","why":"Earlier disk modeling works underlying the adapted framework."},
+    {"citation":"(cite: Galario_2018)","why":"Synthetic visibility sampling with galario."},
+    {"citation":"(cite: emcee_2013)","why":"Affine-invariant MCMC implementation."},
+    {"citation":"(cite: Jennings_2020)","why":"frank Fourier-Bessel radial reconstruction."},
+    {"citation":"(cite: Terrill_2023)","why":"frank vertical aspect ratio extension and height-grid likelihood approach."},
+    {"citation":"(cite: Jennings_arksia)","why":"ARKS-specific frank implementation."},
+    {"citation":"(cite: Han_2022)","why":"rave image-domain annular reconstruction."},
+    {"citation":"(cite: Akaike_1974; Schwarz_1978; Burnham_2002; Liddle_2007)","why":"AIC and BIC model comparison."},
+    {"citation":"(cite: Pan_2012)","why":"Steady-state collisional cascade and total disk mass inference."},
+    {"citation":"(cite: Krivov_2018)","why":"Stirring timescale Eqn. 28 and fragmentation velocity assumption."},
+    {"citation":"(cite: Krivov_2021)","why":"Alternative minimum cascade mass framework."},
+    {"citation":"(cite: Daley_2019)","why":"Rms dynamical definitions and separately fitted AU Mic stellar fluxes."},
+    {"citation":"(cite: Quillen_2007)","why":"Approximate conversion from aspect ratio to inclination dispersion."},
+    {"citation":"(cite: Marino_2021)","why":"Eccentricity upper limits from belt fractional width."}
+  ],
+  "companion_papers": [
+    {"citation":"(cite: Marino_2026)","why":"ARKS selection, observations, calibration, corrected data, geometry, opacities, stellar masses and imaging parameters."},
+    {"citation":"(cite: Han_2026)","why":"Radial density analysis, nonparametric radial profiles, fractional widths and eccentricity limits."},
+    {"citation":"(cite: Lovell_2026)","why":"Asymmetric structures that can bias axisymmetric vertical fits."},
+    {"citation":"(cite: Milli_2026)","why":"Scattered light and thermal-emission comparison."},
+    {"citation":"Jankovic et al. in prep","why":"Future planetary inference using the vertical aspect ratio measurements."}
+  ],
+  "related_projects_or_surveys": ["ARKS", "REASONS"]
+}
+tokens used
+99,626

@@ -1,0 +1,322 @@
+{
+ "bibcode": "2024A&A...689A.314L",
+ "title": "JWST/NIRSpec and MIRI observations of an expanding, jet-driven bubble of warm H<SUB>2</SUB> in the radio galaxy 3C 326 N",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202449848",
+ "arxiv_id": "2404.04341",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How does AGN jet feedback affect the kinematics, heating, and star formation of warm molecular and ionised gas in the radio galaxy 3C 326 N, and can ro-vibrational H2 lines serve as a proxy for rotational H2 lines in turbulent environments?",
+ "alma_project_codes": [
+  "2015.1.01120.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "FWHM = 0.46'' x 0.26'', PA = -13.5 deg",
+  "sensitivity": "RMS = 0.2 mJy bm^-1 in 15.4 MHz channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar CO band head absorption templates (specifically K4III star HD 9138)",
+    "evidence": [
+     {
+      "loc": "3.2. CO band head absorption",
+      "quote": "To model the CO band head absorption features, we used a template provided by Winge et al. (2009) instead of a Gaussian line profile."
+     },
+     {
+      "loc": "3.2. CO band head absorption",
+      "quote": "We find that the template star of HD 9138, a K4III star, is a very good reproduction of our data without additional spectral types."
+     }
+    ]
+   },
+   "citation": "Winge et al. (2009)"
+  },
+  {
+   "what": {
+    "value": "FIRST 1.4 GHz radio flux density of S_1.4 = 3.94 ± 0.14 mJy",
+    "evidence": [
+     {
+      "loc": "4.1. Properties of the radio core",
+      "quote": "we compare the flux measured at 1.52 GHz, S 1.52 = 2.10 ± 0.09 mJy, with that of FIRST (Becker et al. 1995; White et al. 1997), S 1.4 = 3.94 ± 0.14 mJy"
+     }
+    ]
+   },
+   "citation": "Becker et al. (1995); White et al. (1997)"
+  },
+  {
+   "what": {
+    "value": "Star-formation rate (0.087 +0.106/-0.046 M_sun yr^-1), X-ray luminosity (10^40.63 erg s^-1), and dust mass (6.05 +0.376/-0.218 x 10^7 M_sun) from Herschel",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "3C 326 N has a very low starformation rate (SFR= 0.087 [+] − [0] 0 [.] . [106] 046 [M] [⊙] [yr] [−][1] [from] [Herschel] [dust] photometry; Lanz et al. 2016)"
+     },
+     {
+      "loc": "4.5. Mass budgets",
+      "quote": "Lanz et al. (2016) estimated a dust mass of M dust = 6.05 [+] − [0] 0 [.] . [376] 218 [×][ 10] [7] [M] [⊙] [.]"
+     }
+    ]
+   },
+   "citation": "Lanz et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Warm molecular gas mass (1.3-2.7 x 10^9 M_sun), warm ionised gas mass (2 x 10^7 M_sun), stellar mass (3 x 10^11 M_sun), and optical extinction (A_V = 0.17 mag)",
+    "evidence": [
+     {
+      "loc": "4.5. Mass budgets",
+      "quote": "Ogle et al. (2007) and Nesvadba et al. (2010) estimated a mass of warm H 2 from the pure rotational line emission finding M H 2, rot = 1.1 × 10 [9] M ⊙ and M H 2, rot = 1.3 − 2.7 × 10 [9] M ⊙, respectively."
+     },
+     {
+      "loc": "4.5. Mass budgets",
+      "quote": "Nesvadba et al. (2010) also found M ion = 2 × 10 [7] M ⊙ for warm ionised gas probed by Hα."
+     },
+     {
+      "loc": "4.5. Mass budgets",
+      "quote": "Nesvadba et al. (2010) obtained a global estimate of A V = 0.17 mag from stellar population modelling in the optical"
+     }
+    ]
+   },
+   "citation": "Nesvadba et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "Spitzer/IRS warm H2 mass (1.1 x 10^9 M_sun) and [NeII] 12.82 um flux (4 x 10^-19 W m^-2)",
+    "evidence": [
+     {
+      "loc": "4.5. Mass budgets",
+      "quote": "Ogle et al. (2007) and Nesvadba et al. (2010) estimated a mass of warm H 2 from the pure rotational line emission finding M H 2, rot = 1.1 × 10 [9] M ⊙ and M H 2, rot = 1.3 − 2.7 × 10 [9] M ⊙, respectively."
+     },
+     {
+      "loc": "5.2. An extended, turbulent, multi-phase interstellar medium throughout the galaxy",
+      "quote": "We can use the [NeII] flux measured by Ogle et al. (2007) of F([NeII]λ12.82)= 4 × 10 [−][19] W m [−][2]"
+     }
+    ]
+   },
+   "citation": "Ogle et al. (2007)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive ALMA continuum flux density and upper limit on CO(1-0) line flux and cold molecular gas mass",
+   "method": "Measure nuclear continuum at 115.3 GHz rest-frame; compute 3-sigma upper limit on CO(1-0) integrated line flux from channel RMS using Sage et al. (2007) and Young et al. (2011) prescription; convert to L'_CO via Solomon et al. (1997) and to M_H2,CO via alpha_CO, then scale by area ratio",
+   "software": [],
+   "key_parameters": [
+    "FWHM = 100 km s^-1, sampling = 43.26 km s^-1, N_b = 118, RMS = 0.2 mJy bm^-1"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.3 M_sun / (K km s^-1 pc^2), and CO emission extends over the same area as warm molecular gas seen with NIRSpec (factor 5.3 larger than beam)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model JWST emission lines and stellar CO band head absorption",
+   "method": "Spaxel-by-spaxel MCMC fitting of 1 or 2 Gaussians plus linear continuum for emission lines (selected by BIC), and convolved HD 9138 K4III stellar template plus 2nd order polynomial for CO band heads between 2.485 and 2.62 um",
+   "software": [
+    "emcee",
+    "astropy",
+    "spectres"
+   ],
+   "key_parameters": [
+    "5000 steps and 200 walkers (two runs) for emission lines; 2000 steps and 100 walkers for CO band heads"
+   ],
+   "assumptions": [
+    "Normal distribution of stellar velocities; instrumental line spread function accounted for"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 115.3 GHz rest-frame nuclear continuum flux density (S_115GHz)",
+   "value": "1.6",
+   "uncertainty": "0.01",
+   "units": "mJy bm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2. ALMA interferometry",
+     "quote": "Continuum emission from the nucleus is well detected, with a flux density at 115.3 GHz in the rest-frame of S 115 GHz = 1.6 ± 0.01 mJy bm [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Line-integrated standard deviation for CO(1-0) (sigma_line)",
+   "value": "30.7",
+   "uncertainty": "not stated",
+   "units": "mJy km s^-1 bm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2. ALMA interferometry",
+     "quote": "Assuming a line width of FWHM=100 km s [−][1], a sampling of 43.26 km s [−][1] as in our data, and RMS = 0.2 mJy bm [−][1], we find σ line = 30.7 mJy km s [−][1] bm [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on cold molecular gas mass per beam",
+   "value": "1.5e8",
+   "uncertainty": "not stated",
+   "units": "M_sun bm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2. ALMA interferometry",
+     "quote": "we adopt the standard conversion factor appropriate for, e.g., the Milky Way, α CO = 4.3 M ⊙ / [K km s [−][1] pc [2] ] (e.g., Bolatto et al. 2013), and find a 3σ upper limit of 1.5 × 10 [8] M ⊙ bm [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on total cold molecular gas mass (M_H2,CO)",
+   "value": "8e8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2. ALMA interferometry",
+     "quote": "Assuming that CO line emission would extend over the same area also seen with NIRSpec in warm molecular gas, we expect that the total molecular gas mass would be a factor 5.3 larger, i.e., correspond to a total of M H 2, CO = 8 × 10 [8] M ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic redshift (z_syst)",
+   "value": "0.08979",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3. Continuum morphology and stellar absorption bands",
+     "quote": "We find a systemic redshift of z syst = 0.08979 ± 0.0003, consistent with the value of z = 0.09 from Guillard et al. (2015) measured from [CII]."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of CO band head stellar velocity dispersion",
+   "value": "660",
+   "uncertainty": "100",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3. Continuum morphology and stellar absorption bands",
+     "quote": "From our CO modelling, we also find that the FWHM of the CO band head velocity dispersion is 5.1 ± 0.8 nm, equivalent to a velocity of 660 ± 100 km s [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of very warm ro-vibrational H2 (M_H2,ro-vib)",
+   "value": "1.4e4",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.5. Mass budgets",
+     "quote": "With these assumptions, and for an integrated H 2 1–0 S(1) line flux of 1.5×10 [−][18] W m [−][2], we find M H 2, ro − vib = 1.4×10 [4] M ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum expansion velocity of bipolar bubble",
+   "value": "380",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Extended line emission shows a bipolar bubble expanding through the molecular disk at velocities of up to 380 km s [−][1]"
+    },
+    {
+     "loc": "5.1. The nature of the emission-line regions in 3C 326 N",
+     "quote": "We thus conclude that we are seeing an inflating, AGN-driven bubble expanding through the molecular gas, reaching an expansion velocity of up to 380 km s [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Average H2 0-0 / 1-0 line flux ratio across disk apertures",
+   "value": "5.5",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6. On using the H2 1–0 lines as proxy to the H2 0–0 lines in distant galaxies",
+     "quote": "The average 0–0/1–0 ratio for all apertures in Fig. 11, not including the cavity or total source (blue and green apertures), is 5.5 ± 0.6."
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA 1.52 GHz (L-band) flux density",
+   "value": "2.10",
+   "uncertainty": "0.09",
+   "units": "mJy bm^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "L 1.52 1.18 × 1.11 −41.8 90 1.08 × 1.01 2.10±0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA 7.25 GHz (C-band) flux density",
+   "value": "1.00",
+   "uncertainty": "0.005",
+   "units": "mJy bm^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C 7.25 0.29 × 0.26 65.5 4.7 0.29 × 0.24 1.00±0.005"
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA 9.00 GHz (X-band) flux density",
+   "value": "1.15",
+   "uncertainty": "0.005",
+   "units": "mJy bm^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "X 9.00 0.22 × 0.20 −32.8 5.3 0.21 × 0.20 1.15±0.005"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio core spectral index (alpha between 1.52 and 10.0 GHz)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1. Properties of the radio core",
+     "quote": "With the values for the radio flux and central frequencies given in Tab. 2.3, we find a α = 0.21 between 1.52 GHz and 10.0 GHz, a typical value for the flat-spectrum radio core of a radio AGN."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether archival ALMA products from 2015.1.01120.S were used as-is or re-imaged, and the CASA version and tclean parameters used for the ALMA data",
+  "How the 115.3 GHz rest-frame continuum flux density was extracted from the ALMA data (peak pixel vs. 2D Gaussian fit, continuum bandwidth)"
+ ],
+ "missing_for_reproduction": [
+  "ALMA calibration and imaging details (whether archive products were used directly or re-imaged, weighting, continuum subtraction)",
+  "Exact coordinates and dimensions of the regional extraction apertures (S, C, N, NE, NW, Bub) shown in Figure 11",
+  "Custom emcee fitting script for the 1-2 Gaussian emission-line and stellar template modelling"
+ ],
+ "reproducibility_score": 2,
+ "score_reason": "For the ALMA component, the project code, beam size, channel width, RMS, and analytic upper-limit formulas are explicitly stated, though it is not stated whether archival image products were used as-is or re-imaged. For the primary JWST analysis, pipeline versions, MCMC priors, and walker setups are well documented, lacking only the exact aperture coordinates for regional tables.",
+ "rediscovery_reason": "All datasets (JWST GO1-2162, ALMA 2015.1.01120.S, JVLA 18A-285) are public in archives, the mathematical recipe for the ALMA CO(1-0) upper limit and JWST MCMC fitting is explicitly given, and the main results are quantitative.",
+ "source_card": "cards/2024A%26A...689A.314L/sonnet/card.md"
+}

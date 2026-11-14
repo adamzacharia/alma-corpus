@@ -1,0 +1,403 @@
+{
+ "bibcode": "2024A&A...690A..33L",
+ "title": "ALMA-IMF: XV. Core mass function in the high-mass star formation regime",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202345986",
+ "arxiv_id": "2407.18719",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Measure the core mass function (CMF) at a homogeneous physical resolution of 2700 au across 15 Milky Way high-mass protoclusters and test whether its high-mass slope differs from the canonical Salpeter IMF slope (α = 2.35).",
+ "alma_project_codes": [
+  "2017.1.01355.L",
+  "2013.1.01365.S",
+  "2015.1.01273.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) and Band 3 (3.0 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "Native Band 6: 0.31\" to 0.90\" (1365 to 2685 au); smoothed Band 6 and Band 3: 0.49\" to 1.35\" (matched 2700 au)",
+  "sensitivity": "Native Band 6: 9 to 60 mK; Native Band 3: 3 to 26 mK; Smoothed Band 6: 0.06 to 0.52 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Phase center coordinates, evolutionary stages, and distances of the 15 protoclusters",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(1) Phase center, evolutionary stage and distance to the region taken from Tables 1 and 4 of Paper I."
+     }
+    ]
+   },
+   "citation": "Paper I (Motte et al. 2022)"
+  },
+  {
+   "what": {
+    "value": "Central frequencies in Band 6 and Band 3 and cleanest 1.3 mm and 3 mm continuum emission maps",
+    "evidence": [
+     {
+      "loc": "2. Observations",
+      "quote": "Since we wish to assemble the most reliable sample of cores, we use the cleanest continuum maps, publicly available on the ALMA-IMF website"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(2) Central frequencies in Band 6 (≃1.3 mm) and in Band 3 (≃3.0 mm) taken from Table D.1 of Paper II."
+     }
+    ]
+   },
+   "citation": "Paper II (Ginsburg et al. 2022)"
+  },
+  {
+   "what": {
+    "value": "PPMAP dust temperature maps at 2.5\" angular resolution for the 15 ALMA-IMF protoclusters",
+    "evidence": [
+     {
+      "loc": "4.2.2. Core temperatures",
+      "quote": "Following the pilot study by Motte et al. (2018), we used the Bayesian procedure _PPMAP_ (Marsh et al. 2015; Dell’Ova et al. 2024) to build the temperature maps of the ALMA-IMF protoclusters."
+     }
+    ]
+   },
+   "citation": "Dell'Ova et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Hot core candidates identified via methyl formate emission maps and their assigned temperature of 100±50 K (and 300±100 K for G327.29 source n°1)",
+    "evidence": [
+     {
+      "loc": "4.2.2. Core temperatures",
+      "quote": "Following the method discussed in Bonfand et al. (2024), we set 100±50 K to the 49 sources whose position corresponds to the peaks of extended methyl formate emission"
+     },
+     {
+      "loc": "4.2.2. Core temperatures",
+      "quote": "Additionally, we set 300±100 K to sources n [◦] 1, n [◦] 2, and n [◦] 1 in W51-IRS2, W51-E and G327.29 respectively, following their detailed modelling by Ginsburg et al. (2017), Goddi et al. (2020), and the adopted temperature in Bonfand et al. (2024), respectively."
+     }
+    ]
+   },
+   "citation": "Bonfand et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Detailed temperature modelling (300±100 K) for hot core sources n°1 in W51-IRS2 and n°2 in W51-E",
+    "evidence": [
+     {
+      "loc": "4.2.2. Core temperatures",
+      "quote": "Additionally, we set 300±100 K to sources n [◦] 1, n [◦] 2, and n [◦] 1 in W51-IRS2, W51-E and G327.29 respectively, following their detailed modelling by Ginsburg et al. (2017), Goddi et al. (2020), and the adopted temperature in Bonfand et al. (2024), respectively."
+     }
+    ]
+   },
+   "citation": "Ginsburg et al. (2017); Goddi et al. (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Smooth continuum maps to matched physical resolution",
+   "method": "Convolve the 1.3 mm (Band 6) and 3 mm (Band 3) cleanest continuum maps of all 15 fields with a Gaussian kernel to achieve a homogeneous spatial resolution of 2700 au.",
+   "software": [],
+   "key_parameters": [
+    "Target spatial resolution = 2700 au; Gaussian kernel width θ_conv = sqrt((2700 au / D)^2 - θ_native^2)"
+   ],
+   "assumptions": [
+    "Distances D to each protocluster from Paper I (2000 to 5500 pc)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract compact continuum sources and compare algorithms",
+   "method": "Two-step extraction on both native and 2700 au smoothed maps using getsf and GExt2D: detect source candidates on 1.3 mm maps without primary beam correction, then measure fluxes and sizes on 1.3 mm and 3 mm maps after primary beam correction.",
+   "software": [
+    "getsf",
+    "GExt2D"
+   ],
+   "key_parameters": [
+    "not stated"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Filter out free-free contaminated sources using 1.3 mm and 3 mm spectral indices",
+   "method": "Rescale 3 mm integrated fluxes for 1.3 mm vs 3 mm source size differences, compute spectral index γ (Eq. 2), and reject sources with γ < 2. For sources undetected by getsf at 3 mm but lying on pixel-by-pixel spectral index map regions with γ < 2 (3 mm background > 3σ), measure aperture upper-limit 3 mm flux (Eq. 3) and reject those with γ < 1.",
+   "software": [],
+   "key_parameters": [
+    "Rejection thresholds: γ < 2 for sources detected at 3 mm (68 rejected); γ < 1 for 3 mm aperture upper limits on free-free background (16 rejected)."
+   ],
+   "assumptions": [
+    "Linear 3 mm flux rescaling with source axes works for optically thick emission or optically thin isothermal envelope with density profile ρ(r) ∝ r^-2."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Assign dust temperatures to each core",
+   "method": "Assign per-core dust temperatures from 2.5\" resolution PPMAP Bayesian SED fitting maps (combining free-free decontaminated ALMA Band 6, SOFIA/HAWC+, Herschel PACS/SPIRE, and APEX SABOCA/LABOCA), overriding with 100±50 K for 49 methyl formate hot core candidates and 300±100 K for 3 extreme hot cores.",
+   "software": [
+    "PPMAP"
+   ],
+   "key_parameters": [
+    "PPMAP angular resolution = 2.5\"; temperature uncertainty = 25% (or 5 K for T < 20 K); hot core T = 100±50 K or 300±100 K."
+   ],
+   "assumptions": [
+    "Methyl formate (CH3OCHO) sublimates from dust grains at ~100 K and traces internal heating in hot cores."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive core masses and evaluate gravitational boundedness",
+   "method": "Convert 1.3 mm integrated and peak fluxes to core mass using Eq. 4 (with first-order optical depth correction), and evaluate gravitational boundedness using the critical Bonnor-Ebert mass ratio M_BE / M_core < 2.",
+   "software": [],
+   "key_parameters": [
+    "Boundedness threshold: M_BE / M_source < 2; M_BE = 2.4 * R * σ_th^2 / G; R = (a * b^2)^(1/3) * D."
+   ],
+   "assumptions": [
+    "Dust + gas opacity per unit mass κ_1.3mm = 0.1 * (ν / 1000 GHz)^β cm^2 g^-1 with β = 1.5 (Ossenkopf & Henning 1994); isothermal adiabatic index γ = 1; mean molecular weight per free particle µ = 2.4."
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Determine mass completeness limits per field via synthetic core injection",
+   "method": "Inject synthetic 2D circular Gaussian cores (FWHM = 3840 au) onto the source-subtracted background maps in 10 mass bins across 4 draws (~3800 synthetic cores per field), re-extract with getsf, and find the 90% recovery mass limit.",
+   "software": [
+    "getsf"
+   ],
+   "key_parameters": [
+    "Gaussian FWHM = 3840 au; minimum separation > 2.5\"; border exclusion = 5\"; 10 flux bins (equivalent to 0.5-5 M_sun at 20 K, or 1-10 M_sun in W51-E); 4 draws per field (~3800 cores total); completeness threshold = 90%."
+   ],
+   "assumptions": [
+    "Synthetic core fluxes converted to mass using the mean temperature of the cores extracted in the corresponding region."
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit the high-mass slope of the global CMF and quantify uncertainties and Salpeter tension",
+   "method": "Fit a power-law PDF p(x) ∝ x^-α to the 330 bound cores above x_min = 1.64 M_sun (excluding W51-E) using Maximum Likelihood Estimation (MLE) and the Kolmogorov-Smirnov distance in the powerlaw Python package, propagate uncertainties via 10^3 Monte Carlo realizations, and test tension with Salpeter (α = 2.35) via 10^5 synthetic draws.",
+   "software": [
+    "powerlaw"
+   ],
+   "key_parameters": [
+    "x_min = 1.64 M_sun; n = 330 cores; 10^3 Monte Carlo trials with β ~ N(1.5, 0.2), T ~ N(T_core, σ_T), and Gaussian flux errors; 10^5 Salpeter synthetic trials."
+   ],
+   "assumptions": [
+    "High-mass tail of the CMF follows a power-law distribution p(x) = C x^-α above x_min."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of sources extracted at native resolution (getsf)",
+   "value": "820",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Source extraction at native angular resolutions",
+     "quote": "Considering all 15 protoclusters together, we extracted 820 sources with _getsf_, and 930 with _GExt2D_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of sources extracted at native resolution (GExt2D)",
+   "value": "930",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Source extraction at native angular resolutions",
+     "quote": "Considering all 15 protoclusters together, we extracted 820 sources with _getsf_, and 930 with _GExt2D_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of sources extracted at 2700 au smoothed resolution (getsf)",
+   "value": "677",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Getsf versus GExt2D extraction methods",
+     "quote": "In total, we retrieve 677 sources with _getsf_, and 1020 with _GExt2D_ ."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Total [(5)] 677 1020 539"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of sources extracted at 2700 au smoothed resolution (GExt2D)",
+   "value": "1020",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Getsf versus GExt2D extraction methods",
+     "quote": "In total, we retrieve 677 sources with _getsf_, and 1020 with _GExt2D_ ."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Total [(5)] 677 1020 539"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of common sources between getsf and GExt2D at 2700 au resolution",
+   "value": "539",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Total [(5)] 677 1020 539"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean core size after smoothing to 2700 au (getsf)",
+   "value": "3840",
+   "uncertainty": "270",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3. Source extraction at matched physical resolution",
+     "quote": "The mean size is similar for each field with _L_ = 3840 ± 270 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Source flux function (SFF) power-law exponent ζ",
+   "value": "1.85",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Getsf versus GExt2D extraction methods",
+     "quote": "The fitted highflux slopes are similar for both catalogues, with ζ [′] ≃ 0.85. These exponents, adjusted onto the complementary cumulative SFFs, correspond to power-laws with exponents ζ = ζ [′] + 1 ≃ 1.85."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of free-free contaminated sources rejected",
+   "value": "84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.1. Removing contaminated sources",
+     "quote": "These filtering rejected 84 of the 677 sources extracted by _getsf_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of gravitationally bound thermal dust cores",
+   "value": "593",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Total [(9)] 677 68 16 0 593 393 350 [(10)]"
+    }
+   ]
+  },
+  {
+   "quantity": "Global mass completeness limit (excluding W51-E)",
+   "value": "1.64",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "A power-law fit to the CMF of the sub-sample of cores above the 1.64 _M_ ⊙ completeness limit — 330 cores — through the maximum likelihood estimate technique yields a slope of 1.97 ± 0.06"
+    },
+    {
+     "loc": "5.1. Completeness tests",
+     "quote": "The mass completeness varies from 0.80 to 1.64 _M_ ⊙ with a mean value of 1.34 _M_ ⊙ and a standard deviation of 0.2 _M_ ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of bound cores above the 1.64 M_sun completeness limit (excluding W51-E)",
+   "value": "330",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2.1. Method",
+     "quote": "We, therefore, select _x_ min = 1.64 _M_ ⊙, which corresponds to a core sample of 330 elements (excluding W51-E)."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF high-mass power-law slope α (direct MLE fit before Monte Carlo)",
+   "value": "2.11",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2.1. Method",
+     "quote": "From that subsample, we obtain a power-law index fit α = 2.11 ± 0.06 [8] ."
+    }
+   ]
+  },
+  {
+   "quantity": "CMF high-mass power-law slope α (with Monte Carlo uncertainties)",
+   "value": "1.97",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "A power-law fit to the CMF of the sub-sample of cores above the 1.64 _M_ ⊙ completeness limit — 330 cores — through the maximum likelihood estimate technique yields a slope of 1.97 ± 0.06, significantly flatter than the 2.35 Salpeter slope."
+    },
+    {
+     "loc": "5.2.2. Uncertainty of the fit",
+     "quote": "We obtain a mean exponent value for the slope of the CMF of 1.97±0.06, where the uncertainty is the quadratic sum of the statistical uncertainty from Eq. 7 (σ ≃ 0.06) and from the uncertainties on the temperature, opacity index, and flux measurement uncertainties (σ ≃ 0.02)."
+    }
+   ]
+  },
+  {
+   "quantity": "Statistical tension with the canonical Salpeter IMF slope (α = 2.35)",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2.3. Comparison with the Salpeter-slope",
+     "quote": "Therefore, we report that the CMF in the protoclusters studied by ALMA-IMF is flatter than, and cannot reasonably be reconciled with the Salpeter-IMF slope to a 2.4σ level [9] ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration details, self-calibration parameters, and tclean imaging parameters (deferred to Paper II, Ginsburg et al. 2022)",
+  "Exact configuration parameters and user-defined spatial scale ranges passed to getsf and GExt2D during source extraction",
+  "Software or tool used to convolve the native continuum maps to the 2700 au spatial resolution"
+ ],
+ "missing_for_reproduction": [
+  "Exact getsf (v210414) configuration parameters (e.g., maximum source size scale per field)",
+  "GExt2D (v210603) code and configuration parameters (cited as Bontemps et al., in prep.)",
+  "PPMAP 2.5 arcsec temperature maps (if re-running temperature assignment directly from maps rather than using Tables D.1-D.24)",
+  "Custom scripts used for the 10^3 and 10^5 Monte Carlo simulations"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "The input cleanest continuum maps and the complete intermediate/final core catalogs (with fluxes, sizes, spectral indices, PPMAP temperatures, and masses in Tables D.1-D.24 and on CDS/website) are publicly released, and the mass conversion, filtering criteria, and MLE fitting (via the open-source powerlaw package) are explicitly given by equations. Full end-to-end reproduction from the FITS images only lacks exact getsf/GExt2D configuration files.",
+ "rediscovery_reason": "Both the ALMA-IMF cleanest continuum maps and the full extracted core catalogs are publicly available, and the main scientific results (core counts, core masses via Eq. 4, and the global CMF slope α = 1.97 ± 0.06 via the powerlaw package) are quantitative and can be directly reproduced.",
+ "source_card": "cards/2024A%26A...690A..33L/sonnet/card.md"
+}

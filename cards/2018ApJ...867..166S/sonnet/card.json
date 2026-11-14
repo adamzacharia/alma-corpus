@@ -1,0 +1,992 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...867..166S",
+  "title": "Internal Structures of Molecular Clouds in the LMC Revealed by ALMA",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Sawada, Tsuyoshi",
+  "n_authors": 3,
+  "arxiv_id": "1812.06001",
+  "doi": "10.3847/1538-4357/aae395",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00641.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We observed five giant molecular clouds (GMCs) in the Large Magellanic Cloud (LMC) in the $^{12}{\\rm CO}$ $J=1\\mbox{--}0$ line using the Atacama Large Millimeter/submillimeter Array (ALMA)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "GMC 2",
+     "coordinates": {
+      "value": "4h47m35s, -67d13m00s (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| 2      | $4^{\\rm h} 47^{\\rm m} 35^{\\rm s}$ | $-67\\ensuremath{^\\circ} 13\\ensuremath{'} 00\\ensuremath{''}$ |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "GMC 55",
+     "coordinates": {
+      "value": "5h07m45s, -68d59m30s (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| 55     | $5^{\\rm h} 07^{\\rm m} 45^{\\rm s}$ | $-68\\ensuremath{^\\circ} 59\\ensuremath{'} 30\\ensuremath{''}$ |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "GMC 197",
+     "coordinates": {
+      "value": "5h39m50s, -70d07m00s (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| 197    | $5^{\\rm h} 39^{\\rm m} 50^{\\rm s}$ | $-70\\ensuremath{^\\circ} 07\\ensuremath{'} 00\\ensuremath{''}$ |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "GMC 216",
+     "coordinates": {
+      "value": "5h44m35s, -69d26m00s (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| 216    | $5^{\\rm h} 44^{\\rm m} 35^{\\rm s}$ | $-69\\ensuremath{^\\circ} 26\\ensuremath{'} 00\\ensuremath{''}$ |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "GMC 225",
+     "coordinates": {
+      "value": "5h47m20s, -70d41m30s (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| 225    | $5^{\\rm h} 47^{\\rm m} 20^{\\rm s}$ | $-70\\ensuremath{^\\circ} 41\\ensuremath{'} 30\\ensuremath{''}$ |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the internal structures of LMC GMCs vary from quiescent to actively star-forming clouds, characterized by the brightness distribution function and index?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "This paper aims to bridge the gap between these two extremes, clouds with very active star formation and those in the quiescent phase, and investigate the evolutionary trend."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00641.S",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "as the Early Science Cycle 1 project 2012.1.00641.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The target five GMCs were observed with ALMA using the Band 3 receivers"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "469 MHz wide, 3840-channel window (244 kHz = 0.64 km/s) at CO J=1-0; three 2 GHz low-resolution continuum windows",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "A 469 MHz wide, 3840-channel, dual-polarization spectral window ($244\\;{\\rm kHz}= 0.64\\;{\\rm km\\,s^{-1}}$ resolution) was placed at the frequency of the CO $J=1\\mbox{--}0$ line"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.271 GHz",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "the frequency of the CO $J=1\\mbox{--}0$ line (rest frequency 115.271 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12 m, 7 m (ACA), Total Power",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we combine and jointly deconvolve the data from the ALMA 12 m, 7 m, and Total-Power (TP) arrays."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "12 m: 14-450 m; 7 m: 7-35 m",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "the $u\\mbox{--}v$ distance typically ranged from 14 to 450 m"
+     },
+     {
+      "loc": "3 Observations",
+      "quote": "7–35 m, respectively"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "convolution beams 2.2-2.6 arcsec, smoothed to 3.0 arcsec (0.73 pc)",
+    "evidence": [
+     {
+      "loc": "4 Data Reduction",
+      "quote": "we smoothed the maps to a common $3.0\\ensuremath{''}$ resolution (0.73 pc) along both the major and minor axes of the beams."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.47-0.67 K (45-66 mJy/beam) at 1 km/s",
+    "evidence": [
+     {
+      "loc": "4 Data Reduction",
+      "quote": "at which the sensitivity ranges between 0.47 and 0.67 K (45–66 ${\\rm mJy\\,beam^{-1}}$)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "12 m: ~540 s per object (20 s/pointing); 7 m: ~1000 s; TP: ~60 min per antenna",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The total on-source integration time per object was typically 540 s (20 s per mosaic pointing)"
+     },
+     {
+      "loc": "3 Observations",
+      "quote": "The typical total on-source time (per antenna) and $T_{\\rm sys}$ were 60 minutes and 140 K, respectively."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "12 m: 2013 Dec; 7 m: 2013 Nov-Dec and 2014 Apr; TP: 2015 May-Jun",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "were made in 2013 December."
+     },
+     {
+      "loc": "3 Observations",
+      "quote": "The TP array observations were carried out in 2015 May and June"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Mopra",
+     "provided": {
+      "value": "CO J=1-0 map at 45 arcsec for comparison contours",
+      "evidence": [
+       {
+        "loc": "5 Results",
+        "quote": "contours from the Mopra CO $J=1\\mbox{--}0$ integrated intensity (cite: wong2011)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer",
+     "provided": {
+      "value": "8 um fluxes and color images",
+      "evidence": [
+       {
+        "loc": "2.1 Considerations",
+        "quote": "calculated from the *Spitzer Space Telescope* 8 $\\ensuremath{\\mu}m$ images (cite: meixner2006)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "NANTEN",
+     "provided": {
+      "value": "GMC catalog and CO masses",
+      "evidence": [
+       {
+        "loc": "2 Target Selections",
+        "quote": "which consists of 272 clouds in the LMC from the $^{12}{\\rm CO}$ $J=1\\mbox{--}0$ survey with the NANTEN 4 m telescope"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "GMC radius, CO mass and types from NANTEN catalog",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$^{a}$ From the NANTEN survey (cite: fukui2008)"
+       }
+      ]
+     },
+     "citation": "(cite: fukui2008)"
+    },
+    {
+     "what": {
+      "value": "YSO counts from Seale et al.",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "The number of “probable” YSOs (cite: seale2014) within 30 and 45 pc radii"
+       }
+      ]
+     },
+     "citation": "(cite: seale2014)"
+    },
+    {
+     "what": {
+      "value": "Dust temperatures",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$^{d}$ (cite: gordon2014)"
+       }
+      ]
+     },
+     "citation": "(cite: gordon2014)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Delivered data calibrated by observatory with CASA; statwt applied",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "were delivered by the observatory and were calibrated using the Common Astronomy Software Applications (cite: mcmullin2007)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Uranus or J0519-4546 (12 m); solar system object or J0519-4546 (7 m); 3C 279 for TP gains",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "Either Uranus or the radio galaxy J0519$-$4546, whose flux was monitored by the observatory, was observed in each execution as the flux calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Miriad mossdi2 (image-based clean) after invert",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We ran the `mossdi2` task for image-based clean."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "4 million iterations, gain 0.05; residual scaling of Jorsater & van Moorsel",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We set the number of iterations to 4 million and the `gain` parameter to 0.05."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "inverted to dirty map and beam with the natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "TP spectral baselines removed by straight-line fits to emission-free channels",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We subtracted spectral baselines from the delivered TP map by fitting straight lines to emission-free channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "TP converted to visibilities with TP2VIS, joint deconvolution with 12m+7m; TP weight from TP map rms",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We adopted the TP weight that corresponds to the rms noise in the TP map."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "common 3.0 arcsec; 1 km/s channels (2 km/s for BDF)",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We use a velocity channel spacing of $1\\;{\\rm km\\,s^{-1}}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "0.46-0.67 K at 3\"x3\"x1 km/s",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "$^{a}$ At $3\\ensuremath{''} \\times 3\\ensuremath{''} \\times 1\\;{\\rm km\\,s^{-1}}$ resolution"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "TP2VIS procedure for combining TP and interferometer data",
+      "evidence": [
+       {
+        "loc": "4 Data Reduction",
+        "quote": "This procedure is discussed and tested in depth in our previous paper (cite: koda2011)."
+       }
+      ]
+     },
+     "from_reference": "(cite: koda2011)"
+    },
+    {
+     "what": {
+      "value": "BDI brightness thresholds (3,5,10,inf) K",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "the same brightness thresholds used for the MW analysis in (cite: sawada2012)"
+       }
+      ]
+     },
+     "from_reference": "(cite: sawada2012)"
+    },
+    {
+     "what": {
+      "value": "Residual scaling scheme",
+      "evidence": [
+       {
+        "loc": "4 Data Reduction",
+        "quote": "we used the residual scaling scheme of (cite: Jorsater1995)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Jorsater1995)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels used for TP baseline fitting",
+    "Clean masks/threshold and cell/image size",
+    "Exact TP2VIS parameters and weights",
+    "Which execution blocks used which flux calibrators",
+    "Noise/pixel selection for BDI calculation (e.g. masking, handling of edges)",
+    "Distance to LMC used for pc conversion"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and prepare data",
+    "method": {
+     "value": "Observatory-calibrated data; TP baseline subtraction; statwt reweighting of 12 and 7 m visibilities",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We also applied the correction for the weights of 12 and 7 m visibilities with the `statwt` task in CASA"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Joint deconvolution of 12m+7m+TP",
+    "method": {
+     "value": "TP map converted to visibilities via TP2VIS, combined in uv space, Miriad invert and mossdi2 clean with residual scaling, smoothed to 3\"",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We combined the 12 m, 7 m, and TP data in $u$–$v$ space and deconvolved them jointly."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "TP2VIS",
+     "Miriad"
+    ],
+    "key_parameters": [
+     {
+      "value": "4 million iterations, gain 0.05, natural weighting",
+      "evidence": [
+       {
+        "loc": "4 Data Reduction",
+        "quote": "We set the number of iterations to 4 million and the `gain` parameter to 0.05."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux consistency with TP map addressed by residual scaling",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "It is often a problem that the flux of the cleaned map is not consistent with that of the TP map."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive cloud masses",
+    "method": {
+     "value": "CO luminosity converted to H2 mass in ALMA FoV",
+     "evidence": [
+      {
+       "loc": "5 Results",
+       "quote": "We adopt a CO-to-${\\rm H_2}$ conversion factor of $7\\times 10^{20}\\;{\\rm cm^{-2}\\,(K\\,km\\,s^{-1})^{-1}}$ (cite: fukui2008)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "X_CO = 7e20 cm^-2 (K km/s)^-1",
+      "evidence": [
+       {
+        "loc": "5 Results",
+        "quote": "We adopt a CO-to-${\\rm H_2}$ conversion factor of $7\\times 10^{20}\\;{\\rm cm^{-2}\\,(K\\,km\\,s^{-1})^{-1}}$ (cite: fukui2008)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Compute BDF and BDI",
+    "method": {
+     "value": "Histogram of pixel brightness in position-position-velocity at 2 km/s resolution; BDI = log10 of flux ratio of bright (10 K-inf) to faint (3-5 K) pixels",
+     "evidence": [
+      {
+       "loc": "6.1",
+       "quote": "we adopt $(T_0, T_1, T_2, T_3) = (3, 5, 10, \\infty)$ \\[K\\]"
+      },
+      {
+       "loc": "6.1",
+       "quote": "The data are smoothed to a $2\\;{\\rm km\\,s^{-1}}$ velocity resolution to achieve better sensitivity."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to MW BDFs smoothed to 0.7 pc",
+     "evidence": [
+      {
+       "loc": "6.1",
+       "quote": "the spatial scales are smoothed to match the 0.7 pc resolution of this LMC study"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration, statwt, TP2VIS platform",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "were calibrated using the Common Astronomy Software Applications (cite: mcmullin2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Miriad",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging/deconvolution (mossdi2)",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "we used the Multichannel Image Reconstruction, Image Analysis, and Display (Miriad) software package (cite: sault1995), instead of CASA."
+      }
+     ]
+    }
+   },
+   {
+    "name": "TP2VIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Convert TP map to visibilities",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "We converted the TP map into visibilities by using the Total Power to Visibilities (TP2VIS) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Acknowledged as used in the research",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Montage",
+    "version": "not stated",
+    "used_for": {
+     "value": "Acknowledged as used in the research",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made use of Montage."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "BDI GMC 55",
+    "value": "-0.92",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 55     | $5^{\\rm h} 07^{\\rm m} 45^{\\rm s}$ | $-68\\ensuremath{^\\circ} 59\\ensuremath{'} 30\\ensuremath{''}$ | 0.54      | 1.4                            | 0.3                | $-0.92$   |"
+     }
+    ]
+   },
+   {
+    "quantity": "BDI GMC 197",
+    "value": "-1.50",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 197    | $5^{\\rm h} 39^{\\rm m} 50^{\\rm s}$ | $-70\\ensuremath{^\\circ} 07\\ensuremath{'} 00\\ensuremath{''}$ | 0.57      | 4.7                            | 0.05               | $-1.50$   |"
+     }
+    ]
+   },
+   {
+    "quantity": "BDI GMC 216",
+    "value": "-0.83",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 216    | $5^{\\rm h} 44^{\\rm m} 35^{\\rm s}$ | $-69\\ensuremath{^\\circ} 26\\ensuremath{'} 00\\ensuremath{''}$ | 0.47      | 4.9                            | 0.2                | $-0.83$   |"
+     }
+    ]
+   },
+   {
+    "quantity": "BDI GMC 225",
+    "value": "-1.55",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 225    | $5^{\\rm h} 47^{\\rm m} 20^{\\rm s}$ | $-70\\ensuremath{^\\circ} 41\\ensuremath{'} 30\\ensuremath{''}$ | 0.67      | 1.1                            | 0.1                | $-1.55$   |"
+     }
+    ]
+   },
+   {
+    "quantity": "BDI GMC 2",
+    "value": "-infinity (no gas >10 K)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "6.1",
+      "quote": "Its BDI is very low ($-\\infty$; meaning no gas with high brightness $>10$ K)."
+     }
+    ]
+   },
+   {
+    "quantity": "CO masses within ALMA fields",
+    "value": "1.1 to 4.9 x 10^5",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5 Results",
+      "quote": "The masses within the ALMA fields range between 1.1 and $4.9 \\times 10^5 M_\\ensuremath{\\odot}$; 5–30% of the total GMC masses in the NANTEN catalog."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Four star-forming GMCs show clumps and filaments; the quiescent GMC 2 is diffuse and featureless, similar to MW inter-arm gas.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The quiescent GMC shows a relatively diffuse, extended emission distribution without prominent clumps or filaments."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Quiescent LMC GMCs are less structured than star-forming GMCs",
+    "experiment": "ALMA 12m+7m+TP CO(1-0) imaging at 0.7 pc and BDF/BDI analysis of five GMCs",
+    "result": "GMC 2 has BDI -inf; other four have BDI -1.55 to -0.83",
+    "finding": "Structure correlates with star-formation activity, analogous to MW arm/inter-arm",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.1",
+      "quote": "The other four GMCs show some signs of star formation, and their BDFs, $-1.5$ to $-0.8$, are similar to those of the spiral arms in the MW."
+     }
+    ]
+   },
+   {
+    "hypothesis": "GMCs follow an evolutionary sequence from unstructured to structured",
+    "experiment": "Combine five GMCs with literature ALMA studies",
+    "result": "Qualitatively similar trend in other ALMA clouds",
+    "finding": "Tentative evolutionary trend",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6.2",
+      "quote": "a simple view of a GMC evolutionary sequence is tempting: clouds start from a relatively structureless state, develop complex internal structures, and, as a result, form stars."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Miriad used because CASA clean uses one dirty beam for a whole mosaic, causing flux divergence and stripes",
+    "evidence": [
+     {
+      "loc": "4 Data Reduction",
+      "quote": "The `clean` and `tclean` tasks in CASA (as of version 5.3) use only one dirty beam for a whole mosaic in their minor cycles, while it varies across the mosaic."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "CASA clean/tclean rejected for imaging",
+     "evidence": [
+      {
+       "loc": "4 Data Reduction",
+       "quote": "Therefore, we could not use CASA for imaging."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Sample small and classification uncertain; FoVs not centered on 45 arcsec peaks; trend tentative",
+     "evidence": [
+      {
+       "loc": "2.1 Considerations",
+       "quote": "Therefore, our ALMA FoVs are not optimal in terms of the peak positions in the $45\\ensuremath{''}$ resolution maps."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No uncertainties on BDI or masses",
+    "Five clouds only; no statistical test",
+    "BDI depends on noise and thresholds, with pixel-based X_CO assumption",
+    "Environmental factors (SGS) confound the trend"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data acknowledged via ADS/JAO.ALMA#2012.1.00641.S",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00641.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Clean masks and image parameters",
+    "TP2VIS settings",
+    "BDI pixel selection details"
+   ],
+   "estimated_data_volume_inferred": "~50-150 GB raw for five 27-pointing mosaics across 12m/7m/TP",
+   "score_inferred": 3,
+   "score_reason": "Data public and software named, but several imaging parameters and BDI details unstated and no code released.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Combination imaging with Miriad/TP2VIS is complex and key parameters missing, though BDI results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Koda et al. 2011 (cite: koda2011)",
+     "why": "TP2VIS combination procedure"
+    },
+    {
+     "citation": "Sawada et al. 2012 (cite: sawada2012)",
+     "why": "BDF/BDI definition"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Wong et al. 2017 (cite: wong2017)",
+     "why": "ALMA study of a quiescent LMC cloud"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "NANTEN LMC survey",
+    "MAGMA Mopra survey",
+    "Spitzer SAGE"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e3a21e2737e7d87af79be9d7f7d2e50d",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:10",
+  "usage": {
+   "input_tokens": 17532,
+   "output_tokens": 8794,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.062108,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 65,
+  "quotes_ok": 65,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 50,
+   "rate": 0.581
+  },
+  "evidence_ok": true
+ }
+}

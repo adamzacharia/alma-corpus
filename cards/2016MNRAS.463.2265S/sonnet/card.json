@@ -1,0 +1,524 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016MNRAS.463.2265S",
+  "title": "The peculiar dipping events in the disc-bearing young-stellar object EPIC 204278916",
+  "year": 2016,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Scaringi, S.",
+  "n_authors": 10,
+  "arxiv_id": "1608.07291",
+  "doi": "10.1093/mnras/stw2155",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00395.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "EPIC 204278916 has been serendipitously discovered from its *K2* light curve which displays irregular dimmings of up to $65\\%$ for $\\approx$25 consecutive days out of 78.8 days of observations."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "EPIC 204278916 (2MASS J16020757-2257467)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What causes the irregular large-amplitude dips in the K2 light curve of the disk-bearing young star EPIC 204278916?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We examine the *K2* light curve in detail and hypothesise that the irregular dimmings are caused by either a warped inner-disk edge or transiting cometary-like objects in either circular or eccentric orbits."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "mean frequency 341.1 GHz (0.88 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "in four spectral windows centred at 334.2, 336.1, 346.2, and 348.1 GHz for a mean frequency of 341.1 GHz (0.88 mm)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four spectral windows at 334.2, 336.1, 346.2, 348.1 GHz, 1.875 GHz each",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "The bandwidth of each window is 1.875 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "both in the continuum (see Fig. [5](#fig:alma)) and in the CO(J=3$-$2) line ((cite: barenfeld16))"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "16-650 m, 36 antennas",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "Thirty six antennas were included in the array, with baselines ranging from 16-650 m for an angular resolution of 0.34 arcseconds."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.34 arcsec",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "with baselines ranging from 16-650 m for an angular resolution of 0.34 arcseconds."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2014 June 30 and 2014 July 7 (Cycle 2)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "ALMA Cycle 2 observations of EPIC 204278916 were obtained on 2014 June 30 and 2014 July 7 (UT)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "K2 (Kepler)",
+     "provided": {
+      "value": "Long-cadence light curve from MAST, Campaign 2, 78.8 days",
+      "evidence": [
+       {
+        "loc": "2.1 K2 light curve",
+        "quote": "Here we analyse long cadence (LC, 29.4 minutes) data obtained from the Mikulski Archive for Space Telescope (MAST) archive"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar luminosity log L=0.15, spectral type M1, Halpha EW=-3.2 A",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "has a logarithmic bolometric stellar luminosity log$L_\\star/L_\\odot$ = 0.15 ((cite: preibisch02))"
+       }
+      ]
+     },
+     "citation": "(cite: preibisch02)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA reduction scripts provided by NRAO",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "The ALMA data were calibrated using the CASA package. The reduction scripts were kindly provided by NRAO."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA observation details and data reduction",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA observations",
+        "quote": "For further details on the observations and data reduction, see (cite: barenfeld16)."
+       }
+      ]
+     },
+     "from_reference": "(cite: barenfeld16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version",
+    "Flux calibrator and imaging parameters for continuum image",
+    "Details of elliptical Gaussian visibility fit",
+    "Stellar distance",
+    "Fit settings for the multi-Gaussian light-curve model"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit continuum disk inclination",
+    "method": {
+     "value": "Elliptical Gaussian fit to the continuum visibilities; inclination from axis ratio assuming a circular disk",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "An elliptical Gaussian fit of the surface brightness profile to the continuum visibility data results in an axis ratio of 0.55 $\\pm$ 0.13"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "circular disk",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA observations",
+        "quote": "implying a disk inclination of 57 $\\pm$ 9 degrees and assuming a circular disk."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA calibration",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "The ALMA data were calibrated using the CASA package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MATLAB FINDPEAK",
+    "version": "not stated",
+    "used_for": {
+     "value": "peak finding to identify 53 dips",
+     "evidence": [
+      {
+       "loc": "3.3 Transiting circumstellar clumps",
+       "quote": "Using a local peak finding algorithm (FINDPEAK implemented in MATLAB) we identify 53 dips."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk axis ratio",
+    "value": "0.55",
+    "uncertainty": "0.13",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "results in an axis ratio of 0.55 $\\pm$ 0.13"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk inclination",
+    "value": "57",
+    "uncertainty": "9",
+    "units": "degrees",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "implying a disk inclination of 57 $\\pm$ 9 degrees"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "Are the dips due to a warped inner disk edge?",
+    "experiment": "Compared maximum co-inclination with ALMA disk inclination",
+    "result": "i_max=14 deg vs ALMA 57 deg",
+    "finding": "Warped inner disk is disfavoured",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.1 Proto-stellar disk origin",
+      "quote": "we obtain a maximum inclination $i_{max}=14$ degrees."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [],
+   "referee_caveats_inferred": [
+    "ALMA is used only for disk inclination, from a simple Gaussian fit, so the result is weakly constrained"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Barenfeld et al. 2016 reduction details"
+   ],
+   "estimated_data_volume_inferred": "tens of GB",
+   "score_inferred": 2,
+   "score_reason": "ALMA role is minor and most settings are deferred to another paper.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA analysis is minimal and delegated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: barenfeld16)",
+     "why": "ALMA data reduction and observation details"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ansdell16b)",
+     "why": "Similar dipper YSOs resolved with ALMA"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "K2 Campaign 2"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ab305ffcad34c81887f64f7e8e008f8e",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:11",
+  "usage": {
+   "input_tokens": 11467,
+   "output_tokens": 3042,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.027283,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 19,
+  "quotes_ok": 19,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2013.1.00395.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 2,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 52,
+   "stated": 14,
+   "rate": 0.269
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:34:47",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00395.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper additionally makes use of the following ALMA data: ADS/JAO.ALMA$\\#2013$.1.00395.S."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

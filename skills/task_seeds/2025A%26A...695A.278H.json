@@ -1,0 +1,495 @@
+{
+ "bibcode": "2025A&A...695A.278H",
+ "title": "FAUST: XXIII. SiO outflow in the protobinary system L483",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202453386",
+ "arxiv_id": null,
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Reveal outflow structures traced by millimeter SiO emission in the low-mass protobinary system L483",
+ "alma_project_codes": [
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12m array and ACA (Morita Array)",
+  "angular_resolution": "0.39'' x 0.30'' to 0.46'' x 0.33'' (lines); 0.28'' x 0.19'' (continuum)",
+  "sensitivity": "0.93 to 2.10 mJy beam^-1 per channel (lines); 0.23 mJy beam^-1 (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular parameters (line frequencies, excitation energy levels, Einstein A-coefficients)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Molecular parameters are taken from the CDMS (Cologne Database for Molecular Spectroscopy; Müller et al. 2001)."
+     },
+     {
+      "loc": "4.3. Molecular abundances",
+      "quote": "line frequencies, excitation energy levels, and Einstein A-coefficients were taken from the CDMS"
+     }
+    ]
+   },
+   "citation": "CDMS (Müller et al. 2001)"
+  },
+  {
+   "what": {
+    "value": "Collision rates of SO and para-H2 up to N_J = 10_10 levels",
+    "evidence": [
+     {
+      "loc": "Appendix D: Non-LTE analysis",
+      "quote": "Collision rates of SO and para-H2 up to the NJ = 10 10 levels (Eu = 127 K) were taken from the BASECOL data base (Dubernet et al. 2024), for which the original collisional datasets were calculated by Lique et al. (2007)."
+     }
+    ]
+   },
+   "citation": "BASECOL (Dubernet et al. 2024; Lique et al. 2007)"
+  },
+  {
+   "what": {
+    "value": "Positions of continuum peaks of the binary system and binary separation of 34 au",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "The recent ALMA observation of dust continuum emission has confirmed a protobinary system with a separation of 34 au (Cox et al. 2022)."
+     },
+     {
+      "loc": "Figure 1 caption",
+      "quote": "Small black plus signs show the positions of continuum peaks of the binary system (Cox et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Cox et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Parabolic outflow model and E-W outflow axes (PA of 105 degrees, inclination ~80 degrees, dynamical timescale 3000 yr) and enclosed mass of 0.1-0.2 M_sun",
+    "evidence": [
+     {
+      "loc": "2. The protobinary system L483",
+      "quote": "Through ALMA observations at <200 au resolution, an infalling-rotating envelope is traced by CCH and CS emission with an enclosed mass of 0.1–0.2 M⊙ (Oya et al. 2017, 2018)."
+     },
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The axes of the blue and red lobes of the E–W outflow (Oya et al. 2018) with the PA of 105 degrees are plotted by solid blue and red lines, respectively."
+     },
+     {
+      "loc": "Appendix A: Overall structure of L483",
+      "quote": "The parabolic outflow model is taken from Oya et al. (2018), where the PA of the outflow is 105 degrees."
+     }
+    ]
+   },
+   "citation": "Oya et al. (2017, 2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Produce moment maps and position-velocity (PV) diagrams from spectral line cubes",
+   "method": "Compute moment 0 (integrated intensity), moment 8 (maximum intensity), and moment 1 (peak velocity) maps, and extract north-south PV diagrams",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Velocity range = +/- 10 km s^-1 around V_sys = 5.5 km s^-1; cutoff level = 4 sigma for moment 1 maps; 1'' x 3'' rectangular slice in north-south direction for PV diagrams"
+   ],
+   "assumptions": [
+    "Systemic velocity V_LSR = 5.5 km s^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract integrated spectra and fit Gaussian line profiles at selected positions",
+   "method": "Integrate spectra over 0.5'' x 0.5'' regions at 8 selected positions and perform Gaussian profile fitting (1 or 2 components)",
+   "software": [],
+   "key_parameters": [
+    "Extraction box = 0.5'' x 0.5'' (100 au x 100 au) at 8 positions listed in Table 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive excitation temperatures, column densities, and fractional abundances under LTE",
+   "method": "Use two SO transitions to determine T_ex and N(SO) under LTE and optically thin assumptions, then use T_ex(SO) to calculate N(SiO) and N(C18O), and convert N(C18O) to N(H2) for fractional abundances",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE and optically thin conditions",
+    "SiO and C18O share the same excitation temperature as SO and are emitted from the same gas",
+    "N[C18O]/N[H2] = 1.7 x 10^-7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Perform non-LTE LVG radiative transfer analysis of SO lines",
+   "method": "Large-velocity gradient (LVG) modeling to estimate SO excitation temperatures, optical depths, column density, and H2 density by least-squares analysis",
+   "software": [],
+   "key_parameters": [
+    "Kinetic temperatures T_kin = 20, 30, 40, and 50 K; SO energy levels up to N_J = 10_10 (E_u = 127 K)"
+   ],
+   "assumptions": [
+    "Large-velocity gradient (LVG) approximation with para-H2 collision rates"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate dynamical, precession, binary orbital, and shock dissipation timescales",
+   "method": "Analytical timescale calculations using equations in Appendix B",
+   "software": [],
+   "key_parameters": [
+    "Delta x = 40 au, Delta v_rot = -2.3 km s^-1 (precession); a = 34 au, M = 0.2 M_sun (binary orbit); r = 200 au, v = 10 km s^-1, rho/rho_1 = 10 (shock dissipation)"
+   ],
+   "assumptions": [
+    "Cylindrical north-south outflow parallel to plane of sky with constant velocity for precession model; shock-to-ambient density ratio rho/rho_1 = 10"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SiO (J=5-4) peak flux density at SiO-peak",
+   "value": "37.8",
+   "uncertainty": "0.6",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "SiO-peak 37.8(6) 4.44(7) 2.73(4) 5.48(10)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) peak LSR velocity at SiO-peak",
+   "value": "2.73",
+   "uncertainty": "0.04",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "SiO-peak 37.8(6) 4.44(7) 2.73(4) 5.48(10)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) FWHM linewidth at SiO-peak",
+   "value": "5.48",
+   "uncertainty": "0.10",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "SiO-peak 37.8(6) 4.44(7) 2.73(4) 5.48(10)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) FWHM linewidth at Continuum peak",
+   "value": "8.00",
+   "uncertainty": "0.26",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "Continuum peak 12.4(4) 1.46(5) 4.68(11) 8.00(26)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) peak LSR velocity at SiO-N",
+   "value": "5.03",
+   "uncertainty": "0.02",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "SiO-N 25.9(9) 3.04(11) 5.03(2) 1.38(6)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) FWHM linewidth at SiO-N",
+   "value": "1.38",
+   "uncertainty": "0.06",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "SiO-N 25.9(9) 3.04(11) 5.03(2) 1.38(6)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) peak LSR velocity at NE-cloud",
+   "value": "3.99",
+   "uncertainty": "0.03",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "NE-cloud 25.5(12) 3.00(14) 3.99(3) 1.09(6)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO (J=5-4) FWHM linewidth at NE-cloud",
+   "value": "1.09",
+   "uncertainty": "0.06",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table C.1",
+     "quote": "NE-cloud 25.5(12) 3.00(14) 3.99(3) 1.09(6)"
+    }
+   ]
+  },
+  {
+   "quantity": "SO excitation temperature at Continuum peak (LTE)",
+   "value": "38.7",
+   "uncertainty": "1.0",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Continuum peak 38.7(10) 16.96(11) 16.2(6) 12.2(6) 2.36(11) 0.23(1)"
+    }
+   ]
+  },
+  {
+   "quantity": "SO excitation temperature at SiO-peak (LTE)",
+   "value": "35.3",
+   "uncertainty": "0.8",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-peak 35.3(8) 2.98(16) 35.2(6) 5.8(3) 0.88(6) 1.04(4)"
+    }
+   ]
+  },
+  {
+   "quantity": "SO excitation temperature at SiO-N (LTE)",
+   "value": "26.7",
+   "uncertainty": "0.2",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-N 26.7(2) 0.86(3) 6.1(2) 2.9(1) 0.50(3) 0.35(2)"
+    }
+   ]
+  },
+  {
+   "quantity": "SO excitation temperature at NE-cloud (LTE)",
+   "value": "11.3",
+   "uncertainty": "0.3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NE-cloud 11.3(3) 0.70(48) 12.8(8) <0.08 >14.2 >26"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO column density at SiO-peak (LTE)",
+   "value": "35.2e12",
+   "uncertainty": "0.6e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-peak 35.3(8) 2.98(16) 35.2(6) 5.8(3) 0.88(6) 1.04(4)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO column density at Continuum peak (LTE)",
+   "value": "16.2e12",
+   "uncertainty": "0.6e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Continuum peak 38.7(10) 16.96(11) 16.2(6) 12.2(6) 2.36(11) 0.23(1)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO column density at SiO-N (LTE)",
+   "value": "6.1e12",
+   "uncertainty": "0.2e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-N 26.7(2) 0.86(3) 6.1(2) 2.9(1) 0.50(3) 0.35(2)"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO column density at NE-cloud (LTE)",
+   "value": "12.8e12",
+   "uncertainty": "0.8e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NE-cloud 11.3(3) 0.70(48) 12.8(8) <0.08 >14.2 >26"
+    }
+   ]
+  },
+  {
+   "quantity": "N[SiO]/N[H2] abundance at SiO-peak",
+   "value": "1.04e-9",
+   "uncertainty": "0.04e-9",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-peak 35.3(8) 2.98(16) 35.2(6) 5.8(3) 0.88(6) 1.04(4)"
+    }
+   ]
+  },
+  {
+   "quantity": "N[SiO]/N[H2] abundance at Continuum peak",
+   "value": "0.23e-9",
+   "uncertainty": "0.01e-9",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Continuum peak 38.7(10) 16.96(11) 16.2(6) 12.2(6) 2.36(11) 0.23(1)"
+    }
+   ]
+  },
+  {
+   "quantity": "N[SiO]/N[H2] abundance at SiO-N",
+   "value": "0.35e-9",
+   "uncertainty": "0.02e-9",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-N 26.7(2) 0.86(3) 6.1(2) 2.9(1) 0.50(3) 0.35(2)"
+    }
+   ]
+  },
+  {
+   "quantity": "N[SiO]/N[H2] abundance lower limit at NE-cloud",
+   "value": ">26e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NE-cloud 11.3(3) 0.70(48) 12.8(8) <0.08 >14.2 >26"
+    }
+   ]
+  },
+  {
+   "quantity": "N[SO]/N[H2] abundance at Continuum peak",
+   "value": "2.36e-8",
+   "uncertainty": "0.11e-8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Continuum peak 38.7(10) 16.96(11) 16.2(6) 12.2(6) 2.36(11) 0.23(1)"
+    }
+   ]
+  },
+  {
+   "quantity": "N[SO]/N[H2] abundance at SiO-peak",
+   "value": "0.88e-8",
+   "uncertainty": "0.06e-8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO-peak 35.3(8) 2.98(16) 35.2(6) 5.8(3) 0.88(6) 1.04(4)"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow precession period",
+   "value": "520",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1.5. (e) Precessing outflow",
+     "quote": "Using the observed quantities of ∆x=40 au (∆α = 0.2′′) and ∆vrot = ∆VLSR = −2.3 km s−1, the precession period can be calculated to be 520 yr (Eq. (B.9))."
+    }
+   ]
+  },
+  {
+   "quantity": "Binary orbital period",
+   "value": "400",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1.5. (e) Precessing outflow",
+     "quote": "Assuming the binary separation of 34 au and the total mass of 0.2 M⊙, the orbital period of the binary system is calculated to be 400 yr (Eq. (B.10))."
+    }
+   ]
+  },
+  {
+   "quantity": "Shock dissipation timescale at NE-cloud",
+   "value": "3000",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Possible origins of NE-cloud",
+     "quote": "The timescale for shock dissipation is roughly estimated to be 3000 yr (Eq. (B.12)) if we assume the size and velocity of the shocked region to be 200 au (1′′) and 10 km s−1, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version used for calibration and imaging",
+  "Self-calibration solution intervals, number of iterations, and whether phase-only or amplitude+phase self-calibration was applied",
+  "tclean deconvolver, cell size, image size, stopping threshold, and masking strategy",
+  "Exact frequency ranges of line-free channels used for continuum subtraction",
+  "Specific LVG radiative transfer code or implementation used for non-LTE analysis"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA and pipeline versions",
+  "Self-calibration parameters (solution intervals, S/N thresholds, iteration count)",
+  "tclean imaging parameters (cell size, image dimensions, stopping criteria, masking)",
+  "Exact frequency/channel ranges used for continuum subtraction",
+  "Whether beam matching (imsmooth) was applied between Setup 1 and Setup 2 cubes before extracting spectra",
+  "Specific LVG radiative transfer code used in Appendix D"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Raw data are public via ALMA archive (2018.1.01205.L) and FAUST pipeline documentation is linked; extraction boxes (0.5'' x 0.5''), exact coordinates (Table 2), spectroscopic constants (Table 1), Gaussian fit parameters (Tables C.1-C.3), and analytical formulas (Appendix B) are all explicitly tabulated. Deduction is for unstated tclean/self-calibration specifics and unstated LVG software.",
+ "rediscovery_reason": "Public ALMA Large Program data, explicit target coordinates and aperture sizes for all 8 regions, straightforward Gaussian fitting and LTE/LVG column density recipes, and complete numeric answer keys in Tables 3, C.1-C.3, and D.1.",
+ "source_card": "cards/2025A%26A...695A.278H/sonnet/card.md"
+}

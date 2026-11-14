@@ -1,0 +1,1734 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023A&A...674A..76P",
+  "title": "ALMA-IMF. VI. Investigating the origin of stellar masses: Core mass function evolution in the W43-MM2&amp;MM3 mini-starburst",
+  "year": 2023,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Pouteau, Y.",
+  "n_authors": 38,
+  "arxiv_id": "2212.09307",
+  "doi": "10.1051/0004-6361/202244776",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.01355.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "The ALMA-IMF Large Program aims to investigate the variations in the core distributions (CMF and mass segregation) with cloud characteristics"
+   },
+   {
+    "loc": "Observations and core catalog",
+    "quote": "The W43-MM2&MM3 mini-starburst ridge is among the targets of the ALMA-IMF Large Program (cite: motte2022), whose observations were taken between December 2017 and December 2018."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "W43-MM2&MM3",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "5.5 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The ALMA-IMF Large Program imaged them with $\\sim$0.5$\\ensuremath{''}$ resolution (cite: motte2022; ginsburg2022), which corresponds to $\\sim$2500 au at the $5.5$ kpc distance of W43 (cite: zhang2014)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: zhang2014)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The ALMA-IMF Large Program imaged them with $\\sim$0.5$\\ensuremath{''}$ resolution (cite: motte2022; ginsburg2022), which corresponds to $\\sim$2500 au at the $5.5$ kpc distance of W43 (cite: zhang2014)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Investigate the variations of the core mass function (CMF) in the W43-MM2&MM3 mini-starburst ridge and establish the link between the CMF shape and local environmental conditions (cloud density structure, evolutionary state, and core mass segregation).",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Among the most central open questions regarding the initial mass function (IMF) of stars is the impact of environment on the shape of the core mass function (CMF) and thus potentially on the IMF."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "The present study aims to investigate the CMF variations in W43-MM2&MM3 and establish the link between the CMF shape and local conditions."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.01355.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the ALMA data ADS/JAO.ALMA#2017.1.01355.L."
+      },
+      {
+       "loc": "Footnote 1",
+       "quote": "ALMA project #2017.1.01355.L; see <http://www.almaimf.com> (PIs: Motte, Ginsburg, Louvet, Sanhueza)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm) and Band 3 (3 mm)",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "The present paper uses the 12 m array continuum images in the ALMA band 6 (1.3 mm, central frequency $\\nu_{\\rm c}\\simeq 228.4$ GHz) and band 3 (3 mm, $\\nu_{\\rm c}\\simeq99.66$ GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "1.3 mm (central frequency 228.4 GHz; 228.9 GHz for mass/column density) and 3 mm (central frequency 99.66 GHz)",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "The present paper uses the 12 m array continuum images in the ALMA band 6 (1.3 mm, central frequency $\\nu_{\\rm c}\\simeq 228.4$ GHz) and band 3 (3 mm, $\\nu_{\\rm c}\\simeq99.66$ GHz)"
+     },
+     {
+      "loc": "Subregion column density and mass estimates",
+      "quote": "The frequency $\\nu_{\\rm 1.3mm} = 228.9$ GHz is taken from Paper II (cite: ginsburg2022) assuming a spectral index of $3.5;$"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "The present paper uses the 12 m array continuum images in the ALMA band 6 (1.3 mm, central frequency $\\nu_{\\rm c}\\simeq 228.4$ GHz) and band 3 (3 mm, $\\nu_{\\rm c}\\simeq99.66$ GHz)"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.46'' (~2500 au or 0.013 pc)",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "Images at 3 mm were then smoothed to the 1.3 mm synthesized beam of $\\Theta_{\\rm beam} \\simeq 0.46\\ensuremath{''}$ of both 1.3 mm fields, corresponding to $\\sim$2500 au (or 0.013 pc) at the 5.5 kpc distance of W43."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~5.6'' (~0.15 pc) at 1.3 mm and ~8.1'' (~0.2 pc) at 3 mm",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "According to Paper II, the maximum recoverable scales are $\\sim$5.6 $\\ensuremath{''}$ at 1.3 mm and $\\sim$8.1 $\\ensuremath{''}$ at 3 mm (cite: ginsburg2022), corresponding to $\\sim$0.15 pc and $\\sim$0.2 pc, respectively."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "~80 uJy beam^-1 at 1.3 mm (~0.25 M_sun at 5 sigma) and ~21 uJy beam^-1 at 3 mm (bsens denoised)",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "The resulting images are qualified as `bsens``denoised`, with a continuum sensitivity of $\\sim$80 $\\mu$Jy$\\,$beam$^{-1}$ and $\\sim$21 $\\mu$Jy$\\,$beam$^{-1}$ at 1.3 mm and 3 mm, respectively."
+     },
+     {
+      "loc": "Observations and core catalog",
+      "quote": "Paper III identified cores by extracting compact emission peaks from their surrounding background in the ALMA 12 m array continuum images at 1.3 mm, with a $5\\sigma$ sensitivity per beam unit of $\\sim$0.25 $\\ensuremath{M_{\\odot}}$ (cite: pouteau2022)."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "December 2017 to December 2018",
+    "evidence": [
+     {
+      "loc": "Observations and core catalog",
+      "quote": "The W43-MM2&MM3 mini-starburst ridge is among the targets of the ALMA-IMF Large Program (cite: motte2022), whose observations were taken between December 2017 and December 2018."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA-IMF Large Program (PIs: Motte, Ginsburg, Louvet, Sanhueza)",
+    "evidence": [
+     {
+      "loc": "Footnote 1",
+      "quote": "ALMA project #2017.1.01355.L; see <http://www.almaimf.com> (PIs: Motte, Ginsburg, Louvet, Sanhueza)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel (HOBYS)",
+     "provided": {
+      "value": "25'' resolution column density image of W43-Main used to determine background column density offsets and compare eta-PDFs",
+      "evidence": [
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "we added a $N_{\\rm H_2}^{\\rm bckg}\\sim 0.7\\times10^{23}~\\rm cm^{-2}$ level measured at the periphery of the cloud ridge on the Herschel column density image, with $25\\ensuremath{''}$ resolution, by (cite: nguyen2013)."
+       },
+       {
+        "loc": "Varying column density eta-PDFs",
+        "quote": "The third column density image, provided by the HOBYS consortium, is computed from Herschel images of the W43-Main cloud (cite: nguyen2013)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "1.3 mm and 3 mm continuum images, dust temperature map, and catalog of 205 cores with masses and completeness simulations",
+      "evidence": [
+       {
+        "loc": "Observations and core catalog",
+        "quote": "The present paper uses the 12 m array continuum images in the ALMA band 6 (1.3 mm, central frequency $\\nu_{\\rm c}\\simeq 228.4$ GHz) and band 3 (3 mm, $\\nu_{\\rm c}\\simeq99.66$ GHz) and the core catalog all reported in Paper III (cite: pouteau2022)."
+       },
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "The dust temperature image is taken from Paper III (cite: pouteau2022), with values ranging from 20 K to 65 K (see 12)."
+       }
+      ]
+     },
+     "citation": "Paper III (cite: pouteau2022)"
+    },
+    {
+     "what": {
+      "value": "Protostellar versus pre-stellar classification of the W43-MM2&MM3 cores",
+      "evidence": [
+       {
+        "loc": "Subregion core populations",
+        "quote": "We used the protostellar versus pre-stellar core nature determined by Paper V (cite: nony2023) to compute the fraction of protostellar cores, $f_{\\rm proto}$, in the six W43-MM2&MM3 subregions:"
+       }
+      ]
+     },
+     "citation": "Paper V (cite: nony2023)"
+    },
+    {
+     "what": {
+      "value": "Herschel column density map of W43-Main",
+      "evidence": [
+       {
+        "loc": "Varying column density eta-PDFs",
+        "quote": "The third column density image, provided by the HOBYS consortium, is computed from Herschel images of the W43-Main cloud (cite: nguyen2013)."
+       }
+      ]
+     },
+     "citation": "(cite: nguyen2013); (cite: motte2010)"
+    },
+    {
+     "what": {
+      "value": "eta-PDF tail slopes and fitted column density ranges for ten observed star-forming clouds and three simulated clouds",
+      "evidence": [
+       {
+        "loc": "Comparison with observational studies in the literature",
+        "quote": "We here compare the $\\eta$-PDF tail of the W43-MM2&MM3 subregions that are characterized in Sect. 3.2 with those obtained from the literature for ten observed star-forming clouds and three simulated clouds (cite: schneider2022; jaupartChabrier2020)."
+       }
+      ]
+     },
+     "citation": "(cite: schneider2022; jaupartChabrier2020; ladjelate2020; stutzKainulainen2015; schneider2015; riveraIngraham2015; russeil2013; schneider2016; carlhoff2013; kainulainen2013; leeHennebelle2018a)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Three numerical simulation models (Model #24, Model #C1t03, Model M=3, SFE=20%) used for comparing theoretical volume/column density PDF slopes with observed eta-PDF tails",
+     "evidence": [
+      {
+       "loc": "Comparison with observational studies in the literature",
+       "quote": "We here compare the $\\eta$-PDF tail of the W43-MM2&MM3 subregions that are characterized in Sect. 3.2 with those obtained from the literature for ten observed star-forming clouds and three simulated clouds (cite: schneider2022; jaupartChabrier2020)."
+      },
+      {
+       "loc": "Sect. 4.2.2",
+       "quote": "tail computed from the simulated volume density cube projected into a column density image would have"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA-IMF iterative self-calibration pipeline scripts",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Images of individual ALMA-IMF fields W43-MM2 and W43-MM3 were first cleaned using the iterative self-calibration pipeline scripts developed by the ALMA-IMF consortium and fully described in Paper II (cite: ginsburg2022)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Several iterations of phase self-calibration using custom masks",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "This pipeline performs several iterations of phase self-calibration using custom masks in order to better define the self-calibration model and clean more and more deeply using the TCLEAN task and refined parameters after each pass."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "TCLEAN",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Paper III (cite: pouteau2022) used the multi-scale option of the TCLEAN task, with parameters of 0, 3, 9, 27 pixels (up to 81 at 3 mm), to minimize interferometric artifacts associated with missing short spacings."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multi-scale",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Paper III (cite: pouteau2022) used the multi-scale option of the TCLEAN task, with parameters of 0, 3, 9, 27 pixels (up to 81 at 3 mm), to minimize interferometric artifacts associated with missing short spacings."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.1''",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "where $d$ is the $5.5$ kpc distance of W43 (cite: zhang2014) and $\\Omega_{\\rm pixel}=(0.1\\ensuremath{''})^2$ is the pixel area of our images."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "custom masks",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "This pipeline performs several iterations of phase self-calibration using custom masks in order to better define the self-calibration model and clean more and more deeply using the TCLEAN task and refined parameters after each pass."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "0, 3, 9, 27 pixels (up to 81 at 3 mm)",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Paper III (cite: pouteau2022) used the multi-scale option of the TCLEAN task, with parameters of 0, 3, 9, 27 pixels (up to 81 at 3 mm), to minimize interferometric artifacts associated with missing short spacings."
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "bsens built using all frequency channels; cleanest built by selecting channels without line emission",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "The getsf algorithm (cite: men2021getsf) was applied on the `denoised`, `bsens` and `cleanest` images at 1.3 mm and 3 mm that were built by using all frequency channels and selecting those without line emission, respectively (cite: pouteau2022)."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "mosaics combined using primary-beam shape weights",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Because W43-MM2 and W43-MM3 share a common area in both bands, the mosaics were combined using primary-beam shape weights in Paper III (cite: pouteau2022)."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "3 mm images smoothed to the 1.3 mm synthesized beam of ~0.46''; MnGSeg denoising applied to reduce noise by ~30%",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Images at 3 mm were then smoothed to the 1.3 mm synthesized beam of $\\Theta_{\\rm beam} \\simeq 0.46\\ensuremath{''}$ of both 1.3 mm fields, corresponding to $\\sim$2500 au (or 0.013 pc) at the 5.5 kpc distance of W43."
+      },
+      {
+       "loc": "Observations and core catalog",
+       "quote": "The multi-scale non-Gaussian segmentation technique (cite: robitaille2019) was also applied to reduce the noise level of the best-sensitivity (`bsens`) 1.3 mm and 3 mm images by $\\sim$30% (cite: pouteau2022)."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.51'' x 0.40'' (~0.46'')",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Images at 3 mm were then smoothed to the 1.3 mm synthesized beam of $\\Theta_{\\rm beam} \\simeq 0.46\\ensuremath{''}$ of both 1.3 mm fields"
+      },
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "where $\\Omega_{\\rm beam}=\\frac{\\pi \\; 0.51\\ensuremath{''} \\times 0.40\\ensuremath{''}}{4\\,\\ln{2}}$ is the beam solid angle"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~80 uJy beam^-1 at 1.3 mm and ~21 uJy beam^-1 at 3 mm (bsens denoised)",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "The resulting images are qualified as `bsens``denoised`, with a continuum sensitivity of $\\sim$80 $\\mu$Jy$\\,$beam$^{-1}$ and $\\sim$21 $\\mu$Jy$\\,$beam$^{-1}$ at 1.3 mm and 3 mm, respectively."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Iterative self-calibration pipeline scripts and data reduction",
+      "evidence": [
+       {
+        "loc": "Observations and core catalog",
+        "quote": "Images of individual ALMA-IMF fields W43-MM2 and W43-MM3 were first cleaned using the iterative self-calibration pipeline scripts developed by the ALMA-IMF consortium and fully described in Paper II (cite: ginsburg2022)."
+       }
+      ]
+     },
+     "from_reference": "Paper II (cite: ginsburg2022)"
+    },
+    {
+     "what": {
+      "value": "Multi-scale TCLEAN imaging, mosaic combination, MnGSeg denoising, getsf core catalog, dust temperature map, and core completeness simulations",
+      "evidence": [
+       {
+        "loc": "Observations and core catalog",
+        "quote": "The present paper uses the 12 m array continuum images in the ALMA band 6 (1.3 mm, central frequency $\\nu_{\\rm c}\\simeq 228.4$ GHz) and band 3 (3 mm, $\\nu_{\\rm c}\\simeq99.66$ GHz) and the core catalog all reported in Paper III (cite: pouteau2022)."
+       },
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "The dust temperature image is taken from Paper III (cite: pouteau2022), with values ranging from 20 K to 65 K (see 12)."
+       },
+       {
+        "loc": "Subregion core populations",
+        "quote": "The completeness levels of each subregion catalog were estimated from the core extraction simulations of Paper III (cite: pouteau2022)."
+       }
+      ]
+     },
+     "from_reference": "Paper III (cite: pouteau2022)"
+    },
+    {
+     "what": {
+      "value": "Protostellar versus pre-stellar core classification",
+      "evidence": [
+       {
+        "loc": "Subregion core populations",
+        "quote": "We used the protostellar versus pre-stellar core nature determined by Paper V (cite: nony2023) to compute the fraction of protostellar cores, $f_{\\rm proto}$, in the six W43-MM2&MM3 subregions:"
+       }
+      ]
+     },
+     "from_reference": "Paper V (cite: nony2023)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact spatial polygon coordinates/vertices for the boundaries of the six subregions (which were defined visually following minimum inflection points on MnGSeg wavelet-filtered maps)",
+    "CASA version used for the Paper II/III imaging"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Decompose continuum images and define six subregions",
+    "method": {
+     "value": "Complex wavelet multi-scale decomposition of the 1.3 mm and 3 mm bsens continuum images using MnGSeg; subregion boundaries visually defined by following minimum inflection points (minima or saddle points) on the wavelet-filtered scale of 0.11-0.19 pc (4''-7'').",
+     "evidence": [
+      {
+       "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+       "quote": "To define the boundaries of these subregions, we used the MnGSeg technique developed by (cite: robitaille2019)."
+      },
+      {
+       "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+       "quote": "Five subregions of $\\sim$0.5–1 pc sizes were identified in both Figs. 2a–b; their boundaries were visually defined by following the minimum inflection points, corresponding to minima or saddle points."
+      }
+     ]
+    },
+    "software": [
+     "MnGSeg"
+    ],
+    "key_parameters": [
+     {
+      "value": "Wavelet-filtered spatial scale of 0.11-0.19 pc (4''-7'' at 5.5 kpc)",
+      "evidence": [
+       {
+        "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+        "quote": "Figure 2 shows, for the W43-MM2&MM3 ridge, the wavelet filtered spatial scale tracing cloud structures of 0.11–0.19 pc ($4\\ensuremath{''}-7\\ensuremath{''}$ at 5.5 kpc)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Distance d = 5.5 kpc",
+      "evidence": [
+       {
+        "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+        "quote": "Figure 2 shows, for the W43-MM2&MM3 ridge, the wavelet filtered spatial scale tracing cloud structures of 0.11–0.19 pc ($4\\ensuremath{''}-7\\ensuremath{''}$ at 5.5 kpc)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Subregion uncertainties estimated by slightly varying the integration areas",
+     "evidence": [
+      {
+       "loc": "Sect. 2.2",
+       "quote": "Uncertainties are estimated by slightly varying the integration areas of Figs."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compute subregion column densities, masses, and volume densities",
+    "method": {
+     "value": "Compute pixel-by-pixel H2 column density and subregion masses from 1.3 mm peak fluxes (bsens denoised image) and the Paper III dust temperature map using the Planck function, adding a Herschel-derived background column density offset; derive volume densities assuming spherical geometry.",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "Because the thermal dust emission of clouds is mostly optically thin at 1.3 mm, we computed the column densities and masses of the W43-MM2&MM3 subregions, under the assumption of optically thin thermal dust emission."
+      },
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "Subregion masses, $M^{\\rm subregion}$, are computed from the 1.3 mm peak fluxes and dust temperatures measured for each pixel $i$ within the subregion area $A$"
+      },
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "Volume densities of subregions are computed assuming a spherical geometry and a line-of-sight radius equal to the equivalent plane-of-the-sky radius of its defined area, $A$:"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "nu_1.3mm = 228.9 GHz, Omega_beam = pi * 0.51'' * 0.40'' / (4 ln 2), Omega_pixel = (0.1'')^2",
+      "evidence": [
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "where $\\Omega_{\\rm beam}=\\frac{\\pi \\; 0.51\\ensuremath{''} \\times 0.40\\ensuremath{''}}{4\\,\\ln{2}}$ is the beam solid angle"
+       },
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "The frequency $\\nu_{\\rm 1.3mm} = 228.9$ GHz is taken from Paper II (cite: ginsburg2022)"
+       },
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "where $d$ is the $5.5$ kpc distance of W43 (cite: zhang2014) and $\\Omega_{\\rm pixel}=(0.1\\ensuremath{''})^2$ is the pixel area of our images."
+       }
+      ]
+     },
+     {
+      "value": "Background offsets N_H2^bckg: (0.55 +/- 0.10) x 10^23 cm^-2 for Outskirts and MM51, (0.70 +/- 0.15) x 10^23 cm^-2 for MM10 and MM12, (1.0 +/- 0.2) x 10^23 cm^-2 for MM2 and MM3",
+      "evidence": [
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "We therefore assumed a different background column density for each subregion: $N_{\\rm H_2}^{\\rm bckg} = (0.55\\pm 0.10) \\times10^{23}~\\rm cm^{-2}$ for Outskirts and MM51, $N_{\\rm H_2}^{\\rm bckg} = (0.70\\pm 0.15) \\times10^{23}~\\rm cm^{-2}$ for MM10 and MM12, and $N_{\\rm H_2}^{\\rm bckg} = (1.0\\pm 0.2) \\times10^{23}~\\rm cm^{-2}$ for MM2 and MM3."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin thermal dust emission at 1.3 mm; kappa_1.3mm = 0.01 cm^2 g^-1 (beta = 1.5); mu = 2.8 (10% helium abundance); d = 5.5 kpc; T_dust = 20 to 65 K from Paper III; spherical geometry for volume density",
+      "evidence": [
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "where $\\Omega_{\\rm beam}=\\frac{\\pi \\; 0.51\\ensuremath{''} \\times 0.40\\ensuremath{''}}{4\\,\\ln{2}}$ is the beam solid angle, $\\mu = 2.8$ is the mean molecular weight per hydrogen molecule (assuming an helium abundance of 10%)"
+       },
+       {
+        "loc": "Subregion column density and mass estimates",
+        "quote": "we adopted a dust opacity per unit (gas $+$ dust) mass at 1.3 mm and adapted for cold cloud structures: $\\kappa_{\\rm 1.3mm}=0.01\\,\\rm cm^2\\,g^{-1}$ (cite: OssenkopfHenning1994)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistent with PPMAP column density map of Dell'Ova et al. (in prep.) and Herschel eta-PDF",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "It shows that a value of $N_{\\rm H_2}^{\\rm bckg}\\sim 0.7\\times10^{23}~\\rm cm^{-2}$ indeed allows these $\\eta$-PDF functions to be consistent with each other."
+      },
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "This column density image is consistent with the one of Dell’Ova et al. (in prep.), which was produced by the point process mapping of the temperature (PPMAP) procedure (cite: marsh2015) and achieves a $2.5\\ensuremath{''}$ resolution."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Characterize subregion core populations, protostellar fractions, and CMF slopes",
+    "method": {
+     "value": "Assign the 205 cores from Paper III to the six subregions; compute protostellar fractions using Paper V classifications; perform two-sample KS test on MM3 core masses; fit cumulative CMFs with single power laws using a 5000-iteration bootstrap procedure coupled with the Clauset/Alstott maximum likelihood estimation (MLE) method.",
+     "evidence": [
+      {
+       "loc": "Subregion core populations",
+       "quote": "We separated the 205 cores of W43-MM2&MM3 into six core populations associated with the subregions defined in Sect. 2.2."
+      },
+      {
+       "loc": "Subregion core populations",
+       "quote": "We ran a two-sample Kolmogorov-Smirnov (KS) test to assess the likelihood that two distributions are drawn from the same parent sample (null hypothesis)."
+      },
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "In detail, for each subregion, we computed the bootstrapping probability density function of 5000 slopes of CMF high-mass ends, which are fitted by power laws using the (cite: alstott2014) method."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "5000 bootstrap iterations; fit range from 90% completeness limit (+/- 0.2 M_sun) to maximum core mass in each subregion",
+      "evidence": [
+       {
+        "loc": "Varying subregion CMFs",
+        "quote": "In detail, for each subregion, we computed the bootstrapping probability density function of 5000 slopes of CMF high-mass ends, which are fitted by power laws using the (cite: alstott2014) method."
+       },
+       {
+        "loc": "Sect. 3.1.2",
+        "quote": "we computed the bootstrapping probability density function of 5000 slopes of CMF high-mass ends, which are fitted by power laws using the"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Single power law cumulative CMF N(> log M) proportional to M^alpha above the 90% completeness limit; core masses vary in a 2-sigma Gaussian range [M_min - M_max]",
+      "evidence": [
+       {
+        "loc": "Varying subregion CMFs",
+        "quote": "The CMFs of all six subregions are presented in their complementary cumulative distribution form (cumulative form, for short) and fitted by single power laws of the form $N(> \\log M) \\propto M^\\alpha$, from their 90% completeness limits to the mass of their most massive core"
+       },
+       {
+        "loc": "Varying subregion CMFs",
+        "quote": "To account for uncertainties associated with the core mass estimates, the mass of each randomly drawn core is allowed to vary in a $2\\sigma$ Gaussian range of $[M_{\\rm min}-M_{\\rm max}]$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Maximum likelihood estimation (MLE) method based on the KS metric (Clauset et al. 2009; Alstott et al. 2014) within a 5000-draw bootstrap; bootstrap histograms fitted by exponentially modified Gaussians (EMGs) with negative skewness; 68.2% confidence intervals used for -sigma and +sigma.",
+     "evidence": [
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "To do so, we used the maximum likelihood estimation (MLE) method of (cite: clauset2009) and (cite: alstott2014), which is based on the KS metric and dedicated to probability laws fitted by power laws."
+      },
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "To account for the asymmetry of these bootstrapping functions, their histograms are fitted by exponentially modified Gaussians (EMGs) with a negative skewness."
+      },
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "For each subregion, uncertainties on the power-law index, $-\\sigma$ and $+\\sigma$, are estimated as the ranges of indices that are below and above, respectively, the peak of the bootstrapping probability density function and contain 68.2% of the fitted indices."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared bootstrap CMF power-law index for total ridge (-0.93 +0.07/-0.10) with direct Alstott et al. (2014) method (-0.96 +/- 0.11) and linear regression (-0.95 +/- 0.04); tested constant dust temperature impact (changes index by at most 18%).",
+     "evidence": [
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "The power-law index we measured with our bootstrapping procedure, $\\alpha=-0.93_{-0.10}^{+0.07}$, is consistent with those fitted by the method of (cite: alstott2014) and by linear regression, $\\alpha_{\\rm Alstott}=-0.96\\pm0.11$ and $\\alpha_{\\rm LinReg}=-0.95\\pm0.04$, respectively."
+      },
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "taking a constant dust temperature for all cores, including the most massive ones associated with hot cores, would change the power-law indices fitted to the subregion CMF by at most $18\\%$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Construct and fit column density probability distribution functions (eta-PDFs)",
+    "method": {
+     "value": "Construct histograms of the natural logarithm of normalized column density (eta-PDFs) for each subregion using the ALMA column density image, the getsf core-subtracted background image, and the Herschel W43-Main image; define departure/end points and fit two consecutive power-law tails (s_2 and s_3).",
+     "evidence": [
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "For each subregion, we analyzed the PDF of the ALMA image and used the PDF of the background image of its cores to define the column density range where cores dominate and estimate the variation in the power-law exponents of the PDF tail with and without cores."
+      },
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "Observations generally analyze the PDF of the natural logarithm of the normalized column density, $\\eta \\equiv \\ln{(N_{\\rm H_2}/ \\overline{N_{\\rm H_2}})}$ with $\\overline{N_{\\rm H_2}}$ the mean column density, and fit the PDF with power laws of exponent $s$:"
+      },
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "At column densities higher than their peak, the ALMA $\\eta$-PDFs of most W43-MM2&MM3 subregions exhibit a tail with a continuous flattening that we describe by two consecutive tails and fit by power laws (see 6)."
+      }
+     ]
+    },
+    "software": [
+     "getsf"
+    ],
+    "key_parameters": [
+     {
+      "value": "First departure point: first bin 50% higher than symmetrized ascending distribution (or 100 x 10^21 cm^-2); second departure point: first inflection point (maximum column density of getsf background image for MM51, MM10, MM12) or boundary between core-dominated and background-dominated column densities (MM2, MM3); end point: maximum column density in subregion",
+      "evidence": [
+       {
+        "loc": "Varying column density eta-PDFs",
+        "quote": "We first symmetrized the ascending distribution of each ALMA $\\eta$-PDF, badly fitted by a lognormal, and define the first departure point of the $\\eta$-PDF tail as the first bin higher by 50% with respect to the symmetrized function (and $100\\times 10^{21}$ cm$^{-2}$ otherwise)."
+       },
+       {
+        "loc": "Varying column density eta-PDFs",
+        "quote": "Then, the second departure point is on the one hand considered the first inflection point observed on the $\\eta$-PDF tail of the subregions MM51, MM10, and MM12 (see Figs. 6b–d)."
+       },
+       {
+        "loc": "Varying column density eta-PDFs",
+        "quote": "We therefore took as second departure point the boundary between ranges of column densities dominated by their cores and by their background image (see Figs. 6e–f)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Power-law relation p_eta proportional to (N_H2)^s in the tail regimes",
+      "evidence": [
+       {
+        "loc": "Varying column density eta-PDFs",
+        "quote": "p_\\eta = N_{\\rm H_2}\\times p_{N_{\\rm H_2}} \\propto (N_{\\rm H_2})^s ."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Power-law fits to the second (s_2) and third (s_3) tails; Herschel eta-PDF fitted by the sum of a lognormal function (< 1.5 x 10^23 cm^-2) and two consecutive power-law tails following Schneider et al. (2022).",
+     "evidence": [
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "We used the procedure of (cite: schneider2022) and fit the Herschel $\\eta$-PDF by the sum of a lognormal function at column densities lower than $1.5\\times10^{23}~\\rm cm^{-2}$ and two consecutive tails (see 13b)."
+      },
+      {
+       "loc": "Sect. 3.2",
+       "quote": "Finally, the range between the second departure point and, as an end point, the maximum column density detected in subregions"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Uncertainties estimated by varying bin numbers, fit range limits, and background column density offsets; tested constant dust temperature assumption (changes s_2 and s_3 by <= 10%).",
+     "evidence": [
+      {
+       "loc": "Table 3 notes",
+       "quote": "Uncertainties are estimated by varying the number of bins, the limits of the fitted ranges, and the column density offset of col. 4."
+      },
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "The assumption on the dust temperature used to compute the column density image has a negligible effect on the $\\eta$-PDFs since, with a constant temperature on all pixels, the power-law exponents of their $s_2$ and $s_3$ tails are not changed by more than $10\\%$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Quantify core mass segregation in each subregion",
+    "method": {
+     "value": "Compute two mass segregation indicators in tandem: (1) ratio of local core surface density of the five most massive cores (using 6 closest neighbors) to the subregion average, (Sigma_6cores)_massive / mean(Sigma_6cores); and (2) mass segregation ratio Lambda_MSR using the minimum spanning tree (MST) method.",
+     "evidence": [
+      {
+       "loc": "Varying core mass segregation",
+       "quote": "The first one measures, for each core using its six closest neighbors, the local core surface density of a subregion, $\\Sigma_{\\rm 6\\,cores}$ (cite: maschbergerClarke2011)."
+      },
+      {
+       "loc": "Sect. 3.3",
+       "quote": "The first one measures, for each core using its six closest neighbors, the local core surface density of a subregion"
+      },
+      {
+       "loc": "Varying core mass segregation",
+       "quote": "The second indicator we chose, the mass segregation ratio of cores, $\\Lambda_{\\rm MSR}$ (cite: allison2009b), has been used for cores in several high-mass star-forming studies"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "6 closest neighbors for Sigma_6cores; 5 most massive cores for (Sigma_6cores)_massive; N_MST >= 3; 500 sets of N_MST uniformly randomly distributed cores for Lambda_MSR; thresholds: (Sigma_6cores)_massive / mean(Sigma_6cores) > 2 for significant segregation, and 1.5 < Lambda_MSR < 2 (moderate), 2 <= Lambda_MSR < 3 (high), Lambda_MSR >= 3 (very high)",
+      "evidence": [
+       {
+        "loc": "Varying core mass segregation",
+        "quote": "To estimate $\\overline{l_{\\rm random}}$ and the associated $\\sigma_{\\rm random}$ of sets of random cores, we used a total of 500 sets of $N_{\\rm MST}$ cores uniformly randomly distributed in space."
+       },
+       {
+        "loc": "Varying core mass segregation",
+        "quote": "As classically done, we started computing for each subregion, the $\\Lambda_{\\rm MSR}$ at $N_{\\rm MST}=3$ to avoid divergence on the first MST measurements."
+       },
+       {
+        "loc": "Varying core mass segregation",
+        "quote": "In 1, we qualified the evidence of core mass segregation using the $\\Lambda_{\\rm MSR}$ values: moderate for $1.5 <\\Lambda_{\\rm MSR}< 2$, high for $2 \\le \\Lambda_{\\rm MSR} < 3$, and very high for $\\Lambda_{\\rm MSR} \\ge 3$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual verification in Fig. 1 that the five most massive cores in MM2, MM3, and MM10 are not isolated cores surrounded by low-mass cores at five separate locations.",
+     "evidence": [
+      {
+       "loc": "Varying core mass segregation",
+       "quote": "It argues in favor of a large clustering of massive cores in these subregions but could also correspond to the peculiar situation where these five massive cores are surrounded by low-mass cores at five different locations. We verified in 1 that this is not the case of any of the MM2, MM3, and MM10 subregions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Classify evolutionary stages and investigate correlations with CMF slope",
+    "method": {
+     "value": "Classify subregions into evolutionary stages (Quiescent, Pre-burst, Main burst, Post-burst) based on protostellar core fraction, core surface number density, and UCHII region presence; compare CMF high-mass end index alpha against subregion properties, core mass segregation, second eta-PDF tail slope s_2, and protostellar fraction.",
+     "evidence": [
+      {
+       "loc": "Sect. 4.3.1",
+       "quote": "we quantify the development of the star formation process through three criteria. These are the protostellar core fraction of the subregion, its surface density of cores, both quantified in Sect."
+      },
+      {
+       "loc": "Sect. 4.2.1",
+       "quote": "displays, for each W43-MM2&MM3 subregion, the relation between the power-law index of the CMF high-mass end and the slope coefficient of the second"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Average core surface density ~35 cores/pc^2 and average protostellar fraction ~25% used as baseline thresholds",
+      "evidence": [
+       {
+        "loc": "Sect. 4.3.1",
+        "quote": "average values measured in the W43-MM2&MM3 subregions ($\\sim$35 cores/pc$^2$ and $\\sim$25%; see Tables"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "TCLEAN",
+    "version": "not stated",
+    "used_for": {
+     "value": "Multi-scale cleaning of ALMA 1.3 mm and 3 mm continuum images (in Paper II and Paper III)",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Paper III (cite: pouteau2022) used the multi-scale option of the TCLEAN task, with parameters of 0, 3, 9, 27 pixels (up to 81 at 3 mm), to minimize interferometric artifacts associated with missing short spacings."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA-IMF reduction pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Iterative phase self-calibration and cleaning of individual ALMA-IMF fields (in Paper II)",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "Images of individual ALMA-IMF fields W43-MM2 and W43-MM3 were first cleaned using the iterative self-calibration pipeline scripts developed by the ALMA-IMF consortium and fully described in Paper II (cite: ginsburg2022)."
+      },
+      {
+       "loc": "Footnote 3",
+       "quote": "The pipeline is available at <https://github.com/ALMA-IMF/reduction> ."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MnGSeg",
+    "version": "not stated",
+    "used_for": {
+     "value": "Multi-scale wavelet decomposition of 1.3 mm and 3 mm continuum images to define subregion boundaries, and image denoising in Paper III",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "The multi-scale non-Gaussian segmentation technique (cite: robitaille2019) was also applied to reduce the noise level of the best-sensitivity (`bsens`) 1.3 mm and 3 mm images by $\\sim$30% (cite: pouteau2022)."
+      },
+      {
+       "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+       "quote": "To define the boundaries of these subregions, we used the MnGSeg technique developed by (cite: robitaille2019)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "getsf",
+    "version": "not stated",
+    "used_for": {
+     "value": "Core extraction (in Paper III) and providing the core-subtracted background image used for eta-PDF analysis",
+     "evidence": [
+      {
+       "loc": "Observations and core catalog",
+       "quote": "The getsf algorithm (cite: men2021getsf) was applied on the `denoised`, `bsens` and `cleanest` images at 1.3 mm and 3 mm"
+      },
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "and the second one from the background image of its cores as defined by getsf (cite: men2021getsf) and which corresponds to this same image minus the emission of the cores"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PPMAP",
+    "version": "not stated",
+    "used_for": {
+     "value": "Point process mapping of temperature and column density at 2.5'' resolution for comparison (Dell'Ova et al. in prep.)",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "This column density image is consistent with the one of Dell’Ova et al. (in prep.), which was produced by the point process mapping of the temperature (PPMAP) procedure (cite: marsh2015) and achieves a $2.5\\ensuremath{''}$ resolution."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Subregion mass (MM2)",
+    "value": "1300",
+    "uncertainty": "+/-20",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM2 | 0.8$\\pm0.2$ | $20-65$ | $0.4-260.6$ | $1300\\pm20$ | $490\\pm150$ | 59$\\pm11$ | 74$\\pm5$ | $240\\pm11$ | $\\sim$18 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion volume density n_H2 (MM2)",
+    "value": "490",
+    "uncertainty": "+/-150",
+    "units": "10^3 cm^-3",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM2 | 0.8$\\pm0.2$ | $20-65$ | $0.4-260.6$ | $1300\\pm20$ | $490\\pm150$ | 59$\\pm11$ | 74$\\pm5$ | $240\\pm11$ | $\\sim$18 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion mass (MM3)",
+    "value": "1020",
+    "uncertainty": "+/-50",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM3 | 0.8$\\pm0.3$ | $22-35$ | $0.5-80.2$ | $1020\\pm50$ | $375\\pm90$ | 29$\\pm7$ | 36$\\pm6$ | $140\\pm7$ | $\\sim$14 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion volume density n_H2 (MM3)",
+    "value": "375",
+    "uncertainty": "+/-90",
+    "units": "10^3 cm^-3",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM3 | 0.8$\\pm0.3$ | $22-35$ | $0.5-80.2$ | $1020\\pm50$ | $375\\pm90$ | 29$\\pm7$ | 36$\\pm6$ | $140\\pm7$ | $\\sim$14 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion mass (MM10)",
+    "value": "340",
+    "uncertainty": "+/-10",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM10 | 0.9$\\pm0.3$ | $21-40$ | $0.3-30.0$ | $340\\pm10$ | $101\\pm45$ | 41$\\pm6$ | 46$\\pm19$ | $61\\pm4$ | $\\sim$18 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion mass (MM12)",
+    "value": "200",
+    "uncertainty": "+/-10",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM12 | 0.6$\\pm0.2$ | $21-33$ | $0.1-22.0$ | $200\\pm10$ | $188\\pm25$ | 19$\\pm1$ | 32$\\pm14$ | $48\\pm3$ | $\\sim$24 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion mass (MM51)",
+    "value": ">35",
+    "uncertainty": "not stated",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| MM51 | 0.7$\\pm0.3$ | $22-28$ | $0.1-8.7$ | $>$35 | $>$25 | 22$\\pm1$ | 31$\\pm18$ | $27\\pm2$ | $<77$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Subregion mass (Outskirts)",
+    "value": ">120",
+    "uncertainty": "not stated",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Outskirts | $\\sim$7$\\pm2$ | $21-42$ | $0.1-5.5$ | $>$120 | $>$0.07 | $35\\pm20$ | 5$\\pm2$ | $26\\pm2$ | $<22$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Total W43-MM2&MM3 ridge mass",
+    "value": ">3000",
+    "uncertainty": "not stated",
+    "units": "M_odot",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Total | $\\sim$11 | $20-65$ | $0.1-107.3$ | $>$3000 | $>$0.5 | 205 | 19 | $540\\pm25$ | $<$18 |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (Outskirts)",
+    "value": "-1.54",
+    "uncertainty": "+0.32/-0.42",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Outskirts | $0.45-3.4$ | $-1.54_{-0.42}^{+0.32}$ | $55\\pm10$ | 100–550 | $>-5$ | – | – | $7\\%\\pm1$ | Quiescent |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (MM51)",
+    "value": "-1.17",
+    "uncertainty": "+0.18/-0.35",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM51 | $0.6-4.3$ | $-1.17_{-0.35}^{+0.18}$ | $55\\pm10$ | 100–250 | $>-5$ | 250–900 | $-0.8\\pm0.2$ | $25\\%\\pm5$ | Quiescent |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (MM10)",
+    "value": "-1.16",
+    "uncertainty": "+0.16/-0.30",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM10 | $0.65-11.2$ | $-1.16_{-0.30}^{+0.16}$ | $70\\pm15$ | 100–300 | $-2.4\\pm0.2$ | 300–3000 | $-0.9\\pm0.3$ | $21\\%\\pm2$ | Pre-burst? |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (MM12)",
+    "value": "-0.95",
+    "uncertainty": "+0.15/-0.36",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM12 | $0.75-17.8$ | $-0.95_{-0.36}^{+0.15}$ | $70\\pm15$ | 100–500 | $-2.1\\pm0.3$ | 500–2200 | $-0.1\\pm0.2$ | $41\\%\\pm5$ | Main-burst? |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (MM2)",
+    "value": "-0.93",
+    "uncertainty": "+0.11/-0.21",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM2 | $1.1-69.9$ | $-0.93_{-0.21}^{+0.11}$ | $100\\pm20$ | 150–1000 | $-0.6\\pm0.2$ | 1000–26 000 | $-0.2\\pm0.3$ | $37\\%\\pm2$ | Main burst |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (MM3)",
+    "value": "-0.59",
+    "uncertainty": "+0.07/-0.12",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM3 | $1.1-44.6$ | $-0.59_{-0.12}^{+0.07}$ | $100\\pm20$ | 150–1200 | $-0.8\\pm0.2$ | 1200–8000 | $-0.7\\pm0.3$ | $22\\%\\pm3$ | Post-burst |"
+     }
+    ]
+   },
+   {
+    "quantity": "CMF high-mass end power-law index alpha (Total W43-MM2&MM3)",
+    "value": "-0.93",
+    "uncertainty": "+0.07/-0.10",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Total | $0.8-69.9$ | $-0.93_{-0.10}^{+0.07}$ | $70\\pm15$ | 100–1000 | $-0.9\\pm0.3$ | 1000–26 000 | $-0.3\\pm0.2$ | $27\\%\\pm3$ | – |"
+     }
+    ]
+   },
+   {
+    "quantity": "Second eta-PDF tail slope s_2 (MM10)",
+    "value": "-2.4",
+    "uncertainty": "+/-0.2",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM10 | $0.65-11.2$ | $-1.16_{-0.30}^{+0.16}$ | $70\\pm15$ | 100–300 | $-2.4\\pm0.2$ | 300–3000 | $-0.9\\pm0.3$ | $21\\%\\pm2$ | Pre-burst? |"
+     }
+    ]
+   },
+   {
+    "quantity": "Second eta-PDF tail slope s_2 (MM12)",
+    "value": "-2.1",
+    "uncertainty": "+/-0.3",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM12 | $0.75-17.8$ | $-0.95_{-0.36}^{+0.15}$ | $70\\pm15$ | 100–500 | $-2.1\\pm0.3$ | 500–2200 | $-0.1\\pm0.2$ | $41\\%\\pm5$ | Main-burst? |"
+     }
+    ]
+   },
+   {
+    "quantity": "Second eta-PDF tail slope s_2 (MM2)",
+    "value": "-0.6",
+    "uncertainty": "+/-0.2",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM2 | $1.1-69.9$ | $-0.93_{-0.21}^{+0.11}$ | $100\\pm20$ | 150–1000 | $-0.6\\pm0.2$ | 1000–26 000 | $-0.2\\pm0.3$ | $37\\%\\pm2$ | Main burst |"
+     }
+    ]
+   },
+   {
+    "quantity": "Second eta-PDF tail slope s_2 (MM3)",
+    "value": "-0.8",
+    "uncertainty": "+/-0.2",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM3 | $1.1-44.6$ | $-0.59_{-0.12}^{+0.07}$ | $100\\pm20$ | 150–1200 | $-0.8\\pm0.2$ | 1200–8000 | $-0.7\\pm0.3$ | $22\\%\\pm3$ | Post-burst |"
+     }
+    ]
+   },
+   {
+    "quantity": "Second eta-PDF tail slope s_2 (Total W43-MM2&MM3)",
+    "value": "-0.9",
+    "uncertainty": "+/-0.3",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Total | $0.8-69.9$ | $-0.93_{-0.10}^{+0.07}$ | $70\\pm15$ | 100–1000 | $-0.9\\pm0.3$ | 1000–26 000 | $-0.3\\pm0.2$ | $27\\%\\pm3$ | – |"
+     }
+    ]
+   },
+   {
+    "quantity": "Third eta-PDF tail slope s_3 (MM2)",
+    "value": "-0.2",
+    "uncertainty": "+/-0.3",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM2 | $1.1-69.9$ | $-0.93_{-0.21}^{+0.11}$ | $100\\pm20$ | 150–1000 | $-0.6\\pm0.2$ | 1000–26 000 | $-0.2\\pm0.3$ | $37\\%\\pm2$ | Main burst |"
+     }
+    ]
+   },
+   {
+    "quantity": "Third eta-PDF tail slope s_3 (MM3)",
+    "value": "-0.7",
+    "uncertainty": "+/-0.3",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| MM3 | $1.1-44.6$ | $-0.59_{-0.12}^{+0.07}$ | $100\\pm20$ | 150–1200 | $-0.8\\pm0.2$ | 1200–8000 | $-0.7\\pm0.3$ | $22\\%\\pm3$ | Post-burst |"
+     }
+    ]
+   },
+   {
+    "quantity": "Core mass segregation ratio Lambda_MSR (MM2, N_MST = 3 to 6)",
+    "value": "5",
+    "uncertainty": "+/-2",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| MM2 | | $5\\pm2$ | $3\\rightarrow6$ | very high |"
+     }
+    ]
+   },
+   {
+    "quantity": "Core mass segregation ratio Lambda_MSR (MM10, N_MST = 3 to 7)",
+    "value": "2.3",
+    "uncertainty": "+/-0.7",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| MM10 | 3.1 | $2.3\\pm0.7$ | $3\\rightarrow7$ | high |"
+     }
+    ]
+   },
+   {
+    "quantity": "Core mass segregation ratio Lambda_MSR (MM3, N_MST = 3 to 15)",
+    "value": "1.8",
+    "uncertainty": "+/-0.4",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| MM3 | 3.6 | $1.8\\pm0.4$ | $3\\rightarrow15$ | moderate |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The high-mass end of the subregion CMFs varies across W43-MM2&MM3 from close to or steeper than the Salpeter slope in quiescent/pre-burst subregions (Outskirts, MM51, MM10) to top-heavy in burst and post-burst subregions (MM12, MM2, MM3).",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The high-mass end ($>$1 $\\ensuremath{M_{\\odot}}$) of the subregion CMFs varies from close to the Salpeter slope (quiescent) to top-heavy (burst and post-burst)."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The measured high-mass end of subregion CMFs in their cumulative form varies from being top-heavy, $\\alpha\\in [-0.95;-0.59]$, to close to the Salpeter slope, $\\alpha\\in [-1.54;-1.16]$"
+     }
+    ]
+   },
+   {
+    "value": "Subregions with flat second eta-PDF tails display top-heavy CMFs, whereas subregions with steep second eta-PDF tails have CMFs close to the Salpeter slope.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that subregions with flat second $\\eta$-PDF tails display top-heavy CMFs."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We find that subregions with flat second $\\eta$-PDF tails display top-heavy CMFs."
+     }
+    ]
+   },
+   {
+    "value": "Three out of six subregions (MM2, MM10, and MM3) show evidence of core mass segregation, with MM2 displaying a very high level, but there is no one-to-one correspondence between core mass segregation and a top-heavy CMF.",
+    "evidence": [
+     {
+      "loc": "Varying core mass segregation",
+      "quote": "In conclusion, our analysis of the core mass segregation suggests that three out of the six W43-MM2&MM3 subregions could be mass-segregated, the MM2, MM3, and MM10 subregions (see 1)."
+     },
+     {
+      "loc": "Correlation trends between the CMF and the basic cloud and core properties",
+      "quote": "In that respect, the link between the level of core mass segregation and the slope of the CMF high-mass end may exist but not as a one-to-one correspondence."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The shape of the core mass function (CMF) varies locally with environmental cloud properties within the W43-MM2&MM3 mini-starburst ridge rather than being universally top-heavy or Salpeter-like everywhere.",
+    "experiment": "Decompose W43-MM2&MM3 into six 0.5-1 pc subregions using MnGSeg wavelet decomposition and fit the cumulative CMF high-mass end of each subregion using a 5000-iteration bootstrap MLE method.",
+    "result": "The CMF high-mass end power-law index varies continuously from alpha = -1.54 (+0.32/-0.42) in the Outskirts and -1.16 (+0.16/-0.30) in MM10 to top-heavy slopes of -0.95 (+0.15/-0.36) in MM12, -0.93 (+0.11/-0.21) in MM2, and -0.59 (+0.07/-0.12) in MM3.",
+    "finding": "The CMF is not uniform across the ridge; it varies from Salpeter-like in quiescent/pre-burst environments to top-heavy in dense, active star-forming hubs.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The high-mass end ($>$1 $\\ensuremath{M_{\\odot}}$) of the subregion CMFs varies from close to the Salpeter slope (quiescent) to top-heavy (burst and post-burst)."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The measured high-mass end of subregion CMFs in their cumulative form varies from being top-heavy, $\\alpha\\in [-0.95;-0.59]$, to close to the Salpeter slope, $\\alpha\\in [-1.54;-1.16]$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The high-mass end of the CMF is linked to the high column density probability distribution function (eta-PDF) of the cloud gas surrounding the cores.",
+    "experiment": "Compute column density maps from the 1.3 mm continuum image and dust temperature map, construct subregion eta-PDFs, fit power-law slopes to the second (s_2, background gas surrounding cores) and third (s_3, cores) tails, and compare s_2 with the CMF slope alpha.",
+    "result": "Subregions with top-heavy CMFs (MM2, MM3) have flat second eta-PDF tails (s_2 = -0.6 +/- 0.2 and -0.8 +/- 0.2), while subregions with Salpeter-like CMFs (MM10, MM51, Outskirts) have steeper second tails (s_2 = -2.4 +/- 0.2 to > -5).",
+    "finding": "Subregions with flat second eta-PDF tails display top-heavy CMFs, indicating a correlation trend between the CMF high-mass end and the high-column-density cloud structure surrounding cores, though limited by small sample size (6 subregions).",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that subregions with flat second $\\eta$-PDF tails display top-heavy CMFs."
+     },
+     {
+      "loc": "Comparison with observational studies in the literature",
+      "quote": "We observed a correlation trend between these power-law indices but the small number of W43-MM2&MM3 subregions and the large uncertainties on $\\alpha$ and $s_2$ prevent us from making a reliable estimate of the significance and strength of this correlation."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Core mass segregation directly correlates with a top-heavy CMF.",
+    "experiment": "Measure core mass segregation in each subregion using both the local core surface density ratio (Sigma_6cores)_massive / mean(Sigma_6cores) and the minimum spanning tree mass segregation ratio Lambda_MSR, and compare with subregion CMF slopes.",
+    "result": "MM2, MM10, and MM3 are mass-segregated (Lambda_MSR = 5 +/- 2, 2.3 +/- 0.7, and 1.8 +/- 0.4, respectively), whereas MM12 has a top-heavy CMF (alpha = -0.95) with no mass segregation, and MM10 has high mass segregation but a Salpeter-like CMF (alpha = -1.16).",
+    "finding": "While extreme centrally concentrated hubs like MM2 show both very high mass segregation and a top-heavy CMF, there is no one-to-one correspondence between core mass segregation and the slope of the CMF high-mass end.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Sect. 4.1",
+      "quote": "In that respect, the link between the level of core mass segregation and the slope of the CMF high-mass end may exist but not as a one-to-one correspondence."
+     },
+     {
+      "loc": "Correlation trends between the CMF and the basic cloud and core properties",
+      "quote": "In that respect, the link between the level of core mass segregation and the slope of the CMF high-mass end may exist but not as a one-to-one correspondence."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The CMF evolves from a Salpeter-like slope to a top-heavy slope as cloud subregions evolve from quiescent/pre-burst to burst phases of star formation.",
+    "experiment": "Classify the six subregions into evolutionary stages (Quiescent, Pre-burst, Main burst, Post-burst) using protostellar core fraction, core surface density, and UCHII region presence, and examine how the CMF slope alpha varies with protostellar fraction and evolutionary stage.",
+    "result": "Quiescent/pre-burst subregions (Outskirts, MM51, MM10; f_proto = 7% to 25%) have CMF slopes close to Salpeter (alpha = -1.54 to -1.16), while burst and post-burst subregions (MM12, MM2, MM3; f_proto = 41%, 37%, 22%) have top-heavy CMFs (alpha = -0.95, -0.93, -0.59).",
+    "finding": "The CMF high-mass end correlates with the protostellar fraction (excluding post-burst MM3) and appears to evolve from Salpeter to top-heavy from the quiescent to the burst phase.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The CMF may evolve from Salpeter to top-heavy throughout the star formation process from the quiescent to the burst phase."
+     },
+     {
+      "loc": "Impact of this evolutionary stage on cloud and cores",
+      "quote": "This is confirmed in 9b, where the slope of the CMF high-mass end tends to correlate with the protostellar fraction, which is the main criterion used to define the evolutionary stage of a subregion (see Sect. 4.3.1)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "W43-MM2&MM3 harbors a rich cluster with a statistically significant number of cores (205 cores) characterized in Paper III; the 1.3 mm continuum image was chosen over 3 mm for subregion properties because it is less contaminated by free-free emission.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "W43-MM2&MM3 is a useful test case for environmental studies because it harbors a rich cluster that contains a statistically significant number of cores (specifically, 205 cores), which was previously characterized in Paper III."
+     },
+     {
+      "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+      "quote": "We chose the 1.3 mm image because, unlike the 3 mm image, it is less contaminated by free-free emission."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "MnGSeg multi-scale decomposition separates the inhomogeneous ridge into 0.5-1 pc subregions with more homogeneous characteristics; a bootstrap MLE approach accounts for small-number statistics, core mass uncertainties, and completeness uncertainties; two mass segregation indicators (Sigma_6cores and Lambda_MSR) are used in tandem following Parker & Goodwin (2015).",
+    "evidence": [
+     {
+      "loc": "Splitting the W43-MM2&MM3 ridge into six subregions",
+      "quote": "We separated it into subregions of $\\sim$0.5–1 pc scales, which, in the framework of dynamical cloud formation, would correspond to cloud subparts with more homogeneous characteristics and star formation activities than the whole cloud."
+     },
+     {
+      "loc": "Varying subregion CMFs",
+      "quote": "Given the small-number statistics for the core sample of each W43-MM2&MM3 subregion, we did not directly apply the (cite: alstott2014) method to their CMF but used it in a bootstrap procedure that simultaneously estimates the most likely CMF power-law index and its uncertainty."
+     },
+     {
+      "loc": "Varying core mass segregation",
+      "quote": "We followed the recommendations of (cite: parkerGoodwin2015) and used two different indicators in tandem."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Direct application of the Alstott et al. (2014) MLE method and linear regression on the cumulative CMF without bootstrapping (used as a validation check on the total ridge CMF).",
+     "evidence": [
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "To test the validity of our approach, we compared the power-law index fitted by the bootstrapping procedure described above with those directly fitted by the method of (cite: alstott2014) and a linear regression on its cumulative form."
+      }
+     ]
+    },
+    {
+     "value": "Assuming a constant dust temperature across all cores or all pixels when computing core masses and column density eta-PDFs (tested and found to change CMF indices by at most 18% and eta-PDF tail slopes by <= 10%).",
+     "evidence": [
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "taking a constant dust temperature for all cores, including the most massive ones associated with hot cores, would change the power-law indices fitted to the subregion CMF by at most $18\\%$."
+      },
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "The assumption on the dust temperature used to compute the column density image has a negligible effect on the $\\eta$-PDFs since, with a constant temperature on all pixels, the power-law exponents of their $s_2$ and $s_3$ tails are not changed by more than $10\\%$."
+      }
+     ]
+    },
+    {
+     "value": "Applying the Paper III optical thickness correction to the column density map (would only change values by 15% toward the center of four cores).",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "Using the correction for optical thickness proposed by Paper III, would only change its values by 15% toward the center of four cores (cite: pouteau2022)."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Missing short spacings (scales > 5.6'' at 1.3 mm) filter out large-scale background emission, creating negative bowls and making background-filtered mass assumptions invalid for MM51, Outskirts, and the Total area, as well as rendering the first eta-PDF tail unobservable with ALMA 12 m data alone.",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "Since, due to interferometer filtering, scales larger than $\\sim$5.6$\\ensuremath{''}$ are missing (see Sect. 2.1), we added a $N_{\\rm H_2}^{\\rm bckg}\\sim 0.7\\times10^{23}~\\rm cm^{-2}$ level measured at the periphery of the cloud ridge on the Herschel column density image"
+      },
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "This assumption is correct for the centrally concentrated subregions MM2, MM3, MM10, and MM12, but totally incorrect for the MM51 and Outskirts subregions as well as the total imaged area."
+      },
+      {
+       "loc": "Varying column density eta-PDFs",
+       "quote": "These two ALMA $\\eta$-PDF tails are called second and third tails ($s_2$ and $s_3$) because the first $\\eta$-PDF tail ($s_1$) observed with Herschel data is filtered by the ALMA interferometer."
+      }
+     ]
+    },
+    {
+     "value": "Absolute uncertainties in column densities, subregion masses, and volume densities are a factor of about two due to poor knowledge of the absolute value of dust opacity per unit mass, and spherical geometry assumptions are questionable for MM10, MM51, and Outskirts.",
+     "evidence": [
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "The volume densities for MM10, MM51, and Outskirts are uncertain because the spherical assumption is more questionable for these subregions, and even more important for Outskirts"
+      },
+      {
+       "loc": "Subregion column density and mass estimates",
+       "quote": "We estimate that the absolute uncertainties in column densities, subregion masses, and volume densities arise primarily from our poor knowledge of the absolute value of the dust opacity per unit mass and are a factor of about two."
+      }
+     ]
+    },
+    {
+     "value": "Small-number statistics in the core catalogs of Outskirts, MM51, and MM12 mean their CMF high-mass ends are barely constrained, and having only six subregions prevents a reliable statistical estimate of the significance and strength of the observed correlations.",
+     "evidence": [
+      {
+       "loc": "Subregion core populations",
+       "quote": "However, the small number of W43-MM2&MM3 subregions and the large uncertainties in the masses prevent us from making a reliable estimate of the significance and strength of these correlations."
+      },
+      {
+       "loc": "Varying subregion CMFs",
+       "quote": "Since the core catalogs of the Outskirts, MM51, and MM12 subregions have small-number statistics, their CMF high-mass end is barely constrained."
+      },
+      {
+       "loc": "Comparison with observational studies in the literature",
+       "quote": "We observed a correlation trend between these power-law indices but the small number of W43-MM2&MM3 subregions and the large uncertainties on $\\alpha$ and $s_2$ prevent us from making a reliable estimate of the significance and strength of this correlation."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Subregion boundaries were defined visually along inflection points of the wavelet-filtered map rather than via an automated segmentation algorithm, introducing subjective boundary choices.",
+    "Adding a constant per-subregion column density offset from 25'' Herschel data to 0.46'' ALMA 12 m continuum images is only a first-order approximation for missing short-spacing (7 m and Total Power) flux.",
+    "Correlation claims between CMF slope, eta-PDF slope, and protostellar fraction rely on only 6 subregions (4 with measured s_2) with overlapping bootstrap uncertainty intervals."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Core catalog from Paper III is public at CDS (J/A+A/664/A26); HOBYS Herschel column density data are public at https://www.hobys.org/data.html; ALMA project #2017.1.01355.L.",
+    "evidence": [
+     {
+      "loc": "Footnote 2",
+      "quote": "Full catalog is available at the CDS via anonymous ftp to cdsarc.u-strasbg.fr (ftp://130.79.128.5) or via <http://cdsarc.u-strasbg.fr/viz-bin/cat/J/A+A/664/A26>"
+     },
+     {
+      "loc": "Footnote 4",
+      "quote": "The Herschel column density image used here is taken from the archival data products of the HOBYS key program (cite: motte2010). See <https://www.hobys.org/data.html>."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "ALMA-IMF data reduction pipeline available at https://github.com/ALMA-IMF/reduction",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "The pipeline is available at <https://github.com/ALMA-IMF/reduction> ."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact spatial polygon definitions/masks for the six subregions (Outskirts, MM51, MM10, MM12, MM2, MM3)",
+    "The getsf core-subtracted background FITS image and the Paper III dust temperature FITS image (unless distributed via ALMA-IMF data releases)",
+    "Custom scripts used for the 5000-iteration bootstrap MLE CMF fitting and the eta-PDF departure-point determination"
+   ],
+   "estimated_data_volume_inferred": "A few hundred MB for the continuum, temperature, and column density FITS images and core catalog tables (or ~tens of GB if re-imaging raw ALMA-IMF Band 3 and Band 6 visibility data).",
+   "score_inferred": 78,
+   "score_reason": "The core catalog, Herschel data, and ALMA-IMF reduction pipeline are publicly available, and the mathematical equations, physical assumptions, fit ranges, and bootstrap/MST procedures are thoroughly documented with explicit parameter tables. However, exact polygon coordinates for the visually drawn subregion boundaries and the auxiliary FITS maps (dust temperature and getsf background) are not directly provided in the paper.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "The core catalog is publicly hosted on CDS, the ALMA data are public, the statistical methods (Alstott/Clauset power-law MLE with bootstrapping, MST Lambda_MSR, local surface density Sigma_6) are standard and well-specified, and all key results are quantitative values in Tables 1-3."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: robitaille2019)",
+     "why": "Multi-scale non-Gaussian segmentation (MnGSeg) technique used for wavelet decomposition and image denoising"
+    },
+    {
+     "citation": "(cite: men2021getsf)",
+     "why": "getsf source and filament extraction algorithm used to build the core catalog and core-subtracted background map"
+    },
+    {
+     "citation": "(cite: clauset2009); (cite: alstott2014)",
+     "why": "Maximum likelihood estimation (MLE) method for fitting power-law distributions used in the CMF bootstrap procedure"
+    },
+    {
+     "citation": "(cite: schneider2022)",
+     "why": "Procedure for fitting column density eta-PDFs with a lognormal and power-law tails"
+    },
+    {
+     "citation": "(cite: maschbergerClarke2011); (cite: allison2009b); (cite: parkerGoodwin2015)",
+     "why": "Local core surface density (Sigma_6cores) and minimum spanning tree mass segregation ratio (Lambda_MSR) methods"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Paper I (cite: motte2022)",
+     "why": "ALMA-IMF Large Program overview paper"
+    },
+    {
+     "citation": "Paper II (cite: ginsburg2022)",
+     "why": "ALMA-IMF data reduction and continuum imaging pipeline paper"
+    },
+    {
+     "citation": "Paper III (cite: pouteau2022)",
+     "why": "Provides the W43-MM2&MM3 1.3 mm and 3 mm continuum images, dust temperature map, and catalog of 205 cores"
+    },
+    {
+     "citation": "Paper V (cite: nony2023)",
+     "why": "Provides the pre-stellar versus protostellar classification of the W43-MM2&MM3 cores"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-IMF Large Program",
+    "HOBYS (Herschel imaging survey of OB Young Stellar objects)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2023A%26A...674A..76P",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-30T00:30:09",
+  "usage": {
+   "input": 44062,
+   "output": 19894,
+   "thoughts": 0
+  },
+  "usd": 0.287064,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 2,
+  "thinking": "low",
+  "seconds": 280.0,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 163,
+  "quotes_ok": 163,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 10,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 26,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 96,
+   "stated": 74,
+   "rate": 0.771
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-30T02:53:30",
+  "custom_id": "gemini4argon-repair-claude-code",
+  "fixed": [
+   {
+    "path": "data.simulations_or_models_as_data[0].evidence[1]",
+    "old": "We used [eq:s] to predict, from the power-law exponent, $\\psi$, of the models, the power-law exponent $s$ that an $\\eta$-PDF tail computed from the simulated volume density cube projected into a column density image would have (cite: kainulainen2013; leeHennebelle2018b; jaupartChabrier2020).",
+    "new": "tail computed from the simulated volume density cube projected into a column density image would have"
+   },
+   {
+    "path": "analysis_steps[0].validation.evidence[0]",
+    "old": "Uncertainties are estimated by slightly varying the integration areas of Figs. 1–2 (see [tab:subregions chara]) to take into account uncertainties in the definition of subregion outlines and areas.",
+    "new": "Uncertainties are estimated by slightly varying the integration areas of Figs."
+   },
+   {
+    "path": "analysis_steps[2].key_parameters[0].evidence[1]",
+    "old": "We allowed the fit of the initial point of the power-law fit to uniformly vary from the 90% completeness level, plus or minus its uncertainty, $\\pm 0.2~\\ensuremath{M_{\\odot}}$ (see [tab:cmf and s]).",
+    "new": "we computed the bootstrapping probability density function of 5000 slopes of CMF high-mass ends, which are fitted by power laws using the"
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[1]",
+    "old": "[tab:cmf and s] lists, for each subregion, the ranges of these two $\\eta$-PDF tails and their fitted power-law exponents, $s_2$ and $s_3$.",
+    "new": "Finally, the range between the second departure point and, as an end point, the maximum column density detected in subregions"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": "Uncertainties on the power-law exponents are estimated by varying the number of bins of the $\\eta$-PDFs, the limits of the fit ranges, and by taking into account the uncertainty on the column density offset (see [tab:cmf and s]).",
+    "new": "Uncertainties are estimated by varying the number of bins, the limits of the fitted ranges, and the column density offset of col. 4."
+   },
+   {
+    "path": "analysis_steps[4].method.evidence[1]",
+    "old": "in the W43-MM2&MM3 subregions, we measured the $\\Sigma_{\\rm 6\\,cores}$ for the five most massive cores, $\\left(\\Sigma_{\\rm 6\\,cores}\\right)_{\\rm massive}$.",
+    "new": "The first one measures, for each core using its six closest neighbors, the local core surface density of a subregion"
+   },
+   {
+    "path": "analysis_steps[5].method.evidence[0]",
+    "old": "To define the evolutionary stage of these $\\sim$0.5–1 pc cloud structures, we quantify the development of the star formation process through three criteria. These are the protostellar core fraction of the subregion, its surface density of cores, both quantified in Sect. 3 (see Tables [tab:subregions chara] and 1), and the potential UCHii regions.",
+    "new": "we quantify the development of the star formation process through three criteria. These are the protostellar core fraction of the subregion, its surface density of cores, both quantified in Sect."
+   },
+   {
+    "path": "analysis_steps[5].method.evidence[1]",
+    "old": "Figure 9 displays, for each W43-MM2&MM3 subregion, the relation between the power-law index of the CMF high-mass end and the slope coefficient of the second $\\eta$-PDF tail, $\\alpha$ and $s_2$, and the protostellar fraction listed in [tab:cmf and s].",
+    "new": "displays, for each W43-MM2&MM3 subregion, the relation between the power-law index of the CMF high-mass end and the slope coefficient of the second"
+   },
+   {
+    "path": "analysis_steps[5].key_parameters[0].evidence[0]",
+    "old": "They qualify as quiescent because their surface number density of cores and their protostellar fraction are lower or equal to the average values measured in the W43-MM2&MM3 subregions ($\\sim$35 cores/pc$^2$ and $\\sim$25%; see Tables [tab:subregions chara]–[tab:cmf and s]).",
+    "new": "average values measured in the W43-MM2&MM3 subregions ($\\sim$35 cores/pc$^2$ and $\\sim$25%; see Tables"
+   },
+   {
+    "path": "findings_qualitative[1].evidence[1]",
+    "old": "Subregions with top-heavy CMFs display flat $\\eta$-PDF tails, which is consistent with those obtained for the second tail of high-mass star-forming regions (see Sect. 4.2 and [tab:eta-pdf characteristics]).",
+    "new": "We find that subregions with flat second $\\eta$-PDF tails display top-heavy CMFs."
+   },
+   {
+    "path": "claims[0].evidence[0]",
+    "old": "The peak of these functions locate the most likely power-law index of their CMF high-mass ends, which vary from $\\alpha=-1.54$ for the Outskirts to $\\alpha=-0.59$ for the MM3 subregion (see [tab:cmf and s]).",
+    "new": "The high-mass end ($>$1 $\\ensuremath{M_{\\odot}}$) of the subregion CMFs varies from close to the Salpeter slope (quiescent) to top-heavy (burst and post-burst)."
+   },
+   {
+    "path": "claims[2].evidence[0]",
+    "old": "This condition is not a necessary one to build a flat CMF, as proven by the MM12 subregion where no mass segregation is observed (see Tables [tab:cmf and s]–1).",
+    "new": "In that respect, the link between the level of core mass segregation and the slope of the CMF high-mass end may exist but not as a one-to-one correspondence."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

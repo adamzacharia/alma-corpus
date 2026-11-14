@@ -1,0 +1,443 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "observations of four CO transitions made with the Atacama Pathfinder EXperiment (APEX) and archival Atacama Large Millimeter/submillimeter Array (ALMA) CO"},
+{"loc": "2.2 ALMA Band 7 data", "quote": "We use data taken from the ALMA archive, which forms part of the Cycle 1 observing program 2012.0.00781.S."}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {"value": "Identify and analyse the protostellar-driven molecular outflows in SDC335 and use them to refine the properties (accretion rates, evolutionary stage) of the young massive protostars", "evidence": [
+{"loc": "abstract", "quote": "The aim of this work is to identify and analyse the properties of the protostellar-driven molecular outflows within SDC335 and use these outflows to help refine the properties of the young massive protostars in this cloud."}
+]},
+"targets": [
+{"name": "SDC335 (IRDC SDC335.579-0.292)", "details": [
+{"loc": "abstract", "quote": "The infrared dark cloud (IRDC) SDC335.579-0.292 (hereafter, SDC335)"},
+{"loc": "2.2 ALMA Band 7 data", "quote": "centred at RA = 16h30m58.550s, Dec = $-$48$^{\\circ}$43$^{\\prime}$54.00$^{\\prime\\prime}$"},
+{"loc": "3.2.4 Derived properties", "quote": "and D is this distance to SDC335 (3.25kpc)"}
+], "coordinates": "ALMA Band 7 mosaic centre RA = 16h30m58.550s, Dec = -48:43:54.00 (Galactic name SDC335.579-0.292)", "redshift_or_distance": "D = 3.25 kpc", "distance_source": "not stated"}
+],
+"alma_project_codes": [
+{"code": "2012.0.00781.S", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "We use data taken from the ALMA archive, which forms part of the Cycle 1 observing program 2012.0.00781.S."},
+{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2011.0.00474.S and #2012.0.00781.S"}
+]},
+{"code": "2011.0.00474.S", "evidence": [
+{"loc": "2.3 ALMA Band 3 data", "quote": "ALMA Cycle 0 project 2011.0.00474.S was an 11 pointing mosaic observation at 90 GHz"}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (13CO(3-2), CO(3-2)); Band 3 at 90 GHz (HNC(1-0))", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "which cover the $^{13}$CO(3-2) and CO(3-2) transitions, respectively"},
+{"loc": "2.3 ALMA Band 3 data", "quote": "ALMA Cycle 0 project 2011.0.00474.S was an 11 pointing mosaic observation at 90 GHz"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Band 7 observations at 330.64 GHz and 345.874 GHz; HNC observed frequency 90.66357 GHz; 13CO 330.58797 GHz; CO 345.79599 GHz (observed-frequency column of the observation table)", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "we used the 12- and 7-m array observations at 330.64GHz and 345.874GHz"},
+{"loc": "Table (observation properties)", "quote": "90.66357"},
+{"loc": "Table (observation properties)", "quote": "330.58797"}
+]},
+{"field": "arrays", "value": "Band 7: 12-m and 7-m arrays (ALMA + ACA combined); Band 3: 16 12-m antennas, no 7-m data", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "we used the 12- and 7-m array observations"},
+{"loc": "2.3 ALMA Band 3 data", "quote": "The data were taken with 16 12-m antennas with no 7-m data taken"}
+]},
+{"field": "baselines", "value": "13CO: 10.7-1284.1 m; CO: 9.1-437.8 m; Band 3 HNC: 18.3-197.7 m", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "the array was configured with minimum and maximum baselines of 10.7 and 1284.1m, respectively"},
+{"loc": "2.2 ALMA Band 7 data", "quote": "During the CO observations the minimum and maximum baselines were 9.1 and 437.8m, respectively."},
+{"loc": "2.3 ALMA Band 3 data", "quote": "The array had maximum and minimum baselines of 18.3 and 197.7m."}
+]},
+{"field": "angular_resolution", "value": "Synthesised beams (arcsec): HNC 5.5 x 3.9; 13CO 0.82 x 0.58; CO 0.72 x 0.54", "evidence": [
+{"loc": "Table (observation properties)", "quote": "5.5 $\\times$ 3.9"},
+{"loc": "Table (observation properties)", "quote": "0.82 $\\times$ 0.58"},
+{"loc": "Table (observation properties)", "quote": "0.72 $\\times$ 0.54"}
+]},
+{"field": "max_recoverable_scale", "value": "Defined as MRS ~ 0.6 lambda / b_min with b_min the shortest baseline; per-line values tabulated in the observation table", "evidence": [
+{"loc": "Table (observation properties) notes", "quote": "Maximum Recoverable Scale of emission, $MRS\\sim0.6\\frac{\\lambda}{b_{min}}$"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Archival ALMA data (Cycle 1 program 2012.0.00781.S for Band 7; Cycle 0 project 2011.0.00474.S for Band 3)", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "We use data taken from the ALMA archive, which forms part of the Cycle 1 observing program 2012.0.00781.S."},
+{"loc": "2.3 ALMA Band 3 data", "quote": "ALMA Cycle 0 project 2011.0.00474.S was an 11 pointing mosaic observation at 90 GHz"}
+]}
+],
+"lines_targeted": [
+{"species": "HNC", "transition": "J=1-0", "rest_frequency": "90.66357 GHz (observed-frequency column of table)", "evidence": [
+{"loc": "Table (observation properties)", "quote": "HNC (1$\\rightarrow$0)"},
+{"loc": "Table (observation properties)", "quote": "90.66357"}
+]},
+{"species": "13CO", "transition": "J=3-2", "rest_frequency": "330.58797 GHz (observed-frequency column of table)", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "which cover the $^{13}$CO(3-2) and CO(3-2) transitions, respectively"},
+{"loc": "Table (observation properties)", "quote": "330.58797"}
+]},
+{"species": "CO", "transition": "J=3-2", "rest_frequency": "345.79599 GHz", "evidence": [
+{"loc": "2.4 APEX CO data", "quote": "J=3-2 (at 345.79599 GHz)"}
+]},
+{"species": "SiO (ATCA)", "transition": "J=1-0", "rest_frequency": "43.42385 GHz (observed-frequency column of table)", "evidence": [
+{"loc": "2.1 ATCA data", "quote": "The primary target molecular lines used from these data are SiO (1-0) and the Class-I CH$_3$OH maser transition."},
+{"loc": "Table (observation properties)", "quote": "43.42385"}
+]},
+{"species": "CH3OH Class I maser (ATCA)", "transition": "7-6", "rest_frequency": "44.06941 GHz (observed-frequency column of table)", "evidence": [
+{"loc": "2.1 ATCA data", "quote": "The primary target molecular lines used from these data are SiO (1-0) and the Class-I CH$_3$OH maser transition."},
+{"loc": "Table (observation properties)", "quote": "44.06941"}
+]}
+],
+"other_facilities": [
+{"name": "ATCA", "provided": {"value": "New SiO(1-0) and Class I CH3OH maser data, project C3023, 3 September 2015", "evidence": [
+{"loc": "2.1 ATCA data", "quote": "The ATCA data were taken in a single 12.5 hour observing block on 3 September 2015 under the project code C3023."}
+]}},
+{"name": "APEX", "provided": {"value": "Single-dish CO (3-2), (4-3), (6-5), (7-6) maps used for outflow temperatures (SLED) and the systemic-velocity exclusion widths", "evidence": [
+{"loc": "2.4 APEX CO data", "quote": "Single dish observations were made with the APEX telescope covering CO transitions (3-2), (4-3), (6-5) and (7-6)."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Cloud-scale mass infall rate of SDC335 (2.5 +/- 1.0 e-3 Msun/yr), compared with the outflow-derived accretion rate", "evidence": [
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "calculated a value of $\\dot M_{inf} \\simeq 2.5 (\\pm 1.0) \\times 10^{-3}$M$_{\\odot}$ yr$^{-1}$."}
+]}, "citation": "(cite: Peretto13)"},
+{"what": {"value": "Systemic velocities of MM1 (-46.6 km/s) and MM2 (-46.5 km/s)", "evidence": [
+{"loc": "3 Outflow identification", "quote": "The MM1 core has a $V_{lsr}$ of $-$46.6kms$^{-1}$ and for MM2 $V_{lsr}$ = $-$46.5kms$^{-1}$ (cite: Peretto13)."}
+]}, "citation": "(cite: Peretto13)"},
+{"what": {"value": "Bolometric luminosity of MM1 (1.82e4 Lsun), split between MM1a and MM1b; the citation marker is missing in the text (derived in Paper I)", "evidence": [
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "we divide the total luminosity of MM1 (1.82$\\times 10^4$ $L_{\\odot}$)"}
+]}, "citation": "Paper I (cite: Avison15), marker dropped in the text"},
+{"what": {"value": "Literature Class 0 and Class I outflow momentum flux and L_bol samples used for the F_CO-L_bol fits", "evidence": [
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "The sources from the literature are low-mass Class 0 and 1 sources using values from (cite: BontempsOutflow96) (both classes), observed and literature Class I sources from (cite: vanderMarel13)."}
+]}, "citation": "(cite: BontempsOutflow96); (cite: vanderMarel13); (cite: Ana13); (cite: Maud15)"},
+{"what": {"value": "CO optical depth correction tau_corr = 3.5 (literature value)", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "a literature value for $\\tau_{corr}$ of 3.5 (cite: CabritBertout92)"}
+]}, "citation": "(cite: CabritBertout92)"},
+{"what": {"value": "12C/13C isotopic abundance ratio f = 50-100", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "Here, $f$ is the isotopic abundance ratio, in the range $f=50-100$ typical of star-forming regions (cite: Pineda10; Szucs14)."}
+]}, "citation": "(cite: Pineda10; Szucs14)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Two snapshots of the 3D radiation-hydrodynamic simulation of a turbulent massive pre-stellar core collapse (Rosen & Krumholz 2020), compared qualitatively with the misaligned outflows", "evidence": [
+{"loc": "5.5 A and B outflows misalignment", "quote": "shows two snapshots from a 3D RHD simulation that models the collapse of a turbulent massive"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Archive data downloaded and reprocessed in CASA (pipeline versus manual not stated)", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "The data were downloaded from the archive, reprocessed"},
+{"loc": "2.2 ALMA Band 7 data", "quote": "in the data reduction package CASA (cite: CASAREF), with a continuum subtraction applied."}
+]},
+{"field": "flux_calibrator", "value": "Amplitude calibrators listed per tuning: Neptune and Mercury (Band 3 HNC); Mars, Titan, J1613-586 (Band 7 13CO); Titan, J1613-586 (Band 7 CO)", "evidence": [
+{"loc": "Table (observation properties)", "quote": "Neptune"},
+{"loc": "Table (observation properties)", "quote": "Mercury"},
+{"loc": "Table (observation properties)", "quote": "J1613-586"}
+]}
+],
+"imaging": [
+{"field": "continuum_subtraction", "value": "Continuum subtraction applied; continuum-subtracted cube created for each molecular line", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "with a continuum subtraction applied"},
+{"loc": "3 Outflow identification", "quote": "a continuum subtracted data cube was created for each molecular line"}
+]},
+{"field": "array_combination", "value": "12-m and 7-m data combined following ALMA recommendations (CASA M100 Band 3 data-combination tutorial)", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "the 12- and 7-m data were combined as per ALMA recommendations"},
+{"loc": "footnote 5", "quote": "See e.g. https://casaguides.nrao.edu/index.php/M100_Band3 for a CASA data combination tutorial."}
+]},
+{"field": "final_beam", "value": "HNC 5.5 x 3.9 arcsec; 13CO 0.82 x 0.58 arcsec; CO 0.72 x 0.54 arcsec", "evidence": [
+{"loc": "Table (observation properties)", "quote": "5.5 $\\times$ 3.9"},
+{"loc": "Table (observation properties)", "quote": "0.82 $\\times$ 0.58"},
+{"loc": "Table (observation properties)", "quote": "0.72 $\\times$ 0.54"}
+]}
+],
+"inherited": [
+{"what": {"value": "12-m and 7-m combination procedure taken from ALMA recommendations / CASA guide", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "the 12- and 7-m data were combined as per ALMA recommendations"}
+]}, "from_reference": "ALMA recommendations (CASA guide M100_Band3, footnote 5)"},
+{"what": {"value": "Entrainment efficiency, wind-to-accretion ratio and wind speed used to convert momentum flux to accretion rate (f_ent = 0.5, Mdot_w/Mdot_acc = 0.15, v_w = 40 km/s)", "evidence": [
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "Following this form of the $F_{CO}$ to $\\dot M_{acc}$ relation and assuming the same material entrainment efficiency and wind properties as these authors have done"},
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "($f_{ent} = 0.5$, $\\dot M_{w}/\\dot M_{acc} = 0.15$ and $v_w = 40$kms$^{-1}$)"}
+]}, "from_reference": "(cite: Ana13)"},
+{"what": {"value": "Definitions of lobe length, V_max, dynamical time and inclination correction factors", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "We define these properties and their inclination angle correction factors following (cite: Cunningham16), as follows:"}
+]}, "from_reference": "(cite: Cunningham16)"},
+{"what": {"value": "Method for outflow mass, momentum and energy", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "the mass, momentum, and energy of each outflow lobe, following the methods of (cite: Ana12)"}
+]}, "from_reference": "(cite: Ana12)"},
+{"what": {"value": "SLED fitting approach with a RADEX grid for kinetic temperature", "evidence": [
+{"loc": "3.2.3 Temperature estimation", "quote": "We then followed the approach of (cite: Liu18) by generating a large grid over temperature, number and column density with the radiative transfer code RADEX (cite: VandertakRADEX)"}
+]}, "from_reference": "(cite: Liu18); (cite: VandertakRADEX); chi-squared approach of (cite: vanderTak2000)"},
+{"what": {"value": "Symmetric biconical outflow geometry and four-case inclination scheme", "evidence": [
+{"loc": "3.2.1 Inclination angles", "quote": "we assume each outflow has a symmetric biconical geometry, following (cite: CabritBertout86)"}
+]}, "from_reference": "(cite: CabritBertout86)"},
+{"what": {"value": "13CO/12CO line-ratio method for 12CO optical depth", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "Following the procedure of (cite: Myers83), we compare the $^{13}$CO/$^{12}$CO line ratios observed at multiple points (at peak emission) along the outflow"}
+]}, "from_reference": "(cite: Myers83)"},
+{"what": {"value": "Momentum flux definition in annular regions", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "(following (cite: BontempsOutflow96), their equation 1 and (cite: Ana13))"}
+]}, "from_reference": "(cite: BontempsOutflow96); (cite: Ana13)"}
+],
+"unstated_but_needed": [
+"CASA version and whether the archive pipeline or a manual script was used for reprocessing",
+"Imaging parameters for the Band 7 and Band 3 cubes: tclean (or equivalent) weighting and robust, cell size, image size, deconvolver, masks, thresholds, primary-beam correction, and how 12-m and 7-m data were combined (joint deconvolution or feathering)",
+"Line-free channels and fit order for continuum subtraction",
+"Per-channel RMS of each cube (the 3 sigma limits) and the channel widths of the final cubes",
+"Polygon regions used for each outflow lobe, the two positions per outflow used for the SLED, and the annulus width dr for the momentum flux",
+"RADEX grid ranges (temperature, density, column density), collision partner, line width and background, and the CO abundance, partition function and mean molecular mass used in the mass equation",
+"Source of the 3.25 kpc distance",
+"Numeric Class 0 and Class I literature samples and fitting method used for the F_CO-L_bol relations, and the Paper I luminosities",
+"Observation dates, time on source and the exact archive project code (text prints 2012.0.00781.S for Band 7 while the archive lists 2012.1.00781.S)"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Reprocess and combine archival ALMA data into continuum-subtracted cubes",
+"method": {"value": "Archive data downloaded, reprocessed and 12-m and 7-m data combined in CASA with continuum subtraction", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "The data were downloaded from the archive, reprocessed"},
+{"loc": "2.2 ALMA Band 7 data", "quote": "in the data reduction package CASA (cite: CASAREF), with a continuum subtraction applied."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Band 7 12-m mosaic of 39 Nyquist-sampled pointings", "evidence": [{"loc": "2.2 ALMA Band 7 data", "quote": "These observations comprise a 39 pointing Nyquist sampled rectangular mosaic of the central region of SDC335"}]},
+{"value": "7-m mosaic of 14 pointings", "evidence": [{"loc": "2.2 ALMA Band 7 data", "quote": "The 7-m data had a complementary 14 point mosaic pattern"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Identify outflows and measure lobe velocity ranges, extents and opening angles",
+"method": {"value": "Visual inspection of continuum-subtracted cubes; velocity range ends at the last channel with a 3 sigma detection; integrated intensity maps over those ranges used to measure extent and opening angle", "evidence": [
+{"loc": "3 Outflow identification", "quote": "the velocity ranges of each identified outflow for each molecular species were found by visual inspection"},
+{"loc": "3 Outflow identification", "quote": "(defined as the absolute offset from $V_{lsr}$ to the last channel with a 3$\\sigma$ detection)"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Cubes span -100 to 0 km/s", "evidence": [{"loc": "3 Outflow identification", "quote": "These cubes have a velocity range from $-$100 to 0 kms$^{-1}$"}]},
+{"value": "Emission within +/-5 km/s of Vlsr excluded for all species except CO", "evidence": [{"loc": "3 Outflow identification", "quote": "For all species, except CO, we excluded emission $\\pm5$kms$^{-1}$from the $V_{lsr}$."}]}
+],
+"assumptions": [
+{"value": "Vlsr adopted as -46.6 km/s for MM1a and MM1b and -46.5 km/s for MM2, from the mm-core values", "evidence": [{"loc": "3 Outflow identification", "quote": "we adopted a $V_{lsr}$ of $-$46.6kms$^{-1}$ for MM1"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Quantify jet-like collimation and velocity gradient of outflow A blue lobe",
+"method": {"value": "Length-to-width ratio at the 10% integrated-intensity contour and a position-velocity diagram along the outflow axis in CO", "evidence": [
+{"loc": "3.1.1 Jet-like properties in outflow A", "quote": "The length-to-width ratio of the ALMA CO and $^{13}$CO contour at the 10% of peak integrated intensity contours"},
+{"loc": "3.1.1 Jet-like properties in outflow A", "quote": "a position velocity (PV) diagram along the outflow axis as observed in CO outward from the driving source"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Velocity gradient of 155 km/s/pc from CO", "evidence": [{"loc": "3.1.1 Jet-like properties in outflow A", "quote": "From the CO data, we calculate a velocity gradient of 155 kms$^{-1}$ pc$^{-1}$."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 4, "goal": "Constrain outflow inclination angles and derive corrected lengths, velocities and dynamical times",
+"method": {"value": "Cabrit and Bertout biconical cases from the 3 sigma opening angle, then a pencil-like morphology and observed length-to-width ratio to narrow the range; lengths, velocities, momentum, energy and flux corrected by trigonometric factors", "evidence": [
+{"loc": "3.2.1 Inclination angles", "quote": "we assume each outflow has a symmetric biconical geometry, following (cite: CabritBertout86)"},
+{"loc": "3.2.2 Further consideration of the outflow inclination angles", "quote": "we find inclination angle ranges of between 53 and 76$^{\\circ}$ for outflow A and 59 and 79$^{\\circ}$ for outflow B which can provide the observed $LWR_O$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Opening angle measured at the 3 sigma outer emission contour", "evidence": [{"loc": "3.2.1 Inclination angles", "quote": "the outer emission contour at 3$\\sigma$"}]},
+{"value": "Outflow C uses the statistical average inclination 57.3 deg", "evidence": [{"loc": "3.2.1 Inclination angles", "quote": "we use, instead, the commonly adopted statistical average value of $i =57.3^{\\circ}$."}]},
+{"value": "Corrected length l_corr = l_measured / sin(i)", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "The corrected length is calculated as $l_{corr}=l_{measured}/\\sin(i)$ for inclination angle $i$."}]},
+{"value": "Dynamical time t_dyn = l_corr / |V_max_corr|", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "Finally, $t_{dyn}$, the dynamical age of the outflow is calculated as $t_{dyn}=l_{corr}/|V_{max_{corr}}|$."}]}
+],
+"assumptions": [
+{"value": "Symmetric biconical outflow geometry for the initial ranges; pencil-like morphology for the final ranges", "evidence": [{"loc": "3.2.2 Further consideration of the outflow inclination angles", "quote": "we instead propose an alternate morphology to limit the inclination angle ranges of these outflows."}]}
+],
+"fitting": {"value": "Numerical solution for the inclination and widest-point position that reproduce observed length-to-width ratio and x_O within +/-10%", "evidence": [
+{"loc": "Appendix B", "quote": "we can solve numerically the range of $i$ and $x$ values that will return a $LWR$ matching our observed values"},
+{"loc": "Appendix B", "quote": "we consider values of $i$ and $x$ which return both an $x_O$ and $LWR_O$ within $\\pm 10\\%$ of our observed values."}
+]},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Estimate outflow kinetic temperature from APEX CO SLED",
+"method": {"value": "Regrid APEX CO cubes to the poorest resolution, make 5 km/s integrated-intensity maps, measure intensities at two positions per outflow, and fit a RADEX model grid by chi-squared", "evidence": [
+{"loc": "3.2.3 Temperature estimation", "quote": "we first regridded the data from each observation to the poorest spatial and velocity resolution"},
+{"loc": "3.2.3 Temperature estimation", "quote": "We then created integrated intensity maps at 5 kms$^{-1}$ intervals from each cube."},
+{"loc": "3.2.3 Temperature estimation", "quote": "we measured the integrated intensity (in K kms$^{-1}$) at two positions along the outflow"}
+]},
+"software": ["RADEX"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "Grid over temperature, number and column density; best fit chi2 ~ 1; average of models with chi2 = 1 +/- 0.05", "evidence": [
+{"loc": "3.2.3 Temperature estimation", "quote": "The best fit being a $\\chi^2\\sim1$ following the $\\chi^2$ approach of (cite: vanderTak2000)."},
+{"loc": "3.2.3 Temperature estimation", "quote": "We then take all models with $\\chi^2=1\\pm0.05$ and use the average properties of these models."}
+]},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 6, "goal": "Derive 12CO optical depth correction",
+"method": {"value": "Compare 13CO/12CO line ratios at peak emission along the outflow A blue wing to the optical depth ratio, assuming tau(12CO) = f x tau(13CO)", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "we use the $^{13}$CO to $^{12}$CO line ratio observed in the blue wing of outflow A"},
+{"loc": "3.2.4 Derived properties", "quote": "use the assumption that $\\tau_{^{12}CO}$ is equal to $f\\times \\tau_{^{13}CO}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Isotopic ratio f = 50-100", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "Here, $f$ is the isotopic abundance ratio, in the range $f=50-100$ typical of star-forming regions (cite: Pineda10; Szucs14)."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with the literature range of CO optical depths", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "These are comparable to typical values seen in CO outflows e.g. (cite: CabritBertout92) of 1 to 8.9 with a median of 3.5."}]}},
+{"order": 7, "goal": "Compute outflow mass, momentum, energy and momentum flux from ALMA CO",
+"method": {"value": "Sum of CO emission above 3 x RMS per channel converted to temperature and mass per voxel, then momentum, energy and annular momentum flux, corrected for inclination", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "For our calculations with the CO ALMA data, we define mass within the outflow, $M_{out}$ in units of M$_{\\odot}$, as:"},
+{"loc": "3.2.4 Derived properties", "quote": "for all pixels with an intensity greater than or equal to three times the RMS per channel"},
+{"loc": "3.2.4 Derived properties", "quote": "Finally, we calculate the momentum flux $F_{CO}$ within annular regions projected out from the central source"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Distance 3.25 kpc", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "and D is this distance to SDC335 (3.25kpc)"}]},
+{"value": "Systemic velocity excluded by +/-2.5 sigma of a Gaussian fit to APEX CO(3-2) for MM1 (sigma = 5.2 km/s); +/-1.5 sigma for MM2 outflow C", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "We fit a Gaussian to this spectrum, centred at the $V_{lsr}$ and exclude emission from channels $\\pm2.5\\times$ the variance, $\\sigma$, of this Gaussian fit."},
+{"loc": "3.2.4 Derived properties", "quote": "Instead we use $\\pm1.5\\sigma$ sufficient to avoid self absorption artefacts in the CO data"}
+]},
+{"value": "Two temperature cases: T = 20 K with tau_corr = 3.5, and RADEX temperatures with tau_corr = 8.2", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "We calculate the mass both with a lower bound temperature $T$ of 20K and a literature value for $\\tau_{corr}$ of 3.5 (cite: CabritBertout92)"},
+{"loc": "3.2.4 Derived properties", "quote": "with a $\\tau_{corr}$ factor of 8.2 based upon our estimated $^{12}$CO optical depth."}
+]},
+{"value": "Inclination corrections 1/cos(i), 1/cos^2(i), sin(i)/cos^2(i) for P, E, F", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "the values of $P_{CO}$, $E_{CO}$, and $F_{CO}$ are corrected by the factors $1/\\cos(i)$, $1/\\cos ^2(i)$ and $\\sin(i)/\\cos ^2(i)$, respectively"}]}
+],
+"assumptions": [
+{"value": "Lower-bound temperature of 20 K for the first mass estimate", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "We calculate the mass both with a lower bound temperature $T$ of 20K and a literature value for $\\tau_{corr}$ of 3.5 (cite: CabritBertout92)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with literature outflow values from low- to high-mass protostars", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "with the SDC335 outflows A and B typically having amongst the highest values compared to published sources"}]}},
+{"order": 8, "goal": "Convert momentum flux to protostellar accretion rate and compare with cloud infall",
+"method": {"value": "Accretion rate from F_CO using the Duarte-Cabral et al. relation with fixed entrainment and wind parameters; sum over outflows compared with the Peretto et al. cloud infall rate", "evidence": [
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "Following this form of the $F_{CO}$ to $\\dot M_{acc}$ relation and assuming the same material entrainment efficiency and wind properties as these authors have done"},
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "giving a $\\dot M_{tot. acc}$ of 1.4 ($\\pm$ 0.1) $\\times 10^{-3}$M$_{\\odot}$ yr$^{-1}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "f_ent = 0.5, Mdot_w/Mdot_acc = 0.15, v_w = 40 km/s", "evidence": [{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "($f_{ent} = 0.5$, $\\dot M_{w}/\\dot M_{acc} = 0.15$ and $v_w = 40$kms$^{-1}$)"}]}
+],
+"assumptions": [
+{"value": "Same entrainment efficiency and wind properties as Duarte-Cabral et al.", "evidence": [{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "assuming the same material entrainment efficiency and wind properties as these authors have done"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Total accretion rate compared with the cloud infall rate within quoted errors", "evidence": [{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "These two values are comparable within the quoted errors"}]}},
+{"order": 9, "goal": "Place outflows on the F_CO versus L_bol diagram and assess evolutionary stage",
+"method": {"value": "Fit linear relations between log F_CO and log L_bol for literature Class 0 and Class I sources and compare the SDC335 sources, with L_bol of MM1 split between MM1a and MM1b", "evidence": [
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "we generate best linear fit lines for the $F_{CO}$ as a function of $L_{bol}$ for Class 0 and I sources"},
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "in a 2.5:1 ratio (based on their respective optically thin radio emission flux ratios"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "SDC335 points carry +/-50% error on L_bol; A and B F_CO error bars span the inclination range", "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "To compensate for this source of uncertainty each SDC335 point on Figure"}]}
+],
+"assumptions": [
+{"value": "Each identified outflow is driven by a single protostellar object", "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "Assuming each of the identified outflows in SDC335 represents a single protostellar object"}]}
+],
+"fitting": {"value": "Linear fits in log-log space with 1 sigma error margins (sampler and likelihood not stated)", "evidence": [
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "-4.3(\\pm0.15) + 0.60(\\pm0.08)\\log_{10}"},
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "-5.3(\\pm0.12) + 0.63(\\pm0.16)\\log_{10}"}
+]},
+"validation": {"value": "MM1a and MM1b lie within the 1 sigma band of the Class 0 fit", "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "lie very close to the Class 0 best fit line and within the 1-$\\sigma$ error bound of that line of best fit"}]}}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Reprocessing archival ALMA data and combining 12-m and 7-m arrays with continuum subtraction", "evidence": [{"loc": "2.2 ALMA Band 7 data", "quote": "in the data reduction package CASA (cite: CASAREF), with a continuum subtraction applied."}]}},
+{"name": "MIRIAD", "version": "not stated", "used_for": {"value": "Reduction of the ATCA data", "evidence": [{"loc": "2.1 ATCA data", "quote": "using standard ATNF calibration and imaging strategies"}]}},
+{"name": "RADEX", "version": "not stated", "used_for": {"value": "Radiative transfer grid for fitting the APEX CO SLED", "evidence": [{"loc": "3.2.3 Temperature estimation", "quote": "with the radiative transfer code RADEX (cite: VandertakRADEX)"}]}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "Plotting", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of APLpy, an open-source plotting package for Python"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "General analysis (acknowledged)", "evidence": [{"loc": "Acknowledgements", "quote": "a community-developed core Python package for Astronomy"}]}}
+],
+"results_numeric": [
+{"quantity": "Velocity gradient in outflow A blue lobe (CO)", "value": "155", "uncertainty": "not stated", "units": "km/s/pc", "from_step": 3, "evidence": [{"loc": "3.1.1 Jet-like properties in outflow A", "quote": "From the CO data, we calculate a velocity gradient of 155 kms$^{-1}$ pc$^{-1}$."}]},
+{"quantity": "Opening angle of outflow A blue lobe", "value": "~14", "uncertainty": "not stated", "units": "deg", "from_step": 4, "evidence": [{"loc": "3.2.1 Inclination angles", "quote": "We find that the opening angle, $\\theta_{max}$, of the blue-shifted part of outflow A is $\\sim 14^{\\circ}$"}]},
+{"quantity": "Observed length-to-width ratios of outflows A and B", "value": "3.5 (A), 3.0 (B)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.2.2 Further consideration of the outflow inclination angles", "quote": "Outflows A and B have observed length-to-width ratios of 3.5 and 3.0, respectively"}]},
+{"quantity": "Inclination ranges adopted for outflows A and B", "value": "53-76 (A), 59-79 (B)", "uncertainty": "range", "units": "deg", "from_step": 4, "evidence": [{"loc": "3.2.2 Further consideration of the outflow inclination angles", "quote": "we find inclination angle ranges of between 53 and 76$^{\\circ}$ for outflow A and 59 and 79$^{\\circ}$ for outflow B which can provide the observed $LWR_O$."}]},
+{"quantity": "Kinetic temperatures (blue/red) of outflows A, B and C", "value": "62/53 K (A), 54/61 K (B), 55 K (C)", "uncertainty": "not stated", "units": "K", "from_step": 5, "evidence": [{"loc": "3.2.3 Temperature estimation", "quote": "Using this technique we find $T_{kin}$ values of 62/53K, 54/61K and 55K for the blue and red components of outflows A, B and C respectively"}]},
+{"quantity": "12CO optical depth correction adopted", "value": "8.2 (median; range 2.4-23.5)", "uncertainty": "range 2.4-23.5", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.2.4 Derived properties", "quote": "We find a range of $\\tau_{^{12}CO}$ = 2.4 and 23.5 and use the median value of 8.2."}]},
+{"quantity": "Gaussian sigma of APEX CO(3-2) spectrum toward MM1", "value": "5.2", "uncertainty": "not stated", "units": "km/s", "from_step": 7, "evidence": [{"loc": "3.2.4 Derived properties", "quote": "The fitted $\\sigma$ was found to be 5.2kms$^{-1}$."}]},
+{"quantity": "Accretion rate range for outflows A and B at T = 20 K", "value": "8.7 - 64.8 e-5", "uncertainty": "range", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "are in the range of 8.7 - 64.8 $\\times 10^{-5}$M$_{\\odot}$ yr$^{-1}$ , at a fixed temperature of $T=20$K"}]},
+{"quantity": "Total accretion rate onto the protostars", "value": "1.4e-3", "uncertainty": "+/-0.1e-3", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "giving a $\\dot M_{tot. acc}$ of 1.4 ($\\pm$ 0.1) $\\times 10^{-3}$M$_{\\odot}$ yr$^{-1}$"}]},
+{"quantity": "Total accretion rate if the bicone inclination ranges are used", "value": "6.04e-4", "uncertainty": "+/-0.04e-4", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "Appendix B", "quote": "becomes $6.04 (\\pm 0.04) \\times 10^{-4}$M$_{\\odot}$ yr$^{-1}$"}]},
+{"quantity": "L_bol of MM1a and MM1b after splitting MM1", "value": "1.3e4 (MM1a), 0.51e4 (MM1b)", "uncertainty": "+/-50%", "units": "Lsun", "from_step": 9, "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "yielding values of 1.3$\\times 10^4$ and 0.51$\\times 10^4$ $L_{\\odot}$ for MM1"}]},
+{"quantity": "Class 0 F_CO-L_bol fit (intercept and slope)", "value": "intercept -4.3, slope 0.60", "uncertainty": "+/-0.15, +/-0.08", "units": "dimensionless (log10 relation)", "from_step": 9, "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "-4.3(\\pm0.15) + 0.60(\\pm0.08)\\log_{10}"}]},
+{"quantity": "Class I F_CO-L_bol fit (intercept and slope)", "value": "intercept -5.3, slope 0.63", "uncertainty": "+/-0.12, +/-0.16", "units": "dimensionless (log10 relation)", "from_step": 9, "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "-5.3(\\pm0.12) + 0.63(\\pm0.16)\\log_{10}"}]},
+{"quantity": "Outflow dynamical times", "value": "few x 10^3", "uncertainty": "not stated", "units": "yr", "from_step": 4, "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "This is also corroborated by the short dynamical times of these outflows ($\\rm{few}\\times 10^3$yr)"}]},
+{"quantity": "Peak flux density of brightest Class I methanol maser (maser 7)", "value": "48.78", "uncertainty": "not stated", "units": "Jy", "from_step": 0, "evidence": [{"loc": "5.2 Interaction regions", "quote": "At a peak flux density of 48.78 Jy, maser 7"}]}
+],
+"findings_qualitative": [
+{"value": "Red-shifted emission is weaker than blue in every outflow", "evidence": [{"loc": "3.1.1 A: North-south molecular outflow", "quote": "This is consistent with the trend seen throughout all the presented data, which shows that red-shifted emission is found to be weaker within each outflow."}]},
+{"value": "A biconical morphology cannot reproduce the observed length-to-width ratios of outflows A and B", "evidence": [{"loc": "3.2.2 Further consideration of the outflow inclination angles", "quote": "we find that it is not possible to recover such observed length-to-width ratios with no external influence on the outflow."}]},
+{"value": "Outflow C has a much lower momentum flux than the literature trend, possibly an artefact of the limited velocity range", "evidence": [{"loc": "4.2 Evolutionary Status of SDC335", "quote": "SDC335 outflow C has a significantly lower $F_{CO}$ value away from the proposed observed trend seen within the literature."}]}
+],
+"claims": [
+{"hypothesis": "Do the SDC335 protostars drive molecular outflows?", "experiment": "Visual identification of lobes in ALMA CO, 13CO, HNC, ATCA SiO and APEX CO cubes", "result": "Three outflows (A, B, C), one per compact HII region; A and B perpendicular in projection", "finding": "Each HCHII region drives an outflow, and the two most massive sources have perpendicular outflow axes", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "We identify three molecular outflows in SDC335"},
+{"loc": "abstract", "quote": "have outflows with axes which are, in projection, perpendicular"}
+]},
+{"hypothesis": "Is the protostellar accretion rate inferred from outflows comparable to the cloud-scale infall rate?", "experiment": "Momentum flux converted to accretion rate and summed, compared with the infall rate of Peretto et al.", "result": "Total accretion 1.4e-3 Msun/yr versus infall 2.5e-3 Msun/yr; with the bicone inclination ranges the accretion becomes 24% of the infall rate", "finding": "A near-continuous flow from cloud to core scales is suggested, but the comparison depends on inclination", "support": "partially", "evidence": [
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "These two values are comparable within the quoted errors"},
+{"loc": "Appendix B", "quote": "This means the comparison to the total infall rate is somewhat weaker, at 24% of the (cite: Peretto13) values"}
+]},
+{"hypothesis": "Are the SDC335 protostars at an early Class 0-like stage?", "experiment": "F_CO versus L_bol compared with fitted literature Class 0 and Class I relations and evolutionary tracks", "result": "MM1a and MM1b lie close to the Class 0 line and above the 50 Msun track", "finding": "The sources are very high-mass Class 0 analogues", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The outflow properties show that the SDC335 protostars are in the early stages (Class 0) of their evolution"},
+{"loc": "4.2 Evolutionary Status of SDC335", "quote": "This suggests that these sources are very high-mass Class 0 analogue."}
+]},
+{"hypothesis": "Does outflow A show a jet-like structure?", "experiment": "Length-to-width ratio and PV diagram of the ALMA CO and 13CO blue lobe", "result": "Length-to-width of 2.8 (CO) and 3.4 (13CO) and a velocity gradient of 155 km/s/pc", "finding": "A well-collimated jet-like blue lobe", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "A well-collimated jet-like structure with a velocity gradient of"},
+{"loc": "3.1.1 Jet-like properties in outflow A", "quote": "From the CO data, we calculate a velocity gradient of 155 kms$^{-1}$ pc$^{-1}$."}
+]},
+{"hypothesis": "Do the outflows interact with infalling filament material?", "experiment": "Compare Class I maser, SiO and CO lobe ends with filament positions and velocities", "result": "Several lobe ends coincide spatially and kinematically with filament ends and masers", "finding": "Candidate interaction regions identified, needing higher resolution to confirm", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "These regions provide useful case studies for future investigations of the disruptive effect of young massive stars on their natal clouds."},
+{"loc": "5.2 Interaction regions", "quote": "Further higher resolution observations of the region would be required to confirm this as a true shock-interaction region."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "CO traces the bulk high-velocity entrained gas; ALMA Band 7 CO has the best sensitivity and resolution", "evidence": [
+{"loc": "2 Observations and ancillary data", "quote": "Finally, CO, being ubiquitous in the ISM, provides sufficient molecular abundance to trace the high velocity gas entrained by the outflows."},
+{"loc": "3.1.4 Considering other possible outflows", "quote": "Using the ALMA band 7 CO data (the dataset with both the highest sensitivity and spatial resolution)"}
+]},
+{"field": "why_this_method", "value": "Outflow momentum flux used as a proxy for protostellar accretion rate", "evidence": [
+{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "is a proxy for the protostellar mass accretion rate"}
+]},
+{"field": "how_they_decided_enough", "value": "Excluded velocity-range factor of 2.5 sigma chosen to remove all self-absorption and missing-flux features in the MM1 outflows", "evidence": [
+{"loc": "3.2.4 Derived properties", "quote": "The factor of 2.5 was chosen to ensure that all self-absorption and missing flux features in the interferometric data were excluded for the MM1 core outflows"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "SiO not used for mass/momentum because it traces shocks only", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "SiO is a shock-tracing species and therefore cannot reliably trace the bulk outflow properties"}]},
+{"value": "HNC not used for mass/momentum because its outflow-tracer behaviour is poorly established", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "HNC is currently a poorly studied outflow tracer"}]},
+{"value": "Pencil-like morphology used in place of the biconical morphology for inclination limits", "evidence": [{"loc": "3.2.2 Further consideration of the outflow inclination angles", "quote": "we instead propose an alternate morphology to limit the inclination angle ranges of these outflows."}]}
+],
+"limitations_admitted": [
+{"value": "Excluding near-systemic channels makes derived properties of outflows A and B lower limits", "evidence": [{"loc": "3.2.4 Derived properties", "quote": "Excluding these velocity channels means our derived properties are lower limits for outflows A and B."}]},
+{"value": "No zero-spacing or single-dish data for the ALMA image, causing negative bowling near the systemic velocity", "evidence": [{"loc": "3.1.4 Considering other possible outflows", "quote": "owing to a lack of zero-spacing or single dish data, the ALMA image suffers from negative"}]},
+{"value": "Inclination angles dominate the error budget", "evidence": [{"loc": "4.1 Cloud infall and protostellar accretion rates", "quote": "As the inclination angles of the observed outflow are the dominant factor in the error budget of these calculations"}]}
+],
+"referee_caveats_inferred": [
+"Accretion rates rest on a literature entrainment and wind calibration plus a pencil-like morphology the authors introduce; the bicone alternative changes the total accretion rate by about a factor of 2.3",
+"The 20 K and RADEX-temperature cases differ, and temperatures come from low-resolution APEX data applied to ALMA-resolved lobes",
+"No imaging parameters, noise values or uncertainties on masses are given, so error propagation is unclear",
+"Class 0 and Class I fits use literature samples whose selection and luminosity definitions may not match the SDC335 points"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA data taken from the public archive (programs 2012.0.00781.S and 2011.0.00474.S)", "evidence": [
+{"loc": "2.2 ALMA Band 7 data", "quote": "We use data taken from the ALMA archive, which forms part of the Cycle 1 observing program 2012.0.00781.S."}
+]},
+{"field": "products_in_archive", "value": "Reduced cubes, integrated intensity images and outflow spectra are said to be available at CDS", "evidence": [
+{"loc": "footnote 2", "quote": "The reduced interferometric data cubes and integrated intensity images in FITS format and the outflow spectra in ASCII format are only available in electronic form at the CDS"}
+]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"Imaging parameters (weighting, robust, cell, image size, masks, thresholds) and 12-m/7-m combination method",
+"CASA version and calibration route",
+"Line-free channels and continuum-subtraction details",
+"RADEX grid specifics and CO abundance and partition-function inputs for the mass equation",
+"Lobe regions and annulus width for momentum flux",
+"Literature sample values for the Class 0 and Class I relations and luminosities from Paper I",
+"Correct archive project code (2012.0.00781.S printed versus 2012.1.00781.S in the archive)"
+],
+"estimated_data_volume_inferred": "On the order of 50-150 GB for the Band 7 12-m and 7-m mosaics plus the Band 3 mosaic (inferred; not stated in the paper)",
+"score_inferred": 3,
+"score_reason": "ALMA data are public and the analysis formulas and many adopted parameters are given, but imaging settings, combination method, regions and several literature inputs are missing.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are public and results are numeric, but imaging parameters, lobe regions and RADEX grid details are missing, so a reproducer could not redo the cubes and masses from the paper alone.",
+"methods_papers": [
+{"citation": "(cite: Ana13) Duarte-Cabral et al. 2013", "why": "Momentum flux to accretion rate relation, entrainment and wind parameters, evolutionary tracks"},
+{"citation": "(cite: Ana12) Duarte-Cabral et al. 2012", "why": "Method for outflow mass, momentum and energy"},
+{"citation": "(cite: CabritBertout86) Cabrit and Bertout 1986", "why": "Biconical outflow inclination cases"},
+{"citation": "(cite: Cunningham16) Cunningham et al. 2016", "why": "Definitions of outflow length, velocity, dynamical time and inclination corrections"},
+{"citation": "(cite: Liu18) Liu et al. 2018", "why": "RADEX SLED fitting approach for outflow temperature"},
+{"citation": "(cite: Myers83) Myers et al. 1983", "why": "13CO/12CO ratio procedure for optical depth"}
+],
+"companion_papers": [
+{"citation": "(cite: Avison15) Avison et al. 2015 (Paper I)", "why": "ATCA radio continuum, HCHII regions, luminosities and ZAMS comparison"},
+{"citation": "(cite: Peretto13) Peretto et al. 2013", "why": "Original ALMA Cycle 0 N2H+ and continuum study, global collapse and cloud infall rate"}
+],
+"related_projects_or_surveys": [
+"ALMA Cycle 1 program 2012.0.00781.S (printed form)",
+"ALMA Cycle 0 project 2011.0.00474.S",
+"ATCA project C3023",
+"APEX CO observations of SDC335"
+]
+}

@@ -1,0 +1,799 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...966..228R",
+  "title": "The MUSE Ultra Deep Field (MUDF). V. Characterizing the Mass─Metallicity Relation for Low-mass Galaxies at z ∼ 1─2",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Revalski, Mitchell",
+  "n_authors": 16,
+  "arxiv_id": "2403.17047",
+  "doi": "10.3847/1538-4357/ad382c",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00285.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "There are also auxiliary data sets available, including observations with VLT UVES (ESO PIDs 65.O$-$0299, 68.A$-$0216, 69.A$-$0204, 102.A$-$0194, PI: V. D’Odorico), XMM-Newton (cite: Lusso2023), ALMA (PID 2021.1.00285.S, PI: M. Fumagalli)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "MUSE Ultra Deep Field (MUDF)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "galaxies at z = 0.23 - 2.39; two quasars at z ~ 3.22",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The MUDF is a unique $\\approx$ 2$'$ $\\times$ 2$'$ legacy field because it contains two closely-spaced quasars at $z\\approx$ 3.22"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "spectroscopic redshifts from MUSE and WFC3 emission line fits",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The MUDF is a unique $\\approx$ 2$'$ $\\times$ 2$'$ legacy field because it contains two closely-spaced quasars at $z\\approx$ 3.22"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the gas-phase mass-metallicity relation of low-mass galaxies at z~1-2 (down to M*~10^7.5 Msun), and how does it depend on SFR and environment, using HST WFC3 grism and VLT MUSE spectroscopy in the MUDF",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we extend the gas-phase mass-metallicity relation (MZR) at $z\\approx\\,$1$\\,$–$\\,$2 down to stellar masses of M$_{\\star}$ $\\approx$ 10$^{7.5}$ M$_{\\odot}$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00285.S",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "ALMA (PID 2021.1.00285.S, PI: M. Fumagalli)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLT MUSE",
+     "provided": {
+      "value": "142 hours of optical IFU spectroscopy (4600-9350 A, R~2000-4000)",
+      "evidence": [
+       {
+        "loc": "2.1 Survey Overview",
+        "quote": "consist of 142 hours of integral field unit spectroscopy in the optical (4600 $-$ 9350 Å) with a spectral resolution of $R\\approx$ 2000 $-$ 4000."
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST WFC3/IR G141 grism and F140W imaging",
+     "provided": {
+      "value": "90 orbits of near-infrared grism spectroscopy and imaging (PID 15637)",
+      "evidence": [
+       {
+        "loc": "2.1 Survey Overview",
+        "quote": "We obtained 90 orbits of WFC3/IR G141 grism spectroscopy (1.0 $-$ 1.7 $\\mu$m) and F140W imaging in HST Cycle 26"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST F336W, WFPC2 F702W and F450W",
+     "provided": {
+      "value": "Photometry for SED modeling",
+      "evidence": [
+       {
+        "loc": "2.1 Survey Overview",
+        "quote": "that provide five-filter photometry of the field for detailed SED modeling."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Local MZR/FMR calibrations (Table 5 gamma vs SFR) used to extrapolate low-mass slope",
+      "evidence": [
+       {
+        "loc": "4.3 The Mass-Metallicity-SFR Relation",
+        "quote": "we use the values provided in Table 5 of (cite: Curti2020) to extrapolate $\\gamma$ to the lower SFRs covered by our observations"
+       }
+      ]
+     },
+     "citation": "(cite: Curti2020)"
+    },
+    {
+     "what": {
+      "value": "Group catalog from Friends-of-Friends algorithm",
+      "evidence": [
+       {
+        "loc": "4.4 The Role of Environment",
+        "quote": "We used our group catalog developed in (cite: Dutta2023) to separate galaxies by environment"
+       }
+      ]
+     },
+     "citation": "(cite: Dutta2023)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Emission line fitting routine and Bayesian metallicity method with Curti2017 calibrations",
+      "evidence": [
+       {
+        "loc": "2.2 Spectral Fitting",
+        "quote": "We started with the emission line identification and [fitting routine](https://github.com/HSTWISP/wisp_analysis/tree/ahenry_mzr) described in (cite: Henry2021)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Henry2021)"
+    },
+    {
+     "what": {
+      "value": "HST grism custom calibration and photometric catalog",
+      "evidence": [
+       {
+        "loc": "2.1 Survey Overview",
+        "quote": "The observing strategy and custom-calibration for the HST imaging and grism spectroscopy are detailed extensively in (cite: Revalski2023)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Revalski2023)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA data are not used in this paper",
+    "Priors in the Bayesian metallicity model beyond reference to Henry2021",
+    "Best-fit MZR parameter values (in figure only)",
+    "Details of SPS fitting (Fossati et al. in prep)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "fit emission lines in MUSE+WFC3 spectra",
+    "method": {
+     "value": "Continuous wavelet transform detection, spline continuum, simultaneous Gaussian line fits with doublet ratio and redshift constraints",
+     "evidence": [
+      {
+       "loc": "2.2 Spectral Fitting",
+       "quote": "a cubic spline is first fit to the continuum of the WFC3 and MUSE spectra simultaneously, making an initial guess of the source redshift based on the strongest emission line."
+      }
+     ]
+    },
+    "software": [
+     "SciPy",
+     "wisp_analysis"
+    ],
+    "key_parameters": [
+     {
+      "value": "minimum 4 sigma integrated line detection; delta z up to 0.00334 between line groups",
+      "evidence": [
+       {
+        "loc": "2.2 Spectral Fitting",
+        "quote": "These sets of lines are allowed to vary from one another by up to $\\delta z$ = 0.00334 (1000 km s$^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "[N II] 6585 fixed to 10% of Halpha when in grism",
+      "evidence": [
+       {
+        "loc": "2.2 Spectral Fitting",
+        "quote": "we fix the flux of \\[N II\\] $\\lambda$6585 to 10% of H$\\alpha$ in the fitting procedure"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection; 97% recovery of sources found by other methods",
+     "evidence": [
+      {
+       "loc": "2.2 Spectral Fitting",
+       "quote": "recovers 97% of sources that were identified by visual inspection or through other automated line finding routines."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "derive stellar masses and SFRs",
+    "method": {
+     "value": "SED fitting of photometry and MUSE spectra with MC-SPF, BC03 models, Chabrier IMF, exponentially declining SFH, stellar metallicity iterated",
+     "evidence": [
+      {
+       "loc": "3.1 Stellar Population Synthesis Models",
+       "quote": "simultaneously fitting the multiwavelength photometry and the MUSE spectra (when available) with the Monte Carlo Spectro-Photometric Fitter (MC-SPF) code"
+      }
+     ]
+    },
+    "software": [
+     "MC-SPF"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "double Calzetti attenuation, young stars 2.27 x A_V",
+      "evidence": [
+       {
+        "loc": "3.1 Stellar Population Synthesis Models",
+        "quote": "while the same curve is normalised by 2.27 $\\times A_V$ for stars younger than 10 Myr"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "select star-forming sample and stack spectra",
+    "method": {
+     "value": "[O III] S/N>=3, MEx AGN removal, S/N>=5 samples binned in six mass bins, median stacks with bootstrap errors",
+     "evidence": [
+      {
+       "loc": "3.3 Subsample Construction",
+       "quote": "A median spectrum is then calculated for each mass bin, and the uncertainties are determined using bootstrap resampling (cite: Henry2021)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Individual galaxies compared with stacks; adding next highest-mass targets changes metallicity by <0.04 dex",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "the derived metallicities agree to within 0.04 dex, which is the size of our Bayesian grid interval, in all three cases."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "derive metallicities (strong-line Bayesian and direct method)",
+    "method": {
+     "value": "Bayesian Curti2017 R2, R3, O32 calibrations; direct Te method with PyNeb for [O III]4363 and 1666 sources",
+     "evidence": [
+      {
+       "loc": "3.5.2 Direct Method",
+       "quote": "We then use PyNeb (v1.1.17; (cite: Luridiana2015)) to convert the \\[O III\\] $\\lambda$4363 / $\\lambda$5007 and $\\lambda$1666 / $\\lambda$5007 ratios to electron temperatures"
+      }
+     ]
+    },
+    "software": [
+     "PyNeb"
+    ],
+    "key_parameters": [
+     {
+      "value": "n_e = 250 cm^-3",
+      "evidence": [
+       {
+        "loc": "3.5.2 Direct Method",
+        "quote": "We assume an electron density of n$_e =$ 250 cm$^{-3}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "solar 12+log(O/H)=8.69",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "adopt a solar value of 12 + log(O/H)$_{\\odot}$ = 8.69 $\\pm$ 0.05"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Bayesian framework with mostly flat priors",
+     "evidence": [
+      {
+       "loc": "3.5.1 Bayesian Method",
+       "quote": "In most cases the priors have flat distributions except when informed by emission line diagnostics"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Strong-line vs direct method comparison for 12 sources",
+     "evidence": [
+      {
+       "loc": "4.1 Validating Strong-line Calibrations with the T$_{e}$ Method",
+       "quote": "systematic offset of only 0.03 dex and a dispersion of 0.17 dex between the two methods"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "fit MZR and M-Z-SFR relation",
+    "method": {
+     "value": "Curti2020 functional form fit with LMFIT jointly with Henry2021 data; gamma as function of SFR",
+     "evidence": [
+      {
+       "loc": "4.2 The Mass-Metallicity Relation",
+       "quote": "We used the [LMFIT](https://lmfit.github.io//lmfit-py/) package (cite: Newville2023) to simultaneously fit our results with those of (cite: Henry2021)"
+      }
+     ]
+    },
+    "software": [
+     "LMFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Comparison to Henry2021, Sanders, He2024",
+     "evidence": [
+      {
+       "loc": "4.2 The Mass-Metallicity Relation",
+       "quote": "These results are also very consistent with the recent study by (cite: He2024) at similar redshifts."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "SciPy",
+    "version": "v1.2.1",
+    "used_for": {
+     "value": "CWT emission line detection",
+     "evidence": [
+      {
+       "loc": "2.2 Spectral Fitting",
+       "quote": "within the [SciPy](https://www.scipy.org) (v1.2.1) [signal](https://docs.scipy.org/doc/scipy/reference/signal.html) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyNeb",
+    "version": "v1.1.17",
+    "used_for": {
+     "value": "direct-method temperatures and abundances",
+     "evidence": [
+      {
+       "loc": "3.5.2 Direct Method",
+       "quote": "We then use PyNeb (v1.1.17; (cite: Luridiana2015))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LMFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "fitting MZR",
+     "evidence": [
+      {
+       "loc": "4.2 The Mass-Metallicity Relation",
+       "quote": "We used the [LMFIT](https://lmfit.github.io//lmfit-py/) package (cite: Newville2023)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Cloudy",
+    "version": "not stated",
+    "used_for": {
+     "value": "photoionization models for doublet ratio limits",
+     "evidence": [
+      {
+       "loc": "2.2 Spectral Fitting",
+       "quote": "based on atomic physics and Cloudy photoionization models (cite: Ferland2017)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MC-SPF",
+    "version": "not stated",
+    "used_for": {
+     "value": "stellar mass and SFR from SED fitting",
+     "evidence": [
+      {
+       "loc": "3.1 Stellar Population Synthesis Models",
+       "quote": "Monte Carlo Spectro-Photometric Fitter (MC-SPF) code (cite: Fossati2018)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "MZR metallicity at log M*~7.5, z~1-2",
+    "value": "7.8",
+    "uncertainty": "0.1",
+    "units": "12+log(O/H)",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 The Mass-Metallicity Relation",
+      "quote": "log(O/H) + 12 $\\approx$ 7.8 $\\pm$ 0.1 (15% solar) at log(M$_{\\star}$/M$_{\\odot}$) $\\approx$ 7.5"
+     }
+    ]
+   },
+   {
+    "quantity": "Strong-line vs direct offset",
+    "value": "0.03",
+    "uncertainty": "dispersion 0.17 dex",
+    "units": "dex",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1 Validating Strong-line Calibrations with the T$_{e}$ Method",
+      "quote": "systematic offset of only 0.03 dex and a dispersion of 0.17 dex between the two methods"
+     }
+    ]
+   },
+   {
+    "quantity": "MZR offset from local",
+    "value": "~0.3",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 The Mass-Metallicity Relation",
+      "quote": "We confirm that the MZR resides $\\sim$0.3 dex lower in metallicity than local galaxies"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "Strong-line calibrations are valid at z~2.3",
+    "experiment": "Compare Bayesian strong-line and direct Te metallicities for 12 sources",
+    "result": "offset 0.03 dex, dispersion 0.17 dex",
+    "finding": "Calibrations valid up to z~2.5",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 Validating Strong-line Calibrations with the T$_{e}$ Method",
+      "quote": "the results show the validity of using these strong-line calibrations up to $z \\approx$ 2.5."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The MZR turns over at low mass at z~1-2",
+    "experiment": "Stacked spectra in six mass bins",
+    "result": "metallicity decreases to 7.8 at 10^7.5",
+    "finding": "no turnover",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2 The Mass-Metallicity Relation",
+      "quote": "without evidence of a turnover or flattening in the shape of the MZR at the lowest masses"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Group galaxies are more metal rich than isolated",
+    "experiment": "FoF groups, KS test",
+    "result": "0.1-0.2 dex enhancement",
+    "finding": "not statistically significant",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.4 The Role of Environment",
+      "quote": "this slight enhancement of metallicity in group galaxies is not statistically significant according to the KS test"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small number of galaxies with individual metallicities limits environment comparison",
+     "evidence": [
+      {
+       "loc": "6 Conclusions",
+       "quote": "there are a small number of galaxies with individual metallicity measurements between the environments"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "ALMA plays no role in the analysis",
+    "Stacks in lowest mass bin contain only 9 galaxies"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Analysis code at github.com/mrevalski/mudf_analysis and wisp_analysis",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "<https://github.com/mrevalski/mudf_analysis>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "SPS fitting details (in preparation)",
+    "Extinction priors from Henry2021"
+   ],
+   "estimated_data_volume_inferred": "Not applicable for ALMA; HST and MUSE products of tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Public HST/MUSE data and code, but ALMA unused and some methods deferred to other papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA data is not part of the analysis."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Henry2021)",
+     "why": "Bayesian metallicity method and line fitting"
+    },
+    {
+     "citation": "(cite: Revalski2023)",
+     "why": "HST data calibration"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Fossati2019)",
+     "why": "MUDF MUSE survey"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MUDF",
+    "WISP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-50684dd65642ddf2eea6a7ff5af709e0",
+  "batch_id": "msgbatch_015xvy2vr7Jjr74fC6RAsmHN",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:10:05",
+  "usage": {
+   "input_tokens": 60262,
+   "output_tokens": 6100,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.091369,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 40,
+  "quotes_ok": 40,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 32,
+   "rate": 0.416
+  },
+  "evidence_ok": true
+ }
+}

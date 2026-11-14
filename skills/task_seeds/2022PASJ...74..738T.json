@@ -1,0 +1,379 @@
+{
+ "bibcode": "2022PASJ...74..738T",
+ "title": "ALMA astrometry of the objects within 0.5 pc of Sagittarius A<SUP>*</SUP>",
+ "year": 2022,
+ "doi": "10.1093/pasj/psac031",
+ "arxiv_id": "2204.06778",
+ "fields": [
+  "stellar_physics",
+  "milky_way_ism",
+  "agn_and_quasars"
+ ],
+ "question": "Whether ALMA can serve as a powerful tool for precision astrometry of compact objects and stars in the Nuclear Star Cluster within 0.5 pc of Sagittarius A* by measuring relative positions and proper motions.",
+ "alma_project_codes": [
+  "2015.1.01080.S",
+  "2017.1.00503.S",
+  "2018.1.001124.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "226 GHz: 0.037'' x 0.025'', PA=85 deg (NW), 0.029'' x 0.020'', PA=86 deg (BW); H30a: 0.035'' x 0.023'', PA=86 deg (NW); 230 GHz: 0.027'' x 0.024'', PA=72 deg (NW); 343 GHz: 0.107'' x 0.101'', PA=-80 deg (BW), 0.102'' x 0.096'', PA=80 deg (UW)",
+  "sensitivity": "226 GHz continuum: 12 uJy/beam (NW), 15 uJy/beam (BW); H30a line: 110 uJy/beam per 20 km/s channel (NW); 230 GHz continuum: 39 uJy/beam (NW); 343 GHz continuum: 100 uJy/beam (BW), 80 uJy/beam (UW)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Infrared proper motions of stars in the Nuclear Star Cluster for comparison in Table 3 and text",
+    "evidence": [
+     {
+      "loc": "Proper Motion Referenced to Sgr A* of the Detected Objects in the Nuclear Star Cluster",
+      "quote": "The proper motions by IR observations are also shown for comparison in Table 3 ((cite: Paumard), (cite: Muzic2008), (cite: Schodel2009))."
+     },
+     {
+      "loc": "Proper Motion Referenced to Sgr A* of the Detected Objects in the Nuclear Star Cluster",
+      "quote": "The observed proper motions of IRS13E1, $V_\\mathrm{Ra}=-520\\pm32$ km s$^{-1}$, $V_\\mathrm{Dec}=453\\pm21$ km s$^{-1}$, is not consistent with that by IR observations (e.g. $V_\\mathrm{Ra}=-143\\pm1$ km s$^{-1}$, $V_\\mathrm{Dec}=-106\\pm1$ km s$^{-1}$ in (cite: Fritz2010), $V_\\mathrm{Ra}=-195\\pm8$ km s$^{-1}$, $V_\\mathrm{Dec}=-102\\pm5$ km s$^{-1}$ in (cite: Schodel2009))."
+     },
+     {
+      "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+      "quote": "The derived proper motions of IRS13E3 are nearly equal to those by IR observations (e.g. $V_\\mathrm{Ra}=-105\\pm23$ km s$^{-1}$, $V_\\mathrm{Dec}=-16\\pm27$ km s$^{-1}$ in (cite: Schodel2009), $V_\\mathrm{Ra}=-82\\pm9$ km s$^{-1}$, $V_\\mathrm{Dec}=8\\pm9$ km s$^{-1}$ in (cite: Fritz2010), $V_\\mathrm{Ra}=-97\\pm18$ km s$^{-1}$, $V_\\mathrm{Dec}=-14\\pm15$ km s$^{-1}$in (cite: Eckart2013))."
+     }
+    ]
+   },
+   "citation": "Paumard et al. 2006 (cite: Paumard), Muzic et al. 2008 (cite: Muzic2008), Schodel et al. 2009 (cite: Schodel2009), Fritz et al. 2010 (cite: Fritz2010), Eckart et al. 2013 (cite: Eckart2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Sub-select observation epochs to minimize time-variability artifacts of Sgr A* and perform iterative self-calibration and continuum/line imaging",
+   "method": "Select first 7 days of Oct 2017 data and last 2 days of Jun 2019 data; perform iterative phase and amplitude self-calibration with gaincal, applycal, and tclean; subtract continuum with uvcontsub (fitorder=1) and image H30alpha line with tclean.",
+   "software": [
+    "CASA",
+    "tclean",
+    "gaincal",
+    "applycal",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "solint='inf' (first 2 self-cal iterations, phase only), solint='int' (successive iterations, then phase+amplitude), 7-8 iterations",
+    "natural weight and Briggs weight (robust parameter = 0.5)"
+   ],
+   "assumptions": [
+    "Sources in FOV are assumed non-variable during synthesis imaging"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure astrometric positions, peak flux densities, and angular sizes of Sgr A* and compact objects in the continuum maps",
+   "method": "2-D Gaussian fitting and deconvolution on the continuum maps at 343 GHz (2016.693), 226 GHz (2017.773, Briggs weight chosen for positions), and 230 GHz (2019.471, natural weight) using CASA task imfit.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Point source threshold: deconvolved size much smaller than synthesized beam (30 mas at 230 GHz, 40 mas at 226 GHz, 100 mas at 343 GHz)"
+   ],
+   "assumptions": [
+    "WR stars are assumed not to vary significantly in flux density within the elapsed time between 2017.773 and 2019.471"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive proper motions relative to Sgr A* and evaluate orbital kinematics",
+   "method": "Subtract Sgr A* position from star positions at 2017.773 and 2019.471, compute angular shifts (Delta Ra, Delta Dec) over Delta t = 1.698 yr, convert to linear velocities at d = 8.0 kpc, and compare with Keplerian orbital velocity limits around Sgr A*.",
+   "software": [],
+   "key_parameters": [
+    "Elapsed time Delta t = 1.698 year"
+   ],
+   "assumptions": [
+    "Galactic center distance d = 8.0 kpc; GCBH mass M_GCBH ~ 4 x 10^6 M_sun"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure radial velocities and line widths from H30alpha recombination line profiles",
+   "method": "Extract H30alpha spectra toward compact objects and fit 1-D Gaussian profiles to determine central velocity and deconvolved FWHM velocity width.",
+   "software": [],
+   "key_parameters": [
+    "Velocity channel width Delta V ~ 20 km s^-1; instrumental broadening correction sqrt(Delta V_obs^2 - (2*sampling)^2)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of detected compact objects around Sgr A* (Oct 2017 / 2017.773)",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We determined the relative positions to Sgr A$^\\ast$ of 65 compact objects in the area with the accuracy of $\\sim0.001\\ensuremath{''}$."
+    },
+    {
+     "loc": "Continuum Maps and Positions of the Detected Objects",
+     "quote": "The total number of the detected objects around Sgr A$^\\ast$ is 65."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of detected compact objects with derived relative positions and proper motions (Jun 2019 / 2019.471)",
+   "value": "64",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We also analyzed the similar ALMA archival data obtained in June 2019 and determined the 64 relative positions in these objects."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "We derived the proper motions relative to Sgr A$^\\ast$ of the 64 objects by comparing these relative positions."
+    }
+   ]
+  },
+  {
+   "quantity": "Position of Sgr A* at 226 GHz (t_obs = 2017.773, RA ICRS)",
+   "value": "17h45m40.03338820s",
+   "uncertainty": "+-0.00000025s",
+   "units": "hms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 1 | Sgr A$^\\ast$ | 40.033903$\\pm$0.000034 | 40.03338820$\\pm$0.00000025 | 40.03299175$\\pm$0.00000017 | 28.224140$\\pm$0.000506 | 28.23047008$\\pm$0.0000015 | 28.24243361$\\pm$0.0000018 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Position of Sgr A* at 226 GHz (t_obs = 2017.773, Dec ICRS)",
+   "value": "-29d00'28.23047008''",
+   "uncertainty": "+-0.00000147''",
+   "units": "dms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Maps and Positions of the Detected Objects",
+     "quote": "The position of Sgr A$^\\ast$ at 226 GHz was $\\alpha_{\\rm ICRS}$ = $17^{\\rm h}45^{\\rm m}40^{\\rm s}.40.03338820\\pm0^{\\rm s}.00000025$, $\\delta_{\\rm ICRS}$= $-29^{\\circ}00'28.23047008\\ensuremath{''}\\pm0.00000147\\ensuremath{''}$ at $t_\\mathrm{obs}=2017.773$ year using 2-D Gaussian fitting for the continuum map using Briggs weight (CASA task, `imfit`[^2])."
+    }
+   ]
+  },
+  {
+   "quantity": "Position of Sgr A* at 230 GHz (t_obs = 2019.471, RA ICRS)",
+   "value": "17h45m40.03299175s",
+   "uncertainty": "+-0.00000017s",
+   "units": "hms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Maps and Positions of the Detected Objects",
+     "quote": "The position of Sgr A$^\\ast$ was $\\alpha_{\\rm ICRS}$ = $17^{\\rm h}45^{\\rm m}40^{\\rm s}.03299175\\pm0^{\\rm s}.00000017$, $\\delta_{\\rm ICRS}$= $-29^{\\circ}00'28.24243361\\ensuremath{''}\\pm0.00000180\\ensuremath{''}$ at $t_\\mathrm{obs}=2019.471$ year using 2-D Gaussian fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "Position of Sgr A* at 230 GHz (t_obs = 2019.471, Dec ICRS)",
+   "value": "-29d00'28.24243361''",
+   "uncertainty": "+-0.00000180''",
+   "units": "dms",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Maps and Positions of the Detected Objects",
+     "quote": "The position of Sgr A$^\\ast$ was $\\alpha_{\\rm ICRS}$ = $17^{\\rm h}45^{\\rm m}40^{\\rm s}.03299175\\pm0^{\\rm s}.00000017$, $\\delta_{\\rm ICRS}$= $-29^{\\circ}00'28.24243361\\ensuremath{''}\\pm0.00000180\\ensuremath{''}$ at $t_\\mathrm{obs}=2019.471$ year using 2-D Gaussian fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux density of Sgr A* at 343 GHz (t_obs = 2016.693)",
+   "value": "2.182",
+   "uncertainty": "+-0.027",
+   "units": "Jy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Region within 0.1 pc of Sgr A*",
+     "quote": "The peak flux densities of Sgr A$^\\ast$ are $S_\\nu=2.182\\pm0.027$ Jy beam$^{-1}$ at 343 GHz at 2016.693 year, $S_\\nu=3.069\\pm0.0007$ Jy beam$^{-1}$ at 226 GHz at 2017.773 year, and $S_\\nu=3.570\\pm0.0007$ Jy beam$^{-1}$ at 230 GHz at 2019.471 year, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux density of Sgr A* at 226 GHz (t_obs = 2017.773)",
+   "value": "3069",
+   "uncertainty": "+-0.7",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Maps and Positions of the Detected Objects",
+     "quote": "The peak flux density of Sgr A$^\\ast$ at 226 GHz is derived to be $S_\\nu{\\mathrm{(226)}}=3069\\pm0.7$ mJy beam$^{-1}$ at $t_{\\mathrm{obs}}=2017.773$ year using 2-D Gaussian fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux density of Sgr A* at 230 GHz (t_obs = 2019.471)",
+   "value": "3569.8",
+   "uncertainty": "+-0.7",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Maps and Positions of the Detected Objects",
+     "quote": "The peak flux density of Sgr A$^\\ast$ at 230 GHz is derived to be $S_\\nu\\mathrm{(226)}=3569.8\\pm0.7$ mJy beam$^{-1}$ at $t_\\mathrm{obs}=2019.471$ using 2-D Gaussian fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean rotation velocity of IRS16 cluster",
+   "value": "343",
+   "uncertainty": "+-149",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Proper Motion Referenced to Sgr A* of the Detected Objects in the Nuclear Star Cluster",
+     "quote": "The mean rotation velocity of the cluster is estimated to be $\\overline{V}=343\\pm149$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Range of proper motion amplitudes V_perp of detected objects",
+   "value": "69 to 690",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Proper Motion Referenced to Sgr A* of the Detected Objects in the Nuclear Star Cluster",
+     "quote": "The amplitude of the proper motions is distributed in the range from $V_\\bot=69$ km s$^{-1}$ to $V_\\bot=690$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble mean proper motion of IRS13E cluster members (excluding IRS13E3 and IRS13Ec), V_Ra",
+   "value": "-218",
+   "uncertainty": "+-30",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "The ensemble mean proper motion of the member objects except IRS13E3 and IRS13Ec are estimated to be $\\overline{V_\\mathrm{Ra}}=-218\\pm30$ km s$^{-1}$ and $\\overline{V_\\mathrm{Dec}}=73\\pm30$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble mean proper motion of IRS13E cluster members (excluding IRS13E3 and IRS13Ec), V_Dec",
+   "value": "73",
+   "uncertainty": "+-30",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "The ensemble mean proper motion of the member objects except IRS13E3 and IRS13Ec are estimated to be $\\overline{V_\\mathrm{Ra}}=-218\\pm30$ km s$^{-1}$ and $\\overline{V_\\mathrm{Dec}}=73\\pm30$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble mean proper motion of IRS13N cluster members, V_Ra",
+   "value": "60",
+   "uncertainty": "+-210",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "The ensemble mean proper motions of the member stars are estimated to be $\\overline{V_\\mathrm{Ra}}=60\\pm210$ km s$^{-1}$ and $\\overline{V_\\mathrm{Dec}}=274\\pm76$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble mean proper motion of IRS13N cluster members, V_Dec",
+   "value": "274",
+   "uncertainty": "+-76",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "The ensemble mean proper motions of the member stars are estimated to be $\\overline{V_\\mathrm{Ra}}=60\\pm210$ km s$^{-1}$ and $\\overline{V_\\mathrm{Dec}}=274\\pm76$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha central velocity V_C of IRS13E5",
+   "value": "-169.8",
+   "uncertainty": "+-4.9",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "Using Gaussian fit, the central velocity and FWHM velocity width of IRS13E5 are estimated to be $V_\\mathrm{C}=-169.8\\pm4.9$ km s$^{-1}$ and $V_\\mathrm{FWHM}=\\sqrt{\\Delta V_\\mathrm{obs}^2-(2sampling)^2}=67\\pm12$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha FWHM velocity width V_FWHM of IRS13E5",
+   "value": "67",
+   "uncertainty": "+-12",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "Using Gaussian fit, the central velocity and FWHM velocity width of IRS13E5 are estimated to be $V_\\mathrm{C}=-169.8\\pm4.9$ km s$^{-1}$ and $V_\\mathrm{FWHM}=\\sqrt{\\Delta V_\\mathrm{obs}^2-(2sampling)^2}=67\\pm12$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha central velocity V_C of IRS13N delta",
+   "value": "-43.1",
+   "uncertainty": "+-2.3",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "Using Gaussian fit, the central velocity and FWHM velocity width of IRS13N$\\delta$ are estimated to be $V_\\mathrm{C}=-43.1\\pm2.3$ km s$^{-1}$ and $V_\\mathrm{FWHM}=\\sqrt{\\Delta V_\\mathrm{obs}^2-(2sampling)^2}=59\\pm16$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha FWHM velocity width V_FWHM of IRS13N delta",
+   "value": "59",
+   "uncertainty": "+-16",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Proper Motion of the Member Stars of the IRS13E and IRS13N Clusters",
+     "quote": "Using Gaussian fit, the central velocity and FWHM velocity width of IRS13N$\\delta$ are estimated to be $V_\\mathrm{C}=-43.1\\pm2.3$ km s$^{-1}$ and $V_\\mathrm{FWHM}=\\sqrt{\\Delta V_\\mathrm{obs}^2-(2sampling)^2}=59\\pm16$ km s$^{-1}$, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel/cell size and image dimensions used in tclean for the 226 GHz, 230 GHz, and 343 GHz continuum maps and H30alpha cubes",
+  "Deconvolver algorithm (e.g., hogbom, clark, mtmfs, multiscale) and cleaning stopping threshold/niter in tclean",
+  "Line-free channel ranges used for uvcontsub on the 231.9 GHz spectral window",
+  "Whether primary beam correction was applied before measuring peak flux densities of objects up to 13'' from the phase center",
+  "Exact dates or execution block IDs corresponding to 'the last two days' of the June 2019 archival dataset (2018.1.001124.S)",
+  "Fitting box sizes and background offset assumptions used in CASA imfit for crowded regions like IRS13E and IRS13N"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (cell size, imsize, deconvolver, niter, threshold, masking strategy during the 7-8 self-calibration loops)",
+  "Exact execution blocks / dates selected as 'the last two days' of 2018.1.001124.S",
+  "Line-free channel selection used in uvcontsub for the 231.9 GHz spectral window",
+  "Region/box definitions used for 2-D Gaussian fitting with CASA imfit for all 65 sources, particularly in crowded clusters (IRS13E, IRS13N)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "All three ALMA project codes, CASA versions, weighting schemes, self-calibration iteration counts, solution intervals, and full source catalogs (positions, fluxes, proper motions for 65 objects) are explicitly provided, though low-level tclean parameters, exact execution block IDs for June 2019, and imfit box regions are omitted.",
+ "rediscovery_reason": "All ALMA data are public in the archive with explicit project codes, the self-calibration and imfit astrometric workflow uses standard CASA tasks, and the main results are concrete numeric tables of positions, flux densities, and proper motions for 65 objects.",
+ "source_card": "cards/2022PASJ...74..738T/sonnet/card.md"
+}

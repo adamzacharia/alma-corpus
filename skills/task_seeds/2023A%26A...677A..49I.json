@@ -1,0 +1,278 @@
+{
+ "bibcode": "2023A&A...677A..49I",
+ "title": "Investigation of the rotational spectrum of CD<SUB>3</SUB>OD and an astronomical search toward IRAS 16293-2422",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202347105",
+ "arxiv_id": "2307.07801",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Develop an accurate spectroscopic model of CD3OD in low-lying torsional states up to 1.1 THz and search for CD3OD toward the protostellar system IRAS 16293-2422 using ALMA PILS data.",
+ "alma_project_codes": [
+  "2013.1.00278.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "488 v_t = 0 and 182 v_t = 1 microwave transitions of CD3OD up to J_max = 25 and K_max = 14",
+    "evidence": [
+     {
+      "loc": "Spectroscopic results",
+      "quote": "We started our analysis from the results of (cite: CD3OD_rot-K_2006), where the dataset, consisting of 488 $\\varv_{\\rm t} = 0$ and 182 $\\varv_{\\rm t} = 1$ microwave transitions, ranging up to $J_{\\rm max} = 25$ and $K_{\\rm max} = 14$"
+     }
+    ]
+   },
+   "citation": "(cite: CD3OD_rot-K_2006)"
+  },
+  {
+   "what": {
+    "value": "Far-infrared (FIR) data of CD3OD",
+    "evidence": [
+     {
+      "loc": "Spectroscopic results",
+      "quote": "Finally, at an advanced stage of our analysis, the FIR data from (cite: CD3OD_rot_etc-IM_2021) were added to the fit."
+     }
+    ]
+   },
+   "citation": "(cite: CD3OD_rot_etc-IM_2021)"
+  },
+  {
+   "what": {
+    "value": "Dipole moment function of CH3OH",
+    "evidence": [
+     {
+      "loc": "Spectroscopic results",
+      "quote": "The dipole moment function of (cite: MEKHTIEV1999171) was employed in our calculations"
+     }
+    ]
+   },
+   "citation": "(cite: MEKHTIEV1999171)"
+  },
+  {
+   "what": {
+    "value": "Permanent dipole moment components for CD3OD (mu_a = 0.867 D and mu_b = 1.430 D)",
+    "evidence": [
+     {
+      "loc": "Spectroscopic results",
+      "quote": "replaced by appropriate ones for CD$_3$OD $\\mu_a = 0.867$ D and $\\mu_b = 1.430$ D taken from (cite: MUKHOPADHYAY19981307)."
+     }
+    ]
+   },
+   "citation": "(cite: MUKHOPADHYAY19981307)"
+  },
+  {
+   "what": {
+    "value": "CH3OH main isotopolog column density constrained by CH3^18OH",
+    "evidence": [
+     {
+      "loc": "Astronomical search for CD$_3$OD",
+      "quote": "The quoted column density would correspond to an CD$_3$OD abundance of 0.02% relative to the main isotopolog CH$_3$OH (the column density of that constrained by observations of optically thin transitions of CH$_3^{18}$OH)."
+     }
+    ]
+   },
+   "citation": "(cite: deuteration_16293_2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit laboratory and literature torsion-rotation spectra of CD3OD using a RAM Hamiltonian",
+   "method": "Bootstrap least-squares fitting of 4337 FIR and 10001 microwave line frequencies using the rho-axis-method (RAM) Hamiltonian with a two-step diagonalization procedure.",
+   "software": [
+    "RAM36"
+   ],
+   "key_parameters": [
+    "117 Hamiltonian parameters; 31 torsional basis functions at first step, 11 at second step; J_max = 51"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Generate astronomical line list and partition function for CD3OD",
+   "method": "Calculate transition frequencies, uncertainties, lower state energies, and transition strengths up to 1.33 THz from the best-fit RAM Hamiltonian, and compute torsion-rotation partition function via direct summation.",
+   "software": [
+    "RAM36"
+   ],
+   "key_parameters": [
+    "v_t <= 1, J <= 55, |K_a| <= 25, frequency <= 1.33 THz, uncertainty < 0.1 MHz; partition function up to J = 90 and n_vt = 11"
+   ],
+   "assumptions": [
+    "Permanent dipole moment components mu_a = 0.867 D and mu_b = 1.430 D"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Search for CD3OD and derive upper column density limit in IRAS 16293-2422 B",
+   "method": "Calculate LTE synthetic spectra and compare the 16 strongest predicted lines of CD3OD against the ALMA PILS spectrum at the offset position near IRAS 16293-2422 B.",
+   "software": [],
+   "key_parameters": [
+    "v_LSR = 2.6 km s^-1, FWHM = 1 km s^-1, T_ex = 225 K"
+   ],
+   "assumptions": [
+    "Local thermodynamical equilibrium (LTE), T = 225 K, v_LSR = 2.6 km s^-1, FWHM = 1 km s^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Weighted RMS deviation of best-fit RAM Hamiltonian model",
+   "value": "0.71",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectroscopic results",
+     "quote": "A Hamiltonian model consisting of 117 parameters provided a fit with a weighted root mean square (RMS) deviation of 0.71 which was selected as our \"best fit\" for this paper."
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD parameter (1/2)V_3",
+   "value": "181.1021642",
+   "uncertainty": "0.0000055",
+   "units": "cm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Parameters of the RAM Hamiltonian for the CD$_3$OD molecule",
+     "quote": "$2_{2,0}$ | $(1-\\cos 3\\alpha)$ | $(1/2)V_3$ | $181.1021642(55)$"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD parameter F",
+   "value": "14.75939375",
+   "uncertainty": "0.00000090",
+   "units": "cm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Parameters of the RAM Hamiltonian for the CD$_3$OD molecule",
+     "quote": "$2_{2,0}$ | $p_\\alpha^2$ | $F$ | $14.75939375(90)$"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD parameter rho",
+   "value": "0.8219648943",
+   "uncertainty": "0.0000000019",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Parameters of the RAM Hamiltonian for the CD$_3$OD molecule",
+     "quote": "$2_{1,1}$ | $P_ap_\\alpha$ | $\\rho$ | $0.8219648943(19)$"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD rotational parameter A",
+   "value": "2.1693625",
+   "uncertainty": "0.0000090",
+   "units": "cm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Parameters of the RAM Hamiltonian for the CD$_3$OD molecule",
+     "quote": "$2_{0,2}$ | $P_a^2$ | $A$ | $2.1693625(90)$"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD rotational parameter B",
+   "value": "0.63055239",
+   "uncertainty": "0.00000026",
+   "units": "cm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Parameters of the RAM Hamiltonian for the CD$_3$OD molecule",
+     "quote": "$2_{0,2}$ | $P_b^2$ | $B$ | $0.63055239(26)$"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD rotational parameter C",
+   "value": "0.59843413",
+   "uncertainty": "0.00000022",
+   "units": "cm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Parameters of the RAM Hamiltonian for the CD$_3$OD molecule",
+     "quote": "$2_{0,2}$ | $P_c^2$ | $C$ | $0.59843413(22)$"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD upper column density limit toward IRAS 16293-2422 B",
+   "value": "2e15",
+   "uncertainty": "upper limit",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Astronomical search for CD$_3$OD",
+     "quote": "the column density is taken to be the maximum possible without overproducing lines compared to the RMS noise level of the data with a value of 2$\\times 10^{15}$ cm$^{-2}$."
+    },
+    {
+     "loc": "Conclusion",
+     "quote": "The upper column density limit of 2$\\times 10^{15}$ cm$^{-2}$ for CD$_3$OD was derived based on the assumption of an excitation temperature of 225 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CD3OD/CH3OH abundance ratio upper limit",
+   "value": "0.02",
+   "uncertainty": "upper limit",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Astronomical search for CD$_3$OD",
+     "quote": "The quoted column density would correspond to an CD$_3$OD abundance of 0.02% relative to the main isotopolog CH$_3$OH"
+    },
+    {
+     "loc": "Conclusion",
+     "quote": "Comparison with the CH$_3$OH main isotopolog (for which the column density is deduced from optically thin lines of CH$_3^{18}$OH) yields a CD$_3$OD/CH$_3$OH ratio as high as $\\sim$0.02%"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied D/H ratio from CD3OD upper limit",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Astronomical search for CD$_3$OD",
+     "quote": "If all D/H substitutions would be considered equally probable, this in turn would imply a D/H ratio of about 12%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact sky coordinates of the extracted spectrum offset position near IRAS 16293-2422 B",
+  "Software or code used to compute the LTE synthetic spectra for the ALMA PILS comparison",
+  "Assumed source size / beam filling factor for the LTE synthetic spectrum calculation",
+  "Exact value of the CH3OH reference column density used to compute the 0.02% relative abundance"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates of the 0.5'' offset position near IRAS 16293-2422 B used to extract the PILS spectrum",
+  "Assumed source size (beam filling factor) and continuum background temperature used in the LTE radiative transfer calculation",
+  "Local RMS noise value adopted in the 329-363 GHz spectral windows to set the 3 sigma threshold"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The spectroscopic dataset, Hamiltonian parameters, and calculated line list/partition function are fully published at CDS/CDMS, and the ALMA PILS data are public, though a few LTE modeling parameters (exact offset coordinates, source size) require consulting earlier PILS papers.",
+ "rediscovery_reason": "Both the CD3OD spectroscopic catalog (at CDS/CDMS) and the ALMA PILS dataset (2013.1.00278.S) are public, and the main astronomical result is a numeric upper limit on the column density derived from standard LTE synthetic spectra.",
+ "source_card": "cards/2023A%26A...677A..49I/sonnet/card.md"
+}

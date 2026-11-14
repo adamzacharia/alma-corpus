@@ -1,0 +1,634 @@
+{
+ "bibcode": "2026MNRAS.551g1645K",
+ "title": "A high-velocity SiO jet from S255N SMA3",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag1645",
+ "arxiv_id": "2608.28177",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Characterize the shape, velocity structure, and physical and kinematic properties of the SiO jet from S255N SMA3, and evaluate whether it is driven by a steady-state magneto-centrifugal disk wind or wide-angle entrainment-driven outflows.",
+ "alma_project_codes": [
+  "2023.1.01346.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m array",
+  "angular_resolution": "Continuum: 0.08 x 0.06 arcsec; CS 5-4: 0.16 x 0.12 arcsec; SiO 5-4: 0.11 x 0.08 arcsec; SiO 6-5: 0.10 x 0.07 arcsec",
+  "sensitivity": "Continuum: 0.16 mJy/beam; CS 5-4: 1.04 mJy/beam; SiO 5-4: 1.34 mJy/beam; SiO 6-5: 1.61 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Maser parallax distance to SMA1 of 1.78 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Maser parallax observations place SMA1 at a distance of 1.78 kpc (cite: Burns16)."
+     }
+    ]
+   },
+   "citation": "(cite: Burns16)"
+  },
+  {
+   "what": {
+    "value": "SiO abundance of 10^-7 with respect to molecular hydrogen in shocked regions",
+    "evidence": [
+     {
+      "loc": "Derived Flow Dynamics",
+      "quote": "Using an SiO abundance of $10^{-7}$ with respect to molecular hydrogen, appropriate for the shocked regions (cite: Schilke97)"
+     }
+    ]
+   },
+   "citation": "(cite: Schilke97)"
+  },
+  {
+   "what": {
+    "value": "Mean molecular weight mu_mol",
+    "evidence": [
+     {
+      "loc": "Derived Flow Dynamics",
+      "quote": "where $A_{\\text{pixel}}$ is the pixel area in cm$^2$, $\\mu_{\\text{mol}}$ is the mean molecular weight (cite: Kauffmann08), and $m_p$ is the proton mass."
+     }
+    ]
+   },
+   "citation": "(cite: Kauffmann08)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit 250 GHz continuum source properties and derive core/disk inclination and mass",
+   "method": "Fit a 2D Gaussian profile to the 250 GHz continuum emission peak using CASA imfit; derive disk inclination from deconvolved axis ratio and compute dust and total gas+dust mass from integrated flux.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "nu = 250 GHz"
+   ],
+   "assumptions": [
+    "Geometrically thin and circular protostellar disk for inclination lower limit",
+    "T_dust = 20 K, distance d = 1.78 kpc, gas-to-dust ratio = 100"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Construct moment maps, measure jet collimation, opening angle, inclination, de-projected velocity, length, and dynamical age",
+   "method": "Create moment 0 and moment 1 maps over +- 5-60 km/s; measure collimation ratio from red lobe extent over largest width; measure jet opening angle from half-power contour of SiO 5-4 integrated intensity; average disk and flow inclinations; de-project velocity and length to compute dynamical age for SiO and CS.",
+   "software": [],
+   "key_parameters": [
+    "Velocity range for moment maps: +- 5 to 60 km s^-1 relative to V_LSR = 7.8 km s^-1"
+   ],
+   "assumptions": [
+    "Azimuthal symmetry of the jet; opening angle is an upper limit on inclination angle; gas travelled at constant velocity since ejection"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct Position-Velocity (PV) diagrams along the jet axis and analyze episodic knots",
+   "method": "Extract PV diagrams along the jet axis for SiO J=5-4 and J=6-5; identify triangular velocity morphology and periodic vertical stripes of emission peaks at 0.2 arcsec intervals to calculate de-projected knot separation, ejection timescale, and Keplerian disk radius.",
+   "software": [],
+   "key_parameters": [
+    "PV contour levels: starting at 3 sigma in increments of 3 sigma; knot interval = 0.2 arcsec"
+   ],
+   "assumptions": [
+    "Keplerian disk rotation around a 0.7 M_sun protostar for translating periodicity timescale to disk radius"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive pixel-by-pixel SiO excitation temperature across the jet",
+   "method": "Convert spectral cubes from Jy/beam to brightness temperature (K) using beam solid angle from radio_beam; mask both SiO cubes at 5 sigma and integrate over channels with signal; perform a two-level rotation diagram analysis on a pixel-by-pixel basis between SiO J=6-5 and J=5-4 to compute T_ex, and take the mean across the core of the two outflow lobes.",
+   "software": [
+    "radio_beam",
+    "Astropy"
+   ],
+   "key_parameters": [
+    "5 sigma masking threshold for integrated intensity maps"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) and optically thin emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive outflow column densities, mass, momentum, kinetic energy, mass flow rate, force, and power",
+   "method": "Mask SiO cubes at 3 sigma; calculate SiO column density per velocity channel using T_ex = 42 K and partition function; convert to H2 column density using SiO abundance of 10^-7; sum over pixels and velocity channels to compute mass, inclination-corrected momentum and kinetic energy, and divide by dynamical age (343 yr) for rates.",
+   "software": [
+    "Astropy"
+   ],
+   "key_parameters": [
+    "3 sigma masking threshold; T_ex = 42 K; V_LSR = 7.8 km s^-1; inclination i = 48.6 +- 15 deg; dynamical age = 343 +- 181 yr"
+   ],
+   "assumptions": [
+    "Optically thin emission; LTE at T_ex = 42 K; SiO/H2 abundance = 10^-7; distance = 1.78 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SMA3 250 GHz continuum deconvolved major axis",
+   "value": "110.1",
+   "uncertainty": "+- 10.3",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "and a resolved source size of 110.1 $\\pm$ 10.3 mas $\\times$ 80.9$\\pm$8.9 mas at a position angle of 16$\\pm$17 deg when deconvolved from the synthesised beam."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA3 250 GHz continuum deconvolved minor axis",
+   "value": "80.9",
+   "uncertainty": "+- 8.9",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "and a resolved source size of 110.1 $\\pm$ 10.3 mas $\\times$ 80.9$\\pm$8.9 mas at a position angle of 16$\\pm$17 deg when deconvolved from the synthesised beam."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA3 250 GHz continuum deconvolved position angle",
+   "value": "16",
+   "uncertainty": "+- 17",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "and a resolved source size of 110.1 $\\pm$ 10.3 mas $\\times$ 80.9$\\pm$8.9 mas at a position angle of 16$\\pm$17 deg when deconvolved from the synthesised beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination angle (from continuum axis ratio)",
+   "value": "42.7",
+   "uncertainty": "+- 9",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "Using the values and uncertainties above, we derive an inclination of 42.7$\\pm9^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA3 250 GHz continuum integrated flux density",
+   "value": "18.6",
+   "uncertainty": "+- 1.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "The integrated intensity of the fit to the continuum emission is 18.6 $\\pm$ 1.2 mJy, which we can use to derive a mass for the protostellar disk/envelope."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA3 core dust mass",
+   "value": "0.007",
+   "uncertainty": "+- 0.005",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "Using the integrated flux calculated above, and the distance to source of 1.78 kpc, we find a dust mass of $\\sim$0.007$\\pm$0.005 M$_\\odot$, or a total gas and dust mass of $\\sim$0.7$\\pm$0.05 M$_\\odot$ assuming a gas to dust ratio of 100."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA3 core total gas and dust mass",
+   "value": "0.7",
+   "uncertainty": "+- 0.05",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and Core properties",
+     "quote": "Using the integrated flux calculated above, and the distance to source of 1.78 kpc, we find a dust mass of $\\sim$0.007$\\pm$0.005 M$_\\odot$, or a total gas and dust mass of $\\sim$0.7$\\pm$0.05 M$_\\odot$ assuming a gas to dust ratio of 100."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO jet collimation ratio",
+   "value": "4.75",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Jet Morphology and Velocity",
+     "quote": "Deriving a jet collimation ratio from the red lobe (in both transitions of SiO), by dividing the full jet lobe extent by its largest width, we find a collimation ratio of 4.75."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO jet opening angle",
+   "value": "54.5",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "From the three positions labelled in Figure 7, we derived an opening angle of 54.5$^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted mean system inclination angle",
+   "value": "48.6",
+   "uncertainty": "+- 15",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "However, expanding the uncertainty on the mean to include the lower limit from the ‘disk’ derived inclination results in roughly $48.6\\pm15^\\circ$, which we will use for the remainder of this work."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO jet peak line-of-sight velocity",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "The radial velocities of the SiO gas peak around $\\pm$ 60 km s$^{-1}$ from the LSR velocity of the target in both the red and blue shifted lobes."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO jet de-projected total velocity",
+   "value": "80",
+   "uncertainty": "+- 18",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "Using this equation, we find $v_{\\textrm{tot}} \\simeq 80\\pm18$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO jet de-projected length",
+   "value": "5800",
+   "uncertainty": "+- 1700",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "Using the same inclination angle to de-project the plane-of-sky jet length, the average measured plane of sky SiO jet lobe length of 2.15$''$ (or 3830 au at a distance of 1.78 kpc) translates to a jet length of 5800$\\pm$1700 au."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO jet dynamical age",
+   "value": "343",
+   "uncertainty": "+- 181",
+   "units": "yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "We derive a kinematic age for the SiO outflow 343$\\pm$181 yr."
+    }
+   ]
+  },
+  {
+   "quantity": "CS outflow peak line-of-sight velocity",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "We can also apply the same age analysis to the CS emission, which has a peak line of sight velocity of 50 km s$^{-1}$ in both the red and blue lobes."
+    }
+   ]
+  },
+  {
+   "quantity": "CS outflow de-projected length",
+   "value": "7270",
+   "uncertainty": "+- 2160",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "Using the same inclination angle as the SiO jet, we calculate an outflow length of 7270$\\pm$2160 au and derive a kinematic age of 520$\\pm$270 yr for the high velocity CS emission"
+    }
+   ]
+  },
+  {
+   "quantity": "CS outflow kinematic age",
+   "value": "520",
+   "uncertainty": "+- 270",
+   "units": "yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Opening and inclination angles and their implications for velocities and jet age",
+     "quote": "Using the same inclination angle as the SiO jet, we calculate an outflow length of 7270$\\pm$2160 au and derive a kinematic age of 520$\\pm$270 yr for the high velocity CS emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SiO excitation temperature",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Excitation Conditions Along the Jet",
+     "quote": "We find a mean excitation temperature of 42 K. We use this temperature in our kinematic calculations below."
+    }
+   ]
+  },
+  {
+   "quantity": "De-projected episodic knot separation",
+   "value": "540",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Episodic Ejection",
+     "quote": "The periodic spacing of $\\sim0.2''$ corresponds to a de-projected knot separation of $\\sim540$ au and an ejection timescale of $\\sim32$ yr, when using the derived jet velocity of 80 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Episodic ejection timescale",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Episodic Ejection",
+     "quote": "The periodic spacing of $\\sim0.2''$ corresponds to a de-projected knot separation of $\\sim540$ au and an ejection timescale of $\\sim32$ yr, when using the derived jet velocity of 80 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred Keplerian disk modulation radius",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Episodic Ejection",
+     "quote": "If this periodicity reflects a dynamical timescale in a Keplerian disk, this implies a radius of $\\sim9$ au given the derived mass of 0.7 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe SiO column density N[SiO]",
+   "value": "6.34",
+   "uncertainty": "+- 0.02",
+   "units": "10^16 cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe SiO column density N[SiO]",
+   "value": "6.32",
+   "uncertainty": "+- 0.02",
+   "units": "10^16 cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe H2 column density N[H2]",
+   "value": "6.35",
+   "uncertainty": "+- 0.02",
+   "units": "10^23 cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe H2 column density N[H2]",
+   "value": "6.32",
+   "uncertainty": "+- 0.02",
+   "units": "10^23 cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe outflow mass",
+   "value": "2.183",
+   "uncertainty": "+- 0.008",
+   "units": "10^-3 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe outflow mass",
+   "value": "2.129",
+   "uncertainty": "+- 0.008",
+   "units": "10^-3 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe outflow momentum",
+   "value": "1.111",
+   "uncertainty": "+- 0.004",
+   "units": "10^-1 M_sun km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe outflow momentum",
+   "value": "-0.899",
+   "uncertainty": "+- 0.004",
+   "units": "10^-1 M_sun km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe outflow kinetic energy",
+   "value": "6.11",
+   "uncertainty": "+- 0.03",
+   "units": "10^43 erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe outflow kinetic energy",
+   "value": "4.23",
+   "uncertainty": "+- 0.02",
+   "units": "10^43 erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe mass flow rate",
+   "value": "0.6",
+   "uncertainty": "+- 0.3",
+   "units": "10^-5 M_sun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe mass flow rate",
+   "value": "0.6",
+   "uncertainty": "+- 0.3",
+   "units": "10^-5 M_sun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe outflow force",
+   "value": "3",
+   "uncertainty": "+- 2",
+   "units": "10^-4 M_sun km/s/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe outflow force",
+   "value": "3",
+   "uncertainty": "+- 1",
+   "units": "10^-4 M_sun km/s/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Red lobe outflow power",
+   "value": "18",
+   "uncertainty": "+- 9",
+   "units": "10^40 erg/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Red | 6.34$\\pm$0.02 | 6.35$\\pm$0.02 | 2.183$\\pm$0.008 | 1.111$\\pm$0.004 | 6.11$\\pm$0.03 | 0.6$\\pm$0.3 | 3$\\pm$2 | 18$\\pm$9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue lobe outflow power",
+   "value": "12",
+   "uncertainty": "+- 7",
+   "units": "10^40 erg/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Blue | 6.32$\\pm$0.02 | 6.32$\\pm$0.02 | 2.129$\\pm$0.008 | -0.899$\\pm$0.004 | 4.23$\\pm$0.02 | 0.6$\\pm$0.3 | 3$\\pm$1 | 12$\\pm$7 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and ALMA pipeline version used for restoring measurement sets and imaging",
+  "Value of dust opacity kappa_nu at 250 GHz used in Equation 1 to derive dust mass",
+  "Spectral channel width / velocity resolution of the imaged spectral cubes",
+  "Pixel size (cell size) and image dimensions used in tclean",
+  "Whether primary beam correction was applied (important since SMA3 is offset by 6.5 arcsec from phase centre)",
+  "Which SiO transition (5-4 or 6-5) is reported in the final kinematic summary table (Table 3)",
+  "Line-free channel ranges used for uvcontsub",
+  "Exact numerical value of mean molecular weight mu_mol adopted from Kauffmann et al. (2008)"
+ ],
+ "missing_for_reproduction": [
+  "Value of dust opacity kappa_nu at 250 GHz used in Equation 1",
+  "Exact spatial masks/regions used to define the red and blue lobes and to exclude the noisy northern edge in the excitation temperature average",
+  "Exact velocity channel width used in tclean and whether cubes were convolved to a common beam prior to pixel-by-pixel ratio",
+  "Which SiO transition (or combination) is tabulated in Table 3",
+  "Interactive clean masks used during tclean"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "Archival ALMA project code, calibrators, execution blocks, weighting, continuum subtraction task, and all analytic equations for physical and kinematic quantities are clearly stated. However, a few key numerical parameters (dust opacity kappa_nu, channel width, cell size, exact spatial integration polygons, and which SiO transition is shown in Table 3) are omitted.",
+ "rediscovery_reason": "The ALMA data (2023.1.01346.S) are public, the reduction uses standard pipeline-restored visibilities plus natural-weighted tclean, and the main results (continuum Gaussian fit, jet velocity, collimation ratio, LTE excitation temperature, and outflow mass/momentum/energy) are concrete numeric targets.",
+ "source_card": "cards/2026MNRAS.551g1645K/sonnet/card.md"
+}

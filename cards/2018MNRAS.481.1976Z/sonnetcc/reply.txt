@@ -1,0 +1,484 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "We carried out ALMA Band 9 observations for our sample during Cycle 1 (PI: E. Daddi, Project ID: 2012.1.00775.S)"},
+{"loc": "abstract", "quote": "from six galaxies (four secure, two tentative) and estimate ensemble averages including non detections"}
+],
+"fields": ["high_z_galaxies"],
+"question": {
+"value": "Are z~2 main-sequence galaxies [C II] deficient, and what physical parameter drives [C II] luminosity (is [C II] an empirical molecular gas mass tracer)?",
+"evidence": [
+{"loc": "3 Results and Discussion", "quote": "The main motivation of this work is to understand which is the dominant physical parameter affecting the"},
+{"loc": "1 Introduction", "quote": "Interestingly we find that its luminosity traces galaxies’ molecular gas mass and could therefore be used as an alternative to other proxies"}
+]
+},
+"targets": [
+{
+"name": "10 main-sequence galaxies at 1.73 < z < 1.94 in GOODS-S (IDs 9347, 6515, 10076, 9834, 9681, 10049, 2861, 2910, 7118, 8490)",
+"details": [
+{"loc": "2.1 Sample selection and ancillary data", "quote": "we selected targets in the GOODS-S field"},
+{"loc": "2.1 Sample selection and ancillary data", "quote": "Our sample therefore consists of 10 typical star-forming, main-sequence galaxies at redshift"},
+{"loc": "2.1 Sample selection and ancillary data", "quote": "Spectroscopic redshifts for our sources are all publicly available and were determined in different ways"},
+{"loc": "Table 1", "quote": "53.154900 | -27.809397"}
+],
+"coordinates": "Per-source RA/DEC in degrees in Table 1 (e.g. ID9347: 53.154900, -27.809397); uncorrected HST coordinates",
+"redshift_or_distance": "1.73 <= z <= 1.94 (spectroscopic); Table 1 gives z_opt and z_[CII] per source",
+"distance_source": "Spectroscopic redshifts from GMASS (Kurk2013), K20, Popesso2009, Pope2008 and own Keck/LRIS data, refined by template fitting; cosmology H0 = 70, Om = 0.3, OL = 0.7"
+}
+],
+"alma_project_codes": [
+{"code": "2012.1.00775.S", "evidence": [{"loc": "2.2 Details of ALMA observations", "quote": "(PI: E. Daddi, Project ID: 2012.1.00775.S)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 9 ([C II] line plus ~450 um continuum) and Band 7 (850 um continuum)", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "We carried out ALMA Band 9 observations for our sample during Cycle 1"},
+{"loc": "2.2 Details of ALMA observations", "quote": "we also requested additional observations in Band 7 to detect the 850"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "[C II] observed at 645-696 GHz; four sidebands of 1.875 GHz each; spectral resolution 0.976 MHz (later binned)", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "in the frequency range $\\nu_{\\mathrm{obs}} = 645$ – $696$ GHz"},
+{"loc": "2.1 Sample selection and ancillary data", "quote": "ALMA observations are carried out using four, sometimes adjacent, sidebands (SBs) covering 1.875 GHz each"},
+{"loc": "2.2 Details of ALMA observations", "quote": "We set a spectral resolution of 0.976 MHz"}
+]},
+{"field": "continuum_bandwidth", "value": "850 um continuum from the full spectral range; 450 um continuum excluding [C II] line channels", "evidence": [
+{"loc": "2.4 Continuum emission", "quote": "We created averaged continuum maps by integrating the full spectral range for the observations at 850"},
+{"loc": "2.4 Continuum emission", "quote": "we made sure to exclude the channels where the flux is dominated by the"}
+]},
+{"field": "configurations", "value": "C32-3 (C32-1 was requested)", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "the observations were taken in the C32-3 configuration"}
+]},
+{"field": "angular_resolution", "value": "Band 9 synthesized beam 0.3\" x 0.2\"; Band 7 synthesised beam 1\" x 0.5\"", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "with a synthesized beam FWHM $=$ 0.3” $\\times$ 0.2”"},
+{"loc": "2.2 Details of ALMA observations", "quote": "The synthesised beam has FWHM $=$ 1” $\\times$ 0.5”"}
+]},
+{"field": "max_recoverable_scale", "value": "~3.5\" (Band 9); ~6\" (Band 7)", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "and a maximum recoverable scale of $\\sim$ 3.5”"},
+{"loc": "2.2 Details of ALMA observations", "quote": "the maximum recoverable scale is $\\sim$ 6”"}
+]},
+{"field": "sensitivity", "value": "Band 9 target 1.5-2 mJy/beam over a 350 km/s bandwidth; Band 7 continuum 140 uJy/beam", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "to reach a homogeneous sensitivity of 1.5 – 2 mJy/beam over a bandwidth of 350"},
+{"loc": "2.2 Details of ALMA observations", "quote": "For each galaxy we reached a sensitivity of 140"}
+]},
+{"field": "time_on_source", "value": "Band 9: 8-13 min per galaxy including overheads; Band 7: ~2 min on source", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "for 8 – 13 minutes including overheads"},
+{"loc": "2.2 Details of ALMA observations", "quote": "minutes on source"}
+]},
+{"field": "observing_dates", "value": "3 and 4 November 2013 (Band 9)", "evidence": [
+{"loc": "Table 1 (observing log)", "quote": "03 Nov 2013"},
+{"loc": "Table 1 (observing log)", "quote": "04 Nov 2013"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Own Cycle 1 program (PI: E. Daddi)", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "(PI: E. Daddi, Project ID: 2012.1.00775.S)"}
+]}
+],
+"lines_targeted": [
+{"species": "C+ ([C II])", "transition": "2P3/2 - 2P1/2 (158 um)", "rest_frequency": "1900.54 GHz", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "rest-frame 158"},
+{"loc": "2.2 Details of ALMA observations", "quote": "= 1900.54"}
+]}
+],
+"other_facilities": [
+{"name": "HST (CANDELS)", "provided": {"value": "Optical and near-IR imaging used for stellar mass/SFR maps, sizes and positions", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "are available from the CANDELS survey"}]}},
+{"name": "Spitzer and Herschel", "provided": {"value": "24-500 um photometry for IR SED fitting", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "photometry in the wavelength range 24 $\\mu$m – 500 $\\mu$m is also available"}]}},
+{"name": "VLA", "provided": {"value": "6 GHz radio observations used to check ALMA positions", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "were taken with the Karl G. Jansky Very Large Array (VLA) with 0.3” $\\times$ 0.6” resolution"}, {"loc": "2.2 Details of ALMA observations", "quote": "The ALMA target positions are consistent with those from VLA."}]}},
+{"name": "VLT/FORS2 and Keck/LRIS spectroscopy", "provided": {"value": "Rest-frame UV spectra used to refine redshifts", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "we applied to our VLT/FORS2 and Keck UV rest-frame spectra the same approach described in (cite: Gobat2017)"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Spitzer/Herschel IR photometry (deblended)", "evidence": [{"loc": "2.4 Continuum emission", "quote": "The estimated continuum fluxes were used, together with the available *Spitzer* and *Herschel* data (cite: Elbaz2011)"}]}, "citation": "(cite: Elbaz2011), (cite: Wang2017)"},
+{"what": {"value": "Spectroscopic redshifts for most targets", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "5 of them are from the GMASS survey (cite: Kurk2013)"}]}, "citation": "(cite: Kurk2013), (cite: Cimatti2002), (cite: Mignoli2005), (cite: Popesso2009), (cite: Pope2008)"},
+{"what": {"value": "Global-SED stellar masses used in the analysis", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "in good agreement with that estimated by (cite: Santini2014) fitting the global ultraviolet (UV) to IR SED"}]}, "citation": "(cite: Santini2014)"},
+{"what": {"value": "Main-sequence definition used to select targets and compute sSFR/sSFR_MS", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "as defined by (cite: Rodighiero2014)"}]}, "citation": "(cite: Rodighiero2014)"},
+{"what": {"value": "Mass-metallicity relation used for gas-phase metallicity", "evidence": [{"loc": "2.4 Continuum emission", "quote": "Given their stellar mass and the mass-metallicity relation by (cite: Zahid2014) we estimated their gas phase metallicity."}]}, "citation": "(cite: Zahid2014)"},
+{"what": {"value": "Metallicity-dependent gas-to-dust ratio", "evidence": [{"loc": "2.4 Continuum emission", "quote": "depending on its metallicity, as prescribed by (cite: Magdis2012)"}]}, "citation": "(cite: Magdis2012)"},
+{"what": {"value": "Integrated Schmidt-Kennicutt relation for main-sequence galaxies (molecular gas masses)", "evidence": [{"loc": "2.4 Continuum emission", "quote": "the integrated Schmidt-Kennicutt relation for main-sequence sources reported by (cite: Sargent2014)"}]}, "citation": "(cite: Sargent2014)"},
+{"what": {"value": "Literature [C II], IR, CO, gas mass, sSFR and metallicity compilations at low and high redshift", "evidence": [{"loc": "2.5 Other samples from the literature", "quote": "datasets from the literature, both at low and high redshift"}]}, "citation": "(cite: Stacey1991), (cite: Stacey2010), (cite: Gullberg2015), (cite: Capak2015), (cite: Diaz-Santos2017), (cite: Cormier2015), (cite: Brauher2008), (cite: Contursi2017), (cite: Magdis2014), (cite: Huynh2014), (cite: Ferkinhoff2014), (cite: Schaerer2015), (cite: Brisbin2015), (cite: Hughes2017), (cite: Accurso2017)"},
+{"what": {"value": "Depletion-time versus sSFR models compared with [C II]/IR", "evidence": [{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "we considered two models ((cite: Sargent2014), (cite: Scoville2017)) predicting how the depletion time of galaxies changes as a function of their distance from the main-sequence"}]}, "citation": "(cite: Sargent2014), (cite: Scoville2017)"}
+],
+"simulations_or_models_as_data": [
+{"value": "CASA simobserve mock observations of 2D Gaussians (FWHM 0.1-2 arcsec) at ~0.2 arcsec resolution to test flux/size recovery in the uv plane", "evidence": [
+{"loc": "A. Resolution", "quote": "we simulated 2D Gaussians with increasing FWHM (in the range 0.1” – 2”)"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Standard ALMA pipeline based on CASA", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "The data were reduced with the standard ALMA pipeline based on the CASA software"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "No imaging; sources fitted directly in the uv plane with GILDAS uv_fit (Fourier transform of a 2D exponential); CASA uvmodelfit as a cross-check", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "using the Fourier Transform of the 2D exponential model, with the GILDAS task `uv_fit`"},
+{"loc": "2.3.1 Individual [C II] detections", "quote": "We checked that fluxes and uncertainties determined with the `uvmodelfit` task provided by CASA would give consistent results."}
+]},
+{"field": "continuum_subtraction", "value": "450 um continuum maps made excluding [C II] channels; [C II] fluxes corrected by subtracting the rest-frame 158 um continuum", "evidence": [
+{"loc": "2.4 Continuum emission", "quote": "we made sure to exclude the channels where the flux is dominated by the"},
+{"loc": "2.3 [C II] emission line measurements", "quote": "We subtracted from the"}
+]},
+{"field": "smoothing", "value": "Data binned to much lower velocity resolution than 0.45 km/s; line maps averaged over 719 km/s for non-detections", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "later binning the data to substantially lower velocity resolutions"},
+{"loc": "2.3.2 Tentative and non detections", "quote": "we created emission line maps by averaging channels over 719 km s$^{-1}$"}
+]},
+{"field": "final_beam", "value": "Band 9: 0.3\" x 0.2\" synthesized beam; Band 7: 1\" x 0.5\"", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "with a synthesized beam FWHM $=$ 0.3” $\\times$ 0.2”"},
+{"loc": "2.2 Details of ALMA observations", "quote": "The synthesised beam has FWHM $=$ 1” $\\times$ 0.5”"}
+]},
+{"field": "final_rms", "value": "Band 7 continuum 140 uJy/beam; Band 9 noise r.m.s. per source in Table 1 (about 11.6-51 mJy/beam)", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "For each galaxy we reached a sensitivity of 140"}
+]}
+],
+"inherited": [
+{"what": {"value": "Iterative uv-plane spectral extraction / line search procedure", "evidence": [{"loc": "2.3 [C II] emission line measurements", "quote": "similar to what described in Daddi et al. (2015 and in preparation) and (cite: Coogan2017)"}]}, "from_reference": "Daddi et al. (2015 and in preparation) and (cite: Coogan2017)"},
+{"what": {"value": "Reliability of redshift uncertainties from the line detection procedure", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "Following (cite: Coogan2017) simulations of a similar line detection procedure"}]}, "from_reference": "(cite: Coogan2017)"},
+{"what": {"value": "Resolved stellar mass and SFR maps from pixel-by-pixel SED fitting", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "following the method described by (cite: Cibinel2015)"}]}, "from_reference": "(cite: Cibinel2015)"},
+{"what": {"value": "Redshift refinement of optical spectra with Lyman break galaxy templates", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "we applied to our VLT/FORS2 and Keck UV rest-frame spectra the same approach described in (cite: Gobat2017)"}]}, "from_reference": "(cite: Gobat2017), templates from (cite: Shapley2003)"},
+{"what": {"value": "IR SED fitting with Draine & Li models plus modified black body", "evidence": [{"loc": "2.4 Continuum emission", "quote": "Following the method presented in (cite: Magdis2012), we fitted the IR photometry with (cite: Draine2007) models"}]}, "from_reference": "(cite: Magdis2012)"},
+{"what": {"value": "Monte Carlo estimation of L_IR and M_dust uncertainties", "evidence": [{"loc": "2.4 Continuum emission", "quote": "were quantified using Monte Carlo simulations, as described by (cite: Magdis2012)"}]}, "from_reference": "(cite: Magdis2012)"},
+{"what": {"value": "Deblending of Spitzer and Herschel photometry with prior sources", "evidence": [{"loc": "2.4 Continuum emission", "quote": "The *Spitzer* and *Herschel* data were deblended using prior sources"}]}, "from_reference": "(cite: Bethermin2010), (cite: Roseboom2010), (cite: Elbaz2011), (cite: Lee2013), (cite: Bethermin2015), (cite: Liu2017)"}
+],
+"unstated_but_needed": [
+"CASA and pipeline version used for the Band 9 and Band 7 reductions, and whether the archive-delivered calibration was used as is",
+"Flux, bandpass and phase calibrators and the Band 9 flux scale uncertainty",
+"Whether any self-calibration was done",
+"Which array (12-m / 7-m) and antenna numbers were used",
+"Exact channel ranges (optimal channel range) used for each detection and the line-free channels used for continuum",
+"Final velocity binning used for the 1D spectra",
+"Table of GILDAS uv_fit initial parameters and fitted effective radii used for the exponential models (only listed as R_e from HST in Table 2)",
+"GALFIT settings (PSF, mask, sky) used for the stellar-mass-map size fits",
+"Details of the stack weighting (visibility weights, alignment shifts, how the size correction for position uncertainty was derived)",
+"Parameters of the Draine2007 / MBB fits (grid ranges, treatment of Spitzer/Herschel priors) and the exact IR luminosity pipeline for the literature samples",
+"Full per-galaxy literature compilation (only an excerpt appears in the paper; the full table is stated to be online)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Reduce and convert the ALMA data",
+"method": {"value": "Standard ALMA pipeline in CASA, then conversion of calibrated cubes to uvfits for analysis in GILDAS", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "The data were reduced with the standard ALMA pipeline based on the CASA software"},
+{"loc": "2.3 [C II] emission line measurements", "quote": "The calibrated data cubes were then converted to *uvfits* format and analyzed with the software GILDAS"}
+]},
+"software": ["CASA", "GILDAS"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Quantify flux and size recovery and noise penalty for resolved sources",
+"method": {"value": "Simulated 2D Gaussians of varying FWHM with simobserve, fitted in the uv plane with uvmodelfit; repeated with GILDAS on the highest S/N source (ID9347) to derive noise vs size relation", "evidence": [
+{"loc": "A. Resolution", "quote": "We then fitted these mock data in the *uv* plane with the task `uvmodelfit`."},
+{"loc": "A. Resolution", "quote": "We fitted its velocity-integrated map multiple times with the GILDAS algorithm, first with a point source model and then adopting a Gaussian profile with increasing FWHM."}
+]},
+"software": ["CASA", "GILDAS"],
+"key_parameters": [
+{"value": "Polynomial relation y = 1.00 + 0.79x + 0.14x^2 + 0.01x^3 between noise ratio y and FWHM ratio x", "evidence": [{"loc": "A. Resolution", "quote": "y = 1.00 + 0.79x + 0.14x^2 + 0.01x^3"}]}
+],
+"assumptions": [
+{"value": "The correct source position and FWHM are known", "evidence": [{"loc": "A. Resolution", "quote": "We notice however that these predictions assume that the correct position and FWHM of the source are known."}]}
+],
+"fitting": {"value": "Polynomial fit to the noise ratio versus FWHM ratio", "evidence": [{"loc": "A. Resolution", "quote": "By fitting the datapoints with a polynomial curve we obtained the following relation"}]},
+"validation": {"value": "Fluxes and sizes well recovered for large galaxies given enough S/N; similar results with GILDAS simulations", "evidence": [
+{"loc": "A. Resolution", "quote": "Both sizes and fluxes are very well recovered even for large galaxies provided the data had large enough S/N."},
+{"loc": "A. Resolution", "quote": "Very similar results are obtained when simulating sources with GILDAS instead of CASA."}
+]}
+},
+{
+"order": 3,
+"goal": "Derive optical sizes, positions and astrometric shift from HST",
+"method": {"value": "Pixel-by-pixel SED fitting of HST bands (PSF-matched to F160W) gives stellar mass/SFR maps; exponential profile fit with GALFIT to the stellar mass maps gives sizes and peak positions; HST frame shifted to match ALMA", "evidence": [
+{"loc": "2.1 Sample selection and ancillary data", "quote": "we performed pixel-by-pixel spectral energy distribution (SED) fitting considering all the available *HST* filters mentioned above"},
+{"loc": "2.3.1 Individual [C II] detections", "quote": "We therefore determined the size of the galaxy disks by fitting the stellar mass maps with an exponential profile"}
+]},
+"software": ["GALFIT"],
+"key_parameters": [
+{"value": "Stellar population age 100 Myr - 2 Gyr, fixed solar metallicity, constant-SFR templates", "evidence": [
+{"loc": "2.1 Sample selection and ancillary data", "quote": "The stellar population age in the models varied between 100 Myr and 2 Gyr, assuming fixed solar metallicity."},
+{"loc": "2.1 Sample selection and ancillary data", "quote": "templates with constant SFR to limit the degeneracy with dust extinction"}
+]},
+{"value": "Coordinate shifts Delta RA = 0 arcsec, Delta DEC = -0.2 arcsec applied to HST", "evidence": [{"loc": "B. Astrometry", "quote": "In our analysis we adopt the following coordinate shifts $\\Delta RA = 0$”, $\\Delta DEC = -0.2$”."}]}
+],
+"assumptions": [
+{"value": "Calzetti dust extinction; Bruzual & Charlot templates", "evidence": [{"loc": "2.1 Sample selection and ancillary data", "quote": "We corrected the fluxes for dust extinction following the prescriptions by (cite: Calzetti2000)."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "No structured residuals after subtracting the best-fit model; stellar mass from maps agrees with global SED mass within 30%", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "We checked that there were not structured residuals when subtracting the best-fit model from the stellar mass maps."},
+{"loc": "2.1 Sample selection and ancillary data", "quote": "(they differ $<$ 30% with no systematic trends)"}
+]}
+},
+{
+"order": 4,
+"goal": "Search for [C II] emission by iterative uv-plane spectral extraction",
+"method": {"value": "Fit a source model (PSF, Gaussian or exponential) in the uv plane channel by channel to all four sidebands at the astrometry-corrected HST position; average channels maximising S/N, refit position, and iterate to convergence", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "to all four sidebands and channel per channel"},
+{"loc": "2.3 [C II] emission line measurements", "quote": "we averaged the data over the channels maximizing the detection S/N"}
+]},
+"software": ["GILDAS"],
+"key_parameters": [
+{"value": "Secure detection: emission line significance > 5 sigma in the optimal channel range", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "they have emission line significance $> 5 \\sigma$ in the optimal channel range"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Detections robust against the model used for the 1D spectrum extraction; positions consistent with HST peaks", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "The detections are robust against the model used for the extraction of the 1D spectra"}
+]}
+},
+{
+"order": 5,
+"goal": "Measure [C II] redshifts of detections",
+"method": {"value": "Signal-weighted mean frequency within the line channels and Gaussian fit of the 1D spectrum", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "1) we computed the signal-weighted average frequency within the line channels, and 2) we fitted the 1D spectrum with a Gaussian function"}
+]},
+"software": ["GILDAS"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "Gaussian fit to the 1D spectrum (details not stated)", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "2) we fitted the 1D spectrum with a Gaussian function"}]},
+"validation": {"value": "Compared with optical redshifts: no systematic difference, MAD of 200 km/s", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "They generally agree, with no significant systematic difference and a median absolute deviation (MAD) of 200 km s$^{-1}$"}
+]}
+},
+{
+"order": 6,
+"goal": "Measure total [C II] fluxes of the four detections",
+"method": {"value": "Fit velocity-averaged line maps in the uv plane with the Fourier transform of a 2D exponential with fixed size and centre from the optical images (GILDAS uv_fit)", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "by fitting their average emission line maps in the *uv* plane with exponential models"},
+{"loc": "2.3 [C II] emission line measurements", "quote": "We fixed the size and center of the model on the basis of the effective radius and peak coordinates derived from the optical images"}
+]},
+"software": ["GILDAS", "CASA"],
+"key_parameters": [
+{"value": "Exponential model size = effective radius from HST stellar mass map (R_e in Table 2)", "evidence": [{"loc": "2.3 [C II] emission line measurements", "quote": "We fixed the size and center of the model on the basis of the effective radius and peak coordinates derived from the optical images"}]}
+],
+"assumptions": [
+{"value": "[C II] emission follows an exponential disk with the optical size; a PSF model would underestimate fluxes", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "whereas by using a PSF model instead we would have underestimated the fluxes"}]}
+],
+"fitting": {"value": "uv-plane model fit with GILDAS; uncertainties from the fit", "evidence": [{"loc": "2.3 [C II] emission line measurements", "quote": "We then extracted the"}]},
+"validation": {"value": "CASA uvmodelfit gives consistent fluxes; Gaussian model also consistent; channel-to-channel scatter consistent with errors", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "We checked that fluxes and uncertainties determined with the `uvmodelfit` task provided by CASA would give consistent results."},
+{"loc": "2.3.1 Individual [C II] detections", "quote": "we verified that the uncertainties associated to the flux measurement in each channel are consistent with the channel to channel fluctuations"}
+]}
+},
+{
+"order": 7,
+"goal": "Stack the four detections to measure the average [C II] size",
+"method": {"value": "Align detections at HST positions, co-add visibilities and fit an exponential profile with free size", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "stacked them (coadding all visibilities) to increase the S/N"},
+{"loc": "2.3.1 Individual [C II] detections", "quote": "We then fitted the stacked data with an exponential profile, leaving its size free to vary during the fit."}
+]},
+"software": ["GILDAS"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "Exponential profile with free scale length fitted in uv space", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "We then fitted the stacked data with an exponential profile, leaving its size free to vary during the fit."}]},
+"validation": {"value": "Size uncertainty from GILDAS checked against amplitude versus uv range; unresolved-source probability < 1e-5", "evidence": [
+{"loc": "2.3.1 Individual [C II] detections", "quote": "The reported size uncertainty was estimated by GILDAS in the fit and the modelling of the signal amplitude versus *uv* range signal shows that it is reliable"}
+]}
+},
+{
+"order": 8,
+"goal": "Tentative detections, upper limits and average [C II] stack",
+"method": {"value": "For undetected sources, measure at fixed HST position with exponential models of fixed optical size, averaging over 719 km/s around the optical redshift; 3 sigma upper limits; stack detections plus tentative detections plus ID2910 in the uv plane", "evidence": [
+{"loc": "2.3.2 Tentative and non detections", "quote": "using exponential models with the fixed optical size for each galaxy and conservatively averaging"},
+{"loc": "2.3.2 Tentative and non detections", "quote": "For the four sources with no detected signal we considered $3\\sigma$ flux upper limits"},
+{"loc": "2.3.3 Average [C II] signal", "quote": "We aligned the detections and tentative detections and stacked them coadding all visibilities."}
+]},
+"software": ["GILDAS"],
+"key_parameters": [
+{"value": "Line map averaged over 719 km/s (3 x MAD redshift accuracy summed in quadrature with average detected line FWHM)", "evidence": [{"loc": "2.3.2 Tentative and non detections", "quote": "we created emission line maps by averaging channels over 719 km s$^{-1}$"}]},
+{"value": "Rest-frame 158 um continuum removed from the stack by reducing the flux by 10%", "evidence": [{"loc": "2.3.3 Average [C II] signal", "quote": "We finally subtracted the contribution of the rest-frame 158 $\\mu$m continuum by decreasing the estimated flux by 10%"}]}
+],
+"assumptions": [
+{"value": "Stack size fixed to the average optical size of the sources entering the stack", "evidence": [{"loc": "2.3.3 Average [C II] signal", "quote": "We fitted the resulting map with an exponential model with size fixed to the average optical size of the sources entering the stacking."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Expected false detections < 0.1 among the six sources for the 2.3 sigma tentative signals; average ratio from stacking agrees with the mean of individual ratios", "evidence": [
+{"loc": "2.3.2 Tentative and non detections", "quote": "Furthermore, when considering the six sources discussed above, we expect to find $<0.1$ false detections."}
+]}
+},
+{
+"order": 9,
+"goal": "Measure continuum fluxes and fit IR SEDs for L_IR, M_dust and <U>",
+"method": {"value": "Exponential-profile uv fits of the 450 and 850 um continuum, combined with Spitzer and Herschel photometry in Draine & Li model and modified black body fits", "evidence": [
+{"loc": "2.4 Continuum emission", "quote": "We extracted the continuum flux by fitting the data with an exponential profile, adopting the same procedure described in Section"},
+{"loc": "2.4 Continuum emission", "quote": "we fitted the IR photometry with (cite: Draine2007) models, supplemented by the use of a single temperature modified black body (MBB) fit to derive a representative dust temperature of the ISM"}
+]},
+"software": ["GILDAS"],
+"key_parameters": [
+{"value": "L_IR integrated over 8-1000 um from SED fitting", "evidence": [{"loc": "Table 1", "quote": "IR luminosity integrated over the wavelength range 8 – 1000 $\\mu$m as estimated from SED fitting"}]},
+{"value": "<U> = L_IR/(125 M_dust)", "evidence": [{"loc": "2.4 Continuum emission", "quote": "We also determined the average radiation field intensity as $\\langle U\\rangle = L_{\\mathrm{IR}}/(125 M_{\\mathrm{dust}})$"}]}
+],
+"assumptions": [
+{"value": "Modified black body beta = 2.0", "evidence": [{"loc": "3.1 The [C II] deficit", "quote": "with fixed $\\beta$ = 2.0 (the same as used in the SED fitting for our sample galaxies)"}]},
+{"value": "Measured fluxes with uncertainties used even when S/N < 3 instead of upper limits", "evidence": [{"loc": "2.4 Continuum emission", "quote": "In these fits we considered the measured *Spitzer*, *Herschel*, and ALMA flux (even if S/N $<$ 3, e.g. there is no detection)"}]}
+],
+"fitting": {"value": "Uncertainties on L_IR and M_dust by Monte Carlo simulations; points weighted by their uncertainties", "evidence": [
+{"loc": "2.4 Continuum emission", "quote": "Uncertainties on $L_{\\mathrm{IR}}$ and $M_{\\mathrm{dust}}$ were quantified using Monte Carlo simulations"},
+{"loc": "2.4 Continuum emission", "quote": "The contribution of each photometric point to the best fit is weighted by its associated uncertainty."}
+]},
+"validation": {"value": "Conclusions unchanged if upper limits are used in the fits; median L_IR and M_dust agree with literature MS values", "evidence": [
+{"loc": "2.4 Continuum emission", "quote": "If we were to use upper limits in these fits instead our conclusions would not have changed."}
+]}
+},
+{
+"order": 10,
+"goal": "Estimate molecular gas masses of the sample",
+"method": {"value": "(1) M_mol = delta_GDR x M_dust with metallicity from stellar mass via a mass-metallicity relation; (2) integrated Schmidt-Kennicutt relation from SFR; the Schmidt-Kennicutt masses are adopted; [C II]-based masses use alpha_[CII] = 31 Msun/Lsun", "evidence": [
+{"loc": "2.4 Continuum emission", "quote": "Given their stellar mass and the mass-metallicity relation by (cite: Zahid2014) we estimated their gas phase metallicity."},
+{"loc": "2.4 Continuum emission", "quote": "In the following we use the $M_{\\mathrm{mol}}$ obtained from the Schmit-Kennicutt relation"},
+{"loc": "Table 2", "quote": "conversion factor $\\alpha_{\\mathrm{[C~{\\small II}]}} = 31$ M$_\\odot$/L$_\\odot$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "SFR = 1e-10 L_IR (Kennicutt 1998); SK relation dispersion 0.2 dex", "evidence": [{"loc": "Table 2", "quote": "$SFR = 10^{-10}L_{\\mathrm{IR}}$"}]}
+],
+"assumptions": [
+{"value": "Chabrier IMF; flat LCDM with Om = 0.3, OL = 0.7, H0 = 70", "evidence": [{"loc": "1 Introduction", "quote": "We assumed a (cite: Chabrier2003) initial mass function (IMF)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Dust-based and Schmidt-Kennicutt gas masses consistent for galaxies with 850 um detections", "evidence": [{"loc": "2.4 Continuum emission", "quote": "we concluded that both methods give consistent results"}]}
+},
+{
+"order": 11,
+"goal": "Compile literature samples and fit L_[CII] versus M_mol and alpha_[CII]",
+"method": {"value": "Homogenise literature samples (IR luminosities to 8-1000 um, metallicities to Pettini2004 calibration, alpha_CO = f(metallicity) for CO-based masses), fit the log-log L_[CII]-M_mol relation, and compute alpha_[CII] = L_[CII]/M_mol medians for sub-samples", "evidence": [
+{"loc": "C. Literature data", "quote": "Also we homogenized all the IR luminosities reporting them to the 8 – 1000 $\\mu$m range."},
+{"loc": "3.4 Invariance of alpha_[CII] with gas phase metallicity", "quote": "we converted all metallicity estimates to the calibration by (cite: Pettini2004) using the parametrizations by (cite: Kewley2008)"},
+{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "we complemented our sample with all literature data we could assemble"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "alpha_CO metallicity dependence: log alpha_CO = 0.64 - 1.5 (12 + log(O/H) - 8.7)", "evidence": [{"loc": "3.4 Invariance of alpha_[CII] with gas phase metallicity", "quote": "\\log \\alpha_{\\mathrm{CO}} = 0.64 - 1.5 (12 + \\log (O/H) - 8.7)"}]}
+],
+"assumptions": [
+{"value": "alpha_CO slope of -1 or -2 would not change conclusions", "evidence": [{"loc": "3.4 Invariance of alpha_[CII] with gas phase metallicity", "quote": "would not change our conclusions"}]}
+],
+"fitting": {"value": "Linear fit in log space; Pearson correlation coefficient quoted", "evidence": [{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "The Pearson test yields a coefficient $\\rho = 0.97$"}]},
+"validation": {"value": "Scatter of L_[CII]-L'_CO relation compared with that of alpha_[CII]; starburst (SPT) and local samples compared", "evidence": [{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "The mean absolute deviation of the relation is $\\sim$ 0.2 dex, similar to that of the $L_{\\rm [C~{\\small II}]}$ - $M_{\\rm mol}$ relation."}]}
+},
+{
+"order": 12,
+"goal": "Compare L_[CII]/L_IR versus sSFR/sSFR_MS with depletion-time models",
+"method": {"value": "Bin samples by distance from the main sequence, overplot Sargent2014 and Scoville2017 depletion-time models rescaled to the main-sequence [CII]/IR ratio and convolved with a 0.2 dex Gaussian", "evidence": [
+{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "predicting how the depletion time of galaxies changes as a function of their distance from the main-sequence and rescaled them"},
+{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "we convolved the models by (cite: Sargent2014) and (cite: Scoville2017) with a Gaussian function with FWHM $\\sim$ 0.2 dex"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Rescaling implies L_[CII]/L_CO ~ 6000", "evidence": [{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "we estimated $L_{\\mathrm{[C~{\\small II}]}}/L_{\\mathrm{CO}} \\sim 6000$"}]}
+],
+"assumptions": [
+{"value": "Starbursts defined as > 4 times above the main sequence", "evidence": [{"loc": "1 Introduction", "quote": "Throughout this paper we will consider as starbursts all the sources that fall $> 4$ times above the main sequence (cite: Rodighiero2011)."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Rescaled [CII]/CO ratio compared with the 2000-10000 range in the literature", "evidence": [{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "This is in good agreement with the typical values reported in the literature and ranging between 2000 – 10000"}]}
+},
+{
+"order": 13,
+"goal": "Test dependence of alpha_[CII] on metallicity and of L_[CII]/SFR on metallicity",
+"method": {"value": "Linear fits of alpha_[CII] versus metallicity and of L_[CII]/SFR_TOT versus SFR_IR/SFR_TOT and metallicity for local low-metallicity galaxies", "evidence": [
+{"loc": "3.4 Invariance of alpha_[CII] with gas phase metallicity", "quote": "When fitting the data with a linear function we obtain a slope of $-0.2 \\pm 0.2$"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "SFR estimates from the literature taken at face value", "evidence": [{"loc": "3.5 Implications for surveys at z > 2", "quote": "taking at face value the SFR estimates from the literature"}]}
+],
+"fitting": {"value": "Linear fits with quoted slopes and scatter", "evidence": [{"loc": "3.4 Invariance of alpha_[CII] with gas phase metallicity", "quote": "and a standard deviation of 0.3 dex"}]},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Standard ALMA pipeline reduction, simobserve simulations and uvmodelfit cross-checks", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "The data were reduced with the standard ALMA pipeline based on the CASA software"},
+{"loc": "A. Resolution", "quote": "We then fitted these mock data in the *uv* plane with the task `uvmodelfit`."}
+]}},
+{"name": "GILDAS", "version": "not stated", "used_for": {"value": "uv-plane spectral extraction, source fitting (uv_fit), stacking and size fits", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "The calibrated data cubes were then converted to *uvfits* format and analyzed with the software GILDAS"},
+{"loc": "2.3 [C II] emission line measurements", "quote": "with the GILDAS task `uv_fit`"}
+]}},
+{"name": "GALFIT", "version": "not stated", "used_for": {"value": "Exponential-profile fits to HST stellar mass maps to get disk sizes", "evidence": [
+{"loc": "2.3 [C II] emission line measurements", "quote": "using the GALFIT algorithm (cite: Peng2010)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "[C II] luminosity, ID9347 (detection)", "value": "0.95", "uncertainty": "0.30", "units": "1e9 Lsun", "from_step": 6, "evidence": [{"loc": "Table 1", "quote": "21.28 $\\pm$ 6.73 | 0.95 $\\pm$ 0.30 | 11.80 $\\pm$ 0.05 | $1.51^{+0.51}_{-0.50}$"}]},
+{"quantity": "[C II] luminosity, ID6515 (detection)", "value": "1.23", "uncertainty": "0.33", "units": "1e9 Lsun", "from_step": 6, "evidence": [{"loc": "Table 1", "quote": "24.50 $\\pm$ 6.57 | 1.23 $\\pm$ 0.33 | 11.68 $\\pm$ 0.04 | $2.57^{+0.73}_{-0.73}$"}]},
+{"quantity": "[C II] luminosity, ID10076 (detection)", "value": "2.40", "uncertainty": "0.76", "units": "1e9 Lsun", "from_step": 6, "evidence": [{"loc": "Table 1", "quote": "29.03 $\\pm$ 9.14 | 2.40 $\\pm$ 0.76 | 11.91 $\\pm$ 0.03 | $2.95^{+0.96}_{-0.96}$"}]},
+{"quantity": "[C II] luminosity, ID9834 (detection)", "value": "1.29", "uncertainty": "0.19", "units": "1e9 Lsun", "from_step": 6, "evidence": [{"loc": "Table 1", "quote": "15.34 $\\pm$ 2.21 | 1.29 $\\pm$ 0.19 | 11.99 $\\pm$ 0.02 | $1.32^{+0.22}_{-0.22}$"}]},
+{"quantity": "[C II] flux and luminosity of the average stack (7 galaxies)", "value": "F_[CII] = 15.59 mJy; L_[CII] = 1.25 (1e9 Lsun)", "uncertainty": "1.79 (flux); 0.14 (luminosity)", "units": "mJy; 1e9 Lsun", "from_step": 8, "evidence": [{"loc": "Table 1", "quote": "15.59 $\\pm$ 1.79 | 1.25 $\\pm$ 0.14 | 11.81 $\\pm$ 0.05"}]},
+{"quantity": "Average L_[CII]/L_IR of the stack", "value": "1.94e-3", "uncertainty": "+0.34/-0.32 (1e-3)", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "2.3.3 Average [C II] signal", "quote": "stacking of the seven targets mentioned above is $(1.94^{+0.34}_{-0.32})\\times 10^{-3}$"}]},
+{"quantity": "[C II] exponential scale length of the 4-detection stack", "value": "0.65 arcsec (~4-7 kpc)", "uncertainty": "0.15 arcsec", "units": "arcsec", "from_step": 7, "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "$0.65\\pm0.15''$ (corresponding to $\\sim$ 4 – 7 kpc)"}]},
+{"quantity": "Range of L_IR (8-1000 um) of the sample", "value": "3.5e11 - 1.2e12", "uncertainty": "not stated", "units": "Lsun", "from_step": 9, "evidence": [{"loc": "2.4 Continuum emission", "quote": "lie between $3.5 \\times 10^{11}$ – $1.2 \\times 10^{12}$ L$_{\\odot}$"}]},
+{"quantity": "Average L_[CII]/L_IR of our data and scatter", "value": "~1.9e-3; scatter ~0.15 dex", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "3.1 The [C II] deficit", "quote": "The average $L_{\\mathrm{[C~{\\small II}]}}/L_{\\mathrm{IR}}$ ratio of our data is $\\sim 1.9 \\times 10^{-3}$, and has a scatter of $\\sim$ 0.15 dex"}]},
+{"quantity": "L_[CII]-M_mol relation: log L = -1.28 + 0.98 log M_mol (dispersion 0.3 dex)", "value": "intercept -1.28, slope 0.98", "uncertainty": "+/-0.21 (intercept), +/-0.02 (slope)", "units": "dimensionless", "from_step": 11, "evidence": [
+{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "\\log L_{\\mathrm{[C~{\\small II}]}} = -1.28(\\pm 0.21) + 0.98(\\pm 0.02) \\log M_{\\mathrm{mol}}"},
+{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "with a dispersion of 0.3 dex"}
+]},
+{"quantity": "Median alpha_[CII] for main-sequence galaxies", "value": "31", "uncertainty": "MAD 0.2 dex (standard deviation 0.3 dex)", "units": "Msun/Lsun", "from_step": 11, "evidence": [{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "we get a median $\\alpha_{\\mathrm{[C~{\\small II}]}} = 31$ M$_\\odot$/L$_\\odot$ with a median absolute deviation of 0.2 dex"}]},
+{"quantity": "Median alpha_[CII], local sample", "value": "28", "uncertainty": "MAD 0.2 dex", "units": "Msun/Lsun", "from_step": 11, "evidence": [{"loc": "Table 3 (alpha_[CII] estimates)", "quote": "| Local | 30 | 0.3 | 28 | 0.2 |"}]},
+{"quantity": "Median alpha_[CII], high-z sample", "value": "38", "uncertainty": "MAD 0.1 dex", "units": "Msun/Lsun", "from_step": 11, "evidence": [{"loc": "Table 3 (alpha_[CII] estimates)", "quote": "| High-$z$ | 35 | 0.2 | 38 | 0.1 |"}]},
+{"quantity": "Median alpha_[CII], SPT lensed starburst sample", "value": "22", "uncertainty": "not stated", "units": "Msun/Lsun", "from_step": 11, "evidence": [{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "We obtained a median $\\alpha_{\\mathrm{[CII]}} = 22$ M$_\\odot$/L$_\\odot$ for this sample"}]},
+{"quantity": "L_[CII]/L_CO implied by rescaled depletion-time models", "value": "~6000", "uncertainty": "not stated", "units": "dimensionless", "from_step": 12, "evidence": [{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "we estimated $L_{\\mathrm{[C~{\\small II}]}}/L_{\\mathrm{CO}} \\sim 6000$"}]},
+{"quantity": "Slope of alpha_[CII] versus metallicity", "value": "-0.2", "uncertainty": "0.2", "units": "dimensionless", "from_step": 13, "evidence": [{"loc": "3.4 Invariance of alpha_[CII] with gas phase metallicity", "quote": "we obtain a slope of $-0.2 \\pm 0.2$"}]},
+{"quantity": "Fit of local L_[CII]/L_IR versus <U> (Diaz-Santos sample): intercept and slope", "value": "intercept -2.1, slope 0.7 (dispersion 0.3 dex)", "uncertainty": "+/-0.1, +/-0.1", "units": "dimensionless", "from_step": 0, "evidence": [{"loc": "3.1 The [C II] deficit", "quote": "-2.1(\\pm 0.1) + 0.7(\\pm 0.1) \\log(<{\\mathrm{U}}>)"}]},
+{"quantity": "Fit of L_[CII]/SFR_TOT versus metallicity: intercept and slope", "value": "intercept -3.8, slope 1.3 (dispersion 0.2 dex)", "uncertainty": "+/-2.8, +/-0.3", "units": "dimensionless", "from_step": 13, "evidence": [{"loc": "3.5 Implications for surveys at z > 2", "quote": "-3.8(\\pm 2.8) + 1.3(\\pm 0.3) [12 + \\log (O/H)]"}]},
+{"quantity": "Astrometric offset of HST relative to ALMA in declination", "value": "-0.2", "uncertainty": "> 3 sigma significant", "units": "arcsec", "from_step": 3, "evidence": [{"loc": "2.2 Details of ALMA observations", "quote": "instead significant in declination ($\\Delta DEC = -0.2$”, $> 3\\sigma$ significant)"}]}
+],
+"findings_qualitative": [
+{"value": "z~2 main-sequence galaxies are not [C II] deficient; L_[CII]/L_IR is similar to local main-sequence galaxies and ~10 times higher than starbursts", "evidence": [{"loc": "abstract", "quote": "is similar to that of local main-sequence galaxies ($\\sim2\\times10^{-3}$), and $\\sim$ 10 times higher than that of starbursts"}]},
+{"value": "[C II] emission is spatially extended on scales consistent with the optical size", "evidence": [{"loc": "abstract", "quote": "has an average spatial extent of 4 – 7 kpc, consistent with the optical size"}]},
+{"value": "Starburst [C II] deficit can be explained mainly by their higher star formation efficiency", "evidence": [{"loc": "3.3 The dependence of the [C II]-to-IR ratio", "quote": "the \\[C II\\]  deficiency of starbursts can be explained as mainly due to their higher star formation efficiency"}]}
+],
+"claims": [
+{"hypothesis": "z~2 main-sequence galaxies are [C II] deficient like local (U)LIRGs given their SFRs and radiation fields", "experiment": "Measured [C II] fluxes with uv-plane fits and compared L_[CII]/L_IR with literature compilations", "result": "L_[CII]/L_IR ~ 2e-3 for the stack, similar to local main-sequence galaxies and ~10x higher than starbursts", "finding": "High-z main-sequence galaxies are not [C II] deficient; the ratio is not set by L_IR, dust temperature or <U> alone", "support": "supported", "evidence": [{"loc": "abstract", "quote": "is similar to that of local main-sequence galaxies ($\\sim2\\times10^{-3}$), and $\\sim$ 10 times higher than that of starbursts"}]},
+{"hypothesis": "[C II] emission in these galaxies has an extent comparable to the optical disk", "experiment": "uv-plane stack of the four detections fitted with a free-size exponential profile", "result": "Exponential scale length 0.65 +/- 0.15 arcsec (~4-7 kpc), ~4 sigma significance in size", "finding": "[C II] extent is consistent with the optical size", "support": "supported", "evidence": [{"loc": "abstract", "quote": "has an average spatial extent of 4 – 7 kpc, consistent with the optical size"}]},
+{"hypothesis": "[C II] luminosity is a tracer of molecular gas mass", "experiment": "Combined the sample with literature [C II] and M_mol data and fitted L_[CII] versus M_mol", "result": "Linear relation, slope 0.98 +/- 0.02, dispersion 0.3 dex, rho = 0.97", "finding": "[C II] luminosity correlates with molecular gas mass with a mean absolute deviation of 0.2 dex", "support": "supported", "evidence": [{"loc": "abstract", "quote": "luminosity correlates with galaxies’ molecular gas mass, with a mean absolute deviation of 0.2 dex"}]},
+{"hypothesis": "alpha_[CII] is independent of depletion time, metallicity and redshift", "experiment": "Compared alpha_[CII] medians for main-sequence, starburst, low- and high-z samples and fitted alpha_[CII] against metallicity", "result": "Median alpha_[CII] ~ 30 Msun/Lsun; metallicity slope -0.2 +/- 0.2, consistent with zero", "finding": "[C II] is a convenient molecular gas tracer regardless of starburst or main-sequence nature and for metal-poor galaxies", "support": "supported", "evidence": [{"loc": "abstract", "quote": "is largely independent of galaxies’ depletion time, metallicity, and redshift"}]},
+{"hypothesis": "alpha_[CII] stays constant even for the most extreme starbursts", "experiment": "Estimated gas masses for local (U)LIRGs from depletion-time models and compared alpha_[CII]", "result": "alpha_[CII] decreases by 0.3 dex for the most extreme starbursts with the averaged-model gas masses but stays constant with the Scoville2017 model only", "finding": "More observations are needed to explore the extreme starburst regime", "support": "partially", "evidence": [{"loc": "3.2 [C II] as a tracer of molecular gas", "quote": "More future observations will be needed to explore in a more robust way the most extreme starburst regime."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Band 9 [C II] observations of the largest sample at this redshift; ALMA Band 7 added for dust masses", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "Currently this is the largest sample of galaxies observed with ALMA at this redshift"}
+]},
+{"field": "why_this_method", "value": "Sources are resolved, so fluxes are measured in the uv plane with extended models", "evidence": [
+{"loc": "2.2 Details of ALMA observations", "quote": "We concluded that, when fitting the sources in the *uv* plane, we could measure their correct total fluxes"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "PSF model for total fluxes rejected because it underestimates fluxes of extended sources", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "whereas by using a PSF model instead we would have underestimated the fluxes"}]},
+{"value": "Gaussian profile instead of exponential gives consistent [C II] fluxes", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "fitting the data with a Gaussian profile instead of an exponential would give consistent"}]},
+{"value": "Dust-based gas masses not adopted; Schmidt-Kennicutt masses used as more robust for galaxies without 850 um detections", "evidence": [{"loc": "2.4 Continuum emission", "quote": "In the following we use the $M_{\\mathrm{mol}}$ obtained from the Schmit-Kennicutt relation"}]}
+],
+"limitations_admitted": [
+{"value": "Fluxes depend critically on the assumed model size taken from optical images", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "However, the returned fluxes critically depend on the model size that we used and that we determined from the optical images."}]},
+{"value": "Source size cannot be constrained from individual sources because of low S/N", "evidence": [{"loc": "2.3.1 Individual [C II] detections", "quote": "Unfortunately, the size of the emission cannot be constrained from the data on individual sources, given the limited S/N ratio."}]},
+{"value": "Observed in a more extended configuration than requested, giving 5-10 times higher flux errors", "evidence": [{"loc": "2.2 Details of ALMA observations", "quote": "Our sources were therefore resolved."}, {"loc": "2.2 Details of ALMA observations", "quote": "we obtained a flux measurement error 5 – 10 times higher than expected"}]}
+],
+"referee_caveats_inferred": [
+"Total [C II] fluxes rest on optical-size exponential models; a different size changes flux linearly, so L_[CII] and alpha_[CII] are model dependent",
+"Detections at 2.3 sigma are called real from a posteriori reasoning; small numbers (4 secure, 2 tentative)",
+"Stack excludes three non-detections (incl. an AGN and two poor-weather sources), which may bias the average ratio high",
+"alpha_[CII] derived from heterogeneous literature gas masses (different alpha_CO, SK relation, depletion-time models) that partly share assumptions with the SFR used in L_IR",
+"Single Cycle 1 execution; no flux calibrator or calibration uncertainty stated for Band 9"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"CASA/pipeline versions, calibrators and flux scale uncertainty",
+"Exact channel ranges, GILDAS fit settings and HST-derived sizes/positions per galaxy (only R_e listed)",
+"HST, Spitzer and Herschel inputs and SED-fit settings needed to reproduce L_IR and M_dust",
+"Full literature compilation table (stated to be online)"
+],
+"estimated_data_volume_inferred": "Roughly 10-50 GB raw for 10 Band 9 fields plus Band 7 (inferred; two Cycle 1 observing nights)",
+"score_inferred": 5,
+"score_reason": "ALMA data and main procedure are described and the GILDAS uv-fitting approach is documented, but calibration details, per-source fit inputs and the literature compilation are incomplete.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state that the data are public, and key inputs (HST-derived sizes, SED-based L_IR, full literature table, channel ranges) are not fully given.",
+"methods_papers": [
+{"citation": "(cite: Coogan2017)", "why": "Similar iterative uv-plane line detection procedure and redshift-uncertainty simulations"},
+{"citation": "(cite: Cibinel2015)", "why": "Method for resolved stellar mass and SFR maps from pixel-by-pixel SED fitting"},
+{"citation": "(cite: Magdis2012)", "why": "IR SED fitting method, gas-to-dust ratio and Monte Carlo uncertainties"},
+{"citation": "(cite: Gobat2017)", "why": "Redshift refinement from rest-frame UV spectra with LBG templates"}
+],
+"companion_papers": [
+{"citation": "Daddi et al. (2015 and in preparation)", "why": "Earlier and forthcoming use of the same uv-plane extraction procedure"}
+],
+"related_projects_or_surveys": ["GOODS-S", "CANDELS", "GMASS survey", "ALMA Cycle 1 program 2012.1.00775.S"]
+}

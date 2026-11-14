@@ -1,0 +1,363 @@
+{
+ "bibcode": "2021ApJ...911...29C",
+ "title": "The TW Hya Rosetta Stone Project IV: A Hydrocarbon-rich Disk Atmosphere",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abe862",
+ "arxiv_id": "2102.09577",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Spatially constrain the radial and vertical location, abundance, and ortho-to-para ratio of the c-C3H2 hydrocarbon layer in the TW Hya protoplanetary disk to improve the interpretation of the disk's C/O ratio.",
+ "alma_project_codes": [
+  "2016.1.00311.S",
+  "2013.1.00198.S",
+  "2013.1.00114.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "40 antennas (for 2016.1.00311.S)",
+  "angular_resolution": "typically 0.2'' - 0.4'' native, homogenized to 0.5'' round beam (15-20 au)",
+  "sensitivity": "2.9 to 5.3 mJy/beam in a 0.5'' beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Line catalogue data (frequencies, Einstein A coefficients, upper state energies)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Table notes: $^{a}$ Line catalogue data from CDMS (cite: Muller05)"
+     }
+    ]
+   },
+   "citation": "CDMS (cite: Muller05)"
+  },
+  {
+   "what": {
+    "value": "Collisional rate coefficients for ortho and para c-C3H2",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "We adopt the collisional rate coefficients hosted on the Leiden LAMDA database (cite: Schoier05) originally computed in (cite: chandra2000) for ortho and para separately."
+     }
+    ]
+   },
+   "citation": "(cite: Schoier05), (cite: chandra2000)"
+  },
+  {
+   "what": {
+    "value": "Physical conditions (gas temperature, dust temperature, gas density) of TW Hya disk model",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "We approximate the emission from TW Hya as a series of radial annular regions, where the physical conditions as a function of height at each radial location are taken from the (cite: Cleeves15) model of TW Hya."
+     }
+    ]
+   },
+   "citation": "(cite: Cleeves15)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination, position angle, and stellar mass",
+    "evidence": [
+     {
+      "loc": "Images and Radial Integrated Flux Profiles",
+      "quote": "We assume an inclination of $5^\\circ$, a position angle of $152^\\circ$, and a stellar mass of 0.8 M$_\\odot$ to create the Keplerian mask following (cite: Huang18)."
+     }
+    ]
+   },
+   "citation": "(cite: Huang18)"
+  },
+  {
+   "what": {
+    "value": "Distance to TW Hya (59.5 pc)",
+    "evidence": [
+     {
+      "loc": "Images and Radial Integrated Flux Profiles",
+      "quote": "We assume a distance of 59.5 pc (cite: GAIA16)."
+     }
+    ]
+   },
+   "citation": "(cite: GAIA16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities, align flux scales across programs, subtract continuum, and image c-C3H2 transitions with a uniform 0.5'' beam",
+   "method": "Calibrate with ALMA pipeline, phase self-calibrate on line-free continuum, scale 2013.1.00198.S flux by ~10% to match 2016.1.00311.S, subtract continuum with uvcontsub, clean with tclean using Keplerian masks and line-specific uv-tapers, and smooth to a 0.5'' round beam with imsmooth.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean",
+    "imsmooth",
+    "pykepmask"
+   ],
+   "key_parameters": [
+    "source velocity = 2.84 km s^-1, inclination = 5 deg, PA = 152 deg, M_* = 0.8 M_sun, distance = 59.5 pc",
+    "clean threshold = 3 sigma, final beam = 0.5'' round"
+   ],
+   "assumptions": [
+    "Keplerian rotation with inclination 5 deg, PA 152 deg, M_* = 0.8 M_sun at 59.5 pc; linear continuum shape"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract azimuthally stacked, spectrally integrated radial intensity profiles and total integrated line fluxes",
+   "method": "Measure integrated line fluxes within Keplerian masks; use GOFISH on the cleaned 0.5'' image cubes to spectrally align and azimuthally stack spectra by deprojecting Keplerian rotation, then integrate over velocity to get radial profiles.",
+   "software": [
+    "GOFISH"
+   ],
+   "key_parameters": [
+    "velocity integration range = 2.5 km s^-1 to 3.18 km s^-1"
+   ],
+   "assumptions": [
+    "Same disk geometry and stellar mass as Keplerian masking (inclination 5 deg, PA 152 deg, M_* = 0.8 M_sun, d = 59.5 pc)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit observed radial intensity profiles with a grid of 1D non-LTE radiative transfer slab models",
+   "method": "Run a 7,150-model grid of 1D non-LTE radiative transfer slab models (nLTErt1d) over radial annuli using the Cleeves et al. (2015) TW Hya physical structure, reconstruct 2D sky images, convolve with a 0.5'' Gaussian beam, extract radial profiles in matching annuli, and evaluate reduced chi^2.",
+   "software": [
+    "nLTErt1d"
+   ],
+   "key_parameters": [
+    "Min H2 column = 10^19 cm^-2; Max H2 column = (1 to 187.5) x 10^21 cm^-2; chi(c-C3H2) = (1 to 1000) x 10^-11 per H; OPR = 1, 3; R_inner = 20, 25, 30, 35, 40 au; R_outer = 80, 90, 100, 110, 120 au; Total models = 7150"
+   ],
+   "assumptions": [
+    "Physical structure from Cleeves et al. (2015) with disk mass 0.04 M_sun and 6.7x reduced small grains in the surface (1 A_V = 1.27 x 10^22 cm^-2 N_H2); constant c-C3H2 abundance within the slab; LAMDA collisional rates from Chandra & Kegel (2000)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Confirm ortho-to-para ratio via disk-averaged rotational diagram analysis",
+   "method": "Perform a disk-averaged rotational diagram analysis using the unblended, optically thin ortho and para transitions to independently derive rotational temperatures and column densities.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Unblended ortho and para transitions are optically thin and in LTE"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated flux of o-c-C3H2 4_{3,2} - 3_{2,1} (227.16913 GHz)",
+   "value": "80",
+   "uncertainty": "5",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $4_{3,2} - 3_{2,1}$ | o | 227.16913 | 3.113E-04 | 29.07 | 0.16 | 3.2 | $80 \\pm 5$ | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of o-c-C3H2 7_{3,4} - 6_{4,3} (351.52327 GHz)",
+   "value": "237",
+   "uncertainty": "13",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $7_{3 , 4} - 6_{4 , 3}$ | o | 351.52327 | 1.237E-03 | 77.24 | 0.21 | 3.4 | $237 \\pm 13$ | 2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of o-c-C3H2 8_{3,6} - 7_{2,5} (352.19364 GHz)",
+   "value": "220",
+   "uncertainty": "30",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $8_{3 , 6} - 7_{2 , 5}$ | o | 352.19364 | 1.734E-03 | 86.93 | 0.21 | 4.2 | $220 \\pm 30$ | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of p-c-C3H2 5_{5,1} - 4_{4,0} (338.20399 GHz)",
+   "value": "140",
+   "uncertainty": "16",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $5_{5 , 1} - 4_{4 , 0}$ | p | 338.20399 | 1.598E-03 | 48.78 | 0.21 | 5.3 | $140 \\pm 16$ | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of p-c-C3H2 8_{2,6} - 7_{3,5} (352.18551 GHz)",
+   "value": "96",
+   "uncertainty": "15",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $8_{2 , 6} - 7_{3 , 5}$ | p | 352.18551 | 1.735E-03 | 86.93 | 0.21 | 4.3 | $96 \\pm 15$ | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of blended o/p-c-C3H2 9_{1,8}-8_{2,7} and 9_{2,8}-8_{1,7} (351.96593/4 GHz)",
+   "value": "398",
+   "uncertainty": "14",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $9_{1,8} - 8_{2, 7}$ | o (bl) | 351.96593 | 2.117E-03 | 93.34 | 0.21 | 2.9 | $398 \\pm 14$ | 2,3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of blended o/p-c-C3H2 10_{1,10}-9_{0,9} and 10_{0,10}-9_{1,9} (351.78157 GHz)",
+   "value": "330",
+   "uncertainty": "15",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $10_{1,10} - 9_{0, 9}$ | o (bl) | 351.78157 | 2.439E-03 | 96.50 | 0.21 | 2.9 | $330 \\pm 15$ | 2,3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit total abundance of c-C3H2 (both isomers)",
+   "value": "(7.5-10)e-11",
+   "uncertainty": "not stated",
+   "units": "per H atom",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find the ortho-to-para ratio of $c-$C$_3$H$_2$ is consistent with 3 throughout extent of the emission, and the total abundance of both $c-$C$_3$H$_2$ isomers is $(7.5-10)\\times10^{-11}$ per H atom, or $1-10$% of the previously published $\\rm C_2H$ abundance in the same source."
+    },
+    {
+     "loc": "Fiducial Model Results",
+     "quote": "The best fit models have similar characteristics, and abundance of $(7.5-10) \\times 10^{-11}$ per H atom, and extend down to an H$_2$ column density of approximately $2\\pm0.5 \\times 10^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum H2 column density depth of best-fit c-C3H2 slab (N_max)",
+   "value": "2e22",
+   "uncertainty": "0.5e22",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Fiducial Model Results",
+     "quote": "The best fit models have similar characteristics, and abundance of $(7.5-10) \\times 10^{-11}$ per H atom, and extend down to an H$_2$ column density of approximately $2\\pm0.5 \\times 10^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of c-C3H2 in the slab (30 best-fit models)",
+   "value": "(1-3)e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Fiducial Model Results",
+     "quote": "To test how much of the spread is due to the degeneracy between the thickness of the layer and the abundance, we also show in Figure 5 a histogram of the product of $\\chi_{\\rm c-C_3H_2}$ and $N_{\\rm max}$ and find that this distribution is much tighter, and corresponds to an approximate column density of $c-$C$_3$H$_2$ in the slab of $(1-3) \\times 10^{12}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical location (z/r) of c-C3H2 layer",
+   "value": "0.25 to 0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find $c-$C$_3$H$_2$ comes from a layer near the surface that extends no deeper than $z/r=0.25$."
+    },
+    {
+     "loc": "$c-$C$_3$H$_2$ is located in and above the warm molecular layer in a ring",
+     "quote": "While this lower boundary does not directly correspond to a normalized height value of $z/r$ due to the nature of the assumed density profile (a power-law with an exponential taper), we can say that within the radial boundaries of the emission, that the $c-$C$_3$H$_2$ arises above a $z/r$ value of approximately 0.25 based upon Figure 3, and no higher than 0.4."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner radius of c-C3H2 ring (R_inner)",
+   "value": "25 - 30",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Fiducial Model Results",
+     "quote": "Based on this sub-selection of models, an inner radius of 25 or 30 au is favored by 2/3 of the 30 models."
+    },
+    {
+     "loc": "$c-$C$_3$H$_2$ is located in and above the warm molecular layer in a ring",
+     "quote": "The inner edge of the $c-$C$_3$H$_2$ distribution (25 – 30 au) is consistent with the CO snow line (cite: Qi13c; Zhang17) and/or the dip in CO emission (cite: Huang18) and scattered light (cite: debes2013; vanBoekel16)."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer radius of c-C3H2 ring (R_outer)",
+   "value": "110 - 120",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Fiducial Model Results",
+     "quote": "Nearly all of the best fit models have an outer radius of $c-$C$_3$H$_2$ at $>100$ au, with 110 au favored slightly over 120 au."
+    },
+    {
+     "loc": "$c-$C$_3$H$_2$ is located in and above the warm molecular layer in a ring",
+     "quote": "The outer edge of $c-$C$_3$H$_2$ is located at 110 – 120 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Ortho-to-para ratio of c-C3H2 from rotational diagram",
+   "value": "3.02",
+   "uncertainty": "0.78",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The ortho-to-para ratio of $c-$C$_3$H$_2$ is consistent with a constant value of 3",
+     "quote": "Figure 7 shows the results of the fitting, and we find that the ortho and para lines have consistent rotational temperatures, and the derived ortho-to-para ratio from the column densities is $3.02\\pm0.78$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Weighting scheme and robust parameter used in tclean",
+  "Deconvolver algorithm (e.g., hogbom, clark, multiscale) used in tclean",
+  "Pixel cell size and image dimensions used during tclean imaging",
+  "Exact uv-taper values applied to each individual transition",
+  "Line-free channel frequency ranges used for uvcontsub and continuum self-calibration",
+  "Non-thermal linewidth value input to the nLTErt1d radiative transfer code",
+  "Radial annulus width / spacing used in GOFISH extraction and synthetic model profile binning"
+ ],
+ "missing_for_reproduction": [
+  "Exact machine-readable table of the Cleeves et al. (2015) 2D physical model (gas density, gas/dust temperatures as a function of r and z) used as input to nLTErt1d",
+  "tclean weighting scheme (robust parameter), cell size, image size, and exact uv-taper values per line",
+  "Non-thermal linewidth assumed in the nLTErt1d radiative transfer calculations",
+  "Exact radial annulus bin width used in GOFISH and chi^2 evaluation"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All three ALMA project codes are public, open-source analysis and radiative transfer packages (pykepmask, GOFISH, nLTErt1d) are linked and cited, and the 7,150-model parameter grid is fully tabulated in Table 2. Minor deductions for unstated tclean imaging parameters (robust, cell size, exact uv-tapers), unstated non-thermal linewidth in nLTErt1d, and reliance on the external Cleeves et al. (2015) physical disk profiles.",
+ "rediscovery_reason": "Public ALMA data, clearly tabulated integrated line fluxes and slab model parameter grid, and public availability of the exact post-processing and radiative transfer codes (pykepmask, GOFISH, nLTErt1d) make the integrated fluxes, rotational diagram OPR, and radial profile fits strong targets for automated reproduction.",
+ "source_card": "cards/2021ApJ...911...29C/sonnet/card.md"
+}

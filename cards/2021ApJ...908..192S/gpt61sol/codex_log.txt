@@ -1,0 +1,472 @@
+end but fails the main-sequence plots; simulated evolutionary tracks generally match.",
+      "finding": "Compaction and potentially subsequent inside-out quenching are consistent interpretations, requiring further tests.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Central starburst vs. galaxy-wide star formation",
+          "quote": "this simple two-component model reproduces the observed trend well."
+        },
+        {
+          "loc": "MS offset versus dust-to-stellar size ratio",
+          "quote": "this simple model does not produce a good fit in either plot."
+        },
+        {
+          "loc": "Comparison with theoretical evolutionary tracks",
+          "quote": "our observations are consistent with the theoretical evolutionary track of galaxies in a gas compaction and potentially subsequent “inside-out” quenching process"
+        }
+      ]
+    },
+    {
+      "hypothesis": "The LIRG IR-surface-luminosity–temperature relation changes with redshift.",
+      "experiment": "Compare fitted SMG dust temperatures and surface luminosities with local LIRGs and higher-redshift samples.",
+      "result": "At Sigma_IR < 10^11.5 L kpc−2, lensed SMGs have comparable temperatures to local LIRGs.",
+      "finding": "The relation may not evolve up to z approximately 2; the high-surface-luminosity comparison is sample-limited.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "IR surface luminosity and dust temperature",
+          "quote": "At $\\Sigma_\\mathrm{IR} < 10^{11.5}$ L  kpc^−2^, the lensed SMGs exhibits comparable dust temperature as local LIRGs (cite: ds17)."
+        },
+        {
+          "loc": "IR surface luminosity and dust temperature",
+          "quote": "This indicates that the $\\Sigma_\\mathrm{IR} - T_\\mathrm{dust}$ relation for LIRGs may not evolve with redshift up to $z\\sim 2$."
+        },
+        {
+          "loc": "IR surface luminosity and dust temperature",
+          "quote": "only two independent sources in our sample (HLS0553 and HLS2332) are at $\\Sigma_\\mathrm{IR}> 10^{12}$ L  kpc^−2^."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Dust and stellar emission can be co-centered within astrometric uncertainties.",
+      "experiment": "Compare ALMA and IRAC centroids and K-S test uncertainty-normalized offsets.",
+      "result": "Mean offsets 0.05±0.05 arcsec in RA and 0.00±0.04 arcsec in Dec; Gaussian-null p=0.909.",
+      "finding": "The co-centered scenario cannot be ruled out.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Spatial offset between ALMA and IRAC counterparts",
+          "quote": "We find that the mean offset between ALMA and IRAC sources is $0.05\\ensuremath{''}\\pm0.05\\ensuremath{''}$ in RA and $0.00\\ensuremath{''}\\pm 0.04\\ensuremath{''}$ in DEC."
+        },
+        {
+          "loc": "Spatial offset between ALMA and IRAC counterparts",
+          "quote": "We cannot rule out the null hypothesis that the sample of spatial offsets relative to astrometric errors are drawn from a Gaussian distribution (*p*-value as 0.909)."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Major mergers alone account for the triggering of these SMGs.",
+      "experiment": "Search ALMA maps for close FIR-bright companions and compare companion-host and isolated-source star formation.",
+      "result": "Major-merger pair ratio ≳27%; no clear central/total sSFR difference between companion-host and remaining sources.",
+      "finding": "Multiple triggering mechanisms are possible, with strong companion-selection caveats.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Trigger mechanism of SMGs",
+          "quote": "Our derived major-merger pair ratio ($\\gtrsim$27%)"
+        },
+        {
+          "loc": "Trigger mechanism of SMGs",
+          "quote": "We find no clear difference of the central and total sSFR between the 27% SMGs with close FIR-bright companions and the rest of our sample."
+        },
+        {
+          "loc": "Trigger mechanism of SMGs",
+          "quote": "we conclude that SMGs could be triggered by a variety of mechanisms including major merger, minor merger and secular burst"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Longer wavelengths reduce stellar-extinction bias; cluster lensing brightens and stretches sources while often avoiding foreground blending.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "In order to avoid the heavy dust obscuration of stellar continuum in SMGs, it is also better to sample the rest-frame near-infrared (NIR) bands rather than the optical ones"
+        },
+        {
+          "loc": "Introduction",
+          "quote": "these targets are sufficiently bright at multiple wavelengths, and their angular sizes are also stretched significantly"
+        },
+        {
+          "loc": "Introduction",
+          "quote": "cluster-lensed ones are often free from blending with foreground galaxies, ensuring simplicity of the morphological modeling on their stellar component."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Tapering improves extended-source detectability; emphasize lensing-independent quantities because detailed lens models are incomplete.",
+      "evidence": [
+        {
+          "loc": "ALMA detection and photometry",
+          "quote": "Since *uv*-tapering can increase the detectability of extended structures, though at the expense of resolution, we performed the source extraction with the 1$^{\\prime\\prime}$-tapered image products."
+        },
+        {
+          "loc": "Summary",
+          "quote": "Since accurate lens models are not yet available for many of the observed SMGs, we focus our discussion on quantities that are independent of lensing effects, such as surface brightness and size ratios."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "S/N=4 selected to keep expected false detections ≲1; simulated fluxes and sizes check low-S/N and extended-source reliability.",
+      "evidence": [
+        {
+          "loc": "False detection rate and Completeness of ALMA Detections",
+          "quote": "we applied an S/N cut of our detections at S/N=4. This ensures the total false detection number to be $\\lesssim1$ in all of our ALMA maps."
+        },
+        {
+          "loc": "Quantitative morphological modeling",
+          "quote": "The median $R_\\mathrm{e}$ measured from the 10–15 sets of simulated visibility data for each source is consistent with that of the input model at the $1\\sigma$ confidence level"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Gaussian IRAC fits checked against Sérsic fits; no significant magnitude/size deviations.",
+      "evidence": [
+        {
+          "loc": "Spitzer/IRAC",
+          "quote": "We also applied a 2D Gaussian model for all the SMGs."
+        },
+        {
+          "loc": "Spitzer/IRAC",
+          "quote": "Gaussian fits do not show significant deviations in magnitude or source size from Sérsic fits"
+        }
+      ]
+    },
+    {
+      "value": "PSF models replace divergent Gaussian/Sérsic fits for HLS0043-B and HLS0307-B.",
+      "evidence": [
+        {
+          "loc": "Spitzer/IRAC",
+          "quote": "HLS0043-B and HLS0307-B were fit with PSF models, since their faintness ($\\sim$ 21 mag) and heavy blending with bright foreground sources ($\\sim$ 17 mag) led to a divergence in the Gaussian/Sérsic modeling."
+        }
+      ]
+    },
+    {
+      "value": "Exponential ALMA profiles compared with Gaussian profiles.",
+      "evidence": [
+        {
+          "loc": "Quantitative morphological modeling",
+          "quote": "There is no clear difference between the $\\chi^2$ of the best-fit circular Gaussian and exponential models for HLS0546 and HLS0553-C, and the Gaussian profile fits HLS0612 better."
+        }
+      ]
+    },
+    {
+      "value": "HLS0612 three-source fit discarded; HLS1314 three-source fit retained.",
+      "evidence": [
+        {
+          "loc": "Quantitative morphological modeling",
+          "quote": "UVMULTIFIT favored a single-source model. Therefore, we discarded the three-source fitting results."
+        },
+        {
+          "loc": "Quantitative morphological modeling",
+          "quote": "the goodness of a three-source fit with HLS1314 was better than that of a single-source one"
+        }
+      ]
+    },
+    {
+      "value": "Shared-variable mock relation gives slope −0.46, inconsistent with the fitted relation at >5 sigma.",
+      "evidence": [
+        {
+          "loc": "Dust-to-stellar size ratio versus IR surface luminosity",
+          "quote": "the resultant slope is $-0.46$."
+        },
+        {
+          "loc": "Dust-to-stellar size ratio versus IR surface luminosity",
+          "quote": "our fittings suggest that such a slope can be ruled out at a confidence of $>5\\sigma$"
+        }
+      ]
+    },
+    {
+      "value": "Simple two-component model fails to reproduce compact main-sequence SMGs in the main-sequence plots.",
+      "evidence": [
+        {
+          "loc": "MS offset versus dust-to-stellar size ratio",
+          "quote": "it fails to reproduce the main-sequence SMGs dominated by central starburst."
+        }
+      ]
+    },
+    {
+      "value": "CODEX 52909 excluded from further analysis because candidate sources are only approximately 3 sigma.",
+      "evidence": [
+        {
+          "loc": "ALMA detection and photometry",
+          "quote": "To avoid any confusion of $\\sim3\\sigma$ fake sources in this mosaic ALMA FoV, we did not analyze this field any further."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Incomplete lens models prevent accurate intrinsic masses and luminosities.",
+      "evidence": [
+        {
+          "loc": "SED fitting and photometric redshift",
+          "quote": "This is due to a lack of detailed lens models for several of the clusters in this study."
+        },
+        {
+          "loc": "Star formation in lensed SMGs",
+          "quote": "Without appropriate lensing correction, we cannot accurately determine the intrinsic stellar mass of our lensed SMG sample."
+        }
+      ]
+    },
+    {
+      "value": "HLS0840 radius exceeds its maximum recoverable angular scale and has a large uncertainty.",
+      "evidence": [
+        {
+          "loc": "Quantitative morphological modeling",
+          "quote": "All of our measured effective radii at 1.3 mm are smaller than their corresponding maximum recoverable angular scales for given ALMA antenna configurations, except for HLS0840"
+        },
+        {
+          "loc": "Quantitative morphological modeling",
+          "quote": "As a result, the Re measurement of HLS0840 has a large error bar (1.7$''$)."
+        }
+      ]
+    },
+    {
+      "value": "Missing optical/NIR constraints can overestimate extinction and stellar mass.",
+      "evidence": [
+        {
+          "loc": "Multi-wavelength color and redshift",
+          "quote": "Due to the lack of deep rest-frame UV and optical data, it is not clear whether the determination of such high $A_V$ values is reliable."
+        },
+        {
+          "loc": "The connection between SMGs and cQs",
+          "quote": "the lack of NIR data may lead to an overestimate of dust extinction and thus stellar mass through an energy-balance approach in the SED fitting"
+        }
+      ]
+    },
+    {
+      "value": "Fully obscured compact stellar components may be absent from IRAC light profiles.",
+      "evidence": [
+        {
+          "loc": "Dust-to-stellar continuum size ratio",
+          "quote": "it is possible that a compact and obscured stellar component remains undetected at the ALMA/IRAC continuum centroid"
+        }
+      ]
+    },
+    {
+      "value": "Radial dust temperature/optical-depth gradients can bias dust radii and underestimate Sigma_IR.",
+      "evidence": [
+        {
+          "loc": "Dust-to-stellar continuum size ratio",
+          "quote": "We note that this ignores any radial gradients of dust temperature or opacity that could alter the measured size of dust continuum."
+        },
+        {
+          "loc": "IR surface luminosity and dust temperature",
+          "quote": "the $\\Sigma_\\mathrm{IR}$ might be underestimated."
+        }
+      ]
+    },
+    {
+      "value": "Only two independent sources probe Sigma_IR > 10^12 L kpc−2.",
+      "evidence": [
+        {
+          "loc": "IR surface luminosity and dust temperature",
+          "quote": "only two independent sources in our sample (HLS0553 and HLS2332) are at $\\Sigma_\\mathrm{IR}> 10^{12}$ L  kpc^−2^."
+        }
+      ]
+    },
+    {
+      "value": "The simulation comparison is tentative because observed SMGs have higher stellar masses.",
+      "evidence": [
+        {
+          "loc": "Comparison with theoretical evolutionary tracks",
+          "quote": "This result is tentative because the SMG sample is biased to a higher stellar mass"
+        }
+      ]
+    },
+    {
+      "value": "True SFHs require additional J/H photometry and spectroscopy.",
+      "evidence": [
+        {
+          "loc": "Further test of the evolutionary sequence",
+          "quote": "the true SFH can only be determined accurately with more observational data."
+        }
+      ]
+    },
+    {
+      "value": "Merger incidence is a lower limit and depends on FIR-bright companions with comparable magnification.",
+      "evidence": [
+        {
+          "loc": "Trigger mechanism of SMGs",
+          "quote": "we do not have a uniform survey of companions due to the cluster lensing effect, and therefore our measurement should be a lower limit."
+        },
+        {
+          "loc": "Trigger mechanism of SMGs",
+          "quote": "the need for companions to be FIR-bright and to lie close enough in the source plane to suffer comparable amplification, which may weaken these conclusions."
+        }
+      ]
+    },
+    {
+      "value": "Extended-source completeness may be below 50% at 1.4 mJy.",
+      "evidence": [
+        {
+          "loc": "False detection rate and Completeness of ALMA Detections",
+          "quote": "our completeness can be lower than 50% at 1.4 mJy for these extended sources."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The 26 fitted components include multiple images and HLS1314 clumps; independence and repeated-source weighting need explicit treatment in correlation errors.",
+    "Both axes of the main structural correlation contain the fitted dust radius; reproducing the stated mock-data test is essential.",
+    "The largest dust source is also the one exceeding its recoverable angular scale.",
+    "A cross-sectional comparison with stacked evolutionary tracks does not establish individual galaxies' histories.",
+    "No differential magnification is assumed although size ratios and stellar/dust tracers differ spatially.",
+    "HLS0600 has inconsistent redshifts in the text and physical-properties table; the HLS0011/HLS0111 naming also needs reconciliation.",
+    "The first two project identifiers are printed without an .S suffix; archive lookup requires resolving those literal identifiers."
+  ],
+  "reproducibility": [
+    {
+      "field": "products_in_archive",
+      "value": "ALMA-delivered combined continuum images and spectral cubes were inspected",
+      "evidence": [
+        {
+          "loc": "ALMA",
+          "quote": "Before the formal reduction work, we first checked the combined continuum image and spectral cube of each target, delivered by the ALMA archive."
+        }
+      ]
+    }
+  ],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Reduction/imaging scripts and full source-extraction configurations.",
+    "Per-source visibility-fit models, fitting controls and covariance/error outputs.",
+    "Exact IRAC PSFs, rotated templates and MCMC setup.",
+    "Complete machine-readable SED input photometry, including ancillary fluxes and upper limits.",
+    "MAGPHYS library/configuration details and MBB fitting implementation.",
+    "Numerical inherited PACS corrections, gas conversion and main-sequence formula implementation.",
+    "Mock/bootstrapping code and simulation profile files.",
+    "Explicit ALMA public-access statement and unambiguous project/member dataset mapping."
+  ],
+  "estimated_data_volume_inferred": "not stated",
+  "score_inferred": 6,
+  "score_reason": "Strong numerical tables, identifiable observations, named tools and substantial simulation checks; exact imaging, extraction, SED and MCMC settings and released analysis code are missing.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but ALMA public availability is not explicitly stated and the supplied recipe omits settings needed for an exact independent rerun.",
+  "methods_papers": [
+    {
+      "citation": "(cite: casa)",
+      "why": "CASA ALMA reduction and modeling environment."
+    },
+    {
+      "citation": "(cite: sex)",
+      "why": "Source extraction and aperture photometry."
+    },
+    {
+      "citation": "(cite: galfit)",
+      "why": "SPIRE photometry and IRAC morphological fitting."
+    },
+    {
+      "citation": "(cite: uvmultifit)",
+      "why": "Multiple-source visibility modeling."
+    },
+    {
+      "citation": "(cite: emcee)",
+      "why": "MCMC photometric decomposition and relation fitting."
+    },
+    {
+      "citation": "(cite: magphys; dacunha15)",
+      "why": "High-redshift energy-balanced SED fitting."
+    },
+    {
+      "citation": "(cite: battisti19)",
+      "why": "Simultaneous photometric-redshift and physical-property estimation."
+    },
+    {
+      "citation": "(cite: martis19)",
+      "why": "Additional inherited MAGPHYS assumptions."
+    },
+    {
+      "citation": "(cite: rawle16)",
+      "why": "Detailed inherited Herschel processing."
+    },
+    {
+      "citation": "(cite: hipe)",
+      "why": "SPIRE reduction environment."
+    },
+    {
+      "citation": "(cite: piazzo15)",
+      "why": "UNIMAP PACS image production."
+    },
+    {
+      "citation": "(cite: scamp)",
+      "why": "Astrometric registration."
+    },
+    {
+      "citation": "(cite: 2012drzp)",
+      "why": "HST DRIZZLEPAC processing."
+    },
+    {
+      "citation": "(cite: hora12)",
+      "why": "IRAC PSF models."
+    },
+    {
+      "citation": "(cite: greve12)",
+      "why": "Inherited FIR dust-temperature method."
+    },
+    {
+      "citation": "(cite: scoville16)",
+      "why": "Rest-frame 850 luminosity-to-gas conversion."
+    },
+    {
+      "citation": "(cite: speagle14)",
+      "why": "Main-sequence SFR formula."
+    },
+    {
+      "citation": "(cite: aravena20)",
+      "why": "Main-sequence classification boundaries."
+    },
+    {
+      "citation": "(cite: calzetti00)",
+      "why": "Extinction-law assessment of stellar-radius bias."
+    },
+    {
+      "citation": "(cite: chabrier03); (cite: cf00)",
+      "why": "IMF and dust-absorption assumptions in SED fitting."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "Egami et al., in prep.",
+      "why": "Full HLS cluster sample and survey description."
+    },
+    {
+      "citation": "Sun et al., in prep",
+      "why": "Obtained/confirmed redshifts for seven additional sources."
+    },
+    {
+      "citation": "Dessauges-Zavadsky et al., in prep.",
+      "why": "IRAM 30-m CO searches supplying prior spectroscopic redshifts."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "Herschel Lensing Survey (HLS)",
+    "HLS-deep",
+    "HLS-snapshot",
+    "ROSAT All-Sky Survey (RASS)",
+    "COnstrain Dark Energy with X-ray (CODEX)",
+    "SPT-SZ survey",
+    "RELICS",
+    "CLASH",
+    "HST SNAP 12884",
+    "Pan-STARRS DR1",
+    "DES DR1",
+    "GAIA DR2",
+    "AS2UDS",
+    "GOALS",
+    "KINGFISH",
+    "HST CANDELS",
+    "ALMA Frontier Fields Survey",
+    "ASPECS",
+    "ALCS"
+  ]
+}
+tokens used
+115,680

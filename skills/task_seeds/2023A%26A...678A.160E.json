@@ -1,0 +1,511 @@
+{
+ "bibcode": "2023A&A...678A.160E",
+ "title": "FAUST. X. Formaldehyde in the protobinary system [BHB2007] 11: Small-scale deuteration",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346428",
+ "arxiv_id": "2309.00501",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "protoplanetary_disks"
+ ],
+ "question": "Constrain the deuterium fractionation ratios in formaldehyde (H2CO, HDCO, and D2CO) at small spatial scales in the Class 0/I protobinary system [BHB2007] 11 and investigate the kinematics of its extended emission.",
+ "alma_project_codes": [
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "Band 6 (FAUST also observed Band 3, but only Band 6 is analysed here)",
+  "arrays": "12 m main array and 7 m ACA",
+  "angular_resolution": "0.25\" (~40 au) across setups; 0.43\" x 0.41\" combined; individual: 0.35\" x 0.33\" (C43-4), 1.73\" x 1.25\" (C43-1), 7.71\" x 3.94\" (7M)",
+  "sensitivity": "rms: 0.15 K (H2CO 218.222 GHz), 0.021 K (HDCO 246.925 GHz), 0.072 K (HDCO 259.035 GHz), 0.15 K (D2CO 231.410 GHz)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic parameters (frequency, partition function, Einstein coefficient, upper level energy, upper level degeneracy) from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "Radiative Transfer Analysis",
+      "quote": "Frequency ($\\nu$ in Hz), partition function (Q($T_{\\rm ex}$)), Einstein coefficient ($A_{\\rm ul}$), energy of the upper level ($E_{\\rm u}$ in K) and upper level population ($g_{\\rm u}$) are taken from the Cologne Database for Molecular Spectroscopy (CDMS; (cite: muller01))."
+     },
+     {
+      "loc": "Observations",
+      "quote": "Based on analysis carried out with the CASSIS software ((cite: Vastel2015)) and JPL (http://spec.jpl.nasa.gov/) and CDMS (https://cdms.astro.uni-koeln.de/classic/) molecular databases."
+     }
+    ]
+   },
+   "citation": "CDMS (cite: muller01) and JPL"
+  },
+  {
+   "what": {
+    "value": "Distance to [BHB2007] 11 of 163 +/- 5 pc",
+    "evidence": [
+     {
+      "loc": "Source Background",
+      "quote": "[BHB2007] 11 is a Class 0/I protostellar core ((cite: brooke), (cite: forbrich), (cite: sandell)) located 163 $\\pm$ 5 pc away ((cite: dzib)) in the Barnard 59 (B59) core."
+     }
+    ]
+   },
+   "citation": "(cite: dzib)"
+  },
+  {
+   "what": {
+    "value": "Central mass of the system for kinematic streamer modelling",
+    "evidence": [
+     {
+      "loc": "Kinematic Streamer Modelling",
+      "quote": "Along with the central mass of the system (taken from (cite: vastel)), the input parameters for the model are the spherical co-ordinates of the initial position and radial velocity of this parcel of mass within a cloud"
+     }
+    ]
+   },
+   "citation": "(cite: vastel)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination angle i and disk position angle (138 deg)",
+    "evidence": [
+     {
+      "loc": "H$_2$CO 3(0,3)-2(0,2)",
+      "quote": "The axis of the extension seems to be aligned with that seen in the continuum, which has a position angle of 138$\\degree$ ((cite: Alves17))"
+     },
+     {
+      "loc": "Kinematic Streamer Modelling",
+      "quote": "In order to obtain the position and velocity values with respect to the observer, two rotations are applied due to the inclination angle *i* and the disk position angle (both taken from (cite: Alves17))."
+     }
+    ]
+   },
+   "citation": "(cite: Alves17)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity of the source (1.68 x 10^27 W)",
+    "evidence": [
+     {
+      "loc": "Kinematic Streamer Modelling",
+      "quote": "$L_{\\rm bol}$ represents the bolometric luminosity of the source (taken as $1.68\\times10^{27}$ W - (cite: sandell)), all in cgs units."
+     }
+    ]
+   },
+   "citation": "(cite: sandell)"
+  },
+  {
+   "what": {
+    "value": "CH3OH velocity components (-2, 2.8 and 9.9 km s^-1) and 2D deconvolution source sizes",
+    "evidence": [
+     {
+      "loc": "Emission Origin",
+      "quote": "also shows dashed lines denoting the three velocity components first identified in CH$_3$OH emission towards \\[BHB2007\\] 11 as described in (cite: vastel) at -2, 2.8 and 9.9 km s$^{-1}$"
+     },
+     {
+      "loc": "HDCO",
+      "quote": "These findings agree with the 2D deconvolution presented in (cite: vastel) in that the component associated with Source A is slightly more extended than those associated with Source B."
+     }
+    ]
+   },
+   "citation": "(cite: vastel)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create moment maps and extract source spectra",
+   "method": "Analyse clean maps in GILDAS, identify line channels to create moment 0 and moment 1 maps combining 12 m and 7 m configurations, define an extraction polygon from the 4-sigma contour of the HDCO 259 GHz transition, extract spectra in Jy and convert to synthesised beam temperature (K) in GILDAS/CLASS.",
+   "software": [
+    "GILDAS",
+    "CLASS",
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "4-sigma contour of HDCO 259 GHz map used as extraction polygon",
+    "Velocity integration ranges for H2CO components: -5 to 0 km s^-1, 1 to 8 km s^-1, 8 to 15 km s^-1; extended structure: 0 to 6 km s^-1",
+    "Continuum offset of 10.3 K added to H2CO spectrum to model absorption; baseline offset of 0.1 K corrected in HDCO 259 GHz spectrum"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure emitting component sizes via 2D image deconvolution",
+   "method": "Run 2D Gaussian deconvolution on the peak emission channel of each of the three velocity components in both HDCO transitions (excluding the blended component of HDCO 4(1,4)-3(1,3)) using CASA imfit.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Deconvolved sizes: 0.34\" x 0.27\" (-1 km s^-1), 1.37\" x 0.68\" (3 km s^-1), 0.30\" x 0.20\" (9 km s^-1)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Perform LTE radiative transfer modelling and derive column densities and D/H ratios",
+   "method": "Fit Gaussian line profiles using Levenberg-Marquardt fitting and perform LTE radiative transfer MCMC modelling in CASSIS to derive V_LSR, FWHM, T_ex, and total column densities (N_TOT) for HDCO, H2CO, and D2CO, then compute D/H = 0.5 * N(HDCO)/N(H2CO).",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Emitting sizes for beam dilution correction: lower limit 0.15\" (Source B) and 0.50\" (Source A); upper limit 0.30\" (Source B) and 1.00\" (Source A)",
+    "Fixed T_ex = 90 K for H2CO and D2CO emission components (and blended HDCO component); T_ex = 13 K (or <13 K) for envelope absorption",
+    "Background temperature T_bg = 2.73 K (CMB); calibration uncertainty = 10%"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE) conditions and a common origin of disk emission across H2CO, HDCO, and CH3OH",
+    "Uniform H2CO emission across the extraction region where HDCO is emitting"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Map centroid velocities and model extended kinematics with a free-fall streamer model",
+   "method": "Perform pixel-by-pixel Gaussian fitting on H2CO (between 0 and 6 km s^-1, split at 3.5 km s^-1) using pyspeckit for pixels >= 5-sigma, define polygons excluding high-velocity disk emission, and compare sky trajectories and velocity-distance profiles against an analytic free-falling streamline model.",
+   "software": [
+    "pyspeckit"
+   ],
+   "key_parameters": [
+    "Velocity intervals: 3.5 to 6 km s^-1 (redshifted lobe) and 0 to 3.5 km s^-1 (blueshifted lobe); minimum intensity threshold of 5-sigma",
+    "Model parameters: initial distance r_0, radial velocity v_r,0, position angle theta_0, azimuthal angle phi_0, angular velocity Omega_0, central mass, inclination i, disk PA = 138 deg"
+   ],
+   "assumptions": [
+    "Material is free-falling with conserved angular momentum towards the central mass"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H2CO column density (range across emission components)",
+   "value": "3-8",
+   "uncertainty": "not stated",
+   "units": "10^14 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "From the radiative transfer modelling, the column density of H$_2$CO ranges between (3-8)$\\times$10$^{14}$ cm$^{-2}$ and that of HDCO ranges between (0.8-2.9)$\\times$10$^{13}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (range across emission components)",
+   "value": "0.8-2.9",
+   "uncertainty": "not stated",
+   "units": "10^13 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "From the radiative transfer modelling, the column density of H$_2$CO ranges between (3-8)$\\times$10$^{14}$ cm$^{-2}$ and that of HDCO ranges between (0.8-2.9)$\\times$10$^{13}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO column density (range for single detected velocity component)",
+   "value": "2.6-4.3",
+   "uncertainty": "not stated",
+   "units": "10^12 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Column density for the single detected velocity component of D$_2$CO ranges between (2.6-4.3)$\\times$10$^{12}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average formaldehyde D/H ratio from HDCO",
+   "value": "0.02",
+   "uncertainty": "+0.02/-0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "This yields an average D/H ratio for formaldehyde in [BHB2007] 11 of 0.02$^{+0.02}_{-0.01}$ from HDCO ."
+    },
+    {
+     "loc": "D/H Ratio Derivation",
+     "quote": "This gives an average D/H ratio for HDCO in this source of 0.02$^{+0.02}_{-0.01}$ calculated using Eq."
+    }
+   ]
+  },
+  {
+   "quantity": "Formaldehyde D/H ratio from HDCO (-1.2 km s^-1 component, size 0.15\")",
+   "value": "2e-2",
+   "uncertainty": "+2e-2/-1e-2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.15 | 93$^{+2}_{-7}$ | -1.2$\\pm$0.1 | 3.5$\\pm$0.1 | (1.4$^{+0.1}_{-0.1}$)$\\times$10$^{13}$ | 4$^{+5}_{-1}$ | (2$^{+2}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Formaldehyde D/H ratio from HDCO (3.4 km s^-1 component, size 0.50\")",
+   "value": "1.5e-2",
+   "uncertainty": "+0.9e-2/-0.5e-2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.50 | 95$^{+1}_{-3}$ | 3.4$\\pm$0.1 | 3.9$\\pm$0.1 | (2.5$^{+0.2}_{-0.3}$)$\\times$10$^{13}$ | 3$^{+2}_{-1}$ | (1.5$^{+0.9}_{-0.5}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Formaldehyde D/H ratio from HDCO (10 km s^-1 component, size 0.15\")",
+   "value": "1e-2",
+   "uncertainty": "+4e-2/-1e-2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.15 | 90 | 10$\\pm$1 | 5.0$\\pm$0.5 | (8.8$^{+0.9}_{-0.9}$)$\\times$10$^{12}$ | 3$^{+7}_{-2}$ | (1$^{+4}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO excitation temperature (-1.2 km s^-1 component, size 0.15\")",
+   "value": "93",
+   "uncertainty": "+2/-7",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.15 | 93$^{+2}_{-7}$ | -1.2$\\pm$0.1 | 3.5$\\pm$0.1 | (1.4$^{+0.1}_{-0.1}$)$\\times$10$^{13}$ | 4$^{+5}_{-1}$ | (2$^{+2}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO excitation temperature (3.4 km s^-1 component, size 0.50\")",
+   "value": "95",
+   "uncertainty": "+1/-3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.50 | 95$^{+1}_{-3}$ | 3.4$\\pm$0.1 | 3.9$\\pm$0.1 | (2.5$^{+0.2}_{-0.3}$)$\\times$10$^{13}$ | 3$^{+2}_{-1}$ | (1.5$^{+0.9}_{-0.5}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (-1.2 km s^-1 component, size 0.15\")",
+   "value": "1.4e13",
+   "uncertainty": "+0.1e13/-0.1e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.15 | 93$^{+2}_{-7}$ | -1.2$\\pm$0.1 | 3.5$\\pm$0.1 | (1.4$^{+0.1}_{-0.1}$)$\\times$10$^{13}$ | 4$^{+5}_{-1}$ | (2$^{+2}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (3.4 km s^-1 component, size 0.50\")",
+   "value": "2.5e13",
+   "uncertainty": "+0.2e13/-0.3e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.50 | 95$^{+1}_{-3}$ | 3.4$\\pm$0.1 | 3.9$\\pm$0.1 | (2.5$^{+0.2}_{-0.3}$)$\\times$10$^{13}$ | 3$^{+2}_{-1}$ | (1.5$^{+0.9}_{-0.5}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (10 km s^-1 component, size 0.15\")",
+   "value": "8.8e12",
+   "uncertainty": "+0.9e12/-0.9e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.15 | 90 | 10$\\pm$1 | 5.0$\\pm$0.5 | (8.8$^{+0.9}_{-0.9}$)$\\times$10$^{12}$ | 3$^{+7}_{-2}$ | (1$^{+4}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (-1.2 km s^-1 component, size 0.30\")",
+   "value": "1.1e13",
+   "uncertainty": "+0.1e13/-0.1e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.30 | 96$\\pm$3 | -1.2$\\pm$0.1 | 3.5$\\pm$0.1 | (1.1$^{+0.1}_{-0.1}$)$\\times$10$^{13}$ | 3$^{+4}_{-1}$ | (2$^{+2}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (3.4 km s^-1 component, size 1.00\")",
+   "value": "2.9e13",
+   "uncertainty": "+0.2e13/-0.3e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 1.00 | 98$^{+1}_{-2}$ | 3.4$\\pm$0.1 | 3.9$\\pm$0.1 | (2.9$^{+0.2}_{-0.3}$)$\\times$10$^{13}$ | 3$^{+2}_{-1}$ | (1.8$^{+0.9}_{-0.5}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO column density (10 km s^-1 component, size 0.30\")",
+   "value": "8e12",
+   "uncertainty": "+1e12/-1e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.30 | 90 | 10$\\pm$1 | 5.0$\\pm$0.5 | (8$^{+1}_{-1}$)$\\times$10$^{12}$ | 3$^{+7}_{-1}$ | (1$^{+4}_{-1}$)$\\times$10$^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO absorption column density upper limit (size 0.30\")",
+   "value": "<6.6e11",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HDCO",
+     "quote": "Following our analysis, we also obtained an upper limit column density for absorption in HDCO of 6.6$\\times$10$^{11}$cm$^{-2}$."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| 0.30 | $<$ 13 | 3.6 | 0.40 | $<$ 6.6$\\times$10$^{11~(a)}$ | $<$ 1.3 | $<$ 6.6$\\times$10$^{-3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO column density (-1.2 km s^-1 component)",
+   "value": "3e14",
+   "uncertainty": "+2e14/-2e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | 90 | -1.2 | 3.5 | (3$^{+2}_{-2}$)$\\times$10$^{14}$ | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO column density (3.4 km s^-1 component)",
+   "value": "8e14",
+   "uncertainty": "+2e14/-3e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | 90 | 3.4 | 3.9 | (8$^{+2}_{-3}$)$\\times$10$^{14}$ | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO column density (9.1 km s^-1 component)",
+   "value": "3e14",
+   "uncertainty": "+3e14/-2e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | 90 | 9.1 | 5.1 | (3$^{+3}_{-2}$)$\\times$10$^{14}$ | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO absorption column density upper limit",
+   "value": "<6e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| | 13$^{(e)}$ | 3.6$\\pm$0.4 | 0.40$\\pm$0.01 | $<$ 6$\\times$10$^{13}$ | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO column density (size 0.30\")",
+   "value": "2.6e12",
+   "uncertainty": "+0.3e12/-0.2e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 0.30 | 90 | 2.1$\\pm$0.3 | 2.8$\\pm$0.6 | (2.6$^{+0.3}_{-0.2}$)$\\times$10$^{12}$ | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO column density (size 1.00\")",
+   "value": "4.3e12",
+   "uncertainty": "+0.4e12/-0.4e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 1.00 | 90 | 2.1$\\pm$0.3 | 2.8$\\pm$0.6 | (4.3$^{+0.4}_{-0.4}$)$\\times$10$^{12}$ | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO integrated intensity",
+   "value": "0.826",
+   "uncertainty": "not stated",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "D$_2$CO 4(0,4)-3(0,3)",
+     "quote": "The integrated intensity of our D$_2$CO line is 0.826 K km s$^{-1}$, therefore yielding a ratio of 2.3 compared to the 3$\\sigma$ threshold."
+    }
+   ]
+  },
+  {
+   "quantity": "216 GHz continuum peak brightness temperature",
+   "value": "10.3",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "H$_2$CO 3(0,3)-2(0,2)",
+     "quote": "Note that in order to model this absorption feature, a continuum value of 10.3 K has been added to the spectrum shown in the upper left panel of Fig. 3. This value has been obtained by measuring the flux of the 216 GHz continuum emission."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of the hand-selected line-free continuum channels used for continuum imaging and subtraction",
+  "Self-calibration solution intervals (solint) and number of rounds of phase and amplitude self-calibration",
+  "tclean deconvolution parameters (deconvolver algorithm, cell size, image size, stopping threshold, masking strategy)",
+  "Exact coordinates/vertices of the 4-sigma HDCO 259 GHz polygon used to extract the spectra for all four transitions",
+  "Exact coordinates of the five pixels shown in Fig. 12 used for individual pixel spectrum extraction",
+  "Exact polygon vertices used to isolate the redshifted and blueshifted dynamic features in Fig. 14 for the kinematic streamer model",
+  "Best-fit or optimised numerical values of the streamer model input parameters (r_0, v_r,0, theta_0, phi_0, Omega_0) and the exact central mass and inclination values adopted from literature"
+ ],
+ "missing_for_reproduction": [
+  "FAUST custom calibration and self-calibration scripts and exact hand-selected line-free channel ranges",
+  "Exact coordinates/vertices of the 4-sigma HDCO 259 GHz extraction polygon and the dynamic-feature polygons in Fig. 14",
+  "Best-fit input parameter values (r_0, v_r,0, theta_0, phi_0, Omega_0) used to generate the streamer curves in Figs. 15 and 16",
+  "Exact pixel coordinates for the 5 spectra extracted in Figs. 12 and 13"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project code, spectral transitions, software tools (CASA 5.6.1-8, GILDAS/CLASS, CASSIS, pyspeckit), and LTE fitting parameters/assumptions (Table 3) are clearly documented, allowing close reproduction of the radiative transfer and D/H results once spectra are extracted. However, the custom FAUST self-calibration/combination details, exact polygon coordinates, and numerical parameters of the kinematic streamer model are not stated.",
+ "rediscovery_reason": "Public ALMA Large Program data (2018.1.01205.L) with well-defined transitions and quantitative column density and D/H targets in Table 3 that can be re-derived from the combined cubes.",
+ "source_card": "cards/2023A%26A...678A.160E/sonnet/card.md"
+}

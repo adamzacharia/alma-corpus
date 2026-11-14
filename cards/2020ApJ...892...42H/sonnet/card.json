@@ -1,0 +1,942 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...892...42H",
+  "title": "ALMA CO Observations of the Host Galaxies of Long-duration Gamma-Ray Bursts. I. Molecular Gas Scaling Relations",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Hatsukade, Bunyo",
+  "n_authors": 7,
+  "arxiv_id": "2002.09121",
+  "doi": "10.3847/1538-4357/ab7992",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00939.S",
+   "2016.1.00455.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the results of CO observations toward 14 host galaxies of long-duration gamma-ray bursts (GRBs) at $z = 0.1$–2.5 by using the Atacama Large Millimeter/submillimeter Array."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "14 GRB hosts (GRBs 980703, 021211, 031203, 050826, 051006, 051117B, 060814, 070306, 071021, 081109A, 100621A, 110918A, 130925A, 140301A)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.1055 (GRB 031203) to 2.452 (GRB 071021); spectroscopic redshifts",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 050826 | $0.296\\pm0.001$ | 4 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Spectroscopic redshifts from the literature (Table 1 references); luminosity distance from H0=70, Om=0.3, OL=0.7",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 050826 | $0.296\\pm0.001$ | 4 |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do GRB host galaxies have molecular gas properties (gas fraction, depletion time) that differ from other star-forming galaxies, once selection bias relative to the main sequence is accounted for?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "In order to understand the molecular gas properties in GRB hosts, a larger sample with CO observations is necessary."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00939.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and Results",
+       "quote": "(Project code: 2015.1.00939.S and 2016.1.00455.S)"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00455.S",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and Results",
+       "quote": "(Project code: 2015.1.00939.S and 2016.1.00455.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 4, 6 or 7 depending on target redshift",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and Results",
+      "quote": "the CO(3–2) or CO(4–3) line was observed at band 4, 6, or 7 depending on the target redshift."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four spectral windows, 1875 MHz each (488.28 kHz x 3840 channels), total 7.5 GHz",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and Results",
+      "quote": "The correlator was used in the frequency domain mode with a bandwidth of 1875 MHz (488.28 kHz $\\times$ 3840 channels). Four spectral windows were used, providing a total bandwidth of 7.5 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=3–2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and Results",
+       "quote": "the CO(3–2) or CO(4–3) line was observed at band 4, 6, or 7 depending on the target redshift."
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=4–3",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and Results",
+       "quote": "the CO(3–2) or CO(4–3) line was observed at band 4, 6, or 7 depending on the target redshift."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C36-2/3, C36-3, C40-4, C40-5, C40-6 (per target in observation table)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 980703 | 4–3 | 6 | 234.507 | 2016-05-22 | C36-3 | 30 | 37 | 16.5–640.0 |"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Natural-weighted beams 0.19–1.52 arcsec; tapered (0.8 arcsec) 0.85–1.07 arcsec",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 050826 | 3–2 | 6 | 266.818 | 2016-10-19 | C40-6 | 81 | 44 | 16.7–1800 | $0.19 \\times 0.18$ | $0.88 \\times 0.74$ |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "11–90 min per execution",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 051117B | 4–3 | 6 | 233.567 | 2016-10-19 | C40-6 | 90 | 44 | 16.7–1800 |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "March–November 2016 (Cycle 3 and 4)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and Results",
+      "quote": "ALMA observations of the targets were conducted in March–November, 2016, for the Cycle 3 and Cycle 4 programs"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "GHostS database, Perley et al. compilations, Dark Energy Survey",
+     "provided": {
+      "value": "UV-to-radio photometry for SED fitting",
+      "evidence": [
+       {
+        "loc": "3 SED Fit",
+        "quote": "The photometry data of our targets are taken from the GHostS database ([www.grbhosts.org](www.grbhosts.org) and references therein), (cite: perl16), and (cite: perl17a)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Hubble Legacy Archive / DES",
+     "provided": {
+      "value": "optical images for comparison with CO maps",
+      "evidence": [
+       {
+        "loc": "2.2 Observations and Results",
+        "quote": "along with optical images taken from the Hubble Legacy Archive[^1] and the public data of the Dark Energy Survey"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO observations, SFR, M*, metallicity of 11 literature GRB hosts (Appendix table)",
+      "evidence": [
+       {
+        "loc": "2.1 GRB Hosts",
+        "quote": "Six hosts with CO detection (GRBs 980425, 051022, 080207, 080517, 111005A, and 190114C) and five hosts with upper limits (GRBs 000418, 030329, 060505, 060814, and 100316D)."
+       }
+      ]
+     },
+     "citation": "mich18; hats14; arab18; hats19; stan15; deug19 etc."
+    },
+    {
+     "what": {
+      "value": "Comparison star-forming galaxy sample and scaling relations (1444 galaxies, z=0–4)",
+      "evidence": [
+       {
+        "loc": "5.3 Gas Fraction, Depletion Timescale, and Scaling Relation",
+        "quote": "the distribution of star-forming galaxies compiled by (cite: tacc18) is shown as a color distribution."
+       }
+      ]
+     },
+     "citation": "(cite: tacc18)"
+    },
+    {
+     "what": {
+      "value": "Main-sequence relation for star-forming galaxies",
+      "evidence": [
+       {
+        "loc": "2.1 GRB Hosts",
+        "quote": "MS star-forming galaxies at $z = 0.1$–2.5, taken from (cite: spea14)"
+       }
+      ]
+     },
+     "citation": "(cite: spea14)"
+    },
+    {
+     "what": {
+      "value": "Metallicity-dependent alpha_CO relation",
+      "evidence": [
+       {
+        "loc": "4.2 Molecular Gas Mass",
+        "quote": "We adopted the relation between metallicity and $\\alpha_{\\rm CO}$ of (cite: genz15)"
+       }
+      ]
+     },
+     "citation": "(cite: genz15); (cite: genz12); (cite: bola13); (cite: tacc18)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA QA2 data; QA2 PASS except GRB 031203 (SEMIPASS)",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and Results",
+       "quote": "The second level of Quality Assurance (QA2) performed by the ALMA data reduction team was “PASS” except for the data set of the GRB 031203 host"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "created with natural weighting without tapering the $uv$ data."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.8 arcsec taper for tapered maps",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "created with natural weighting and $0.8\\ensuremath{''}$ taper."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "CO line luminosity formula",
+      "evidence": [
+       {
+        "loc": "4.2 Molecular Gas Mass",
+        "quote": "The CO luminosity was calculated as follows (cite: solo05)"
+       }
+      ]
+     },
+     "from_reference": "(cite: solo05)"
+    },
+    {
+     "what": {
+      "value": "alpha_CO(Z) with harmonic mean for low-metallicity hosts",
+      "evidence": [
+       {
+        "loc": "4.2 Molecular Gas Mass",
+        "quote": "we adopted the harmonic mean of the two relations by following (cite: tacc18)."
+       }
+      ]
+     },
+     "from_reference": "(cite: tacc18)"
+    },
+    {
+     "what": {
+      "value": "Dust mass and L_FIR formalism",
+      "evidence": [
+       {
+        "loc": "4.3 Dust Mass, FIR Luminosity, and SFR",
+        "quote": "The FIR luminosity and dust mass were derived as (cite: debr03)"
+       }
+      ]
+     },
+     "from_reference": "(cite: debr03)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration scripts/pipeline version",
+    "Imaging details: tclean parameters, cell/image size, deconvolver, masks, line-free channels, continuum subtraction",
+    "Channel width/velocity resolution used for integrated maps and spectrum extraction aperture",
+    "How CO flux, line width and S/N were measured (fitting method)",
+    "CIGALE parameter grid (tau, ages, burst, attenuation, etc.)",
+    "Which flux calibrator and flux uncertainty",
+    "How δMS was computed for each host and error handling for Pearson r"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure CO line fluxes and continuum",
+    "method": {
+     "value": "Velocity-integrated CO maps and continuum maps; 3 sigma upper limits for non-detections assuming 180 km/s line width",
+     "evidence": [
+      {
+       "loc": "4.2 Molecular Gas Mass",
+       "quote": "For non-detection hosts, we derived 3$\\sigma$ upper limits by assuming a line width of 180 km s$^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "SED fitting for SFR and stellar mass",
+    "method": {
+     "value": "CIGALE with delayed SFH, BC03 SSP, Chabrier IMF, nebular emission, modified starburst attenuation, dl2014 dust emission, radio module",
+     "evidence": [
+      {
+       "loc": "3 SED Fit",
+       "quote": "We adopt a SFH of the delayed SFH with an optional exponential burst (`sfhdelayed`)"
+      }
+     ]
+    },
+    "software": [
+     "CIGALE",
+     "CLOUDY"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Likelihood analysis of model grid",
+     "evidence": [
+      {
+       "loc": "3 SED Fit",
+       "quote": "The models are fitted to the data and physical properties are estimated through the analysis of the likelihood distribution."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Stellar masses compared with previous studies",
+     "evidence": [
+      {
+       "loc": "3 SED Fit",
+       "quote": "The stellar masses are overall consistent with previous studies"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive molecular gas mass",
+    "method": {
+     "value": "L'CO from Solomon & Vanden Bout formula, converted to CO(1–0) with r31=0.6, r41=0.4, times metallicity-dependent alpha_CO",
+     "evidence": [
+      {
+       "loc": "2.1 CO Line Luminosity Ratios",
+       "quote": "we adopted the line ratios of CO(3–2)/CO(1–0) $=r_{31}$ $=0.6$ and CO(4–3)/CO(1–0) $=r_{41}$ $=0.4$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO(Z) of Genzel+15 (harmonic mean of Genzel+12 and Bolatto+13 at low metallicity), metallicity on Pettini & Pagel scale",
+      "evidence": [
+       {
+        "loc": "4.2 Molecular Gas Mass",
+        "quote": "The adopted metallicity-dependent conversion factor $\\alpha_{\\rm CO}(Z)$ is 4–15 $M_{\\odot}$ (K km s$^{-1}$ pc$^2$)$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Galactic alpha_CO=4.4 (mass smaller by up to factor 3)",
+     "evidence": [
+      {
+       "loc": "4.2 Molecular Gas Mass",
+       "quote": "derived molecular gas mass would be smaller at most by a factor of 3 for hosts with a larger $\\alpha_{\\rm CO}(Z)$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive dust mass, L_FIR and FIR SFR",
+    "method": {
+     "value": "Optically thin modified blackbody from single continuum flux",
+     "evidence": [
+      {
+       "loc": "4.3 Dust Mass, FIR Luminosity, and SFR",
+       "quote": "adopt $\\kappa_d(125\\ \\mu m) = 2.64 \\pm 0.29$ m$^2$ kg$^{-1}$ (cite: dunn03) and $\\beta = 1.5$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T_dust = 40 K; SFR = 1.72e-10 L_FIR (Kennicutt98) scaled to Chabrier",
+      "evidence": [
+       {
+        "loc": "4.3 Dust Mass, FIR Luminosity, and SFR",
+        "quote": "In this study, we adopted $T_{\\rm dust} = 40$ K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Sensitivity to T_dust 30 or 50 K tested",
+     "evidence": [
+      {
+       "loc": "4.3 Dust Mass, FIR Luminosity, and SFR",
+       "quote": "If we adopt $T_{\\rm dust} = 30$ or 50 K, the dust mass would change by a factor of 1.5 and 0.8, and SFR would change by a factor of 0.3 and 2.6."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare with scaling relations vs. delta MS",
+    "method": {
+     "value": "Plot mu_gas and t_depl vs redshift and δMS against Tacconi+18 relations; Pearson correlation",
+     "evidence": [
+      {
+       "loc": "5.3 Gas Fraction, Depletion Timescale, and Scaling Relation",
+       "quote": "The Pearson’s correlation coefficients estimated for the CO-detected hosts are $r = 0.79$ and $r = -0.59$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CIGALE",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting for SFR and stellar mass",
+     "evidence": [
+      {
+       "loc": "3 SED Fit",
+       "quote": "We adopt a SED modeling code of Code Investigating GALaxy Emission"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CLOUDY",
+    "version": "not stated",
+    "used_for": {
+     "value": "nebular emission modelling within CIGALE",
+     "evidence": [
+      {
+       "loc": "3 SED Fit",
+       "quote": "where `CLOUDY` (cite: ferl98; ferl13) is used"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of CO-detected hosts",
+    "value": "8 of 14",
+    "uncertainty": "not stated",
+    "units": "hosts",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Observations and Results",
+      "quote": "We detected CO emission in eight hosts at $z = 0.3$–2"
+     }
+    ]
+   },
+   {
+    "quantity": "Molecular gas mass range of detected hosts",
+    "value": "(0.2–6)e10",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The derived molecular gas mass is $M_{\\rm gas} =$ (0.2–$6) \\times 10^{10}$$M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO(Z) range",
+    "value": "4–15",
+    "uncertainty": "not stated",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Molecular Gas Mass",
+      "quote": "The adopted metallicity-dependent conversion factor $\\alpha_{\\rm CO}(Z)$ is 4–15"
+     }
+    ]
+   },
+   {
+    "quantity": "M_gas, GRB 051006 host",
+    "value": "3.6e10",
+    "uncertainty": "0.4e10",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| 051006 | 1.057 | $263\\pm39$ | $0.69\\pm0.07$ | 10 | $2.7\\pm0.3\\times10^9$ | $(3.6\\pm0.4)\\times10^{10}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_gas/M_dust, GRB 051006 / 051117B / 110918A",
+    "value": "1730 / 640 / 840",
+    "uncertainty": "560 / 260 / 210",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Dust Mass, FIR Luminosity, and SFR",
+      "quote": "$M_{\\rm gas}/M_{\\rm dust} = 1730\\pm560$, $640\\pm260$, and $840\\pm210$ for the hosts of GRBs 051006, 051117B, and 110918A"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson r, mu_gas vs δMS",
+    "value": "0.79",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.3 Gas Fraction, Depletion Timescale, and Scaling Relation",
+      "quote": "$r = 0.79$ and $r = -0.59$ for the distribution of $\\mu_{\\rm gas}$ and $t_{\\rm depl}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson r, t_depl vs δMS",
+    "value": "-0.59",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.3 Gas Fraction, Depletion Timescale, and Scaling Relation",
+      "quote": "$r = 0.79$ and $r = -0.59$ for the distribution of $\\mu_{\\rm gas}$ and $t_{\\rm depl}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3–2)/CO(2–1) lower limit, GRB 060814 host",
+    "value": "> 0.32",
+    "uncertainty": "3 sigma",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.1 CO Line Luminosity Ratios",
+      "quote": "The obtained lower limit for the line luminosity ratio was CO(3–2)/CO(2–1) $> 0.32$ (3$\\sigma$)."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Two hosts (110918A, 140301A) show rotation-consistent velocity gradients; others more disturbed",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and Results",
+      "quote": "Two GRB hosts (GRBs 110918A and 140301A) show velocity gradient consistent with rotation"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "GRB hosts have higher gas fraction and shorter depletion time than other SFGs",
+    "experiment": "Compare mu_gas and t_depl vs redshift with Tacconi+18 sample",
+    "result": "GRB hosts tend to have higher mu_gas and shorter t_depl, especially z<~1",
+    "finding": "Could be a common property or selection effect from being above the MS",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.3 Gas Fraction, Depletion Timescale, and Scaling Relation",
+      "quote": "The GRB hosts tend to have a higher $\\mu_{\\rm gas}$ and a shorter $t_{\\rm depl}$ as compared with other star-forming galaxies at similar redshifts"
+     }
+    ]
+   },
+   {
+    "hypothesis": "GRB hosts follow the same δMS scaling relations as other SFGs",
+    "experiment": "mu_gas and t_depl vs δMS",
+    "result": "mu_gas increases and t_depl decreases with δMS; r=0.79, -0.59",
+    "finding": "No molecular gas deficit at given SFR and stellar mass",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.3 Gas Fraction, Depletion Timescale, and Scaling Relation",
+      "quote": "The GRB hosts follow the same scaling trends as other star-forming galaxies, where $\\mu_{\\rm gas}$ increases and $t_{\\rm depl}$ decreases with increasing $\\delta {\\rm MS}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "GRB hosts share dynamics with other SFGs",
+    "experiment": "L'CO vs FWHM comparison",
+    "result": "Hosts overlap MS and local galaxies",
+    "finding": "Similar geometry and kinematics",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Line Width",
+      "quote": "the GRB hosts appear to follow the model relation, which is also applied to $z \\sim 1$–2 MS galaxies"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Needed a larger CO sample; targets chosen with spectroscopic z, observable lines, high SFR, z<=2.5",
+    "evidence": [
+     {
+      "loc": "2.1 GRB Hosts",
+      "quote": "(iv) located at moderate redshifts ($z \\le 2.5$) to ensure a significant constraint on the molecular gas mass."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Galactic alpha_CO=4.4 would give masses lower by up to 3; ULIRG alpha_CO rejected since hosts are not ULIRGs",
+     "evidence": [
+      {
+       "loc": "4.2 Molecular Gas Mass",
+       "quote": "our targets are not categorized as ULIRGs"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Targets biased toward high SFR; CO line ratio uncertain (mass could vary by factor of a few)",
+     "evidence": [
+      {
+       "loc": "6 Conclusions",
+       "quote": "Because our targets for CO observations in this study were biased toward higher SFRs, it is important to construct an “unbiased” sample"
+      }
+     ]
+    },
+    {
+     "value": "Gas mass uncertain by factor of a few from line ratios",
+     "evidence": [
+      {
+       "loc": "2.1 CO Line Luminosity Ratios",
+       "quote": "We note that the derived molecular gas mass could vary by a factor of a few due to the uncertainty of CO line ratios."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Assumed r31/r41 and single T_dust=40 K drive results",
+    "Many gas-fraction points are upper limits",
+    "Heterogeneous comparison samples and alpha_CO choices",
+    "Small sample with correlation from only detected hosts"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project codes given; data presumably public via archive",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00939.S and #2016.1.00455.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and imaging parameters",
+    "CIGALE module parameter grids",
+    "Spectrum extraction apertures and line fitting method"
+   ],
+   "estimated_data_volume_inferred": "~100–300 GB raw for 14 targets (Band 4/6/7, 7.5 GHz bandwidth)",
+   "score_inferred": 5,
+   "score_reason": "Data identifiable and formulae for derived quantities are given, but imaging and SED parameters are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging/extraction settings and SED setup incomplete, and the comparison relies on external compiled samples."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: tacc18)",
+     "why": "scaling relations and alpha_CO prescription"
+    },
+    {
+     "citation": "(cite: boqu19)",
+     "why": "CIGALE SED code"
+    },
+    {
+     "citation": "(cite: solo05)",
+     "why": "CO luminosity formula"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: hats19)",
+     "why": "detailed study of GRB 080207 host with ALMA/VLA"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GHostS database",
+    "ALLSMOG",
+    "xCOLD GASS",
+    "Dark Energy Survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-8cbad7422440f61549175cbea626280a",
+  "batch_id": "msgbatch_01TvpLqXntCbBHmMiH5UxTRD",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T21:56:25",
+  "usage": {
+   "input_tokens": 45137,
+   "output_tokens": 8595,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.088719,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 75,
+   "stated": 40,
+   "rate": 0.533
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:34",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].validation",
+    "old_value": "Comparison with Tacconi+18 sample and fits"
+   }
+  ],
+  "dropped_items": []
+ }
+}

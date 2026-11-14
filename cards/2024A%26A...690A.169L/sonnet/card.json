@@ -1,0 +1,711 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...690A.169L",
+  "title": "Neutral atomic and molecular gas dynamics in the nearby spiral galaxies NGC 1512, NGC 4535, and NGC 7496",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Laudage, Sebastian",
+  "n_authors": 23,
+  "arxiv_id": "2407.04531",
+  "doi": "10.1051/0004-6361/202450265",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00925.S",
+   "2015.1.00956.S",
+   "2017.1.00392.S",
+   "2017.1.00886.L",
+   "2018.1.01651.S",
+   "2018.A.00062.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "3.2 / Conclusions",
+    "quote": "Using MeerKAT H I  and PHANGS-ALMA CO observations at resolutions of 15 ″ and $\\sim\\SI{1}{\\arcsecond}$, respectively, we employed the $^{\\text{3D}}$Barolo$,$ tilted ring fitting code"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1512",
+     "coordinates": {
+      "value": "4h03m54.1s, -43d20m55s",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 1512 | SB(r)ab | $4^{\\text{h}}03^{\\text{m}}54.1^{\\text{s}}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "17.92±0.88 Mpc (Vsys 871.4 km/s)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 1512 | SB(r)ab | $4^{\\text{h}}03^{\\text{m}}54.1^{\\text{s}}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "NGC 4535",
+     "coordinates": {
+      "value": "12h34m20.31s, +8d11m56s",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 4535 | SAB(s)c | $12^{\\text{h}}34^{\\text{m}}20.31^{\\text{s}}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "15.77±0.37 Mpc (Vsys 1953.6 km/s)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 4535 | SAB(s)c | $12^{\\text{h}}34^{\\text{m}}20.31^{\\text{s}}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "NGC 7496",
+     "coordinates": {
+      "value": "23h09m47.3s, -43d25m40s",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 7496 | SBb | $23^{\\text{h}}09^{\\text{m}}47.3^{\\text{s}}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "18.72±2.82 Mpc (Vsys 1639.2 km/s)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 7496 | SBb | $23^{\\text{h}}09^{\\text{m}}47.3^{\\text{s}}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can H I kinematics constrain the disk orientation so as to improve CO and H I rotation curve determination, and what radial motions/mass flows do they show?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The hypothesis is that H I can provide a good probe of the gas disk’s intrinsic orientation, as long as additional factors that affect H I and CO are taken into consideration on a galaxy-by-galaxy basis."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "CO spectral resolution 2.5 km/s; H I 5.5 km/s per channel",
+    "evidence": [
+     {
+      "loc": "2.3 PHANGS-ALMA CO observations",
+      "quote": "The spectral resolution is 2.5 km s^−1^."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "The PHANGS-ALMA survey presents 90 nearby ($d\\leq\\SI{20}{\\mega\\parsec}$ ) galaxies targeting CO J=2$\\rightarrow$1 emission"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~1 arcsec (~100 pc) for CO(2-1); 15 arcsec for MeerKAT H I",
+    "evidence": [
+     {
+      "loc": "2.3 PHANGS-ALMA CO observations",
+      "quote": "at an angular resolution of ${\\sim}1''$ which corresponds to linear scales of ${\\sim}\\SI{100}{\\parsec}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "MeerKAT",
+     "provided": {
+      "value": "H I 21cm cubes, 6 h per galaxy, 15 arcsec, 5.5 km/s",
+      "evidence": [
+       {
+        "loc": "2.2 MeerKAT 21cm observations",
+        "quote": "The galaxies (see [\\[table:Properties\\]](#table:Properties)) were each observed for 6 hours in a frequency range from 1.411 GHz to 1.414 GHz."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "PHANGS-ALMA CO(2-1) data products (cubes, moment1 wprior maps)",
+      "evidence": [
+       {
+        "loc": "2.3 PHANGS-ALMA CO observations",
+        "quote": "To trace the molecular component we used observations from the PHANGS-ALMA survey (cite: 2021ApJS..257...43L)."
+       }
+      ]
+     },
+     "citation": "(cite: 2021ApJS..257...43L)"
+    },
+    {
+     "what": {
+      "value": "Previous CO rotation curves for comparison and initial Vrot",
+      "evidence": [
+       {
+        "loc": "4.2 CO Rotation Curves",
+        "quote": "We overplotted the results with previous RCs derived by (cite: 2020ApJ...897..122L), which represent the latest kinematic analysis of these galaxies."
+       }
+      ]
+     },
+     "citation": "(cite: 2020ApJ...897..122L)"
+    },
+    {
+     "what": {
+      "value": "Star formation rates",
+      "evidence": [
+       {
+        "loc": "Table 2 caption",
+        "quote": "Star formation rates taken from (cite: 2019ApJS..244...24L)"
+       }
+      ]
+     },
+     "citation": "(cite: 2019ApJS..244...24L)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "CO: PHANGS 'moment1 wprior' map from strict mask; H I strict mask (core S/N>4 in 2 channels, outer S/N>2)",
+     "evidence": [
+      {
+       "loc": "2.3 PHANGS-ALMA CO observations",
+       "quote": "we used another product offered by the PHANGS-ALMA pipeline, the \"moment1 wprior\" map."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Strict masking procedure for H I",
+      "evidence": [
+       {
+        "loc": "2.2 MeerKAT 21cm observations",
+        "quote": "We used the strict masking procedure described in (cite: 2021ApJS..257...43L) that was initially used for the PHANGS-ALMA CO(2-1) observations."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2021ApJS..257...43L)"
+    },
+    {
+     "what": {
+      "value": "Radial velocity fitting approach",
+      "evidence": [
+       {
+        "loc": "3.3 Radial Velocities",
+        "quote": "following an approach similar to (cite: 2021ApJ...923..220D), we fit the radial velocities in a singular run"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2021ApJ...923..220D)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA project codes and PHANGS-ALMA data product version",
+    "3DBarolo version and parameter file (ring separation, Bezier order, mask/normalization settings)",
+    "Exact Bezier function parameters",
+    "H I cube processing details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit H I tilted rings",
+    "method": {
+     "value": "3D tilted-ring fits in staged runs: free fit, fix center/Vsys, regularize geometry, fit Vrot and sigma",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "Once the geometry of the galaxy is fixed, the kinematics are fitted."
+      }
+     ]
+    },
+    "software": [
+     "3DBarolo"
+    ],
+    "key_parameters": [
+     {
+      "value": "ring width 15 arcsec; weighting |cos θ|^2; rings with Vrot errors >±30 km/s dropped",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "Rings that have large error bars ($>\\SI{\\pm30}{\\kilo\\meter\\per\\second}$) on the V$_{\\text{rot}}$ values are neglected from here on."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "3DBarolo default error calculation",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "based on $^{\\text{3D}}$Barolo’s default error calculation method"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residual maps, scale height tests, comparison with literature",
+     "evidence": [
+      {
+       "loc": "5.1",
+       "quote": "we created residual maps by subtracting the modeled velocities from the observations"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit CO rotation curves",
+    "method": {
+     "value": "Start from H I best fit; fix center and Vsys; thin disk z0=100 pc; fit i, phi, Vrot, sigma then fix geometry",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "After a first initial fitting stage where $i$, $\\phi$, V$_{\\text{rot}}$, and $\\sigma_{\\text{gas}}$ are kept free to vary, the geometry ($i$ and $\\phi$) is fixed"
+      }
+     ]
+    },
+    "software": [
+     "3DBarolo"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to Lang et al. 2020 curves",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "Overall the circular velocities derived by $^{\\text{3D}}$Barolo  agree well with the values from the previous work by (cite: 2020ApJ...897..122L)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Radial velocities and mass flow rates",
+    "method": {
+     "value": "Fit Vrad with other parameters fixed, sin^2 φ weighting; Mdot=2πRΣHI Vrad ×1.33 for helium",
+     "evidence": [
+      {
+       "loc": "3.4 Mass flow rates",
+       "quote": "the H I  mass flow $\\dot{M}_{\\text{HI}}$ is multiplied by the factor 1.33 which takes the primordial abundance of helium into account"
+      }
+     ]
+    },
+    "software": [
+     "3DBarolo ELLPROF"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Optically thin H I",
+      "evidence": [
+       {
+        "loc": "3.4 Mass flow rates",
+        "quote": "when assuming that the H I  emission is optically thin"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "3DBarolo",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D tilted ring fits of H I and CO",
+     "evidence": [
+      {
+       "loc": "3 Methods",
+       "quote": "we compute rotation curves using $^{\\text{3D}}$Barolo which fits tilted ring models to emission line data cubes in three dimensions"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "NGC 1512 H I Vrot,max",
+    "value": "177.3",
+    "uncertainty": "16.4",
+    "units": "km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$177.3\\pm16.4$"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 4535 H I Vrot,max",
+    "value": "188.8",
+    "uncertainty": "6.2",
+    "units": "km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$188.8\\pm6.2$"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 7496 CO Vrot,max",
+    "value": "118.11",
+    "uncertainty": "6.09",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$118.11\\pm6.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 1512 average mass flow",
+    "value": "2.02",
+    "uncertainty": "1.85",
+    "units": "Msun/yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "NGC 1512 | $0.75\\pm0.75$ | $4.47\\pm8.1$ | $2.02\\pm1.85$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "H I and CO rotation curves agree for most overlapping radii; radial flows are consistent with little net mass flow except NGC 1512.",
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "The H I  and CO circular velocities are in agreement for most bins where measurements overlap."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "H I-derived orientation can be used to fit CO rotation curves",
+    "experiment": "H I-based geometry used as input for CO 3DBarolo fits and compared to Lang et al. 2020",
+    "result": "CO and H I curves agree in most overlapping bins",
+    "finding": "Recommend using H I to model disk orientation before deriving CO RCs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "This is why we recommend using H I to correctly model the disk orientation parameters before deriving CO-based RCs."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small sample and large uncertainties preclude definitive conclusions on radial flows",
+     "evidence": [
+      {
+       "loc": "5.4",
+       "quote": "The limited sample size and the presence of substantial uncertainties in our data preclude us from making definitive conclusions."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only three galaxies",
+    "Non-circular bar motions not modeled",
+    "Constant scale height assumed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALMA project codes and data versions",
+    "MeerKAT H I cubes access",
+    "3DBarolo settings"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Public PHANGS products but H I data and fit settings partly unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "MeerKAT cubes and detailed settings not stated as public."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2015MNRAS.451.3021D)",
+     "why": "3DBarolo"
+    },
+    {
+     "citation": "(cite: 2021ApJS..257...43L)",
+     "why": "PHANGS-ALMA data and masking"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Eibensteiner2024)",
+     "why": "MeerKAT H I data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA",
+    "PHANGS-MeerKAT"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f698d04b0bdcc67f10317124c0484934",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:45",
+  "usage": {
+   "input_tokens": 24969,
+   "output_tokens": 4738,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.049265,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 34,
+  "quotes_ok": 34,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2015.1.00925.S",
+   "2015.1.00956.S",
+   "2017.1.00392.S",
+   "2017.1.00886.L",
+   "2018.1.01651.S",
+   "2018.A.00062.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 27,
+   "rate": 0.391
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,29 @@
+# Reconciliation: continuum-subtraction
+- SR-01 | FIXED | Software table now copies aggregate labels and counts exactly (tclean 25, uvcontsub 11, gildas 18, gildas mapping 2, miriad 12) with an overlap caveat; summed "18 + 1" / "9 + 3" removed; MADCUBA row dropped (not in aggregate).
+- SR-02 | FIXED | 2026ApJ..1002L..28Y now described as a Gaussian-plus-constant residual-baseline fit after linear uvcontsub; 2013ApJ...770...13W as a consistency check; the real "continuum as free parameter" example is 2020ApJ...905...85S (pack: "free params: continuum, absorption depth...").
+- SR-03 | FIXED | Split STATCONT channel selection followed by uv subtraction (2018ApJ...866...87B, threshold adjusted by hand) from per-pixel image-plane STATCONT; 10-20% kept as that paper's value only.
+- SR-04 | FIXED | Table now separates excluded half-widths (+-300, +-750 with their velocity references), full mask widths (2021A&A...652A..98G 300-600) and fit-channel intervals (2019MNRAS.489.1927S -2500..-500, +500..+2500; |v| thresholds with reference point).
+- SR-05 | FIXED | 300 km/s for 2020A&A...637A..84P; the 400 km/s of 2020A&A...641A.155V is listed separately as an upper-limit assumption.
+- SR-06 | FIXED | Continuum-shape row keeps each paper's span and variation: <1% across spw0/spw1, <1% per spw at index 2, flat despite 1-2% over a sideband, plus nu^3.7 power law.
+- SR-07 | FIXED | Split into two rows: 10-20% bandwidth (2018ApJ...866...87B) and position-dependent 144 to 10 channels / 280 to 17 MHz (2018A&A...615A.141B).
+- SR-08 | FIXED | "One paper" replaced by both examples of self-cal transfer after subtraction (2020ApJ...898...10T, 2017ApJ...850L..30Y).
+- SR-09 | FIXED | Step 6 now presents per-dataset and combine-first as options, with 2014A&A...570L..14R and 2019PASJ...71..105T as combine-first examples and when each fits.
+- SR-10 | FIXED | Removed 2018A&A...620A.115B, 2018Natur.556..469M, 2018ApJ...867..166S claims (bibliography-only in the pack) and the single-dish bullet.
+- SR-11 | FIXED | Removed 2019MNRAS.485.1595P (absent from method entries) and the mandatory uvsub-then-uvcontsub sequence; 2019AJ....157..251T and 2015Natur.522..455C now describe only the operations their entries state.
+- SR-12 | FIXED | Removed 2017ApJ...837L..29H, 2017A&A...606A.125S, 2017ApJ...836..223W, 2018A&A...619A..39F, 2017A&A...600A.141K, 2019MNRAS.483.1624B, 2018ApJ...863L..35M attributions; replaced with entries that state the setting (e.g. 2019MNRAS.488.5029H, 2020MNRAS.497.3504T).
+- SR-13 | FIXED | Removed 2019A&A...632A..33A, 2016A&A...587A..91B, 2018ApJ...867L...6B; GILDAS/CLASS now cited to supported entries (2021A&A...652A..98G, 2020ApJ...890...29F, 2019A&A...628A..27B, 2019A&A...632A..19T).
+- SR-14 | FIXED | Removed 2017MNRAS.469.4683C, 2019A&A...629A..75B, 2019ApJ...883L..29L comparisons and the unquoted aggregate phrase; added supported checks (2021A&A...655A..25Z, 2020ApJ...905...85S, 2024A&A...689A.317G).
+- SR-15 | FIXED | Removed 2016AJ....152..218I quote and the "admits contamination" claim; 2013ApJ...774L...7M now cited only for channels that "appeared line free", contamination labelled general reasoning.
+- SR-16 | FIXED | Removed 2018ApJ...859...35G, 2019MNRAS.490.5860S, 2019ApJ...870...80L; replaced with supported bandwidth, pipeline and fit-order examples.
+- SR-17 | FIXED | Summary now reports 208 not-stated label occurrences with an explicit overlap caveat, plus the corpus rate (65% of 1591 cards, stats/README.md); "papers almost never"/"most cards" removed.
+- SR-18 | FIXED | Recounted from the current pack (parameter list now spans 2012-2026): 426 papers with processing lines of 440 listed; uvcontsub 122, uv 223, image 32, both 1, order 1 55, order 0 30; regex patterns, hand-checked edge cases and truncation stated in a "How the counts were made" paragraph.
+- SR-19 | FIXED | Table header keeps the required words but is introduced as reported choices, not transferable defaults; text says to size masks from line extent and choose order from bandwidth, curvature and validation.
+- SR-20 | FIXED | Step 1 makes self-calibration conditional, citing 2024ApJ...961..228S (attempted, no improvement at S/N < 100).
+- SR-21 | FIXED | 10% kept only as 2013ApJ...773L..34K's own value; advice now estimates the term from alternative masks/orders or fit propagation, names the affected quantity, notes channel correlation, separates flux-calibration error.
+- SR-22 | FIXED | Added common-beam convolution (2021A&A...656A..46M), JvM (2024AJ....167...66Y) and uvcontsub over-subtraction (2024ApJ...977..251H) to steps and pitfalls.
+- SR-23 | FIXED | New step 2 checks execution flux consistency (2021A&A...648A..19W) and tuning-dependent scaling (2021A&A...656A..46M) before combining.
+- SR-24 | FIXED | Added filling-factor lower limit (2019MNRAS.485..229R) and the HCO+-subtracted / CO-unsubtracted optically thick case (2016ApJ...820L..25Y).
+- SR-25 | FIXED | Step 5, checks and source list now include the a*nu + b spw alignment of 2019Natur.570...83M.
+- SR-26 | FIXED | Referee section asks for versions, data set/spw mapping, channel indexing, frame, rest frequency and subtraction config, citing cards that flag rest frequency/frame as missing.
+- SR-27 | FIXED | Steps now keep calibrated unflagged line data and a continuum-only copy apart; continuum imaged from unsubtracted data (step 4) and subtraction writes a new output (step 5).
+- SR-28 | FIXED | CASA example uses fitorder=1 with a note to use fitorder=0; API-transition version no longer asserted, only "check help(uvcontsub)".

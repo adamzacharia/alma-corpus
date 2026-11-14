@@ -1,0 +1,308 @@
+{
+ "bibcode": "2019MNRAS.484.4239R",
+ "title": "The AGN fuelling/feedback cycle in nearby radio galaxies I. ALMA observations and early results",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz255",
+ "arxiv_id": "1901.07513",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the molecular gas and 230 GHz continuum (core and jet) properties of nearby LERGs, and how do the gas discs relate to the radio jets, to inform the AGN fuelling/feedback cycle?",
+ "alma_project_codes": [
+  "2015.1.01572.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~230 GHz)",
+  "arrays": "12-m main array, 36-43 antennas",
+  "angular_resolution": "continuum beams 0.3-1 arcsec FWHM",
+  "sensitivity": "continuum rms 0.02-0.06 mJy/beam; CO cube rms 0.2-1.3 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mean CO(2-1)/CO(1-0) ratio R21 = 2.32 from 15 radio-loud ETGs",
+    "evidence": [
+     {
+      "loc": "4.3 Molecular gas masses",
+      "quote": "The mean ratio for 15 radio-loud ETGs observed in both CO transitions with the Institute de Radioastronomie Millimetrique (IRAM) 30m telescope is 2.32."
+     }
+    ]
+   },
+   "citation": "(cite: Ocana10)"
+  },
+  {
+   "what": {
+    "value": "HI spin temperature of 100 K and HI absorption upper limit tau<0.041 for IC 4296",
+    "evidence": [
+     {
+      "loc": "6.2.2 Absorption in IC 4296",
+      "quote": "If we assume an HI spin temperature of 100 K (cite: Morganti01)"
+     }
+    ]
+   },
+   "citation": "(cite: Morganti01)"
+  },
+  {
+   "what": {
+    "value": "Parent sample of radio galaxies from the Parkes 2.7-GHz survey",
+    "evidence": [
+     {
+      "loc": "2 The southern radio galaxy sample",
+      "quote": "This sample was selected from (cite: Ekers89), who presented a complete sample of 91 radio galaxies from the Parkes 2.7-GHz survey"
+     }
+    ]
+   },
+   "citation": "(cite: Ekers89)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging and core/jet photometry",
+   "method": "MFS imaging with natural weighting using three continuum SPWs plus line-free channels, self-calibration, 2D Gaussian fits to components",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "nterms=1, natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Spectral indices of core and jets",
+   "method": "Core indices between 230 GHz and VLA frequency; spectral index maps for NGC 3100 and NGC 3557 from matched-beam, same-uv-range images with immath",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "S proportional to nu^alpha"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Line cube production and moment maps",
+   "method": "uvcontsub, clean with natural weighting; masked moment maps from smoothed-cube mask (1.2-2 sigma threshold) applied to unsmoothed cubes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Gaussian smoothing with beam FWHM, then Hanning smoothing in velocity"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Integrated spectra, line widths, upper limits",
+   "method": "Spectra from boxes around CO; FWZI as range of channels >=3 sigma, FWHM from channel ranges above half peak; 3 sigma upper limits for non-detections",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Upper limits assume emission within the beam; APEX line FWHM assumed"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular gas masses",
+   "method": "Mmol = 1.05e4/R21 (XCO/2e20) (1/(1+z)) (S dv) D_L^2",
+   "software": [],
+   "key_parameters": [
+    "R21 = 2.32"
+   ],
+   "assumptions": [
+    "Milky Way XCO = 2e20 cm^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "CO absorption in IC 4296",
+   "method": "Re-image at 3 km/s channels, extract spectrum from 0.4x0.4 arcsec box at core, derive optical depth from core flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "HI Tspin 100 K, CO Tex 10 K, HI/H2 ratio ~1e-2"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Jet/CO disc alignment",
+   "method": "|DeltaPA| = |PA_CO - PA_jet| in 0-90 deg from velocity maps and continuum/VLA jet axes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Projected angles only; no inclinations"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular gas mass range (detections)",
+   "value": "2.0e7 to 2.0e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Molecular gas masses",
+     "quote": "The estimated molecular masses range from $2.0\\times10^{7}$ to $2.0\\times10^{10}$ M~$\\odot$~"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 612 molecular gas mass",
+   "value": "2.0e10",
+   "uncertainty": "0.2e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "NGC 612 | 760 | 840 | 273$\\pm$27 | $(2.0\\pm0.2)\\times10^{10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 3100 molecular gas mass",
+   "value": "1.2e8",
+   "uncertainty": "0.1e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "NGC 3100 | 340 | 440 | 18$\\pm$1.8 | $(1.2\\pm0.1)\\times10^{8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO detection S/N range",
+   "value": "8 to 45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Line imaging",
+     "quote": "with S/N ranging from 8 to 45"
+    }
+   ]
+  },
+  {
+   "quantity": "IC 4296 core 230 GHz flux density",
+   "value": "190",
+   "uncertainty": "19.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "core          |                   | 190$\\pm$19.0  | (0.1$\\times$0.1)"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 612 CO major axis extent",
+   "value": "9.6",
+   "uncertainty": "0.3",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(9.6$\\pm$0.3)$\\times$(1.2$\\pm$0.05)"
+    }
+   ]
+  },
+  {
+   "quantity": "IC 4296 CO absorption optical depth",
+   "value": "0.12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.2.2 Absorption in IC 4296",
+     "quote": "the resulting optical depth is $\\tau \\approx 0.12$."
+    }
+   ]
+  },
+  {
+   "quantity": "IC 4296 integrated absorption flux",
+   "value": "0.14",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.2.2 Absorption in IC 4296",
+     "quote": "resulting in an integrated absorption flux of $\\approx$0.14 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet spectral index (NGC 3100, NGC 3557)",
+   "value": "-0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.1 Origin of the 230 GHz continuum emission",
+     "quote": "while the jet spectra are steeper ($\\alpha \\approx -0.7$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO discs with |DeltaPA|>=60 deg",
+   "value": "67 (4 of 6)",
+   "uncertainty": "33%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.3 Jets and molecular gas",
+     "quote": "In four of the six detected galaxies (67$\\pm33$%) we measure large misalignements ($|\\Delta PA|\\geq60^{\\circ}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limits for non-detections",
+   "value": "1.0-6.7e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Molecular gas masses",
+     "quote": "upper limits for the non-detections are in the range $1.0-6.7\\times10^{6}$ M$_{\\rm \\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges per target for uvcontsub",
+  "Image size and cell size",
+  "Clean mask details and number of iterations",
+  "Self-calibration solution intervals and number of cycles",
+  "Phase center/coordinates of targets",
+  "Flux density used for secondary calibrators and bandpass/phase calibrator per execution block",
+  "Exact box sizes for spectral extraction (only in captions)",
+  "uv ranges used for spectral index maps",
+  "Primary beam correction details"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges",
+  "Image/cell sizes",
+  "Self-calibration parameters",
+  "Exact spectrum extraction boxes",
+  "Target coordinates"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear mass/moment recipe, but key imaging and self-cal parameters missing; mostly measurement-based results.",
+ "rediscovery_reason": "Public data, standard CASA workflow, numeric tabulated results (fluxes, masses, line widths).",
+ "source_card": "cards/2019MNRAS.484.4239R/sonnet/card.md"
+}

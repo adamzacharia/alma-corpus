@@ -1,0 +1,330 @@
+{
+ "bibcode": "2019AJ....158..162F",
+ "title": "From Scattered-light to Millimeter Emission: A Comprehensive View of the Gigayear-old System of HD 202628 and its Eccentric Debris Ring",
+ "year": 2019,
+ "doi": "10.3847/1538-3881/ab3ec1",
+ "arxiv_id": "1909.04162",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "What are the geometry, eccentricity, dust size distribution and gas content of the HD 202628 debris ring, and what do they imply for its belt-shaping perturber?",
+ "alma_project_codes": [
+  "2016.1.00515.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz, 1.3 mm)",
+  "arrays": "12m array and ACA",
+  "angular_resolution": "0.92\" x 0.75\", PA 83 deg",
+  "sensitivity": "5.2 uJy/beam continuum rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gaia astrometry and stellar parameters (Teff, mass etc.)",
+    "evidence": [
+     {
+      "loc": "Table 7",
+      "quote": "| Mass(tracks) | 1.050 $\\pm$ 0.006 M$_{\\odot}$ | (cite: Spina2018) |"
+     }
+    ]
+   },
+   "citation": "(cite: Collaboration2018; Spina2018)"
+  },
+  {
+   "what": {
+    "value": "Optical/IR photometry (2MASS, WISE, Spitzer/MIPS)",
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| 23.8 | 0.059 | 0.0024 | *Spitzer*/MIPS; (cite: Sierchio2014) |"
+     }
+    ]
+   },
+   "citation": "(cite: Cutri2003; Cutri2012; Sierchio2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "tclean of combined 12m+ACA continuum, natural weighting, model-based mask, primary-beam corrected",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "cell 0.08\", 800x800 pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit ring geometry in visibility space",
+   "method": "MCMC fit of circular constant-surface-density ring model plus Gaussian sources, Fourier transformed to visibilities",
+   "software": [
+    "emcee",
+    "disk_model ray-tracing code"
+   ],
+   "key_parameters": [
+    "23 free parameters (7 ring incl. centre offset, plus Gaussian sources)"
+   ],
+   "assumptions": [
+    "Blackbody grains, opacity 2.3 cm^2/g, constant surface density"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive eccentricity from star-ring offset",
+   "method": "Eccentricity = projected offset / projected inner-edge semimajor axis, using ALMA-detected stellar position",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure bright sources",
+   "method": "Elliptical Gaussian fits in CASA viewer on disk-model-subtracted image",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Search for CO gas and derive upper limits",
+   "method": "Keplerian-shifted spectro-spatial filtering within ring mask; non-LTE excitation with UV/IR fluorescence for mass limit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Tkin 10-250 K; stellar mass 1 Msun"
+   ],
+   "assumptions": [
+    "Gas co-located with belt, Keplerian, optically thin"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Grain size distribution from spectral index",
+   "method": "Spectral index from ALMA 1.3 mm and SPIRE fluxes converted to q via Ricci et al. 2012 Eq. 1",
+   "software": [],
+   "key_parameters": [
+    "beta_s=1.8±0.2, alpha_Pl=1.84±0.02"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Constrain perturber",
+   "method": "Secular theory (forced eccentricity, chaotic zone, timescales) of Pearce & Wyatt 2014 with updated ring geometry; S1 extent as Hill-radius constraint",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Single inner perturber; circumplanetary material fills Hill radius"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Ring inner radius",
+   "value": "143.1",
+   "uncertainty": "1.7",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Inner radius (AU) | $143.1\\pm 1.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring outer radius",
+   "value": "165.5",
+   "uncertainty": "1.4",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Outer radius (AU) | $165.5 \\pm 1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "57.4",
+   "uncertainty": "0.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Inclination $(^\\circ)$ | $57.4\\pm 0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Eccentricity",
+   "value": "0.09",
+   "uncertainty": "+0.02/-0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Eccentricity | $0.09_{-0.01}^{+0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk mass (mm grains)",
+   "value": "1.36e-2",
+   "uncertainty": "0.06e-2",
+   "units": "Earth masses",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$(1.36\\pm0.06)\\times10^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total ring flux 1.3 mm",
+   "value": "959",
+   "uncertainty": "96",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.3 The ring",
+     "quote": "is found to be $959\\pm 96\\,\\mu\\mathrm{Jy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar peak flux at 1.3 mm",
+   "value": "29.3",
+   "uncertainty": "5.2",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1 The star",
+     "quote": "$29.3\\pm 5.2\\mu\\mathrm{Jy.beam}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "S1 integrated flux",
+   "value": "285",
+   "uncertainty": "18",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$285\\pm18$"
+    }
+   ]
+  },
+  {
+   "quantity": "Grain size index -q",
+   "value": "-3.39",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2.2 Photometry and SED modeling",
+     "quote": "$-3.39\\pm0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean spectral index",
+   "value": "2.54",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2.2 Photometry and SED modeling",
+     "quote": "it is thus equal to $2.54 \\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=2-1 3sigma flux upper limit",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.4 Gas content",
+     "quote": "3\\sigma$ upper limit on the integrated CO J=2-1 line flux within the HD202628 belt of 12 mJy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass 3sigma upper limits",
+   "value": "1.4-26e-7",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.4 Gas content",
+     "quote": "$3\\sigma$ CO mass upper limits between $1.4-26\\times10^{-7}$ M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum grain size a_min",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "um",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.2.2 Photometry and SED modeling",
+     "quote": "a$_{min}$ is found to be 3.2 $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "Perturber if S1 is circumplanetary",
+   "value": "m=0.8 MJup, a=107.5 AU, e=0.1",
+   "uncertainty": "not stated",
+   "units": "MJup, AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$m_{\\mathrm{p}}=0.8\\,\\mathrm{M_{Jup}}$, $a_{\\mathrm{p}}=107.5\\,\\mathrm{AU}$, and $e_{\\mathrm{p}}=0.1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "MCMC walkers, steps, burn-in and priors for the 23-parameter fit",
+  "Initial guesses/bounds for model parameters",
+  "Stellar luminosity/temperature used in dust temperature",
+  "Flux-calibration and pipeline CASA version used for calibration",
+  "Details of source Gaussian model priors",
+  "CO imaging channel/velocity range and ring mask exact definition",
+  "Scattered-light ADI code not released"
+ ],
+ "missing_for_reproduction": [
+  "MCMC settings and priors",
+  "Pipeline version",
+  "Exact CO analysis masks",
+  "HST ADI code"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and project code stated, main recipe clear, but MCMC details and priors missing.",
+ "rediscovery_reason": "Public ALMA data (2016.1.00515.S), numeric ring geometry results in a table; fit settings partly missing.",
+ "source_card": "cards/2019AJ....158..162F/sonnet/card.md"
+}

@@ -1,0 +1,1187 @@
+# Evidence pack: Planetary, satellite and comet spectroscopy (`solar-system-atmospheres`)
+
+Scope: disk-averaged and resolved spectra of solar-system bodies, retrievals
+
+Built from 34 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2014-2026.
+Matcher (regex over analysis steps): `nemesis|planetary atmosphere|\bcomets?\b|titan|jupiter|saturn|neptune|uranus|\bmars\b|venus|\bio\b|asteroid|thermal emission of`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- solar_system: 34
+- astrochemistry: 13
+- protoplanetary_disks: 1
+
+### Software named in the matched steps
+- nemesis: 29
+- casa: 19
+- tclean: 3
+- lime: 2
+- mpfit: 2
+- atmwindmapgaussfit: 2
+- jpl horizons: 1
+- titan atmospheric model (tam): 1
+- gildas/mapping: 1
+- cdms: 1
+- modified code published in (cite: cordiner_2020): 1
+- borysow cia routines: 1
+- casa uvmodelfit: 1
+- neatm (model): 1
+- miriad: 1
+- radio-bear: 1
+- casa (imfit): 1
+- splat: 1
+- smurf: 1
+- photutils: 1
+- emcee: 1
+- pyastronomy: 1
+- common astronomy software applications: 1
+- clean: 1
+
+### Fitting methods (most common phrasings)
+- Low-order polynomial fits to line-free channels.: 1
+- Compare reduced chi-squared and probability P for isotropic and asymmetric models.: 1
+- Iterative chi^2 minimization with a priori regularization; 2% line intensity systematic added: 1
+- Same procedure as CO: 1
+- Two one-dimensional Gaussians for stellar centroids; linear fits to x/y offsets versus time: 1
+- Continuously retrieve CH3CN abundance at each altitude against J=35-34 line profiles: 1
+- Optimize each velocity point with MPFIT least squares and associated error estimates: 1
+- chi^2 minimization between modeled and observed spectra: 1
+- Least-squares (sum of squared residuals) minimization with MPFIT; 1 sigma from the MPFIT covariance matrix; likelihood/…: 1
+- Scaling factor fit; all a priori profiles converge on a single best fit: 1
+- Third order polynomial fit to recomputed partition functions: 1
+- Iterative cost-function minimization combining goodness of fit χ² and a-priori errors: 1
+- Vary a uniform scaling factor for each minor species to obtain the best fit: 1
+- Continuously variable CH3C(15)N abundance profile: 1
+- least-squares, reduced chi^2: 1
+- Bayesian optimal estimation with Marquardt-Levenberg minimization; convergence when solution changes <0.1%: 1
+- Optimal estimation; errors per Irwin et al. 2008 and Nixon et al. 2008, with factor 1.291 for Hanning apodization: 1
+- NEMESIS optimal estimation, chi-square: 1
+- Levenberg-Marquardt minimizing cost function / reduced chi2: 1
+- Simple scaling of input profile: 1
+- Point-source model; reduced chi2 = 1.31; sampler and priors not stated: 1
+- Optimal estimation (NEMESIS): 1
+- Chi-square minimization rescaling the vertical profile: 1
+- Minimize difference between limb-darkened model disk (Tb * cos^k(theta)) and observations at each wavelength: 1
+- Monte Carlo simulation with 40,000 realizations with Gaussian-added noise on flux and model parameters; error bars defi…: 1
+- 2D Gaussian fitting with IMFIT: 1
+- chi^2 minimization optimal estimation (NEMESIS): 1
+- 4th-order polynomial fitted outside the line region: 1
+- emcee MCMC, Gaussian likelihood with free fluxes F654, Falphabeta, Fetagammadelta, Fepsilon: 1
+- least squares minimization of residuals: 1
+
+### Validation checks used
+- Combined-cube RMS: 2.6 mJy for CO and 2.9 mJy for HCN.: 1
+- At nominal electron scaling, production rates change by less than 8%; even the low-temperature, low-electron case remai…: 1
+- Asymmetric model favoured; production rate unchanged from the isotropic model because CO emission is optically thin.: 1
+- Compare against comets at similar heliocentric distances; consider differential sublimation and insulating surface laye…: 1
+- Spectra rescaled to NEMESIS continuum, differing ~10% from Horizons flux model: 1
+- Correlation coefficients; fixed CO 40-60 ppm test with temperature-only retrieval: 1
+- C18O 3-2 and 2-1 abundances consistent within errors: 1
+- Choose subframe widths and centroid method with the lowest variability: 1
+- Continuum matching after the 0.982 scaling: 1
+- Experiment with point counts; seven points give a good Doppler-map fit while remaining constrained by the data: 1
+- Scaling HASI temperatures by TAM latitude differences produced negligible changes: 1
+- Compared with previous VMR profiles (Marten, Teanby, Vinatier, Koskinen; Moreno 2012): 1
+- Agrees with Guzmán 2017 reanalysis: 1
+- Rest frequency scale checked: Doppler shifts close to zero along sight lines through Titan's polar axis: 1
+- Synthetic maps compared with observed maps and with 2016 maps of Lellouch et al.: 1
+- 24 annuli sufficient for disk-averaged radiance: 1
+- Scaling consistent with previous ALMA flux-calibration studies: 1
+- Twenty laboratory transitions agree with CDMS predictions to an RMS deviation of 16 kHz.: 1
+- Compare FWHM before and after wind broadening; the LSF had a slight impact.: 1
+- Fits reproduce continuum, cores and wings within noise; alternative a priori profiles produce consistent retrievals in …: 1
+- Test temperature-profile uncertainties of 1–5 K; additional isotopic-ratio error <0.8%.: 1
+- Use contribution functions, averaging kernels and retrieval error envelopes; SNR 16 is insufficient for useful altitude…: 1
+- Compare measurement uncertainties; both carbon ratios agree within 1σ with the literature Titan mean.: 1
+- Reduced chi^2 values; fit quality of 300 and 400 km models: 1
+- Delta chi-square curve with 350 km step model: 1
+- Delta chi-square significance: 1
+- Perturbed a priori profile by two orders of magnitude in each direction; similar solution recovered: 1
+- Errors added in quadrature; DCN checked with 200 and 400 km step interloper models: 1
+- Residual spectra inspected: 1
+- CH3CN lines nearby fit well: 1
+- Fit flux consistent with image flux density 1.73 +/- 0.18 mJy: 1
+- Comparison with CIRS and radio occultation: 1
+- Tested stricter chi^2/N < 4 criterion and compared eastern and western limbs: 1
+- Measure random noise RMS across four sky boxes equal to Neptune's diameter and compare with residual map RMS: 1
+- Tested uniform and intermediate weightings, which produced artificial speckles: 1
+- Nominal model compared with ALMA and 2003 VLA disk-averaged data: 1
+- Measured rms noise in line-free region of stacked spectrum is 15 mK (~0.9 mJy beam^-1): 1
+- Inferred apparent diameter of 9.6 mas is consistent with the point-like appearance (<40 mas) in the visibility curve.: 1
+- Circularized beam removes beam-smearing artifacts: 1
+- Reliable for 180-400 km: 1
+
+### Key parameters and settings (bibcode: value)
+- 2020NatAs...4..861C: Clark; natural weighting; threshold 2σc; 6''-diameter circular mask.
+- 2020NatAs...4..861C: Sky reference 2' North; sequence 30 s calibrator, 2 min comet, 2 min reference.
+- 2020NatAs...4..861C: η_MB = 0.72; η_A = 0.63 at 345 GHz; η_MB = 0.8899 k^2 η_A with k = 1.13.
+- 2020NatAs...4..861C: Residual telluric CO at 6.6 km s^-1 removed by linear interpolation.
+- 2020NatAs...4..861C: T_kin = 20–70 K; nominal x_ne = 1.0; low-electron case x_ne = 0.2.
+- 2020NatAs...4..861C: Sunward and anti-sunward expansion velocities and production-rate asymmetry factor.
+- 2020NatAs...4..861C: Use water production range 4.9-10.7×10^26 s^-1 for relative-to-water abundances.
+- 2016ApJ...821L...8S: clean threshold 2x expected RMS
+- 2016ApJ...821L...8S: 24 to 27 field-of-view averaging points out to 3425 km radius
+- 2025PSJ.....6..286M: 9×9 pixel star subframe for x; 11×11 for y
+- 2025PSJ.....6..286M: Convert detector offsets using plate scale and JPL HORIZONS Titan–Earth distance
+- 2025PSJ.....6..286M: Approximately +30 m s^-1 offset
+- 2025PSJ.....6..286M: Re-image calibrated cubes before continuum subtraction; extract disk-averaged spectra with 1.5'' diameter aperture
+- 2025PSJ.....6..286M: 35 annuli; emission angles 0–75 degrees; tangential altitude up to 1050 km
+- 2025PSJ.....6..286M: Model vertical extent 1200 km; negligible emission above 1000 km
+- 2025PSJ.....6..286M: Scale observed data, including continuum, by 0.982
+- 2025PSJ.....6..286M: Average and peak-normalize the weighted contribution functions
+- 2025PSJ.....6..286M: Seven latitude points separated by 30 degrees
+- 2025PSJ.....6..286M: Segmented linear interpolation, smoothed with Gaussian FWHM equal to point spacing
+- 2025PSJ.....6..286M: Exponential taper with 1 degree scale length; zero wind at poles
+- 2025PSJ.....6..286M: Integral form of hydrostatic equilibrium
+- 2025PSJ.....6..286M: Reference altitude corresponding to the ALMA contribution-function peak
+- 2025PSJ.....6..286M: GCM wind profiles displayed at reference altitude 307 km
+- 2014ApJ...795L..30C: Topocentric radial velocity -0.91 km/s
+- 2014ApJ...795L..30C: 10-point trapezium-rule integration to model top at 782 km
+- 2020ApJ...904L..12C: pixel size 0.025 arcsec; threshold twice the RMS noise per channel; mask diameter 1.3 arcsec
+- 2020ApJ...904L..12C: cubes in the rest frame of Titan's center-of-mass
+- 2020ApJ...904L..12C: 1670 km (CH3CN), 1570 km (HC3N), 1600 km (HNC)
+- 2020ApJ...904L..12C: three free parameters: peak wind speed vmax, Gaussian FWHM, latitudinal offset phi0
+- 2019AJ....157..219T: pixel 0.1 arcsec, threshold 10 mJy
+- 2019AJ....157..219T: distance 9.038 AU; sub-observer latitude 24.55 deg; Doppler shift -7.5 km/s
+- 2019AJ....157..219T: CO 50 ppm constant
+- 2025PSJ.....6..107N: Partition functions tabulated at 300.0, 225.0, 150.0, 75.00, 37.50, 18.75 and 9.375 K
+- 2025PSJ.....6..107N: Laboratory checks: K=0 to 9, J=14-13 at 257 GHz and J=15-14 at 275 GHz; room temperature, around 1 mTorr
+- 2025PSJ.....6..107N: Padding corresponds to two channels
+- 2025PSJ.....6..107N: 488 and 976 kHz response functions; wind-broadened FWHM 604 and 1109 m s^-1
+- 2025PSJ.....6..107N: 35 annuli; emission angles 3-75 degrees; model top 1200 km
+- 2025PSJ.....6..107N: Lorentzian half-width Γ = 0.158 cm^-1 atm^-1; temperature exponent α = 0.60; average K=0 and K=5, J=14-13 coefficients
+- 2025PSJ.....6..107N: Flux scaling ≈1.02
+- 2025PSJ.....6..107N: Correlation length 3.0 atmospheric scale heights
+- 2025PSJ.....6..107N: Peak observed altitudinal sensitivity ≈230 km
+- 2015ApJ...800L..14C: step z_c 100-400 km; gradient model reference altitude 292 km, slope as fraction of scale height
+- 2020AJ....160..205N: a priori temperature error 5 K in all layers (0–1200 km)
+- 2020AJ....160..205N: p_u=(5.0±2.0)e-11 bar, q_u=(3.4±1.0)e-6, p_l=(1.0±0.5)e-4 bar, q_l=(2.0±1.9)e-9
+- 2016AJ....152...42M: A priori error 200%, smoothing three scale heights; 72 averaging points
+- 2016AJ....152...42M: Line strength uncertainty 2%; gamma and tau errors <10%
+- 2024PSJ.....5..125T: Hogbom, natural weighting, 0.01 arcsec pixels
+- 2024PSJ.....5..125T: 30 line-of-sight emission angles per extraction; Doppler wavenumber offsets ~1e-5 cm-1
+- 2024PSJ.....5..125T: Correlation length 1.5 scale heights; profiles varied above ~100 km up to 1200 km
+- 2023PSJ.....4..206R: rH = 1.045 au, Delta = 0.075 au, Tss = 330 K; eclipse reduction 0.049 mag gives 2.60 mJy
+- 2023PSJ.....4..206R: Extra 10% uncertainty added
+- 2018Icar..307..380T: pixel 0.03'', threshold 2x RMS
+- 2018Icar..307..380T: Titan radius 2575 km plus 1200 km atmosphere
+- 2018Icar..307..380T: 5 K a priori errors, correlation length 1.5 scale heights
+- 2026A&A...707A.240C: N=30 spectral points for SMA, N=100 for ALMA; selection threshold chi^2/N < 9 (and < 4)
+- 2021PSJ.....2..105T: Seven latitude bins: 90S-66S, 66S-50S, 50S-36S, 36S-12S, 12S-4N, 4N-20N, 20N-50N
+- 2021PSJ.....2..105T: Aperture radius for disk average: disk plus 3x model beam diameter past limb
+- 2021PSJ.....2..105T: Longitude averaging window: +/- 60 degrees of sub-observer longitude
+- 2019AJ....157..251T: 512x512 pixels, 0.02" cell, 1000-2000 iterations until in-disk noise equals sky noise
+- 2019AJ....157..251T: Dry adiabat, T=71.5 K at 1 bar, trace gases 30x protosolar (NH3 1x), intermediate H2
+- 2025AJ....170..319I: Titan apparent disk size = 0.65 arcsec
+- 2025AJ....170..319I: Noise weights from line-free rms: 21 mK (J=96-95) and 23 mK (J=99-98)
+- 2022A&A...659L...1L: Beaming factor eta = 1.175+-0.42 (restricted to >0.6)
+- 2022A&A...659L...1L: Bolometric emissivity epsilon_b = 0.90+-0.06 (<1) and relative radio emissivity epsilon_r = 0.70+-0.13 (<1)
+- 2022A&A...659L...1L: HV = 8.21+-0.05, HR = 7.75+-0.05, V-R = 0.46+-0.02, phase integral q ~ 0.4
+- 2019AJ....158...76C: pixel 0.025'', mask 1.3''
+- 2019AJ....158...76C: cubic b-spline knot spacing 100 km
+- 2024RAA....24l5009M: circular region of radius 1.7''
+- 2021ApJ...907L..27A: Baselines shorter than 33 m removed in LB copy
+- 2021ApJ...907L..27A: SO2 enhancement regions distributed from the disk centre to the limb
+- 2019Icar..319..417T: A priori errors 100%; correlation length 1.5 scale heights (3.0 for HCN isotopologues)
+- 2019Icar..319..417T: Retrieval 0-1200 km; results reported 50-550 km; 37-44 FOV points
+- 2024PASP..136l4401K: beaming parameter eta = 2.5
+- 2022MNRAS.514.2994G: 0.98 MHz spectral resolution; 14 arcsec beam; 4th-order polynomial baseline
+- 2019AJ....158...47M: Uranus masked to mean radius plus three times the beam FWHM
+- 2020ApJ...903L...1I: 320 × 320 pixels; 0.025″ spacing; natural weighting; 0.1 mJy threshold; gain 0.1; csclean
+- 2017AJ....154..206L: 35 impact parameters up to 1000 km; Lorentz width 0.075 cm-1/bar, alpha 0.5 (HC3N 0.1, 0.75)
+- 2025NatAs...9.1476C: 2nd-order polynomial continuum fit
+- 2018ApJ...859L..15C: pixel 0.025'', flux threshold 8 mJy
+
+
+### Assumptions (bibcode: value)
+- 2020NatAs...4..861C: Temperature range based on prior radio and infrared comet observations at 1.7-2.4 au.
+- 2020NatAs...4..861C: Hemispheric asymmetry along the Sun-comet vector; CO J=3-2 optically thin; T_kin = 50 K.
+- 2020NatAs...4..861C: Measured CO/HCN at 2.0 au likely represents the interior ice mixing ratio.
+- 2016ApJ...821L...8S: CO mixing ratio constant with altitude up to 850 km
+- 2016ApJ...821L...8S: A priori terrestrial isotopic ratios
+- 2025PSJ.....6..286M: Zonal winds symmetric with respect to Titan’s polar axis
+- 2025PSJ.....6..286M: Atmospheric temperature profile from (cite: 2020ApJ...903L..22T)
+- 2025PSJ.....6..286M: A priori CH3CN abundance profile from (cite: nosowitz_improved_2025)
+- 2025PSJ.....6..286M: J=36-35 has the same altitude sensitivity range because line opacities and energy levels are similar
+- 2025PSJ.....6..286M: Zonal winds symmetric with respect to Titan’s polar axis
+- 2025PSJ.....6..286M: HASI temperature profile; nitrogen atmosphere
+- 2025PSJ.....6..286M: Nearly spherical level surfaces allow radius and gravity to be removed from the latitude integral
+- 2014ApJ...795L..30C: Profiles do not vary with latitude/longitude; HC3N condenses below ~71 km; Lorentz half-widths 1.290 (HNC), 0.1 (HC3N) cm-1/bar, exponents 0.69, 0.75
+- 2017A&A...603L...6H: HCN/H13CN equals elemental 12C/13C
+- 2020ApJ...904L..12C: Titan geocentric distance 9.75 au (2016) and 9.21 au (2017)
+- 2020ApJ...904L..12C: Titan obliquity of 26 degrees toward the observer
+- 2020ApJ...904L..12C: v(latitude) profile does not vary with height for each molecule
+- 2020ApJ...904L..12C: 1D Gaussian latitudinal profile
+- 2019AJ....157..219T: CH3D profile follows CH4 Huygens GCMS profile shape
+- 2025PSJ.....6..107N: Exclude v8=1 and nitrogen hyperfine structure from the parent partition function, matching the isotopic species.
+- 2025PSJ.....6..107N: Relevant hyperfine splittings are much smaller than the observed spectral resolution.
+- 2025PSJ.....6..107N: Use the observed May 2017 wind field
+- 2025PSJ.....6..107N: Temperature profile from contemporaneous ALMA CO
+- 2025PSJ.....6..107N: CIA includes all combinations of N2, CH4 and H2
+- 2025PSJ.....6..107N: Marten disk-averaged a priori to 500 km, supplemented by Loison model to 1200 km; constant 100% a priori error
+- 2025PSJ.....6..107N: Minor isotopologues share the major-isotopologue vertical profile shape.
+- 2025PSJ.....6..107N: N2 isotopic ratio represents Titan’s intrinsic isotopic composition.
+- 2015ApJ...800L..14C: Profiles do not vary with latitude/longitude; Lorentzian half-width 0.075 cm-1 atm-1 at 296 K, exponent 0.50; model atmosphere to 1000 km
+- 2016AJ....152...42M: Seasonal changes negligible over the period
+- 2016AJ....152...42M: Isothermal 160 K above 500 km; relax to Huygens below 80 km; HCN saturation below ~80 km
+- 2016AJ....152...42M: Constant isotopic ratio with altitude; same gamma and tau for all isotopologues
+- 2024PSJ.....5..125T: Flat or limb-darkened disk starting model at Titan's Band 9 brightness temperature
+- 2024PSJ.....5..125T: CO abundance ~50 ppm held constant; tropospheric temperatures fixed to Cassini RS
+- 2024PSJ.....5..125T: A priori from Marten 2002 and Loison 2015 profiles
+- 2024PSJ.....5..125T: D/H = 1.2e-4 (range 1.0-1.4e-4); a priori CH4 = 1.48%
+- 2023PSJ.....4..206R: Asteroids unresolved (point source)
+- 2023PSJ.....4..206R: Emissivity from pre-impact measurement applies post-impact
+- 2018Icar..307..380T: Constant CO abundance of 49.6 ppm
+- 2026A&A...707A.240C: Tropospheric CO (1.2 ppb) is neglected; temperatures expanded isothermally upward of 0.2 mbar
+- 2021PSJ.....2..105T: Equatorial and polar radii of 24,766 km and 24,323 km (Lindal 1992)
+- 2021PSJ.....2..105T: Flux density calibration uncertainty of 5% in each band
+- 2019AJ....157..251T: Neptune's disk-average matches the nominal model; clouds ignored; LTE
+- 2022A&A...659L...1L: 100% of measured 0.128+-0.012 mJy thermal flux comes from the nucleus; V_sun = -26.76, (V-R)_sun = 0.35
+- 2021ApJ...907L..27A: Venus as a limb-darkened disk with the Lincowski et al. simulated SO2 spectrum
+- 2019Icar..319..417T: HCN from isotopologues with 12C/13C = 89.8, 14N/15N = 72.2; condensation below ~80 km; broadening Gamma=0.1 cm-1/bar, alpha=0.75 for HC3N and C3H4
+- 2024PASP..136l4401K: D_eq = 1595 km, p_V = 0.75, q = 0.44
+- 2022MNRAS.514.2994G: Planet-centre spectrum represents net planetary SO2
+- 2019AJ....158...47M: Relative ring fluxes within a group follow visible equivalent widths
+- 2024JApA...45...31M: Saturn has a much lower NH3 abundance than Jupiter, so a lower HCN abundance supports photolysis of CH4 and NH3
+- 2017AJ....154..206L: temperature profile from HASI+CIRS feathered 60-100 km; CO abundance 5.06e-5
+- 2023NatAs...7.1048C: Uniform disk continuum, which misses Jupiter's zone/belt structure and alters the line-to-continuum ratio by up to 30%
+
+
+### Limitations the authors admit
+- 2020NatAs...4..861C: Detailed coma morphology largely hidden by noise.
+- 2020NatAs...4..861C: HCN signal-to-noise cannot distinguish a jet from isotropic outgassing.
+- 2020NatAs...4..861C: Interferometric observations filter emission on angular scales ≳10''.
+- 2020NatAs...4..861C: Observed coma abundances may not represent bulk nucleus volatiles.
+- 2020NatAs...4..861C: Internal physical structure is poorly constrained; surface processing requires further investigation.
+- 2016ApJ...821L...8S: Unquantified systematic errors (disc-averaged temperature, Voigt profile, line-broadening coefficients)
+- 2025PSJ.....6..286M: ALMA rubidium-maser cable-routing error likely introduced an unknown frequency shift and slight spectral broadening
+- 2025PSJ.....6..286M: ALMA winds are not vertically resolved; equatorial-jet contributions cannot be isolated
+- 2025PSJ.....6..286M: GCM and ALMA forward-model inputs differ in vertical treatment
+- 2025PSJ.....6..286M: Best combined fit is driven by the poorer-fitting egress lightspot; untested wind shapes may fit better
+- 2025PSJ.....6..286M: Longitudinal symmetry excludes possible localized atmospheric events
+- 2025PSJ.....6..286M: HASI lacks temporal and latitudinal resolution
+- 2025PSJ.....6..286M: Omitting methane overestimates bending angles by roughly 0.5% under the stated 1.5% methane assumption
+- 2025PSJ.....6..286M: Mid-event arcs are not reproduced by any tested forward model
+- 2014ApJ...795L..30C: Single line per species insufficient to constrain the true HNC distribution
+- 2017A&A...603L...6H: CN and C15N co-spatiality assumption hard to assess; C15N map not used
+- 2017A&A...603L...6H: Robust CN column density needs self-consistent modelling; 2D radiative transfer needed
+- 2020ApJ...904L..12C: Wind-field map fidelity limited by coarse altitude sampling and altitude smearing
+- 2020ApJ...904L..12C: Timescale of the jet variability unknown due to sparse temporal sampling
+- 2020ApJ...904L..12C: Retrieved profiles may be biased by emission from altitudes other than the mean contribution altitude
+- 2019AJ....157..219T: Error bars reflect only retrieval errors; disk-averaged ALMA data not directly comparable to the equatorial GCMS CH4; only one suitable dataset so no stacking
+- 2025PSJ.....6..107N: Disk-averaged spectra cannot locate the abundance peak in latitude.
+- 2025PSJ.....6..107N: Physical origin of the relatively narrow ~250 km abundance feature is uncertain.
+- 2025PSJ.....6..107N: Minor-isotopologue SNR is insufficient to constrain altitude-dependent nitrogen isotope ratios.
+- 2025PSJ.....6..107N: Future altitude-dependent measurements require at least five times higher minor-isotopologue SNR.
+- 2025PSJ.....6..107N: ALMA flux-scale uncertainty may reach ≈10%; continuum scaling also absorbs tropopause-temperature errors.
+- 2025PSJ.....6..107N: Excluding the CH3CN vibrationally excited state underestimates its partition function by 7%.
+- 2025PSJ.....6..107N: Photochemical models still require improvement in the treatment of cosmic rays and electrons.
+- 2020AJ....160..205N: Little constraint on vertical profile shape; results weakly sensitive to step altitude
+- 2016AJ....152...42M: Unquantified systematic errors may remain
+- 2024PSJ.....5..125T: Low S/N of CH3D prevents vertical profile; CH4 inference relies on prior D/H; beam smooths latitudinal structure
+- 2023PSJ.....4..206R: Size distribution for meter-sized material unknown; major caveat
+- 2023PSJ.....4..206R: Effective medium theories only approximate real optical properties
+- 2023PSJ.....4..206R: Visibility modeling deferred to future work
+- 2018Icar..307..380T: Short integration times and large beams limit temporal variation significance; latitudinal structure is dampened by beam weighting
+- 2026A&A...707A.240C: Baseline ripple removal removed part of the broad wings of the CO line, limiting the quality of spectral fits and preventing retrieval of the CO vertical profile.
+- 2026A&A...707A.240C: Lack of short spacings in ALMA interferometric visibilities filters out disk-center flux, making quantitative analysis of the equatorial CO absorption feature uncertain.
+- 2026A&A...707A.240C: Coarse spatial resolution (~1.7" beam, PSR ~10, ~8 deg in latitude at the beacon) mixes disk and limb lines of sight, smooths wind peaks, and prevents detection of the quasiperiodic oscillation.
+- 2026A&A...707A.240C: Integration time of ~1 hr smooths velocities over 30 deg in longitude.
+- 2026A&A...707A.240C: Saturn's rings shadow and contaminate the continuum and prevent wind measurements between 15 deg S and 31 deg S, and imperfect cleaning causes residuals at 20-40 deg N (west) and 40-50 deg S (east).
+- 2021PSJ.....2..105T: High degree of longitudinal smearing in the maps because Neptune was observed over nearly a full 16.11 hr rotation period.
+- 2021PSJ.....2..105T: Cloud opacity is ignored in the radiative transfer modeling.
+- 2021PSJ.....2..105T: Observations only extend to 9.7 cm, so NH3 below the NH4SH cloud (~50 bar) cannot be probed directly and is only weakly constrained via chemical coupling with H2S.
+- 2021PSJ.....2..105T: Deep CH4 abundance, PH3 abundance, and ortho/para H2 state cannot be strongly constrained due to calibration uncertainties and competing opacity effects in the millimeter.
+- 2021PSJ.....2..105T: Evidence for H2S supersaturation when allowing lapse rate to vary relies heavily on a single 0.9 cm data point.
+- 2019AJ....157..251T: Models are highly degenerate and omit latitudinal temperature variations and adiabatic heating/cooling
+- 2025AJ....170..319I: Current sensitivity cannot constrain the lower HC5N abundances predicted by the models of Loison et al. (2015) and Vuitton et al. (2019); detecting the emission predicted by Loison et al. (2015) does…
+- 2025AJ....170..319I: Derived column density upper limits for the Vuitton et al. (2019) and Krasnopolsky (2009) models depend strongly on the assumed HC5N vertical profile in the lower atmosphere, which does not affect th…
+- 2022A&A...659L...1L: Lack of knowledge of nucleus shape and spin parameters (pole orientation and shape) prevents thermophysical modeling.
+- 2022A&A...659L...1L: Visibility fitting cannot distinguish between disk sizes smaller than ~40 mas given the ~65 mas resolution and measurement S/N.
+- 2022A&A...659L...1L: Diameter and albedo uncertainties are dominated by model input errors, principally the uncertainty on the relative radio emissivity epsilon_r.
+- 2022A&A...659L...1L: The assumed CO production rate of 4e28 mol s^-1 used in the dust velocity calculation is somewhat arbitrary.
+- 2019AJ....158...76C: Limb retrievals are approximate due to coarse resolution and simplified polygonal parameterization
+- 2019AJ....158...76C: Lifetime derivation relies on gross assumptions
+- 2024RAA....24l5009M: Comet ZTF is spatially unresolved in both the ALMA dust continuum images (224.79–242.60 GHz) and the CH3OH integrated intensity maps because the deconvolved source sizes are smaller than the synthesi…
+- 2024RAA....24l5009M: Continuum emission at 1250 MHz and the atomic HI line at 1420 MHz are not detected in the GMRT observations.
+- 2021ApJ...907L..27A: HDO datasets not investigated
+- 2021ApJ...907L..27A: The HDO detection in the narrowband data contradicts the dilution argument, since water is expected at similar spatial scales
+- 2021ApJ...907L..27A: Limited maximum recoverable scale complicates interpretation of large-scale structure
+- 2019Icar..319..417T: Large beams average latitudes; HC3N optically thick at poles; low sensitivity above ~400 km
+- 2024PASP..136l4401K: Models assume single-material, single-size grains and ignore porosity; a size distribution or mixture is left for future work
+- 2022MNRAS.514.2994G: Excluding short ALMA baselines (<33m) filters out spatial scales larger than 4.3-7.1 arcsec, heavily downweighting the centre of Venus (15.2 arcsec diameter) so that only ~22% of continuum survives a…
+- 2022MNRAS.514.2994G: Cloud-level PH3 abundance and altitude profiles cannot be quantified because broad pressure-broadened line wings are heavily suppressed by the polynomial baseline subtraction and lack laboratory PH3-…
+- 2022MNRAS.514.2994G: The 1D radiative transfer model neglects scattering, beam convolution, and limb darkening, generating SO2 lines 15-25% less deep than detailed 3D/scattering radiative transfer codes.
+- 2022MNRAS.514.2994G: JCMT SO2 and PH3 observations in June 2017 were not strictly simultaneous, being separated by 3 days between the last SO2 spectrum and the start of PH3 observing.
+- 2019AJ....158...47M: Surface roughness not modeled, so beaming cannot be separated from thermal inertia
+- 2024JApA...45...31M: Lack of short spacings filters out the disk flux, so only limb emission is preserved
+- 2024JApA...45...31M: Ring continuum flux not estimated because of complex structure
+- 2024JApA...45...31M: Formation pathways need further photochemical modelling
+- 2020ApJ...903L...1I: Localized HCN depletion-spot detection is marginal
+- 2020ApJ...903L...1I: Equatorial line center within ±1.5 MHz is not fitted well
+- 2020ApJ...903L...1I: Circular 0.41″ model beam approximates the slightly elliptical observed beam
+- 2020ApJ...903L...1I: HCN probes the upper stratosphere, whereas the earlier circulation model is mainly based on upper-tropospheric observations
+- 2020ApJ...903L...1I: A CS latitudinal-distribution analysis is needed to evaluate the impact hypothesis
+- 2017AJ....154..206L: C3H8 lines blended so abundance uncertain; south pole partly hidden
+- 2025NatAs...9.1476C: HDO and H2O observed ~2 weeks apart; Q(H2O) inferred via CH3OH proxy
+- 2025NatAs...9.1476C: Low S/N of HDO leaves L_p unconstrained for 50% distributed case
+- 2023NatAs...7.1048C: Uniform-disk continuum subtraction leaves residuals, giving about 30% uncertainty on column densities, the largest uncertainty
+- 2023NatAs...7.1048C: Temperature model limited by interpolation in gaps of TEXES coverage of auroral regions
+- 2023NatAs...7.1048C: Northern aurora geometry less favorable at the time of observations
+- 2023NatAs...7.1048C: Only northernmost latitudes unobserved; 2D temperature maps per limb ignore other longitudes
+- 2018ApJ...859L..15C: Ratio not accurate enough to distinguish models; 12C/13C in HC3N uncertain, true ratio could be as low as 43
+- 2020ApJ...890...95I: Data quality limits accuracy; cannot distinguish UV vs GCR scenarios
+- 2019AJ....158..139D: Brightness temperatures only 60-70% of expected, attributed to Tsys calibration on blank sky; data scaled
+- 2019AJ....158..139D: Small features are unresolved so Tb are upper limits; missing short spacings
+
+### Settings cards flag as needed but not stated
+- line-free channels and continuum subtraction method: 2
+- scaling factor values per dataset: 2
+- pipeline version: 2
+- the paper's program identifier is printed as 2019.01008.t; an unambiguous archive identifier is nee…: 1
+- spectral-window bandwidths, channel selections, and the construction of the combined continuum imag…: 1
+- image cell size, image dimensions, exact spectral regridding, and primary-beam correction treatment.: 1
+- exact line-free channels, polynomial orders, and interpolation interval for the autocorrelation tel…: 1
+- autocorrelation scan and antenna rejection, weighting, and combination details delegated to cordine…: 1
+- the modified lime implementation, grid and radial boundaries, density prescriptions, and electron d…: 1
+- nonlinear optimizer, parameter bounds, spectral weights, and uncertainty calculation.: 1
+- exact supplementary table 1 inputs and optical cn effective scale lengths.: 1
+- titan flux model details/updates beyond reference to alma memo 594: 1
+- exact spectrum extraction regions and channel selection: 1
+- which detections were combined and how many were used per line: 1
+- nemesis a priori covariance/error settings: 1
+- aerosol profile specifics: 1
+- alma project identifier and dataset identifiers.: 1
+- antenna configuration, baselines, on-source integration time and complete spectral-window/channel l…: 1
+- casa and calibration-script versions, detailed flagging and calibrator identities.: 1
+- phase self-calibration solution intervals, iteration count and solution-selection criteria.: 1
+- exact line-free channels used for the polynomial continuum subtraction.: 1
+- image cell size, dimensions, cleaning masks and maximum iteration count.: 1
+- individual ch3cn transition identities, adopted rest frequencies and frequency/velocity reference c…: 1
+- exact doppler zero-point correction and the pixel-selection rule used to average velocities inside …: 1
+- moffat initialization, bounds and mpfit configuration.: 1
+- nemesis opacity inputs, retrieval regularization and full prior/error settings.: 1
+- modified atmwindmapgaussfit source and full 3d emissivity/geometry configuration.: 1
+- keck plate scale, orientation calibration, selected psf frame and richardson-lucy iteration count.: 1
+- hydrostatic pressure boundary condition, reference co-latitude and exact reference-radius conventio…: 1
+- forward-model spatial grid, effective wavelength, psf prescription and numerical integration settin…: 1
+- exact lightspot extraction regions, usable-frame list, gaussian fit settings and angular wrap handl…: 1
+- line-free channels for continuum subtraction: 1
+- self-calibration solution interval: 1
+- exact casa task parameters and clean mask: 1
+- temperature/aerosol profile files used in nemesis: 1
+- aperture centering details and hc3n/hnc profile grids: 1
+- robust parameter and uv-taper values for imaging: 1
+- which channels/line-free ranges used for continuum subtraction: 1
+- exact self-calibration solution intervals: 1
+- execution blocks and number of observations per date: 1
+
+## Paper excerpts (34 of 34, chosen for detail and spread over fields/years)
+
+### 2020NatAs...4..861C: Unusually high CO abundance of the first active interstellar comet (2020; solar_system, astrochemistry; observational_alma_primary)
+- question: Parent volatile composition of 2I/Borisov and implications for its natal environment.
+- step 1: Image the interferometric data
+  - method: Deconvolve, Doppler-correct and image calibrated data with tclean, producing combined cubes in the comet rest frame. [Observations: "Deconvolution, Doppler correction and imaging were performed using the `tclean` (Clark) algorithm"] [Observations: "The resulting, combined image cubes are in the rest frame of the comet"]
+  - software: CASA, tclean
+  - parameter: Clark; natural weighting; threshold 2σc; 6''-diameter circular mask. [Observations: "with natural weighting, a flux threshold of twice the RMS noise per channel ($\sigma_c$) in each image, and a $6''$-diameter circular mask about the phase center."] [Observations: "using the `tclean` (Clark) algorithm"]
+  - validation: Combined-cube RMS: 2.6 mJy for CO and 2.9 mJy for HCN. [Observations: "with $\sigma_c=2.6$ mJy for CO and 2.9 mJy for HCN."]
+- step 3: Reduce the autocorrelation spectra
+  - method: Calibrate and combine individual-antenna spectra using interleaved sky references; correct beam efficiency, Doppler shift, subtract polynomial baselines, and interpolate over residual telluric CO. [Observations: "using the interleaved sky reference position to subtract thermal contributions from the sky, receiver and telescope optics from each scan."] [Observations: "The calibrated autocorrelation spectra were then Doppler shifted from the topocentric frame to the comet’s rest velocity."]
+  - parameter: Sky reference 2' North; sequence 30 s calibrator, 2 min comet, 2 min reference. [Observations: "The observing sequence consisted of 30 s on the phase calibrator, 2 min on the comet, and 2 min on a sky reference position $2'$ North of the comet"]
+  - parameter: η_MB = 0.72; η_A = 0.63 at 345 GHz; η_MB = 0.8899 k^2 η_A with k = 1.13. [Observations: "The data were corrected for a beam efficiency $\eta_{\rm MB}=0.72$, which was derived from the aperture efficiency ($\eta_A=0.63$ at 345 GHz)(cite: alm19)"] [Observations: "using the standard relationship(cite: dow89) $\eta_{\rm MB}=0.8899k^2\eta_A$, with k=1.13 for the ALMA 12-m antennas."]
+  - parameter: Residual telluric CO at 6.6 km s^-1 removed by linear interpolation. [Observations: "A narrow residual feature due to incomplete telluric CO cancellation (at 6.6 km s$^{-1}$ in the comet’s rest frame) was removed by linear interpolation."]
+  - fitting: Low-order polynomial fits to line-free channels. [Observations: "A spectral baseline offset was subtracted using low-order polynomial fits to the line-free channels."]
+- step 8: Test excitation uncertainties
+  - method: Vary kinetic temperature and electron density scaling; assess changes in molecular production and CO/HCN. [Radiative Transfer Modeling: "Modeling was carried out for a range of coma kinetic temperatures $T_{kin}=20$–70 K"] [Radiative Transfer Modeling: "However, in the case of $x_{n_e}=0.2$, the HCN production rate is more sensitive to the value of $T_{kin}$"]
+  - software: LIME
+  - parameter: T_kin = 20–70 K; nominal x_ne = 1.0; low-electron case x_ne = 0.2. [Radiative Transfer Modeling: "For $x_{n_e}=1.0$, the CO and HCN production rates are relatively insensitive to the assumed kinetic temperature, changing by less than 8% across the range $T_{kin}=$ 20–70 K."] [Radiative Transfer Modeling: "However, in the case of $x_{n_e}=0.2$, the HCN production rate is more sensitive to the value of $T_{kin}$"]
+  - assumption: Temperature range based on prior radio and infrared comet observations at 1.7-2.4 au. [Radiative Transfer Modeling: "based on the temperatures previously observed at radio and infrared wavelengths for comets in the distance range 1.7-2.4 au (Supplementary Table 1)."]
+  - validation: At nominal electron scaling, production rates change by less than 8%; even the low-temperature, low-electron case remains CO-rich. [Radiative Transfer Modeling: "For $x_{n_e}=1.0$, the CO and HCN production rates are relatively insensitive to the assumed kinetic temperature, changing by less than 8% across the range $T_{kin}=$ 20–70 K."] [Radiative Transfer Modeling: "2I/Borisov’s CO/HCN ratio could plausibly be as low as $370\pm80$, but this is still higher than the range of values (1.25–238) observed in previous Solar System comets"]
+- step 9: Test hemispheric CO outgassing
+  - method: Fit the CO autocorrelation spectrum with sunward and anti-sunward hemispheres and compare against isotropic outgassing. [Radiative Transfer Modeling: "Assuming hemispheric asymmetry along the Sun-comet vector"] [Radiative Transfer Modeling: "Statistically, the 2-component, asymmetric model is therefore favoured."]
+  - software: LIME
+  - parameter: Sunward and anti-sunward expansion velocities and production-rate asymmetry factor. [Radiative Transfer Modeling: "an expansion velocity of $v_{out}(1)=0.49$ km s$^{-1}$ in the sunward hemisphere, and $v_{out}(2)=0.26$ km s$^{-1}$ in the anti-sunward hemisphere, with an asymmetry factor (ratio of sunward to anti-sunward production rates) of 3.3."]
+  - assumption: Hemispheric asymmetry along the Sun-comet vector; CO J=3-2 optically thin; T_kin = 50 K. [Radiative Transfer Modeling: "Assuming hemispheric asymmetry along the Sun-comet vector"] [Radiative Transfer Modeling: "Since the CO $J=3-2$ emission is optically thin"]
+  - fitting: Compare reduced chi-squared and probability P for isotropic and asymmetric models. [Radiative Transfer Modeling: "The isotropic model has a best-ftting $\chi^2_r=1.21$ (corresponding to $P = 0.02$"] [Radiative Transfer Modeling: "whereas the asymmetric model has $\chi^2_r=1.01$ and $P = 0.45$."]
+  - validation: Asymmetric model favoured; production rate unchanged from the isotropic model because CO emission is optically thin. [Radiative Transfer Modeling: "Statistically, the 2-component, asymmetric model is therefore favoured."] [Radiative Transfer Modeling: "Since the CO $J=3-2$ emission is optically thin, the production rate for our asymmetric model is the same as that obtained using the standard, isotropic model"]
+- step 12: Compare volatile abundances and infer origin
+  - method: Calculate HCN/H2O, CO/H2O and CO/HCN; include excitation uncertainties; compare with Solar System comets and discuss formation environments. [Unusually High CO Abundance of the Firs…: "we find that the HCN abundance (relative to H$_2$O) was 0.06%-0.16% and the CO abundance was 35%-105%."] [Unusually High CO Abundance of the Firs…: "Accounting for additional uncertainties in the HCN production rate due to possible variations in the coma kinetic temperature and electron abundance (see Methods), we find that the maximum error margin for CO/HCN is $630^{+200}_{-340}$."]
+  - parameter: Use water production range 4.9-10.7×10^26 s^-1 for relative-to-water abundances. [Unusually High CO Abundance of the Firs…: "Assuming 2I/Borisov’s water production rate on December 15th-16th was within the range 4.9-10.7$\times10^{26}$ s$^{-1}$ observed by Xing et al.(cite: bod20) (see Methods)"]
+  - assumption: Measured CO/HCN at 2.0 au likely represents the interior ice mixing ratio. [Unusually High CO Abundance of the Firs…: "Our measured CO/HCN ratio in 2I/Borisov at 2.0 au is therefore likely to be representative of the interior ice mixing ratio."]
+  - validation: Compare against comets at similar heliocentric distances; consider differential sublimation and insulating surface layers. [Unusually High CO Abundance of the Firs…: "Supplementary Table 1 provides literature data for CO and HCN in five comets observed at $r_H=1.7$–$2.4$ au, including several CO-rich comets."] [Unusually High CO Abundance of the Firs…: "whether the differential sublimation rates as a function of temperature for CO, HCN and H$_2$O could play a role."]
+- result: HCN production at T_kin = 20 K and x_ne = 0.2 = 1.2×10^24 ± not stated s^-1 [Radiative Transfer Modeling: "resulting in a value of $Q({\rm HCN})=1.2\times10^{24}$ s$^{-1}$ at 20 K"]
+- result: CO production at T_kin = 20 K = 4.6×10^26 ± not stated s^-1 [Radiative Transfer Modeling: "For comparison, we found $Q({\rm CO})=4.6\times10^{26}$ s$^{-1}$ at $T_{kin}=20$ K."]
+- result: CO/HCN in the low-temperature, low-electron-collision regime = 370 ± ±80 dimensionless [Radiative Transfer Modeling: "Consequently, in the regime of very low kinetic temperature and electron collision rates, 2I/Borisov’s CO/HCN ratio could plausibly be as low as $370\pm80$"]
+- result: Sunward CO expansion velocity = 0.49 ± not stated km s^-1 [Radiative Transfer Modeling: "an expansion velocity of $v_{out}(1)=0.49$ km s$^{-1}$ in the sunward hemisphere"]
+- result: Anti-sunward CO expansion velocity = 0.26 ± not stated km s^-1 [Radiative Transfer Modeling: "$v_{out}(2)=0.26$ km s$^{-1}$ in the anti-sunward hemisphere"]
+- result: Sunward/anti-sunward CO production-rate asymmetry = 3.3 ± not stated dimensionless [Radiative Transfer Modeling: "an asymmetry factor (ratio of sunward to anti-sunward production rates) of 3.3."]
+- result: Isotropic CO autocorrelation model reduced chi-squared = 1.21 ± not stated dimensionless [Radiative Transfer Modeling: "The isotropic model has a best-ftting $\chi^2_r=1.21$"]
+- result: Isotropic CO autocorrelation model P = 0.02 ± not stated dimensionless [Radiative Transfer Modeling: "The isotropic model has a best-ftting $\chi^2_r=1.21$ (corresponding to $P = 0.02$"]
+- result: Asymmetric CO autocorrelation model reduced chi-squared = 1.01 ± not stated dimensionless [Radiative Transfer Modeling: "whereas the asymmetric model has $\chi^2_r=1.01$ and $P = 0.45$."]
+- result: Asymmetric CO autocorrelation model P = 0.45 ± not stated dimensionless [Radiative Transfer Modeling: "whereas the asymmetric model has $\chi^2_r=1.01$ and $P = 0.45$."]
+- result: HCN abundance relative to H2O = 0.06%-0.16% ± not stated % [Unusually High CO Abundance of the Firs…: "we find that the HCN abundance (relative to H$_2$O) was 0.06%-0.16% and the CO abundance was 35%-105%."]
+- result: CO abundance relative to H2O = 35%-105% ± not stated % [Unusually High CO Abundance of the Firs…: "we find that the HCN abundance (relative to H$_2$O) was 0.06%-0.16% and the CO abundance was 35%-105%."]
+- result: CO/HCN mixing ratio with maximum error margin = 630 ± +200/-340 dimensionless [Unusually High CO Abundance of the Firs…: "we find that the maximum error margin for CO/HCN is $630^{+200}_{-340}$."]
+- result: Inferred upper bound on interior temperature during interstellar travel = ≲25 ± not stated K [Unusually High CO Abundance of the Firs…: "maintained a very low interior temperature ($\lesssim25$ K) for the duration of its interstellar journey."]
+- limitation (authors): Detailed coma morphology largely hidden by noise. [Unusually High CO Abundance of the Firs…: "Our HCN and CO detections are robust, but the detailed coma morphology in Figure 1 is largely hidden by noise"]
+- limitation (authors): HCN signal-to-noise cannot distinguish a jet from isotropic outgassing. [Unusually High CO Abundance of the Firs…: "However, the signal-to-noise is too low to conclusively distinguish this scenario from isotropic outgassing."]
+- limitation (authors): Interferometric observations filter emission on angular scales ≳10''. [Unusually High CO Abundance of the Firs…: "because they include flux from angular scales $\gtrsim10''$, which was filtered out by the interferometer due to a lack of very short baselines in the telescope array."]
+- not stated (card): The paper's program identifier is printed as 2019.01008.T; an unambiguous archive identifier is needed.; Spectral-window bandwidths, channel selections, and the construction of the combined continuum image.; Image cell size, image dimensions, exact spectral regridding, and primary-beam correction treatment.; Exact line-free channels, polynomial orders, and interpolation interval for the autocorre…
+
+### 2016ApJ...821L...8S: Isotopic Ratios of Carbon and Oxygen in Titan’s CO using ALMA (2016; solar_system; archival_reuse)
+- question: What are the CO abundance and the 12C/13C, 16O/18O and 16O/17O isotopic ratios in Titan's atmosphere, derived from ALMA CO isotopologue lines?
+- step 1: Calibrate and image Titan data
+  - method: Revised JAO scripts, phase self-cal, Högbom clean with natural weighting in CASA, Titan rest-frame correction [Observations: "spectral coordinates were corrected into Titan’s rest frame using JPL Horizons On-Line Ephemeris System"]
+  - software: CASA
+  - parameter: clean threshold 2x expected RMS [Observations: "a threshold flux level of twice the expected RMS noise"]
+- step 2: Extract disc-averaged spectra and convert to radiance
+  - method: Integrate over Titan disc plus atmosphere to 850 km plus 3 sigma_PSF; convert Jy to radiance [Modeling and Results: "We obtained spectra by integrating over a region of the ALMA data cube that includes the flux from Titan’s solid disc and atmosphere out to 850 km plus 3$\sigma$$_{PSF}$"]
+  - validation: Spectra rescaled to NEMESIS continuum, differing ~10% from Horizons flux model [Modeling and Results: "which typically differed from the Butler-JPL-Horizons 2012 flux model by about 10%."]
+- step 3: Retrieve CO abundance and temperature profile
+  - method: Simultaneous retrieval of constant CO VMR and temperature profile with a priori 50 ppm; limb-brightening via disc-averaged reference spectra [Modeling and Results: "We began with an a priori mixing ratio of 50 ppm and simultaneously retrieved a constant vertical abundance and temperature profile."]
+  - software: NEMESIS
+  - parameter: 24 to 27 field-of-view averaging points out to 3425 km radius [Modeling and Results: "The number of averaging points for this study ranged from 24 to 27"]
+  - assumption: CO mixing ratio constant with altitude up to 850 km [Modeling and Results: "we modeled the CO emission lines under the assumption that the mixing ratio remains constant with altitude up to 850 km"]
+  - fitting: Iterative chi^2 minimization with a priori regularization; 2% line intensity systematic added [Modeling and Results: "NEMESIS uses an iterative $\chi^2$ minimization technique that relies on both the quality of the fit to the data and the level of deviation from the a priori setup."]
+  - validation: Correlation coefficients; fixed CO 40-60 ppm test with temperature-only retrieval [Modeling and Results: "We also tested the uniqueness of fit by holding the CO gas abundance at constant values between 40 and 60 ppm"]
+- step 4: Retrieve isotopologue abundances and isotopic ratios
+  - method: Fixed nearest-in-time CO-retrieved temperature profile; a priori terrestrial ratios; fit each line and combine [Modeling and Results: "the retrieved temperature profile which was closest in time to that observation was used as the fixed temperature profile"]
+  - software: NEMESIS
+  - assumption: A priori terrestrial isotopic ratios [Modeling and Results: "we assumed terrestrial isotopic ratios of 89.3 for $^{12}$C/$^{13}$C, 498.8 for $^{16}$O/$^{18}$O, and 2680.6 for $^{16}$O/$^{17}$O"]
+  - fitting: Same procedure as CO [Modeling and Results: "Best-fitting models of CO isotopologues were found using the same modeling procedures as CO (aside from the fixed temperature profile)"]
+  - validation: C18O 3-2 and 2-1 abundances consistent within errors [Modeling and Results: "The mixing ratios for C$^{18}$O, derived independently from the J = 3–2 and J = 2–1 transitions, are consistent within the observational errors."]
+- result: CO abundance = 49.6 ± 1.8 ppm [abstract: "The abundance of CO was determined to be 49.6 ${\pm}$ 1.8 ppm"]
+- result: 12C/13C = 89.9 ± 3.4 dimensionless [abstract: "$^{12}$C/$^{13}$C = 89.9 ${\pm}$ 3.4"]
+- result: 16O/18O = 486 ± 22 dimensionless [abstract: "$^{16}$O/$^{18}$O = 486 ${\pm}$ 22"]
+- result: 16O/17O = 2917 ± 359 dimensionless [abstract: "$^{16}$O/$^{17}$O = 2917 ${\pm}$ 359"]
+- result: Temperature profile error = 8 K above 500 km; 4 K at 200 km ± not stated K [Modeling and Results: "Errors for the globally averaged retrieved temperature profile are of the order of 8 K at the top of the atmosphere (above 500 km) and 4 K at 200 km."]
+- limitation (authors): Unquantified systematic errors (disc-averaged temperature, Voigt profile, line-broadening coefficients) [Modeling and Results: "Additional systematic errors that have not been quantified in the final error estimate could exist."]
+- not stated (card): Titan flux model details/updates beyond reference to ALMA Memo 594; Exact spectrum extraction regions and channel selection; Line-free channels and continuum subtraction method; Which detections were combined and how many were used per line; NEMESIS a priori covariance/error settings; Aerosol profile specifics
+
+### 2025PSJ.....6..286M: Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics (2025; solar_system; observational_alma_primary)
+- question: Which ALMA-derived or GCM zonal wind profiles reproduce the resolved occultation light distributions around Titan?
+- step 2: Determine the occultation trajectory
+  - method: Fit star centroids outside occultation, subtract fitted Titan centers and linearly interpolate x/y offsets through occultation [Occultation data reduction and processi…: "Two one-dimensional Gaussians led to centroids with the least variability."] [Occultation data reduction and processi…: "Titan-star offsets were calculated for all pre- and post-occultation frames by taking the difference of the star centroid and the fitted circle center for Titan’s disk."]
+  - software: JPL HORIZONS
+  - parameter: 9×9 pixel star subframe for x; 11×11 for y [Occultation data reduction and processi…: "the star was isolated in a 9$\times$9 pixel subframe (x-direction) or an 11$\times$11 pixel subframe (y-direction)."]
+  - parameter: Convert detector offsets using plate scale and JPL HORIZONS Titan–Earth distance [Occultation data reduction and processi…: "by using the plate scale of the observations and the distance between Titan and Earth (taken from JPL HORIZONS)."]
+  - fitting: Two one-dimensional Gaussians for stellar centroids; linear fits to x/y offsets versus time [Occultation data reduction and processi…: "Two one-dimensional Gaussians led to centroids with the least variability."] [Occultation data reduction and processi…: "Linear fits were applied to both the x- and y- directions (as a function of time)"]
+  - validation: Choose subframe widths and centroid method with the lowest variability [Occultation data reduction and processi…: "These star subframe widths were selected based on which led to the lowest variability in centroid fitting."] [Occultation data reduction and processi…: "Two one-dimensional Gaussians led to centroids with the least variability."]
+- step 4: Correct the Doppler zero point
+  - method: Average fitted line-of-sight velocities inside Titan’s limb and subtract the resulting zero-point shift from individual pixels [ALMA wind retrieval: "The magnitude of the shift was calculated by taking the average of the fitted line-of-sight velocities inside Titan’s limb."] [ALMA wind retrieval: "This “zero point shift” was then subtracted from the individual pixel Doppler shifts for the subsequent data analysis steps."]
+  - parameter: Approximately +30 m s^-1 offset [ALMA wind retrieval: "A significant ($\approx+30$ m s$^{-1}$) offset in the spectral line Doppler shifts was identified at the center of Titan’s disk (and along the direction of its polar axis)."]
+  - assumption: Zonal winds symmetric with respect to Titan’s polar axis [ALMA wind retrieval: "Our ALMA data analysis here therefore also inherently assumes that the zonal winds are symmetric with respect to Titan’s polar axis."]
+- step 5: Determine ALMA altitude sensitivity
+  - method: NEMESIS radiative transfer and CH3CN abundance retrieval; derive wind contribution from altitude functional derivatives weighted by the spectral-line gradient [ALMA wind retrieval: "we used the Non-linear optimal Estimator for MultivariatE spectral analySIS (NEMESIS) to generate a detailed radiative transfer model for the observed CH$_3$CN emission"] [ALMA wind retrieval: "This abundance profile formed the basis of our “wind contribution function” calculation, which was obtained from the corresponding NEMESIS functional derivatives ($dQ/dz$) of flux with respect to altitude, as a function of frequency."]
+  - software: CASA, tclean, NEMESIS
+  - parameter: Re-image calibrated cubes before continuum subtraction; extract disk-averaged spectra with 1.5'' diameter aperture [ALMA wind retrieval: "The calibrated ALMA data cubes were re-imaged prior to continuum subtraction"] [ALMA wind retrieval: "Disk-averaged spectra were then extracted using a circular aperture with a diameter of 1.5$''$"]
+  - parameter: 35 annuli; emission angles 0–75 degrees; tangential altitude up to 1050 km [ALMA wind retrieval: "Titan’s disk (plus atmosphere) was divided into 35 annuli corresponding to emission angles between 0-75 degrees, covering the center of Titan up to a tangential altitude of 1050 km"]
+  - parameter: Model vertical extent 1200 km; negligible emission above 1000 km [ALMA wind retrieval: "the vertical extent of our model was 1200 km, but emission is negligible above 1000 km"]
+  - parameter: Scale observed data, including continuum, by 0.982 [ALMA wind retrieval: "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."]
+  - parameter: Average and peak-normalize the weighted contribution functions [ALMA wind retrieval: "which were then averaged and peak-normalized."]
+  - assumption: Atmospheric temperature profile from (cite: 2020ApJ...903L..22T) [ALMA wind retrieval: "The atmospheric temperature profile was obtained from (cite: 2020ApJ...903L..22T)."]
+  - assumption: A priori CH3CN abundance profile from (cite: nosowitz_improved_2025) [ALMA wind retrieval: "updated to incorporate the more recent CH$_3$CN abundance profile from (cite: nosowitz_improved_2025) for the *a priori* atmospheric state."]
+  - assumption: J=36-35 has the same altitude sensitivity range because line opacities and energy levels are similar [ALMA wind retrieval: "Due to the similarity of the line opacities and energy levels, this range is also applicable to the $J=36-35$ band."]
+  - fitting: Continuously retrieve CH3CN abundance at each altitude against J=35-34 line profiles [ALMA wind retrieval: "The CH$_3$CN abundance profile was continuously retrieved at each altitude to obtain a fit to the observed $J=35-34$ spectral line profiles."]
+  - validation: Continuum matching after the 0.982 scaling [ALMA wind retrieval: "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."]
+- step 6: Retrieve intrinsic latitudinal winds
+  - method: Fit a simplified 3D radiative transfer Doppler map with modified atmWindMapGaussFit to account for beam-smearing and axial tilt [ALMA wind retrieval: "Due to the effects of beam-smearing, combined with Titan’s axial tilt, extraction of the intrinsic zonal wind field requires deconvolution of the Doppler shift data."] [ALMA wind retrieval: "We therefore followed a similar method to (cite: cordiner_detection_2020) to model the Doppler map and extract a latitudinal wind speed profile using a simplified 3D radiative transfer model."]
+  - software: atmWindMapGaussFit, MPFIT
+  - parameter: Seven latitude points separated by 30 degrees [ALMA wind retrieval: "Seven latitudinal points (with $\Delta{(l)}=30^{\circ}$ separation) were found to produce a good fit to the observed Doppler map"]
+  - parameter: Segmented linear interpolation, smoothed with Gaussian FWHM equal to point spacing [ALMA wind retrieval: "by a segmented linear function. This function was then smoothed by a Gaussian function of FWHM equal to the spacing between the points."]
+  - parameter: Exponential taper with 1 degree scale length; zero wind at poles [ALMA wind retrieval: "An exponential taper was applied at the ends of the $v(l)$ profile (with an exponential smoothing scale length of 1$^{\circ}$), to ensure a velocity of zero at the poles."]
+  - assumption: Zonal winds symmetric with respect to Titan’s polar axis [ALMA wind retrieval: "Our ALMA data analysis here therefore also inherently assumes that the zonal winds are symmetric with respect to Titan’s polar axis."]
+  - fitting: Optimize each velocity point with MPFIT least squares and associated error estimates [ALMA wind retrieval: "Each velocity point $v_i$ was then optimized using MPFIT, to obtain the least-squares solution and associated error estimates."]
+  - validation: Experiment with point counts; seven points give a good Doppler-map fit while remaining constrained by the data [ALMA wind retrieval: "To maximize the information content in the $v(l)$ retrieval, we experimented in fitting the observations with profiles incorporating different numbers of variable latitudinal points $i$."] [ALMA wind retrieval: "Seven latitudinal points (with $\Delta{(l)}=30^{\circ}$ separation) were found to produce a good fit to the observed Doppler map, while still allowing the retrieved profile to be well constrained by the data"]
+- step 7: Construct wind-distorted atmospheres
+  - method: Use HASI temperature, integral hydrostatic equilibrium and ideal gas law; distort density and refractivity profiles using ALMA or TAM winds [Forward modeling of a stellar occultati…: "Calculate the pressure profile from $T(r)$ using the law of hydrostatic equilibrium and the assumption of a nitrogen atmosphere"] [Forward modeling of a stellar occultati…: "Calculate the number density profile, $N(r)$, from $T(r)$ and $P(r)$, using the ideal gas law."]
+  - software: Titan Atmospheric Model (TAM)
+  - parameter: Integral form of hydrostatic equilibrium [Forward model input from GCM zonal wind…: "We use the integral form of hydrostatic equilibrium in our forward model exploring modifications to surfaces of level pressure exerted by zonal winds."]
+  - parameter: Reference altitude corresponding to the ALMA contribution-function peak [Deriving level surface distortions from…: "A reference altitude $r(P,\phi_0)$ at reference co-latitude $\phi_0$ is used, in our case corresponding to the peak altitude from the ALMA contribution function."]
+  - parameter: GCM wind profiles displayed at reference altitude 307 km [Forward model input from GCM zonal wind…: "for a reference altitude (307 km)."]
+  - assumption: HASI temperature profile; nitrogen atmosphere [Forward modeling of a stellar occultati…: "In this paper we use the Huygens/HASI profile as our starting reference for Titan’s atmosphere"] [Forward modeling of a stellar occultati…: "Calculate the pressure profile from $T(r)$ using the law of hydrostatic equilibrium and the assumption of a nitrogen atmosphere"]
+  - assumption: Nearly spherical level surfaces allow radius and gravity to be removed from the latitude integral [Deriving level surface distortions from…: "Radius $r$ and gravitational acceleration $g$ can be removed from the integral when the surfaces are nearly spherical"]
+  - validation: Scaling HASI temperatures by TAM latitude differences produced negligible changes [Forward modeling of a stellar occultati…: "We also considered scaling the HASI profile by the latitudinal temperature differences simulated in the TAM GCM, but found the differences in the results to be negligible when compared to using the HASI profile without GCM scaling."]
+- result: Spectral-line Doppler zero-point offset = approximately +30 ± not stated m s^-1 [ALMA wind retrieval: "A significant ($\approx+30$ m s$^{-1}$) offset in the spectral line Doppler shifts was identified at the center of Titan’s disk (and along the direction of its polar axis)."]
+- result: ALMA continuum scaling factor = 0.982 ± not stated dimensionless [ALMA wind retrieval: "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."]
+- result: Average CH3CN emission altitude = 303 ± not stated km [ALMA wind retrieval: "The corresponding average emission altitude is 303 km, with sensitivity to winds primarily in the range $\sim150$-450 km."]
+- result: Primary ALMA wind sensitivity altitude range = ~150-450 ± not stated km [ALMA wind retrieval: "The corresponding average emission altitude is 303 km, with sensitivity to winds primarily in the range $\sim150$-450 km."]
+- result: Peak ALMA-derived wind speed = just under 200 ± not stated m/s [On the better model match to the ingres…: "The best match for the ingress lightspot was observed with the ALMA data with a peak wind speed just under 200 m/s, higher than nearly all of the zonal wind profiles simulated by the GCM."]
+- limitation (authors): ALMA rubidium-maser cable-routing error likely introduced an unknown frequency shift and slight spectral broadening [ALMA wind retrieval: "an error in the cable routing of the ALMA rubidium maser at the time of our observations, which is likely to have introduced an erroneous and unknown frequency shift in our observations"]
+- limitation (authors): ALMA winds are not vertically resolved; equatorial-jet contributions cannot be isolated [Comparison between GCM, occultation, an…: "As the ALMA wind profile is not vertically resolved, isolating the contribution of the equatorial jet from the contributions of winds at lower altitudes that contribute more heavily to the CH$_3$CN profile is not possible."]
+- limitation (authors): GCM and ALMA forward-model inputs differ in vertical treatment [Comparison between GCM, occultation, an…: "the implementations of ALMA and GCM profiles into our forward model varied slightly due to GCM simulations being altitudinally resolved while ALMA retrieved wind speeds are averaged over an altitude contribution function"]
+- not stated (card): ALMA project identifier and dataset identifiers.; Antenna configuration, baselines, on-source integration time and complete spectral-window/channel layout.; CASA and calibration-script versions, detailed flagging and calibrator identities.; Phase self-calibration solution intervals, iteration count and solution-selection criteria.; Exact line-free channels used for the polynomial continuum subtra…
+
+### 2014ApJ...795L..30C: ALMA Measurements of the HNC and HC<SUB>3</SUB>N Distributions in Titan's Atmosphere (2014; solar_system; observational_alma_primary)
+- question: What are the spatial distributions and vertical abundance profiles of HNC and HC3N in Titan's atmosphere as seen by ALMA?
+- step 1: Calibrate and image data cubes
+  - method: Standard ALMA calibration, flux scaling to Titan model, continuum subtraction, Hogbom cleaning [Observations: "Continuum subtraction and imaging were performed using standard routines in the NRAO CASA software version 4.2.0"]
+  - software: CASA
+- step 2: Make integrated emission maps in Titan frame
+  - method: Transform to projected distances and Titan rest frame; integrate ±1 km/s (HNC), ±5 km/s (HC3N) [Results and spectral line modeling: "using integration ranges $\pm1.0$ km $\rm{s}^{-1}$ with respect to line center for HNC and $\pm5.0$ km $\rm{s}^{-1}$ for HC$_3$N."]
+  - parameter: Topocentric radial velocity -0.91 km/s [Observations: "using the JPL Horizons Topocentric radial velocity of $-0.91$ km $\rm{s}^{-1}$."]
+- step 3: Extract disk-integrated spectra
+  - method: Integrate cubes over 1.5'' diameter circular aperture centered on Titan [Results and spectral line modeling: "obtained by integrating the observed data cubes over a circular aperture $1.5''$ (12,000 km) in diameter, centered on Titan."]
+- step 4: Retrieve VMR profiles
+  - method: NEMESIS line-by-line radiative transfer with two-parameter gradient model (abundance at z_r=293 km, slope as fraction of scale height); HNC step model above 400 km [Results and spectral line modeling: "A two-parameter ‘gradient model’ was used for the HNC and HC$_3$N vertical mixing ratio (VMR) profiles, with a variable abundance at reference altitude $z_r = 293$ km"]
+  - software: NEMESIS
+  - parameter: 10-point trapezium-rule integration to model top at 782 km [Results and spectral line modeling: "fluxes were calculated as a function of frequency using a 10-point trapezium-rule integration from the center of the disk to the edge of the model (at an altitude of 782 km)."]
+  - assumption: Profiles do not vary with latitude/longitude; HC3N condenses below ~71 km; Lorentz half-widths 1.290 (HNC), 0.1 (HC3N) cm-1/bar, exponents 0.69, 0.75 [Results and spectral line modeling: "The HC$_3$N was assumed to condense out at altitudes below $z_c \simeq 71$ km"]
+  - fitting: chi^2 minimization between modeled and observed spectra [Results and spectral line modeling: "Employing a $\chi^2$ minimization between the modeled and observed spectra"]
+  - validation: Compared with previous VMR profiles (Marten, Teanby, Vinatier, Koskinen; Moreno 2012) [Results and spectral line modeling: "Our HC$_3$N VMR profile is in reasonable agreement with these previous studies"]
+- result: HC3N abundance at 293 km = 0.62 ± 0.04 ppb [Results and spectral line modeling: "$0.62 \pm 0.04$ ppb for HC$_3$N"]
+- result: HNC abundance at 293 km (gradient model) = 0.063 ± 0.025 ppb [Results and spectral line modeling: "$0.063 \pm 0.025$ ppb for HNC"]
+- result: HNC column density (gradient) = 1.9e13 ± not stated cm^-2 [Results and spectral line modeling: "$1.9\times10^{13}$ cm$^{-2}$ for HNC"]
+- result: HC3N column density = 2.3e14 ± not stated cm^-2 [Results and spectral line modeling: "$2.3\times10^{14}$ cm$^{-2}$ for HC$_3$N"]
+- result: HNC step-model abundance above 400 km = 4.85 ± 0.28 ppb [Results and spectral line modeling: "The best-fitting abundance above 400 km was found to be $4.85\pm0.28$ ppb"]
+- result: HNC line FWHM = 0.76 ± not stated km/s [Results and spectral line modeling: "(FWHM $= 0.76$ km $\rm{s}^{-1}$)"]
+- result: HNC peak clockwise offset = 40 ± 5 deg [Discussion: "are offset clockwise by $40\pm5^{\circ}$ in the plane of the sky"]
+- limitation (authors): Single line per species insufficient to constrain the true HNC distribution [Results and spectral line modeling: "High signal-to-noise ratio observations of multiple emission lines could help constrain the true HNC distribution."]
+- not stated (card): Line-free channels for continuum subtraction; Self-calibration solution interval; Exact CASA task parameters and clean mask; Temperature/aerosol profile files used in NEMESIS; Aperture centering details and HC3N/HNC profile grids
+
+### 2017A&A...603L...6H: Direct evidence of multiple reservoirs of volatile nitrogen in a protosolar nebula analogue (2017; protoplanetary_disks, astrochemistry, solar_system; observational_alma_primary)
+- question: What is the 14N/15N ratio in CN in the TW Hya disk, does it differ from HCN in other disks (multiple N reservoirs), and what does it imply for the present-day local ISM ratio and the origin of nitrogen in the solar system?
+- step 5: Compare MWC 480 HCN ratio and derive implications
+  - method: Apply same uv analysis to H13CN/HC15N; convert with 12C/13C=68(15) to R_HCN; compare with CN, prestellar cores, comets, GCE models [Two isotopic reservoirs of nitrogen in …: "Assuming that the abundance ratio HCN/H$^{13}$CN is equal to the elemental $^{12}$C/$^{13}$C isotopic ratio"]
+  - software: GILDAS/MAPPING
+  - assumption: HCN/H13CN equals elemental 12C/13C [Two isotopic reservoirs of nitrogen in …: "Assuming that the abundance ratio HCN/H$^{13}$CN is equal to the elemental $^{12}$C/$^{13}$C isotopic ratio"]
+  - validation: Agrees with Guzmán 2017 reanalysis [Two isotopic reservoirs of nitrogen in …: "our ratio for the MWC 480 disk also agrees well with recent re-analysis of the data (cite: guzman2017)"]
+- result: H13CN/HC15N in MWC 480 = 1.88 ± 0.34 dimensionless [Two isotopic reservoirs of nitrogen in …: "1.88(34)"]
+- result: 14N/15N in HCN in MWC 480 = 128 ± 36 dimensionless [Two isotopic reservoirs of nitrogen in …: "\ensuremath{{\cal R}_{\rm HCN}} = 128(36)"]
+- result: Implied outward migration of the Sun = ~2 ± not stated kpc [The 14N/15N isotopic ratio in the prese…: "would correspond to an outward migration of the Sun by $\sim$2 kpc from its birth location"]
+- limitation (authors): CN and C15N co-spatiality assumption hard to assess; C15N map not used [uv-plane analysis: "Indeed, the C$^{15}$N map was not used in this work."]
+- limitation (authors): Robust CN column density needs self-consistent modelling; 2D radiative transfer needed [Excitation of CN and C15N: "Yet, 2D radiative transfer calculations are required to demonstrate this claim."]
+- not stated (card): Robust parameter and uv-taper values for imaging; Which channels/line-free ranges used for continuum subtraction; Exact self-calibration solution intervals; Execution blocks and number of observations per date; Partition function table values and exact Tex used for the prefactor ratio; Procedure for propagating the 12C/13C uncertainty into R_HCN; Integration of MWC 480 visibilities (velocity rang…
+
+### 2020ApJ...904L..12C: Detection of Dynamical Instability in Titan's Thermospheric Jet (2020; solar_system; observational_alma_primary)
+- question: Is Titan's thermospheric equatorial jet temporally variable? Map the 3D wind field with ALMA in May 2017 and compare with a reanalysis of the August 2016 data
+- step 1: continuum subtraction and imaging
+  - method: Continuum-subtract with low-order polynomials, then image with tclean into cubes in Titan's rest frame [Observations: "The raw observations were first continuum-subtracted using low-order polynomial fits to the line-free spectral regions adjacent to our lines of interest."] [Observations: "algorithm in CASA 5.6 (cite: emo19)"]
+  - software: CASA, tclean
+  - parameter: pixel size 0.025 arcsec; threshold twice the RMS noise per channel; mask diameter 1.3 arcsec [Observations: "The image pixel size was set to $0.025''$, with a flux threshold of twice the RMS noise per channel, and a deconvolution mask diameter of $1.3''$, encircling the entirety of the detected flux."]
+  - parameter: cubes in the rest frame of Titan's center-of-mass [Observations: "so the resulting image cubes are in the rest frame of Titan’s center-of-mass"]
+  - validation: Rest frequency scale checked: Doppler shifts close to zero along sight lines through Titan's polar axis [Observations: "Reliability of the rest frequency scale was established based on the observation that the emission line Doppler shifts were typically close to zero (within the uncertainties) along the lines of sight intersecting Titan’s polar axis."]
+- step 2: match 2016 and 2017 resolution
+  - method: Convolve both epochs to common circular beams defined in km at Titan [Observations: "both datasets were convolved to common circular beam dimensions ($\theta_{km}$), as projected in the plane of the sky at $\Delta=9.75$ au in 2016 and $\Delta=9.21$ au in 2017"]
+  - parameter: 1670 km (CH3CN), 1570 km (HC3N), 1600 km (HNC) [Observations: "resulting in $\theta_{km}=1670$ km for CH$_3$CN, $\theta_{km}=1570$ km for HC$_3$N and $\theta_{km}=1600$ km for HNC"]
+  - assumption: Titan geocentric distance 9.75 au (2016) and 9.21 au (2017) [Observations: "as projected in the plane of the sky at $\Delta=9.75$ au in 2016 and $\Delta=9.21$ au in 2017"]
+- step 4: deconvolve to intrinsic zonal wind profiles
+  - method: 3D grid of 100 km cubic cells with wind, abundance, temperature; radiative transfer along the line of sight, convolve to beam, centroid velocity per pixel, fit Gaussian v(latitude) profile with vmax, FWHM, phi0 [Wind Velocity Retrievals: "construction of a 3D grid of (100 km wide) cubic cells, covering Titan’s entire atmosphere."] [Wind Velocity Retrievals: "the convolved image cube was integrated along the spectral axis to determine the centroid velocity of each pixel."]
+  - software: atmWindMapGaussFit, MPFIT
+  - parameter: three free parameters: peak wind speed vmax, Gaussian FWHM, latitudinal offset phi0 [Deconvolved Wind Models: "(1) the peak wind speed $v_{max}$, (2) the Gaussian FWHM, and (3) a latitudinal offset ($\phi_0$)"]
+  - assumption: Titan obliquity of 26 degrees toward the observer [Deconvolved Wind Models: "Titan’s obliquity (26$^{\circ}$ toward the observer)"]
+  - assumption: v(latitude) profile does not vary with height for each molecule [Wind Velocity Retrievals: "The derived ${v}(\phi)$ profile for each molecule is assumed not to vary with height"]
+  - assumption: 1D Gaussian latitudinal profile [Deconvolved Wind Models: "we decided on a Gaussian parameterization, which is able to reproduce the main features in our observed velocity maps, with a minimum number of free parameters"]
+  - fitting: Least-squares (sum of squared residuals) minimization with MPFIT; 1 sigma from the MPFIT covariance matrix; likelihood/priors not stated [Wind Velocity Retrievals: "The sum of squares of the residuals (model minus observations) was minimized using the MPFIT algorithm (cite: mar12)"] [Wind Velocity Retrievals: "The ($1\sigma$) uncertainties on each parameter were obtained from the MPFIT covariance matrix."]
+  - validation: Synthetic maps compared with observed maps and with 2016 maps of Lellouch et al. [Wind Velocity Retrievals: "A good match to the observations (Figure 2) is evident in each case"] [Wind Velocity Retrievals: "for 2016, our synthetic wind maps compare well with those in Supplementary Fig. 7 of (cite: lel19)"]
+- result: CH3CN vmax 2016 (z=345 km) = 254 ± ±4 m/s [Table 1: "$254\pm4$ | $-13\pm1$ | $88\pm3$"]
+- result: CH3CN vmax 2017 (z=345 km) = 185 ± ±3 m/s [Table 1: "$185\pm3$ | $-11\pm1$ | $91\pm3$"]
+- result: HC3N vmax 2016 (z=710 km) = 341 ± ±2 m/s [Table 1: "$341\pm2$ | $-2\pm1$ | $91\pm1$"]
+- result: HC3N vmax 2017 (z=710 km) = 225 ± ±2 m/s [Table 1: "$225\pm2$ | $-1\pm1$ | $93\pm2$"]
+- result: HNC vmax 2016 (z=990 km) = 373 ± ±6 m/s [Table 1: "$373\pm6$ | $0\pm1$ | $70\pm2$"]
+- result: HNC vmax 2017 (z=990 km) = 196 ± ±2 m/s [Table 1: "$196\pm2$ | $3\pm1$ | $101\pm2$"]
+- result: CH3CN Gaussian FWHM 2016 / 2017 = 88 / 91 ± ±3 / ±3 degrees [Table 1: "$254\pm4$ | $-13\pm1$ | $88\pm3$"]
+- result: HC3N Gaussian FWHM 2016 / 2017 = 91 / 93 ± ±1 / ±2 degrees [Table 1: "$341\pm2$ | $-2\pm1$ | $91\pm1$"]
+- result: HNC Gaussian FWHM 2016 / 2017 = 70 / 101 ± ±2 / ±2 degrees [Table 1: "$373\pm6$ | $0\pm1$ | $70\pm2$"]
+- result: Drop in peak deconvolved zonal wind speed, CH3CN = 27 ± ±1 % [Discussion: "the peak deconvolved zonal wind speed ($v_{max}$) dropped by $27\pm1$% during the 9-month period"]
+- result: Drop in peak deconvolved zonal wind speed, HC3N = 34 ± ±1 % [Discussion: "A larger drop was observed for HC$_3$N ($34\pm1$%) and larger-still for HNC ($47\pm1$%)."]
+- result: Drop in peak deconvolved zonal wind speed, HNC = 47 ± ±1 % [Discussion: "A larger drop was observed for HC$_3$N ($34\pm1$%) and larger-still for HNC ($47\pm1$%)."]
+- limitation (authors): Wind-field map fidelity limited by coarse altitude sampling and altitude smearing [Discussion: "The fidelity of these maps is limited by (1) the coarse altitude sampling of our data, (2) smearing due to the broad range of altitudes"]
+- limitation (authors): Timescale of the jet variability unknown due to sparse temporal sampling [Discussion: "Due to the incomplete temporal sampling, however, the actual timescale of the thermospheric jet’s variability remains unknown."]
+- limitation (authors): Retrieved profiles may be biased by emission from altitudes other than the mean contribution altitude [Wind Velocity Retrievals: "the possibility that the retrieved velocity profiles could be biased by emission from altitudes different from the mean wind contribution function altitude should be considered"]
+- not stated (card): Calibration route (pipeline vs manual), CASA version used for calibration, and the flux, bandpass and phase calibrators; How Titan's ephemeris motion was handled in calibration and imaging (ephemeris table, spectral frame, tclean phasecenter/specmode settings); Execution blocks / scheduling blocks used for each epoch and any data flagged; Order of the polynomial and the exact line-free channel/fr…
+
+### 2019AJ....157..219T: Measurement of CH<SUB>3</SUB>D on Titan at Submillimeter Wavelengths (2019; solar_system; archival_reuse)
+- question: Can CH3D be detected in Titan's atmosphere at submillimeter wavelengths with ALMA, and what disk-averaged CH3D abundance and D/H in CH4 does it imply?
+- step 1: Calibrate and image
+  - method: Re-ran archive calibration scripts in CASA with updated Titan flux model; Högbom clean imaging [2 Observations: "we re-ran the ALMA data calibration scripts available with raw data from the ALMA Science Archive"]
+  - software: CASA
+  - parameter: pixel 0.1 arcsec, threshold 10 mJy [2 Observations: "with a pixel size = $0.1\times0.1''$ and a flux threshold of 10 mJy"]
+- step 2: Extract disk-averaged spectrum and convert to radiance
+  - method: Mask of pixels with >=90% of continuum flux; convert flux density to radiance using 24 line-of-sight emission angles up to 1200 km [3 Radiative Transfer Modeling: "using 24 line of sight emission angles to model the flux from the full disk of Titan and the atmosphere up to 1200 km above the surface"]
+  - software: NEMESIS
+  - parameter: distance 9.038 AU; sub-observer latitude 24.55 deg; Doppler shift -7.5 km/s [3 Radiative Transfer Modeling: "The sub-observer latitude was $24.55^\circ$ and the Doppler shift was $-7.5$ km s$^{-1}$"]
+  - validation: 24 annuli sufficient for disk-averaged radiance [3 Radiative Transfer Modeling: "summing over 24 annuli was sufficient to model the disk-averaged radiance from these data"]
+- step 3: Model continuum and set offset
+  - method: CIA continuum from CH4, H2, N2; temperature profile from ALMA stratosphere plus HASI/radio occultation troposphere; data scaled by 1.047 [3 Radiative Transfer Modeling: "rectified by multiplying the data by a factor of 1.047"]
+  - software: NEMESIS
+  - validation: Scaling consistent with previous ALMA flux-calibration studies [3 Radiative Transfer Modeling: "This scaling factor is consistent with previous studies using ALMA flux calibration data"]
+- step 4: Fit CH3D abundance
+  - method: Line-by-line NEMESIS with a constant multiplicative scaling of a priori CH3D profiles (CH4 times D/H from 1.13-1.59e-4); profile shape fixed, other parameters held constant [3 Radiative Transfer Modeling: "we opted to find a best-fit spectrum using a simple scaling model (i.e. a constant multiplicative factor) of an *a priori* CH$_3$D profile"]
+  - software: NEMESIS
+  - parameter: CO 50 ppm constant [3 Radiative Transfer Modeling: "CO with a constant volume mixing ratio of 50 ppm"]
+  - assumption: CH3D profile follows CH4 Huygens GCMS profile shape [3 Radiative Transfer Modeling: "Our initial CH$_3$D profiles were found by multiplying *in situ* CH$_4$ data obtained with the *Huygens* probe"]
+  - fitting: Scaling factor fit; all a priori profiles converge on a single best fit [3 Radiative Transfer Modeling: "Models using all *a priori* abundance profiles converge on a single best-fit spectrum"]
+- result: Disk-averaged CH3D volume mixing ratio = 6.157e-6 ± not stated dimensionless [abstract: "disk-averaged CH$_3$D volume mixing ratio = $6.157\times10^{-6}$ in Titan’s stratosphere"]
+- result: Scale factor applied to data = 1.047 ± not stated dimensionless [3 Radiative Transfer Modeling: "rectified by multiplying the data by a factor of 1.047"]
+- limitation (authors): Error bars reflect only retrieval errors; disk-averaged ALMA data not directly comparable to the equatorial GCMS CH4; only one suitable dataset so no stacking [4 Discussion and Conclusions: "The error bars on our measurement are relative, and only reflect the retrieval errors of our best-fit synthetic CH$_3$D spectrum."]
+- not stated (card): Which ALMA execution block/MS and which calibrator/scripts exactly; Clean mask and number of iterations; weighting scheme; Line-free channels and continuum subtraction method; Pixel mask definition details and how noise/significance was computed; Error treatment behind the +-0.081e-4 D/H; How the 1.047 scale factor was derived exactly; Full temperature profile values
+
+### 2025PSJ.....6..107N: Improved Carbon and Nitrogen Isotopic Ratios for CH<SUB>3</SUB>CN in Titan's Atmosphere Using ALMA (2025; solar_system, astrochemistry; observational_alma_primary)
+- question: Measure CH3CN nitrogen and carbon isotopic ratios in Titan’s stratosphere to test nitrogen chemistry and fractionation.
+- step 3: Prepare consistent spectroscopy
+  - method: Update NEMESIS to GEISA 211 format; recompute line intensities and partition functions consistently; fit tabulated partition functions with a third order polynomial. [Radiative Transfer Modeling: "The NEMESIS line database was updated to the GEISA 211 format (cite: geisa_2003) for additional precision on the rest frequencies and intensities."] [Radiative Transfer Modeling: "all of the values were re-computed without hyperfine or vibrational corrections in a self-consistent manner."]
+  - software: NEMESIS, CDMS
+  - parameter: Partition functions tabulated at 300.0, 225.0, 150.0, 75.00, 37.50, 18.75 and 9.375 K [Table 2: "| 300.0 | 10118.2635 | 10418.8811 | 10123.2613 | 10431.9556 |"] [Radiative Transfer Modeling: "the re-computed values listed in Table [2](#tab:partition_fcn_vals)."]
+  - parameter: Laboratory checks: K=0 to 9, J=14-13 at 257 GHz and J=15-14 at 275 GHz; room temperature, around 1 mTorr [CH$_3$CN spectroscopic parameters and p…: "by measuring $K$=0 to 9 transitions for $J$=14-13 at 257 GHz and $J$=15-14 at 275 GHz."] [CH$_3$CN spectroscopic parameters and p…: "Measurements were made at room temperature, and at around 1 mTorr sample pressure"]
+  - assumption: Exclude v8=1 and nitrogen hyperfine structure from the parent partition function, matching the isotopic species. [CH$_3$CN spectroscopic parameters and p…: "we re-evaluated the partition function for the ground state of the parent at the same conditions as for the isotopic species, namely without the $v_8$=1 state, and without accounting for the nitrogen hyperfine structure"]
+  - assumption: Relevant hyperfine splittings are much smaller than the observed spectral resolution. [Radiative Transfer Modeling: "Note that the hyperfine splittings for all relevant transitions are much smaller than the resolution of our observed spectra."]
+  - fitting: Third order polynomial fit to recomputed partition functions [Radiative Transfer Modeling: "using a third order polynomial fit to the re-computed values"]
+  - validation: Twenty laboratory transitions agree with CDMS predictions to an RMS deviation of 16 kHz. [CH$_3$CN spectroscopic parameters and p…: "CDMS predictions and currently measured frequencies for 20 different transitions were in agreement to a root mean square deviation of 16 kHz, which is well within the nominal uncertainty of the employed spectrometer."]
+- step 4: Construct the spectral response
+  - method: Convolve a wind-broadened profile with the Fourier transform of a padded Hann window. [Line Shape Function: "We convolved the rotationally broadened profile with a line-shape function that mimics the ALMA correlator response, which is the Fourier transform of a (padded) Hann window, to get the new line spread function (cite: spec_resp_memo)."]
+  - software: NEMESIS, modified code published in (cite: cordiner_2020)
+  - parameter: Padding corresponds to two channels [Line Shape Function: "we set this to correspond to two channels, according to the standard setup of the ALMA correlator."]
+  - parameter: 488 and 976 kHz response functions; wind-broadened FWHM 604 and 1109 m s^-1 [Line Shape Function: "After the addition of wind broadening, the 488 kHz velocity FWHM increased to 604 m s$^{-1}$ (a difference of 36 m s$^{-1}$)"] [Line Shape Function: "the 976 kHz velocity FWHM increased to 1109 m s$^{-1}$ (a difference of 19 m s$^{-1}$)"]
+  - assumption: Use the observed May 2017 wind field [Line Shape Function: "based on the observed wind field in May 2017."]
+  - validation: Compare FWHM before and after wind broadening; the LSF had a slight impact. [Line Shape Function: "so the line shape function (LSF) had a slight impact on the results."] [Line Shape Function: "corresponding to a velocity FWHM of 568 and 1090 m s$^{-1}$ at 257.4461 and 267.5854 GHz, respectively."]
+- step 5: Build the atmospheric forward model
+  - method: Generate line-by-line NEMESIS spectra with disk annuli, atmospheric profiles, continuum opacity and thermal/pressure broadening. [Radiative Transfer Modeling: "Spectral models were generated using the line-by-line module of the Nonlinear optimal Estimator for MultivariatE spectral analySIS (NEMESIS) radiative transfer and retrieval tool (cite: irwin_2008)."] [Radiative Transfer Modeling: "NEMESIS includes the necessary physical parameters such as spontaneous emission and absorption of radiation, on and off-limb emission angles, continuum opacity and thermal and pressure broadening"]
+  - software: NEMESIS, Borysow CIA routines
+  - parameter: 35 annuli; emission angles 3-75 degrees; model top 1200 km [Radiative Transfer Modeling: "Titan’s disk was divided into 35 annuli corresponding to different emission angles from 3-75 degrees covering the center of Titan up to a tangential altitude of 1200 km (cite: teanby_2013)"]
+  - parameter: Lorentzian half-width Γ = 0.158 cm^-1 atm^-1; temperature exponent α = 0.60; average K=0 and K=5, J=14-13 coefficients [Radiative Transfer Modeling: "we assumed an average value for the Lorentzian half-width using the $K=0$ & $K=5$, $J=14-13$ coefficients ($\Gamma$ = 0.158 cm$^{-1}$ atm$^{-1}$) and temperature exponent ($\alpha$ = 0.60)."]
+  - assumption: Temperature profile from contemporaneous ALMA CO [Radiative Transfer Modeling: "The atmospheric temperature vertical profile was obtained by modeling the ALMA CO data obtained contemporaneously with our observations (see (cite: thelen_2020) for details)."]
+  - assumption: CIA includes all combinations of N2, CH4 and H2 [Radiative Transfer Modeling: "The collision-induced absorption (CIA) parameters used include all combinations of N$_2$, CH$_4$, and H$_2$"]
+- step 6: Retrieve the major-isotopologue profile
+  - method: Scale the observed continuum and continuously retrieve CH3CN abundance at each altitude. [Radiative Transfer Modeling: "The observed ALMA flux spectra were scaled by a constant factor ($\approx1.02$) to produce a match between the modeled and observed continuum levels."] [Radiative Transfer Modeling: "The CH$_3$CN major isotopologue profile was continuously retrieved at each altitude to obtain an optimized fit to the observed spectral line profiles."]
+  - software: NEMESIS
+  - parameter: Flux scaling ≈1.02 [Radiative Transfer Modeling: "The observed ALMA flux spectra were scaled by a constant factor ($\approx1.02$)"]
+  - parameter: Correlation length 3.0 atmospheric scale heights [Radiative Transfer Modeling: "A correlation length of 3.0 atmospheric scale heights was used to internally smooth the optimized vertical profiles."]
+  - assumption: Marten disk-averaged a priori to 500 km, supplemented by Loison model to 1200 km; constant 100% a priori error [Radiative Transfer Modeling: "we used an a priori profile based on the disk-averaged measurements from (cite: marten_2002) up to 500 km, supplemented by data from the model of (cite: loison_2015) up to 1200 km."] [Radiative Transfer Modeling: "The error on this ‘a-priori’ profile was set to a constant value of 100%."]
+  - fitting: Iterative cost-function minimization combining goodness of fit χ² and a-priori errors [Radiative Transfer Modeling: "NEMESIS applies an iterative minimization technique to the cost function (including the goodness of fit, $\chi^2$, combined with the a-priori errors)"]
+  - validation: Fits reproduce continuum, cores and wings within noise; alternative a priori profiles produce consistent retrievals in the sensitive altitude range. [Results: "Within the noise, our spectral models provide an excellent fit to the observed Titan continuum, line cores and line wings."] [Sensitivity of Retrievals to A Priori A…: "we find that the retrieved CH$_3$CN abundance does not have any significant dependence on the choice of a priori."]
+- step 7: Retrieve isotopic ratios
+  - method: Fit each minor isotopologue by uniformly scaling the best-fitting major-isotopologue abundance profile. [Radiative Transfer Modeling: "we used the best-fitting CH$_3$CN main isotopologue abundance profile scaled by a uniform factor, which was varied to obtain the best fit for those species."]
+  - software: NEMESIS
+  - assumption: Minor isotopologues share the major-isotopologue vertical profile shape. [Radiative Transfer Modeling: "we used the best-fitting CH$_3$CN main isotopologue abundance profile scaled by a uniform factor"]
+  - fitting: Vary a uniform scaling factor for each minor species to obtain the best fit [Radiative Transfer Modeling: "scaled by a uniform factor, which was varied to obtain the best fit for those species."]
+  - validation: Test temperature-profile uncertainties of 1–5 K; additional isotopic-ratio error <0.8%. [Radiative Transfer Modeling: "uncertainties in the atmospheric temperature profile (cite: thelen_2020), which vary between 1–5 K as a function of altitude."] [Radiative Transfer Modeling: "these uncertainties amount only to an additional error of $< 0.8\%$ on the retrieved isotopic ratios."]
+- step 8: Determine altitude sensitivity and test vertical variation
+  - method: Calculate contribution-function weighted emission altitudes and averaging kernels; attempt a continuously variable CH3C(15)N retrieval. [Results: "We then used the contribution functions from our best-fitting radiative transfer models to calculate weighted mean emission altitudes"] [Averaging Kernels: "The averaging kernels for an atmospheric abundance retrieval are the product of the gain matrix ($G$) and Jacobian matrix ($J$)"]
+  - software: NEMESIS
+  - fitting: Continuously variable CH3C(15)N abundance profile [Continuous $^{14}$N/$^{15}$N Profile Re…: "a continuously variable abundance profile retrieval for CH$_3$C$^{15}$N"]
+  - validation: Use contribution functions, averaging kernels and retrieval error envelopes; SNR 16 is insufficient for useful altitude-dependent isotope constraints. [Averaging Kernels: "The averaging kernels can be used in tandem with the contribution functions to gain a better understanding of the origin of the spectral line emission and the sensitivity of the model."] [Results: "the spectroscopic signal-to-noise ratio of 16 was found to be insufficient to provide useful constraints on the $^{14}$N/$^{15}$N ratio as a function of altitude"]
+- step 9: Compare isotope reservoirs and chemical models
+  - method: Compare retrieved ratios with Titan and Solar System measurements and with photochemical nitrogen-isotope profiles at the observed sensitivity altitude. [Discussion: "We now compare our isotopic ratios to those previously obtained in the Titan literature."] [Discussion: "We now compare our derived scaled nitrogen isotopic ratio with the models of (cite: vuitton_2019) and (cite: dobri_loison_2018)"]
+  - parameter: Peak observed altitudinal sensitivity ≈230 km [Discussion: "At the value of our peak observed altitudinal sensitivity ($\approx$230 km)"]
+  - assumption: N2 isotopic ratio represents Titan’s intrinsic isotopic composition. [Discussion: "By far the dominant form of nitrogen in Titan’s atmosphere is N$_2$, so we take the $^{14}$N/$^{15}$N ratio in N$_2$ to be representative of Titan’s intrinsic isotopic composition."]
+  - validation: Compare measurement uncertainties; both carbon ratios agree within 1σ with the literature Titan mean. [Discussion: "to our derived $^{12}$C/$^{13}$C ratios in CH$_3$CN of 89.2 $\pm$ 7.0 and 91.2 $\pm$ 6.0, we find that they are all consistently within a 1-$\sigma$ error margin."]
+- result: CH3CN/CH3C(15)N isotopic ratio = 68.9 ± ± 4.2 dimensionless [Results: "The CH$_3$CN/CH$_3$C$^{15}$N isotopic ratio was derived to be 68.9 $\pm$ 4.2"]
+- result: CH3CN/(13)CH3CN isotopic ratio = 89.2 ± ± 7.0 dimensionless [Results: "the CH$_3$CN/$^{13}$CH$_3$CN ratio was derived to be 89.2 $\pm$ 7.0"]
+- result: CH3CN/CH3(13)CN isotopic ratio = 91.2 ± ± 6.0 dimensionless [Results: "the CH$_3$CN/CH$_3$$^{13}$CN ratio was derived to be 91.2 $\pm$ 6.0."]
+- result: Weighted mean emission altitude for (13)CH3CN and CH3C(15)N = ~230 ± not stated km [Results: "These were determined to be $\sim$230 km for $^{13}$CH$_3$CN and CH$_3$C$^{15}$N (and $\sim$246 km for the major isotopologue)."]
+- result: Weighted mean emission altitude for major CH3CN isotopologue = ~246 ± not stated km [Results: "These were determined to be $\sim$230 km for $^{13}$CH$_3$CN and CH$_3$C$^{15}$N (and $\sim$246 km for the major isotopologue)."]
+- result: Altitude range of greatest abundance sensitivity and highest altitudinal resolution = ~150–300 ± not stated km [Averaging Kernels: "the region of the atmosphere to which our retrieved abundances are most sensitive, and with highest altitudinal resolution — *i.e.* in the range $\sim150$–300 km."]
+- result: Retrieved CH3CN abundance maximum altitude = around 250 ± not stated km [Results: "with the notable exception of a maximum around 250 km"]
+- result: Additional isotopic-ratio error from temperature-profile uncertainty = < 0.8 ± not stated % [Radiative Transfer Modeling: "these uncertainties amount only to an additional error of $< 0.8\%$ on the retrieved isotopic ratios."]
+- result: Laboratory frequency agreement with CDMS predictions = 16 ± not stated kHz [CH$_3$CN spectroscopic parameters and p…: "CDMS predictions and currently measured frequencies for 20 different transitions were in agreement to a root mean square deviation of 16 kHz"]
+- limitation (authors): Disk-averaged spectra cannot locate the abundance peak in latitude. [Results: "It therefore cannot be determined where exactly (latitudinally) in Titan’s atmosphere this peak originates."]
+- limitation (authors): Physical origin of the relatively narrow ~250 km abundance feature is uncertain. [Results: "there may be some doubt as to the physical origin of this relatively narrow feature"]
+- limitation (authors): Minor-isotopologue SNR is insufficient to constrain altitude-dependent nitrogen isotope ratios. [Results: "the spectroscopic signal-to-noise ratio of 16 was found to be insufficient to provide useful constraints on the $^{14}$N/$^{15}$N ratio as a function of altitude"]
+- not stated (card): Exact execution-block and spectral-window selections, channel flags and spectral averaging.; Bandpass smoothing kernel and width.; tclean weighting/robust value, deconvolver, cell size, image size, masks, stopping threshold and primary-beam treatment.; Combination procedure for execution blocks and configurations.; Exact continuum flux scaling factor for each fitted spectrum; only ≈1.02 is suppli…
+
+### 2015ApJ...800L..14C: Ethyl Cyanide On Titan: Spectroscopic Detection and Mapping Using Alma (2015; solar_system, astrochemistry; archival_reuse)
+- question: Is gas-phase ethyl cyanide (C2H5CN) present in Titan's atmosphere, and what are its vertical and spatial distributions compared with HC3N, CH3CN and CH3CCH?
+- step 1: calibrate, subtract continuum and image
+  - method: Archive-calibrated data flux-scaled to Titan model, uvcontsub, clean per channel, Doppler-shift to Titan rest frame [Observations: "The images were transformed from equatorial coordinates to (projected) linear distances with respect to the center of Titan"]
+  - software: CASA
+- step 4: retrieve C2H5CN vertical profile
+  - method: Line-by-line radiative transfer least-squares fits of step and gradient abundance profiles to 223.9-224.2 GHz lines [Results: "least-squares fits to the observed spectra were performed using C$_2$H$_5$CN abundance profiles with constant mixing ratio above a specified cutoff altitude $z_c$ and zero abundance below."]
+  - software: NEMESIS
+  - parameter: step z_c 100-400 km; gradient model reference altitude 292 km, slope as fraction of scale height [Results: "The free parameters in this model were the abundance at a reference altitude $z_r = 292$ km"]
+  - assumption: Profiles do not vary with latitude/longitude; Lorentzian half-width 0.075 cm-1 atm-1 at 296 K, exponent 0.50; model atmosphere to 1000 km [Results: "The Lorentzian broadening half-width at 296 K was assumed to be 0.075 cm$^{-1}$ atm$^{-1}$, with a temperature-dependence exponent of 0.50."]
+  - fitting: least-squares, reduced chi^2 [Results: "Initially, least-squares fits to the observed spectra were performed using C$_2$H$_5$CN abundance profiles with constant mixing ratio above a specified cutoff altitude $z_c$ and zero abundance below."]
+  - validation: Reduced chi^2 values; fit quality of 300 and 400 km models [Results: "The quality of these fits confirms that our C$_2$H$_5$CN line assignments are secure."]
+- result: C2H5CN abundance at 292 km (gradient model) = 1.3 ± 0.4 ppb [Results: "The best-fitting abundance at $z_r$ was found to be $1.3 \pm 0.4$ ppb"]
+- result: fractional scale height f_H = 4.6 ± 1.1 dimensionless [Results: "with a retrieved fractional scale height of $f_H = 4.6 \pm 1.1$"]
+- result: Vertical column density, gradient model = 3.6e14 ± not stated cm^-2 [Table 2: "Gradient | 1.30 | 292 | 0.97 | $3.6\times10^{14}$"]
+- result: Column density range for good-fit models = (1-5)e14 ± not stated cm^-2 [Results: "The models that fit the data well have values in the range $(1-5)\times10^{14}$ cm$^{-2}$."]
+- not stated (card): uvcontsub line-free channels and fit order; clean mask and iterations; Titan-frame velocity handling details; Specific aerosol and isotopologue abundance values; Noise estimation for fit uncertainties and the 3 sigma line detection; Exact lines summed for the C2H5CN map; Fitting algorithm details within NEMESIS
+
+### 2020AJ....160..205N: Detection of Cyclopropenylidene on Titan with ALMA (2020; solar_system, astrochemistry; observational_alma_primary)
+- question: Can cyclopropenylidene (c-C3H2), pyridine and pyrimidine be detected in Titan's atmosphere with ALMA, and what are their abundances or upper limits?
+- step 2: Retrieve temperature profile from CO lines
+  - method: NEMESIS fit of CO 2-1 (2016) and 3-2 (2017) with continuous temperature variation 100–500 km, CO fixed at 49.6 ppm [3.1: "allowed continuous variation of the temperature profile between 100–500 km"]
+  - software: NEMESIS
+  - parameter: a priori temperature error 5 K in all layers (0–1200 km) [3.1: "Temperature a priori errors were set to 5 K in all atmospheric layers (0–1200 km)"]
+  - fitting: Bayesian optimal estimation with Marquardt-Levenberg minimization; convergence when solution changes <0.1% [3. MODELING: "Marquart-Levenberg minimization is used to descend a downhill trajectory of the cost function until satisfactory convergence is reached (solution changing by < 0.1%)"]
+- step 3: Fit known nitriles and search for new species
+  - method: Step-function profiles for C2H5CN (250 km) and C2H3CN (300 km); add trial species and test fit improvement; c-C3H2 introduced with step at 300 km or higher [3.2: "we found a significant improvement to the model fit after introducing the gas c-C 3 H 2"]
+  - software: NEMESIS
+  - validation: Delta chi-square curve with 350 km step model [3.2: "we calculated a ∆ χ [2] curve for different amounts of the gas in a forward model, using a step function at 350 km"]
+- step 4: Retrieve c-C3H2 abundances
+  - method: Step models at 300/350/400 km and four-parameter gradient model with a priori at 1100 km and 300 km [4.2: "a four-parameter gradient model"]
+  - software: NEMESIS
+  - parameter: p_u=(5.0±2.0)e-11 bar, q_u=(3.4±1.0)e-6, p_l=(1.0±0.5)e-4 bar, q_l=(2.0±1.9)e-9 [4.2: "p l = (1 . 0 ± 0 . 5) × 10 − 4 bar, q l = (2 . 0 ± 1 . 9) × 10 − 9"]
+  - fitting: Optimal estimation; errors per Irwin et al. 2008 and Nixon et al. 2008, with factor 1.291 for Hanning apodization [4.1: "the final error bars are increased by a factor √ 2 / 1 . 095 = 1 . 291"]
+  - validation: Delta chi-square significance [3.2. Spectral windows 1 and 6: Discover…: "The combined significance of the detection is 6.3"]
+- step 5: Upper limits for pyridine and pyrimidine
+  - method: Delta chi-square at +1, +4, +9 for 1,2,3 sigma using constant profile above 300 km [4.3: "the 1, 2 and 3- σ upper limits are indicated at the trial abundances where the ∆ χ [2] reaches +1, +4, and +9 respectively"]
+  - software: NEMESIS
+- result: c-C3H2 VMR, 350 km step, 2016 (Band 6) = 0.50 ± ±0.14 ppb [4.2: "we obtained a VMR of 0.50 ± 0.14 ppb and column abundance of 3.5 × 10 [12] cm − 2 in 2016"]
+- result: c-C3H2 VMR, 350 km step, 2017 (Band 7) = 0.28 ± ±0.08 ppb [4.2: "somewhat lower VMR (0.28 ± 0.08)"]
+- result: Mean c-C3H2 VMR (350 km step) = 0.33 ± ±0.07 ppb [4.2: "a mean value of 0.33 ± 0.07 ppb for the 350 km step profile"]
+- result: Detection significance combined = 6.3 ± not stated sigma [3.2: "The combined significance of the detection is 6.3 σ ."]
+- result: pyridine 2-sigma upper limit = 1.153 ± not stated ppb [Table 5: "c-C 5 H 5 N 0.020 263331 0.29 1.046 1.153 1.356"]
+- result: pyrimidine 2-sigma upper limit = 0.854 ± not stated ppb [Table 5: "c-C 4 H 4 N 2 0.020 262143 0.34 0.663 0.854 1.042"]
+- result: C2H5CN abundance, 250 km step = 5.040 ± ±0.095 ppb [Table 6: "C 2 H 5 CN 250 km step 1.002 5.040 ± 0.095 2.2378 × 10 [14]"]
+- limitation (authors): Little constraint on vertical profile shape; results weakly sensitive to step altitude [5.1: "we have very little constraint on this at present"]
+- not stated (card): Mapping of CASA pipeline processing for 2016.A.00014.S (in Cordiner et al. 2019); Noise estimates σν used in chi-square; Fixed temperature profile values and NEMESIS input files; Line-free channels and continuum treatment; Flux scale uncertainty; Exact time/epoch-dependent Titan ephemeris details; Which Spw/windows of 2015.1.00423.S used for the 2016 temperature retrieval
+
+### 2016AJ....152...42M: ALMA Observations of HCN and Its Isotopologues on Titan (2016; solar_system; archival_reuse)
+- question: What are the abundances and isotopic ratios (12C/13C, 14N/15N, D/H) of HCN isotopologues in Titan's atmosphere, and can new isotopologues be detected, using archival ALMA calibration data?
+- step 1: Extract disk-averaged spectra
+  - method: Integrate each channel within a circular region covering pixels above 3 sigma; Doppler correct to Titan rest frame; convert to radiance using Horizons distance and velocity [Observations and Data Processing: "A disk-averaged spectrum was extracted from each data cube by integrating each channel within a circular region around the center of Titan"]
+  - software: CASA
+  - assumption: Seasonal changes negligible over the period [Observations and Data Processing: "we assume in our analysis that seasonal temperature and gas abundance changes are negligible"]
+- step 2: Retrieve HCN vertical abundance profile
+  - method: NEMESIS iterative chi-square minimization on the HCN (1-0) line with limb-brightening weighted sum, fixed temperature profile [Spectral Line Modeling and Results: "NEMESIS uses an iterative $\chi ^2$ minimization technique that relies on both the level of deviation from the a priori setup and the quality of the fit to the data."]
+  - software: NEMESIS
+  - parameter: A priori error 200%, smoothing three scale heights; 72 averaging points [Spectral Line Modeling and Results: "The error on the a priori profile is taken to be 200% with a smoothing parameter of three scale heights."] [Spectral Line Modeling and Results: "Seventy-two averaging points are sufficient to accurately model the spectrum for the strongest observed lines."]
+  - assumption: Isothermal 160 K above 500 km; relax to Huygens below 80 km; HCN saturation below ~80 km [Spectral Line Modeling and Results: "above 500 km an isothermal 160 K atmosphere is assumed in absence of firm temperature constraints"]
+  - fitting: NEMESIS optimal estimation, chi-square [Spectral Line Modeling and Results: "NEMESIS uses an iterative $\chi ^2$ minimization technique that relies on both the level of deviation from the a priori setup and the quality of the fit to the data."]
+  - validation: Perturbed a priori profile by two orders of magnitude in each direction; similar solution recovered [Spectral Line Modeling and Results: "we found that in all cases NEMESIS derived a vertical profile similar to the original best-fit solution"]
+- step 3: Derive isotopic ratios
+  - method: Retrieve scaling factor of the HCN profile shape for each isotopologue line; ratio equals the scale factor [Spectral Line Modeling and Results: "The vertical profiles for the isotopologues were constrained to have the same shape as the vertical profile derived for HCN."]
+  - software: NEMESIS
+  - parameter: Line strength uncertainty 2%; gamma and tau errors <10% [Spectral Line Modeling and Results: "We conservatively assume an uncertainty in each of the intrinsic line strengths of 2% (cite: maki95)."]
+  - assumption: Constant isotopic ratio with altitude; same gamma and tau for all isotopologues [Spectral Line Modeling and Results: "The assumption that $\gamma$ and $\tau$ have the same value for every isotopologue is also imperfect"]
+  - validation: Errors added in quadrature; DCN checked with 200 and 400 km step interloper models [Spectral Line Modeling and Results: "We assume all of these errors are uncorrelated and add them in quadrature to our final error estimate."]
+- result: 12C/13C in HCN = 89.8 ± 2.8 dimensionless [abstract: "$^{12}$C/$^{13}$C = 89.8 $\pm$ 2.8"]
+- result: 14N/15N in HCN = 72.3 ± 2.2 dimensionless [abstract: "$^{14}$N/$^{15}$N = 72.3 $\pm$ 2.2"]
+- result: D/H in HCN = 2.5e-4 ± 0.2e-4 dimensionless [abstract: "D/H = (2.5 $\pm$ 0.2)$\times$10$^{-4}$"]
+- result: HCN/H13C15N = 5800 ± 270 dimensionless [abstract: "HCN/H$^{13}$C$^{15}$N = 5800 $\pm$ 270"]
+- limitation (authors): Unquantified systematic errors may remain [Spectral Line Modeling and Results: "Unquantified systematic errors in the derived vertical profile and isotopic ratios may remain."]
+- not stated (card): Exact ALMA execution blocks/scheduling blocks per line; Extraction region radius per dataset; Line-free window used for continuum rescaling; A priori HCN profile; Mask and clean threshold/iterations, cell and image size; Whether the continuum was subtracted; NEMESIS version and configuration files
+
+### 2024PSJ.....5..125T: Observations of Titan's Stratosphere during Northern Summer: Temperatures, CH<SUB>3</SUB>CN and CH<SUB>3</SUB>D Abundances (2024; solar_system; observational_alma_primary)
+- question: How do Titan's stratospheric temperatures, CH3CN and CH3D (and inferred CH4) abundances vary with latitude in northern summer/early fall (2022), compared with earlier epochs?
+- step 1: Self-calibrate and image
+  - method: Phase-only self-cal on combined continuum image with disk starting model; apply solutions to line data; tclean to make cube [2 Observations: "Once the continuum phase distribution was on order $\pm10\%$, we applied these phase solutions to the full calibrated spectral line data and performed further image deconvolution"]
+  - software: CASA
+  - parameter: Hogbom, natural weighting, 0.01 arcsec pixels [2 Observations: "the Högbom algorithm, natural antenna weighting, and $0.01''$ square pixels"]
+  - assumption: Flat or limb-darkened disk starting model at Titan's Band 9 brightness temperature [2 Observations: "Using a starting model of a flat or limb-darkened disk at the appropriate brightness temperature of Titan’s Band 9 continuum"]
+- step 3: Determine flux scaling factors
+  - method: NEMESIS forward models of continuum-only spectral regions to derive multiplicative scaling per spectral window [3 Radiative Transfer Modeling: "NEMESIS forward models were generated for spectral regions containing only continuum emission (formed from the above absorption pairs and thermal radiation) to determine constant, multiplicative scaling factors"]
+  - software: NEMESIS
+  - parameter: 30 line-of-sight emission angles per extraction; Doppler wavenumber offsets ~1e-5 cm-1 [3 Radiative Transfer Modeling: "30 line-of-sight emission angles were calculated for each individual spectrum extraction location"]
+- step 4: Retrieve temperature profiles
+  - method: NEMESIS optimal-estimation retrieval of temperature vs altitude from CO 6-5 per latitude bin [3 Radiative Transfer Modeling: "The temperature profiles between the stratosphere and mesosphere were then retrieved using the CO ($J=6$–5) emission line."]
+  - software: NEMESIS
+  - parameter: Correlation length 1.5 scale heights; profiles varied above ~100 km up to 1200 km [3 Radiative Transfer Modeling: "The correlation length was taken to be 1.5 scale heights, and though the profiles were allowed to vary up to 1200 km"]
+  - assumption: CO abundance ~50 ppm held constant; tropospheric temperatures fixed to Cassini RS [3 Radiative Transfer Modeling: "a nominal CO abundance of $\sim50$ parts-per-million (ppm; $1\times10^{-6}$), as determined by a number of studies"]
+  - fitting: Levenberg-Marquardt minimizing cost function / reduced chi2 [3 Radiative Transfer Modeling: "Atmospheric temperatures were varied iteratively with the NEMESIS retrieval algorithm (based on the Levenberg-Marquardt principle"]
+  - validation: Residual spectra inspected [3 Radiative Transfer Modeling: "Residual spectra show that the spectral lines are fit well using the methods described above."]
+- step 5: Retrieve CH3CN vertical profiles
+  - method: NEMESIS retrieval using strongest 5 CH3CN J=38-37 transitions with fixed temperatures [3 Radiative Transfer Modeling: "The strongest 5 spectral transitions of the CH$_3$CN ($J=38$–37) band were used to retrieve the vertical profile without interference from the nearby CH$_3$D ($J=3$–2) triplet"]
+  - software: NEMESIS
+  - assumption: A priori from Marten 2002 and Loison 2015 profiles [3 Radiative Transfer Modeling: "starting with a combination of abundance profiles from observations by (cite: marten_02) and photochemical predictions by (cite: loison_15) above $\sim400$ km"]
+- step 6: Retrieve CH3D abundance and convert to CH4
+  - method: Scale a priori CH3D profile, fit East and West hemisphere spectra simultaneously; convert to CH4 via D/H [3 Radiative Transfer Modeling: "we performed retrievals on spectra from the East and West hemispheres simultaneously to better constrain the CH$_3$D abundance."]
+  - software: NEMESIS
+  - assumption: D/H = 1.2e-4 (range 1.0-1.4e-4); a priori CH4 = 1.48% [4.3 CH3D Abundances: "which range from $\sim(1.0-1.4)\times10^{-4}$ as derived and discussed in (cite: nixon_12) and (cite: thelen_19b)"]
+  - fitting: Simple scaling of input profile [3 Radiative Transfer Modeling: "These models were parameterized as a simple scaling of the input profile"]
+  - validation: CH3CN lines nearby fit well [3 Radiative Transfer Modeling: "Nearby CH$_3$CN lines were included in the model, and were fit well by the input profiles from the previous retrievals."]
+- result: CH3D abundance range = 4-8 ± not stated ppm [4.3 CH3D Abundances: "The range of measurements, $\sim4-8$ ppm"]
+- result: Weighted average CH3D = 5.54e-6 ± 0.10e-6 dimensionless (mixing ratio) [4.3 CH3D Abundances: "the weighted average of all latitudes is $(5.54\pm0.10)\times10^{-6}$"]
+- result: Global weighted average CH4 = 1.15 ± ±0.02 (stat); +0.21/-0.15 including D/H range % [4.3 CH3D Abundances: "The converted weighted average CH$_4$ abundance = $1.15\pm0.02\%$"]
+- result: Highest southern stratopause temperature = 190 K at 320-350 km (>77S) ± not stated K [4.1 Temperature Profiles: "exhibits the highest and warmest stratopause at 190 K between 320–350 km"]
+- result: CH3CN enhancement 77S vs equator = ~1.5 ± not stated dimensionless [4.2 CH3CN Abundances: "We measure an enhancement factor of $\sim1.5$ when comparing the profiles retrieved from spectra at $\sim77^{\circ}$S"]
+- result: Northern CH3CN decrease since 2015 = ~16 ± not stated factor [4.2 CH3CN Abundances: "we see a decrease in northern abundances by a factor of $\sim16$ over roughly a Titan season (7 yr)"]
+- result: Flux scaling factors = 0.85-1.15 ± not stated dimensionless [3 Radiative Transfer Modeling: "The spectral scaling factors were found to be between 0.85–1.15 for each spectral window."]
+- limitation (authors): Low S/N of CH3D prevents vertical profile; CH4 inference relies on prior D/H; beam smooths latitudinal structure [4.3 CH3D Abundances: "Currently, the relatively low S/N CH$_3$D emission also prohibits the retrieval of a vertical profile"]
+- not stated (card): Self-calibration solution intervals and number of iterations; Flux and bandpass calibrator names; Number of clean iterations/threshold and masks; Which channels were flagged as line-free for continuum; Exact spectral extraction regions' coordinates and latitude-bin centers; NEMESIS version, a priori covariance/errors, and temperature a priori errors; How the Titan limb-darkened starting model tem…
+
+### 2023PSJ.....4..206R: ALMA Observations of the DART Impact: Characterizing the Ejecta at Submillimeter Wavelengths (2023; solar_system; observational_alma_primary)
+- question: Measure Didymos-Dimorphos' millimeter spectral emissivity pre-impact, then isolate the DART impact ejecta post-impact to derive dust mass and gas-phase upper limits
+- step 3: Fit the pre-impact point-source flux density
+  - method: uvmodelfit point-source model fit to visibilities, compared with image flux [12 m Array Pre-Impact Observations: "Using the CASA `uvmodelfit` routine with a point-source model returns a best-fit flux density of 1.79 $\pm$ 0.18 mJy and a reduced $\chi^2$ of 1.31"]
+  - software: CASA uvmodelfit
+  - assumption: Asteroids unresolved (point source) [12 m Array Pre-Impact Observations: "The image is consistent with an unresolved point source"]
+  - fitting: Point-source model; reduced chi2 = 1.31; sampler and priors not stated [12 m Array Pre-Impact Observations: "Using the CASA `uvmodelfit` routine with a point-source model returns a best-fit flux density of 1.79 $\pm$ 0.18 mJy and a reduced $\chi^2$ of 1.31"]
+  - validation: Fit flux consistent with image flux density 1.73 +/- 0.18 mJy [12 m Array Pre-Impact Observations: "consistent with the flux density in the image (1.73 $\pm$ 0.18 mJy) and indicative of a good fit to the visibilities as a point-source."]
+- step 5: Predict asteroid flux on the impact date
+  - method: Repeat NEATM at impact-date geometry; reduce flux for secondary eclipse [Didymos-Dimorphos' Spectral Emissivity: "We predict a flux of 2.74 mJy attributable to the asteroids themselves when neither are in eclipse"]
+  - software: NEATM (model)
+  - parameter: rH = 1.045 au, Delta = 0.075 au, Tss = 330 K; eclipse reduction 0.049 mag gives 2.60 mJy [Didymos-Dimorphos' Spectral Emissivity: "where we find $T_{ss}$ = 330 K"]
+  - assumption: Emissivity from pre-impact measurement applies post-impact [Modeling and Interpretation: "Once their spectral emissivity is known, the flux attributable to Didymos-Dimorphos on the impact date can be calculated"]
+- step 7: Subtract asteroid flux to isolate ejecta flux
+  - method: Subtract predicted asteroid flux (2.74 mJy, or 2.60 mJy in eclipse) from each execution's flux [Analysis of the Ejecta: "We calculated the ejecta flux density for each execution by subtracting our predicted flux density for Didymos-Dimorphos, using the appropriate value depending on whether the asteroids were in eclipse."]
+  - parameter: Extra 10% uncertainty added [Analysis of the Ejecta: "We incorporated an additional 10% uncertainty into our ejecta flux densities to account for systematic uncertainties in our prediction of Didymos-Dimorphos’ post-impact flux."]
+- result: Pre-impact point-source flux density (uvmodelfit, 343.5 GHz) = 1.79 ± 0.18 mJy [12 m Array Pre-Impact Observations: "returns a best-fit flux density of 1.79 $\pm$ 0.18 mJy and a reduced $\chi^2$ of 1.31"]
+- result: Reduced chi-squared of point-source fit = 1.31 ± not stated dimensionless [12 m Array Pre-Impact Observations: "returns a best-fit flux density of 1.79 $\pm$ 0.18 mJy and a reduced $\chi^2$ of 1.31"]
+- result: Pre-impact image flux density = 1.73 ± 0.18 mJy [12 m Array Pre-Impact Observations: "consistent with the flux density in the image (1.73 $\pm$ 0.18 mJy)"]
+- result: Subsolar temperature on impact date = 330 ± not stated K [Didymos-Dimorphos' Spectral Emissivity: "where we find $T_{ss}$ = 330 K"]
+- result: Predicted asteroid flux, no eclipse = 2.74 ± not stated mJy [Didymos-Dimorphos' Spectral Emissivity: "We predict a flux of 2.74 mJy attributable to the asteroids themselves when neither are in eclipse"]
+- result: Predicted asteroid flux, secondary eclipse = 2.60 ± not stated mJy [Didymos-Dimorphos' Spectral Emissivity: "We reduced our predicted Didymos-Dimorphos flux a corresponding amount to 2.60 mJy"]
+- result: Weighted-average ejecta flux = 2.03 ± 0.22 mJy [Table 3: "2.03 $\pm$ 0.22"]
+- limitation (authors): Size distribution for meter-sized material unknown; major caveat [Calculation of the Dust Ejecta Masses: "our assumptions regarding the particle size distribution for meter-sized material are a significant caveat"]
+- limitation (authors): Effective medium theories only approximate real optical properties [Calculation of the Dust Ejecta Masses: "We note that EMT theories only provide approximations to the real optical properties of a substance"]
+- not stated (card): Image cell size and image size for continuum and line imaging; tclean niter, thresholds and any mask edits beyond the 'standard pipeline' auto-mask parameters; Which spectral windows/channels were used for the continuum and whether any continuum subtraction was applied to line cubes; Line-cube channel width and velocity grid used for the 3 sigma upper limits, and how the noise was measured; Exact…
+
+### 2018Icar..307..380T: Spatial variations in Titan's atmospheric temperature: ALMA and Cassini comparisons from 2012 to 2015 (2018; solar_system; archival_reuse)
+- question: How does Titan's atmospheric temperature vary spatially and seasonally from 2012-2015, as retrieved from CO emission lines in ALMA flux-calibration data, and how does it compare with Cassini CIRS and radio occultation results?
+- step 1: Calibrate and image Titan data
+  - method: Modified JAO scripts in CASA, clean with Högbom, natural weighting, Doppler shift to Titan rest frame [Observations: "Image spectral coordinates were Doppler-shifted to Titan’s rest frame using Topocentric radial velocities from JPL Horizons ephemerides."]
+  - software: CASA
+  - parameter: pixel 0.03'', threshold 2x RMS [Observations: "The image pixel sizes were set to 0.03$''\times$0.03$''$."]
+- step 2: Extract disk-averaged and regional spectra
+  - method: Extract flux over solid disk plus atmosphere plus 2-sigma_PSF; three regions North/Center/South with minimal beam overlap [Observations: "We chose to model spectra from 3 regions (hereafter referred to as ‘North’, ‘Center’, and ‘South’) chosen to be as independent as possible"]
+  - parameter: Titan radius 2575 km plus 1200 km atmosphere [Observations: "extracting flux over Titan’s solid disk (2575 km), plus its extended atmosphere (1200 km)"]
+- step 4: Retrieve disk-averaged temperature profiles
+  - method: NEMESIS line-by-line optimal estimation with 37-44 field-of-view averaging points; a priori from CIRS/Huygens, isothermal 160 K above 600 km [Spectral Modeling and Results: "Upper atmospheric temperatures (\>600 km) were held as isothermal at 160 K."]
+  - software: NEMESIS
+  - parameter: 5 K a priori errors, correlation length 1.5 scale heights [Spectral Modeling and Results: "with 5 K errors set on the *a priori* temperature profile; combined with a correlation length of 1.5 scale heights"]
+  - assumption: Constant CO abundance of 49.6 ppm [Spectral Modeling and Results: "with a constant CO abundance of 49.6 ppm as found by (cite: serigano_16)"]
+  - fitting: Optimal estimation (NEMESIS) [Spectral Modeling and Results: "We retrieve vertical temperature profiles by allowing NEMESIS to vary temperature measurements continuously throughout the atmosphere"]
+  - validation: Comparison with CIRS and radio occultation [Cassini Comparisons: "To validate our model of Titan’s atmosphere and the retrieved temperature profiles"]
+- step 5: Retrieve spatially resolved profiles
+  - method: Use disk-averaged profiles as a priori; troposphere a priori from Cassini radio/HASI convolved with ALMA beam (2014, 2015) [Spectral Modeling and Results: "We proceeded to use disk-averaged measurements as *a priori* temperature profiles to model spatially resolved spectra"]
+  - software: NEMESIS
+- result: Stratopause (~320 km) warming in northern latitudes 2012-2015 = 5 ± not stated K [abstract: "We measure the stratopause (320 km) to increase in temperature by 5 K in northern latitudes from 2012–2015"]
+- result: Latitudinal temperature variation = up to 15 ± not stated K [abstract: "temperature profiles are found to consistently vary with latitude in all three years by up to 15 K"]
+- result: Largest temporal variation at ~120 km, north, 2012-2014 = 7 ± not stated K [Spatial and Temporal Variations: "We observe the largest temporal temperature variation of all profiles presented here, 7 K, from 2012–2014 at $\sim$ 120 km"]
+- limitation (authors): Short integration times and large beams limit temporal variation significance; latitudinal structure is dampened by beam weighting [Conclusions: "limited by the short integration times of flux calibration datasets and large beam sizes"]
+- not stated (card): Line-free/continuum channel ranges used for scaling; Exact extraction regions (positions, sizes) of North/Center/South beam footprints; Scaling factor values per dataset; Targeted ALMA data member IDs / execution blocks; NEMESIS version and retrieval configuration files; Which a priori profiles were used exactly for each year; Whether ALMA flux scale adopted in archive pipeline was reprocessed pe…
+
+### 2026A&A...707A.240C: Observations of the temporal evolution of Saturn's stratosphere following the Great Storm of 2010─2011: II. Latitudinal distribution of CO and stratospheric wi… (2026; solar_system; observational_alma_primary)
+- question: Assess whether Saturn's 2010-2011 stratospheric beacon perturbed the CO distribution and measure how the vortex perturbed the stratospheric wind regime.
+- step 3: Model radiative transfer and derive CO meridional distribution
+  - method: Use a 3D line-by-line radiative transfer model with Cassini/CIRS thermal fields and scale a 220-year-old comet impact vertical profile to fit limb spectra and derive CO mole fraction at 0.3 mbar. [Background composition and CO distribut…: "we choose to adopt the physical profile of (cite: Cavalie2010) derived from atmospheric transport following a comet impact occurring $\sim$220 years before the observations, and to scale it to fit the spectra at each limb position"] [Radiative transfer model: "We use the line-by-line radiative transfer model of (cite: Cavalie2019), which accounts for the 3D ellipsoidal shape of Saturn."]
+  - parameter: N=30 spectral points for SMA, N=100 for ALMA; selection threshold chi^2/N < 9 (and < 4) [Prestorm meridional distribution: "using the pointings for which the best fit for a given pointing on the limb satisfies $\chi^2/N$$<$9, where $N$ is the number of spectral data points used for the $\chi^2$ computation"] [Footnote 3: "For SMA data, $N$ is taken as 30, so that $\chi^2$ is computed over $\sim$25 MHz. For ALMA data, $N$ is taken as 100, because the spectral resolution is about four times better."]
+  - assumption: Tropospheric CO (1.2 ppb) is neglected; temperatures expanded isothermally upward of 0.2 mbar [Thermal fields: "Similarly to (cite: Lefour2025), we expanded the temperatures isothermally upward of the 0.2 mbar level"] [Background composition and CO distribut…: "For the CO vertical profile, we neglect any tropospheric CO (cite: Fouchet2017; Cavalie2024) in our calculations, because the tropospheric abundance of 1.2 ppb only produces a negligible and very broad absorption"]
+  - fitting: Chi-square minimization rescaling the vertical profile [Prestorm meridional distribution: "using the pointings for which the best fit for a given pointing on the limb satisfies $\chi^2/N$$<$9, where $N$ is the number of spectral data points used for the $\chi^2$ computation"]
+  - validation: Tested stricter chi^2/N < 4 criterion and compared eastern and western limbs [CO meridional distribution in January 2…: "When using a more restrictive criterion of $\chi^2/N$$<$4 to compute the mean CO mole fraction at 0.3 mbar, we find (1.4$\pm$0.8)$\times 10^{-7}$."]
+- result: Mean CO mole fraction at 0.3 mbar in March 2010 (SMA, chi^2/N < 9) = 1.7e-7 ± 1.2e-7 dimensionless [Prestorm meridional distribution: "We can then only derive a mean CO mole fraction at the 0.3 mbar level, i.e., where the contribution function peaks, of (1.7$\pm$1.2)$\times 10^{-7}$"]
+- result: Mean CO mole fraction at 0.3 mbar in January 2012 (ALMA, chi^2/N < 9) = 1.7e-7 ± 0.7e-7 dimensionless [Abstract: "The average CO mole fraction implied by the adopted and rescaled 220-year-old-comet-impact vertical profile is (1.7$\pm$0.7)$\times 10^{-7}$ at 0.3 mbar, i.e., where the contribution functions peak."]
+- result: Mean CO mole fraction at 0.3 mbar in January 2012 (ALMA, chi^2/N < 4) = 1.4e-7 ± 0.8e-7 dimensionless [CO meridional distribution in January 2…: "When using a more restrictive criterion of $\chi^2/N$$<$4 to compute the mean CO mole fraction at 0.3 mbar, we find (1.4$\pm$0.8)$\times 10^{-7}$."]
+- limitation (authors): Baseline ripple removal removed part of the broad wings of the CO line, limiting the quality of spectral fits and preventing retrieval of the CO vertical profile. [Conclusion: "The limited quality of the fits is most probably a result from the baseline ripple removal stage of the data reduction, which removed part of the broad wings of the CO line."]
+- limitation (authors): Lack of short spacings in ALMA interferometric visibilities filters out disk-center flux, making quantitative analysis of the equatorial CO absorption feature uncertain. [CO meridional distribution in January 2…: "The lack of short spacings in the interferometric visibilities inherently filters out a significant fraction of the total flux in the disk-center data. Consequently, the shape of the spectrum remains quite uncertain."]
+- limitation (authors): Coarse spatial resolution (~1.7" beam, PSR ~10, ~8 deg in latitude at the beacon) mixes disk and limb lines of sight, smooths wind peaks, and prevents detection of the quasiperiodic oscillation. [Wind retrieval model: "With a $\sim$1.7” beam, we have a planet spatial resolution (planet size/beam size; PSR) of about 10, when the 2018 observations of (cite: Benmahi2022) had a PSR of $\sim$40. This lower PSR results in mixing the contributions of disk and limb line-of-sights (LOS)"]
+- not stated (card): Visibility weighting scheme (e.g., Briggs robust parameter) used during ALMA imaging; Image pixel/cell size and image dimensions for ALMA and SMA cubes; Self-calibration solution intervals and number of iterations for ALMA data; Exact list of multiscale clean scales used for continuum imaging; Specific parameters of the sine wave / polynomial fits used for baseline ripple removal on each extracte…
+
+### 2021PSJ.....2..105T: Neptune's Spatial Brightness Temperature Variations from the VLA and ALMA (2021; solar_system; observational_alma_primary)
+- question: Retrieve H2S, NH3, and CH4 abundance profiles across Neptune's disk from ~1 bar to ~50 bar using spatially resolved VLA and ALMA radio maps.
+- step 1: Calibrate and image VLA observations and construct residual maps and latitude bins
+  - method: Flag, calibrate, self-calibrate against a limb-darkened disk model (Tb cos^k theta), and image VLA data in MIRIAD; subtract best-fit limb-darkened disks and divide Neptune into seven latitude bins. [2.2. Calibration and Imaging: "Flagging, calibration, and imaging were performed within MIRIAD."] [2.2. Calibration and Imaging: "The self-calibration model used was a limb-darkened disk that best matched the observations."]
+  - software: MIRIAD
+  - parameter: Seven latitude bins: 90S-66S, 66S-50S, 50S-36S, 36S-12S, 12S-4N, 4N-20N, 20N-50N [2.2. Calibration and Imaging: "We divide Neptune into seven regions where the transitions in the brightness temperature variations are apparent: 90 [◦] S − 66 [◦] S, 66 [◦] S − 50 [◦] S, 50 [◦] S − 36 [◦] S, 36 [◦] S − 12 [◦] S, 12 [◦] S − 4 [◦] N, 4 [◦] N − 20 [◦] N, 20 [◦] N − 50 [◦] N."]
+  - assumption: Equatorial and polar radii of 24,766 km and 24,323 km (Lindal 1992) [Table 1: "Resolution at sub-observer location, assuming equatorial and polar radii of 24,766 km and 24,323 km, respectively (Lindal 1992)."]
+  - assumption: Flux density calibration uncertainty of 5% in each band [2.3. Error estimation: "Uncertainties in the flux density are estimated at 5% or less in each band so we use this as a conservative estimate for the absolute error in our disk-averaged temperature data."]
+  - fitting: Minimize difference between limb-darkened model disk (Tb * cos^k(theta)) and observations at each wavelength [2.2. Calibration and Imaging: "Values for T b and k were found at each wavelength such that the difference between the limb-darkened model disk and observations were minimized."]
+  - validation: Measure random noise RMS across four sky boxes equal to Neptune's diameter and compare with residual map RMS [2.3. Error estimation: "The random noise in our VLA maps is calculated by averaging over four regions of the sky with boxes equal to the diameter of Neptune and taking the root-mean-square (RMS)."]
+- step 2: Extract disk-averaged and zonally-averaged brightness temperatures
+  - method: Sum flux density within Neptune's disk plus three model beam diameters past the limb and apply CMB correction for disk averages; average pixels within +/- 60 degrees of sub-observer longitude for latitude bands. [4.1. Disk-Averaged Profiles: "We calculate Neptune’s disk-average brightness temperature by totaling the flux density contained within Neptune’s disk plus the area extending out three times the model beam diameter past the limb."] [4.1. Disk-Averaged Profiles: "The CMB correction is applied following the procedure laid out in Appendix A of de Pater et al. (2014)."]
+  - parameter: Aperture radius for disk average: disk plus 3x model beam diameter past limb [4.1. Disk-Averaged Profiles: "We calculate Neptune’s disk-average brightness temperature by totaling the flux density contained within Neptune’s disk plus the area extending out three times the model beam diameter past the limb."]
+  - parameter: Longitude averaging window: +/- 60 degrees of sub-observer longitude [4.2. 36 ◦ S − 12 ◦ S and 90 ◦ S − 66 ◦ …: "The brightness temperatures fed into MCMC are obtained by averaging over all pixels that are within ± 60 degrees of the sub-observer longitude at each latitude band."]
+- limitation (authors): High degree of longitudinal smearing in the maps because Neptune was observed over nearly a full 16.11 hr rotation period. [2.1 Data: "Neptune throughout nearly an entire 16.11 hr rotation period (Warwick et al. 1989)."]
+- limitation (authors): Cloud opacity is ignored in the radiative transfer modeling. [3.2. Cloud Structure: "Therefore, we ignore the effect of cloud opacity in our modeling and focus instead on the effect of gas opacity."]
+- limitation (authors): Observations only extend to 9.7 cm, so NH3 below the NH4SH cloud (~50 bar) cannot be probed directly and is only weakly constrained via chemical coupling with H2S. [3.3. Condensible Species: "Therefore, while NH 3 and H 2 O are strong microwave absorbers, they are only abundant deeper than ∼ 40 bar and only impact Neptune’s radio spectrum significantly at wavelengths longer than 10 cm."]
+- not stated (card): Complete ALMA data reduction, calibration, self-calibration, and imaging parameters (inherited from Tollefson et al. 2019); Exact MIRIAD imaging parameters for the VLA data (weighting/robustness, cell size, deconvolution algorithm, self-calibration solution intervals); Exact prior bounds (minimum and maximum values) for all free parameters in the emcee MCMC retrievals; Exact values of the limb-da…
+
+### 2019AJ....157..251T: Neptune's Latitudinal Variations as Viewed with ALMA (2019; solar_system; observational_alma_primary)
+- question: How do Neptune's latitudinal brightness temperature variations at 1-3 mm constrain H2S, CH4 and ortho/para H2 abundances and the global circulation?
+- step 2: Image Neptune per spectral window
+  - method: tclean MFS with natural weighting, circular mask, limb-darkened model subtraction [2.2 Calibration and Imaging: "We used natural weighting and restricted clean to a circular mask"]
+  - software: CASA
+  - parameter: 512x512 pixels, 0.02" cell, 1000-2000 iterations until in-disk noise equals sky noise [2.2 Calibration and Imaging: "stopping once the noise within the planetary disk reached the noise in the sky."]
+  - validation: Tested uniform and intermediate weightings, which produced artificial speckles [2.2 Calibration and Imaging: "we found that uniform and intermediate weightings produced artificial speckles on the disk and large scale structures in the sky."]
+- step 4: Build nominal Radio-BEAR model and residual maps
+  - method: 2D RT model maps on 9455 disk points interpolated to 0.02", convolved with elliptical Gaussian beam; maps scaled so disk average matches nominal model; subtract to get residuals; identify seven latitude bands [3 Models: "we calculate the RT-derived brightness temperatures of the planet on 9455 points on the disk and interpolate between these points to obtain the same resolution as our CASA imaged maps (0.02”)."]
+  - software: Radio-BEAR
+  - parameter: Dry adiabat, T=71.5 K at 1 bar, trace gases 30x protosolar (NH3 1x), intermediate H2 [3 Models: "1) Neptune’s trace gases are enhanced to 30$\times$ their protosolar value, except NH$_3$ which is $1\times$ protosolar;"]
+  - assumption: Neptune's disk-average matches the nominal model; clouds ignored; LTE [4.2 Latitudinal Brightness Temperature …: "our main assumption in this analysis is that Neptune’s disk-average matches the nominal model."]
+  - validation: Nominal model compared with ALMA and 2003 VLA disk-averaged data [4 Results: "which fits both our ALMA and 2003 VLA disk-averaged temperatures simultaneously."]
+- result: Number of latitudinal bands = 7 ± not stated dimensionless [4.2 Latitudinal Brightness Temperature …: "We identify seven bands on Neptune that correspond to discrete changes in the temperature structure"]
+- result: Brightness residual at 32-12S and 2-20N = -0.5 to -1.5 ± not stated K [5.2 Neptune’s Mid-Latitudes and Equator: "are colder than the background by $\sim0.5-1.5$K in all three bands."]
+- result: South polar enhancement Bands 3 and 4 = 2-3 ± not stated K [5.1 Neptune’s South Polar Cap: "Our ALMA maps show average enhancements of $2-3$K in Bands 3 and 4"]
+- limitation (authors): Models are highly degenerate and omit latitudinal temperature variations and adiabatic heating/cooling [4.1 Disk-Averaged Brightness Temperatur…: "First, these models are highly degenerate."]
+- not stated (card): Limb-darkened model parameters used for subtraction; Clean threshold and mask details; Self-calibration solution type and reference antenna; Exact method of fitting the Bessel function to uv short-spacing amplitudes; Method of selecting best-fit profile (grid search criteria beyond reduced chi2); Planetary radius/ephemeris values used for sub-observer coordinates; Full Radio-BEAR configuration fi…
+
+### 2025AJ....170..319I: An Improved Upper Limit of Cyanodiacetylene (HC<SUB>5</SUB>N) in the Atmosphere of Titan (2025; solar_system, astrochemistry; archival_reuse)
+- question: Search for cyanodiacetylene (HC5N) in Titan's atmosphere using ALMA archival data and constrain its abundance and photochemical models.
+- step 2: Extract disk-averaged spectra and stack transitions
+  - method: Extract disk-averaged spectra from the disk center position determined from the continuum emission map, integrate the six spectra by transition (two for J=96-95, four for J=99-98), and combine the two transitions using noise-weighted avera… [2.1. Imaging and Spectral Stacking: "Disk-averaged spectra were extracted from the disk center position determined by the continuum emission map. Six independent spectra were integrated according to the transition."] [2.1. Imaging and Spectral Stacking: "Integration of two HC 5 N transitions was performed using the weighted averaging method according to the noise level measured in the line-absent spectral area of the data sets as 21 and 23 mK for J = 96–95 and J = 99–98 data, respectively."]
+  - parameter: Titan apparent disk size = 0.65 arcsec [2.1. Imaging and Spectral Stacking: "The adopted beam size is about twice the Titan apparent disk size (0 . 65), thus the spectra analyzed in this study correspond to disk-averaged ones."]
+  - parameter: Noise weights from line-free rms: 21 mK (J=96-95) and 23 mK (J=99-98) [2.1. Imaging and Spectral Stacking: "Integration of two HC 5 N transitions was performed using the weighted averaging method according to the noise level measured in the line-absent spectral area of the data sets as 21 and 23 mK for J = 96–95 and J = 99–98 data, respectively."]
+  - validation: Measured rms noise in line-free region of stacked spectrum is 15 mK (~0.9 mJy beam^-1) [2.1. Imaging and Spectral Stacking: "The achieved noise level was measured to be as low as 15 mK in the brightness temperature scale, ∼0.9 mJy beam –1 in the flux density scale."]
+- result: RMS noise level (J = 96-95 stacked spectrum) = 21 ± not stated mK [2.1. Imaging and Spectral Stacking: "Integration of two HC 5 N transitions was performed using the weighted averaging method according to the noise level measured in the line-absent spectral area of the data sets as 21 and 23 mK for J = 96–95 and J = 99–98 data, respectively."]
+- result: RMS noise level (J = 99-98 stacked spectrum) = 23 ± not stated mK [2.1. Imaging and Spectral Stacking: "Integration of two HC 5 N transitions was performed using the weighted averaging method according to the noise level measured in the line-absent spectral area of the data sets as 21 and 23 mK for J = 96–95 and J = 99–98 data, respectively."]
+- result: RMS noise level (combined J = 96-95 and J = 99-98 stacked spectrum, brightness temperature) = 15 ± not stated mK [2.1. Imaging and Spectral Stacking: "The achieved noise level was measured to be as low as 15 mK in the brightness temperature scale, ∼0.9 mJy beam –1 in the flux density scale."]
+- result: RMS noise level (combined J = 96-95 and J = 99-98 stacked spectrum, flux density) = 0.9 ± not stated mJy beam^-1 [2.1. Imaging and Spectral Stacking: "The achieved noise level was measured to be as low as 15 mK in the brightness temperature scale, ∼0.9 mJy beam –1 in the flux density scale."]
+- limitation (authors): Current sensitivity cannot constrain the lower HC5N abundances predicted by the models of Loison et al. (2015) and Vuitton et al. (2019); detecting the emission predicted by Loison et al. (2015) does not appear feasible even with state-of-… [3. Discussion: "The result also indicates that deeper future observations will be required to effectively constrain other two models of J. C. Loison et al. (2015) and V. Vuitton et al. (2019), and to assess the validity of the lower predicted value."]
+- limitation (authors): Derived column density upper limits for the Vuitton et al. (2019) and Krasnopolsky (2009) models depend strongly on the assumed HC5N vertical profile in the lower atmosphere, which does not affect the spectral emission feature. [2.2. Radiative Transfer Modeling of HC …: "Because of the high abundance in the lower atmospheric region, which does not affect the emission feature, the model of V. Vuitton et al. (2019) has 11–51 times higher column density than other models."]
+- not stated (card): CASA version used for calibration and imaging; CLEAN parameters (weighting/robust, cell size, image size, stopping threshold, masking); UV continuum subtraction task (e.g. uvcontsub), polynomial order, and exact line-free frequency ranges used; Exact frequency ranges used to measure the line-free RMS noise in the spectra; Method used to align frequencies to Titan rest frame (ephemeris tracking or…
+
+### 2022A&A...659L...1L: Size and albedo of the largest detected Oort-cloud object: Comet C/2014 UN<SUB>271</SUB> (Bernardinelli-Bernstein) (2022; solar_system; observational_alma_primary)
+- question: Determine the diameter and albedo of Oort-cloud comet C/2014 UN271 (Bernardinelli-Bernstein) from thermal measurements.
+- step 4: Determine nucleus surface-equivalent diameter and geometric albedo via NEATM
+  - method: Apply Near-Earth Asteroid Thermal Model (NEATM) to the 0.128+-0.012 mJy nucleus flux combined with converted optical absolute magnitudes HV and HR, iterating once on albedo and running 40,000 Monte Carlo realizations for uncertainties. [abstract: "From NEATM modelling combined with the $H_r$ magnitude, we determine a surface-equivalent diameter of 137$\pm$17 km and a red geometric albedo of 5.3$\pm$1.2 %."] [Nucleus diameter and albedo: "so iterating once on the albedo in NEATM was sufficient."]
+  - parameter: Beaming factor eta = 1.175+-0.42 (restricted to >0.6) [Nucleus diameter and albedo: "we adopted a beaming factor $\eta$ = 1.175$\pm$0.42, based on measurements of 85 Centaurs and TNOs (cite: lellouch13; lellouch17)."] [Nucleus diameter and albedo: "In doing so, we restricted $\eta$ values to be $>$0.6 (cite: mommert12), as well as $\epsilon_b$ $<$ 1 and $\epsilon_r$ $<$ 1."]
+  - parameter: Bolometric emissivity epsilon_b = 0.90+-0.06 (<1) and relative radio emissivity epsilon_r = 0.70+-0.13 (<1) [Nucleus diameter and albedo: "We also specified a bolometric emissivity $\epsilon_b$ = 0.90$\pm$0.06 and a *relative* radio emissivity $\epsilon_r$ = $\epsilon_{mm}$ / $\epsilon_b$ = 0.70$\pm$0.13"]
+  - parameter: HV = 8.21+-0.05, HR = 7.75+-0.05, V-R = 0.46+-0.02, phase integral q ~ 0.4 [Nucleus diameter and albedo: "yielding $H_V$ = 8.21$\pm$0.05, $H_R$ = 7.75$\pm$0.05, and V-R = 0.46$\pm$0.02, i.e. $p_R$ = 1.11$\pm$0.02 $p_V$."] [Nucleus diameter and albedo: "(where a reasonable value of $q$, the phase integral, is $\sim$ 0.4)"]
+  - assumption: 100% of measured 0.128+-0.012 mJy thermal flux comes from the nucleus; V_sun = -26.76, (V-R)_sun = 0.35 [Estimate of coma contribution: "In the rest of the paper, the measured thermal flux of 0.128$\pm$0.012 mJy is attributed to the nucleus only."] [Nucleus diameter and albedo: "Using V$_{\odot}$ = -26.76 and (V–R)$_{\odot}$ = 0.35, one obtains $D$ = 1330 km /$\sqrt{p_V}$ 10$^{-0.2 H_V}$ from V band and $D$ = 1132 km /$\sqrt{p_R}$ 10$^{-0.2 H_R}$ from R band."]
+  - fitting: Monte Carlo simulation with 40,000 realizations with Gaussian-added noise on flux and model parameters; error bars defined as central 68.3% of results [Nucleus diameter and albedo: "we randomly generated a large set (40,000) of synthetic data and model inputs, based on gaussian-added noise on each parameter at the appropriate level (cite: mueller11), solving for $D$ and $p_R$ in each case."] [Results and discussion: "Those provided best fit values and error bars (defined to include the central 68.3 % of the results) for the diameter and albedo."]
+  - validation: Inferred apparent diameter of 9.6 mas is consistent with the point-like appearance (<40 mas) in the visibility curve. [Results and discussion: "This yields an apparent diameter of 9.6 mas at $\Delta$ = 19.68 au, consistent with the point-like appearance of the object in the visibility curve (Fig. [\[fig:fit_uv\]](#fig:fit_uv))."]
+- result: Nucleus surface-equivalent diameter (D) = 137 ± 17 km [abstract: "From NEATM modelling combined with the $H_r$ magnitude, we determine a surface-equivalent diameter of 137$\pm$17 km and a red geometric albedo of 5.3$\pm$1.2 %."]
+- result: Nucleus apparent angular diameter = 9.6 ± not stated mas [Results and discussion: "This yields an apparent diameter of 9.6 mas at $\Delta$ = 19.68 au, consistent with the point-like appearance of the object in the visibility curve (Fig. [\[fig:fit_uv\]](#fig:fit_uv))."]
+- result: Red geometric albedo (p_R) = 5.3 ± 1.2 % [abstract: "From NEATM modelling combined with the $H_r$ magnitude, we determine a surface-equivalent diameter of 137$\pm$17 km and a red geometric albedo of 5.3$\pm$1.2 %."]
+- result: Visible geometric albedo (p_V) = 4.9 ± 1.1 % [Results and discussion: "Unlike the size, the albedo of , $p_V$ = 4.9$\pm$1.1 %, is completely in line with that of other, typically much smaller, comets (cite: lamy04; campins02)."]
+- limitation (authors): Lack of knowledge of nucleus shape and spin parameters (pole orientation and shape) prevents thermophysical modeling. [Nucleus diameter and albedo: "In the lack of knowledge of nucleus shape and spin parameters (pole orientation and shape), a thermophysical model is pointless, and we instead adopted a NEATM model"]
+- limitation (authors): Visibility fitting cannot distinguish between disk sizes smaller than ~40 mas given the ~65 mas resolution and measurement S/N. [Estimate of coma contribution: "From $\chi^2$ analysis, visibility fitting cannot distinguish between disk sizes smaller than $\sim$40 mas, which is to be expected given the $\sim$65 mas resolution achieved and the measurements’ S/N."]
+- limitation (authors): Diameter and albedo uncertainties are dominated by model input errors, principally the uncertainty on the relative radio emissivity epsilon_r. [Results and discussion: "We find $D$ = 137$\pm$17 km [^1] and $p_R$ = 5.3$\pm$1.2 %, where error bars are dominated by model errors – and principally by the uncertainty on $\epsilon_r$."]
+- not stated (card): Exact CASA version and ALMA pipeline version used for initial data reduction; Software or task used for uv-plane visibility fitting (e.g., CASA uvmodelfit, GILDAS, or custom script); Ephemeris file or JPL Horizons solution ID used to track the comet and define the predicted position before applying the (-0.0955", -0.2555") offset; Imaging parameters (cell size, image size, deconvolver, number of …
+
+### 2019AJ....158...76C: ALMA Spectral Imaging of Titan Contemporaneous with Cassini's Grand Finale (2019; solar_system, astrochemistry; observational_alma_primary)
+- question: What are the spatial distributions, abundances and chemical/dynamical lifetimes of Titan's nitriles and propane around the 2017 solstice, as seen by ALMA alongside Cassini CIRS?
+- step 1: Calibrate and image data
+  - method: JAO pipeline calibration; days combined after regridding and Doppler-shifting to Titan's rest frame; position offset corrected; continuum subtracted; Clark clean [2 ALMA Observations: "The data from May 8 and May 16 were combined after regridding and Doppler-shifting to Titan’s rest frame."]
+  - software: CASA
+  - parameter: pixel 0.025'', mask 1.3'' [2 ALMA Observations: "with a pixel size of $0.025''$"]
+- step 3: Latitudinal and longitudinal flux profiles
+  - method: Average flux in radial wedges about Titan's center using circularized beam; east-west difference for HNC [4.2 Latitudinal Profiles: "A wedge size $\phi_w=10^{\circ}$ was used for all molecules apart from C$_2$H$_3$CN and C$_3$H$_8$, for which $30^{\circ}$ was used"]
+  - validation: Circularized beam removes beam-smearing artifacts [4.3 Longitudinal Variability of HNC: "Use of a circularized beam renders this result free from any geometrical artifacts related to (elliptical) beam smearing."]
+- step 6: Retrieve CIRS limb profiles for comparison
+  - method: NEMESIS fit of -11 deg limb radiances from orbit #261 [5 Comparison with Cassini CIRS: "The NEMESIS spectral inversion tool (cite: irw08) was used to fit the $-11^{\circ}$ limb observations from orbit #261"]
+  - software: NEMESIS
+  - parameter: cubic b-spline knot spacing 100 km [5 Comparison with Cassini CIRS: "a cubic b-spline curve was fitted to the measured radiance profiles at each wavenumber using a knot spacing of 100 km"]
+  - validation: Reliable for 180-400 km [Comparison with Cassini CIRS: "The profiles obtained are reliable for 180-400 km; below 180 km the line opacity was too high to allow an accurate determination, and above 400 km the signal-to-noise was too low."]
+- result: HNC east-west asymmetry = 13 ± ±3 % [4.3 Longitudinal Variability of HNC: "which amounts to a ratio $S_E/S_W=(13\pm3)$%"]
+- result: HNC eastern flux = 383 ± ±7 mJy km/s [4.3 Longitudinal Variability of HNC: "$S_E=383\pm7$ mJy km $\rm{s}^{-1}$"]
+- result: HNC western flux = 338 ± ±7 mJy km/s [4.3 Longitudinal Variability of HNC: "$S_W=338\pm7$ mJy km $\rm{s}^{-1}$"]
+- limitation (authors): Limb retrievals are approximate due to coarse resolution and simplified polygonal parameterization [5.2.2 Comparisons with prior observatio…: "our ALMA retrievals should be considered only approximate"]
+- limitation (authors): Lifetime derivation relies on gross assumptions [5.2.1 Inferred molecular lifetimes: "Additional caution is required for their interpretation due to the gross assumptions made in their derivation."]
+- not stated (card): Line-free channel ranges and polynomial order for continuum subtraction; Number of clean iterations and spectral windows/channel widths used in the cubes; Integration velocity ranges for each moment-0 map; How the two days' data were weighted and combined; Flux-weighted CIRS temperature profile and exact Simobserve configuration; Initial guesses and bounds for the MPFIT fits; Titan ephemeris used…
+
+### 2024RAA....24l5009M: ALMA and GMRT Studies of Dust Continuum Emission and Spectral Lines Toward Oort Cloud Comet C/2022 E3 (ZTF) (2024; solar_system, astrochemistry; archival_reuse)
+- question: To study the radio and millimeter wavelength dust continuum emission and volatile molecular / atomic lines (CH3OH and HI) toward Oort cloud non-periodic comet C/2022 E3 (ZTF), and determine the dust production activity, CH3OH abundance, an…
+- step 1: Measure millimeter dust continuum properties of comet ZTF
+  - method: Fit a 2D Gaussian over the cometary area in each of the 6 frequency bands to measure integrated flux, peak flux, and deconvolved source size. [Section 3.1.1: "To estimate the dust continuum parameters of comet ZTF, we fitted the 2D Gaussian using the CASA task IMFIT over the cometary area with a circle of radius 1.7′′."]
+  - software: CASA (IMFIT)
+  - parameter: circular region of radius 1.7'' [Section 3.1.1: "To estimate the dust continuum parameters of comet ZTF, we fitted the 2D Gaussian using the CASA task IMFIT over the cometary area with a circle of radius 1.7′′."]
+  - fitting: 2D Gaussian fitting with IMFIT [Section 3.1.1: "To estimate the dust continuum parameters of comet ZTF, we fitted the 2D Gaussian using the CASA task IMFIT over the cometary area with a circle of radius 1.7′′."]
+  - validation: Compare deconvolved source sizes with synthesized beam sizes to check if resolved [Section 3.1.1: "Comet ZTF is not resolved in the frequency ranges of 224.79 GHz to 242.60 GHz as the deconvolved source sizes are smaller than the synthesized beam sizes."]
+- result: Integrated dust continuum flux at 224.79 GHz = 124 ± ± 17 µJy [Table 2: "224.79 124 ± 17 120 ± 10 9.45 0.53′′ × 0.42′′ 0.51′′ × 0.44′′"]
+- result: Peak dust continuum flux at 224.79 GHz = 120 ± ± 10 µJy beam−1 [Table 2: "224.79 124 ± 17 120 ± 10 9.45 0.53′′ × 0.42′′ 0.51′′ × 0.44′′"]
+- result: Integrated dust continuum flux at 226.84 GHz = 132 ± ± 49 µJy [Table 2: "226.84 132 ± 49 106 ± 12 5.87 0.53′′ × 0.41′′ 0.49′′ × 0.42′′"]
+- result: Peak dust continuum flux at 226.84 GHz = 106 ± ± 12 µJy beam−1 [Table 2: "226.84 132 ± 49 106 ± 12 5.87 0.53′′ × 0.41′′ 0.49′′ × 0.42′′"]
+- result: Integrated dust continuum flux at 239.12 GHz = 138 ± ± 17 µJy [Table 2: "239.12 138 ± 17 109 ± 13 7.52 0.50′′ × 0.39′′ 0.47′′ × 0.38′′"]
+- result: Peak dust continuum flux at 239.12 GHz = 109 ± ± 13 µJy beam−1 [Table 2: "239.12 138 ± 17 109 ± 13 7.52 0.50′′ × 0.39′′ 0.47′′ × 0.38′′"]
+- result: Integrated dust continuum flux at 239.94 GHz = 140 ± ± 25 µJy [Table 2: "239.94 140 ± 25 112 ± 9 5.20 0.50′′ × 0.39′′ 0.48′′ × 0.38′′"]
+- result: Peak dust continuum flux at 239.94 GHz = 112 ± ± 9 µJy beam−1 [Table 2: "239.94 140 ± 25 112 ± 9 5.20 0.50′′ × 0.39′′ 0.48′′ × 0.38′′"]
+- result: Integrated dust continuum flux at 240.83 GHz = 145 ± ± 38 µJy [Table 2: "240.83 145 ± 38 115 ± 10 4.68 0.50′′ × 0.39′′ 0.48′′ × 0.37′′"]
+- result: Peak dust continuum flux at 240.83 GHz = 115 ± ± 10 µJy beam−1 [Table 2: "240.83 145 ± 38 115 ± 10 4.68 0.50′′ × 0.39′′ 0.48′′ × 0.37′′"]
+- result: Integrated dust continuum flux at 242.60 GHz = 155 ± ± 32 µJy [Table 2: "242.60 155 ± 32 120 ± 15 6.68 0.50′′ × 0.39′′ 0.49′′ × 0.38′′"]
+- result: Peak dust continuum flux at 242.60 GHz = 120 ± ± 15 µJy beam−1 [Table 2: "242.60 155 ± 32 120 ± 15 6.68 0.50′′ × 0.39′′ 0.49′′ × 0.38′′"]
+- limitation (authors): Comet ZTF is spatially unresolved in both the ALMA dust continuum images (224.79–242.60 GHz) and the CH3OH integrated intensity maps because the deconvolved source sizes are smaller than the synthesized beam sizes. [Section 3.1.1: "Comet ZTF is not resolved in the frequency ranges of 224.79 GHz to 242.60 GHz as the deconvolved source sizes are smaller than the synthesized beam sizes."]
+- limitation (authors): Continuum emission at 1250 MHz and the atomic HI line at 1420 MHz are not detected in the GMRT observations. [Section 3.2: "After analysing the GMRT data, we did not detect the dust continuum emission from the comet ZTF."]
+- not stated (card): Weighting scheme and Briggs robust parameter in TCLEAN for ALMA continuum and spectral line imaging; Pixel cell size and image dimensions used in TCLEAN; Clean stopping threshold and masking strategy in TCLEAN; Exact channel ranges selected as line-free channels for continuum subtraction and continuum imaging; Exact modified blackbody SED formula and priors used in the Astropy MCMC fit for dust t…
+
+### 2021ApJ...907L..27A: Complications in the ALMA Detection of Phosphine at Venus (2021; solar_system, astrochemistry; archival_reuse)
+- question: Is the 266.94 GHz PH3 feature in the Greaves et al. ALMA Venus data robust to the calibration revisions, and does ALMA line dilution allow SO2 above the 10 ppb limit to go undetected in the wideband data?
+- step 1: Initial calibration of archival Venus data
+  - method: Apply Tsys, antenna position and WVR tables, flag, duplicate datasets into LB (baselines under 33 m removed) and AB (all baselines); flux and bandpass calibration on Callisto, gain/phase on J2000-1748; combine the two sessions [Reduction and Imaging of ALMA Data: "System temperature, antenna position, and water vapor radiometer calibration tables were applied to the data prior to initial flagging."] [Reduction and Imaging of ALMA Data: "The Venus observations are flux-calibrated and bandpass-calibrated using observations of Callisto prior to antenna gain/phase calibration using observations of J2000-1748."]
+  - software: CASA
+  - parameter: Baselines shorter than 33 m removed in LB copy [Reduction and Imaging of ALMA Data: "For one of these copies, baselines shorter than 33 m were removed from the data"]
+- step 5: Simulate ALMA line dilution for SO2
+  - method: Impose the simulated SO2 spectrum on a limb-darkened Venus disk over several spatial scales, Fourier transform, re-image with CASA using LB and AB baseline coverage, normalise line intensities by the disk-averaged starting model [Simulation of ALMA Line Dilution: "The Fourier Transform of these models are then re-imaged with CASA using the corresponding full-baseline coverage and the short-baseline exclusion of the (cite: Greaves2020) ALMA observations."] [Baseline-Dependent Effects and Line Dil…: "The resulting line intensities are normalized by the disk-averaged intensity of their respective starting models."]
+  - software: CASA
+  - parameter: SO2 enhancement regions distributed from the disk centre to the limb [Simulation of ALMA Line Dilution: "the spatial regions of SO$_2$ enhancement are distributed from the center of the disk to the limb."]
+  - assumption: Venus as a limb-darkened disk with the Lincowski et al. simulated SO2 spectrum [Simulation of ALMA Line Dilution: "is imposed over several scales on a limb-darkened disk model of Venus."]
+- result: Line dilution, LB (baselines under 33 m excluded), larger-scale SO2 distributions = ~95 ± not stated percent [Baseline-Dependent Effects and Line Dil…: "The images excluding short antenna baselines suffer greater line dilution, on the order of 95% for larger scale distributions."]
+- result: Line dilution of model SO2 lines (LB and AB) = many by over 90 ± not stated percent [Baseline-Dependent Effects and Line Dil…: "the model SO$_2$ spectral lines are diluted considerably, many by over 90%."]
+- result: Line dilution for global and hemispherically symmetric gas distributions = 90-95 ± not stated percent [Discussion: "gases on global and hemispherically symmetric spatial scales can be diluted on the order of 90-95%"]
+- limitation (authors): HDO datasets not investigated [Reduction and Imaging of ALMA Data: "We did not investigate the wideband and narrowband datasets centered on the HDO line."]
+- limitation (authors): The HDO detection in the narrowband data contradicts the dilution argument, since water is expected at similar spatial scales [Discussion: "does contradict with this assessment, as water is expected to be distributed at similar spatial scales."]
+- limitation (authors): Limited maximum recoverable scale complicates interpretation of large-scale structure [Simulation of ALMA Line Dilution: "This complicates the interpretation of brightness temperature structure at larger angular scales"]
+- not stated (card): CASA version used for reduction, self-calibration, imaging and simulations; Imaging parameters: cell size, image size, multiscale scales, weighting/robust, niter, threshold, masks, restoring beam; Fitted limb-darkened disk parameters (brightness temperature, limb-darkening law, diameter) and which fitting method was used; Flagging details and spectral-window/channel selection; how the two session…
+
+### 2019Icar..319..417T: Abundance measurements of Titan's stratospheric HCN, HC<SUB>3</SUB>N, C<SUB>3</SUB>H<SUB>4</SUB>, and CH<SUB>3</SUB>CN from ALMA observations (2019; solar_system; archival_reuse)
+- question: What are the vertical abundance profiles of HCN, HC3N, C3H4 and CH3CN in Titan's stratosphere in three independent latitude regions from 2012 to 2015, and what do they imply about Titan's circulation?
+- step 1: Reduce and image archival Titan data, extract spectra
+  - method: Modified JAO scripts, imaging per Paper I, disk-averaged and three-region spectra extracted from non-overlapping beam footprints [Observations: "general imaging procedures, and the extraction of disk-averaged spectra"]
+- step 2: Retrieve vertical abundance profiles
+  - method: NEMESIS line-by-line optimal estimation with fixed temperature profiles, multiple field-of-view points, continuum scaling factor [Spectral Modeling and Retrieval Methodo…: "We employed the Non-Linear Optimal Estimator for Multivariate Spectra Analysis (NEMESIS) radiative transfer code in line-by-line mode"]
+  - software: NEMESIS
+  - parameter: A priori errors 100%; correlation length 1.5 scale heights (3.0 for HCN isotopologues) [Spectral Modeling and Retrieval Methodo…: "*A priori* vertical profiles were taken with 100$\%$ errors at all altitudes and correlation lengths were set to 1.5 scale heights"]
+  - parameter: Retrieval 0-1200 km; results reported 50-550 km; 37-44 FOV points [Spectral Modeling and Retrieval Methodo…: "many field-of-view averaging points (37-44) are required to model disk-averaged data"]
+  - assumption: HCN from isotopologues with 12C/13C = 89.8, 14N/15N = 72.2; condensation below ~80 km; broadening Gamma=0.1 cm-1/bar, alpha=0.75 for HC3N and C3H4 [4.2 HCN: "applied a constant scaling factor ($^{12}$C/$^{13}$C = 89.8, $^{14}$N/$^{15}$N = 72.2) to determine the HCN abundances"]
+  - fitting: chi^2 minimization optimal estimation (NEMESIS) [Spectral Modeling and Retrieval Methodo…: "contribute little to the $\chi^2$ minimization of data and model discrepancies"]
+  - validation: Tested multiple a priori profiles; temperature perturbations of 5 K gave <20% abundance change; compared with Cassini/CIRS and models [Spectral Modeling and Retrieval Methodo…: "variations of temperature on order 5 K or less resulted in abundance variations \< 20$\%$"]
+- limitation (authors): Large beams average latitudes; HC3N optically thick at poles; low sensitivity above ~400 km [Conclusions: "HC$_3$N, which is optically thick at the poles where the molecule has been observed to be greatly enhanced"]
+- not stated (card): Briggs robust values for the datasets using it; Exact JAO script modifications and CASA version; Continuum subtraction and line-free channels; Exact extraction apertures/latitude footprints per dataset; Numerical retrieved abundance profiles and a priori profile values; Scaling factor values per dataset; Exact NEMESIS configuration (grid, field-of-view weights)
+
+### 2024PASP..136l4401K: Radiative Transfer Modeling of Haumea's Dust Ring (2024; solar_system; theory_or_simulation_compared_to_alma)
+- question: Can the ring of Haumea be directly detected with ALMA and JWST, and what grain sizes and materials would its SED reveal, modeled with radiative transfer instead of a simple ring model
+- step 4: Build model SEDs and compare to Haumea body
+  - method: Ring SEDs for each material and grain size compared with a Near-Earth Asteroid Thermal Model SED of Haumea [5.1 Spectral Energy Distributions of th…: "We marked the approximate SED of Haumea as a black curve, which was calculated using a Near-Earth Asteroid Thermal Model"]
+  - parameter: beaming parameter eta = 2.5 [5.1 Spectral Energy Distributions of th…: "We used a beaming parameter of $\eta$ = 2.5 to match the observed far-infrared flux densities presented in (cite: Muller2019)."]
+  - assumption: D_eq = 1595 km, p_V = 0.75, q = 0.44 [5.1 Spectral Energy Distributions of th…: "assuming a volume-equivalent diameter of $D_{eq}$ = 1595 km (cite: Ortiz2012; Muller2019)"]
+  - validation: Checked against Muller et al. 2019 far-infrared upper limits [5.2 Comparison with Observational Const…: "Our sum of the contribution of the main body and its ring aligns well with these constraints at the far-infrared."]
+- limitation (authors): Models assume single-material, single-size grains and ignore porosity; a size distribution or mixture is left for future work [3. Comparison with Planetary Rings and …: "in this analysis we focus on identifying the potentially dominant component and particle radius for the Haumea ring"]
+- not stated (card): Ring optical depth and width values adopted in the RADMC-3D ring element; Grain bulk density and the specific optool material (optical constant) entries used for each material; Wavelength grid and photon packet count for RADMC-3D; Heliocentric distance and solar geometry for 2017 and 2025; Bond albedo, phase integral and reflectivity adopted for the simple model flux numbers; Details of ALMA Cycl…
+
+### 2022MNRAS.514.2994G: Low levels of sulphur dioxide contamination of Venusian phosphine spectra (2022; solar_system, astrochemistry; observational_alma_primary)
+- question: Could the 1.1 mm absorption features in Venus' atmosphere attributed to phosphine (PH3) be due to sulphur dioxide (SO2) absorption instead, and what is the level of SO2 contamination?
+- step 2: Reduce archival JCMT HARP SO2 spectra
+  - method: Download raw archival spectra from HARP, create one-(x,y)-pixel datacubes with makecube in SMURF, manually correct for Venus-Earth velocity-differences in SPLAT, and subtract a 4th-order polynomial trendline fitted outside the line region. [2.2 JCMT: "These raw archival spectra from HARP (0.98 MHz spectral resolution) were downloaded, and one-(x,y)-pixel datacubes were created with the ‘makecube’ task in SMURF 2 ,with output spectra viewed and manually corrected for Venus-Earth velocity-differences (>10 km/s) within SPLAT 3 ."] [4.2 JCMT 2017 data: "There is some spectral ripple present, for which a suitable least-parameters approximation is a 4 th -order polynomial."]
+  - software: SMURF, SPLAT
+  - parameter: 0.98 MHz spectral resolution; 14 arcsec beam; 4th-order polynomial baseline [2.2 JCMT: "These raw archival spectra from HARP (0.98 MHz spectral resolution) were downloaded"] [2.2 JCMT: "HARP observed at 346.6 GHz with a telescope beam of ≈14 arcsec, while Venus’ diameter on 6 June 2017 was 23 arcsec."]
+  - assumption: Planet-centre spectrum represents net planetary SO2 [2.2 JCMT: "The planet-centre spectrum (with the best S/N) is thus adopted as representing net planetary SO 2 ."]
+  - fitting: 4th-order polynomial fitted outside the line region [Figure 4 caption: "The dashed trendline is a 4th-order polynomial fitted outside the line region."]
+  - validation: Tested co-adding 30 arcsec-offset receptor spectra with the planet-centre spectrum with weights up to 50%, finding only up to ~10% changes in net SO2 line-depth. [2.2 JCMT: "We tested co-adding these offset line:continuum spectra with the planet-centre spectrum, with various offset-weights up to 50%, and found only up to ∼10% changes in net SO 2 line-depth."]
+- result: JCMT 2017 SO2 19(1,19)-18(0,18) line-to-continuum ratio at line minimum (26, 17, and 6 days before PH3 midpoint) = -0.0043, -0.0029, -0.0044 ± not stated dimensionless [4.2 JCMT 2017 data: "The SO 2 line-continuum ratios were found to be similar, at -0.0043, -0.0029 and -0.0044 at line-minimum respectively, suggesting an SO 2 abundance variation of ∼±20% about the mean."]
+- limitation (authors): Excluding short ALMA baselines (<33m) filters out spatial scales larger than 4.3-7.1 arcsec, heavily downweighting the centre of Venus (15.2 arcsec diameter) so that only ~22% of continuum survives and true ALMA line-depths and abundances … [2.1 ALMA: "Hence, as Venus then subtended 15.2 arcsec, most of the centre of the planet is heavily downweighted, with most of the line signal coming from an annulus inwards of the limb."]
+- limitation (authors): Cloud-level PH3 abundance and altitude profiles cannot be quantified because broad pressure-broadened line wings are heavily suppressed by the polynomial baseline subtraction and lack laboratory PH3-CO2 broadening coefficients. [1 INTRODUCTION: "Addressing (3) will require new observations and better laboratory data, as inversion of line-shapes to altitude-profiles of abundance needs lower-noise spectra and a PH 3 -CO 2 broadening-coefficient that improves on current theoretical estimates."]
+- limitation (authors): The 1D radiative transfer model neglects scattering, beam convolution, and limb darkening, generating SO2 lines 15-25% less deep than detailed 3D/scattering radiative transfer codes. [3 MODELLING: "Verification tests (against Lincowski et al. 2021, Figure 2 and Greaves et al. 2020, Figure 4) found that our simple code generates SO 2 lines that are 15-25% less deep than from more detailed models (see discussion in Appendix A)."]
+- not stated (card): CASA version and specific imaging parameters (e.g., tclean weighting, robust parameter, masking, deconvolver) used in the Greaves et al. (2021a) scripts; Exact synthesized beam dimensions for the ALMA cubes; Exact height increment (Delta z) used in the 1D radiative transfer integration
+
+### 2019AJ....158...47M: Thermal Emission from the Uranian Ring System (2019; solar_system; observational_alma_primary)
+- question: What are the thermal emission properties (particle temperature, filling factor, azimuthal structure) of the Uranian main rings, and is micron-sized dust present?
+- step 1: Calibrate and image ALMA data
+  - method: CASA pipeline calibration, phase self-cal, uv-plane Uranus disk subtraction, tclean [2.1 ALMA Data: "The disk-subtracted data were inverted into the image plane and deconvolved using CASA’s `tclean` function."]
+  - software: CASA
+  - validation: Uranus total flux compared to previous millimeter observations [2.1 ALMA Data: "The flux calibration was sanity-checked by comparing the measured total flux of Uranus to previous millimeter-wavelength observations"]
+- step 2: Azimuthally integrated radial profile and ring-group fluxes
+  - method: Elliptical annuli of 500 km ring-plane width from 35000 to 64500 km; model profiles of rings projected, beam-convolved; MCMC fit of four ring-group fluxes [3 Radial Profiles: "Each annulus was given a ring-plane width of 500 km, and the ring-plane radius of the annulus inner edge was varied in steps of 500 km from 35000 km to 64500 km."]
+  - software: photutils, PyAstronomy, emcee
+  - parameter: Uranus masked to mean radius plus three times the beam FWHM [3 Radial Profiles: "The planet Uranus was masked out to a distance equal to its mean radius plus three times the ALMA full beam width at half power in each observing band."]
+  - assumption: Relative ring fluxes within a group follow visible equivalent widths [3 Radial Profiles: "the relative contribution from each ring within a group was set according to its visible-wavelength equivalent width (cite: french86)."]
+  - fitting: emcee MCMC, Gaussian likelihood with free fluxes F654, Falphabeta, Fetagammadelta, Fepsilon [3 Radial Profiles: "the fluxes $F_{654}$, $F_{\alpha \beta}$, $F_{\eta \gamma \delta}$, and $F_\epsilon$ of the four ring groups were allowed to vary freely"]
+- result: Epsilon ring flux 3.1 mm = 13.73 ± 0.73 mJy [Table 3: "| 3.1 | 2017-12-03 | 36.8 | $1.29 \pm 0.15$ | $1.91 \pm 0.19$ | $2.77 \pm 0.22$ | $13.73 \pm 0.73$ |"]
+- result: Epsilon ring flux 2.1 mm = 36.0 ± 2.2 mJy [Table 3: "$8.15 \pm 0.89$ | $36.0 \pm 2.2$"]
+- result: Epsilon ring flux 1.3 mm = 112.2 ± 6.3 mJy [Table 3: "$44.4 \pm 3.2$ | $112.2 \pm 6.3$"]
+- limitation (authors): Surface roughness not modeled, so beaming cannot be separated from thermal inertia [4 Thermal Modeling: "Surface roughness is not included in our model, so we cannot disentangle the effects of beaming from the effects of thermal inertia."]
+- not stated (card): tclean parameters (weighting/robust, cell size, image size, niter, threshold, masks); Final beam sizes and image rms values per band; Uranus disk model parameters (brightness temperature, limb darkening); Which self-cal iterations/spws were applied per dataset; MCMC settings (walkers, steps, burn-in) and initial values; Equivalent-width ratios used for within-group ring weights; Eccentricity/widt…
+
+### 2024JApA...45...31M: ALMA detection of hydrogen cyanide in the atmosphere of Saturn (2024; solar_system, astrochemistry; archival_reuse)
+- question: Detect HCN rotational emission in Saturn's atmosphere with ALMA, and derive its abundance, vertical distribution and likely formation mechanism
+- step 8: Compare abundance with Jupiter and infer formation pathway
+  - method: Compare the derived Saturn HCN mixing ratio range with Jupiter's value from Tokunaga et al. 1981 and with the laboratory result of Raulin et al. 1979 [Possible formation mechanism of HCN in …: "we calculated the mixing ratio of HCN in Saturn’s atmosphere to be (2.90–6.19) ppb."] [Possible formation mechanism of HCN in …: "This implies that the laboratory experiment of (cite: rau79) is valid in the atmosphere of Saturn"]
+  - assumption: Saturn has a much lower NH3 abundance than Jupiter, so a lower HCN abundance supports photolysis of CH4 and NH3 [Possible formation mechanism of HCN in …: "the abundance of HCN in Saturn is lower than that in Jupiter because Saturn’s atmosphere contains a much lower abundance of NH$_{3}$"]
+  - validation: The authors say further photochemical modelling is needed [Possible formation mechanism of HCN in …: "Further photochemical modelling is needed to establish the most efficient pathways for the production of HCN in the atmosphere of Saturn."]
+- limitation (authors): Lack of short spacings filters out the disk flux, so only limb emission is preserved [Observation and data reductions: "As a result of the lack of short spacing with the interferometer, the disk flux of Saturn is filtered out, and only the emission from the limbs is preserved."]
+- limitation (authors): Ring continuum flux not estimated because of complex structure [Continuum emission towards Saturn: "We do not estimate the flux densities of rings because it is very difficult due to their complex structure."]
+- limitation (authors): Formation pathways need further photochemical modelling [Possible formation mechanism of HCN in …: "Further photochemical modelling is needed to establish the most efficient pathways for the production of HCN in the atmosphere of Saturn."]
+- not stated (card): tclean parameters: cell size, image size, weighting/robust, masking, threshold, niter, channel width and velocity resolution of the cubes; Line-free channel ranges used for the continuum image and the UVCONTSUB fit; Which flagged data and spectral windows were used for the 354.5 GHz cube, and how the 355.01 GHz ozone line was handled in the HCN window; Velocity range used for the IMMOMENTS integr…
+
+### 2020ApJ...903L...1I: A Belt-like Distribution of Gaseous Hydrogen Cyanide on Neptune&amp;'s Equatorial Stratosphere Detected by ALMA (2020; solar_system; archival_reuse)
+- question: Spatial distribution of HCN in Neptune’s stratosphere and its implications for atmospheric circulation and external sources
+- step 1: Make the HCN spectral images
+  - method: Separate continuum and line emissions in the u-v dataset, then CLEAN with natural weighting and a circular region slightly larger than Neptune [Image synthesis of ALMA archived data: "In the u-v dataset, the continuum and line emissions were separated."] [Image synthesis of ALMA archived data: "A CLEAN procedure was used for imaging with the following parameters:"]
+  - software: Common Astronomy Software Applications, CLEAN
+  - parameter: 320 × 320 pixels; 0.025″ spacing; natural weighting; 0.1 mJy threshold; gain 0.1; csclean [Image synthesis of ALMA archived data: "320$\times$320 pixels with 0.$\ensuremath{''}$025 pixel spacing, "natural" weighting, 0.1 mJy threshold, 0.1 gain and csclean mode."]
+  - validation: Achieved 0.42″ × 0.39″ beam resolves Neptune’s disk [Image synthesis of ALMA archived data: "The achieved synthesized beam size was 0.$\ensuremath{''}$42$\times$0.$\ensuremath{''}$39, which was fine enough to resolve the Neptune’s disk spatially."]
+- limitation (authors): Localized HCN depletion-spot detection is marginal [Analysis of spatial distribution of HCN…: "Thus, detection of the HCN depletion spot on 60$^\circ$ S arc is marginal."]
+- limitation (authors): Equatorial line center within ±1.5 MHz is not fitted well [Radiative transfer analysis: "For the equatorial spectra, the $\pm$1.5 MHz frequency region from the line center could not fit well."]
+- limitation (authors): Circular 0.41″ model beam approximates the slightly elliptical observed beam [Radiative transfer analysis: "Because PSG can employ a horizontally symmetrical beam, a 0.$''$41 diameter beam was employed while the true beam shape is slightly elliptical."]
+- not stated (card): Continuum-separation task, line-free channels and fitted continuum order.; Exact CLEAN-mask diameter and position, and spectral reference frame.; Polynomial order, fit domain, weighting and rejection rules for the radially averaged intensity profile.; Disk-center registration, pole orientation and pixel-to-latitude transformation.; Exact spectral-extraction pixels or coordinates and conversion fr…
+
+### 2017AJ....154..206L: Mapping Vinyl Cyanide and Other Nitriles in Titan's Atmosphere Using ALMA (2017; solar_system, astrochemistry; archival_reuse)
+- question: Can C2H3CN be detected at submillimeter frequencies in Titan's atmosphere and spatially mapped, along with other nitriles, to constrain abundances and photochemistry/circulation?
+- step 3: retrieve vertical abundance profiles
+  - method: NEMESIS line-by-line radiative transfer with step (300 km) models for C2H3CN/C2H5CN and fractional scale-height gradient models for HC3N/CH3CN; spectra scaled to model in line-free regions [Results: "The abundances and fractional scale-height parameters $f_H$ were optimized by minimizing the sum of squares of the spectroscopic residuals"]
+  - software: NEMESIS
+  - parameter: 35 impact parameters up to 1000 km; Lorentz width 0.075 cm-1/bar, alpha 0.5 (HC3N 0.1, 0.75) [Results: "across 35 impact parameters between the center of Titan’s disk and the top of the model atmosphere at 1000 km"]
+  - assumption: temperature profile from HASI+CIRS feathered 60-100 km; CO abundance 5.06e-5 [Results: "by feathering the profiles together in the range 60-100 km using a linearly graded (weighted) average."]
+  - fitting: least squares minimization of residuals [Results: "optimized by minimizing the sum of squares of the spectroscopic residuals"]
+  - validation: reduced chi-squared; step heights >200 km acceptable [Results: "we find that models with a step height of $>$200 km provide a reasonable fit to our C$_2$H$_3$CN and C$_2$H$_5$CN observations"]
+- result: C2H3CN abundance (300 km step) = 3.03 ± 0.29 ppb [Table 1: "| C$_2$H$_3$CN | 3.03 (0.29) |"]
+- result: C2H5CN abundance (300 km step) = 7.37 ± 0.32 ppb [Table 1: "| C$_2$H$_5$CN | 7.37 (0.32) |"]
+- result: C2H5CN/C2H3CN ratio = 2.43 ± 0.26 dimensionless [Discussion: "The C$_2$H$_5$CN/C$_2$H$_3$CN abundance ratio of $2.43\pm0.26$"]
+- result: HC3N fractional scale-height = 2.05 ± 0.16 dimensionless [Table 1: "$2.05\pm0.16$ and $1.63\pm0.02$, respectively."]
+- result: CH3CN fractional scale-height = 1.63 ± 0.02 dimensionless [Table 1: "$2.05\pm0.16$ and $1.63\pm0.02$, respectively."]
+- result: C3H8 mixing ratio = 8.5e-7 ± 0.6e-7 mixing ratio [Results: "best-fitting C$_3$H$_8$ mixing ratio of $(8.5\pm0.6)\times10^{-7}$"]
+- limitation (authors): C3H8 lines blended so abundance uncertain; south pole partly hidden [Results: "our fitted value should be treated with extreme caution due to the fact that the two propane lines are both blended"]
+- not stated (card): Line-free channels used for continuum subtraction; Velocity integration ranges for moment maps; Contour factor n and per-map RMS values; Exact CIRS temperature profile data; Initial values and optimizer settings for NEMESIS fits; Number of iterations/clean mask; Spectral windows and calibrators other than flux scale
+
+### 2025NatAs...9.1476C: A D/H ratio consistent with Earth's water in Halley-type comet 12P from ALMA HDO mapping (2025; solar_system; observational_alma_primary)
+- question: What is the D/H ratio in water of Halley-type comet 12P/Pons-Brooks, and is it consistent with Earth's ocean water and the origin of H2O in the coma?
+- step 1: Calibrate and prepare visibilities
+  - method: Pipeline calibration, phaseshift to correct comet offset, uvcontsub, cvel2 to comet rest frame, channel averaging, concatenation of Band 6 sessions [Methods, ALMA Observations: "this offset was corrected in each measurement set, by fitting a point-source to the continuum visibility data and using the CASA `phaseshift` task to move the fitted flux peak to the phase center."]
+  - software: CASA
+  - parameter: 2nd-order polynomial continuum fit [Methods, ALMA Observations: "with a 2nd-order polynomial fit, excluding channels containing spectral line emission"]
+- step 8: Compare with other comets
+  - method: K-S tests between HTC, JFC, OCC D/H samples; mean D/H in comets [main text: "The distribution of D/H values in HTCs can be compared with that of JFCs and Oort cloud comets (OCCs) using the Kolmogorov-Smirnov (K-S) test"]
+- result: Mean cometary D/H = 2.9e-4 ± std dev 1.4e-4 dimensionless [main text: "the average D/H in cometary water is now $2.9\times10^{-4}$ (with a standard deviation of $1.4\times10^{-4}$)"]
+- result: K-S p value HTC vs OCC = 99.7% ± not stated percent [main text: "is 99.7%. The $p$ value for HTCs compared with JFCs is 77%"]
+- limitation (authors): HDO and H2O observed ~2 weeks apart; Q(H2O) inferred via CH3OH proxy [main text: "Since H$_2$O and HDO were observed approximately 2 weeks apart"]
+- limitation (authors): Low S/N of HDO leaves L_p unconstrained for 50% distributed case [main text: "the HDO $L_p$ value is unconstrained as a result of the lower signal-to-noise"]
+- not stated (card): Exact SUBLIME version and configuration/input files, grid parameters; Initial guesses and bounds for lmfit parameters; Line-free channels used for uvcontsub; Specific ephemeris offsets per session (in Supplementary Table 1, not provided); Details of the T(r) segment nodes and the log-linear velocity law implementation; Flux-scale uncertainty and any self-calibration choices; Pipeline version
+
+### 2023NatAs...7.1048C: Evidence for auroral influence on Jupiter's nitrogen and oxygen chemistry revealed by ALMA (2023; solar_system; observational_alma_primary)
+- question: How are CO and HCN, long-lived species deposited by comet Shoemaker-Levy 9, distributed in latitude and altitude in Jupiter's stratosphere in March 2017, and what does this imply for jovian chemistry and dynamics (notably in the auroral re…
+- step 2: Subtract continuum and image the lines
+  - method: uv-plane continuum subtraction with a uniform disk model, then spectral line cubes [Methods - Observations: "The continuum is then subtracted in the uv-plane to enable imaging the spectral line. It is done using a uniform continuum model."]
+  - assumption: Uniform disk continuum, which misses Jupiter's zone/belt structure and alters the line-to-continuum ratio by up to 30% [The spatial distribution of CO and HCN: "This subtraction is performed using a uniform disk model which does not perfectly fit the zone/belt structure of Jupiter’s continuum."]
+  - validation: Variability in column densities attributed to the continuum subtraction was identified as an artefact (also for CO) [The spatial distribution of CO and HCN: "We find a similar structure in the variability of the CO column density profile in this latitudinal range and it is thus also not a real feature."]
+- result: Uncertainty on column densities from continuum subtraction = about 30% ± not stated percent [Methods - Observations: "The resulting uncertainty on the column densities is about 30% and is the biggest source of uncertainty in this study."]
+- limitation (authors): Uniform-disk continuum subtraction leaves residuals, giving about 30% uncertainty on column densities, the largest uncertainty [Methods - Observations: "The resulting uncertainty on the column densities is about 30% and is the biggest source of uncertainty in this study."]
+- limitation (authors): Temperature model limited by interpolation in gaps of TEXES coverage of auroral regions [HCN interior of the southern auroral ov…: "Since our temperature model is inherently limited by the interpolation that we apply in the few gaps in the coverage of the auroral regions the Gemini/TEXES data have"]
+- limitation (authors): Northern aurora geometry less favorable at the time of observations [HCN at high latitudes: "Although the geometry was less favorable at the time of the observations with the northern auroral oval just rising over the 170W limb"]
+- not stated (card): tclean/imaging parameters (weighting, robust, cell size, image size, deconvolver, cleaning masks) used to make the HCN and CO cubes; Channel ranges used for the uniform-disk continuum model and uv-plane subtraction, and the disk model parameters; Calibration flux model for Ganymede and any flux-scale corrections; How the 557 HCN and 540 CO limb spectra were extracted (positions, limb definition, …
+
+### 2018ApJ...859L..15C: Interferometric Imaging of Titan’s HC<SUB>3</SUB>N, H<SUP>13</SUP>CCCN, and HCCC<SUP>15</SUP>N (2018; solar_system, astrochemistry; observational_alma_primary)
+- question: What are the spatial distributions of HC3N and its 13C and 15N isotopologues in Titan's atmosphere, and what is the 14N/15N ratio in HC3N?
+- step 1: Calibrate and image
+  - method: Pipeline calibration, Titan rest-frame regrid, continuum subtraction, Clark clean with natural weighting [Observations: "The spectral axis was transformed to Titan’s rest frame and regridded to a 976 kHz channel width."]
+  - software: CASA
+  - parameter: pixel 0.025'', flux threshold 8 mJy [Observations: "a pixel size of $0.025''$ and a flux threshold of 8 mJy"]
+- limitation (authors): Ratio not accurate enough to distinguish models; 12C/13C in HC3N uncertain, true ratio could be as low as 43 [Discussion: "limited accuracy of the prior $^{12}$C/$^{13}$C measurement in HC$_3$N (cite: jen08) means that the true HC$_3$N/HCCC$^{15}$N ratio could be as low as 43"]
+- not stated (card): Line-free channels used for continuum polynomial fit and polynomial order; Exact clean mask and iterations; Method/aperture for integrated line fluxes (Table 1) and polar peak ratios; Pipeline version; Phase-center tracking ephemeris details; Channel ranges for moment maps
+
+### 2020ApJ...890...95I: <SUP>14</SUP>N/<SUP>15</SUP>N Isotopic Ratio in CH<SUB>3</SUB>CN of Titan's Atmosphere Measured with ALMA (2020; solar_system; archival_reuse)
+- question: What is the 14N/15N isotopic ratio in CH3CN in Titan's atmosphere, and does it differ from HCN/HC3N values as predicted by photochemical models?
+- step 1: Reduce and image Titan data
+  - method: QA-2 calibration, split SPWs, Doppler correction, uv continuum/line separation, CLEAN imaging [2.1 Extracting Titan data from the ALMA…: "Calibrated datasets for Titan were split into each spectral windows (SPW), and their line-of-sight Doppler-shift velocity values were corrected."]
+  - software: CASA
+- limitation (authors): Data quality limits accuracy; cannot distinguish UV vs GCR scenarios [3.3 Comparisons with the model and futu…: "due to the data quality limitation, the value derived in this study is not sufficiently accurate to clearly differentiate between these two possible scenarios"]
+- not stated (card): CASA version; weighting/robust and deconvolver settings; line-free channels for continuum; threshold/niter for CLEAN; Titan ephemeris used for Doppler correction; flux calibration scale and uncertainty; radiative transfer code, line list and spectroscopic parameters; numerical isotopic ratio and uncertainty (missing in the text); noise estimate used in chi-square
+
+### 2019AJ....158..139D: First ALMA Millimeter-wavelength Maps of Jupiter, with a Multiwavelength Study of Convection (2019; solar_system; observational_alma_primary)
+- question: What do the first ALMA 1.3 and 3 mm maps of Jupiter, together with contemporaneous multiwavelength data, reveal about the ammonia distribution and moist convection in the SEB outbreak and northern plumes?
+- step 1: Calibrate and rescale flux scale
+  - method: ALMA pipeline in CASA; fluxes referenced to Callisto; phases adjusted for Jupiter motion [2.1 ALMA: "We modified the phases of Jupiter to take out its motion across the sky."]
+  - software: CASA
+- limitation (authors): Brightness temperatures only 60-70% of expected, attributed to Tsys calibration on blank sky; data scaled [2.1 ALMA: "revealed brightness temperatures that were only of order 60–70% of what we expected"]
+- limitation (authors): Small features are unresolved so Tb are upper limits; missing short spacings [4.2 RT Modeling of the ALMA Longitude-r…: "Because these features are small in angular extent, the measured brightness temperatures should be considered upper limits."]
+- not stated (card): Which calibrators were used in each execution and the exact flux rescaling factors; Adopted Tb values per band (in image table, not in text); Uv-range, cell size, image size, weighting and CLEAN settings for the MIRIAD mosaic imaging; Self-calibration parameters for ALMA data; CASA pipeline version; Final beam sizes and rms noise values (only in tables); Exact Radio-BEAR model inputs per latitude…
+
+## All papers in this technique
+
+- 2014ApJ...795L..30C (2014): ALMA Measurements of the HNC and HC<SUB>3</SUB>N Distributions in Titan's Atmosphere
+- 2015ApJ...800L..14C (2015): Ethyl Cyanide On Titan: Spectroscopic Detection and Mapping Using Alma
+- 2016AJ....152...42M (2016): ALMA Observations of HCN and Its Isotopologues on Titan
+- 2016ApJ...821L...8S (2016): Isotopic Ratios of Carbon and Oxygen in Titan’s CO using ALMA
+- 2017A&A...603L...6H (2017): Direct evidence of multiple reservoirs of volatile nitrogen in a protosolar nebula analogue
+- 2017AJ....154..206L (2017): Mapping Vinyl Cyanide and Other Nitriles in Titan's Atmosphere Using ALMA
+- 2018ApJ...859L..15C (2018): Interferometric Imaging of Titan’s HC<SUB>3</SUB>N, H<SUP>13</SUP>CCCN, and HCCC<SUP>15</SUP>N
+- 2018Icar..307..380T (2018): Spatial variations in Titan's atmospheric temperature: ALMA and Cassini comparisons from 2012 to 2015
+- 2019AJ....157..219T (2019): Measurement of CH<SUB>3</SUB>D on Titan at Submillimeter Wavelengths
+- 2019AJ....157..251T (2019): Neptune's Latitudinal Variations as Viewed with ALMA
+- 2019AJ....158...47M (2019): Thermal Emission from the Uranian Ring System
+- 2019AJ....158...76C (2019): ALMA Spectral Imaging of Titan Contemporaneous with Cassini's Grand Finale
+- 2019AJ....158..139D (2019): First ALMA Millimeter-wavelength Maps of Jupiter, with a Multiwavelength Study of Convection
+- 2019Icar..319..417T (2019): Abundance measurements of Titan's stratospheric HCN, HC<SUB>3</SUB>N, C<SUB>3</SUB>H<SUB>4</SUB>, and CH<SUB>3</SUB>CN from ALMA observatio…
+- 2020AJ....160..205N (2020): Detection of Cyclopropenylidene on Titan with ALMA
+- 2020ApJ...890...95I (2020): <SUP>14</SUP>N/<SUP>15</SUP>N Isotopic Ratio in CH<SUB>3</SUB>CN of Titan's Atmosphere Measured with ALMA
+- 2020ApJ...903L...1I (2020): A Belt-like Distribution of Gaseous Hydrogen Cyanide on Neptune&amp;'s Equatorial Stratosphere Detected by ALMA
+- 2020ApJ...904L..12C (2020): Detection of Dynamical Instability in Titan's Thermospheric Jet
+- 2020NatAs...4..861C (2020): Unusually high CO abundance of the first active interstellar comet
+- 2021ApJ...907L..27A (2021): Complications in the ALMA Detection of Phosphine at Venus
+- 2021PSJ.....2..105T (2021): Neptune's Spatial Brightness Temperature Variations from the VLA and ALMA
+- 2022A&A...659L...1L (2022): Size and albedo of the largest detected Oort-cloud object: Comet C/2014 UN<SUB>271</SUB> (Bernardinelli-Bernstein)
+- 2022MNRAS.514.2994G (2022): Low levels of sulphur dioxide contamination of Venusian phosphine spectra
+- 2023NatAs...7.1048C (2023): Evidence for auroral influence on Jupiter's nitrogen and oxygen chemistry revealed by ALMA
+- 2023PSJ.....4..206R (2023): ALMA Observations of the DART Impact: Characterizing the Ejecta at Submillimeter Wavelengths
+- 2024JApA...45...31M (2024): ALMA detection of hydrogen cyanide in the atmosphere of Saturn
+- 2024PASP..136l4401K (2024): Radiative Transfer Modeling of Haumea's Dust Ring
+- 2024PSJ.....5..125T (2024): Observations of Titan's Stratosphere during Northern Summer: Temperatures, CH<SUB>3</SUB>CN and CH<SUB>3</SUB>D Abundances
+- 2024RAA....24l5009M (2024): ALMA and GMRT Studies of Dust Continuum Emission and Spectral Lines Toward Oort Cloud Comet C/2022 E3 (ZTF)
+- 2025AJ....170..319I (2025): An Improved Upper Limit of Cyanodiacetylene (HC<SUB>5</SUB>N) in the Atmosphere of Titan
+- 2025NatAs...9.1476C (2025): A D/H ratio consistent with Earth's water in Halley-type comet 12P from ALMA HDO mapping
+- 2025PSJ.....6..107N (2025): Improved Carbon and Nitrogen Isotopic Ratios for CH<SUB>3</SUB>CN in Titan's Atmosphere Using ALMA
+- 2025PSJ.....6..286M (2025): Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics
+- 2026A&A...707A.240C (2026): Observations of the temporal evolution of Saturn's stratosphere following the Great Storm of 2010─2011: II. Latitudinal distribution of CO …

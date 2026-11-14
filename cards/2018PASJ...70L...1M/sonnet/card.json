@@ -1,0 +1,747 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018PASJ...70L...1M",
+  "title": "ALMA [C I] observations toward the central region of Seyfert galaxy NGC 613",
+  "year": 2018,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Miyamoto, Yusuke",
+  "n_authors": 6,
+  "arxiv_id": "1802.00486",
+  "doi": "10.1093/pasj/psy016",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01487.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report ALMA observations of [C I]($^3P_1-^3P_0$), 13CO, and C18O($J=1-0$) toward the central region of a nearby Seyfert galaxy NGC 613."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 613",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "17.5 Mpc",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "at the distance of the galaxy (17.5 Mpc; (cite: tully1988))"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Tully 1988",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "at the distance of the galaxy (17.5 Mpc; (cite: tully1988))"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What does [CI] trace relative to CO lines in the CND and star-forming ring of NGC 613, and is there a [CI] molecular outflow driven by the AGN jets?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Comparisons between \\[C\\] and CO lines in the energetic activities could provide clues to understanding what \\[C\\] traces."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01487.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO. ALMA#2015.1.01487.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 and Band 8",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "NGC 613 was observed with the Atacama Large Millimeter/submillimeter Array (ALMA) using Bands 3 and 8 receivers."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 3: three SPWs in USB (13CO, C18O 1-0); Band 8: one SPW in USB for [CI]",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The correlators for Band 8 were configured to set one spectral window in the upper sideband"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[CI]",
+     "transition": "3P1-3P0",
+     "rest_frequency": "492.160651 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "C($^3P_1-^3P_0$) ($\\nu_{\\rm rest}=$492.160651 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=1-0",
+     "rest_frequency": "110.201354 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "($\\nu_{\\rm rest}=$110.201354 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=1-0",
+     "rest_frequency": "109.782176 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "C$^{18}$O(1–0) ($\\nu_{\\rm rest}=$109.782176 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Band 8: 12-m array, ACA and TP; Band 3: 12-m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "For Band 8, the Atacama compact array (ACA) and total power array (TP) were used in addition to the 12-m array."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 3 0.42\"x0.35\"; Band 8 0.26\"x0.23\"",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The synthesized beams at Bands 3 and 8 were $0.42\\ensuremath{''}\\times0.35\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "Band 3 ~22\"",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The maximum recoverable scale for Band 3 is $\\sim \\timeform{22''}$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "[CI] 6 mJy/beam (~0.5 K); 13CO and C18O 0.2 mJy/beam (~0.1 K) per 10 km/s channel",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "are 6 mJy beam$^{-1}$ ($\\sim0.5$ K), 0.2 mJy beam$^{-1}$ ($\\sim0.1$ K), and 0.2 mJy beam$^{-1}$ ($\\sim0.1$ K), respectively, in channels of 10 km s$^{-1}$ width."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO(3-2) intensity map, rotational temperatures and kinetic temperatures",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "where the O intensity map is from (cite: miyamoto) and the beam size of \\[C\\] is convolved with those of the CO."
+       }
+      ]
+     },
+     "citation": "Miyamoto et al. 2017 (cite: miyamoto)"
+    },
+    {
+     "what": {
+      "value": "SFR in CND 0.02 Msun/yr",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "$0.02~{\\rm \\MO~yr^{-1}}$ (cite: falcon)"
+       }
+      ]
+     },
+     "citation": "(cite: falcon)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Band 3: J2357-5311, J0334-4008; Band 8: J0006-0623, Uranus",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The flux density at the Band 3 was calibrated by J2357-5311 and J0334-4008, and at Band 8 by J0006-0623 and Uranus."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The imaging was performed using the CLEAN-algorithm in CASA."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5 for Band 3; natural for Band 8",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Briggs weighting mode on the data with robustness of 0.5 for Band 3 and the natural weighting mode for Band 8."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.05\" Band 3; 0.02\" Band 8",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "$0.05\\ensuremath{''}$ per pixel and $0.02\\ensuremath{''}$ per pixel for Band 3 and 8, respectively."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "1500x1500 pixels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The resultant maps were $1500\\times1500$ pixels"
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum determined from line-free channels and subtracted",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Each line data was then combined after subtracting continuum emission determined at the channels that are free from spectral line emission."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "TP combined with 12-m+ACA using Feather in CASA (Band 8)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "By using the Feather algorithm in CASA, the low-resolution image obtained through the TP and high-resolution image obtained through the 12-m and ACA"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Phase reference center adopted",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The phase reference center of $(\\alpha_{\\rm J2000.0}$, $\\delta_{\\rm J2000.0})=$ (, ) was adopted (Miyamoto et al. 2017)."
+       }
+      ]
+     },
+     "from_reference": "Miyamoto et al. 2017"
+    },
+    {
+     "what": {
+      "value": "Optical depth and column density calculation",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "According to (cite: ikeda2002), we calculated the optical depths of \\[C\\], O(1–0) and C(1–0) under LTE assumption"
+       }
+      ]
+     },
+     "from_reference": "(cite: ikeda2002)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and whether pipeline or manual calibration",
+    "Line-free channel ranges and clean thresholds/masks",
+    "Band 8 beam-matching details and feather parameters",
+    "Self-calibration",
+    "Exact component integration regions for A, B, C and spot positions",
+    "Phase center coordinates (blank in text)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image cubes and combine arrays",
+    "method": {
+     "value": "CLEAN in CASA at 10 km/s; continuum subtracted; Band 8 12m+ACA feathered with TP",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The imaging was performed using the CLEAN-algorithm in CASA."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Band 8 shifted so continuum peak matches center",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We, therefore, shifted the position in Band 8 data so that the continuum position coincides with the center."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Moment maps and line ratios",
+    "method": {
+     "value": "Mask <3 sigma in smoothed cube; integrated intensity maps; [CI] convolved to CO beam; ratios R_CI/CO",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "pixel values $<3~\\sigma$ in each velocity channel of the cube smoothed with twice the size of the beam-width were masked"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Optical depths under LTE",
+    "method": {
+     "value": "LTE optical depth following Ikeda et al. 2002",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we adopted the rotational temperatures of $T_{\\rm rot}\\sim 18$ K in the CND and $T_{\\rm rot}\\sim 12$ K in the ring as the excitation temperatures"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Tex = Trot 18 K (CND), 12 K (ring)",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "$T_{\\rm rot}\\sim 18$ K in the CND and $T_{\\rm rot}\\sim 12$ K in the ring"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Outflow mass, rate and energetics",
+    "method": {
+     "value": "PV diagram along minor axis; column densities and masses of components; expansion velocity and time; kinetic luminosity vs jet power",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "the expanding time is $t_{\\rm exp}\\sim2.4~{\\rm Myr}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "[C]/[H2]~1.5e-3; [12CO]/[13CO]=60; spherical expansion",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "adopting typical value of \\[C\\]/\\[H\\]$\\sim1.5\\times10^{-3}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Outflow described as tentative",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "although the \\[C\\] outflow is tentative"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data processing, CLEAN imaging, Feather combination",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data were processed using the Common Astronomy Software Application (CASA; (cite: mcmullin2007))."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "[CI] optical depth in CND",
+    "value": "0.6",
+    "uncertainty": "0.3",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "$\\tau_{\\rm  C\\emissiontype{I}}= 0.6\\pm0.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "R_CI/CO range",
+    "value": "0.1–0.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "is in a range of 0.1–0.3 in both the CND and star-forming ring"
+     }
+    ]
+   },
+   {
+    "quantity": "Expansion time",
+    "value": "2.4",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "$t_{\\rm exp}\\sim2.4~{\\rm Myr}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass outflow rate (component C)",
+    "value": "0.04",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "$dM_{\\rm H_2}/dt\\sim 0.04$"
+     }
+    ]
+   },
+   {
+    "quantity": "Jet power",
+    "value": "1.5e42",
+    "uncertainty": "not stated",
+    "units": "erg/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "$P_{\\rm jet}=1.5\\times10^{42}~{\\rm erg~s^{-1}}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "[CI] distribution in the ring resembles CO, but [CI] is prominent in the CND where CO isotopes are weak",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "although \\[C\\] is prominent in the CND."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does [CI] trace different gas than CO?",
+    "experiment": "Compared ratio maps and spectra at ring spots",
+    "result": "[CI] profiles differ from CO at high R_CI/CO spots",
+    "finding": "[CI] traces different gas there, possibly dark CO",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These results indicate that \\[C\\] at the high $R_{\\rm C\\emissiontype{I}/CO}$ traces different gas from that traced by the CO lines"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there an AGN-jet-driven molecular outflow?",
+    "experiment": "[CI] PV diagram along minor axis",
+    "result": "Outflow rate 0.04 Msun/yr exceeds CND SFR 0.02",
+    "finding": "Bubbly outflow likely boosted by jets, tentative",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The flow could be mainly boosted by the AGN through its radio jets."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Outflow is tentative; more sensitive observations needed",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "In order to confirm the outflow, more sensitive \\[C\\] observations are needed."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Outflow rate from a single component with lower-limit velocity",
+    "Low velocity resolution (10 km/s) and low S/N",
+    "Assumed Tex and abundances drive masses"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version",
+    "clean parameters",
+    "component regions",
+    "phase center coordinates"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB",
+   "score_inferred": 3,
+   "score_reason": "Data public project code given but processing details sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Ikeda et al. 2002",
+     "why": "[CI] optical depth and column density"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Miyamoto et al. 2017",
+     "why": "CO(3-2) data and CND properties"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-491444daa5255bc25396d04a835d7cd9",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:58",
+  "usage": {
+   "input_tokens": 11329,
+   "output_tokens": 5499,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.039431,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 43,
+  "quotes_ok": 43,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 64,
+   "stated": 31,
+   "rate": 0.484
+  },
+  "evidence_ok": true
+ }
+}

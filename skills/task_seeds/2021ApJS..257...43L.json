@@ -1,0 +1,613 @@
+{
+ "bibcode": "2021ApJS..257...43L",
+ "title": "PHANGS-ALMA: Arcsecond CO(2-1) Imaging of Nearby Star-forming Galaxies",
+ "year": 2021,
+ "doi": "10.3847/1538-4365/ac17f3",
+ "arxiv_id": "2104.07739",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How can we map CO(2-1) emission at cloud scales (~1 arcsec ~ 100 pc) across a representative sample of 90 nearby star-forming galaxies to measure the demographics, life-cycle, and physical state of giant molecular clouds and connect them to galaxy-scale properties?",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00886.L",
+  "2018.1.00484.S",
+  "2018.1.01321.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S",
+  "2019.1.01235.S",
+  "2019.2.00129.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~230 GHz)",
+  "arrays": "12-m main array, 7-m ACA, and 12-m total power (TP) single-dish antennas",
+  "angular_resolution": "median 1.3 arcsec (0.6 to 2.1 arcsec) / 98 pc (26 to 183 pc) for 12m+7m+TP; ~7-8.7 arcsec for 7m+TP",
+  "sensitivity": "median 6.2 mJy beam^-1 (85 mK) per 2.54 km s^-1 channel at native resolution; 50 mK at 150 pc resolution"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance estimates and uncertainties for all 90 PHANGS-ALMA targets",
+    "evidence": [
+     {
+      "loc": "4.2 Distance",
+      "quote": "We adopt distance estimates from (cite: ANAND21)."
+     },
+     {
+      "loc": "4.2 Distance",
+      "quote": "In total, (cite: ANAND21) compile distance estimates and associated uncertainties for $117$ galaxies, including all $90$ PHANGS–ALMA targets."
+     }
+    ]
+   },
+   "citation": "Anand et al. 2021 (cite: ANAND21)"
+  },
+  {
+   "what": {
+    "value": "Kinematic position angles, inclinations, and systemic velocities",
+    "evidence": [
+     {
+      "loc": "4.1 Orientation and Galaxy Center",
+      "quote": "We adopt position angles and inclinations from (cite: LANG20). They use the CO kinematics derived from the PHANGS–ALMA data to constrain the position angle of each target."
+     }
+    ]
+   },
+   "citation": "Lang et al. 2020 (cite: LANG20)"
+  },
+  {
+   "what": {
+    "value": "S4G Spitzer/IRAC 3.6 um images, masks, photometric centers, orientations, and size fits",
+    "evidence": [
+     {
+      "loc": "4.1 Orientation and Galaxy Center",
+      "quote": "These photometric orientation estimates come from the S$^4$G analysis of Spitzer/IRAC 3.6$\\mu$m imaging by (cite: SALO15) when available"
+     },
+     {
+      "loc": "4.3 Stellar Mass",
+      "quote": "Whenever possible, we use the high quality IRAC $3.6$ $\\mu$m data from S$^4$G (cite: SHETH10)."
+     },
+     {
+      "loc": "4.3 Stellar Mass",
+      "quote": "First, we apply the S$^4$G masks described by (cite: MUNOZMATEOS15) outside the central $10\\ensuremath{''}$ of each target."
+     }
+    ]
+   },
+   "citation": "Sheth et al. 2010 (cite: SHETH10), Salo et al. 2015 (cite: SALO15), Munoz-Mateos et al. 2015 (cite: MUNOZMATEOS15)"
+  },
+  {
+   "what": {
+    "value": "WISE and GALEX maps, star masks, mass-to-light ratio prescription, SFR calibrations, and catalog of ~15,000 nearby galaxies",
+    "evidence": [
+     {
+      "loc": "3.3 Accuracy and Uncertainty in Selection",
+      "quote": "We begin with estimates of stellar mass, star formation rate, inclination, and distance to ${\\sim}15{,}000$ nearby galaxies drawn from (cite: LEROY19)."
+     },
+     {
+      "loc": "4.3 Stellar Mass",
+      "quote": "When these are not available, we use WISE1 $3.4$ $\\mu$m maps from (cite: LEROY19)."
+     }
+    ]
+   },
+   "citation": "Leroy et al. 2019 (cite: LEROY19)"
+  },
+  {
+   "what": {
+    "value": "Homogenized 21 cm H I fluxes, morphological T-types, B-band isophotal radii (r25), and fallback orientations/positions",
+    "evidence": [
+     {
+      "loc": "4.7 Literature H I Masses",
+      "quote": "We draw integrated H I masses from the literature, specifically the homogenized compilation by HyperLEDA. We derive the H I mass from HyperLEDA’s $21$ cm flux, applying no correction for opacity effects."
+     },
+     {
+      "loc": "4.4 Stellar Disk Size",
+      "quote": "In Table 4 we also report the $25^{\\rm th}$ magnitude isophotal $B$-band radius, $r_{25}$, from RC3 (cite: DEVAUCOULEURS91) via HyperLEDA."
+     }
+    ]
+   },
+   "citation": "HyperLEDA (cite: PATUREL03; MAKAROV14) and RC3 (cite: DEVAUCOULEURS91)"
+  },
+  {
+   "what": {
+    "value": "2MASS Large Galaxy Atlas central positions and J, H, K effective radii",
+    "evidence": [
+     {
+      "loc": "4.1 Orientation and Galaxy Center",
+      "quote": "When these are not available, we adopt central positions from the 2MASS Large Galaxy Atlas (cite: JARRETT03)."
+     },
+     {
+      "loc": "4.4.3 Checks on Stellar Disk Sizes",
+      "quote": "Effective radii estimated by the 2MASS Large Galaxy Atlas (cite: JARRETT03)."
+     }
+    ]
+   },
+   "citation": "Jarrett et al. 2003 (cite: JARRETT03)"
+  },
+  {
+   "what": {
+    "value": "Contaminant-corrected 'old stellar emission' ICA maps from S4G",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "“S$^4$G ICA + fixed $\\Upsilon_\\star^{3.4}$”: ‘old stellar emission’ maps from (cite: QUEREJETA15) using a fixed $\\Upsilon_\\star^{3.4}$ of $0.5$ ${\\rm M}_\\odot~{\\rm L}_\\odot^{-1}$."
+     }
+    ]
+   },
+   "citation": "Querejeta et al. 2015 (cite: QUEREJETA15)"
+  },
+  {
+   "what": {
+    "value": "HERACLES IRAM 30-m CO(2-1) maps of 18 galaxies",
+    "evidence": [
+     {
+      "loc": "4.6.2 Checks on CO(2–1) Luminosity",
+      "quote": "In total, PHANGS–ALMA covers $18$ galaxies that have also been mapped in the CO($2\\text{--}1$) line using the HERA array receiver on the IRAM 30-m telescope (cite: SCHUSTER07). These maps are part of the HERACLES survey (cite: LEROY09; LEROY13)"
+     }
+    ]
+   },
+   "citation": "Leroy et al. 2009, 2013 (cite: LEROY09; LEROY13)"
+  },
+  {
+   "what": {
+    "value": "xCOLD GASS and local CO mapping survey compilations (COMING, Nobeyama CO Atlas, JCMT NGLS)",
+    "evidence": [
+     {
+      "loc": "2.1.1 Previous Surveys of Molecular Gas in Galaxies",
+      "quote": "Figure 1 illustrates some of these global trends using data from PHANGS–ALMA (red, see §4 for details), xCOLD GASS (cite: SAINTONGE17) as the largest homogeneous unresolved survey, and a compilation of local CO mapping surveys (cite: SORAI19; KUNO07; LEROY09)."
+     },
+     {
+      "loc": "4 Properties of the Observed Sample",
+      "quote": "and the targets of the JCMT Nearby Galaxy Legacy Survey (cite: WILSON12)."
+     }
+    ]
+   },
+   "citation": "Saintonge et al. 2017 (cite: SAINTONGE17), Sorai et al. 2019 (cite: SORAI19), Kuno et al. 2007 (cite: KUNO07), Wilson et al. 2012 (cite: WILSON12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Assess sample selection accuracy and completeness via Monte Carlo simulation",
+   "method": "Perturb catalog values of inclination, stellar mass, star formation rate, and distance for ~15,000 nearby galaxies over 10,000 realizations (with and without distance uncertainties) and check how many meet PHANGS-ALMA selection criteria.",
+   "software": [],
+   "key_parameters": [
+    "Inclination uncertainty +-5 deg (capped at 90 deg); M_star uncertainty ~0.1 dex; SFR uncertainty ~0.15 dex; distance uncertainty 0.03, 0.06, or 0.125 dex",
+    "Selection criteria: -75 deg < delta < +25 deg, i < 75 deg, d < 17 Mpc, log10 M_star > 9.75, log10(SFR/M_star) > -11 yr^-1"
+   ],
+   "assumptions": [
+    "Catalog values from Leroy et al. (2019) and EDD represent the true underlying galaxy properties"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate stellar masses and stellar mass surface density maps",
+   "method": "Mask foreground stars and subtract background from S4G IRAC 3.6 um or WISE1 3.4 um images, interpolate masked pixels using radial median, convolve to 7.5 arcsec, and multiply by a radially varying mass-to-light ratio predicted from 15 arcsec radial profiles of SFR-to-WISE1 luminosity smoothed with a 2 kpc kernel.",
+   "software": [],
+   "key_parameters": [
+    "Annulus for IRAC background: 1.5 to 3 r25; unmasked central region: 10 arcsec (IRAC) or 0.5 r25 (WISE); resolution: 7.5 arcsec for mass map, 15 arcsec and 2 kpc kernel for M/L profile; Equation 3 parameters: a = -11.0, b = -0.375, c = -10.2"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF, Bruzual & Charlot (2003) models, and same mass-to-light ratio Upsilon_star^3.4 for 3.4 um and 3.6 um with inclination factor cos(i)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure stellar disk sizes (effective radius Re and exponential scale length l_star)",
+   "method": "Construct radial profiles of stellar mass surface density at 7.5 arcsec resolution (using mean within 30 arcsec and median within +-75 deg of major axis outside 30 arcsec), subtract background outside 2 r25, integrate out to 2 r25 to find half-mass radius Re, and fit an exponential over 0.4-1.0 r25 (adjusted by eye) to derive l_star.",
+   "software": [],
+   "key_parameters": [
+    "Central aperture: 30 arcsec (all position angles, mean); outer rings: within +-75 deg of major axis (median); background: > 2 r25; integration limit: 2 r25; exponential fit range: 0.4 to 1.0 r25"
+   ],
+   "assumptions": [
+    "Azimuthal symmetry when integrating radial profiles"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate integrated and resolved star formation rates (SFR)",
+   "method": "Combine GALEX FUV (or NUV) and WISE4 22 um (or WISE3 12 um) luminosities using linear conversion factors C calibrated to the GSWLC.",
+   "software": [],
+   "key_parameters": [
+    "log10 C: -43.42 (FUV), -43.24 (NUV), -42.73 (WISE4 with FUV), -42.79 (WISE4 with NUV), -42.63 (WISE4 alone)"
+   ],
+   "assumptions": [
+    "Recent star formation history does not vary strongly across the sample; Chabrier (2003) IMF via GSWLC calibration"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Process ALMA interferometric and total power observations into science-ready data cubes and moment maps",
+   "method": "Apply ALMA pipeline calibration to 12-m and 7-m data; perform uv continuum subtraction, spectral regridding/rebinning to ~2.54 km s^-1, and empirical reweighting in CASA 5.6.1; run two-stage tclean (multiscale to 4 sigma, Hogbom to 1 sigma); apply primary beam correction and convolve to round Gaussian beam; linearly mosaic multi-part galaxies; feather with calibrated, baseline-subtracted TP cubes; convert to Kelvin; convolve to fixed angular and physical resolutions; generate 3D noise models, strict and broad masks, and moment maps (mom0, mom8, mom1, mom2, effective width) with uncertainty maps.",
+   "software": [
+    "ALMA Calibration Pipeline",
+    "CASA",
+    "PHANGS-ALMA Pipeline",
+    "PHANGS-ALMA Total Power Pipeline",
+    "GILDAS",
+    "spectral-cube",
+    "radio-beam",
+    "cprops",
+    "astropy",
+    "numpy",
+    "scipy"
+   ],
+   "key_parameters": [
+    "Multiscale clean threshold: 4 sigma; Hogbom clean threshold: 1 sigma; strict mask: S/N > 4 in 2 channels expanded to S/N > 2 in 2 channels; moment 1 prior tolerance: +-30 km s^-1 and S/N >= 2 in mom0; peak intensity boxcar kernel: 12.5 km s^-1; target resolutions: 2, 7.5, 11, 15 arcsec and 60, 90, 120, 150, 500, 750, 1000 pc (10% tolerance)"
+   ],
+   "assumptions": [
+    "Spatial and spectral variations of the noise in each cube are separable; conversion to molecular gas mass assumes Milky Way alpha_CO^(1-0) = 4.35 M_sun pc^-2 (K km s^-1)^-1 and R_21 = 0.65 (giving alpha_CO^(2-1) = 6.7 M_sun pc^-2 (K km s^-1)^-1) and fiducial line width 5 km s^-1 for sensitivity metrics"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Measure integrated CO(2-1) luminosities, derive WISE3 aperture corrections, and validate against IRAM 30-m HERACLES maps",
+   "method": "Integrate 17 arcsec resolution PHANGS-ALMA CO(2-1) cubes within a wide mask to obtain L_CO; compute aperture correction as the ratio of total galaxy WISE3 flux to WISE3 flux within the ALMA footprint; compare integrated fluxes and pixel-by-pixel intensities at 17 arcsec resolution with IRAM 30-m HERACLES CO(2-1) maps for 18 galaxies.",
+   "software": [],
+   "key_parameters": [
+    "Cube resolution for integration and HERACLES comparison: 17 arcsec; pixel-by-pixel comparison threshold: I_CO > 1 K km s^-1 (1,161 sightlines across 18 galaxies)"
+   ],
+   "assumptions": [
+    "CO(2-1) intensity tracks WISE3 12 um intensity linearly within individual galaxies"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Monte Carlo expected sample size (with distance uncertainties)",
+   "value": "76",
+   "uncertainty": "+-6",
+   "units": "galaxies",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\ldots$ expected sample size | $76 \\pm 6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Monte Carlo sample selection false positive rate (with distance uncertainties)",
+   "value": "42",
+   "uncertainty": "+-4",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\ldots$ false positive rate | $42\\% \\pm 4\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Monte Carlo sample selection false negative rate (with distance uncertainties)",
+   "value": "47",
+   "uncertainty": "+-5",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\ldots$ false negative rate | $47\\% \\pm 5\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average WISE1 mass-to-light ratio (Upsilon_star^3.4)",
+   "value": "0.35",
+   "uncertainty": "0.1 dex",
+   "units": "M_sun L_sun^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3.2 Checks on Stellar Mass Estimates",
+     "quote": "We find $\\mbox{$\\Upsilon_\\star^{3.4}$}= 0.35$ ${\\rm M}_\\odot~{\\rm L}_\\odot^{-1}$ on average."
+    },
+    {
+     "loc": "4.3.2 Checks on Stellar Mass Estimates",
+     "quote": "we suggest adopting $\\pm 0.1$ dex as a realistic systematic uncertainty on stellar masses of individual galaxies (cite: MEIDT14)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median offset between PHANGS-MUSE and near-IR stellar mass surface density",
+   "value": "0.08",
+   "uncertainty": "0.11 (scatter)",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| PHANGS–MUSE$^{b}$ | $0.08$ | $0.11$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical ratio of effective radius to exponential scale length (Re / l_star)",
+   "value": "1.41",
+   "uncertainty": "0.12 dex (scatter)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.4.2 Translation Between Different Size Estimates",
+     "quote": "$R_e^{\\rm disk} = 1.41~l_\\star \\quad {\\rm or} \\quad l_\\star = 0.71~R_e^{\\rm disk}~.$"
+    },
+    {
+     "loc": "Table 6",
+     "quote": "| Our $R_e$ (253) | $1.41$ | $0.12$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical ratio of r25 to effective radius (r25 / Re)",
+   "value": "3.08",
+   "uncertainty": "0.14 dex (scatter)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| $r_{25}$ (255$^{c}$) | $3.08$ | $0.14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical ratio of r25 to exponential scale length (r25 / l_star)",
+   "value": "4.3",
+   "uncertainty": "0.13 dex (scatter)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| $r_{25}$ (253) | $4.3$ | $0.13$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio of PHANGS-MUSE H-alpha to FUV+WISE4 SFR surface density",
+   "value": "0.73",
+   "uncertainty": "0.2 dex (rms scatter)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.5.2 UV+IR and PHANGS–MUSE Balmer-Decrement",
+     "quote": "Specifically, treating all points equally yields a median H$\\alpha$-to-FUV+WISE4 ratio of $\\approx 0.73$, or $-0.14$ dex, with $\\approx 0.2$ dex, or $60\\%$ rms scatter about the median."
+    }
+   ]
+  },
+  {
+   "quantity": "WISE3 CO(2-1) aperture correction factor (median)",
+   "value": "1.25",
+   "uncertainty": "1.10-1.57 (16th-84th percentile)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 9",
+     "quote": "| WISE3 (adopted) | $1.25~(1.10{-}1.57)$ | $0.82$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear correlation coefficient between normalized WISE3 and CO(2-1) intensity",
+   "value": "0.82",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 9",
+     "quote": "| WISE3 (adopted) | $1.25~(1.10{-}1.57)$ | $0.82$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median integrated CO(2-1) flux ratio (PHANGS-ALMA to IRAM 30-m HERA)",
+   "value": "0.97",
+   "uncertainty": "0.06 dex (scatter)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.6.2 Checks on CO(2–1) Luminosity",
+     "quote": "We find a median PHANGS-to-HERA ratio of $0.97$, or $-0.01$ dex, with a robustly-estimated galaxy-to-galaxy scatter of $0.06$ dex, or about $15\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median pixel-by-pixel CO(2-1) intensity ratio at 17 arcsec (PHANGS-ALMA to IRAM 30-m HERA)",
+   "value": "0.93",
+   "uncertainty": "+-0.11 dex (scatter)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.6.2 Checks on CO(2–1) Luminosity",
+     "quote": "Here we find a median ratio of $0.93$ ($-0.03$ dex) and a robustly estimated scatter of $\\pm 0.11$ dex or about $\\pm 28\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median stellar mass (log10 M_star)",
+   "value": "10.36",
+   "uncertainty": "9.74-10.72 (16th-84th percentile)",
+   "units": "dex (M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 10",
+     "quote": "| $\\log_{10}$ $M_\\star$ [M$_\\odot$] | $9.45$ | $9.74$ | $10.36$ | $10.72$ | $10.94$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median star formation rate (log10 SFR)",
+   "value": "-0.09",
+   "uncertainty": "-0.57 to 0.58 (16th-84th percentile)",
+   "units": "dex (M_sun yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 10",
+     "quote": "| $\\log_{10}$ SFR [M$_\\odot$ yr$^{-1}$] | $-0.89$ | $-0.57$ | $-0.09$ | $0.58$ | $0.74$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median CO(2-1) luminosity (log10 L_CO)",
+   "value": "8.29",
+   "uncertainty": "7.66-8.95 (16th-84th percentile)",
+   "units": "dex (K km s^-1 pc^2)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 10",
+     "quote": "| $\\log_{10} L_{\\rm CO}$$^{a}$ | $6.97$ | $7.66$ | $8.29$ | $8.95$ | $9.11$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median angular resolution of 12-m+7-m+TP cubes",
+   "value": "1.3",
+   "uncertainty": "+0.4/-0.2",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... angular [$''$] | $1.3^{+0.4}_{-0.2}$ ($0.6{-}2.1$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median physical resolution of 12-m+7-m+TP cubes",
+   "value": "98",
+   "uncertainty": "+31/-35",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... physical [pc] | $98^{+31}_{-35}$ ($26{-}183$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median 1-sigma noise in 12-m+7-m+TP cubes at native resolution",
+   "value": "6.2",
+   "uncertainty": "+2.4/-1.8",
+   "units": "mJy beam^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... mJy beam$^{-1}$ native res. | $6.2_{-1.8}^{+2.4}$ ($4.4{-}8.6$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median 1-sigma brightness temperature noise at native resolution",
+   "value": "85",
+   "uncertainty": "+36/-41",
+   "units": "mK",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... mK native res. | $85_{-41}^{+36}$ ($4.4{-}8.6$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median 1-sigma point mass sensitivity at native resolution",
+   "value": "21",
+   "uncertainty": "+13/-10",
+   "units": "10^3 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... mass$^{b,c}$ native res. [$10^3$ M$_\\odot$] | $21^{+13}_{-10}$ ($1.5{-}76$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median 1-sigma molecular gas surface density noise at native resolution",
+   "value": "2.0",
+   "uncertainty": "+0.8/-1.0",
+   "units": "M_sun pc^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... $\\Sigma_{\\rm mol}$ $^{b,c}$ native res. [M$_\\odot$ pc$^{-2}$] | $2.0^{+0.8}_{-1.0}$ ($0.8{-}8.7$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median flux completeness in strict mask at native resolution",
+   "value": "61",
+   "uncertainty": "+20/-24",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... at native resolution | $61^{+20}_{-24}\\%$ ($0{-}94$%) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total physical area mapped by PHANGS-ALMA",
+   "value": "10650",
+   "uncertainty": "not stated",
+   "units": "kpc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... total for survey [kpc$^2$] | 10,650 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total angular area mapped by PHANGS-ALMA",
+   "value": "1050",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 15",
+     "quote": "| ... total for survey [arcmin$^2$] | 1,050 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact numeric value of Briggs weighting robust parameter used in tclean (deferred to Leroy et al. 2021a)",
+  "Exact multiscale clean scales, cell size, and image dimensions used in tclean (deferred to Leroy et al. 2021a)",
+  "Exact line-free frequency/velocity channel ranges used for uv continuum subtraction and TP baseline subtraction (deferred to Leroy et al. 2021a and Herrera et al. 2020)",
+  "Exact by-hand star/artifact masks and background annulus adjustments used for the IRAC and WISE photometry of each individual galaxy",
+  "Exact radial fitting ranges adjusted by eye for each galaxy when fitting exponential disk scale length l_star"
+ ],
+ "missing_for_reproduction": [
+  "Companion paper Leroy et al. (2021a) and Herrera et al. (2020) are required for the exact CASA tclean, uv staging, and TP reduction parameters.",
+  "By-hand star/artifact masks and visual adjustments to background annuli and exponential profile fitting ranges for individual galaxies in the IRAC/WISE analysis."
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "All ALMA project codes, observation logs, target coordinates, distances, physical property tables, and calibration formulas are exhaustively tabulated, and both the science-ready data products and the CASA+Python processing pipeline are publicly released (with low-level pipeline parameters documented in the companion paper Leroy et al. 2021a).",
+ "rediscovery_reason": "All raw ALMA data and high-level data products are public, the reduction pipeline is open-source, and the paper provides comprehensive quantitative benchmarks (integrated CO luminosities, cube noise/resolution statistics, WISE3 aperture corrections, and stellar mass/size measurements) for 90 galaxies.",
+ "source_card": "cards/2021ApJS..257...43L/sonnet/card.md"
+}

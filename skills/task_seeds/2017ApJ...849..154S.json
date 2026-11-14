@@ -1,0 +1,218 @@
+{
+ "bibcode": "2017ApJ...849..154S",
+ "title": "ALMA Pinpoints a Strong Overdensity of U/LIRGs in the Massive Cluster XCS J2215 at z = 1.46",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa93f6",
+ "arxiv_id": "1705.03479",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Are the submillimetre sources in the core of the z=1.46 cluster XCS J2215 cluster members, and what are their SFRs, gas content and dynamical masses, and are they affected by environment?",
+ "alma_project_codes": [
+  "2015.1.00575.S",
+  "2013.1.01213.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.25 mm, six-pointing mosaic) and Band 3 (single pointing)",
+  "arrays": "Band 6: forty-two 12 m antennae; Band 3: thirty-nine 12 m antennae",
+  "angular_resolution": "Band 6 beam ~0.66\" x 0.47\" (PA ~78 deg)",
+  "sensitivity": "Band 6 rms 48 uJy/beam at deepest point; Band 3 channel noise 0.3-0.8 mJy/beam at 50 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic and photometric redshift catalogues of cluster members (H10, H09)",
+    "evidence": [
+     {
+      "loc": "2.4 Source Detection",
+      "quote": "the 25 spectroscopic members from H10, the 46 sources from H09 with photometric redshifts indicating possible cluster membership"
+     }
+    ]
+   },
+   "citation": "(cite: hilton2010xmm; hilton2009xmm)"
+  },
+  {
+   "what": {
+    "value": "Archival CO(2-1) detections for five further sources",
+    "evidence": [
+     {
+      "loc": "3 Analysis and Results",
+      "quote": "we match the remaining fainter continuum sources to the (cite: hayashi2017evolutionary) $^{12}$CO(2–1) catalog, finding five further matches: IDs 1, 5, 10, 13, 14."
+     }
+    ]
+   },
+   "citation": "(cite: hayashi2017evolutionary)"
+  },
+  {
+   "what": {
+    "value": "Median rest-frame H-band mass-to-light ratio of ECDFS SMGs",
+    "evidence": [
+     {
+      "loc": "3.2 CO Line Properties",
+      "quote": "apply their median rest-frame $H$-band mass-to-light ratio to our sample"
+     }
+    ]
+   },
+   "citation": "(cite: da2015alma)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Detect 1.25 mm continuum sources",
+   "method": "Aegean source finder on mosaic with local noise map, >4 sigma; negative map used for reliability",
+   "software": [
+    "AEGEAN"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search and measure CO lines",
+   "method": "Targeted spectra extraction at known positions plus blind search in collapsed 300 km/s bins; Gaussian fits",
+   "software": [
+    "scipy.curve_fit",
+    "AEGEAN",
+    "CASA"
+   ],
+   "key_parameters": [
+    "bins of 300 km/s stepped by 100 km/s, >4 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive FIR luminosities and SFRs",
+   "method": "Fit template SEDs to 100-1250 um photometry, integrate 8-1000 um, Kennicutt relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "sources at cluster redshift; Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO luminosities, gas and dynamical masses",
+   "method": "Solomon & Vanden Bout L'CO relation; Mgas with alpha_CO=1; Mdyn disk model with R=7 kpc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=1 (4.36 as alternative), R=7 kpc, random-disk inclination, r21/10=0.84"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of S/N>4 1.25 mm sources",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.4 Source Detection",
+     "quote": "we detect 14 S/N $>$ 4.0$\\sigma$ candidate sources from the Band 6 continuum map"
+    }
+   ]
+  },
+  {
+   "quantity": "Overdensity relative to blank field",
+   "value": "~7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.4 Source Detection",
+     "quote": "we appear to be detecting a $\\sim$ 7$\\times$ overdensity of millimetre sources"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion of 11 mm-selected members",
+   "value": "1040",
+   "uncertainty": "100",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Analysis and Results",
+     "quote": "we derive a rest-frame velocity dispersion of $\\sigma=$ 1040$\\pm$100 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas mass (alpha_CO=1)",
+   "value": "1.6e10",
+   "uncertainty": "0.2e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 CO Line Properties",
+     "quote": "$M_{\\rm\n  gas}=1.6\\pm0.2\\times 10^{10}$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "r54/21",
+   "value": "0.37",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 CO Line Properties",
+     "quote": "$r_{54/21}=0.37\\pm 0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas consumption timescale",
+   "value": "200",
+   "uncertainty": "100",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 CO Line Properties",
+     "quote": "we estimate a median gas consumption timescale of 200$\\pm$100 Myrs"
+    }
+   ]
+  },
+  {
+   "quantity": "Median FWHM21/FWHM54",
+   "value": "0.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "FWHM$_{21}$/FWHM$_{54}$ = 0.7 $\\pm$ 0.2"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Band 3 beam size and clean thresholds",
+  "Cell size and image size",
+  "Line-free channels used for continuum subtraction",
+  "Deblended SCUBA-2/Herschel flux values and SED template choice per source",
+  "Details of the CO(5-4)/CO(2-1) brightness ratio conversion",
+  "Aegean parameters beyond the 4 sigma threshold",
+  "Spectral binning used in Gaussian fitting"
+ ],
+ "missing_for_reproduction": [
+  "Cell/image size and Band 3 imaging details",
+  "Deblended single-dish fluxes",
+  "Exact SED fitting setup",
+  "Stellar mass derivation details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear outline, but several imaging and SED fitting details are missing.",
+ "rediscovery_reason": "Public ALMA data; numeric results such as source count, CO fluxes and line ratios are reproducible, though some settings are missing.",
+ "source_card": "cards/2017ApJ...849..154S/sonnet/card.md"
+}

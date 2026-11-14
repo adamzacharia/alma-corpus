@@ -1,0 +1,787 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018MNRAS.480.1006L",
+  "title": "The curious case of II Lup: a complex morphology revealed with SAM/NACO and ALMA",
+  "year": 2018,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Lykou, Foteini",
+  "n_authors": 8,
+  "arxiv_id": "1808.00279",
+  "doi": "10.1093/mnras/sty1903",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2013.1.00070.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "the discovery of the envelope’s non-spherical morphology with the use of high-angular resolution imaging techniques with the sparse aperture masking mode on NACO/VLT (that enables diffraction limited resolution from a single telescope) and with ALMA."
+   },
+   {
+    "loc": "3.3 ALMA",
+    "quote": "The ALMA data, from project 2013.1.00070.S, were extracted from the ALMA archive and processed using the reduction scripts from the archive to re-create the fully calibrated measurement set."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "II Lup",
+     "coordinates": {
+      "value": "15 23 05.075 -51 25 58.73 (2MASS, J2000)",
+      "evidence": [
+       {
+        "loc": "2.1 On the astrometry and distance.",
+        "quote": "We have adopted the distance of 590 pc proposed by (cite: groenewegen2002a) and (cite: menzies2006)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "2MASS            | 15 23 05.075     | -51 25 58.73"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "590 pc",
+      "evidence": [
+       {
+        "loc": "2.1 On the astrometry and distance.",
+        "quote": "We have adopted the distance of 590 pc proposed by (cite: groenewegen2002a) and (cite: menzies2006)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "2MASS            | 15 23 05.075     | -51 25 58.73"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Groenewegen 2002a and Menzies 2006, from the period-luminosity relation of Whitelock 2006",
+      "evidence": [
+       {
+        "loc": "2.1 On the astrometry and distance.",
+        "quote": "We have adopted the distance of 590 pc proposed by (cite: groenewegen2002a) and (cite: menzies2006)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "2MASS            | 15 23 05.075     | -51 25 58.73"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the morphology of the circumstellar envelope of the carbon-rich AGB star II Lup, and is it non-spherical (spiral, binary-shaped) from near-IR aperture masking and archival ALMA data?",
+    "evidence": [
+     {
+      "loc": "7.2 Tracing the circumstellar envelope with ALMA",
+      "quote": "To test the validity of the asymmetries detected with aperture masking, we retrieved an ALMA data set from the archive"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00070.S",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "The ALMA data, from project 2013.1.00070.S, were extracted from the ALMA archive"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.276 GHz",
+     "evidence": [
+      {
+       "loc": "Table 6",
+       "quote": "$^{12}$CO     | $J=1-0$        | 115.276"
+      }
+     ]
+    },
+    {
+     "species": "HC3N",
+     "transition": "J=11-10",
+     "rest_frequency": "100.083 GHz",
+     "evidence": [
+      {
+       "loc": "Table 6",
+       "quote": "HC$_3$N       | $J=11-10$      | 100.083"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=2-1",
+     "rest_frequency": "97.9873 GHz",
+     "evidence": [
+      {
+       "loc": "Table 6",
+       "quote": "CS            | $J=2-1$        | 97.9873"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "v=0, J=2-1",
+     "rest_frequency": "86.8526 GHz",
+     "evidence": [
+      {
+       "loc": "Table 6",
+       "quote": "SiO           | $\\nu=0, J=2-1$ | 86.8526"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "39 12 m antennas",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA",
+      "quote": "in an array configuration containing 39 of the 12 m antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.06 m to 1574.37 m",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA",
+      "quote": "minimum and maximum baselines of 15.06 m and 1574.37 m respectively"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "max resolution 0.42 arcsec at ~115.27 GHz",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA",
+      "quote": "This provides a maximum resolution of 0.42 arcsec at frequency $\\sim$115.27 GHz"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "RMS 5 mJy per 2.54 km/s channel",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA",
+      "quote": "The final image created has an RMS noise of 5mJy in a single 2.54 km s$^{-1}$ line-free channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2015 August 16",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA",
+      "quote": "The ALMA observations were conducted on 2015 August 16"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLT/NACO SAM",
+     "provided": {
+      "value": "Ks, L', M' aperture-masking interferometry (9-hole mask)",
+      "evidence": [
+       {
+        "loc": "3.1 NACO",
+        "quote": "We have used the 9–hole mask where each hole corresponds to an effective aperture of 0.92 metres."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/VISIR",
+     "provided": {
+      "value": "mid-IR images, unresolved, not used",
+      "evidence": [
+       {
+        "loc": "3.2 VISIR",
+        "quote": "The raw images indicated that II Lup is unresolved in both filters"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Gas expansion velocity 22.2 km/s",
+      "evidence": [
+       {
+        "loc": "7.1",
+        "quote": "We adopt the gas expansion velocity $v_\\text{exp}=22.2$ km s$^{-1}$(cite: nyman1993)"
+       }
+      ]
+     },
+     "citation": "(cite: nyman1993)"
+    },
+    {
+     "what": {
+      "value": "Period-luminosity relation for C-rich Miras",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "Using the Period-Luminosity relation for carbon-rich Miras of (cite: whitelock2006) ($M_\\text{bol}=-2.54\\log P+1.87$)"
+       }
+      ]
+     },
+     "citation": "(cite: whitelock2006)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Archive reduction scripts re-creating the calibrated measurement set",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "processed using the reduction scripts from the archive to re-create the fully calibrated measurement set"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1-5 (imaging)",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "The calibrated data were imaged in casa ver.5.1.1-5 (cite: CASA)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "with the task tclean"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "using a natural weighting of the visibilities"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.7 arcsec; baselines <30 m removed",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "Visibilities from the baselines less than 30 m were also removed during imaging as they contributed a large scale artefact"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.144 x 0.821 arcsec2, elongated east-west",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "has a synthesised beam of $1.144\\times 0.821$ arcsec$^2$, elongated east-west"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "5 mJy per 2.54 km/s channel",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "RMS noise of 5mJy in a single 2.54 km s$^{-1}$ line-free channel"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SAM data reduction pipeline",
+      "evidence": [
+       {
+        "loc": "3.1 NACO",
+        "quote": "We followed the standard data reduction process for SAM data using a pipeline developed at the University of Sydney"
+       }
+      ]
+     },
+     "from_reference": "(cite: tuthill2000; lacour2011)"
+    },
+    {
+     "what": {
+      "value": "Spiral analysis and arm separation to orbital period equation",
+      "evidence": [
+       {
+        "loc": "7.2",
+        "quote": "we follow the analysis of (cite: mayer2013) to determine initial parameters for the putative spiral around II Lup"
+       }
+      ]
+     },
+     "from_reference": "(cite: mayer2013)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image size and cell size for tclean",
+    "Spectral window and channel choices and velocity frame",
+    "Continuum subtraction and line-free channels",
+    "Deconvolver, threshold and masking",
+    "Method for primary beam correction",
+    "How the radial cuts and peak positions were measured",
+    "Spiral toy-model parameters (flattening, starting angle)",
+    "Details of ALMA flux calibration"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image archival ALMA line cubes",
+    "method": {
+     "value": "tclean on the archive-calibrated MS with natural weights, 0.7 arcsec uv-taper, baselines <30 m removed",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "using a natural weighting of the visibilities and a $uv$-taper of 0.7 arcsec to taper the signal from the longest baselines"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure spiral arm separation from CO radial cuts",
+    "method": {
+     "value": "Radial cuts in four directions from the 2MASS position; peaks measured and median separations computed; toy-model spiral overplotted",
+     "evidence": [
+      {
+       "loc": "7.2",
+       "quote": "we obtain radial cuts in the CO image in four directions: south, north, east and west."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with spiral models of Homan et al. 2015 via P-V diagrams",
+     "evidence": [
+      {
+       "loc": "7.2",
+       "quote": "We compare these diagrams to the work of (cite: homan2015)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive orbital period from arm separation",
+    "method": {
+     "value": "rho = v_exp P pi (Mayer et al. 2013)",
+     "evidence": [
+      {
+       "loc": "7.2",
+       "quote": "We derive an orbital period of about 128 years."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "v_exp = 22.2 km/s, distance 590 pc",
+      "evidence": [
+       {
+        "loc": "7.2",
+        "quote": "for the adopted distance of 590 pc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1-5",
+    "used_for": {
+     "value": "ALMA imaging with tclean",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA",
+       "quote": "imaged in casa ver.5.1.1-5 (cite: CASA), with the task tclean"
+      }
+     ]
+    }
+   },
+   {
+    "name": "macim",
+    "version": "not stated",
+    "used_for": {
+     "value": "SAM image reconstruction",
+     "evidence": [
+      {
+       "loc": "3.1 NACO",
+       "quote": "macim (cite: ireland2006) and mira (cite: thiebaut2008)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "mira",
+    "version": "not stated",
+    "used_for": {
+     "value": "SAM image reconstruction with sparco",
+     "evidence": [
+      {
+       "loc": "5",
+       "quote": "We used mira by incorporating the tool sparco (cite: kluska2014)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "period04",
+    "version": "not stated",
+    "used_for": {
+     "value": "period analysis of IR light curves",
+     "evidence": [
+      {
+       "loc": "2.4",
+       "quote": "We have re-analysed all available infrared time-series photometry from the literature with period04"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Aladin",
+    "version": "not stated",
+    "used_for": {
+     "value": "astrometry",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "We extracted astrometric information on II Lup using the `Aladin`[^3] tool"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median CO spiral arm separation",
+    "value": "1.7",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "7.2",
+      "quote": "We find a median separation of 1.7 arcsec."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of spiral windings detected in CO",
+    "value": "12",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "7.2",
+      "quote": "a total of 12 windings were detected, out to the largest distance of 23 arcsec"
+     }
+    ]
+   },
+   {
+    "quantity": "Orbital period from arm spacing",
+    "value": "128",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "7.2",
+      "quote": "We derive an orbital period of about 128 years."
+     }
+    ]
+   },
+   {
+    "quantity": "CO envelope extent",
+    "value": "23",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "7.2",
+      "quote": "extends as far out as 23 arcsec from the central source in the CO (1–0) transition"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO, SiO, CS and HC3N maps all show spiral signatures",
+    "evidence": [
+     {
+      "loc": "7.2",
+      "quote": "All four images show a clear spiral signature."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the envelope of II Lup spiral-shaped, implying binarity?",
+    "experiment": "Archival ALMA CO, SiO, CS and HC3N channel maps; radial cuts of CO",
+    "result": "12 windings with median separation 1.7 arcsec",
+    "finding": "A spiral exists; implied orbital period of 128 yr at 590 pc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7.3",
+      "quote": "We find that the ALMA data provides strong support for the existence of a spiral structure"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "CO image affected by missing short spacings; large structure resolved out",
+     "evidence": [
+      {
+       "loc": "7.2",
+       "quote": "The ALMA CO image is significantly affected by missing short spacings."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Spiral and period rest on assumed distance 590 pc and v_exp",
+    "Spiral fit is a qualitative toy model without uncertainties",
+    "The 1.7 arcsec separation is single-epoch and velocity-channel dependent"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data retrieved from the ALMA archive",
+    "evidence": [
+     {
+      "loc": "3.3 ALMA",
+      "quote": "were extracted from the ALMA archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Image and cell size, channel selection and masking",
+    "Radial cut and peak-finding procedure"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Public archival data and basic imaging parameters, but many details unstated and the spiral analysis is qualitative.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe incomplete and the key results are partly qualitative."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: mayer2013)",
+     "why": "Spiral arm separation and orbital period equations"
+    },
+    {
+     "citation": "(cite: homan2015)",
+     "why": "Simulated P-V diagrams of AGB spirals"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-6d0bcedf502f66959e34cdcbe701eaa9",
+  "batch_id": "msgbatch_01CoFhDKJXQMorHDgs8xmCbp",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:33:26",
+  "usage": {
+   "input_tokens": 26538,
+   "output_tokens": 5272,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.053505,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 50,
+  "quotes_ok": 50,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 35,
+   "rate": 0.53
+  },
+  "evidence_ok": true
+ }
+}

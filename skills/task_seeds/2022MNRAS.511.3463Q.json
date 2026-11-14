@@ -1,0 +1,317 @@
+{
+ "bibcode": "2022MNRAS.511.3463Q",
+ "title": "ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - VIII. A search for hot cores by using C<SUB>2</SUB>H<SUB>5</SUB>CN, CH<SUB>3</SUB>OCHO, and CH<SUB>3</SUB>OH lines",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac219",
+ "arxiv_id": "2201.10044",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "To build a large sample of hot cores using C2H5CN, CH3OCHO, and CH3OH lines from the ATOMS 3 mm survey, and investigate their heating mechanisms and nitrogen/oxygen chemical differentiation.",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12-m array used for analysis (observed with both ACA 7-m and 12-m array)",
+  "angular_resolution": "~1.2-1.9 arcsec",
+  "sensitivity": "mean 1 sigma better than 10 mJy beam^-1 per channel for lines, and 0.4 mJy beam^-1 for continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of 453 compact dense cores and initial 90 hot core candidates in 146 massive clumps",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "90 out of a total of 453 compact dense cores have been considered as hot core candidates based on number of emission lines (Liu et al. 2021)."
+     },
+     {
+      "loc": "Line and hot core identifications",
+      "quote": "As stated before, 453 compact dense cores were found in 146 massive clumps (Liu et al. 2021)."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Source distances",
+    "evidence": [
+     {
+      "loc": "Line and hot core identifications",
+      "quote": "Considering the distances (Liu et al. 2021a) and source sizes, the 60 cores have source size smaller than 0.1 pc."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2021a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Inspect cores, extract spectra, and select hot core candidates",
+   "method": "Inspect line emission of the 453 compact dense cores one by one, extract spectra at the line-rich positions, and select line-rich cores with >3 transitions of COMs.",
+   "software": [],
+   "key_parameters": [
+    "More than 3 transitions of C2H5CN, CH3OCHO, or CH3OH detected"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify molecular lines and derive rotation temperatures, column densities, and relative abundances",
+   "method": "Solve the radiative transfer equation and generate synthetic spectra for C2H5CN, CH3OCHO, and CH3OH using XCLASS and optimize parameters with MAGIX.",
+   "software": [
+    "XCLASS",
+    "MAGIX",
+    "CDMS",
+    "JPL"
+   ],
+   "key_parameters": [
+    "Source size fixed to deconvolved angular size of the continuum source (theta_source = sqrt(a*b))",
+    "Velocity offset fixed with reference to CH3OH line at 100.6389 GHz",
+    "Hot core criteria: T_rot > 100 K and source size < 0.1 pc"
+   ],
+   "assumptions": [
+    "Local thermodynamical equilibrium (LTE)",
+    "For cores with <3 CH3OH transitions detected, CH3OH gas temperature is assumed equal to T_rot of CH3OCHO (or C2H5CN if CH3OCHO is undetected)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map spatial distributions and identify N/O chemical differentiation and heating mechanisms",
+   "method": "Create line images of C2H5CN (98523 MHz), CH3OCHO (98792 MHz), CH3OH (100639 MHz), H40alpha (99023 MHz), and SiO (86847 MHz), and compare their emission peak positions with continuum and H40alpha peaks.",
+   "software": [],
+   "key_parameters": [
+    "Position accuracy threshold of 0.3 arcsec (from 1.9 arcsec resolution and 3 sigma S/N)"
+   ],
+   "assumptions": [
+    "Hot cores adjacent to H40alpha-traced UC HII regions with CH3OH peaks offset from the continuum peak are externally heated"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Statistical analysis of rotation temperatures and column densities",
+   "method": "Perform linear fittings between rotation temperatures and log column densities and between log column densities of different species, and apply Kolmogorov-Smirnov (K-S) tests comparing externally and internally heated hot cores.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of identified hot cores",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "A total of 60 hot cores are identified with 45 being newly detected, in which the complex organic molecules have high gas temperatures ($>$ 100 K) and small source sizes ($<$ 0.1 pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of newly detected hot cores",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "A total of 60 hot cores are identified with 45 being newly detected, in which the complex organic molecules have high gas temperatures ($>$ 100 K) and small source sizes ($<$ 0.1 pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation temperature range of C2H5CN",
+   "value": "100-285",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "From Table 1, one can see that the rotation temperatures of C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH range from 100–285 K, 100–230 K and 100–290 K respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation temperature range of CH3OCHO",
+   "value": "100-230",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "From Table 1, one can see that the rotation temperatures of C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH range from 100–285 K, 100–230 K and 100–290 K respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation temperature range of CH3OH",
+   "value": "100-290",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "From Table 1, one can see that the rotation temperatures of C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH range from 100–285 K, 100–230 K and 100–290 K respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density range of CH3OH",
+   "value": "8.6e16 to 1.5e19",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "When compared with C$_2$H$_5$CN and CH$_3$OCHO, CH$_3$OH has the largest column densities ranging from 8.6$\\times$10$^{16}$ to 1.5 $\\times$10$^{19}$ cm$^{-2}$ which is 2–3 orders of magnitude higher than those of C$_2$H$_5$CN and 1–2 orders of magnitude higher than those of CH$_3$OCHO."
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance of C2H5CN to CH3OH",
+   "value": "8.4e-4 to 4e-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "The relative abundances range from 8.4$\\times$10$^{-4}$ to 4$\\times$10$^{-2}$ for C$_2$H$_5$CN and from 2.2$\\times$10$^{-2}$ to 2.8 $\\times$10$^{-1}$ for CH$_3$OCHO, respectively, which are in agreement with previous results in hot cores (Bøelund et al. 2019; Mookerjea et al. 2007; Allen et al. 2017; Guzmán et al. 2018; Law et al. 2021; Feng et al. 2016; Bonfand et al. 2017, 2019; Molet et al. 2019; Qin et al. 2010)."
+    }
+   ]
+  },
+  {
+   "quantity": "Relative abundance of CH3OCHO to CH3OH",
+   "value": "2.2e-2 to 2.8e-1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "The relative abundances range from 8.4$\\times$10$^{-4}$ to 4$\\times$10$^{-2}$ for C$_2$H$_5$CN and from 2.2$\\times$10$^{-2}$ to 2.8 $\\times$10$^{-1}$ for CH$_3$OCHO, respectively, which are in agreement with previous results in hot cores (Bøelund et al. 2019; Mookerjea et al. 2007; Allen et al. 2017; Guzmán et al. 2018; Law et al. 2021; Feng et al. 2016; Bonfand et al. 2017, 2019; Molet et al. 2019; Qin et al. 2010)."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between log(N(CH3OH)) and T_rot",
+   "value": "0.86",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "A linear fitting to the data gives log(N(CH$_3$OH))=0.022T$_{\\rm rot}$+14 with correlation coefficient of 0.86."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between log(N(CH3OCHO)) and T_rot",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "A similar trend is seen for CH$_3$OCHO with the relation log(N(CH$_3$OCHO))=0.017T$_{\\rm rot}$+14 and correlation coefficient of 0.68."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between log(N(C2H5CN)) and T_rot",
+   "value": "0.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "The linear fitting to C$_2$H$_5$CN data gives a correlation coefficent of 0.29, suggesting that column densities of C$_2$H$_5$CN are not sensitive to its rotation temperatures, though a weak increasing trend is seen."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between log(N(CH3OCHO)) and log(N(CH3OH))",
+   "value": "0.95",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "The linear fittings give log(N(CH$_3$OCHO))=1.1log(N(CH$_3$OH))–2.5 and log(N(C$_2$H$_5$CN))=1.2log(N(CH$_3$OH))–5.1 with correlation coefficients of 0.95 and 0.82 for CH$_3$OCHO and C$_2$H$_5$CN, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient between log(N(C2H5CN)) and log(N(CH3OH))",
+   "value": "0.82",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation temperatures, column densities and abundances relative to CH$_3$OH",
+     "quote": "The linear fittings give log(N(CH$_3$OCHO))=1.1log(N(CH$_3$OH))–2.5 and log(N(C$_2$H$_5$CN))=1.2log(N(CH$_3$OH))–5.1 with correlation coefficients of 0.95 and 0.82 for CH$_3$OCHO and C$_2$H$_5$CN, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of hot cores showing spatial N and O separation",
+   "value": "29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Line images",
+     "quote": "Considering position accuracy of 0.3 arcsec in line images, 29 cores clearly show nitrogen and oxygen separation, i.e., the emissions of C$_2$H$_5$CN and CH$_3$OCHO peak at different positions."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of externally heated hot cores",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on the spatial position difference between hot cores and UC Hii regions, we conclude that 24 hot cores are externally heated while the other hot cores are internally heated."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration method (pipeline vs manual) and specific calibrator sources",
+  "Imaging parameters in CASA (e.g., tclean weighting/robust parameter, deconvolver, cell size, image size, continuum subtraction task and line-free channel selection)",
+  "Method for extracting spectra at the line-rich positions (single pixel peak vs aperture averaged)",
+  "Optimization algorithm chosen within MAGIX for fitting XCLASS synthetic spectra and parameter error estimation method",
+  "Exact frequency integration ranges (velocity intervals) used to create the moment 0 integrated intensity line images in Figure 2"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel coordinates or aperture definitions used to extract the 1D spectra for each of the 60 cores (whether extracted at continuum peak or molecular line peak)",
+  "Complete list of specific molecular transitions and frequency ranges fitted in XCLASS/MAGIX for each core",
+  "CASA imaging scripts and continuum subtraction parameters (inherited from Liu et al. 2020a, 2021)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project code is public, the software tools (CASA 5.6, XCLASS, MAGIX) are standard and open, and the source coordinates, fixed source sizes, and derived physical parameters for all 60 cores are fully tabulated in Table 1. However, imaging details are deferred to companion papers, and the exact spectral extraction apertures and MAGIX optimization configurations are not explicitly specified.",
+ "rediscovery_reason": "Public ALMA data (2019.1.00685.S), well-defined LTE spectral fitting methodology using public software (XCLASS), and a comprehensive numeric answer key in Table 1 (rotation temperatures, column densities, and relative abundances for 60 cores) as well as linear regression slopes and K-S test results.",
+ "source_card": "cards/2022MNRAS.511.3463Q/sonnet/card.md"
+}

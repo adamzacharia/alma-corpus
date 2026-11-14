@@ -1,0 +1,1457 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023PASP..135f4503Z",
+  "title": "Regularized Maximum Likelihood Image Synthesis and Validation for ALMA Continuum Observations of Protoplanetary Disks",
+  "year": 2023,
+  "journal": "Publications of the Astronomical Society of the Pacific",
+  "first_author": "Zawadzki, Brianna",
+  "n_authors": 9,
+  "arxiv_id": "2209.11813",
+  "doi": "10.1088/1538-3873/acdf84",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2016.1.00484.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "To identify best practices for RML imaging, we used the GPU-accelerated open source Python package `MPoL`, a machine learning-based RML approach, to explore the influence of common RML regularizers"
+   },
+   {
+    "loc": "abstract",
+    "quote": "We used ALMA DSHARP observations of the protoplanetary disk around HD 143006 to compare the performance of `MPoL` and CLEAN"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "HD 143006",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "ALMA logo (mock dataset)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "Synthetic protoplanetary disk (from Pinte et al. 2016 simulation)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Which RML regularizers and cross-validation procedures give the best images of ALMA continuum protoplanetary disk data, and how does RML (MPoL) compare with CLEAN in resolution and sensitivity",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "there has not yet been a systematic exploration to test the imaging outcomes of various regularizers on ALMA protoplanetary disk observations"
+     },
+     {
+      "loc": "abstract",
+      "quote": "We provide general recommendations for building an RML workflow for image synthesis of ALMA protoplanetary disk observations, including effective use of CV."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00484.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/ JAO.ALMA#2016.1.00484.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (HD 143006, DSHARP)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "The second dataset in this study is a real Band 6 ALMA dataset containing the observations of the protoplanetary disk hosted by HD 143006"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C43-7 (alma.cycle7.7.cfg) for the simulated ALMA logo dataset only",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "with the C43-7 reference ALMA configuration from simobserve (`alma.cycle7.7.cfg`), to “observe” the source as it transits zenith for 1 hour under median atmospheric conditions."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "45 mas (HD 143006 DSHARP data)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "obtained by the DSHARP survey (cite: Andrews_2018) at a resolution of 45 mas."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "1 hour (simulated ALMA logo dataset only)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "to “observe” the source as it transits zenith for 1 hour under median atmospheric conditions."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "DSHARP survey archival observations, calibrated visibilities from the DSHARP archive",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "The full listing of archival observations can be found in (cite: Andrews_2018)"
+     },
+     {
+      "loc": "Data",
+      "quote": "the calibrated visibilities can be downloaded from the DSHARP archive"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "DSHARP survey (ALMA large program)",
+     "provided": {
+      "value": "Calibrated Band 6 continuum visibilities and the fiducial CLEAN image of HD 143006",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "obtained by the DSHARP survey (cite: Andrews_2018) at a resolution of 45 mas."
+       },
+       {
+        "loc": "Results",
+        "quote": "We also provide a comparison to the CLEAN image synthesized by the DSHARP team (cite: Andrews_2018)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Pinte et al. 2016 disk simulation",
+     "provided": {
+      "value": "Model image used to build the synthetic ground-truth dataset",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "The third dataset is a synthetic ALMA dataset we generated from a protoplanetary disk simulation described in (cite: Pinte_2016)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "DSHARP calibrated visibilities of HD 143006 (calibration by the DSHARP team)",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "The visibilities were originally calibrated by the DSHARP team following the standardized CASA procedures described in (cite: Andrews_2018)."
+       }
+      ]
+     },
+     "citation": "Andrews et al. 2018 (cite: Andrews_2018)"
+    },
+    {
+     "what": {
+      "value": "Total flux of HD 143006 (59 mJy) used to scale the synthetic image",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "we scaled the total flux of the image to 59 mJy, matching the total flux of HD 143006 (cite: Andrews_2018)."
+       }
+      ]
+     },
+     "citation": "Andrews et al. 2018 (cite: Andrews_2018)"
+    },
+    {
+     "what": {
+      "value": "Protoplanetary disk simulation image used as ground truth",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "The third dataset is a synthetic ALMA dataset we generated from a protoplanetary disk simulation described in (cite: Pinte_2016)."
+       }
+      ]
+     },
+     "citation": "Pinte et al. 2016 (cite: Pinte_2016)"
+    },
+    {
+     "what": {
+      "value": "DSHARP fiducial CLEAN image of HD 143006 used as comparison",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "We found that RML methods successfully recover all features that appear in the fiducial CLEAN image of HD 143006 synthesized by the DSHARP team (cite: Andrews_2018)"
+       }
+      ]
+     },
+     "citation": "Andrews et al. 2018 (cite: Andrews_2018)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Mock ALMA logo dataset made with CASA simobserve (C43-7, 1 hour)",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "The first is a small, mock dataset created from the ALMA logo"
+      }
+     ]
+    },
+    {
+     "value": "Synthetic disk dataset: Pinte et al. 2016 simulation image, 512 x 512 pixels of 0.01 arcsec, 59 mJy, DSHARP HD 143006 (u,v) sampling, Gaussian noise from the weights, visibilities from the MPoL NuFFT routine",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "We scaled the simulated image to $512 \\times 512$ pixels, with each pixel measuring 0.01 arcsec across"
+      },
+      {
+       "loc": "Data",
+       "quote": "We used the same $(u,v)$ sampling of the DSHARP observations of HD 143006."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Calibrated by the DSHARP team with standardized CASA procedures (Andrews et al. 2018)",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "The visibilities were originally calibrated by the DSHARP team following the standardized CASA procedures described in (cite: Andrews_2018)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "DSHARP-calibrated visibilities used with one extra step: empirical per-spectral-window rescaling of the weights",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "We performed one additional step of calibration beyond that of the DSHARP team."
+      },
+      {
+       "loc": "Data",
+       "quote": "Each spectral window was corrected individually by multiplying $\\sigma$ by a scale factor for that spectral window"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "MPoL RML images start from uniformly weighted gridded visibilities; residual dirty images use Briggs weighting, robust = 0.0",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "RML images in `MPoL` always begin with uniformly weighted visibilities"
+      },
+      {
+       "loc": "Results",
+       "quote": "imaged from the residual visibilities using the `DirtyImager` with Briggs weighting (robust = 0.0)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.01 arcsec per pixel (synthetic disk image)",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "with each pixel measuring 0.01 arcsec across"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "512 x 512 pixels (synthetic disk image)",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "We scaled the simulated image to $512 \\times 512$ pixels"
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Optional circular Gaussian restoring beams applied in the image plane with astropy.convolution",
+     "evidence": [
+      {
+       "loc": "Determining Image Resolution with RML",
+       "quote": "We used `astropy.convolution` to convolve the model with circular Gaussians directly in the image plane."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "No restoring beam for the base RML image; test beams of 11.5, 15.3, 23.0, 46.0 and 69.0 mas (1/4, 1/3, 1/2, 1, 3/2 of the DSHARP tclean synthesized beam)",
+     "evidence": [
+      {
+       "loc": "Determining Image Resolution with RML",
+       "quote": "restoring beams equal to 1/4, 1/3, 1/2, 1, and 3/2 times the synthesized beam size of the DSHARP continuum `tclean` image of HD 143006 (11.5, 15.3, 23.0, 46.0, and 69.0 mas, respectively)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "HD 143006 calibration and the full list of archival observations",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "The full listing of archival observations can be found in (cite: Andrews_2018)"
+       }
+      ]
+     },
+     "from_reference": "Andrews et al. 2018 (cite: Andrews_2018)"
+    },
+    {
+     "what": {
+      "value": "Full data-processing steps for the datasets",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "A full accounting of the data processing steps are available on the `mpoldatasets` repository"
+       }
+      ]
+     },
+     "from_reference": "mpoldatasets repository (github.com/MPoL-dev/mpoldatasets)"
+    },
+    {
+     "what": {
+      "value": "Walkthrough of the weight rescaling process",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "A walkthrough of this rescaling process is described as part of the `MPoL` documentation"
+       }
+      ]
+     },
+     "from_reference": "MPoL documentation and mpoldatasets repository"
+    },
+    {
+     "what": {
+      "value": "Definition of the maximum entropy loss",
+      "evidence": [
+       {
+        "loc": "Regularizers",
+        "quote": "We follow the definition in (cite: EHTCollab_2019) and define maximum entropy loss as"
+       }
+      ]
+     },
+     "from_reference": "(cite: EHTCollab_2019)"
+    },
+    {
+     "what": {
+      "value": "Definition of the TV loss",
+      "evidence": [
+       {
+        "loc": "Regularizers",
+        "quote": "Following (cite: Rudin_1992), we define the TV loss as"
+       }
+      ]
+     },
+     "from_reference": "(cite: Rudin_1992)"
+    },
+    {
+     "what": {
+      "value": "Choice of K=10 for K-fold cross-validation",
+      "evidence": [
+       {
+        "loc": "Best Practices for Image Validation",
+        "quote": "the standard $K=10$ has been used with success for such applications (cite: Akiyama_2017a; Akiyama_2017b; Yamaguchi_2020)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Akiyama_2017a; Akiyama_2017b; Yamaguchi_2020)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Number of spectral windows and execution blocks of the HD 143006 data and the per-spw scale factors",
+    "Image size and pixel size used for the HD 143006 RML images",
+    "Optimizer, learning rate and number of iterations for the full-data HD 143006 images",
+    "Lambda values of the entropy and sparsity terms in the final combined HD 143006 image (only lambda_TSV is given)",
+    "TV softening parameter epsilon",
+    "The lambda grids used for the cross-validation runs and the CV score values",
+    "Number of dartboard radial and azimuthal bins and the random seeds for the partitioning",
+    "MPoL version used (only a citation is given)",
+    "How the quoted resolution gain of up to a factor of 3 (abstract) or 2-3 (conclusion) was measured",
+    "CASA task parameters of the DSHARP tclean image used for comparison",
+    "HD 143006 coordinates and distance"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Rescale visibility weights of the DSHARP HD 143006 data",
+    "method": {
+     "value": "Build a tclean model, subtract it from the visibilities, and compare the scatter of the residuals with the Gaussian envelope expected from the thermal weights; multiply sigma by a per-spectral-window scale factor",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "We found empirical weight scalings for each dataset by creating a `tclean` model, subtracting it from the visibilities, and examining the scatter in the visibility residuals compared to the Gaussian envelope expected from the thermal weights ($w=\\sigma^{-2}$)."
+      }
+     ]
+    },
+    "software": [
+     "CASA tclean",
+     "MPoL",
+     "visread"
+    ],
+    "key_parameters": [
+     {
+      "value": "Scale factors per spectral window: minimum 1.46, maximum 1.91, average 1.75",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "with a minimum scale factor of 1.46, a maximum of 1.91, and an average of 1.75 over all spectral windows"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Thermal weights w = sigma^-2",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "the Gaussian envelope expected from the thermal weights ($w=\\sigma^{-2}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Grid the visibilities and make dirty images",
+    "method": {
+     "value": "Average ungridded visibilities onto a Fourier grid with as many cells as image pixels (weighted average, equivalent to uniform weighting)",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "Before performing any imaging (either creating a dirty image or an RML image), we take the ungridded visibility data and average it to grid cells in the visibility domain."
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "RML images always begin with uniformly weighted visibilities",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "RML images in `MPoL` always begin with uniformly weighted visibilities"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Forward-model the image with RML in MPoL",
+    "method": {
+     "value": "Minimize a loss made of the negative log likelihood (chi^2/2) plus regularizer terms with lambda prefactors, by gradient descent with PyTorch auto-differentiation; pixel values mapped through Softplus for positivity; model initialised from the dirty image or other images",
+     "evidence": [
+      {
+       "loc": "Minimizing the Loss Function",
+       "quote": "We use gradient descent methods, which are iterative processes with several components."
+      },
+      {
+       "loc": "Image Positivity",
+       "quote": "We chose the Softplus function"
+      }
+     ]
+    },
+    "software": [
+     "MPoL",
+     "PyTorch"
+    ],
+    "key_parameters": [
+     {
+      "value": "Entropy reference pixels: uniform, 1e-7 Jy per arcsec^2",
+      "evidence": [
+       {
+        "loc": "Entropy Performance",
+        "quote": "with a positive, uniform set of reference pixels ($\\mathbf{I}=10^{-7} \\; \\rm{Jy \\; arcsec}^{-2}$)"
+       }
+      ]
+     },
+     {
+      "value": "Dirty-image initialisation recommended; converged result insensitive to initial state",
+      "evidence": [
+       {
+        "loc": "Recommendations for RML with ALMA",
+        "quote": "We recommend initializing the model with the dirty image."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Noise uncorrelated across baselines and Gaussian",
+      "evidence": [
+       {
+        "loc": "Forward Modeling with RML",
+        "quote": "the noise is uncorrelated across baselines and follows a normal distribution with standard deviation $\\sigma$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gradient descent minimization of negative log likelihood plus regularizers (entropy, sparsity, TV, TSV); regularizers act like priors",
+     "evidence": [
+      {
+       "loc": "Forward Modeling with RML",
+       "quote": "In a Bayesian framework, these regularizing terms would be akin to prior probability distributions imposed on various parameters of the model"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Check that the loss and gradient have converged",
+     "evidence": [
+      {
+       "loc": "Minimizing the Loss Function",
+       "quote": "It is essential to check that the optimization algorithm has converged"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Explore each regularizer on HD 143006 and the synthetic disk",
+    "method": {
+     "value": "Image with each regularizer alone over a range of lambda values and inspect images and residual dirty images",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The images shown were generated using an arbitrarily chosen range of $\\lambda$ values in order to show the breadth of images possible with different regularizer tunings."
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "Residual visibilities imaged with DirtyImager, Briggs robust = 0.0",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "imaged from the residual visibilities using the `DirtyImager` with Briggs weighting (robust = 0.0)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Qualitative inspection; the simulated disk dataset was checked to show similar behavior",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "we verified that the simulated disk dataset exhibits similar behavior"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Tune lambda hyperparameters with K-fold cross-validation",
+    "method": {
+     "value": "K-fold CV with K=10, using random cell or dartboard partitioning of gridded visibilities; CV score is the sum of chi^2 on held-out folds",
+     "evidence": [
+      {
+       "loc": "Best Practices for Image Validation",
+       "quote": "In this study, we restricted our exploration of CV to K-fold CV with $K=10$."
+      },
+      {
+       "loc": "Cross-Validation",
+       "quote": "Dartboard partitioning uses polar grid lines to create a new layer of azimuthal and radial bins, each of which contains many visibility grid cells."
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "15000 iterations per fold; one CV score took about 11-12 minutes on an NVIDIA Tesla K80 GPU",
+      "evidence": [
+       {
+        "loc": "Recommendations for RML with ALMA",
+        "quote": "computing a single CV score ($K=10$, 15000 iterations each) took around 11-12 minutes on a NVIDIA Tesla K80 GPU"
+       }
+      ]
+     },
+     {
+      "value": "Random cell partitioning draws grid cells without replacement into K subsets",
+      "evidence": [
+       {
+        "loc": "Cross-Validation",
+        "quote": "Random cell partitioning utilizes $K$ subsets that are composed of randomly-selected visibility grid cells."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Each fold must converge, otherwise the CV score is invalid",
+     "evidence": [
+      {
+       "loc": "Best Practices for Image Validation",
+       "quote": "If each K-fold does not reach convergence, the final CV score is invalid and the entire CV process must be repeated with enough iterations to ensure full convergence."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Validate RML against the synthetic ground truth",
+    "method": {
+     "value": "Compare RML images tuned by hand, by random cell CV, by dartboard CV, by minimum NRMSE and by minimum summed absolute residual against the true image; compare model and true visibility amplitudes",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "We find the minimum residual image for each combination of hyperparameters by summing the absolute value of the difference"
+      },
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "We also compute the normalized root mean squared error (NRMSE)"
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Synthetic image is the ground truth",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "The purpose of this dataset is to compare RML model results with a realistic reference image which we can use as a"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "All tuning methods gave similar results and recovered the most prominent rings and gaps but not the smallest scales",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "but failed to suppress enough noise to recover features at the smallest spatial scales or with low contrast flux variations."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Make the combined-regularizer HD 143006 image and compare with CLEAN",
+    "method": {
+     "value": "Combine entropy, sparsity and TSV; start from random cell CV and raise lambda_TSV by hand; compare with the DSHARP CLEAN image",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "We combined entropy, sparsity, and TSV regularization to generate an image of HD 143006"
+      },
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "To tune the hyperparameters, we used random cell CV to identify a starting point, then adjusted $\\lambda_{\\rm{TSV}}$ by hand to introduce more smoothing into the model image."
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "lambda_TSV raised from 2.15e-4 to 2.15e-3",
+      "evidence": [
+       {
+        "loc": "Hyperparameter Tuning",
+        "quote": "We increased the $\\lambda_{\\rm{TSV}}$ from $2.15 \\times 10^{-4}$ to $2.15 \\times 10^{-3}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "All features of the DSHARP CLEAN image are recovered, with less background noise and better resolution",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "We found that RML methods successfully recover all features that appear in the fiducial CLEAN image of HD 143006 synthesized by the DSHARP team (cite: Andrews_2018)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Characterize resolution and test restoring beams",
+    "method": {
+     "value": "Convolve RML images with circular Gaussian restoring beams of various sizes and find the NRMSE-minimizing beam on the synthetic dataset",
+     "evidence": [
+      {
+       "loc": "Determining Image Resolution with RML",
+       "quote": "We used `astropy.convolution` to convolve the model with circular Gaussians directly in the image plane."
+      }
+     ]
+    },
+    "software": [
+     "astropy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Beams of 1/4, 1/3, 1/2, 1 and 3/2 times the DSHARP tclean beam (11.5 to 69.0 mas); NRMSE-minimizing beam FWHM = 24.0 mas",
+      "evidence": [
+       {
+        "loc": "Determining Image Resolution with RML",
+        "quote": "Because the NRMSE at a relatively small beam size (FWHM = 24.0 mas)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "No spurious high-frequency features seen in the base RML image",
+     "evidence": [
+      {
+       "loc": "Determining Image Resolution with RML",
+       "quote": "In this case, we do not observe spurious high-frequency features in the base RML image"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MPoL",
+    "version": "not stated",
+    "used_for": {
+     "value": "GPU-accelerated RML imaging, dirty images, synthetic data generation and cross-validation",
+     "evidence": [
+      {
+       "loc": "The MPoL Package",
+       "quote": "is an open-source Python package we have designed as a foundation to enable RML imaging for a variety of interferometric workflows."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyTorch",
+    "version": "not stated",
+    "used_for": {
+     "value": "Tensor arrays and auto-differentiation underlying MPoL",
+     "evidence": [
+      {
+       "loc": "The MPoL Package",
+       "quote": "`MPoL` is built on PyTorch (cite: PyTorch_2019)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA simobserve",
+    "version": "not stated",
+    "used_for": {
+     "value": "Simulating the mock ALMA logo observation",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "We then used the CASA task `simobserve` (cite: McMullin_2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Model used to derive empirical weight scalings; DSHARP CLEAN comparison",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "creating a `tclean` model, subtracting it from the visibilities"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy (astropy.convolution)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Convolving RML images with circular Gaussian restoring beams",
+     "evidence": [
+      {
+       "loc": "Determining Image Resolution with RML",
+       "quote": "We used `astropy.convolution` to convolve the model with circular Gaussians directly in the image plane."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Python Imaging Library",
+    "version": "not stated",
+    "used_for": {
+     "value": "Scaling the total flux of the synthetic image to 59 mJy",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "Using the Python Imaging Library, we scaled the total flux of the image to 59 mJy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "casatools",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reading visibilities from CASA measurement sets",
+     "evidence": [
+      {
+       "loc": "Recommendations for RML with ALMA",
+       "quote": "Visibilities can be obtained from CASA measurement sets using `casatools`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "visread",
+    "version": "not stated",
+    "used_for": {
+     "value": "Helping to extract visibilities from measurement sets",
+     "evidence": [
+      {
+       "loc": "Recommendations for RML with ALMA",
+       "quote": "Open source software packages like visread"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DirtyImager (MPoL)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging residual visibilities with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "using the `DirtyImager` with Briggs weighting (robust = 0.0)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Visibility weight scale factor, minimum over spectral windows",
+    "value": "1.46",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "with a minimum scale factor of 1.46, a maximum of 1.91, and an average of 1.75 over all spectral windows"
+     }
+    ]
+   },
+   {
+    "quantity": "Visibility weight scale factor, maximum over spectral windows",
+    "value": "1.91",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "with a minimum scale factor of 1.46, a maximum of 1.91, and an average of 1.75 over all spectral windows"
+     }
+    ]
+   },
+   {
+    "quantity": "Visibility weight scale factor, average over spectral windows",
+    "value": "1.75",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "with a minimum scale factor of 1.46, a maximum of 1.91, and an average of 1.75 over all spectral windows"
+     }
+    ]
+   },
+   {
+    "quantity": "Resolution improvement of RML over CLEAN for HD 143006 (abstract)",
+    "value": "up to a factor of 3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "finding that RML imaging improved the spatial resolution of the image by up to a factor of $3$ without sacrificing sensitivity"
+     }
+    ]
+   },
+   {
+    "quantity": "Angular resolution improvement over CLEAN (conclusion)",
+    "value": "2-3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "With these methods we improved the angular resolution of the images by a factor of $2-3$ compared to CLEAN."
+     }
+    ]
+   },
+   {
+    "quantity": "Final lambda_TSV, before hand adjustment",
+    "value": "2.15e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Hyperparameter Tuning",
+      "quote": "We increased the $\\lambda_{\\rm{TSV}}$ from $2.15 \\times 10^{-4}$ to $2.15 \\times 10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Final lambda_TSV, after hand adjustment",
+    "value": "2.15e-3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Hyperparameter Tuning",
+      "quote": "We increased the $\\lambda_{\\rm{TSV}}$ from $2.15 \\times 10^{-4}$ to $2.15 \\times 10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "lambda_TSV minimizing CV score (HD 143006, TSV only, two partition seeds)",
+    "value": "3e-4 and 1e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Hyperparameter Tuning",
+      "quote": "the minimum CV score occurs at $\\lambda_{\\rm{TSV}} = 10^{-4}$ instead of $\\lambda_{\\rm{TSV}} = 3 \\times 10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "NRMSE-minimizing restoring beam FWHM (synthetic disk, random cell CV model)",
+    "value": "24.0",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Determining Image Resolution with RML",
+      "quote": "Because the NRMSE at a relatively small beam size (FWHM = 24.0 mas)"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean noise sigma of a non-zero gridded visibility cell (3000 to 5000 klambda)",
+    "value": "2.9e-3",
+    "uncertainty": "not stated",
+    "units": "Jy",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Hyperparameter Tuning",
+      "quote": "mean $\\sigma = 2.9\\times 10^{-3}$ Jy, for baselines"
+     }
+    ]
+   },
+   {
+    "quantity": "Time for one image of HD 143006 on an NVIDIA Tesla K80 GPU",
+    "value": "about 10",
+    "uncertainty": "not stated",
+    "units": "seconds",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Recommendations for RML with ALMA",
+      "quote": "generating a single image took about 10 seconds NVIDIA Tesla K80 GPU"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "A combination of entropy, sparsity and TSV works well on HD 143006 and the synthetic disk; TV degrades fine detail",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "a combination of entropy, sparsity, and TSV regularization works well, while TV regularization does not adequately retain fine details in the images"
+     }
+    ]
+   },
+   {
+    "value": "Many lambda values give comparably low CV scores, so a coarse grid suffices",
+    "evidence": [
+     {
+      "loc": "Hyperparameter Tuning",
+      "quote": "there commonly exists a range of hyperparameters that result in similar images"
+     }
+    ]
+   },
+   {
+    "value": "Over-regularized sparsity can remove diffuse emission and whole rings",
+    "evidence": [
+     {
+      "loc": "Sparsity Performance",
+      "quote": "sparsity regularization with a high $\\lambda$ value removed some of the more diffuse emission, and in extreme cases removed some rings entirely"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "RML imaging with MPoL can improve resolution over CLEAN for ALMA disk continuum data without losing sensitivity",
+    "experiment": "Image DSHARP HD 143006 with entropy + sparsity + TSV and compare with the DSHARP CLEAN image",
+    "result": "RML recovers all CLEAN features with less background noise; resolution gain up to a factor of 3 (2-3 in conclusion)",
+    "finding": "RML improves angular resolution without sacrificing sensitivity",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "finding that RML imaging improved the spatial resolution of the image by up to a factor of $3$ without sacrificing sensitivity"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Cross-validation can tune regularization strengths efficiently",
+    "experiment": "K=10 CV on HD 143006 and the synthetic disk with random cell and dartboard partitioning",
+    "result": "CV scores are loosely U-shaped with a range of lambda giving comparable scores",
+    "finding": "A coarse grid of lambda values is enough to identify good models",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "found that CV over a coarse grid of regularization strengths easily identifies a range of models with comparably strong predictive power"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which regularizers work best for disk continuum images",
+    "experiment": "Image HD 143006 and the synthetic disk with entropy, sparsity, TV and TSV alone and combined",
+    "result": "Entropy gives high resolution, sparsity removes background noise, TSV defines rings, TV degrades resolution",
+    "finding": "Entropy + sparsity + TSV is the preferred combination",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "a combination of entropy, sparsity, and TSV regularization works well, while TV regularization does not adequately retain fine details in the images"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Random cell and dartboard CV partitioning give comparable tuned images relative to hand tuning",
+    "experiment": "Compare tuned RML images of the synthetic disk with the ground truth",
+    "result": "Random cell CV and hand tuning gave the images closest to truth; dartboard was slightly noisier",
+    "finding": "Both partitionings are viable, random cell slightly better",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "We found that tuning by random cell CV or by eye achieved images closest to the ground truth, while dartboard partitioning resulted in a similar but slightly noisier image."
+     }
+    ]
+   },
+   {
+    "hypothesis": "RML recovers the true structure of a simulated disk",
+    "experiment": "RML imaging of the synthetic dataset compared with the input image in image and visibility space",
+    "result": "Prominent rings and gaps recovered; smallest scales and low-contrast variations not recovered; long-baseline extrapolation only partial",
+    "finding": "RML recovers main structure but not the finest scales",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Hyperparameter Tuning",
+      "quote": "but failed to suppress enough noise to recover features at the smallest spatial scales or with low contrast flux variations."
+     }
+    ]
+   },
+   {
+    "hypothesis": "A restoring beam is needed for RML images",
+    "experiment": "Convolve RML images with Gaussian beams of 1/4 to 3/2 of the tclean beam",
+    "result": "No qualitative differences for beams up to 1/2 of the tclean beam",
+    "finding": "A modest restoring beam of 1/3-1/2 nominal resolution is recommended but not required",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Recommendations for RML with ALMA",
+      "quote": "We recommend restoring the image to no more than 1/3 to 1/2 of the nominal resolution in order to retain the superresolution benefits of RML imaging."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "HD 143006 chosen as a well-studied disk with potential small-scale structure",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "We chose this protoplanetary disk because it is well-studied and has potential for structures at small spatial scales, including azimuthal asymmetries."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Regularizers avoid CLEAN drawbacks by adding information to image synthesis",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Many of the drawbacks encountered with CLEAN can be partially or completely avoided by using an alternative class of imaging techniques which incorporate additional information into the image synthesis routine through the use of regularizers."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "TV excluded from the final combined image because it degraded resolution",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "but excluded TV because it degraded the resolution of the image."
+      }
+     ]
+    },
+    {
+     "value": "Exponential mapping of pixel values rejected in favor of Softplus",
+     "evidence": [
+      {
+       "loc": "Image Positivity",
+       "quote": "$I_i = \\exp(Z_i)$ is another potential mapping function, however, we found the Softplus function hastened model optimization."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Run enough iterations for the loss to converge",
+    "evidence": [
+     {
+      "loc": "Minimizing the Loss Function",
+      "quote": "it is essential to use enough iterations so that the loss function fully converges on a solution."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "RML images failed to recover the smallest-scale and low-contrast features of the synthetic disk",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "but failed to suppress enough noise to recover features at the smallest spatial scales or with low contrast flux variations."
+      }
+     ]
+    },
+    {
+     "value": "RML model only partly extrapolates to long baselines",
+     "evidence": [
+      {
+       "loc": "Hyperparameter Tuning",
+       "quote": "The model appears to interpolate well at $(u,v)$ that is already thoroughly sampled by the original data (i.e. $q<4000$), but only partially extrapolates to long baselines."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only one real disk (HD 143006) and one synthetic disk are tested, so the regularizer ranking may not generalize",
+    "The quoted resolution gain (up to 3 versus 2-3) has no stated measurement method",
+    "Final lambda values for entropy and sparsity are not reported, and the final lambda_TSV was tuned by eye",
+    "Ground truth comes from a simulation with a Hann-windowed, rescaled image and the same uv sampling, which favours RML",
+    "No uncertainty estimates on CV scores or on the resolution gain"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Calibrated DSHARP HD 143006 visibilities downloadable from the DSHARP archive; MPoL and mpoldatasets are public",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "the calibrated visibilities can be downloaded from the DSHARP archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "MPoL is open source; data-processing steps in the mpoldatasets repository",
+     "evidence": [
+      {
+       "loc": "The MPoL Package",
+       "quote": "is an open-source Python package we have designed as a foundation to enable RML imaging for a variety of interferometric workflows."
+      },
+      {
+       "loc": "Data",
+       "quote": "A full accounting of the data processing steps are available on the `mpoldatasets` repository"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Lambda values for entropy and sparsity in the final image, and CV grid values",
+    "Optimizer settings, learning rate, iteration counts for the full-data images",
+    "Image size and pixel size for the HD 143006 RML image",
+    "Dartboard bin numbers and random seeds",
+    "MPoL version"
+   ],
+   "estimated_data_volume_inferred": "Not stated in the paper; the DSHARP HD 143006 continuum measurement set is likely of order a few GB (inferred), the mock logo dataset is small",
+   "score_inferred": 3,
+   "score_reason": "Data and code are public and the method and loss functions are described, but several key settings for the final image (entropy and sparsity lambdas, optimizer settings, image grid) are not given",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Public data and open code, but the recipe for the main final image is incomplete and the central results are qualitative or image-based rather than numeric"
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Andrews et al. 2018 (cite: Andrews_2018)",
+     "why": "DSHARP calibration procedures and fiducial CLEAN image"
+    },
+    {
+     "citation": "Czekala et al. 2021 MPoL v0.1.1 (cite: mpol_2021)",
+     "why": "The MPoL software used for all RML imaging"
+    },
+    {
+     "citation": "EHT Collaboration 2019 (cite: EHTCollab_2019)",
+     "why": "Definition of the maximum entropy regularizer"
+    },
+    {
+     "citation": "Rudin et al. 1992 (cite: Rudin_1992)",
+     "why": "Definition of the TV loss"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Pinte et al. 2016 (cite: Pinte_2016)",
+     "why": "Source of the simulated disk used as ground truth"
+    },
+    {
+     "citation": "Yamaguchi et al. 2020 (cite: Yamaguchi_2020)",
+     "why": "Earlier RML imaging of a protoplanetary disk with sparsity and TSV and K-fold CV"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DSHARP (ALMA large program 2016.1.00484.L)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2023PASP..135f4503Z",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T22:16:07",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 106,
+  "quotes_ok": 106,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 116,
+   "stated": 75,
+   "rate": 0.647
+  },
+  "evidence_ok": true
+ }
+}

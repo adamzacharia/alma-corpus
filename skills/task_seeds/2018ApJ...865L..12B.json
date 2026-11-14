@@ -1,0 +1,278 @@
+{
+ "bibcode": "2018ApJ...865L..12B",
+ "title": "ALMA Observations of Polarized Emission toward the CW Tau and DG Tau Protoplanetary Disks: Constraints on Dust Grain Growth and Settling",
+ "year": 2018,
+ "doi": "10.3847/2041-8213/aadf87",
+ "arxiv_id": "1809.02559",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the polarization properties of the 870 um dust emission in the CW Tau and DG Tau disks, and what do they imply for grain growth and settling?",
+ "alma_project_codes": [
+  "2015.1.00840.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um), full polarization",
+  "arrays": "not stated",
+  "angular_resolution": "0.27x0.14\" (CW Tau), 0.24x0.14\" (DG Tau)",
+  "sensitivity": "CW Tau: 72 uJy/beam (I), ~40 (Q,U); DG Tau: 180 (I), ~58 (Q,U)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination 65+-2 deg and PA 62+-3 deg, 1.3 mm flux and spectral index 2.3 for CW Tau; disk is optically thick",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the inclination angle for the disk, $i_{\\rm disk}= 65 \\pm 2^{\\circ}$ indicated by (cite: Pietu2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Pietu2014)"
+  },
+  {
+   "what": {
+    "value": "DG Tau 1.3 mm flux with spectral index 2.5; disk models, dust opacity and surface density; i=24-32 deg",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "using the models for dust opacity and surface density in (cite: Isella2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Isella2010)"
+  },
+  {
+   "what": {
+    "value": "Jet inclination/PA for CW Tau (i=49, PA=-29)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the one of jet, $i_{\\rm jet} = 49^{\\circ}$ reported in (cite: Hartigan2004)"
+     }
+    ]
+   },
+   "citation": "(cite: Hartigan2004)"
+  },
+  {
+   "what": {
+    "value": "DG Tau jet i=38 deg, PA=46 deg",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "almost identical to $i_{\\rm jet} = 38^{\\circ}$ (cite: Eisloeffel1998)"
+     }
+    ]
+   },
+   "citation": "(cite: Eisloeffel1998)"
+  },
+  {
+   "what": {
+    "value": "Self-scattering grain-size vs polarization fraction diagnostic diagrams",
+    "evidence": [
+     {
+      "loc": "Grain Size Estimates",
+      "quote": "Using our values of the average polarization fraction and the diagrams in (cite: Kataoka2017) we estimate"
+     }
+    ]
+   },
+   "citation": "(cite: Kataoka2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image Stokes I, Q, U",
+   "method": "Separate total-intensity calibration, concatenation, polarization calibration, phase-only self-cal, CLEAN with Briggs weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive polarization maps",
+   "method": "P=sqrt(Q^2+U^2), p=P/I, chi=0.5 arctan(U/Q)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure continuum geometry",
+   "method": "2D Gaussian fit deconvolved from beam to get FWHM, inclination, PA; compare with literature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination from axis ratio of the Gaussian"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate maximum grain size",
+   "method": "Compare mean polarization fraction with diagnostic diagrams of Kataoka et al. 2017",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Polarization from self-scattering; maximum size ~ lambda/2pi"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain dust settling",
+   "method": "Compare asymmetry and PA differences along cuts with Yang et al. 2017 models; optical depth from Isella2010 models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "DG Tau optical depth 1.0-0.4 at 10-30 au, 0.1 at 80 au, 20% uncertainty"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model DG Tau PA transition",
+   "method": "Geometric model: vectors parallel to minor axis inside R, azimuthal outside; R minimizing std of PA difference",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CW Tau integrated flux",
+   "value": "145.1",
+   "uncertainty": "1.4",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the integrated flux is 145.1 $\\pm$ 1.4 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "DG Tau integrated flux",
+   "value": "880.2",
+   "uncertainty": "9.4",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the integrated flux is 880.2 $\\pm$ 9.4 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CW Tau mean polarization fraction",
+   "value": "1.15",
+   "uncertainty": "0.26",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Polarized Emission",
+     "quote": "averaging 1.15 $\\pm$ 0.26 % over the whole disk."
+    }
+   ]
+  },
+  {
+   "quantity": "DG Tau mean polarization fraction",
+   "value": "0.41",
+   "uncertainty": "0.17",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Polarized Emission",
+     "quote": "The average value of the polarization fraction over the whole disk area is 0.41 $\\pm$ 0.17 %"
+    }
+   ]
+  },
+  {
+   "quantity": "CW Tau mean polarization angle",
+   "value": "-29.8",
+   "uncertainty": "4.0",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Polarized Emission",
+     "quote": "averaging $-29.8^{\\circ} \\pm 4.0^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "DG Tau best-fit transition radius R",
+   "value": "0.33",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Variation of Polarization Orientation in DG Tau",
+     "quote": "obtained setting $R=0.33\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Max grain size CW Tau",
+   "value": "100-150",
+   "uncertainty": "not stated",
+   "units": "um",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Grain Size Estimates",
+     "quote": "in the range 100 - 150 $\\mu$m for CW Tau"
+    }
+   ]
+  },
+  {
+   "quantity": "Max grain size DG Tau",
+   "value": "50-70",
+   "uncertainty": "not stated",
+   "units": "um",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Grain Size Estimates",
+     "quote": "in the range 50 - 70 $\\mu$m for DG Tau"
+    }
+   ]
+  },
+  {
+   "quantity": "DG Tau disk inclination",
+   "value": "~37",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The combination of these values implies $i_{\\rm disk} \\sim 37^{\\circ}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value",
+  "clean threshold, masks, image size and cell size",
+  "self-calibration solution intervals and reference model",
+  "polarization leakage calibration details and flux scale",
+  "how Stokes images were masked/debiased for p and chi (sigma cut)",
+  "which Kataoka diagram parameters (disk model) were used to read grain size",
+  "model for the PA-transition fit beyond R minimization"
+ ],
+ "missing_for_reproduction": [
+  "Briggs robust and CLEAN parameters",
+  "self-calibration details",
+  "polarization debiasing/masking thresholds",
+  "Kataoka diagram inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and recipe broad, but imaging parameters and diagnostic-diagram inputs are missing.",
+ "rediscovery_reason": "Data likely public after proprietary period, CASA polarization recipe standard, results numeric (fluxes, p, angles).",
+ "source_card": "cards/2018ApJ...865L..12B/sonnet/card.md"
+}

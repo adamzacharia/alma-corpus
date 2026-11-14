@@ -1,0 +1,589 @@
+{
+ "bibcode": "2024ApJ...968L..11G",
+ "title": "A Broad Line-width, Compact, Millimeter-bright Molecular Emission Line Source near the Galactic Center",
+ "year": 2024,
+ "doi": "10.3847/2041-8213/ad47fa",
+ "arxiv_id": "2404.07808",
+ "fields": [
+  "milky_way_ism",
+  "star_formation",
+  "astrochemistry",
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What is the compact, broad-linewidth (FWHM ~160 km/s), millimeter-bright source G0.02467-0.0727 (MUBLO) near the Galactic Center, and which physical scenarios could explain it?",
+ "alma_project_codes": [
+  "2021.1.00172.L",
+  "2012.1.00080.S",
+  "2017.1.01185.S"
+ ],
+ "data": {
+  "bands": "Band 3 (ACES 2021.1.00172.L and 2012.1.00080.S); Band 7 (2017.1.01185.S)",
+  "arrays": "12m array for ACES and 2012 data; 7m array for 2017.1.01185.S; ACES also has 7m and total power (TP) data",
+  "angular_resolution": "ACES continuum spw33+35 beam 1.538 x 1.306 arcsec (PA -59.907 deg); 2012 continuum 2.359 x 1.397 arcsec; 2017 7m Band 7 continuum 4.337 x 2.519 arcsec",
+  "sensitivity": "continuum RMS 0.2 mJy/beam (ACES spw33+35); 0.4 mJy/beam (2012); 8.8 mJy/beam (2017 Band 7); per-spw line RMS 2.6-3.4 mJy/beam (channel width not stated)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity for protostellar cores used for the mass estimate",
+    "evidence": [
+     {
+      "loc": "3.4 Continuum",
+      "quote": "Adopting a standard dust opacity for protostellar cores (cite: Ossenkopf1994), assuming T=20 K and gas-to-dust mass ratio 100"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Spitzer and Herschel surface brightnesses used as SED upper limits",
+    "evidence": [
+     {
+      "loc": "3.4 Continuum",
+      "quote": "From the Spitzer (cite: Ramirez2008; Carey2009) and Herschel (cite: Traficante2011) data, we adopt the surface brightness at the position of the source as an upper limit"
+     }
+    ]
+   },
+   "citation": "(cite: Ramirez2008; Carey2009; Traficante2011)"
+  },
+  {
+   "what": {
+    "value": "Enhanced H2 cosmic-ray ionization rates adopted in Meudon PDR models",
+    "evidence": [
+     {
+      "loc": "9.1 FUV and CR irradiation models",
+      "quote": "We adopt enhanced (compared to that in Galactic disk GMCs) H$_2$ cosmic-ray ionization rates (cite: Indriolo2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Indriolo2015)"
+  },
+  {
+   "what": {
+    "value": "Protostar SED model grid used to test central-source properties",
+    "evidence": [
+     {
+      "loc": "6.1.1 Protostar",
+      "quote": "Using the (cite: Richardson2024) update to the (cite: Robitaille2017) grid, we searched for models consistent with either of the two ALMA millimeter detections"
+     }
+    ]
+   },
+   "citation": "(cite: Richardson2024) update to (cite: Robitaille2017)"
+  },
+  {
+   "what": {
+    "value": "Stellar proper motions near the source",
+    "evidence": [
+     {
+      "loc": "5.2 Spatial Location",
+      "quote": "We also checked the surrounding sources from (cite: Shahzamanian2022) within $r<10\\ensuremath{''}$"
+     }
+    ]
+   },
+   "citation": "(cite: Shahzamanian2022)"
+  },
+  {
+   "what": {
+    "value": "Continuous-shock chemical model grids for SO/SiO ratios",
+    "evidence": [
+     {
+      "loc": "9.2 UCLCHEM models",
+      "quote": "(cite: DutkowskaVermarien2024) explored a wide range of continuous shock model parameters"
+     }
+    ]
+   },
+   "citation": "(cite: DutkowskaVermarien2024) (in prep.)"
+  },
+  {
+   "what": {
+    "value": "Alternative dust opacities (supernova power law, VY CMa extrapolation, Draine 2006 range)",
+    "evidence": [
+     {
+      "loc": "4.4 Weird dust?",
+      "quote": "(cite: Draine2006) gives a range of dust opacities from $0.0003<\\kappa_\\mathrm{102 GHz} < 0.03$ cm$^2$ g$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Bianchi2007); (cite: Kaminski2019); (cite: Draine1984); (cite: Draine2006)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-image archival and ACES data",
+   "method": "Re-ran CASA imaging with the ALMA pipeline parameters, fixing diverged cleans and imaging windows left un-imaged or at full spectral resolution; archival 2012 and 2017 data re-imaged with the ACES pipeline",
+   "software": [
+    "CASA",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "CASA 6.4.3-2 for imaging"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit line profiles at the peak position",
+   "method": "Extract spectra at the peak emission position and fit Gaussian profiles, with foreground absorption components for CS 2-1 and SO 2(3)-1(2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure source position and size",
+   "method": "2D Gaussian fits to continuum and integrated-intensity images in all three data sets; beam-deconvolved sizes reported",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Look for a velocity gradient",
+   "method": "Collapse the red and blue sides of the SO 2(3)-1(2) cube into moment-0 images, excluding the extended cloud near 45 km/s, and fit their positions",
+   "software": [],
+   "key_parameters": [
+    "Red 64 to 152 km/s, blue -68 to 34 km/s"
+   ],
+   "assumptions": [
+    "d = 8 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Continuum spectral index and dust mass",
+   "method": "Assume a single point source, derive spectral index between Band 3 and Band 7, and estimate mass from both frequencies with an optically thin dust formula",
+   "software": [],
+   "key_parameters": [
+    "T = 20 K, kappa = 0.002 cm^2/g at 102 GHz and 0.018 cm^2/g at 350 GHz"
+   ],
+   "assumptions": [
+    "Ossenkopf (1994) dust opacity, T=20 K, gas-to-dust mass ratio 100, D = 8 kpc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain dust temperature from the SED",
+   "method": "Use Spitzer and Herschel surface brightness as upper limits and overlay modified blackbodies with beta = 1.5",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Power-law opacity kappa proportional to nu^beta with beta = 1.5"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "LTE rotational diagram of SO and column densities",
+   "method": "Rotational diagram from two detected SO transitions and an upper limit on a third; model spectra overlaid with CS and SO2 columns scaled at the fitted temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE, justified by the dust-derived density; same temperature for other molecules"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test non-LTE excitation",
+   "method": "Grid of RADEX one-zone models, using the SO 2(3)-1(2)/2(2)-1(1) ratio and a lower limit on the SO 2(3)-1(2) intensity from filling factor <= 1",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "dv = 70 km/s, LVG approximation"
+   ],
+   "assumptions": [
+    "Dust-based H2 number density combined with the models to rule out low-density solutions"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Chemical modelling of SO/CS and SO/SiO ratios",
+   "method": "Meudon PDR constant-density slabs for line and column density ratios; UCLCHEM time-dependent collapse models for SO/SiO",
+   "software": [
+    "Meudon PDR",
+    "UCLCHEM"
+   ],
+   "key_parameters": [
+    "Meudon grid: n_H 2e5 and 2e7 cm^-3, G0 = 1e3, zeta_CR 2e-17 to 2e-14 s^-1, A_V,max 20/200/800",
+    "UCLCHEM grid: final n_H 1e5, 1e6, 1e7 cm^-3; T 15 and 50 K"
+   ],
+   "assumptions": [
+    "Sulfur and silicon depletion included"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Compare dust SED with protostar model grid",
+   "method": "Search the Robitaille/Richardson grid for models within 25% of the ALMA flux densities in 5000 au apertures and below the 24 and 70 micron upper limits",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Line FWHM, SO 2(3)-1(2)",
+   "value": "161.2",
+   "uncertainty": "2.6",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SO 2(3)-1(2) | 99.299870 | 1.748 | 0.025 | 99.2866 | 0.0004 | 40.1 | 1.1 | 161.2 | 2.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Line FWHM and centroid velocity, CS 2-1",
+   "value": "FWHM 164.5; v_cen 47.1",
+   "uncertainty": "FWHM 6.7; v_cen 3.1",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| CS 2-1 | 97.980950 | 1.032 | 0.044 | 97.9656 | 0.0010 | 47.1 | 3.1 | 164.5 | 6.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Line FWHM and centroid velocity, 34SO 2(3)-1(2)",
+   "value": "FWHM 146.8; v_cen 34.9",
+   "uncertainty": "FWHM 19.7; v_cen 8.0",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $^{34}$SO 2(3)-1(2) | 97.715317 | 0.216 | 0.024 | 97.7039 | 0.0026 | 34.9 | 8.0 | 146.8 | 19.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Line FWHM and centroid velocity, SO 2(2)-1(1)",
+   "value": "FWHM 159.6; v_cen 38.5",
+   "uncertainty": "FWHM 12.6; v_cen 5.3",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SO 2(2)-1(1) | 86.093950 | 0.383 | 0.026 | 86.0829 | 0.0015 | 38.5 | 5.3 | 159.6 | 12.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity, SO 2(3)-1(2) moment 0",
+   "value": "148.3 K km/s (2795.0 mJy/beam km/s)",
+   "uncertainty": "1.1 K km/s (21.0)",
+   "units": "K km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SO 2(3)-1(2) m0 | 148.3 (1.1) | 2795.0 (21.0) | -149 (5) | 4 (5) | 1.549 (0.012) | 1.816 (0.014) | 205.1 (1.9) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum amplitude, ACES spw33+35",
+   "value": "1.77 mJy",
+   "uncertainty": "0.05 mJy",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Continuum spw33+35 | 0.1036 (0.0029) | 1.77 (0.05) | 20 (20) | 62 (18) | 1.73 (0.049) | 1.499 (0.043) | 85.3 (8.0) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum amplitude, Band 7 (7m)",
+   "value": "98.2 mJy",
+   "uncertainty": "4.0 mJy",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Continuum B7 | 0.0896 (0.0037) | 98.2 (4.0) | 371 (53) | 569 (40) | 1.3 (0.13) | 0.993 (0.096) | 88.3 (6.1) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-deconvolved size of emission",
+   "value": "~1 x 0.5 arcsec",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Spatio-Spectral",
+     "quote": "The deconvolved size is $\\sim1\\ensuremath{''}\\times0.5\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Red-blue separation and velocity gradient",
+   "value": "2000 au separation; gradient 11,000 km/s/pc",
+   "uncertainty": "+/-200 au",
+   "units": "au; km/s/pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Spatio-Spectral",
+     "quote": "The separation is 2000$\\pm200$ au assuming $d=8$ kpc over a 112 $\\mathrm{km~s}^{-1}$ difference, resulting in a gradient of 11,000 $\\mathrm{km~s}^{-1}$ pc$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index alpha",
+   "value": "3.25",
+   "uncertainty": "0.06 (statistical), 0.17 (systematic)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Continuum",
+     "quote": "the spectral index is $\\alpha=3.25\\pm0.06$ (statistical) $\\pm0.17$ (systematic, adopting 10% calibration uncertainty)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas+dust mass from 102 GHz flux",
+   "value": "47",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Continuum",
+     "quote": "M=47~\\ensuremath{\\mathrm{M}_\\odot}"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas+dust mass from 350 GHz flux",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Continuum",
+     "quote": "M=35~\\ensuremath{\\mathrm{M}_\\odot}"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density",
+   "value": "~4e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Continuum",
+     "quote": "The column density, $N(H_2)\\sim4\\times10^{23}$ $\\mathrm{cm}^{-2}$, corresponds to extinction $A_K\\approx20$."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic energy in the gas",
+   "value": "5e48",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Continuum",
+     "quote": "the energy in the gas is very large, $E_{kin} = 5\\times10^{48}\\mathrm{~erg}"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature allowed range",
+   "value": "15 to 50",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Continuum",
+     "quote": "the allowed range of dust temperatures is $15 \\lesssim T \\lesssim 50$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE excitation temperature from SO lines",
+   "value": "14.1",
+   "uncertainty": "1.4",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 LTE Modeling",
+     "quote": "The temperature from the SO 2(3)-1(2) to 2(2)-1(1) line ratio is $T=14.1\\pm 1.4$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "SO column density",
+   "value": "4e15",
+   "uncertainty": "systematic dominated by temperature, possibly more than an order of magnitude",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 LTE Modeling",
+     "quote": "The column density is $\\mathrm{N(SO)}=4\\times10^{15}$ $\\mathrm{cm}^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Column densities of CS, C34S, SO2, 34SO",
+   "value": "CS 1e15; C34S 1.2e14; SO2 2e16; 34SO 5e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 LTE Modeling",
+     "quote": "we obtain column densities N(CS)=$10^{15}$ $\\mathrm{cm}^{-2}$, N(C$^{34}$S)=$1.2\\times10^{14}$ $\\mathrm{cm}^{-2}$, N(SO$_2$)=$2\\times10^{16}$ $\\mathrm{cm}^{-2}$, and N($^{34}$SO)=$5\\times10^{14}$ $\\mathrm{cm}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "32S/34S ratio",
+   "value": "~8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 LTE Modeling",
+     "quote": "giving a ratio $^{32}$S/$^{34}$S $\\approx$ 8"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundances relative to H2, SO and CS",
+   "value": "X_SO ~1e-8; X_CS ~2e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 LTE Modeling",
+     "quote": "$X_\\mathrm{SO}\\approx10^{-8}$, $X_\\mathrm{CS}\\approx2\\times10^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO 2-1 / SO 2(3)-1(2) intensity ratio",
+   "value": "<0.02",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2.2 V838 Monocerotis",
+     "quote": "our object has SiO 2-1 / SO 2(3)-1(2) $<0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 2(3)-1(2)/2(2)-1(1) ratio R32",
+   "value": "4.6",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Non-LTE conditions?",
+     "quote": "Using this measured ratio, $R_{32}=4.6\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Allowed N(SO) and T in LTE models given R32",
+   "value": "5e15 < N(SO) < 2e16 cm^-2 and 5 < T < 13 K",
+   "uncertainty": "not stated",
+   "units": "cm^-2; K",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Non-LTE conditions?",
+     "quote": "$5\\ensuremath{\\times 10^{15}} < N(\\mathrm{SO}) < 2\\ensuremath{\\times 10^{16}}$ $\\mathrm{cm}^{-2}$ and $5< T < 13$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Meudon PDR density and CRIR range matching SO/CS",
+   "value": "n_H ~2e7 cm^-3 and 1e-16 < zeta_CR < 5e-15 s^-1",
+   "uncertainty": "not stated",
+   "units": "cm^-3; s^-1",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "9.1 FUV and CR irradiation models",
+     "quote": "$n_\\mathrm{H}$$\\sim$2$\\times$10$^7$ $\\mathrm{cm}^{-3}$ and 10$^{-16}$$\\lesssim$$\\zeta_{CR}$$\\lesssim$5$\\times$10$^{-15}$ s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostar-grid models matching ALMA fluxes",
+   "value": "10^4 < L < 10^4.7 Lsun and 3 < M_gas(<5000 au) < 28 Msun",
+   "uncertainty": "not stated",
+   "units": "Lsun; Msun",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "6.1.1 Protostar",
+     "quote": "all with $10^4 < L < 10^{4.7}~\\ensuremath{\\mathrm{L}_\\odot}$ and $3<M_{\\mathrm{gas}}(<5000~\\mathrm{au})<28$ $\\mathrm{M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Chandra 3-8 keV flux upper limit",
+   "value": "<7e-16",
+   "uncertainty": "3 sigma upper limit",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial Location",
+     "quote": "The 3$\\sigma$ upper limit is $<2.8\\times10^{-5}$ counts/s in the 3-8 keV band, equivalent to $S_{X}<7\\times10^{-16}$ erg $\\mathrm{s}^{-1}$$\\mathrm{cm}^{-2}$ assuming a $\\gamma=2$ power-law spectrum."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters actually used (deconvolver, weighting/robust, cell and image size, masks, thresholds, niter) for the ACES, 2012 and 2017 data, beyond 'same as the ALMA pipeline'",
+  "Which continuum channels were kept (findcont output) and the continuum-subtraction approach for cubes",
+  "How the broad (~160 km/s) lines were separated from the continuum, since line-free channels are hard to define with such wide lines",
+  "Spectral channel width of the line cubes and how the 5 km/s smoothing was done",
+  "Details of the 2D Gaussian fits (region size, background treatment, fitting package), which dominate the systematic spatial uncertainty",
+  "Gaussian line-fit setup: fitting package, initial guesses and how the foreground absorption components were parameterized",
+  "The aperture or extraction used for the spectra and flux densities (peak pixel vs aperture)",
+  "How the dust flux densities at 102 GHz and 350 GHz were converted from the table Gaussian amplitudes (1.77 and 98.2 mJy) including beam and primary-beam corrections",
+  "Software used for the LTE rotational diagram and spectral modelling (not named), including the molecular line catalogue and partition functions",
+  "Input files and grid definitions for the RADEX, Meudon PDR and UCLCHEM runs beyond the parameter tables",
+  "How the 2012 data artifacts were handled and which spectral windows of 2012.1.00080.S were used"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters and masks for the re-imaged cubes and continuum",
+  "Gaussian-fit and rotational-diagram code or settings; no code release stated",
+  "Continuum flux extraction details and primary-beam correction",
+  "Input files for the Meudon PDR, UCLCHEM and RADEX grids beyond the parameter tables",
+  "Line catalogue and partition function source for the LTE modelling"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data come from the ALMA archive and the spectral and continuum measurements are given in tables with numeric values, but imaging parameters, fitting setup and several analysis choices are not stated and no code is released.",
+ "rediscovery_reason": "Archival data, a short analysis recipe (Gaussian line fits, 2D Gaussian fits, spectral index, dust mass, LTE diagram) and numeric results in tables allow a check of the main measurements, though imaging details must be inferred.",
+ "source_card": "cards/2024ApJ...968L..11G/sonnet/card.md"
+}

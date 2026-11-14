@@ -1,0 +1,288 @@
+{
+ "bibcode": "2019A&A...628A...2B",
+ "title": "Molecular complexity on disc scales uncovered by ALMA. Chemical composition of the high-mass protostar AFGL 4176",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201834527",
+ "arxiv_id": "1906.06156",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What is the chemical inventory (species, excitation temperatures, column densities, spatial distribution) of the high-mass protostar AFGL 4176 on disk scales, and how does it compare with other sources and hot-core models?",
+ "alma_project_codes": [
+  "2012.1.00469.S"
+ ],
+ "data": {
+  "bands": "Band 6, 211-275 GHz",
+  "arrays": "39 antennas, Cycle 1",
+  "angular_resolution": "~0.35 arcsec (~1285 au)",
+  "sensitivity": "continuum rms ~0.5 mJy/beam; 1.5-2.2 mJy/beam per 1.2 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "12C/13C = 60 from galactocentric relation at d_GC = 6.64 kpc",
+    "evidence": [
+     {
+      "loc": "2.2 Methods",
+      "quote": "adopting a $^{12}$C/$^{13}$C values of 60, derived assuming a galactocentric distance ($d_{\\textrm{GC}}$) of 6.64 kpc and the relation for $^{12}$C/$^{13}$C reported by (cite: Milam2005)"
+     }
+    ]
+   },
+   "citation": "(cite: Milam2005)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa = 1.0 cm2/g",
+    "evidence": [
+     {
+      "loc": "2.2 Methods",
+      "quote": "$\\kappa_{\\rm \\nu}$ = 1.0 cm$^{2}$ g$^{-1}$ (cite: Ossenkopf1994)"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic line catalogues JPL and CDMS",
+    "evidence": [
+     {
+      "loc": "2.2 Methods",
+      "quote": "catalogued transition frequencies from the JPL (cite: Pickett1998) and CDMS (cite: Muller2001; Muller2005; Endres2016) molecular databases are compared with the extracted spectra"
+     }
+    ]
+   },
+   "citation": "(cite: Pickett1998), (cite: Muller2001)"
+  },
+  {
+   "what": {
+    "value": "Comparison abundances for Sgr B2, Orion KL, IRAS 16293B and Garrod 2013 models",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "These studies focus on Sgr B2(N), Orion KL and the low-mass protostellar binary IRAS 16293. We conclude the section with a comparison to chemical models."
+     }
+    ]
+   },
+   "citation": "(cite: Belloche2016; Bonfand2017; Tercero2018; Jorgensen2016; Garrod2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image data",
+   "method": "Archive pipeline calibration, continuum subtraction, primary-beam correction, separate continuum and line imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 1.5, 0.04'' pixels, 1.2 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectrum and identify lines",
+   "method": "Spectrum averaged over a beam at the continuum peak; compare with JPL/CDMS; detection if S/N>=3; <5 lines tentative",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit Tex and column density",
+   "method": "LTE optically thin synthetic spectra over a grid of Tex and Ns; minimum chi2 best fit; fixed Tex for species with few lines",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "vLSR = -53.5 km/s, FWHM = 6 km/s fixed; source size = beam; Tex 50-500 K step 10 K"
+   ],
+   "assumptions": [
+    "LTE, optically thin; fixed Tex = 200 K (average) for poorly constrained species; 12C/13C = 60"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive H2 column density and abundances",
+   "method": "N(H2) from dust continuum with Planck function at 200 K; ratios to CH3OH from 13CH3OH x 60",
+   "software": [],
+   "key_parameters": [
+    "I = 29 mJy/beam, kappa = 1.0 cm2/g, mu = 2.33"
+   ],
+   "assumptions": [
+    "Gas-to-dust 100, T = 200 K, optically thin dust"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Map spatial distribution",
+   "method": "Zero and first-moment maps of isolated lines (>=3 km/s from neighbours) at low and high Eup; 2D Gaussian fits to moment-0",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compare with other sources and models",
+   "method": "Compare ratios to CH3OH with Sgr B2, Orion KL, IRAS 16293B and Garrod 2013 models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak flux",
+   "value": "29",
+   "uncertainty": "rms 0.5",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Observations",
+     "quote": "The peak continuum emission is 29 mJy beam$^{-1}$ (5.7 K at 247 GHz)"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2)",
+   "value": "4e23",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.2 Methods",
+     "quote": "$N_{\\rm H_{2}}$ = 4$\\times$10$^{23}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density (from 13CH3OH)",
+   "value": "5.5e18",
+   "uncertainty": "0.4e18",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CH$_3$OH | \\[120\\] | \\[(5.5 $\\pm$ 0.4)$\\times$10$^{18}$\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH Tex",
+   "value": "120",
+   "uncertainty": "15",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$^{13}$CH$_3$OH | 120 $\\pm$ 15 | (9.2 $\\pm$ 0.6)$\\times$10$^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN Tex",
+   "value": "270",
+   "uncertainty": "40",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CH$_3$CN | 270 $\\pm$ 40 | (3.4 $\\pm$ 0.3)$\\times$10$^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2/CH3OH",
+   "value": "14.7",
+   "uncertainty": "3.6",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SO$_2$ | 150 $\\pm$ 30 | (8.1 $\\pm$ 1.9)$\\times$10$^{17}$ | 14.7 $\\pm$ 3.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of species detected",
+   "value": "23 (354 lines, 324 assigned, 30 unidentified)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "A total of 354 lines are identified towards AFGL 4176 with a signal-to-noise ratio of three or above."
+    }
+   ]
+  },
+  {
+   "quantity": "Glycolaldehyde upper limit",
+   "value": "<=1.1e16 (<=0.2% of CH3OH)",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The column density upper limit is $\\leq$1.1$\\times$10$^{16}$ cm$^{-2}$, equivalent to $\\leq$0.2% with respect to methanol."
+    }
+   ]
+  },
+  {
+   "quantity": "O-bearing/N-bearing ratio relative to CH3OH",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "On average, the column density ratios derived for O-bearing species are a factor of three higher than those derived for N-bearing species."
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C and 14N/15N from HC3N",
+   "value": "~16 and ~34",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Isotope ratios",
+     "quote": "These are found to be $\\sim$16 and $\\sim$34, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum subtraction",
+  "Line-free channels/spectral ranges for the continuum image",
+  "Exact spectrum extraction aperture and line selection for moment maps",
+  "CASSIS version and exact chi2 definition",
+  "Image size and masking/deconvolution settings",
+  "Which lines were used for each species fit"
+ ],
+ "missing_for_reproduction": [
+  "CASSIS version and input line lists per species",
+  "Line-free channel selection",
+  "Which lines were used per species"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public archive data and a clear LTE grid-fit recipe with tabulated results; some imaging and line-selection details missing.",
+ "rediscovery_reason": "Public data, a clear recipe, and numeric Tex and column density tables.",
+ "source_card": "cards/2019A%26A...628A...2B/sonnet/card.md"
+}

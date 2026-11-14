@@ -1,0 +1,422 @@
+{
+ "bibcode": "2023MNRAS.519.2030H",
+ "title": "The molecular gas kinematics in the host galaxy of non-repeating FRB 180924B",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3655",
+ "arxiv_id": "2212.04027",
+ "fields": [
+  "transients",
+  "high_z_galaxies"
+ ],
+ "question": "What is the molecular gas kinematic structure in the host galaxy of the non-repeating FRB 180924B, and how does it compare to the gas environments of repeating FRB host galaxies?",
+ "alma_project_codes": [
+  "2019.1.01450.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "44-46 antennas",
+  "angular_resolution": "0.51 arcsec x 0.68 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic redshift z = 0.3214, stellar mass, and star formation rate of FRB 180924B host galaxy",
+    "evidence": [
+     {
+      "loc": "Observation and Data analysis",
+      "quote": "The host is a massive spiral galaxy at $z=0.3214$ with a stellar mass of $M_{\\rm \\ast}=(1.32 \\pm 5.1)\\times 10^{9} M_\\odot$ and the star formation rate (SFR) of $0.88 \\pm 0.26 M_\\odot$ yr$^{-1}$ (cite: Bannister2019; Heintz2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Bannister2019; Heintz2020)"
+  },
+  {
+   "what": {
+    "value": "Half-light radius r_half = 0.516 arcsec (~2.5 kpc) and host galaxy centre coordinates (RA, Dec) = (21h44m25.25s, -40d54m00.81s)",
+    "evidence": [
+     {
+      "loc": "CO emission line detection",
+      "quote": "The CO (3-2) emission line is significantly detected at the position of the host galaxy within two-times half-light radius ($r_{\\rm half}$): $r_{\\rm half}=$ 0.516 arcsec $\\sim$ 2.5 kpc (cite: Bhandari2020)."
+     },
+     {
+      "loc": "CO emission line detection",
+      "quote": "We utilize an aperture with a radius of 1.032 arcsec (5 kpc) centred at the host galaxy (RA, Dec)$=$ (21h44m25.25s, $-40^{\\circ} 54\\ensuremath{'} 00.81\\ensuremath{''}$) (cite: Bhandari2020) to extract a CO spectrum of the host galaxy."
+     }
+    ]
+   },
+   "citation": "(cite: Bhandari2020)"
+  },
+  {
+   "what": {
+    "value": "Gas-phase metallicity 12 + log(O/H) = 8.93 +/- 0.02",
+    "evidence": [
+     {
+      "loc": "Positional offset between two peaks",
+      "quote": "We adopted $\\alpha_{\\rm CO}=4.3$ $M_\\odot$ (K km$^{-1}$ s$^{-1}$ pc$^{2}$)$^{-1}$ since the gas-phase metallicity is $12 + \\log ({\\rm O/H})=8.93 \\pm 0.02$ (cite: Heintz2020), which is comparable to the Milky way gas-phase metallicity."
+     }
+    ]
+   },
+   "citation": "(cite: Heintz2020)"
+  },
+  {
+   "what": {
+    "value": "Asymmetry parameters of HI emission lines for FRB 181030A, FRB 200120E, GRB 980425, GRB 111005A, and LVHIS, HALOGAS, VIVA surveys",
+    "evidence": [
+     {
+      "loc": "Asymmetric CO spectrum",
+      "quote": "We compare our results with the asymmetry parameters of the HI emission lines in previous works, i.e., the host galaxy of FRB 181030A, FRB200120E, the host galaxy of long gamma-ray burst (GRB) GRB 980425 and GRB 111005A (cite: Michalowski2021)"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Comparison of asymmetry parameters with different galaxies (cite: Michalowski2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Michalowski2021; Koribalski2018; Chung2009; Heald2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO(3-2) data cube and generate moment maps",
+   "method": "Image calibrated visibility data using CASA tclean with Briggs robust=2.0 at ~9 km s^-1 resolution, convert to rest-frame using z=0.3214 and CO(3-2) rest frequency 345.796 GHz, and create moment 0 and moment 1 maps in CARTA",
+   "software": [
+    "CASA",
+    "tclean",
+    "CARTA"
+   ],
+   "key_parameters": [
+    "robust = 2.0, velocity resolution ~9 km s^-1",
+    "moment 0 integration range ~ -180 km s^-1 to ~ 110 km s^-1",
+    "moment 1 detection threshold > 4 sigma"
+   ],
+   "assumptions": [
+    "Spectroscopic redshift z = 0.3214, CO(3-2) rest frequency = 345.796 GHz"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract CO(3-2) spectrum and fit velocity components",
+   "method": "Extract CO spectrum using a circular aperture centred on the host galaxy and fit double Gaussian functions to the two detected velocity components",
+   "software": [],
+   "key_parameters": [
+    "aperture radius = 1.032 arcsec (5 kpc), centre = (21h44m25.25s, -40d54m00.81s)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure peak positions and spatial offset of the two velocity components",
+   "method": "Integrate each velocity component over +/- 2 sigma_V from V_sys, fit central peak positions with CASA task imfit, and compute positional uncertainty from beam major axis and S/N",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "integration range = +/- 2 sigma_V from V_sys",
+    "beam major axis a ~ 0.68 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive CO luminosities and molecular gas masses",
+   "method": "Calculate L'_CO(3-2) from integrated CO(3-2) line flux using Solomon & Vanden Bout (2005) equation, convert to L'_CO(1-0) via luminosity ratio, and multiply by alpha_CO to obtain M_gas",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "L'_CO(3-2)/L'_CO(1-0) = 0.55",
+    "alpha_CO = 4.3 M_sun (K km^-1 s^-1 pc^2)^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Quantify CO spectral asymmetry",
+   "method": "Calculate integrated flux ratio A_flux and peak flux density ratio A_peak from the best-fit Gaussian functions following Reynolds et al. (2020)",
+   "software": [],
+   "key_parameters": [
+    "20% of maximum peak height used to define V_low, V_mid, and V_high; asymmetry threshold A_flux > 1.05"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Component 1 RA",
+   "value": "21h 44m 25.2650s",
+   "uncertainty": "0.0034s",
+   "units": "hms",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 1 Dec",
+   "value": "-40d 54' 01.0496''",
+   "uncertainty": "0.0271''",
+   "units": "dms",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 1 systematic velocity (V_sys)",
+   "value": "-155.40",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 1 velocity dispersion (sigma_V)",
+   "value": "16.40",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 1 S/N",
+   "value": "9.60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 1 CO luminosity (L_CO)",
+   "value": "9.35e7",
+   "uncertainty": "0.97e7",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 1 molecular gas mass (M_gas)",
+   "value": "7.31e8",
+   "uncertainty": "0.76e8",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 1 | $21 h 44m 25.2650 \\pm 0.0034 s$ | $-40^{\\circ} 54\\ensuremath{'} 01.0496\\ensuremath{''} \\pm 0.0271\\ensuremath{''}$ | $-155.40$ | $16.40$ | $9.60$ | $(9.35\\pm0.97)\\times10^{7}$ | $(7.31\\pm0.76)\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 RA",
+   "value": "21h 44m 25.2511s",
+   "uncertainty": "0.0037s",
+   "units": "hms",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 Dec",
+   "value": "-40d 54' 00.5665''",
+   "uncertainty": "0.0394''",
+   "units": "dms",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 systematic velocity (V_sys)",
+   "value": "-7.76",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 velocity dispersion (sigma_V)",
+   "value": "58.60",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 S/N",
+   "value": "8.76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 CO luminosity (L_CO)",
+   "value": "1.65e8",
+   "uncertainty": "0.18e8",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Component 2 molecular gas mass (M_gas)",
+   "value": "1.28e9",
+   "uncertainty": "0.14e9",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Component 2 | $21 h 44m 25.2511 \\pm 0.0037 s$ | $-40^{\\circ} 54\\ensuremath{'} 00.5665\\ensuremath{''} \\pm 0.0394\\ensuremath{''}$ | $-7.76$ | $58.60$ | $8.76$ | $(1.65\\pm0.18)\\times10^{8}$ | $(1.28\\pm0.14)\\times10^{9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO luminosity of the two velocity components",
+   "value": "2.59e8",
+   "uncertainty": "0.20e8",
+   "units": "K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Positional offset between two peaks",
+     "quote": "The total CO luminosity (molecular-gas mass) of the two velocity components is ($2.59 \\pm 0.20) \\times 10^{8}$ K km s$^{-1}$ pc$^{2}$ (($2.01 \\pm 0.16) \\times 10^{9}$ M$_\\odot$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass of the two velocity components",
+   "value": "2.01e9",
+   "uncertainty": "0.16e9",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Positional offset between two peaks",
+     "quote": "The total CO luminosity (molecular-gas mass) of the two velocity components is ($2.59 \\pm 0.20) \\times 10^{8}$ K km s$^{-1}$ pc$^{2}$ (($2.01 \\pm 0.16) \\times 10^{9}$ M$_\\odot$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular distance between the two component peaks",
+   "value": "~0.51",
+   "uncertainty": "~0.10",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Positional offset between two peaks",
+     "quote": "The distance between the two peaks is $\\sim 0.\\ensuremath{''}51$, which is more than 5 $\\sigma$ apart with the positional uncertainty ($e$) of $\\sim 0.\\ensuremath{''}10$ that is derived from the following equation:"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral flux asymmetry parameter (A_flux)",
+   "value": "1.05",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Asymmetric CO spectrum",
+     "quote": "A$_{\\rm flux}$ and A$_{\\rm peak}$ of the FRB 180924B host are $1.05 \\pm 0.16$ and $2.03 \\pm 0.39$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral peak asymmetry parameter (A_peak)",
+   "value": "2.03",
+   "uncertainty": "0.39",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Asymmetric CO spectrum",
+     "quote": "A$_{\\rm flux}$ and A$_{\\rm peak}$ of the FRB 180924B host are $1.05 \\pm 0.16$ and $2.03 \\pm 0.39$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) velocity gradient range",
+   "value": "-180 to 8",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The CO (3-2) velocity map also indicates an asymmetric velocity gradient from $-180$ km s$^{-1}$ to 8 km s$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether continuum subtraction (e.g., uvcontsub) was performed prior to imaging the CO(3-2) line cube",
+  "Image cell size, image size, cleaning threshold, and masking strategy in CASA tclean",
+  "Cosmological parameters (H0, Omega_m, Omega_Lambda) used to calculate luminosity distance D_L and physical scale (kpc/arcsec)",
+  "Exact rms noise level of the 9 km s^-1 channel cube and the integrated intensity maps"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters: cell size, image dimensions, stopping threshold/niter, deconvolver, and masking",
+  "Whether continuum subtraction was applied in the uv plane or image plane",
+  "Cosmological parameters (H0, Omega_m, Omega_Lambda) assumed for luminosity distance D_L in Equation 2",
+  "Exact channel width in Hz/MHz or regridding method used in tclean to obtain ~9 km s^-1 channels from the 240-channel 1.875 GHz spectral window"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Public archival single-target ALMA dataset with standard CASA pipeline calibration (version stated), clear aperture definition, explicit equations and conversion factors for luminosity, gas mass, and spectral asymmetry, though minor tclean imaging parameters and cosmological constants are omitted.",
+ "rediscovery_reason": "The raw data are public in the ALMA archive (2019.1.01450.S), the analysis follows a straightforward recipe (pipeline calibration, tclean with robust=2.0 at 9 km/s resolution, 1.032 arcsec aperture spectrum extraction, double-Gaussian fitting, imfit peak localization, and analytic mass/asymmetry formulas), and all key outputs are numeric.",
+ "source_card": "cards/2023MNRAS.519.2030H/sonnet/card.md"
+}

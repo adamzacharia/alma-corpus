@@ -1,0 +1,238 @@
+{
+ "bibcode": "2020A&A...640A..19T",
+ "title": "Dust masses of young disks: constraining the initial solid reservoir for planet formation",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202037851",
+ "arxiv_id": "2006.02812",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "Do embedded Class 0/I disks in Perseus contain enough dust to explain the solid content of the most massive exoplanets, and what efficiency is needed?",
+ "alma_project_codes": [
+  "2017.1.01693.S",
+  "2017.1.01078.S",
+  "2015.1.00041.S",
+  "2013.1.00031.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.1 mm, 1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.45\"x0.30\" natural weighting (1.1 mm); 0.41\"x0.28\" (1.3 mm)",
+  "sensitivity": "rms ~0.1 mJy/beam (1.1 mm); ~0.05 mJy/beam (1.3 mm)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1.3 mm flux densities of 25 Perseus disks",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We also use the flux densities of 25 disks published in (cite: Tobin2018) which were observed at 1.3 mm"
+     }
+    ]
+   },
+   "citation": "Tobin2018"
+  },
+  {
+   "what": {
+    "value": "VLA 9 mm fluxes corrected for free-free emission",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We use the 9 mm fluxes corrected for the free-free emission for further analysis."
+     }
+    ]
+   },
+   "citation": "Tobin2016; Tychoniec2018"
+  },
+  {
+   "what": {
+    "value": "Orion ALMA Band 7 disk fluxes/masses",
+    "evidence": [
+     {
+      "loc": "ALMA Class 0/I disk masses for different star-forming regions",
+      "quote": "In Fig. [3](#fig:cdplots_per_ori) we show the cumulative distribution of disks observed with ALMA for Orion (cite: Tobin2020) and for Perseus."
+     }
+    ]
+   },
+   "citation": "Tobin2020"
+  },
+  {
+   "what": {
+    "value": "Exoplanet masses (2074 planets, updated 28.04.2020)",
+    "evidence": [
+     {
+      "loc": "Exoplanet sample selection",
+      "quote": "The exoplanet systems masses were obtained from the exoplanet.eu database (cite: Schneider2011)."
+     }
+    ]
+   },
+   "citation": "Schneider2011"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "measure disk fluxes with Gaussian fits",
+   "method": "imfit with compact Gaussian plus optional broad 3\" envelope Gaussian; compact component taken as disk",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Envelope Gaussian added in 31 of 51 targets; initial broad size 3\""
+   ],
+   "assumptions": [
+    "Compact Gaussian flux equals disk flux"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "compare ALMA and VLA fluxes and derive spectral index and beta",
+   "method": "Linear fit of fluxes with lmfit; alpha between 1 mm and 9 mm; beta = (alpha-2)(1+Delta); optically thin subsample where alpha_VLA/ALMA - alpha_VLA <= 0.4",
+   "software": [
+    "lmfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin: Delta = 0"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "compute dust masses and CDFs",
+   "method": "M = D^2 F / (kappa B(T)), T=30 K; CDFs with survival analysis including upper limits; medians at 0.5 probability",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [
+    "kappa_9mm = 0.28 cm2/g (DIANA); kappa_1.3mm = 2.3 cm2/g; for Orion comparison kappa_1.3mm = 0.9"
+   ],
+   "assumptions": [
+    "Distance 293 pc; optically thin emission"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compare to exoplanet solids and derive formation efficiency",
+   "method": "Exoplanet systems (>=1 planet >0.3 MJ) normalized to 18% of population; solid mass via Thorngren2016; efficiency = ratio of exoplanet to disk dust mass at same CDF level",
+   "software": [],
+   "key_parameters": [
+    "0.3 MJ planet solid fraction 27.8 Mearth set at 18% of CDF"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Slope of ALMA vs VLA flux correlation",
+   "value": "1.15",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparison of the integrated fluxes between 1 and 9 mm",
+     "quote": "close-to-linear slope (1.15 $\\pm$ 0.10)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean spectral index of optically thin subsample (23 sources)",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparison of the integrated fluxes between 1 and 9 mm",
+     "quote": "The mean spectral index of those sources is 2.5, which means that $\\beta \\sim 0.5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust mass from VLA, Class 0 / Class I",
+   "value": "158 / 52",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disk mass measurements",
+     "quote": "The median masses measured from the 9 mm observations are 158 M${_\\oplus}$ for Class 0 and 52 M${_\\oplus}$ for Class I"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust mass lower limits from ALMA, Class 0 / Class I",
+   "value": "47 / 12",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Disk mass measurements",
+     "quote": "is 47 M${_\\oplus}$ and 12 M${_\\oplus}$ for Class 0 and Class I disks, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Perseus vs Orion dust mass (kappa=0.9, 30 K), Class 0",
+   "value": "131 vs 67",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA Class 0/I disk masses for different star-forming regions",
+     "quote": "67 M$_\\oplus$ versus 131 M$_\\oplus$ in Perseus, but is remarkably similar for Class I: 25 M$_\\oplus$ versus 33 M$_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet formation efficiency from VLA masses, Class 0 / Class I",
+   "value": "~15% / 34%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison of young disk dust masses with the solids in exoplanetary systems",
+     "quote": "the efficiency of planet formation would have to be on the order of 15% for Class 0 and 34% for Class I"
+    }
+   ]
+  },
+  {
+   "quantity": "Efficiency from ALMA lower-limit masses, Class 0 / Class I",
+   "value": "33% / 72%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison of young disk dust masses with the solids in exoplanetary systems",
+     "quote": "the efficiency of forming planets in the Class 0 phase would be on the order of 33%. The efficiency of the Class I phase would be on the order of 72%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which sources use which ALMA project and the exact tabulated disk fluxes (table not in text)",
+  "Calibration pipeline vs manual and CASA version used for calibration",
+  "tclean parameters (deconvolver, cell, image size, masks) for continuum images",
+  "Initial guess details/thresholds for deciding the envelope component",
+  "How uncertainties on fluxes and medians were derived",
+  "Exact Thorngren2016 formula implementation and exoplanet filtering details for efficiency",
+  "Selection of Lupus Class II comparison data and Gaia distances"
+ ],
+ "missing_for_reproduction": [
+  "Flux table not in text",
+  "Imaging parameters",
+  "Exact exoplanet processing"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear recipe, but imaging details and tabulated fluxes missing and exoplanet step loosely specified.",
+ "rediscovery_reason": "Public data, mostly simple flux fits and mass formula with numeric medians.",
+ "source_card": "cards/2020A%26A...640A..19T/sonnet/card.md"
+}

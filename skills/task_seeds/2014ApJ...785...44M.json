@@ -1,0 +1,253 @@
+{
+ "bibcode": "2014ApJ...785...44M",
+ "title": "A 10<SUP>10</SUP> Solar Mass Flow of Molecular Gas in the A1835 Brightest Cluster Galaxy",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/785/1/44",
+ "arxiv_id": "1309.0013",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "Does radio-mechanical AGN feedback in the Abell 1835 BCG affect its molecular gas, e.g. by driving a molecular outflow?",
+ "alma_project_codes": [
+  "2011.0.00374.S"
+ ],
+ "data": {
+  "bands": "Band 3 (92 GHz) and Band 7 (276 GHz)",
+  "arrays": "Cycle 0 extended array, on average twenty 12 m dishes",
+  "angular_resolution": "0.5 arcsec at CO(3-2), 1.5 arcsec at CO(1-0)",
+  "sensitivity": "rms in line-free channels 0.6 mJy (CO 1-0), 1.6 mJy (CO 3-2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Far-UV luminosity L_FUV=1.85e43 erg/s",
+    "evidence": [
+     {
+      "loc": "5.2 Driving a Molecular Outflow by Radiation Pressure or Supernovae",
+      "quote": "Based on the far UV flux from O’Dea et al. (2010), $L_{\\rm FUV}=1.85 \\times 10^{43}~\\rm erg~s^{-1}$"
+     }
+    ]
+   },
+   "citation": "O’Dea et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "Star formation rate 100-180 Msun/yr",
+    "evidence": [
+     {
+      "loc": "4.2 Central Molecular Gas and Star Formation",
+      "quote": "upward of $100-180~\\rm M_\\odot ~yr^{-1}$ (M06, Egami et al. 2006, Donahue et al. 2011, )"
+     }
+    ]
+   },
+   "citation": "M06, Egami et al. 2006, Donahue et al. 2011"
+  },
+  {
+   "what": {
+    "value": "Emission-line redshift z=0.252",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "At the emission line redshift z = 0.252 (Crawford et al. 1999), 1 arcsec = 3.9 kpc."
+     }
+    ]
+   },
+   "citation": "Crawford et al. 1999"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO cubes and continuum",
+   "method": "CASA calibration per ALMA scripts, CLEAN of continuum-subtracted cubes, continuum from line-free channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5, polygon mask, 20 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit total spectra and derive molecular gas mass",
+   "method": "Single Gaussian fit to continuum-subtracted spectra; mass from CO(1-0) integral with XCO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "XCO = 2e20 cm^-2 (K km/s)^-1, Galactic"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map velocity field on grids and isolate high-velocity gas",
+   "method": "Grid of spectra with Gaussian fits per box; 2D Gaussian fitted and subtracted per channel in CO(1-0) to remove central emission; integrate wings",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate outflow rate and disk dynamics",
+   "method": "Outflow mass divided by buoyant rise or gas travel time; Toomre Q, pressure and scale height analytic estimates",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas to dust ratio 100; R_e=2 kpc encloses half the mass; v_c=400 km/s"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "4.9e10",
+   "uncertainty": "±0.2e10",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Spectra",
+     "quote": "This expression yields a total molecular gas mass of $4.9 \\pm 0.2 \\times 10^{10} ~M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) line integral",
+   "value": "3.6",
+   "uncertainty": "±0.2",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Spectra",
+     "quote": "The emission integral at CO (1-0) is $3.6 \\pm 0.2~ \\rm Jy ~km ~s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Central line FWHM",
+   "value": "130",
+   "uncertainty": "±5",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Spectra",
+     "quote": "$\\rm FWHM = 130 \\pm 5~ km ~s^{-1}$ (corrected for instrumental broadening)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux band 3",
+   "value": "1.26",
+   "uncertainty": "±0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "fluxes $1.26 \\pm 0.03 ~\\rm mJy$ in band 3 and $0.7 \\pm 0.1 \\rm~ mJy$ in band 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux band 7",
+   "value": "0.7",
+   "uncertainty": "±0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "fluxes $1.26 \\pm 0.03 ~\\rm mJy$ in band 3 and $0.7 \\pm 0.1 \\rm~ mJy$ in band 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflowing wing flux integral total",
+   "value": "0.7",
+   "uncertainty": "±0.2",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Velocity Field of the Molecular Gas",
+     "quote": "giving a total flux integral of $0.7 \\pm 0.2~\n~\\rm Jy~km ~s^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflowing molecular gas mass",
+   "value": "1.0e10",
+   "uncertainty": "±0.3e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Velocity Field of the Molecular Gas",
+     "quote": "They correspond to a molecular hydrogen mass of $1.0\\pm0.3\\times 10^{10}~ \\rm M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow rate",
+   "value": "~200-300",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 A Radio-AGN Driving a Molecular Outflow",
+     "quote": "They imply an outflow rate of $\\sim 200-300 ~\\rm M_\\odot ~yr^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q",
+   "value": "0.43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4 Dynamics of the Central Molecular Gas",
+     "quote": "\\approx0.43"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical pressure",
+   "value": "1.7e-8",
+   "uncertainty": "not stated",
+   "units": "dyne cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4 Dynamics of the Central Molecular Gas",
+     "quote": "$$\\begin{equation}\np_{\\rm dyn}={\\pi\\over2} G\\Sigma_g^2\\approx1.7\\times10^{-8}{\\rm dyne}~\\rm cm^{-2}."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum-subtraction method/order",
+  "Clean threshold, cell and image size",
+  "How the CO(3-2) mass or CO(1-0) wing integration velocity ranges were chosen",
+  "Grid box positions for spectra",
+  "Luminosity distance value used in mass equation",
+  "Flux calibration uncertainty",
+  "Details of the 2D Gaussian central-emission subtraction"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges",
+  "Velocity ranges for wing integrals",
+  "Clean parameters beyond robust",
+  "Grid box definitions",
+  "Distance used in the mass formula"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public Cycle 0 data and a simple recipe with a mass formula, but many processing and integration details are missing.",
+ "rediscovery_reason": "Data are public and the key results (CO flux, gas mass, FWHM) are numeric and recoverable with CASA, though the outflow requires care.",
+ "source_card": "cards/2014ApJ...785...44M/sonnet/card.md"
+}

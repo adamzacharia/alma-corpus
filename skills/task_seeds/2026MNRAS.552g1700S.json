@@ -1,0 +1,499 @@
+{
+ "bibcode": "2026MNRAS.552g1700S",
+ "title": "Dust substructures and line perturbations driven by a forming planet in J16120",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag1700",
+ "arxiv_id": "2609.05366",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the dust substructures and gas kinematic signatures of ongoing planet formation in the protoplanetary disc around 2MASS J16120668–301027?",
+ "alma_project_codes": [
+  "2023.1.01100.S",
+  "2021.1.00128.L",
+  "2022.1.00646.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm), Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "Continuum: 125 x 95 mas; 12CO: 181 x 145 mas; 13CO: 183 x 143 mas",
+  "sensitivity": "Continuum: 0.021 mJy/beam; 12CO: 4.9 mJy/beam per 25 m/s channel; 13CO: 4.0 mJy/beam per 50 m/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Self-calibrated Band 6 dust continuum observations of J16120",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS",
+      "quote": "Additionally, we use the self-calibrated Band 6 observations of J16120 presented in Li et al. (2025), in which data from programs 2021.1.00128.L (PI: Ke Zhang, Zhang et al. 2025) and 2022.1.00646.S (PI: Feng Long) were concatenated"
+     }
+    ]
+   },
+   "citation": "Li et al. (2025)"
+  },
+  {
+   "what": {
+    "value": "12CO (J=2-1) emission surface profile and Band 6 dust continuum image and background source flux",
+    "evidence": [
+     {
+      "loc": "3.3.2 Emission surface",
+      "quote": "Left panel of Figure 8 shows the vertical emission profile for the 12 CO (J=3–2) in this work, and 12 CO (J=2–1) in Sierra et al. (2024a)."
+     },
+     {
+      "loc": "APPENDIX A: BACKGROUND MILLIMETRE OBJECT",
+      "quote": "This source was also observed in Band 6 in Sierra et al. (2024a), with a dust continuum flux of 0 . 12 ± 0 . 02 mJy."
+     }
+    ]
+   },
+   "citation": "Sierra et al. (2024a)"
+  },
+  {
+   "what": {
+    "value": "Gas mass and CO depletion factor (Carbon depletion of 10) for J16120",
+    "evidence": [
+     {
+      "loc": "3.3.3 Gas mass",
+      "quote": "By modelling and comparing the obtained gas mass with the observed CO lines, Trapman et al. (2025) determined that the relative abundance of CO with respect to H 2 for J16120 is log 10 𝑥 CO = −4 . 82 + − 0 0 . . 11 18 , giving a CO depletion factor of ∼ 10"
+     }
+    ]
+   },
+   "citation": "Trapman et al. (2025)"
+  },
+  {
+   "what": {
+    "value": "Positions of H-alpha and SPHERE K-band point source candidates",
+    "evidence": [
+     {
+      "loc": "Figure 9 caption",
+      "quote": "The × and + markers are the location of the H 𝛼 and K-band point sources in Li et al. (2025) and Ginski et al. (2025), respectively."
+     }
+    ]
+   },
+   "citation": "Li et al. (2025); Ginski et al. (2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Align executions, rescale fluxes, self-calibrate, and image continuum and CO lines",
+   "method": "Fit 2D Gaussian to low-resolution continuum per execution to align to common phase centre; scale fluxes to concatenated LB executions with gencal; phase self-calibrate SB (2 rounds) then SB+LB (1 round); apply tables to line data, subtract continuum with uvcontsub, regrid with cvel2, and image with multi-scale tclean down to 1 sigma",
+   "software": [
+    "CASA",
+    "gencal",
+    "gaingal",
+    "uvcontsub",
+    "cvel2",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Phase centre: J2000 16h12m06.664505s -30d10m27.61789s",
+    "Self-cal solint: 'inf', '360s' for SB; 'inf' for combined SB+LB",
+    "Robust = 0.5 (continuum), 1.5 (12CO at 25 m/s), 2.0 (13CO at 50 m/s); clean threshold = 1 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute molecular moment maps, integrated fluxes, and disc radii (R68, R90)",
+   "method": "Generate moment 0, peak intensity, and Gaussian velocity maps using Discminer with sigma clipping; measure R68, R90, and integrated fluxes using curve of growth (COG) within 4 arcsec",
+   "software": [
+    "Discminer"
+   ],
+   "key_parameters": [
+    "Clipping: 1 sigma for Moment 0; 3 sigma for peak intensity and peak velocity; outer radius cutoff = 4 arcsec"
+   ],
+   "assumptions": [
+    "Distance = 132.1 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model axisymmetric dust continuum visibilities and radial spectral index",
+   "method": "Extract continuum visibilities using export_uvtable normalising uv-distances per spw/channel; constrain inclination and PA by minimizing spread of real visibilities and centre by minimizing imaginary visibilities; fit non-parametric radial brightness profiles in Band 6 and Band 7 with Frankenstein; compute full Planck brightness temperature and spectral index profile",
+   "software": [
+    "uvplot",
+    "frankenstein"
+   ],
+   "key_parameters": [
+    "Geometry fixed to Band 6 values: inc = 37.0 deg, PA = 45.1 deg; Frankenstein hyperparameters: alpha = 1.05, w_smooth = 0.1"
+   ],
+   "assumptions": [
+    "Axisymmetric dust disc; full Planck function (without Rayleigh-Jeans approximation)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit eccentric parametric dust disc model in the visibility plane",
+   "method": "Model dust continuum with three eccentric Gaussian rings (g0, g23, g75); compute model visibilities with Galario and sample 13-parameter posterior with emcee",
+   "software": [
+    "Galario",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Pixel size = 10 mas, image size = 1024 pixels; fixed inc = 37.0 deg, PA = 45.1 deg; 13 free parameters; 104 walkers (8 x 13), 8000 steps"
+   ],
+   "assumptions": [
+    "Constant eccentricity e and periastron omega across the three Gaussian rings"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model 12CO and 13CO channel maps and extract kinematic, line-width, and peak-intensity residuals",
+   "method": "Fit 3D Keplerian channel map models to 12CO and 13CO cubes using discminer with emcee; fit Gaussian line profiles to data and best-fit model cubes to extract centroid velocity, line width, peak intensity, residual maps, and 3D velocity components (v_r, v_phi, v_z); test warped disc model on velocity residuals",
+   "software": [
+    "Discminer",
+    "emcee"
+   ],
+   "key_parameters": [
+    "230 walkers; burn-in of 80,000 steps (12CO) and 30,000 steps (13CO) plus 10% sampling steps; 13CO inclination and PA fixed to 37.0 deg and 45.1 deg"
+   ],
+   "assumptions": [
+    "Keplerian rotation with differential rotation as a function of height z(r); exponentially tapered power-law surfaces for front and back sides"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Extract non-parametric CO emission surface, isothermal scale height, and estimate total disc gas mass",
+   "method": "Extract 12CO (J=3-2) vertical emission surface with disksurf and fit with tapered power law; compute average elevation z/r within r < 120 au; compute isothermal scale height H_g from front-surface brightness temperature; infer gas mass from z/r and CO depletion factor using Paneque-Carreno et al. (2025) relations",
+   "software": [
+    "disksurf"
+   ],
+   "key_parameters": [
+    "SNR > 3 mask, fixed disc geometry (inc = 37.0 deg, PA = 45.1 deg) and offset, radial binning = 1/4 beam size; mean molecular weight mu = 2.3; M_star = 0.7 M_sun (for H_g) and 0.6 M_sun (for gas mass relation); Carbon depletion = 10"
+   ],
+   "assumptions": [
+    "12CO (J=3-2) emission is optically thick so brightness temperature equals gas temperature; Carbon depletion factor = 10"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 7 dust continuum integrated flux",
+   "value": "68",
+   "uncertainty": "±3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Continuum ( 𝜆 = 0 . 87 mm) 95 ± 14 81 ± 14 68 ± 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 dust continuum R90 radius",
+   "value": "95",
+   "uncertainty": "±14",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Continuum ( 𝜆 = 0 . 87 mm) 95 ± 14 81 ± 14 68 ± 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 dust continuum R68 radius",
+   "value": "81",
+   "uncertainty": "±14",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Continuum ( 𝜆 = 0 . 87 mm) 95 ± 14 81 ± 14 68 ± 3"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO (J=3-2) integrated flux",
+   "value": "2600",
+   "uncertainty": "±300",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "13 CO (J=3–2) 140 ± 20 113 ± 20 2600 ± 300"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO (J=3-2) R90 radius",
+   "value": "140",
+   "uncertainty": "±20",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "13 CO (J=3–2) 140 ± 20 113 ± 20 2600 ± 300"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO (J=3-2) R68 radius",
+   "value": "113",
+   "uncertainty": "±20",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "13 CO (J=3–2) 140 ± 20 113 ± 20 2600 ± 300"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (J=3-2) integrated flux",
+   "value": "10600",
+   "uncertainty": "±500",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "12 CO (J=3–2) 180 ± 20 123 ± 20 10600 ± 500"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (J=3-2) R90 radius",
+   "value": "180",
+   "uncertainty": "±20",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "12 CO (J=3–2) 180 ± 20 123 ± 20 10600 ± 500"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO (J=3-2) R68 radius",
+   "value": "123",
+   "uncertainty": "±20",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "12 CO (J=3–2) 180 ± 20 123 ± 20 10600 ± 500"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination from Band 7 continuum visibilities",
+   "value": "36.9",
+   "uncertainty": "+0.7/-0.1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Dust continuum emission morphology",
+     "quote": "We obtained an inclination of inc=36 . 9 + − 0 0 . . 7 1 deg, and a position angle of PA=45 . 0 + − 0 0 . . 7 2 deg in Band 7, and inc=37 . 0 + − 0 0 . . 1 2 deg, PA=45 . 1 + − 0 0 . . 2 9 deg in Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle from Band 7 continuum visibilities",
+   "value": "45.0",
+   "uncertainty": "+0.7/-0.2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Dust continuum emission morphology",
+     "quote": "We obtained an inclination of inc=36 . 9 + − 0 0 . . 7 1 deg, and a position angle of PA=45 . 0 + − 0 0 . . 7 2 deg in Band 7, and inc=37 . 0 + − 0 0 . . 1 2 deg, PA=45 . 1 + − 0 0 . . 2 9 deg in Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust ring radial locations (B23 and B75)",
+   "value": "23, 75",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 Axisymmetric dust disc",
+     "quote": "Two bright rings at 23 and 75 au (B23, B75, respectively) are independently inferred in both wavelengths in addition to the inner bright disc, and two gaps at 14 and 39 au (D14, D39, respectively)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust gap radial locations (D14 and D39)",
+   "value": "14, 39",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 Axisymmetric dust disc",
+     "quote": "Two bright rings at 23 and 75 au (B23, B75, respectively) are independently inferred in both wavelengths in addition to the inner bright disc, and two gaps at 14 and 39 au (D14, D39, respectively)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disc eccentricity (e)",
+   "value": "95e-3",
+   "uncertainty": "+4e-3/-3e-3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table B1",
+     "quote": "𝑒 95 + − 4 3 × 10 −3"
+    },
+    {
+     "loc": "4.1.2 Eccentricity as a Signature of an Embedded Planet",
+     "quote": "The best fit value for the disc eccentricity is significant ( 𝑒 = 95 + − 4 3 × 10 −3 )"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disc periastron angle (omega)",
+   "value": "120",
+   "uncertainty": "±2",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table B1",
+     "quote": "𝜔 [deg] 120 ± 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical stellar mass (M_star) from 12CO and 13CO kinematics",
+   "value": "0.7",
+   "uncertainty": "±0.1",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table B2",
+     "quote": "M ★ [M ⊙ ] 0 . 7 ± 0 . 1 0 . 7 ± 0 . 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (v_sys) from 12CO",
+   "value": "4.527",
+   "uncertainty": "±0.025",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table B2",
+     "quote": "v sys [km s −1 ] 4 . 527 ± 0 . 025 4 . 524 ± 0 . 025"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO line-width residual at inner planet candidate location (r ~ 32 au)",
+   "value": "0.14",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1 Disc kinematics",
+     "quote": "Additionally, positive line width residuals ∼ 0 . 14 km s −1 , more than five times the spectral resolution) are detected at the location of the inner planet candidate and at other positions along the same orbital radius"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO FWHM at inner planet candidate (Position A)",
+   "value": "2.178",
+   "uncertainty": "±0.033",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Figure 10",
+     "quote": "FWHM = 2 . 178 ± 0 . 033 km s − 1 A (inner planet)"
+    }
+   ]
+  },
+  {
+   "quantity": "Average 12CO (J=3-2) emission surface elevation (z/r)",
+   "value": "0.15",
+   "uncertainty": "±0.07",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3.2 Emission surface",
+     "quote": "The resulting average elevation is 𝑧 / 𝑟 = 0 . 15 ± 0 . 07, which is consistent with the mean value reported for discs in the Upper Scorpius star-forming region"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc gas mass from 12CO emitting height",
+   "value": "0.25e-3",
+   "uncertainty": "+0.60e-3/-0.18e-3",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3.3 Gas mass",
+     "quote": "we estimate a gas mass of M gas = 0 . 25 + − 0 0 . . 60 18 × 10 −3 M ⊙ ."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "CO emitting height 0 . 25 + − 0 0 . . 60 18 This work ∗"
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on Band 7 CPD point source flux in gap",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1.1 No ALMA Band 7 CPD Detection",
+     "quote": "Therefore, we can rule out Band 7 ( 𝜆 = 0 . 87 mm) point sources within the gap with a SNR > 3 𝜎 gap ∼ 300 𝜇 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Background millimetre object Band 7 flux and spectral index",
+   "value": "0.81 (flux), 4.56 (spectral index)",
+   "uncertainty": "±0.02 mJy, ±0.40",
+   "units": "mJy, dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "APPENDIX A: BACKGROUND MILLIMETRE OBJECT",
+     "quote": "The dust continuum flux of this source is 0 . 81 ± 0 . 02 mJy, and no 12 CO nor 13 CO emission is detected in its surroundings."
+    },
+    {
+     "loc": "APPENDIX A: BACKGROUND MILLIMETRE OBJECT",
+     "quote": "Therefore, its spectral index between ALMA Band 7 ( 𝜆 = 0 . 87 mm) and 6 ( 𝜆 = 1 . 3 mm) is 𝛼 = 4 . 56 ± 0 . 40"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges flagged to create the continuum-only datasets and used for uvcontsub",
+  "Exact flux scaling factors applied to each short-baseline execution in gencal",
+  "Exact per-execution astrometric shift values applied during alignment",
+  "tclean cell size, image size, and masking strategy (e.g., Keplerian mask parameters or auto-multithresh settings)"
+ ],
+ "missing_for_reproduction": [
+  "Exact Zenodo DOI/URL for the self-calibrated measurement sets and image cubes",
+  "Exact tclean imaging parameters (cell size, image dimensions, masking details)",
+  "Exact per-execution flux scaling factors and astrometric shifts applied prior to concatenation",
+  "Exact frequency/channel intervals flagged for continuum extraction and uvcontsub"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The paper provides a remarkably thorough quantitative recipe, including CASA version, self-calibration solution intervals, robust and velocity resolution grids, Frankenstein hyperparameters, Galario/emcee priors and walker setups, and full best-fit parameter tables in Appendix B. Minor deductions are for the missing Zenodo DOI, unstated tclean pixel/mask settings, and unstated per-execution flux/astrometric corrections.",
+ "rediscovery_reason": "Raw ALMA data (2023.1.01100.S, 2021.1.00128.L, 2022.1.00646.S) and all primary analysis codes (CASA, Frankenstein, Galario, Discminer, disksurf, emcee) are public, and the main results (ring locations, disc eccentricity, dynamical stellar mass, line-width residual amplitude, and CO surface parameters) are precisely quantified.",
+ "source_card": "cards/2026MNRAS.552g1700S/sonnet/card.md"
+}

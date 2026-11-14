@@ -1,0 +1,285 @@
+{
+ "bibcode": "2017ApJ...839..133P",
+ "title": "Variation in GMC Association Properties across the Bars, Spiral Arms, Inter-arms, and Circumnuclear Region of M100 (NGC 4321) Extracted from ALMA Observations",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa60c2",
+ "arxiv_id": "1702.04124",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism"
+ ],
+ "question": "How do GMA (giant molecular cloud association) properties and star formation activity vary across the circumnuclear ring, bar, spiral arm and inter-arm environments of M100?",
+ "alma_project_codes": [
+  "2011.0.00004.SV"
+ ],
+ "data": {
+  "bands": "Band 3 (115 GHz)",
+  "arrays": "12-m + ACA (7-m + total power), feathered",
+  "angular_resolution": "3.87'' x 2.53'' (~267 x 174 pc), PA -89.51 deg",
+  "sensitivity": "rms ~0.015 Jy/beam per 5.023 km/s channel (~1e5 Msun per beam per channel)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HII region catalogue and Halpha fluxes",
+    "evidence": [
+     {
+      "loc": "3.2 HII Regions and SFR of GMAs",
+      "quote": "The catalogue of HII regions is taken from (cite: Kna98)."
+     }
+    ]
+   },
+   "citation": "(cite: Kna98)"
+  },
+  {
+   "what": {
+    "value": "Halpha attenuation: 2.4 mag for CNR, 1.7 mag for bar and spiral",
+    "evidence": [
+     {
+      "loc": "3.2 HII Regions and SFR of GMAs",
+      "quote": "The value of $A\\mathrm{_{H\\alpha}}$ $=$ 2.4 mag is adopted for the CNR region, while $A\\mathrm{_{H\\alpha}}$ $=$ 1.7 mag[^3] is used for the bar and the spiral arms."
+     }
+    ]
+   },
+   "citation": "(cite: Pre07)"
+  },
+  {
+   "what": {
+    "value": "Outermost bar isophote used for bar classification",
+    "evidence": [
+     {
+      "loc": "4.1 GMA Classification",
+      "quote": "The outermost bar isophote determined by (cite: She01) is marked with an open ellipse"
+     }
+    ]
+   },
+   "citation": "(cite: She01)"
+  },
+  {
+   "what": {
+    "value": "Spiral arm ridge lines/width",
+    "evidence": [
+     {
+      "loc": "4.1 GMA Classification",
+      "quote": "The spiral arms of M100 are isolated from the **underlying stellar disc** with separate estimates from 3.6 $\\mu$m, 4.5 $\\mu$m and optical colour by (cite: Ken11)."
+     }
+    ]
+   },
+   "citation": "(cite: Ken11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify GMAs in the CO cube",
+   "method": "CPROPS cloud decomposition with watershed merge procedure disabled; reject edge GMAs, peaks <5 sigma and failed deconvolutions",
+   "software": [
+    "CPROPS"
+   ],
+   "key_parameters": [
+    "m = 4, e = 1.5; peak search box ~660 pc x 660 pc x 15 km/s; 50 bootstraps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive GMA physical properties",
+   "method": "CPROPS extrapolation to 0 K; Mc from LCO with Xco; Rc=1.91 sigma_r; Sigma_H2=Mc/(pi Rc^2); sigma_c deconvolved by channel width; alpha_vir=1040 Rc sigma_c^2/Mc",
+   "software": [
+    "CPROPS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Galactic Xco = 2e20 cm^-2 (K km/s)^-1 constant across environments; galaxy rotation ignored"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute SFR of GMAs from HII regions",
+   "method": "Sum Halpha-based SFRs of catalogued HII regions inside GMA observed boundaries, with extinction correction",
+   "software": [],
+   "key_parameters": [
+    "SFR=5.3e-42 L(Halpha) x 10^(A/2.5); A=2.4 (CNR), 1.7 (bar, spiral), none in inter-arm"
+   ],
+   "assumptions": [
+    "GMAs and HII regions coexist (no offset at this resolution)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Classify environments and compare distributions",
+   "method": "Classify GMAs as CNR (r<15''), bar, spiral, inter-arm; two-sample t-test between environments",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit scaling relations and K-S relation",
+   "method": "Error-weighted least squares power-law fits with numpy polyfit; correlation coefficients with corrcoef",
+   "software": [
+    "numpy"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Test effect of missing flux using 12-m alone",
+   "method": "Repeat GMA identification on 12-m-only cube; match 70 GMAs by position and velocity",
+   "software": [
+    "CPROPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of GMAs",
+   "value": "165",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 GMA identification",
+     "quote": "The final number of GMAs is 165, accounting for $\\sim$ 55% of the total flux in the data cube."
+    }
+   ]
+  },
+  {
+   "quantity": "GMAs per environment",
+   "value": "11 CNR, 21 bar, 62 spiral, 71 inter-arm",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "11 CNR GMAs, 21 bar GMAs, 62 spiral GMAs, and 71 inter-arm GMAs"
+    }
+   ]
+  },
+  {
+   "quantity": "Median GMA mass",
+   "value": "8.8e6",
+   "uncertainty": "factor ~2 typical",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "The median mass of the GMAs is $\\sim$ 8.8 $\\times$ 10$^{6}$ M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total GMA mass",
+   "value": "2.5e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "The total mass enclosed within the 165 GMAs is about 2.5 $\\times$ 10$^{9}$ M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size index a (all GMAs)",
+   "value": "1.01",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "The best fit of $M_{\\mathrm{c}}$ and $R\\mathrm{_{c}}$ yields an $a$ value of 1.01 $\\pm$ 0.14 with all GMAs."
+    }
+   ]
+  },
+  {
+   "quantity": "sigma-R index b (all GMAs)",
+   "value": "0.10",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "The best fit of all populations yields a power-law index of $b$ $=$ 0.10 $\\pm$ 0.11."
+    }
+   ]
+  },
+  {
+   "quantity": "K-S index N (all GMAs)",
+   "value": "~1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "An index of $N$ $\\approx$ 1.5 is subsequently derived."
+    }
+   ]
+  },
+  {
+   "quantity": "K-S index N by environment",
+   "value": "~1.7 bar, ~1.0 spiral and inter-arm, ~0.8 CNR",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "The power-law index $N$ decreases from a superlinear relation ($\\sim$ 1.7) for the bar GMAs to an almost linear relation ($\\sim$ 1.0) for the spiral and inter-arm GMAs, and to a sublinear relation ($\\sim$ 0.8) for the CNR GMAs"
+    }
+   ]
+  },
+  {
+   "quantity": "Total SFR in GMAs",
+   "value": "~2",
+   "uncertainty": "factor ~2 from A_Halpha",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The total SFR in the 165 GMAs is $\\sim$ 2 M$_{\\ensuremath{\\odot}}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "12-m-only GMA count",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6",
+     "quote": "We identify a total of 100 GMAs and the total mass of the GMAs is $\\sim$ 1.1 $\\times$ 10$^{9}$ M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CPROPS configuration details beyond m, e (e.g. distance/beam inputs, velocity-resolution handling, MAD noise estimation) and the version",
+  "Exact CASA tasks, feathering parameters and the pipeline for the SV data (deferred to a CASA guide)",
+  "Line-free channels and continuum subtraction",
+  "Tables of GMA classification boundaries (ellipse, spiral ridge coordinates) in machine-readable form",
+  "Details of the K-S fits per environment (weights, fit range)",
+  "Exact definition of the two-sample t-test variant"
+ ],
+ "missing_for_reproduction": [
+  "Exact CPROPS settings and version",
+  "Machine-readable environment masks"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and a catalogue table are given, with main parameters (robust, m, e, Xco, extinction), but environment masks and CPROPS details are incomplete.",
+ "rediscovery_reason": "Public data, standard CPROPS recipe and numeric results (slopes, counts, masses) available.",
+ "source_card": "cards/2017ApJ...839..133P/sonnet/card.md"
+}

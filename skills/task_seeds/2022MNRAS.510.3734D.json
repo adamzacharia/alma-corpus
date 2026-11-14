@@ -1,0 +1,688 @@
+{
+ "bibcode": "2022MNRAS.510.3734D",
+ "title": "A high-resolution investigation of the multiphase ISM in a galaxy during the first two billion years",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab3569",
+ "arxiv_id": "2112.03936",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Spatially-resolved investigation of the multi-phase ISM, kinematics, gas-to-dynamical mass discrepancy, and evolutionary fate of the z=4.24 strongly-lensed sub-millimetre galaxy H-ATLAS J142413.9+022303 (ID141)",
+ "alma_project_codes": [
+  "2016.1.00450.S",
+  "2017.1.00029.S",
+  "2013.1.00358.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 7",
+  "arrays": "12m array (44 antennas in Band 4; 46 and 44 antennas in Band 3)",
+  "angular_resolution": "Band 3: 0.11 arcsec; Band 4: 0.15 arcsec; Band 7: 0.12 arcsec",
+  "sensitivity": "Band 3: 0.56 mJy beam^-1 per 10 km s^-1 channel; Band 4: 0.34 mJy beam^-1 per 10 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum photometry of ID141",
+    "evidence": [
+     {
+      "loc": "Far-IR Spectral Energy Distribution",
+      "quote": "The filled points are taken from D18 but reduced by 5 per cent to account for the updated lens magnification and from (cite: cheng2020)."
+     }
+    ]
+   },
+   "citation": "D18 (cite: dye2018); (cite: cheng2020)"
+  },
+  {
+   "what": {
+    "value": "Updated 850 um flux of 90 mJy",
+    "evidence": [
+     {
+      "loc": "Far-IR Spectral Energy Distribution",
+      "quote": "We also updated the 850 $\\mu$m flux originally taken from (cite: bakx2018) with the flux of 90 mJy following (cite: bakx2020)."
+     }
+    ]
+   },
+   "citation": "(cite: bakx2018); (cite: bakx2020)"
+  },
+  {
+   "what": {
+    "value": "Total CO(1-0) line flux of 0.61 +/- 0.09 Jy km s^-1 (0.111 +/- 0.016 Jy km s^-1 unlensed)",
+    "evidence": [
+     {
+      "loc": "The gas mass from CO",
+      "quote": "The total CO(1-0) line flux is $0.61\\pm 0.09$ Jy km s$^{-1}$ (Dunne et al. *in preparation*)."
+     }
+    ]
+   },
+   "citation": "Dunne et al. in preparation"
+  },
+  {
+   "what": {
+    "value": "Global [CII] 158 um line flux (18.1 +/- 2.9 Jy km s^-1 unlensed) and 3290 um continuum flux density (1.2 +/- 0.1 mJy)",
+    "evidence": [
+     {
+      "loc": "The gas mass from [CII]",
+      "quote": "Instead, we simply used the global line flux given by (cite: cox2011), corrected it for the magnification factor of 5.9 we measured for the dust continuum emission in band 4"
+     },
+     {
+      "loc": "The gas mass from dust emission",
+      "quote": "We used the global flux density measured by (cite: cox2011) at 3290 $\\mu$m of $1.2\\pm0.1$ mJy"
+     }
+    ]
+   },
+   "citation": "(cite: cox2011)"
+  },
+  {
+   "what": {
+    "value": "Ks-band data of the lensing galaxy and limiting Ks-band flux",
+    "evidence": [
+     {
+      "loc": "The stellar mass",
+      "quote": "To begin, we measured the surface brightness profiles of the lensing mass from the $K_{\\rm s}$-band data presented in (cite: bussmann2012) using `GALFIT` (cite: peng2002)."
+     }
+    ]
+   },
+   "citation": "(cite: bussmann2012)"
+  },
+  {
+   "what": {
+    "value": "WISE 12 um and 22 um fluxes",
+    "evidence": [
+     {
+      "loc": "The stellar mass",
+      "quote": "Wide-field Infrared Survey Explorer fluxes at 12 $\\mu$m and 22 $\\mu$m (cite: lang2016)."
+     }
+    ]
+   },
+   "citation": "(cite: lang2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Gravitational lens modelling and pixelised source-plane reconstruction of continuum and line cubes",
+   "method": "Simultaneously fit Band 4 continuum visibilities (time-averaged to 20s) and Band 7 visibilities in the uv-plane using an elliptical power-law mass profile and linear inversion on a randomized Voronoi source grid; reconstruct channel slices by averaging 50 random Voronoi pixelisations onto a 100x100 grid.",
+   "software": [
+    "MIRIAD",
+    "uvmodel",
+    "NeuralNest"
+   ],
+   "key_parameters": [
+    "0.8 x 0.8 arcsec source plane with 400 Voronoi pixels, 7 randomisations per likelihood evaluation, 50 randomisations averaged onto 100 x 100 square pixels for final reconstruction, 20s visibility time-averaging in Band 4"
+   ],
+   "assumptions": [
+    "Elliptical power-law volume mass density profile for the foreground lens with zero external shear"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Far-IR SED fitting to derive dust mass, FIR luminosity, and star formation rate",
+   "method": "Fit rest-frame continuum photometry with an optically thick single-temperature modified black-body SED and an optically thin two-temperature modified black-body SED, integrate from 8 to 1000 um for LFIR, and convert to SFR.",
+   "software": [],
+   "key_parameters": [
+    "4 degrees of freedom for optically thin two-component SED; 3 degrees of freedom for optically thick single-component SED; integration range 8-1000 um"
+   ],
+   "assumptions": [
+    "Fixed emissivity index beta = 2.0; dust mass absorption coefficient kappa_168um = 1.7 m^2 kg^-1; Kennicutt & Evans (2012) SFR conversion with Kroupa (2003) IMF"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure spatial variation of ISM excitation temperature and molecular mass fraction from [CI] lines",
+   "method": "Divide reconstructed [CI](2-1) and [CI](1-0) source images into a stack of five east-west slices, compute line luminosity ratio R = L'(2-1)/L'(1-0), and convert to excitation temperature and molecular mass fraction per slice.",
+   "software": [],
+   "key_parameters": [
+    "5 slices running east-west, each 0.2 arcsec long and 0.08 arcsec wide"
+   ],
+   "assumptions": [
+    "Optically thin [CI] lines and local thermodynamic equilibrium (LTE)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate total molecular ISM mass using four tracers and five methods",
+   "method": "Calculate de-magnified luminosities of CO(1-0), [CI](1-0), [CII] 158um, and rest-frame 850um dust continuum (extrapolated from 3290um), and apply Galactic-calibrated conversion factors individually and via a combined CO/[CI]/dust method.",
+   "software": [],
+   "key_parameters": [
+    "Magnification factors: mu = 5.5 for CO(1-0) and 3290um dust, mu = 5.6 for [CI](1-0), mu = 5.9 for [CII]"
+   ],
+   "assumptions": [
+    "alpha_CO = 3.0 +/- 0.5 M_sun (K km s^-1 pc^2)^-1 with 1.36 helium factor and mean GDR = 135; alpha_[CI] = 18.8 M_sun (K km s^-1 pc^2)^-1; alpha_CII = 30 M_sun/L_sun; alpha_850um = 6.7 +/- 1.7 x 10^19 ergs s^-1 Hz^-1 M_sun^-1 with T_d = 25 K and beta = 1.8"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Lens light subtraction in Spitzer IRAC and multi-wavelength SED fitting for stellar mass",
+   "method": "Fit foreground lens surface brightness in Ks-band using GALFIT, construct and subtract model IRAC 3.6 and 4.5 um lens profiles, extract residual source flux in an annulus, and fit multi-wavelength photometry with MAGPHYS v2.",
+   "software": [
+    "GALFIT",
+    "MAGPHYS"
+   ],
+   "key_parameters": [
+    "De-magnification factor mu = 5.8; IMF scaling factor = 1.41"
+   ],
+   "assumptions": [
+    "Near-IR Ks-band morphology traces mid-IR lens light; Chabrier (2003) IMF in MAGPHYS scaled by 1.41 to Kroupa (2003) IMF"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "3D kinematic tilted-ring modelling of reconstructed CO(7-6) and H2O cubes and dynamical mass estimation",
+   "method": "Identify 3D source mask using 3DBarolo SEARCH (DUCHAMP), extract initial parameters from CASA moment maps and 2D Gaussian fits, fit tilted-ring models using 3DFIT with both local and azimuthal normalizations, and repeat after masking/subtracting the northern region with CASA immath to test a two-galaxy scenario.",
+   "software": [
+    "3DBarolo",
+    "DUCHAMP",
+    "CASA",
+    "image.moments",
+    "image.fitcomponents",
+    "immath"
+   ],
+   "key_parameters": [
+    "SEARCH primary SNR threshold = 3.5 sigma, secondary threshold = 2.0 sigma; minimum ring width = 0.4 x FWHM of minor axis of restoring beam; maximum model radius = 0.8 x FWHM of major axis of 2D Gaussian fit to moment-0; disk scale height z_o = 0.01 arcsec; both local and azimuthal flux normalizations"
+   ],
+   "assumptions": [
+    "Thin rotating disk with circular orbits"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Chemical evolution modelling and dynamical stability/timescale analysis",
+   "method": "Run chemical evolution models (conSF and 200 Myr SB) for Salpeter, Chabrier, and top-heavy IMFs to track GDR, metallicity, gas mass, and stellar mass; compute escape velocity, clump inspiral timescale, Toomre Q-parameter, and gas depletion time.",
+   "software": [],
+   "key_parameters": [
+    "z_f = 4.8 (Salpeter), 5.5 (Chabrier), 7 (top-heavy); SB burst duration = 200 Myr observed at 40%; grain growth parameter = 700 to 15,000; effective radius = 1.4 kpc; v_c / sigma_0 = 10"
+   ],
+   "assumptions": [
+    "Milky Way GDR = 160 (with beta = 1.8, T_d = 25 K, kappa_850 = 0.077 m^2 kg^-1, kappa_ISM = 4.8 x 10^-4 m^2 kg^-1, equal HI and H2 plus Helium); zero dark matter contribution; M_gas / M_tot = 0.5 for Toomre Q"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Source redshift (z)",
+   "value": "4.24417",
+   "uncertainty": "0.00003",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Emission lines",
+     "quote": "Taking the median observed frequency of each of the H$_2$O, CO(7-6) and \\[ C i \\] (2-1) lines measured from the reconstructed source and calculating the mean of these weighted by their SNR results in an inferred source redshift of $z=4.24417\\pm0.00003$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed (lensed) Band 7 continuum flux density",
+   "value": "91",
+   "uncertainty": "5",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Data Acquisition and Processing",
+     "quote": "The updated flux measured from the lensed image is $91\\pm 5$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed (lensed) H2O line flux",
+   "value": "4.1",
+   "uncertainty": "0.4",
+   "units": "Jy km s^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "H$_2$O | 752.033 | 143.403 | 4.24419 | $4.1\\pm 0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed (lensed) CO(7-6) line flux",
+   "value": "11.4",
+   "uncertainty": "1.1",
+   "units": "Jy km s^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO(7-6) | 806.652 | 153.820 | 4.24413 | $11.4\\pm 1.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed (lensed) [CI](2-1) line flux",
+   "value": "6.2",
+   "uncertainty": "0.8",
+   "units": "Jy km s^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "\\[ C i \\] (2-1) | 809.342 | 154.332 | 4.24416 | $6.2\\pm 0.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed (lensed) [CI](1-0) line flux",
+   "value": "3.1",
+   "uncertainty": "0.4",
+   "units": "Jy km s^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "\\[ C i \\] (1-0) | 492.161 | 93.8479 | (4.24424) | $3.1 \\pm 0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lens normalisation surface mass density (kappa_0)",
+   "value": "0.60",
+   "uncertainty": "0.01",
+   "units": "10^10 M_sun kpc^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Lens Model",
+     "quote": "The parameters of our best-fit lens model are: $\\kappa_0=(0.60\\pm0.01)\\times 10^{10}{\\rm M}_\\odot\\,{\\rm kpc}^{-2}$, $\\epsilon=1.14\\pm0.02$, $\\theta=(96\\pm2)^\\circ$, $\\alpha=2.01\\pm0.03$."
+    }
+   ]
+  },
+  {
+   "quantity": "Lens elongation (epsilon)",
+   "value": "1.14",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Lens Model",
+     "quote": "The parameters of our best-fit lens model are: $\\kappa_0=(0.60\\pm0.01)\\times 10^{10}{\\rm M}_\\odot\\,{\\rm kpc}^{-2}$, $\\epsilon=1.14\\pm0.02$, $\\theta=(96\\pm2)^\\circ$, $\\alpha=2.01\\pm0.03$."
+    }
+   ]
+  },
+  {
+   "quantity": "Lens orientation (theta)",
+   "value": "96",
+   "uncertainty": "2",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Lens Model",
+     "quote": "The parameters of our best-fit lens model are: $\\kappa_0=(0.60\\pm0.01)\\times 10^{10}{\\rm M}_\\odot\\,{\\rm kpc}^{-2}$, $\\epsilon=1.14\\pm0.02$, $\\theta=(96\\pm2)^\\circ$, $\\alpha=2.01\\pm0.03$."
+    }
+   ]
+  },
+  {
+   "quantity": "Lens density profile power-law index (alpha)",
+   "value": "2.01",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Lens Model",
+     "quote": "The parameters of our best-fit lens model are: $\\kappa_0=(0.60\\pm0.01)\\times 10^{10}{\\rm M}_\\odot\\,{\\rm kpc}^{-2}$, $\\epsilon=1.14\\pm0.02$, $\\theta=(96\\pm2)^\\circ$, $\\alpha=2.01\\pm0.03$."
+    }
+   ]
+  },
+  {
+   "quantity": "Lens Einstein radius",
+   "value": "0.97",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Lens Model",
+     "quote": "The Einstein radius of $0.97\\pm0.04$ arcsec remains the same."
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed continuum flux density (Band 3)",
+   "value": "0.26",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Reconstruction",
+     "quote": "the continuum fluxes measured in this way are $0.26\\pm0.04$ mJy, $1.16\\pm0.14$ mJy and $14.9\\pm0.8$ mJy in band 3, 4 and 7 respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed continuum flux density (Band 4)",
+   "value": "1.16",
+   "uncertainty": "0.14",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Reconstruction",
+     "quote": "the continuum fluxes measured in this way are $0.26\\pm0.04$ mJy, $1.16\\pm0.14$ mJy and $14.9\\pm0.8$ mJy in band 3, 4 and 7 respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed continuum flux density (Band 7)",
+   "value": "14.9",
+   "uncertainty": "0.8",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Source Reconstruction",
+     "quote": "the continuum fluxes measured in this way are $0.26\\pm0.04$ mJy, $1.16\\pm0.14$ mJy and $14.9\\pm0.8$ mJy in band 3, 4 and 7 respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Total lens magnification (Band 3, Band 4, Band 7 continuum)",
+   "value": "5.5, 5.9, 6.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$\\mu_{\\rm tot}$ : | 5.5 | 5.9 | 6.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Total lens magnification (CO(7-6), H2O, [CI](2-1), [CI](1-0))",
+   "value": "6.2, 5.8, 6.3, 5.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$\\mu_{\\rm tot}$ : | 6.2 | 5.8 | 6.3 | 5.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed CO(7-6) line flux",
+   "value": "1.84",
+   "uncertainty": "0.31",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "First Estimates of the Mass of the ISM",
+     "quote": "CO(7-6) | 153.876 | $1.84\\pm0.31$ | $0.45\\pm0.07$ | $2.7\\pm0.5$ | this paper"
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed [CI](2-1) line flux",
+   "value": "0.98",
+   "uncertainty": "0.19",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "First Estimates of the Mass of the ISM",
+     "quote": "$\\rm \\mbox{[\\,C\\,{\\sc i}\\,]}\\,(^3P_2 - ^3P_1)$ | 154.339 | $0.98\\pm0.19$ | $0.224\\pm0.045$ | $1.3\\pm0.2$ | this paper"
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed [CI](1-0) line flux",
+   "value": "0.55",
+   "uncertainty": "0.10",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "First Estimates of the Mass of the ISM",
+     "quote": "$\\rm \\mbox{[\\,C\\,{\\sc i}\\,]}\\,(^3P_1 - ^3P_0)$ | 93.870 | $0.55\\pm0.10$ | $0.076\\pm0.014$ | $2.0\\pm0.4$ | this paper"
+    }
+   ]
+  },
+  {
+   "quantity": "Unlensed H2O line flux",
+   "value": "0.70",
+   "uncertainty": "0.14",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "First Estimates of the Mass of the ISM",
+     "quote": "H$_2$O | 143.436 | $0.70\\pm0.14$ | $0.16\\pm0.03$ | $1.14\\pm0.23$ | this paper"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (optically thin SED)",
+   "value": "1.4e9",
+   "uncertainty": "0.3e9",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Far-IR Spectral Energy Distribution",
+     "quote": "The predicted dust masses are $(1.4\\pm 0.3)\\times 10^9$ M$_\\odot$ and $(7.4\\pm 0.8)\\times 10^8$ M$_\\odot$ for the optically thin and optically thick SEDs respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (optically thick SED)",
+   "value": "7.4e8",
+   "uncertainty": "0.8e8",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Far-IR Spectral Energy Distribution",
+     "quote": "The predicted dust masses are $(1.4\\pm 0.3)\\times 10^9$ M$_\\odot$ and $(7.4\\pm 0.8)\\times 10^8$ M$_\\odot$ for the optically thin and optically thick SEDs respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Far-IR luminosity (optically thin and thick SEDs)",
+   "value": "1.6e13, 1.5e13",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Far-IR Spectral Energy Distribution",
+     "quote": "Integrating these SEDs from 8-1000 $\\mu$m gives a far-IR luminosity, $L_{\\rm FIR}$, of $1.6\\times10^{13}$ L$_\\odot$ and $1.5\\times10^{13}$ L$_\\odot$ for the optically thin and thick SEDs respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (FIR SED, Kroupa IMF)",
+   "value": "2400",
+   "uncertainty": "500",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Far-IR Spectral Energy Distribution",
+     "quote": "Taking the mean of these luminosities and converting it to a star formation rate (SFR) according to the prescription given by (cite: kennicutt2012), which uses the initial mass function given by (cite: kroupa2003), gives a value of $2400\\pm500$ M$_\\odot$yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Global [CI] excitation temperature",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The Temperature Distribution in the ISM",
+     "quote": "and the equation above, is 33 K"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM gas mass from CO(1-0)",
+   "value": "3.3e11",
+   "uncertainty": "0.7e11",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "CO(1-0) | $\\rm 3.3\\pm0.7$ | (cite: dunne2021a)"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM gas mass from [CI](1-0)",
+   "value": "3.8e11",
+   "uncertainty": "0.8e11",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "\\[ C i \\] (1-0) | $\\rm 3.8\\pm0.8$ | (cite: dunne2021a)"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM gas mass from [CII] 158 um",
+   "value": "3.2e11",
+   "uncertainty": "0.6e11 (text) / 0.7e11 (Table 5)",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The gas mass from [CII]",
+     "quote": "We obtained a total gas mass of $(3.2\\pm0.6)\\times10^{11}$ M$_\\odot$ (Table 5)."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "\\[ C ii \\] 158 $\\mu$m | $\\rm 3.2\\pm0.7$ | (cite: zanella2018)"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM gas mass from dust continuum",
+   "value": "3.6e11",
+   "uncertainty": "0.7e11",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "dust | $\\rm 3.6\\pm0.7$ | (cite: scoville2016)"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM gas mass from combined CO/[CI]/dust method",
+   "value": "3.6e11",
+   "uncertainty": "0.7e11",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "CO/\\[ C i \\] /dust | $\\rm 3.6\\pm0.7$ | (cite: dunne2021a)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (MAGPHYS, scaled to Kroupa IMF)",
+   "value": "4.8e11",
+   "uncertainty": "+2.5e11/-2.3e11",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The stellar mass",
+     "quote": "The resulting stellar mass is M$_\\star = 4.8^{+2.5}_{-2.3} \\times 10^{11}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass (H2O local and azimuthal normalizations)",
+   "value": "6.9e10, 8.1e10",
+   "uncertainty": "1.8e10, 2.4e10",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The results of the kinematic model",
+     "quote": "H$_2$O | Local | $(0.36\\pm0.06)\\times(0.23\\pm0.05)$ | $50\\pm12$ | $61\\pm11$ | $66\\pm17$ | $96\\pm10$ | $6.9\\pm1.8$"
+    },
+    {
+     "loc": "The results of the kinematic model",
+     "quote": "H$_2$O | Azimuthal | $-$ | $-$ | $57\\pm12$ | $-$ | $103\\pm5$ | $8.1\\pm2.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass (CO(7-6) local and azimuthal normalizations)",
+   "value": "7.7e10, 8.6e10",
+   "uncertainty": "1.7e10, 2.0e10",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The results of the kinematic model",
+     "quote": "CO | Local | $(0.39\\pm0.05)\\times(0.33\\pm0.04)$ | $33\\pm16$ | $54\\pm10$ | $80\\pm31$ | $95\\pm6$ | $7.7\\pm1.7$"
+    },
+    {
+     "loc": "The results of the kinematic model",
+     "quote": "CO | Azimuthal | $-$ | $-$ | $65\\pm9$ | $0$ | $96\\pm7$ | $8.6\\pm2.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of secondary northern component",
+   "value": "3.9e10",
+   "uncertainty": "0.9e10",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "One galaxy or several?",
+     "quote": "The corresponding dynamical mass of this secondary is $(3.9\\pm0.9)\\times 10^{10}$ M$_\\odot$ and when added to the dynamical mass of the main galaxy, increases the total dynamical mass by approximately 50 per cent compared to the single-galaxy model."
+    }
+   ]
+  },
+  {
+   "quantity": "Total dynamical mass range (1-disk to 2-disk scenarios)",
+   "value": "0.8e11 - 1.3e11",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We have estimated the mass of the ISM using four different tracers, always obtaining an estimate in the range $\\rm 3.2-3.8 \\times 10^{11}\\ M_{\\odot}$, significantly higher than our dynamical mass estimate of $\\rm 0.8-1.3 \\times 10^{11}\\ M_{\\odot}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges excluded as line emission during uvcontsub and continuum visibility splitting",
+  "Flux calibrator used in the archival calibration scripts for Bands 3 and 4",
+  "Clean stopping threshold, number of iterations, and cleaning masks used in CASA imaging",
+  "Regularization weight and covariance matrix formulation used in the linear source inversion on the Voronoi grid",
+  "Appendix text (Appendices referenced in main text for MAGPHYS SED fitting details and chemical evolution model equations are omitted from the paper text)"
+ ],
+ "missing_for_reproduction": [
+  "Custom semi-linear visibility-plane gravitational lens inversion code (from Dye et al. 2018)",
+  "Chemical evolution model code (extension of De Vis et al. 2017b)",
+  "Exact regularisation scheme and annular mask coordinates used in the Voronoi lens inversion",
+  "Line-free channel selections used in CASA uvcontsub",
+  "Single restoring beam size supplied to 3DBarolo for the source-plane cubes"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Raw ALMA data, CASA versions, calibration script provenance, imaging pixel scale/weighting, best-fit lens model parameters, and 3DBarolo settings are clearly specified, and key intermediate and final numbers are tabulated. However, the custom visibility-plane Voronoi lens reconstruction code and chemical evolution code are not publicly released, and the appendices detailing MAGPHYS and chemical evolution parameters are absent.",
+ "rediscovery_reason": "All three ALMA datasets are public in the archive, the observed lensed line and continuum fluxes and lens model parameters are explicitly reported as benchmarks, and standard tools (CASA, 3DBarolo) or open-source lens modelling alternatives (e.g. PyAutoLens) can be used to reproduce the source reconstructions, temperature gradient, kinematic fits, and ISM/dynamical masses.",
+ "source_card": "cards/2022MNRAS.510.3734D/sonnet/card.md"
+}

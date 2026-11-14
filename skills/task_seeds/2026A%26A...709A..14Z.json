@@ -1,0 +1,441 @@
+{
+ "bibcode": "2026A&A...709A..14Z",
+ "title": "Gas excitation of post-SB galaxies at 0.6 &lt; z &lt; 1.3",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202558073",
+ "arxiv_id": "2511.08829",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What is the physical excitation state of molecular gas in post-starburst galaxies at 0.6 < z < 1.3, and what mechanisms drive their low star formation efficiency?",
+ "alma_project_codes": [
+  "2016.1.01126.S",
+  "2017.1.01109.S",
+  "2018.1.01264.S",
+  "2018.1.01240.S",
+  "2019.1.00221.S",
+  "2019.1.00900.S",
+  "2024.1.00061.S"
+ ],
+ "data": {
+  "bands": "Band 4, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.5'' - 1.4'' (CO 5-4); up to 3.06'' x 2.16'' in archival low-J data",
+  "sensitivity": "Continuum RMS 0.008 - 0.083 mJy/beam (Table 1); 12.6 - 99.3 uJy (260-360 GHz continuum); 4.5 - 21.0 uJy (broad continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses, SFRs, Dn4000, and time since quenching for SQuIGGLE galaxies",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^a$Stellar mass and SFR from (cite: Bezanson2021)."
+     },
+     {
+      "loc": "Physical properties",
+      "quote": "All our targets have available estimates of the D$_n$4000 spectral index, a useful tool to constrain the mean stellar age of galaxies with younger galaxies having on average a less pronounced 4000-break (cite: Bezanson2021; Zanella2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Bezanson2021)"
+  },
+  {
+   "what": {
+    "value": "Time since quenching for SQuIGGLE sample",
+    "evidence": [
+     {
+      "loc": "Physical properties",
+      "quote": "For the SQuIGG$\\vec{L}$E sample (cite: Bezanson2021) and (cite: Suess2021) also published an estimate of the time since quenching derived from the star formation history provided by the `Prospector` stellar population synthesis modeling."
+     }
+    ]
+   },
+   "citation": "(cite: Suess2021)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses, SFRs, and Dn4000 for ID83492, ID97148, and companions",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^b$Stellar mass and SFR from (cite: Zanella2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Zanella2023)"
+  },
+  {
+   "what": {
+    "value": "Average CO excitation ratios for local post-starbursts (R31 = 0.32, R21 = 0.52, R32 = 0.62)",
+    "evidence": [
+     {
+      "loc": "Physical properties",
+      "quote": "We re-estimated the molecular gas masses considering the average excitation factors obtained for local post-SBs, namely $R_{31} = 0.32$, $R_{21} = 0.52$, and $R_{32} = 0.62$ (cite: French2021)."
+     },
+     {
+      "loc": "Molecular gas excitation",
+      "quote": "In these cases, we estimated $L'_\\mathrm{CO(2-1)}$ from $L'_\\mathrm{CO(3-2)}$ assuming the average ratio $R_{32} = 0.62$ of local post-starbursts (cite: French2023)."
+     }
+    ]
+   },
+   "citation": "(cite: French2021), (cite: French2023)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples of local and high-redshift main-sequence galaxies, ULIRGs, and starbursts",
+    "evidence": [
+     {
+      "loc": "Molecular gas excitation",
+      "quote": "as well as comparison samples of local and high-redshift main-sequence galaxies, local Ultra Luminous Infrared Galaxies (ULIRGs), and high-redshift starbursts from the literature (cite: Liu2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Liu2021)"
+  },
+  {
+   "what": {
+    "value": "CO(5-4) - L_IR scaling relation for star-forming galaxies",
+    "evidence": [
+     {
+      "loc": "Residual star formation",
+      "quote": "We converted the CO(5-4) luminosity into total IR luminosity ($\\mathrm{L_{IR}}$) following the relation of (cite: Valentino2020b)"
+     }
+    ]
+   },
+   "citation": "(cite: Valentino2020b)"
+  },
+  {
+   "what": {
+    "value": "Average SED template for quiescent galaxies",
+    "evidence": [
+     {
+      "loc": "Residual star formation",
+      "quote": "To this end, we used the average SED template for quiescent galaxies from (cite: Magdis2021), which is characterized by a dust temperature $T_\\mathrm{d} = 20\\, \\mathrm{K}$"
+     }
+    ]
+   },
+   "citation": "(cite: Magdis2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate raw ALMA visibilities and convert to uvfits for GILDAS analysis",
+   "method": "Standard ALMA calibration pipeline followed by conversion to uvfits format and 3x spectral binning",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "3x velocity binning from native 6.5 - 13.5 km s^-1 resolution"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract 1D spectra and measure CO(5-4) and archival low-J CO line fluxes and redshifts in the uv plane",
+   "method": "Iterative channel-by-channel uv-plane fitting of an elliptical Gaussian at fixed CO(2-1) position to extract 1D spectra, followed by 1D Gaussian fitting on optimal S/N spectrum",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "3 sigma detection threshold; 3 sigma upper limits using CO(2-1) channel range for non-detections"
+   ],
+   "assumptions": [
+    "Elliptical Gaussian source model with fixed aperture across all channels and transitions"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Stack CO(5-4) non-detections in the uv plane",
+   "method": "Align individual CO(5-4) maps to CO(2-1) positions, coadd visibilities, and fit stacked uv data with a 2D Gaussian",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "2D Gaussian parameters fixed to those obtained from the CO(2-1) stack"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure dust continuum upper limits and search for serendipitous continuum sources",
+   "method": "Integrate visibilities over line-free spectral ranges (both 260-360 GHz and combined with lower-J continuum bands)",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "3 sigma upper limits for continuum flux"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular gas masses and excitation ratios (R52, R53) and compute sample averages",
+   "method": "Calculate brightness temperature luminosity ratios R52 and R53, convert low-J CO to M_H2, and compute sample mean R52 using Kaplan-Meier survival analysis and stacking",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.4 M_sun pc^-2 (K km s^-1)^-1 for post-SBs and 0.8 for starbursting companions",
+    "Excitation ratios R31 = 0.32, R21 = 0.52, R32 = 0.62 for post-SBs; R31 = 0.66, R21 = 0.85, R32 = 0.78 for starbursting companions"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Construct CO SLEDs and compare with theoretical models and test for residual obscured star formation",
+   "method": "Normalize CO SLEDs to CO(2-1), compare with Narayanan et al. (2014) models, and compare L_IR predicted from CO(5-4) against maximum L_IR allowed by continuum non-detections",
+   "software": [],
+   "key_parameters": [
+    "Sigma_SFR = 0.05 to > 500 M_sun yr^-1 kpc^-2 for SLED models; T_d = 20 K and 30 K for dust SED templates"
+   ],
+   "assumptions": [
+    "Pseudo CO(2-1) derived using R32 = 0.50 in SLED plot for galaxies lacking CO(2-1); Valentino2020b CO(5-4)-L_IR relation; Kennicutt2021 L_IR-SFR relation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean R52 (All post-SBs)",
+   "value": "0.28",
+   "uncertainty": "+0.15/-0.13",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "All post-SBs | 0.006 | $0.28^{+0.15}_{-0.13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean R52 (Merging post-SBs)",
+   "value": "0.40",
+   "uncertainty": "+0.15/-0.15",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Merging post-SBs | 0.004 | $0.40^{+0.15}_{-0.15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked R52 upper limit (Non merging post-SBs)",
+   "value": "< 0.10",
+   "uncertainty": "1 sigma",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Non merging post-SBs | 0.007 | $< 0.10$"
+    },
+    {
+     "loc": "Molecular gas excitation",
+     "quote": "Non-detections have on average a tight upper limit $R_{52} < 0.10$ ($1\\sigma$) derived by stacking (see Sec. [3.1](#subsec:co54))."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean R52 (Companions of ID83492)",
+   "value": "0.12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Companions ID83492 | 10.716 | $0.12$"
+    }
+   ]
+  },
+  {
+   "quantity": "J1448 CO(5-4) integrated flux density",
+   "value": "2.62",
+   "uncertainty": "± 0.54",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | | $0.6465 \\pm 0.0002$ | $2.62 \\pm 0.54$ | $591 \\pm 93$ | $24.7 \\pm 5.1$ | $< 257.2$ | CO(5-4) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J1448 R52",
+   "value": "0.76",
+   "uncertainty": "± 0.19",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1448$^a$ | $11.6^{+0.04}_{-0.07}$ | $1.06^{+0.99}_{-0.94}$ | $10.4\\pm 0.06$ | 0.003 | $0.76 \\pm 0.19$"
+    }
+   ]
+  },
+  {
+   "quantity": "J2258 CO(5-4) integrated flux density",
+   "value": "2.38",
+   "uncertainty": "± 0.75",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | | $0.7043 \\pm 0.0005$ | $2.38 \\pm 0.75$ | $836 \\pm 207$ | $26.7 \\pm 8.4$ | $< 303.1$ | CO(5-4) |"
+    }
+   ]
+  },
+  {
+   "quantity": "J2258 R52",
+   "value": "0.27",
+   "uncertainty": "± 0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J2258$^a$ | $11.8^{+0.03}_{-0.05}$ | $0.94^{+1.85}_{-1.71}$ | $10.9\\pm 0.05$ | 0.001 | $0.27 \\pm 0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "ID83492 CO(5-4) integrated flux density",
+   "value": "0.16",
+   "uncertainty": "± 0.05",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| | | $1.1398 \\pm 0.0001$ | $0.16 \\pm 0.05$ | $129 \\pm 34$ | $4.6 \\pm 1.6$ | $< 49.7$ | CO(5-4) |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID83492 R53",
+   "value": "0.24",
+   "uncertainty": "± 0.12",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ID83492$^b$ | $10.8^{+0.20}_{-0.20}$ | $0.52^{+0.79}_{-0.32}$ | $10.4\\pm 0.16$ | 0.008 | $0.24 \\pm 0.12^c$"
+    }
+   ]
+  },
+  {
+   "quantity": "J1109 R52",
+   "value": "< 0.08",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1109$^a$ | $11.3^{+0.09}_{-0.03}$ | $2.33^{+1.12}_{-1.62}$ | $10.4\\pm 0.04$ | 0.012 | $< 0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "J1302 R52",
+   "value": "< 0.16",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1302$^a$ | $11.6^{+0.04}_{-0.06}$ | $0.26^{+0.93}_{-0.26}$ | $10.4\\pm 0.06$ | 0.001 | $< 0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "J0912 R52",
+   "value": "< 0.05",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J0912$^a$ | $11.2^{+0.03}_{-0.02}$ | $0.81^{+1.33}_{-0.76}$ | $10.8\\pm 0.03$ | 0.003 | $< 0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "J2202 R52",
+   "value": "< 1.50",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J2202$^a$ | $11.2^{+0.03}_{-0.02}$ | $1.99^{+1.91}_{-1.70}$ | $10.1\\pm 0.14$ | 0.004 | $< 1.50$"
+    }
+   ]
+  },
+  {
+   "quantity": "ID97148 R53",
+   "value": "< 0.11",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ID97148$^b$ | $10.7^{+0.10}_{-0.10}$ | $< 0.72$ | $10.1\\pm 0.23$ | $< 0.016$ | $< 0.11^c$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum obscured SFR from dust continuum non-detections (T_d = 20 K)",
+   "value": "< 18",
+   "uncertainty": "3 sigma",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Residual star formation",
+     "quote": "This yielded the maximum $\\mathrm{L_{IR}}$ allowed by the lack of continuum detection, and maximum obscured $\\mathrm{SFRs < 18\\, M_\\odot\\, yr^{-1}}$, consistent with values expected for quiescent galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum obscured SFR from dust continuum non-detections (T_d = 30 K)",
+   "value": "< 11",
+   "uncertainty": "3 sigma",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Residual star formation",
+     "quote": "This yielded even lower maximum L$_\\mathrm{IR}$ and more stringent $\\mathrm{SFR < 11\\, M_\\odot\\, yr^{-1}}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used for data calibration",
+  "Exact dimensions (major/minor axes and position angles) of the fixed elliptical Gaussian models used in GILDAS uv_fit for each target",
+  "Exact velocity/frequency channel ranges integrated for each line and excluded for continuum maps",
+  "Modified blackbody spectral emissivity index (beta) used when rescaling the Magdis et al. (2021) SED template from 20 K to 30 K"
+ ],
+ "missing_for_reproduction": [
+  "Exact major axis, minor axis, and position angle of the fixed elliptical Gaussian models used in GILDAS uv_fit for each galaxy",
+  "Exact velocity/frequency channel integration windows used for each line detection and upper limit",
+  "CASA and GILDAS software versions"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All 7 ALMA project codes are explicitly listed and standard pipeline calibration was used without complex custom imaging, since all flux extraction is done in the uv plane with GILDAS uv_fit. However, the exact sizes/orientations of the fixed elliptical Gaussian models and the exact velocity integration windows are not tabulated.",
+ "rediscovery_reason": "All ALMA project codes are identified, calibration relies on the standard ALMA pipeline, and the primary results are concrete numeric line fluxes, luminosities, and excitation ratios (R52, R53) tabulated per target.",
+ "source_card": "cards/2026A%26A...709A..14Z/sonnet/card.md"
+}

@@ -1,0 +1,460 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present Atacama Large Millimeter/Submillimeter Array (ALMA) \\[Cii\\] and $\\sim158$ $\\rm \\mu m$ continuum observations of REBELS-25"}
+],
+"fields": ["high_z_galaxies"],
+"question": {
+"value": "Characterise the ISM, morphology, kinematics, star formation and possible merger or outflow of REBELS-25, a massive dusty ULIRG in the EoR, and ask whether it can evolve into a high-z quiescent galaxy",
+"evidence": [
+{"loc": "1 Introduction", "quote": "whether REBELS-25 has the potential to evolve into a high-z quiescent galaxy"},
+{"loc": "1 Introduction", "quote": "We present an analysis of new \\[Cii\\] and IR observations of REBELS-25 from the REBELS survey, in combination with existing IR and HST observations of the rest-frame UV."}
+]
+},
+"targets": [
+{
+"name": "REBELS-25 (UVISTA-Y3)",
+"details": [
+{"loc": "1 Introduction", "quote": "REBELS-25 is located on the sky at a J2000 right ascension of $10^{\\rm h}00^{\\rm m}32.32^{\\rm s}$"},
+{"loc": "1 Introduction", "quote": "and declination of $+01\\ensuremath{^\\circ}44\\ensuremath{'}31.3\\ensuremath{''}$, as determined from rest-UV imaging"},
+{"loc": "2.3 Source identification and properties", "quote": "The redshift of the sources are determined from the redshifted frequencies of the \\[Cii\\] line"},
+{"loc": "1 Introduction", "quote": "a physical separation of 5.096 kpc for 1"}
+],
+"coordinates": "RA 10h00m32.32s, Dec +01d44m31.3s (J2000), from rest-UV imaging",
+"redshift_or_distance": "[CII] spectroscopic redshift (numeric value is a macro not rendered in the text given); 1 arcsec = 5.096 kpc",
+"distance_source": "[CII] line redshift (Schouws et al. in prep.); LCDM H0 = 70, Omega_m = 0.3, Omega_Lambda = 0.7"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.01634.L", "evidence": [{"loc": "2.1 ALMA Data", "quote": "from the REBELS large programme (ID: 2019.1.01634.L)"}]},
+{"code": "2017.1.01217.S", "evidence": [{"loc": "2.1 ALMA Data", "quote": "higher resolution Band 6 C-4 observations (programme ID: 2017.1.01217.S)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6", "evidence": [{"loc": "2.1 ALMA Data", "quote": "ALMA C-1 and C-2 observations in Band 6 of the \\[Cii\\] line and dust continuum from the REBELS large programme"}]},
+{"field": "configurations", "value": "C-1 and C-2 (REBELS 2019.1.01634.L); C-4 (2017.1.01217.S, higher resolution continuum)", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "ALMA C-1 and C-2 observations in Band 6 of the \\[Cii\\] line and dust continuum from the REBELS large programme"},
+{"loc": "2.1 ALMA Data", "quote": "we also use additional higher resolution Band 6 C-4 observations (programme ID: 2017.1.01217.S)"}]},
+{"field": "angular_resolution", "value": "Natural weighting: 1.64 x 1.32 arcsec ([CII] cube), 1.06 x 0.94 arcsec (continuum). Robust 0.5: 1.47 x 1.15 arcsec ([CII]), 0.64 x 0.56 arcsec (continuum)", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "For the Naturally-weighted imaging, we obtain a beam of 1.64$''$ $\\times$ 1.32$''$ for the \\[Cii\\] data cube and 1.06$''$ $\\times$ 0.94$''$ for the continuum image."},
+{"loc": "2.1 ALMA Data", "quote": "we obtain a beam of 1.47$''$ $\\times$ 1.15$''$ for the \\[Cii\\] datacube and for the continuum image we achieve a beam of 0.64$''$ $\\times$ 0.56$''$"}]},
+{"field": "observing_dates", "value": "[CII] data: 22 Nov 2019 (first half); 25 Nov and 1 Dec 2019 (second half)", "evidence": [{"loc": "Appendix: Significance of the secondary [CII] emission component", "quote": "The first half of the data was observed on the 22nd of November 2019 and the second half of the data was observed on the 25th of November and the 1st of December 2019."}]},
+{"field": "pi_or_archival_as_stated", "value": "REBELS large programme data plus project 2017.1.01217.S, both available in the ALMA archive", "evidence": [{"loc": "Data Availability", "quote": "The ALMA observations used in this article are available in the ALMA archive"}]}
+],
+"lines_targeted": [
+{"species": "C+ ([CII])", "transition": "2P3/2 -> 2P1/2", "rest_frequency": "not stated (rest wavelength 157.7 um)", "evidence": [{"loc": "1 Introduction", "quote": "transition line of singly ionised carbon ($\\rm C^{+}$) at a wavelength of 157.7 $\\rm \\mu m$"}]}
+],
+"other_facilities": [
+{"name": "HST WFC3 F160W (COSMOS-DASH mosaic)", "provided": {"value": "Rest-frame UV imaging of REBELS-25 (F160W)", "evidence": [
+{"loc": "2.2 HST data", "quote": "To trace the rest-frame UV emission, we use the COSMOS-DASH mosaic (cite: Mowla2019)."},
+{"loc": "2.2 HST data", "quote": "constructed by mosaicing together HST Wide Field Camera 3 (WFC3) F160W imaging from the COSMOS-DASH survey and the HST archive"}]}},
+{"name": "Gaia DR3", "provided": {"value": "Astrometric reference to correct the HST image (residual uncertainty ~20 mas)", "evidence": [
+{"loc": "2.2 HST data", "quote": "to calculate a correction to the astrometry of the image by comparing the positions of sources in GAIA Data Release 3"},
+{"loc": "2.2 HST data", "quote": "We estimate the remaining uncertainty in the astrometry of the image after we align it to Gaia to be $\\sim20$ milliarcseconds"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "L_IR = 1.5 (+0.8/-0.5) e12 Lsun from the 158 um continuum flux of 260 +/- 22 uJy", "evidence": [
+{"loc": "2.3 Source identification and properties", "quote": "(cite: Inami2022) measure a 158 μm flux of $260 \\pm 22$ μJy for REBELS-25."},
+{"loc": "2.3 Source identification and properties", "quote": "(cite: Inami2022) determine an IR luminosity for REBELS-25"}]}, "citation": "(cite: Inami2022)"},
+{"what": {"value": "Stellar mass M* = 8 (+4/-2) e9 Msun from BEAGLE SED fit with constant SFH", "evidence": [
+{"loc": "2.3 Source identification and properties", "quote": "which is measured by fitting the available rest-frame UV and optical photometry of REBELS-25 with the SED modelling code beagle"}]}, "citation": "(cite: Bouwens2022); Stefanon et al. (in prep.)"},
+{"what": {"value": "Alternative non-parametric stellar mass 19 (+5/-8) e9 Msun", "evidence": [
+{"loc": "2.3 Source identification and properties", "quote": "which results in a higher stellar mass of $19^{+5}_{-8}  \\times 10^{9}$ M$_\\odot$ for REBELS-25"}]}, "citation": "(cite: Topping2022)"},
+{"what": {"value": "[CII] redshift", "evidence": [
+{"loc": "2.3 Source identification and properties", "quote": "for REBELS-25 this establishes the redshift as $\\zciifourdp \\pm 0.0001{}$ (Schouws et al. in prep.)"}]}, "citation": "Schouws et al. (in prep.)"},
+{"what": {"value": "L_UV = 9 +/- 2 e10 Lsun from best-fitting EAzY SED template", "evidence": [
+{"loc": "3.5 Star formation", "quote": "The UV luminosity of REBELS-25 is calculated from the best-fitting SED-template obtained with EAzY (cite: Brammer2008) to be $L_{\\rm UV} = 9 \\pm 2 \\times 10^{10}~\\mbox{L$_\\odot$}$ (Stefanon et al. in prep.)."}]}, "citation": "Stefanon et al. (in prep.)"},
+{"what": {"value": "Dust temperature 46 K and alpha_IR = 14 (+8/-5) conversion to L_IR (REBELS median)", "evidence": [
+{"loc": "2.3 Source identification and properties", "quote": "(cite: Sommovigo2022) determine a median dust temperature for the REBELS sample of $46^{+7}_{-6}$ K"},
+{"loc": "2.3 Source identification and properties", "quote": "$\\alpha_{\\rm IR} = 14^{+8}_{-5}$ is the median conversion factor derived for the REBELS sample"}]}, "citation": "(cite: Sommovigo2022)"},
+{"what": {"value": "Positions of the three rest-UV components of REBELS-25", "evidence": [
+{"loc": "1 Introduction", "quote": "Analysis of HST rest-frame UV observations show three distinct UV sources identified by (cite: Stefanon2019)."}]}, "citation": "(cite: Stefanon2019)"},
+{"what": {"value": "Gamma = 1.78, 2.03, 1.52 (spiral disc, disturbed disc, merger) for the dynamical mass", "evidence": [
+{"loc": "3.3.1 Dynamical mass", "quote": "with $\\gamma$ = 1.78, 2.03, 1.52, when the galaxy is in a spiral disc, disturbed disc, and merger stage, respectively"}]}, "citation": "(cite: Kohandel2019)"},
+{"what": {"value": "alpha_[CII] = 31 (+31/-15) Msun/Lsun [CII]-to-H2 conversion", "evidence": [
+{"loc": "3.4 ISM properties", "quote": "is an empirically calibrated conversion factor"},
+{"loc": "3.4 ISM properties", "quote": "We have adopted $\\alpha_{\\mbox{[C{\\sc ii}]}{}} = 31^{+31}_{-15}$, following (cite: Zanella2018)"}]}, "citation": "(cite: Zanella2018)"},
+{"what": {"value": "k_IR = 1.2e-10 and k_UV = 7.1e-10 SFR calibrations adopted for REBELS", "evidence": [
+{"loc": "3.5 Star formation", "quote": "have been adopted for the REBELS sample (cite: Bouwens2022)"}]}, "citation": "(cite: Bouwens2022)"},
+{"what": {"value": "[CII]-SFR relation log SFR = -8.52 + 1.18 log L_[CII] + log C_Kroupa, C_Kroupa = 1.08", "evidence": [
+{"loc": "3.5 Star formation", "quote": "(cite: DeLooze2014) calibrated a relationship between the \\[Cii\\] luminosity and star formation rate"}]}, "citation": "(cite: DeLooze2014)"},
+{"what": {"value": "kappa_[CII] = 1.5 Msun/Lsun (maximal excitation) for the HI outflow mass", "evidence": [
+{"loc": "3.6.2 Outflow model", "quote": "with $\\kappa_{\\mbox{[C{\\sc ii}]}{}} = 1.5~\\mbox{M$_\\odot$}/ \\mbox{L$_\\odot$}$"}]}, "citation": "(cite: Herrera-Camus2021)"},
+{"what": {"value": "Star-forming main sequences used for comparison (Speagle2014, Topping2022, Khusanova2021) and Liu2019 depletion time relation", "evidence": [
+{"loc": "4.2 Main sequence comparison", "quote": "We can compare the star formation properties of REBELS-25 to the star formation main sequence of (cite: Speagle2014) and the relation for $t_{\\rm depl, {\\rm H}_{2}}$ of (cite: Liu2019)."}]}, "citation": "(cite: Speagle2014); (cite: Liu2019); (cite: Khusanova2021); (cite: Topping2022)"},
+{"what": {"value": "[CII] first-moment map and thin-disc vs merger kinematic fits", "evidence": [
+{"loc": "3.3 Kinematics", "quote": "For full details of the maps we refer the reader to Schouws et al. (in prep.), where they are presented."}]}, "citation": "Schouws et al. (in prep.)"}
+],
+"simulations_or_models_as_data": [
+{"value": "DELPHI semi-analytic model prediction of outflow rate versus SFR (190 +65/-45 Msun/yr for REBELS-25), compared with the observed outflow lower limit", "evidence": [
+{"loc": "4.3 Implications of a potential outflow", "quote": "We also compare our results to the predictions of the DELPHI semi-analytic model for galaxy formation (cite: Dayal2014; Dayal2022)."},
+{"loc": "4.3 Implications of a potential outflow", "quote": "this model would yield an outflow rate of $190^{+65}_{-45}~\\mbox{M$_\\odot$}~ {\\rm yr^{-1}}$"}]},
+{"value": "Simulated high-z galaxy Althaea (gamma factors for dynamical mass)", "evidence": [
+{"loc": "3.3.1 Dynamical mass", "quote": "give a range of values for $\\gamma$ derived from Althæa, a simulated high-redshift galaxy"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA Science Pipeline", "evidence": [{"loc": "2.1 ALMA Data", "quote": "The data were reduced and calibrated with the ALMA Science Pipeline in version 5.6.1 of CASA"}]},
+{"field": "casa_version", "value": "CASA 5.6.1 (also used for subsequent analysis)", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "The data were reduced and calibrated with the ALMA Science Pipeline in version 5.6.1 of CASA"},
+{"loc": "2.1 ALMA Data", "quote": "Subsequent analysis using CASA was also performed with version 5.6.1."}]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean for both the continuum image and the [CII] cube", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "An image of the dust continuum was produced with the CASA command tclean, excluding the region with identified \\[Cii\\] line emission."},
+{"loc": "2.1 ALMA Data", "quote": "The \\[Cii\\] line was then imaged using the tclean task"}]},
+{"field": "weighting_robust", "value": "Natural weighting for integrated quantities; Briggs robust = 0.5 for morphology", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "with natural weighting in order to maximise sensitivity to emission for use in determining integrated quantities"},
+{"loc": "2.1 ALMA Data", "quote": "We also reimage the data with a Briggs robust weighting of 0.5 to obtain higher resolution imaging with which to investigate the morphology of REBELS-25."}]},
+{"field": "masking", "value": "Cleaned to a 2 sigma threshold with tclean automasking", "evidence": [{"loc": "2.1 ALMA Data", "quote": "by cleaning down to a 2$\\sigma$ threshold using a clean mask generated with tclean’s automasking feature"}]},
+{"field": "continuum_subtraction", "value": "Zeroth-order polynomial fitted to the continuum, excluding a region of twice the line FWHM", "evidence": [{"loc": "2.1 ALMA Data", "quote": "the calibrated measurement set was then continuum subtracted with a zeroth order polynomial fitted to the continuum, excluding a spectral region with a width of twice the FWHM of the identified line emission"}]},
+{"field": "line_free_channels", "value": "Excluded region = width of twice the FWHM of the identified [CII] emission (channel ranges not given); continuum image excludes the region with [CII] line emission", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "excluding a spectral region with a width of twice the FWHM of the identified line emission"},
+{"loc": "2.1 ALMA Data", "quote": "excluding the region with identified \\[Cii\\] line emission"}]},
+{"field": "final_beam", "value": "See angular_resolution: natural 1.64 x 1.32 arcsec cube, 1.06 x 0.94 arcsec continuum; robust 0.5 1.47 x 1.15 arcsec cube, 0.64 x 0.56 arcsec continuum", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "For the Naturally-weighted imaging, we obtain a beam of 1.64$''$ $\\times$ 1.32$''$ for the \\[Cii\\] data cube and 1.06$''$ $\\times$ 0.94$''$ for the continuum image."}]}
+],
+"inherited": [
+{"what": {"value": "Full ALMA reduction procedure for the REBELS data", "evidence": [{"loc": "2.1 ALMA Data", "quote": "The full procedure employed in the reduction of these data is presented in Schouws et al. (in prep.) and (cite: Inami2022)"}]}, "from_reference": "Schouws et al. (in prep.); (cite: Inami2022)"},
+{"what": {"value": "L_IR from monochromatic 158 um flux with a 46 K dust temperature and CMB correction", "evidence": [
+{"loc": "2.3 Source identification and properties", "quote": "The REBELS sample therefore employs the method presented in (cite: Sommovigo2021a)"},
+{"loc": "2.3 Source identification and properties", "quote": "This conversion is then applied uniformly to the whole REBELS sample in (cite: Inami2022)."}]}, "from_reference": "(cite: Sommovigo2021a); (cite: Sommovigo2022); (cite: Inami2022)"},
+{"what": {"value": "BEAGLE SED modelling for the stellar mass", "evidence": [{"loc": "2.3 Source identification and properties", "quote": "For the full details of the modelling procedure, we refer the reader to Stefanon et al. (in prep.), where this is presented."}]}, "from_reference": "Stefanon et al. (in prep.)"},
+{"what": {"value": "[CII] velocity field (first-moment map) details", "evidence": [{"loc": "3.3 Kinematics", "quote": "For full details of the maps we refer the reader to Schouws et al. (in prep.), where they are presented."}]}, "from_reference": "Schouws et al. (in prep.)"},
+{"what": {"value": "Dynamical mass formula", "evidence": [{"loc": "3.3.1 Dynamical mass", "quote": "We employ the method outlined in (cite: Kohandel2019) to calculate it as"}]}, "from_reference": "(cite: Kohandel2019)"},
+{"what": {"value": "SFR calibrations k_IR and k_UV", "evidence": [{"loc": "3.5 Star formation", "quote": "These values of $k_{\\rm IR}$ and $k_{\\rm UV}$ have been adopted for the REBELS sample (cite: Bouwens2022)"}]}, "from_reference": "(cite: Bouwens2022); Stefanon et al. (in prep.); (cite: Inami2022); (cite: Topping2022)"},
+{"what": {"value": "Outflow mass, velocity and rate method", "evidence": [{"loc": "3.6.2 Outflow model", "quote": "We follow the method outlined by (cite: Herrera-Camus2021) to estimate the properties of our best-fitting outflow model."}]}, "from_reference": "(cite: Herrera-Camus2021)"},
+{"what": {"value": "Nominal ALMA astrometric uncertainty formula", "evidence": [{"loc": "3.2 Morphology", "quote": "The nominal uncertainty on astrometric positions of ALMA data is given by $\\Delta\\theta = {\\rm FWHM}_{\\rm beam} / SNR / 0.9$ (cite: Cortes2022)"}]}, "from_reference": "(cite: Cortes2022)"},
+{"what": {"value": "REBELS-specific main sequence fit using constant-SFH stellar masses", "evidence": [{"loc": "4.2 Main sequence comparison", "quote": "If we adopt the same approach as (cite: Topping2022), but instead use stellar masses for the REBELS sample that have been determined by assuming a constant star formation history"}]}, "from_reference": "(cite: Topping2022)"}
+],
+"unstated_but_needed": [
+"Numeric [CII] redshift (given only as a macro in the text supplied) and the exact REBELS cube channel width and velocity zero point",
+"Spectral range of the secondary component and exact line-free channel ranges used for continuum imaging and continuum subtraction",
+"Cell size, image size, number of iterations, deconvolver and automasking parameters for tclean",
+"Whether and how C-1, C-2 and C-4 data were combined (weights, uv ranges) for the continuum image, and primary-beam correction",
+"Initial guesses and exact velocity bounds per component for the scipy curve_fit, and how the [CII] luminosity (including the line flux to luminosity conversion) was computed from the Gaussians",
+"Flux calibrator and flux scale uncertainty for the REBELS data, pipeline version, and any self-calibration (all deferred to Schouws et al. in prep. and Inami2022)",
+"Noise estimate (rms) per channel and in the moment maps, and the velocity range used for the moment-0 maps",
+"L_UV, stellar mass and redshift inputs are only available from in-preparation companion papers",
+"Spectral extraction: which beam/image (natural or robust 0.5) the 1.75 arcsec aperture was applied to",
+"Treatment of the CMB contrast at z~7 in the [CII] and continuum fluxes"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Image the dust continuum and [CII] cube",
+"method": {"value": "tclean continuum image excluding line region; continuum-subtracted cube imaged with tclean, natural weighting and robust 0.5", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "An image of the dust continuum was produced with the CASA command tclean, excluding the region with identified \\[Cii\\] line emission."},
+{"loc": "2.1 ALMA Data", "quote": "The \\[Cii\\] line was then imaged using the tclean task"}]},
+"software": ["CASA 5.6.1", "tclean"],
+"key_parameters": [
+{"value": "Continuum subtraction: zeroth-order polynomial, excluding twice the line FWHM", "evidence": [{"loc": "2.1 ALMA Data", "quote": "continuum subtracted with a zeroth order polynomial fitted to the continuum, excluding a spectral region with a width of twice the FWHM of the identified line emission"}]},
+{"value": "Clean to 2 sigma with automasking; natural weighting; Briggs robust 0.5 for morphology", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "by cleaning down to a 2$\\sigma$ threshold using a clean mask generated with tclean’s automasking feature"},
+{"loc": "2.1 ALMA Data", "quote": "We also reimage the data with a Briggs robust weighting of 0.5 to obtain higher resolution imaging with which to investigate the morphology of REBELS-25."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Extract the [CII] spectrum and make moment-0 maps",
+"method": {"value": "Circular aperture spectrum (radius 1.75 arcsec, ~9 kpc, where recovered flux plateaus); immoments zeroth-moment maps of main and secondary components", "evidence": [
+{"loc": "3.1 Spectral analysis", "quote": "we extract a spectrum by placing a circular aperture centred at the position of the galaxy of radius 1.75$''$ ($\\sim 9$ kpc)"},
+{"loc": "3.1 Spectral analysis", "quote": "We use the CASA command immoments to collapse the cube over the spectral range of these lines and create a zeroth moment map."}]},
+"software": ["CASA immoments"],
+"key_parameters": [
+{"value": "Aperture radius 1.75 arcsec (~9 kpc), chosen where flux recovered plateaus", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "this radius being that at which the flux recovered from the galaxy plateaus"}]},
+{"value": "Main component roughly -250 to +250 km/s; secondary roughly +250 to +650 km/s", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "(roughly in the range +250 ${\\rm km~s^{-1}}$ to +650 ${\\rm km~s^{-1}}$)"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Data split into two halves and reimaged; secondary component remains visible (S/N 4.0 and 3.1)", "evidence": [
+{"loc": "Appendix: Significance of the secondary [CII] emission component", "quote": "the secondary \\[Cii\\] component remains visible in both halves of the data"},
+{"loc": "Appendix: Significance of the secondary [CII] emission component", "quote": "We determine a peak signal-to-noise ratio of 4.0 and 3.1 for the secondary component in first and second halves of the data."}]}
+},
+{
+"order": 3,
+"goal": "Fit Gaussian models to the [CII] spectrum and derive L_[CII]",
+"method": {"value": "Fit six models (one or two Gaussians for the main component; broad Gaussian for outflow, narrow Gaussian for merger, or none for the secondary) and compare by reduced chi-squared", "evidence": [
+{"loc": "3.1 Spectral analysis", "quote": "We model the primary emission component with either one or two Gaussians."},
+{"loc": "3.1 Spectral analysis", "quote": "We fit the secondary component with either a broad Gaussian to model an outflow or a narrow Gaussian to model a merging galaxy"}]},
+"software": ["scipy optimize.curve_fit"],
+"key_parameters": [
+{"value": "Main Gaussians: c > 0 mJy, -350 < mu < 250 km/s; merger Gaussian: c > 0, 250 < mu < 750 km/s; outflow Gaussian: c > 0, -350 < mu < 750 km/s, sigma > 150 km/s", "evidence": [
+{"loc": "Appendix: Models fitted to the spectrum", "quote": "For the Gaussian(s) representing the main component we require $c > 0$ mJy and $-350 \\mbox{${\\rm km~s^{-1}}$}{} < \\mu < 250 \\mbox{${\\rm km~s^{-1}}$}{}$"},
+{"loc": "Appendix: Models fitted to the spectrum", "quote": "for the Gaussian representing an outflow we require $c > 0$ mJy, $-350 \\mbox{${\\rm km~s^{-1}}$}{} < \\mu < 750 \\mbox{${\\rm km~s^{-1}}$}{}$ and $\\sigma > 150$ ${\\rm km~s^{-1}}$"}]}
+],
+"assumptions": [
+{"value": "Double-peaked main component likely an unresolved merger or rotating disc", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "The observed double peak is likely indicative of unresolved velocity structure, most likely as a result of an unresolved major merger or disc rotation."}]}
+],
+"fitting": {"value": "Least-squares optimize.curve_fit with positive-amplitude and centre-range bounds (no sampler or priors)", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "We perform fits of our models using the optimize.curve_fit task in the scipy python package"}]},
+"validation": {"value": "Reduced chi-squared per model; double-Gaussian merger model best (1.51), statistically indistinguishable from outflow model (1.64)", "evidence": [
+{"loc": "3.1 Spectral analysis", "quote": "We assess the quality of fit for each of the models by calculating the reduced $\\chi^2$ parameter."},
+{"loc": "3.1 Spectral analysis", "quote": "is our best-fitting model with reduced $\\chi^2 = 1.51$, but is statistically indistinguishable"}]}
+},
+{
+"order": 4,
+"goal": "Measure morphology, offsets, sizes and inclination",
+"method": {"value": "imfit Gaussian fits to the robust 0.5 images for the main [CII], secondary [CII] and continuum; inclination from axis ratio of a thin circular disc; ALMA astrometric uncertainty from beam and S/N", "evidence": [
+{"loc": "3.2 Morphology", "quote": "using the task imfit in CASA"},
+{"loc": "3.2 Morphology", "quote": "We perform these fits for the main \\[Cii\\] emission component, the secondary \\[Cii\\] emission component and the continuum emission."}]},
+"software": ["CASA imfit", "CASA immoments"],
+"key_parameters": [
+{"value": "Inclination i = arccos(theta_min / theta_max)", "evidence": [{"loc": "3.2 Morphology", "quote": "Under the assumption of a thin circular disc, we then make a rough estimate of the inclination of the source using the ratio of the major and minor axes $i = \\cos^{-1}{\\theta_{min} / \\theta_{max}}$"}]},
+{"value": "Astrometric uncertainty = FWHM_beam / SNR / 0.9, up to a factor 2 worse in practice; S/N above 20 gives no improvement", "evidence": [{"loc": "3.2 Morphology", "quote": "The nominal uncertainty on astrometric positions of ALMA data is given by $\\Delta\\theta = {\\rm FWHM}_{\\rm beam} / SNR / 0.9$ (cite: Cortes2022)"}]}
+],
+"assumptions": [
+{"value": "Thin circular disc for inclination", "evidence": [{"loc": "3.2 Morphology", "quote": "Under the assumption of a thin circular disc"}]}
+],
+"fitting": {"value": "imfit single Gaussian per component (CASA)", "evidence": [{"loc": "3.2 Morphology", "quote": "we fit a Gaussian model to our images produced with a robust weighting of 0.5"}]},
+"validation": {"value": "Natural-weighted images give consistent values; offsets flagged as needing higher resolution because imfit errors exclude the image-plane position uncertainty", "evidence": [{"loc": "3.2 Morphology", "quote": "Thus higher resolution observations are required to confirm these offsets."}]}
+},
+{
+"order": 5,
+"goal": "Characterise the velocity field and line width",
+"method": {"value": "First-moment map above 3 sigma (details in Schouws et al. in prep.); FWHM from single-Gaussian fit to main component", "evidence": [
+{"loc": "3.3 Kinematics", "quote": "the map is made by taking the first moment of the image, with a threshold that only includes individual pixels that are above three times the noise level"},
+{"loc": "3.3 Kinematics", "quote": "estimating the FWHM of the \\[Cii\\] line from a fit to the main \\[Cii\\] emission component with a single Gaussian"}]},
+"software": ["CASA immoments"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "Thin rotating disc and unresolved merger models fitted by Schouws et al. (in prep.), not by this paper", "evidence": [{"loc": "3.3 Kinematics", "quote": "and a separate model of an unresolved merger to REBELS-25"}]},
+"validation": {"value": "Disc and merger models statistically indistinguishable; resolution criterion of three elements across the major axis not met", "evidence": [
+{"loc": "3.3 Kinematics", "quote": "found them to be statistically indistinguishable from one another"},
+{"loc": "3.3 Kinematics", "quote": "this criterion is not met by our low-resolution data"}]}
+},
+{
+"order": 6,
+"goal": "Estimate the dynamical mass",
+"method": {"value": "M_dyn = 2.35e9 Msun / (gamma^2 sin^2 i) * (FWHM/100 km/s)^2 * R/kpc, evaluated for three gamma values", "evidence": [
+{"loc": "3.3.1 Dynamical mass", "quote": "We employ the method outlined in (cite: Kohandel2019) to calculate it as"},
+{"loc": "3.3.1 Dynamical mass", "quote": "we thus evaluate $M_{\\rm dyn}$ for all three values and report $M_{\\rm dyn}$ as a range"}]},
+"software": [],
+"key_parameters": [
+{"value": "R = major axis of the main [CII] component; i = 56 +/- 29 deg; FWHM = 316 +/- 15 km/s; gamma = 1.78, 2.03, 1.52", "evidence": [
+{"loc": "3.3.1 Dynamical mass", "quote": "where we take $R$ to be the major axis of the main \\[Cii\\] component"},
+{"loc": "3.3.1 Dynamical mass", "quote": "with $\\gamma$ = 1.78, 2.03, 1.52, when the galaxy is in a spiral disc, disturbed disc, and merger stage, respectively"}]}
+],
+"assumptions": [
+{"value": "gamma not chosen because morphology is uncertain; disc or merger", "evidence": [{"loc": "3.3.1 Dynamical mass", "quote": "we do not select one value of $\\gamma$"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "Infer the molecular gas mass from L_[CII]",
+"method": {"value": "M_H2 = alpha_[CII] * L_[CII] with alpha_[CII] = 31 (+31/-15) Msun/Lsun", "evidence": [
+{"loc": "3.4 ISM properties", "quote": "to estimate the molecular gas mass, $M_{{\\rm H}_{2}}$ in solar masses, of REBELS-25 from the empirical relation calibrated by (cite: Zanella2018)"},
+{"loc": "3.4 ISM properties", "quote": "is an empirically calibrated conversion factor"}]},
+"software": [],
+"key_parameters": [
+{"value": "alpha_[CII] = 31 (+31/-15) Msun/Lsun", "evidence": [{"loc": "3.4 ISM properties", "quote": "We have adopted $\\alpha_{\\mbox{[C{\\sc ii}]}{}} = 31^{+31}_{-15}$, following (cite: Zanella2018)"}]}
+],
+"assumptions": [
+{"value": "Relation calibrated at lower redshift; ISM conditions at very high z probably differ", "evidence": [{"loc": "3.4 ISM properties", "quote": "this relation was calibrated for galaxies at significantly lower redshift than REBELS-25"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Zanella2018 relation agreed with dynamical-mass and dust-based gas masses for ALPINE galaxies (cited, not tested here)", "evidence": [{"loc": "3.4 ISM properties", "quote": "found that the (cite: Zanella2018) relation agreed with those derived from dynamical masses and dust continuum luminosities"}]}
+},
+{
+"order": 8,
+"goal": "Derive SFR (UV+IR and [CII]) and gas depletion time",
+"method": {"value": "SFR_tot = k_IR L_IR + k_UV L_nu,UV; second SFR from De Looze [CII] relation; t_depl = M_H2 / SFR_tot", "evidence": [
+{"loc": "3.5 Star formation", "quote": "We calculate the total star formation rate for the galaxy using UV to trace unobscured star formation and IR to trace obscured star formation"},
+{"loc": "3.5 Star formation", "quote": "Under these assumptions, $t_{\\rm depl, {\\rm H}_{2}} = M_{{\\rm H}_{2},\\mbox{[C{\\sc ii}]}{}} / {\\rm SFR}_{\\rm tot}"}]},
+"software": [],
+"key_parameters": [
+{"value": "k_IR = 1.2e-10 Msun/yr/Lsun; k_UV = 7.1e-10 Msun/yr/(erg/s/Hz); C_Kroupa = 1.08", "evidence": [
+{"loc": "3.5 Star formation", "quote": "where $k_{\\rm IR} = 1.2\\times 10^{-10} \\mbox{M$_\\odot$}\\mbox{${\\rm yr}$}^{-1} \\mbox{L$_\\odot$}^{-1}$"},
+{"loc": "3.5 Star formation", "quote": "where $C_{\\rm Kroupa} = 1.08$ is a factor to convert from a (cite: KroupaWeidner2003) IMF to a (cite: Chabrier2003) IMF"}]}
+],
+"assumptions": [
+{"value": "Dust temperature 46 K for L_IR", "evidence": [{"loc": "2.3 Source identification and properties", "quote": "This flux density is then corrected for the CMB contribution, under the assumption of a dust temperature of 46 K"}]},
+{"value": "Chabrier (2003) IMF, 0.1-300 Msun", "evidence": [{"loc": "1 Introduction", "quote": "We also adopt a (cite: Chabrier2003) initial mass function (IMF) for a mass range of $0.1 - 300 \\mbox{M$_\\odot$}{}$."}]},
+{"value": "Constant SFR and no other gain or loss of gas for the depletion time", "evidence": [{"loc": "3.5 Star formation", "quote": "assuming a constant star formation rate and no other gain or loss of molecular gas mass"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "[CII]-based SFR (246 Msun/yr) consistent within 0.4 dex scatter with UV+IR SFR; UV+IR adopted", "evidence": [
+{"loc": "3.5 Star formation", "quote": "this value is consistent with our measurement of the SFR from IR and UV"},
+{"loc": "3.5 Star formation", "quote": "We thus adopt the SFR as calculated from the UV and IR emission"}]}
+},
+{
+"order": 9,
+"goal": "Characterise the secondary [CII] component as a merger or an outflow",
+"method": {"value": "Merger: L_[CII] of narrow Gaussian converted to M_H2 with the Zanella relation. Outflow: HI mass from kappa_[CII] L_[CII], velocity from |dv| + FW10%/2 (deprojected with 1/cos i), R_out ~ 9 kpc, Mdot = M v / R; mass loading = Mdot/SFR", "evidence": [
+{"loc": "3.6.1 Merger model", "quote": "Using Equation [\\[eq:zanella18_mh2\\]](#eq:zanella18_mh2), this translates to a molecular gas mass"},
+{"loc": "3.6.2 Outflow model", "quote": "We follow the method outlined by (cite: Herrera-Camus2021) to estimate the properties of our best-fitting outflow model."}]},
+"software": [],
+"key_parameters": [
+{"value": "kappa_[CII] = 1.5 Msun/Lsun (maximal excitation); R_out ~ 9 kpc", "evidence": [
+{"loc": "3.6.2 Outflow model", "quote": "with $\\kappa_{\\mbox{[C{\\sc ii}]}{}} = 1.5~\\mbox{M$_\\odot$}/ \\mbox{L$_\\odot$}$"},
+{"loc": "3.6.2 Outflow model", "quote": "to estimate $R_{\\rm out} \\approx 9$ kpc"}]}
+],
+"assumptions": [
+{"value": "Helium fraction 36%, solar metallicity, T = 1e4 K, n = 1e4 cm^-3", "evidence": [{"loc": "3.6.2 Outflow model", "quote": "assuming a Helium fraction of 36%, solar metallicity, a temperature of $10^4$ K and number density of $10^{4}~{\\rm cm}^{-3}$ for the gas"}]},
+{"value": "Outflow perpendicular to the disc, inclination 56 deg", "evidence": [{"loc": "3.6.2 Outflow model", "quote": "Under the assumption of an outflow perpendicular to the assumed disc of REBELS-25"}]}
+],
+"fitting": {"value": "Uses the Gaussian fits of step 3", "evidence": []},
+"validation": {"value": "Sensitivity of mass loading to R_out (6 kpc, 2 kpc), metallicity and comparison with DELPHI and local outflows", "evidence": [
+{"loc": "4.3 Implications of a potential outflow", "quote": "However, a large uncertainty in the determination of the mass loading factor is the size of the outflow."},
+{"loc": "4.3 Implications of a potential outflow", "quote": "is in good agreement with our observational estimate of the lower limit of the outflow rate"}]}
+},
+{
+"order": 10,
+"goal": "Compare SFR and depletion time with main-sequence relations",
+"method": {"value": "Evaluate Speagle2014, a refit Topping-style relation with constant-SFH masses (log SFR = 0.82 log M* - 5.93) and Khusanova2021 (log SFR = 0.66 log M* - 5.1) at REBELS-25's stellar mass; Liu2019 for depletion time", "evidence": [
+{"loc": "4.2 Main sequence comparison", "quote": "The best-fitting main-sequence of (cite: Speagle2014) is"},
+{"loc": "4.2 Main sequence comparison", "quote": "we determine a main sequence of the form"}]},
+"software": [],
+"key_parameters": [
+{"value": "t_age = 0.71 Gyr at the source redshift with the adopted cosmology; starburst threshold 3x main sequence", "evidence": [
+{"loc": "4.2 Main sequence comparison", "quote": "which at $z \\sim \\zciitwodp{}$ is 0.71 Gyr with our adopted cosmology"},
+{"loc": "4.2 Main sequence comparison", "quote": "if we take a threshold of three times in excess of that predicted by the main-sequence (cite: Elbaz2018)"}]}
+],
+"assumptions": [
+{"value": "Extrapolation of relations calibrated to z~6", "evidence": [{"loc": "4.2 Main sequence comparison", "quote": "our application of these relations represents an extrapolation of these data under the assumption that the trends observed out to $z \\sim 6$ will continue to hold at higher redshift"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Classification as starburst is tentative and depends on main sequence and stellar mass chosen", "evidence": [{"loc": "4.2 Main sequence comparison", "quote": "such a classification must be seen as very tentative"}]}
+},
+{
+"order": 11,
+"goal": "Model the future evolution of REBELS-25",
+"method": {"value": "Exponentially declining SFR with constant star formation efficiency eps = SFR(0)/M_H2(0), outflow Mdot_out = lambda SFR, no inflow; Monte Carlo over input uncertainties", "evidence": [
+{"loc": "4.4 The fate of REBELS-25", "quote": "we assume an exponentially declining SFR, with fixed star formation efficiency, $\\varepsilon$, set by the observed SFR and molecular gas mass at $t = 0$"},
+{"loc": "4.4 The fate of REBELS-25", "quote": "We consider four scenarios for the strength of the outflow: $\\lambda =0, 0.5, 1.0$ and $2.0$."}]},
+"software": [],
+"key_parameters": [
+{"value": "lambda = 0, 0.5, 1.0, 2.0; return fraction rho = 0.4; 10000 Monte Carlo draws, 16th and 84th percentiles", "evidence": [
+{"loc": "4.4 The fate of REBELS-25", "quote": "is the fraction of gas returned to the interstellar medium via stellar feedback (primarily supernovae and stellar winds)"},
+{"loc": "4.4 The fate of REBELS-25", "quote": "we calculate the 16th and 84th percentiles of the values of SFR and stellar mass from the evolutionary tracks"}]}
+],
+"assumptions": [
+{"value": "No gas inflow (conservative); constant SFE; M* = 8e9 Msun", "evidence": [{"loc": "4.4 The fate of REBELS-25", "quote": "the assumption of no inflow, means that this model provides a conservative estimate of the stellar mass evolution of REBELS-25"}]}
+],
+"fitting": {"value": "Monte Carlo sampling of independent Gaussian uncertainty distributions of the observed properties", "evidence": [{"loc": "4.4 The fate of REBELS-25", "quote": "Specifically we create 10000 sets of initial properties, which are randomly sampled from independent Gaussian uncertainty distributions"}]},
+"validation": {"value": "Tracks compared with observed z~4 quiescent galaxies and the other REBELS galaxies; non-parametric stellar mass does not change result qualitatively", "evidence": [{"loc": "4.4 The fate of REBELS-25", "quote": "but would not qualitatively alter our result"}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.6.1", "used_for": {"value": "ALMA Science Pipeline calibration, tclean imaging, immoments moment maps, imfit Gaussian fits", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "Subsequent analysis using CASA was also performed with version 5.6.1."},
+{"loc": "3.2 Morphology", "quote": "using the task imfit in CASA"}]}},
+{"name": "scipy (optimize.curve_fit)", "version": "not stated", "used_for": {"value": "Gaussian spectral model fits", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "We perform fits of our models using the optimize.curve_fit task in the scipy python package"}]}},
+{"name": "astrometry (python tool)", "version": "not stated", "used_for": {"value": "Astrometric correction of the HST image to Gaia DR3", "evidence": [{"loc": "2.2 HST data", "quote": "We use the python tool astrometry (cite: Wenzl2022) to calculate a correction to the astrometry of the image"}]}},
+{"name": "BEAGLE", "version": "not stated", "used_for": {"value": "SED fit giving the stellar mass (done in companion work)", "evidence": [{"loc": "2.3 Source identification and properties", "quote": "which is measured by fitting the available rest-frame UV and optical photometry of REBELS-25 with the SED modelling code beagle"}]}},
+{"name": "EAzY", "version": "not stated", "used_for": {"value": "Best-fitting SED template giving L_UV (done in companion work)", "evidence": [{"loc": "3.5 Star formation", "quote": "calculated from the best-fitting SED-template obtained with EAzY (cite: Brammer2008)"}]}},
+{"name": "DELPHI", "version": "not stated", "used_for": {"value": "Semi-analytic model prediction compared with the outflow rate", "evidence": [{"loc": "4.3 Implications of a potential outflow", "quote": "We also compare our results to the predictions of the DELPHI semi-analytic model for galaxy formation"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Listed as used; specific use not stated", "evidence": [{"loc": "Acknowledgements", "quote": "This paper made use of the following software packages: astrometry (cite: Wenzl2022), Astropy"}]}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "Listed as used; specific use not stated", "evidence": [{"loc": "Acknowledgements", "quote": "Matplotlib (cite: Hunter2007)"}]}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "Listed as used; specific use not stated", "evidence": [{"loc": "Acknowledgements", "quote": "NumPy (cite: Harris2020)"}]}},
+{"name": "Pandas", "version": "not stated", "used_for": {"value": "Listed as used; specific use not stated", "evidence": [{"loc": "Acknowledgements", "quote": "Pandas (cite: McKinney2010)"}]}},
+{"name": "Regions", "version": "not stated", "used_for": {"value": "Listed as used; specific use not stated", "evidence": [{"loc": "Acknowledgements", "quote": "Regions (cite: Bradley2022)"}]}},
+{"name": "spectral-cube", "version": "not stated", "used_for": {"value": "Listed as used; specific use not stated", "evidence": [{"loc": "Acknowledgements", "quote": "spectral-cube (cite: Ginsburg2019)"}]}}
+],
+"results_numeric": [
+{"quantity": "[CII] luminosity of main component (merger model)", "value": "1.7e9", "uncertainty": "+/- 0.2e9", "units": "Lsun", "from_step": 3, "evidence": [{"loc": "3.1 Spectral analysis", "quote": "we calculate a total \\[Cii\\] luminosity of $1.7 \\pm 0.2 \\times 10^{9}$ L$_\\odot$ for the main \\[Cii\\] component"}]},
+{"quantity": "[CII] luminosity of main component (outflow model)", "value": "1.3e9", "uncertainty": "+/- 0.1e9", "units": "Lsun", "from_step": 3, "evidence": [{"loc": "3.1 Spectral analysis", "quote": "would instead lead to a reduced luminosity for the main component of $1.3 \\pm 0.1 \\times 10^{9}$ L$_\\odot$"}]},
+{"quantity": "Reduced chi-squared, double Gaussian + merger", "value": "1.51", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.1 Spectral analysis", "quote": "is our best-fitting model with reduced $\\chi^2 = 1.51$, but is statistically indistinguishable"}]},
+{"quantity": "Reduced chi-squared, double Gaussian + outflow", "value": "1.64", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.1 Spectral analysis", "quote": "which has reduced $\\chi^2 = 1.64$"}]},
+{"quantity": "Peak S/N of primary and secondary [CII] components (moment-0)", "value": "29 and 4.7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "3.1 Spectral analysis", "quote": "we measure a peak signal-to-noise ratio of 29 for the primary component and $4.7$ for the secondary component"}]},
+{"quantity": "Peak S/N of secondary component in each half of data", "value": "4.0 and 3.1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "Appendix: Significance of the secondary [CII] emission component", "quote": "We determine a peak signal-to-noise ratio of 4.0 and 3.1 for the secondary component in first and second halves of the data."}]},
+{"quantity": "Offset between main [CII] and continuum centres", "value": "0.17 arcsec (about 0.9 kpc)", "uncertainty": "+/- 0.04 arcsec (+/- 0.2 kpc), imfit only", "units": "arcsec", "from_step": 4, "evidence": [{"loc": "3.2 Morphology", "quote": "the central positions of the main \\[Cii\\] component emission and the continuum are offset by one another by 0.17$''$ $\\pm$ 0.04$''$ (about 0.9 $\\pm~0.2$ kpc)"}]},
+{"quantity": "Deconvolved dust continuum FWHM (major x minor)", "value": "0.6 x 0.5 arcsec (3.1 x 2.6 kpc)", "uncertainty": "+/- 0.2 arcsec each", "units": "arcsec", "from_step": 4, "evidence": [{"loc": "3.2 Morphology", "quote": "has deconvolved major and minor axis FWHMs of $0.6\\ensuremath{''}~\\pm~0.2\\ensuremath{''}~\\times~0.5\\ensuremath{''}~\\pm~0.2\\ensuremath{''}$ ($3.1~\\pm~0.8$ kpc $\\times~2.6~\\pm~0.9$ kpc)"}]},
+{"quantity": "Inclination from main [CII] and from continuum", "value": "56 deg ([CII]); 31 deg (continuum)", "uncertainty": "+/- 29 deg; +/- 43 deg", "units": "deg", "from_step": 4, "evidence": [{"loc": "3.2 Morphology", "quote": "we estimate inclinations of $i = \\mbox{$56 \\pm 29 $}{} \\ensuremath{^\\circ}$ and $i = 31~\\pm~43 \\ensuremath{^\\circ}$, respectively"}]},
+{"quantity": "ALMA [CII] astrometric uncertainty", "value": "~0.2 arcsec", "uncertainty": "not stated", "units": "arcsec", "from_step": 4, "evidence": [{"loc": "3.2 Morphology", "quote": "we report an astrometric uncertainty of $\\sim 0.2\\ensuremath{''}$"}]},
+{"quantity": "[CII] line FWHM (single Gaussian, main component)", "value": "316", "uncertainty": "+/- 15", "units": "km/s", "from_step": 5, "evidence": [{"loc": "3.3 Kinematics", "quote": "which results in a FWHM of $316 \\pm 15$ ${\\rm km~s^{-1}}$"}]},
+{"quantity": "Dynamical mass range", "value": "2-8e10", "uncertainty": "range over gamma", "units": "Msun", "from_step": 6, "evidence": [{"loc": "3.3.1 Dynamical mass", "quote": "report $M_{\\rm dyn}$ as a range $M_{\\rm dyn} = 2-8 \\times 10^{10} \\mbox{M$_\\odot$}$"}]},
+{"quantity": "Molecular gas mass from [CII]", "value": "5.1e10", "uncertainty": "+5.1/-2.6 e10", "units": "Msun", "from_step": 7, "evidence": [{"loc": "5 Conclusions", "quote": "to infer a significant molecular gas reservoir of $5.1^{+5.1}_{-2.6} \\times 10^{10}$ M$_\\odot$"}]},
+{"quantity": "Total SFR (UV + IR)", "value": "199", "uncertainty": "+101/-63", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "5 Conclusions", "quote": "We determine a UV + IR star formation rate of $199^{+101}_{-63}$ M$_\\odot$ $\\mbox{${\\rm yr}$}^{-1}$"}]},
+{"quantity": "IR (obscured) SFR", "value": "185", "uncertainty": "+101/-63", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "5 Conclusions", "quote": "traced by IR emission ($185^{+101}_{-63}$ M$_\\odot$ $\\mbox{${\\rm yr}$}^{-1}$)"}]},
+{"quantity": "UV (unobscured) SFR", "value": "14", "uncertainty": "+/- 3", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "5 Conclusions", "quote": "as traced by UV ($14 \\pm 3$ M$_\\odot$ $\\mbox{${\\rm yr}$}^{-1}$)"}]},
+{"quantity": "[CII]-based SFR", "value": "246", "uncertainty": "+/- 35", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "3.5 Star formation", "quote": "we calculate ${\\rm SFR}_{\\mbox{[C{\\sc ii}]}{}} = \\mbox{$246 \\pm 35$}{} \\mbox{M$_\\odot$}{\\rm yr}^{-1}$"}]},
+{"quantity": "Molecular gas depletion time", "value": "0.3", "uncertainty": "+0.3/-0.2", "units": "Gyr", "from_step": 8, "evidence": [{"loc": "5 Conclusions", "quote": "this gives a short depletion time of $t_{\\rm depl, {\\rm H}_{2}} = \\mbox{$0.3^{+0.3}_{-0.2} $}{}$ Gyr"}]},
+{"quantity": "[CII] luminosity of merger-model companion", "value": "3e8", "uncertainty": "+/- 1e8", "units": "Lsun", "from_step": 9, "evidence": [{"loc": "3.6.1 Merger model", "quote": "we measure a \\[Cii\\] luminosity of $3 \\pm 1 \\times 10^{8}$ L$_\\odot$ for this merging galaxy"}]},
+{"quantity": "Molecular gas mass of merging companion", "value": "9e9 (about 18 per cent of REBELS-25's reservoir)", "uncertainty": "+9/-5 e9", "units": "Msun", "from_step": 9, "evidence": [{"loc": "5 Conclusions", "quote": "we measure a molecular gas mass of $9^{+9}_{-5}  \\times 10^{9}$  M$_\\odot$"}]},
+{"quantity": "[CII] luminosity of outflow component and HI outflow mass lower limit", "value": "L = 7e8 Lsun; M_HI,out >~ 1.1e9 Msun", "uncertainty": "L: +/- 3e8", "units": "Lsun; Msun", "from_step": 9, "evidence": [{"loc": "3.6.2 Outflow model", "quote": "We determine a \\[Cii\\] luminosity of $7 \\pm 3$ $\\times 10^8$ L$_\\odot$ for the outflow component of our best-fitting model, which translates to an estimated lower limit of $M_{\\rm H{\\sc I}, out}$ $\\gtrsim 1.1 \\times 10^9$ M$_\\odot$."}]},
+{"quantity": "Projected outflow velocity", "value": "900", "uncertainty": "+/- 200", "units": "km/s", "from_step": 9, "evidence": [{"loc": "3.6.2 Outflow model", "quote": "which translates to a projected outflow velocity of $900 \\pm 200$ ${\\rm km~s^{-1}}$"}]},
+{"quantity": "Deprojected outflow velocity", "value": "1600", "uncertainty": "+/- 300", "units": "km/s", "from_step": 9, "evidence": [{"loc": "3.6.2 Outflow model", "quote": "to further estimate the deprojected outflow velocity as $v_{\\rm out, deproj} =  v_{\\rm out} / \\cos{i} = 1600 \\pm 300$ ${\\rm km~s^{-1}}$"}]},
+{"quantity": "Projected atomic mass outflow rate (lower limit)", "value": ">~120", "uncertainty": "lower limit", "units": "Msun/yr", "from_step": 9, "evidence": [{"loc": "3.6.2 Outflow model", "quote": "$\\dot{M}_{\\rm out, proj} \\gtrsim 120$ M$_\\odot$"}]},
+{"quantity": "Deprojected atomic mass outflow rate (lower limit)", "value": ">~200", "uncertainty": "lower limit", "units": "Msun/yr", "from_step": 9, "evidence": [{"loc": "abstract", "quote": "we derive a lower limit of the mass outflow rate of $200$ $\\mbox{M$_\\odot$}~ \\mbox{${\\rm yr}$}^{-1}$"}]},
+{"quantity": "Atomic mass loading factor (projected; deprojected), lower limits", "value": ">~0.6; >~1.0", "uncertainty": "lower limits", "units": "dimensionless", "from_step": 9, "evidence": [{"loc": "3.6.2 Outflow model", "quote": "We estimate a projected mass loading factor of $\\lambda_{\\rm proj}  \\gtrsim 0.6$ and a deprojected mass loading factor of $\\lambda_{\\rm deproj}  \\gtrsim 1.0$."}]},
+{"quantity": "Speagle2014 main-sequence SFR at REBELS-25 stellar mass", "value": "49 (measured SFR is about four times this)", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 10, "evidence": [{"loc": "4.2 Main sequence comparison", "quote": "this translates to a prediction of ${\\rm SFR}_{\\rm MS} = \\mbox{$ 49 $}{}~$ M$_\\odot$yr$^{-1}$"}]},
+{"quantity": "Stellar mass at gas exhaustion in constant-SFR case", "value": "log(M*/Msun) = 10.8 at z ~ 5.8", "uncertainty": "not stated", "units": "dex(Msun)", "from_step": 11, "evidence": [{"loc": "4.4 The fate of REBELS-25", "quote": "REBELS-25 would deplete its molecular gas by $z \\sim 5.8$ and have a total stellar mass of $\\log \\left( M_{*} / \\mbox{M$_\\odot$}\\right) = 10.8$"}]},
+{"quantity": "Constant inflow needed to reach median / maximum z~4 quiescent stellar mass", "value": "~25 / ~1000", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 11, "evidence": [{"loc": "4.4 The fate of REBELS-25", "quote": "a constant inflow rate of $\\sim25~\\mbox{M$_\\odot$}\\mbox{${\\rm yr}$}^{-1}$ would be required, and to reach the maximum stellar mass a constant inflow of $\\sim1000~\\mbox{M$_\\odot$}\\mbox{${\\rm yr}$}^{-1}$ would be required"}]}
+],
+"findings_qualitative": [
+{"value": "REBELS-25 shows a [CII] velocity gradient consistent with disc rotation but equally consistent with beam-smeared merging galaxies", "evidence": [{"loc": "5 Conclusions", "quote": "However, due to the large beam of our current \\[Cii\\] data, this could equally be the result of merging galaxies whose kinematics are smeared by the beam."}]},
+{"value": "Dust continuum is offset from the UV clumps, by more than the astrometric uncertainty", "evidence": [{"loc": "3.2 Morphology", "quote": "we conclude that the the offsets that are observed between the UV components and both the dust and main \\[Cii\\] component centre are larger than the uncertainties"}]},
+{"value": "Most of the star formation is obscured (IR-traced)", "evidence": [{"loc": "3.5 Star formation", "quote": "From this it can be seen that the obscured star formation, as traced by IR emission, dominates the star formation in REBELS-25."}]},
+{"value": "Secondary [CII] component could be a minor merger or an outflow; an outflow consistent with star-formation driving is possible", "evidence": [{"loc": "abstract", "quote": "which we interpret as either a merging companion or an outflow"}]}
+],
+"claims": [
+{"hypothesis": "REBELS-25 hosts a large molecular gas reservoir and a short depletion time", "experiment": "[CII] luminosity from Gaussian spectral fits converted with alpha_[CII]; SFR from IR + UV", "result": "M_H2 = 5.1 (+5.1/-2.6) e10 Msun, SFR = 199 (+101/-63) Msun/yr, t_depl = 0.3 (+0.3/-0.2) Gyr", "finding": "Gas depletion time is about half the predicted main-sequence value", "support": "supported", "evidence": [{"loc": "5 Conclusions", "quote": "this gives a short depletion time of $t_{\\rm depl, {\\rm H}_{2}} = \\mbox{$0.3^{+0.3}_{-0.2} $}{}$ Gyr, about half of the predicted main-sequence value"}]},
+{"hypothesis": "The velocity gradient reflects a rotating disc rather than a merger", "experiment": "Moment-1 map and kinematic model fits (Schouws et al. in prep.), resolution assessment", "result": "Disc and merger models statistically indistinguishable at the current resolution", "finding": "Kinematics cannot be definitively attributed to a disc", "support": "partially", "evidence": [{"loc": "3.3 Kinematics", "quote": "both rotating disc and major merger models provide adequate fits to the data"}]},
+{"hypothesis": "The secondary [CII] emission is a merging companion or an outflow", "experiment": "Gaussian spectral models with/without a narrow or broad secondary component", "result": "Merger model chi2_red = 1.51 and outflow model 1.64, statistically indistinguishable; secondary S/N 4.7 and >3 in both data halves", "finding": "Secondary component is significant but its nature is unresolved; outflow gives Mdot >~ 200 Msun/yr and lambda >~ 1", "support": "partially", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "is our best-fitting model with reduced $\\chi^2 = 1.51$, but is statistically indistinguishable"}]},
+{"hypothesis": "REBELS-25 is a starburst relative to the main sequence", "experiment": "Compare SFR with Speagle2014, Topping-style and Khusanova2021 main sequences, two stellar masses", "result": "SFR is about four times the Speagle extrapolation, comparable to the Topping-style relation and about 7 times the Khusanova relation", "finding": "Starburst classification depends on the adopted relation and stellar mass", "support": "partially", "evidence": [{"loc": "4.2 Main sequence comparison", "quote": "such a classification must be seen as very tentative"}]},
+{"hypothesis": "REBELS-25 can evolve into a massive z~4 quiescent galaxy using only its current gas", "experiment": "Exponentially declining SFR model with constant SFE, outflows lambda = 0-2, Monte Carlo uncertainties", "result": "Tracks reach properties consistent with a number of z~4 quiescent galaxies but not the most massive without inflow", "finding": "REBELS-25 is a plausible progenitor of high-z quiescent galaxies", "support": "partially", "evidence": [{"loc": "4.4 The fate of REBELS-25", "quote": "However, REBELS-25 does not have sufficient molecular gas mass currently to evolve into the most massive observed high-z quiescent galaxies."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "REBELS-25 is the strongest ~158 um continuum emitter and the only robust ULIRG in REBELS, with complex morphology", "evidence": [
+{"loc": "1 Introduction", "quote": "REBELS-25, which is the strongest $\\sim158$ μm continuum emitter in the sample"},
+{"loc": "1 Introduction", "quote": "we find that REBELS-25 is the galaxy most robustly defined as a ULIRG"}]},
+{"field": "why_this_method", "value": "Two Gaussians motivated by the double-peaked profile, with a single Gaussian as a conservative alternative; natural weighting for sensitivity", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "We are motivated to consider a model with two Gaussians by the observed double-peaked profile"}]},
+{"field": "how_they_decided_enough", "value": "Aperture radius set where recovered [CII] flux plateaus", "evidence": [{"loc": "3.1 Spectral analysis", "quote": "this radius being that at which the flux recovered from the galaxy plateaus"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "[CII]-based SFR rejected in favour of UV+IR SFR because of increased scatter at high redshift", "evidence": [{"loc": "3.5 Star formation", "quote": "the increased scatter at higher redshifts disfavours its usage compared to the UV + IR SFR"}]},
+{"value": "Non-parametric stellar mass (19e9 Msun) considered as alternative to the adopted 8e9 Msun; conservative lower mass kept", "evidence": [{"loc": "2.3 Source identification and properties", "quote": "We note in our analysis how this would affect our results."}]},
+{"value": "Alternative dust temperatures and L_IR from other works (Sommovigo2022 55 K; Algera2023 34-43 K) discussed but 46 K adopted", "evidence": [{"loc": "4.1.1 ULIRG", "quote": "we have adopted the median dust temperature (46K) determined from a sample of the REBELS galaxies"}]}
+],
+"limitations_admitted": [
+{"value": "Sources only marginally resolved at current resolution", "evidence": [{"loc": "3.2 Morphology", "quote": "However, we caution that the sources are only marginally resolved at the current angular resolution of the data."}]},
+{"value": "Resolution precludes distinguishing disc rotation from other scenarios", "evidence": [{"loc": "3.3 Kinematics", "quote": "the resolution of the data preclude us from distinguishing between this and other scenarios"}]},
+{"value": "Outflow size and gas conditions are uncertain, so outflow rates are quite uncertain", "evidence": [{"loc": "5 Conclusions", "quote": "due to the difficulty of determining the size of the outflow these numbers are quite uncertain"}]},
+{"value": "alpha_[CII] calibrated at lower redshift; large uncertainty", "evidence": [{"loc": "3.4 ISM properties", "quote": "there remains significant uncertainty as to the value of $\\alpha_{\\mbox{[C{\\sc ii}]}{}}$"}]}
+],
+"referee_caveats_inferred": [
+"Several key inputs (redshift, L_IR, M*, L_UV, moment-1 map, kinematic fits) come from in-preparation papers and cannot be checked from this paper",
+"L_IR rests on a single 158 um point with an assumed 46 K dust temperature; the cited alternatives give L_IR from 10^11.85 to 10^12.45 Lsun, so ULIRG status is uncertain",
+"Model selection among Gaussian spectral models uses only reduced chi-squared with unspecified noise and no information-criterion penalty",
+"Secondary component significance is S/N 4.7 and 3.1 in the weaker data half; baseline and continuum-subtraction choices could affect broad wings",
+"Quiescent-progenitor conclusion rests on a toy model with constant SFE and Gaussian-sampled inputs"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA, HST COSMOS-DASH and Gaia data public; derived data on reasonable request", "evidence": [
+{"loc": "Data Availability", "quote": "The ALMA observations used in this article are available in the ALMA archive"},
+{"loc": "Data Availability", "quote": "The data underlying this article will be shared on reasonable request to the corresponding author."}]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"Imaging parameters (cell size, image size, channel width, automask settings) and the line-free channel ranges",
+"Numeric redshift, L_IR, M*, L_UV and moment-1 map inputs from Schouws et al. (in prep.), Stefanon et al. (in prep.) and Inami2022",
+"Initial guesses and noise estimates for the spectral fits; how L_[CII] was computed",
+"No code released"
+],
+"estimated_data_volume_inferred": "Two ALMA Band 6 projects (REBELS large programme C-1/C-2 and one C-4 project), likely tens of GB of raw data; calibrated products smaller",
+"score_inferred": 3,
+"score_reason": "ALMA, HST and Gaia data are public and the physical equations are fully given, but imaging parameters, noise values and several inputs are deferred to in-preparation companion papers.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are public and results are numeric, but the imaging and spectral fitting recipe is incomplete and key inputs come from unpublished companion papers.",
+"methods_papers": [
+{"citation": "Schouws et al. (in prep.)", "why": "Full data reduction, [CII] imaging, redshift and kinematic fits"},
+{"citation": "(cite: Inami2022)", "why": "REBELS continuum measurements, L_IR and reduction procedure"},
+{"citation": "(cite: Bouwens2022)", "why": "REBELS survey design, stellar mass and SFR calibrations"},
+{"citation": "(cite: Sommovigo2022)", "why": "Dust temperature and L_IR method from continuum plus [CII]"},
+{"citation": "(cite: Herrera-Camus2021)", "why": "Outflow mass, velocity and rate method"},
+{"citation": "(cite: Kohandel2019)", "why": "Dynamical mass formula and gamma values"},
+{"citation": "(cite: Zanella2018)", "why": "[CII]-to-H2 conversion factor"}
+],
+"companion_papers": [
+{"citation": "(cite: Schouws2022a)", "why": "Earlier dust continuum observations using 2017.1.01217.S showing the dust-UV offset"},
+{"citation": "(cite: Stefanon2019)", "why": "HST rest-UV identification of three UV components"},
+{"citation": "(cite: Algera2023)", "why": "Band 8 observation and SED fit of REBELS-25"}
+],
+"related_projects_or_surveys": ["REBELS (ALMA large programme 2019.1.01634.L)", "COSMOS-DASH", "ALPINE (comparison sample)"]
+}

@@ -1,0 +1,453 @@
+{
+ "bibcode": "2021MNRAS.502.3021R",
+ "title": "Vibrationally excited HC<SUB>3</SUB>N emission in NGC 1068: tracing the recent star formation in the starburst ring",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab197",
+ "arxiv_id": "2008.03693",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Study the effects of recent massive star formation in the starburst pseudo-ring and AGN activity in the circumnuclear disc of NGC 1068 on the vibrational excitation of HC3N and heating of gas and dust.",
+ "alma_project_codes": [
+  "2011.0.00083.S",
+  "2013.1.00055.S",
+  "2013.1.00221.S",
+  "2013.1.00279.S",
+  "2013.1.00060.S",
+  "2015.1.01144.S",
+  "2016.1.00232.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.22'' x 0.19'' to 1.15'' x 0.99''",
+  "sensitivity": "0.37 to 3.48 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST NICMOS Pa alpha line emission image of NGC 1068",
+    "evidence": [
+     {
+      "loc": "Data reduction",
+      "quote": "Additionally, we also made use of the HST NICMOS (NIC3) narrow-band (F187N, F190N) Pa $\\alpha$ line emission image of NGC 1068 with an angular resolution of $0.26\\ensuremath{''}\\times0.26\\ensuremath{''}$ (cite: SGB2014)."
+     }
+    ]
+   },
+   "citation": "(cite: SGB2014)"
+  },
+  {
+   "what": {
+    "value": "VLA 8.4 GHz continuum flux at the SHC (~1.6 Jy)",
+    "evidence": [
+     {
+      "loc": "Pa\\alpha and continuum emission",
+      "quote": "The flux at $8.4$ GHz measured with the VLA with an angular resolution of $3.5\\ensuremath{''}\\times2.9\\ensuremath{''}$ at the SHC is $\\sim1.6$ Jy (cite: Anantharamaiah1993)"
+     }
+    ]
+   },
+   "citation": "(cite: Anantharamaiah1993)"
+  },
+  {
+   "what": {
+    "value": "HC3N partition function from CDMS catalogue",
+    "evidence": [
+     {
+      "loc": "LTE analysis",
+      "quote": "where $Z$ is the HC$_3$N partition function obtained from the `CDMS`[^3] catalogue (cite: CDMS1; CDMS2)."
+     }
+    ]
+   },
+   "citation": "(cite: CDMS1; CDMS2)"
+  },
+  {
+   "what": {
+    "value": "HC3N electric dipole moment mu = 3.73 D",
+    "evidence": [
+     {
+      "loc": "LTE analysis",
+      "quote": "and assuming an electric dipole moment of $\\mu=3.73$ D (cite: DeLeon1985)."
+     }
+    ]
+   },
+   "citation": "(cite: DeLeon1985)"
+  },
+  {
+   "what": {
+    "value": "Mid-IR AGN luminosity L_AGN ~ 1.1 x 10^11 L_sun",
+    "evidence": [
+     {
+      "loc": "On the heating of the SHC and the CND",
+      "quote": "Then, the other option is a low dust temperature in the CND in spite of the large luminosity estimated from mid-IR $L_\\text{AGN}\\simeq1.1\\times10^{11}$ L$_\\odot$ (cite: Alonso-Herrero2011; SGB2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Alonso-Herrero2011; SGB2014)"
+  },
+  {
+   "what": {
+    "value": "T_vib, brightness temperature and source size of HC3N* in NGC 4418 and Arp 220",
+    "evidence": [
+     {
+      "loc": "HC$_3$N\\* as a discriminator between AGN and star formation activity in galaxies",
+      "quote": "For NGC 4418, (cite: Costagliola2015) estimated a $T_\\text{vib}=340$ K, with a brightness temperature in the $J=24-23$, $v_7=1f$ line of $9$ K for a source size of $0.4\\ensuremath{''}$ ($69$ pc)."
+     },
+     {
+      "loc": "HC$_3$N\\* as a discriminator between AGN and star formation activity in galaxies",
+      "quote": "For Arp 220, (cite: Martin2011) measured for the $J=25-24$ $v_7=1f$ line a mean beam brightness temperature of $263.9$ mK in a $8.4\\ensuremath{''} \\times 6.1\\ensuremath{''}$ beam and estimated a $T_\\text{vib}\\sim355$ K."
+     }
+    ]
+   },
+   "citation": "(cite: Costagliola2015), (cite: Martin2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify clumps, smooth continuum maps, and measure peak continuum fluxes and source sizes",
+   "method": "Identify 15 clumps above 5 sigma in 147 GHz and 350 GHz continuum maps plus 2 Pa alpha and 2 CND positions; smooth Pa alpha and 350 GHz maps to 147 GHz resolution (0.62'' x 0.42''); measure peak continuum emission at the 147 GHz maximum; fit 2D Gaussian to 350 GHz continuum to get deconvolved surface area theta^2_350.",
+   "software": [],
+   "key_parameters": [
+    "Detection threshold > 5 sigma; common smoothed beam 0.62'' x 0.42''"
+   ],
+   "assumptions": [
+    "147 GHz continuum in SB pseudo-ring is dominated by optically thin free-free emission; 350 GHz continuum is dominated by dust emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra, subtract baselines, and measure HC3N line fluxes and gas velocities",
+   "method": "Extract spectra in regions of interest using MADCUBA, subtract order 0-1 polynomial baselines, identify lines, measure gas velocities from HC3N v=0 or CS, and measure integrated intensities (or 3 sigma upper limits).",
+   "software": [
+    "MADCUBA"
+   ],
+   "key_parameters": [
+    "Baseline polynomial order 0-1; upper limits at 3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate ZAMS stellar masses and molecular gas masses in the SB pseudo-ring",
+   "method": "Calculate ionizing photon production rates Q^0 from Pa alpha and 147 GHz continuum (Eqs. 1 and 2) and convert to ZAMS stellar masses M_* (Eq. 3); calculate 350 GHz dust optical depth tau_350 (Eq. 4) and convert to gas mass M_gas using deconvolved area theta^2_350 (Eq. 5).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_e = 10^4 K, n_e = 10^4 cm^-3, D = 14.4 Mpc",
+    "T_dust = 80 K, kappa_350 = 1.9 cm^2 g^-1, dust-to-gas ratio DGR = 1/100"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive LTE excitation temperatures and HC3N column densities",
+   "method": "Construct rotational diagrams (Eqs. 6-8) and fit straight lines via least squares to derive N, T_rot, and T_vib; perform LTE line profile fitting using MADCUBA SLIM tool to account for line profiles, opacity, and blending.",
+   "software": [
+    "MADCUBA",
+    "SLIM"
+   ],
+   "key_parameters": [
+    "Source size = 0.42'' (r = 14.25 pc) in SLIM"
+   ],
+   "assumptions": [
+    "LTE, optically thin for rotational diagram, electric dipole moment mu = 3.73 D"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Perform non-LTE radiative transfer modelling of HC3N and SED",
+   "method": "Model HC3N v=0 and v7=1 line ratios (J=16-15 and J=24-23) and 350 GHz continuum SED using the non-LTE radiative transfer code from Rico-Villas et al. (2020) to derive n_H2, T_d, N(H2), N(HC3N), and X(HC3N).",
+   "software": [],
+   "key_parameters": [
+    "Source size lower limit = 0.02'' (r = 0.71 pc); rotational levels up to J=45 in v=0, v7=1, v6=1"
+   ],
+   "assumptions": [
+    "Source size lower limit 0.021'' (1.41 pc diameter) derived assuming optically thick v7=1 J=16-15 emission"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate IR luminosities, proto-star masses, SSC ages, and Star Formation Efficiency (SFE)",
+   "method": "Compute LTE blackbody luminosity at T_vib and non-LTE SED luminosity (10-1200 um) for source size 0.021'', apply back-warming correction factor 0.2; convert luminosity to proto-star mass M_p*; estimate ages from M_p*/M_*,147 (Eq. 10) and M_*,147/M_*,Pa_alpha (Eq. 11); compute SFE from M_gas and M_*,147 (Eq. 12).",
+   "software": [],
+   "key_parameters": [
+    "Back-warming correction factor = 0.2; age scale factor = 13"
+   ],
+   "assumptions": [
+    "Luminosity-to-mass ratio for proto-stars = 10^3 L_sun M_sun^-1; proto-star timescale ~ 10^5 yr; gas removal timescale ~ 10^7 yr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SHC 147 GHz peak continuum flux density",
+   "value": "1.37",
+   "uncertainty": "0.03",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SHC | $1.42 \\pm 0.01$ | $1.37 \\pm 0.03$ | $7.54 \\pm 0.12$ | $0.26 \\pm 0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "SHC 350 GHz peak continuum flux density",
+   "value": "7.54",
+   "uncertainty": "0.12",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SHC | $1.42 \\pm 0.01$ | $1.37 \\pm 0.03$ | $7.54 \\pm 0.12$ | $0.26 \\pm 0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "SHC LTE vibrational temperature (T_vib)",
+   "value": "236",
+   "uncertainty": "18",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "SHC | $33\\pm2$ | $14.7 (13.6)$ | $98 \\pm 7$ | $236 \\pm 18$ | $5.8\\pm1.7$"
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "For the star-forming region in the SB pseudo-ring with HC$_3$N\\* emission, the LTE analysis yields a vibrational temperature ($T_\\text{vib}$) between the $v=0$ and $v_7=1$ levels of $236\\pm18$ K and a rotational temperature, $T_\\text{rot}$, between the rotational levels in the ground state of $98\\pm7$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "SHC LTE rotational temperature (T_rot)",
+   "value": "98",
+   "uncertainty": "7",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "SHC | $33\\pm2$ | $14.7 (13.6)$ | $98 \\pm 7$ | $236 \\pm 18$ | $5.8\\pm1.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "SHC non-LTE dust temperature (T_d)",
+   "value": "248",
+   "uncertainty": "28",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Non-LTE analysis",
+     "quote": "Using the ratio between the $J=16-15$ rotational transitions from the $v=0$ and $v_7=1$ states ($v_0/v_7$), we find for the SHC a dust temperature of $T_{\\text{d}}=248\\pm28$ K, very close to the previously derived $T_\\text{vib}=236\\pm18$, and a density $n_{\\text{H}_2}=(5.9\\pm0.2)\\times10^{5}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SHC non-LTE H2 density (n_H2)",
+   "value": "5.9e5",
+   "uncertainty": "0.2e5",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Non-LTE analysis",
+     "quote": "Using the ratio between the $J=16-15$ rotational transitions from the $v=0$ and $v_7=1$ states ($v_0/v_7$), we find for the SHC a dust temperature of $T_{\\text{d}}=248\\pm28$ K, very close to the previously derived $T_\\text{vib}=236\\pm18$, and a density $n_{\\text{H}_2}=(5.9\\pm0.2)\\times10^{5}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SHC LTE IR luminosity (L_LTE)",
+   "value": "5.8e8",
+   "uncertainty": "1.7e8",
+   "units": "L_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "SHC | $33\\pm2$ | $14.7 (13.6)$ | $98 \\pm 7$ | $236 \\pm 18$ | $5.8\\pm1.7$"
+    },
+    {
+     "loc": "Proto-Super Star Cluster in the SB pseudo-ring: mass and luminosity",
+     "quote": "obtaining for the SHC $5.8\\times10^8$ L$_\\odot$ and $5.9\\times10^8$ L$_\\odot$ from the LTE and non-LTE models, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SHC non-LTE IR luminosity (L_n-LTE)",
+   "value": "5.9e8",
+   "uncertainty": "2.1e8",
+   "units": "L_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "$5.9\\pm0.2$ | $24.4(23.3)$ | $15.9(15.3)$ | $3.4\\pm0.8$ | $248\\pm28$ | $5.9\\pm2.1$"
+    },
+    {
+     "loc": "Proto-Super Star Cluster in the SB pseudo-ring: mass and luminosity",
+     "quote": "obtaining for the SHC $5.8\\times10^8$ L$_\\odot$ and $5.9\\times10^8$ L$_\\odot$ from the LTE and non-LTE models, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SHC ZAMS stellar mass from 147 GHz (M_*,147)",
+   "value": "7.9e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "SHC | $0.6$ | $7.9$ | $33.2$ | $5.8\\pm1.7$ | $5.9\\pm2.1$ | $13.0$ | $0.7$ | $0.6$ | $0.6$ | $0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "SHC gas mass (M_gas)",
+   "value": "33.2e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "SHC | $0.6$ | $7.9$ | $33.2$ | $5.8\\pm1.7$ | $5.9\\pm2.1$ | $13.0$ | $0.7$ | $0.6$ | $0.6$ | $0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "SHC estimated age",
+   "value": "5.8e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Ages of SSCs",
+     "quote": "The estimated age of the proto-SSC is $5.8\\times10^4$ yr."
+    }
+   ]
+  },
+  {
+   "quantity": "SHC Star Formation Efficiency (SFE)",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Ages of SSCs",
+     "quote": "The SFE of the proto-SSC is only $0.2$, suggesting that the star formation is very recent and still has a significant amount of gas available to convert into stars."
+    }
+   ]
+  },
+  {
+   "quantity": "CND East LTE vibrational temperature (T_vib)",
+   "value": "<=98",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "CND E. | $144\\pm3$ | $15.0 (13.3)$ | $41 \\pm 1$ | $\\leqslant 98$ | $\\leqslant0.2$"
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "For the CND East and West positions, our LTE and non-LTE analysis of HC$_3$N emission yield an upper limit to $T_\\text{vib}$ of $\\leqslant98$ K and $\\leqslant117$ K and a $T_\\text{rot}$ of $41\\pm1$ K and $29\\pm3$ K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CND East LTE rotational temperature (T_rot)",
+   "value": "41",
+   "uncertainty": "1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "CND E. | $144\\pm3$ | $15.0 (13.3)$ | $41 \\pm 1$ | $\\leqslant 98$ | $\\leqslant0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "CND East non-LTE dust temperature (T_d)",
+   "value": "<=75",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Non-LTE analysis",
+     "quote": "In particular, for the CND East position, the derived parameters from the models are $T_{\\text{d}}\\leqslant 75$ K; a density $n_{\\text{H}_2}=(5.9\\pm0.3)\\times10^{5}$ cm$^{-3}$, and an HC$_3$N column density of $N_{\\text{HC3N}}=(9.5\\pm2.9)\\times10^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CND East non-LTE H2 density (n_H2)",
+   "value": "5.9e5",
+   "uncertainty": "0.3e5",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Non-LTE analysis",
+     "quote": "In particular, for the CND East position, the derived parameters from the models are $T_{\\text{d}}\\leqslant 75$ K; a density $n_{\\text{H}_2}=(5.9\\pm0.3)\\times10^{5}$ cm$^{-3}$, and an HC$_3$N column density of $N_{\\text{HC3N}}=(9.5\\pm2.9)\\times10^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CND West LTE vibrational temperature (T_vib)",
+   "value": "<=117",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE analysis",
+     "quote": "CND W. | $149\\pm8$ | $14.4 (13.2)$ | $29 \\pm 3$ | $\\leqslant 117$ | $\\leqslant0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "CND West non-LTE H2 density (n_H2)",
+   "value": "3.5e5",
+   "uncertainty": "0.5e5",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The derived H$_2$ densities are of $(5.9\\pm0.3)\\times10 ^5$ and $(3.5\\pm0.5)\\times10 ^5$ cm$^{-3}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of line-free channels used to create the 147 GHz and 350 GHz continuum maps",
+  "Spectral channel width / velocity resolution of the imaged ALMA data cubes",
+  "Aperture size or extraction method (e.g. single pixel peak vs aperture integration) used to extract the HC3N spectra from the cubes",
+  "Whether the multi-band HC3N data cubes were smoothed to a common beam size before extracting spectra for multiline LTE/non-LTE fitting, or if beam dilution factors were applied in MADCUBA SLIM",
+  "Cleaning threshold, masking strategy, cell size, and image size used in tclean"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral extraction apertures and whether cubes were smoothed to a common beam before extracting HC3N spectra",
+  "Missing units in Table 5 for HC3N integrated line intensities",
+  "Access to the non-LTE radiative transfer code (Gonzalez-Alfonso & Cernicharo 1997, 1999; Gonzalez-Alfonso et al. 2019)",
+  "Exact line-free frequency intervals used to image the 147 GHz and 350 GHz continuum maps",
+  "Reduced HST NICMOS Pa alpha image (from Garcia-Burillo et al. 2014)"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "All ALMA project IDs, target coordinates, continuum fluxes, line intensities, and equations for masses/ages/rotational diagrams are explicitly tabulated, and MADCUBA is public. However, key spectral extraction details (beam matching across bands, aperture sizes), Table 5 units, and the non-LTE radiative transfer code are not provided.",
+ "rediscovery_reason": "All 7 ALMA datasets are public in the archive, target clump coordinates are given in Table 2, and the main continuum, LTE rotational diagram, and MADCUBA SLIM results are numeric and reproducible from the archive cubes.",
+ "source_card": "cards/2021MNRAS.502.3021R/sonnet/card.md"
+}

@@ -1,0 +1,230 @@
+{
+ "bibcode": "2016MNRAS.463..252B",
+ "title": "Free-free and H42α emission from the dusty starburst within NGC 4945 as observed by ALMA",
+ "year": 2016,
+ "doi": "10.1093/mnras/stw1659",
+ "arxiv_id": "1607.02304",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Measure free-free emission, electron temperature and star formation rate in the NGC 4945 central starburst from ALMA 85.69 GHz continuum and H42α, and compare with infrared and radio SFRs",
+ "alma_project_codes": [
+  "2012.1.00912.S"
+ ],
+ "data": {
+  "bands": "Band 3, 85.69 GHz continuum and H42α",
+  "arrays": "not stated",
+  "angular_resolution": "2.6x2.3 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio/mm flux densities 4.8-345 GHz used in SED fit",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "4.8 | 3.055 | (cite: healey07)"
+     }
+    ]
+   },
+   "citation": "healey07, lenc09, forbes98, roy10, massardi08, wang04, chou07, weiss08"
+  },
+  {
+   "what": {
+    "value": "Case B emissivities and recombination coefficients",
+    "evidence": [
+     {
+      "loc": "6 Electron temperature",
+      "quote": "$\\epsilon_\\nu$ is the emissivity from (cite: storey95)"
+     }
+    ]
+   },
+   "citation": "storey95"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes and moment maps",
+   "method": "clean cubes, continuum-subtract, sum channels 310-365 for H42α; median continuum over same channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model spatial structure",
+   "method": "fit inclined thin exponential disc convolved with beam, and Gaussian",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Line profile parameterisation",
+   "method": "fit Gauss-Hermite functions (A, v0, sigma, h3, h4 free) to spectra and per pixel",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "SED decomposition for free-free fraction",
+   "method": "fit power laws for synchrotron (free index), free-free (Gaunt factor, Te=5000 K), dust (index 4) to 3-350 GHz data",
+   "software": [],
+   "key_parameters": [
+    "Te fixed 5000 K; dust index 4"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Electron temperature",
+   "method": "line-to-free-free continuum ratio with Storey & Hummer emissivities, case B, ne=1e3 cm-3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "84±10% of continuum is free-free"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "SFR from ALMA, mid-IR, total IR, radio",
+   "method": "Q from line/continuum; SFR=5.41e-54 Q; mid-IR via Rieke09; TIR via Murphy11; radio via Condon/Murphy",
+   "software": [
+    "HIPE"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Kroupa IMF, Z=0.040, continuous SFR >3 Myr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Free-free fraction at 85.69 GHz",
+   "value": "84",
+   "uncertainty": "10%",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "84%$\\pm$10% of the 85.69 GHz continuum emission originates from free-free emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron temperature (T region)",
+   "value": "5400",
+   "uncertainty": "600",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2 (Te)",
+     "quote": "T | $0.31 \\pm 0.04$ | $12.9 \\pm 0.8$ | $42 \\pm 5$ | $5400 \\pm 600$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from ALMA (average)",
+   "value": "4.35",
+   "uncertainty": "0.25",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "7.1",
+     "quote": "is 4.35$\\pm$0.25 M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total 85.69 GHz continuum flux",
+   "value": "0.36",
+   "uncertainty": "0.02",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA data",
+     "quote": "The total continuum emission we measure with ALMA at 85.69 GHz is 0.36$\\pm$0.02 Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum disc scale length",
+   "value": "1.99",
+   "uncertainty": "0.08",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table (models)",
+     "quote": "Major Axis Scale Length (arcsec) | $1.99 \\pm 0.08$ | $2.33 \\pm 0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from total IR",
+   "value": "3.0",
+   "uncertainty": "0.3",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "7.3",
+     "quote": "The final SFR measured for the central source based on the total infrared flux is $3.0 \\pm 0.3$ M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mid-IR SFR",
+   "value": "0.4",
+   "uncertainty": "0.20 dex",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "7.2",
+     "quote": "we will work with a mid-infrared SFR measurement of 0.4 M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H42α velocity (total)",
+   "value": "611",
+   "uncertainty": "7",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 ALMA spectra",
+     "quote": "The mean barycentric velocity of 611$\\pm$7 km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact clean parameters (niter, threshold, masks)",
+  "Region definitions for T, N, C, S apertures (only in figure)",
+  "Image rms values",
+  "Monte Carlo and Gauss-Hermite fitting algorithm details",
+  "Phase centre coordinates",
+  "Fit algorithm and optimizer for disc model"
+ ],
+ "missing_for_reproduction": [
+  "clean niter/threshold/mask",
+  "aperture region definitions for T/N/C/S",
+  "fitting code"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public, recipe mostly specified with numeric results, but some imaging and fitting details missing.",
+ "rediscovery_reason": "Public single-EB dataset, described imaging, numeric results (Te, SFR, scale length) can be checked.",
+ "source_card": "cards/2016MNRAS.463..252B/sonnet/card.md"
+}

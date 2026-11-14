@@ -1,0 +1,464 @@
+{
+ "bibcode": "2022ApJ...939L...6B",
+ "title": "First Millimeter Flares Detected from ϵ Eridani with the Atacama Large Millimeter/submillimeter Array",
+ "year": 2022,
+ "doi": "10.3847/2041-8213/ac9973",
+ "arxiv_id": "2210.10818",
+ "fields": [
+  "stellar_physics",
+  "debris_disks"
+ ],
+ "question": "Search archival ALMA 12-m and ACA observations of the Sun-like star epsilon Eridani for millimeter flaring emission and characterize its temporal, spectral, and polarization properties, as well as constraints on inner dust belt emission.",
+ "alma_project_codes": [
+  "2016.1.00803.S",
+  "2013.1.00645.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm / 1.33 mm)",
+  "arrays": "ALMA 12-m array (34-35 antennas) and ACA (7-m)",
+  "angular_resolution": "1.6'' x 1.1'' (12-m array)",
+  "sensitivity": "94 \\muJy beam^-1 (ACA), 33 \\muJy beam^-1 (12-m)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Millimeter flare properties for AU Mic and Proxima Centauri",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Previous detection of flares at millimeter wavelengths have mostly come from M dwarfs (see Table 1) (cite: MacGregor:2018a; MacGregor:2020)"
+     },
+     {
+      "loc": "Characterizing Millimeter Flaring Emission",
+      "quote": "Table 1 lists these values in comparison to all other millimeter flares previously detected with ALMA."
+     }
+    ]
+   },
+   "citation": "(cite: MacGregor:2018a; MacGregor:2020)"
+  },
+  {
+   "what": {
+    "value": "Effective temperature of epsilon Eridani (5039 +/- 126 K)",
+    "evidence": [
+     {
+      "loc": "Constraints on Dust Emission from an Inner Debris Disk",
+      "quote": "The effective temperature of $\\epsilon$ Eridani is $5039\\pm126$ K (cite: Baines:2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Baines:2012)"
+  },
+  {
+   "what": {
+    "value": "Expected photospheric flux at 1.3 mm of 0.53 mJy",
+    "evidence": [
+     {
+      "loc": "Constraints on Dust Emission from an Inner Debris Disk",
+      "quote": "which implies a photospheric flux at 1.3 mm of $0.53$ mJy (cite: Backman:2009)."
+     }
+    ]
+   },
+   "citation": "(cite: Backman:2009)"
+  },
+  {
+   "what": {
+    "value": "Predicted flux at 1.3 mm of ~0.2-0.3 mJy from extrapolated SED fits for the inner dust ring",
+    "evidence": [
+     {
+      "loc": "Constraints on Dust Emission from an Inner Debris Disk",
+      "quote": "Extrapolating the SED fits for the inner dust ring from (cite: Su:2017) yields a predicted flux at 1.3 mm of $\\sim0.2-0.3$ mJy, strikingly consistent with what we determine here."
+     }
+    ]
+   },
+   "citation": "(cite: Su:2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging and combined visibility fitting",
+   "method": "Create natural weight primary-beam-corrected continuum images using tclean, calculate rms across ten source-free regions, and fit point source models to the combined visibilities using uvmodelfit.",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "natural weighting",
+    "ten source-free regions for rms calculation"
+   ],
+   "assumptions": [
+    "Point source model at the stellar position"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create light curves and identify millimeter flares",
+   "method": "Run an automatic pipeline using CASA uvmodelfit to fit point source models to each telescope integration step-by-step in time, flagging flux densities above 3 sigma, and confirm candidates by fitting lower and upper sidebands independently.",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "integration time = 6 sec (ALMA 12-m) and 10 sec (ACA)",
+    "detection threshold > 3 sigma",
+    "sideband flux agreement within 20%"
+   ],
+   "assumptions": [
+    "Point source model for the star"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Characterize flare temporal structure, spectral index, and linear polarization",
+   "method": "Fit Gaussian functions to flare light curves to measure FWHM (t_1/2), fit point source models with uvmodelfit to upper and lower sidebands independently for spectral index, and fit XX and YY polarizations independently to compute Stokes Q and I for fractional linear polarization |Q/I| at flare peak.",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "upper (230 + 232 GHz) and lower (219 + 217 GHz) sidebands",
+    "ALMA XX and YY polarizations at flare peak"
+   ],
+   "assumptions": [
+    "Gaussian temporal profile and power-law spectral dependence F_nu \\propto \\nu^\\alpha"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate magnetic field strength in the flare-emitting region",
+   "method": "Associate the observing frequency with harmonic numbers s (between 10 and 100) of the electron gyrofrequency \\nu_B = 2.83 x 10^6 B(G).",
+   "software": [],
+   "key_parameters": [
+    "harmonic numbers s between 10 and 100"
+   ],
+   "assumptions": [
+    "Gyrosynchrotron emission mechanism"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure quiescent stellar and inner dust excess flux density",
+   "method": "Fit a point source model using CASA uvmodelfit over all available ALMA observations excluding the flare intervals (E1, E2, E3), and subtract the expected photospheric flux at 1.3 mm.",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [
+    "Exclude flaring intervals E1, E2, and E3"
+   ],
+   "assumptions": [
+    "Expected stellar photospheric flux at 1.3 mm is 0.53 mJy"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ACA combined visibility point source flux density",
+   "value": "776",
+   "uncertainty": "103",
+   "units": "\\muJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ACA Observations",
+     "quote": "Fitting a point source model to the combined visibilities yields a flux of $776 \\pm 103$ $\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 12-m combined visibility point source flux density",
+   "value": "794",
+   "uncertainty": "45",
+   "units": "\\muJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA 12-m Observations",
+     "quote": "We use the `uvmodelfit` task in `CASA` to fit a point source model to the visibilities and return a flux density of $794\\pm45$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E1 peak flux density",
+   "value": "28",
+   "uncertainty": "7",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "with a peak flux density of 28 $\\pm$ 7 mJy"
+    },
+    {
+     "loc": "Creating Light Curves and Identifying Flares",
+     "quote": "reaching a peak flux density of $28\\pm7$ mJy and peak luminosity of $3.4\\pm 0.9 \\times 10^{14}$ erg s$^{-1}$ Hz$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E1 peak luminosity",
+   "value": "3.4e14",
+   "uncertainty": "0.9e14",
+   "units": "erg s^-1 Hz^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The peak brightness of the largest flare is $3.4 \\pm 0.9 \\times 10^{14}$ erg s$^{-1}$Hz$^{-1}$"
+    },
+    {
+     "loc": "Creating Light Curves and Identifying Flares",
+     "quote": "reaching a peak flux density of $28\\pm7$ mJy and peak luminosity of $3.4\\pm 0.9 \\times 10^{14}$ erg s$^{-1}$ Hz$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E2 peak flux density",
+   "value": "14",
+   "uncertainty": "3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Creating Light Curves and Identifying Flares",
+     "quote": "The other two flares reached lower peak flux densities of $14\\pm 3$ mJy (labeled E2) and $9\\pm 2$ mJy (labeled E3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E2 peak luminosity",
+   "value": "1.7e14",
+   "uncertainty": "0.4e14",
+   "units": "erg s^-1 Hz^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Creating Light Curves and Identifying Flares",
+     "quote": "corresponding to peak luminosities of $1.7\\pm 0.4 \\times 10^{14}$ erg s$^{-1}$ Hz$^{-1}$ and $1.1\\pm 0.2 \\times 10^{14}$ erg s$^{-1}$ Hz$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E3 peak flux density",
+   "value": "9",
+   "uncertainty": "2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Creating Light Curves and Identifying Flares",
+     "quote": "The other two flares reached lower peak flux densities of $14\\pm 3$ mJy (labeled E2) and $9\\pm 2$ mJy (labeled E3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E3 peak luminosity",
+   "value": "1.1e14",
+   "uncertainty": "0.2e14",
+   "units": "erg s^-1 Hz^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Creating Light Curves and Identifying Flares",
+     "quote": "corresponding to peak luminosities of $1.7\\pm 0.4 \\times 10^{14}$ erg s$^{-1}$ Hz$^{-1}$ and $1.1\\pm 0.2 \\times 10^{14}$ erg s$^{-1}$ Hz$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E1 duration (t_1/2)",
+   "value": "7.9",
+   "uncertainty": "not stated",
+   "units": "sec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Characterizing Millimeter Flaring Emission",
+     "quote": "Event E3 has the shortest duration of only 6.6 sec, while the E1 and E2 flares do not last much longer, at 7.9 and 9.0 sec, respectively."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| $\\epsilon$ Eridani | E1 | 28 | 34 | 7.9$^\\text{a}$ | 1.81 $\\pm$ 1.94 | $>$0.08$\\pm$0.12 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E2 duration (t_1/2)",
+   "value": "9.0",
+   "uncertainty": "not stated",
+   "units": "sec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Characterizing Millimeter Flaring Emission",
+     "quote": "Event E3 has the shortest duration of only 6.6 sec, while the E1 and E2 flares do not last much longer, at 7.9 and 9.0 sec, respectively."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| | E2 | 14 | 17 | 9.0$^\\text{a}$ | 7.29 $\\pm$ 2.89 | $>$-0.48 $\\pm$ 0.15 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E3 duration (t_1/2)",
+   "value": "6.6",
+   "uncertainty": "not stated",
+   "units": "sec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Characterizing Millimeter Flaring Emission",
+     "quote": "Event E3 has the shortest duration of only 6.6 sec, while the E1 and E2 flares do not last much longer, at 7.9 and 9.0 sec, respectively."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| | E3 | 9 | 11 | 6.6$^\\text{a}$ | -2.83 $\\pm$2.33 | $>$-0.11$\\pm$0.19 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E1 spectral index (\\alpha)",
+   "value": "1.81",
+   "uncertainty": "1.94",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find changes in the spectral index (F$_\\nu\\propto\\nu^\\alpha$) at the flare peak, with $\\alpha$ = 1.81 $\\pm$ 1.94"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| $\\epsilon$ Eridani | E1 | 28 | 34 | 7.9$^\\text{a}$ | 1.81 $\\pm$ 1.94 | $>$0.08$\\pm$0.12 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E2 spectral index (\\alpha)",
+   "value": "7.29",
+   "uncertainty": "2.89",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | E2 | 14 | 17 | 9.0$^\\text{a}$ | 7.29 $\\pm$ 2.89 | $>$-0.48 $\\pm$ 0.15 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E3 spectral index (\\alpha)",
+   "value": "-2.83",
+   "uncertainty": "2.33",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | E3 | 9 | 11 | 6.6$^\\text{a}$ | -2.83 $\\pm$2.33 | $>$-0.11$\\pm$0.19 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E1 fractional linear polarization lower limit (|Q/I|)",
+   "value": ">0.08",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "and a lower limit on the fractional linear polarization $|Q/I| =$ 0.08 $\\pm$ 0.12."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| $\\epsilon$ Eridani | E1 | 28 | 34 | 7.9$^\\text{a}$ | 1.81 $\\pm$ 1.94 | $>$0.08$\\pm$0.12 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E2 fractional linear polarization lower limit (|Q/I|)",
+   "value": ">-0.48",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | E2 | 14 | 17 | 9.0$^\\text{a}$ | 7.29 $\\pm$ 2.89 | $>$-0.48 $\\pm$ 0.15 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare E3 fractional linear polarization lower limit (|Q/I|)",
+   "value": ">-0.11",
+   "uncertainty": "0.19",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | E3 | 9 | 11 | 6.6$^\\text{a}$ | -2.83 $\\pm$2.33 | $>$-0.11$\\pm$0.19 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field strength in mm-emitting region",
+   "value": "0.8-8",
+   "uncertainty": "not stated",
+   "units": "kG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nature of the Detected Millimeter Flares",
+     "quote": "This leads to an unbiased but large range of magnetic field strengths in the mm-emitting region of 0.8–8 kG."
+    }
+   ]
+  },
+  {
+   "quantity": "Quiescent stellar flux density (excluding flares)",
+   "value": "787",
+   "uncertainty": "45",
+   "units": "\\muJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraints on Dust Emission from an Inner Debris Disk",
+     "quote": "The result is $787\\pm45$ $\\mu$Jy, less than previous millimeter measurement but still in excess of the expected stellar photosphere by $257\\pm34$ $\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Quiescent flux excess over stellar photosphere",
+   "value": "257",
+   "uncertainty": "34",
+   "units": "\\muJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Constraints on Dust Emission from an Inner Debris Disk",
+     "quote": "The result is $787\\pm45$ $\\mu$Jy, less than previous millimeter measurement but still in excess of the expected stellar photosphere by $257\\pm34$ $\\mu$Jy."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration, imaging, and uvmodelfit",
+  "Whether archival data were calibrated via pipeline or manual scripts",
+  "Image pixel cell size and image dimensions in tclean",
+  "Deconvolver algorithm and stopping threshold/masking in tclean",
+  "Exact coordinates or proper-motion-corrected position fixed or fitted in uvmodelfit",
+  "How the ten background regions for RMS calculation were defined"
+ ],
+ "missing_for_reproduction": [
+  "The custom automatic pipeline scripts wrapping CASA uvmodelfit are not released.",
+  "Exact phase center offset / coordinates fixed or varied in uvmodelfit for the star at each epoch.",
+  "Details on how primary beam attenuation (~18 arcsec off-axis in 12-m data, and across the 7-pointing ACA mosaic) was corrected in the visibility-domain uvmodelfit measurements.",
+  "Exact time windows excluded for flares E1, E2, and E3 when computing the quiescent flux density (only scan ranges are given for E1, and exact UTC ranges for E2 and E3 are only shown in plots).",
+  "CASA version and calibration procedure (pipeline vs manual) used prior to visibility fitting."
+ ],
+ "reproducibility_score": 70,
+ "score_reason": "Archival ALMA project codes are clearly stated and the core method (CASA uvmodelfit per integration on upper/lower sidebands and XX/YY polarizations) is conceptually simple, but the custom pipeline scripts, exact stellar position fixing in uvmodelfit, off-axis primary beam correction in visibility space, and exact time windows for E2/E3 are not specified.",
+ "rediscovery_reason": "Both ALMA datasets (2013.1.00645.S and 2016.1.00803.S) are public in the archive, the core analysis relies on standard CASA tasks (tclean, uvmodelfit), and the main results are concrete numeric values (flare peak fluxes, durations, spectral indices, polarization limits, and quiescent stellar flux).",
+ "source_card": "cards/2022ApJ...939L...6B/sonnet/card.md"
+}

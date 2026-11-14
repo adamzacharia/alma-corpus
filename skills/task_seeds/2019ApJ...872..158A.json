@@ -1,0 +1,280 @@
+{
+ "bibcode": "2019ApJ...872..158A",
+ "title": "Resolved Young Binary Systems and Their Disks",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaff6a",
+ "arxiv_id": "1901.05029",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "How do stellar mass and stellar multiplicity affect the 1.3 mm flux and mass of circumstellar disks in Class II Taurus systems?",
+ "alma_project_codes": [
+  "2013.1.00105.S",
+  "2015.1.00392.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "34-41 antennas",
+  "angular_resolution": "~0.2 arcsec; beams 0.18x0.16 to 0.87x0.43 arcsec",
+  "sensitivity": "average 3 sigma ~0.35 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Taurus millimeter fluxes compilation",
+    "evidence": [
+     {
+      "loc": "4.1 Defining a sample",
+      "quote": "The flux values come primarily from this work and from the compilation of (cite: and13)"
+     }
+    ]
+   },
+   "citation": "(cite: and13)"
+  },
+  {
+   "what": {
+    "value": "Stellar spectral types from the literature",
+    "evidence": [
+     {
+      "loc": "3.3 Stellar properties",
+      "quote": "we compiled spectral types from the literature, trying wherever possible to go to the original references"
+     }
+    ]
+   },
+   "citation": "references listed in Table 8"
+  },
+  {
+   "what": {
+    "value": "Literature binary separations and PAs",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "FO Tau AB | 0.124$\\pm$0.012 | 253.2$\\pm$3.7 | 0.150$\\pm$0.007 | 193.7$\\pm$1.0 | White and Ghez (2001)"
+     }
+    ]
+   },
+   "citation": "(cite: whi01)"
+  },
+  {
+   "what": {
+    "value": "Companion detection limits for single-star sample",
+    "evidence": [
+     {
+      "loc": "4.2.1 Single star sample",
+      "quote": "We drew limits on companions primarily from (cite: kra11; kra12)"
+     }
+    ]
+   },
+   "citation": "(cite: kra11; kra12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure fluxes",
+   "method": "clean images; detection >3 sigma peak at known position; imfit 2D Gaussian for integrated flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine distances",
+   "method": "Bailer-Jones Gaia DR2 distances with RUWE<=1.6; else weighted mean within 30'; else median 138.8 pc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive stellar masses and luminosities",
+   "method": "spectral type to Teff (Herczeg & Hillenbrand 2014), then Baraffe2015/MIST at 1 Myr with cubic spline",
+   "software": [],
+   "key_parameters": [
+    "spectral type uncertainty ±1 subclass"
+   ],
+   "assumptions": [
+    "age 1 Myr"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Convert flux to disk mass",
+   "method": "optically thin Md = F d^2/(kappa Xg B(Td))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Xg=0.01, kappa=2.3 cm2/g, Td=25 L^-1/4 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Statistical comparison of singles, primaries, secondaries",
+   "method": "censored-data log-rank tests, Kaplan-Meier, Kendall tau (cenken), linmix regression",
+   "software": [
+    "R survival",
+    "cenken",
+    "linmix"
+   ],
+   "key_parameters": [
+    "stellar mass cutoff 0.06 Msun (M6); wide/close split at 1 arcsec (~140 AU)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "New millimeter detections",
+   "value": "21 (6 singles, 4 primaries, 11 companions)",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum emission",
+     "quote": "These observations resulted in 21 new detections: 6 single stars, 4 primary stars, and 11 companion stars."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass limit for M3 star at 3 sigma 0.35 mJy",
+   "value": "4e-5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum emission",
+     "quote": "total disk mass limit of $4 \\times 10^{-5}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-stellar mass intercept, singles",
+   "value": "1.80",
+   "uncertainty": "+0.17/-0.18",
+   "units": "log mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Accounting for stellar mass",
+     "quote": "$1.80^{+0.17}_{-0.18}$ for the single stars"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-stellar mass intercept, binaries",
+   "value": "1.26",
+   "uncertainty": "+0.17/-0.18",
+   "units": "log mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Accounting for stellar mass",
+     "quote": "$1.26^{+0.17}_{-0.18}$ for the individual stars in binary systems"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-mass slope singles",
+   "value": "1.73",
+   "uncertainty": "+0.27/-0.27",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Accounting for stellar mass",
+     "quote": "1.73$^{+0.27}_{-0.27}$ for single stars"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux-mass slope binaries",
+   "value": "1.93",
+   "uncertainty": "+0.42/-0.39",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Accounting for stellar mass",
+     "quote": "1.93$^{+0.42}_{-0.39}$ for binary stars"
+    }
+   ]
+  },
+  {
+   "quantity": "Secondary vs single flux p-value",
+   "value": "0.027",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Accounting for stellar mass",
+     "quote": "the secondary fluxes arise from a different sample than the singles ($p=0.027$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Primary share of total disk mass",
+   "value": "62%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "The disk mass from the primary star accounts for 62% of the total mass on average"
+    }
+   ]
+  },
+  {
+   "quantity": "Median total flux close vs wide binaries",
+   "value": "4.7 mJy vs 22.4 mJy",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 The influence of binary separation",
+     "quote": "the median flux for the close (15 to 140 AU) binaries is 4.7 mJy, while the median flux for the 140 to 4200 AU binaries is 22.4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Class II detection fraction",
+   "value": "72% (151/211)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "All Class II      | 211   | 151           | $72\\%$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters: weighting, robust, cell size, image size, masks, threshold",
+  "CASA version for imaging and pipeline",
+  "Self-calibration solution intervals and which sources were self-calibrated",
+  "Continuum channel selection and CO line-free channels",
+  "Flux calibrator and gain calibrators",
+  "Exact imfit regions",
+  "Whether the CO moment maps were made with what velocity range",
+  "Table 8 fluxes from older data used as-is for non-ALMA-new sources"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "self-calibration details",
+  "CASA version",
+  "linmix priors"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and statistical analysis described, but imaging and calibration settings are largely unstated.",
+ "rediscovery_reason": "Data are public, tabulated fluxes and stellar properties given, and numeric statistics can be redone, though imaging details are missing.",
+ "source_card": "cards/2019ApJ...872..158A/sonnet/card.md"
+}

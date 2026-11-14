@@ -1,0 +1,558 @@
+{
+ "bibcode": "2025ApJ...979..142N",
+ "title": "Peculiar Dust Emission within the Orion Molecular Cloud",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ad93c7",
+ "arxiv_id": "2411.12693",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks",
+  "milky_way_ism"
+ ],
+ "question": "What is the origin of the flattened spectral energy distribution (SED) slope at wavelengths > 2 mm toward protostellar cores in the OMC 2/3 complex on core and envelope scales (~0.02 - 0.08 pc)?",
+ "alma_project_codes": [
+  "2017.1.00357.S"
+ ],
+ "data": {
+  "bands": "Band 4 (1.9 – 2.1 mm) and Band 5 (1.6 – 1.8 mm)",
+  "arrays": "ACA",
+  "angular_resolution": "Native (uv > 5 klambda): 13.7'' x 5.7'' to 9.7'' x 5.0''; Smoothed: 14.2'' x 8.9'' to 10.7'' x 7.6''",
+  "sensitivity": "1.1, 1.5, 1.2, 1.7 mJy beam^-1 (1.2x higher for MMS9 and NW167)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Protostellar classifications, ALMA 0.87 mm (338.5 GHz) disk fluxes and masses, and VLA 9 mm disk masses",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Protostellar classifications (column 4) and disk masses (columns 5 and 6) are taken from (cite: Tobin2020), which presents ALMA 0.87 mm and VLA 9 mm observations."
+     },
+     {
+      "loc": "Table 5",
+      "quote": "$S_{disk}$ flux values are measured at 0.87 mm (338.5 GHz) and represent the sum of all disks in the targets from (cite: Tobin2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Tobin2020)"
+  },
+  {
+   "what": {
+    "value": "Envelope masses from the Herschel Orion Protostellar Survey (HOPS)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The envelope masses (column 7) are taken from the Herschel Orion Protostellar Survey (cite: Furlan2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Furlan2016)"
+  },
+  {
+   "what": {
+    "value": "Single-dish modified blackbody fits and dust opacity indices (beta-SD) from Herschel and IRAM 30 m (0.16 - 2 mm) data",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the best-fit modified black body function obtained using single-dish data ($\\beta$-SD; solid lines) from (cite: Sadavoy2016) using data from Herschel and IRAM (0.16 – 2 mm)."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "$\\beta$-SD is measured using a modified black-body fit to single-dish data only from (cite: Sadavoy2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Sadavoy2016)"
+  },
+  {
+   "what": {
+    "value": "90 GHz (3.3 mm) GBT MUSTANG continuum data",
+    "evidence": [
+     {
+      "loc": "Spectral Line Contamination",
+      "quote": "Moreover, we find excellent agreement between the NOEMA data and the 90 GHz (3.3 mm) data obtained from MUSTANG presented by (cite: Schnee2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Schnee2014)"
+  },
+  {
+   "what": {
+    "value": "Estimated free-free emission fractions at 32.9 GHz and spectral indices between 32.9, 246.2, and 333 GHz for FIR2 and MMS9",
+    "evidence": [
+     {
+      "loc": "Free-Free Emission",
+      "quote": "Table [\\[FF\\]](#FF) displays their estimated free-free emission fractions at 32.9 GHz based on the analysis of (cite: Bouvier2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Bouvier2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Match spatial scales and angular resolution between ALMA-ACA and NOEMA continuum images",
+   "method": "Image ALMA-ACA sidebands with a uv > 5 klambda cutoff to match the minimum baseline of NOEMA, then smooth each paired ALMA and NOEMA image by the synthesized beam of the other.",
+   "software": [
+    "CASA",
+    "tclean",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "uv > 5 klambda",
+    "Baseband pairings: LSB-O with Band 4-Low, LSB-I with Band 4-High, USB-I with Band 5-Low, USB-O with Band 5-High"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract integrated source fluxes and sizes across all 8 frequency bands",
+   "method": "Fit 2D Gaussian functions plus a free constant background level in the image plane using CASA imfit.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "NOEMA box size: 30x30 pixels; ALMA box size: about 50x50 pixels; dooff = True"
+   ],
+   "assumptions": [
+    "2D Gaussian source morphology with constant local background"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit SED spectral index (alpha) and dust opacity index (beta) for NOEMA and ALMA separately",
+   "method": "Fit simple power-law models S_nu = A * nu^alpha to the NOEMA (4 bands) and ALMA-ACA (4 bands) fluxes separately using MCMC (emcee), and perform a 5000-sample Monte Carlo simulation to include 10% correlated Band 4 and Band 5 flux calibration uncertainties.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "32 walkers, uniform prior -5.0 < alpha < 5.0, 5000 Monte Carlo samples with Gaussian(mean=1, std=0.1) for ALMA calibration error"
+   ],
+   "assumptions": [
+    "Rayleigh-Jeans approximation: alpha = 2 + beta, with power-law dust opacity kappa_nu propto nu^beta"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate fraction of NOEMA and ALMA continuum flux arising from embedded protostellar disks",
+   "method": "Sum 338.5 GHz (0.87 mm) disk fluxes within the NOEMA beam from Tobin et al. (2020) and extrapolate to NOEMA and ALMA frequencies using a power law S_nu propto nu^alpha with alpha = 2 and alpha = 3.",
+   "software": [],
+   "key_parameters": [
+    "Reference frequency = 338.5 GHz; assumed disk spectral indices alpha = 2 (beta = 0) and alpha = 3 (beta = 1)"
+   ],
+   "assumptions": [
+    "340 GHz high-resolution (40 au) ALMA observations filter out core and envelope emission and trace only disk emission, which follows a constant power law with alpha between 2 and 3."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "FIR2 spectral index alpha-NOEMA",
+   "value": "1.84",
+   "uncertainty": "0.56",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR2 | 1.84 $\\pm$ 0.56 | 3.95 $\\pm$ 0.52 | -0.16 $\\pm$ 0.56 | 1.95 $\\pm$ 0.52 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR2 spectral index alpha-ALMA",
+   "value": "3.95",
+   "uncertainty": "0.52",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR2 | 1.84 $\\pm$ 0.56 | 3.95 $\\pm$ 0.52 | -0.16 $\\pm$ 0.56 | 1.95 $\\pm$ 0.52 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR2 dust opacity index beta-NOEMA",
+   "value": "-0.16",
+   "uncertainty": "0.56",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR2 | 1.84 $\\pm$ 0.56 | 3.95 $\\pm$ 0.52 | -0.16 $\\pm$ 0.56 | 1.95 $\\pm$ 0.52 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR2 dust opacity index beta-ALMA",
+   "value": "1.95",
+   "uncertainty": "0.52",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR2 | 1.84 $\\pm$ 0.56 | 3.95 $\\pm$ 0.52 | -0.16 $\\pm$ 0.56 | 1.95 $\\pm$ 0.52 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR6B spectral index alpha-NOEMA",
+   "value": "2.51",
+   "uncertainty": "0.55",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR6B | 2.51 $\\pm$ 0.55 | 2.64 $\\pm$ 0.29 | 0.51$\\pm$ 0.55 | 0.64 $\\pm$ 0.29 | 1.9$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR6B spectral index alpha-ALMA",
+   "value": "2.64",
+   "uncertainty": "0.29",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR6B | 2.51 $\\pm$ 0.55 | 2.64 $\\pm$ 0.29 | 0.51$\\pm$ 0.55 | 0.64 $\\pm$ 0.29 | 1.9$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR6B dust opacity index beta-NOEMA",
+   "value": "0.51",
+   "uncertainty": "0.55",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR6B | 2.51 $\\pm$ 0.55 | 2.64 $\\pm$ 0.29 | 0.51$\\pm$ 0.55 | 0.64 $\\pm$ 0.29 | 1.9$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR6B dust opacity index beta-ALMA",
+   "value": "0.64",
+   "uncertainty": "0.29",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "FIR6B | 2.51 $\\pm$ 0.55 | 2.64 $\\pm$ 0.29 | 0.51$\\pm$ 0.55 | 0.64 $\\pm$ 0.29 | 1.9$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS6 spectral index alpha-NOEMA",
+   "value": "3.45",
+   "uncertainty": "0.30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS6 | 3.45 $\\pm$ 0.30 | 2.47 $\\pm$ 0.17 | 1.45 $\\pm$ 0.30 | 0.47 $\\pm$ 0.17 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS6 spectral index alpha-ALMA",
+   "value": "2.47",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS6 | 3.45 $\\pm$ 0.30 | 2.47 $\\pm$ 0.17 | 1.45 $\\pm$ 0.30 | 0.47 $\\pm$ 0.17 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS6 dust opacity index beta-NOEMA",
+   "value": "1.45",
+   "uncertainty": "0.30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS6 | 3.45 $\\pm$ 0.30 | 2.47 $\\pm$ 0.17 | 1.45 $\\pm$ 0.30 | 0.47 $\\pm$ 0.17 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS6 dust opacity index beta-ALMA",
+   "value": "0.47",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS6 | 3.45 $\\pm$ 0.30 | 2.47 $\\pm$ 0.17 | 1.45 $\\pm$ 0.30 | 0.47 $\\pm$ 0.17 | 1.3$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS7 spectral index alpha-NOEMA",
+   "value": "2.74",
+   "uncertainty": "0.39",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS7 | 2.74 $\\pm$ 0.39 | 2.33 $\\pm$ 0.42 | 0.74 $\\pm$ 0.39 | 0.33 $\\pm$ 0.42 | 1.7$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS7 spectral index alpha-ALMA",
+   "value": "2.33",
+   "uncertainty": "0.42",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS7 | 2.74 $\\pm$ 0.39 | 2.33 $\\pm$ 0.42 | 0.74 $\\pm$ 0.39 | 0.33 $\\pm$ 0.42 | 1.7$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS7 dust opacity index beta-NOEMA",
+   "value": "0.74",
+   "uncertainty": "0.39",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS7 | 2.74 $\\pm$ 0.39 | 2.33 $\\pm$ 0.42 | 0.74 $\\pm$ 0.39 | 0.33 $\\pm$ 0.42 | 1.7$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS7 dust opacity index beta-ALMA",
+   "value": "0.33",
+   "uncertainty": "0.42",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS7 | 2.74 $\\pm$ 0.39 | 2.33 $\\pm$ 0.42 | 0.74 $\\pm$ 0.39 | 0.33 $\\pm$ 0.42 | 1.7$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS9 spectral index alpha-NOEMA",
+   "value": "3.24",
+   "uncertainty": "0.49",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS9 | 3.24 $\\pm$ 0.49 | 2.84 $\\pm$ 0.38 | 1.24 $\\pm$ 0.49 | 0.84 $\\pm$ 0.38 | 2.1$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS9 spectral index alpha-ALMA",
+   "value": "2.84",
+   "uncertainty": "0.38",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS9 | 3.24 $\\pm$ 0.49 | 2.84 $\\pm$ 0.38 | 1.24 $\\pm$ 0.49 | 0.84 $\\pm$ 0.38 | 2.1$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS9 dust opacity index beta-NOEMA",
+   "value": "1.24",
+   "uncertainty": "0.49",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS9 | 3.24 $\\pm$ 0.49 | 2.84 $\\pm$ 0.38 | 1.24 $\\pm$ 0.49 | 0.84 $\\pm$ 0.38 | 2.1$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS9 dust opacity index beta-ALMA",
+   "value": "0.84",
+   "uncertainty": "0.38",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MMS9 | 3.24 $\\pm$ 0.49 | 2.84 $\\pm$ 0.38 | 1.24 $\\pm$ 0.49 | 0.84 $\\pm$ 0.38 | 2.1$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "NW167 spectral index alpha-NOEMA",
+   "value": "2.44",
+   "uncertainty": "0.30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NW167 | 2.44 $\\pm$ 0.30 | 2.68 $\\pm$ 0.23 | 0.44 $\\pm$ 0.30 | 0.68 $\\pm$ 0.23 | 1.8$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "NW167 spectral index alpha-ALMA",
+   "value": "2.68",
+   "uncertainty": "0.23",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NW167 | 2.44 $\\pm$ 0.30 | 2.68 $\\pm$ 0.23 | 0.44 $\\pm$ 0.30 | 0.68 $\\pm$ 0.23 | 1.8$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "NW167 dust opacity index beta-NOEMA",
+   "value": "0.44",
+   "uncertainty": "0.30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NW167 | 2.44 $\\pm$ 0.30 | 2.68 $\\pm$ 0.23 | 0.44 $\\pm$ 0.30 | 0.68 $\\pm$ 0.23 | 1.8$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "NW167 dust opacity index beta-ALMA",
+   "value": "0.68",
+   "uncertainty": "0.23",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NW167 | 2.44 $\\pm$ 0.30 | 2.68 $\\pm$ 0.23 | 0.44 $\\pm$ 0.30 | 0.68 $\\pm$ 0.23 | 1.8$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust opacity index beta-NOEMA across sample",
+   "value": "0.74",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The median $\\beta$ indices are 0.74, 0.68, and 1.8 for the NOEMA, ALMA, and single-dish data, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust opacity index beta-ALMA across sample",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The median $\\beta$ indices are 0.74, 0.68, and 1.8 for the NOEMA, ALMA, and single-dish data, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR2 integrated flux at 138.9607 GHz (ALMA Band 4-Low)",
+   "value": "75.2",
+   "uncertainty": "7.8",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "138.9607 & $< 13.4^a$ & $< 11.1^a$ & ... & 75.2 $\\pm$ 7.8"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR2 integrated flux at 177.007 GHz (ALMA Band 5-High)",
+   "value": "199",
+   "uncertainty": "15",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "177.007 & 8.7 $\\pm$ 1.3 & 2.9 $\\pm$ 2.4 & 166 $\\pm$ 14 & 199 $\\pm$ 15"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS6 integrated flux at 138.9607 GHz (ALMA Band 4-Low)",
+   "value": "514",
+   "uncertainty": "15",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "138.9607 & $< 13.8^a$ & $< 9.8^a$ & ... & 514 $\\pm$ 15"
+    }
+   ]
+  },
+  {
+   "quantity": "MMS6 integrated flux at 177.007 GHz (ALMA Band 5-High)",
+   "value": "945",
+   "uncertainty": "31",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "177.007 & 4.2 $\\pm$ 0.5 & 1.8 $\\pm$ 1.1 & 163 $\\pm$ 18 & 945 $\\pm$ 31"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA software version used for calibration, tclean, and imfit",
+  "Cell size (pixel scale), image size, and cleaning thresholds/stopping criteria for the ALMA-ACA mosaics",
+  "Specific channel ranges flagged for spectral line contamination in ALMA Band 4 and Band 5",
+  "Number of MCMC steps and burn-in length for the emcee power-law fitting",
+  "Adopted distance to OMC 2/3 used to convert angular scales to physical scales (0.02 - 0.08 pc)"
+ ],
+ "missing_for_reproduction": [
+  "Raw or calibrated NOEMA visibility data (project W18BG)",
+  "Exact CASA pixel size, image dimensions, and cleaning stopping thresholds for the ALMA-ACA mosaics",
+  "Exact spectral channel ranges flagged for line subtraction in NOEMA and ALMA-ACA",
+  "Exact pixel coordinates of the 30x30 (NOEMA) and ~50x50 (ALMA) imfit bounding boxes for each target"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "The ALMA project code, calibrators, self-calibration intervals, uv-cut, robust weighting, beam pairing, source extraction task (imfit with dooff=True), intermediate extracted fluxes (Table 3), and MCMC/MC fitting procedure are all clearly reported; however, NOEMA visibilities are less accessible, and exact ALMA imaging parameters (cell size, clean thresholds, line-free channel masks) are omitted.",
+ "rediscovery_reason": "The ALMA-ACA dataset (2017.1.00357.S) is public in the ALMA archive, the imaging and source extraction recipe is straightforward, and all intermediate fluxes and final ALMA spectral indices (alpha-ALMA and beta-ALMA) are tabulated separately from the NOEMA data, providing a clean numeric answer key.",
+ "source_card": "cards/2025ApJ...979..142N/sonnet/card.md"
+}

@@ -1,0 +1,318 @@
+{
+ "bibcode": "2025A&A...701A.234Z",
+ "title": "Noema formIng Cluster survEy (NICE): A census of star formation and cold gas properties in massive protoclusters at 1.5 &lt; z &lt; 4",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202553996",
+ "arxiv_id": "2507.09971",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Investigate the star formation activity and cold gas properties of member galaxies in eight massive protoclusters at 1.5 < z < 4 in the COSMOS field",
+ "alma_project_codes": [
+  "2021.1.00815.S"
+ ],
+ "data": {
+  "bands": "3 mm and 2 mm (NOEMA and ALMA)",
+  "arrays": "not stated",
+  "angular_resolution": "0.7'' (ALMA average), 4.1'' (NOEMA average)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS2020 catalog (IRAC magnitudes, photometric redshifts, stellar masses, SFRs, mass completeness limits)",
+    "evidence": [
+     {
+      "loc": "2.1 NICE-COSMOS protoclusters",
+      "quote": "within a virial projected radius based on the COSMOS2020 catalog (Weaver et al. 2022)"
+     },
+     {
+      "loc": "2.2. Stellar masses and star formation rates",
+      "quote": "We used stellar masses and star formation rates (SFRs) derived with LePhare (Arnouts et al. 2002) in COSMOS2020 (Weaver et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Weaver et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Super-deblended FIR, 24 µm, and 3 GHz catalog in COSMOS",
+    "evidence": [
+     {
+      "loc": "2.2. Stellar masses and star formation rates",
+      "quote": "We first cross-matched the members in the superdeblended catalog (Jin et al. 2018) with a separation smaller than 1 ′′ ."
+     }
+    ]
+   },
+   "citation": "Jin et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "VLA 3 GHz radio observations",
+    "evidence": [
+     {
+      "loc": "2.2. Stellar masses and star formation rates",
+      "quote": "For galaxies detected at 3 GHz (Smolčić et al. 2017) with a signal-tonoise ratio (S/N) greater than 3, we calculated the SFR from L IR (Kennicutt 1998), as derived from the 3 GHz radio emission."
+     }
+    ]
+   },
+   "citation": "Smolčić et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Member identification, virial radii, integrated SFRs, halo masses, and <U> of the eight NICE-COSMOS protoclusters",
+    "evidence": [
+     {
+      "loc": "3.1. Enhanced Star Formation in Massive Halos in the Early Universe",
+      "quote": "We adopted the integrated SFR and best estimates of halo masses of the eight protoclusters from (Sillassen et al. 2024) to obtain the total SFR per unit halo mass (Σ SFR /M halo )."
+     },
+     {
+      "loc": "3.4. Gas content",
+      "quote": "We further checked the overall mean intensity of the radiation field, < U >, of the NICE-COSMOS protoclusters, as measured from the integrated FIR SED fitting in Sillassen et al. (2024)."
+     }
+    ]
+   },
+   "citation": "Sillassen et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Parameterized scaling relations for field galaxy gas-to-stellar mass ratio and gas depletion time from A3COSMOS",
+    "evidence": [
+     {
+      "loc": "3.4. Gas content",
+      "quote": "This analysis utilized parameterized relations compiled from the A 3 COSMOS project, based on a systematic mining of ALMA archival data for CO-observed galaxies in the COSMOS field (Liu et al. 2019)."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select protocluster member galaxies within one virial radius",
+   "method": "Select galaxies from COSMOS2020 catalog using photometric/spectroscopic redshifts within 1 R_vir as defined in Sillassen et al. (2024)",
+   "software": [],
+   "key_parameters": [
+    "|z_phot - z_spec,group| < 0.1(1 + z_spec,group)",
+    "r <= 1 R_vir (141 pkpc to 429 pkpc)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive stellar masses and star formation rates for member galaxies",
+   "method": "Take stellar masses and SFRs from COSMOS2020 LePhare fits; for FIR-detected galaxies, cross-match with super-deblended catalog and compute SFR from 3 GHz radio emission (if S/N > 3) or 24 µm flux (if S/N_3GHz < 3 or radio-loud AGN)",
+   "software": [
+    "LePhare"
+   ],
+   "key_parameters": [
+    "cross-match separation < 1''",
+    "S/N_3GHz > 3 threshold"
+   ],
+   "assumptions": [
+    "Chabrier (2003) initial mass function and ΛCDM cosmology (H0 = 70 km s^-1 Mpc^-1, Ωm = 0.3, ΩΛ = 0.7)",
+    "Infrared-radio correlation q_IR(z, M_*) from Delvecchio et al. (2021) and radio spectral index α = -0.8"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure dust continuum and CO fluxes and derive molecular gas masses",
+   "method": "Fit visibilities of NOEMA and ALMA 3 mm and 2 mm observations, then convert Rayleigh-Jeans dust continuum at rest-frame 850 µm (Hughes et al. 2017 prescription) and CO(3-2)/CO(4-3) line emission to molecular gas masses",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CO-SLED of star-forming galaxies at z = 2.0 - 2.7 from ASPECS (Boogaard et al. 2020)",
+    "α_CO derived using mass-SFR-metallicity relation from Genzel et al. (2015) and metallicity dependence of α_CO from Tacconi et al. (2018)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analyze cluster-wide and galaxy-level star formation and gas scaling relations",
+   "method": "Evaluate ΣSFR/M_halo evolution, scale member SFRs to z = 2.5 to compare with the SFMS, examine radial distribution of stellar mass and starburstiness, and normalize µ_gas and τ_gas to A3COSMOS field relations",
+   "software": [],
+   "key_parameters": [
+    "z = 2.5 reference redshift for SFMS scaling"
+   ],
+   "assumptions": [
+    "SFMS normalization and redshift evolution from Schreiber et al. (2015)",
+    "Field galaxy scaling relations µ_gas(z, M_*, R_SB) and τ_gas(z, M_*, R_SB) from Liu et al. (2019)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median gas-to-stellar mass ratio (µ_gas,NICE) of NICE protocluster galaxies",
+   "value": "1.32",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4. Gas content",
+     "quote": "The gasto-stellar mass ratio µ gas = M gas / M ⋆ and gas depletion time τ gas = M gas /SFR of NICE protocluster galaxies have median values of µ gas , NICE = 1.32and τ gas , NICE = 0.78 Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas depletion time (τ_gas,NICE) of NICE protocluster galaxies",
+   "value": "0.78",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4. Gas content",
+     "quote": "The gasto-stellar mass ratio µ gas = M gas / M ⋆ and gas depletion time τ gas = M gas /SFR of NICE protocluster galaxies have median values of µ gas , NICE = 1.32and τ gas , NICE = 0.78 Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "Median log ratio of M_gas^CO to M_gas^RJ",
+   "value": "-0.18",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The NICE sample are circles, and the median ratio of -0.18 dex is indicated by the dashed line."
+    }
+   ]
+  },
+  {
+   "quantity": "Median stellar mass within 0.1 R_vir",
+   "value": "10^10.6",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Build-up of massive galaxies in the dense cores",
+     "quote": "The median stellar mass within 0.1 R vir is ∼ 10 10 . 6 M ⊙, compared to ∼ 10 9 . 5 M ⊙ at the outskirts, representing more than 1 dex difference."
+    }
+   ]
+  },
+  {
+   "quantity": "Median stellar mass at the outskirts",
+   "value": "10^9.5",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Build-up of massive galaxies in the dense cores",
+     "quote": "The median stellar mass within 0.1 R vir is ∼ 10 10 . 6 M ⊙, compared to ∼ 10 9 . 5 M ⊙ at the outskirts, representing more than 1 dex difference."
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^RJ of HPC1001 central blend",
+   "value": "11.48",
+   "uncertainty": "±0.07",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3.59 11.48 ± 0.07 11.30 ± 0.04 125 ± 41 978 ± 883"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^CO of HPC1001 central blend",
+   "value": "11.30",
+   "uncertainty": "±0.04",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3.59 11.48 ± 0.07 11.30 ± 0.04 125 ± 41 978 ± 883"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^RJ of COS-SBC3 ID 1340799",
+   "value": "11.41",
+   "uncertainty": "±0.12",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "COS-SBC3 1340799 0.30 2.365 11.5 +0 −0. .1 1 190 +90 −61 3.52 11.41 ± 0.12 10.84 ± 0.07 <138 231 ± 13"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^RJ of COS-SBC4 ID 840072",
+   "value": "11.21",
+   "uncertainty": "±0.12",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "COS-SBC4 840072 0.04 1.65 11.4 +0 −0. .1 1 100 +18 −18 3.54 11.21 ± 0.12 ... 165 ± 12 252 ± 20"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^RJ of COS-SBC6 ID 839791",
+   "value": "11.51",
+   "uncertainty": "±0.04",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "4.01 11.51 ± 0.04 11.03 ± 0.05 1143 ± 60 195 ± 25"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^RJ of COS-SBCX4 ID 1050531",
+   "value": "11.66",
+   "uncertainty": "±0.04",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "COS-SBCX4 1050531 0.05 2.647 11.2 +0 −0. .1 1 416 +135 −265 3.69 11.66 ± 0.04 11.43 ± 0.02 533 ± 37 496 ± 51"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 M_gas^CO of COS-SBCX4 ID 1050531",
+   "value": "11.43",
+   "uncertainty": "±0.02",
+   "units": "log10(M_⊙)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "COS-SBCX4 1050531 0.05 2.647 11.2 +0 −0. .1 1 416 +135 −265 3.69 11.66 ± 0.04 11.43 ± 0.02 533 ± 37 496 ± 51"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Software used for visibility fitting of NOEMA and ALMA continuum and CO line data (e.g., GILDAS/MAPPING, CASA, uvmultifit)",
+  "Exact observing frequencies and spectral window setups for each of the eight protoclusters in NOEMA and ALMA",
+  "Which specific protoclusters were observed with ALMA vs NOEMA",
+  "Calibration and imaging parameters (weighting, robust parameter, beam sizes per target, rms noise per pointing) for the ALMA and NOEMA observations",
+  "Measured raw CO line fluxes and 2 mm / 3 mm continuum flux densities for each galaxy in Table 1"
+ ],
+ "missing_for_reproduction": [
+  "Raw continuum flux densities (at 2 mm and 3 mm) and integrated CO line fluxes for the 17 galaxies in Table 1",
+  "Exact observing frequencies, bandwidths, and calibration/visibility-fitting procedures for the ALMA (2021.1.00815.S) and NOEMA (M21AA) data",
+  "Table of all photo-z selected cluster members (beyond the 17 CO/continuum-detected galaxies in Table 1) needed to reproduce Figures 4, 5, and 6"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "The astrophysical conversions, scaling relations, and final derived quantities for the 17 detected sources are clearly tabulated in Table 1 and cross-matched with public COSMOS catalogs, but the raw millimeter flux measurements and interferometric visibility-fitting details are delegated to companion papers or omitted.",
+ "rediscovery_reason": "The ALMA dataset (2021.1.00815.S) and ancillary COSMOS catalogs (COSMOS2020, super-deblended, VLA 3GHz) are public, and Table 1 provides exact numeric answer keys for SFRs, α_CO, M_gas^RJ, and M_gas^CO.",
+ "source_card": "cards/2025A%26A...701A.234Z/sonnet/card.md"
+}

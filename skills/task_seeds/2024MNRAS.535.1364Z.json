@@ -1,0 +1,656 @@
+{
+ "bibcode": "2024MNRAS.535.1364Z",
+ "title": "ATOMS: ALMA three-millimeter observations of massive star-forming regions - XVIII. On the origin and evolution of dense gas fragments in molecular shells of compact H II regions",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae2415",
+ "arxiv_id": "2410.17455",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do compact H II regions affect the properties and origin of dense gas fragments embedded in their molecular shells (CCH shells, H13CO+ fragments)?",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "main array and 7 m array",
+  "angular_resolution": "synthesized beam ~2 arcsec",
+  "sensitivity": "rms ~0.2 K for CCH and H13CO+, <0.1 K for H40alpha (channel widths 0.21 km/s for H13CO+ and CCH, 1.48 km/s for H40alpha)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Clump mass, dust temperature, peak H2 column density, distance (ATLASGAL)",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "(cite: Urquhart2018) based on ATLASGAL source catalog, with typical uncertainties of 20 %, 20 %, 10 % and 0.3 kpc, respectively, according to the estimate of (cite: Urquhart2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Urquhart2018)"
+  },
+  {
+   "what": {
+    "value": "SExtractor clump radius of the ATLASGAL clumps",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "of the ATLASGAL clump measured by (cite: Urquhart2014) with the algorithm"
+     }
+    ]
+   },
+   "citation": "(cite: Urquhart2014)"
+  },
+  {
+   "what": {
+    "value": "GaussClump (GCSC) FWHM of the ATLASGAL clumps",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "FWHM is the ATLASGAL clump FWHM measured independently with algorithm"
+     }
+    ]
+   },
+   "citation": "(cite: Csengeri2014)"
+  },
+  {
+   "what": {
+    "value": "Corrected distance for I17160-3707",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "Clump properties of I17160$-$3707 are corrected by a more reliable distance from the detailed case studies of (cite: Nandakumar2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Nandakumar2016)"
+  },
+  {
+   "what": {
+    "value": "Clump-scale velocity dispersions from H13CO+ J=1-0 (MALT90) and C18O J=2-1 (SEDIGISM)",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "measured from Millimetre Astronomy Legacy Team 90 GHz survey (cite: Jackson2013) H$^{13}$CO$^+$ $J=1-0$"
+     },
+     {
+      "loc": "Table 2 notes",
+      "quote": "Structure, Excitation, and Dynamics of the Inner Galactic InterStellar Medium survey (cite: Schuller2017) C$^{18}$O $J=2-1$"
+     }
+    ]
+   },
+   "citation": "(cite: Jackson2013); (cite: Schuller2017)"
+  },
+  {
+   "what": {
+    "value": "Uniform H13CO+ abundance 3.6e-11 (average for UCH II regions)",
+    "evidence": [
+     {
+      "loc": "4.2 Fragment properties",
+      "quote": "a uniform $\\chi_{\\rm H^{13}CO^+} = 3.6\\times10^{-11}$ is taken for our sample, which is the average for UCH II regions in the observation of (cite: Kim2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Kim2020)"
+  },
+  {
+   "what": {
+    "value": "Shell fragmentation model (t_frag, r_frag, M_frag, D_frag equations)",
+    "evidence": [
+     {
+      "loc": "7.1 Fragmentation model",
+      "quote": "(cite: Whitworth1994) derived the time when a shell begins to fragment $t_{\\rm frag}$, the corresponding radius of shell $r_{\\rm frag}$"
+     }
+    ]
+   },
+   "citation": "(cite: Whitworth1994)"
+  },
+  {
+   "what": {
+    "value": "Spectral type from ionizing photon rate relations",
+    "evidence": [
+     {
+      "loc": "3 Properties of compact H II regions",
+      "quote": "The spectral type of ionizing stars is then determined from $\\dot{N}_{\\rm ion}$ using the relations in (cite: Sternberg2003)."
+     }
+    ]
+   },
+   "citation": "(cite: Sternberg2003)"
+  },
+  {
+   "what": {
+    "value": "Stellar wind velocity and mass loss rate (typical values)",
+    "evidence": [
+     {
+      "loc": "7.3 Role of stellar winds",
+      "quote": "(cite: Vink2001) because there is no measure of"
+     }
+    ]
+   },
+   "citation": "(cite: Vink2001)"
+  },
+  {
+   "what": {
+    "value": "Photoevaporation mass loss rate equation",
+    "evidence": [
+     {
+      "loc": "6.1 Regulated spatial distribution",
+      "quote": "its mass loss rate due to photoevaporation can be estimated using the equation in (cite: Haworth2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Haworth2012)"
+  },
+  {
+   "what": {
+    "value": "Algebraic model of H II region expansion with winds (C_w factor)",
+    "evidence": [
+     {
+      "loc": "7.3 Role of stellar winds",
+      "quote": "(cite: Geen2020) developed a simple algebraic model to depict the expansion of photoionized H II regions"
+     }
+    ]
+   },
+   "citation": "(cite: Geen2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image the ATOMS Band 3 data",
+   "method": "CASA 5.6 tclean on combined main array and 7 m array data with natural weighting",
+   "software": [
+    "CASA 5.6"
+   ],
+   "key_parameters": [
+    "Pixel size 0.4 arcsec",
+    "Imaged field to 20% power point, radius 44 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Select compact H II regions with CCH molecular shells",
+   "method": "Examine CCH and H40alpha distributions in all 146 ATOMS fields and select by two criteria (prominent CCH shell at the edge of H40alpha emission; H40alpha well resolved)",
+   "software": [],
+   "key_parameters": [
+    "Nine regions selected"
+   ],
+   "assumptions": [
+    "CCH is a sensitive tracer of the photodissociation region"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive H II region size, ionization rate, spectral type, electron density, pressure",
+   "method": "Size from H40alpha moment 0 mask edges; ionization rate from H40alpha luminosity assuming ionization-recombination equilibrium; ne from the effective volume; Pi from ne and ionized-gas sound speed",
+   "software": [],
+   "key_parameters": [
+    "epsilon = 1.99e-32, b_ul = 0.788, f_ul(LTE) = 7.03e-19 cm3, A_ul = 54.7 s-1, alpha_B = 2.54e-13 cm3 s-1",
+    "Spectral type from Sternberg2003 relations"
+   ],
+   "assumptions": [
+    "Te = 1e4 K and ne = 1e4 cm-3 for the efficiency factor; helium ionization ignored",
+    "Te from the Galactocentric distance relation when not measured"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate initial density and dynamical age of the H II regions",
+   "method": "n_ini from ATLASGAL clump properties in two cases (SExtractor mass/radius; peak column density/GaussClump FWHM); t_dyn from Dyson1997 with Stromgren radius",
+   "software": [
+    "SExtractor",
+    "GaussClump"
+   ],
+   "key_parameters": [
+    "mu_H2 = 2.8"
+   ],
+   "assumptions": [
+    "Average clump density does not change much from quiescent to H II region stage (difference ~20%)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Extract dense gas fragments from the H13CO+ cubes",
+   "method": "3D astrodendro dendrogram on cubes without PB correction; leaves are fragments",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min_value = 3.5 rms",
+    "min_delta = 2 rms",
+    "min_npix equivalent to three channels x half of the beam size",
+    "pruning: min_peak = 4.5 rms, minimum three channels, minimum spatial size half a beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Measure fragment properties (sigma, mass, surface density, density, virial ratio)",
+   "method": "Gaussian fit to the average spectrum within the dendrogram area and velocity range; optically thin H13CO+ column density with Tex = Tdust; mass from column density and abundance; Sigma, n_H2 and virial ratio from the dendrogram effective radius",
+   "software": [
+    "astrodendro",
+    "RADEX"
+   ],
+   "key_parameters": [
+    "A_ul = 10^-4.41416 s-1, f_beam = 1, E_u = 4.16 K, g_u = 3",
+    "chi_H13CO+ = 3.6e-11 uniform for all regions",
+    "Virial ratio R_vir = 5 sigma^2 r / (M G)"
+   ],
+   "assumptions": [
+    "Tex equals the clump-scale dust temperature",
+    "Constant density profile, no magnetic field, rotation or external pressure for the virial ratio"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Classify fragments as N (near H II region) or F (far) and compare their properties",
+   "method": "Extend each fragment by a beam width and measure overlap with the H II region; N if overlap > 50% of the extended fragment or mean H40alpha in the overlap > 10% of the peak; compare sigma, sigma_NT, mass, Sigma, n_H2, R_vir with K-S tests; regression of sigma_NT against radius",
+   "software": [],
+   "key_parameters": [
+    "K-S test p-value threshold 0.05",
+    "sigma_NT from sigma and Tkin (N: Tdust+5 K, F: Tdust-5 K); Tex varied the same way for mass tests"
+   ],
+   "assumptions": [
+    "N fragments are warmer than F fragments by about 10 K in total"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test spatial regulation of fragments by the H II region",
+   "method": "Angular two-point correlation function (Landy-Szalay) between H II region position and fragments, normalized by its peak and r_eff; photoevaporation mass loss rate estimated with the Haworth2012 equation",
+   "software": [],
+   "key_parameters": [
+    "Typical fragment radius 0.04 pc; ionizing photon rate 1e48 s-1; distances 0.1 to 0.2 pc"
+   ],
+   "assumptions": [
+    "Initial fragments randomly distributed in space (first explanation)"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Measure fragment kinematics relative to the H II region",
+   "method": "PV cuts of H13CO+ and CCH, and histograms of v_frag - v_HII with Gaussian fits; v_HII from Gaussian fit to the averaged H40alpha spectrum of the whole emission region",
+   "software": [],
+   "key_parameters": [
+    "Histogram dispersion difference N vs F about 1.7 km/s; measure error 0.1-0.2 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "Test shell fragmentation (collect and collapse) and Jeans fragmentation origins",
+   "method": "Compute t_frag, r_frag, M_frag, D_frag from the Whitworth1994 equations with two n_ini cases and clump-scale sound speed; compare with H II region age and size and with observed fragment mass and MST separations; compare MST separations with Jeans length",
+   "software": [
+    "minimum spanning tree (MST)"
+   ],
+   "key_parameters": [
+    "Sound speed from the ATLASGAL dust temperature (clump-scale)"
+   ],
+   "assumptions": [
+    "Expansion law R ~ K t^(4/7) of the classical model"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "Assess the role of stellar winds",
+   "method": "C_w factor of Geen2020 for two natal cloud cases; wind-driven shell fragmentation times of Whitworth1994",
+   "software": [],
+   "key_parameters": [
+    "Clump case r0 = 0.5 pc, n0 = 1e4 cm-3; Nion = 1e48 s-1"
+   ],
+   "assumptions": [
+    "v_w = 2000 km/s, Mdot_w = 1e-6 Msun/yr (typical values)"
+   ]
+  },
+  {
+   "order": 12,
+   "goal": "Examine fragment mass growth and fragment-to-clump mass ratio",
+   "method": "Compare fragment mass with H II region size; ratio of total N fragment mass to ATLASGAL clump mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Fragment (H13CO+) and clump (dust) masses use different mass probes, so the absolute ratio may be biased"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dense fragments analysed",
+   "value": "164",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Extraction of dense gas fragments",
+     "quote": "a total of 164 dense fragments were extracted and considered in the following analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of N and F fragments",
+   "value": "80 N, 84 F",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Influence of H II region on fragments",
+     "quote": "There are 80 N and 84 F fragments with estimates of physical properties."
+    }
+   ]
+  },
+  {
+   "quantity": "Fragments excluded for complicated spectra",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Biases",
+     "quote": "A total of 16 massive and dense fragments are neglected in property estimation due to their complicated spectral profiles."
+    }
+   ]
+  },
+  {
+   "quantity": "Fragment velocity dispersion sigma range",
+   "value": "0.2 to 1.1",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Fragment properties",
+     "quote": "The recalculated $\\sigma$ is around 0.2 to 1.1 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fragment mass range",
+   "value": "1 to 200",
+   "uncertainty": "typical 20%",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Fragment properties",
+     "quote": "The resultant fragment mass $M_{\\rm core}$ ranges from 1 to 200 $\\rm M_\\odot$ with a typical uncertainty of 20%."
+    }
+   ]
+  },
+  {
+   "quantity": "Fragment mass surface density range",
+   "value": "0.2 to 7",
+   "uncertainty": "typical 30%",
+   "units": "g cm-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Fragment properties",
+     "quote": "The surface density of the dense gas fragments ranges from 0.2 to 7 g cm$^{-2}$, with a typical uncertainty of 30%."
+    }
+   ]
+  },
+  {
+   "quantity": "Fragment H2 number density range",
+   "value": "2e5 to 5e6",
+   "uncertainty": "around 40%",
+   "units": "cm-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Fragment properties",
+     "quote": "and its values range from $2\\times10^5$ to $5\\times10^6$ cm$^{-3}$ with uncertainties around 40%."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial ratio range",
+   "value": "0.3 to 5",
+   "uncertainty": "typical 30%",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Fragment properties",
+     "quote": "the $R_{\\rm vir}$ range from 0.3 to 5, with typical uncertainties of about 30%."
+    }
+   ]
+  },
+  {
+   "quantity": "H13CO+ optical depth for a typical fragment",
+   "value": "0.46",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Biases",
+     "quote": "online tool is $\\simeq0.46$ (cite: vanderTak2007)"
+    }
+   ]
+  },
+  {
+   "quantity": "H II region effective radius range",
+   "value": "0.1 to 0.3",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Properties of compact H II regions",
+     "quote": "The $r_{\\rm H40\\alpha,eff}$ and $n_{\\rm e}$ range from 0.1 to 0.3 pc and $1.2\\times10^{3}$ to $1.2\\times10^{4}$ cm$^{-3}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H II region electron density range",
+   "value": "1.2e3 to 1.2e4",
+   "uncertainty": "typical 20%",
+   "units": "cm-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Properties of compact H II regions",
+     "quote": "The $r_{\\rm H40\\alpha,eff}$ and $n_{\\rm e}$ range from 0.1 to 0.3 pc and $1.2\\times10^{3}$ to $1.2\\times10^{4}$ cm$^{-3}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized gas pressure P_i/k_B",
+   "value": "~1e7 to 1e8",
+   "uncertainty": "typical 20%",
+   "units": "K cm-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Properties of compact H II regions",
+     "quote": "$P_{\\rm i}$/$k_{\\rm B}\\sim 10^7$ to $10^8~\\rm K~cm^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H II region dynamical age",
+   "value": "~1e4 years (lower limit); likely age >~0.3 Myr",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Properties of compact H II regions",
+     "quote": "The dynamic age is estimated to be around $10^4$ years"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion difference N vs F in v_frag - v_HII histograms",
+   "value": "~1.7",
+   "uncertainty": "measure error 0.1-0.2 km/s",
+   "units": "km/s",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "6.2 Influence on fragment kinematics",
+     "quote": "the difference ($\\sim1.7$ km s$^{-1}$) is much greater than the measure error of 0.1-0.2 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "sigma_NT vs radius power-law index (N, F)",
+   "value": "0.36 (N), 0.25 (F); R^2 0.2 and 0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 Nature of fragments",
+     "quote": "Regression analysis gives a power law index of 0.36 and 0.25 with a determination coefficient of 0.2 and 0.13 for N and F fragments, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "N-fragment median surface density and excess over F",
+   "value": "~1 (about 0.4 larger)",
+   "uncertainty": "not stated",
+   "units": "g cm-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "8 Conclusions",
+     "quote": "The former has a higher surface density ($\\Sigma\\sim1~\\rm g~cm^2$, $\\sim0.4~\\rm g~cm^2$ larger)"
+    }
+   ]
+  },
+  {
+   "quantity": "N-fragment typical mass and excess over F",
+   "value": "~25 (about 15 larger)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "8 Conclusions",
+     "quote": "mass ($M\\sim25$ $\\rm M_\\odot$, $\\sim15$ $\\rm M_\\odot$ larger)"
+    }
+   ]
+  },
+  {
+   "quantity": "N-fragment typical velocity dispersion and excess over F",
+   "value": "~0.7 (about 0.2 greater)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "8 Conclusions",
+     "quote": "turbulence ($\\sigma\\sim0.7~\\rm km~s^{-1}$, $\\sim0.2~\\rm km~s^{-1}$ greater)"
+    }
+   ]
+  },
+  {
+   "quantity": "Time required for shell fragmentation t_frag",
+   "value": "~0.5 to 0.7",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "7.2 Comparisons with model of Whitworth1994",
+     "quote": "most regions require $t_{\\rm frag} \\sim 0.5$ to 0.7 Myr for shell fragmentation"
+    }
+   ]
+  },
+  {
+   "quantity": "Shell radius required for fragmentation r_frag vs measured H II radius",
+   "value": "~0.8 required vs ~0.2 measured",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "7.2 Comparisons with model of Whitworth1994",
+     "quote": "$\\sim0.8$ pc, are much larger than the measured radii of H II regions $\\sim0.2~\\rm pc$"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical MST fragment separations",
+   "value": "~0.05 (closest) and ~0.2 (most distant region)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "7.3 Pre-existing fragments",
+     "quote": "separations are $\\sim0.05~\\rm pc$ and $\\sim0.2~\\rm pc$ for the closest and most distant regions"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar wind importance factor C_w (core-scale and clump-scale cases)",
+   "value": "0.4 and 0.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "7.4 Role of stellar winds",
+     "quote": "we have $C_{\\rm w}$ of 0.4 and 0.08 for these two cases"
+    }
+   ]
+  },
+  {
+   "quantity": "Photoevaporation mass loss rate at 0.1 and 0.2 pc",
+   "value": "~26 and ~60",
+   "uncertainty": "not stated",
+   "units": "Msun/Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.1 Regulated spatial distribution",
+     "quote": "the resultant $\\dot{M}_{\\rm eva}$ are $\\sim26$ and $\\sim60~\\rm M_{\\odot}~Myr^{-1}$ when they are 0.1 to 0.2 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of total N fragment mass to natal clump mass (median, max, min)",
+   "value": "~0.3, ~0.5, ~0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "8.1 Mass growth of fragments",
+     "quote": "The median ratio is around 0.3, with maximum and minimum values of around 0.5 and 0.1, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Details of the ATOMS calibration (pipeline or manual, calibrators, flux scale, self-calibration) are only in the ATOMS series",
+  "tclean parameters: deconvolver, niter, threshold, mask, primary beam limit, robust, spectral gridding for each SPW",
+  "Continuum subtraction and line-free channels used for the line cubes",
+  "Actual array configurations, baselines, max recoverable scale and on-source time per field",
+  "Source of the measured electron temperatures T_e (citation is missing in the text) and the numerical inputs of the R_GC-T_e relation per region",
+  "Which spectral resolution and rebinning was used for astrodendro input cubes and the exact rms value used for each region",
+  "Per-fragment catalog (only in supplementary material)",
+  "Procedure and inputs for the fragment-HII overlap computation (beam width used for extension, how overlap fractions were measured)",
+  "Details of the K-S tests, regression fit method (OLS or otherwise) for the sigma_NT-size relation and the Gaussian fits to velocity-difference histograms",
+  "Number and construction of the random catalogs for ATPCF beyond the 500 2D random distributions, and bin sizes",
+  "Values of n_ini, Td, cs per region are in a table but the Te per region and the H40alpha integration windows are not listed"
+ ],
+ "missing_for_reproduction": [
+  "ATOMS calibration and imaging details (in the ATOMS series), including tclean cleaning parameters and line-free channels",
+  "Fragment catalog and per-region T_e values (supplementary material or not given)",
+  "Exact H40alpha integration windows and Te measurements per region",
+  "Details of fit procedures (K-S, regression) and ATPCF binning"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data are public and many equations and dendrogram parameters are given with numeric results, but calibration and imaging details are deferred to the ATOMS series and the fragment catalog is not in the text",
+ "rediscovery_reason": "ALMA project code is given, dendrogram and property recipe is mostly explicit, and the main results (N vs F property differences, t_frag, C_w) are numeric; calibration and imaging details must be taken from the ATOMS series",
+ "source_card": "cards/2024MNRAS.535.1364Z/sonnet/card.md"
+}

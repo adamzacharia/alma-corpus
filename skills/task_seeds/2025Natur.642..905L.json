@@ -1,0 +1,489 @@
+{
+ "bibcode": "2025Natur.642..905L",
+ "title": "Evidence for a sub-Jovian planet in the young TWA 7 disk",
+ "year": 2025,
+ "doi": "10.1038/s41586-025-09150-4",
+ "arxiv_id": "2502.15081",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "Can high-sensitivity thermal infrared observations with JWST/MIRI detect a sub-Jupiter mass planet responsible for the ring-like structures and gaps in the young debris disk around TWA 7?",
+ "alma_project_codes": [
+  "2015.1.01015.S"
+ ],
+ "data": {
+  "bands": "Band 7 (346 GHz, 870 μm / 0.88 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.19\"x0.18\" (Briggs 0.5 weighting); 0.29\"x0.24\" (natural weighting)",
+  "sensitivity": "23 μJy/beam (Briggs 0.5 weighting); 21 μJy/beam (natural weighting)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Age of TWA 7 (6.4 +/- 1 Myr)",
+    "evidence": [
+     {
+      "loc": "Main",
+      "quote": "The disk around TWA 7 is one of the youngest (6.4+/- 1 Myr, [11]) debris disks known today."
+     }
+    ]
+   },
+   "citation": "[11] Binks A.S. et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Distance to TWA 7 (~34 pc) and proper motion (-118.751 ± 0.023 mas/yr, -19.648 ± 0.026 mas/yr)",
+    "evidence": [
+     {
+      "loc": "Main",
+      "quote": "TWA 7 is a close (~34 pc[12]), low-mass (0.46 M Sun [13]) member of the young TW Hydra association"
+     },
+     {
+      "loc": "Main",
+      "quote": "(taking into account TWA 7 proper motion (-118.751 pm 0.023 mas/yr, -19.648 pm 0.026 mas/yr[19])"
+     }
+    ]
+   },
+   "citation": "[12] Gaia Collaboration et al. (2023), [19] Gaia Collaboration (2020)"
+  },
+  {
+   "what": {
+    "value": "Mass of TWA 7 (0.46 M_Sun)",
+    "evidence": [
+     {
+      "loc": "Main",
+      "quote": "TWA 7 is a close (~34 pc[12]), low-mass (0.46 M Sun [13]) member of the young TW Hydra association"
+     }
+    ]
+   },
+   "citation": "[13] Stassun, K.G. et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Tapered 2 arcsec ALMA 870 μm 3-sigma upper limit of 96 μJy at the position of CC#1",
+    "evidence": [
+     {
+      "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+      "quote": "The source has a flux of 22 μJy at 11 μm, and is not detected with ALMA at 870 μm, but with a tapered resolution of 2 arcsec. The measured 3-sigma upper limit for an unresolved source at the position of the MIRI source is 96 μJy[20]."
+     }
+    ]
+   },
+   "citation": "[20] Bayo, A. et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "SWIRE galaxy SED templates (starburst, AGN, normal galaxies)",
+    "evidence": [
+     {
+      "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+      "quote": "To take into account the other constraints, we have used the SWIRE templates, from [46]."
+     }
+    ]
+   },
+   "citation": "[46] Polletta M. et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "Infrared luminosity function of galaxies at z=0.1 to 1 in the GOODS fields and JWST galaxy source counts",
+    "evidence": [
+     {
+      "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+      "quote": "The probability to find a z=0.1 to 1 star forming galaxy with a flux at 11 μm equal to 22 μJy in a FOV of 10*10’’ can be estimated readily through the source counts, from [42,43,44,45]."
+     },
+     {
+      "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+      "quote": "We used the infrared luminosity function of galaxies at redshifts between z=0.1 and z=1, in the GOODS fields, by [47], to estimate the abundance of these star-forming galaxies, as a function of their 8 μm luminosities."
+     }
+    ]
+   },
+   "citation": "[42] Ling et al. (2022), [43] Wu et al. (2023), [44] Stone et al. (2024), [45] Sajkov et al. (2024), [47] Caputi et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "Evolutionary cooling models of cold, low-mass planets",
+    "evidence": [
+     {
+      "loc": "Main",
+      "quote": "As a comparison and extra mass estimation, evolutionary models of cold, low-mass planets [29] combined with our estimation of effective temperature are used;"
+     }
+    ]
+   },
+   "citation": "[29] Linder E. et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST/MIRI coronagraphic images and extract photometry and astrometry of detected sources",
+   "method": "Retrieve Level 1 data from MAST, process with JWST pipeline v1.14.0, subtract background, register to coronagraph center, subtract stellar diffraction using linear combination and PCA of 9 SGD reference star frames, simulate PSF with WebbPSF and diffraction code, and extract flux/position via PSF fitting and aperture photometry.",
+   "software": [
+    "JWST pipeline v1.14.0",
+    "WebbPSF",
+    "diffraction code [38,39]"
+   ],
+   "key_parameters": [
+    "Annular optimization region 0.5'' to 3'' (linear combination) and 0.5'' to 5'' with 8 PCA components; 1.5 λ/D photometric extraction area; roll 1 only used for photometry."
+   ],
+   "assumptions": [
+    "Flat field correction is skipped as inappropriate for the MIRI coronagraph."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Re-image archival ALMA Band 7 data and measure upper limit at CC#1 position",
+   "method": "Retrieve pipeline-calibrated visibility datasets from the ALMA archive, image single epochs and combined visibilities in CASA using tclean (mosaic mode for combined) with Briggs 0.5 and natural weighting, and measure primary-beam-corrected 3-sigma upper limit at CC#1 location.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Hogbom deconvolution down to a residual threshold of 0.1 mJy (~3x RMS); Briggs 0.5 weighting and natural weighting."
+   ],
+   "assumptions": [
+    "Evaluated upper limit assuming CC#1 is an unresolved point source that had not moved between 2016 and 2024."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit astrometry and morphology of the bright ALMA East source and compare with MIRI East source",
+   "method": "Fit a point-source model in the visibility domain to each of the 3 ALMA epochs using MCMC (emcee) to obtain astrometry, fit a 2D Gaussian to the combined image to measure integrated flux and size, and translate the ALMA position to the 2024 MIRI epoch using Gaia DR3 stellar proper motion.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "ALMA astrometric systematic error of 5% of the beam size (9 mas for combined observation) added in quadrature to statistical MCMC uncertainties."
+   ],
+   "assumptions": [
+    "The East source is extragalactic and stationary between the 2016 ALMA and 2024 MIRI epochs."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive VLT/SPHERE near-IR upper limits at the position of CC#1",
+   "method": "Reanalyse archival VLT/SPHERE IRDIS H2-H3 high-contrast imaging data from the SHINE survey using the PACO algorithm to compute 5-sigma contrast curves and flux upper limits.",
+   "software": [
+    "PACO"
+   ],
+   "key_parameters": [
+    "H2 (1.593 ± 0.055 μm) and H3 (1.667 ± 0.056 μm) filters; 5-sigma confidence level."
+   ],
+   "assumptions": [
+    "Local patch noise statistics modeled through mixtures of scaled multivariate Gaussians."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate background galaxy contamination probability and rule out solar system object",
+   "method": "Check proper motion across 2-hour exposures against solar system ephemerides; combine JWST 11 μm source counts, GOODS 8 μm infrared luminosity functions at z=0.1-1, and 14 SWIRE starburst/AGN templates scaled to 22 μJy at 11 μm subject to ALMA 870 μm and SPHERE 1.6 μm upper limits.",
+   "software": [],
+   "key_parameters": [
+    "11 μm flux = 22 μJy; 870 μm upper limit = 96 μJy (or 76 μJy); 1.6 μm upper limit = 0.6 μJy (point source) to 60 μJy (extended 0.6 arcsec); redshift range z = 0.1 to 1; radius = 1.5''."
+   ],
+   "assumptions": [
+    "Assumed 80% star-forming galaxies and 20% active nuclei, equal probability among star-forming templates, and up to 30% error increase for galaxy clustering."
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate planet mass and effective temperature via atmospheric and evolutionary modeling",
+   "method": "Perform MCMC forward modeling with the HADES code incorporating water clouds to fit the JWST F1140C flux and VLT/SPHERE H2/H3 5-sigma upper limits, and compare with Linder et al. [29] evolutionary cooling models.",
+   "software": [
+    "HADES"
+   ],
+   "key_parameters": [
+    "System age = 6.4 +/- 1 Myr; Uniform priors: Mass [0.01, 2] M_J, Metallicity [Fe/H] [-2, 1.6], Core mass [1, 40] M_E, Effective temperature [1, 2000] K, Cloud sedimentation rate [1, 5]."
+   ],
+   "assumptions": [
+    "Planet and star are coeval (6.4 +/- 1 Myr); atmosphere contains water clouds."
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Simulate dynamical interaction between the candidate planet and the TWA 7 debris disk",
+   "method": "Run symplectic N-body simulations over 6 Myr using swift_rmvs3 with a 0.34 M_J planet at 52 au on a circular orbit interacting with a flat disk of 200,000 massless planetesimals.",
+   "software": [
+    "swift_rmvs3"
+   ],
+   "key_parameters": [
+    "Planet mass = 0.34 M_J, semi-major axis = 52 au, circular orbit, disk inclination ~13°, 200,000 massless particles between 20 and 130 au, initial surface density ∝ r^-1, integration time = 6 Myr."
+   ],
+   "assumptions": [
+    "Planet and disk are coplanar; planet orbit is circular; particles are massless planetesimals (radiation pressure on dust grains not included)."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CC#1 (TWA 7 b) flux density in JWST/MIRI F1140C",
+   "value": "5.60e-19",
+   "uncertainty": "+/- 0.97e-19",
+   "units": "W/m^2/μm",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Methods, 1.2 Data analysis",
+     "quote": "We measured a flux density of 5.60+/-0.97 e-19 W/m [2] /μm for CC#1."
+    },
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "CC#1 | -1.10+/-0.03 | 1.01+/0.03 | 5.60 +/- 0.97 e-19 | N"
+    }
+   ]
+  },
+  {
+   "quantity": "CC#1 (TWA 7 b) flux density at 11 μm",
+   "value": "22",
+   "uncertainty": "not stated",
+   "units": "μJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+     "quote": "The source has a flux of 22 μJy at 11 μm, and is not detected with ALMA at 870 μm, but with a tapered resolution of 2 arcsec."
+    }
+   ]
+  },
+  {
+   "quantity": "CC#1 (TWA 7 b) astrometric offset Delta RA",
+   "value": "-1.10",
+   "uncertainty": "+/- 0.03",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "CC#1 | -1.10+/-0.03 | 1.01+/0.03 | 5.60 +/- 0.97 e-19 | N"
+    }
+   ]
+  },
+  {
+   "quantity": "CC#1 (TWA 7 b) astrometric offset Delta Dec",
+   "value": "1.01",
+   "uncertainty": "+/- 0.03",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "CC#1 | -1.10+/-0.03 | 1.01+/0.03 | 5.60 +/- 0.97 e-19 | N"
+    }
+   ]
+  },
+  {
+   "quantity": "Gal BKG (MIRI East source) flux density in F1140C",
+   "value": "1.76e-19",
+   "uncertainty": "+/- 0.55e-19",
+   "units": "W/m^2/μm",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "Gal BKG | 6.74+/-0.04 | -0.05+/0.04 | 1.76 +/- 0.55 e-19 | Y"
+    }
+   ]
+  },
+  {
+   "quantity": "Gal BKG (MIRI East source) astrometric offset Delta RA",
+   "value": "6.74",
+   "uncertainty": "+/- 0.04",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "Gal BKG | 6.74+/-0.04 | -0.05+/0.04 | 1.76 +/- 0.55 e-19 | Y"
+    }
+   ]
+  },
+  {
+   "quantity": "Gal BKG (MIRI East source) astrometric offset Delta Dec",
+   "value": "-0.05",
+   "uncertainty": "+/- 0.04",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "Gal BKG | 6.74+/-0.04 | -0.05+/0.04 | 1.76 +/- 0.55 e-19 | Y"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 870 μm 3-sigma point-source upper limit at CC#1 position (combined natural weighting)",
+   "value": "76",
+   "uncertainty": "not stated",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+     "quote": "Combining all ALMA observations, the 3-sigma upper limit is 76 μJy, in a beam of 0.29”x0.24”"
+    },
+    {
+     "loc": "Supplementary Informations, 1. ALMA data analysis",
+     "quote": "In this natural weighting image, the 3-sigma upper limit on the flux density of a point source at the same location as found for CC#1 in the MIRI image, when corrected for the primary beam response at that location, is 76 μJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA East source (background galaxy) spatially integrated 0.88 mm flux density",
+   "value": "4.0",
+   "uncertainty": "+/- 0.4",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Informations, 1. ALMA data analysis",
+     "quote": "To investigate this further, we fit a 2D Gaussian to the combined image, finding best fit FWHMs of 0.35”x0.26” with a PA of 101 degrees, and a spatially integrated flux of 4.0+/-0.4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA East source 2D Gaussian FWHM size",
+   "value": "0.35 x 0.26",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Informations, 1. ALMA data analysis",
+     "quote": "To investigate this further, we fit a 2D Gaussian to the combined image, finding best fit FWHMs of 0.35”x0.26” with a PA of 101 degrees, and a spatially integrated flux of 4.0+/-0.4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA East source combined RA coordinate",
+   "value": "10h42m30.4130s",
+   "uncertainty": "± 0.0012s",
+   "units": "hhmmss",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Information Data Table 1",
+     "quote": "Combined | 10h42m30.4130s ± 0.0012s | -33d40m16.709s ± 0.011s"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA East source combined Dec coordinate",
+   "value": "-33d40m16.709s",
+   "uncertainty": "± 0.011s",
+   "units": "ddmmss",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Information Data Table 1",
+     "quote": "Combined | 10h42m30.4130s ± 0.0012s | -33d40m16.709s ± 0.011s"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA East source predicted stellocentric offset Delta RA*cos(Dec) at MIRI epoch",
+   "value": "+6.790",
+   "uncertainty": "± 0.015",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Information Data Table 1",
+     "quote": "+ 6.790 ± 0.015"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA East source predicted stellocentric offset Delta Dec at MIRI epoch",
+   "value": "+0.002",
+   "uncertainty": "± 0.011",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Information Data Table 1",
+     "quote": "+ 0.002” ± 0.011”"
+    }
+   ]
+  },
+  {
+   "quantity": "VLT/SPHERE H2 (1.59 μm) 5-sigma upper limit at TWA 7 b position",
+   "value": "6.4e-19",
+   "uncertainty": "not stated",
+   "units": "W/m^2/μm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Supplementary Informations, 2. VLT/SPHERE upper limits",
+     "quote": "The 5-sigma upper limits for at the position of TWA 7b, 6.4e-19 W/m2/um and 9.2e-19 W/m2/um for respectively H2 and H3 used in the present paper, were directly deduced from the contrasts computed using the approach described in [54]."
+    }
+   ]
+  },
+  {
+   "quantity": "VLT/SPHERE H3 (1.67 μm) 5-sigma upper limit at TWA 7 b position",
+   "value": "9.2e-19",
+   "uncertainty": "not stated",
+   "units": "W/m^2/μm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Supplementary Informations, 2. VLT/SPHERE upper limits",
+     "quote": "The 5-sigma upper limits for at the position of TWA 7b, 6.4e-19 W/m2/um and 9.2e-19 W/m2/um for respectively H2 and H3 used in the present paper, were directly deduced from the contrasts computed using the approach described in [54]."
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of a background galaxy within 1.5'' of TWA 7 satisfying flux constraints",
+   "value": "0.34",
+   "uncertainty": "+0.22/-0.14",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Methods, 2. Estimation of the probability for an intermediate-redshift galaxy",
+     "quote": "Hence in a radius of 1.5” around TWA7, the probability to have such a galaxy is about 0.34% (+0.22/-0.14%)."
+    }
+   ]
+  },
+  {
+   "quantity": "TWA 7 b planet mass (MCMC forward modeling)",
+   "value": "0.34",
+   "uncertainty": "+/- 0.06",
+   "units": "M_J",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Extended Data Figure 3 caption",
+     "quote": "The mass found is 0.34 +/- 0.06 M J (considering errors from the MCMC only)."
+    }
+   ]
+  },
+  {
+   "quantity": "TWA 7 b effective temperature",
+   "value": "316",
+   "uncertainty": "+19/-23",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Extended Data Figure 4 caption",
+     "quote": "The effective temperature used is 316+19/-23K (derived from the forward modeling) and the age 6.4+/- 1 Myr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for ALMA re-imaging",
+  "Image size and pixel (cell) size used in ALMA tclean",
+  "Spectral window selection and whether line channels (e.g., CO) were flagged before ALMA continuum imaging",
+  "Exact visibility fitting tool or likelihood implementation paired with emcee for ALMA uv-plane point-source fitting",
+  "Specific MCMC sampler settings (number of walkers, steps, burn-in) for both the ALMA visibility fitting and HADES atmospheric forward modeling"
+ ],
+ "missing_for_reproduction": [
+  "Self-developed JWST/MIRI coronagraphic reduction and PSF-fitting scripts",
+  "CASA version, cell size, image size, and channel flagging details for the ALMA tclean mosaic imaging",
+  "Exact visibility-fitting script used with emcee for the ALMA East source astrometry"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Archival ALMA, JWST, VLT/SPHERE, and Gaia datasets are publicly identified with program IDs, and the ALMA imaging parameters (tclean, Hogbom, 0.1 mJy threshold, Briggs 0.5 and natural weighting) and MCMC astrometric procedure are well described, though custom JWST scripts and minor CASA parameters (cell size, CASA version) are omitted.",
+ "rediscovery_reason": "The ALMA archival data (2015.1.01015.S) and JWST data (#3662) are public, the imaging and visibility-fitting recipes are straightforward, and the key quantitative results (ALMA 76 μJy upper limit, 4.0 mJy galaxy flux, astrometric offsets, and planet mass/Teff fits) are clearly specified.",
+ "source_card": "cards/2025Natur.642..905L/sonnet/card.md"
+}

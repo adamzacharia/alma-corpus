@@ -1,0 +1,1802 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2022ApJ...939..119B",
+  "title": "Tracing Interstellar Heating: An ALCHEMI Measurement of the HCN Isomers in NGC 253",
+  "year": 2022,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Behrens, Erica",
+  "n_authors": 22,
+  "arxiv_id": "2209.06244",
+  "doi": "10.3847/1538-4357/ac91ce",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00161.L",
+   "2018.1.00162.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "ALCHEMI Data",
+    "quote": "From the ALCHEMI archive we extract the"
+   },
+   {
+    "loc": "ALCHEMI Data",
+    "quote": "The ALMA Cycle 5 Large Program ALCHEMI (project code 2017.1.00161.L) imaged the CMZ within NGC 253 in the ALMA frequency Bands 3, 4, 6, and 7."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 253 (CMZ, GMCs 1-10)",
+     "coordinates": {
+      "value": "nominal phase center 00h47m33s.26, -25°17'17''.7 (ICRS)",
+      "evidence": [
+       {
+        "loc": "Observational Data",
+        "quote": "The nominal phase center of the observations is"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "and at a distance of 3.5±0.2 Mpc (cite: dist_Rekola)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "3.5±0.2 Mpc",
+      "evidence": [
+       {
+        "loc": "Observational Data",
+        "quote": "The nominal phase center of the observations is"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "and at a distance of 3.5±0.2 Mpc (cite: dist_Rekola)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Rekola et al. 2005 (cite: dist_Rekola), as stated in Introduction",
+      "evidence": [
+       {
+        "loc": "Observational Data",
+        "quote": "The nominal phase center of the observations is"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "and at a distance of 3.5±0.2 Mpc (cite: dist_Rekola)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Whether HCN and HNC emission, modeled with chemistry and radiative transfer, can trace heating processes (mechanical vs cosmic ray) associated with star formation in the NGC 253 CMZ",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We analyze HCN and HNC emission in the nearby starburst galaxy NGC 253 to investigate its effectiveness in tracing heating processes associated with star formation."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00161.L",
+     "evidence": [
+      {
+       "loc": "ALCHEMI Data",
+       "quote": "The ALMA Cycle 5 Large Program ALCHEMI (project code 2017.1.00161.L) imaged the CMZ within NGC 253 in the ALMA frequency Bands 3, 4, 6, and 7."
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00162.S",
+     "evidence": [
+      {
+       "loc": "ALCHEMI Data",
+       "quote": "This survey was subsequently extended to Band 5 during ALMA Cycle 6 (project code 2018.1.00162.S)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Bands 3, 4, 5, 6, 7 (Band 5 added in Cycle 6)",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "imaged the CMZ within NGC 253 in the ALMA frequency Bands 3, 4, 6, and 7."
+     },
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "This survey was subsequently extended to Band 5 during ALMA Cycle 6"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "rest-frequency coverage 84.2 to 373.2 GHz",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "The rest-frequency coverage of ALCHEMI ranged from 84.2 to 373.2 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "J=1-0",
+     "rest_frequency": "88.632 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "J=1-0",
+     "rest_frequency": "90.664 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=2-1",
+     "rest_frequency": "177.261 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "J=2-1",
+     "rest_frequency": "181.325 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=3-2",
+     "rest_frequency": "265.886 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "J=3-2",
+     "rest_frequency": "271.981 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=4-3",
+     "rest_frequency": "354.505 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "J=4-3",
+     "rest_frequency": "362.630 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m Array combined with Atacama Compact Array (ACA)",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "The combination of the 12 m Array and Atacama Compact Array (ACA) measurements used in this analysis"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.6 arcsec (~27 pc) final image cube resolution; 8-9 km/s spectral resolution",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "The final angular and spectral resolution of the image cubes generated from these measurements were"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "15 arcsec common maximum recoverable scale at all frequencies",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "resulted in a common maximum recoverable angular scale of"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "per-transition spectral channel RMS 0.26-12.52 mJy/beam (Table 1)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "archival: ALCHEMI survey data extracted from the ALCHEMI archive",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "From the ALCHEMI archive we extract the"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "GMC positions (10 GMCs) adopted from leroy15, with two corrections from private communication",
+      "evidence": [
+       {
+        "loc": "GMC Positions",
+        "quote": "The GMC positions we have adopted in this analysis (Table 5) are derived from the GMC positions reported by (cite: leroy15)"
+       }
+      ]
+     },
+     "citation": "(cite: leroy15)"
+    },
+    {
+     "what": {
+      "value": "kinetic temperature constraints: about 50 K on ~5 arcsec scales and at least 300 K on ≲1 arcsec scales (used as temperature prior)",
+      "evidence": [
+       {
+        "loc": "Defining Bayesian Priors",
+        "quote": "On the largest angular scales"
+       }
+      ]
+     },
+     "citation": "(cite: mangum19)"
+    },
+    {
+     "what": {
+      "value": "H2 column density range 10^23 to 7x10^24 cm^-2 for GMCs 3-7 (used for N(H2) prior)",
+      "evidence": [
+       {
+        "loc": "Defining Bayesian Priors",
+        "quote": "Millimeter dust continuum measurements over similar spatial scales as those modelled here were used to derive"
+       }
+      ]
+     },
+     "citation": "(cite: mangum19)"
+    },
+    {
+     "what": {
+      "value": "radio continuum sources and spectral indices, used to place heating sources and estimate SN fraction",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "We place heating sources observed using radio continuum (cite: ua97)"
+       }
+      ]
+     },
+     "citation": "(cite: ua97)"
+    },
+    {
+     "what": {
+      "value": "super hot core identifications from vibrationally-excited HC3N emission",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "identified by (cite: RV2020) using vibrationally-excited HC$_{3}$N emission."
+       }
+      ]
+     },
+     "citation": "(cite: RV2020)"
+    },
+    {
+     "what": {
+      "value": "isotopic ratios HCN/H13CN and HCN/HC15N used to check modeled optical depths",
+      "evidence": [
+       {
+        "loc": "Modeling Results",
+        "quote": "To confirm these optical depth estimates, we use integrated intensity isotopic ratios"
+       }
+      ]
+     },
+     "citation": "(cite: Martin19)"
+    },
+    {
+     "what": {
+      "value": "C2H, HOC+, H3O+/SO CRIR estimates (10^3-10^6 zeta0 and related values) used for prior and comparison",
+      "evidence": [
+       {
+        "loc": "Defining Bayesian Priors",
+        "quote": "which derive $\\zeta$ ranges from"
+       }
+      ]
+     },
+     "citation": "(cite: holdship_c2h); (cite: harada21); (cite: Holdship2022)"
+    },
+    {
+     "what": {
+      "value": "Milky Way CRIR lower limit and local interstellar ionization estimate from Voyager/Pioneer data",
+      "evidence": [
+       {
+        "loc": "The Connection Between CRIR and Supernovae",
+        "quote": "The energy density derived from this analysis is"
+       }
+      ]
+     },
+     "citation": "(cite: Webber1998)"
+    },
+    {
+     "what": {
+      "value": "NGC 253 supernova rate range 0.14 to 0.3 per yr",
+      "evidence": [
+       {
+        "loc": "The Connection Between CRIR and Supernovae",
+        "quote": "The supernova rate for NGC 253 has been estimated to be in the range 0.14 to 0.3"
+       }
+      ]
+     },
+     "citation": "(cite: Lenc2006AJ); (cite: ua97)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "UCLCHEM gas-grain chemistry coupled to SpectralRadex/RADEX non-LTE line modeling, sampled per GMC over T, n, zeta, N(H2) priors",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "We model the chemical and physical conditions within each of the 10 GMCs using the chemical modeling code"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not described in this paper; deferred to ALCHEMI-ACA",
+     "evidence": [
+      {
+       "loc": "ALCHEMI Data",
+       "quote": "Full details regarding the data acquisition, calibration, and imaging are provided in (cite: ALCHEMI-ACA)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "absolute flux calibration uncertainties taken from ALCHEMI-ACA and propagated into integrated intensity errors",
+     "evidence": [
+      {
+       "loc": "Spectral Line Signal Extraction",
+       "quote": "absolute flux calibration uncertainties (cite: ALCHEMI-ACA)"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "CubeLineMoment spectral and spatial masks; signal limit of three times the spectral channel baseline RMS for moment 0-2 images; each transition used as its own tracer",
+     "evidence": [
+      {
+       "loc": "Spectral Line Signal Extraction",
+       "quote": "using a signal limit of three-times the spectral channel baseline RMS for the respective transition under study."
+      },
+      {
+       "loc": "Spectral Line Signal Extraction",
+       "quote": "we were able to use each as its own tracer."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "described in ALCHEMI-ACA; not detailed here",
+     "evidence": [
+      {
+       "loc": "ALCHEMI Data",
+       "quote": "The continuum subtraction and imaging processes used in this analysis are described in (cite: ALCHEMI-ACA)."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.6 arcsec (~27 pc)",
+     "evidence": [
+      {
+       "loc": "ALCHEMI Data",
+       "quote": "The final angular and spectral resolution of the image cubes generated from these measurements were"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "per-transition channel RMS 0.27, 0.26 (1-0); 6.41, 12.52 (2-1); 1.46, 1.98 (3-2); 2.70, 3.47 (4-3) mJy/beam",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Table 1 lists the transitions, frequencies, and spectral channel RMS values for all measurements studied."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "calibration, imaging and continuum subtraction of the ALCHEMI cubes",
+      "evidence": [
+       {
+        "loc": "ALCHEMI Data",
+        "quote": "Full details regarding the data acquisition, calibration, and imaging are provided in (cite: ALCHEMI-ACA)."
+       }
+      ]
+     },
+     "from_reference": "(cite: ALCHEMI-ACA)"
+    },
+    {
+     "what": {
+      "value": "CubeLineMoment integrated-intensity extraction method and masking approach",
+      "evidence": [
+       {
+        "loc": "Spectral Line Signal Extraction",
+        "quote": "we use the CubeLineMoment script introduced for this same purpose by (cite: mangum19)"
+       }
+      ]
+     },
+     "from_reference": "(cite: mangum19)"
+    },
+    {
+     "what": {
+      "value": "interloper contribution procedure for HNC 4-3",
+      "evidence": [
+       {
+        "loc": "Interloper Analysis",
+        "quote": "Using the procedure described in (cite: Holdship2022) we determine"
+       }
+      ]
+     },
+     "from_reference": "(cite: Holdship2022)"
+    },
+    {
+     "what": {
+      "value": "initial depleted abundances from Table 4 of jenkins2009",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "and use depleted abundances from Table 4 of (cite: jenkins2009) for our initial conditions."
+       }
+      ]
+     },
+     "from_reference": "(cite: jenkins2009)"
+    },
+    {
+     "what": {
+      "value": "single-point homogeneous clouds shielded from UV, following earlier ALCHEMI modeling",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "We use a single point model to replicate the environment in the GMCs by assuming these gas clouds are homogeneous because they have high enough visual extinctions"
+       }
+      ]
+     },
+     "from_reference": "(cite: harada21)"
+    },
+    {
+     "what": {
+      "value": "on-the-spot approximation for column density",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "we multiply the fractional abundance at the source of the emission by our"
+       }
+      ]
+     },
+     "from_reference": "(cite: Dyson1997)"
+    },
+    {
+     "what": {
+      "value": "HNC + O and HNC + H temperature barriers (high 2000 K, 1200 K; low 20 K, 200 K) and HNC + O reaction",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "We test both the high (2000 K, 1200 K) and low (20 K, 200 K) barrier values (cite: hacar20)"
+       }
+      ]
+     },
+     "from_reference": "(cite: hacar20)"
+    },
+    {
+     "what": {
+      "value": "GMC positions",
+      "evidence": [
+       {
+        "loc": "GMC Positions",
+        "quote": "The GMC positions we have adopted in this analysis (Table 5) are derived from the GMC positions reported by (cite: leroy15)"
+       }
+      ]
+     },
+     "from_reference": "(cite: leroy15)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Continuum subtraction method (line-free channels, fit order) for the ALCHEMI cubes",
+    "Imaging parameters (weighting/robust, cell size, deconvolver, masks) and how the 1.6 arcsec beam was set",
+    "Primary-beam correction status of the mosaic and any flux-scale correction applied to the moment maps",
+    "Velocity range or line-width mask used by CubeLineMoment for each transition",
+    "Number of live points and stopping settings beyond the fractional remainder threshold in UltraNest",
+    "Priors and fits for each GMC's kinetic temperature and column density where unconstrained (upper-limit rule details)",
+    "Software versions for UCLCHEM, UltraNest, SpectralRadex and CubeLineMoment",
+    "Exact GMC aperture handling (pixels averaged, background treatment) and the GMC position table values after the stated corrections",
+    "Whether electron collisions or infrared pumping were excluded in all model runs (both stated as excluded but treatment in table outputs unclear)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "extract integrated intensities of HCN and HNC transitions",
+    "method": {
+     "value": "CubeLineMoment masking with each bright line used as its own tracer; moment 0, 1, 2 images made with 3x channel RMS signal limit",
+     "evidence": [
+      {
+       "loc": "Spectral Line Signal Extraction",
+       "quote": "Final moment 0 (integrated intensity; Jy km s$^{-1}$), 1 (average velocity; km s$^{-1}$) and 2 (velocity dispersion; km s$^{-1}$) images are generated using a signal limit of three-times the spectral channel baseline RMS"
+      }
+     ]
+    },
+    "software": [
+     "CubeLineMoment"
+    ],
+    "key_parameters": [
+     {
+      "value": "3 sigma per-transition signal limit; 1.6 arcsec mosaics",
+      "evidence": [
+       {
+        "loc": "Spectral Line Signal Extraction",
+        "quote": "using a signal limit of three-times the spectral channel baseline RMS for the respective transition under study."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "emission representative of each transition used as its own mask tracer",
+      "evidence": [
+       {
+        "loc": "Spectral Line Signal Extraction",
+        "quote": "we were able to use each as its own tracer."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "sample spectrum check for spectral blending",
+     "evidence": [
+      {
+       "loc": "Interloper Analysis",
+       "quote": "Our CubeLineMoment analysis includes a sample spectrum check to reveal potential spectral line blending."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "average intensities over GMCs",
+    "method": {
+     "value": "average integrated intensity inside 10 GMC-like positions using apertures equal to the 1.6 arcsec beam; uncertainties from channel RMS, line widths and absolute flux calibration",
+     "evidence": [
+      {
+       "loc": "Spectral Line Signal Extraction",
+       "quote": "adopting diameters equal to our beam size"
+      }
+     ]
+    },
+    "software": [
+     "CubeLineMoment"
+    ],
+    "key_parameters": [
+     {
+      "value": "aperture diameter = 1.6 arcsec beam",
+      "evidence": [
+       {
+        "loc": "Spectral Line Signal Extraction",
+        "quote": "adopting diameters equal to our beam size"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "offset between HCN and HNC centers does not substantially affect integrated intensities",
+      "evidence": [
+       {
+        "loc": "Spectral Line Signal Extraction",
+        "quote": "any potential offset between the centers of the two species’ emission would not substantially affect our calculated integrated intensities."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "check HNC 4-3 line blending",
+    "method": {
+     "value": "estimate interloper contributions and decide not to apply correction",
+     "evidence": [
+      {
+       "loc": "Interloper Analysis",
+       "quote": "Since the estimated correction required to this single transition is small, we do not apply these corrections"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "at most 4% (H2CO) and 1% (HNC v2=1) contribution",
+      "evidence": [
+       {
+        "loc": "Interloper Analysis",
+        "quote": "contribute respectively at most 4% and 1% to the HNC"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "consistent with multi-species LTE analysis in ALCHEMI-ACA",
+     "evidence": [
+      {
+       "loc": "Interloper Analysis",
+       "quote": "This contamination estimate is consistent with the multi-species LTE analysis of molecular column densities described in (cite: ALCHEMI-ACA)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "compute chemical abundances per GMC model point",
+    "method": {
+     "value": "UCLCHEM gas-grain chemistry with UMIST12 gas network, added HNC+O reaction, both high and low isomerization barriers tested, scaled cosmic-ray rates from zeta0",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "We take our gas phase network from UMIST12 (cite: McElroy2013)"
+      },
+      {
+       "loc": "Model Description",
+       "quote": "The cosmic ray reaction rates use a cosmic ray ionization rate of"
+      }
+     ]
+    },
+    "software": [
+     "UCLCHEM"
+    ],
+    "key_parameters": [
+     {
+      "value": "zeta0 = 1.36e-17 s^-1",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "The cosmic ray reaction rates use a cosmic ray ionization rate of"
+       }
+      ]
+     },
+     {
+      "value": "priors: T 50-300 K uniform; n 10^3-10^7 cm^-3 log-uniform; zeta 10-10^7 zeta0 log-uniform; N(H2) 10^22-10^25 cm^-2 log-uniform",
+      "evidence": [
+       {
+        "loc": "Defining Bayesian Priors",
+        "quote": "we sample kinetic temperatures between 50 and 300 K, adopting a flat prior distribution"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "homogeneous, UV-shielded single-point cloud",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "We use a single point model to replicate the environment in the GMCs"
+       }
+      ]
+     },
+     {
+      "value": "cosmic ray ionization and heating treated separately; grain surface reactions included by default",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "We further include UCLCHEM’s default grain surface reactions including freeze out, non-thermal desorption, and diffusive reactions between species adsorbed to the grain."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "convert chemistry to line intensities",
+    "method": {
+     "value": "SpectralRadex non-LTE escape-probability calculation with H2 collisions only, uniform line width 100 km/s and beam-filling factor 1; Jy km/s converted to K km/s using 13.59 (300 GHz/nu)^2 with 1.6 arcsec beam",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "These integrated intensities are calculated assuming a uniform line width of 100"
+      },
+      {
+       "loc": "Nested Sampling",
+       "quote": "so we can use the following equation to convert our observed beam-averaged integrated intensities from Jy km"
+      }
+     ]
+    },
+    "software": [
+     "SpectralRadex",
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "line width 100 km/s; beam-filling 1; electron collisions excluded",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "and a beam-filling factor of 1."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "isothermal, homogeneous 1D environment; no infrared pumping of vibrational bending modes",
+      "evidence": [
+       {
+        "loc": "Model Description",
+        "quote": "Since we do not measure spectral line intensity ratios less than 1 toward the NGC 253 CMZ"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "optical depth check in step 7",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "we have used our RADEX analysis to estimate the optical depth of our HCN and HNC transitions"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "constrain physical conditions per GMC",
+    "method": {
+     "value": "UltraNest MLFriends nested sampling of T, n, zeta, N(H2) with Gaussian likelihood; report median and inner 67% interval, 83rd percentile upper limits where posterior peaks at lower bound",
+     "evidence": [
+      {
+       "loc": "Nested Sampling",
+       "quote": "by implementing the Monte Carlo algorithm MLFriends (cite: ultranest14; ultranest19)"
+      },
+      {
+       "loc": "Modeling Results",
+       "quote": "we report the median values of the posterior distributions for each parameter with uncertainties that represent the inner 67% of the distributions."
+      }
+     ]
+    },
+    "software": [
+     "UltraNest",
+     "MLFriends"
+    ],
+    "key_parameters": [
+     {
+      "value": "log-uniform priors in n, zeta, N(H2); uniform in T",
+      "evidence": [
+       {
+        "loc": "Defining Bayesian Priors",
+        "quote": "We adopt a log-uniform distribution for densities over the range"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gaussian errors in the likelihood",
+      "evidence": [
+       {
+        "loc": "Nested Sampling",
+        "quote": "by assuming Gaussian errors giving the standard function"
+       }
+      ]
+     },
+     {
+      "value": "high temperature barriers (2000 K, 1200 K) used for reported results",
+      "evidence": [
+       {
+        "loc": "Modeling Results",
+        "quote": "We show results using the high temperature barriers (2000 K, 1200 K) for the HNC + O and HNC + H reactions"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "UltraNest MLFriends nested sampling; sampling stops when fractional remainder is insignificant",
+     "evidence": [
+      {
+       "loc": "Nested Sampling",
+       "quote": "These iterations continue until the live point weights are insignificant"
+      }
+     ]
+    },
+    "validation": {
+     "value": "bimodal CRIR solutions examined; low-zeta mode dismissed as unphysical",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "As such, we dismiss the lower CRIR solution across all GMCs as unphysical and only present the high CRIR solutions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "check optical depth and abundance ratios",
+    "method": {
+     "value": "model optical depths over middle 67% of UltraNest samples; compare modeled isotopologue optical-depth ratios with observed isotope ratios",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "We model the optical depth for all iterations of our UltraNest sampling algorithm and analyze the middle 67% of the resulting distribution."
+      }
+     ]
+    },
+    "software": [
+     "UCLCHEM",
+     "SpectralRadex"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "modeled isotopologue optical depth ratios consistent with observed isotope ratios",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "We found that the ratios of modeled optical depths are consistent with the observationally-derived isotope ratios themselves"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "test HCN/HNC vs CRIR and heating-source correlations",
+    "method": {
+     "value": "Spearman rank correlation with Monte Carlo simulated Gaussian datasets of 10 GMC points; median rho reported with standard deviation",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "We use our modeled abundance ratios and CRIR estimates for each GMC in combination with their uncertainties to create simulated Gaussian datasets"
+      }
+     ]
+    },
+    "software": [
+     "SciPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "10,000 simulated sets of 10 points",
+      "evidence": [
+       {
+        "loc": "Modeling Results",
+        "quote": "consisting of 10,000 sets of 10 data points each (1 point for each GMC)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "modeled CRIR and ratio uncertainties treated as Gaussian",
+      "evidence": [
+       {
+        "loc": "Modeling Results",
+        "quote": "We use our modeled abundance ratios and CRIR estimates for each GMC in combination with their uncertainties to create simulated Gaussian datasets"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 9,
+    "goal": "estimate gas heating from cosmic rays",
+    "method": {
+     "value": "UCLPDR PDR modeling for gas temperature given density and CRIR at A_V ~10, compared with kinetic temperatures from mangum19 and UCLCHEM",
+     "evidence": [
+      {
+       "loc": "The Effect of Cosmic Rays on the HCN/HNC Ratio",
+       "quote": "`UCLPDR` provides an estimated gas temperature given input volume densities and CRIRs, assuming an"
+      }
+     ]
+    },
+    "software": [
+     "UCLPDR"
+    ],
+    "key_parameters": [
+     {
+      "value": "A_V ~ 10",
+      "evidence": [
+       {
+        "loc": "The Effect of Cosmic Rays on the HCN/HNC Ratio",
+        "quote": "assuming an $A_{V} \\sim10$ (in this case in order to model the inner, UV-shielded part of the cloud)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "agreement with mangum19 kinetic temperatures where constrained",
+     "evidence": [
+      {
+       "loc": "The Effect of Cosmic Rays on the HCN/HNC Ratio",
+       "quote": "the high kinetic temperatures from our PDR modeling agree with those derived by (cite: mangum19)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "relate CRIR to supernova rate",
+    "method": {
+     "value": "scale zeta_MW from Milky Way supernova-driven estimates to a supernova rate and compare with NGC 253 rate range",
+     "evidence": [
+      {
+       "loc": "The Connection Between CRIR and Supernovae",
+       "quote": "These analyses suggest a quantitative connection between supernovae and the CRIR"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "zeta0 = 1.36e-17 s^-1; SN rate 0.3 per yr upper limit",
+      "evidence": [
+       {
+        "loc": "The Connection Between CRIR and Supernovae",
+        "quote": "an upper limit to the supernova rate of 0.3 yr$^{-1}$ would imply an upper limit to the CRIR of"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Milky Way-based supernova energetics applied to NGC 253",
+      "evidence": [
+       {
+        "loc": "The Connection Between CRIR and Supernovae",
+        "quote": "As summarized by (cite: Dalgarno2006), a lower-limit to the Milky Way CRIR"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CubeLineMoment",
+    "version": "not stated",
+    "used_for": {
+     "value": "integrated intensity and moment map extraction from ALCHEMI cubes",
+     "evidence": [
+      {
+       "loc": "Spectral Line Signal Extraction",
+       "quote": "we use the CubeLineMoment script introduced for this same purpose by (cite: mangum19)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UCLCHEM",
+    "version": "not stated",
+    "used_for": {
+     "value": "gas-grain chemical modeling of HCN and HNC abundances",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "We model the chemical and physical conditions within each of the 10 GMCs using the chemical modeling code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SpectralRadex",
+    "version": "not stated",
+    "used_for": {
+     "value": "python wrapper for RADEX to compute integrated intensities from abundances",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "we use SpectralRadex, a python library which includes a wrapper for the RADEX program."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "1D non-LTE radiative transfer with escape probability",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "RADEX is a 1D non-Local Thermodynamic Equilibrium (LTE) statistical equilibrium radiative transfer code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UltraNest",
+    "version": "not stated",
+    "used_for": {
+     "value": "MLFriends nested sampling of posterior distributions",
+     "evidence": [
+      {
+       "loc": "Nested Sampling",
+       "quote": "using the UltraNest package (cite: ultranest21)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UCLPDR",
+    "version": "not stated",
+    "used_for": {
+     "value": "PDR modeling of gas temperature from density and CRIR",
+     "evidence": [
+      {
+       "loc": "The Effect of Cosmic Rays on the HCN/HNC Ratio",
+       "quote": "we estimate the heating that would result from these CRIRs via the Photon-Dominated Region (PDR) modeling code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "spearmanr function for rank correlation",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "employing the SciPy (cite: scipy2020) function"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in Software section; the purpose is not described in the text",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (cite: casa), Astropy (cite: Astropy2013)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in Software section; the purpose is not described in the text",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (cite: casa), Astropy (cite: Astropy2013)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "log10 volume density n(H2), GMC 5 (median, inner 67%)",
+    "value": "5.62",
+    "uncertainty": "+0.31/-0.34",
+    "units": "log10 cm^-3",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "NGC 253 GMC Physical Parameters"
+     },
+     {
+      "loc": "Modeling Results",
+      "quote": "we are able to constrain volume density and cosmic ray ionization rate"
+     }
+    ]
+   },
+   {
+    "quantity": "log10 CRIR zeta, GMC 5 (median, inner 67%)",
+    "value": "5.09",
+    "uncertainty": "+0.39/-0.50",
+    "units": "log10 zeta0",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "NGC 253 GMC Physical Parameters"
+     }
+    ]
+   },
+   {
+    "quantity": "CRIR zeta in central GMCs",
+    "value": "~10^-12",
+    "uncertainty": "not stated",
+    "units": "s^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We see higher cosmic ray ionization rates in the center of the CMZ"
+     }
+    ]
+   },
+   {
+    "quantity": "CRIR zeta in outer GMCs",
+    "value": "~10^-13",
+    "uncertainty": "not stated",
+    "units": "s^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "as compared to those on its outskirts"
+     }
+    ]
+   },
+   {
+    "quantity": "volume density in outer GMCs",
+    "value": "<=10^4",
+    "uncertainty": "not stated",
+    "units": "cm^-3",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "as compared to the outer GMCs"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rho, CRIR vs HCN/HNC abundance ratio (median)",
+    "value": "-0.47",
+    "uncertainty": "±0.26",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Modeling Results",
+      "quote": "indicates there is a moderately anti-correlated relationship between CRIR and the HCN/HNC abundance ratio"
+     }
+    ]
+   },
+   {
+    "quantity": "median Spearman rho, CRIR vs heating sources",
+    "value": "0.67",
+    "uncertainty": "standard deviation 0.21",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "The Influence of Heating Sources",
+      "quote": "are 0.67 and 0.60 respectively, with standard deviations of 0.21 and 0.17."
+     }
+    ]
+   },
+   {
+    "quantity": "median Spearman rho, density vs heating sources",
+    "value": "0.60",
+    "uncertainty": "standard deviation 0.17",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "The Influence of Heating Sources",
+      "quote": "are 0.67 and 0.60 respectively, with standard deviations of 0.21 and 0.17."
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/HNC abundance ratio in central GMCs",
+    "value": "~1-2 (lowest, intensity ratio)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Spectral Line Signal Extraction",
+      "quote": "These ratios are at their lowest"
+     }
+    ]
+   },
+   {
+    "quantity": "CRIR upper limit implied by SN rate 0.3 per yr",
+    "value": "~3000",
+    "uncertainty": "not stated",
+    "units": "zeta0",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "The Connection Between CRIR and Supernovae",
+      "quote": "an upper limit to the supernova rate of 0.3 yr$^{-1}$ would imply an upper limit to the CRIR of"
+     }
+    ]
+   },
+   {
+    "quantity": "CRIR zeta0 equivalent supernova rate",
+    "value": "~10^-4",
+    "uncertainty": "not stated",
+    "units": "per yr",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "The Connection Between CRIR and Supernovae",
+      "quote": "the CRIR represented by $\\zeta_0$ corresponds to a supernova rate of"
+     }
+    ]
+   },
+   {
+    "quantity": "PDR gas temperature in inner GMCs 4-6",
+    "value": "~200-500",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "The Effect of Cosmic Rays on the HCN/HNC Ratio",
+      "quote": "the density and CRIR estimates in the inner GMCs (4–6) result in PDR gas temperatures of"
+     }
+    ]
+   },
+   {
+    "quantity": "HNC 4-3 interloper contribution",
+    "value": "at most 4% (H2CO) and 1% (HNC v2=1)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Interloper Analysis",
+      "quote": "contribute respectively at most 4% and 1% to the HNC"
+     }
+    ]
+   },
+   {
+    "quantity": "modeled optical depth",
+    "value": "peaks at reasonably low values",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Modeling Results",
+      "quote": "the optical depth distributions peak at reasonably low"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "cosmic ray heating dominates the heating budget; mechanical heating not significant for HCN/HNC chemistry",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find cosmic ray heating dominates the heating budget, and mechanical heating does not play a significant role in the HCN and HNC chemistry."
+     }
+    ]
+   },
+   {
+    "value": "density and CRIR enhanced in central GMCs by about an order of magnitude",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "are enhanced by about an order of magnitude in the galaxy’s central regions as compared to those further from the nucleus."
+     }
+    ]
+   },
+   {
+    "value": "anticorrelation between HCN/HNC ratio and CRIR",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we see an anticorrelation between the HCN/HNC ratio and CRIR, indicating that this ratio will be lower in regions where"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the HCN/HNC ratio indicate strong mechanical heating in the NGC 253 CMZ?",
+    "experiment": "Compare measured HCN/HNC integrated intensity ratios with meijerink11 predictions and fit UCLCHEM+RADEX models to the ratios",
+    "result": "Ratios are low (<10; ~1-2 in central GMCs), far below the ~50 predicted for significant mechanical heating",
+    "finding": "Low mechanical heating; NGC 253 lies in a regime of high cosmic ray ionization rate",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Modeling Results",
+      "quote": "the HCN/HNC integrated intensity and abundance ratios are far less than"
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "The HCN/HNC abundance ratios are low"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are density and CRIR enhanced in the central GMCs relative to outer GMCs?",
+    "experiment": "UltraNest sampling of UCLCHEM+RADEX models per GMC with physical priors",
+    "result": "Central GMCs 4-6 show higher n and zeta; GMC 5 log10 n = 5.62 and log10 zeta = 5.09 zeta0",
+    "finding": "Density and CRIR gradient across the CMZ, with CRIR ~10^-12 s^-1 at the center",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "NGC 253 GMC Physical Parameters"
+     },
+     {
+      "loc": "abstract",
+      "quote": "are enhanced by about an order of magnitude in the galaxy’s central regions as compared to those further from the nucleus."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do CRIR and density correlate with the number of star formation heating sources per GMC?",
+    "experiment": "Spearman correlations between per-GMC CRIR/density and counts of SNRs, HII regions and SHCs, with Monte Carlo error estimates",
+    "result": "Median rho 0.67 (CRIR) and 0.60 (density), standard deviations 0.21 and 0.17",
+    "finding": "Likely positive correlations, based on 10 GMCs",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "The Influence of Heating Sources",
+      "quote": "These values indicate that there are likely positive correlations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is mechanical heating needed to explain the high kinetic temperatures in the NGC 253 CMZ?",
+    "experiment": "UCLPDR PDR modeling of gas temperature from the derived densities and CRIRs, compared with mangum19 kinetic temperatures",
+    "result": "PDR temperatures of ~200-500 K in inner GMCs, consistent with observed high temperatures",
+    "finding": "Cosmic ray heating alone can produce high kinetic temperatures; little mechanical heating contribution",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "The Effect of Cosmic Rays on the HCN/HNC Ratio",
+      "quote": "Thus we conclude that there is little contribution from mechanical heating and that cosmic ray heating alone can produce high kinetic temperatures."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALCHEMI survey provides multiple HCN and HNC transitions over the CMZ at uniform resolution",
+    "evidence": [
+     {
+      "loc": "HCN and HNC in Galaxies",
+      "quote": "we can use combinations of chemical tracers from ALCHEMI’s robust dataset"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Treating cosmic ray chemistry and heating separately is needed to disentangle their effects",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we treat cosmic rays and heating separately in our models."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "infrared pumping of HCN/HNC vibrational bending modes not included, since measured ratios are not below 1",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "we did not see a justification for including infrared excitation in our radiative transfer model."
+      }
+     ]
+    },
+    {
+     "value": "electron-induced collisions not considered; deferred to future work",
+     "evidence": [
+      {
+       "loc": "Model Description",
+       "quote": "we have opted to not consider electron-induced collisions in our analysis"
+      }
+     ]
+    },
+    {
+     "value": "low-CRIR posterior mode dismissed as unphysical",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "we dismiss the lower CRIR solution across all GMCs as unphysical"
+      }
+     ]
+    },
+    {
+     "value": "HNC 4-3 interloper correction not applied",
+     "evidence": [
+      {
+       "loc": "Interloper Analysis",
+       "quote": "we do not apply these corrections to our presented integrated intensities."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Nested sampling continued until remaining live-point weight fraction was at most 0.01",
+    "evidence": [
+     {
+      "loc": "Nested Sampling",
+      "quote": "These iterations continue until the live point weights are insignificant"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "kinetic temperature and H2 column density largely unconstrained by HCN and HNC",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "We find that kinetic temperature and H$_{2}$ column density are largely not constrained by our HCN and HNC measurements."
+      }
+     ]
+    },
+    {
+     "value": "the temperature barrier choice had no discernible effect on results",
+     "evidence": [
+      {
+       "loc": "Modeling Results",
+       "quote": "we find varying the temperature barrier had no discernible effect on our results."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Table 4 note states uncertainties are ±33% of the posterior while the text states inner 67%; the interval definition is inconsistent.",
+    "Dismissing the low-CRIR posterior mode relies on external CRIR estimates, which shapes the reported CRIR results.",
+    "Results rest on a single homogeneous point model per GMC and 1.6 arcsec beam-sized apertures; no resolution test is presented.",
+    "GMC positions were corrected using private communication with the leroy15 author, which cannot be checked from the paper.",
+    "Heating-source counts use projected sky positions with no distance term, and the SN fraction is an estimate from ua97 statistics.",
+    "Supernova-CRIR link uses Milky Way energetics scaled to NGC 253 without independent calibration."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data cited by ADS/JAO identifiers; public or proprietary status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00161.L and ADS/JAO.ALMA#2018.1.00162.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "1.6 arcsec mosaics extracted from the ALCHEMI archive",
+    "evidence": [
+     {
+      "loc": "ALCHEMI Data",
+      "quote": "From the ALCHEMI archive we extract the"
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "software links given for CubeLineMoment, UCLCHEM, SpectralRadex, RADEX, UltraNest and UCLPDR; analysis scripts release not stated",
+     "evidence": [
+      {
+       "loc": "Footnote 2",
+       "quote": "https://github.com/keflavich/cube-line-extractor"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact ALCHEMI calibration and imaging settings (deferred to ALCHEMI-ACA)",
+    "Continuum subtraction and line-free channel selection",
+    "Per-GMC aperture and CubeLineMoment velocity/mask settings",
+    "UltraNest sampler settings (live points) and seed",
+    "UCLCHEM, SpectralRadex and UCLPDR version and input files",
+    "Full GMC position table after the stated private-communication corrections"
+   ],
+   "estimated_data_volume_inferred": "not stated; ALCHEMI cubes over 84-373 GHz at 1.6 arcsec resolution imply large cubes (likely tens of GB, inferred)",
+   "score_inferred": 6,
+   "score_reason": "Modeling recipe and most numbers are stated, but calibration/imaging is deferred to ALCHEMI-ACA and several sampler and extraction settings are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data are archival ALMA products but their public status is not stated in the paper, and the imaging and continuum steps are not fully specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: mangum19)",
+     "why": "CubeLineMoment extraction method and kinetic temperature/N(H2) priors"
+    },
+    {
+     "citation": "(cite: uclchem)",
+     "why": "UCLCHEM chemical modeling code"
+    },
+    {
+     "citation": "(cite: radex)",
+     "why": "RADEX non-LTE radiative transfer"
+    },
+    {
+     "citation": "(cite: ultranest21)",
+     "why": "UltraNest nested sampling package"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ALCHEMI-ACA)",
+     "why": "ALCHEMI survey data acquisition, calibration and imaging"
+    },
+    {
+     "citation": "(cite: Holdship2022)",
+     "why": "ALCHEMI H3O+/SO CRIR study and interloper procedure"
+    },
+    {
+     "citation": "(cite: harada21)",
+     "why": "ALCHEMI HOC+ CRIR and density constraints"
+    },
+    {
+     "citation": "(cite: holdship_c2h)",
+     "why": "ALCHEMI C2H CRIR constraints for GMCs 3-7"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALCHEMI (ALMA Comprehensive High Resolution Molecular Inventory) large program"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-haiku-5-5",
+  "custom_id": "card-haiku-248d3ccae164b2ade858032bc6b9fbe9",
+  "batch_id": "msgbatch_019HY5YCVqUVvFaVgQx8QfjR",
+  "run": "pilot",
+  "collected_at": "2026-10-27T23:21:23",
+  "usage": {
+   "input_tokens": 33815,
+   "output_tokens": 31677,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.00964,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 136,
+  "quotes_ok": 135,
+  "quote_pass_rate": 0.993,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 14,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 129,
+   "stated": 95,
+   "rate": 0.736
+  },
+  "evidence_ok": false
+ },
+ "repair_log": {
+  "at": "2026-10-28T01:52:36",
+  "fixed": [],
+  "removed_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[0].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[1].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[3].fitting",
+    "old_value": "not applicable (forward model used in step 6)"
+   },
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[6].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[7].fitting",
+    "old_value": "not applicable"
+   },
+   {
+    "path": "analysis_steps[9].fitting",
+    "old_value": "not applicable"
+   }
+  ],
+  "dropped_items": []
+ }
+}

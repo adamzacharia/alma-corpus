@@ -1,0 +1,498 @@
+{
+ "bibcode": "2024ApJ...967..164X",
+ "title": "Maser Activity of Organic Molecules toward Sgr B2(N)",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad4094",
+ "arxiv_id": "2404.12622",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What is the spatial distribution, excitation condition, and pumping mechanism of organic molecular masers (84 GHz CH3OH and 5.29 GHz CH2NH) toward Sgr B2(N)?",
+ "alma_project_codes": [
+  "2011.0.00017.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3.5 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "2.23'' x 1.67'' at 84 GHz; 1.94'' x 1.49'' at 95 GHz (~1.5'')",
+  "sensitivity": "median RMS 4 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Locations of cm-wave continuum concentrations K1-K6",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The cm-wave emission concentrations (K1 – K6, Corby et al. 2015) are indicated by green dashed lines and circle markers"
+     }
+    ]
+   },
+   "citation": "Corby et al. 2015"
+  },
+  {
+   "what": {
+    "value": "Locations of millimeter molecular hot cores N1-N3",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "whereas the molecular hot cores identified in millimeter (N1 – N3, Bonfand et al. 2017) are indicated by orange triangle markers."
+     }
+    ]
+   },
+   "citation": "Bonfand et al. 2017"
+  },
+  {
+   "what": {
+    "value": "Locations of Class II CH3OH, H2O, OH, and NH3 maser spots",
+    "evidence": [
+     {
+      "loc": "Figure 11 caption",
+      "quote": "while the brightest maser spots of OH, H 2 O, NH 3, and Class II CH 3 OH masers are marked in other colors (Argon et al. 2000; Caswell et al. 2010; Walsh et al. 2014; Yan et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Argon et al. 2000; Caswell et al. 2010; Walsh et al. 2014; Yan et al. 2022"
+  },
+  {
+   "what": {
+    "value": "Molecular data and collisional rate coefficients for E-type CH3OH",
+    "evidence": [
+     {
+      "loc": "4.1 Class I CH3OH Masers",
+      "quote": "was taken from the Excitation of Molecules and Atoms for Astrophysics (EMAA) database"
+     },
+     {
+      "loc": "4.1. Class I CH 3 OH Masers",
+      "quote": "and collision rate coefficients reported by Rabli & Flower (2010) for the rotational excitation of CH 3 OH by para- and ortho-H 2 (hereafter p-H 2 and o-H 2 )."
+     }
+    ]
+   },
+   "citation": "EMAA database; CDMS catalog (Müller et al. 2005); Rabli & Flower (2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image VLA and ALMA continuum and spectral line cubes",
+   "method": "Subtract continuum in uv-plane (for VLA) and image spectral windows using CASA tclean with auto-masking and natural weighting.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "VLA cell size = 0.27'', natural weighting, auto-masking",
+    "ALMA synthesized beam = 2.23'' x 1.67'' (84 GHz) and 1.94'' x 1.49'' (95 GHz), median RMS = 4 mJy beam^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute extended collisional rate coefficients for CH2NH",
+   "method": "Calculate rotational transitions among the first 49 levels of CH2NH colliding with para-H2 and ortho-H2 using the coupled-states approximation in MOLSCAT, and derive hyperfine-resolved rates via the statistical approximation.",
+   "software": [
+    "MOLSCAT"
+   ],
+   "key_parameters": [
+    "EMAX = 1200 cm^-1 (p-H2) and 1318.64 cm^-1 (o-H2); total energies 2-800 cm^-1 (p-H2) and 120-918 cm^-1 (o-H2); Tk = 10-150 K"
+   ],
+   "assumptions": [
+    "Coupled-states approximation and statistical approximation for hyperfine splitting"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and model E-type CH3OH maser and non-maser transitions toward MS1 and MS2",
+   "method": "Extract spectra of four uncontaminated E-type CH3OH transitions toward MS1 and MS2 and fit with a modified multi-component non-LTE RADEX radiative transfer model in molsim using MCMC.",
+   "software": [
+    "molsim",
+    "RADEX",
+    "Numba",
+    "emcee"
+   ],
+   "key_parameters": [
+    "11 free parameters (Tk, nc, Ncol, dV, Vlsr for each of 2 components, plus Tcont); 100 walkers with 50,000 samples each (MS1) and 10,000 samples each (MS2); Ncol capped at 10^17.5 cm^-2 for MS1"
+   ],
+   "assumptions": [
+    "Local radiation field is CMB only (Trad = 2.725 K); uniform spherical geometry; H2 is sole collision partner with thermal ortho-to-para ratio; continuum source is spatially distant from gas clumps; 10% systematic uncertainty added to baseline RMS"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model CH2NH maser hyperfine spectrum toward MS2",
+   "method": "Fit the 5.29 GHz CH2NH 1_1,0 - 1_1,1 hyperfine spectrum toward MS2 with a one-component non-LTE model using MCMC, adopting CH3OH posterior distributions for Tk and nH2 as priors.",
+   "software": [
+    "molsim",
+    "RADEX",
+    "Numba",
+    "emcee"
+   ],
+   "key_parameters": [
+    "100 walkers with 10,000 samples each"
+   ],
+   "assumptions": [
+    "83 km s^-1 CH2NH and CH3OH maser components toward MS2 are spatially coherent and share physical conditions (Tk and nH2)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak brightness temperature of 84 GHz CH3OH maser at MS1",
+   "value": "389.2",
+   "uncertainty": "+/-0.2",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. Class I CH 3 OH Masers",
+     "quote": "The brightest maser spot located ∼ 3 . 6 ′′ west of the K4 core with a V lsr of 58 km s − 1 (hereafter referred to as MS1) has a peak T B of 389 . 2 ± 0 . 2 K (8 . 454 ± 0 . 004 Jy beam − 1, Figure 2 ( q )-( t ))."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux density of 84 GHz CH3OH maser at MS1",
+   "value": "8.454",
+   "uncertainty": "+/-0.004",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. Class I CH 3 OH Masers",
+     "quote": "The brightest maser spot located ∼ 3 . 6 ′′ west of the K4 core with a V lsr of 58 km s − 1 (hereafter referred to as MS1) has a peak T B of 389 . 2 ± 0 . 2 K (8 . 454 ± 0 . 004 Jy beam − 1, Figure 2 ( q )-( t ))."
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature of 84 GHz CH3OH maser at MS2",
+   "value": "75.4",
+   "uncertainty": "+/-0.4",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. Class I CH 3 OH Masers",
+     "quote": "In addition to the brightest spot MS1, another maser knot associated with the K6 H II region is also identified with a T B of 75 . 4 ± 0 . 4 K (1 . 636 ± 0 . 008 Jy beam − 1 ) at a V lsr of 83 km s − 1 (hereafter referred to as MS2),"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux density of 84 GHz CH3OH maser at MS2",
+   "value": "1.636",
+   "uncertainty": "+/-0.008",
+   "units": "Jy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. Class I CH 3 OH Masers",
+     "quote": "In addition to the brightest spot MS1, another maser knot associated with the K6 H II region is also identified with a T B of 75 . 4 ± 0 . 4 K (1 . 636 ± 0 . 008 Jy beam − 1 ) at a V lsr of 83 km s − 1 (hereafter referred to as MS2),"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature of 5.29 GHz CH2NH maser at MS2 (83 km s^-1)",
+   "value": ">=121.8",
+   "uncertainty": "+/-8.6",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 2 NH 5288.962(3) 1 1 , 0 − 1 1 , 1 , F = 0 − 1 11.1 0.897 -8.8109 ≥ 121 . 8 ± 8 . 6 -0.62 ‡ -0.008 ‡"
+    },
+    {
+     "loc": "4.2. CH 2 NH Masers",
+     "quote": "The brightest 83-km s − 1 component displays a more compact distribution than the other two components, with a T B of 121 . 8 ± 8 . 6 K (12 . 1 ± 0 . 85 mJy beam − 1 )."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux density of 5.29 GHz CH2NH maser at MS2 (83 km s^-1)",
+   "value": "12.1",
+   "uncertainty": "+/-0.85",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.2. CH 2 NH Masers",
+     "quote": "The brightest 83-km s − 1 component displays a more compact distribution than the other two components, with a T B of 121 . 8 ± 8 . 6 K (12 . 1 ± 0 . 85 mJy beam − 1 )."
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH foreground clump kinetic temperature Tk (single-maser scenario)",
+   "value": "31.9",
+   "uncertainty": "+5.8/-4.4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Foreground 31 . 9 +5 − 4 . . 8 4 5 . 3 +2 − 1 . . 0 6 × 10 4 58 . 5 +0 − 0 . . 1 1 6 . 2 +0 − 0 . . 2 2 1 . 3 +0 − 0 . . 2 2"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH foreground clump H2 density nc (single-maser scenario)",
+   "value": "5.3e4",
+   "uncertainty": "+2.0e4/-1.6e4",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Foreground 31 . 9 +5 − 4 . . 8 4 5 . 3 +2 − 1 . . 0 6 × 10 4 58 . 5 +0 − 0 . . 1 1 6 . 2 +0 − 0 . . 2 2 1 . 3 +0 − 0 . . 2 2"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH foreground clump column density Ncol (single-maser scenario)",
+   "value": "1.3e16",
+   "uncertainty": "+0.2e16/-0.2e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Foreground 31 . 9 +5 − 4 . . 8 4 5 . 3 +2 − 1 . . 0 6 × 10 4 58 . 5 +0 − 0 . . 1 1 6 . 2 +0 − 0 . . 2 2 1 . 3 +0 − 0 . . 2 2"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH background clump kinetic temperature Tk (single-maser scenario)",
+   "value": "29.2",
+   "uncertainty": "+5.7/-5.6",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Background 29 . 2 +5 − 5 . . 7 6 1 . 4 +0 − 0 . . 6 4 × 10 3 57 . 9 +0 − 0 . . 1 1 8 . 1 +0 − 0 . . 2 2 12 . 1 +2 − 1 . . 6 3"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH background clump H2 density nc (single-maser scenario)",
+   "value": "1.4e3",
+   "uncertainty": "+0.6e3/-0.4e3",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Background 29 . 2 +5 − 5 . . 7 6 1 . 4 +0 − 0 . . 6 4 × 10 3 57 . 9 +0 − 0 . . 1 1 8 . 1 +0 − 0 . . 2 2 12 . 1 +2 − 1 . . 6 3"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH background clump column density Ncol (single-maser scenario)",
+   "value": "12.1e16",
+   "uncertainty": "+2.6e16/-1.3e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Background 29 . 2 +5 − 5 . . 7 6 1 . 4 +0 − 0 . . 6 4 × 10 3 57 . 9 +0 − 0 . . 1 1 8 . 1 +0 − 0 . . 2 2 12 . 1 +2 − 1 . . 6 3"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH foreground clump kinetic temperature Tk (double-maser scenario)",
+   "value": "32.2",
+   "uncertainty": "+5.9/-4.8",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Foreground 32 . 2 +5 − 4 . . 9 8 5 . 1 +2 − 2 . . 5 0 × 10 4 57 . 3 +0 − 0 . . 2 2 8 . 0 +0 − 0 . . 3 3 1 . 5 +0 − 0 . . 4 2"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH foreground clump H2 density nc (double-maser scenario)",
+   "value": "5.1e4",
+   "uncertainty": "+2.5e4/-2.0e4",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Foreground 32 . 2 +5 − 4 . . 9 8 5 . 1 +2 − 2 . . 5 0 × 10 4 57 . 3 +0 − 0 . . 2 2 8 . 0 +0 − 0 . . 3 3 1 . 5 +0 − 0 . . 4 2"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH foreground clump column density Ncol (double-maser scenario)",
+   "value": "1.5e16",
+   "uncertainty": "+0.4e16/-0.2e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Foreground 32 . 2 +5 − 4 . . 9 8 5 . 1 +2 − 2 . . 5 0 × 10 4 57 . 3 +0 − 0 . . 2 2 8 . 0 +0 − 0 . . 3 3 1 . 5 +0 − 0 . . 4 2"
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH 84 GHz maser optical depth tau (foreground clump, double-maser scenario)",
+   "value": "-2.44",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1. Masers with Dark Continuum Background – MS1",
+     "quote": "In the double-maser scenario, the τ and T ex of the 5 − 1 − 4 0 maser transition are found to be − 2.44 and − 5.8 K for the foreground clump and − 0.02 and − 2027.3 K for the background clump."
+    }
+   ]
+  },
+  {
+   "quantity": "MS1 CH3OH 84 GHz maser excitation temperature Tex (foreground clump, double-maser scenario)",
+   "value": "-5.8",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1. Masers with Dark Continuum Background – MS1",
+     "quote": "In the double-maser scenario, the τ and T ex of the 5 − 1 − 4 0 maser transition are found to be − 2.44 and − 5.8 K for the foreground clump and − 0.02 and − 2027.3 K for the background clump."
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH3OH high-velocity component (83.3 km s^-1) kinetic temperature Tk",
+   "value": "30.7",
+   "uncertainty": "+2.0/-1.5",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "30 . 7 +2 − 1 . . 0 5 8 . 3 +1 − 1 . . 5 6 × 10 4 83 . 3 +0 − 0 . . 1 1 6 . 6 +0 − 0 . . 1 1 1 . 1 +0 − 0 . . 1 1 × 10 16"
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH3OH high-velocity component (83.3 km s^-1) H2 density nc",
+   "value": "8.3e4",
+   "uncertainty": "+1.5e4/-1.6e4",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "30 . 7 +2 − 1 . . 0 5 8 . 3 +1 − 1 . . 5 6 × 10 4 83 . 3 +0 − 0 . . 1 1 6 . 6 +0 − 0 . . 1 1 1 . 1 +0 − 0 . . 1 1 × 10 16"
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH3OH high-velocity component (83.3 km s^-1) column density Ncol",
+   "value": "1.1e16",
+   "uncertainty": "+0.1e16/-0.1e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "30 . 7 +2 − 1 . . 0 5 8 . 3 +1 − 1 . . 5 6 × 10 4 83 . 3 +0 − 0 . . 1 1 6 . 6 +0 − 0 . . 1 1 1 . 1 +0 − 0 . . 1 1 × 10 16"
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH3OH 84 GHz maser optical depth tau (83 km s^-1 component)",
+   "value": "-2.52",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2. Masers with Bright Continuum Background – MS2",
+     "quote": "The excitation temperature and opacity of the 5 − 1 − 4 0 maser transition were found to be negative, i.e., − 5 . 6 K of T ex and − 2 . 52 of τ for the high-velocity component (83 km s − 1 ), confirming its maser activity toward MS2."
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH3OH 84 GHz maser excitation temperature Tex (83 km s^-1 component)",
+   "value": "-5.6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2. Masers with Bright Continuum Background – MS2",
+     "quote": "The excitation temperature and opacity of the 5 − 1 − 4 0 maser transition were found to be negative, i.e., − 5 . 6 K of T ex and − 2 . 52 of τ for the high-velocity component (83 km s − 1 ), confirming its maser activity toward MS2."
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH2NH column density Ncol",
+   "value": "4.8e14",
+   "uncertainty": "+1.1e14/-0.6e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "31 . 3 +4 − 4 . . 3 3 6 . 2 +3 − 2 . . 7 4 × 10 4 83 . 5 +0 − 0 . . 3 3 7 . 7 +0 − 0 . . 5 5 4 . 8 +1 − 0 . . 1 6 × 10 14"
+    },
+    {
+     "loc": "4.2. CH 2 NH Masers",
+     "quote": "As shown in the posterior distributions in Figure B4, following 10,000 samples with each of the 100 walkers, the samplers converge at a N col of 4 . 76 +1 − 0 . . 09 64 × 10 14 cm − 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH2NH F=2-2 maser optical depth tau",
+   "value": "-0.030",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5289.815(3) F = 2 − 2 3.365 -8.9357 -0.65 ‡ -0.030 ‡"
+    },
+    {
+     "loc": "4.2. CH 2 NH Masers",
+     "quote": "and, in particular, the F = 2 − 2 transition has a T ex of -0.65 K and a τ of -0.03."
+    }
+   ]
+  },
+  {
+   "quantity": "MS2 CH2NH F=2-2 maser excitation temperature Tex",
+   "value": "-0.65",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5289.815(3) F = 2 − 2 3.365 -8.9357 -0.65 ‡ -0.030 ‡"
+    },
+    {
+     "loc": "4.2. CH 2 NH Masers",
+     "quote": "and, in particular, the F = 2 − 2 transition has a T ex of -0.65 K and a τ of -0.03."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact cell size, image size, and stopping threshold used in tclean for the ALMA spectral cubes (cell size 0.27'' is explicitly stated for VLA, not confirmed if identical for ALMA).",
+  "Details of continuum subtraction for the ALMA data (e.g., whether uvcontsub was used and which line-free channels were selected, or if inherited from Belloche et al. 2016 / Xue et al. 2019).",
+  "Aperture size or single-pixel extraction method used to extract the 1D spectra toward MS1 and MS2.",
+  "Burn-in length / number of discarded steps in the emcee MCMC chains."
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral extraction aperture or single-pixel definition for MS1 and MS2.",
+  "Exact tclean imaging parameters (cell size, imsize, stopping criteria) and continuum subtraction details for the ALMA EMoCA measurement sets.",
+  "MCMC driver scripts and exact burn-in settings used with molsim/emcee."
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Archival ALMA and VLA data are public, the custom radiative transfer/MCMC code (molsim) is archived on Zenodo, collisional rate files are hosted on EMAA, and priors/likelihood equations and coordinates for MS1 and MS2 are explicitly given; minor imaging and spectral extraction details are omitted.",
+ "rediscovery_reason": "Public archival data (ALMA 2011.0.00017.S and VLA 16A-076), open-source modeling software (molsim) and public collisional data (EMAA), explicit target coordinates (MS1, MS2), and well-defined numeric posteriors and brightness temperatures.",
+ "source_card": "cards/2024ApJ...967..164X/sonnet/card.md"
+}

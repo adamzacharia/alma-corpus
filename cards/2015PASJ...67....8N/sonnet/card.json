@@ -1,0 +1,955 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015PASJ...67....8N",
+  "title": "A multi-transition study of molecules toward NGC 1068 based on high-resolution imaging observations with ALMA",
+  "year": 2015,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Nakajima, Taku",
+  "n_authors": 9,
+  "arxiv_id": "1410.5912",
+  "doi": "10.1093/pasj/psu136",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00061.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present 0.8-mm band molecular images and spectra obtained with the Atacama Large Millimeter/submillimeter Array (ALMA) toward one of the nearest galaxies with an active galactic nucleus (AGN), NGC 1068."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1068 (CND and southwest starburst ring)",
+     "coordinates": {
+      "value": "RA 02:42:40.798, Dec -00:00:47.938 (J2000); starburst ring offset (-10\", -10\")",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Throughout the paper, we assume that the distance of NGC 1068 is 14.4 Mpc (Tully 1988; Bland-Hawthorn et al. 1997); at this distance, 1$^{\\prime\\prime}$ corresponds to 72 pc."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "The phase reference center has been set to $\\alpha_{J2000}$ = 2$^{h}$42$^{m}$40.$\\!^{s}$798 and $\\delta_{J2000}$ = -00$^{\\circ}$00$\\!^{\\prime}$47$\\!^{\\prime\\prime}$938 (Schinnerer et al. 2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "14.4 Mpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Throughout the paper, we assume that the distance of NGC 1068 is 14.4 Mpc (Tully 1988; Bland-Hawthorn et al. 1997); at this distance, 1$^{\\prime\\prime}$ corresponds to 72 pc."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "The phase reference center has been set to $\\alpha_{J2000}$ = 2$^{h}$42$^{m}$40.$\\!^{s}$798 and $\\delta_{J2000}$ = -00$^{\\circ}$00$\\!^{\\prime}$47$\\!^{\\prime\\prime}$938 (Schinnerer et al. 2000)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Tully 1988; Bland-Hawthorn et al. 1997",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Throughout the paper, we assume that the distance of NGC 1068 is 14.4 Mpc (Tully 1988; Bland-Hawthorn et al. 1997); at this distance, 1$^{\\prime\\prime}$ corresponds to 72 pc."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "The phase reference center has been set to $\\alpha_{J2000}$ = 2$^{h}$42$^{m}$40.$\\!^{s}$798 and $\\delta_{J2000}$ = -00$^{\\circ}$00$\\!^{\\prime}$47$\\!^{\\prime\\prime}$938 (Schinnerer et al. 2000)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the distributions, rotational temperatures, column densities and fractional abundances of molecules (including shock-related species) in the CND and starburst ring of NGC 1068, and how do they compare with Galactic sources?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We also discuss the chemistry of each species, and compare the fractional abundances in the CND and starburst ring with those of Galactic sources such as cold cores, hot cores, and shocked molecular clouds"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00061.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "(ID = 2011.0.00061.S; PI = S. Takano)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (~3 mm) and Band 7 (~0.8 mm), Cycle 0",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We observed NGC 1068 using ALMA in Cycle 0 (Early Science program) with band-3 ($\\lambda\\sim$3 mm) and band-7 ($\\lambda\\sim$0.8 mm) receivers"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spws at 329.50, 330.85, 340.90, 342.80 GHz; 1.875 GHz each, 3840 channels of 488.28 kHz; final ~20 km/s resolution",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The centers of four spectral windows were tuned to 329.50 GHz (spw0), 330.85 GHz (spw1), 340.90 GHz (spw2), and 342.80 GHz (spw3), each with a 1.875 GHz bandwidth and 3840 channels of 488.28 kHz width."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "330.587960 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "330.587960 & $^{13}$CO & $\\it{J}$ = 3–2"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Results: Molecular gas distributions",
+       "quote": "We have successfully detected C$^{18}$O ($\\it{J}$ = 3–2), $^{13}$CO ($\\it{J}$ = 3–2), CN ($\\it{N}$ = 3–2) and CS ($\\it{J}$ = 7–6) in the CND"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "N=3-2",
+     "rest_frequency": "340.031567 and 340.247874 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "340.247874 & CN& $\\it{N}$ = 3–2, $\\it{J}$ = 7/2-5/2"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=7-6",
+     "rest_frequency": "342.882866 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "342.882866 & CS & $\\it{J}$ = 7–6"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "14 12-m antennas, compact configuration",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The 14 operational 12-m antennas in the compact array configuration were arranged to span baseline lengths of 20–196 m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "20–196 m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "arranged to span baseline lengths of 20–196 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.3\" x 1.2\" (~90 x 86 pc) for spw0",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "which gave a beam size of 1.$\\!^{\\prime\\prime}$3 $\\times$ 1.$\\!^{\\prime\\prime}$2 ($\\sim$90 $\\times$ 86 pc) for the lowest frequency, spw0"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 3.2–14.3 mJy/beam depending on spw",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "spw0 & 8.6–14.3/9.0–13.6"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~30.3 min per position; total observation 71.4 min",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The total integration times on the CND and starburst ring were approximately 30.3 minutes in each position and the total observation time was 71.4 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Band 7 on 28 Nov 2011; Band 3 January 2012",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Observation date & 28 Nov 2011"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI S. Takano, Cycle 0 Early Science",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "(ID = 2011.0.00061.S; PI = S. Takano)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JCMT",
+     "provided": {
+      "value": "13CO J=3-2 single-dish flux (Israel 2009) for recovered-flux check",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "The corresponding value obtained with the JCMT is 10.7$\\pm$1.3 K km s$^{-1}$, which is observed by Israel (2009)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "NRO 45-m and IRAM 30-m",
+     "provided": {
+      "value": "single-dish comparison for 3-mm 13CO",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "by comparing with the single dish telescopes NRO 45-m and IRAM 30-m"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "3-mm ALMA line data (13CO, C18O, HNCO, CH3CN, SO, CH3OH, CS, HC3N) used in rotation diagrams",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "We constructed the rotation diagrams of observed molecules in the 3-mm band (Paper-1) and the 0.8-mm band (this work)"
+       }
+      ]
+     },
+     "citation": "Takano et al. 2014 (Paper-1)"
+    },
+    {
+     "what": {
+      "value": "[13CO]/[H2] abundance 2e-6",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "with an assumption of a \\[$^{13}$CO\\]/\\[H$_{2}$\\] fractional abundance of $2 \\times 10^{-6}$ (Dickman 1978)"
+       }
+      ]
+     },
+     "citation": "Dickman 1978"
+    },
+    {
+     "what": {
+      "value": "JCMT 13CO J=3-2 flux 10.7±1.3 K km/s",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "The corresponding value obtained with the JCMT is 10.7$\\pm$1.3 K km s$^{-1}$"
+       }
+      ]
+     },
+     "citation": "Israel (2009)"
+    },
+    {
+     "what": {
+      "value": "N_H2 5.6e21 (CND) and 1.1e23 cm^-2 (ring) from 12CO",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "who derived $N_{\\rm H_2}$ values of $5.6 \\times 10^{21}$ cm$^{-2}$ at the CND and $1.1 \\times 10^{23}$ cm$^{-2}$ at the starburst ring"
+       }
+      ]
+     },
+     "citation": "Tsai et al. (2013)"
+    },
+    {
+     "what": {
+      "value": "Galactic source fractional abundances (TMC-1, Sgr B2(N), AFGL2591, L1157(B1)) in Table 7",
+      "evidence": [
+       {
+        "loc": "Fractional Abundances",
+        "quote": "compare the observed abundances in the CND and starburst ring with those of Galactic sources such as TMC-1 (cold core), Sgr B2(N) and AFGL2591 (hot cores), and L1157 (shocked molecular cloud)"
+       }
+      ]
+     },
+     "citation": "not stated in text"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Delivered data already bandpass, flux and gain calibrated by the ALMA Regional Center",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The delivered data were already bandpass, flux, and gain (phase and amplitude) calibrated by the ALMA Regional Center."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Callisto (bandpass J0423-013; phase J0339-017)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Flux calibrator & Callisto"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied after convolution",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "and then the correction of the primary beam attenuation was applied"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "two-pointing mosaic",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "A two-pointing mosaic was observed"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "0.8-mm images convolved to 3-mm beam 4.21\"x2.36\", PA 176 deg for spectra and rotation diagrams",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we convolved all 0.8-mm band images to the beam size of the 3-mm band data (4.$\\!^{\\prime\\prime}$21$\\times$2.$\\!^{\\prime\\prime}$36, P.A. = 176$^{\\circ}$)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.29\"x1.23\", PA 2.3 deg",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "1.$\\!^{\\prime\\prime}$29$\\times$1.$\\!^{\\prime\\prime}$23, 2.$\\!^{\\circ}$3"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "3-mm band observations and data reduction",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The details of the 3-mm band observations are described in Paper-1"
+       }
+      ]
+     },
+     "from_reference": "Takano et al. 2014 (Paper-1)"
+    },
+    {
+     "what": {
+      "value": "Method for blended CH3OH lines",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "we calculated $T_{\\rm{rot}}$ using the method for blended lines by Martín et al. (2006)"
+       }
+      ]
+     },
+     "from_reference": "Martín et al. 2006"
+    },
+    {
+     "what": {
+      "value": "Rotation diagram LTE formalism",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "(the local thermodynamic equilibrium (LTE) assumption) (Turner 1991)"
+       }
+      ]
+     },
+     "from_reference": "Turner 1991"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and imaging parameters (tclean/clean, weighting, robust, cell, image size, masks)",
+    "Line-free channels and continuum subtraction",
+    "Gaussian fitting procedure and aperture/region used to extract spectra",
+    "How upper limits and 3-mm data points were treated (Paper-1 values)",
+    "Partition functions/line catalogs used for rotation diagrams",
+    "Error propagation for fractional abundances"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image and extract spectra",
+    "method": {
+     "value": "Convolve 0.8-mm images to 3-mm beam, apply primary beam correction, extract spectra at CND and SW ring and fit Gaussians",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "To obtain the spectra and measure the Gaussian fitted line parameters, we convolved all 0.8-mm band images to the beam size of the 3-mm band data"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian line fits",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "Table 2 and 3 list the Gaussian fitted line parameters toward the CND and starburst ring, respectively."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared 13CO and CS flux with JCMT; ALMA recovers 32% and ~26%",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "Therefore, the ALMA observations recover 32$\\pm$5 % of the single dish flux."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Rotation diagram Trot and N",
+    "method": {
+     "value": "Rotation diagrams combining 3-mm and 0.8-mm lines; Trot and N from slope and intercept; single-transition species use assumed Trot of 5, 10, 15, 30, 45 K; non-detections plotted at 3 sigma",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "For the calculation of $N_{\\rm{mol}}$ for molecules with only one detected transition, we assumed some temperatures of $T_{\\rm{rot}}$ = 5 K, 10 K, 15 K, 30 K and 45 K."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Optically thin lines, LTE with single Tex",
+      "evidence": [
+       {
+        "loc": "3.4",
+        "quote": "under the assumptions that all lines are optically thin, and that a single excitation temperature ($T_{\\rm{ex}}$) characterizes all transitions"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Aladro et al. 2013 single-dish values",
+     "evidence": [
+      {
+       "loc": "3.4.2",
+       "quote": "This value of HNCO is consistent with the value of $\\sim$30 K obtained by Aladro et al. (2013)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fractional abundances and Galactic comparison",
+    "method": {
+     "value": "N_H2 from 13CO column density with [13CO]/[H2]=2e-6; abundances compared to TMC-1, Sgr B2(N), AFGL2591, L1157(B1)",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "Here we adopt $N_{\\rm H_2}$ values of $7.4 \\times 10^{21}$ cm$^{-2}$ at the CND and $2.6 \\times 10^{22}$ cm$^{-2}$ at the starburst ring"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "[13CO]/[H2] = 2e-6",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "with an assumption of a \\[$^{13}$CO\\]/\\[H$_{2}$\\] fractional abundance of $2 \\times 10^{-6}$ (Dickman 1978)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared N_H2 with Tsai et al. 2013: agree at CND, factor ~4 disagreement at ring",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "we find a factor of $\\sim$4 disagreement in the starburst ring between the $N_{\\rm H_2}$ values from Tsai et al. (2013) and our $^{13}$CO multi-transition analysis"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "All of the above calibration and imaging were carried out using the Common Astronomy Software Applications (CASA; McMullin et al. 2007)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "13CO Trot CND",
+    "value": "21.5",
+    "uncertainty": "+6.4/-3.4",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "$^{13}$CO & 21.5$^{+6.4}_{-3.4}$ & 147$^{+14}_{-10}$"
+     }
+    ]
+   },
+   {
+    "quantity": "13CO Trot starburst ring",
+    "value": "8.5",
+    "uncertainty": "0.2",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "8.5$\\pm$0.2 & 521$^{+18}_{-19}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CS Trot CND",
+    "value": "13.1",
+    "uncertainty": "0.3",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "CS & 13.1$\\pm$0.3"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA recovered 13CO 3-2 flux fraction",
+    "value": "32",
+    "uncertainty": "5",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "the ALMA observations recover 32$\\pm$5 % of the single dish flux"
+     }
+    ]
+   },
+   {
+    "quantity": "E-knot/W-knot flux ratio 13CO",
+    "value": "2.2",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The flux ratios between the E-knot and W-knot are 2.2$\\pm$0.2 for $^{13}$CO, 2.3$\\pm$0.4 for CN and 3.5$\\pm$0.7 for CS"
+     }
+    ]
+   },
+   {
+    "quantity": "E-knot/W-knot flux ratio CS",
+    "value": "3.5",
+    "uncertainty": "0.7",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "3.5$\\pm$0.7 for CS"
+     }
+    ]
+   },
+   {
+    "quantity": "N_H2 CND",
+    "value": "7.4e21",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$7.4 \\times 10^{21}$ cm$^{-2}$ at the CND and $2.6 \\times 10^{22}$ cm$^{-2}$ at the starburst ring"
+     }
+    ]
+   },
+   {
+    "quantity": "N_H2 starburst ring",
+    "value": "2.6e22",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$2.6 \\times 10^{22}$ cm$^{-2}$ at the starburst ring"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "E-knot/W-knot separation seen for 13CO, CN and CS for the first time; CS ratio higher than other lines, suggesting chemical differentiation",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "These results suggest that there is a chemical differentiation between the E and W knots in the CND"
+     }
+    ]
+   },
+   {
+    "value": "CN column density in CND is 20–50 times larger than in the ring",
+    "evidence": [
+     {
+      "loc": "3.4.5",
+      "quote": "the column density of CN in the CND is a factor of 20–50 larger than that in the starburst ring"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Shock-related molecules are enhanced in the CND relative to the starburst ring",
+    "experiment": "Rotation diagrams combining 3-mm and 0.8-mm lines",
+    "result": "CO isotopologue columns in CND are 1/5–1/3 of the ring while shock-related molecules are enhanced by 3–10",
+    "finding": "The CND is chemically rich in shock-related species",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "those of the shock-related molecules are enhanced by a factor of 3–10 in the CND"
+     }
+    ]
+   },
+   {
+    "hypothesis": "CND abundances resemble hot cores/shocks rather than cold cores",
+    "experiment": "Compare fractional abundances with Galactic sources",
+    "result": "Shock-related molecule abundances are more similar to hot cores/shocked clouds",
+    "finding": "Complex molecules reside in X-ray shielded regions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the abundances of shock-related molecules are more similar to abundances in hot cores and/or shocked clouds than to cold cores."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The high CN abundance in the CND is due to XDR",
+    "experiment": "Compare CN abundance with XDR models",
+    "result": "CND CN abundance closer to XDR and L1157(B1) values",
+    "finding": "CN enhancement can be explained by XDRs",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "Since a high X-ray luminosity from the AGN is seen, the high abundance of CN seen in the CND can be explained by XDRs."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "13CO/C18O difference attributed to isotopic ratios or isotope-selective photodissociation rather than excitation",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The difference in the C$^{18}$O and $^{13}$CO distributions cannot be explained by different excitation conditions"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Rotation diagrams use only two points, multiple temperature components cannot be excluded",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "Note that these rotation diagrams are fitted with only two points, so that the possibility of multiple components at different temperatures cannot be ruled out"
+      }
+     ]
+    },
+    {
+     "value": "Missing flux in 0.8-mm band and N_H2 uncertainty by a factor of a few",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "the estimated fractional abundances in each molecule may suffer from uncertainties in the $N_{\\rm H_2}$ values by a factor of a few at least at the starburst ring"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "LTE and optically thin assumptions with only two transitions",
+    "Missing flux (26–32% recovered) not corrected",
+    "Single starburst-ring position may not be representative",
+    "Comparison depends on one Galactic template per class"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project ID given; Cycle 0 data",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "(ID = 2011.0.00061.S; PI = S. Takano)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters and CASA version",
+    "Paper-1 3-mm line intensities",
+    "Region definitions and fitting details"
+   ],
+   "estimated_data_volume_inferred": "~10–30 GB (Band 3 and 7 Cycle 0 compact array data)",
+   "score_inferred": 5,
+   "score_reason": "Data public and numeric results present, but imaging and fitting details are sparse and 3-mm inputs come from Paper-1.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete (imaging parameters, Paper-1 inputs) though data are in the archive."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Turner 1991",
+     "why": "Rotation diagram LTE formalism"
+    },
+    {
+     "citation": "Martín et al. 2006",
+     "why": "Blended-line method for CH3OH"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Takano et al. 2014 (Paper-1)",
+     "why": "3-mm band observations of same project"
+    },
+    {
+     "citation": "Taniguchi et al., in preparation",
+     "why": "LVG analysis and isotope ratios"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-aa21ab9655a3c48ee60a2b56d53264f8",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:18",
+  "usage": {
+   "input_tokens": 29515,
+   "output_tokens": 8187,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.071056,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 65,
+  "quotes_ok": 65,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 45,
+   "rate": 0.643
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:54",
+  "custom_id": "repair-sonnet-7a7b439ddd68d8c9419dcbfcb6d5a2fc",
+  "fixed": [
+   {
+    "path": "data.external_data_from_literature[4].what.evidence[0]",
+    "old": null,
+    "new": "compare the observed abundances in the CND and starburst ring with those of Galactic sources such as TMC-1 (cold core), Sgr B2(N) and AFGL2591 (hot cores), and L1157 (shocked molecular cloud)"
+   },
+   {
+    "path": "data.lines_targeted[1].evidence[0]",
+    "old": null,
+    "new": "We have successfully detected C$^{18}$O ($\\it{J}$ = 3–2), $^{13}$CO ($\\it{J}$ = 3–2), CN ($\\it{N}$ = 3–2) and CS ($\\it{J}$ = 7–6) in the CND"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,896 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2012A&A...544L...7P",
+  "title": "The first ALMA view of IRAS 16293-2422. Direct detection of infall onto source B and high-resolution kinematics of source A",
+  "year": 2012,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Pineda, J. E.",
+  "n_authors": 12,
+  "arxiv_id": "1206.5215",
+  "doi": "10.1051/0004-6361/201219589",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00007.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA Science Verification observations with high-spectral resolution of IRAS 16293-2422 at 220.2  GHz."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 16293-2422 (sources A and B)",
+     "coordinates": {
+      "value": "A: 16:32:22.873 -24:28:36.50; B: 16:32:22.623 -24:28:32.49 (J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "It is located in the nearby $\\rho$ Ophiuchi star-forming region, at a distance of $\\sim$120 pc"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| IRAS16293 A | 16:32:22.873 | -24:28:36.50  |"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| IRAS16293 B | 16:32:22.623 | -24:28:32.49  |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~120 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "It is located in the nearby $\\rho$ Ophiuchi star-forming region, at a distance of $\\sim$120 pc"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| IRAS16293 A | 16:32:22.873 | -24:28:36.50  |"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| IRAS16293 B | 16:32:22.623 | -24:28:32.49  |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Knude & Hog 1998; Loinard et al. 2008",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "It is located in the nearby $\\rho$ Ophiuchi star-forming region, at a distance of $\\sim$120 pc"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| IRAS16293 A | 16:32:22.873 | -24:28:36.50  |"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| IRAS16293 B | 16:32:22.623 | -24:28:32.49  |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the infall and rotation kinematics of gas toward the two protostellar components of the proto-binary IRAS 16293-2422?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We focus on the kinematical properties of a proto-binary to study the infall and rotation of gas towards its two protostellar components."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00007.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00007.SV ."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "I16293 was observed on August 16-18, 2011 in ALMA band 6 as part of the ALMA Science Verification effort"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "one baseband centered on 220.182 GHz, 61 kHz channels, 234.375 MHz bandwidth; two-field mosaic",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "using one baseband centered on 220.182 GHz, with a channel width of 61 kHz and bandwidth of 234.375 MHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OCHO-E",
+     "transition": "17(4,13)-16(4,12)",
+     "rest_frequency": "220.166888 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| CH$_3$OCHO-E | $17_{(4,13)}-16_{(4,12)}$ |   220.166888    |    103.15     |  1   |     |"
+      }
+     ]
+    },
+    {
+     "species": "CH3OCHO-A",
+     "transition": "17(4,13)-16(4,12)",
+     "rest_frequency": "220.190285 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| CH$_3$OCHO-A | $17_{(4,13)}-16_{(4,12)}$ |   220.190285    |    103.14     |  1   |     |"
+      }
+     ]
+    },
+    {
+     "species": "H2CCO",
+     "transition": "11(1,11)-10(1,10)",
+     "rest_frequency": "220.17757 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| H$_2$CCO     | $11_{(1,11)}-10_{(1,10)}$ |    220.17757    |     76.48     |  2   |     |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "16 antennas, longest baseline 220 m",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "The use of 16 antennas with a longest baseline of 220-m results in maps with a synthesized beam size 2.2$''$$\\times$1.0$''$ at 220 GHz."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "2.2\"x1.0\" (cube); 1.9\"x0.9\" (continuum)",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "results in maps with a synthesized beam size 2.2$''$$\\times$1.0$''$ at 220 GHz."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms 3.6 mJy/beam; line rms ~4.5 mJy/beam per 120 kHz channel",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "The resulting rms in the line-free channels of the spectral cube is $\\sim$4.5 m$\\rm Jy\\,beam^{-1}$ per 120 kHz-channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "5.4 hours",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "yielding a total on-source observing time of 5.4 hours"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "August 16-18, 2011",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "I16293 was observed on August 16-18, 2011 in ALMA band 6"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA Science Verification data",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "as part of the ALMA Science Verification effort"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust opacity per dust mass kappa_1.3mm = 0.86 cm2/g",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission and molecular complexity",
+        "quote": "a dust opacity per dust mass ($\\kappa_{1.3~mm}$) of 0.86 cm$^{2}$ g$^{-1}$ (cite: OH94)"
+       }
+      ]
+     },
+     "citation": "Ossenkopf & Henning 1994 (cite: OH94)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Own calibration of the uncalibrated released data in CASA",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The uncalibrated dataset was released, together with spectrally averaged, low-resolution calibrated images"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 3.3.0",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "We calibrated and imaged the original interferometric data with the CASA[^3] software version 3.3.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Neptune, Butler-JPL-Horizons 2010 model; bandpass J1924-292; gain J1625-254",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "Absolute flux calibration was performed using the CASA Butler-JPL-Horizons 2010 model applied to Neptune observations"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "±10–15%",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "which results in an estimated flux uncertainty of $\\pm$10–15%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Self-cal on continuum (rms lowered by factor 3), applied to spectral data",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "we performed self-calibration on the continuum data which lowered the rms noise in the continuum map by a factor of three"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "Clark CLEAN",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "and then CLEANed using the Clark algorithm"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum removed from visibilities",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The continuum was removed from the visibilities to produce the spectral cube"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "220.103-220.112 GHz for continuum",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The continuum image was produced by using line-free channels between 220.103 and 220.112 GHz"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Binned to 120 kHz (Hanning smoothing, 0.16 km/s)",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The calibrated measurement set was spectrally binned to a channel spacing of 120 kHz (Hanning smoothing, 0.16 ${\\rm km\\, s^{-1}}$ resolution)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "Continuum 1.9\"x0.9\"",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "with a 1.9$''$$\\times$0.9$''$ beam"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Continuum 3.6 mJy/beam; cube ~4.5 mJy/beam/channel",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "final rms noise level of 3.6 m$\\rm Jy\\,beam^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Two-slab infall line profile model",
+      "evidence": [
+       {
+        "loc": "3.2 Evidence for Infalling gas toward source B",
+        "quote": "Here we used the simple two-slab model described by (cite: Myers_1996-Line_Profile_Model_Infall) with the modification introduced by (cite: DiFrancesco_2001-NGC1333IRAS4_dynamics)"
+       }
+      ]
+     },
+     "from_reference": "Myers et al. 1996 (cite: Myers_1996-Line_Profile_Model_Infall); Di Francesco et al. 2001 (cite: DiFrancesco_2001-NGC1333IRAS4_dynamics)"
+    },
+    {
+     "what": {
+      "value": "Beam filling fraction Phi = 0.3",
+      "evidence": [
+       {
+        "loc": "A The two-layer model",
+        "quote": "was set to 0.3 to use the same value as (cite: DiFrancesco_2001-NGC1333IRAS4_dynamics)"
+       }
+      ]
+     },
+     "from_reference": "Di Francesco et al. 2001 (cite: DiFrancesco_2001-NGC1333IRAS4_dynamics)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Clean masks, threshold, image size and cell size",
+    "Weighting/robust and primary-beam correction for the mosaic",
+    "Self-calibration solution intervals and number of iterations",
+    "Channel ranges used for continuum subtraction fit",
+    "Exact region and fitting velocity range for line profiles",
+    "Procedure for the PV cut and the 0.53 Msun mass derivation",
+    "Temperature assumed for source masses beyond the 30 K in the formula"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image data",
+    "method": {
+     "value": "CASA calibration, Hanning smoothing/binning, Clark CLEAN, continuum self-calibration applied to cube",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "we applied the self-calibration derived from the continuum emission to the spectral data"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Estimate continuum masses",
+    "method": {
+     "value": "Optically thin dust mass from 1.3 mm flux over 10-sigma region",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum emission and molecular complexity",
+       "quote": "where we assumed optically thin emission and a dust opacity per dust mass ($\\kappa_{1.3~mm}$) of 0.86 cm$^{2}$ g$^{-1}$ (cite: OH94) and a gas-to-dust ratio of 100."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "optically thin, gas-to-dust 100, kappa 0.86 cm2/g, T=30 K in formula",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission and molecular complexity",
+        "quote": "a gas-to-dust ratio of 100"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit inverse P-Cygni profiles toward B",
+    "method": {
+     "value": "Two-layer model chi2 fit of Vin, tau0, sigma_v, Tr; fixed VLSR=3.4, Tc=20 K, Tf=3 K, Phi=0.3",
+     "evidence": [
+      {
+       "loc": "A The two-layer model",
+       "quote": "The $\\chi^{2}$ was minimized using the `mpfitfun` procedure (cite: IDL_MPFIT)"
+      }
+     ]
+    },
+    "software": [
+     "IDL MPFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tf fixed at 3 K; Phi = 0.3; VLSR = 3.4 km/s",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "The following parameters are kept fixed: $V_{LSR}=3.4\\,{\\ensuremath{{\\rm km\\, s^{-1}}}}$, $T_c=20$ K, $T_f=3$ K, and $\\Phi=0.3$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Blue excess not fitted; fit constrained by absorption",
+      "evidence": [
+       {
+        "loc": "3.2 Evidence for Infalling gas toward source B",
+        "quote": "The blue excess in the line profiles is not fitted, and therefore the fit is mostly constrained by the absorption feature"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimization with mpfitfun",
+     "evidence": [
+      {
+       "loc": "A The two-layer model",
+       "quote": "The $\\chi^{2}$ was minimized using the `mpfitfun` procedure (cite: IDL_MPFIT)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested higher Phi and Tc: Vin and sigma_v unchanged",
+     "evidence": [
+      {
+       "loc": "A The two-layer model",
+       "quote": "Therefore our results are robust to the value of $\\Phi$ and $T_{c}$ used."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive infall rate",
+    "method": {
+     "value": "Free-fall spherical estimate Mdot = 3 Vin^3/(2G)",
+     "evidence": [
+      {
+       "loc": "3.2 Evidence for Infalling gas toward source B",
+       "quote": "\\dot{M}_{infall}= \\frac{3 V_{in}^{3}}{2G} = 4.5 \\times 10^{-5} \\left(\\frac{V_{in}}{0.5\\,{\\ensuremath{{\\rm km\\, s^{-1}}}}}\\right)^{3}"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "spherical symmetry, free-fall, mu=2.3",
+      "evidence": [
+       {
+        "loc": "3.2 Evidence for Infalling gas toward source B",
+        "quote": "$\\mu$ is mean molecular weight of the gas (2.3)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Velocity maps and PV diagrams",
+    "method": {
+     "value": "Intensity-weighted velocity maps and PV cuts for source A to infer rotation",
+     "evidence": [
+      {
+       "loc": "3.3 Velocity maps",
+       "quote": "The position velocity (PV) diagrams for source A (along the direction shown in Fig. [5](#fig-w-line)) are consistent with rotation of a disk"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "3.3.0",
+    "used_for": {
+     "value": "calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "We calibrated and imaged the original interferometric data with the CASA[^3] software version 3.3.0."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MPFIT (mpfitfun, IDL)",
+    "version": "not stated",
+    "used_for": {
+     "value": "chi2 minimization of line profile model",
+     "evidence": [
+      {
+       "loc": "A The two-layer model",
+       "quote": "The $\\chi^{2}$ was minimized using the `mpfitfun` procedure (cite: IDL_MPFIT)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total continuum flux, source A",
+    "value": "1.30",
+    "uncertainty": "0.11",
+    "units": "Jy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission and molecular complexity",
+      "quote": "for sources A and B is 1.30$\\pm$0.11 and 1.06$\\pm$0.15 Jy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Total continuum flux, source B",
+    "value": "1.06",
+    "uncertainty": "0.15",
+    "units": "Jy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission and molecular complexity",
+      "quote": "for sources A and B is 1.30$\\pm$0.11 and 1.06$\\pm$0.15 Jy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass from continuum, A and B",
+    "value": "0.21 (A), 0.26 (B)",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission and molecular complexity",
+      "quote": "which implies a mass of 0.21 and 0.26 $M_{\\odot}$ for sources A and B, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Infall velocity Vin (CH3OCHO-A)",
+    "value": "0.49",
+    "uncertainty": "0.02",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| CH$_3$OCHO-A | 46$\\pm$3 | 0.45$\\pm$0.04 | 0.49$\\pm$0.02 | 0.31$\\pm$0.01 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Infall rate onto B",
+    "value": "4.5e-5",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "derive an infall rate of $4.5\\times 10^{-5}$$M_{\\odot}\\,{\\rm yr^{-1}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity variation across source A",
+    "value": "~5.5",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Velocity maps",
+      "quote": "with a velocity variation of $\\sim$5.5 ${\\rm km\\, s^{-1}}$ across the extent of the molecular emission"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass of A from rotation",
+    "value": "0.53",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 Discussion and conclusion",
+      "quote": "generated by a central object of 0.53$M_{\\odot}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "About 50 molecular transitions detected toward the two continuum sources",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission and molecular complexity",
+      "quote": "many ($\\sim$50) molecular transitions are detected toward the two continuum sources"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is there infall onto source B?",
+    "experiment": "Fit two-layer model to inverse P-Cygni profiles in three lines",
+    "result": "Vin ~0.5 km/s; infall rate ~4.5e-5 Msun/yr",
+    "finding": "Infall detected in B, ruling out T Tauri nature",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This infall detection would rule-out the previously suggested possibility that source B is a T Tauri star."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does source A show rotation?",
+    "experiment": "Velocity maps and PV diagrams",
+    "result": "~5.5 km/s gradient",
+    "finding": "Consistent with near edge-on rotation, though a close binary is not excluded",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.3 Velocity maps",
+      "quote": "However, the present ALMA data do not rule-out the possibility of two velocity components at scales smaller than our synthesized beam"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Absorption from ambient cloud/envelope rejected since complex organics trace hot corino",
+     "evidence": [
+      {
+       "loc": "4 Discussion and conclusion",
+       "quote": "Therefore, we can rule out the absorption from the ambient cloud or ambient envelope"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Model has more parameters than can be constrained due to degeneracies",
+     "evidence": [
+      {
+       "loc": "3.2 Evidence for Infalling gas toward source B",
+       "quote": "the two-layer model contains more parameters than can be fully constrained because of degeneracies in the model"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Infall rate relies on free-fall and uniform-sphere assumptions",
+    "Fixed Phi, Tc, Tf arbitrary; Tr and tau0 degenerate",
+    "Rotation inference limited by beam; binary alternative open"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public since April 2012",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "is publicly available since April 2012"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Clean parameters and self-cal settings",
+    "PV cut geometry and mass derivation details"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Public SV data and clear model, but imaging and self-cal parameters are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, explicit model with fixed parameters, numeric results in Table 1."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Myers et al. 1996 (cite: Myers_1996-Line_Profile_Model_Infall)",
+     "why": "Two-slab model"
+    },
+    {
+     "citation": "Di Francesco et al. 2001 (cite: DiFrancesco_2001-NGC1333IRAS4_dynamics)",
+     "why": "Continuum modification of model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Jorgensen et al. 2011 (cite: Jorgensen_2011-SMA_IRAS16293)",
+     "why": "SMA comparison of same spectral range"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Science Verification"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-126b468cba419b4867e6e1f9abaf0028",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:20",
+  "usage": {
+   "input_tokens": 14165,
+   "output_tokens": 7667,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.053107,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 63,
+  "quotes_ok": 63,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 43,
+   "rate": 0.614
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,305 @@
+{
+ "bibcode": "2024A&A...685A..80Z",
+ "title": "Unveiling [C II] clumps in a lensed star-forming galaxy at z ∼ 3.4",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202349074",
+ "arxiv_id": "2402.17837",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Are there [C II]-emitting clumps (parent molecular clouds) in a lensed z~3.4 galaxy that hosts UV clumps, and what are their gas masses and depletion times?",
+ "alma_project_codes": [
+  "2019.1.01676.S"
+ ],
+ "data": {
+  "bands": "Band 8, Cycle 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.31\" x 0.26\" (natural); 0.23\" x 0.19\" (robust 1)",
+  "sensitivity": "0.03 mJy/beam continuum over 4811 km/s; 0.20 mJy/beam over 102 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens model and magnifications (mu = 5.5±0.7 for M1, 4.5±0.3 for M2)",
+    "evidence": [
+     {
+      "loc": "2.1 Our target galaxy and ancillary data",
+      "quote": "The average lensing magnification of M1 and M2 is $\\mu = 5.5 \\pm 0.7$ and $\\mu = 4.5 \\pm 0.3$, respectively"
+     }
+    ]
+   },
+   "citation": "(cite: Livermore2015; Iani2021)"
+  },
+  {
+   "what": {
+    "value": "[C II] luminosity-to-gas mass conversion alpha_[CII] = 31 Msun/Lsun (0.3 dex scatter)",
+    "evidence": [
+     {
+      "loc": "4.2 Molecular gas mass",
+      "quote": "$\\mathrm{\\alpha_{[C\\,{\\footnotesize II}]}} = 31\\, \\mathrm{M_\\odot/L_\\odot}$ (with a scatter of 0.3 dex) as estimated by (cite: Zanella2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Zanella2018)"
+  },
+  {
+   "what": {
+    "value": "UV slope beta = -2.53 ± 0.15 and E(B-V)_cont < 0.16 mag",
+    "evidence": [
+     {
+      "loc": "3.2 Continuum emission map",
+      "quote": "blue $\\beta = -2.53 \\pm 0.15$ slope of the galaxy as estimated from the rest-frame UV spectrum (cite: Iani2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Iani2021)"
+  },
+  {
+   "what": {
+    "value": "Literature sub-galactic regions of z~1-4 galaxies for the Schmidt-Kennicutt plane",
+    "evidence": [
+     {
+      "loc": "5.1 Gas depletion time and Schmidt-Kennicutt plane",
+      "quote": "compares it with literature galaxies and their subkiloparsec regions (cite: Freundlich2013; Hodge2015; Nagy2023; Bethermin2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Freundlich2013; Hodge2015; Nagy2023; Bethermin2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Model UV continuum of HST image",
+   "method": "GALFIT Sérsic diffuse component plus PSF/Sérsic clump components; BCG subtracted; fluxes divided by magnification",
+   "software": [
+    "GALFIT",
+    "SExtractor"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract [C II] line and integrated map",
+   "method": "Iterative uv-plane 2D Gaussian fit (uv_fit) channel by channel, extract 1D spectrum, average best channels, refit position until convergence",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Continuum upper limits",
+   "method": "Averaged line-free channels; 5σ upper limit from uv-plane Gaussian or PSF fit with fixed position",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Identify clumps in channel maps",
+   "method": "Natural-weighted channel maps; ≥4σ peaks within 1/3 primary beam with >3σ overlapping emission in ≥2 adjacent 20.3 km/s channels",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure clump [C II] fluxes",
+   "method": "uv-plane fit of 2D PSF per channel with free centre (method 3), summed over adjacent channels; compared to image-plane and Gaussian fits; corrected by average magnification",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Clumps unresolved"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compute SFR and molecular gas mass",
+   "method": "SFR from UV 1500Å luminosity (Kennicutt98, Chabrier IMF); Mmol = alpha_[CII] × L_[CII] with alpha = 31 Msun/Lsun",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "No dust correction of UV; [C II] emission mostly from molecular gas"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Kinematics and Jeans length",
+   "method": "PV diagrams and moment maps with immoments (2.5σ threshold); Jeans length from sigma and Sigma_gas",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Rotation contribution to dispersion neglected; sigma ~20 km/s"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Depletion time and SK plane",
+   "method": "t_dep = Sigma_mol/Sigma_SFR compared to literature at ~400 pc radius",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "constant SFR"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated [C II] flux (M1)",
+   "value": "7.5",
+   "uncertainty": "0.7",
+   "units": "mJy (over 122 km/s)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 [C II] emission line map",
+     "quote": "The total observed flux is $\\mathrm{F_{[C\\,{\\footnotesize II}]} = 7.5 \\pm 0.7\\, mJy}$ (over $\\mathrm{\\Delta v = 122\\, km\\, s^{-1}}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift",
+   "value": "3.39548",
+   "uncertainty": "0.00007",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 [C II] emission line map",
+     "quote": "$z_\\mathrm{[C\\,{\\footnotesize II}]} = 3.39548 \\pm 0.00007$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 5σ upper limit (PSF model, intrinsic)",
+   "value": "< 34",
+   "uncertainty": "not stated",
+   "units": "μJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.2 The lack of dust continuum",
+     "quote": "$\\mathrm{F_{cont} < 34\\, \\mu Jy}$ when considering a PSF model"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated molecular gas mass",
+   "value": "(2.05 ± 0.20)e9",
+   "uncertainty": "0.20e9 (L_[CII] only)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular gas mass",
+     "quote": "M$_\\mathrm{H2} = (2.05 \\pm 0.20) \\times 10^9$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated SFR",
+   "value": "10.1",
+   "uncertainty": "0.5",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$10.1 \\pm 0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "NE clump depletion time",
+   "value": "0.16",
+   "uncertainty": "0.04",
+   "units": "Gyr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Gas depletion time",
+     "quote": "has a very short $t_\\mathrm{dep} = 0.16 \\pm 0.04\\, \\mathrm{Gyr}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SW and C clump depletion time",
+   "value": "> 0.65",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Gas depletion time",
+     "quote": "have a rather long $t_\\mathrm{dep} > 0.65\\, \\mathrm{Gyr}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump molecular gas masses",
+   "value": "NE 3.5±0.9, SW 4.3±1.0, C 2.2±0.5",
+   "uncertainty": "as given",
+   "units": "1e8 Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Clump NE | $3.5 \\pm 0.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans length",
+   "value": "~100",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Expected size of clumps",
+     "quote": "we obtain gravitationally unstable scales $\\mathrm{\\lambda_J \\sim 100\\, pc}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of noise peaks mimicking symmetric NE clump",
+   "value": "0.08",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.7.2 Probability",
+     "quote": "with a symmetric position (e.g., being in the N-E side of the galaxy) to be 0.08%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for the continuum map",
+  "Exact uv_fit/imaging settings (cell size, image size, uv taper) in GILDAS",
+  "Absolute flux calibration uncertainty and phase calibrators",
+  "Full details of the lens model and magnification maps (from Iani2021)",
+  "Kennicutt UV-SFR conversion constants after IMF scaling",
+  "Area definition used for the surface densities of clumps",
+  "Number of ALMA antennas and array configuration"
+ ],
+ "missing_for_reproduction": [
+  "Lens model and magnification maps from Iani2021",
+  "Detailed GILDAS imaging parameters",
+  "HST data reduction and Kennicutt conversion details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a fairly clear recipe but low-S/N clump detection, GILDAS-specific fitting and inherited lens model make exact reproduction difficult.",
+ "rediscovery_reason": "Public single-project data, numeric results (flux, redshift, gas mass, t_dep), though some inherited inputs are needed.",
+ "source_card": "cards/2024A%26A...685A..80Z/sonnet/card.md"
+}

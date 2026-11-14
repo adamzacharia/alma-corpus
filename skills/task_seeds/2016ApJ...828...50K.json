@@ -1,0 +1,313 @@
+{
+ "bibcode": "2016ApJ...828...50K",
+ "title": "The Molecular Clouds Fueling A 1/5 Solar Metallicity Starburst",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/828/1/50",
+ "arxiv_id": "1607.01779",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "How do the molecular clouds, CO-to-H2 conversion factor and dust in the low-metallicity starburst blue compact dwarf II Zw 40 compare with other galaxies?",
+ "alma_project_codes": [
+  "2012.1.00984.S"
+ ],
+ "data": {
+  "bands": "3 mm, 1 mm, 870 um (Bands 3, 6, 7)",
+  "arrays": "not stated",
+  "angular_resolution": "0.54x0.49 arcsec line cubes (~24 pc); 1 arcsec continuum",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA continuum data",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "the VLA data from (cite: 2014AJ....147...43K)"
+     }
+    ]
+   },
+   "citation": "(cite: 2014AJ....147...43K)"
+  },
+  {
+   "what": {
+    "value": "Archival VLA HI data",
+    "evidence": [
+     {
+      "loc": "2.2",
+      "quote": "we use archival VLA neutral hydrogen data (cite: 1998AJ....116.1186V)"
+     }
+    ]
+   },
+   "citation": "(cite: 1998AJ....116.1186V)"
+  },
+  {
+   "what": {
+    "value": "Dust beta=1.71, T=33 K, dust mass 1.9e5 Msun",
+    "evidence": [
+     {
+      "loc": "2.2",
+      "quote": "setting $\\beta$ and the temperature to the values derived by (cite: 2013A&A...557A..95R): 1.71 and 33K"
+     }
+    ]
+   },
+   "citation": "(cite: 2013A&A...557A..95R)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30m CO(2-1) intensity 0.69 K km/s",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "single dish observations with the IRAM 30m is 0.69 $\\rm{K \\, km \\, s^{-1}}$ (cite: 2004AaA...414..141A)"
+     }
+    ]
+   },
+   "citation": "(cite: 2004AaA...414..141A)"
+  },
+  {
+   "what": {
+    "value": "Comparison cloud samples (MW, LMC, IC 10, Antennae, NGC 253)",
+    "evidence": [
+     {
+      "loc": "3",
+      "quote": "It includes cloud samples from the Milky Way disk (cite: 2009ApJ...699.1092H)"
+     }
+    ]
+   },
+   "citation": "(cite: 2009ApJ...699.1092H); (cite: 2011ApJS..197...16W); (cite: 2006ApJ...643..825L); (cite: 2014ApJ...795..156W); (cite: 2015ApJ...801...25L)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image data",
+   "method": "NAASC scripts/CASA pipeline; imaging with robust=0 line cubes and uv-matched tapered 1 arcsec continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit continuum SED",
+   "method": "Two power law (free-free index -0.1 + synchrotron) fit in 9 arcsec aperture excluding 1 mm and 870um",
+   "software": [],
+   "key_parameters": [
+    "nu0 = 4.86 GHz; 9 arcsec diameter aperture"
+   ],
+   "assumptions": [
+    "free-free spectral index fixed at -0.1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust mass and gas-to-dust ratio",
+   "method": "Modified blackbody to ALMA dust excess with beta and T fixed to Remy-Ruyer values",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 4.5 m2/kg; beta 1.71; T=33 K; distance 10 Mpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Identify clouds and measure properties",
+   "method": "cprops on CO(3-2) cube: 5 sigma in two channels, expand to 2 sigma, decomposition box 0.35\" x 0.35\" x 6 km/s, contrast 1.5 sigma",
+   "software": [
+    "cprops"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "CO(3-2) scaled to CO(1-0) with 10 K blackbody (6 K for cloud G)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive alpha_CO",
+   "method": "Slope in L_CO vs virial mass; dust-based via gas-to-dust ratio 650; Wolfire et al. 2010 model with resolved W_CO; Narayanan Eq. 7",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "virial equilibrium; delta_GDR=650; Delta A_V=0.7"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Star formation efficiency and cloud scaling relations",
+   "method": "SFE=SFR/M_H2; size-linewidth, C^2, Mach number compared to literature samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "c_s = 0.2 km/s (10 K)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "alpha_CO (virial)",
+   "value": "18.1",
+   "uncertainty": "0.5",
+   "units": "Msun (K km/s pc2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "we derive a value for $\\alpha_{co}$ of $18.1\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO upper estimate",
+   "value": "150.5",
+   "uncertainty": "not stated",
+   "units": "Msun (K km/s pc2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(18.1 to 150.5"
+    }
+   ]
+  },
+  {
+   "quantity": "thermal fraction at 4.86 GHz",
+   "value": "0.34",
+   "uncertainty": "range 0 to 0.7",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "The best fit thermal fraction is 0.34 with a range of 0 to 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "non-thermal spectral index",
+   "value": "-0.3",
+   "uncertainty": "range -0.21 to -0.87",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "best fit non-thermal spectral index is -0.3 with a range of -0.21 to -0.87"
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass (ALMA)",
+   "value": "1.8e4",
+   "uncertainty": "0.2e4",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "We obtain a dust mass of $(1.8\\pm0.2) \\times 10^4 \\ \\ensuremath{\\rm{M}_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "gas-to-dust ratio",
+   "value": "720 to 3500",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "These values give a range for $\\delta_{GDR}$ of 720 to 3500."
+    }
+   ]
+  },
+  {
+   "quantity": "molecular SFE (largest alpha_CO)",
+   "value": "6e-9",
+   "uncertainty": "not stated",
+   "units": "yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "molecular star formation efficiency for II Zw 40 of $6 \\times 10^{-9} \\, {\\rm yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "molecular SFE (virial alpha_CO)",
+   "value": "4e-8",
+   "uncertainty": "not stated",
+   "units": "yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$4 \\times 10^{-8} \\, {\\rm yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "median Mach number",
+   "value": "36",
+   "uncertainty": "range 20-76",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "The median Mach number of clouds in II Zw 40 is $\\sim36$ with values ranging from 20 to 76."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) luminosity (9 arcsec aperture)",
+   "value": "3.8e5",
+   "uncertainty": "not stated",
+   "units": "K km/s pc2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "corresponds to a $\\rm{^{12} CO ({1}-{0})}$ luminosity of $3.8 \\times 10^5$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux resolved out",
+   "value": "~30%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1",
+     "quote": "Approximately 30% of the total $\\rm{^{12} CO ({2}-{1})}$ emission in II Zw 40 is resolved out by our ALMA observations."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version for the 870um and 1mm calibration",
+  "line-free channels and continuum subtraction method",
+  "image size, cell size, deconvolver, clean threshold, masks",
+  "how the uv-matching and spectral smoothing were done in detail",
+  "Monte Carlo/fit details of the SED fit (sampler, priors)",
+  "exact cprops parameters beyond those given and handling of unresolved clouds",
+  "exact pointing/phase center of the observed field"
+ ],
+ "missing_for_reproduction": [
+  "CASA versions and detailed tclean parameters",
+  "line-free channels",
+  "exact cprops inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are identifiable and main steps described, but imaging details and several literature inputs are missing.",
+ "rediscovery_reason": "Public ALMA data, numeric results such as alpha_CO and dust mass; recipe mostly stated.",
+ "source_card": "cards/2016ApJ...828...50K/sonnet/card.md"
+}

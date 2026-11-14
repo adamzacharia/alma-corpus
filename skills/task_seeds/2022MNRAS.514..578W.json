@@ -1,0 +1,533 @@
+{
+ "bibcode": "2022MNRAS.514..578W",
+ "title": "The initial conditions for young massive cluster formation in the Galactic Centre: convergence of large-scale gas flows",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1378",
+ "arxiv_id": "2205.07807",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Determine whether star formation is occurring at the scale of individual cores (~1000 au) in Galactic Centre dust ridge cloud ‘d’ (G0.412+0.052) and understand its fate by investigating the gas density distribution and large-scale gas kinematics.",
+ "alma_project_codes": [
+  "2016.1.00949.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, ~230 GHz)",
+  "arrays": "12m array (41-45 antennas)",
+  "angular_resolution": "~0.13 arcsec (synthesised beam 0.14 arcsec x 0.11 arcsec, ~1100 au x 890 au)",
+  "sensitivity": "Continuum rms: ~15 microJy (~0.1 M_sun 5sigma mass sensitivity at 20 K); Line rms: ~0.6 mJy before smoothing, ~1 mJy after smoothing"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "~1 arcsec combined ALMA 12m+7m and BGPS continuum image at ~259 GHz used for feathering",
+    "evidence": [
+     {
+      "loc": "Image Cleaning & Processing",
+      "quote": "To recover the continuum emission, we use $\\sim$1$^{\\prime\\prime}$ resolution data from (cite: barnes19), which combines observations from ALMA’s 12m array and 7m array with BOLOCAM Galactic Plane Survey (cite: ginsburg13) data."
+     }
+    ]
+   },
+   "citation": "(cite: barnes19)"
+  },
+  {
+   "what": {
+    "value": "Clump 'd6' effective radius (0.16 pc), upper and lower mass estimates (239 and 69 M_sun), line width (~5 km/s, velocity dispersion ~2.1 km/s), gas temperature upper limit (~60 K), and 15 SMA clumps for mass-radius and pressure equilibrium plots",
+    "evidence": [
+     {
+      "loc": "Nearest neighbour analysis of compact continuum source separations",
+      "quote": "Using the effective radius (0.16 pc) and upper and lower mass estimates (239 and 69 M${}_{\\odot}$, respectively) of clump ‘d6’ from (cite: walker18), we estimate upper and lower thermal Jeans length limits"
+     },
+     {
+      "loc": "Nearest neighbour analysis of compact continuum source separations",
+      "quote": "They report a line width of $\\sim$5 kms${}^{-1}$, which translates to a velocity dispersion of $\\sim$2.1 kms${}^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: walker18)"
+  },
+  {
+   "what": {
+    "value": "Cloud 'd' mass (7.6 x 10^4 M_sun), radius (3.2 pc), and line widths (~16 km/s)",
+    "evidence": [
+     {
+      "loc": "Gas flows at the cloud scale",
+      "quote": "From (cite: walker15), cloud ‘d’ has a radius of 3.2 pc and line widths of $\\sim$ 16 kms${}^{-1}$, and so we estimate that all mass will converge across the entirety of cloud ‘d’ in around 3 $\\times$ 10$^{5}$ years."
+     },
+     {
+      "loc": "Gas flows at the cloud scale",
+      "quote": "Once again considering the whole cloud, using the mass of 7.6 $\\times$ 10${}^4$ M${}_{\\odot}$ from (cite: walker15), we estimate a mass inflow rate across the entire cloud of around 0.25 M${}_{\\odot}$yr${}^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: walker15)"
+  },
+  {
+   "what": {
+    "value": "Cores in the CMZ and Galactic disc for the mass-radius comparison plot",
+    "evidence": [
+     {
+      "loc": "Do the properties of sources vary with environment?",
+      "quote": "Also plotted are (cite: walker18)’s 15 SMA clumps and the cloud ‘a’ core (aka the ‘maser core’ in the ‘Brick’) mass and radius from (cite: rathborne14)."
+     },
+     {
+      "loc": "Do the properties of sources vary with environment?",
+      "quote": "The plot also includes a sample of high-mass protostellar cores found in the Galactic disc, taken from (cite: peretto13), as well as high-mass protostellar cores in the W43-MM1 ridge, a likely precursor to a ‘starburst cluster’, taken from (cite: louvet14)."
+     },
+     {
+      "loc": "Do the properties of sources vary with environment?",
+      "quote": "We have also plotted masses and radii for multiple CMZ cores from (cite: lu20) and the masses and radii of eighteen cores in cloud ‘a’ (cite: walker21)."
+     }
+    ]
+   },
+   "citation": "(cite: rathborne14), (cite: peretto13), (cite: louvet14), (cite: lu20), (cite: walker21)"
+  },
+  {
+   "what": {
+    "value": "Galactic Ring Survey (GRS) disc cloud data for the pressure-bounded virial equilibrium comparison",
+    "evidence": [
+     {
+      "loc": "Are the sources in hydrostatic equilibrium?",
+      "quote": "Figure [8](#fig:h2copress) shows a replica of Figure 3 in (cite: field11), along with the SMA dust ridge cloud data in (cite: walker18)."
+     }
+    ]
+   },
+   "citation": "(cite: field11), (cite: heyer09), (cite: jackson06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and feather the 1.3 mm dust continuum and image molecular line cubes",
+   "method": "Flag line-contaminated channels, image continuum with tclean (automasking), scale Barnes et al. (2019) 259 GHz ALMA+BGPS continuum by 0.6 and combine using CASA feather. Split line windows, subtract continuum with uvcontsub, image with tclean (manual masking), create moment maps with immoments, and smooth spatially with imsmooth.",
+   "software": [
+    "CASA",
+    "tclean",
+    "feather",
+    "split",
+    "uvcontsub",
+    "immoments",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "robust = 0.5, continuum threshold = 15 microJy, 10^5 iterations; line threshold = 0.06 mJy; Gaussian smoothing kernel = 0.34 arcsec"
+   ],
+   "assumptions": [
+    "Spectral index alpha_nu = 3.75 between 225 GHz and 259 GHz resulting in a flux scaling factor of ~0.6"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract compact continuum sources and derive masses, radii, and densities",
+   "method": "Compute dendrogram on feathered continuum map using astrodendro to identify leaves, extract integrated flux, and compute masses, effective radii, and spherical volume densities (both with and without background subtraction).",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min_value (threshold) = 3 sigma (and 5 sigma for comparison), min_delta (increment) = 1 sigma (sigma = 15 microJy), min_npix = 77"
+   ],
+   "assumptions": [
+    "Distance d = 8.1 kpc, dust temperature T = 20 K, spectral index beta = 1.75, dust opacity kappa_nu = 0.04 cm^2 g^-1 * (225 GHz / 505 GHz)^1.75, gas-to-dust ratio = 100, spherical geometry"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Search for star formation tracers and outflows towards continuum sources",
+   "method": "Inspect 13CO (2-1), CH3CN (12-11), and SiO (5-4) cubes and integrated intensity maps towards the continuum sources, manually inspecting every channel in the SiO cube for outflow morphology.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure nearest neighbour separations and compare with Jeans fragmentation scales",
+   "method": "Compute 2D nearest neighbour distances using scikit-learn neighbors, convert to 3D deprojected mean separation lengths by multiplying by ~2.8 (2.3 for PDF expectation value * sqrt(3/2) for 3D deprojection), and compare to thermal and turbulent Jeans lengths and masses of clump 'd6'.",
+   "software": [
+    "scikit-learn"
+   ],
+   "key_parameters": [
+    "n_neighbors = 2, algorithm = 'auto'"
+   ],
+   "assumptions": [
+    "Clump 'd6' effective radius = 0.16 pc, mass = 69-239 M_sun, velocity dispersion = 2.1 km/s, gas temperature = 20-40 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Perform virial and pressure-bounded hydrostatic equilibrium analysis of sources",
+   "method": "Extract leaf-averaged spectra in SiO and three H2CO transitions, fit Gaussian profiles using pyspeckit to measure velocity dispersions from H2CO (3_{0,3}-2_{0,2}), compute virial parameters alpha = 5 R sigma^2 / (G M), aspect ratios, and required confining pressures P_e.",
+   "software": [
+    "pyspeckit"
+   ],
+   "key_parameters": [
+    "guesses = [max amplitude, velocity at max amplitude, FWHM]; Gamma = 0.73 for pressure-bounded virial equation"
+   ],
+   "assumptions": [
+    "H2CO (3_{0,3}-2_{0,2}) traces the compact source kinematics; centrally concentrated density structure (Gamma = 0.73)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Analyze large-scale and small-scale gas kinematics and estimate inflow rates",
+   "method": "Construct integrated intensity channel maps (0-30 km/s in 5 km/s bins) of MALT90 HNCO (4_{0,4}-3_{0,3}) and SiO (2-1) and ALMA H2CO (3_{0,3}-2_{0,2}) and SiO (5-4) (5-30 km/s), generate PV diagrams of MALT90 HNCO using CASA impv, and calculate convergence timescales t = d/v and mass inflow rates m_dot = m/t.",
+   "software": [
+    "CASA",
+    "impv"
+   ],
+   "key_parameters": [
+    "Channel map bins = 5 km/s; impv slice widths = 5 pixels (left flow) and 1 pixel (right flow)"
+   ],
+   "assumptions": [
+    "Velocity along the line of sight is comparable to velocity in the plane of the sky; material sits in the same plane of the sky"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total continuum flux before feathering",
+   "value": "0.0247",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Image Cleaning & Processing",
+     "quote": "The total flux of the image before feathering is 0.0247 Jy, whereas after feathering it is 1.077 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum flux after feathering",
+   "value": "1.077",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Image Cleaning & Processing",
+     "quote": "The total flux of the image before feathering is 0.0247 Jy, whereas after feathering it is 1.077 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of compact continuum sources (3 sigma threshold)",
+   "value": "96",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "Using these dendrogram parameters, we isolate 96 compact continuum sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of compact continuum sources (5 sigma threshold)",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "In this case, we detect nine sources as opposed to 96."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass range of 3 sigma continuum sources",
+   "value": "0.21 - 3.1",
+   "uncertainty": "factor of ~2 systematic",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "These range in mass from $0.21 - 3.1$ M$_{\\odot}$, have radii of $\\sim$10$^3$ au and densities of 10$^{6-7}$ cm$^{-3}$."
+    },
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "The uncertainties in the dust temperature and opacity mean that systematic uncertainties in the mass estimates are a factor of $\\sim$2 (cite: kauffmann08)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean mass of 3 sigma continuum sources",
+   "value": "0.67",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "The mean mass, radius and number density of the 96 compact continuum sources are 0.67 M${}_{\\odot}$, $\\sim$1.6 $\\times$ 10${}^3$ au and 7.1 $\\times$ 10${}^6$ cm${}^{-3}$ respectively, all computed from within the footprint of the dendrogram leaf."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean effective radius of 3 sigma continuum sources",
+   "value": "1.6e3",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "The mean mass, radius and number density of the 96 compact continuum sources are 0.67 M${}_{\\odot}$, $\\sim$1.6 $\\times$ 10${}^3$ au and 7.1 $\\times$ 10${}^6$ cm${}^{-3}$ respectively, all computed from within the footprint of the dendrogram leaf."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean number density of 3 sigma continuum sources",
+   "value": "7.1e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "The mean mass, radius and number density of the 96 compact continuum sources are 0.67 M${}_{\\odot}$, $\\sim$1.6 $\\times$ 10${}^3$ au and 7.1 $\\times$ 10${}^6$ cm${}^{-3}$ respectively, all computed from within the footprint of the dendrogram leaf."
+    }
+   ]
+  },
+  {
+   "quantity": "Total combined mass of 96 continuum sources (3 sigma)",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "The total combined mass of the sources is 65 M${}_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean mass of 5 sigma continuum sources",
+   "value": "0.94",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "Repeating this analysis for the nine sources detected above 5$\\sigma$ gives a mean mass, radius and number density of 0.94 M${}_{\\odot}$, $\\sim$1.6 $\\times$ 10${}^3$ au and 9.7 $\\times$ 10${}^6$ cm${}^{-3}$ respectively, with a total combined mass of 8.4 M${}_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total combined mass of 9 continuum sources (5 sigma)",
+   "value": "8.4",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spatial distribution, mass, radius and density of compact continuum sources",
+     "quote": "Repeating this analysis for the nine sources detected above 5$\\sigma$ gives a mean mass, radius and number density of 0.94 M${}_{\\odot}$, $\\sim$1.6 $\\times$ 10${}^3$ au and 9.7 $\\times$ 10${}^6$ cm${}^{-3}$ respectively, with a total combined mass of 8.4 M${}_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 2D nearest neighbour separation",
+   "value": "2.6e3",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "Most continuum sources have a nearest neighbour separation of less than $\\sim$7.5 $\\times$ 10${}^3$ au, with a mean of $\\sim$2.6 $\\times$ 10${}^3$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 3D deprojected separation length (3 sigma sources)",
+   "value": "1.5e4",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "Converting each nearest neighbour separation to a separation length gives a mean separation length of $\\sim$1.5 $\\times$ 10${}^4$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 3D deprojected separation length (5 sigma sources)",
+   "value": "1.3e4",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "The mean separation, however, still lies between the two predictions, with a mean value of 1.3 $\\times$ 10${}^4$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal Jeans length of clump d6",
+   "value": "8.0e3",
+   "uncertainty": "+4.2e3/-3.4e3",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "Using both of these gas temperature estimates, as well as both estimates of mass, we derive thermal Jeans length estimates of $\\lambda_\\mathrm{J,therm}$ = 8.0${}^{+4.2}_{-3.4}$ $\\times$ 10${}^{3}$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent Jeans length of clump d6",
+   "value": "5.3e4",
+   "uncertainty": "+1.6e4/-1.6e4",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "The expected value of the turbulent Jeans fragmentation length is $\\lambda_\\mathrm{J,turb}$ = 5.3${}^{+1.6}_{-1.6}$ $\\times$ 10${}^{4}$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal Jeans mass of clump d6",
+   "value": "0.54",
+   "uncertainty": "+0.70/-0.35",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "The estimated thermal Jeans mass is $M_\\mathrm{J,therm}$ = 0.54${}^{+0.70}_{-0.35}$ $M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent Jeans mass of clump d6",
+   "value": "144",
+   "uncertainty": "+43/-43",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Nearest neighbour analysis of compact continuum source separations",
+     "quote": "The estimated turbulent Jeans mass is $M_\\mathrm{J,turb}$ = 144${}^{+43}_{-43}$ $M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter (alpha) range for 13 sources with H2CO detections",
+   "value": "5 - 45",
+   "uncertainty": "+13/-4.94 to +55/-33",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Virial analysis of cloud ‘d’ continuum sources",
+     "quote": "For continuum sources where we could measure reliable velocity dispersions, we calculate $\\alpha$ values in the range 5${}^{+13}_{-4.94}$ - 45${}^{+55}_{-33}$ (see Table [\\[tab:virial\\]](#tab:virial) in the appendix for a full list of these calculated values)."
+    }
+   ]
+  },
+  {
+   "quantity": "Source aspect ratio range (mean)",
+   "value": "1 - 4.5 (mean 1.92)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Virial analysis of cloud ‘d’ continuum sources",
+     "quote": "We find ratios in the range of 1 - 4.5, with a mean value of $\\sim$1.92."
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure required for pressure-bounded equilibrium of sources",
+   "value": "1e9",
+   "uncertainty": "not stated",
+   "units": "K cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Are the sources in hydrostatic equilibrium?",
+     "quote": "From Fig. [8](#fig:h2copress) we can see that the pressures required to confine sources on the scale of these sources are $\\sim$10${}^9$ K cm${}^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass convergence timescale across clump d6",
+   "value": "1e5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas flows at the cloud scale",
+     "quote": "In this way, we estimate that it will take $\\sim$10$^5$ years for all the mass to reach the convergent point across clump ‘d6’."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass convergence timescale across entire cloud d",
+   "value": "3e5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas flows at the cloud scale",
+     "quote": "From (cite: walker15), cloud ‘d’ has a radius of 3.2 pc and line widths of $\\sim$ 16 kms${}^{-1}$, and so we estimate that all mass will converge across the entirety of cloud ‘d’ in around 3 $\\times$ 10$^{5}$ years."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass inflow rate across clump d6",
+   "value": "1e-3",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas flows at the cloud scale",
+     "quote": "Using the upper mass limit of clump ‘d6’ of 239 M${}_{\\odot}$ from (cite: walker18), we estimate a mass inflow rate towards the convergent point of the clump of 10$^{-3}$ M${}_{\\odot}$yr${}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass inflow rate across entire cloud d",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas flows at the cloud scale",
+     "quote": "Once again considering the whole cloud, using the mass of 7.6 $\\times$ 10${}^4$ M${}_{\\odot}$ from (cite: walker15), we estimate a mass inflow rate across the entire cloud of around 0.25 M${}_{\\odot}$yr${}^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel cell size and image dimensions (imsize) used in CASA tclean (though N_pix = 77 per beam implies cell size ~ 0.015 arcsec)",
+  "Exact channel ranges flagged for line contamination prior to continuum imaging and used for uvcontsub continuum fitting",
+  "Deconvolver algorithm in tclean (e.g., hogbom, clark, multiscale, mtmfs)",
+  "Primary beam correction settings (pbcor) during imaging and feathering",
+  "Exact coordinates and position angles of the slices used for CASA impv position-velocity diagrams"
+ ],
+ "missing_for_reproduction": [
+  "Exact manual clean masks used for the molecular line cubes",
+  "Exact pixel scale (cell size) and image size used in CASA tclean (unless starting directly from the FITS products on Zenodo)",
+  "Exact slice coordinates for the CASA impv position-velocity diagrams"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "Both the processed data products (Zenodo) and analysis scripts (GitHub) are publicly released, and all key software packages, equations, assumptions, and parameters for source extraction, Jeans analysis, and virial analysis are explicitly documented.",
+ "rediscovery_reason": "Raw ALMA data (2016.1.00949.S), feathered FITS products (Zenodo), and analysis scripts (GitHub) are all public, and the main results (96 3-sigma sources, 9 5-sigma sources, masses, radii, separations, and virial parameters) are concrete numeric targets.",
+ "source_card": "cards/2022MNRAS.514..578W/sonnet/card.md"
+}

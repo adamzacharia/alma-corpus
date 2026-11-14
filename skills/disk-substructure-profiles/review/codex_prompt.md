@@ -1,0 +1,2307 @@
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (disk-substructure-profiles) ===
+---
+name: alma-disk-substructure-profiles
+description: "Measure deprojected radial intensity profiles of protoplanetary, protostellar and debris disks from ALMA data, and locate and characterise rings, gaps, cavities, spirals and azimuthal asymmetries (location, width, depth, contrast, dust radius, spectral index, optical depth, trapping and planet-mass inferences). Use when a task asks for a disk radial profile, ring or gap positions and widths, a parametric or non-parametric (frank) visibility fit of an axisymmetric disk, a substructure census, or planet masses from gaps. Built from 214 on-topic ALMA disk papers (2012-2026)."
+---
+
+# Disk radial profiles, rings and gaps
+
+Turns a continuum (or line) dataset of a disk into a deprojected radial profile I(r), then into ring and gap
+locations, widths, depths and physical inferences. Two mistakes matter most: (1) reading substructure off a
+beam-convolved image profile when the feature is near or below the beam (fit the visibilities, and report
+widths as upper limits when unresolved); (2) quoting formal MCMC errors as if they included geometry,
+functional-form choice and flux calibration, which authors repeatedly admit they do not.
+
+Evidence base: the `disk-substructure-profiles` pack (266 regex-tagged papers). 52 off-topic papers (galaxies,
+prestellar cores, outflows, hot cores, HII regions, filaments; list in `references/parameters.md`) are excluded,
+leaving 214. Counts marked "recount" are my per-paper count over those 214 papers' tagged analysis steps in the
+cards behind the pack; counts marked "pack" are the pack aggregate (per matched step, all 266 papers); "pack
+lines" means I counted the pack's key-parameter lines.
+
+## When to use
+
+- Continuum images or visibilities of a protoplanetary or protostellar (Class 0/I) disk where rings, gaps,
+  cavities, shoulders or inner disks are visible or suspected (2018ApJ...869...17L, 2020ApJ...902..141S,
+  2024ApJ...961..228S).
+- Debris belts: belt radius, width, inner and outer edges, gaps inside broad belts, eccentricity from the
+  star-belt offset (2015ApJ...798..124R, 2019AJ....158..162F, 2026ApJ..1004..182H).
+- Line emission rings and gas gaps from deprojected, azimuthally averaged moment-0 maps or stacked spectra
+  (2015ApJ...810..112O, 2019ApJ...880...69Y, 2020A&A...644A.119P).
+- Multi-band comparisons of the same rings: widths and positions at two wavelengths, radial spectral index,
+  optical depth (2020ApJ...891...48H, 2020ApJ...898...36L, 2018A&A...616A..88V).
+- Turning measured gaps and rings into dust-trapping or planet-mass statements (2018ApJ...869...17L,
+  2024ApJ...976..132H, 2025A&A...697A..64V).
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| Galaxy disks, tilted-ring rotation curves, spiral-arm masks in nearby galaxies | `alma-galaxy-3d-kinematics`, `alma-star-formation-laws` |
+| Prestellar or protostellar cores, filaments, cluster-forming clumps (envelope density profiles) | `alma-core-extraction-cmf` |
+| Gas kinematics: Keplerian masks, dynamical masses, velocity deviations from planets | `alma-keplerian-disk-kinematics` |
+| Generic visibility fitting machinery (likelihood, weights, samplers) | `alma-uv-plane-fitting` (this skill covers the disk-profile specifics) |
+| Total dust mass only, no radial structure | `alma-dust-continuum-mass` |
+| Spectral index maps without a radial-structure question | `alma-spectral-index` |
+| Full physical disk models (thermochemistry, RT, hydro) | `alma-radiative-transfer-modelling`, `alma-hydro-simulation-comparison` |
+
+## Steps
+
+1. **Image for inspection, not for measurement.** Goal: see the structure and pick a model family.
+   Method: CASA `tclean` continuum images at several weightings; one survey used `mfs`, `nterms=1`,
+   multiscale, robust -0.5 to 0.5, cleaned to about 5 sigma (2025A&A...697A..64V); another inspected several
+   robust values plus superuniform weighting and excluded tentative features that could be imaging
+   artefacts (2020ApJ...902..141S). Software: CASA (recount 51 papers).
+2. **Fix the geometry (centre, inclination i, PA).** Three routes in the pack:
+   - CASA `imfit` 2D Gaussian (2018ApJ...869...17L, 2019A&A...622A..75L); imfit values used to initialise the
+     uv fit (2018A&A...616A..88V).
+   - Ellipse fit to ring peaks found along cuts: every 10 deg (2013ApJ...777L..25M), every 1 deg in polar
+     coordinates (2024ApJ...961..228S); DSHARP fit a 5-parameter ellipse with emcee (30 walkers, 20,000
+     steps, 500 burn-in) to each ring and gap (2018ApJ...869L..42H). Ellipse fits also give ring-centre offsets
+     and eccentricity (2019AJ....158..162F).
+   - Free parameters of the visibility fit with priors, e.g. uniform +-20 deg on i and PA and +-0.5 arcsec on
+     offsets (2018ApJ...869...17L), or Gaussian priors on PA, i and offsets (2020ApJ...891...48H).
+   Many papers instead fix i and PA from earlier work (2015ApJ...810..112O, 2024A&A...689A.104D).
+3. **Deprojected image-plane profile.** Goal: a first I(r) and an azimuthal check. Method (general practice):
+   rotate by PA, stretch the minor-axis coordinate by 1/cos i, average in annuli. Bin widths seen: 1 au
+   (2020ApJ...891...48H, 2018ApJ...869L..42H), a quarter of the beam (2018MNRAS.475.5296D,
+   2024ApJ...965..147B), 0.05 arcsec with the innermost bin equal to the beam (2019ApJ...880...69Y), 4 au
+   (2018ApJ...864..133T). Bins narrower than the beam are correlated: per-bin error = rms / sqrt(beams in
+   the annulus) (2019ApJ...883...71C) or rms/(2 sqrt(n)) (2024A&A...689A.104D). For lines, average the
+   unclipped moment-0 map to avoid clipping bias (2015ApJ...810..112O, 2020A&A...644A.119P).
+4. **Fit the visibilities (the measurement).** Goal: resolution-limited structure without deconvolution bias.
+   - Parametric: central Gaussian or exponentially tapered power law plus Gaussian rings (2018ApJ...869...17L,
+     2020ApJ...898...36L); delta function plus Gaussian rings, 21 free parameters (2020ApJ...891...48H);
+     Gaussian times cosine terms, up to n=4 and 13 parameters (2018A&A...616A..88V); Nuker profile
+     (2024ApJ...966...59S); power law with a gap or double power law for debris belts (2015ApJ...798..124R).
+     Model visibilities with galario (recount 23 papers) or vis_sample (recount 7). Sample with emcee
+     (recount 58), pymc (2018A&A...616A..88V), dynesty nested sampling (2020ApJ...902..141S), or stochastic
+     variational inference in pyro (2024ApJ...976..132H).
+   - Non-parametric: frank (11 papers mention it in tagged steps, recount) assumes an axisymmetric,
+     geometrically thin disk; hyperparameters in the table below (2024A&A...689A.104D, 2024ApJ...971..129C).
+   - Add components only when residuals demand it: add a ring or switch to a tapered power law when symmetric
+     residuals exceed about 5-10 sigma (2018ApJ...869...17L); compare model complexities with Bayes factors
+     (2020ApJ...902..141S) or BIC (2024ApJ...976..132H, 2025ApJ...986L..11S).
+   - Rescale visibility weights before fitting: pipeline weights multiplied by about 0.25 to match image rms
+     (2020ApJ...902..141S), scaled down by 2.667 (2020ApJ...891...48H), rescale factor typically about 2
+     (2024ApJ...976..132H).
+   - Image-plane fits appear too, mostly for debris belts: fit dirty images with chi2 and scale sigma by
+     sqrt(beam area in pixels) for correlated noise (2016MNRAS.460L..10B, 2017AJ....154..225S,
+     2020MNRAS.497.2811K).
+5. **Extract substructure metrics from the best-fit (or posterior) profile.**
+   - Ring = local maximum, gap = local minimum, shoulder = three consecutive inflection points, evaluated over
+     2000 posterior profiles (2024ApJ...976..132H).
+   - Gap location at the local minimum, gap width as full width at half depth, contrast = ring peak / gap,
+     uncertainties from 100 chain samples (2018ApJ...869...17L).
+   - DSHARP definitions: depth I_d/I_b; widths measured at I_mean = 0.5(I_d + I_b) on profiles interpolated to
+     0.1 au; dust radius encloses 95% of the flux (2018ApJ...869L..42H, from its card). Other size definitions:
+     R_eff at 90% flux (2018ApJ...869...17L), R68/R95/R99 (2024A&A...689A.104D).
+   - Ring width = Gaussian sigma of the fitted ring (2024ApJ...976..132H, 2020ApJ...898...36L).
+6. **Asymmetries and non-axisymmetric structure.** Use polar (r, theta) deprojected maps; DSHARP sampled spiral
+   peaks every 6-18 deg in azimuth depending on radius (2018ApJ...869L..43H). Fit arcs and vortices with an
+   explicit model (2018ApJ...869L..50P used a steady-state vortex prescription). Unsharp masking (subtract an
+   image smoothed by 60 mas, 2020A&A...644A.119P; 66 mas FWHM Gaussian with weight 0.95, 2018ApJ...869L..44K)
+   reveals faint rings and spirals but its authors call it arbitrary (2020A&A...644A.119P). Test azimuthal
+   brightness variation against the noise and against identical ellipses placed on emission-free sky
+   (2013ApJ...777L..25M).
+7. **Multi-wavelength and physical conversion.**
+   - Spectral index: smooth to a common beam (CASA `imsmooth`, 2020ApJ...891...48H) or re-image both bands
+     with a common 0.25 arcsec beam and uv range, masking pixels with S/N < 2.5 (2018A&A...616A..88V);
+     alpha = ln(I1/I2)/ln(nu1/nu2) (2016Natur.535..258C). Carry 10% flux calibration per band; for close
+     bands it gave a 0.42 systematic error on alpha (2018A&A...616A..88V).
+   - Optical depth: tau = -ln(1 - I/B(T)) (2019ApJ...880...69Y), with T from a passive flared disk (general
+     practice formula; flaring angle 0.02 in 2018ApJ...869L..42H and 2024ApJ...971..129C, 0.05 in
+     2018ApJ...869...17L).
+   - Ring dust mass, optically thin: M = F d^2 / (kappa B(T)), typically kappa 2-2.3 cm2/g at 1.3 mm and
+     T = 20 K (2020A&A...644A.119P, 2024ApJ...961..228S); a lower limit if the ring is optically thick.
+8. **Interpretation.**
+   - Dust trapping: compare ring width w_d with the pressure scale height h_p; w_d < h_p argues for trapping
+     (2024ApJ...976..132H, 2024ApJ...971..129C); alpha_r/St = [(w_g/w_d)^2 - 1]^-1 assuming rings are pressure
+     maxima (2025A&A...697A..64V).
+   - Planet masses: gap radius = 4 R_Hill or the Rosotti et al. diagnostic with alpha = 1e-4 or 1e-2
+     (2018ApJ...869...17L); Kanagawa gap-depth formula for gas gaps with alpha = 1e-3 (2019ApJ...880...69Y);
+     Zhang et al. 2018 width relations with alpha = 1e-3 and DSHARP opacity (2024ApJ...976..132H); gap width =
+     5 Hill radii (2016A&A...586A..99H); for debris gaps, the chaotic-zone width (2015ApJ...798..124R). Always
+     state alpha, h/r and the one-planet-per-gap assumption.
+   - Snowlines: compare gap radii with midplane temperatures of N2 12-15 K, CO 23-28 K, clathrate 41-46 K
+     (2018ApJ...869...17L).
+
+## Parameter defaults and ranges
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| Radial profile form (uv fit) | Gaussian rings + central Gaussian or tapered power law | Gaussian x cosine, Nuker, delta + Gaussians, power law with gap | 37 mention Gaussian rings (recount) | 2018ApJ...869...17L, 2020ApJ...891...48H, 2018A&A...616A..88V, 2024ApJ...966...59S |
+| emcee walkers | 100 | 24 to 1024 | 7 use 100 (pack lines) | 2018ApJ...869...17L, 2020ApJ...898...36L, 2025ApJ...984L..19Y, 2019ApJ...881...84S |
+| emcee steps / burn-in | 5000 steps, about 2000 burn-in, keep the last 1000 | 500 to 100,000 steps | pack lines | 2018ApJ...869...17L, 2020ApJ...891...48H, 2024A&A...689A.104D, 2020ApJ...895..126H |
+| Geometry priors | uniform +-20 deg (i, PA), +-0.5 arcsec offsets | Gaussian priors from image fits; fixed from literature | pack lines | 2018ApJ...869...17L, 2020ApJ...891...48H, 2024A&A...689A.104D |
+| Ring parameter priors | ring centre +-0.05 arcsec around the visual ring | r_peak 10-80 au, sigma 1-50 au | 2 | 2020ApJ...898...36L, 2019ApJ...878...16P |
+| Model radial grid | 0.0001-4 arcsec, step 0.0005-0.001 arcsec | 0.1-0.5 au steps over 0-500 au | 4 | 2018ApJ...869...17L, 2020ApJ...898...36L, 2017ApJ...839...99P, 2018ApJ...859...32P |
+| frank alpha | 1.3 | 1.05-1.3 | 5 (pack lines) | 2024A&A...689A.104D, 2024ApJ...971..129C, 2026ApJ..1001..124M |
+| frank w_smooth | no consensus; 1e-4 in 2 of 5 | 1e-4 to 1e-1 | 5 | 2024A&A...689A.104D, 2024ApJ...974..102S, 2025ApJ...986L..11S |
+| frank N / Rmax | 300-400 points; Rmax a few arcsec | Rmax 2.1-5 arcsec or 4 R_out | 4 | 2024ApJ...971..129C, 2026ApJ..1001..124M, 2025ApJ...986L..11S |
+| Visibility binning (plots, grid fits) | 10 klambda | 7-30 klambda | 4 | 2014ApJ...791L...6W, 2018A&A...616A..88V, 2013ApJ...777L..25M, 2018A&A...610A..24F |
+| Image-profile bin width | 1 au or a quarter beam | 0.05-0.15 arcsec, 4 au | 7 | 2020ApJ...891...48H, 2018MNRAS.475.5296D, 2019ApJ...880...69Y, 2018A&A...615L..10M |
+| Weight or error rescaling | weights down by about 2-4 | weights x0.25 to errors x sqrt(70) | 4 | 2020ApJ...902..141S, 2020ApJ...891...48H, 2024ApJ...976..132H, 2018ApJ...869L..46D |
+| Flux calibration error | 10% per band | 5-10% | 4 | 2024A&A...689A.104D, 2020ApJ...891...48H, 2018A&A...616A..88V, 2018ApJ...869L..41A |
+| Dust opacity at 1.3 mm (mass) | 2-2.3 cm2/g | 0.43 (DSHARP absorption) to 2.3 | pack lines | 2024ApJ...961..228S, 2020A&A...644A.119P, 2024ApJ...976..132H |
+| Dust temperature (mass) | 20 K | 10-60 K, or passive-disk T(r) | pack lines | 2024ApJ...961..228S, 2014ApJ...791L...6W, 2024ApJ...971..129C |
+| Turbulence alpha (interpretation) | 1e-3 | 1e-4 to 1e-2 | pack lines | 2024ApJ...976..132H, 2019ApJ...880...69Y, 2018ApJ...869...17L |
+
+More settings by paper (samplers, frank runs, debris belt models, thermal assumptions) are in
+`references/parameters.md`.
+
+## Software
+
+Per paper over the 214 on-topic papers, from software named in tagged steps (recount); pack aggregates over
+all 266 papers, per matched step, in parentheses. Names are lower-cased in the pack.
+
+| Software | Used for | Papers |
+|---|---|---|
+| emcee | posterior sampling for profile, ring, belt and ellipse fits | 58 (pack 62) |
+| casa (tclean, imfit, imsmooth, imstat, simobserve) | imaging, geometry, common-beam smoothing, ring fluxes, mock observations | 51 (pack 63, plus task-named entries) |
+| galario | model visibilities from a radial profile or model image | 23 (pack 25) |
+| radmc-3d | physical and RT disk models compared with profiles | 15 (pack 16) |
+| gofish | stacked line spectra and radial profiles of gas | 11 (pack 11) |
+| frank / frankenstein | non-parametric 1D visibility fit | 11 by keyword (pack 5 + 5) |
+| dali, lime | thermochemical and line RT models of rings | 8 each (pack 10, 8) |
+| vis_sample | model visibilities | 7 (pack 8) |
+| miriad | imaging and uv modelling in older papers | 6 (pack 7) |
+| bettermoments | moment maps for line profiles | 6 (pack 6) |
+| eddy | disk geometry and surfaces from lines | 5 (pack 5) |
+| mcfost | settling and dust RT models (2025A&A...697A..64V) | 4 (pack 4) |
+| uvmultifit, pymc, dynesty, pyro/mpol | alternative uv fitting and inference (2018A&A...616A..88V, 2020ApJ...902..141S, 2024ApJ...976..132H) | 1-3 each |
+| rave | non-parametric belt profiles for debris disks (2026ApJ..1004..182H) | pack 3 |
+| fargo family | hydrodynamic planet-gap models | 2-3 |
+
+## Pitfalls
+
+- **Formal errors are too small.** Authors say fit errors are likely underestimated (2018ApJ...869...17L) and
+  that ring uncertainties depend on the chosen functional form (2020ApJ...898...36L). Calibration uncertainty
+  is often left out of the MCMC (2020ApJ...892...99C).
+- **Widths and shapes are poorly constrained near the beam.** Gap and ring widths are hard to constrain
+  (2018A&A...616A..88V); a two-ring model and a Gaussian gap model cannot be told apart at the resolution
+  (2019ApJ...877L..32M); a gap and a double power law likewise for a debris belt (2015ApJ...798..124R); a belt
+  resolved by only about 1.7 beams gives neither its density distribution nor the star offset
+  (2017AJ....154..225S); Band 8 resolution did not resolve the outer substructure (2024A&A...689A.104D).
+  Image-plane widths fitted without beam deconvolution are upper limits (2024ApJ...961..228S), and the DSHARP
+  width definitions ignore the beam (2018ApJ...869L..42H, card).
+- **Tentative rings.** BIC preferred no ring for a low S/N brown dwarf disk (2025ApJ...986L..11S); ring clumps
+  at 3-5 sigma need deeper data (2025ApJ...993...85Y).
+- **Axisymmetry hides asymmetry.** Axisymmetric models fail to reproduce azimuthal asymmetry amplitudes
+  (2018ApJ...869...17L); residuals up to 8.4 sigma remained in GM Aur (2020ApJ...891...48H).
+- **Missing flux and primary beam.** A disk near the largest recoverable scale (2014ApJ...791L...6W) or ring
+  ansae near the primary beam edge (2017MNRAS.466.4201W) make outer structure and N/S asymmetries unreliable.
+- **Optical depth and temperature drive the physics.** Optically thick rings make masses lower limits;
+  optical depth is degenerate with scale height (2025A&A...697A..64V); temperature uncertainty dominates
+  dust-trap and planet-mass estimates (2024ApJ...976..132H); optical depth estimates may be off by a factor of
+  two (2018ApJ...869L..42H, card).
+- **Planet masses are model-bound.** They assume one planet per gap and fixed alpha and h/r
+  (2024ApJ...976..132H, 2018ApJ...869...17L); rings as pressure maxima and fragmentation-limited grains are
+  explicit assumptions (2025A&A...697A..64V).
+- **Unsharp masking is arbitrary** in kernel size and weight; treat the morphology with caution
+  (2020A&A...644A.119P).
+- **Settings papers rarely report** (recount of "needed but not stated" items over the 214 cards, keyword
+  grouped): clean threshold or mask (165 papers), image or cell size (158), line-free channels (128),
+  self-calibration intervals (114), MCMC walkers, steps or priors (82), robust or weighting (80), CASA or
+  pipeline version (61), flux-scale uncertainty (54), radial bin choices (54). Record all of these in your own
+  output.
+
+## Verification checks
+
+What papers did:
+- Compare model and data in the visibility domain (binned real and imaginary parts), in images, and in radial
+  cuts; inspect residual images made with the same uv coverage (2018ApJ...869...17L, 2014ApJ...791L...6W,
+  2020ApJ...898...36L).
+- Select between model complexities with Bayes factors or BIC (2020ApJ...902..141S, 2024ApJ...976..132H).
+- Cross-check parametric and non-parametric (frank) profiles (2024ApJ...976..132H); show results are robust to
+  frank alpha and w_smooth (2024A&A...689A.104D).
+- Convergence: steps much larger than the autocorrelation time (2018ApJ...869L..42H, card); autocorrelation
+  negligible after thinning (2017MNRAS.466.4201W); vary walker starting positions (2015ApJ...798..124R) or
+  initial i, PA and centre (2018A&A...616A..88V).
+- Geometry consistency: ellipse-fit and Gaussian geometries agree within one degree (2018ApJ...869L..42H,
+  card); visibility and image-plane fits agree (2017AJ....154..225S).
+- Independent data: short-baseline ACA data not used in the fit (2020ApJ...902..141S), earlier fluxes
+  (2018ApJ...869...17L), scattered light (2019AJ....158..162F), previous ring catalogues (2025A&A...697A..64V);
+  smooth to the other instrument's beam before comparing (2024ApJ...961..228S).
+- Forward-model physical models through the same beam before comparing profiles (2020ApJ...898...36L
+  convolved to 0.1 arcsec; 2018A&A...616A..88V imaged DALI models with the 0.25 arcsec beam).
+
+What a careful referee adds:
+- Inject and recover a synthetic ring or gap of the claimed width and depth in the real uv coverage (a debris
+  paper injected gaps to find the widest undetectable one, 2026ApJ..1004..182H).
+- Propagate geometry, flux calibration and functional-form uncertainty, not only the sampler posterior.
+- Put the beam (or the effective frank resolution) next to every width, and flag widths below it as limits.
+- Check rings for azimuthal variation before trusting an azimuthal average.
+
+## Source cards
+
+Full list: `references/sources.md` (generated). Most informative for this technique:
+
+- 2018ApJ...869...17L: Taurus survey; uv fits with galario and emcee, gap and ring metrics, snowline and planet tests.
+- 2018ApJ...869L..42H: DSHARP annular substructures; ellipse fits, 1 au profiles, width and depth definitions.
+- 2018ApJ...869L..43H: DSHARP spirals; polar deprojection and azimuthal sampling.
+- 2018ApJ...869L..46D: DSHARP thin rings and dust trapping.
+- 2020ApJ...891...48H: GM Aur two-band uv fits, spectral index, RT geometry tests.
+- 2020ApJ...898...36L: dual-wavelength ring widths, priors, dust evolution comparison.
+- 2024ApJ...976..132H: sigma Orionis; SVI fits, substructure definitions, trapping and planet masses.
+- 2024A&A...689A.104D: TW Hya Band 8; frank hyperparameters, Gaussian-ring emcee fit, disk sizes.
+- 2024ApJ...971..129C: Elias 2-24 dust-trapping ring; frank plus trapping width limits.
+- 2025A&A...697A..64V: 33-disk settling study; wedges, iterative surface density, alpha/St from widths.
+- 2018A&A...616A..88V: V1094 Sco; Gaussian x cosine uv model, spectral index profile.
+- 2020ApJ...902..141S: VANDAM protostellar substructures; dynesty, Bayes factors, ACA check.
+- 2024ApJ...961..228S: WL 17 Class I ring; ellipse fit, deprojected profile, ring mass.
+- 2019ApJ...880...69Y: HL Tau HCO+ gas gaps; stacked spectra, gap depth to planet mass.
+- 2015ApJ...810..112O: IM Lup DCO+ double rings; unclipped deprojected line profiles.
+- 2020A&A...644A.119P: DG Tau line rings and an unsharp-masked dust ring.
+- 2015ApJ...798..124R: HD 107146 debris gap; uv fits of gap vs double power law.
+- 2019AJ....158..162F: HD 202628 eccentric debris ring from the star-ring offset.
+- 2026ApJ..1004..182H: gamma Oph broad belt; rave and frank profiles, gap injection.
+- 2025ApJ...986L..11S: brown dwarf disk; frank plus BIC against a tentative ring.
+
+=== references/parameters.md ===
+# Parameter details for disk substructure profiles
+
+Values are copied from the evidence pack (`packs/disk-substructure-profiles.md`: key-parameter, assumption and
+excerpt sections), except where a line says "card" (read from that paper's card to settle a detail). Only
+on-topic disk papers are used; the excluded papers are listed at the end.
+
+## Samplers and fit settings (parametric profile, ring, belt and ellipse fits)
+
+| Paper | Model | Sampler settings | Priors / notes |
+|---|---|---|---|
+| 2018ApJ...869...17L | central Gaussian or tapered power law + Gaussian rings (uv) | emcee, 100 walkers, 5000 steps, burn-in about 2000, second run of 5000, posterior from last 1000 | uniform +-20 deg i and PA, +-0.5 arcsec offsets; grid 0.0001-4 arcsec step 0.001 |
+| 2020ApJ...898...36L | Gaussian or tapered power law + Gaussian rings (uv) | emcee, 100 walkers, 5000 steps, last 1000 used | logF [6,11] Jy/sr, sigma [0,0.2 arcsec], ring centres +-0.05 arcsec; marginal peaks, 68% intervals |
+| 2020ApJ...891...48H | delta + Gaussian rings, 21 parameters (uv, vis_sample) | emcee, 96 walkers, 20,000 steps, 10,000 burn-in | weights scaled down by 2.667; Gaussian priors on PA, i, offsets |
+| 2024A&A...689A.104D | central Gaussian + 2 Gaussian rings, 10 parameters (uv, galario) | emcee, 80 walkers, 10,000 steps after 2000 burn-in | log I in [-7,2], R2 in [1.16,1.66] arcsec, offsets [-2,2] arcsec; i=5.8 deg, PA=151.6 deg fixed |
+| 2018ApJ...869L..42H | 5-parameter ellipse to ring/gap extrema | emcee, 30 walkers, 20,000 steps, 500 burn-in | uniform dx, dy, r0 (-4.5, 4.5 arcsec), ln sigma^2 (-15, -5) |
+| 2018ApJ...869L..44K | 6 free parameters | emcee, 250 walkers, burn-in 1000 and 500 steps, 1500 sampling steps | unsharp mask 66 mas FWHM, weight 0.95 |
+| 2018ApJ...869L..46D | Gaussian ring, domain chosen by eye | 100 walkers, 500 steps, last 250 used | errors multiplied by sqrt(70) |
+| 2018A&A...616A..88V | Gaussian x cosine, up to n=4, 13 parameters (uv binned 10 klambda) | pymc MCMC | i, PA, centre initialised from imfit; rho ranges at least 100 klambda wide |
+| 2018A&A...610A..24F | multi-gap model (uv binned 30 klambda) | 80 chains, 45,000 steps after 5000 burn-in | axisymmetric, flat priors; i=35, PA=86 fixed |
+| 2018A&A...619A.161C | 9 parameters + centre + i, PA fixed 62 deg | 120 walkers, 24,000 likelihoods | gap width about 20 au at about 68 au |
+| 2018ApJ...865...37M | Gaussian rings per ring a_i, sigma_i, x_i | not stated in pack | free i, PA, dRA, dDEC |
+| 2018ApJ...869L..48G | 23 ring + 4 geometry parameters | not stated in pack | uv points 10-10,000 klambda in 10 klambda steps; rings chosen by visual inspection |
+| 2019ApJ...878...16P | Gaussian ring + inner disk | 200 walkers, 2000 steps | r_peak 10-80 au, sigma 1-50 au, A 0-1, sigma_inner 0.1-10 au, F_total 0-3 Jy |
+| 2017ApJ...839...99P | surface brightness model | 1000 walkers, 4000 steps, burn-in about 1000 | radial grid 1-500 au in 0.1 au steps |
+| 2018ApJ...859...32P | transition disk morphology | last 700 steps used | radial grid 0-500 au in 0.5 au steps |
+| 2024ApJ...966...59S | Nuker + point source | 50 walkers, 10,000 steps; model pixel 3 mas | log10 alpha U(0,2), beta U(0,10), gamma about U(-3,2); point flux U(0,1) mJy; inclination prior proportional to sin i |
+| 2020ApJ...895..126H | disk size fits | 70 walkers, 100,000 steps | uniform priors |
+| 2020ApJ...902..141S | analytic rings/asymmetries (uv, galario) | dynesty nested sampling, uniform priors | weights x about 0.25; Bayes factors between models |
+| 2024ApJ...976..132H | central Gaussian + N Gaussian rings (uv) | pyro SVI, Adam, learning rate 0.02, 15,000 iterations, 2000 posterior samples | Gaussian priors on log A, log sigma, r_i, i, z0, phi, PA, offsets; weight rescale about 2 |
+| 2025MNRAS.543.2723P | 7 parameters (f0, sigma_r, R_peak, inc, PA, dRA, dDec) | 8 walkers per parameter, 30,000 steps then final 10,000 | structured if R_peak > 0.05 arcsec |
+| 2025ApJ...993...85Y | outer ring + arc | 100 walkers, 500 steps, 250 burn-in | PA sampling 10 deg, 3 sigma threshold |
+| 2019ApJ...881...84S | debris belt | 1024 walkers, 12,500 steps, 2500 burn-in | |
+| 2025ApJ...984L..19Y | 8 free parameters | 24 walkers, 5000 steps, median of last 4200 | |
+| 2017MNRAS.466.4201W | debris ring + point source (image plane) | Metropolis-Hastings, 3 chains, 100,000 links thinned by 10 | flat priors; sigma = 374 uJy |
+
+## frank (non-parametric) settings
+
+| Paper | alpha | w_smooth | N | Rmax | Other |
+|---|---|---|---|---|---|
+| 2024A&A...689A.104D | 1.05, 1.2, 1.3 tested; 1.3 preferred | 1e-1, 1e-4 tested; 1e-4 preferred | 300 | 5.0 arcsec | p0 = 1e-35; logNormal fit preferred; 20 mJy point source subtracted first |
+| 2024ApJ...971..129C | 1.3 | 0.1 | 300 | 2.1 arcsec | p0 = 1e-15 Jy^2 |
+| 2025ApJ...986L..11S | 1.20 | 1e-3 | 400 | 4 R_out | |
+| 2024ApJ...974..102S | 1.05 | 1e-4 | | | |
+| 2026ApJ..1001..124M | 1.3 | 0.01 | 400 | 3 arcsec | |
+
+## Profile extraction (image plane)
+
+| Paper | Bin width / sampling | Geometry | Error per bin |
+|---|---|---|---|
+| 2020ApJ...891...48H | 1 au annuli | PA 57.17 deg, i 53.21 deg | |
+| 2018ApJ...869L..42H | 1 au annuli (card) | from ellipse fits or imfit | |
+| 2018MNRAS.475.5296D | a quarter of the linear resolution | | |
+| 2024ApJ...965..147B | 1/4 beam FWHM (about 80 mas), weights proportional to r^2 | centre offset (-52, -155) mas | |
+| 2019ApJ...880...69Y | 0.05 arcsec; innermost radius = beam 0.1 arcsec | | |
+| 2018ApJ...864..133T | 4 au annuli | | |
+| 2018A&A...615L..10M | 0.12 arcsec (13CO, 1.3 mm), 0.15 arcsec (12CO) | PA -9 deg, i 55 deg | |
+| 2017ApJ...838...97M | rings of beam width | i 13 deg, PA 5 deg | |
+| 2024A&A...689A.104D | annuli, equivalent radius = mean of points in the bin | | rms/(2 sqrt(n)) |
+| 2019ApJ...883...71C | annuli | i 46.72 deg, PA 138.02 deg | rms/(Omega_ring/Omega_beam)^0.5 |
+| 2018ApJ...869L..43H | spiral peaks every 6-18 deg in azimuth, depending on radius | per-disk PA and i | |
+| 2025A&A...697A..64V | 30 deg wedge on the major axis; six 30 deg wedges for azimuthal cuts | inclinations from literature | good models: chi2 <= 8 and Hausdorff metric <= 1.2 |
+| 2024ApJ...963..134Y | wedge 0.25-0.6 arcsec radial, 60-150 deg azimuthal in the disk frame | i 50 deg, PA 100 deg | |
+| 2019AJ....157..237R | 20 deg wedge opening angle | | |
+| 2013ApJ...777L..25M | ring maxima along cuts every 10 deg, ellipse fit; aperture 2.8 arcsec | intrinsically circular ring | azimuthal scatter vs emission-free ellipses |
+
+## Thermal, opacity and interpretation assumptions
+
+| Quantity | Values seen | Papers |
+|---|---|---|
+| Dust opacity at about 1.3 mm (mass) | 2 cm2/g; 2.3 cm2/g; 2.254 cm2/g; 0.43 cm2/g absorption (DSHARP, amax 0.1 mm) | 2024ApJ...961..228S, 2020A&A...644A.119P, 2024A&A...689A..85G, 2024ApJ...976..132H |
+| Dust temperature (mass) | 20 K; 60 K (80 and 40 K for inner and outer rings) | 2024ApJ...961..228S, 2025ApJ...993...90S, 2014ApJ...791L...6W |
+| Passive disk temperature | flaring angle 0.02, mu 2.33, L* scaled; flaring angle 0.05 | 2024ApJ...971..129C, 2018ApJ...869...17L |
+| Gas-to-dust ratio | 100 | 2024ApJ...961..228S, 2018A&A...616A..88V, 2020ApJ...898...36L |
+| Turbulence alpha | 1e-3 (planet masses, dust evolution); 1e-4 or 1e-2 bracket | 2024ApJ...976..132H, 2020ApJ...898...36L, 2018ApJ...869...17L |
+| Pressure scale height uncertainty | about 25% | 2024ApJ...976..132H |
+| Trapping width limits | w_max 17.1 au (ring to gap), w_min = h_p 5.15 au | 2024ApJ...971..129C |
+| Gas width bounds for alpha/St | w_g,min = H_g; w_g,max = ring peak to gap minimum | 2025A&A...697A..64V |
+| Snowline temperatures | N2 12-15 K, CO 23-28 K, clathrate 41-46 K; N2 13.5, CO 25.5, CH4 29, CO2 66, NH3 80 K | 2018ApJ...869...17L, 2019ApJ...872..112V |
+| Planet from gap | 4 R_Hill; 5 Hill radii; Kanagawa depth 4-8 with M* 2.1 Msun, T 60 K, alpha 1e-3 | 2018ApJ...869...17L, 2016A&A...586A..99H, 2019ApJ...880...69Y |
+| Planet-gap simulations | planet at 33 au, q = 0.002, alpha 1e-3, vfrag 10 m/s; Mp 0.4-3 MJ range | 2020ApJ...898...36L, 2019A&A...622A..75L |
+
+## Debris belts (when the disk is a debris disk)
+
+| Paper | Model | Key settings |
+|---|---|---|
+| 2015ApJ...798..124R | single power law, power law with gap, double power law (uv) | model image 2048x2048 of 0.015 arcsec; flux scaled as nu^(2+beta), beta 0.4; primary beam 24.3 arcsec applied |
+| 2019AJ....158..162F | constant surface density ring + Gaussian sources, 23 parameters | blackbody grains, opacity 2.3 cm2/g; eccentricity from projected offset |
+| 2017ApJ...842....8M | eccentric belt: R_belt, width, flux, e_f, e_p, omega_f, offsets | natural weighting, rms 14 uJy/beam; negligible vertical thickness |
+| 2016MNRAS.460L..10B | power-law belt, 6 free parameters | 120 walkers, 2500 steps; sigma scaled by sqrt(beam area in pixels) |
+| 2020MNRAS.497.2811K | Gaussian ring with RADMC-3D, dirty-image fit | 100 walkers, 1000 steps after burn-in; kappa about 1.3 cm2/g |
+| 2025A&A...693A.151M | Gaussian radial profile | h fixed to 0.03 unless vertically constrained; T proportional to r^-0.5 |
+| 2026ApJ..1004..182H | rave non-parametric + frank | gap injection to find the widest hidden gap |
+| 2013ApJ...777L..25M | DEBRA optically thin model on 7 klambda deprojected bins | grid over Rin, Rout, p, smin; smax 3000 um |
+
+## Excluded as off-topic (52 papers)
+
+Tagged by the regex but not disk substructure work; left out of every count in the skill:
+2013ApJ...774L...7M, 2014ApJ...787...48X, 2014ApJ...796..131O, 2014MNRAS.444.1821F, 2016ApJ...823...26E,
+2016ApJ...826...26T, 2016MNRAS.460..627K, 2016MNRAS.461.4276D, 2016Natur.540..406B, 2017A&A...607L...6T,
+2017ApJ...835..278S, 2017ApJ...840...72L, 2017ApJ...843...83W, 2017MNRAS.464L..31H, 2017MNRAS.469.3347M,
+2018A&A...615A.141B, 2018A&A...617A.120M, 2018A&A...618A.120L, 2018ApJ...858...90G, 2018ApJ...860..119G,
+2018ApJ...869..126L, 2018ApJ...869..158F, 2019ApJ...871..185L, 2019ApJ...872..200H, 2019ApJ...874...89C,
+2019ApJ...875...24C, 2019ApJ...875...62Y, 2019ApJ...882...31A, 2019ApJ...885...82L, 2019ApJ...886...14F,
+2019ApJ...886L...4Z, 2019NatAs...3..517Z, 2020A&A...633A.126B, 2020A&A...644A..11L, 2020ApJ...894...76W,
+2020ApJ...894L..14L, 2020ApJ...896..127K, 2020ApJ...899...10T, 2020MNRAS.497.3504T, 2021A&A...648A..41V,
+2021A&A...656A.133Q, 2021ApJ...907L..15S, 2023ApJ...956L..16T, 2023PASJ...75..225M, 2024A&A...690A.375S,
+2024A&A...690A.376S, 2024ApJ...967...15K, 2024MNRAS.534..683Z, 2025A&A...700A.188C, 2025ApJ...992L..15L,
+2025SciA...11.4512O, 2026ApJ..1001L...1T.
+
+=== EVIDENCE PACK (disk-substructure-profiles) ===
+# Evidence pack: Protoplanetary disk radial profiles, rings and gaps (`disk-substructure-profiles`)
+
+Scope: deprojected radial profiles, ring/gap locations and widths, asymmetries in disks
+
+Built from 266 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `radial (?:intensity |brightness )?profile|\brings?\b|\bgaps?\b|deproject|azimuthal(?:ly)? averag|frankenstein|\bfrank\b|substructure|spiral arm`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- protoplanetary_disks: 184
+- star_formation: 78
+- astrochemistry: 57
+- debris_disks: 41
+- milky_way_ism: 15
+- exoplanets: 11
+- nearby_galaxies: 9
+- stellar_physics: 4
+- agn_and_quasars: 1
+- evolved_stars: 1
+- solar_system: 1
+- instrumentation: 1
+- transients: 1
+
+### Software named in the matched steps
+- casa: 63
+- emcee: 62
+- galario: 25
+- radmc-3d: 16
+- gofish: 11
+- dali: 10
+- lime: 8
+- vis_sample: 8
+- miriad: 7
+- bettermoments: 6
+- frankenstein: 5
+- frank: 5
+- eddy: 5
+- casa simobserve: 5
+- mcfost: 4
+- iraf: 4
+- gildas: 4
+- casa imfit: 3
+- tclean: 3
+- rave: 3
+- uvmultifit: 3
+- scipy: 3
+- python: 3
+- casa clean: 2
+- pythonradex: 2
+- madcuba: 2
+- pymc: 2
+- xclass: 2
+- ratran: 2
+- filchap: 2
+- pvextractor: 2
+- fargo: 2
+- matlab: 2
+- astropy: 2
+- casa viewer: 2
+- casa uvmodelfit: 2
+- disk_model ray-tracing code: 1
+- dynesty: 1
+- pdspy: 1
+- debra: 1
+
+### Fitting methods (most common phrasings)
+- Gaussian fits: 2
+- emcee MCMC with flat priors: 2
+- MCMC with emcee, uniform priors: 2
+- MCMC with emcee; priors not stated: 2
+- emcee MCMC; median and 16th-84th percentile: 1
+- Iterative multiplicative correction of surface density (no sampler): 1
+- Gaussian fit to rings; uncertainty = std over four models: 1
+- by eye, no formal fit: 1
+- Gaussian fit to peak of radial profile; position uncertainty ~1/5 of beam: 1
+- Gaussian fit to observed emission gives disk major axis 0.45 arcsec and i=35 deg: 1
+- emcee; errors are 16-84 percentiles: 1
+- Bayesian nested sampling with dynesty, uniform priors; best fit = maximum posterior sample; uncertainties 95% inclusion…: 1
+- emcee; best fit = max posterior, 95% range uncertainties; lost walkers redistributed: 1
+- Ellipse fit to ring peaks; Gaussian fit for FWHM without beam deconvolution: 1
+- emcee MCMC; uninformative location- or scale-invariant priors over ranges in the parameter table; medians with 16th/84t…: 1
+- Marginal likelihood estimator from chi2 of grid models: 1
+- chi2 grid over Tkin, n(H2), X/(dV/dr): 1
+- Manual adjustment of infall velocity; no formal fit: 1
+- least squares; free: v_center, v_rot sin i, sigma, rho_max/rho_min: 1
+- self-similar solution; points between 20 and 35 au excluded: 1
+- logNormal with alpha=1.3, wsmooth=1e-4 preferred: 1
+- emcee, uniform priors (e.g. log I in [-7,2], R2 in [1.16",1.66"], offsets in [-2",2"]); best fit = max likelihood: 1
+- power-law fit: 1
+- distance minimization in (X,Y,Vz): 1
+- emcee affine-invariant sampler; uniform priors on profile parameters, Gaussian priors on PA, i, offsets (Table 3); Gaus…: 1
+- Parameters adjusted manually until ring width and height match: 1
+- Metropolis-Hastings, flat priors, 95% credible interval: 1
+- MCMC, flat prior: 1
+- Gaussian fits; errors from fits: 1
+- chi2 grid search: 1
+- Power law T_rot = 154 r^(-0.35±0.19): 1
+- Best fit for infall radius much larger than beam; fit algorithm not stated: 1
+- emcee, uniform priors, likelihood exp(-chi2/2) over dirty-beam-convolved pixels: 1
+- free: R0, DeltaR, Sigma0, T0, v*, i, PA, offsets: 1
+- emcee affine-invariant MCMC, several hundred walkers and iterations; best values are the mode of marginalized posterior…: 1
+- Ordinary least squares bisector fit, weighting all significant detections equally: 1
+- MCMC with pymc; inclination, PA, center initialised from imfit: 1
+- Stochastic variational inference (pyro), Gaussian priors on log A, log sigma, r_i, i, z0, phi, PA, offsets; chi-square-…: 1
+- Least-squares linear fits in log-log; innermost ring N fixed to 2e18 cm-2 by linear extrapolation: 1
+- Uniform priors on logF in [6,11] Jy/sr, sigma in [0,0.2"], gamma1 [0,2], gamma2 [0,20], rc [0,0.4"], ring centers +-0.0…: 1
+
+### Validation checks used
+- Twelve of 32 disks selected; choice of twelve described as somewhat arbitrary: 1
+- Compare visibility profiles, images, radial cuts; add ring or tapered power-law if symmetric residuals ≳5-10σ: 1
+- Fluxes compared with pre-ALMA measurements: 1
+- Compared to CI Tau hydrodynamic modeling of Clarke et al. 2018: 1
+- RADMC-3D models give similar temperature profiles beyond 20 au except RY Tau: 1
+- Model agrees with data within 5% on major axis: 1
+- Visual inspection combined with metrics: 1
+- Compared with previous studies for common rings: 1
+- Smoothing ALMA data to CARMA resolution reproduces CARMA position angle: 1
+- Good by-eye agreement in NW and SE quadrants; departures in NE and SW: 1
+- 10 au offset between H2CO and CS peaks exceeds position uncertainty: 1
+- Compared with second derivative of intensity profile from Podio et al. 2019 (38-44.5 au): 1
+- Brightness temperature ~1.5 K well below gas temperature, so lines likely optically thin; may be underestimated by a fa…: 1
+- Residual map after model subtraction; consistency with HST: 1
+- Compared with independent visual HST ellipse fits (e=0.14): 1
+- Excluded tentative sources to avoid imaging artefacts: 1
+- Bayes factors between model complexities; residual images and visibility profiles: 1
+- Compared models to ACA data not included in fit: 1
+- Unclipped maps used to mitigate clipping bias: 1
+- Small parameter study of binding energy, density/temperature structure, and cosmic ionization rate: 1
+- Comparison with Sheehan & Eisner 2017 after smoothing to the same beam: 1
+- Compared to Sheehan & Eisner 2017 mass and Class I disk masses: 1
+- LTE flux only factor 1.3 above LIME non-LTE; fixed i=88 deg run gives unchanged parameters; no strong residuals: 1
+- Model run with C at disk surface changes results only by factor ~2; steady state consistent with full calculation: 1
+- Compared azimuthal scatter with noise and with emission-free ellipses: 1
+- Model SEDs compared with observations; smin=4 um excluded: 1
+- Compared with SPHERE profile; fails to reproduce outer ring: 1
+- Comparison of ring location, brightness ratio and peak brightness to observations: 1
+- Compared with three dust models agreeing within factor of a few: 1
+- Results same as RADEX: 1
+- Qualitative comparison of line profiles and PV diagrams; robust against 0.2 Msun: 1
+- alternative models (two Gaussians; ring plus Gaussian) fit equally well with more parameters: 1
+- Varied dendrogram parameters; separations vary by up to 50%: 1
+- Masks inspected on gas and SF maps with several rounds of quality flagging by three co-authors: 1
+- Comparison restricted to overlapping scale range to rule out resolution effects: 1
+- compared with planet masses in simulations rescaled by stellar mass: 1
+- Shoulder flux robust to alpha and wsmooth: 1
+- Residual/data amplitude ratio ~0.0013; model recovers 99.88% of peak: 1
+- reduced chi2 = 0.42: 1
+- Compared with Pinilla et al. 2014 disk-averaged index: 1
+
+### Key parameters and settings (bibcode: value)
+- 2018ApJ...869...17L: 100 walkers, 5000 steps, burn-in ~2000; second run 5000 more steps; posterior from last 1000 steps; radial grid 0.0001''-4'' step 0.001''
+- 2018ApJ...869...17L: Uniform priors: ±20 deg for i and PA, ±0.5 arcsec for offsets
+- 2018ApJ...869...17L: N2 12-15 K, CO 23-28 K, clathrate CO+N2 41-46 K
+- 2025A&A...697A..64V: mfs, nterms=1, multiscale, robust -0.5 to 0.5, clean to ~5σ
+- 2025A&A...697A..64V: 30° wedge on major axis; 4 settling levels alpha_z,MCFOST 2e-4 to 0.2
+- 2025A&A...697A..64V: good models: chi2 ≤ 8 and S ≤ 1.2
+- 2025A&A...697A..64V: mu=2.3; wg,min=Hg,temp; wg,max=ring peak to gap minimum
+- 2018ApJ...859..165S: A=10, theta=54 deg, nu0=60, r0=40 au, peak density ~6e10 cm-3
+- 2020A&A...644A.119P: Vsys = +6.24 km/s; PA=135 deg, i=35 deg
+- 2020A&A...644A.119P: smoothing 60 mas
+- 2020A&A...644A.119P: Tex = TK = 20-100 K
+- 2020A&A...644A.119P: Disk flux 0.29 Jy, ring flux 0.04 Jy
+- 2019AJ....158..162F: 23 free parameters (7 ring incl. centre offset, plus Gaussian sources)
+- 2019AJ....158..162F: Tkin 10-250 K; stellar mass 1 Msun
+- 2020ApJ...902..141S: Visibility weights multiplied by ~0.25 to match image RMS
+- 2020ApJ...902..141S: Protostar T=4000 K, luminosity free; inner disk radius 0.1 au; cavity or gap added
+- 2015ApJ...810..112O: inclination 49 deg, PA -35 deg
+- 2015ApJ...810..112O: CO binding energy 1150 K (1000 K tested); CO photodesorption yield 7e-3; cosmic ray ionization rate lowered to 1e-20 s-1 test
+- 2024ApJ...961..228S: 5 sigma threshold, sigma = 18 uJy/beam
+- 2020ApJ...892...99C: Free: i, M*, v*, r0, sigma_r, M_C0, T100, dx, dz; PA fixed 48.5 deg
+- 2020ApJ...892...99C: 200 walkers, 1500 steps, first 200 discarded
+- 2020ApJ...892...99C: Gas ring r0=110 au, width 80 au fixed; ionisation fraction 0.2
+- 2013ApJ...777L..25M: aperture radius 2.8 arcsec centered on star
+- 2013ApJ...777L..25M: smax fixed 3000 um; smin 4, 6, 8, 16 um
+- 2026A&A...705A.204J: q=3.5; M*=1.7 Msun; L*=9 Lsun; scattering angle 90 deg
+- 2026A&A...705A.204J: r_g=65 au; mu=28 or 2.3; rho_s=3.3 g/cm3; Q_pr=1
+- 2017ApJ...835..278S: maps at 25" ≈ 57 pc resolution, SPIRE 350 um as dust proxy
+- 2014ApJ...796..131O: lines resampled to 0.28 km/s, convolved to 0.96"x0.73", measured in 0.75"x0.75" box
+- 2014ApJ...796..131O: SO ring 70-120 AU, 32 K, SO abundance 9e-7 (5000x outside); disk 54 AU, 0.3 Msun; j=6.1e-4 km/s pc
+- 2014MNRAS.444.1821F: kappa = 1.7 cm2/g at 870 um
+- 2020ApJ...894...76W: ring at 4 au; grain density 2.5 g cm^-3; 2-4 au disk, 10 um to 25 km, q~3.5
+- 2020ApJ...894L..14L: Jeans: T 50–200 K, n = 1e6 cm-3, rho = n(H2) x 2.37 mH
+- 2021A&A...656A.133Q: spiral width grown in 500 pc steps until flux ratio between steps falls below 1.25
+- 2019ApJ...880...69Y: radial bin width 0.05"; innermost radius = beam 0.1" (14 au)
+- 2024A&A...689A.104D: alpha={1.05,1.2,1.3}, wsmooth={1e-1,1e-4}, Rmax=5.0", p0=1e-35, 300 radial points
+- 2024A&A...689A.104D: 80 walkers, 10,000 steps after 2000 burn-in
+- 2024A&A...689A.104D: uncertainty u = rms/(2 sqrt(n))
+- 2024A&A...689A.104D: 10% flux calibration uncertainty
+- 2020ApJ...891...48H: P.A. = 57.17 deg, i = 53.21 deg, 1 au bins
+- 2020ApJ...891...48H: 96 walkers, 20,000 steps, 10,000 burn-in; weights scaled down by 2.667
+- 2020ApJ...891...48H: 512 radial cells, 1024 poloidal cells, 64 azimuthal cells, 10^8 photon packages; parameters in Table 4
+- 2017MNRAS.466.4201W: 3 chains, 100000 links, thinned by 10, sigma = 374 uJy
+- 2014ApJ...791L...6W: fluxes fixed at 0.962 and 0.024 Jy (302 GHz), 1.190 and 0.048 Jy (346 GHz)
+- 2020MNRAS.497.2811K: 100 walkers, 1000 steps after burn-in
+- 2020MNRAS.497.2811K: 100 walkers, ~10,000 steps; 2.667 channels per resolution element
+- 2015ApJ...798..124R: model image 2048x2048 pixels of 0.015''; flux scaled as nu^(2+beta), beta=0.4
+- 2015ApJ...798..124R: Tex = 50 K, FWHM 1.9 km/s, inclination ~20 deg
+- 2018A&A...616A..88V: up to n=4 terms, 13 free parameters; rho ranges at least 100 klambda wide
+- 2018A&A...616A..88V: pixels with S/N < 2.5 masked
+- 2018A&A...616A..88V: Rc=250 AU, gamma=0.6, Mdisk fixed 0.1 Msun, h_c, psi, f_ls, chi grid
+- 2024ApJ...976..132H: Adam optimizer, learning rate 0.02, 15,000 iterations; 2000 posterior samples
+- 2024ApJ...976..132H: kappa_abs = 0.43 cm^2/g, amax=0.1 mm, n(a)∝a^-3.5, alpha = 1e-3
+- 2018A&A...615A.141B: line width and source size fixed (source larger than beam); dust continuum temperature = azimuthally averaged brightness temperature
+- 2020ApJ...898...36L: 100 walkers, 5000 steps, last 1000 used; grid 0.0001-4" step 0.0005"
+- 2020ApJ...898...36L: planet at 33 au, q=0.002, Rc=80 au, gamma=1, alpha=1e-3, vfrag=10 m/s, 180 size cells 1 um-2 m, 300 radial cells 1-300 au
+- 2017AJ....154..225S: 8/9 free parameters; disk centered on star
+- 2020ApJ...899...10T: p=2; R_flat 8000,2500,1500,900,300 au; aspect ratios 1.0 and 1.8; kappa=0.005, Td=10 K
+- 2013ApJ...765L..14Q: Vertical boundaries fixed: sigma_s = 0.32, sigma_m = 3.2
+- 2024A&A...690A.376S: avg_len = 1, n2 = 2, npix = 45 and 43, dist_normal = 3 x theta_beam, order = 3
+- 2024A&A...690A.376S: peak limit 5 x sigma, sigma ~3e21 cm-2
+- 2021AJ....161..271F: 22 free parameters (Model 1), 24 (Models 2, 3)
+- 2021AJ....161..271F: Surface density zero inside 70 au and beyond 600 au for Models 2 and 3
+- 2015A&A...581A..97S: Jy/beam to Jy/pixel factor 0.0185
+- 2025A&A...693A.151M: h fixed to 0.03 unless vertically constrained; temperature r^-0.5
+- 2018A&A...610A..24F: 80 chains, 45000 steps after 5000 burn-in
+- 2018A&A...610A..24F: bin size 30 klambda; s_max=2000 micron; p=3.5; chi=0.2; f_large=0.85
+- 2018A&A...610A..24F: T=190(R/100au)^-0.55, Sigma_gas=7.5(R/100au)^-1, grain size 1 mm, alpha 0 or 1e-4
+- 2024ApJ...971..129C: Rmax=2.1", N=300, p0=1e-15 Jy^2, alpha=1.3, wsmooth=0.1
+- 2024ApJ...971..129C: w_max = 17.1 au, w_min = h_p = 5.15 au
+- 2024ApJ...971..129C: rho_m=1.675 g/cm3, Q>2 for stability
+- 2018A&A...617A.120M: T_sub = 20–40 K, n_de = 1e5–1e8 cm-3, X[CO] = 1e-7–1e-4
+- 2021A&A...645A.145G: z/r increased until visual fit of observed substructure
+- 2021A&A...645A.145G: gas outer radius from H2CO
+- 2016ApJ...818...45S: Astronomical silicates, blowout size ~2.5-5 um, max grain 1 mm, ring width 2 AU, Gaussian profile, slope -3.5 to -3.7
+- 2016ApJ...818...45S: Table 2 component parameters
+- 2021A&A...648A..41V: opening angle at 1000 AU projected distance; cloud-velocity channels excluded
+- 2014ApJ...783L..13P: SR 21 ring+vortex inclination fixed to 15 deg
+- 2025ApJ...992L..15L: Tex = 15 K; mean molecular weight 2.72 m_H2; X(C18O)=2e-7; distance 5.1 kpc
+- 2020AJ....159..288M: Briggs robust 0.5
+- 2016ApJ...820L..25Y: uncertainty = sqrt(N_int) x sigma x dv
+- 2016ApJ...820L..25Y: 10,000 Monte Carlo iterations
+- 2016ApJ...820L..25Y: alpha = 0.001
+- 2025ApJ...986L..11S: 100 walkers, 10000 steps
+- 2025ApJ...986L..11S: alpha=1.20, w_smooth=1e-3, N=400, Rmax=4 Rout
+- 2025ApJ...986L..11S: flaring angle 0.02
+- 2021AJ....161...38O: Sigma(20au)=35 g cm-2, gamma=-1.3, H(20au)=2 au, p=0.3, mean molecular weight 2.37, T_atm=125 K at 10 au
+- 2019ApJ...877L..32M: ~10^6 iterations (100 walkers, 10,000 steps each)
+- 2015ApJ...799..204C: turbulent velocity 40 m/s; inclination ~7 deg
+- 2015MNRAS.447.3936M: 1-sigma single-channel error 30 mJy; 3-sigma 90 mJy
+- 2016PASJ...68...43K: Domain R/Rp 0.4-4.0 with 1024x2048 zones; smoothing length 0.6 hp; 1e4-1e5 orbits
+- 2016PASJ...68...43K: tau_unp = 9.5 (R/1AU)^-0.4
+- 2025ApJ...993...85Y: 100 walkers, 500 steps, 250 burn-in
+- 2025ApJ...993...85Y: PA sampling 10 deg; 3 sigma threshold
+- 2019ApJ...875...24C: background fit region 0.2-0.8 pc from spine; 0.1 pc peak-search mask
+- 2020ApJ...890..142P: r0 = 100 AU, q = -0.3, v0 = 0.3 km/s (0.6 for 4_14, 4_13; 0.15 for J1604-2130)
+- 2017ApJ...842....8M: natural weighting; rms 14 uJy/beam
+- 2017ApJ...842....8M: Free: R_belt, Δa, F_belt, F_star, i, PA, e_f, e_p, ω_f, Δα, Δδ
+- 2020ApJ...896..127K: R = 2500 au (0.5"), v = 3 km/s
+- 2018A&A...614A.106C: X_HD = 1e-5; zeta_cr = 1.26e-17 s^-1
+- 2018A&A...614A.106C: Grid search: outer boundary 100–140 AU in 10 AU steps; temperature drop 3–10 K in 1 K steps; CO depletion factors 2, 5, 10
+- 2026ApJ..1003..215F: alpha=1e-4, Stokes 0.01, surface density slope 1, flaring index 0.25, stellar mass ±3%
+- 2019ApJ...871..185L: 0 or 30 Msun central stellar mass
+- 2020ApJ...895L..46L: i = 60 deg, PA = 346 deg, d = 152 pc; two Gaussians
+- 2016ApJ...823..108B: ALMA strip width 5 pixels (0.5")
+- 2016ApJ...823..108B: r_in 35–70 au, r_out 130–170 au, p 0–2.0
+- 2014ApJ...785L..12C: alpha=1.5, beta=0.25, h_c=0.15 fixed
+- 2019A&A...629A..75B: kappa_HCO+ = 0.2; cavity gas eta = 0.2; kappa_H13CO+ = 2 (<200 au), 6 (>200 au)
+- 2024ApJ...966...59S: 50 walkers, 10000 steps; model pixel 3 mas
+- 2024ApJ...966...59S: Nuker priors: log10 alpha U(0,2), beta U(0,10), gamma approx uniform (-3,2); point flux U(0,1) mJy
+- 2019ApJ...874...89C: 100 models, Cycle 1 configuration 2, baselines >13 klambda
+- 2019MNRAS.484.1257M: stellar template Teff 5250 K, radius 0.77 Rsun; h>0.02 imposed
+- 2025SciA...11.4512O: inclination 65 deg, P.A. disk -55 deg, centrifugal barrier 250 au
+- 2019A&A...623A.150V: baselines up to 800 klambda (Sz 71) and 500 klambda (Sz 98)
+- 2019A&A...623A.150V: Sz 71: logL(912-1100A)=-5.2 (M1), -4.1 (M2); Sz 98: -3.4
+- 2025PASJ...77..572S: 2000 iterations, 100 walkers
+- 2019ApJ...877L..25M: T80au = 360 K
+- 2020ApJ...895L..18B: 144 chains, 15000 iterations including 10000 burn-in
+- 2016MNRAS.460L..10B: 120 walkers, 2500 timesteps; 6 free parameters (Rin, Rout, gamma, F_nu, I, Omega)
+- 2016MNRAS.460L..10B: sigma scaled by square root of beam area in pixels for correlated noise
+- 2013Natur.493..191C: CO abundance 1e-4, HCO+ 1e-7, T=50(r/50AU)^-1/2 K, gap well-depth 1/10, total mass 0.1 Msun
+- 2025A&A...700A.188C: nu1 = 95 GHz, nu2 = 233 GHz; 0.1 systematic error from flux calibration
+- 2019A&A...623L...6P: i=41 deg, PA=128 deg
+- 2019A&A...623L...6P: Tex = 30-300 K; ring 0.33-0.75 arcsec (40-90 au)
+- 2024AJ....167...66Y: PA 32 deg, i = 38.3 deg, M* = 1.29 Msun, d = 400 pc
+- 2024AJ....167...66Y: vsys = 4.25 km/s; r0 = 3,5,7,9 au grids combined; smoothed by 0.1'' Gaussian
+- 2019NatAs...3..517Z: weights w_pos=0.9, w_int=0.1; thermal broadening FWHM 19 km/s
+- 2020ApJ...895..126H: 70 walkers, 100,000 steps, burn-in 100 walkers x 1000 steps; uniform priors
+- 2019ApJ...871....5T: r_pk=95 au, sigma_r=10 au, Sigma_d,0=1.84e-2 g cm^-2, h_d=9.8 au, a_max=1 mm, gas Sigma ~ r^-1 for 8-320 au, h_g=13.2 au (r/95 au)^1.25, gas-to-dust 100
+- 2025ApJ...993...90S: T0=230 K at 1 au with r^-0.5; Mstar=1.0 Msun; inner r_peak 3 au sigma 2 au; outer r_peak 41 au sigma 5 au; Delta PA=-18.8 deg
+- 2019ApJ...886...14F: persistence = 20 K in 13CO brightness temperature
+- 2019ApJ...881...84S: 1024 walkers, 1.25e4 steps, burn-in 2.5e3
+- 2024ApJ...974..102S: alpha = 1.05, w_smooth = 1e-4
+- 2017MNRAS.464L..31H: inclination i = 0; W_f ~ 3 R_flat for p=2
+- 2016MNRAS.460.2933M: Free parameters: r0, h, Δr, Mdust, PA, i, RA and Dec offsets; h lower limit 0.03
+- 2018RAA....18...31P: ring interval 1<R<2 arcsec; central source excluded with R'>0.5 arcsec
+- 2018RAA....18...31P: |Vz|<2 km/s restriction
+- 2024A&A...689A..65R: Integration radius 3 arcsec (12CO, 13CO), 2 arcsec others
+- 2016ApJ...826...26T: T_d = 10 K, kappa = 1.2e-2 cm2/g for column density map
+- 2016A&A...591A.108O: 200 walkers, 500 burn-in, 2000 iterations; alpha_in = 5 fixed
+- 2017ApJ...843..150F: 80 walkers, 1000 steps, first 500 burn-in
+- 2025ApJ...984L..19Y: 8 free parameters; 5000 steps, 24 walkers; median from last 4200 steps
+- 2025ApJ...984L..19Y: a_rep = 0.6 mm from a_max = 1.4 mm; X_CO = 7e-4; alpha = 1e-3, 2e-4, 4e-5
+- 2017ApJ...839...86H: about 100 walkers, 1000 steps, ~100 step burn-in
+- 2018ApJ...869L..43H: Elias 27 PA 118.8°, inc 56.2°; IM Lup PA 144.5°, inc 47.5°; WaOph 6 PA 174.2°, inc 47.3°
+- 2018ApJ...869L..43H: Elias 27: every 8° for R=50-110 au (fiducial), every 6° for R=110-230 au (mid-res); IM Lup: 15° for 25-75 au, 6° for 75-110 au; WaOph 6: 18° for 25-50 au, 9° f…
+- 2018ApJ...869L..43H: Elias 27 contrasts from mid-res image (~80 mas beam)
+- 2025ApJ...990..183U: 180 walkers, 9000 steps, 30% burn-in; initial 2700-step run to set starting positions
+- 2025ApJ...990..183U: Ranges: T 5-200 K, log Sigma_d -4 to 1.5, log a_max -2 to 3 mm, f_AC 0-1, log f_fill -2 to 0, p_d 2.5-4
+- 2016ApJ...829....6W: grain density 2.5 g/cm3, size 1 mm, T_star 10500 K, size distribution M_s ∝ s^-0.5
+- 2018ApJ...869L..44K: 250 walkers, burn-in 1000 and 500 steps, 1500 sampling steps; 6 free parameters
+- 2018ApJ...869L..44K: HT Lup A unsharp mask: 66 mas FWHM Gaussian, weight 0.95
+- 2024JKAS...57..163L: n=2.2e10 (inner), 6.0e7 cm-3 (outer); CR 1e-17 s-1 fiducial
+- 2018ApJ...861...72C: Tkin = 75 K
+- 2018ApJ...860....7R: Grid ranges in Table 2, e.g. R_cav 8-20 au, delta_cav 1-0.001, i 40-70 deg
+- 2024NatAs...8..587F: Free: J0, sigma_G, delta RA, delta Dec; inclination 46.7 deg and PA 138.0 deg fixed
+- 2020MNRAS.493L.108B: 0.2'' uv-taper; first moment with 2.5 sigma clip
+- 2017ApJ...850L...6A: best PA ~140 deg, i ~45 deg, peak at ~23''
+- 2018ApJ...866L...6C: 120 walkers, 50e3 steps after 30e3 burn-in
+- 2018ApJ...866L...6C: alpha=0.014, disc mass 20 MJ within 200 au, 350x512 cells, 5.6-378 au
+- 2026ApJ..1001..124M: N=400, alpha=1.3, w_smooth=0.01, Rmax=3"
+- 2019ApJ...875...87D: ring width fixed to 0.1 au
+- 2018ApJ...859...32P: radial grid 0-500 au in 0.5 au steps; last 700 steps used
+- 2024A&A...689A..85G: Gaussian ring I(r)=f exp(-0.5((r-r_k)/sigma_k)^2); gamma_SB2=1
+- 2019ApJ...872...92F: Tex = 20 K; also 1071 K and 237 K
+- 2019ApJ...872..112V: gamma free 0-1; gap center/width varied in 1 AU steps; 4-8 free parameters
+- 2019ApJ...872..112V: freeze-out T: N2 13.5 K, CO 25.5 K, CH4 29 K, CO2 66 K, NH3 80 K
+- 2024ApJ...965..147B: Annulus width 1/4 beam FWHM (~80 mas); weights proportional to r^2; centre offset (-52, -155) mas
+- 2018ApJ...867L..14V: gamma = 1; gap factors for dust 0.010, 0.014, 0.17 and gas 0.4, 0.29, 0.56 (Model A)
+- 2018ApJ...867L..14V: 190 radial x 60 vertical cells, time-dependent chemistry up to 1 Myr
+- 2025MNRAS.543.2723P: 7 free parameters (f0, sigma_r, R_peak, inc, PA, dRA, dDec); 8 walkers per parameter; 30,000 steps then final 10,000; uniform priors; 256x256 pixels of 0.02 ar…
+- 2018ApJ...865...37M: Free: i, PA, dRA, dDEC, and a_i, sigma_i, x_i per ring
+- 2018A&A...619A.161C: 9 model parameters + center (x_c,y_c) + inclination; PA fixed at 62 deg
+- 2018A&A...619A.161C: 120 walkers, 24000 likelihoods
+- 2018A&A...619A.161C: gap width ~20 au at ~68 au, alpha = 1e-3
+- 2024ApJ...963..134Y: wedge 0.25"-0.6" radial, 60-150 deg azimuthal in disk frame
+- 2019MNRAS.485..739M: T(R)=T100 (R/R100)^0.5, T100=25 K
+- 2025ApJ...984L..57O: 2000 radial bins 0.1-1000 au, 200 size bins, fragmentation velocity 1 m/s inside and 10 m/s outside the water ice line
+- 2016ApJ...823L..18H: Sigma_c=5e-5 g/cm2, gamma=1, r_c=100 AU, B=3, r_ring=150 AU, sigma_ring=20 AU
+- 2016ApJ...823L..18H: turbulent broadening xi = 0.01 km/s
+- 2025ApJ...984L..21B: 2000 burn-in steps plus 4000 sampling steps; r_in=20 au, r_out=100 au; PA fixed, vLSR=0, distance 140 pc
+- 2017ApJ...839...43O: inclination 7 degrees
+- 2017ApJ...839...43O: (z/r)up=0.3, rout=100 AU fixed; vary inner radius, lower boundary, power law
+- 2026A&A...705A.193L: 183 GHz integrated -8.5 to 22.5 km/s
+- 2024ApJ...970..153A: Adopted dx=5±7 mas, dy=1±7 mas, i=-36.3±0.5 deg, PA=327.7±0.7 deg, vsys=5100±10 m/s
+- 2019AJ....158...15P: i = 12.5±0.5 deg
+- 2019AJ....158...15P: Only signal above 5 sigma used; inclination explored 9-16 deg
+- 2017A&A...600A..72F: Free parameters psi, gamma, h_c, R_c, Delta_gd, Sigma_c, radii and depletion factors, ranges in Table
+- 2026ApJ..1000L..15F: Region within ~0.3'' excluded from discussion
+- 2017ApJ...839...99P: radial grid 1-500 au in 0.1 au steps; 4000 steps, 1000 walkers, burn-in ~1000 steps
+- 2016ApJ...831..101B: Gas-to-dust mass ratio 100; dust size distribution power law exponent 3.5; cosmic ray rate ~1e-19 s^-1; models sampled at 5 Myr (TW Hya) and 1 Myr (DM Tau)
+- 2019ApJ...882L..31B: Model 1 13C17O abundance 5.39e-10 relative to H2; midplane CO depleted by 1e-4 below 19 K; atmosphere by 1e-8
+- 2017ApJ...840...23L: inner disk PA fixed 93 deg, inclination fixed 75 deg
+- 2019ApJ...871..107F: PA=86 deg, i=35 deg
+- 2019ApJ...871..107F: gaps at 54-70 au and 87-119 au, ring at 70-87 au; same delta in both gaps
+- 2018ApJ...869L..48G: uv-points 10 to 10000 kλ in 10 kλ steps; 27 free parameters (23 ring, 4 geometry)
+- 2017ApJ...835..228T: d=0.45, M*=0.7 Msun, alpha=1e-4–1e-3
+- 2018ApJ...869L..42H: 30 walkers, 20,000 steps, 500 burn-in; uniform priors on dx, dy, r0 (-4.5",4.5"), ln sigma^2 (-15,-5)
+- 2019AJ....157..237R: wedge opening angle 20 deg
+- 2019AJ....157..237R: planet at 20 au, inclination 32 deg, central mass 1.75 Msun
+- 2017A&A...606A.125S: DCO+: 7 parameters (Rin, R1, R2, three abundances); DCN, N2D+: Rin, Rout, X
+- 2019MNRAS.482..698C: Free parameters: flux, major/minor FWHM, PA, offsets <1''
+- 2019ApJ...878...16P: 200 walkers, 2000 steps, uniform priors (r_peak 10-80 au, sigma 1-50 au, A 0-1, sigma_inner 0.1-10 au, F_total 0-3 Jy)
+- 2018ApJ...868L...5K: 11 free parameters, flat priors, 100 walkers, 500 burn-in + 500 steps
+- 2016A&A...586A..99H: PA 155 deg, i = 6 deg
+- 2016A&A...586A..99H: Gap centered at 20 au
+- 2017ApJ...840...32T: inclination 23.2 deg, rotation axis PA -36 deg
+- 2016ApJ...832..204Y: Radial ranges R<300 AU (DCO+, H2CO), R<200 AU (DCN), 100<R<300 AU (N2D+)
+- 2019NatAs...3..278K: 64 walkers, 1000 steps after 1000 step burn-in; scale height 0.05r; 2048 pixels of 4.6 mas
+- 2018A&A...618A.120L: pv diagrams every 0.15" from z=0.1" to 1.75"
+- 2018ApJ...868..113T: three cases: flared, thin, flared without continuum subtraction
+- 2019A&A...628A..95M: 150 walkers, ~20000 steps (1 disk); 200 walkers, >25000 steps (2 disks); 400 walkers, 31000 steps (UZ Tau)
+- 2017A&A...607A..55V: Two disks sharing center, inclination and PA, plus offset Gaussian
+- 2016MNRAS.458L..29C: Beam FWHM 0.16 arcsec along major axis
+- 2016ApJ...821L..16C: T0 ≃ 70-140 K at R0 = 10 au; q = 0.5-0.6
+- 2018ApJ...869L..46D: 100 walkers, 500 steps, last 250 used; errors multiplied by sqrt(70)
+- 2017ApJ...838...97M: rings of beam width, i=13 deg, PA=5 deg
+- 2017AJ....153....7Y: Profile fit L=A exp(-r^B/C^2) over 15 to 140 pixels
+- 2019ApJ...876...72L: Disk inclination, PA, stellar mass from Table 1
+- 2019A&A...625A.118K: inclination 51.7°
+- 2019A&A...622A..75L: PA = 148 deg from imfit; robust 0.5
+- 2019A&A...622A..75L: Mp range 0.4-3 MJ; simulated 0.4-2 MJ
+- 2019NatAs...3..314L: X_mol = 4e-9 above 80 K; FWHM 2 km/s
+- 2016Natur.535..258C: alpha = ln(F232.6/F218.0)/ln(218.0/232.6)
+- 2018MNRAS.475.5296D: annuli width a quarter of linear resolution
+- 2018A&A...615L..10M: bins 0.12" (13CO, 1.3 mm), 0.15" (12CO)
+- 2018MNRAS.477.5104C: origin search radius 50 mas
+- 2016ApJ...831L..12K: Sigma0max 0.6, Sigma0min 0.008 g cm^-2; rc 170 au; rw 27 au; theta_d 30 deg; phi_d 60 deg; T 36 K; inclination 27 deg; PA 71 deg
+- 2019A&A...632L..12H: distance 59.5 pc
+- 2016ApJ...820...54K: T0=280 K, qt=0.3, tau0=2.0, p=0.3, sexp=4, Rexp=120 AU
+- 2018ApJ...869L..41A: Relative flux scales consistent within 5%
+- 2018ApJ...864..133T: 4 au annuli
+- 2019ApJ...883...71C: error = rms/(Omega_ring/Omega_beam)^0.5
+- 2016ApJ...820...19T: rotation axis 7.5 deg East of North as azimuth reference
+- 2017A&A...605A..21C: Keplerian mass 2.3 Msun
+- 2018A&A...617A..28S: i = -34 deg, PA = 27 deg, d = 140 pc, M* = 0.55 Msun
+- 2017ApJ...846...70P: 512 radial x 950 azimuthal cells, 0.2 to 6 r_p, h0=0.14, flaring 0.25, disk mass 2 MJup
+- 2019ApJ...876L..13S: Ring 0.8'' to 2''
+- 2016ApJ...821...82O: T = 310 (r/1 AU)^-0.57 K
+
+
+### Assumptions (bibcode: value)
+- 2018ApJ...869...17L: Axisymmetry
+- 2018ApJ...869...17L: alpha=1e-4 or 1e-2; simulations for 1 Msun star rescaled by mass ratio
+- 2018ApJ...869...17L: flaring angle 0.05; photospheric luminosity only
+- 2025A&A...697A..64V: Gas scale height 10 au at 100 au with exponent 1.1; grain sizes 0.005 µm-3 mm, n(a)∝a^-3.5, 100 bins; gas-to-dust 100; Sc=1.5; initial kappa=13.27 cm2/g, T=20(…
+- 2025A&A...697A..64V: Stellar radius artificially increased for GO Tau, GW Lup, HL Tau, Oph163131 to warm models
+- 2025A&A...697A..64V: Rings are pressure maxima
+- 2018ApJ...859..165S: T = 20 K, kappa = 0.024 cm2/g at 1.3 mm, d = Ophiuchus distance
+- 2020A&A...644A.119P: LTE, optically thin, o/p ratio of H2CO from Guzman+18
+- 2020A&A...644A.119P: kappa(1.3mm)=2.3 cm2/g, Tdust=20 K, d=121 pc
+- 2019AJ....158..162F: Blackbody grains, opacity 2.3 cm^2/g, constant surface density
+- 2019AJ....158..162F: Gas co-located with belt, Keplerian, optically thin
+- 2019AJ....158..162F: Single inner perturber; circumplanetary material fills Hill radius
+- 2020ApJ...902..141S: Distance 400 pc; axisymmetric models; Ulrich envelope
+- 2015ApJ...810..112O: Inclination and PA from Pinte08, Panic09
+- 2015ApJ...810..112O: CO and HCO+ densities scaled by 500 and 70 for C18O and H13CO+ (ISM 16O/18O, 12C/13C)
+- 2024ApJ...961..228S: kappa=2 cm2/g, T_dust=20 K, gas-to-dust 100, d=137 pc
+- 2020ApJ...892...99C: T(r)=T100 sqrt(100 au/r); mu=14; line broadening 1 km/s; Gaussian line profile
+- 2020ApJ...892...99C: ISM isotopologue ratios 13CO/12CO=1.4e-2, C18O/12CO=1.8e-3; constant CO production rate; well-mixed C and CO; ISRF of Draine 1978
+- 2013ApJ...777L..25M: Intrinsically circular ring
+- 2013ApJ...777L..25M: Silicate (olivine) + amorphous carbon, Mie theory, size exponent -3.5
+- 2026A&A...705A.204J: Spherical astrosilicate grains, Mie theory, circular planetesimal orbits
+- 2026A&A...705A.204J: Black-body gas temperature, vertical hydrostatic equilibrium, Gaussian gas profile
+- 2017ApJ...835..278S: optically thin HI, no opacity correction
+- 2014ApJ...796..131O: static spherically symmetric escape probability; chi2<10 accepted
+- 2014ApJ...796..131O: edge-on, inclination 90 deg
+- 2014ApJ...787...48X: Kroupa IMF, BC03 SSP age 4e8 yr, A_H=0.46
+- 2014MNRAS.444.1821F: Blackbody grains, face-on disk, distance 13.6 pc
+- 2014MNRAS.444.1821F: Optically thin, circular face-on thin ring
+- 2020ApJ...894...76W: Grains perfect emitters (mm-grain case)
+- 2016MNRAS.461.4276D: Radial wind, CO dissociated at 13 arcsec
+- 2019ApJ...880...69Y: (3-2) and (1-0) trace the same volume; ratio constant within each bin
+- 2019ApJ...880...69Y: T_d from Okuzumi16; T_bg 2.73 K
+- 2019ApJ...880...69Y: constant HCO+ abundance between 17 and 37 au
+- 2019ApJ...880...69Y: vertically isothermal disk
+- 2024A&A...689A.104D: azimuthally symmetric, geometrically thin, optically thick disk
+- 2024A&A...689A.104D: axisymmetric; i=5.8 deg, PA=151.6 deg fixed
+- 2019ApJ...872..200H: optically thin; outer radius 2.1" (5 sigma contour)
+- 2019ApJ...872..200H: constant expansion velocity ring
+- 2020ApJ...891...48H: Distance 159 pc; ~10% flux calibration uncertainty per band
+- 2020ApJ...891...48H: Axisymmetric, geometrically thin
+- 2020ApJ...891...48H: p = 3.5, a_max = 1 mm; vertically isothermal
+- 2017MNRAS.466.4201W: Gaussian radial profile, vertical Gaussian width 1 deg, point source at phase centre
+- 2017MNRAS.466.4201W: alpha_pl=1.84±0.02 (dust 45±5 K), beta_s=1.8±0.2
+- 2023PASJ...75..225M: Ring is intrinsically circular, tilted, symmetric about polar axis and equatorial plane
+- 2023PASJ...75..225M: Ionized gas 10000 K around 20 Msun star for pressure scale height
+- 2014ApJ...791L...6W: Circular symmetry
+- 2014ApJ...791L...6W: kappa=10 cm2/g at 300 GHz, Tdust=60 K; 80 K and 40 K for inner/outer rings
+- 2024ApJ...967...15K: LTE
+- 2024ApJ...967...15K: Distance 2.38 kpc; also tested 1.7 kpc
+- 2020MNRAS.497.2811K: size distribution index -3.5, max grain 1 cm, min = blowout size, astrosilicates 2.7 g/cm3, kappa~1.3 cm2/g
+- 2020MNRAS.497.2811K: LTE, mu=14, axisymmetric
+- 2015ApJ...798..124R: axisymmetric, geometrically and optically thin disk; constant dust opacity across disk
+- 2015ApJ...798..124R: LTE
+- 2026ApJ..1004..182H: azimuthally symmetric, optically thin, Gaussian vertical profile with constant aspect ratio
+- 2026ApJ..1004..182H: age 300 Myr, a_disk=50 au, forced eccentricity 0.03
+- 2018A&A...616A..88V: 10% flux calibration error in both bands gives 0.42 error on alpha
+- 2018A&A...616A..88V: gas-to-dust ratio 100; smooth disks without rings or gaps
+- 2024ApJ...976..132H: Geometrically thin disk (flared surface for SO 897); posterior approximated as multivariate normal
+- 2024ApJ...976..132H: mu = 2.37; h_p uncertainty ~25%
+- 2024ApJ...976..132H: One planet per gap; DSHARP dust composition
+- 2018A&A...615A.141B: Spherical symmetry; LTE; dust temperature = CH3OCHO Tex for N_H2
+- 2020ApJ...898...36L: axisymmetric profiles; Gaussian inner disk for DS Tau, tapered power law for GO/DL Tau, Gaussian rings
+- 2020ApJ...898...36L: Gas-to-dust 100, 20% dust lost to drift, disk mass 5.8 MJup
+- 2017AJ....154..225S: Optically and geometrically thin disk; Td = 278.3 L*^0.25 r^-0.5; L* = 6 Lsun; d = 83.8 pc
+- 2020ApJ...899...10T: Td = 10 K, kappa = 0.005 cm2/g
+- 2013ApJ...765L..14Q: Keplerian rotation; Qi11 disk structure; constant abundance in a layer; power-law column density
+- 2021AJ....161..271F: Dust: 70% astrosilicate, 15% amorphous carbon, 15% water ice; size power law -3.5, 1 um to 1 cm; Band 7 opacity 1.9 cm2/g
+- 2021AJ....161..271F: Band 6 emission scaled from Band 7 via free alpha_mm
+- 2015A&A...581A..97S: Compact astronomical silicate grains, inclination 90 deg, s_max 2 mm
+- 2025A&A...693A.151M: Gaussian radial profile; large grains behave as blackbodies
+- 2018A&A...610A..24F: axisymmetry; flat priors
+- 2018A&A...610A..24F: distance 126 pc, Mstar 0.9, fixed geometry i=35, PA=86
+- 2024ApJ...971..129C: Axisymmetric emission; i=29 deg, PA=45.7 deg
+- 2024ApJ...971..129C: Passive flared disk Td, phi=0.02, L*=6 Lsun, scaled by 0.5, mu=2.33, Sc=1, Gaussian rings
+- 2024ApJ...971..129C: Sigma_g/Sigma_d=100 for Q profile
+- 2018A&A...617A.120M: cosmic-ray ionization rate 1.26e-17 s-1; ortho-to-para H2 lower limit 1e-3; sources centred on and dominated by A
+- 2021A&A...645A.145G: Substructures azimuthally symmetric
+- 2016ApJ...818...45S: Inner belt inclined 66 deg like outer belt
+- 2016ApJ...818...45S: Inner structures share cold belt i=66 deg, PA=156 deg
+- 2021A&A...648A..41V: mu=2.76, X_CO=1e-4, Tbg=2.7 K, outflow perpendicular to disk, optically thin
+- 2014ApJ...783L..13P: Ring emission axisymmetric; PA fixed to 62 deg (SAO 206462) and 16 deg (SR 21)
+- 2025ApJ...992L..15L: LTE, optically thin C18O
+- 2020AJ....159..288M: Gaussian radial profile, FWHM = 0.2R
+- 2012ApJ...750L..21B: Ellipses are sky-projected circles
+- 2016ApJ...823...26E: XCO = 1.8e20, D = 35 Mpc
+- 2016ApJ...820L..25Y: axisymmetric disk for map reconstruction
+- 2016ApJ...820L..25Y: HCO+ abundance constant across gaps
+- 2025ApJ...986L..11S: kappa=2 cm2/g, T~12 K, dust-to-gas 100 for disk mass
+- 2025ApJ...986L..11S: Low viscosity (alpha<0.01), one planet per gap
+- 2018ApJ...869..158F: Spherical symmetry, isothermal Td = 15 K
+- 2021AJ....161...38O: i = 7 deg, PA = 155 deg
+- 2019ApJ...877L..32M: Axisymmetric surface brightness I∝r^α with T∝r^-0.5
+- 2019ApJ...877L..32M: F4 star with mass ~1.4 Msun
+- 2015ApJ...799..204C: 12C/13C=70±10, 18O/16O=540±30
+- 2025NatAs...9.1833L: circular geometry, Keplerian rotation V∝r^-0.5
+- 2015MNRAS.447.3936M: CO co-located with dust, Keplerian, axisymmetric ring
+- 2016PASJ...68...43K: alpha=1e-3, beta=1.5, M*=1 Msun; constant opacity; gas and dust gap widths similar (weak dust filtration)
+- 2025ApJ...993...85Y: deprojected outer ring is circular; Gaussian ring and beam
+- 2025ApJ...993...85Y: arc coplanar with outer ring (same inclination and PA)
+- 2019ApJ...875...24C: cylindrical filament, w = 2 R_flat
+- 2020ApJ...890..142P: Freeze-out temperature range 17-25 K for model-based snowlines
+- 2017ApJ...842....8M: Negligible vertical thickness (opening angle ~1 deg); temperature T ∝ r^-0.5; ω_p random 0 to 2π
+- 2020ApJ...896..127K: edge-on geometry, so mass is a lower limit
+- 2014Natur.514..600D: gas-to-dust 100, kappa(1.3 mm)=0.02 cm2/g
+- 2024A&A...690A..46S: Passively heated flared disk, flaring angle 0.02 rad, L=1.7 Lsun
+- 2020ApJ...898..146M: Narrow unresolved Gaussian belt at 14-40 au
+- 2018A&A...614A.106C: Gas-to-dust ratio 80, Rc=100 AU, Teff=8400 K
+- 2018A&A...614A.106C: Warm abundance tuned to match 40–70 AU intensity
+- 2026ApJ..1003..215F: MRN distribution, total dust-to-gas 0.01
+- 2026ApJ..1003..215F: PDS 70c solely forms the ring; circular orbit
+- 2019ApJ...871..185L: Constant 30 K fiducial, or radial profile; optically thin; gas-to-dust 100; flattened rotating
+- 2020ApJ...895L..46L: Axisymmetric disk
+- 2016ApJ...823..108B: Fixed a_min 5 micron, a_max 5000 micron, q=3.65, astronomical silicates; 4 deg half-opening wedge, edge-on
+- 2020ApJ...902..132B: T_dust = 20 K, kappa_dust = 0.02 cm2/g
+- 2026ApJ..1001L...1T: Ring density between compact condensations and cold envelope; CO freeze-out below ~20 K
+- 2026ApJ..1001L...1T: B~1e-3 G, n(H2)<~1e5 cm^-3 in ring interior
+- 2019A&A...629A..75B: Inclination 41 deg, PA 3 deg, stellar mass 2.5 Msun, azimuthal symmetry
+- 2019A&A...629A..75B: HCO+/H13CO+ = 12C/13C = 69; CO/H = 1.4e-4 above 20 K; gas-to-dust 100; LTE
+- 2024ApJ...966...59S: Uniform priors; inclination prior ∝ sin i
+- 2019MNRAS.484.1257M: Gaussian vertical profile; all particles share the same eccentricity and pericentre
+- 2023ApJ...956L..16T: LTE, T = 25 K, [H2]/[C18O] = 5.9e6, ring thickness ~1,000 au (or 100 au)
+- 2019A&A...623A.150V: UV excess varied up to factor 10 from accretion-based estimate
+- 2025PASJ...77..572S: Flux converged when difference <0.01%
+- 2019ApJ...877L..25M: beta=1, kappa150=0.59 cm2/g, gas-to-dust 100, Tdust ∝ r^-0.4
+- 2020ApJ...895L..18B: T_dust = 30 (L/38 Lsun)^1/4 (r/100 AU)^-1/2; kappa 10 cm2/g at 1000 GHz, index 1; d=402 pc
+- 2016MNRAS.460L..10B: Blackbody grains; star at offset peak; stellar flux 17 uJy; sharp edges, single power law
+- 2020A&A...633A.126B: Same opening angle for both lobes
+- 2019A&A...623L...6P: LTE, optically thin, CH3OH co-spatial with H2CO
+- 2024AJ....167...66Y: emission from the midplane, no vertical extent
+- 2024AJ....167...66Y: midplane emission, local width 0.05 km/s
+- 2019NatAs...3..517Z: Keplerian rotation; only half of ring emits
+- 2020ApJ...895..126H: Axisymmetric disks
+- 2017MNRAS.465.2595M: Inclination 37 deg, same as outer belt
+- 2015ApJ...806L..15K: c = 1 km/s (T/300 K)^1/2, stellar mass 1 Msun
+- 2019ApJ...871....5T: Gaussian ring emission for beam deconvolution
+- 2019ApJ...871....5T: Gas-to-dust mass ratio 100; CO abundance 1e-4; HCO+ 1e-9; turbulence 120 m/s; LTE
+- 2025ApJ...993...90S: kappa=2.3 cm^2/g, T_dust=20 K, d=160.1 pc, optically thin
+- 2025ApJ...993...90S: f_set=1.0, amorphous olivine opacity (50% Mg, 50% Fe)
+- 2020A&A...636L...4M: System age 10 Myr; stellar L' = 6.8 mag for Keck mass conversion
+- 2019ApJ...881...84S: Dust blackbody temperature T ∝ r^-1/2
+- 2016Sci...353.1519P: gas-to-dust ratio 100; kappa 2.4 cm2/g (RT), 2.3 cm2/g (Toomre Q)
+- 2016Sci...353.1519P: Ring and spirals share single i and PA
+- 2024ApJ...974..102S: Same geometry assumed for whole disk, azimuthal symmetry
+- 2024ApJ...974..102S: gas temperature 20 K, c_s ~0.3 km/s
+- 2020ApJ...889..140Y: Ab has same s, sigma_h, sigma_c as Aa
+- 2016MNRAS.460.2933M: Astrosilicate, 3.5 g/cm3, Dohnanyi q=-3.5, amin 1.3 um, amax 1 cm, kappa_abs=1.1 cm2/g at 1.3 mm
+- 2018RAA....18...31P: Circular ring tilted about a rotated x axis
+- 2024A&A...689A..65R: Midplane emission except 12CO/13CO tapered power-law surface; distance 113 pc
+- 2016ApJ...826...26T: Uniform T_d, spherical symmetry, optically thin
+- 2020ApJ...895...84Y: Radial structure approximated as Gaussian
+- 2016A&A...591A.108O: circular disk
+- 2017ApJ...843..150F: d=122 pc, PA=312 deg, Mgas=0.09 Msun, XCO=1e-4 for CO, LTE, ring sigma=0.1 R, v_turb proportional to sound speed
+- 2025ApJ...984L..19Y: T_mid = T100 (r/100 au)^-0.5; grain size index -3.5; amin 1e-5 cm; DSHARP opacities
+- 2019ApJ...886L...4Z: Rotating ring; 55<i<90 deg from IR SED
+- 2017ApJ...839...86H: geometrically flat, optically thin disk; astrosilicate
+- 2025ApJ...990..183U: Temperature prior from luminosity L*=6 Lsun (sigma 5 Lsun), grazing angle uniform 0.01-0.3; uniform priors otherwise
+- 2025ApJ...990..183U: Inclination effect via mu = cos i; flux calibration errors added to sigma
+- 2019ApJ...875...62Y: nH ~1e5 cm-3 from Loren83
+- 2016ApJ...829....6W: Black-body grains, albedo 0, emissivity 1 (Q_nu=2s/lambda for large wavelengths); kappa=3 cm2/g equivalent
+- 2018ApJ...869L..44K: Both spirals share same center and geometry
+- 2024JKAS...57..163L: Isotopologue ratios similar to main species ratios
+- 2024JKAS...57..163L: UV fully shielded in midplane; CR uniform; burst only affects temperature
+- 2016MNRAS.460..627K: Flow axis perpendicular to disk; inclination 44 deg to line of sight
+- 2020ApJ...889L..24P: disk orientation from Casassus2019
+- 2018ApJ...860....7R: Grain size distribution n(a) ∝ a^-3.5, a_min = 0.005 um; alpha fixed at 0.01; dust-to-gas 0.01
+- 2024NatAs...8..587F: Distance 140 pc
+- 2017A&A...607L...6T: Inclination i ~ 87 deg for deprojecting speeds
+- 2017ApJ...850L...6A: Circular belt tilted; T_d ~10 K with same temperature law
+- 2018ApJ...866L...6C: fragmentation velocity 10 m/s; dust-to-gas 0.01; a^-3 size distribution of compact silicate grains
+- 2019ApJ...882...31A: orbital velocity equals radial velocity at apocentres of inner ellipse
+- 2021ApJ...908....8C: disk inclination 6 deg
+- 2024A&A...689A..85G: Dust mass: T_dust 20 K, wavelength 1.33 mm, kappa 2.254 cm2/g, distance 140±10 pc
+- 2017ApJ...843...83W: Hot Core dust 100-150 K, ~1000 AU radius spherical blackbody
+- 2020ApJ...893..101L: Optically thin emission except CS and N2H+; CH3OH Tex = 25 K
+- 2019ApJ...872...92F: LTE; NLTE would likely raise the limit
+- 2019ApJ...872..112V: only inner cavities included in surface density, not outer gaps
+- 2024ApJ...965..147B: 13CCH radial profile follows C2H
+- 2020A&A...635L...9P: Proper motion and distance of GG Tau A are those of GG Tau Ba
+- 2018ApJ...867L..14V: Distance 101.5 pc
+- 2025MNRAS.543.2723P: Structured if R_peak > 0.05 arcsec, smooth otherwise; unresolved size upper limit 0.1 arcsec (14.5 au)
+- 2018ApJ...865...37M: Axisymmetric emission
+- 2024RAA....24g5017M: Inclination 46.7, PA 133.3, M*=2 Msun, d=101 pc
+- 2024ApJ...963..134Y: inclination 50 deg, PA 100 deg for deprojection
+- 2019MNRAS.485..739M: p=3.5 size distribution; optically thin
+- 2025ApJ...984L..57O: Planet on circular coplanar orbit, no planet growth or migration
+- 2016ApJ...823L..18H: PA 86 deg, inclination 38 deg from Andrews et al. 2009
+- 2016ApJ...823L..18H: LTE; Keplerian velocities; ISM isotopologue ratios 69 and 557; T_atm,10=150 K, q_atm=0.5; C18O traces CO column
+- 2017ApJ...839...43O: LTE justified by densities above 1e6 cm-3
+- 2017ApJ...851L..23C: Gaps are fully evacuated
+- 2017ApJ...851L..23C: Stellar mass 1.0 Msun
+- 2025ApJ...991..176W: Azimuthally symmetric Gaussian ring
+- 2017A&A...600A..72F: k=2 cm2/g at 230 GHz; Tdust gap 50 K, cavity 150 K
+- 2017A&A...600A..72F: Teff 8400 K blackbody, L=10 Lsun, d=117 pc, i=13 deg, PA=5 deg, chi=f_large=0.2, [C]/[H]=2.4e-4
+- 2017ApJ...839...99P: Mid-plane temperature from van der Marel et al. 2015 models
+- 2025ApJ...994...98F: Optically thick LTE gas so T_gas = T_b
+- 2016ApJ...831..101B: Same TW Hya UV field used for both systems; 8:2 astrosilicate:graphite
+- 2019ApJ...882L..31B: distance 122 pc
+- 2019ApJ...882L..31B: interstellar isotope ratios consistent with Qi et al. 2011; fit only beyond 50 au
+- 2017ApJ...840...23L: distance 145 pc
+- 2017ApJ...840...23L: stellar mass 0.85 Msun
+- 2019ApJ...871..107F: Small grain surface density follows large grains; elemental C and O abundances 1.35e-4 and 2.88e-4
+- 2018ApJ...857...18S: Lynden-Bell & Pringle surface density, Ulrich envelope, 10% uncertainty on literature photometry and IRS points
+- 2018ApJ...857...18S: Stellar mass ~0.25 Msun at ~0.5 Myr from Baraffe models
+- 2018ApJ...869L..48G: Axisymmetric emission; number of rings chosen by visual inspection
+- 2017ApJ...835..228T: d = 59 pc
+- 2016ApJ...818..158A: Star at the continuum peak
+- 2016ApJ...818..158A: M*=0.55 Msun; Kwon11 disk model
+- 2016ApJ...818..158A: kappa0=0.01 cm2/g, nu0=230 GHz, beta=0.729
+- 2016PhRvL.117y1101I: Gaps in dust and CO have same width and radius; CO abundance 5e-5
+- 2019AJ....157..237R: viscosity and scale height fixed; only planet mass varied
+- 2016ApJ...829L..35T: Disk inclination 7 deg
+- 2016ApJ...829L..35T: viscosity alpha=1e-3, aspect ratio 0.05
+- 2017A&A...606A.125S: vertically averaged abundances, no vertical distribution
+- 2019ApJ...878...16P: distance 114.4 pc
+- 2018ApJ...868L...5K: Inclination and P.A. fixed to ellipse-fit values
+- 2016A&A...586A..99H: Gap width of 5 Hill radii for planet mass conversion
+- 2017ApJ...840...32T: Free-free jet spectral index 0.6
+- 2016ApJ...832..204Y: Geometrically thin disk, Keplerian rotation
+- 2019NatAs...3..278K: CO orbits a point mass of 1.28 Msun
+- 2018A&A...618A.120L: Narrow circular ring at each z; V0=0 (no orbital motion) for inclination
+- 2019A&A...628A..95M: axisymmetric brightness profile, independent geometry per disk
+- 2016ApJ...821L..16C: kappa_7mm = 0.13-0.2 cm^2 g^-1; distance 140 pc
+- 2018ApJ...869L..46D: Gaussian ring shape; domain chosen by eye
+- 2017ApJ...838...97M: Distance 117 pc
+- 2018ApJ...869L..47Z: GI limit with Toomre Q=1 caps gas surface density; preferred alpha=1e-3 and DSD1
+- 2017AJ....153....7Y: Distance 140 pc
+- 2019ApJ...876...72L: Flat disk; mask padded to include flaring layers
+- 2018MNRAS.475.5296D: distance 139 pc
+- 2017ApJ...851...83C: mass ratio unity
+- 2018A&A...615L..10M: PA=-9 deg, inclination=55 deg
+- 2018MNRAS.477.5104C: i=20 deg, PA=60 deg
+- 2016ApJ...831L..12K: compact spherical grains, size slope -3.5
+- 2018ApJ...860..124D: mm dust settled to midplane so deprojection recovers face-on view
+- 2018ApJ...869L..50P: Arc follows steady-state vortex prescription (Lyra & Lin 2013)
+- 2016ApJ...820...54K: distance 140 pc, inclination 40 deg
+- 2018ApJ...859..111H: Deprojected disk is circular
+- 2017MNRAS.465..834Z: Constant velocity; axis normal to disc
+- 2019ApJ...883...71C: i=46.72 deg, PA=138.02 deg
+- 2016ApJ...823...91S: LTE, emission fills beam
+- 2016A&A...585A..58V: Gas follows small dust; isothermal disk in Fung relation; q valid 1e-4 to 1e-2
+
+
+### Limitations the authors admit
+- 2018ApJ...869...17L: Formal errors on fit parameters likely underestimated
+- 2018ApJ...869...17L: Dust mass uncertainties ignore temperature and optical depth
+- 2018ApJ...869...17L: Model fails to reproduce amplitude of azimuthal asymmetries
+- 2025A&A...697A..64V: Degeneracy between optical thickness and true scale height; fixed grain size distribution; Gaussian fit to one grain size; no radially variable settling or dust feedback
+- 2025A&A...697A..64V: Assumption that rings are pressure maxima and that grains are fragmentation limited
+- 2018ApJ...859..165S: Model is simple, axisymmetric, excludes rotation, matched by eye; short spacings missing to trace hourglass
+- 2020A&A...644A.119P: Column densities may be underestimated by a factor of a few if lines are mildly optically thick
+- 2020A&A...644A.119P: Unsharp-masked ring morphology is uncertain due to the technique's arbitrariness
+- 2020A&A...644A.119P: Excitation temperature must be assumed since only one line per species
+- 2019AJ....158..162F: Apocenter-glow detection remains qualitative; lacks sensitivity
+- 2019AJ....158..162F: Perturber constraints are degenerate without extra constraint; S1 comoving unknown
+- 2020ApJ...902..141S: HOPS-56B envelope mass is more uncertain due to nearby source subtraction
+- 2020ApJ...902..141S: HOPS-124 and HOPS-157 envelope masses may be lower limits
+- 2015ApJ...810..112O: Model is not tuned to IM Lup, so no quantitative comparison is possible
+- 2015ApJ...810..112O: Outer-ring intensity is model dependent and may vary from disk to disk
+- 2024ApJ...961..228S: Protostellar mass is uncertain because Keplerian motion cannot be separated from the jet
+- 2024ApJ...961..228S: Outflow mass and velocity are likely underestimated; field of view limits outflow length
+- 2020ApJ...892...99C: Temperature poorly constrained by the data
+- 2020ApJ...892...99C: Calibration uncertainty not included in MCMC fit
+- 2013ApJ...777L..25M: Details of grain migration cannot be constrained by the data
+- 2026A&A...705A.204J: Dynamical model omits collisions, gas evolution, dust feedback and assumes Gaussian gas profile
+- 2017ApJ...835..278S: Dust maps uncertain (Galactic cirrus, Herschel issues), dominating the error budget
+- 2017ApJ...835..278S: Missing flux on large scales
+- 2014ApJ...796..131O: Missing flux on large scales biases rotation velocities at large radii
+- 2014ApJ...796..131O: SO is optically thick so density and abundance unconstrained
+- 2014ApJ...787...48X: Good map quality only in the central ~3'' due to uv-coverage; astrometric accuracy ~0.1''
+- 2014MNRAS.444.1821F: Early, shallow ALMA data with limited antennas; projections assume no further collisional evolution
+- 2020ApJ...894...76W: gamma Vir models lack constraints at other wavelengths; temperature minimum cannot be analyzed
+- 2020ApJ...894...76W: Variability at longer timescales cannot be ruled out for gamma Lep
+- 2020ApJ...894L..14L: Dust temperature at 2000 AU unknown, strongly affects masses
+- 2020ApJ...894L..14L: Cannot tell whether cores are prestellar or protostellar
+- 2021A&A...656A.133Q: Spiral masks are broad; contrasts may be resolution-dependent; centre results sensitive to alpha_CO and AGN contamination
+- 2024MNRAS.534..683Z: Cluster age/mass estimate is rough; small sample for separations
+- 2024MNRAS.534..683Z: CO may be optically thick, underestimating column density
+- 2016MNRAS.461.4276D: Inclination and elongation are degenerate; psi hard to find when rotation and expansion mix
+- 2019ApJ...880...69Y: Spiral velocities depend on the assumed mid-plane location and conserved angular momentum
+- 2019ApJ...880...69Y: Inner-radius line width overestimated, so column density, Tex and tau at the inner radius may be underestimated
+- 2024A&A...689A.104D: Band 8 resolution insufficient to resolve the substructure; large location uncertainties
+- 2019ApJ...872..200H: Model does not reproduce ring-to-cavity contrast or single-peaked ring spectra; shell inhomogeneity needed.
+- 2020ApJ...891...48H: Temperature, flux calibration and degeneracies prevent precise grain size measurements
+- 2017MNRAS.466.4201W: Ring ansae near primary beam edge, so N/S asymmetries and vertical structure unreliable
+- 2023PASJ...75..225M: Cannot exclude small amount of midplane accretion
+- 2014ApJ...791L...6W: Disk size near largest recoverable scale; imaginary scatter at long baselines may indicate asymmetry needing higher resolution
+- 2024ApJ...967...15K: Errors do not include distance uncertainty or density gradients
+- 2020MNRAS.497.2811K: Dust masses have large systematic uncertainties from arbitrary composition; HD 129590 gas unconstrained by MCMC
+- 2015ApJ...798..124R: Data cannot distinguish between gap and double power-law forms; dust opacity degenerate with surface density
+- 2026ApJ..1004..182H: Aspect ratio poorly constrained; uncertainties large in inner disk and outer edge; small uncertainties exclude PSF-subtraction systematics
+- 2018ApJ...858...90G: Sample not representative; simple alpha_CO and alpha_HCN; limited to inner few kpc
+- 2013ApJ...774L...7M: Continuum may be contaminated by line emission; noise higher in strong lines
+- 2018A&A...616A..88V: Band 7 absolute flux very uncertain, giving 0.42 systematic error on alpha
+- 2018A&A...616A..88V: Gap and ring widths hard to constrain with the fit
+- 2024ApJ...976..132H: FUV fields are upper bounds from projected separations; temperature uncertainty dominates dust-trap and planet-mass estimates; SVI is approximate
+- 2018A&A...615A.141B: Dust optically thick so N_H2 and mass are lower limits
+- 2018A&A...615A.141B: Interferometer filters out extended emission
+- 2020ApJ...898...36L: Uncertainties of GO Tau and DL Tau ring properties likely underestimated; function choice affects results; resolution washes out alpha variations
+- 2017AJ....154..225S: Disk width only resolved by ~1.7 beams so density distribution and star-disk offset cannot be determined
+- 2017AJ....154..225S: Bright source cannot be cleanly separated from the disk
+- 2020ApJ...899...10T: Continuum-only substructure cannot be distinguished from artifacts at low contrast
+- 2020ApJ...899...10T: Mass uncertainty dominated by assumed dust opacity
+- 2013ApJ...765L..14Q: Low S/N prevents constraining the vertical distribution; weak lines unresolved
+- 2013ApJ...765L..14Q: 3-2 and 5-4 lines lie at the edge of the spectral window
+- 2024A&A...690A.376S: Model applicability limited: fibers are non-isothermal prolate spheroids; pressure estimates assume equilibrium
+- 2021AJ....161..271F: Model-dependent total flux; ALMA flux about half of SCUBA-2 flux
+- 2015A&A...581A..97S: Axisymmetric discs only; models not unique
+- 2025A&A...693A.151M: Sample biased by flux-density limits; heights may be extracted from azimuthal profile rather than resolved
+- 2018ApJ...869..126L: Gas mass uncertain by ~0.4-0.5 dex from Tdust, kappa and DGR; sources may break up at higher resolution
+- 2018ApJ...869..126L: Cannot distinguish free-free contamination at 350 GHz from synchrotron at 36 GHz with two bands
+- 2024ApJ...971..129C: Only two bands constrain four parameters; priors needed; porosity unconstrained
+- 2018A&A...617A.120M: Simple chemical model cannot explain inner DCO+ 5-4 emission; single physical profile adopted
+- 2021A&A...645A.145G: Moderate resolution and symmetry assumption limit z/r accuracy; optical thinness uncertain
+- 2016ApJ...818...45S: Putative 13-AU belt needs deeper data; SED models degenerate due to lack of Rayleigh-Jeans constraints
+- 2021A&A...648A..41V: Outflow masses are lower limits (no correction for missing flux at cloud velocities or opacity); sample not statistically significant.
+- 2014ApJ...783L..13P: Emission may be partly optically thick so asymmetries may not trace mass; masses are lower limits.
+- 2025ApJ...992L..15L: HNC and N2H+ interferometer-only, absorption from missing short spacings; C18O missing flux ~60%
+- 2020AJ....159..288M: Coarse resolution; disk width fixed; contamination by faint background sources cannot be ruled out
+- 2020AJ....159..288M: Dust opacity systematics not in error budget
+- 2012ApJ...750L..21B: Only half of the ring is observed so the ellipse cannot be reliably determined.
+- 2026A&A...705A.198M: Optically thick masses are lower limits; inner radii are upper limits; degeneracy thick/thin needs radiative transfer
+- 2016ApJ...823...26E: About 25% absolute SFR uncertainty from 24 um calibration
+- 2016ApJ...820L..25Y: Column density biased by poorly constrained dust and gas temperature profiles.
+- 2025ApJ...986L..11S: Low S/N; EDDY ignores beam convolution; visibility mass inconsistent with Teff
+- 2025ApJ...986L..11S: Substructure tentative; BIC prefers no ring
+- 2018ApJ...869..158F: CO suffers self-absorption and missing short spacings; temperature on small scales unknown
+- 2021AJ....161...38O: DCN 2–1 underestimated, making DCN temperature uncertain; LTE assumed; toy models are qualitative
+- 2019ApJ...877L..32M: Resolution cannot distinguish the two-ring from the Gaussian gap model
+- 2015ApJ...799..204C: Models under-predict HCO+ emission for lines other than (3-2); causes include asymmetry, CO abundance structure and temperature structure
+- 2025NatAs...9.1833L: Masses are lower limits due to optical depth and missing flux
+- 2025NatAs...9.1833L: Secondary disks cannot be confirmed with current sensitivity and resolution
+- 2015MNRAS.447.3936M: Detailed chemical modelling beyond scope; T_k assumed uniform; vibrational/electronic states neglected
+- 2016PASJ...68...43K: Estimates depend on beta (dust particle size) and dust filtration model
+- 2025ApJ...993...85Y: Ring clumps only 3-5 sigma; higher SNR needed to confirm the SW clump
+- 2025ApJ...993...85Y: Low spectral index evidence tentative
+- 2019ApJ...875...24C: Single temperature and filling factor assumptions fail in hubs
+- 2020ApJ...890..142P: Non-uniform initial calibration across the sample
+- 2020ApJ...890..142P: Model-based snowline estimates are very uncertain
+- 2017ApJ...842....8M: Resolution (~10 AU) prevents constraints on edge sharpness; Δa and e_p degenerate; large uncertainty on ω from inclination degeneracy
+- 2017ApJ...842....8M: 2D model ignores vertical structure, which could loosen width constraints
+- 2020ApJ...896..127K: Dynamical mass is a lower limit because inclination is unknown
+- 2014Natur.514..600D: Missing short baselines cause flux loss, precluding quantitative large-scale CO 6-5 analysis
+- 2024A&A...690A..46S: Observations not designed for outflows; large-scale emission filtered, parameters are lower limits
+- 2020ApJ...898..146M: Total belt flux is model-dependent due to extrapolation to zero uv distance; position angle and inclination unconstrained
+- 2020ApJ...898..146M: Low target elevation and antenna shadowing
+- 2018A&A...614A.106C: Warm pathway approximated with constant abundance; exact temperature drop and CO depletion depend on ionization and o/p ratio
+- 2019ApJ...871..185L: Source catalogue edits are subjective
+- 2019ApJ...871..185L: Thickness H(r) cannot be measured; assumption oversimplified
+- 2020ApJ...895L..46L: Two-Gaussian model underestimates the shortest baselines; D2 is tentative; plateau width poorly measured
+- 2016ApJ...823..108B: Fit only to NE side; SW side fit imperfectly at 70 micron
+- 2020ApJ...902..132B: Direct mm detection of circumbinary dust is moderate significance; 13CO/C18O data unusable due to missing short spacings
+- 2014ApJ...785L..12C: Chi2 depends on non-independent error bars; fits degenerate with h_c
+- 2019A&A...629A..75B: Fits are by eye; no main-isotopologue HCN data; low S/N for HC15N
+- 2024ApJ...966...59S: Short snapshot observations, lack of short spacings, gas radii as lower limits
+- 2024ApJ...966...59S: Dust masses are lower limits if optically thick
+- 2019ApJ...874...89C: Mass uncertainty ~50% due to distance and opacity
+- 2019ApJ...874...89C: Smooth model underestimates peak flux because extended structure is filtered
+- 2023PASJ...75..424O: Dust scattering and beam dilution ignored; temperature is an upper limit so dust mass is a lower limit; CO depletion may raise gas mass by 10-100.
+- 2019MNRAS.484.1257M: Asymmetry could be a background galaxy; low S/N
+- 2023ApJ...956L..16T: Ring may be a coincidental line-of-sight cloud component; theoretical calculations needed.
+- 2014ApJ...787...42C: Dust mass errors exclude opacity uncertainty; upper limits treated inconsistently between samples; multiplicity unknown for most stars
+- 2025SciA...11.4512O: Mass of ALMA1 is an upper limit under optically thin approximation; infall is neither free-fall nor viscous
+- 2025SciA...11.4512O: Red-shifted streamer excluded from methanol analysis due to outflow contamination
+
+### Settings cards flag as needed but not stated
+- casa version: 20
+- self-calibration solution intervals and number of iterations: 15
+- image size and cell size: 11
+- self-calibration solution intervals: 11
+- line-free channels for uvcontsub: 8
+- line-free channels used for uvcontsub: 7
+- line-free channels and continuum subtraction method: 7
+- line-free channels for continuum subtraction: 7
+- line-free channels used for continuum subtraction: 6
+- casa version and pipeline version: 6
+- continuum subtraction and line-free channels: 6
+- self-calibration solution intervals and reference antenna: 6
+- line-free channels and uvcontsub fit order: 5
+- self-calibration solution intervals and number of rounds: 5
+- flux scale uncertainty: 4
+- clean mask, threshold, cell and image size: 4
+- flux calibrator and flux scale uncertainty: 4
+- moment map clipping thresholds: 4
+- line-free channels and continuum subtraction details: 4
+- line-free channels used for continuum: 4
+- uvmodelfit starting parameters: 3
+- casa version and whether the pipeline or manual calibration was used: 3
+- self-calibration, if any: 3
+- primary beam correction details: 3
+- continuum-subtraction and line-free channels: 3
+- cell size and image size: 3
+- primary-beam correction details: 3
+- cell size, image size, masks, clean threshold: 3
+- briggs robust value: 3
+- source coordinates: 3
+- casa/pipeline version: 3
+- line-free channel ranges: 3
+- clean threshold, masks, cell and image size: 3
+- self-calibration solution interval and reference antenna: 3
+- casa version used: 2
+- flux scale calibrator: 2
+- line-free channel selection for continuum: 2
+- pipeline version: 2
+- continuum subtraction method and line-free channels: 2
+- continuum channel selection / line-free channels: 2
+
+## Paper excerpts (40 of 266, chosen for detail and spread over fields/years)
+
+### 2018ApJ...869...17L: Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region (2018; protoplanetary_disks; observational_alma_primary)
+- question: What are the properties and likely origins (planets vs condensation fronts) of dust gaps and rings in 12 Taurus disks with substructure from an unbiased high-resolution ALMA 1.33 mm survey?
+- step 2: Select disks with substructure
+  - method: Fit elliptical Gaussian with IMFIT for major axis; inspect radial profile; reduced chi2 of Gaussian fit to radial profile within central 1.5''; highest chi2 chosen [2.2 Sample Selection: "The disks selected for this paper have the largest $\chi^2$ values."]
+  - software: CASA IMFIT
+  - validation: Twelve of 32 disks selected; choice of twelve described as somewhat arbitrary [2.2 Sample Selection: "The choice to focus on twelve sources is somewhat arbitrary"]
+- step 3: Fit visibilities with axisymmetric radial intensity models
+  - method: Central Gaussian or exponentially tapered power-law plus radial Gaussian rings; Fourier transformed with Galario; MCMC fit with emcee [3.1 Modeling Procedure: "The model visibilities are then created by Fourier transforming the disk model intensity profile using the publicly available code *Galario* (cite: tazzari2018)."]
+  - software: Galario, emcee, CASA IMFIT
+  - parameter: 100 walkers, 5000 steps, burn-in ~2000; second run 5000 more steps; posterior from last 1000 steps; radial grid 0.0001''-4'' step 0.001'' [3.1 Modeling Procedure: "with 100 walkers and 5000 steps for each walker. The burn-in phase for convergence is typically $\sim$2000 steps."]
+  - parameter: Uniform priors: ±20 deg for i and PA, ±0.5 arcsec for offsets [3.1 Modeling Procedure: "Prior ranges are set as $\pm$20 deg for $i$ and PA, and $\pm$0.5 arcsec for the position offsets."]
+  - assumption: Axisymmetry [3.1 Modeling Procedure: "Axisymmetry is assumed, since high-contrast asymmetries in the dust emission are not seen"]
+  - fitting: emcee MCMC; median and 16th-84th percentile [3.1 Modeling Procedure: "The statistical uncertainty for each parameter is estimated as the interval from the 16th to the 84th percentile."]
+  - validation: Compare visibility profiles, images, radial cuts; add ring or tapered power-law if symmetric residuals ≳5-10σ [3.1 Modeling Procedure: "If significant symmetrical residuals ($\gtrsim5-10\sigma$) are present, we either include an additional Gaussian ring component or replace the central Gaussian profile with a tapered power-law."]
+- step 4: Derive flux, R_eff, gap and ring properties
+  - method: Integrate best-fit profile; R_eff at 90% flux; gap location at local minimum; gap width full width at half depth; contrast ratio ring peak/gap; uncertainties from 100 chain samples [4.2 Properties of Gaps and Rings: "The gap width is defined as the full width at half depth"]
+  - validation: Fluxes compared with pre-ALMA measurements [3.2.2 mm Flux and Dust Disk Size: "our flux measurements at 1.33 mm are consistent with pre-ALMA interferometry measurements"]
+- step 6: Compare gaps with planet-disk interaction expectations
+  - method: Normalized ring-gap distance vs gap location and stellar mass; planet mass via 4 R_Hill and Rosotti et al. 2016 diagnostic [4.3.1 Planet-disk Interactions: "If we simply assume that the gap radius corresponds to 4 $R_{\rm Hill}$ (cite: dodson-Robinson2011), most of our gaps are related to planets with mass of 0.1–0.5 $M_{\rm J}$"]
+  - assumption: alpha=1e-4 or 1e-2; simulations for 1 Msun star rescaled by mass ratio [4.3.1 Planet-disk Interactions: "When the turbulence parameter (cite: shakura1973) is assumed to be $\alpha=10^{-4}$"]
+  - validation: Compared to CI Tau hydrodynamic modeling of Clarke et al. 2018 [Footnote 7: "consistent with our simple estimation here"]
+- step 7: Compare gap locations with ice lines
+  - method: Midplane temperature from Kenyon & Hartmann irradiated flared disk; ice line radii for N2, CO, clathrate; RADMC-3D check [4.3.2 Condensation Fronts: "where the flaring angle $\phi_{\mathrm{inc}}$ is assumed to be 0.05 (cite: dullemond2004)"]
+  - software: RADMC-3D
+  - parameter: N2 12-15 K, CO 23-28 K, clathrate CO+N2 41-46 K [4.3.2 Condensation Fronts: "N$_2$ (12-15 K), CO (23-28 K), and clathrate hydrated CO and N$_2$ (41-46 K)"]
+  - assumption: flaring angle 0.05; photospheric luminosity only [Footnote 8: "we use only the photospheric luminosity rather than the total luminosity"]
+  - validation: RADMC-3D models give similar temperature profiles beyond 20 au except RY Tau [4.3.2 Condensation Fronts: "yields temperature profiles that are similar to analytic solutions"]
+- result: MWC 480 total 1.33 mm flux = 267.76 ± +0.18/-0.21 mJy [Table 3: "| MWC 480 | 267.76$_{-0.21}^{+0.18}$ | 104.97$_{-0.16}^{+0.16}$ |"]
+- result: CI Tau effective radius = 173.8 ± +0.47/-0.32 au [Table 3: "| CI Tau | 142.4$_{-0.24}^{+0.15}$ | 173.8$_{-0.32}^{+0.47}$ |"]
+- result: RY Tau flux = 210.39 ± +0.09/-0.1 mJy [Table 3: "| RY Tau | 210.39$_{-0.1}^{+0.09}$ | 60.8$_{-0.13}^{+0.0}$ |"]
+- result: Number of gap-ring pairs analyzed = 19 ± not stated dimensionless [4.2 Properties of Gaps and Rings: "We analyze a total of 19 gap and ring pairs"]
+- result: Gap locations range = 10-120 ± not stated au [4.2 Properties of Gaps and Rings: "gaps are located from 10 to 120 au with no preferred distance"]
+- result: Normalized gap-ring distance = 0.2-0.3 ± not stated dimensionless [4.3.1 Planet-disk Interactions: "The normalized gap-ring distance is typically 0.2–0.3"]
+- result: Planet mass for alpha=1e-4 at diagnostic 0.25 = ~15 (0.05 MJ) ± not stated M_earth [4.3.1 Planet-disk Interactions: "the diagnostic of 0.25 corresponds to a planet mass $\sim$ 15 M$_\oplus$ (0.05 M$_{\rm J}$)"]
+- result: Gaps near ice lines = 5 near CO; 2 near clathrate CO+N2; 1 near N2; 7 unrelated ± not stated count [4.3.2 Condensation Fronts: "The other seven gaps are unrelated to any of the ice lines we consider here."]
+- limitation (authors): Formal errors on fit parameters likely underestimated [3.2.1 Best-Fit Models: "suggest that the formal errors listed in Table 3 are likely underestimated"]
+- limitation (authors): Dust mass uncertainties ignore temperature and optical depth [4.1 Source Properties: "do not take into account the differences in dust temperature and dust optical depth"]
+- limitation (authors): Model fails to reproduce amplitude of azimuthal asymmetries [3.2 Modeling Results: "our model fail to accurately reproduce the amplitude of the substructure component"]
+- not stated (card): Which spectral channels/line-free channels were used for continuum; Image size, cell size, clean threshold, masking and deconvolver for TCLEAN; Self-calibration solution intervals for amplitude and the per-target number of rounds; Prior ranges for ring/Gaussian amplitudes, locations and widths in the MCMC; Initial guesses for each disk's model components; Details of the uv-data averaging/binning …
+
+### 2025A&A...697A..64V: Turbulence in protoplanetary disks: A systematic analysis of dust settling in 33 disks (2025; protoplanetary_disks; archival_reuse)
+- question: How vertically settled and radially concentrated is millimeter dust in a uniform sample of 33 inclined, ringed protoplanetary disks, and what does this imply for turbulence strength, anisotropy and wide-orbit pebble accretion?
+- step 1: Image archival visibilities
+  - method: Gather calibrated visibilities, self-calibrate if needed, image with tclean, deproject image using inclination [2.2 Data reduction: "Finally, we generate a deprojected image based on the inclinations reported in"]
+  - software: CASA, tclean
+  - parameter: mfs, nterms=1, multiscale, robust -0.5 to 0.5, clean to ~5σ [2.2 Data reduction: "All images were generated with the spectral model `mfs` and `nterms=1`."]
+- step 2: Fit dust surface density iteratively on major axis
+  - method: Initial Sigma_d from I/(B_nu kappa), then MCFOST models, ft + tclean synthetic images, deprojection, correction by data/model ratio until 5% agreement or 20 iterations; applied between 5 au and Rout [3.3 Fitting the dust surface brightness: "We repeat the steps until the model brightness profile agrees with the data within 5% or after 20 iterations, whichever is first."]
+  - software: mcfost, CASA
+  - parameter: 30° wedge on major axis; 4 settling levels alpha_z,MCFOST 2e-4 to 0.2 [3.3 Fitting the dust surface brightness: "using a wedge with an opening angle of 30$^\circ$, averaged on both sides"]
+  - assumption: Gas scale height 10 au at 100 au with exponent 1.1; grain sizes 0.005 µm-3 mm, n(a)∝a^-3.5, 100 bins; gas-to-dust 100; Sc=1.5; initial kappa=13.27 cm2/g, T=20(r/100au)^-q [3.2 Disk structure: "The gas-to-dust ratio is constant within the disk and assumed to be 100."]
+  - assumption: Stellar radius artificially increased for GO Tau, GW Lup, HL Tau, Oph163131 to warm models [3.3 Fitting the dust surface brightness: "We performed this by artificially increasing the stellar radius, and thus the stellar luminosity, in the modeling"]
+  - fitting: Iterative multiplicative correction of surface density (no sampler) [3.3 Fitting the dust surface brightness: "we produce a corrected dust surface density profile by multiplying the initial surface density profile by the ratio data over model."]
+  - validation: Model agrees with data within 5% on major axis [3.3 Fitting the dust surface brightness: "within 5% or after 20 iterations"]
+- step 3: Select best settling model from azimuthal cuts
+  - method: Compare data and model profiles in six 30° wedges using normalized chi2 and Hausdorff-distance metric plus visual check of gap, outer edge and ring effects [3.4 Identifying the best model: "we obtained six wedges of 30$^\circ$. They go from the minor axis to 15$^\circ$ from the major axis"]
+  - parameter: good models: chi2 ≤ 8 and S ≤ 1.2 [3.4 Identifying the best model: "we identify that models with $\chi^2 \leq 8$ and $\mathscr{S} \leq 1.2$ are generally good models."]
+  - validation: Visual inspection combined with metrics [3.4 Identifying the best model: "The constraints reported in [\[tab:results\]](#tab:results) reflect the combined use of the metrics and of our visual analysis to exclude models."]
+- step 5: Vertical and radial dust-gas coupling and anisotropy
+  - method: alpha_z/St=[(Hg/Hd)^2-1]^-1 with Hg from model or hydrostatic equilibrium; alpha_r/St=[(wg/wd)^2-1]^-1 with wd from Gaussian fits to model surface density rings; ratio gives alpha_z/alpha_r [5.1 Vertical dust-gas coupling: "Assuming a balance between vertical stirring and settling, the ratio $\alpha_z/\text{St}$ relates to the dust and the gas scale height"]
+  - parameter: mu=2.3; wg,min=Hg,temp; wg,max=ring peak to gap minimum [5.2 Radial dust–gas coupling: "we assume that the distance from the peak of the ring to the deepest point in the gap inside of the ring is the upper limit for the gas width"]
+  - assumption: Rings are pressure maxima [5.2 Radial dust–gas coupling: "Under the assumption that the rings correspond to pressure bumps"]
+  - fitting: Gaussian fit to rings; uncertainty = std over four models [5.2 Radial dust–gas coupling: "The uncertainties reported in [\[tab:radialTrapping\]](#tab:radialTrapping) correspond to the standard deviation of the fit for all four models of each disk."]
+  - validation: Compared with previous studies for common rings [5.2 Radial dust–gas coupling: "We find a good agreement in the resulting constraints for the dust rings in common between our sample and previous studies"]
+- result: Disks with dust height constraints = 23 of 33 ± not stated disks [4 Modeling results: "Our modeling allows us to constrain the dust vertical extent in 23 out of the 33 systems considered."]
+- result: Rings with alpha_r/St<1 (radial trapping) = 11 of 21 ± not stated rings [5.2: "We find that 11 rings are consistent with radial dust trapping ($\alpha_r/\text{St}<1$), while the other 10 rings do not necessarily require strong trapping."]
+- result: Upper limits on alpha_z/alpha_r median = 1.60 (range 0.06-8.57) ± not stated dimensionless [5.3: "We find that the upper limits for $\alpha_z/\alpha_r$ vary between 0.06 and 8.57, with a median value of about 1.60."]
+- limitation (authors): Degeneracy between optical thickness and true scale height; fixed grain size distribution; Gaussian fit to one grain size; no radially variable settling or dust feedback [8.2 Caveats and future prospects: "We note here the degeneracy between the optical thickness and the true scale height."]
+- limitation (authors): Assumption that rings are pressure maxima and that grains are fragmentation limited [8.2 Caveats and future prospects: "First we assumed that the dust size is limited by fragmentation."]
+- not stated (card): Scale/pixel size and image size for tclean imaging; Multiscale scales and masks used; Exact data-reduction steps and self-calibration parameters for datasets from first publisher teams; Details of the MCFOST setup (photon number, dust composition fractions, bulk density, grain porosity); Exact definition of azimuthal wedge positions and visual exclusion criteria for the best model; Which fields/c…
+
+### 2018ApJ...859..165S: Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. I. VLA 1623 (2018; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: What are the dust polarization morphologies and mechanisms (scattering, magnetic or radiative grain alignment) in the inner disks and extended ring of the Class 0 system VLA 1623?
+- step 5: Compare polarization to mechanisms
+  - method: Compare e-vector angles to disk minor axes, spectral index (nterms=2) for optical depth, Stokes I gradient vs polarization angle for ring [5.2 Radiation Field Alignment: "Figure [11](#ang_diff) shows these relative angles for the ring only."]
+  - software: CASA clean
+  - validation: Smoothing ALMA data to CARMA resolution reproduces CARMA position angle [4.3 Comparison to Previous Polarization…: "From our smoothed data, we find a typical position angle of -57, which matches (cite: Hull14)."]
+- step 6: Model hourglass magnetic field
+  - method: Analytic flux-frozen oblate Plummer spheroid model, matched by eye to ring b-vectors; ring mass from 1.3 mm flux [5.1 Model Results: "We qualitatively match our model by eye to the observations."]
+  - software: MIRIAD
+  - parameter: A=10, theta=54 deg, nu0=60, r0=40 au, peak density ~6e10 cm-3 [5.1 Model Results: "We also adopt a ratio of peak density to background density of $\nu_0 = 60$"]
+  - assumption: T = 20 K, kappa = 0.024 cm2/g at 1.3 mm, d = Ophiuchus distance [5.1 Model Results: "We assume $T = 20$ K and $\kappa = 0.024$ cm$^2$ g$^{-1}$ at 1.3 mm (cite: Andrews09)."]
+  - fitting: by eye, no formal fit [Discussion: Model Results: "We qualitatively match our model by eye to the observations."]
+  - validation: Good by-eye agreement in NW and SE quadrants; departures in NE and SW [5.1 Model Results: "There are noticeable departures in the north-east and south-west quadrants, however."]
+- result: Ring 1.3 mm flux = 0.6 ± not stated Jy [5.1 Model Results: "we use this source-subtracted image to measure the 1.3 mm flux of the ring, $S_{1.3} = 0.6$ Jy"]
+- result: Ring mass = 0.1 ± not stated Msun [5.1 Model Results: "we calculate a total mass for the ring $M = S_{1.3}d^2/B(T)\kappa = 0.1\ \mbox{M$_{\odot}$}$"]
+- result: Column density at polarization transition = 5e24 ± not stated (lower limit) cm-2 [5.3 Dust Scattering: "the transition point corresponds to a column density of $\mbox{N(H$_2$)}\approx 5 \times 10^{24}$ cm$^{-2}$"]
+- limitation (authors): Model is simple, axisymmetric, excludes rotation, matched by eye; short spacings missing to trace hourglass [5.1 Magnetic Field Alignment: "The model is only a first step toward a full description, which should include both disk rotation and the dense core environment."]
+- not stated (card): Robust/weighting, cell size, image size, niter and threshold for clean; Multiscale scales used; Self-calibration solution intervals and reference antenna/spw; Spectral setup and continuum bandwidth; Line-free/continuum channel selection; Pixel-level masks for ring and disk region definitions beyond the 4 sigma contours with 'slight modification'; Flux of the calibrators and flux scale uncertainty…
+
+### 2020A&A...644A.119P: ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). III. The interplay between gas and dust in the protoplanetary disk of DG Tau (2020; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: What are the distribution and abundance of H2CO, CS and CN in the DG Tau protoplanetary disk, and how do they compare with the dust distribution?
+- step 2: Make moment maps and radial profiles
+  - method: Moment-0 integrated over Vsys ±3 km/s with 3σ clipping (none for CN); azimuthal averaging of unclipped moment-0 after deprojection [2.2 Data products: "The radial intensity profiles of the lines and of the 1.3 mm continuum emission are obtained by azimuthally averaging the unclipped moment-0 maps after deprojecting for the disk inclination"]
+  - parameter: Vsys = +6.24 km/s; PA=135 deg, i=35 deg [2.2 Data products: "$V_{\rm sys} = +6.24$ km s$^{-1}$"] [Footnote 1: "We obtain PA$=135\ensuremath{^\circ}$ and i$=35\ensuremath{^\circ}$."]
+  - fitting: Gaussian fit to peak of radial profile; position uncertainty ~1/5 of beam [3.1 Spatial distribution: "the position of the intensity peak determined by Gaussian fitting the peak profile is affected by an uncertainty of approximately one-fifth of the nominal resolution imposed by the beam"]
+  - validation: 10 au offset between H2CO and CS peaks exceeds position uncertainty [3.1 Spatial distribution: "Therefore, the radial offset between the H$_2$CO and CS emission peaks is real and not due to a resolution effect."]
+- step 3: Find dust substructure
+  - method: Unsharp masking of 1.3 mm and 0.87 mm continuum images [3.2 Dust substructures: "we applied an unsharp masking filter to the continuum image at 1.3 mm as well as to that presented by (cite: bacciotti18) at 0.87 mm"]
+  - parameter: smoothing 60 mas [3.2 Dust substructures: "then subtracted the image smoothed by 60 mas"]
+  - validation: Compared with second derivative of intensity profile from Podio et al. 2019 (38-44.5 au) [3.2 Dust substructures: "is between 38 and 44.5 au, in perfect agreement with the position of the ring revealed by applying unsharp masking"]
+- step 4: Derive molecular column densities
+  - method: Ring-integrated flux (0.33-0.75 arcsec) converted to column density assuming LTE and optically thin emission with CDMS parameters [3.3 Molecular column density: "converted this integrated flux into column density assuming local thermodynamic equilibrium (LTE) and optically thin emission"]
+  - parameter: Tex = TK = 20-100 K [3.3 Molecular column density: "compute the column density of H$_2$CO, CS, and CN for $T_{\rm ex} = T_{\rm K} = 20-100$ K"]
+  - assumption: LTE, optically thin, o/p ratio of H2CO from Guzman+18 [3.3 Molecular column density: "based on the o/p ratio estimated by (cite: guzman18a)"]
+  - validation: Brightness temperature ~1.5 K well below gas temperature, so lines likely optically thin; may be underestimated by a factor of a few [3.3 Molecular column density: "Thus, we conclude that the observed lines are likely optically thin."]
+- step 5: Estimate dust mass of disk and ring
+  - method: Optically thin dust mass from 1.3 mm flux [4.2 The interplay of gas and dust: "The dust mass of disk and ring can be obtained from the aforementioned fluxes in the assumption of optically thin emission"]
+  - parameter: Disk flux 0.29 Jy, ring flux 0.04 Jy [4.2 The interplay of gas and dust: "The flux integrated over this region is 0.29 Jy whereas the ring flux amounts to 0.04 Jy."]
+  - assumption: kappa(1.3mm)=2.3 cm2/g, Tdust=20 K, d=121 pc [4.2 The interplay of gas and dust: "Planck function $B_{\lambda}(T_{\rm dust})$ is calculated from an overall dust temperature $T_{\rm dust}$ of 20 K"]
+  - fitting: Gaussian fit to observed emission gives disk major axis 0.45 arcsec and i=35 deg [4.2 The interplay of gas and dust: "A Gaussian fit to the observed emission yields a disk major axis of $0.45\ensuremath{''}$ and a disk inclination $i$ of 35$\ensuremath{^\circ}$."]
+- result: H2CO ring emission peak radius = ~60 ± ~3.6 au au [3.1 Spatial distribution: "the H$_2$CO emission peaks at $\sim 60$ au and extends out to $\sim 120$ au"]
+- result: CS ring emission peak radius = ~70 ± ~3 au au [3.1 Spatial distribution: "while the CS emission peaks at $\sim 70$ au and extends out to $\sim 130$ au"]
+- result: CN emission peak radius = ~80 ± not stated au [3.1 Spatial distribution: "with a peak at $\sim 80$ au and extending out to $\sim 500$ au"]
+- result: Total H2CO column density = 2.4-8.6e13 ± not stated cm^-2 [3.3 Molecular column density: "a total column density of $2.4-8.6 \times 10^{13}$ cm$^{-2}$ for H$_2$CO"]
+- result: CS column density = 1.7-2.5e13 ± not stated cm^-2 [3.3 Molecular column density: "and of $1.7 - 2.5 \times 10^{13}$ cm$^{-2}$ for CS"]
+- result: CN column density = 1.9-4.7e13 ± not stated cm^-2 [3.3 Molecular column density: "a column density of $1.9 - 4.7\times 10^{13}$ cm$^{-2}$ is estimated"]
+- result: Dust ring radius from unsharp masking = ~40 ± not stated au [3.2 Dust substructures: "This technique revealed a ring at $\sim40$ au in the continuum maps at 0.87 mm and at 1.3 mm"]
+- result: Total dust mass = ~120 ± not stated Earth masses [4.2 The interplay of gas and dust: "the total dust mass is $\sim 120$ M$_{\oplus}$ and the ring dust mass is $\approx16\,{\rm M_{\oplus}}$"]
+- result: Ring dust mass = ~16 ± not stated Earth masses [4.2 The interplay of gas and dust: "the total dust mass is $\sim 120$ M$_{\oplus}$ and the ring dust mass is $\approx16\,{\rm M_{\oplus}}$"]
+- result: Peak brightness temperature of H2CO and CS ring spectra = ~1.5 ± not stated K [3.3 Molecular column density: "the intensity peak of the H$_2$CO $3_{1,2}-2_{1,1}$ and CS $5-4$ integrated spectra is T$_{\rm B} \sim 1.5$ K"]
+- limitation (authors): Column densities may be underestimated by a factor of a few if lines are mildly optically thick [3.3 Molecular column density: "our estimates of the column densities may also be underestimated by a factor of a few"]
+- limitation (authors): Unsharp-masked ring morphology is uncertain due to the technique's arbitrariness [3.2 Dust substructures: "the precise morphology of the ring should be interpreted with caution given the arbitrariness of the technique"]
+- limitation (authors): Excitation temperature must be assumed since only one line per species [3.3 Molecular column density: "The temperature of the emitting layer has to be assumed as we have only one line per species."]
+- not stated (card): Line-free channel ranges for continuum subtraction and self-calibration; Self-calibration solution intervals and number of iterations; tclean cell size, image size, clean threshold, and niter; Spectral cube channel binning/velocity resolution details beyond Table 1; Exact phase center/coordinates of DG Tau; Exact LTE column-density conversion formulas and partition function details; Procedure for…
+
+### 2019AJ....158..162F: From Scattered-light to Millimeter Emission: A Comprehensive View of the Gigayear-old System of HD 202628 and its Eccentric Debris Ring (2019; debris_disks; observational_alma_primary)
+- question: What are the geometry, eccentricity, dust size distribution and gas content of the HD 202628 debris ring, and what do they imply for its belt-shaping perturber?
+- step 2: Fit ring geometry in visibility space
+  - method: MCMC fit of circular constant-surface-density ring model plus Gaussian sources, Fourier transformed to visibilities [3.1.3 The ring: "we used the Python `emcee` procedure (cite: Foreman-Mackey2013), which allows us to perform an MCMC (Markov Chain Monte Carlo) fit of a debris disk model emission to our observations."]
+  - software: emcee, disk_model ray-tracing code
+  - parameter: 23 free parameters (7 ring incl. centre offset, plus Gaussian sources) [3.1.3 The ring: "The total number of free parameters in our model is therefore 23."]
+  - assumption: Blackbody grains, opacity 2.3 cm^2/g, constant surface density [3.1.3 The ring: "its opacity is set to $2.3\mathrm{cm^2/g}$"]
+  - fitting: emcee; errors are 16-84 percentiles [Table 5: "Error bars correspond to the 16-84 percentiles values."]
+  - validation: Residual map after model subtraction; consistency with HST [3.1.3 The ring: "In Figure [3](#fig:model), we show our best fit model, along with the residuals once the model is subtracted from our observations."]
+- step 3: Derive eccentricity from star-ring offset
+  - method: Eccentricity = projected offset / projected inner-edge semimajor axis, using ALMA-detected stellar position [3.1.3 The ring: "the ring’s true eccentricity is thus also equal to the ratio between the projected offset and the projected semimajor axis."]
+  - validation: Compared with independent visual HST ellipse fits (e=0.14) [3.1.3 The ring: "Similar, independent visual fits to the new, combined *HST* yields an eccentricity of $0.14 \pm 0.02$"]
+- step 5: Search for CO gas and derive upper limits
+  - method: Keplerian-shifted spectro-spatial filtering within ring mask; non-LTE excitation with UV/IR fluorescence for mass limit [3.1.4 Gas content: "We begin by shifting the spectra in each of the cube’s pixels by the negative of the Keplerian velocity expected at that belt location."]
+  - software: CASA
+  - parameter: Tkin 10-250 K; stellar mass 1 Msun [3.1.4 Gas content: "kinetic temperatures between 10 and 250 K"]
+  - assumption: Gas co-located with belt, Keplerian, optically thin [3.1.4 Gas content: "any gas present is co-located with the belt’s continuum emission and moving at Keplerian velocity around the central star"]
+- step 7: Constrain perturber
+  - method: Secular theory (forced eccentricity, chaotic zone, timescales) of Pearce & Wyatt 2014 with updated ring geometry; S1 extent as Hill-radius constraint [4.2: "2 a_p \left( \frac{m_p}{3M_\star} \right)^{1/3} = 13.8 \mathrm{AU}"]
+  - assumption: Single inner perturber; circumplanetary material fills Hill radius [4.2: "assuming that circumplanetary material fills the perturber’s Hill radius"]
+- result: Ring inner radius = 143.1 ± 1.7 AU [Table 5: "Inner radius (AU) | $143.1\pm 1.7$"]
+- result: Ring outer radius = 165.5 ± 1.4 AU [Table 5: "Outer radius (AU) | $165.5 \pm 1.4$"]
+- result: Inclination = 57.4 ± 0.4 deg [Table 5: "Inclination $(^\circ)$ | $57.4\pm 0.4$"]
+- result: Eccentricity = 0.09 ± +0.02/-0.01 dimensionless [Table 5: "Eccentricity | $0.09_{-0.01}^{+0.02}$"]
+- result: Dust disk mass (mm grains) = 1.36e-2 ± 0.06e-2 Earth masses [Table 5: "$(1.36\pm0.06)\times10^{-2}$"]
+- result: Total ring flux 1.3 mm = 959 ± 96 uJy [3.1.3 The ring: "is found to be $959\pm 96\,\mu\mathrm{Jy}$"]
+- result: CO J=2-1 3sigma flux upper limit = 12 ± not stated mJy km/s [3.1.4 Gas content: "3\sigma$ upper limit on the integrated CO J=2-1 line flux within the HD202628 belt of 12 mJy km/s"]
+- result: CO mass 3sigma upper limits = 1.4-26e-7 ± not stated Earth masses [3.1.4 Gas content: "$3\sigma$ CO mass upper limits between $1.4-26\times10^{-7}$ M$_{\oplus}$"]
+- result: Perturber if S1 is circumplanetary = m=0.8 MJup, a=107.5 AU, e=0.1 ± not stated MJup, AU [4.2: "$m_{\mathrm{p}}=0.8\,\mathrm{M_{Jup}}$, $a_{\mathrm{p}}=107.5\,\mathrm{AU}$, and $e_{\mathrm{p}}=0.1$"]
+- limitation (authors): Apocenter-glow detection remains qualitative; lacks sensitivity [3.1.3 The ring: "our observations lack the sensitivity for us to be formally conclusive."]
+- limitation (authors): Perturber constraints are degenerate without extra constraint; S1 comoving unknown [4.2: "Whether the source S1 is co-moving or not cannot be ascertained without second epoch observations."]
+- not stated (card): MCMC walkers, steps, burn-in and priors for the 23-parameter fit; Initial guesses/bounds for model parameters; Stellar luminosity/temperature used in dust temperature; Flux-calibration and pipeline CASA version used for calibration; Details of source Gaussian model priors; CO imaging channel/velocity range and ring mask exact definition; Scattered-light ADI code not released
+
+### 2020ApJ...902..141S: The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. III. Substructures in Protostellar Disks (2020; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: How early do substructures (rings, gaps, cavities, asymmetries) form in protostellar disks, and how young/embedded are the disks that show them?
+- step 1: select disks with substructure
+  - method: Visual inspection of images of all VANDAM sources, using several robust values and superuniform weighting [2 Sample Selection & Data Reduction: "we selected every source that, by visual inspection, showed clear and unambiguous evidence of annular substructures/local extrema"]
+  - software: CASA
+  - validation: Excluded tentative sources to avoid imaging artefacts [2 Sample Selection & Data Reduction: "we excluded these sources out of caution to not falsely identify imaging artefacts as substructures"]
+- step 3: fit analytic ring/asymmetry/point/Gaussian models in uv plane
+  - method: Image-plane model Fourier-transformed with GALARIO at observed baselines; up to 18 parameters [3.1 Analytic Models: "we generate an image-plane model image, and use the `GALARIO` package (cite: Tazzari2018) to compute the Fourier transform of that image sampled at the same baselines as our observations."]
+  - software: GALARIO, dynesty
+  - parameter: Visibility weights multiplied by ~0.25 to match image RMS [2 Sample Selection & Data Reduction: "the weights provided by the ALMA pipeline need to be multiplied by a factor of $\sim0.25$ to match the RMS of the images"]
+  - fitting: Bayesian nested sampling with dynesty, uniform priors; best fit = maximum posterior sample; uncertainties 95% inclusion interval [3.1 Analytic Models: "Samples are drawn from uniform priors on all parameters, with limits listed in Table [\[table:analytic_priors\]]"]
+  - validation: Bayes factors between model complexities; residual images and visibility profiles [3.2 Analytic Modeling Results: "we provide a calculation of Bayes Factor in Table [\[table:analytic_best_fits\]] for each model considered, compared with the most complete model"]
+- step 5: fit protostar+disk+envelope RT models
+  - method: RADMC-3D models of SED and 345 GHz image, GALARIO to visibilities, emcee MCMC; visibilities centered using analytic best-fit centroids [3.3 Radiative Transfer Modeling: "we instead use the `emcee` code to run a Markov Chain Monte Carlo (MCMC) fit of the synthetic observations to our dataset"]
+  - software: RADMC-3D, GALARIO, emcee, pdspy
+  - parameter: Protostar T=4000 K, luminosity free; inner disk radius 0.1 au; cavity or gap added [3.3 Radiative Transfer Modeling: "we fix the inner radius of the disk at 0.1 au, and include a central cavity or a gap with some amount of depletion"]
+  - assumption: Distance 400 pc; axisymmetric models; Ulrich envelope [3.3 Radiative Transfer Modeling: "we assume they are all at 400 pc, a typical distance for Orion"]
+  - fitting: emcee; best fit = max posterior, 95% range uncertainties; lost walkers redistributed [3.4 Radiative Transfer Modeling Results: "Walkers that got “lost" (cite: Sheehan2019), were redistributed around the median of the post-burn-in samples"]
+  - validation: Compared models to ACA data not included in fit [3.4 Radiative Transfer Modeling Results: "Despite not being included in the fits, our best fit models show good consistency with the short-baseline ACA data"]
+- result: Ring center radii range = ~0.1"-0.6" (40-240 au) ± not stated arcsec [3.2 Analytic Modeling Results: "The radii of the centers of the rings range from $\sim0.1"-0.6"$ ($40-240$ au at the distance of Orion)"]
+- result: Ring radius HOPS-124 (analytic) = 146.9 ± +0.7/-0.6 mas [Table 3: "$r_{c,r}$ (mas) | $105.0^{+ 1.7}_{- 2.0}$ | $331.0^{+ 10.0}_{- 10.6}$ | $595.9^{+ 16.7}_{- 20.7}$ | $146.9^{+ 0.7}_{- 0.6}$"]
+- limitation (authors): HOPS-56B envelope mass is more uncertain due to nearby source subtraction [3.4 Radiative Transfer Modeling Results: "the results for HOPS-56B should be considered more uncertain than the nominal errors show"]
+- limitation (authors): HOPS-124 and HOPS-157 envelope masses may be lower limits [3.4 Radiative Transfer Modeling Results: "the envelope masses measured here, and consequently their $M_{env}/M_{disk}$ ratios, might reasonably be considered lower limits"]
+- not stated (card): CASA version used; Exact clean parameters and masks for the sources imaged here, and uvsub masks for HOPS-56B and HOPS-140; dynesty settings (live points, stopping criteria); emcee walker number, steps, burn-in and priors for the RT models; Full RT parameter list, priors and dust model details (deferred to Sheehan2017b); Which analytic model components are used for each source beyond the Bayes fa…
+
+### 2015ApJ...810..112O: Double DCO<SUP>+</SUP> Rings Reveal CO Ice Desorption in the Outer Disk Around IM Lup (2015; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Where is CO ice desorbed in the IM Lup disk, as traced by the DCO+ emission morphology compared with C18O and H13CO+ and a disk chemistry model?
+- step 2: Make moment-0 maps and radial profiles
+  - method: Sum 0.2 km/s channels above 2 sigma; also unclipped moment-0 maps deprojected and azimuthally averaged [Observational Results: "we also produced moment-0 maps without any clipping, deprojected and azimuthally averaged them into radial brightness profiles"]
+  - parameter: inclination 49 deg, PA -35 deg [Observational Results: "We assumed an inclination of 49$^\circ$ and a position angle of -35$^\circ$ for these calculations"]
+  - assumption: Inclination and PA from Pinte08, Panic09 [Observational Results: "(cite: Pinte08; Panic09)"]
+  - validation: Unclipped maps used to mitigate clipping bias [Observational Results: "to mitigate any bias introduced by the applied clipping threshold"]
+- step 3: Model disk chemistry and compare to observed profiles
+  - method: Time-dependent gas-grain chemistry (300 kyr) on a generic T Tauri disk, LIME line emission, radial profiles compared qualitatively [4.1 Model Description: "integrating a time-dependent system of gas and grain surface rate equations for 300 kyr, assuming the physical structure is static"]
+  - software: LIME
+  - parameter: CO binding energy 1150 K (1000 K tested); CO photodesorption yield 7e-3; cosmic ray ionization rate lowered to 1e-20 s-1 test [4.1 Model Description: "The CO photodesorption yield is set to $7\times10^{-3}$ (cite: Fayolle13)."]
+  - assumption: CO and HCO+ densities scaled by 500 and 70 for C18O and H13CO+ (ISM 16O/18O, 12C/13C) [4.2 Model Results and Comparison to Obs…: "we have scaled the calculated CO and HCO$^+$ densities by factors of 500 and 70, respectively"]
+  - validation: Small parameter study of binding energy, density/temperature structure, and cosmic ionization rate [4.1 Model Description: "we performed a small parameter study where we varied the CO binding energy, the disk density and temperature structure, and the cosmic ionization rate."]
+- result: DCO+ 3–2 integrated flux = 450 ± 45 mJy km/s [Table 1: "$450\pm45$"]
+- result: C18O 2–1 integrated flux = 1460 ± 150 mJy km/s [Table 1: "$1460\pm150$"]
+- result: H13CO+ 3–2 integrated flux = 484 ± 48 mJy km/s [Table 1: "$484\pm48$"]
+- result: DCO+ ring radii = ~0.6'' (~90 AU) and 2'' (~300 AU) ± not stated arcsec / AU [abstract: "peak at radii of $\sim$0.6$''$ and 2$''$ ($\sim$90 and 300 AU, respectively)"]
+- result: H13CO+ peak radius = 0.8'' (~125 AU) ± not stated arcsec [Observational Results: "the H$^{13}$CO$^+$ line peaks at 0.8$''$ ($\sim$125 AU)"]
+- limitation (authors): Model is not tuned to IM Lup, so no quantitative comparison is possible [4.1 Model Description: "The differences in temperature and density structure clearly precludes any quantitative comparison between the model and data."]
+- limitation (authors): Outer-ring intensity is model dependent and may vary from disk to disk [Discussion: "the expected intensity of the second DCO$^+$ ring *is* model dependent."]
+- not stated (card): Line-free channels used for continuum subtraction; Self-calibration solution intervals and reference SPWs; CLEAN threshold, cell size, image size; Which SPW/channels were used for the continuum image; Integration velocity range and radial bin widths of the profiles; LIME setup (grid, inclination, beam convolution); Model parameters not given (full chemistry network inputs, the small parameter-stu…
+
+### 2024ApJ...961..228S: Ring Gap Structure around Class I Protostar WL 17 (2024; star_formation, protoplanetary_disks; archival_reuse)
+- question: Does the Class I protostar WL 17 have a ring-hole or a ring-gap structure, is an outflow associated with it, and what do these imply for ring formation timescale and planet formation?
+- step 2: Fit ring geometry and radial profile
+  - method: Peak radius every 1 deg in polar coordinates fitted with an ellipse; deproject; azimuthally average; Gaussian fits to inner disk and outer ring peaks [3.1 High-spatial Resolution Continuum I…: "First, we determined the radial peak position of the outer ring every 1$^{\circ}$ in the position angle (or vertical) direction from the intensity map on polar coordinates."]
+  - fitting: Ellipse fit to ring peaks; Gaussian fit for FWHM without beam deconvolution [3.1 High-spatial Resolution Continuum I…: "We adopted the Gaussian fitting to the peaks of the inner disk and the outer ring shown in Figure [3](#fig:azintpro) and estimated the full width at half maximum (FWHM) without the beam deconvolution."]
+  - validation: Comparison with Sheehan & Eisner 2017 after smoothing to the same beam [3.1 High-spatial Resolution Continuum I…: "which is the same as in (cite: Sheehan_2017)"]
+- step 3: Dust and gas mass of ring/disk
+  - method: Optically thin M_dust = F d^2 /(kappa B(T)) on flux above 5 sigma [3.1 High-spatial Resolution Continuum I…: "where the dust is assumed to be optically thin, and a dust opacity at 1.3 mm of $\kappa_{\nu}=2$ cm$^2$ g$^{-1}$ (cite: Beckwith_1990) and a dust temperature of $T_{\rm dust}=20$ K were adopted."]
+  - parameter: 5 sigma threshold, sigma = 18 uJy/beam [3.1 High-spatial Resolution Continuum I…: "considering the dust emission larger than 5$\sigma$ ($\sigma$ = 18 $\mu$Jy beam$^{-1}$)"]
+  - assumption: kappa=2 cm2/g, T_dust=20 K, gas-to-dust 100, d=137 pc [3.1 High-spatial Resolution Continuum I…: "Adopting a gas-to-dust mass ratio of 100, the outer ring mass of WL 17 is at least $M_{\rm gas,ring}\simeq 0.01 M_{\odot}$"]
+  - validation: Compared to Sheehan & Eisner 2017 mass and Class I disk masses [3.1 High-spatial Resolution Continuum I…: "which is comparable or smaller than the dust ring mass estimated in previous studies ($M_{\rm gas,ring}\simeq 0.04\,M_{\odot}$ for (cite: Sheehan_2017))"]
+- result: Ring inner and outer edge radii = 11 and 21 ± not stated au [3.1 High-spatial Resolution Continuum I…: "the inner and outer edge radius of the outer ring are 11 and 21 au, respectively"]
+- result: Inner disk radius upper limit = <5 (FWHM 5.2) ± not stated au [3.1 High-spatial Resolution Continuum I…: "the estimated FWHM ($5.2$ au) as the upper limit of the radius"]
+- result: Ring inclination and PA = i = 33.8, PA = 68.7 ± not stated deg [3.1 High-spatial Resolution Continuum I…: "we estimated an inclination angle $i_{\rm ring}$ of 33.8$^{\circ}$ and a PA of 68.7$^{\circ}$"]
+- result: Ring peak radius and FWHM = 15.7 and 8.8 ± not stated au [3.1 High-spatial Resolution Continuum I…: "the peak radius of the outer ring is 15.7 au and the FWHM is 8.8 au"]
+- result: Total continuum flux = 4.37e-2 (inner disk 6.6e-4, ring 4.3e-2) ± not stated Jy [3.1 High-spatial Resolution Continuum I…: "The total flux is $F_{\nu} = 4.37 \times$10$^{-2}$ Jy, which is the sum of the inner disk (6.6$\times$10$^{-4}$ Jy) and outer ring (4.3$\times$10$^{-2}$ Jy)."]
+- result: Dust mass = 7.4e-5 ± not stated Msun [3.1 High-spatial Resolution Continuum I…: "The total dust mass was estimated to be $M_{\rm dust}$=7.4$\times$10$^{-5}\,M_{\odot}$."]
+- limitation (authors): Protostellar mass is uncertain because Keplerian motion cannot be separated from the jet [4.5 Uncertainty in Timescale Estimation: "Thus, in this study, the protostellar mass is uncertain and cannot be determined accurately."]
+- limitation (authors): Outflow mass and velocity are likely underestimated; field of view limits outflow length [4.5 Uncertainty in Timescale Estimation: "Thus, we will likely underestimate both the mass and velocity of the outflow."]
+- not stated (card): Spectral window/channel ranges used for continuum vs line, and line-free channels for imcontsub; Image size (pixels) and deconvolution settings (deconvolver, threshold, mask, niter); Calibrators and flux scale; whether the pipeline or manual scripts were used; Rest frequencies and the velocity range used to define the blue/red outflow moment maps; Exact outflow area definition, 0.5 K km/s contour…
+
+### 2020ApJ...892...99C: The Surprisingly Low Carbon Mass in the Debris Disk around HD 32297 (2020; debris_disks; observational_alma_primary)
+- question: What are the spatial distribution and mass of neutral carbon in the HD 32297 debris disk, and can a secondary gas production model explain the C0 and CO observations?
+- step 5: Fit 3D LTE model to CI cube
+  - method: LTE level populations on 3D grid, ray-traced, convolved to data resolution, multiplied by primary beam; Gaussian ring or double power law surface density; fit in image space [3.3 Modeling of the C I emission: "we first calculate the level population and gas emission in each cell of a three-dimensional grid by assuming local thermodynamic equilibrium (LTE)."]
+  - software: emcee, LIME, pythonradex
+  - parameter: Free: i, M*, v*, r0, sigma_r, M_C0, T100, dx, dz; PA fixed 48.5 deg [3.3 Modeling of the C I emission: "The position angle is fixed to 48.5$\ensuremath{^\circ}$ as determined in Appendix [7](#appendix:PA)."]
+  - parameter: 200 walkers, 1500 steps, first 200 discarded [3.3 Modeling of the C I emission: "The MCMC is run for 1500 steps with 200 walkers. We discarded the first 200 samples of each walker."]
+  - assumption: T(r)=T100 sqrt(100 au/r); mu=14; line broadening 1 km/s; Gaussian line profile [3.3 Modeling of the C I emission: "The line emission profile is assumed to be Gaussian with a broadening parameter of 1 km s$^{-1}$."]
+  - fitting: emcee MCMC; uninformative location- or scale-invariant priors over ranges in the parameter table; medians with 16th/84th percentile errors [3.3 Modeling of the C I emission: "we assume uninformative priors, either with a location invariant density ($\pi(\theta)=\mathrm{const}$) or a scale invariant density ($\pi(\theta)\propto\theta^{-1}$)"]
+  - validation: LTE flux only factor 1.3 above LIME non-LTE; fixed i=88 deg run gives unchanged parameters; no strong residuals [3.3 Modeling of the C I emission: "For that model, the total flux calculated in LTE was only a factor 1.3 higher than the flux from `LIME`."]
+- step 6: Model CO and carbon production/destruction history
+  - method: Time-evolution ODEs for CO and C mass with photon-counting CO destruction including CO self-shielding and C shielding, plus carbon removal timescale; steady-state solution and grid in event time and CO production rate; fit to C0 and C18O m… [4.1 Time Evolution Model: "In contrast to (cite: Kral_etal_2019), we obtain the photo-dissociation rate ($D_\mathrm{CO}$) using photon counting."]
+  - parameter: Gas ring r0=110 au, width 80 au fixed; ionisation fraction 0.2 [4.1 Time Evolution Model: "a constant ionisation fraction of 0.2 is assumed"]
+  - assumption: ISM isotopologue ratios 13CO/12CO=1.4e-2, C18O/12CO=1.8e-3; constant CO production rate; well-mixed C and CO; ISRF of Draine 1978 [4.2.1 Steady-state solution: "$\mathrm{^{13}CO}/\mathrm{^{12}CO}=1.4\times10^{-2}$ and $\mathrm{C^{18}O}/\mathrm{^{12}CO}=1.8\times10^{-3}$"]
+  - validation: Model run with C at disk surface changes results only by factor ~2; steady state consistent with full calculation [5.3 Other Uncertainties: "the derived CO production rates and C removal timescales only change by a factor of $\sim$2"]
+- result: Neutral carbon mass (Gaussian ring) = 3.5 ± +0.2/-0.2 1e-3 Mearth [Table fit_parameters: "$M_\mathrm{C^0}$ | $3.5^{+0.2}_{-0.2}$"]
+- result: Ring radius r0 (Gaussian) = 109 ± +3/-4 au [Table fit_parameters: "$r_0$ | $109^{+3}_{-4}$"]
+- result: Ring sigma_r (Gaussian) = 35.4 ± +3.8/-3.5 au [Table fit_parameters: "$\sigma_r$ | $35.4^{+3.8}_{-3.5}$"]
+- result: Inclination = 77.9 ± +1.7/-1.5 deg [3.3 Modeling of the C I emission: "The derived inclination of $77.9\ensuremath{^\circ}^{+1.7}_{-1.5}$"]
+- result: Stellar mass (fit) = 1.59 ± +0.05/-0.05 Msun [Table fit_parameters: "$M_*$ | $1.59^{+0.05}_{-0.05}$"]
+- result: Steady-state CO production rate = ~15 ± not stated Mearth Myr-1 [4.2.2 Full calculation: "the required CO production rate remains high at $\sim$15 M$_\oplus$ Myr$^{-1}$"]
+- result: Carbon removal timescale = ~700 ± not stated yr [4.2.1 Steady-state solution: "The corresponding steady state C removal timescale (equation [\[eq:C_mass_evolution\]](#eq:C_mass_evolution)) is short: $\tau_\mathrm{C}\approx 700$ yr."]
+- result: Peak optical depth of CI along line of sight = 0.2 ± not stated dimensionless [3.3 Modeling of the C I emission: "This model has a peak optical depth of 0.2 along the line of sight."]
+- limitation (authors): Temperature poorly constrained by the data [3.3 Modeling of the C I emission: "We note that the temperature is not well constrained by our data."]
+- limitation (authors): Calibration uncertainty not included in MCMC fit [3.3 Modeling of the C I emission: "We note that the calibration uncertainty, not included in the MCMC fit, might introduce some additional uncertainty in the fitted parameters."]
+- not stated (card): Line-free channels and continuum fit order for uvcontsub; Clean threshold, niter, mask, cell and image size, channel width of the cube; Exact model grid size/resolution and the likelihood form; Initial walker positions and convergence checks for emcee; Photodissociation cross-section files (private communication); ISRF scaling used (Draine 1978 normalisation); Whether the line cube was Hanning-sm…
+
+### 2013ApJ...777L..25M: ALMA Continuum Observations of a 30 Myr Old Gaseous Debris Disk around HD 21997 (2013; debris_disks, protoplanetary_disks; observational_alma_primary)
+- question: What is the distribution and origin of the dust in the gaseous debris disk around HD 21997, and how does it relate to the CO gas?
+- step 1: Image continuum and measure ring geometry and flux
+  - method: Fit ellipse to ring intensity maxima along cuts every 10 deg; derive inclination assuming circular ring; aperture photometry [3.1 ALMA image: "These points could be fitted with an ellipse having major and minor axes of 2$\ensuremath{''}$06$\times$1$\ensuremath{''}$73"]
+  - software: CASA
+  - parameter: aperture radius 2.8 arcsec centered on star [3.1 ALMA image: "circular aperture with a radius of 2$\ensuremath{''}$8 centered on the stellar position"]
+  - assumption: Intrinsically circular ring [3.1 ALMA image: "Assuming an intrinsically circular ring, we derived an inclination"]
+  - validation: Compared azimuthal scatter with noise and with emission-free ellipses [3.1 ALMA image: "We also defined a number of ellipses of the same size and orientation as the fitted one in different emission-free parts of the map."]
+- step 3: Simple model of ALMA visibilities
+  - method: Deproject visibilities, bin radially in 7 klambda, fit with DEBRA optically thin model over grid of Rin, Rout, p and smin [3.3.1 Simple model: "radially averaged in 7 k$\lambda$ wide bins"]
+  - software: DEBRA
+  - parameter: smax fixed 3000 um; smin 4, 6, 8, 16 um [3.3.1 Simple model: "The maximum grain size ($s_{max}$) was fixed at 3000$\mu$m"]
+  - assumption: Silicate (olivine) + amorphous carbon, Mie theory, size exponent -3.5 [3.3.1 Simple model: "The dust size distribution was assumed to be power-law with an exponent of $-$3.5"]
+  - fitting: Marginal likelihood estimator from chi2 of grid models [3.3.1 Simple model: "derived using a marginal likelihood estimator, calculated from the $\chi^2$ of the fit of individual models"]
+  - validation: Model SEDs compared with observations; smin=4 um excluded [3.3.1 Simple model: "This comparison excluded $s_{min}=4$$\mu$m for its incompatibility with mid-infrared data."]
+- result: ALMA 886 um disk flux = 2.69 ± 0.30 mJy [3.1 ALMA image: "obtained 2.69$\pm$0.30 mJy for the total continuum flux of the dust disk"]
+- result: Disk inclination (ALMA) = 32.9 ± 2.6 deg [3.1 ALMA image: "inclination of 32.9$^\circ$$\pm$2.6$^\circ$"]
+- result: Ring position angle = 21.5 ± 3.5 deg [3.1 ALMA image: "a P.A. of 21.5$^\circ$$\pm$3.5$^\circ$"]
+- result: Simple model Rin = 62 ± 13 AU [3.3.1 Simple model: "$R_{in}=62\pm 13$ AU, $R_{out}=150\pm 47$ AU"]
+- result: Simple model Rout = 150 ± 47 AU [3.3.1 Simple model: "$R_{in}=62\pm 13$ AU, $R_{out}=150\pm 47$ AU"]
+- result: Simple model dust mass = 0.09 ± 0.03 Mearth [3.3.1 Simple model: "$M_{dust}=0.09\pm$0.03 M$_\oplus$"]
+- limitation (authors): Details of grain migration cannot be constrained by the data [Discussion: "the details of grain migration (e.g. the magnitude of migration) cannot be reliably constrained by the available data"]
+- not stated (card): Line-free channel selection and FDM/TDM weighting; CLEAN weighting/robust, masks, cell and image size, threshold; Phase calibrator and flux density of Callisto model; Model grid ranges and steps for Rin, Rout, p; Marginal likelihood prior definitions; Visibility deprojection phase center details; Whether calibration was by manual script or archive pipeline
+
+### 2026A&A...705A.204J: The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): X. Interpreting the peculiar dust rings around HD 131835 (2026; debris_disks; theory_or_simulation_compared_to_alma)
+- question: Why is the inner dust ring of HD 131835 brighter than the outer ring in ALMA thermal emission but fainter in SPHERE scattered light: two planetesimal belts with different properties, or gas-driven outward migration of small dust from a sin…
+- step 1: empirical collisional-cascade test
+  - method: Planetesimal profile from frank ALMA profile, fixed q=3.5 size distribution with radiation pressure, simulate 890 μm and 1.6 μm profiles [3.1 Approach: "We calculated a normalized surface density radial profile of planetesimals from the `frank` surface brightness radial profile assuming a black-body temperature profile"]
+  - parameter: q=3.5; M*=1.7 Msun; L*=9 Lsun; scattering angle 90 deg [3.1 Approach: "We adopt a stellar mass of $M_*=1.7$ M$_\odot$ and a stellar luminosity of $L_*=9$ L$_\odot$ (cite: Marino_ARKS)."]
+  - assumption: Spherical astrosilicate grains, Mie theory, circular planetesimal orbits [3.1 Approach: "we assume dust grains are perfect spheres with a simple astrosilicate composition (cite: draine-2003) and we calculate the optical properties of the dust using Mie theory"]
+  - validation: Compared with SPHERE profile; fails to reproduce outer ring [3.1 Results: "It fails to reproduce the one inferred from SPHERE observations completely."]
+- step 3: gas-drag dust dynamics
+  - method: Integrate 500 grains (2 μm to 1 cm) for 10 Myr in Gaussian gas disc with drag and radiation pressure; vary rho_g0, sigma_g, mu, q; rescale to frank peak [4.2 Model of dust grain dynamics: "We integrated equations of motion of individual dust grains of various sizes (500 particles log-spaced from 2 μm to 1 cm, corresponding to a range of $\beta=0.5$ to $\beta=0.0001$)"]
+  - parameter: r_g=65 au; mu=28 or 2.3; rho_s=3.3 g/cm3; Q_pr=1 [4.2 Model of dust grain dynamics: "We assumed grain material density of $\rho_{\rm s}=3.3$ g cm$^{-3}$ and we calculated particle $\beta$ parameters assuming $Q_{\rm pr}=1$."]
+  - assumption: Black-body gas temperature, vertical hydrostatic equilibrium, Gaussian gas profile [4.1 Model of gas disc: "For all models we assume the gas to have a black-body temperature profile"]
+  - validation: Comparison of ring location, brightness ratio and peak brightness to observations [4.4 Application to HD 131835: "Considering only the peak brightness of both rings and at both wavelengths, the two most favourable models are:"]
+- result: best gas model total gas mass (mu=28, sigma_g=10 au, rho_g0=1e-17) = 0.26 ± not stated Mearth [4.4 Application to HD 131835: "$\mu=28$, $\sigma_{\rm g}=10$ au and $\rho_{\rm g, 0}=10^{-17}$ g cm$^{-3}$ (total gas mass of 0.26 M$_\oplus$)"]
+- result: best gas model total gas mass (mu=28, sigma_g=15 au, rho_g0=1e-19) = 0.004 ± not stated Mearth [4.4 Application to HD 131835: "$\sigma_{\rm g}=15$ au and $\rho_{\rm g, 0}=10^{-19}$ g cm$^{-3}$ (total gas mass of 0.004 M$_\oplus$)"]
+- result: required size distribution exponent q = ≳3.75 ± not stated dimensionless [4.4 Application to HD 131835: "both with $q \gtrsim 3.75$"]
+- limitation (authors): Dynamical model omits collisions, gas evolution, dust feedback and assumes Gaussian gas profile [4.2 Model of dust grain dynamics: "This purely dynamical model does not account for particle lifetimes which could be both shorter and size-dependent due to destructive collisions"]
+- not stated (card): ACE input parameters beyond those listed (belt masses, size grid, age, run time); Dust optical constants details and size range for Mie calculations; How colours of the inner ring lower limit were computed exactly; Radial grid and binning for dynamical models
+
+### 2017ApJ...835..278S: Physical Properties of Molecular Clouds at 2 pc Resolution in the Low-metallicity Dwarf Galaxy NGC 6822 and the Milky Way (2017; nearby_galaxies, star_formation, milky_way_ism; observational_alma_primary)
+- question: How do the structure of CO-bright clumps and the CO-to-H2 conversion in the low-metallicity dwarf galaxy NGC 6822 compare with Milky Way clouds, and what does this imply for molecular gas depletion times?
+- step 3: Derive complex gas masses and alpha_CO from dust
+  - method: GDR from outer 50 pc ring, background subtraction, dust-traced gas minus HI gives H2; alpha_CO = H2/L_CO [4.2 Atomic-Molecular Complexes: "we estimate the GDR by comparing $\Sigma_\mathrm{atom}$ and $\Sigma_\mathrm{dust}$ in regions where atomic gas makes up most of the gas."]
+  - parameter: maps at 25" ≈ 57 pc resolution, SPIRE 350 um as dust proxy [3.2 Atomic Gas and Dust: "The H$\,$I and dust maps are evaluated at a common resolution of $25\ensuremath{''} \approx 57$ pc"]
+  - assumption: optically thin HI, no opacity correction [3.6 H I Opacity Correction: "we adopt the standard assumption of optically thin H$\,$I emission and work without opacity correction"]
+  - validation: Compared with three dust models agreeing within factor of a few [3.2 Atomic Gas and Dust: "results derived from more complex dust modeling (i.e., modified blackbody, (cite: Galliano11), or (cite: DraineLi07) model) agree within a factor of a few"]
+- result: Joint alpha_CO (2-1) = 110 ± ±30 Msun pc^-2 (K km/s)^-1 [4.2 Atomic-Molecular Complexes: "$\delta_\mathrm{GDR} = 320 \pm 80$ and $\alpha_\mathrm{CO} = 110 \pm 30$"]
+- result: alpha_CO Fields 2 & 4 = 85 ± ±25 Msun pc^-2 (K km/s)^-1 [4.2 Atomic-Molecular Complexes: "we determine $\alpha_\mathrm{CO} = 85 \pm 25$ M$_{\odot}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$"]
+- result: Mean gas-to-dust ratio = 380 ± ±70 dimensionless [4.2 Atomic-Molecular Complexes: "we find $\delta_\mathrm{GDR} = 380 \pm 70$"]
+- result: Molecular depletion time of complexes = ~360 ± not stated Myr [5.5 Star-forming Gas Content: "present day star formation will consume the molecular gas content of the complexes in ${\sim} 360$ Myr"]
+- limitation (authors): Dust maps uncertain (Galactic cirrus, Herschel issues), dominating the error budget [3.2 Atomic Gas and Dust: "This uncertainty dominates the error budget in our analysis of dust-inferred gas masses."]
+- limitation (authors): Missing flux on large scales [2 ALMA Survey: "emission extending over scales larger than the maximum recoverable scale of about $0.6 \lambda / L_\mathrm{min} \approx 11\ensuremath{''} \approx 25$ pc is missing in our data sets"]
+- not stated (card): Exact clean parameters (threshold, niter, mask, mosaic gridding); Line-free channels / continuum subtraction for CO cube; CASA version and pipeline version; CPROPS settings (S/N cuts, parameters, extrapolation); Details of convolution of Milky Way data and HI/dust regridding; Herschel background/cirrus handling for 350 um map and conversion to dust mass; Public availability of the HI map (not rel…
+
+### 2014ApJ...796..131O: Formation of a Keplerian Disk in the Infalling Envelope around L1527 IRS: Transformation from Infalling Motions to Kepler Motions (2014; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: Does the infalling, rotating envelope of the class 0 protostar L1527 IRS show the transition from infall and angular-momentum-conserving rotation to Keplerian rotation, and what do the C18O and SO kinematics say about infall velocities?
+- step 4: Estimate SO gas kinetic temperature
+  - method: LVG statistical equilibrium on three SO lines with chi2 test and filling factor for edge-on ring [Appendix: "Brightness temperatures of each SO line are calculated with various sets of the three parameters, and are compared with the observed brightness temperatures with a $\chi^2$ test"]
+  - software: RADEX (cross-check)
+  - parameter: lines resampled to 0.28 km/s, convolved to 0.96"x0.73", measured in 0.75"x0.75" box [Appendix: "all the three SO lines were resampled with the same velocity resolution (0.28 km s$^{-1}$)"]
+  - assumption: static spherically symmetric escape probability; chi2<10 accepted [Appendix: "We consider that parameter sets with $\chi^2<10$ can reproduce the observations very well."]
+  - fitting: chi2 grid over Tkin, n(H2), X/(dV/dr) [Appendix: "There are three free parameters for the LVG calculations, i.e., the kinetic temperature, the number density of H$_2$, and $\frac{X}{dV/dr}$"]
+  - validation: Results same as RADEX [Appendix: "We confirmed that our calculations provide the same results as those from the RADEX code(cite: tak07)."]
+- step 5: Model line profiles and PV diagrams with infall
+  - method: Envelope+SO ring+Keplerian disk model, LTE radiative transfer, CASA simulator; Model 1 free-fall vs Model 2 reduced infall [4.3: "Expected line emissions along line of sights were calculated with radiative transfer equations assuming the local thermal equilibrium and an edge-on configuration"]
+  - software: CASA simulator
+  - parameter: SO ring 70-120 AU, 32 K, SO abundance 9e-7 (5000x outside); disk 54 AU, 0.3 Msun; j=6.1e-4 km/s pc [4.3: "Within the SO ring region, the fractional abundance of SO is $9\times10^{-7}$, which is 5000 times higher than that outside and inside of the hot ring."]
+  - assumption: edge-on, inclination 90 deg [4.3: "their inclination angles are 90$\ensuremath{^\circ}$"]
+  - fitting: Manual adjustment of infall velocity; no formal fit [4.3: "Infall velocities in model envelopes are adjusted to reproduce the observations"]
+  - validation: Qualitative comparison of line profiles and PV diagrams; robust against 0.2 Msun [4.3: "our conclusion is still valid even if we use the smaller mass of the central protostar, $0.2~M_{\ensuremath{\odot}}$"]
+- result: SO gas kinetic temperature = ~32 ± not stated K [Appendix: "we consider that the kinetic temperature of the SO gas within the ring is $\sim$32 K."]
+- limitation (authors): Missing flux on large scales biases rotation velocities at large radii [4.1: "50% of emission arising from the structures having a $\sim$1000 AU scale (500 AU in radius) is missed in our current ALMA measurements"]
+- limitation (authors): SO is optically thick so density and abundance unconstrained [Appendix: "Since SO is optically thick, it is impossible for us to estimate the H$_2$ density and the abundance of SO."]
+- not stated (card): CASA version and calibration/imaging procedure (tclean/clean parameters, weighting, robust, cell, image size); Continuum subtraction and line-free channels; How PV data points were extracted (cut width, position angle, peak/edge criterion); Model envelope density normalization and numerical radiative transfer code details; Reference 1 data and details of 2a SO lines used in LVG; Measurement of ga…
+
+### 2014ApJ...787...48X: ALMA Observations of Warm Molecular Gas and Cold Dust in NGC 34 (2014; nearby_galaxies, agn_and_quasars, star_formation; observational_alma_primary)
+- question: How is warm dense molecular gas and cold dust distributed in the nucleus of NGC 34, how is it related to the starburst and AGN, and is there evidence for a molecular outflow?
+- step 2: Fit core spectrum with rotating ring
+  - method: least-squares fit of rotating ring with density gradient to r=0.125'' aperture spectrum [3.1 CO (6-5) line emission: "we present model fitting to the core spectrum using a simple rotating ring model."]
+  - fitting: least squares; free: v_center, v_rot sin i, sigma, rho_max/rho_min [3.1 CO (6-5) line emission: "The least-squares fitting results for the model parameters are as follows"]
+  - validation: alternative models (two Gaussians; ring plus Gaussian) fit equally well with more parameters [3.1 CO (6-5) line emission: "can fit the data equally well but with more parameters"]
+- step 5: Radial profiles and star formation comparison
+  - method: gas and dust column density profiles from CO and continuum with constant M/L; compared with SFR from 8.44 GHz radio and stellar mass from H-band [4 Comparisons with Previous Results: "These were estimated using radial profiles of the CO (6-5) and the continuum and assuming constant mass-to-luminosity ratios."]
+  - assumption: Kroupa IMF, BC03 SSP age 4e8 yr, A_H=0.46 [4 Comparisons with Previous Results: "An H-band extinction correction of $\rm A_{H}=0.46$ mag was applied"]
+- result: Ring model rotation velocity = 173 ± 1 km/s [3.1 CO (6-5) line emission: "$\rm v_{rot}sin(i) = 173\pm 1\; km\; s^{-1}$"]
+- limitation (authors): Good map quality only in the central ~3'' due to uv-coverage; astrometric accuracy ~0.1'' [2 Observations: "the resulting maps have good quality only in the central region of $\sim 3''$ (limited by the uv-coverage)"]
+- not stated (card): tclean/clean parameters: cell size, image size, masks, iterations, threshold; self-calibration solution intervals and reference data; line-free channels and uvcontsub fit order; how core (r~50 pc) fluxes and Gaussian sizes were measured; how the CO(6-5) disk size and axis ratio were derived (fit method); ALMA project code; rotating-ring model definition and fitting code; how CO(6-5) luminosity an…
+
+### 2014MNRAS.444.1821F: ALMA and Herschel observations of the prototype dusty and polluted white dwarf G29-38 (2014; stellar_physics, debris_disks, exoplanets; observational_alma_primary)
+- question: Is there an outlying, cold parent planetesimal population at 1-100 AU around the dusty, polluted white dwarf G29-38 that can be detected with ALMA and Herschel?
+- step 3: Convert limits to fractional dust luminosity vs radius
+  - method: f = 3.4e9 F_nu d^2 X_lambda / (r^2 B_nu(lambda,T)); ALMA limits divided by number of beams per ring circumference when resolved [3.1 Sensitivity to Dust Emission: "The plotted ALMA sensitivities were corrected for such resolved cases by assuming a face on disk and dividing by the number of beams per ring circumference."]
+  - assumption: Blackbody grains, face-on disk, distance 13.6 pc [3.1 Sensitivity to Dust Emission: "by assuming a face on disk"]
+- step 4: Derive dust mass limits
+  - method: m(T)=F_nu d^2/(kappa B_nu(T)) using 870 um limit of 0.17 mJy/beam, ring radii up to 60 AU [3.3 Dust Mass Limits: "the adopted upper limit flux of $F_\nu=0.17$ mJy/beam is converted to the dust mass using"]
+  - parameter: kappa = 1.7 cm2/g at 870 um [3.3 Dust Mass Limits: "the average value of dust opacity is adopted here, $\kappa=1.7$ cm$^2$ g$^{-1}$ at 870 $\mu$m"]
+  - assumption: Optically thin, circular face-on thin ring [3.3 Dust Mass Limits: "the calculations assume a simple, circular, and face-on ring of radial thickness much less than the beam size"]
+- result: Detectable fractional luminosity limit = ~1e-4 ± not stated dimensionless [abstract: "No associated emission sources were detected in any of the data down to $L_{\rm IR}/L_*\sim10^{-4}$"]
+- result: Cold dust mass ruled out = > 1e24-1e25 ± not stated g [abstract: "generally ruling out cold dust masses greater than $10^{24}-10^{25}$ g"]
+- limitation (authors): Early, shallow ALMA data with limited antennas; projections assume no further collisional evolution [OUTLOOK: "ALMA in early and relatively shallow observations at 870 and 1305 $\mu$m"]
+- not stated (card): CASA version and pipeline version; Imaging parameters (weighting, cell, image size, cleaning) for ALMA images; Combination method for band 6 and 7 data and spectral index assumed; Dust temperature-radius relation details (grain properties, X_lambda); Stellar parameters used for the temperature calculation
+
+### 2020ApJ...894...76W: The MESAS Project: ALMA Observations of the F-type Stars γ Lep, γ Vir A, and γ Vir B (2020; stellar_physics, debris_disks; observational_alma_primary)
+- question: What are the submm/mm fluxes and chromospheric structure of debris-poor F-type stars, and is there short-term variability or bias for debris disk studies?
+- step 6: Estimate debris excess and mass for gamma Vir B
+  - method: Compare Band 6 flux with Sirius-like (~0.6 TB) and full-blackbody extrapolations; debris masses per White et al. 2017 [4.3 Relevance for debris disk studies: "we would get an excess of 180 $\mu$Jy and 65 $\mu$Jy, respectively."]
+  - parameter: ring at 4 au; grain density 2.5 g cm^-3; 2-4 au disk, 10 um to 25 km, q~3.5 [4.3 Relevance for debris disk studies: "is populated by grains ranging from $10\,\mu$m to 25 km with a size distribution of $q\sim3.5$"]
+  - assumption: Grains perfect emitters (mm-grain case) [4.3 Relevance for debris disk studies: "along with some other basic idealized assumptions such as as the grains being perfect emitters"]
+- result: Debris excess for gamma Vir B (Sirius-like / blackbody) = 180 / 65 ± not stated uJy [4.3 Relevance for debris disk studies: "we would get an excess of 180 $\mu$Jy and 65 $\mu$Jy, respectively."]
+- result: Total debris mass in disk (size distribution) = 0.02-0.07 ± not stated M_earth [4.3 Relevance for debris disk studies: "This would lead us to infer $0.02-0.07\,\rm M_{\oplus}$ of total debris in the disk"]
+- limitation (authors): gamma Vir models lack constraints at other wavelengths; temperature minimum cannot be analyzed [4.1 Semi-empirical chromospheric model: "Therefore, it is not possible to perform an analysis of the temperature minimum in these two stars."]
+- limitation (authors): Variability at longer timescales cannot be ruled out for gamma Lep [4.2 Potential millimeter wavelength var…: "we cannot rule out the possibility of variability at time periods longer than the length of the EBs."]
+- not stated (card): CLEAN mask, niter, cell and image size; Whether pipeline products were used or manually re-imaged; spectral line flagging; uvmodelfit starting parameters; KINICH-PAKAL settings, convergence criteria and weighting of data points; Source of stellar parameters (footnotes a-e); How per-scan time series were binned and uncertainties assigned; Gamma Vir EB combination procedure
+
+### 2020ApJ...894L..14L: ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation (2020; milky_way_ism, star_formation; observational_alma_primary)
+- question: Do massive CMZ clouds contain hidden early-phase fragmentation into cores, and is it consistent with thermal Jeans fragmentation and with forming Arches/Quintuplet-like clusters?
+- step 5: Core separations and Jeans comparison
+  - method: MST of core positions, deprojected by 2/pi; compare with Jeans length and mass [4.1 Thermal Jeans Fragmentation: "The MST algorithm is implemented with a modified version of the FragMent package (cite: clarke2019)."]
+  - software: FragMent
+  - parameter: Jeans: T 50–200 K, n = 1e6 cm-3, rho = n(H2) x 2.37 mH [4.1 Thermal Jeans Fragmentation: "we adopt the characteristic gas temperature 50–200 K and gas density $10^6$ cm$^{-3}$ from those works."]
+  - validation: Varied dendrogram parameters; separations vary by up to 50% [Appendix: Dendrogram Parameters: "the characteristic spatial separations between cores derived from the MST analysis could vary by up to 50%"]
+- result: Most frequent core separation = ~1e4 ± (0.8–1.5)e4 under varied parameters AU [4.1 Thermal Jeans Fragmentation: "In the three clouds, the most frequent separation is $\sim$$10^4$ AU."]
+- result: Jeans length = (1.0–1.9)e4 ± not stated AU [4.1 Thermal Jeans Fragmentation: "The derived Jeans length is (1.0–1.9)$\times$$10^4$ AU."]
+- result: Jeans mass = 3–25 ± not stated Msun [4.1 Thermal Jeans Fragmentation: "This is generally consistent with the Jeans mass of 3–25 $M_\odot$."]
+- limitation (authors): Dust temperature at 2000 AU unknown, strongly affects masses [3.2 Physical Properties of the Cores: "$T_\text{dust}$ at 2000 AU scales is unclear."]
+- limitation (authors): Cannot tell whether cores are prestellar or protostellar [3.2 Physical Properties of the Cores: "with the current data we cannot determine whether the cores have collapsed and are mostly protostellar"]
+- not stated (card): Image size and phase centres per field; Line-free channel selection; Which execution blocks and calibrators were used; flux calibrator and flux uncertainty; Cleaning threshold, niter and masks; Exact astrodendro call details beyond min_value/min_delta/min_npix; Modifications made to FragMent; KDE settings for separation distributions; Primary beam correction details and mosaic pointing layout
+
+### 2021A&A...656A.133Q: Stellar structures, molecular gas, and star formation across the PHANGS sample of nearby galaxies (2021; nearby_galaxies, star_formation; observational_alma_primary)
+- question: How is molecular gas and star formation organised across the PHANGS sample of nearby galaxies, and what role does galactic environment (bars, spiral arms, centres) play?
+- step 1: Build environmental masks
+  - method: Define centre, bar, spiral, interarm, disc from Spitzer 3.6um via visual bar/ring/lens ellipses, log-spiral fits with CO-based width, and GALFIT bulge/disc; assign pixels uniquely [3.8 Uniquely assigning pixels: "we define five basic dominant environments: (1) centre, (2) bar, (3) spiral arms, (4) interarm, and (5) disc without spiral masks."]
+  - software: GALFIT, astrometry.net, MOPEX
+  - parameter: spiral width grown in 500 pc steps until flux ratio between steps falls below 1.25 [3.2 Spiral arms and interarm regions: "The final width was established when the ratio of CO flux from one step to the next falls below an empirical threshold of $1.25$"]
+  - validation: Masks inspected on gas and SF maps with several rounds of quality flagging by three co-authors [3.2 Spiral arms and interarm regions: "This involved several rounds of quality flagging by three co-authors (MQ, ES, SEM)"]
+- limitation (authors): Spiral masks are broad; contrasts may be resolution-dependent; centre results sensitive to alpha_CO and AGN contamination [4.4: "We also recall that we are performing measurements at kpc-resolution, but the contrast might be resolution-dependent."]
+- not stated (card): The Halpha SFR survey (Razza et al.) and kpc database (Sun et al.) are in prep.; exact data products not available; Bisector fit implementation and uncertainty estimation for KS relation not given; Exact hexagon-to-environment assignment code and mask files require the released masks; Hand-adjusted spiral endpoints and visual bar/ring widths not reproducible from text; Linear-combination coeffici…
+
+### 2024MNRAS.534..683Z: Molecular clouds as hubs in spiral galaxies: gas inflow and evolutionary sequence (2024; nearby_galaxies, star_formation, milky_way_ism; archival_reuse)
+- question: Can multi-scale hub-filament structures be recovered in the spiral galaxy NGC 628 from CO(2-1), and do they show gas inflow and an evolutionary sequence?
+- step 6: Density contrast
+  - method: C = N_hub/N_a, ring of width equal to effective radius [3.5.1 Density contrast: "We define the density contrast $C$ as the ratio of the average column density in the hub region, $N_{\rm hub}$"]
+  - validation: Comparison restricted to overlapping scale range to rule out resolution effects [3.5.3 Scale and density: "We confined the comparison of leaf-HFs-A, leaf-HFs-B and leaf-HFs-C to this scale range"]
+- limitation (authors): Cluster age/mass estimate is rough; small sample for separations [3.6 Star formation: "However, the sample size here is very limited."]
+- limitation (authors): CO may be optically thick, underestimating column density [3.5.2 Association: "We note that CO could be optically thick, which may lead to an underestimation of the column density"]
+- not stated (card): FILFINDER parameters (smoothing, adaptive threshold, branch pruning); KinMS rotation model inputs (rotation curve, centre, PA); GAUSSPY+ parameters (SNR thresholds, alpha values); Velocity-gradient fitting details (aperture, fit method, mass estimation); Virial ratio and velocity dispersion definitions and formula; Dendrogram settings for the 21 um and H-alpha maps' sigma_rms values; Criteria for…
+
+### 2016MNRAS.461.4276D: Space reconstruction of the morphology and kinematics of axisymmetric radio sources (2016; evolved_stars, star_formation; theory_or_simulation_compared_to_alma)
+- question: How can the morphology and kinematics of axisymmetric circumstellar envelopes be reconstructed in space from radio data cubes, telling expansion from rotation and finding the star axis orientation?
+- step 2: Deproject EP Aqr emissivity and radial velocity
+  - method: Solve the Abel-type integral equation per position-angle bin assuming power-law emissivity, then derive V_rad from flux per velocity bin [3.2 The theta=0 case: EP Aquarii: "Assuming in each $\varphi$ bin a form ($r$ measured in arcseconds)."]
+  - assumption: Radial wind, CO dissociated at 13 arcsec [3.2 The theta=0 case: EP Aquarii: "As rotation cannot be detected, we assume a radial wind of velocity $V_{rad}$."]
+- result: EP Aqr R-dependence indices CO(2-1), CO(1-0) = -1.2, -0.9 ± not stated dimensionless [3.2 The theta=0 case: EP Aquarii: "with respective power indices $-1.2$ and $-0.9$"]
+- limitation (authors): Inclination and elongation are degenerate; psi hard to find when rotation and expansion mix [2.5 Inclination theta: "this implies strong correlations relating the inclination angle to the elongation of the outflow on the star axis"]
+- not stated (card): Data reduction and imaging details for all ALMA datasets; Which project code corresponds to EP Aqr, Red Rectangle and Mira; Distances to targets; Fitting code and error treatment; Line-free channels, beam and rms
+
+### 2019ApJ...880...69Y: HL Tau Disk in HCO<SUP>+</SUP> (3-2) and (1-0) with ALMA: Gas Density, Temperature, Gap, and One-arm Spiral (2019; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Does the HL Tau disk show HCO+ gas gaps coincident with the dust gaps, and what are the gas kinematics, density, temperature and surrounding spiral structure?
+- step 3: Radial profiles of HCO+ (3-2) and (3-2)/(1-0) intensity ratio
+  - method: Velocity-aligned stacked spectra in radial bins, Gaussian fits to (3-2), integrate both lines within 1 sigma line width, ratio in K km/s [4.2 HCO+ density and temperature profil…: "we integrated the velocity-aligned stacked spectra of the HCO$^+$ (3–2) and (1–0) emission over the channels within the 1$\sigma$ Gaussian line width from the centroid velocity"]
+  - parameter: radial bin width 0.05"; innermost radius = beam 0.1" (14 au) [4.2 HCO+ density and temperature profil…: "The radius of the innermost bin is adopted to be the beam size of 0.1$''$ (14 au)"]
+  - assumption: (3-2) and (1-0) trace the same volume; ratio constant within each bin [4.2 HCO+ density and temperature profil…: "we assume that the HCO$^+$ (3–2) and (1–0) emission lines trace the same volume in the HL Tau disk"]
+  - fitting: Gaussian fits [Analysis, HCO$^+$ density and temperatu…: "For each radial bin, we fitted a Gaussian line profile to the velocity-aligned stacked spectrum of the HCO$^+$ (3–2) emission."]
+- step 4: Derive continuum optical depths
+  - method: tau_d = -ln(1 - I/(B(Td)-B(Tbg))) using azimuthally averaged continuum profiles at 1.1 and 2.9 mm [4.2 HCO+ density and temperature profil…: "Then we derived the radial profiles of the optical depths of the continuum emission ($\tau_{\rm d}$) with the radiative transfer equation"]
+  - assumption: T_d from Okuzumi16; T_bg 2.73 K [4.2 HCO+ density and temperature profil…: "cosmic microwave background temperature of 2.73 K"]
+- step 6: Gap depth and profile fits
+  - method: Gap depth = column density in gap over power-law interpolation from 17 and 37 au; fit self-similar accretion disk profile; power-law Tex fit [4.2 HCO+ density and temperature profil…: "the depth of this HCO$^+$ gas gap is estimated to be 4–8"]
+  - assumption: constant HCO+ abundance between 17 and 37 au [4.2 HCO+ density and temperature profil…: "Assuming that the HCO$^+$ abundance is constant at radii between 17 au and 37 au"]
+  - fitting: self-similar solution; points between 20 and 35 au excluded [4.2 HCO+ density and temperature profil…: "Excluding the data points at radii between 20 au and 35 au, which belong to the inner gap"]
+- step 8: Planet mass from gap depth
+  - method: Kanagawa15 formula with depth 4-8, M_star 2.1 Msun, T 60 K, alpha 1e-3 [5.1 Gap opened by a planet?: "a gas temperature of 60 K, and a viscosity $\alpha$ of 10$^{-3}$"]
+  - assumption: vertically isothermal disk [Discussion, Gap opened by a planet?: "We note that the formula of planet mass and gap depth in (cite: Kanagawa15) is derived for vertically isothermal disks."]
+  - validation: compared with planet masses in simulations rescaled by stellar mass [Footnote 3: "we linearly scaled the mass of planets in these simulations by the ratio of their adopted and our measured stellar masses."]
+- result: HCO+ gap depth at 30 au = 4-8 ± not stated dimensionless [4.2 HCO+ density and temperature profil…: "the depth of this HCO$^+$ gas gap is estimated to be 4–8"]
+- result: Tex power-law profile = 256 (R/1 au)^-0.48 for 15<R<140 au ± not stated K [4.2 HCO+ density and temperature profil…: "$256\cdot(R/{\rm 1\ au})^{-0.48}$ K for $15 < R < 140$ au"]
+- result: Gas mass times X(HCO+) = 4.4e-12 ± not stated Msun / X(HCO+) [4.2 HCO+ density and temperature profil…: "the gas mass of the HL Tau disk is estimated to be $4.4 \times 10^{-12}/X({\rm HCO^+})$ $M_\ensuremath{\odot}$"]
+- result: Planet mass opening the 30 au gap = 0.5-0.8 ± not stated MJ [5.1 Gap opened by a planet?: "the planet mass is estimated to be 0.5–0.8 $M_{\rm J}$ from the gap depth of 4–8"]
+- limitation (authors): Spiral velocities depend on the assumed mid-plane location and conserved angular momentum [4.3 kinematics of the one-arm spiral: "If the spiral structure is not in the disk mid-plane or the angular momentum is not conserved, the derived profiles of the infalling and rotational velocities are not valid."]
+- limitation (authors): Inner-radius line width overestimated, so column density, Tex and tau at the inner radius may be underestimated [4.2 HCO+ density and temperature profil…: "the column density, $T_{\rm ex}$, and $\tau_{\rm g}$ at the inner radius can be underestimated."]
+- not stated (card): Self-calibration solution intervals and number of iterations; Line-free channels for uvcontsub and fit order; tclean cell size, image size, masks and clean threshold; Exact radial bin centers and the numeric inputs for each bin; Details of the absorption masks per radial bin; Keplerian masking parameters for the HCO+ (1-0) moment map; Spiral peak positions used in the fit; Uncertainties on the fi…
+
+### 2024A&A...689A.104D: From traffic jams to roadblocks: The outer regions of TW Hya with ALMA Band 8 (2024; protoplanetary_disks; observational_alma_primary)
+- question: Is there continuum emission and substructure in the outer disk (R>60 au) of TW Hya, and what are its dust properties across wavelengths?
+- step 2: Non-parametric visibility fit with frank
+  - method: FrankFitter Normal and logNormal, subtracting 20 mJy point source [3.2.1 Non-parametric modeling with frank: "We subtracted 20 mJy from the real part of our visibilities, assuming it to be the flux density of the point source."]
+  - software: Frankenstein
+  - parameter: alpha={1.05,1.2,1.3}, wsmooth={1e-1,1e-4}, Rmax=5.0", p0=1e-35, 300 radial points [3.2.1 Non-parametric modeling with frank: "R_{max} = 5.0''$, $p_0 = 10^{-35}$ with 300 radial points"]
+  - assumption: azimuthally symmetric, geometrically thin, optically thick disk [3.2.1 Non-parametric modeling with frank: "it assumes that the emission originates from a geometrically thin and optically thick disk"]
+  - fitting: logNormal with alpha=1.3, wsmooth=1e-4 preferred [3.2.1 Non-parametric modeling with frank: "We find that the logNormal fit with $\alpha$ = 1.3 and w$_{smooth}$ = 10$^{-4}$ gives the most consistent results"]
+  - validation: Shoulder flux robust to alpha and wsmooth [3.2.1 Non-parametric modeling with frank: "is robust against changes in the $\alpha$ and $w_{smooth}$ values"]
+- step 3: Parametric visibility fit (3 Gaussians) with galario+emcee
+  - method: One central Gaussian plus two Gaussian rings, 10 free parameters, inclination and PA fixed [3.2.2 Parametric modeling: "Thus, a total of 10 parameters were fit with the MCMC algorithm."]
+  - software: galario, emcee
+  - parameter: 80 walkers, 10,000 steps after 2000 burn-in [MCMC fitting and results: "We run our MCMC sampler with 80 walkers, for a total of 10,000 steps after a burn-in of 2000 steps."]
+  - assumption: axisymmetric; i=5.8 deg, PA=151.6 deg fixed [3.2.2 Parametric modeling: "In our model, we assumed that the TW Hya disk is azimuthally symmetric."]
+  - fitting: emcee, uniform priors (e.g. log I in [-7,2], R2 in [1.16",1.66"], offsets in [-2",2"]); best fit = max likelihood [MCMC fitting and results: "We assume our parameters to have the following uniform priors"]
+  - validation: Residual/data amplitude ratio ~0.0013; model recovers 99.88% of peak [3.2.2 Parametric modeling: "The model describes 99.88% of the original peak intensity showing that our axisymmetric model is well suited to describe the 0.65 mm disk."]
+- step 4: Azimuthal intensity profiles and disk sizes for Bands 3-7
+  - method: Deproject, azimuthally average, cumulative profiles for R68/R95/R99, substructure location/width/contrast [Appendix C: "We also calculate an equivalent radius by averaging all the radial points within the bin."]
+  - parameter: uncertainty u = rms/(2 sqrt(n)) [Appendix C: "u = \frac{rms}{2\sqrt{n}}."]
+- step 5: Spectral index of outer ring
+  - method: Fit F_nu ∝ nu^alpha to outer-ring flux across bands; ring flux from imstat masks (Bands 3-7) and Gaussian integral (Band 8); 0.87-1.3 mm radial spectral index profile [3.4.1 Spectral index: "This is done with the `imstat` task in CASA."]
+  - software: CASA
+  - parameter: 10% flux calibration uncertainty [2 Observations and data reduction: "the 10% uncertainty in the total flux calibration considered in our analysis of the spectral index"]
+- result: Frank shoulder flux 80-97 au = 63.15 ± 13.99 mJy [3.2.1 Non-parametric modeling with frank: "the flux density (63.15 $\pm$ 13.99 mJy) obtained between 80 au and 97 au"]
+- result: Outer ring flux density at 0.65 mm = 59.24 ± +14.64/-10.31 mJy [3.2.2 Parametric modeling: "The outer ring has a flux density of $59.24^{+14.64}_{-10.31}$ mJy"]
+- result: Model total flux density 0.65 mm = 3075.11 ± +71.55/-68.44 mJy [3.2.2 Parametric modeling: "the model disk has a total flux density of $3075.11^{+71.55}_{-68.44}$ mJy"]
+- result: Outer ring width (FWHM) at 0.65 mm = 19.73 ± 2.44 au [3.2.2 Parametric modeling: "This gives us a ring width of 19.73 $\pm$ 2.44 au."]
+- result: Band 8 disk sizes R68/R95/R99 = 46.85 / 69.13 / 95.0 ± 0.61 / 1.20 / 3.0 au [3.2.2 Parametric modeling: "$R_{68}$ = 46.85 $\pm$ 0.61 au, $R_{95}$ = 69.13 $\pm$ 1.20 au and $R_{99}$ = 95.0 $\pm$ 3.0 au"]
+- result: Outer ring spectral index = 3.66 ± 0.14 dimensionless [3.4.1 Spectral index: "We obtain an outer ring spectral index of 3.66 $\pm$ 0.14"]
+- result: B86 ring location 0.87 mm = 85.61 ± +1.98/-1.98 au [Table 3: "| 7 | 0.865 | $79.47^{+1.98}_{-1.98}$ | $4.69^{+1.44}_{-1.44}$ | $85.61^{+1.98}_{-1.98}$"]
+- limitation (authors): Band 8 resolution insufficient to resolve the substructure; large location uncertainties [3.2.2 Parametric modeling: "higher angular resolution ALMA Band 8 observations (at least $\sim$ 0.1”, 6 au), with high sensitivity and S/N, are required to resolve the separation and morphology of this substructure."]
+- not stated (card): Self-calibration reference antenna, spw combination and exact masks; Initial/final CLEAN thresholds and mask definition for tclean; Frank hyperparameter details beyond those listed, and fixed geometry used in frank; Which of the archival Band 3-7 products/ calibrations from Macias et al. are needed and their flux scaling; Image-plane flux mask widths for outer ring in Bands 3-7 (exact radii); Vis…
+
+### 2019ApJ...872..200H: ALMA Observations of the Massive Molecular Outflow G331.512-0.103. II. Physical Properties, Kinematics, and Geometry Modeling (2019; star_formation, astrochemistry; observational_alma_primary)
+- question: What are the physical conditions, kinematics and geometry of the massive molecular outflow and ambient core G331.512-0.103, from 18 newly analyzed ALMA band 7 lines?
+- step 6: Core density power law from continuum
+  - method: Radial profile from contours of equal flux; fit density power law with Td profile T∝r^-0.4, mean 70 K [4.1.4: "We assume that the temperature profile follows a power-law with index $q=0.4$"]
+  - assumption: optically thin; outer radius 2.1" (5 sigma contour) [4.1.4: "As external radius of the clump, we use $2.1\ensuremath{''}$, which is the radius of the $5\sigma$ contour level in the 862 $\mu$m emission."]
+  - fitting: power-law fit [4.1.4 Density radial gradient, dust con…: "a direct fit to the observed flux radial profile with a power-law gives an index of $m=1.0\pm0.2$."]
+- step 8: Radial and azimuthal PV plots and ring model
+  - method: kshell radial PV; ellipse-based azimuthal PV; fit 7-parameter 3D ring by minimizing distance; chi2 test [Ring model: "this function is minimized for the best fit 7 parameters: $X_0,Y_0,\alpha,\beta,R,V_0$ and $V$."]
+  - software: KARMA
+  - assumption: constant expansion velocity ring [Ring model: "Consider a ring in the plane XY of the sky expanding in the outwards direction at a constant velocity."]
+  - fitting: distance minimization in (X,Y,Vz) [4.2.2 Ring model for the SiO(J$=8-7$) a…: "A function calculating the sum of the distance in the 3D space ($X$,$Y$,$V_{Z}$) between the observed and modeled coordinates is defined."]
+  - validation: reduced chi2 = 0.42 [Ring model: "The resulting reduced-$\chi^2$ is $\chi_{\nu} = 0.42$"]
+- result: Density power-law index p (constant T / with T profile) = 0.8 / 0.6 ± ±0.2 / ±0.1 dimensionless [4.1.4: "the fitted density model is a power-law with index $p=0.6\pm0.1$."]
+- result: Ring model expansion velocity = 21 ± not stated km/s [Table 4: "| Expansion velocity $V$ | 21 km s$^{-1}$ |"]
+- result: Ring model radius = 1.2 ± not stated arcsec [Table 4: "| Radius $R$ | $1.2\ensuremath{''}$ |"]
+- result: Ring inclination alpha = -8 ± not stated deg [Table 4: "| Line of sight angle $\alpha$ | -8$^{\circ}$ |"]
+- limitation (authors): Model does not reproduce ring-to-cavity contrast or single-peaked ring spectra; shell inhomogeneity needed. [4.2.3: "To improve the model, possible inhomogeneities present in the shell must be accounted for."]
+- not stated (card): CASA version and calibration/imaging details (deferred to earlier paper); Line-free channels for continuum and continuum subtraction; Cell size, image size, clean threshold; Continuum flux and area used for abundances; MOLLIE input grid details beyond appendix and collisional data; Flux scale calibrator
+
+### 2020ApJ...891...48H: A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk (2020; protoplanetary_disks; observational_alma_primary)
+- question: What are the dust substructures, spectral index variations, optical depths and gas cavity of the GM Aur disk at high resolution in Bands 4 and 6?
+- step 2: Radial profiles and spectral index
+  - method: Deproject images, azimuthally average, smooth 1.1 mm to 2.1 mm resolution, compute alpha = log(I1/I0)/log(nu1/nu0) [3.2. Continuum spectral index: "the CASA imsmooth task is used to smooth the 1.1 mm continuum image to the same resolution as the 2.1 mm image"]
+  - software: CASA
+  - parameter: P.A. = 57.17 deg, i = 53.21 deg, 1 au bins [3.1. Continuum substructures: "deprojecting the continuum images using P. A. = 57 ◦ . 17 and i = 53 ◦ . 21, then averaging the pixel intensities within annular bins one au wide."]
+  - assumption: Distance 159 pc; ~10% flux calibration uncertainty per band [3.2. Continuum spectral index: "Accounting for the ∼ 10% systematic flux calibration uncertainty in each band and assuming that the probability distribution is Gaussian"]
+  - validation: Compared with Pinilla et al. 2014 disk-averaged index [3.2. Continuum spectral index: "This is similar to the disk-averaged spectral index (2 . 94 ± 0 . 44) that Pinilla et al. (2014) measured"]
+- step 3: Fit axisymmetric surface brightness models in uv plane
+  - method: Delta function + Gaussian rings parametrization, vis_sample synthetic visibilities, MCMC, 21 free parameters [4.1. Surface brightness models: "for a total of 21 free parameters."]
+  - software: vis_sample, emcee, CASA
+  - parameter: 96 walkers, 20,000 steps, 10,000 burn-in; weights scaled down by 2.667 [4.1. Surface brightness models: "Each ensemble employs 96 walkers for 20,000 steps, with the first 10,000 steps discarded as burn-in."]
+  - assumption: Axisymmetric, geometrically thin [4.1. Surface brightness models: "An axisymmetric model is adopted, given that the azimuthal variations described in Section 3 are modest."]
+  - fitting: emcee affine-invariant sampler; uniform priors on profile parameters, Gaussian priors on PA, i, offsets (Table 3); Gaussian likelihood in visibilities [4.1. Surface brightness models: "Uniform priors are adopted for the parameters defining I ν ."]
+  - validation: Compared model and residual images/profiles; residuals up to 8.4 sigma at 1.1 mm and 6.8 sigma at 2.1 mm [4.1. Surface brightness models: "Some significant residuals remain, as large as 8.4 σ at 1.1 mm and 6.8 σ at 2.1 mm."]
+- step 5: Test B84 geometry with radiative transfer
+  - method: RADMC-3D models: flat, thick, warped rings, imaged with CASA and plotted in polar deprojection [4.3. The geometry of B84: "we use RADMC-3D (Dullemond 2012) to perform 3D Monte Carlo radiative transfer calculations"]
+  - software: RADMC-3D, vis_sample, CASA
+  - parameter: 512 radial cells, 1024 poloidal cells, 64 azimuthal cells, 10^8 photon packages; parameters in Table 4 [4.3. The geometry of B84: "64 azimuthal cells spaced evenly between 0 and 2 π, and 10 8 photon packages."]
+  - assumption: p = 3.5, a_max = 1 mm; vertically isothermal [4.3. The geometry of B84: "We use a dust population with p = 3 . 5 and a max = 1 mm"]
+  - fitting: Parameters adjusted manually until ring width and height match [4.3. The geometry of B84: "The parameters to generate the disk surface density are adjusted manually"]
+  - validation: Models illustrative, not best fit [4.3. The geometry of B84: "Thus the models we present should be taken as illustrative, not as a “best fit” to GM Aur."]
+- result: Disk-averaged spectral index 1.1-2.1 mm = 2.7 ± ±0.2 dimensionless [3.2. Continuum spectral index: "the disk-averaged spectral index between 1.1 and 2.1 mm is α = 2 . 7 ± 0 . 2"]
+- result: Inclination from 1.1 mm fit = 53.20 ± ±0.01 degree [Table 3: "53 . 20 ± 0 . 01"]
+- result: Central unresolved flux within 100 mas = 0.28 (1.1 mm), 0.09 (2.1 mm) ± ±0.02 each mJy [6.2. Origin of the central compact emis…: "0 . 28 ± 0 . 02 mJy at 1.1 mm and 0 . 09 ± 0 . 02 mJy at 2.1 mm"]
+- limitation (authors): Temperature, flux calibration and degeneracies prevent precise grain size measurements [4.2.2. Constraints on dust grain sizes: "the aim of this section is to comment on which regions of parameter space are consistent with the observations rather than to provide precise measurements."]
+- not stated (card): Line-free channels flagged for Band 6 continuum; Self-calibration solution intervals and number of iterations; Gaussian taper parameters for the HCO+ cube; CLEAN thresholds and image size/cell size; Exact visibility binning and weight handling code for the MCMC fits; Which data reduction scripts were used (not released)
+
+### 2017MNRAS.466.4201W: 1.3-mm ALMA observations of the Fomalhaut debris system (2017; debris_disks, stellar_physics; observational_alma_primary)
+- question: What is the 1.3 mm morphology of Fomalhaut's debris ring, its mm spectral index and grain size slope, and is there central emission in excess of the stellar photosphere indicating an inner debris component?
+- step 2: Image-plane MCMC ring + point source fit
+  - method: Model attenuated by primary beam, convolved with synthetic beam, compared to dirty image with chi^2; Metropolis-Hastings [3.1 Image Plane: "The model is attenuated by the primary beam and then convolved with the synthetic beam (the sampling function)."]
+  - software: CASA
+  - parameter: 3 chains, 100000 links, thinned by 10, sigma = 374 uJy [3.1 Image Plane: "The MCMC routine is run with 3 separate chains for a total of 100000 links (minus about 1000 each for burn-in)."]
+  - assumption: Gaussian radial profile, vertical Gaussian width 1 deg, point source at phase centre [3 Debris Disc Modelling: "we assume that the vertical profile of the debris is Gaussian with a width of $1^\circ$"]
+  - fitting: Metropolis-Hastings, flat priors, 95% credible interval [3 Debris Disc Modelling: "parameter space is explored using a random walk directed by a Metropolis-Hastings MCMC (cite: ford)"]
+  - validation: ACF negligible for lags <=50; chains converge [3.1 Image Plane: "The ACF becomes negligible for lags of 50 or less for all thinned chains."]
+- step 5: Spectral index and grain size slope
+  - method: Bayesian MCMC fit of F_nu ∝ nu^alpha to ring fluxes; q=(alpha_mm-alpha_pl)/beta_s+3 [4 SED Modelling: "The posterior distribution for the spectral index is determined by performing a Bayesian parameter estimation for $F_\nu$."]
+  - assumption: alpha_pl=1.84±0.02 (dust 45±5 K), beta_s=1.8±0.2 [4 SED Modelling: "Assuming a dust temperature of $45\pm5$ K yields $\alpha_{pl} = 1.84 \pm 0.02$"]
+  - fitting: MCMC, flat prior [4 SED Modelling: "We use an MCMC approach similar to that used for the disc model fitting, incorporating the listed flux uncertainties, and assume a flat prior distribution."]
+  - validation: compared with Ricci et al. q and collisional cascade q=3.51 [4 SED Modelling: "Both of these results are also consistent with the predicted $q=3.51$"]
+- result: Spectral index 350-6600 um = -2.73 ± 0.13 dimensionless [4 SED Modelling: "$\alpha_{mm} = -2.73 \pm 0.13$"]
+- result: Grain size slope q (350-6600 um) = 3.50 ± 0.14 dimensionless [4 SED Modelling: "$q = 3.50\pm 0.14$"]
+- limitation (authors): Ring ansae near primary beam edge, so N/S asymmetries and vertical structure unreliable [3.4: "As noted above, the ring ansae are close to the edges of the primary beam. As such, any potential North/South asymmetries are not reliable."]
+- not stated (card): Image size and cell size for CLEAN; Whether pipeline or manual calibration and CASA version; Flux scale uncertainty treatment (calibration uncertainty inflating 0.12 vs 0.15 mJy); MCMC proposal widths and initial parameter values, prior ranges; Mapping of image-plane sigma and treatment of primary beam in the fits; Code for the ring model is not provided
+
+### 2023PASJ...75..225M: An expanding ring of the hypercompact H II region W 49 N:A2 (2023; star_formation; archival_reuse)
+- question: What is the structure and kinematics of the ionized ring in the hypercompact HII region W49N:A2, and what does it imply for how a massive star ends accretion?
+- step 2: Measure ring geometry and fluxes
+  - method: 2D Gaussian fits for component size, flux, inclination; double Gaussian fits to profiles for ring size and width [Continuum and H29α Rings: "derived from the 2D Gaussian fitting tool of CASA"]
+  - software: CASA
+  - assumption: Ring is intrinsically circular, tilted, symmetric about polar axis and equatorial plane [Continuum and H29α Rings: "We, therefore, assume in this paper that the 250 GHz elliptical emission represents a tilted ring, which is intrinsically circular on the equatorial plane of the star."]
+  - fitting: Gaussian fits; errors from fits [Results and discussion, Continuum and H…: "Table [\[Table01\]](#Table01) lists the observed parameters of W49N:A2 derived from the 2D Gaussian fitting tool of CASA."]
+  - validation: Compared 250 GHz, H29α and 45 GHz ring parameters [Continuum and H29α Rings: "The ring’s axis lengths are consistent between the 250 GHz and H29$\alpha$ data within the errors."]
+- step 3: Estimate ring scale height
+  - method: Elliptical cross-section model with beta^2 = a^2 cos^2 i + b^2 sin^2 i; 2σ upper limit [Continuum and H29α Rings: "$\beta^2=a^2\,\cos^2 i + b^2\,\sin^2 i$"]
+  - assumption: Ionized gas 10000 K around 20 Msun star for pressure scale height [Continuum and H29α Rings: "pressure scale height of $\sim$1700 au of an ionized gas disk of 10000 K around a 20 M$_\odot$ star"]
+  - validation: cos^-1(β/a) consistent with inclination [Continuum and H29α Rings: "The values of $\cos^{-1}(\beta/a)$ are consistent with the ring inclination angle of 50 and 45, respectively, within the errors."]
+- result: 250 GHz continuum total flux density of A2 = 1.11 ± 0.03 Jy [Table 1: "1.11 $\pm$0.03 (Jy)"]
+- result: Spectral index 45–250 GHz = 0.5 ± not stated dimensionless [Continuum and H29α Rings: "to give a spectral index $\alpha$ = 0.5"]
+- result: Ring inclination (250 GHz) = 50 ± 2 deg [Continuum and H29α Rings: "suggests an inclination of 50$\pm$2"]
+- result: Scale height upper limit 250 GHz / H29α = <410 / <690 ± 2σ au [Continuum and H29α Rings: "The results are $b<$410 au and $b<$ 690 au for the 250 GHz and H29$\alpha$ rings, respectively."]
+- limitation (authors): Cannot exclude small amount of midplane accretion [Expanding ring of ionized gas and its i…: "we cannot exclude the possibility of a small amount of accretion through the mid-plane of the disk"]
+- not stated (card): Line-free channel ranges for uvcontsub; Image size and cell size; Cleaning threshold, masks, niter; Which execution blocks were used and how the second set was identified; Calibration pipeline and CASA version; Exact procedure for double-Gaussian fits to ring profiles and PV slice widths; Rest frequency of H29α used for velocity axis; Details of the 100–450 GHz archival flux measurements
+
+### 2014ApJ...791L...6W: ALMA Hints at the Presence of two Companions in the Disk around HD 100546 (2014; protoplanetary_disks; observational_alma_primary)
+- question: What are the gas and dust structures of the HD 100546 disk at (sub)mm wavelengths, and do they indicate companions or a protoplanet?
+- step 3: Fit radial structure in visibility domain
+  - method: Bin deprojected visibilities (10 kλ); grid fit of power-law ring, then Gaussian compact ring plus flat extended ring; chi2 grid with Bayesian errors [RESULTS: "A small step size of 0.5 AU was chosen to allow quantification of the errors via Bayesian inference."]
+  - parameter: fluxes fixed at 0.962 and 0.024 Jy (302 GHz), 1.190 and 0.048 Jy (346 GHz) [RESULTS: "the total flux contribution from the compact and extended components were fixed at 0.962 and 0.024 Jy at 302 GHz"]
+  - assumption: Circular symmetry [RESULTS: "Without any further knowledge on the structure we assume a circular-symmetric surface-brightness distribution."]
+  - fitting: chi2 grid search [RESULTS: "A low-resolution grid was run (5 AU) to determine the location of the global minimum in the $\chi^2$ value."]
+  - validation: Residual images with identical uv coverage [RESULTS: "The model residuals were imaged using an identical $uv$ coverage as the observations"]
+- step 4: Estimate dust masses
+  - method: Optically thin Mdust = D^2 F / (kappa B(T)) [RESULTS: "The total dust mass, M$_\mathrm{dust}$ $\approx$ $D^2 F_\nu / \kappa_\nu B_\nu(T_\mathrm{dust})$"]
+  - assumption: kappa=10 cm2/g at 300 GHz, Tdust=60 K; 80 K and 40 K for inner/outer rings [RESULTS: "assuming disk temperatures of 80 and 40 K at $\approx$ 30 and $\approx$ 190 AU"]
+- result: Visibility null = 290 ± not stated kλ [RESULTS: "there is a zero crossing (null) at 290 k$\lambda$"]
+- result: Outer ring centre = 190 ± 3 AU [RESULTS: "an outer ring with a width of 75$\pm$3 AU centered at 190$\pm$3 AU"]
+- result: Inner ring peak / FWHM = 26 / 21 ± not stated AU [RESULTS: "a compact ring with a peak brightness at 26 AU and a FWHM of 21 AU"]
+- result: Total dust mass = 0.035 ± not stated MJup [RESULTS: "is $\approx$ 0.035 M$_\mathrm{Jup}$"]
+- result: Inner/outer ring dust mass = 2.5e-2 / 1.4e-3 ± not stated MJup [RESULTS: "$\approx$ 2.5 $\times$ 10$^{-2}$ and $\approx$ 1.4 $\times$ 10$^{-3}$ M$_\mathrm{Jup}$"]
+- limitation (authors): Disk size near largest recoverable scale; imaginary scatter at long baselines may indicate asymmetry needing higher resolution [RESULTS: "Higher spatial resolution observations are needed to confirm any asymmetry at small spatial scales."]
+- not stated (card): CLEAN masks, number of iterations and thresholds, cell and image size; Line-free channels used for uvcontsub; Self-calibration solution intervals and number of rounds; Exact visibility-fitting chi2 and Bayesian error procedure; Dust evolution code and numerical set-up (grid, gas surface density profile); Which execution calibrators apply to which spectral windows
+
+### 2024ApJ...967...15K: Infall Motions in the Hot Core Associated with the Hypercompact H II Region G345.0061+01.794 B (2024; star_formation, astrochemistry; observational_alma_primary)
+- question: What are the physical and kinematical characteristics of the hot molecular core around the HC HII region G345.0061+01.794 B, and is it rotating and infalling?
+- step 2: Rotational temperature of CH3CN and SO2
+  - method: LTE rotational diagrams at the blue spot and in half-rings of width 0.15 arcsec; power-law fit of T_rot vs distance [4.1 Rotational temperature: "The rings are centered at the peak position and have widths of 0$\,.\!\!^{\prime\prime}$15."]
+  - software: MADCUBA
+  - assumption: LTE [4.1 Rotational temperature: "derived from the MAdrid Data CUBe Analysis (cite: 2019A&A...631A.159M) software assuming LTE."]
+  - fitting: Power law T_rot = 154 r^(-0.35±0.19) [4.1 Rotational temperature: "A power law fit to the observed dependence gives $T_\mathrm{rot} = 154\,r^{-0.35\pm0.19}$."]
+- step 5: Central mass from infall model
+  - method: Fit Estalella et al. 2019 model to first-moment radial profiles in 0.05 arcsec rings around the blue spot, for unblended K components [4.3 Infall motions: "obtained for the unblended K components of the J=14–13 transition of $\rm CH_3CN$ by averaging the first-order moment in concentric rings of width 0$\,.\!\!^{\prime\prime}$05"]
+  - assumption: Distance 2.38 kpc; also tested 1.7 kpc [4.3 Infall motions: "we also fit this model using the near distance of 1.7 kpc"]
+  - fitting: Best fit for infall radius much larger than beam; fit algorithm not stated [4.3 Infall motions: "The best fit is obtained for an infall radius much larger than the beam size"]
+  - validation: Compared with dynamical mass from velocity gradient (51 Msun) [3.1 CH3CN: "it implies a dynamical mass within a 0.023 pc radius of 51 $M_{\odot}$"]
+- result: CH3CN T_rot at peak = 252 ± ±24 K [4.1 Rotational temperature: "being 252$\pm24$ Kelvin at the peak position"]
+- result: CH3CN T_rot at edge = 166 ± ±16 K [4.1 Rotational temperature: "166$\pm16$ Kelvin at the edge"]
+- result: SO2 T_rot = 40 ± ±6 K [4.2 Rotational temperature of SO2: "A linear fit to the observed trend implies a temperature of 40$\pm$6 Kelvin."]
+- result: Central mass from infall (2.38 kpc) = 172.8 ± ±8.8 Msun [4.3 Infall motions: "a central mass of 172.8$\pm8.8 M_{\odot}$ (for a distance of 2.38 kpc"]
+- result: Central mass from infall (1.7 kpc) = 126.0 ± ±8.7 Msun [4.3 Infall motions: "a central mass of 126.0$\pm8.7 M_{\odot}$"]
+- limitation (authors): Errors do not include distance uncertainty or density gradients [3.2 Ionized gas: "The errors do neither include the distance uncertainty nor potentially strong density gradients"]
+- not stated (card): CASA version and whether the pipeline or manual calibration was used; Line-free channels chosen for uvcontsub; Weighting/robust, cleaning threshold, masks, cell and image size; Flux scale uncertainty; Moment integration ranges and clipping for CH3CN and SO2; MADCUBA fit settings (source size, linewidth, priors); Fitting procedure and free parameters of the infall model; fit weights; How S_ff at 2…
+
+### 2020MNRAS.497.2811K: Survey of planetesimal belts with ALMA: gas detected around the Sun-like star HD 129590 (2020; debris_disks, astrochemistry; observational_alma_primary)
+- question: Do debris discs around later-type stars host secondary CO/CN gas, and what are the dust and gas properties of 10 planetesimal-belt systems?
+- step 3: Fit dust ring geometry and mass
+  - method: Gaussian ring model, RADMC-3D images at 1.27 mm fit to dirty images with MCMC [3.1.2: "We fit the dirty images (i.e. not cleaned) directly, which is closest to fitting the visibilities"]
+  - software: RADMC-3D, emcee
+  - parameter: 100 walkers, 1000 steps after burn-in [3.1.2: "The MCMC simulations were run with 100 walkers and for 1000 steps after the burn-in period."]
+  - assumption: size distribution index -3.5, max grain 1 cm, min = blowout size, astrosilicates 2.7 g/cm3, kappa~1.3 cm2/g [3.1.2: "a mass-weighted mean opacity of $\kappa \sim 1.3$ cm$^2$g$^{-1}$ at 1.27 mm"]
+  - fitting: emcee, uniform priors, likelihood exp(-chi2/2) over dirty-beam-convolved pixels [3.1.2: "We assume uniform priors and the posterior distributions of our parameters are given by the product of the prior distribution function and the likelihood function"]
+  - validation: HR 4796A compared to Kennedy et al. 2018 band 7 results [3.1.2: "This is consistent with the results by (cite: 2018MNRAS.475.4924K), who did a similar analysis with ALMA data at higher resolution in band 7."]
+- step 5: Fit gas disc with LTE radiative transfer MCMC
+  - method: Gaussian ring gas model, RADMC-3D CO cubes vs dirty cubes, per channel [3.2.2: "We then produce dirty cubes (i.e. without cleaning the images) around the CO line and use RADMC-3D to produce CO model cubes"]
+  - software: RADMC-3D, emcee
+  - parameter: 100 walkers, ~10,000 steps; 2.667 channels per resolution element [3.2.2: "we run the simulations with 100 walkers and for $\sim$10,000 steps"]
+  - assumption: LTE, mu=14, axisymmetric [3.2.2: "we first assume that CO is in local thermal equilibrium (LTE)"]
+  - fitting: free: R0, DeltaR, Sigma0, T0, v*, i, PA, offsets [3.2.2: "The free parameters of this gas model are thus $R_0$, $\Delta R$, $\Sigma_0$, $T_0$, $v_\star$"]
+  - validation: HD 121191 compared to Moor et al. 2017 [3.2.2: "We compare our results on the CO detection in HD 121191 to (cite: 2017ApJ...849..123M)."]
+- result: HD 121191 gas ring radius = 22 ± +2/-3 au [3.2.2: "$R_0 = 22^{+2}_{-3}$ au"]
+- result: HD 121191 CO mass LTE = 2.3e-3 ± +2.3/-0.9 e-3 M_earth [3.2.2: "$2.3^{+2.3}_{-0.9} \times 10^{-3}$ M$_\oplus$"]
+- result: HD 129590 dust ring radius = 74.2 ± +6.1/-5.9 au [Table 2: "| HD 129590 | $74.2^{+6.1}_{-5.9}$"]
+- result: HD 129590 dust mass = 0.39 ± ±0.02 M_earth [Table 2: "$0.39^{+0.02}_{-0.02}$"]
+- limitation (authors): Dust masses have large systematic uncertainties from arbitrary composition; HD 129590 gas unconstrained by MCMC [3.1.2: "it should be understood that it has large systematic uncertainties"]
+- not stated (card): Line-free channels for continuum and uvcontsub; CASA version and pipeline version; Image size, cell size, clean threshold; Flux, bandpass and phase calibrators; MCMC priors ranges and burn-in length; Velocity binning of cubes and masks used for fluxes; Stellar models for non-LTE fluorescence and electron density grid
+
+### 2015ApJ...798..124R: ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146 (2015; debris_disks; observational_alma_primary)
+- question: What is the radial distribution of mm-sized dust in the HD 107146 debris disk, and is there a gap or dip in the dust surface density?
+- step 4: fit disk models to visibilities
+  - method: Model image multiplied by Gaussian primary beam (24.3''), Fourier transformed and sampled at observed uv points; chi2 minimised for single power-law, power-law with gap, double power-law [4.2 Models - data comparison: "The model visibilities were obtained through a Fourier transform of the image and sampling the model using the same $(u,v)$ data points in the ALMA observations."]
+  - software: emcee
+  - parameter: model image 2048x2048 pixels of 0.015''; flux scaled as nu^(2+beta), beta=0.4 [4.2 Models - data comparison: "The model image has a size of 2048x2048 pixel with 0.015$''$ pixels."]
+  - assumption: axisymmetric, geometrically and optically thin disk; constant dust opacity across disk [4.1 Debris Disk Model: "Our models consider a debris disk as an axisymmetric, geometrically thin and optically thin layer of solids."]
+  - fitting: emcee affine-invariant MCMC, several hundred walkers and iterations; best values are the mode of marginalized posteriors with 68.3% intervals [4.2 Models - data comparison: "For each surface density parameterization, `emcee` was run with several hundreds walkers (see (cite: Foreman:2013)) for several hundreds iterations."]
+  - validation: Different walker starting positions tested; residual maps and visibility profiles inspected [4.2 Models - data comparison: "We also ran several trials by either varying or not varying the starting positions of the walkers"]
+- step 6: CO upper limit and planet mass from gap width
+  - method: LTE CO column/mass upper limit from non-detection; chaotic/crossing zone relation for planet mass using gap width [7 The non-detection of CO: "we derived a $3\sigma$ upper limit for the mass of gaseous CO of $M_{\rm{CO}} < 1.9 \times 10^{-6}~M_{\oplus}$"]
+  - parameter: Tex = 50 K, FWHM 1.9 km/s, inclination ~20 deg [7 The non-detection of CO: "uniform excitation temperature of 50 K throughout the disk"]
+  - assumption: LTE [7 The non-detection of CO: "after assuming LTE"]
+- result: Gap radius (single power-law with gap) = 80.9 ± +1.8/-2.6 AU [Table 2: "$R_{\rm{gap}}$ \[AU\] | ... | $80.9^{+1.8}_{-2.6}$"]
+- result: Gap width = 9.0 ± +1.0/-1.5 AU [5.2 Single power-law with gap: "radial width $\Delta R_{\rm{gap}} = 9.0^{+1.0}_{-1.5}$ AU"]
+- result: Single power-law slope p = 0.74 ± +0.06/-0.05 dimensionless [5.1 Single power-law models: "The $p$ value of $0.74^{+0.06}_{-0.05}$ indicates a surface density which is increasing with radius"]
+- result: Double power-law R_break = 68.5 ± +6.2/-2.6 AU [5.3 Double power-law: "$R_{\rm{break}} = 68.5^{+6.2}_{-2.6}$ AU"]
+- result: Inclination (single power-law) = 20.6 ± 1.9 deg [Table 2: "$i$ \[deg\] | $20.6 \pm 1.9$"]
+- result: CO mass 3σ upper limit (Tex=50 K) = 1.9e-6 ± not stated Earth masses [7 The non-detection of CO: "$M_{\rm{CO}} < 1.9 \times 10^{-6}~M_{\oplus}$"]
+- result: Dust mass of best-fit models = ≈0.2 ± not stated Earth masses [7 The non-detection of CO: "have a dust mass of $\approx 0.2~M_{\oplus}$"]
+- result: Planet mass from gap, crossing zone (coefficient 2.1) = 6.1 ± +2.1/-3.1 Earth masses [9.1 A gap in the disk?: "We obtain $6.1^{+2.1}_{-3.1}~M_{\oplus}$ and $4.1^{+1.4}_{-2.1}~M_{\oplus}$"]
+- limitation (authors): Data cannot distinguish between gap and double power-law forms; dust opacity degenerate with surface density [5.3 Double power-law: "The ALMA data presented in this paper do not allow us to distinguish between these possible different functional forms"]
+- not stated (card): Number of emcee walkers and iterations (only 'several hundreds') and burn-in; Priors and bounds on model parameters; Clean threshold, mask, cell and image size of the CLEAN images; Whether CASA clean or other tools were used for the visibility extraction and weight rescaling in detail; Which spectral windows/channels were used for continuum (line-free channels excluded CO); Exact dust opacity tab…
+
+### 2026ApJ..1004..182H: A Radially Broad Collisional Cascade in the Debris Disk of γ Ophiuchi Observed by JWST (2026; debris_disks; multi_facility_alma_minor)
+- question: Is the radially broad debris disk of gamma Oph a steady-state collisional cascade with one grain size distribution (JWST/MIRI vs ALMA), or shaped by PR drag like Vega and Fomalhaut, and is it asymmetric?
+- step 1: Nonparametric radial profile at 25 micron
+  - method: rave fit to PSF-subtracted F2550W image over a 4D grid of theta, i, F*, h with 12 annuli; best grid point theta=59.0, i=64.5, h=0.1, F*=240 mJy [4.1 Nonparametric modelling at 25 micron: "the best combination of parameters are $\theta = 59.0^\circ$, $I = 64.5^\circ$, $F_* = 240$ mJy and $h = 0.1$"]
+  - software: rave
+  - assumption: azimuthally symmetric, optically thin, Gaussian vertical profile with constant aspect ratio [4.1 Nonparametric modelling at 25 micron: "assuming that the disk is azimuthally symmetric and optically thin"]
+  - validation: squared residuals; repeated 100 times with randomised annuli boundaries [4.1 Nonparametric modelling at 25 micron: "The placement of annuli boundaries are randomised to marginalise over their effect on the fitted profile, and the fit is repeated 100 times."]
+- step 3: Compare MIRI and ALMA radial profiles
+  - method: Convert rave surface brightness profiles between wavelengths using a common steady-state size distribution; compare with ALMA rave and frank profiles; model SED [5.3.1 Collisional cascade: "We find that a steady-state collisional cascade with $\gamma = 3.5$ (cite: Dohnanyi1969; Wyatt2008; Hughes2018) and a minimum grain size of 15 $\mu$m is consistent with the 25 $\mu$m and 0.87 mm surface brightness profiles that we observe."]
+  - software: rave, frank
+- step 4: Planet mass constraints from gaps and secular forcing
+  - method: Inject cleared gaps into rave profile to find widest undetectable gap; chaotic zone width, clearing and secular timescales, eccentricity relation [5.2 Planet constraints: "To test the widest gap that could hide in the disk while remaining undetected, we simulated observations using the `rave` radial profile"]
+  - software: rave
+  - assumption: age 300 Myr, a_disk=50 au, forced eccentricity 0.03 [5.2 Planet constraints: "we set $a_\mathrm{disk} = 50$ au where the surface brightness asymmetry peaks"]
+- result: Largest bodies for MMSN erosion to r^(7/3) = ~150 ± not stated m [5.3.2: "predicts the largest bodies in the disk to be approximately 150 m in diameter"]
+- limitation (authors): Aspect ratio poorly constrained; uncertainties large in inner disk and outer edge; small uncertainties exclude PSF-subtraction systematics [5.1: "suggesting that the aspect ratio is in practice not tightly constrained"]
+- not stated (card): ALMA calibration, imaging parameters and the ARKS image products used (only referenced to other papers); Details of the SED data points and stellar models (only in figure legend); Emcee priors and burn-in length; How the ALMA rave fit settings (inclination, PA, annuli) were chosen
+
+### 2018ApJ...858...90G: Dense Gas, Dynamical Equilibrium Pressure, and Star Formation in Nearby Star-forming Galaxies (2018; nearby_galaxies, star_formation, milky_way_ism; observational_alma_primary)
+- question: Does the dense gas fraction (I_HCN/I_CO) drive the star formation rate, and does dynamical equilibrium pressure set the dense gas fraction and the star formation efficiency of dense gas?
+- step 5: Radial profiles and correlations/fits
+  - method: Tilted-ring-style radial bins of half-beam width (4"), mean in CO mask and ring; rank correlations and OLS bisector power-law fits [2.10: "We set the width of each radial bin to be half the FWHM of the working beam ($15\ensuremath{''}$ for NGC 5194 and $4\ensuremath{''}$ for all other galaxies)."]
+  - fitting: Ordinary least squares bisector fit, weighting all significant detections equally [3.2.2: "The red dashed line in Figure [7](#fig:dgf_sfe) shows an ordinary least squares bisector fit to our data."]
+  - validation: Repeat with different SFR tracers; check HCO+ and 13CO ratios [Appendix: "no matter the choice of tracer, the rank correlation coefficient relating $\Sigma_{SFR}/\Sigma_{mol}$ to $\Sigma_{dense}/\Sigma_{mol}$ is low when we consider all galaxies together."]
+- result: Median Sigma_SFR/Sigma_dense = 1.10e-8 ± 0.25 dex scatter yr^-1 [3.2.2: "This median ratio, $\Sigma_{SFR}/\Sigma_{dense} = 1.10\times10^{-8}$ with $0.25$ dex scatter"]
+- result: Fit SFR/mol vs dense/mol = log(SFR/mol) = -8.05 + 0.92 log(dense/mol) ± not stated dimensionless [3.2.2: "\log_{10} \frac{\Sigma_{SFR}}{\Sigma_{mol}} \approx-8.05 + 0.92 \log_{10} \frac{\Sigma_{dense}}{\Sigma_{mol}}."]
+- result: Rank correlation SFR/mol vs dense/mol (all profiles) = 0.13 ± p=0.003 dimensionless [Table 5: "| $\ldots$All profiles | 0.13 (0.003) | -7.89 ($\pm$0.33) |"]
+- result: Median dense gas fraction = ~4% (range ~0.5% to ~25%) ± not stated percent [3.5: "our observed $I_{HCN}/I_{CO}$ imply $f_{dense}$ between $\sim 0.5$% and $\sim 25$% with a median $f_{dense} \sim 4$%."]
+- result: Median dense gas depletion time = ~78 ± not stated Myr [3.4.1: "median dense gas depletion time, $\tau_{dep}^{dense} \equiv M_{dense}$/SFR, of $\tau_{dep}^{dense} \sim 78$ Myr"]
+- result: Molecular gas depletion time = 2.0 ± not stated Gyr [3.4.1: "a mean molecular gas depletion time, $\tau_{dep}^{mol} \equiv M_{mol}$/SFR, of 2.0 Gyr"]
+- result: Rank corr. SFR/dense vs Sigma_* = -0.71 ± not stated dimensionless [3.4.2: "$\Sigma_{SFR}/\Sigma_{dense}$ and $\Sigma_*$ have a rank correlation coefficient of $-0.71$"]
+- result: Rank corr. I_HCN/I_CO vs Sigma_* = 0.74 ± not stated dimensionless [3.5: "$I_{HCN}/I_{CO}$ and $\Sigma_*$ exhibit a rank correlation coefficient of $0.74$"]
+- result: Fit dense/mol vs P_DE = log = -4.01 + 0.48 log P_DE; rank corr 0.60 ± not stated dimensionless [3.6: "\log_{10} \frac{\Sigma_{dense}}{\Sigma_{mol}} = -4.01+0.48 \log_{10}P_{DE}~."]
+- result: Fit SFR/dense vs P_DE = log = -5.15 - 0.50 log P_DE; rank corr -0.71 ± not stated dimensionless [3.6: "\log_{10} \frac{\Sigma_{SFR}}{\Sigma_{dense}} = -5.15 - 0.50 \log_{10}P_{DE}~."]
+- result: Median I_HCO+/I_HCN = 0.76 ± scatter 0.24 dimensionless [3.3: "with a median ratio of $I_{HCO+}/I_{HCN}= 0.76$ and a scatter of 0.24"]
+- limitation (authors): Sample not representative; simple alpha_CO and alpha_HCN; limited to inner few kpc [4.2: "First, our survey does not yet offer a representative sample."]
+- not stated (card): Exact tclean parameters (deconvolver, niter, threshold, masking for cleaning) and per-target taper values; Line-free channel ranges used for uvcontsub; Feathering scaling factors/details and exact EMPIRE cube versions; Which archival execution blocks and scripts were used per galaxy; Details of bisector fit implementation and error handling; Stellar scale length measurements used to derive rho_st…
+
+### 2013ApJ...774L...7M: ALMA Observations of the Massive Molecular Outflow G331.512-0.103 (2013; star_formation, milky_way_ism; observational_alma_primary)
+- question: What is the structure, kinematics and age of the massive molecular outflow G331.512-0.103 when resolved with ALMA?
+- step 3: Determine bipolar axis, ring, cavity and shell velocity from channel maps and PV diagrams
+  - method: Peak positions at about ±40 km/s for axis; 3 sigma contours for ring edges; PV diagrams along and perpendicular to axis [Observations and results: "The crosses indicate the peak positions at velocities about $\pm 40$ km s$^{-1}$ from the systemic velocity."]
+  - validation: Axis uncertainty from varying channels and S/N levels [Observations and results: "Experiments using other channels, different signal-to-noise levels, etc. resulted in variations around this value of only 1.6$^\circ$"]
+- result: SiO bipolar axis PA = 102.5 ± 1.6 deg [Observations and results: "These channels define a “bipolar axis" of symmetry of $102.5\pm 1.6$$^\circ$."]
+- result: shell expansion velocity = ~24 ± not stated km/s [Discussion: "we estimate that the expanding shell has a velocity of $\sim$24 km s$^{-1}$"]
+- limitation (authors): Continuum may be contaminated by line emission; noise higher in strong lines [Discussion: "though we cannot rule out some level of contamination by line emission"]
+- not stated (card): CASA version and whether the archive pipeline or manual calibration was used; Which channels were treated as line-free for continuum; Deconvolver, masks and clean threshold; Flux calibrator flux density and calibration uncertainty; Velocity ranges used for moment 0 maps; PV slice widths and extraction details; Self-calibration, if any; Primary beam correction details; Exact LTE formula/column den…
+
+### 2018A&A...616A..88V: V1094 Scorpii: A rare giant multi-ringed disk around a T Tauri star (2018; protoplanetary_disks; observational_alma_primary)
+- question: What is the structure of the extended multi-ringed disk around V1094 Sco, and how common are such large disks in Lupus?
+- step 2: Fit radial intensity profile in uv-plane to locate rings and gaps
+  - method: Gaussian times cosine model Fourier transformed and fit to deprojected visibilities binned in 10 klambda; baselines < 700 klambda [3.1: "fit to the derotated, deprojected data in the $u,v$-plane, after binning the data to $10$ k$\lambda$ bins"]
+  - software: pymc
+  - parameter: up to n=4 terms, 13 free parameters; rho ranges at least 100 klambda wide [3.1: "we use up to $n=4$ terms, for a total of 13 free parameters"]
+  - fitting: MCMC with pymc; inclination, PA, center initialised from imfit [3.1: "A Monte Carlo Markov Chain (MCMC) fitting procedure was used to infer the best fit parameters, using the `pymc` package."]
+  - validation: Checked burn-in, single posterior maximum, and re-ran with different initial inclination, PA and center [3.1: "We confirmed their impact on the resulting fit was minimal by re-running the fitting code with different initial choices"]
+- step 3: Derive radial spectral index profile
+  - method: Re-image both bands with common 0.25'' circular beam and uv range 17-1260 klambda; compute alpha per pixel after deprojection, radially average [3.2: "calculating the value of $\alpha_{\rm{mm}}$ and its standard error in each pixel, and radially averaging these values"]
+  - software: CASA
+  - parameter: pixels with S/N < 2.5 masked [Appendix A: "Pixels in both Band 6 and Band 7 with $S/N < 2.5$ were masked."]
+  - assumption: 10% flux calibration error in both bands gives 0.42 error on alpha [3.2: "assuming a $10\%$ flux calibration error is appropriate in both bands"]
+- step 4: Test cold optically thick inner disk with brightness temperature and models
+  - method: Brightness temperature of peak assuming optically thick; compared to Tsukagoshi SED model and DALI grid of 45 models imaged with 0.25'' beam [3.2.1: "corresponds to a brightness temperature of only 12.9 K if we assume the emission is optically thick"]
+  - software: DALI
+  - parameter: Rc=250 AU, gamma=0.6, Mdisk fixed 0.1 Msun, h_c, psi, f_ls, chi grid [Appendix B: "$R_c$ was set to 250 AU based on the Band 6 continuum image, and we fix $\gamma$ to $0.6$."]
+  - assumption: gas-to-dust ratio 100; smooth disks without rings or gaps [Appendix B: "reproducing the Band 6 continuum flux assuming a gas to dust ratio of 100"]
+  - validation: Model peak brightness temperatures (median 12.7 K) compared to the observed value [3.2.1: "The resulting raytraced images of the disk show peak brightness temperatures between 17 and 10 K and a median temperature of $12.7$ K"]
+- result: Gap 1 and Gap 2 radii = 100 and 170 ± 6 and 13 AU [3.1: "while the gaps are found at $100 \pm 6$ AU and $170 \pm 13$ AU"]
+- result: Ring 1 and Ring 2 radii = 130 and 220 ± 9 and 16 AU [3.1: "the locations of the bright rings become $130 \pm 9$ AU and $220 \pm 16$ AU"]
+- result: Core characteristic radius = 35 ± 2 AU [3.1: "having a characteristic radius of $35 \pm 2$ AU"]
+- result: Spectral index in inner disk = 2.09 ± 0.03 (statistical; 0.42 absolute flux calibration) dimensionless [3.2.1: "consistent with $\alpha_{\rm{mm}} = 2.09 \pm 0.03$, increasing outward"]
+- result: Spectral index in first gap (100 AU) = 3.0 ± 0.2 dimensionless [3.2.2: "towards $3.0 \pm 0.2$ in the first gap at $100$ AU"]
+- result: Spectral index in first ring (130 AU) = 2.3 ± 0.3 dimensionless [3.2.2: "to $2.3 \pm 0.3$ in the first ring at $130$ AU"]
+- result: Central brightness temperature = 12.9 ± not stated K [3.2.1: "corresponds to a brightness temperature of only 12.9 K if we assume the emission is optically thick"]
+- result: DALI midplane temperature at 20 AU = 20 ± 4 K [3.2.1: "we find midplane temperatures of $20 \pm 4$ K at this radius"]
+- limitation (authors): Band 7 absolute flux very uncertain, giving 0.42 systematic error on alpha [2 Observations and data reduction: "its flux — and therefore the flux calibration of all Band 7 data — is very uncertain"]
+- limitation (authors): Gap and ring widths hard to constrain with the fit [3.1: "It is difficult to constrain the width of the gaps and rings from this fit"]
+- not stated (card): MCMC priors, number of steps and burn-in for the pymc uv fit; CASA version; Self-calibration solution intervals beyond the minimum and the reference models; Line-free channels and spectral windows used for continuum; Mask used in tclean and cleaning threshold; Initial pymc ranges of rho_i; Exact DALI grid parameters besides Table 1 (inner radius, dust opacities, stellar spectrum); Whether the Ban…
+
+### 2024ApJ...976..132H: High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis (2024; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Do millimeter continuum substructures (gaps, rings) form and survive in disks exposed to intermediate external UV radiation in sigma Orionis, and how do disk sizes compare to nearby regions?
+- step 2: Fit parametric radial intensity profiles in uv plane
+  - method: Sum of central Gaussian plus N Gaussian rings, thin disk (flared surface for SO 897), model visibilities compared with weight-rescaled data [Analysis, Parametric intensity profile …: "We thus fit the observations with parametric intensity models in order to infer the radial intensity profiles of our targets."]
+  - software: mpol, eddy, visread, pyro, pytorch
+  - parameter: Adam optimizer, learning rate 0.02, 15,000 iterations; 2000 posterior samples [Parametric intensity profile modeling: "Using the Adam optimizer (cite: kingma2017) with a learning rate of 0.02, we found that 15,000 iterations were sufficient for the ELBO values to converge"]
+  - assumption: Geometrically thin disk (flared surface for SO 897); posterior approximated as multivariate normal [Parametric intensity profile modeling: "We assumed that the posterior can be approximated as a multivariate normal distribution (a “guide” in the parlance of `pyro`)."]
+  - fitting: Stochastic variational inference (pyro), Gaussian priors on log A, log sigma, r_i, i, z0, phi, PA, offsets; chi-square-like likelihood with rescaled weights [Parametric intensity profile modeling: "Gaussian priors were specified for $\log A_0$, $\log \sigma_0$, $\log A_i$, $\log \sigma_i$, $r_i$, $i$, $z_0$, $\phi$, P.A., $\Delta x$, $\Delta y$."]
+  - validation: BIC model selection; model images compared to data (residuals ~4 sigma); frank non-parametric comparison [Parametric intensity profile modeling: "The models reproduce the data well, with maximum residual levels at $\sim4\sigma$."]
+- step 3: Identify substructures and measure location, width, depth
+  - method: Rings = local maxima, gaps = local minima, shoulders = three consecutive inflection points, in model profiles from 2000 posterior samples [Locations, widths, and depths: "A ring is defined to be a local maximum in the radial intensity profile (other than at the disk center)"]
+  - validation: Compared with frank non-parametric profiles [Locations, widths, and depths: "we also modelled the visibilities with the non-parametric modeling code `frank`"]
+- step 7: Assess dust trapping via ring width to scale height
+  - method: Compute w_d/h_p for high-contrast rings (depth <0.5) with w_d = sigma_i [Dust trapping analysis: "We set $w_d$ equal to the value of $\sigma_i$ inferred for the corresponding ring in the parametric model"]
+  - assumption: mu = 2.37; h_p uncertainty ~25% [Dust trapping analysis: "Thus, we estimate an uncertainty on $h_p$ of $\sim25\%$."]
+- step 8: Estimate planet masses from gaps
+  - method: Zhang et al. 2018 scaling relations with gap width, Sigma_dust, St_max, h/r [Planet mass estimates: "In brief, we assume that each observed gap corresponds to one protoplanet."]
+  - parameter: kappa_abs = 0.43 cm^2/g, amax=0.1 mm, n(a)∝a^-3.5, alpha = 1e-3 [Planet mass estimates: "We assume that $\alpha=10^{-3}$."]
+  - assumption: One planet per gap; DSHARP dust composition [Planet mass estimates: "the dust absorption opacity is set to 0.43 cm$^{2}$ g$^{-1}$"]
+  - validation: Comparison with DSHARP planet masses [Planet mass estimates: "The overall ranges of inferred planet masses and semi-major axes are similar"]
+- result: SO 1274 gap D27 location = 26.9 ± ±0.2 au [Table 4: "D27 | $26.9\pm0.2$ | $9.1\pm0.2$ | $0.21\pm0.02$"]
+- result: SO 1274 inner three gap period ratio = 3.08:1.95:1 ± not stated dimensionless [Locations, widths, and depths: "close to a 3:2:1 period ratio (more precisely, 3.08:1.95:1)"]
+- result: SO 1274 ring B119 w_d/h_p = 0.2 ± not stated dimensionless [Table 7: "B119 | 10.3 | 2.3 | 10.4 | 0.2"]
+- result: SO 844 D10 planet mass = 7.9 ± +0.13/-0.16 (log Mp) M_Jup [Table 8: "SO 844 | D10 | 0.74 | 0.53 | 0.06 | 736 | 0.3 | 7.9"]
+- result: Weight rescaling factor f = ~2 ± not stated dimensionless [Parametric intensity profile modeling: "The value of $f$ was typically $\sim2$."]
+- limitation (authors): FUV fields are upper bounds from projected separations; temperature uncertainty dominates dust-trap and planet-mass estimates; SVI is approximate [2 Sample overview: "The FUV field estimates from (cite: 2023AA...679A..82M) are based on projected separations, so they should be considered upper bounds."]
+- not stated (card): Exact line-free/flagged channel ranges in archival data; Self-calibration solution intervals and which EBs/ cleaning parameters (niter, thresholds, masks, scales, cell, image size) were used; Prior means and standard deviations for the parametric model; Initial guesses for N rings and hyperparameters of the pyro guide beyond learning rate; Zenodo products must be downloaded to reproduce; CLEAN mo…
+
+### 2018A&A...615A.141B: Accelerating infall and rotational spin-up in the hot molecular core G31.41+0.31 (2018; star_formation, astrochemistry; observational_alma_primary)
+- question: Is the compact, unfragmented appearance of the hot molecular core G31.41+0.31 real, and what do its rotation and infall kinematics reveal about its collapse?
+- step 3: LTE fits of CH3OCHO in annuli for T and N profiles
+  - method: Mean spectra over concentric annuli of beam width up to 1.54"; fit CH3OCHO v=0 and vt=1 with MADCUBA; power-law fits to profiles; N_H2 from dust continuum [Analysis: "we have computed mean spectra over circular concentric annuli of width equal to that of the synthesized beam ($\sim$$0.22\ensuremath{''}$), up to a maximum radius of $1.54\ensuremath{''}$"]
+  - software: MADCUBA, XCLASS
+  - parameter: line width and source size fixed (source larger than beam); dust continuum temperature = azimuthally averaged brightness temperature [Analysis: "The fitting strategy we adopted in MADCUBA was to fix the line width to a value that provides a good visual fit, and the source size, that we assumed to be larger than the beam size."]
+  - assumption: Spherical symmetry; LTE; dust temperature = CH3OCHO Tex for N_H2 [Analysis: "we have assumed spherical symmetry for the G31 core, consistent with its roundish appearance"]
+  - fitting: Least-squares linear fits in log-log; innermost ring N fixed to 2e18 cm-2 by linear extrapolation [Analysis: "we fixed the column density to $2\times10^{18}$ cm$^{-2}$, the value obtained from linear extrapolation of the column densities at the two adjacent inner rings"]
+  - validation: Compared T profile with models; checked abundance drop against desorption temperature [Analysis: "which is much lower than the excitation temperatures estimated in the outer rings of G31 ($>110$ K)"]
+- result: Tex power-law exponent (Tex ∝ R^-q) = 0.77 ± 0.07 dimensionless [Analysis: "(2.19\pm0.02) - (0.77\pm0.07)\,\log (R/{\rm arcsec})"]
+- result: H2 column density power-law slope = -1.15 ± 0.08 dimensionless [Analysis: "(24.01\pm0.02) - (1.15\pm0.08)\,\log (R/{\rm arcsec})"]
+- limitation (authors): Dust optically thick so N_H2 and mass are lower limits [Analysis: "Therefore, the H$_2$ column density values should be taken as lower limits."]
+- limitation (authors): Interferometer filters out extended emission [Discussion: "our ALMA observations can miss extended emission"]
+- not stated (card): Line-free channel selection and STATCONT settings in detail; Cell size, image size, masks, clean threshold, deconvolver; Fixed line widths and source sizes used in each MADCUBA annulus fit; Isotopic ratios used in XCLASS fits and initial guesses; Rest frequencies and spectroscopy database used; Flux calibrator and calibration uncertainty (in Cesaroni et al. 2017); Selection of which CH3OCHO lines…
+
+### 2020ApJ...898...36L: Dual-wavelength ALMA Observations of Dust Rings in Protoplanetary Disks (2020; protoplanetary_disks; observational_alma_primary)
+- question: Do dust rings in three Taurus disks appear at the same locations and widths at 1.3 and 2.9 mm, and what do disk sizes, ring widths, spectral index and optical depth imply for dust trapping and grain growth?
+- step 2: Fit uv visibilities with parametric radial profiles
+  - method: Galario synthetic visibilities, MCMC with emcee [3.1 Disk Morphology: "we generate synthetic visibilities using the *Galario* code (cite: Tazzari2018), sampled at the observed uv-space."]
+  - software: Galario, emcee
+  - parameter: 100 walkers, 5000 steps, last 1000 used; grid 0.0001-4" step 0.0005" [3.1 Disk Morphology: "The free parameters are sampled with 100 walkers and 5000 steps for each walker."]
+  - assumption: axisymmetric profiles; Gaussian inner disk for DS Tau, tapered power law for GO/DL Tau, Gaussian rings [3.1 Disk Morphology: "The same functional forms, including same numbers of Gaussian rings, are used for the fitting of individual disks at both wavelengths."]
+  - fitting: Uniform priors on logF in [6,11] Jy/sr, sigma in [0,0.2"], gamma1 [0,2], gamma2 [0,20], rc [0,0.4"], ring centers +-0.05"; peaks of marginal posteriors, 68% intervals [3.1 Disk Morphology: "The adopted parameters are taken as the peaks of marginal posteriors, with uncertainties given by the 68% confidence intervals"]
+  - validation: Residual images (3-5 sigma) and binned visibility comparison [3.1 Disk Morphology: "Our models match the overall structures in the visibility profiles reasonably well."]
+- step 5: Dust evolution modelling with pressure bump
+  - method: Dust growth/fragmentation/drift model with planet-carved gap (Crida2006, Fung2014 corrections) [4.1.1 Model setup: "We use the prescription from (cite: Crida2006) for an analytical shape of the gap carved by a planet"]
+  - parameter: planet at 33 au, q=0.002, Rc=80 au, gamma=1, alpha=1e-3, vfrag=10 m/s, 180 size cells 1 um-2 m, 300 radial cells 1-300 au [4.1.1 Model setup: "The grid for particle size has 180 cells logarithmic spaced from 1 $\mu$m to 2 m"]
+  - assumption: Gas-to-dust 100, 20% dust lost to drift, disk mass 5.8 MJup [4.1.1 Model setup: "we assume a disk mass of 5.8 $M_{\rm{Jup}}$"]
+  - validation: Compared model intensity profiles convolved to 0.1" with observations [4.1.2 Dust disk radius: "which are convolved with a Gaussian profile whose width is 0.1$''$ as our observations."]
+- result: DS Tau ring width sigma at 1.3 mm = 8.14 ± +0.36/-0.52 au [Table 2: "8.14$_{-0.52}^{+0.36}$"]
+- result: DS Tau ring width sigma at 2.9 mm = 7.26 ± +0.73/-0.79 au [Table 2: "7.26$_{-0.79}^{+0.73}$"]
+- result: DS Tau 2.9 mm ring width, power-law inner disk model = 5.4 ± 0.8 au [3.1.2 Dust rings: "$\sigma_{uv,\rm 2.9mm}= 5.4\pm0.8$ au"]
+- result: Model ring width from dust evolution (unconvolved) = 1.09 at 2.9 mm; 1.29 at 1.3 mm ± not stated au [4.1.3 Dust ring width: "We therefore determine the ring width to be only 1.09 au at 2.9 mm and 1.29 au at 1.3 mm."]
+- limitation (authors): Uncertainties of GO Tau and DL Tau ring properties likely underestimated; function choice affects results; resolution washes out alpha variations [3.1.2 Dust rings: "uncertainties in the dust ring properties could be largely underestimated in GO Tau and DL Tau."]
+- not stated (card): Band 6 (2016.1.01164.S) calibration, self-calibration and imaging details (reused from Long2018); Line-free channel selection for continuum; Image size, cell size, deconvolver details and masks for tclean; Exact uv-fit initial values and uv-binning/weighting handling; Dust model inputs for dust evolution code (code not named); Whether spectral index is computed at matched beams or deprojected bins
+
+### 2017AJ....154..225S: ALMA 1.3 mm Map of the HD 95086 System (2017; debris_disks, exoplanets; observational_alma_primary)
+- question: Where is the Kuiper-belt analog (cold planetesimal disk) of HD 95086 located and how broad is it; what is the nature of the bright source near the ring; what constraints follow for planet b
+- step 2: Fit disk and point source in visibilities
+  - method: MCMC fit of two-boundary power-law disk or Gaussian ring plus point source to both data sets simultaneously, with model-minus-data residual imaging [3.2 Visibilities Modeling Approach: "We model the visibilities for both data sets simultaneously."]
+  - software: MIRIAD
+  - parameter: 8/9 free parameters; disk centered on star [3.2 Visibilities Modeling Approach: "there are a total of eight/nine free parameters to describe the system in both axi-symmetric disk models"]
+  - assumption: Optically and geometrically thin disk; Td = 278.3 L*^0.25 r^-0.5; L* = 6 Lsun; d = 83.8 pc [3.1 Continuum Emission: "we expect the dust temperatures follow $T_d(r) = 278.3 L_{\ast}^{0.25} r^{-0.5}$"]
+  - fitting: MCMC, uniform priors, flux>0 and Rout>Rin [3.2 Visibilities Modeling Approach: "For all parameters, we assume uniform priors and require that the model be physically plausible"]
+  - validation: Residual maps within ±3σ for main disk; reduced chi-squared [3.2 Visibilities Modeling Approach: "Overall, the residuals are within $\pm$3$\sigma$ for the main disk."]
+- step 3: Fit disk in image plane
+  - method: MCMC fit to combined dirty map with ring center free; correlated-noise factor sqrt(beam pixels) [3.3 Imaging Plane Modeling Approach: "A factor equivalent to the square root of the beam size in pixels is included to mitigate the correlated noise"]
+  - fitting: MCMC [3.3 Imaging Plane Modeling Approach: "We use the combined synthesized map for the MCMC search."]
+  - validation: Compared with visibility results [3.3 Imaging Plane Modeling Approach: "the best-fit parameters agree with the ones derived from the visibilities method within the uncertainties"]
+- limitation (authors): Disk width only resolved by ~1.7 beams so density distribution and star-disk offset cannot be determined [3.4 Best-Fit Disk Parameters by Minimiz…: "As a result, we cannot determine the exact disk density distribution nor the offset between the star and disk center."]
+- limitation (authors): Bright source cannot be cleanly separated from the disk [3.4 Best-Fit Disk Parameters by Minimiz…: "The subtraction of the bright source is far from perfect."]
+- not stated (card): MCMC sampler details, number of walkers/steps, burn-in; Details of the image-plane noise-correlation factor; uv-range and weighting in the MIRIAD imaging beyond natural; Flux scale handling when combining sets A and B; Whether uvmodelfit initial guesses were used; SED model code and photometry table; Spectral index map method; CO data processing (deferred to Booth et al. in prep.)
+
+### 2020ApJ...899...10T: FRagmentation and Evolution of Dense Cores Judged by ALMA (FREJA). I. Overview: Inner ∼1000 au Structures of Prestellar/Protostellar Cores in Taurus (2020; star_formation; large_program_or_survey)
+- question: What are the inner ~1000 au structures of prestellar/protostellar cores in Taurus, and how long do high-density prestellar cores last before protostar formation?
+- step 3: Test whether substructures are interferometric artifacts
+  - method: simobserve and tclean of smooth Plummer-like cores compared with observations; plus C18O and N2D+ line distributions [4.1: "In the CASA simulator, we used the `simobserve` task to generate simulated visibilities at a central frequency of 225 GHz"]
+  - software: CASA simobserve, tclean
+  - parameter: p=2; R_flat 8000,2500,1500,900,300 au; aspect ratios 1.0 and 1.8; kappa=0.005, Td=10 K [4.1: "We adapted two aspect ratios of 1.0 and 1.8."]
+  - assumption: Td = 10 K, kappa = 0.005 cm2/g [4.1: "we assumed $\kappa_{\rm 1.3\,mm}$ = 0.005 cm$^{2}$ g$^{-1}$ and $T_{\rm d}$ = 10 K"]
+  - validation: MC31 real vs synthetic residual comparison [7.3: "The residual image does not show large differences between the real and synthetic observations."]
+- result: Detection limit of central density = ~4e5 ± not stated cm-3 [4.1: "gives us a detection limit of the central density, $\sim$4 $\times$ 10$^{5}$ cm$^{-3}$"]
+- limitation (authors): Continuum-only substructure cannot be distinguished from artifacts at low contrast [4.1: "Therefore, we cannot merely claim that the observed substructure is a substantial piece of evidence of fragmentation of prestellar cores."]
+- limitation (authors): Mass uncertainty dominated by assumed dust opacity [3.1 Prestellar Cores: "The uncertainty of the mass estimation mainly arises from the assumption of $\kappa_{\rm 1.3\,mm}$"]
+- not stated (card): Rest frequencies and line windows per target; Phase calibrator selection per execution block and QA/flagging details; How the 7 m ms was calibrated (pipeline vs manual, pipeline version); Mask definitions per target and exact rms measurement regions; How Table 3 category I/II/III counts for unobserved cores were assigned; Simulation integration time and noise treatment
+
+### 2013ApJ...765L..14Q: First Detection of c-C<SUB>3</SUB>H<SUB>2</SUB> in a Circumstellar Disk (2013; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Is c-C3H2 present in the HD 163296 disk, and what are its radial distribution, column density and ortho/para ratio?
+- step 3: Fit radial ring model in the uv-plane
+  - method: Grid of synthetic 6-5 visibilities over Rout, Rin, p, N100; chi2 minimization on real and imaginary visibilities [Ring structure model: "we compute a grid of synthetic $c$-C$_3$H$_2$ J=$6-5$ visibility datasets over a range of R$_{out}$, R$_{in}$, $p$ and N$_{100}$ values and compare with the observations"]
+  - software: RATRAN
+  - parameter: Vertical boundaries fixed: sigma_s = 0.32, sigma_m = 3.2 [Ring structure model: "We therefore fix the vertical surface boundary $\sigma_s$ as 0.32 ($\log_{10}(\sigma_s)=-0.5$) and the midplane boundary $\sigma_m$ as 3.2"]
+  - assumption: Keplerian rotation; Qi11 disk structure; constant abundance in a layer; power-law column density [Ring structure model: "we assume the disk material orbits the central star in Keplerian motion"]
+  - fitting: chi2 grid minimization; 1 sigma ranges from chi2 surfaces [Ring structure model: "The best-fit model is obtained by minimizing $\chi^2$"]
+  - validation: Residual channel maps show no significant emission; reduced chi2 = 1.07 [Ring structure model: "The residual image doesn’t show any significant emission"]
+- result: Best-fit inner radius, outer radius, power-law index = Rin 30 AU, Rout 165 AU, p = -2 ± 1 sigma: Rin 15-40, Rout 150-200 AU, p -2.5 to -1.5 AU / dimensionless [Ring structure model: "with best-fit values at -2, 30 and 165 AU, respectively (reduced $\chi^2=1.07$)"]
+- result: N(c-C3H2) at 100 AU = 2.2e12 ± 0.2e12 cm^-2 [Ring structure model: "N($c$-C$_3$H$_2$) is determined to be 2.2$\pm$0.2 $\times$10$^{12}$ cm$^{-2}$ at 100 AU"]
+- limitation (authors): Low S/N prevents constraining the vertical distribution; weak lines unresolved [Ring structure model: "we cannot constrain the location of this vertical layer based on the $c$-C$_3$H$_2$ data"]
+- limitation (authors): 3-2 and 5-4 lines lie at the edge of the spectral window [c-C3H2 detection: "both the $3-2$ and $5-4$ lines are observed at the edge of the spectral window"]
+- not stated (card): Imaging parameters (weighting, robust, cell, image size, clean threshold); Line-free channels used for continuum subtraction; Details of the chi2 model grid ranges and step sizes; RATRAN settings (number of photons, grid); Spectral extraction mask thresholds; Flux/gain calibrators (in SV scripts)
+
+## All papers in this technique
+
+- 2012ApJ...750L..21B (2012): Constraining the Planetary System of Fomalhaut Using High-resolution ALMA Observations
+- 2013ApJ...765L..14Q (2013): First Detection of c-C<SUB>3</SUB>H<SUB>2</SUB> in a Circumstellar Disk
+- 2013ApJ...774L...7M (2013): ALMA Observations of the Massive Molecular Outflow G331.512-0.103
+- 2013ApJ...777L..25M (2013): ALMA Continuum Observations of a 30 Myr Old Gaseous Debris Disk around HD 21997
+- 2013Natur.493..191C (2013): Flows of gas through a protoplanetary gap
+- 2014ApJ...783L..13P (2014): Large-scale Asymmetries in the Transitional Disks of SAO 206462 and SR 21
+- 2014ApJ...785L..12C (2014): Spiral Arms in the Disk of HD 142527 from CO Emission Lines with ALMA
+- 2014ApJ...787...42C (2014): An ALMA Continuum Survey of Circumstellar Disks in the Upper Scorpius OB Association
+- 2014ApJ...787...48X (2014): ALMA Observations of Warm Molecular Gas and Cold Dust in NGC 34
+- 2014ApJ...791L...6W (2014): ALMA Hints at the Presence of two Companions in the Disk around HD 100546
+- 2014ApJ...796..131O (2014): Formation of a Keplerian Disk in the Infalling Envelope around L1527 IRS: Transformation from Infalling Motions to Kepler Motions
+- 2014MNRAS.444.1821F (2014): ALMA and Herschel observations of the prototype dusty and polluted white dwarf G29-38
+- 2014Natur.514..600D (2014): Possible planet formation in the young, low-mass, multiple stellar system GG Tau A
+- 2015A&A...581A..97S (2015): Collisional modelling of the AU Microscopii debris disc
+- 2015ApJ...798..124R (2015): ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146
+- 2015ApJ...799..204C (2015): Constraining the X-Ray and Cosmic-Ray Ionization Chemistry of the TW Hya Protoplanetary Disk: Evidence for a Sub-interstellar Cosmic-Ray Ra…
+- 2015ApJ...806L..15K (2015): Mass Estimates of a Giant Planet in a Protoplanetary Disk from the Gap Structures
+- 2015ApJ...809...93D (2015): Observational Signatures of Planets in Protoplanetary Disks I. Gaps Opened by Single and Multiple Young Planets in Disks
+- 2015ApJ...810..112O (2015): Double DCO<SUP>+</SUP> Rings Reveal CO Ice Desorption in the Outer Disk Around IM Lup
+- 2015MNRAS.447.3936M (2015): CO mass upper limits in the Fomalhaut ring - the importance of NLTE excitation in debris discs and future prospects with ALMA
+- 2016A&A...585A..58V (2016): Resolved gas cavities in transitional disks inferred from CO isotopologs with ALMA
+- 2016A&A...586A..99H (2016): Steepening of the 820 μm continuum surface brightness profile signals dust evolution in TW Hydrae's disk
+- 2016A&A...591A.108O (2016): Azimuthal asymmetries in the debris disk around HD 61005. A massive collision of planetesimals?
+- 2016ApJ...816...27S (2016): Resolved Millimeter-wavelength Observations of Debris Disks around Solar-type Stars
+- 2016ApJ...818...45S (2016): The Inner Debris Structure in the Fomalhaut Planetary System
+- 2016ApJ...818..158A (2016): Planetary System Formation in the Protoplanetary Disk around HL Tauri
+- 2016ApJ...818L..16Z (2016): On the Commonality of 10-30 AU Sized Axisymmetric Dust Structures in Protoplanetary Disks
+- 2016ApJ...820...19T (2016): Mapping CO Gas in the GG Tauri A Triple System with 50 au Spatial Resolution
+- 2016ApJ...820...54K (2016): Grain Size Constraints on HL Tau with Polarization Signature
+- 2016ApJ...820L..25Y (2016): Gas Gaps in the Protoplanetary Disk around the Young Protostar HL Tau
+- 2016ApJ...820L..40A (2016): Ringed Substructure and a Gap at 1 au in the Nearest Protoplanetary Disk
+- 2016ApJ...821...82O (2016): Sintering-induced Dust Ring Formation in Protoplanetary Disks: Application to the HL Tau Disk
+- 2016ApJ...821L..16C (2016): The VLA View of the HL Tau Disk: Disk Mass, Grain Evolution, and Early Planet Formation
+- 2016ApJ...823...26E (2016): High Star Formation Rates in Turbulent Atomic-dominated Gas in the Interacting Galaxies IC 2163 and NGC 2207
+- 2016ApJ...823...91S (2016): The Radial Distribution of H<SUB>2</SUB> and CO in TW Hya as Revealed by Resolved ALMA Observations of CO Isotopologues
+- 2016ApJ...823..108B (2016): A Comprehensive Dust Model Applied to the Resolved Beta Pictoris Debris Disk from Optical to Radio Wavelengths
+- 2016ApJ...823L..18H (2016): Evidence for a CO Desorption Front in the Outer AS 209 Disk
+- 2016ApJ...826...26T (2016): Revealing a Detailed Mass Distribution of a High-density Core MC27/L1521F in Taurus with ALMA
+- 2016ApJ...829....6W (2016): ALMA Observations of HD 141569’s Circumstellar Disk
+- 2016ApJ...829L..35T (2016): A Gap with a Deficit of Large Grains in the Protoplanetary Disk around TW Hya
+- 2016ApJ...831..101B (2016): Hydrocarbon Emission Rings in Protoplanetary Disks Induced by Dust Evolution
+- 2016ApJ...831L..12K (2016): Submillimeter Polarization Observation of the Protoplanetary Disk around HD 142527
+- 2016ApJ...832..178V (2016): Vortices and Spirals in the HD135344B Transition Disk
+- 2016ApJ...832..204Y (2016): Stacking Spectra in Protoplanetary Disks: Detecting Intensity Profiles from Hidden Molecular Lines in HD 163296
+- 2016MNRAS.458L..29C (2016): A ring-like concentration of mm-sized particles in Sz 91
+- 2016MNRAS.460..627K (2016): The winds from HL Tau
+- 2016MNRAS.460.2933M (2016): Exocometary gas in the HD 181327 debris ring
+- 2016MNRAS.460L..10B (2016): Resolving the planetesimal belt of HR 8799 with ALMA
+- 2016MNRAS.461.4276D (2016): Space reconstruction of the morphology and kinematics of axisymmetric radio sources
+- 2016Natur.535..258C (2016): Imaging the water snow-line during a protostellar outburst
+- 2016Natur.540..406B (2016): Resolved images of a protostellar outflow driven by an extended disk wind
+- 2016PASJ...68...43K (2016): Mass constraint for a planet in a protoplanetary disk from the gap width
+- 2016PhRvL.117y1101I (2016): Ringed Structures of the HD 163296 Protoplanetary Disk Revealed by ALMA
+- 2016Sci...353.1519P (2016): Spiral density waves in a young protoplanetary disk
+- 2017A&A...597A..32V (2017): Cavity and other radial substructures in the disk around HD 97048
+- 2017A&A...600A..72F (2017): ALMA unveils rings and gaps in the protoplanetary system <ASTROBJ>HD 169142</ASTROBJ>: signatures of two giant protoplanets
+- 2017A&A...605A..21C (2017): Increased H<SUB>2</SUB>CO production in the outer disk around HD 163296
+- 2017A&A...606A.125S (2017): DCO<SUP>+</SUP>, DCN, and N<SUB>2</SUB>D<SUP>+</SUP> reveal three different deuteration regimes in the disk around the Herbig Ae star HD 16…
+- 2017A&A...607A..55V (2017): An 80 au cavity in the disk around HD 34282
+- 2017A&A...607L...6T (2017): ALMA discovery of a rotating SO/SO<SUB>2</SUB> flow in HH212. A possible MHD disk wind?
+- 2017AJ....153....7Y (2017): Near-infrared Imaging Polarimetry of Inner Region of GG Tau A Disk
+- 2017AJ....154..225S (2017): ALMA 1.3 mm Map of the HD 95086 System
+- 2017ApJ...835..228T (2017): A Surface Density Perturbation in the TW Hydrae Disk at 95 au Traced by Molecular Emission
+- 2017ApJ...835..278S (2017): Physical Properties of Molecular Clouds at 2 pc Resolution in the Low-metallicity Dwarf Galaxy NGC 6822 and the Milky Way
+- 2017ApJ...836..201D (2017): The Sizes and Depletions of the Dust and Gas Cavities in the Transitional Disk J160421.7-213028
+- 2017ApJ...838...97M (2017): Imaging a Central Ionized Component, a Narrow Ring, and the CO Snowline in the Multigapped Disk of HD 169142
+- 2017ApJ...839...43O (2017): H<SUB>2</SUB>CO Distribution and Formation in the TW HYA Disk
+- 2017ApJ...839...86H (2017): Radial Surface Density Profiles of Gas and Dust in the Debris Disk around 49 Ceti
+- 2017ApJ...839...99P (2017): A Multi-wavelength Analysis of Dust and Gas in the SR 24S Transition Disk
+- 2017ApJ...840...23L (2017): A Multi-ringed, Modestly Inclined Protoplanetary Disk around AA Tau
+- 2017ApJ...840...32T (2017): Planet Formation in AB Aurigae: Imaging of the Inner Gaseous Spirals Observed inside the Dust Cavity
+- 2017ApJ...840...72L (2017): Systematic Analysis of Spectral Energy Distributions and the Dust Opacity Indices for Class 0 Young Stellar Objects
+- 2017ApJ...842....8M (2017): A Complete ALMA Map of the Fomalhaut Debris Disk
+- 2017ApJ...843...83W (2017): ALMA Images of the Orion Hot Core at 349 GHz
+- 2017ApJ...843..150F (2017): A Three-dimensional View of Turbulence: Constraints on Turbulent Motions in the HD 163296 Protoplanetary Disk Using DCO<SUP>+</SUP>
+- 2017ApJ...846...70P (2017): Millimeter Spectral Indices and Dust Trapping By Planets in Brown Dwarf Disks
+- 2017ApJ...850L...6A (2017): ALMA Discovery of Dust Belts around Proxima Centauri
+- 2017ApJ...851...83C (2017): Protoplanetary Disks in ρ Ophiuchus as Seen from ALMA
+- 2017ApJ...851L..23C (2017): ALMA Observations of Elias 2-24: A Protoplanetary Disk with Multiple Gaps in the Ophiuchus Molecular Cloud
+- 2017MNRAS.464L..31H (2017): Unveiling the early-stage anatomy of a protocluster hub with ALMA
+- 2017MNRAS.465..834Z (2017): The ALMA early science view of FUor/EXor objects - I. Through the looking-glass of V2775 Ori
+- 2017MNRAS.465.2595M (2017): ALMA observations of the η Corvi debris disc: inward scattering of CO-rich exocomets by a chain of 3-30 M<SUB>⊕</SUB> planets?
+- 2017MNRAS.466.4201W (2017): 1.3-mm ALMA observations of the Fomalhaut debris system
+- 2017MNRAS.469.3347M (2017): ALMA spectral survey of Supernova 1987A - molecular inventory, chemistry, dynamics and explosive nucleosynthesis
+- 2017MNRAS.469.4726N (2017): High-resolution ALMA observation of the <SUP>12</SUP>CO(3-2) and 350 GHz continuum emissions of the debris disc of 49 Ceti
+- 2018A&A...610A..24F (2018): ALMA continuum observations of the protoplanetary disk AS 209. Evidence of multiple gaps opened by a single planet
+- 2018A&A...614A.106C (2018): Probing midplane CO abundance and gas temperature with DCO<SUP>+</SUP> in the protoplanetary disk around HD 169142
+- 2018A&A...615A.141B (2018): Accelerating infall and rotational spin-up in the hot molecular core G31.41+0.31
+- 2018A&A...615L..10M (2018): Unlocking the secrets of the midplane gas and dust distribution in the young hybrid disc HD 141569
+- 2018A&A...616A..88V (2018): V1094 Scorpii: A rare giant multi-ringed disk around a T Tauri star
+- 2018A&A...617A..28S (2018): Chemistry in disks. XI. Sulfur-bearing species as tracers of protoplanetary disk physics and chemistry: the DM Tau case
+- 2018A&A...617A.120M (2018): Tracing the cold and warm physico-chemical structure of deeply embedded protostars: IRAS 16293-2422 vs. VLA 1623-2417
+- 2018A&A...618A.120L (2018): The HH30 edge-on T Tauri star. A rotating and precessing monopolar outflow scrutinized by ALMA
+- 2018A&A...619A.161C (2018): Evidence for a massive dust-trapping vortex connected to spirals. Multi-wavelength analysis of the HD 135344B protoplanetary disk
+- 2018ApJ...857...18S (2018): Multiple Gaps in the Disk of the Class I Protostar GY 91
+- 2018ApJ...858...90G (2018): Dense Gas, Dynamical Equilibrium Pressure, and Star Formation in Nearby Star-forming Galaxies
+- 2018ApJ...859...32P (2018): Homogeneous Analysis of the Dust Morphology of Transition Disks Observed with ALMA: Investigating Dust Trapping and the Origin of the Cavit…
+- 2018ApJ...859..103W (2018): Extended Millimeter Emission in the HD 141569 Circumstellar Disk Detected with ALMA
+- 2018ApJ...859..111H (2018): The Circumstellar Disk and Asymmetric Outflow of the EX Lup Outburst System
+- 2018ApJ...859..165S (2018): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. I. VLA 1623
+- 2018ApJ...860....7R (2018): A Cavity of Large Grains in the Disk around the Group II Herbig Ae/Be Star HD 142666
+- 2018ApJ...860..119G (2018): A Keplerian Disk around Orion SrCI, a ∼ 15 M <SUB>☉</SUB> YSO
+- 2018ApJ...860..124D (2018): The Eccentric Cavity, Triple Rings, Two-armed Spirals, and Double Clumps of the MWC 758 Disk
+- 2018ApJ...861...72C (2018): ALMA Resolves C I Emission from the β Pictoris Debris Disk
+- 2018ApJ...864...81O (2018): Two Different Grain Size Distributions within the Protoplanetary Disk around HD 142527 Revealed by ALMA Polarization Observation
+- 2018ApJ...864..133T (2018): Temperature, Mass, and Turbulence: A Spatially Resolved Multiband Non-LTE Analysis of CS in TW Hya
+- 2018ApJ...865...37M (2018): Multiple Rings in the Transitional Disk of GM Aurigae Revealed by VLA and ALMA
+- 2018ApJ...866L...6C (2018): High-resolution Millimeter Imaging of the CI Tau Protoplanetary Disk: A Massive Ensemble of Protoplanets from 0.1 to 100 au
+- 2018ApJ...867L..14V (2018): Rings and Gaps in Protoplanetary Disks: Planets or Snowlines?
+- 2018ApJ...868..113T (2018): Evidence for a Vertical Dependence on the Pressure Structure in AS 209
+- 2018ApJ...868L...3M (2018): ALMA Reveals a Misaligned Inner Gas Disk inside the Large Cavity of a Transitional Disk
+- 2018ApJ...868L...5K (2018): A Spatially Resolved au-scale Inner Disk around DM Tau
+- 2018ApJ...869...17L (2018): Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region
+- 2018ApJ...869..126L (2018): Forming Super Star Clusters in the Central Starburst of NGC 253
+- 2018ApJ...869..158F (2018): ALMA Detections of the Youngest Protostars in Ophiuchus
+- 2018ApJ...869L..41A (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). I. Motivation, Sample, Calibration, and Overview
+- 2018ApJ...869L..42H (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). II. Characteristics of Annular Substructures
+- 2018ApJ...869L..43H (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). III. Spiral Structures in the Millimeter Continuum of the Elias 27, IM …
+- 2018ApJ...869L..44K (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). IV. Characterizing Substructures and Interactions in Disks around Multi…
+- 2018ApJ...869L..46D (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). VI. Dust Trapping in Thin-ringed Protoplanetary Disks
+- 2018ApJ...869L..47Z (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). VII. The Planet-Disk Interactions Interpretation
+- 2018ApJ...869L..48G (2018): The Disk Substructures at High Angular Resolution Program (DSHARP). VIII. The Rich Ringed Substructures in the AS 209 Disk
+- 2018ApJ...869L..50P (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). X. Multiple Rings, a Misaligned Inner Disk, and a Bright Arc in the Dis…
+- 2018MNRAS.474.5105B (2018): HD 169142 in the eyes of ZIMPOL/SPHERE
+- 2018MNRAS.475.5296D (2018): Rings and gaps in the disc around Elias 24 revealed by ALMA
+- 2018MNRAS.477.5104C (2018): An inner warp in the DoAr 44 T Tauri transition disc
+- 2018RAA....18...31P (2018): Morphology of the <SUP>13</SUP>CO(3-2) millimetre emission across the gas disc surrounding the triple protostar GG Tau A using ALMA observa…
+- 2019A&A...622A..75L (2019): Ring structure in the MWC 480 disk revealed by ALMA
+- 2019A&A...623A.150V (2019): The ALMA Lupus protoplanetary disk survey: evidence for compact gas disks and molecular rings from CN
+- 2019A&A...623L...6P (2019): Organic molecules in the protoplanetary disk of DG Tauri revealed by ALMA
+- 2019A&A...624A..33V (2019): ALMA study of the HD 100453 AB system and the tidal interaction of the companion with the disk
+- 2019A&A...624L...7V (2019): Stringent limits on the magnetic field strength in the disc of TW Hya. ALMA observations of CN polarisation
+- 2019A&A...625A.118K (2019): Highly structured disk around the planet host PDS 70 revealed by high-angular resolution observations with ALMA
+- 2019A&A...628A..95M (2019): Observational constraints on dust disk sizes in tidally truncated protoplanetary disks in multiple systems in the Taurus region
+- 2019A&A...629A..75B (2019): First detections of H<SUP>13</SUP>CO<SUP>+</SUP> and HC<SUP>15</SUP>N in the disk around HD 97048. Evidence for a cold gas reservoir in the…
+- 2019A&A...632L..12H (2019): Multiple nitrogen reservoirs in a protoplanetary disk at the epoch of comet and giant planet formation
+- 2019AJ....157..117M (2019): On the Ubiquity and Stellar Luminosity Dependence of Exocometary CO Gas: Detection around M Dwarf TWA 7
+- 2019AJ....157..237R (2019): Constraints on a Putative Planet Sculpting the V4046 Sagittarii Circumbinary Disk
+- 2019AJ....158...15P (2019): Dust Unveils the Formation of a Mini-Neptune Planet in a Protoplanetary Ring
+- 2019AJ....158..162F (2019): From Scattered-light to Millimeter Emission: A Comprehensive View of the Gigayear-old System of HD 202628 and its Eccentric Debris Ring
+- 2019ApJ...871....5T (2019): The Flared Gas Structure of the Transitional Disk around Sz 91
+- 2019ApJ...871...48P (2019): High-resolution ALMA Observations of HD 100546: Asymmetric Circumstellar Ring and Circumplanetary Disk Upper Limits
+- 2019ApJ...871..107F (2019): Gas Density Perturbations Induced by One or More Forming Planets in the AS 209 Protoplanetary Disk as Seen with ALMA
+- 2019ApJ...871..185L (2019): Investigating Fragmentation of Gas Structures in OB Cluster-forming Molecular Clump G33.92+0.11 with 1000 au Resolution Observations of ALMA
+- 2019ApJ...872...92F (2019): The Planet Formation Potential around a 45 Myr Old Accreting M Dwarf
+- 2019ApJ...872..112V (2019): Protoplanetary Disk Rings and Gaps across Ages and Luminosities
+- 2019ApJ...872..179K (2019): The Synthetic ALMA Multiband Analysis of the Dust Properties of the TW Hya Protoplanetary Disk
+- 2019ApJ...872..200H (2019): ALMA Observations of the Massive Molecular Outflow G331.512-0.103. II. Physical Properties, Kinematics, and Geometry Modeling
+- 2019ApJ...874...89C (2019): The Central 1000 au of a Pre-stellar Core Revealed with ALMA. I. 1.3 mm Continuum Observations
+- 2019ApJ...875...24C (2019): Filamentary Accretion Flows in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA
+- 2019ApJ...875...62Y (2019): ALMA Observations of Layered Structures due to CO Selective Dissociation in the ρ Ophiuchi A Plane-parallel PDR
+- 2019ApJ...875...87D (2019): The Mass of Stirring Bodies in the AU Mic Debris Disk Inferred from Resolved Vertical Structure
+- 2019ApJ...875...96N (2019): Dust Continuum Emission and the Upper Limit Fluxes of Submillimeter Water Lines of the Protoplanetary Disk around HD 163296 Observed by ALMA
+- 2019ApJ...876...72L (2019): Sulfur Chemistry in Protoplanetary Disks: CS and H<SUB>2</SUB>CS
+- 2019ApJ...876L..13S (2019): Line Ratios Reveal N<SUB>2</SUB>H<SUP>+</SUP> Emission Originates above the Midplane in TW Hydrae
+- 2019ApJ...877..100Y (2019): A Tight Relation between Spiral Arm Pitch Angle and Protoplanetary Disk Mass
+- 2019ApJ...877L..22L (2019): The Anomalously Low (Sub)Millimeter Spectral Indices of Some Protoplanetary Disks May Be Explained By Dust Self-scattering
+- 2019ApJ...877L..25M (2019): The First Bird’s-eye View of a Gravitationally Unstable Accretion Disk in High-mass Star Formation
+- 2019ApJ...877L..32M (2019): Multiple Rings of Millimeter Dust Emission in the HD 15115 Debris Disk
+- 2019ApJ...878...16P (2019): An Inner Disk in the Large Gap of the Transition Disk SR 24S
+- 2019ApJ...880...69Y (2019): HL Tau Disk in HCO<SUP>+</SUP> (3-2) and (1-0) with ALMA: Gas Density, Temperature, Gap, and One-arm Spiral
+- 2019ApJ...881...84S (2019): The REASONS Survey: Resolved Millimeter Observations of a Large Debris Disk around the Nearby F Star HD 170773
+- 2019ApJ...882...31A (2019): A Superluminous Supernova in High Surface Density Molecular Gas within the Bar of a Metal-rich Galaxy
+- 2019ApJ...882..160Q (2019): Probing CO and N<SUB>2</SUB> Snow Surfaces in Protoplanetary Disks with N<SUB>2</SUB>H<SUP>+</SUP> Emission
+- 2019ApJ...882L..31B (2019): The First Detection of <SUP>13</SUP>C<SUP>17</SUP>O in a Protoplanetary Disk: A Robust Tracer of Disk Gas Mass
+- 2019ApJ...883...71C (2019): The Radial Distribution of Dust Particles in the HL Tau Disk from ALMA and VLA Observations
+- 2019ApJ...885...82L (2019): Sulfur-bearing Molecules in Orion KL
+- 2019ApJ...886...14F (2019): An ALMA View of Molecular Filaments in the Large Magellanic Cloud. I. The Formation of High-mass Stars and Pillars in the N159E-Papillon Ne…
+- 2019ApJ...886L...4Z (2019): Discovery of a Photoionized Bipolar Outflow toward the Massive Protostar G45.47+0.05
+- 2019MNRAS.482..698C (2019): The Ophiuchus DIsc Survey Employing ALMA (ODISEA) - I: project description and continuum images at 28 au resolution
+- 2019MNRAS.484.1257M (2019): A gap in HD 92945's broad planetesimal disc revealed by ALMA
+- 2019MNRAS.485..739M (2019): Asymmetric mid-plane gas in ALMA images of HD 100546
+- 2019NatAs...3..278K (2019): Publisher Correction: A circumbinary protoplanetary disk in a polar configuration
+- 2019NatAs...3..314L (2019): The ice composition in the disk around V883 Ori revealed by its stellar outburst
+- 2019NatAs...3..517Z (2019): Dynamics of a massive binary at birth
+- 2019NatAs...3.1109P (2019): Kinematic detection of a planet carving a gap in a protoplanetary disk
+- 2020A&A...633A.126B (2020): The dynamically young outflow of the Class 0 protostar Cha-MMS1
+- 2020A&A...635L...9P (2020): Planet-induced spirals in the circumbinary disk of GG Tauri A
+- 2020A&A...636L...4M (2020): Spirals inside the millimeter cavity of transition disk SR 21
+- 2020A&A...644A..11L (2020): A statistical analysis of dust polarization properties in ALMA observations of Class 0 protostellar cores
+- 2020A&A...644A.119P (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). III. The interplay between gas and dust in the protoplanetary disk of DG…
+- 2020AJ....159..118U (2020): Near-infrared Imaging of a Spiral in the CQ Tau Disk
+- 2020AJ....159..288M (2020): The Big Sibling of AU Mic: A Cold Dust-rich Debris Disk around CP-72 2713 in the β Pic Moving Group
+- 2020ApJ...889..140Y (2020): High-resolution Near-infrared Polarimetry and Submillimeter Imaging of FS Tau A: Possible Streamers in Misaligned Circumbinary Disk System
+- 2020ApJ...889L..24P (2020): Long Baseline Observations of the HD 100546 Protoplanetary Disk with ALMA
+- 2020ApJ...890..142P (2020): An ALMA Survey of H<SUB>2</SUB>CO in Protoplanetary Disks
+- 2020ApJ...891...48H (2020): A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk
+- 2020ApJ...892...99C (2020): The Surprisingly Low Carbon Mass in the Debris Disk around HD 32297
+- 2020ApJ...892..111F (2020): Dust-depleted Inner Disks in a Large Sample of Transition Disks through Long-baseline ALMA Observations
+- 2020ApJ...893..101L (2020): An Unbiased ALMA Spectral Survey of the LkCa 15 and MWC 480 Protoplanetary Disks
+- 2020ApJ...894...76W (2020): The MESAS Project: ALMA Observations of the F-type Stars γ Lep, γ Vir A, and γ Vir B
+- 2020ApJ...894L..14L (2020): ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation
+- 2020ApJ...895...84Y (2020): Super-resolution Imaging of the Protoplanetary Disk HD 142527 Using Sparse Modeling
+- 2020ApJ...895..126H (2020): The Evolution of Dust Disk Sizes from a Homogeneous Analysis of 1-10 Myr old Stars
+- 2020ApJ...895L..18B (2020): GW Ori: Interactions between a Triple-star System and Its Circumtriple Disk in Action
+- 2020ApJ...895L..46L (2020): Hints of a Population of Solar System Analog Planets from ALMA
+- 2020ApJ...896..127K (2020): Multiple Outflows in the High-mass Cluster-forming Region G25.82-0.17
+- 2020ApJ...898...36L (2020): Dual-wavelength ALMA Observations of Dust Rings in Protoplanetary Disks
+- 2020ApJ...898..146M (2020): Dust Populations in the Iconic Vega Planetary System Resolved by ALMA
+- 2020ApJ...899...10T (2020): FRagmentation and Evolution of Dense Cores Judged by ALMA (FREJA). I. Overview: Inner ∼1000 au Structures of Prestellar/Protostellar Cores …
+- 2020ApJ...902..132B (2020): On the Nature of the T Tauri Triple System
+- 2020ApJ...902..141S (2020): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. III. Substructures in Protostellar Disks
+- 2020MNRAS.493L.108B (2020): <SUP>13</SUP>C<SUP>17</SUP>O suggests gravitational instability in the HL Tau disc
+- 2020MNRAS.497.2811K (2020): Survey of planetesimal belts with ALMA: gas detected around the Sun-like star HD 129590
+- 2020MNRAS.497.3504T (2020): Jet-ISM interactions near the microquasars GRS 1758-258 and 1E 1740.7-2942
+- 2020PASP..132h4401T (2020): Herschel Observations of Disks around Late-type Stars
+- 2021A&A...645A.145G (2021): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). V. Sample, overview, and demography of disk molecular emission
+- 2021A&A...648A..19W (2021): A highly non-Keplerian protoplanetary disc. Spiral structure in the gas disc of CQ Tau
+- 2021A&A...648A..41V (2021): Outflows, envelopes, and disks as evolutionary indicators in Lupus young stellar objects
+- 2021A&A...651L...6B (2021): A major asymmetric ice trap in a planet-forming disk. II. Prominent SO and SO<SUB>2</SUB> pointing to C/O &lt; 1
+- 2021A&A...654A..35B (2021): A multiwavelength analysis of the spiral arms in the protoplanetary disk around WaOph 6
+- 2021A&A...656A.133Q (2021): Stellar structures, molecular gas, and star formation across the PHANGS sample of nearby galaxies
+- 2021AJ....161...38O (2021): The TW Hya Rosetta Stone Project. I. Radial and Vertical Distributions of DCN and DCO<SUP>+</SUP>
+- 2021AJ....161..271F (2021): A Detailed Characterization of HR 8799's Debris Disk with ALMA in Band 7
+- 2021ApJ...907L..15S (2021): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Detection of Extremely High-density Compact Structure of Prestellar Cores and M…
+- 2021ApJ...908....8C (2021): The TW Hya Rosetta Stone Project. III. Resolving the Gaseous Thermal Profile of the Disk
+- 2023ApJ...956L..16T (2023): An ALMA-resolved View of 7000 au Protostellar Gas Ring around the Class I Source CrA-IRS 2 as a Possible Sign of Magnetic Flux Advection
+- 2023PASJ...75..225M (2023): An expanding ring of the hypercompact H II region W 49 N:A2
+- 2023PASJ...75..424O (2023): ALMA Band 6 high-resolution observations of the transitional disk around SY Chamaeleontis
+- 2024A&A...689A..65R (2024): ALMA high-resolution observations unveil planet formation shaping molecular emission in the PDS 70 disk
+- 2024A&A...689A..85G (2024): MINDS: A multi-instrument investigation into the molecule-rich JWST-MIRI spectrum of the DF Tau binary system
+- 2024A&A...689A.104D (2024): From traffic jams to roadblocks: The outer regions of TW Hya with ALMA Band 8
+- 2024A&A...690A..46S (2024): Early Planet Formation in Embedded Disks (eDisk): XVI. Asymmetric dust disk driving a multicomponent molecular outflow in the young Class 0…
+- 2024A&A...690A.375S (2024): Emergence of high-mass stars in complex fiber networks (EMERGE): III. Fiber networks in Orion
+- 2024A&A...690A.376S (2024): Emergence of high-mass stars in complex fiber networks (EMERGE): IV. Environmental dependence of the fiber widths
+- 2024AJ....167...66Y (2024): Chemistry of Complex Organic Molecules in the V883 Ori Disk Revealed by ALMA Band 3 Observations
+- 2024ApJ...961..228S (2024): Ring Gap Structure around Class I Protostar WL 17
+- 2024ApJ...963..134Y (2024): Turbulent Vortex with Moderate Dust Settling Probed by Scattering-induced Polarization in the IRS 48 System
+- 2024ApJ...965..147B (2024): The Carbon Isotopic Ratio and Planet Formation
+- 2024ApJ...966...59S (2024): Small and Large Dust Cavities in Disks around Mid-M Stars in Taurus
+- 2024ApJ...967...15K (2024): Infall Motions in the Hot Core Associated with the Hypercompact H II Region G345.0061+01.794 B
+- 2024ApJ...969..165D (2024): Chemistry in Externally FUV-irradiated Disks in the Outskirts of the Orion Nebula Cluster
+- 2024ApJ...970..153A (2024): On Kinematic Measurements of Self-gravity in Protoplanetary Disks
+- 2024ApJ...971..129C (2024): A Dust-trapping Ring in the Planet-hosting Disk of Elias 2-24
+- 2024ApJ...974..102S (2024): Hints of Planet Formation Signatures in a Large-cavity Disk Studied in the AGE-PRO ALMA Large Program
+- 2024ApJ...976..132H (2024): High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis
+- 2024JKAS...57..163L (2024): HCN and HNC in the Disk of an Outbursting Young Star, V883 Ori
+- 2024MNRAS.534..683Z (2024): Molecular clouds as hubs in spiral galaxies: gas inflow and evolutionary sequence
+- 2024NatAs...8..587F (2024): Resolved ALMA observations of water in the inner astronomical units of the HL Tau disk
+- 2024RAA....24g5017M (2024): Investigating Sulfur Chemistry in the HD163296 Disk
+- 2025A&A...693A.151M (2025): REsolved ALMA and SMA Observations of Nearby Stars (REASONS): A population of 74 resolved planetesimal belts at millimetre wavelengths
+- 2025A&A...697A..64V (2025): Turbulence in protoplanetary disks: A systematic analysis of dust settling in 33 disks
+- 2025A&A...700A.188C (2025): FAUST: XXVI. The dust opacity spectral indices of protostellar envelopes bridge the gap between interstellar medium and disks
+- 2025ApJ...984L..19Y (2025): exoALMA. XIV. Gas Surface Densities in the RX J1604.3−2130 A Disk from Pressure-broadened CO Line Wings
+- 2025ApJ...984L..21B (2025): exoALMA. XVI. Predicting Signatures of Large-scale Turbulence in Protoplanetary Disks
+- 2025ApJ...984L..57O (2025): The Ophiuchus DIsk Survey Employing ALMA (ODISEA): A Unified Evolutionary Sequence of Planet-driven Substructures Explaining the Diversity …
+- 2025ApJ...986L..11S (2025): Hints of Disk Substructure in the First Brown Dwarf with a Dynamical Mass Constraint
+- 2025ApJ...989....3D (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). III. Dust and Gas Disk Properties in the Lupus Star-forming Region
+- 2025ApJ...990..183U (2025): Multiwavelength Dust Characterization of the HL Tau Disk and Implications for Planet Formation
+- 2025ApJ...991..176W (2025): Radiative Transfer Modeling of a Shadowed Protoplanetary Disk Assisted by a Neural Network
+- 2025ApJ...992L..15L (2025): A Dense Molecular Ringlike Structure in Gaseous CO Depletion Region G34.74−0.12
+- 2025ApJ...993...85Y (2025): Peculiar Disk Substructures Associated with the Young Eruptive Star EX Lupi
+- 2025ApJ...993...90S (2025): ALMA High-resolution Observation for the Transitional Disk Around IRAS 04125+2902
+- 2025ApJ...994...98F (2025): Measuring the Two-dimensional Thermal Structures of Protoplanetary Disks
+- 2025MNRAS.543.2723P (2025): Observational constraints on evolution of dust disc properties in Upper Scorpius
+- 2025NatAs...9.1833L (2025): Detection of a septuple stellar system in formation via disk fragmentation
+- 2025PASJ...77..572S (2025): ALMA 2D super-resolution imaging survey of Ophiuchus Class I/flat spectrum/II disks. I. Discovery of new disk substructures
+- 2025SciA...11.4512O (2025): Massive extended streamers feed high-mass young stars
+- 2026A&A...705A.193L (2026): Zooming into the water snow line: High-resolution water observations of the HL Tau disk
+- 2026A&A...705A.198M (2026): The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): IV. CO gas imaging and overview
+- 2026A&A...705A.204J (2026): The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): X. Interpreting the peculiar dust rings around HD 131835
+- 2026ApJ..1000L..15F (2026): exoALMA XXII: A Two-dimensional Atlas of Deviations from Keplerian Disks
+- 2026ApJ..1001..124M (2026): Multiwavelength ALMA Imaging of HD 34282: Dust-trapping Signatures of a Vortex Candidate
+- 2026ApJ..1001L...1T (2026): ALMA Band 9 CO(6─5) Reveals a Warm Ring Structure Associated with the Embedded Protostar in the Cold Dense Core MC 27/L1521F
+- 2026ApJ..1003..215F (2026): Reading between the Rings: Observed Dust Ring Properties as Probes of Planet Masses
+- 2026ApJ..1004..182H (2026): A Radially Broad Collisional Cascade in the Debris Disk of γ Ophiuchi Observed by JWST

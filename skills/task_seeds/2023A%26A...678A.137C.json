@@ -1,0 +1,359 @@
+{
+ "bibcode": "2023A&A...678A.137C",
+ "title": "CoCCoA: Complex Chemistry in hot Cores with ALMA. Selected oxygen-bearing species",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346491",
+ "arxiv_id": "2308.02688",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What are the column density ratios of six oxygen-bearing complex organic molecules (O-COMs) with respect to methanol in 14 high-mass protostellar sources, and how do they constrain COM formation through ice and/or gas-phase chemistry?",
+ "alma_project_codes": [
+  "2019.1.00246.S",
+  "2019.2.00112.S",
+  "2022.1.00499.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m array (and 7-m array for full survey)",
+  "angular_resolution": "0.3'' (0.33'' uniform beam size also stated)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "O-COM column density ratios in five low-mass protostars observed with ALMA",
+    "evidence": [
+     {
+      "loc": "Column density ratios",
+      "quote": "We compare our observational results of high-mass protostellar sources with the results of low-mass sources in literature (cite: Jorgensen2018; Manigand2020; MvG2020) and the simulation results of COM chemistry in (cite: Garrod2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Jorgensen2018; Manigand2020; MvG2020)"
+  },
+  {
+   "what": {
+    "value": "Source luminosities and distances for the 14 high-mass targets",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "**References –** \\[1\\] (cite: Cyganowski2011), \\[2\\] (cite: Williams2022), \\[3\\] (cite: Issac2020), \\[4\\] (cite: Ge2014), \\[5\\] (cite: Towner2021), \\[6\\] (cite: Tang2018), \\[7\\] (cite: Csengeri2022), \\[8\\] (cite: Konig2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Cyganowski2011; Williams2022; Issac2020; Ge2014; Towner2021; Tang2018; Csengeri2022; Konig2017; Beltran2014; Wu2014; Sanchez-Monge2013; Zhang2009; Faundez2004; Maud2015; WidicusWeaver2017; Sandell2000; Chibueze2014)"
+  },
+  {
+   "what": {
+    "value": "O-COM ratios in outbursting protostar V883 Ori, disk Oph IRS 48, and comets 67P/C-G and 46P/Wirtanen",
+    "evidence": [
+     {
+      "loc": "O-COMs from clouds to comets",
+      "quote": "We compare them with the literature data of the outbursting protostar V883(FU) Ori (cite: Lee2019NatAs) and the protoplanetary disk around Oph IRS 48 (cite: Brunken2022)."
+     },
+     {
+      "loc": "O-COMs from clouds to comets",
+      "quote": "Two comets, 67P/Churyumov–Gerasimenko (67P/C–G) (cite: Robin2019; Drozdovskaya2019) and 46P/Wirtanen (cite: Biver2021), are also taken into account, which reflect the pristine chemical composition in our solar system."
+     }
+    ]
+   },
+   "citation": "(cite: Lee2019NatAs; Brunken2022; Robin2019; Drozdovskaya2019; Biver2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate moment 0 maps and extract single-pixel spectra",
+   "method": "Make integrated intensity (moment 0) maps of the unblended CH3OH 19_{3,17}-19_{2,18} line and extract spectra from the peak methanol pixel (or brightest pixel on the ring for G34.30+0.20, or offset by ~9 pixels for G34.41+0.24 and ~3 pixels for G23.21-0.37 to reduce line blending)",
+   "software": [],
+   "key_parameters": [
+    "CH3OH 19_{3,17}-19_{2,18} transition (E_up = 490 K, A_ij = 9.27e-5 s^-1); extraction coordinates in Table 1"
+   ],
+   "assumptions": [
+    "Other O-COMs peak at similar locations to methanol emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify lines and fit LTE synthetic spectra for O-COMs and methanol isotopologues",
+   "method": "Identify transitions using JPL and CDMS catalogs in CASSIS and fit LTE models (N, T_ex, FWHM, v_lsr) per species using chi^2 grid-fitting on unblended lines for narrow/weak sources or interactive visual inspection for blended/bright sources; use 2-component fits where lines are double-peaked and restrict MF fits to A_ij < 10^-4 s^-1 where optically thick",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "3-sigma detection threshold for unblended lines; T_ex fixed to MF when unconstrained; T_ex of g-EG fixed to a-EG"
+   ],
+   "assumptions": [
+    "Single excitation temperature (LTE) per species; vibrational corrections applied to GA and EG"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Infer main methanol column density and compute O-COM column density ratios",
+   "method": "Calculate 16O/18O ratio from Galactocentric distance D_GC for each source, multiply N(CH3^18OH) by 16O/18O to get N(CH3OH), sum a-EG and g-EG, and compute ratios N(O-COM)/N(CH3OH) and pairwise O-COM ratios to compare with low-mass protostars, comets, and Garrod et al. (2022) models",
+   "software": [],
+   "key_parameters": [
+    "(16O/18O) = (58.8 +/- 11.8) D_GC + (37.1 +/- 82.6); intercept error excluded from main error propagation"
+   ],
+   "assumptions": [
+    "CH3^18OH lines are optically thin while 13CH3OH lines are marginally optically thick"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Typical methanol (CH3OH) column density across sample",
+   "value": "10^18–10^19",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Column density and excitation temperature",
+     "quote": "With the uniform beam size of 0.33$''$, most sources have a methanol column density of 10$^{18}$–10$^{19}$ cm$^{-2}$, except the weakest source IRAS 1851-1208, which has $N=7\\times10^{17}$cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 inferred CH3OH column density",
+   "value": "4.4e18",
+   "uncertainty": "1.3e18",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | (4.4$\\pm$1.3)$\\times10^{18}$ | (1.3$\\pm$0.3)$\\times10^{16}$ | \\[180\\] | 2.7 | 46.2 | (4.0$\\pm$1.5)$\\times10^{15}$ | 100$\\pm$30 | 3.0 | 46.4 | (5.5$\\pm$1.5)$\\times10^{16}$ | 170$\\pm$30 | 3.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 CH3^18OH column density",
+   "value": "1.3e16",
+   "uncertainty": "0.3e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | (4.4$\\pm$1.3)$\\times10^{18}$ | (1.3$\\pm$0.3)$\\times10^{16}$ | \\[180\\] | 2.7 | 46.2 | (4.0$\\pm$1.5)$\\times10^{15}$ | 100$\\pm$30 | 3.0 | 46.4 | (5.5$\\pm$1.5)$\\times10^{16}$ | 170$\\pm$30 | 3.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 CH3CHO column density",
+   "value": "4.0e15",
+   "uncertainty": "1.5e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | (4.4$\\pm$1.3)$\\times10^{18}$ | (1.3$\\pm$0.3)$\\times10^{16}$ | \\[180\\] | 2.7 | 46.2 | (4.0$\\pm$1.5)$\\times10^{15}$ | 100$\\pm$30 | 3.0 | 46.4 | (5.5$\\pm$1.5)$\\times10^{16}$ | 170$\\pm$30 | 3.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 C2H5OH column density",
+   "value": "5.5e16",
+   "uncertainty": "1.5e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | (4.4$\\pm$1.3)$\\times10^{18}$ | (1.3$\\pm$0.3)$\\times10^{16}$ | \\[180\\] | 2.7 | 46.2 | (4.0$\\pm$1.5)$\\times10^{15}$ | 100$\\pm$30 | 3.0 | 46.4 | (5.5$\\pm$1.5)$\\times10^{16}$ | 170$\\pm$30 | 3.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 DME column density",
+   "value": "1.1e17",
+   "uncertainty": "0.3e17",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | | (1.1$\\pm$0.3)$\\times10^{17}$ | 130$\\pm$20 | 3.5 | 46.0 | (1.1$\\pm$0.3)$\\times10^{17}$ | 180$\\pm$40 | 4.0 | 46.0 | (6.0$\\pm$1.3)$\\times10^{15}$ | 160$\\pm$40 | 2.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 MF column density",
+   "value": "1.1e17",
+   "uncertainty": "0.3e17",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | | (1.1$\\pm$0.3)$\\times10^{17}$ | 130$\\pm$20 | 3.5 | 46.0 | (1.1$\\pm$0.3)$\\times10^{17}$ | 180$\\pm$40 | 4.0 | 46.0 | (6.0$\\pm$1.3)$\\times10^{15}$ | 160$\\pm$40 | 2.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 GA column density",
+   "value": "6.0e15",
+   "uncertainty": "1.3e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | | (1.1$\\pm$0.3)$\\times10^{17}$ | 130$\\pm$20 | 3.5 | 46.0 | (1.1$\\pm$0.3)$\\times10^{17}$ | 180$\\pm$40 | 4.0 | 46.0 | (6.0$\\pm$1.3)$\\times10^{15}$ | 160$\\pm$40 | 2.5 | 46.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 a-EG column density",
+   "value": "5.7e16",
+   "uncertainty": "1.2e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | (5.7$\\pm$1.2)$\\times10^{16}$ | 220$\\pm$20 | 3.0 | 46.7 | (2.9$\\pm$0.7)$\\times10^{16}$ | \\[220\\] | 3.0 | 46.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G19.88-0.53 g-EG column density",
+   "value": "2.9e16",
+   "uncertainty": "0.7e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G19.88-0.53 | (5.7$\\pm$1.2)$\\times10^{16}$ | 220$\\pm$20 | 3.0 | 46.7 | (2.9$\\pm$0.7)$\\times10^{16}$ | \\[220\\] | 3.0 | 46.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "G23.21-0.37 inferred CH3OH column density",
+   "value": "2.6e19",
+   "uncertainty": "0.7e19",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| G23.21-0.37 | (2.6$\\pm$0.7)$\\times10^{19}$ | (9.0$\\pm$2.0)$\\times10^{16}$ | \\[170\\] | 3.0 | 76.8 | (4.0$\\pm$0.6)$\\times10^{16}$ | 150$\\pm$30 | 3.5 | 77.0 | (2.4$\\pm$0.4)$\\times10^{17}$ | 160$\\pm$40 | 3.3 | 77.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 1851-1208 inferred CH3OH column density",
+   "value": "5.3e17",
+   "uncertainty": "2.0e17",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "| IRAS 1851-1208 | (5.3$\\pm$2.0)$\\times10^{17}$ | (1.5$\\pm$0.5)$\\times10^{15}$ | \\[180\\] | 2.0 | 35.0 | (9.0$\\pm$2.0)$\\times10^{14}$ | 150$\\pm$30 | 2.0 | 35.0 | (2.0$\\pm$0.5)$\\times10^{15}$ | \\[180\\] | 1.9 | 35.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "DME and MF column density ratios with respect to methanol",
+   "value": "2–3%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Column density ratios",
+     "quote": "Among the six species, DME and MF have the highest and similar ratios with respect to methanol (2–3%)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CHO and GA column density ratios with respect to methanol",
+   "value": "~0.1%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Column density ratios",
+     "quote": "and GA have the lowest ratios at around 0.1%."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of C2H5OH, MF, and a-EG",
+   "value": ">=150",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Column density and excitation temperature",
+     "quote": "As for the excitation temperature, , MF, and $a$-EG tend to have a warm $T_\\mathrm{ex}$ of $\\gtrsim$150 K, while and DME have a relatively lower $T_\\mathrm{ex}$ of 100–130 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of CH3CHO and DME",
+   "value": "100–130",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Column density and excitation temperature",
+     "quote": "As for the excitation temperature, , MF, and $a$-EG tend to have a warm $T_\\mathrm{ex}$ of $\\gtrsim$150 K, while and DME have a relatively lower $T_\\mathrm{ex}$ of 100–130 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed C2H5OH/GA column density ratio",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "C2H5OH",
+     "quote": "In our observations, the /GA ratios are around 10 (see Fig. [5](#fig:2COM_ratio)d)."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed GA/EG column density ratio",
+   "value": "0.1–1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": " (GA) and (EG)",
+     "quote": "The observed abundance ratios of GA over EG are $\\sim$0.1–1 (Fig. [5](#fig:2COM_ratio)g), which corresponds to $n_\\mathrm{initial}$(H)/$n_\\mathrm{initial}$(CO) \\> 0.25 in their models."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact per-source values of sigmaFindContinuum and the resulting line-free channel ranges used for continuum subtraction",
+  "Self-calibration solution intervals, number of iterations, and S/N thresholds",
+  "tclean stopping threshold, niter, masking strategy, and exact pixel cellsize and image dimensions",
+  "Exact values of the vibrational correction factors applied to GA and EG",
+  "Assumed source size / beam filling factor in CASSIS LTE modeling",
+  "Per-source rms noise levels in continuum and spectral cubes"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibrated spectral cube FITS files (pending full survey completion)",
+  "Per-source findContinuum.py thresholds (sigmaFindContinuum) and self-calibration scripts",
+  "Exact vibrational correction factors used in CASSIS for GA and EG",
+  "Assumed source size in CASSIS LTE calculations"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Extraction coordinates, spectroscopic transition lists, isotope calibration equations, and per-source best-fit parameters (N, T_ex, FWHM, v_lsr) are thoroughly tabulated, and CASA/tclean settings are mostly described. However, self-calibrated cubes are not yet released, manual continuum window parameters and self-calibration details are omitted, and visual-inspection spectral fits for blended sources cannot be identically automated.",
+ "rediscovery_reason": "Raw ALMA data (2019.1.00246.S) are public in the ALMA archive, exact extraction coordinates and transition lists are provided in Tables 1 and A.1, and all derived column densities and excitation temperatures are tabulated for direct quantitative comparison.",
+ "source_card": "cards/2023A%26A...678A.137C/sonnet/card.md"
+}

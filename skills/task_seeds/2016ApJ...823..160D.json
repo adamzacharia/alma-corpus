@@ -1,0 +1,289 @@
+{
+ "bibcode": "2016ApJ...823..160D",
+ "title": "An ALMA Search for Substructure, Fragmentation, and Hidden Protostars in Starless Cores in Chamaeleon I",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/823/2/160",
+ "arxiv_id": "1604.04027",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Do starless cores in Chamaeleon I show substructure/fragmentation or hide protostars undetected by Spitzer+Herschel, and is the protostar census complete?",
+ "alma_project_codes": [
+  "2012.1.00031.S"
+ ],
+ "data": {
+  "bands": "Band 3 (106 GHz; 2.8 mm), Cycle 1",
+  "arrays": "not stated",
+  "angular_resolution": "~2'' FWHM (300 AU)",
+  "sensitivity": "~0.1 mJy/beam 1σ rms (0.08-0.14)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "LABOCA core catalog, positions, masses, peak densities",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "the phase center of our ALMA observations (taken directly from the core positions given by Belloche et al.)"
+     }
+    ]
+   },
+   "citation": "Belloche et al. 2011 (cite: belloche2011:chami)"
+  },
+  {
+   "what": {
+    "value": "Herschel YSO catalog and classes",
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "list the YSO from (cite: winston2012:chami) associated with each detected source"
+     }
+    ]
+   },
+   "citation": "(cite: winston2012:chami)"
+  },
+  {
+   "what": {
+    "value": "Spitzer protostar compilation",
+    "evidence": [
+     {
+      "loc": "3.2.3",
+      "quote": "list the associated protostar from the (cite: dunham2013:luminosities) compilation of protostars detected by *Spitzer*"
+     }
+    ]
+   },
+   "citation": "(cite: dunham2013:luminosities)"
+  },
+  {
+   "what": {
+    "value": "Peak intensities of Perseus candidate FHSCs",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "Peak Flux Densities of Candidate First Hydrostatic Cores in Perseus"
+     }
+    ]
+   },
+   "citation": "chen2010:fhsc; schnee2010:starless; dunham2011:fhsc; pineda2011:fhsc"
+  },
+  {
+   "what": {
+    "value": "OH5 dust opacity kappa=0.23 cm2/g at 106 GHz",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "We adopt the dust opacities of (cite: ossenkopf1994:oh5) appropriate for thin ice mantles"
+     }
+    ]
+   },
+   "citation": "(cite: ossenkopf1994:oh5)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Detect and measure continuum sources",
+   "method": "imfit elliptical Gaussian fits to primary-beam-corrected images; 5 sigma detection threshold",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "5 sigma minimum significance"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive masses and densities",
+   "method": "M = 100 d^2 S/(B(T_D) kappa); n = 3M/(4 pi mu m_H r_eff^3)",
+   "software": [],
+   "key_parameters": [
+    "T_D = 10 K, d = 150 pc, kappa=0.23 cm2/g, mu=2.37"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100, OH5 dust, optically thin isothermal dust"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Classify evolutionary status via multiwavelength associations and SEDs",
+   "method": "cross-match ALMA detections with LABOCA, Herschel, Spitzer catalogs; SEDs to assign protostellar/starless/disk",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Test census completeness",
+   "method": "scale peak intensities of four Perseus faint protostars to 150 pc and 106 GHz with I ∝ nu^(2+beta), 0<=beta<=2, compare to rms",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "same dust temperatures in Chamaeleon I as in Perseus; emission compact/unresolved"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Synthetic ALMA observations of simulated cores and BE spheres",
+   "method": "convert column density to 106 GHz maps with BE-derived T(N) and OH5 opacity; simobserve/simanalyze with alma.cycle1.3.cfg, 72 s, 6 GHz; clean to 0.3 mJy",
+   "software": [
+    "CASA",
+    "orion",
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "cloud background A_V=35.6 added; pixel 20 AU; distance 150 pc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Predict expected detections and Poisson probability",
+   "method": "Detections > N_total (n_Detectable/n_Limit)^-0.5 with tau ∝ n^-0.5, then Poisson probability of zero",
+   "software": [],
+   "key_parameters": [
+    "N_total=56, n_Detectable=8.9e7 cm-3, n_Limit>2.8e5 cm-3"
+   ],
+   "assumptions": [
+    "continuous star formation; free-fall evolution; simulations applicable"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "continuum sources detected at >=5 sigma",
+   "value": "24 sources in 19 fields",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We detect a total of 24 106 GHz continuum sources to 5$\\sigma$ or greater significance in 19 different target fields"
+    }
+   ]
+  },
+  {
+   "quantity": "starless cores, all undetected",
+   "value": "56",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "leaving us with 56 starless cores, none of which are detected by our ALMA continuum observations"
+    }
+   ]
+  },
+  {
+   "quantity": "misclassification rate of protostellar cores as starless",
+   "value": "<1/56 (<2%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4",
+     "quote": "the rate at which protostellar cores in Chamaeleon I have been misclassified as starless cores is $<$1/56, or $<$ 2%"
+    }
+   ]
+  },
+  {
+   "quantity": "detected masses range",
+   "value": "0.012 to 1.7",
+   "uncertainty": "statistical only",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "gives total masses ranging from 0.012 M$_\\odot$ to 1.7 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "C04 detection threshold central density",
+   "value": "8.9e7",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1.2",
+     "quote": "The C04 simulation is detected over the last 8200 yr of the starless stage, when the central number density exceeds $8.9 \\times 10^{7}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "C4 detection threshold central density",
+   "value": "3.3e7",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1.2",
+     "quote": "The C4 simulation is detected over the last 11000 yr of the starless stage, when the central number density exceeds $3.3 \\times 10^{7}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "expected detections (orientation averaged)",
+   "value": "at least 2",
+   "uncertainty": "not stated",
+   "units": "cores",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "the total number of expected detections is reduced from at least three to at least two"
+    }
+   ]
+  },
+  {
+   "quantity": "Poisson probability of zero detections",
+   "value": "13.5",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "the probability of detecting zero cores when two detections are expected is 13.5%"
+    }
+   ]
+  },
+  {
+   "quantity": "C04 lifetime-density index",
+   "value": "-0.50",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3.1",
+     "quote": "with a power-law fit giving $\\tau~\\propto~n^{-0.50 \\pm 0.01}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "robust/weighting, deconvolver, clean threshold and masks for the real data",
+  "flux calibrator and flux scale uncertainty, CASA version",
+  "primary beam correction and mosaic details",
+  "how the 5-sigma limit and rms per field were measured",
+  "orion simulation snapshots and initial setup files (not released)",
+  "how orientation averaging gave 'at least two' detections"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "simulation snapshots",
+  "CASA version",
+  "flux calibration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and photometric results are simple, but imaging settings and simulation inputs are unstated.",
+ "rediscovery_reason": "Public data and numeric detections/flux densities with a simple mass formula; synthetic part is harder.",
+ "source_card": "cards/2016ApJ...823..160D/sonnet/card.md"
+}

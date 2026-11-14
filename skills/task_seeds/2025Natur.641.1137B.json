@@ -1,0 +1,501 @@
+{
+ "bibcode": "2025Natur.641.1137B",
+ "title": "Quasar radiation transforms the gas in a merging companion galaxy",
+ "year": 2025,
+ "doi": "10.1038/s41586-025-08966-4",
+ "arxiv_id": "2505.15766",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Investigate the galactic environment of quasar J 012555.11−012925.00 at z ≈ 2.7 and directly assess the impact of quasar radiation on the physical state and small-scale structure of molecular gas in its merging companion galaxy.",
+ "alma_project_codes": [
+  "2022.1.01792.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6",
+  "arrays": "42 - 44 antennas",
+  "angular_resolution": "Band 3 continuum: 0.177'' x 0.141''; Band 3 lines: 0.210'' x 0.166'' to 0.190'' x 0.150''; Band 6 lines: 0.121'' x 0.101''",
+  "sensitivity": "Band 3 continuum rms: 8.3 uJy/beam; Band 6 continuum rms: 14.8 uJy/beam (multiband), ~25 uJy/beam (individual SPWs); Line cube spectral rms: 0.29 - 0.37 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "X-shooter composite quasar spectrum used to model dust reddening and unabsorbed continuum.",
+    "evidence": [
+     {
+      "loc": "Differential dust extinction",
+      "quote": "The spectrum of J 012555.11 012925.00 appears clearly reddened compared to the X-shooter composite quasar spectrum, [62] as shown in Extended Data Fig. 5."
+     }
+    ]
+   },
+   "citation": "Selsing et al. 2016 [62]"
+  },
+  {
+   "what": {
+    "value": "CO excitation line ratios r_31 = 0.8 and r_71 = 0.2 for molecular gas mass conversion.",
+    "evidence": [
+     {
+      "loc": "Mass estimates",
+      "quote": "Assuming [53] 𝑟31 = 0.8 and 𝑟71 = 0.2 we obtain 𝑀H2 = (1.0 ± 0.1) × 10^10 𝑀⊙ (companion) and 𝑀H2 = (5.5 ± 0.1) × 10^9 𝑀⊙ (host),"
+     }
+    ]
+   },
+   "citation": "Boogaard et al. 2020 [53]"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search ALMA cubes for millimeter line emission, create moment maps, and measure continuum fluxes",
+   "method": "Blindly searched ALMA cubes for line emission using SOFIA v2.0 with residual continuum subtraction and the smooth+clip (S+C) algorithm; created moment 0, 1, and 2 maps; smoothed CO(7-6) to CO(3-2) resolution for line ratio map; measured continuum flux densities in Band 3 and Band 6 images.",
+   "software": [
+    "SOFIA v2.0"
+   ],
+   "key_parameters": [
+    "Detection threshold = 3.5 sigma; moment 1 and 2 pixel threshold = 1.5 times local rms; non-detection 3 sigma upper limits assume line FWHM = 100 km/s."
+   ],
+   "assumptions": [
+    "Line FWHM of 100 km s^-1 for 3 sigma upper limits of non-detections."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Decompose optical broad-band images and extract 1D spectra of the quasar, companion galaxy, and quasar host galaxy",
+   "method": "Fitted Subaru HSC g and r band images with Galfit using a PSF + sky + two Sersic (n=1.0) components; extracted 1D quasar spectrum and disentangled companion galaxy spectrum from 2D X-shooter PA=90 deg spectra by fitting two Moffat profiles across rebinned wavelength bins; extracted quasar host galaxy residual emission from dark troughs of saturated absorption lines.",
+   "software": [
+    "Galfit",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Sersic index = 1.0; X-shooter rebinning: 200 pixels (40 A) for UVB/VIS, 800 pixels (480 A) for NIR; slit widths: 1.0, 0.9, 1.2 arcsec for UVB, VIS, NIR."
+   ],
+   "assumptions": [
+    "Companion galaxy spatial profile width is the quadratic sum of the unresolved quasar seeing and the 0.9'' width derived from Galfit, located 0.55'' from the quasar."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Spectrophotometric SED modelling of the companion and quasar host galaxies",
+   "method": "Fitted Subaru HSC photometry, ALMA mm-continuum constraints, and X-shooter SEDs for both companion and host galaxies using the bagpipes code.",
+   "software": [
+    "bagpipes"
+   ],
+   "key_parameters": [
+    "Stellar birth cloud lifetime = 10 Myr; velocity dispersion = 500 km s^-1; free U_min and gamma for dust emission."
+   ],
+   "assumptions": [
+    "Double power law star formation history (SFH) model and standard Calzetti dust extinction law; standard LambdaCDM cosmology (H0 = 70 km s^-1 Mpc^-1, Omega_Lambda = 0.7, Omega_m = 0.3)."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate molecular gas, dust, and SMBH masses",
+   "method": "Converted CO(7-6) and CO(3-2) line luminosities L'_CO into M_H2; estimated dust masses from ALMA Band 6 continuum assuming a gray body spectrum; estimated SMBH mass from C IV and H-beta emission line FWHMs and reddening-corrected continuum luminosities at 1350 A and 5100 A.",
+   "software": [],
+   "key_parameters": [
+    "r_31 = 0.8, r_71 = 0.2, alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1; dust beta = 0.7, T_dust = 20 to 60 K."
+   ],
+   "assumptions": [
+    "CO excitation ratios r_31 = 0.8, r_71 = 0.2; CO-to-H2 conversion factor alpha = 0.8 M_sun (K km s^-1 pc^2)^-1; gray body dust spectrum with beta = 0.7 and T = 20-60 K; standard single-epoch virial SMBH scaling relations."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyse differential dust extinction and fit multi-component Voigt profiles to HI, H2, metal, CI, and CO absorption lines",
+   "method": "Compared quasar spectrum to X-shooter composite reddened with an SMC-like extinction curve (quasar pair method); fitted multi-component Voigt profiles to HI, H2 (2 components), low-ionization metals (18 components), CI fine-structure levels (6 components), and CO A-X bands (2 components) using the spectro package with a partial coverage factor C_f.",
+   "software": [
+    "spectro"
+   ],
+   "key_parameters": [
+    "11th order Chebyshev polynomial adjustment for HI continuum; 2 components for H2; 18 components for metals (Gaussian prior on b: mean 6 km/s, sigma 2 km/s); 6 components for CI (T_CMB = 10 K at z = 2.662); 2 components for CO (b = 3 +/- 1 km/s, log T [K] = 2 +/- 0.3)."
+   ],
+   "assumptions": [
+    "SMC-like extinction curve; single partial coverage factor C_f across components and wavelengths; tied Doppler b for J=0,1 H2 levels; turbulence-dominated broadening for low-ionization metals; one-zone radiative + collisional excitation + CMB (10 K) for CI fine-structure levels; Boltzmann rotational distribution for CO."
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model physical conditions (number density and distance to the quasar) of the absorbing molecular gas",
+   "method": "Modelled H2 ro-vibrational level column densities and CO column density using a 2D grid of constant-density PDR models computed with the Meudon PDR code (v1.5.4) in the number density-distance (n-d) plane, and cross-checked with CI fine-structure excitation and analytical HI/H2 transition theory.",
+   "software": [
+    "Meudon PDR"
+   ],
+   "key_parameters": [
+    "Metallicity = 0.1 Solar; cosmic ray ionization rate = 10^-16 s^-1 per H2; LMC extinction curve with R_V = 2.6; MRN dust size distribution; dust-to-gas mass ratio = 0.01; turbulent velocity = 2 km s^-1."
+   ],
+   "assumptions": [
+    "Constant-density slab illuminated on one side by scaled Mathis UV field mimicking the quasar radiation at distance d."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Companion galaxy redshift",
+   "value": "2.663",
+   "uncertainty": "± 0.001",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "redshift 2.663 ± 0.001 2.656 ± 0.001"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar host galaxy redshift",
+   "value": "2.656",
+   "uncertainty": "± 0.001",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "redshift 2.663 ± 0.001 2.656 ± 0.001"
+    }
+   ]
+  },
+  {
+   "quantity": "Approaching velocity between galaxies",
+   "value": "550",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "approaching velocity ∼ 550 km s−1"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected distance between galaxies",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "projected distance ∼ 5 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated line flux (companion)",
+   "value": "0.271",
+   "uncertainty": "± 0.034",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 1",
+     "quote": "3 25 CO(3-2) 345.7960 0.210′′ × 0.166′′, −51.5◦ 12.4 0.29 0.271 ± 0.034 < 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) integrated line flux (companion)",
+   "value": "0.383",
+   "uncertainty": "± 0.044",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 1",
+     "quote": "6 27 CO(7-6) 806.6518 0.121′′ × 0.101′′, +72.4◦ 10.6 0.37 0.383 ± 0.044 0.207 ± 0.039"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) integrated line flux (quasar host)",
+   "value": "0.207",
+   "uncertainty": "± 0.039",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 1",
+     "quote": "6 27 CO(7-6) 806.6518 0.121′′ × 0.101′′, +72.4◦ 10.6 0.37 0.383 ± 0.044 0.207 ± 0.039"
+    }
+   ]
+  },
+  {
+   "quantity": "CI(2-1) integrated line flux (companion)",
+   "value": "0.170",
+   "uncertainty": "± 0.036",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 1",
+     "quote": "” ” C i(2-1) 809.3420 ” ” ” 0.170 ± 0.036 < 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted Band 6 (226 GHz) continuum flux density (companion)",
+   "value": "330",
+   "uncertainty": "± 30",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre line and continuum emission",
+     "quote": "Based on measurements in SPWs 21, 23 and 25 of band 6, we adopt continuum flux densities at ≈ 226 GHz to be 330±30 𝜇Jy and < 180 uJy for companion and host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted Band 6 (226 GHz) continuum flux density (quasar host)",
+   "value": "< 180",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre line and continuum emission",
+     "quote": "Based on measurements in SPWs 21, 23 and 25 of band 6, we adopt continuum flux densities at ≈ 226 GHz to be 330±30 𝜇Jy and < 180 uJy for companion and host galaxies, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 (101.9 GHz) continuum flux density upper limit (both galaxies)",
+   "value": "< 25",
+   "uncertainty": "3 sigma",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre line and continuum emission",
+     "quote": "We adopt a 3𝜎 upper limit of 25 𝜇Jy for the quasar and the companion galaxy."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion galaxy stellar mass (log M_* / M_sun)",
+   "value": "10.84",
+   "uncertainty": "+0.12 / -0.12",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀∗ /𝑀⊙ 10.84+0.12−0.12 10.7+0.3−0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar host galaxy stellar mass (log M_* / M_sun)",
+   "value": "10.7",
+   "uncertainty": "+0.3 / -0.3",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀∗ /𝑀⊙ 10.84+0.12−0.12 10.7+0.3−0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion galaxy molecular gas mass (log M_H2 / M_sun)",
+   "value": "10.00",
+   "uncertainty": "+0.05 / -0.05",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀H2 /𝑀⊙ 10.00+0.05−0.05 9.74+0.07−0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar host galaxy molecular gas mass (log M_H2 / M_sun)",
+   "value": "9.74",
+   "uncertainty": "+0.07 / -0.09",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀H2 /𝑀⊙ 10.00+0.05−0.05 9.74+0.07−0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion galaxy dust mass (log M_dust / M_sun)",
+   "value": "8.2",
+   "uncertainty": "+0.5 / -0.3",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀dust /𝑀⊙ 8.2+0.5−0.3 < 8.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar host galaxy dust mass (log M_dust / M_sun)",
+   "value": "< 8.5",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀dust /𝑀⊙ 8.2+0.5−0.3 < 8.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion galaxy star formation rate (SFR)",
+   "value": "250",
+   "uncertainty": "+60 / -50",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFR [𝑀⊙ yr−1] 250+60−50 ≳ 24+17−11"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar host galaxy star formation rate (SFR)",
+   "value": "24",
+   "uncertainty": "+17 / -11",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 2",
+     "quote": "SFR [M⊙ yr−1] current star-formation rate 250+60−50 24+17−11"
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar SMBH mass (log M_SMBH / M_sun)",
+   "value": "8.3",
+   "uncertainty": "± 0.4",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "log 𝑀SMBH /𝑀⊙ – 8.3 ± 0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "HI column density towards quasar (log N(HI))",
+   "value": "21.911",
+   "uncertainty": "+0.016 / -0.014",
+   "units": "cm^-2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Neutral hydrogen",
+     "quote": "We obtained log 𝑁(HI) = 21.911+0.016−0.014 at 𝑧 = 2.66347+0.00024−0.00027 and a zero-level flux level 7.8+0.5−0.2 ×10^19 erg cm−2 s−1 Å−1,"
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 column density towards quasar (log N(H2))",
+   "value": "21.19",
+   "uncertainty": "+0.02 / -0.01",
+   "units": "cm^-2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular hydrogen",
+     "quote": "We found the the total column density is log 𝑁(H2) = 21.19+0.02−0.01."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 kinetic temperature T_01 (component A)",
+   "value": "320",
+   "uncertainty": "+40 / -20",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular hydrogen",
+     "quote": "The levels 𝐽 = 0 and 1 provide estimates of the kinetic temperatures 𝑇𝑘 ≈ 𝑇01 = 320+40−20 K and 300+20−20 K for components 𝐴 and 𝐵, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 kinetic temperature T_01 (component B)",
+   "value": "300",
+   "uncertainty": "+20 / -20",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular hydrogen",
+     "quote": "The levels 𝐽 = 0 and 1 provide estimates of the kinetic temperatures 𝑇𝑘 ≈ 𝑇01 = 320+40−20 K and 300+20−20 K for components 𝐴 and 𝐵, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Absorbing gas metallicity (log Z / Z_sun)",
+   "value": "-0.92",
+   "uncertainty": "± 0.03",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Metal lines",
+     "quote": "We obtain the average metallicity from the ratio of the total column density of the volatile element zinc to that of the total hydrogen column density 𝑁tot(H) = N(H i) + 2N(H2), giving log 𝑍/𝑍⊙ = −0.92 ± 0.03 (respective to Solar [76])."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloudlet number density (n_H)",
+   "value": "10^5 - 10^6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In addition, the presence and the excitation of H2 constrains the gas density to be 𝑛H ∼ 10^5 − 10^6 cm−3."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloudlet size (L)",
+   "value": "< 0.02",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The high density and measured column density imply that the molecular clouds are very compact, with sizes, 𝐿 ≈ 𝑁/𝑛H (assuming constant density) of less than 0.02 pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used for data reduction and imaging",
+  "Observation dates, array configurations, baseline ranges, and on-source integration times (referenced as being in Supplementary Table 1, which is outside the main paper text)",
+  "Spatial and spectral kernel sizes used in SOFIA v2.0 smooth+clip algorithm",
+  "Exact dust mass opacity coefficient (kappa_nu) reference frequency and value used to compute dust masses from Band 6 continuum"
+ ],
+ "missing_for_reproduction": [
+  "Supplementary Tables 1-5 (which contain the detailed ALMA observation log and component-by-component Voigt profile fit parameters for H2, metals, and CI) are referenced in the text but located in external Supplementary Information",
+  "Exact spatial and spectral kernel sizes used in the SOFIA v2.0 smooth+clip search",
+  "B-spline knot positions and visually selected unblended spectral windows used for continuum reconstruction and Voigt profile fitting in spectro",
+  "Exact dust opacity normalization (kappa_0) used for the graybody dust mass calculation"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "All raw datasets (ALMA, VLT/X-shooter, Subaru HSC) and key analysis codes (SOFIA, bagpipes, Galfit, spectro, Meudon PDR, emcee) are publicly available and clearly identified, with priors and physical assumptions well documented; minor deductions for manual B-spline continuum placement and reliance on external Supplementary Tables for component-level parameters.",
+ "rediscovery_reason": "All ALMA, VLT, and Subaru data are public, standard ALMA pipeline products (robust = 0.5) were used, and the primary scientific results are quantitative measurements (line fluxes, redshifts, velocity offsets, column densities, galaxy masses, and PDR gas densities/distances).",
+ "source_card": "cards/2025Natur.641.1137B/sonnet/card.md"
+}

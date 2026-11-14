@@ -1,0 +1,440 @@
+{
+ "bibcode": "2021ApJ...909...12G",
+ "title": "Systematic Difference between Ionized and Molecular Gas Velocity Dispersions in z ∼ 1-2 Disks and Local Analogs",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abd5b9",
+ "arxiv_id": "2101.04122",
+ "fields": [
+  "nearby_galaxies",
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Compare the molecular and ionized gas velocity dispersion in 9 nearby turbulent disk galaxies (analogues to z ~ 1-2 galaxies) and 12 galaxies at z ~ 0.5-2.5, and evaluate the impact on Toomre Q, disk pressure, and star formation/feedback models.",
+ "alma_project_codes": [
+  "2017.1.00239.S",
+  "2019.1.00447.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.8\" x 0.9\" (1.8 x 2.0 kpc) for CO(3-2), 0.6\" x 0.75\" (1.3 x 1.7 kpc) for CO(4-3), ~0.37\" x 0.31\" for deep CO(3-2)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total gas mass and gas fraction of DYNAMO galaxies",
+    "evidence": [
+     {
+      "loc": "2.3.1. Gas mass",
+      "quote": "The total gas mass and gas fraction of each galaxy were derived in Fisher et al. (2014), White et al. (2017), and Fisher et al. (2017a, 2019) using CO(1-0) observations from Plateau de Bure."
+     }
+    ]
+   },
+   "citation": "Fisher et al. (2014), White et al. (2017), Fisher et al. (2017a, 2019)"
+  },
+  {
+   "what": {
+    "value": "Star formation rates of DYNAMO galaxies",
+    "evidence": [
+     {
+      "loc": "2.3.2. Star formation rate",
+      "quote": "The star formation rates have also been derived in previous DYNAMO papers using the H α flux corrected for attenuation (Green et al. 2017; Fisher et al. 2019), where SFR [M ⊙ yr − 1 ] = 5 . 53 × 10 − 42 L Hα [erg s − 1 ] (Hao et al. 2011)."
+     }
+    ]
+   },
+   "citation": "Green et al. (2017); Fisher et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Ionized gas kinematic properties for C13-1 and D15-3",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The ionized gas kinematic properties for these targets were taken from Bekiaris et al. (2016) which used a very similar kinematic modeling method."
+     }
+    ]
+   },
+   "citation": "Bekiaris et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Properties of 12 galaxies at z ~ 0.5-2.5 (SMM J2315-0102, HLS115, Cosmic Snake, A521, SHiZELS-19, and 7 PHIBSS galaxies)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We combine our sample with 12 galaxies at z ∼ 0.5-2.5 from the literature."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "The properties of the PHIBSS galaxies have been taken from Genzel et al. (2010),Tacconi et al. (2010, 2013), Freundlich et al. (2013), Genzel et al. (2015), Tacconi et al. (2018), Ubler et al. ¨ (2018, 2019), and Freundlich et al. (2019)."
+     }
+    ]
+   },
+   "citation": "Swinbank et al. (2011), Girard et al. (2018a), Patrício et al. (2018), Girard et al. (2019), Molina et al. (2019), Genzel et al. (2010, 2015), Tacconi et al. (2010, 2013, 2018), Freundlich et al. (2013, 2019), Übler et al. (2018, 2019)"
+  },
+  {
+   "what": {
+    "value": "Local and nearby galaxy comparison samples (THINGS-HERACLES, GHASP, and z ~ 0.2 galaxies)",
+    "evidence": [
+     {
+      "loc": "Figure 2 caption",
+      "quote": "We show local galaxies from the THINGS-HERACLES survey (Leroy et al. 2008, 2009; Mogotsi et al. 2016), GHASP (Dunne et al. 2000; Leroy et al. 2005; Epinat et al. 2010; Torres-Flores et al. 2011) and nearby galaxies at z ∼ 0 . 2 from Cortese et al. (2017)."
+     }
+    ]
+   },
+   "citation": "Leroy et al. (2008, 2009); Mogotsi et al. (2016); Dunne et al. (2000); Leroy et al. (2005); Epinat et al. (2010); Torres-Flores et al. (2011); Cortese et al. (2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract 2D kinematic moment maps for molecular and ionized gas",
+   "method": "Compute moment 1 and 2 maps from CO(3-2) and CO(4-3) cubes using immoments in CASA with a 3σ threshold; perform spaxel-by-spaxel Gaussian fits on Hα or Hβ and subtract instrumental broadening in quadrature.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3σ threshold parameter above noise level for immoments; σ_instr = 24 km s^-1 for GMOS"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model 3D galaxy kinematics and extract intrinsic velocity dispersion and rotation velocity",
+   "method": "Fit 3D disk models directly to CO(3-2), CO(4-3), and Hβ/Hα datacubes using GalPaK3D convolved with the PSF and LSF, and subtract unresolved velocity shear in quadrature from observed dispersion maps to obtain radial profiles.",
+   "software": [
+    "GalPaK3D"
+   ],
+   "key_parameters": [
+    "arctan velocity profile; exponential radial flux profile; constant velocity dispersion over disk; radial bins of 300 pc"
+   ],
+   "assumptions": [
+    "Disk inclinations fixed from SDSS r-band photometry; constant intrinsic velocity dispersion across the disk"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compare ionized and molecular gas velocity dispersions and correlate with gas fraction, redshift, and SFR",
+   "method": "Subtract thermal broadening and HII expansion (σ_th = 15 km s^-1) in quadrature from σ_0,ion, compute the ratio and log-linear fits against f_gas, and compute Spearman rank correlations with f_gas and SFR.",
+   "software": [],
+   "key_parameters": [
+    "σ_th = 15 km s^-1; fixed slope a = 0.87 for log(σ_0) vs f_gas"
+   ],
+   "assumptions": [
+    "Galactic CO-to-H2 conversion factor α_CO = 4.36 (including 1.36 for helium); Kroupa (2001) IMF; Λ-CDM cosmology with H_0 = 67 km s^-1 Mpc^-1, Ω_M = 0.31, Ω_Λ = 0.69"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test for a broad molecular gas velocity dispersion component via spectral stacking",
+   "method": "Shift spaxel spectra in outer galaxy regions to a common velocity using moment 1 maps, stack deep and shallow CO(3-2) and Hβ spectra for G04-1, G08-5, and G14-1, and fit Gaussian profiles.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive half-light radii, Toomre Q, and disk hydrostatic and dynamical equilibrium pressures",
+   "method": "Fit exponential profiles to Hα, CO, and HST F125W maps to obtain R_1/2; compute Toomre Q = σ_0 κ / (π G Σ_g), midplane hydrostatic pressure P_H, and dynamical equilibrium pressure P_DE under three tracer/α_CO assumptions, and fit the log(Σ_SFR)-log(P_H) relation.",
+   "software": [],
+   "key_parameters": [
+    "Iterative variable α_CO(Σ_CO) convergence threshold of 0.1 using Eq. 31 of Bolatto et al. (2013)"
+   ],
+   "assumptions": [
+    "Solar metallicity for variable α_CO; HI surface density Σ_HI = 5 M_sun pc^-2; stellar velocity dispersion σ_* ≈ 0.5 sqrt(π G l_* Σ_*) with l_* = R_1/2,* / 1.76; stellar scale height h_z = 100 pc (local) and 630 pc (DYNAMO and high-z)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean ratio of thermal-corrected ionized to molecular gas velocity dispersion (zero-offset factor)",
+   "value": "2.45",
+   "uncertainty": "±0.38",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find that the resolved velocity dispersion is systematically lower by a factor 2 . 45 ± 0 . 38 for the molecular gas compared to the ionized gas, after correcting for thermal broadening."
+    },
+    {
+     "loc": "3.1. Difference between σ 0 ,ion and σ 0 ,mol and correlation with gas fraction",
+     "quote": "We find a zero offset between the molecular and ionized gas velocity dispersion of 0 . 39 ± 0 . 06 dex, which is equivalent to a factor 2 . 45 ± 0 . 38."
+    }
+   ]
+  },
+  {
+   "quantity": "Zero-offset between log(σ_0,ion-th) and log(σ_0,mol)",
+   "value": "0.39",
+   "uncertainty": "±0.06",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Difference between σ 0 ,ion and σ 0 ,mol and correlation with gas fraction",
+     "quote": "We find a zero offset between the molecular and ionized gas velocity dispersion of 0 . 39 ± 0 . 06 dex, which is equivalent to a factor 2 . 45 ± 0 . 38."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ratio σ_0,ion-th / σ_0,mol across combined sample",
+   "value": "2.44",
+   "uncertainty": "±1.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Difference between σ 0 ,ion and σ 0 ,mol and correlation with gas fraction",
+     "quote": "We also find a mean value of σ 0 ,ion - th /σ 0 ,mol = 2 . 44 ± 1 . 01 when combining all the galaxies of this sample for which both ionised and molecular gas velocity dispersion are available."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept b of log(σ_0,mol) = 0.87 * f_gas + b",
+   "value": "0.90",
+   "uncertainty": "±0.03",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. SUMMARY",
+     "quote": "We find a strong correlation between σ 0 and f gas and obtain a fit of log( σ 0 ,mol / km s − 1 ) = 0 . 87 ×f gas +(0 . 90 ± 0 . 03) and log( σ 0 ,ion - th / km s − 1 ) = 0 . 87 × f gas + (1 . 29 ± 0 . 03), with a zero-offset of 0 . 39 ± 0 . 06 dex between the ionized and molecular gas."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept b of log(σ_0,ion-th) = 0.87 * f_gas + b",
+   "value": "1.29",
+   "uncertainty": "±0.03",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. SUMMARY",
+     "quote": "We find a strong correlation between σ 0 and f gas and obtain a fit of log( σ 0 ,mol / km s − 1 ) = 0 . 87 ×f gas +(0 . 90 ± 0 . 03) and log( σ 0 ,ion - th / km s − 1 ) = 0 . 87 × f gas + (1 . 29 ± 0 . 03), with a zero-offset of 0 . 39 ± 0 . 06 dex between the ionized and molecular gas."
+    }
+   ]
+  },
+  {
+   "quantity": "C13-1 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "234 (v_rot,mol), 8 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±2 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C13-1 0.07876 3.58 5 . 1 ± 0 . 5 0 . 06 ± 0 . 02 223 234 26 ± 4 8 ± 2 This work"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "Uncertainty on the rotation velocity of the ionized gas, υ rot,ion , and molecular gas, υ rot,mol , of the DYNAMO galaxies is ∼ 15 km s − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "C22-2 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "208 (v_rot,mol), 9.5 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±3 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C22-2 0.07116 2.19 3 . 2 ± 0 . 2 0 . 18 ± 0 . 03 191 208 35.5 ± 5 9.5 ± 3 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "D13-5 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "190 (v_rot,mol), 12 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±3 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "D13-5 0.07535 5.38 17 . 5 ± 0 . 5 0 . 36 ± 0 . 02 175 190 39.5 ± 5 12 ± 3 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "D15-3 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "230 (v_rot,mol), 8 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±2 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "D15-3 0.06712 5.42 8 . 3 ± 0 . 4 0 . 17 ± 0 . 04 244 230 25 ± 5 8 ± 2 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "G04-1 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "248 (v_rot,mol), 13 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±3 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G04-1 0.12981 6.47 21 . 3 ± 1 0 . 33 ± 0 . 04 274 248 30 ± 5 13 ± 3 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "G08-5 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "227 (v_rot,mol), 15 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±4 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G08-5 0.13217 1.73 10 . 0 ± 1 0 . 30 ± 0 . 05 214 227 36 ± 7 15 ± 4 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "G14-1 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "160 (v_rot,mol), 27 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±5 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G14-1 0.13233 2.23 6 . 9 ± 0 . 5 0 . 77 ± 0 . 08 149 160 71 ± 9 27 ± 5 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "G20-2 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "160 (v_rot,mol), 9 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±4 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G20-2 0.14113 2.16 18 . 2 ± 0 . 4 0 . 21 ± 0 . 05 151 160 36 ± 5 9 ± 4 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "SDSS 013527-1039 molecular rotation velocity (v_rot,mol) and velocity dispersion (σ_0,mol)",
+   "value": "206 (v_rot,mol), 12.5 (σ_0,mol)",
+   "uncertainty": "±15 (v_rot,mol), ±4 (σ_0,mol)",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SDSS 013527-1039 0.127 7.08 25 . 3 ± 2 . 5 0 . 33 ± 0 . 04 172 206 49 ± 7 12.5 ± 4 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre Q for DYNAMO sample (ionized gas, α_CO = 4.36)",
+   "value": "0.94",
+   "uncertainty": "±0.48",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3. Impact on Toomre Q",
+     "quote": "We obtain a mean Toomre Q of 0 . 94 ± 0 . 48, 0 . 38 ± 0 . 21, and 0 . 48 ± 0 . 24 for methods (1), (2) and (3), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre Q for DYNAMO sample (molecular gas, α_CO = 4.36)",
+   "value": "0.38",
+   "uncertainty": "±0.21",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3. Impact on Toomre Q",
+     "quote": "We obtain a mean Toomre Q of 0 . 94 ± 0 . 48, 0 . 38 ± 0 . 21, and 0 . 48 ± 0 . 24 for methods (1), (2) and (3), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre Q for DYNAMO sample (molecular gas, variable α_CO)",
+   "value": "0.48",
+   "uncertainty": "±0.24",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3. Impact on Toomre Q",
+     "quote": "We obtain a mean Toomre Q of 0 . 94 ± 0 . 48, 0 . 38 ± 0 . 21, and 0 . 48 ± 0 . 24 for methods (1), (2) and (3), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean offset in midplane hydrostatic pressure between ionized and molecular gas tracers",
+   "value": "0.22",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We obtain pressures ∼ 0 . 22 dex lower on average when using the molecular gas velocity dispersion, σ 0 ,mol ."
+    },
+    {
+     "loc": "4.2. Correlation of Σ SF R with pressure",
+     "quote": "We find median and mean differences between the values measured from the ionized and molecular gas of the DYNAMO galaxies of 0.24 dex and 0.22 dex, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(Σ_SFR) vs log(P_H) relation using σ_0,mol and fixed α_CO = 4.36",
+   "value": "0.70",
+   "uncertainty": "±0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Correlation of Σ SF R with pressure",
+     "quote": "We fit a linear relation using the molecular dispersion measurements and obtain a slope of 0 . 70 ± 0 . 07."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(Σ_SFR) vs log(P_H) relation using σ_0,mol and variable α_CO(Σ_CO)",
+   "value": "0.83",
+   "uncertainty": "±0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Correlation of Σ SF R with pressure",
+     "quote": "We fit again a linear relation using the whole sample and obtain a slope of 0 . 83 ± 0 . 08, consistent with the results previously obtained by Fisher et al. (2019) of 0 . 76 ± 0 . 06 with a similar sample."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and imaging",
+  "Imaging parameters for tclean/clean (weighting/robust parameter, cell size, image size, masking, stopping threshold, continuum subtraction method)",
+  "Exact rms noise levels in the final ALMA CO(3-2) and CO(4-3) cubes",
+  "Individual disk inclination values fixed from SDSS r-band photometry for each galaxy",
+  "Exact radial definition of the 'outer regions' used for spectral stacking in G04-1, G08-5, and G14-1"
+ ],
+ "missing_for_reproduction": [
+  "ALMA imaging parameters (tclean weighting, cell size, channel averaging, masking, continuum subtraction) or confirmation that archive pipeline-delivered cubes were used directly without re-imaging",
+  "Exact disk inclination angles adopted from SDSS r-band photometry for each of the 9 DYNAMO galaxies",
+  "Exact radial aperture definitions for the outer-disk spectral stacking in Figure 3",
+  "Calibrated GMOS/Gemini and SPIRAL/AAT IFU datacubes and HST F125W images"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "The ALMA project codes, analysis software (CASA immoments, GalPaK3D), parametric disk model forms, and derived per-galaxy kinematic and pressure tables are clearly reported, but imaging parameters and fixed inclination values per target are omitted.",
+ "rediscovery_reason": "Both ALMA datasets (2017.1.00239.S and 2019.1.00447.S) are public in the ALMA archive, standard pipeline reduction was used, GalPaK3D is publicly available, and per-galaxy molecular rotation velocities, velocity dispersions, half-light radii, and pressures are tabulated as clear numeric benchmarks.",
+ "source_card": "cards/2021ApJ...909...12G/sonnet/card.md"
+}

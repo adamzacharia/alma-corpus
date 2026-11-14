@@ -1,0 +1,328 @@
+{
+ "bibcode": "2017ApJ...849...25L",
+ "title": "ALMA Reveals Sequential High-mass Star Formation in the G9.62+0.19 Complex",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa8d73",
+ "arxiv_id": "1705.04907",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Does stellar feedback from evolved Hii regions trigger or shape sequential high-mass star formation in the adjacent G9.62 clump, based on its cores, outflows and fragmentation?",
+ "alma_project_codes": [
+  "2013.1.00957.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz)",
+  "arrays": "12-m (compact, 39 antennas; extended, 34 antennas) and 7-m (10 antennas)",
+  "angular_resolution": "not stated",
+  "sensitivity": "continuum 1 sigma 0.8 mJy; lines ~10 mJy/beam per 0.16 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel band flux densities of the clump",
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "The flux densities of the G9.62 clump at Herschel bands were determined by (cite: moli16)."
+     }
+    ]
+   },
+   "citation": "Molinari et al. 2016 (cite: moli16)"
+  },
+  {
+   "what": {
+    "value": "SEST/SIMBA 1.2 mm flux density",
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "The flux density at SEST/SIMBA 1.2 mm was determined by (cite: fau04) from 2-D Gaussian fit."
+     }
+    ]
+   },
+   "citation": "Faundez et al. 2004 (cite: fau04)"
+  },
+  {
+   "what": {
+    "value": "SiO abundances 1.4e-10 (30 K) and 2.1e-10 (40 K)",
+    "evidence": [
+     {
+      "loc": "3.3 Molecular outflows",
+      "quote": "(cite: gern14) found that the median SiO abundances in HMPOs and hot cores are 1.4$\\times10^{-10}$ (for T=30 K) and 2.1$\\times10^{-10}$ (for T=40 K)"
+     }
+    ]
+   },
+   "citation": "Gerner et al. 2014 (cite: gern14)"
+  },
+  {
+   "what": {
+    "value": "Ionized gas density 1.6e3 cm-3 and Te 10000 K for source B",
+    "evidence": [
+     {
+      "loc": "4.2 Fragmentation analysis",
+      "quote": "We adopt the electron density n$_{e}$ of 1.6$\\times10^{3}$ cm$^{-3}$ and an electron temperature T$_{e}$ of 10000 K (cite: gar93)."
+     }
+    ]
+   },
+   "citation": "Garay et al. 1993 (cite: gar93)"
+  },
+  {
+   "what": {
+    "value": "CO optical-depth correction factors 9, 5, 2 for mass, momentum, energy",
+    "evidence": [
+     {
+      "loc": "3.3 Molecular outflows",
+      "quote": "were underestimated by factors of about 9, 5, and 2, respectively, if assuming optically thin emission (cite: Zhang16)"
+     }
+    ]
+   },
+   "citation": "Zhang et al. 2016 (cite: Zhang16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum cores",
+   "method": "Identify cores above 5 sigma in 1.3 mm map; 2-D Gaussian fits (Gaussian plus point source for MM4, MM6, MM8, MM11)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Clump SED and core masses",
+   "method": "Single-temperature modified blackbody SED fit of clump; core masses from dust emission at assumed Td",
+   "software": [
+    "IDL"
+   ],
+   "key_parameters": [
+    "Td=35 K, beta=1.5 from SED; 100 K for MM4/7/8/11; 20 K for starless candidates"
+   ],
+   "assumptions": [
+    "gas-to-dust 100, kappa0=0.01 cm2/g at 230 GHz (Ossenkopf & Henning 1994), mu=2.37"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Virial analysis with C18O",
+   "method": "Two-Gaussian fit to JCMT C18O(3-2) spectrum; virial mass M=210 R dV^2",
+   "software": [],
+   "key_parameters": [
+    "R~0.25 pc per sub-clump"
+   ],
+   "assumptions": [
+    "Tex=35 K, optically thin"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Outflow mass, momentum, energy and accretion rates",
+   "method": "Per-channel optically thin masses from SiO and CO; inclination corrections; accretion rate from outflow force",
+   "software": [],
+   "key_parameters": [
+    "Inclination 70 deg (MM6), 0 deg (MM7/G), 45 deg (MM8/F)"
+   ],
+   "assumptions": [
+    "Vw~500 km/s, Mw/Macc~0.1, fent=0.25; SiO abundance enhanced x10 (MM7/MM8) and x40 (MM6); CO opacity correction from HH 46/47"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fragmentation analysis",
+   "method": "Compare observed core mass and spacing with thermal/turbulent Jeans and cylindrical fragmentation predictions; compare molecular and ionized gas pressure",
+   "software": [],
+   "key_parameters": [
+    "T=35 K, n=9.1e4 cm-3; turbulent case Teff~670 K"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Mass-velocity diagrams",
+   "method": "Per-channel outflow mass vs velocity fit with linear or broken power laws, slopes and break velocities tabulated",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA continuum rms",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA Observations",
+     "quote": "The continuum image reaches a 1$\\sigma$ rms noise of 0.8 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of dense cores",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 ALMA 1.3 mm continuum",
+     "quote": "We identified 12 dense cores above 5 $\\sigma$ signal level"
+    }
+   ]
+  },
+  {
+   "quantity": "Core masses (Td=35 K)",
+   "value": "4 to 87, median ~20",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 ALMA 1.3 mm continuum",
+     "quote": "The core masses range from 4 to 87 M$_{\\ensuremath{\\odot}}$ with a median value of $\\sim$20 M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Clump mass from SED",
+   "value": "2800",
+   "uncertainty": "200",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Appendix A",
+     "quote": "a total dust and gas mass of 2800$\\pm$200 M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump dust temperature and beta",
+   "value": "35 K; 1.5",
+   "uncertainty": "1 K; 0.1",
+   "units": "K; dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Appendix A",
+     "quote": "a dust temperature of $35\\pm1$ K and a dust opacity index ($\\beta$) of 1.5$\\pm$0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump luminosity",
+   "value": "1.7e6",
+   "uncertainty": "0.1e6",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Appendix A",
+     "quote": "a total luminosity of $(1.7\\pm0.1)\\times10^{6}$ L$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total virial mass of clump",
+   "value": "1200",
+   "uncertainty": "180",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.1 JCMT C18O (3-2) line and virial analysis",
+     "quote": "The total virial mass of the G9.62 clump is $\\sim1200\\pm180$ M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rates MM6, MM7/G, MM8/F",
+   "value": "3.9e-4, 5.7e-5, 2.2e-3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular outflows",
+     "quote": "The total mass accretion rates for MM6, MM7/G, MM8/F are about 3.9$\\times10^{-4}$, 5.7$\\times10^{-5}$ and 2.2$\\times10^{-3}$ M$_{\\ensuremath{\\odot}}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "MM6 outflow dynamical timescale",
+   "value": "8.5e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Molecular outflows",
+     "quote": "we can derive a dynamic timescale of $t_{dyn}=\\frac{L}{V_{char}}=8.5\\times10^{3}$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion time of clump",
+   "value": "11",
+   "uncertainty": "1",
+   "units": "Myr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.4 Comparison with other high-mass star forming clumps",
+     "quote": "The gas depletion time ($\\tau_{dep}$) is $\\tau_{dep}=\\frac{M_{clump}}{\\dot{M_{*}}}=11\\pm1$ Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas pressure P/k",
+   "value": "6.1e7",
+   "uncertainty": "0.5e7",
+   "units": "K cm-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Fragmentation analysis",
+     "quote": "$(6.1\\times0.5)\\times$10$^{7}$ K cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal Jeans core mass and spacing",
+   "value": "6.0 Msun; 0.13 pc",
+   "uncertainty": "0.1; 0.01",
+   "units": "Msun; pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "1-2 6.0$\\pm$0.1 | 0.13$\\pm$0.01"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and tclean/clean parameters (weighting, robust, cell, image size, deconvolver, masks)",
+  "Line-free channels used for continuum and continuum subtraction method",
+  "Self-calibration solution intervals",
+  "Velocity ranges integrated for outflow lobes and noise clipping",
+  "Dust-mass equations A1-A2 for cores and how flux used",
+  "Fitting method for mass-velocity broken power laws",
+  "Primary beam correction details"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (weighting, cell, masks)",
+  "CASA version",
+  "Equations A1-A2 core-mass derivation details and line-free channels",
+  "Integration velocity ranges for outflow lobes",
+  "TEXES data not public"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "ALMA data public and many analysis numbers given, but imaging/CASA parameters and outflow integration ranges are missing.",
+ "rediscovery_reason": "Public ALMA data; core catalog and outflow parameters are numeric and checkable, though imaging details are missing.",
+ "source_card": "cards/2017ApJ...849...25L/sonnet/card.md"
+}

@@ -1,0 +1,814 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...822..115K",
+  "title": "Detection of HF Toward PKS 1830-211, Search for Interstellar H<SUB>2</SUB>F<SUP>+</SUP>, and Laboratory Study of H<SUB>2</SUB>F<SUP>+</SUP> and H<SUB>2</SUB>Cl<SUP>+</SUP> Dissociative Recombination",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Kawaguchi, K.",
+  "n_authors": 10,
+  "arxiv_id": null,
+  "doi": "10.3847/0004-637X/822/2/115",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.01099.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report extragalactic observations of two fluorine-bearing species, hydrogen fluoride (HF) and fluoronium (H 2 F [+] ), in the z = 0.89 absorber in front of the lensed blazar PKS 1830−211"
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "milky_way_ism",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "PKS 1830-211 (z=0.89 absorber, SW and NE images)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z_abs = 0.88582",
+      "evidence": [
+       {
+        "loc": "2.1. ALMA Observations",
+        "quote": "We adopt a redshift of z abs = 0.88582, heliocentric frame, giving v = 0 km s [−][1] for the absorption toward the SW image of PKS 1830−211."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "adopted in this paper",
+      "evidence": [
+       {
+        "loc": "2.1. ALMA Observations",
+        "quote": "We adopt a redshift of z abs = 0.88582, heliocentric frame, giving v = 0 km s [−][1] for the absorption toward the SW image of PKS 1830−211."
+       }
+      ]
+     }
+    },
+    {
+     "name": "NGC 6334 I",
+     "coordinates": {
+      "value": "RA 17h20m53.32s, Dec -35d46m58.5s (J2000)",
+      "evidence": [
+       {
+        "loc": "2.2. Herschel Observations",
+        "quote": "NGC 6334 I (high-mass star° ′ ° ′ forming region, _a_ 2000 : 17 20 53 32, _b_ 2000 : −35 46 58 5)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can HF and H2F+ be detected in the z=0.89 absorber toward PKS 1830-211 and in Galactic sources, and does the dissociative recombination rate of H2F+ explain its low abundance?",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "we report the detection of HF in the z = 0.89 molecular absorber toward PKS 1830−211 and searches for H 2 F [+] toward PKS 1830−211 and other Galactic sources."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.01099.S",
+     "evidence": [
+      {
+       "loc": "6. SUMMARY",
+       "quote": "This paper makes use of the following ALMA data: ADS/ JAO.ALMA#2013.1.01099.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 8 (403.5 GHz, H2F+) and Band 9 (653.5 GHz, HF)",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Observations",
+      "quote": "redshifted to 403.5 GHz, i.e., in ALMA band 8) and HF J = 1–0 transition (rest frequency of 1232.4762 GHz, redshifted to 653.5 GHz, i.e., in ALMA band 9)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four 1.875 GHz spws, 960 channels of 1.938 MHz; band 8 centered ~401.5, 403.5, 413.8, 415.5 GHz; band 9 ~648.0, 649.9, 651.7, 653.6 GHz",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Observations",
+      "quote": "four different spectral windows of 1.875 GHz, each counting 960 channels separated by 1.938 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H2F+",
+     "transition": "1_10–1_01",
+     "rest_frequency": "760.929 GHz",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "H 2 F [+] 1 10 – 1 01 transition (rest frequency of 760.929 GHz, redshifted to 403.5 GHz"
+      }
+     ]
+    },
+    {
+     "species": "HF",
+     "transition": "J=1–0",
+     "rest_frequency": "1232.4762 GHz",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "HF J = 1–0 transition (rest frequency of 1232.4762 GHz, redshifted to 653.5 GHz"
+      }
+     ]
+    },
+    {
+     "species": "ortho-H2Cl+",
+     "transition": "2_12–1_01",
+     "rest_frequency": "781.6 GHz",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "we also observed the ortho-H 2 Cl [+] 2 12 –1 01 line (rest frequency of 781.6 GHz)."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.39\"x0.29\" (PA -84°) band 8; 0.21\"x0.19\" (PA 64°) band 9",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Observations",
+      "quote": "we obtained synthesized beams of 0 39 × 0 29 (position angle PA = −84°) in band 8 and 0 21 × 0 19 (PA = 64°) in band 9."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 0.5% (1σ, of continuum) in 4.2 km/s channels, band 8",
+    "evidence": [
+     {
+      "loc": "4.1. ALMA Observations of the z = 0.89 Absorber",
+      "quote": "the rms noise level (1σ) is estimated to be 0.5% with 4.2 km s [−][1] channels."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2015 May 14 (band 8) and May 19 (band 9), Cycle 2",
+    "evidence": [
+     {
+      "loc": "2.1. ALMA Observations",
+      "quote": "on 2015 May 14 and May 19, respectively"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel/HIFI",
+     "provided": {
+      "value": "H2F+ searches toward W31C, NGC 6334 I, GC IRS 21, 2Mass J1747",
+      "evidence": [
+       {
+        "loc": "2.2. Herschel Observations",
+        "quote": "We used the dual-beam switch mode and the wideband spectrometer of the Herschel/HIFI spectrograph"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "H2 column densities ~2e22 (SW) and ~1e21 cm-2 (NE)",
+      "evidence": [
+       {
+        "loc": "4.1. ALMA Observations",
+        "quote": "assuming an H 2 column density of ∼2 × 10 [22] cm [−][2] in SW and ∼1 × 10 [21] cm [−][2] in NE (Muller et al. 2014b)"
+       }
+      ]
+     },
+     "citation": "Muller et al. 2014b"
+    },
+    {
+     "what": {
+      "value": "H2Cl+ column density in NGC 6334 I 1.7e13 cm-2",
+      "evidence": [
+       {
+        "loc": "4.2. Herschel Observations",
+        "quote": "the abundance of H 2 Cl [+] has been reported to be 1.7 × 10 [13] cm [−][2] (Lis et al. 2010)"
+       }
+      ]
+     },
+     "citation": "Lis et al. 2010"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, standard procedure; self-calibration with two-point-source model",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "The data calibration was done within the CASA [7] package, following a standard procedure."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "gain solutions from self-calibration of PKS 1830-211 visibilities using two point sources",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "The complex gain solutions were determined by self-calibration of the visibilities of PKS 1830−211, using a simple model of two point sources"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "Using a Clean deconvolution (with Briggs weighting and robust parameter set to 0.5)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Hanning smoothing; HF spectra smoothed to 2.8 km/s, H2F+ to 4.2 km/s",
+     "evidence": [
+      {
+       "loc": "Figure 1 caption",
+       "quote": "Data were smoothed to a velocity resolution of 2.8 km s [−][1]."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [],
+   "unstated_but_needed": [
+    "CASA version",
+    "flux calibrator and flux scale",
+    "phase calibrator",
+    "image size and cell size",
+    "time on source and array configuration",
+    "continuum level/flux of each image",
+    "how absorption spectra were normalized and line velocity ranges for integration",
+    "Herschel reduction details and observation IDs"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "extract spectra of both lensed images",
+    "method": {
+     "value": "fit two point sources to visibilities with UVMULTIFIT",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "The spectra were extracted toward both images using the CASA-python task UVMULTIFIT (Martí-Vidal et al. 2014) to fit a model of two point sources to the visibilities."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "UVMULTIFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "SW spectrum divided by NE to remove bandpass residuals (Fig 1)",
+     "evidence": [
+      {
+       "loc": "Figure 1 caption",
+       "quote": "The normalized spectrum toward the SW image has been divided by that toward the NE image in order to remove small bandpass residuals."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "derive HF and H2F+ column densities",
+    "method": {
+     "value": "optical depth tau = -ln(T_MB/T_back) and column density formula (Eq. 4) assuming all molecules in lowest level",
+     "evidence": [
+      {
+       "loc": "4.1. ALMA Observations",
+       "quote": "Assuming that all HF molecules are in the ground state of J = 0, the column density is obtained by using the following formula:"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "SW linewidth 20 km/s, tau lower limit 4; NE tau 0.21",
+      "evidence": [
+       {
+        "loc": "4.1. ALMA Observations",
+        "quote": "the lower limit of τ is estimated to be 4 from a simulation of the shape of the absorption line. On the other hand, the τ value of NE is obtained to be 0.21."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Lowest ortho level only, ortho-to-para ratio 3, T_CMB 5.14 K at z=0.89",
+      "evidence": [
+       {
+        "loc": "4.1. ALMA Observations",
+        "quote": "We assume that all ortho state molecules are present in the lowest 1 01 state."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "measure recombination rate constants in the laboratory",
+    "method": {
+     "value": "time-resolved IR OPO laser absorption of pulsed discharge; fit decay with exponential (pseudo-first-order); electron density from Langmuir probe",
+     "evidence": [
+      {
+       "loc": "4.3. Laboratory Time-resolved Infrared Laser Spectroscopy",
+       "quote": "the decay was found to be fitted to an exponential function as shown in Figure 4(c). This indicates that the reaction proceeds in the pseudo-firstorder scheme."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "not stated",
+      "evidence": []
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Same electron density assumed for H2Cl+ as for H2F+",
+      "evidence": [
+       {
+        "loc": "4.3. Laboratory Time-resolved Infrared Laser Spectroscopy",
+        "quote": "we assumed the same density for the production of H 2 Cl [+]."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "least-squares fits of decay curves",
+     "evidence": [
+      {
+       "loc": "4.3. Laboratory Time-resolved Infrared Laser Spectroscopy",
+       "quote": "By least-squares fittings of the observed decay curves, we determined the k e [e [−] ] values"
+      }
+     ]
+    },
+    "validation": {
+     "value": "H2F+ rate agrees with earlier flowing afterglow measurement",
+     "evidence": [
+      {
+       "loc": "4.3. Laboratory Time-resolved Infrared Laser Spectroscopy",
+       "quote": "The present value for H 2 F + is in agreement with that obtained by the flowing afterglow experiment"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration and imaging of ALMA data",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "The data calibration was done within the CASA [7] package, following a standard procedure."
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVMULTIFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "two-point-source fit to visibilities to extract spectra",
+     "evidence": [
+      {
+       "loc": "2.1. ALMA Observations",
+       "quote": "The spectra were extracted toward both images using the CASA-python task UVMULTIFIT"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "N(HF) SW",
+    "value": ">3.4e14",
+    "uncertainty": "lower limit",
+    "units": "cm-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "column densities >3.4 × 10 [14] cm [−][2] and 0.18 × 10 [14] cm [−][2], respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "N(HF) NE",
+    "value": "0.18e14",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "column densities >3.4 × 10 [14] cm [−][2] and 0.18 × 10 [14] cm [−][2], respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2F+) upper limit (3σ), total, SW",
+    "value": "8.8e11",
+    "uncertainty": "upper limit",
+    "units": "cm-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "upper limit (3σ) of 8.8 × 10 [11] cm [−][2]"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2F+) upper limit toward NGC 6334 I",
+    "value": "2.5e11",
+    "uncertainty": "upper limit",
+    "units": "cm-2",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The upper limit on the column density was derived to be 2.5 × 10 [11] cm [−][2] in NGC 6334 I"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HF abundance in the absorber is close to Galactic diffuse clouds; H2F+ undetected while ortho-H2Cl+ is detected",
+    "evidence": [
+     {
+      "loc": "4.1. ALMA Observations",
+      "quote": "The currently obtained abundance in the z = 0.89 absorber is thus close to the values of low-density Galactic clouds."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is HF detectable in the z=0.89 absorber and is it a tracer of H2?",
+    "experiment": "ALMA band 9 HF 1-0 absorption toward both images",
+    "result": "HF detected in SW (saturated) and NE",
+    "finding": "HF/H2 similar to Galactic diffuse clouds",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6. SUMMARY",
+      "quote": "The HF molecule was detected in the z = 0.89 absorber in front of PKS 1830–211 with ALMA"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is H2F+ present in these sources?",
+    "experiment": "ALMA band 8 and Herschel HIFI searches",
+    "result": "No detection; upper limits 1/386 of HF and 1/16 of H2Cl+",
+    "finding": "H2F+ much less abundant than H2Cl+",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6. SUMMARY",
+      "quote": "the protonated H 2 F [+] ion is detected neither toward PKS 1830–211 nor toward a sample of four Galactic sources"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does faster recombination explain low H2F+?",
+    "experiment": "Laboratory rate constants",
+    "result": "rates differ by only ~2",
+    "finding": "Formation mechanism is the main factor",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5. DISCUSSION",
+      "quote": "the observed small interstellar abundance of H 2 F [+] compared with that of H 2 Cl [+] is thought to be mainly due to the production mechanism."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Absorption profile time variability limits comparison of spectra from different epochs",
+     "evidence": [
+      {
+       "loc": "4.1. ALMA Observations",
+       "quote": "somewhat limit the direct comparison of spectra taken at different epochs."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Saturated SW HF gives only lower limit",
+    "Ortho-to-para ratio of 3 assumed for H2F+",
+    "Lab rate measured at 209 K from a high rotational level, extrapolated to 50 K with unverified temperature dependence"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code given",
+    "evidence": [
+     {
+      "loc": "6. SUMMARY",
+      "quote": "This paper makes use of the following ALMA data: ADS/ JAO.ALMA#2013.1.01099.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and calibrator details",
+    "imaging parameters",
+    "spectral normalization recipe"
+   ],
+   "estimated_data_volume_inferred": "tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Public ALMA data and clear column-density method, but calibration and imaging details are sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Calibration and extraction details insufficient, and half the paper is laboratory work."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Martí-Vidal et al. 2014",
+     "why": "UVMULTIFIT"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Muller et al. 2014a",
+     "why": "H2Cl+ detection toward PKS 1830-211"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c16c4ee977641205d93fca216dafb2bf",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:46",
+  "usage": {
+   "input_tokens": 24223,
+   "output_tokens": 6508,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.057369,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 42,
+  "quotes_ok": 42,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 30,
+   "rate": 0.455
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:08:21",
+  "custom_id": "repair-sonnet-8144fe97a840b84ad399a37d2a055dc0",
+  "fixed": [],
+  "removed_quotes": [
+   {
+    "path": "results_numeric.4.evidence.0",
+    "quote": "(0.46  0.05) ´ 10 - 7 cm 3 s - 1"
+   },
+   {
+    "path": "results_numeric.3.evidence.0",
+    "quote": "(1.08  0.29) ´ 10 - 7 cm 3 s - 1"
+   },
+   {
+    "path": "analysis_steps.2.key_parameters.0.evidence.0",
+    "quote": "we obtained [e [−] ] = (2.78  0.56) ´ 10 [11] cm [−][3], where the error corresponds to the range of the observed values."
+   }
+  ],
+  "rejected_quotes": [
+   {
+    "path": "analysis_steps[2].key_parameters[0].evidence[0]",
+    "quote": "By averaging three measurements, we obtained [e [−] ] = (2.78  0.56) ´ 10 [11] cm [−][3], where the error corresponds to the range of the observed values."
+   },
+   {
+    "path": "results_numeric[3].evidence[0]",
+    "quote": "The constants determined are k e (209 K) =\n(1.1  0.3) ´ 10     - [7] cm [3] s [−][1]"
+   },
+   {
+    "path": "results_numeric[4].evidence[0]",
+    "quote": "(0.46  0.05) ´ 10     - [7] cm [3] s [−][1] for H 2 F [+] and H 2 Cl [+], respectively."
+   }
+  ],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].key_parameters[0]",
+    "old_value": "[e-] = (2.78±0.56)e11 cm-3; T_rot 209 K"
+   }
+  ],
+  "dropped_items": [
+   {
+    "list": "results_numeric",
+    "reason": "no quote",
+    "item": {
+     "quantity": "k_e(H2F+) at 209 K",
+     "value": "1.08e-7",
+     "uncertainty": "0.29e-7",
+     "units": "cm3 s-1",
+     "from_step": 3,
+     "evidence": []
+    }
+   },
+   {
+    "list": "results_numeric",
+    "reason": "no quote",
+    "item": {
+     "quantity": "k_e(H2Cl+) at 209 K",
+     "value": "0.46e-7",
+     "uncertainty": "0.05e-7",
+     "units": "cm3 s-1",
+     "from_step": 3,
+     "evidence": []
+    }
+   }
+  ]
+ }
+}

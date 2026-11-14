@@ -1,0 +1,489 @@
+{
+ "bibcode": "2026MNRAS.548ag325W",
+ "title": "3D insights into SN 1987A: ALMA observations compared to hydrodynamical explosion simulations",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag325",
+ "arxiv_id": "2602.11259",
+ "fields": [
+  "transients",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "How do the three-dimensional spatial and velocity distributions of CO and SiO molecules in the ejecta of SN 1987A observed with ALMA compare with long-time 3D hydrodynamical supernova explosion simulations across different progenitor models, and what do they imply for the neutron-star kick direction?",
+ "alma_project_codes": [
+  "2013.1.00280.S",
+  "2015.1.00631.S",
+  "2017.1.00789.S",
+  "2018.1.00717.S"
+ ],
+ "data": {
+  "bands": "Band 7 (for dust continuum); others not stated by band number",
+  "arrays": "not stated",
+  "angular_resolution": "0.03–0.06 arcsec (up to ~0.11 arcsec for epoch 2 SiO 6-5 and CO 6-5)",
+  "sensitivity": "0.04 mJy/beam (CO 2-1 ep1), 2.82 mJy/beam (CO 6-5 ep1), 0.05 mJy/beam (SiO 5-4 ep1), 0.033 mJy/beam (SiO 5-4 ep2), 0.06 mJy/beam (SiO 6-5 ep1), 0.055 mJy/beam (SiO 6-5 ep2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to SN 1987A of 51.4 +/- 1.2 kpc",
+    "evidence": [
+     {
+      "loc": "3D plots",
+      "quote": "To convert angular distances to physical distances in the $x$-$y$ plane, we adopt the distance to SN 1987A of 51.4 kpc found by (cite: Panagia.1999)"
+     }
+    ]
+   },
+   "citation": "(cite: Panagia.1999)"
+  },
+  {
+   "what": {
+    "value": "Systemic heliocentric velocity of SN 1987A / LMC of +287 +/- 3 km s^-1",
+    "evidence": [
+     {
+      "loc": "3D plots",
+      "quote": "In the $z$-direction, we first subtracted the systemic velocity of the LMC, $v_{\\rm hel}$=+287$\\pm$3 km s$^{-1}$ (cite: Meaburn.1995; Groningsson:2008jb) from the observed velocity values."
+     }
+    ]
+   },
+   "citation": "(cite: Meaburn.1995; Groningsson:2008jb)"
+  },
+  {
+   "what": {
+    "value": "Geometric centre of the equatorial ring as explosion origin: alpha=05:35:27.9875(11), delta=-69:16:11.107(4) (ICRF J2015.0)",
+    "evidence": [
+     {
+      "loc": "3D plots",
+      "quote": "We use the position determined by (cite: Alp.2018), who calculated the geometric centre of the equatorial ring by fitting an ellipse to the locations of the centroids of its bright clumps."
+     }
+    ]
+   },
+   "citation": "(cite: Alp.2018)"
+  },
+  {
+   "what": {
+    "value": "Inclination of the equatorial ring (~43 deg to the plane of the sky)",
+    "evidence": [
+     {
+      "loc": "Spectral grids",
+      "quote": "The equatorial ring appears elliptical as it is inclined at $\\sim$43$^\\circ$ to the plane of the sky ((cite: 2011A&A...527A..35T))."
+     }
+    ]
+   },
+   "citation": "(cite: 2011A&A...527A..35T)"
+  },
+  {
+   "what": {
+    "value": "3D map of [Fe I] emission in the ejecta of SN 1987A",
+    "evidence": [
+     {
+      "loc": "Comparison of SiO and CO morphologies",
+      "quote": "Interestingly, (cite: 2023ApJ...949L..27L) find that \\[Fe i\\] emission in the ejecta resembles a broken dipole, with two large clumps at velocities of approximately 2300 km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2023ApJ...949L..27L); (cite: larsson2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Grid the ejecta region, determine noise threshold, and extract integrated line profiles",
+   "method": "Select a 0.6\" x 0.6\" region covering the ejecta (excluding the equatorial ring) and divide it into a 10x10 grid of 0.06\" x 0.06\" cells. Estimate the noise threshold by taking four regions outside the equatorial ring, dividing each into 10x10 cells, computing the mean absolute deviation (MAD) in each cell, and taking the mean of all MAD values. Mask out data below this threshold and integrate the spectrum over all spatial cells.",
+   "software": [],
+   "key_parameters": [
+    "0.6\" x 0.6\" region, 10x10 grid (0.06\" x 0.06\" per cell), velocity binning 100 or 300 km s^-1"
+   ],
+   "assumptions": [
+    "Four off-source regions outside the equatorial ring contain no signal from circumstellar material"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Construct 3D spatial maps of CO and SiO emission and measure hemispheric asymmetries",
+   "method": "Convert sky pixel coordinates (x, y) to physical distances relative to the explosion centre using d = 51.4 kpc. Subtract systemic heliocentric velocity (+287 km s^-1) and multiply line-of-sight velocity by time since explosion to get z distance. Divide data cubes into N/S, E/W, Near/Far, and Below/Above (relative to equatorial ring plane) hemispheres to compute fractional emission.",
+   "software": [],
+   "key_parameters": [
+    "Explosion centre alpha=05:35:27.9875(11), delta=-69:16:11.107(4) (ICRF J2015.0); threshold 1x or 2x noise level"
+   ],
+   "assumptions": [
+    "Homologous (free) expansion since the explosion; distance = 51.4 kpc; systemic velocity = +287 km s^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive observational fractional mass-velocity distributions and summary velocity parameters",
+   "method": "Convert 3D spatial distances to 3D radial velocities by dividing radial distance by time since explosion. Bin fractional intensities in increments of 100 or 300 km s^-1. Apply a 3-point moving average and compute v_peak, width (difference between 25th and 75th percentiles), and v_max (95th percentile of molecular mass) with uncertainties via a 1000-iteration Monte Carlo simulation.",
+   "software": [],
+   "key_parameters": [
+    "1000 Monte Carlo iterations, 20% standard deviation per data point, 3-point moving average, percentiles: 25th, 75th, 95th"
+   ],
+   "assumptions": [
+    "Ejecta are optically thin at the observed wavelengths, in local thermodynamic equilibrium (LTE), and at a uniform temperature; constant expansion velocity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate 3D dust mass-velocity distribution from ALMA Band 7 continuum",
+   "method": "Using ALMA Band 7 continuum data (315 GHz), compute dust mass vs velocity under two approximations: (1) all dust velocities are in the plane of the sky; (2) ballistic expansion up to 3500 km s^-1 with dust density declining as r^-2 along the line of sight.",
+   "software": [],
+   "key_parameters": [
+    "Maximum shell velocity = 3500 km s^-1; radial density profile proportional to r^-2"
+   ],
+   "assumptions": [
+    "Dust has uniform temperature and negligible optical depth; ballistic expansion; r^-2 density profile"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute C+O and Si+O mass-velocity distributions and 3D maps from hydrodynamical explosion simulations",
+   "method": "Evolve 15 core-collapse SN models to ~1 yr with PROMETHEUS-HOTB. In each cell, compute maximal C+O mass from min(C, O) stoichiometry, then react remaining O* with Si to form Si+O. Integrate over cell volumes and bin by velocity. For 3D visual comparison, map 3D spherical simulations at t ~ 1 yr onto a 512^3 Cartesian grid, smooth by 8^3 grid cells, interpolate onto a 160^3 grid, and plot every second point in the line-of-sight direction.",
+   "software": [
+    "PROMETHEUS-HOTB"
+   ],
+   "key_parameters": [
+    "Simulation time ~321-373 days (~1 yr); tracer 56X fraction = 0%, 50%, or 100%; Cartesian grid 512^3 smoothed by 8^3 and interpolated to 160^3"
+   ],
+   "assumptions": [
+    "Carbon binds with oxygen first to form C+O, and only remaining oxygen reacts with silicon to form Si+O; homologous expansion after t ~ 1 yr"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit plane to the punctured CO shell and estimate neutron-star kick direction from C+O / CO centre of mass",
+   "method": "Fit a 3D plane a(x-x0) + b(y-y0) + c(z-z0) = 0 to the CO data via least-squares minimisation of point-to-plane distances (both fixed to origin and free) and compute angle to the equatorial ring. In simulations, correlate NS kick direction (at t_pb = 2.5 s) with the centre-of-mass direction of C+O above density thresholds F_rho(C+O) = [0.2, 0.15, 0.1, 0.05, 0.01] at t ~ 1 yr. Compute the emission-weighted centre of observed CO to infer the SN 1987A kick vector.",
+   "software": [],
+   "key_parameters": [
+    "Density thresholds F_rho(C+O) = [0.2, 0.15, 0.1, 0.05, 0.01] (fiducial 15% of maximum density); NS kick evaluated at t_pb = 2.5 s"
+   ],
+   "assumptions": [
+    "Correlation between the centre of mass of the densest C+O ejecta and the NS kick direction in simulations applies to the observed CO emission in SN 1987A"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO J=2-1 mass distribution peak velocity (v_peak)",
+   "value": "1830",
+   "uncertainty": "210",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO $J$=2-1 | 1830$\\pm$210 | 1210$\\pm$70 | 3980$\\pm$40"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=2-1 mass distribution velocity width",
+   "value": "1210",
+   "uncertainty": "70",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO $J$=2-1 | 1830$\\pm$210 | 1210$\\pm$70 | 3980$\\pm$40"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=2-1 mass distribution maximal velocity (v_max, 95% mass)",
+   "value": "3980",
+   "uncertainty": "40",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO $J$=2-1 | 1830$\\pm$210 | 1210$\\pm$70 | 3980$\\pm$40"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=5-4 epoch 1 mass distribution peak velocity (v_peak)",
+   "value": "1730",
+   "uncertainty": "190",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=5-4 ep.1 | 1730$\\pm$190 | 1180$\\pm$60 | 3600$\\pm$30"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=5-4 epoch 1 mass distribution velocity width",
+   "value": "1180",
+   "uncertainty": "60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=5-4 ep.1 | 1730$\\pm$190 | 1180$\\pm$60 | 3600$\\pm$30"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=5-4 epoch 1 mass distribution maximal velocity (v_max)",
+   "value": "3600",
+   "uncertainty": "30",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=5-4 ep.1 | 1730$\\pm$190 | 1180$\\pm$60 | 3600$\\pm$30"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=5-4 epoch 2 mass distribution peak velocity (v_peak)",
+   "value": "1600",
+   "uncertainty": "80",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=5-4 ep.2 | 1600$\\pm$80 | 870$\\pm$60 | 3110$\\pm$60"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=5-4 epoch 2 mass distribution velocity width",
+   "value": "870",
+   "uncertainty": "60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=5-4 ep.2 | 1600$\\pm$80 | 870$\\pm$60 | 3110$\\pm$60"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=5-4 epoch 2 mass distribution maximal velocity (v_max)",
+   "value": "3110",
+   "uncertainty": "60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=5-4 ep.2 | 1600$\\pm$80 | 870$\\pm$60 | 3110$\\pm$60"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=6-5 epoch 1 mass distribution peak velocity (v_peak)",
+   "value": "1820",
+   "uncertainty": "190",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=6-5 ep.1 | 1820$\\pm$190 | 930$\\pm$60 | 3220$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=6-5 epoch 1 mass distribution velocity width",
+   "value": "930",
+   "uncertainty": "60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=6-5 ep.1 | 1820$\\pm$190 | 930$\\pm$60 | 3220$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=6-5 epoch 1 mass distribution maximal velocity (v_max)",
+   "value": "3220",
+   "uncertainty": "50",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=6-5 ep.1 | 1820$\\pm$190 | 930$\\pm$60 | 3220$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=6-5 epoch 2 mass distribution peak velocity (v_peak)",
+   "value": "1530",
+   "uncertainty": "100",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=6-5 ep.2 | 1530$\\pm$100 | 1000$\\pm$50 | 3510$\\pm$70"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=6-5 epoch 2 mass distribution velocity width",
+   "value": "1000",
+   "uncertainty": "50",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=6-5 ep.2 | 1530$\\pm$100 | 1000$\\pm$50 | 3510$\\pm$70"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO J=6-5 epoch 2 mass distribution maximal velocity (v_max)",
+   "value": "3510",
+   "uncertainty": "70",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO $J$=6-5 ep.2 | 1530$\\pm$100 | 1000$\\pm$50 | 3510$\\pm$70"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO average mass distribution peak velocity (v_peak)",
+   "value": "1600",
+   "uncertainty": "110",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO (average) | 1600$\\pm$110 | 1080$\\pm$70 | 3560$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO average mass distribution velocity width",
+   "value": "1080",
+   "uncertainty": "70",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO (average) | 1600$\\pm$110 | 1080$\\pm$70 | 3560$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO average mass distribution maximal velocity (v_max)",
+   "value": "3560",
+   "uncertainty": "50",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SiO (average) | 1600$\\pm$110 | 1080$\\pm$70 | 3560$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination angle of best-fit CO shell plane to the equatorial ring",
+   "value": "84",
+   "uncertainty": "11",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Comparison of SiO and CO morphologies",
+     "quote": "Indeed, when determining the parameters of the best-fit plane to the two-punctured shell in Appendix 10 we find an inclination angle to the equatorial ring of 84$\\pm$11$^\\circ$."
+    },
+    {
+     "loc": "Calculation of plane parameters",
+     "quote": "Propagating the uncertainties on the plane parameters into the angle between this plane and the equatorial ring, we obtain a value of 84$\\pm$11$^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Emission-weighted centre of CO (East, North, in front of explosion site)",
+   "value": "155, 1240, 1100 (r = 1660)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Indications for kick direction in SN 1987A from CO emission centre",
+     "quote": "The direction of the emission-weighted centre of CO lies 155 AU east, 1240 AU north and 1100 AU in front of the SN explosion site"
+    },
+    {
+     "loc": "Indications for kick direction in SN 1987A from CO emission centre",
+     "quote": "Its polar coordinates, where $\\Theta=0$, $\\phi=0$ corresponds to the line of sight, are $\\Theta=8.0^\\circ, \\phi=48.1^\\circ, r=1660$ AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Polar coordinates (Theta, phi) of emission-weighted centre of CO (inferred NS kick direction)",
+   "value": "8.0, 48.1 (approx 45 deg north towards observer)",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "If such a correlation also applies to the CO emission in the ejecta of SN 1987A, the kick of the compact remnant is expected to point towards the observer, at an angle of approximately $45^\\circ$ to the north."
+    },
+    {
+     "loc": "Indications for kick direction in SN 1987A from CO emission centre",
+     "quote": "Its polar coordinates, where $\\Theta=0$, $\\phi=0$ corresponds to the line of sight, are $\\Theta=8.0^\\circ, \\phi=48.1^\\circ, r=1660$ AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Angle alpha between NS kick direction and centre of mass of densest 15% C+O in bBSG models (M157b-1, M157b-2, M157b-3, M157b-4, M158b-1)",
+   "value": "26, 33, 2, 11, 43",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Neutron star kick geometry in theoretical models",
+     "quote": "The corresponding angles between kick and C+O centre of mass $\\alpha$ are given in the last column of Table 4. They are generally lower than $\\alpha<33^\\circ$."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "M157b-3 | 1.587 | 373 | -415 | 377 | 673 | 2"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "M157b-4 | 1.492 | 158 | 281 | -746 | 813 | 11"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and ALMA pipeline versions used for calibration and imaging",
+  "Specific frequency/channel ranges used as line-free channels for continuum subtraction",
+  "Deconvolver, weighting scheme (for 2017 SiO 5-4 and Epoch 1), masking, and threshold parameters in CASA clean",
+  "Exact coordinates of the four off-source regions outside the equatorial ring used to calculate the MAD noise threshold",
+  "How the 2017.1.00789.S and 2018.1.00717.S datasets in Epoch 2 were weighted or combined (and why Table 1 lists one date per Epoch 2 line)",
+  "Exact viewing angles (Euler angles) manually selected to orient the 3D hydrodynamic simulation grids to match SN 1987A sky coordinates"
+ ],
+ "missing_for_reproduction": [
+  "Custom analysis scripts used for 3D coordinate transformation, noise thresholding, mass-velocity histogram generation, and plane fitting",
+  "Exact CASA imaging scripts and uv-combination weights for merging high- and low-resolution ALMA executions",
+  "Exact coordinates of the four off-source noise estimation boxes",
+  "Exact Euler rotation angles applied to the 3D simulation cubes for each figure"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Raw ALMA project codes and simulation archive URL are clearly stated, and the mathematical recipes for 3D mapping, C+O/Si+O stoichiometry, and uncertainty analysis are well documented. However, reduced cubes are only available on request, analysis scripts are not released, some CASA imaging details are deferred to earlier papers or omitted, and 3D model viewing angles were chosen manually.",
+ "rediscovery_reason": "All four ALMA project codes are public in the ALMA archive, the transformation from spectral line cubes to 3D maps and 1D fractional mass-velocity distributions is straightforward and well-specified, and the summary velocity statistics (v_peak, width, v_max), hemispheric emission ratios, and plane inclination angle provide clear quantitative answer keys.",
+ "source_card": "cards/2026MNRAS.548ag325W/sonnet/card.md"
+}

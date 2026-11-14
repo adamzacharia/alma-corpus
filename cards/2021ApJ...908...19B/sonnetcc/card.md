@@ -1,0 +1,363 @@
+# Black Hole Mass Measurements of Radio Galaxies NGC 315 and NGC 4261 Using ALMA CO Observations
+
+`2021ApJ...908...19B` | The Astrophysical Journal 2021 | first author: Boizelle, Benjamin D. | arXiv: 2012.04669 | DOI: 10.3847/1538-4357/abd24d
+
+Card schema 1.0 | model claude-sonnet-5-5-claude-code | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: nearby_galaxies, agn_and_quasars
+- Question: Measure the black hole masses of the radio galaxies NGC 315 and NGC 4261 by forward-modeling ALMA CO(2-1) and CO(3-2) gas kinematics within the BH sphere of influence, with systematics from the stellar mass model (dust extinction) assessed  
+  > "We therefore began an ALMA campaign to map CO(2$-$1) kinematics in nearby ETGs with targets selected based on dust morphology." (Introduction); "Any confident interpretation of BGG/BCG BH growth will require both larger numbers of $M_\mathrm{BH}$ measurements and greater measurement precision." (Introduction)
+- Target **NGC 315**: coordinates 0h57m48.883s +30d21m08.81s (J2000, nuclear continuum source centroid)  
+  > "This assumption corresponds to a luminosity distance of 72.3 Mpc, an angular size distance of 70.0 Mpc, and an angular scale of 340 pc arcsec$^{-1}$." (Introduction); "Here, we adopt the Hubble flow distance assuming the Virgo $+$ Great Attractor $+$ Shapley Supercluster inflow model for a $\Lambda$CDM cosmology with $\Omega_\mathrm{matter}=0.308$, $\Omega_\mathrm{vacuum}=0.692$, and $H_0=67.8$ km s$^{-1}$ Mpc$^{-1}$ (cite: planck16)." (Introduction); "the nuclear continuum source centroid at 0$^{\rm h}$57$^{\rm m}$48.883s, $+$30$^\circ$21$'$08.81$''$ for NGC 315" (Table 3 notes); z/distance luminosity distance 72.3 Mpc; angular size distance 70.0 Mpc; 340 pc/arcsec  
+  > "This assumption corresponds to a luminosity distance of 72.3 Mpc, an angular size distance of 70.0 Mpc, and an angular scale of 340 pc arcsec$^{-1}$." (Introduction); "Here, we adopt the Hubble flow distance assuming the Virgo $+$ Great Attractor $+$ Shapley Supercluster inflow model for a $\Lambda$CDM cosmology with $\Omega_\mathrm{matter}=0.308$, $\Omega_\mathrm{vacuum}=0.692$, and $H_0=67.8$ km s$^{-1}$ Mpc$^{-1}$ (cite: planck16)." (Introduction); "the nuclear continuum source centroid at 0$^{\rm h}$57$^{\rm m}$48.883s, $+$30$^\circ$21$'$08.81$''$ for NGC 315" (Table 3 notes); distance from Hubble flow distance with Virgo + Great Attractor + Shapley inflow model, LCDM (Omega_m=0.308, H0=67.8) (cite: planck16)  
+  > "This assumption corresponds to a luminosity distance of 72.3 Mpc, an angular size distance of 70.0 Mpc, and an angular scale of 340 pc arcsec$^{-1}$." (Introduction); "Here, we adopt the Hubble flow distance assuming the Virgo $+$ Great Attractor $+$ Shapley Supercluster inflow model for a $\Lambda$CDM cosmology with $\Omega_\mathrm{matter}=0.308$, $\Omega_\mathrm{vacuum}=0.692$, and $H_0=67.8$ km s$^{-1}$ Mpc$^{-1}$ (cite: planck16)." (Introduction); "the nuclear continuum source centroid at 0$^{\rm h}$57$^{\rm m}$48.883s, $+$30$^\circ$21$'$08.81$''$ for NGC 315" (Table 3 notes)
+- Target **NGC 4261**: coordinates 12h19m23.216s +05d49m29.69s (J2000, nuclear continuum source centroid)  
+  > "has a distance modulus from a SBF measurement of $m-M=32.50\pm0.19$ mag (cite: tonry01), which translates to a luminosity distance of $31.6\pm2.8$ Mpc." (Introduction); "Using the observed redshift of $z=0.00746$ (cite: huchra12), the angular size distance is 31.1 Mpc, and we adopted an angular scale of 150.9 pc arcsec$^{-1}$." (Introduction); "12$^{\rm h}$19$^{\rm m}$23.216s, $+$05$^\circ$49$'$29.69$''$ for NGC 4261" (Table 3 notes); z/distance z = 0.00746; luminosity distance 31.6 +/- 2.8 Mpc; angular size distance 31.1 Mpc; 150.9 pc/arcsec  
+  > "has a distance modulus from a SBF measurement of $m-M=32.50\pm0.19$ mag (cite: tonry01), which translates to a luminosity distance of $31.6\pm2.8$ Mpc." (Introduction); "Using the observed redshift of $z=0.00746$ (cite: huchra12), the angular size distance is 31.1 Mpc, and we adopted an angular scale of 150.9 pc arcsec$^{-1}$." (Introduction); "12$^{\rm h}$19$^{\rm m}$23.216s, $+$05$^\circ$49$'$29.69$''$ for NGC 4261" (Table 3 notes); distance from SBF distance modulus m-M = 32.50 +/- 0.19 mag (cite: tonry01); redshift (cite: huchra12)  
+  > "has a distance modulus from a SBF measurement of $m-M=32.50\pm0.19$ mag (cite: tonry01), which translates to a luminosity distance of $31.6\pm2.8$ Mpc." (Introduction); "Using the observed redshift of $z=0.00746$ (cite: huchra12), the angular size distance is 31.1 Mpc, and we adopted an angular scale of 150.9 pc arcsec$^{-1}$." (Introduction); "12$^{\rm h}$19$^{\rm m}$23.216s, $+$05$^\circ$49$'$29.69$''$ for NGC 4261" (Table 3 notes)
+
+## Data provenance
+
+- ALMA projects: 2017.1.00301.S, 2017.1.01638.S
+- bands: CO(2-1) near 230 GHz (1.3 mm continuum) for both galaxies; Band 7 for NGC 4261 CO(3-2)  
+  > "While we detect resolved 1.3 mm continuum in both galaxies and centrally concentrated CS(5$-$4) emission in NGC 315" (3.1 Observations and data processing); "ALMA observed NGC 4261 in Band 7 as a part of Program 2017.1.01638.S (PI: Kameno)." (3.1 Observations and data processing)
+- frequencies and spectral setup: Single pointing, four ~2 GHz spectral windows: CO(2-1) 230.538 GHz; continuum at 228.4 and 243.0 GHz; CS(5-4) 244.935 GHz. Band 7 SPW covers 341.75-343.45 GHz (CO(3-2), receding side only)  
+  > "a single pointing with four $\sim$2 GHz$-$bandwidth spectral windows" (3.1 Observations and data processing); "one was centered on the redshifted CO(2$-$1) 230.538 GHz line, two others measured the continuum at average sky frequencies of 228.4 and 243.0 GHz" (3.1 Observations and data processing); "One of the spectral windows had usable data extending from 341.75$-$343.45 GHz, which covers the CO(3$-$2) line on the receding side of the disk" (3.1 Observations and data processing)
+- continuum bandwidth: _not stated_
+- arrays: 12-m  
+  > "In this paper, we present the first ALMA 12-m CO imaging of NGC 315 and NGC 4261." (Introduction)
+- configurations: C43-5  
+  > "in the C43$-$5 configuration in Program 2017.1.00301.S" (3.1 Observations and data processing)
+- baselines: _not stated_
+- angular resolution: NGC 315 CO(2-1): 0.35" x 0.22", PA 15.7 deg; NGC 4261 CO(2-1): 0.31" x 0.28", PA 51.9 deg; NGC 4261 CO(3-2): 0.24" x 0.19", PA 75.2 deg  
+  > "For NGC 315, the synthesized beam at a sky frequency of $\sim$229 GHz has $\theta_\mathrm{FWHM}=0.35\ensuremath{''} \times 0.22\ensuremath{''}$ oriented at $\mathrm{PA}=15.7\ensuremath{^\circ}$." (3.1 Observations and data processing); "At the same frequency for NGC 4261, imaging yields $\theta_\mathrm{FWHM}=0.31\ensuremath{''} \times 0.28\ensuremath{''}$ at $\mathrm{PA}=51.9\ensuremath{^\circ}$." (3.1 Observations and data processing); "the Band 7 data have $\theta_\mathrm{FWHM}=0.24\ensuremath{''} \times 0.19\ensuremath{''}$ at $\mathrm{PA}=75.2\ensuremath{^\circ}$" (3.1 Observations and data processing)
+- max recoverable scale: _not stated_
+- sensitivity: NGC 315 CO(2-1) ~0.35 mJy/beam per 10.3 km/s channel; NGC 4261 CO(2-1) ~0.26 mJy/beam per 40.9 km/s channel; NGC 4261 CO(3-2) ~0.34 mJy/beam (13.8 km/s channels)  
+  > "resulting in typical root-mean-squared (rms) sensitivities of $\sim$0.35 mJy beam$^{-1}$" (3.1 Observations and data processing); "we imaged NGC 4261 using coarser channels of 31.2 MHz (rest-frame 40.9 km s$^{-1}$), with an rms sensitivity of $\sim$0.26 mJy beam$^{-1}$ per channel" (3.1 Observations and data processing); "channels with $\sim$0.34 mJy beam$^{-1}$ point-source sensitivities" (3.1 Observations and data processing)
+- time on source: NGC 315: 89 minutes (three EBs, semi-pass data excluded); NGC 4261: 31.5 minutes (one EB); Band 7 time not stated  
+  > "the total on-source integration time was 89 minutes." (3.1 Observations and data processing); "had an on-source integration time of 31.5 minutes." (3.1 Observations and data processing)
+- observing dates: NGC 315: Cycle 6, 2018 October 19 - November 19; NGC 4261: Cycle 5, 2018 January 19; Band 7 NGC 4261 two days later  
+  > "data were obtained during Cycle 6 in three Execution Blocks spanning 2018 October 19 $-$ November 19." (3.1 Observations and data processing); "our data were obtained during Cycle 5 with a single Execution Block on 2018 January 19" (3.1 Observations and data processing); "Just two days after our data were taken, ALMA observed NGC 4261 in Band 7" (3.1 Observations and data processing)
+- pi or archival as stated: Authors' own program 2017.1.00301.S; Band 7 CO(3-2) from archival program 2017.1.01638.S (PI: Kameno)  
+  > "we also include additional CO(3$-$2) imaging of NGC 4261 from the ALMA archive" (Introduction); "ALMA observed NGC 4261 in Band 7 as a part of Program 2017.1.01638.S (PI: Kameno)." (3.1 Observations and data processing)
+- Line: CO J=2-1 (230.538 GHz)
+- Line: CO J=3-2 (not stated)
+- Line: CS J=5-4 (244.935 GHz)
+- Other facility **HST WFC3/IR and WFPC2**: Near-IR images for stellar luminous mass models (MGEs) and optical/near-IR colors for dust extinction models  
+  > "We used HST Wide Field Camera 3 (cite: dressel19) infrared (IR) data to determine luminous mass distributions for NGC 315 and NGC 4261" (2 Optical and Infrared Observations); "WFC3/IR and Wide Field Planetary Camera 2 (cite: holtzman95) optical imaging to quantify the potential impact of dust on our luminous mass models" (2 Optical and Infrared Observations)
+- Other facility **Spitzer IRAC channel 1 (3.6 um)**: Large-scale stellar halo profile and IR background constraint for the MGEs  
+  > "we supplemented the HST data with large-scale Spitzer InfraRed Array Camera (cite: fazio04) observations" (2 Optical and Infrared Observations); "we used large-scale Spitzer imaging to constrain IR zodiacal background levels (cite: pirzkal14) and to extend stellar surface brightness measurements" (Stellar Luminosity Profile)
+- External data: Archival NGC 315 WFC3/IR F110W (J-band) data  
+  > "For NGC 315, we retrieved archival WFC3/IR data (cite: goullaud18) taken in the F110W filter" (HST Imaging) [from (cite: goullaud18)]
+- External data: Archival NGC 315 WFPC2 F555W and F814W images  
+  > "For NGC 315, we retrieved WFPC2 F555W and F814W images (cite: verdoes99)" (HST Imaging) [from (cite: verdoes99)]
+- External data: Archival NGC 4261 WFPC2 F547M and F791W data  
+  > "For NGC 4261, we retrieved WFPC2 data taken in the F547M and F791W filters (cite: ferrarese96)" (HST Imaging) [from (cite: ferrarese96)]
+- External data: NGC 4261 SBF distance modulus m-M = 32.50 +/- 0.19 mag  
+  > "has a distance modulus from a SBF measurement of $m-M=32.50\pm0.19$ mag (cite: tonry01)" (Introduction) [from (cite: tonry01)]
+- External data: NGC 4261 redshift z = 0.00746  
+  > "Using the observed redshift of $z=0.00746$ (cite: huchra12)" (Introduction) [from (cite: huchra12)]
+- External data: NGC 4261 dust disk inclination of 64 deg, adopted for the extinction model  
+  > "Adopting $i=64\ensuremath{^\circ}$ from fits to the dust disk morphology (cite: ferrarese96)" (Disk Extinction Modeling) [from (cite: ferrarese96)]
+- External data: Galactic reddening A_J,Gal = 0.057 mag towards NGC 315  
+  > "assuming $A_{J,\mathrm{Gal}}=0.057$ mag towards NGC 315 (cite: schlafly11)" (Application to NGC 315) [from (cite: schlafly11)]
+- External data: CO(1-0)-to-H2 conversion factor alpha_CO = 3.1 Msun pc^-2 (K km/s)^-1  
+  > "adopting a CO(1$-$0)-to-H$_2$ conversion factor $\alpha_\mathrm{CO}=3.1$ $M_\odot$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$ from a sample of nearby, late-type galaxies (cite: sandstrom13)" (Emission Line Properties) [from (cite: sandstrom13)]
+- External data: Expected H-band stellar M/L for old solar-metallicity SSPs, 1.02-1.84 Msun/Lsun depending on IMF  
+  > "the expected $H$-band stellar mass-to-light ratios for old, solar metallicity SSPs ranging between 1.02$-$1.84 $M_\odot$/$L_\odot$ depending on the IMF (cite: vazdekis10)" (NGC 4261 Modeling Results) [from (cite: vazdekis10)]
+- External data: NGC 315 stellar velocity dispersion within effective radius sigma_e = 341 km/s  
+  > "Using the stellar velocity dispersion measured within the galaxy effective radius ($\sigma_\mathrm{e}$) for NGC 315 of 341 km s$^{-1}$ (cite: veale17)" (BH Mass) [from (cite: veale17)]
+- External data: NGC 4261 sigma_e = 315 km/s  
+  > "with $\sigma_\mathrm{e} = 315$ km s$^{-1}$ (cite: kormendy13)" (BH Mass) [from (cite: kormendy13)]
+- External data: Absolute flux calibration uncertainty ~10% at 1 mm for the ALMA quasar standards  
+  > "which have absolute flux calibration uncertainties of $\sim$10% at 1 mm (cite: fomalont14)" (3.1 Observations and data processing) [from (cite: fomalont14)]
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: _not stated_
+- casa version: CASA 5.1.2  
+  > "Visibilities were calibrated using version 5.1.2 of the `Common Astronomy Software Applications` (cite: mcmullin07) package." (3.1 Observations and data processing)
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: J2253+1608 and J1229+0203  
+  > "The data were flux calibrated using ALMA quasar standards J2253$+$1608 and J1229$+$0203" (3.1 Observations and data processing)
+- flux scale uncertainty: ~10% at 1 mm, propagated into all flux and derived quantities  
+  > "which have absolute flux calibration uncertainties of $\sim$10% at 1 mm (cite: fomalont14)" (3.1 Observations and data processing); "We have propagated this systematic uncertainty into all subsequent flux and flux density measurements, and quantities derived from them." (3.1 Observations and data processing)
+- self calibration: Phase and amplitude self-calibration on the bright nuclear continuum (0.2-0.25 Jy at 230 GHz); same approach applied to the Band 7 data  
+  > "We used the bright ($S_\mathrm{230\,GHz}=0.2-0.25$ Jy) continuum emission at the centers of NGC 315 and NGC 4261 to apply phase and amplitude self-calibration." (3.1 Observations and data processing); "reduced them using the same approaches to self-calibration and $uv-$plane continuum subtraction" (3.1 Observations and data processing)
+
+### Imaging
+
+- task: CASA tclean  
+  > "the CO(2$-$1) spectral window data were deconvolved using `CASA` `tclean` with Briggs (cite: briggs95) weighting of $r=0.5$" (3.1 Observations and data processing)
+- deconvolver: _not stated_
+- weighting robust: Briggs, robust = 0.5  
+  > "the CO(2$-$1) spectral window data were deconvolved using `CASA` `tclean` with Briggs (cite: briggs95) weighting of $r=0.5$" (3.1 Observations and data processing)
+- uv taper: _not stated_
+- cell size: 0.035" (NGC 315 CO(2-1) and NGC 4261 CO(3-2)); 0.05" (NGC 4261 CO(2-1))  
+  > "We imaged the primary spectral window into a CO(2$-$1) cube with $0.035\ensuremath{''}$ pixels and 7.81 MHz channels" (3.1 Observations and data processing); "we also selected a larger pixel size of 0.05$''$ pixel$^{-1}$ to appropriately sample $\theta_\mathrm{FWHM}$" (3.1 Observations and data processing); "We then imaged the visibilities into a CO(3$-$2) data cube with $0.035\ensuremath{''}$ pixels" (3.1 Observations and data processing)
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: uv-plane continuum subtraction before tclean  
+  > "Following $uv-$plane continuum subtraction, the CO(2$-$1) spectral window data were deconvolved using `CASA` `tclean`" (3.1 Observations and data processing)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: CO(3-2) cube degraded to the NGC 4261 CO(2-1) angular resolution for the line ratio R32  
+  > "After degrading the CO(3$-$2) cube angular resolution to match that of the NGC 4261 CO(2$-$1) data" (Emission Line Properties)
+- final beam: NGC 315 0.35" x 0.22" PA 15.7 deg; NGC 4261 CO(2-1) 0.31" x 0.28" PA 51.9 deg; NGC 4261 CO(3-2) 0.24" x 0.19" PA 75.2 deg  
+  > "For NGC 315, the synthesized beam at a sky frequency of $\sim$229 GHz has $\theta_\mathrm{FWHM}=0.35\ensuremath{''} \times 0.22\ensuremath{''}$ oriented at $\mathrm{PA}=15.7\ensuremath{^\circ}$." (3.1 Observations and data processing); "At the same frequency for NGC 4261, imaging yields $\theta_\mathrm{FWHM}=0.31\ensuremath{''} \times 0.28\ensuremath{''}$ at $\mathrm{PA}=51.9\ensuremath{^\circ}$." (3.1 Observations and data processing)
+- final rms: NGC 315 ~0.35 mJy/beam (7.81 MHz channels, ~10.3 km/s); NGC 4261 CO(2-1) ~0.26 mJy/beam (31.2 MHz, 40.9 km/s); CO(3-2) ~0.34 mJy/beam (15.6 MHz, 13.8 km/s)  
+  > "resulting in typical root-mean-squared (rms) sensitivities of $\sim$0.35 mJy beam$^{-1}$" (3.1 Observations and data processing); "we imaged NGC 4261 using coarser channels of 31.2 MHz (rest-frame 40.9 km s$^{-1}$), with an rms sensitivity of $\sim$0.26 mJy beam$^{-1}$ per channel" (3.1 Observations and data processing)
+
+### Inherited from earlier work
+
+- Flat-disk forward-modeling procedure for gas-dynamical BH mass fits; details deferred to earlier work  
+  > "We determined BH masses from the ALMA data following a flat-disk forward-modeling procedure that is briefly summarized here." (5 Dynamical Modeling); "We refer the reader to the discussion by (cite: barth16a; barth16b) and for more details." (5 Dynamical Modeling) [from (cite: barth16a; barth16b) plus a further earlier paper whose citation is missing from the text]
+- Method for constraining IR zodiacal background and extending the stellar profile with Spitzer imaging  
+  > "Following the method outlined in , we used large-scale Spitzer imaging to constrain IR zodiacal background levels (cite: pirzkal14) and to extend stellar surface brightness measurements." (Stellar Luminosity Profile) [from an earlier paper (citation lost in text); (cite: pirzkal14)]
+- Disk extinction modeling method (embedded screen model)  
+  > "following the method outlined here and described in greater detail in (cite: goudfrooij94; viaene17)" (Disk Extinction Modeling) [from (cite: goudfrooij94; viaene17)]
+- Monte Carlo resampling procedure used for statistical uncertainties  
+  > "we carried out 300 Monte Carlo realizations using the resampling procedure introduced in" (NGC 315 Modeling Results) [from an earlier paper (citation lost in text)]
+- Radial-motion toy model for the systematic test  
+  > "we followed the method outlined in to estimate the potential impact of radial motion" (NGC 315 Modeling Results) [from an earlier paper (citation lost in text)]
+- Kinemetry framework for tracing the line-of-nodes PA  
+  > "we applied the `kinemetry` framework (cite: krajnovic11) to the CO first moment maps" (Emission Line Properties) [from (cite: krajnovic11)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Self-calibration solution intervals, number of rounds, reference antenna and which spectral windows were used for the continuum model
+- Line-free channels and polynomial order used for the uv continuum subtraction
+- tclean parameters: image size, niter, threshold, masks, multiscale or not, restoring beam handling, and CO(2-1)/CO(3-2) velocity frame and rest frequency for CO(3-2)
+- Voronoi binning target S/N and the moment-map masking thresholds
+- Source code or exact implementation of the thin-disk forward-model fitting code, starting values, parameter bounds and fit-region masks beyond the elliptical region sizes
+- Exact MGE fitting constraints (number of Gaussians initial guesses, masking maps) and the PSF models; no code or tables of PSFs released
+- Citations for the inherited methods (Monte Carlo resampling, radial-motion test, Spitzer background method) are blank in the text
+- How the Band 7 EB was calibrated and how many EBs; its on-source time
+
+## Analysis recipe
+
+1. **Build stellar luminous mass models from HST and Spitzer**: Fit 2D concentric Gaussian MGEs with GALFIT to HST WFC3/IR mosaics and flux-scaled Spitzer IRAC1 images, with a PSF component for the AGN, using dust-masked pixels  
+  > "we modeled both the WFC3/IR mosaics and flux-scaled IRAC1 images with concentric 2D Gaussian functions using `GALFIT` (cite: peng02)." (Stellar Luminosity Profile); "To account for non-stellar contributions in the `GALFIT` fit, we included a concentric PSF component that follows the F110W Tiny Tim model." (Application to NGC 315)
+   - software: GALFIT, MGE, AstroDrizzle, TweakReg, Tiny Tim
+   - parameter: Dust mask I-J > 0.96 mag for NGC 315; J-H > 0.85 mag for NGC 4261  
+  > "we constructed the first of our $J$-band MGEs after simply masking the most dust-obscured pixels where $I-J>0.96$ mag" (Application to NGC 315); "excluding pixels where $J-H>0.85$ mag to the south of the nucleus and along the disk’s eastern (near) side" (Application to NGC 4261)
+   - parameter: Spitzer-to-HST alignment: J background mu_J = 21.68 mag/arcsec^2 and J-IRAC1 = 1.53 mag (NGC 315); H background 20.44 mag/arcsec^2, H-IRAC1 = 0.72 mag (NGC 4261)  
+  > "Using overlapping measurements between $R\sim 50-100\ensuremath{''}$, we simultaneously determined a background level of $\mu_J=21.68$ mag arcsec$^{-2}$ and a color of $J-\mathrm{IRAC1}=1.53$ mag needed to align the NGC 315 measurements." (Stellar Luminosity Profile)
+   - assumption: Galactic reddening A_J,Gal = 0.057 mag (NGC 315), A_H,Gal = 0.009 mag (NGC 4261)  
+  > "assuming $A_{H,\mathrm{Gal}}=0.009$ mag towards NGC 4261 (cite: schlafly11)" (Application to NGC 4261); "assuming $A_{J,\mathrm{Gal}}=0.057$ mag towards NGC 315 (cite: schlafly11)" (Application to NGC 315)
+   - fitting: GALFIT with preliminary guesses from the MGE code; major-axis PAs tied together; outer IRAC1 Gaussians fixed  
+  > "Preliminary parameter guesses were obtained using the (cite: cappellari02) Multi-Gaussian Expansion (MGE) code, and the major-axis position angles (PAs) of the Gaussian components were tied together." (Stellar Luminosity Profile)
+   - validation: _not stated_
+2. **Estimate nuclear dust extinction and build dust-corrected mass models**: Embedded-screen model of an inclined thin dust disk compared with HST color excess maps; extinction-corrected central surface brightness from PSF-convolved Nuker fits, then re-fit as MGEs  
+  > "Our method assumes that a geometrically thin, inclined dust disk lies in the midplane of an oblate axisymmetric galaxy." (Disk Extinction Modeling); "we corrected the central unmasked surface brightness values for extinction levels of $A_J=0.75$ and $1.50$ mag." (Disk Extinction Modeling)
+   - software: GALFIT
+   - parameter: NGC 315 dust disk i = 75 deg (from initial gas-dynamical models); NGC 4261 i = 64 deg  
+  > "for an inclination angle $i=75\ensuremath{^\circ}$ (inferred from our initial gas-dynamical models)" (Disk Extinction Modeling); "Adopting $i=64\ensuremath{^\circ}$ from fits to the dust disk morphology (cite: ferrarese96)" (Disk Extinction Modeling)
+   - parameter: NGC 315 Nuker fit: gamma=0.0, beta=1.48, r_b=1.42", alpha=1.54; corrected cases gamma=0.18 (A_J=0.75) and 0.33 (A_J=1.50)  
+  > "The best-fit model has inner and outer power-law slopes of $\gamma=0.0$ and $\beta=1.48$, respectively, with a break radius $\ensuremath{r_\mathrm{b}}=1.42\ensuremath{''}$ and a transition sharpness $\alpha=1.54$." (Disk Extinction Modeling); "For the $A_J=0.75$ and $1.50$ mag cases, we found $\gamma=0.18$ and $0.33$, respectively." (Disk Extinction Modeling)
+   - assumption: R_V = 3.1  
+  > "Adopting a ratio of total-to-selective extinction of $R_V=3.1$ (cite: mathis90)" (Disk Extinction Modeling)
+   - fitting: Nuker function (PSF-convolved) plus concentric PSF in GALFIT to the J-band mosaic for R<10"  
+  > "fitting the $J$-band mosaic for $R<10\ensuremath{''}$ using a PSF-convolved Nuker function (cite: lauer95) and a concentric PSF component in `GALFIT`" (Disk Extinction Modeling)
+   - validation: Best-fit gamma for A_J = 1.50 mag lies at the core/power-law boundary of known galaxies  
+  > "The best-fit $\gamma$ for the $A_J=1.50$ mag case is at the boundary between those of core and power-law galaxies (cite: faber97)." (Disk Extinction Modeling)
+3. **Calibrate and image the ALMA CO cubes**: CASA calibration, phase and amplitude self-calibration on the nuclear continuum, uv continuum subtraction, then tclean with Briggs weighting  
+  > "Visibilities were calibrated using version 5.1.2 of the `Common Astronomy Software Applications` (cite: mcmullin07) package." (3.1 Observations and data processing); "Following $uv-$plane continuum subtraction, the CO(2$-$1) spectral window data were deconvolved using `CASA` `tclean` with Briggs (cite: briggs95) weighting of $r=0.5$." (3.1 Observations and data processing)
+   - software: CASA, tclean
+   - parameter: NGC 315 CO(2-1): 0.035" pixels, 7.81 MHz (10.3 km/s) channels; NGC 4261 CO(2-1): 0.05" pixels, 31.2 MHz (40.9 km/s) channels; CO(3-2): 0.035" pixels, 15.6 MHz (13.8 km/s) channels  
+  > "We imaged the primary spectral window into a CO(2$-$1) cube with $0.035\ensuremath{''}$ pixels and 7.81 MHz channels" (3.1 Observations and data processing); "we imaged NGC 4261 using coarser channels of 31.2 MHz (rest-frame 40.9 km s$^{-1}$)" (3.1 Observations and data processing)
+   - fitting: _not stated_
+   - validation: _not stated_
+4. **Derive CO moment maps, PVDs, fluxes, gas masses and non-circular-motion diagnostics**: Moment maps from Voronoi-binned cubes; PVDs extracted along fixed PAs; total CO(2-1) fluxes; H2 and total gas masses via alpha_CO; kinemetry of the first moment map for the line-of-nodes PA  
+  > "spectra were coadded in spatial bins to achieve higher S/N using a Voronoi tessellation technique (cite: cappellari03)" (Emission Line Properties); "We created CO position-velocity diagrams (PVDs) by extracting data from the NGC 315 cube along $\mathrm{PA}=39\ensuremath{^\circ}$ and from the NGC 4261 cubes along $\mathrm{PA}=-5\ensuremath{^\circ}$" (Emission Line Properties)
+   - software: Voronoi binning, kinemetry
+   - parameter: R21 = 0.7; alpha_CO = 3.1 Msun pc^-2 (K km/s)^-1; helium fraction f_He = 0.36  
+  > "We estimated H$_2$ gas masses assuming a line luminosity ratio $R_{21}=L^\prime{}_\mathrm{CO21}/L^\prime{}_\mathrm{CO10}=0.7$" (Emission Line Properties); "by correcting the H$_2$ mass measurements for the helium mass fraction $f_\mathrm{He}=0.36$" (Emission Line Properties)
+   - assumption: alpha_CO taken from nearby late-type galaxies; R21 = 0.7  
+  > "$\alpha_\mathrm{CO}=3.1$ $M_\odot$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$ from a sample of nearby, late-type galaxies (cite: sandstrom13)" (Emission Line Properties)
+   - fitting: _not stated_
+   - validation: Gas masses compared with earlier single-dish limits/tentative detections  
+  > "is consistent with previous upper limits (cite: davis19) and a tentative detection based on single-dish observations" (Emission Line Properties)
+5. **Fit thin-disk gas-dynamical models to the CO cubes for M_BH**: Forward-model a thin flat rotating disk (BH plus MGE-derived stellar potential), populate a model cube with Gaussian line profiles, convolve with the beam, and fit the data cube directly  
+  > "We used models of the CO gas rotation and intrinsic turbulent velocity dispersion ($\sigma_\mathrm{turb}$) to populate a model cube at each spatial location with Gaussian emergent line profiles." (5.1 Method); "The models were fit directly to the ALMA CO data cubes, thereby allowing better characterization of model goodness-of-fit than if the fits were made to only moment maps." (5.1 Method)
+   - software: IRAF STSDAS lucy
+   - parameter: Intrinsic flux map from ten iterations of Richardson-Lucy deconvolution of the Voronoi-binned zeroth moment map  
+  > "We input the Voronoi-binned zeroth moment map and applied ten iterations of deconvolution, using the ALMA synthesized beam as the kernel." (5.1 Method)
+   - parameter: chi2 computed after 4x4 pixel block-averaging of data and model  
+  > "we elected to compute the model goodness-of-fit after spatially block-averaging the data and model in $4\times 4$ pixel regions to create nearly beam-sized cells" (5.1 Method)
+   - parameter: NGC 315 fit region: semi-major axis 1.60", b/a = 0.26, PA 41 deg, 4400-5420 km/s, 10404 data points  
+  > "The spatial fitting region has a semi-major axis of $\ensuremath{r_\mathrm{fit}}=1.60\ensuremath{''}$, an axis ratio of $b/a=0.26$, and a major-axis PA of $41\ensuremath{^\circ}$." (NGC 315 Modeling Results)
+   - parameter: NGC 4261 CO(2-1) fit region: r_fit = 1.00", b/a = 0.42, PA -20 deg, 1585-2805 km/s, 1178 data points  
+  > "with $\ensuremath{r_\mathrm{fit}}=1.00\ensuremath{''}$, an axis ratio of $b/a=0.42$, and a major-axis $\mathrm{PA}$ of $-20\ensuremath{^\circ}$" (NGC 4261 Modeling Results)
+   - assumption: Thin, flat disk; gas self-gravity neglected in the primary models; sigma_turb either uniform, exponential or Gaussian in radius  
+  > "all of which treat the CO emission as arising from a thin, flat disk" (Table 2 notes); "we did not include the mass of the gas disk in the primary models A$-$E" (5.1 Method)
+   - fitting: chi2 minimization with a downhill simplex; 7-12 free parameters (M_BH, Upsilon, i, Gamma, sigma_turb parameters, kinematic center, v_sys, f0); no priors  
+  > "Model parameters were optimized by $\chi^2$ minimization using a downhill simplex approach (cite: press92)." (5.1 Method)
+   - validation: Compare model first moment map and PVD with data; reduced chi2 of the fiducial fits (1.992 for NGC 315 B2; 1.263 for NGC 4261 C1); CO(3-2) cube fit as an independent check for NGC 4261  
+  > "the first moment map and PVD derived from the model B2 cube do match the observed CO kinematic behavior" (NGC 315 Modeling Results); "We investigated the stability of our CO(2$-$1) gas-dynamical modeling results by fitting the CO(3$-$2) data cube with thin-disk model E that is analogous to model C1." (NGC 4261 Modeling Results)
+6. **Derive statistical and systematic error budgets**: Monte Carlo resampling with line-free channels added to the best-fit model cube (300 realizations) for statistical errors; systematic tests (dust correction, oversampling, deconvolution, gas mass, radial motion, inclination, fit region, block averaging) summed in quadrature  
+  > "line-free slices (where $|\ensuremath{v_\mathrm{LOS}}-\ensuremath{v_\mathrm{sys}}|>560$ km s$^{-1}$) were drawn from the CO(2$-$1) data cube and randomly added to the best-fit model B2 cube" (NGC 315 Modeling Results); "To this term, we added the remaining $\Delta\ensuremath{M_\mathrm{BH}}$ from the other systematic effects we explored in quadrature." (NGC 315 Modeling Results)
+   - parameter: 300 Monte Carlo realizations; 1 sigma from the 15.9 and 84.1 percentiles; oversampling fiducial s = 4  
+  > "we estimated $1\sigma$ uncertainties for each parameter by taking the 15.9 and 84.1 percentiles of the respective distributions" (NGC 315 Modeling Results); "Even without any pixel oversampling, the BH mass is only $\sim$1% removed from the fiducial $s=4$ run." (NGC 315 Modeling Results)
+   - assumption: Delta chi2 intervals not used for statistical errors because block averaging does not remove noise correlation  
+  > "Since block averaging does not fully eliminate noise correlations between neighboring pixels, we do not use $\Delta\ensuremath{\chi^2}$ to determine the $M_\mathrm{BH}$ statistical uncertainty." (NGC 315 Modeling Results)
+   - fitting: _not stated_
+   - validation: Systematic tests rerun with modified model B2/C1; Delta chi2 curves vs fixed M_BH  
+  > "we fixed the BH mass in each trial while allowing all other parameters to vary, and recorded the $\chi^2$ value from the best-fit model" (NGC 315 Modeling Results)
+7. **Compare BH masses with scaling relations and resolve the sphere of influence**: Compare measured M_BH with the M_BH-sigma, M_BH-L_bul and M_BH-M_bul relations; compute r_g as the radius where the BH and stellar contributions to v_c are equal  
+  > "we directly calculated $r_\mathrm{g}$ for models A$-$B3 by finding the radius where the various luminous mass contributions to $v_\mathrm{c}$ equal that from the BH" (Resolving the BH Sphere of Influence)
+   - assumption: Colors J-K = 0.9 and H-K = 0.2 mag for an old, solar-metallicity SSP to convert to K-band bulge luminosity  
+  > "assumed colors of $J-K=0.9$ mag and $H-K=0.2$ mag for an old, solar metallicity SSP (cite: vazdekis10)" (BH Mass)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CASA** 5.1.2: Visibility calibration, self-calibration, continuum subtraction and imaging  
+  > "Visibilities were calibrated using version 5.1.2 of the `Common Astronomy Software Applications` (cite: mcmullin07) package." (3.1 Observations and data processing)
+- **tclean** : CLEAN deconvolution of the CO cubes with Briggs weighting  
+  > "the CO(2$-$1) spectral window data were deconvolved using `CASA` `tclean` with Briggs (cite: briggs95) weighting of $r=0.5$" (3.1 Observations and data processing)
+- **GALFIT** : Fitting MGEs and Nuker profiles to HST and Spitzer images  
+  > "we modeled both the WFC3/IR mosaics and flux-scaled IRAC1 images with concentric 2D Gaussian functions using `GALFIT` (cite: peng02)." (Stellar Luminosity Profile)
+- **MGE code (Cappellari 2002)** : Preliminary parameter guesses for the Gaussian expansions  
+  > "Preliminary parameter guesses were obtained using the (cite: cappellari02) Multi-Gaussian Expansion (MGE) code" (Stellar Luminosity Profile)
+- **AstroDrizzle** : Combining HST frames into mosaics  
+  > "We combined calibrated $J$-band frames using `AstroDrizzle` (cite: gonzaga12) to produce a final mosaic with a 0.08$''$ pixel$^{-1}$ scale." (HST Imaging)
+- **TweakReg** : Aligning WFPC2 images to the J-band mosaic  
+  > "aligned these data to the $J$-band mosaic using `TweakReg` (cite: gonzaga12)" (HST Imaging)
+- **Tiny Tim** : HST WFC3/IR PSF models for the GALFIT fits  
+  > "We adopted Tiny Tim models (cite: krist04) that were dithered and drizzled identically to the HST observations" (Stellar Luminosity Profile)
+- **IRAF STSDAS lucy** : Richardson-Lucy deconvolution of the zeroth moment map to approximate intrinsic CO surface brightness  
+  > "formed using the IRAF STSDAS Richardson-Lucy deconvolution task `lucy` (cite: richardson72; lucy74)" (5.1 Method)
+- **kinemetry** : Tracing the PA of the line of nodes versus radius in the CO first moment maps  
+  > "we applied the `kinemetry` framework (cite: krajnovic11) to the CO first moment maps" (Emission Line Properties)
+- **Voronoi binning** : Spatial binning of spectra for smooth moment maps and the intrinsic flux map  
+  > "spectra were coadded in spatial bins to achieve higher S/N using a Voronoi tessellation technique (cite: cappellari03)" (Emission Line Properties)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| NGC 315 black hole mass (model B2) | 2.08e9 | +/-0.01 (stat), +0.32/-0.14 (sys) in units of 1e9 Msun | Msun | 6 | $(\ensuremath{M_\mathrm{BH}}/10^9\,\ensuremath{M_\odot})=2.08\pm0.01(\mathrm{stat})^{+0.32}_{-0.14}(\mathrm{sys})$ for NGC 315 |
+| NGC 4261 black hole mass (model C1) | 1.67e9 | +/-0.10 (stat), +0.39/-0.24 (sys) in units of 1e9 Msun | Msun | 6 | $(\ensuremath{M_\mathrm{BH}}/10^9\,\ensuremath{M_\odot})=1.67\pm0.10(\mathrm{stat})^{+0.39}_{-0.24}(\mathrm{sys})$ for NGC 4261 |
+| NGC 315 model B2 reduced chi2 | 1.992 | not stated | dimensionless | 5 | Model B2 is not formally an acceptable fit with $\ensuremath{\chi^2}_\nu=1.992$ |
+| NGC 315 J-band stellar M/L (model B2) | 1.87 | 0.01 (stat, Table 3) | Msun/Lsun | 5 | The best-fit $\ensuremath{\Upsilon_J}=1.87$ $M_\odot$/$L_\odot$is below the expected |
+| NGC 4261 model C1 chi2, dof and reduced chi2 | chi2 = 1476.7, N_dof = 1169, chi2_nu = 1.263 | not stated | dimensionless | 5 | achieved $\ensuremath{\chi^2}=1476.7$ over $\ensuremath{N_\mathrm{dof}}=1169$ for $\ensuremath{\chi^2_\nu}=1.263$ |
+| NGC 4261 H-band stellar M/L (model C1) | 1.62 | +0.46/-0.40 (Table 3) | Msun/Lsun | 5 | The best-fit $\ensuremath{\Upsilon_H}=1.62$ $M_\odot$/$L_\odot$ is consistent with the expected |
+| NGC 4261 disk inclination (model C1) | 60.8 | +2.8/-3.3 (Table 3) | deg | 5 | The best-fit $i=60.8\ensuremath{^\circ}$ is slightly lower than the value estimated by (cite: ferrarese96) |
+| NGC 4261 black hole mass from CO(3-2) (model E) | 1.47e9 | not stated | Msun | 5 | Optimizing all remaining free parameters gives $\ensuremath{M_\mathrm{BH}}=1.47\times10^9$ $M_\odot$, $\ensuremath{\Upsilon_H}=2.18$ $M_\odot$/$L_\odot$, and $\sigma_1=35.6$ km s$^{-1}$ |
+| NGC 4261 black hole mass with exponential sigma_turb (model D, i fixed) | 1.55e9 | not stated | Msun | 5 | For model D, the best-fit BH mass decreases to $1.55\times10^9$ $M_\odot$ while $\Upsilon_H$ increases to 1.90 $M_\odot$/$L_\odot$. |
+| NGC 315 uniform turbulent dispersion sigma_1 | ~15.3 | +0.3/-0.2 (model B2, Table 3) | km/s | 5 | All the NGC 315 models prefer a low $\sigma_1$ of $\sim$15.3 km s$^{-1}$ |
+| NGC 4261 uniform turbulent dispersion sigma_1 (model C1) | 40.6 | 6.1 (Table 3) | km/s | 5 | the model C1 best-fit $\sigma_1$ of $40.6$ km s$^{-1}$ |
+| NGC 315 dust extinction at R~0.2" along the minor axis | A_V ~3-4 (A_J ~1-1.5) | not stated | mag | 2 | suggests extinction values of $A_V\sim3-4$ mag ($A_J\sim1-1.5$ mag) |
+| NGC 4261 maximum dust extinction | A_H <~ 0.4 | not stated | mag | 2 | The maximal observed color excesses are consistent with $A_H\lesssim0.4$ mag at all radii. |
+| NGC 4261 dust disk inclination from color contours | 65.3 | +2.1/-4.7 | deg | 6 | The corresponding disk inclination angle is $(65.3^{+2.1}_{-4.7})\ensuremath{^\circ}$, and we estimated a major-axis PA for the disk of $(-17.2^{+2.1}_{-3.7})\ensuremath{^\circ}$. |
+| NGC 315 J-band luminosity within 300" | 5.79e11 | not stated | Lsun | 1 | is $L_J=5.79\times10^{11}$ $L_\odot$ |
+| NGC 4261 H-band luminosity within 300" | 2.29e11 | not stated | Lsun | 1 | is $L_H=2.29\times10^{11}$ $L_\odot$ |
+| NGC 315 total CO(2-1) flux | 12.37 | 0.06 (stat), 1.24 (sys) | Jy km/s | 4 | We measured a total CO(2$-$1) flux of $12.37\pm0.06(\mathrm{stat})\pm1.24(\mathrm{sys})$ Jy km s$^{-1}$ for NGC 315 |
+| NGC 4261 total CO(2-1) flux | 3.06 | 0.15 (stat), 0.31 (sys) | Jy km/s | 4 | $3.06\pm0.15(\mathrm{stat})\pm0.31(\mathrm{sys})$ Jy km s$^{-1}$ for NGC 4261 |
+| NGC 4261 CO line luminosity ratio R32 | ~0.3-0.4 in the outer disk, rising to ~0.6 near the nucleus | not stated | dimensionless | 4 | a ratio $R_{32}=L^\prime{}_\mathrm{CO32}/L^\prime{}_\mathrm{CO21}$ of $\sim$0.3$-$0.4 in the outer disk that rises to $\sim$0.6 near the nucleus |
+| NGC 315 total gas mass | 2.39e8 | 0.01 (stat), 0.24 (sys) in units of 1e8 Msun | Msun | 4 | the implied disk mass of $(M_\mathrm{gas}/10^8\,\ensuremath{M_\odot})=2.39\pm0.01(\mathrm{stat})\pm0.24(\mathrm{sys})$ |
+| NGC 4261 total gas mass | 1.12e7 | 0.05 (stat), 0.11 (sys) in units of 1e7 Msun | Msun | 4 | we estimated a total gas mass of $(M_\mathrm{gas}/10^7\,\ensuremath{M_\odot})=1.12\pm0.05(\mathrm{stat})\pm0.11(\mathrm{sys})$ |
+| NGC 315 mean line-of-nodes PA (receding side) | 223 | not stated | deg | 4 | We also calculated a global average $\overline{\Gamma}_\mathrm{LON}$ of $223\ensuremath{^\circ}$ (for the receding side) |
+| NGC 315 sphere of influence radius r_g | 0.67-0.80 | not stated | arcsec | 7 | We find that $r_\mathrm{g}$ ranges between 0.67$''$$-$0.80$''$ with CO emission detected down to $\sim$(0.11$-$0.14)$r_\mathrm{g}$. |
+| NGC 4261 sphere of influence radius r_g | 1.24-1.58 | not stated | arcsec | 7 | models C1$-$E suggest $\ensuremath{r_\mathrm{g}}=1.24\ensuremath{''}-1.58\ensuremath{''}$ |
+| NGC 315 M_BH predicted by the M_BH-sigma relation | 3.2-3.9e9 | not stated | Msun | 7 | predicts BH masses in the range of $(3.2-3.9)\times 10^9$ $M_\odot$ |
+| Difference in NGC 315 M_BH between models B1 and B3 (dust correction systematic) | ~20% | not stated | percent | 6 | The $\sim$20% difference in BH mass ($\Delta\ensuremath{M_\mathrm{BH}}$) between models B1 and B3 |
+
+## Qualitative findings
+
+- CO emission traces regular Keplerian-like rotation down to tens of pc from the BHs in both galaxies, inside their spheres of influence  
+  > "tracing regular Keplerian rotation down to just tens of parsecs from the BHs" (abstract)
+- The NGC 4261 CO disk may not be fully settled, with a kinematic PA twist and a dust/bulge centroid offset  
+  > "the NGC 4261 disk may not yet be fully settled into an equilibrium configuration." (Emission Line Properties)
+- The unresolved nuclear dust makes the NGC 315 M_BH systematic dominated by the stellar mass model, while NGC 4261 is much less sensitive  
+  > "The stark difference in $\Delta\ensuremath{M_\mathrm{BH}}$ for NGC 315 and NGC 4261 suggests that a larger portion of the NGC 4261 gas disk is within $r_\mathrm{g}$" (NGC 4261 Modeling Results)
+
+## Claim tuples
+
+- H: ALMA CO(2-1) at 0.2-0.3 arcsec resolution can resolve Keplerian gas inside the BH sphere of influence in the radio galaxies NGC 315 and NGC 4261 and give dynamical BH masses | E: Thin-disk forward-modeling of the CO cubes with HST/Spitzer-based MGE stellar mass models | R: M_BH = 2.08e9 Msun (NGC 315) and 1.67e9 Msun (NGC 4261) with stat+sys uncertainties | F: ALMA can precisely measure BH masses in active galaxies; r_g is resolved by factors of ~5-10 | **supported**
+- H: The earlier ionized-gas M_BH for NGC 4261 was underestimated | E: Compare the ALMA CO gas-dynamical M_BH with the earlier HST FOS ionized-gas value | R: ALMA M_BH is ~3 times the earlier estimate | F: The prior ionized-gas measurement is revised upward by a factor of ~3 | **supported**
+- H: The new BH masses follow the M_BH-host galaxy scaling relations | E: Compare with M_BH-sigma, M_BH-L_bul and M_BH-M_bul relations using MGE luminosities and literature velocity dispersions | R: Both masses lie below the mean M_BH-sigma prediction but within the scatter; NGC 315 is below the M_BH-L_bul envelope | F: Masses are broadly consistent with the relations, with NGC 315 an outlier in M_BH-L_bul | **partially**
+- H: Circumnuclear dust extinction is the dominant systematic for NGC 315 but not NGC 4261 | E: Build MGEs with A_J = 0, 0.75, 1.50 (NGC 315) and A_H = 0, 0.4 (NGC 4261) and refit the CO cubes | R: ~20% M_BH change between B1 and B3 for NGC 315; negligible change between C1 and C2 for NGC 4261 | F: Dust dominates the NGC 315 systematic budget, while NGC 4261 is limited by inclination and S/N | **supported**
+- H: The NGC 4261 CO(2-1) result is robust against the choice of CO line | E: Fit the Band 7 CO(3-2) cube with model E, i and v_sys fixed to C1 values | R: M_BH = 1.47e9 Msun from CO(3-2), a 12% decrease relative to CO(2-1) | F: CO(3-2) gives a consistent but lower mass, included in the systematic error budget | **partially**
+
+## Reasoning
+
+- Why this data: Targets were selected from round dust disks in HST images, and the CO(2-1) resolution of ~0.3 arcsec was chosen to partly resolve kinematics inside the large expected r_g  
+  > "We therefore began an ALMA campaign to map CO(2$-$1) kinematics in nearby ETGs with targets selected based on dust morphology." (Introduction); "Based on their large anticipated $r_\mathrm{g}$, we imaged CO(2$-$1) in NGC 315 and NGC 4261 at $\sim$0.3$''$-resolution in order to at least partially resolve CO kinematics within the BH-dominated regions." (Introduction)
+- Why this method: Fit the data cubes directly rather than moment maps to better assess goodness of fit  
+  > "The models were fit directly to the ALMA CO data cubes, thereby allowing better characterization of model goodness-of-fit than if the fits were made to only moment maps." (5.1 Method)
+- Alternative: NGC 4261 model D (exponential sigma_turb, i fixed) fits CO(2-1) better (chi2 = 1400.4) but was not adopted because i is not free; model C1 kept as fiducial  
+  > "Even though model D is a better fit to the CO(2$-$1) data with $\ensuremath{\chi^2}=1400.4$, because $i$ is not a free parameter we elected to retain model C1 as our fiducial gas-dynamical model for NGC 4261." (NGC 4261 Modeling Results)
+- Alternative: Authors did not inflate error bars or exclude poorly fit data to force chi2_nu = 1 for NGC 315  
+  > "We have chosen not to examine *ad hoc* procedures to address this issue" (NGC 315 Modeling Results)
+- How they decided it was enough: _not stated_
+- Limitation (authors): The NGC 315 systematic error budget is provisional because no model is a formally acceptable fit  
+  > "Our quoted systematic error budget for NGC 315 is provisional given that our models do not provide a formally acceptable fit to the data." (NGC 315 Modeling Results)
+- Limitation (authors): The NGC 4261 S/N does not permit a more general disk structure; degeneracies among M_BH, i and sigma_turb remain  
+  > "The S/N of the NGC 4261 CO(2$-$1) data does not permit exploration of a more general disk structure" (NGC 4261 Modeling Results)
+- Limitation (authors): M_BH scales linearly with the assumed distance, which is uncertain for NGC 315 and not folded into the error budget  
+  > "The derived $M_\mathrm{BH}$ scales linearly with the assumed distance, so any change to the distance will result in a commensurate shift in $M_\mathrm{BH}$." (Introduction)
+- Caveat (inferred, ours): NGC 315 chi2_nu ~2 means the quoted statistical error (0.5%) is very small and the model-family systematics are not exhausted
+- Caveat (inferred, ours): The NGC 315 distance (Hubble-flow, 50-100 Mpc range in NED) is a leading uncertainty not included in the error bars
+- Caveat (inferred, ours): Thin-disk model forces fixed inclination for NGC 4261 models D and E, so the mass range depends on that choice
+- Caveat (inferred, ours): Stellar M/L is free and degenerate with the extinction-corrected MGE
+- Caveat (inferred, ours): Deconvolved flux map inside ~0.1" is non-unique and affects line profiles near the nucleus
+
+## Reproducibility
+
+- Data public (paper): Authors' own data (2017.1.00301.S) and the archival Band 7 data (2017.1.01638.S) are ALMA data; the Band 7 set was retrieved from the ALMA archive  
+  > "we also include additional CO(3$-$2) imaging of NGC 4261 from the ALMA archive" (Introduction); "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00301.S and ADS/JAO.ALMA#2017.1.01638.S." (Acknowledgments)
+- Products in archive: _not stated_
+- Missing: Gas-dynamical forward-modeling code is not named or released
+- Missing: Self-calibration and imaging parameters (solints, masks, thresholds, image size)
+- Missing: Line-free channel selection for continuum subtraction
+- Missing: Exact MGE fitting inputs and masks; PSF models; dust-corrected images
+- Missing: Citations for the Monte Carlo and radial-motion procedures are blank
+- Missing: Band 7 execution block details
+- Data volume (inferred): Raw ALMA data for 4 EBs of 2017.1.00301.S plus 1 EB of 2017.1.01638.S is likely tens to ~200 GB; calibrated products of a few GB; HST and Spitzer images are small (<~5 GB)
+- Score (inferred): 3/5, ALMA data are archival and results are numeric, but the custom disk-fitting code, self-cal/imaging settings and several inherited procedures are not given, so independent reproduction needs reimplementation.
+- Rediscovery candidate: no, Data are in the ALMA archive and results are numeric, but the modeling code and several processing settings are not published, so the recipe is not complete enough to redo mechanically.
+
+## Links
+
+- Method: Barth et al. 2016a, 2016b (cite: barth16a; barth16b) (Source of the flat-disk forward-modeling procedure used for the BH mass fits)
+- Method: Cappellari 2002 (cite: cappellari02) (Multi-Gaussian Expansion code for the stellar luminosity models)
+- Method: Goudfrooij et al. 1994; Viaene & Sarzi 2017 (cite: goudfrooij94; viaene17) (Dust extinction (embedded-screen) method)
+- Companion: Boizelle et al. 2017 (cite: boizelle17) (ALMA Cycle 2 CO(2-1) sample from which the targets come)
+- Companion: Barth et al. 2016a; Boizelle et al. 2019 (cite: barth16a; boizelle19) (High-resolution CO imaging and percent-level M_BH for two targets of the same campaign)
+- Related: ALMA Cycle 7 higher-resolution NGC 315 CO program (approved, not yet observed per the paper)
+- Related: HST program GO-15909 (PI Boizelle) for NGC 4261 WFC3/IR imaging
+
+## Checks
+
+```json
+{
+ "quotes": 190,
+ "quotes_ok": 190,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 0,
+ "unsupported_facts": 0,
+ "project_codes": 2,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 26,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 122,
+  "stated": 99,
+  "rate": 0.811
+ },
+ "evidence_ok": true
+}
+```

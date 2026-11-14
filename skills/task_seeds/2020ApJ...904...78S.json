@@ -1,0 +1,550 @@
+{
+ "bibcode": "2020ApJ...904...78S",
+ "title": "Constraining the Chemical Signatures and the Outburst Mechanism of the Class 0 Protostar HOPS 383",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abbdf4",
+ "arxiv_id": "2010.05939",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Can the chemical signatures (N2H+ vs HCO+) and the disk mass/stability of the outbursting Class 0 protostar HOPS 383 constrain the outburst mechanism, e.g. gravitational instability?",
+ "alma_project_codes": [
+  "2015.1.00041.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.11'' x 0.10'' synthesized beam (final continuum image)",
+  "sensitivity": "RMS 0.28 mJy/beam (continuum image)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Archival VLA centimeter flux densities of HOPS 383 added to the mm-cm spectrum (2014 data averaged, upper limits discarded)",
+    "evidence": [
+     {
+      "loc": "Millimeter to Centimeter Spectrum",
+      "quote": "along with a few centimeter wavelengths data from the VLA archive reported by (cite: Madrid15)"
+     },
+     {
+      "loc": "Millimeter to Centimeter Spectrum",
+      "quote": "From the archival data, we averaged the 2014 data and discarded the upper-limits"
+     }
+    ]
+   },
+   "citation": "(cite: Madrid15)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa(1.3 mm) = 0.899 cm2/g for thin ice mantles, used in the analytic disk mass",
+    "evidence": [
+     {
+      "loc": "Disk Mass",
+      "quote": "We take $\\kappa_{1.3 \\text{ mm}} = 0.899$ cm$^2$g$^{-1}$ for thin ice mantles from dust opacity models of (cite: Ossenkopf94)"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf94)"
+  },
+  {
+   "what": {
+    "value": "Mean Class 0 disk mass of 0.0078 Msun from 328 Orion protostars, used for comparison",
+    "evidence": [
+     {
+      "loc": "Disk Mass",
+      "quote": "Based on the study of 328 protostars in Orion, (cite: Tobin20) found that the mean disk mass of Class 0 protostars was 0.0078 M$_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: Tobin20)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity of HOPS 383, L_bol = 7.8 Lsun, used to scale dust temperature",
+    "evidence": [
+     {
+      "loc": "HOPS 383 ALMA Model",
+      "quote": "Also, (cite: Furlan16) found $L_{bol}$ of 7.8 $L_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: Furlan16)"
+  },
+  {
+   "what": {
+    "value": "Earlier SED model luminosity 6-14 Lsun and inclination 41-63 deg",
+    "evidence": [
+     {
+      "loc": "HOPS 383 ALMA Model",
+      "quote": "found luminosities of 6 $L_{\\odot}< L_{bol} <$ 14 $L_{\\odot}$, and inclination of 41$^{\\circ} < i < 63^{\\circ}$."
+     }
+    ]
+   },
+   "citation": "(cite: Safron15)"
+  },
+  {
+   "what": {
+    "value": "Typical protostar mass of 0.5 Msun adopted for Toomre Q",
+    "evidence": [
+     {
+      "loc": "Flux Density Derived Toomre Q",
+      "quote": "Using a typical protostar mass of 0.5 M$_{\\odot}$ ((cite: Kenyon95))"
+     }
+    ]
+   },
+   "citation": "((cite: Kenyon95))"
+  },
+  {
+   "what": {
+    "value": "Burst rate of 1 per 1000 yr inferred for a protostar in Orion",
+    "evidence": [
+     {
+      "loc": "Knotty structures in the 12CO outflow",
+      "quote": "(cite: Fischer19) inferred a burst rate of 1 per 1000 year for a protostar."
+     }
+    ]
+   },
+   "citation": "(cite: Fischer19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the ALMA 0.87 mm continuum",
+   "method": "Manual calibration by the ARC node, CASA 4.7.2 self-calibration and Briggs weighted imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux, disk size, position angle and inclination",
+   "method": "Single-component Gaussian fit to the ALMA 870 micron continuum; inclination from arccos of the deconvolved minor/major axis ratio",
+   "software": [],
+   "key_parameters": [
+    "Deconvolved FWHM 0.18'' x 0.12'', PA 49.7 deg; FWHM = 2.355 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit the mm-to-cm spectrum to separate dust and free-free emission",
+   "method": "Power-law fit of the free-free emission to the long-wavelength points, subtraction from the 8 mm-1 cm data, then a dust power-law fit from 0.87 mm to 1 cm",
+   "software": [
+    "scipy curve_fit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate disk mass analytically from the ALMA and VLA flux densities",
+   "method": "Optically thin isothermal dust emission mass formula with opacity scaled from 1.3 mm by a power law, times a gas-to-dust ratio of 100",
+   "software": [],
+   "key_parameters": [
+    "beta ~ 1.78 for ALMA (870 micron)",
+    "beta ~ 1 for VLA (9 mm)"
+   ],
+   "assumptions": [
+    "Dust temperature 30 K for typical low-luminosity protostar, scaled by (L/Lsun)^0.25 to ~50 K for L_bol = 7.8 Lsun",
+    "Distance ~400 pc",
+    "Opacity kappa(1.3 mm) = 0.899 cm2/g (Ossenkopf & Henning thin ice mantles), scaled as (1.3 mm / lambda)^beta"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute Toomre Q from the flux-derived disk masses",
+   "method": "Q approx 2 M* H / (Md R) with a 0.5 Msun protostar, scaled by sqrt(T) for the pre-outburst temperature",
+   "software": [],
+   "key_parameters": [
+    "Protostar mass 0.5 Msun"
+   ],
+   "assumptions": [
+    "Disk radius R at which c_s is measured; the radius value adopted is not stated"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit radiative transfer disk+envelope models to ALMA and ALMA+VLA visibilities and the SED",
+   "method": "RADMC-3D models (disk, Ulrich envelope with outflow cavity, protostar) with MCMC fitting using emcee, for truncated and exponentially tapered disks; Fourier transform of synthetic images to visibilities",
+   "software": [
+    "RADMC-3D",
+    "emcee",
+    "pdspy"
+   ],
+   "key_parameters": [
+    "chi^2 weights w_vis = 0.5, w_SED = 1",
+    "Protostar temperature 4000 K; luminosity L* free",
+    "Dust: 60% silicate, 15% amorphous carbon, 25% porosity; minimum grain size 0.005 micron; envelope max grain 1 micron; disk max grain size and p (2.5-4.5) free",
+    "SMA visibilities not fit"
+   ],
+   "assumptions": [
+    "Models constrain dust mass only; total mass quoted with gas-to-dust ratio of 100",
+    "Protostar mass used only to set the envelope density structure, not fit"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compute Toomre Q versus radius and pre-outburst Q from the model profiles",
+   "method": "Use model surface density and temperature (averaged over a few slices above midplane) in Q = c_s Omega / (pi G Sigma); pre-outburst temperature scaled by (L_pre/L_burst)^(1/4)",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "L*,pre = 0.5 Lsun; model-derived L*,burst; protostar masses 0.1 to 0.5 Msun"
+   ],
+   "assumptions": [
+    "Keplerian disk; dust-to-gas 1:100"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate outflow knot dynamical timescales",
+   "method": "tau_dyn = D / V_flow (cos i / sin i) using the knot offset and line-of-sight velocity from the ALMA cube",
+   "software": [],
+   "key_parameters": [
+    "closest knot 1.35'' from the protostar; V_flow ~ 10 km/s"
+   ],
+   "assumptions": [
+    "Knots travel at constant speed after ejection"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 870 micron integrated flux density",
+   "value": "157.8",
+   "uncertainty": "3.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "The integrated flux density of HOPS 383 at 870 $\\mu$m is 157.8 $\\pm$ 3.2 mJy with peak intensity value of 47 $\\pm$ 0.7 mJy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 8 mm integrated flux density",
+   "value": "411",
+   "uncertainty": "17",
+   "units": "microJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "the integrated flux density for the 8 mm wavelength data from the VLA is 411 $\\pm$ 17 $\\mu$Jy with peak intensity value of 290 $\\pm$ 7 $\\mu$Jy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk radius from Gaussian fit to ALMA 870 micron",
+   "value": "~62",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "The disk radius is estimated to be $\\sim$62 au from Gaussian fitting of the ALMA 870 $\\mu$m continuum enables."
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved FWHM source size and position angle",
+   "value": "0.18'' x 0.12'', PA 49.7 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec; deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "The deconvolved FWHM source size is 0.18$''$$\\times$0.12$''$ and a position angle of 49.7$^\\circ$; FWHM $\\approx$ 2.355$\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination from deconvolved size",
+   "value": "~48",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "The deconvolved size also enables us to estimate the inclination of HOPS-383 to be $\\sim$48$^\\circ$ calculated from arccos($\\theta_{min}$/$\\theta_{maj}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA Subcompact integrated flux densities at 0.85, 1.1, 1.3 mm",
+   "value": "323.46, 147.74, 136.63",
+   "uncertainty": "12.7, 12.2, 6.7",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "In the Subcompact configuration, we obtained integrated flux density of 323.46 $\\pm$ 12.7 mJy, 147.74 $\\pm$ 12.2 mJy, and 136.63 $\\pm$ 6.7 mJy at 0.85 mm, 1.1 mm, and 1.3 mm, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free contribution at 8 mm, 9 mm, 1 cm",
+   "value": "~0.232, ~0.234, ~0.237",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Millimeter to Centimeter Spectrum",
+     "quote": "The free-free contribution to the 8 mm, 9 mm, and 1 cm data is found to be $\\sim$0.232 mJy, $\\sim$0.234 mJy, and $\\sim$0.237 mJy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust power-law spectrum F_lambda,dust",
+   "value": "(0.17 +/- 0.08) lambda^(-2.85 +/- 0.05)",
+   "uncertainty": "0.05 on exponent",
+   "units": "mJy (lambda in mm)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Millimeter to Centimeter Spectrum",
+     "quote": "From the spectrum, we get the power law as $\\text{F}_{\\lambda, \\text{dust}} = (0.17 \\pm 0.08)\\lambda^{-2.85 \\pm 0.05}$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Analytic disk mass from ALMA flux (T=30 K, 50 K; beta~1.78)",
+   "value": "0.082 and 0.043",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Mass",
+     "quote": "we obtain disk mass of 0.082 M$_{\\odot}$ and 0.043 M$_{\\odot}$ for T$_{\\text{dust}}$ = 30 K and T$_{\\text{dust}}$ = 50 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Analytic disk mass from VLA 9 mm flux (T=30 K, 50 K; beta~1)",
+   "value": "0.25 and 0.15",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Mass",
+     "quote": "we obtain total disk mass of 0.25 M$_{\\odot}$ and 0.15 M$_{\\odot}$ for T$_{\\text{dust}}$ = 30 K and T$_{\\text{dust}}$ = 50 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "VLA disk mass after free-free subtraction (T=30 K, 50 K)",
+   "value": "0.11 and 0.063",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk Mass",
+     "quote": "we get total disk mass of 0.11 M$_{\\odot}$ and 0.063 M$_{\\odot}$ for T$_{\\text{dust}}$ = 30 K and T$_{\\text{dust}}$ = 50 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q from flux-derived masses (0.5 Msun protostar), for Md = 0.043 and 0.082 Msun",
+   "value": "1.67 and 0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Flux Density Derived Toomre Q",
+     "quote": "we find that $Q = 1.67$ and 0.87 for M$_{\\text{disk}} = 0.043 M_{\\odot}$ and 0.082 $M_{\\odot}$, respectively for the disk masses obtained from the ALMA flux density."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA-only model disk mass, inclination and position angle",
+   "value": "~0.02 Msun; i ~ 51 deg; PA ~ 49 deg",
+   "uncertainty": "see Table 2 (e.g. 0.026 +0.004/-0.003 truncated)",
+   "units": "Msun; deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HOPS 383 ALMA Model",
+     "quote": "Both models have a protostellar disk mass of $\\approx$0.02 $M_{\\odot}$ and independently find the same inclination ($i \\approx 51^{\\circ}$) and position angle ($P.A. \\approx 49^{\\circ}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA-only model envelope masses and radii (truncated, tapered)",
+   "value": "0.38 and 1.1 Msun; 5700 and 12000 au",
+   "uncertainty": "not well constrained",
+   "units": "Msun; au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HOPS 383 ALMA Model",
+     "quote": "Although the envelope masses (0.38 $M_{\\odot}$ and 1.1 $M_{\\odot}$) and radii (5700 au and 12000 au) differ between the truncated and tapered model"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA-only model luminosity",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HOPS 383 ALMA Model",
+     "quote": "The luminosities of both models are very similar with $L \\sim 5$ $L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA+VLA model disk masses (truncated, tapered)",
+   "value": "~0.33 and ~0.21",
+   "uncertainty": "see Table 2 (0.330 +0.025/-0.028; 0.214 +0.011/-0.019)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HOPS 383 ALMA+VLA Model",
+     "quote": "The ALMA+VLA model results find massive disks of $M \\sim 0.33 M_{\\odot}$ and $M \\sim 0.21 M_{\\odot}$ for the truncated and the tapered cases, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA+VLA model envelope masses (truncated, tapered)",
+   "value": "0.32 and 0.09",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HOPS 383 ALMA+VLA Model",
+     "quote": "The truncated disk model has a very similar envelope mass compared to the ALMA only models with $M_{env}$ = 0.32 $M_{\\odot}$."
+    },
+    {
+     "loc": "HOPS 383 ALMA+VLA Model",
+     "quote": "the tapered disk model has very low envelope mass of 0.09 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of the 25 K temperature limit now (ALMA only, ALMA+VLA models)",
+   "value": "~550 au; ~250-400 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HCO+ and N2H+",
+     "quote": "the ALMA only and the ALMA+VLA models have 25 K temperature limit at $\\sim$550 au radius and $\\sim$250 - 400 au radius, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of the 25 K temperature limit before the outburst",
+   "value": "50-100",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "HCO+ and N2H+",
+     "quote": "Before the outburst, the models have the 25 K temperature limit at a radius around 50 - 100 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical timescale of the closest outflow knot",
+   "value": "~215",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Knotty structures in the 12CO outflow",
+     "quote": "We get $\\tau_{dyn} \\approx$ 215 yr, with $V_{flow} \\approx 10$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Spacing between outflow knots",
+   "value": "~1400",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Knotty structures in the 12CO outflow",
+     "quote": "which translates to roughly 1400 yr between the knots."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow position angle from SMA 12CO",
+   "value": "~137.5",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Line Results",
+     "quote": "we determine the position angle (PA) to be about 137.5$^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free to total 9 mm flux ratio and rescaled ALMA+VLA disk masses (truncated, tapered)",
+   "value": "0.57; ~0.14 and ~0.092",
+   "uncertainty": "not stated",
+   "units": "dimensionless; Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Estimating Free-Free Subtracted Disk Properties",
+     "quote": "the ratio of free-free emission to total flux density is 234 $\\mu$Jy/411 $\\mu$Jy $\\approx 0.57$."
+    },
+    {
+     "loc": "Estimating Free-Free Subtracted Disk Properties",
+     "quote": "this gives us disk masses of $\\sim$0.14 M$_{\\odot}$ and $\\sim$0.092 M$_{\\odot}$ for the truncated and the tapered ALMA+VLA models, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which of the ALMA execution blocks (2016 vs 2017) enter the continuum image and how they were combined",
+  "Self-calibration details: reference antenna, solution intervals, number of rounds, final cell/image size, clean threshold, mask and niter",
+  "How the 0.87 mm Gaussian source size was fit (task, region, uv or image plane)",
+  "Line-free channel selection for uvcontsub and the 12CO channel/clean parameters",
+  "Source and values of the SED photometry fitted together with the visibilities, and how the uncertainties were set",
+  "Priors/bounds for each free parameter, number of walkers, steps and burn-in, and how visibilities were binned and weighted in the chi^2",
+  "Version of pdspy/RADMC-3D/emcee used for the models",
+  "Distance adopted in the radiative transfer models and the exact distance source",
+  "Opacity at 870 microns and 9 mm used for the analytic masses is only given through the scaling law and beta; ISM temperature choice for pre-burst Q (0.2 vs 0.5 Lsun) is inconsistently stated"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration and clean settings for the ALMA continuum",
+  "SED photometry table used in the model fits",
+  "MCMC priors, walker/step counts, visibility binning and pdspy version",
+  "Coordinates and exact distance adoption for HOPS 383",
+  "Reduced ALMA visibilities (manually calibrated by the ARC node) are not stated to be released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA project code, CASA version, robust, flux calibrators and key analytic formulae with numeric results are given, so the continuum flux, size and analytic disk mass are reproducible; the radiative transfer modeling lacks priors, SED data and self-calibration detail, and the calibration was done manually.",
+ "rediscovery_reason": "The ALMA project code is printed and the data come from the VANDAM survey; the continuum flux, Gaussian size, inclination and analytic disk masses are numeric and redoable, though the full RT model fit is not completely specified.",
+ "source_card": "cards/2020ApJ...904...78S/sonnet/card.md"
+}

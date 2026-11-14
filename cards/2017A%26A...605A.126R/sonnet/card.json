@@ -1,0 +1,974 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017A&A...605A.126R",
+  "title": "The circumstellar envelope around the S-type AGB star W Aql. Effects of an eccentric binary orbit",
+  "year": 2017,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Ramstedt, S.",
+  "n_authors": 12,
+  "arxiv_id": "1709.07327",
+  "doi": "10.1051/0004-6361/201730934",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00524.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "the CO($J$ = 3$\\rightarrow$2) emission from the CSE of the binary S-type AGB star W Aql has been observed at subarcsecond resolution using ALMA."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "W Aql",
+     "coordinates": {
+      "value": "19:15:23.379 -07:02:50.38 (J2000.0)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W Aql has a known companion at a separation of $a$ = 0.46$''$ (cite: ramsetal11) or $\\approx$180 AU, and the distance to the system is estimated to 395 pc (cite: danietal14)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| W Aql  | 19:15:23.379 | -07:02:50.38 | 29$\\pm$3 mJy |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "395 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W Aql has a known companion at a separation of $a$ = 0.46$''$ (cite: ramsetal11) or $\\approx$180 AU, and the distance to the system is estimated to 395 pc (cite: danietal14)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| W Aql  | 19:15:23.379 | -07:02:50.38 | 29$\\pm$3 mJy |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Danilovich et al. 2014 (cite: danietal14)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "W Aql has a known companion at a separation of $a$ = 0.46$''$ (cite: ramsetal11) or $\\approx$180 AU, and the distance to the system is estimated to 395 pc (cite: danietal14)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| W Aql  | 19:15:23.379 | -07:02:50.38 | 29$\\pm$3 mJy |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the wind properties (average mass-loss rate) of W Aql and how has the known companion shaped the CSE, compared with 3D SPH binary interaction models with e=0.2 and 0.6?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The aim of this paper is to investigate the wind properties of the AGB star and to analyse how the known companion has shaped the CSE."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00524.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00524.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four ~2 GHz spectral windows centred on 331, 333, 343, 345 GHz covering 12CO and 13CO J=3-2",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The correlator was set up with four spectral windows $\\sim$2 GHz in width centred on 331, 333, 343, and 345 GHz to cover the $^{12}$CO and $^{13}$CO $J$ = 3 $\\rightarrow$ 2 lines in the same setting."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The $^{12}$CO $J$ = 3 $\\rightarrow$ 2 line emission is centred at a local standard of rest (LSR) velocity of $v_{\\rm{LSR}}$=-25.5 km s$^{-1}$."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m main array (33 and 34 antennas), ACA 7 m (10 antennas), Total Power (3 antennas)",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "W Aql was observed with ten Atacama Compact Array (ACA) 7 m antennas on 6 March 2014. It was also observed on 20 March 2014 with 33, and on 14 April 2014 with 34 main array 12 m antennas."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-558 m main array; 9-49 m ACA",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "Baseline lengths range from 15 to 558 m for the main array, and from 9 to 49 m for the ACA."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.47''x0.41'', PA 65.3 deg (final images)",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The beam of the final images has a full width at half maximum of 0.47$''$$\\times$0.41$''$, and a position angle of 65.3$^{\\circ}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~7'' main array, ~12'' ACA",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "This results in a maximum recoverable scale of $\\sim$7$''$ for the main array and $\\sim$12$''$ for the ACA."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "15 mJy/beam rms in emission-free channels (2 km/s resolution)",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The rms noise level in the emission-free channels reaches 15 mJy/beam."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "23 min ACA; 7.25 and 7.3 min 12m; 67 min TP",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The total observing time was 23 mins for the ACA, and 7.25 mins and 7.3 mins for the 12m array on the first and second run, respectively, and 67 mins total time for the TP array."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "ACA 6 Mar 2014; 12m 20 Mar and 14 Apr 2014; TP 12 Jun 2015",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "Finally, it was observed with three 12 m antennas of the Total Power (TP) array on the 12 June 2015."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "APEX",
+     "provided": {
+      "value": "previous 12CO 3-2 single-dish peak intensity ~145 Jy, used to check flux recovery",
+      "evidence": [
+       {
+        "loc": "2.1 Observations",
+        "quote": "Previous $^{12}$CO $J$ = 3 $\\rightarrow$ 2 line emission observations with APEX (cite: ramsetal09) measured a peak intensity of $\\sim$145 Jy"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Single-dish CO rotational line model of W Aql (Mdot=4e-6, abundances) used as base 1D model",
+      "evidence": [
+       {
+        "loc": "3.1 Determining the average mass-loss rate",
+        "quote": "The model by (cite: danietal14) is further constrained here by the brightness distribution derived from the CO($J$ = 3$\\rightarrow$2) map from ALMA."
+       }
+      ]
+     },
+     "citation": "(cite: danietal14)"
+    },
+    {
+     "what": {
+      "value": "HST/PolCor dust scattered-light image used for comparison",
+      "evidence": [
+       {
+        "loc": "5.1 Comparison to previous resolved observations of the CSE around W Aql",
+        "quote": "Figure [5](#polcor) shows the CO emission contours from Fig. [1](#lineandimage) overlayed on the PolCor image."
+       }
+      ]
+     },
+     "citation": "(cite: ramsetal11)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "3D ESI-Gadget SPH models of W Aql binary (e=0.2, 0.6), 6e6 particles, gridded to 512^3, post-processed with LIME and the ALMA simulator",
+     "evidence": [
+      {
+       "loc": "3.2 Hydrodynamical modelling",
+       "quote": "After $\\approx$ 11 800 years of evolution, 6$\\times 10^6$ particles had been injected."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard procedure (details not given)",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Calibration was carried out following standard procedure."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ceres, Titan, J1924-292",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Ceres, Titan, and quasar J1924-292 were used as flux calibrators."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not possible; continuum too weak",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "the continuum was too weak to be used for self-calibration of the offset mosaic pointings"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "careful iterative multiscale cleaning (details not given)",
+     "evidence": [
+      {
+       "loc": "4.3 Binary interaction model results",
+       "quote": "without the careful, iterative, multiscale cleaning used when imaging the real data"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from emission-free channels subtracted; spectral resolution averaged to 2 km/s",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Final imaging was done after subtracting the continuum and averaging to reach a spectral resolution of 2 km s$^{-1}$."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "main array + ACA (ACA weight 0.25) combined, then with TP via SD2VIS",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The combined main array+ACA visibilities were finally combined with the TP visibility data using the CASA task SD2VIS"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "cube smoothed to 0.6'' with imsmooth for brightness profile",
+     "evidence": [
+      {
+       "loc": "3.1 Determining the average mass-loss rate",
+       "quote": "derived by smoothing the full image cube to a resolution of 0.6$''$ using imsmooth in CASA"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.47''x0.41'', PA 65.3 deg",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The beam of the final images has a full width at half maximum of 0.47$''$$\\times$0.41$''$, and a position angle of 65.3$^{\\circ}$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "15 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The rms noise level in the emission-free channels reaches 15 mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "1D non-LTE CO radiative transfer model of W Aql, assumptions and code",
+      "evidence": [
+       {
+        "loc": "3.1 Determining the average mass-loss rate",
+        "quote": "For a further description on the assumptions made for the W Aql model in particular and the code in general see (cite: danietal14) and (cite: schoolof01), respectively."
+       }
+      ]
+     },
+     "from_reference": "(cite: danietal14); (cite: schoolof01)"
+    },
+    {
+     "what": {
+      "value": "CO envelope size previously from photodissociation models",
+      "evidence": [
+       {
+        "loc": "3.1 Determining the average mass-loss rate",
+        "quote": "The CO envelope size was previously based on the photodissociation models by (cite: mamoetal88; stanetal95)."
+       }
+      ]
+     },
+     "from_reference": "(cite: mamoetal88; stanetal95)"
+    },
+    {
+     "what": {
+      "value": "Collisional rates, energy levels and transition probabilities from LAMDA",
+      "evidence": [
+       {
+        "loc": "3.3 Post-processing radiative transfer",
+        "quote": "Collisional rate coefficients, as well as energy levels and radiative transition probabilities, are taken from (cite: schoetal05)"
+       }
+      ]
+     },
+     "from_reference": "(cite: schoetal05)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Pipeline/CASA versions and manual calibration details",
+    "Robust weighting, cell size, image size, clean masks, multiscale scales",
+    "Line-free channels for continuum",
+    "Flux scale uncertainty",
+    "Specific ALMA simulator settings (simobserve/simanalyze parameters)",
+    "Numerical radial profiles and abundance/temperature/velocity law in the 1D model",
+    "How arc separations were measured and the PV slit details beyond 9 pixels"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Combine and image ALMA data",
+    "method": {
+     "value": "Combine main array and ACA (weight 0.25), image, add TP via SD2VIS, subtract continuum, average to 2 km/s",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The main array data was combined with the ACA data, which was weighted by a factor of 0.25 to account for the lower sensitivity of the 7m antennas, and the combined data was imaged."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "SD2VIS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Peak flux compared with APEX ~145 Jy",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "showing that the same amount of flux was recovered by the combined ALMA observations"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Estimate average mass-loss rate via 1D radiative transfer",
+    "method": {
+     "value": "Measure brightness distribution of CO(3-2) at 0.6'' beam in four directions, average, and fit model brightness distribution with CO envelope size free",
+     "evidence": [
+      {
+       "loc": "3.1 Determining the average mass-loss rate",
+       "quote": "The corresponding brightness distribution (using the same beam size and radii) is calculated from the radiative transfer modelling results and compared to the observed values until a fit is found"
+      }
+     ]
+    },
+    "software": [
+     "CASA imsmooth",
+     "Schöier & Olofsson 2001 Monte Carlo code"
+    ],
+    "key_parameters": [
+     {
+      "value": "distance 395 pc; flux error 10%",
+      "evidence": [
+       {
+        "loc": "3.1 Determining the average mass-loss rate",
+        "quote": "The error in the measured line flux is assumed to be 10% with the variation across the different directions taken into account."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "spherically symmetric CSE with constant mass-loss rate",
+      "evidence": [
+       {
+        "loc": "3.1 Determining the average mass-loss rate",
+        "quote": "The radiative transfer code assumes a spherically symmetric CSE created by a constant mass-loss rate."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "fit by eye/until a fit is found; no sampler stated",
+     "evidence": [
+      {
+       "loc": "Analysis, Determining the average mass-loss rate",
+       "quote": "The corresponding brightness distribution (using the same beam size and radii) is calculated from the radiative transfer modelling results and compared to the observed values until a fit is found"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistent with earlier single-dish results and photodissociation model size",
+     "evidence": [
+      {
+       "loc": "4.1 Wind properties",
+       "quote": "This agrees well with previous estimates of the average mass-loss rate during the creation of the CSE around W Aql."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Run SPH binary interaction models",
+    "method": {
+     "value": "3D ESI-Gadget SPH with W Aql parameters, e=0.2 and 0.6, gridded to 512^3",
+     "evidence": [
+      {
+       "loc": "3.2 Hydrodynamical modelling",
+       "quote": "The output from these high-resolution models was then gridded using the SPH cubic spline kernel to a 512$^3$ grid"
+      }
+     ]
+    },
+    "software": [
+     "3D ESI-Gadget",
+     "GADGET2"
+    ],
+    "key_parameters": [
+     {
+      "value": "M_AGB 2 Msun, M_comp 1 Msun, Mdot 3e-6 Msun/yr, v_inf 16.5 km/s, a=180 AU, Porb 1395 yr",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| $\\dot{M}_{\\rm AGB}$   | 3$\\times10^{-6}\\, {\\rm M}_{\\odot}$ yr$^{-1}$ |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "stars as point masses; companion accretion boundary 1 AU",
+      "evidence": [
+       {
+        "loc": "3.2 Hydrodynamical modelling",
+        "quote": "the stars are treated as point masses, and two different eccentricities for the binary orbit were assumed"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Radiative transfer of SPH model and interferometer simulation",
+    "method": {
+     "value": "LIME 3D non-LTE CO; image at 0.2'', 1 km/s, 100 channels; pass through ALMA simulator with Cycle 1 configs; simanalyze",
+     "evidence": [
+      {
+       "loc": "3.3 Post-processing radiative transfer",
+       "quote": "Finally, the uv-coverage of the combined ALMA arrays is taken into account by running this image through the ALMA simulator"
+      }
+     ]
+    },
+    "software": [
+     "LIME",
+     "CASA simanalyze"
+    ],
+    "key_parameters": [
+     {
+      "value": "100000 grid points, radius 15000 AU, CO/H2 = 6.0e-4, 41 rotational transitions",
+      "evidence": [
+       {
+        "loc": "3.3 Post-processing radiative transfer",
+        "quote": "A constant CO/H$_{2}$ fractional abundance of 6.0$\\times$10$^{-4}$ is assumed for the S-type star."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "ortho-to-para H2 ratio 3; amorphous silicate dust",
+      "evidence": [
+       {
+        "loc": "3.3 Post-processing radiative transfer",
+        "quote": "Collisions with H$_{2}$ are included assuming an ortho-to-para ratio of 3."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared model arc separation and contrast to observed PV diagrams",
+     "evidence": [
+      {
+       "loc": "Discussion, Comparison to the binary interaction models",
+       "quote": "the contrast between the smooth component and the arcs is very weak (about a factor of 2, in agreement with the $e$=0.2 model)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Characterise observed arcs",
+    "method": {
+     "value": "Channel maps, central-channel image, PV diagrams along PA 0, 90, 35 deg with 9-pixel slit",
+     "evidence": [
+      {
+       "loc": "4.2 Circumstellar morphology",
+       "quote": "Figure [3](#pv90) shows position–velocity (PV) diagrams generated over a narrow slit (9 pixels) across the north-south and east-west directions"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Structures beyond ~12'' judged unreliable",
+     "evidence": [
+      {
+       "loc": "4.2 Circumstellar morphology",
+       "quote": "structures beyond $\\sim$12$''$ are less reliable, due to the rapidly declining image quality when moving away from the image centre"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "imaging, imsmooth, simanalyze, SD2VIS",
+     "evidence": [
+      {
+       "loc": "3.1 Determining the average mass-loss rate",
+       "quote": "using imsmooth in CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D non-LTE CO radiative transfer on SPH output",
+     "evidence": [
+      {
+       "loc": "3.3 Post-processing radiative transfer",
+       "quote": "The non-LTE, non-local 3D radiative transfer code LIME (cite: brinhoge10) is used to calculate the CO level populations"
+      }
+     ]
+    }
+   },
+   {
+    "name": "3D ESI-Gadget",
+    "version": "not stated",
+    "used_for": {
+     "value": "SPH binary interaction simulation",
+     "evidence": [
+      {
+       "loc": "3.2 Hydrodynamical modelling",
+       "quote": "W Aql was modelled using the Evolved Stellar Interactions with GADGET in 3D ($^{\\rm{3D}}$ESI-Gadget code)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "average mass-loss rate",
+    "value": "3.0e-6",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Wind properties",
+      "quote": "$\\dot{M}$ = 3.0$\\times$10$^{-6}$ M$_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "terminal expansion velocity",
+    "value": "16.5",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Wind properties",
+      "quote": "reaches the terminal expansion velocity of $v_{\\rm{e}}$ = 16.5 km s$^{-1}$ at r $\\sim$ 2$\\times$10$^{16}$ cm"
+     }
+    ]
+   },
+   {
+    "quantity": "continuum flux density at 338 GHz",
+    "value": "29",
+    "uncertainty": "3",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| W Aql  | 19:15:23.379 | -07:02:50.38 | 29$\\pm$3 mJy |"
+     }
+    ]
+   },
+   {
+    "quantity": "model arc separation",
+    "value": "10-12",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Binary interaction model results",
+      "quote": "the arc separation will be 10–12$''$"
+     }
+    ]
+   },
+   {
+    "quantity": "observed inner arc separation",
+    "value": "2-3",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Circumstellar morphology",
+      "quote": "where the arcs are separated by 2-3$''$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO emission dominated by smooth component with two weak arc patterns; larger pattern likely due to known companion",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The CO($J$ = 3$\\rightarrow$2) emission is dominated by a smooth component overlayed with two weak arc patterns with different separations."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "What is the average mass-loss rate of W Aql?",
+    "experiment": "1D radiative transfer constrained by ALMA brightness distribution and single-dish lines",
+    "result": "Mdot = 3.0e-6 Msun/yr",
+    "finding": "Agrees with previous single-dish results; CO size consistent with photodissociation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The size of the emitting region is consistent with photodissociation models."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the known companion produce the large arc pattern?",
+    "experiment": "SPH+LIME+ALMA simulator for e=0.2, 0.6 compared with observed PV",
+    "result": "~10'' arcs in model; weak hint in data with contrast ~2",
+    "finding": "Likely due to companion, consistent with low eccentricity",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "It is consistent with a binary orbit with low eccentricity."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Origin of the 2-3'' arcs",
+    "experiment": "Compared observed arcs with models and known processes",
+    "result": "~200 yr timescale, asymmetric, coincident with dust",
+    "finding": "Not explained by any known process of the system",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the separation timescale (200 yrs) is not consistent with any known process of the system"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Observe CO around known binary AGB stars to constrain 3D hydrodynamical models",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we have designed a project for ALMA to observe the CO gas distribution and kinematics around known binary AGB stars"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Pulsation/convection and episodic dust-formation stalling rejected as cause of inner arcs",
+     "evidence": [
+      {
+       "loc": "5.3 Circumstellar gas envelope of W Aql",
+       "quote": "The pulsation/convection timescale is much shorter than the arc-formation timescale, and therefore is probably not the cause of the arcs at smaller separations."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Weak arc contrast and unreliable image beyond ~12'' limit eccentricity constraints",
+     "evidence": [
+      {
+       "loc": "5.2 Comparison to the binary interaction models",
+       "quote": "a deeper and larger image would be necessary in order to draw firm conclusions about the orbit eccentricity of the known companion"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mass-loss rate fit has no stated uncertainty or formal fitting",
+    "Arc detection is qualitative and prone to imaging artefacts",
+    "Model orientation unknown; only two eccentricities tested",
+    "Simulated ALMA imaging did not use the same cleaning as the real data"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2012.1.00524.S acknowledged; no explicit public statement",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00524.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters and clean settings",
+    "Full 1D model input profiles",
+    "SPH code availability and simulator settings"
+   ],
+   "estimated_data_volume_inferred": "~100 GB (12m+ACA+TP, four spectral windows)",
+   "score_inferred": 3,
+   "score_reason": "Data are archival and the models are described, but the imaging and 1D fitting details are sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete; key results rely on qualitative arc identification and custom codes."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: danietal14)",
+     "why": "1D CO model of W Aql"
+    },
+    {
+     "citation": "(cite: schoolof01)",
+     "why": "Monte Carlo radiative transfer code"
+    },
+    {
+     "citation": "(cite: brinhoge10)",
+     "why": "LIME"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ramsetal14); (cite: ramsetal15); (cite: doanetal17)",
+     "why": "Other stars in the same ALMA binary AGB project"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA binary AGB project (R Aqr, o Cet, W Aql, pi1 Gru)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f396618ffc8541e6ce7a42293794853c",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:10",
+  "usage": {
+   "input_tokens": 17011,
+   "output_tokens": 8581,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.060522,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 66,
+  "quotes_ok": 66,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 52,
+   "rate": 0.675
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:38:11",
+  "custom_id": "repair-sonnet-ec1638c4188cd3b87a028dcede85b356",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "The corresponding brightness distribution (using the same beam size and radii) is calculated from the radiative transfer modelling results and compared to the observed values until a fit is found"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "the contrast between the smooth component and the arcs is very weak (about a factor of 2, in agreement with the $e$=0.2 model)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

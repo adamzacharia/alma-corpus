@@ -1,0 +1,460 @@
+{
+ "bibcode": "2022MNRAS.509.2920N",
+ "title": "The MBHBM<SUP>⋆</SUP> Project - II. Molecular gas kinematics in the lenticular galaxy NGC 3593 reveal a supermassive black hole",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab3016",
+ "arxiv_id": "2110.08476",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Measure the supermassive black hole (SMBH) mass and characterize the nuclear star cluster (NSC) and massive core of cold molecular gas (CMC) in the sub-M* lenticular galaxy NGC 3593 using ALMA 12CO(2-1) kinematics.",
+ "alma_project_codes": [
+  "2017.1.00964.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "49 ALMA 12-m antennae",
+  "angular_resolution": "0.33'' x 0.29'' (11.6 x 10.2 pc^2) at P.A. = 35 deg",
+  "sensitivity": "~1 mJy beam^-1 per 10 km s^-1 binned channel (line); ~30 uJy beam^-1 upper limit (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mass surface-density profiles of the primary and secondary/counter-rotating stellar discs",
+    "evidence": [
+     {
+      "loc": "Outer mass model",
+      "quote": "For the stellar component, we first average the mass surface-density profiles of the primary and secondary/counter-rotating stellar discs from (cite: Coccato13), convert the average into MGE form"
+     }
+    ]
+   },
+   "citation": "(cite: Coccato13)"
+  },
+  {
+   "what": {
+    "value": "Ratio of total atomic-to-molecular gas mass M_HI / M_H2 = 0.5",
+    "evidence": [
+     {
+      "loc": "Outer mass model",
+      "quote": "(cite: Hunter89) reported a ratio of total atomic-to-molecular gas mass $M_{\\rm H i}/M_{\\rm H_2}=0.5$ (thus also consistent with the (cite: Pogge93) H i measurement), that we adopt here"
+     }
+    ]
+   },
+   "citation": "(cite: Hunter89)"
+  },
+  {
+   "what": {
+    "value": "Total dust mass M_dust = 10^6 M_sun",
+    "evidence": [
+     {
+      "loc": "NGC 3593",
+      "quote": "The total mass and temperature of the dust of NGC 3593 were estimated to be $T_{\\rm dust}\\approx40$ K and $M_{\\rm dust}\\approx10^6$ M$_{\\odot}$ using observations at $1.1$ mm, $800$ $\\mu$m and $450$ $\\mu$m (cite: Fich93a)"
+     },
+     {
+      "loc": "Outer mass model",
+      "quote": "For the dust, we adopt the total mass mentioned in Section 2 ($M_{\\rm dust}=10^6$ M$_{\\odot}$) and again add it to the molecular hydrogen."
+     }
+    ]
+   },
+   "citation": "(cite: Fich93a)"
+  },
+  {
+   "what": {
+    "value": "Central stellar velocity dispersion sigma_* approx 60 km s^-1",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Given the best-fitting $M_{\\rm BH}\\approx2.4\\times10^6$ M$_{\\odot}$ and the central stellar velocity dispersion $\\sigma_\\star\\approx60$ km s$^{-1}$ (cite: Bertola96)"
+     }
+    ]
+   },
+   "citation": "(cite: Bertola96)"
+  },
+  {
+   "what": {
+    "value": "NSC Sérsic light profile and mass-to-light ratio",
+    "evidence": [
+     {
+      "loc": "Stellar mass models",
+      "quote": "we replace the first three Gaussians of our (inner) stellar-mass MGE model (our NSC defined in item (iii) above; see Table 4) by the MGE components obtained from the product of the NSC Sérsic light profile and mass-to-light ratio of (cite: Pechetti20)"
+     }
+    ]
+   },
+   "citation": "(cite: Pechetti20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create 12CO(2-1) moment maps, spectrum, and position-velocity diagrams",
+   "method": "Moment-masking technique: spatially smooth each channel by convolving with a Gaussian of FWHM alpha times the synthesised beam FWHM, then apply beta x sigma clipping to create a mask applied to the full-resolution cube.",
+   "software": [],
+   "key_parameters": [
+    "alpha = 3, beta = 0.75"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct fixed ISM mass MGE model and extract radial kinematic P.A. profile",
+   "method": "Convert 12CO(2-1) moment 0 map to H2 surface density, add HI and dust mass assuming they follow the 12CO(2-1) distribution, decompose total ISM map into Gaussian components with MGE, and extract kinematic P.A. profile from velocity map.",
+   "software": [
+    "MgeFit",
+    "Kinemetry"
+   ],
+   "key_parameters": [
+    "3 MGE Gaussian components for ISM (Table 3)"
+   ],
+   "assumptions": [
+    "12CO(2-1)/12CO(1-0) = 0.8; X_CO = (1.0 +/- 0.3) x 10^20 cm^-2 (K km s^-1)^-1; M_HI / M_H2 = 0.5; M_dust = 10^6 M_sun; H2, HI, and dust all distributed as 12CO(2-1) intensity"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit outer 12CO(2-1) kinematics (4'' <= r <= 30'') to constrain outer stellar mass normalisation",
+   "method": "Average primary and secondary stellar disc profiles from Coccato et al. (2013), convert to MGE excluding r < 4'', and use KinMS with SkySampler clouds and JAM mge_circular_velocity to fit the outer data cube.",
+   "software": [
+    "KinMS",
+    "KINMSpy_MCMC",
+    "emcee",
+    "SkySampler",
+    "JAM",
+    "IDL",
+    "Python"
+   ],
+   "key_parameters": [
+    "Fitting area: 300 x 100 spaxels (30'' x 10'') excluding inner 40 x 40 spaxels (4'' x 4''); velocity range: 30 channels (-150 to 150 km s^-1); 7 free parameters (Sigma_*,4'', f, i, x_c, y_c, v_off, sigma_0); d_t = 0"
+   ],
+   "assumptions": [
+    "Circular orbits in an axisymmetric gravitational potential; thin disc (d_t = 0); spatially-constant turbulent velocity dispersion sigma_0; no central SMBH potential in outer fit"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct inner (< 4'') and combined (<= 30'') stellar-mass MGE models from HST images",
+   "method": "Align HST WFPC2 F450W and F814W images to 12CO(2-1) centre, convolve with Tiny Tim PSFs, subtract background at 13''-15'', convert F450W-F814W colour map to M/L_F814W map using Roediger & Courteau (2015) relation, multiply by F814W luminosity map, fit MGE to southern half (masking northern half), and scale inner model to outer model at r = 4''.",
+   "software": [
+    "Tiny Tim",
+    "MgeFit"
+   ],
+   "key_parameters": [
+    "Background subtraction at r = 13''-15''; MGE axis ratio constrained to q = 0.39-0.95; northern side excluded; 8 combined MGE components (Table 4)"
+   ],
+   "assumptions": [
+    "F450W and F814W approximated as g and i bands; Chabrier IMF; Charlot & Fall (2000) dust attenuation; foreground extinction A_V = 0.053 mag with Cardelli et al. (1989) law; distance D = 7 Mpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure SMBH mass by fitting full 12CO(2-1) kinematics with KinMS and test systematic uncertainties",
+   "method": "Use combined stellar MGE and ISM MGE models in KinMS MCMC to fit 12CO(2-1) cube across all radii, solving for M_BH and stellar mass scaling factor Gamma, then re-run under 9 alternative systematic model assumptions and evaluate asymmetric drift.",
+   "software": [
+    "KinMS",
+    "KINMSpy_MCMC",
+    "emcee",
+    "SkySampler",
+    "JAM",
+    "IDL",
+    "Python"
+   ],
+   "key_parameters": [
+    "8 free parameters: M_BH, Gamma, f, i, x_c, y_c, v_off, sigma_0; 10^5 MCMC iterations with 40% burn-in"
+   ],
+   "assumptions": [
+    "Axisymmetric potential, circular orbits, thin disc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Measure masses, effective radii, and Sérsic indices of the NSC, CMC, and outer discs",
+   "method": "Extract 1D radial mass surface-density profiles of stars and ISM in concentric annuli using IRAF ellipse, then fit PSF/beam-convolved double-Sérsic functions using IDL MPFIT.",
+   "software": [
+    "IRAF",
+    "IDL",
+    "MPFIT"
+   ],
+   "key_parameters": [
+    "Double-Sérsic components (narrow = NSC or CMC; broad = stellar disc or ISM disc) convolved with F814W PSF or ALMA synthesised beam"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SMBH mass (M_BH)",
+   "value": "2.40e6",
+   "uncertainty": "+1.87e6/-1.05e6 (3sigma statistical)",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Using dynamical modelling, the molecular gas kinematics allow us to infer a SMBH mass $M_{\\rm BH}=2.40_{-1.05}^{+1.87}\\times10^6$ M$_{\\odot}$ (only statistical uncertainties at the $3\\sigma$ level)."
+    }
+   ]
+  },
+  {
+   "quantity": "log(M_BH / M_sun) (default best fit)",
+   "value": "6.38",
+   "uncertainty": "+0.07/-0.08 (1sigma), +0.25/-0.25 (3sigma)",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\log(M_{\\rm BH}/{\\rm M}_\\odot)$ | $(1\\to9)$ | $6.38$ | $-0.08$, $+0.07$ | $-0.25$, $+0.25$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass lower limit (including systematics)",
+   "value": ">3e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "even if $M_{\\rm NSC}$ is at the upper end of its allowed range, the evidence for a black hole does not vanish, but remains with a lower limit of $M_{\\rm BH}>3\\times10^5$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass allowed range (including all systematic uncertainties)",
+   "value": "3.0e5 - 4.3e6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Considering all potential systematic uncertainties associated with the stellar and/or ISM mass model, the SMBH must have a mass in the range $3.0\\times10^5$–$4.3\\times10^6$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar-mass scaling factor (Gamma)",
+   "value": "0.89",
+   "uncertainty": "+0.02/-0.01 (1sigma), +0.06/-0.03 (3sigma)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\Gamma$ | $(0.1\\to2.0)$ | $0.89$ | $-0.01$, $+0.02$ | $-0.03$, $+0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas CND inclination (i, inner fit)",
+   "value": "74.99",
+   "uncertainty": "+0.12/-0.14 (1sigma), +0.50/-0.55 (3sigma)",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$i$ ($\\ensuremath{^\\circ}$) | $(70\\to90)$ | $74.99$ | $-0.14$, $+0.12$ | $-0.55$, $+0.50$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas CND turbulent velocity dispersion (sigma_0, inner fit)",
+   "value": "15.01",
+   "uncertainty": "+0.15/-0.14 (1sigma), +0.45/-0.45 (3sigma)",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\sigma_0$ (km s$^{-1}$) | $(1\\to50)$ | $15.01$ | $-0.14$, $+0.15$ | $-0.45$, $+0.45$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas CND integrated flux (f, inner fit)",
+   "value": "1216.00",
+   "uncertainty": "+0.18/-0.17 (1sigma), +0.59/-0.57 (3sigma)",
+   "units": "Jy km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$f$ (Jy km s$^{-1}$) | ($10^2-5\\times10^3$) | $1216.00$ | $-0.17$, $+0.18$ | $-0.57$, $+0.59$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer stellar mass surface density at 4'' (log(Sigma_*,4'' / M_sun pc^-2))",
+   "value": "4.05",
+   "uncertainty": "+0.51/-0.40 (3sigma)",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "$\\log(\\Sigma_{\\star,4\\ensuremath{''}}/{\\rm M}_\\odot\\,{\\rm pc}^{-2})$ | $(1\\to8)$ | $4.05$ | $-0.40$, $+0.51$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass (M_H2)",
+   "value": "2.8e8",
+   "uncertainty": "1.2e8",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Outer mass model",
+     "quote": "This yields a total molecular gas mass $M_{\\rm H_2}=(2.8\\pm1.2)\\times10^8$ M$_{\\odot}$, $\\approx40$ times smaller than the total stellar mass of the galaxy"
+    }
+   ]
+  },
+  {
+   "quantity": "Massive core of cold molecular gas mass (M_CMC)",
+   "value": "5.4e6",
+   "uncertainty": "1.2e6",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We also detect a massive core of cold molecular gas (CMC) of mass $M_{\\rm CMC}=(5.4\\pm1.2)\\times10^6$ M$_{\\odot}$ and effective (half-mass) radius $r_{\\rm CMC,e}=11.2\\pm2.8$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Massive core of cold molecular gas effective radius (r_CMC,e)",
+   "value": "11.2",
+   "uncertainty": "2.8",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We also detect a massive core of cold molecular gas (CMC) of mass $M_{\\rm CMC}=(5.4\\pm1.2)\\times10^6$ M$_{\\odot}$ and effective (half-mass) radius $r_{\\rm CMC,e}=11.2\\pm2.8$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Massive core of cold molecular gas Sérsic index (n_CMC)",
+   "value": "1.1",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "CMC | $11.2\\pm2.8$ | $0.32\\pm0.08$ | $1.1\\pm0.1$ | $0.54\\pm0.12$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear star cluster mass (M_NSC)",
+   "value": "1.67e7",
+   "uncertainty": "0.48e7",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "co-spatial with a nuclear star cluster (NSC) of mass $M_{\\rm NSC}=(1.67\\pm0.48)\\times10^7$ M$_{\\odot}$ and effective radius $r_{\\rm NSC,e}=5.0\\pm1.0$ pc (or $0.15\\ensuremath{''}\\pm0.03\\ensuremath{''}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear star cluster effective radius (r_NSC,e)",
+   "value": "5.0",
+   "uncertainty": "1.0",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "co-spatial with a nuclear star cluster (NSC) of mass $M_{\\rm NSC}=(1.67\\pm0.48)\\times10^7$ M$_{\\odot}$ and effective radius $r_{\\rm NSC,e}=5.0\\pm1.0$ pc (or $0.15\\ensuremath{''}\\pm0.03\\ensuremath{''}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear star cluster Sérsic index (n_NSC)",
+   "value": "1.0",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "NSC | $5.0\\pm1.0$ | $0.15\\pm0.03$ | $1.0\\pm0.1$ | $1.67\\pm0.48$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar disc mass (Sérsic fit)",
+   "value": "1.275e10",
+   "uncertainty": "0.370e10",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "Disc | $567\\pm30$ | $16.2\\pm0.8$ | $1.4\\pm0.2$ | $1,275\\pm370$"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM disc mass (Sérsic fit)",
+   "value": "3.65e8",
+   "uncertainty": "0.87e8",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "Disc | $444.5\\pm3.5$ | $12.7\\pm0.1$ | $1.0\\pm0.1$ | $36.5\\pm8.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum emission upper limit",
+   "value": "<30",
+   "uncertainty": "not stated",
+   "units": "uJy beam^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "12CO(2-1) ALMA observations",
+     "quote": "No continuum emission is detected across the primary beam of $25.3\\ensuremath{''}$ diameter, so we report an upper limit on the continuum emission of $\\approx30$ $\\mu$Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH sphere of influence radius (R_SOI)",
+   "value": "3.0",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the BH in NGC 3593 has a nominal SOI radius $R_{\\rm SOI}\\equiv GM_{\\rm BH}/\\sigma_\\star^2\\approx3.0$ pc ($\\approx0.09\\ensuremath{''}$)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact image size (in pixels) used in CASA clean",
+  "Exact frequency/channel ranges defined as line-free for continuum upper limit",
+  "Number of walkers in emcee MCMC chains",
+  "Number of point clouds sampled in SkySampler"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial mask polygon used on the northern half of the HST stellar mass map during MGE fitting",
+  "Exact clean mask regions used interactively in CASA clean",
+  "Exact SkySampler configuration parameters (e.g. number of clouds)"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Raw/pipeline ALMA data and archival HST data are public, all analysis packages (CASA, KinMS, SkySampler, MgeFit, JAM, Kinemetry, emcee) are publicly available and named, MGE tables for both ISM and stars are explicitly provided (Tables 3 and 4), and MCMC setup/priors/grid dimensions are well documented. Minor interactive steps (clean masking, HST northern mask geometry) are not machine-specified.",
+ "rediscovery_reason": "Public ALMA dataset (2017.1.00964.S) and public HST WFPC2 dataset (GO-11128), open-source modelling tools (KinMS, MgeFit, emcee), published MGE component tables, and a clear quantitative target (M_BH, M_NSC, M_CMC).",
+ "source_card": "cards/2022MNRAS.509.2920N/sonnet/card.md"
+}

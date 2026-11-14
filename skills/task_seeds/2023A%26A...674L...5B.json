@@ -1,0 +1,479 @@
+{
+ "bibcode": "2023A&A...674L...5B",
+ "title": "Neutral outflows in high-z QSOs",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346271",
+ "arxiv_id": "2305.04098",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "To detect outflowing neutral gas in five strongly lensed z~2-4 QSOs using OH+(1_1-1_0), CO(9-8), and underlying dust continuum observations, and compare their outflow and warm molecular gas properties to high-z star-forming and active galaxies.",
+ "alma_project_codes": [
+  "2019.1.01802.S"
+ ],
+ "data": {
+  "bands": "Band 7 (four sources) and Band 5 (PSS J2322+1944)",
+  "arrays": "44 to 48 antennas",
+  "angular_resolution": "0.50\"x0.65\" to 0.98\"x1.2\"",
+  "sensitivity": "0.071 to 0.40 mJy beam^-1 per 100 km s^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "500 um continuum flux densities, FIR luminosities (40-120 um), dust temperatures, and redshifts for MG J0414+0534 and PSS J2322+1944 from Herschel/SPIRE follow-up of gravitationally lensed QSOs",
+    "evidence": [
+     {
+      "loc": "Sample and observations",
+      "quote": "The five quasars were selected based on their 500 $\\mu$m continuum flux densities from a sample of 104 gravitationally lensed QSOs presented in (cite: Stacey2018)."
+     },
+     {
+      "loc": "Sample and observations",
+      "quote": "The sources are listed in both the CASTLES survey (cite: Kochanek1999) and Sloan Digital Sky Survey Quasar Lens Search catalogue (cite: Inada2012), which have since been followed up with *Herschel*/SPIRE observations (cite: Stacey2018), providing accurate estimates of their FIR-luminosities and dust temperatures (Table [\\[tab:derived\\]](#tab:derived))."
+     }
+    ]
+   },
+   "citation": "(cite: Stacey2018)"
+  },
+  {
+   "what": {
+    "value": "Redshift for RX J0911+0551",
+    "evidence": [
+     {
+      "loc": "Derived line properties",
+      "quote": "| RX J0911+0551  | $2.79607^{b}$ | 52.6      | $13.58^{+0.04}_{-0.03}$     |"
+     },
+     {
+      "loc": "Derived line properties",
+      "quote": "b) (cite: Stacey2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Stacey2021)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of high-z sources with OH+ and CO(9-8) measurements: obscured QSO W0410-0913, unobscured QSO SDSS J231038.88+185519.7, and DSFGs (HerBS-89a and Riechers et al. 2021b sample)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We compared our results with high-z sources from the literature with comparable FIR luminosities, including obscured (W0410$-$0913 $z$=3.592 (cite: Stanley2021)) and unobscured (SDSS J231038.88+185519.7 $z$=6.0031, (cite: Shao2022)) QSOs, and DSFGs (HerBS-89a $z$=2.95 (cite: Berta2021) and the sample of (cite: Riechers2021b))."
+     }
+    ]
+   },
+   "citation": "(cite: Stanley2021), (cite: Shao2022), (cite: Berta2021), (cite: Riechers2021b)"
+  },
+  {
+   "what": {
+    "value": "Low-z L'_CO(9-8)-L_FIR correlation and Class I, II, III galaxy comparison data",
+    "evidence": [
+     {
+      "loc": "Derived line properties",
+      "quote": "Our sample of high-z QSOs follow the $\\rm L^\\prime_{CO(9-8)}$–$\\rm L_{FIR}$ correlation found in low–z galaxies (cite: Liu2015), with MG J0414+0534 falling the farthest from the relation towards lower $\\rm L^\\prime_{\\rm CO(9-8)}/L_{\\rm FIR}$ ratios (Fig. [2](#fig:derived)c)."
+     },
+     {
+      "loc": "CO(9-8) Emission",
+      "quote": "At low–$z$, sources categorised into Class I, II, and III in order of increasing CO excitation, showed trends of falling above, on, and both above and below the relation with greater scatter, respectively ((cite: Rosenberg2015), Fig.[2](#fig:derived))."
+     }
+    ]
+   },
+   "citation": "(cite: Liu2015), (cite: Rosenberg2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA visibility data into sideband spectral cubes",
+   "method": "Reduce raw data in CASA and non-interactively image with tclean without continuum subtraction, separating the two sidebands into two cubes at native channel resolution",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5, noise threshold = 1 sigma, frequency resolution = 15.624 MHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spatially integrated spectra and fit spectral lines and continuum",
+   "method": "Iterative two-pass spatial integration and simultaneous multi-Gaussian + linear continuum fitting: first sum spaxels with continuum >= 3 sigma from initial line-free channels, fit spectral components, then include any spaxel with channel value >= 3 sigma within the FWHM of CO(9-8) components and refit",
+   "software": [
+    "curve_fit"
+   ],
+   "key_parameters": [
+    "Spaxel selection threshold >= 3 sigma (continuum in pass 1, CO(9-8) FWHM channel peak in pass 2)"
+   ],
+   "assumptions": [
+    "Same line parameters used to describe the OH+(1_1-1_0) and OH+(2_1-1_0) transitions; CO(9-8) central velocity used as systemic velocity for Doppler shifts"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive integrated optical depths, column densities, and line luminosities",
+   "method": "Compute integrated OH+ absorption optical depths from transmitted and continuum flux, and compute OH+ and CO(9-8) line luminosities using Solomon et al. (1992) expressions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with Omega_m = 0.307 and H_0 = 67.7 km s^-1 Mpc^-1; luminosities not corrected for lensing magnification"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density at 1033.119 GHz rest frequency (HE 1104-1805)",
+   "value": "12.1",
+   "uncertainty": "1.1",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| HE 1104-1805 | $12.1\\pm1.1$ | | | | $1.20\\pm0.15$ | $199\\pm15$ | $116\\pm16$ | $0.89\\pm0.13$ | $264\\pm3.0$ | $26.2\\pm3.0$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) emission flux (HE 1104-1805)",
+   "value": "1.20",
+   "uncertainty": "0.15",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| HE 1104-1805 | $12.1\\pm1.1$ | | | | $1.20\\pm0.15$ | $199\\pm15$ | $116\\pm16$ | $0.89\\pm0.13$ | $264\\pm3.0$ | $26.2\\pm3.0$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) emission flux narrow component (HE 1104-1805)",
+   "value": "0.89",
+   "uncertainty": "0.13",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| HE 1104-1805 | $12.1\\pm1.1$ | | | | $1.20\\pm0.15$ | $199\\pm15$ | $116\\pm16$ | $0.89\\pm0.13$ | $264\\pm3.0$ | $26.2\\pm3.0$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) emission flux broad component (HE 1104-1805)",
+   "value": "3.16",
+   "uncertainty": "0.22",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| | | | | | | | | $3.16\\pm0.22$ | $154\\pm6.5$ | $106\\pm6.5$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 1033.119 GHz rest frequency (MG J0414+0534)",
+   "value": "10.4",
+   "uncertainty": "2.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| MG J0414+0534 | $10.4\\pm2.4$ | $-0.73\\pm0.17$ | $-162\\pm16$ | $144\\pm22$ | $4.33\\pm0.38$ | $-207\\pm49$ | $552\\pm54$ | $4.12\\pm0.28$ | $-186\\pm15$ | $324\\pm12$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) systemic absorption flux (MG J0414+0534)",
+   "value": "-0.73",
+   "uncertainty": "0.17",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| MG J0414+0534 | $10.4\\pm2.4$ | $-0.73\\pm0.17$ | $-162\\pm16$ | $144\\pm22$ | $4.33\\pm0.38$ | $-207\\pm49$ | $552\\pm54$ | $4.12\\pm0.28$ | $-186\\pm15$ | $324\\pm12$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) blue-shifted absorption flux (MG J0414+0534)",
+   "value": "-0.60",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| | | $-0.60\\pm0.07$ | $-435\\pm4.9$ | $67.0\\pm5.2$ | | | | | | | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) emission flux (MG J0414+0534)",
+   "value": "4.33",
+   "uncertainty": "0.38",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| MG J0414+0534 | $10.4\\pm2.4$ | $-0.73\\pm0.17$ | $-162\\pm16$ | $144\\pm22$ | $4.33\\pm0.38$ | $-207\\pm49$ | $552\\pm54$ | $4.12\\pm0.28$ | $-186\\pm15$ | $324\\pm12$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) emission velocity dispersion sigma (MG J0414+0534)",
+   "value": "552",
+   "uncertainty": "54",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| MG J0414+0534 | $10.4\\pm2.4$ | $-0.73\\pm0.17$ | $-162\\pm16$ | $144\\pm22$ | $4.33\\pm0.38$ | $-207\\pm49$ | $552\\pm54$ | $4.12\\pm0.28$ | $-186\\pm15$ | $324\\pm12$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) emission flux (MG J0414+0534)",
+   "value": "4.12",
+   "uncertainty": "0.28",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| MG J0414+0534 | $10.4\\pm2.4$ | $-0.73\\pm0.17$ | $-162\\pm16$ | $144\\pm22$ | $4.33\\pm0.38$ | $-207\\pm49$ | $552\\pm54$ | $4.12\\pm0.28$ | $-186\\pm15$ | $324\\pm12$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) emission velocity dispersion sigma (MG J0414+0534)",
+   "value": "324",
+   "uncertainty": "12",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| MG J0414+0534 | $10.4\\pm2.4$ | $-0.73\\pm0.17$ | $-162\\pm16$ | $144\\pm22$ | $4.33\\pm0.38$ | $-207\\pm49$ | $552\\pm54$ | $4.12\\pm0.28$ | $-186\\pm15$ | $324\\pm12$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 1033.119 GHz rest frequency (PSS J2322+1944)",
+   "value": "5.79",
+   "uncertainty": "0.77",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| PSS J2322+1944 | $5.79\\pm0.77$ | $-0.25\\pm0.13$ | $-308\\pm25$ | $84.8\\pm32$ | $0.98\\pm0.22$ | $-56.0\\pm71$ | $284\\pm48$ | $3.54\\pm0.093$ | $-34.7\\pm3.4$ | $122\\pm3.5$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) absorption flux (PSS J2322+1944)",
+   "value": "-0.25",
+   "uncertainty": "0.13",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| PSS J2322+1944 | $5.79\\pm0.77$ | $-0.25\\pm0.13$ | $-308\\pm25$ | $84.8\\pm32$ | $0.98\\pm0.22$ | $-56.0\\pm71$ | $284\\pm48$ | $3.54\\pm0.093$ | $-34.7\\pm3.4$ | $122\\pm3.5$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) emission flux (PSS J2322+1944)",
+   "value": "3.54",
+   "uncertainty": "0.093",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| PSS J2322+1944 | $5.79\\pm0.77$ | $-0.25\\pm0.13$ | $-308\\pm25$ | $84.8\\pm32$ | $0.98\\pm0.22$ | $-56.0\\pm71$ | $284\\pm48$ | $3.54\\pm0.093$ | $-34.7\\pm3.4$ | $122\\pm3.5$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 1033.119 GHz rest frequency (RX J0911+0551)",
+   "value": "15.9",
+   "uncertainty": "0.74",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| RX J0911+0551 | $15.9\\pm0.74$ | $-0.28\\pm0.06$ | $-253\\pm21$ | $84.6\\pm21$ | | | | $4.14\\pm0.36$ | $15.5\\pm1.2$ | $42.6\\pm0.37$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) absorption flux (RX J0911+0551)",
+   "value": "-0.28",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| RX J0911+0551 | $15.9\\pm0.74$ | $-0.28\\pm0.06$ | $-253\\pm21$ | $84.6\\pm21$ | | | | $4.14\\pm0.36$ | $15.5\\pm1.2$ | $42.6\\pm0.37$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 1033.119 GHz rest frequency (WFI J2026-4536)",
+   "value": "7.78",
+   "uncertainty": "2.6",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| WFI J2026-4536 | $7.78\\pm2.6$ | $-1.49\\pm0.34$ | $-357\\pm41$ | $190\\pm34$ | | | | $13.1\\pm0.31$ | $60.3\\pm2.6$ | $108\\pm2.8$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-1_0) absorption flux (WFI J2026-4536)",
+   "value": "-1.49",
+   "uncertainty": "0.34",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| WFI J2026-4536 | $7.78\\pm2.6$ | $-1.49\\pm0.34$ | $-357\\pm41$ | $190\\pm34$ | | | | $13.1\\pm0.31$ | $60.3\\pm2.6$ | $108\\pm2.8$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) emission flux (WFI J2026-4536)",
+   "value": "13.1",
+   "uncertainty": "0.31",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra and spectral fitting",
+     "quote": "| WFI J2026-4536 | $7.78\\pm2.6$ | $-1.49\\pm0.34$ | $-357\\pm41$ | $190\\pm34$ | | | | $13.1\\pm0.31$ | $60.3\\pm2.6$ | $108\\pm2.8$ | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated OH+(1_1-1_0) absorption optical depth systemic component (MG J0414+0534)",
+   "value": "77.4",
+   "uncertainty": "18",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "| MG J0414+0534  | $2.64^{a}$    | 42.8      | $13.66^{+0.04}_{-0.03}$     | $77.4\\pm18$       | $3.77\\pm0.87$          | $6.37\\pm0.57$           | $18.1\\pm1.6$                         | $6.09\\pm0.41$           | $17.1\\pm1.2$                         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated OH+(1_1-1_0) absorption optical depth blue-shifted component (MG J0414+0534)",
+   "value": "70.6",
+   "uncertainty": "8.6",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "|                |               |           |                             | $70.6\\pm8.6$      | $3.44\\pm0.42$          |                         |                                      |                         |                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated OH+(1_1-1_0) absorption optical depth (PSS J2322+1944)",
+   "value": "102",
+   "uncertainty": "55",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "| PSS J2322+1944 | $4.12^{a}$    | 47.4      | $13.58^{+0.01}_{-0.01}$     | $102\\pm55$        | $4.99\\pm2.7$           | $2.97\\pm0.68$           | $8.44\\pm1.9$                         | $10.8\\pm0.28$           | $30.2\\pm0.79$                        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated OH+(1_1-1_0) absorption optical depth (RX J0911+0551)",
+   "value": "24.3",
+   "uncertainty": "24",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "| RX J0911+0551  | $2.79607^{b}$ | 52.6      | $13.58^{+0.04}_{-0.03}$     | $24.3\\pm24$       | $1.18\\pm 0.27$         |                         |                                      | $6.73\\pm0.59$           | $18.9\\pm1.7$                         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated OH+(1_1-1_0) absorption optical depth (WFI J2026-4536)",
+   "value": "95.6",
+   "uncertainty": "22",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "| WFI J2026-4536 | $2.24265^{c}$ | 50.3      | $13.81^{+0.02}_{-0.02}$     | $95.6\\pm22$       | $4.66\\pm1.1$           |                         |                                      | $14.6\\pm0.35$           | $41.0\\pm0.97$                        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Updated redshift of HE 1104-1805",
+   "value": "2.3222",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "c) This work: we provide updated redshifts for HE 1104$-$1805 of $z=2.3222\\pm0.0001$, centered on the $\\rm OH^+$($1_1$-$1_0$) emission line, and WFI J2026$-$4536 $z=2.24265\\pm0.00001$, centered on the CO(9-8) emission line."
+    }
+   ]
+  },
+  {
+   "quantity": "Updated redshift of WFI J2026-4536",
+   "value": "2.24265",
+   "uncertainty": "0.00001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Derived line properties",
+     "quote": "c) This work: we provide updated redshifts for HE 1104$-$1805 of $z=2.3222\\pm0.0001$, centered on the $\\rm OH^+$($1_1$-$1_0$) emission line, and WFI J2026$-$4536 $z=2.24265\\pm0.00001$, centered on the CO(9-8) emission line."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging",
+  "Pixel cell size and image dimensions used in tclean",
+  "Exact frequency ranges chosen as initial line-free channels for the continuum 3-sigma mask",
+  "Conversion factor and excitation assumptions used to compute OH+ column density N from integrated optical depth (values are tabulated in Table [tab:derived] but the formula/constant is not given in text)",
+  "Rest frequencies adopted for CO(9-8), OH+(2_1-1_0), NH(1_0-1_1), and NH2(2_{2,0}-2_{1,1})"
+ ],
+ "missing_for_reproduction": [
+  "Exact cell size and image size used in tclean",
+  "Exact channel ranges used for the initial line-free continuum RMS estimate",
+  "Formula and constants used to convert integrated OH+ optical depth into OH+ column density N in Table [tab:derived]",
+  "Initial parameter guesses and bounds passed to curve_fit for multi-component deblending"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Single ALMA project code (2019.1.01802.S) is clearly identified, imaging parameters (robust=0.5, 1-sigma threshold, native 15.624 MHz channels, no continuum subtraction) and the two-step 3-sigma spaxel integration + curve_fit multi-Gaussian fitting recipe are well described, and comprehensive numeric tables of fitted and derived quantities are provided. Minor deductions for missing tclean pixel size, OH+ column density conversion formula, and initial guesses/bounds for degenerate multi-Gaussian fits.",
+ "rediscovery_reason": "Public single-project ALMA dataset (2019.1.01802.S) on 5 bright lensed QSOs with a straightforward imaging and 1D spectral extraction/fitting workflow and complete numeric answer keys for continuum fluxes, line fluxes, velocities, dispersions, optical depths, and luminosities.",
+ "source_card": "cards/2023A%26A...674L...5B/sonnet/card.md"
+}

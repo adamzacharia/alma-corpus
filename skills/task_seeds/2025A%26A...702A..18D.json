@@ -1,0 +1,459 @@
+{
+ "bibcode": "2025A&A...702A..18D",
+ "title": "Multi-frequency observations of PDS70c: Radio emission mechanisms in the circumplanetary environment",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202554485",
+ "arxiv_id": "2507.21970",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets",
+  "star_formation"
+ ],
+ "question": "What is the radio emission mechanism of the circumplanetary environment around PDS 70c, and why is PDS 70c detected in the sub-millimetre continuum while PDS 70b is not?",
+ "alma_project_codes": [
+  "2022.1.00592.S",
+  "2022.1.01477.S",
+  "2022.1.00893.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 7, Band 9",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3: 0.077'' x 0.070''; Band 4: 0.075'' x 0.064''; Band 7: 0.059'' x 0.050'' (natural weights: 0.102'' x 0.082''); Band 9: 0.054'' x 0.045''",
+  "sensitivity": "Band 3: 4.68 uJy/beam; Band 4: 4.06 uJy/beam; Band 7: 14 uJy/beam (single EBs ~20–30 uJy/beam in natural weights); Band 9: 115 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Archival ALMA Band 3 datasets from projects 2022.1.00893.S and 2022.1.01477.S",
+    "evidence": [
+     {
+      "loc": "Data acquisition",
+      "quote": "We also include in our analysis the archival datasets for Bands 3, from ALMA projects 2022.1.00893.S (cite: Doi2024ApJ...974L..25D) and 2022.1.01477.S (cite: Liu2024ApJ...972..163L)."
+     }
+    ]
+   },
+   "citation": "(cite: Doi2024ApJ...974L..25D; Liu2024ApJ...972..163L)"
+  },
+  {
+   "what": {
+    "value": "2017 and 2019 Band 7 flux densities and positions of PDS 70c",
+    "evidence": [
+     {
+      "loc": "Imaging, self-calibration and alignment",
+      "quote": "The same imaging strategy as for the 2017 and 2019 Band 7 datasets (cite: CasassusCarcamo2022MNRAS.513.5790C; Casassus2023MNRAS.526.1545C) was extended to the other bands."
+     },
+     {
+      "loc": "Point source measurements of PDS 70c",
+      "quote": "Flux / $\\mu$Jy | $12\\pm 4.7$ | $21.4\\pm 4.1$ | $37\\pm23.9$ | $118.5\\pm16.6$ | $121\\pm13$ | 143$\\pm$115$^{a}$"
+     }
+    ]
+   },
+   "citation": "(cite: CasassusCarcamo2022MNRAS.513.5790C; Casassus2023MNRAS.526.1545C)"
+  },
+  {
+   "what": {
+    "value": "Coordinates of protoplanets PDS 70b and PDS 70d",
+    "evidence": [
+     {
+      "loc": "Point source measurements of PDS 70c",
+      "quote": "The two circles in each of the images in Fig. 1 are centred on the positions of b and d, using the co-ordinates provided by (cite: Wang2021AJ....161..148W) and (cite: Christiaens2024A&A...685L...1C)."
+     }
+    ]
+   },
+   "citation": "(cite: Wang2021AJ....161..148W; Christiaens2024A&A...685L...1C)"
+  },
+  {
+   "what": {
+    "value": "Solar photospheric abundances and collisional ionisation potentials of H, He, Na, Mg, and K",
+    "evidence": [
+     {
+      "loc": "Magnetic disc",
+      "quote": "For this we used the abundances and collisional ionisation potentials of the most relevant elements in the solar photosphere, shown in Table 1 (cite: Asplund2009ARA&A..47..481A; Lide2008chcp.book.....L; Sarah2014MNRAS.440...89K)."
+     }
+    ]
+   },
+   "citation": "(cite: Asplund2009ARA&A..47..481A; Lide2008chcp.book.....L; Sarah2014MNRAS.440...89K)"
+  },
+  {
+   "what": {
+    "value": "Planetary mass constraints and orbital radius of PDS 70c",
+    "evidence": [
+     {
+      "loc": "PDS 70c SED models",
+      "quote": "We opted for a planetary mass of $M_{\\rm p}=4 \\, M_{\\rm Jup}$, given the upper limit of $4.9 \\, M_{\\rm Jup}$ (cite: Doi2024ApJ...974L..25D) and the restriction of $4 \\, M_{\\rm Jup}<M_{\\rm p}< 12 \\, M_{\\rm Jup}$ (cite: Haffert2019NatAs...3..749H)."
+     },
+     {
+      "loc": "PDS 70c SED models",
+      "quote": "and we adopted a planetary orbital radius for PDS 70c of $34 \\, {\\rm au}$ (cite: Haffert2019NatAs...3..749H)"
+     }
+    ]
+   },
+   "citation": "(cite: Doi2024ApJ...974L..25D; Haffert2019NatAs...3..749H)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate, align, and image multi-frequency ALMA visibility data",
+   "method": "Perform automatic user-independent phase and amplitude self-calibration with snow (using gpuvmem and CASA gaincal/applycal), align visibility datasets in position and flux scale using VisAlign, concatenate array configurations (except Band 7 TM2, and uv-clipping Band 9 TM1 < 0.4 Mlambda), and restore continuum images.",
+   "software": [
+    "snow",
+    "CASA",
+    "gpuvmem",
+    "VisAlign"
+   ],
+   "key_parameters": [
+    "Briggs robustness parameter r = 2 during self-calibration; final images restored with r = 1.0 (Band 3), r = 1.0 (Band 4), r = 0.0 (Band 7), r = 2.0 (Band 9)",
+    "Band 9 TM1 uvrange clipped to discard baselines shorter than 0.4 Mlambda; TM1 intensity scaled by 1/0.78 and TM2 shifted by dRA = 25.6 mas, dDec = 0.13 mas"
+   ],
+   "assumptions": [
+    "Point source at Band 3 phase centre coincides with GAIA ICRS position of PDS 70 and is due to accretion free-free emission on the central star"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract multi-frequency photometry and spectral indices of PDS 70c and central star",
+   "method": "Search for counterparts at expected orbital positions of PDS 70 b, c, d; measure PDS 70c flux density via peak intensity in restored images, elliptical Gaussian fits in deconvolved images, and forced photometry for non-detections (Bands 3 and 9); compute two-frequency and multi-frequency power-law spectral indices.",
+   "software": [],
+   "key_parameters": [
+    "Band 9 forced photometry aperture radius = 3 times rms pointing accuracy (~5 mas); reference frequency nu_0 = 145 GHz for power-law spectral index fit"
+   ],
+   "assumptions": [
+    "Circular orbit around a 0.97 M_sun star in the plane of the disc with PA = 160 deg and inclination i = 130 deg; positional uncertainty taken as 1/10 clean beam major axis in natural weights"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Assess Band 7 variability of PDS 70c across 2023 epochs",
+   "method": "Align all 9 execution blocks (7 epochs) to 23 May 2023 with VisAlign after amplitude+phase self-calibration; subtract PDS 70c from the gpuvmem disc model via elliptical Gaussian fit, simulate disc visibilities with pyralysis and subtract from observations; fit a point source in the uv plane at fixed centroid position for each spectral window and epoch.",
+   "software": [
+    "VisAlign",
+    "gpuvmem",
+    "pyralysis"
+   ],
+   "key_parameters": [
+    "Reference epoch: 23 May 2023; channels collapsed in each of the 4 spectral windows"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit parametric CPD SED models (dusty disc, jet, H I free-free, uniform slab, and magnetic disc with metals and H-)",
+   "method": "Construct analytic and semi-analytic SED models for a dusty viscous CPD, a dusty CPD plus optically thin/thick ionised jet, a viscous CPD with H I free-free emission, a uniform pill-box slab, and a magnetised CPD with metal and H- free-free and bound-free opacities; sample posterior parameter distributions against the coeval Bands 3, 4, 7, and 9 SED using Nautilus.",
+   "software": [
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "M_p = 4 M_Jup, d = 112.3 pc, orbital radius = 34 au, R_out = 1/3 R_Hill ~ 1.23 au, R_p = R_in = 1 R_Jup, kappa_R = 10 cm^2/g, T_floor = 27 K, mu = 1",
+    "Jet spectral index alpha_jet = 0.4 (optically thick) or -0.1 (optically thin); magnetic disc alpha(R) > 10^-5"
+   ],
+   "assumptions": [
+    "Dust opacity kappa_mm = 3.4 * zeta * (0.87 mm / lambda) cm^2/g; hydrostatic Gaussian vertical gas profile; LTE ionisation via Saha equation; solar photospheric abundances for H, He, Na, Mg, K without dust depletion; n_i = n_H- = n_e = 0 when H- >= 10% of ions"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Simulate CPD surface shock emission and test photospheric shock vs CPD surface shock scenarios",
+   "method": "Fit uniform slab model with fixed R_max = 2 R_Jup to test photospheric shock/accretion funnels; perform two 1D post-shock gas simulations following Aoyama et al. (2018) to compute optical depth and temperature profiles at 300 GHz and 600 GHz; derive mass influx rates and upper limits on planetary accretion rate.",
+   "software": [
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "Pre-shock velocities and densities: (v_0, n_0) = (30 km/s, 10^15 cm^-3) and (50 km/s, 10^12 cm^-3); mean molecular weight mu = 1.35; effective slab radius R_max = 62 R_Jup at 7000 K"
+   ],
+   "assumptions": [
+    "Pre-shock velocity equals free-fall velocity v_0 = sqrt(2 G M_p / r); spatially constant mass flux falling on both sides of a circular slab"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "PDS 70c Band 3 (97.5 GHz) flux density",
+   "value": "12",
+   "uncertainty": "±4.7",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "Flux / $\\mu$Jy | $12\\pm 4.7$ | $21.4\\pm 4.1$ | $37\\pm23.9$ | $118.5\\pm16.6$ | $121\\pm13$ | 143$\\pm$115$^{a}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c Band 4 (145 GHz) flux density",
+   "value": "21.4",
+   "uncertainty": "±4.1",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "Flux / $\\mu$Jy | $12\\pm 4.7$ | $21.4\\pm 4.1$ | $37\\pm23.9$ | $118.5\\pm16.6$ | $121\\pm13$ | 143$\\pm$115$^{a}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c Band 7 (343.5 GHz, 2023) flux density",
+   "value": "121",
+   "uncertainty": "±13",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "Flux / $\\mu$Jy | $12\\pm 4.7$ | $21.4\\pm 4.1$ | $37\\pm23.9$ | $118.5\\pm16.6$ | $121\\pm13$ | 143$\\pm$115$^{a}$"
+    },
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "The peak on PDS 70c, in the restored map of Fig. 1c, is $111\\pm14\\,\\mu$Jy, and a Gaussian fit to the deconvolved map of Fig. 1g yields $157\\pm27\\,\\mu$Jy. We report the weighted average, $121\\pm13\\,\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c Band 9 (671 GHz) forced-photometry flux density",
+   "value": "143",
+   "uncertainty": "±115",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "Flux / $\\mu$Jy | $12\\pm 4.7$ | $21.4\\pm 4.1$ | $37\\pm23.9$ | $118.5\\pm16.6$ | $121\\pm13$ | 143$\\pm$115$^{a}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c spectral index B7/B3",
+   "value": "1.84",
+   "uncertainty": "±0.32",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "$\\alpha$ | $1.84\\pm0.32$ | $2.01\\pm0.22$ | $1.96\\pm0.22$ | $1.73\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c spectral index B7/B4",
+   "value": "2.01",
+   "uncertainty": "±0.22",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "$\\alpha$ | $1.84\\pm0.32$ | $2.01\\pm0.22$ | $1.96\\pm0.22$ | $1.73\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c spectral index B7/B4/B3",
+   "value": "1.96",
+   "uncertainty": "±0.22",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "$\\alpha$ | $1.84\\pm0.32$ | $2.01\\pm0.22$ | $1.96\\pm0.22$ | $1.73\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c spectral index B9/B7/B4/B3",
+   "value": "1.73",
+   "uncertainty": "±0.17",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Point source measurements of PDS 70c",
+     "quote": "$\\alpha$ | $1.84\\pm0.32$ | $2.01\\pm0.22$ | $1.96\\pm0.22$ | $1.73\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central star PDS 70 Band 3 flux density",
+   "value": "24",
+   "uncertainty": "±5",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Imaging, self-calibration and alignment",
+     "quote": "Comparing $24\\pm5\\,\\mu$Jy in Band 3 with $18\\pm4\\,\\mu$Jy in Band 4 corresponds to a spectral index of $\\alpha = -0.7\\pm0.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central star PDS 70 Band 4 flux density",
+   "value": "18",
+   "uncertainty": "±4",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Imaging, self-calibration and alignment",
+     "quote": "Comparing $24\\pm5\\,\\mu$Jy in Band 3 with $18\\pm4\\,\\mu$Jy in Band 4 corresponds to a spectral index of $\\alpha = -0.7\\pm0.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central star PDS 70 Band 3 to Band 4 spectral index",
+   "value": "-0.7",
+   "uncertainty": "±0.8",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Imaging, self-calibration and alignment",
+     "quote": "Comparing $24\\pm5\\,\\mu$Jy in Band 3 with $18\\pm4\\,\\mu$Jy in Band 4 corresponds to a spectral index of $\\alpha = -0.7\\pm0.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70c weighted average Band 7 flux density across 7 epochs in 2023 (uv-plane fit)",
+   "value": "130",
+   "uncertainty": "±4 (weighted scatter 9.3%)",
+   "units": "μJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Variability study",
+     "quote": "The weighted average is $130\\pm 4~\\mu$Jy, with a weighted scatter of 9.3%."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-to-gas ratio upper limit in CPD (fixed alpha = 10^-2 model)",
+   "value": "10^-4.80",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting the data",
+     "quote": "The inferred upper limits on the dust-to-gas ratio are $10^{-4.80}$ and $10^{-7.05}$ for the models with fixed $\\alpha$ and fixed $\\dot{M}_{\\rm p}$, respectively."
+    },
+    {
+     "loc": "Conclusion",
+     "quote": "Given an optically thick free-free spectrum, any steeper component is negligible, and the dust-to-gas mass ratio $\\zeta$ must be very low, $\\log(\\zeta)<-4.80$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-to-gas ratio upper limit in CPD (fixed Mdot_p = 10^-6 M_Jup/yr model)",
+   "value": "10^-7.05",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting the data",
+     "quote": "The inferred upper limits on the dust-to-gas ratio are $10^{-4.80}$ and $10^{-7.05}$ for the models with fixed $\\alpha$ and fixed $\\dot{M}_{\\rm p}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Uniform slab best-fit emission measure (T = 10^3 K)",
+   "value": "1.19e11",
+   "uncertainty": "not stated",
+   "units": "cm^-6 pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting the data",
+     "quote": "We notice that the values for the EM are smaller compared with the parametric model of (cite: Zhu2018MNRAS.479.1850Z), having the best fit ${\\rm EM}=1.19 \\times 10^{11} \\, {\\rm cm}^{-6}\\, {\\rm pc}$ and ${\\rm EM}=1.04 \\times 10^{12} \\, {\\rm cm}^{-6}\\, {\\rm pc}$ for each case."
+    }
+   ]
+  },
+  {
+   "quantity": "Uniform slab best-fit emission measure (T = 10^4 K)",
+   "value": "1.04e12",
+   "uncertainty": "not stated",
+   "units": "cm^-6 pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting the data",
+     "quote": "We notice that the values for the EM are smaller compared with the parametric model of (cite: Zhu2018MNRAS.479.1850Z), having the best fit ${\\rm EM}=1.19 \\times 10^{11} \\, {\\rm cm}^{-6}\\, {\\rm pc}$ and ${\\rm EM}=1.04 \\times 10^{12} \\, {\\rm cm}^{-6}\\, {\\rm pc}$ for each case."
+    }
+   ]
+  },
+  {
+   "quantity": "Uniform slab best-fit radius R_max (T = 10^3 K)",
+   "value": "0.078",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting the data",
+     "quote": "with a best fit size of $R_{\\rm max}=0.078 \\, {\\rm au}$ and $R_{\\rm max}=0.025 \\, {\\rm au}$ for the pill in each case."
+    }
+   ]
+  },
+  {
+   "quantity": "Uniform slab best-fit radius R_max (T = 10^4 K)",
+   "value": "0.025",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting the data",
+     "quote": "with a best fit size of $R_{\\rm max}=0.078 \\, {\\rm au}$ and $R_{\\rm max}=0.025 \\, {\\rm au}$ for the pill in each case."
+    },
+    {
+     "loc": "Surface shock on the CPD",
+     "quote": "As is seen in the uniform slab model of Sec. 3.4 for temperatures of $10^4$ K, an effective radius of $\\sim 52^{+5}_{-5} \\,{R_{\\rm Jup}}$ is required to fit the SED."
+    }
+   ]
+  },
+  {
+   "quantity": "Planetary accretion rate upper limit log(Mdot_p / (M_Jup yr^-1)) for B_ps = 610 G",
+   "value": "-5.42",
+   "uncertainty": "upper limit",
+   "units": "dex(M_Jup yr^-1)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Surface shock on the CPD",
+     "quote": "Using the magnetic disc model from Sec. 3.5 with the best fit value of $B_{\\rm ps}=610$ G, we obtain an upper limit of $\\log \\left(\\dot{M}_{\\rm p}/(M_{\\rm Jup}/\\rm yr)\\right)<-5.42$ using the 3 $\\sigma$ flux limit in Band 7."
+    }
+   ]
+  },
+  {
+   "quantity": "Planetary accretion rate upper limit log(Mdot_p / (M_Jup yr^-1)) for B_ps = 200 G",
+   "value": "-5.77",
+   "uncertainty": "upper limit",
+   "units": "dex(M_Jup yr^-1)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Surface shock on the CPD",
+     "quote": "In the case of a smaller magnetic field (for example $B_{\\rm ps}=200$ G), the upper limit for the accretion rate diminishes to $\\log \\left(\\dot{M}_{\\rm p}/(M_{\\rm Jup}/\\rm yr)\\right)<-5.77$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version used for initial data calibration",
+  "Exact spectral window frequencies, bandwidths, and channel widths for Bands 3, 4, 7, and 9, and whether spectral lines were flagged before continuum imaging",
+  "Pixel cell sizes, image dimensions, and regularisation parameters used in gpuvmem",
+  "Exact prior boundaries used in Nautilus for the H II disc and uniform slab model fits (described only as 'very wide boundaries')"
+ ],
+ "missing_for_reproduction": [
+  "Custom scripts implementing the extended CPD SED models (H I free-free, metal/H- Saha solver, and Gray 2022 H- opacity extrapolation) and the 1D Aoyama et al. (2018) shock simulations",
+  "Exact gpuvmem regularisation hyperparameters, image sizes, and pixel sizes used inside the snow self-calibration workflow",
+  "Exact CASA version and initial calibration pipeline scripts",
+  "Exact spectral window frequency ranges and channel averaging settings prior to continuum imaging"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "ALMA project codes, observing logs, self-calibration logic, visibility alignment shifts/scalings, extracted flux densities, and analytic model equations are thoroughly documented, but the custom non-parametric deconvolution/alignment stack (snow, gpuvmem, VisAlign, pyralysis) lacks exact regularisation/grid parameters and the custom SED/shock modelling scripts are not released.",
+ "rediscovery_reason": "The raw ALMA datasets are publicly identifiable by project code in the ALMA archive, the multi-frequency flux densities and spectral indices of PDS 70c are quantitative, and the analytic CPD and uniform-slab equations are written out in full.",
+ "source_card": "cards/2025A%26A...702A..18D/sonnet/card.md"
+}

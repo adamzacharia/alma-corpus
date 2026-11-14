@@ -1,0 +1,526 @@
+{
+ "bibcode": "2024A&A...681A..17D",
+ "title": "ALMA detection of CO rotational line emission in red supergiant stars of the massive young star cluster RSGC1. Determination of a new mass-loss rate prescription for red supergiants",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202244635",
+ "arxiv_id": "2303.09385",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What are the gas mass-loss rates and wind velocities of red supergiants in the open cluster RSGC1 from ALMA CO(2-1) observations, and what new mass-loss rate prescription can be derived for red supergiants?",
+ "alma_project_codes": [
+  "2013.1.01200.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "36 antennas",
+  "angular_resolution": "0.49 arcsec x 0.37 arcsec at PA ~ -65 deg",
+  "sensitivity": "continuum rms ~ 0.05 mJy; CO(2-1) cube (3 km/s) rms ~ 1.9 mJy (1.7-2.4 mJy/beam); continuum spw per-channel rms ~ 0.6 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Positions, effective temperatures, bolometric luminosities, spectral types, stellar radii, distance, and v_LSR of RSGs in RSGC1",
+    "evidence": [
+     {
+      "loc": "2. Observations and data reduction",
+      "quote": "The 14 RSGs (F01–F14) and 1 post-RSG (F15) in RSGC1 (see Table 2 in Davies et al. 2008) were observed with ALMA on 2015 June 9 and 11 for proposal code 2013.1.01200.S."
+     },
+     {
+      "loc": "3.1 Radiative transfer analysis of the CO(2-1) emission",
+      "quote": "were taken from Davies et al. (2008); see Table 1"
+     }
+    ]
+   },
+   "citation": "Davies et al. (2008)"
+  },
+  {
+   "what": {
+    "value": "SED-derived mass-loss rates (Mdot_SED), bolometric luminosities, cluster ages and initial masses for RSGs in RSGC1, NGC 7419, chi Per, and NGC 2100",
+    "evidence": [
+     {
+      "loc": "3.2. Comparison to SED retrievals",
+      "quote": "In various works, Beasor et al. have derived the mass-loss rate for red supergiants in four open clusters, including RSGC1, NGC 7410, χ Per, and NGC 2100 (Beasor & Davies 2016, 2018; Beasor et al. 2020)."
+     },
+     {
+      "loc": "Table E.1",
+      "quote": "Values used for Fig. 3 and Fig. E.1, and reproduced from Table 3 of Beasor & Davies (2016), Table 2 of Beasor & Davies (2018), and Table 2 of Beasor et al. (2020)."
+     }
+    ]
+   },
+   "citation": "Beasor & Davies (2016, 2018); Beasor et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Carbon abundance A(C) = log(C/H) + 12 for RSGC1",
+    "evidence": [
+     {
+      "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+      "quote": "For a value of A(C) = log(C/H) + 12 as derived by Davies et al. (2009) for RSGC1, this yields a CO fractional abundance of 8.9×10−5."
+     }
+    ]
+   },
+   "citation": "Davies et al. (2009)"
+  },
+  {
+   "what": {
+    "value": "Effective temperature and spectral type classification for F13",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "We therefore use the effective temperature and spectral type classification from Messineo et al. (2021)."
+     }
+    ]
+   },
+   "citation": "Messineo et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "SiO maser v_LSR measurements for F01, F02, F04, and F13",
+    "evidence": [
+     {
+      "loc": "Appendix A: ALMA observation",
+      "quote": "For sources F01, F02, F04, and F13, Nakashima & Deguchi (2006) also measured vLSR using SiO maser data, with an uncertainty of ±2 km s−1 (see last column in Table A.1)."
+     }
+    ]
+   },
+   "citation": "Nakashima & Deguchi (2006)"
+  },
+  {
+   "what": {
+    "value": "JCMT CO rotational line transitions and stellar parameters of Galactic RSGs alpha Ori, mu Cep, VX Sgr, and VY CMa",
+    "evidence": [
+     {
+      "loc": "Appendix G: Other Galactic red supergiants",
+      "quote": "We therefore perform a radiative transfer analysis of the CO rotational line transitions of the red supergiants published by De Beck et al. (2010)."
+     },
+     {
+      "loc": "Table G.1",
+      "quote": "Stellar and CSE parameters for the red supergiants observed in various CO rotational lines by De Beck et al. (2010)."
+     }
+    ]
+   },
+   "citation": "De Beck et al. (2010); Decin et al. (2006); Joyce et al. (2020); Montargès et al. (2019, 2021); Tabernero et al. (2021); Zhang et al. (2012); Wittkowski et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "Dust SED mass-loss rates for Galactic RSGs alpha Ori, mu Cep, VX Sgr, and VY CMa",
+    "evidence": [
+     {
+      "loc": "Appendix G: Other Galactic red supergiants",
+      "quote": "Assuming a wind speed of 10 km/s and gas-to-dust ratio of 100, Verhoelst et al. (2009) derived that M˙ SED equals 6.3×10−8 M⊙/yr (for a distance of 131 pc) in the case of α Ori, and 2.9×10−7 M⊙/yr (for a distance of 830 pc) in the case of µ Cep. Similarly we use the values derived by Liu et al. (2017) and Shenoy et al. (2016) for VX Sgr and VY CMa, respectively."
+     }
+    ]
+   },
+   "citation": "Verhoelst et al. (2009); Liu et al. (2017); Shenoy et al. (2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum, SiO(5-4), and CO(2-1) cubes, extract spectra, and measure source angular sizes",
+   "method": "Image continuum (excluding SiO channels), SiO v=3 J=5-4, and CO(2-1) cubes at 3 km/s resolution; locate sources using SiO and continuum peaks; extract CO(2-1) spectra in a 0.75 arcsec circular aperture; create zeroth-moment maps over uncontaminated channels and measure azimuthally averaged radial profiles in 200-mas annuli to determine FWHM and 3-sigma diameters.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Circular extraction aperture diameter = 0.75 arcsec",
+    "Velocity resolution = 3 km/s",
+    "Annuli thickness = 200 mas; 3-sigma cutoff = 3 x 25 mJy/beam km/s"
+   ],
+   "assumptions": [
+    "CO line profiles are intrinsically symmetric around v_LSR, so the uncontaminated red wing can be used to assess ISM contamination on the blue side"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Retrieve terminal wind velocities and CO gas mass-loss rates via non-LTE radiative transfer modelling",
+   "method": "Model the CO(2-1) line profiles using the 1D non-LTE radiative transfer code GASTRoNOoM (multi-level approximate Newton-Raphson operator) and ray-trace with a 0.75 arcsec circular model beam to derive v_inf and Mdot_CO for the 5 detected RSGs, upper limits for undetected RSGs, and Mdot_CO for 3 Galactic RSGs.",
+   "software": [
+    "GASTRoNOoM"
+   ],
+   "key_parameters": [
+    "150 shells logarithmically spaced from R_star to R_out (R_out = 350 R_star for F01, F13; 400 R_star for F02; 600 R_star for F03, F04)",
+    "Turbulent velocity v_turb = 3 km/s; wind velocity exponent beta = 0.5 (R_star to R_dust) and beta = 3 (beyond R_dust)"
+   ],
+   "assumptions": [
+    "Distance d = 6600 pc; gas kinetic temperature power law with epsilon = 0.6; silicate dust condensing at ~1750 K (R_dust = 3-4 R_star); gas-to-dust ratio r_gd = 200; all photospheric carbon locked in CO giving [CO/H] = 8.9e-5"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit Mdot-luminosity-initial mass empirical relations across four open clusters",
+   "method": "Re-fit individual cluster Mdot_SED-L_bol relations using IDL FITEXY, then perform multivariate linear least-squares fits with MPFIT and 10^4 Monte Carlo realisations to jointly fit Mdot_SED (across RSGC1, NGC 2100, NGC 7419, chi Per) and Mdot_CO (for F01-F04 in RSGC1) as a function of L_bol and M_ini.",
+   "software": [
+    "IDL",
+    "FITEXY",
+    "MPFIT"
+   ],
+   "key_parameters": [
+    "10^4 Monte Carlo realisations; 68% confidence interval from 0.16 and 0.84 percentiles"
+   ],
+   "assumptions": [
+    "Common luminosity slope b and initial-mass slope S across all clusters; F13 is excluded as an outlier experiencing a different mass-loss mechanism"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Evaluate stellar evolution implications and lifetime fraction in high mass-loss phase",
+   "method": "Compute stellar evolutionary tracks of a 25 Msun star until core carbon depletion using MESA comparing the new RSG mass-loss prescription (Eq. 8) with Nieuwenhuijzen & de Jager (1990), and perform a Bayesian binomial analysis of the fraction of RSG lifetime spent in the strong mass-loss stage.",
+   "software": [
+    "MESA"
+   ],
+   "key_parameters": [
+    "Initial mass = 25 Msun; convective overshooting = 0.335 pressure scale heights; switch to RSG wind recipe below T = 10^4 K",
+    "Beta distribution shape parameters alpha = 2, beta = 14"
+   ],
+   "assumptions": [
+    "Solar metallicity and metal fractions from Asplund et al. (2009); flat prior on fraction of time F in strong mass-loss stage"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) mass-loss rate Mdot_CO of F01",
+   "value": "2.0",
+   "uncertainty": "factor ~1.4",
+   "units": "10^-6 M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F01 5.42+0.12 −0.13 3450±127 M5 1450 117.5 3 8 2.0(e) 5.57+2.37 −2.17 0.25 0.22"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The combined effect of the errors in the individual input parameters on M˙ CO is a factor ∼1.4; for additional details, readers can refer to App. D."
+    }
+   ]
+  },
+  {
+   "quantity": "Terminal wind velocity v_inf of F01",
+   "value": "8",
+   "uncertainty": "±3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F01 5.42+0.12 −0.13 3450±127 M5 1450 117.5 3 8 2.0(e) 5.57+2.37 −2.17 0.25 0.22"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The terminal wind velocity, v∞, is deduced from the ALMA CO(2-1) line profiles (see Table 1), uncertainty being ±3 km s−1 (see App. A)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) mass-loss rate Mdot_CO of F02",
+   "value": "1.8",
+   "uncertainty": "factor ~1.4",
+   "units": "10^-6 M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F02 5.56+0.12 −0.13 3660±127 M2 1500 120.5 3 10 1.8 5.18+2.72 −1.75 0.18 0.20"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The combined effect of the errors in the individual input parameters on M˙ CO is a factor ∼1.4; for additional details, readers can refer to App. D."
+    }
+   ]
+  },
+  {
+   "quantity": "Terminal wind velocity v_inf of F02",
+   "value": "10",
+   "uncertainty": "±3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F02 5.56+0.12 −0.13 3660±127 M2 1500 120.5 3 10 1.8 5.18+2.72 −1.75 0.18 0.20"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The terminal wind velocity, v∞, is deduced from the ALMA CO(2-1) line profiles (see Table 1), uncertainty being ±3 km s−1 (see App. A)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) mass-loss rate Mdot_CO of F03",
+   "value": "3.2",
+   "uncertainty": "factor ~1.4",
+   "units": "10^-6 M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F03 5.24+0.12 −0.13 3450±127 M5 1200 123.5 3 13 3.2(e) 4.18+3.08 −0.84 0.25 0.17"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The combined effect of the errors in the individual input parameters on M˙ CO is a factor ∼1.4; for additional details, readers can refer to App. D."
+    }
+   ]
+  },
+  {
+   "quantity": "Terminal wind velocity v_inf of F03",
+   "value": "13",
+   "uncertainty": "±3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F03 5.24+0.12 −0.13 3450±127 M5 1200 123.5 3 13 3.2(e) 4.18+3.08 −0.84 0.25 0.17"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The terminal wind velocity, v∞, is deduced from the ALMA CO(2-1) line profiles (see Table 1), uncertainty being ±3 km s−1 (see App. A)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) mass-loss rate Mdot_CO of F04",
+   "value": "4.0",
+   "uncertainty": "factor ~1.4",
+   "units": "10^-6 M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F04 5.32+0.11 −0.13 3752±117 M1 1100 123.5 3 15 4.0 − 0.27 −"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The combined effect of the errors in the individual input parameters on M˙ CO is a factor ∼1.4; for additional details, readers can refer to App. D."
+    }
+   ]
+  },
+  {
+   "quantity": "Terminal wind velocity v_inf of F04",
+   "value": "15",
+   "uncertainty": "±3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F04 5.32+0.11 −0.13 3752±117 M1 1100 123.5 3 15 4.0 − 0.27 −"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The terminal wind velocity, v∞, is deduced from the ALMA CO(2-1) line profiles (see Table 1), uncertainty being ±3 km s−1 (see App. A)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) mass-loss rate Mdot_CO of F13",
+   "value": "42",
+   "uncertainty": "factor ~1.4",
+   "units": "10^-6 M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F13 5.45+0.12 −0.13 3590±45 M3(d) 1430 123.5 4 22 42 − 1.9 −"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The combined effect of the errors in the individual input parameters on M˙ CO is a factor ∼1.4; for additional details, readers can refer to App. D."
+    }
+   ]
+  },
+  {
+   "quantity": "Terminal wind velocity v_inf of F13",
+   "value": "22",
+   "uncertainty": "±3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F13 5.45+0.12 −0.13 3590±45 M3(d) 1430 123.5 4 22 42 − 1.9 −"
+    },
+    {
+     "loc": "3.1. Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "The terminal wind velocity, v∞, is deduced from the ALMA CO(2-1) line profiles (see Table 1), uncertainty being ±3 km s−1 (see App. A)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on Mdot_CO for undetected RSGC1 RSGs",
+   "value": "7e-7",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Radiative transfer analysis of the CO(2-1) emission",
+     "quote": "an upper limit on the mass-loss rate of _∼_ 7 _×_ 10 _[−]_ [7] M _⊙_ /yr is derived"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity of F01",
+   "value": "0.420",
+   "uncertainty": "0.051",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "F01 18 37 56.29 −06 52 32.2 129.5 18 37 56.31 −06 52 32.25 0.420 0.051 1.7 117.5 117.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity of F02",
+   "value": "0.359",
+   "uncertainty": "0.051",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "F02 18 37 55.28 −06 52 48.4 114.2 18 37 55.29 −06 52 48.50 0.359 0.051 1.9 120.5 119.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity of F03",
+   "value": "0.160",
+   "uncertainty": "0.053",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "F03 18 37 59.72 −06 53 49.4 127.2 18 37 59.74 −06 53 49.50 0.160 0.053 2.1 123.5 −"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity of F04",
+   "value": "0.097",
+   "uncertainty": "0.055",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "F04 18 37 50.90 −06 53 38.2 121.2 18 37 50.89 −06 53 38.45 0.097 0.055 2.0 123.5 124.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity of F13",
+   "value": "0.148",
+   "uncertainty": "0.051",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A.1",
+     "quote": "F13 18 37 58.90 −06 52 32.1 125.4 18 37 58.90 −06 52 32.05 0.148 0.051 1.8 123.5 120.5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) azimuthally averaged FWHM size (F01, F02, F03, F04, F13)",
+   "value": "460, 400, 480, 600, 460",
+   "uncertainty": "~50",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. Observations and data reduction",
+     "quote": "These gave flux distributions with full width half maximum sizes of 460, 400, 480, 600 and 460 mas for F01, F02, F03, F04, F13, respectively, uncertainty being ∼50 mas."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) 3-sigma diameter (F01, F02, F03, F04, F13)",
+   "value": "700, 530, 770, 650, 900",
+   "uncertainty": "~140",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. Observations and data reduction",
+     "quote": "This gave diameters of 700, 530, 770, 650 and 900 mas for F01, F02, F03, F04, F13, respectively but the position uncertainty is proportional to the phase noise, ∼140 mas at S/N = 3, and the weaker sources, in particular, may be more extended."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined Mdot_CO and Mdot_SED relation parameters (R_SED, S, b, Delta_R) in Eq. (8)",
+   "value": "R_SED = 1.77, S = -1.68, b = 3.50, Delta_R = 0.49",
+   "uncertainty": "R_SED: +0.58/-0.46, S: +0.31/-0.40, b: +0.60/-0.46, Delta_R: +0.44/-0.41",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1. CO-based mass-loss relation for RSGs",
+     "quote": "with best-fit values being RSED = 1.77+0.58 −0.46, S = −1.68+0.31 −0.40, b = 3.50+0.60 −0.46, and ∆R = 0.49+0.44 −0.41; see Fig. 4."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio in RSGC1 RSG winds",
+   "value": "235",
+   "uncertainty": "±71",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1. CO-based mass-loss relation for RSGs",
+     "quote": "Our analysis reveals a gas-to-dust ratio of 235 ± 71 for the RSGC1 sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Hydrogen-rich envelope mass lost by a 25 Msun star using Eq. (8) in MESA",
+   "value": "1.93",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3. Implications for stellar evolution",
+     "quote": "Using the new prescription of Eq. (8), only 1.93 M⊙ of the hydrogen-rich stellar envelope is lost (out of a total envelope mass of 11.97 M⊙) implying that such massive stars would explode as RSG upon core-collapse (see Fig. 5)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction F of RSG lifetime spent in strong mass-loss stage (Bayesian 90% credible interval)",
+   "value": "10.9",
+   "uncertainty": "+17/-8.5",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3. Implications for stellar evolution",
+     "quote": "Consequently, a 90% credible interval for F is obtained as 10.9+17 −8.5%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Imaging task (e.g. clean vs tclean), deconvolution algorithm, visibility weighting scheme (e.g. Briggs robust parameter), cell size, and image dimensions",
+  "Exact velocity/channel ranges integrated to create the CO(2-1) and SiO v=3 J=5-4 zeroth moment maps for each individual target",
+  "Exact dust optical constants and grain size distribution used in GASTRoNOoM to compute the dust radiation field"
+ ],
+ "missing_for_reproduction": [
+  "Non-LTE radiative transfer code GASTRoNOoM is not publicly available",
+  "Exact CASA imaging parameters (weighting/robust, cell size, masking, clean threshold) are not stated",
+  "Exact channel ranges used for the CO(2-1) and SiO(5-4) moment-0 maps for each source are not listed"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Public archival ALMA data (2013.1.01200.S), complete tables of input parameters and external cluster data (Tables 1, A.1, E.1, G.1), well-specified regression equations, and public Zenodo files for the MESA models; however, the core radiative transfer code GASTRoNOoM is proprietary and CASA imaging settings are not fully specified.",
+ "rediscovery_reason": "Public ALMA data and complete tabular data in the paper allow independent reproduction of the continuum flux densities, CO(2-1) spectra, line widths/v_LSR, source sizes, the cluster regression fits (Eqs. 4-8), and the MESA evolutionary tracks (with public Zenodo inlists), while Mdot_CO can be approximated using public radiative transfer codes (e.g. LIME) or the analytical De Beck et al. (2010) formula.",
+ "source_card": "cards/2024A%26A...681A..17D/sonnet/card.md"
+}

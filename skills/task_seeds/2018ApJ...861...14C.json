@@ -1,0 +1,313 @@
+{
+ "bibcode": "2018ApJ...861...14C",
+ "title": "Infall Signatures in a Prestellar Core Embedded in the High-mass 70 μm Dark IRDC G331.372-00.116",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac2ec",
+ "arxiv_id": "1805.01802",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Does the most massive core (ALMA1) in the 70 um dark IRDC G331.372-00.116 show infall and prestellar properties, and what do they imply for competitive accretion versus turbulent core accretion?",
+ "alma_project_codes": [
+  "2013.1.00234.S",
+  "2015.1.01539.S"
+ ],
+ "data": {
+  "bands": "Band 6, ~267 GHz (Cycle 2) and ~224 GHz (Cycle 3)",
+  "arrays": "12 m, 7 m (ACA) and Total Power",
+  "angular_resolution": "1.2 arcsec (0.03 pc)",
+  "sensitivity": "Continuum rms 0.06 mJy (Cycle 2), 0.1 mJy (Cycle 3); line rms 0.06 K at 0.5 km/s (C2), 0.14 K at 0.08 km/s (C3)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Clump dust temperature 14 K",
+    "evidence": [
+     {
+      "loc": "4.1 Dust Structure",
+      "quote": "we have adopted the *Herschel* dust temperature ($T$ = 14 K) determined at the clump scale by (cite: Guzman-2015)."
+     }
+    ]
+   },
+   "citation": "Guzman-2015"
+  },
+  {
+   "what": {
+    "value": "Distance 5.4 kpc",
+    "evidence": [
+     {
+      "loc": "2 IRDC G331.372-00.116",
+      "quote": "at a distance of 5.4 kpc (cite: Whitaker-2017)"
+     }
+    ]
+   },
+   "citation": "Whitaker-2017"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 0.9 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "4.1 Dust Structure",
+      "quote": "scaling the value of 0.9 cm$^2$ g$^{-1}$ for $\\kappa_{1.3 mm}$"
+     }
+    ]
+   },
+   "citation": "Ossenkopf94"
+  },
+  {
+   "what": {
+    "value": "Clump mass 1200 Msun, radius 0.56 pc",
+    "evidence": [
+     {
+      "loc": "2 IRDC G331.372-00.116",
+      "quote": "a mass ($M$) of $1200$ M$_\\odot$[^1] and an effective radius of 0.56 pc"
+     }
+    ]
+   },
+   "citation": "Contreras-2017"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes",
+   "method": "Concatenate 12+7 m, tclean multiscale with Briggs 0.5; lines cleaned with yclean and feathered with TP",
+   "software": [
+    "CASA",
+    "yclean"
+   ],
+   "key_parameters": [
+    "multiscale 0,3,10,30 pixels; pixel 0.16\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify cores and measure fluxes",
+   "method": "Dendrogram on 267 GHz continuum; compare with 2-D Gaussian fit in CASA",
+   "software": [
+    "astrodendro",
+    "CASA"
+   ],
+   "key_parameters": [
+    "threshold 10 x rms, step 1 x rms, min pixels = beam area / pixel size"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive core masses and densities",
+   "method": "Optically thin dust mass equation with Planck function",
+   "software": [],
+   "key_parameters": [
+    "T = 14 K; kappa_1.1mm = 1.13 cm2/g; beta = 1.7"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; mu_H2 = 2.8; spherical cores"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Linewidths, Mach number and virial parameter",
+   "method": "Gaussian fits to N2D+ and DCO+ spectra; sigma_nt from sigma_v^2 = sigma_th^2 + sigma_nt^2; virial mass with density index n = 1.8",
+   "software": [],
+   "key_parameters": [
+    "T = 14 K; n = 1.8"
+   ],
+   "assumptions": [
+    "50% mass uncertainty"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Infall velocity and accretion rate",
+   "method": "Fit Hill5 model to average HCO+ spectrum with PySpecKit/lmfit; Mdot = 4 pi R^2 rho v_in",
+   "software": [
+    "PySpecKit",
+    "lmfit"
+   ],
+   "key_parameters": [
+    "initial guesses: tau 0.1-30, vlsr -89 to -86.6, vin 0.1-4, sigma 0.3-0.9 km/s, Tpeak 2-30 K"
+   ],
+   "assumptions": [
+    "Hill5 may underestimate infall velocity, so rate is a lower limit"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Jeans mass, free-fall time and growth",
+   "method": "Thermal Jeans mass and free-fall time formulae; extrapolate constant accretion rate",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "constant accretion rate over the free-fall time"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA1 mass",
+   "value": "17.6",
+   "uncertainty": "~50%",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "17.6$\\pm$8.8 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of cores",
+   "value": "22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Dust Structure",
+     "quote": "A total of 22 cores are detected above the 5$\\sigma$ level"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA1 effective radius",
+   "value": "0.041",
+   "uncertainty": "0.004",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.041$\\pm$0.004 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA1 virial mass",
+   "value": "2.4",
+   "uncertainty": "0.6",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.1 Virial Equilibrium",
+     "quote": "$M_{vir}=2.4\\pm0.6$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter",
+   "value": "0.14",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.1 Virial Equilibrium",
+     "quote": "$\\alpha_{vir}=0.14\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mach number",
+   "value": "1.19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.1 Virial Equilibrium",
+     "quote": "The Mach number ($\\sigma_{nt}$/$\\sigma_{th-H_2}$) is then 1.19"
+    }
+   ]
+  },
+  {
+   "quantity": "Infall velocity",
+   "value": "1.54",
+   "uncertainty": "0.03",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1.54$\\pm$0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass infall rate",
+   "value": "1.96e-3",
+   "uncertainty": "0.10e-3",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1.2",
+     "quote": "(1.96$\\pm 0.10) \\times 10^{-3}$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field needed for virial equilibrium",
+   "value": "1.2",
+   "uncertainty": "0.4",
+   "units": "mG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.1 Virial Equilibrium",
+     "quote": "1.2$\\pm0.4$ mG"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-fall time",
+   "value": "3.3e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "$t_{ff}=\\sqrt{3\\pi/(32G\\rho)}=3.3\\times10^4$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans mass",
+   "value": "2.8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "is only 2.8 M$_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact flux of continuum calibrators and flux-scale uncertainty",
+  "Line-free channel ranges for continuum",
+  "Feathering parameters (SD scaling)",
+  "Image sizes and mosaic phase centers",
+  "Which spectra (pixel selection/averaging) define the ALMA1 average HCO+ spectrum",
+  "Hill5 fit fixed parameters (e.g. T0) and fit weights",
+  "Whether the continuum for dust analysis was primary-beam corrected",
+  "Dendrogram region choice for ALMA1 spectral extraction"
+ ],
+ "missing_for_reproduction": [
+  "Feathering details",
+  "Spectrum extraction regions",
+  "Hill5 fixed parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a fairly detailed recipe with numeric results, but several imaging/extraction details are missing.",
+ "rediscovery_reason": "Data are public, the recipe is largely specified, and the results are numeric (mass, virial parameter, infall rate).",
+ "source_card": "cards/2018ApJ...861...14C/sonnet/card.md"
+}

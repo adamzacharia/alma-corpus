@@ -1,0 +1,905 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...865..127I",
+  "title": "Constraints on the Cosmic-Ray Ionization Rate in the z ∼ 2.3 Lensed Galaxies SMM J2135-0102 and SDP 17b from Observations of OH<SUP>+</SUP> and H<SUB>2</SUB>O<SUP>+</SUP>",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Indriolo, Nick",
+  "n_authors": 7,
+  "arxiv_id": "1808.04852",
+  "doi": "10.3847/1538-4357/aad7b3",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2012.1.00175.S",
+   "2013.1.00569.S",
+   "2016.1.00285.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we present observations of both molecules in absorption toward the lensed SMGs SMM J2135$-$0102 and SDP 17b."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "SMM J2135-0102 (Eyelash)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 2.3259",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Eyelash | SMM J2135$-$0102 | 2.3259 | S10 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "S10 (cite: swinbank2010)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Eyelash | SMM J2135$-$0102 | 2.3259 | S10 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SDP 17b",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 2.3051",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| SDP 17b | H-ATLAS J090302.9$-$014127 | 2.3051 | L12 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "L12 (cite: lupu2012)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| SDP 17b | H-ATLAS J090302.9$-$014127 | 2.3051 | L12 |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the cosmic-ray ionization rates in lensed z~2.3 SMGs, inferred from OH+ and H2O+ absorption combined with a chemical model?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Our goal is to infer the cosmic-ray ionization rate in SMGs at $z\\sim2.3$ to better understand the impact of prolific star formation on the gas reservoirs in these massive galaxies"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00285.S",
+     "evidence": [
+      {
+       "loc": "Execution",
+       "quote": "program ADS/JAO.ALMA#2016.1.00285.S: H$_2$O$^+$ at 1139 GHz in SMM J2135$-$0102 and SDP 17b."
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00175.S",
+     "evidence": [
+      {
+       "loc": "Execution",
+       "quote": "programs ADS/JAO.ALMA#2012.1.00175.S and ADS/JAO.ALMA#2013.1.00569.S, respectively."
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00569.S",
+     "evidence": [
+      {
+       "loc": "Execution",
+       "quote": "programs ADS/JAO.ALMA#2012.1.00175.S and ADS/JAO.ALMA#2013.1.00569.S, respectively."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "Target Selection",
+      "quote": "are shifted down to frequencies covered by band 7 of ALMA."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "H2O+ 1139 GHz: three basebands, one window each, ~3000 km/s coverage; OH+ 1033 GHz: 2 basebands in upper sideband, 2500-3000 km/s; 31.25 MHz resolution (~30 km/s)",
+    "evidence": [
+     {
+      "loc": "Execution",
+      "quote": "A frequency resolution of 31.25 MHz provides velocity resolution of about 30 km s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "OH+",
+     "transition": "N=1-0, J=1-1 hyperfine complex",
+     "rest_frequency": "1033 GHz (strongest 1033118.6 MHz)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| OH$^+$ | 1–0 | 1–1 | 3/2–3/2 | 1033118.6$^{a}$ |"
+      }
+     ]
+    },
+    {
+     "species": "o-H2O+",
+     "transition": "1_11-0_00 hyperfine complex",
+     "rest_frequency": "1139 GHz (strongest 1139667.9 MHz)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "1139667.9$^{a}$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "OH+ in SMM J2135-0102: 0.18\"x0.14\"",
+    "evidence": [
+     {
+      "loc": "Resulting Spectra",
+      "quote": "the small synthesized beam used for the OH$^+$ observations (0.18$''$$\\times$0.14$''$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "SDP 17b H2O+ 1481 s; SMM J2135 H2O+ 1451 s; SMM J2135 OH+ 3568 s; SDP 17b OH+ 1965 s",
+    "evidence": [
+     {
+      "loc": "Execution",
+      "quote": "SDP 17b was observed for 1481 s on 2016 Nov 26 targeting H$_2$O$^+$"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 Nov 26, 2017 Apr 14, 2014 Aug 19, 2015 Jun 15",
+    "evidence": [
+     {
+      "loc": "Execution",
+      "quote": "SMM J2135$-$0102 was observed for 3568 s on 2014 Aug 19 targeting OH$^+$"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CH+ column densities N(CH+)=(8.3±1.4)e14 and (4.7±1.9)e14 cm^-2 for SMM J2135-0102 and SDP 17b",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "are reported as $N({\\rm CH}^+)=(8.3\\pm1.4)\\times10^{14}$ cm$^{-2}$ and $N({\\rm CH}^+)=(4.7\\pm1.9)\\times10^{14}$ cm$^{-2}$, respectively"
+       }
+      ]
+     },
+     "citation": "Falgarone et al. 2017 (cite: falgarone2017)"
+    },
+    {
+     "what": {
+      "value": "Mean X(CH+)=7.6e-9 with range 2e-9 to 2e-8",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "is about $X({\\rm CH}^+)=7.6\\times10^{-9}$ (cite: godard2014)"
+       }
+      ]
+     },
+     "citation": "(cite: godard2014)"
+    },
+    {
+     "what": {
+      "value": "f_H2 = 0.053±0.026",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "We adopt the mean value of $f_{\\rm H_2}=0.053\\pm0.026$ reported by (cite: indriolo2015oxy)"
+       }
+      ]
+     },
+     "citation": "(cite: indriolo2015oxy)"
+    },
+    {
+     "what": {
+      "value": "Chemical model grid of OH+ and H2O+ column densities",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "We thus choose to employ the chemical models presented in (cite: neufeld2017)"
+       }
+      ]
+     },
+     "citation": "Neufeld & Wolfire 2017 (cite: neufeld2017)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Plane-parallel slab chemical models (Neufeld & Wolfire 2017) with Z=Zsun, nH=50 cm^-3, chi_UV=0.1-1000, 0.0003<=A_V<=8 mag, 9e-19<=zeta_H<=9e-15 s^-1",
+     "evidence": [
+      {
+       "loc": "5.2 Ionization Rates",
+       "quote": "we run the suite of chemical models using $\\chi_{\\rm UV}$=0.1, 1, 10, 100, and 1000"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Calibration by NRAO staff using standard procedures",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "All data calibration was performed by NRAO staff using standard procedures to produce calibrated measurement sets."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.0.0 (post-calibration processing)",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "Further processing starting from those products was done with CASA version 5.0.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan (SMM J2135 H2O+); J1058+0133 (SDP 17b); J2148+0657 (SMM J2135 OH+)",
+     "evidence": [
+      {
+       "loc": "Execution",
+       "quote": "J2232+1143 as the bandpass calibrator, and Titan as the flux calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "One round of phase-only self-cal on absorption-free continuum for all except OH+ in SMM J2135-0102",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "One round of phase-only self-calibration using absorption-free portions of the continuum was applied to all observations (except for that covering OH$^+$ in SMM J2135$-$0102)"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "Measurement sets were imaged via the `clean` task in CASA"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "utilizing the Briggs weighting scheme with a robust parameter of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Chemical network and model framework",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "The analysis of (cite: neufeld2017), first presented by (cite: hollenbach2012), utilizes a chemical network designed specifically to focus on processes important to oxygen chemistry"
+       }
+      ]
+     },
+     "from_reference": "(cite: hollenbach2012); (cite: neufeld2017)"
+    },
+    {
+     "what": {
+      "value": "Use CH+ to estimate N(H)",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "The recent observations of CH$^+$ absorption in these galaxies are likely the best tracer of the same gas component giving rise to OH$^+$ and H$_2$O$^+$ absorption (cite: gerin2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: gerin2016)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Cell size, image size, and channel width/spectral grid of the cubes",
+    "Clean threshold, masks, number of iterations",
+    "Self-calibration solution interval and continuum selection",
+    "Exact sub-region definitions (NW1-8, SE1-8, N/E/S/W) as apertures",
+    "Moving-average window for continuum normalization",
+    "Line-free region used for noise estimate",
+    "Model grid files and interpolation method for inferring zeta_H",
+    "Resulting zeta_H values per region (only ranges stated)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image cubes and extract spectra",
+    "method": {
+     "value": "Clean with Briggs weighting, make PPV cubes; extract spectra from full source and sub-regions with CASA Viewer Spectral Profile Tool",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "Spectra of the target galaxies were extracted from the data cubes using the Spectral Profile Tool within CASA Viewer."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "Data Reduction",
+        "quote": "a robust parameter of 0.5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mirrored NW/SE regions agree within noise",
+     "evidence": [
+      {
+       "loc": "Resulting Spectra",
+       "quote": "the OH$^+$ and H$_2$O$^+$ absorption line profiles for the mirrored regions agree with each other within the noise levels"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Optical depth and column density",
+    "method": {
+     "value": "Normalize by moving average, tau=-ln(transmission), integrate over velocity ranges, convert to N via ground-state relation with constants 4.87e12 (1033 GHz) and 4.18e12 (1139 GHz)",
+     "evidence": [
+      {
+       "loc": "5.1 Column Densities",
+       "quote": "This is done by dividing the spectra by a moving average that was interpolated across velocities showing absorption or narrow emission."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "All hyperfine components at same frequency; CMB at z=2.3 (~9 K) does not populate excited states; H2O+ ortho-to-para = 3:1",
+      "evidence": [
+       {
+        "loc": "5.1 Column Densities",
+        "quote": "The *ortho*-to-*para* ratio expected based solely on statistical weights is 3:1, and we assume this value"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Uncertainties from continuum standard deviation propagated per channel; columns may be lower limits if absorption saturated",
+     "evidence": [
+      {
+       "loc": "5.1 Column Densities",
+       "quote": "Still, it is possible that these are only lower limits if saturated absorption is masked by the above effects."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Estimate N(H) from CH+",
+    "method": {
+     "value": "N(H)=(1-f_H2) N(CH+)/X(CH+) with limiting X(CH+) values 2e-9 and 2e-8",
+     "evidence": [
+      {
+       "loc": "5.2 Ionization Rates",
+       "quote": "Uncertainties are dominated by the scatter in $X({\\rm CH}^+)$ as we adopt the limiting values of $2\\times10^{-9}$ and $2\\times10^{-8}$ in our analysis."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "X(CH+)=7.6e-9 (solar-neighborhood mean), f_H2=0.053",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "We adopt the mean value of $f_{\\rm H_2}=0.053\\pm0.026$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Infer zeta_H from chemical model grids",
+    "method": {
+     "value": "Compare observed log N(OH+)/N(H) and N(OH+)/N(H2O+) to contours of constant zeta_H/n50 in model grids for several chi_UV/n50",
+     "evidence": [
+      {
+       "loc": "5.2 Ionization Rates",
+       "quote": "we plot contours of constant $\\zeta_{\\rm H}/n_{50}$ in the parameter space $\\log_{10}[N({\\rm OH}^+)/N({\\rm H})]$ vs. $N({\\rm OH}^+)/N({\\rm H_2O}^+)$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Z=Zsun, nH=50 cm^-3, chi_UV 0.1-1000",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "so we use the chemical models with $Z=Z_\\ensuremath{\\odot}$ in our analysis"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Metallicity solar; absorption arises in extended low-density halo",
+      "evidence": [
+       {
+        "loc": "5.2 Ionization Rates",
+        "quote": "Metallicities in submillimeter galaxies at $z\\sim2$ have been estimated to be roughly solar"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Galactic diffuse clouds and earlier zeta estimates",
+     "evidence": [
+      {
+       "loc": "6 Discussion",
+       "quote": "occupy the same location in $\\log_{10}[N({\\rm OH}^+)/N({\\rm H})]$ vs. $N({\\rm OH}^+)/N({\\rm H_2O}^+)$ parameter space as Galactic diffuse clouds"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.0.0",
+    "used_for": {
+     "value": "Imaging (clean), self-calibration, spectral extraction with Viewer",
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "Further processing starting from those products was done with CASA version 5.0.0."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "N(OH+) SMM J2135-0102 Full",
+    "value": "12.88",
+    "uncertainty": "0.17",
+    "units": "1e14 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Full | \\[$-$220, 610\\] | 264.6$\\pm$3.5 | 69.3$\\pm$1.8 | 12.88$\\pm$0.17 | 3.86$\\pm$0.10 | 3.33$\\pm$0.10 |"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2O+) SMM J2135-0102 Full",
+    "value": "3.86",
+    "uncertainty": "0.10",
+    "units": "1e14 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Full | \\[$-$220, 610\\] | 264.6$\\pm$3.5 | 69.3$\\pm$1.8 | 12.88$\\pm$0.17 | 3.86$\\pm$0.10 | 3.33$\\pm$0.10 |"
+     }
+    ]
+   },
+   {
+    "quantity": "N(OH+) SDP 17b Full",
+    "value": "16.53",
+    "uncertainty": "0.18",
+    "units": "1e14 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Full | \\[$-$755, 235\\] | 339.6$\\pm$3.8 | 22.8$\\pm$2.6 | 16.53$\\pm$0.18 | 1.27$\\pm$0.14 | 13.00$\\pm$1.49 |"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2O+) SDP 17b Full",
+    "value": "1.27",
+    "uncertainty": "0.14",
+    "units": "1e14 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Full | \\[$-$755, 235\\] | 339.6$\\pm$3.8 | 22.8$\\pm$2.6 | 16.53$\\pm$0.18 | 1.27$\\pm$0.14 | 13.00$\\pm$1.49 |"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H) SMM J2135-0102",
+    "value": "1.0e23",
+    "uncertainty": "+3.6/-0.7 e23",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.2 Ionization Rates",
+      "quote": "$N({\\rm H})=(1.0^{+3.6}_{-0.7})\\times10^{23}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H) SDP 17b",
+    "value": "5.9e22",
+    "uncertainty": "+25/-4.5 e22",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5.2 Ionization Rates",
+      "quote": "$N({\\rm H})=(5.9^{+25}_{-4.5})\\times10^{22}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "zeta_H in extended halos",
+    "value": "1e-16 to 1e-14",
+    "uncertainty": "not stated",
+    "units": "s^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "cosmic-ray ionization rates on the order of 10$^{-16}$–10$^{-14}$ s$^{-1}$ in the extended gaseous halos"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "OH+ and H2O+ absorption profiles vary with position and show velocity gradients in SMM J2135-0102 consistent with rotation; none in SDP 17b",
+    "evidence": [
+     {
+      "loc": "Resulting Spectra",
+      "quote": "shifting to larger velocities with increasing distance from the critical curve."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "OH+ and H2O+ are detectable in absorption in z~2.3 lensed SMGs with ALMA",
+    "experiment": "Band 7 observations of both galaxies",
+    "result": "Both molecules detected in both galaxies",
+    "finding": "Absorption traces extended halo gas",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Both molecules are detected, and their absorption profiles change with position in front of the background continuum sources."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Cosmic-ray ionization rates in SMG halos can be constrained",
+    "experiment": "Column densities with chemical models and N(H) from CH+",
+    "result": "zeta_H ~1e-16 to 1e-14 s^-1",
+    "finding": "Rates in compact star-forming regions likely orders of magnitude higher",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "they imply that cosmic-ray ionization rates in the compact regions where star formation occurs in these galaxies are orders of magnitude higher."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Analytic steady-state expressions invalid at high zeta and require unconstrained parameters, so full chemical models used",
+    "evidence": [
+     {
+      "loc": "5.2 Ionization Rates",
+      "quote": "removing the need to adopt unconstrained values of $x_e$ and $\\epsilon$."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Analytic steady-state expressions rejected",
+     "evidence": [
+      {
+       "loc": "5.2 Ionization Rates",
+       "quote": "those expressions are only valid over a limited range of physical conditions"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Column densities may be lower limits due to saturation; N(H) highly uncertain; mismatched beams",
+     "evidence": [
+      {
+       "loc": "5.2 Ionization Rates",
+       "quote": "any estimate of the hydrogen column density from CH$^+$ will be highly uncertain"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "N(H) from CH+ with Galactic X(CH+) is very uncertain",
+    "Final zeta_H rests on poorly known UV field and density",
+    "Beam mismatch between OH+, H2O+ and CH+",
+    "Quantitative zeta_H per region not tabulated"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data cited by project code",
+    "evidence": [
+     {
+      "loc": "Target Selection",
+      "quote": "Observations covering the 1033 GHz transition in both target galaxies are publicly available in the ALMA archive."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Neufeld & Wolfire model grids",
+    "Sub-region aperture definitions",
+    "Imaging cell/size/threshold"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for three ALMA projects",
+   "score_inferred": 3,
+   "score_reason": "Data are public and column density steps are described, but model grids, apertures and imaging details are missing and zeta_H is read graphically.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Column densities are reproducible, but the main zeta_H result relies on external model grids and graphical reading."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Neufeld & Wolfire 2017 (cite: neufeld2017)",
+     "why": "Chemical model grid"
+    },
+    {
+     "citation": "Hollenbach et al. 2012 (cite: hollenbach2012)",
+     "why": "Chemical network"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Falgarone et al. 2017 (cite: falgarone2017)",
+     "why": "CH+ absorption in same galaxies"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "H-ATLAS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-d07aa9366de1b95840f3cae9144c5833",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:10",
+  "usage": {
+   "input_tokens": 24369,
+   "output_tokens": 7975,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.064851,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 41,
+   "rate": 0.554
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:34:52",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[3].fitting",
+    "old_value": "Graphical comparison; no formal fit"
+   }
+  ],
+  "dropped_items": []
+ }
+}

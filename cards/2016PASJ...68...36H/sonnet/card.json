@@ -1,0 +1,750 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016PASJ...68...36H",
+  "title": "SXDF-ALMA 2-arcmin<SUP>2</SUP> deep survey: 1.1-mm number counts",
+  "year": 2016,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Hatsukade, Bunyo",
+  "n_authors": 21,
+  "arxiv_id": "1602.08167",
+  "doi": "10.1093/pasj/psw026",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00756.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We derive number counts in the flux range of 0.2–2 mJy by using 23 ($\\ge$4$\\sigma$) sources detected in a continuous 2.0-arcmin$^2$ area of the SXDF."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "SXDF-ALMA field (Subaru/XMM-Newton Deep Survey Field, part including CANDELS)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "mean z=2.5 assumed for SMGs",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we present 1.1 mm number counts in a contiguous area revealed by the ALMA observations of a part of the Subaru/*XMM-Newton* Deep Survey Field (SXDF)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "literature SMG redshifts (Chapman05; Yun12)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we present 1.1 mm number counts in a contiguous area revealed by the ALMA observations of a part of the Subaru/*XMM-Newton* Deep Survey Field (SXDF)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the 1.1 mm number counts in a contiguous ALMA field, and are counts from serendipitously detected sources biased by clustering around targets?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "previous studies are based on the ensemble of serendipitously-detected sources in fields originally targeting different sources and could be biased due to the clustering of sources around the targets."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00756.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00756.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "AzTEC (1.1 mm)",
+     "provided": {
+      "value": "Source in field used to select the ALMA field; comparison density and bright-end counts",
+      "evidence": [
+       {
+        "loc": "Source and Spurious Detection",
+        "quote": "the field is selected to include an AzTEC source"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Previous 1-mm number counts (ALMA and single-dish) used for comparison and for the joint fit",
+      "evidence": [
+       {
+        "loc": "Number Counts",
+        "quote": "we use the number counts obtained in 1-mm observations (1.1–1.3 mm) with ALMA and single-dish telescopes plotted in figure"
+       }
+      ]
+     },
+     "citation": "hats13; ono14; carn15; fuji16; oteo15; lind11; scot12 (cite)"
+    },
+    {
+     "what": {
+      "value": "EBL at 1.1 mm from COBE",
+      "evidence": [
+       {
+        "loc": "Discussion and Conclusions",
+        "quote": "The EBL at 1.1 mm based on the measurements by the *Cosmic Background Explorer* satellite is $\\sim$18 Jy deg$^{-2}$"
+       }
+      ]
+     },
+     "citation": "(cite: puge96); (cite: fixs98)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Model counts compared: Shimizu12, Bethermin12, Cai13, da Cunha13",
+     "evidence": [
+      {
+       "loc": "Discussion and Conclusions",
+       "quote": "recent model predictions with different approaches by (cite: shim12), (cite: beth12), (cite: cai13), and (cite: dacu13) are also compared."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Source detection on image before primary beam correction; completeness on corrected map",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "Source detection was conducted on the image before correcting for the primary beam attenuation."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Survey design, source catalog and integrated flux densities",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The survey design and source catalog is described in Kohno et al. (in prep.)"
+       }
+      ]
+     },
+     "from_reference": "Kohno et al. (in prep.)"
+    }
+   ],
+   "unstated_but_needed": [
+    "The data section is empty: bands, array configuration, beam, rms, calibration and imaging settings are not given",
+    "Image pixel size, weighting, and CASA version",
+    "Aegean detection parameters",
+    "Exact functional fits for completeness, boosting and false-detection fraction",
+    "Flux scaling used to bring other wavelengths to 1.1 mm",
+    "Source catalog (in prep.)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Detect sources",
+    "method": {
+     "value": "Aegean source finder on image before primary beam correction; peak SN>=4 sigma",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "We find 25 (6) sources with a peak SN of $\\ge$$4\\sigma$ ($\\ge$$5\\sigma$)."
+      }
+     ]
+    },
+    "software": [
+     "aegean",
+     "aips/sad"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Peak vs integrated flux with AIPS SAD: ratio 1.1±0.3",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "$S_{\\rm integ}/S_{\\rm peak} = 1.1 \\pm 0.3$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Estimate spurious fraction",
+    "method": {
+     "value": "Count negative peaks vs SN and take ratio to positive peaks",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "we count the number of negative peaks as a function of SN threshold"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Completeness and flux boosting",
+    "method": {
+     "value": "Inject artificial sources (scaled synthesized beam) at random positions, 1000 times per flux bin; recovered if extracted within 1.0'' at >=4 sigma; input/output flux ratio gives boosting",
+     "evidence": [
+      {
+       "loc": "Completeness",
+       "quote": "This procedure is repeated 1000 times for each flux bin."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Completeness checked without position constraint and against SN threshold",
+     "evidence": [
+      {
+       "loc": "Completeness",
+       "quote": "We checked that the completeness does not change significantly if we remove the constraint on the input source positions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive number counts with errors",
+    "method": {
+     "value": "Correct for spurious contamination, completeness and boosting; errors combine Poisson, correction uncertainties and field-to-field variation in quadrature; two brightest sources excluded",
+     "evidence": [
+      {
+       "loc": "Number Counts",
+       "quote": "Contributions from the uncertainties are calculated separately and combined by taking the square root of the sum of the squares in each flux bin."
+      }
+     ]
+    },
+    "software": [
+     "Trenti & Stiavelli cosmic variance tool"
+    ],
+    "key_parameters": [
+     {
+      "value": "Survey area 2'x1', mean z=2.5, Δz=3, halo occupation fraction unity",
+      "evidence": [
+       {
+        "loc": "Number Counts",
+        "quote": "We use the survey area of $2' \\times 1'$, the mean redshift of $\\bar{z}=2.5$, the redshift range of $\\Delta z = 3$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Omega_M=0.26, Omega_Lambda=0.74, h=70, sigma_8=0.9",
+      "evidence": [
+       {
+        "loc": "Number Counts",
+        "quote": "$\\Omega_{\\rm{M}} = 0.26$, $\\Omega_{\\Lambda} = 0.74$, $h = 70$ km s$^{-1}$ Mpc$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit functions and EBL fraction",
+    "method": {
+     "value": "Fit Schechter and double power law to differential counts from this and previous 1-mm studies; integrate for resolved EBL",
+     "evidence": [
+      {
+       "loc": "Number Counts",
+       "quote": "The differential number counts obtained in this study and previous studies are fitted to a Schechter function"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Excluded 870 um counts and S<0.1 mJy lensed counts",
+      "evidence": [
+       {
+        "loc": "Number Counts",
+        "quote": "but do not use the number counts at 870 $\\mu$m to avoid the uncertainties from flux scaling."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Slopes compared with Fujimoto16",
+     "evidence": [
+      {
+       "loc": "Number Counts",
+       "quote": "The power law slopes are consistent with those of (cite: fuji16)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "aegean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Source finding",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "We adopt a source-finding algorithm aegean (cite: hanc12)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS SAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Integrated flux densities",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "measured with the aips/sad task"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Sources >=4 sigma",
+    "value": "25 (23 used after excluding two brightest)",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Source and Spurious Detection",
+      "quote": "We find 25 (6) sources with a peak SN of $\\ge$$4\\sigma$ ($\\ge$$5\\sigma$)."
+     }
+    ]
+   },
+   {
+    "quantity": "Cumulative counts N(>0.17 mJy)",
+    "value": "38.2",
+    "uncertainty": "+23.5/-9.4",
+    "units": "10^3 deg^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 0.17    | 23      | $38.2^{+23.5}_{-9.4}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Differential counts at 0.25 mJy",
+    "value": "143.2",
+    "uncertainty": "+104.2/-41.0",
+    "units": "10^3 mJy^-1 deg^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 0.25    | 17      | $143.2^{+104.2}_{-41.0}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Schechter fit S'",
+    "value": "3.1",
+    "uncertainty": "0.5",
+    "units": "mJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Schechter | $15.0\\pm 5.1$ | $3.1 \\pm 0.5$ | $-1.9 \\pm 0.2$ | $-$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Resolved EBL fraction at S>0.2 mJy",
+    "value": "~40",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\sim$40% of the extragalactic background light at 1.1 mm is resolved at $S_{\\rm 1.1mm} > 0.2$ mJy."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Counts agree with previous serendipitous-source counts and with the model predictions",
+    "evidence": [
+     {
+      "loc": "Discussion and Conclusions",
+      "quote": "We found that the model predictions agree with our number counts within the uncertainties from both the models and the observed counts."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Counts from serendipitous sources are biased by clustering around targets",
+    "experiment": "Number counts from 23 sources in a contiguous 2.0 arcmin^2 field",
+    "result": "Consistent with previous results within errors",
+    "finding": "Serendipitous counts not significantly biased, though field-to-field variation is possible",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggesting that the counts derived from serendipitously-detected sources are not significantly biased"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Sub-mJy sources resolve a large part of the 1.1 mm EBL",
+    "experiment": "Integrate best-fit functions",
+    "result": "~40% resolved at S>0.2 mJy",
+    "finding": "Consistent with previous ALMA studies",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion and Conclusions",
+      "quote": "The fraction of resolved EBL in this study is about 40% at $S_{\\rm 1.1mm} > 0.2$ mJy"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Excluded the two brightest ALMA sources associated with the AzTEC source to avoid the overdensity effect",
+     "evidence": [
+      {
+       "loc": "Source and Spurious Detection",
+       "quote": "we exclude the two ALMA sources when deriving number counts to avoid the effect of the possible overdensity."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small area, possible field-to-field variation",
+     "evidence": [
+      {
+       "loc": "Discussion and Conclusions",
+       "quote": "although our survey area is small and could be affected by field-to-field variation."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only a few sources at high flux; Poisson-dominated errors",
+    "Observation and imaging details are missing from the text",
+    "Field chosen to include an AzTEC source may be overdense"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Observation and imaging details (data section absent)",
+    "Source catalog (Kohno et al. in prep.)",
+    "Fit functions for corrections"
+   ],
+   "estimated_data_volume_inferred": "not stated; likely tens of GB raw",
+   "score_inferred": 3,
+   "score_reason": "Recipe is outlined, but the data and imaging details are absent and the catalog is deferred.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging and catalog details are missing, so the recipe is not complete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: hanc12)",
+     "why": "Aegean source finder"
+    },
+    {
+     "citation": "(cite: tren08)",
+     "why": "Cosmic variance tool"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Kohno et al. 2016 (cite: kohn16)",
+     "why": "Survey design and catalog"
+    },
+    {
+     "citation": "(cite: tada15)",
+     "why": "Source properties"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "SXDF",
+    "CANDELS",
+    "AzTEC"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-6e646ff46b012d3144694d893d93aba9",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:12",
+  "usage": {
+   "input_tokens": 10657,
+   "output_tokens": 4987,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.036199,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 34,
+  "quotes_ok": 34,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 25,
+   "rate": 0.352
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:20:48",
+  "custom_id": "repair-sonnet-939c90a2ca4c4bdf7ec3bdd909739d15",
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "Fitting algorithm and priors not stated"
+   }
+  ],
+  "dropped_items": []
+ }
+}

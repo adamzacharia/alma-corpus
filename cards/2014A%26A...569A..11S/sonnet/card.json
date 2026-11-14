@@ -1,0 +1,1082 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014A&A...569A..11S",
+  "title": "A necklace of dense cores in the high-mass star forming region G35.20-0.74 N: ALMA observations",
+  "year": 2014,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Sánchez-Monge, Á.",
+  "n_authors": 16,
+  "arxiv_id": "1406.4081",
+  "doi": "10.1051/0004-6361/201424032",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00275.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We used the radio-interferometer ALMA to observe the G35.20$-$0.74 N region in the submillimeter continuum and line emission at 350 GHz."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "G35.20-0.74 N (G35.20N)",
+     "coordinates": {
+      "value": "18h58m13.03s, +01d40m36.0s (J2000, phase center)",
+      "evidence": [
+       {
+        "loc": "ALMA Observations",
+        "quote": "The phase center of the observations is $\\alpha$(J2000) = 18$^{\\rm h}$ 58$^{\\rm m}$ 13$s03$, $\\delta$(J2000) = 01$\\ensuremath{^\\circ}$ 40$'$ 36$\\ensuremath{''}$0."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "G35.20$-$0.74 is a star forming complex located at a distance of $2.19^{+0.24}_{-0.20}$ kpc (cite: zhang2009)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "2.19 (+0.24/-0.20) kpc",
+      "evidence": [
+       {
+        "loc": "ALMA Observations",
+        "quote": "The phase center of the observations is $\\alpha$(J2000) = 18$^{\\rm h}$ 58$^{\\rm m}$ 13$s03$, $\\delta$(J2000) = 01$\\ensuremath{^\\circ}$ 40$'$ 36$\\ensuremath{''}$0."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "G35.20$-$0.74 is a star forming complex located at a distance of $2.19^{+0.24}_{-0.20}$ kpc (cite: zhang2009)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Zhang et al. 2009 (parallax)",
+      "evidence": [
+       {
+        "loc": "ALMA Observations",
+        "quote": "The phase center of the observations is $\\alpha$(J2000) = 18$^{\\rm h}$ 58$^{\\rm m}$ 13$s03$, $\\delta$(J2000) = 01$\\ensuremath{^\\circ}$ 40$'$ 36$\\ensuremath{''}$0."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "G35.20$-$0.74 is a star forming complex located at a distance of $2.19^{+0.24}_{-0.20}$ kpc (cite: zhang2009)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the fragmentation, kinematics, hot-core chemistry and outflow content of the elongated dense structure in the high-mass star forming region G35.20N, and is it a 1D filament or an edge-on disk-like 'pancake'?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "the main goal of our ALMA observations was to address some fundamental questions such as the fragmentation level of the elongated structure, the kinematics of the dense gas at different scales and the number of outflows and powering sources."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 7 (~350 GHz, 870 um)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The source was observed in Band 7 ($\\sim$350 GHz) with the 16 antennas of the array in the extended configuration"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four spectral windows of 1875 MHz, 3840 channels each, ~0.4 km/s resolution; 334.97-338.72 GHz and 346.89-350.72 GHz",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The digital correlator was configured in four spectral windows (with dual polarization) of 1875 MHz and 3840 channels each, providing a resolution of $\\sim$0.4 km s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3CN",
+     "transition": "19_K-18_K",
+     "rest_frequency": "349453.70 MHz (K=0)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CH$_3$CN (19$_K$–18$_K$) | 349 453.70$^\\mathrm{b}$"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "8-7",
+     "rest_frequency": "347330.63 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiO (8–7) | 347 330.63 | 75.0"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "4-3",
+     "rest_frequency": "346998.34 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "H$^{13}$CO$^+$ (4–3) | 346 998.34 | 41.6"
+      }
+     ]
+    },
+    {
+     "species": "C17O",
+     "transition": "3-2",
+     "rest_frequency": "337061.05 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "C$^{17}$O (3–2) | 337 061.05 | 32.4"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "16 antennas, ALMA Cycle 0",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "G35.20N was observed with ALMA in Cycle 0 between May and June 2012."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "36-400 m",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "baselines in the range 36–400 m, providing sensitivity to structures $\\ensuremath{\\lesssim}$2$''$."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "continuum beam 0.47\"x0.41\", PA=46 deg",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The resulting continuum image has a synthesized CLEANed beam of $0.47\\ensuremath{''}\\times0.41\\ensuremath{''}$, PA=46$^\\circ$ and a rms noise of 1.8 mJy beam$^{-1}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~2 arcsec",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "baselines in the range 36–400 m, providing sensitivity to structures $\\ensuremath{\\lesssim}$2$''$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "continuum rms 1.8 mJy/beam; channel rms 5-20 mJy/beam (0.6 km/s channels)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The rms noise of each spectral channel (of 0.6 km s$^{-1}$) varies between 5 and 20 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "May-June 2012",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "G35.20N was observed with ALMA in Cycle 0 between May and June 2012."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer/IRAC, MIPSGAL, GLIMPSE, Herschel Hi-GAL, MSX, WISE, ATLASGAL, UKIDSS, VLA 3.6 cm",
+     "provided": {
+      "value": "IR to mm data for SED, 4.5 um and H2 images, and 3.6 cm continuum for jet comparison",
+      "evidence": [
+       {
+        "loc": "Spectral energy distribution",
+        "quote": "Figure [10](#f:sed) shows the spectral energy distribution (SED) of G35.20N, obtained from the *Herschel* infrared Galactic Plane Survey"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SMA 880 um continuum, CH3CN and H13CO+ and polarization data used for flux comparison and B-field",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "The ALMA 870 $\\mu$m dust continuum emission shown in Fig. [1](#f:continuum)a is consistent with the Submillimeter Array (SMA) 880 $\\mu$m image obtained by (cite: qiu2013)."
+       }
+      ]
+     },
+     "citation": "(cite: qiu2013)"
+    },
+    {
+     "what": {
+      "value": "VLA 3.6 cm continuum map",
+      "evidence": [
+       {
+        "loc": "High-velocity SiO outflow emission",
+        "quote": "free-free 3.6 cm continuum obtained by (cite: gibb2003) with the Very Large Array"
+       }
+      ]
+     },
+     "citation": "(cite: gibb2003)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 1.75 cm2/g at 870 um",
+      "evidence": [
+       {
+        "loc": "Temperature and mass estimates",
+        "quote": "We have adopted a dust opacity of 1.75 cm$^2$ g$^{-1}$ at 870 $\\mu$m (cite: ossenkopfhenning1994), with a gas-to-dust ratio of 100."
+       }
+      ]
+     },
+     "citation": "(cite: ossenkopfhenning1994)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Neptune (flux, gain, bandpass with J1751+096)",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Flux, gain, and bandpass calibrations were obtained through observations of Neptune and J1751$+$096."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The data were calibrated and imaged using CASA[^2] (cite: mcmullin2007)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Continuum and channel maps were created with the robust parameter of (cite: briggs1995) set equal to 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "1 arcsec taper for C17O, C34S, H13CO+, SiO",
+     "evidence": [
+      {
+       "loc": "Large-scale molecular emission",
+       "quote": "we generated new CLEANed maps for these four species after tapering the data at 1$''$ resolution."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from line-free channels, subtracted in uv-domain",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "A continuum map was obtained from line-free channels and subtracted from the data, directly in the *(u,v)*-domain."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "spectra smoothed to 0.6 km/s",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "All the resulting spectra have been smoothed to a resolution of 0.6 km s$^{-1}$."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "1.8 mJy/beam continuum",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "a rms noise of 1.8 mJy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Moment map procedure",
+      "evidence": [
+       {
+        "loc": "Compact molecular emission: hot cores",
+        "quote": "The moment maps have been computed following the same procedure as in (cite: sanchezmonge2013b)"
+       }
+      ]
+     },
+     "from_reference": "(cite: sanchezmonge2013b)"
+    },
+    {
+     "what": {
+      "value": "Outflow momentum rate computation from SiO",
+      "evidence": [
+       {
+        "loc": "High-velocity SiO outflow emission",
+        "quote": "We followed the same procedure described in (cite: lopezsepulcre2009)"
+       }
+      ]
+     },
+     "from_reference": "(cite: lopezsepulcre2009)"
+    },
+    {
+     "what": {
+      "value": "Gaussian deconvolution of core sizes",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "see procedure described in Table 3 of (cite: sanchezmonge2013a)"
+       }
+      ]
+     },
+     "from_reference": "(cite: sanchezmonge2013a)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration (pipeline vs manual) details",
+    "line-free channel selection for continuum",
+    "clean threshold, mask, cell and image size, deconvolver",
+    "myXCLASS fit initial guesses, parameter bounds, and fitting algorithm settings",
+    "exact SiO outflow momentum computation inputs",
+    "line used for tapered maps' beam"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and lines",
+    "method": {
+     "value": "CASA imaging with robust 0.5; continuum from line-free channels subtracted in uv; tapered maps at 1\" for extended tracers",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Continuum and channel maps were created with the robust parameter of (cite: briggs1995) set equal to 0.5"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Missing flux estimated vs SCUBA (~30%), SMA and ASTE (~75% for CH3CN)",
+     "evidence": [
+      {
+       "loc": "Compact molecular emission: hot cores",
+       "quote": "The ALMA observations recover around 75% of the flux measured with ASTE."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify cores and measure fluxes/sizes",
+    "method": {
+     "value": "2D CLUMPFIND identifies six cores; flux within 5 sigma; deconvolved diameter at 50% contour",
+     "evidence": [
+      {
+       "loc": "Continuum emission",
+       "quote": "The 2D CLUMPFIND algorithm (cite: williams1994) identifies six of these, which we name cores A–F"
+      }
+     ]
+    },
+    "software": [
+     "CLUMPFIND"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit CH3CN and CH3OH spectra for temperature and column density",
+    "method": {
+     "value": "Single-component LTE fit with myXCLASS/MAGIX minimizing chi2; five free parameters (size, T, N, linewidth, vLSR)",
+     "evidence": [
+      {
+       "loc": "CH3OH and CH3CN myXCLASS fits",
+       "quote": "The procedure searches, by minimizing the $\\chi^2$, for the best fit of five parameters: size (in arcsec), temperature (in K), column density (in cm$^{-2}$), linewidth (in km s$^{-1}$) and LSR velocity (in km s$^{-1}$)."
+      }
+     ]
+    },
+    "software": [
+     "myXCLASS",
+     "MAGIX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "12C/13C = 50",
+      "evidence": [
+       {
+        "loc": "Temperature and mass estimates",
+        "quote": "We assumed the relative abundance \\[$^{12}$C/$^{13}$C\\] to be 50 for a galactocentric distance of 6.5 kpc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimization with MAGIX",
+     "evidence": [
+      {
+       "loc": "Temperature and mass estimates",
+       "quote": "Once an initial guess is set up, the parameters can be fitted using the program MAGIX"
+      }
+     ]
+    },
+    "validation": {
+     "value": "chi2 plots; simultaneous fit of optically thick and thin lines to avoid degeneracies",
+     "evidence": [
+      {
+       "loc": "CH3OH and CH3CN myXCLASS fits",
+       "quote": "thus avoiding possible degeneracies (cite: zernickel2012) between the parameters of the fit"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive core masses, densities, abundances",
+    "method": {
+     "value": "Optically thin dust mass formula with T=Tex (lower limit 30 K); N, n from spherical homogeneous cores; 30-50 K for cores E, F",
+     "evidence": [
+      {
+       "loc": "Temperature and mass estimates",
+       "quote": "We assume $T=T_\\mathrm{ex}$, where $T_\\mathrm{ex}$ is obtained from the myXCLASS analysis."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "kappa=1.75 cm2/g at 870 um, gas-to-dust 100, mu=2.3, D=2.19 kpc",
+      "evidence": [
+       {
+        "loc": "Temperature and mass estimates",
+        "quote": "We have adopted a dust opacity of 1.75 cm$^2$ g$^{-1}$ at 870 $\\mu$m (cite: ossenkopfhenning1994), with a gas-to-dust ratio of 100."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Kauffmann & Pillai mass-size relation",
+     "evidence": [
+      {
+       "loc": "Temperature and mass estimates",
+       "quote": "We also compared the mass and size of the six cores identified in G35.20N with the empirical relation for a dense core to form a massive star"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Virial masses",
+    "method": {
+     "value": "M_vir=105 D_S dv^2 using hot-core and H13CO+ linewidths",
+     "evidence": [
+      {
+       "loc": "Dynamical status of the cores",
+       "quote": "$M_\\mathrm{vir}=105\\,[D_{\\rm S}/\\mathrm{pc}][\\Delta {\\rm v}/\\mathrm{km~s}^{-1}]^2$ $M_{\\ensuremath{\\odot}}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "uniform density",
+      "evidence": [
+       {
+        "loc": "Dynamical status of the cores",
+        "quote": "the numerical value accounts for a uniform density distribution across the core"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Velocity fields and Keplerian disk masses",
+    "method": {
+     "value": "Moment maps and position-velocity cuts (PA 157 deg core B, 10 deg core A) compared to Keplerian pattern; core A mass from v=1.5 km/s at 0.7\"",
+     "evidence": [
+      {
+       "loc": "Core A",
+       "quote": "Assuming that one is indeed observing a Keplerian disk with a rotation velocity of 1.5 km s$^{-1}$ at a radius of 0.7$''$ (or 1500 AU), we derive a mass of $\\sim$4 $M_{\\ensuremath{\\odot}}$"
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "core B Keplerian model from Sanchez-Monge 2013b",
+     "evidence": [
+      {
+       "loc": "Core B",
+       "quote": "The positions of the Gaussian peaks, which provide a picture of the velocity field (see Fig. 4 of (cite: sanchezmonge2013b)), were fitted with a simple Keplerian disk model."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Test filament vs pancake",
+    "method": {
+     "value": "Toomre Q and cylinder fragmentation spacing/critical mass per length",
+     "evidence": [
+      {
+       "loc": "Nature of the elongated structure",
+       "quote": "In practice, one sees that a value of $\\Delta V=0.7$ km s$^{-1}$ is required for the theoretical expression to match the observed spacing between the cores"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration and imaging",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The data were calibrated and imaged using CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS (CLASS, GREG)",
+    "version": "not stated",
+    "used_for": {
+     "value": "analysis of spectral line images",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The spectral line images were analyzed using the CLASS and GREG programs of the GILDAS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CLUMPFIND",
+    "version": "not stated",
+    "used_for": {
+     "value": "core identification",
+     "evidence": [
+      {
+       "loc": "Continuum emission",
+       "quote": "The 2D CLUMPFIND algorithm (cite: williams1994) identifies six of these"
+      }
+     ]
+    }
+   },
+   {
+    "name": "myXCLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "LTE spectral fitting of CH3CN and CH3OH",
+     "evidence": [
+      {
+       "loc": "Temperature and mass estimates",
+       "quote": "We fitted the observed methyl cyanide and methanol spectra for all the cores using the CASA interface of the XCLASS software called myXCLASS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGIX",
+    "version": "not stated",
+    "used_for": {
+     "value": "parameter fitting",
+     "evidence": [
+      {
+       "loc": "Temperature and mass estimates",
+       "quote": "the parameters can be fitted using the program MAGIX"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum beam",
+    "value": "0.47x0.41, PA 46",
+    "uncertainty": "not stated",
+    "units": "arcsec, deg",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "synthesized CLEANed beam of $0.47\\ensuremath{''}\\times0.41\\ensuremath{''}$, PA=46$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Core A flux density",
+    "value": "0.692",
+    "uncertainty": "0.023",
+    "units": "Jy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "A    | 18 58 12.945           | 01 40 37.36                                              | 0.208                          | $0.692\\pm0.023$"
+     }
+    ]
+   },
+   {
+    "quantity": "Core B flux density",
+    "value": "0.333",
+    "uncertainty": "0.008",
+    "units": "Jy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$0.333\\pm0.008$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean core spacing",
+    "value": "0.023",
+    "uncertainty": "not stated",
+    "units": "pc",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Continuum emission",
+      "quote": "mean (projected) separation of $\\sim$$2.1\\ensuremath{''}$ or $\\sim$0.023 pc"
+     }
+    ]
+   },
+   {
+    "quantity": "Core masses",
+    "value": "1-10",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Temperature and mass estimates",
+      "quote": "The masses of the cores in G35.20N are in the range 1–10 $M_{\\ensuremath{\\odot}}$."
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CN rotation temperature core A",
+    "value": "309",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "A    | 31.8          | 5.2           | 0.24     | 309"
+     }
+    ]
+   },
+   {
+    "quantity": "Bolometric luminosity",
+    "value": "~3e4",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Spectral energy distribution",
+      "quote": "We obtain $\\sim$$3\\times10^{4}$ $L_{\\ensuremath{\\odot}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass core A (Keplerian)",
+    "value": "~4",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Core A",
+      "quote": "we derive a mass of $\\sim$4 $M_{\\ensuremath{\\odot}}$ for the putative central star"
+     }
+    ]
+   },
+   {
+    "quantity": "Critical line mass vs measured",
+    "value": "~40 critical vs ~200 measured",
+    "uncertainty": "not stated",
+    "units": "Msun/pc",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Nature of the elongated structure",
+      "quote": "this line width of 0.7 km s$^{-1}$ results in a critical mass per unit length of $\\sim$40 $M_{\\ensuremath{\\odot}}$ pc$^{-1}$, while the measured mass per unit length in our filament is $\\sim$200 $M_{\\ensuremath{\\odot}}$ pc$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux recovered vs ASTE (CH3CN)",
+    "value": "~75%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Compact molecular emission: hot cores",
+      "quote": "The ALMA observations recover around 75% of the flux measured with ASTE."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Cores A, B, C are hot cores; cores D-F are weak in complex molecules.",
+    "evidence": [
+     {
+      "loc": "Line emission",
+      "quote": "The rest of the cores are only associated with faint emission of more abundant species such as C$^{17}$O, C$^{34}$S, H$^{13}$CO$^+$"
+     }
+    ]
+   },
+   {
+    "value": "Core B jet is consistent with precession; core A may drive an outflow seen in SiO and 3.6 cm.",
+    "evidence": [
+     {
+      "loc": "Precessing jet",
+      "quote": "This behavior is strongly suggestive of precession about an axis significantly inclined with respect to the N–S direction."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the elongated dust structure fragmented into regularly spaced cores?",
+    "experiment": "ALMA 870 um continuum with CLUMPFIND",
+    "result": "Six cores with ~0.023 pc spacing, masses 1-10 Msun",
+    "finding": "The structure fragments into regularly spaced low-mass dense cores",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The cores appear regularly spaced with a mean separation of $\\sim$0.023 pc."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do cores A and B host Keplerian disks?",
+    "experiment": "Moment maps and PV diagrams of hot core tracers",
+    "result": "Coherent velocity gradients, butterfly PV pattern in B; weaker in A",
+    "finding": "Consistent with Keplerian disks around 4 (A) and 18 (B) Msun, A less certain",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Core A",
+      "quote": "Higher angular resolution data are needed to confirm whether core A is undergoing Keplerian rotation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the elongated structure a 1D filament or an edge-on pancake?",
+    "experiment": "Velocity field, Toomre/fragmentation analysis, magnetic field orientation",
+    "result": "Both unstable; regular spacing and B-field parallel to structure",
+    "finding": "Favours a fragmenting 1D filament",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Nature of the elongated structure",
+      "quote": "we tend to favor the filament interpretation of the elongated structure."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Rotating edge-on 'pancake' disfavoured: counter-rotation of core B, inconsistent core velocities, regular spacing, B-field direction.",
+     "evidence": [
+      {
+       "loc": "Nature of the elongated structure",
+       "quote": "Another problem with the “pancake” scenario is that core B would be counter-rotating with respect to the large-scale velocity field."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Extended emission resolved out; H13CO+ linewidths are lower limits; missing flux affects abundances.",
+     "evidence": [
+      {
+       "loc": "Dynamical status of the cores",
+       "quote": "We note, however, that extended structures are heavily resolved out in our observations."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Masses depend on assumed Tdust=Tex and a 30 K floor",
+    "Single-component LTE fits ignore gradients",
+    "Missing flux up to 50-70% affects abundances and filament mass",
+    "Filament vs pancake argument is qualitative"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Project code not printed in paper",
+    "CASA version and imaging parameters",
+    "myXCLASS fit set-up details",
+    "Keplerian model details are in Sánchez-Monge 2013b"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw (Cycle 0, four 1.9 GHz spectral windows)",
+   "score_inferred": 4,
+   "score_reason": "Data are archival-public and the recipe is described but with limited imaging detail.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging parameters are incomplete and several results rely on inherited procedures."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: zernickel2012)",
+     "why": "myXCLASS fitting"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: sanchezmonge2013b)",
+     "why": "first ALMA results on G35.20N, Keplerian disk in core B"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Beltrán et al. G35.03+0.35 ALMA Cycle 0"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-5acc2b7b87dad7b865c82172b442c12f",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:21",
+  "usage": {
+   "input_tokens": 41220,
+   "output_tokens": 9311,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.088382,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 71,
+  "quotes_ok": 71,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00275.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 83,
+   "stated": 50,
+   "rate": 0.602
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:57",
+  "custom_id": "repair-sonnet-6fe96a34f555d2a7f99fd2a1934f6968",
+  "fixed": [
+   {
+    "path": "analysis_steps[5].fitting.evidence[0]",
+    "old": null,
+    "new": "The positions of the Gaussian peaks, which provide a picture of the velocity field (see Fig. 4 of (cite: sanchezmonge2013b)), were fitted with a simple Keplerian disk model."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

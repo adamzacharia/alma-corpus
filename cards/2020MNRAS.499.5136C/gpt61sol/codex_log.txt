@@ -1,0 +1,466 @@
+[C$\\scriptstyle\\rm II$\\] luminosity ratio",
+          "quote": "$\\log U_{\\rm ion}\\approx -2$ and a PDR covering fraction of 10% are still requested to reproduce $L_{\\rm [CII]}$/SFR ratios."
+        }
+      ]
+    },
+    {
+      "quantity": "MS0451-H potential [CII] line SNR",
+      "value": "4.2",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "MS0451-H",
+          "quote": "The \\[C$\\scriptstyle\\rm II$\\] emission is detected in the integrated map with an SNR $= 4.2$"
+        }
+      ]
+    },
+    {
+      "quantity": "MS0451-H potential [CII] integrated flux",
+      "value": "42",
+      "uncertainty": "±10",
+      "units": "mJy km s−1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "MS0451-H",
+          "quote": "an integrated flux density of $42\\pm10$ mJy ${\\rm km~s^{-1}}$"
+        }
+      ]
+    },
+    {
+      "quantity": "MS0451-H potential [CII] luminosity, magnification scaling as printed",
+      "value": "4.8×10^5(μ/100)",
+      "uncertainty": "±1.1×10^5(μ/100)",
+      "units": "L⊙",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "MS0451-H",
+          "quote": "$= (4.8\\pm1.1)\\times 10^{5}(\\mu/100)$ L${_\\odot}$."
+        }
+      ]
+    },
+    {
+      "quantity": "MS0451-H conditional total [CII] luminosity after SBD correction",
+      "value": "1.2-2.4×10^6(μ/100)",
+      "uncertainty": "not stated",
+      "units": "L⊙",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "MS0451-H",
+          "quote": "$= 1.2-2.4\\times 10^{6}(\\mu/100)$ L${_\\odot}$"
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Tapering recovers [CII] in the entire nine-galaxy sample",
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "we detect \\[C$\\scriptstyle\\rm II$\\] emission in the whole sample, with an extent systematically larger than the \\[O$\\scriptstyle\\rm III$\\] emission."
+        }
+      ]
+    },
+    {
+      "value": "Independent BDF-3299 data confirm displaced [CII]; deeper combined images still show no [CII] or continuum at the UV region",
+      "evidence": [
+        {
+          "loc": "BDF-3299",
+          "quote": "This new independent dataset confirms the robustness of the displaced \\[C$\\scriptstyle\\rm II$\\] detection."
+        },
+        {
+          "loc": "BDF-3299",
+          "quote": "Despite the deeper images, we have detected neither the continuum nor \\[C$\\scriptstyle\\rm II$\\] emission at the location of the UV region."
+        }
+      ]
+    },
+    {
+      "value": "The apparent [CII]-SFR deficit depends on the SFR estimator",
+      "evidence": [
+        {
+          "loc": "\\[C$\\scriptstyle\\rm II$\\] as tracer of SFR in the EOR?",
+          "quote": "if we adopt the SFR from SED fitting, high-$z$ galaxies appear systematically below the local relation."
+        }
+      ]
+    },
+    {
+      "value": "No clear [OIII]/[CII] dependence on SFR or bolometric luminosity",
+      "evidence": [
+        {
+          "loc": "\\[O$\\scriptstyle\\rm III$\\] over \\[C$\\scriptstyle\\rm II$\\] luminosity ratio",
+          "quote": "with no clear dependence of the luminosity ratio on either SFR or L$_{\\rm bol}$($=L_{\\rm UV}+ L_{\\rm IR}$)"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Previously reported [CII] non-detections may result from resolving out extended emission",
+      "experiment": "Search ten differently tapered cubes for each of three previously undetected galaxies",
+      "result": "A candidate above 3.8σ is recovered in each at the [OIII] or Lyα redshift",
+      "finding": "Surface-brightness sensitivity can cause spurious [CII] non-detections",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "SXDF-NB1006-2, A2744-YD4, and MACSJJ149-JD1",
+          "quote": "We have thus generated 10 different ALMA cubes for each target"
+        },
+        {
+          "loc": "SXDF-NB1006-2, A2744-YD4, and MACSJJ149-JD1",
+          "quote": "In all three galaxies we have found a candidate line with a significance level $>3.8\\sigma$ in the integrated *uv*-tapered map at the redshift of either \\[O$\\scriptstyle\\rm III$\\] or Ly$\\alpha$ line."
+        },
+        {
+          "loc": "Summary and Conclusions",
+          "quote": "lead to spurious non-detections."
+        }
+      ]
+    },
+    {
+      "hypothesis": "[CII] and [OIII] have different spatial extents",
+      "experiment": "Measure FIR line sizes in image and uv planes and compare the high-SNR systems",
+      "result": "[CII] extent is about twice the oxygen-line extent",
+      "finding": "The two lines trace different regions and require different surface-brightness corrections",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Observations and data analysis",
+          "quote": "The two measurements are in agreement within the errors."
+        },
+        {
+          "loc": "MACSJ0416-Y1, B14-65666, J0235, J1211, and J0217",
+          "quote": "its extent is about two times larger than that of oxygen line."
+        },
+        {
+          "loc": "MACSJ0416-Y1, B14-65666, J0235, J1211, and J0217",
+          "quote": "Simulations and observations suggest that distinct FIR emission lines trace different regions of the same galaxy"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Resolution and sensitivity bias integrated line fluxes",
+      "experiment": "Vary mock ALMA configuration and exposure time; compare with repeat HZ1, HZ3 and HZ4 observations",
+      "result": "20-40% of flux can be missed when beam size approaches the [CII] extent; losses reach 70% at SNR<5",
+      "finding": "Spatially resolved low-SNR luminosities require missing-flux corrections",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Comparing mock data with observations",
+          "quote": "The simulations are fully consistent with the observations, predicting that we miss 20-40% of the total flux when the ALMA beam size is similar to the \\[C$\\scriptstyle\\rm II$\\] extension"
+        },
+        {
+          "loc": "Summary and Conclusions",
+          "quote": "The fraction of missing flux increases up to 70% when the line is detected with a SNR$<5$."
+        },
+        {
+          "loc": "Comparing mock data with observations",
+          "quote": "the predictions from our simulations can be used to derive the intrinsic flux of the data when the resolution and sensitivity are not sufficient to retrieve the total emission."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The high-z [CII]-SFR relation differs from the local relation",
+      "experiment": "Correct luminosities for SBD, estimate uniform UV+FIR SFRs and fit the relation and redshift offsets",
+      "result": "Corrected slope 1.1±0.2; mean z=6-9 offset −0.07±0.3",
+      "finding": "Little evolution is suggested, but the highest-redshift sample is insufficient for a definitive conclusion",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "\\[C$\\scriptstyle\\rm II$\\] as tracer of SFR in the EOR?",
+          "quote": "The resulting best fit for the SBD-corrected data is $\\log L_{\\rm [CII]} = (1.1\\pm0.2)\\log SFR + (6.8\\pm0.2)$"
+        },
+        {
+          "loc": "\\[C$\\scriptstyle\\rm II$\\] as tracer of SFR in the EOR?",
+          "quote": "$\\Delta^{z=6-9} = -0.07\\pm0.3$ for the corrected sample"
+        },
+        {
+          "loc": "\\[C$\\scriptstyle\\rm II$\\] as tracer of SFR in the EOR?",
+          "quote": "the low statistics at $z>7$ does not allow us to determine definitively whether the $L_{\\rm [CII]}$-SFR relation evolves with redshift or not."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Early galaxies require extreme [OIII]/[CII] ratios and a ratio–SFR trend",
+      "experiment": "Recompute ratios using recovered [CII], SBD corrections and uniform SFR estimates",
+      "result": "No ratio above 10; corrected ratios described as between 1 and 8; no clear SFR or bolometric-luminosity dependence",
+      "finding": "Extreme ratios and the previously proposed global trend are not confirmed",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "\\[O$\\scriptstyle\\rm III$\\] over \\[C$\\scriptstyle\\rm II$\\] luminosity ratio",
+          "quote": "we do not find any value higher than 10."
+        },
+        {
+          "loc": "\\[O$\\scriptstyle\\rm III$\\] over \\[C$\\scriptstyle\\rm II$\\] luminosity ratio",
+          "quote": "after the correction for the SBD effect, the luminosity ratios span a range between 1 and 8"
+        },
+        {
+          "loc": "\\[O$\\scriptstyle\\rm III$\\] over \\[C$\\scriptstyle\\rm II$\\] luminosity ratio",
+          "quote": "with no clear dependence of the luminosity ratio on either SFR or L$_{\\rm bol}$($=L_{\\rm UV}+ L_{\\rm IR}$)"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Use galaxies observed in both [CII] and [OIII] to test non-detections and compare line extents",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "in order to verify the robustness of some \\[C$\\scriptstyle\\rm II$\\] non-detection and compare the extent of the two FIR emission lines."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Natural weighting maximises surface-brightness sensitivity; taper trials find the best sensitivity–resolution combination for extended emission",
+      "evidence": [
+        {
+          "loc": "Observations and data analysis",
+          "quote": "We have used a natural weighting that returns the best surface brightness sensitivity."
+        },
+        {
+          "loc": "SXDF-NB1006-2, A2744-YD4, and MACSJJ149-JD1",
+          "quote": "enables us to find the best sensitivity-angular resolution combination that optimises the detection of extended emission."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Retain detections above 3.6σ and select the highest-confidence candidate; check size agreement and mock-data agreement with observations",
+      "evidence": [
+        {
+          "loc": "SXDF-NB1006-2, A2744-YD4, and MACSJJ149-JD1",
+          "quote": "and among this final sample we have extracted the line candidate with the highest confidence level."
+        },
+        {
+          "loc": "Blind-line search method",
+          "quote": "The SNR threshold of the peaks has been fixed to 3.6"
+        },
+        {
+          "loc": "Comparing mock data with observations",
+          "quote": "The simulations are fully consistent with the observations"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "SED-fitting SFRs instead of UV+FIR SFRs produce a systematic offset below the local relation",
+      "evidence": [
+        {
+          "loc": "\\[C$\\scriptstyle\\rm II$\\] as tracer of SFR in the EOR?",
+          "quote": "if we adopt the SFR from SED fitting, high-$z$ galaxies appear systematically below the local relation."
+        }
+      ]
+    },
+    {
+      "value": "BDF-3299 extended [CII] may trace a satellite or metal-enriched circumgalactic medium",
+      "evidence": [
+        {
+          "loc": "BDF-3299",
+          "quote": "We conjecture that the extended emission toward East represents an additional fainter and smaller satellite member of BDF-3299 system."
+        },
+        {
+          "loc": "BDF-3299",
+          "quote": "Another possibility is that the extended \\[C$\\scriptstyle\\rm II$\\] emission is tracing metal-enriched circumgalactic medium (CGM) around BDF-3299."
+        }
+      ]
+    },
+    {
+      "value": "Target-specific ALMA simulations are an alternative for complicated morphologies",
+      "evidence": [
+        {
+          "loc": "Comparing mock data with observations",
+          "quote": "In those cases, ALMA simulations of the target provide a valid alternative to predict the missing flux due to the surface brightness dimming effect."
+        }
+      ]
+    },
+    {
+      "value": "Physical explanations also considered: low metallicity, starburst radiation fields, low PDR covering fraction and line-width effects",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "the \\[C$\\scriptstyle\\rm II$\\] deficit may indicate that these galaxies are very metal-poor systems."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "Upward deviations with respect to the Kennicutt-Schmidt relation due to a starburst phase, could strongly depress \\[C$\\scriptstyle\\rm II$\\] emission."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "the line width of the FIR line, and thus disc inclination, may be responsible of the non-detections."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Correction-factor uncertainty prevents total-flux accuracy better than ~20%-30%",
+      "evidence": [
+        {
+          "loc": "Comparing mock data with observations",
+          "quote": "the correction factors suffer from large uncertainty and the total flux cannot be estimated with an error lower than $\\sim20\\%-30\\%$."
+        }
+      ]
+    },
+    {
+      "value": "Correction factors may be inappropriate for very complicated morphologies",
+      "evidence": [
+        {
+          "loc": "Comparing mock data with observations",
+          "quote": "Moreover, our correction factors may not be appropriate for very complicated morphologies."
+        }
+      ]
+    },
+    {
+      "value": "Low statistics above z=7 prevent a definitive evolution measurement",
+      "evidence": [
+        {
+          "loc": "\\[C$\\scriptstyle\\rm II$\\] as tracer of SFR in the EOR?",
+          "quote": "the low statistics at $z>7$ does not allow us to determine definitively whether the $L_{\\rm [CII]}$-SFR relation evolves with redshift or not."
+        }
+      ]
+    },
+    {
+      "value": "Tapering sacrifices sensitivity and does not by itself recover total galaxy emission",
+      "evidence": [
+        {
+          "loc": "Summary and Conclusions",
+          "quote": "The *uv*-tapering is a possible alternative to recover the \"missing\" extended emission to the detriment of sensitivity."
+        },
+        {
+          "loc": "Summary and Conclusions",
+          "quote": "However, this method is not sufficient to infer the total emission arising from the galaxy."
+        }
+      ]
+    },
+    {
+      "value": "MS0451-H line association is unconfirmed; magnification systematics and differential magnification complicate its luminosity",
+      "evidence": [
+        {
+          "loc": "MS0451-H",
+          "quote": "we cannot confirm if this potential emission is associate to the arc."
+        },
+        {
+          "loc": "MS0451-H",
+          "quote": "the error associated with such a large magnification factor might plausibly be higher than 50% when systematics are included (cite: Meneghetti:2017)."
+        },
+        {
+          "loc": "MS0451-H",
+          "quote": "a significant differential magnification can affect the two spatially offset regions."
+        }
+      ]
+    },
+    {
+      "value": "BDF-3299 satellite and CGM interpretations require more sensitive [CII] or JWST observations",
+      "evidence": [
+        {
+          "loc": "BDF-3299",
+          "quote": "distinguishing between satellites or CGM requires either more sensitive \\[C$\\scriptstyle\\rm II$\\] images or JWST observations"
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Selecting the strongest candidate across multiple tapers and line widths needs an explicit false-positive assessment beyond a borrowed single SNR threshold.",
+    "The Gaussian mock-source family and three relatively simple validation galaxies do not establish correction accuracy for arbitrary high-z morphologies.",
+    "The relation and its apparent evolution depend on the adopted SFR estimator, dust temperature, size assumptions and handling of upper limits.",
+    "Target names vary internally: BDF-3329 versus BDF-3299, MACSJJ149-JD1 versus MACS1149-JD1, and HZ2 versus HZ3 in the appendix.",
+    "Corrected-ratio bounds differ between the discussion and conclusions; the summary table includes 1.8±0.5 and 8±2.",
+    "Table 1 flux units and the B14-65666 [OIII] FWHM entry warrant checking before reuse as answer keys.",
+    "The printed redshift-fit equations and MS0451-H magnification scaling should be checked against the authors' underlying calculations; this card retains the printed values.",
+    "The Cloudy-based ISM interpretation reuses published calculations; it is not an independently specified model fit in this paper."
+  ],
+  "reproducibility": [
+    {
+      "field": "data_public_as_stated",
+      "value": "Data available in the ALMA archive",
+      "evidence": [
+        {
+          "loc": "DATA AVAILABILITY",
+          "quote": "The data used in the paper are available in the ALMA archive at https://almascience.nrao.edu."
+        }
+      ]
+    },
+    {
+      "field": "products_in_archive",
+      "value": "Raw data with delivered pipeline scripts",
+      "evidence": [
+        {
+          "loc": "Observations and data analysis",
+          "quote": "the pipeline script delivered with the raw data from the archive"
+        }
+      ]
+    }
+  ],
+  "code_released": [
+    {
+      "value": "not stated",
+      "evidence": []
+    }
+  ],
+  "missing_for_reproduction": [
+    "Custom line-finder source and exact execution parameters.",
+    "Derived maps, component measurements and simulations; the paper offers them only on reasonable request.",
+    "Per-target calibration/imaging scripts and exact CASA versions.",
+    "Full uv-plane size-fitting implementation inherited from Carniani:2019.",
+    "Simulation configuration files, noise settings, seeds and variable-exposure grid.",
+    "Correction-table interpolation and uncertainty-propagation implementation.",
+    "Complete photometric/sample inputs and regression implementation, including treatment of non-detections."
+  ],
+  "estimated_data_volume_inferred": "not stated",
+  "score_inferred": 6,
+  "score_reason": "6/10: public archive data, project codes, apertures, taper/search ranges, mock-source assumptions and numeric outputs are given. Exact scripts, simulation settings, sample inputs and fitting procedures remain incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The observational data are public and results are numeric, but the supplied recipe lacks the custom search code, complete simulation settings and regression details needed for an independent end-to-end reproduction.",
+  "methods_papers": [
+    {
+      "citation": "(cite: McMullin:2007)",
+      "why": "CASA calibration and analysis software."
+    },
+    {
+      "citation": "(cite: Carniani:2019)",
+      "why": "Inherited uv-plane size-measurement procedure."
+    },
+    {
+      "citation": "(cite: Tazzari:2018)",
+      "why": "GALARIO package used by the inherited uv-plane procedure."
+    },
+    {
+      "citation": "(cite: Bethermin:2020)",
+      "why": "ALPINE detection threshold and validation observations."
+    },
+    {
+      "citation": "(cite: Planck-Collaboration:2015)",
+      "why": "Adopted cosmological parameters."
+    },
+    {
+      "citation": "(cite: Kennicutt:2012)",
+      "why": "UV and FIR SFR calibrations."
+    },
+    {
+      "citation": "(cite: kroupa:01)",
+      "why": "Assumed IMF for SFR estimates."
+    },
+    {
+      "citation": "(cite: De-Looze:2014)",
+      "why": "Local [CII]-SFR comparison relation."
+    },
+    {
+      "citation": "(cite: Harikane:2019)",
+      "why": "Published Cloudy calculations used for ISM interpretation."
+    }
+  ],
+  "companion_papers": [],
+  "related_projects_or_surveys": [
+    "ALMA Large Program to INvestigate [CII] at Early times (ALPINE)"
+  ]
+}
+tokens used
+86,560

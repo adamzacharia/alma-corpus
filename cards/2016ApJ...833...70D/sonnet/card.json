@@ -1,0 +1,816 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...833...70D",
+  "title": "The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Molecular Gas Reservoirs in High-redshift Galaxies",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Decarli, Roberto",
+  "n_authors": 32,
+  "arxiv_id": "1607.06771",
+  "doi": "10.3847/1538-4357/833/1/70",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00146.S",
+   "2013.1.00718.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We study the molecular gas properties of high–$z$ galaxies observed in the ALMA Spectroscopic Survey (ASPECS) that targets a $\\sim1$ arcmin$^2$ region in the Hubble Ultra Deep Field (UDF)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "ASPECS UDF field (11 galaxies with L_IR>1e11 Lsun)",
+     "coordinates": {
+      "value": "RA 03:32:37.900, Dec -27:46:25.00 (J2000), 3mm pointing center",
+      "evidence": [
+       {
+        "loc": "2.1 The ALMA dataset",
+        "quote": "we obtained a single pointing centered at RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0), close to the Northern corner of the Hubble eXtremely Deep Field"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.895–2.543 (spectroscopic)",
+      "evidence": [
+       {
+        "loc": "2.1 The ALMA dataset",
+        "quote": "we obtained a single pointing centered at RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0), close to the Northern corner of the Hubble eXtremely Deep Field"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "spectroscopic redshifts from literature, MUSE, 3D-HST grism, and ASPECS CO lines",
+      "evidence": [
+       {
+        "loc": "2.1 The ALMA dataset",
+        "quote": "we obtained a single pointing centered at RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0), close to the Northern corner of the Hubble eXtremely Deep Field"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the molecular gas properties (CO luminosities, excitation, gas masses, depletion times, gas fractions, CO- vs dust-based masses) of IR-luminous (L_IR>1e11 Lsun) spectroscopic-redshift galaxies in the ASPECS UDF field?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In the present paper, we study the molecular gas properties of galaxies in ASPECS, the ALMA Spectroscopic Survey in the Hubble Ultra Deep Field (UDF)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 3 (3 mm, 84–115 GHz) and Band 6 (1 mm, 212–272 GHz) frequency scans",
+    "evidence": [
+     {
+      "loc": "2.1 The ALMA dataset",
+      "quote": "The dataset consists of two frequency scans in ALMA band 3 (3 mm, 84–115 GHz) and in band 6 (1 mm, 212–272 GHz)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1 to 8-7",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "4.1 CO luminosities and associated H$_2$ masses",
+       "quote": "We measure the line fluxes (or place limits) for all the CO transitions covered in both the 3mm and 1mm line scans."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1mm continuum 1.5'' x 1.0''",
+    "evidence": [
+     {
+      "loc": "4.2 Size of the CO-emitting region in ID.2",
+      "quote": "the 1 mm dust continuum is unresolved at $1.5''\\times1.0''$ resolution"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "3mm: 0.18 mJy/beam per 50 km/s; 1mm: 0.44 mJy/beam per 50 km/s; 1mm continuum 12.7 uJy/beam",
+    "evidence": [
+     {
+      "loc": "2.1 The ALMA dataset",
+      "quote": "The typical noise rms is 0.44 mJy beam$^{-1}$ per 50 km s$^{-1}$ channel. The resulting 1mm continuum image reaches a noise rms of $12.7$ $\\mu$Jy beam$^{-1}$ at the center of the mosaic"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST, Spitzer, Herschel, Chandra, VLT/MUSE, 3D-HST",
+     "provided": {
+      "value": "Photometry, spectroscopic/grism redshifts, X-ray data for SED fitting and source characterization",
+      "evidence": [
+       {
+        "loc": "2.2 Ancillary Data",
+        "quote": "We complement the ALMA data with X-ray–to–far-IR photometry from public catalogs of this field, as well as optical/near-IR spectroscopic information where available."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO excitation ladder r21=0.76, r31=0.42, r41=0.31",
+      "evidence": [
+       {
+        "loc": "4.1 CO luminosities and associated H$_2$ masses",
+        "quote": "we adopt the recent CO excitation ladder of main–sequence galaxies derived by (cite: daddi15): $r_{21}$=$0.76\\pm0.09$, $r_{31}=0.42\\pm0.07$, and $r_{41}=0.31\\pm0.06$"
+       }
+      ]
+     },
+     "citation": "(cite: daddi15)"
+    },
+    {
+     "what": {
+      "value": "Photometric catalogs of the UDF/XDF",
+      "evidence": [
+       {
+        "loc": "2.2 Ancillary Data",
+        "quote": "The main sources for the photometry are the compilations by (cite: coe06) and (cite: skelton14)."
+       }
+      ]
+     },
+     "citation": "(cite: coe06); (cite: skelton14)"
+    },
+    {
+     "what": {
+      "value": "Effective radii from HST imaging",
+      "evidence": [
+       {
+        "loc": "5.2.2 Average surface densities: SFR vs. gas mass",
+        "quote": "We thus use the information from the stellar morphology derived by (cite: vanderwel12) and reported in Tab. [\\[tab_sample\\]](#tab_sample)"
+       }
+      ]
+     },
+     "citation": "(cite: vanderwel12)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA observations and data reduction",
+      "evidence": [
+       {
+        "loc": "2.1 The ALMA dataset",
+        "quote": "The details of the ALMA dataset (observations and data reduction) are presented in Paper I of this series."
+       }
+      ]
+     },
+     "from_reference": "Paper I, Walter et al."
+    },
+    {
+     "what": {
+      "value": "1mm continuum image",
+      "evidence": [
+       {
+        "loc": "2.1 The ALMA dataset",
+        "quote": "The resulting 1mm continuum image reaches a noise rms of $12.7$ $\\mu$Jy beam$^{-1}$ at the center of the mosaic (see Paper II)."
+       }
+      ]
+     },
+     "from_reference": "Paper II, Aravena et al."
+    },
+    {
+     "what": {
+      "value": "alpha_CO = 3.6",
+      "evidence": [
+       {
+        "loc": "4.1 CO luminosities and associated H$_2$ masses",
+        "quote": "We adopt $\\alpha_{\\rm CO}$=3.6 M$_\\odot$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$ (cite: daddi10b)."
+       }
+      ]
+     },
+     "from_reference": "(cite: daddi10b)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA project codes, CASA version, calibration and imaging parameters (all deferred to Paper I)",
+    "Cube/image products used for spectral extraction (aperture, extraction method at optical positions)",
+    "MAGPHYS configuration details (priors, redshift handling, templates)",
+    "Details of the mock velocity-map models for ID.2 (beam, noise, fitting procedure)",
+    "Source of 1mm flux densities for the continuum-detected sources (from Paper II)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "SED fitting of all galaxies",
+    "method": {
+     "value": "Fit SEDs with high-z MAGPHYS using 26 filters plus ASPECS 1mm photometry where >2 sigma",
+     "evidence": [
+      {
+       "loc": "2.2 Ancillary Data",
+       "quote": "We use the high-$z$ extension of MAGPHYS (cite: dacunha08; dacunha15) to fit the Spectral Energy Distributions (SEDs) of all of them."
+      }
+     ]
+    },
+    "software": [
+     "MAGPHYS"
+    ],
+    "key_parameters": [
+     {
+      "value": "14% and 86% quartiles of posterior as uncertainties plus 10% systematics",
+      "evidence": [
+       {
+        "loc": "2.2 Ancillary Data",
+        "quote": "We take the 14% and 86% quartiles of the posterior distributions as the uncertainties in the parameters, and we account for an additional fiducial 10% uncertainty due to systematics"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with FAST SFRs of Skelton et al. (footnote)",
+     "evidence": [
+      {
+       "loc": "footnote 4",
+       "quote": "We note that the FAST analysis by (cite: skelton14) yields consistent SFRs for ID.1, ID.3, and ID.10 but different values (by a factor $2\\times$ or more) for ID.2"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Select sample",
+    "method": {
+     "value": "Spectroscopic redshift, brighter than 27.5 mag, CO J=2-1,3-2 or 4-3 covered, MAGPHYS L_IR>1e11 Lsun at >1 sigma gives 11 galaxies",
+     "evidence": [
+      {
+       "loc": "3 The sample",
+       "quote": "From these galaxies, we select the 11 galaxies for which the MAGPHYS SED analysis yields an IR luminosity $L_{\\rm IR}>10^{11}$ L$_\\odot$ at $>1$-$\\sigma$ significance."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure CO line fluxes",
+    "method": {
+     "value": "Extract spectra at optical positions; gaussian fit of lowest-J line; higher-J lines with same width; detection if flux >3x uncertainty; upper limits with 300 km/s width at 3 sigma",
+     "evidence": [
+      {
+       "loc": "4.1 CO luminosities and associated H$_2$ masses",
+       "quote": "If the line is not detected, we assume a fiducial line width of 300 km s$^{-1}$ and we use the upper boundary of the 3-$\\sigma$ confidence range on the flux as upper limit."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profile",
+     "evidence": [
+      {
+       "loc": "4.1 CO luminosities and associated H$_2$ masses",
+       "quote": "We fit the lowest-J transitions accessible with ASPECS data with a gaussian profile"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive molecular gas masses",
+    "method": {
+     "value": "Convert to L'CO(1-0) via r_J1, then M_H2 = alpha_CO/r_J1 * L'",
+     "evidence": [
+      {
+       "loc": "4.1 CO luminosities and associated H$_2$ masses",
+       "quote": "The molecular gas masses are then derived as:"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO=3.6 Msun (K km/s pc^2)^-1; Daddi+15 excitation ladder",
+      "evidence": [
+       {
+        "loc": "4.1 CO luminosities and associated H$_2$ masses",
+        "quote": "We adopt $\\alpha_{\\rm CO}$=3.6 M$_\\odot$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$ (cite: daddi10b)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Dynamical mass of ID.2",
+    "method": {
+     "value": "Mock velocity maps for disk with M_dyn ∝ R^gamma (gamma=1,2,3), compared with CO(2-1) line profile",
+     "evidence": [
+      {
+       "loc": "4.2 Size of the CO-emitting region in ID.2",
+       "quote": "We then generated mock velocity maps for these three cases, assuming that the CO light traces the mass distribution; and we inferred expected line profiles"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "PA=-55 deg, inclination=60 deg from HST",
+      "evidence": [
+       {
+        "loc": "4.2 Size of the CO-emitting region in ID.2",
+        "quote": "(PA=-55$^\\circ$, inclination=60$^\\circ$ with respect to the line of sight)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with H-alpha dynamical mass of 1.2e11 Msun",
+     "evidence": [
+      {
+       "loc": "Size of the CO-emitting region in ID.2",
+       "quote": "This yields a dynamical mass of $1.2\\times 10^{11}$ M$_\\odot$, roughly consistent with our estimate"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Dust-based gas masses",
+    "method": {
+     "value": "Groves+15 500um luminosity relation, Scoville+14 eq. 12, and MAGPHYS dust mass with DGR=1/100",
+     "evidence": [
+      {
+       "loc": "5.5 CO vs. Dust-based ISM masses",
+       "quote": "For simplicity, in our analysis we thus assume a fixed DGR=1/100."
+      }
+     ]
+    },
+    "software": [
+     "MAGPHYS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Modified blackbody T_dust=25 K, beta=1.6 for k-correction",
+      "evidence": [
+       {
+        "loc": "5.5 CO vs. Dust-based ISM masses",
+        "quote": "we adopt a modified black body with $T_{\\rm dust}$=25 K and $\\beta$=$1.6$ (cite: beelen06)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with CO-based masses",
+     "evidence": [
+      {
+       "loc": "CO vs. Dust-based ISM masses",
+       "quote": "They also correlate well with the CO-based H$_2$ mass estimates over one and a half dex of dynamic range. However, systematic offsets are observed."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MAGPHYS",
+    "version": "high-z extension",
+    "used_for": {
+     "value": "SED fitting for M*, SFR, L_IR, M_dust",
+     "evidence": [
+      {
+       "loc": "2.2 Ancillary Data",
+       "quote": "We use the high-$z$ extension of MAGPHYS (cite: dacunha08; dacunha15) to fit the Spectral Energy Distributions (SEDs) of all of them."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median CO flux of detections",
+    "value": "0.19",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 CO luminosities and associated H$_2$ masses",
+      "quote": "The detected sources in our sample have a median CO flux of 0.19 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_H2 of ID.1",
+    "value": "206e9",
+    "uncertainty": "±34e9",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| 1 | 2.543 | 3 | $24.03_{-0.10}^{+0.10}$ | $57_{-10}^{+10}$ | $206_{-34}^{+34}$ | $12_{-2}^{+2}$ | $3.3_{-0.6}^{+0.7}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "M_dyn of ID.2 at R=8.3 kpc",
+    "value": "2e11",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Size of the CO-emitting region in ID.2",
+      "quote": "The implied dynamical mass is $M_{\\rm dyn}\\approx 2\\times 10^{11}$ M$_\\odot$ at $R$=8.3 kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Groves-based masses relative to CO",
+    "value": "1.5x lower",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.5 CO vs. Dust-based ISM masses",
+      "quote": "The (cite: groves15) estimates are on average $1.5\\times$ lower than those based on CO."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No CO-detected source shows starburst-like excitation; excitation is often at or below Milky Way level",
+    "evidence": [
+     {
+      "loc": "4.3 CO excitation",
+      "quote": "In no case do we find starburst-like CO excitation, comparable with the center of M82"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do IR-luminous UDF galaxies show CO emission as expected from L_IR-L'CO?",
+    "experiment": "CO fits at known positions of 11 galaxies with L_IR>1e11",
+    "result": "7 detected at various significance, 4 undetected",
+    "finding": "Most lie on the low-L_IR envelope of the relation with exceptions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Out these, 7 are detected at various significance in CO, and 4 are undetected in CO emission."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are dust-based gas masses consistent with CO-based masses?",
+    "experiment": "Compare three dust recipes with CO masses for six continuum-detected galaxies",
+    "result": "Dust-based masses smaller by factor ~2-5",
+    "finding": "Systematic offset not resolved by tuning CO assumptions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "On average, the dust–based estimates of the molecular gas are a factor $\\sim$2–5$\\times$ smaller than those based on CO."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Lower alpha_CO=0.8 or M82 excitation considered to reconcile CO and dust masses but disfavored",
+     "evidence": [
+      {
+       "loc": "5.5 CO vs. Dust-based ISM masses",
+       "quote": "such a high CO excitation scenario is ruled out by our 1mm line observations"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Dust SED poorly sampled; dynamical mass highly model-dependent",
+     "evidence": [
+      {
+       "loc": "5.5 CO vs. Dust-based ISM masses",
+       "quote": "Our dust SED is only poorly sampled."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Small sample of 11 galaxies selected by expected CO brightness",
+    "r41 extrapolated with assumed 20% error",
+    "Optical positions and fixed line widths for upper limits affect limits",
+    "Dust and CO sizes differ, so masses may trace different components"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Reduced ASPECS cubes and continuum maps (Papers I, II)",
+    "Project codes and calibration details",
+    "MAGPHYS setup and photometric catalogs"
+   ],
+   "estimated_data_volume_inferred": "Large (frequency scans in Band 3 and 6, ~100s GB raw); reproduction of this paper's analysis needs the Paper I cubes",
+   "score_inferred": 3,
+   "score_reason": "Analysis is simple and described but depends on Paper I/II data products and the MAGPHYS setup, and no project codes are printed.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data processing is deferred to companion papers and no project codes are stated in the text."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Paper I, Walter et al.",
+     "why": "ALMA observations, data reduction and blind CO catalog"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Paper II, Aravena et al.",
+     "why": "1.2mm continuum sources"
+    },
+    {
+     "citation": "Paper III, Decarli et al.",
+     "why": "CO luminosity functions"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASPECS",
+    "3D-HST",
+    "PHIBSS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c65cc067d211cc4f03a80cf5a68149e9",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:45",
+  "usage": {
+   "input_tokens": 41582,
+   "output_tokens": 6479,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.074583,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 40,
+  "quotes_ok": 40,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2013.1.00146.S",
+   "2013.1.00718.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 32,
+   "rate": 0.421
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:20:48",
+  "custom_id": "repair-sonnet-e66680bafc5862e51818e7e2ac4d789a",
+  "fixed": [
+   {
+    "path": "analysis_steps[0].validation.evidence[0]",
+    "old": null,
+    "new": "We note that the FAST analysis by (cite: skelton14) yields consistent SFRs for ID.1, ID.3, and ID.10 but different values (by a factor $2\\times$ or more) for ID.2"
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "This yields a dynamical mass of $1.2\\times 10^{11}$ M$_\\odot$, roughly consistent with our estimate"
+   },
+   {
+    "path": "analysis_steps[5].validation.evidence[0]",
+    "old": null,
+    "new": "They also correlate well with the CO-based H$_2$ mass estimates over one and a half dex of dynamic range. However, systematic offsets are observed."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

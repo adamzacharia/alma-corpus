@@ -1,0 +1,790 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...824..132N",
+  "title": "ALMA Science Verification Data: Millimeter Continuum Polarimetry of the Bright Radio Quasar 3C 286",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Nagai, H.",
+  "n_authors": 9,
+  "arxiv_id": "1605.00051",
+  "doi": "10.3847/0004-637X/824/2/132",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00017.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "These are the first full-polarization ALMA observations, which were obtained in the framework of Science Verification."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "3C 286",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.849",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "3C 286 is a bright radio quasar at the redshift $z = 0.849$ (cite: Burbidge1969)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Burbidge1969",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "3C 286 is a bright radio quasar at the redshift $z = 0.849$ (cite: Burbidge1969)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the millimeter (1.3 mm) total intensity and linear polarization properties of the quasar 3C 286, and how do they relate to the centimeter EVPA trend and core shift?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper we present the results from the SV data, as well as an interpretation of the frequency dependence of the EVPA and the nature of 3C 286 with the aid of VLBA data."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00017.SV",
+     "evidence": [
+      {
+       "loc": "Conclusion",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00017.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "2 Observation and Data Reduction",
+      "quote": "using thirty-one 12 m antennas in Band 6 (1.3 mm)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spws (2 LSB, 2 USB), 64 channels each, 31.25 MHz channels, 2 GHz per spw; centers 224, 226, 240, 242 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observation and Data Reduction",
+      "quote": "The central frequencies in spws 0, 1, 2, and 3 are 224 GHz, 226 GHz, 240 GHz, and 242 GHz, respectively."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "thirty-one 12 m antennas",
+    "evidence": [
+     {
+      "loc": "2 Observation and Data Reduction",
+      "quote": "using thirty-one 12 m antennas in Band 6 (1.3 mm)."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "~2 hours total",
+    "evidence": [
+     {
+      "loc": "2 Observation and Data Reduction",
+      "quote": "yielding $\\sim$ 2 hours of integration in total."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014 July 1 and July 2",
+    "evidence": [
+     {
+      "loc": "2 Observation and Data Reduction",
+      "quote": "The observations were performed on 2014 July 1 and July 2"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLBA (MOJAVE, RRFID archival)",
+     "provided": {
+      "value": "Archival images at 13, 4, 2 cm for core-shift analysis",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "we analyzed archival VLBA images at 13 cm, 4 cm, and 2 cm obtained from the “Monitoring Of Jets in Active galactic nuclei with the VLBA Experiments” (MOJAVE) and the Radio Reference Frame Image Database (RRFID)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SW component flux 31.4 mJy at 8.4 GHz",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "The flux density of the SW component reported in (cite: Akujor1995) is 31.4 mJy at 8.4 GHz."
+       }
+      ]
+     },
+     "citation": "Akujor1995"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Manual CASA calibration following CASA guide, plus refined gain calibration and self-calibration",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "The data reduction procedure presented here is also described in the CASA guide."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.3.1",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "The data reduction was done using Common Astronomical Software Applications (CASA) version 4.3.1."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ceres",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "The flux scaling factor was estimated using Ceres."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase then amp+phase self-cal, 30 s solint, using CLEAN models of I, Q, U",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "we performed both amplitude and phase self-calibration (`calmode=ap`) with a solution interval of 30 seconds."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robustness 0.5 (for self-cal models)",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "using `CLEAN` with Briggs weighting and a robustness value of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "0.05 (I), 0.04 (Q), 0.04 (U) mJy/beam",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "We obtained a final image rms of 0.05 mJy beam$^{-1}$, 0.04 mJy beam$^{-1}$, and 0.04 mJy beam$^{-1}$ for Stokes $I$, $Q$, and $U$, respectively."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction procedure follows the 3C 286 polarization CASA guide",
+      "evidence": [
+       {
+        "loc": "2 Observation and Data Reduction",
+        "quote": "The data reduction procedure presented here is also described in the CASA guide."
+       }
+      ]
+     },
+     "from_reference": "3C 286 polarization CASA guide (footnote)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image size, cell size, and CLEAN iterations/threshold/masks",
+    "Which data were excluded in the first half of the observation",
+    "Flagged channels and antennas list",
+    "Beam size of final images",
+    "Fitting regions/method for core and SW flux and polarization",
+    "Details of core-shift power-law extrapolation and error propagation",
+    "Image parameters for VLBA reduction and super-resolution beam"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Polarization calibration",
+    "method": {
+     "value": "Gain solution without polarization model, qufromgain for Q/U of calibrator, KCROSS and XYf+QU for cross-hand, then polcal for D-terms with J1337-1257",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "The cross-hand delay and cross-hand phase differences relative to a reference antenna were calibrated using the CASA task `gaincal` with the modes `KCROSS` and `XYf+QU` respectively."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Repeated D-term calibration with 3C 279; agreement within 0.5%",
+     "evidence": [
+      {
+       "loc": "A.1.2 Reproducibility of the Instrumental Polarization Calibration",
+       "quote": "The differences between the two solutions is not greater than 0.5% and is typically 0.1–0.3% over the band"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Refine gain calibration and self-calibrate",
+    "method": {
+     "value": "Model gain calibrator I,Q,U with CLEAN and redo gains; self-cal 3C 286 with phase then amp+phase",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "we re-performed the gain calibration of the gain calibrator based on the models, and then applied the calibration to 3C 286."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "solint 30 s; Briggs robust 0.5",
+      "evidence": [
+       {
+        "loc": "2 Observation and Data Reduction",
+        "quote": "we performed phase self-calibration with a solution interval of 30 seconds."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Time dependence of phase and amplitude significantly improved",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "After all of these processes the time dependence of phase and amplitude were significantly improved."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure core and SW intensity and polarization",
+    "method": {
+     "value": "Peak intensities from I, Q, U images; polarization bias correction for the SW component",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "we should take into account the polarization bias (cite: Vaillancourt2006) for this component."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Absolute EVPA error 0.4 deg from 2 deg misalignment over 29 antennas",
+      "evidence": [
+       {
+        "loc": "2 Observation and Data Reduction",
+        "quote": "Throughout this paper, we adopt $0.4^{\\circ}$ for the absolute EVPA accuracy."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Agreement with Hull2015 and Agudo2012 EVPA",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "The obtained EVPA shows a good agreement with (cite: Hull2015) and (cite: Agudo2012)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Core-shift analysis from archival VLBA",
+    "method": {
+     "value": "Gaussian fits of C1 and C2 with JMFIT; separation vs frequency; extrapolate with power law k=1 to 230 GHz; super-resolution at 13 cm",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "Instead, we assume $k=1$, which is the case for a conical jet (cite: Konigl1981)"
+      }
+     ]
+    },
+    "software": [
+     "AIPS JMFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "C2 position independent of frequency and optically thin",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "Assuming that C2 has no frequency dependence of its position, the change in the relative distance can be regarded as the position shift of the radio core (C1)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Power law r_c = A + B nu^-1/k with k=1 assumed since only three points",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "Since we have only three data points, it is not possible to perform a fit with the function $r_\\textrm{c}=A+B\\nu^{-1/k}$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "4 cm images convolved with several beams show monotonic separation decrease",
+     "evidence": [
+      {
+       "loc": "A.2 Core Shift Analysis for 3C 286",
+       "quote": "We confirmed that the resultant separation monotonically decreased from $\\sim$ 5.5 mas to $\\sim$ 4.5 mas with increasing size of the convolving beam, as expected."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.1",
+    "used_for": {
+     "value": "Calibration, polarization calibration, CLEAN imaging, self-calibration",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "The data reduction was done using Common Astronomical Software Applications (CASA) version 4.3.1."
+      }
+     ]
+    }
+   },
+   {
+    "name": "almapolhelpers.py (qufromgain)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extract Stokes Q and U of calibrator from gain solution",
+     "evidence": [
+      {
+       "loc": "2 Observation and Data Reduction",
+       "quote": "we used the function `qufromgain` in an add-on script `almapolhelpers.py` in CASA."
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS JMFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian fitting of VLBI components C1 and C2",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "We performed Gaussian model fitting to C1 and C2 using the AIPS task `JMFIT`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Core peak intensity I",
+    "value": "387.77",
+    "uncertainty": "0.05",
+    "units": "mJy/beam",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "387.77$\\pm$0.05 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Core polarized intensity",
+    "value": "64.81",
+    "uncertainty": "0.07",
+    "units": "mJy/beam",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "64.81$\\pm$0.07 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Core fractional polarization",
+    "value": "16.7",
+    "uncertainty": "0.2",
+    "units": "%",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "The polarization percentage of the core is 16.7$\\pm$0.2%"
+     }
+    ]
+   },
+   {
+    "quantity": "Core EVPA",
+    "value": "38.6",
+    "uncertainty": "0.4",
+    "units": "degrees",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "The EVPA of the core is $38.6\\pm0.4$ degrees."
+     }
+    ]
+   },
+   {
+    "quantity": "SW component peak intensity",
+    "value": "0.55",
+    "uncertainty": "0.05",
+    "units": "mJy/beam",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "0.55$\\pm$0.05 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted 1.3 mm core offset upstream of 2 cm core",
+    "value": "0.17 mas (~1.3 pc projected)",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "we expect the 1.3 mm radio core to be located $\\sim$ 0.17 mas upstream of the 2 cm core."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Serendipitous 6 sigma sub-mJy point source ~11 arcsec NNW of core, likely a submillimeter galaxy",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "A $6\\sigma$ point source is detected at the position (RA, DEC)=(13:31:08.0, 30:30:43.0)"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "EVPA of 3C 286 continues to increase from cm to mm wavelengths",
+    "experiment": "ALMA 1.3 mm full-polarization imaging",
+    "result": "EVPA 38.6±0.4 deg vs ~33 deg at 20 cm",
+    "finding": "Confirms slow EVPA increase toward mm",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "which confirms the trend that the EVPA slowly increases from centimeter to millimeter wavelengths."
+     }
+    ]
+   },
+   {
+    "hypothesis": "mm core is more ordered than cm emission",
+    "experiment": "Measure fractional polarization",
+    "result": "16.7% vs ~10% at 20 cm",
+    "finding": "Magnetic field more ordered in mm core",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggesting that the magnetic field is even more ordered in the millimeter radio core than it is further downstream in the jet."
+     }
+    ]
+   },
+   {
+    "hypothesis": "EVPA change relates to frequency-dependent core position",
+    "experiment": "VLBA C1-C2 separation vs frequency",
+    "result": "Core shift extrapolated ~0.17 mas",
+    "finding": "Consistent with core shift but not conclusive",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "Therefore, the core-shift could not be the only mechanism to tie the change in the polarization properties."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Faraday rotation rejected since EVPA does not change at cm bands; bent-jet beamed model deemed unlikely",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "This trend cannot be explained by Faraday rotation since the change in the EVPA is not observed in centimeter bands (cite: Perley2013)."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only three VLBI points, non-simultaneous, C2 may be optically thick; Stokes I dynamic-range limited",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "Since we have only three data points, it is not possible to perform a fit"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Core-shift extrapolation from three non-simultaneous points with k=1 assumed is weakly constrained",
+    "Absolute EVPA error from private communication",
+    "SW polarization only 2.8 sigma"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA Science Verification data publicly released",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The Atacama Large Millimeter and Submillimeter Array (ALMA) released the Science Verification (SV) data of 3C 286 on 2015 July 28."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, masks, iterations)",
+    "Exact flagging/excluded time range",
+    "VLBA fit details"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Public SV data and CASA guide, but imaging and flagging details missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public SV data, CASA guide recipe, numeric results (flux, polarization fraction, EVPA)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "3C 286 polarization CASA guide",
+     "why": "Calibration procedure"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Hull2015",
+     "why": "mm polarization of 3C 286 with CARMA"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MOJAVE",
+    "RRFID"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f5238a7e721e46f26a8c33a8cc7386a8",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:45",
+  "usage": {
+   "input_tokens": 15206,
+   "output_tokens": 6168,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.046652,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 47,
+  "quotes_ok": 47,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 67,
+   "stated": 36,
+   "rate": 0.537
+  },
+  "evidence_ok": true
+ }
+}

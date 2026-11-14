@@ -1,0 +1,261 @@
+{
+ "bibcode": "2025A&A...696A..31G",
+ "title": "Shock-induced HCNH<SUP>+</SUP> abundance enhancement in the heart of the starburst galaxy NGC 253 unveiled by ALCHEMI",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202452835",
+ "arxiv_id": "2502.20894",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "What are the physical conditions and HCNH+ abundances in the CMZ of NGC 253 from multiple HCNH+ transitions, and what chemistry explains the abundances?",
+ "alma_project_codes": [
+  "2017.1.00161.L",
+  "2018.1.00162.S"
+ ],
+ "data": {
+  "bands": "Bands 3–7 (84–375 GHz) survey",
+  "arrays": "12 m Array and ACA combined",
+  "angular_resolution": "common circular beam of 1.6\" (27 pc)",
+  "sensitivity": "rms about 4–20 mK at 10 km/s channel width"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Beam-averaged H2 column densities (1.6\" beam) for each GMC",
+    "evidence": [
+     {
+      "loc": "3.2 LTE analysis",
+      "quote": "we directly utilized values for $N_{\\rm H_{2}}$ from the low-density hierarchical Bayesian analysis of the ALCHEMI data at a circular beam of 1$''$6 (cite: 2024ApJ...961...18T)"
+     }
+    ]
+   },
+   "citation": "(cite: 2024ApJ...961...18T)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic data for HCNH+ from CDMS",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The spectroscopic information was taken from the entry in the Cologne Database for Molecular Spectroscopy (cite: 2016JMoSp.327...95E)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016JMoSp.327...95E)"
+  },
+  {
+   "what": {
+    "value": "HCNH+ HCN-HCN and HCN-H2O binding energies from experiments",
+    "evidence": [
+     {
+      "loc": "4.1 Static clouds",
+      "quote": "we adopted HCN–HCN and HCN-H$_{2}$O binding energies of $E_{\\rm D}=3207\\pm 197$ K and $E_{\\rm D}=4192\\pm 68$ K"
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJ...933..206B)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "extract and mask cubes",
+   "method": "Extract continuum-subtracted cubes, convert to brightness temperature (Rayleigh-Jeans), build 3σ 26-connected mask from HCNH+ (2–1), apply to all transitions",
+   "software": [
+    "SpectralCube",
+    "connected-components-3d"
+   ],
+   "key_parameters": [
+    "3σ threshold; integrate 100–400 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "fit line profiles",
+   "method": "Single-component Gaussian fit to HCNH+ spectra of GMCs",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin (tau<0.1; <0.3 with dilution 0.1) assuming Tex=15 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "LTE rotational diagram",
+   "method": "Rotational diagram with linear fits; Monte Carlo with 10,000 realizations for uncertainties; abundances using N(H2) from Tanaka et al.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE; beam dilution not corrected"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compute collisional rate coefficients",
+   "method": "Coupled states approximation with MOLSCAT using the 4D PES of Bop & Lique 2023, for p-H2 and o-H2 up to 500 K; compared with CC data via WMEF",
+   "software": [
+    "MOLSCAT"
+   ],
+   "key_parameters": [
+    "30 lowest levels of HCNH+, j1 = 0–48; H2 j2=0–2 (p) and 1–3 (o); total energies up to 3500/3620 cm-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "non-LTE MCMC fit with RADEX",
+   "method": "RADEX (LVG) models fit to integrated intensities with emcee; uniform priors on TK, nH2, N(HCNH+)",
+   "software": [
+    "RADEX",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Priors: TK 50–500 K, nH2 10^2–10^7 cm-3, N 10^13–10^17 cm-2; 20 walkers, 4500 steps after burn-in"
+   ],
+   "assumptions": [
+    "OPR 0.25, beam dilution factor unity, same emitting region for all transitions, line width averaged over transitions"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "astrochemical modeling (static, PDR, shock)",
+   "method": "Chempl static and PDR models; UCLCHEM two-phase C-type shock models, varying T, density, Av, G0, zeta, shock velocity",
+   "software": [
+    "Chempl",
+    "UCLCHEM"
+   ],
+   "key_parameters": [
+    "PDR fiducial T=500 K, n=10^3 cm-3; shock preshock density 10^3 cm-3"
+   ],
+   "assumptions": [
+    "Dust temperature equal to gas temperature in static models"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCNH+ radial extent in CMZ",
+   "value": "~300",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Spatial distribution and spectra",
+     "quote": "with a radial extent of $\\sim$300 pc in the CMZ"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperatures",
+   "value": "12–21",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 LTE analysis",
+     "quote": "The derived rotational temperatures are in the range of 12–21 K"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE HCNH+ column densities",
+   "value": "8.3e14–4.0e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 LTE analysis",
+     "quote": "range from $8.3\\times 10^{14}$ cm$^{-2}$ to $4.0\\times 10^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE HCNH+ abundances",
+   "value": "6.3e-9 to 2.0e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 LTE analysis",
+     "quote": "ranging from $6.3\\times 10^{-9}$ to $2.0\\times 10^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE HCNH+ column densities",
+   "value": "(0.3–1.2)e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Non-LTE modeling",
+     "quote": "The beam-averaged HCNH$^+$ column densities of $(0.3-1.2) \\times 10^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE HCNH+ abundances",
+   "value": "(1.8–9.4)e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Non-LTE modeling",
+     "quote": "the HCNH$^+$ abundances are revised to (1.8–9.4)$\\times 10^{-9}$ in the CMZ of NGC 253"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 number density",
+   "value": "10^2.80–10^3.55",
+   "uncertainty": "~0.2 dex typical",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 Summary and conclusions",
+     "quote": "H$_2$ number densities of $\\sim 10^{2.80}-10^{3.55}$ cm$^{-3}$ with typical errors of $\\sim$0.2 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Critical densities at 100 K for (2–1),(3–2),(4–3),(5–4)",
+   "value": "1.0e3, 3.6e3, 8.6e3, 1.7e4",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2 Non-LTE modeling",
+     "quote": "are $1.0\\times 10^{3}$ cm$^{-3}$, $3.6\\times 10^{3}$ cm$^{-3}$, $8.6\\times 10^{3}$ cm$^{-3}$, and $1.7\\times 10^{4}$ cm$^{-3}$, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALCHEMI cube versions and file names, and channel velocity resolution used",
+  "Mask expansion sizes in spatial and spectral dimensions",
+  "Spectral extraction apertures for the GMC spectra",
+  "MCMC prior on line width and how line widths/integrated-intensity ratios enter the likelihood; RADEX background temperature",
+  "Chempl/UCLCHEM input parameter grids and run times",
+  "Convergence diagnostics for MCMC",
+  "Velocity ranges for Gaussian fit windows"
+ ],
+ "missing_for_reproduction": [
+  "Chempl/UCLCHEM input files",
+  "Exact mask expansion parameters",
+  "N(H2) values require Tanaka et al. table"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and many parameters given, with codes mostly public, but model inputs and mask details are incomplete.",
+ "rediscovery_reason": "Public data, numeric tables of fitted parameters and abundances, recipe mostly specified.",
+ "source_card": "cards/2025A%26A...696A..31G/sonnet/card.md"
+}

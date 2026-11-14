@@ -1,0 +1,1534 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...684A.174P",
+  "title": "High turbulence in the IM Lup protoplanetary disk. Direct observational constraints from CN and C<SUB>2</SUB>H emission",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Paneque-Carreño, T.",
+  "n_authors": 7,
+  "arxiv_id": "2312.04618",
+  "doi": "10.1051/0004-6361/202347757",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.01357.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observations",
+    "quote": "Project code: #2019.1.01357.S, PI: R.Teague"
+   },
+   {
+    "loc": "Conclusions",
+    "quote": "We have presented new Band 7 observations at high spectral and spatial resolution of CN"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IM Lup",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "158 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the protoplanetary disk around the young K5 star IM Lup, located at a distance of 158 pc (cite: Gaia_DR3)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 (cite: Gaia_DR3)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the protoplanetary disk around the young K5 star IM Lup, located at a distance of 158 pc (cite: Gaia_DR3)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can turbulence in the IM Lup disk be measured directly, without radiative transfer or thermochemical models, from the nonthermal broadening of optically thin CN emission at a known vertical and radial location?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we present a new way of directly measuring turbulence without the need of radiative transfer or thermochemical models"
+     },
+     {
+      "loc": "abstract",
+      "quote": "By using an optically thin tracer, it is possible to directly measure turbulence from the nonthermal broadening of the line."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.01357.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Project code: #2019.1.01357.S, PI: R.Teague"
+      },
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of ALMA data from project #2019.1.01357.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "New, higher-energy ALMA Band 7 transitions have sufficient S/N for an adequate characterization of their radial, azimuthal, and vertical features."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Native spectral resolution 50 m/s; analysis cubes with 200 m/s channels (C2H) and 100 m/s channels (CN)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The images used in the analysis where obtained using a channel spacing of 200 m s$^{-1}$ for C$_2$H and 100 m s$^{-1}$ for CN"
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "stacked spectra for the data imaged at the native spectral resolution, 50 m s$^{-1}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CN",
+     "transition": "N=3-2, J=5/2-3/2, F=7/2-5/2 (strongest unblended component, used for the vertical profile and DISCMINER fit)",
+     "rest_frequency": "340.03155 GHz",
+     "evidence": [
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "we only used the unblended and strongest component CN $N=3-2 J=5/2-3/2 F= 7/2-5/2$"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "340.03155"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "N=3-2, J=7/2-5/2 hyperfine group (F=7/2-5/2, 9/2-7/2, 5/2-3/2 and weaker components)",
+     "rest_frequency": "340.24759-340.26495 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "340.24759"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "340.26495"
+      }
+     ]
+    },
+    {
+     "species": "C2H",
+     "transition": "N=4-3, J=9/2-7/2 (F=5-4, 4-3) and J=7/2-5/2 (F=4-3, 3-2) hyperfine groups",
+     "rest_frequency": "349.33771-349.40067 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "349.33771"
+      },
+      {
+       "loc": "Table 1",
+       "quote": "349.40067"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Seven execution blocks: two short-baseline EBs (longest baseline 0.3 km) and five long-baseline EBs (maximum baseline 1.5 km)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations from each execution block (EB; seven in total) were aligned to a common phase center"
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "Self-calibration was then applied to the short-baseline observations (two EBs, with a longest baseline of 0.3 km)."
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "concatenated to the flux-calibrated long baselines (five EBs, with a maximum baseline of 1.5km)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "Short-baseline EBs: longest baseline 0.3 km; long-baseline EBs: maximum baseline 1.5 km",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Self-calibration was then applied to the short-baseline observations (two EBs, with a longest baseline of 0.3 km)."
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "concatenated to the flux-calibrated long baselines (five EBs, with a maximum baseline of 1.5km)"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "C2H: 0.27'' x 0.25'' (PA 64.83 deg); CN: 0.22'' x 0.19'' (PA 57.56 deg)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "resulting in a 0.27$\\ensuremath{''} \\times$ 0.25$\\ensuremath{''}$ beam (PA: 64.83$^{\\circ}$)"
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "CN is imaged using a 0.5 robust parameter with a final beam of 0.22$\\ensuremath{''} \\times$ 0.19$\\ensuremath{''}$ (PA: 57.56$^{\\circ}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Final image rms 0.6 mJy/beam (C2H) and 1 mJy/beam (CN)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The final rms of the images for each molecule are 0.6 mJy/beam and 1 mJy/beam for C$_2$H and CN, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Second semester of 2019 and first semester of 2021",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "taken during the second semester of 2019 and first semester of 2021"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Project 2019.1.01357.S, PI R. Teague (not described as archival)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Project code: #2019.1.01357.S, PI: R.Teague"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "MAPS (ALMA large program) CO isotopolog data",
+     "provided": {
+      "value": "Optically thick 13CO and 12CO brightness temperatures and C18O J=2-1 data used as kinetic temperature tracers and for comparison",
+      "evidence": [
+       {
+        "loc": "3.2 Brightness temperature",
+        "quote": "to match the resolution of the Molecules with ALMA at Planet-forming Scales (MAPS) Program data (cite: MAPS_Oberg)"
+       },
+       {
+        "loc": "6.2 Origin of high turbulence in IM Lup",
+        "quote": "we repeated our analysis on C$^{18}$O $J=2-1$ data from the MAPS program (cite: MAPS_Oberg)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia DR3",
+     "provided": {
+      "value": "Distance to IM Lup (158 pc)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at a distance of 158 pc (cite: Gaia_DR3)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Vertical emission surfaces of CO isotopologs in IM Lup, used to compare with CN and C2H heights and brightness temperature profiles",
+      "evidence": [
+       {
+        "loc": "3.1 Vertical profile",
+        "quote": "Comparison with previously studied CO isotopolog emission from IM Lup (cite: Paneque_2023_vert) is presented in Figure"
+       }
+      ]
+     },
+     "citation": "Paneque-Carreno et al. 2023 (cite: Paneque_2023_vert)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass of 1.1 Msun used for the Keplerian masks",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "A stellar mass of 1.1M$_\\odot$ (cite: MAPS_Teague)"
+       }
+      ]
+     },
+     "citation": "Teague et al. 2021 (cite: MAPS_Teague)"
+    },
+    {
+     "what": {
+      "value": "CN molecular mass m_X = 26.0 used in the thermal linewidth",
+      "evidence": [
+       {
+        "loc": "5 Turbulence as traced by CN",
+        "quote": "in this case, for CN, $m_X$ = 26.0 (cite: Klisch_1995_CN; lambda_database_Schoier_2005)"
+       }
+      ]
+     },
+     "citation": "Klisch et al. 1995 (cite: Klisch_1995_CN); Schoier et al. 2005 (cite: lambda_database_Schoier_2005)"
+    },
+    {
+     "what": {
+      "value": "Excitation temperature of 21 K for C18O gas assumed in the comparison analysis",
+      "evidence": [
+       {
+        "loc": "6.2 Origin of high turbulence in IM Lup",
+        "quote": "previous works have assumed an excitation temperature of 21 K for the C$^{18}$O gas (cite: Pinte_2018_method; Paneque-Carreno_2022_Elias_CN)"
+       }
+      ]
+     },
+     "citation": "Pinte et al. 2018a (cite: Pinte_2018_method); Paneque-Carreno et al. 2022 (cite: Paneque-Carreno_2022_Elias_CN)"
+    },
+    {
+     "what": {
+      "value": "Turbulence of Mach 0.18-0.3 from radiative transfer modelling of CO isotopologs in IM Lup, used as comparison",
+      "evidence": [
+       {
+        "loc": "6.4 Comparison with other methods and results",
+        "quote": "results in high nonthermal motions associated with turbulence of $\\mathcal{M}$ = 0.18-0.3 (Flaherty et al. in prep)"
+       }
+      ]
+     },
+     "citation": "Flaherty et al. in prep"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Thermochemical model gas temperatures of IM Lup used to check that CO brightness temperatures are not underestimated",
+     "evidence": [
+      {
+       "loc": "6.3 Possible overestimation of the nonthermal component",
+       "quote": "We confirmed this by comparing our temperature profiles to the gas temperature from dedicated thermochemical models of IM Lup (cite: Cleeves_LupusModel_2016)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline initial calibration, then manual flux scaling and self-calibration in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "After initial calibration through the ALMA pipeline (cite: Hunter_2023_ALMA_pipeline), the data were flux-calibrated and self-calibrated in phase and amplitude"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "Relative flux scale variations between EBs <10%, corrected by amplitude scaling following DSHARP",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "an amplitude scaling was applied to correct for the relative flux scale variations between EBs, which were $<$10%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Short baselines: 5 phase rounds + 1 amplitude round, starting solint 3360 s, halving each round (S/N 190 to 1380). Joint dataset: 3 phase + 1 amplitude rounds, initial solint 4800 s (S/N 301 to 1289). Done on line-free channels, solutions applied to the whole dataset",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Five rounds of phase and one round of amplitude calibration were performed, until there was no further improvement of the S/N, starting with a solution interval of 3360s"
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "Three rounds of phase and one round of amplitude calibration were performed, the initial time solution interval was 4800s"
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "Each of the calibration solutions from the continuum analysis was then applied to the whole dataset"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean with Briggs weighting and Keplerian masking, one image per hyperfine group",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Each C$_2$H and CN hyperfine group was imaged using tclean with Briggs weighting and Keplerian masking"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 2.0 (C2H); robust = 0.5 (CN)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "C$_2$H emission was imaged using a robust parameter of 2.0"
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "CN is imaged using a 0.5 robust parameter"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Keplerian masks, one per expected hyperfine component; M* = 1.1 Msun, constant z/r = 0.2 (C2H) and 0.3 (CN)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Multiple Keplerian masks, one for each of the expected hyperfine components, were used in the cleaning."
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "a constant $z/r$ value of 0.2 and 0.3 was used for C$_2$H and CN emission, respectively"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "CASA uvcontsub, producing continuum-subtracted measurement sets per target line",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Using the CASA task uvcontsub, we produced continuum-subtracted measurement sets for each of our target emission lines."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Self-calibrated short baselines concatenated with the flux-calibrated long baselines",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "concatenated to the flux-calibrated long baselines (five EBs, with a maximum baseline of 1.5km)"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "C2H 0.27'' x 0.25'' (PA 64.83 deg); CN 0.22'' x 0.19'' (PA 57.56 deg)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "resulting in a 0.27$\\ensuremath{''} \\times$ 0.25$\\ensuremath{''}$ beam (PA: 64.83$^{\\circ}$)"
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "CN is imaged using a 0.5 robust parameter with a final beam of 0.22$\\ensuremath{''} \\times$ 0.19$\\ensuremath{''}$ (PA: 57.56$^{\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.6 mJy/beam (C2H), 1 mJy/beam (CN)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The final rms of the images for each molecule are 0.6 mJy/beam and 1 mJy/beam for C$_2$H and CN, respectively."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Amplitude scaling between EBs follows the DSHARP procedures",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "following the procedures of ALMA large program DSHARP (cite: DSHARP_Andrews)"
+       }
+      ]
+     },
+     "from_reference": "ALMA large program DSHARP (cite: DSHARP_Andrews)"
+    },
+    {
+     "what": {
+      "value": "JvM correction applied to final images (epsilon 0.24 for C2H, 0.52 for CN)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "JvM correction (cite: MAPS_Czekala) was applied to our final images to account for the noise caused by having non-Gaussian beams."
+       }
+      ]
+     },
+     "from_reference": "(cite: MAPS_Czekala)"
+    },
+    {
+     "what": {
+      "value": "Two-Gaussian fit to the radial intensity profiles (broad component plus ring)",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "a set of two Gaussians are fitted to the radial profiles as done in (cite: MAPS_Law_radial)"
+       }
+      ]
+     },
+     "from_reference": "(cite: MAPS_Law_radial)"
+    },
+    {
+     "what": {
+      "value": "Radial profile deprojection using only a 60 degree wedge along the semimajor axis",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "Only emission from within a 60$^{\\circ}$ wedge along the semimajor axis is considered, to avoid deprojection effects from emission close to the minor axis (cite: MAPS_Law_radial)."
+       }
+      ]
+     },
+     "from_reference": "(cite: MAPS_Law_radial)"
+    },
+    {
+     "what": {
+      "value": "Exponentially tapered power-law parametrisation of the emission surface",
+      "evidence": [
+       {
+        "loc": "3.1 Vertical profile",
+        "quote": "The resulting vertical distribution is parametrized with an exponentially tapered power law to capture the inner flared surface, plateau and turnover regions at larger radii (cite: Teague_2019_meridonial)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Teague_2019_meridonial)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and ALMA pipeline version used",
+    "Names and spectral windows of the line-free channels used for self-calibration and for uvcontsub, and the continuum-subtraction fit order",
+    "Cell size, image size, tclean deconvolver/threshold/niter, mask widths for the Keplerian masks, and primary-beam correction",
+    "Self-calibration solution interval for each round after the first beyond 'half the time step', gain types and combine/spw-map settings",
+    "ALFAHOR mask definitions (visually drawn) and which channels were selected",
+    "emcee settings for the surface fit (priors, walkers, steps, likelihood and error model)",
+    "DISCMINER setup: priors, optimizer/sampler, initial guesses, fitting region (radial limits, mask), noise model, and the velocity range of the cut-out CN cube",
+    "How the radial CO brightness temperature profile was converted to a kinetic temperature at the CN radius (which CO cube, averaging, beam matching)",
+    "Value of mean molecular weight mu used for the sound speed",
+    "Details of the linewidth measurement from per-pixel spectra shown in Figure 6 (method for line fitting)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, self-calibrate and image the CN and C2H lines",
+    "method": {
+     "value": "Pipeline calibration, EB alignment on continuum peak (imfit), amplitude scaling, phase and amplitude self-calibration on line-free continuum, solutions applied to line data, uvcontsub, tclean per hyperfine group with Keplerian masks, JvM correction",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "considering the peak of the continuum emission of each EB as fitted by CASA task imfit"
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "Using the CASA task uvcontsub, we produced continuum-subtracted measurement sets for each of our target emission lines."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean",
+     "uvcontsub",
+     "imfit",
+     "ALMA pipeline",
+     "keplerian_mask"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 2.0 (C2H), 0.5 (CN); channel spacing 200 m/s (C2H), 100 m/s (CN)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "C$_2$H emission was imaged using a robust parameter of 2.0"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "CN is imaged using a 0.5 robust parameter"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Self-calibration rounds continued until no further improvement of the S/N",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "until there was no further improvement of the S/N"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Trace the vertical emission surfaces of CN and C2H",
+    "method": {
+     "value": "Emission maxima on the near and far sides traced from channel maps with ALFAHOR inside visually defined masks, then fitted with an exponentially tapered power law using MCMC; only the strongest unblended CN component and the C2H J=9/2-7/2 group used",
+     "evidence": [
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "we used the code ALFAHOR (cite: Paneque_2023_vert), which traces the maxima of emission within a given masked region"
+      },
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "The best-fit values for $z_0$, $\\phi$, $\\psi,$ and $r_{\\mathrm{taper}}$ were found using a Markov chain Monte Carlo sampler as implemented by emcee (cite: emcee_ref)"
+      }
+     ]
+    },
+    "software": [
+     "ALFAHOR",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free parameters z0, phi, r_taper, psi of an exponentially tapered power law in r/100 au",
+      "evidence": [
+       {
+        "loc": "3.1 Vertical profile",
+        "quote": "The resulting vertical distribution is parametrized with an exponentially tapered power law"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Intensity maxima trace a single isovelocity along each channel; the selected component is representative of all transitions of the molecule",
+      "evidence": [
+       {
+        "loc": "3.1 Vertical profile",
+        "quote": "A key assumption of this method is that the intensity maxima trace a single isovelocity along each channel."
+       },
+       {
+        "loc": "3.1 Vertical profile",
+        "quote": "We expect that these transitions are representative of the spatial location of all the detected transitions of the same molecule"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee MCMC; priors and likelihood not stated",
+     "evidence": [
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "using a Markov chain Monte Carlo sampler as implemented by emcee (cite: emcee_ref)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with CO isotopolog surfaces and with the z/r ~0.2 expected from the visual channel map analysis",
+     "evidence": [
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "our result on the average vertical profile (panel C of Fig. [3](#best_fit_heights)) is consistent with $z/r \\sim$0.2 expected from the visual channel map analysis"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure peak brightness temperature profiles and compare with CO isotopologs",
+    "method": {
+     "value": "Peak intensity (moment 8) maps converted to brightness temperature with Planck's law, deprojected on the best-fit surfaces, using cubes at 0.2 km/s resolution to match MAPS",
+     "evidence": [
+      {
+       "loc": "3.2 Brightness temperature",
+       "quote": "the radial peak brightness temperature profiles were extracted from the peak intensity maps (moment 8)"
+      },
+      {
+       "loc": "3.2 Brightness temperature",
+       "quote": "all brightness temperature profiles were calculated using cubes with an equal spectral resolution of 0.2 km s$^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Spectral resolution 0.2 km/s for all tracers",
+      "evidence": [
+       {
+        "loc": "3.2 Brightness temperature",
+        "quote": "all brightness temperature profiles were calculated using cubes with an equal spectral resolution of 0.2 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "12CO and 13CO are optically thick so their brightness temperature traces the kinetic temperature; CN and C2H are optically thin",
+      "evidence": [
+       {
+        "loc": "3.2 Brightness temperature",
+        "quote": "therefore their brightness temperature may be taken as a tracer of the kinetic temperature in the region"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CN and C2H brightness temperatures lower than 13CO, consistent with optically thin emission",
+     "evidence": [
+      {
+       "loc": "3.2 Brightness temperature",
+       "quote": "which is corroborated by the lower brightness temperatures measured in this work"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit a parametric DISCMINER model to CN to extract the linewidth",
+    "method": {
+     "value": "DISCMINER model with Gaussian line kernel for upper and lower surfaces, exponentially tapered power-law surfaces, power-law plus Gaussian peak intensity, power-law linewidth, fitted to per-pixel spectra of a cube covering only the unblended CN J=5/2-3/2 F=7/2-5/2 component",
+     "evidence": [
+      {
+       "loc": "4.1 Model setup",
+       "quote": "Therefore, we used a Gaussian kernel for each surface such that"
+      },
+      {
+       "loc": "4.1 Model setup",
+       "quote": "we created a cube that only covers the emission of the strongest unblended hyperfine component of CN 3-2, J = 5/2 - 3/2 F= 7/2-5/2"
+      }
+     ]
+    },
+    "software": [
+     "DISCMINER"
+    ],
+    "key_parameters": [
+     {
+      "value": "Linewidth Delta V = L0 (R/D0)^p (z/D0)^q with D0 = 100 au; best fit L0 = 0.415 km/s, p = -0.205, q = -0.238",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "$D_0$ = 100 au is a normalization factor"
+       },
+       {
+        "loc": "Table 3",
+        "quote": "0.415"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin emission, so the model intensity is the direct sum of upper and lower surface contributions",
+      "evidence": [
+       {
+        "loc": "4.1 Model setup",
+        "quote": "Since we assumed fully optically thin emission, the final model intensity is given by the direct sum of the upper and lower disk surface intensity contributions"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Best fit parameters of orientation, velocity, surface, intensity and linewidth found by DISCMINER; sampler, priors and likelihood not stated",
+     "evidence": [
+      {
+       "loc": "4.1 Model setup",
+       "quote": "DISCMINER determines the best orientation, velocity, surface and line profile parameters for the observed emission"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Model channel maps convolved with the beam; 5 sigma residuals show no coherent pattern; comparison of vertical and azimuthally averaged profiles",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison to CN observations",
+       "quote": "The 5$\\sigma$ residuals are presented in the bottom row, no coherent or systematic pattern is identified."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Separate thermal and nonthermal linewidth and derive turbulence",
+    "method": {
+     "value": "Delta V^2 = 2kT_kin/m_X + v_turb^2 with T_kin taken from 13CO and 12CO brightness temperatures, Mach number = v_turb/(sqrt2 c_s), alpha ~ Mach^2",
+     "evidence": [
+      {
+       "loc": "5 Turbulence as traced by CN",
+       "quote": "Therefore, the two components of the measured linewidth can be decomposed as"
+      },
+      {
+       "loc": "5 Turbulence as traced by CN",
+       "quote": "it is possible to relate the turbulence Mach number $\\mathcal{M}$ to $\\alpha$ following, $\\alpha \\sim \\mathcal{M}^{2}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "CN molecular mass 26.0; uncertainty band from a 50 m/s linewidth error; only radii beyond 150 au considered",
+      "evidence": [
+       {
+        "loc": "5 Turbulence as traced by CN",
+        "quote": "The shaded regions of the plot represent the variation of our results considering a 50 m s$^{-1}$ error in the linewidth measurement."
+       },
+       {
+        "loc": "5 Turbulence as traced by CN",
+        "quote": "we only considered the values beyond 150 au as accurate measurements"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Nonthermal broadening is entirely turbulent; CN emits at the kinetic temperature traced by optically thick CO at the same location",
+      "evidence": [
+       {
+        "loc": "5 Turbulence as traced by CN",
+        "quote": "The nonthermal broadening is assumed to be completely due to turbulence"
+       },
+       {
+        "loc": "5 Turbulence as traced by CN",
+        "quote": "By spatially localizing the CN emission vertically and radially close to the optically thick CO isotopes"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Statistical fit error <5 m/s; a 50 m/s error adopted as the largest possible deviation (native resolution, Hanning smoothing)",
+     "evidence": [
+      {
+       "loc": "5 Turbulence as traced by CN",
+       "quote": "While the statistical error of our fit is $<$5 m s$^{-1}$, we took the native resolution of our data as the largest possible deviation"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Test robustness: opacity, vertical layer width, C18O comparison",
+    "method": {
+     "value": "Estimated opacity broadening contribution, computed Keplerian shear broadening for CN layers of different vertical width along the line of sight (sampled every 1 au), and repeated the analysis on MAPS C18O J=2-1",
+     "evidence": [
+      {
+       "loc": "Appendix D",
+       "quote": "to be sensitive to these variations, we sampled the line-of-sight path every 1 au"
+      },
+      {
+       "loc": "6.2 Origin of high turbulence in IM Lup",
+       "quote": "we repeated our analysis on C$^{18}$O $J=2-1$ data from the MAPS program (cite: MAPS_Oberg)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Vertical widths up to 50 au give linewidth variation <=25 m/s beyond 150 au",
+      "evidence": [
+       {
+        "loc": "6.3 Possible overestimation of the nonthermal component",
+        "quote": "the variation in the linewidth caused by vertical widths of up to 50 au is always $\\leq$25 m s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant intrinsic thermal linewidth across the layer; CN layer lower edge at the best-fit CN surface",
+      "evidence": [
+       {
+        "loc": "Appendix D",
+        "quote": "we assumed a constant intrinsic thermal linewidth in the Gaussian profiles for our estimation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "All C18O-based turbulence profiles are comparable to CN within uncertainty",
+     "evidence": [
+      {
+       "loc": "6.2 Origin of high turbulence in IM Lup",
+       "quote": "all profiles are comparable within their uncertainty"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging (tclean), imfit, uvcontsub, self-calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "with the tools of Common Astronomy Software Applications (cite: McMullin_CASA)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Initial calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "After initial calibration through the ALMA pipeline (cite: Hunter_2023_ALMA_pipeline)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "keplerian_mask",
+    "version": "not stated",
+    "used_for": {
+     "value": "Keplerian masking in tclean",
+     "evidence": [
+      {
+       "loc": "Footnote 1",
+       "quote": "https://github.com/richteague/keplerian_mask"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "Integrated spectra and radial intensity profiles",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The spectra were computed using the GoFish (cite: gofish) function, integrated_spectrum, over the whole disk."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALFAHOR",
+    "version": "not stated",
+    "used_for": {
+     "value": "Tracing emission maxima to obtain vertical profiles from channel maps",
+     "evidence": [
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "we used the code ALFAHOR (cite: Paneque_2023_vert), which traces the maxima of emission within a given masked region"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fit of the vertical surface parameters",
+     "evidence": [
+      {
+       "loc": "3.1 Vertical profile",
+       "quote": "using a Markov chain Monte Carlo sampler as implemented by emcee (cite: emcee_ref)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DISCMINER",
+    "version": "not stated",
+    "used_for": {
+     "value": "Parametric model fit to CN spectra to extract the linewidth",
+     "evidence": [
+      {
+       "loc": "4 Parametric emission model: DISCMINER fit",
+       "quote": "To this end, we used DISCMINER (cite: izquierdo_2021_discminer1), which allowed us to find the best-fit parametrization of our emission."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CN emission surface z0 (tapered power law)",
+    "value": "40.29",
+    "uncertainty": "+12.36/-13.87",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "40.29 $^{+12.36}_{-13.87}$"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H emission surface z0 (tapered power law)",
+    "value": "8.03",
+    "uncertainty": "+4.79/-3.33",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "8.03 $^{+4.79}_{-3.33}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CN surface power-law index phi",
+    "value": "4.91",
+    "uncertainty": "+0.22/-0.38",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "4.91 $^{+0.22}_{-0.38}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CN surface taper radius r_taper",
+    "value": "65.72",
+    "uncertainty": "+26.77/-11.49",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "65.72 $^{+26.77}_{-11.49}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial extent of CN and C2H emission at z/r = 0.2-0.3",
+    "value": "z/r = 0.2-0.3, radially between 50 and 350 au",
+    "uncertainty": "not stated",
+    "units": "dimensionless (z/r), au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "6.1 Vertical location of CN and C2H",
+      "quote": "at $z/r=$0.2-0.3 constrained radially between 50 and 350 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Ring peak radius in CN and C2H integrated intensity",
+    "value": "~106",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "all tracers display a ringed structure peaking at $\\sim$106 au"
+     }
+    ]
+   },
+   {
+    "quantity": "DISCMINER best-fit stellar mass (CN)",
+    "value": "1.22",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "1.22"
+     }
+    ]
+   },
+   {
+    "quantity": "DISCMINER best-fit inclination (CN)",
+    "value": "50.53",
+    "uncertainty": "not stated",
+    "units": "degrees",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "50.53"
+     }
+    ]
+   },
+   {
+    "quantity": "DISCMINER best-fit position angle (CN)",
+    "value": "143.76",
+    "uncertainty": "not stated",
+    "units": "degrees",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "143.76"
+     }
+    ]
+   },
+   {
+    "quantity": "DISCMINER best-fit systemic velocity (CN)",
+    "value": "4.49",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "4.49"
+     }
+    ]
+   },
+   {
+    "quantity": "Average total CN linewidth outward of 150 au",
+    "value": "~221",
+    "uncertainty": "50 m/s adopted systematic error",
+    "units": "m/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 Turbulence as traced by CN",
+      "quote": "The average total linewidth measured outward of 150 au is $\\sim$221 m s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Thermal broadening outward of 150 au (13CO and 12CO temperatures)",
+    "value": "105-132",
+    "uncertainty": "not stated",
+    "units": "m/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5 Turbulence as traced by CN",
+      "quote": "Thermal broadening only accounts for 105-132 m s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Nonthermal broadening outward of 150 au",
+    "value": "177-194",
+    "uncertainty": "not stated",
+    "units": "m/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5 Turbulence as traced by CN",
+      "quote": "the nonthermal broadening ranges between 177 and 194 m s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Turbulence Mach number beyond ~150 au at z/r ~0.25",
+    "value": "0.4-0.6",
+    "uncertainty": "shaded band from 50 m/s linewidth error",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "IM Lup shows a high turbulence of Mach 0.4-0.6"
+     }
+    ]
+   },
+   {
+    "quantity": "Turbulence alpha",
+    "value": "~10^-1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5 Turbulence as traced by CN",
+      "quote": "Our measurements indicate $\\alpha \\sim 10^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Integrated flux of CN J=5/2-3/2 F=7/2-5/2 line",
+    "value": "1.594",
+    "uncertainty": "0.001",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "1.594"
+     }
+    ]
+   },
+   {
+    "quantity": "Average ring width in CN and C2H",
+    "value": "~89 (CN), ~109 (C2H)",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "Overall the feature shows an average width of $\\sim$89 au in CN and $\\sim$109 au in C$_2$H."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CN and C2H emit from a localized upper disk layer at z/r = 0.2-0.3, CN comparable to 13CO and C2H comparable to C18O, in agreement with thermochemical models",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "CN and C$_2$H are both emitting from a localized upper disk region at $z/r =$0.2-0.3, in agreement with thermochemical models."
+     }
+    ]
+   },
+   {
+    "value": "No coherent non-Keplerian pattern except a radially localized rotation residual near 220 au",
+    "evidence": [
+     {
+      "loc": "6.3 Possible overestimation of the nonthermal component",
+      "quote": "There are no immediate signs of non-Keplerian motion"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Turbulence can be measured directly from an optically thin tracer without radiative transfer models",
+    "experiment": "Located CN emission surface, took CO brightness temperature as kinetic temperature, fitted linewidth with DISCMINER and separated thermal and nonthermal parts",
+    "result": "Total linewidth ~221 m/s, thermal 105-132 m/s, nonthermal 177-194 m/s",
+    "finding": "Direct turbulence profile obtained for CN beyond 150 au",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The use of optically thin tracers, with emission constrained to a localized vertical region"
+     }
+    ]
+   },
+   {
+    "hypothesis": "IM Lup has high turbulence in its upper disk layers",
+    "experiment": "Mach number from the CN nonthermal linewidth at z/r ~0.25 beyond 150 au",
+    "result": "Mach 0.4-0.6, alpha ~10^-1",
+    "finding": "Strong turbulence in the upper layers of IM Lup",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "turbulent velocities are between $\\mathcal{M}$ = 0.4 and 0.6 ($\\alpha\\sim$10$^{-1}$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "There is a vertical gradient of turbulence in IM Lup",
+    "experiment": "Compared the CN-based upper-layer turbulence with literature constraints of low midplane turbulence from dust",
+    "result": "High turbulence in the upper layer versus alpha ~10^-3 near the midplane from dust modelling",
+    "finding": "Evidence for higher turbulence in the upper layers, a key MRI prediction",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "IM Lup shows evidence for a vertical gradient of turbulence, with higher values in the upper layers."
+     },
+     {
+      "loc": "abstract",
+      "quote": "this may indicate a vertical gradient in the disk turbulence"
+     }
+    ]
+   },
+   {
+    "hypothesis": "CN and C2H trace a vertically elevated layer similar to 13CO",
+    "experiment": "Traced emission maxima in channel maps with ALFAHOR and fitted tapered power laws",
+    "result": "CN comparable to 13CO, C2H slightly below tracing the same region as C18O",
+    "finding": "First observational evidence of vertically elevated C2H in the outer disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 Vertical profile",
+      "quote": "the location of CN ($N=3-2$) is comparable to that of $^{13}$CO ($J=2-1$)"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Higher-energy Band 7 CN and C2H transitions have enough S/N to measure vertical profiles that earlier lower transitions could not provide",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "previous studies have been unable to extract CN or C$_2$H vertical profiles due the low signal-to-noise ratio (S/N) of the lower rotational transitions"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Optically thin emission allows nonthermal broadening to be read directly, while a parametric model is needed to account for elevated surfaces, upper and lower sides and beam convolution",
+    "evidence": [
+     {
+      "loc": "4 Parametric emission model: DISCMINER fit",
+      "quote": "Extracting the linewidth is not straightforward, it requires a parametric model that accounts for the vertically elevated emission"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Analysis of the other CN hyperfine components and of C2H in DISCMINER rejected because of blending and low S/N",
+     "evidence": [
+      {
+       "loc": "4.1 Model setup",
+       "quote": "DISCMINER is not built to fit emission with multiple hyperfine components"
+      }
+     ]
+    },
+    {
+     "value": "Photo-evaporative wind broadening not included because no sign of winds in the spectra or image plane",
+     "evidence": [
+      {
+       "loc": "6.3 Possible overestimation of the nonthermal component",
+       "quote": "as we do not detect any indication of them in the spectra or image plane, we did not include this uncertainty in our analysis"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Self-calibration iterated until the S/N stopped improving; a 50 m/s linewidth error adopted as the largest plausible deviation",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "until there was no further improvement of the S/N"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "The vertical width of the CN layer cannot be estimated with the current analysis",
+     "evidence": [
+      {
+       "loc": "6.3 Possible overestimation of the nonthermal component",
+       "quote": "It is not possible to estimate the vertical width of the CN emission with our current analysis"
+      }
+     ]
+    },
+    {
+     "value": "Turbulence differs by a factor of 2 from radiative transfer results, with only one system available to compare methods",
+     "evidence": [
+      {
+       "loc": "6.4 Comparison with other methods and results",
+       "quote": "With only one system where it is possible compare both methods, we are not able to conclude if this is a systematic difference"
+      }
+     ]
+    },
+    {
+     "value": "Linewidth values inward of 150 au are unreliable because of overlapping velocities",
+     "evidence": [
+      {
+       "loc": "5 Turbulence as traced by CN",
+       "quote": "therefore, we only considered the values beyond 150 au as accurate measurements"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Kinetic temperature taken from CO brightness temperature at a surface that is only comparable to, not identical with, the CN surface; temperature error not propagated",
+    "Turbulence rests on a single IM Lup CN component with one DISCMINER fit and a fixed 50 m/s error rather than a posterior",
+    "Nonthermal term assumed fully turbulent; opacity, wind and unresolved vertical extent only partly excluded",
+    "Factor of 2 offset from the radiative transfer result is unexplained"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "keplerian_mask code on GitHub (used for masking); no release of the analysis scripts stated",
+     "evidence": [
+      {
+       "loc": "Footnote 1",
+       "quote": "https://github.com/richteague/keplerian_mask"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "DISCMINER priors, optimizer settings, fit region and exact cube cut",
+    "Line-free channel selection, cell/image sizes and CLEAN thresholds",
+    "CASA and pipeline versions",
+    "Procedure for the per-pixel linewidth and the temperature profile used for T_kin"
+   ],
+   "estimated_data_volume_inferred": "Seven EBs of Band 7 line data (about tens of GB raw, a few GB after averaging); cubes at 50-200 m/s resolution",
+   "score_inferred": 3,
+   "score_reason": "Project code and the imaging, self-calibration and DISCMINER parametrisation are described and key numbers tabulated, but data availability is not stated and the fit settings, line-free channels and temperature handling are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that the data are public and several essential fit and imaging settings are missing, so the Mach number result could not be redone from the text alone."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Izquierdo et al. 2021 (cite: izquierdo_2021_discminer1)",
+     "why": "DISCMINER method"
+    },
+    {
+     "citation": "Izquierdo et al. 2023 (cite: Izquierdo_2023_discminer2)",
+     "why": "DISCMINER application and extension"
+    },
+    {
+     "citation": "Paneque-Carreno et al. 2023 (cite: Paneque_2023_vert)",
+     "why": "ALFAHOR emission surface extraction and CO isotopolog surfaces"
+    },
+    {
+     "citation": "Hacar et al. 2016 (cite: Hacar_2016_optdepth)",
+     "why": "Opacity and nonthermal broadening of optically thin lines"
+    },
+    {
+     "citation": "Czekala et al. 2021 (cite: MAPS_Czekala)",
+     "why": "JvM correction"
+    },
+    {
+     "citation": "Andrews et al. 2018 (cite: DSHARP_Andrews)",
+     "why": "Amplitude scaling procedure between EBs"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Oberg et al. 2021 (cite: MAPS_Oberg)",
+     "why": "MAPS CO isotopolog data used for temperatures and C18O comparison"
+    },
+    {
+     "citation": "Cleeves et al. 2016 (cite: Cleeves_LupusModel_2016)",
+     "why": "Thermochemical model of IM Lup"
+    },
+    {
+     "citation": "Bosman et al. 2023 (cite: Bosman_2023_imlup)",
+     "why": "Proposed inner turbulent disk in IM Lup"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MAPS",
+    "DSHARP",
+    "ALMA project 2019.1.01357.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024A%26A...684A.174P",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T12:32:24",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 132,
+  "quotes_ok": 132,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 17,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 100,
+   "stated": 77,
+   "rate": 0.77
+  },
+  "evidence_ok": true
+ }
+}

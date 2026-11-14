@@ -1,0 +1,275 @@
+{
+ "bibcode": "2019ApJ...887...24T",
+ "title": "Resolving the Interstellar Medium in Ultraluminous Infrared QSO Hosts with ALMA",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab50be",
+ "arxiv_id": "1910.10360",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What are the distribution, kinematics and dynamical masses of the molecular gas (CO(1-0)) and 3-mm continuum in local ultraluminous IR QSO hosts, and how do BH accretion and star formation relate?",
+ "alma_project_codes": [
+  "2015.1.01147.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "~0.45 arcsec (robust 0.5), ~0.8 kpc at z=0.1",
+  "sensitivity": "0.4-0.9 mJy/beam per 25 km/s channel; continuum 30-78 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Black hole masses and AGN bolometric luminosities",
+    "evidence": [
+     {
+      "loc": "Table 4 notes",
+      "quote": "virial black hole masses from (cite: hao05) using H$\\beta$ broad emission line and $\\lambda L_{\\lambda,5100\\textup{\\AA}}$ measurements."
+     }
+    ]
+   },
+   "citation": "(cite: hao05)"
+  },
+  {
+   "what": {
+    "value": "Far-IR luminosities from IRAS 60 and 100 um flux densities and single-dish CO",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "the far-IR luminosities were calculated based on the flux densities measured at IRAS 60 $\\mu$m and 100 $\\mu$m (cite: xia12)"
+     }
+    ]
+   },
+   "citation": "(cite: xia12)"
+  },
+  {
+   "what": {
+    "value": "Archival ALMA CO(1-0) of IRAS F11119+3257 at 2.8 arcsec",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "we combined our high-resolution CO data with the archival ALMA CO data ($\\sim$ 2$''$ .8 resolution) observed by (cite: veilleux17)"
+     }
+    ]
+   },
+   "citation": "(cite: veilleux17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes",
+   "method": "clean in MFS for continuum; uvcontsub then clean for cubes; robust 2.0 for analysis",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO fluxes, redshifts and line widths; compare with IRAM 30m",
+   "method": "Gaussian fits to spectra from circular apertures or >=2 sigma regions; compared to single-dish",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure source sizes",
+   "method": "uv-plane model fitting of CO (circular + elliptical Gaussian) and continuum (circular Gaussian)",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "symmetric Gaussian surface brightness"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit rotation curves",
+   "method": "3D tilted-ring models with inclination from axis ratio; V_rot and sigma at turnover radius",
+   "software": [
+    "3D-BAROLO",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "thin disk, i = arccos(amin/amaj)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive CO luminosity and gas mass",
+   "method": "Solomon+97 L'CO formula; M_H2 = alpha_CO L'CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 0.8, constant for all"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate dynamical masses",
+   "method": "rotating disk Mdyn=2.3e5 v^2 R (v=0.75 FWHM/sin i if no model); virial 5 sigma^2 R/G for irregular",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "R = 0.75 x CO FWHM major axis"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare BH accretion rate with SFR",
+   "method": "Macc = Lbol/(eta c^2); SFR from FIR or CO-predicted IR; log-linear bisector fit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "eta=0.1; Eddington accretion when Lbol unavailable for high-z"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median CO extended-component size",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$\\sim$ 1.2$-$7.0 kpc with a median of 3.2 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "3-mm continuum size",
+   "value": "0.4-1.0 (median 0.6)",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$\\sim$ 0.4$-$1.0 kpc with a median of 0.6 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Vrot/sigma for three disk hosts",
+   "value": "4-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "is in the range of 4$-$6 for the three galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass range",
+   "value": "7.4e9 - 6.9e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "give masses between $7.4\\times10^9$ and $6.9\\times10^{10}$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mgas/Mdyn median",
+   "value": "0.22",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "with a median value of 0.22$\\pm$0.04 for IR QSOs"
+    }
+   ]
+  },
+  {
+   "quantity": "Macc ∝ SFR power-law index",
+   "value": "1.68",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$\\dot{M}_{\\rm acc}\\propto {\\rm SFR}^{(1.68\\pm0.17)}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Macc/SFR for IR QSOs",
+   "value": "6.0e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "The median value of $\\dot{M}_{\\rm acc}$/SFR is **$6.0\\times10^{-3}$** for IR QSOs"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of single-dish flux recovered",
+   "value": "~80",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "our interferometric data typically recover $\\sim$ 80% of the observed single-dish flux"
+    }
+   ]
+  },
+  {
+   "quantity": "MBH/Mdyn range",
+   "value": "0.02-0.36 (median 0.08)",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "ranging from 0.02% to 0.36% with a median value of 0.08%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum",
+  "Clean threshold, mask, cell and image size",
+  "Whether archive pipeline products or re-run scripts were used",
+  "3D-BAROLO configuration (ring geometry, fixed parameters, fitting options)",
+  "Aperture and velocity ranges for CO integration beyond Fig 2",
+  "UVMULTIFIT initial guesses and fit settings",
+  "Details of the log-linear bisector fit to Macc vs SFR and the high-z compilation",
+  "Rest frequency adopted for CO(1-0)"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "BAROLO settings",
+  "high-z comparison compilation",
+  "line-free channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single public project and standard CASA steps, but imaging and BAROLO details are missing and the SFR-accretion part relies on external compilations.",
+ "rediscovery_reason": "Archive data from one project; the recipe (imaging, uv size fits, dynamical mass formulae) is mostly specified and the results are numeric.",
+ "source_card": "cards/2019ApJ...887...24T/sonnet/card.md"
+}

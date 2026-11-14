@@ -1,0 +1,526 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 9,
+    "shows": "Continuum and zeroth-moment maps of 12CO, 13CO and C18O (2-1) emission from the ALMA 7-m array for 49 Cet (top row) and HD 32297 (middle row), plus spatially integrated CO spectra for both targets (bottom row).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "DEC offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour (continuum)",
+      "quantity": "flux density F_v",
+      "units": "mJy beam-1"
+     },
+     {
+      "axis": "colour (12CO, 13CO, C18O maps)",
+      "quantity": "integrated flux F_v",
+      "units": "Jy beam-1 km s-1"
+     },
+     {
+      "axis": "x (spectra)",
+      "quantity": "LSR velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y (spectra)",
+      "quantity": "CO line flux S_CO",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet 1.33 mm continuum peak 3.4 mJy beam-1 at the star position",
+     "approx. 49 Cet 12CO peak integrated flux 3.4 Jy beam-1 km s-1",
+     "approx. 49 Cet 12CO line peak 0.7 Jy near 6 km/s",
+     "approx. HD 32297 12CO line peak 0.18 Jy near 8 km/s",
+     "approx. HD 32297 12CO integrated peak 1.0 Jy beam-1 km s-1"
+    ],
+    "caption_quote": "Continuum and zeroth moment maps for three diﬀerent CO isotopologues obtained with the ALMA 7 m array in Band 6 for 49 Cet (ﬁrst row) and HD 32297 (second row) as well as the spatially integrated spectra of the 12CO, 13CO, C18O emission",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "CO masses of circumstellar disks versus age, with dust mass shown by symbol colour; debris disks as circles and Herbig Ae disks as squares, including 49 Cet and HD 32297.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "age",
+      "units": "Myr"
+     },
+     {
+      "axis": "y",
+      "quantity": "CO mass",
+      "units": "Earth masses"
+     },
+     {
+      "axis": "colour",
+      "quantity": "dust mass",
+      "units": "Earth masses"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet CO mass 0.011 M_Earth at ~40 Myr",
+     "approx. HD 32297 CO mass 0.07 M_Earth at ~30 Myr",
+     "approx. HD 141569 CO mass 0.055 M_Earth at ~5 Myr",
+     "approx. Herbig Ae peak CO mass 1.4 M_Earth at ~6 Myr"
+    ],
+    "caption_quote": "CO masses of circumstellar disks as a function of age. Dust masses are also shown by the colors of the symbols.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Shielding factors needed to explain the CO content of six CO-rich debris disks and beta Pic, with 49 Cet and HD 32297 highlighted in blue; right axis gives the corresponding CO column densities.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "target",
+      "units": "not labelled"
+     },
+     {
+      "axis": "y",
+      "quantity": "shielding factor",
+      "units": "not labelled"
+     },
+     {
+      "axis": "right y",
+      "quantity": "CO column density N_CO",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. HD 21997 shielding factor near 5e4",
+     "approx. HD 32297 shielding factor near 4e2",
+     "approx. 49 Cet shielding factor near 3e3"
+    ],
+    "caption_quote": "Shielding factors necessary to explain the CO content of the six CO-rich debris disks and the disk of β Pic (5.2). 49 Cet and HD 32297, the targets of our study, are plotted with blue symbols.",
+    "reproduction_target": true,
+    "crop_ok": false
+   },
+   {
+    "number": 4,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Secondary gas disk model grids of 13CO gas mass for 49 Cet (left) and C18O gas mass for HD 32297 (right) as functions of CO production rate and alpha viscosity, with observed-mass contours and inner CO radius constraints.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "alpha viscosity",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "CO production rate",
+      "units": "M_Earth Myr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "13CO mass (left) or C18O mass (right)",
+      "units": "M_Earth"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Checks which secondary gas model parameters reproduce the observed 13CO (49 Cet) and C18O (HD 32297) masses within 3 sigma, with CI line flux and inner radius constraints.",
+    "readable_values": [
+     "approx. 49 Cet observed 13CO mass contour near 5e-3 M_Earth Myr-1 at alpha 1e-4",
+     "approx. HD 32297 C18O mass contour near 2e-2 M_Earth Myr-1 at alpha 1e-3",
+     "approx. 49 Cet CI flux limit 33 Jy km/s (3sigma)",
+     "approx. HD 32297 inner CO radius 55 au (3sigma lower limit)"
+    ],
+    "caption_quote": "Solid black contours correspond to the observed 13CO and C18O masses, while the black dashed contours mark the 3σ uncertainties.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Time evolution of the gas mass of 12CO, 13CO, C18O and C0 and of the 13CO/12CO and C18O/12CO mass ratios in representative secondary gas disk models of 49 Cet (left) and HD 32297 (right).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "time",
+      "units": "yr"
+     },
+     {
+      "axis": "y",
+      "quantity": "mass",
+      "units": "M_Earth"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet M_CO reaches 0.1 M_Earth at 4e7 yr",
+     "approx. HD 32297 M_CO about 1 M_Earth at 2.5e7 yr",
+     "approx. 49 Cet M13CO about 1e-4 M_Earth at 4e7 yr"
+    ],
+    "caption_quote": "The mass evolution of 12CO, 13CO, C18O gas and C0 gas components in representative secondary gas disk models of 49 Cet (left) and HD 32297 (right).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "radial_profile",
+    "panels": 2,
+    "shows": "Radial surface density profiles of C0, 12CO, 13CO and C18O at three evolutionary times in the best-fit secondary gas disk models of 49 Cet (left) and HD 32297 (right), with the steady-state C0 analytic line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "au"
+     },
+     {
+      "axis": "y",
+      "quantity": "surface density",
+      "units": "g cm-2"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet CO surface density peak 1e-4 g/cm2 at 0.4 Myr-scale profile near 90 au",
+     "approx. HD 32297 CO peak surface density 1e-3 g/cm2 near 90 au at 0.25 Myr"
+    ],
+    "caption_quote": "Radial surface density distributions of 12CO, 13CO, C18O molecules and C0 atoms at three diﬀerent evolutionary phases in the best ﬁt secondary gas disk models of 49 Cet (left) and HD 32297 (right).",
+    "reproduction_target": false,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 6,
+  "caption_quotes_ok": 6,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [
+   3
+  ],
+  "validation_figures": 1,
+  "reproduction_targets": 4,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.991,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.995,
+    "crop_ok": false,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 9,
+    "shows": "Continuum and zeroth-moment maps of 12CO, 13CO and C18O (2-1) emission from the ALMA 7-m array for 49 Cet (top row) and HD 32297 (middle row), plus spatially integrated CO spectra for both targets (bottom row).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "DEC offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour (continuum)",
+      "quantity": "flux density F_v",
+      "units": "mJy beam-1"
+     },
+     {
+      "axis": "colour (12CO, 13CO, C18O maps)",
+      "quantity": "integrated flux F_v",
+      "units": "Jy beam-1 km s-1"
+     },
+     {
+      "axis": "x (spectra)",
+      "quantity": "LSR velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y (spectra)",
+      "quantity": "CO line flux S_CO",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet 1.33 mm continuum peak 3.4 mJy beam-1 at the star position",
+     "approx. 49 Cet 12CO peak integrated flux 3.4 Jy beam-1 km s-1",
+     "approx. 49 Cet 12CO line peak 0.7 Jy near 6 km/s",
+     "approx. HD 32297 12CO line peak 0.18 Jy near 8 km/s",
+     "approx. HD 32297 12CO integrated peak 1.0 Jy beam-1 km s-1"
+    ],
+    "caption_quote": "Continuum and zeroth moment maps for three diﬀerent CO isotopologues obtained with the ALMA 7 m array in Band 6 for 49 Cet (ﬁrst row) and HD 32297 (second row) as well as the spatially integrated spectra of the 12CO, 13CO, C18O emission",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "CO masses of circumstellar disks versus age, with dust mass shown by symbol colour; debris disks as circles and Herbig Ae disks as squares, including 49 Cet and HD 32297.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "age",
+      "units": "Myr"
+     },
+     {
+      "axis": "y",
+      "quantity": "CO mass",
+      "units": "Earth masses"
+     },
+     {
+      "axis": "colour",
+      "quantity": "dust mass",
+      "units": "Earth masses"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet CO mass 0.011 M_Earth at ~40 Myr",
+     "approx. HD 32297 CO mass 0.07 M_Earth at ~30 Myr",
+     "approx. HD 141569 CO mass 0.055 M_Earth at ~5 Myr",
+     "approx. Herbig Ae peak CO mass 1.4 M_Earth at ~6 Myr"
+    ],
+    "caption_quote": "CO masses of circumstellar disks as a function of age. Dust masses are also shown by the colors of the symbols.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Shielding factors needed to explain the CO content of six CO-rich debris disks and beta Pic, with 49 Cet and HD 32297 highlighted in blue; right axis gives the corresponding CO column densities.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "target",
+      "units": "not labelled"
+     },
+     {
+      "axis": "y",
+      "quantity": "shielding factor",
+      "units": "not labelled"
+     },
+     {
+      "axis": "right y",
+      "quantity": "CO column density N_CO",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. HD 21997 shielding factor near 5e4",
+     "approx. HD 32297 shielding factor near 4e2",
+     "approx. 49 Cet shielding factor near 3e3"
+    ],
+    "caption_quote": "Shielding factors necessary to explain the CO content of the six CO-rich debris disks and the disk of β Pic (5.2). 49 Cet and HD 32297, the targets of our study, are plotted with blue symbols.",
+    "reproduction_target": true,
+    "crop_ok": false
+   },
+   {
+    "number": 4,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Secondary gas disk model grids of 13CO gas mass for 49 Cet (left) and C18O gas mass for HD 32297 (right) as functions of CO production rate and alpha viscosity, with observed-mass contours and inner CO radius constraints.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "alpha viscosity",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y",
+      "quantity": "CO production rate",
+      "units": "M_Earth Myr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "13CO mass (left) or C18O mass (right)",
+      "units": "M_Earth"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Checks which secondary gas model parameters reproduce the observed 13CO (49 Cet) and C18O (HD 32297) masses within 3 sigma, with CI line flux and inner radius constraints.",
+    "readable_values": [
+     "approx. 49 Cet observed 13CO mass contour near 5e-3 M_Earth Myr-1 at alpha 1e-4",
+     "approx. HD 32297 C18O mass contour near 2e-2 M_Earth Myr-1 at alpha 1e-3",
+     "approx. 49 Cet CI flux limit 33 Jy km/s (3sigma)",
+     "approx. HD 32297 inner CO radius 55 au (3sigma lower limit)"
+    ],
+    "caption_quote": "Solid black contours correspond to the observed 13CO and C18O masses, while the black dashed contours mark the 3σ uncertainties.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Time evolution of the gas mass of 12CO, 13CO, C18O and C0 and of the 13CO/12CO and C18O/12CO mass ratios in representative secondary gas disk models of 49 Cet (left) and HD 32297 (right).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "time",
+      "units": "yr"
+     },
+     {
+      "axis": "y",
+      "quantity": "mass",
+      "units": "M_Earth"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet M_CO reaches 0.1 M_Earth at 4e7 yr",
+     "approx. HD 32297 M_CO about 1 M_Earth at 2.5e7 yr",
+     "approx. 49 Cet M13CO about 1e-4 M_Earth at 4e7 yr"
+    ],
+    "caption_quote": "The mass evolution of 12CO, 13CO, C18O gas and C0 gas components in representative secondary gas disk models of 49 Cet (left) and HD 32297 (right).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "radial_profile",
+    "panels": 2,
+    "shows": "Radial surface density profiles of C0, 12CO, 13CO and C18O at three evolutionary times in the best-fit secondary gas disk models of 49 Cet (left) and HD 32297 (right), with the steady-state C0 analytic line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "au"
+     },
+     {
+      "axis": "y",
+      "quantity": "surface density",
+      "units": "g cm-2"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 49 Cet CO surface density peak 1e-4 g/cm2 at 0.4 Myr-scale profile near 90 au",
+     "approx. HD 32297 CO peak surface density 1e-3 g/cm2 near 90 au at 0.25 Myr"
+    ],
+    "caption_quote": "Radial surface density distributions of 12CO, 13CO, C18O molecules and C0 atoms at three diﬀerent evolutionary phases in the best ﬁt secondary gas disk models of 49 Cet (left) and HD 32297 (right).",
+    "reproduction_target": false,
+    "crop_ok": true
+   }
+  ]
+ }
+}

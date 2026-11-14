@@ -1,0 +1,538 @@
+{
+ "bibcode": "2024A&A...688A.149D",
+ "title": "Disk Evolution Study Through Imaging of Nearby Young Stars (DESTINYS): PDS 111, an old T Tauri star with a young-looking disk",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348555",
+ "arxiv_id": "2406.04160",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "Reassess the age of the G-type T Tauri star PDS 111 and measure its disk properties (dust, gas, scattered light) to see how it fits disk evolution and the Peter Pan disk scenario",
+ "alma_project_codes": [
+  "2021.1.01705.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.25 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "continuum beam 0.357\" x 0.25\" (PA -71.9 deg) at 1.25 mm; 12CO beam 0.429\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of 158 pc to PDS 111 from Gaia DR3",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "is known to be in the foreground of the Orion star-forming region at a distance of 158 pc"
+     }
+    ]
+   },
+   "citation": "Gaia Collaboration 2022 (cite: Gaia2022)"
+  },
+  {
+   "what": {
+    "value": "Mean V-band photometry (279 measurements over five years) used for the SED fit",
+    "evidence": [
+     {
+      "loc": "3.1 Photospheric spectrum PDS 111",
+      "quote": "we selected the mean V-band measurement of the ASAS-SN survey with 279 measurements over a period of five years in order to account for the variations"
+     }
+    ]
+   },
+   "citation": "(cite: Jayasinghe2018)"
+  },
+  {
+   "what": {
+    "value": "Pre-main-sequence evolutionary tracks used to derive age and evolutionary mass",
+    "evidence": [
+     {
+      "loc": "4.1 Age",
+      "quote": "we placed the star in the Hertzsprung Russell Diagram (HRD) on evolutionary tracks from (cite: siess2000)"
+     }
+    ]
+   },
+   "citation": "(cite: siess2000)"
+  },
+  {
+   "what": {
+    "value": "Kurucz model atmospheres fitted to the 402-430 nm spectrum",
+    "evidence": [
+     {
+      "loc": "3.1 Photospheric spectrum PDS 111",
+      "quote": "through the fitting of Kurucz models (cite: kurucz1993) in the spectral range of 402-430 nm"
+     }
+    ]
+   },
+   "citation": "(cite: kurucz1993)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient kappa_nu = 2.3 cm2/g x (nu/230 GHz)^0.4",
+    "evidence": [
+     {
+      "loc": "3.3.1 Dust continuum emission",
+      "quote": "Taking for the mass absorption coefficient $\\kappa_\\nu=2.3\\,$cm$^{2}$ g$^{-1}\\times(\\nu/230\\,\\rm{GHz})^{0.4}$ (cite: beckwith1990; andrews2013)"
+     }
+    ]
+   },
+   "citation": "(cite: beckwith1990; andrews2013)"
+  },
+  {
+   "what": {
+    "value": "Empirical relations converting line luminosities to accretion luminosity and mass-accretion rate",
+    "evidence": [
+     {
+      "loc": "4.6 Inner gaseous disk",
+      "quote": "Their empirical relations were used to convert the line luminosities to accretion luminosities"
+     }
+    ]
+   },
+   "citation": "(cite: alcala2017)"
+  },
+  {
+   "what": {
+    "value": "Bolometric correction, extinction and temperature scale used to infer errors on luminosity and radius",
+    "evidence": [
+     {
+      "loc": "3.1 Photospheric spectrum PDS 111",
+      "quote": "extinction, effective temperature, distance, and bolometric correction from (cite: Pecaut2013) to infer errors on the luminosity and radius"
+     }
+    ]
+   },
+   "citation": "(cite: Pecaut2013)"
+  },
+  {
+   "what": {
+    "value": "SDSS, Gaia, 2MASS and WISE photometry for the SED",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "Photometry used for SED fitting."
+     }
+    ]
+   },
+   "citation": "(cite: 2018PASA...35...10W), (cite: Gaia2022), (cite: 2006AJ....131.1163S), (cite: 2010AJ....140.1868W)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate the ALMA data",
+   "method": "Run the ALMA scriptforPI, flag +-20 km/s around 12CO, build a pseudo-continuum averaged to 125 MHz and 6 s, self-calibrate on the continuum (4 phase then amplitude), apply tables to the 12CO window",
+   "software": [
+    "CASA",
+    "CLEAN"
+   ],
+   "key_parameters": [
+    "phase solution intervals inf, 40s, 18s, 6s; amplitude 6s; spws and scans combined",
+    "imaging for self-calibration with Briggs robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and 12CO with JvM correction",
+   "method": "Continuum imaged with robust -0.5; 12CO with robust 0.0 and no taper; both cleaned to 4 sigma then JvM-corrected",
+   "software": [
+    "CASA",
+    "CLEAN"
+   ],
+   "key_parameters": [
+    "JvM epsilon = 0.909 (continuum) and 0.694 (12CO)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Check optical depth and derive dust mass",
+   "method": "Compute tau at the continuum peak from I = B(Td)(1 - exp(-tau)); if optically thin, M_dust = d^2 F_nu / (kappa_nu B_nu(T))",
+   "software": [],
+   "key_parameters": [
+    "kappa_nu = 2.3 cm2/g x (nu/230 GHz)^0.4"
+   ],
+   "assumptions": [
+    "dust temperature of 20 K for the optical depth",
+    "optically thin emission; distance to the source d"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the continuum visibilities with a parametric model",
+   "method": "Four-component brightness model (central Gaussian, two ring Gaussians, azimuthal Gaussian asymmetry) Fourier transformed with galario and sampled with zeus MCMC",
+   "software": [
+    "galario",
+    "zeus"
+   ],
+   "key_parameters": [
+    "model images with 4 mas pixels and 2048 pixel image size",
+    "n_walk = 136 (eight times the number of parameters), 5000 burn-in steps and 6000 sampling steps per walker"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure radial extent of dust, gas and scattered light",
+   "method": "Deproject and azimuthally average the ALMA images; take the radius enclosing 90% of the emission; SPHERE shown as radial cuts along the major axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive stellar mass from 12CO Keplerian rotation",
+   "method": "Fit the Keplerian rotation pattern of 12CO with eddy using a simple disk model",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "inclination fixed to the continuum value"
+   ],
+   "assumptions": [
+    "simple disk model"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Determine stellar parameters and age",
+   "method": "Fit Kurucz models to the 402-430 nm X-shooter spectrum for Teff, log g, v sin i; fit SED for luminosity and radius; place the star on Siess et al. tracks in the HRD",
+   "software": [
+    "Molecfit",
+    "ESO X-shooter pipeline"
+   ],
+   "key_parameters": [
+    "Kurucz grid: Teff 5500-6500 K step 100 K, log g 4.0-4.5 step 0.1, v sin i 20-50 km/s step 1",
+    "R_V fixed to 3.1 in the SED fit; distance and Teff fixed"
+   ],
+   "assumptions": [
+    "Gaia DR3 distance (RUWE 2.6 discussed and judged not to invalidate it)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Reduce SPHERE data and trace the disk surface",
+   "method": "IRDAP polarimetric differential imaging and ADI (PCA), then trace individual rings by eye as ellipses on polarized, high-pass filtered and AIDA-deconvolved images to get aspect ratios",
+   "software": [
+    "IRDAP",
+    "AIDA"
+   ],
+   "key_parameters": [
+    "ADI with 4 principal components; optimization annuli 10-30, 30-100, 100-512 pixels",
+    "ring inclination and PA fixed to the ALMA values"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Measure accretion rate and spectral variability",
+   "method": "EW of lines after Kurucz model subtraction converted to line luminosity and accretion rate with Alcala et al. relations; temporal variance spectrum for variability",
+   "software": [],
+   "key_parameters": [
+    "95% level used for a significant TVS detection"
+   ],
+   "assumptions": [
+    "inner radius of 5 R_star for the accretion rate"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA continuum final beam (1.25 mm)",
+   "value": "0.357 x 0.25 arcsec, PA -71.9 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec, deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3.1 Dust continuum emission",
+     "quote": "a final beam of 0.357”$\\times$0.25” with a PA of -71.9$^{\\circ}$ at 1.25 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "JvM epsilon, dust continuum",
+   "value": "0.909",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.3 ALMA observations",
+     "quote": "We found $\\epsilon$ values of $0.909$ for the dust continuum image and $0.694$ for the $^{12}$CO"
+    }
+   ]
+  },
+  {
+   "quantity": "JvM epsilon, 12CO",
+   "value": "0.694",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.3 ALMA observations",
+     "quote": "We found $\\epsilon$ values of $0.909$ for the dust continuum image and $0.694$ for the $^{12}$CO"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak optical depth (Td = 20 K)",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 Dust continuum emission",
+     "quote": "Assuming a dust temperature of 20 K, the optical depth at the peak is $\\tau_{\\rm{peak}}=0.27$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk mass",
+   "value": "45.8 Earth masses (~0.14 Jupiter masses)",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 Dust continuum emission",
+     "quote": "we calculated a dust disk mass of 45.8 M$_\\oplus$ or $\\sim0.14$ M$_{\\rm{Jup}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum model inclination",
+   "value": "58.2",
+   "uncertainty": "+-0.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$58.2 \\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum model position angle",
+   "value": "66.2",
+   "uncertainty": "+-0.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$66.2 \\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum model total flux F_tot",
+   "value": "139.1",
+   "uncertainty": "+0.2/-0.6",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$139.1_{-0.6}^{+0.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r_3 (narrow ring Gaussian)",
+   "value": "286.6",
+   "uncertainty": "+2.6/-3.5",
+   "units": "mas",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$286.6_{- 3.5}^{+ 2.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust cavity: ring emission peak radius",
+   "value": "~30 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Disk structure",
+     "quote": "The main characteristic of the dust morphology is a cavity with a ring-like emission peaking at $\\sim$30 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius enclosing 90% of dust flux (visibility fit)",
+   "value": "~55 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Disk structure",
+     "quote": "The radius that encloses 90% of the total flux from the visibility fitting is $\\sim$55 au."
+    }
+   ]
+  },
+  {
+   "quantity": "90% radius of 12CO emission",
+   "value": "~295 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 Radial extent of the disk",
+     "quote": "The 90% radius of the $^{12}$CO map ($\\sim$295 au) is much more extended than that tracing the dust"
+    }
+   ]
+  },
+  {
+   "quantity": "90% radius of dust continuum (direct image)",
+   "value": "95 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 Radial extent of the disk",
+     "quote": "The 90% radius of the dust continuum emission is at 95 au, three times smaller than observed in $^{12}$CO"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass from 12CO Keplerian rotation (eddy)",
+   "value": "1.29",
+   "uncertainty": "+0.82/-0.18",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3.2 12CO emission",
+     "quote": "which gives 1.29$^{+0.82}_{-0.18}$ M$_{\\odot}$ when assuming a simple disk model and fixing the inclination to be that of the continuum."
+    }
+   ]
+  },
+  {
+   "quantity": "Teff, log g and v sin i from Kurucz fit",
+   "value": "Teff 5900 K, log g 4.2, v sin i 21 km/s",
+   "uncertainty": "see Table 1 (Teff +100/-150 K; log g +-0.2)",
+   "units": "K, cm s-2 (as in paper), km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1 Photospheric spectrum PDS 111",
+     "quote": "The best fit model is with a $T_\\text{{eff}}$ of 5900 K, log $g$ of 4.2, and $v$ sin$i$ of 21 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar radius from SED/luminosity and Teff",
+   "value": "1.52",
+   "uncertainty": "+0.30/-0.17 (Table 1)",
+   "units": "R_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1 Photospheric spectrum PDS 111",
+     "quote": "The luminosity and $T_{\\text{eff}}$ of the star result in a radius of 1.52 R$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dominant TESS period (Lomb-Scargle)",
+   "value": "3.137",
+   "uncertainty": "not stated",
+   "units": "days",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.1 Photospheric spectrum PDS 111",
+     "quote": "of 3.137 days"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of PDS 111 from PMS tracks",
+   "value": "15.9",
+   "uncertainty": "+1.7/-3.7",
+   "units": "Myr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We measured an age of the system of 15.9$^{+1.7}_{-3.7}$ Myr using pre-main sequence tracks."
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass",
+   "value": "1.20",
+   "uncertainty": "range 1.15-1.30",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 Age",
+     "quote": "infer an age of 15.9 Myr and a evolutionary mass of 1.20 M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk aspect ratio, innermost ring (37 au) to second ring (52 au)",
+   "value": "0.12 to 0.26",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Disk surface",
+     "quote": "We find a steep increase in the disk aspect ratio from the innermost ring at 37 au to the second ring at 52 au from 0.12 to 0.26."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-accretion rate",
+   "value": "1-5e-10",
+   "uncertainty": "range over epochs and lines",
+   "units": "M_sun/yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.6 Inner gaseous disk",
+     "quote": "This yields a rate that varies between 1-5$\\times$10$^{-10}$ M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN mask definition, niter, threshold and deconvolver for the self-calibration and final continuum and 12CO images",
+  "Image size and cell size for the ALMA continuum and 12CO imaging",
+  "Self-calibration reference antenna, SNR thresholds and number of rounds beyond the listed solution intervals",
+  "Whether the 12CO cube was continuum-subtracted (and how) and the final channel width and rms of the cubes",
+  "Primary beam correction and measured image rms for continuum and 12CO",
+  "Temperature used in the dust-mass formula and the flux F_nu adopted (aperture or model total flux) for 45.8 Earth masses",
+  "eddy settings: disk model, mask, fitted free parameters, priors and fixed values (inclination, PA, distance)",
+  "galario/zeus details: likelihood, parameter bounds, convergence criteria, visibility weights and any rescaling",
+  "How the disk center and 90% flux radii were computed from the deprojected images (aperture, noise handling)",
+  "SPHERE/ADI reduction cutouts, ring tracing coordinates and deconvolution (AIDA) parameters",
+  "Exact ALMA execution blocks, data download method and CASA calibration pipeline version"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN mask, threshold, niter, image/cell size and final rms for continuum and 12CO images",
+  "Temperature and flux values used for the dust mass",
+  "eddy model settings and priors",
+  "galario/zeus likelihood details and parameter bounds",
+  "Exact calibrated execution blocks and the specific self-calibration reference antenna and SNR choices"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA project code, spectral setup, self-calibration intervals, robust values and key numeric results are given, but imaging masks, eddy and dust-mass settings are missing.",
+ "rediscovery_reason": "The project code is given and the data should be accessible in the ALMA archive; self-calibration, imaging weights, visibility-fit setup and numeric results (beam, geometry, F_tot, R90) are specified well enough for a partial redo, though dust mass and CO kinematics need unstated choices.",
+ "source_card": "cards/2024A%26A...688A.149D/sonnet/card.md"
+}

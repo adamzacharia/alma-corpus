@@ -1,0 +1,303 @@
+{
+ "bibcode": "2017ApJ...849...29I",
+ "title": "ALMA Multiple-transition Molecular Line Observations of the Ultraluminous Infrared Galaxy IRAS 20551-4250: Different HCN, HCO<SUP>+</SUP>, and HNC Excitation, and Implications for Infrared Radiative Pumping",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa7ff9",
+ "arxiv_id": "1708.08073",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "How do HCN, HCO+ and HNC excite and differ in abundance in the buried-AGN ULIRG IRAS 20551-4250, and does infrared radiative pumping affect their rotational excitation?",
+ "alma_project_codes": [
+  "2013.1.00033.S",
+  "2015.1.00028.S",
+  "2016.1.00051.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 6, 7, 9",
+  "arrays": "not stated",
+  "angular_resolution": "Beams ~0.16'' (band 6) to ~1.2'' (band 3)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Cycle 0 HCN J=4-3 flux 9.5 Jy km/s and HCO+, HNC J=4-3 fluxes",
+    "evidence": [
+     {
+      "loc": "3 Result",
+      "quote": "derived in our Cycle 0 observations (9.5$\\pm$0.2 Jy km s$^{-1}$) (cite: ima13b)"
+     }
+    ]
+   },
+   "citation": "(cite: ima13b)"
+  },
+  {
+   "what": {
+    "value": "J=3-2 fluxes of HCN, HCO+, HNC and v2=1f lines",
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "$^{a}$ Taken from (cite: ima16b)."
+     }
+    ]
+   },
+   "citation": "(cite: ima16b)"
+  },
+  {
+   "what": {
+    "value": "X-ray N_H = 7.9e23 cm-2",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "N$_{\\rm H}$ = 7.9$^{+6.9}_{-1.9}$ $\\times$ 10$^{23}$ cm$^{-2}$ (cite: fra03)"
+     }
+    ]
+   },
+   "citation": "(cite: fra03)"
+  },
+  {
+   "what": {
+    "value": "Einstein A and energy levels from CDMS",
+    "evidence": [
+     {
+      "loc": "Table 7",
+      "quote": "are from the Cologne Database of Molecular Spectroscopy (CDMS) (cite: mul05)"
+     }
+    ]
+   },
+   "citation": "(cite: mul05)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "Continuum subtraction from line-free channels, clean to 20-40 km/s channels, extract spectra at continuum peak",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line fluxes and sizes",
+   "method": "Gaussian fits to spectra, moment 0/1/2 maps, imfit deconvolved sizes",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Line opacity from isotopologues",
+   "method": "HCN/H13CN etc. flux ratios vs 12C/13C = 50-100 give flux attenuation and tau",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Isotopologue lines optically thin; well-mixed geometry tau/(1-exp(-tau))"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test IR pumping and abundance ratios",
+   "method": "Compare v2=1f excitation temperature to threshold T0/ln(A_vib/A_rot); column density ratios from flux/A_ul",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "J=4 level fraction same across molecules; v2=1f optically thin"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Collisional excitation modelling",
+   "method": "RADEX LVG grid in n_H2, T_kin to reproduce flux ratios",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "n_H2 10^3-10^8 cm-3; T_kin 10-500 K; dv=300 km/s; N_mol=1e16 cm-2; T_bak 3 K"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "IR pumping radiative transfer",
+   "method": "MOLPOP LVG with 5-30 micron power-law IR field at 30 and 100 pc, plane-parallel",
+   "software": [
+    "MOLPOP"
+   ],
+   "key_parameters": [
+    "n_H2=1e5, T_kin=100 K, dv=300 km/s, N=1e16; F_nu=0.0024 lambda^2.0 Jy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "CO J=3-2 outflow",
+   "method": "Broad Gaussian wing, blue-wing flux doubled, mass from L'CO with alpha=0.8, rate = 3 M V/R",
+   "software": [],
+   "key_parameters": [
+    "R~60 pc, V=500 km/s"
+   ],
+   "assumptions": [
+    "CO J=3-2 optically thick and thermalized; ULIRG-like alpha ~0.8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO J=3-2 flux",
+   "value": "162",
+   "uncertainty": "3",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "12886$\\pm$1   | 717$\\pm$7     | 221$\\pm$3     | 162$\\pm$3"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN v2=1f J=4-3 flux",
+   "value": "0.60",
+   "uncertainty": "0.13",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.60$\\pm$0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=4-3 recalibrated flux",
+   "value": "11.6",
+   "uncertainty": "0.2",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Result",
+     "quote": "adopted the re-calibrated HCN J=4–3 flux with 11.6$\\pm$0.2 (Jy km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-to-H13CN J=3-2 ratio",
+   "value": "22",
+   "uncertainty": "3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "HCN-to-H$^{13}$CN J=3–2 flux in (Jy km s$^{-1}$) to be $\\sim$22$\\pm$3"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=3-2 opacity tau",
+   "value": "2-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "we obtain $\\tau$ = 2–5 for HCN J=3–2"
+    }
+   ]
+  },
+  {
+   "quantity": "T_ex-vib HCN, HNC",
+   "value": "~360",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "are $\\sim$360 (K), $<$280 (K), and $\\sim$360 (K) for HCN, HCO$^{+}$, and HNC"
+    }
+   ]
+  },
+  {
+   "quantity": "abundance ratio HCN:HCO+:HNC",
+   "value": "1:<0.4:0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "HCN:HCO^{+}:HNC (abundance) & = & 1:<0.4:0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "molecular outflow rate",
+   "value": "~150",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "we obtain a molecular outflow rate with Ṁ$_{\\rm outf}$ $\\sim$ 150 (M$_{\\odot}$ yr$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "outflow mass",
+   "value": "5.8e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "M$_{\\rm outf}$ $\\sim$ 5.8 $\\times$ 10$^{6}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "dense molecular mass",
+   "value": "~2e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "is estimated to be $\\sim$2 $\\times$ 10$^{9}$ M$_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "clean weighting/robust, deconvolver, threshold and masks",
+  "line-free channel ranges per spectral window",
+  "CASA version",
+  "moment-map integration channel ranges",
+  "spectrum extraction aperture details",
+  "RADEX collisional rate files and grid sampling",
+  "how Gaussian fits were done (fitting code)"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "line-free channels",
+  "CASA version",
+  "MOLPOP/RADEX input setup details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear numeric tables, but imaging parameters and fitting details are missing.",
+ "rediscovery_reason": "Public archive data, line fluxes tabulated numerically, though some processing details unstated.",
+ "source_card": "cards/2017ApJ...849...29I/sonnet/card.md"
+}

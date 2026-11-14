@@ -1,0 +1,1555 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023PASP..135g4501H",
+  "title": "The ALMA Interferometric Pipeline Heuristics",
+  "year": 2023,
+  "journal": "Publications of the Astronomical Society of the Pacific",
+  "first_author": "Hunter, Todd R.",
+  "n_authors": 28,
+  "arxiv_id": "2306.07420",
+  "doi": "10.1088/1538-3873/ace216",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2016.1.00314.S",
+   "2017.1.00983.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We describe the calibration and imaging heuristics developed and deployed in the Atacama Large Millimeter/sub-millimeter Array (ALMA) interferometric data processing pipeline, as of ALMA Cycle 9 operations."
+   }
+  ],
+  "science": {
+   "fields": [
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "massive star-forming region (3-point mosaic, unnamed; used only to illustrate continuum finding)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What calibration, flagging, imaging and continuum-channel-finding heuristics does the ALMA interferometric pipeline apply (as of the Cycle 9 release), and how is it tested and validated?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We describe the calibration and imaging heuristics developed and deployed in the Atacama Large Millimeter/sub-millimeter Array (ALMA) interferometric data processing pipeline, as of ALMA Cycle 9 operations."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00314.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00314.S and ADS/JAO.ALMA#2017.1.00983.S."
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00983.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00314.S and ADS/JAO.ALMA#2017.1.00983.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array (50 antennas, baseline correlator), 7 m ACA (12 antennas, ACA correlator); pipeline also handles Total Power Array single-dish data",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "observations obtained with either the 50-antenna array of 12 m antennas processed on the baseline correlator"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "the 12-antenna Atacama Compact Array (ACA) of 7 m antennas processed on the ACA correlator"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Nobeyama Radio Observatory 45 m telescope",
+     "provided": {
+      "value": "A pipeline built on the same framework processes NRO 45 m data",
+      "evidence": [
+       {
+        "loc": "2.1 Framework",
+        "quote": "The pipeline framework allows modifications to extend support for other similar observatories, as evidenced by the recently-deployed pipeline to process data from the 45 m telescope of the Nobeyama Radio Observatory"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMA Calibrator Source Catalog: flux densities and spectral indices of grid calibrators queried at processing time",
+      "evidence": [
+       {
+        "loc": "3.10 Flux calibrator model",
+        "quote": "which are bright sources in the ALMA Calibrator Source Catalog"
+       },
+       {
+        "loc": "3.3 Data import",
+        "quote": "retrieve the best estimate of the flux density and spectral index at the center frequency of each spw for the date of observation of each EB"
+       }
+      ]
+     },
+     "citation": "(cite: Fomalont2014)"
+    },
+    {
+     "what": {
+      "value": "Solar system object flux calibrator models available in CASA",
+      "evidence": [
+       {
+        "loc": "3.10 Flux calibrator model",
+        "quote": "Low resolution projects typically observe one object, if available, from a list SSOs for which accurate models exist in CASA"
+       }
+      ]
+     },
+     "citation": "(cite: ButlerALMAMemo594)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "CASA atmospheric model tool (ATM) used to predict transmission for low-transmission spw flagging",
+     "evidence": [
+      {
+       "loc": "4.1.10 Low transmission",
+       "quote": "The transmission is computed using the atmospheric model tool in CASA, which is based on the package Atmospheric Transmission at Microwaves"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA Science Pipeline (automated calibration and imaging)",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "The ALMA Science Pipeline provides automated calibration and imaging of ALMA interferometric and single-dish data."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.4.1.12 (Python 3.6)",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "we describe the heuristics of the ALMA interferometric data processing pipeline as of the 2022.2.0.64 release for ALMA Cycle 9 (2022 October) based on CASA 6.4.1.12 Python 3.6"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "2022.2.0.64 (Cycle 9 release)",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "we describe the heuristics of the ALMA interferometric data processing pipeline as of the 2022.2.0.64 release for ALMA Cycle 9 (2022 October) based on CASA 6.4.1.12 Python 3.6"
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Solar system object for low-resolution projects, otherwise one of 49 grid quasars from the ALMA calibrator catalog",
+     "evidence": [
+      {
+       "loc": "3.10 Flux calibrator model",
+       "quote": "ALMA observations choose from two types of flux calibrators depending on the angular resolution of the data."
+      },
+      {
+       "loc": "3.10 Flux calibrator model",
+       "quote": "Otherwise, one of the quasars is observed from the list of 49"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Not part of the 2022 release; optional self-calibration stage expected in the 2023 release",
+     "evidence": [
+      {
+       "loc": "9.2 Self-calibration",
+       "quote": "Initial deployment of an optional self-calibration stage is expected in the 2023 release."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean (via the pipeline imaging task) for all imaging stages",
+     "evidence": [
+      {
+       "loc": "5.4 General imaging heuristics",
+       "quote": "Imaging is performed using the task within the pipeline task"
+      },
+      {
+       "loc": "8.1 Testing of CASA tasks critical to the pipeline",
+       "quote": "designed to guard against unexpected changes in tclean affecting critical functionality needed for the ALMA pipeline"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "hogbom for continuum mfs; mtmfs (2 Taylor terms) when fractional bandwidth exceeds 0.1",
+     "evidence": [
+      {
+       "loc": "5.5 MFS continuum imaging",
+       "quote": "All continuum imaging uses the multi-frequency synthesis (MFS) algorithm in (cite: Rau2011) with =‘hogbom’ (cite: hogbom1974)."
+      },
+      {
+       "loc": "5.5 MFS continuum imaging",
+       "quote": "In cases where the fractional bandwidth of the total frequency range spanned by the image exceeds 0.1, higher order Taylor terms are needed"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust chosen from 0.0, +0.5 (default), +1.0, +2.0: the value closest to +0.5 whose predicted beam area meets the requested range",
+     "evidence": [
+      {
+       "loc": "5.2 Image weighting selection",
+       "quote": "four possible values of the weighting parameter (cite: Briggs): 0.0, +0.5 (default), +1.0, and +2.0"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "5 pixels per beam by default; 3.25 or 3.0 under product size mitigation",
+     "evidence": [
+      {
+       "loc": "5.3 Product size mitigation",
+       "quote": "change the pixels per beam () from 5 to 3.25 if =+2, or to 3.0 otherwise."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "automasking (top-down, residual-image based) for continuum and cubes",
+     "evidence": [
+      {
+       "loc": "5.4.5 Automasking for cleaning",
+       "quote": "It takes a top-down approach to producing cleaning masks: it uses the residual images to identify significant peaks and then expands the mask to include emission associated with these peaks down to lower signal-to-noise noise."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum channels identified automatically by the findContinuum algorithm with moment difference analysis, then continuum subtracted before cube imaging",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "In the 2020 release, the algorithm to identify channels to use for continuum subtraction and imaging was substantially improved by the addition of a moment difference analysis."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "Derived from dirty Stokes I image cubes (image plane), not from the uv plane",
+     "evidence": [
+      {
+       "loc": "6.1 Advantages of the image plane technique",
+       "quote": "we developed a method to derive continuum channels by examining Stokes I image cubes, prior to cleaning"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Not supported: 12 m, 7 m and total power combinations are not yet done by the pipeline",
+     "evidence": [
+      {
+       "loc": "9.4 Group OUS processing",
+       "quote": "Such combinations are not yet supported in the pipeline, and the implementation of self-calibration and polarization calibration have a higher priority."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Cubes use a common (constant) restoring beam across all channels",
+     "evidence": [
+      {
+       "loc": "5.7.1 Cube imaging parameters",
+       "quote": "which produces a constant beam size across all channels of the cube"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Automasking control parameters and algorithm details",
+      "evidence": [
+       {
+        "loc": "5.4.5 Automasking for cleaning",
+        "quote": "Details can be found in (cite: Kepley2020); the only changes since that publication are that the was decreased."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kepley2020)"
+    },
+    {
+     "what": {
+      "value": "Possible spectral setups of ALMA observations",
+      "evidence": [
+       {
+        "loc": "3.2.1 Types of spws supported",
+        "quote": "Further details on the possible spectral setups can be found in (cite: Remijan2019)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Remijan2019)"
+    },
+    {
+     "what": {
+      "value": "Meaning of WVR per-antenna RMS and Disc columns",
+      "evidence": [
+       {
+        "loc": "3.9 WVR corrections",
+        "quote": "Further information on the meaning of these columns can be found in (cite: Nikolic2012) and the CASA documentation."
+       }
+      ]
+     },
+     "from_reference": "(cite: Nikolic2012)"
+    },
+    {
+     "what": {
+      "value": "Multi-frequency synthesis continuum imaging algorithm",
+      "evidence": [
+       {
+        "loc": "5.5 MFS continuum imaging",
+        "quote": "All continuum imaging uses the multi-frequency synthesis (MFS) algorithm in (cite: Rau2011)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Rau2011)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Which two MOUS (2016.1.00314.S, 2017.1.00983.S) are used in which figure, and their MOUS/EB identifiers, are not given in the text.",
+    "Many CASA task names and parameter names are blank in the supplied text (conversion loss), so exact parameter settings of each stage cannot be read from this version.",
+    "Exact pipeline source code revision, the PPR recipe XML files and analysisUtils version are not given beyond the 2022.2.0.64 release label.",
+    "The flux density measurements and antenna position corrections file used for any specific run are inputs that must be fixed for reproducibility but are not given.",
+    "The list of the 96 benchmark MOUS and the shared spreadsheet of their properties are not provided.",
+    "Initialisation values of the findContinuum sigma_fc parameter are shown only in a flow chart figure.",
+    "Observational details (band, configuration, integration time, target coordinates) of the illustrative datasets are not stated."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "import raw data and fetch calibrator flux densities",
+    "method": {
+     "value": "Import each ASDM into a CASA MS, fill SIGMA and WEIGHT from the radiometer equation, and query the ALMA calibrator catalog for flux density and spectral index",
+     "evidence": [
+      {
+       "loc": "3.3 Data import",
+       "quote": "each ASDM of the MOUS is imported into a CASA MS"
+      },
+      {
+       "loc": "3.3 Data import",
+       "quote": "It also populates the SIGMA column of the MS using the following relation based on the radiometer equation"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Flux density and spectral index retrieved for the date of each EB",
+      "evidence": [
+       {
+        "loc": "3.3 Data import",
+        "quote": "retrieve the best estimate of the flux density and spectral index at the center frequency of each spw for the date of observation of each EB"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "apply and flag system temperature calibration",
+    "method": {
+     "value": "Tsys spectra from the SYSCAL table are turned into a caltable and flagged with six metrics, then pre-applied to all later solves",
+     "evidence": [
+      {
+       "loc": "3.7 Flagging of Tsys caltables",
+       "quote": "There are six separate flagging metrics, where each metric creates its own flagging view and has its own corresponding flagging rule(s)."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Metric order: nmedian, derivative, fieldshape, edgechans, birdies, toomany",
+      "evidence": [
+       {
+        "loc": "3.7 Flagging of Tsys caltables",
+        "quote": "(default order: nmedian, derivative, fieldshape, edgechans, birdies, toomany)"
+       }
+      ]
+     },
+     {
+      "value": "nmedian outlier threshold factor default 2.0 times median of unflagged points",
+      "evidence": [
+       {
+        "loc": "3.7.1 Tsys median heuristic",
+        "quote": "larger than a threshold factor (: default=2.0) times the median of all non-flagged data points"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "correct antenna positions and water vapor phase fluctuations",
+    "method": {
+     "value": "Compute WVR phase correction tables, compare antenna phase RMS with and without the correction, and keep the correction only if it improves the data",
+     "evidence": [
+      {
+       "loc": "3.9 WVR corrections",
+       "quote": "the improvement ratio is used to determine if the WVR correction helps overall"
+      },
+      {
+       "loc": "3.9 WVR corrections",
+       "quote": "then the WVR solution table is rejected and will not be added to the CalLibrary"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "analysisUtils"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Atmosphere is non-dispersive",
+      "evidence": [
+       {
+        "loc": "3.9 WVR corrections",
+        "quote": "The atmosphere is assumed to be non-dispersive"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Phase RMS improvement ratio per antenna",
+     "evidence": [
+      {
+       "loc": "3.9 WVR corrections",
+       "quote": "the improvement ratio is used to determine if the WVR correction helps overall"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "set flux model, flag gain outliers, solve bandpass, spw offsets and low-SNR strategy",
+    "method": {
+     "value": "Point source model for the flux calibrator, outlier amplitude gain flagging on the bandpass scan, phased-up bandpass solution, spw phase offsets, and SNR-driven spw mapping or combination for phase solutions",
+     "evidence": [
+      {
+       "loc": "3.10 Flux calibrator model",
+       "quote": "the stage will create a point source model of the specified Stokes I flux density for the observed visibilities"
+      },
+      {
+       "loc": "3.14.1 Spw mapping and combination",
+       "quote": "If the SNR prediction does not meet the threshold of 32 for a given spw"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Gain outlier lower threshold factor default 0.7 of median",
+      "evidence": [
+       {
+        "loc": "3.11 Flagging of antenna/spw combinations with outlier amplitude gain solutions",
+        "quote": "Their value is smaller than a threshold factor times the median of all non-flagged data points, where the threshold is (default: 0.7)"
+       }
+      ]
+     },
+     {
+      "value": "Minimum of 8 bandpass solution intervals across each spw",
+      "evidence": [
+       {
+        "loc": "3.12 Bandpass",
+        "quote": "the minimum number of solutions intervals across each spw is 8 in order to be able to measure (and thereby remove) a slope or coarse ripple"
+       }
+      ]
+     },
+     {
+      "value": "If no spw meets the SNR threshold, all spws are vector averaged for phase solves",
+      "evidence": [
+       {
+        "loc": "3.14.1 Spw mapping and combination",
+        "quote": "if no spw meets the SNR threshold, then the data from all spws are combined (vector averaged) in all subsequent phase solves"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "set flux scale, solve time-dependent gains, apply calibration, renormalize spectra",
+    "method": {
+     "value": "Amplitude gains on the flux calibrator give the flux scale factor; gains on other calibrators are solved per scan; all caltables are applied through the CASA callibrary; FDM spectra with strong lines are renormalized using autocorrelations",
+     "evidence": [
+      {
+       "loc": "3.15 Fluxscale",
+       "quote": "The amplitude gains provide the flux scaling factor."
+      },
+      {
+       "loc": "3.16 Time dependent gain",
+       "quote": "Phase and amplitude solutions are computed for each scan"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Renormalization scaling spectrum applied when above 1.02 (default)",
+      "evidence": [
+       {
+        "loc": "3.18 Renormalization",
+        "quote": "if any scaling spectrum is found to be above the =1.02 level (the default), then the scaling spectrum is directly applied to the cross correlation data"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Baseline of renormalization spectrum fit iteratively up to a fifth order polynomial",
+     "evidence": [
+      {
+       "loc": "3.18 Renormalization",
+       "quote": "This is done through iteratively fitting the baseline with increasing polynomial orders up to a fifth order polynomial."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "flag outlier visibilities in calibrators and science targets",
+    "method": {
+     "value": "Temporary calibration is applied and outliers in corrected-minus-model amplitude are flagged in tiers; for science targets only ultra high outliers are flagged within overlapping uv bins",
+     "evidence": [
+      {
+       "loc": "4.4.1 Calibrators",
+       "quote": "There are several tiers of flagging: regular, high, very high, and ultra high."
+      },
+      {
+       "loc": "4.4.2 Science targets",
+       "quote": "this stage uses the midhinge (the mean of the first and third quartiles) as the midpoint of the visibilities within each uv bin rather than the median."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Regular outliers above +3.2 sigma or below -3.4 sigma of the median",
+      "evidence": [
+       {
+        "loc": "4.4.1 Calibrators",
+        "quote": "Regular outliers are points that are $>+3.2\\sigma$ or $<-3.4\\sigma$ relative to the median."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Science targets modelled as point sources for the amplitude comparison (no a priori source model)",
+      "evidence": [
+       {
+        "loc": "4.4.2 Science targets",
+        "quote": "Because it lacks an *a priori* source model, it still simply assumes a point source model"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "prepare target data and choose image weighting",
+    "method": {
+     "value": "Split science targets into a new MS and pick the Briggs robust that best matches the requested beam area",
+     "evidence": [
+      {
+       "loc": "5.2 Image weighting selection",
+       "quote": "The value chosen is the one closest to the default (+0.5) that predicts a beam area"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Candidate robust values 0.0, +0.5, +1.0, +2.0",
+      "evidence": [
+       {
+        "loc": "5.2 Image weighting selection",
+        "quote": "four possible values of the weighting parameter (cite: Briggs): 0.0, +0.5 (default), +1.0, and +2.0"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "mitigate product sizes",
+    "method": {
+     "value": "Cascade of mitigations (channel averaging, smaller field of view, coarser pixels, fewer targets, fewer large cubes) until predicted sizes fall below limits",
+     "evidence": [
+      {
+       "loc": "5.3 Product size mitigation",
+       "quote": "The mitigations are done in a priority order, with the mitigation halted once the predicted sizes fall below the thresholds."
+      }
+     ]
+    },
+    "software": [
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Mitigation starts at 40 GB cube size",
+      "evidence": [
+       {
+        "loc": "5.3 Product size mitigation",
+        "quote": "(40 GB): cube size at which to start triggering mitigation"
+       }
+      ]
+     },
+     {
+      "value": "Maximum cube size 60 GB",
+      "evidence": [
+       {
+        "loc": "5.3 Product size mitigation",
+        "quote": "(60 GB): maximum cube size that will be produced."
+       }
+      ]
+     },
+     {
+      "value": "Maximum product size 500 GB",
+      "evidence": [
+       {
+        "loc": "5.3 Product size mitigation",
+        "quote": "(500 GB): maximum size of products that will be produced"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 9,
+    "goal": "find line-free continuum channels",
+    "method": {
+     "value": "Build a representative spectrum from a joint moment 0 and moment 8 mask of the dirty cube, select baseline channels and thresholds, pick and trim candidate continuum ranges, then refine with moment difference analysis",
+     "evidence": [
+      {
+       "loc": "6.2 Overview of algorithm",
+       "quote": "The algorithm first generates a representative spectrum designed to highlight all of the line emission in the cube and then identifies a list of channels from that spectrum."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "ALMA Science Pipeline",
+     "NumPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Baseline assumed to be the 19% most line-free channels, possibly scattered across the spw",
+      "evidence": [
+       {
+        "loc": "6.5.1 Spectral baseline selection",
+        "quote": "we assume that there is some minority of channels that are mostly line-free (19%), but that they might be scattered across the spw"
+       }
+      ]
+     },
+     {
+      "value": "Joint mask from moment images above N0=5 and N8=4 times MAD",
+      "evidence": [
+       {
+        "loc": "6.3 Formation of the representative spectrum",
+        "quote": "The pixels of moment image $i$ with intensity higher than $N_i \\times MAD_i$ above $Median_i$ forms its mask, where $N_0$=5 and $N_8$=4."
+       }
+      ]
+     },
+     {
+      "value": "Amend-mask iteration triggers when at least 9 pixels outside the joint mask exceed thresholds",
+      "evidence": [
+       {
+        "loc": "6.6.2 Iteration 1: Amend mask",
+        "quote": "If at least 9 pixels in the original momDiff image outside the joint mask have a signal"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Result codes from changes in moment 8 statistics; revert to the earlier selection if the code is HHHH or HHHS. Defaults tuned on a test set of about 200 cubes.",
+     "evidence": [
+      {
+       "loc": "6.6.6 Result codes",
+       "quote": "The continuum selection will be reverted to the value obtained prior to initiating the moment difference analysis if the four-letter string is either HHHH or HHHS."
+      },
+      {
+       "loc": "6.2 Overview of algorithm",
+       "quote": "The default values were established based on experience with running the code on an extensive test set of $\\sim$200 ALMA image cubes"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "image continuum and cubes with tclean",
+    "method": {
+     "value": "Two-pass cleaning (dirty image then clean) with automasking to a threshold set from the theoretical sensitivity, mfs continuum and common-beam cubes in LSRK",
+     "evidence": [
+      {
+       "loc": "5.4.2 Cleaning strategy",
+       "quote": "As many imaging heuristics require knowledge about properties of the resultant image (e.g. dynamic range), the imaging process is broken down into two sequential calls"
+      },
+      {
+       "loc": "5.7.1 Cube imaging parameters",
+       "quote": "The frequency frame used for cubes is LSRK, with the exception of SSO targets"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean",
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Cleaning threshold nominally 2 times the expected image sensitivity",
+      "evidence": [
+       {
+        "loc": "5.4.3 Cleaning threshold",
+        "quote": "is nominally set to =2 times the expected image sensitivity"
+       }
+      ]
+     },
+     {
+      "value": "Default loop gain 0.1 used to set the iteration limit",
+      "evidence": [
+       {
+        "loc": "5.4.4 Cleaning iteration limit",
+        "quote": "computed based on the default loop gain ($g_{\\rm loop}$=0.1)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Achieved noise compared with theoretical noise times a dynamic range correction factor",
+     "evidence": [
+      {
+       "loc": "7.4.1 Achieved RMS",
+       "quote": "to the theoretical noise"
+      }
+     ]
+    }
+   },
+   {
+    "order": 11,
+    "goal": "assign quality assessment scores",
+    "method": {
+     "value": "Each stage gets a 0 to 1 QA score from subscores; the stage score is the minimum of its subscores, and WebLog is reviewed by ALMA staff",
+     "evidence": [
+      {
+       "loc": "7 QA Scores",
+       "quote": "In these cases, the overall stage QA score is set to the minimum of all the QA subscores."
+      }
+     ]
+    },
+    "software": [
+     "ALMA Science Pipeline"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 12,
+    "goal": "test and validate pipeline releases",
+    "method": {
+     "value": "CASA stakeholder tests, automated nightly regression tests, a 96-MOUS benchmark suite, and a repeat validation of about 15 datasets at JAO",
+     "evidence": [
+      {
+       "loc": "8.2 Pipeline regression testing",
+       "quote": "Regression tests ensure the consistency of pipeline results by quickly identifying unexpected changes to the pipeline output during pipeline software development."
+      },
+      {
+       "loc": "8.3 Pipeline benchmark testing",
+       "quote": "These 96 MOUS have been selected to cover a wide parameter space"
+      }
+     ]
+    },
+    "software": [
+     "pytest",
+     "Bamboo",
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Results at JAO should be identical to those from the working group, including flagged data, imaging statistics and calibrated flux densities",
+     "evidence": [
+      {
+       "loc": "8.4 Pipeline validation",
+       "quote": "Everything should be identical, from flagged data to imaging statistics, including flagging statistics and calibrated flux densities."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "ALMA Science Pipeline",
+    "version": "2022.2.0.64",
+    "used_for": {
+     "value": "Automated calibration and imaging of ALMA data (the subject of the paper)",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "The ALMA Science Pipeline provides automated calibration and imaging of ALMA interferometric and single-dish data."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "6.4.1.12",
+    "used_for": {
+     "value": "Provides the tasks and toolkit functions on which every pipeline stage is built",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "with each data reduction stage layered on top of tasks and toolkit functions provided by the Common Astronomy Software Applications package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Python",
+    "version": "3.6",
+    "used_for": {
+     "value": "Language of the pipeline framework",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "The pipeline software framework is written in Python"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "CASA imaging task used for all calibrator, continuum and cube imaging stages",
+     "evidence": [
+      {
+       "loc": "5.4 General imaging heuristics",
+       "quote": "Imaging is performed using the task within the pipeline task"
+      }
+     ]
+    }
+   },
+   {
+    "name": "analysisUtils",
+    "version": "not stated",
+    "used_for": {
+     "value": "Source of the antenna position corrections file",
+     "evidence": [
+      {
+       "loc": "3.8 Antenna position corrections",
+       "quote": "the origin of the text file is the function of the analysisUtils Python package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Compute target elevation for the low-transmission heuristic",
+     "evidence": [
+      {
+       "loc": "4.1.10 Low transmission",
+       "quote": "This heuristic uses the Astropy package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ATM (Atmospheric Transmission at Microwaves)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Atmospheric transmission model behind the CASA atmospheric tool",
+     "evidence": [
+      {
+       "loc": "4.1.10 Low transmission",
+       "quote": "which is based on the package Atmospheric Transmission at Microwaves"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Minimization and fitting of calibrated gains vs. frequency for QA scores",
+     "evidence": [
+      {
+       "loc": "7.3.6 Calibrator gain vs. frequency behavior",
+       "quote": "The minimization is performed with the SciPy module"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NumPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Discrete differences and medians in heuristics",
+     "evidence": [
+      {
+       "loc": "6.5.3 Adjustment of MAD",
+       "quote": "using the NumPy function to produce the second discrete difference in units of percentage"
+      }
+     ]
+    }
+   },
+   {
+    "name": "pytest",
+    "version": "not stated",
+    "used_for": {
+     "value": "Framework for regression tests",
+     "evidence": [
+      {
+       "loc": "8.2 Pipeline regression testing",
+       "quote": "The regression tests use the pytest Python testing framework"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Bamboo",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuous integration to run automated tests",
+     "evidence": [
+      {
+       "loc": "8.2 Pipeline regression testing",
+       "quote": "Bamboo, a continuous integration tool from Atlassian, is used to run the automated tests."
+      }
+     ]
+    }
+   },
+   {
+    "name": "JIRA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Tracking pipeline developments",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "The historical and ongoing developments of the pipeline are tracked using the JIRA ticket system from Atlassian."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Fraction of ALMA datasets calibrated and imaged with the pipeline, Cycle 7",
+    "value": "96.5",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "During Cycle 7 and 8, 96.5% and 97.2% of ALMA datasets were calibrated and imaged with the pipeline."
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of ALMA datasets calibrated and imaged with the pipeline, Cycle 8",
+    "value": "97.2",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "During Cycle 7 and 8, 96.5% and 97.2% of ALMA datasets were calibrated and imaged with the pipeline."
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of ALMA datasets calibrated and imaged with the pipeline, two most recent Cycles",
+    "value": "97",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In the two most recent Cycles, 97% of ALMA datasets were calibrated and imaged with the pipeline"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of MOUS in the pipeline benchmark suite",
+    "value": "96",
+    "uncertainty": "not stated",
+    "units": "MOUS",
+    "from_step": 12,
+    "evidence": [
+     {
+      "loc": "8.3 Pipeline benchmark testing",
+      "quote": "These 96 MOUS have been selected to cover a wide parameter space"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of CASA imaging stakeholder test cases",
+    "value": "22",
+    "uncertainty": "not stated",
+    "units": "test cases",
+    "from_step": 12,
+    "evidence": [
+     {
+      "loc": "8.1 Testing of CASA tasks critical to the pipeline",
+      "quote": "It currently consists of 22 test cases whose inputs match those used by the ALMA pipeline"
+     }
+    ]
+   },
+   {
+    "quantity": "Quantities compared in each pipeline regression test",
+    "value": "19",
+    "uncertainty": "not stated",
+    "units": "quantities",
+    "from_step": 12,
+    "evidence": [
+     {
+      "loc": "8.2 Pipeline regression testing",
+      "quote": "At this time, 19 quantities (some per-field, spw, or scan) are used for this comparison"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Pipeline calibrated visibilities are generally accepted as reliable and feed customized imaging pipelines for large programs",
+    "evidence": [
+     {
+      "loc": "3 Calibration Heuristics",
+      "quote": "One of the main products of the pipeline is calibrated visibilities, which have been generally accepted by the user community to be reliable"
+     }
+    ]
+   },
+   {
+    "value": "Calibration pipeline entered ALMA operations in 2014 October",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The calibration portion of the interferometric pipeline was first placed into operation by ALMA in 2014 October"
+     }
+    ]
+   },
+   {
+    "value": "Imaging pipeline entered operations in Cycle 4, first automated images delivered in 2017",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The imaging portion of the pipeline was introduced in operations during Cycle 4 with the first automated image products delivered to users in 2017."
+     }
+    ]
+   },
+   {
+    "value": "Line wings and faint hot core lines are visible in the image-plane spectrum but buried in the uv spectrum",
+    "evidence": [
+     {
+      "loc": "6.1 Advantages of the image plane technique",
+      "quote": "the line wings and the fainter lines from hot core species (complex organic molecules) are buried in the noise of the uv spectrum, but are visible in the image plane spectrum"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can the automated pipeline calibrate and image nearly all ALMA datasets?",
+    "experiment": "Count the fraction of ALMA datasets processed by the pipeline in recent Cycles",
+    "result": "96.5% (Cycle 7), 97.2% (Cycle 8), 97% over the two most recent Cycles",
+    "finding": "The pipeline handles nearly all ALMA data, supporting long-term automated reproducibility",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "During Cycle 7 and 8, 96.5% and 97.2% of ALMA datasets were calibrated and imaged with the pipeline."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is continuum channel finding better done on image cubes than on uv spectra?",
+    "experiment": "Compare the visibility spectrum of a 3-point mosaic of a massive star-forming region with the pipeline image-plane mean spectrum",
+    "result": "Line wings and faint hot core lines are visible in the image plane but buried in the uv spectrum",
+    "finding": "The image-plane technique is more sensitive and handles multiple EBs and mosaics",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.1 Advantages of the image plane technique",
+      "quote": "the line wings and the fainter lines from hot core species (complex organic molecules) are buried in the noise of the uv spectrum, but are visible in the image plane spectrum"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the moment difference analysis improve continuum channel selection?",
+    "experiment": "Run iterations 1, 2a and 2b of the analysis on a cube with extended 13CO emission",
+    "result": "Intersection of amended-mask and original ranges removes nearly all contamination; extra mask removes the remaining faint contamination",
+    "finding": "The moment difference analysis reduces line contamination of the selected continuum channels",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.6 Moment difference analysis",
+      "quote": "A graphical example illustrating how the result improves with iterations 1, 2a, and 2b of the moment difference analysis"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do WVR corrections reduce phase RMS?",
+    "experiment": "Compare antenna phase RMS with and without WVR corrections",
+    "result": "Phase RMS is reduced in the majority of cases but not in cloudy conditions",
+    "finding": "WVR correction is generally beneficial; hydrosol continuum from clouds can spoil it",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.9 WVR corrections",
+      "quote": "While the WVR corrections do help reduce the phase RMS in the majority of cases, in some cases by a large factor"
+     },
+     {
+      "loc": "3.9 WVR corrections",
+      "quote": "there are cases where they do not, which typically happens in the presence of clouds"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can pipeline results be reproduced across systems at the observatory?",
+    "experiment": "Process about 15 benchmark datasets at JAO and compare WebLogs with those produced by the working group",
+    "result": "Results are expected to be identical; differences are investigated (no outcome numbers given)",
+    "finding": "Reproducibility is verified by a validation step with fixed inputs",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "8.4 Pipeline validation",
+      "quote": "The goal here is to confirm that the pipeline results can be reproduced properly, even in different operating systems and with different processing node specifications"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Image-plane continuum finding avoids uv-plane problems with off-center emission, multiple EBs and mosaics",
+    "evidence": [
+     {
+      "loc": "6.1 Advantages of the image plane technique",
+      "quote": "there are several complications and limitations of the uv plane approach"
+     },
+     {
+      "loc": "6.1 Advantages of the image plane technique",
+      "quote": "we developed a method to derive continuum channels by examining Stokes I image cubes, prior to cleaning"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Excluding SSO data by uvrange instead of antenna selection was rejected because it can leave very little data for some antennas",
+     "evidence": [
+      {
+       "loc": "3.15 Fluxscale",
+       "quote": "An alternative strategy that excludes data based solely on uvrange instead of antenna selection can sometimes lead to cases where there is very little data included for some antennas, which can bias the results for all antennas."
+      }
+     ]
+    },
+    {
+     "value": "Power-law fit of calibrator fluxes across spws not applied, to avoid noise bias in low SNR spws",
+     "evidence": [
+      {
+       "loc": "3.15 Fluxscale",
+       "quote": "By not applying a power law fit, we ensure that spws with low SNR, which suffer noise bias"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Thresholds and bin factors set empirically from tests",
+    "evidence": [
+     {
+      "loc": "4.4.2 Science targets",
+      "quote": "Empirical tests show that the bins need to be closer together at short uv distances and can become wider at longer distances."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "No heuristic to identify interstellar absorption lines in the flux calibrator data",
+     "evidence": [
+      {
+       "loc": "3.15 Fluxscale",
+       "quote": "There is no heuristic to identify and flag such lines"
+      }
+     ]
+    },
+    {
+     "value": "Channel-based flagging sometimes triggers on strong atmospheric ozone lines",
+     "evidence": [
+      {
+       "loc": "4.3 Channel-based flags",
+       "quote": "Currently, the stage sometimes triggers on strong atmospheric ozone lines"
+      }
+     ]
+    },
+    {
+     "value": "Channelized weights are not yet used",
+     "evidence": [
+      {
+       "loc": "3.7 Flagging of Tsys caltables",
+       "quote": "The use of channelized weighting is a future improvement"
+      }
+     ]
+    },
+    {
+     "value": "Bandwidth switching and band-to-band transfer are not supported",
+     "evidence": [
+      {
+       "loc": "3.2 Observing modes supported",
+       "quote": "which means that the more complicated calibration methods of bandwidth switching and band-to-band (B2B) transfer under development"
+      }
+     ]
+    },
+    {
+     "value": "Combining multiple configurations or total power data is not supported",
+     "evidence": [
+      {
+       "loc": "9.4 Group OUS processing",
+       "quote": "Such combinations are not yet supported in the pipeline"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Few quantitative performance tests of individual heuristics are shown; thresholds are mostly empirical without error analysis.",
+    "Illustrative datasets are not described, so figures cannot be reproduced from the text alone.",
+    "Many thresholds depend on tuning with an internal benchmark set not released with the paper."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Pipeline products that pass QA are stored in the ALMA Science Archive and delivered to users",
+    "evidence": [
+     {
+      "loc": "2.3 Products",
+      "quote": "and, if satisfactory, are stored into the ALMA Science Archive"
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "Pipeline releases and CASA versions with downloadable tarballs are listed on the ALMA science portal",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "A list of the pipeline releases, including the corresponding CASA versions and downloadable tarballs, is hosted on the ALMA science portal"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact stage parameter values (names missing in this text)",
+    "Per-run flux density and antenna position input files",
+    "Benchmark MOUS list",
+    "Specification of the two illustration datasets"
+   ],
+   "estimated_data_volume_inferred": "Not applicable to the paper itself; the two illustration datasets are unspecified and are likely tens of GB each as ALMA MOUS",
+   "score_inferred": 2,
+   "score_reason": "Scale 1 to 5. Describes software behaviour rather than a data analysis; no measurable results to redo from archive data, though the pipeline itself is public.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper documents pipeline algorithms and validation, with no science result to recover from public data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Kepley2020)",
+     "why": "Automasking algorithm used in pipeline cleaning"
+    },
+    {
+     "citation": "(cite: Nikolic2012)",
+     "why": "WVR phase correction method"
+    },
+    {
+     "citation": "(cite: Remijan2019)",
+     "why": "ALMA technical handbook for spectral setups and QA"
+    },
+    {
+     "citation": "(cite: Rau2011)",
+     "why": "Multi-frequency synthesis algorithm used in tclean"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Kent2020)",
+     "why": "VLA pipeline sharing tasks with the ALMA pipeline"
+    },
+    {
+     "citation": "(cite: Nakazato2022)",
+     "why": "NRO 45 m pipeline built on the same framework"
+    },
+    {
+     "citation": "(cite: Masters2020)",
+     "why": "WebLog description"
+    },
+    {
+     "citation": "(cite: phangs2021; maps2021)",
+     "why": "Large-program imaging pipelines using pipeline-calibrated visibilities"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA and MAPS large programs (customized imaging pipelines starting from pipeline-calibrated visibilities)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2023PASP..135g4501H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T11:58:53",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 116,
+  "quotes_ok": 116,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 130,
+   "stated": 87,
+   "rate": 0.669
+  },
+  "evidence_ok": true
+ }
+}

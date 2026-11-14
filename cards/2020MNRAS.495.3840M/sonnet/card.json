@@ -1,0 +1,1128 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020MNRAS.495.3840M",
+  "title": "A large amount of diffuse molecular gases in the bar of the strongly barred galaxy NGC 1300: cause of the low star formation efficiency",
+  "year": 2020,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Maeda, Fumiya",
+  "n_authors": 5,
+  "arxiv_id": "2005.03019",
+  "doi": "10.1093/mnras/staa1296",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2015.1.00925.S",
+   "2017.1.00248.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "which is derived using the $^{12}$CO($1-0$) flux obtained from the interferometer of ALMA 12-m array, which has no sensitivity on diffuse (extended; FWHM $\\gtrapprox 700$ pc) molecular gases due to the lack of ACA"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1300",
+     "coordinates": {
+      "value": "03h19m41s.036, -19d24m40s.00 (J2000, peak of V-band image)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distance$^d$ | 20.7 Mpc"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Inclination$^c$ | $50^\\circ.2$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "20.7 Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distance$^d$ | 20.7 Mpc"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Inclination$^c$ | $50^\\circ.2$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "systemic velocity 1511 km/s with Virgo/Great Attractor/Shapley corrections (Mould et al. 2000) and H0 = 73 km/s/Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distance$^d$ | 20.7 Mpc"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Inclination$^c$ | $50^\\circ.2$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Does a large amount of diffuse molecular gas in the bar of NGC 1300 (not contributing to star formation) make the star formation efficiency appear low there?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we investigate the possibility that the presence of a large amount of diffuse molecular gas, which would not contribute to the SF, makes the SFE low in appearance."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00248.S",
+     "evidence": [
+      {
+       "loc": "2.2.1 Observations and data reduction",
+       "quote": "We carried out $^{12}{\\rm CO}(1-0)$ line observations of NGC 1300 in Cycle 5 under project 2017.1.00248.S (PI = F. Maeda)."
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00925.S",
+     "evidence": [
+      {
+       "loc": "2.3.1 CO(2-1) emission from ALMA observations",
+       "quote": "using the archival data which was observed with ACA (7-m + TP) under project 2015.1.00925.S as proposed by B. Guillermo et al."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (12CO(1-0)); Band 6 (12CO(2-1), ACA)",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "We used the Band 3 receiver with the central frequency of 114.664 GHz"
+     },
+     {
+      "loc": "2.3.1 CO(2-1) emission from ALMA observations",
+      "quote": "absolute flux calibration accuracy of $\\pm 10$ percent in Band 6"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 3 central freq 114.664 GHz, channel 244.1 kHz (~0.64 km/s), bandwidth 468.8 MHz",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "channel width of 244.1 kHz ($\\sim 0.64~\\rm km~s^{-1}$), and bandwidth of 468.8 MHz ($\\sim 1225~\\rm km~s^{-1}$)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.271202 GHz",
+     "evidence": [
+      {
+       "loc": "2.1.1",
+       "quote": "$^{12}$CO($1-0$) (rest frequency: 115.271202 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=1-0",
+     "rest_frequency": "110.201353 GHz",
+     "evidence": [
+      {
+       "loc": "2.1.1",
+       "quote": "$^{13}$CO($1-0$) (110.201353 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538000 GHz",
+     "evidence": [
+      {
+       "loc": "2.3.1",
+       "quote": "$^{12}$CO($2-1$) (rest frequency: 230.538000 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12-m (CO 1-0); ACA 7-m + TP (CO 2-1)",
+    "evidence": [
+     {
+      "loc": "2.3.1 CO(2-1) emission from ALMA observations",
+      "quote": "observed with ACA (7-m + TP)"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-5, about 44 antennas",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "We used about 44 antennas with C43-5 configuration"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15.1 m to 2.5 km",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "the projected baseline length ranged from 15.1 m to 2.5 km"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.44 x 0.30 arcsec (CO 1-0 ALMA); 7.6 x 4.1 arcsec (CO 2-1 ACA)",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "The data cube has an angular resolution of $0.44~{\\rm arcsec} \\times 0.30~{\\rm arcsec}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~21.4 arcsec at 115 GHz (2.14 kpc)",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "which corresponds to a maximum recoverable scale (MRS) of $\\sim 21.4$ arcsec at 115 GHz"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "0.51 mJy/beam (0.36 K) at 5 km/s (CO 1-0); 11.0 mJy/beam per 10 km/s (CO 2-1)",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "The resultant rms noise is 0.51 $\\rm mJy~beam^{-1}$, corresponding to 0.36 K."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "5.31 hours (2.65 h per position), two pointings",
+    "evidence": [
+     {
+      "loc": "2.2.1 Observations and data reduction",
+      "quote": "The total on-source time was 5.31 hours (2.65 hours for each position)."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "2017.1.00248.S PI F. Maeda; 2015.1.00925.S archival, proposed by B. Guillermo et al.",
+    "evidence": [
+     {
+      "loc": "2.3.1 CO(2-1) emission from ALMA observations",
+      "quote": "using the archival data which was observed with ACA (7-m + TP) under project 2015.1.00925.S"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "NRO 45-m (FOREST, SAM45)",
+     "provided": {
+      "value": "Total 12CO(1-0) and 13CO(1-0) maps via OTF mapping",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "employing the on-the-fly (OTF) mapping mode"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST ACS (proposal 10342)",
+     "provided": {
+      "value": "F555W and F658N images for Halpha SFR",
+      "evidence": [
+       {
+        "loc": "2.3.2",
+        "quote": "archival images observed with the ACS on the HST (proposal ID = 10342, PI = K. Noll)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "GALEX",
+     "provided": {
+      "value": "FUV image for SFR",
+      "evidence": [
+       {
+        "loc": "2.3.3",
+        "quote": "we also use GALEX FUV"
+       }
+      ]
+     }
+    },
+    {
+     "name": "WISE",
+     "provided": {
+      "value": "22 micron image for SFR",
+      "evidence": [
+       {
+        "loc": "2.3.3",
+        "quote": "WISE 22 $\\mu$m (cite: Wright2010AJ) archival data"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "GMC catalogue of 233 GMCs in NGC 1300 used for Sigma_GMC",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "The $\\Sigma_{\\rm GMC}$ is derived using the GMC catalogue in NGC 1300 obtained by (cite: Maeda2020MNRAS)."
+       }
+      ]
+     },
+     "citation": "(cite: Maeda2020MNRAS)"
+    },
+    {
+     "what": {
+      "value": "HI image used to assume H2/(HI+H2)=0.7",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "Comparing the HI image (cite: England1989a) and H$_2$ map we obtained, we assume $\\Sigma_{\\rm H_2}/(\\Sigma_{\\rm H_I}+\\Sigma_{\\rm H_2}) = 0.7$."
+       }
+      ]
+     },
+     "citation": "(cite: England1989a)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Noise-free simobserve simulation of circular Gaussian (1 Jy, FWHM 100-2200 pc) in the same ALMA configuration to get recovery fraction vs size",
+     "evidence": [
+      {
+       "loc": "2.2.2 Missing flux",
+       "quote": "we simulated the observation under the same configuration and noise-free condition by using the task of `simobserve` in CASA."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Observatory-provided calibration script",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "Raw visibility data was calibrated by using the Common Astronomy Software Applications (CASA) ver. 5.1.1. and the observatory-provided calibration script."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1 (calibration); 5.4.0 (imaging)",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "We reconstructed the two-field mosaic image using CASA ver. 5.4.0"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "±5% Band 3; ±10% Band 6",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "we consider the absolute flux calibration accuracy of $\\pm 5$ percent in Band 3"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "multiscale CLEAN",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "using the `multiscale` CLEAN algorithm (cite: Cornwell2008)"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5 (both CO 1-0 and CO 2-1)",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "with Briggs weighting with robust = 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.12 arcsec",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "a pixel size of 0.12 arcsec"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "3D mask: S/N>=4 in at least two adjacent channels, expanded to adjacent pixels with S/N>=2",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "we first identify the 3D (position-position-velocity) regions with a signal-to-noise ratio (S/N) $\\geq$ 4 in at least two adjacent velocity channels."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Applied; region with correction factor < 2.0 kept",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "we extracted the region within the primary beam correction factor smaller than 2.0"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "CO(2-1) 7-m image feathered with TP image",
+     "evidence": [
+      {
+       "loc": "2.3.1",
+       "quote": "The resulting image is feathered with the total power image to recover the extended emission."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "Convolved to common 16.7 arcsec beam, regridded to 6.0 arcsec pixels",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "Then, we convolved this data cube to the common beam size of 16.7 arcsec."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "16.7 arcsec (common)",
+     "evidence": [
+      {
+       "loc": "2.1.1",
+       "quote": "which have the poorest beam size of $16.7$ arcsec"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.51 mJy/beam at 5 km/s (native resolution)",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "The resultant rms noise is 0.51 $\\rm mJy~beam^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA CO(1-0) observations and data reduction details",
+      "evidence": [
+       {
+        "loc": "2.2.1",
+        "quote": "The details of the observations of $^{12}{\\rm CO}(1-0)$ line with ALMA and data reduction of them are described in Section 2 in (cite: Maeda2020MNRAS)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Maeda2020MNRAS)"
+    },
+    {
+     "what": {
+      "value": "Adopted galaxy parameters",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "which is the same as those in (cite: Maeda2020MNRAS)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Maeda2020MNRAS)"
+    },
+    {
+     "what": {
+      "value": "Halpha continuum subtraction method",
+      "evidence": [
+       {
+        "loc": "2.3.2",
+        "quote": "adopting a method developed by (cite: Boker1999ApJS)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Boker1999ApJS)"
+    },
+    {
+     "what": {
+      "value": "Stacking with velocity alignment",
+      "evidence": [
+       {
+        "loc": "3.3 Stacking Analysis",
+        "quote": "stacking analysis of CO spectra with velocity axis alignment devised by (cite: Schruba2011AJ; Schruba2012AJ)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Schruba2011AJ; Schruba2012AJ)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Multiscale scales, cleaning threshold, niter and mask for the CO(1-0) tclean",
+    "Line-free channels / continuum subtraction for ALMA CO cubes",
+    "Calibration and imaging details (and image parameters) for the ACA CO(2-1) data and feathering",
+    "Exact definition of pixel grid origin and environment masks (only in figure)",
+    "Spectral smoothing details for CO(2-1)",
+    "Number of Gaussian-simulation parameters (e.g. pixel scale, direction) for simobserve"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Make total CO(1-0) map from NRO 45-m",
+    "method": {
+     "value": "OTF data reduced with NOSTAR: flag, baseline subtract (2nd order), regrid to 6 arcsec, bin to 20 km/s, convert to Tmb; integrate channels above 3 sigma expanded to 1 sigma",
+     "evidence": [
+      {
+       "loc": "2.1.1",
+       "quote": "a baseline (second-order polynomial function with small curvature) was subtracted, and the data were regridded to 6.0 arcsec per pixel"
+      }
+     ]
+    },
+    "software": [
+     "NOSTAR"
+    ],
+    "key_parameters": [
+     {
+      "value": "main beam efficiency 35 ± 3 percent",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "using the main beam efficiency of $35 \\pm 3$ percent"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with single-pointing NRO data of Maeda et al. 2018; agreement within factor 1.5",
+     "evidence": [
+      {
+       "loc": "2.1.3",
+       "quote": "may contain systematic errors up to a factor of 1.5"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image ALMA CO(1-0) and CO(2-1) and match resolution",
+    "method": {
+     "value": "CASA calibration and multiscale CLEAN mosaic; convolve to 16.7 arcsec, mask, regrid to 6 arcsec",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "Finally, we regrided this data cube to 6.0 arcsec grid."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5; 5 km/s channels",
+      "evidence": [
+       {
+        "loc": "2.2.1",
+        "quote": "We chose a velocity resolution of $5~\\rm km~s^{-1}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Quantify ALMA recovery vs source size",
+    "method": {
+     "value": "simobserve of mock Gaussian components of 1 Jy, FWHM 100-2200 pc, noise-free, same configuration",
+     "evidence": [
+      {
+       "loc": "2.2.2",
+       "quote": "The FWHM was set from 100 pc to 2200 pc in 100 pc interval."
+      }
+     ]
+    },
+    "software": [
+     "CASA simobserve"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive SFR surface density",
+    "method": {
+     "value": "Halpha from HST F658N with F555W-scaled continuum subtraction (robust Tukey biweight regression, W=4) per environment; [NII] correction 0.79; Av=1 mag; Calzetti+2007 conversion. Alternative FUV+22um hybrid (Casasola+2017) with old-star 22um correction",
+     "evidence": [
+      {
+       "loc": "2.3.2",
+       "quote": "We use Tukey’s biweight to down-weight outliers"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Av = 1.0 mag; C_NII = 0.79; alpha 5.3e-42 conversion",
+      "evidence": [
+       {
+        "loc": "3.2.1",
+        "quote": "we assumed an extinction of $A_{\\rm V} = 1.0$ mag"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "H2/(HI+H2) = 0.7 for old-star 22 micron correction",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "we assume $\\Sigma_{\\rm H_2}/(\\Sigma_{\\rm H_I}+\\Sigma_{\\rm H_2}) = 0.7$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Iterative Tukey biweight robust least squares of f_F658N vs f_F555W",
+     "evidence": [
+      {
+       "loc": "2.3.2",
+       "quote": "This is repeated until $a$ and $b$ are converged."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared SFR(Halpha) and SFR(IR); differ by factors <2 above 1e-3 Msun/yr/kpc2",
+     "evidence": [
+      {
+       "loc": "3.2.3",
+       "quote": "the magnitude of systematic differences rarely exceeds a factor of two (0.3 dex)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Stack spectra per environment",
+    "method": {
+     "value": "Shift CO(1-0) and 13CO spectra by CO(2-1) intensity-weighted velocity and average in each environment; ALMA CO(1-0) uses pixel mean",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "Then, the $^{12}$CO($1-0$) spectra are shifted along the velocity axis based on the $\\bar{v}_{\\rm CO(2-1)}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compute Sigma_mol, SFE, f_dif, R21/10",
+    "method": {
+     "value": "Sigma_mol = alpha_CO I cos i; SFE = Sigma_SFR/Sigma_H2; f_dif = 1 - I_ALMA/I_tot; R21/10 = I(2-1)/I(1-0)",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "f_{\\rm dif} = 1 - f_{\\rm re} = 1 -  \\frac{I_{\\rm ^{12}CO(1-0)}^{\\rm ALMA}}{I_{\\rm ^{12}CO(1-0)}^{\\rm tot}}"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "alpha_CO = 4.4 Msun (K km/s pc2)^-1 including helium factor 1.36; inclination 50.2 deg",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "we adopt the standard $\\alpha_{\\rm CO}$ of 4.4 $M_\\odot (\\rm K~km~s^{-1}~pc^2)^{-1}$ including a factor of 1.36"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "SFE excluding diffuse gas using GMC catalogue",
+    "method": {
+     "value": "SFE_GMC = Sigma_SFR(Halpha)/Sigma_GMC using total GMC mass in each environment from Maeda2020 CPROPS catalogue",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "We first measured the total mass of the GMCs in the environments, and then divided it by the area of the environment."
+      }
+     ]
+    },
+    "software": [
+     "CPROPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1 (calibration), 5.4.0 (imaging)",
+    "used_for": {
+     "value": "Calibration, multiscale CLEAN imaging, simobserve, feathering",
+     "evidence": [
+      {
+       "loc": "2.2.1",
+       "quote": "We reconstructed the two-field mosaic image using CASA ver. 5.4.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "NOSTAR",
+    "version": "not stated",
+    "used_for": {
+     "value": "NRO 45-m OTF data analysis",
+     "evidence": [
+      {
+       "loc": "2.1.1",
+       "quote": "The observed data were analyzed using the software package NOSTAR (cite: Sawada2008PASJ)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CPROPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "GMC identification in the catalogue used (Maeda 2020)",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "Using 3D clumps finding algorithm CPROPS (cite: RosolowskyLeroy)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "f_dif in bar regions",
+    "value": "0.74-0.91",
+    "uncertainty": "0.07-0.10",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The $f_{\\rm dif}$ and ${\\rm SFE}$ are $0.74 - 0.91$ and $(0.06 - 0.16) ~\\rm Gyr^{-1}$ in the bar regions"
+     }
+    ]
+   },
+   {
+    "quantity": "SFE in bar regions",
+    "value": "0.06-0.16",
+    "uncertainty": "0.02-0.04",
+    "units": "Gyr^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$(0.06 - 0.16) ~\\rm Gyr^{-1}$ in the bar regions"
+     }
+    ]
+   },
+   {
+    "quantity": "f_dif in arm and bar-end regions",
+    "value": "0.28-0.65",
+    "uncertainty": "0.02-0.06",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$0.28 - 0.65$ and $(0.23 - 0.96) ~\\rm Gyr^{-1}$ in the arm and bar-end regions"
+     }
+    ]
+   },
+   {
+    "quantity": "SFE in arm and bar-end regions",
+    "value": "0.23-0.96",
+    "uncertainty": "not stated",
+    "units": "Gyr^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$0.28 - 0.65$ and $(0.23 - 0.96) ~\\rm Gyr^{-1}$ in the arm and bar-end regions"
+     }
+    ]
+   },
+   {
+    "quantity": "SFE_GMC in bar-B",
+    "value": "0.17",
+    "uncertainty": "0.04",
+    "units": "Gyr^-1",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "${\\rm SFE}_{\\rm GMC}$ | ($\\rm Gyr^{-1}$) | $<0.04$ | $0.17 \\pm 0.04$"
+     }
+    ]
+   },
+   {
+    "quantity": "NRO 45-m 12CO(1-0) rms",
+    "value": "13.9",
+    "uncertainty": "not stated",
+    "units": "mK (20 km/s bin)",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.1.1",
+      "quote": "The resultant rms noise is 13.9 mK and 7.7 mK for $^{12}$CO($1-0$) and $^{13}$CO($1-0$), respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Size above which more than half of ALMA flux is missed",
+    "value": "FWHM >= 700 pc",
+    "uncertainty": "not stated",
+    "units": "pc",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.2.2",
+      "quote": "For the large Gaussian component with the FWHM $\\geq 700$ pc, more than half of the flux is missed."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "SFE decreases with increasing f_dif; tighter with FUV+22um tracer",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "A tighter relationship is seen when using the FUV and 22$\\mu$m as an SFR tracer rather than using H$\\alpha$ emission."
+     }
+    ]
+   },
+   {
+    "value": "R21/10 is lowest in bar and anticorrelates with f_dif",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "This tendency is the opposite of $f_{\\rm dif}$"
+     }
+    ]
+   },
+   {
+    "value": "No 13CO(1-0) detected in any environment",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "we did not detect the significant $^{13}$CO($1-0$) emission line in any environments"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Diffuse molecular gas makes bar SFE appear low",
+    "experiment": "Compared f_dif (1 - ALMA/NRO flux) with SFE per environment",
+    "result": "Bar f_dif 0.74-0.91 with SFE 0.06-0.16 Gyr^-1; arm/bar-end f_dif 0.28-0.65, SFE 0.23-0.96",
+    "finding": "SFE decreases with f_dif, supporting diffuse gas as a cause",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This result supports the idea that the presence of a large amount of diffuse molecular gas makes the SFE low."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Diffuse gas alone explains the low bar SFE",
+    "experiment": "SFE_GMC using only GMC-bound gas",
+    "result": "SFE_GMC still lower in bar (0.17 and <0.04 vs ~1.6 in arms)",
+    "finding": "Other mechanisms such as fast CCCs also needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The suppression of the SFE in the bar has also been seen even when we exclude the diffuse molecular gas components."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALMA 12-m lacking ACA is insensitive to extended gas, so combined with NRO total flux it measures diffuse fraction",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "which has no sensitivity on extended molecular gases due to lack of Atacama Compact Array (ACA; 7-m + TP) data"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Unbound clouds (virial parameter) scenario disfavoured by Maeda 2020 and Fujimoto 2020",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "these results suggest that the SF suppression in the bar can not be explained by a systematic difference of virial parameter."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "alpha_CO may be a factor of a few lower in the bar, so Sigma_mol could be overestimated",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "there is a possibility that the $\\Sigma_{\\rm mol}$ in the bar regions of NGC 1300 may be overestimated by a factor of a few"
+      }
+     ]
+    },
+    {
+     "value": "SFR below 1e-3 Msun/yr/kpc2 should be considered upper limits",
+     "evidence": [
+      {
+       "loc": "3.2.3",
+       "quote": "should be considered to be an upper limit"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "f_dif depends on a single ALMA configuration's uv coverage; compact-source vs extended structure is not unique",
+    "NRO calibration uncertainty (factor up to 1.5) is large compared with differences in f_dif",
+    "Assumed constant Av and alpha_CO across environments",
+    "Only seven environment-averaged points, one galaxy"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA and HST/GALEX/WISE; ALMA codes given; NRO data observed by authors",
+    "evidence": [
+     {
+      "loc": "2.3.1",
+      "quote": "We made a map of $^{12}$CO($2-1$) (rest frequency: 230.538000 GHz) emission using the archival data"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "NRO 45-m data availability and environment mask definitions",
+    "Multiscale scales and clean thresholds",
+    "GMC catalogue from Maeda 2020",
+    "ACA CO(2-1) calibration/imaging details"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw ALMA (12-m Band 3 plus ACA), plus small archival optical/UV/IR images",
+   "score_inferred": 5,
+   "score_reason": "Main recipe is clear and numbers tabulated, but ALMA reduction is deferred to a previous paper and NRO data and masks are not public/specified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires NRO 45-m data not clearly public and inherited reduction from Maeda 2020."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Maeda2020MNRAS)",
+     "why": "ALMA CO(1-0) observation and reduction details; GMC catalogue"
+    },
+    {
+     "citation": "(cite: Boker1999ApJS)",
+     "why": "Halpha continuum subtraction method"
+    },
+    {
+     "citation": "(cite: Schruba2011AJ)",
+     "why": "stacking with velocity alignment"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Maeda2020MNRAS)",
+     "why": "ALMA GMC study of NGC 1300"
+    },
+    {
+     "citation": "(cite: Fujimoto2020MNRAS)",
+     "why": "hydrodynamical simulation of NGC 1300 with fast cloud-cloud collisions"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-22952d246d5d9b7d27f65371b8ec2fb7",
+  "batch_id": "msgbatch_01AGJmWoowxdzxrBuhezyUD3",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:18:45",
+  "usage": {
+   "input_tokens": 38535,
+   "output_tokens": 10585,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.092066,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 82,
+  "quotes_ok": 82,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 89,
+   "stated": 63,
+   "rate": 0.708
+  },
+  "evidence_ok": true
+ }
+}

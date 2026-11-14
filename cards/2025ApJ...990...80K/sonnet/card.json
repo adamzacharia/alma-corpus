@@ -1,0 +1,833 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...990...80K",
+  "title": "Key Physical Parameters Influencing Fragmentation and Multiplicity in Dense Cores of Orion A",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Kao, Jo-Shui",
+  "n_authors": 3,
+  "arxiv_id": "2507.22470",
+  "doi": "10.3847/1538-4357/adf206",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2015.1.00041.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Utilizing archival submillimeter continuum data from the James Clerk Maxwell Telescope (JCMT) and the Atacama Large Millimeter/Submillimeter Array survey of Class 0 and I protostars at a 0.1$''$ resolution"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "Orion A dense cores (53 protostellar cores)",
+     "coordinates": {
+      "value": "Table 1 lists core centers; JCMT pointing center 05h36m00, -06°23'00",
+      "evidence": [
+       {
+        "loc": "3.2 Core Mass and Density",
+        "quote": "$D$ is the distance to the core ranging from 383 to 392 pc (cite: 2020ApJ...890..130T)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "383 to 392 pc",
+      "evidence": [
+       {
+        "loc": "3.2 Core Mass and Density",
+        "quote": "$D$ is the distance to the core ranging from 383 to 392 pc (cite: 2020ApJ...890..130T)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Tobin et al. 2020 (VANDAM)",
+      "evidence": [
+       {
+        "loc": "3.2 Core Mass and Density",
+        "quote": "$D$ is the distance to the core ranging from 383 to 392 pc (cite: 2020ApJ...890..130T)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Which physical parameters (density, turbulence, magnetic field) distinguish dense cores in Orion A hosting binary/multiple protostars from those hosting single protostars?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we investigated the key mechanisms influencing fragmentation by comparing the physical conditions of fragmented and unfragmented dense cores ($\\sim$0.1 pc) in Orion A."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "VANDAM ALMA at 0.87 mm",
+    "evidence": [
+     {
+      "loc": "2.1 Protostar Sample",
+      "quote": "with the Atacama Large Millimeter/submillimeter Array (ALMA) at 0.87 mm and a resolution of $\\sim 0.1\\ensuremath{''}$ (40 au)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "N2H+",
+     "transition": "J=1-0 (Nobeyama 45m, not ALMA)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.4 Nobeyama 45-m N$_2$H$^+$ J=1–1",
+       "quote": "The rest frequencies of the hyperfine components were adopted from the Leiden Atomic Molecular Database"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.1\" (40 au)",
+    "evidence": [
+     {
+      "loc": "2.1 Protostar Sample",
+      "quote": "at 0.87 mm and a resolution of $\\sim 0.1\\ensuremath{''}$ (40 au), and it is sensitive to the projected separations larger than 20 au"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "JCMT SCUBA-2/POL-2",
+     "provided": {
+      "value": "850 um continuum and polarization maps for core identification, mass and B-field",
+      "evidence": [
+       {
+        "loc": "2.2 JCMT Data",
+        "quote": "For the present paper, we used the POL-2 data at 850 $\\mu$m."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel Gould Belt Survey",
+     "provided": {
+      "value": "dust temperature map (37\" resolution)",
+      "evidence": [
+       {
+        "loc": "2.3 Herschel Dust Temperature Map",
+        "quote": "The dust temperature was estimated by fitting the spectral energy distributions at 160, 250, 350, and 500 $\\mu$m."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Nobeyama 45-m",
+     "provided": {
+      "value": "N2H+ (1-0) cube for velocity dispersion",
+      "evidence": [
+       {
+        "loc": "2.4 Nobeyama 45-m N$_2$H$^+$ J=1–0",
+        "quote": "a beam size of 23.4$''$, and a spectral resolution of 37.8 kHz, corresponding to 0.12 km s$^{-1}$"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "VANDAM protostar catalog (positions, ALMA fluxes, distances)",
+      "evidence": [
+       {
+        "loc": "3.1 Core Identification",
+        "quote": "obtained from Table 6 in (cite: 2020ApJ...890..130T)"
+       }
+      ]
+     },
+     "citation": "(cite: 2020ApJ...890..130T)"
+    },
+    {
+     "what": {
+      "value": "Nobeyama N2H+ (1-0) cube",
+      "evidence": [
+       {
+        "loc": "2.4 Nobeyama 45-m N$_2$H$^+$ J=1–0",
+        "quote": "We obtained the N$_2$H$^+$ J=1–0 image cube taken by the 45-m telescope of the Nobeyama Radio Observatory from (cite: 2008PASJ...60..407T)."
+       }
+      ]
+     },
+     "citation": "(cite: 2008PASJ...60..407T)"
+    },
+    {
+     "what": {
+      "value": "dust opacity 0.0125 cm2 g-1 at 850 um",
+      "evidence": [
+       {
+        "loc": "3.2 Core Mass and Density",
+        "quote": "Here we adopted $\\kappa_{\\nu}$ of 0.0125 cm$^2$ g$^{-1}$ (cite: 2017ApJ...836..132J)"
+       }
+      ]
+     },
+     "citation": "(cite: 2017ApJ...836..132J)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "DCF correction factor Q = 0.5",
+      "evidence": [
+       {
+        "loc": "3.6 Magnetic Field and Mass-to-flux Ratio",
+        "quote": "is adopted to be 0.5 (cite: 2001ApJ...546..980O)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2001ApJ...546..980O)"
+    },
+    {
+     "what": {
+      "value": "N2H+ hyperfine relative intensity ratios",
+      "evidence": [
+       {
+        "loc": "3.4 Velocity Dispersion",
+        "quote": "their relative intensity ratios were from (cite: 1992ApJ...387..417W)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 1992ApJ...387..417W)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact JCMT pol2map parameters and the bootstrap/binning details",
+    "Exact astrodendro call and core-size cuts for excluding unresolved cores",
+    "Details of N2H+ hyperfine fitting code and BIC criterion",
+    "Debiasing method for polarized intensity",
+    "Treatment of cores without N2H+ coverage in the DCF calculation",
+    "Which of the 275 Orion A protostars lie in the JCMT map"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "identify cores and associate with protostars",
+    "method": {
+     "value": "astrodendro dendrogram on 850 um map, 2D Gaussian fit to leaves; protostars inside core ellipse counted",
+     "evidence": [
+      {
+       "loc": "3.1 Core Identification",
+       "quote": "We identified dense cores in the JCMT 850 $\\mu$m map by applying the *astrodendro* package which builds dendrograms of observed data and fits a 2D Gaussian function to each leaf."
+      }
+     ]
+    },
+    "software": [
+     "astrodendro"
+    ],
+    "key_parameters": [
+     {
+      "value": "min threshold 50 mJy/beam, min significance 30 mJy/beam, min 5 pixels",
+      "evidence": [
+       {
+        "loc": "3.1 Core Identification",
+        "quote": "we adopted the minimum threshold of 50 mJy/beam (5$\\sigma$ noise level), minimum significance of 30 mJy/beam (3$\\sigma$ noise level), and minimum number of pixels of 5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "tested that excluding systems with separations <500 au does not change results",
+     "evidence": [
+      {
+       "loc": "3.1 Core Identification",
+       "quote": "We have tested it and confirmed that including or excluding these sources having multiples with small separations does not affect the results of our subsequent analysis and conclusions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "derive core mass and density",
+    "method": {
+     "value": "optically thin dust emission with Herschel Td, spherical density",
+     "evidence": [
+      {
+       "loc": "Core Mass and Density",
+       "quote": "found that all the dense cores in our sample have $\\tau < 0.02$ at 850 $\\mu$m. Thus, our assumption of optically thin dust emission is valid."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "kappa=0.0125 cm2/g (32% uncertainty), Td from Herschel, tau<0.02",
+      "evidence": [
+       {
+        "loc": "3.2 Core Mass and Density",
+        "quote": "found that all the dense cores in our sample have $\\tau < 0.02$ at 850 $\\mu$m."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "disk contribution checked against ALMA fluxes: <15% in 80% of sample",
+     "evidence": [
+      {
+       "loc": "3.2 Core Mass and Density",
+       "quote": "In 80% of our sample, the possible disk contribution is less than 15% of the total flux of the dense cores."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "N2H+ velocity dispersion and Mach number",
+    "method": {
+     "value": "seven-hyperfine fit per pixel, optical-depth-weighted average sigma_NT, Mach = sigma_NT/c_s",
+     "evidence": [
+      {
+       "loc": "3.5 Mach Number and Turbulence Pressure",
+       "quote": "We calculated the average $\\Delta v$ of all the pixels within the core area weighted by their optical depths"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "gas temperature equals dust temperature",
+      "evidence": [
+       {
+        "loc": "3.3 Jeans Instability",
+        "quote": "Here we assumed that the gas temperature is the same as the dust temperature."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian profile, common Tex and width; two components if BIC prefers",
+     "evidence": [
+      {
+       "loc": "3.4 Velocity Dispersion",
+       "quote": "we fitted the spectra with two velocity components if the Bayesian information criterion suggests that the two velocity components provide a better fit"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "magnetic field strength and mass-to-flux ratio",
+    "method": {
+     "value": "DCF with unsharp-masking angular dispersion; lambda=7.6e-21 N(H2)/B",
+     "evidence": [
+      {
+       "loc": "3.6 Magnetic Field and Mass-to-flux Ratio",
+       "quote": "We estimated the magnetic field strengths in the dense cores using the David-Chandrasekhar-Fermi (DCF) method"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "3x3 pixel (36\") smoothing kernel",
+      "evidence": [
+       {
+        "loc": "3.6 Magnetic Field and Mass-to-flux Ratio",
+        "quote": "We smoothed the magnetic field orientation map with a kernel of 3 by 3 pixels (or 36$\\ensuremath{''}$ by 36$\\ensuremath{''}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "no inclination correction",
+      "evidence": [
+       {
+        "loc": "3.6 Magnetic Field and Mass-to-flux Ratio",
+        "quote": "we did not correct it for projection due to unknown inclination angles"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "compare single vs multiple cores",
+    "method": {
+     "value": "CDFs with Monte Carlo uncertainties (10000 realizations), KS tests, Spearman correlations",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "We repeated this process 10000 times, generated a sample of CDF, and adopted the 50th percentile at each step as the final CDF"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "power-law fits to mass-radius and density-radius relations",
+     "evidence": [
+      {
+       "loc": "4.2 Density and Thermal Jeans Instability",
+       "quote": "The power-law fitting to the mass–radius and density–radius relations suggests that the mass and density tend to be a factor of 3 higher"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "starlink (pol2map)",
+    "version": "2023A",
+    "used_for": {
+     "value": "POL-2 data reduction",
+     "evidence": [
+      {
+       "loc": "2.2 JCMT Data",
+       "quote": "calibrated together using the software *starlink* version 2023A"
+      }
+     ]
+    }
+   },
+   {
+    "name": "astrodendro",
+    "version": "not stated",
+    "used_for": {
+     "value": "core identification",
+     "evidence": [
+      {
+       "loc": "3.1 Core Identification",
+       "quote": "by applying the *astrodendro* package which builds dendrograms of observed data"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "dense cores with single protostars",
+    "value": "38",
+    "uncertainty": "not stated",
+    "units": "cores",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we identified 38 dense cores hosting single protostars and 15 cores hosting binary or multiple systems"
+     }
+    ]
+   },
+   {
+    "quantity": "KS p-value, Mach number single vs multiple",
+    "value": "0.006",
+    "uncertainty": "+0.002/-0.003",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Turbulent Velocity and Energy",
+      "quote": "with a p-value of $0.006^{+0.002}_{-0.003}$ from the KS test"
+     }
+    ]
+   },
+   {
+    "quantity": "KS p-value, core mass",
+    "value": "0.005",
+    "uncertainty": "+0.01/-0.003",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Density and Thermal Jeans Instability",
+      "quote": "The p-value from the KS test on their CDF is $0.005^{+0.01}_{-0.003}$."
+     }
+    ]
+   },
+   {
+    "quantity": "KS p-value, P_T/u_G",
+    "value": "0.27",
+    "uncertainty": "+0.31/-0.20",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Turbulent Velocity and Energy",
+      "quote": "with a p-value of $0.27^{+0.31}_{-0.20}$ from the KS test"
+     }
+    ]
+   },
+   {
+    "quantity": "KS p-value, mass-to-flux ratio",
+    "value": "0.64",
+    "uncertainty": "+0.25/-0.37",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4 Magnetic field and mass-to-flux ratio",
+      "quote": "The KS test results in a p-value of $0.64^{+0.25}_{-0.37}$."
+     }
+    ]
+   },
+   {
+    "quantity": "supersonic fraction in multiples",
+    "value": "73% (11 of 15)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Turbulent Velocity and Energy",
+      "quote": "4 of them (27%) have subsonic and 11 of them (73%) have supersonic turbulence"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "Higher density and turbulence promote core fragmentation",
+    "experiment": "Compare CDFs of core properties for single vs multiple cores",
+    "result": "Multiples have higher mass, density, Mach number, R/R_Jeans, M/M_Jeans",
+    "finding": "Consistent with turbulent core fragmentation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The dense cores forming binary or multiple systems tend to exhibit higher density, Mach numbers, ratios of core radii to Jeans radii, and ratios of core mass to Jeans mass"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Magnetic fields suppress fragmentation",
+    "experiment": "Compare B and mass-to-flux ratio between groups",
+    "result": "No significant difference",
+    "finding": "Magnetic field has limited influence on fragmentation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The magnetic field does not influence the morphology and orientation of the dense cores and the occurrence of fragmentation."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Protostellar mass not included in core mass, so gravity may be underestimated",
+     "evidence": [
+      {
+       "loc": "3.2 Core Mass and Density",
+       "quote": "the mass calculated here does not include the protostellar mass, and thus the total mass within the core area may be underestimated"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Small sample (15 multiples) and KS tests with marginal p-values",
+    "B_pos has no inclination correction and DCF Q is assumed",
+    "Heterogeneous resolutions (14.6\", 23.4\", 37\") applied to cores of similar size",
+    "Text inconsistencies, e.g. mass-to-flux ratio range 0.2-4.0 vs 0.3-6.8"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "JCMT, Herschel and VANDAM data are public/archival; Nobeyama cube from Tatematsu et al. 2008",
+    "evidence": [
+     {
+      "loc": "2.2 JCMT Data",
+      "quote": "We retrieved the JCMT POL-2 data of the Orion A molecular clouds taken under the projects M16BD001, M17BL011, M20AL006, M20AL018, M21BF005, and M21BF004 from the public archive."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Tabulated VANDAM catalog needed from Tobin et al. 2020",
+    "Pol2map parameters",
+    "Fitting code for hyperfine lines"
+   ],
+   "estimated_data_volume_inferred": "Small: ALMA used only via published catalog; JCMT/Herschel maps ~ GB",
+   "score_inferred": 3,
+   "score_reason": "Equations and tables given but ALMA role is catalog only and several processing details are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA data not reprocessed; recipe depends on several external datasets and incomplete parameters."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2020ApJ...890..130T)",
+     "why": "VANDAM protostar catalog"
+    },
+    {
+     "citation": "(cite: 2008PASJ...60..407T)",
+     "why": "N2H+ data"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2022ApJ...931..158L)",
+     "why": "similar fragmentation study in complementary sample"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "VANDAM",
+    "Herschel Gould Belt Survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-7bb7b8b7c679de8aa0bc0da74f52d54c",
+  "batch_id": "msgbatch_011kRisrLu5aoaMcqbcQh2EZ",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:50:59",
+  "usage": {
+   "input_tokens": 35688,
+   "output_tokens": 6352,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.068055,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 42,
+  "quotes_ok": 42,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2015.1.00041.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 32,
+   "rate": 0.432
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:04",
+  "custom_id": "repair-sonnet-dc0a569fa264f20352c7ee419dd1da07",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].method.evidence[0]",
+    "old": "$$M_{\\rm core} = \\frac{S_{\\nu} D^2}{B_{\\nu} (T_d) \\kappa_{\\nu}}$$",
+    "new": "found that all the dense cores in our sample have $\\tau < 0.02$ at 850 $\\mu$m. Thus, our assumption of optically thin dust emission is valid."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.00041.S",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00041."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,367 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "we present follow-up high resolution 0.87 mm continuum observations with ALMA"},
+{"loc": "Summary", "quote": "we present the first spatially resolved 0.87 mm continuum observations of post-impact dust around HD 172555 obtained with ALMA"}
+],
+"fields": ["debris_disks"],
+"question": {
+"value": "Where is the millimeter-grain dust from the giant impact around HD 172555 located radially and azimuthally (a few au), as resolved by new ALMA Band 7 continuum observations?",
+"evidence": [
+{"loc": "Introduction", "quote": "In order to better constrain the radial and azimuthal distribution of the impact-produced dust at a few au around HD 172555, we present follow-up high resolution 0.87 mm continuum observations with ALMA."}
+]
+},
+"targets": [
+{
+"name": "HD 172555",
+"details": [
+{"loc": "Introduction", "quote": "at a distance of 28.79$\\pm$0.13 pc from Earth (cite: gaia_collaboration_vizier_2022)"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "28.79 +/- 0.13 pc",
+"distance_source": "Gaia (cite: gaia_collaboration_vizier_2022)"
+}
+],
+"alma_project_codes": [
+{"code": "2022.1.00793.S", "evidence": [{"loc": "2 Observations", "quote": "during Cycle 9 through project 2022.1.00793.S"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (0.87 mm)", "evidence": [{"loc": "2 Observations", "quote": "Observations were split between a lower and higher spectral setup covering different frequencies within Band 7 (0.87 mm)."}]},
+{"field": "frequencies_and_spectral_setup", "value": "Two setups, 4 spws each. Higher: 1.875 GHz wide spws centered at 343.2, 345.2, 355.2, 357.2 GHz, channel width 488.281 kHz. Lower: 1.875 GHz wide spws at 328.9, 330.9, 340.9 GHz plus one 2 GHz wide spw at 342.9 GHz, resolution 31.3 MHz", "evidence": [
+{"loc": "2 Observations", "quote": "In the higher setup, all four of the spectral windows were 1.875 GHz wide, centered at 343.2, 345.2, 355.2, and 357.2 GHz, with a channel width of 488.281 kHz."},
+{"loc": "2 Observations", "quote": "In the lower setup, three of the spectral windows were 1.875 GHz wide, centered at 328.9, 330.9, and 340.9 GHz, and one spectral window was 2 GHz wide centered at 342.9 GHz, with a resolution of 31.3 MHz."}
+]},
+{"field": "arrays", "value": "12-m array", "evidence": [{"loc": "2 Observations", "quote": "All observations were carried out using Band 7 receivers and the 12-m array"}]},
+{"field": "baselines", "value": "27.5 to 3637.7 m for each setup", "evidence": [{"loc": "2 Observations", "quote": "with baselines ranging between 27.5 and 3637.7 m for each setup"}]},
+{"field": "angular_resolution", "value": "Natural weighting + 0.08\" taper: 166x148 mas (4.8x4.3 au); Briggs robust 0.5: 84x73 mas (2.4x2.1 au)", "evidence": [
+{"loc": "2 Observations", "quote": "which led to a beam of 166$\\times$148 mas (4.8$\\times$4.3 au at the distance of HD 172555)"},
+{"loc": "2 Observations", "quote": "obtaining a resolution of 84$\\times$73 mas (2.4$\\times$2.1 au)"}
+]},
+{"field": "sensitivity", "value": "RMS 10.4 uJy/beam (natural weighting, tapered); 11.3 uJy/beam (Briggs robust 0.5)", "evidence": [
+{"loc": "2 Observations", "quote": "and an RMS noise level of 10.4"},
+{"loc": "2 Observations", "quote": "with an RMS noise level of 11.3"}
+]},
+{"field": "time_on_source", "value": "6.6 hours on-source total", "evidence": [{"loc": "2 Observations", "quote": "We observed the HD 172555 system for a total of 6.6 hours on-source with ALMA"}]},
+{"field": "observing_dates", "value": "Lower setup: five days between 16 May and 3 June 2023; higher setup: four times between 3 and 4 June 2023", "evidence": [{"loc": "2 Observations", "quote": "Observations in the lower spectral setup were taken on five separate days between 16 May and 3 June 2023, and observations in the higher spectral setup were taken at four times between 3 and 4 June 2023."}]},
+{"field": "pi_or_archival_as_stated", "value": "Cycle 9 project 2022.1.00793.S, PI Matra (new observations)", "evidence": [{"loc": "2 Observations", "quote": "during Cycle 9 through project 2022.1.00793.S (PI: Matrà)"}]}
+],
+"lines_targeted": [
+{"species": "CS", "transition": "J=7-6", "rest_frequency": "342.883 GHz", "evidence": [{"loc": "2 Observations", "quote": "CS J=7-6, ^12^CO J=3-2, HCN J=4-3, and HCO+ J=4-3 transitions at 342.883, 345.796, 354.505, and 356.734 GHz, respectively"}]},
+{"species": "12CO", "transition": "J=3-2", "rest_frequency": "345.796 GHz", "evidence": [{"loc": "2 Observations", "quote": "CS J=7-6, ^12^CO J=3-2, HCN J=4-3, and HCO+ J=4-3 transitions at 342.883, 345.796, 354.505, and 356.734 GHz, respectively"}]},
+{"species": "HCN", "transition": "J=4-3", "rest_frequency": "354.505 GHz", "evidence": [{"loc": "2 Observations", "quote": "CS J=7-6, ^12^CO J=3-2, HCN J=4-3, and HCO+ J=4-3 transitions at 342.883, 345.796, 354.505, and 356.734 GHz, respectively"}]},
+{"species": "HCO+", "transition": "J=4-3", "rest_frequency": "356.734 GHz", "evidence": [{"loc": "2 Observations", "quote": "CS J=7-6, ^12^CO J=3-2, HCN J=4-3, and HCO+ J=4-3 transitions at 342.883, 345.796, 354.505, and 356.734 GHz, respectively"}]},
+{"species": "C18O", "transition": "J=3-2", "rest_frequency": "329.331 GHz", "evidence": [{"loc": "2 Observations", "quote": "C^18^O J=3-2, ^13^CO J=3-2, and CN J=3-2 transitions at 329.331, 330.588, and 340.248 GHz, respectively"}]},
+{"species": "13CO", "transition": "J=3-2", "rest_frequency": "330.588 GHz", "evidence": [{"loc": "2 Observations", "quote": "C^18^O J=3-2, ^13^CO J=3-2, and CN J=3-2 transitions at 329.331, 330.588, and 340.248 GHz, respectively"}]},
+{"species": "CN", "transition": "J=3-2", "rest_frequency": "340.248 GHz", "evidence": [{"loc": "2 Observations", "quote": "C^18^O J=3-2, ^13^CO J=3-2, and CN J=3-2 transitions at 329.331, 330.588, and 340.248 GHz, respectively"}]}
+],
+"other_facilities": [
+{"name": "Multi-wavelength photometry (far-infrared to millimeter)", "provided": {"value": "Photometry combined with the ALMA fluxes to build the SED", "evidence": [{"loc": "4.4 SED modeling", "quote": "We create a combined disk and star spectrum (hereafter SED) from available multi-wavelength photometry"}]}},
+{"name": "Gaia", "provided": {"value": "Distance to HD 172555", "evidence": [{"loc": "Introduction", "quote": "at a distance of 28.79$\\pm$0.13 pc from Earth (cite: gaia_collaboration_vizier_2022)"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Disk flux density at 1.3 mm after accounting for the stellar contribution: 0.09 +/- 0.03 mJy", "evidence": [{"loc": "3 Results", "quote": "(cite: schneiderman_carbon_2021) report $F_{\\rm \\nu}=0.09\\pm 0.03$ mJy"}]}, "citation": "(cite: schneiderman_carbon_2021)"},
+{"what": {"value": "Inclination from earlier modeling used as Gaussian prior (mean 76.5, sd 8.2)", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "using the results from modeling the inclination done by (cite: engler_detection_2018)"}]}, "citation": "(cite: engler_detection_2018)"},
+{"what": {"value": "Size distribution slope of smaller grains from infrared observations, dn/da ~ a^-3.95 +/- 0.10", "evidence": [{"loc": "4.4 SED modeling", "quote": "flatter than that found by (cite: lisse_abundant_2009) for smaller grains probed by infrared observations, $dn/da \\propto a^{-3.95 \\pm 0.10}$"}]}, "citation": "(cite: lisse_abundant_2009)"},
+{"what": {"value": "Scattered-light disk geometry and number density converted to surface mass density for comparison with the mm dust", "evidence": [{"loc": "5.2 Radial distribution", "quote": "we converted from number density given by (cite: engler_detection_2018) to surface mass density using their assumed vertical density structure"}]}, "citation": "(cite: engler_detection_2018)"},
+{"what": {"value": "CO ring and 1.3 mm dust constraints from earlier ALMA Cycle 1 data (CO radius 7.4 au, width 3.4 au; dust mass 1.8e-4 Earth masses)", "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "(cite: schneiderman_carbon_2021) find a millimeter dust mass of (1.8$\\pm$0.6)$\\times 10^{-4}$ M$_\\oplus$ from the observed continuum emission"}]}, "citation": "(cite: schneiderman_carbon_2021)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Two RADMC-3D disk models fit to the visibilities: an axisymmetric Gaussian radial surface density model and a power law model with inner and outer radii, plus a point-source star", "evidence": [{"loc": "4.1 The physical model", "quote": "we fit our visibilities using two models, each with two components: an axisymmetric dust disk, and the star modeled as a point source"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA observatory pipeline calibration", "evidence": [{"loc": "2 Observations", "quote": "Standard calibrations were applied to each visibility dataset by the ALMA observatory using its pipeline."}]},
+{"field": "casa_version", "value": "CASA 6.6.5", "evidence": [{"loc": "2 Observations", "quote": "Data manipulation was carried out using the Common Astronomy Software Applications (CASA) software version 6.6.5"}]},
+{"field": "archive_products_used_as_is", "value": "Pipeline-calibrated visibilities, then flagged for lines, averaged and concatenated by the authors; no astrometric realignment applied", "evidence": [
+{"loc": "2 Observations", "quote": "We did not implement any astrometric realignment for each observation"},
+{"loc": "2 Observations", "quote": "We then concatenated all datasets for each spectral window to obtain a final calibrated and time- and frequency-averaged continuum visibility dataset for each spectral setup."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean, multi-frequency synthesis, both spectral setups imaged jointly", "evidence": [
+{"loc": "2 Observations", "quote": "implemented through the tclean task"},
+{"loc": "2 Observations", "quote": "We carried out the continuum imaging in multi-frequency synthesis mode with Hogbom deconvolution"}
+]},
+{"field": "deconvolver", "value": "Hogbom", "evidence": [{"loc": "2 Observations", "quote": "We carried out the continuum imaging in multi-frequency synthesis mode with Hogbom deconvolution"}]},
+{"field": "weighting_robust", "value": "Natural weighting (with u-v taper); also Briggs robust = 0.5", "evidence": [
+{"loc": "2 Observations", "quote": "We chose a natural weighting scheme with a u-v taper of 0.08\" to achieve maximum surface brightness sensitivity"},
+{"loc": "2 Observations", "quote": "with a standard robust value of 0.5"}
+]},
+{"field": "uv_taper", "value": "0.08 arcsec", "evidence": [{"loc": "2 Observations", "quote": "We chose a natural weighting scheme with a u-v taper of 0.08\" to achieve maximum surface brightness sensitivity"}]},
+{"field": "array_combination", "value": "Higher and lower spectral setups imaged jointly", "evidence": [{"loc": "2 Observations", "quote": "We jointly imaged the higher and lower spectral setups in CASA"}]},
+{"field": "continuum_subtraction", "value": "Spectral lines flagged before averaging for the continuum analysis (no subtraction described)", "evidence": [{"loc": "2 Observations", "quote": "we flagged the spectral lines, then time and frequency averaged the visibilities"}]},
+{"field": "final_beam", "value": "166x148 mas (natural weighting + 0.08\" taper); 84x73 mas (Briggs 0.5)", "evidence": [
+{"loc": "2 Observations", "quote": "which led to a beam of 166$\\times$148 mas (4.8$\\times$4.3 au at the distance of HD 172555)"},
+{"loc": "2 Observations", "quote": "obtaining a resolution of 84$\\times$73 mas (2.4$\\times$2.1 au)"}
+]},
+{"field": "final_rms", "value": "10.4 uJy/beam (tapered natural); 11.3 uJy/beam (Briggs 0.5)", "evidence": [
+{"loc": "2 Observations", "quote": "and an RMS noise level of 10.4"},
+{"loc": "2 Observations", "quote": "with an RMS noise level of 11.3"}
+]}
+],
+"inherited": [
+{"what": {"value": "Disk-only continuum image made by increasing a minimum u-v cutoff and subtracting an unresolved stellar point source", "evidence": [{"loc": "3 Results", "quote": "we aim to create a disk-only continuum image using a procedure similar to (cite: matra_dust_2020)"}]}, "from_reference": "(cite: matra_dust_2020)"},
+{"what": {"value": "Rescaling factor f applied to the observatory-delivered visibility weights", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "need to be rescaled by a factor common to all visibilities within a given dataset (cite: marino_gap_2018; matra_kuiper_2019)"}]}, "from_reference": "(cite: marino_gap_2018; matra_kuiper_2019)"},
+{"what": {"value": "Inclination Gaussian prior taken from earlier scattered-light modeling", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "using the results from modeling the inclination done by (cite: engler_detection_2018)"}]}, "from_reference": "(cite: engler_detection_2018)"},
+{"what": {"value": "SED fitting with stellar model plus modified blackbody", "evidence": [{"loc": "4.4 SED modeling", "quote": "using the methodology from (cite: yelverton_statistically_2019)"}]}, "from_reference": "(cite: yelverton_statistically_2019)"},
+{"what": {"value": "Relation between SED millimeter slope and grain size distribution slope q", "evidence": [{"loc": "4.4 SED modeling", "quote": "uses an analytical formula derived by (cite: draineSubmillimeterOpacityProtoplanetary2006)"}]}, "from_reference": "(cite: draineSubmillimeterOpacityProtoplanetary2006)"},
+{"what": {"value": "Dust mass equation", "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "we calculate a dust mass using the dust mass equation from (cite: hildebrand_determination_1983)"}]}, "from_reference": "(cite: hildebrand_determination_1983)"},
+{"what": {"value": "Relation between debris radial width and impactor mass", "evidence": [
+{"loc": "5.3 Mass of the largest impacting planet", "quote": "From (cite: schneiderman_carbon_2021), the expected mass of the impacting planet in M$_\\oplus$ is"},
+{"loc": "5.3 Mass of the largest impacting planet", "quote": "Following from (cite: jackson_debris_2014), the radial width of the debris from a giant impact is directly related to the velocity dispersion of the debris."}
+]}, "from_reference": "(cite: schneiderman_carbon_2021); (cite: jackson_debris_2014)"}
+],
+"unstated_but_needed": [
+"Which channels were flagged as line-affected in each of the 8 spectral windows (exact line-free channel ranges for the continuum)",
+"Flux, bandpass and phase calibrators and the flux-scale uncertainty adopted",
+"Whether any self-calibration was applied",
+"tclean image size, cell size, mask, threshold/niter and primary beam correction",
+"imview region used to measure disk flux densities (visually defined, not given)",
+"Prior ranges for all free parameters (only the inclination prior is given)",
+"RADMC-3D setup: grain opacity, number of photon packages, image pixel size and grid, wavelength, stellar properties other than 7.7 Lsun",
+"GALARIO settings (image size, pixel scale) and initial walker positions for emcee",
+"Source and values of the stellar mass (1.76 Msun) and luminosity (7.7 Lsun)",
+"The photometry table and alpha_Pl frequencies used for the SED slope and q derivation",
+"How the star subtraction fit (Table 1) was sampled and its priors"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Prepare continuum visibilities and image",
+"method": {"value": "Line-flagged visibilities time and frequency averaged per spw, concatenated per setup, then imaged jointly with tclean", "evidence": [
+{"loc": "2 Observations", "quote": "time and frequency averaged the visibilities (to 30 seconds and 1.875 GHz, the size of the entire spectral window, respectively)"},
+{"loc": "2 Observations", "quote": "We jointly imaged the higher and lower spectral setups in CASA using the CLEAN algorithm"}
+]},
+"software": ["CASA 6.6.5", "tclean"],
+"key_parameters": [
+{"value": "Averaging to 30 s and 1.875 GHz; natural weighting with 0.08\" u-v taper; also Briggs robust 0.5", "evidence": [
+{"loc": "2 Observations", "quote": "time and frequency averaged the visibilities (to 30 seconds and 1.875 GHz, the size of the entire spectral window, respectively)"},
+{"loc": "2 Observations", "quote": "We chose a natural weighting scheme with a u-v taper of 0.08\" to achieve maximum surface brightness sensitivity"}
+]}
+],
+"assumptions": [
+{"value": "No astrometric realignment needed since proper motion and parallax motion is small", "evidence": [{"loc": "2 Observations", "quote": "We did not implement any astrometric realignment for each observation"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Subtract the star to make a disk-only image",
+"method": {"value": "Iteratively image long-baseline visibilities with increasing minimum u-v cutoff to isolate the point-source star; fit star flux and position per setup; subtract the best-fit model visibilities from all baselines; image the residual", "evidence": [
+{"loc": "3 Results", "quote": "assuming the star is an unresolved point source, we fit the visibilities of the longest baselines with the above u-v cutoffs, now unbiased by any disk emission, to obtain a best-fit stellar flux and RA/Dec position"},
+{"loc": "3 Results", "quote": "We then subtract the best-fit model visibilities for each spectral setup from the entire visibility dataset for that setup, including all baselines, effectively subtracting the star from our data."}
+]},
+"software": ["CASA 6.6.5", "tclean"],
+"key_parameters": [
+{"value": "Minimum u-v distance 600 klambda (lower setup) and 700 klambda (higher setup), chosen visually", "evidence": [{"loc": "3 Results", "quote": "We find the best compromise to be a minimum u-v distance of 600 k$\\lambda$ for the lower spectral setup and 700 k$\\lambda$ for the higher spectral setup."}]}
+],
+"assumptions": [
+{"value": "Star is a point source with constant amplitude on long baselines", "evidence": [{"loc": "3 Results", "quote": "we assume the star is a point source and appears with constant amplitude on long baselines"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Stellar fluxes from the two setups are consistent within errors", "evidence": [{"loc": "3 Results", "quote": "We note that the fluxes are consistent within the errors, which include both random noise and flux calibration uncertainty."}]}
+},
+{
+"order": 3,
+"goal": "Measure disk flux density from images",
+"method": {"value": "Flux measured in a visually defined region on the disk-only images made separately per setup and jointly", "evidence": [{"loc": "3 Results", "quote": "Using the CASA task imview and visually defining a region around the disk, we measure the flux density from images created separately from the visibilities from each spectral setup"}]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with the 1.3 mm flux from earlier ALMA data and the SED slope; consistent within 2 sigma", "evidence": [{"loc": "3 Results", "quote": "the emission we observe is consistent with the expected emission within 2$\\sigma$"}]}
+},
+{
+"order": 4,
+"goal": "Fit visibilities with disk models",
+"method": {"value": "RADMC-3D model image of the disk, Fourier transformed and sampled at the data u-v points with GALARIO, star added as point source, joint fit of both setups with emcee", "evidence": [
+{"loc": "4.2 The visibility modeling process", "quote": "to obtain a Fourier transform of the model image from RADMC-3D and sample it at the same u-v locations as the data from the higher and lower spectral setups"},
+{"loc": "4.2 The visibility modeling process", "quote": "implemented through the EMCEE v3.1.6 software package"}
+]},
+"software": ["RADMC-3D", "GALARIO", "emcee v3.1.6"],
+"key_parameters": [
+{"value": "110 walkers, 10000 steps, burn-in of 400 steps discarded", "evidence": [
+{"loc": "4.2 The visibility modeling process", "quote": "using 110 walkers (10 times the number of free parameters), and for 10000 steps"},
+{"loc": "4.3 Visibility modeling results", "quote": "after discarding the burn-in phase of 400 steps"}
+]},
+{"value": "Vertical aspect ratio fixed at 0.05; free parameters include i, PA, R and Delta R (Gaussian) or R_in, R_out, p (power law), disk and star fluxes per setup, RA/Dec offsets, weight rescaling f", "evidence": [{"loc": "4.1 The physical model", "quote": "The vertical density distribution is again modeled as a Gaussian with a constant aspect ratio of 0.05."}]}
+],
+"assumptions": [
+{"value": "Grains act as blackbodies around a 7.7 Lsun star, T proportional to r^-1/2", "evidence": [{"loc": "4.1 The physical model", "quote": "we set the radial temperature dependence by assuming the grains act as blackbodies around a star of 7.7 L$_\\odot$, with the temperature proportional to $r^{-1/2}$"}]},
+{"value": "Disk optically thin", "evidence": [{"loc": "4.1 The physical model", "quote": "low enough values to ensure the disk is optically thin, as is expected"}]}
+],
+"fitting": {"value": "emcee affine-invariant MCMC; likelihood proportional to exp(-chi2_total/2) summed over the two setups; uniform priors on all parameters, plus a Gaussian prior on inclination (mean 76.5, sd 8.2)", "evidence": [
+{"loc": "4.2 The visibility modeling process", "quote": "The likelihood function is proportional to $e^{-\\chi_{\\rm total}^2/2}$, where $\\chi_{\\rm total}^2$ is the sum of the two $\\chi^2$ from the fits to the higher and lower setups."},
+{"loc": "4.2 The visibility modeling process", "quote": "we placed a Gaussian prior, with a mean of 76.5and standard deviation of 8.2, only on the inclination"}
+]},
+"validation": {"value": "Visual convergence of chains checked", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "We ensured visual convergence of the MCMC chains"}]}
+},
+{
+"order": 5,
+"goal": "Assess goodness of fit with residual images",
+"method": {"value": "Best-fit model visibilities imaged and subtracted from data visibilities; residual dirty images made with the same imaging parameters", "evidence": [{"loc": "4.3 Visibility modeling results", "quote": "We then produced a joint residual dirty image (right column in Fig. [2](#fig:data model residuals)) using the same imaging parameters as the data."}]},
+"software": ["RADMC-3D", "CASA"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "No significant residuals; the data cannot distinguish the two models", "evidence": [{"loc": "4.3 Visibility modeling results", "quote": "indicating that both models are a good fit to the ALMA data and that our data cannot distinguish between the two models"}]}
+},
+{
+"order": 6,
+"goal": "SED modeling and grain size distribution slope",
+"method": {"value": "SED from multi-wavelength photometry fitted with stellar model plus modified blackbody; millimeter slope converted to size distribution slope q", "evidence": [
+{"loc": "4.4 SED modeling", "quote": "fitted it with a stellar model plus a modified blackbody model"},
+{"loc": "4.4 SED modeling", "quote": "which constrains the millimeter spectral slope to $2.74 \\pm 0.03$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "beta_s = 1.8 +/- 0.2 for astronomical silicates", "evidence": [{"loc": "4.4 SED modeling", "quote": "which is taken to be $1.8 \\pm 0.2$ for astronomical silicates"}]}
+],
+"assumptions": [
+{"value": "Disk dominated by grains smaller than the wavelength of the observation", "evidence": [{"loc": "4.4 SED modeling", "quote": "which assumes that the disk is dominated by grains smaller than the wavelength of the observation"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "ALMA flux densities within 2 sigma of SED expectation; q consistent with steady-state collisional models", "evidence": [
+{"loc": "4.4 SED modeling", "quote": "Our ALMA flux densities in each spectral setup are within 2$\\sigma$ of the expected values from the SED"},
+{"loc": "4.4 SED modeling", "quote": "we find $q=3.41\\pm 0.05$, which is consistent with steady state collisional models"}
+]}
+},
+{
+"order": 7,
+"goal": "Derive millimeter dust mass",
+"method": {"value": "Dust mass equation with blackbody temperature at the model peak radius and scaled opacity", "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "Using an equilibrium blackbody temperature of 213 K at 4.7 au, the median peak surface density radius found in the Gaussian model"}]},
+"software": [],
+"key_parameters": [
+{"value": "T = 213 K at 4.7 au (Gaussian), 191 K at 5.9 au (power law)", "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "If we instead use an equilibrium blackbody temperature of 191 K at 5.9 au"}]}
+],
+"assumptions": [
+{"value": "Opacity 10 cm^2/g at 1000 GHz scaled as nu^beta with beta=1, as in the earlier ALMA study; millimeter grains act as blackbodies", "evidence": [
+{"loc": "5.1 Comparison to previous observations", "quote": "a dust grain opacity of 10 cm^2^ g^-1^ at 1000 GHz and scaling the dust grain opacity as $\\kappa \\propto \\nu^\\beta$ with $\\beta=1$"},
+{"loc": "5.1 Comparison to previous observations", "quote": "we assume the millimeter grains we observe act as blackbodies"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Gaussian-model and power-law-model masses consistent with each other", "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "which is consistent with the dust mass calculated from Gaussian model parameters"}]}
+},
+{
+"order": 8,
+"goal": "Estimate largest impactor mass",
+"method": {"value": "Scaling relation between impactor mass and disk radius and width, evaluated on randomly sampled MCMC (R, Delta R) pairs or (R_in, R_out) pairs", "evidence": [
+{"loc": "5.3 Mass of the largest impacting planet", "quote": "randomly sampled $R$, $\\Delta R$ pairs from the Gaussian model MCMC samples"},
+{"loc": "5.3 Mass of the largest impacting planet", "quote": "we take $R$ to be the mean of the $R_{\\rm in}$ and $R_{\\rm out}$ and $\\Delta R$ to be the difference between $R_{\\rm out}$ and $R_{\\rm in}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "M_* = 1.76 Msun, planet bulk density 5.5 g/cm3", "evidence": [{"loc": "5.3 Mass of the largest impacting planet", "quote": "Using $M_*$ = 1.76M$_\\odot$, $\\rho_{\\rm p}$ = 5.5 g cm$^{-3}$"}]}
+],
+"assumptions": [
+{"value": "Gas has not affected the dynamics of the millimeter and larger grains since the impact", "evidence": [{"loc": "5.3 Mass of the largest impacting planet", "quote": "assuming gas has not impacted the dynamics of the millimeter and larger sized grains throughout the post-impact evolution"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with detection limits from direct imaging and radial velocity; large uncertainties prevent firm conclusions", "evidence": [{"loc": "5.3 Mass of the largest impacting planet", "quote": "the currently large uncertainties, particularly on the mass derived using the results from the Gaussian model, prevent us from drawing firm conclusions"}]}
+},
+{
+"order": 9,
+"goal": "Limit azimuthal asymmetry",
+"method": {"value": "Ratio of peak intensities on the SE and NW sides of the disk-only image, with detection requiring the ratio to exceed 1 by 3 sigma", "evidence": [{"loc": "5.4 Limits on potential asymmetry", "quote": "we find that the ratio of the southeast intensity, $I_{\\mathrm{\\nu, SE}}$, to the northwest intensity, $I_{\\mathrm{\\nu, NW}}$, is 1.21$\\pm$0.39"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Asymmetry is in the plane of the sky", "evidence": [{"loc": "5.4 Limits on potential asymmetry", "quote": "assuming the asymmetry is in the plane of the sky"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.6.5", "used_for": {"value": "Data manipulation, flagging, averaging, concatenation, imaging and flux measurement (imview)", "evidence": [{"loc": "2 Observations", "quote": "Data manipulation was carried out using the Common Astronomy Software Applications (CASA) software version 6.6.5"}]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Continuum CLEAN imaging", "evidence": [{"loc": "2 Observations", "quote": "implemented through the tclean task"}]}},
+{"name": "imview", "version": "not stated", "used_for": {"value": "Defining a region and measuring disk flux density", "evidence": [{"loc": "3 Results", "quote": "Using the CASA task imview and visually defining a region around the disk"}]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Radiative transfer model images of the disk at 0.87 mm", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "radiative transfer code to create an image of the disk at 0.87 mm"}]}},
+{"name": "GALARIO", "version": "not stated", "used_for": {"value": "Fourier transform of model images and sampling at the data u-v points", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "to obtain a Fourier transform of the model image from RADMC-3D and sample it at the same u-v locations as the data"}]}},
+{"name": "emcee", "version": "v3.1.6", "used_for": {"value": "Affine-invariant MCMC ensemble sampling of the visibility model posteriors", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "implemented through the EMCEE v3.1.6 software package"}]}}
+],
+"results_numeric": [
+{"quantity": "Stellar flux, lower setup (star-only fit)", "value": "0.10", "uncertainty": "0.03", "units": "mJy", "from_step": 2, "evidence": [{"loc": "Table 1", "quote": "Stellar Flux (mJy) | $0.10\\pm0.03$ | $0.07\\pm0.03$"}]},
+{"quantity": "Stellar flux, higher setup (star-only fit)", "value": "0.07", "uncertainty": "0.03", "units": "mJy", "from_step": 2, "evidence": [{"loc": "Table 1", "quote": "Stellar Flux (mJy) | $0.10\\pm0.03$ | $0.07\\pm0.03$"}]},
+{"quantity": "Disk flux density, lower setup (0.89 mm, from images)", "value": "0.26", "uncertainty": "0.04", "units": "mJy", "from_step": 3, "evidence": [{"loc": "3 Results", "quote": "we find $F_{\\rm \\nu}=0.26\\pm 0.04$ mJy and $F_{\\rm \\nu}=0.17\\pm 0.03$ mJy, respectively"}]},
+{"quantity": "Disk flux density, higher setup (0.86 mm, from images)", "value": "0.17", "uncertainty": "0.03", "units": "mJy", "from_step": 3, "evidence": [{"loc": "3 Results", "quote": "we find $F_{\\rm \\nu}=0.26\\pm 0.04$ mJy and $F_{\\rm \\nu}=0.17\\pm 0.03$ mJy, respectively"}]},
+{"quantity": "Disk flux density, both setups imaged together", "value": "0.18", "uncertainty": "0.02", "units": "mJy", "from_step": 3, "evidence": [{"loc": "3 Results", "quote": "we measure $F_{\\rm \\nu}=0.18\\pm 0.02$ mJy, where all quoted errors are 1$\\sigma$"}]},
+{"quantity": "Disk outer extent along PA", "value": "~8.6 (about 0.3 arcsec)", "uncertainty": "not stated", "units": "au", "from_step": 1, "evidence": [{"loc": "3 Results", "quote": "which corresponds to $\\sim$8.6 au from the central star at the distance of HD 172555"}]},
+{"quantity": "Gaussian model: centroid radius R", "value": "4.7", "uncertainty": "+2.8/-2.4", "units": "au", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "$R$ (au) | $4.7^{+2.8}_{-2.4}$"}]},
+{"quantity": "Gaussian model: FWHM width Delta R", "value": "12.9", "uncertainty": "+4.8/-5.7", "units": "au", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "$\\Delta R$ (au) | $12.9^{+4.8}_{-5.7}$"}]},
+{"quantity": "Power law model: inner radius R_in (mode)", "value": "4.7", "uncertainty": "+0.3/-2.1", "units": "au", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "$R_{\\rm in}$ (au) | – | $4.7^{+0.3}_{-2.1}$"}]},
+{"quantity": "Power law model: outer radius R_out (mode)", "value": "7.1", "uncertainty": "+3.3/-1.7", "units": "au", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "$R_{\\rm out}$ (au) | – | $7.1^{+3.3}_{-1.7}$"}]},
+{"quantity": "Power law model: exponent p", "value": "0.0", "uncertainty": "+7.9/-5.1", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "$p$ | – | $0.0^{+7.9}_{-5.1}$"}]},
+{"quantity": "Position angle, Gaussian model", "value": "121.5", "uncertainty": "+23.1/-18.7", "units": "deg", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "PA (º) | $121.5^{+23.1}_{-18.7}$ | $123.3^{+25.0}_{-14.7}$"}]},
+{"quantity": "Inclination, Gaussian model (with Gaussian prior)", "value": "71.5", "uncertainty": "+6.3/-6.4", "units": "deg", "from_step": 4, "evidence": [{"loc": "Table 2", "quote": "$i$ (º) | $71.5^{+6.3}_{-6.4}$ | $71.9^{+6.8}_{-6.6}$"}]},
+{"quantity": "Millimeter spectral slope", "value": "2.74", "uncertainty": "0.03", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "4.4 SED modeling", "quote": "which constrains the millimeter spectral slope to $2.74 \\pm 0.03$"}]},
+{"quantity": "Grain size distribution slope q", "value": "3.41", "uncertainty": "0.05", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "4.4 SED modeling", "quote": "we find $q=3.41\\pm 0.05$, which is consistent with steady state collisional models"}]},
+{"quantity": "Dust mass (Gaussian model parameters, T=213 K)", "value": "9.4e-5", "uncertainty": "1.1e-5", "units": "Earth masses", "from_step": 7, "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "we calculate a dust mass of (9.4$\\pm$1.1)$\\times 10^{-5}$ M$_\\oplus$"}]},
+{"quantity": "Dust mass (power law model parameters, T=191 K)", "value": "10.5e-5", "uncertainty": "1.2e-5", "units": "Earth masses", "from_step": 7, "evidence": [{"loc": "5.1 Comparison to previous observations", "quote": "we calculate a dust mass of (10.5$\\pm$1.2)$\\times 10^{-5}$ M$_\\oplus$"}]},
+{"quantity": "Largest impactor mass from Gaussian model", "value": "0.5", "uncertainty": "+19.2/-0.4", "units": "Jupiter masses", "from_step": 8, "evidence": [{"loc": "5.3 Mass of the largest impacting planet", "quote": "we derive a mass estimate of $0.5^{+19.2}_{-0.4}$ M$_{\\rm Jup}$"}]},
+{"quantity": "Largest impactor mass from power law model", "value": "4.5", "uncertainty": "+13.5/-3.3", "units": "Earth masses", "from_step": 8, "evidence": [{"loc": "5.3 Mass of the largest impacting planet", "quote": "we derive an estimate of $4.5^{+13.5}_{-3.3}$ M$_{\\oplus}$"}]},
+{"quantity": "SE/NW peak intensity ratio", "value": "1.21", "uncertainty": "0.39", "units": "dimensionless", "from_step": 9, "evidence": [{"loc": "5.4 Limits on potential asymmetry", "quote": "we find that the ratio of the southeast intensity, $I_{\\mathrm{\\nu, SE}}$, to the northwest intensity, $I_{\\mathrm{\\nu, NW}}$, is 1.21$\\pm$0.39"}]}
+],
+"findings_qualitative": [
+{"value": "Star and an inclined disk of millimeter dust are detected out to ~9 au and down to 2.3 au on-sky, with no significant asymmetry", "evidence": [{"loc": "abstract", "quote": "with no significant asymmetry in the dust distribution"}]},
+{"value": "The millimeter grains sit closer to the star than the small grains traced by scattered light", "evidence": [{"loc": "5.2 Radial distribution", "quote": "the millimeter grains are closer to the star than the smaller grains, potentially by a factor of two"}]}
+],
+"claims": [
+{"hypothesis": "Is the millimeter dust from the giant impact around HD 172555 detectable and resolved?", "experiment": "ALMA Band 7 12-m array continuum imaging with star subtraction", "result": "Disk detected out to ~8.6 au with the star separated; flux 0.18 +/- 0.02 mJy", "finding": "First spatially resolved millimeter image of the post-impact dust", "support": "supported", "evidence": [{"loc": "Summary", "quote": "We clearly detect the star and the disk; after subtracting the star interferometrically, we reveal an inclined disk of millimeter dust emission"}]},
+{"hypothesis": "What is the radial distribution of the millimeter dust?", "experiment": "Gaussian and power law RADMC-3D models fit to visibilities with emcee", "result": "Gaussian R = 4.7 au, width 12.9 au; power law R_in 4.7 and R_out 7.1 au", "finding": "Surface density most likely peaks around 5 au but the width is model-dependent at this S/N", "support": "partially", "evidence": [{"loc": "Summary", "quote": "the radial disk surface density distribution most likely peaks around $\\sim$5 au, while the radial width inferred remains dependent on the model"}]},
+{"hypothesis": "Do the millimeter grains and small grains share the same radial distribution?", "experiment": "Compare model surface density with scattered-light profile", "result": "Millimeter grains are closer to the star, possibly by a factor of two with high uncertainty", "finding": "Offset could result from radiation pressure plus gas drag if gas density is high enough", "support": "partially", "evidence": [{"loc": "abstract", "quote": "an outward radial offset of the small grains traced by scattered light observations compared to the millimeter grains"}]},
+{"hypothesis": "Is the millimeter grain size distribution consistent with collisional evolution and does it differ from micron grains?", "experiment": "SED fitting including the ALMA fluxes and conversion of the millimeter slope to q", "result": "Slope 2.74 +/- 0.03 giving q = 3.41 +/- 0.05, versus 3.95 for micron grains from the literature", "finding": "A break in the grain size distribution, confirming the overabundance of small grains", "support": "supported", "evidence": [{"loc": "abstract", "quote": "SED modeling implies a size distribution slope for the millimeter grains consistent with the expectation of collisional evolution and flatter than inferred for the micron-sized grains"}]},
+{"hypothesis": "Is there an azimuthal asymmetry in the millimeter dust?", "experiment": "Compare SE and NW peak intensities in the disk-only image", "result": "Ratio 1.21 +/- 0.39, consistent with 1", "finding": "No asymmetry detected, though one below 117% could be present", "support": "supported", "evidence": [{"loc": "5.4 Limits on potential asymmetry", "quote": "is consistent with 1, implying that no southeast-northwest asymmetry is detected in our data"}]},
+{"hypothesis": "What mass was the largest impacting planet?", "experiment": "Scaling relation with R and Delta R samples from each model", "result": "0.5 MJup (Gaussian) and 4.5 Mearth (power law)", "finding": "Power law model gives a terrestrial-mass impactor that is physically preferable, but estimates remain highly uncertain", "support": "partially", "evidence": [{"loc": "Summary", "quote": "However, our estimates remain highly uncertain with the S/N of our observations."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Follow-up high resolution 0.87 mm continuum observations to constrain the radial and azimuthal distribution of the impact dust; the earlier ALMA data were unresolved", "evidence": [
+{"loc": "Introduction", "quote": "because these observations were spatially unresolved, the spatial distribution of the millimeter grains remains unknown"}
+]},
+{"field": "why_this_method", "value": "Visibility-space modeling to formally constrain radial structure and geometry", "evidence": [{"loc": "4.1 The physical model", "quote": "In order to formally constrain the radial structure and geometry of dust, we fit our visibilities using two models"}]},
+{"field": "how_they_decided_enough", "value": "Visual check of MCMC convergence", "evidence": [{"loc": "4.2 The visibility modeling process", "quote": "We ensured visual convergence of the MCMC chains"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Gaussian vs power law radial models; the data cannot distinguish them, though the power law is argued to be physically preferable from the impactor mass", "evidence": [
+{"loc": "4.3 Visibility modeling results", "quote": "our data cannot distinguish between the two models"},
+{"loc": "5.3 Mass of the largest impacting planet", "quote": "This makes the power law model physically preferable to the Gaussian model."}
+]}
+],
+"limitations_admitted": [
+{"value": "Radial width is model-dependent at the S/N of the data", "evidence": [{"loc": "abstract", "quote": "while the width inferred remains model-dependent at the S/N of the data"}]},
+{"value": "Retrieved surface density distributions depend on the assumed radial temperature profile", "evidence": [{"loc": "4.1 The physical model", "quote": "We note that the retrieved surface density distributions we will discuss are dependent on our choice of radial temperature profile."}]}
+],
+"referee_caveats_inferred": [
+"Parameter ranges of the uniform priors, RADMC-3D grain properties and line-free channel selection are not given, so the posterior cannot be reproduced exactly",
+"Inclination is prior-driven (Gaussian prior sd 8.2 deg) and the posterior is as broad as the prior, so geometry is essentially unconstrained",
+"Gaussian-model dust mass and impactor mass rely on a single assumed blackbody temperature and opacity law",
+"Star-subtraction u-v cutoffs were chosen by eye",
+"Offset to scattered-light grains is based on a model-dependent width"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Line-flagged channel ranges and calibrator details",
+"Prior ranges, RADMC-3D settings and walker initialisation",
+"Stellar mass and luminosity sources, SED photometry table",
+"imview flux regions"
+],
+"estimated_data_volume_inferred": "Roughly 100-300 GB raw for about 9 execution blocks of Band 7 12-m data with fine channels in the higher setup; tens of GB calibrated; the averaged continuum visibilities are small",
+"score_inferred": 3,
+"score_reason": "Project code and imaging settings (weighting, taper, robust, CASA version) are given, as are MCMC walker/step counts, software versions and tabulated posterior values; but priors ranges, RADMC-3D setup, line-flag channels and star-fit details are missing, so exact numbers need reconstruction.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state that the data are public and key modeling inputs (prior ranges, RADMC-3D setup, line-free channels) are not given, so the recipe is incomplete.",
+"methods_papers": [
+{"citation": "(cite: matra_dust_2020)", "why": "Procedure for creating a disk-only image by removing the stellar point source in the u-v plane"},
+{"citation": "(cite: tazzari_galario_2018)", "why": "GALARIO visibility sampling code"},
+{"citation": "(cite: yelverton_statistically_2019)", "why": "SED fitting methodology"},
+{"citation": "(cite: marino_gap_2018; matra_kuiper_2019)", "why": "Weight rescaling in visibility fitting"}
+],
+"companion_papers": [
+{"citation": "future companion paper (not cited by key)", "why": "In-depth analysis of the spectral lines: detection, kinematics and composition"},
+{"citation": "(cite: schneiderman_carbon_2021)", "why": "Earlier unresolved ALMA 1.3 mm continuum and 12CO J=2-1 observations of HD 172555"}
+],
+"related_projects_or_surveys": []
+}

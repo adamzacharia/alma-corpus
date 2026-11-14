@@ -1,0 +1,549 @@
+{
+ "bibcode": "2021A&A...652A..66P",
+ "title": "ALMA multiline survey of the ISM in two quasar host-companion galaxy pairs at z &gt; 6",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039696",
+ "arxiv_id": "2105.09958",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "How do star formation and AGN activity shape the multiphase ISM (dust, ionized, atomic and molecular gas) in two z>6 quasar host galaxies and their nearby companion galaxies, from multi-line ALMA band 3-6 observations plus CLOUDY PDR/XDR models",
+ "alma_project_codes": [
+  "2017.1.00139.S",
+  "2019.1.00147.S",
+  "2015.1.01115.S"
+ ],
+ "data": {
+  "bands": "Bands 4, 5, 6 (Cycle 5; PJ308-21 only band 6) and Band 3 (Cycle 7); plus Cycle 3 band 6 [CII] data",
+  "arrays": "ALMA 12m array, 43-48 antennas; Cycle 5 compact C43-2/C43-3, Cycle 7 C43-4",
+  "angular_resolution": "~1.00 to ~1.80 arcsec (observations designed not to resolve the sources)",
+  "sensitivity": "Continuum and cube RMS per setup given in the observation table; cube RMS averaged over the entire bandwidth at 40 km/s channel width"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA band 6 data and [CII] line/continuum measurements of the same systems, taken from Decarli+2017",
+    "evidence": [
+     {
+      "loc": "Dust properties: FIR continuum",
+      "quote": "together with ALMA band 6 data presented in (cite: Decarli+2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Decarli+2017)"
+  },
+  {
+   "what": {
+    "value": "[CII]-based source redshifts used as the systemic redshifts",
+    "evidence": [
+     {
+      "loc": "Dust properties: FIR continuum",
+      "quote": "redshifts reported in (cite: Decarli+2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Decarli+2017)"
+  },
+  {
+   "what": {
+    "value": "Rest frequencies of lines taken from the Splatalogue database",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Splatalogue database for astronomical spectroscopy"
+     }
+    ]
+   },
+   "citation": "Splatalogue (https://www.cv.nrao.edu/php/splat)"
+  },
+  {
+   "what": {
+    "value": "Local LIRG sample (f([CII]PDR), line deficits vs T_dust) used for comparison",
+    "evidence": [
+     {
+      "loc": "Fraction of [CII] emission from PDRs",
+      "quote": "with a sample of local luminous infrared galaxies (LIRGs) reported in (cite: Diaz-Santos+2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Diaz-Santos+2017)"
+  },
+  {
+   "what": {
+    "value": "Compilation of L[CI]/L_TIR versus T_dust for local and high-z galaxies and AGN",
+    "evidence": [
+     {
+      "loc": "The [CI]369um/TIR ratio",
+      "quote": "for a variety of galaxies and AGN in the local and high-$z$ Universe (cite: Valentino+2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Valentino+2020)"
+  },
+  {
+   "what": {
+    "value": "Average CO(1-0)-normalized CO SLEDs of low-z starbursts and AGN",
+    "evidence": [
+     {
+      "loc": "CO(1–0)–normalized SLEDs",
+      "quote": "the average CO(1–0)–normalized SLEDs of low-$z$ starburst galaxies and AGN, respectively (cite: Mashian+2015; Rosenberg+2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Mashian+2015; Rosenberg+2015)"
+  },
+  {
+   "what": {
+    "value": "Sample of nearby ULIRGs with H2O lines used for L_H2O-L_TIR and H2O SLED comparison",
+    "evidence": [
+     {
+      "loc": "The L_H2O - L_TIR relation",
+      "quote": "with a sample of nearby ULIRGs presented in (cite: Yang+2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Yang+2013)"
+  },
+  {
+   "what": {
+    "value": "Atomic carbon abundance ratio X[CI]/X[H2] = (8.4 +/- 3.5)e-5 and T_ex = 30 K for the CI mass",
+    "evidence": [
+     {
+      "loc": "Mass budgets",
+      "quote": "using the atomic carbon-to-molecular hydrogen abundance ratio derived by (cite: Walter+2011) for a sample of $z=2-3$ FIR-bright sources"
+     },
+     {
+      "loc": "Mass budgets",
+      "quote": "Assuming an excitation temperature of $T_{\\rm ex}=30\\,{\\rm K}$ (cite: Walter+2011)"
+     }
+    ]
+   },
+   "citation": "(cite: Walter+2011)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 0.8 (K km/s pc^2)^-1",
+    "evidence": [
+     {
+      "loc": "CO(1–0)–normalized SLEDs",
+      "quote": "by employing the typical value of $\\alpha_{\\rm CO} = 0.8\\,({\\rm K\\, km\\,s^{-1}\\,pc^2})^{-1}$ (cite: Downes+1998)"
+     }
+    ]
+   },
+   "citation": "(cite: Downes+1998)"
+  },
+  {
+   "what": {
+    "value": "AGN template SED used as XDR incident continuum (BLR line-intensity atlas continuum)",
+    "evidence": [
+     {
+      "loc": "CLOUDY models of photo- and X-ray dissociation regions",
+      "quote": "with parameters set in order to generate the continuum used in a large atlas of model broad line region line intensities (cite: Korista+1997)"
+     }
+    ]
+   },
+   "citation": "(cite: Korista+1997)"
+  },
+  {
+   "what": {
+    "value": "ISM dust grain size distribution and abundance in CLOUDY",
+    "evidence": [
+     {
+      "loc": "CLOUDY models of photo- and X-ray dissociation regions",
+      "quote": "stored in CLOUDY with a size distribution and abundance from (cite: Mathis+1997)"
+     }
+    ]
+   },
+   "citation": "(cite: Mathis+1997)"
+  },
+  {
+   "what": {
+    "value": "Gas-phase nitrogen abundance chi(N) = 9.3e-5 for the minimum ionized hydrogen mass",
+    "evidence": [
+     {
+      "loc": "Mass budgets",
+      "quote": "$\\chi({\\rm N}) = 9.3\\times10^{-5}$ (cite: Savage+1996)"
+     }
+    ]
+   },
+   "citation": "(cite: Savage+1996)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image and continuum-subtract the data",
+   "method": "CASA default pipeline calibration; natural-weighted tclean cubes (LSB and USB, 40 km/s channels, 0.1 arcsec pixels) cleaned to ~1 sigma inside two masks; MFS continuum from line-free channels; uvcontsub constant continuum fit; primary-beam correction; no self-calibration",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "cube channel width 40 km/s, LSB and USB cubes per setup",
+    "pixel size 0.1 arcsec",
+    "line-free width 300 km/s adopted where no line is detected"
+   ],
+   "assumptions": [
+    "continuum constant with frequency within each ~4 GHz sideband (zeroth-order polynomial)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract single-pixel spectra, fit lines and continuum, derive line luminosities",
+   "method": "Take the brightest continuum pixel of each band, extract the beam-integrated spectrum from the full cube, fit a constant plus Gaussian with emcee; luminosities from the Carilli and Walter relations",
+   "software": [
+    "emcee",
+    "CASA"
+   ],
+   "key_parameters": [
+    "best values and uncertainties from the 50th, 16th, 84th percentiles of the posteriors",
+    "L_line[Lsun] = 1.04e-3 S dv nu_obs D_L^2",
+    "significance sigma = sqrt(dv FWHM) x <RMS>; 3 sigma upper limits assume FWHM = 300 km/s"
+   ],
+   "assumptions": [
+    "sources unresolved or at best marginally resolved, so the peak pixel equals the integrated flux and no aperture correction is needed"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit dust SEDs and derive L_FIR, L_TIR and SFR_IR",
+   "method": "Optically thin modified blackbody with CMB contrast (da Cunha+2013) fitted to the continuum fluxes plus Decarli+2017 band 6 data; integrate over 40-400 um (FIR) and 8-1000 um (TIR); SFR_IR = 1.49e-10 L_TIR/Lsun",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "box priors log Mdust > 0 and beta in (1, 2.5)",
+    "Gaussian prior on T_dust, mean 47 K, sigma 5 K",
+    "companions refit with T_dust prior centred on 35 K",
+    "nu_0 = 352.7 GHz for k_d(nu) = k_0 (nu/nu_0)^beta"
+   ],
+   "assumptions": [
+    "optically thin dust emission",
+    "T_CMB ~19 K at z=6; the CMB heating correction to T_dust(z) is ignored (<2%)",
+    "IR luminosity dominated by star formation; Kroupa IMF",
+    "LCDM with H0 = 69.3 km/s/Mpc, Omega_m = 0.287"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate the fraction of [CII] emission from PDRs",
+   "method": "f([CII]PDR) = 1 - 3 [NII]205/[CII]158, using the Diaz-Santos+2017 approach",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "[CII]ion/[NII]205 ~3 as in HII regions; metallicity likely high"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare line deficits and line/TIR ratios with literature",
+   "method": "Compare [CII]/TIR, [NII]/TIR and [CI]/TIR versus T_dust and f([CII]PDR) with the Diaz-Santos+2017 LIRGs and high-z quasars",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Constrain density and radiation field with CLOUDY PDR/XDR grids (atomic lines)",
+   "method": "Compare [CII]/[CI], [CI]/TIR and [CII]/TIR (with [CII] corrected for the PDR fraction) to CLOUDY grids (N_H = 1e23 for [CII]/[CI])",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "grid of 270x2 models in n_H, G0 or F_X, N_H"
+   ],
+   "assumptions": [
+    "single plane-parallel semi-infinite cloud illuminated by PDR or XDR field"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Build CO(1-0)-normalized SLEDs and fit with CLOUDY PDR+XDR models",
+   "method": "Estimate L'CO(1-0) from dust mass, gas-to-dust ratio and alpha_CO; normalize measured CO lines; fit PDR, XDR and composite PDR+XDR CLOUDY models by minimizing chi-square",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "gas-to-dust ratio 100",
+    "alpha_CO = 0.8 (K km/s pc^2)^-1",
+    "composite model W_PDR F_PDR + W_XDR F_XDR at N_H = 1e23"
+   ],
+   "assumptions": [
+    "75% of the dust-derived gas mass is molecular"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Model H2O SLED and H2O/OH ratios with CLOUDY",
+   "method": "Normalize H2O lines to 3_21-3_12 and compare with CLOUDY predictions at N_H = 1e24 (PDR and XDR); compare H2O/OH163 ratios in a diagnostic plot",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "models shown only when predicted H2O 3_12-2_21 intensity is at least 1e-2 x that of CO(10-9)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Estimate mass budgets (CI, H2, minimum H+, dust-based gas)",
+   "method": "CI mass from L'[CI] (Weiss+2003) with T_ex = 30 K; H2 mass from X[CI]/X[H2]; minimum H+ mass from [NII]205 (Ferkinhoff+2011); gas mass from dust mass and gas-to-dust ratio 70-100",
+   "software": [],
+   "key_parameters": [
+    "X[CI]/X[H2] = M_CI/(6 M_H2) = (8.4 +/- 3.5)e-5",
+    "chi(N) = 9.3e-5 for the minimum H+ mass"
+   ],
+   "assumptions": [
+    "T_ex = 30 K (50 K gives ~40% lower M_CI); LTE, optically thin, 2-level approximation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust masses of the four sources (range)",
+   "value": "0.5e8 - 0.5e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "as reflected by the enormous amount of dust ($M_{\\rm dust}\\approx0.5\\times10^8-0.5\\times10^9\\,M_{\\astrosun}$) heated at relatively high temperature"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of [CII]158 from PDRs, PJ231-20 QSO and companion",
+   "value": ">~80%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fraction of [CII] emission from PDRs",
+     "quote": "we conclude that PDRs account for $\\apprge 80\\%$ of the"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CI]369/L_TIR, PJ231-20 QSO",
+   "value": "2.6e-6",
+   "uncertainty": "+1.4/-1.1 (x1e-6)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The [CI]369um/TIR ratio",
+     "quote": "$L_{\\rm [CI]{369\\mu m}}/L_{\\rm TIR} =2.6^{+1.4}_{-1.1}\\times 10^{-6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI]369 detection significance, PJ231-20 QSO",
+   "value": "~4.5 sigma",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The [CI]369um fine-structure line",
+     "quote": "in the PJ231-20 QSO with a significance of $\\sim 4.5\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII]158/L[CI]369 (PDR-corrected), PJ231-20 QSO",
+   "value": "46",
+   "uncertainty": "+30/-14",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "[CII]158um/[CI]369um ratio",
+     "quote": "$L_{\\rm [CII]{158\\mu m}}/L_{\\rm [CI]{\\rm 369\\mu m}}=46^{+30}_{-14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "FUV field G0 from [CI]/TIR, [CII]/TIR and [CII]/[CI], PJ231-20 QSO",
+   "value": "3e4 - 1e5",
+   "uncertainty": "not stated",
+   "units": "Habing units (G0)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "[CII]158um/[CI]369um ratio",
+     "quote": "we constrain FUV flux to $G_0 \\simeq 3\\times10^4-10^5$ in the PJ231-20 QSO"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CO(1-0) estimate, PJ231-20 QSO",
+   "value": "~2.4e6",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO(1–0)–normalized SLEDs",
+     "quote": "we find $L_{\\rm CO(1-0)} \\sim 2.4 \\times 10^6\\,L_{\\astrosun}$ for PJ231-20 QSO"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CO(7-6)/L_CO(1-0), PJ231-20 QSO",
+   "value": "93",
+   "uncertainty": "+13/-12",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO SLED models",
+     "quote": "we measured $L_{\\rm CO(7-6)}/L_{\\rm CO(1-0)}=93_{-12}^{+13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDR and XDR weights in the composite CO SLED fit, PJ231-20 QSO",
+   "value": "W_PDR = 0.90, W_XDR = 0.10",
+   "uncertainty": "+/-0.04 each",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO SLED models",
+     "quote": "The best-fit model has $W_{\\rm PDR}=0.90\\pm0.04$ and $W_{\\rm XDR}=0.10\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit composite CO SLED parameters, PJ231-20 QSO",
+   "value": "n_H(PDR) ~4e2 cm^-3, G0 ~1e5, n_H(XDR) ~5e5 cm^-3, F_X ~10 erg/s/cm^2",
+   "uncertainty": "not stated",
+   "units": "cm^-3, Habing units, erg s^-1 cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The best-fit PDR component indicates $n_{\\rm H}^{\\rm PDR}\\sim4\\times10^{2}\\,{\\rm cm^{-3}}$ and $G_0\\sim1\\times10^5$, while the XDR component is determined by $n_{\\rm H}^{\\rm XDR}\\sim5\\times10^5\\,{\\rm cm^{-3}}$ and $F_{\\rm X}\\sim 10\\, {\\rm erg\\,s^{-1}\\,cm^{-2}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O(3_21-3_12)/L_TIR, PJ231-20 QSO",
+   "value": "~1.2e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "The L_H2O - L_TIR relation",
+     "quote": "we find $L_{\\rm H_2O}/ L_{\\rm TIR}\\sim 1.2\\times10^{-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit H2O SLED model, PJ231-20 QSO (single PDR)",
+   "value": "n_H ~0.8e5 cm^-3, G0 ~5e5, N_H = 1e24 cm^-2",
+   "uncertainty": "not stated",
+   "units": "cm^-3, Habing units, cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "CLOUDY best-fit models are obtained using a single PDR component with $n_{\\rm H}\\sim 0.8\\times10^5\\,{\\rm cm^{-3}}$, $G_0\\sim 5\\times10^5$ and high hydrogen column density of $N_{\\rm H}=10^{24}\\,{\\rm cm^{-2}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_OH/L_TIR, PJ231-20 and PJ308-21 quasars",
+   "value": "~2-4e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "OH transitions",
+     "quote": "We find similar $L_{\\rm OH}/L_{\\rm TIR}$ ratios $\\sim 2-4\\times10^{-5}$ in both PJ231-20 and PJ308-21 quasars"
+    }
+   ]
+  },
+  {
+   "quantity": "Neutral carbon mass, PJ231-20 QSO",
+   "value": "0.7e7",
+   "uncertainty": "+/-0.3e7",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Mass budgets",
+     "quote": "we find for the PJ231-20 QSO a neutral carbon mass of $M_{\\rm CI} = (0.7\\pm0.3)\\times10^7\\,M_{\\astrosun}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from CI, PJ231-20 QSO",
+   "value": "1.3e10",
+   "uncertainty": "+1.1/-0.6 (x1e10)",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Mass budgets",
+     "quote": "we obtain a molecular gas mass of $M_{\\rm H_2} = 1.3^{+1.1}_{-0.6}\\times10^{10}\\,M_{\\astrosun}$ for PJ231-20 QSO"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum ionized hydrogen mass, PJ231-20 QSO host and companion",
+   "value": "4.1e8 (QSO), 1.8e8 (companion)",
+   "uncertainty": "+/-1.6e8 (QSO), +/-1.2e8 (companion)",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Mass budgets",
+     "quote": "This gives $M_{\\rm min}({\\rm H^+})= (4.1\\pm1.6)\\times10^8\\,M_{\\astrosun}$, and $(1.8\\pm1.2)\\times10^8\\,M_{\\astrosun}$ for PJ231-20 QSO host and companion galaxy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-based gas mass, PJ231-20 QSO host and companion (gdr 70-100)",
+   "value": "(3.6-5.1)e10 (QSO), (1.6-3.4)e10 (companion)",
+   "uncertainty": "range from gas-to-dust ratio choice",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Mass budgets",
+     "quote": "we obtain (atomic and molecular) gas masses of $M_{\\rm gas} = (3.6 - 5.1)\\times 10^{10}\\,M_{\\astrosun}$ and $(1.6 - 3.4)\\times 10^{10}\\,M_{\\astrosun}$ for the PJ231-20 QSO host and companion galaxy respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Flux, bandpass and phase calibrators and pipeline version per execution block; whether archive products or a re-run pipeline were used",
+  "Spectral window layout and exact channel ranges of the line-free channels and the 'brightest pixel' positions used for spectra",
+  "Clean threshold in mJy/beam, number of iterations, image size, deconvolver and mask radii",
+  "emcee configuration (walkers, steps, burn-in) and the line-fit priors (Gaussian amplitude, width, centre limits)",
+  "Dust opacity normalization k_0 (value at nu_0 = 352.7 GHz) and the luminosity distance values used",
+  "Which upper-limit continuum data points enter the dust fits and the exact flux table mapping to Table 2 rows per source",
+  "CLOUDY input scripts (stopping criteria, commands, line output list, treatment of the H2O/OH collisional data) and how the grid was interpolated",
+  "How L_CO(1-0) was derived for the companions (dust T prior) and the chi-square weights/free-parameter ranges in the PDR+XDR CO SLED fit",
+  "Exact statistics used in the H2O SLED fit and in the diagnostic-plot comparison with the model grid",
+  "Collisional/radiative data and partition functions used for the mass-budget formulas beyond the quoted values"
+ ],
+ "missing_for_reproduction": [
+  "CLOUDY input scripts and the model grid files",
+  "emcee settings and line-fit priors",
+  "Calibrator and spectral window details for the three ALMA projects",
+  "k_0 and luminosity distance values for the dust SED fit",
+  "Fit statistic and parameter ranges for the CO and H2O SLED fits"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "The three ALMA project codes and the main processing choices are given and many numeric results are reported, but calibrators, fit settings and the CLOUDY inputs are not, so full reproduction needs assumptions.",
+ "rediscovery_reason": "Project codes are printed, the pipeline plus tclean/uvcontsub/single-pixel emcee recipe and dust SED fit are described and give numeric line fluxes, dust masses and ratios; CLOUDY modelling steps would need approximation.",
+ "source_card": "cards/2021A%26A...652A..66P/sonnet/card.md"
+}

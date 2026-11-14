@@ -1,0 +1,252 @@
+{
+ "bibcode": "2015MNRAS.450L..80B",
+ "title": "ALMA observations of 99 GHz free-free and H40α line emission from star formation in the centre of NGC 253",
+ "year": 2015,
+ "doi": "10.1093/mnrasl/slv053",
+ "arxiv_id": "1504.02142",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Use ALMA 99 GHz free-free continuum and H40alpha emission to derive electron temperature, photoionizing photon rate, SFR and dust attenuation in the centre of NGC 253",
+ "alma_project_codes": [
+  "2011.0.00172.S",
+  "2011.0.00061.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "Cycle 0, 14-20 antennas operational",
+  "angular_resolution": "1.9x1.6 arcsec (~30 pc)",
+  "sensitivity": "Noise per 3.9 MHz channel: 5.2 mJy (total), 0.9-1.3 mJy (regions)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Near-infrared Pabeta and Brgamma line fluxes and attenuation values A_J=2.00±0.36, A_K=0.87±0.16",
+    "evidence": [
+     {
+      "loc": "4 Analysis",
+      "quote": "values of $A_J=2.00 \\pm 0.36$ and $A_K=0.87\\pm0.16$ for an attenuation sheet as reported by (cite: engelbracht98)"
+     }
+    ]
+   },
+   "citation": "(cite: engelbracht98)"
+  },
+  {
+   "what": {
+    "value": "Emissivity and effective recombination coefficient alpha_B tables (case B, ne=1e3)",
+    "evidence": [
+     {
+      "loc": "4 Analysis",
+      "quote": "interpolated between the $\\epsilon_\\nu$ values from (cite: storey95) for case B recombination"
+     }
+    ]
+   },
+   "citation": "(cite: storey95)"
+  },
+  {
+   "what": {
+    "value": "Radio-to-mm SED data used to refit free-free fraction",
+    "evidence": [
+     {
+      "loc": "4 Analysis",
+      "quote": "(cite: rodriguezrico06) found a much smaller contribution of free-free emission to the central 30 arcsec"
+     }
+    ]
+   },
+   "citation": "(cite: rodriguezrico06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reprocess and image data",
+   "method": "Recalibrate in CASA, rescale EB amplitudes to J0137-245, concatenate, clean to cubes with and without continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting, 0.1 arcsec pixels, 3.9 MHz channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line and continuum properties",
+   "method": "Measure H40alpha flux, mean velocity, FWHM in continuum-subtracted cube; continuum by fitting and removing line; integrate over central 20x10 arcsec and E, C, W regions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Determine free-free fraction",
+   "method": "Refit SED of Rodriguez-Rico et al. allowing synchrotron slope to vary",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Continuum multiplied by 0.70±0.10"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive electron temperature",
+   "method": "Solve line-to-continuum ratio equation for Te using interpolated Storey & Hummer emissivities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Case B, ne = 1e3 cm^-3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive Q and SFR",
+   "method": "Starburst99 conversion; SFR from line and continuum equations adapted from Scoville & Murchikova",
+   "software": [
+    "Starburst99"
+   ],
+   "key_parameters": [
+    "Z=0.040, Kroupa IMF 0.1-100 Msun, average of zero and 40% break-up rotation Geneva tracks"
+   ],
+   "assumptions": [
+    "Continuous star formation >5 Myr; D = 3.44 Mpc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive dust attenuation",
+   "method": "Compare Engelbracht et al. Pabeta and Brgamma fluxes to 0.7x total H40alpha flux assuming attenuating sheet",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "ne=1e3 cm^-3, Te=6200±400 K, sheet geometry"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Electron temperature range",
+   "value": "3700-4500",
+   "uncertainty": "±300-400",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We calculate electron temperatures of 3700-4500 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Q",
+   "value": "3.2e53",
+   "uncertainty": "0.2e53",
+   "units": "s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$(3.2\\pm0.2)\\times10^{53}$ s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (central 20x10 arcsec)",
+   "value": "1.73",
+   "uncertainty": "0.12",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$1.73\\pm0.12$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total H40alpha flux",
+   "value": "6.91",
+   "uncertainty": "0.80",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$6.91 \\pm 0.80$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total 99.02 GHz free-free flux density",
+   "value": "146.5",
+   "uncertainty": "17.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$146.5 \\pm 17.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "A_Pabeta",
+   "value": "5.0",
+   "uncertainty": "0.2",
+   "units": "mag",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Analysis",
+     "quote": "$A_{Pa\\beta}=5.0\\pm0.2$ and $A_{Br\\gamma}=4.2\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "A_Brgamma",
+   "value": "4.2",
+   "uncertainty": "0.2",
+   "units": "mag",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Analysis",
+     "quote": "$A_{Pa\\beta}=5.0\\pm0.2$ and $A_{Br\\gamma}=4.2\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central H40alpha FWHM",
+   "value": "191",
+   "uncertainty": "4",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data",
+     "quote": "with a FWHM of $191\\pm4$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, iteration count and mask definitions",
+  "Line-free channels used for continuum fitting and order of baseline fit",
+  "Flagging details",
+  "Exact SED data points and fit used to derive 70% free-free fraction",
+  "Emissivity and alpha_B interpolation values",
+  "Region definitions for E, C, W",
+  "Engelbracht line fluxes used for attenuation",
+  "Source coordinates"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters",
+  "SED data for free-free fraction",
+  "Region apertures",
+  "Interpolation values for emissivity"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear analytic recipe, but imaging and SED-fit details are missing.",
+ "rediscovery_reason": "Public data, numeric results from explicit equations, though some inputs are not given.",
+ "source_card": "cards/2015MNRAS.450L..80B/sonnet/card.md"
+}

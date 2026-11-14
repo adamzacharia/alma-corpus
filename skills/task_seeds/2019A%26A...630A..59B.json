@@ -1,0 +1,278 @@
+{
+ "bibcode": "2019A&A...630A..59B",
+ "title": "Widespread QSO-driven outflows in the early Universe",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201833557",
+ "arxiv_id": "1806.00786",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Do high-z QSOs show faint broad [CII] wings tracing cold outflows, detectable by stacking archival ALMA [CII] data?",
+ "alma_project_codes": [
+  "2011.0.00243.S",
+  "2012.1.00604.S",
+  "2012.1.00676.S",
+  "2012.1.00882.S",
+  "2013.1.01153.S",
+  "2015.1.01115.S",
+  "2016.1.01515.S",
+  "2015.1.00997.S"
+ ],
+ "data": {
+  "bands": "Band 6 or 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.3 to 1.2 arcsec (average beam axis)",
+  "sensitivity": "~0.3 to ~0.8 mJy/beam per 30 km/s channel for individual sources; stack 0.06 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mrk231-like template used to compute L_FIR",
+    "evidence": [
+     {
+      "loc": "Sample and data reduction",
+      "quote": "We computed the FIR luminosity by using an Mrk231-like template (cite: Polletta07)"
+     }
+    ]
+   },
+   "citation": "Polletta07"
+  },
+  {
+   "what": {
+    "value": "AGN bolometric correction from 1450 A luminosity",
+    "evidence": [
+     {
+      "loc": "Sample and data reduction",
+      "quote": "by applying the bolometric correction from (cite: Runnoe12)"
+     }
+    ]
+   },
+   "citation": "Runnoe12"
+  },
+  {
+   "what": {
+    "value": "Low-z AGN outflow energetics for comparison (30 AGN)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the collection of 30 low redshift AGN by (cite: Flutsch18)"
+     }
+    ]
+   },
+   "citation": "Flutsch18"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image archival data and subtract continuum",
+   "method": "CASA clean cubes (Hogbom, natural, 0.05'' pixels, 30 km/s channels); zeroth-order uv-plane continuum fit to |v|>1500 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Niter 500-1000, threshold 3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and fit [CII] core per source",
+   "method": "Spectra from region of four beams; single Gaussian fit for redshift and core parameters",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Stack spectra and cubes",
+   "method": "Variance-weighted stack with weights 1/sigma^2 per channel after aligning at [CII] rest frequency and centering on continuum peak; both 1D spectra and 3D cubes",
+   "software": [],
+   "key_parameters": [
+    "n=48; channels with atmospheric transmission <0.5 excluded"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit broad [CII] wings",
+   "method": "chi2 minimisation with core Gaussian plus broad Gaussian, all parameters free, weights W'_k",
+   "software": [
+    "scipy curve_fit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Size of outflow from stacked cube",
+   "method": "Beam-deconvolved half-light radius of |v|>400 km/s map",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Outflow mass, rate, power, momentum load",
+   "method": "Hailey-Dunsheath10 mass relation; Mdot=v M/R; Edot=0.5 Mdot v^2; momentum load vs L_AGN/c",
+   "software": [],
+   "key_parameters": [
+    "v_out=|Delta v|+FWHM_broad/2; R_out~3.5 kpc"
+   ],
+   "assumptions": [
+    "optically thin [CII], n>>n_crit, X_C+~1e-4, T=200 K, 0.7 PDR fraction"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "FWHM of broad [CII] component, whole stack",
+   "value": "1730",
+   "uncertainty": "210",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1730 $\\pm$ 210"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of [CII] core, whole stack",
+   "value": "390",
+   "uncertainty": "30",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Stacked spectrum",
+     "quote": "FWHM$^{\\rm core}_{\\rm[CII]}$ = 390 $\\pm30$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad [CII] significance (fit)",
+   "value": "5.6",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Stacked spectrum",
+     "quote": "The significance estimated through the fitting analysis is $5.6\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] broad, whole stack",
+   "value": "4.1",
+   "uncertainty": "0.7",
+   "units": "1e8 Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "4.1$\\pm$0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad-to-narrow flux ratio f_[CII]",
+   "value": "0.22",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.22 $\\pm$ 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad component velocity shift",
+   "value": "-90",
+   "uncertainty": "40",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "-90 $\\pm$ 40"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow radius R_out",
+   "value": "~3.5",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Stacked Cube",
+     "quote": "$R_{\\rm out}$ corresponds to $\\sim3.5$ kpc at $\\langle z_{\\rm stack}\\rangle$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflowing neutral gas mass",
+   "value": "3.7e8",
+   "uncertainty": "0.7e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$M_{\\rm out} = (3.7\\pm0.7) \\times10^8$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate, whole stack",
+   "value": "100",
+   "uncertainty": "20",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$\\dot{M}_{\\rm out} = 100\\pm20$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sensitivity improvement vs Cicone15 J1148+5251",
+   "value": "~14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Stacked spectrum",
+     "quote": "a factor of $\\sim14$ lower than that of the J1148$+$5251 observations of (cite: Cicone15)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "List of the 48 QSOs with per-source flux scaling/calibration corrections (table not in text)",
+  "Exact clean threshold and iteration count per source",
+  "Which sources were calibrated manually vs pipeline",
+  "Exact aperture definition/centering and handling of channels with partial coverage",
+  "Initial guesses for the Gaussian fits",
+  "How the 100 empty positions were chosen",
+  "Fruchter&Hook-based cube regridding details"
+ ],
+ "missing_for_reproduction": [
+  "Source list table with per-source parameters not in text",
+  "Stacking code not released",
+  "Details of flux calibration improvements"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data, clear stacking recipe and numeric results, but sample table and per-source calibration details are missing.",
+ "rediscovery_reason": "Data public, recipe mostly complete, results numeric.",
+ "source_card": "cards/2019A%26A...630A..59B/sonnet/card.md"
+}

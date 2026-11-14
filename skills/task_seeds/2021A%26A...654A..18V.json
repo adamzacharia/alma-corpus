@@ -1,0 +1,367 @@
+{
+ "bibcode": "2021A&A...654A..18V",
+ "title": "Maser emission from the CO envelope of the asymptotic giant branch star W Hydrae",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202141656",
+ "arxiv_id": "2109.05048",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "Is there CO maser emission in the J=3-2 line around the AGB star W Hya, where does it come from, and what pumps it",
+ "alma_project_codes": [
+  "2015.1.01446.S",
+  "2016.A.00029.S",
+  "2016.2.00025.S",
+  "2017.1.00824.S"
+ ],
+ "data": {
+  "bands": "ALMA band 7",
+  "arrays": "not stated",
+  "angular_resolution": "31x21 mas (-63 deg from north) and 29x21 mas (-68 deg) for the two epochs",
+  "sensitivity": "rms ~3.5 mJy/beam near the CO line in both epochs"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO envelope model parameters of the baseline model (Table 1) and distance adopted from the model",
+    "evidence": [
+     {
+      "loc": "4.3.1 Continuum pumping",
+      "quote": "taken from (cite: Khouri14); we do not adjust the distance and adopt the value used in the model."
+     }
+    ]
+   },
+   "citation": "(cite: Khouri14)"
+  },
+  {
+   "what": {
+    "value": "CO transition frequencies, energy levels, Einstein coefficients and collisional rate coefficients",
+    "evidence": [
+     {
+      "loc": "4.3.1 Continuum pumping",
+      "quote": "The transition frequencies, energy levels, and Einstein coefficients were taken from the CDMS and JPL databases (cite: Muller01; Picket98) and the collisional rate coefficients come from (cite: Yang10)."
+     }
+    ]
+   },
+   "citation": "(cite: Muller01; Picket98; Yang10)"
+  },
+  {
+   "what": {
+    "value": "Observed 4.6 micron infrared spectrum used to constrain pump radiation (85% transmission of the stellar black body)",
+    "evidence": [
+     {
+      "loc": "4.3.2 Line overlap",
+      "quote": "Based on observations around 4.6 $\\mu$m (cite: Justtanont14) we include an overall decrease in the stellar radiation field around this wavelength, adopting a transmission of 85% of the stellar black body."
+     }
+    ]
+   },
+   "citation": "(cite: Justtanont14)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and self-calibrate the ALMA band 7 data",
+   "method": "manual calibration scripts from the observatory, then two rounds of phase self-calibration on the stellar continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "continuum S/N improved by a factor of three"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image the CO J=3-2 line at matched resolution in both epochs",
+   "method": "Briggs weighting with robust -1.0 (epoch 1) and 0.5 (epoch 2) to obtain similar angular resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "beams 31x21 mas and 29x21 mas; rms ~3.5 mJy/beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "measure maser brightness temperature, optical depth, line width, morphology and variability",
+   "method": "subtract the stellar continuum, measure peak Tb in the emission maps, extract single-beam spectra at the peak, and image the three days of epoch 1 separately with a common beam",
+   "software": [],
+   "key_parameters": [
+    "stellar continuum brightness temperature ~2700 K subtracted"
+   ],
+   "assumptions": [
+    "maser amplifies the underlying stellar continuum, so Tb implies optical depth tau",
+    "if the emission is compact or made of multiple components, Tb is a lower limit"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compare maser velocity with other masers of W Hya",
+   "method": "compare the CO maser velocity with literature OH and H2O maser peak velocities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "a common velocity reflects the largest coherent velocity path length towards the star, giving an amplified stellar image in many maser species"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "model continuum pumping with 1-D radiative transfer",
+   "method": "one-dimensional Monte Carlo radiative transfer of CO with the baseline envelope model of Khouri14, observed through a single aperture of size 2R* towards the star, with the extended-atmosphere CO absorption profile added on top of the stellar black body; then multiply the radiation field below 5 micron by a factor M",
+   "software": [
+    "mcp"
+   ],
+   "key_parameters": [
+    "M~3 gives a maser of sufficient strength; need V0~4.2 km/s, beta~2.5, Vt~1.0 km/s to match maser velocity and width"
+   ],
+   "assumptions": [
+    "model is one-dimensional so only emission along the line of sight to the star is compared; distance not adjusted from the adopted model value"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "constrain mass-loss rate range and test dust-shell pumping",
+   "method": "vary the mass-loss rate in the maser model and compare with the lower resolution (ACA) observations; add a dust shell to supply the 4.6 micron excess and check against the observed infrared spectrum",
+   "software": [
+    "mcp"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "test line-overlap pumping of the v=0-1 4.6 micron lines",
+   "method": "change the relative radiation field seen by individual v=0-1 IR lines (J=0 to 5) in the model, with an 85% transmission of the stellar black body near 4.6 micron",
+   "software": [
+    "mcp"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "the observed single transition can be reproduced by many different combinations of relative IR pumping"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "maser peak brightness temperature (after continuum subtraction)",
+   "value": "1950",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the peak of the emission has a brightness temperature of $T_b\\approx1950$ K in the two epochs."
+    }
+   ]
+  },
+  {
+   "quantity": "maser optical depth",
+   "value": "-0.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the brightness temperatures imply a maser optical depth of $\\tau\\approx-0.55$."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of the brightest spectral component (epoch 1, epoch 2)",
+   "value": "1.9, 2.2",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The brightest spectral component has a full width at half maximum (FWHM) of $1.9$ and $2.2$ km s$^{-1}$ in the two epochs, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "maser velocity",
+   "value": "~35",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Velocity",
+     "quote": "The velocity of the CO maser remained stable at $\\sim35$ km s$^{-1}$ over the two epochs with a FWHM velocity width of $\\sim2$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "brightness temperature on 30 Nov, 3 Dec, 5 Dec 2015",
+   "value": "1330, 2000, 1570",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The emission brightness temperature appears to change from $T_b\\approx1330$ K on 30 Nov to $T_b\\approx2000$ K on 3 Dec and to $T_b\\approx1570$ K on 5 Dec 2015."
+    }
+   ]
+  },
+  {
+   "quantity": "maser variability over five days",
+   "value": "+-20%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "This indicates that there could be variability of the order of $\\pm20\\%$ within only a five-day timescale."
+    }
+   ]
+  },
+  {
+   "quantity": "continuum flux variation over the three days",
+   "value": "<2.5%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the continuum flux varies by less than $2.5\\%$ over the three days"
+    }
+   ]
+  },
+  {
+   "quantity": "radiation field boost factor at 4.6 micron needed for a maser of sufficient strength",
+   "value": "M~3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "a maser of sufficient strength can be generated if the radiation field at 4.6 $\\mu$m is increased by a factor $M\\sim3$."
+    }
+   ]
+  },
+  {
+   "quantity": "inner envelope velocity V0 required",
+   "value": "4.2",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "we require a larger velocity at the inner envelope ($V_0\\approx4.2$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "velocity-law exponent beta required",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "a slightly steeper acceleration ($\\beta\\approx 2.5$)"
+    }
+   ]
+  },
+  {
+   "quantity": "turbulent velocity Vt required",
+   "value": "1.0",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "larger turbulent velocity component ($V_t\\approx 1.0$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "radius where J=3-2 population inversion peaks",
+   "value": "~7",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "Population inversion in the $J=3-2$ line persists throughout most of the CSE and peaks around $7$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "mass-loss rate range generating maser emission in the model",
+   "value": "0.5-5e-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "maser emission is generated, from different parts of the envelope, for mass-loss rates between $0.5-5\\times10^{-7}$ M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "mass-loss rate of W Hya allowed by lower resolution data",
+   "value": "1.5-3.0e-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "limiting the rate to between $1.5-3.0\\times10^{-7}$ M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "dust-shell optical depth at 4.6 micron needed to reproduce the continuum excess",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 Continuum pumping",
+     "quote": "a dust shell with an optical depth at 4.6 $\\mu$m of $\\sim0.2$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method used to image the CO line",
+  "Self-calibration solution intervals, reference antenna and which spw/channels were used for self-calibration",
+  "Cell size, image size, deconvolver, masking and clean threshold",
+  "Flux calibrator and flux scale uncertainty (deferred to Vlemmings17/Vlemmings19)",
+  "Exact method to measure peak brightness temperature (Rayleigh-Jeans or full Planck) and the aperture used for the single-beam spectra",
+  "How the 2016.2.00025.S and 2017.1.00824.S projects (acknowledged) were used, if at all",
+  "Details of the ACA data used for comparison (project, reduction)",
+  "The mcp model grid, the exact atmospheric absorption profile and the IR line-by-line radiation field scaling used for line overlap models",
+  "Coordinates and stellar velocity of W Hya"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selection and continuum subtraction method",
+  "Self-calibration solution intervals and reference antenna",
+  "Cell/image size, deconvolver, masking and clean threshold",
+  "Flux and gain calibrators (deferred to Vlemmings17, Vlemmings19)",
+  "The mcp model inputs for the line-overlap runs, the atmospheric absorption profile and the line-by-line pump scaling",
+  "ACA data details used in the model comparison"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes, dates, on-source times, robust values and beams are given, and the main results are numeric, but calibrators, self-cal solints, continuum subtraction and imaging parameters are deferred to earlier papers or omitted, and the radiative transfer models are hand-tuned with partial inputs",
+ "rediscovery_reason": "ALMA projects are named and the main measurements (peak Tb, tau, FWHM, variability) can be redone from archival data, although the imaging recipe is incomplete and the data's public status is not stated in the paper",
+ "source_card": "cards/2021A%26A...654A..18V/sonnet/card.md"
+}

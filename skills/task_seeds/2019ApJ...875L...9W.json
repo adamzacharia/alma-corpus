@@ -1,0 +1,201 @@
+{
+ "bibcode": "2019ApJ...875L...9W",
+ "title": "The Ophiuchus DIsk Survey Employing ALMA (ODISEA): Disk Dust Mass Distributions across Protostellar Evolutionary Classes",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab1338",
+ "arxiv_id": "1904.06471",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "How do disk dust mass distributions vary across protostellar infrared classes (I, Flat, II, III) in Ophiuchus, and how do Class II masses compare with other regions?",
+ "alma_project_codes": [
+  "2016.1.00545.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.98'' x 0.74'', PA ~88 deg",
+  "sensitivity": "3 sigma mass sensitivity ~0.3 Earth masses"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lupus and Upper Scorpius ALMA flux densities, ages and distances for comparison",
+    "evidence": [
+     {
+      "loc": "4.2 Across Star-Forming Regions",
+      "quote": "Disk masses were recalculated from the observed flux densities with the same uniform temperature and opacity prescription"
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...859...21A; 2016ApJ...827..142B)"
+  },
+  {
+   "what": {
+    "value": "Sample A ALMA observations and sample selection",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Paper I describes the full sample selection and the observations of sample A"
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.482..698C)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum flux densities",
+   "method": "Point-source fit to visibilities with uvmodelfit; aperture photometry for binary and resolved sources",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Adopt distances and clean sample",
+   "method": "Gaia DR2 parallax inversion; mean distance otherwise; remove background (pi<2.5 mas) and misclassified sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Convert flux to dust mass",
+   "method": "Optically thin M = F d^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [
+    "detection if flux >= 3 rms and position within 1'' of Spitzer position; upper limits at 3 rms"
+   ],
+   "assumptions": [
+    "T_dust = 20 K, kappa_nu = (nu/100 GHz) cm^2/g, optically thin"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive cumulative mass distributions and log-normal fits per class and region",
+   "method": "Survival analysis for upper limits; gaussian in log mass fitted to cumulative distributions",
+   "software": [],
+   "key_parameters": [
+    "Region comparison restricted to J-band <= 12 mag (masses >~0.2 Msun)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Class I mean dust mass",
+   "value": "3.83",
+   "uncertainty": "+1.62/-1.31",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "I |  28 |  $3.83^{+1.62}_{-1.31}$ |                $0.86^{+0.06}_{-0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flat spectrum mean dust mass",
+   "value": "2.49",
+   "uncertainty": "+0.82/-0.82",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Flat |  50 |  $2.49^{+0.82}_{-0.82}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Class II mean dust mass",
+   "value": "0.78",
+   "uncertainty": "+0.12/-0.11",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "II | 172 |  $0.78^{+0.12}_{-0.11}$ |                $0.97^{+0.06}_{-0.05}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ophiuchus Class II mean mass (J<=12)",
+   "value": "2.62",
+   "uncertainty": "+0.83/-0.65",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Ophiuchus | $\\sim 1$ | $2.62^{+0.83}_{-0.65}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lupus Class II mean mass",
+   "value": "5.08",
+   "uncertainty": "+1.78/-1.41",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Lupus | $\\sim 3$ | $5.08^{+1.78}_{-1.41}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper Sco Class II mean mass",
+   "value": "0.36",
+   "uncertainty": "+0.10/-0.09",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Upper Scorpius | $\\sim 10$ | $0.36^{+0.10}_{-0.09}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Final sample size",
+   "value": "265 sources, 279 disks",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "final sample of 265 sources (279 disks after allowing for 12 binaries and one triple system)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters (weighting, robust, cell, image size, deconvolver, masking)",
+  "Aperture sizes for resolved/binary sources",
+  "How rms was measured",
+  "Survival analysis implementation and gaussian fitting method/priors",
+  "Sample A fluxes (from Paper I) used in the class comparison",
+  "Exact J-band source selection and the Lupus/Upper Sco flux tables used",
+  "Pipeline calibration flagging details"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters",
+  "Sample A flux values from Paper I",
+  "Survival analysis and fitting code details",
+  "Comparison survey flux tables"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and the mass formula is explicit, but imaging and fitting details are missing and sample A comes from Paper I.",
+ "rediscovery_reason": "Public data, simple numeric recipe (flux to mass, log-normal fit) and numeric results, though some imaging details are absent.",
+ "source_card": "cards/2019ApJ...875L...9W/sonnet/card.md"
+}

@@ -1,0 +1,245 @@
+{
+ "bibcode": "2020Natur.581..269N",
+ "title": "A cold, massive, rotating disk galaxy 1.5 billion years after the Big Bang",
+ "year": 2020,
+ "doi": "10.1038/s41586-020-2276-y",
+ "arxiv_id": "2005.09661",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is the absorption-selected galaxy DLA0817g at z=4.26 a rotationally supported cold disk, and what are its dynamical and molecular masses?",
+ "alma_project_codes": [
+  "2017.1.01052.S"
+ ],
+ "data": {
+  "bands": "[C II] tuned at 361.312 GHz, plus three continuum bands, each 1.875 GHz wide",
+  "arrays": "not stated",
+  "angular_resolution": "0.23\" x 0.17\" (natural), 0.16\" x 0.12\" (robust 0.5)",
+  "sensitivity": "continuum 23 uJy/beam (natural), 27 uJy/beam (robust 0.5); cube 0.35 mJy/beam per 25 km/s (natural)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lower-resolution ALMA [C II] and continuum measurements for comparison",
+    "evidence": [
+     {
+      "loc": "Far-Infrared Continuum, [C II] Line, and CO(2-1) Line Luminosities.",
+      "quote": "These measurements are consistent with the values obtained from the lower-resolution measurement(cite: Neeleman2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Neeleman2017)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 3.0 and r21 = 0.81 conversion factors",
+    "evidence": [
+     {
+      "loc": "Molecular Gas Mass Estimates.",
+      "quote": "We therefore assume r$_{\\,2,1} =$ 0.81, as determined from these galaxies."
+     }
+    ]
+   },
+   "citation": "(cite: Dessauges-Zavadsky2015); (cite: Daddi2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "Pipeline calibration, extra flagging, tclean continuum and cubes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "cube 25 km/s channels, natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure fluxes and sizes",
+   "method": "Flux within 1.5\" radius per channel, integrate over line channels; 2D Gaussian fits for size",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "TIR from modified blackbody with Td=35 K, beta=1.6"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit rotating disk model to [C II] cube",
+   "method": "Thin exponential disk with constant (or arctan) rotation, constant dispersion, convolved with beam, MCMC fit to cube",
+   "software": [
+    "custom Python MCMC code (qubefit)"
+   ],
+   "key_parameters": [
+    "9 or 10 free parameters"
+   ],
+   "assumptions": [
+    "Infinitely thin disk; thick disk tested"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive rotation curves, dynamical mass, Toomre Q",
+   "method": "Mean-velocity and peak-velocity rotation curves; Mdyn = 2.32e5 v^2 R; Q averaged over R=3Rd",
+   "software": [],
+   "key_parameters": [
+    "R = 3 exponential scale lengths = 4.2 kpc"
+   ],
+   "assumptions": [
+    "Spherical mass distribution (30% uncertainty added)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Molecular gas mass from CO(2-1)",
+   "method": "CMB-corrected CO flux to L'CO, then r21 and alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "r21 = 0.81, alpha_CO = 3.0, Texc 25-45 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Inclination-corrected rotational velocity",
+   "value": "272",
+   "uncertainty": "+52/-13",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "an inclination-corrected rotational velocity of $v_{\\rm rot}$ = 272$^{+52}_{-13}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle",
+   "value": "105.2",
+   "uncertainty": "1.7",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "position angle of 105.2 $\\pm$ 1.7$^{\\rm o}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "42",
+   "uncertainty": "+3/-8",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "an inclination angle of 42$^{+3}_{-8}$$^{\\rm o}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "7.2e10",
+   "uncertainty": "2.3e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dynamical Mass Estimate.",
+     "quote": "$M_{\\rm dyn}$ = (7.2 $\\pm$ 2.3) $\\times$ 10$^{10} M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "vrot/sigma_v",
+   "value": "3.4",
+   "uncertainty": "+1.1/-0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "Our estimate for $v_{\\rm rot}/\\sigma_v$ is 3.4$^{+1.1}_{-0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged Toomre Q",
+   "value": "0.96",
+   "uncertainty": "0.30",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Toomre-$Q$ Parameter.",
+     "quote": "This yields $\\bar{Q} = 0.96 \\pm 0.30$ for DLA0817g."
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated [C II] flux",
+   "value": "5.8",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Far-Infrared Continuum, [C II] Line, and CO(2-1) Line Luminosities.",
+     "quote": "The total velocity-integrated [C II] flux density from DLA0817g is 5.8 $\\pm$ 0.4 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "160 um continuum flux density",
+   "value": "1.28",
+   "uncertainty": "0.15",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Far-Infrared Continuum, [C II] Line, and CO(2-1) Line Luminosities.",
+     "quote": "1.28 $\\pm$ 0.15 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass from CO(2-1)",
+   "value": "8.8e10",
+   "uncertainty": "2.6e10",
+   "units": "Msun (r21=0.81, alpha_CO=3.0)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass Estimates.",
+     "quote": "(8.8 $\\pm$ 2.6) $\\times$ 10$^{10}$ $\\times$ (0.81 / r$_{\\,2,1}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum and uvcontsub order",
+  "tclean cell size, image size, masks, cleaning threshold, iterations",
+  "MCMC priors, walker number, chain length, convergence criteria",
+  "Channel range used for the velocity-integrated [C II] map",
+  "Radial bin sizes for rotation curves",
+  "JVLA calibrators and imaging details",
+  "Flux-scale uncertainty for ALMA"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters and line-free channels",
+  "MCMC priors and settings",
+  "Radial binning choices"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, released code, and numeric results, but imaging and fit settings are only partly given.",
+ "rediscovery_reason": "Public ALMA data, released code, numeric kinematic results; some settings need inference.",
+ "source_card": "cards/2020Natur.581..269N/sonnet/card.md"
+}

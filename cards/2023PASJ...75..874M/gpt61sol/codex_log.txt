@@ -1,0 +1,503 @@
+ depth value of 1.1, and the black hole mass of $5\\times10^7\\,M_{\\odot}$ according to (cite: Inoue_2020)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "16th, 50th and 84th percentiles of marginalized samples; assumption-related systematic errors excluded",
+        "evidence": [
+          {
+            "loc": "Three components (jet + corona + dust) scenario",
+            "quote": "The error terms of $S_{\\nu_\\mathrm{SSA}}$, $\\nu_\\mathrm{SSA}$, $B$, and $R$ are calculated based on the 16th, 50th, and 84th percentiles of the samples in the marginalized distributions."
+          },
+          {
+            "loc": "Three components (jet + corona + dust) scenario",
+            "quote": "The systematic errors regarding assumptions (e.g., several coronal parameters such as a typical energy fraction of non-thermal electrons and the Thomson scattering optical depth) are not considered."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compare inferred magnetic field with other nearby Seyferts",
+        "evidence": [
+          {
+            "loc": "Three components (jet + corona + dust) scenario",
+            "quote": "We note that our new magnetic field estimate $B\\approx20$ G is consistent with the values revealed in other nearby Seyferts (cite: Inoue2018ApJ...869..114I)."
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "CASA",
+      "version": "6.1.1.15 for imaging; calibration versions not stated",
+      "used_for": {
+        "value": "Data calibration, imaging and S1 flux/size fitting",
+        "evidence": [
+          {
+            "loc": "ALMA Archival Data",
+            "quote": "For all data from the archive, the data calibration and imaging processes were performed using `CASA`"
+          },
+          {
+            "loc": "ALMA Archival Data",
+            "quote": "For imaging, we use `CASA` version of 6.1.1.15."
+          },
+          {
+            "loc": "SED",
+            "quote": "We measure the flux of S1 ($F_{\\rm S1}$) and beam deconvolved source size (represented by $\\theta_{\\rm maj}$, $\\theta_{\\rm min}$, and position angle: PA) using `imfit` task in `CASA` by ourselves."
+          }
+        ]
+      }
+    },
+    {
+      "name": "tclean",
+      "version": "not stated",
+      "used_for": {
+        "value": "Continuum map production",
+        "evidence": [
+          {
+            "loc": "ALMA Archival Data",
+            "quote": "The maps were produced using the `tclean` task in `CASA` with Briggs weighting (robust = 0.5) and a pixel size of 5 mas."
+          }
+        ]
+      }
+    },
+    {
+      "name": "imfit",
+      "version": "not stated",
+      "used_for": {
+        "value": "S1 flux, deconvolved source size and fitting errors",
+        "evidence": [
+          {
+            "loc": "SED",
+            "quote": "We measure the flux of S1 ($F_{\\rm S1}$) and beam deconvolved source size (represented by $\\theta_{\\rm maj}$, $\\theta_{\\rm min}$, and position angle: PA) using `imfit` task in `CASA` by ourselves."
+          },
+          {
+            "loc": "SED",
+            "quote": "The error ($\\sigma_\\mathrm{imfit}$) is estimated using the imfit task, which is based on the fitting error."
+          }
+        ]
+      }
+    },
+    {
+      "name": "emcee",
+      "version": "not stated",
+      "used_for": {
+        "value": "Documentation linked for Bayesian free-free parameter estimation",
+        "evidence": [
+          {
+            "loc": "Single component (free-free)",
+            "quote": "based on Bayesian parameter estimation developed by (cite: Foreman-Mackey2013PASP..125..306F)"
+          },
+          {
+            "loc": "Single component (free-free)",
+            "quote": "https://emcee.readthedocs.io/en/v2.2.1/user/line/"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DIFMAP",
+      "version": "not stated",
+      "used_for": {
+        "value": "Self-calibration in the cited VLBA processing, rather than new processing in this paper",
+        "evidence": [
+          {
+            "loc": "VLBA literature data",
+            "quote": "We improved the recovery of extended emission in these data by employing the same DIFMAP self-calibration and multiresolution CLEAN deconvolution"
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "Nuclear flux density over 5–700 GHz",
+      "value": "≈10–20",
+      "uncertainty": "not stated",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Summary",
+          "quote": "We report that the nucleus region of Seyfert galaxy NGC 1068 has the flux density at 5–700 GHz (centimeter/submillimeter) of $\\approx$ 10–20 mJy"
+        }
+      ]
+    },
+    {
+      "quantity": "Single-component free-free electron density",
+      "value": "≈6×10^4",
+      "uncertainty": "not stated",
+      "units": "cm^-3",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Single component (free-free)",
+          "quote": "our VLA and ALMA measurements indicate the electron density of $n_\\mathrm{e}\\approx6\\times10^4$ cm$^{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "SSA normalization S_νSSA",
+      "value": "15",
+      "uncertainty": "+3/-3",
+      "units": "mJy",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "the best fit parameter is ($S_{\\nu_\\mathrm{SSA}},\\nu_\\mathrm{SSA}$)$=$($15^{+3}_{-3}$ mJy, $134^{+28}_{-22}$ GHz)"
+        }
+      ]
+    },
+    {
+      "quantity": "SSA frequency ν_SSA",
+      "value": "134",
+      "uncertainty": "+28/-22",
+      "units": "GHz",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "the best fit parameter is ($S_{\\nu_\\mathrm{SSA}},\\nu_\\mathrm{SSA}$)$=$($15^{+3}_{-3}$ mJy, $134^{+28}_{-22}$ GHz)"
+        }
+      ]
+    },
+    {
+      "quantity": "Brightness temperature at ν_SSA",
+      "value": "410",
+      "uncertainty": "±80",
+      "units": "K",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "The brightness temperature is estimated to be $410\\pm80$ K at $\\nu_\\mathrm{SSA}$ considering the synthesized beam size of 0.05$''$."
+        }
+      ]
+    },
+    {
+      "quantity": "Coronal magnetic field strength B",
+      "value": "16",
+      "uncertainty": "+5/-4",
+      "units": "G",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "the coronal magnetic field strength of $B=16^{+5}_{-4}$ G on scales of $R=29^{+6}_{-6}$ Schwarzschild radii from the central black holes."
+        }
+      ]
+    },
+    {
+      "quantity": "Coronal size R",
+      "value": "29",
+      "uncertainty": "+6/-6",
+      "units": "Schwarzschild radii",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "the coronal magnetic field strength of $B=16^{+5}_{-4}$ G on scales of $R=29^{+6}_{-6}$ Schwarzschild radii from the central black holes."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Flux rise/fall above 10 GHz may reflect beam effects rather than a physical spectral index",
+      "evidence": [
+        {
+          "loc": "Spectrum at $>10$ GHz",
+          "quote": "the flux rise/fall in $>10$ GHz may not represent the physically motivated spectral index."
+        }
+      ]
+    },
+    {
+      "value": "The significant flux drop from 4.8 to 1.4 GHz is robust against the discussed beamsize issues",
+      "evidence": [
+        {
+          "loc": "Spectrum at $<10$ GHz",
+          "quote": "Therefore, the significant flux drop between 4.8 GHz to 1.4 GHz is robust."
+        }
+      ]
+    },
+    {
+      "value": "Single free-free and jet + dust alternatives remain observationally possible",
+      "evidence": [
+        {
+          "loc": "Origin of the centimeter/submillimeter emission",
+          "quote": "However, we can not observationally rule out a single free-free scenario"
+        },
+        {
+          "loc": "Summary",
+          "quote": "However, due to limited angular resolution, a single free-free and a jet + dust scenario are also possible scenarios."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "The apparent high-frequency spectral structure represents intrinsic emission physics",
+      "experiment": "Compare S1 flux with fitted source size and synthesized beam size",
+      "result": "Larger source sizes have larger measured flux; beam size shows the same trend",
+      "finding": "Flux rise/fall above 10 GHz may arise from beamsize effects",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Spectrum at $>10$ GHz",
+          "quote": "The positive relation is confirmed in which the larger flux is seen in the larger source size."
+        },
+        {
+          "loc": "Spectrum at $>10$ GHz",
+          "quote": "When we use the synthesized beamsize instead of the source size, the same positive trend is seen."
+        },
+        {
+          "loc": "Spectrum at $>10$ GHz",
+          "quote": "the flux rise/fall in $>10$ GHz may not represent the physically motivated spectral index."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Previous models explain the updated broadband SED",
+      "experiment": "Add the new 100 GHz ALMA measurement and reassess earlier models",
+      "result": "Previous models do not account for the new 100 GHz flux",
+      "finding": "Emission mechanisms and model parameters require reassessment",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Summary",
+          "quote": "we found that previous models (e.g., (cite: Inoue_2020; Baskin2021MNRAS.508..680B)) were unable to account for the newly included 100 GHz flux."
+        },
+        {
+          "loc": "Summary",
+          "quote": "Therefore, we undertook a reassessment of the emission mechanisms and made essential parameter adjustments."
+        }
+      ]
+    },
+    {
+      "hypothesis": "A single free-free component can explain the spectrum",
+      "experiment": "Fit electron density for a 10^6 K, 4 pc emitting region with free-free self-absorption",
+      "result": "Electron density ≈6×10^4 cm^-3",
+      "finding": "A single free-free scenario remains possible, with beam effects accounting for the high-frequency structure",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Single component (free-free)",
+          "quote": "Assuming the lower temperature and larger emitting region ($T_\\mathrm{e}$, $d_\\mathrm{s}$, $l_\\mathrm{L.O.S}$) = ($10^6$ K, 4 pc, 4 pc)"
+        },
+        {
+          "loc": "Single component (free-free)",
+          "quote": "our VLA and ALMA measurements indicate the electron density of $n_\\mathrm{e}\\approx6\\times10^4$ cm$^{-3}$"
+        },
+        {
+          "loc": "Summary",
+          "quote": "However, due to limited angular resolution, a single free-free and a jet + dust scenario are also possible scenarios."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Jet, dust and coronal SSA jointly explain the broadband SED",
+      "experiment": "Fit a three-component spectrum including the new 100 GHz data and derive coronal parameters",
+      "result": "S_νSSA = 15(+3/-3) mJy; ν_SSA = 134(+28/-22) GHz; B = 16(+5/-4) G; R = 29(+6/-6) Schwarzschild radii",
+      "finding": "A compact corona is one possible interpretation, but is not uniquely identified",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "the best fit parameter is ($S_{\\nu_\\mathrm{SSA}},\\nu_\\mathrm{SSA}$)$=$($15^{+3}_{-3}$ mJy, $134^{+28}_{-22}$ GHz)"
+        },
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "the coronal magnetic field strength of $B=16^{+5}_{-4}$ G on scales of $R=29^{+6}_{-6}$ Schwarzschild radii from the central black holes."
+        },
+        {
+          "loc": "Summary",
+          "quote": "However, due to limited angular resolution, a single free-free and a jet + dust scenario are also possible scenarios."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "High resolution limits host contamination; new ≈100 GHz observations update the previous analysis",
+      "evidence": [
+        {
+          "loc": "ALMA Archival Data",
+          "quote": "In order to avoid any contamination from the host galaxy, high-resolution data is necessary."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "to update the analysis by (cite: Inoue_2020), we obtain the representative spectral energy distribution (SED) including the new $\\approx100$ GHz ALMA observations"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Uniform ALMA reanalysis reduces literature-dependent systematic differences; simple masks keep computation practical",
+      "evidence": [
+        {
+          "loc": "ALMA Archival Data",
+          "quote": "In order to reduce the systematic uncertainties among literature values, the ALMA imaging analysis and flux measurements are performed by ourselves for each data in this paper."
+        },
+        {
+          "loc": "ALMA Archival Data",
+          "quote": "This simple clean mask enables us to produce representative images from a large data set in realistic computation time."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Single free-free emission/absorption remains possible",
+      "evidence": [
+        {
+          "loc": "Summary",
+          "quote": "However, due to limited angular resolution, a single free-free and a jet + dust scenario are also possible scenarios."
+        }
+      ]
+    },
+    {
+      "value": "Jet + dust is disfavored by systematic residuals but not observationally excluded",
+      "evidence": [
+        {
+          "loc": "Two components (jet + dust)",
+          "quote": "Therefore, two components scenario might be unlikely and the additional components such as coronal SSA may be necessary"
+        },
+        {
+          "loc": "Summary",
+          "quote": "However, due to limited angular resolution, a single free-free and a jet + dust scenario are also possible scenarios."
+        }
+      ]
+    },
+    {
+      "value": "Radiation-pressure-compressed gas model cannot explain the observed 92 GHz flux",
+      "evidence": [
+        {
+          "loc": "Single component (free-free)",
+          "quote": "the SED drops above $>100$ GHz according to the model by (cite: Baskin2021MNRAS.508..680B), which cannot explain the observed 92 GHz flux density."
+        }
+      ]
+    },
+    {
+      "value": "VLBA table 3 masked/tapered spectral-index measurements were not adopted",
+      "evidence": [
+        {
+          "loc": "VLBA literature data",
+          "quote": "We do not use table 3 of (cite: Gallimore2004ApJ...613..794G) in which additional masking and taper analysis are performed to measure the spectral index."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Limited angular resolution prevents distinguishing competing emission scenarios",
+      "evidence": [
+        {
+          "loc": "Summary",
+          "quote": "However, due to limited angular resolution, a single free-free and a jet + dust scenario are also possible scenarios."
+        }
+      ]
+    },
+    {
+      "value": "Coronal-parameter assumption systematics are excluded from quoted errors",
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "The systematic errors regarding assumptions (e.g., several coronal parameters such as a typical energy fraction of non-thermal electrons and the Thomson scattering optical depth) are not considered."
+        }
+      ]
+    },
+    {
+      "value": "The SED fit misses the inverse spectrum between Bands 6 and 7",
+      "evidence": [
+        {
+          "loc": "Three components (jet + corona + dust) scenario",
+          "quote": "The SED fit does not reproduce the inverse spectrum between Band 6 and 7."
+        }
+      ]
+    },
+    {
+      "value": "Absorber parameters cannot be uniquely determined",
+      "evidence": [
+        {
+          "loc": "Screen by ionized gas",
+          "quote": "investigating the origin of the absorbers is beyond the scope of this paper because the parameters of the absorber can not be determined uniquely."
+        }
+      ]
+    },
+    {
+      "value": "Cold dust properties remain uncertain",
+      "evidence": [
+        {
+          "loc": "Multiple components",
+          "quote": "ALMA high-frequency observations rather trace cold dust, whose property is still uncertain."
+        }
+      ]
+    },
+    {
+      "value": "The spectral index below 10 GHz is difficult to determine",
+      "evidence": [
+        {
+          "loc": "Spectrum at $<10$ GHz",
+          "quote": "Therefore, it is difficult to determine the spectral index at $<10$ GHz, but it is not quite far from flat."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "A common minimum uv-distance does not establish identical spatial response across bands.",
+    "Beam-dependent fluxes weaken a unique decomposition into jet, dust and corona.",
+    "The quoted coronal uncertainties are conditional on fixed physical assumptions.",
+    "The text does not provide quantitative model-comparison statistics or sampling diagnostics.",
+    "The supplied conversion omits the tables containing the individual ALMA measurements."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "The referenced ALMA project and measurement tables.",
+    "Exact execution blocks, spectral windows and retained channels.",
+    "Per-execution-block calibration versions and restoration inputs.",
+    "Complete imaging and imfit commands.",
+    "Numerical literature inputs with their adopted uncertainties and upper-limit handling.",
+    "SED fitting code, likelihoods, priors and sampler configuration.",
+    "The inherited coronal conversion details and uncertainty-propagation implementation."
+  ],
+  "estimated_data_volume_inferred": "Cannot estimate from the supplied text; multiple archival measurement sets across four bands are combined.",
+  "score_inferred": 4,
+  "score_reason": "4/10: useful imaging settings and physical parameters are given, but project identifiers, measurement tables, complete fitting specifications and code are absent from the supplied text.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but public availability is not explicit and the supplied recipe lacks data identifiers, measurement tables and fitting details.",
+  "methods_papers": [
+    {
+      "citation": "(cite: McMullin_2007; CASA2022arXiv221002276T)",
+      "why": "CASA calibration and imaging."
+    },
+    {
+      "citation": "(cite: Foreman-Mackey2013PASP..125..306F)",
+      "why": "Bayesian parameter estimation; emcee documentation linked."
+    },
+    {
+      "citation": "(cite: Mezger1967ApJ...147..471M)",
+      "why": "Free-free opacity approximation."
+    },
+    {
+      "citation": "(cite: Chaty2011A&A...529A...3C)",
+      "why": "Detailed SSA formulation relating turnover parameters to field strength and size."
+    },
+    {
+      "citation": "(cite: Inoue2018ApJ...869..114I)",
+      "why": "Coronal model used to infer magnetic field and size."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: Inoue_2020)",
+      "why": "Earlier NGC 1068 continuum analysis explicitly updated by this paper."
+    }
+  ],
+  "related_projects_or_surveys": []
+}
+tokens used
+54,168

@@ -1,0 +1,1191 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...890..130T",
+  "title": "The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. II. A Statistical Characterization of Class 0 and Class I Protostellar Disks",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Tobin, John J.",
+  "n_authors": 36,
+  "arxiv_id": "2001.04468",
+  "doi": "10.3847/1538-4357/ab6f64",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00041.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We have conducted a survey of 328 protostars in the Orion molecular clouds with ALMA at 0.87 mm at a resolution of $\\sim$0.1$''$ (40 au)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "328 Orion A and B protostars (HOPS sample)",
+     "coordinates": {
+      "value": "per-source RA/Dec in Table 2",
+      "evidence": [
+       {
+        "loc": "2.1 The Sample",
+        "quote": "The sample of protostars is drawn from the *Herschel* Orion Protostar Survey"
+       },
+       {
+        "loc": "2.1 The Sample",
+        "quote": "we take advantage of the availability of *Gaia* data for a large sample of more evolved members within Orion, enabling us to estimate the distance toward each protostellar system."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~350-440 pc, per-source estimates",
+      "evidence": [
+       {
+        "loc": "2.1 The Sample",
+        "quote": "The sample of protostars is drawn from the *Herschel* Orion Protostar Survey"
+       },
+       {
+        "loc": "2.1 The Sample",
+        "quote": "we take advantage of the availability of *Gaia* data for a large sample of more evolved members within Orion, enabling us to estimate the distance toward each protostellar system."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 parallaxes of nearby YSOs, neural-network interpolation (Appendix A)",
+      "evidence": [
+       {
+        "loc": "2.1 The Sample",
+        "quote": "The sample of protostars is drawn from the *Herschel* Orion Protostar Survey"
+       },
+       {
+        "loc": "2.1 The Sample",
+        "quote": "we take advantage of the availability of *Gaia* data for a large sample of more evolved members within Orion, enabling us to estimate the distance toward each protostellar system."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust disk radii and masses of Class 0, Class I and Flat Spectrum protostars in Orion, and how do they evolve and compare with Class II disks, regions and simulations?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We use the dust continuum emission at 0.87 mm and 9 mm to measure the dust disk radii and masses toward the Class 0, Class I, and Flat Spectrum protostars"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00041.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00041.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA 0.87 mm (Band 7); VLA Ka-band 9 mm",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "ALMA at 0.87 mm at a resolution of $\\sim$0.1$''$ (40 au), including observations with the VLA at 9 mm"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Two continuum basebands centered at 333 and 344 GHz, 1.875 GHz each; 12CO and 13CO (3-2) basebands; aggregate continuum ~4.75 GHz",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "resulting in an aggregate continuum bandwidth of $\\sim$4.75 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "345.79599 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "$^{12}$CO ($J=3\\rightarrow2$) at 345.79599 GHz"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "330.58797 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "$^{13}$CO ($J=3\\rightarrow2$) at 330.58797 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Three scheduling blocks each executed three times (nine executions)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "Each scheduling block was successfully executed three times for nine executions in total."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "~15 m to ~3700 m",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "the combined datasets sample baseline lengths from $\\sim$15 m to $\\sim$3700 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.11'' (44 au) at robust=0.5",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "yielding a synthesized beam of $\\sim$0.11$''$ (44 au)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum RMS 0.31 mJy/beam",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "The typical root-mean-squared (RMS) noise of the continuum, $^{12}$CO, and $^{13}$CO are 0.31 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~0.9 minutes per source",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "the total time on each source was $\\sim$0.9 minutes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Six executions 2016 September, three 2017 July",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 0.87 mm Observations",
+      "quote": "Six were executed in 2016 September, and three were executed in 2017 July."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLA Ka-band A-configuration",
+     "provided": {
+      "value": "9 mm continuum toward 148 protostars (Class 0 and youngest Class I)",
+      "evidence": [
+       {
+        "loc": "2.3 VLA Observations",
+        "quote": "We conducted observations with the VLA in A-configuration between 2016 October 20 and 2017 January 07"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel Orion Protostar Survey / Spitzer",
+     "provided": {
+      "value": "Sample selection, Lbol, Tbol, classes",
+      "evidence": [
+       {
+        "loc": "2.1 The Sample",
+        "quote": "The sample of protostars is drawn from the *Herschel* Orion Protostar Survey"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia DR2",
+     "provided": {
+      "value": "Parallaxes for distance estimates",
+      "evidence": [
+       {
+        "loc": "Distance Estimates",
+        "quote": "selecting sources that have Gaia detection with $\\sigma_{\\pi}$ $<$ 0.2 mas"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Protostar Lbol, Tbol, classes and SEDs",
+      "evidence": [
+       {
+        "loc": "2.1 The Sample",
+        "quote": "We selected all Class 0, Class I, and Flat Spectrum protostars from the survey that had reliable measurements of bolometric temperature"
+       }
+      ]
+     },
+     "citation": "(cite: fischer2010; stutz2013; furlan2016)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 1.84 cm2/g at 0.87 mm",
+      "evidence": [
+       {
+        "loc": "2.4 Data Analysis",
+        "quote": "We adopt $\\kappa_{0.87mm}$ = 1.84 cm$^2$ g$^{-1}$ from (cite: ossenkopf1994)"
+       }
+      ]
+     },
+     "citation": "(cite: ossenkopf1994)"
+    },
+    {
+     "what": {
+      "value": "Class II and other protostellar disk mass/radius samples for comparison",
+      "evidence": [
+       {
+        "loc": "4.2 Protostellar Dust Disk Masses versus Class II Dust Disk Masses",
+        "quote": "the Lupus disks are from (cite: ansdell2016), the Chamaeleon disks are from (cite: pascucci2016), the Upper Sco disks are from (cite: barenfeld2016) and the Taurus disks are from (cite: tripathi2017)"
+       }
+      ]
+     },
+     "citation": "ansdell2016; pascucci2016; barenfeld2016; tripathi2017; tychoniec2018; williams2019; sheehan2017b"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Bate (2018) SPH cluster simulation disk masses and radii; Hennebelle et al. (2016) analytic disk radii; Kuffmeier (2017) MHD zoom-ins",
+     "evidence": [
+      {
+       "loc": "4.5 Comparison to Simulations of Protostellar Disks",
+       "quote": "we will focus on comparing our results to those found in the (cite: bate2018) simulations and to a more limited set of MHD zoom-in simulations from (cite: kueffmeier2017)"
+      }
+     ]
+    },
+    {
+     "value": "RADMC-3D grid of disk+envelope models used to derive average dust temperature scaling",
+     "evidence": [
+      {
+       "loc": "Average Disk Dust Temperature",
+       "quote": "we used a grid of radiative transfer models to determine the average dust temperatures"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Manual reduction by Dutch Allegro ARC node using CASA",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The data were manually reduced by the Dutch Allegro ARC Node using the Common Astronomy Software Application (cite: mcmullin2007)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2 for ALMA imaging; VLA pipeline in CASA 4.4.0 (4.5.2 for delay-error fix)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The continuum and spectral line data cubes were imaged using the *clean* task of CASA 4.7.2"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0510+1800 in some executions (variable quasar)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The manual reduction was necessary to compensate for variability of the quasar J0510+1800 that was used for absolute flux calibration in some executions."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The absolute flux calibration accuracy is expected to be $\\sim$10%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Up to three rounds phase-only if peak S/N>10; solints scan length, 12.08 s, 3.02 s",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "we performed up to three rounds of phase-only self-calibration on the continuum data to increase the S/N."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean (ALMA, 4.7.2); VLA clean in CASA 4.5.1",
+     "evidence": [
+      {
+       "loc": "2.3 VLA Observations",
+       "quote": "The continuum data for all sources were imaged using the *clean* task in CASA 4.5.1"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust=0.5 (robust=2 for non-detections; also 0 and -0.5 made); VLA Natural, nterms=2",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The aggregate continuum image was reconstructed using *Briggs* weighting with a *robust* parameter of *0.5*"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "Continuum uv>25 kλ; line data natural weighting >50 kλ with 500 kλ outer taper",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The continuum images are reconstructed only using uv-points at baselines $>$25 k$\\lambda$ to mitigate striping"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Line data averaged by 2 (12CO) and 4 (13CO) channels",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The spectral line observations were averaged by two and four channels for $^{12}$CO and $^{13}$CO, respectively, to reduce noise."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "~0.11'' (ALMA continuum); ~0.08'' (VLA)",
+     "evidence": [
+      {
+       "loc": "2.3 VLA Observations",
+       "quote": "a synthesized beam of $\\sim$0.08$''$ (32 au)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.31 mJy/beam (ALMA); ~7-8 µJy/beam (VLA)",
+     "evidence": [
+      {
+       "loc": "2.3 VLA Observations",
+       "quote": "The final images have an RMS noise of $\\sim$7-8 $\\mu$Jy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Gaussian-fit disk radius and mass-estimation approach, dust temperature scaling normalisation reused for Perseus comparison",
+      "evidence": [
+       {
+        "loc": "4.1 Protostellar Dust Disk Masses",
+        "quote": "we scaled the dust temperature using L$_{bol}$ and the same temperature normalization that was used for the Orion protostars"
+       }
+      ]
+     },
+     "from_reference": "Tychoniec et al. (cite: tychoniec2018)"
+    },
+    {
+     "what": {
+      "value": "Gaussian CDF fit of cumulative distributions to derive mean",
+      "evidence": [
+       {
+        "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+        "quote": "as has been demonstrated by (cite: williams2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: williams2019)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel selection and exact continuum spectral-window flagging",
+    "Exact imaging mask/threshold, niter, image size and cell size",
+    "Which source flux/size entries were taken as upper limits and detection criteria for fitting imfit regions",
+    "Distance-estimation neural network training details/hyperparameters",
+    "Full Appendix B model parameters (inclination/hour angle simulation process) for reproducing temperature law",
+    "Self-cal solint choices per source"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and self-calibrate",
+    "method": {
+     "value": "Phase-only self-calibration then clean imaging with Briggs robust 0.5, uv>25 kλ",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "The aggregate continuum image was reconstructed using *Briggs* weighting with a *robust* parameter of *0.5*"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "self-cal only when peak S/N>10; applymode=calonly",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA 0.87 mm Observations",
+        "quote": "we only attempted self calibration when the S/N of the emission peak was $>$10"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux densities compared across executions consistent with ~10%",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 0.87 mm Observations",
+       "quote": "comparisons of the observed flux densities for the science targets during different executions are consistent with this level of accuracy"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure flux, size of each source",
+    "method": {
+     "value": "Elliptical Gaussian fits; disk radius = 2σ deconvolved major axis (FWHM×2.0/2.355 × distance)",
+     "evidence": [
+      {
+       "loc": "2.4 Data Analysis",
+       "quote": "We fit elliptical Gaussians to each detected source using the *imfit* task of CASA 4.7.2."
+      }
+     ]
+    },
+    "software": [
+     "CASA imfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "sources with unreliable sizes (fixed to beam) excluded from radius analysis",
+      "evidence": [
+       {
+        "loc": "3.3 Distribution of Protostellar Dust Disk Radii",
+        "quote": "Weak sources that required their major axis, minor axis, and position angle to be fixed to the synthesized beam are not included in these plots."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gaussian 2σ approximates disk radius (~95% of flux)",
+      "evidence": [
+       {
+        "loc": "2.4 Data Analysis",
+        "quote": "This radius will contain $\\sim$95% of the flux density within the fitted Gaussian."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Residuals inspected visually; caveat radii underestimated for large disks",
+     "evidence": [
+      {
+       "loc": "3.3 Distribution of Protostellar Dust Disk Radii",
+       "quote": "Visual inspection of the Gaussian fits reveals that there are often residuals outside the Gaussian model."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive dust disk masses",
+    "method": {
+     "value": "Optically thin isothermal M=D²Fν/(κνBν(Tdust)) with Tdust=43 K (L/Lsun)^0.25",
+     "evidence": [
+      {
+       "loc": "2.4 Data Analysis",
+       "quote": "We make the assumption that the disk is isothermal and optically thin"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "κ0.87mm=1.84 cm2/g; κ9.1mm=0.13 cm2/g (β=1)",
+      "evidence": [
+       {
+        "loc": "2.4 Data Analysis",
+        "quote": "at 9.1 mm we adopt a dust opacity of 0.13 cm$^2$ g$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "T0 = 43 K for 1 Lsun at 50 au, from RADMC-3D models",
+      "evidence": [
+       {
+        "loc": "2.4 Data Analysis",
+        "quote": "where T$_{0}$ = 43 K, and we scale this using L$_{bol}$ for each protostellar system"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Temperature law checked with RADMC-3D model grid",
+     "evidence": [
+      {
+       "loc": "Average Disk Dust Temperature",
+       "quote": "We also confirmed that the average disk dust temperature scales $\\propto$ L$^{0.25}$ considering the full set of disk radii"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Distribution analysis by class",
+    "method": {
+     "value": "Kaplan-Meier survival analysis with left-censoring, log-rank and Anderson-Darling tests, Gaussian CDF fit for mean",
+     "evidence": [
+      {
+       "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+       "quote": "The plots were constructed using survival analysis and the Kaplan-Meier estimator as implemented in the Python package *lifelines*"
+      }
+     ]
+    },
+    "software": [
+     "lifelines",
+     "scipy"
+    ],
+    "key_parameters": [
+     {
+      "value": "uncertainties from fitting the 1σ upper/lower bounds of survival CDF",
+      "evidence": [
+       {
+        "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+        "quote": "we performed the same fit on the 1$\\sigma$ upper and lower bounds of the cumulative dust disk mass distributions"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Distributions approximately log-normal",
+      "evidence": [
+       {
+        "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+        "quote": "We note, however, that the observed distributions are not precisely Gaussian"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "scipy curve_fit of Gaussian survival function",
+     "evidence": [
+      {
+       "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+       "quote": "using the *curve_fit* function within *scipy*"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Anderson-Darling test cross-check",
+     "evidence": [
+      {
+       "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+       "quote": "we obtained consistent results from the Anderson-Darling test"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Gravitational stability (Toomre Q) estimates",
+    "method": {
+     "value": "Q≈2(M*/Md)(H/R) with fiducial M*=0.25 Msun, gas-to-dust 100",
+     "evidence": [
+      {
+       "loc": "4.4 Potential for Gravitationally Unstable Disks",
+       "quote": "we multiply the derived dust disk mass by 100, the gas-to-dust ratio in the interstellar medium"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T ∝ R^-0.46 from models",
+      "evidence": [
+       {
+        "loc": "4.4 Potential for Gravitationally Unstable Disks",
+        "quote": "the relationship that T $\\propto$ R$_{disk}^{-0.46}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Envelope-contaminated candidates screened by image inspection",
+     "evidence": [
+      {
+       "loc": "4.4 Potential for Gravitationally Unstable Disks",
+       "quote": "HOPS-317-B, HOPS-402, HOPS-400-B, HOPS-87, HOPS-403, HOPS-398, and HOPS-404 are likely to have significant envelope contamination"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2 (ALMA imaging), 4.4.0/4.5.2/4.5.1 (VLA)",
+    "used_for": {
+     "value": "calibration, clean imaging, imfit",
+     "evidence": [
+      {
+       "loc": "2.4 Data Analysis",
+       "quote": "using the *imfit* task of CASA 4.7.2"
+      }
+     ]
+    }
+   },
+   {
+    "name": "lifelines",
+    "version": "v0.21.1",
+    "used_for": {
+     "value": "Kaplan-Meier survival analysis and log-rank test",
+     "evidence": [
+      {
+       "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+       "quote": "To statistically compare the distributions, we used the log rank test as implemented in *lifelines*."
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy",
+    "version": "not stated",
+    "used_for": {
+     "value": "power-law fits, curve_fit of Gaussian CDF",
+     "evidence": [
+      {
+       "loc": "3.2 Continuum Emission at 0.87 mm and 9 mm",
+       "quote": "is fit with a constant spectral index ($\\alpha$) of 2.24$\\pm$0.03 using *scipy*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Disk+envelope dust temperature models",
+     "evidence": [
+      {
+       "loc": "Average Disk Dust Temperature",
+       "quote": "We used the Monte Carlo dust radiative transfer code RADMC-3D (cite: dullemond2012)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyTorch",
+    "version": "not stated",
+    "used_for": {
+     "value": "Neural network for distance interpolation",
+     "evidence": [
+      {
+       "loc": "Distance Estimates",
+       "quote": "We then used a fully connected neural network constructed in PyTorch with 1 hidden layer and 300 neurons"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy / APLpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Analysis and plotting",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy2013; astropy2018), APLpy (cite: aplpy), CASA (cite: mcmullin2007)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Mean dust disk radius, Class 0 (all)",
+    "value": "44.9",
+    "uncertainty": "+5.8/-3.4",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "44.9$^{+5.8}_{-3.4}$, 37.0$^{+4.9}_{-3.0}$, and 28.5$^{+3.7}_{-2.3}$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean dust disk radius, Class I (all)",
+    "value": "37.0",
+    "uncertainty": "+4.9/-3.0",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "44.9$^{+5.8}_{-3.4}$, 37.0$^{+4.9}_{-3.0}$, and 28.5$^{+3.7}_{-2.3}$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean dust disk radius, Flat Spectrum (all)",
+    "value": "28.5",
+    "uncertainty": "+3.7/-2.3",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "44.9$^{+5.8}_{-3.4}$, 37.0$^{+4.9}_{-3.0}$, and 28.5$^{+3.7}_{-2.3}$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean dust disk mass, Class 0 (all)",
+    "value": "25.9",
+    "uncertainty": "+7.7/-4.0",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "25.9$^{+7.7}_{-4.0}$, 14.9$^{+3.8}_{-2.2}$, 11.6$^{+3.5}_{-1.9}$ M$_{\\ensuremath{\\oplus}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean dust disk mass, Class I (all)",
+    "value": "14.9",
+    "uncertainty": "+3.8/-2.2",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "25.9$^{+7.7}_{-4.0}$, 14.9$^{+3.8}_{-2.2}$, 11.6$^{+3.5}_{-1.9}$ M$_{\\ensuremath{\\oplus}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean dust disk mass, Flat Spectrum (all)",
+    "value": "11.6",
+    "uncertainty": "+3.5/-1.9",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "25.9$^{+7.7}_{-4.0}$, 14.9$^{+3.8}_{-2.2}$, 11.6$^{+3.5}_{-1.9}$ M$_{\\ensuremath{\\oplus}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean dust disk mass, Class 0 non-multiples",
+    "value": "38.1",
+    "uncertainty": "+18.9/-8.4",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+      "quote": "we find mean dust disk masses of 38.1$^{+18.9}_{-8.4}$, 13.4$^{+4.6}_{-2.4}$, and 14.3$^{+6.5}_{-3.0}$ M$_{\\ensuremath{\\oplus}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA detections",
+    "value": "286 of 328 targeted fields; 379 discrete sources",
+    "uncertainty": "not stated",
+    "units": "count",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Detection Statistics",
+      "quote": "We detected continuum emission associated with the protostars in 286 fields with at least S/N $>$ 3, corresponding to a 87% detection rate."
+     }
+    ]
+   },
+   {
+    "quantity": "0.87-9 mm flux density spectral index",
+    "value": "2.24",
+    "uncertainty": "0.03",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission at 0.87 mm and 9 mm",
+      "quote": "fit with a constant spectral index ($\\alpha$) of 2.24$\\pm$0.03 using *scipy*"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of disks with R>50 au",
+    "value": "~36% (153/(379+42))",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Protostellar Disk Radii and Their Evolution",
+      "quote": "the frequency of protostellar disks with radii greater than $\\sim$50 au is $\\sim$36% (153/(379+42))"
+     }
+    ]
+   },
+   {
+    "quantity": "Median dust disk mass Class 0/I/Flat (all)",
+    "value": "25.7, 15.6, 13.8",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+      "quote": "we find median dust disk masses of 25.7, 15.6, and 13.8 M$_{\\ensuremath{\\oplus}}$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean cos(i)",
+    "value": "0.601 (median 0.596)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.5 Distribution of Protostellar Dust Disk Masses versus Radius and Inclinations",
+      "quote": "The median and mean values of cos($i$) are 0.596 and 0.601, respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Class I and Flat Spectrum mass distributions are statistically consistent; Class 0 masses larger",
+    "evidence": [
+     {
+      "loc": "3.3 Distribution of Protostellar Dust Disk Masses",
+      "quote": "However, the differences between the Class I and Flat Spectrum sources are not statistically significant."
+     }
+    ]
+   },
+   {
+    "value": "No significant differences in disk properties between Orion subregions",
+    "evidence": [
+     {
+      "loc": "3.6 Regional Comparison of Disk Properties",
+      "quote": "the properties of protostellar disks do not show statistically significant differences between sub-regions within the Orion molecular clouds"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do protostellar dust disk masses and radii decrease from Class 0 to Flat Spectrum?",
+    "experiment": "Gaussian fits to 0.87 mm continuum, mass and radius distributions via survival analysis",
+    "result": "Mean masses 25.9/14.9/11.6 Earth masses; mean radii 44.9/37.0/28.5 au",
+    "finding": "Masses decrease with evolution; radii decrease or stay constant, contrary to disk-growth predictions (dust radii only)",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The decrease in dust disk masses is expected from disk evolution and accretion, but the decrease in disk radii may point to the initial conditions of star formation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are protostellar disks more massive than Class II disks?",
+    "experiment": "Compare Orion mass distributions with Class II surveys",
+    "result": "Factor >4 larger",
+    "finding": "Solid growth toward planet cores may begin in protostellar phase",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The protostellar dust disk mass distributions are systematically larger than that of Class II disks by a factor of $>$4"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do disk properties vary with region in Orion?",
+    "experiment": "Log-rank tests among northern ISF, L1641+southern ISF, Orion B",
+    "result": "No significant differences",
+    "finding": "Properties are similar across environments",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These properties are not found to vary significantly between different regions within Orion."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are large (>50 au) protostellar disks common?",
+    "experiment": "Count disks with deconvolved 2σ radius >50 au",
+    "result": "At least 146 (35%) out of 379+42",
+    "finding": "Large disks are not rare",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "At least 146 protostellar disks (35% out of 379 detected 0.87 mm continuum sources plus 42 non-detections) have disk radii greater than 50 au in our sample."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Orion provides a much larger protostar sample; VLA 9 mm probes optically thick inner disks",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "even at submillimeter wavelengths the protostellar disks can be optically thick; therefore, VLA observations at 9 mm are crucial to examine the inner disks"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Gaussian fitting is simple and fast for large samples; curve-of-growth and Nuker profiles less suited with envelopes",
+    "evidence": [
+     {
+      "loc": "2.4 Data Analysis",
+      "quote": "While Gaussian fitting has limitations, its advantage lies in its simplicity and ability to rapidly fit a large number of sources."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Curve of growth and Nuker profile radius methods judged less suitable for protostellar disks",
+     "evidence": [
+      {
+       "loc": "2.4 Data Analysis",
+       "quote": "These methods and assumptions are not always possible and/or reliable for protostellar disks, due in large part to the surrounding envelope."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Optically thick emission yields mass underestimates; envelope contamination possible; Gaussian radius biases",
+     "evidence": [
+      {
+       "loc": "2.4 Data Analysis",
+       "quote": "If the dust emission is not optically thin, then the masses will be lower limits."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-Gaussian radius definition not comparable with 90%-flux radii of other surveys",
+    "Mass depends on assumed opacity and L-scaled temperature; Perseus/Ophiuchus discrepancies unresolved",
+    "Distance from neural-net interpolation uncertain (flat 10 pc error)",
+    "Median/mean statistics mix multiples sharing one Lbol"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data and Harvard Dataverse images",
+    "evidence": [
+     {
+      "loc": "Images of all Protostars",
+      "quote": "The images for each figure are available from the Harvard Dataverse (https://dataverse.harvard.edu) (cite: alma_images; vla_images)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Cell/image size, masks, niter",
+    "Line-free channels and spectral window flagging",
+    "Neural-network distance training details",
+    "Complete RADMC-3D setup details"
+   ],
+   "estimated_data_volume_inferred": "~200-500 GB ALMA raw (nine executions, 328 fields) plus ~100 VLA datasets",
+   "score_inferred": 4,
+   "score_reason": "Public data, clear recipe and tables of per-source values; some imaging parameters unstated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA data, defined Gaussian-fit and mass recipe, numeric results; but heavy data volume and some missing settings."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: ossenkopf1994)",
+     "why": "Dust opacity adopted"
+    },
+    {
+     "citation": "(cite: dullemond2012)",
+     "why": "RADMC-3D used for temperature models"
+    },
+    {
+     "citation": "(cite: williams2019)",
+     "why": "Log-normal CDF approach for disk mass distributions"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: seguracox2016; seguracox2018)",
+     "why": "Earlier VANDAM VLA Perseus disk results"
+    },
+    {
+     "citation": "(cite: tychoniec2018)",
+     "why": "VLA Perseus disk masses compared"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "VANDAM",
+    "Herschel Orion Protostar Survey (HOPS)",
+    "CALYPSO",
+    "MASSES"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e41ecc0079c9459cba616e6ec3af8abd",
+  "batch_id": "msgbatch_01X2oCo1xYBnZiQzoue1QNo3",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T21:35:58",
+  "usage": {
+   "input_tokens": 217474,
+   "output_tokens": 11838,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.27727,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 88,
+  "quotes_ok": 88,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 65,
+   "rate": 0.756
+  },
+  "evidence_ok": true
+ }
+}

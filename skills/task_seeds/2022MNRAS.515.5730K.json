@@ -1,0 +1,346 @@
+{
+ "bibcode": "2022MNRAS.515.5730K",
+ "title": "Investigating star-formation activity towards the southern H II region RCW 42",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac2124",
+ "arxiv_id": "2207.14040",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What is the extent of star-formation activity and the relative evolutionary stages of clumps in the molecular cloud associated with the southern HII region RCW 42?",
+ "alma_project_codes": [
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "1.4 mm",
+  "arrays": "7m array",
+  "angular_resolution": "7.5'' x 5.0''",
+  "sensitivity": "0.8 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "408 MHz continuum all-sky map for GMRT flux rescaling",
+    "evidence": [
+     {
+      "loc": "Radio Continuum Observations",
+      "quote": "The rescaling factor was calculated using an improved version (cite: 2015MNRAS.451.4311R) of the continuum all-sky map of (cite: 1982A&AS...47....1H) at 408 MHz."
+     }
+    ]
+   },
+   "citation": "(cite: 2015MNRAS.451.4311R); (cite: 1982A&AS...47....1H)"
+  },
+  {
+   "what": {
+    "value": "Parkes 64m radio continuum flux densities at 5 and 8.9 GHz (25.9 and 22.4 Jy)",
+    "evidence": [
+     {
+      "loc": "Ionized gas emission",
+      "quote": "(cite: 1972AuJPh..25..443C) carried out radio continuum measurements of RCW 42 using the 64m Parkes telescope at 5 and 8.9 GHz and obtained flux densities of 25.9 and 22.4 Jy, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: 1972AuJPh..25..443C)"
+  },
+  {
+   "what": {
+    "value": "electron temperature Te = 7900 K from radio recombination line measurements",
+    "evidence": [
+     {
+      "loc": "Ionized gas emission",
+      "quote": "The electron temperature $T_e$ is taken as 7900 K derived from radio recombination line measurements of this region by (cite: 1987A&A...171..261C)."
+     }
+    ]
+   },
+   "citation": "(cite: 1987A&A...171..261C)"
+  },
+  {
+   "what": {
+    "value": "10 candidate ionizing OB stars in the central NIR nebulosity",
+    "evidence": [
+     {
+      "loc": "Ionizing candidates of RCW 42",
+      "quote": "This is in addition to the 10 sources identified by (cite: 2011MNRAS.411..705M) as ionizing candidates."
+     }
+    ]
+   },
+   "citation": "(cite: 2011MNRAS.411..705M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify 1.4 mm continuum cores in clump C1 and derive their masses",
+   "method": "Run Clumpfind on the archival ALMA 1.4 mm continuum image towards C1 to identify cores MM1 and MM2, then compute core masses assuming optically thin thermal dust emission.",
+   "software": [
+    "Clumpfind"
+   ],
+   "key_parameters": [
+    "threshold = 0.15 Jy/beam, contour spacing = 7 mJy/beam"
+   ],
+   "assumptions": [
+    "optically thin emission at 1.4 mm, dust temperature = 38 K, gas-to-dust ratio = 100, opacity per cloud mass = 0.3 cm^2/g for beta = 2 (or gas-to-dust ratio = 150 and beta = 1.8)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure ionized gas properties and electron density map from GMRT radio continuum",
+   "method": "Integrate 610 and 1280 MHz flux densities above 3 sigma, estimate missing flux at 1280 MHz using spectral index from 610 MHz and Parkes 5 and 8.9 GHz fluxes, compute Lyman continuum photon rate and cluster mass, and construct an electron density map on a 3'' x 3'' grid.",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [
+    "grid pixel size = 3'' x 3'', spherical cloud radius = 5' centered on I-09227"
+   ],
+   "assumptions": [
+    "optically thin emission, negligible dust absorption, Te = 7900 K, d = 5.8 kpc, Gaunt factor = 5"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct H2 column density and dust temperature maps and identify molecular clumps",
+   "method": "Convolve and regrid Herschel 70-350 um maps to the 500 um resolution (36.9'') and pixel size (14''), subtract background, fit pixel-by-pixel modified blackbody SEDs, and run Clumpfind on the column density map to identify clumps C1-C5 and compute their masses, luminosities, and evolutionary stages.",
+   "software": [
+    "HIPE",
+    "Clumpfind"
+   ],
+   "key_parameters": [
+    "Clumpfind threshold = 5 sigma (4.1e21 cm^-2), contour spacing = 3 sigma (sigma = 8.2e20 cm^-2)"
+   ],
+   "assumptions": [
+    "mean molecular weight mu = 2.86, kappa_nu = 0.1 cm^2/g at 250 um, gas-to-dust ratio = 100, beta = 2.0, flux uncertainties = 15%"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mass of ALMA 1.4 mm core MM1 (beta = 2, gas-to-dust = 100)",
+   "value": "380",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre continuum emission towards C1",
+     "quote": "The masses are quite similar: 380 and 390 M$_\\odot$ for MM1 and MM2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of ALMA 1.4 mm core MM2 (beta = 2, gas-to-dust = 100)",
+   "value": "390",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre continuum emission towards C1",
+     "quote": "The masses are quite similar: 380 and 390 M$_\\odot$ for MM1 and MM2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of ALMA 1.4 mm core MM1 (beta = 1.8, gas-to-dust = 150)",
+   "value": "250",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre continuum emission towards C1",
+     "quote": "Using the opacity relation from (cite: 2013IAUS..292...19T) for $\\beta=1.8$ with gas-to-dust ratio of 150, we estimate the dust masses to be 250 and 260 M$_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of ALMA 1.4 mm core MM2 (beta = 1.8, gas-to-dust = 150)",
+   "value": "260",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre continuum emission towards C1",
+     "quote": "Using the opacity relation from (cite: 2013IAUS..292...19T) for $\\beta=1.8$ with gas-to-dust ratio of 150, we estimate the dust masses to be 250 and 260 M$_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Separation between ALMA cores MM1 and MM2",
+   "value": "7.7",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre continuum emission towards C1",
+     "quote": "The two cores are separated by $7.7''\\sim0.2$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "GMRT 1280 MHz integrated flux density",
+   "value": "17.9",
+   "uncertainty": "1.8",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ionized gas emission",
+     "quote": "The flux densities of RCW 42 at 1280 and 610 MHz images are $17.9\\pm 1.8$ Jy and $25.4\\pm2.5$ Jy, respectively, for emission integrated over regions with values above $3\\sigma$, where $\\sigma$ represents the rms noise."
+    }
+   ]
+  },
+  {
+   "quantity": "GMRT 610 MHz integrated flux density",
+   "value": "25.4",
+   "uncertainty": "2.5",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ionized gas emission",
+     "quote": "The flux densities of RCW 42 at 1280 and 610 MHz images are $17.9\\pm 1.8$ Jy and $25.4\\pm2.5$ Jy, respectively, for emission integrated over regions with values above $3\\sigma$, where $\\sigma$ represents the rms noise."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio spectral index of RCW 42",
+   "value": "-0.03",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ionized gas emission",
+     "quote": "Based on the GMRT and Parkes images, we estimate the spectral index of RCW 42 as $-0.03\\pm0.04$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average electron number density",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ionized gas emission",
+     "quote": "The average electron density across the entire region is $\\sim70$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak electron density towards I-09227",
+   "value": "350",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Ionized gas emission",
+     "quote": "The peak electron density of $\\sim350$ cm$^{-3}$ is observed towards I-09227, which decreases as we move away from the peak."
+    }
+   ]
+  },
+  {
+   "quantity": "Average cloud ionization fraction",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The average electron number density in the region is estimated to be $\\sim70$ cm$^{-3}$, which suggests an average ionization fraction of the cloud to be $11\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak H2 column density (towards I-09230)",
+   "value": "5.8e22",
+   "uncertainty": "0.6e22",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Emission from cold dust",
+     "quote": "The highest column density pixel is observed towards I-09230 with a value of $5.8\\pm0.6\\times10^{22}$ cm$^{-2}$ corresponding to a temperature of $32.9\\pm1.0$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust temperature (towards I-09227)",
+   "value": "39.1",
+   "uncertainty": "1.3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Emission from cold dust",
+     "quote": "The peak temperature of $39.1\\pm1.3$ K is observed towards I-09227, with a column density of $2.0\\pm0.2\\times10^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass of the 5 clumps (beta = 2, gas-to-dust = 100)",
+   "value": "1.6e4",
+   "uncertainty": "50%",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Properties of Clumps",
+     "quote": "The clumps have mass in the range ${2200-4000}$ M$_\\odot$, and the total mass of the clumps is $1.6\\times10^4$ M$_\\odot$."
+    },
+    {
+     "loc": "Properties of Clumps",
+     "quote": "As mentioned earlier, the values estimated in this way are uncertain to a factor of 2, and therefore, the column densities and masses of clumps derived are uncertain upto $\\sim50$% of their values."
+    }
+   ]
+  },
+  {
+   "quantity": "Total luminosity of the 5 clumps",
+   "value": "8.7e5",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Properties of Clumps",
+     "quote": "The luminosities of the clumps lie in the range ${90-300\\times10^3}$ L$_\\odot$, and the total luminosities of the clumps is ${8.7\\times10^5}$ L$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity of RCW 42",
+   "value": "1.8e6",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Bolometric Luminosity of RCW 42",
+     "quote": "The estimate of bolometric luminosity of RCW 42 is $1.8\\times 10^6$ L$_\\odot$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMAGAL field ID or pointing coordinates in the ALMA archive for the I-09227 7m continuum product",
+  "Integrated 1.4 mm flux densities and aperture sizes measured by Clumpfind for ALMA cores MM1 and MM2",
+  "Background subtraction region coordinates for the Herschel pixel-by-pixel SED fitting",
+  "Clump aperture definitions and table values for C1-C5 (the clump table is missing in the manuscript text)"
+ ],
+ "missing_for_reproduction": [
+  "Integrated 1.4 mm flux densities and angular sizes of ALMA cores MM1 and MM2",
+  "Table of individual clump parameters for C1-C5 (missing from the text)",
+  "Raw GMRT visibility data and T100 FIR maps (available only upon request)",
+  "Exact background regions used for Herschel map background subtraction"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "The ALMA part uses a public pipeline-reduced continuum image from the archive and states the Clumpfind threshold (0.15 Jy/beam), contour spacing (7 mJy/beam), dust temperature (38 K), and opacity assumptions, though intermediate core flux densities are omitted. GMRT and T100 data are not publicly hosted.",
+ "rediscovery_reason": "The ALMA 1.4 mm core masses (380 and 390 M_sun) are derived directly from a public archival pipeline-reduced continuum image (2019.1.00195.L) using explicitly stated Clumpfind parameters and dust opacity/temperature assumptions.",
+ "source_card": "cards/2022MNRAS.515.5730K/sonnet/card.md"
+}

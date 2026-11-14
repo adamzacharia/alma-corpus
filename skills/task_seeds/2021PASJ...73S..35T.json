@@ -1,0 +1,591 @@
+{
+ "bibcode": "2021PASJ...73S..35T",
+ "title": "The formation of young massive clusters triggered by cloud-cloud collisions in the Antennae galaxies NGC 4038/NGC 4039",
+ "year": 2021,
+ "doi": "10.1093/pasj/psaa033",
+ "arxiv_id": "1909.05240",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Whether cloud-cloud collisions trigger the formation of super star clusters (SSCs) in the overlap region of the Antennae galaxies (NGC 4038/NGC 4039), and how compressed gas pressure relates to SSC stellar mass.",
+ "alma_project_codes": [
+  "2016.1.00924.S"
+ ],
+ "data": {
+  "bands": "Band 7 (345 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.70\" x 0.46\" (Cycle 0); ~0.16\" x 0.19\" (Cycle 4 + Cycle 0)",
+  "sensitivity": "~4.8e-3 Jy beam^-1 (~0.15 K) per 5.0 km s^-1 (Cycle 0); ~1.3e-3 Jy beam^-1 (~0.45 K) per 5.0 km s^-1 (Cycle 4 + Cycle 0)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ages, positions, and total stellar masses of SSCs B1, C, D, D1, and D2 in the Antennae",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Note. — Column (1): Object name. Column (2): Age of object. Column (3): Total stellar mass of the cluster. Column (4): [1] Gilbert & Graham (2007), [2] Whitmore et al. (2010)."
+     },
+     {
+      "loc": "Figure 4 caption",
+      "quote": "The black crosses and orange circles indicate the positions of superstar clusters (Gilbert & Graham 2007) and H2 emission source (Herrera et al. 2012), respectively."
+     }
+    ]
+   },
+   "citation": "Gilbert & Graham (2007), Whitmore et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "Positions and evolutionary stage classifications of embedded clusters and SGMCs",
+    "evidence": [
+     {
+      "loc": "Figure 6 caption",
+      "quote": "The red crosses indicate the positions of the embedded clusters (Whitmore et al. 2014)."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "Column (5): Evolutionary stage of SGMCs defined by Whitmore et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Whitmore et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "H2 emission source position (the Firecracker)",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "The black crosses and orange circles indicate the positions of superstar clusters (Gilbert & Graham 2007) and H2 emission source (Herrera et al. 2012), respectively."
+     }
+    ]
+   },
+   "citation": "Herrera et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "Single-dish JCMT peak brightness temperature and X_CO conversion factor",
+    "evidence": [
+     {
+      "loc": "2.1 Cycle 0 data toward the overlap region: GMC scale",
+      "quote": "To investigate the missing flux, we compared the peak brightness temperature of the single-dish (JCMT) data (Zhu et al. 2003) and our re-processed data smoothed to the single-dish resolution of 14′′."
+     },
+     {
+      "loc": "3.2 Physical properties of SGMCs",
+      "quote": "XCO mass was estimated by using the CO-to-H2 conversion factor XCO = 0.6×1020 cm−2 (K km s−1)−1 (Zhu et al. 2003; Kamenetzky et al. 2014)."
+     }
+    ]
+   },
+   "citation": "Zhu et al. (2003), Kamenetzky et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "12CO (3-2) to 12CO (1-0) intensity ratios in the overlap region",
+    "evidence": [
+     {
+      "loc": "3.2 Physical properties of SGMCs",
+      "quote": "As Ueda at al. (2012) showed that the ratio of CO(3–2)/(1–0) in the southern part of the overlap region is up to 0.3–0.5, we adopted the 12CO (3–2) to 12CO (1–0) ratios"
+     }
+    ]
+   },
+   "citation": "Ueda et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "Physical properties, CO data, and stellar masses for Westerlund 2 and R136",
+    "evidence": [
+     {
+      "loc": "5.5 Comparison with the other clusters",
+      "quote": "The external pressure of Westerlund 2 is calculated by the physical parameters of molecular clouds (Furukawa et al. 2009)."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "Column(9): References: [1] Whitmore et al. 2014, [2] the present study, [3] Gilbert & Graham (2007), [4] Cignoni et al. (2015), [5] Ascenso et al. (2007), [6]Whitney et al. (2004), [7] Furukawa et al. 2009, [8] Ohama et al. 2010"
+     }
+    ]
+   },
+   "citation": "Kim et al. (2003), Whitney et al. (2004), Ascenso et al. (2007), Furukawa et al. (2009), Ohama et al. (2010), Cignoni et al. (2015), Fukui et al. (2017), Tsuge et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-image ALMA Cycle 0 and Cycle 4+0 12CO (3-2) visibility data and evaluate missing flux",
+   "method": "Re-image archival visibilities using multiscale CLEAN with natural weighting in CASA, and compare smoothed 14 arcsec peak brightness temperature to JCMT single-dish data",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting; velocity resolution 5.0 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute moment maps, position-velocity diagrams, and define cloud velocity components and bridge features",
+   "method": "Compute 0th, 1st, and 2nd moment maps using MIRIAD with a 1.5 K (1 sigma) clipping threshold; construct Declination-velocity and R.A.-velocity diagrams to separate blue, green, red, and intermediate-velocity bridge components",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Clipping threshold > 1.5 K (1 sigma) for 1st and 2nd moments; V_LSR integration range 1300-1795 km s^-1 for total intensity",
+    "Velocity ranges: SGMC1 [1350-1460, 1505-1550 km s^-1, bridge 1460-1505 km s^-1]; SGMC2 [1400-1530, 1580-1700 km s^-1, bridge 1530-1580 km s^-1]; SGMC4-5 [1450-1535, 1560-1700 km s^-1, bridge 1535-1560 km s^-1]; Firecracker [1370-1510, 1595-1745 km s^-1, bridge 1510-1595 km s^-1]"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive physical parameters and masses (virial and X_CO) of the cloud components",
+   "method": "Fit Gaussian profiles to spectra at the maximum integrated intensity position of each cloud, measure effective radius enclosed by the 20% peak contour, and calculate M_vir and X_CO mass",
+   "software": [],
+   "key_parameters": [
+    "20% of peak integrated intensity contour (~30 sigma) for cloud boundary and effective radius r = (A/pi)^0.5"
+   ],
+   "assumptions": [
+    "Uniform density sphere for virial mass: M_vir / M_sun = 210 r (dV)^2",
+    "CO-to-H2 conversion factor X_CO = 0.6 x 10^20 cm^-2 (K km s^-1)^-1",
+    "12CO (3-2) to 12CO (1-0) ratios: 0.4 +/- 0.1 (SGMC 1), 0.3 +/- 0.1 (SGMC 2), 0.5 +/- 0.1 (SGMC 4-5), 0.3 +/- 0.1 (The Firecracker)",
+    "Distance of 22 Mpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Quantify spatial displacement between complementary colliding clouds and estimate collision timescales",
+   "method": "Shift one velocity component relative to the other in 1.8 pc pixel steps up to +/- 240 pc, compute Spearman's rank correlation coefficient of integrated intensities to find the minimum, and divide displacement by relative velocity",
+   "software": [],
+   "key_parameters": [
+    "Shift range +/- 240 pc, step size 1.8 pc (1 pixel)"
+   ],
+   "assumptions": [
+    "Collision angle to the line of sight theta = 45 deg (range 30 to 60 deg)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Evaluate gravitational binding and stellar feedback energy budgets",
+   "method": "Calculate gravitational binding mass M = l sigma^2 / (2G) for SGMC 4-5, and compare cloud kinetic energy to supernova and stellar wind energy injection",
+   "software": [],
+   "key_parameters": [
+    "Expansion velocity ~50 km s^-1 (half of velocity separation)"
+   ],
+   "assumptions": [
+    "Supernova kinetic energy conversion efficiency of 5% (Kruijssen 2012); stellar wind energy conversion efficiency of 20% (Weaver et al. 1977)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Calculate external compressed gas pressures and fit correlation with SSC total stellar mass",
+   "method": "Calculate external pressure at cloud edge P_e = (3 Pi M v^2) / (4 pi R^3) = rho_e v^2 for Antennae SSCs, R136, and Westerlund 2, and perform linear regression in log-log space using MPFITEXY",
+   "software": [
+    "MPFITEXY"
+   ],
+   "key_parameters": [
+    "R = 150 pc extraction radius around C, D, D1, and D2"
+   ],
+   "assumptions": [
+    "Edge-to-mean density ratio Pi = 0.5 (rho_e = Pi * rho)",
+    "HI column density conversion N_HI = 1.8224 x 10^18 integral(Delta T_b dv) cm^-2 for R136"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular mass of whole overlap region (within 3 sigma)",
+   "value": "1.1e9",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Physical properties of SGMCs",
+     "quote": "Further, we estimated the total molecular mass of the whole overlap region enclosed by a contour of 3σ level of Figure 2 to be 1.1×109 M⊙,"
+    }
+   ]
+  },
+  {
+   "quantity": "SGMC 1 blue cloud X_CO mass",
+   "value": "5e7",
+   "uncertainty": "+2e7/-1e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SGMC 1 blue 1430 12.3 45 171 7 5+2 −1"
+    }
+   ]
+  },
+  {
+   "quantity": "SGMC 1 green cloud X_CO mass",
+   "value": "15e7",
+   "uncertainty": "+5e7/-3e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "green 1520 7.6 70 253 24 15+5 −3"
+    }
+   ]
+  },
+  {
+   "quantity": "SGMC 2 green cloud X_CO mass",
+   "value": "24e7",
+   "uncertainty": "+12e7/-6e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SGMC 2 green 1515 8.0 95 250 46 24+12 −6"
+    }
+   ]
+  },
+  {
+   "quantity": "SGMC 2 red cloud X_CO mass",
+   "value": "6e7",
+   "uncertainty": "+3e7/-2e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "red 1635 4.2 75 173 19 6+3 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "SGMC 4-5 green cloud X_CO mass",
+   "value": "6e7",
+   "uncertainty": "+2e7/-1e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SGMC 4–5 green 1490 12.6 50 158 8 6+2 −1"
+    }
+   ]
+  },
+  {
+   "quantity": "SGMC 4-5 red cloud X_CO mass",
+   "value": "4e7",
+   "uncertainty": "1e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "red 1605 4.5 110 198 49 4±1"
+    }
+   ]
+  },
+  {
+   "quantity": "The Firecracker green cloud X_CO mass",
+   "value": "2e7",
+   "uncertainty": "1e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "The Firecracker green 1515 23.6 80 37 5 2±1"
+    }
+   ]
+  },
+  {
+   "quantity": "The Firecracker red cloud X_CO mass",
+   "value": "2e7",
+   "uncertainty": "1e7",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "red 1630 9.9 60 61 4.4 2±1"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected displacement in SGMC 1 north cloud",
+   "value": "68",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 SGMC1 and SGMC4-5",
+     "quote": "We found that the two CO clouds exhibit a complementary distribution with displacements of 68 pc (P.A.=51.3 deg) and 92 pc (P.A.=54.5 deg.), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum Spearman correlation coefficient in SGMC 1 north cloud",
+   "value": "-0.73",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 SGMC1 and SGMC4-5",
+     "quote": "These parameters give a minimum correlation coefficient of −0.73 and −0.81 for the two regions, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected displacement in SGMC 1 south cloud",
+   "value": "92",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 SGMC1 and SGMC4-5",
+     "quote": "We found that the two CO clouds exhibit a complementary distribution with displacements of 68 pc (P.A.=51.3 deg) and 92 pc (P.A.=54.5 deg.), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum Spearman correlation coefficient in SGMC 1 south cloud",
+   "value": "-0.81",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 SGMC1 and SGMC4-5",
+     "quote": "These parameters give a minimum correlation coefficient of −0.73 and −0.81 for the two regions, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected displacement in SGMC 4-5",
+   "value": "63",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 SGMC1 and SGMC4-5",
+     "quote": "The green-cloud is surrounded by the red-cloud and they exhibit a complementary spatial distribution with a displacement of ∼63 pc in length (P.A.=−38 deg) as shown in Figure 14a with a minimum correlation coefficient of −0.73."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum Spearman correlation coefficient in SGMC 4-5",
+   "value": "-0.73",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 SGMC1 and SGMC4-5",
+     "quote": "The green-cloud is surrounded by the red-cloud and they exhibit a complementary spatial distribution with a displacement of ∼63 pc in length (P.A.=−38 deg) as shown in Figure 14a with a minimum correlation coefficient of −0.73."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected displacement in The Firecracker",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 High resolution spatial- and velocity-distributions toward the proto-cluster cloud the Firecracker",
+     "quote": "By applying the same method as above, We find a ∼30 pc displacement fits the complementary distribution as shown by an arrow."
+    }
+   ]
+  },
+  {
+   "quantity": "Collision timescale in SGMC 4-5 (B1) and SGMC 1 north",
+   "value": "0.6",
+   "uncertainty": "+0.6/-0.3",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Collisions in the three complexes SGMC1, SGMC2, and SGMC4–5",
+     "quote": "This gives an uncertainty of 0.6+0.6 −0.3 Myrs. We made similar estimations for the north- and south-clouds of SGMC 1 shown in Figure 13b. The time scale of north- and south-clouds are obtained to be 0.6+0.6 −0.3 Myrs and 0.9+0.9 −0.45 Myrs, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Collision timescale in SGMC 1 south",
+   "value": "0.9",
+   "uncertainty": "+0.9/-0.45",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Collisions in the three complexes SGMC1, SGMC2, and SGMC4–5",
+     "quote": "The time scale of north- and south-clouds are obtained to be 0.6+0.6 −0.3 Myrs and 0.9+0.9 −0.45 Myrs, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Collision timescale in The Firecracker",
+   "value": "0.3",
+   "uncertainty": "factor of two (0.15-0.6)",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Details of the collisional triggering in B1 and the Firecracker",
+     "quote": "A ratio between the displacement and the velocity separation indicates a collision time scale of 0.15–0.6 Myr with uncertainty of a factor of two due to the projection effect,"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "The Firecracker 1370–1510 1510–1595 ∼0.3 Stage 1†† —"
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure P/k_B of The Firecracker green cloud",
+   "value": "2.7e9",
+   "uncertainty": "+1.4e9/-0.7e9",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "The Firecracker green CO 115 3400+1700 −700 80 2.7+1.4 −0.7×104 24 – –"
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure P/k_B of B1 green cloud",
+   "value": "1.1e8",
+   "uncertainty": "+0.3e8/-0.2e8",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "B1 green CO 110 150±30 50 1.1+0.3 −0.2×103 10 42±8 [1][3]a"
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure P/k_B of C green cloud",
+   "value": "1.5e8",
+   "uncertainty": "+0.8e8/-0.4e8",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "C green CO 120 210+100 −50 55 1.5+0.8 −0.4×103 5 41±8 [1][3]a"
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure P/k_B of D blue cloud",
+   "value": "1.2e8",
+   "uncertainty": "+0.4e8/-0.3e8",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "D blue CO 110 170+60 −30 46 1.2+0.4 −0.3×103 10 14±2 [1][3]a"
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure P/k_B of D1 blue cloud",
+   "value": "1.5e8",
+   "uncertainty": "+0.5e8/-0.3e8",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "D1 blue CO 110 210+60 −50 46 1.5+0.5 −0.3×103 6 16±3 [1][3]a"
+    }
+   ]
+  },
+  {
+   "quantity": "External pressure P/k_B of D2 green cloud",
+   "value": "1.1e8",
+   "uncertainty": "+0.3e8/-0.2e8",
+   "units": "K cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "green 110+40 −20 51 1.1+0.3 −0.2×103 [2]b"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(M_cluster) vs log(P_e/k_B) relation (Gilbert & Graham 2007 masses)",
+   "value": "0.90",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.5 Comparison with the other clusters",
+     "quote": "We finally obtain that the slope is 0.90 and the intercept is −0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log(M_cluster) vs log(P_e/k_B) relation (Gilbert & Graham 2007 masses)",
+   "value": "-0.92",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.5 Comparison with the other clusters",
+     "quote": "We finally obtain that the slope is 0.90 and the intercept is −0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient of log(M_cluster) vs log(P_e/k_B) (Gilbert & Graham 2007 masses)",
+   "value": "0.96",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.5 Comparison with the other clusters",
+     "quote": "cient is 0.96 when we adopted masses cataloged by Gilbert & Graham (2007)"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(M_cluster) vs log(P_e/k_B) relation (Whitmore et al. 2010 masses)",
+   "value": "0.91",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.5 Comparison with the other clusters",
+     "quote": "If we adopted masses cataloged by Whitmore et al. (2010), the results are almost unchanged as the slope is 0.91, the intercept is −1.04, and linear Pearson correlation coefficient is 0.93."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Multiscale CLEAN scale sizes, stopping threshold, loop gain, and masking strategy in CASA",
+  "Image pixel/cell size and image dimensions for Cycle 0 and Cycle 4+0 cubes (only a 1.8 pc pixel step is mentioned in Section 4.1)",
+  "Continuum subtraction procedure prior to CO line imaging",
+  "Relative visibility weights when combining Cycle 0 and Cycle 4 datasets"
+ ],
+ "missing_for_reproduction": [
+  "Exact multiscale CLEAN parameters in CASA (scales, threshold, niter, masking)",
+  "Exact pixel/grid size and image size of the reconstructed Cycle 0 and Cycle 4+0 cubes",
+  "Exact coordinates and dimensions of the bounding boxes used for the Spearman rank correlation displacement analysis in SGMC 1, SGMC 4-5, and the Firecracker",
+  "Exact R.A./Dec. boundaries of the P-V diagram slices in Figures 7, 8, 9, 15, and 20-22"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Archival ALMA project codes, CASA versions, weighting, velocity channel width, RMS noise, moment clipping threshold, velocity integration windows, physical equations, and conversion factors are explicitly stated. However, multiscale CLEAN parameters, exact bounding box coordinates for the Spearman displacement calculation, and P-V slice coordinates are not fully specified.",
+ "rediscovery_reason": "Both ALMA datasets are public in the archive, the physical equations and velocity windows are explicitly tabulated, and the main results (cloud masses, displacements, collision timescales, external pressures, and the linear regression slope/correlation with SSC mass) are quantitative and directly testable.",
+ "source_card": "cards/2021PASJ...73S..35T/sonnet/card.md"
+}

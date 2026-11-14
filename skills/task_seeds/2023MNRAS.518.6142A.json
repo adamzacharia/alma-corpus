@@ -1,0 +1,387 @@
+{
+ "bibcode": "2023MNRAS.518.6142A",
+ "title": "The ALMA REBELS survey: the dust-obscured cosmic star formation rate density at redshift 7",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3195",
+ "arxiv_id": "2208.08243",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What is the typical fraction of dust-obscured star formation in UV-selected galaxies at z~7 and what is the dust-obscured cosmic star formation rate density at z~7?",
+ "alma_project_codes": [
+  "2019.1.01634.L",
+  "2017.1.01217.S",
+  "2017.1.00604.S",
+  "2018.1.00236.S",
+  "2018.1.00085.S",
+  "2018.A.00022.S"
+ ],
+ "data": {
+  "bands": "Bands 5, 6 or 7",
+  "arrays": "not stated",
+  "angular_resolution": "1.2'' - 1.6'' (typical ~1.3'')",
+  "sensitivity": "line sensitivity L_[CII] ~ 2e8 L_odot at z=7 (5 sigma); continuum sensitivity sigma = 10 - 25 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Non-parametric stellar masses for the REBELS sample",
+    "evidence": [
+     {
+      "loc": "Stellar Masses",
+      "quote": "Given the greater flexibility offered by the non-parametric modelling, we adopt the (cite: topping2022) stellar masses for the REBELS galaxies throughout this work."
+     }
+    ]
+   },
+   "citation": "(cite: topping2022)"
+  },
+  {
+   "what": {
+    "value": "Dust continuum properties, detections, and positions of REBELS sources",
+    "evidence": [
+     {
+      "loc": "REBELS",
+      "quote": "For further details on the dust continuum properties of the REBELS sources, we refer to (cite: inami2022)."
+     }
+    ]
+   },
+   "citation": "(cite: inami2022)"
+  },
+  {
+   "what": {
+    "value": "z=7 galaxy stellar mass function",
+    "evidence": [
+     {
+      "loc": "The Obscured Cosmic Star Formation Rate Density",
+      "quote": "The procedure is as follows: we adopt the recent determination of the galaxy stellar mass function (SMF; denoted as $\\Phi(M_\\star)$) at $z=7$ from (cite: stefanon2021), thereby including the uncertainties on their derived SMF parameterization."
+     }
+    ]
+   },
+   "citation": "(cite: stefanon2021)"
+  },
+  {
+   "what": {
+    "value": "UV luminosities and UV star formation rates of REBELS targets",
+    "evidence": [
+     {
+      "loc": "Starburst Identification",
+      "quote": "Our sample is – by construction – rest-frame UV-detected, with its UV luminosities having been determined by Stefanon et al. (2022, in prep.), who additionally adopt the conversion factor to UV star formation rate of $\\mathrm{SFR}_\\mathrm{UV} / (M_\\odot\\,\\mathrm{yr}^{-1})= 7.1\\times10^{-29} \\times \\left(L_\\mathrm{UV} / (\\mathrm{erg/s/Hz})\\right)$."
+     }
+    ]
+   },
+   "citation": "Stefanon et al. (2022, in prep.)"
+  },
+  {
+   "what": {
+    "value": "Conversion from 158 um specific luminosity to total infrared luminosity",
+    "evidence": [
+     {
+      "loc": "Infrared Luminosities and SFRs",
+      "quote": "In order to convert the flux densities to infrared luminosities, we adopt the conversion from (cite: sommovigo2022) derived specifically for REBELS."
+     }
+    ]
+   },
+   "citation": "(cite: sommovigo2022)"
+  },
+  {
+   "what": {
+    "value": "Dust-uncorrected UV-based SFRD at z~7",
+    "evidence": [
+     {
+      "loc": "Comparison to the Literature",
+      "quote": "To quantify this, we compare to the most recent dust-uncorrected UV-based SFRD measurements at $z\\sim7$ from (cite: bouwens2022), who determine UV luminosity functions down to $M_\\mathrm{UV} = -13$ aided by the gravitationally lensed galaxies observed across the Hubble Frontier Fields."
+     }
+    ]
+   },
+   "citation": "(cite: bouwens2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Subtract bright serendipitous sources from continuum maps",
+   "method": "Subtract two bright serendipitous galaxies ~5'' from the image centers of REBELS-05 and REBELS-P4 prior to stacking",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Sample stellar mass posteriors, flag starbursts, and bin sample",
+   "method": "Approximate M_star posteriors as two-sided Gaussians, draw N_MC = 100 Monte Carlo realizations per galaxy, flag and exclude starbursts (>3x above extrapolated z=7 Schreiber et al. 2015 main sequence), and divide remaining galaxies into 4 stellar mass bins of 8-10 galaxies each (plus a no-MC fixed-median run)",
+   "software": [],
+   "key_parameters": [
+    "N_MC = 100 realizations",
+    "4 stellar mass bins with 8-10 galaxies per bin (or 2 bins each when splitting detections and non-detections)",
+    "Starburst threshold: SFR_UV+IR > 3 x main sequence at z=7 (excluding 8.5 +/- 2.1 out of 45 galaxies on average)"
+   ],
+   "assumptions": [
+    "Non-parametric stellar masses from (cite: topping2022)",
+    "SFR_UV / (M_odot yr^-1) = 7.1e-29 * (L_UV / (erg/s/Hz))"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform image-plane continuum stacking and measure stacked flux densities",
+   "method": "Mean stacking in the image plane at native resolution centered on observed UV positions for continuum non-detections and rest-frame 158 um positions for detections; extract peak flux densities using source-finding software (cite: mohanrafferty2015) or compute upper limits",
+   "software": [
+    "Source finder from (cite: mohanrafferty2015)"
+   ],
+   "key_parameters": [
+    "Peak threshold = 3 sigma, island threshold = 2 sigma",
+    "Upper limit = max{3 sigma, 3 sigma + S_pxl}"
+   ],
+   "assumptions": [
+    "Sources are unresolved by the ~1.3'' beam, so peak flux density equals total flux density"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Convert stacked flux densities to infrared luminosities, IR SFRs, and obscured fractions",
+   "method": "Apply CMB correction at median stack redshift, convert rest-frame 158 um luminosity to L_IR and SFR_IR, compute f_obs = SFR_IR / (SFR_IR + SFR_UV), and fit linear f_obs - M_star relation",
+   "software": [
+    "Survival analysis package from (cite: davidson-pilon2019)"
+   ],
+   "key_parameters": [
+    "nu_0 approx 1900 GHz"
+   ],
+   "assumptions": [
+    "L_IR = 11.7 (+4.1 / -2.3) * nu_0 * L_nu_0 (corresponding to modified blackbody with <T_dust> = 45 +/- 4 K and beta = 2.0)",
+    "SFR_IR / (M_odot yr^-1) = 1.2e-10 * (L_IR / L_odot) assuming constant SFR for 100 Myr, Z = 0.002, and Chabrier (2003) IMF",
+    "LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.30, Omega_Lambda = 0.70, and Chabrier (2003) IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit L_IR - M_star relation and integrate over z=7 SMF to derive obscured cosmic SFRD",
+   "method": "Fit linear relation to log(L_IR) vs log(M_star) for each of the N_MC stacks using MCMC, then integrate Phi(M_star) * L_IR(M_star) over stellar mass and convert rho_IR to SFRD",
+   "software": [
+    "MCMC library from (cite: foreman-mackey2013)"
+   ],
+   "key_parameters": [
+    "Lower limit integration range: 8.8 <= log10(M_star / M_odot) <= 10.8",
+    "Full SFRD integration range: log10(M_star^lower / M_odot) = 8.2 (+0.7 / -2.1) (where f_obs = 0, floored at 5.0) to log10(M_star^upper / M_odot) = 12.4"
+   ],
+   "assumptions": [
+    "Stefanon et al. (2021) z=7 SMF shifted by -0.23 dex in stellar mass to convert from Salpeter (1955) to Chabrier (2003) IMF"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Obscured fraction at low stellar mass (log10(M_star/M_odot) approx 9.4)",
+   "value": "0.33",
+   "uncertainty": "+0.06/-0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Obscuration across the full REBELS sample",
+     "quote": "The obscured fraction determined for the REBELS sample ranges from $f_\\mathrm{obs} = 0.33_{-0.04}^{+0.06}$ at low stellar masses ($\\log_{10}\\left(M_\\star / M_\\odot\\right) \\approx 9.4$) to $f_\\mathrm{obs} = 0.58_{-0.18}^{+0.04}$ in the highest mass bin ($\\log_{10}\\left(M_\\star / M_\\odot\\right) \\approx 10.4$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Obscured fraction at high stellar mass (log10(M_star/M_odot) approx 10.4)",
+   "value": "0.58",
+   "uncertainty": "+0.04/-0.18",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Obscuration across the full REBELS sample",
+     "quote": "The obscured fraction determined for the REBELS sample ranges from $f_\\mathrm{obs} = 0.33_{-0.04}^{+0.06}$ at low stellar masses ($\\log_{10}\\left(M_\\star / M_\\odot\\right) \\approx 9.4$) to $f_\\mathrm{obs} = 0.58_{-0.18}^{+0.04}$ in the highest mass bin ($\\log_{10}\\left(M_\\star / M_\\odot\\right) \\approx 10.4$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample-averaged obscured star formation fraction",
+   "value": "0.45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Obscuration across the full REBELS sample",
+     "quote": "Averaged across the entire sample, the $z\\sim7$ REBELS sources show a typical obscured fraction of $f_\\mathrm{obs}\\approx0.45$."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of f_obs - M_star relation (fiducial)",
+   "value": "0.27",
+   "uncertainty": "+0.16/-0.15",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Obscuration across the full REBELS sample",
+     "quote": "Upon performing a linear fit to all $N_\\mathrm{MC}$ samples and combining the posteriors, we determine a median slope and $16-84^\\mathrm{th}$ percentile confidence interval of $0.27_{-0.15}^{+0.16}$ for the $f_\\mathrm{obs} - M_\\star$ relation."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical obscured fraction of continuum-undetected REBELS sources",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The dust-detected versus undetected population",
+     "quote": "In contrast to the dust detections, however, the continuum-undetected sources show significantly lower obscuration amounting to a typical $f_\\mathrm{obs} \\approx 0.25$."
+    },
+    {
+     "loc": "Summary",
+     "quote": "Through a stacking analysis, we determine the typical obscured fraction of the continuum undetected sources to be $f_\\mathrm{obs} \\approx 0.25$ at a median stellar mass of $\\log_{10}\\left(M_\\star/M_\\odot\\right) \\approx 9.8$."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical obscured fraction of continuum-detected REBELS sources",
+   "value": "0.70",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "In contrast, the detections exhibit a typical $f_\\mathrm{obs} \\approx 0.70$ at $\\log_{10}\\left(M_\\star/M_\\odot\\right) \\approx 10.0$."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of L_IR - M_star relation (gamma_MC, fiducial)",
+   "value": "0.52",
+   "uncertainty": "+0.29/-0.27",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A Lower Limit on the $z\\sim7$ Obscured SFRD",
+     "quote": "This results in a linear slope of the $L_\\mathrm{IR} - M_\\star$ relation given by $\\gamma_\\mathrm{MC} = 0.52_{-0.27}^{+0.29}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of L_IR - M_star relation (gamma_no-MC, fiducial)",
+   "value": "0.74",
+   "uncertainty": "+0.54/-0.41",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A Lower Limit on the $z\\sim7$ Obscured SFRD",
+     "quote": "We additionally determine the relation without incorporating Monte Carlo sampling across stellar masses, in which case we recover a slightly steeper slope of $\\gamma_\\mathrm{no-MC} = 0.74_{-0.41}^{+0.54}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower mass cutoff log10(M_star^lower / M_odot) (fiducial)",
+   "value": "8.2",
+   "uncertainty": "+0.7/-2.1",
+   "units": "dex (M_odot)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Full $z\\sim7$ Obscured SFRD from REBELS",
+     "quote": "The median value determined as such is $\\log_{10}(M_\\star^\\mathrm{lower}/M_\\odot) = 8.2_{-2.1}^{+0.7}$, and the full distribution of $M_\\star^\\mathrm{lower}$ is shown in the right panel of Figure [2](#fig:Lir_Mstar_slope)."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on obscured cosmic SFRD log10(SFRD_MC)",
+   "value": "-2.56",
+   "uncertainty": "0.30",
+   "units": "M_odot yr^-1 Mpc^-3 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A Lower Limit on the $z\\sim7$ Obscured SFRD",
+     "quote": "For the no-MC and MC analyses, respectively, we calculate $\\log_{10}\\left(\\mathrm{SFRD}_\\mathrm{no-MC}\\right) \\geq -2.74_{-0.34}^{+0.32}$ and $\\log_{10}\\left(\\mathrm{SFRD}_\\mathrm{MC}\\right) \\geq -2.56 \\pm 0.30$ in units of $M_\\odot\\,\\mathrm{yr}^{-1}\\,\\mathrm{Mpc}^{-3}$ (Table [\\[tab:sfrd\\]](#tab:sfrd))."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on obscured cosmic SFRD log10(SFRD_no-MC)",
+   "value": "-2.74",
+   "uncertainty": "+0.32/-0.34",
+   "units": "M_odot yr^-1 Mpc^-3 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "A Lower Limit on the $z\\sim7$ Obscured SFRD",
+     "quote": "For the no-MC and MC analyses, respectively, we calculate $\\log_{10}\\left(\\mathrm{SFRD}_\\mathrm{no-MC}\\right) \\geq -2.74_{-0.34}^{+0.32}$ and $\\log_{10}\\left(\\mathrm{SFRD}_\\mathrm{MC}\\right) \\geq -2.56 \\pm 0.30$ in units of $M_\\odot\\,\\mathrm{yr}^{-1}\\,\\mathrm{Mpc}^{-3}$ (Table [\\[tab:sfrd\\]](#tab:sfrd))."
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial full obscured cosmic SFRD log10(SFRD_MC)",
+   "value": "-2.24",
+   "uncertainty": "+1.18/-0.61",
+   "units": "M_odot yr^-1 Mpc^-3 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Fiducial | $-2.24_{-0.61}^{+1.18}$ | $-2.57_{-0.48}^{+0.75}$ | $0.31_{-0.22}^{+0.55}$ | $0.17_{-0.11}^{+0.37}$ | [0.2](#sec:sfrd_full) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial full obscured cosmic SFRD log10(SFRD_no-MC)",
+   "value": "-2.57",
+   "uncertainty": "+0.75/-0.48",
+   "units": "M_odot yr^-1 Mpc^-3 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Fiducial | $-2.24_{-0.61}^{+1.18}$ | $-2.57_{-0.48}^{+0.75}$ | $0.31_{-0.22}^{+0.55}$ | $0.17_{-0.11}^{+0.37}$ | [0.2](#sec:sfrd_full) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of total cosmic SFRD at z~7 that is dust-obscured (f_obs,MC)",
+   "value": "0.31",
+   "uncertainty": "+0.55/-0.22",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison to the Literature",
+     "quote": "We determine an obscured fraction of $f_\\mathrm{obs,MC} = 0.31_{-0.22}^{+0.55}$ and $f_\\mathrm{obs,no-MC} = 0.17_{-0.11}^{+0.37}$ for the MC and no-MC-based stacking analyses, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of total cosmic SFRD at z~7 that is dust-obscured (f_obs,no-MC)",
+   "value": "0.17",
+   "uncertainty": "+0.37/-0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison to the Literature",
+     "quote": "We determine an obscured fraction of $f_\\mathrm{obs,MC} = 0.31_{-0.22}^{+0.55}$ and $f_\\mathrm{obs,no-MC} = 0.17_{-0.11}^{+0.37}$ for the MC and no-MC-based stacking analyses, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging (deferred to Schouws et al. 2022, in prep. and Inami et al. 2022)",
+  "Exact imaging parameters (weighting/robust parameter, cell size, image size, deconvolver, masking, continuum subtraction/line-free channels) used to produce the rest-frame 158 um continuum maps",
+  "Names of the software packages dropped by LaTeX conversion macros (e.g., PyBDSF for (cite: mohanrafferty2015), lifelines for (cite: davidson-pilon2019), emcee for (cite: foreman-mackey2013), Prospector for (cite: johnson2021), BEAGLE for (cite: chevallard2016), FAST for (cite: kriek2009), and the task used to subtract serendipitous sources in REBELS-05 and REBELS-P4)",
+  "Exact coordinates, redshifts, UV luminosities, and posterior stellar mass distributions for each of the 45 individual galaxies in the sample"
+ ],
+ "missing_for_reproduction": [
+  "Calibrated continuum images for all 45 REBELS and pilot targets, and the exact imaging recipe used to create them",
+  "Table of the 45 individual galaxies included in the analysis with their coordinates, redshifts, UV SFRs, and Topping et al. (2022) stellar mass posteriors",
+  "Exact covariance matrix of the Stefanon et al. (2021) z=7 stellar mass function parameters used in the Monte Carlo integration",
+  "Custom scripts used for the Monte Carlo binning, image-plane stacking, survival analysis, and MCMC linear fitting"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "The high-level statistical, stacking, and MCMC integration methodology is thoroughly explained and tested against systematic variations, and all 6 ALMA project codes are listed. However, raw calibration and imaging details are deferred to companion papers, software names are obscured by LaTeX macro omissions in the text, and per-source input catalogs/maps are not tabulated directly in this article.",
+ "rediscovery_reason": "All six ALMA project codes are public in the ALMA archive, the companion catalog papers (Bouwens et al. 2022, Inami et al. 2022, Topping et al. 2022) are published, and the main results (f_obs in mass bins, L_IR - M_star slope, and obscured SFRD at z~7) are clear numeric targets with a well-specified statistical recipe.",
+ "source_card": "cards/2023MNRAS.518.6142A/sonnet/card.md"
+}

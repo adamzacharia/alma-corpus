@@ -1,0 +1,934 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025A&A...701A.113M",
+  "title": "MIRACLE: I. Unveiling the multi-phase, multi-scale physical properties of the active galaxy NGC 424 with MIRI, MUSE, and ALMA",
+  "year": 2025,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Marconcini, C.",
+  "n_authors": 29,
+  "arxiv_id": "2503.21921",
+  "doi": "10.1051/0004-6361/202554797",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2021.1.01150.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observations and data reduction",
+    "quote": "We combine new observations of NGC 424 obtained with the MRS as part of the MIRACLE survey (Marconcini et al. in prep.) with archival observations from VLT/MUSE and ALMA."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 424",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.01175 ± 0.00006, D = 51 Mpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 424 is a nearby heavily obscured Seyfert-II galaxy (z = 0.01175 $\\pm$ 0.00006[^2], D = 51 Mpc, 1$\\sim$ 230 pc)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "redshift fitted from integrated MUSE spectrum",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "NGC 424 is a nearby heavily obscured Seyfert-II galaxy (z = 0.01175 $\\pm$ 0.00006[^2], D = 51 Mpc, 1$\\sim$ 230 pc)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the multi-phase (ionised, warm and cold molecular) gas kinematics, dynamical mass and outflow properties in the circumnuclear region of the Seyfert II galaxy NGC 424?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We present the analysis of the multi-phase gas properties in the Seyfert II galaxy NGC 424, using spatially resolved spectroscopic data from JWST/MIRI, part of the Mid-InfraRed Activity of Circumnuclear Line Emission (MIRACLE) program, as well as VLT/MUSE and ALMA."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.01150.S",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "we analysed archival ALMA 12-m array band 6 observations from program 2021.1.01150.S (P.I. A. Rojas)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6, 12-m array",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "archival ALMA 12-m array band 6 observations from program 2021.1.01150.S (P.I. A. Rojas)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "spectral window [226.91, 228.79] GHz covering CO(2-1) at 230.538 GHz rest-frame",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "covering the observed spectral window of \\[226.91, 228.79\\] GHz which allowed us to trace the CO (2-1) emission at 230.538 GHz rest-frame"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "trace the CO (2-1) emission at 230.538 GHz rest-frame"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "two configurations, beam sizes 0.2 and 1 arcsec",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "This program includes observations with two configurations, with beam sizes of 0.2 and 1, respectively."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "beam 0.48 x 0.44, PA 1 deg (~110 pc)",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "to achieve a $\\sim$110 pc resolution (beam size FWHM 0.48$\\times$ 0.44, beam PA = 1$^{\\circ}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "11.4 arcsec (FOV 38 arcsec)",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "the FOV is 38 in diameter, with the largest recoverable scale of 11.4."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 0.94 mJy/beam per channel",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "an rms of 0.94 mJy/beam per channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "archival, P.I. A. Rojas",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "archival ALMA 12-m array band 6 observations from program 2021.1.01150.S (P.I. A. Rojas)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JWST/MIRI MRS",
+     "provided": {
+      "value": "New MIRACLE data: H2 S(1), [NeIII], [NeV] mid-IR IFU cubes",
+      "evidence": [
+       {
+        "loc": "2.1 JWST/MIRI",
+        "quote": "The JWST/MIRI observations of NGC 424 are part of the GO Cycle 3 MIRACLE program 6138."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/MUSE",
+     "provided": {
+      "value": "Archival optical IFU cube (ID 095.B-0934), [OIII] and Halpha",
+      "evidence": [
+       {
+        "loc": "2.2 MUSE",
+        "quote": "NGC 424 IFS archival data obtained with MUSE (ID: 095.B-0934, P.I. S. Juneau)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Previous MUSE outflow estimates for NGC 424 (mass outflow rate 26.3 Msun/yr), used for comparison",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "They found an average outflow velocity of 814 $\\pm$ 70 $\\mathrm{km\\,s^{-1}}$ and a mass outflow rate of 26.3 $\\pm$ 1.3 $\\mathrm{M_\\odot}$ yr$^{-1}$."
+       }
+      ]
+     },
+     "citation": "Kakkad2022"
+    },
+    {
+     "what": {
+      "value": "NFW dark matter scale length r0 = 8.1 ± 0.7 kpc (Milky Way value)",
+      "evidence": [
+       {
+        "loc": "4.2 Rotation curve fitting and dynamical mass",
+        "quote": "we assumed a characteristic scale length of r$_0$ = 8.1 $\\pm$ 0.7 kpc as recently found by (cite: Lin2019) for the Milky Way"
+       }
+      ]
+     },
+     "citation": "(cite: Lin2019)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA v6.1.1",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "the Common Astronomy Software Applications (CASA) package version v6.1.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "calibrated measurement sets requested from the European ARC",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "We requested the calibrated measurement sets from the European ALMA Regional Centre (cite: Hatziminaoglou2015)."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "The data were cleaned using the CASA task TCLEAN CASA task using a BRIGGS weighting scheme with ROBUST = 0.5"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "using a BRIGGS weighting scheme with ROBUST = 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "90 mas",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "a pixel size of 90 mas"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "constant continuum from line-free channels in the uv plane",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "we subtracted a constant continuum level estimated from the emission line free channels in the *uv* plane"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "spectral windows [226.91, 228.79] GHz and [229.29, 231.27] GHz",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "The continuum was subtracted using the line free spectral channels in the spectral windows \\[226.91, 228.79\\] GHz and \\[229.29, 231.27\\] GHz"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "two measurement sets (two configurations) combined",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "We combined the two measurement sets to obtain the best compromise in terms of spatial resolution and sensitivity."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.48 x 0.44, PA 1 deg",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "beam size FWHM 0.48$\\times$ 0.44, beam PA = 1$^{\\circ}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.94 mJy/beam per channel, ~5 km/s channels",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "spectral channel width of $\\sim$ 5 km s$^{-1}$, a pixel size of 90 mas, and an rms of 0.94 mJy/beam per channel"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "MOKA3D 3D kinematic modelling tool and outflow energetics method",
+      "evidence": [
+       {
+        "loc": "4.1 Multi-phase 3D disc kinematic model",
+        "quote": "we used our tool $\\mathrm{MOKA^{3D}}$(Modeling Outflows and Kinematics of AGN in 3D), presented in (cite: Marconcini2023)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Marconcini2023)"
+    },
+    {
+     "what": {
+      "value": "Gaussian-fit routine (Voronoi binning, KS test for number of components) follows earlier work",
+      "evidence": [
+       {
+        "loc": "3.1 JWST/MIRI MRS emission line fitting",
+        "quote": "using a fiducial *p-value* of 0.8 (cite: Marasco2020)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Marasco2020)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA channel selection/velocity range and mask, clean threshold, and number of iterations for tclean",
+    "Which two ALMA execution blocks/configurations were combined and the fluxscale/self-calibration status",
+    "Exact CASA task used to combine the measurement sets and whether primary-beam correction was applied",
+    "Details of the single-Gaussian fit to CO(2-1) per spaxel (initial guesses, spatial binning or smoothing, S/N threshold)",
+    "MOKA3D fitting algorithm, priors and likelihood",
+    "Sampler for the dynamical mass fit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image CO(2-1) cube",
+    "method": {
+     "value": "Combine two ALMA configurations, subtract uv continuum, tclean with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "The data were cleaned using the CASA task TCLEAN CASA task using a BRIGGS weighting scheme with ROBUST = 0.5"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5; pixel 90 mas; ~5 km/s channels",
+      "evidence": [
+       {
+        "loc": "2.3 ALMA",
+        "quote": "a pixel size of 90 mas, and an rms of 0.94 mJy/beam per channel"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit CO(2-1) line profile per spaxel",
+    "method": {
+     "value": "Single Gaussian fit per spaxel, tested with chi2 and Kolmogorov-Smirnov test",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA emission line fitting",
+       "quote": "a single Gaussian was sufficient to reproduce the line profile in each spaxel based on the $\\chi^2$ and the Kolmogorov-Smirnoff test"
+      }
+     ]
+    },
+    "software": [
+     "MPFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "chi2 and KS test",
+     "evidence": [
+      {
+       "loc": "3.3 ALMA emission line fitting",
+       "quote": "based on the $\\chi^2$ and the Kolmogorov-Smirnoff test"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Model disc rotation curve",
+    "method": {
+     "value": "MOKA3D thin-disc multi-shell fit of rotation velocity, inclination and dispersion fixed after a single-shell fit",
+     "evidence": [
+      {
+       "loc": "4.1 Multi-phase 3D disc kinematic model",
+       "quote": "We initially fitted a single-shell model to the entire disc to derive global best-fit estimates of the circular velocity, disc inclination, and intrinsic velocity dispersion."
+      }
+     ]
+    },
+    "software": [
+     "MOKA3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "PA fixed at 28 deg; 20 shells for CO(2-1)",
+      "evidence": [
+       {
+        "loc": "Table moka_disc_fit",
+        "quote": "N$_{shell}$ & N & 9 & 9 & 8 & 20"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "thin disc with height smaller than PSF; shell width = PSF FWHM",
+      "evidence": [
+       {
+        "loc": "4.1 Multi-phase 3D disc kinematic model",
+        "quote": "we adopted a thin-disc geometry with a height smaller than the spatial PSF."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Position angle checked against PaFit",
+     "evidence": [
+      {
+       "loc": "4.1 Multi-phase 3D disc kinematic model",
+       "quote": "we also checked that our measured value for the disc position angle from MUSE data is consistent with the values estimated with the *PaFit* python package"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit dynamical mass from combined rotation curve",
+    "method": {
+     "value": "Freeman exponential disc plus NFW halo fit to the rotation curve",
+     "evidence": [
+      {
+       "loc": "4.2 Rotation curve fitting and dynamical mass",
+       "quote": "fit the dynamical mass ($M_{dyn}$), the baryonic mass scale radius ($R_D$) and the dark matter characteristic velocity $v_h$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "NFW r0 = 8.1 kpc fixed",
+      "evidence": [
+       {
+        "loc": "4.2 Rotation curve fitting and dynamical mass",
+        "quote": "we assumed a characteristic scale length of r$_0$ = 8.1 $\\pm$ 0.7 kpc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Uncertainties at 16th and 84th percentiles; sampler not stated",
+     "evidence": [
+      {
+       "loc": "4.2 Rotation curve fitting and dynamical mass",
+       "quote": "Uncertainties on the derived parameters are evaluated at the 16th and 84th percentiles."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Search for cold molecular outflow and upper limit on mass",
+    "method": {
+     "value": "PVDs along major/minor axes, channel maps, RMS in high-velocity channels converted to molecular gas mass",
+     "evidence": [
+      {
+       "loc": "4.7 Cold and warm molecular phases",
+       "quote": "we estimate a 1 $\\sigma$ molecular gas mass upper limit of 3.3 $\\times$ 10$^{6}$ $\\mathrm{M_\\odot}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "0.8 arcsec slit; 250-500 km/s high-velocity regions; aperture radius ~0.45 arcsec",
+      "evidence": [
+       {
+        "loc": "4.7 Cold and warm molecular phases",
+        "quote": "we extracted the spectrum from a circular region centred on the nucleus and with a radius equal to the ALMA FWHM (i.e., $\\sim$ 0.45)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "R21 = 0.7; alpha_CO = 4.3 Msun pc^-2 (K km/s)^-1",
+      "evidence": [
+       {
+        "loc": "4.7 Cold and warm molecular phases",
+        "quote": "assuming a CO (2-1) to CO (1-0) luminosity ratio of R$_{21}$ = 0.7 (cite: Leroy2009; Sandstrom2013)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "v6.1.1",
+    "used_for": {
+     "value": "Reduction and imaging of ALMA data",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA",
+       "quote": "To reduce and analyse the data we used the Common Astronomy Software Applications (CASA) package version v6.1.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MOKA3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D kinematic modelling of disc and outflows",
+     "evidence": [
+      {
+       "loc": "4.1 Multi-phase 3D disc kinematic model",
+       "quote": "To model the multi-phase disc properties we used our tool $\\mathrm{MOKA^{3D}}$"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MPFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian emission-line fitting per spaxel",
+     "evidence": [
+      {
+       "loc": "3.1 JWST/MIRI MRS emission line fitting",
+       "quote": "We used the MPFIT fitting tool (cite: Markwardt2009) to fit the emission lines in each spaxel."
+      }
+     ]
+    }
+   },
+   {
+    "name": "pPXF",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum fitting of MIRI and MUSE spectra",
+     "evidence": [
+      {
+       "loc": "3.2 MUSE emission line fitting",
+       "quote": "The stellar continuum fit is performed with the pPXF tool"
+      }
+     ]
+    }
+   },
+   {
+    "name": "WebbPSF",
+    "version": "v.1.4.0",
+    "used_for": {
+     "value": "MIRI PSF modelling",
+     "evidence": [
+      {
+       "loc": "7 MIRI/MRS PSF modeling",
+       "quote": "we downloaded the MIRI MRS PSF model cube using the *WebbPSF* tool v.1.4.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PaFit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Check of kinematic position angle",
+     "evidence": [
+      {
+       "loc": "4.1 Multi-phase 3D disc kinematic model",
+       "quote": "*PaFit* python package (cite: Krajnovic2006)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Dynamical mass",
+    "value": "1.09e10",
+    "uncertainty": "0.08e10",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Rotation curve fitting and dynamical mass",
+      "quote": "$M_{dyn}$ = 1.09 $\\pm$ 0.08 $\\times$ 10$^{10}$ $\\mathrm{M_\\odot}$, $R_D$ = 0.48 $\\pm$ 0.02 kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc scale radius R_D",
+    "value": "0.48",
+    "uncertainty": "0.02",
+    "units": "kpc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Rotation curve fitting and dynamical mass",
+      "quote": "$R_D$ = 0.48 $\\pm$ 0.02 kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Dark matter characteristic velocity v_h",
+    "value": "593",
+    "uncertainty": "35",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Rotation curve fitting and dynamical mass",
+      "quote": "$v_h$ = 593 $\\pm$ 35 $\\mathrm{km\\,s^{-1}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(2-1) disc inclination",
+    "value": "58",
+    "uncertainty": "4",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table moka_disc_fit",
+      "quote": "$\\beta$ & Y & 55 $\\pm$ 4 & 65 $\\pm$ 9 & 58 $\\pm$ 4 & 60 $\\pm$ 9"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold molecular outflow mass 1-sigma upper limit",
+    "value": "3.3e6",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.7 Cold and warm molecular phases",
+      "quote": "we estimate a 1 $\\sigma$ molecular gas mass upper limit of 3.3 $\\times$ 10$^{6}$ $\\mathrm{M_\\odot}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No evidence of cold or warm molecular outflows; CO(2-1) and H2 are consistent with pure rotation.",
+    "evidence": [
+     {
+      "loc": "4.7 Cold and warm molecular phases",
+      "quote": "here confirms the pure rotating nature of the cold molecular phase in NGC 424"
+     }
+    ]
+   },
+   {
+    "value": "Velocity dispersion enhanced along the minor axis in all gas phases, perpendicular to the ionised outflow.",
+    "evidence": [
+     {
+      "loc": "4.6 Enhanced velocity dispersion along the galaxy minor axis",
+      "quote": "show an elongated enhancement of gas velocity dispersion along the disc minor axis"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is there a cold molecular outflow in NGC 424?",
+    "experiment": "PVDs, channel maps and high-velocity RMS of ALMA CO(2-1)",
+    "result": "No emission in high-velocity channels; mass upper limit 3.3e6 Msun",
+    "finding": "No cold molecular outflow detected",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.7 Cold and warm molecular phases",
+      "quote": "the velocity channel maps confirm the absence of outflowing gas in the cold and warm molecular phases"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can multi-phase rotation curves yield the dynamical mass?",
+    "experiment": "MOKA3D disc fits to MIRI, ALMA, MUSE, then Freeman+NFW fit",
+    "result": "Mdyn = 1.09e10 Msun, R_D = 0.48 kpc",
+    "finding": "Consistent rotation curve across phases from pc to ~5 kpc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "infer a dynamical mass of M$_{\\rm dyn}$ = (1.09 $\\pm$ 0.08) $\\times$ 10$^{10}$ $\\mathrm{M_\\odot}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The ionised outflow causes enhanced dispersion along the minor axis",
+    "experiment": "Compared 3D outflow modelling with dispersion maps",
+    "result": "Dispersion enhancement perpendicular to outflow, no clear radio jet",
+    "finding": "Outflow may play a key role",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our findings suggest that the outflow might play a key role in such enhancement by injecting energy into the host disc and perturbing the ambient material."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Cold molecular phase traced by archival ALMA CO(2-1) to complete the multi-phase view.",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "To investigate the cold molecular gas phase in NGC 424 we analysed archival ALMA 12-m array band 6 observations"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Observations cover only ~5 kpc, so DM density and scale length cannot be constrained simultaneously.",
+     "evidence": [
+      {
+       "loc": "4.2 Rotation curve fitting and dynamical mass",
+       "quote": "we cannot properly constrain simultaneously the dark matter characteristic density and length"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dark matter scale length borrowed from the Milky Way",
+    "Inclination and dispersion fixed across the disc, possibly degenerate with rotation velocity",
+    "Interpretation of the dispersion enhancement as outflow-driven is not tested quantitatively"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data archival; calibrated MS requested from European ARC",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA",
+      "quote": "We requested the calibrated measurement sets from the European ALMA Regional Centre (cite: Hatziminaoglou2015)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "MOKA3D code and fitting details (Marconcini et al. 2025 in press)",
+    "tclean masks, thresholds and channel selection",
+    "Per-spaxel CO fit settings"
+   ],
+   "estimated_data_volume_inferred": "~5-20 GB for the ALMA measurement sets",
+   "score_inferred": 4,
+   "score_reason": "ALMA role is minor; imaging is partly specified but the kinematic modelling code and fit details are incomplete.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA is a minor component and the central modelling relies on MOKA3D and JWST/MUSE data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Marconcini2023)",
+     "why": "MOKA3D kinematic model and outflow energetics"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": [
+    "MIRACLE (JWST program 6138)",
+    "MAGNUM"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c776eafceb87e71bd0d05b07bfde5977",
+  "batch_id": "msgbatch_011QjbLPHqMEK6drDa6QExga",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:40:50",
+  "usage": {
+   "input_tokens": 44970,
+   "output_tokens": 8735,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.089251,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 51,
+   "rate": 0.646
+  },
+  "evidence_ok": true
+ }
+}

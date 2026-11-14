@@ -1,0 +1,397 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Here, using data observed as part of the PEACHES survey along with new ALMA ACA observations, we investigate the C$_2$H emission towards an unbiased sample of 35 Class 0/I low-mass protostars in Perseus."}
+],
+"fields": ["star_formation", "astrochemistry"],
+"question": {
+"value": "What C2H traces in Class 0/I Perseus protostars (outflow cavity walls, O-poor photochemically active gas) and whether its emission morphology evolves from extended outflow-cavity structure to compact disk-like emission",
+"evidence": [
+{"loc": "Introduction", "quote": "Our main goals are to (1) disambiguate what C$_2$H is tracing within the protostellar environment"},
+{"loc": "Introduction", "quote": "(2) search for evolutionary trends in the C$_2$H emission morphology, from an extended, outflow cavity structure to a more compact disk-like morphology."}
+]
+},
+"targets": [
+{
+"name": "PEACHES sample of 35 Class 0/I protostars in Perseus",
+"details": [
+{"loc": "Introduction", "quote": "which cover 35 Class 0/I protostars in Perseus"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "not stated",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2016.1.01501.S", "evidence": [{"loc": "2.1 Observations", "quote": "Project codes 2016.1.01501.S and 2017.1.01462.S"}]},
+{"code": "2017.1.01462.S", "evidence": [{"loc": "2.1 Observations", "quote": "Project codes 2016.1.01501.S and 2017.1.01462.S"}]},
+{"code": "2022.1.00303.S", "evidence": [{"loc": "2.1 Observations", "quote": "ACA; project code 2022.1.00303.S"}]}
+],
+"data_settings": [
+{"field": "arrays", "value": "ALMA 12m array (PEACHES) plus ALMA ACA (new)", "evidence": [
+{"loc": "2.1 Observations", "quote": "We used ALMA observations of C$_2$H and SO transitions taken with the 12m array as part of the PEACHES project"},
+{"loc": "2.1 Observations", "quote": "we also used complementary observations taken with the ALMA Atacama Compact Array (ACA; project code 2022.1.00303.S) and combined with the 12m data."}
+]},
+{"field": "baselines", "value": "12m: 15-1231m; ACA adds 9-50m", "evidence": [
+{"loc": "2.1 Observations", "quote": "The 15-1231m baselines of the PEACHES ALMA 12m array data (configuration details provided in (cite: PEACHES_I)), with the addition of the 9-50m baselines provided by the ACA observations, cover similar short-baseline distances."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "ACA C2H spectral window only: F = 3-2, 2-1, 2-2 hyperfine components of N = 3-2, J = 5/2-3/2 at ~262.06 GHz; channel width 61.035 kHz (~0.07 km/s)", "evidence": [
+{"loc": "2.1 Observations", "quote": "covering the F = 3–2, 2–1 and 2–2 hyperfine components of the N = 3–2, J = $\\frac{5}{2}$–$\\frac{3}{2}$ C$_2$H transition at $\\sim$262.06 GHz, with a channel width of 61.035 kHz ($\\sim$0.07 km/s)"}
+]},
+{"field": "time_on_source", "value": "12m : ACA actual 89:512 minutes (1:5.8)", "evidence": [
+{"loc": "2.1 Observations", "quote": "from 1:5.8 (actual 89:512 minutes) to an effective ratio of 1:2.4 as recommended by (cite: alma_handbook)"}
+]},
+{"field": "observing_dates", "value": "ACA: August and September 2023", "evidence": [
+{"loc": "2.1 Observations", "quote": "The ACA observations, taken in August and September of 2023, target the same PEACHES sources and molecular lines as the original 12m survey."}
+]}
+],
+"lines_targeted": [
+{"species": "C2H", "transition": "N = 3-2, J = 5/2-3/2, F = 3-2 (plus F = 2-1, 2-2 in ACA window)", "rest_frequency": "~262.06 GHz", "evidence": [
+{"loc": "2.1 Observations", "quote": "$N$ = 3–2, $J$ = $\\frac{5}{2}$–$\\frac{3}{2}$, $F$ = 3–2 C$_2$H transition were imaged"},
+{"loc": "2.1 Observations", "quote": "C$_2$H transition at $\\sim$262.06 GHz"}
+]},
+{"species": "SO", "transition": "N = 7-6, J = 6-5", "rest_frequency": "not stated", "evidence": [
+{"loc": "2.1 Observations", "quote": "The $N$ = 7–6, $J$ = 6–5 transition of ground state SO"}
+]},
+{"species": "CO", "transition": "2-1 (SMA, from MASSES)", "rest_frequency": "not stated", "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "the CO (2-1) moment-0 maps (in greyscale) trace discernible bipolar outflows moving away from the continuum peak"}
+]}
+],
+"other_facilities": [
+{"name": "SMA (MASSES survey)", "provided": {"value": "CO (2-1) outflow maps used in the C2H spatial analysis", "evidence": [
+{"loc": "2.1 Observations", "quote": "The CO images used in our C$_2$H spatial analyses come from SMA observations as part of the MASS Assembly of Stellar Systems and their Evolution with the SMA (MASSES) survey"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Bolometric temperatures and luminosities (with uncertainties) of the sources", "evidence": [
+{"loc": "3.3 C$_2$H Morphology in Conjunction with Protostar Evolution", "quote": "The bolometric temperature and luminosity values and uncertainties are taken from (cite: tobin2016)"}
+]}, "citation": "(cite: tobin2016) Tobin et al. 2016, ApJ, 818, 73"},
+{"what": {"value": "CO data products (SMA) taken from the MASSES data release", "evidence": [
+{"loc": "2.1 Observations", "quote": "CO data products were taken directly from the MASSES data release web page through the Harvard data archive ((cite: MASSESData))."}
+]}, "citation": "(cite: MASSES) Stephens et al. 2019; (cite: MASSESData) Stephens 2019"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Measurement sets obtained with the ALMA pipeline; self-calibration done manually", "evidence": [
+{"loc": "2.1 Observations", "quote": "The measurement sets were obtained using the ALMA pipeline."},
+{"loc": "2.1 Observations", "quote": "We performed two to three rounds of manual self-calibration, until minimal gains in SNR were observed."}
+]},
+{"field": "self_calibration", "value": "Two to three rounds of manual self-calibration on continuum (line-free channels averaged), only for sources with bright continuum; mean continuum SNR gain 31%; beam axes changed by 0.2% and 1% on average", "evidence": [
+{"loc": "2.1 Observations", "quote": "Line-free channels were averaged to form continuum measurement sets, on which self-calibration was performed for sources with bright continuum emission to improve signal-to-noise ratio."},
+{"loc": "2.1 Observations", "quote": "The self-calibration process yielded an average improvement in continuum SNR of 31%"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean (line and continuum images)", "evidence": [
+{"loc": "2.1 Observations", "quote": "Line and continuum images were created using the CASA task"}
+]},
+{"field": "weighting_robust", "value": "12m-only spatial analysis: Briggs, robust = 1; 12m+ACA: Briggs, robust = 2", "evidence": [
+{"loc": "2.1 Observations", "quote": "We produced images for our spatial analysis using Briggs weighting and a robust parameter of 1."},
+{"loc": "2.1 Observations", "quote": "The 12m and ACA data were imaged together using the ‘mosaic’ gridding parameter, Briggs weighting and a robust value of 2."}
+]},
+{"field": "cell_size", "value": "0.05 arcsec", "evidence": [
+{"loc": "2.1 Observations", "quote": "Images of 600 by 600 pixels were created, with a pixel size of 0.05\""}
+]},
+{"field": "image_size", "value": "600 x 600 pixels (12m-only images)", "evidence": [
+{"loc": "2.1 Observations", "quote": "Images of 600 by 600 pixels were created, with a pixel size of 0.05\""}
+]},
+{"field": "masking", "value": "Cleaned to 2x rms from line-free channels with automasking: 12m low-noise/sidelobe/noise thresholds 1.5, 3.0, 3.75; 12m+ACA 1.5, 2.0, 4.25", "evidence": [
+{"loc": "2.1 Observations", "quote": "Line images were cleaned to a threshold of twice the rms estimated using line free-channels, using automasking low noise, sidelobe and noise thresholds of 1.5, 3.0 and 3.75, respectively."},
+{"loc": "2.1 Observations", "quote": "using automasking low noise, sidelobe and noise thresholds of 1.5, 2.0 and 4.25, respectively."}
+]},
+{"field": "line_free_channels", "value": "Line-free channels averaged to form continuum MS (channel ranges not given)", "evidence": [
+{"loc": "2.1 Observations", "quote": "Line-free channels were averaged to form continuum measurement sets"}
+]},
+{"field": "array_combination", "value": "12m + ACA imaged together with mosaic gridding; ACA visibilities downweighted by factor 0.41 (effective 12m:ACA time ratio 1:2.4)", "evidence": [
+{"loc": "2.1 Observations", "quote": "the ACA visibilities were downweighted by a factor of 0.41 to correct for the time-on-source (ToS) ratio between the 12m and ACA observations"}
+]}
+],
+"inherited": [
+{"what": {"value": "List of all detected molecular transitions in the PEACHES data", "evidence": [
+{"loc": "2.1 Observations", "quote": "See (cite: PEACHES_I) for a list of all detected molecular transitions."}
+]}, "from_reference": "(cite: PEACHES_I)"},
+{"what": {"value": "12m array configuration details", "evidence": [
+{"loc": "2.1 Observations", "quote": "configuration details provided in (cite: PEACHES_I)"}
+]}, "from_reference": "(cite: PEACHES_I)"},
+{"what": {"value": "Effective 12m:ACA time-on-source ratio of 1:2.4 used to set the ACA downweighting", "evidence": [
+{"loc": "2.1 Observations", "quote": "to an effective ratio of 1:2.4 as recommended by (cite: alma_handbook)"}
+]}, "from_reference": "(cite: alma_handbook)"},
+{"what": {"value": "Choice of rotational temperature range (10-50 K) informing the fixed 20 K", "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "Our choice of rotational temperature is informed by prior studies of molecular outflows in low-mass protostars, from which rotational temperatures of 10–50K are typical"}
+]}, "from_reference": "(cite: Parker1991), (cite: Hatchell2007), (cite: Curtis2010), (cite: Dunham2010), (cite: Dunham2014)"}
+],
+"unstated_but_needed": [
+"CASA version and ALMA pipeline version (and PEACHES_I calibration details) for the 12m and ACA data",
+"Self-calibration solution intervals, reference antenna, which sources were self-calibrated and the 'bright continuum' criterion",
+"Line-free channel ranges, continuum subtraction method and velocity ranges used for moment-0 and moment-1 maps",
+"tclean deconvolver, niter, scales, primary-beam correction and spectral resolution of 12m cubes",
+"C2H spectroscopic constants (Q(T), E_u, g_u, A_ul, hyperfine velocity offsets and relative intensities) and their source",
+"Per-source V_lsr, initial guesses, optimiser/likelihood and how column density uncertainties were obtained in the LTE fit",
+"Definition of the ray length/angular range per source, the 'clearly identified outflow' criterion and the 3 sigma extent measurement",
+"Velocity ranges for CO moment maps and how SMA and ALMA images were aligned/regridded",
+"Flux-scale uncertainty and ACA configuration details"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate, self-calibrate and image lines and continuum",
+"method": {"value": "Reprocess pipeline measurement sets in CASA; self-calibrate continuum for bright sources; tclean line cubes; make moment-0 maps (12m-only and 12m+ACA)", "evidence": [
+{"loc": "2.1 Observations", "quote": "All data reprocessing and imaging was performed using CASA"},
+{"loc": "2.1 Observations", "quote": "Moment 0 maps of the lines were then created from the line data cubes by integrating over the velocities of interest."}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "Briggs robust 1 (12m), robust 2 (12m+ACA mosaic); 600x600 px at 0.05 arcsec; clean threshold 2x rms", "evidence": [
+{"loc": "2.1 Observations", "quote": "We produced images for our spatial analysis using Briggs weighting and a robust parameter of 1."},
+{"loc": "2.1 Observations", "quote": "Line images were cleaned to a threshold of twice the rms estimated using line free-channels"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Compare C2H and SO spatial intensity profiles along outflow rays",
+"method": {"value": "Sample moment-0 maps along rays from the continuum peak across the outflow region, average rays to get radial intensity profile per molecule, compare C2H vs SO (12m-only images)", "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "The rays are spaced in 10 degree increments originating at the source continuum peak."},
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "The emission from each individual ray is then averaged to give a spatial intensity profile"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Rays at 10 degree increments from the continuum peak; applied to sources with a discernible CO bipolar outflow", "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "The rays are spaced in 10 degree increments originating at the source continuum peak."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Fit LTE hyperfine model to C2H spectra for column density maps",
+"method": {"value": "Fit synthetic LTE spectra with Gaussian hyperfine components to regridded 12m+ACA cubes at pixels above 3 sigma in the F=3-2 moment-0; fixed Tr = 20 K, free N_T", "evidence": [
+{"loc": "2.2 C$_2$H Spectral Line Fitting", "quote": "fitting synthetic spectra to the ACA + 12m images at positions where the F= 3–2 C$_2$H emission in the moment-0 maps is above a 3$\\sigma$ threshold"},
+{"loc": "2.2 C$_2$H Spectral Line Fitting", "quote": "The image cubes were first regridded by a factor of 4, i.e. squares of 2-by-2 pixels were averaged"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Fixed T = 20 K; N bounded between 1e13 and 1e16 cm^-2", "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "We proceed with fitting column densities assuming a fixed temperature of 20K, and bound our column density values between 10^13^ and 10^16^ cm^-2^"}
+]}
+],
+"assumptions": [
+{"value": "Gaussian hyperfine line profiles, one common T_r, LTE", "evidence": [
+{"loc": "2.2 C$_2$H Spectral Line Fitting", "quote": "we assume that the line profiles of each hyperfine component are Gaussian, that each hyperfine component can be described with the same rotational temperature, $T_r$, and that the emission is in local thermodynamic equilibrium (LTE)."}
+]},
+{"value": "Background temperature 2.73 K (CMB)", "evidence": [
+{"loc": "2.2 C$_2$H Spectral Line Fitting", "quote": "the cosmic microwave background (2.73 K)"}
+]},
+{"value": "20 K adopted at the low end of 10-50 K because outflow cavities assumed cooler than outflowing gas", "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "We adopted a value on the low end of this range under the assumption that the outflow cavities are cooler than the outflowing gas itself."}
+]}
+],
+"fitting": {"value": "Per-pixel fit of N_T with T_r fixed; optimiser, priors and likelihood not stated", "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "The maps resulting from fitting all pixels individually are shown in the top panel on the right."}
+]},
+"validation": {"value": "Varying T_r over 10-50 K changes column densities by <5%", "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "In any case, varying T$_r$ in our spectral line modeling within the 10–50 K range yields changes in calculated C$_2$H column densities of $<$ 5%."}
+]}
+},
+{
+"order": 4,
+"goal": "Test C2H extent against protostellar evolutionary metrics",
+"method": {"value": "Measure C2H extent as width above 3 sigma of intensity profiles; plot against bolometric temperature, bolometric luminosity and mm continuum deconvolved radius (imfit)", "evidence": [
+{"loc": "3.3 C$_2$H Morphology in Conjunction with Protostar Evolution", "quote": "we estimated the overall spatial extent of the C$_2$H emission from the width above 3$\\sigma$ of the intensity profiles obtained in Section"},
+{"loc": "3.3 C$_2$H Morphology in Conjunction with Protostar Evolution", "quote": "while the deconvolved radii are determined via the CASA task"}
+]},
+"software": ["CASA", "imfit"],
+"key_parameters": [
+{"value": "Evolutionary proxies: mm continuum deconvolved radius, T_bol, L_bol", "evidence": [
+{"loc": "3.3 C$_2$H Morphology in Conjunction with Protostar Evolution", "quote": "We therefore use the mm continuum deconvolved radius, the bolometric temperature and the bolometric luminosity as our evolutionary proxies."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Compare C2H and CO kinematics",
+"method": {"value": "Use fitted C2H F=3-2 velocity shift relative to source velocity and compare with CO moment-1 maps", "evidence": [
+{"loc": "3.4 Kinematic Comparison of C~2~H with CO", "quote": "From our fitted spectra we calculate the shift in the C$_2$H F=3-2 hyperfine component with respect to the source velocity, and compare that to the intensity-weighted velocities (moment-1) of the CO observations."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Optical depth effects assumed not to drive differences between CO and C2H red/blueshift", "evidence": [
+{"loc": "3.4 Kinematic Comparison of C~2~H with CO", "quote": "Therefore, we do not expect that optical depth effects are responsible for any differences in red/blueshift between the two species."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Data reprocessing, self-calibration, imaging, imfit", "evidence": [
+{"loc": "2.1 Observations", "quote": "All data reprocessing and imaging was performed using CASA"}
+]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Line and continuum imaging", "evidence": [
+{"loc": "2.1 Observations", "quote": "Line and continuum images were created using the CASA task"}
+]}},
+{"name": "imfit", "version": "not stated", "used_for": {"value": "Deconvolved continuum radii", "evidence": [
+{"loc": "3.3 C$_2$H Morphology in Conjunction with Protostar Evolution", "quote": "while the deconvolved radii are determined via the CASA task"}
+]}},
+{"name": "ALMA pipeline", "version": "not stated", "used_for": {"value": "Producing the measurement sets", "evidence": [
+{"loc": "2.1 Observations", "quote": "The measurement sets were obtained using the ALMA pipeline."}
+]}}
+],
+"results_numeric": [
+{"quantity": "C2H column density range (all sources)", "value": "1e14 - 1e15", "uncertainty": "not stated", "units": "cm^-2", "from_step": 3, "evidence": [
+{"loc": "Summary", "quote": "maps of the fitted column density show C$_2$H column densities of  10^14^ - 10^15^ cm^-2^."}
+]},
+{"quantity": "Average C2H column density across all sources (log10)", "value": "10^14.3", "uncertainty": "0.2 (in log10)", "units": "cm^-2", "from_step": 3, "evidence": [
+{"loc": "4.2 C$_2$H formation chemistry in embedded protostars", "quote": "an average C$_2$H column density across all sources of 10^14.3"}
+]},
+{"quantity": "Average per-source column density uncertainty", "value": "10^0.05 - 10^0.5", "uncertainty": "not stated", "units": "cm^-2", "from_step": 3, "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "The average-per-source uncertainties on our retrieved column densities range from 10^0.05^ - 10^0.5^ cm^-2^."}
+]},
+{"quantity": "Change in column density when varying T_r over 10-50 K", "value": "<5", "uncertainty": "not stated", "units": "percent", "from_step": 3, "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "yields changes in calculated C$_2$H column densities of $<$ 5%"}
+]},
+{"quantity": "Sources with C2H and SO detections (of 35)", "value": "30 and 30", "uncertainty": "not stated", "units": "sources", "from_step": 1, "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "Of the 35 protostars observed, C$_2$H and SO were detected towards 30 and 30, respectively."}
+]},
+{"quantity": "Sources with clear C2H-SO anti-correlation within the outflow", "value": "12 of 14", "uncertainty": "not stated", "units": "sources", "from_step": 2, "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "Overall, we find that most sources (12 of 14) show a clear anti-correlation between the location of C$_2$H and SO within the outflow."}
+]},
+{"quantity": "Average continuum SNR improvement from self-calibration", "value": "31", "uncertainty": "not stated", "units": "percent", "from_step": 1, "evidence": [
+{"loc": "2.1 Observations", "quote": "The self-calibration process yielded an average improvement in continuum SNR of 31%"}
+]},
+{"quantity": "ACA visibility downweighting factor", "value": "0.41", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [
+{"loc": "2.1 Observations", "quote": "the ACA visibilities were downweighted by a factor of 0.41"}
+]},
+{"quantity": "C2H velocity shift relative to source velocity", "value": "~1", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "3.4 Kinematic Comparison of C~2~H with CO", "quote": "though with a fairly small magnitude of $\\sim$ 1 km/s"}
+]}
+],
+"findings_qualitative": [
+{"value": "C2H emission remains spatially extended in most Class 0/I sources, independent of age", "evidence": [
+{"loc": "abstract", "quote": "the C$_2$H emission remains spatially extended in most sources, independent of age."}
+]},
+{"value": "Transition to compact Class II disk C2H must happen rapidly after the embedded stage", "evidence": [
+{"loc": "abstract", "quote": "This indicates that the transition to the compact C$_2$H emission observed on the surface of Class II disks must happen rapidly, sometime just after the embedded stage."}
+]},
+{"value": "C2H velocity shifts are much smaller than CO velocities", "evidence": [
+{"loc": "3.4 Kinematic Comparison of C~2~H with CO", "quote": "Note that in all cases, the magnitude of the C$_2$H red-or blue-shifting is much lower than the CO velocities."}
+]}
+],
+"claims": [
+{
+"hypothesis": "C2H in Class 0/I protostars traces outflow cavity walls",
+"experiment": "Compare C2H moment-0 maps from 12m data with SMA CO outflow maps across 35 Perseus protostars",
+"result": "Many sources show X-wing or cone-like C2H along CO outflow edges; where a bipolar CO outflow is clear, C2H is at the base/edges of at least one lobe",
+"finding": "C2H is associated with outflow cavity walls, consistent with UV-driven photochemistry",
+"support": "supported",
+"evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "In these cases, we see a clear association between the C$_2$H emission and the base or edges of the outflow traced by CO."},
+{"loc": "4.2 C$_2$H formation chemistry in embedded protostars", "quote": "Indeed, in all cases where we could clearly identify a bipolar CO outflow structure, we see C$_2$H emission associated with the base and/or edges of at least one side of the outflow cavity."}
+]
+},
+{
+"hypothesis": "C2H formation is suppressed in O-rich gas traced by SO",
+"experiment": "Ray-averaged radial intensity profiles of C2H and SO from 12m-only moment-0 maps",
+"result": "12 of 14 sources with identifiable outflows show spatial anti-correlation of C2H and SO",
+"finding": "C2H traces O-poor gas and is destroyed or not formed where SO traces O-rich gas",
+"support": "supported",
+"evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "Overall, we find that most sources (12 of 14) show a clear anti-correlation between the location of C$_2$H and SO within the outflow."},
+{"loc": "4.2 C$_2$H formation chemistry in embedded protostars", "quote": "The fact that this trend exists for a range of SO and C$_2$H structures points to the destruction of C$_2$H in regions traced by SO."}
+]
+},
+{
+"hypothesis": "C2H morphology evolves from extended outflow-cavity to compact disk-like emission during the Class 0/I stage",
+"experiment": "Compare C2H emission extent with continuum deconvolved radius, bolometric temperature and luminosity",
+"result": "No clear correlation between C2H extent and the evolutionary metrics",
+"finding": "No evolution found within Class 0/I, implying the change must occur rapidly after the embedded stage",
+"support": "partially",
+"evidence": [
+{"loc": "4.1 Evolution of C$_2$H chemistry", "quote": "there is no clear correlation between the C$_2$H emission extent in these Class 0/I sources and the evolutionary metrics of bolometric temperature/luminosity or continuum radius"}
+]
+},
+{
+"hypothesis": "Embedded-protostar C2H column densities are similar to those in Class II disks",
+"experiment": "Fit LTE hyperfine model with fixed T = 20 K to 12m+ACA C2H spectra",
+"result": "Column densities 1e14-1e15 cm^-2, average 10^14.3 cm^-2",
+"finding": "Column densities are comparable to Class II disks and PDR models, though temperature is unconstrained",
+"support": "partially",
+"evidence": [
+{"loc": "4.2 C$_2$H formation chemistry in embedded protostars", "quote": "This is comparable to values estimated in the Class II sources in (cite: guzman2021)"},
+{"loc": "4.2 C$_2$H formation chemistry in embedded protostars", "quote": "Note, however, that coverage of additional J-level transitions would improve the precision of our column density retrievals."}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Unbiased large sample of protostars of varied ages from PEACHES", "evidence": [
+{"loc": "Introduction", "quote": "With the aim of obtaining an unbiased view of C$_2$H chemistry in a large sample of protostars of varied ages, we make use of data available as part of the Perseus ALMA Chemical Survey"}
+]},
+{"field": "why_this_method", "value": "12m-only for small-scale spatial analysis; 12m+ACA to recover full C2H flux for column densities; fixed T because hyperfines share one upper-state energy", "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "we are interested in the small-scale emission patterns, and therefore use the 12m-only images for our analysis."},
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "To ensure complete recovery of the C$_2$H flux, we use the combined 12m+ACA images for this analysis."},
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "Our C~2~H hyperfine transitions span an equal upper state energy, and as a result cannot precisely fit a variable rotational temperature."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Visual inspection of moment-0 contours judged insufficient to compare C2H and SO overlap, so intensity profiles were used", "evidence": [
+{"loc": "3.1 C$_2$H and SO Emission Morphology", "quote": "comparison of SO and C$_2$H by visual inspection of the moment-zero contours is not sufficient to understand the degree of spatial overlap between the two molecules"}
+]}
+],
+"limitations_admitted": [
+{"value": "Rotational temperature unconstrained; more C2H lines needed for precise column densities", "evidence": [
+{"loc": "3.2 ACA Images and Column Density Maps", "quote": "noting that true constraints on the C$_2$H rotational temperatures, and in turn more precise constraints on the column densities, would require coverage of additional C$_2$H lines"}
+]},
+{"value": "Compact C2H on smaller scales than the resolution cannot be excluded", "evidence": [
+{"loc": "4.1 Evolution of C$_2$H chemistry", "quote": "One caveat is that we cannot rule out whether there is a compact C$_2$H component on even smaller spatial scales than we can access with the spatial resolution of these observations."}
+]}
+],
+"referee_caveats_inferred": [
+"Column densities rest on a single fixed T_r = 20 K and one hyperfine group sharing the same E_u; no temperature constraint",
+"Spectroscopic constants and fit optimiser/error treatment are not given, so column density uncertainties are hard to verify",
+"Selection of 14 sources with 'identifiable' outflows for the SO comparison is subjective and the 12 of 14 count has no statistical test",
+"Extent measure (width above 3 sigma) depends on beam, sensitivity and differing 12m beams across sources",
+"Evolutionary proxies are noisy and no quantitative correlation statistics are reported",
+"CO from SMA (different resolution, uv coverage) compared with ALMA C2H"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "MASSES CO data public via Harvard Dataverse; public status of ALMA data not stated in text", "evidence": [
+{"loc": "2.1 Observations", "quote": "CO data products were taken directly from the MASSES data release web page through the Harvard data archive ((cite: MASSESData))."}
+]},
+{"field": "products_in_archive", "value": "Measurement sets obtained using the ALMA pipeline", "evidence": [
+{"loc": "2.1 Observations", "quote": "The measurement sets were obtained using the ALMA pipeline."}
+]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"Self-calibration parameters, line-free channels and moment integration ranges",
+"C2H spectroscopic constants/hyperfine structure and fitting implementation",
+"Ray definition and outflow identification rules for the C2H/SO profiles",
+"Source V_lsr values and CO moment map recipe",
+"Software versions"
+],
+"estimated_data_volume_inferred": "Three ALMA projects (35 sources 12m plus ACA mosaics); roughly tens to ~100 GB of calibrated measurement sets plus SMA CO products",
+"score_inferred": 3,
+"score_reason": "Data and imaging parameters (robust, pixel size, thresholds) are largely given and column density table is published, but self-cal details, spectroscopic constants, fitting implementation, ray analysis rules and software versions are missing and no code is released.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Main results are qualitative morphology comparisons that depend on unstated selection rules; the quantitative column densities lack spectroscopic and fitting details and the public status of the ALMA data is not stated in the paper.",
+"methods_papers": [
+{"citation": "(cite: PEACHES_I) Yang et al. 2021, ApJ, 910, 20", "why": "PEACHES survey observations, array configurations and detected transitions"}
+],
+"companion_papers": [
+{"citation": "(cite: PEACHES_II) Zhang et al. 2023, ApJ, 946, 113", "why": "SO origin by weak-shock sputtering in PEACHES sources"},
+{"citation": "(cite: PEACHES_III) Artur de la Villarmois et al. 2023, A&A, 678, A124", "why": "Images of S-bearing molecules towards PEACHES sources"}
+],
+"related_projects_or_surveys": ["PEACHES (Perseus ALMA Chemical Survey)", "MASSES (SMA survey)"]
+}

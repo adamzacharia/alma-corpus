@@ -1,0 +1,201 @@
+{
+ "bibcode": "2018ApJ...859...86T",
+ "title": "ALMA Images of the Host Cloud of the Intermediate-mass Black Hole Candidate CO-0.40-0.22*: No Evidence for Cloud-Black Hole Interaction, but Evidence for a Cloud-Cloud Collision",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aabd77",
+ "arxiv_id": "1804.03661",
+ "fields": [
+  "milky_way_ism",
+  "star_formation"
+ ],
+ "question": "Does re-analysis of the archival ALMA data of CO-0.40-0.22 support an IMBH gravitational-kick origin, or a cloud-cloud collision?",
+ "alma_project_codes": [
+  "2012.1.00940.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m and 7-m arrays",
+  "angular_resolution": "line beams 1.75x1.02 (230), 1.35x0.60 (265), 1.42x0.59 arcsec (250 GHz)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "34.25 GHz non-detection 3-sigma upper limit 0.285 mJy",
+    "evidence": [
+     {
+      "loc": "4.1.3. Continuum Source MM1/CO−0.4*",
+      "quote": "3- _σ_ upper limit of 0.285 mJy (Ravi et al. 2017)"
+     }
+    ]
+   },
+   "citation": "Ravi et al. 2017"
+  },
+  {
+   "what": {
+    "value": "Collisional rate coefficients and partition functions",
+    "evidence": [
+     {
+      "loc": "3.3. Heating Sources Inside or Near the −80-km s−1 Filament",
+      "quote": "The rate coefficients and partition functions are taken from the Leiden Atomic and Molecular Database"
+     }
+    ]
+   },
+   "citation": "LAMDA (Schöier et al. 2005), CDMS (Muller et al. 2001), Motoki et al. (2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image archival data",
+   "method": "ALMA script calibration, UVCONTSUB, self-cal, tclean mosaics; 08JUL2013 excluded",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract cloud structure and velocity components",
+   "method": "Dendrogram of HCN cube smoothed to 2.5 km/s, in 3sigma units (sigma=13 mJy); six main branches; moment maps and PV diagrams",
+   "software": [
+    "astrodendro-like dendrogram (Rosolowsky et al. 2008)"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure MM1 spectral index",
+   "method": "Continuum images from uv 20-1500 kλ, smoothed to 2 arcsec, flux in 1 arcsec radius circle",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive physical conditions of filament",
+   "method": "LTE population diagrams and non-LTE Bayesian analysis of methanol lines with flat priors on Tkin and nH2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust temperature 20 K, emissivity index 1.5 for H2 column from 265 GHz dust"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "MM1 flux density at 230 GHz",
+   "value": "8.6",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.3. Continuum Source MM1/CO−0.4*",
+     "quote": "The corrected flux densities are 8 _._ 6 _±_ 0 _._ 2 mJy and 13 _._ 2 _±_ 0 _._ 4 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 flux density at 265 GHz",
+   "value": "13.2",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.3. Continuum Source MM1/CO−0.4*",
+     "quote": "The corrected flux densities are 8 _._ 6 _±_ 0 _._ 2 mJy and 13 _._ 2 _±_ 0 _._ 4 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 spectral index alpha",
+   "value": "3.0",
+   "uncertainty": "0.3 (0.4 in summary)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.3. Continuum Source MM1/CO−0.4*",
+     "quote": "which gives a spectral index of _α_ = 3 _._ 0 _±_ 0 _._ 3"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature (warm)",
+   "value": "~70",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Heating Sources Inside or Near the −80-km s−1 Filament",
+     "quote": "warm gas with a CH 3 OH rotational temperature _T_ rot _∼_ 70 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2NH rotational temperature (cold)",
+   "value": "~24",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Heating Sources Inside or Near the −80-km s−1 Filament",
+     "quote": "cold gas with a CH 2 NH rotational temperature _T_ rot _∼_ 24 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Post-shock nH2",
+   "value": ">~1e6",
+   "uncertainty": "lower limit",
+   "units": "cm-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Heating Sources Inside or Near the −80-km s−1 Filament",
+     "quote": "this analysis indicates that _n_ H 2 ≳ 10 [6] cm _[−]_ [3], unless an unrealistically high _T_ kin of _>_ 10 [3] K is assumed"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundances CH2NH and CH3OH",
+   "value": "2e-8 and 1e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Heating Sources Inside or Near the −80-km s−1 Filament",
+     "quote": "We calculated the fractional abundances of CH 2 NH and CH 3 OH to be 2 _×_ 10 _[−]_ [8] and 1 _×_ 10 _[−]_ [7], respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Self-calibration solution intervals and mask choices",
+  "Line-free channels for UVCONTSUB",
+  "Cell size, image size, clean thresholds and masks",
+  "Dendrogram parameters beyond 3 sigma digitization (min_value, min_delta, min_npix)",
+  "Non-LTE code and likelihood details, and the column density prior",
+  "Regions and apertures used for the five-position spectra",
+  "How topocentric-to-LSR frequency correction was done in concatenation"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact scripts",
+  "Self-cal and masking details",
+  "Dendrogram and non-LTE code parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and key settings given, but versions, self-cal, masks and fitting details missing.",
+ "rediscovery_reason": "Public data, numeric results such as the spectral index and fluxes can be redone, though some details are missing.",
+ "source_card": "cards/2018ApJ...859...86T/sonnet/card.md"
+}

@@ -1,0 +1,188 @@
+{
+ "bibcode": "2012ApJ...757L...1H",
+ "title": "The First Detection of the 232 GHz Vibrationally Excited H<SUB>2</SUB>O Maser in Orion KL with ALMA",
+ "year": 2012,
+ "doi": "10.1088/2041-8205/757/1/L1",
+ "arxiv_id": "1208.4489",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Is there a vibrationally excited H2O maser at 232.68670 GHz in Orion KL, blended with HCOOCH3, and where is it located?",
+ "alma_project_codes": [
+  "2011.0.00009.SV",
+  "2011.0.00199.S"
+ ],
+ "data": {
+  "bands": "Band 6 (215-245 GHz) SV spectral line survey; Cycle 0 band 6 continuum at 240-244 and 256-260 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "SV natural-weighted beam 1.7\"x1.4\", PA 171 deg; Cycle 0 uniform-weighted 0.74\"x0.56\", PA 101 deg",
+  "sensitivity": "0.01-0.03 Jy/beam per channel (SV); 7 mJy/beam (Cycle 0 continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "22 GHz H2O shell maser spectrum compared with the 232 GHz feature",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "appears to be analogous to the 22 GHz shell masers (cite: gaume1998)"
+     }
+    ]
+   },
+   "citation": "(cite: gaume1998)"
+  },
+  {
+   "what": {
+    "value": "43 GHz SiO (v=1) maser spectrum",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the 43 GHz SiO ($v$=1) masers (cite: kim2008)"
+     }
+    ]
+   },
+   "citation": "(cite: kim2008)"
+  },
+  {
+   "what": {
+    "value": "Line frequencies from Splatalogue (JPL, CDMS, Lovas/NIST)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Splatalogue[^1], which is a compilation of the JPL, CDMS, and Lovas/NIST catalogs (cite: pickett1998; muller2005; lovas2004)"
+     }
+    ]
+   },
+   "citation": "(cite: pickett1998; muller2005; lovas2004)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the blended and pure HCOOCH3 features",
+   "method": "Synthesis imaging of calibrated SV data around 232.68 and 232.74 GHz",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Isolate H2O emission by map subtraction",
+   "method": "Subtract pure HCOOCH3 map from blended map; residual concentrated at Source I",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Pure line has similar frequency, lower-state energy and expected intensity to the blended HCOOCH3 line"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and fit peaks",
+   "method": "Channel maps and spectra at selected positions; two-component Gaussian fit to Source I spectrum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate brightness temperature",
+   "method": "Peak 0.43 Jy in 2x2 arcsec aperture gives 2.4 K; diluted to 0.01 K in a 30 arcsec single-dish beam",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Emitting region as compact as the aperture"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak flux of blue component",
+   "value": "0.28",
+   "uncertainty": "0.02",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "0.28$\\pm$0.02 Jy and 0.43$\\pm$0.02 Jy at the velocity of $-$2.1$\\pm$0.6 km s$^{-1}$ and 13.3$\\pm$0.4 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux of red component",
+   "value": "0.43",
+   "uncertainty": "0.02",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "0.28$\\pm$0.02 Jy and 0.43$\\pm$0.02 Jy at the velocity of $-$2.1$\\pm$0.6 km s$^{-1}$ and 13.3$\\pm$0.4 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak velocities",
+   "value": "-2.1 and 13.3",
+   "uncertainty": "0.6 and 0.4",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "at the velocity of $-$2.1$\\pm$0.6 km s$^{-1}$ and 13.3$\\pm$0.4 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature (2x2 arcsec)",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "It corresponds to the brightness temperature of 2.4 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Compact Ridge integrated intensity, blended and pure",
+   "value": "3.5 and 4.9",
+   "uncertainty": "not stated",
+   "units": "Jy/beam km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "3.5 Jy beam$^{-1}$ km s$^{-1}$ and 4.9 Jy beam$^{-1}$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and task parameters (cell, image size, deconvolution, masking)",
+  "Which SV spectral settings/execution blocks and calibration products were used",
+  "Continuum subtraction for SV data",
+  "Aperture/position used for spectra at Source I (2x2 arcsec stated only in Discussion)",
+  "Velocity-integration ranges for moment maps",
+  "Initial guesses for the Gaussian fit"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Exact spectral windows and extraction apertures",
+  "Gaussian fitting details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and a simple method, but imaging and extraction parameters are missing.",
+ "rediscovery_reason": "The data are public and the main results are numeric (Gaussian peaks), though imaging settings are not given.",
+ "source_card": "cards/2012ApJ...757L...1H/sonnet/card.md"
+}

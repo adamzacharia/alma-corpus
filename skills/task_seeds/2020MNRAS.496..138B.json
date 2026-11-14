@@ -1,0 +1,556 @@
+{
+ "bibcode": "2020MNRAS.496..138B",
+ "title": "VLA and ALMA observations of the lensed radio-quiet quasar SDSS J0924+0219: a molecular structure in a 3 μJy radio source",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1488",
+ "arxiv_id": "2005.13612",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the properties of the radio and molecular gas reservoirs in the lensed radio-quiet quasar SDSS J0924+0219, and what causes its optical flux ratio anomaly?",
+ "alma_project_codes": [
+  "2018.1.01447.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m array (45 antennas)",
+  "angular_resolution": "~0.8 arcsec (natural weighting); 0.68 x 0.56 arcsec with PA = 69.77 deg (Briggs weighting, robust = 0.0)",
+  "sensitivity": "0.2 mJy/beam per spectral window; 0.1 mJy/beam overall"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Positions of the four lensed images and optical A/D brightness ratio of 12:1",
+    "evidence": [
+     {
+      "loc": "1.1 The quasar SDSS J0924+0219",
+      "quote": "it is a fold-configuration lens, but the pair of merging images, A and D in Fig. 1, has a brightness ratio in the optical waveband of 12:1 (Inada et al. 2003)."
+     },
+     {
+      "loc": "3.1.1 The integrated line emission",
+      "quote": "We used the positions of the four images from Inada et al. (2003) and kept them fixed, optimising for the flux densities, widths and axes ratios of the images."
+     }
+    ]
+   },
+   "citation": "Inada et al. (2003)"
+  },
+  {
+   "what": {
+    "value": "Singular Isothermal Ellipsoid (SIE) lens galaxy mass model parameters (critical radius 0.87 arcsec, ellipticity 0.13 at PA -73.1 deg, shear magnitude 0.042 at PA 65.4 deg)",
+    "evidence": [
+     {
+      "loc": "Table 4 caption",
+      "quote": "A standard galaxy model (critical radius 0 [′′] . 87, ellipticity 0.13 at PA −73.1 [◦], shear magnitude 0.042 at PA 65.4 [◦] ) is used for the image plane fitting."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "A standard galaxy model (critical radius 0 [′′] . 87, ellipticity 0.13 at PA −73.1 [◦], shear magnitude 0.042 at PA 65.4 [◦] ) is used for the image plane fitting."
+     }
+    ]
+   },
+   "citation": "Eigenbrod et al. (2006)"
+  },
+  {
+   "what": {
+    "value": "Far-infrared flux densities and SED data points",
+    "evidence": [
+     {
+      "loc": "4.1 The radio source and the CO(5-4) line",
+      "quote": "Combining the radio flux density from this work with the previously determined far-IR flux densities of Stacey et al. (2018), it appears that SDSS J0924+0219 lies on the standard radio-FIR correlation"
+     },
+     {
+      "loc": "4.1 The radio source and the CO(5-4) line",
+      "quote": "Figure 14 shows the spectral energy distribution (SED) of SDSS J0924+0219, based on this work and previous studies carried out by Stacey et al. (2018) and Jackson et al. (2015)."
+     }
+    ]
+   },
+   "citation": "Stacey et al. (2018); Jackson et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Microlensing Einstein radius, average microlens mass, transverse velocity, and I-band accretion disc source size",
+    "evidence": [
+     {
+      "loc": "4.2 Is microlensing the reason behind the optical flux ratio anomaly?",
+      "quote": "For SDSS J0924+0219, Mosquera & Kochanek (2011) calculate η 0 ∼ 3.2 × 10 [16] cm for an average microlens mass < M/M ⊙ >= 0.3, and a transverse velocity of v trans =0.049 η 0 /year."
+     }
+    ]
+   },
+   "citation": "Mosquera & Kochanek (2011)"
+  },
+  {
+   "what": {
+    "value": "Convergence and shear values at the position of image D ((kappa, gamma) = (0.48, 0.57)) and multi-wavelength flux ratios",
+    "evidence": [
+     {
+      "loc": "4.2 Is microlensing the reason behind the optical flux ratio anomaly?",
+      "quote": "We use convergence and shear values at the position of image D as derived by Keeton et al. (2006) (i.e. (κ, γ) = (0.48, 0.57)), a fraction of surface density in form of stars of α = 0.07."
+     },
+     {
+      "loc": "Figure 15 caption",
+      "quote": "The data for this plot has been taken from Table 2 in Floyd et al. (2009), Keeton et al. (2006), Morgan et al. (2006), Faure et al. (2011) and MacLeod et al. (2015)."
+     }
+    ]
+   },
+   "citation": "Keeton et al. (2006); Floyd et al. (2009); Morgan et al. (2006); Faure et al. (2011); MacLeod et al. (2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image VLA and ALMA observations and generate moment maps",
+   "method": "Run VLA and ALMA CASA calibration pipelines, image with CLEAN using natural and Briggs (robust = 0.0) weighting, convolve VLA map to ALMA beam, and compute moment 1 and 2 maps with a 4-sigma pixel threshold.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.0; SNR > 4 pixel cut for moment maps"
+   ],
+   "assumptions": [
+    "10% flux calibration accuracy"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit four elliptical Gaussian components to lensed images in the image plane",
+   "method": "Fit four elliptical Gaussians at the image positions in the CO(5-4) and radio maps using a 10-parameter optimization, and test point-source Gaussian fits with AIPS JMFIT.",
+   "software": [
+    "AIPS",
+    "JMFIT"
+   ],
+   "key_parameters": [
+    "10 parameters: 4 peak flux densities, FWHMs and axis ratios of A (=D) and B (=C), 2 positional offsets (x, y); major axes fixed tangential to lens centre (100.87, 77.21, 12.99, 151.07 deg)"
+   ],
+   "assumptions": [
+    "FWHMs and axis ratios of A and D are equal, and those of B and C are equal; FWHMs constrained to be greater than major axis of dirty beam"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model gravitational lensing in the image plane",
+   "method": "Optimize a Gaussian source profile and flux anomaly parameter f_AD through an SIE lens galaxy mass model against the CO(5-4), submm continuum, and radio images.",
+   "software": [
+    "lens modelling code developed by Neal Jackson"
+   ],
+   "key_parameters": [
+    "SIE lens parameters: critical radius 0.87 arcsec, ellipticity 0.13 at PA -73.1 deg, shear 0.042 at PA 65.4 deg; f_AD between 0 and 1"
+   ],
+   "assumptions": [
+    "Singular Isothermal Ellipsoid (SIE) lens mass profile and Gaussian source profile"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit four elliptical Gaussian components directly to u-v visibilities",
+   "method": "Fit four elliptical Gaussians to the continuum-subtracted CO(5-4) and radio visibility data using uvmultifit with image positions fixed to Inada et al. (2003).",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "Image positions and position angles fixed; 8 free parameters for CO (4 fluxes, 2 widths, 2 axis ratios); 6 free parameters for radio (4 fluxes, 1 width, 1 axis ratio)"
+   ],
+   "assumptions": [
+    "Optical image positions from Inada et al. (2003) apply to CO and radio components"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Perform lens modelling in the u-v plane and derive intrinsic CO luminosity and dynamical mass",
+   "method": "Fit a Sersic source profile lensed by an SIE galaxy model to the CO(5-4), submm continuum, and radio visibilities using visilens, then compute intrinsic CO luminosity and dynamical mass following Solomon & Vanden Bout (2005).",
+   "software": [
+    "visilens"
+   ],
+   "key_parameters": [
+    "Einstein radius = 0.92 arcsec (optimized on CO visibilities, fixed for continuum and radio); Sersic source profile"
+   ],
+   "assumptions": [
+    "Disk radius R is half the FWHM of the integrated CO source (81 mas); flat cosmology with DL = 11400 Mpc, DA = 1790 Mpc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Reconstruct velocity-resolved CO(5-4) source structure across frequency channels",
+   "method": "Project each frequency slice of the ALMA CO(5-4) image cube back to the source plane using the fixed SIE lens model, modelling the source in each channel as a single elliptical Gaussian.",
+   "software": [
+    "lens modelling code developed by Neal Jackson"
+   ],
+   "key_parameters": [
+    "5 free source parameters per frequency slice: position (x, y), flux, width, axis ratio, position angle"
+   ],
+   "assumptions": [
+    "Single elliptical Gaussian source per frequency channel acts as regularisation"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit FIR-to-radio spectral energy distribution (SED) and compute q_IR",
+   "method": "Combine ALMA submm continuum and VLA radio flux densities with literature data to calculate q_IR and fit a modified blackbody curve to the SED.",
+   "software": [],
+   "key_parameters": [
+    "Dust temperature T and emissivity index beta"
+   ],
+   "assumptions": [
+    "Optically thin modified blackbody S_nu proportional to nu^(3+beta) / (exp(h*nu/kT) - 1)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Simulate microlensing magnification map for image D",
+   "method": "Generate a microlensing magnification map for image D using Wambsganss (2001) ray-tracing tree code and convolve with a Gaussian optical source profile to evaluate demagnification duration.",
+   "software": [
+    "ray-tracing tree code developed by Wambsganss (2001)"
+   ],
+   "key_parameters": [
+    "Map side-length 100 eta_0, resolution 0.005 eta_0/pixel, (kappa, gamma) = (0.48, 0.57), stellar surface density fraction alpha = 0.07, eta_0 ~ 3.2e16 cm, <M/M_sun> = 0.3, v_trans = 0.049 eta_0/year, R_1/2 = 0.02 eta_0 and 0.06 eta_0"
+   ],
+   "assumptions": [
+    "Standard accretion disc model size R_1/2 = 0.02 eta_0 (also tested 3x larger, R_1/2 = 0.06 eta_0)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(5-4) line centroid redshift",
+   "value": "1.5254",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The four lensed images are clearly detected in the radio continuum and the CO(5-4) line, whose centroid is at _z_ = 1.5254± 0.0001"
+    }
+   ]
+  },
+  {
+   "quantity": "Total VLA 5.5 GHz lensed flux density",
+   "value": "90",
+   "uncertainty": "9.1",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux Density 90 ± 9.1 µJy"
+    },
+    {
+     "loc": "Figure 1 caption",
+     "quote": "The flux density of the lensing system in the map is 90 ± 9.1 µJy, assuming a 10% flux calibration accuracy."
+    }
+   ]
+  },
+  {
+   "quantity": "Total ALMA CO(5-4) lensed integrated flux density",
+   "value": "21.99",
+   "uncertainty": "2.21",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The flux density is 21.99 ± 2.21 mJy, assuming a 10% flux calibration accuracy."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) peak flux density",
+   "value": "3.9",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO(5-4) Peak Flux Density 3.9 mJy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) line FWHM",
+   "value": "200.02",
+   "uncertainty": "6.57",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO(5-4) FWHM 200.02 ± 6.57 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Total ALMA submillimetre continuum lensed flux density",
+   "value": "2.3",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Figure 2 caption",
+     "quote": "Map of the submillimetre continuum obtained by cleaning the line-free spectral windows of the ALMA data with Briggs weighting. The flux density is 2.3 ± 0.2 mJy, assuming a 10% flux calibration accuracy."
+    }
+   ]
+  },
+  {
+   "quantity": "Lensed CO(5-4) luminosity (mu L'_CO)",
+   "value": "3.16e10",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO(5-4) Luminosity, µL CO [′] 3.16 × 10 [10] K km s [−][1] pc [2]"
+    },
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "Following Solomon & Vanden Bout (2005), we get a CO line (lensed) luminosity of µL [′] CO [=][ 3][.][16] [×] [10] [10] [K km s] [−][1] [pc] [2] [.]"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) source magnification",
+   "value": "23.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "The lens model fitting of the u − v data using visilens demonstrates a source magnification of 23.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic CO(5-4) line luminosity (L'_CO)",
+   "value": "1.34e9",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "making the intrinsic CO line luminosity equal to L [′] CO [≃] [1][.][34][ ×][ 10] [9] [K km s] [−][1] [pc] [2] [.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular disk radius R",
+   "value": "348",
+   "uncertainty": "34",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "Using our value of size of the integrated CO line emission source of 81 ± 8 mas (Table 4), we get R = 348 ± 34 pc, approximating R to be equal to half of size of the disk."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass (M_dyn)",
+   "value": "3.25e9",
+   "uncertainty": "not stated",
+   "units": "cosec^2(i) M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "The FWHM of the line is 200 ± 7 km/s, thus giving a dynamical mass M dyn = 3.25 × 10 [9] cosec [2] (i)M ⊙ where i is the inclination angle of the disk."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) A/D flux ratio (u-v plane fit)",
+   "value": "1.58",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "The flux ratio A/D obtained from this fitting was found to be 1.58 ± 0.15, which is slightly bigger than the corresponding flux ratio from the image plane analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) A/D flux ratio (image-plane fit)",
+   "value": "1.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "The A/D flux ratio for this model was found to be 1.07."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio A/D flux ratio (u-v plane fit)",
+   "value": "1.28",
+   "uncertainty": "0.41",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Radio",
+     "quote": "this fitting was found to be 1.28 ± 0.41, once again consistent with the flux ratio found from the image-plane analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic CO(5-4) source flux density (u-v lens model)",
+   "value": "0.954",
+   "uncertainty": "0.057",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Source Flux Density/mJy 0.954 ± 0.057 (0.8) 0.225 ± 0.048 (0.1) 0.003 ± 0.002 (0.0023)"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic CO(5-4) source FWHM (u-v lens model)",
+   "value": "0.081",
+   "uncertainty": "0.008",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1 The integrated line emission",
+     "quote": "The source FWHM using the u − v plane analysis is 0 [′′] . 081±0 [′′] . 008, slightly larger than the FWHM found in the image plane analysis."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "Source FWHM/ [′′] 0.081 ± 0.008 (0.045) 0.260 ± 0.071 (0.21) 0.120 ± 0.089 (0.052)"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic submm continuum source flux density (u-v lens model)",
+   "value": "0.225",
+   "uncertainty": "0.048",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Source Flux Density/mJy 0.954 ± 0.057 (0.8) 0.225 ± 0.048 (0.1) 0.003 ± 0.002 (0.0023)"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic submm continuum source FWHM (u-v lens model)",
+   "value": "0.260",
+   "uncertainty": "0.071",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Source FWHM/ [′′] 0.081 ± 0.008 (0.045) 0.260 ± 0.071 (0.21) 0.120 ± 0.089 (0.052)"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic radio source flux density (u-v lens model)",
+   "value": "0.003",
+   "uncertainty": "0.002",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Source Flux Density/mJy 0.954 ± 0.057 (0.8) 0.225 ± 0.048 (0.1) 0.003 ± 0.002 (0.0023)"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic radio source FWHM (u-v lens model)",
+   "value": "0.120",
+   "uncertainty": "0.089",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Source FWHM/ [′′] 0.081 ± 0.008 (0.045) 0.260 ± 0.071 (0.21) 0.120 ± 0.089 (0.052)"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas velocity-resolved structure physical extent",
+   "value": "1-2.5",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The molecular gas displays ordered motion, in a structure approximately 1–2.5 kpc in physical extent, with typical velocities of 50-100 km s [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-FIR correlation parameter q_IR",
+   "value": "2.35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 The radio source and the CO(5-4) line",
+     "quote": "the corresponding q IR parameter is found to be 2.35, well within the range of q IR = 2.40 ± 0.24 found by Ivison et al. (2010)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature T",
+   "value": "30.8",
+   "uncertainty": "0.8",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 The radio source and the CO(5-4) line",
+     "quote": "The SED was found to correspond to a dust temperature of T = 30.8 ± 0.8 K and emissivity index β = 1.6 ± 0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index beta",
+   "value": "1.6",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 The radio source and the CO(5-4) line",
+     "quote": "The SED was found to correspond to a dust temperature of T = 30.8 ± 0.8 K and emissivity index β = 1.6 ± 0.08."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA/VLA calibration pipeline versions used",
+  "CLEAN imaging parameters: cell size, image size, stopping threshold, and masking strategy",
+  "Method and CASA task (e.g., uvcontsub vs imcontsub) and exact channel ranges used for continuum subtraction",
+  "Velocity channel width/binning used for the CO(5-4) velocity slices and moment maps",
+  "Source code or availability of the custom lens modelling code developed by Neal Jackson"
+ ],
+ "missing_for_reproduction": [
+  "Neal Jackson's custom image-plane gravitational lens modelling code is not publicly released or described in detail.",
+  "Exact channel selection for continuum subtraction and velocity-slice binning in the ALMA CO(5-4) cube.",
+  "CASA and pipeline versions, as well as CLEAN cell size, image size, and stopping thresholds.",
+  "Exact visibility weight rescaling factors and initialization priors used in uvmultifit and visilens."
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "Both ALMA and VLA project codes are clearly identified, standard pipelines were used, public u-v fitting packages (uvmultifit, visilens) are named, and fixed lens parameters from Eigenbrod et al. (2006) and Inada et al. (2003) are explicitly tabulated. However, the custom image-plane lens modelling code is not public, and low-level imaging/channel-binning parameters are omitted.",
+ "rediscovery_reason": "The ALMA data (2018.1.01447.S) are public and small in volume, the u-v modelling uses public tools (uvmultifit, visilens) with explicitly stated fixed lens parameters, and the key findings (CO(5-4) flux, redshift, A/D flux ratio, magnification, and intrinsic source size) are clear numeric benchmarks.",
+ "source_card": "cards/2020MNRAS.496..138B/sonnet/card.md"
+}

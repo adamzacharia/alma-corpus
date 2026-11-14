@@ -1,0 +1,396 @@
+{
+ "bibcode": "2023A&A...674A.113I",
+ "title": "The Disc Miner. II. Revealing gas substructures and kinematic signatures from planet-disc interaction through line profile analysis",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245425",
+ "arxiv_id": "2304.03607",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Identify potential signatures from planet-disc interaction and gas substructures in the circumstellar discs around MWC 480, HD 163296, AS 209, IM Lup, and GM Aur through line profile analysis of CO isotopologues.",
+ "alma_project_codes": [
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.15''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "JvM-corrected images with robust=0.5 from the MAPS survey",
+    "evidence": [
+     {
+      "loc": "Observations and models",
+      "quote": "We use the JvM-corrected images with a robust parameter of 0.5 (cite: czekala+2021)"
+     }
+    ]
+   },
+   "citation": "(cite: oberg+2021); (cite: czekala+2021)"
+  },
+  {
+   "what": {
+    "value": "Non-parametric 12CO emitting layer for MWC 480",
+    "evidence": [
+     {
+      "loc": "Extended velocity and line width perturbations",
+      "quote": "For this experiment, we fix the $^{12}$CO model surface to the non-parametric emitting layer extracted by (cite: paneque+2022), and re-run DISCMINER to find a new set of parameters for the remaining attributes summarised in Table 1."
+     }
+    ]
+   },
+   "citation": "(cite: paneque+2022)"
+  },
+  {
+   "what": {
+    "value": "Millimetre continuum disc inclination for MWC 480",
+    "evidence": [
+     {
+      "loc": "Extended velocity and line width perturbations",
+      "quote": "For better comparison, we also fix the disc inclination in both the smooth and irregular-surface model to the value found by (cite: liu+2019) from mm continuum modelling."
+     }
+    ]
+   },
+   "citation": "(cite: liu+2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Model channel-by-channel molecular line intensity cubes",
+   "method": "Fit parametric 3D channel-map models to the observed data cubes using a generalised bell function line profile kernel for upper and lower emission surfaces",
+   "software": [
+    "DISCMINER",
+    "EMCEE"
+   ],
+   "key_parameters": [
+    "Orientation (i, PA, x_c, y_c), Velocity (M_*, v_sys), Upper and Lower surface (z_0, p, R_t, q), Peak intensity (I_0, p, q), Line width (L_w0, p, q), Line slope (L_s0, p); normalisation D_0=100 au",
+    "For AS 209 12CO, asymmetric intensity normalisation: 0.65 I_0 for -80 deg < phi < 80 deg, and 1.25 I_0 otherwise"
+   ],
+   "assumptions": [
+    "Keplerian rotation with vertical differential rotation sustained by balance of forces in the z-direction",
+    "Highest intensity between upper and lower surface components taken on each pixel and velocity channel",
+    "Axisymmetric intensity fields for all model channels except 12CO of AS 209"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract line profile observables and compute deprojected residual maps",
+   "method": "Fit Gaussian kernels to both data and model line profiles to extract peak intensity, line width, and centroid velocity; subtract model from data and deproject onto the disc reference frame using retrieved vertical structure and orientation",
+   "software": [
+    "DISCMINER"
+   ],
+   "key_parameters": [
+    "Peak intensity, line width, and centroid velocity"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Detect localised velocity and line width perturbations via clustering",
+   "method": "Fold residual maps across the disc minor axis, divide disc radial extent into annuli, extract peak residuals per annulus, group peak residuals into radial and azimuthal clusters using K-means, and identify significant clusters",
+   "software": [
+    "DISCMINER"
+   ],
+   "key_parameters": [
+    "Annulus width = 1/4 of the beam size; significance threshold = 3 sigma of spectral variance of peak residuals"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Decompose velocity residuals into azimuthal and vertical (meridional) velocity components and radial profiles",
+   "method": "Compute azimuthal averages (over 2pi or symmetric section psi) of standard velocity residuals to obtain vertical velocity v_z, and of absolute velocity residuals to obtain azimuthal velocity perturbation Delta v_phi, alongside azimuthally averaged radial profiles of peak intensity and line width residuals",
+   "software": [
+    "DISCMINER"
+   ],
+   "key_parameters": [
+    "Standard residuals (v_0,d - v_0,m) and absolute residuals (|v_0,d - v_sys,m| - |v_0,m - v_sys,m|)"
+   ],
+   "assumptions": [
+    "Three-dimensional components of the velocity field are axisymmetric and line-of-sight velocities are dominated by azimuthal velocities"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HD 163296 12CO localised velocity perturbation (P94) orbital radius",
+   "value": "93",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Velocity",
+     "quote": "The $^{12}$CO perturbation, detected at an orbital radius of $R=93$ au and an azimuth of $\\phi=51^\\circ$ in the disc reference frame, is in excellent agreement with the P94 perturbation found by (cite: izquierdo+2022)."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 12CO localised velocity perturbation (P94) azimuth",
+   "value": "51",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Velocity",
+     "quote": "The $^{12}$CO perturbation, detected at an orbital radius of $R=93$ au and an azimuth of $\\phi=51^\\circ$ in the disc reference frame, is in excellent agreement with the P94 perturbation found by (cite: izquierdo+2022)."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 12CO localised velocity perturbation (P94) folded magnitude",
+   "value": "~0.4",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Velocity",
+     "quote": "While the $^{12}$CO perturbation yields a folded magnitude of $\\sim\\!0.4$ km s$^{-1}$, the $^{13}$CO perturbation peaks at $\\sim\\!0.3$ km s$^{-1}$ velocities."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 13CO localised velocity perturbation (P81) orbital radius",
+   "value": "81",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Velocity",
+     "quote": "The $^{13}$CO perturbation, or P81 hereafter, is detected at $R=81$ au and $\\phi=70^\\circ$, namely interior to the D86 dust gap, and centred at an azimuth closer to the disc minor axis than that of the P94 perturbation."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 13CO localised velocity perturbation (P81) azimuth",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Velocity",
+     "quote": "The $^{13}$CO perturbation, or P81 hereafter, is detected at $R=81$ au and $\\phi=70^\\circ$, namely interior to the D86 dust gap, and centred at an azimuth closer to the disc minor axis than that of the P94 perturbation."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 13CO localised velocity perturbation (P81) folded magnitude",
+   "value": "~0.3",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Velocity",
+     "quote": "While the $^{12}$CO perturbation yields a folded magnitude of $\\sim\\!0.4$ km s$^{-1}$, the $^{13}$CO perturbation peaks at $\\sim\\!0.3$ km s$^{-1}$ velocities."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 13CO localised line width perturbation orbital radius",
+   "value": "79",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Line width",
+     "quote": "The centre of the $^{13}$CO perturbation is detected at $R=79$ au, $\\phi=74^\\circ$, and that of the C$^{18}$O perturbation is detected at $R=86$ au, $\\phi=75^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 13CO localised line width perturbation azimuth",
+   "value": "74",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Line width",
+     "quote": "The centre of the $^{13}$CO perturbation is detected at $R=79$ au, $\\phi=74^\\circ$, and that of the C$^{18}$O perturbation is detected at $R=86$ au, $\\phi=75^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 C18O localised line width perturbation orbital radius",
+   "value": "86",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Line width",
+     "quote": "The centre of the $^{13}$CO perturbation is detected at $R=79$ au, $\\phi=74^\\circ$, and that of the C$^{18}$O perturbation is detected at $R=86$ au, $\\phi=75^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 C18O localised line width perturbation azimuth",
+   "value": "75",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detections in the disc of HD 163296: Line width",
+     "quote": "The centre of the $^{13}$CO perturbation is detected at $R=79$ au, $\\phi=74^\\circ$, and that of the C$^{18}$O perturbation is detected at $R=86$ au, $\\phi=75^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 planet candidate orbital radius",
+   "value": "245",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In MWC 480, we identified non-axisymmetric line width enhancements around the radial separation of candidate planet-driven buoyancy spirals, which we used to narrow the location of the possible planet to an orbital radius of $R=245$ au and $\\rm{PA}=193^\\circ$, at a projected distance of $1.33\"$ from the star."
+    },
+    {
+     "loc": "Extended velocity and line width perturbations",
+     "quote": "Considering this and the fact that the vertical velocity signatures are in good agreement with those expected for a planet-driven buoyancy spiral, we propose a planet candidate in the disc of MWC 480 at an orbital radius of $R=245$ au, namely at the radial location proposed by (cite: teague+2021), but at an azimuth of $\\phi=-128^\\circ$, where the peak in $^{12}$CO line width residuals is found."
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 planet candidate disc azimuth",
+   "value": "-128",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Extended velocity and line width perturbations",
+     "quote": "Considering this and the fact that the vertical velocity signatures are in good agreement with those expected for a planet-driven buoyancy spiral, we propose a planet candidate in the disc of MWC 480 at an orbital radius of $R=245$ au, namely at the radial location proposed by (cite: teague+2021), but at an azimuth of $\\phi=-128^\\circ$, where the peak in $^{12}$CO line width residuals is found."
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 planet candidate projected distance",
+   "value": "1.33",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In MWC 480, we identified non-axisymmetric line width enhancements around the radial separation of candidate planet-driven buoyancy spirals, which we used to narrow the location of the possible planet to an orbital radius of $R=245$ au and $\\rm{PA}=193^\\circ$, at a projected distance of $1.33\"$ from the star."
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 peak 12CO line width enhancement orbital radius",
+   "value": "210",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In the disc of AS 209, we found excess $^{12}$CO line widths centred at $R=210$ au, $\\rm{PA}=151^\\circ$, at a projected distance of $1.44\"$, spanning around the immediate vicinity of a circumplanetary disc candidate proposed previously, which further supports its presence."
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 peak 12CO line width enhancement projected distance",
+   "value": "1.44",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In the disc of AS 209, we found excess $^{12}$CO line widths centred at $R=210$ au, $\\rm{PA}=151^\\circ$, at a projected distance of $1.44\"$, spanning around the immediate vicinity of a circumplanetary disc candidate proposed previously, which further supports its presence."
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 12CO systemic velocity",
+   "value": "5.10",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting tables",
+     "quote": "$5.10$ $[5.10]$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 12CO systemic velocity",
+   "value": "5.77",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting tables",
+     "quote": "$5.77$ $[5.77]$"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 12CO systemic velocity",
+   "value": "4.64",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting tables",
+     "quote": "$4.64$ $[4.63]$"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup 12CO systemic velocity",
+   "value": "4.52",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting tables",
+     "quote": "$4.52$ $[4.52]$"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur 12CO systemic velocity",
+   "value": "5.63",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting tables",
+     "quote": "$5.63$ $[5.63]$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "MCMC setup details for EMCEE (number of walkers, burn-in steps, total steps, priors, likelihood noise estimate)",
+  "Some columns in the Supporting Tables (e.g., inclination i, stellar mass M_*, z_0, I_0, L_w0, L_s0) are missing or truncated in the text conversion",
+  "Number of clusters k chosen for the K-means clustering algorithm"
+ ],
+ "missing_for_reproduction": [
+  "Number of clusters k and exact radial boundaries used in the K-means clustering algorithm",
+  "Exact azimuthal masking angles psi used for IM Lup and GM Aur velocity decompositions",
+  "MCMC hyperparameters (number of walkers, steps, burn-in, parameter prior bounds)"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "Both the input JvM-corrected MAPS image cubes and the DISCMINER analysis software are publicly available online, equations and functional forms for the model attributes and velocity decomposition are explicitly derived, and best-fit parameters are tabulated.",
+ "rediscovery_reason": "Public MAPS cubes and public DISCMINER code allow direct end-to-end reproduction of the best-fit disc parameters, deprojected residual maps, velocity decompositions, and localised planet perturbation coordinates.",
+ "source_card": "cards/2023A%26A...674A.113I/sonnet/card.md"
+}

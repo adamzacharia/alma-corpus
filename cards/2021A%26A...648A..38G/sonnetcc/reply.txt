@@ -1,0 +1,258 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We searched for CO$^+$ absorption with the Atacama Large Millimeter Array (ALMA) towards two quasars with known Galactic foreground absorption from diffuse interstellar gas"}
+],
+"fields": ["milky_way_ism", "astrochemistry"],
+"question": {
+"value": "Is thermal cosmic-ray and UV-driven chemistry producing CO in diffuse interstellar molecular gas through the intermediate formation of CO+?",
+"evidence": [
+{"loc": "abstract", "quote": "To test whether the thermal cosmic-ray and UV-driven chemistry is producing CO in diffuse interstellar molecular gas through the intermediate formation of CO$^+$."}
+]
+},
+"targets": [
+{
+"name": "J1717-3342",
+"details": [
+{"loc": "2.2 Target directions", "quote": "The targeted sources are J1717-3342 and J1744-3116, two bright quasars situated at small galactic latitude behind the Galactic bulge"},
+{"loc": "Table 2", "quote": "J1717-3342 | 352.7333 | 2.3911"}
+],
+"coordinates": "l = 352.7333 deg, b = 2.3911 deg",
+"redshift_or_distance": "not stated",
+"distance_source": "not stated"
+},
+{
+"name": "J1744-3116",
+"details": [
+{"loc": "2.2 Target directions", "quote": "The targeted sources are J1717-3342 and J1744-3116, two bright quasars situated at small galactic latitude behind the Galactic bulge"},
+{"loc": "Table 2", "quote": "J1744-3116 | 357.8635 | -0.9968"}
+],
+"coordinates": "l = 357.8635 deg, b = -0.9968 deg",
+"redshift_or_distance": "not stated",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.00120.S", "evidence": [{"loc": "2.3 ALMA observations", "quote": "during ALMA Cycle 7 under the project code 2019.1.00120.S"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6, tuned near 236 GHz (Cycle 7)", "evidence": [{"loc": "2.3 ALMA observations", "quote": "The observations were performed with ALMA band 6 receivers tuned near 236 GHz during ALMA Cycle 7"}]},
+{"field": "frequencies_and_spectral_setup", "value": "CO+ N=2-1 hyperfine lines with 244 kHz channel spacing (0.31 km/s); extra spectral windows for 13CO(2-1), C18O(2-1), H2CO(3_0,3-2_0,2) and a dedicated continuum spw for phase calibration", "evidence": [{"loc": "2.3 ALMA observations", "quote": "The CO$^+$ lines were observed with a channel spacing of 244 kHz, corresponding to a velocity resolution of 0.31 kms$^{-1}$."}, {"loc": "2.1 Spectroscopy", "quote": "the setting of the ALMA correlator included spectral windows targeting the $^{13}$CO($2-1$), C$^{18}$O($2-1$) and H$_2$CO($3_{0,3}-2_{0,2}$) transitions"}]},
+{"field": "sensitivity", "value": "fractional rms flux density 0.22% (J1717-3342) and 0.83% (J1744-3116)", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "achieved fractional rms flux density levels $\\Delta{\\rm S}_\\nu/{\\rm S}_\\nu$ of 0.22% and 0.83% for J1717-3342 and J1744-3116 respectively"}]}
+],
+"lines_targeted": [
+{"species": "CO+", "transition": "N=2-1, J=5/2-3/2", "rest_frequency": "236062.553 MHz", "evidence": [{"loc": "Table 1", "quote": "2,5/2 - 1 3/2 | 236062.553"}]},
+{"species": "CO+", "transition": "N=2-1, J=3/2-1/2", "rest_frequency": "235789.641 MHz", "evidence": [{"loc": "Table 1", "quote": "2,3/2 - 1 1/2 | 235789.641"}]},
+{"species": "13CO", "transition": "J=2-1", "rest_frequency": "220398.684 MHz", "evidence": [{"loc": "Table 1", "quote": "2 - 1 | 220398.684"}]},
+{"species": "C18O", "transition": "J=2-1", "rest_frequency": "219560.354 MHz", "evidence": [{"loc": "Table 1", "quote": "2 - 1 | 219560.354"}]},
+{"species": "H2CO", "transition": "3_0,3-2_0,2", "rest_frequency": "not stated", "evidence": [{"loc": "2.3 ALMA observations", "quote": "The H$_2$CO ($3_{0,3}-2_{0,2}$) line was detected in both directions and will be discussed elsewhere."}]}
+],
+"other_facilities": [
+{"name": "ALMA 89.2 GHz HCO+ J=1-0 absorption (earlier observations)", "provided": {"value": "HCO+ J=1-0 absorption profiles toward the same sources, used for HCO+ column densities", "evidence": [{"loc": "2.4 Other data discussed here", "quote": "Also shown in Figures [1](#fig:coplus) and [2](#fig:specemi) are 89.2 GHz ALMA HCO$^+$ J=1-0 absorption line profiles"}]}},
+{"name": "CO J=1-0 2.6 mm emission survey (Bitran et al. 1997)", "provided": {"value": "Nearest CO J=1-0 emission profiles (8.8 arcmin beam) for comparison", "evidence": [{"loc": "2.4 Other data discussed here", "quote": "the nearest $\\lambda$2.6mm CO J=1-0 emission profiles with an $8.8\\ensuremath{'}$ beamsize from the work of (cite: BitAlv+97)"}]}},
+{"name": "HI 21 cm emission survey (Kalberla et al. 2005)", "provided": {"value": "HI emission profile for comparison (0.6 deg FWHM beam)", "evidence": [{"loc": "2.4 Other data discussed here", "quote": "a $\\lambda$21cm H I emission profile from (cite: KalBur+05) (FWHM beam of 0.6$^\\circ$)"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Earlier ALMA 89.2 GHz HCO+ J=1-0 absorption profiles toward the same sources", "evidence": [{"loc": "2.4 Other data discussed here", "quote": "from our earlier work (cite: gerin:17; liszt:18)"}]}, "citation": "(cite: gerin:17; liszt:18)"},
+{"what": {"value": "Standard HCO+ abundance relative to H2, X(HCO+) = 3e-9, used to derive N(H2) and X(CO+)", "evidence": [{"loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116", "quote": "using the standard value for the HCO$^+$ abundance relative to H$_2$ in the diffuse molecular gas, $3\\times 10^{-9}$ (cite: lucas:96; gerin:19)"}]}, "citation": "(cite: lucas:96; gerin:19)"},
+{"what": {"value": "Observed N(HOC+)/N(HCO+) = 0.015 +/- 0.003", "evidence": [{"loc": "1 Introduction", "quote": "that is observed with N(HOC$^+$)/N(HCO$^+$) $= 0.015\\pm0.003$ (cite: gerin:19)"}]}, "citation": "(cite: gerin:19)"},
+{"what": {"value": "OH abundance relative to H2, X(OH) = 1.0 +/- 0.14 x 10^-7", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "X(OH) $= 1.0 \\pm 0.14 \\times10^{-7}$ varies only narrowly"}]}, "citation": "(cite: WesGal+09; WesGal+10)"},
+{"what": {"value": "H2O abundance relative to H2, X(H2O) = 2.4e-8", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "whose fixed relative abundance X($\\mathrm{{\\rm H}_2}$O) $=2.4\\times10^{-8}$ we take from (cite: GerNeu+16)"}]}, "citation": "(cite: GerNeu+16)"},
+{"what": {"value": "Reddening E(B-V) along the sight lines", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "take E(B-V) from (cite: GreGre+19)"}]}, "citation": "(cite: GreGre+19)"},
+{"what": {"value": "Sample of QSO sight lines with HCO+ and CO column densities in absorption", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "for the existing sample of QSO sight lines with HCO$^+$ and CO column densities determined in absorption (cite: LisLuc98; LisGer+19)"}]}, "citation": "(cite: LisLuc98; LisGer+19)"},
+{"what": {"value": "Reaction rate coefficients from the KIDA database", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "neglecting photodissociation that is four orders of magnitude slower according to the Kinetic Database for Astrochemistry (KIDA)"}]}, "citation": "(cite: Kida2014)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Self-consistent atomic/molecular, ionization and thermal equilibrium chemical model of constant-density gas spheres, extended with CO+ and HOC+ chemistry", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "we calculated the self-consistent global atomic/molecular, ionization and thermal equilibrium in gas spheres of constant total hydrogen number and column density, subject to the usual interstellar radiation fields"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "standard pipeline-processed data products", "evidence": [{"loc": "2.3 ALMA observations", "quote": "Absorption spectra were extracted from the standard pipeline-processed data products at the peak of the continuum map in each spectral window."}]},
+{"field": "archive_products_used_as_is", "value": "Spectra extracted directly from the standard pipeline products", "evidence": [{"loc": "2.3 ALMA observations", "quote": "Absorption spectra were extracted from the standard pipeline-processed data products at the peak of the continuum map in each spectral window."}]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Bandpass calibrator fixed to J1924-2914", "evidence": [{"loc": "2.3 ALMA observations", "quote": "As in our earlier observations toward these sources, the bandpass calibrator was fixed to J1924-2914."}]}, "from_reference": "our earlier observations toward these sources"},
+{"what": {"value": "HCO+ column density conversion N(HCO+) = 1.12e12 cm^-2 x integral tau dv, excitation in equilibrium with the CMB", "evidence": [{"loc": "2.4 Other data discussed here", "quote": "using N(HCO$^+$) = $1.12\\times 10^{12}~{\\rm cm}^{-2}\\int \\tau ~{\\rm dv}$ as before"}]}, "from_reference": "our earlier work (cite: gerin:17; liszt:18)"},
+{"what": {"value": "Thermal CO+ and HOC+ chemical network, extended here with variations in reaction rates and abundances", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "we extended the thermal CO$^+$ and HOC$^+$ chemistry discussed by (cite: gerin:19)"}]}, "from_reference": "(cite: gerin:19)"},
+{"what": {"value": "Self-consistent equilibrium gas-sphere calculation method", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "To treat this we performed calculations like those done earlier to account for the observations of HF and CF$^+$ (cite: LisGuz+15)."}]}, "from_reference": "(cite: LisGuz+15)"}
+],
+"unstated_but_needed": [
+"CASA / pipeline version and which calibration (manual or pipeline) produced the products used",
+"Flux and phase calibrators, observing dates, array configuration, baselines and time on source",
+"How the continuum level was set and spectra normalised to obtain optical depth (continuum-subtraction, line-free channels)",
+"How the channel rms (sigma l/c) was measured and how the 3-sigma integrated opacity limits were computed (channel width, velocity range)",
+"Which CO+ hyperfine components (and how the third 3/2-3/2 component was treated) enter the quoted column density limits",
+"Code, radiation field strength, cloud density/column grid, temperature treatment and full reaction network of the chemical model used in Fig. 3",
+"Hydrogen column conversion used to convert E(B-V) to N(H) and the cloud-averaging details behind Fig. 4"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Extract absorption spectra",
+"method": {"value": "Extract absorption spectra at the continuum peak in each spectral window from standard pipeline-processed products", "evidence": [{"loc": "2.3 ALMA observations", "quote": "Absorption spectra were extracted from the standard pipeline-processed data products at the peak of the continuum map in each spectral window."}]},
+"software": ["ALMA standard pipeline"],
+"key_parameters": [
+{"value": "Channel spacing 244 kHz (0.31 km/s); spectral resolution is twice the channel spacing", "evidence": [{"loc": "2.3 ALMA observations", "quote": "The channel spectral resolution is twice the channel spacing."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Integrate opacity and derive column densities / limits",
+"method": {"value": "Integrate line profiles over fixed velocity intervals; 3-sigma upper limits for non-detections; convert integrated opacity to column density", "evidence": [{"loc": "Table 2", "quote": "Upper limits are 3$\\sigma$."}, {"loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116", "quote": "Therefore, the CO$^+$ column densities have been derived assuming an excitation temperature of 2.73 K."}]},
+"software": [],
+"key_parameters": [
+{"value": "Integration velocity intervals -14..10 km/s (J1717-3342) and -20..20 km/s (J1744-3116)", "evidence": [{"loc": "Table 2", "quote": "J1717-3342 | 352.7333 | 2.3911 | -14..10"}, {"loc": "Table 2", "quote": "J1744-3116 | 357.8635 | -0.9968 | -20..20"}]},
+{"value": "N(HCO+) = 1.12e12 cm^-2 x integral tau dv", "evidence": [{"loc": "2.4 Other data discussed here", "quote": "using N(HCO$^+$) = $1.12\\times 10^{12}~{\\rm cm}^{-2}\\int \\tau ~{\\rm dv}$ as before"}]}
+],
+"assumptions": [
+{"value": "CO+ excitation set by the CMB at 2.73 K", "evidence": [{"loc": "2.1 Spectroscopy", "quote": "assuming that the energy level population is determined by the cosmic microwave background at 2.73 K"}]},
+{"value": "13CO and C18O excitation temperature 5 K", "evidence": [{"loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116", "quote": "we assume an excitation temperature of 5 K (Table 1)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Derive CO+/HCO+ ratio and X(CO+) limits",
+"method": {"value": "Ratio of N(CO+) limits to N(HCO+) and to N(H2) = N(HCO+)/3e-9", "evidence": [{"loc": "Table 3", "quote": "$^a$N($\\mathrm{{\\rm H}_2}$) = N(HCO$^+$)/$3\\times 10^{-9}$."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Standard HCO+ abundance relative to H2 of 3e-9 in diffuse molecular gas", "evidence": [{"loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116", "quote": "using the standard value for the HCO$^+$ abundance relative to H$_2$ in the diffuse molecular gas, $3\\times 10^{-9}$ (cite: lucas:96; gerin:19)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Test CO+ + H2 as the HCO+ source (analytic balance)",
+"method": {"value": "Equate HCO+ formation via CO+ + H2 with HCO+ recombination with electrons and solve for required n(CO+)/n(HCO+) and X(CO+); compare with observed limits", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "Equating formation and recombination of HCO$^+$ , neglecting photodissociation that is four orders of magnitude slower according to the Kinetic Database for Astrochemistry (KIDA)"}]},
+"software": ["KIDA"],
+"key_parameters": [
+{"value": "x(e) = 2e-4 from n(C+)/n(H) = 1.6e-4; f_H2 = 0.6, T = 40 K", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "Taking $x(e)= 2\\times10^{-4}$ corresponding to the observed free gas-phase carbon abundance $n({\\rm C}^+)/n({\\rm H}) = 1.6\\times10^{-4}$ (cite: SofLau+04)"}, {"loc": "3.2 CO+ as a source of HCO+", "quote": "This is some 25 times higher than our upper limit"}]}
+],
+"assumptions": [
+{"value": "Steady state; photodissociation neglected; HCO+ destroyed by thermal-electron recombination", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "neglecting photodissociation that is four orders of magnitude slower according to the Kinetic Database for Astrochemistry (KIDA)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Model the coupled CO+/HOC+/HCO+ thermal chemistry",
+"method": {"value": "Self-consistent atomic/molecular, ionization and thermal equilibrium in gas spheres with column density varied and abundances integrated along the central line of sight; test variants of rates and abundances (baseline, HOC+ isomerization rate, HOC+ formation from CO+ + H2, C+ + H2O channel, X(CH+))", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "In brief we calculated the self-consistent global atomic/molecular, ionization and thermal equilibrium in gas spheres of constant total hydrogen number and column density"}, {"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "The hydrogen column density was varied and molecular abundances were integrated along the central line of sight to form the results that are displayed here."}]},
+"software": ["KIDA"],
+"key_parameters": [
+{"value": "X(OH) = 1.0 +/- 0.14 x 10^-7", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "X(OH) $= 1.0 \\pm 0.14 \\times10^{-7}$ varies only narrowly"}]},
+{"value": "X(H2O) = 2.4e-8", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "whose fixed relative abundance X($\\mathrm{{\\rm H}_2}$O) $=2.4\\times10^{-8}$ we take from (cite: GerNeu+16)"}]},
+{"value": "X(CH+) free parameter, default 1e-9", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "We take X(CH$^+$) as a free parameter with X(CH$^+$) $= 10^{-9}$ by default in the following discussion."}]}
+],
+"assumptions": [
+{"value": "Interstellar radiation field (Draine field G0 = 1 elsewhere); HOC+ formation via O + CH3+ ignored as non-thermal", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "We ignore HOC$^+$ formation by the reaction of O with CH$_3$$^+$ because the formation of CH$_3$$^+$ is an aspect of the non-thermal chemistry."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared model CO+ and HOC+ abundances with the observed CO+ upper limits and the observed N(HOC+)/N(HCO+)", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "The model produces CO$^+$ relative abundances about 2.5 times smaller than our observed upper limits, and about twice as much HOC$^+$ as observed."}]}
+},
+{
+"order": 6,
+"goal": "Derive n(H)/G0 for CO formation from N(CO)/N(HCO+)",
+"method": {"value": "Balance CO formation by HCO+ dissociative recombination against CO photodissociation for a uniform slab and solve for n(H)/G0 as a function of E(B-V) for the QSO sight-line sample", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "Balancing the formation of CO through dissociative recombination of HCO$^+$ and destruction of CO by photodissociation can constrain the physical conditions where CO might form in diffuse molecular gas."}]},
+"software": [],
+"key_parameters": [
+{"value": "T = 40 K, x(e) = 2e-4", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "a uniform temperature of 40K and a uniform electron fraction $x(e) = 2 \\times 10^{-4}$."}]},
+{"value": "A_V = 3.1 E(B-V), E(B-V) from Green et al. 2019, nominal error 0.02 mag", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "The error bar in E(B-V) is a nominal value 0.02 mag."}]}
+],
+"assumptions": [
+{"value": "Draine radiation field defined as G0 = 1; photodissociation rate 2.43e-10 s^-1 attenuated as exp(-gamma A_V) with gamma = 3.88; line-of-sight averages replace local quantities", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "replacing local quantities with line of sight averages"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared derived densities with those inferred from HCO+ emission brightness and typical diffuse-gas thermal pressures", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "are higher by a factor $\\sim$ 5 than are inferred from the brightness of HCO$^+$ emission in these directions (cite: Lis20Hotspots)"}]}
+}
+],
+"software": [
+{"name": "ALMA standard pipeline", "version": "not stated", "used_for": {"value": "Provided the calibrated data products from which spectra were extracted", "evidence": [{"loc": "2.3 ALMA observations", "quote": "Absorption spectra were extracted from the standard pipeline-processed data products at the peak of the continuum map in each spectral window."}]}},
+{"name": "KIDA (Kinetic Database for Astrochemistry)", "version": "not stated", "used_for": {"value": "Reaction rate coefficients for the chemical analysis", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "according to the Kinetic Database for Astrochemistry (KIDA)"}]}}
+],
+"results_numeric": [
+{"quantity": "CO+ J=5/2-3/2 integrated opacity limit, J1717-3342", "value": "<0.027", "uncertainty": "3 sigma upper limit", "units": "km/s", "from_step": 2, "evidence": [{"loc": "Table 2", "quote": "CO$^+$ J=5/2-3/2 | 0.780 | 0.0027 | $<$0.027"}]},
+{"quantity": "CO+ J=3/2-1/2 integrated opacity limit, J1717-3342", "value": "<0.033", "uncertainty": "3 sigma upper limit", "units": "km/s", "from_step": 2, "evidence": [{"loc": "Table 2", "quote": "CO$^+$ J=3/2-1/2 | 0.780 | 0.0034 | $<$0.033"}]},
+{"quantity": "CO+ J=5/2-3/2 integrated opacity limit, J1744-3116", "value": "<0.087", "uncertainty": "3 sigma upper limit", "units": "km/s", "from_step": 2, "evidence": [{"loc": "Table 2", "quote": "CO$^+$ J=5/2-3/2 | 0.234 | 0.0084 | $<$0.087"}]},
+{"quantity": "CO+ J=3/2-1/2 integrated opacity limit, J1744-3116", "value": "<0.111", "uncertainty": "3 sigma upper limit", "units": "km/s", "from_step": 2, "evidence": [{"loc": "Table 2", "quote": "CO$^+$ J=3/2-1/2 | 0.251 | 0.0107 | $<$0.111"}]},
+{"quantity": "N(HCO+) toward J1717-3342", "value": "7.49", "uncertainty": "0.03", "units": "10^12 cm^-2", "from_step": 2, "evidence": [{"loc": "Table 3", "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"}]},
+{"quantity": "N(CO+) toward J1717-3342", "value": "<0.30", "uncertainty": "3 sigma upper limit", "units": "10^12 cm^-2", "from_step": 2, "evidence": [{"loc": "Table 3", "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"}]},
+{"quantity": "N(CO+)/N(HCO+) toward J1717-3342", "value": "<0.040", "uncertainty": "3 sigma upper limit", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"}]},
+{"quantity": "N(CO+)/N(H2) toward J1717-3342", "value": "<1.2e-10", "uncertainty": "3 sigma upper limit", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"}]},
+{"quantity": "N(HCO+) toward J1744-3116 (printed J1744-3416 in Table 3)", "value": "23.35", "uncertainty": "0.06", "units": "10^12 cm^-2", "from_step": 2, "evidence": [{"loc": "Table 3", "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"}]},
+{"quantity": "N(CO+) toward J1744-3116", "value": "<0.98", "uncertainty": "3 sigma upper limit", "units": "10^12 cm^-2", "from_step": 2, "evidence": [{"loc": "Table 3", "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"}]},
+{"quantity": "N(CO+)/N(HCO+) toward J1744-3116", "value": "<0.042", "uncertainty": "3 sigma upper limit", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"}]},
+{"quantity": "N(CO+)/N(H2) toward J1744-3116", "value": "<1.3e-10", "uncertainty": "3 sigma upper limit", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"}]},
+{"quantity": "Fractional rms flux density, J1717-3342", "value": "0.22%", "uncertainty": "not stated", "units": "percent of continuum flux density", "from_step": 2, "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "achieved fractional rms flux density levels $\\Delta{\\rm S}_\\nu/{\\rm S}_\\nu$ of 0.22% and 0.83% for J1717-3342 and J1744-3116 respectively"}]},
+{"quantity": "Fractional rms flux density, J1744-3116", "value": "0.83%", "uncertainty": "not stated", "units": "percent of continuum flux density", "from_step": 2, "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "achieved fractional rms flux density levels $\\Delta{\\rm S}_\\nu/{\\rm S}_\\nu$ of 0.22% and 0.83% for J1717-3342 and J1744-3116 respectively"}]},
+{"quantity": "13CO(2-1) integrated opacity and N(13CO), J1717-3342", "value": "0.260 km/s; 6.3e14 cm^-2", "uncertainty": "0.004 km/s; 0.4e14 cm^-2", "units": "km/s; cm^-2", "from_step": 2, "evidence": [{"loc": "Table 4", "quote": "0.818 | 0.0024 | 0.260(0.004) | 6.3(0.4)"}]},
+{"quantity": "C18O(2-1) integrated opacity and N(C18O), J1717-3342", "value": "<0.055 km/s; <1.3e14 cm^-2", "uncertainty": "3 sigma upper limit", "units": "km/s; cm^-2", "from_step": 2, "evidence": [{"loc": "Table 4", "quote": "0.822 | 0.0123 | $<$ 0.055 | $<1.3$"}]},
+{"quantity": "13CO(2-1) integrated opacity and N(13CO), J1744-3116", "value": "2.975 km/s; 72.0e14 cm^-2", "uncertainty": "0.023 km/s; 0.6e14 cm^-2", "units": "km/s; cm^-2", "from_step": 2, "evidence": [{"loc": "Table 4", "quote": "0.244 | 0.0073 | 2.975(0.023) | 72.0(0.6)"}]},
+{"quantity": "C18O(2-1) integrated opacity and N(C18O), J1744-3116", "value": "0.102 km/s; 2.5e14 cm^-2", "uncertainty": "0.018 km/s; 0.4e14 cm^-2", "units": "km/s; cm^-2", "from_step": 2, "evidence": [{"loc": "Table 4", "quote": "0.244 | 0.0084 | 0.102(0.018) | 2.5(0.4)"}]},
+{"quantity": "N(13CO)/N(C18O) toward J1744-3116", "value": "29", "uncertainty": "5", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116", "quote": "N($\\mathrm{^{13}CO}$)/N($\\mathrm{C^{18}O}$) = 29$\\pm5$ toward J1744-3116"}]},
+{"quantity": "Required n(CO+)/n(HCO+) relative to upper limit (f_H2 = 0.6, T = 40 K)", "value": "about 25 times higher than the limit", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "This is some 25 times higher than our upper limit"}]},
+{"quantity": "Required X(CO+) relative to upper limit (T = 40 K)", "value": "at least 15 times above the limit of 1.2e-10", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "is at least 15 times above the upper limit achieved here, $1.2 \\times 10^{-10}$, if T = 40 K"}]},
+{"quantity": "Baseline model CO+ abundance relative to observed upper limits, and HOC+ relative to observed", "value": "CO+ about 2.5 times smaller than limits; HOC+ about twice observed", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "The model produces CO$^+$ relative abundances about 2.5 times smaller than our observed upper limits, and about twice as much HOC$^+$ as observed."}]},
+{"quantity": "Upper limit on X(CH+)/X(OH) from CO+ limits", "value": "<~3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "our upper limits on CO$^+$ by themselves imply X(CH$^+$)/X(OH) $\\ensuremath{\\lesssim} 3$"}]},
+{"quantity": "Mean n(H)/G0 for the QSO sight-line sample", "value": "~300", "uncertainty": "not stated", "units": "cm^-3", "from_step": 6, "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "The mean value for the sample is $<n({\\rm H})/G_0 > \\sim 300~{\\rm cm}^{-3}$."}]},
+{"quantity": "Required n(H) for E(B-V) >~ 0.5 mag (G0 = 1)", "value": "~100-300", "uncertainty": "not stated", "units": "cm^-3", "from_step": 6, "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "the calculated densities n(H) $\\sim 100-300 ~{\\rm cm}^{-3}$ are modest for E(B-V)"}]},
+{"quantity": "Required n(H) for E(B-V) <~ 0.2 mag (G0 = 1)", "value": "~1000-2000", "uncertainty": "not stated", "units": "cm^-3", "from_step": 6, "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "The higher densities $n({\\rm H}) \\sim 1000-2000~{\\rm cm}^{-3}$ calculated at E(B-V)"}]},
+{"quantity": "Lower limit on N(H)/E(B-V) coefficient a for f_H2 <= 1", "value": ">~ 8e21", "uncertainty": "not stated", "units": "H-nuclei cm^-2 mag^-1", "from_step": 6, "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "implies $a \\ensuremath{\\gtrsim} 8\\times 10^{21}~{\\rm H-nuclei}~{\\rm cm}^{-2}$ mag$^{-1}$"}]}
+],
+"findings_qualitative": [
+{"value": "CO+ non-detection confirms HCO+ is mainly made via CH2+/CH3+ + O (supra-thermal), while CO+ and HOC+ come from C+ + OH and H2O", "evidence": [{"loc": "abstract", "quote": "The non-detection of CO$^+$ confirms that HCO$^+$ is mainly produced in the reaction between oxygen and carbon hydrides CH$_2^+$ or CH$_3^+$ induced by supra-thermal processes while CO$^+$ and HOC$^+$ result from reactions of C$^+$ with OH and H$_2$O."}]},
+{"value": "Sight lines span diffuse to translucent gas; the positive-velocity component toward J1744-3116 is probably translucent", "evidence": [{"loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116", "quote": "could be associated with translucent rather than diffuse gas"}]}
+],
+"claims": [
+{"hypothesis": "CO+ is abundant enough in diffuse molecular gas to be an intermediate on the path to HCO+ and CO", "experiment": "ALMA Band 6 search for CO+ N=2-1 absorption toward two quasars behind diffuse Galactic gas", "result": "No CO+ detected; N(CO+)/N(HCO+) < ~0.04 and X(CO+) < 1.2e-10", "finding": "CO+ is too scarce to be the main precursor of HCO+ in diffuse gas", "support": "supported", "evidence": [{"loc": "abstract", "quote": "We could not detect CO$^+$ but obtained sensitive upper limits toward both targets."}]},
+{"hypothesis": "CO+ + H2 -> HCO+ + H can replenish the HCO+ lost to recombination", "experiment": "Steady-state balance of HCO+ formation via CO+ + H2 against recombination, compared with the upper limits", "result": "Required CO+/HCO+ is some 25 times above the limit and required X(CO+) at least 15 times above it", "finding": "CO+ produces at most a few percent of the HCO+ that recombines to form CO", "support": "supported", "evidence": [{"loc": "3.2 CO+ as a source of HCO+", "quote": "CO$^+$ is responsible for producing at most a few percent of the HCO$^+$ that recombines with ambient thermal electrons to form CO in diffuse molecular gas."}]},
+{"hypothesis": "A thermal cosmic-ray and UV-driven chemistry can reproduce the observed CO+, HOC+ and HCO+ abundances", "experiment": "Equilibrium gas-sphere chemical model with variations of key rates and abundances", "result": "Baseline model gives CO+ below the limits but overproduces HOC+ by about a factor two (up to six with fast isomerization)", "finding": "Fit is better if C+ + H2O preferentially forms HCO+; some aspects of the C+ + H2O reaction may be not fully understood", "support": "partially", "evidence": [{"loc": "6 Summary and conclusions", "quote": "A baseline cosmic-ray and UV-driven thermal chemical model overproduced HOC$^+$ by a factor two, but by as much as a factor six"}]},
+{"hypothesis": "Modest densities suffice for CO formation through HCO+ recombination in diffuse gas", "experiment": "n(H)/G0 derived from N(CO)/N(HCO+) for a sample of QSO sight lines as function of E(B-V)", "result": "Mean n(H)/G0 ~300 cm^-3; n(H) ~100-300 cm^-3 for E(B-V) >~ 0.5 mag but ~1-2e3 cm^-3 at E(B-V) ~0.1-0.2 mag", "finding": "Modest densities suffice at high extinction; low-extinction CO requires over-pressured gas (turbulent dissipation chemistry) or a lower radiation field", "support": "partially", "evidence": [{"loc": "6 Summary and conclusions", "quote": "such heavily over-pressured gas is more properly considered in the context of a turbulent dissipation chemistry"}]}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "Absorption spectroscopy is the best probe of diffuse-cloud molecular content because excitation is weak and levels are in the lowest rotational states", "evidence": [{"loc": "2.1 Spectroscopy", "quote": "Absorption spectroscopy represents the best method to probe the molecular content of diffuse clouds because the molecular excitation is weak at the low densities"}]},
+{"field": "why_this_data", "value": "N=2-1 near 236 GHz chosen because it is accessible from the ground and remains populated in diffuse gas; targets are bright quasars with known high Galactic foreground molecular columns", "evidence": [{"loc": "2.1 Spectroscopy", "quote": "We chose to search for the $N=2\\rightarrow1$ transitions because the frequencies of this first excited transition near 236 GHz are easily accessible from ground-based radio observatories"}, {"loc": "2.2 Target directions", "quote": "that were known to have high intervening column densities of Galactic neutral gas detected in molecular absorption"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "CO+ ground-state transitions at 117.7 and 118.1 GHz rejected because of the nearby atmospheric O2 line at 118.75 GHz", "evidence": [{"loc": "2.1 Spectroscopy", "quote": "The CO$^+$ ground state rotational transitions at 117.7 GHz and 118.1 GHz are close to a strong atmospheric line from molecular oxygen at 118.75 GHz, rendering their observation from the ground very difficult."}]}
+],
+"limitations_admitted": [
+{"value": "The sample of sight lines used for n(H)/G0 includes CO and HCO+ detections, which may bias densities high", "evidence": [{"loc": "5 Conditions for the growth of CO", "quote": "which may bias the derived $n({\\rm H}/G_0$ to somewhat high values as a higher density implies a faster CO production rate"}]},
+{"value": "Aspects of the C+ + H2O reaction (rate, branching ratio) may not be fully understood, so the HOC+ comparison is uncertain", "evidence": [{"loc": "4 The thermal chemistry of CO+, HOC+ and HCO+", "quote": "or perhaps some aspect of the reaction of C$^+$ and $\\mathrm{{\\rm H}_2}$O is not fully understood"}]}
+],
+"referee_caveats_inferred": [
+"Upper limits depend on the assumed CMB-only excitation (2.73 K) and on the adopted HCO+ abundance of 3e-9 for N(H2)",
+"Chemical model is described only in outline; no code, grid or parameter table is provided to rerun Fig. 3",
+"Spectra taken only at the continuum peak from pipeline products; no quoted checks on calibration, flux scale or continuum subtraction",
+"Table 3 prints J1744-3416 for the second source, an apparent typo for J1744-3116"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Calibration and extraction details (continuum level, line-free channels, rms and upper-limit computation)",
+"Observing log (dates, configuration, time on source, calibrators other than the bandpass calibrator)",
+"Chemical model code and full parameter set for Fig. 3 and Fig. 4"
+],
+"estimated_data_volume_inferred": "Small: two targets, Band 6, one tuning with a few spectral windows (likely a few GB to tens of GB of raw data)",
+"score_inferred": 3,
+"score_reason": "Project code and final numeric tables are given and the spectral extraction is simple, but pipeline version, calibrators, extraction/limit procedure and the chemical model code are not given.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "The observational part (CO+ non-detection limits and column densities) is numeric and rests on a single archive-linked project with simple extraction, although public status is not stated in the paper and the chemical modelling is not reproducible from the text.",
+"methods_papers": [
+{"citation": "(cite: gerin:19)", "why": "Source of the thermal CO+/HOC+ chemistry extended here and of the HOC+/HCO+ ratio"},
+{"citation": "(cite: LisGuz+15)", "why": "Earlier equilibrium gas-sphere calculations of the same kind used for the chemical model"},
+{"citation": "(cite: dagdigian:19)", "why": "Rate coefficient and branching ratio for C+ + OH"}
+],
+"companion_papers": [
+{"citation": "(cite: gerin:17; liszt:18)", "why": "Earlier ALMA HCO+ J=1-0 absorption toward the same sources"},
+{"citation": "(cite: RiqBro+18)", "why": "Earlier molecular absorption study of the same sight lines; 13CO column density comparison"}
+],
+"related_projects_or_surveys": []
+}

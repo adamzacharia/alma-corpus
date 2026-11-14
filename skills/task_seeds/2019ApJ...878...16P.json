@@ -1,0 +1,241 @@
+{
+ "bibcode": "2019ApJ...878...16P",
+ "title": "An Inner Disk in the Large Gap of the Transition Disk SR 24S",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab1cb8",
+ "arxiv_id": "1904.11517",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the multiwavelength (0.45, 1.3, 2.75 mm) dust continuum structure of the SR 24S transition disk, including an inner disk, reveal the origin of its large cavity?",
+ "alma_project_codes": [
+  "2017.1.00884.S"
+ ],
+ "data": {
+  "bands": "Band 3 (2.75 mm), plus earlier Band 6 and Band 9",
+  "arrays": "not stated",
+  "angular_resolution": "0.106'' x 0.088''",
+  "sensitivity": "rms ~38 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Band 6 and Band 9 visibilities and calibration",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "are explained in (cite: marel2015) and (cite: pinilla2017)"
+     }
+    ]
+   },
+   "citation": "(cite: marel2015); (cite: pinilla2017)"
+  },
+  {
+   "what": {
+    "value": "Total flux at 1.3 mm of 220 mJy",
+    "evidence": [
+     {
+      "loc": "3.2 Disk dust mass and spectral index",
+      "quote": "Using the total flux at 1.3 mm of 220 mJy (cite: pinilla2017)"
+     }
+    ]
+   },
+   "citation": "(cite: pinilla2017)"
+  },
+  {
+   "what": {
+    "value": "Accretion rate ~3e-8 Msun/yr",
+    "evidence": [
+     {
+      "loc": "4.2 Origin of the large gap and ring-like structure",
+      "quote": "the accretion rate of $\\sim3\\times10^{-8}$ $M_{\\odot}$  year$^{-1}$ (cite: natta2006)"
+     }
+    ]
+   },
+   "citation": "(cite: natta2006)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Centre data and get geometry",
+   "method": "Gaussian fit with uvmodelfit; phase centre corrected with fixvis",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "PA 26.8±1.3 deg, inclination 47.6±2.4 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and radial profiles",
+   "method": "clean with natural weighting; deprojected azimuthally averaged radial profiles",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 114.4 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Optical depth, dust mass and spectral index",
+   "method": "optically thin dust mass from flux; tau from brightness temperature; spectral index from 1.3 and 2.75 mm fluxes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=2.3 cm2/g (nu/230GHz)^0.4, T=20 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit visibility-plane ring models",
+   "method": "fit the real part of the visibilities with 3 models (asymmetric Gaussian ring; plus point source; plus central Gaussian) at each of three bands",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "200 walkers, 2000 steps, uniform priors (r_peak 10-80 au, sigma 1-50 au, A 0-1, sigma_inner 0.1-10 au, F_total 0-3 Jy)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare with cavity-formation models",
+   "method": "qualitative comparison of normalized intensity profiles with planet and dead-zone dust evolution models convolved with an 11 au beam",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Mie opacities with Ricci et al. 2010 optical constants; temperature power law index -1/2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 3 total flux density from image",
+   "value": "28.9",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Observations",
+     "quote": "The total flux density and the peak brightness from the image is 28.9 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 ring peak radius",
+   "value": "37.10",
+   "uncertainty": "+0.45/-0.44",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "37.10$^{+0.45}_{-0.44}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass from image flux",
+   "value": "55.3",
+   "uncertainty": "7.3",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Disk dust mass and spectral index",
+     "quote": "55.3 $M_{\\oplus}\\pm$7.3 $M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass from fitted flux",
+   "value": "58.3",
+   "uncertainty": "7.7",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Fit of the dust morphology in the visibility plane",
+     "quote": "which gives a dust disk mass of 58.3$\\pm$7.7 $M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spatially integrated spectral index",
+   "value": "2.7",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Disk dust mass and spectral index",
+     "quote": "the spatially integrated spectral index is 2.7$\\pm$0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk spectral index (within 20 au)",
+   "value": "~2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Origin of the emission from the inner disk",
+     "quote": "The spectral index derived from these fluxes is $\\sim$2.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 inner disk flux in 75 mas aperture",
+   "value": "~0.46",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Dust morphology and comparison with previous ALMA observations",
+     "quote": "The total flux density inside a circular aperture of 75 mas radius is $\\sim$0.46 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 optical depth peak",
+   "value": "0.37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Dust morphology and comparison with previous ALMA observations",
+     "quote": "with a maximum value of $\\tau$ at the peak of emission of 0.37"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "clean parameters: cell size, image size, mask, niter, threshold",
+  "self-calibration solution intervals and number of rounds",
+  "whether lines were flagged before the continuum was made, and how",
+  "binning of visibilities in the fit",
+  "likelihood form for MCMC and burn-in",
+  "details of the Band 6/9 data reprocessing",
+  "planet/dead-zone model parameters other than mass and radius"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "self-calibration details",
+  "Band 6 and 9 data processing",
+  "hydrodynamic and dust evolution model inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and fitting approach clear with priors, but imaging and self-calibration parameters missing and model comparison relies on earlier papers.",
+ "rediscovery_reason": "Public data and numeric visibility fit results, with the recipe largely stated.",
+ "source_card": "cards/2019ApJ...878...16P/sonnet/card.md"
+}

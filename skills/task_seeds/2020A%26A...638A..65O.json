@@ -1,0 +1,205 @@
+{
+ "bibcode": "2020A&A...638A..65O",
+ "title": "ALMA and VLA reveal the lukewarm chromospheres of the nearby red supergiants Antares and Betelgeuse",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202037756",
+ "arxiv_id": "2006.08023",
+ "fields": [
+  "stellar_physics",
+  "evolved_stars"
+ ],
+ "question": "Does the red supergiant Antares have a chromosphere detectable at radio wavelengths, and what are its temperature structure and spectral index from ALMA band 8 to VLA S band?",
+ "alma_project_codes": [
+  "2016.1.00234.S"
+ ],
+ "data": {
+  "bands": "ALMA bands 3, 4, 7, 8; VLA S, C, X, Ku, K, Ka, Q",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Photospheric angular diameter of Antares 37.38 mas",
+    "evidence": [
+     {
+      "loc": "3.3 Temperature profile of the atmosphere",
+      "quote": "where the diameter of the optical photosphere is 37.38 mas (cite: ohnaka_2013)"
+     }
+    ]
+   },
+   "citation": "(cite: ohnaka_2013)"
+  },
+  {
+   "what": {
+    "value": "Betelgeuse ALMA/VLA temperature distribution used in revised thermodynamic model",
+    "evidence": [
+     {
+      "loc": "4.2 NLTE modeling of the FUV radiation field",
+      "quote": "based on the ALMA and VLA temperature distribution shown in Figure 2 of (cite: ogorman_2017)"
+     }
+    ]
+   },
+   "citation": "(cite: ogorman_2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Remove HII region emission",
+   "method": "Model the ionized region with CLEAN, Fourier transform with FT, subtract with UVSUB at S, C, X bands",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit size, shape and flux in uv-plane",
+   "method": "Fit uniform-intensity circular disks (VLA) and elliptical disks (ALMA) with spectral index free to visibilities",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive temperature profile",
+   "method": "Brightness temperature from flux and diameter equals local gas temperature where optical depth ~1; plotted against radius",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thick thermal emission; photospheric diameter 37.38 mas"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "MOLsphere optical depth",
+   "method": "Estimate H- opacity of MOLsphere from CO column density at 2000 K in chemical equilibrium",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "NLTE FUV continuum modelling of Betelgeuse",
+   "method": "Time-independent NLTE spherical radiative transfer for Si I, Fe I, C I, Mg I continua, with and without Lyα/Lyβ photoionization, compared with STIS radiation temperatures",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Antares diameter at 405 GHz (geometric mean)",
+   "value": "50.7",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Size and shape of the Antares atmosphere",
+     "quote": "the star deceases in diameter from 68.4 mas (3.7 R$_{\\star}$) at 97.5 GHz to 50.7 mas (2.7 R$_{\\star}$) at 405 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Diameter at 3 GHz",
+   "value": "430.7",
+   "uncertainty": "9.1",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$430.7\\pm9.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index above 20 GHz",
+   "value": "1.42",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Radio spectral index of Antares",
+     "quote": "below 8 GHz the spectral index value is 0.8, while above 20 GHz, the value rises to 1.42"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas temperature at 1.35 R*",
+   "value": "2682",
+   "uncertainty": "400",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Temperature profile of the atmosphere",
+     "quote": "provides a measure of the gas temperature of 2682 $\\pm$ 400 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak gas temperature at 2.5 R*",
+   "value": "3777",
+   "uncertainty": "567",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Temperature profile of the atmosphere",
+     "quote": "maximum value of 3777 $\\pm$ 567 K at 2.5 R$_{\\star}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at 3 GHz",
+   "value": "1647",
+   "uncertainty": "110",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1647\\pm 110$"
+    }
+   ]
+  },
+  {
+   "quantity": "MOLsphere optical depth",
+   "value": "1.3e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Calculating the optical depth of the MOLsphere",
+     "quote": "we obtained an optical depth of $1.3 \\times 10^{-4}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, masks and clean thresholds",
+  "UVMULTIFIT starting parameters and fitting settings",
+  "Which VLA spectral windows were flagged",
+  "Details of the HII-region model used for subtraction",
+  "Final NLTE model of Betelgeuse is unpublished ('presented elsewhere')",
+  "Coordinates of target and phase centre"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond robust=0",
+  "UVMULTIFIT setup",
+  "Unpublished Betelgeuse NLTE model"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and clear fitting approach with tabulated results, but missing fitting setup details.",
+ "rediscovery_reason": "Public data, uv-fits and tabulated numeric results (diameters, flux densities, temperatures) can be redone.",
+ "source_card": "cards/2020A%26A...638A..65O/sonnet/card.md"
+}

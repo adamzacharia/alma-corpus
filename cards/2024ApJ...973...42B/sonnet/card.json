@@ -1,0 +1,946 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...973...42B",
+  "title": "Resolving Twin Jets and Twin Disks with JWST and ALMA: The Young WL 20 Multiple System",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Barsony, Mary",
+  "n_authors": 5,
+  "arxiv_id": "2409.03016",
+  "doi": "10.3847/1538-4357/ad5da1",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2019.1.01792.S",
+   "2022.1.01734.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Synergistic high-resolution Atacama Large Millimeter/submillimeter Array (ALMA) observations resolve a pair of side-by-side edge-on accretion disks lying at the origin of the twin mid-infrared jets."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "WL 20 (E, W, SW, SE)",
+     "coordinates": {
+      "value": "16h27m15.77s, -24d38m44.3s (MIRI pointing center)",
+      "evidence": [
+       {
+        "loc": "2.1 MIRI MRS",
+        "quote": "$\\alpha_{2000}$ $=$ 16h 27m 15.77s, $\\delta_{2000}$ $-24^{\\circ}$ 38$^{\\prime}$ 44.3$^{\\prime\\prime}$"
+       },
+       {
+        "loc": "4.3.1 The Dust Disks Detected by ALMA",
+        "quote": "for an assumed distance of d$=$ 125 pc, derived from VLBA parallax measurements (cite: Loinardetal2008)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "125 pc",
+      "evidence": [
+       {
+        "loc": "2.1 MIRI MRS",
+        "quote": "$\\alpha_{2000}$ $=$ 16h 27m 15.77s, $\\delta_{2000}$ $-24^{\\circ}$ 38$^{\\prime}$ 44.3$^{\\prime\\prime}$"
+       },
+       {
+        "loc": "4.3.1 The Dust Disks Detected by ALMA",
+        "quote": "for an assumed distance of d$=$ 125 pc, derived from VLBA parallax measurements (cite: Loinardetal2008)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "VLBA parallax (Loinard et al. 2008)",
+      "evidence": [
+       {
+        "loc": "2.1 MIRI MRS",
+        "quote": "$\\alpha_{2000}$ $=$ 16h 27m 15.77s, $\\delta_{2000}$ $-24^{\\circ}$ 38$^{\\prime}$ 44.3$^{\\prime\\prime}$"
+       },
+       {
+        "loc": "4.3.1 The Dust Disks Detected by ALMA",
+        "quote": "for an assumed distance of d$=$ 125 pc, derived from VLBA parallax measurements (cite: Loinardetal2008)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the jets, disks and outflow gas in the WL 20 multiple system, and what is the system's evolutionary stage, as seen with JWST MIRI MRS and ALMA?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we have acquired JWST MIRI MRS integral field unit imaging spectroscopy encompassing all three components, covering the 5 $-$ 28 $\\mu$m wavelength range, supplemented by high-resolution ALMA data."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.01792.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Band 6 (1.3 mm) ALMA observations of the WL 20 system were obtained as part of program 2019.1.01792.S (PI: D. Mardones)."
+      }
+     ]
+    },
+    {
+     "code": "2022.1.01734.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "within program 2022.1.01734.S (PI: Ł. Tychoniec) with 30 sec integration time."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm) and Band 4 (1.9 mm, 155 GHz)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "Band 4 (1.9 mm) 155 GHz ALMA observations were obtained on 2023 June 12"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "we will focus on the CO(2$\\rightarrow$1), $^{13}$CO(2$\\rightarrow 1$), C$^{18}$O(2$\\rightarrow 1$) transitions."
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "we will focus on the CO(2$\\rightarrow$1), $^{13}$CO(2$\\rightarrow 1$), C$^{18}$O(2$\\rightarrow 1$) transitions."
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "we will focus on the CO(2$\\rightarrow$1), $^{13}$CO(2$\\rightarrow 1$), C$^{18}$O(2$\\rightarrow 1$) transitions."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 6 continuum ~0.11\"; lines ~1.1\"; Band 4 0.096\" x 0.16\"",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "one high-angular-resolution dust continuum observation reaching $\\sim\\,0.11^{\\prime\\prime}$ with 36 sec of integration time"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Band 6: 0.27 mJy/beam continuum; 25 mJy/beam per 0.125 km/s lines; Band 4: 0.075 mJy/beam",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "sensitivity of 0.075 mJy beam$^{-1}$ measured from the rms signal in an emission-free part of the continuum image"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 6: 36 s (continuum), 194 s (lines); Band 4: 30 s",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "a lower-angular-resolution observation reaching $\\sim\\,1.1^{\\prime\\prime}$ with 194 sec of integration time"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Band 4: 2023 June 12",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "Band 4 (1.9 mm) 155 GHz ALMA observations were obtained on 2023 June 12"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Band 6 PI D. Mardones; Band 4 PI Ł. Tychoniec",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA",
+      "quote": "program 2019.1.01792.S (PI: D. Mardones)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JWST MIRI MRS",
+     "provided": {
+      "value": "5-28 micron IFU spectroscopy and images: jets, H2, continuum, discovery of WL 20SE",
+      "evidence": [
+       {
+        "loc": "2.1 MIRI MRS",
+        "quote": "WL 20 was observed during UTC 12-13 April 2023 as part of Guaranteed Time Observations (PID 01236; P.I. Ressler)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectral types, Teff and A_V (16, 41) for WL 20E/W/S",
+      "evidence": [
+       {
+        "loc": "4.3.2 X-ray excited 12.8um [NeII] Disk Emission",
+        "quote": "The extinction at 12.81 $\\mu$m was derived from the published values of $A_V$ of 16 for both WL 20E and WL 20W, and $A_V\\ =$ 41 toward WL 20S (cite: BGB2002)."
+       }
+      ]
+     },
+     "citation": "(cite: BGB2002)"
+    },
+    {
+     "what": {
+      "value": "Distance 125 pc",
+      "evidence": [
+       {
+        "loc": "4.3.1 The Dust Disks Detected by ALMA",
+        "quote": "for an assumed distance of d$=$ 125 pc, derived from VLBA parallax measurements (cite: Loinardetal2008)"
+       }
+      ]
+     },
+     "citation": "(cite: Loinardetal2008)"
+    },
+    {
+     "what": {
+      "value": "System age ~2-2.5e6 yr from HR diagram of WL 20E/W",
+      "evidence": [
+       {
+        "loc": "5 Conclusions",
+        "quote": "the most plausible system age is determined to be $\\sim$ 2 $-$ 2.5 $\\times$ 10$^{6}$ yr (cite: ResslerBarsony2001)."
+       }
+      ]
+     },
+     "citation": "(cite: ResslerBarsony2001)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 0.9 cm2/g at 1.3 mm",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA Band 4 Data",
+        "quote": "$\\kappa_{1.3 {\\rm mm}}= 0.9 \\ {\\rm cm^{2}\\ g^{-1}}$ provided in (cite: Ossenkopf.Henning1994)"
+       }
+      ]
+     },
+     "citation": "(cite: Ossenkopf.Henning1994)"
+    },
+    {
+     "what": {
+      "value": "Disk gas mass models",
+      "evidence": [
+       {
+        "loc": "4.3.3 ALMA Constraints on Disk Gas Masses",
+        "quote": "We can estimate disk gas masses using the models of (cite: WilliamsBest2014)"
+       }
+      ]
+     },
+     "citation": "(cite: WilliamsBest2014)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Band 4 data self-calibrated with auto_selfcal package",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The observations were self-calibrated with the `auto`$\\_$`selfcal` package[^1]."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean (CASA 6.5.2)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We used the `tclean` task of CASA version 6.5.2 to produce the dust continuum image and molecular line channel maps"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Band 6 robust 0.0 (continuum), -0.5 (lines); Band 4 robust 0.5",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "Robust parameters of 0.0 and -0.5 were used for the dust continuum and molecular line maps, respectively."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "auto-multithresh (Band 6); automasking with standard parameters (Band 4)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "with Briggs weighting and the auto-multithresh option for the masking operations"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Band 4 0.096\" x 0.16\"; Band 6 continuum 0.14\" x 0.11\"; CO beam ~10x larger, two beam areas 0.46\" x 0.92\" at PA 345",
+     "evidence": [
+      {
+       "loc": "4.3.1 The Dust Disks Detected by ALMA",
+       "quote": "(0.14$^{\\prime\\prime}\\ \\times\\ 0.11^{\\prime\\prime}$ and 0.096$^{\\prime\\prime}\\, \\times\\, 0.16^{\\prime\\prime}$, respectively)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.27 mJy/beam (Band 6 cont.), 25 mJy/beam per 0.125 km/s (lines), 0.075 mJy/beam (Band 4)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We reached noise levels of 0.27 mJy beam$^{-1}$ and 25 mJy beam$^{-1}$ per 0.125 km s$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Gas mass formula adapted from 13CO(1-0) to 13CO(2-1)",
+      "evidence": [
+       {
+        "loc": "4.4.1 ALMA",
+        "quote": "Adjusting the formula for the gas mass estimate derived for $^{13}$CO(1$-$0) from (cite: SargentBeckwith1987) (following (cite: Scoville1986)) to $^{13}$CO(2$-$1):"
+       }
+      ]
+     },
+     "from_reference": "(cite: SargentBeckwith1987); (cite: Scoville1986)"
+    },
+    {
+     "what": {
+      "value": "Dust mass equation (optically thin)",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA Band 4 Data",
+        "quote": "assuming optically thin dust emission, using the equation from (cite: Hildebrand1983)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hildebrand1983)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibration pipeline vs manual and flux calibrator for ALMA data",
+    "Line-free channels and continuum subtraction for CO lines",
+    "Image size, cell size, channel width used for Band 4 and Band 6",
+    "Band 6 spectral windows and the observing configurations",
+    "13CO and C18O abundance X(13CO) used in the gas mass",
+    "Details of the Williams & Best model use and gas mass derivation",
+    "Moment-map clipping thresholds",
+    "Deconvolution method for the MIRI jet images"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image ALMA continuum and lines",
+    "method": {
+     "value": "tclean with Briggs weighting and auto-multithresh masks for Band 6 and Band 4 (Band 4 self-calibrated first)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The resulting measurement set was imaged with the `tclean` procedure within CASA version 6.5.2"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "auto_selfcal"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.0 continuum, -0.5 lines (Band 6); 0.5 (Band 4)",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA",
+        "quote": "A robust parameter of 0.5 was used, and automasking with standard parameters was applied."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure continuum positions and fluxes",
+    "method": {
+     "value": "imfit; single Gaussian for WL 20E/W, two Gaussians for WL 20SE/SW (positions averaged, fluxes summed)",
+     "evidence": [
+      {
+       "loc": "3.2.1 ALMA Band 4 Data",
+       "quote": "their elongated morphologies are best fit by a combination of two Gaussian components."
+      }
+     ]
+    },
+    "software": [
+     "CASA imfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fits",
+     "evidence": [
+      {
+       "loc": "3.2.1 ALMA Band 4 Data",
+       "quote": "By contrast, WL 20SE and WL 20SW are both resolved by ALMA (see Figure 13), and their elongated morphologies are best fit by a combination of two Gaussian components."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Total 1.3 mm flux 61.1 mJy compared with IRAM 30m 95 mJy (~20% uncertainty)",
+     "evidence": [
+      {
+       "loc": "4.3.1 The Dust Disks Detected by ALMA",
+       "quote": "The total 1.3 mm flux from the entire WL 20 system is 61.1 mJy"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive disk dust masses",
+    "method": {
+     "value": "Optically thin M = D^2 F / (kappa B(T))",
+     "evidence": [
+      {
+       "loc": "3.2.1 ALMA Band 4 Data",
+       "quote": "The temperature of the dust is assumed to be 30 K, typical for young protostellar envelopes"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "kappa_1.9mm = 0.6 cm2/g scaled from 0.9 at 1.3 mm with beta=1",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA Band 4 Data",
+        "quote": "A value of $\\kappa_{1.9 {\\rm mm}}= 0.6 \\ {\\rm cm^{2}\\ g^{-1}}$ was used"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "T_dust = 30 K, optically thin, d = 125 pc",
+      "evidence": [
+       {
+        "loc": "3.2.1 ALMA Band 4 Data",
+        "quote": "assuming optically thin dust emission"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure 13CO and C18O fluxes and limits",
+    "method": {
+     "value": "Integrate moment-0 maps in two beam areas on disks; 3 sigma rms limits from line-free region for WL 20E/W",
+     "evidence": [
+      {
+       "loc": "3.2.2 ALMA Band 6 Data",
+       "quote": "Quantitative upper limits on this emission are derived by measuring the 3 $\\sigma$ rms in a line-free region of the $^{13}$CO(2$-$1) moment-zero map"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Estimate disk and envelope gas masses",
+    "method": {
+     "value": "Williams & Best (2014) models for disks; optically thin 13CO formula for remnant envelope with Tex = 30 K",
+     "evidence": [
+      {
+       "loc": "4.4.1 ALMA",
+       "quote": "Assuming $T_{ex}\\ =$ 30K at 125 pc distance, and using the measured $S_{\\nu}\\, dv$ of 4.01 Jy km s$^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO/C18O ratio 550 or 1650; d = 125 pc",
+      "evidence": [
+       {
+        "loc": "4.3.3 ALMA Constraints on Disk Gas Masses",
+        "quote": "for an assumed CO/C$^{18}$O ratio of 550, or just $\\sim$1 M$\\oplus$ for the case of a CO/C$^{18}$O ratio of 1650"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with core mass 0.024 Msun from JCMT 850um",
+     "evidence": [
+      {
+       "loc": "5.1.1 ALMA (Gas Emission from the Surroundings)",
+       "quote": "a core mass of 0.024 M$_{\\odot}$ (or just 25 M$_{Jupiter}$) for WL 20 was derived from submillimeter continuum mapping of the $\\rho$ Oph cloud at 850 $\\mu$m"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.5.2",
+    "used_for": {
+     "value": "tclean imaging and imfit",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "We used the `tclean` task of CASA version 6.5.2"
+      }
+     ]
+    }
+   },
+   {
+    "name": "auto_selfcal",
+    "version": "not stated",
+    "used_for": {
+     "value": "self-calibration of Band 4 data",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA",
+       "quote": "The observations were self-calibrated with the `auto`$\\_$`selfcal` package[^1]."
+      }
+     ]
+    }
+   },
+   {
+    "name": "JWST calibration pipeline",
+    "version": "1.11.4",
+    "used_for": {
+     "value": "MIRI MRS reduction",
+     "evidence": [
+      {
+       "loc": "2.1 MIRI MRS",
+       "quote": "These were performed using the JWST pipeline version 1.11.4 (cite: Bushouse2023)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Dust mass WL 20SW",
+    "value": "42",
+    "uncertainty": "2",
+    "units": "Earth masses",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| WL 20SW | 14 $\\pm$ 2 | 89 $\\pm$1 | 47.5 $\\pm$ 5 | 2300 $\\pm$ 5 | 36.1 $\\pm$ 0.6 | 16.2 $\\pm$ 0.3 | 42 $\\pm$ 2 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass WL 20SE",
+    "value": "24",
+    "uncertainty": "4",
+    "units": "Earth masses",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| WL 20SE | 3.7$\\pm$ 0.5 | $-$ | $-$ | $-$ | 20.1 $\\pm$ 0.6 | 9.0 $\\pm$ 0.3 | 24 $\\pm$ 4 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust masses WL 20E, WL 20W",
+    "value": "3.3 and 3.6",
+    "uncertainty": "0.4 and 0.5",
+    "units": "Earth masses",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "dust masses of 3.3 $\\pm$ 0.4 M$_{\\oplus}$ and 3.6 $\\pm$ 0.5 M$_{\\oplus}$ for WL 20E and WL 20W"
+     }
+    ]
+   },
+   {
+    "quantity": "Combined gas mass of WL 20SE+SW disks",
+    "value": "~100 (CO/C18O=550) or ~1 (1650)",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3.3 ALMA Constraints on Disk Gas Masses",
+      "quote": "a combined gas mass of about 100 M$\\oplus$ (3 $\\times$ 10$^{-4}$ M$_{\\odot}$) for an assumed CO/C$^{18}$O ratio of 550"
+     }
+    ]
+   },
+   {
+    "quantity": "Remnant envelope gas mass",
+    "value": "4.5e-3",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4.1 ALMA",
+      "quote": "yields a remnant envelope gas mass of just 4.5 $\\times$ 10$^{-3}$ M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2 excitation temperature at S(5) apex",
+    "value": "1161",
+    "uncertainty": "70",
+    "units": "K",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.1.4 Molecular Hydrogen Line Images",
+      "quote": "T$_{ex}\\,=$ 1161K $\\pm$ 70K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No molecular outflow or cavity walls seen in CO isotopologues; H2 biconical structure attributed to wide-angle disk winds",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the observed H$_2$ structures must have their origins in wide-angled disk winds, in the absence of any ambient, swept-up gas."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "WL 20S is a binary driving twin jets from edge-on disks",
+    "experiment": "MIRI MRS imaging plus ALMA Band 4/6 continuum",
+    "result": "New source WL 20SE found; ALMA resolves two edge-on disks of ~100 au; twin jets in [FeII],[NiII],[ArII],[NeII]",
+    "finding": "Twin disks power twin jets",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Synergistic high-resolution Atacama Large Millimeter/submillimeter Array (ALMA) observations resolve a pair of side-by-side edge-on accretion disks"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Northern disks WL 20E and WL 20W are gas-depleted",
+    "experiment": "13CO and C18O upper limits vs dust masses with Williams & Best models",
+    "result": "Limits well below lowest model gas mass",
+    "finding": "Gas-to-dust ratio at least 10 times lower than 100",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3.3 ALMA Constraints on Disk Gas Masses",
+      "quote": "the gas to dust ratio in these disks is at least 10 times lower than the canonical ISM (Interstellar Medium) value of 100"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Flattened CO structure as pseudo-disk (infall velocities not observed) or single Keplerian disk (not centered on sources)",
+     "evidence": [
+      {
+       "loc": "4.4.1 ALMA",
+       "quote": "The expected velocity gradients for infalling gas motions are, however, not observed in the individual CO(2$-$1) velocity channel maps"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "CO observations lack resolution to separate the twin disks",
+     "evidence": [
+      {
+       "loc": "4.4.1 ALMA",
+       "quote": "Recall that the large beam size of the CO(2$-$1) observations could not resolve the twin disks"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Gas masses depend on assumed CO/C18O ratios and spanning two orders of magnitude",
+    "Fixed dust T=30 K and kappa uncertain for disks",
+    "ALMA role is secondary; coeval age assumption drives the evolutionary claim",
+    "Gas mass derivation is not reproducible from details given"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA programs cited with ADS/JAO.ALMA codes; JWST data from MAST",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2019.1.01792.S and ADS/JAO.ALMA#2022.1.01734.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration details and pipeline version for ALMA",
+    "Image and cell sizes, line channel selection",
+    "Full gas mass model procedure"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB for both ALMA datasets (short integrations)",
+   "score_inferred": 3,
+   "score_reason": "ALMA flux and dust mass recipe is clear, but gas mass and line steps are underspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are partly from JWST and ALMA recipes lack detail; gas masses rely on external models."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Williams & Best 2014 (cite: WilliamsBest2014)",
+     "why": "Disk gas mass models from CO isotopologues"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Ressler & Barsony 2001 (cite: ResslerBarsony2001)",
+     "why": "Earlier mid-IR imaging and age"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MIRI JOYS+",
+    "ODISEA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-67c7933f9839b7eea86ebb1b37aa9349",
+  "batch_id": "msgbatch_01QWcLjT8YK6BSYKFu4oj18V",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:20:16",
+  "usage": {
+   "input_tokens": 38161,
+   "output_tokens": 8517,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.081352,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 60,
+  "quotes_ok": 60,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 43,
+   "rate": 0.566
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:45",
+  "custom_id": "repair-sonnet-bc205637b8efac139bfe41929f7b14dc",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "By contrast, WL 20SE and WL 20SW are both resolved by ALMA (see Figure 13), and their elongated morphologies are best fit by a combination of two Gaussian components."
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "a core mass of 0.024 M$_{\\odot}$ (or just 25 M$_{Jupiter}$) for WL 20 was derived from submillimeter continuum mapping of the $\\rho$ Oph cloud at 850 $\\mu$m"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,234 @@
+{
+ "bibcode": "2023MNRAS.526.4402B",
+ "title": "Fragmentation and dynamics of dense gas structures in the proximity of massive young stellar object W42-MME",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad2981",
+ "arxiv_id": "2309.16472",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do dense gas structures around the MYSO W42-MME fragment and what are their dynamics (turbulence, virial state, infall) from core to sub-parsec scales?",
+ "alma_project_codes": [
+  "2018.1.01318.S",
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "Band 7 (line and 865 um continuum); 1.35 mm continuum for large-area view",
+  "arrays": "not stated",
+  "angular_resolution": "0.31\" x 0.25\" (lines); ~1.2\" x 1.1\" (1.35 mm)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA 865 um continuum map and data reduction",
+    "evidence": [
+     {
+      "loc": "Alma Data Sets",
+      "quote": "we have utilized the ALMA continuum data at 865 $\\mu$m ($\\nu\\sim$346.5 GHz) from (cite: Dewangan2022)"
+     }
+    ]
+   },
+   "citation": "(cite: Dewangan2022)"
+  },
+  {
+   "what": {
+    "value": "VLT/NACO Ks image",
+    "evidence": [
+     {
+      "loc": "Alma Data Sets",
+      "quote": "is also utilized from (cite: Dewangan2015b)"
+     }
+    ]
+   },
+   "citation": "(cite: Dewangan2015b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Dendrogram structure identification",
+   "method": "astrodendro on H13CO+ (4-3) p-p-v cube",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min_value = 3 sigma = 7 mJy/beam; min_delta = 1 sigma = 2.3 mJy/beam; min_npix = 74 pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Kinetic temperature from CH3CCH",
+   "method": "Rotation diagram of K=0-4 lines on averaged spectra per structure; T=-1/slope",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Masses, virial parameters, Mach numbers",
+   "method": "Optically thin dust mass from 865 um flux; virial mass with density profile and geometry factors; sigma_nt from sigma_obs minus thermal",
+   "software": [],
+   "key_parameters": [
+    "kappa = 10 (nu/1.2 THz)^1.5 -> 1.55 cm2/g at 346.58 GHz; rho ~ r^-1.6; mu=30 (H13CO), 2.37 for c_s"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; spherical symmetry; distance 3.8 kpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Infall asymmetry",
+   "method": "Asymmetry parameter A=(Vthick-Vthin)/DeltaVthin from Gaussian fits to leaf-averaged HCO+ lines",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Scaling relations and velocity structure function",
+   "method": "Power-law fits of dV-L, sigma_nt-L, M-R, n-R with Pearson correlation; second-order VSF from moment-1 map",
+   "software": [],
+   "key_parameters": [
+    "VSF uses pixels with peak > 0.01 Jy/beam and FWHM < 2.5 km/s (7566 points)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Dust continuum cores",
+   "method": "Dendrogram on 865 um map, then masses and virial parameters",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "mean gas temperature 54 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dendrogram structures",
+   "value": "19 (12 leaves, 7 branches)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Our results reveal 19 dense gas structures, out of which 12 are leaves and 7 are branches"
+    }
+   ]
+  },
+  {
+   "quantity": "Leaf Tkin range",
+   "value": "33-70 (mean 54.27)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "The temperature estimates for leaf structures ranged from 33 to 70 K, with the mean (median) values of 54.27 (61.84) K"
+    }
+   ]
+  },
+  {
+   "quantity": "dV_lsr-L power-law index",
+   "value": "0.46",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.1",
+     "quote": "$\\delta\\mathit{V_{\\rm lsr}}=(0.20\\pm0.06)\\times L^{0.46\\pm0.14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "sigma_nt-L exponent",
+   "value": "-0.31",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.1",
+     "quote": "scaling exponents of $-$0.31$\\pm$0.14"
+    }
+   ]
+  },
+  {
+   "quantity": "VSF global exponent",
+   "value": "0.40",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.2",
+     "quote": "$S_{2}(l)^{1/2}=(0.34\\pm0.01)\\times l^{0.40\\pm0.01}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VSF exponent below ~6000 AU",
+   "value": "0.73",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.2",
+     "quote": "$S_{2}(l)^{1/2}=0.23\\times l^{0.73\\pm0.01}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M-R power-law index",
+   "value": "1.73",
+   "uncertainty": "0.23",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.3",
+     "quote": "$M\\propto R_{\\rm eff}^{1.73\\pm0.23}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of 865 um dust cores",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "The analysis resulted in the identification of 14 cores."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration and imaging parameters (in Dewangan2022)",
+  "Spectral channel width and cube velocity resolution used for dendrogram",
+  "Primary beam correction and continuum subtraction details",
+  "Fitting method for power laws and line profile Gaussians",
+  "Line-free channels and continuum bandwidth",
+  "Which dendrogram structures lacked temperatures and what T was adopted for them in mass"
+ ],
+ "missing_for_reproduction": [
+  "Calibrated cubes and continuum reduction details (in Dewangan2022)",
+  "Fit procedures and uncertainty methods"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and well-specified dendrogram parameters, but reduction and fitting details are deferred or missing.",
+ "rediscovery_reason": "Public data, explicit dendrogram parameters and numeric results.",
+ "source_card": "cards/2023MNRAS.526.4402B/sonnet/card.md"
+}

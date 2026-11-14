@@ -1,0 +1,207 @@
+{
+ "bibcode": "2016A&A...590A..25M",
+ "title": "The unbearable opaqueness of Arp220",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201528064",
+ "arxiv_id": "1603.01291",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "What do vibrationally excited HCN emission and the HCN/HCO+ ground-state lines reveal about the morphology, physical structure, absorption and powering of the two nuclei of Arp 220?",
+ "alma_project_codes": [
+  "2012.1.00453.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' matching synthesized beams",
+  "sensitivity": "Band 6 rms 1.1-1.3 mJy/beam per ~27-28 km/s channel; Band 7 ~1 mJy/beam per ~25-26 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Nuclear FIR luminosities and dust properties used for L_vib/L_FIR",
+    "evidence": [
+     {
+      "loc": "5.3 High L_vib/L_FIR ratio",
+      "quote": "We also present their ratios relative to the total luminosity of each nucleus as estimated by (cite: Wilson2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Wilson2014)"
+  },
+  {
+   "what": {
+    "value": "HC3N physical conditions used to estimate line blending contamination",
+    "evidence": [
+     {
+      "loc": "3.2.1 Line blending",
+      "quote": "From the physical conditions derived by (cite: Mart’in2011), we infer for this line a peak flux density integrated over the whole source of $\\sim20-40$ mJy"
+     }
+    ]
+   },
+   "citation": "(cite: Mart’in2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum fluxes and nuclear positions",
+   "method": "Line-free channels give continuum per band; double Gaussian fit in image plane to the two nuclei",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Characterize absorption systems and nuclear velocities",
+   "method": "Gaussian fit to unabsorbed HCO+ 3-2 channels, subtract, then multi-Gaussian fit to absorptions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Gaussian intrinsic emission profile"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit HCN v2=1f lines de-blended from HCO+",
+   "method": "Double Gaussian fit, and fit to residual after subtracting scaled HCN 3-2 profile",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Virial masses and gas surface densities",
+   "method": "M_vir=250 dv^2 R with R~25-30 pc, f_g=0.1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas fraction 0.1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Size of vibrational emission and excitation analysis",
+   "method": "Gaussian fits to integrated maps of HCN 4-3 v2=1f; LTE excitation temperature from 3-2/4-3; optically thick size limits",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE; T_vib 300 K or T_ex 40 K as limiting cases"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "V_WN",
+   "value": "5342",
+   "uncertainty": "4",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.3",
+     "quote": "individual nuclear velocities of $V_{WN}=5342\\pm4$ $\\rm km\\,s^{-1}$  and $V_{EN}=5454\\pm8$ $\\rm km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "V_EN",
+   "value": "5454",
+   "uncertainty": "8",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.3",
+     "quote": "individual nuclear velocities of $V_{WN}=5342\\pm4$ $\\rm km\\,s^{-1}$  and $V_{EN}=5454\\pm8$ $\\rm km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas surface density WN",
+   "value": "3e4",
+   "uncertainty": "0.3e4",
+   "units": "Msun/pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "$3\\pm0.3\\times10^4~M_\\odot~\\rm pc^{-2}$ (WN)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas surface density EN",
+   "value": "1.1e4",
+   "uncertainty": "0.1e4",
+   "units": "Msun/pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "$1.1\\pm0.1\\times10^4~M_\\odot~\\rm pc^{-2}$ (EN)"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of HCN v2=1f (WN, EN)",
+   "value": "38 K, 45 K",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "is $T_{\\rm ex}\\sim38$ K and $45$ K for the WN and EN, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Vibrational emission extent",
+   "value": "~60x50 pc",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "the HCN vibrational emission is confined to a barely resolved region of $\\sim60\\times50$ pc in the $4-3$ transition"
+    }
+   ]
+  },
+  {
+   "quantity": "Optically thick size lower limits",
+   "value": "22 pc (WN), 15 pc (EN)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6",
+     "quote": "we can establish lower limits to the emitting region of 15 pc (EN) and 22 pc (WN)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters (weighting, robust, cell, image size, deconvolver)",
+  "exact line-free channel ranges",
+  "number and selection of antennas/configurations",
+  "how the scaled HCN profile was chosen for HCO+ subtraction",
+  "gas-surface-density area definition",
+  "line luminosity conversion details and L_FIR values used"
+ ],
+ "missing_for_reproduction": [
+  "imaging parameters",
+  "line-free channel ranges",
+  "de-blending scaling"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear Gaussian-fit methods, but imaging parameters and de-blending details missing.",
+ "rediscovery_reason": "Public data and numeric Gaussian-fit results, though imaging details must be reconstructed.",
+ "source_card": "cards/2016A%26A...590A..25M/sonnet/card.md"
+}

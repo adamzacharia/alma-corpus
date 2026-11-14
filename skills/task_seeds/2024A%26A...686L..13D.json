@@ -1,0 +1,503 @@
+{
+ "bibcode": "2024A&A...686L..13D",
+ "title": "FAUST. XV. A disc wind mapped by CH<SUB>3</SUB>OH and SiO in the inner 300 au of the NGC 1333 IRAS 4A2 protostar",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202449949",
+ "arxiv_id": "2404.19690",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "protoplanetary_disks"
+ ],
+ "question": "Explore the kinematics and chemical structure of the gas in the inner 300 au transition zone between the disk and outflowing material of the protostar NGC 1333 IRAS 4A2 using SiO and CH3OH.",
+ "alma_project_codes": [
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "1.3 mm",
+  "arrays": "12-m array",
+  "angular_resolution": "0''.18 x 0''.11 (-13 deg) for SiO, 0''.14 x 0''.096 (-21 deg) for CH3OH (~50 au)",
+  "sensitivity": "σ_c = 8 x 10^-2 mJy beam^-1 (continuum); σ = 1 mJy beam^-1 per 1 km s^-1 channel (SiO), σ = 1.1 mJy beam^-1 per 1 km s^-1 channel (CH3OH)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to Perseus (~300 pc)",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "NGC 1333 IRAS 4A is a very well studied system in Perseus (∼300 pc away; Zucker et al. 2018)."
+     }
+    ]
+   },
+   "citation": "Zucker et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity v_sys = 6.8 km s^-1",
+    "evidence": [
+     {
+      "loc": "3. The kinematical structure of the IRAS 4A inner regions",
+      "quote": "(in the ranges (−6, −2) and (+2, +6) km s−1 with respect to the v sys ; v sys = 6.8 km s−1 ; Choi 2001)"
+     }
+    ]
+   },
+   "citation": "Choi 2001"
+  },
+  {
+   "what": {
+    "value": "H2 gas density of 2 x 10^6 cm^-3 in the inner 0''.24 of IRAS 4A2",
+    "evidence": [
+     {
+      "loc": "3. The kinematical structure of the IRAS 4A inner regions",
+      "quote": "Finally, in IRAS 4A2 De Simone et al. (2020) estimated an H 2 density of about 2 × 106 cm−3 in the inner 0′′. 24."
+     }
+    ]
+   },
+   "citation": "De Simone et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Spectral properties of CH3OH and SiO from the CDMS database",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Top: Spectral properties of CH 3 OH and SiO by Xu et al. (2008) and Müller et al. (2013), respectively, from the CDMS database (Müller et al. 2005)."
+     }
+    ]
+   },
+   "citation": "Xu et al. (2008), Müller et al. (2013), Müller et al. (2005)"
+  },
+  {
+   "what": {
+    "value": "Total bolometric luminosity of 9 L_sun for IRAS 4A1+4A2",
+    "evidence": [
+     {
+      "loc": "Appendix C: SiO and CH3OH: sputtering or sublimation?",
+      "quote": "The total bolometric luminosity of the IRAS 4A1+4A2 system is estimated to be 9 L ⊙ (Kristensen et al. 2012; Karska et al. 2013)."
+     }
+    ]
+   },
+   "citation": "Kristensen et al. 2012; Karska et al. 2013"
+  },
+  {
+   "what": {
+    "value": "Binding energy range of CH3OH (3770-8618 K) and pre-exponential factor ν_des = 3.2 x 10^17 s^-1",
+    "evidence": [
+     {
+      "loc": "Appendix C: SiO and CH3OH: sputtering or sublimation?",
+      "quote": "Regarding methanol, theoretical predictions by Ferrero et al. (2020) indicate a BE range of (3770–8618) K, while the pre-exponential factor ν des is 3.2 × 1017 s−1 (Minissale et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Ferrero et al. (2020), Minissale et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Binding energy of SiO (~3500 K)",
+    "evidence": [
+     {
+      "loc": "Appendix C: SiO and CH3OH: sputtering or sublimation?",
+      "quote": "The binding energy of SiO is reported to be about 3500 K (Hasegawa & Herbst 1993), that translate into a sublimation temperature of about 50 K."
+     }
+    ]
+   },
+   "citation": "Hasegawa & Herbst 1993"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate integrated intensity (moment 0) maps, channel maps, and PV diagrams to characterize kinematic structure",
+   "method": "Integrate CH3OH and SiO emission over blue-shifted (-6 to -2 km s^-1 wrt v_sys) and red-shifted (+2 to +6 km s^-1 wrt v_sys) velocity ranges, bin channel maps to 1 km s^-1, and extract PV diagrams along 0''.1-wide slices parallel and perpendicular to the methanol/SiO PA.",
+   "software": [],
+   "key_parameters": [
+    "Velocity ranges: (-6, -2) km s^-1 and (+2, +6) km s^-1 wrt v_sys = 6.8 km s^-1 (i.e., 0.8 to 4.8 km s^-1 and 8.8 to 12.8 km s^-1)",
+    "PV slice width = 0''.1, parallel slice length = 3''.6 (at PA ~ 30 deg), 7 perpendicular slices of length 1''.6 separated by 0''.3, plus ~7'' path following SiO structure"
+   ],
+   "assumptions": [
+    "v_sys = 6.8 km s^-1, distance = 300 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra at emission peaks and derive column densities and abundances",
+   "method": "Identify pixels with the highest flux level in the (-6, -2) and (+2, +6) km s^-1 integrated maps for CH3OH and SiO, extract spectra at those peak positions, integrate line intensity in the blue and red velocity ranges, and compute column densities and abundance ratios assuming LTE optically thin emission.",
+   "software": [],
+   "key_parameters": [
+    "Peak offsets wrt phase center: CH3OH Red Peak (-1''.35, +1''), SiO Red Peak (-1''.27, +0''.93), CH3OH Blue Peak (-1''.41, +1''.13), SiO Blue Peak (-1''.44, +1''.19)",
+    "Integration ranges: blue (0.8 to 4.8 km s^-1) and red (8.8 to 12.8 km s^-1)"
+   ],
+   "assumptions": [
+    "LTE, optically thin emission, excitation temperature T_ex = 100 K",
+    "H2 density = 2 x 10^6 cm^-3 in the inner 0''.24 (from De Simone et al. 2020)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Evaluate thermal sublimation vs. shock sputtering and constrain wind inclination",
+   "method": "Calculate species sublimation temperatures from binding energies and half-life desorption timescale (Eq. C.1-C.3), compare with optically thin dust temperature profile (Eq. C.4), and constrain wind inclination angle from observed line-of-sight velocities and minimum shock velocities required for sputtering.",
+   "software": [],
+   "key_parameters": [
+    "CH3OH BE = 3770-8618 K, ν_des = 3.2 x 10^17 s^-1; SiO BE = 3500 K",
+    "Minimum sputtering velocity = 10 km s^-1 (or 35 km s^-1)"
+   ],
+   "assumptions": [
+    "Warm-up timescale t_1/2 ~ 10^4 yr; optically thin dust; bolometric luminosity of IRAS 4A2 L_* = 4.5 L_sun (half of total 9 L_sun)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Velocity-integrated intensity of SiO at CH3OH Red Peak",
+   "value": "44",
+   "uncertainty": "6",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "44(6)<br>8.7(1.1)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of SiO at CH3OH Red Peak",
+   "value": "8.7e13",
+   "uncertainty": "1.1e13",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "44(6)<br>8.7(1.1)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of SiO at SiO Red Peak",
+   "value": "54",
+   "uncertainty": "8",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "54(8)<br>10(2)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of SiO at SiO Red Peak",
+   "value": "10e13",
+   "uncertainty": "2e13",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "54(8)<br>10(2)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of SiO at CH3OH Blue Peak",
+   "value": "51",
+   "uncertainty": "8",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "51(8)<br>10(2)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of SiO at CH3OH Blue Peak",
+   "value": "10e13",
+   "uncertainty": "2e13",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "51(8)<br>10(2)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of SiO at SiO Blue Peak",
+   "value": "43",
+   "uncertainty": "6",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "43(6)<br>8.5(1.1)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of SiO at SiO Blue Peak",
+   "value": "8.5e13",
+   "uncertainty": "1.1e13",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "43(6)<br>8.5(1.1)×1013"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of CH3OH at CH3OH Red Peak",
+   "value": "118",
+   "uncertainty": "17",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "118(17)<br>37(5)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OH at CH3OH Red Peak",
+   "value": "37e15",
+   "uncertainty": "5e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "118(17)<br>37(5)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of CH3OH at SiO Red Peak",
+   "value": "37",
+   "uncertainty": "6",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "37(6)<br>12(2)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OH at SiO Red Peak",
+   "value": "12e15",
+   "uncertainty": "2e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "37(6)<br>12(2)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of CH3OH at CH3OH Blue Peak",
+   "value": "67",
+   "uncertainty": "10",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "67(10)<br>21(3)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OH at CH3OH Blue Peak",
+   "value": "21e15",
+   "uncertainty": "3e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "67(10)<br>21(3)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-integrated intensity of CH3OH at SiO Blue Peak",
+   "value": "52",
+   "uncertainty": "8",
+   "units": "K km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "52(8)<br>16(2)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OH at SiO Blue Peak",
+   "value": "16e15",
+   "uncertainty": "2e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "52(8)<br>16(2)×1015"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/SiO column density (abundance) ratio at CH3OH Red Peak",
+   "value": "420",
+   "uncertainty": "110",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2.7(0.8)<br>420(110)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/SiO column density (abundance) ratio at SiO Red Peak",
+   "value": "120",
+   "uncertainty": "40",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.7(0.2)<br>120(40)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/SiO column density (abundance) ratio at CH3OH Blue Peak",
+   "value": "210",
+   "uncertainty": "70",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.3(0.4)<br>210(70)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/SiO column density (abundance) ratio at SiO Blue Peak",
+   "value": "190",
+   "uncertainty": "50",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.2(0.3)<br>190(50)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/H2 abundance in intermediate region",
+   "value": "~10^-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. The kinematical structure of the IRAS 4A inner regions",
+     "quote": "Using this gas density, the abundances of CH 3 OH and SiO are ∼10−6 and ∼10−8, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO/H2 abundance in intermediate region",
+   "value": "~10^-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. The kinematical structure of the IRAS 4A inner regions",
+     "quote": "Using this gas density, the abundances of CH 3 OH and SiO are ∼10−6 and ∼10−8, respectively."
+    },
+    {
+     "loc": "abstract",
+     "quote": "In the intermediate region we estimated a CH 3 OH/SiO abundance ratio of about 120–400 and a SiO/H 2 abundance of 10−8 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature at 45 au and 80 au from IRAS 4A2",
+   "value": "90 K (at 45 au) and 65 K (at 80 au)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Appendix C: SiO and CH3OH: sputtering or sublimation?",
+     "quote": "If we consider for 4A2 conservatively a bolometric luminosity of 4.5 L ⊙ (half of the total luminosity), the temperature at 80 au from the protostars is about 65 K, while at 45 au is about 90 K."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH sublimation temperature range",
+   "value": "60 - 130",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Appendix C: SiO and CH3OH: sputtering or sublimation?",
+     "quote": "Using the CH 3 OH BE range and ν des stated above, and assuming that the grain mantles have been warmed up for a timescale of ∼ 104 yr6, T sub = 60 − 130 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination of gas crossing the plane of the sky wrt line of sight",
+   "value": "> 55 (for 10 km s^-1 flow) or > 80 (for 35 km s^-1 flow)",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4. On the origin of the inverse velocity gradient",
+     "quote": "Given the covered velocity ranges between 2 and 6 km s−1, the inclination of the gas crossing the plane of the sky has to be > 55◦ with respect to the line of sight."
+    },
+    {
+     "loc": "Appendix C: SiO and CH3OH: sputtering or sublimation?",
+     "quote": "we need an inclination with respect to the line of sight above 55◦ for a radial velocity of 10 km s−1, and above 80◦ for 35 km s−1 ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and continuum imaging",
+  "IRAM-GILDAS version and specific deconvolution algorithm/parameters (e.g., hogbom/clark, stopping threshold, mask) used for line cube imaging",
+  "Specific frequency/channel ranges selected as line-free channels for continuum generation and subtraction",
+  "Self-calibration solution intervals (solint) and number of iterations",
+  "Pixel cell size and image dimensions for both continuum and line cubes",
+  "Weighting parameter used for the CASA continuum image"
+ ],
+ "missing_for_reproduction": [
+  "CASA and GILDAS software versions",
+  "Self-calibration solution intervals and imaging deconvolution parameters (cleaning thresholds, masks, cell sizes)",
+  "Exact frequency intervals used for continuum identification and subtraction",
+  "Exact coordinates of the IRAS 4A2 continuum peak used as the 0'' offset in PV diagrams"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The ALMA data are public (2018.1.01205.L), and the spectral integration windows, peak pixel coordinate offsets, and LTE assumptions (T_ex = 100 K, spectroscopic constants in Table 1) are explicitly tabulated, making the post-imaging analysis highly reproducible. However, low-level self-calibration and GILDAS imaging parameters are omitted.",
+ "rediscovery_reason": "Public ALMA Large Program data with clearly defined velocity integration ranges (0.8-4.8 and 8.8-12.8 km s^-1), explicit extraction coordinates, and straightforward single-line LTE column density calculations leading to numeric answer keys in Table 1.",
+ "source_card": "cards/2024A%26A...686L..13D/sonnet/card.md"
+}

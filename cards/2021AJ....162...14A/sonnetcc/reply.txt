@@ -1,0 +1,403 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "In this paper, we present results from an ALMA observing program designed both to test the astrometric capabilities of ALMA and to make initial measurements of the"}
+],
+"fields": ["exoplanets", "stellar_physics"],
+"question": {
+"value": "Can ALMA Band 7 astrometry of alpha Cen A and B give precise absolute and differential positions to refine the orbit, masses, parallax and proper motion, and ultimately to search for planets in the AB system",
+"evidence": [
+{"loc": "abstract", "quote": "Here we describe initial results from an ALMA program to search for planets in the"},
+{"loc": "abstract", "quote": "using differential astrometry at millimeter wavelengths"}
+]
+},
+"targets": [
+{
+"name": "alpha Cen A",
+"details": [
+{"loc": "Introduction", "quote": "At a distance of 1.34 pc,"},
+{"loc": "Table 9", "quote": "14:39:26.1413 $\\pm 1.50$ mas"},
+{"loc": "Table 9", "quote": "$-60$:49:53.875 $\\pm 1.17$ mas"},
+{"loc": "3.5 Prospects for Improved Stellar Properties", "quote": "The parallax determined in the present work ($\\varpi = 750.81$ mas, $d=1.3319 \\pm 0.0007$ pc)"}
+],
+"coordinates": "AB barycentre ICRS J2019.5: RA 14:39:26.1413, Dec -60:49:53.875 (Table 9); individual ALMA positions in Table 2",
+"redshift_or_distance": "1.34 pc (introduction); d = 1.3319 +/- 0.0007 pc from orbital parallax 750.81 mas",
+"distance_source": "orbital parallax derived in this paper (RV plus differential astrometry fit)"
+},
+{
+"name": "alpha Cen B",
+"details": [
+{"loc": "2.1 Observations", "quote": "the angular sizes are 8.5 and 6.0 mas"},
+{"loc": "Table 9", "quote": "14:39:26.1413 $\\pm 1.50$ mas"},
+{"loc": "3.5 Prospects for Improved Stellar Properties", "quote": "The parallax determined in the present work ($\\varpi = 750.81$ mas, $d=1.3319 \\pm 0.0007$ pc)"}
+],
+"coordinates": "AB barycentre ICRS J2019.5: RA 14:39:26.1413, Dec -60:49:53.875 (Table 9); individual ALMA positions in Table 2",
+"redshift_or_distance": "same system as A: d = 1.3319 +/- 0.0007 pc",
+"distance_source": "orbital parallax derived in this paper"
+}
+],
+"alma_project_codes": [
+{"code": "2018.1.00557.S", "evidence": [{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.00557.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (343 GHz, 874 um)", "evidence": [
+{"loc": "2.1 Observations", "quote": "we selected to observe in band 7"},
+{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "our ALMA wavelength (Band 7; 343 Ghz or 874"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "nominal continuum setup, four 1.9 GHz spectral windows at 336.5, 338.5, 348.5 and 350.5 GHz", "evidence": [
+{"loc": "2.1 Observations", "quote": "using the nominal continuum setup of four 1.9 GHz spectral windows at frequencies 336.5, 338.5, 348.5 and 350.5 GHz"}
+]},
+{"field": "configurations", "value": "config 6 (max baseline 2.5 km, one block), config 8 (8 km, two blocks), config 7 (3.6 km, two blocks); nine calibrated observations from five blocks", "evidence": [
+{"loc": "2.1 Observations", "quote": "one block in configuration 6 (max baseline 2.5 km), two blocks in configuration 8 (max baseline 8 km) and two blocks in configuration 7 (max baseline 3.6 km)"}
+]},
+{"field": "angular_resolution", "value": "20 mas to 150 mas depending on configuration", "evidence": [
+{"loc": "2.2 Data Reduction", "quote": "The image resolution varied from 20 mas to 150 mas, depending on the configuration."}
+]},
+{"field": "time_on_source", "value": "70-min observations (about one hour each); alternating 18-s phase calibrator and 50-s target scans, about 55 cycles", "evidence": [
+{"loc": "2.1 Observations", "quote": "we placed the phase center for each 70-min observation at the center of mass"},
+{"loc": "2.1 Observations", "quote": "the main science target portion of the observation of about 55 observing cycles, each with an 18-sec scan on the phase calibrator J1452-6502, alternating with a 50-sec scan on"}
+]},
+{"field": "observing_dates", "value": "Cycle 6, 2018 October to 2019 August", "evidence": [
+{"loc": "2.1 Observations", "quote": "in Cycle 6 between 2018 October and 2019 August at band 7"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "dedicated program requested by the authors in three configurations (not stated as archival)", "evidence": [
+{"loc": "2.1 Observations", "quote": "Hence, observations were requested in three configurations, one in Fall 2018 and two in Summer 2019."}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "ESO 3.6m HARPS", "provided": {"value": "5184 RVs for A and 12383 for B used with differential astrometry in the orbit fit", "evidence": [
+{"loc": "3.2.2 Radial Velocity Data", "quote": "Our final sample of RV measurements includes 5184 RV measurements for A and 12383 for B."},
+{"loc": "Facilities", "quote": "ALMA, ESO:3.6m(HARPS)"}
+]}},
+{"name": "Hipparcos", "provided": {"value": "absolute positions of A and B at 1991.25 (new reduction)", "evidence": [
+{"loc": "3.2.1 Astrometry Data", "quote": "and 1 from Hipparcos (cite: vanLeeuwen07) UT = 1991-04-02T13:30:00.000"}
+]}},
+{"name": "Nobeyama Radio Interferometer (17 GHz solar maps)", "provided": {"value": "daily solar maps used to estimate centroid jitter of free-free emission", "evidence": [
+{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "taken daily by the Nobeyama Radio Interferometer (cite: Shibasaki2013)"}
+]}},
+{"name": "Archival visual/interferometric differential astrometry of the AB pair", "provided": {"value": "differential astrometry from 1940 onward combined with the ALMA separations", "evidence": [
+{"loc": "3.2.1 Astrometry Data", "quote": "of the AB pair (cite: Hart01) starting in the year 1940 (one full 80 yr orbit as of the year 2020)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Hipparcos absolute positions of A and B (1991-04-02)", "evidence": [{"loc": "3.2.1 Astrometry Data", "quote": "and 1 from Hipparcos (cite: vanLeeuwen07) UT = 1991-04-02T13:30:00.000"}]}, "citation": "van Leeuwen 2007 (cite: vanLeeuwen07)"},
+{"what": {"value": "archival differential astrometry of the AB pair from 1940 onward", "evidence": [{"loc": "3.2.1 Astrometry Data", "quote": "of the AB pair (cite: Hart01) starting in the year 1940 (one full 80 yr orbit as of the year 2020)"}]}, "citation": "Hartkopf et al. 2001 (cite: Hart01)"},
+{"what": {"value": "earlier ALMA observations of alpha Cen reused only for the differential astrometry", "evidence": [{"loc": "3.2.1 Astrometry Data", "quote": "We do, however, use these data as part of the differential astrometric data."}]}, "citation": "Liseau et al. 2015, 2016 (cite: Liseau2015; Liseau2016)"},
+{"what": {"value": "HARPS radial velocities of A and B from the ESO archive (B RVs from Lisogorskyi et al.)", "evidence": [
+{"loc": "3.2.2 Radial Velocity Data", "quote": "obtained since 2004, publicly available from the ESO archive"},
+{"loc": "3.2.2 Radial Velocity Data", "quote": "As noted by (cite: Lisogorskyi2019), a significant fraction of the spectra collected for"}
+]}, "citation": "ESO HARPS archive; Lisogorskyi et al. 2019 (cite: Lisogorskyi2019)"},
+{"what": {"value": "angular diameters of A and B (8.5 and 6.0 mas) and stellar radii/parallax used for the SED model", "evidence": [{"loc": "2.1 Observations", "quote": "the angular sizes are 8.5 and 6.0 mas (cite: Kervella2017a)"}]}, "citation": "Kervella et al. 2017 (cite: Kervella2017a)"},
+{"what": {"value": "HARPS fibre-exchange RV zero-point shift applied to pipeline RVs", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "We corrected the RV shift caused by the HARPS fiber exchange in 2015, as recommended by (cite: Trifonov2020)."}]}, "citation": "Trifonov et al. 2020 (cite: Trifonov2020)"},
+{"what": {"value": "relative gravitational redshift and convective shift of B subtracted from its RVs (314 m/s)", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "Following (cite: Pourbaix2016) (cite: Pourbaix2002; Kervella2016), we subtracted a constant velocity shift of"}]}, "citation": "Pourbaix & Boffin 2016; Pourbaix et al. 2002; Kervella et al. 2016"},
+{"what": {"value": "sub-mm/IR SED photometry of alpha Cen A and B, with ALMA values recalibrated", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "as tabulated in (cite: Liseau2013; Trigilio2018) using ALMA values as updated with an improved calibration model (cite: Liseau2019)"}]}, "citation": "Liseau et al. 2013; Trigilio et al. 2018; Liseau 2019"},
+{"what": {"value": "17 GHz solar maps for 2001 and 2010", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "taken daily by the Nobeyama Radio Interferometer (cite: Shibasaki2013)"}]}, "citation": "Shibasaki 2013 (cite: Shibasaki2013)"},
+{"what": {"value": "bolometric fluxes used for luminosities of A and B", "evidence": [{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "The luminosities of A and B are computed adopting the bolometric flux by (cite: Boyajian2013)"}]}, "citation": "Boyajian et al. 2013 (cite: Boyajian2013)"},
+{"what": {"value": "Hipparcos-Gaia proper motion of Proxima", "evidence": [{"loc": "3.5 The orbit of Proxima Centauri", "quote": "We adopt the Hipparcos-Gaia proper motion determined by (cite: Kervella2019) for Proxima"}]}, "citation": "Kervella et al. 2019 (cite: Kervella2019)"},
+{"what": {"value": "Proxima radial velocity", "evidence": [{"loc": "3.5 The orbit of Proxima Centauri", "quote": "and the radial velocity from (cite: Kervella2017b)"}]}, "citation": "Kervella et al. 2017b (cite: Kervella2017b)"}
+],
+"simulations_or_models_as_data": [
+{"value": "BT-Settle photosphere model, Teff = 5800 K, R = 1.22 Rsun at 1.334 pc for alpha Cen A (Teff = 5300 K for B)", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "we fitted the absolute flux densities for a T$_{eff}=$5800 K B-T Settle model (cite: Baraffe2015)"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "standard ALMA data calibration (pipeline or manual not specified)", "evidence": [{"loc": "2.2 Data Reduction", "quote": "We used the standard ALMA data calibration for all observations."}]},
+{"field": "flux_calibrator", "value": "J1427-4206 (bright quasar, known flux density); also sets amplitude and phase scale", "evidence": [
+{"loc": "2.1 Observations", "quote": "a 2-min scan at the beginning of each observation of the bright quasar, J1427-4206, with a known flux density"},
+{"loc": "2.2 Data Reduction", "quote": "The amplitude calibration for each antenna/spectral-window channel was determined from the 2-min scan of J1427-4206 and applied to the rest of the observation."}
+]},
+{"field": "flux_scale_uncertainty", "value": "10-15% absolute (no primary flux standards observed)", "evidence": [{"loc": "2.2 Data Reduction", "quote": "no primary flux calibration standards were observed, thus the absolute calibration uncertainty is 10-15"}]},
+{"field": "self_calibration", "value": "phase self-calibration on alpha Cen A and B (case 3), used only for the A-B separation, not for absolute positions", "evidence": [
+{"loc": "2.3 Differential Astrometry", "quote": "As the radio emission from the two stars is sufficiently bright and compact, we self-calibrate the"},
+{"loc": "2.3 Differential Astrometry", "quote": "As absolute position information is not preserved during self-calibration, these data are only used for the A to B separation"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean for each calibrated observation; imfit for fluxes, jmfit for positions", "evidence": [
+{"loc": "2.2 Data Reduction", "quote": "to produce images for each of the calibrated observations, using the nominal data weighting (weighting=briggs, robust=0)."},
+{"loc": "2.2 Data Reduction", "quote": "The integrated flux was determined using the"}
+]},
+{"field": "weighting_robust", "value": "briggs, robust = 0", "evidence": [{"loc": "2.2 Data Reduction", "quote": "using the nominal data weighting (weighting=briggs, robust=0)"}]},
+{"field": "cell_size", "value": "5 mas", "evidence": [{"loc": "2.2 Data Reduction", "quote": "pixels, with grid separation 5 mas, covered nearly all of the ALMA primary beam."}]},
+{"field": "image_size", "value": "2048x2048 pixels (512x512 for the check source)", "evidence": [
+{"loc": "2.2 Data Reduction", "quote": "The image size of 2048"},
+{"loc": "2.2 Data Reduction", "quote": "For the J1424-6807 check source, we analyzed an image size of 512"}
+]},
+{"field": "final_beam", "value": "image resolution 20 to 150 mas depending on configuration", "evidence": [{"loc": "2.2 Data Reduction", "quote": "The image resolution varied from 20 mas to 150 mas, depending on the configuration."}]}
+],
+"inherited": [
+{"what": {"value": "orbit and proper-motion fitting approach follows Kervella et al. 2016", "evidence": [{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "we generally followed the same approach as (cite: Kervella2016)"}]}, "from_reference": "(cite: Kervella2016)"},
+{"what": {"value": "HARPS fibre-exchange RV correction", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "We corrected the RV shift caused by the HARPS fiber exchange in 2015, as recommended by (cite: Trifonov2020)."}]}, "from_reference": "(cite: Trifonov2020)"},
+{"what": {"value": "constant velocity shift removed from B RVs", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "Following (cite: Pourbaix2016) (cite: Pourbaix2002; Kervella2016), we subtracted a constant velocity shift of"}]}, "from_reference": "(cite: Pourbaix2016) (cite: Pourbaix2002; Kervella2016)"},
+{"what": {"value": "astrometric precision relation sigma ~ FWHM/(2 SNR)", "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "An empirical relationship (cite: Monet2010) shows the dependence of astrometric precision,"}]}, "from_reference": "(cite: Monet2010)"},
+{"what": {"value": "self-calibration algorithm", "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "we self-calibrate the"}]}, "from_reference": "(cite: Sch80)"},
+{"what": {"value": "starspot jitter model for the Sun at visible wavelengths", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "A detailed analysis (cite: Makarov2009) suggests that a quiescent star like the Sun would have a photospheric jitter at visible wavelengths of"}]}, "from_reference": "(cite: Makarov2009)"},
+{"what": {"value": "free-free emission formula for the chromosphere", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "simplified representation of free-free chromospheric emission following (cite: Mezger1967)"}]}, "from_reference": "(cite: Mezger1967)"}
+],
+"unstated_but_needed": [
+"CASA version and whether the standard ALMA pipeline or manual calibration was used (no version given)",
+"tclean deconvolver, niter, threshold, masks and uv range; the CLEAN settings beyond weighting, cell and image size",
+"self-calibration details: initial model, solution interval, number of rounds, which data were included",
+"jmfit/imfit fit regions and settings and how component positions were converted to Table 2 and Table 4 values",
+"how the check-source offset and pair differences were converted into the adopted 3 mas / 6 mas absolute uncertainties",
+"how the 2018 Oct second observation (20 mas offset) was identified and which antennas/scans were used",
+"time-dependent perspective and light-time corrections: exact formulae and parameters beyond the quoted effects",
+"treatment of Hipparcos covariance and weights of the heterogeneous archival differential astrometry",
+"the preliminary best-fit solution used for 5 sigma RV clipping and weighting between A and B",
+"full machine-readable Tables 6 and 7 (only excerpts printed); photometry values behind the SED fit",
+"exact Nobeyama map list and the chord-centroid algorithm, plus the Monte Carlo draw counts"
+],
+"analysis_steps": [
+{"order": 1, "goal": "calibrate ALMA data and check source",
+"method": {"value": "standard ALMA calibration; amplitude and phase from the J1427-4206 scan applied to the whole observation; phase referencing on J1452-6502 for target and check source J1424-6807", "evidence": [
+{"loc": "2.2 Data Reduction", "quote": "The amplitude calibration for each antenna/spectral-window channel was determined from the 2-min scan of J1427-4206 and applied to the rest of the observation."},
+{"loc": "2.2 Data Reduction", "quote": "was obtained in the normal phase referencing method from the antenna-based phase from each of the fifty 18-sec scans on J1452-6502."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "antenna/spectral-window scale factor constant within 5% over the observation", "evidence": [{"loc": "2.2 Data Reduction", "quote": "The measured antenna/spectral-window scale factor is constant within 5% over the"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "five 20-s scans of the ICRF quasar J1424-6807 per epoch as an independent absolute-position check", "evidence": [{"loc": "2.2 Data Reduction", "quote": "To provide an independent check of the absolute accuracy of these observations, we included five 20-sec scans of the quasar J1424-6807 near"}]}},
+{"order": 2, "goal": "image each observation and measure fluxes",
+"method": {"value": "tclean images per observation (briggs robust 0, 2048x2048 at 5 mas), Gaussian fit with imfit for fluxes; positions from images, not uv analysis", "evidence": [
+{"loc": "2.2 Data Reduction", "quote": "to produce images for each of the calibrated observations, using the nominal data weighting (weighting=briggs, robust=0)."},
+{"loc": "2.2 Data Reduction", "quote": "We derived all astrometric positions from the images; we did not use uv data analysis to obtain the source positions."}
+]},
+"software": ["CASA tclean", "CASA imfit"],
+"key_parameters": [
+{"value": "5 mas grid, 2048x2048 pixels covering nearly all of the primary beam", "evidence": [{"loc": "2.2 Data Reduction", "quote": "pixels, with grid separation 5 mas, covered nearly all of the ALMA primary beam."}]}
+],
+"assumptions": [
+{"value": "photospheres unresolved (diameters 8.5 and 6.0 mas)", "evidence": [{"loc": "2.2 Data Reduction", "quote": "Thus, the individual photospheres are not resolved in these observations."}]}
+],
+"fitting": {"value": "Gaussian fit to each star with imfit; uncertainty is fit error only", "evidence": [{"loc": "2.2 Data Reduction", "quote": "The uncertainty reported is the fitting uncertainty and does not include the absolute flux error."}]},
+"validation": {"value": "fluxes agree with Liseau et al. 2016 within the 10-15% absolute uncertainty", "evidence": [{"loc": "2.2 Data Reduction", "quote": "Within this absolute uncertainty, our fluxes agree with those of (cite: Liseau2016)."}]}},
+{"order": 3, "goal": "measure absolute positions and calibrate their accuracy",
+"method": {"value": "jmfit positions per one-hour observation on the ICRS frame, averaged per pair; accuracy from check source and pair differences", "evidence": [
+{"loc": "2.2.1 Absolute Astrometry", "quote": "The measured positions from each one-hour observation of"},
+{"loc": "2.2.1 Absolute Astrometry", "quote": "Each hour-long observation can be combined into an average position with no significant loss of precision in the absolute position."}
+]},
+"software": ["CASA jmfit"],
+"key_parameters": [
+{"value": "adopted absolute uncertainty 3 mas (2019 July and August) and 6 mas (2018 October)", "evidence": [{"loc": "2.2.1 Absolute Astrometry", "quote": "we use a conservative value of 3 mas for the absolute astrometric uncertainty for the higher resolution configurations (2019 July and August) and 6 mas for the lower resolution (2018 October) data"}]}
+],
+"assumptions": [
+{"value": "check source to phase calibrator separation 4.1 deg is similar to alpha Cen to phase calibrator (4.5 deg), so offsets transfer after SNR scaling", "evidence": [{"loc": "2.2.1 Absolute Astrometry", "quote": "We note that the angular separation between the check source and the phase calibrator is 4.1 degrees"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "check source offset ~2.5 mas; pair differences about a factor of 3 above the internal error; one anomalous observation (20 mas offset) discarded", "evidence": [
+{"loc": "2.2.1 Absolute Astrometry", "quote": "the average offset of the check source between our measured ALMA position and its International Celestial Reference System (ICRS) position is about 2.5 mas"},
+{"loc": "2.2.1 Absolute Astrometry", "quote": "Hence, this observation is not used in our analysis below."}
+]}},
+{"order": 4, "goal": "measure the A-B differential separation after self-calibration",
+"method": {"value": "phase self-calibration on both stars, then jmfit of the A-B separation per epoch", "evidence": [
+{"loc": "2.3 Differential Astrometry", "quote": "we self-calibrate the"},
+{"loc": "2.3 Differential Astrometry", "quote": "The angular separation and estimated error (using the casa routine"}
+]},
+"software": ["CASA jmfit"],
+"key_parameters": [
+{"value": "separation uncertainties 0.3 to 0.6 mas from positional fitting", "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "The uncertainties in total separation are from the positional fitting and range from 0.3 to 0.6 mas."}]}
+],
+"assumptions": [
+{"value": "atmospheric distortions act nearly identically on A and B", "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "the atmospheric distortions act nearly identically on"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "separations agreed within uncertainties for no self-cal, self-cal on A only, and self-cal on A and B; image SNR improved by ~2", "evidence": [
+{"loc": "2.3 Differential Astrometry", "quote": "The separations for these three methods agreed to within the uncertainties"},
+{"loc": "2.3 Differential Astrometry", "quote": "which increases by factor of $\\sim$2 and by the significantly lower residuals"}
+]}},
+{"order": 5, "goal": "estimate astrometric jitter from stellar activity",
+"method": {"value": "fit SED with BT-Settle photosphere plus free-free chromosphere to get photospheric and chromospheric fractions in Band 7, then scale solar 17 GHz centroid shifts (2001 and 2010) by stellar diameters and chromospheric fraction", "evidence": [
+{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "We evaluated the shift between the intensity-weighted centroid and the nominal disk center by calculating the centroid of all chords across the solar disk in both the vertical and horizontal directions."},
+{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "We fit the free-free emission from"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "244 solar maps in 2001 and 300 in 2010", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "for which there were maps of suitable quality (244 in 2001 and 300 in 2010)"}]}
+],
+"assumptions": [
+{"value": "starspots of ~4000 K on a 5800 K photosphere", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "starspots having an average temperature of T$_{spot}\\sim$4000 K vs a photospheric temperature of T$_{phot}\\sim$5800 K"}]},
+{"value": "Sun is a template for solar-like activity of alpha Cen A and B", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "but both are similar in their activity levels to the Sun"}]}
+],
+"fitting": {"value": "two-parameter (T_gas, EM) free-free fit added to a photosphere with 9% normalization uncertainty; Monte Carlo propagation; chi2 62 for 24 dof", "evidence": [
+{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "The fit has a $\\chi^2$ of 62 with 24 degrees of freedom."},
+{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "A Monte Carlo simulation varying $T_C$, $EM$ and the photospheric normalization, $1.02\\pm0.09$, relative to their uncertainties gives a photospheric fraction of"}
+]},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 6, "goal": "fit orbit from RV plus differential astrometry",
+"method": {"value": "Keplerian two-body model fit for epoch 2019.5 to RVs and differential astrometry, with perspective and light-time corrections applied in a second fitting round", "evidence": [
+{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "We first determined the orbital parameters (Keplerian orbital elements, dynamical parallax, total mass of the system, and mass ratio) for epoch 2019.5 based only on the RV and differential astrometry data and a simple Keplerian two-body model."},
+{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "We then computed a second round of orbital and proper motion fitting on these corrected observations"}
+]},
+"software": ["SciPy scipy.optimize.leastsq", "Astropy SkyCoord"],
+"key_parameters": [
+{"value": "2 m/s uniform jitter added in quadrature to RVs; RVs with sigma > 10 m/s rejected; 5 sigma clipping (0.9% of A, 1.0% of B)", "evidence": [
+{"loc": "3.2.2 Radial Velocity Data", "quote": "Therefore we added in quadrature a uniform uncertainty of 2 m s$^{-1}$ to all measurements."},
+{"loc": "3.2.2 Radial Velocity Data", "quote": "filtered out the RV measurements whose uncertainty is larger than 10 m s$^{-1}$, and cleaned the strongest outliers with a $5\\sigma$ clipping with respect to the best fit preliminary solution."}
+]}
+],
+"assumptions": [
+{"value": "reference epoch 2019.5 chosen to match the majority of the ALMA data; second-order effects treated as linear perturbations", "evidence": [{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "This reference time was arbitrarily chosen to correspond to the majority of our ALMA measurements"}]},
+{"value": "intrinsic RV shift of A taken as zero", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "whose intrinsic shift is assumed to be zero"}]}
+],
+"fitting": {"value": "Levenberg-Marquardt least squares on the full data set (scipy.optimize.leastsq); uncertainties normalised to data dispersion", "evidence": [
+{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "using a classical multi-parameter Levenberg-Marquardt least-squares fitting algorithm on the complete data set."}
+]},
+"validation": {"value": "reduced chi2 of 1.2; a third iteration did not change the parameters; adopting Trifonov RV shift gave no significant change", "evidence": [
+{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "We obtain a satisfactory reduced $\\chi^2$ for the best fit orbit model of 1.2."},
+{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "We checked that a third iteration of fitting did not result in a significant change of the derived parameters."}
+]}},
+{"order": 7, "goal": "determine barycentric proper motion and parallax check",
+"method": {"value": "adopt dynamical parallax and mass ratio, compute barycentre positions at Hipparcos and ALMA epochs, fit linear space motion", "evidence": [
+{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "In a second step, we adopted the dynamical parallax and mass ratio to determine the barycentric proper motion from the absolute Hipparcos and ALMA absolute astrometric positions of"},
+{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "The space velocity of the barycenter of the AB system was then determined from this set of barycenter positions through a linear fit."}
+]},
+"software": ["SciPy scipy.optimize.leastsq"],
+"key_parameters": [
+{"value": "ALMA absolute positions assigned 3 mas (6 mas for Oct 2018); 10 absolute points in total", "evidence": [{"loc": "3.2.1 Astrometry Data", "quote": "Our complete sample of absolute astrometric measurements includes a total of 10 points; 9 from our ALMA data as given in Table"}]}
+],
+"assumptions": [],
+"fitting": {"value": "Levenberg-Marquardt least squares; uncertainties scaled by about sqrt(1.6)", "evidence": [{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "In practice, this means that the $1\\sigma$ uncertainties of the derived parameters are scaled by a factor of $\\approx \\sqrt{1.6}$."}]},
+"validation": {"value": "reduced chi2 of 1.6; independent trigonometric parallax fit consistent with orbital parallax", "evidence": [
+{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "The reduced $\\chi^2$ of the best fit barycenter proper motion vector model is 1.6."},
+{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "Both values are, however, statistically consistent."}
+]}},
+{"order": 8, "goal": "derive stellar masses, radii and luminosities",
+"method": {"value": "masses from fitted total mass and mass fraction; radii from limb-darkened angular diameters and the new parallax; luminosities from bolometric fluxes", "evidence": [
+{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "The radii are computed adopting the limb darkened angular diameters measured by (cite: Kervella2017a)."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "L_sun = 3.828e26 W", "evidence": [{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "$L_\\odot = 3.828\\ 10 ^{26}$ W"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "masses and radii close to theoretical values from asteroseismic analyses", "evidence": [{"loc": "3.4 Prospects for Improved Stellar Properties", "quote": "The masses and radii values are close to the theoretical values determined by (cite: Thevenin2002) and (cite: Yildiz2008)"}]}},
+{"order": 9, "goal": "estimate planet detection limits and Proxima binding",
+"method": {"value": "scale ALMA single-epoch accuracy (500, 250, 100 uas; 20 epochs over 5 yr) against PRV limits; compare AB-Proxima differential velocity with escape limit", "evidence": [
+{"loc": "3.5 Prospects for Planet Detection based on Differential Astrometry", "quote": "we adopt three cases based on single measurement accuracy of 500, 250, 100 $\\mu$as and a series of 20 observations spread over 5 years."},
+{"loc": "3.6 The orbit of Proxima Centauri", "quote": "We obtain a differential space velocity of"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "differential astrometric performance continues to scale with baseline length", "evidence": [{"loc": "3.5 Prospects for Planet Detection based on Differential Astrometry", "quote": "thus if the differential astrometry performance continues to scale with baseline length, single epoch observations at"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "compared with the HST/FGS HD 202206 c detection of Benedict and Harrison 2017", "evidence": [{"loc": "3.5 Prospects for Planet Detection based on Differential Astrometry", "quote": "To check our detection estimate, we compare with the astrometric data presented by (cite: Benedict2017)."}]}}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "calibration and imaging with tclean, flux fits with imfit and position fits with jmfit", "evidence": [
+{"loc": "2.2 Data Reduction", "quote": "(cite: McMullin2007) to produce images for each of the calibrated observations"},
+{"loc": "Software", "quote": "CASA (McMullin et al. 2007), astropy (The Astropy Collaboration 2013, 2018)"}
+]}},
+{"name": "SciPy (scipy.optimize.leastsq)", "version": "not stated", "used_for": {"value": "Levenberg-Marquardt orbit and proper motion fits", "evidence": [{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "It is based on the `scipy.optimize.leastsq` routine of the SciPy[^1] library."}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "SkyCoord class and coordinate transformations for the perspective and light-time corrections", "evidence": [{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "we extensively used the `SkyCoord` class and celestial coordinate system transformation routines available in the `Astropy`[^2] library."}]}}
+],
+"results_numeric": [
+{"quantity": "absolute astrometric uncertainty adopted per ALMA epoch", "value": "3 mas (2019 observations); 6 mas (2018 October)", "uncertainty": "not stated", "units": "mas", "from_step": 3, "evidence": [{"loc": "2.2.1 Absolute Astrometry", "quote": "we use a conservative value of 3 mas for the absolute astrometric uncertainty for the higher resolution configurations (2019 July and August) and 6 mas for the lower resolution (2018 October) data"}]},
+{"quantity": "mean check-source offset from ICRS position (four highest resolution observations)", "value": "about 2.5", "uncertainty": "not stated", "units": "mas", "from_step": 3, "evidence": [{"loc": "2.2.1 Absolute Astrometry", "quote": "the average offset of the check source between our measured ALMA position and its International Celestial Reference System (ICRS) position is about 2.5 mas"}]},
+{"quantity": "A-B separation uncertainty from ALMA", "value": "0.3 to 0.6", "uncertainty": "not stated", "units": "mas", "from_step": 4, "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "The uncertainties in total separation are from the positional fitting and range from 0.3 to 0.6 mas."}]},
+{"quantity": "photospheric fraction of Band 7 emission, alpha Cen A", "value": "85", "uncertainty": "1.3", "units": "percent", "from_step": 5, "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "gives a photospheric fraction of $\\Phi_p=85\\pm$1.3% photospheric vs. $\\Phi_c=1-\\Phi_p=15\\pm$1.4% chromospheric."}]},
+{"quantity": "photospheric fraction of Band 7 emission, alpha Cen B", "value": "69", "uncertainty": "7", "units": "percent", "from_step": 5, "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "derived $\\Phi_p=69\\pm$7% photospheric vs. $\\Phi_c=31\\pm$7% chromospheric."}]},
+{"quantity": "free-free fit gas temperature and emission measure, alpha Cen A", "value": "T_gas = 5100 K; EM = 3.0e10 pc cm^-6", "uncertainty": "650 K; 0.4e10", "units": "K; pc cm^-6", "from_step": 5, "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "$T_{gas}$=5100$\\pm$650 K and $EM=3.0\\pm 0.4\\times10^{10}$ pc cm$^{-6}$"}]},
+{"quantity": "solar centroid jitter during 2001 (active)", "value": "6.46 arcsec, 0.36% of disk", "uncertainty": "not stated", "units": "arcsec; percent of solar disk", "from_step": 5, "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "with a 1$\\sigma$ standard deviation of 6.46$''$, or $\\sigma_{\\odot,active}=$0.36% of the solar disk during 2001"}]},
+{"quantity": "total astrometric jitter in the A-B separation, active and quiet", "value": "15 (active) and 6 (quiet)", "uncertainty": "10 and 4 (Table 5)", "units": "microarcsec", "from_step": 5, "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "and varies between 15 and 6 $\\mu$arcsec in the active and quiet sun cases."}]},
+{"quantity": "semi-major axis of the AB orbit", "value": "17.4930", "uncertainty": "0.0096", "units": "arcsec", "from_step": 6, "evidence": [{"loc": "Table 8", "quote": "$17.4930 \\pm 0.0096$"}]},
+{"quantity": "orbital period", "value": "79.762", "uncertainty": "0.019", "units": "yr", "from_step": 6, "evidence": [{"loc": "Table 8", "quote": "$79.762 \\pm 0.019$"}]},
+{"quantity": "orbital eccentricity", "value": "0.51947", "uncertainty": "0.00015", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Table 8", "quote": "$0.51947 \\pm 0.00015$"}]},
+{"quantity": "orbital inclination", "value": "79.2430", "uncertainty": "0.0089", "units": "deg", "from_step": 6, "evidence": [{"loc": "Table 8", "quote": "$79.2430 \\pm 0.0089$"}]},
+{"quantity": "orbital parallax", "value": "750.81", "uncertainty": "0.38", "units": "mas", "from_step": 6, "evidence": [{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "orbital parallax ($\\varpi_\\mathrm{orb} =750.81 \\pm 0.38$ mas)"}]},
+{"quantity": "trigonometric parallax from barycentre positions", "value": "747.1", "uncertainty": "5.2", "units": "mas", "from_step": 7, "evidence": [{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "the accuracy of the best fit trigonometric parallax ($\\varpi_\\mathrm{trig} = 747.1 \\pm 5.2$ mas)"}]},
+{"quantity": "distance to alpha Cen AB", "value": "1.3319", "uncertainty": "0.0007", "units": "pc", "from_step": 6, "evidence": [{"loc": "3.4 Prospects for Improved Stellar Properties", "quote": "The parallax determined in the present work ($\\varpi = 750.81$ mas, $d=1.3319 \\pm 0.0007$ pc)"}]},
+{"quantity": "masses of A and B", "value": "m_A = 1.0788; m_B = 0.9092", "uncertainty": "0.0029; 0.0025", "units": "Msun", "from_step": 8, "evidence": [{"loc": "Conclusions", "quote": "We find stellar parameters of $m_{\\rm A} =1.0788 \\pm 0.0029$ $M_\\odot$ and $m_{\\rm B} = 0.9092 \\pm 0.0025$ $M_\\odot$"}]},
+{"quantity": "radii of A and B", "value": "R_A = 1.2175; R_B = 0.8591", "uncertainty": "0.0055; 0.0036", "units": "Rsun", "from_step": 8, "evidence": [{"loc": "3.4 Prospects for Improved Stellar Properties", "quote": "we revise the linear radii of the two stars to $R_{\\rm A} = 1.2175 \\pm 0.0055\\,R_\\odot$ and $R_{\\rm B} = 0.8591 \\pm 0.0036\\,R_\\odot$"}]},
+{"quantity": "barycentre proper motion in RA (epoch 2019.5)", "value": "-3639.95", "uncertainty": "0.42", "units": "mas/yr", "from_step": 7, "evidence": [{"loc": "Table 9", "quote": "$-3639.95 \\pm 0.42$"}]},
+{"quantity": "barycentre proper motion in Dec (epoch 2019.5)", "value": "+700.40", "uncertainty": "0.17", "units": "mas/yr", "from_step": 7, "evidence": [{"loc": "Table 9", "quote": "$+700.40 \\pm 0.17$"}]},
+{"quantity": "perspective RV acceleration", "value": "+0.421", "uncertainty": "not stated", "units": "m/s/yr", "from_step": 6, "evidence": [{"loc": "3.2.3 Orbital and proper motion fit procedure", "quote": "The RV geometrically increases with an acceleration of $\\dot{V} = +0.421$ m s$^{-1}$yr$^{-1}$"}]},
+{"quantity": "reduced chi2 of the orbit fit and of the proper-motion fit", "value": "1.2 and 1.6", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "We obtain a satisfactory reduced $\\chi^2$ for the best fit orbit model of 1.2."},
+{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "The reduced $\\chi^2$ of the best fit barycenter proper motion vector model is 1.6."}
+]},
+{"quantity": "differential velocity between AB and Proxima, and unbound limit", "value": "280 (observed); 554 (limit)", "uncertainty": "32; 7", "units": "m/s", "from_step": 9, "evidence": [
+{"loc": "3.6 The orbit of Proxima Centauri", "quote": "limit of $v_\\mathrm{max} = 554 \\pm 7$ m s$^{-1}$ for a gravitationally bound system"},
+{"loc": "3.6 The orbit of Proxima Centauri", "quote": "$\\Delta v_{\\alpha-\\mathrm{Prox}} = 280 \\pm 32$ m s$^{-1}$"}
+]},
+{"quantity": "significance of the AB-Proxima gravitational link", "value": "8.3", "uncertainty": "not stated", "units": "sigma", "from_step": 9, "evidence": [{"loc": "3.6 The orbit of Proxima Centauri", "quote": "to $5.5\\sigma$ in (cite: Kervella2019) to $8.3\\sigma$ in the present work"}]},
+{"quantity": "projected noise floor of a 20-epoch ALMA campaign", "value": "about 55 (two sigma 110)", "uncertainty": "not stated", "units": "microarcsec", "from_step": 9, "evidence": [{"loc": "3.5 Prospects for Planet Detection based on Differential Astrometry", "quote": "a two sigma value of 110 $\\mu$as and could lead to the identification of a 25 M$_\\oplus$ planet with a 2 AU orbital semi-major axis"}]}
+],
+"findings_qualitative": [
+{"value": "separations from no self-cal, self-cal on A only and on A and B agree within uncertainties", "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "The separations for these three methods agreed to within the uncertainties"}]},
+{"value": "purely photospheric starspot jitter is negligible in Band 7; chromospheric terms dominate the jitter budget", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "These terms dominate the purely photospheric component due to starspots."}]},
+{"value": "new parallax is larger than Kervella et al. 2016 by 0.49 percent, lowering radii by about 1 sigma", "evidence": [{"loc": "3.4 Prospects for Improved Stellar Properties", "quote": "is larger by 0.49% compared to the value previously determined by"}]}
+],
+"claims": [
+{"hypothesis": "ALMA can deliver precise absolute astrometry of alpha Cen A and B", "experiment": "nine calibrated Band 7 observations in three configurations with a check source and repeated pairs", "result": "check-source offset ~2.5 mas; adopted absolute uncertainty 3 mas (6 mas for the low-resolution epoch)", "finding": "absolute precision and accuracy of order 3 mas", "support": "supported", "evidence": [{"loc": "Conclusions", "quote": "absolute astrometric measures with precision and accuracy of order 3 mas and differential separation uncertainties of 300 to 600"}]},
+{"hypothesis": "self-calibrated ALMA images give sub-mas A-B separations", "experiment": "jmfit separations from self-calibrated images at nine epochs", "result": "separation uncertainties of 0.3 to 0.6 mas", "finding": "differential separation uncertainties of 300 to 600 microarcsec", "support": "supported", "evidence": [{"loc": "2.3 Differential Astrometry", "quote": "The uncertainties in total separation are from the positional fitting and range from 0.3 to 0.6 mas."}]},
+{"hypothesis": "stellar activity jitter limits mm astrometry of alpha Cen", "experiment": "SED decomposition plus solar 17 GHz centroid variations scaled to the stars", "result": "total jitter 15 (active) and 6 (quiet) microarcsec", "finding": "jitter below 15 microarcsec, negligible compared with instrumental terms for planets well above Earth mass", "support": "supported", "evidence": [{"loc": "Conclusions", "quote": "By comparison with the Sun we establish an astrometric jitter due to stellar activity of less than 15"}]},
+{"hypothesis": "adding ALMA absolute and differential astrometry improves the orbit, masses and proper motion", "experiment": "joint fit of HARPS RVs, archival differential astrometry, Hipparcos and ALMA positions", "result": "m_A = 1.0788 +/- 0.0029 Msun, m_B = 0.9092 +/- 0.0025 Msun, parallax 750.81 +/- 0.38 mas", "finding": "improved orbital elements, system proper motion, parallax and component masses", "support": "supported", "evidence": [{"loc": "Conclusions", "quote": "yields improved $\\alpha$ Cen A and B orbital elements, system proper motion and parallax, and component masses."}]},
+{"hypothesis": "alpha Cen AB and Proxima form a bound system", "experiment": "compared differential space velocity with the unbound velocity limit", "result": "280 +/- 32 m/s vs limit 554 +/- 7 m/s; significance 8.3 sigma", "finding": "the three stars constitute a bound system", "support": "supported", "evidence": [{"loc": "Conclusions", "quote": "confirms that the three stars constitute a bound system"}]},
+{"hypothesis": "continued ALMA astrometry can detect planets in the stable region around A and B", "experiment": "noise-floor estimate from a hypothetical 20-epoch campaign with 100-500 microarcsec per-epoch precision", "result": "noise floor about 55 microarcsec, enough for a 25 Earth-mass planet at 2 AU", "finding": "sensitivity to planets of a few 10s of Earth masses at 1-3 AU is expected, not yet demonstrated", "support": "partially", "evidence": [{"loc": "abstract", "quote": "we will ultimately be sensitive to planets of a few 10s of Earth mass in orbits from 1-3 AU"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Band 7 chosen to balance SNR, angular resolution and field of view for 10-100 mJy stars at 2-21 arcsec separation", "evidence": [{"loc": "2.1 Observations", "quote": "From these parameters and looking to balance the SNR, the angular resolution and the field of view, we selected to observe in band 7."}]},
+{"field": "why_this_method", "value": "astrometric precision scales with angular resolution, so long baselines are preferred", "evidence": [{"loc": "2.1 Observations", "quote": "As the astrometric precision scales directly with the angular resolution, observations when ALMA is in configurations with maximum baselines of 2 km or larger are most desirable"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "RVs from CES and UVES rejected because zero-point shifts add fit variables and degrade reliability", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "We tested incorporating additional radial velocity measurements from other spectrographs (in particular CES and UVES)."}]},
+{"value": "astrometry older than 1940 excluded", "evidence": [{"loc": "3.2.1 Astrometry Data", "quote": "Measurements older than 1940 do not significantly improve the orbital parameters"}]},
+{"value": "earlier ALMA data of Liseau et al. not used for absolute astrometry (poorer resolution, no check source)", "evidence": [{"loc": "3.2.1 Astrometry Data", "quote": "cross checks using a check source or between adjacent observations are not possible with those observations"}]}
+],
+"limitations_admitted": [
+{"value": "absolute flux scale 10-15% uncertain because no primary flux standard observed", "evidence": [{"loc": "2.2 Data Reduction", "quote": "no primary flux calibration standards were observed, thus the absolute calibration uncertainty is 10-15"}]},
+{"value": "one October 2018 observation had a 20 mas offset attributed to a tracking error and was dropped", "evidence": [{"loc": "2.2.1 Absolute Astrometry", "quote": "believe it was caused by an error in the ALMA celestial position tracking system of"}]},
+{"value": "trigonometric parallax is poorly constrained by the few absolute points", "evidence": [{"loc": "3.3 Orbital parameters, masses and barycentric proper motion", "quote": "due to relatively poor phase coverage of the parallactic ellipse because of our limited number of absolute measurements"}]},
+{"value": "jitter estimate is only an order of magnitude", "evidence": [{"loc": "2.4 Astrometric Noise due to Stellar Activity", "quote": "This value represents only an order of magnitude estimate"}]},
+{"value": "alpha Cen A RVs could not be recomputed with the correct mask because the ESO pipeline is not public", "evidence": [{"loc": "3.2.2 Radial Velocity Data", "quote": "because that pipeline is not publicly accessible"}]}
+],
+"referee_caveats_inferred": [
+"Chromospheric fraction of alpha Cen A is 15 +/- 1.4 percent in one place and 32 +/- 13 percent in another, and B is 31 vs 36 percent (text vs Table 5); the jitter numbers depend on which is used",
+"Absolute uncertainty of 3 mas is a judgement from check-source offsets and pair differences, not a propagated error budget",
+"Only nine epochs and five blocks; the planet sensitivity is projected, not measured",
+"Self-calibration details are missing, so the differential separation cannot be exactly reproduced",
+"Solar chromospheric jitter template at 17 GHz is assumed to transfer to Band 7 emission of other stars"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "HARPS RVs publicly available from the ESO archive; ALMA data cited by project code, public status not stated", "evidence": [
+{"loc": "3.2.2 Radial Velocity Data", "quote": "obtained since 2004, publicly available from the ESO archive"},
+{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.00557.S."}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"CASA version and calibration route",
+"self-calibration recipe",
+"jmfit settings and per-epoch fit regions",
+"full tables of archival differential astrometry and RVs are only partially printed",
+"orbit-fit code not released; perspective and light-time corrections described only in prose"
+],
+"estimated_data_volume_inferred": "ALMA: nine 70-min Band 7 observations, likely tens of GB of raw/calibrated data; HARPS RVs: small tables",
+"score_inferred": 3,
+"score_reason": "ALMA project code and key imaging parameters (briggs 0, 5 mas, 2048 px), the orbit-fit method (leastsq), and numeric results are given, but CASA version, self-calibration, fit settings and some data tables are not.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Orbit and proper-motion refit is redoable from public RVs, the Hipparcos position and the published ALMA position tables; main results are numeric; the ALMA imaging and self-calibration steps are only partly specified.",
+"methods_papers": [
+{"citation": "Kervella et al. 2016 (cite: Kervella2016)", "why": "orbit and proper-motion fit approach followed"},
+{"citation": "Monet et al. 2010 (cite: Monet2010)", "why": "astrometric precision relation FWHM/(2 SNR)"},
+{"citation": "Makarov et al. 2009 (cite: Makarov2009)", "why": "starspot astrometric jitter model"},
+{"citation": "Mezger & Henderson 1967 (cite: Mezger1967)", "why": "free-free emission formula"}
+],
+"companion_papers": [
+{"citation": "Liseau et al. 2015, 2016 (cite: Liseau2015; Liseau2016)", "why": "earlier ALMA detections of both stars, flux comparison"},
+{"citation": "Kervella et al. 2017 (cite: Kervella2017a)", "why": "angular diameters of A and B"},
+{"citation": "Trigilio et al. 2018 (cite: Trigilio2018)", "why": "chromospheric properties for comparison"}
+],
+"related_projects_or_surveys": [
+"ALMA Cycle 6 project 2018.1.00557.S",
+"NEAR mid-infrared direct imaging project",
+"HARPS archive of alpha Cen"
+]
+}

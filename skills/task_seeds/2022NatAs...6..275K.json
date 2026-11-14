@@ -1,0 +1,547 @@
+{
+ "bibcode": "2022NatAs...6..275K",
+ "title": "Observational identification of a sample of likely recent common-envelope events",
+ "year": 2021,
+ "doi": "10.1038/s41550-021-01528-4",
+ "arxiv_id": "2112.09689",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What is the physical nature and evolutionary origin of water fountain (WF) sources, and are they binary systems that have recently undergone common-envelope evolution?",
+ "alma_project_codes": [
+  "2018.1.00250.S",
+  "2016.1.01032.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~1'' in Bands 3 and 6 (~0.6'' and ~0.7'' for IRAS 19134+2131); Band 7: 0.076'' x 0.065'' (IRAS 15445-5449) and 0.095'' x 0.06'' (IRAS 18043-2116)",
+  "sensitivity": "~1.5 mJy beam^-1 in Band 3 and ~1.8 mJy beam^-1 in Band 6 (at phase center in 3 km s^-1 channels)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distances to eight WF sources from SED integration",
+    "evidence": [
+     {
+      "loc": "Distances, luminosities, and nature of water fountains",
+      "quote": "For eight sources, we used the values obtained from integrating the spectral energy distribution and assuming a luminosity in the range expected for (post-)asymptotic giant branch (AGB) stars (cite: Vickers2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Vickers2015)"
+  },
+  {
+   "what": {
+    "value": "Distances and astrometric/statistical parallaxes or kinematic distances for remaining WF sources",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "References: a - (cite: Vickers2015), b - (cite: Sahai2017), c - kinematic distance estimated from (cite: Reid2019), d - (cite: Orosz2018; Orosz2019), e - (cite: Imai2013), f - (cite: Tafoya2020), g - (cite: Vlemmings2014), h - (cite: Imai2007)."
+     }
+    ]
+   },
+   "citation": "(cite: Sahai2017), (cite: Reid2019), (cite: Orosz2018; Orosz2019), (cite: Imai2013), (cite: Tafoya2020), (cite: Vlemmings2014), (cite: Imai2007)"
+  },
+  {
+   "what": {
+    "value": "Sizes, expansion velocities, and ages of outflows for individual WF sources",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "References: a - (cite: Gomez2018), b - Fig. [4](#fig:Andres) (and Perez-Sanchez et al., in prep), c - (cite: Sahai2017), d - ALMA observations presented here; e - (cite: Orosz2019), f - (cite: Tafoya2020), g - (cite: Imai2013b), h - estimated from (cite: Suarez2008), i - estimated from (cite: Gomez2017), j - (cite: Imai2020), k - (cite: Vlemmings2014), l - (cite: Imai2007), m - (cite: Day2010)."
+     }
+    ]
+   },
+   "citation": "(cite: Gomez2018), (cite: Sahai2017), (cite: Orosz2019), (cite: Tafoya2020), (cite: Imai2013b), (cite: Suarez2008), (cite: Gomez2017), (cite: Imai2020), (cite: Vlemmings2014), (cite: Imai2007), (cite: Day2010)"
+  },
+  {
+   "what": {
+    "value": "16O/18O ratios for a combined sample of 93 AGB stars",
+    "evidence": [
+     {
+      "loc": "Calculation of gas masses , average mass-loss rates and isotopic ratios",
+      "quote": "By combining the ratios determined for a total sample of 93 AGB stars (cite: Hinkle2016; Lebzelter2019), we find a mean value for the $^{16}$O/$^{18}$O ratio of 762 and a median value of 513."
+     }
+    ]
+   },
+   "citation": "(cite: Hinkle2016; Lebzelter2019)"
+  },
+  {
+   "what": {
+    "value": "Initial mass function, Galactic star formation history, recent Galactic star formation rate, and close binary fractions",
+    "evidence": [
+     {
+      "loc": "Water-fountain and common-envelope systems formation rates",
+      "quote": "We perform a simple analysis using the initial mass function (cite: Kroupa2001) scaled to the recently determined star formation history of the Milky Way (cite: Ruiz-Lara2020)."
+     },
+     {
+      "loc": "Water-fountain and common-envelope systems formation rates",
+      "quote": "This relative star formation history is further scaled to the average recent Galactic star formation rate of $1.65\\pm0.19$ M$_\\odot$ yr$^{-1}$ (cite: Licquia2015)."
+     },
+     {
+      "loc": "Water-fountain and common-envelope systems formation rates",
+      "quote": "We then apply the criteria for CE envelope evolution at the late-RGB or early-AGB (a mass ratio $>0.1$ and period $<10$ yr) and the corresponding close binary fractions (cite: Moe2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Kroupa2001), (cite: Ruiz-Lara2020), (cite: Licquia2015), (cite: Moe2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract integrated line fluxes of CO isotopologues",
+   "method": "Integrate emission over the velocity range of the slowly expanding outflow (expansion velocity plus 5 km/s turbulence) and correct 12CO for narrow Galactic interstellar emission where present",
+   "software": [],
+   "key_parameters": [
+    "v_exp = 20 km/s (+ 5 km/s turbulence) for most sources; 23 km/s for IRAS 15103-5754; 25 km/s for IRAS 18450-0148; 65 km/s for IRAS 15445-5449"
+   ],
+   "assumptions": [
+    "12C17O and 12C18O lines arise mostly from the slowly expanding envelope component"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive 17O/18O isotopic ratios and initial stellar masses",
+   "method": "Calculate 17O/18O from integrated 12C17O(1-0) and 12C18O(2-1) line fluxes assuming optically thin LTE emission, then compare to stellar evolution models",
+   "software": [],
+   "key_parameters": [
+    "T_exc = 100 K"
+   ],
+   "assumptions": [
+    "Optically thin emission, Boltzmann distribution at T_exc = 100 K, and initial solar composition"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate circumstellar H2 gas masses and optical depths",
+   "method": "Compute total 12C18O molecules from integrated 12C18O(2-1) flux under optically thin LTE, convert to H2 mass via fractional abundance; for non-detections use 3-sigma 12C18O upper limits and 13CO(2-1) lower limits; compute line-center optical depth",
+   "software": [],
+   "key_parameters": [
+    "T_exc = 100 K (40 K for 13CO lower limits)",
+    "X(12C18O) = 5.3e-7 (from X(12C16O) = 3e-4 and 16O/18O = 570)"
+   ],
+   "assumptions": [
+    "Optically thin 12C18O(2-1) emission, box-shaped line profile for optical depth, 16O/18O = 570, X(12C16O) = 3e-4, 12C/13C = 5 for 13CO lower limits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate outflow ages and average mass-loss rates",
+   "method": "Determine outflow age Delta_t = R / v_exp from resolved slow CO outflow sizes (including Band 7 13CO(3-2) maps), H2O maser extents, or ALMA upper limits, and compute Delta_M_H2 / Delta_t = M_H2 * (v_exp / R)",
+   "software": [],
+   "key_parameters": [
+    "Source radii R and ages Delta_t in Tables 1 and 3"
+   ],
+   "assumptions": [
+    "Ballistic expansion at the present expansion speed of the low-velocity gas"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare Galactic water-fountain formation rate with Common-Envelope event rate",
+   "method": "Estimate WF formation rate from 15 known sources and 200 yr lifetime; integrate Kroupa IMF scaled to Milky Way SFH/SFR and close binary fractions (mass ratio > 0.1, period < 10 yr) for stars 0.8-8.0 M_sun",
+   "software": [],
+   "key_parameters": [
+    "15 WF sources; WF lifetime ~ 200 yr; Galactic SFR = 1.65 +/- 0.19 M_sun yr^-1; M > 0.95 M_sun; binary mass ratio > 0.1 and period < 10 yr"
+   ],
+   "assumptions": [
+    "Kroupa IMF, Milky Way SFH of Ruiz-Lara et al. 2020, binary fractions of Moe & Di Stefano 2015"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12C16O/13C16O integrated line ratio range across sample",
+   "value": "2.2 to 6.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The $^{12}$C$^{16}$O/$^{13}$C$^{16}$O line ratios have relatively low values (between 2.2 and 6.0), which are in agreement with previously reported values (cite: Imai2012; Sahai2017)."
+    }
+   ]
+  },
+  {
+   "quantity": "OCS/O13CS (J=19-18) integrated line flux ratio in IRAS 15445-5449",
+   "value": "7.2",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "For IRAS 15445-5449, we detected the $J=19-18$ line of Carbonyl Sulfide (OCS) and the O$^{13}$CS isotopologue. The integrated-line-flux ratio is $7.2\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "APEX 12C18O(2-1) velocity-integrated flux for IRAS 16342-3814",
+   "value": "2.2",
+   "uncertainty": "0.3",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "Both transitions were detected with velocity-integrated fluxes of $2.2\\pm0.3$ Jy km s$^{-1}$ and $1.36\\pm0.28$ Jy km s$^{-1}$ for the $^{12}$C$^{18}$O and $^{12}$C$^{17}$O lines respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "APEX 12C17O(2-1) velocity-integrated flux for IRAS 16342-3814",
+   "value": "1.36",
+   "uncertainty": "0.28",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "Both transitions were detected with velocity-integrated fluxes of $2.2\\pm0.3$ Jy km s$^{-1}$ and $1.36\\pm0.28$ Jy km s$^{-1}$ for the $^{12}$C$^{18}$O and $^{12}$C$^{17}$O lines respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "12C17O (J=2-1)/(J=1-0) line ratio in IRAS 16342-3814",
+   "value": "17",
+   "uncertainty": "6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Calculation of gas masses , average mass-loss rates and isotopic ratios",
+     "quote": "The ratio between the $J=2-1$ and the $J=1-0$ $^{12}$C$^{17}$O lines is $17\\pm6$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred initial stellar mass for IRAS 15445-5449 and IRAS 16342-3814",
+   "value": "<= 1.4",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The derived upper limit for IRAS 15445-5449 and $^{17}$O/$^{18}$O ratio for IRAS 16342-3814 imply initial stellar masses $\\lesssim 1.4$ M$_\\odot$ for these two sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred initial stellar mass range for six WFs with measured 17O/18O",
+   "value": "1.8 to 4",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "For the other six sources with measured $^{17}$O/$^{18}$O ratio, the values imply initial masses between 1.8 and 4 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 15103-5754",
+   "value": "2.05",
+   "uncertainty": "0.33",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 15103$-$5754 | 3.4 | $0.68$ | $278$ | $2.05 \\pm 0.33$ | $206$ | $3.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 15445-5449",
+   "value": "<0.93",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 15445$-$5449 | 4.4 | $0.55$ | $>630$ | $<0.93$ | $110$ | $3.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 16342-3814",
+   "value": "0.50",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 16342$-$3814 | 2.2 | $0.29$ | $1140$ | $0.50 \\pm 0.15$ | $150$ | $2.0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 18043-2116",
+   "value": "3.7",
+   "uncertainty": "1.0",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18043$-$2116 | 8.2 | $0.62$ | $154$ | $3.7\\pm 1.0$ | $195$ | $1.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 18113-2503",
+   "value": "5.8",
+   "uncertainty": "1.6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18113$-$2503 | 12.0 | $0.87$ | $98$ | $5.8 \\pm 1.6$ | $65$ | $14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 18450-0148",
+   "value": "1.8",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18450$-$0148 | 2.2 | $0.24$ | $317$ | $1.8\\pm 0.3$ | $95$ | $2.5$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 18460-0151",
+   "value": "1.8",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18460$-$0151 | 3.1 | $0.27$ | $320$ | $1.8\\pm 0.4$ | $150$ | $2.0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O/C18O abundance ratio for IRAS 18596+0315",
+   "value": "3.7",
+   "uncertainty": "0.8",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18596$+$0315 | 8.3 | $0.80$ | $154$ | $3.7 \\pm 0.8$ | $<1000$ | $> 0.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 15103-5754",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 15103$-$5754 | 3.4 | $0.68$ | $278$ | $2.05 \\pm 0.33$ | $206$ | $3.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 15445-5449",
+   "value": "0.55",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 15445$-$5449 | 4.4 | $0.55$ | $>630$ | $<0.93$ | $110$ | $3.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 16342-3814",
+   "value": "0.29",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 16342$-$3814 | 2.2 | $0.29$ | $1140$ | $0.50 \\pm 0.15$ | $150$ | $2.0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 18043-2116",
+   "value": "0.62",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18043$-$2116 | 8.2 | $0.62$ | $154$ | $3.7\\pm 1.0$ | $195$ | $1.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 18113-2503",
+   "value": "0.87",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18113$-$2503 | 12.0 | $0.87$ | $98$ | $5.8 \\pm 1.6$ | $65$ | $14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 18450-0148",
+   "value": "0.24",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18450$-$0148 | 2.2 | $0.24$ | $317$ | $1.8\\pm 0.3$ | $95$ | $2.5$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 18460-0151",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18460$-$0151 | 3.1 | $0.27$ | $320$ | $1.8\\pm 0.4$ | $150$ | $2.0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slow-outflow H2 gas mass for IRAS 18596+0315",
+   "value": "0.80",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18596$+$0315 | 8.3 | $0.80$ | $154$ | $3.7 \\pm 0.8$ | $<1000$ | $> 0.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average H2 mass-loss rate for IRAS 15103-5754",
+   "value": "3.3",
+   "uncertainty": "factor of 5",
+   "units": "10^-3 M_odot/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 15103$-$5754 | 3.4 | $0.68$ | $278$ | $2.05 \\pm 0.33$ | $206$ | $3.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average H2 mass-loss rate for IRAS 18113-2503",
+   "value": "14",
+   "uncertainty": "factor of 5",
+   "units": "10^-3 M_odot/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 18113$-$2503 | 12.0 | $0.87$ | $98$ | $5.8 \\pm 1.6$ | $65$ | $14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Water-fountain formation rate in the Milky Way",
+   "value": ">0.075",
+   "uncertainty": "not stated",
+   "units": "yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The duration of the WF phase ($\\sim 200$ years, Table [\\[Tab:isotRatios\\]](#Tab:isotRatios)) and the 15 known sources imply a formation rate of $>0.075$ WF per year in the Milky Way."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated Galactic Common-Envelope event rate for low-mass stars (0.8-8.0 M_odot)",
+   "value": "0.15 (0.148 in Table 5)",
+   "uncertainty": "0.05 (0.049 in Table 5)",
+   "units": "yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Considering the star formation rate of the Milky Way and the observed binary fraction per mass bin, we estimate that $0.15 \\pm 0.05$ binary systems per year will evolve through the CE phase"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "| Total (0.8-8.0) | 0.148 $\\pm$ 0.049 | 0.706 $\\pm$ 0.233 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total rate of stars (0.8-8.0 M_odot) reaching the end of the AGB phase in the Milky Way",
+   "value": "0.706",
+   "uncertainty": "0.233",
+   "units": "yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Water-fountain and common-envelope systems formation rates",
+     "quote": "The rate can also be compared to a total rate of $0.706\\pm0.233$ yr$^{-1}$ for stars evolving through the AGB."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "| Total (0.8-8.0) | 0.148 $\\pm$ 0.049 | 0.706 $\\pm$ 0.233 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral extraction aperture sizes and shapes used to extract the 1D spectra and integrated line fluxes in Table 2",
+  "Exact method used to interpolate/correct for Galactic 12CO contamination in the eight affected sources",
+  "Self-calibration solution intervals (solint) and S/N thresholds used in Band 3 and Band 6 reduction",
+  "Line-free channel ranges and polynomial order used in CASA uvcontsub",
+  "Exact tclean stopping criteria, masking, and pixel cell sizes for Bands 3, 6, and 7",
+  "Exact molecular spectroscopic constants (Einstein A coefficients, partition functions Z(T)) used in the mass and isotopic ratio equations"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral extraction apertures/regions used to measure the integrated line fluxes in Table 2",
+  "Exact procedure/interpolation used to remove Galactic 12CO contamination",
+  "Self-calibration parameters (solution intervals, S/N thresholds) and tclean imaging parameters (masking, stopping thresholds, cell sizes)",
+  "Exact values of the molecular constants (Einstein A, partition functions Z(100 K)) plugged into the analytic equations"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Both ALMA project codes (2018.1.00250.S, 2016.1.01032.S) and the APEX project code are explicitly stated, spectral setups and CASA pipeline versions are documented, and the analytic LTE equations and input parameters (distances, velocities, radii, T_exc, abundances) are fully written out alongside intermediate integrated fluxes in Table 2. Minor deductions for unstated spectral extraction apertures, self-calibration solution intervals, and Galactic CO subtraction details.",
+ "rediscovery_reason": "Public ALMA data for a well-defined 15-source sample with explicit analytic LTE equations and complete tabular intermediate measurements (integrated line fluxes, distances, sizes, expansion velocities) leading directly to numeric gas masses, isotopic ratios, and mass-loss rates.",
+ "source_card": "cards/2022NatAs...6..275K/sonnet/card.md"
+}

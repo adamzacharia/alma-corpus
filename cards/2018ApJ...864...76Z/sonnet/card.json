@@ -1,0 +1,1036 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...864...76Z",
+  "title": "Rotation in the NGC 1333 IRAS 4C Outflow",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Zhang, Yichen",
+  "n_authors": 11,
+  "arxiv_id": "1808.00346",
+  "doi": "10.3847/1538-4357/aad7ba",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01501.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report molecular line observations of the NGC 1333 IRAS 4C outflow in the Perseus Molecular Cloud with the Atacama Large Millimeter/Submillimeter Array."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1333 IRAS 4C",
+     "coordinates": {
+      "value": "RA(J2000)=03h29m13.55s, Dec=+31d13m58.11s (continuum peak)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located in the NGC 1333 star-forming region in the Perseus Molecular Cloud at a distance of 235 pc ((cite: Hirota08))"
+       },
+       {
+        "loc": "Observations",
+        "quote": "The continuum peak is derived to be at $(\\alpha_{2000},\\delta_{2000})=(3^{\\mathrm{h}}29^{\\mathrm{m}}13^{\\mathrm{s}}.55$, $+31^\\circ13\\ensuremath{'}58\\ensuremath{''}.11)$."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "235 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located in the NGC 1333 star-forming region in the Perseus Molecular Cloud at a distance of 235 pc ((cite: Hirota08))"
+       },
+       {
+        "loc": "Observations",
+        "quote": "The continuum peak is derived to be at $(\\alpha_{2000},\\delta_{2000})=(3^{\\mathrm{h}}29^{\\mathrm{m}}13^{\\mathrm{s}}.55$, $+31^\\circ13\\ensuremath{'}58\\ensuremath{''}.11)$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Hirota08",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located in the NGC 1333 star-forming region in the Perseus Molecular Cloud at a distance of 235 pc ((cite: Hirota08))"
+       },
+       {
+        "loc": "Observations",
+        "quote": "The continuum peak is derived to be at $(\\alpha_{2000},\\delta_{2000})=(3^{\\mathrm{h}}29^{\\mathrm{m}}13^{\\mathrm{s}}.55$, $+31^\\circ13\\ensuremath{'}58\\ensuremath{''}.11)$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Does the IRAS 4C molecular outflow rotate, and what do its angular momentum and launching radii imply for the launching mechanism (X-wind vs disk wind)?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we estimate the range of outflow launching radii to be $5-15$ au."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "by measuring the outflow rotation, one can constrain the launching radii of the outflow."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01501.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Perseus ALMA Chemical Survey (PEACHES; ALMA project 2016.1.01501.S; PI: N. Sakai)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out in ALMA band 6 for four times from Nov. 26 to Nov. 30, 2016."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "velocity resolution about 0.14 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The molecular lines were observed with velocity resolutions of about 0.14 $\\mbox{km s}^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CCH",
+     "transition": "N=3-2, J=5/2-3/2, F=3-2",
+     "rest_frequency": "262.0649860 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CCH | $N=3-2,~J=5/2-3/2,~F=3-2$ | 262.0649860 |"
+      }
+     ]
+    },
+    {
+     "species": "CCH",
+     "transition": "N=3-2, J=5/2-3/2, F=2-1",
+     "rest_frequency": "262.0674690 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CCH | $N=3-2,~J=5/2-3/2,~F=2-1$ | 262.0674690 |"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=5-4",
+     "rest_frequency": "244.9355565 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CS | $J=5-4$ | 244.9355565 |"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "J_N=6_6-5_5",
+     "rest_frequency": "258.2558259 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| SO | $J_N=6_6-5_5$ | 258.2558259 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "938 MHz spectral window",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "a spectral window with a bandwidth of 938 MHz was used to map the 1.3 mm continuum."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15 to 700 m; 40 to 42 antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "40 to 42 antennas were used and the baselines range from 15 to 700 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "continuum 0.65\" x 0.41\" (PA -6.8 deg); lines in Table 1",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The resulting synthesized beam of the continuum data is $0.65\\ensuremath{''} \\times 0.41\\ensuremath{''}$ ($\\mathrm{P.A.}=-6.8^\\circ$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "about 4\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The largest recoverable scale is about $4\\ensuremath{''}$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "10 min per source",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total integration time per source is 10 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Nov. 26 to Nov. 30, 2016",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out in ALMA band 6 for four times from Nov. 26 to Nov. 30, 2016."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PEACHES, PI N. Sakai",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Perseus ALMA Chemical Survey (PEACHES; ALMA project 2016.1.01501.S; PI: N. Sakai)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust opacity kappa_1.3mm=0.899 cm2/g",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "dust opacity of (cite: Ossenkopf94) ($\\kappa_\\mathrm{1.3mm}=0.899~\\mathrm{cm}^2~\\mathrm{g}^{-1}$)"
+       }
+      ]
+     },
+     "citation": "(cite: Ossenkopf94)"
+    },
+    {
+     "what": {
+      "value": "Line frequencies and parameters from CDMS",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Information taken from the CDMS database ((cite: Muller05))"
+       }
+      ]
+     },
+     "citation": "(cite: Muller05)"
+    },
+    {
+     "what": {
+      "value": "Inclination about 25 deg from Segura-Cox et al.",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "to about $25^\\circ$ between the disk plane and the line of sight ((cite: SeguraCox16))"
+       }
+      ]
+     },
+     "citation": "(cite: SeguraCox16)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0238+1636 (bandpass J0237+2848, phase J0336+3218)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "J0237+2848 was used as the bandpass calibrator, J0238+1636 was used as the flux calibrators, and J0336+3218 was used as the phase calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "phase and amplitude self-cal on continuum, applied to line data",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Self-calibration to the phase and amplitude was performed using the continuum data after the normal calibration, and applied to the molecular line data."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN in CASA",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The CLEAN algorithm was used to image the data."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Robust weighting with the robust parameter of 0.5 was used in the clean process."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "own clean region per channel around brightest emission",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "For the spectral data we defined its own clean region for each channel, encircling the area with the brightest emission."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "continuum 0.65\"x0.41\"; lines 0.64x0.41 (CCH, SO), 0.68x0.43 (CS)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CS | $J=5-4$ | 244.9355565 | 35.3 | 19.17 | $0.68\\ensuremath{''}\\times0.43\\ensuremath{''}$ ($\\mathrm{P.A.}=-6.8^\\circ$) |"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Launching radius derived following Anderson et al. method (Eq. 4)",
+      "evidence": [
+       {
+        "loc": "4.2.3 Launching Radius",
+        "quote": "following the method of (cite: Anderson03) (their Eq. 4)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Anderson03)"
+    },
+    {
+     "what": {
+      "value": "Magnetic lever arm via Eq. 10 of Ferreira et al.",
+      "evidence": [
+       {
+        "loc": "4.2.3 Launching Radius",
+        "quote": "Following Eq. 10 of (cite: Ferreira06), we derive the magnetic lever arm $\\lambda$"
+       }
+      ]
+     },
+     "from_reference": "(cite: Ferreira06)"
+    },
+    {
+     "what": {
+      "value": "Protostellar mass from centrifugal barrier M=V^2R/(2G)",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "Following (cite: Sakai14), we then estimate the protostellar mass to be $M_*=V_\\mathrm{CB}^2 R_\\mathrm{CB}/(2G)\\approx0.18~M_\\odot$"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sakai14)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and whether the pipeline or manual calibration was used",
+    "Self-calibration solution intervals and number of iterations",
+    "Flux calibrator flux density and calibration uncertainty",
+    "Cell size, image size, clean threshold, deconvolver",
+    "Continuum-free channels / continuum subtraction method",
+    "Exact peak-finding procedure and uncertainties per z cut in the PV diagrams",
+    "Whether primary beam correction was applied",
+    "Exact outflow axis center used and Anderson03 equation implementation details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image continuum and line data",
+    "method": {
+     "value": "CASA calibration, phase+amplitude self-cal on continuum applied to lines, CLEAN imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated and imaged in CASA ((cite: McMullin07))."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Robust weighting with the robust parameter of 0.5 was used in the clean process."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Continuum mass",
+    "method": {
+     "value": "Total flux above 3 sigma within 2\" converted to mass",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The total continuum flux above $3\\sigma$ within a radius of 2$\\ensuremath{''}$ is 95 mJy, which corresponds to a mass of 0.061 $M_\\odot$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T=30 K, kappa_1.3mm=0.899 cm2/g (Ossenkopf94), gas-to-dust 100",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "assuming a temperature of 30 K, dust opacity of (cite: Ossenkopf94) ($\\kappa_\\mathrm{1.3mm}=0.899~\\mathrm{cm}^2~\\mathrm{g}^{-1}$), and the standard gas-to-dust mass ratio of 100."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure outflow rotation and specific angular momentum from PV cuts",
+    "method": {
+     "value": "PV cuts perpendicular to the outflow axis at each z; locate emission peaks of northern and southern walls; derive R_out, V_rot, j=R_out V_rot",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "The specific angular momentum is then $j(z)=R_\\mathrm{out}(z)V_\\mathrm{rot}(z)$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "cuts 0.5\" wide, z=+0.5\" to +6\" (east), peaks defined as 0.9x peak intensity, PA of axis 96 deg",
+      "evidence": [
+       {
+        "loc": "4.2.1",
+        "quote": "Each cut has a width of 0.5$\\ensuremath{''}$ and has a distance to the central source ranging from $z=+0.5\\ensuremath{''}$ to $z=+6\\ensuremath{''}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "edge-on inclination for rotation velocity",
+      "evidence": [
+       {
+        "loc": "4.2.2",
+        "quote": "Assuming an edge-on inclination, the rotation velocity is $V_\\mathrm{rot}(z)=[V_\\mathrm{lsr,S}(z)-V_\\mathrm{lsr,N}(z)]/2$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "parabolic cavity shape z=0.79R^2+0.089",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "The shape of the CCH outflow cavity can be described by a parabolic function $z=0.79R^2+0.089$ with both $z$ and $R$ in arcsec."
+      }
+     ]
+    },
+    "validation": {
+     "value": "uncertainties from velocity dispersions and wall widths",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "we calculate the velocity dispersions of the emission relative to $V_\\mathrm{lsr,N}$ and $V_\\mathrm{lsr,S}$ as the uncertainties in velocities"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive launching radius and magnetic lever arm",
+    "method": {
+     "value": "Anderson03 method using R_out, V_rot, V_p, protostar mass; lever arm from Ferreira06",
+     "evidence": [
+      {
+       "loc": "4.2.3",
+       "quote": "can be constrained by the outflow radius $R_\\mathrm{out}$, the rotation velocity $V_\\mathrm{rot}$, and the poloidal velocity of the outflow $V_p$, combined with the protostellar mass $m_*$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "V_p = 1, 3, 10, 30 km/s; m* = 0.1, 0.2, 0.4 Msun",
+      "evidence": [
+       {
+        "loc": "4.2.3",
+        "quote": "We adopt four values of $V_p$ (1, 3, 10 and 30 $\\mbox{km s}^{-1}$) in the calculation."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "inclination 5-25 deg; fiducial mass 0.2 Msun",
+      "evidence": [
+       {
+        "loc": "4.2.3",
+        "quote": "which we adopt as the fiducial value of the protostellar mass."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Centrifugal barrier and protostellar mass",
+    "method": {
+     "value": "CS highest velocity/position (method 1) and SO outer radius and max velocity (method 2) in mid-plane PV diagrams; M=V^2R/(2G)",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "we use the highest velocity seen in CS and its position as the velocity and radius of the centrifugal barrier"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CS traces envelope outside barrier; SO enhanced at barrier",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "assuming that CS only traces the envelope outside of the centrifugal barrier"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "two independent estimates give same mass",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "$M_*=V_\\mathrm{CB}^2 R_\\mathrm{CB}/(2G)\\approx0.18~M_\\odot$ from both sets of estimations."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration, self-calibration and imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated and imaged in CASA ((cite: McMullin07))."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Mean specific angular momentum of outflow",
+    "value": "about 100",
+    "uncertainty": "std dev 40",
+    "units": "au km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "The mean value of the specific angular momentum is about 100 $\\mbox{au km s}^{-1}$ with a standard deviation of 40 $\\mbox{au km s}^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Outflow axis position angle",
+    "value": "96",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The position angle of this outflow axis is 96$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotation velocity at z=0.5\" and 6\"",
+    "value": "0.5 and 0.1",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "from about 0.5 $\\mbox{km s}^{-1}$ at $z=0.5\\ensuremath{''}$ (120 au) to about 0.1 $\\mbox{km s}^{-1}$ at $z=6\\ensuremath{''}$ (1400 au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Outflow median velocity",
+    "value": "7.5",
+    "uncertainty": "std 0.07",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "with a mean value of about 7.5 $\\mbox{km s}^{-1}$ and standard deviation of 0.07 $\\mbox{km s}^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Launching radius (V_p=3 km/s, 0.2 Msun)",
+    "value": "15",
+    "uncertainty": "std 7",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2.3",
+      "quote": "mean value of 15 au and a standard deviation of 7 au for the case of $V_p=3~\\mbox{km s}^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Launching radius (V_p=10 km/s, 0.2 Msun)",
+    "value": "5.6",
+    "uncertainty": "std 1.8",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2.3",
+      "quote": "a mean value of 5.6 au and a standard deviation of 1.8 au for the case of $V_p=10~\\mbox{km s}^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum flux within 2\"",
+    "value": "95",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The total continuum flux above $3\\sigma$ within a radius of 2$\\ensuremath{''}$ is 95 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum mass",
+    "value": "0.061",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "which corresponds to a mass of 0.061 $M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Centrifugal barrier radius (CS / SO methods)",
+    "value": "50 / 140",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "which gives $V_\\mathrm{CB1}=2.5~\\mbox{km s}^{-1}$ and $R_\\mathrm{CB1}=0.2\\ensuremath{''}$, i.e. 50 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Protostellar mass from centrifugal barrier",
+    "value": "0.18",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "$M_*=V_\\mathrm{CB}^2 R_\\mathrm{CB}/(2G)\\approx0.18~M_\\odot$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CCH traces the outflow cavity walls while CS traces envelope; CCH is absent on the disk/envelope mid-plane.",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "While the CCH emission appears to mostly trace the outflow cavity structure, the CS emission traces the envelope."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the IRAS 4C outflow rotating?",
+    "experiment": "CCH PV cuts perpendicular to the outflow axis",
+    "result": "Northern wall blue-shifted, southern red-shifted; V_rot 0.5 to 0.1 km/s from 120 to 1400 au",
+    "finding": "The outflow rotates about its axis with flat specific angular momentum ~100 au km/s",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The observed velocity pattern of the CCH emission is dominated by the rotation of the outflow cavity walls around its axis."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the outflow an X-wind or a disk wind?",
+    "experiment": "Launching radius from angular momentum with assumed V_p and protostar mass",
+    "result": "Launching radii 5-15 au (1-50 au with uncertainties)",
+    "finding": "Consistent with a slow disk wind from relatively large radii, not an X-wind",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Such a launching radius rules out that this outflow is launched as an X-wind"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the centrifugal barrier relate to outflow launching?",
+    "experiment": "CS and SO PV diagrams along the mid-plane",
+    "result": "Barrier radius 50-140 au versus launching 5-15 au",
+    "finding": "Link unclear given resolution and different radii",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "it is not clear whether the centrifugal barrier is directly related to the outflow launching in this source"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Measuring outflow rotation constrains launching radii since transferred angular momentum depends on launching radius",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "by measuring the outflow rotation, one can constrain the launching radii of the outflow."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Entrained outflow rejected because of the smooth, clear rotation over large distances",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "the fact that we detect clear and smooth distribution of rotation over a large distance suggests that what we detected is unlikely to be an entrained outflow."
+      }
+     ]
+    },
+    {
+     "value": "Infall explanation for CCH disfavored",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "Therefore, the CCH emission in this source, at least in the part distant from the disk mid-plane, is most likely tracing the outflowing gas."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution insufficient to resolve the launching region or the centrifugal barrier; estimates highly uncertain.",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "Therefore the above estimated radius and specific angular momentum are highly uncertain."
+      }
+     ]
+    },
+    {
+     "value": "Interferometer recovers about 1/3 of single-dish CCH flux.",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "our ALMA observation covers about 1/3 of the single dish fluxes."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Launching radius depends strongly on assumed V_p, inclination and mass, not measured",
+    "Only ~10 min per source at ~0.5\" resolution; rotation of 0.1-0.5 km/s is near the 0.14 km/s channel width",
+    "Peak-picking from PV diagrams may be affected by cavity-wall geometry and expanding shell or infall contamination",
+    "Edge-on assumption for V_rot"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data acknowledged; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.01501.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and exact imaging parameters",
+    "Self-cal details",
+    "Peak-finding and uncertainty procedure for the PV analysis",
+    "Exact implementation of Anderson03 equation inputs"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for the PEACHES project; a few GB for this single source",
+   "score_inferred": 3,
+   "score_reason": "Data and many settings are given, but the CASA version, self-cal details and manual peak-picking are unspecified; the analysis is simple and numeric.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "The archival ALMA data are linked to the paper, the recipe (imaging, PV cuts, formulas) is mostly specified, and the results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Anderson03)",
+     "why": "Launching radius method"
+    },
+    {
+     "citation": "(cite: Ferreira06)",
+     "why": "Magnetic lever arm"
+    },
+    {
+     "citation": "(cite: Sakai14)",
+     "why": "Centrifugal barrier and mass estimate"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Higuchi17)",
+     "why": "IRAM 30 m CCH observations and systemic velocity"
+    },
+    {
+     "citation": "(cite: Tobin15)",
+     "why": "Previous IRAS 4C observations and inclination/outflow axis"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PEACHES (Perseus ALMA Chemical Survey)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-6a1bdc3227398e777779ca9976a5d7d8",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:10",
+  "usage": {
+   "input_tokens": 21373,
+   "output_tokens": 9042,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.067189,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 71,
+  "quotes_ok": 71,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 48,
+   "rate": 0.623
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:34:52",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[3].validation",
+    "old_value": "parameter space explored over V_p and m*"
+   }
+  ],
+  "dropped_items": []
+ }
+}

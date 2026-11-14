@@ -1,0 +1,247 @@
+{
+ "bibcode": "2018ApJ...859..103W",
+ "title": "Extended Millimeter Emission in the HD 141569 Circumstellar Disk Detected with ALMA",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac088",
+ "arxiv_id": "1804.09724",
+ "fields": [
+  "protoplanetary_disks",
+  "debris_disks"
+ ],
+ "question": "Is there extended millimeter emission exterior to the inner disk of HD 141569, and how do the grain size distributions of the inner and outer disks compare?",
+ "alma_project_codes": [
+  "2012.1.00698.S",
+  "2015.1.01600.S",
+  "2013.1.00883.S"
+ ],
+ "data": {
+  "bands": "345, 230 and 100 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "230 GHz: 1.03 x 0.99 arcsec, PA 70.8 deg",
+  "sensitivity": "230 GHz: 130 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "345 GHz ALMA data previously published",
+    "evidence": [
+     {
+      "loc": "Observational Data",
+      "quote": "The 345 and 100 GHz data were published previously by (cite: white16) and (cite: white17), respectively."
+     }
+    ]
+   },
+   "citation": "(cite: white16)"
+  },
+  {
+   "what": {
+    "value": "HST scattered light image",
+    "evidence": [
+     {
+      "loc": "Observational Data",
+      "quote": "a PSF subtracted HST scattered light image from (cite: konishi)"
+     }
+    ]
+   },
+   "citation": "(cite: konishi)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Bin visibilities",
+   "method": "Annular averaging of visibilities for each frequency",
+   "software": [],
+   "key_parameters": [
+    "10 klambda bins; uncertainty is the standard deviation per bin"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit single-component disk model",
+   "method": "MCMC fit of a surface brightness ∝ r^-1 disk with inner and outer edges to all three data sets at once",
+   "software": [],
+   "key_parameters": [
+    "Free: 345 GHz flux, spectral index, disk center, width; uniform priors flux 0.01-50 mJy, disk 0.1-300 au, index 0-4"
+   ],
+   "assumptions": [
+    "Flux follows a single power law in frequency"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit two-component disk model",
+   "method": "MCMC fit of inner and outer disks, each with own center, width and spectral index; non-overlapping",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Azimuthally averaged radial profiles",
+   "method": "Sum flux in elliptical apertures from images, normalize and compare with HST",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive grain size distribution slope q",
+   "method": "q = (alpha_mm - alpha_pl)/beta_s + 3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta_s = 1.8±0.2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate dust mass",
+   "method": "Optically thin single grain size mass, and a full size distribution mass for 10 um to 3 mm grains",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "rho = 1 g/cm3, T*=10500 K, L*=24.2 Lsun, d=111 pc, albedo~0, grain radius = wavelength"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Inner disk extent (two-component)",
+   "value": "16 to 45 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The inner disk ranges from approximately 16 to 45 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk extent",
+   "value": "95 to 300 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the outer disk ranges from 95 to 300 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk spectral index",
+   "value": "1.81",
+   "uncertainty": "±0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The best fit spectral indicies of $1.81\\pm0.15$ and $2.28^{+0.43}_{-0.29}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk spectral index",
+   "value": "2.28",
+   "uncertainty": "+0.43/-0.29",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The best fit spectral indicies of $1.81\\pm0.15$ and $2.28^{+0.43}_{-0.29}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk q",
+   "value": "2.95",
+   "uncertainty": "±0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "corresponds to a grain size distribution of $q =2.95\\pm0.10$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk q",
+   "value": "3.21",
+   "uncertainty": "+0.30/-0.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$q=3.21^{+0.30}_{-0.16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average reduced chi2 single vs two-component",
+   "value": "1.72 vs 1.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Average $\\chi^{2}_{red}$       | 1.72                               | 1.08"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass in 10 um-3 mm solids, inner and outer disk",
+   "value": "0.041 and 0.18",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "roughly 0.041 $\\rm M_{\\oplus}$ of small solids in the inner disk and 0.18 $\\rm M_{\\oplus}$ of small solids in the outer disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer disk 345 GHz flux (two-component)",
+   "value": "11",
+   "uncertainty": "95% range 8.4-13",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Two-Component Model",
+     "quote": "For the outer disk, the best fit 345 GHz flux is 11 mJy"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Disk inclination and position angle values used for the models and the radial profiles",
+  "Phase center and stellar position",
+  "Imaging parameters for the continuum images (weighting, cell, size)",
+  "Details of the 345 and 100 GHz calibration",
+  "MCMC settings (chain length, walkers, burn-in, step size)",
+  "Dust temperature used for alpha_pl",
+  "Which channels or SPWs were used as continuum",
+  "Visibility weighting and any flux scale corrections"
+ ],
+ "missing_for_reproduction": [
+  "MCMC code details and settings",
+  "Disk geometry values",
+  "Imaging and uv-averaging details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear model, but MCMC settings, geometry and the temperature assumption are missing, and the method is inherited from earlier papers.",
+ "rediscovery_reason": "Public data and numeric results, but the recipe has gaps.",
+ "source_card": "cards/2018ApJ...859..103W/sonnet/card.md"
+}

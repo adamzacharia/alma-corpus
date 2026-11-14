@@ -1,0 +1,544 @@
+{
+ "bibcode": "2023ApJ...943...25G",
+ "title": "A Highly Magnified Gravitationally Lensed Red QSO at z = 2.5 with a Significant Flux Ratio Anomaly",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/aca093",
+ "arxiv_id": "2211.03866",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What is the nature of the gravitationally lensed dust-reddened QSO W2M J1042+1641 at z = 2.517, what causes its extreme flux ratio anomaly, and what are its intrinsic black hole and host galaxy properties?",
+ "alma_project_codes": [
+  "2019.1.00964.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.64'' x 0.57''",
+  "sensitivity": "66 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UV and optical-to-near-infrared composite QSO templates",
+    "evidence": [
+     {
+      "loc": "Initial Spectroscopy",
+      "quote": "The blue curve represents an unreddened QSO spectrum, made out of the UV composite QSO template of (cite: Telfer02) combined with the optical-to-near-infrared composite spectrum from (cite: Glikman06), illustrating the large amount of UV light lost."
+     }
+    ]
+   },
+   "citation": "Telfer02; Glikman06"
+  },
+  {
+   "what": {
+    "value": "Stellar mass-to-light ratios from rest-frame u-g color",
+    "evidence": [
+     {
+      "loc": "The relation between the black hole mass and the host galaxy luminosity and stellar mass",
+      "quote": "Therefore, we can use the $F125W-F160W$ color as rest-frame $u-g$ and estimate the galaxy’s stellar mass using mass-to-light ratios from a single color as determined by (cite: Bell03) (Table 7)."
+     }
+    ]
+   },
+   "citation": "Bell03"
+  },
+  {
+   "what": {
+    "value": "Bolometric corrections and optically red QSO SED template",
+    "evidence": [
+     {
+      "loc": "Black hole mass",
+      "quote": "To estimate $L/L_{Edd}$, we use a bolometric correction (BC) at 5100Å of 9.5 from (cite: Richards06)."
+     },
+     {
+      "loc": "Black hole mass",
+      "quote": "We scale the observed *WISE* $W4$ luminosity to the luminosity at 5100Å using the spectral energy distribution (SED) from (cite: Richards06) for optically red QSOs."
+     }
+    ]
+   },
+   "citation": "Richards06"
+  },
+  {
+   "what": {
+    "value": "Galaxy spectral templates for K-correction and photometric redshift check",
+    "evidence": [
+     {
+      "loc": "Footnote 3",
+      "quote": "We used the `mag2mag` routine from (cite: Auger09), available at <https://github.com/tcollett/LensPop/tree/master/stellarpop/>, to check that for a (cite: Coleman80) E/S0 galaxy template, redshifted to $z=0.599$"
+     },
+     {
+      "loc": "Footnote 25",
+      "quote": "We employ the (cite: Coleman80) spectral templates."
+     }
+    ]
+   },
+   "citation": "Coleman80"
+  },
+  {
+   "what": {
+    "value": "Comparison samples of lensed and unlensed AGNs/QSOs for M_BH vs L_R and M_BH vs M_* relations",
+    "evidence": [
+     {
+      "loc": "The relation between the black hole mass and the host galaxy luminosity and stellar mass",
+      "quote": "Lensed and unlensed sources from (cite: Peng06) and (cite: Park15) are plotted with circles and squares, respectively"
+     },
+     {
+      "loc": "The relation between the black hole mass and the host galaxy luminosity and stellar mass",
+      "quote": "Intermediate-redshift sources spanning $0.34 < z < 1.90$ are plotted with green triangles (cite: Bennert11b; Cisternas11; Schramm13). Intermediate redshift, unlensed QSOs from (cite: Ding20) are shown in orange circles, and the sample of lensed QSOs analyzed in (cite: Ding17; Ding21) are plotted with squares"
+     }
+    ]
+   },
+   "citation": "Peng06; Park15; Ding17; Bennert10; Bennert11a; HR04; Bennert11b; Cisternas11; Schramm13; Ding20; Ding21"
+  },
+  {
+   "what": {
+    "value": "SDSS-UKIDSS-WISE QSO catalog and CASTLES astrometry for F2M J1004+1229",
+    "evidence": [
+     {
+      "loc": "Magnification and population analysis",
+      "quote": "We compare them with $\\sim20,000$ QSOs from SDSS with matches in the UKIDSS and WISE catalogs with spectroscopic redshifts from (cite: Peth11) (black dots)."
+     },
+     {
+      "loc": "Magnification and population analysis",
+      "quote": "We modeled F2M J1004+1229 by fitting SIE$+\\gamma$ models to the relative astrometry reported in CASTLES"
+     }
+    ]
+   },
+   "citation": "Peth11; CASTLES"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure ALMA sub-mm and JVLA radio positions and flux densities of lensed QSO images",
+   "method": "Image continuum visibilities and fit 2D Gaussian / PSF profiles to each lensed QSO component using CASA imfit; predict radio star-formation flux from ALMA sub-mm flux using the far-IR-radio correlation",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Synthesised beam 0.64'' x 0.57'', rms 66 uJy (ALMA)"
+   ],
+   "assumptions": [
+    "Effective dust temperature of 40 K and far-IR-radio correlation of star-forming galaxies"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Coupled morphological and gravitational lens mass modeling of HST WFC3/IR images",
+   "method": "Iteratively fit QSO point sources, Sérsic profiles for lens G, galaxy G1, and lensed QSO host Einstein ring with hostlens, reconstruct the PSF in 30 steps, and fit shared lens mass models (SIE+gamma, free SIE+gamma, SIE+gamma+GX) with glafic; also perform exploratory pixelated source reconstruction with glee",
+   "software": [
+    "hostlens",
+    "glafic",
+    "glee",
+    "DrizzlePac"
+   ],
+   "key_parameters": [
+    "16'' x 19'' cutout, pixel scale 0.06''/pixel, circular masks of ~0.3'' radius around QSO images, PSF correction box 7 to 35 pixels over 30 steps",
+    "z_l = 0.599 for G and GX, z_s = 2.517 for source"
+   ],
+   "assumptions": [
+    "Circular Sérsic profile with fixed n = 4 (de Vaucouleurs) for the QSO host galaxy",
+    "Singular isothermal ellipsoid plus external shear (SIE+gamma) for lens G, plus singular isothermal sphere (SIS) for perturber GX"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate total magnification and test microlensing, extinction, and substructure explanations for the flux ratio anomaly",
+   "method": "Anchor lens model magnification predictions by intersecting the C/D model distribution with a Gaussian fit to observed F160W fluxes; evaluate differential extinction; run GPU-D microlensing simulations; model substructure perturber near image A",
+   "software": [
+    "GPU-D",
+    "extinction"
+   ],
+   "key_parameters": [
+    "Cardelli et al. (1989) extinction curve with R_V = 3.1; accretion disk inclination i = 60 deg, PA = 90 deg, relative microlens speed ~340 km/s"
+   ],
+   "assumptions": [
+    "Salpeter IMF with mean stellar mass 0.3 M_sun and stellar mass fraction 0.2 in De Vaucouleurs profile for kappa_*"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit optical/NIR spectra to measure QSO reddening, UV leakage, outflow velocities, and virial black hole mass",
+   "method": "Fit reddened composite QSO template and two-component power-law continuum to LBT/IRTF/Keck spectra; fit Gaussian profiles to Mg II, C IV, Ly-alpha absorption features and broad H-alpha emission; compute virial black hole mass and Eddington ratio from de-reddened, de-magnified F160W and WISE W4 luminosities",
+   "software": [
+    "IRAF",
+    "Spextool",
+    "modsCCDred"
+   ],
+   "key_parameters": [
+    "Power-law spectral index alpha_nu = -0.5; virial mass coefficients a = 0.774, b = 0.520, c = 2.06; magnification mu = 117; bolometric corrections BC_5100 = 9.5 and BC_W4 = 7.5"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.30, Omega_Lambda = 0.70"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive QSO host galaxy luminosity and stellar mass",
+   "method": "Convert de-magnified HST F160W host magnitude to rest-frame R-band luminosity via K-correction using mag2mag; estimate stellar mass from rest-frame u-g color (F125W - F160W) and g-band luminosity using Bell et al. (2003) mass-to-light ratios",
+   "software": [
+    "mag2mag",
+    "hostlens"
+   ],
+   "key_parameters": [
+    "Host galaxy magnification factor = 15 (from hostlens for SIE+gamma+GX model)"
+   ],
+   "assumptions": [
+    "Coleman et al. (1980) early-type and Sbc galaxy spectral templates for K-correction; Bell et al. (2003) color-M/L relation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA continuum flux density of Image A",
+   "value": "835",
+   "uncertainty": "+-66",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA mm imaging",
+     "quote": "All four QSO images are detected, with flux densities A $=835\\pm66 \\mu$Jy, B $=519\\pm66 \\mu$Jy, C $=296\\pm66 \\mu$Jy and D $=281\\pm66 \\mu$Jy, consistent with thermal dust emission (cite: stacey18)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA continuum flux density of Image B",
+   "value": "519",
+   "uncertainty": "+-66",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA mm imaging",
+     "quote": "All four QSO images are detected, with flux densities A $=835\\pm66 \\mu$Jy, B $=519\\pm66 \\mu$Jy, C $=296\\pm66 \\mu$Jy and D $=281\\pm66 \\mu$Jy, consistent with thermal dust emission (cite: stacey18)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA continuum flux density of Image C",
+   "value": "296",
+   "uncertainty": "+-66",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA mm imaging",
+     "quote": "All four QSO images are detected, with flux densities A $=835\\pm66 \\mu$Jy, B $=519\\pm66 \\mu$Jy, C $=296\\pm66 \\mu$Jy and D $=281\\pm66 \\mu$Jy, consistent with thermal dust emission (cite: stacey18)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA continuum flux density of Image D",
+   "value": "281",
+   "uncertainty": "+-66",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA mm imaging",
+     "quote": "All four QSO images are detected, with flux densities A $=835\\pm66 \\mu$Jy, B $=519\\pm66 \\mu$Jy, C $=296\\pm66 \\mu$Jy and D $=281\\pm66 \\mu$Jy, consistent with thermal dust emission (cite: stacey18)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA flux ratio A/B",
+   "value": "1.61",
+   "uncertainty": "+-0.24",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Clues from the radio data",
+     "quote": "First, in the sub-mm emission measured by ALMA, A/B $=1.61\\pm0.24$, which is somewhat larger than the model prediction of $\\sim1$."
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA Epoch 1 6cm flux density of Image A",
+   "value": "51",
+   "uncertainty": "+-8",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JVLA Radio follow-up",
+     "quote": "the total integrated flux density of images A and B were of **$51\\pm8$ $\\mu$Jy and $13\\pm7$ $\\mu$Jy**, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA Epoch 1 6cm flux density of Image B",
+   "value": "13",
+   "uncertainty": "+-7",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JVLA Radio follow-up",
+     "quote": "the total integrated flux density of images A and B were of **$51\\pm8$ $\\mu$Jy and $13\\pm7$ $\\mu$Jy**, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA Epoch 2 6cm flux density of Image A",
+   "value": "82",
+   "uncertainty": "+-9",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JVLA Radio follow-up",
+     "quote": "Here, the flux densities increased by 50%, being **$82\\pm9$ $\\mu$Jy and $19\\pm5$ $\\mu$Jy** (images A and B, respectively)."
+    }
+   ]
+  },
+  {
+   "quantity": "JVLA Epoch 2 6cm flux density of Image B",
+   "value": "19",
+   "uncertainty": "+-5",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "JVLA Radio follow-up",
+     "quote": "Here, the flux densities increased by 50%, being **$82\\pm9$ $\\mu$Jy and $19\\pm5$ $\\mu$Jy** (images A and B, respectively)."
+    }
+   ]
+  },
+  {
+   "quantity": "Lens galaxy velocity dispersion sigma_G (fiducial SIE+gamma+GX model)",
+   "value": "223.2",
+   "uncertainty": "+1.3/-1.1",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\sigma_G$ | $222.0^{+0.9}_{-0.6}$ | 229.0$\\pm$0.8 | $223.2^{+1.3}_{-1.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Perturber GX velocity dispersion sigma_GX (fiducial SIE+gamma+GX model)",
+   "value": "46.5",
+   "uncertainty": "+4.2/-3.9",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\sigma_{GX}$ | $-$ | $-$ | $46.5^{+4.2}_{-3.9}$"
+    },
+    {
+     "loc": "The Fiducial Model",
+     "quote": "While the velocity dispersion of GX was a free parameter during the fit, its best-fit value of $\\sim 46.5$ km/s is in good agreement with the predicted value of $\\sim50$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "External shear gamma (fiducial SIE+gamma+GX model)",
+   "value": "0.08",
+   "uncertainty": "+0.02/-0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\gamma$ | 0.03$\\pm$0.01 | 0.15$\\pm$0.01 | $0.08^{+0.02}_{-0.01}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Time delay of Image D relative to other images (fiducial SIE+gamma+GX model)",
+   "value": "22.7",
+   "uncertainty": "+-1.5",
+   "units": "days",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$\\Delta t$ (days) | $12.9^{+7.4}_{-3.9}$ | 26.1$\\pm$1.1 | 22.7$\\pm$1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Total QSO magnification accounting for anomalous images A and B",
+   "value": "117",
+   "uncertainty": "+22/-14",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Flux ratio analysis and total magnification",
+     "quote": "$+\\mu_{\\mathrm{D},C/D\\cap}=117^{+22}_{-14}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total QSO magnification predicted by fiducial model without anomaly",
+   "value": "52",
+   "uncertainty": "+5/-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Flux ratio analysis and total magnification",
+     "quote": "$\\mu_\\mathrm{total}^\\mathrm{predicted A, B}=(|\\mu_{\\mathrm{A}}|+\\mu_{\\mathrm{B}}+|\\mu_{\\mathrm{C}}|+\\mu_{\\mathrm{D}})_{C/D\\cap}=52^{+5}_{-4}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Microlensing probability for Image A anomaly (SIE+gamma+GX, case 2)",
+   "value": "0.22",
+   "uncertainty": "+0.55/-0.18",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Microlensing analysis, intrinsic variability and time delays",
+     "quote": "However, the probability that image A is magnified by a factor as large as required to explain the observed anomaly is only $0.22^{+0.55}_{-0.18}\\%$ (for the SIE$+\\gamma$+GX model, in case 2 from the plot; $0.17^{+0.48}_{-0.14}\\%$ for case 1."
+    }
+   ]
+  },
+  {
+   "quantity": "QSO dust reddening E(B-V) from template and power-law fits",
+   "value": "0.68 to 0.89",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Initial Spectroscopy",
+     "quote": "This best fit is achieved with a QSO template reddened by $E(B-V)=0.68$ (corresponding to a $A_V = 5.4$ mag in the QSO rest frame; red line)."
+    },
+    {
+     "loc": "Spectral characteristics",
+     "quote": "While the template-based fit results in $E(B-V)=0.73$ mag, the two-component power-law fit yields $E(B-V) = 0.89$ mag."
+    }
+   ]
+  },
+  {
+   "quantity": "H-alpha broad line FWHM (Table 3)",
+   "value": "8340",
+   "uncertainty": "+-330",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FWHM$_{H\\alpha}$ | $8340\\pm330$ | km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole mass log(M_BH) from F160W continuum fit",
+   "value": "9.56",
+   "uncertainty": "not stated",
+   "units": "log(M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Black hole mass",
+     "quote": "These values yield $\\log (M_{\\rm BH,vir} ~[M_\\odot]) = 9.56$."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "$\\log(M_{BH})$ | 9.56 | $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole mass log(M_BH) from WISE W4 luminosity",
+   "value": "9.06",
+   "uncertainty": "not stated",
+   "units": "log(M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Black hole mass",
+     "quote": "We de-magnify this flux by a factor of 117 and find $\\log (L_{5100} ~{\\rm [erg/s]}) = 44.37$, resulting in $\\log (M_{\\rm BH,vir} ~[M_\\odot]) = 9.06$."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "$\\log(M_{BH})$ | 9.06 | $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington ratio log(L/L_Edd) from F160W continuum fit",
+   "value": "-1.34",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Black hole mass",
+     "quote": "This gives $\\log(L_{\\rm bol} ~ {\\rm [erg/s]}) = 46.33$ and a corresponding Eddington ratio, $\\log(L/L_{Edd}) = -1.34$"
+    }
+   ]
+  },
+  {
+   "quantity": "Eddington ratio log(L/L_Edd) from WISE W4",
+   "value": "-0.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Black hole mass",
+     "quote": "We find an Eddington ratio of $\\log(L/L_{Edd}) = -0.68$, which is more consistent with the values found for other red quasars."
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy stellar mass log(M_*/M_sun)",
+   "value": "11.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find a host-galaxy stellar mass of $\\log{M_\\star/M_\\odot}=11.4$, which is higher than the local $M_{BH}$ vs. $M_\\star$ relation, but consistent with other high redshift QSOs."
+    },
+    {
+     "loc": "The relation between the black hole mass and the host galaxy luminosity and stellar mass",
+     "quote": "Using the rest-frame $g$-band luminosity, we estimate $\\log(M_\\star/M_\\odot) = 11.4$ with the model that includes GX as a perturber"
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy magnification factor",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The relation between the black hole mass and the host galaxy luminosity and stellar mass",
+     "quote": "However, our analysis shows that the the (extended) host galaxy is only magnified by a factor of 15 (computed with `hostlens` for the SIE+$\\gamma$+GX model)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for ALMA calibration and imaging",
+  "Exact Briggs robust parameter value used for ALMA continuum imaging",
+  "Which channels were flagged as line-specific (CO line) to isolate continuum-only spectral channels in ALMA data",
+  "ALMA array configuration and baseline lengths",
+  "Cell size, image size, and stopping threshold/masking parameters used in ALMA deconvolution",
+  "Custom wrapper code around hostlens and glafic for coupled iterative morphological and lens modeling"
+ ],
+ "missing_for_reproduction": [
+  "Custom wrapper code around hostlens and glafic used for the 30-step iterative coupled light, PSF, and mass modeling",
+  "Specific Briggs robust parameter and continuum channel selection used to image the ALMA Band 6 visibilities",
+  "Initial PSF models constructed for the HST F125W and F160W filters",
+  "Reduced 1D spectra from LBT/MODS1B, IRTF/SpeX, and Keck/LRIS"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The ALMA and HST datasets are publicly archived with explicit program IDs, and the analytical equations and tabular intermediate results (astrometry, photometry, kappa/gamma, spectral fits) are thoroughly documented. However, full end-to-end reproduction of the lens modeling requires a custom unreleased wrapper around hostlens/glafic and specific ALMA imaging parameters (e.g., robust value, flagged CO channels) that are not stated.",
+ "rediscovery_reason": "The ALMA continuum flux densities for the four lensed images, the HST astrometry/photometry, the glafic lens mass model parameters, and the derived black hole and host galaxy masses are all quantitative results derived from public archival data (ALMA 2019.1.00964.S and HST GO-14706).",
+ "source_card": "cards/2023ApJ...943...25G/sonnet/card.md"
+}

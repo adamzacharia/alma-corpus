@@ -1,0 +1,887 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...844...98M",
+  "title": "ALMA Observations of N83C in the Early Stage of Star Formation in the Small Magellanic Cloud",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Muraoka, Kazuyuki",
+  "n_authors": 17,
+  "arxiv_id": "1706.04871",
+  "doi": "10.3847/1538-4357/aa7a0b",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00212.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We have performed Atacama Large Millimeter/submillimeter Array (ALMA) observations in $^{12}$CO($J=2-1$), $^{13}$CO($J=2-1$), C$^{18}$O($J=2-1$), $^{12}$CO($J=3-2$), $^{13}$CO($J=3-2$), and CS($J=7-6$) lines toward the active star-forming region N83C"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "nearby_galaxies",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "N83C (SMC)",
+     "coordinates": {
+      "value": "RA 01h14m05.414s, Dec -73d17m03.908s (J2000)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The observations were centered on ($\\alpha_{\\rm J2000}$, $\\delta_{\\rm J2000}$) = ($01^h 14^m 05\\rlap.{^s}414$, $-73^{\\circ} 17' 03\\rlap.{''}908$)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "its proximity ($\\sim$ 60 kpc; (cite: hilditch2005))"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~60 kpc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The observations were centered on ($\\alpha_{\\rm J2000}$, $\\delta_{\\rm J2000}$) = ($01^h 14^m 05\\rlap.{^s}414$, $-73^{\\circ} 17' 03\\rlap.{''}908$)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "its proximity ($\\sim$ 60 kpc; (cite: hilditch2005))"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Hilditch et al. 2005",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The observations were centered on ($\\alpha_{\\rm J2000}$, $\\delta_{\\rm J2000}$) = ($01^h 14^m 05\\rlap.{^s}414$, $-73^{\\circ} 17' 03\\rlap.{''}908$)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "its proximity ($\\sim$ 60 kpc; (cite: hilditch2005))"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the molecular gas structure, density, temperature and CO-to-H2 conversion factor in the low-metallicity star-forming region N83C in the SMC, and how do they relate to YSOs?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Then, we derive various properties of molecular clouds: virial mass, average gas density, kinetic temperature, and $X_{\\rm CO}$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00212.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: \\[ADS/JAO.ALMA#2013.1.00212.S\\]."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (211-275 GHz) and Band 7 (275-373 GHz)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "ALMA Cycle 2 observations toward N83C were carried out in Band 6 (211 – 275 GHz) and Band 7 (275 – 373 GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Line windows 117.19 MHz (30.5 kHz x 3840 channels); Band 6 continuum window 1875.0 MHz (488.3 kHz x 3840 channels)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with a bandwidth of 117.19 MHz (30.5 kHz $\\times$ 3840 channels)"
+     },
+     {
+      "loc": "Observations",
+      "quote": "bandwidth of 1875.0 MHz (488.3 kHz $\\times$ 3840 channels) in Band 6"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The target molecular lines are $^{12}$CO($J=2-1$), $^{13}$CO($J=2-1$), and C$^{18}$O($J=2-1$) in Band 6"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The target molecular lines are $^{12}$CO($J=2-1$), $^{13}$CO($J=2-1$), and C$^{18}$O($J=2-1$) in Band 6"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The target molecular lines are $^{12}$CO($J=2-1$), $^{13}$CO($J=2-1$), and C$^{18}$O($J=2-1$) in Band 6"
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "and $^{12}$CO($J=3-2$), $^{13}$CO($J=3-2$), and CS($J=7-6$) in Band 7"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "and $^{12}$CO($J=3-2$), $^{13}$CO($J=3-2$), and CS($J=7-6$) in Band 7"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=7-6",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "and $^{12}$CO($J=3-2$), $^{13}$CO($J=3-2$), and CS($J=7-6$) in Band 7"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m main array, ACA 7 m, and TP 12 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with the main array 12 m antennas, the Atacama Compact Array (ACA) 7 m antennas, and total power (TP) 12 m antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Max baseline 348.5 m (12 m array), 48.9 m (ACA)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The maximum baseline of the 12 m array is 348.5 m and that of ACA is 48.9 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Band 6: 1.72\" x 1.37\" (0.50 x 0.40 pc); Band 7: 4.64\" x 4.33\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "which provided synthesized beam sizes of 1$\\rlap.{''}$72 $\\times$ 1$\\rlap.{''}$37 (0.50 pc $\\times$ 0.40 pc at 60 kpc)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 17 mJy/beam (Band 6), 148 mJy/beam (Band 7) at 0.2 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The rms noise levels of molecular lines at the velocity resolution of 0.2 km s$^{-1}$ are 17 mJy beam$^{-1}$ in Band 6 and 148 mJy beam$^{-1}$ in Band 7"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2014 May to 2015 September",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "between 2014 May and 2015 September"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer Space Telescope",
+     "provided": {
+      "value": "YSO identifications",
+      "evidence": [
+       {
+        "loc": "Maps",
+        "quote": "identified based on the $Spitzer$ $Space$ $Telescope$ data (see also Figure 1(c))"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "12CO(2-1)/(1-0) ratio of 0.9",
+      "evidence": [
+       {
+        "loc": "5.1 XCO in the SMC",
+        "quote": "we assume the $^{12}$CO($J=2-1$)/$^{12}$CO($J=1-0$) ratio of 0.9 according to (cite: bolatto2003)"
+       }
+      ]
+     },
+     "citation": "(cite: bolatto2003)"
+    },
+    {
+     "what": {
+      "value": "YSO luminosities of sources A and B",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "the luminosity of source A, 20140 $L_{\\odot}$, is three times larger than that of source B, 6899 $L_{\\odot}$ (cite: kamath2014)"
+       }
+      ]
+     },
+     "citation": "(cite: kamath2014)"
+    },
+    {
+     "what": {
+      "value": "YSOs C, D, E identification",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "A and B are identified by (cite: kamath2014), and C, D, and E are by (cite: sewilo2013)."
+       }
+      ]
+     },
+     "citation": "(cite: sewilo2013)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting for Band 6 and Band 7",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We applied natural weighting for both Band 6 and Band 7 data"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Band 7 uses only ACA+TP; C18O(2-1) uses only ACA+TP",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Note that we only used ACA and TP data in Band 7 because we could not obtain the main-array data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Virial mass formula",
+      "evidence": [
+       {
+        "loc": "Maps",
+        "quote": "We estimate the virial mass ($M_{\\rm vir}$) of molecular clouds associated with sources A and B as follows (cite: solomon1987)"
+       }
+      ]
+     },
+     "from_reference": "(cite: solomon1987)"
+    },
+    {
+     "what": {
+      "value": "LVG abundance ratio 12CO/13CO = 50 and Z(12CO) scaled from LMC",
+      "evidence": [
+       {
+        "loc": "Deriving gas density",
+        "quote": "The assumed \\[$^{12}$CO\\]/\\[$^{13}$CO\\] of 50 is the same as that in the LMC (cite: mizuno2010)."
+       }
+      ]
+     },
+     "from_reference": "(cite: mizuno2010)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration (pipeline or manual) details",
+    "Imaging task, cell size, image size, masks, deconvolver",
+    "Continuum subtraction and line-free channels",
+    "How 12m, ACA and TP data were combined",
+    "LVG code used and grid ranges",
+    "Moment-map velocity ranges and clipping",
+    "Flux calibrators and flux uncertainty",
+    "How L_CO integration area and sigma_v fits were done"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Make line maps",
+    "method": {
+     "value": "Reduce data in CASA with natural weighting; make integrated intensity maps",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were reduced using the Common Astronomy Software Application (CASA) package."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Virial mass and density of clumps",
+    "method": {
+     "value": "M_vir = 1040 sigma_v^2 R with R the effective radius above half peak and sigma_v from Gaussian fit; density from M_vir",
+     "evidence": [
+      {
+       "loc": "Maps",
+       "quote": "Here, $R$ was determined as the effective radius of the area whose CO intensity exceeds half the peak, and $\\sigma_v$ was calculated from the gaussian fitting of the CO line integrated over the area."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "mu_H2 ~ 2.7",
+      "evidence": [
+       {
+        "loc": "Maps",
+        "quote": "where $\\mu_{\\rm H_2} \\sim 2.7$ is the mean molecular weight per H$_2$ molecule (including the contribution by He)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fit to line",
+     "evidence": [
+      {
+       "loc": "Results and Analyses, Maps",
+       "quote": "$\\sigma_v$ was calculated from the gaussian fitting of the CO line integrated over the area"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "LVG density and temperature",
+    "method": {
+     "value": "LVG from 13CO(3-2)/12CO(3-2) and 13CO(3-2)/13CO(2-1) ratio maps",
+     "evidence": [
+      {
+       "loc": "Deriving gas density",
+       "quote": "we estimate gas density and kinetic temperature of molecular clouds using line ratios obtained from ALMA observations based on the Large Velocity Gradient (LVG) approximation"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Z(12CO)=8.0e-6, [12CO]/[13CO]=50, dv/dr=2.0 km/s/pc",
+      "evidence": [
+       {
+        "loc": "Deriving gas density",
+        "quote": "the molecular abundance $Z$($^{12}$CO) = \\[$^{12}$CO\\]/\\[H$_2$\\] of $8.0 \\times 10^{-6}$, the \\[$^{12}$CO\\]/\\[$^{13}$CO\\] abundance ratio of 50, and the velocity gradient $dv/dr$ of 2.0 km s$^{-1}$ pc$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "LVG density compared with virial density",
+     "evidence": [
+      {
+       "loc": "Deriving gas density",
+       "quote": "The derived gas density based on the LVG calculation is consistent with that calculated from the virial mass."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive XCO",
+    "method": {
+     "value": "X_CO = (M_vir/(mu m_H))/L_CO for sources A and B, averaged",
+     "evidence": [
+      {
+       "loc": "5.1 XCO in the SMC",
+       "quote": "$$\\begin{eqnarray}\nX_{\\rm CO} = \\frac{M_{\\rm vir} / (\\mu_{\\rm H_2} \\times m_{\\rm H})}{L_{\\rm CO}} \\,\\, ,\n\\end{eqnarray}$$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "12CO(2-1)/(1-0) = 0.9",
+      "evidence": [
+       {
+        "loc": "5.1 XCO in the SMC",
+        "quote": "we assume the $^{12}$CO($J=2-1$)/$^{12}$CO($J=1-0$) ratio of 0.9 according to (cite: bolatto2003)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Bolatto et al. 2003 N83 value",
+     "evidence": [
+      {
+       "loc": "5.1 XCO in the SMC",
+       "quote": "which is in good agreement with that in N83 obtained by (cite: bolatto2003)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data reduction",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were reduced using the Common Astronomy Software Application (CASA) package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "APLpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Plotting",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made use of APLpy, an open-source plotting package for Python (cite: robitaille2012)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Average X_CO",
+    "value": "7.5e20",
+    "uncertainty": "not stated",
+    "units": "cm^-2 (K km/s)^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 XCO in the SMC",
+      "quote": "The averaged $X_{\\rm CO}$ of $7.5 \\times 10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$ is four times higher than that in the MW disk"
+     }
+    ]
+   },
+   {
+    "quantity": "X_CO source A",
+    "value": "6.2e20",
+    "uncertainty": "not stated",
+    "units": "cm^-2 (K km/s)^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 XCO in the SMC",
+      "quote": "yield $X_{\\rm CO}$ of $6.2 \\times 10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "X_CO source B",
+    "value": "8.7e20",
+    "uncertainty": "not stated",
+    "units": "cm^-2 (K km/s)^-1",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 XCO in the SMC",
+      "quote": "$8.7 \\times 10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$, from $M_{\\rm vir}$ of $1.5 \\times 10^3 M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Virial mass source A (12CO 2-1)",
+    "value": "2.5e3",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| A | $^{12}$CO($J$=2-1) | 1.69 | 0.8 | 2.5 $\\times$ 10$^3$ | 1.5 $\\times$ 10$^4$ | 186 |"
+     }
+    ]
+   },
+   {
+    "quantity": "LVG gas density at A and B",
+    "value": "~1.5e4",
+    "uncertainty": "not stated",
+    "units": "cm^-3",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Deriving gas density",
+      "quote": "We found gas densities of $\\sim 1.5 \\times 10^4$ cm$^{-3}$ and kinetic temperatures of 30 – 50 K at sources A and B."
+     }
+    ]
+   },
+   {
+    "quantity": "Kinetic temperature",
+    "value": "30-50",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Deriving gas density",
+      "quote": "kinetic temperatures of 30 – 50 K at sources A and B"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Molecular gas is distributed along the edge of the neighboring HII region, with CO peaks at YSOs A and B",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we also found that overall molecular gas is distributed along the edge of the neighboring H$\\,$ii region"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is XCO in resolved clumps of N83C higher than the Galactic value?",
+    "experiment": "Virial masses and CO luminosities of clumps A and B",
+    "result": "Average XCO 7.5e20",
+    "finding": "XCO about four times the MW value",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "a number that is four times larger than that in the MW"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Why is gas density high in CO-traced clumps?",
+    "experiment": "Virial and LVG densities",
+    "result": "~1e4 cm^-3",
+    "finding": "FUV photodissociation means only innermost dense parts are seen in CO",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "only the innermost parts of the molecular clouds are observed even in $^{12}$CO emission"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do sources A and B differ in nature?",
+    "experiment": "Compare CS, C18O, Halpha and Band 6 continuum",
+    "result": "CS stronger in A, C18O only in B, continuum peak at A",
+    "finding": "Source A likely hosts a deeply embedded YSO in a very dense clump",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "Considering the strong peak of the Band 6 (230 GHz) continuum emission at source A, a very high-density gas clump may exist."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Higher angular resolution needed to resolve clouds and get more accurate XCO",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "further observations with higher angular resolution are indispensable"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "High-T_K linear feature is an artefact of one-zone LVG breakdown",
+     "evidence": [
+      {
+       "loc": "Deriving gas density",
+       "quote": "This is due to the breakdown of the one-zone model in the LVG approximation by the overlap of molecular gas with multiple velocity components."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No uncertainties on virial masses, XCO or LVG results",
+    "Only two clumps used for XCO",
+    "Virial equilibrium and spherical geometry assumed",
+    "LVG assumptions (abundance, dv/dr) fixed, not fitted",
+    "Different beams between lines in ratio maps"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data cited by project code in acknowledgments",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: \\[ADS/JAO.ALMA#2013.1.00212.S\\]."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and imaging parameters",
+    "LVG code",
+    "Velocity integration ranges",
+    "Details of uv combination"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for three arrays across two bands",
+   "score_inferred": 4,
+   "score_reason": "Short methods; public data but imaging, combination and LVG details missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe is incomplete (imaging, TP combination, LVG code unspecified)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: solomon1987)",
+     "why": "Virial mass formula"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: bolatto2003)",
+     "why": "Earlier CO study of N83 and XCO"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-8ea56b21365de7dfa1b757ecbf86ac3e",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:33",
+  "usage": {
+   "input_tokens": 14823,
+   "output_tokens": 7245,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051654,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 35,
+   "rate": 0.515
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:01:25",
+  "custom_id": "repair-sonnet-e72d3f32f1f1c6c6cd8b7b7e99eb16f6",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "$\\sigma_v$ was calculated from the gaussian fitting of the CO line integrated over the area"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

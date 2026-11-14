@@ -1,0 +1,1011 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...614A..26A",
+  "title": "Chemistry of a newly detected circumbinary disk in Ophiuchus",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Artur de la Villarmois, Elizabeth",
+  "n_authors": 9,
+  "arxiv_id": "1802.09286",
+  "doi": "10.1051/0004-6361/201731603",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00955.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present high-angular-resolution (0.4$''$, $\\sim$60 AU) observations of C$^{17}$O, H$^{13}$CO$^{+}$, C$^{34}$S, SO$_{2}$, C$_{2}$H and c$-$C$_{3}$H$_{2}$ molecular transitions with the Atacama Large Millimeter/submillimeter Array (ALMA)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry",
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "Oph-IRS67AB (L1689SAB, WLY2-67)",
+     "coordinates": {
+      "value": "Geometric center 16h32m00.983s, -24d56m43.09s (J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The distance was determined to be 147.3 $\\pm$ 3.4 pc to L1689 as a whole and 151.2 $\\pm$ 2.0 pc to IRS67AB specifically; in this paper, we adopt the latter."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "151.2 ± 2.0 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The distance was determined to be 147.3 $\\pm$ 3.4 pc to L1689 as a whole and 151.2 $\\pm$ 2.0 pc to IRS67AB specifically; in this paper, we adopt the latter."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Ortiz-Leon et al. 2017 (proper motion and parallax)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The distance was determined to be 147.3 $\\pm$ 3.4 pc to L1689 as a whole and 151.2 $\\pm$ 2.0 pc to IRS67AB specifically; in this paper, we adopt the latter."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is there a circumbinary disk around the Class I proto-binary Oph-IRS67AB, and what are its kinematics, chemistry, mass and temperature structure?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The purpose of this paper is to present the detection of a circumbinary disk around the system Oph-IRS67 and analyse its chemical and physical structure."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00955.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "(program code: 2013.1.00955.S; PI: Jes Jørgensen)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Five spws near 337-350 GHz (0.8 mm); 0.11 and 0.22 km/s resolution",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations targeted five different spectral windows"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "C17O",
+     "transition": "J=3-2",
+     "rest_frequency": "spw 337.002-337.119 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "spw 1a | 337.002$-$337.119 | 0.11 | C$^{17}$O *J*=3$-$2"
+      }
+     ]
+    },
+    {
+     "species": "C34S",
+     "transition": "J=7-6",
+     "rest_frequency": "spw 337.337-337.454 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "spw 1b | 337.337$-$337.454 | 0.11 | C$^{34}$S *J*=7$-$6"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "J=4-3",
+     "rest_frequency": "spw 346.880-347.115 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "spw 3 | 346.880$-$347.115 | 0.11 | H$^{13}$CO$^{+}$ *J*=4$-$3"
+      }
+     ]
+    },
+    {
+     "species": "SO2",
+     "transition": "18(4,14)-18(3,15), 20(1,19)-19(2,18)",
+     "rest_frequency": "spw 338.165-338.634 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SO$_{2}$ 18$_{4,14}$$-$18$_{3,15}$"
+      }
+     ]
+    },
+    {
+     "species": "c-C3H2",
+     "transition": "5(5,1)-4(4,0) and 5(5,0)-4(4,1)",
+     "rest_frequency": "spw 2 and spw 4",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "c$-$C$_{3}$H$_{2}$ 5$_{5,0}$$-$4$_{4,1}$ (ortho)"
+      }
+     ]
+    },
+    {
+     "species": "C2H",
+     "transition": "N=4-3 hyperfine doublets",
+     "rest_frequency": "spw 349.165-349.634 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "C$_{2}$H *N*=4$-$3, *J*=9/2$-$7/2, *F*=5$-$4"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "J_k=7_k-6_k branch",
+     "rest_frequency": "338.4 GHz (not detected)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "the CH$_3$OH *J$_{k}$*=7$_k$$-$6$_k$ branch at 338.4 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "21-556 m (up to 784 m on June 5)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "providing baselines between 21 and 556 metres (784 metres for the June 5 observations)"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "beam 0.44'' x 0.33''",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The resulting dataset has a beam size of 0.44$''$ $\\times$ 0.33$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms 0.4 mJy/beam; 10 mJy/beam per channel",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "a continuum *rms* level of 0.4 mJy beam$^{-1}$ and a spectral *rms* level of 10 mJy beam$^{-1}$ per channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~15 min per source (43 min per session for 12 sources)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "each source was observed for approximately 15 minutes in total"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Four sessions between 2015 May 21 and June 5",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "IRS67 was observed with ALMA on four occasions between 2015 May 21 and June 5"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Part of survey of 12 Class I protostars in Ophiuchus, PI Jes Jørgensen",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "as part of a larger program to survey the line and continuum emission towards 12 Class I protostars in Ophiuchus"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Distance to IRS67AB of 151.2 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "in this paper, we adopt the latter."
+       }
+      ]
+     },
+     "citation": "(cite: OrtizLeon2017)"
+    },
+    {
+     "what": {
+      "value": "System velocity VLSR 4.2 km/s",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission",
+        "quote": "relative to the system velocity ($V_{\\rm LSR}$) of 4.2 km s$^{-1}$ (cite: Lindberg2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Lindberg2017)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity at 0.87 mm",
+      "evidence": [
+       {
+        "loc": "4.2 Disk mass",
+        "quote": "opacity at 0.87 mm (cite: Ossenkopf1994)"
+       }
+      ]
+     },
+     "citation": "(cite: Ossenkopf1994)"
+    },
+    {
+     "what": {
+      "value": "IRAS 16293-2422 abundance ratios for comparison",
+      "evidence": [
+       {
+        "loc": "4.3 Fits and abundances",
+        "quote": "taken from (cite: Schoier2002)"
+       }
+      ]
+     },
+     "citation": "(cite: Schoier2002)"
+    },
+    {
+     "what": {
+      "value": "Standard isotope ratios",
+      "evidence": [
+       {
+        "loc": "4.3 Fits and abundances",
+        "quote": "employing standard isotope ratios (cite: Wilson1999)"
+       }
+      ]
+     },
+     "citation": "(cite: Wilson1999)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Calibration and imaging done in CASA; gain cal J1517-2422, J1625-2527; passband J1924-2914",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "the complex gains were calibrated through observations of the quasars J1517-2422 and J1625-2527, passband calibration on J1924-2914 and flux calibration on Titan."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "flux calibration on Titan"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [],
+   "unstated_but_needed": [
+    "CASA version and whether pipeline or manual calibration",
+    "Imaging parameters: weighting/robust, cell and image size, deconvolver, masks",
+    "Continuum subtraction method and line-free channels",
+    "Whether spws were combined across the four sessions",
+    "Flux calibration uncertainty and any self-calibration",
+    "Velocity ranges for moment maps and clipping thresholds",
+    "Uncertainty and weighting details of the imfit peak-position PV fits",
+    "RADEX setup details beyond density, Tkin, and b",
+    "Dust temperature adopted for the 30 K versus 100 K masses (continuum flux used for mass)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure continuum structure and source positions",
+    "method": {
+     "value": "2D Gaussian fits to both peaks; deconvolved size of disk-like structure; inclination from toy thin circular model",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum emission",
+       "quote": "The position and integrated flux of each source are obtained by fitting two-dimensional (2D) Gaussians to both peaks"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Thin circular structure gives inclination ~80 deg",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission",
+        "quote": "Assuming a toy model for a thin and circular structure, an inclination of $\\sim$ 80$\\ensuremath{^\\circ}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Moment maps, spectra and channel maps of lines",
+    "method": {
+     "value": "Moment 0/1 maps; spectra extracted over 1 pixel (0.1''x0.1''); channel maps; two-component Gaussian for SO2",
+     "evidence": [
+      {
+       "loc": "3.2.2 Spectra",
+       "quote": "Each spectrum was extracted over 1 pixel, that is, 0.1$''$ $\\times$ 0.1$''$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fits to central components",
+     "evidence": [
+      {
+       "loc": "4.3 Fits and abundances",
+       "quote": "the central component of the spectra of both species is fitted with a Gaussian and the values are listed in Table"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit velocity profiles (Keplerian vs infalling)",
+    "method": {
+     "value": "Peak emission per channel via imfit; fit v∝r^-0.5 and v∝r^-1 to points >1.7 km/s along PA=234 deg",
+     "evidence": [
+      {
+       "loc": "4.1 Velocity profiles",
+       "quote": "the peak emission for each channel is obtained through the CASA task `imfit`."
+      }
+     ]
+    },
+    "software": [
+     "CASA imfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Centre at geometric centre; inclination 80 deg",
+      "evidence": [
+       {
+        "loc": "4.1 Velocity profiles",
+        "quote": "the central (0,0) position corresponds to the location of the geometric centre"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Inclination 80 deg",
+      "evidence": [
+       {
+        "loc": "4.1 Velocity profiles",
+        "quote": "assuming an inclination of 80$\\ensuremath{^\\circ}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "reduced chi2 compared; central mass derived",
+     "evidence": [
+      {
+       "loc": "4.1.1 Disk-like structure",
+       "quote": "This fact is highlighted by their reduced *$\\chi^{2}$* values, listed in Table [1](#table:PIV)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Test with source B as centre gave chi2_red > 10; perpendicular PV cut shows no infall",
+     "evidence": [
+      {
+       "loc": "4.1.1 Disk-like structure",
+       "quote": "resulting in *$\\chi^{2}_\\mathrm{red}$* values higher than 10 for both fits"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive dust and gas masses and CO abundance",
+    "method": {
+     "value": "Optically thin dust mass from 0.87 mm flux; gas mass from C17O 3-2 integrated intensity; CO abundance by inverting gas-mass equation with gas-to-dust 100",
+     "evidence": [
+      {
+       "loc": "4.2 Disk mass",
+       "quote": "The dust and gas masses are calculated from the continuum emission (Fig. [1](#fig:continuum)) and from the integrated intensity of C$^{17}$O *J*=3$-$2"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "C17O integrated over 20 km/s, 5.31 ± 0.01 Jy km/s above 5 sigma",
+      "evidence": [
+       {
+        "loc": "4.2 Disk mass",
+        "quote": "obtaining a value of 5.31 $\\pm$ 0.01 Jy km s$^{-1}$ for *S$_{\\nu}$* times the velocity interval"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust T=30 K, Ossenkopf & Henning opacity, gas-to-dust 100, C17O/CO=4.5e-4 and CO/H2=2.7e-4",
+      "evidence": [
+       {
+        "loc": "4.2 Disk mass",
+        "quote": "By assuming a C$^{17}$O abundance with respect to CO of 4.5 $\\times$ 10$^{-4}$ (cite: Penzias1981)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CO abundance compared to canonical 2.7e-4 across temperatures",
+     "evidence": [
+      {
+       "loc": "4.2 Disk mass",
+       "quote": "We note that for all of the temperatures used in the calculations, CO abundances are comparable to the canonical value of 2.7 $\\times$ 10$^{-4}$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Estimate optical depth, column densities and abundances",
+    "method": {
+     "value": "Non-LTE RADEX at source B, n(H2)=1e7 cm-3, Tkin=30 and 100 K, b=FWHM; abundance ratios vs CO compared with IRAS 16293",
+     "evidence": [
+      {
+       "loc": "4.3 Fits and abundances",
+       "quote": "assuming a H$_{2}$ number density of 1 $\\times$ 10$^{7}$ cm$^{-3}$ (collision partner), two kinetic temperatures (*T$_\\mathrm{kin}$*) of 30 and 100 K"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Standard isotope ratios 16O/17O=2005, 12C/13C=69",
+      "evidence": [
+       {
+        "loc": "Table of abundances notes",
+        "quote": "Assuming standard isotope ratios for C$^{17}$O ($^{16}$O/$^{17}$O = 2005) and H$^{13}$CO$^{+}$ ($^{12}$C/$^{13}$C = 69) from (cite: Wilson1999)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Density varied by factor of 10 to test column density sensitivity",
+     "evidence": [
+      {
+       "loc": "4.3 Fits and abundances",
+       "quote": "If we change the H$_{2}$ density by a factor of 10, the C$^{17}$O column density remains constant"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration, imaging, imfit",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The calibration and imaging were done in CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE optical depth and column densities",
+     "evidence": [
+      {
+       "loc": "4.3 Fits and abundances",
+       "quote": "The statistical equilibrium radiative transfer code (cite: vanderTak2007) is used to estimate the optical depth ($\\tau$) and column densities"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Circumbinary disk deconvolved continuum size",
+    "value": "4.1'' x 0.82'' (620 x 124 AU)",
+    "uncertainty": "±0.2'' x ±0.05''",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission",
+      "quote": "(4.1$''$ $\\pm$ 0.2$''$) $\\times$ (0.82$''$ $\\pm$ 0.05$''$) or (620 $\\pm$ 20 AU) $\\times$ (124 $\\pm$ 7 AU)"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux of Oph-IRS67B",
+    "value": "155",
+    "uncertainty": "±4",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Oph-IRS67B | 16$^\\mathrm{h}$32$^\\mathrm{m}$00.978$^\\mathrm{s}$ $\\pm$ 0.001$^\\mathrm{s}$ | $-$24$^\\circ$56$'$43.44$''$ $\\pm$ 0.01$''$ | 155 $\\pm$ 4"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux of Oph-IRS67A",
+    "value": "30",
+    "uncertainty": "±3",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "30 $\\pm$ 3"
+     }
+    ]
+   },
+   {
+    "quantity": "A-B separation",
+    "value": "0.71'' (107 AU)",
+    "uncertainty": "±0.01'' (±2 AU)",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission",
+      "quote": "The separation between sources A and B is 0.71$''$ $\\pm$ 0.01$''$ (107 $\\pm$ 2 AU)."
+     }
+    ]
+   },
+   {
+    "quantity": "Keplerian central mass",
+    "value": "2.2",
+    "uncertainty": "±0.2",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "C$^{17}$O | Keplerian | 2.2 $\\pm$ 0.2 | 3.3"
+     }
+    ]
+   },
+   {
+    "quantity": "Infalling central mass for c-C3H2",
+    "value": "3.6",
+    "uncertainty": "±0.3",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1.2 High-density region",
+      "quote": "the central mass associated with the infalling fit is 3.6 $\\pm$ 0.3 M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total mass at 30 K",
+    "value": "1.1e-2",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Disk mass",
+      "quote": "a value of 1.1 $\\times$ 10$^{-2}$ *M$_{\\odot}$* is obtained for the total mass"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass at 30 K",
+    "value": "1.1e-4",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Disk mass",
+      "quote": "a dust mass of 1.1 $\\times$ 10$^{-4}$ *M$_{\\odot}$* is derived"
+     }
+    ]
+   },
+   {
+    "quantity": "C17O column density (30 K)",
+    "value": "2.0e16",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "C$^{17}$O *J*=3$-$2 | Central | 30 | 2.4 | 0.76 | 2.0 $\\times$ 10$^{16}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH column density upper limit",
+    "value": "<1.6e14",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "\\< 1.6 $\\times$ 10$^{14}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "C2H and c-C3H2 trace a high-density region offset ~430 AU, enriched in carbon chain molecules; SO2 compact only around source B",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Two further molecular species, C$_{2}$H and c$-$C$_{3}$H$_{2}$, trace a higher-density region which is spatially offset from the sources ($\\sim$430 AU)."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "A circumbinary disk surrounds Oph-IRS67AB",
+    "experiment": "Continuum and C17O/H13CO+ kinematics with PV fits",
+    "result": "Flattened 620 AU structure; Keplerian fit gives 2.2 Msun, but infall fit not excluded",
+    "finding": "Circumbinary disk detected, Keplerian on <200 AU scales",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Molecular emission and kinematic studies prove the existence and first detection of the circumbinary disk associated with the system Oph-IRS67."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CO is frozen out in the disk midplane",
+    "experiment": "Compare CO abundance from C17O and dust mass with canonical value",
+    "result": "Abundances comparable to 2.7e-4 at all temperatures",
+    "finding": "No significant CO freeze-out",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Inferred CO abundances with respect to H$_{2}$ are comparable to the canonical ISM value of 2.7 $\\times$ 10$^{-4}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Complex organics such as methanol are present",
+    "experiment": "Search for CH3OH 7k-6k and RADEX upper limit",
+    "result": "No emission; abundance < 1e-10-1e-9",
+    "finding": "Low methanol consistent with extended disk flattening density profile",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Summary",
+      "quote": "The lack of methanol emission suggests an upper limit between 10$^{-10}$ and 10$^{-9}$ for the abundance of CH$_{3}$OH."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "High-density region as centrifugal barrier rejected because infall mass inconsistent; outflow cavity, spiral arms, infalling envelope remain possible",
+     "evidence": [
+      {
+       "loc": "5.1 Structure of Oph-IRS67",
+       "quote": "thus a centrifugal barrier cannot explain the presence of the high-density region in Oph-IRS67."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Neither Keplerian nor infalling fit can be discarded from the PV analysis",
+     "evidence": [
+      {
+       "loc": "4.1.1 Disk-like structure",
+       "quote": "but neither of them can be discarded by this PV analysis"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "PV fits use imfit peaks with reduced chi2 of 3-15, so Keplerian versus infall is weakly constrained",
+    "Masses depend on assumed dust temperature, opacity, isotopic ratios and gas-to-dust ratio",
+    "RADEX abundances at one density and temperature; SO2 poorly constrained",
+    "Single configuration with limited uv coverage; flux recovery not discussed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; ALMA archive data",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00955.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and imaging parameters",
+    "Line-free channels and continuum subtraction",
+    "PV fitting details"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB for the four sessions",
+   "score_inferred": 3,
+   "score_reason": "Data public and analysis simple, but imaging and fitting settings are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data and numeric results such as continuum fluxes and central mass, though imaging details must be chosen."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: vanderTak2007)",
+     "why": "RADEX non-LTE code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Lindberg2014)",
+     "why": "Methanol comparison in R CrA IRS7B"
+    },
+    {
+     "citation": "(cite: Brinch2016)",
+     "why": "Circumbinary disk in IRS 43"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Spitzer c2d legacy program",
+    "ALMA program 2013.1.00955.S survey of 12 Class I protostars in Ophiuchus"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-471b023d2a4f7ae1e79d637b62ba2ee6",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:55",
+  "usage": {
+   "input_tokens": 29558,
+   "output_tokens": 8379,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.072059,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 40,
+   "rate": 0.541
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:53:13",
+  "custom_id": "repair-sonnet-ca7b7ebb050a34bf64d7c1b63fd868e0",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "the central component of the spectra of both species is fitted with a Gaussian and the values are listed in Table"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "We note that for all of the temperatures used in the calculations, CO abundances are comparable to the canonical value of 2.7 $\\times$ 10$^{-4}$."
+   },
+   {
+    "path": "analysis_steps[4].assumptions[0].evidence[0]",
+    "old": null,
+    "new": "Assuming standard isotope ratios for C$^{17}$O ($^{16}$O/$^{17}$O = 2005) and H$^{13}$CO$^{+}$ ($^{12}$C/$^{13}$C = 69) from (cite: Wilson1999)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

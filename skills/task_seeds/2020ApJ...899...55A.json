@@ -1,0 +1,244 @@
+{
+ "bibcode": "2020ApJ...899...55A",
+ "title": "Search for Alignment of Disk Orientations in Nearby Star-forming Regions: Lupus, Taurus, Upper Scorpius, ρ Ophiuchi, and Orion",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/aba43d",
+ "arxiv_id": "2007.03393",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Are proto-planetary disk orientations (position angles) mutually aligned in five nearby star-forming regions (Lupus, Taurus, Upper Sco, Ophiuchus, Orion)?",
+ "alma_project_codes": [
+  "2013.1.00220.S",
+  "2015.1.00534.S"
+ ],
+ "data": {
+  "bands": "Lupus continuum typical ~335 GHz; comparison dataset Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "typical beam 0.34'' x 0.28'' (Lupus, Ansdell+2016); ~0.25'' for Ansdell+2018",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lupus disk PAs (0-360 deg, from CO spectroscopy) and cos i",
+    "evidence": [
+     {
+      "loc": "3.1 Lupus",
+      "quote": "In the current analysis, we adopt PA estimated by (cite: 2018A&A...616A.100Y) instead of those from continuum images."
+     }
+    ]
+   },
+   "citation": "Yen et al. 2018 (cite: 2018A&A...616A.100Y)"
+  },
+  {
+   "what": {
+    "value": "Upper Sco disk PAs",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "we adopt PA estimated by (cite: 2017ApJ...851...85B), which presents disk parameters in their Table 1."
+     }
+    ]
+   },
+   "citation": "Barenfeld et al. 2017"
+  },
+  {
+   "what": {
+    "value": "Ophiuchus disk PAs",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "We adopt the values of PA listed in their Table 4."
+     }
+    ]
+   },
+   "citation": "Cox et al. 2017; Cieza et al. 2019"
+  },
+  {
+   "what": {
+    "value": "ONC disk PAs from HST",
+    "evidence": [
+     {
+      "loc": "3.5",
+      "quote": "We use the values of PA listed in their Tables 1 and 2."
+     }
+    ]
+   },
+   "citation": "Bally et al. 2000"
+  },
+  {
+   "what": {
+    "value": "Taurus PAs compiled from literature",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "We compile the values of PA published in previous literature"
+     }
+    ]
+   },
+   "citation": "Kitamura 2002; Andrews & Williams 2007; Guilloteau 2011; Long 2018, 2019"
+  },
+  {
+   "what": {
+    "value": "Planck polarization angle dispersions",
+    "evidence": [
+     {
+      "loc": "7 Discussion",
+      "quote": "Table D.1 of (cite: 2016A&A...586A.138P) shows that $\\sigma_{\\psi} = 36^{\\circ}\\pm0.1^{\\circ}$ in the Orion region"
+     }
+    ]
+   },
+   "citation": "Planck Collaboration 2016b (cite: 2016A&A...586A.138P)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compile PAs per region and select disks",
+   "method": "Take published PAs; keep disks with PA error <30 deg; Lupus III members selected 3D with Gaia parallax; Oph overlapping disks handled by choosing one catalog or the other; exclude face-on disks",
+   "software": [],
+   "key_parameters": [
+    "Lupus III 3D box: -60<x<-56 pc, -114<y<-106 pc"
+   ],
+   "assumptions": [
+    "Disk circular, cos i = minor/major axis ratio"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Test PA uniformity",
+   "method": "Kuiper test against uniform distribution; circular mean and standard deviation estimators (doubled angles for 0-180 deg)",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [
+    "p~0.05 ~ 2 sigma; p~0.003 ~ 3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Re-measure Lupus PAs from continuum with three methods",
+   "method": "CLEAN+imfit, uvmodelfit, and sparse modeling (PRIISM) with Gaussian fit and second-moment tensor; compare to published PAs",
+   "software": [
+    "CASA",
+    "PRIISM"
+   ],
+   "key_parameters": [
+    "uvmodelfit up to 20 iterations; 20 (Lambda_l, Lambda_t) sets; 10-fold CV; MFISTA up to 1000 iterations; keep images with MSE < MSE_best+sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare to magnetic field and filament",
+   "method": "Alfvén Mach number from Planck polarization dispersion; field direction from Planck map with bilinear interpolation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "sigma_phi ~ sigma_psi, M_A ~ sigma_psi"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Kuiper p, entire Lupus (37 disks)",
+   "value": "0.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Lupus | 37 | $7^{\\circ}$ / $0.3\\ensuremath{''}$ | Radio/ALMA | 0.29 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kuiper p, Lupus III (16 disks)",
+   "value": "0.037",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5",
+     "quote": "The statistical significance of this non-uniformity is barely $2\\sigma$ ($p=0.037$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PA ± sigma, Lupus III",
+   "value": "77.3 ± 69.9",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5",
+     "quote": "Mean(PA) $\\pm$ $\\sigma$(PA) =$77.3^{\\circ} \\pm 69.9^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kuiper p, Taurus / Upper Sco / Ophiuchus / L1688 / ONC",
+   "value": "0.69 / 0.16 / 0.68 / 0.95 / 0.47",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Taurus | 50 | $15^{\\circ}$ / 0.4–1$\\ensuremath{''}$ | Radio$^{b}$ | 0.69 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Delta PA mean and std vs Yen+2018 (22 overlap disks)",
+   "value": "0.17 and 30.9",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "the mean and the standard deviation of $\\Delta$PA are $0.17^{\\circ}$ and $30.9^{\\circ}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "M_A from Planck",
+   "value": "0.6-0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Discussion",
+     "quote": "Eq ([\\[eq:MA-CF\\]](#eq:MA-CF)) implies that $\\mathcal{M}_{\\rm A} \\simeq 0.6 \\sim 0.8$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which archival datasets/ASDM files map to which Lupus targets and which project each is from",
+  "Self-calibration solution intervals and reference antenna",
+  "Line-free channels and continuum averaging windows",
+  "Image size/cell and masks for CLEAN",
+  "uvmodelfit starting model and initial parameters",
+  "Sparse modeling pixel size inconsistent (0.1'' vs 0.01'')",
+  "Details of the ONC ALMA PA analysis",
+  "PA values from the Band 6 reduction and exact disk list for 29 disks"
+ ],
+ "missing_for_reproduction": [
+  "Self-cal and imaging parameters beyond those given",
+  "Full per-disk output PAs of the re-measurement",
+  "Exact regularization of final images"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Main statistics reproducible from published tables; re-measurement partly specified.",
+ "rediscovery_reason": "Kuiper test on tabulated PAs is fully reproducible; numeric p-values given.",
+ "source_card": "cards/2020ApJ...899...55A/sonnet/card.md"
+}

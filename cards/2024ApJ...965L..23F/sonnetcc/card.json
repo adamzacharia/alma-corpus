@@ -1,0 +1,1549 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...965L..23F",
+  "title": "Rotational Spectrum and First Interstellar Detection of 2-methoxyethanol Using ALMA Observations of NGC 6334I",
+  "year": 2024,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Fried, Zachary T. P.",
+  "n_authors": 16,
+  "arxiv_id": "2403.17341",
+  "doi": "10.3847/2041-8213/ad37ff",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.00278.S",
+   "2017.1.00661.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "25 rotational transitions are observed in the ALMA Band 4 data toward NGC 6334I, resulting in the first interstellar detection of 2-methoxyethanol."
+   },
+   {
+    "loc": "Observations",
+    "quote": "The Band 4 data used in this paper are from the Cycle 5 ALMA program 2017.1.00661.S"
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 6334I",
+     "coordinates": {
+      "value": "not stated (same coordinates as the methoxymethanol detection, cite: methoxy_detection)",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "These data were extracted from the same coordinates that were used to confirm the first interstellar detection of methoxymethanol (cite: methoxy_detection)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "IRAS 16293-2422B",
+     "coordinates": {
+      "value": "position offset by 0.5 arcsec from the continuum peak",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "we analysed the spectrum taken at a position offset by 0.5$''$ from the continuum peak"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can the laboratory rotational spectrum of 2-methoxyethanol be extended to mm/sub-mm frequencies and used to search for the molecule toward NGC 6334I and IRAS 16293-2422B, and what do the abundance differences imply for formation chemistry?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The resulting rotational parameters permitted a search for this molecule in Atacama Large Millimeter/submillimeter Array (ALMA) observations toward the massive protocluster NGC 6334I"
+     },
+     {
+      "loc": "abstract",
+      "quote": "We also investigate physical differences between the two interstellar sources that could result in the observed abundance variations."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00661.S",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The Band 4 data used in this paper are from the Cycle 5 ALMA program 2017.1.00661.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00278.S",
+     "evidence": [
+      {
+       "loc": "IRAS 16293-2422B Observations",
+       "quote": "ALMA Protostellar Interferometry Line Survey, PILS ((cite: jor16); project id: 2013.1.00278.S)"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00712.S",
+     "evidence": [
+      {
+       "loc": "Conclusions (acknowledgments)",
+       "quote": "ADS/JAO.ALMA#2017.1.00661.S, ADS/JAO.ALMA#2013.1.00278.S, and ADS/JAO.ALMA#2012.1.00712.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 4 (NGC 6334I); Band 7 (IRAS 16293-2422B, PILS)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "25 rotational transitions are observed in the ALMA Band 4 data toward NGC 6334I"
+     },
+     {
+      "loc": "abstract",
+      "quote": "molecular signal is not observed in the Band 7 data toward IRAS 16293-2422B"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "NGC 6334I: four spws, each 937.500 MHz wide, centered at 130.50, 131.55, 144.47, 145.40 GHz (TOPO), 1.1 km/s resolution, 0.49 MHz channels. PILS: 329.1-362.9 GHz, ~0.2 km/s resolution",
+    "evidence": [
+     {
+      "loc": "NGC 6334I Observations",
+      "quote": "The data contain four spectral windows, each with a bandwidth of 937.500 MHz, central (TOPO) frequencies of 130.50, 131.55, 144.47, 145.40 GHz, respectively"
+     },
+     {
+      "loc": "NGC 6334I Observations",
+      "quote": "a spectral resolution of 1.1 km s$^{-1}$ corresponding to a channel width of 0.49 MHz"
+     },
+     {
+      "loc": "IRAS 16293-2422B Observations",
+      "quote": "covering frequencies from 329.1 to 362.9 GHz with an angular resolution of 0.5$''$ and spectral resolution of $\\approx$0.2 km s$^{-1}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "2-methoxyethanol (CH3OCH2CH2OH)",
+     "transition": "25 transitions observed in Band 4 toward NGC 6334I, listed in Table B2 (e.g. J=25-24 and J=29-28, 28-27 a-type series)",
+     "rest_frequency": "within the Band 4 spws centered at 130.50, 131.55, 144.47, 145.40 GHz (Table B2 lists ~130.14 to 145.62 GHz)",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "Overall, we observed 25 methoxyethanol transitions in the Band 4 observations of NGC 6334I."
+      },
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "All of the observed methoxyethanol transitions are listed in Table [\\[observed_lines\\]](#observed_lines)."
+      }
+     ]
+    },
+    {
+     "species": "2-methoxyethanol (CH3OCH2CH2OH)",
+     "transition": "eight predicted-brightest transitions in the PILS range toward IRAS 16293B (not detected)",
+     "rest_frequency": "329.1-362.9 GHz (PILS range)",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "Figure [3](#fig:iras_lines) shows the eight transitions of methoxyethanol predicted to be the brightest in the frequency range of PILS"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "NGC 6334I: 0.15 - 5.2 km (unprojected)",
+    "evidence": [
+     {
+      "loc": "NGC 6334I Observations",
+      "quote": "with (unprojected) baseline lengths ranging from 0.15 - 5.2 km"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "NGC 6334I native (robust=0.5) 0.23 x 0.16 arcsec, convolved to 0.26 x 0.26 arcsec; PILS 0.5 arcsec",
+    "evidence": [
+     {
+      "loc": "NGC 6334I Observations",
+      "quote": "The native robust=0.5 angular resolution of the resulting continuum image and spectral line cubes was 0$^{\\prime\\prime}$.23$\\times$ 0$^{\\prime\\prime}$.16."
+     },
+     {
+      "loc": "IRAS 16293-2422B Observations",
+      "quote": "with an angular resolution of 0.5$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "NGC 6334I: 2017-12-03 (1), 2018-12-07 (1), 2018-01-04 (2)",
+    "evidence": [
+     {
+      "loc": "NGC 6334I Observations",
+      "quote": "The data are comprised of four datasets obtained on 2017-12-03 (1), 2018-12-07 (1), and 2018-01-04 (2)."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "NGC 6334I: Cycle 5 program 2017.1.00661.S; IRAS 16293B: PILS survey, project 2013.1.00278.S",
+    "evidence": [
+     {
+      "loc": "NGC 6334I Observations",
+      "quote": "The Band 4 data used in this paper are from the Cycle 5 ALMA program 2017.1.00661.S"
+     },
+     {
+      "loc": "IRAS 16293-2422B Observations",
+      "quote": "using observational data from the ALMA Protostellar Interferometry Line Survey, PILS ((cite: jor16); project id: 2013.1.00278.S)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "PILS (ALMA Protostellar Interferometry Line Survey)",
+     "provided": {
+      "value": "ALMA Band 7 spectral survey data of IRAS 16293-2422 used for the non-detection and upper limit",
+      "evidence": [
+       {
+        "loc": "IRAS 16293-2422B Observations",
+        "quote": "PILS consists of an unbiased line survey of IRAS 16293-2422 using ALMA covering frequencies from 329.1 to 362.9 GHz"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Lille spectrometer (fast-scan mode)",
+     "provided": {
+      "value": "laboratory spectrum at 150-220, 230-330 and 370-500 GHz",
+      "evidence": [
+       {
+        "loc": "Spectroscopic Analysis and Results",
+        "quote": "The mm and sub-mm spectrum was predominately measured using the Lille spectrometer (cite: lille) with fast-scan mode (cite: fast_scan)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "MIT CP-FT mm-wave spectrometer",
+     "provided": {
+      "value": "laboratory spectrum at 68-85 GHz",
+      "evidence": [
+       {
+        "loc": "Spectroscopic Analysis and Results",
+        "quote": "The $68-85\\,$GHz spectrum was recorded with a newly updated chirped-pulse Fourier transform (CP-FT) mm-wave spectrometer at MIT."
+       }
+      ]
+     }
+    },
+    {
+     "name": "New College of Florida waveguide CP-FT spectrometer",
+     "provided": {
+      "value": "laboratory centimeter-wave spectrum at 8.7-26.5 GHz",
+      "evidence": [
+       {
+        "loc": "Spectroscopic Analysis and Results",
+        "quote": "centimeter-wave data from $8.7-26.5\\,$GHz was collected at the New College of Florida using a waveguide-based CP-FT spectrometer (cite: ncf)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Predicted column density of 2-methoxyethanol toward IRAS 16293B from the machine learning model (motivation for the search)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "trained a machine learning model to map the molecular identities of the detected species to their observed column densities."
+       }
+      ]
+     },
+     "citation": "(cite: fried)"
+    },
+    {
+     "what": {
+      "value": "Earlier rotational constants and dipole moments for 2-methoxyethanol (Stark-modulated spectra, to ~40 GHz)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The authors measured 38 lines of the ground vibrational state of the most stable conformer in the frequency range of $8-26.5\\,$GHz"
+       }
+      ]
+     },
+     "citation": "(cite: buckley); (cite: caminati)"
+    },
+    {
+     "what": {
+      "value": "Conformer geometries used as inputs to the quantum chemical calculations",
+      "evidence": [
+       {
+        "loc": "Quantum Chemical Calculations",
+        "quote": "Using their reported geometries as inputs (which were optimized using the complete basis set CBS-QB3 ab initio method)"
+       }
+      ]
+     },
+     "citation": "(cite: conformers)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic catalogs of the other 19 molecules in the NGC 6334I model, from JPL and CDMS",
+      "evidence": [
+       {
+        "loc": "Appendix B",
+        "quote": "Catalogs obtained from the JPL spectroscopic database (cite: jpl_database)."
+       },
+       {
+        "loc": "Appendix B",
+        "quote": "All other catalogs were obtained from CDMS (cite: cdms_database)."
+       }
+      ]
+     },
+     "citation": "(cite: jpl_database); (cite: cdms_database)"
+    },
+    {
+     "what": {
+      "value": "Methoxymethanol/methoxyethanol ratio in IRAS 16293B (>56) and methoxymethanol excitation temperature (130 K)",
+      "evidence": [
+       {
+        "loc": "Abundance Differences Between Sources",
+        "quote": "while it is $>56$ in IRAS 16293B (cite: eme_iras)"
+       },
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "the excitation temperature of methoxymethanol was found to be 130 K; (cite: eme_iras)"
+       }
+      ]
+     },
+     "citation": "(cite: eme_iras)"
+    },
+    {
+     "what": {
+      "value": "Methoxymethanol/methoxyethanol ratio ~31 in NGC 6334I",
+      "evidence": [
+       {
+        "loc": "Abundance Differences Between Sources",
+        "quote": "In NGC 6334I, this ratio is $\\sim$31 (cite: methoxy_detection)"
+       }
+      ]
+     },
+     "citation": "(cite: methoxy_detection)"
+    },
+    {
+     "what": {
+      "value": "DME/methoxymethanol ratio of 1.7 and ethanol/methoxyethanol ratio >92 in IRAS 16293B",
+      "evidence": [
+       {
+        "loc": "Abundance Differences Between Sources",
+        "quote": "In IRAS 16293B, the DME/methoxymethanol ratio is 1.7 (cite: jor18; eme_iras)."
+       },
+       {
+        "loc": "Abundance Differences Between Sources",
+        "quote": "However, in IRAS 16293B, the ratio is $>92$ (cite: jor18)."
+       }
+      ]
+     },
+     "citation": "(cite: jor18); (cite: eme_iras)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Simulated emission spectrum of 20 molecules for NGC 6334I (single-excitation-temperature model) used to constrain Tex, linewidth, velocity and column density",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "A simulated emission spectrum comprised of 20 molecules was used to constrain the physical parameters necessary to model the molecular spectra"
+      }
+     ]
+    },
+    {
+     "value": "LTE synthetic spectra for IRAS 16293B with single column density and Tex, 0.5 arcsec FWHM Gaussian source, 1 km/s FWHM linewidth, 2.6 km/s offset",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "that the emission has a Gaussian distribution with a FWHM of 0.5$''$, and the line width and offset is similar to other species identified in PILS (1 km s$^{-1}$ FWHM and 2.6 km s$^{-1}$, respectively)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Cycle 6 ALMA Pipeline, then improved uv-continuum subtraction and iterative self-calibration (NGC 6334I)",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The data were initially calibrated using the Cycle 6 ALMA Pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "20% flux uncertainty per transition (flux calibration plus noise, added in quadrature)",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "We conservatively estimate that the flux uncertainty on any given transition is 20%"
+      },
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "which encompasses both the estimated flux calibration uncertainty and a measurement of the noise level of the observations in a nearby line-free region added in quadrature"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "iterative self-calibration starting from the line-free continuum image; solutions applied to continuum-subtracted uv-data",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "used as the starting point for an iterative self-calibration, the solutions of which were also applied to the continuum-subtracted uv-data"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 0.5",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The native robust=0.5 angular resolution of the resulting continuum image and spectral line cubes"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "line-free channels identified and used to improve the default pipeline uv-continuum subtraction",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "Then line-free channels were identified and used to improve the default pipeline uv-continuum subtraction."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied before analysis",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "primary beam correction was applied before beginning our analysis"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "convolved to a common angular resolution of 0.26 x 0.26 arcsec",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The images were subsequently convolved to a common angular resolution of 0$^{\\prime\\prime}$.26$\\times$ 0$^{\\prime\\prime}$.26"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.26 x 0.26 arcsec (NGC 6334I)",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "convolved to a common angular resolution of 0$^{\\prime\\prime}$.26$\\times$ 0$^{\\prime\\prime}$.26"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Self-calibration and continuum-subtraction workflow for the NGC 6334I data",
+      "evidence": [
+       {
+        "loc": "NGC 6334I Observations",
+        "quote": "(see e.g. (cite: Brogan18self))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Brogan18self)"
+    },
+    {
+     "what": {
+      "value": "Automated simultaneous fitting routine for all molecules in the NGC 6334I model",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "The parameters for all of the molecules were simultaneously fit by an automated routine as described in (cite: ngc_fitting)."
+       }
+      ]
+     },
+     "from_reference": "(cite: ngc_fitting)"
+    },
+    {
+     "what": {
+      "value": "Extraction position for NGC 6334I spectra",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "These data were extracted from the same coordinates that were used to confirm the first interstellar detection of methoxymethanol (cite: methoxy_detection)."
+       }
+      ]
+     },
+     "from_reference": "(cite: methoxy_detection)"
+    },
+    {
+     "what": {
+      "value": "MCMC population diagram procedure for Tex and N_T",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "following the procedures outlined in (cite: Loomis:2018:131), we performed a Markov Chain Monte Carlo analysis"
+       }
+      ]
+     },
+     "from_reference": "(cite: Loomis:2018:131); population diagram (cite: Goldsmith:1999:209)"
+    },
+    {
+     "what": {
+      "value": "PILS survey data and further details of the survey",
+      "evidence": [
+       {
+        "loc": "IRAS 16293-2422B Observations",
+        "quote": "We refer to (cite: jor16) for further details about the survey and the data from it."
+       }
+      ]
+     },
+     "from_reference": "(cite: jor16)"
+    },
+    {
+     "what": {
+      "value": "Level of theory for computed rotational constants",
+      "evidence": [
+       {
+        "loc": "Quantum Chemical Calculations",
+        "quote": "They determined that the $\\omega$B97X-D/6-31+G(d) level of theory and basis set provided a strong balance between calculation uncertainty and efficiency."
+       }
+      ]
+     },
+     "from_reference": "(cite: lee_bayesian)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact ALMA execution blocks / member OUS IDs and whether the archive pipeline products or a manual reprocessing were used for 2017.1.00661.S",
+    "Which CASA version was used for self-calibration and imaging, and the tclean parameters (deconvolver, cell, image size, masks, niter, threshold)",
+    "The actual line-free channel ranges and self-calibration solution intervals",
+    "The sky coordinates of the NGC 6334I extraction position (only referenced to the methoxymethanol paper) and the aperture or pixel used",
+    "The list of fitted parameters, priors and fit results for the other 19 molecules in the NGC 6334I model, and the velocity and linewidth values adopted",
+    "MCMC settings (sampler, priors, number of walkers and steps, convergence criteria) and the partition function convention in the population diagram",
+    "Which of the 25 transitions entered the population diagram and how blended lines were treated",
+    "Details of the IRAS 16293B spectrum extraction from PILS (coordinates, continuum treatment) and the noise level used to set the 2.5e15 cm^-2 upper limit",
+    "The spectroscopic catalog for 2-methoxyethanol (line list and dipole moments) is in supplementary material rather than described in the text; the dipole moment values used in the ALMA modelling are not stated",
+    "Version of molsim"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Quantum chemical conformer and rotational constant calculations",
+    "method": {
+     "value": "Re-ran geometry and energy calculations for the 12 conformers (MP2/aug-cc-pVTZ, CCSD(T) single points), and computed A, B, C with wB97X-D/6-31+G(d); simulated spectra with SPCAT",
+     "evidence": [
+      {
+       "loc": "Quantum Chemical Calculations",
+       "quote": "The geometries and harmonic vibrational frequencies of these molecules were calculated using Gaussian 16 (cite: g16) with the MP2 level of theory and aug-cc-pVTZ basis set."
+      },
+      {
+       "loc": "Quantum Chemical Calculations",
+       "quote": "simulated rotational spectra were generated using SPCAT in Pickett’s CALPGM suite of programs (cite: spcat)"
+      }
+     ]
+    },
+    "software": [
+     "Gaussian 16",
+     "SPCAT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tight convergence criteria for geometry optimizations",
+      "evidence": [
+       {
+        "loc": "Quantum Chemical Calculations",
+        "quote": "Tight convergence criteria was used for the geometry optimizations."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Computed A, B, C over-predict the experimental constants by 0.13%, 0.46% and 0.34%",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "as the $A$, $B$, and $C$ constants are over-predicted by only 0.13%, 0.46% and 0.34%, respectively."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure and fit the laboratory rotational spectrum",
+    "method": {
+     "value": "Assigned lines starting from the simulated spectrum using Buckley constants, then fit with least squares using A and S reductions (I^r representation)",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "The assignment of the ground vibrational state was initiated using the simulated spectrum that was generated from the rotational constants reported by (cite: buckley)."
+      },
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "These were analyzed with a least-squares fitting procedure using ASFIT (cite: asfit)."
+      }
+     ]
+    },
+    "software": [
+     "ASFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Spectra at 8.7-26.5, 68-85 and 150-500 GHz; 2,172 distinct lines, 3,396 transitions in the fit; J'' = 2-102, Ka'' = 0-32",
+      "evidence": [
+       {
+        "loc": "Spectroscopic Analysis and Results",
+        "quote": "The transitions range from $J^{\\prime\\prime} = 2-102$ and $K_a^{\\prime\\prime} = 0-32$."
+       }
+      ]
+     },
+     {
+      "value": "Higher-order terms kept only if they improved the RMS error by at least around 10%",
+      "evidence": [
+       {
+        "loc": "Spectroscopic Analysis and Results",
+        "quote": "Generally, higher order terms were removed unless their inclusion resulted in at least around a 10 % improvement of the RMS error of the fit."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Line frequency uncertainties of 50 kHz in all spectral ranges",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "The uncertainties of the line frequencies were estimated to be 50 kHz throughout the entire frequency range."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least-squares fit with 20 constants for both A and S reductions",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "Both fits include 20 constants."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Comparison to earlier constants (agree within less than 0.001% for A, B, C) and theory",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "In fact, they agree within less than 0.001% in each case."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Calibrate and image the NGC 6334I Band 4 data",
+    "method": {
+     "value": "Cycle 6 pipeline calibration, improved uv-continuum subtraction using line-free channels, iterative self-calibration, imaging at robust=0.5, smoothing to 0.26 arcsec and primary beam correction",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The data were initially calibrated using the Cycle 6 ALMA Pipeline."
+      },
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The images were subsequently convolved to a common angular resolution of 0$^{\\prime\\prime}$.26$\\times$ 0$^{\\prime\\prime}$.26"
+      }
+     ]
+    },
+    "software": [
+     "ALMA Pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5; common beam 0.26 x 0.26 arcsec",
+      "evidence": [
+       {
+        "loc": "NGC 6334I Observations",
+        "quote": "The native robust=0.5 angular resolution of the resulting continuum image and spectral line cubes"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Model the NGC 6334I spectrum with a multi-molecule simulation",
+    "method": {
+     "value": "Single-excitation-temperature simulated spectra of 20 molecules in molsim fitted simultaneously by an automated routine to constrain Tex, linewidth, velocity and column density",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "The molecular spectra were simulated using the `molsim` package with a single-excitation temperature model."
+      },
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "The parameters for all of the molecules were simultaneously fit by an automated routine as described in (cite: ngc_fitting)."
+      }
+     ]
+    },
+    "software": [
+     "molsim"
+    ],
+    "key_parameters": [
+     {
+      "value": "All molecules fit with the same linewidth and velocity; methoxyethanol linewidths lie between 1.37 and 1.53 MHz",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "A decision was made separately to fit all of the molecules with the same linewidth and velocity"
+       },
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "The line widths for our frequency range lie between 1.37 and 1.53 MHz."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Source fills the beam",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "The source was assumed to fill the beam."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Automated simultaneous fit as in El-Abd et al. 2024; sampler and priors not stated here",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "The parameters for all of the molecules were simultaneously fit by an automated routine as described in (cite: ngc_fitting)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Assumption of common linewidth and velocity said to match all molecules in the model",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "this assumption is well-matched to all of the molecules in our model"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive methoxyethanol Tex and column density with an MCMC population diagram",
+    "method": {
+     "value": "MCMC to generate posterior distributions for a population diagram analysis of methoxyethanol alone",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "we performed a Markov Chain Monte Carlo analysis to generate posterior probability distributions for a population diagram analysis for just methoxyethanol"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Parameters of interest: N_T and Tex",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "To better explore the uncertainty space for the derived methoxyethanol parameters in particular ($N_T$ and $T_{ex}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "20% flux uncertainty on each transition",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "We conservatively estimate that the flux uncertainty on any given transition is 20%"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC following Loomis et al. 2018; priors and sampler not stated",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "following the procedures outlined in (cite: Loomis:2018:131), we performed a Markov Chain Monte Carlo analysis"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Search for methoxyethanol toward IRAS 16293B and set an upper limit",
+    "method": {
+     "value": "Compared LTE synthetic spectra (Tex 100 to 150 K, also 300 K) to the PILS spectrum at a position offset 0.5 arcsec from the continuum peak; upper limit set by the synthetic spectrum that is not exceeded by the data",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "The plotted synthetic spectrum corresponds to a column density of $2.5\\times10^{15}$ cm$^{-2}$, which represents the upper limit to the methoxyethanol column density toward this position."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Tex 100 to 150 K (methoxymethanol Tex 130 K); also tested 300 K",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "for an excitation temperature of 100 to 150 K (the excitation temperature of methoxymethanol was found to be 130 K; (cite: eme_iras))"
+       },
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "Searching for methoxyethanol at an excitation temperature of 300 K also does not reveal any detected lines"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, single column density and Tex, Gaussian emission FWHM 0.5 arcsec, linewidth 1 km/s FWHM, offset 2.6 km/s",
+      "evidence": [
+       {
+        "loc": "Observational Analysis and Results",
+        "quote": "We calculate synthetic spectra assuming that the gas is in local thermodynamical equilibrium, that the emission can be reproduced with a single column density and excitation temperature"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare abundance ratios between NGC 6334I and IRAS 16293B",
+    "method": {
+     "value": "Compared methoxymethanol/methoxyethanol, DME/methoxymethanol and ethanol/methoxyethanol ratios using literature values for IRAS 16293B and the NGC 6334I values from this work",
+     "evidence": [
+      {
+       "loc": "Abundance Differences Between Sources",
+       "quote": "A more informative metric to gauge the relative underproduction of 2-methoxyethanol in IRAS 16293B may therefore be the methoxymethanol/methoxyethanol ratios in these sources."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "ALMA Pipeline",
+    "version": "Cycle 6",
+    "used_for": {
+     "value": "initial calibration of the NGC 6334I Band 4 data",
+     "evidence": [
+      {
+       "loc": "NGC 6334I Observations",
+       "quote": "The data were initially calibrated using the Cycle 6 ALMA Pipeline."
+      }
+     ]
+    }
+   },
+   {
+    "name": "molsim",
+    "version": "not stated",
+    "used_for": {
+     "value": "simulating molecular spectra with a single-excitation temperature model",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "The molecular spectra were simulated using the `molsim` package with a single-excitation temperature model."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Gaussian 16",
+    "version": "Revision C.01 (reference list)",
+    "used_for": {
+     "value": "geometries, vibrational frequencies and rotational constants of 2-methoxyethanol conformers",
+     "evidence": [
+      {
+       "loc": "Quantum Chemical Calculations",
+       "quote": "The geometries and harmonic vibrational frequencies of these molecules were calculated using Gaussian 16 (cite: g16)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SPCAT (CALPGM)",
+    "version": "not stated",
+    "used_for": {
+     "value": "simulating rotational spectra from calculated constants",
+     "evidence": [
+      {
+       "loc": "Quantum Chemical Calculations",
+       "quote": "simulated rotational spectra were generated using SPCAT in Pickett’s CALPGM suite of programs (cite: spcat)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ASFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "least-squares fitting of the measured rotational transitions",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "These were analyzed with a least-squares fitting procedure using ASFIT (cite: asfit)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "JPL spectroscopic database",
+    "version": "not stated",
+    "used_for": {
+     "value": "catalogs for some model molecules",
+     "evidence": [
+      {
+       "loc": "Appendix B",
+       "quote": "Catalogs obtained from the JPL spectroscopic database (cite: jpl_database)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "catalogs for the other model molecules",
+     "evidence": [
+      {
+       "loc": "Appendix B",
+       "quote": "All other catalogs were obtained from CDMS (cite: cdms_database)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "2-methoxyethanol column density toward NGC 6334I",
+    "value": "1.3e17",
+    "uncertainty": "+1.4/-0.9 e17",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A column density of $1.3_{-0.9}^{+1.4} \\times 10^{17}$ cm$^{-2}$ is derived at an excitation temperature of $143_{-39}^{+31}$ K."
+     }
+    ]
+   },
+   {
+    "quantity": "2-methoxyethanol excitation temperature toward NGC 6334I",
+    "value": "143",
+    "uncertainty": "+31/-39",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A column density of $1.3_{-0.9}^{+1.4} \\times 10^{17}$ cm$^{-2}$ is derived at an excitation temperature of $143_{-39}^{+31}$ K."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of methoxyethanol transitions observed in NGC 6334I Band 4",
+    "value": "25 (nine unblended or partially blended)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Observational Analysis and Results",
+      "quote": "Overall, we observed 25 methoxyethanol transitions in the Band 4 observations of NGC 6334I."
+     },
+     {
+      "loc": "Observational Analysis and Results",
+      "quote": "Nine transitions are either completely unblended or only partially blended."
+     }
+    ]
+   },
+   {
+    "quantity": "Methoxyethanol linewidth range in NGC 6334I",
+    "value": "1.37 to 1.53",
+    "uncertainty": "not stated",
+    "units": "MHz",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Observational Analysis and Results",
+      "quote": "The line widths for our frequency range lie between 1.37 and 1.53 MHz."
+     }
+    ]
+   },
+   {
+    "quantity": "Upper limit on methoxyethanol column density toward IRAS 16293B",
+    "value": "2.5e15",
+    "uncertainty": "upper limit",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Observational Analysis and Results",
+      "quote": "The plotted synthetic spectrum corresponds to a column density of $2.5\\times10^{15}$ cm$^{-2}$, which represents the upper limit to the methoxyethanol column density toward this position."
+     }
+    ]
+   },
+   {
+    "quantity": "DME/methoxymethanol ratio toward the NGC 6334I position",
+    "value": "0.35",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Abundance Differences Between Sources",
+      "quote": "However, this ratio is 0.35 toward the position of NGC 6334I investigated in this work."
+     }
+    ]
+   },
+   {
+    "quantity": "Ethanol column density in NGC 6334I",
+    "value": "1.59e18",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Abundance Differences Between Sources",
+      "quote": "In NGC 6334I, this value is approximately 12 (with the derived ethanol column density being $1.59 \\times 10^{18}$ cm$^{-2}$)."
+     }
+    ]
+   },
+   {
+    "quantity": "Ethanol/methoxyethanol ratio in NGC 6334I",
+    "value": "~12",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Abundance Differences Between Sources",
+      "quote": "In NGC 6334I, this value is approximately 12 (with the derived ethanol column density being $1.59 \\times 10^{18}$ cm$^{-2}$)."
+     }
+    ]
+   },
+   {
+    "quantity": "Lab fit: number of distinct lines / transitions in the fit",
+    "value": "2,172 lines / 3,396 transitions",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Spectroscopic Analysis and Results",
+      "quote": "In all, a total of 2,172 distinct lines were identified and measured."
+     },
+     {
+      "loc": "Spectroscopic Analysis and Results",
+      "quote": "Including blended lines, this corresponded to 3,396 transitions included in the fit."
+     }
+    ]
+   },
+   {
+    "quantity": "Rotational constant A (A reduction)",
+    "value": "12982.3438",
+    "uncertainty": "(23)",
+    "units": "MHz",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "12982.3438(23)"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotational constant B (A reduction)",
+    "value": "2742.50569",
+    "uncertainty": "(10)",
+    "units": "MHz",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2742.50569(10)"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotational constant C (A reduction)",
+    "value": "2468.107109",
+    "uncertainty": "(94)",
+    "units": "MHz",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2468.107109(94)"
+     }
+    ]
+   },
+   {
+    "quantity": "Relative stability of tGg- conformer",
+    "value": "5.72 kJ/mol more stable than any other conformer",
+    "uncertainty": "not stated",
+    "units": "kJ/mol",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Quantum Chemical Calculations",
+      "quote": "The tGg- conformer was calculated to be 5.72 kJ/mol more stable than any other conformational arrangement of this molecule."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "First interstellar detection of 2-methoxyethanol toward NGC 6334I using ALMA Band 4 data",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "resulting in the first interstellar detection of 2-methoxyethanol"
+     }
+    ]
+   },
+   {
+    "value": "No clear molecular signal toward IRAS 16293B; only an upper limit could be derived",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "A search for this molecule was also conducted in the ALMA data toward IRAS 16293B; however, clear molecular signal was not observed."
+     }
+    ]
+   },
+   {
+    "value": "Radical recombination and insertion reactions are proposed as plausible formation routes",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We proceeded to discuss potential formation pathways of the molecule, especially focusing on those stemming from known interstellar precursors."
+     }
+    ]
+   },
+   {
+    "value": "The machine learning model overpredicted the methoxyethanol column density toward IRAS 16293B",
+    "evidence": [
+     {
+      "loc": "Validation of Machine Learning Prediction",
+      "quote": "both overpredicted methoxyethanol to have a column density of $\\sim$$10^{17}$ cm$^{-2}$ toward IRAS 16293B"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "2-methoxyethanol is present in the interstellar medium toward the hot core NGC 6334I",
+    "experiment": "Searched ALMA Band 4 data using the newly measured laboratory spectrum and a multi-molecule spectral model",
+    "result": "25 transitions observed, 9 unblended or partially blended; Tex = 143 K, N_T = 1.3e17 cm^-2",
+    "finding": "First interstellar detection of 2-methoxyethanol",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "25 molecular transitions are identified, nine of which are either fully unblended or only partially blended."
+     }
+    ]
+   },
+   {
+    "hypothesis": "2-methoxyethanol is detectable toward IRAS 16293B as predicted by the machine learning model",
+    "experiment": "Compared LTE synthetic spectra to PILS Band 7 data",
+    "result": "No clean lines; upper limit 2.5e15 cm^-2",
+    "finding": "The molecule is not detected and the model prediction (~1e17 cm^-2) was an overprediction",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Observational Analysis and Results",
+      "quote": "As shown in the figure, there are no clean lines that can be used to claim a detection of methoxyethanol for this source."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The relative abundance of 2-methoxyethanol differs between the high-mass NGC 6334I and the low-mass IRAS 16293B",
+    "experiment": "Compared methoxymethanol/methoxyethanol, DME/methoxymethanol and ethanol/methoxyethanol ratios",
+    "result": "Methoxymethanol/methoxyethanol ~31 vs >56; ethanol/methoxyethanol ~12 vs >92",
+    "finding": "Methoxyethanol appears more efficiently produced in NGC 6334I; causes are discussed but not established",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Abundance Differences Between Sources",
+      "quote": "This difference may suggest that methoxyethanol is more efficiently produced in NGC 6334I."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The rotational spectrum of 2-methoxyethanol can be extended beyond ~40 GHz into the mm/sub-mm for astronomical searches",
+    "experiment": "Measured spectra at 8.7-26.5, 68-85 and 150-500 GHz and fit with ASFIT",
+    "result": "2,172 distinct lines (3,396 transitions) fit with 20 constants",
+    "finding": "Improved rotational parameters usable for interstellar searches",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "In this work, we have collected and analyzed the rotational spectrum of 2-methoxyethanol"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Machine learning prediction flagged 2-methoxyethanol as a strong candidate in IRAS 16293B; warm sources are needed since strongest transitions lie in the mm and sub-mm",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The notable column density prediction for this molecule along with the simulated rotational parameters suggested that this molecule was a strong candidate for detection."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "the strongest transitions of these species arise in the millimeter (mm) and submillimeter (sub-mm) regimes."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Microwave spectrum re-measured because chirped-pulse spectrometers are more sensitive than the earlier Stark-modulated ones",
+    "evidence": [
+     {
+      "loc": "Spectroscopic Analysis and Results",
+      "quote": "newer chirped-pulse Fourier transform spectrometers are generally more sensitive than the Stark-modulated spectrometers employed in the earlier studies"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Lab fit was run with both A and S reductions; they were of similar quality",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "The fits using the A and S reduction were ultimately of similar quality."
+      }
+     ]
+    },
+    {
+     "value": "IRAS 16293B search repeated at 300 K excitation temperature, still no lines and a lower upper limit",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "the upper limit to the column density is even more stringent (lower) than what was found above"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "A-E split lines and perturbed high-Ka transitions were not included in the lab fit; excited vibrational states and other conformers not yet analysed",
+     "evidence": [
+      {
+       "loc": "Spectroscopic Analysis and Results",
+       "quote": "As of now, the split lines were not included in the fit"
+      }
+     ]
+    },
+    {
+     "value": "Several detected lines are weak",
+     "evidence": [
+      {
+       "loc": "Observational Analysis and Results",
+       "quote": "Several of these lines, however, appear to be quite weak in the spectrum."
+      }
+     ]
+    },
+    {
+     "value": "Gas-phase formation pathway effectiveness not fully understood; desorption behaviour of methoxyethanol unmeasured",
+     "evidence": [
+      {
+       "loc": "Possible Formation Pathways",
+       "quote": "the effectiveness of this proposed gas-phase pathway is still not fully understood and requires further study"
+      },
+      {
+       "loc": "Abundance Differences Between Sources",
+       "quote": "It is clear that further experiments of the desorption mechanisms and temperatures of these molecules are required to draw any definitive conclusions."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Detection rests on 25 transitions of which only nine are unblended or partially blended; blending treatment is not described",
+    "Column density depends on a source-fills-beam assumption and a single Tex, with large uncertainties (+1.4/-0.9e17)",
+    "The IRAS 16293B upper limit is set by eye from one synthetic spectrum at one offset position with assumed source size",
+    "Comparison of ratios across sources mixes different beams, positions and literature analyses",
+    "Formation-route discussion is speculative with no modelling or quantitative test"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Computational outputs available in the Supplementary Information",
+     "evidence": [
+      {
+       "loc": "Quantum Chemical Calculations",
+       "quote": "All of the computational outputs are available in the Supplementary Information."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Extraction coordinates for NGC 6334I and the full 20-molecule model parameters (in El-Abd et al. 2024 and Supplementary Information)",
+    "MCMC settings and population diagram inputs (line selection, blending treatment)",
+    "CASA version, imaging parameters and line-free channels",
+    "IRAS 16293B extraction details and noise level",
+    "Lab line list and dipole moments for the ALMA modelling (supplementary)"
+   ],
+   "estimated_data_volume_inferred": "Roughly a few hundred GB raw for four Band 4 EBs plus PILS Band 7 products; imaged cubes much smaller (rough guess)",
+   "score_inferred": 2,
+   "score_reason": "The ALMA projects are named and the key results are numeric, but the model of the other 19 molecules, extraction coordinates, MCMC settings and imaging parameters are inherited or not stated, so the detection cannot be redone from the paper alone.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that the data are public and the NGC 6334I model, extraction position and fit settings are deferred to other work or not given, so the main result cannot be redone from the paper's recipe."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "El-Abd et al. 2024 (cite: ngc_fitting)",
+     "why": "automated multi-molecule fitting routine for NGC 6334I"
+    },
+    {
+     "citation": "Brogan, Hunter & Fomalont 2018 (cite: Brogan18self)",
+     "why": "self-calibration and continuum subtraction workflow"
+    },
+    {
+     "citation": "Loomis et al. 2018 (cite: Loomis:2018:131)",
+     "why": "MCMC population diagram procedure"
+    },
+    {
+     "citation": "Jorgensen et al. 2016 (cite: jor16)",
+     "why": "PILS survey and data description"
+    },
+    {
+     "citation": "Kisiel & Bialkowska-Jaworska 2019 (cite: asfit)",
+     "why": "ASFIT spectral fitting"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "McGuire et al. 2017 (cite: methoxy_detection)",
+     "why": "first detection of methoxymethanol toward NGC 6334I; position and comparison ratio"
+    },
+    {
+     "citation": "Manigand et al. 2020 (cite: eme_iras)",
+     "why": "methoxymethanol and ethyl methyl ether in PILS toward IRAS 16293B"
+    },
+    {
+     "citation": "Fried et al. 2023 (cite: fried)",
+     "why": "machine learning prediction that motivated the search"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PILS (ALMA Protostellar Interferometry Line Survey)",
+    "2017.1.00661.S",
+    "2012.1.00712.S (acknowledged only)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024ApJ...965L..23F",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T22:08:55",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 124,
+  "quotes_ok": 124,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2012.1.00712.S"
+  ],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 114,
+   "stated": 79,
+   "rate": 0.693
+  },
+  "evidence_ok": true
+ }
+}

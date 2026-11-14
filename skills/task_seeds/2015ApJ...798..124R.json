@@ -1,0 +1,317 @@
+{
+ "bibcode": "2015ApJ...798..124R",
+ "title": "ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/798/2/124",
+ "arxiv_id": "1410.8265",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "What is the radial distribution of mm-sized dust in the HD 107146 debris disk, and is there a gap or dip in the dust surface density?",
+ "alma_project_codes": [
+  "2011.0.00470.S"
+ ],
+ "data": {
+  "bands": "1.25 mm continuum (mean 239.5 GHz), Cycle 0",
+  "arrays": "12 m antennas, 16-24 per block",
+  "angular_resolution": "1.15'' x 0.84'' (natural weighting, ~32 x 23 AU); 2.52'' x 2.25'' with 2'' taper",
+  "sensitivity": "1σ = 0.030 mJy/beam (natural), 0.057 mJy/beam (outer taper)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Millimeter flux densities at 0.88, 1.32 and 3.0 mm used for the spectral index",
+    "evidence": [
+     {
+      "loc": "4.1 Debris Disk Model",
+      "quote": "By combining the flux densities measured for the HD 107146 debris disk at 0.88 mm, 1.25 mm, 1.32 mm and 3.0 mm by (cite: Hughes:2011), this work, (cite: Corder:2009) and (cite: Carpenter:2005), respectively"
+     }
+    ]
+   },
+   "citation": "Hughes:2011; Corder:2009; Carpenter:2005"
+  },
+  {
+   "what": {
+    "value": "Dust absorption coefficients from porous-grain dust model",
+    "evidence": [
+     {
+      "loc": "4.1 Debris Disk Model",
+      "quote": "The absorption coefficients $Q^{\\rm{abs}}_\\nu(a)$ were extracted from the dust models of (cite: Ricci:2010a)"
+     }
+    ]
+   },
+   "citation": "Ricci:2010a"
+  },
+  {
+   "what": {
+    "value": "Stellar Teff = 5841 K and log(Lbol/Lsun) = 0.04",
+    "evidence": [
+     {
+      "loc": "4.1 Debris Disk Model",
+      "quote": "$L^{\\star}_{\\nu}$ was derived from a black body with effective temperature $T = 5841$ K and bolometric luminosity $Log(L_\\mathrm{bol}/L_\\odot) = 0.04$ (cite: Carpenter:2008; Hillenbrand:2008)"
+     }
+    ]
+   },
+   "citation": "Carpenter:2008; Hillenbrand:2008"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "rescale visibility uncertainties and correct proper motion",
+   "method": "Rescaled weights by median ratio of observed dispersion in uv cells to reported uncertainties; adjusted visibility phases for proper motion",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "cells with >=10 visibilities"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image continuum and measure integrated flux",
+   "method": "clean imaging with natural and tapered weighting; flux integrated over area above 2σ in the tapered map",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "derive grain size slope q from mm spectral index",
+   "method": "Fit mm SED alpha, beta = alpha - 2, then Draine (2006) relation for q",
+   "software": [],
+   "key_parameters": [
+    "a_min ≈ 1.7 μm (blow-out), a_max = 2 cm"
+   ],
+   "assumptions": [
+    "optically thin, Rayleigh-Jeans emission; rho = 1.2 g/cm3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "fit disk models to visibilities",
+   "method": "Model image multiplied by Gaussian primary beam (24.3''), Fourier transformed and sampled at observed uv points; chi2 minimised for single power-law, power-law with gap, double power-law",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "model image 2048x2048 pixels of 0.015''; flux scaled as nu^(2+beta), beta=0.4"
+   ],
+   "assumptions": [
+    "axisymmetric, geometrically and optically thin disk; constant dust opacity across disk"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "compare models statistically",
+   "method": "F-test and Akaike information criterion between nested models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "CO upper limit and planet mass from gap width",
+   "method": "LTE CO column/mass upper limit from non-detection; chaotic/crossing zone relation for planet mass using gap width",
+   "software": [],
+   "key_parameters": [
+    "Tex = 50 K, FWHM 1.9 km/s, inclination ~20 deg"
+   ],
+   "assumptions": [
+    "LTE"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated flux density at 1.25 mm",
+   "value": "12.5",
+   "uncertainty": "1.3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Images",
+     "quote": "The integrated flux density from the disk is 12.5 $\\pm$ 1.3 mJy at 1.25 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "Millimeter spectral index alpha",
+   "value": "2.42",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Debris Disk Model",
+     "quote": "we measured a millimeter spectral index $\\alpha = 2.42 \\pm 0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Grain size distribution slope q",
+   "value": "3.25",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Debris Disk Model",
+     "quote": "We then obtained $q = 3.25 \\pm 0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap radius (single power-law with gap)",
+   "value": "80.9",
+   "uncertainty": "+1.8/-2.6",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$R_{\\rm{gap}}$ \\[AU\\] | ... | $80.9^{+1.8}_{-2.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap width",
+   "value": "9.0",
+   "uncertainty": "+1.0/-1.5",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Single power-law with gap",
+     "quote": "radial width $\\Delta R_{\\rm{gap}} = 9.0^{+1.0}_{-1.5}$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Single power-law slope p",
+   "value": "0.74",
+   "uncertainty": "+0.06/-0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Single power-law models",
+     "quote": "The $p$ value of $0.74^{+0.06}_{-0.05}$ indicates a surface density which is increasing with radius"
+    }
+   ]
+  },
+  {
+   "quantity": "Double power-law R_break",
+   "value": "68.5",
+   "uncertainty": "+6.2/-2.6",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 Double power-law",
+     "quote": "$R_{\\rm{break}} = 68.5^{+6.2}_{-2.6}$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination (single power-law)",
+   "value": "20.6",
+   "uncertainty": "1.9",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$i$ \\[deg\\] | $20.6 \\pm 1.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Delta chi2 gap vs single power-law",
+   "value": "43.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Single power-law with gap",
+     "quote": "which is lower by $\\Delta\\chi^2=43.0$ than the case of a single power-law model with no gap"
+    }
+   ]
+  },
+  {
+   "quantity": "F-test statistic gap vs no gap",
+   "value": "8e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Single power-law with gap",
+     "quote": "The $F$-test statistics in this case has a value of $8 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass 3σ upper limit (Tex=50 K)",
+   "value": "1.9e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "7 The non-detection of CO",
+     "quote": "$M_{\\rm{CO}} < 1.9 \\times 10^{-6}~M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of best-fit models",
+   "value": "≈0.2",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 The non-detection of CO",
+     "quote": "have a dust mass of $\\approx 0.2~M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass from gap, crossing zone (coefficient 2.1)",
+   "value": "6.1",
+   "uncertainty": "+2.1/-3.1",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "9.1 A gap in the disk?",
+     "quote": "We obtain $6.1^{+2.1}_{-3.1}~M_{\\oplus}$ and $4.1^{+1.4}_{-2.1}~M_{\\oplus}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of emcee walkers and iterations (only 'several hundreds') and burn-in",
+  "Priors and bounds on model parameters",
+  "Clean threshold, mask, cell and image size of the CLEAN images",
+  "Whether CASA clean or other tools were used for the visibility extraction and weight rescaling in detail",
+  "Which spectral windows/channels were used for continuum (line-free channels excluded CO)",
+  "Exact dust opacity table values and grain composition fractions",
+  "CO imaging parameters (weightings, channel widths)"
+ ],
+ "missing_for_reproduction": [
+  "emcee walker/iteration counts and priors",
+  "Exact clean parameters (mask, threshold, cell, image size)",
+  "Dust opacity table of Ricci et al. 2010a"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear model equations, but MCMC settings, priors and imaging details are missing.",
+ "rediscovery_reason": "Public data, explicit model parameterization, numeric results (gap radius/width, chi2).",
+ "source_card": "cards/2015ApJ...798..124R/sonnet/card.md"
+}

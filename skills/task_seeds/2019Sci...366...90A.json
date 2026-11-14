@@ -1,0 +1,208 @@
+{
+ "bibcode": "2019Sci...366...90A",
+ "title": "Gas flow and accretion via spiral streamers and circumstellar disks in a young binary protostar",
+ "year": 2019,
+ "doi": "10.1126/science.aaw3491",
+ "arxiv_id": "1910.01141",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "How does gas flow from the circumbinary disk onto the circumstellar disks and the two protostars in the young binary [BHB2007] 11, and which component accretes preferentially?",
+ "alma_project_codes": [
+  "2016.1.01186.S",
+  "2013.1.00291.S"
+ ],
+ "data": {
+  "bands": "Band 6 (225.3 GHz, 1.3 mm); Band 3 (97.5 GHz) continuum also used",
+  "arrays": "not stated",
+  "angular_resolution": "45 × 30 mas (~6 au), PA −86°",
+  "sensitivity": "19 µJy/beam (Band 6 continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previous ALMA CO(2-1)/H2CO data and Band 3 data",
+    "evidence": [
+     {
+      "loc": "Materials and Methods",
+      "quote": "Using the molecular line data reported in ( _8, 11_ ), we performed two-dimensional Gaussian"
+     }
+    ]
+   },
+   "citation": "Alves et al. 2017 (cite 8); Alves et al. 2018 (cite 11)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity of [BHB2007] 11",
+    "evidence": [
+     {
+      "loc": "Materials and Methods",
+      "quote": "From the [BHB2007] 11 bolometric"
+     }
+    ]
+   },
+   "citation": "Brooke et al. 2007 (cite 7)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image continuum",
+   "method": "Self-cal then tclean multiscale",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure source sizes, inclinations, fluxes",
+   "method": "Gaussian fit to 225.3 GHz map; inclination from axis ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive disk and filament masses",
+   "method": "Modified blackbody, Eq. S8, optically thin/thick cases",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "κ250GHz = 1.7 cm2/g dust, gas-to-dust 100, Tdust ~110 K at 3 au (1.75 Lsun each); filament Tdust 40-100 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CO kinematics and dynamical mass",
+   "method": "2D Gaussian fits per channel for peak positions; Keplerian fit to H2CO PV diagram",
+   "software": [],
+   "key_parameters": [
+    "SNR threshold 5; PV emission >5σ"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Accretion rate, Toomre Q, ionized mass loss",
+   "method": "Free-fall accretion estimate; Q approximation; Anglada jet formula with VLA free-free flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "jet θ=10°, v=200 km/s, T=1e4 K; M*≈1.0 Msun; 15% flux error"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk radius [BHB2007] 11A",
+   "value": "3.1",
+   "uncertainty": "±0.6",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "3.1 ± 0.6 au ([BHB2007] 11A) and 2.1 ± 0.5 au ([BHB2007] 11B)"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk radius [BHB2007] 11B",
+   "value": "2.1",
+   "uncertainty": "±0.5",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "3.1 ± 0.6 au ([BHB2007] 11A) and 2.1 ± 0.5 au ([BHB2007] 11B)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "2.25",
+   "uncertainty": "±0.13",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Materials and Methods",
+     "quote": "of 2.25 ± 0.13 M ⊙, which represents an upper limit"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rate",
+   "value": "1.1e-5",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Materials and Methods",
+     "quote": "~ 1.1 x 10 [-5]"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q",
+   "value": "3.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Materials and Methods",
+     "quote": "the Toomre parameter _Q_ is ~ 3.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disk mass",
+   "value": "0.08",
+   "uncertainty": "±0.03",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Materials and Methods",
+     "quote": "the circumbinary disk mass is 0.08 ± 0.03 M ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized mass loss rate 11A",
+   "value": "6.4e-10",
+   "uncertainty": "±0.7e-10",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Materials and Methods",
+     "quote": "(6.4 ± 0.7) × 10 [-10]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals and number of rounds",
+  "Clean threshold, mask and image size/cell size",
+  "Continuum-free channels used for line cubes",
+  "Details of line cube imaging for CO and H2CO",
+  "Filament spine extraction procedure",
+  "Circumbinary disk mass inputs from Alves 2017"
+ ],
+ "missing_for_reproduction": [
+  "Self-cal parameters",
+  "Line cube imaging settings",
+  "Filament mask details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and main parameters given, but self-cal, line imaging details and some assumptions are incomplete.",
+ "rediscovery_reason": "Public data, stated imaging parameters and numeric results (sizes, masses, fluxes) can be redone.",
+ "source_card": "cards/2019Sci...366...90A/sonnet/card.md"
+}

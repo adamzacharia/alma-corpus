@@ -1,0 +1,403 @@
+{
+ "bibcode": "2024ApJ...977..161V",
+ "title": "Kinematic Analysis of z = 4.3 Galaxies in the SPT2349─56 Protocluster Core",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad7bb4",
+ "arxiv_id": "2409.13823",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How do galaxies in the SPT2349-56 protocluster core move: are they rotating discs, and what are their rotation velocities, velocity dispersions, disc stability and dynamical support in a protocluster environment?",
+ "alma_project_codes": [
+  "2018.1.00058.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.225'' x 0.166'' (1.55 kpc x 1.14 kpc at z = 4.303)",
+  "sensitivity": "RMS noise 0.5 mJy/beam per 13 km/s channel in the cube"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Observation details of the same data set, source naming convention and the list of FIR-brightest sources (Table 3)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "See Table 1 in (cite: Hill_2020) for more details about the observations."
+     },
+     {
+      "loc": "4 Results",
+      "quote": "the seven FIR brightest sources listed in Table 3 of (cite: Hill_2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Hill_2020)"
+  },
+  {
+   "what": {
+    "value": "Half-light radii of the individual sources, used to set the disc scale height z0",
+    "evidence": [
+     {
+      "loc": "3.2 Kinematic fitting",
+      "quote": "of the half-light radius of the individual sources (see (cite: Hill_2020) for values)"
+     }
+    ]
+   },
+   "citation": "(cite: Hill_2020)"
+  },
+  {
+   "what": {
+    "value": "Gas fractions f_gas per source",
+    "evidence": [
+     {
+      "loc": "Table 3 notes",
+      "quote": "Gas fraction, as presented in (cite: Rotermund_2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Rotermund_2021)"
+  },
+  {
+   "what": {
+    "value": "alpha_CII = 7.3 +/- 1.2 Msun/Lsun (atomic gas mass to [CII] luminosity ratio)",
+    "evidence": [
+     {
+      "loc": "5.2 Toomre parameter analysis",
+      "quote": "Here we use values presented in (cite: Rizzo_2020), where $\\alpha_{\\mathrm{CII}} = 7.3 \\pm 1.2$ $M_\\ensuremath{\\odot}/L_\\ensuremath{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: Rizzo_2020)"
+  },
+  {
+   "what": {
+    "value": "Dividing plane between discs and mergers in PVsplit parameter space",
+    "evidence": [
+     {
+      "loc": "5.3 PVsplit",
+      "quote": "$-0.63P_{\\mathrm{major}} - 0.27P_{\\mathrm{V}} + 2.78P_{\\mathrm{R}} - 2.72 = 0$ (cite: Roman_Oliviera_2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Roman_Oliviera_2023)"
+  },
+  {
+   "what": {
+    "value": "V/sigma values of comparison samples at other redshifts (Table of comparison samples, from studies using 3D kinematic modelling and an ionized tracer)",
+    "evidence": [
+     {
+      "loc": "Table of comparison samples",
+      "quote": "The studies chosen depend on two criteria - (i) It uses 3D kinematic modeling methods, (ii) It uses an ionized tracer."
+     }
+    ]
+   },
+   "citation": "(cite: Foerster_Schreiber_2009; Teodoro_2016; Rizzo_2020; Neeleman_2020; Fratenalli_2021; Rizzo_2021; Lelli_2021; Jones_2021; Posses_2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the continuum and the [CII] line cube",
+   "method": "Concatenate the data, run tclean with MFS to make a continuum image from line-free channels, then build a cube with the same Briggs weighting and subtract the continuum with imcontsub",
+   "software": [
+    "CASA",
+    "tclean",
+    "imcontsub"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5",
+    "clean threshold 0.55 mJy (1.4 x dirty-cube RMS)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Build SNR cube and SNR moment-0 map",
+   "method": "Estimate noise per position from emission-free channels, divide each channel by the noise map, and sum consecutive channels with SNR > 2.5 (fixed 160 km/s window where no significant emission)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "SNR > 2.5 for summed channels"
+   ],
+   "assumptions": [
+    "Noise is mainly a function of position and almost constant along the frequency axis"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Detect sources and make masks with 3DBarolo SEARCH",
+   "method": "Extract 2'' x 2'' sub-cubes (3'' x 3'' for C1) with imsubimage, run SEARCH with clipping only (5 sigma, grown to 2.1 sigma, 2.5 sigma for C1)",
+   "software": [
+    "CASA imsubimage",
+    "3DBAROLO SEARCH"
+   ],
+   "key_parameters": [
+    "SEARCH keywords: SEARCHTYPE spatial, THRESHOLD 0.0025005, GROWTHTHRESHOLD 0.0010002, MINCHANNELS 5, MINPIX 1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive initial guesses for the 3D fit",
+   "method": "Take x0, y0, Vrot, Vsys from SEARCH (flux-weighted moment-0 centre, adjusted with moment-1 and p-v maps where not at the kinematic centre); phi from moment-1; i from the (b/a) axis ratio measured with fitcomponents; sigma_disp set arbitrarily",
+   "software": [
+    "CASA imageanalysis fitcomponents",
+    "3DBAROLO SEARCH"
+   ],
+   "key_parameters": [
+    "cos^2 i = ((b/a)^2 - q^2)/(1 - q^2) with q = 0.2; cos i = b/a for edge-on C1, C4, C5"
+   ],
+   "assumptions": [
+    "Intrinsic axis ratio q = 0.2 (mildly thick disc)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit 3D tilted-ring models with 3DFIT",
+   "method": "3DFIT builds concentric-ring models, convolves with the beam, and chi-squared-minimises against the cube; two-stage fit with Bezier regularisation of geometry (phi, i) first, then kinematics; four free parameters per ring (Vrot, sigma_disp, phi, i); x0, y0, Vsys fixed",
+   "software": [
+    "3DBAROLO 3DFIT"
+   ],
+   "key_parameters": [
+    "RADSEP = sqrt(theta_x theta_y)/2 (RADSEP 0.0968 in parameter file), near-Nyquist sampling",
+    "NORM = azimuthal; TWOSTAGE true; REGTYPE bezier; FREE vrot vdisp pa inc; MASK search"
+   ],
+   "assumptions": [
+    "Thin disc with scale height z0 = 1/10 of the half-light radius",
+    "Radial velocity Vrad = 0"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive mean rotation velocity, dispersion and V/sigma per source and for the sample",
+   "method": "Noise-weighted mean of Vrot and sigma_disp over the rings beyond the beam size (r > 1.55 kpc); V/sigma uses Vrot = V_flat and sigma_disp = sigma_extended measured beyond 0.22''",
+   "software": [
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "Points within the beam size (< 1.55 kpc) excluded; at least three independent measurements per profile remain"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Classify rotators versus mergers with dynamical criteria",
+   "method": "Test five literature criteria: smooth velocity gradient, V/sigma > 3, coincident centres (< 0.22''), kinematic and morphological axes within 30 deg, centrally peaked dispersion; plus p-v symmetry and double-peaked spectra",
+   "software": [],
+   "key_parameters": [
+    "V/sigma > 3 for rotation support"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Compute Toomre Q for disc stability",
+   "method": "Q_T = sigma_disp kappa / (pi G Sigma_gas), with kappa = sqrt(2) Vrot/R and Sigma_gas from L_CII times alpha_CII per unit area; L_CII from the Solomon et al. 1997 relation with CO replaced by [CII]",
+   "software": [],
+   "key_parameters": [
+    "alpha_CII = 7.3 +/- 1.2 Msun/Lsun"
+   ],
+   "assumptions": [
+    "alpha_CII from Rizzo et al. 2020; the literature range is 5-30"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Classify morpho-kinematics with PVsplit",
+   "method": "Compute P_major, P_V, P_R from the p-v maps (Eqns. 6, 7, 8 of Rizzo et al. 2022) and classify with the dividing plane -0.63 P_major - 0.27 P_V + 2.78 P_R - 2.72 = 0",
+   "software": [
+    "PVsplit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "Compare with simulations, analytic models and literature samples; assess protocluster interaction timescales",
+   "method": "Compare V/sigma with TNG50 and with 3D-modelled ionized-tracer samples at other redshifts; test the Hayward and Hopkins sigma_disp prediction with f_gas = 0.7 and with Rotermund f_gas; estimate crossing and relaxation times of the core",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "V_c = V_gas in the Hayward model since stellar and dark matter velocity contributions are not available"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Weighted mean rotation velocity of the sample (abstract)",
+   "value": "357.1",
+   "uncertainty": "114.7",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The weighted mean rotation velocity ($V_{\\mathrm{rot}}$) and velocity dispersion ($\\sigma_{\\mathrm{disp}}$) for the sample are $357.1 \\pm 114.7$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean velocity dispersion of the sample (abstract value; the Table and Conclusion give 48.4 +/- 23.5)",
+   "value": "43.5",
+   "uncertainty": "23.5",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$43.5 \\pm 23.5$ km s$^{-1}$"
+    },
+    {
+     "loc": "Conclusion",
+     "quote": "The mean intrinsic velocity dispersion of the sample is $48.4 \\pm 23.5$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean V_rot/sigma_disp",
+   "value": "4.5",
+   "uncertainty": "1.3",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with weighted mean $V_{\\mathrm{rot}}/\\sigma_{\\mathrm{disp}} = 4.5 \\pm 1.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean V/sigma of the sample excluding C7",
+   "value": "4.5",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1.3 SPT2349-56",
+     "quote": "The mean of the sample (excluding source C7) is $4.5 \\pm 0.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Toomre parameter Q_T (abstract and table; Section 5.2 gives 0.8 +/- 0.1, range 0.2-1.1)",
+   "value": "0.9",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "find a mean Toomre parameter of $Q_\\mathrm{T} = 0.9 \\pm 0.3$"
+    },
+    {
+     "loc": "5.2 Toomre parameter analysis",
+     "quote": "the mean value is $Q_\\mathrm{T} = 0.8 \\pm 0.1$, with individual values ranging from 0.2–1.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation between disc stability and V/sigma",
+   "value": "about 0.19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2 Toomre parameter analysis",
+     "quote": "with a Pearson-$r$ coefficient of $\\approx 0.19$"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of individual rotation velocities",
+   "value": "170-475",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "individual values between 170–475 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of individual velocity dispersions",
+   "value": "10-100",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "individual values between 10–100 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean derived inclination angle of the sample",
+   "value": "about 60",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "The mean of the derived inclination angles for our sample is $\\approx$ 60$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cube RMS noise",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and data reduction",
+     "quote": "root mean square (RMS) noise $\\sigma_\\mathrm{[C\\textsc{ii}]} = 0.5$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Synthesized beam of the cube",
+   "value": "0.225 x 0.166",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and data reduction",
+     "quote": "The spectral cube has an angular resolution of $\\theta_x \\times \\theta_y = 0.225\\ensuremath{''} \\times 0.166\\ensuremath{''}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the calibration was manual or the archive pipeline; flux calibrator and flux-scale uncertainty (only phase and band-pass calibrators are named)",
+  "Which execution blocks and array configurations (12-m vs 7-m) were concatenated and any self-calibration",
+  "tclean parameters beyond weighting: cell size, image size, deconvolver, masking, niter, mosaic gridder, primary-beam correction limit, spectral axis definition (start, width, rest-frame/LSRK)",
+  "Line-free channel ranges for the continuum image and for imcontsub fitting order",
+  "Exact sub-cube centres for each source and per-source SEARCH thresholds in physical units (the sigma values are given but the Jy thresholds in the parameter file are only for one case)",
+  "3DBarolo version and exact settings for the sigma_disp initial guesses and the (b/a) values from fitcomponents",
+  "Per-source velocity-integrated [CII] fluxes, L_CII and the area/radius used for Sigma_gas and kappa in the Toomre Q calculation ('per unit area' is not defined)",
+  "How the noise-weighted means and their quoted uncertainties are computed (weights, error propagation), and why the abstract (sigma 43.5) and Table/Conclusion (48.4) differ",
+  "How the Pearson correlation between Q_T and V/sigma was computed (sample size, whether C7 is included)"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, calibration route, flux calibrator and flux-scale uncertainty",
+  "Full tclean parameters (cell, image size, mosaic gridder, deconvolver, mask, niter, spectral definition) and line-free channel ranges",
+  "Per-source sub-cube centres and exact conversion of the sigma thresholds",
+  "Per-source L_CII, fluxes, radii and area definition for Toomre Q; weights used for noise-weighted means",
+  "Per-source table rows lost source labels in the text conversion",
+  "Whether the ALMA data are public is not stated by the paper"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, observing outline, key imaging choices (robust 0.5, 13 km/s channels, 0.55 mJy clean) and full 3DBarolo parameter files with initial guesses are given, and results are numeric; but CASA version, calibration, many tclean settings and the Toomre Q inputs are missing, and some headline numbers disagree between sections.",
+ "rediscovery_reason": "A single ALMA project code, a public fitting code with published parameter files and numeric headline results make a reasonable redo possible, though imaging details and the Toomre inputs must be inferred and the public status of the data is not stated by the paper.",
+ "source_card": "cards/2024ApJ...977..161V/sonnet/card.md"
+}

@@ -1,0 +1,288 @@
+# Resolved Kennicutt-Schmidt law in two strongly lensed star-forming galaxies at redshift 1
+
+`2023A&A...678A.183N` | Astronomy and Astrophysics 2023 | first author: Nagy, David | arXiv: 2307.07551 | DOI: 10.1051/0004-6361/202346951
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: high_z_galaxies, star_formation
+- Question: Investigate the integrated and resolved Kennicutt-Schmidt (SFR-M_mol surface densities) law and the scale dependence of the spatial correlation between SFR and molecular gas from galactic scales down to ~100 pc scales in two strongly lensed galaxies at z ~ 1.  
+  > "We study the star formation rate (SFR) versus molecular gas mass ($M_\mathrm{mol}$) scaling relation from hundreds to thousands parsec scales in two strongly lensed galaxies at redshift $z\sim 1$, the Cosmic Snake and A521." (abstract); "This allows us to investigate for the first time the Kennicutt-Schmidt (KS) law (SFR-$M_\mathrm{mol}$ surface densities) at different spatial scales, from galactic scales to $\SI{\sim 100}{pc}$ scales, in galaxies at $z\sim 1$." (abstract)
+- Target **Cosmic Snake**: coordinates behind the galaxy cluster MACS J1206.2-0847  
+  > "In this paper, we investigate the rKS law in two strongly lensed galaxies at $z\sim 1$: the Cosmic Snake galaxy behind the galaxy cluster MACS J1206.2-0847, and A521-sys1, which we refer to as A521, behind the galaxy cluster Abell 0521." (Introduction); "| $z$ | 1.036 | 1.044 |" (Table 1); "The redshift values were derived from the CO(4–3) emission line observed with ALMA, for both galaxies." (Table 1); "The CO(4–3) emission of the Cosmic Snake was detected with ALMA in band 6 at $\SI{226.44}{GHz}$, corresponding to a redshift of $z=1.03620$." (ALMA observations); z/distance z = 1.03620 (1.036 in Table 1)  
+  > "In this paper, we investigate the rKS law in two strongly lensed galaxies at $z\sim 1$: the Cosmic Snake galaxy behind the galaxy cluster MACS J1206.2-0847, and A521-sys1, which we refer to as A521, behind the galaxy cluster Abell 0521." (Introduction); "| $z$ | 1.036 | 1.044 |" (Table 1); "The redshift values were derived from the CO(4–3) emission line observed with ALMA, for both galaxies." (Table 1); "The CO(4–3) emission of the Cosmic Snake was detected with ALMA in band 6 at $\SI{226.44}{GHz}$, corresponding to a redshift of $z=1.03620$." (ALMA observations); distance from derived from the CO(4–3) emission line observed with ALMA  
+  > "In this paper, we investigate the rKS law in two strongly lensed galaxies at $z\sim 1$: the Cosmic Snake galaxy behind the galaxy cluster MACS J1206.2-0847, and A521-sys1, which we refer to as A521, behind the galaxy cluster Abell 0521." (Introduction); "| $z$ | 1.036 | 1.044 |" (Table 1); "The redshift values were derived from the CO(4–3) emission line observed with ALMA, for both galaxies." (Table 1); "The CO(4–3) emission of the Cosmic Snake was detected with ALMA in band 6 at $\SI{226.44}{GHz}$, corresponding to a redshift of $z=1.03620$." (ALMA observations)
+- Target **A521 (A521-sys1)**: coordinates behind the galaxy cluster Abell 0521  
+  > "In this paper, we investigate the rKS law in two strongly lensed galaxies at $z\sim 1$: the Cosmic Snake galaxy behind the galaxy cluster MACS J1206.2-0847, and A521-sys1, which we refer to as A521, behind the galaxy cluster Abell 0521." (Introduction); "| $z$ | 1.036 | 1.044 |" (Table 1); "The redshift values were derived from the CO(4–3) emission line observed with ALMA, for both galaxies." (Table 1); "The CO(4–3) line in A521 was detected at $\SI{225.66}{GHz}$, which corresponds to a redshift of $z=1.04356$ (cite: dessauges-zavadsky_molecular_2023)." (ALMA observations); z/distance z = 1.04356 (1.044 in Table 1)  
+  > "In this paper, we investigate the rKS law in two strongly lensed galaxies at $z\sim 1$: the Cosmic Snake galaxy behind the galaxy cluster MACS J1206.2-0847, and A521-sys1, which we refer to as A521, behind the galaxy cluster Abell 0521." (Introduction); "| $z$ | 1.036 | 1.044 |" (Table 1); "The redshift values were derived from the CO(4–3) emission line observed with ALMA, for both galaxies." (Table 1); "The CO(4–3) line in A521 was detected at $\SI{225.66}{GHz}$, which corresponds to a redshift of $z=1.04356$ (cite: dessauges-zavadsky_molecular_2023)." (ALMA observations); distance from derived from the CO(4–3) emission line observed with ALMA  
+  > "In this paper, we investigate the rKS law in two strongly lensed galaxies at $z\sim 1$: the Cosmic Snake galaxy behind the galaxy cluster MACS J1206.2-0847, and A521-sys1, which we refer to as A521, behind the galaxy cluster Abell 0521." (Introduction); "| $z$ | 1.036 | 1.044 |" (Table 1); "The redshift values were derived from the CO(4–3) emission line observed with ALMA, for both galaxies." (Table 1); "The CO(4–3) line in A521 was detected at $\SI{225.66}{GHz}$, which corresponds to a redshift of $z=1.04356$ (cite: dessauges-zavadsky_molecular_2023)." (ALMA observations)
+
+## Data provenance
+
+- ALMA projects: 2013.1.01330.S, 2016.1.00643.S
+- bands: Band 6  
+  > "The CO(4–3) emission of the Cosmic Snake was detected with ALMA in band 6 at $\SI{226.44}{GHz}$, corresponding to a redshift of $z=1.03620$." (ALMA observations); "The isolated counter-image of the Cosmic Snake, as well as A521, were observed in band 6 in Cycle 4 (project 2016.1.00643.S), in the C40-6 configuration with a maximum baseline of $\SI{3.1}{km}$ and 41 antennas of the $\SI{12}{m}$ array." (ALMA observations)
+- frequencies and spectral setup: 226.44 GHz (Cosmic Snake), 225.66 GHz (A521); spectral resolution 7.8125 MHz  
+  > "The CO(4–3) emission of the Cosmic Snake was detected with ALMA in band 6 at $\SI{226.44}{GHz}$, corresponding to a redshift of $z=1.03620$." (ALMA observations); "The CO(4–3) line in A521 was detected at $\SI{225.66}{GHz}$, which corresponds to a redshift of $z=1.04356$ (cite: dessauges-zavadsky_molecular_2023)." (ALMA observations); "The spectral resolution was set to $\SI{7.8125}{MHz}$ for all three observations." (ALMA observations)
+- continuum bandwidth: _not stated_
+- arrays: 12 m array (38 antennas in Cycle 3; 41 antennas in Cycle 4)  
+  > "The observations were acquired in Cycle 3 (project 2013.1.01330.S), in the extended C38-5 configuration with a maximum baseline of $\SI{1.6}{km}$ and 38 antennas of the $\SI{12}{m}$ array." (ALMA observations); "The isolated counter-image of the Cosmic Snake, as well as A521, were observed in band 6 in Cycle 4 (project 2016.1.00643.S), in the C40-6 configuration with a maximum baseline of $\SI{3.1}{km}$ and 41 antennas of the $\SI{12}{m}$ array." (ALMA observations)
+- configurations: C38-5 (Cycle 3, Cosmic Snake arc), C40-6 (Cycle 4, Cosmic Snake counter-image and A521)  
+  > "The observations were acquired in Cycle 3 (project 2013.1.01330.S), in the extended C38-5 configuration with a maximum baseline of $\SI{1.6}{km}$ and 38 antennas of the $\SI{12}{m}$ array." (ALMA observations); "The isolated counter-image of the Cosmic Snake, as well as A521, were observed in band 6 in Cycle 4 (project 2016.1.00643.S), in the C40-6 configuration with a maximum baseline of $\SI{3.1}{km}$ and 41 antennas of the $\SI{12}{m}$ array." (ALMA observations)
+- baselines: maximum baseline 1.6 km (C38-5) and 3.1 km (C40-6)  
+  > "The observations were acquired in Cycle 3 (project 2013.1.01330.S), in the extended C38-5 configuration with a maximum baseline of $\SI{1.6}{km}$ and 38 antennas of the $\SI{12}{m}$ array." (ALMA observations); "The isolated counter-image of the Cosmic Snake, as well as A521, were observed in band 6 in Cycle 4 (project 2016.1.00643.S), in the C40-6 configuration with a maximum baseline of $\SI{3.1}{km}$ and 41 antennas of the $\SI{12}{m}$ array." (ALMA observations)
+- angular resolution: 0.22'' x 0.18'' (Cosmic Snake arc), 0.21'' x 0.18'' (Cosmic Snake isolated counter-image), 0.19'' x 0.16'' (A521)  
+  > "Using the *clean* routine in CASA interactively on all channels until convergence, the final synthesized beam size obtained for the Cosmic Snake galaxy was $\SI{0.22}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with a position angle of $85^\circ$ for the arc, and $\SI{0.21}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with an angle of $49^\circ$ for the isolated counter-image." (ALMA observations); "For A521 the final synthesized beam size was $\SI{0.19}{\ensuremath{''}} \times \SI{0.16}{\ensuremath{''}}$ at $-74^\circ$." (ALMA observations)
+- max recoverable scale: _not stated_
+- sensitivity: 0.29 mJy beam^-1 (Cosmic Snake arc), 0.42 mJy beam^-1 (Cosmic Snake isolated counter-image), 0.20 mJy beam^-1 (A521) per 7.8125 MHz channel  
+  > "The achieved root mean squares (RMS) are $\SI{0.29}{mJy.beam^{-1}}$, $\SI{0.42}{mJy.beam^{-1}}$, and $\SI{0.20}{mJy.beam^{-1}}$, per $\SI{7.8125}{MHz}$ channel, for the Cosmic Snake arc, the Cosmic Snake isolated counter-image, and A521, respectively." (ALMA observations)
+- time on source: 52.3 min (Cosmic Snake arc), 51.8 min (Cosmic Snake isolated counter-image), 89.0 min (A521)  
+  > "The total on-source integration time was $\SI{52.3}{min}$ (cite: dessauges-zavadsky_molecular_2019)." (ALMA observations); "For the isolated counter-image of the Cosmic Snake, the total on-source time was $\SI{51.8}{min}$. For A521, it was $\SI{89.0}{min}$." (ALMA observations)
+- observing dates: _not stated_
+- pi or archival as stated: _not stated_
+- Line: CO 4-3 (not stated)
+- Other facility **Hubble Space Telescope (HST) WFC3/UVIS**: F390W rest-frame UV images of MACS J1206.2-0847 (from CLASH) and A521 (HST archive ID: 15435)  
+  > "We used the image of MACS J1206.2-0847 observed in F390W with WFC3/UVIS in the context of the Cluster Lensing And Supernova survey with Hubble (CLASH), as this filter corresponds to rest-frame ultraviolet (UV) wavelengths." (HST observations); "We took the A521 images observed in F390W with WFC3/UVIS from the HST archive (ID: 15435, PI: Chisholm)." (HST observations)
+- Other facility **Plateau de Bure Interferometer (PdBI)**: Prior CO(2-1) line detection for the Cosmic Snake used to validate CO(4-3) as a molecular gas mass tracer  
+  > "In both galaxies, the CO(2–1) line was also detected with the Plateau de Bure Interferometer (PdBI) for the Cosmic Snake (cite: dessauges-zavadsky_molecular_2019), and with the Institut de radioastronomie millimétrique (IRAM) $\SI{30}{m}$ single dish antenna for A521 (cite: dessauges-zavadsky_molecular_2023)." (Molecular gas mass)
+- Other facility **IRAM 30 m single dish antenna**: Prior CO(2-1) line detection for A521 used to validate CO(4-3) as a molecular gas mass tracer  
+  > "In both galaxies, the CO(2–1) line was also detected with the Plateau de Bure Interferometer (PdBI) for the Cosmic Snake (cite: dessauges-zavadsky_molecular_2019), and with the Institut de radioastronomie millimétrique (IRAM) $\SI{30}{m}$ single dish antenna for A521 (cite: dessauges-zavadsky_molecular_2023)." (Molecular gas mass)
+- External data: Stellar mass and SFR of the Cosmic Snake, gravitational lens model for the Cosmic Snake, and rest-frame UV emission peaks in the Cosmic Snake  
+  > "The values of $M_{\star}$ and SFR of the Cosmic Snake are taken from (cite: cava_nature_2018), and those of A521 from (cite: nagy_radial_2022)." (Table 1); "More details on the gravitational lens models used for the Cosmic Snake and A521 can be found in (cite: cava_nature_2018) for the Cosmic Snake, and in (cite: richard_locuss_2010) and (cite: messa_multiply_2022) for A521." (Gravitational lens model); "The peaks were identified in the arcs of both galaxies, using the CO(4–3) emission from ALMA by (cite: dessauges-zavadsky_molecular_2019) for the Cosmic Snake and by (cite: dessauges-zavadsky_molecular_2023) for A521, and the rest-frame UV emission from HST by (cite: cava_nature_2018) for the Cosmic Snake and (cite: messa_multiply_2022) for A521." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation) [from (cite: cava_nature_2018)]
+- External data: Stellar mass and SFR of A521, colour excess E(B-V) in radial bins and isolated counter-images, and F160W half-light radii  
+  > "The values of $M_{\star}$ and SFR of the Cosmic Snake are taken from (cite: cava_nature_2018), and those of A521 from (cite: nagy_radial_2022)." (Table 1); "The colour excess $E(B-V)$ was computed in (cite: nagy_radial_2022) both in radial bins and in the isolated counter-images of the galaxies by performing spectral energy distribution (SED) fitting on multiple HST bands." (Star formation rate); "We integrated both the CO(4–3) emission and the UV flux inside the half-light radius measured in the F160W band (cite: nagy_radial_2022), then we converted them into the corresponding physical quantities $M_{\mathrm{mol}}$ (using Eqs. ([\[eq:LCO\]](#eq:LCO)) and ([\[eq:Mmol\]](#eq:Mmol))) and SFR (using Eq. ([\[eq:SFR\]](#eq:SFR))), by correcting the SFR for extinction using $E(B-V)$ computed in the same counter-images." (Integrated Kennicutt-Schmidt law) [from (cite: nagy_radial_2022)]
+- External data: Gravitational lens models for A521 and rest-frame UV emission peaks in A521  
+  > "More details on the gravitational lens models used for the Cosmic Snake and A521 can be found in (cite: cava_nature_2018) for the Cosmic Snake, and in (cite: richard_locuss_2010) and (cite: messa_multiply_2022) for A521." (Gravitational lens model); "The peaks were identified in the arcs of both galaxies, using the CO(4–3) emission from ALMA by (cite: dessauges-zavadsky_molecular_2019) for the Cosmic Snake and by (cite: dessauges-zavadsky_molecular_2023) for A521, and the rest-frame UV emission from HST by (cite: cava_nature_2018) for the Cosmic Snake and (cite: messa_multiply_2022) for A521." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation) [from (cite: richard_locuss_2010) and (cite: messa_multiply_2022)]
+- External data: CO(4-3) emission peaks (GMCs) in the Cosmic Snake and A521, CO luminosity ratio r_4,2, and Milky Way-like alpha_CO validation  
+  > "where we used the CO luminosity correction factor $r_{4,1}{=}L'_{\mathrm{CO(4 \mbox{--} 3)}}/L'_{\mathrm{CO(1 \mbox{--} 0)}}{=}0.33$, which was extrapolated from $r_{4,2}$ and $r_{2,1}$ measured in the Cosmic Snake (cite: dessauges-zavadsky_molecular_2019) and $z{\sim}1.5$ BzK galaxies (cite: daddi_co_2015), respectively." (Molecular gas mass); "The peaks were identified in the arcs of both galaxies, using the CO(4–3) emission from ALMA by (cite: dessauges-zavadsky_molecular_2019) for the Cosmic Snake and by (cite: dessauges-zavadsky_molecular_2023) for A521, and the rest-frame UV emission from HST by (cite: cava_nature_2018) for the Cosmic Snake and (cite: messa_multiply_2022) for A521." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation) [from (cite: dessauges-zavadsky_molecular_2019) and (cite: dessauges-zavadsky_molecular_2023)]
+- External data: rKS power law fits and slopes for 18 nearby PHANGS galaxies used for comparison and scatter calculation  
+  > "(cite: pessa_star_2021) measured the rKS in 18 star-forming galaxies from the Physics at High Angular resolution in Nearby GalaxieS (PHANGS) survey, at scales of $\SI{100}{pc}$, $\SI{500}{pc}$, and $\SI{1}{kpc}$." (Resolved Kennicutt-Schmidt law); "For each set of datapoints at a given bin size, we compute the scatter in dex ($\sigma$) as the standard deviation of the datapoints around the rKS power law fits from (cite: pessa_star_2021) at the closest reported spatial scale (100 pc, 500 pc, or 1 kpc)." (Resolved Kennicutt-Schmidt law) [from (cite: pessa_star_2021)]
+- External data: Compilation of integrated KS measurements and slopes for z >= 1 and local galaxies  
+  > "We show in Fig. [4](#fig:integrated_KS) the Cosmic Snake and A521 in the (integrated) KS diagram ($\Sigma \mathrm{SFR}-\Sigma M_{\mathrm{mol}}$), along with a compilations of 25 galaxies from (cite: genzel_study_2010) ($z=1-2.5$), 73 galaxies from (cite: tacconi_phibss_2013) ($z=1-2.4$), and 4 galaxies from (cite: freundlich_towards_2013) ($z\sim 1.2$)." (Integrated Kennicutt-Schmidt law); "We also plot the slope from (cite: de_los_reyes_revisiting_2019) for local spiral galaxies, as well as the slope obtained for stacks of MS SFGs by (cite: wang_3_2022) at $z=0.4-3.6$." (Integrated Kennicutt-Schmidt law) [from (cite: genzel_study_2010), (cite: tacconi_phibss_2013), (cite: freundlich_towards_2013), (cite: de_los_reyes_revisiting_2019), (cite: wang_3_2022)]
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: standard automated reduction procedure from the CASA pipeline  
+  > "The data reduction was performed using the standard automated reduction procedure from the pipeline of the Common Astronomy Software Application (CASA) package (cite: mcmullin_casa_2007)." (ALMA observations)
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: _not stated_
+
+### Imaging
+
+- task: clean (interactive on all channels until convergence), immoments  
+  > "Using the *clean* routine in CASA interactively on all channels until convergence, the final synthesized beam size obtained for the Cosmic Snake galaxy was $\SI{0.22}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with a position angle of $85^\circ$ for the arc, and $\SI{0.21}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with an angle of $49^\circ$ for the isolated counter-image." (ALMA observations); "The CO(4–3) moment-zero maps were obtained using the *immoments* routine from CASA by integrating the flux over the total velocity range where CO(4–3) emission was detected." (ALMA observations)
+- deconvolver: _not stated_
+- weighting robust: Briggs weighting with robust = 0.5  
+  > "Briggs weighting was used to image the CO(4–3) emission with a robust factor of 0.5." (ALMA observations)
+- uv taper: _not stated_
+- cell size: 0.04'' (Cosmic Snake arc), 0.03'' (Cosmic Snake isolated counter-image and A521)  
+  > "The adopted pixel scale for the CO(4–3) data cube is $\SI{0.04}{\ensuremath{''}}$ for the Cosmic Snake arc and $\SI{0.03}{\ensuremath{''}}$ for the Cosmic Snake isolated counter-image and A521." (ALMA observations)
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: _not stated_
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: HST images convolved with ALMA synthesized beam, and ALMA images convolved with HST PSF  
+  > "First we adjusted the pixel scale of the HST and ALMA images, then we convolved the HST images with the synthesised beam of the ALMA observations, and the ALMA images with the PSF of HST." (Convolution)
+- final beam: 0.22'' x 0.18'' at PA 85 deg (Cosmic Snake arc); 0.21'' x 0.18'' at PA 49 deg (Cosmic Snake isolated counter-image); 0.19'' x 0.16'' at PA -74 deg (A521)  
+  > "Using the *clean* routine in CASA interactively on all channels until convergence, the final synthesized beam size obtained for the Cosmic Snake galaxy was $\SI{0.22}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with a position angle of $85^\circ$ for the arc, and $\SI{0.21}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with an angle of $49^\circ$ for the isolated counter-image." (ALMA observations); "For A521 the final synthesized beam size was $\SI{0.19}{\ensuremath{''}} \times \SI{0.16}{\ensuremath{''}}$ at $-74^\circ$." (ALMA observations)
+- final rms: 0.29 mJy beam^-1 (Cosmic Snake arc), 0.42 mJy beam^-1 (Cosmic Snake isolated counter-image), 0.20 mJy beam^-1 (A521) per 7.8125 MHz channel  
+  > "The achieved root mean squares (RMS) are $\SI{0.29}{mJy.beam^{-1}}$, $\SI{0.42}{mJy.beam^{-1}}$, and $\SI{0.20}{mJy.beam^{-1}}$, per $\SI{7.8125}{MHz}$ channel, for the Cosmic Snake arc, the Cosmic Snake isolated counter-image, and A521, respectively." (ALMA observations)
+
+### Inherited from earlier work
+
+- ALMA CO(4-3) observations and data reduction, 3D datacube flux extraction technique, CO(4-3) peak locations, and CO conversion factors  
+  > "The total on-source integration time was $\SI{52.3}{min}$ (cite: dessauges-zavadsky_molecular_2019)." (ALMA observations); "To estimate the flux inside a given box from the ALMA maps, we applied the technique developed for the Cosmic Snake galaxy in (cite: dessauges-zavadsky_molecular_2019) in the context of the search of molecular clouds." (Resolved Kennicutt-Schmidt law) [from (cite: dessauges-zavadsky_molecular_2019) and (cite: dessauges-zavadsky_molecular_2023)]
+- Gravitational lens models for the Cosmic Snake and A521  
+  > "More details on the gravitational lens models used for the Cosmic Snake and A521 can be found in (cite: cava_nature_2018) for the Cosmic Snake, and in (cite: richard_locuss_2010) and (cite: messa_multiply_2022) for A521." (Gravitational lens model) [from (cite: cava_nature_2018), (cite: richard_locuss_2010), and (cite: messa_multiply_2022)]
+- Colour excess E(B-V) in radial bins and counter-images, and F160W half-light radii  
+  > "The colour excess $E(B-V)$ was computed in (cite: nagy_radial_2022) both in radial bins and in the isolated counter-images of the galaxies by performing spectral energy distribution (SED) fitting on multiple HST bands." (Star formation rate); "We integrated both the CO(4–3) emission and the UV flux inside the half-light radius measured in the F160W band (cite: nagy_radial_2022), then we converted them into the corresponding physical quantities $M_{\mathrm{mol}}$ (using Eqs. ([\[eq:LCO\]](#eq:LCO)) and ([\[eq:Mmol\]](#eq:Mmol))) and SFR (using Eq. ([\[eq:SFR\]](#eq:SFR))), by correcting the SFR for extinction using $E(B-V)$ computed in the same counter-images." (Integrated Kennicutt-Schmidt law) [from (cite: nagy_radial_2022)]
+- Scale-dependent depletion time (tuning fork) analysis methodology  
+  > "As in (cite: schruba_scale_2010), we do this by considering $\tau_{\mathrm{dep}} = \Sigma M_\mathrm{mol}/\Sigma \mathrm{SFR}$." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation) [from (cite: schruba_scale_2010)]
+
+### Not stated but needed to reproduce (our reading)
+
+- CASA version and pipeline version used for calibration and imaging
+- Exact velocity ranges integrated over to create the CO(4-3) moment-zero maps
+- Continuum subtraction details (whether continuum was subtracted in uv-plane or image plane, or negligible)
+- Exact Lenstool parameter files and mass model potentials for projecting grids and apertures between source plane and image plane
+- Exact numerical values of E(B-V) in radial bins and counter-images and F160W half-light radii taken from Nagy et al. (2022)
+- Exact coordinates of the CO(4-3) and rest-frame UV emission peaks used for the aperture analysis
+- Exact origin and orientation of the source-plane grids
+
+## Analysis recipe
+
+1. **Match spatial resolution and pixel scale of HST and ALMA images**: Adjust pixel scales of HST and ALMA images, then convolve HST images with the ALMA synthesized beam and ALMA images with the HST PSF.  
+  > "First we adjusted the pixel scale of the HST and ALMA images, then we convolved the HST images with the synthesised beam of the ALMA observations, and the ALMA images with the PSF of HST." (Convolution)
+   - parameter: HST PSF ~0.1'' (Cosmic Snake) and 0.097'' (A521); ALMA beams 0.22''x0.18'', 0.21''x0.18'', 0.19''x0.16''  
+  > "The map we used has a point spread functions (PSF) resolution of $\SI{\sim 0.1}{^{\prime\prime}}$ and a pixel scale of $\SI{0.03}{^{\prime\prime}}$ (cite: cava_nature_2018), and the exposure time was $\sim \SI{4959}{s}$." (HST observations); "The final image has a PSF resolution of $\SI{0.097}{^{\prime\prime}}$ and a pixel scale of $\SI{0.06}{^{\prime\prime}}$ (cite: messa_multiply_2022)." (HST observations)
+   - fitting: _not stated_
+   - validation: _not stated_
+2. **Measure integrated SFR and molecular gas surface densities on isolated counter-images**: Integrate CO(4-3) emission and F390W UV flux inside the F160W half-light radius on the isolated counter-images, convert to M_mol and extinction-corrected SFR, and divide by the half-light surface area in the image plane.  
+  > "We integrated both the CO(4–3) emission and the UV flux inside the half-light radius measured in the F160W band (cite: nagy_radial_2022), then we converted them into the corresponding physical quantities $M_{\mathrm{mol}}$ (using Eqs. ([\[eq:LCO\]](#eq:LCO)) and ([\[eq:Mmol\]](#eq:Mmol))) and SFR (using Eq. ([\[eq:SFR\]](#eq:SFR))), by correcting the SFR for extinction using $E(B-V)$ computed in the same counter-images." (Integrated Kennicutt-Schmidt law); "To obtain $\Sigma M_{\mathrm{mol}}$ and $\Sigma \mathrm{SFR}$ we then divided by the respective half-light surfaces of the galaxies in the image plane." (Integrated Kennicutt-Schmidt law)
+   - software: CASA
+   - parameter: r_4,1 = L'_CO(4-3) / L'_CO(1-0) = 0.33  
+  > "where we used the CO luminosity correction factor $r_{4,1}{=}L'_{\mathrm{CO(4 \mbox{--} 3)}}/L'_{\mathrm{CO(1 \mbox{--} 0)}}{=}0.33$, which was extrapolated from $r_{4,2}$ and $r_{2,1}$ measured in the Cosmic Snake (cite: dessauges-zavadsky_molecular_2019) and $z{\sim}1.5$ BzK galaxies (cite: daddi_co_2015), respectively." (Molecular gas mass)
+   - parameter: alpha_CO = 4.36 M_sun (K km s^-1 pc^2)^-1  
+  > "We assumed the Milky Way CO-to-H$_2$ conversion factor $\alpha_{\mathrm{CO}}{=}\SI{4.36}{M_\odot(K. km. s^{-1}.pc^2)^{-1}}$, since both in the Cosmic Snake and A521 $\alpha_{\mathrm{CO}}$ was found to be close to the Milky Way value from the virialised mass of detected GMCs (cite: dessauges-zavadsky_molecular_2019; dessauges-zavadsky_molecular_2023)." (Molecular gas mass)
+   - assumption: Lambda-CDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7; Salpeter (1955) IMF  
+  > "Throughout this paper, we adopt the $\Lambda$-CDM cosmology with $H_0 = \SI{70}{km.s^{-1}.Mpc^{-1}}$, $\Omega_{\mathrm{M}} = 0.3$, and $\Omega_{\Lambda} = 0.7$. We adopt the (cite: salpeter_luminosity_1955) initial mass function (IMF)." (Introduction)
+   - assumption: Calzetti (2000, 2001) dust extinction law  
+  > "Furthermore, we applied an extinction correction as in (cite: calzetti_dust_2001) on the SFR as the UV continuum may be significantly affected by extinction:" (Star formation rate)
+   - assumption: Uniform gravitational magnification over the isolated counter-image integration area  
+  > "As both the fluxes and the surfaces were measured in the image plane, there is no need to correct for gravitational lensing if we assume a uniform amplification over the integration area." (Integrated Kennicutt-Schmidt law)
+   - fitting: _not stated_
+   - validation: Total molecular gas content traced by CO(4-3) validated against PdBI and IRAM 30m CO(2-1) detections; E(B-V) from SED fits validated against Balmer decrement.  
+  > "In both cases, the total molecular gas content traced by the CO(2–1) emission was identical to that traced by CO(4–3). We therefore conclude that using the CO(4–3) line to trace the molecular gas mass is reliable." (Molecular gas mass); "The values of $E(B-V)$ obtained from SED fits are in agreement with the value estimated from the Balmer decrement by (cite: messa_multiply_2022)." (Star formation rate)
+3. **Construct source-plane grids, lens to image plane, and measure resolved Sigma_SFR and Sigma_M_mol**: Create 6 source-plane grids with boxes from 200 pc to 3200/6400 pc, lens them into the image plane, discard boxes smaller than the matched PSF, mask foreground cluster member in A521, and extract 3D ALMA CO(4-3) flux above fidelity-based S/N thresholds and HST UV flux.  
+  > "To do so we created 6 grids paving the reconstructed source plane images of each galaxy, with boxes of $\SI{200}{pc}$, $\SI{400}{pc}$, $\SI{800}{pc}$, $\SI{1600}{pc}$, $\SI{2800}{pc}$, and $\SI{3200}{pc}$ for the Cosmic Snake, and $\SI{200}{pc}$, $\SI{400}{pc}$, $\SI{800}{pc}$, $\SI{1600}{pc}$, $\SI{3200}{pc}$, and $\SI{6400}{pc}$ for A521." (Resolved Kennicutt-Schmidt law); "We then lensed the grids in the corresponding image plane. Due to the differential lensing, the area of some of these boxes is smaller than the matched PSF (HST PSF convolved with ALMA beam) in the image plane, so we discarded those boxes." (Resolved Kennicutt-Schmidt law); "Therefore, in the ALMA datacube of the Cosmic Snake, we extracted for a given box the emission from each individual channel where the flux inside the box was above a $4.4\,\sigma$ RMS threshold, or above a $4.0\,\sigma$ threshold if the flux inside the same box in an adjacent channel was also above $4.0\,\sigma$. We did the same for the ALMA maps of A521 with thresholds of $4.4\,\sigma$ and $3.6\,\sigma$, respectively." (Resolved Kennicutt-Schmidt law)
+   - software: Lenstool
+   - parameter: Box sizes: 200, 400, 800, 1600, 2800, 3200 pc (Cosmic Snake) and 200, 400, 800, 1600, 3200, 6400 pc (A521)  
+  > "To do so we created 6 grids paving the reconstructed source plane images of each galaxy, with boxes of $\SI{200}{pc}$, $\SI{400}{pc}$, $\SI{800}{pc}$, $\SI{1600}{pc}$, $\SI{2800}{pc}$, and $\SI{3200}{pc}$ for the Cosmic Snake, and $\SI{200}{pc}$, $\SI{400}{pc}$, $\SI{800}{pc}$, $\SI{1600}{pc}$, $\SI{3200}{pc}$, and $\SI{6400}{pc}$ for A521." (Resolved Kennicutt-Schmidt law)
+   - parameter: ALMA S/N thresholds (100% fidelity): 4.4 sigma in single channel; 4.0 sigma (Cosmic Snake) or 3.6 sigma (A521) in two adjacent channels  
+  > "The fidelity of 100% was achieved at $\mathrm{S/N}=4.4$ in individual channel maps in both the Cosmic Snake and A521, and when considering co-spatial emission in two adjacent channels, it was reached at $\mathrm{S/N}=4.0$ in the Cosmic Snake and at $\mathrm{S/N}=3.6$ in A521." (Resolved Kennicutt-Schmidt law)
+   - assumption: Radial bin E(B-V) extinction correction applied based on where the majority of pixels of the box lies  
+  > "For each box we applied the extinction correction corresponding to the radial bin (computed in (cite: nagy_radial_2022)) where the majority of the pixels of the box lies." (Resolved Kennicutt-Schmidt law)
+   - fitting: _not stated_
+   - validation: Fidelity computed from positive and negative detections in primary beam to reach 100% fidelity threshold  
+  > "where $N_{\mathrm{pos}}$ and $N_{\mathrm{neg}}$ are the number of positive and negative emission detections with a given signal-to-noise (S/N) in the primary beam, respectively (cite: walter_alma_2016; decarli_alma_2019)." (Resolved Kennicutt-Schmidt law)
+4. **Fit resolved KS power-law slopes and compute scatter across spatial scales**: Perform linear regression on all resolved datapoints at each scale <= 1600 pc using the Levenberg-Marquardt algorithm and least squares statistic; compute scatter in dex as standard deviation around Pessa et al. (2021) power law fits.  
+  > "By performing a linear regression on all datapoints using the Levenberg-Marquardt algorithm and least squares statistic in the Cosmic Snake for scales $\SI{\le 1600}{pc}$, we obtain slopes of $n^{\mathrm{CS}}_{\SI{200}{pc}} = 1.00\pm 0.08$, $n^{\mathrm{CS}}_{\SI{400}{pc}} = 0.9\pm 0.1$, $n^{\mathrm{CS}}_{\SI{800}{pc}} = 1.0\pm 0.3$, and $n^{\mathrm{CS}}_{\SI{1.6}{kpc}} = 1.1\pm 0.4$." (Resolved Kennicutt-Schmidt law); "For each set of datapoints at a given bin size, we compute the scatter in dex ($\sigma$) as the standard deviation of the datapoints around the rKS power law fits from (cite: pessa_star_2021) at the closest reported spatial scale (100 pc, 500 pc, or 1 kpc)." (Resolved Kennicutt-Schmidt law)
+   - fitting: Linear regression using the Levenberg-Marquardt algorithm and least squares statistic, taking into account uncertainties on x and y values  
+  > "By performing a linear regression on all datapoints using the Levenberg-Marquardt algorithm and least squares statistic in the Cosmic Snake for scales $\SI{\le 1600}{pc}$, we obtain slopes of $n^{\mathrm{CS}}_{\SI{200}{pc}} = 1.00\pm 0.08$, $n^{\mathrm{CS}}_{\SI{400}{pc}} = 0.9\pm 0.1$, $n^{\mathrm{CS}}_{\SI{800}{pc}} = 1.0\pm 0.3$, and $n^{\mathrm{CS}}_{\SI{1.6}{kpc}} = 1.1\pm 0.4$." (Resolved Kennicutt-Schmidt law); "The algorithm takes into account the uncertainties on the $x$ and $y$ values of the datapoints" (Resolved Kennicutt-Schmidt law)
+   - validation: _not stated_
+5. **Measure scale dependence of molecular gas depletion time around CO and UV peaks (tuning fork diagram)**: Project CO(4-3) and rest-frame UV peak positions to the source plane, centre circular apertures of varying diameters on them, lens apertures to the image plane, extract fluxes using the same S/N thresholds, and compute average depletion time tau_dep = Sigma_M_mol / Sigma_SFR.  
+  > "We then project the locations of the peaks in the source plane, and we centre apertures of different sizes on those positions. We use circular apertures with diameters of 200, 400, 800, 1200, and $\SI{1400}{pc}$ for the Cosmic Snake, and 400, 800, 1600, 3200, and $\SI{6400}{pc}$ for A521." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation); "These apertures are then lensed into the image plane, and we measure fluxes within each of them." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation); "We compute an average $\tau_{\mathrm{dep}}$ for each set of apertures of a given size and centred on a given type of peak (CO or UV)." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation)
+   - software: Lenstool
+   - parameter: Circular aperture diameters: 200, 400, 800, 1200, 1400 pc (Cosmic Snake) and 400, 800, 1600, 3200, 6400 pc (A521)  
+  > "We use circular apertures with diameters of 200, 400, 800, 1200, and $\SI{1400}{pc}$ for the Cosmic Snake, and 400, 800, 1600, 3200, and $\SI{6400}{pc}$ for A521." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CASA** : Automated pipeline calibration, interactive clean imaging, and immoments moment-zero map creation  
+  > "The data reduction was performed using the standard automated reduction procedure from the pipeline of the Common Astronomy Software Application (CASA) package (cite: mcmullin_casa_2007)." (ALMA observations); "Using the *clean* routine in CASA interactively on all channels until convergence, the final synthesized beam size obtained for the Cosmic Snake galaxy was $\SI{0.22}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with a position angle of $85^\circ$ for the arc, and $\SI{0.21}{\ensuremath{''}} \times \SI{0.18}{\ensuremath{''}}$ with an angle of $49^\circ$ for the isolated counter-image." (ALMA observations); "The CO(4–3) moment-zero maps were obtained using the *immoments* routine from CASA by integrating the flux over the total velocity range where CO(4–3) emission was detected." (ALMA observations)
+- **Multidrizzle** : Aligning and combining individual calibrated HST exposures of A521  
+  > "The software Multidrizzle (cite: koekemoer_cosmos_2007) was used to align and combine in a single image individual calibrated exposures." (HST observations)
+- **Lenstool** : Computing and optimising the gravitational lens models  
+  > "Lenstool (cite: jullo_bayesian_2007) was used to compute and optimise the models." (Gravitational lens model)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Integrated Sigma_SFR (Cosmic Snake) | 1.5 | 0.1 | M_sun yr^-1 kpc^-2 | 2 | / $\Sigma \mathrm{SFR}$ / $1.5\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ / $1.8\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ /; We find for the Cosmic Snake $\Sigma\mathrm{SFR} = 1.5\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ and $\Sigma M_{\mathrm{mol}} = 570\pm \SI{60}{M_\odot.pc^{-2}}$. |
+| Integrated Sigma_M_mol (Cosmic Snake) | 570 | 60 | M_sun pc^-2 | 2 | / $\Sigma M_{\mathrm{mol}}$ / $570\pm \SI{60}{M_\odot.pc^{-2}}$ / $430\pm \SI{50}{M_\odot.pc^{-2}}$ /; We find for the Cosmic Snake $\Sigma\mathrm{SFR} = 1.5\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ and $\Sigma M_{\mathrm{mol}} = 570\pm \SI{60}{M_\odot.pc^{-2}}$. |
+| Integrated Sigma_SFR (A521) | 1.8 | 0.1 | M_sun yr^-1 kpc^-2 | 2 | / $\Sigma \mathrm{SFR}$ / $1.5\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ / $1.8\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ /; For A521 we have $\Sigma\mathrm{SFR} = 1.8\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ and $\Sigma M_{\mathrm{mol}} = 430\pm \SI{50}{M_\odot.pc^{-2}}$. |
+| Integrated Sigma_M_mol (A521) | 430 | 50 | M_sun pc^-2 | 2 | / $\Sigma M_{\mathrm{mol}}$ / $570\pm \SI{60}{M_\odot.pc^{-2}}$ / $430\pm \SI{50}{M_\odot.pc^{-2}}$ /; For A521 we have $\Sigma\mathrm{SFR} = 1.8\pm \SI{0.1}{M_\odot.yr^{-1}.kpc^{-2}}$ and $\Sigma M_{\mathrm{mol}} = 430\pm \SI{50}{M_\odot.pc^{-2}}$. |
+| rKS slope at 200 pc (Cosmic Snake) | 1.00 | 0.08 | dimensionless | 4 | By performing a linear regression on all datapoints using the Levenberg-Marquardt algorithm and least squares statistic in the Cosmic Snake for scales $\SI{\le 1600}{pc}$, we obtain slopes of $n^{\mathrm{CS}}_{\SI{200}{pc}} = 1.00\pm 0.08$, $n^{\mathrm{CS}}_{\SI{400}{pc}} = 0.9\pm 0.1$, $n^{\mathrm{CS}}_{\SI{800}{pc}} = 1.0\pm 0.3$, and $n^{\mathrm{CS}}_{\SI{1.6}{kpc}} = 1.1\pm 0.4$. |
+| rKS slope at 400 pc (Cosmic Snake) | 0.9 | 0.1 | dimensionless | 4 | By performing a linear regression on all datapoints using the Levenberg-Marquardt algorithm and least squares statistic in the Cosmic Snake for scales $\SI{\le 1600}{pc}$, we obtain slopes of $n^{\mathrm{CS}}_{\SI{200}{pc}} = 1.00\pm 0.08$, $n^{\mathrm{CS}}_{\SI{400}{pc}} = 0.9\pm 0.1$, $n^{\mathrm{CS}}_{\SI{800}{pc}} = 1.0\pm 0.3$, and $n^{\mathrm{CS}}_{\SI{1.6}{kpc}} = 1.1\pm 0.4$. |
+| rKS slope at 800 pc (Cosmic Snake) | 1.0 | 0.3 | dimensionless | 4 | By performing a linear regression on all datapoints using the Levenberg-Marquardt algorithm and least squares statistic in the Cosmic Snake for scales $\SI{\le 1600}{pc}$, we obtain slopes of $n^{\mathrm{CS}}_{\SI{200}{pc}} = 1.00\pm 0.08$, $n^{\mathrm{CS}}_{\SI{400}{pc}} = 0.9\pm 0.1$, $n^{\mathrm{CS}}_{\SI{800}{pc}} = 1.0\pm 0.3$, and $n^{\mathrm{CS}}_{\SI{1.6}{kpc}} = 1.1\pm 0.4$. |
+| rKS slope at 1.6 kpc (Cosmic Snake) | 1.1 | 0.4 | dimensionless | 4 | By performing a linear regression on all datapoints using the Levenberg-Marquardt algorithm and least squares statistic in the Cosmic Snake for scales $\SI{\le 1600}{pc}$, we obtain slopes of $n^{\mathrm{CS}}_{\SI{200}{pc}} = 1.00\pm 0.08$, $n^{\mathrm{CS}}_{\SI{400}{pc}} = 0.9\pm 0.1$, $n^{\mathrm{CS}}_{\SI{800}{pc}} = 1.0\pm 0.3$, and $n^{\mathrm{CS}}_{\SI{1.6}{kpc}} = 1.1\pm 0.4$. |
+| rKS slope at 200 pc (Stack of Cosmic Snake and A521) | 0.88 | 0.04 | dimensionless | 4 | The slopes of the stacks ($n^{\mathrm{Stack}}$) are: $n^{\mathrm{Stack}}_{\SI{200}{pc}} = 0.88\pm 0.04$, $n^{\mathrm{Stack}}_{\SI{400}{pc}} = 0.76\pm 0.05$, $n^{\mathrm{Stack}}_{\SI{800}{pc}} = 0.79\pm 0.07$, and $n^{\mathrm{Stack}}_{\SI{1.6}{kpc}} = 0.8\pm 0.1$. |
+| rKS slope at 400 pc (Stack of Cosmic Snake and A521) | 0.76 | 0.05 | dimensionless | 4 | The slopes of the stacks ($n^{\mathrm{Stack}}$) are: $n^{\mathrm{Stack}}_{\SI{200}{pc}} = 0.88\pm 0.04$, $n^{\mathrm{Stack}}_{\SI{400}{pc}} = 0.76\pm 0.05$, $n^{\mathrm{Stack}}_{\SI{800}{pc}} = 0.79\pm 0.07$, and $n^{\mathrm{Stack}}_{\SI{1.6}{kpc}} = 0.8\pm 0.1$. |
+| rKS slope at 800 pc (Stack of Cosmic Snake and A521) | 0.79 | 0.07 | dimensionless | 4 | The slopes of the stacks ($n^{\mathrm{Stack}}$) are: $n^{\mathrm{Stack}}_{\SI{200}{pc}} = 0.88\pm 0.04$, $n^{\mathrm{Stack}}_{\SI{400}{pc}} = 0.76\pm 0.05$, $n^{\mathrm{Stack}}_{\SI{800}{pc}} = 0.79\pm 0.07$, and $n^{\mathrm{Stack}}_{\SI{1.6}{kpc}} = 0.8\pm 0.1$. |
+| rKS slope at 1.6 kpc (Stack of Cosmic Snake and A521) | 0.8 | 0.1 | dimensionless | 4 | The slopes of the stacks ($n^{\mathrm{Stack}}$) are: $n^{\mathrm{Stack}}_{\SI{200}{pc}} = 0.88\pm 0.04$, $n^{\mathrm{Stack}}_{\SI{400}{pc}} = 0.76\pm 0.05$, $n^{\mathrm{Stack}}_{\SI{800}{pc}} = 0.79\pm 0.07$, and $n^{\mathrm{Stack}}_{\SI{1.6}{kpc}} = 0.8\pm 0.1$. |
+| rKS scatter at 200, 400, 800, 1600 pc (Cosmic Snake) | 0.56, 0.52, 0.54, 0.38 | not stated | dex | 4 | / Cosmic Snake / 0.56 / 0.52 / 0.54 / 0.38 / / / |
+| rKS scatter at 200, 400, 800, 1600, 3200, 6400 pc (A521) | 0.59, 0.55, 0.48, 0.48, 0.48, 0.31 | not stated | dex | 4 | / A521 / 0.59 / 0.55 / 0.48 / 0.48 / 0.48 / 0.31 / |
+| rKS scatter at 200, 400, 800, 1600, 3200 pc (Stack of both) | 0.58, 0.55, 0.49, 0.49, 0.53 | not stated | dex | 4 | / Stack of both / 0.58 / 0.55 / 0.49 / 0.49 / 0.53 / / |
+
+## Qualitative findings
+
+- Both the Cosmic Snake and A521 satisfy the integrated KS law defined by main-sequence star-forming galaxies at redshifts between 1 and 2.5.  
+  > "At integrated scales we find that both galaxies satisfy the KS law defined by galaxies at redshifts between 1 and 2.5." (abstract)
+- In the Cosmic Snake, the rKS relation holds down to 200 pc with power-law slopes (~0.9 to 1.1) consistent with local galaxies, and exhibits a radial segregation where central regions have higher surface densities.  
+  > "For the Cosmic Snake, the overall slope of the distribution for the bin sizes $\le\SI{1600}{pc}$ is similar to the slope reported for local galaxies." (Resolved Kennicutt-Schmidt law); "For the smaller scales of $\SI{200}{pc}$ and $\SI{400}{pc}$ we clearly see a segregation with the galactocentric distance in the Cosmic Snake galaxy." (Resolved Kennicutt-Schmidt law)
+- In A521, no overall rKS slope can be inferred at any bin size and no galactocentric segregation is observed.  
+  > "For A521, no overall slope can be inferred at any bin size." (Resolved Kennicutt-Schmidt law); "In A521, no segregation with the galactocentric distance is seen." (Resolved Kennicutt-Schmidt law)
+- Star-forming regions and molecular clouds become spatially de-correlated at scales <= 1 kpc in the Cosmic Snake and across all probed scales (400 pc to 6 kpc) in A521, explaining the increased scatter in the rKS diagram at smaller spatial scales.  
+  > "We conclude that star-forming regions and molecular clouds become spatially de-correlated at $\lesssim \SI{1}{kpc}$ in the Cosmic Snake, whereas they appear de-correlated at all spatial scales (from $\SI{400}{pc}$ to $\SI{6}{kpc}$) in A521." (abstract); "In the Cosmic Snake and A521, the scales at which $\tau_{\mathrm{dep}}$ converges are the scales at which the scatter of those galaxies in the rKS diagram decreases." (Conclusions)
+
+## Claim tuples
+
+- H: Strongly lensed main-sequence galaxies at z ~ 1 satisfy the integrated Kennicutt-Schmidt law observed for high-redshift galaxies. | E: Measure integrated CO(4-3) molecular gas mass surface density and extinction-corrected UV SFR surface density within the F160W half-light radius on the isolated counter-images of the Cosmic Snake and A521. | R: Sigma_SFR = 1.5 +/- 0.1 M_sun yr^-1 kpc^-2 and Sigma_M_mol = 570 +/- 60 M_sun pc^-2 for the Cosmic Snake; Sigma_SFR = 1.8 +/- 0.1 M_sun yr^-1 kpc^-2 and Sigma_M_mol = 430 +/- 50 M_sun pc^-2 for A521. | F: Both galaxies fall within the distribution of z = 1-2.5 main-sequence star-forming galaxies on the integrated KS diagram. | **supported**
+- H: The resolved Kennicutt-Schmidt (rKS) law holds down to sub-kiloparsec scales (200 pc) in z ~ 1 star-forming galaxies with increasing scatter at smaller scales. | E: Define source-plane grids of 200 pc to 3200/6400 pc, lens them into the image plane, measure Sigma_SFR and Sigma_M_mol in each cell, fit power-law slopes, and measure the scatter. | R: In the Cosmic Snake, slopes are 1.00 +/- 0.08 (200 pc) to 1.1 +/- 0.4 (1.6 kpc), while in A521 no slope can be inferred; scatter increases from 0.38 dex (1600 pc) to 0.56 dex (200 pc) in the Cosmic Snake and from 0.31 dex (6400 pc) to 0.59 dex (200 pc) in A521. | F: The rKS law holds in the Cosmic Snake with slopes matching local galaxies, fails to show a clear slope in A521 due to limited dynamical range and spatial decorrelation, and exhibits increasing scatter at decreasing spatial scales in both galaxies. | **partially**
+- H: Star-forming regions and molecular clouds de-correlate on small spatial scales in z ~ 1 galaxies, driving the increased scatter in the resolved KS law. | E: Compute average molecular gas depletion times (tau_dep) in circular apertures of varying diameters (200 pc to 6400 pc) centred on CO(4-3) peaks and rest-frame UV peaks. | R: Depletion times around CO and UV peaks diverge at small scales and converge at aperture diameters >= 1 kpc in the Cosmic Snake and ~ 6 kpc in A521. | F: GMCs and UV star-forming regions are spatially de-correlated below ~1 kpc in the Cosmic Snake and up to ~6 kpc in A521, which directly accounts for the large scatter in the rKS relation at small scales. | **supported**
+
+## Reasoning
+
+- Why this data: Strong gravitational lensing (magnification > 20 in arcs) combined with high angular resolution (0.15-0.2'') HST UV and ALMA CO(4-3) data enables resolving sub-100 pc structures at z ~ 1, while isolated weakly-lensed counter-images show the entire galaxies for integrated measurements.  
+  > "The similar angular resolutions of our HST and ALMA observations of $0.15-\SI{0.2}{\ensuremath{''}}$ combined with magnifications reaching $\mu>20$ enable us to resolve structures in the galaxies of sizes lower than $\SI{100}{pc}$." (abstract); "These counter-images show the entire galaxy for both galaxies, unlike the arcs where only a fraction of the galaxy is imaged." (Integrated Kennicutt-Schmidt law)
+- Why this method: Scatter is computed around the Pessa et al. (2021) local rKS power law fits rather than the galaxies' own best-fit power laws because the fit uncertainty is large in the Cosmic Snake and the fit is meaningless in A521.  
+  > "We use this method instead of computing the scatter around the best-fitted power law like in (cite: pessa_star_2021) due to the uncertainty of the fit for the Cosmic Snake, and the meaningless fit if performed for A521." (Resolved Kennicutt-Schmidt law)
+- Alternative: Computing rKS scatter around the best-fitted power law of the data itself was rejected in favour of computing scatter around the Pessa et al. (2021) power law fits.  
+  > "We use this method instead of computing the scatter around the best-fitted power law like in (cite: pessa_star_2021) due to the uncertainty of the fit for the Cosmic Snake, and the meaningless fit if performed for A521." (Resolved Kennicutt-Schmidt law)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Limited dynamical range in Sigma_SFR and Sigma_M_mol (especially at low values and in A521) prevents consistently constraining the rKS slope on its own.  
+  > "Moreover, in both galaxies, and specifically in A521, we lack dynamical range in $\Sigma \mathrm{SFR}$ and $\Sigma M_{\mathrm{mol}}$, especially for small values, to consistently constrain the rKS slope in $z\sim 1$ galaxies." (Resolved Kennicutt-Schmidt law)
+- Limitation (authors): Small number of boxes at large spatial scales (> 1600 pc in the Cosmic Snake) prevents a reliable linear regression fit, and low clump counts (~10x fewer than in local galaxies) yield large uncertainties in the depletion time curves.  
+  > "For larger scales ($\SI{> 1600}{pc}$) the number of boxes is too low for a reliable fit." (Resolved Kennicutt-Schmidt law); "However, the uncertainties are much larger for the $z\sim 1$ galaxies because of the lack of statistics, as the number of detected clumps is about ten times lower than in a typical local galaxy." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation)
+- Limitation (authors): Rest-frame UV traces ~100 Myr star-forming regions rather than ~10 Myr H-alpha regions, which may underestimate SFR in bursty regions, suffer from underestimated dust extinction in dense gas peaks, and increase apparent spatial decorrelation from parent GMCs.  
+  > "One possible reason for these points to have so low SFR may be that the extinction is underestimated, and this, specifically, where the molecular gas density is high. It may also be due to the SFR tracer (rest-frame UV) we use, which traces star-forming regions with ages $\sim\SI{100}{Myr}$." (Resolved Kennicutt-Schmidt law); "The difference might be due to the difference of tracer, as local studies used $\mathrm{H\alpha}$ as the tracer of star-forming regions, but we used rest-frame UV emission which traces, on average, older star cluster complexes." (Scale dependence of the $\Sigma \mathrm{SFR}$-$\Sigma M_\mathrm{mol}$ spatial correlation)
+- Caveat (inferred, ours): Non-detections in ALMA CO(4-3) are excluded without including upper limits, which biases the resolved KS distribution and slopes at the low surface density end.
+- Caveat (inferred, ours): Using radial-bin averaged E(B-V) values rather than spatially resolved cell-by-cell extinction corrections can systematically underestimate SFR in high molecular gas density cells.
+- Caveat (inferred, ours): Excitation variations at 200 pc scales could cause local deviations from the assumed constant global CO(4-3)-to-CO(1-0) luminosity ratio (r_4,1 = 0.33).
+- Caveat (inferred, ours): Multiple images of the same source-plane cells in the lensed arcs may introduce correlated measurements if not accounted for in the image-plane flux extraction.
+
+## Reproducibility
+
+- Data public (paper): CLASH HST data URL provided, HST program #15435 and ALMA project codes 2013.1.01330.S and 2016.1.00643.S stated in text and acknowledgements.  
+  > "We took the A521 images observed in F390W with WFC3/UVIS from the HST archive (ID: 15435, PI: Chisholm)." (HST observations); "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.01330.S, and ADS/JAO.ALMA#2016.1.00643.S." (Acknowledgements); "The data from CLASH are available at <https://archive.stsci.edu/prepds/clash/>." (Footnote 2)
+- Products in archive: _not stated_
+- Missing: Lenstool gravitational lens model parameter files for MACS J1206.2-0847 and Abell 0521
+- Missing: Table of radial E(B-V) values, counter-image E(B-V) values, and F160W half-light radii from Nagy et al. (2022)
+- Missing: Catalog of coordinates of the CO(4-3) peaks and rest-frame UV peaks used for centering the tuning-fork apertures
+- Missing: Exact source-plane grid positions and orientations
+- Missing: Exact velocity integration windows used for the CO(4-3) moment-0 maps
+- Data volume (inferred): ~10-50 GB (three Band 6 12m spectral line executions plus HST WFC3/UVIS F390W images)
+- Score (inferred): 60/5, Raw ALMA and HST datasets are public and the equations, thresholds, and physical conversion factors are clearly documented, but reproduction of the resolved analysis requires external Lenstool lens models, peak coordinate catalogs, and radial extinction values from companion papers.
+- Rediscovery candidate: no, While the integrated counter-image measurements can be reproduced directly, the primary resolved KS and tuning-fork results depend heavily on external Lenstool lens models and unpublished peak catalogs from earlier papers.
+
+## Links
+
+- Method: (cite: dessauges-zavadsky_molecular_2019) (Developed the 3D ALMA datacube flux extraction technique and CO conversion factor calibration used for the Cosmic Snake)
+- Method: (cite: schruba_scale_2010) (Introduced the scale-dependent molecular gas depletion time aperture method (tuning fork diagram))
+- Method: (cite: pessa_star_2021) (Provided the local PHANGS resolved KS power-law fits used as the reference baseline for computing scatter)
+- Method: (cite: walter_alma_2016; decarli_alma_2019) (Defined the signal-to-noise fidelity estimator used to set ALMA channel detection thresholds)
+- Companion: (cite: nagy_radial_2022) (Previous paper by the same lead author providing the radial E(B-V) extinction profiles, counter-image E(B-V), F160W half-light radii, and radial surface density profiles of the Cosmic Snake and A521)
+- Companion: (cite: dessauges-zavadsky_molecular_2019) (Companion study presenting the ALMA CO(4-3) observations and GMC peak identifications in the Cosmic Snake)
+- Companion: (cite: dessauges-zavadsky_molecular_2023) (Companion study presenting the ALMA CO(4-3) observations and GMC peak identifications in A521)
+- Companion: (cite: cava_nature_2018) (Companion study providing the lens model and UV clump identifications for the Cosmic Snake)
+- Companion: (cite: messa_multiply_2022) (Companion study providing the HST UV processing, lens model updates, and UV clump identifications for A521)
+- Related: CLASH (Cluster Lensing And Supernova survey with Hubble)
+- Related: PHANGS (Physics at High Angular resolution in Nearby GalaxieS)
+
+## Checks
+
+```json
+{
+ "quotes": 160,
+ "quotes_ok": 160,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 25,
+ "unsupported_facts": 0,
+ "project_codes": 2,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 15,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 95,
+  "stated": 67,
+  "rate": 0.705
+ },
+ "evidence_ok": true
+}
+```

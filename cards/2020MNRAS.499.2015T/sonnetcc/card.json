@@ -1,0 +1,1291 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020MNRAS.499.2015T",
+  "title": "Planet migration, resonant locking, and accretion streams in PDS 70: comparing models and data",
+  "year": 2020,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Toci, Claudia",
+  "n_authors": 7,
+  "arxiv_id": "2009.11893",
+  "doi": "10.1093/mnras/staa2933",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00592.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present three-dimensional smoothed particle hydrodynamics simulations of the system."
+   },
+   {
+    "loc": "abstract",
+    "quote": "Our successful reproduction of the observations indicates that planet-disc dynamical interactions alone are sufficient to explain the observations of PDS 70."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "exoplanets"
+   ],
+   "targets": [
+    {
+     "name": "PDS 70",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "113.4 +/- 0.5 pc (113 pc adopted in the models)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of 113.4 $\\pm$ 0.5 pc (cite: Gaia2018)"
+       },
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "we fixed the values of the source distance $d=113$ pc (cite: Gaia2018)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: Gaia2018)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of 113.4 $\\pm$ 0.5 pc (cite: Gaia2018)"
+       },
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "we fixed the values of the source distance $d=113$ pc (cite: Gaia2018)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can 3D SPH dust+gas simulations of PDS 70 with two migrating, accreting embedded planets reach a stable resonant configuration and reproduce the observed ALMA mm continuum, 12CO and SPHERE scattered-light features?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work we present new 3D smoothed particle hydrodynamics (SPH) simulations of the PDS 70 disc assuming two embedded giant planets."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "We model both dust and gas, aiming to understand the physical origin of features observed in mm and scattered light images."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00592.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA 2013.1.00592.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "855 um continuum and 12CO J = 3-2 (observations from Keppler2019, used only for comparison)",
+    "evidence": [
+     {
+      "loc": "2.4 Radiative transfer",
+      "quote": "We produced 855 $\\mu$m continuum images"
+     },
+     {
+      "loc": "CO maps and mass accretion rate",
+      "quote": "synthetic emission in $^{12}$CO J = 3 - 2 of our three models (last three panels) compared to the observations (left panel)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J = 3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "CO maps and mass accretion rate",
+       "quote": "synthetic emission in $^{12}$CO J = 3 - 2 of our three models (last three panels) compared to the observations (left panel)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "74 x 57 mas beam at 855 um (observed beam used to convolve the models)",
+    "evidence": [
+     {
+      "loc": "2.4 Radiative transfer",
+      "quote": "74 $\\times$ 57 mas for the 855 $\\mu$m image from (cite: Keppler2019"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA data ADS/JAO.ALMA 2013.1.00592.S acknowledged; comparison images are taken from published work (Keppler2019, Isella2019)",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA 2013.1.00592.S."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLT/SPHERE (IRDIS)",
+     "provided": {
+      "value": "2018-02-24 IRDIS dataset (Muller2018) re-reduced by the authors for scattered-light comparison",
+      "evidence": [
+       {
+        "loc": "2.5 Post-processing of IR synthetic images",
+        "quote": "we have both reduced the 2018-02-24 SPHERE/IRDIS dataset presented in (cite: Muller2018)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Distance to PDS 70",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of 113.4 $\\pm$ 0.5 pc (cite: Gaia2018)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Distance to PDS 70 (113 pc)",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "we fixed the values of the source distance $d=113$ pc (cite: Gaia2018)"
+       }
+      ]
+     },
+     "citation": "(cite: Gaia2018)"
+    },
+    {
+     "what": {
+      "value": "ALMA 855 um continuum image and beam (74 x 57 mas) used for comparison",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "74 $\\times$ 57 mas for the 855 $\\mu$m image from (cite: Keppler2019"
+       }
+      ]
+     },
+     "citation": "(cite: Keppler2019)"
+    },
+    {
+     "what": {
+      "value": "12CO moment 0 observations used for comparison",
+      "evidence": [
+       {
+        "loc": "CO maps and mass accretion rate",
+        "quote": "In order to test whether our models are compatible with CO observations of (cite: Keppler2019) we also produced synthetic CO moment zero maps."
+       }
+      ]
+     },
+     "citation": "(cite: Keppler2019)"
+    },
+    {
+     "what": {
+      "value": "Planet-to-star contrasts used to inject planet flux in the IR images",
+      "evidence": [
+       {
+        "loc": "2.5 Post-processing of IR synthetic images",
+        "quote": "using the contrast with respect to the star measured in (cite: Muller2018; Mesa2019)"
+       }
+      ]
+     },
+     "citation": "(cite: Muller2018; Mesa2019)"
+    },
+    {
+     "what": {
+      "value": "Stellar Teff = 4090 K and R = 1.57 Rsun from stellar evolution models for 0.8 Msun at 5 Myr",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "as derived from stellar evolution models for a 0.8 M$_\\odot$ at 5Myr (cite: Siess2000)"
+       }
+      ]
+     },
+     "citation": "(cite: Siess2000)"
+    },
+    {
+     "what": {
+      "value": "DIANA standard dust composition",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "as the DIANA standard dust composition (cite: Woitke2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Woitke2016)"
+    },
+    {
+     "what": {
+      "value": "Disc inclination 180-49 deg",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "disc inclination $i=180 - 49^{\\circ}$ ( following (cite: Muller2018)"
+       }
+      ]
+     },
+     "citation": "(cite: Muller2018)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Three 3D dust+gas SPH simulations (Sim 1-3) with PHANTOM, 10^6 SPH particles, two migrating and accreting sink-particle planets, evolved at least 500 outer-planet orbits (~0.18 Myr)",
+     "evidence": [
+      {
+       "loc": "2 Methods",
+       "quote": "We perform a set of three dust and gas hydrodynamics simulations in 3D using PHANTOM, a smoothed particle hydrodynamics (SPH) code (cite: Price2018)."
+      },
+      {
+       "loc": "2.1 Simulation set",
+       "quote": "All of our calculations have been evolved for at least 500 outer planet orbits, about $\\sim$ 0.18 Myr."
+      }
+     ]
+    },
+    {
+     "value": "MCFOST radiative transfer post-processing of the t = 500 Torb snapshots: 855 um continuum, 2.11 and 2.25 um scattered light, 12CO moment 0",
+     "evidence": [
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "We produced 855 $\\mu$m continuum images and both 2.11$\\mu$m and 2.25 $\\mu$m scattered light images of the t = 500 T$_{\\rm orb}$ ($\\sim$ 0.18 Myr) snapshot for all three simulations."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Gaussian beam 74 x 57 mas applied to synthetic 855 um images",
+     "evidence": [
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "we convolved the sub-mm images with a Gaussian beam to match the beam size of the observations"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Initial gas surface density profile",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "We set up an initial surface density profile for the disc as in (cite: LodatoPrice2010)"
+       }
+      ]
+     },
+     "from_reference": "(cite: LodatoPrice2010)"
+    },
+    {
+     "what": {
+      "value": "alpha_SPH viscosity set to give alpha_SS = 0.005",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "In all our simulations we set the value of $\\alpha_{\\rm SPH}$ viscosity as in (cite: LodatoPrice2010)"
+       }
+      ]
+     },
+     "from_reference": "(cite: LodatoPrice2010)"
+    },
+    {
+     "what": {
+      "value": "Surface density slope p = 1",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "we choose $p=1$, consistent with (cite: Bae2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Bae2019)"
+    },
+    {
+     "what": {
+      "value": "Sound speed index q = 0.5",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "where $q=0.5$ (again, following (cite: Bae2019))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Bae2019)"
+    },
+    {
+     "what": {
+      "value": "Initial planet masses chosen so the outer planet can migrate inward",
+      "evidence": [
+       {
+        "loc": "2.3 Properties of the embedded planets",
+        "quote": "This choice is motivated by our previous study on discs with two embedded giant planets (cite: Toci2020)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Toci2020)"
+    },
+    {
+     "what": {
+      "value": "CO line modelling assumptions (LTE, constant abundance, photo-dissociation)",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "following (cite: Pinte2018) and (cite: Pinte2019), we assumed local thermal equilibrium (LTE)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Pinte2018) and (cite: Pinte2019)"
+    },
+    {
+     "what": {
+      "value": "Median-ADI processing of the IRDIS cube",
+      "evidence": [
+       {
+        "loc": "2.5 Post-processing of IR synthetic images",
+        "quote": "We then processed the calibrated IRDIS cube using the median-ADI algorithm (cite: Marois2006) as in (cite: Muller2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Muller2018)"
+    },
+    {
+     "what": {
+      "value": "Details of IR post-processing steps (ii) to (vi)",
+      "evidence": [
+       {
+        "loc": "2.5 Post-processing of IR synthetic images",
+        "quote": "More details on steps (ii) to (vi) can be found in (cite: Calcino2020)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Calcino2020)"
+    }
+   ],
+   "unstated_but_needed": [
+    "PHANTOM version, input parameter files, SPH smoothing/viscosity settings and random seeds",
+    "Planet accretion (sink) details for the star beyond its 2 au sink radius, and softening choices",
+    "MCFOST version, grid/Voronoi cell settings and the composition fraction of the remaining 25 percent of grain volume",
+    "The planet contrast values actually used for flux injection in the IR images",
+    "Position angle and orientation of the 74 x 57 mas beam, and how the ALMA continuum and CO images were obtained and flux-compared (no CASA or archive reduction is described)",
+    "CO moment 0 velocity range, channel width and the observed flux values used for the comparison",
+    "Number of PCA components for the final sPCA images and the noise level injected",
+    "Snapshot data and processing scripts are not provided"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Run 3D dust+gas SPH simulations of two embedded migrating planets",
+    "method": {
+     "value": "PHANTOM SPH with one-fluid dust, 1 mm grains, planets and star as sink particles that accrete and migrate, three runs with different initial planet masses and positions",
+     "evidence": [
+      {
+       "loc": "2 Methods",
+       "quote": "We perform a set of three dust and gas hydrodynamics simulations in 3D using PHANTOM, a smoothed particle hydrodynamics (SPH) code (cite: Price2018)."
+      },
+      {
+       "loc": "2.3 Properties of the embedded planets",
+       "quote": "The planets and the central star are included in the code as sink particles, characterized by an initial mass, position and sink radius."
+      }
+     ]
+    },
+    "software": [
+     "PHANTOM"
+    ],
+    "key_parameters": [
+     {
+      "value": "10^6 SPH particles; M_star = 0.8 Msun; R_out = 120 au; R_in = 5 au (Sim 1) or 2 au (Sim 2, 3); R_0 = 100 au; Sigma_0 = 1.07 g cm^-2; H/R = 0.05 at R_0; alpha_SS = 0.005; dust 1 mm, dust-to-gas 0.01",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "representing the disc with $10^6$ SPH particles"
+       },
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "The outer radius is fixed in all the simulations, $R_{\\rm out}=120$ au."
+       },
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "in order to have a value for the effective (cite: SS1973) viscosity of $\\alpha_{\\rm SS}=0.005$"
+       }
+      ]
+     },
+     {
+      "value": "Initial planet masses and positions, and sink radii as fractions of the Hill radius, listed per simulation in Table 1",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Initial conditions for the three simulations, called sim 1, sim 2, sim 3."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Locally isothermal equation of state",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "We assume a locally isothermal equation of state with a sound speed profile"
+       }
+      ]
+     },
+     {
+      "value": "Dust initially coupled to gas (Stokes number below unity), justifying the one-fluid mode",
+      "evidence": [
+       {
+        "loc": "2.2 Gas and dust",
+        "quote": "This implies that dust and the gas are initially coupled in the disc."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Dependence of results on the sink radius was checked by varying it between simulations",
+     "evidence": [
+      {
+       "loc": "2.3 Properties of the embedded planets",
+       "quote": "The value of the sink radius may affect the planetary accretion rate and thus their final mass, so we decided to check the dependence of our results on this parameter."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radiative transfer of the snapshots into synthetic continuum and scattered-light images",
+    "method": {
+     "value": "MCFOST Monte Carlo radiative transfer on the SPH snapshot at t = 500 Torb, ray-traced images at 855 um, 2.11 and 2.25 um, then convolution with the observed ALMA beam",
+     "evidence": [
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "we post-processed our simulation using the Monte Carlo radiative transfer code MCFOST (cite: Pinte2006; Pinte2009)."
+      },
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "We then compute the source function by ray-tracing to produce the output images at the desired wavelengths."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [
+     {
+      "value": "1.3e8 photon packets; d = 113 pc; i = 180-49 deg; PA = 159 deg",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "We use $1.3\\times 10^8$ photon packets in the Monte Carlo simulation to compute the temperature and specific intensities of our models."
+       },
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "position angle PA=$159^{\\circ}$"
+       }
+      ]
+     },
+     {
+      "value": "Grain size distribution dn/da ~ a^-3.5, a_min = 0.03 um, a_max = 2500 um; porosity 10 percent; Mie theory",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "We assume a power-law grain size dust distribution $dn/da \\propto a^{-3.5}$ (integrating over the whole disc)"
+       },
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "and a porosity of 10$\\%$"
+       }
+      ]
+     },
+     {
+      "value": "Stellar blackbody Teff = 4090 K, R = 1.57 Rsun",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "effective temperature T$_{\\rm e}$ = 4090 K and a radius of R$_\\star$= 1.57 Solar radii"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Grains smaller than 1 um follow the gas; grains larger than 1 mm follow the 1 mm grains; gas-to-dust ratio of the SPH simulation is 100",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "the total dust mass is derived from the gas to ratio of the SPH simulation, which is 100"
+       },
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "Grains larger than 1 mm are assumed to follow the distribution of the 1 mm grains."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Synthesise 12CO J=3-2 moment 0 maps",
+    "method": {
+     "value": "MCFOST line radiative transfer in LTE with T_gas = T_dust and CO photo-dissociation where log(chi/n) > -6, compared with Keppler2019 observations",
+     "evidence": [
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "we assumed local thermal equilibrium (LTE), $T_{\\rm gas} = T_{\\rm dust}$ and a constant $^{12}$CO abundance of $10^{-4}$."
+      },
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "the condition for the photo-dissociation of the CO is $\\log(\\chi/n) > -6$"
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [
+     {
+      "value": "Constant 12CO abundance 1e-4; local unresolved turbulent velocity 50 m/s",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "We added a local spatially unresolved turbulent velocity of 50 m s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, T_gas = T_dust",
+      "evidence": [
+       {
+        "loc": "2.4 Radiative transfer",
+        "quote": "we assumed local thermal equilibrium (LTE), $T_{\\rm gas} = T_{\\rm dust}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared by eye and by azimuthally averaged flux profile with the Keppler2019 observations",
+     "evidence": [
+      {
+       "loc": "CO maps and mass accretion rate",
+       "quote": "Figure [5](#fig:fig_azim) presents the azimuthally averaged CO deprojected flux density of our models."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Mimic high-contrast IR observing biases and reduce the SPHERE data",
+    "method": {
+     "value": "Reduce 2018-02-24 IRDIS data with a custom python pipeline plus VIP median-ADI; apply to the synthetic 2.11 and 2.25 um images a nine-step chain (planet injection, PSF convolution, coronagraph transmission, resampling to 12.25 mas/pixel, shot noise, synthetic ADI cube, field-rotation smearing, median-ADI, averaging of K1 and K2)",
+     "evidence": [
+      {
+       "loc": "2.5 Post-processing of IR synthetic images",
+       "quote": "We calibrated the IRDIS data with a custom-made python pipeline which performs dark subtraction, flat-fielding, bad pixel correction, sky subtraction, star centering based on satellite spots"
+      },
+      {
+       "loc": "2.5 Post-processing of IR synthetic images",
+       "quote": "Resampling of the RT images to the same pixel scale as the observations (12.25mas/pixel) using a fourth-order Lanczos interpolation;"
+      }
+     ]
+    },
+    "software": [
+     "VIP (Vortex Image Processing)",
+     "custom python pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "Observed PSF FWHM about 63 mas (K1) and 66 mas (K2); 96 s exposures smeared by field rotation",
+      "evidence": [
+       {
+        "loc": "2.5 Post-processing of IR synthetic images",
+        "quote": "which has a FWHM of $\\sim$63mas and $\\sim$66mas in K1 and K2, respectively;"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Features checked against a snapshot with planet c at +180 deg true anomaly, with and without ADI",
+     "evidence": [
+      {
+       "loc": "3.1 Synthetic Images",
+       "quote": "we also processed a snapshot of the simulation corresponding to planet c located at the opposite point of its orbit (+180 degrees true anomaly) compared to the observations."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare dynamics, images and accretion rates with observations",
+    "method": {
+     "value": "Track planet masses, positions, period ratio and accretion rates versus time, and compare synthetic 855 um, CO and scattered-light images with published ALMA and SPHERE data",
+     "evidence": [
+      {
+       "loc": "3.2 Overall dynamics",
+       "quote": "to check whether or not they settle into a mean motion resonance, as a function of the normalized time."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Accretion rate is the mass entering the sink radius, so computed planet accretion rates are upper limits",
+      "evidence": [
+       {
+        "loc": "3.3 CO maps and mass accretion rate",
+        "quote": "so that our computed accretion rates may be considered as upper limits."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "PHANTOM",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D SPH dust and gas simulations with sink-particle planets",
+     "evidence": [
+      {
+       "loc": "2 Methods",
+       "quote": "We perform a set of three dust and gas hydrodynamics simulations in 3D using PHANTOM, a smoothed particle hydrodynamics (SPH) code (cite: Price2018)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MCFOST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Monte Carlo radiative transfer, synthetic continuum, scattered-light and CO images",
+     "evidence": [
+      {
+       "loc": "2.4 Radiative transfer",
+       "quote": "we post-processed our simulation using the Monte Carlo radiative transfer code MCFOST (cite: Pinte2006; Pinte2009)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "VIP (Vortex Image Processing)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Routines for IRDIS calibration and ADI/sPCA processing",
+     "evidence": [
+      {
+       "loc": "2.5 Post-processing of IR synthetic images",
+       "quote": "The pipeline uses routines of the Vortex Image Processing package (cite: GomezGonzalez2017), an open-source compilation of python routines used in high-contrast imaging."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Planet b and c masses at t = 500 Torb, Sim 3",
+    "value": "Mb = 5.3, Mc = 3.9",
+    "uncertainty": "not stated",
+    "units": "M_J",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Masses and positions of the two planets, gas and dust disc masses for our set of simulations at t=500 T$_{\\rm orb}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Planet b and c orbital radii at t = 500 Torb, Sim 3",
+    "value": "Rb = 19.1, Rc = 36.1",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Masses and positions of the two planets, gas and dust disc masses for our set of simulations at t=500 T$_{\\rm orb}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Planet b mass reached after about 100 Torb",
+    "value": "4.5 - 5",
+    "uncertainty": "not stated",
+    "units": "M_J",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 Overall dynamics",
+      "quote": "reaching the value of 4.5 - 5 M$_{\\rm J}$, depending on the initial conditions"
+     }
+    ]
+   },
+   {
+    "quantity": "Planet c mass at end of simulation",
+    "value": "~5",
+    "uncertainty": "not stated",
+    "units": "M_J",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 Overall dynamics",
+      "quote": "reaching $\\sim$ 5 M$_{\\rm J}$ mass at the end of the simulation"
+     }
+    ]
+   },
+   {
+    "quantity": "Planet locations matching 2:1 resonance and ALMA 855 um flux",
+    "value": "Planet b ~17-22 au, Planet c ~34-39 au",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 Overall dynamics",
+      "quote": "Planet b should be located at $\\sim$17–22 au and Planet c at $\\sim$34–39 au."
+     }
+    ]
+   },
+   {
+    "quantity": "Orbital eccentricity of planets",
+    "value": "< ~0.1 (Planet c), ~0.15 (Planet b)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 Overall dynamics",
+      "quote": "the orbital eccentricity of the planets remains relatively small, less than about 0.1 for Planet c (with an exact value dependent on the planet mass) and $\\sim$ 0.15 for Planet b"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust ring location",
+    "value": "~65-90 au (Sim 1); ~50-75 au (Sim 2, 3)",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Synthetic Images",
+      "quote": "the position of the dust ring (that appears at $\\sim$ 65–90 au for Sim 1 and at $\\sim$ 50–75 au in the other cases)"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas cavity width in CO model",
+    "value": "~40",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 CO maps and mass accretion rate",
+      "quote": "The two planets open a $\\sim 40$ au wide cavity"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak of azimuthally averaged CO emission, models vs observation",
+    "value": "models ~0.3, observed ~0.4",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 CO maps and mass accretion rate",
+      "quote": "the observed CO images peaks at about 0.4 arcsec while the models show the peak at about 0.3 arcsec"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar mass accretion rate in simulations",
+    "value": "~5e-10",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 CO maps and mass accretion rate",
+      "quote": "the accretion rate on the star is $\\sim 5 \\times 10^{-10}$ M$_\\odot$ yr$^{-1}$, an order of magnitude higher than the observed value."
+     }
+    ]
+   },
+   {
+    "quantity": "Planet c and Planet b accretion rates",
+    "value": "c ~1e-8; b <= 1e-10",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 CO maps and mass accretion rate",
+      "quote": "the outer Planet c has a higher accretion rate ($\\sim 10^{-8}$ M$_\\odot$ yr$^{-1}$) with respect to the inner Planet b, ($\\leq 10^{-10}$ M$_\\odot$ yr$^{-1}$)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "An accretion stream connects planet c with the gas rim of the disc",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "an accretion stream connects Planet c with the gas rim of the disc, highlighting that the planet is actively interacting with the disc"
+     }
+    ]
+   },
+   {
+    "value": "Circumplanetary discs form around all planets but are accreted onto the sinks within about 50-100 Torb",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "a circumplanetary disc is created around all the planets and quickly (in about 50-100 T$_{\\rm orb}$) accreted."
+     }
+    ]
+   },
+   {
+    "value": "The mm dust spur near planet c is reproduced and is not a numerical artefact",
+    "evidence": [
+     {
+      "loc": "3.1 Synthetic Images",
+      "quote": "confirming that this is not a numerical feature but is due to the presence of dust surrounding Planet c"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Planets that start lighter and farther out, free to migrate and accrete, can reach the observed mass, position and resonance of PDS 70 b and c",
+    "experiment": "Three 3D SPH runs with different initial planet masses and positions",
+    "result": "Planets lock into resonance; Sim 3 gives Planet b at ~18-20 au and Planet c at ~35-40 au",
+    "finding": "Planet migration and resonant locking produce a configuration compatible with observations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We found that the two planets quickly lock into resonance with a ratio that is compatible with observational results as well as with previous 2D numerical simulations (cite: Bae2019)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Observed mm and scattered-light features are explained by the accretion stream onto planet c without a circumplanetary disc",
+    "experiment": "MCFOST synthetic 855 um and ADI-processed 2.11/2.25 um images compared with ALMA and SPHERE data, plus a +180 deg control snapshot",
+    "result": "The mm spur and most intra-cavity IR features are reproduced; the dusty feature near planet b is absent",
+    "finding": "Planet-disc interactions alone explain most features, though the spur origin (CPD vs wake) stays unclear",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We show that features observed at infrared (scattered light) and millimetre (thermal continuum) wavelengths are naturally explained by the accretion stream onto the outer planet, without requiring a circumplanetary disc around planet c."
+     },
+     {
+      "loc": "3.1 Synthetic Images",
+      "quote": "In all our images the dusty feature observed around the inner planet (Planet b) in (cite: Isella2019) is absent."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The simulated 12CO emission matches the observed cavity and flux",
+    "experiment": "Synthetic 12CO J=3-2 moment 0 maps and azimuthal profiles versus Keppler2019",
+    "result": "Flux compatible, but the compact inner ring is not reproduced and the ring peak lies at 0.3 arcsec instead of 0.4",
+    "finding": "Models have too much gas in the cavity",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "CO maps and mass accretion rate",
+      "quote": "The flux value is compatible with the observed values."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "however we fail to reproduce the compact inner ring found in the observations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Simulated planetary accretion rates match the observed values",
+    "experiment": "Sink accretion rates versus time for each simulation",
+    "result": "Planet b rate consistent with observed; planet c rate strongly overestimated; outer planet accretes faster than the inner one",
+    "finding": "Absolute accretion rates cannot be constrained, only the relative ordering",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "CO maps and mass accretion rate",
+      "quote": "we appear to strongly overestimate the accretion rate onto Planet c"
+     },
+     {
+      "loc": "Discussion",
+      "quote": "Our simulations did not allow us to firmly constrain the planetary accretion rates."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Whether a dust ring forms between the two planets",
+    "experiment": "Tracking dust between the orbits in the three runs",
+    "result": "An inter-planetary ring forms in the first ~100 orbits but is accreted within ~100-150 orbits later",
+    "finding": "No long-lived dust ring between the planets, consistent with the observations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 Overall dynamics",
+      "quote": "the dust is not trapped between the orbits of the planets, but it is accreted onto the sinks"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "PDS 70 has two directly imaged embedded giant planets, making it a laboratory for planet-disc interaction",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The disc surrounding PDS 70, with two directly imaged embedded giant planets, is an ideal laboratory to study planet-disc interaction."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "SPH suits accretion flows and asymmetric planet-disc interactions because it has no preferred geometry",
+    "evidence": [
+     {
+      "loc": "2 Methods",
+      "quote": "is particularly suitable for the study of accretion flows and asymmetric interactions between planets and the disc, because there is no preferred geometry"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small sample; a wider parameter study is needed to test robustness",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "However, a more detailed study of the parameter space is needed to understand the robustness of the model"
+      }
+     ]
+    },
+    {
+     "value": "Radiative feedback from the planets is neglected",
+     "evidence": [
+      {
+       "loc": "3.3 CO maps and mass accretion rate",
+       "quote": "We also neglect any radiative feedback from the planets."
+      }
+     ]
+    },
+    {
+     "value": "Star sink radius (2 au) far larger than the real stellar radius may inflate the stellar accretion rate",
+     "evidence": [
+      {
+       "loc": "3.3 CO maps and mass accretion rate",
+       "quote": "The fact that our sink radius for the star (2 au) is far larger than the actual radius for the star can be the reason for this overestimate."
+      }
+     ]
+    },
+    {
+     "value": "Computed planet accretion rates are upper limits because unresolved circumplanetary discs are not modelled",
+     "evidence": [
+      {
+       "loc": "3.3 CO maps and mass accretion rate",
+       "quote": "so that our computed accretion rates may be considered as upper limits."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only three simulations with one disc setup, one grain size (1 mm) and a locally isothermal gas; resonance and ring positions may depend on these choices",
+    "The ALMA data are only used as published images; no quantitative fit statistic between models and data is given",
+    "Agreement is judged qualitatively by eye for the continuum and scattered-light features"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data underlying the article shared on reasonable request",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "The data underlying this article will be shared on reasonable request to the corresponding author."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Simulation input files and PHANTOM and MCFOST versions or settings",
+    "How the ALMA images from the cited papers were obtained and compared",
+    "Planet contrasts and noise level used in the IR post-processing"
+   ],
+   "estimated_data_volume_inferred": "Small for the ALMA part (published images only); simulations need HPC (10^6 particles, hundreds of orbits)",
+   "score_inferred": 2,
+   "score_reason": "Initial conditions and RT parameters are well listed, but no code versions, input files or numerical comparison with ALMA data are given, and data are only on request.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The ALMA data are not reduced in this paper, and the results are largely qualitative image comparisons from long hydrodynamic runs."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Price2018)",
+     "why": "PHANTOM SPH code"
+    },
+    {
+     "citation": "(cite: Pinte2006; Pinte2009)",
+     "why": "MCFOST radiative transfer code"
+    },
+    {
+     "citation": "(cite: Calcino2020)",
+     "why": "Details of IR synthetic image post-processing steps"
+    },
+    {
+     "citation": "(cite: GomezGonzalez2017)",
+     "why": "VIP high-contrast imaging package"
+    },
+    {
+     "citation": "(cite: LodatoPrice2010)",
+     "why": "Initial surface density and viscosity setup"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Keppler2019)",
+     "why": "ALMA 855 um continuum and 12CO observations compared with"
+    },
+    {
+     "citation": "(cite: Isella2019)",
+     "why": "ALMA sub-mm observations of the spur near planet c"
+    },
+    {
+     "citation": "(cite: Bae2019)",
+     "why": "Previous 2D simulations of PDS 70"
+    },
+    {
+     "citation": "(cite: Muller2018)",
+     "why": "SPHERE/IRDIS data and planet contrasts"
+    },
+    {
+     "citation": "(cite: Toci2020)",
+     "why": "Earlier two-planet disc simulations motivating the setup"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA 2013.1.00592.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2020MNRAS.499.2015T",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T07:55:46",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 96,
+  "quotes_ok": 96,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 99,
+   "stated": 59,
+   "rate": 0.596
+  },
+  "evidence_ok": true
+ }
+}

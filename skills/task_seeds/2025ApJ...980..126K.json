@@ -1,0 +1,453 @@
+{
+ "bibcode": "2025ApJ...980..126K",
+ "title": "ALMA FACTS. II. Large Scale Variations in the <SUP>12</SUP>CO(J = 2 ─ 1) to <SUP>12</SUP>CO(J = 1 ─ 0) Line Ratio in Nearby Galaxies",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ada6b5",
+ "arxiv_id": "2505.08912",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Reveal if there are spatial and large-scale radial variations in the 12CO(J=2-1)/12CO(J=1-0) line ratio r21 in nearby galaxies and differences depending on galaxy morphology.",
+ "alma_project_codes": [
+  "2022.1.00360.S",
+  "2012.1.00650.S",
+  "2015.1.00925.S",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "Band 3 (for CO 1-0)",
+  "arrays": "TP Array (2–4 12 m antennas)",
+  "angular_resolution": "HPBW ~ 50.6\" at 115 GHz; effective spatial resolution ~ 56.6\" (3.1 kpc at 11.2 Mpc)",
+  "sensitivity": "0.90 to 1.4 mK r.m.s. in 10 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy morphology and isophotal diameter D25 from RC3",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(2) Galaxy morphology taken from RC 3 (G. de Vaucouleurs et al. 1991)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(4) Isophotal diameter at the major axis, taken from RC 3 (G. de Vaucouleurs et al. 1991)."
+     }
+    ]
+   },
+   "citation": "G. de Vaucouleurs et al. (1991)"
+  },
+  {
+   "what": {
+    "value": "Redshift-independent distances for sample galaxies",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(3) Redshift-independent distance, numbers in parentheses are the references. In order of preference, measurements taken from Cepheid variables, tip of RGB, and Tully–Fischer relation. References : 1. K. B. W. McQuinn et al. (2017), 2. R. B. Tully et al. (2016), 3. W. L. Freedman et al. (2001), 4. R. B. Tully et al. (2013), 5. G. S. Anand et al. (2021)."
+     }
+    ]
+   },
+   "citation": "K. B. W. McQuinn et al. (2017), R. B. Tully et al. (2016), W. L. Freedman et al. (2001), R. B. Tully et al. (2013), G. S. Anand et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Characteristic radius of the stellar bar R_A2",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(5) Characteristic radius of the bar, measured as the position at the maximum amplitude of the m = 2 Fourier component (S. Dìaz-Garcìa et al. 2016)."
+     }
+    ]
+   },
+   "citation": "S. Dìaz-Garcìa et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Initial inclination and position angle values",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(6) (7) Inclination and position angle taken from HyperLEDA (D. Makarov et al. 2014) when available, or from N. Kuno et al. (2007) and K. Sorai et al. (2019)."
+     }
+    ]
+   },
+   "citation": "D. Makarov et al. (2014), N. Kuno et al. (2007), K. Sorai et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Near-infrared classification of NGC 3521 as nonbarred SA",
+    "evidence": [
+     {
+      "loc": "2. ALMA-FACTS",
+      "quote": "The optical classification of NGC 3521 (G. de Vaucouleurs et al. 1991) is SABbc, signifying the presence of a weak bar, but subsequent near-infrared studies (R. J. Buta et al. 2015; S. Dìaz-Garcìa et al. 2016) do not find evidence of a bar."
+     }
+    ]
+   },
+   "citation": "R. J. Buta et al. (2015), S. Dìaz-Garcìa et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Herschel SPIRE 250 um images from KINGFISH",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "Panel (a) : Herschel SPIRE 250 μm image from KINGFISH (R. C. Kennicutt et al. 2011)."
+     }
+    ]
+   },
+   "citation": "R. C. Kennicutt et al. (2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and match resolution of CO(1-0) and CO(2-1) TP cubes",
+   "method": "Calibrate to antenna temperature scale via chopper-wheel method, remove atmospheric O3 residuals, subtract linear baselines, grid onto HPBW/9 pixels with prolate spheroidal function, compute pairwise relative flux scales across EBs by inverting the design matrix and coadd, smooth CO(2-1) to 56.6\" with Gaussian kernel, and bin both cubes to 10 km s-1.",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Grid size HPBW/9 (5.62\" for CO 10, 2.81\" for CO 21), prolate spheroidal support radius 6 pixels",
+    "Target beam 56.6\", velocity bin 10 km s-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create moment maps, spatial r21 maps, and measure luminosity-weighted r21",
+   "method": "Integrate channels with CO detection to make moment 0 maps; create moment 1 maps where moment 0 S/N > 5; measure total flux of both lines within the whole FOV of the CO 21 moment 0 map to compute luminosity-weighted r21; divide moment 0 maps where both lines have S/N > 5 to make spatial r21 maps.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "S/N > 5 threshold for moment 1 and spatial r21 map display"
+   ],
+   "assumptions": [
+    "Absolute flux calibration uncertainty of 2.4% for both CO lines, giving 3% uncertainty in quadrature on luminosity-weighted r21"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Generate major-axis position-velocity (PV) diagrams of r21",
+   "method": "Extract PV diagrams along the major axis for CO 10 and CO 21 using CASA impv with a 1' slit width, exclude pixels within 28\" of map edges, measure CO 10 PV rms in emission-free regions, and divide the CO 21 PV diagram by the CO 10 PV diagram for regions above 20 sigma (10 sigma for NGC 1512 and NGC 4579).",
+   "software": [
+    "CASA",
+    "impv"
+   ],
+   "key_parameters": [
+    "Slit width = 1', edge exclusion = 28\", threshold = 20 sigma (10 sigma for NGC 1512 and NGC 4579)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Separate circularly rotating disk from kinematic outliers via tilted-ring modeling",
+   "method": "Fit the CO 10 cube with a tilted-ring model in 3DBarolo using concentric 28.8\" rings, create a major-axis PV diagram from the model cube, and define regions inside the 30 sigma model contour (10 sigma for NGC 1512 and NGC 4579) as 'disk' and regions on/outside as 'outlier'.",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "Ring width = 28.8\", radial gas inflow/outflow fixed to 0, PA, inclination, and rotation velocity free in each ring",
+    "Model PV contour threshold = 30 sigma (10 sigma for NGC 1512 and NGC 4579)"
+   ],
+   "assumptions": [
+    "Pure circular rotation in tilted rings with zero radial inflow/outflow"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare r21 distributions and radial profiles across kinematic components and galaxy morphologies",
+   "method": "Compute raw and sample-normalized histograms of r21 in PV pixels for disk and outlier components across SA, SAB, and SB classes, perform Welch's t-tests, and compute radial profiles in 5.6\" bins normalized by central 28\" mean r21, optical radius R25, and bar radius RA2.",
+   "software": [],
+   "key_parameters": [
+    "Histogram bin width = 0.027; radial bin width = 5.6\"; minimum 3 data points per radial bin"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean luminosity-weighted r21 across sample",
+   "value": "0.61",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1. Luminosity-weighted CO Ratio",
+     "quote": "The average value of luminosity-weighted mean is r 21 = 0.61 with a standard deviation of 0.06, consistent with previous studies (Y. Yajima et al. 2021; J. S. den Brok et al. 2021; A. K. Leroy et al. 2022)."
+    },
+    {
+     "loc": "5. Summary",
+     "quote": "Global average values of r 21 = 0.61 ± 0.06 are consistent with averages in the literature."
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 1097",
+   "value": "0.64",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 1097 SBb 15.4 (2) 9.3 1.2 54.8 133.9 0.64 ± 0.02 0.65 ± 0.09 0.63 ± 0.07 0.71 ± 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 1512",
+   "value": "0.52",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 1512 SBa 12.6 (2) 8.9 0.79 68.3 65.2 0.52 ± 0.02 0.53 ± 0.10 0.51 ± 0.09 0.56 ± 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 3351",
+   "value": "0.56",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 3351 SBb 9.33 (3) 7.4 0.66 54.6 10.7 0.56 ± 0.02 0.58 ± 0.12 0.57 ± 0.12 0.66 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 3521",
+   "value": "0.61",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 3521 SA 12.1 (2) 11 L 60.0 162.8 0.61 ± 0.02 0.61 ± 0.05 0.61 ± 0.04 0.65 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 3621",
+   "value": "0.67",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 3621 SAd 6.55 (3) 12.3 L 67.6 161.7 0.67 ± 0.02 0.66 ± 0.07 0.66 ± 0.07 0.67 ± 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 3627",
+   "value": "0.61",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 3627 SABb 9.38 (3) 9.1 0.94 67.5 168.1 0.61 ± 0.02 0.64 ± 0.06 0.63 ± 0.05 0.69 ± 0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 4254",
+   "value": "0.63",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 4254 SAc 13.9 (4) 5.4 L 20.1 66 0.63 ± 0.02 0.65 ± 0.07 0.63 ± 0.06 0.74 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 4321",
+   "value": "0.55",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 4321 SABbc 14.3 (2) 7.4 1.0 24.0 158 0.55 ± 0.02 0.59 ± 0.08 0.58 ± 0.06 0.66 ± 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 4536",
+   "value": "0.69",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 4536 SABbc 14.5 (2) 7.6 1.1 73.1 120.7 0.69 ± 0.02 0.70 ± 0.06 0.67 ± 0.06 0.72 ± 0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 4579",
+   "value": "0.56",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 4579 SABb 16.4 (4) 5.9 0.54 41.9 90.2 0.56 ± 0.02 0.58 ± 0.10 0.57 ± 0.10 0.67 ± 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted r21 of NGC 4826",
+   "value": "0.69",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NGC 4826 SAab 4.41 (5) 10 L 64.0 114.0 0.69 ± 0.02 0.68 ± 0.06 0.67 ± 0.05 0.74 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PV r21 (all galaxies, disk + outlier)",
+   "value": "0.63",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All galaxies 0.63 ± 0.09 0.62 ± 0.08 0.69 ± 0.10"
+    },
+    {
+     "loc": "4.2. Number Distribution of r 21",
+     "quote": "The average value of r 21 for all our galaxies (disk and outlier combined) is r 21 = 0.63 ± 0.09, which is consistent with the average of the luminosity-weighted mean (0.61 ± 0.06) in Section 3.1."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PV r21 (all galaxies, disk component)",
+   "value": "0.62",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All galaxies 0.63 ± 0.09 0.62 ± 0.08 0.69 ± 0.10"
+    },
+    {
+     "loc": "5. Summary",
+     "quote": "The outliers have a statistically larger mean value of r 21 = 0.69 ± 0.10 compared to the disk with r 21 = 0.62 ± 0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PV r21 (all galaxies, outlier component)",
+   "value": "0.69",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All galaxies 0.63 ± 0.09 0.62 ± 0.08 0.69 ± 0.10"
+    },
+    {
+     "loc": "5. Summary",
+     "quote": "The outliers have a statistically larger mean value of r 21 = 0.69 ± 0.10 compared to the disk with r 21 = 0.62 ± 0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PV r21 (SA galaxies, disk / outlier)",
+   "value": "0.64 / 0.70",
+   "uncertainty": "0.06 / 0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SA 0.65 ± 0.07 0.64 ± 0.06 0.70 ± 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PV r21 (SAB galaxies, disk / outlier)",
+   "value": "0.61 / 0.70",
+   "uncertainty": "0.08 / 0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SAB 0.63 ± 0.09 0.61 ± 0.08 0.70 ± 0.08"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean PV r21 (SB galaxies, disk / outlier)",
+   "value": "0.60 / 0.68",
+   "uncertainty": "0.10 / 0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SB 0.62 ± 0.11 0.60 ± 0.10 0.68 ± 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "Welch's t-test p-value between disk and outlier r21 (normalized, all galaxies)",
+   "value": "0.009",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Number Distribution of r 21",
+     "quote": "The normalized distribution matches the non-normalized distribution very well, and a Welch's t-test between the disk and outliers in the normalized data set gives a p-value of 0.009, indicating that the disk and outliers likely come from different distributions."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and 3DBarolo version used",
+  "Which specific Execution Blocks were rejected due to bad weather and the S/N threshold used for rejection",
+  "Exact velocity channel ranges where CO was detected for each galaxy (used for baseline subtraction, moment 0 integration, and rms calculation)",
+  "Whether CO 2-1 cube was regridded to the 5.62\" pixel grid of CO 1-0 before pixel-by-pixel ratio and PV diagram division",
+  "Exact slit lengths used in CASA impv for each galaxy",
+  "Other 3DBarolo parameters (e.g., systemic velocity, kinematic center coordinates, velocity dispersion, scale height, normalization mode)"
+ ],
+ "missing_for_reproduction": [
+  "List of specific Execution Blocks rejected for bad weather",
+  "Exact velocity channel windows used for baseline fitting and moment 0 integration per galaxy",
+  "Exact 3DBarolo parameter files (systemic velocities, center coordinates, velocity dispersion assumptions)",
+  "Exact major-axis slit lengths used in CASA impv"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All ALMA project codes are explicitly listed, the single-dish gridding, smoothing, velocity binning, PV slit widths, S/N thresholds, and 3DBarolo ring widths are clearly stated, and extensive numeric tables are provided; minor deductions for unstated rejected EBs, exact line-window channels per galaxy, and 3DBarolo nuisance parameters.",
+ "rediscovery_reason": "All ALMA TP data (2022.1.00360.S and PHANGS archival projects) are public, TP cube reduction and PV/3DBarolo analysis are computationally lightweight, and Table 1 and Table 3 provide clean numeric benchmarks for luminosity-weighted and kinematic-component r21 values across 11 galaxies.",
+ "source_card": "cards/2025ApJ...980..126K/sonnet/card.md"
+}

@@ -1,0 +1,1110 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "channel_maps",
+    "panels": 3,
+    "shows": "Raw dirty continuum images of the 12m-array mosaic, ACA mosaic and jointly imaged Band 3 observations of XLSSC 122, with r500,c circles and ACT-y contours overlaid on the joint image.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness (dirty continuum)",
+      "units": "mJy beam-1"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "Shows that the ACT-y contours and the ALMA+ACA SZ decrement align spatially, a comparison with independent data.",
+    "readable_values": [
+     "approx. RMS 0.051, 0.014, 0.022 mJy beam-1 for the three images",
+     "approx. colour scale limits ±0.08, ±0.20, ±0.10 mJy beam-1"
+    ],
+    "caption_quote": "We clearly see that the ACT and ALMA+ACA observations align spatially.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Distribution of the number of visibilities versus uv-distance for ALMA and ACA Band 3 observations, with ACT beams at 150 and 100 GHz overlaid.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv-distance",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "number of baselines",
+      "units": "x 10^7 (arbitrary scaling)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. ALMA visibility peak near 30 kλ",
+     "approx. ACA visibility peak near 8 kλ",
+     "approx. ACT 100 GHz beam falls to near zero by about 3 kλ"
+    ],
+    "caption_quote": "Distribution of the number of visibilities as a function of the uv-distance sampled with ALMA (yellow) and ACA (blue) Band-3 observations.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "sky_image",
+    "panels": 3,
+    "shows": "Multiwavelength view: dirty joint ALMA+ACA Band 3 map with member galaxies, XMM-Newton X-ray image with SZ decrement contours, and HST F140W image with X-ray and ACT contours and the CARMA SZ centroid.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "SZ surface brightness",
+      "units": "mJy beam-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "X-ray counts",
+      "units": "counts"
+     },
+     {
+      "axis": "colour",
+      "quantity": "HST F140W surface brightness",
+      "units": "counts s-1"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "Checks coherence between ICM pressure, X-ray density and the cluster member distribution.",
+    "readable_values": [
+     "approx. SZ colour scale ±0.08 mJy beam-1",
+     "approx. X-ray counts range 1 to about 10 counts"
+    ],
+    "caption_quote": "Overall, this figure indicates a coherence between the pressure and density distribution of the ICM seen by ALMA+ACA and X-ray measurements, and the cluster member distribution.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "Spectra of two emission-line interlopers in a single beam: CO(2-1) at about 105.3 GHz in Band 3 (ALMA and ACA) and CO(4-3) near 155.9 GHz in Band 4 (ALMA), from galaxies at z=1.19 and z=1.96.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. Band 3 CO(2-1) peak 1.0 mJy near 105.25 GHz",
+     "approx. Band 4 CO(4-3) peak 1.5 mJy near 155.9 GHz"
+    ],
+    "caption_quote": "The line emission comes from two galaxies at z = 1.19 and z=1.96 which are also detected in optical broad- band images.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "model_vs_data",
+    "panels": 4,
+    "shows": "Most likely single elliptical gNFW model: dirty ALMA+ACA image, likelihood-weighted smoothed model, model corrected for uv-coverage, and residual map after subtracting the model from the visibilities.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "mJy/beam"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 1,
+    "validation_check": "Shows the model resembles the data and that residuals after model subtraction contain no obvious structure.",
+    "readable_values": [
+     "approx. model minimum about -0.10 mJy/beam",
+     "approx. residual range ±0.08 mJy/beam"
+    ],
+    "caption_quote": "The model shows a clear resemblance to the data.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "uv_plot",
+    "panels": 2,
+    "shows": "Radial uv-distribution of real part and imaginary part of visibilities for ACA (left) and ALMA (right) with median empirical SZ models (A10 and M14 classes, ensemble average, cool cores, disturbed).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv distance",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "Re(V)",
+      "units": "mJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "Imag(V)",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares empirical pressure-template models against the observed visibilities, disfavouring a local cool-core morphology.",
+    "readable_values": [
+     "approx. ACA Re(V) at 1 kλ about -1.0 to -1.7 mJy across models",
+     "approx. ALMA Re(V) near 0 mJy beyond 10 kλ"
+    ],
+    "caption_quote": "the data disfavors a local cool core cluster as the morphological state of XLSSC 122.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "radial_profile",
+    "panels": 1,
+    "shows": "Derived radial pressure profiles of best-fit elliptical empirical models (A10 and M14 classes) with ensemble average, cool-core and disturbed templates.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "kpc"
+     },
+     {
+      "axis": "y",
+      "quantity": "pressure P(r) h70^2",
+      "units": "keV cm-3"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. P(10 kpc) about 0.3 keV cm-3 for the cool-core A10 model",
+     "approx. P(10 kpc) about 0.04 keV cm-3 for M14 models"
+    ],
+    "caption_quote": "Derived radial pressure profiles of the best-fit elliptical models which follow the empirical formalism as shown in Table 1.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "uv_plot",
+    "panels": 2,
+    "shows": "Same as Figure 6 but with ACT data included in the model fitting, showing real and imaginary visibilities for ACA and ALMA with model curves.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv distance",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "Re(V)",
+      "units": "mJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "Imag(V)",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 3,
+    "validation_check": "Tests how adding the ACT large-scale constraint changes the empirical model fits to the uv data.",
+    "readable_values": [
+     "approx. ACA Re(V) at 1 kλ about -0.9 to -2.3 mJy across models"
+    ],
+    "caption_quote": "We observe a tighter correlation at smaller uv-distances, an overall larger amplitude, and a smaller eccentricity.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "radial_profile",
+    "panels": 1,
+    "shows": "Derived radial pressure profiles with ACT constraints included, for A10 and M14 classes with ensemble average, cool-core and disturbed templates.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "kpc"
+     },
+     {
+      "axis": "y",
+      "quantity": "pressure P(r) h70^2",
+      "units": "keV cm-3"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. P(10 kpc) about 0.3 keV cm-3 for the cool-core A10 model",
+     "approx. P(1000 kpc) about 3e-5 keV cm-3"
+    ],
+    "caption_quote": "Same as Figure 7 but with the addition of ACT constraints, as in Figure 9.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "residual_map",
+    "panels": 1,
+    "shows": "Cleaned ACA+ALMA image combining the reconstructed single elliptical gNFW model with imaged residuals, showing the SZ decrement with cluster member positions and r500,c circle.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "mJy/Beam"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. minimum surface brightness -0.20 mJy/Beam",
+     "approx. colour scale ±0.20 mJy/Beam"
+    ],
+    "caption_quote": "We observe asymmetric features in the south, potentially indicating a morphological disturbance to the cluster.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "model_vs_data",
+    "panels": 4,
+    "shows": "Two-component model reconstructions (elliptical and spherical, with and without ACT) compared with the ALMA+ACA cleaned contours, after smoothing to 5 arcsec.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "mJy/Beam"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "Compares elliptical versus spherical two-component models against the observed surface brightness distribution.",
+    "readable_values": [
+     "approx. colour scale ±0.20 mJy/Beam"
+    ],
+    "caption_quote": "This figure indicates that the two-elliptical SZ components better resembles the surface brightness distribution of XLSSC 122 than the spherical one.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 13,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Overview of halo masses M500,c from X-ray, SZ (CARMA, ACT catalogue, this work spherical/elliptical/empirical average) and dynamical modelling for XLSSC 122.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "halo mass M500,c",
+      "units": "log10 solar masses"
+     },
+     {
+      "axis": "y",
+      "quantity": "mass estimator",
+      "units": "categorical"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 6,
+    "validation_check": "Compares halo masses across independent tracers, showing discrepancies between SZ, X-ray and dynamics.",
+    "readable_values": [
+     "approx. X-ray (Chandra) mass log10 about 13.8 in black",
+     "approx. SZ mass (This work) log10 about 14.2",
+     "approx. dynamical modelling log10 about 14.7"
+    ],
+    "caption_quote": "This figure shows the discrepancies between the derived M500,c indicating that with forming clusters, one cannot reliably use one tracer or constant gas fraction to estimate the true halo mass.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 14,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Multiwavelength composite of XLSSC 122 with HST F140W background, XMM-Newton X-ray contours, cluster members, cleaned SZ decrement in blue, and red contours of the two-gNFW ALMA+ACA+ACT model.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "SZ flux",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "X-ray and model surface brightness",
+      "units": "not labelled"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. synthesized beam 5 arcsec shown bottom left"
+    ],
+    "caption_quote": "The figure indicates a clear morphological difference between the equation of state parameters traced by X-ray and the SZ effect.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 15,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Pseudo-kBTe map (y/sqrt(SX)) of XLSSC 122, the ratio of the cleaned SZ map to X-ray surface brightness within 2 sigma adaptively smoothed X-ray contours, with member galaxies.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "y_SZ (S_X)^-0.5 pseudo-temperature",
+      "units": "x 10^-5 (arbitrary scale)"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. pseudo-temperature range about -1 to 6.5 x 10^-5 (arbitrary units)"
+    ],
+    "caption_quote": "The units are linearly scaled to an arbitrary value to show the relative pseudo temperature change in the south of XLSSC 122.",
+    "reproduction_target": false,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 14,
+  "caption_quotes_ok": 14,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 7,
+  "reproduction_targets": 6,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.993,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 9,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 10,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 11,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.991,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 12,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 13,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.995,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 14,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 15,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "channel_maps",
+    "panels": 3,
+    "shows": "Raw dirty continuum images of the 12m-array mosaic, ACA mosaic and jointly imaged Band 3 observations of XLSSC 122, with r500,c circles and ACT-y contours overlaid on the joint image.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness (dirty continuum)",
+      "units": "mJy beam-1"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "Shows that the ACT-y contours and the ALMA+ACA SZ decrement align spatially, a comparison with independent data.",
+    "readable_values": [
+     "approx. RMS 0.051, 0.014, 0.022 mJy beam-1 for the three images",
+     "approx. colour scale limits ±0.08, ±0.20, ±0.10 mJy beam-1"
+    ],
+    "caption_quote": "We clearly see that the ACT and ALMA+ACA observations align spatially.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Distribution of the number of visibilities versus uv-distance for ALMA and ACA Band 3 observations, with ACT beams at 150 and 100 GHz overlaid.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv-distance",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "number of baselines",
+      "units": "x 10^7 (arbitrary scaling)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. ALMA visibility peak near 30 kλ",
+     "approx. ACA visibility peak near 8 kλ",
+     "approx. ACT 100 GHz beam falls to near zero by about 3 kλ"
+    ],
+    "caption_quote": "Distribution of the number of visibilities as a function of the uv-distance sampled with ALMA (yellow) and ACA (blue) Band-3 observations.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "sky_image",
+    "panels": 3,
+    "shows": "Multiwavelength view: dirty joint ALMA+ACA Band 3 map with member galaxies, XMM-Newton X-ray image with SZ decrement contours, and HST F140W image with X-ray and ACT contours and the CARMA SZ centroid.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "SZ surface brightness",
+      "units": "mJy beam-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "X-ray counts",
+      "units": "counts"
+     },
+     {
+      "axis": "colour",
+      "quantity": "HST F140W surface brightness",
+      "units": "counts s-1"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "Checks coherence between ICM pressure, X-ray density and the cluster member distribution.",
+    "readable_values": [
+     "approx. SZ colour scale ±0.08 mJy beam-1",
+     "approx. X-ray counts range 1 to about 10 counts"
+    ],
+    "caption_quote": "Overall, this figure indicates a coherence between the pressure and density distribution of the ICM seen by ALMA+ACA and X-ray measurements, and the cluster member distribution.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "Spectra of two emission-line interlopers in a single beam: CO(2-1) at about 105.3 GHz in Band 3 (ALMA and ACA) and CO(4-3) near 155.9 GHz in Band 4 (ALMA), from galaxies at z=1.19 and z=1.96.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. Band 3 CO(2-1) peak 1.0 mJy near 105.25 GHz",
+     "approx. Band 4 CO(4-3) peak 1.5 mJy near 155.9 GHz"
+    ],
+    "caption_quote": "The line emission comes from two galaxies at z = 1.19 and z=1.96 which are also detected in optical broad- band images.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "model_vs_data",
+    "panels": 4,
+    "shows": "Most likely single elliptical gNFW model: dirty ALMA+ACA image, likelihood-weighted smoothed model, model corrected for uv-coverage, and residual map after subtracting the model from the visibilities.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "mJy/beam"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 1,
+    "validation_check": "Shows the model resembles the data and that residuals after model subtraction contain no obvious structure.",
+    "readable_values": [
+     "approx. model minimum about -0.10 mJy/beam",
+     "approx. residual range ±0.08 mJy/beam"
+    ],
+    "caption_quote": "The model shows a clear resemblance to the data.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "uv_plot",
+    "panels": 2,
+    "shows": "Radial uv-distribution of real part and imaginary part of visibilities for ACA (left) and ALMA (right) with median empirical SZ models (A10 and M14 classes, ensemble average, cool cores, disturbed).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv distance",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "Re(V)",
+      "units": "mJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "Imag(V)",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares empirical pressure-template models against the observed visibilities, disfavouring a local cool-core morphology.",
+    "readable_values": [
+     "approx. ACA Re(V) at 1 kλ about -1.0 to -1.7 mJy across models",
+     "approx. ALMA Re(V) near 0 mJy beyond 10 kλ"
+    ],
+    "caption_quote": "the data disfavors a local cool core cluster as the morphological state of XLSSC 122.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "radial_profile",
+    "panels": 1,
+    "shows": "Derived radial pressure profiles of best-fit elliptical empirical models (A10 and M14 classes) with ensemble average, cool-core and disturbed templates.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "kpc"
+     },
+     {
+      "axis": "y",
+      "quantity": "pressure P(r) h70^2",
+      "units": "keV cm-3"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. P(10 kpc) about 0.3 keV cm-3 for the cool-core A10 model",
+     "approx. P(10 kpc) about 0.04 keV cm-3 for M14 models"
+    ],
+    "caption_quote": "Derived radial pressure profiles of the best-fit elliptical models which follow the empirical formalism as shown in Table 1.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "uv_plot",
+    "panels": 2,
+    "shows": "Same as Figure 6 but with ACT data included in the model fitting, showing real and imaginary visibilities for ACA and ALMA with model curves.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "uv distance",
+      "units": "kλ"
+     },
+     {
+      "axis": "y",
+      "quantity": "Re(V)",
+      "units": "mJy"
+     },
+     {
+      "axis": "y",
+      "quantity": "Imag(V)",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 3,
+    "validation_check": "Tests how adding the ACT large-scale constraint changes the empirical model fits to the uv data.",
+    "readable_values": [
+     "approx. ACA Re(V) at 1 kλ about -0.9 to -2.3 mJy across models"
+    ],
+    "caption_quote": "We observe a tighter correlation at smaller uv-distances, an overall larger amplitude, and a smaller eccentricity.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "radial_profile",
+    "panels": 1,
+    "shows": "Derived radial pressure profiles with ACT constraints included, for A10 and M14 classes with ensemble average, cool-core and disturbed templates.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radius",
+      "units": "kpc"
+     },
+     {
+      "axis": "y",
+      "quantity": "pressure P(r) h70^2",
+      "units": "keV cm-3"
+     }
+    ],
+    "roles": [
+     "model"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. P(10 kpc) about 0.3 keV cm-3 for the cool-core A10 model",
+     "approx. P(1000 kpc) about 3e-5 keV cm-3"
+    ],
+    "caption_quote": "Same as Figure 7 but with the addition of ACT constraints, as in Figure 9.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "residual_map",
+    "panels": 1,
+    "shows": "Cleaned ACA+ALMA image combining the reconstructed single elliptical gNFW model with imaged residuals, showing the SZ decrement with cluster member positions and r500,c circle.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "mJy/Beam"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. minimum surface brightness -0.20 mJy/Beam",
+     "approx. colour scale ±0.20 mJy/Beam"
+    ],
+    "caption_quote": "We observe asymmetric features in the south, potentially indicating a morphological disturbance to the cluster.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "model_vs_data",
+    "panels": 4,
+    "shows": "Two-component model reconstructions (elliptical and spherical, with and without ACT) compared with the ALMA+ACA cleaned contours, after smoothing to 5 arcsec.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness",
+      "units": "mJy/Beam"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "Compares elliptical versus spherical two-component models against the observed surface brightness distribution.",
+    "readable_values": [
+     "approx. colour scale ±0.20 mJy/Beam"
+    ],
+    "caption_quote": "This figure indicates that the two-elliptical SZ components better resembles the surface brightness distribution of XLSSC 122 than the spherical one.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 13,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Overview of halo masses M500,c from X-ray, SZ (CARMA, ACT catalogue, this work spherical/elliptical/empirical average) and dynamical modelling for XLSSC 122.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "halo mass M500,c",
+      "units": "log10 solar masses"
+     },
+     {
+      "axis": "y",
+      "quantity": "mass estimator",
+      "units": "categorical"
+     }
+    ],
+    "roles": [
+     "data",
+     "literature_comparison"
+    ],
+    "supports_step": 6,
+    "validation_check": "Compares halo masses across independent tracers, showing discrepancies between SZ, X-ray and dynamics.",
+    "readable_values": [
+     "approx. X-ray (Chandra) mass log10 about 13.8 in black",
+     "approx. SZ mass (This work) log10 about 14.2",
+     "approx. dynamical modelling log10 about 14.7"
+    ],
+    "caption_quote": "This figure shows the discrepancies between the derived M500,c indicating that with forming clusters, one cannot reliably use one tracer or constant gas fraction to estimate the true halo mass.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 14,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Multiwavelength composite of XLSSC 122 with HST F140W background, XMM-Newton X-ray contours, cluster members, cleaned SZ decrement in blue, and red contours of the two-gNFW ALMA+ACA+ACT model.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "SZ flux",
+      "units": "not labelled"
+     },
+     {
+      "axis": "contours",
+      "quantity": "X-ray and model surface brightness",
+      "units": "not labelled"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. synthesized beam 5 arcsec shown bottom left"
+    ],
+    "caption_quote": "The figure indicates a clear morphological difference between the equation of state parameters traced by X-ray and the SZ effect.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 15,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Pseudo-kBTe map (y/sqrt(SX)) of XLSSC 122, the ratio of the cleaned SZ map to X-ray surface brightness within 2 sigma adaptively smoothed X-ray contours, with member galaxies.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "y_SZ (S_X)^-0.5 pseudo-temperature",
+      "units": "x 10^-5 (arbitrary scale)"
+     },
+     {
+      "axis": "x",
+      "quantity": "RA",
+      "units": "J2000"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec",
+      "units": "J2000"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. pseudo-temperature range about -1 to 6.5 x 10^-5 (arbitrary units)"
+    ],
+    "caption_quote": "The units are linearly scaled to an arbitrary value to show the relative pseudo temperature change in the south of XLSSC 122.",
+    "reproduction_target": false,
+    "crop_ok": true
+   }
+  ]
+ }
+}

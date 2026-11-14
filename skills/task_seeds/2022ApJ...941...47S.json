@@ -1,0 +1,389 @@
+{
+ "bibcode": "2022ApJ...941...47S",
+ "title": "A Molecular Gas Ring Hidden in the Sombrero Galaxy",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac9d8f",
+ "arxiv_id": "2210.13527",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the properties, distribution, and heating/excitation mechanisms of the molecular, atomic, and ionized gas and dust in the ring of M 104, and how do its [CII] and CO emissions compare to early-type and star-forming galaxies?",
+ "alma_project_codes": [
+  "2018.1.00034.S"
+ ],
+ "data": {
+  "bands": "Band 3 (2.61-2.63 mm)",
+  "arrays": "7 m compact array",
+  "angular_resolution": "14.3'' x 7.7''",
+  "sensitivity": "expected line sensitivity of 16.2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to M 104 of 31.1 Mpc",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Distance | 31.1 Mpc | (cite: McQuinn2016) |"
+     }
+    ]
+   },
+   "citation": "(cite: McQuinn2016)"
+  },
+  {
+   "what": {
+    "value": "Resolved region measurements of [CII], CO, FIR, PAH, and UV attenuation in NGC 7331",
+    "evidence": [
+     {
+      "loc": "Additional Reference Samples",
+      "quote": "Primarily, we include data from local star–forming galaxies NGC 7331 (cite: Sutter2022)"
+     }
+    ]
+   },
+   "citation": "(cite: Sutter2022)"
+  },
+  {
+   "what": {
+    "value": "Resolved region measurements in NGC 1097 and NGC 4559",
+    "evidence": [
+     {
+      "loc": "Additional Reference Samples",
+      "quote": "NGC 1097 and NGC 4559 (cite: Croxall2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Croxall2012)"
+  },
+  {
+   "what": {
+    "value": "Resolved region measurements of [CII] and UV attenuation in M 31",
+    "evidence": [
+     {
+      "loc": "Additional Reference Samples",
+      "quote": "M 31 (cite: Kapala2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Kapala2017)"
+  },
+  {
+   "what": {
+    "value": "Resolved star-forming regions from the KINGFISH survey",
+    "evidence": [
+     {
+      "loc": "[CII] and total infrared luminosity",
+      "quote": "resolved star–forming regions from the “Key Insights in Nearby Galaxies: a Far-Infrared Survey with *Herschel*” (cite: Sutter2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Sutter2019)"
+  },
+  {
+   "what": {
+    "value": "Global [CII] and FIR measurements from the Great Observatories All-sky LIRG Survey (GOALS) and inclinations",
+    "evidence": [
+     {
+      "loc": "Additional Reference Samples",
+      "quote": "In our comparison between [CII] and FIR we also include data from the Great Observatories All sky LIRG Survey (cite: DiazSantos2017)"
+     },
+     {
+      "loc": "[CII] and total infrared luminosity",
+      "quote": "For the galaxies in the GOALS sample, the inclinations were taken from (cite: Kim2013)."
+     }
+    ]
+   },
+   "citation": "(cite: DiazSantos2017); (cite: Kim2013)"
+  },
+  {
+   "what": {
+    "value": "Global [CII] and FIR measurements of z ~ 0.02 - 0.2 galaxies",
+    "evidence": [
+     {
+      "loc": "Additional Reference Samples",
+      "quote": "and a survey of $z \\sim 0.02 - 2$ galaxies from (cite: Ibar2015) to provide further context for our data."
+     }
+    ]
+   },
+   "citation": "(cite: Ibar2015)"
+  },
+  {
+   "what": {
+    "value": "Sub-kpc Kennicutt-Schmidt relationship for star-forming galaxies",
+    "evidence": [
+     {
+      "loc": "[CII] and CO emission",
+      "quote": "For comparison, we plot the relationship from (cite: Bigiel2008) which investigated the Kennicutt-Schmidt relationship at sub-Kpc scale for several star-forming galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: Bigiel2008)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and recalibrate Herschel/PACS [CII] unchopped spectroscopic data and VLT/MUSE optical cubes",
+   "method": "Modified HIPE 15 unchopped pipeline with Python scripts to remove band-switch, long-term, and cosmic-ray transients and calibrate to the telescope background; reprocess 10 MUSE observations with MUSE pipeline 2.8.5 and shift velocity frame to LSRK.",
+   "software": [
+    "HIPE",
+    "MUSE pipeline",
+    "Python"
+   ],
+   "key_parameters": [
+    "PACS cube spatial pixel = 3 arcsec; MUSE cube spatial pixel = 0.4 arcsec; MUSE velocity shifts = -28.5 km/s (barycentric) and +0.9 km/s (LSRK)"
+   ],
+   "assumptions": [
+    "Telescope background is stable and dominates total flux over weak target flux"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Produce pixel-by-pixel line intensity, velocity, and velocity dispersion maps",
+   "method": "Fit CO, [CII], and Halpha lines across the ALMA, PACS, and MUSE spectral cubes using sospex, masking pixels with SNR < 5.",
+   "software": [
+    "sospex"
+   ],
+   "key_parameters": [
+    "SNR threshold = 5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure galaxy inclination angle",
+   "method": "Mask the central bulge and fit an ellipse to the infrared (IRAC Ch4, MIPS 24, PACS 70, 100, 160) and ALMA CO intensity images using direct linear least squares.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "The ring of M 104 is intrinsically circular"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract aperture spectra, fit emission/absorption lines, and analyze gas and stellar kinematics",
+   "method": "Extract spectra in 59 apertures along the ring and interior (10.7'' circular diameter for PACS/MUSE; 14.3'' x 7.7'' elliptical beam shape for ALMA), fit CO and [CII] with sospex and optical spectra with showspectra, and fit linear v_los vs projected distance.",
+   "software": [
+    "sospex",
+    "showspectra"
+   ],
+   "key_parameters": [
+    "Circular aperture diameter = 10.7 arcsec; ALMA aperture = 14.3'' x 7.7'' ellipse"
+   ],
+   "assumptions": [
+    "Circular ring rotating with constant angular velocity Omega; distance = 31.1 Mpc (70 pc/arcsec)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Classify regions into HII/Comp and LIER using optical emission line diagnostics",
+   "method": "Construct BPT and weak-line diagnostic diagrams ([NII]/Halpha vs [OIII]/Halpha and EW(Halpha) vs [NII]/Halpha) from MUSE aperture line fluxes to classify regions.",
+   "software": [
+    "showspectra"
+   ],
+   "key_parameters": [
+    "3-sigma lower limits used when Hbeta is barely visible"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Smooth multi-wavelength photometry and fit SEDs to derive FIR luminosity, attenuated UV, SFR, and PAH fluxes",
+   "method": "Smooth FUV to PACS 160 um images to 10.7'' resolution, extract fluxes in the 10.7'' circular apertures, fit SEDs with CIGALE, integrate models for FIR (8-1000 um) and attenuated UV (91.2-206.6 nm), and subtract non-PAH continuum from IRAC4 and WISE3 to get 7.7 and 11.3 um PAH fluxes.",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Common resolution = 10.7''; FIR integration range = 8-1000 um; UV_att integration range = 91.2-206.6 nm; f_AGN = 0 for ring regions, f_AGN = 0.1, 0.25, 0.5 for interior regions; Z = Z_odot"
+   ],
+   "assumptions": [
+    "Energy balance between UV absorption and IR emission; Bruzual & Charlot (2003) SSP with Chabrier (2003) IMF; Calzetti (2000) attenuation; Draine et al. (2014) dust models; Fritz et al. (2006) AGN model; 10% uncertainty on CIGALE-derived quantities."
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Estimate total and resolved molecular hydrogen (H2) masses and compare with SFR (Kennicutt-Schmidt relation)",
+   "method": "Integrate total and aperture CO(1-0) emission, apply a factor of 2 optical depth correction and Eq. 3 of Bolatto et al. (2013) to obtain M(H2), and divide M(H2) and CIGALE SFR by deprojected aperture area.",
+   "software": [],
+   "key_parameters": [
+    "Optical depth correction factor = 2; inclination = 84.3 deg; distance = 31.1 Mpc"
+   ],
+   "assumptions": [
+    "CO(1-0) optical depth correction of 2 (cite: Hughes2017) and CO-to-H2 conversion from Eq. 3 of (cite: Bolatto2013)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular hydrogen mass of the ring of M 104",
+   "value": "0.9e9",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "From the total intensity of the CO line we estimate a molecular hydrogen mass of $0.9\\times10^{9}$M$_\\odot$, a value intermediate between those of early type galaxies and the content of the molecular ring of our galaxy."
+    },
+    {
+     "loc": "Measuring the $H_2$ Mass",
+     "quote": "By applying the conversion from Eq. 3 from (cite: Bolatto2013), we find out that the total molecular hydrogen mass of the ring of M 104 is $0.9\\times10^9$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy inclination angle (from ALMA CO)",
+   "value": "84.3",
+   "uncertainty": "0.2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Inclination | 84.3$^o\\pm0.2^o$ | This work |"
+    },
+    {
+     "loc": "Galaxy inclination angle",
+     "quote": "Since the images which are less disturbed by the nuclear emission are the PACS 160$\\mu$m and the ALMA CO intensity image, we accept the value fitted in the case of the CO: 84.3$^o\\pm0.2^o$."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity v_sys (from ALMA CO)",
+   "value": "1089.2",
+   "uncertainty": "1.1",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{sys}$ | 1089.2$\\pm$1.1 km/s | [LSRK] This work |"
+    },
+    {
+     "loc": "Kinematics of stars and gas",
+     "quote": "The systemic velocity from the optical emission line is $(1089.1\\pm1.8)$ km/s, while the one based on CO data is $(1089.2\\pm1.1)$ km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity v_sys (from optical emission lines)",
+   "value": "1089.1",
+   "uncertainty": "1.8",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Kinematics of stars and gas",
+     "quote": "The systemic velocity from the optical emission line is $(1089.1\\pm1.8)$ km/s, while the one based on CO data is $(1089.2\\pm1.1)$ km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular velocity of galaxy rotation Omega (from ALMA CO)",
+   "value": "35.0",
+   "uncertainty": "0.1",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Kinematics of stars and gas",
+     "quote": "The absolute values of the angular velocity for the CO data and the optical emission lines, which have the smallest errors, are $(35.0\\pm0.1)$ km s$^{-1}$kpc$^{-1}$ and $(35.2\\pm0.2)$ km s$^{-1}$kpc$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular velocity of galaxy rotation Omega (from optical emission lines)",
+   "value": "35.2",
+   "uncertainty": "0.2",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Kinematics of stars and gas",
+     "quote": "The absolute values of the angular velocity for the CO data and the optical emission lines, which have the smallest errors, are $(35.0\\pm0.1)$ km s$^{-1}$kpc$^{-1}$ and $(35.2\\pm0.2)$ km s$^{-1}$kpc$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO/FIR ratio range in M 104 ring",
+   "value": "1.4e-6 to 5.6e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "[CII] and CO emission",
+     "quote": "It is also notable that while the CO/FIR values from NGC 7331 are distributed over a range of $3.9\\times10^{-6} - 6.7\\times10^{-5}$, M 104 only covers a range of $1.4\\times10^{-6} - 5.6\\times10^{-6}$, which is both lower and much more constrained than NGC 7331."
+    }
+   ]
+  },
+  {
+   "quantity": "PAH 7.7/11.3 ratio range in M 104",
+   "value": "0.5 to 2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "[CII] and PAH emission",
+     "quote": "While the regions from the three star–forming galaxies are fairly evenly distributed from $\\sim 0-4$, regions from M 104 all fall between 0.5 and 2.2, implying a much more uniform population of PAHs across the disk."
+    }
+   ]
+  },
+  {
+   "quantity": "Nucleus aperture [CII] 158 um flux",
+   "value": "31.4e-21",
+   "uncertainty": "2.4e-21",
+   "units": "W/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| Nuc | 12:39:59.41 -11:37:22.0 | 31.4$\\pm$2.4 | 2.1$\\pm$1.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nucleus aperture 12CO(1-0) flux",
+   "value": "2.1e-18",
+   "uncertainty": "1.5e-18",
+   "units": "W/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| Nuc | 12:39:59.41 -11:37:22.0 | 31.4$\\pm$2.4 | 2.1$\\pm$1.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Aperture N1 12CO(1-0) flux",
+   "value": "18.3e-18",
+   "uncertainty": "0.7e-18",
+   "units": "W/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| N1 | 12:40:09.04 -11:37:20.4 | 23.2$\\pm$0.5 | 18.3$\\pm$0.7 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact value of X_CO / alpha_CO adopted in Eq. 3 of Bolatto et al. (2013)",
+  "Position angle of the ALMA 14.3'' x 7.7'' elliptical beam and apertures",
+  "Exact spatial mask boundary used when integrating total CO emission of the ring for the global H2 mass",
+  "CASA and ALMA pipeline versions used to generate the archival ALMA cube"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python scripts used to model and subtract band-switch and long-term transients from Herschel/PACS unchopped science blocks",
+  "Exact value of alpha_CO / X_CO used when applying Eq. 3 of Bolatto et al. (2013)",
+  "Exact spatial region/mask definition used to integrate total CO emission across the ring for the global H2 mass",
+  "Exact position angle of the 14.3'' x 7.7'' elliptical ALMA apertures"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA analysis uses standard archival cubes as-is, all 59 aperture coordinates and extracted fluxes are tabulated in Appendix B (Table 6), CIGALE grid parameters are fully specified in Table 5, and the spectral fitting tools (sospex, showspectra) are public on GitHub. Minor deductions for unreleased custom PACS transient Python scripts and unstated exact alpha_CO value and global CO integration mask.",
+ "rediscovery_reason": "The ALMA dataset (2018.1.00034.S) is public and used directly as an archival product without custom re-imaging, aperture coordinates and CO fluxes are explicitly tabulated for verification, and the main ALMA-derived results (inclination = 84.3 deg, v_sys = 1089.2 km/s, Omega = 35.0 km/s/kpc, M_H2 = 0.9e9 M_odot, and aperture CO fluxes) are clear numeric targets.",
+ "source_card": "cards/2022ApJ...941...47S/sonnet/card.md"
+}

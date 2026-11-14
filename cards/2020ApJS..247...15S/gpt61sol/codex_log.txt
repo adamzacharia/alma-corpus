@@ -1,0 +1,452 @@
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "CO-measured quasars are representative of the z<0.3 PG parent sample.",
+      "evidence": [
+        {
+          "loc": "Sample and Observations",
+          "quote": "We conclude that the CO-measured sample is representative of the parent sample of $z<0.3$ PG quasars."
+        }
+      ]
+    },
+    {
+      "value": "Low-J CO is subthermally excited, similar to low-redshift galaxies and AGNs.",
+      "evidence": [
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "We conclude that, similar as low-$z$ galaxies and AGNs, the low-$J$ CO emission of our quasars is subthermally excited."
+        }
+      ]
+    },
+    {
+      "value": "No clear R21 correlation with radiation-field intensity or AGN luminosity.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "No clear correlation is found between $R_{21}$ and the intensity of the interstellar radiation field or the luminosity of the active nucleus."
+        }
+      ]
+    },
+    {
+      "value": "Quasar hosts follow a tight, approximately linear IR–CO relation consistent with starbursts.",
+      "evidence": [
+        {
+          "loc": "IR versus CO Relation",
+          "quote": "is consistent with a linear relation between $L_\\mathrm{IR}$ and $L^\\prime_\\mathrm{CO\\mbox{\\scriptsize (1--0)}}$."
+        },
+        {
+          "loc": "IR versus CO Relation",
+          "quote": "Both the slope and the zero point are consistent with the relation for starburst galaxies."
+        }
+      ]
+    },
+    {
+      "value": "Quasar-host αCO is not too dissimilar from ordinary star-forming galaxies and lower-luminosity AGNs.",
+      "evidence": [
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "The above analysis, while far from a rigorous derivation, does suggest that the host galaxies of low-redshift quasars have an $\\alpha_\\mathrm{CO}$ value not too dissimilar from that of ordinary star-forming galaxies and lower luminosity AGNs."
+        }
+      ]
+    },
+    {
+      "value": "Almost all continuum sources are unresolved; nearly half of CO(2–1) sources are resolved.",
+      "evidence": [
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "the continuum emission of almost all of the quasars are unresolved with our ACA measurements, while CO(2–1) of nearly half of the quasars is resolved."
+        }
+      ]
+    },
+    {
+      "value": "Literature quasars have higher molecular gas fractions than the new ALMA sample because of observational selection.",
+      "evidence": [
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "The quasars gathered from the literature on average have a higher molecular gas fraction than those newly observed using ALMA."
+        },
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "This is an obvious observational selection effect."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "The CO-measured sample represents the z<0.3 PG parent population.",
+      "experiment": "Compare redshift, AGN luminosity, BH mass, and IR luminosity distributions with Peto-Prentice tests.",
+      "result": "Pnull = 10.4%, 37.6%, 58.7%, and 71.3%, respectively.",
+      "finding": "The CO-measured sample is representative of the parent sample.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Sample and Observations",
+          "quote": "the probability of the null hypothesis that the distributions are drawn from the same parent sample is $P_{\\rm null} = \n10.4\\%$."
+        },
+        {
+          "loc": "Sample and Observations",
+          "quote": "The same holds for the distributions of 5100 Å AGN luminosity, BH mass, and IR luminosity, for which $P_{\\rm null} = 37.6\\%$, 58.7%, and 71.3%, respectively."
+        },
+        {
+          "loc": "Sample and Observations",
+          "quote": "We conclude that the CO-measured sample is representative of the parent sample of $z<0.3$ PG quasars."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Low-J CO excitation in nearby quasar hosts differs from thermalized emission.",
+      "experiment": "Combine new CO(2–1) and literature CO(1–0) measurements and estimate R21.",
+      "result": "R21 = 0.62 with +0.15/-0.07 percentile offsets.",
+      "finding": "The molecular gas is likely subthermal.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Measurements from the Literature",
+          "quote": "Of the 15 quasars with both CO(1–0) and CO(2–1) observations, eight are detected in both lines."
+        },
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "The $50^{+25}_{-25}$th percentile value, calculated with the Kaplan-Meier product-limit estimator `kmestimate` in `IRAF.ASURV` (cite: Feigelson1985ApJ; Lavalley1992ASPC), is $R_{21} = 0.62^{+0.15}_{-0.07}$."
+        },
+        {
+          "loc": "Summary",
+          "quote": "The molecular gas is likely subthermal."
+        }
+      ]
+    },
+    {
+      "hypothesis": "R21 is related to radiation-field intensity or AGN luminosity.",
+      "experiment": "Inspect R21 against mean interstellar radiation-field intensity and AGN luminosity.",
+      "result": "No clear correlation; too few statistically meaningful measurements for a formal test.",
+      "finding": "No strong correlation is found; the quasar's effect on low-J excitation remains uncertain.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "No clear correlation is found between $R_{21}$ and the intensity of the interstellar radiation field or the luminosity of the active nucleus."
+        },
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "Unfortunately, the number of objects with statistically meaningful measurements is too small to perform a formal statistical test."
+        },
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "We do not know whether the quasar affects the excitation of the low-$J$ CO lines"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Quasar hosts follow a starburst-like IR–CO relation.",
+      "experiment": "Fit host IR and CO luminosities with Linmix, accounting for CO upper limits.",
+      "result": "Slope 0.94 (+0.08/-0.08); intrinsic scatter 0.29 (+0.05/-0.04) dex.",
+      "finding": "The relation is consistent with linearity and with the starburst slope and zero point.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "IR versus CO Relation",
+          "quote": "\\log\\,L^\\prime_\\mathrm{CO(1\\mbox{--}0)} = 0.94\\left(^{+0.08}_{-0.08}\\right)\\,\\log\\,\nL_\\mathrm{IR} - 32.90\\left(^{+3.35}_{-3.40}\\right),"
+        },
+        {
+          "loc": "IR versus CO Relation",
+          "quote": "The total scatter of the relation ($\\sim 0.3$ dex) is dominated by an intrinsic scatter of $0.29^{+0.05}_{-0.04}$ dex."
+        },
+        {
+          "loc": "IR versus CO Relation",
+          "quote": "Both the slope and the zero point are consistent with the relation for starburst galaxies."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Quasar-host αCO is comparable to that of ordinary star-forming galaxies.",
+      "experiment": "Compare CO-derived molecular masses with dust-derived total gas masses and inactive-galaxy gas fractions.",
+      "result": "Molecular fractions are 40%±24% for the combined sample and 32%±18% for the unbiased ALMA sample.",
+      "finding": "αCO appears similar to normal galaxies; αCO = 0.8 is considered improbable.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "accounting for the censored data, have a $50\\pm25$ percentile molecular gas fraction of $40\\% \\pm 24\\%$"
+        },
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "If we limit ourselves to the unbiased ALMA sample, the $50\\pm25$ percentile molecular gas fraction becomes $32\\% \\pm 18\\%$"
+        },
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "The above analysis, while far from a rigorous derivation, does suggest that the host galaxies of low-redshift quasars have an $\\alpha_\\mathrm{CO}$ value not too dissimilar from that of ordinary star-forming galaxies and lower luminosity AGNs."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "UV-selected PG quasars avoid selection on dust/gas properties; nearby source brightness permits ACA detections with moderate resolution.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "It is important to recognize that the PG sample was originally ultraviolet-selected, and hence was not selected based on the dust or gas properties of the quasars."
+        },
+        {
+          "loc": "Sample and Observations",
+          "quote": "The brighness of these nearby quasars allows to obtain significant detections using ACA with moderate resolving power (FWHM $\\approx 6\\ensuremath{''}$) in relatively short exposure times."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Model profiles improve low-S/N line widths; Linmix variable ordering accommodates CO upper limits; Peto-Prentice handles censoring.",
+      "evidence": [
+        {
+          "loc": "CO Line Width",
+          "quote": "For spectra with relatively low signal-to-noise ratio, we can obtain more accurate line widths by fitting a model line profile to the data instead of measuring them directly from the observed spectrum."
+        },
+        {
+          "loc": "IR versus CO Relation",
+          "quote": "Since `Linmix` only allows upper limits on the dependent variable, we treat $L_\\mathrm{IR}$ as the independent variable and $L^\\prime_\\mathrm{CO\\mbox{\\scriptsize (1--0)}}$ as the dependent variable."
+        },
+        {
+          "loc": "Sample and Observations",
+          "quote": "The Peto-Prentice test is adopted to work with samples including censored data (in our case, IR luminosity)."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "CLEAN stopped at 2.5× rms; achieved noise checked against theoretical limits and recovered flux checked with a tapered beam.",
+      "evidence": [
+        {
+          "loc": "Sample and Observations",
+          "quote": "a stop threshold 2.5 times the root mean square (rms) of the off-source channels."
+        },
+        {
+          "loc": "Sample and Observations",
+          "quote": "The measured 1 $\\sigma$ noise level per beam per channel (typically 1.5–5 mJy) is consistent within $\\sim 30 \\%$ of the theoretical noise limit."
+        },
+        {
+          "loc": "Sample and Observations",
+          "quote": "we extracted fluxes using a 15$''$ tapered beam, finding a 1:1 ratio within 3 $\\sigma$ for all objects"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Standard Gaussian replaces double-peak Gaussian when reduced χ² is closer to unity or AG/AC <2/3.",
+      "evidence": [
+        {
+          "loc": "CO Line Width",
+          "quote": "(1) the reduced chi-square of the standard Gaussian fit is closer to unity than that of the double-peak Gaussian function;"
+        },
+        {
+          "loc": "CO Line Width",
+          "quote": "(2) $A_\\mathrm{G}/A_\\mathrm{C} \n< 2/3$."
+        }
+      ]
+    },
+    {
+      "value": "Low R21 could reflect subthermal excitation or gas temperature ≲10 K; authors favor subthermal excitation.",
+      "evidence": [
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "The low values of $R_{21}$ for our quasars indicate that the molecular gas is optically thick but either is sub-thermally excited (cite: OcanaFlaquer2010AA; Husemann2017MNRAS) or has low temperature ($\\lesssim 10$ K; (cite: Braine1992AA))."
+        },
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "We conclude that, similar as low-$z$ galaxies and AGNs, the low-$J$ CO emission of our quasars is subthermally excited."
+        }
+      ]
+    },
+    {
+      "value": "ULIRG-like αCO = 0.8 would give improbably low molecular gas fractions.",
+      "evidence": [
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "Such a low value of $\\alpha_\\mathrm{CO}$ would result in molecular gas mass fractions substantially lower than those of star-forming galaxies"
+        },
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "This seems improbable."
+        },
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "$\\alpha_\\mathrm{CO}$ = 0.8 $M_\\odot\\,\\mathrm{(K\\,km\\,s^{-1}\\,pc^{2})^{-1}}$, a value commonly advocated for ultraluminous IR galaxies (ULIRGs; (cite: Downes1998ApJ))."
+        }
+      ]
+    },
+    {
+      "value": "A 15″ tapered imaging check gives fluxes consistent with the robust-weighted images.",
+      "evidence": [
+        {
+          "loc": "Sample and Observations",
+          "quote": "we extracted fluxes using a 15$''$ tapered beam, finding a 1:1 ratio within 3 $\\sigma$ for all objects"
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Absolute flux-scale uncertainty is excluded from final flux errors.",
+      "evidence": [
+        {
+          "loc": "CO Luminosity",
+          "quote": "The uncertainty of the absolute flux scale, $\\sim 5\\%-10\\%$ (cite: Fomalont2014Msngr; Bonato2018MNRAS), is not included in our final flux uncertainty."
+        }
+      ]
+    },
+    {
+      "value": "R21 uncertainty is poorly constrained and not propagated into masses.",
+      "evidence": [
+        {
+          "loc": "CO Luminosity",
+          "quote": "We do not consider the uncertainty on $R_{21}$, as it is hardly well-constrained by our data."
+        }
+      ]
+    },
+    {
+      "value": "Single-dish CO(1–0) may underestimate emission and bias R21.",
+      "evidence": [
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "Meanwhile, CO(1–0) emission may still be underestimated to some extent, when the emission size is comparable to the beam size but its spatial distribution is unknown from the single-dish observation."
+        },
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "This may also contribute to the uncertainty of $R_{21}$."
+        }
+      ]
+    },
+    {
+      "value": "Too few meaningful measurements for formal R21 correlation tests.",
+      "evidence": [
+        {
+          "loc": "The CO(2–1)/CO(1–0) Ratio",
+          "quote": "Unfortunately, the number of objects with statistically meaningful measurements is too small to perform a formal statistical test."
+        }
+      ]
+    },
+    {
+      "value": "PG 1341+258 has insufficient S/N for robust profile fitting.",
+      "evidence": [
+        {
+          "loc": "CO(2–1) Measurements for Individual Objects",
+          "quote": "The signal-to-noise ratio of PG 1341+258 is too low to robustly fit its line profile."
+        }
+      ]
+    },
+    {
+      "value": "Literature line-width uncertainties are usually unavailable.",
+      "evidence": [
+        {
+          "loc": "Measurements from the Literature",
+          "quote": "Line widths were reported as either $W_{20}$ or $W_{50}$, usually with no uncertainties specified."
+        }
+      ]
+    },
+    {
+      "value": "The αCO constraint is rough rather than a rigorous derivation.",
+      "evidence": [
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "to put a rough constraint on $\\alpha_\\mathrm{CO}$ in quasar host galaxies."
+        },
+        {
+          "loc": "CO-to-H$_2$ Conversion Factor",
+          "quote": "The above analysis, while far from a rigorous derivation"
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Failure to reject equal parent distributions does not establish an unbiased or representative sample.",
+    "Positive channel and spatial thresholds can bias weak-source integrated fluxes; threshold-sensitivity tests are not described.",
+    "Agreement between robust and tapered images does not independently exclude emission missing from both images.",
+    "The common R21 conversion introduces shared systematic uncertainty into gas masses and the IR–CO fit.",
+    "The αCO conclusion depends on inherited dust-based total gas masses and assumptions about comparable galaxy populations.",
+    "The reported R21 and gas-fraction percentile ranges should not be treated as uncertainties on the population medians."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Executable reduction and analysis scripts, software versions, and calibration provenance.",
+    "Exact flags, continuum-fit channels, image grids, masks, primary-beam treatment, and per-source cube settings.",
+    "Upper-limit calculation recipe for nondetections.",
+    "Full profile-fitting likelihood, priors, sampler configuration, and convergence diagnostics.",
+    "Exact censored-data inputs and estimator settings for R21 and gas fractions.",
+    "Linmix settings and the implementation of the partial-correlation tests.",
+    "Shangguan2018ApJ dust/SED processing and gas-mass conversion details.",
+    "An explicit statement of public data access and available archive products."
+  ],
+  "estimated_data_volume_inferred": "Cannot estimate bytes from the supplied observing and spectral information.",
+  "score_inferred": 6,
+  "score_reason": "Project identification, targets, key imaging thresholds, extraction rules, conversions, and main numeric results are supplied. Exact imaging, censoring, sampler settings, software versions, and inherited dust-analysis details remain incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The text does not state that the data are public, and exact reduction and fitting settings are incomplete despite numeric main results.",
+  "methods_papers": [
+    {
+      "citation": "(cite: McMullin2007ASP)",
+      "why": "CASA data reduction."
+    },
+    {
+      "citation": "(cite: Solomon2005ARAA)",
+      "why": "Integrated CO flux-to-luminosity conversion."
+    },
+    {
+      "citation": "(cite: Tiley2016MNRAS)",
+      "why": "Double-peak Gaussian line profiles, width definitions, and Gaussian selection criteria."
+    },
+    {
+      "citation": "(cite: ForemanMackey2013PASP)",
+      "why": "emcee MCMC profile fitting."
+    },
+    {
+      "citation": "(cite: Feigelson1985ApJ; Lavalley1992ASPC)",
+      "why": "Kaplan-Meier product-limit estimator in IRAF.ASURV."
+    },
+    {
+      "citation": "(cite: Kelly2007ApJ)",
+      "why": "Linmix fitting of the IR–CO relation."
+    },
+    {
+      "citation": "(cite: Peng2002AJ; Peng2010AJ)",
+      "why": "GALFIT host-galaxy decomposition."
+    },
+    {
+      "citation": "(cite: Sandstrom2013ApJ)",
+      "why": "Adopted αCO and its uncertainty."
+    },
+    {
+      "citation": "(cite: Planck2016AA)",
+      "why": "Adopted cosmological parameters."
+    },
+    {
+      "citation": "(cite: Shangguan2018ApJ)",
+      "why": "Inherited host IR luminosities, dust-based total gas masses, and compiled ancillary measurements."
+    },
+    {
+      "citation": "(cite: Sargent2014ApJ)",
+      "why": "Starburst IR–CO relation used to plan integrations."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: Shangguan2019bApJ)",
+      "why": "Investigates connections between AGN properties and molecular gas."
+    },
+    {
+      "citation": "(cite: Shangguan2018ApJ)",
+      "why": "Preceding PG-quasar IR SED analysis supplies essential host-galaxy measurements."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "Palomar-Green (PG) survey",
+    "ALMA Cycle 5",
+    "2017.1.00297.S"
+  ]
+}
+tokens used
+84,337

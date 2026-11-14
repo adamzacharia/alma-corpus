@@ -1,0 +1,510 @@
+{
+ "bibcode": "2024MNRAS.528L..76R",
+ "title": "A fundamental plane of black hole accretion at millimetre wavelengths",
+ "year": 2024,
+ "doi": "10.1093/mnrasl/slad167",
+ "arxiv_id": "2307.13872",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Whether a tight correlation (fundamental plane) exists at millimetre wavelengths between nuclear 1 mm luminosity, intrinsic 2-10 keV X-ray luminosity, and supermassive black hole mass across low- and high-luminosity AGN, and what physical accretion/ejection mechanism drives it.",
+ "alma_project_codes": [
+  "2017.1.00904.S",
+  "2017.1.00572.S",
+  "2016.1.00437.S",
+  "2017.1.00391.S",
+  "2016.1.01553.S",
+  "2015.1.00419.S",
+  "2016.1.00839.S",
+  "2015.1.00598.S",
+  "2013.1.0049.S",
+  "2018.1.00397.S",
+  "2015.1.00466.S",
+  "2019.1.00363.S",
+  "2018.1.01321.S",
+  "2015.1.01572.S",
+  "2015.1.01352.S",
+  "2017.1.01140.S",
+  "2015.1.00896.S",
+  "2013.1.00229.S",
+  "2016.1.00254.S",
+  "2017.1.00301.S",
+  "2017.1.00766.S",
+  "2017.1.00964.S",
+  "2013.1.00828.S",
+  "2012.1.00139.S",
+  "2015.1.00597.S",
+  "2016.1.01010.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.042 to 0.723 arcsec (6 to 330 pc, average spatial resolution ~25 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Intrinsic 2-10 keV X-ray luminosities of primary sample sources",
+    "evidence": [
+     {
+      "loc": "2 PRIMARY SAMPLE AND DATA",
+      "quote": "The intrinsic (absorption-corrected) 2–10 keV luminosities ( 𝐿 X , 2−10 ) of the primary sample sources were retrieved from the literature, as detailed in Elford et al. (2023)."
+     }
+    ]
+   },
+   "citation": "Elford et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "Accurate intrinsic nuclear 2-10 keV X-ray luminosities for 26/33 Chandra-observed primary sample objects",
+    "evidence": [
+     {
+      "loc": "2 PRIMARY SAMPLE AND DATA",
+      "quote": "For most of the Chandra -observed objects (26/33), accurate (intrinsic) nuclear 𝐿 X , 2−10 were retrieved from the catalogue of Bi et al. (2020, see also Table A1)."
+     }
+    ]
+   },
+   "citation": "Bi et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "MBH-sigma_* relation and stellar velocity dispersion compilation",
+    "evidence": [
+     {
+      "loc": "2 PRIMARY SAMPLE AND DATA",
+      "quote": "For the remaining 17 galaxies, we estimated 𝑀 BH using the 𝑀 BH – 𝜎 ★ relation of van den Bosch (2016), where 𝜎 ★ is the stellar velocity dispersion within one effective radius."
+     },
+     {
+      "loc": "2 PRIMARY SAMPLE AND DATA",
+      "quote": "This was retrieved from the compilations of van den Bosch (2016) and Cappellari et al. (2013) when available, from the HyperLeda database otherwise ( http://leda.univ-lyon1.fr )."
+     }
+    ]
+   },
+   "citation": "van den Bosch (2016)"
+  },
+  {
+   "what": {
+    "value": "Stellar velocity dispersion compilation",
+    "evidence": [
+     {
+      "loc": "2 PRIMARY SAMPLE AND DATA",
+      "quote": "This was retrieved from the compilations of van den Bosch (2016) and Cappellari et al. (2013) when available, from the HyperLeda database otherwise ( http://leda.univ-lyon1.fr )."
+     }
+    ]
+   },
+   "citation": "Cappellari et al. (2013)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1 mm observations and nuclear intrinsic 2-10 keV X-ray luminosities for 88 BASS galaxies",
+    "evidence": [
+     {
+      "loc": "3.1 BASS galaxies",
+      "quote": "We included only the BASS sources for which both ALMA 1 mm observations (with spatial resolutions similar to those of the primary sample) and nuclear intrinsic 𝐿 X , 2−10 were available (88 sources; Kawamuro et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Kawamuro et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "SMBH masses for BASS galaxies",
+    "evidence": [
+     {
+      "loc": "3.1 BASS galaxies",
+      "quote": "The SMBH masses of these objects were taken from the compilation of Koss et al. (2022)."
+     }
+    ]
+   },
+   "citation": "Koss et al. (2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA 1 mm continuum and measure nuclear 1 mm luminosities",
+   "method": "Combine continuum SPWs and line-free channels of line SPWs in CASA tclean (MFS mode), measure continuum flux density from the innermost synthesised beam coincident with the galaxy core, and compute L_nu,mm = 4 * pi * D_L^2 * f_mm * nu_obs.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "multi-frequency synthesis (MFS) mode",
+    "nu_obs between 231 and 239 GHz"
+   ],
+   "assumptions": [
+    "Extended dust emission is resolved out by long-baseline configurations and central point-like emission arises from the unresolved AGN core",
+    "10% flux calibration uncertainty for Band 6"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compile X-ray luminosities and SMBH masses for primary and BASS samples",
+   "method": "Retrieve intrinsic 2-10 keV X-ray luminosities and dynamical SMBH masses from literature; for galaxies without dynamical masses, estimate M_BH from stellar velocity dispersion using the M_BH-sigma_* relation of van den Bosch (2016), and recalibrate BASS M_BH-sigma_* masses to van den Bosch (2016).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "M_BH-sigma_* relation of van den Bosch (2016) applies to non-dynamical mass targets"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit 1D M_BH-L_nu,mm relation and 2D mm Fundamental Plane (M_BH-L_X,2-10-L_nu,mm)",
+   "method": "Perform robust linear and plane regressions using lts_linefit and lts_planefit, and quantify statistical significance via Spearman rank correlation analyses.",
+   "software": [
+    "lts_linefit",
+    "lts_planefit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare observed correlations with theoretical SED models (Torus, ADAF, Compact Jet)",
+   "method": "Extract predicted 237.5 GHz and 2-10 keV luminosities from grids of extrapolated SKIRTOR torus models, Pesce et al. (2021) LLAGN ADAF models, and Lucchini et al. (2022) Bhjet compact jet models, and compare with observations in luminosity and mmFP spaces.",
+   "software": [
+    "SKIRTOR",
+    "LLAGN",
+    "Bhjet"
+   ],
+   "key_parameters": [
+    "SKIRTOR L_bol = 10^7.5 - 10^12.5 L_sun",
+    "ADAF grid: M_BH = 10^6 - 10^10 M_sun, Eddington ratios = 10^-7 - 10^-2, plus 0.5 dex M_BH offset",
+    "Bhjet grid: M_BH = 10^6 - 10^10 M_sun, jet power = 10^-5.5 - 10^-0.5 L_Edd, inclination = 2.5 deg - 90 deg"
+   ],
+   "assumptions": [
+    "Grey-body curve for mm emission and power-law for X-rays when extrapolating SKIRTOR models"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test for spurious correlation and biases from distance uncertainties",
+   "method": "Run Monte Carlo simulations drawing uncorrelated M_BH and L from Gaussian distributions with distance errors, and re-fit correlations restricting to the 26/48 sources with accurate redshift-independent distances.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "M_BH scales as D and L scales as D^2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "M_BH - L_nu,mm power-law slope",
+   "value": "0.79",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE, Equation 1",
+     "quote": "= (0 _._ 79 ± 0 _._ 08) log 10"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm power-law intercept",
+   "value": "8.2",
+   "uncertainty": "0.1",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE, Equation 1",
+     "quote": "(8 _._ 2 ± 0 _._ 1)"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm observed scatter (sigma_obs)",
+   "value": "0.55",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE",
+     "quote": "with an observed scatter ( 𝜎 obs ) of 0 . 55 dex and an estimated intrinsic scatter ( 𝜎 int ) of 0 . 51±0 . 08 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm intrinsic scatter (sigma_int)",
+   "value": "0.51",
+   "uncertainty": "0.08",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE",
+     "quote": "with an observed scatter ( 𝜎 obs ) of 0 . 55 dex and an estimated intrinsic scatter ( 𝜎 int ) of 0 . 51±0 . 08 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm Spearman rank correlation coefficient (rho)",
+   "value": "0.79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 1 caption",
+     "quote": "=0 .79 p=7 .37e-10"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH - L_nu,mm Spearman rank p-value",
+   "value": "7.37e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 1 caption",
+     "quote": "=0 .79 p=7 .37e-10"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP log(L_X,2-10) coefficient",
+   "value": "-0.23",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE, Equation 2",
+     "quote": "= (−0 _._ 23 ± 0 _._ 05) log 10"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP log(L_nu,mm) coefficient",
+   "value": "0.95",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE, Equation 2",
+     "quote": "+(0 _._ 95 ± 0 _._ 07) log 10"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP intercept",
+   "value": "8.35",
+   "uncertainty": "0.08",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE, Equation 2",
+     "quote": "(8 _._ 35 ± 0 _._ 08) _,_ (2)"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP observed scatter (sigma_obs)",
+   "value": "0.45",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE",
+     "quote": "with 𝜎 obs = 0 . 45 dex and 𝜎 int = 0 . 40 ± 0 . 07 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP intrinsic scatter (sigma_int)",
+   "value": "0.40",
+   "uncertainty": "0.07",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 THE MM FUNDAMENTAL PLANE",
+     "quote": "with 𝜎 obs = 0 . 45 dex and 𝜎 int = 0 . 40 ± 0 . 07 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP Spearman rank correlation coefficient (rho)",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 1 caption",
+     "quote": "=0 .88 p=4 .09e-13"
+    }
+   ]
+  },
+  {
+   "quantity": "mmFP Spearman rank p-value",
+   "value": "4.09e-13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 1 caption",
+     "quote": "=0 .88 p=4 .09e-13"
+    }
+   ]
+  },
+  {
+   "quantity": "BASS sample mmFP Spearman rank correlation coefficient (rho)",
+   "value": "0.32",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 BASS galaxies",
+     "quote": "and verified that they do show a significant correlation ( 𝑝 = 0 . 002), but with a correlation coefficient ( 𝜌 =0.32) smaller than that of the primary sample."
+    }
+   ]
+  },
+  {
+   "quantity": "BASS sample mmFP Spearman rank p-value",
+   "value": "0.002",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 BASS galaxies",
+     "quote": "and verified that they do show a significant correlation ( 𝑝 = 0 . 002), but with a correlation coefficient ( 𝜌 =0.32) smaller than that of the primary sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift-independent distance subsample M_BH - L_nu,mm intrinsic scatter",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Distance uncertainties",
+     "quote": "This led us to obtain much tighter correlations, with an intrinsic scatter of 0 . 19 dex for the 𝑀 BH − 𝐿 𝜈, mm relation and only 0 . 11 dex for the mmFP."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift-independent distance subsample mmFP intrinsic scatter",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Distance uncertainties",
+     "quote": "This led us to obtain much tighter correlations, with an intrinsic scatter of 0 . 19 dex for the 𝑀 BH − 𝐿 𝜈, mm relation and only 0 . 11 dex for the mmFP."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift-independent distance subsample M_BH - L_nu,mm Spearman rho",
+   "value": "0.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Distance uncertainties",
+     "quote": "The corresponding Spearman rank coefficients are 𝜌 = 0 . 84 ( 𝑝 = 5 . 05 × 10 −7 ) and 𝜌 = 0 . 93 ( 𝑝 = 2 . 67 × 10 −9 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift-independent distance subsample mmFP Spearman rho",
+   "value": "0.93",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Distance uncertainties",
+     "quote": "The corresponding Spearman rank coefficients are 𝜌 = 0 . 84 ( 𝑝 = 5 . 05 × 10 −7 ) and 𝜌 = 0 . 93 ( 𝑝 = 2 . 67 × 10 −9 ), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "FRL49 nuclear 1 mm luminosity log(L_nu,mm)",
+   "value": "39.28",
+   "uncertainty": "not stated",
+   "units": "log(erg s^-1)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "WISDOM FRL49 85.7 8.20 0.2 Dyn 39.28 a 43.27 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC0404 nuclear 1 mm luminosity log(L_nu,mm)",
+   "value": "35.99",
+   "uncertainty": "not stated",
+   "units": "log(erg s^-1)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "NGC0404 3.0 5.74 0.30 Dyn 35.99 b 37.20 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "M87 nuclear 1 mm luminosity log(L_nu,mm)",
+   "value": "40.75",
+   "uncertainty": "not stated",
+   "units": "log(erg s^-1)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "M87 16.5 9.81 0.04 Dyn 40.75 o 40.56 0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4395 nuclear 1 mm luminosity log(L_nu,mm)",
+   "value": "35.85",
+   "uncertainty": "not stated",
+   "units": "log(erg s^-1)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table A1",
+     "quote": "NGC4395 4.4 5.60 0.31 Dyn 35.85 y 39.91 0.05"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA versions used for each individual ALMA project",
+  "tclean imaging parameters: weighting scheme (e.g., Briggs robust parameter), cell size, image size, cleaning threshold, and masking strategy",
+  "Specific frequency/channel ranges selected as line-free channels in each dataset",
+  "Whether primary beam correction or self-calibration was applied during continuum imaging",
+  "Exact observed frequency (nu_obs) and synthesized beam size for each individual galaxy in Table A1"
+ ],
+ "missing_for_reproduction": [
+  "Specific tclean imaging parameters (weighting, robust value, cell size, thresholds) for each of the 26 ALMA projects",
+  "Exact observed frequencies (nu_obs) and beam sizes for each individual target in Table A1",
+  "How the 5 L_nu,mm upper limits in Table A1 were handled in the lts_linefit and lts_planefit regressions",
+  "Exact literature references for each individual dynamical M_BH and distance in Table A1 (deferred to Elford et al. 2023)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "All derived tabular quantities (D, M_BH, L_nu,mm, L_X,2-10, and ALMA project codes) for the 48 primary sample galaxies are published in Table A1, and the fitting software (lts_linefit, lts_planefit) and SED codes (SKIRTOR, LLAGN, Bhjet) are public. However, reproducing the ALMA continuum flux measurements from raw visibilities requires unstated per-dataset imaging and line-free channel parameters across 26 projects, and the exact treatment of the 5 upper limits in the regression is not specified.",
+ "rediscovery_reason": "All ALMA project codes are listed, raw data are public in the ALMA archive, Table A1 provides the complete set of galaxy measurements for immediate re-fitting of the regression equations, and the main results are crisp numeric scaling relation parameters.",
+ "source_card": "cards/2024MNRAS.528L..76R/sonnet/card.md"
+}

@@ -1,0 +1,209 @@
+{
+ "bibcode": "2021A&A...653A..46V",
+ "title": "Probing protoplanetary disk evolution in the Chamaeleon II region",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202140496",
+ "arxiv_id": "2106.13847",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "How do disk dust masses in Cha II compare with other 1-10 Myr star-forming regions, as a probe of disk evolution?",
+ "alma_project_codes": [
+  "2013.1.00708.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm), mean continuum 225.7 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "0.48\"x0.25\" continuum; 0.51\"x0.28\" CO",
+  "sensitivity": "average continuum RMS 0.17 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar luminosities and temperatures for Cha II",
+    "evidence": [
+     {
+      "loc": "4.1 Dust masses",
+      "quote": "We used the luminosities determined by (cite: Spezzi_2008), rescaled to the *Gaia* distances."
+     }
+    ]
+   },
+   "citation": "(cite: Spezzi_2008)"
+  },
+  {
+   "what": {
+    "value": "Millimeter fluxes of comparison regions (Upper Sco, CrA, IC 348, Cha I, Lupus, Taurus)",
+    "evidence": [
+     {
+      "loc": "4.2.3 Dust masses",
+      "quote": "We also recalculated dust masses in a homogeneous way from millimeter or submillimetrer fluxes (cite: Barenfeld_2016; Cazzoletti_2019; Ruiz-Rodriguez_2018; Pascucci_2016; Ansdell_2016; ansdell_2018; Andrews_2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld_2016; Cazzoletti_2019; Ruiz-Rodriguez_2018; Pascucci_2016; Ansdell_2016; Andrews_2013)"
+  },
+  {
+   "what": {
+    "value": "Cha II membership and distances",
+    "evidence": [
+     {
+      "loc": "2.1 Sample",
+      "quote": "we report the individual distances as estimated by (cite: Galli_2020b)"
+     }
+    ]
+   },
+   "citation": "(cite: Galli_2020b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum flux and size",
+   "method": "Elliptical Gaussian fit to visibilities; point source if size/uncertainty<5",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 sigma detection threshold"
+   ],
+   "assumptions": [
+    "Disks azimuthally symmetric for inclination"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO line fluxes",
+   "method": "Integrate line profiles over channels with >3 sigma; upper limits 3 RMS over 6.3 km/s",
+   "software": [
+    "CASA immoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust masses",
+   "method": "Optically thin M=F d^2/(kappa B(Tdust))",
+   "software": [],
+   "key_parameters": [
+    "kappa=2.3 cm2/g at 230 GHz; Tdust=25K(L/Lsun)^1/4; 20 K if no luminosity"
+   ],
+   "assumptions": [
+    "Optically thin emission; individual Gaia distances, else 198 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Homogeneous stellar masses for all regions",
+   "method": "Likelihood on Baraffe 2015 isochrone grid, marginalized for median and percentiles",
+   "software": [],
+   "key_parameters": [
+    "sigma log L=0.1, sigma log T=0.02; 0.05-1.4 Msun in 0.01 steps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Cumulative distributions with censoring",
+   "method": "Kaplan-Meier estimator for Mdust and Mdust/Mstar",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compare regions statistically",
+   "method": "Logrank test on Mdust/Mstar; logrank on Mdust in 5 stellar mass bins with 10^4 resamplings",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum detections",
+   "value": "22 of 29 disks (24 of 31 sources)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "we detect 22 sources in the continuum, 10 in $^{12}$CO, 3 in $^{13}$CO, and none in C$^{18}$O (J=2-1)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust mass Cha II",
+   "value": "4.5",
+   "uncertainty": "1.5",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "we derive a median dust mass of $4.5 \\pm 1.5$ M$_\\oplus$ from survival analysis"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Mdust/Mstar Cha II",
+   "value": "3.1e-5",
+   "uncertainty": "1.5e-5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Cha II | 1 $-$ 2$^{(d)}$, 2 $-$ 6$^{(c)}$ | 198 $\\pm$ 6$^{(k)}$ | 225.7 | 0.65 | 18/22 | 4.5 $\\pm$ 1.5 | 3.1 $\\pm$ 1.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of IRAS12496-7650",
+   "value": "337.5",
+   "uncertainty": "0.1",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| IRAS12496-7650 | 708.6 $\\pm$ 0.3 | 354 $\\pm$ 1 | 25 $\\pm$ 1 | 125 $\\pm$ 1 | 337.5 $\\pm$ 0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median p-values in mass-bin test vs Cha II",
+   "value": "Taurus 0.22, Lupus b6 0.40, Lupus b7 0.31, Cha I 0.47, IC 348 0.54, CrA 0.08, Upper Sco 0.56",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Statistical test",
+     "quote": "We find median $p_\\phi$ values of 0.22, 0.40, 0.31, 0.47, 0.54, 0.08, and 0.56"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum and line-free channel ranges for continuum imaging and uvcontsub",
+  "Image size, cell size, clean threshold, masks and number of iterations",
+  "Primary beam correction details",
+  "Initial uvmodelfit starting parameters",
+  "Random binning/draw details for 10^4 Monte Carlo logrank test",
+  "Final stellar parameter tables for comparison regions"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (size, cell, thresholds, channels)",
+  "Comparison-region stellar parameter inputs",
+  "Random seed and binning for Monte Carlo test"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single public dataset and clear dust mass recipe, but imaging details and comparison-sample inputs are incomplete.",
+ "rediscovery_reason": "Public data, explicit uvmodelfit and mass formulas, numeric tabulated results.",
+ "source_card": "cards/2021A%26A...653A..46V/sonnet/card.md"
+}

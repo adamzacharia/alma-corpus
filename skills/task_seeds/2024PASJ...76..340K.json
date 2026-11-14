@@ -1,0 +1,275 @@
+{
+ "bibcode": "2024PASJ...76..340K",
+ "title": "Sub-parsec-scale jet-driven water maser with possible gravitational acceleration in the radio galaxy NGC 1052",
+ "year": 2024,
+ "doi": "10.1093/pasj/psae015",
+ "arxiv_id": "2402.06166",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Is the 321-GHz H2O emission in NGC 1052 a maser (brightness temperature, size, variability), and what do its velocity structure, drift and spatial distribution say about the jet-torus region?",
+ "alma_project_codes": [
+  "2023.A.00023.S",
+  "2021.1.00341.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "C-10 configuration, two executions",
+  "angular_resolution": "continuum beams 0.017x0.011 arcsec and 0.012x0.010 arcsec (uniform)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Earlier 2022-05-12 ALMA detection spectrum/components (1333 and 1467 km/s) used for drift comparison",
+    "evidence": [
+     {
+      "loc": "4.2 Velocity drift",
+      "quote": "If B1 is identified as the 1333 km s$^{-1}$ component (cite: 2023PASJ...75L...1K) on 2022-05-12"
+     }
+    ]
+   },
+   "citation": "(cite: 2023PASJ...75L...1K)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass 1.5e8 Msun",
+    "evidence": [
+     {
+      "loc": "4.2 Velocity drift",
+      "quote": "SMBH that weighs $M_{\\rm BH} = 1.5 \\times 10^8$ M$_{\\Sol}$ (cite: 2002ApJ...579..530W)"
+     }
+    ]
+   },
+   "citation": "(cite: 2002ApJ...579..530W)"
+  },
+  {
+   "what": {
+    "value": "Maser excitation density n_H2 >~ 3.3e8 cm-3",
+    "evidence": [
+     {
+      "loc": "4.4 Torus structure",
+      "quote": "$n_{\\rm H2} > 3.3 \\times 10^8$ cm$^{-3}$ (cite: 2016MNRAS.456..374G)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016MNRAS.456..374G)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and form line/continuum data",
+   "method": "Standard CASA calibration, smoothed bandpass, continuum subtraction in BB4, self-calibration on target",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "9-channel bandpass smoothing; flux 2.104 Jy J0423-0120, 1.304 Jy J0238+1636"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract line spectra and decompose",
+   "method": "Spectra at phase-centre pixel of tclean cubes; nls fit of 7 Gaussian/Lorentzian components",
+   "software": [
+    "CASA",
+    "R"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure emission sizes and brightness temperature",
+   "method": "Gaussian fit to visibility amplitude vs uv distance for continuum and blue (1360-1500 km/s) and red (1500-1625 km/s) line components",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Continuum imaging and structure",
+   "method": "Difmap CLEAN with uniform weighting on BB1-3; compare self-cal agreement factors with single vs aligned components",
+   "software": [
+    "Difmap"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Position line components and velocity gradient",
+   "method": "uvmodelfit point-source fits on continuum-subtracted visibilities binned by 5 channels (4.57 km/s); linear regression V_LSR ~ jJ + dD",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "detection threshold 3x line image rms; J axis PA=68.35 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive drift, acceleration and maser distance",
+   "method": "Velocity change of B1 over 14 days gives g; r = sqrt(GM/g)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "M_BH = 1.5e8 Msun; drift due to gravitational acceleration"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated line flux 2023-07-10",
+   "value": "10.79",
+   "uncertainty": "0.33",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Line profiles",
+     "quote": "The integrated flux densities of $10.79 \\pm 0.33$ Jy km s$^{-1}$ and $14.32 \\pm 0.43$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated line flux 2023-07-24",
+   "value": "14.32",
+   "uncertainty": "0.43",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Line profiles",
+     "quote": "The integrated flux densities of $10.79 \\pm 0.33$ Jy km s$^{-1}$ and $14.32 \\pm 0.43$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Isotropic luminosity (07-10, 07-24)",
+   "value": "1120 and 1486",
+   "uncertainty": "34 and 45",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Line profiles",
+     "quote": "isotropic luminosities of $1120 \\pm 34$ L$_{\\Sol}$ and $1486 \\pm 45$ L$_{\\Sol}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue component peak flux increase in 14 d",
+   "value": "34.5",
+   "uncertainty": "4.2",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Line profiles",
+     "quote": "the peak flux density increased by $34.5 \\pm 4.2$% and the center velocity shifted by $4.85 \\pm 0.5$ km s$^{-1}$ in 14 days"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density (07-10, 07-24)",
+   "value": "0.624 and 0.704",
+   "uncertainty": "0.019 and 0.021",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Continuum images",
+     "quote": "increased from $0.624 \\pm 0.019$ Jy to $0.704 \\pm 0.021$ Jy by $12.8 \\pm 4.2$%"
+    }
+   ]
+  },
+  {
+   "quantity": "Maser emitter size",
+   "value": "<0.6",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Size of emission regions",
+     "quote": "allowed us to constrain the size of emission region in $<0.6$ milliarcsec (mas) and the brightness temperature of $T_{\\rm B} > 10^6$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Blue component velocity drift",
+   "value": "127",
+   "uncertainty": "13",
+   "units": "km/s/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Velocity drift",
+     "quote": "B1 maser component showed the velocity drift of $127 \\pm 13$ km s$^{-1}$ yr$^{-1}$ or acceleration of $g = 4.0 \\times 10^{-3}$ m s$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maser distance from SMBH",
+   "value": "0.072 pc (5000 Rs)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Velocity drift",
+     "quote": "$r = \\sqrt{GM_{\\rm BH}/g} = 0.072$ pc or $5000 \\ R_{\\rm s}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient along jet",
+   "value": "-174",
+   "uncertainty": "19",
+   "units": "km/s/mas",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Summary",
+     "quote": "We identified velocity gradient of $-174 \\pm 19$ km s$^{-1}$ mas$^{-1}$ along the jet."
+    }
+   ]
+  },
+  {
+   "quantity": "Red component drift (weighted mean velocity)",
+   "value": "164",
+   "uncertainty": "37",
+   "units": "km/s/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Velocity drift",
+     "quote": "The change of weighted mean velocity corresponds to $164 \\pm 37$ km s$^{-1}$ yr$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels / continuum definition for BB4 continuum subtraction",
+  "tclean cell size, image size, niter, threshold, mask",
+  "Self-calibration solution intervals",
+  "Initial values and ranges for Gaussian/Lorentzian nls decomposition",
+  "Table of observation log contents (rms values) not in text",
+  "Details of the uv-distance Gaussian fitting method and 99% confidence band",
+  "2022-05-12 spectrum from earlier paper needed for the 424-day comparison"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, niter, mask)",
+  "Line-free channels",
+  "Self-cal solints"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, scripts released, numeric results; some imaging settings omitted.",
+ "rediscovery_reason": "Public data, code in repository, recipe mostly complete and results numeric.",
+ "source_card": "cards/2024PASJ...76..340K/sonnet/card.md"
+}

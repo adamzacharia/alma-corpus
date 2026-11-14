@@ -1,0 +1,786 @@
+{
+ "bibcode": "2023MNRAS.525.5831K",
+ "title": "Faint [C I](1-0) emission in z ∼ 3.5 radio galaxies",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad2647",
+ "arxiv_id": "2309.00459",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Trace the cold molecular gas component and infer H2 masses, star-formation efficiencies, and gas fractions in seven high-redshift radio galaxies (z = 2.9 - 4.5) using ALMA [C I](1-0) and MUSE observations.",
+ "alma_project_codes": [
+  "2015.1.00530.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 4",
+  "arrays": "12m array",
+  "angular_resolution": "1.98 - 2.28 arcsec x 1.33 - 2.17 arcsec (see Table 1)",
+  "sensitivity": "1 sigma rms in [C I] spectra: 0.189 to 0.366 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Star-formation rates and IR luminosities (L_IR^SF) for the HzRG sample",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "column (6) provides the star-formation rate reported by Falkendal et al. (2019); we have obtained SFR uncertainties by propagating the uncertainties in the L SF IR"
+     }
+    ]
+   },
+   "citation": "Falkendal et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses (M_*) for the HzRG sample",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Stellar masses ( 𝑀 ★ ) are taken from De Breuck et al. (2010) 𝑏 and Drouart et al. (2016) 𝑐 ."
+     },
+     {
+      "loc": "5.3 Star-formation efficiency",
+      "quote": "To calculate the 𝑓 gas, we consider the radio galaxies’ stellar masses from Seymour et al. (2007) and De Breuck et al. (2010)"
+     }
+    ]
+   },
+   "citation": "Seymour et al. (2007); De Breuck et al. (2010); Drouart et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "3.6 - 850 um Spitzer and Herschel photometry",
+    "evidence": [
+     {
+      "loc": "2 GALAXY SAMPLE SELECTION",
+      "quote": "The 3 . 6 − 850 𝜇 m Spitzer and Herschel photometry first reported by Drouart et al. (2014) have been combined with ALMA continuum observations to obtain SED fits"
+     }
+    ]
+   },
+   "citation": "Drouart et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "VLA radio core and hotspot coordinates",
+    "evidence": [
+     {
+      "loc": "3.3 Ancillary data",
+      "quote": "we obtained archival C-band (4.8 GHz) and X-band (8.3 GHz) images from the Karl G. Jansky Very Large Array (VLA) that indicate the locations of the radio hotspots (Carilli et al. 1997; Pentericci et al. 2000)."
+     }
+    ]
+   },
+   "citation": "Carilli et al. (1997); Pentericci et al. (2000)"
+  },
+  {
+   "what": {
+    "value": "Literature spectroscopic redshifts for the seven target radio galaxies",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The literature redshift is shown in column (4) with the cited source provided in column (5)."
+     }
+    ]
+   },
+   "citation": "Roettgering et al. (1997); De Breuck et al. (2001); Nesvadba et al. (2007); van Ojik et al. (1996); Nesvadba et al. (2017); Swinbank et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Comparison galaxy samples (HzRGs, SFGs, cSFGs, lSFGs, SMGs) for SFR-M*, SFE-fgas, and L'_[CI]/L_IR comparisons",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "We include a sample of a Herschel -detected, lensed SFGs using their magnification-corrected SFR and 𝑀 ★ measures (Sharon et al. 2013; Bothwell et al. 2013b; Dessauges-Zavadsky et al. 2015; Nayyeri et al. 2017)."
+     },
+     {
+      "loc": "Figure 4 caption",
+      "quote": "We compare our sub-sample of HzRGs with star-forming galaxies at 𝑧 ∼ 1 . 4 (H18; Hayashi et al. 2018), at 𝑧 ∼ 1 . 6 (N17; Noble et al. 2017), at 𝑧 ∼ 1 . 4 − 1 . 6 (D10; Daddi et al. 2010)"
+     }
+    ]
+   },
+   "citation": "Sharon et al. (2013); Bothwell et al. (2013a, 2013b, 2017); Dessauges-Zavadsky et al. (2015); Nayyeri et al. (2017); Tadaki et al. (2015, 2017); Spilker et al. (2016); Popping et al. (2017); Barro et al. (2017); Man et al. (2019); De Breuck et al. (2003, 2005); Emonts et al. (2015, 2018); Gullberg et al. (2016a, 2016b); Greve et al. (2004); Daddi et al. (2010); Noble et al. (2017); Hayashi et al. (2018); Alaghband-Zadeh et al. (2013); Nesvadba et al. (2019); Valentino et al. (2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Estimate systemic redshifts from MUSE He II 1640 spectra",
+   "method": "Extract 1D He II 1640 spectra from MUSE cubes in 1 arcsec (5 pixel) diameter apertures at host galaxy positions (set by VLA radio cores and Spitzer IRAC continuum) and fit single or double Gaussian profiles",
+   "software": [],
+   "key_parameters": [
+    "Aperture diameter = 5 pixels (1 arcsec)",
+    "Gaussian fit bounds: peak A free, width sigma constrained to 2 - 15 Angstrom, centre lambda_c allowed to deviate +- 5 Angstrom from initial value"
+   ],
+   "assumptions": [
+    "He II component spatially overlapping with Spitzer/IRAC2 K-band continuum traces the host galaxy systemic redshift"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create [C I](1-0) moment-0 narrow-band images",
+   "method": "Integrate continuum-subtracted ALMA cubes over velocity intervals by summing consecutive channels exceeding the zero-flux level using CASA immoments()",
+   "software": [
+    "CASA immoments()"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract and fit 1D [C I](1-0) spectra",
+   "method": "Extract 1D spectra from primary-beam corrected ALMA cubes at VLA radio core or K-band continuum peak positions and fit single Gaussian profiles; calculate 5-sigma upper limits for non-detections",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Aperture diameter = 2 arcsec (stated as 1 arcsec in Fig. 3 caption and Sec. 5.2)",
+    "Channel velocity binning = 9 km s^-1 (MRC 0943-242), 11 km s^-1 (TN J0205+2242), 64 km s^-1 (TN J0121+1320), 43 km s^-1 (4C+03.24, 4C+19.71), 48 km s^-1 (TN J1338-1942), 13 km s^-1 (4C+04.11)"
+   ],
+   "assumptions": [
+    "Assumed line width Delta_v = 100 km s^-1 for 5-sigma non-detection upper limits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive [C I] line luminosities, H2 masses, star-formation efficiencies, and gas fractions",
+   "method": "Compute L'_[CI], L_[CI], and M_H2,[CI] using equations (1)-(3); combine with literature SFR and M_* to calculate SFE = SFR / M_gas and f_gas = M_gas / (M_gas + M_*)",
+   "software": [],
+   "key_parameters": [
+    "Einstein coefficient A_10 = 7.93 x 10^-8 s^-1, excitation factor Q_10 = 0.48, carbon abundance X_[CI] = 3.0 x 10^-5"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H_0 = 67.8 km s^-1 Mpc^-1 and Omega_m = 0.308",
+    "Neglect H I gas component (M_gas = M_H2,[CI])"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "He II redshift (MRC 0943-242)",
+   "value": "2.9230",
+   "uncertainty": "+-0.0001",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "MRC 0943-242 2 . 9230 ± 0 . 0001 2 . 9215 ± 0 . 003 2 . 9230 ± 0 . 0020 Roettgering et al. (1997)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] redshift (MRC 0943-242)",
+   "value": "2.9215",
+   "uncertainty": "+-0.003",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "MRC 0943-242 2 . 9230 ± 0 . 0001 2 . 9215 ± 0 . 003 2 . 9230 ± 0 . 0020 Roettgering et al. (1997)"
+    }
+   ]
+  },
+  {
+   "quantity": "He II redshift (TN J0205+2242)",
+   "value": "3.5060",
+   "uncertainty": "+-0.0003",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "TN J0205+2242 3 . 5060 ± 0 . 0003 . . . 3 . 5061 ± 0 . 0004 De Breuck et al. (2001)"
+    }
+   ]
+  },
+  {
+   "quantity": "He II redshift (TN J0121+1320)",
+   "value": "3.5190",
+   "uncertainty": "+-0.0002",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "TN J0121+1320 3 . 5190 ± 0 . 0002 3 . 5230 ± 0 . 004 3 . 5200 ± 0 . 0007 Nesvadba et al. (2007)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] redshift (TN J0121+1320)",
+   "value": "3.5230",
+   "uncertainty": "+-0.004",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "TN J0121+1320 3 . 5190 ± 0 . 0002 3 . 5230 ± 0 . 004 3 . 5200 ± 0 . 0007 Nesvadba et al. (2007)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] redshift (4C+03.24)",
+   "value": "3.5828",
+   "uncertainty": "+-0.004",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4C+03.24 . . . 3 . 5828 ± 0 . 004 3 . 5699 ± 0 . 0003 van Ojik et al. (1996)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] redshift (4C+19.71)",
+   "value": "3.5892",
+   "uncertainty": "+-0.004",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4C+19.71 . . . 3 . 5892 ± 0 . 004 3 . 5935 ± 0 . 0007 Nesvadba et al. (2017)"
+    }
+   ]
+  },
+  {
+   "quantity": "He II redshift (TN J1338-1942)",
+   "value": "4.0959",
+   "uncertainty": "+-0.0005",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "TN J1338-1942 4 . 0959 ± 0 . 0005 . . . 4 . 1057 ± 0 . 0004 Swinbank et al. (2015)"
+    }
+   ]
+  },
+  {
+   "quantity": "He II redshift (4C+04.11)",
+   "value": "4.5080",
+   "uncertainty": "+-0.0002",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4C+04.11 4 . 5080 ± 0 . 0002 . . . 4 . 5100 ± 0 . 0001 Nesvadba et al. (2017)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) FWHM (MRC 0943-242)",
+   "value": "40",
+   "uncertainty": "+-14",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MRC 0943-242 125.50 40 ± 14 25 ± 14 0 . 49 ± 0 . 27"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (MRC 0943-242)",
+   "value": "25",
+   "uncertainty": "+-14",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MRC 0943-242 125.50 40 ± 14 25 ± 14 0 . 49 ± 0 . 27"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (MRC 0943-242)",
+   "value": "0.49",
+   "uncertainty": "+-0.27",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MRC 0943-242 125.50 40 ± 14 25 ± 14 0 . 49 ± 0 . 27"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) line luminosity L'_[CI] (MRC 0943-242)",
+   "value": "5.45",
+   "uncertainty": "+-3.05",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MRC 0943-242 125.50 40 ± 14 25 ± 14 0 . 49 ± 0 . 27 41 + − 26 33 11 . 22 𝑐 5 . 45 ± 3 . 05 2.08"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) line luminosity L_[CI] (MRC 0943-242)",
+   "value": "2.08",
+   "uncertainty": "not stated",
+   "units": "10^6 L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MRC 0943-242 125.50 40 ± 14 25 ± 14 0 . 49 ± 0 . 27 41 + − 26 33 11 . 22 𝑐 5 . 45 ± 3 . 05 2.08"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (TN J0205+2242)",
+   "value": "<24",
+   "uncertainty": "5 sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J0205+2242 𝑎 . . . . . . < 24 < 0 . 53 < 84 10 . 82 𝑏 < 28 . 7 < 11 . 0 < 0 . 74"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (TN J0205+2242)",
+   "value": "<0.53",
+   "uncertainty": "5 sigma upper limit",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J0205+2242 𝑎 . . . . . . < 24 < 0 . 53 < 84 10 . 82 𝑏 < 28 . 7 < 11 . 0 < 0 . 74"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) FWHM (TN J0121+1320)",
+   "value": "565",
+   "uncertainty": "+-194",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J0121+1320 108.81 565 ± 194 98 ± 55 2 . 60 ± 1 . 46"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (TN J0121+1320)",
+   "value": "98",
+   "uncertainty": "+-55",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J0121+1320 108.81 565 ± 194 98 ± 55 2 . 60 ± 1 . 46"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (TN J0121+1320)",
+   "value": "2.60",
+   "uncertainty": "+-1.46",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J0121+1320 108.81 565 ± 194 98 ± 55 2 . 60 ± 1 . 46"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) line luminosity L'_[CI] (TN J0121+1320)",
+   "value": "29.0",
+   "uncertainty": "+-16.2",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J0121+1320 108.81 565 ± 194 98 ± 55 2 . 60 ± 1 . 46 626 + − 267 243 11 . 02 𝑏 29 . 0 ± 16 . 2 11.0"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) FWHM (4C+03.24)",
+   "value": "47",
+   "uncertainty": "+-16",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+03.24 107.39 47 ± 16 24 ± 8 0 . 65 ± 0 . 22"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (4C+03.24)",
+   "value": "24",
+   "uncertainty": "+-8",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+03.24 107.39 47 ± 16 24 ± 8 0 . 65 ± 0 . 22"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (4C+03.24)",
+   "value": "0.65",
+   "uncertainty": "+-0.22",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+03.24 107.39 47 ± 16 24 ± 8 0 . 65 ± 0 . 22"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) line luminosity L'_[CI] (4C+03.24)",
+   "value": "7.28",
+   "uncertainty": "+-2.43",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+03.24 107.39 47 ± 16 24 ± 8 0 . 65 ± 0 . 22 142 + − 240 130 11 . 27 𝑏 7 . 28 ± 2 . 43 2.78"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) FWHM (4C+19.71)",
+   "value": "179",
+   "uncertainty": "+-60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+19.71 107.24 179 ± 60 93 ± 32 2 . 54 ± 0 . 88"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (4C+19.71)",
+   "value": "93",
+   "uncertainty": "+-32",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+19.71 107.24 179 ± 60 93 ± 32 2 . 54 ± 0 . 88"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (4C+19.71)",
+   "value": "2.54",
+   "uncertainty": "+-0.88",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+19.71 107.24 179 ± 60 93 ± 32 2 . 54 ± 0 . 88"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) line luminosity L'_[CI] (4C+19.71)",
+   "value": "28.3",
+   "uncertainty": "+-9.74",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+19.71 107.24 179 ± 60 93 ± 32 2 . 54 ± 0 . 88 84 + − 173 62 11 . 13 𝑏 28 . 3 ± 9 . 74 10.8"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (TN J1338-1942)",
+   "value": "<93",
+   "uncertainty": "5 sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J1338-1942 𝑎 . . . . . . < 93 < 1 . 08 461 + − 298 187 11 . 04 𝑏 < 36 . 8 < 14"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (TN J1338-1942)",
+   "value": "<1.08",
+   "uncertainty": "5 sigma upper limit",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "TN J1338-1942 𝑎 . . . . . . < 93 < 1 . 08 461 + − 298 187 11 . 04 𝑏 < 36 . 8 < 14"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) integrated flux S_[CI]dV (4C+04.11)",
+   "value": "<25",
+   "uncertainty": "5 sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+04.11 𝑎 . . . . . . < 25 < 1 . 06 . . . 11 . 03 𝑏 < 10 . 4 < 3 . 98 . . ."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 (4C+04.11)",
+   "value": "<1.06",
+   "uncertainty": "5 sigma upper limit",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "4C+04.11 𝑎 . . . . . . < 25 < 1 . 06 . . . 11 . 03 𝑏 < 10 . 4 < 3 . 98 . . ."
+    }
+   ]
+  },
+  {
+   "quantity": "L'_[CI] / L_IR ratio (MRC 0943-242)",
+   "value": "5.8",
+   "uncertainty": "not stated",
+   "units": "10^-6",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "MRC 0943-242 5 . 8 This work"
+    }
+   ]
+  },
+  {
+   "quantity": "L'_[CI] / L_IR ratio (TN J0121+1320)",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "10^-6",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "TN J0121+1320 2 . 0 \" \""
+    }
+   ]
+  },
+  {
+   "quantity": "L'_[CI] / L_IR ratio (4C+03.24)",
+   "value": "2.3",
+   "uncertainty": "not stated",
+   "units": "10^-6",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "4C+03.24 2 . 3 \" \""
+    }
+   ]
+  },
+  {
+   "quantity": "L'_[CI] / L_IR ratio (4C+19.71)",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "10^-6",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "4C+19.71 15 \" \""
+    }
+   ]
+  },
+  {
+   "quantity": "L'_[CI] / L_IR ratio (TN J1338-1942)",
+   "value": "<3.5",
+   "uncertainty": "upper limit",
+   "units": "10^-6",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "TN J1338-1942 < 3 . 5 \" \""
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (MRC 0943-242)",
+   "value": "0.03",
+   "uncertainty": "+-0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "MRC 0943-242 (6) 0 . 03 ± 0 . 02 8 . 38 + − 8 7 . . 22 09"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation efficiency SFE (MRC 0943-242)",
+   "value": "8.38",
+   "uncertainty": "+8.22/-7.09",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "MRC 0943-242 (6) 0 . 03 ± 0 . 02 8 . 38 + − 8 7 . . 22 09"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (TN J0121+1320)",
+   "value": "0.20",
+   "uncertainty": "+-0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "TN J0121+1320 (7) 0 . 20 ± 0 . 11 24 . 1 + − 16 17 . . 5 0"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation efficiency SFE (TN J0121+1320)",
+   "value": "24.1",
+   "uncertainty": "+16.5/-17.0",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "TN J0121+1320 (7) 0 . 20 ± 0 . 11 24 . 1 + − 16 17 . . 5 0"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (4C+03.24)",
+   "value": ">0.03",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "4C+03.24 (8) > 0.03 21.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation efficiency SFE (4C+03.24)",
+   "value": "21.7",
+   "uncertainty": "not stated",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "4C+03.24 (8) > 0.03 21.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (4C+19.71)",
+   "value": ">0.16",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "4C+19.71 (9) > 0.16 3.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation efficiency SFE (4C+19.71)",
+   "value": "3.30",
+   "uncertainty": "not stated",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "4C+19.71 (9) > 0.16 3.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (TN J1338-1942)",
+   "value": "<0.09",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "TN J1338-1942 (10) < 0.09 > 42.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Star-formation efficiency SFE (TN J1338-1942)",
+   "value": ">42.6",
+   "uncertainty": "lower limit",
+   "units": "Gyr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "TN J1338-1942 (10) < 0.09 > 42.6"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free frequency/channel ranges used for CASA uvcontsub()",
+  "Deconvolution parameters in CASA imaging pipeline (clean threshold, niter, masking strategy, cell size, image size)",
+  "Resolution of the discrepancy in stated [C I] spectral extraction aperture size: Sections 3.1 and 4.3 state 2 arcsec diameter apertures, whereas Figure 3 caption and Section 5.2 state 1 arcsec aperture",
+  "Exact velocity/frequency intervals integrated over to create each [C I] moment-0 map in CASA immoments()",
+  "Specific software/optimizer used for the 1D Gaussian spectral line fitting"
+ ],
+ "missing_for_reproduction": [
+  "Exact J2000 sky coordinates of the extraction apertures (radio cores and Spitzer IRAC peaks) for each of the seven targets",
+  "Resolution of whether a 1 arcsec or 2 arcsec diameter aperture was used for the ALMA [C I] 1D spectral extractions",
+  "Exact frequency/velocity integration ranges used for each source in CASA immoments() to produce the [C I] moment-0 contours",
+  "Exact line-free channel ranges used for CASA uvcontsub()"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "Raw ALMA and ancillary data are public, CASA versions, weighting (robust=2), channel binnings, rms values, and conversion equations/constants are explicitly documented. Score is reduced by minor ambiguities in aperture size (1 arcsec vs 2 arcsec), unstated exact extraction coordinates, and unstated uvcontsub/immoments channel ranges.",
+ "rediscovery_reason": "The ALMA dataset (2015.1.00530.S) is public, the data processing uses standard CASA pipeline tasks with natural weighting, and the main scientific outputs are straightforward 1D spectral Gaussian fits and analytical H2 mass calculations summarized in Tables 2, 3, 4, and 5.",
+ "source_card": "cards/2023MNRAS.525.5831K/sonnet/card.md"
+}

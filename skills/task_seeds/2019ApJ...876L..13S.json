@@ -1,0 +1,187 @@
+{
+ "bibcode": "2019ApJ...876L..13S",
+ "title": "Line Ratios Reveal N<SUB>2</SUB>H<SUP>+</SUP> Emission Originates above the Midplane in TW Hydrae",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab1b0d",
+ "arxiv_id": "1904.09303",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "At what gas temperature do the N2H+ 1-0 and 4-3 lines emit in TW Hya, and does the emission trace the midplane CO snowline?",
+ "alma_project_codes": [
+  "2016.1.00592.S",
+  "2011.0.00340.S"
+ ],
+ "data": {
+  "bands": "Band 3 (N2H+ 1-0); 4-3 data from archival project",
+  "arrays": "not stated",
+  "angular_resolution": "1-0: 0.62'' x 0.49''; 4-3: 0.63'' x 0.59''",
+  "sensitivity": "1-0: 2.2 K per 0.1 km/s channel; 4-3: 0.71 K per 0.1 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk physical and kinematic properties from CS analysis, used for deprojection",
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "assuming the physical and kinematic properties derived from previous analysis of the CS emission in TW Hya (cite: Teague18b)"
+     }
+    ]
+   },
+   "citation": "(cite: Teague18b)"
+  },
+  {
+   "what": {
+    "value": "CO freeze-out temperature of 21 K and 13CO temperature profile",
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "At the relevant radii in TW Hya the freeze out temperature is expected to be 21 K (cite: Schwarz16)."
+     }
+    ]
+   },
+   "citation": "(cite: Schwarz16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Upper limit from image plane",
+   "method": "Upper limit RMS x sqrt(Nchan) x dv for 1-0 non-detection",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack spectra in annuli",
+   "method": "Deproject annuli to system velocity and stack (Yen16 method)",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "Ring 0.8'' to 2''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Check optical depth from hyperfine ratios",
+   "method": "Hyperfine line ratios relative to 1_{2,3}-0_{1,2}; gives tau>1 (1.5 to 66), judged unreliable due to low S/N",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive excitation temperature",
+   "method": "LTE ratio of integrated intensities of 4-3 and 1-0",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin emission, LTE"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Excitation temperature of N2H+ emitting gas, 0.8-2''",
+   "value": "39",
+   "uncertainty": "2 K (1 sigma)",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "Using these values we find an excitation temperature of 39 K, with a one sigma uncertainty of 2 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity 1-0 (ring-averaged)",
+   "value": "5.1",
+   "uncertainty": "0.2",
+   "units": "K km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$5.1\\pm0.2$ K km s$^{-1}$ for the 1-0 transition"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity 4-3 (ring-averaged)",
+   "value": "28.7",
+   "uncertainty": "0.8",
+   "units": "K km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$28.7\\pm0.8$ K km s$^{-1}$ for the 4-3 transition"
+    }
+   ]
+  },
+  {
+   "quantity": "1-0 upper limit single hyperfine (image plane)",
+   "value": "2.7",
+   "uncertainty": "not stated",
+   "units": "K km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "upper limit on the integrated line intensity of 2.7 K km s$^{-1}$ for a single hyperfine component"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring-averaged peak Tb 1-0",
+   "value": "1.5",
+   "uncertainty": "1",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$1.5\\pm1$ K and $12\\pm7$ K respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring-averaged peak Tb 4-3",
+   "value": "12",
+   "uncertainty": "7",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$1.5\\pm1$ K and $12\\pm7$ K respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Disk geometry and stellar mass values used in eddy deprojection",
+  "Annulus widths for stacking",
+  "Line-free channels and uvcontsub fit order",
+  "tclean parameters, cell and image size for 1-0 cube",
+  "Hyperfine components and frequencies used for integration",
+  "Integration velocity range",
+  "How the 4-3 data were processed beyond Qi13b",
+  "Details of how the 39 K and 2 K uncertainty were computed (hyperfine treatment, error propagation)"
+ ],
+ "missing_for_reproduction": [
+  "eddy deprojection parameters",
+  "imaging parameters",
+  "integration windows and error propagation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short letter with public data and a simple calculation, but stacking and imaging parameters are missing.",
+ "rediscovery_reason": "Public data, simple line-ratio recipe, and numeric main result, though some settings are unstated.",
+ "source_card": "cards/2019ApJ...876L..13S/sonnet/card.md"
+}

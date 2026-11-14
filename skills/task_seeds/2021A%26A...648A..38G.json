@@ -1,0 +1,571 @@
+{
+ "bibcode": "2021A&A...648A..38G",
+ "title": "CO<SUP>+</SUP> as a probe of the origin of CO in diffuse interstellar clouds",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039915",
+ "arxiv_id": "2102.09861",
+ "fields": [
+  "milky_way_ism",
+  "astrochemistry"
+ ],
+ "question": "Is thermal cosmic-ray and UV-driven chemistry producing CO in diffuse interstellar molecular gas through the intermediate formation of CO+?",
+ "alma_project_codes": [
+  "2019.1.00120.S"
+ ],
+ "data": {
+  "bands": "Band 6, tuned near 236 GHz (Cycle 7)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "fractional rms flux density 0.22% (J1717-3342) and 0.83% (J1744-3116)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Earlier ALMA 89.2 GHz HCO+ J=1-0 absorption profiles toward the same sources",
+    "evidence": [
+     {
+      "loc": "2.4 Other data discussed here",
+      "quote": "from our earlier work (cite: gerin:17; liszt:18)"
+     }
+    ]
+   },
+   "citation": "(cite: gerin:17; liszt:18)"
+  },
+  {
+   "what": {
+    "value": "Standard HCO+ abundance relative to H2, X(HCO+) = 3e-9, used to derive N(H2) and X(CO+)",
+    "evidence": [
+     {
+      "loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116",
+      "quote": "using the standard value for the HCO$^+$ abundance relative to H$_2$ in the diffuse molecular gas, $3\\times 10^{-9}$ (cite: lucas:96; gerin:19)"
+     }
+    ]
+   },
+   "citation": "(cite: lucas:96; gerin:19)"
+  },
+  {
+   "what": {
+    "value": "Observed N(HOC+)/N(HCO+) = 0.015 +/- 0.003",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "that is observed with N(HOC$^+$)/N(HCO$^+$) $= 0.015\\pm0.003$ (cite: gerin:19)"
+     }
+    ]
+   },
+   "citation": "(cite: gerin:19)"
+  },
+  {
+   "what": {
+    "value": "OH abundance relative to H2, X(OH) = 1.0 +/- 0.14 x 10^-7",
+    "evidence": [
+     {
+      "loc": "4 The thermal chemistry of CO+, HOC+ and HCO+",
+      "quote": "X(OH) $= 1.0 \\pm 0.14 \\times10^{-7}$ varies only narrowly"
+     }
+    ]
+   },
+   "citation": "(cite: WesGal+09; WesGal+10)"
+  },
+  {
+   "what": {
+    "value": "H2O abundance relative to H2, X(H2O) = 2.4e-8",
+    "evidence": [
+     {
+      "loc": "4 The thermal chemistry of CO+, HOC+ and HCO+",
+      "quote": "whose fixed relative abundance X($\\mathrm{{\\rm H}_2}$O) $=2.4\\times10^{-8}$ we take from (cite: GerNeu+16)"
+     }
+    ]
+   },
+   "citation": "(cite: GerNeu+16)"
+  },
+  {
+   "what": {
+    "value": "Reddening E(B-V) along the sight lines",
+    "evidence": [
+     {
+      "loc": "5 Conditions for the growth of CO",
+      "quote": "take E(B-V) from (cite: GreGre+19)"
+     }
+    ]
+   },
+   "citation": "(cite: GreGre+19)"
+  },
+  {
+   "what": {
+    "value": "Sample of QSO sight lines with HCO+ and CO column densities in absorption",
+    "evidence": [
+     {
+      "loc": "5 Conditions for the growth of CO",
+      "quote": "for the existing sample of QSO sight lines with HCO$^+$ and CO column densities determined in absorption (cite: LisLuc98; LisGer+19)"
+     }
+    ]
+   },
+   "citation": "(cite: LisLuc98; LisGer+19)"
+  },
+  {
+   "what": {
+    "value": "Reaction rate coefficients from the KIDA database",
+    "evidence": [
+     {
+      "loc": "3.2 CO+ as a source of HCO+",
+      "quote": "neglecting photodissociation that is four orders of magnitude slower according to the Kinetic Database for Astrochemistry (KIDA)"
+     }
+    ]
+   },
+   "citation": "(cite: Kida2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract absorption spectra",
+   "method": "Extract absorption spectra at the continuum peak in each spectral window from standard pipeline-processed products",
+   "software": [
+    "ALMA standard pipeline"
+   ],
+   "key_parameters": [
+    "Channel spacing 244 kHz (0.31 km/s); spectral resolution is twice the channel spacing"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Integrate opacity and derive column densities / limits",
+   "method": "Integrate line profiles over fixed velocity intervals; 3-sigma upper limits for non-detections; convert integrated opacity to column density",
+   "software": [],
+   "key_parameters": [
+    "Integration velocity intervals -14..10 km/s (J1717-3342) and -20..20 km/s (J1744-3116)",
+    "N(HCO+) = 1.12e12 cm^-2 x integral tau dv"
+   ],
+   "assumptions": [
+    "CO+ excitation set by the CMB at 2.73 K",
+    "13CO and C18O excitation temperature 5 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive CO+/HCO+ ratio and X(CO+) limits",
+   "method": "Ratio of N(CO+) limits to N(HCO+) and to N(H2) = N(HCO+)/3e-9",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Standard HCO+ abundance relative to H2 of 3e-9 in diffuse molecular gas"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test CO+ + H2 as the HCO+ source (analytic balance)",
+   "method": "Equate HCO+ formation via CO+ + H2 with HCO+ recombination with electrons and solve for required n(CO+)/n(HCO+) and X(CO+); compare with observed limits",
+   "software": [
+    "KIDA"
+   ],
+   "key_parameters": [
+    "x(e) = 2e-4 from n(C+)/n(H) = 1.6e-4; f_H2 = 0.6, T = 40 K"
+   ],
+   "assumptions": [
+    "Steady state; photodissociation neglected; HCO+ destroyed by thermal-electron recombination"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model the coupled CO+/HOC+/HCO+ thermal chemistry",
+   "method": "Self-consistent atomic/molecular, ionization and thermal equilibrium in gas spheres with column density varied and abundances integrated along the central line of sight; test variants of rates and abundances (baseline, HOC+ isomerization rate, HOC+ formation from CO+ + H2, C+ + H2O channel, X(CH+))",
+   "software": [
+    "KIDA"
+   ],
+   "key_parameters": [
+    "X(OH) = 1.0 +/- 0.14 x 10^-7",
+    "X(H2O) = 2.4e-8",
+    "X(CH+) free parameter, default 1e-9"
+   ],
+   "assumptions": [
+    "Interstellar radiation field (Draine field G0 = 1 elsewhere); HOC+ formation via O + CH3+ ignored as non-thermal"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive n(H)/G0 for CO formation from N(CO)/N(HCO+)",
+   "method": "Balance CO formation by HCO+ dissociative recombination against CO photodissociation for a uniform slab and solve for n(H)/G0 as a function of E(B-V) for the QSO sight-line sample",
+   "software": [],
+   "key_parameters": [
+    "T = 40 K, x(e) = 2e-4",
+    "A_V = 3.1 E(B-V), E(B-V) from Green et al. 2019, nominal error 0.02 mag"
+   ],
+   "assumptions": [
+    "Draine radiation field defined as G0 = 1; photodissociation rate 2.43e-10 s^-1 attenuated as exp(-gamma A_V) with gamma = 3.88; line-of-sight averages replace local quantities"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO+ J=5/2-3/2 integrated opacity limit, J1717-3342",
+   "value": "<0.027",
+   "uncertainty": "3 sigma upper limit",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO$^+$ J=5/2-3/2 | 0.780 | 0.0027 | $<$0.027"
+    }
+   ]
+  },
+  {
+   "quantity": "CO+ J=3/2-1/2 integrated opacity limit, J1717-3342",
+   "value": "<0.033",
+   "uncertainty": "3 sigma upper limit",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO$^+$ J=3/2-1/2 | 0.780 | 0.0034 | $<$0.033"
+    }
+   ]
+  },
+  {
+   "quantity": "CO+ J=5/2-3/2 integrated opacity limit, J1744-3116",
+   "value": "<0.087",
+   "uncertainty": "3 sigma upper limit",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO$^+$ J=5/2-3/2 | 0.234 | 0.0084 | $<$0.087"
+    }
+   ]
+  },
+  {
+   "quantity": "CO+ J=3/2-1/2 integrated opacity limit, J1744-3116",
+   "value": "<0.111",
+   "uncertainty": "3 sigma upper limit",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO$^+$ J=3/2-1/2 | 0.251 | 0.0107 | $<$0.111"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCO+) toward J1717-3342",
+   "value": "7.49",
+   "uncertainty": "0.03",
+   "units": "10^12 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CO+) toward J1717-3342",
+   "value": "<0.30",
+   "uncertainty": "3 sigma upper limit",
+   "units": "10^12 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CO+)/N(HCO+) toward J1717-3342",
+   "value": "<0.040",
+   "uncertainty": "3 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CO+)/N(H2) toward J1717-3342",
+   "value": "<1.2e-10",
+   "uncertainty": "3 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1717-3342 | $7.49\\pm 0.03$ | $< 0.30$ | $<$ 0.040 | $< 1.2 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCO+) toward J1744-3116 (printed J1744-3416 in Table 3)",
+   "value": "23.35",
+   "uncertainty": "0.06",
+   "units": "10^12 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CO+) toward J1744-3116",
+   "value": "<0.98",
+   "uncertainty": "3 sigma upper limit",
+   "units": "10^12 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CO+)/N(HCO+) toward J1744-3116",
+   "value": "<0.042",
+   "uncertainty": "3 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CO+)/N(H2) toward J1744-3116",
+   "value": "<1.3e-10",
+   "uncertainty": "3 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "J1744-3416 | $23.35 \\pm0.06$ | $< 0.98$ | $<$0.042 | $<1.3 \\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional rms flux density, J1717-3342",
+   "value": "0.22%",
+   "uncertainty": "not stated",
+   "units": "percent of continuum flux density",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 CO+ as a source of HCO+",
+     "quote": "achieved fractional rms flux density levels $\\Delta{\\rm S}_\\nu/{\\rm S}_\\nu$ of 0.22% and 0.83% for J1717-3342 and J1744-3116 respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional rms flux density, J1744-3116",
+   "value": "0.83%",
+   "uncertainty": "not stated",
+   "units": "percent of continuum flux density",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 CO+ as a source of HCO+",
+     "quote": "achieved fractional rms flux density levels $\\Delta{\\rm S}_\\nu/{\\rm S}_\\nu$ of 0.22% and 0.83% for J1717-3342 and J1744-3116 respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(2-1) integrated opacity and N(13CO), J1717-3342",
+   "value": "0.260 km/s; 6.3e14 cm^-2",
+   "uncertainty": "0.004 km/s; 0.4e14 cm^-2",
+   "units": "km/s; cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.818 | 0.0024 | 0.260(0.004) | 6.3(0.4)"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O(2-1) integrated opacity and N(C18O), J1717-3342",
+   "value": "<0.055 km/s; <1.3e14 cm^-2",
+   "uncertainty": "3 sigma upper limit",
+   "units": "km/s; cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.822 | 0.0123 | $<$ 0.055 | $<1.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(2-1) integrated opacity and N(13CO), J1744-3116",
+   "value": "2.975 km/s; 72.0e14 cm^-2",
+   "uncertainty": "0.023 km/s; 0.6e14 cm^-2",
+   "units": "km/s; cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.244 | 0.0073 | 2.975(0.023) | 72.0(0.6)"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O(2-1) integrated opacity and N(C18O), J1744-3116",
+   "value": "0.102 km/s; 2.5e14 cm^-2",
+   "uncertainty": "0.018 km/s; 0.4e14 cm^-2",
+   "units": "km/s; cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0.244 | 0.0084 | 0.102(0.018) | 2.5(0.4)"
+    }
+   ]
+  },
+  {
+   "quantity": "N(13CO)/N(C18O) toward J1744-3116",
+   "value": "29",
+   "uncertainty": "5",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The sight-lines toward J1717-3342 and J1744-3116",
+     "quote": "N($\\mathrm{^{13}CO}$)/N($\\mathrm{C^{18}O}$) = 29$\\pm5$ toward J1744-3116"
+    }
+   ]
+  },
+  {
+   "quantity": "Required n(CO+)/n(HCO+) relative to upper limit (f_H2 = 0.6, T = 40 K)",
+   "value": "about 25 times higher than the limit",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 CO+ as a source of HCO+",
+     "quote": "This is some 25 times higher than our upper limit"
+    }
+   ]
+  },
+  {
+   "quantity": "Required X(CO+) relative to upper limit (T = 40 K)",
+   "value": "at least 15 times above the limit of 1.2e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 CO+ as a source of HCO+",
+     "quote": "is at least 15 times above the upper limit achieved here, $1.2 \\times 10^{-10}$, if T = 40 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Baseline model CO+ abundance relative to observed upper limits, and HOC+ relative to observed",
+   "value": "CO+ about 2.5 times smaller than limits; HOC+ about twice observed",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 The thermal chemistry of CO+, HOC+ and HCO+",
+     "quote": "The model produces CO$^+$ relative abundances about 2.5 times smaller than our observed upper limits, and about twice as much HOC$^+$ as observed."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on X(CH+)/X(OH) from CO+ limits",
+   "value": "<~3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 The thermal chemistry of CO+, HOC+ and HCO+",
+     "quote": "our upper limits on CO$^+$ by themselves imply X(CH$^+$)/X(OH) $\\ensuremath{\\lesssim} 3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean n(H)/G0 for the QSO sight-line sample",
+   "value": "~300",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Conditions for the growth of CO",
+     "quote": "The mean value for the sample is $<n({\\rm H})/G_0 > \\sim 300~{\\rm cm}^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Required n(H) for E(B-V) >~ 0.5 mag (G0 = 1)",
+   "value": "~100-300",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Conditions for the growth of CO",
+     "quote": "the calculated densities n(H) $\\sim 100-300 ~{\\rm cm}^{-3}$ are modest for E(B-V)"
+    }
+   ]
+  },
+  {
+   "quantity": "Required n(H) for E(B-V) <~ 0.2 mag (G0 = 1)",
+   "value": "~1000-2000",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Conditions for the growth of CO",
+     "quote": "The higher densities $n({\\rm H}) \\sim 1000-2000~{\\rm cm}^{-3}$ calculated at E(B-V)"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on N(H)/E(B-V) coefficient a for f_H2 <= 1",
+   "value": ">~ 8e21",
+   "uncertainty": "not stated",
+   "units": "H-nuclei cm^-2 mag^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Conditions for the growth of CO",
+     "quote": "implies $a \\ensuremath{\\gtrsim} 8\\times 10^{21}~{\\rm H-nuclei}~{\\rm cm}^{-2}$ mag$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA / pipeline version and which calibration (manual or pipeline) produced the products used",
+  "Flux and phase calibrators, observing dates, array configuration, baselines and time on source",
+  "How the continuum level was set and spectra normalised to obtain optical depth (continuum-subtraction, line-free channels)",
+  "How the channel rms (sigma l/c) was measured and how the 3-sigma integrated opacity limits were computed (channel width, velocity range)",
+  "Which CO+ hyperfine components (and how the third 3/2-3/2 component was treated) enter the quoted column density limits",
+  "Code, radiation field strength, cloud density/column grid, temperature treatment and full reaction network of the chemical model used in Fig. 3",
+  "Hydrogen column conversion used to convert E(B-V) to N(H) and the cloud-averaging details behind Fig. 4"
+ ],
+ "missing_for_reproduction": [
+  "Calibration and extraction details (continuum level, line-free channels, rms and upper-limit computation)",
+  "Observing log (dates, configuration, time on source, calibrators other than the bandpass calibrator)",
+  "Chemical model code and full parameter set for Fig. 3 and Fig. 4"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and final numeric tables are given and the spectral extraction is simple, but pipeline version, calibrators, extraction/limit procedure and the chemical model code are not given.",
+ "rediscovery_reason": "The observational part (CO+ non-detection limits and column densities) is numeric and rests on a single archive-linked project with simple extraction, although public status is not stated in the paper and the chemical modelling is not reproducible from the text.",
+ "source_card": "cards/2021A%26A...648A..38G/sonnet/card.md"
+}

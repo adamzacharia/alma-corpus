@@ -1,0 +1,1485 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021A&A...646A...3L",
+  "title": "Chemically tracing the water snowline in protoplanetary disks with HCO<SUP>+</SUP>",
+  "year": 2021,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Leemker, M.",
+  "n_authors": 7,
+  "arxiv_id": "2011.12319",
+  "doi": "10.1051/0004-6361/202039387",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2017.1.01066.T",
+   "2018.1.01131.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Models are then compared with archival ALMA data."
+   },
+   {
+    "loc": "Introduction",
+    "quote": "Archival ALMA observations of H$^{13}$CO$^+$ in the outbursting source V883 Ori are discussed in Section"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "V883 Ori",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "~400 pc",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "at a distance of $\\sim$400 pc; (cite: Kounkel2017)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Kounkel et al. 2017 (cite: Kounkel2017)",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "at a distance of $\\sim$400 pc; (cite: Kounkel2017)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Whether HCO+ and H13CO+ can trace the water snowline in protoplanetary disks (Herbig Ae disk models and the outbursting source V883 Ori), and what sensitivity and resolution are needed",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the aim of this research is to investigate the validity of HCO$^+$ and the optically thin isotopologue, H$^{13}$CO$^+$, as tracers of the water snowline in protoplanetary disks"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.01066.T",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "(project code: 2017.1.01066.T, PI: Jeong-Eun Lee)"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01131.S",
+     "evidence": [
+      {
+       "loc": "HCO$^+$ observations",
+       "quote": "Another promising dataset for HCO$^+$ is a recent band 6 dataset (project code 2018.1.01131.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (2017.1.01066.T, H13CO+ J=4-3); Band 6 (2018.1.01131.S, HCO+ J=3-2)",
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "A promising dataset to locate the water snowline in V883 Ori is the band 7 observation by (cite: Lee2019)"
+     },
+     {
+      "loc": "HCO$^+$ observations",
+      "quote": "a recent band 6 dataset (project code 2018.1.01131.S"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 7 data: spectral resolution 0.25 km/s",
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "and the spectral resolution is 0.25 km s$^{-1}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H13CO+",
+     "transition": "J=4-3 (observed, band 7)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "which contains the H$^{13}$CO$^+$ $J=4-3$ line"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=3-2 (observed, band 6)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "HCO$^+$ observations",
+       "quote": "The $J=3-2$ transition of HCO$^+$ is detected with a high signal-to-noise ratio."
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=2-1 (modelled)",
+     "rest_frequency": "178.375 GHz",
+     "evidence": [
+      {
+       "loc": "Radiative transfer",
+       "quote": "The focus in the paper is on the $J=2-1$ transition at 178.375 GHz and 173.507 GHz for HCO$^+$ and H$^{13}$CO$^+$ respectively"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "J=2-1 (modelled)",
+     "rest_frequency": "173.507 GHz",
+     "evidence": [
+      {
+       "loc": "Radiative transfer",
+       "quote": "The focus in the paper is on the $J=2-1$ transition at 178.375 GHz and 173.507 GHz for HCO$^+$ and H$^{13}$CO$^+$ respectively"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 7: 0.2'' synthesized beam; Band 6: ~0.5''",
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "The synthesized beam of these observations is $0.2\\ensuremath{''}$ (40 AU radius, 80 AU diameter at a distance of $\\sim$400 pc;"
+     },
+     {
+      "loc": "HCO$^+$ observations",
+      "quote": "The spatial resolution of $\\sim0.5\\ensuremath{''}$ is insufficient to resolve the water snowline"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "~15 mJy per spectral bin in the velocity-stacked band 7 spectrum",
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "The noise level of $\\sim$15 mJy per spectral bin is determined using an empty region in the stacked image."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival ALMA data (PI Jeong-Eun Lee for 2017.1.01066.T)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our analysis of recent archival ALMA band 6 observations of the $J=3-2$ transition of HCO$^+$"
+     },
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "(project code: 2017.1.01066.T, PI: Jeong-Eun Lee)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VANDAM survey",
+     "provided": {
+      "value": "9.1 mm continuum flux used to estimate the V883 Ori disk mass",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "The disk mass is estimated using the 9.1 mm continuum observations of the VANDAM survey (cite: Tobin2020)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Collisional rate coefficients for HCO+ and H13CO+ from the LAMDA database",
+      "evidence": [
+       {
+        "loc": "Radiative transfer",
+        "quote": "we used the collisional rate coefficients in the LAMDA database (cite: Botschwina1993; Flower1999; Schoier2005)"
+       }
+      ]
+     },
+     "citation": "(cite: Botschwina1993; Flower1999; Schoier2005)"
+    },
+    {
+     "what": {
+      "value": "Gas-phase reaction rate coefficients (alpha, beta, gamma) from the rate12 UMIST database",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "are taken from the rate12 UMIST database (cite: McElroy2013)"
+       }
+      ]
+     },
+     "citation": "(cite: McElroy2013)"
+    },
+    {
+     "what": {
+      "value": "Stellar spectrum of HD 100546 used for the Herbig Ae model",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "Spectrum of HD 100546 (cite: Kama2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Kama2016)"
+    },
+    {
+     "what": {
+      "value": "V883 Ori stellar mass 1.3 Msun, inclination 38 deg, position angle 32 deg",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "using a stellar mass, $M_{\\star}$ = 1.3 M$_{\\odot}$, an inclination of 38$\\degree$, and a position angle of 32$\\degree$ (cite: Cieza2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Cieza2016)"
+    },
+    {
+     "what": {
+      "value": "V883 Ori distance of ~400 pc",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "at a distance of $\\sim$400 pc; (cite: Kounkel2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Kounkel2017)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity of 0.28 cm2/g at 9.1 mm for the disk mass estimate",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "Following (cite: Tychoniec2020), a dust opacity of 0.28 cm$^2$g$^{-1}$ at a wavelength of 9.1 mm is used (cite: Woitke2016)."
+       }
+      ]
+     },
+     "citation": "(cite: Tychoniec2020); (cite: Woitke2016)"
+    },
+    {
+     "what": {
+      "value": "Radial extent of V883 Ori C18O J=2-1 emission used to set the characteristic radius",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "to match the radial extent of emission from the $J=2-1$ transition of C$^{18}$O presented by (cite: vantHoff2018methanol)"
+       }
+      ]
+     },
+     "citation": "(cite: vantHoff2018methanol)"
+    },
+    {
+     "what": {
+      "value": "12C/13C isotope ratio of 70",
+      "evidence": [
+       {
+        "loc": "Chemical models",
+        "quote": "corresponding to the typical $^{12}$C/$^{13}$C isotope ratio (cite: Milam2005)"
+       }
+      ]
+     },
+     "citation": "(cite: Milam2005)"
+    },
+    {
+     "what": {
+      "value": "Rest frequencies of acetaldehyde lines near H13CO+ J=4-3 from the JPL molecular database",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "(Jet Propulsion Laboratory (JPL) molecular database; (cite: Pickett1998))"
+       }
+      ]
+     },
+     "citation": "(cite: Pickett1998)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "DALI thermochemical model of a typical Herbig Ae disk (L = 36 Lsun) providing density and temperature structure",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "a disk around a typical Herbig Ae star with a luminosity of 36 L$_{\\odot}$"
+      }
+     ]
+    },
+    {
+     "value": "Two small time-dependent chemical networks (no water, NW; with water, W) giving HCO+ abundances",
+     "evidence": [
+      {
+       "loc": "Chemical models",
+       "quote": "The first network, network *no water* (NW), is shown in the dashed box in Fig."
+      }
+     ]
+    },
+    {
+     "value": "Representative DALI model of V883 Ori with three luminosities placing the snowline at 47, 76 and 119 AU",
+     "evidence": [
+      {
+       "loc": "Model HCO$^+$ images: locating the snowline",
+       "quote": "which put the snowline at 47, 76, and 119 AU, respectively"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Band 6 HCO+ J=3-2: azimuthal average made from the archive product data",
+     "evidence": [
+      {
+       "loc": "HCO$^+$ observations",
+       "quote": "a normalized, deprojected azimuthal average of the observed emission from the product data of the $J=3-2$ transition of HCO$^+$"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA 5.1.1 tclean (band 7 line images)",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "Using the CASA 5.1.1"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "with a Briggs weighting of 0.5, line images are made"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "mask of about 2\" diameter centered on the continuum peak",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "line images are made with a mask of about 2\" in diameter centered on the peak of the continuum"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum from all line-free channels, subtracted from line data",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "The line data are continuum subtracted using these continuum solutions."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "all line-free channels, carefully selected (ranges not listed)",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "The continuum is created using all line-free channels, which are carefully selected to exclude any line emission."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.2'' (band 7); ~0.5'' (band 6)",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "The synthesized beam of these observations is $0.2\\ensuremath{''}$ (40 AU radius, 80 AU diameter at a distance of $\\sim$400 pc;"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~15 mJy per spectral bin (stacked spectrum)",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "The noise level of $\\sim$15 mJy per spectral bin is determined using an empty region in the stacked image."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Velocity stacking of the band 7 line data using Keplerian rotation",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "Following the approach of (cite: Lee2019), the line observations are velocity-stacked using a stellar mass"
+       }
+      ]
+     },
+     "from_reference": "Lee et al. 2019 (cite: Lee2019); also (cite: Yen2016; Yen2018)"
+    },
+    {
+     "what": {
+      "value": "Acetaldehyde line widths fixed to 2 km/s in the Gaussian fit",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "the widths of the lines are fixed to 2 km s$^{-1}$ following (cite: Lee2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Lee2019)"
+    },
+    {
+     "what": {
+      "value": "Disk density structure approach for the DALI model",
+      "evidence": [
+       {
+        "loc": "Disk structure",
+        "quote": "following the approach of (cite: Andrews2011)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Andrews2011)"
+    },
+    {
+     "what": {
+      "value": "Two-population dust vertical structure",
+      "evidence": [
+       {
+        "loc": "Disk structure",
+        "quote": "using two populations of dust grains following the approach of (cite: DAlessio2006)"
+       }
+      ]
+     },
+     "from_reference": "(cite: DAlessio2006)"
+    },
+    {
+     "what": {
+      "value": "Band 6 HCO+ image and observational details deferred to a companion paper",
+      "evidence": [
+       {
+        "loc": "HCO$^+$ observations",
+        "quote": "An image of the HCO$^+$ emission will be presented in"
+       }
+      ]
+     },
+     "from_reference": "Ruiz-Rodriguez et al. (in prep.)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity for the disk mass estimate",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "Following (cite: Tychoniec2020), a dust opacity of 0.28 cm$^2$g$^{-1}$ at a wavelength of 9.1 mm is used"
+       }
+      ]
+     },
+     "from_reference": "(cite: Tychoniec2020)"
+    }
+   ],
+   "unstated_but_needed": [
+    "DALI version and access (code availability, configuration and chemistry settings are not described)",
+    "Calibration of the band 7 and band 6 data: pipeline vs manual, CASA version, flux calibrator, self-calibration",
+    "Which spectral windows, channel ranges and line-free channels were used for the band 7 continuum and line cubes",
+    "Band 6 data: beam, noise level, imaging parameters and the deprojection geometry used for the azimuthal average",
+    "Normalisation used in the azimuthal profiles and how models were convolved and matched to the observations",
+    "Rest frequencies of HCO+ J=3-2 and H13CO+ J=4-3 as used",
+    "Choice of radial bins and error treatment for the observed profiles; no quantitative goodness-of-fit is reported"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Model disk density and temperature structure",
+    "method": {
+     "value": "Parametric disk with exponentially tapered power-law gas surface density, Gaussian vertical structure, two dust populations; gas temperature solved iteratively with chemistry and heating/cooling, dust temperature from Monte Carlo radiative transfer",
+     "evidence": [
+      {
+       "loc": "Disk structure",
+       "quote": "This approach is based on the self-similar solution for a viscously evolving disk, where the gas surface density of the disk outside the dust sublimation radius follows a power law with an exponential taper"
+      },
+      {
+       "loc": "Disk structure",
+       "quote": "The dust temperature is computed using Monte Carlo continuum radiative transfer."
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "Full parameter set (R_c, Sigma_c, M_disk, gamma, h_c, psi, chi, f_ls, L, M_star, i, d) listed in Table 1",
+      "evidence": [
+       {
+        "loc": "Disk structure",
+        "quote": "An overview of all parameters used for the density and temperature structure can be found in Table"
+       }
+      ]
+     },
+     {
+      "value": "R_subl = 0.05 AU",
+      "evidence": [
+       {
+        "loc": "Disk structure",
+        "quote": "A sublimation radius of $R_{\\mathrm{subl}} = 0.05$ AU is assumed."
+       }
+      ]
+     },
+     {
+      "value": "Gas-to-dust mass ratio 100",
+      "evidence": [
+       {
+        "loc": "Disk structure",
+        "quote": "which is set to the ISM value of 100"
+       }
+      ]
+     },
+     {
+      "value": "Grain size distribution proportional to a^-3.5 (MRN)",
+      "evidence": [
+       {
+        "loc": "Disk structure",
+        "quote": "the size distribution of both grain populations is assumed to be proportional to $a^{-3.5}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Typical Herbig Ae star luminosity 36 Lsun",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "a typical Herbig Ae star with a luminosity of 36 L$_{\\odot}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compute HCO+ abundance with small chemical networks",
+    "method": {
+     "value": "Time-dependent small networks (NW without water, W with water) solved up to 1 Myr on the DALI density and temperature structure",
+     "evidence": [
+      {
+       "loc": "Chemical models",
+       "quote": "which is solved time-dependently up to 1 Myr with the python function"
+      }
+     ]
+    },
+    "software": [
+     "scipy odeint (LSODA)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Initial x(CO) = 1e-4 in both networks; x(H2O) = 3.8e-7 in network W; others 0",
+      "evidence": [
+       {
+        "loc": "Chemical models",
+        "quote": "Initially, the abundance of all gas- and ice-phase species are set to 0 except for the abundance of gas-phase CO, which is set to $10^{-4}$ both in network NW and W"
+       },
+       {
+        "loc": "Chemical models",
+        "quote": "and the abundance of gas-phase water in network W, which is set to $3.8\\times 10^{-7}$"
+       }
+      ]
+     },
+     {
+      "value": "Grain number density 1e-12 x n(H2), grain size 0.1 um; H13CO+ abundance a factor 70 below HCO+",
+      "evidence": [
+       {
+        "loc": "Chemical models",
+        "quote": "we assume in chemical network NW and W a typical grain number density of 10$^{-12}\\times n(\\mathrm{H_2})$ and a grain size of 0.1 $\\mu$m"
+       },
+       {
+        "loc": "Chemical models",
+        "quote": "the H$^{13}$CO$^+$ abundance is taken to be a factor 70 smaller than the abundance of HCO$^+$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Single grain size for the chemistry is an approximation",
+      "evidence": [
+       {
+        "loc": "Chemical models",
+        "quote": "Assuming a single grains size for the chemistry is an approximation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with full chemical networks and tested against different initial CO, H2O and cosmic-ray ionization rate conditions",
+     "evidence": [
+      {
+       "loc": "Chemistry",
+       "quote": "Our small network is thus suited to study HCO$^+$ as a tracer of the water snowline."
+      },
+      {
+       "loc": "Effect of the CO, H$_2$O abundance, and cosmic ray ionization rate on the HCO$^+$ abundance",
+       "quote": "Therefore, the results in the following sections do not depend critically on the choice of initial conditions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Predict HCO+ and H13CO+ emission profiles",
+    "method": {
+     "value": "Non-LTE ray tracing with continuum and line optical depth, radial profiles along the semi-major axis, convolved with a 0.05'' beam",
+     "evidence": [
+      {
+       "loc": "Radiative transfer",
+       "quote": "The line radiative transfer does not assume LTE."
+      },
+      {
+       "loc": "Radiative transfer",
+       "quote": "To mimic high resolution ALMA observations, the emission is convolved with a $0.05\\ensuremath{''}$ beam, unless denoted otherwise."
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "Distance 100 pc, inclination 38 deg",
+      "evidence": [
+       {
+        "loc": "Radiative transfer",
+        "quote": "the disk is assumed to be located at a distance of 100 pc and the inclination is taken to be 38$\\degree$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Radial emission profiles taken along the semi-major axis",
+      "evidence": [
+       {
+        "loc": "Radiative transfer",
+        "quote": "The radial emission profiles are taken to be along the semi-major axis of the disk."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Quantify the snowline effect and disentangle ring origins",
+    "method": {
+     "value": "Compare NW and W emission; define maximum relative difference; rerun with dust opacities divided by 1e10; inspect J-level populations",
+     "evidence": [
+      {
+       "loc": "HCO$^+$ and H$^{13}$CO$^+$ emission",
+       "quote": "This maximum relative difference is defined as the maximum difference between the flux predicted by network NW and W compared to the maximum flux predicted by network W"
+      },
+      {
+       "loc": "Continuum optical depth",
+       "quote": "the dust opacities (dust mass absorption coefficients $\\kappa_{\\nu}$) are divided by a factor of $10^{10}$"
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Test line profiles as a snowline diagnostic",
+    "method": {
+     "value": "Subtract the network W line profile from the network NW profile for J=2-1 of HCO+ and H13CO+",
+     "evidence": [
+      {
+       "loc": "Line profiles",
+       "quote": "To show the difference between the models we subtracted the spectrum associated with network W from the spectrum associated with network NW."
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Detect H13CO+ J=4-3 in V883 Ori (band 7)",
+    "method": {
+     "value": "Continuum-subtract, make tclean line cubes, velocity-stack with Keplerian model, fit two Gaussians to acetaldehyde lines excluding +-1 km/s around H13CO+, subtract fit",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "This Doppler shift is then used to shift the spectrum of each pixel to the velocity of the star, before adding the spectra of all pixels."
+      },
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "In addition, emission within 1 km s$^{-1}$ from the rest frequency of the $J=4-3$ transition of H$^{13}$CO$^+$ is excluded from the fit."
+      }
+     ]
+    },
+    "software": [
+     "CASA 5.1.1 tclean",
+     "scipy curve_fit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Stacking with M_star = 1.3 Msun, i = 38 deg, PA = 32 deg; acetaldehyde line frequencies fixed, widths fixed to 2 km/s",
+      "evidence": [
+       {
+        "loc": "H$^{13}$CO$^+$ observations",
+        "quote": "To reduce the number of free parameters in the fit, the line frequencies are fixed to their respective rest frequencies listed above and the widths of the lines are fixed to 2 km s$^{-1}$ following (cite: Lee2019)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Two Gaussian profiles fitted to acetaldehyde emission with curve_fit; no priors or sampler",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "To quantify this excess emission, two Gaussian profiles are fitted with"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Detection judged at >5 sigma after subtracting the acetaldehyde fit",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "Therefore we conclude that H$^{13}$CO$^+$ is detected at $>$5$\\sigma$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Locate the water snowline in V883 Ori with HCO+ J=3-2",
+    "method": {
+     "value": "Build DALI model of V883 Ori for three luminosities, convolve to the observed resolution, compare deprojected normalized azimuthal averages of model and observed HCO+ J=3-2",
+     "evidence": [
+      {
+       "loc": "Model HCO$^+$ images: locating the snowline",
+       "quote": "The model results are convolved to the same spatial resolution as the observations before calculating the deprojected azimuthal average."
+      },
+      {
+       "loc": "Model HCO$^+$ images: locating the snowline",
+       "quote": "The observed peak location and gap depth in the center best match with a snowline between 76 and 119 AU."
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "Luminosities 2e3, 6e3, 1.4e4 Lsun giving snowlines at 47, 76, 119 AU",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "We therefore use three luminosities of $2\\times 10^3$, $6\\times 10^3$ and $1.4\\times 10^4$ L$_{\\odot}$ in our models, which put the snowline at 47, 76, and 119 AU, respectively."
+       }
+      ]
+     },
+     {
+      "value": "Characteristic radius 75 AU; disk mass 0.25 Msun",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "The characteristic disk radius is set to 75 AU"
+       },
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "This gives an estimated disk mass of 0.25 M$_{\\odot}$."
+       }
+      ]
+     },
+     {
+      "value": "Predictions for future observations convolved with a 0.1'' beam",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "The results in this section are convolved with a small $0.1\\ensuremath{''}$ beam"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust temperature 50 K for the disk mass estimate",
+      "evidence": [
+       {
+        "loc": "Model HCO$^+$ images: locating the snowline",
+        "quote": "As V883 Ori is an outbursting source, a dust temperature of 50 K is assumed."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Visual comparison of peak location and central gap depth; no quantitative fit",
+     "evidence": [
+      {
+       "loc": "Model HCO$^+$ images: locating the snowline",
+       "quote": "The observed peak location and gap depth in the center best match with a snowline between 76 and 119 AU."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Continuum becomes optically thin well within 100 AU in all models; complex organic molecules peak inside the HCO+ ring",
+     "evidence": [
+      {
+       "loc": "Model HCO$^+$ images: locating the snowline",
+       "quote": "Furthermore, the continuum becomes optically thin well within 100 AU in all three of our models"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Thermochemical disk model (temperature) and ray tracing of line emission",
+     "evidence": [
+      {
+       "loc": "Radiative transfer",
+       "quote": "Predictions for multiple transitions of HCO$^+$ and H$^{13}$CO$^+$ were made using the ray tracer in"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "5.1.1",
+    "used_for": {
+     "value": "tclean imaging of band 7 line data",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "Using the CASA 5.1.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy odeint (LSODA)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Time-dependent solution of the chemical networks",
+     "evidence": [
+      {
+       "loc": "Footnote 1",
+       "quote": "part of the Scipy package in python and uses the LSODA routine from the ODEPACK library in FORTRAN"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy curve_fit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian fits to acetaldehyde emission",
+     "evidence": [
+      {
+       "loc": "Footnote 2",
+       "quote": "function is part of the Scipy package in python."
+      }
+     ]
+    }
+   },
+   {
+    "name": "LAMDA database",
+    "version": "not stated",
+    "used_for": {
+     "value": "Collisional rate coefficients for line radiative transfer",
+     "evidence": [
+      {
+       "loc": "Radiative transfer",
+       "quote": "we used the collisional rate coefficients in the LAMDA database"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UMIST rate12 database",
+    "version": "rate12",
+    "used_for": {
+     "value": "Gas-phase reaction rate coefficients",
+     "evidence": [
+      {
+       "loc": "Table 2 notes",
+       "quote": "are taken from the rate12 UMIST database (cite: McElroy2013)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "JPL molecular database",
+    "version": "not stated",
+    "used_for": {
+     "value": "Rest frequencies of acetaldehyde lines",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "(Jet Propulsion Laboratory (JPL) molecular database; (cite: Pickett1998))"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Water snowline radius, typical Herbig Ae model",
+    "value": "4.5",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Chemistry",
+      "quote": "the water snowline, the midplane location where water freezes-out, is located at 4.5 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ abundance jump outside the water snowline",
+    "value": "two orders of magnitude over 2 AU",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The HCO$^+$ abundance jumps by two orders of magnitude over a radial range of 2 AU outside the water snowline"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ column density jump outside the snowline (network W)",
+    "value": "~230 over 3 AU",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "HCO$^+$ and H$^{13}$CO$^+$ emission",
+      "quote": "the total HCO$^+$ column density jumps by a factor $\\sim230$ over a radial range of 3 AU outside the water snowline in network W"
+     }
+    ]
+   },
+   {
+    "quantity": "Maximum relative emission difference NW vs W, HCO+ J=2-1",
+    "value": "24",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "HCO$^+$ and H$^{13}$CO$^+$ emission",
+      "quote": "translates into a relative maximum difference of only 24% between the radial emission profiles of the $J=2-1$ transition of HCO$^+$"
+     }
+    ]
+   },
+   {
+    "quantity": "Maximum relative emission difference NW vs W, H13CO+ J=2-1",
+    "value": "13",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "HCO$^+$ and H$^{13}$CO$^+$ emission",
+      "quote": "The relative maximum difference between chemical network NW and W is 13% for H$^{13}$CO$^+$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CO+ flux relative to HCO+ (J=2-1)",
+    "value": "about 39 times lower",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "HCO$^+$ and H$^{13}$CO$^+$ emission",
+      "quote": "Though the expected flux is about 39 times lower for H$^{13}$CO$^+$ than for HCO$^+$."
+     }
+    ]
+   },
+   {
+    "quantity": "Radius out to which dust is optically thick, Herbig Ae model",
+    "value": "~14",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Continuum optical depth",
+      "quote": "the dust in the typical Herbig Ae disk model is optically thick out to $\\sim$14 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Line-wing flux difference NW minus W",
+    "value": "1.75 mJy (HCO+), 28 uJy (H13CO+); 0.6% and 0.3% of emission",
+    "uncertainty": "not stated",
+    "units": "mJy / uJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line profiles",
+      "quote": "this difference is only 1.75 mJy for HCO$^+$ and 28 $\\mu$Jy for H$^{13}$CO$^+$ i.e. 0.6% and 0.3% of emission"
+     }
+    ]
+   },
+   {
+    "quantity": "Noise in stacked V883 Ori band 7 spectrum",
+    "value": "~15",
+    "uncertainty": "not stated",
+    "units": "mJy per spectral bin",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "The noise level of $\\sim$15 mJy per spectral bin is determined using an empty region in the stacked image."
+     }
+    ]
+   },
+   {
+    "quantity": "H13CO+ J=4-3 detection significance in V883 Ori",
+    "value": ">5",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "H$^{13}$CO$^+$ is detected at $>$5$\\sigma$"
+     }
+    ]
+   },
+   {
+    "quantity": "V883 Ori disk mass estimate",
+    "value": "0.25",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Model HCO$^+$ images: locating the snowline",
+      "quote": "This gives an estimated disk mass of 0.25 M$_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Model snowline radii for the three V883 Ori luminosities",
+    "value": "47, 76, 119",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Model HCO$^+$ images: locating the snowline",
+      "quote": "which put the snowline at 47, 76, and 119 AU, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "V883 Ori water snowline radius inferred from HCO+ J=3-2",
+    "value": "~75-120",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Model HCO$^+$ images: locating the snowline",
+      "quote": "our analysis is consistent with a water snowline at $\\sim$75-120 AU in V883 Ori"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Emission of HCO+ and H13CO+ is ring-shaped due to gas-phase water destruction, continuum optical depth and molecular excitation, so locating the snowline in Herbig Ae disks is difficult",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the emission of H$^{13}$CO$^+$ and HCO$^+$ is ring-shaped due to three effects: destruction of HCO$^+$ by gas-phase water, continuum optical depth, and molecular excitation effects."
+     }
+    ]
+   },
+   {
+    "value": "Observed HCO+ J=3-2 is ring-shaped while complex organic molecules peak inside the ring, so the HCO+ central hole is not only due to continuum optical depth",
+    "evidence": [
+     {
+      "loc": "HCO$^+$ observations",
+      "quote": "This azimuthal average shows that the HCO$^+$ emission is ring shaped."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas-phase water destruction of HCO+ makes HCO+ abundance trace the water snowline",
+    "experiment": "Two small chemical networks (NW without water, W with water) on a DALI Herbig Ae disk",
+    "result": "HCO+ abundance jumps by two orders of magnitude over 2 AU outside the snowline at 4.5 AU",
+    "finding": "HCO+ abundance is a good chemical tracer of the water snowline",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The HCO$^+$ abundance jumps by two orders of magnitude over a radial range of 2 AU outside the water snowline, which in our model is located at 4.5 AU."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The snowline signature is observable in HCO+ and H13CO+ J=2-1 emission of Herbig Ae disks",
+    "experiment": "Ray-traced J=2-1 emission for networks NW and W convolved with a 0.05'' beam",
+    "result": "Water causes only an additional ~13% (H13CO+) and 24% (HCO+) drop in the disk center",
+    "finding": "Locating the snowline with HCO+ in Herbig Ae disks is very difficult",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Therefore locating the water snowline with HCO$^+$ observations in disks around Herbig Ae stars is very difficult"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Outbursting sources such as V883 Ori make HCO+ a usable snowline tracer",
+    "experiment": "DALI models of V883 Ori with three luminosities",
+    "result": "Dust and excitation effects do not limit HCO+ as a tracer if the snowline lies beyond ~40 AU",
+    "finding": "HCO+ can trace the snowline in V883 Ori-like disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "our models predict that the effects of dust and molecular excitation are not limiting HCO$^+$ as a snowline tracer if the snowline is located at radii larger than $\\sim$40 AU"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The water snowline of V883 Ori is at ~42 AU as estimated from the continuum intensity break",
+    "experiment": "Compare archival ALMA band 6 HCO+ J=3-2 azimuthal average with models of snowline at 47, 76, 119 AU",
+    "result": "Observed peak location and central gap best match a snowline between 76 and 119 AU",
+    "finding": "Snowline is around 100 AU, outside the continuum opacity change at 42 AU",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Based on our models, the snowline is located around 100 AU and is not correlated with the opacity change in the continuum emission observed at 42 AU."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Archival V883 Ori data were the only H13CO+ dataset with sufficient resolution and sensitivity, and a band 6 HCO+ dataset was available",
+    "evidence": [
+     {
+      "loc": "H$^{13}$CO$^+$ observations",
+      "quote": "To date, these observations are the only H$^{13}$CO$^+$ observations in a protoplanetary disk, to our knowledge, at sufficient spatial and spectral resolution with sufficient sensitivity to potentially resolve the water snowline."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "J=2-1 chosen for the best balance between line brightness and continuum optical depth",
+    "evidence": [
+     {
+      "loc": "Radiative transfer",
+      "quote": "because this transition provides the best balance between the brightness of the line and the effects of the continuum optical depth"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "H13CO+ J=4-3 rejected for snowline imaging because it is blended with acetaldehyde",
+     "evidence": [
+      {
+       "loc": "H$^{13}$CO$^+$ observations",
+       "quote": "The line blending of H$^{13}$CO$^+$ $J=4-3$ with acetaldehyde prevents us from using the only available dataset"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Band 6 beam (~0.5'') cannot resolve a snowline inside ~90 AU",
+     "evidence": [
+      {
+       "loc": "HCO$^+$ observations",
+       "quote": "The spatial resolution of $\\sim0.5\\ensuremath{''}$ is insufficient to resolve the water snowline"
+      }
+     ]
+    },
+    {
+     "value": "Viscous heating and self-absorption in outbursting sources are not modelled",
+     "evidence": [
+      {
+       "loc": "Model HCO$^+$ images: locating the snowline",
+       "quote": "One effect that needs to be taken into account in outbursting sources like V883 Ori is viscous heating."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Snowline location in V883 Ori rests on a visual match of model and observed azimuthal profiles at a beam larger than the snowline radius, with no fit statistic or uncertainty",
+    "Models use a small chemical network and fixed parameters; model luminosity values are artificially raised to move the snowline",
+    "Band 6 data details are deferred to an in-prep paper"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data with project codes given",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Models are then compared with archival ALMA data."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "Band 6 HCO+ J=3-2 product data used",
+    "evidence": [
+     {
+      "loc": "HCO$^+$ observations",
+      "quote": "the observed emission from the product data of the $J=3-2$ transition of HCO$^+$"
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "DALI configuration and code access",
+    "Calibration, spectral windows and channel selections for both ALMA datasets",
+    "Band 6 imaging parameters and deprojection geometry",
+    "Numerical model profiles needed to reproduce the figure comparison"
+   ],
+   "estimated_data_volume_inferred": "Tens of GB for the two archival projects (rough estimate, sizes not stated)",
+   "score_inferred": 2,
+   "score_reason": "Model parameters are tabulated and the chemical network is fully specified, but DALI setup, ALMA calibration and imaging choices are mostly not given and the observational comparison is qualitative.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are model predictions plus a qualitative comparison with ALMA data; the observational recipe is incomplete and the key code setup is unstated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Lee et al. 2019 (cite: Lee2019)",
+     "why": "Band 7 V883 Ori observations and velocity stacking approach followed"
+    },
+    {
+     "citation": "Bruderer et al. 2009, 2012; Bruderer 2013 (cite: Bruderer2009; Bruderer2012; Bruderer2013)",
+     "why": "DALI thermochemical code"
+    },
+    {
+     "citation": "Andrews et al. 2011 (cite: Andrews2011)",
+     "why": "Disk density structure approach"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "van 't Hoff et al. 2018b (cite: vantHoff2018methanol)",
+     "why": "Methanol and C18O observations of V883 Ori; snowline near 100 AU"
+    },
+    {
+     "citation": "Cieza et al. 2016 (cite: Cieza2016)",
+     "why": "Previous snowline estimate at 42 AU from continuum"
+    },
+    {
+     "citation": "Ruiz-Rodriguez et al. in prep.",
+     "why": "Presents the band 6 HCO+ data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "VANDAM survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2021A%26A...646A...3L",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:12:10",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 115,
+  "quotes_ok": 115,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 110,
+   "stated": 78,
+   "rate": 0.709
+  },
+  "evidence_ok": true
+ }
+}

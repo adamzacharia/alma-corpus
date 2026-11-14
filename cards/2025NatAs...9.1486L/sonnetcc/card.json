@@ -1,0 +1,1624 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025NatAs...9.1486L",
+  "title": "Pristine ices in a planet-forming disk revealed by heavy water",
+  "year": 2025,
+  "journal": "Nature Astronomy",
+  "first_author": "Leemker, Margot",
+  "n_authors": 7,
+  "arxiv_id": "2510.19919",
+  "doi": "10.1038/s41550-025-02663-y",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00186.S",
+   "2023.1.00588.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Results",
+    "quote": "We detect the $1_{1,0}-1_{0,1}$ transition at 316.7998 GHz in the disk surrounding the young, outbursting V883 Ori star with the Atacama Large Millimeter/submillimeter Array (ALMA)."
+   },
+   {
+    "loc": "Methods, Self-calibration",
+    "quote": "We observed the V883 Ori disk in ALMA band 7 for 2.4 hours on source distributed over three execution blocks"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "V883 Ori disk",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "400 pc",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "This star is located at 400 pc (1300 ly) in the Orion molecular cloud"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the water ice in the outbursting V883 Ori disk inherited from the cold cloud or reset? Tested by detecting doubly deuterated water (D2O) and measuring D2O/H2O and (D2O/HDO)/(HDO/H2O) ratios.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "the most sensitive tracer to distinguish inheritance from reprocessing to shed light on the origin of ices in disks, in particular the origin of water ice"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2023.1.00588.S",
+     "evidence": [
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "2023.1.00588.S; PI: M. Leemker"
+      }
+     ]
+    },
+    {
+     "code": "2021.1.00186.S",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "2021.1.00186.S; PI: J. J. Tobin"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (D2O 316.8 GHz, new data); HDO and H2-18-O from Band 6 and Band 5 (reimaged archival data)",
+    "evidence": [
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "We observed the V883 Ori disk in ALMA band 7 for 2.4 hours on source"
+     },
+     {
+      "loc": "Methods, Flux measurements",
+      "quote": "5% absolute flux calibration uncertainty for ALMA Band 5 and 6 (HDO and H$_2^{18}$O) and 10% for ALMA Band 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "D2O 1(1,0)-1(0,1) at 316.7998 GHz, 61 kHz (58 m/s) resolution, 117.2 MHz bandwidth; continuum window 1.875 GHz wide centred at 315 GHz; six further windows at 122 kHz resolution, 58.6 MHz bandwidth; one at 328.857 GHz with 117.2 MHz",
+    "evidence": [
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "at 316.7998 GHz at a spectral resolution of 61 kHz (58 m s$^{-1}$) and a total bandwidth of 117.2 MHz"
+     },
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "A continuum spectral window covering 1.875 GHz of bandwidth at a spectral resolution of 1.1 km s$^{-1}$ was centered at 315 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "D2O",
+     "transition": "1(1,0)-1(0,1)",
+     "rest_frequency": "316.7998 GHz",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "We detect the $1_{1,0}-1_{0,1}$ transition at 316.7998 GHz"
+      }
+     ]
+    },
+    {
+     "species": "HDO",
+     "transition": "3(1,2)-2(2,1)",
+     "rest_frequency": "225.8967 GHz",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "225.8967 GHz (HDO), and 203.4075 GHz (H$_2^{18}$O)"
+      }
+     ]
+    },
+    {
+     "species": "H2-18-O",
+     "transition": "3(1,3)-2(2,0)",
+     "rest_frequency": "203.4075 GHz",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "225.8967 GHz (HDO), and 203.4075 GHz (H$_2^{18}$O)"
+      }
+     ]
+    },
+    {
+     "species": "HDO",
+     "transition": "241 GHz line (second HDO line, not used in flux analysis)",
+     "rest_frequency": "241 GHz",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "The HDO 241 GHz line on the other hand is too severely blended and is therefore not considered in this analysis."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "180 MHz used for self-calibration (reduced because the disk is line rich)",
+    "evidence": [
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "Since this is a very line-rich disk, the total continuum bandwidth used for the self-calibration is reduced to 180 MHz."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "minimum 15.1 m; maximum 1.2 km (24 Dec 2023) and 1.4 km (28 and 30 Jul 2024)",
+    "evidence": [
+     {
+      "loc": "Supplementary Table 4",
+      "quote": "24 Dec. 2023 | 43 | 15.1 | 1.2 | J0423-0120 | J0607-0834"
+     },
+     {
+      "loc": "Supplementary Table 4",
+      "quote": "28 Jul. 2024 | 45 | 15.1 | 1.4 | J0538-4405 | J0607-0834"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "D2O beam 0.24 x 0.19 arcsec (89 deg) at robust = 0",
+    "evidence": [
+     {
+      "loc": "Methods, Imaging",
+      "quote": "resulting in a $0\\ensuremath{\\overset{\\prime\\prime}{.}}24 \\times 0\\ensuremath{\\overset{\\prime\\prime}{.}}19\\ (89\\degree)$ beam"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "2.4 hours on source over three execution blocks (Band 7, 2023.1.00588.S)",
+    "evidence": [
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "ALMA band 7 for 2.4 hours on source distributed over three execution blocks"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "24 Dec 2023, 28 Jul 2024, 30 Jul 2024 (Band 7 execution blocks)",
+    "evidence": [
+     {
+      "loc": "Supplementary Table 4",
+      "quote": "24 Dec. 2023 | 43 | 15.1 | 1.2 | J0423-0120 | J0607-0834"
+     },
+     {
+      "loc": "Supplementary Table 4",
+      "quote": "30 Jul. 2024 | 47 | 15.1 | 1.4 | J0538-4405 | J0607-0834"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "2023.1.00588.S (PI M. Leemker, D2O data); 2021.1.00186.S (PI J. J. Tobin, HDO and H2-18-O data re-imaged)",
+    "evidence": [
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "2023.1.00588.S; PI: M. Leemker"
+     },
+     {
+      "loc": "Methods, Imaging",
+      "quote": "we re-imaged the HDO and H$_2^{18}$O data presented in (2021.1.00186.S; PI: J. J. Tobin)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "HDO excitation temperature of 199 +/- 42 K from two HDO lines, adopted for all water isotopologues",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "we use the excitation temperature of $199\\pm 42$ K of the HDO molecule"
+       }
+      ]
+     },
+     "citation": "not stated (citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "Source geometry and mass: distance 400 pc, stellar mass 1.3 Msun, inclination 38.3 deg, position angle 32 deg",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "using a distance of 400 pc , a stellar mass of 1.3 M$_{\\odot}$, a disk inclination of 38.3$\\degree$, and a position angle of 32$\\degree$"
+       }
+      ]
+     },
+     "citation": "not stated (citations not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "ISM ratio N(H2-16-O)/N(H2-18-O) = 560 +/- 25 used to scale to total H2O column",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "using the typical ratio of $560 \\pm 25$ in the ISM"
+       }
+      ]
+     },
+     "citation": "not stated (citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "Class 0 comparison values: D2O/H2O = (2-9)e-5 and (D2O/HDO)/(HDO/H2O) = 2.2-7.1",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "$(2-9)\\times 10^{-5}$ and (/HDO) / (HDO/) = $2.2-7.1$ in younger Class 0 objects"
+       }
+      ]
+     },
+     "citation": "not stated (citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "Comet 67P D2O/H2O = (1.9 +/- 1.0)e-5",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "$(1.9 \\pm 1.0)\\times 10^{-5}$ in the comet 67 P"
+       }
+      ]
+     },
+     "citation": "not stated (citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "Comet 67P HDO/H2O of (1.06 +/- 0.14)e-3 used for a consistent analysis of ratios",
+      "evidence": [
+       {
+        "loc": "Supplementary, HDO/H2O ratio",
+        "quote": "we use previously derived HDO/ ratio of $(1.06 \\pm 0.14) \\times 10^{-3}$ for a consistent analysis across all water isotopologue ratios measured in this comet"
+       }
+      ]
+     },
+     "citation": "not stated (citation not preserved in the text)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Chemical model of a collapsing core (gas parcels post-processed with deuterium chemistry network) giving D2O/H2O and double-ratio ranges for inheritance (<~10% of ice destroyed) and reset (>~70% destroyed)",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "based on chemical modelling of gas and ice in a collapsing core"
+      },
+      {
+       "loc": "Discussion",
+       "quote": "inheritance (all stream lines where $\\lesssim 10$% of the water ice is destroyed) or reset (all stream lines where $\\gtrsim 70$% of the water ice is destroyed)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 6.5.4",
+     "evidence": [
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "The data were self-calibrated using CASA version 6.5.4 following the analysis used in the exoALMA large program"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0423-0120 (24 Dec 2023); J0538-4405 (28 and 30 Jul 2024), listed as bandpass and flux calibrator",
+     "evidence": [
+      {
+       "loc": "Supplementary Table 4",
+       "quote": "24 Dec. 2023 | 43 | 15.1 | 1.2 | J0423-0120 | J0607-0834"
+      },
+      {
+       "loc": "Supplementary Table 4",
+       "quote": "28 Jul. 2024 | 45 | 15.1 | 1.4 | J0538-4405 | J0607-0834"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "5% (Band 5 and 6), 10% (Band 7); EB of 24 Dec 2023 rescaled down by 8.6% before self-calibration",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "5% absolute flux calibration uncertainty for ALMA Band 5 and 6 (HDO and H$_2^{18}$O) and 10% for ALMA Band 7"
+      },
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "the data taken on December 24th 2023 had an 8.6% higher amplitude across all baselines"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Per EB: 1 phase round (solint = EB length, 1 h 19 min). After alignment and concatenation: 7 phase-only rounds (EB length, 360, 120, 60, 20, 10, 6 s), then 1 phase+amplitude round (solint = EB length); robust 0.5; mask 0.6 arcsec semi-major; solutions deviating >~20% in amplitude flagged",
+     "evidence": [
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "After combining all execution blocks, seven rounds of phase-only self-calibration were performed with solution intervals with the length of a single EB, 360, 120, 60, 20, 10, and 6 seconds."
+      },
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "seven rounds of phase-only self-calibration and a single round of phase and amplitude self-calibration with separate solutions for both polarizations"
+      },
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "Solutions deviating by more than $\\sim$20% in amplitude were flagged."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean, Briggs weighting",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "The line itself was imaged using the CASA task `tclean` with Briggs weighting"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "D2O robust = 0; H2-18-O robust = 1.0; HDO robust = 2.0 (in the order of the sentence); self-calibration imaging robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "Briggs weighting and a `robust` parameter of 0, which provides the best balance between spatial resolution and noise"
+      },
+      {
+       "loc": "Methods, Imaging",
+       "quote": "when cleaned with a `robust` parameter of 1.0 and 2.0, respectively"
+      },
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "We employed Briggs weighting with `robust`$=0.5$."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "No uvcontsub (too few line-free channels). Per EB: mtmfs (nterms = 2) image of line-free channels, model added with ft, subtracted with uvsub",
+     "evidence": [
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "too few line-free channels were available to subtract the continuum emission in the $uv$-plane using the standard CASA task `uvcontsub`"
+      },
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "The resulting model for the continuum emission was added to the measurement set using `ft`"
+      },
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "This model was then used to subtract the continuum using the CASA task `uvsub`."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Final cube channel spacing 400 m/s (to match HDO and H2-18-O); Keplerian masks convolved with a Gaussian 0.5 (D2O), 1.25 (HDO), 0.75 (H2-18-O) times the beam",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "The channel spacing for the final image is 400 m s$^{-1}$ to match that of the HDO and H$_2^{18}$O data."
+      },
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "the mask is convolved with a Gaussian 0.5 (), 1.25 (HDO), and 0.75 (H$_2^{18}$O) times larger than the beam of the respective observations"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "D2O 0.24 x 0.19 (89 deg); H2-18-O 0.13 x 0.11 (-72 deg); HDO 0.10 x 0.08 (-78 deg)",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "resulting in a $0\\ensuremath{\\overset{\\prime\\prime}{.}}24 \\times 0\\ensuremath{\\overset{\\prime\\prime}{.}}19\\ (89\\degree)$ beam"
+      },
+      {
+       "loc": "Methods, Imaging",
+       "quote": "$0\\ensuremath{\\overset{\\prime\\prime}{.}}13\\times  0\\ensuremath{\\overset{\\prime\\prime}{.}}11 (-72\\degree)$ and $0\\ensuremath{\\overset{\\prime\\prime}{.}}10\\times 0\\ensuremath{\\overset{\\prime\\prime}{.}}08 (-78\\degree)$ for the H$_2^{18}$O and the HDO"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Self-calibration procedure follows the exoALMA large-program analysis, with several routines from other work",
+      "evidence": [
+       {
+        "loc": "Methods, Self-calibration",
+        "quote": "following the analysis used in the exoALMA large program outlined in , with several routines by"
+       }
+      ]
+     },
+     "from_reference": "exoALMA large program (citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "HDO excitation temperature (199 +/- 42 K) from a rotational diagram of two HDO lines in earlier work on this disk",
+      "evidence": [
+       {
+        "loc": "Methods, Column density estimates",
+        "quote": "the excitation temperature derived by from two HDO transitions with different upper energy levels is used for all analyzed lines"
+       }
+      ]
+     },
+     "from_reference": "not stated (citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "HDO and H2-18-O data (project 2021.1.00186.S) were first presented earlier and are re-imaged here",
+      "evidence": [
+       {
+        "loc": "Methods, Imaging",
+        "quote": "we re-imaged the HDO and H$_2^{18}$O data presented in (2021.1.00186.S; PI: J. J. Tobin)"
+       }
+      ]
+     },
+     "from_reference": "earlier paper on project 2021.1.00186.S (PI J. J. Tobin); citation not preserved in the text"
+    },
+    {
+     "what": {
+      "value": "Keplerian mask construction follows earlier work, using a named package (name not preserved)",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "The Keplerian masks are constructed using the package by following using a distance of 400 pc"
+       }
+      ]
+     },
+     "from_reference": "not stated (package and citation not preserved in the text)"
+    },
+    {
+     "what": {
+      "value": "Collapsing-core chemical model comparison (inheritance vs reset ranges)",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "based on chemical modelling of gas and ice in a collapsing core"
+       }
+      ]
+     },
+     "from_reference": "not stated (citation not preserved in the text)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Name and version of the package used to build the Keplerian masks and the code for the pixel-by-pixel velocity shifting",
+    "Which channels were flagged as line-free for the pseudo-continuum and for the mtmfs continuum model",
+    "tclean image size, cell size, niter, clean mask and the numeric 1 sigma threshold for the line cubes",
+    "Line-cube velocity range and reference frame/rest frequency handling for the cubes",
+    "Standard calibration route (pipeline vs manual) and pipeline/CASA version for the delivered data, and calibration/imaging details for the 2021.1.00186.S HDO and H2-18-O data (CASA version, calibrators, self-calibration)",
+    "Exact exoALMA self-calibration routines and settings not in the text",
+    "Mirroring boundaries and regions used to build COM line templates, and the template regions for D2O and H2-18-O",
+    "How partition functions at 199 K were obtained (Table 1 lists Q only at 300, 150 and 75 K)",
+    "Source of the rotational-diagram temperature and its full fit setup",
+    "Primary-beam correction details for the flux measurement"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Self-calibrate Band 7 data",
+    "method": {
+     "value": "Pseudo-continuum MS per EB from line-free channels; per-EB phase self-cal, EB alignment to the highest S/N EB, concatenation, 7 phase-only rounds and 1 phase+amplitude round; solutions applied to the full dataset",
+     "evidence": [
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "A pseudo-continuum Measurement Set was created for each EB after carefully flagging all spectral regions exhibiting line emission"
+      },
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "The solutions were then applied to the full dataset, following the same logical order as for the pseudo continuum Measurement Set."
+      }
+     ]
+    },
+    "software": [
+     "CASA 6.5.4"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs robust = 0.5; clean model made inside an elliptical mask of 0.6 arcsec semi-major axis, PA 32 deg, inclination 38.3 deg",
+      "evidence": [
+       {
+        "loc": "Methods, Self-calibration",
+        "quote": "We employed Briggs weighting with `robust`$=0.5$."
+       },
+       {
+        "loc": "Methods, Self-calibration",
+        "quote": "constructed over an elliptical mask of $0\\ensuremath{\\overset{\\prime\\prime}{.}}6$ in semi-major axis"
+       }
+      ]
+     },
+     {
+      "value": "Phase model cleaned to 6 sigma; amplitude model cleaned to 1 sigma",
+      "evidence": [
+       {
+        "loc": "Methods, Self-calibration",
+        "quote": "The model was created by cleaning the emission in all line-free channels down to a conservative threshold of $6\\sigma$."
+       },
+       {
+        "loc": "Methods, Self-calibration",
+        "quote": "The model for the amplitude self-calibration was created by cleaning the line-free channels down to a $1\\sigma$ threshold"
+       }
+      ]
+     },
+     {
+      "value": "EB of 24 Dec 2023 flux rescaled (8.6% higher amplitude) before self-calibration",
+      "evidence": [
+       {
+        "loc": "Methods, Self-calibration",
+        "quote": "we rescaled the flux before self-calibration in this execution block"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Peak S/N improved from 495 to 1457 with phase self-calibration; amplitude plus phase improved it by a further 3%",
+     "evidence": [
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "The phase self-calibration improved the peak signal-to-noise ratio of the data by a factor of 186%, from a peak signal-to-noise ratio of 495 to one of 1457."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Subtract continuum from line data",
+    "method": {
+     "value": "Per EB: mtmfs (nterms = 2) continuum model from line-free channels, ft into the MS, uvsub; EBs then combined",
+     "evidence": [
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "a mtmfs image up to and including first order (`nterms` $=2$) was created using the line free channels in the spectral window"
+      },
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "The resulting MS tables for all three EBs were then combined to make the final continuum subtracted dataset"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean (mtmfs)",
+     "ft",
+     "uvsub"
+    ],
+    "key_parameters": [
+     {
+      "value": "nterms = 2",
+      "evidence": [
+       {
+        "loc": "Methods, Continuum subtraction",
+        "quote": "a mtmfs image up to and including first order (`nterms` $=2$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image D2O cube and re-image HDO and H2-18-O cubes",
+    "method": {
+     "value": "tclean with Briggs weighting, cleaned to 1 sigma; D2O robust 0, H2-18-O robust 1.0, HDO robust 2.0; 400 m/s channels for channel maps and masks; native resolution used for shifted cubes",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "The line itself was imaged using the CASA task `tclean` with Briggs weighting"
+      },
+      {
+       "loc": "Methods, Imaging",
+       "quote": "In this work, these data are cleaned down to $1\\sigma$, similar to the line"
+      }
+     ]
+    },
+    "software": [
+     "CASA tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Cleaned to 1 sigma to capture all flux and be independent of non-Gaussian beam features",
+      "evidence": [
+       {
+        "loc": "Methods, Imaging",
+        "quote": "The image is cleaned down to $1\\sigma$ to capture all the flux in the model and make the final measurement independent of any non-Gaussian features in the beam"
+       }
+      ]
+     },
+     {
+      "value": "Native spectral resolution 58, 162, 180 m/s (D2O, HDO, H2-18-O) for the shifted cubes",
+      "evidence": [
+       {
+        "loc": "Methods, Imaging",
+        "quote": "the native spectral resolution of the data of 58, 162, and 180 m s$^{-1}$ for , HDO, and H$_2^{18}$O, respectively, is used"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure line fluxes with Keplerian masks (fiducial)",
+    "method": {
+     "value": "Compute region in RA/Dec where each molecule should emit given disk Keplerian rotation in each channel; sum flux inside mask over channels 1.2-6.4 km/s; mask also shifted to COM line frequencies to test contamination",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "the lines are separated in the image plane by computing the region in Right Ascension and Declination where a molecule is expected to emit based on the Keplerian rotation of the disk"
+      },
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "The effect of neighboring COMs is investigated using an identical mask but then shifted to the frequency of those lines."
+      }
+     ]
+    },
+    "software": [
+     "Keplerian mask package (name not preserved in text)"
+    ],
+    "key_parameters": [
+     {
+      "value": "distance 400 pc, stellar mass 1.3 Msun, inclination 38.3 deg, PA 32 deg, emitting region 40-120 au, z/r = 0.4",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "an emitting region extending from 40 au to 120 au tracing $z/r=0.4$"
+       },
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "a stellar mass of 1.3 M$_{\\odot}$, a disk inclination of 38.3$\\degree$, and a position angle of 32$\\degree$"
+       }
+      ]
+     },
+     {
+      "value": "line width 350 m/s x sqrt(40 au / r); mask shifted by systemic velocity 4.3 km/s",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "The line width is assumed to follow 350 m s$^{-1} \\times \\sqrt{40~\\mathrm{au}/r}$"
+       },
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "the mask is shifted by 4.3 km s$^{-1}$ to match the systemic velocity of V883 Ori"
+       }
+      ]
+     },
+     {
+      "value": "Mask convolved with Gaussian 0.5 (D2O), 1.25 (HDO), 0.75 (H2-18-O) x beam, chosen by visual inspection; channels 1.2-6.4 km/s used",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "This parameter is chosen after visual inspection of the data."
+       },
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "To measure the disk integrated flux, only the channels between 1.2 and 6.4 km s$^{-1}$ are used"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Emission from disk at 40-120 au on a z/r = 0.4 surface; same mask parameters for all three isotopologues",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "These parameters are identical between all three analyzed water isotopologues."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux uncertainty from rms of masks shifted to 8 positions at 1.4 arcsec and five velocities (40 non-overlapping locations); compared against the spectral-shifting method (consistent within 3 sigma)",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "the rms of the flux measured in masks shifted to eight different positions"
+      },
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "and to five different velocities resulting in 40 unique, non-overlapping locations"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Measure line fluxes from Keplerian-shifted spectra (cross-check)",
+    "method": {
+     "value": "Shift each pixel by the projected Keplerian velocity, extract disk-integrated spectrum in an elliptical region (0.4 arcsec semi-major axis), mirror the non-blended side of each COM line and subtract it, build line templates for D2O and H2-18-O from their clean sides",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "Each pixel is shifted to correct for the projected Keplerian velocity expected at this location in the disk."
+      },
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "The non-blended side of COM emission line is mirrored in the line center creating a symmetric line profile that is then subtracted from the shifted spectrum."
+      }
+     ]
+    },
+    "software": [
+     "not stated (custom code, available on request)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Noise from rms of 520 independent shifted spectra in a 19 arcsec square without primary beam correction, excluding the inner 2.4 arcsec square",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "the noise is estimated using the rms of 520 independent shifted spectra extracted from a 19\" square in the cube without primary beam correction"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Emission assumed to originate from the disk midplane",
+      "evidence": [
+       {
+        "loc": "Methods, Flux measurements",
+        "quote": "the emission is assumed to be originating from the disk midplane"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Two methods consistent within 3 sigma; Keplerian-mask fluxes adopted because some flux may be lost to beam smearing in shifted spectra",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "The two methods to measure the line fluxes are consistent within $\\leq 3\\sigma$ for all three water isotopologues."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Convert line fluxes to column densities and isotopologue ratios",
+    "method": {
+     "value": "Optically thin LTE: N_u from integrated flux, Einstein A and emitting solid angle, then N_tot via partition function at rotational temperature 199 K; H2-18-O column scaled to H2-16-O with 560; ortho/para corrections",
+     "evidence": [
+      {
+       "loc": "Methods, Column density estimates",
+       "quote": "In this work, optically thin emission and local thermodynamical equilibrium (LTE) are assumed for this conversion."
+      },
+      {
+       "loc": "Methods, Column density estimates",
+       "quote": "The column density of the upper energy level can be determined without any knowledge on the rotational temperature"
+      }
+     ]
+    },
+    "software": [
+     "not stated"
+    ],
+    "key_parameters": [
+     {
+      "value": "Excitation temperature 199 +/- 42 K for all isotopologues",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "we use the excitation temperature of $199\\pm 42$ K of the HDO molecule"
+       }
+      ]
+     },
+     {
+      "value": "Emitting area equal to an ellipse of 0.4 arcsec (160 au) radius in the disk frame",
+      "evidence": [
+       {
+        "loc": "Methods, Column density estimates",
+        "quote": "an elliptical emitting region with that radius is used"
+       },
+       {
+        "loc": "Results",
+        "quote": "assuming an emitting area equal to the elliptical region used to extract the spectrum"
+       }
+      ]
+     },
+     {
+      "value": "Ortho-to-para ratio 2 (D2O) and 3 (H2-18-O); N(H2-16-O)/N(H2-18-O) = 560 +/- 25",
+      "evidence": [
+       {
+        "loc": "Methods, Column density estimates",
+        "quote": "using a thermalized ortho-to-para ratio of 2 and 3, respectively"
+       },
+       {
+        "loc": "Results",
+        "quote": "using the typical ratio of $560 \\pm 25$ in the ISM"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin emission, LTE, single excitation temperature shared by all water isotopologues, similar spatial distribution",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "As the spatial distribution of all three water isotopologues"
+       },
+       {
+        "loc": "Methods, Column density estimates",
+        "quote": "these water isotopologues emit from the same disk region"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Optical depth, temperature, OPR, emitting-region and masing sensitivity tests (see step 8)",
+     "evidence": [
+      {
+       "loc": "Supplementary, Optical depth",
+       "quote": "For the fiducial temperature of 199 K, the thermal linewidth and derived column densities of the upper energy levels, all lines analyzed in this work are optically thin."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare ratios with Class 0, comet 67P and collapsing-core models",
+    "method": {
+     "value": "Compare D2O/H2O and (D2O/HDO)/(HDO/H2O) of V883 Ori with literature values for Class 0 objects and 67P, and with histograms of a collapsing-core chemical model classed as inheritance or reset",
+     "evidence": [
+      {
+       "loc": "Supplementary, Water isotopologue ratios",
+       "quote": "First of all, the water isotopologue ratios in the V883 Ori disk are compared to those in younger and older objects to look for similarity."
+      }
+     ]
+    },
+    "software": [
+     "not stated"
+    ],
+    "key_parameters": [
+     {
+      "value": "Inheritance: <~10% of ice destroyed; reset: >~70% destroyed",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "inheritance (all stream lines where $\\lesssim 10$% of the water ice is destroyed) or reset (all stream lines where $\\gtrsim 70$% of the water ice is destroyed)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "V883 Ori point lies within 1 sigma of the peak of the inheritance model histogram",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The V883 Ori datapoint coincides with the peak of the model prediction histogram for inheritance well within $1\\sigma$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Test systematic uncertainties",
+    "method": {
+     "value": "Vary excitation temperature by +/-100 K, estimate optical depth, test a smaller emitting annulus, test low OPR, discuss masking",
+     "evidence": [
+      {
+       "loc": "Supplementary, Excitation temperature",
+       "quote": "by varying the temperature by $\\pm 100$ K, the approximate range of temperatures found for COMs in this disk"
+      }
+     ]
+    },
+    "software": [
+     "not stated"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tex = 99, 199, 299 K; smallest emitting region an elliptical annulus 0.1-0.2 arcsec (area 5.3 times smaller); OPR = 1",
+      "evidence": [
+       {
+        "loc": "Supplementary, Optical depth",
+        "quote": "the smallest physically motivated emitting region is an elliptical annulus between $0\\ensuremath{\\overset{\\prime\\prime}{.}}1$ and $0\\ensuremath{\\overset{\\prime\\prime}{.}}2$"
+       },
+       {
+        "loc": "Supplementary, Ortho-to-para ratios",
+        "quote": "If the OPR is at a low value of 1 for both molecules"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "D2O/H2O stays consistent with inheritance in all variants tested",
+     "evidence": [
+      {
+       "loc": "Supplementary, Optical depth",
+       "quote": "Therefore, even in this case the / ratio can be used to infer that water is inherited."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.5.4",
+    "used_for": {
+     "value": "Self-calibration, continuum subtraction and imaging",
+     "evidence": [
+      {
+       "loc": "Methods, Self-calibration",
+       "quote": "The data were self-calibrated using CASA version 6.5.4"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging the D2O line and re-imaging HDO and H2-18-O (and mtmfs continuum model)",
+     "evidence": [
+      {
+       "loc": "Methods, Imaging",
+       "quote": "The line itself was imaged using the CASA task `tclean` with Briggs weighting"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ft",
+    "version": "not stated",
+    "used_for": {
+     "value": "Adding the continuum model to the measurement set",
+     "evidence": [
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "The resulting model for the continuum emission was added to the measurement set using `ft`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvsub",
+    "version": "not stated",
+    "used_for": {
+     "value": "Subtracting the continuum model from the visibilities",
+     "evidence": [
+      {
+       "loc": "Methods, Continuum subtraction",
+       "quote": "This model was then used to subtract the continuum using the CASA task `uvsub`."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "D2O peak signal-to-noise ratio in shifted spectrum",
+    "value": "11",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The line is detected at a peak signal-to-noise ratio of 11 in the shifted spectrum"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak S/N of continuum before and after phase self-calibration",
+    "value": "495 to 1457",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Methods, Self-calibration",
+      "quote": "from a peak signal-to-noise ratio of 495 to one of 1457"
+     }
+    ]
+   },
+   {
+    "quantity": "D2O line flux (Keplerian mask)",
+    "value": "53",
+    "uncertainty": "4",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$53 \\pm 4$ | $61 \\pm 4$"
+     }
+    ]
+   },
+   {
+    "quantity": "D2O line flux (shifted spectrum)",
+    "value": "61",
+    "uncertainty": "4",
+    "units": "mJy km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$53 \\pm 4$ | $61 \\pm 4$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO 225 GHz line flux (Keplerian mask; shifted spectrum)",
+    "value": "358 ; 408",
+    "uncertainty": "14 ; 12",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$358 \\pm 14$ | $408 \\pm 12$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2-18-O 203 GHz line flux (Keplerian mask; shifted spectrum)",
+    "value": "43 ; 58",
+    "uncertainty": "9 ; 10",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$43 \\pm 9$ | $58 \\pm 10$"
+     }
+    ]
+   },
+   {
+    "quantity": "N(D2O), N(HDO), N(H2-18-O) (Keplerian mask)",
+    "value": "4.2e13 ; 49.5e14 ; 23.7e14",
+    "uncertainty": "1.2e13 ; 6.9e14 ; 5.7e14",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$(4.2 \\pm 1.2)\\times 10^{13}$ cm$^{-2}$, $(49.5 \\pm 6.9) \\times 10^{14}$ cm$^{-2}$, and $(23.7 \\pm 5.7) \\times 10^{14}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total N(H2-16-O)",
+    "value": "13.3e17",
+    "uncertainty": "3.2e17",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "scaled to a total column density of $(13.3\\pm 3.2) \\times 10^{17}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "D2O/H2O",
+    "value": "3.2e-5",
+    "uncertainty": "1.0e-5 in text (Table 3 lists 1.2)",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "These column densities translate to / = $(3.2 \\pm 1.0) \\times 10^{-5}$ and (/HDO) / (HDO/) = $2.3 \\pm 1.0$."
+     }
+    ]
+   },
+   {
+    "quantity": "(D2O/HDO)/(HDO/H2O)",
+    "value": "2.3",
+    "uncertainty": "1.0",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "These column densities translate to / = $(3.2 \\pm 1.0) \\times 10^{-5}$ and (/HDO) / (HDO/) = $2.3 \\pm 1.0$."
+     }
+    ]
+   },
+   {
+    "quantity": "D2O/HDO",
+    "value": "8.5e-3",
+    "uncertainty": "2.8e-3",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "ratio of $(8.5 \\pm 2.8) \\times 10^{-3}$ in this disk"
+     }
+    ]
+   },
+   {
+    "quantity": "D2O/H2O, double ratio from the shifted-spectrum method (Table 3)",
+    "value": "2.7e-5 ; 2.8",
+    "uncertainty": "1.0e-5 ; 1.1",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Shifted spectrum | $4.9 \\pm 1.4$ | $56.4 \\pm 7.7$ | $32.3 \\pm 6.3$ | $2.7 \\pm 1.0$ | $8.6 \\pm 2.8$ | $2.8 \\pm 1.1$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO/H2O from reimaged HDO and H2-18-O",
+    "value": "3.7e-3",
+    "uncertainty": "1.0e-3",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Supplementary, HDO/H2O ratio",
+      "quote": "we derive the HDO/ ratio to be $(3.7 \\pm 1.0)\\times 10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "D2O/H2O and double ratio at Tex = 99 K",
+    "value": "1.3e-5 ; 1.4",
+    "uncertainty": "0.8e-5 ; 0.9",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Supplementary Table 5",
+      "quote": "99 | $(1.3 \\pm 0.8)\\times 10^{-5}$ | $1.4 \\pm 0.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO optical depth at Tex = 199 K (text value; Supplementary Table 6 lists 1.8e-1)",
+    "value": "0.14",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Supplementary, Optical depth",
+      "quote": "The HDO line has the highest optical depth at 0.14"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Pristine water formed in the earliest star-formation phases is available in a protoplanetary disk",
+    "evidence": [
+     {
+      "loc": "Discussion, Summary",
+      "quote": "Our result demonstrates that pristine water that formed at the earliest phases of star and planet formation is available in protoplanetary disks"
+     }
+    ]
+   },
+   {
+    "value": "The outburst is not expected to alter the water deuteration outside the inner 1-3 au",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the outburst only affects the water deuteration in the inner 1-3 au"
+     }
+    ]
+   },
+   {
+    "value": "Differential dust optical depth, if present, would drive measured ratios further toward inheritance",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the measured ratios will be driven further into the regime consistent with inheritance"
+     }
+    ]
+   },
+   {
+    "value": "HDO/H2O alone does not distinguish inheritance from reset",
+    "evidence": [
+     {
+      "loc": "Supplementary, HDO/H2O ratio",
+      "quote": "thus that this ratio does not distinguish inheritance from reset"
+     }
+    ]
+   },
+   {
+    "value": "COM deuteration in this disk is lower than in the hot corino IRAS 16296 B and comet 67P, interpreted as some reprocessing of COMs",
+    "evidence": [
+     {
+      "loc": "Discussion, Deuteration of complex organic molecules",
+      "quote": "This lower level of deuteration in the V883 Ori disk has been interpreted as an indication for some reprocessing of COMs"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the water ice in the V883 Ori disk inherited from the cloud or reset in the disk?",
+    "experiment": "Detect D2O with ALMA Band 7 and measure D2O/H2O and (D2O/HDO)/(HDO/H2O) using Keplerian-mask fluxes and LTE column densities",
+    "result": "D2O detected (S/N 11); D2O/H2O = (3.2 +/- 1.0)e-5; (D2O/HDO)/(HDO/H2O) = 2.3 +/- 1.0, similar to Class 0 objects and comet 67P",
+    "finding": "The ice in the V883 Ori disk is inherited from the cold molecular cloud",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "This strongly indicates that the ice in the V883 Ori disk is inherited from the cold molecular cloud that collapsed to form a Class 0 protostar"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do the observed ratios match chemical-model predictions for inheritance rather than reset?",
+    "experiment": "Overlay observed D2O/H2O on model histograms of a collapsing core",
+    "result": "The V883 Ori data point lies within 1 sigma of the peak of the inheritance histogram",
+    "finding": "Models support inheritance",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The V883 Ori datapoint coincides with the peak of the model prediction histogram for inheritance well within $1\\sigma$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the double ratio (D2O/HDO)/(HDO/H2O) of the disk consistent with the inheritance model value?",
+    "experiment": "Compare observed ratio with the model prediction of 10 and with the reset value ~5e-2",
+    "result": "Observed ratio is a factor of ~40-140 above the reset value but up to a factor of ~5 below the model inheritance value of 10",
+    "finding": "Ratio is consistent with inheritance once variations in initial conditions are allowed (0.8-19)",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The (/HDO) / (HDO/) ratio predicted in for inheritance is 10, which is a factor up to $\\sim 5$ higher than that observed."
+     },
+     {
+      "loc": "Supplementary, (D2O/HDO)/(HDO/H2O) ratio",
+      "quote": "together with the spread in possible values for inheritance strongly suggests that ice is preserved from the earliest phases of star and planet formation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the inheritance conclusion survive the main systematic uncertainties?",
+    "experiment": "Vary excitation temperature, optical depth, emitting area, OPR and consider masing",
+    "result": "D2O/H2O remains consistent with inheritance even at 99 K, with OPR = 1 and for a small emitting annulus; the double ratio is less robust (HDO optically thick in the small region, possible HDO masing)",
+    "finding": "The D2O/H2O ratio is the robust indicator",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Supplementary, Excitation temperature",
+      "quote": "Even if the gas were only 99 K, the / ratio would be fully consistent with inheritance of material."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "D2O is the most sensitive tracer of inheritance versus reset and had not been observed in the protoplanetary disk stage",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "is the most sensitive tool to distinguish inheritance from reset because it cannot reform efficiently after reprocessing"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "In particular, observations of doubly deuterated water are missing in the protoplanetary disk stage."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Lines are blended with COM emission, so Keplerian masking and spectral shifting are used; uvcontsub was impractical because of the line density; robust = 0 balances resolution and noise",
+    "evidence": [
+     {
+      "loc": "Methods, Flux measurements",
+      "quote": "Keplerian masking in the channel maps and spectral shifting of the spectrum"
+     },
+     {
+      "loc": "Methods, Continuum subtraction",
+      "quote": "too few line-free channels were available to subtract the continuum emission in the $uv$-plane using the standard CASA task `uvcontsub`"
+     },
+     {
+      "loc": "Methods, Imaging",
+      "quote": "which provides the best balance between spatial resolution and noise"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "HDO 241 GHz line rejected (too blended)",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "The HDO 241 GHz line on the other hand is too severely blended and is therefore not considered in this analysis."
+      }
+     ]
+    },
+    {
+     "value": "Shifted-spectrum fluxes not used as fiducial; Keplerian-mask fluxes used for the final analysis",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "the fluxes measured using the Keplerian masks are used for the final analysis presented in the main text"
+      }
+     ]
+    },
+    {
+     "value": "Smaller-region H2-18-O spectrum not used in calculations to avoid bias",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "This spectrum is not used for any of calculations to avoid a bias"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Cleaning continued to 1 sigma to capture all flux",
+    "evidence": [
+     {
+      "loc": "Methods, Imaging",
+      "quote": "The image is cleaned down to $1\\sigma$ to capture all the flux in the model and make the final measurement independent of any non-Gaussian features in the beam"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Excitation temperature taken from two HDO lines, one heavily blended, so somewhat uncertain; only a single line per isotopologue",
+     "evidence": [
+      {
+       "loc": "Supplementary, Excitation temperature",
+       "quote": "the derived excitation temperature is somewhat uncertain"
+      },
+      {
+       "loc": "Supplementary, Excitation temperature",
+       "quote": "As only a single line of each water isotopologue is analyzed in this work"
+      }
+     ]
+    },
+    {
+     "value": "HDO and H2-18-O may be weakly masing, which would make the double ratio not meaningful",
+     "evidence": [
+      {
+       "loc": "Supplementary, Masing",
+       "quote": "the HDO 225 GHz and the H$_2^{18}$O lines are possibly weakly masing in a large region in the V883 Ori disk"
+      }
+     ]
+    },
+    {
+     "value": "Line-flux uncertainties exclude absolute flux calibration uncertainty",
+     "evidence": [
+      {
+       "loc": "Methods, Flux measurements",
+       "quote": "The reported uncertainties on the line fluxes do include the statistical uncertainty but not the 5% absolute flux calibration uncertainty"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-temperature LTE with an assumed 0.4 arcsec emitting ellipse; ratios depend on the shared Tex taken from a partly blended HDO pair",
+    "Text and tables disagree in places (D2O/H2O error 1.0 vs 1.2; HDO optical depth 0.14 vs 0.18)",
+    "The observed double ratio (2.3) sits below the model inheritance value (10); one model family is the only reset/inheritance benchmark",
+    "COM-deblending uses mirrored line templates and hand-chosen mask convolution, which are not objective"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Both ALMA programs stated to be public in the ALMA archive",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "are publicly available on the ALMA archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Code available on request; based on public python packages",
+     "evidence": [
+      {
+       "loc": "Code availability",
+       "quote": "In addition, the code itself is available upon reasonable request to M.L."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Keplerian-mask and spectral-shifting code and package names",
+    "Clean parameters (image size, cell, niter, thresholds) and line-free channel lists",
+    "Calibration and imaging details for the 2021.1.00186.S HDO and H2-18-O data",
+    "Partition-function values at 199 K"
+   ],
+   "estimated_data_volume_inferred": "Roughly 50-150 GB for three Band 7 EBs with high spectral resolution plus the earlier HDO and H2-18-O datasets",
+   "score_inferred": 3,
+   "score_reason": "Public data, specified self-calibration, imaging and flux-measurement recipe with numeric results, but mask package, clean settings and code are not given",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data are public and results are numeric, but key imaging parameters, line-free channels and the deblending code are missing, so the recipe cannot be redone as stated"
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "exoALMA large program self-calibration (citation not preserved in text)",
+     "why": "Self-calibration procedure followed in this work"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Tobin et al. 2023 (cite: Tobin2023)",
+     "why": "Earlier HDO and H2-18-O observations of the V883 Ori disk (2021.1.00186.S), reimaged here"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "2021.1.00186.S",
+    "2023.1.00588.S",
+    "exoALMA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025NatAs...9.1486L",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:19:18",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 147,
+  "quotes_ok": 147,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 15,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 113,
+   "stated": 83,
+   "rate": 0.735
+  },
+  "evidence_ok": true
+ }
+}

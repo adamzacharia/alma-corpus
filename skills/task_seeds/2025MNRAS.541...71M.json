@@ -1,0 +1,536 @@
+{
+ "bibcode": "2025MNRAS.541...71M",
+ "title": "ALMA millimetre-wavelength imaging of HD 138965: new constraints on the debris dust composition and presence of planetary companions",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf984",
+ "arxiv_id": "2506.11726",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "What are the radial extent, width and inclination of the HD 138965 outer debris belt in ALMA 1.3 mm imaging, what dust composition fits, and what limits follow on the dust albedo and on planetary companions",
+ "alma_project_codes": [
+  "2019.1.01220.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 m array, 42 antennas, single pointing",
+  "angular_resolution": "restored beam 1.39'' x 1.17'', PA = 10.5 deg",
+  "sensitivity": "3xRMS ~ 70 uJy (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel-derived disc radius, inclination and position angle used as priors for the ALMA fit",
+    "evidence": [
+     {
+      "loc": "3.2 Millimetre continuum emission",
+      "quote": "provide good constraints on the radius, inclination, and position angle for the priors for these parameters (cite: 2016Morales; 2021Marshall)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016Morales; 2021Marshall)"
+  },
+  {
+   "what": {
+    "value": "Compiled optical-to-far-infrared photometry (Hipparcos, 2MASS, Akari, WISE, Spitzer, IRAS, Herschel/PACS) and Spitzer IRS spectrum",
+    "evidence": [
+     {
+      "loc": "2.2 Ancilliary data",
+      "quote": "We compile a comprehensive set of photometric and spectroscopic data spanning optical to millimetre wavelengths."
+     }
+    ]
+   },
+   "citation": "(cite: 2000Hog; 2006Skrutskie; 2010Ishihara; 2010Wright; 2014Chen; 2016Morales; 1988Beichman)"
+  },
+  {
+   "what": {
+    "value": "Stellar [Fe/H] = -0.30 ± 0.30 dex",
+    "evidence": [
+     {
+      "loc": "3.1 Fundamental stellar parameters",
+      "quote": "We adopted \\[Fe/H\\]= $-0.30~\\pm~0.30$ dex, derived by (cite: zhang2023)"
+     }
+    ]
+   },
+   "citation": "(cite: zhang2023)"
+  },
+  {
+   "what": {
+    "value": "PARSEC v1.2S stellar evolution tracks used as model grid",
+    "evidence": [
+     {
+      "loc": "3.1 Fundamental stellar parameters",
+      "quote": "a grid of stellar evolution models constructed from the PARSEC v1.2S tracks (cite: bressan2012; chen2014; chen2015; tang2014)"
+     }
+    ]
+   },
+   "citation": "(cite: bressan2012; chen2014; chen2015; tang2014)"
+  },
+  {
+   "what": {
+    "value": "BT-NextGen stellar atmosphere model",
+    "evidence": [
+     {
+      "loc": "3.4 Spectral energy distribution",
+      "quote": "We obtained the best BT-NextGen stellar atmosphere model (cite: 2012Allard)"
+     }
+    ]
+   },
+   "citation": "(cite: 2012Allard)"
+  },
+  {
+   "what": {
+    "value": "Optical constants: astronomical silicate, crystalline water-ice, amorphous water-ice, amorphous carbon",
+    "evidence": [
+     {
+      "loc": "3.4 Spectral energy distribution",
+      "quote": "a mixture of astronomical silicate with either crystalline water-ice (cite: 2008WarrenBrandt), amorphous water-ice (cite: 1993Hudgins), amorphous carbon (cite: 1993Preibisch), or vacuum (as porosity)"
+     },
+     {
+      "loc": "3.4 Spectral energy distribution",
+      "quote": "the inner belt to have a grain composition of astronomical silicate (cite: 2003Draine)"
+     }
+    ]
+   },
+   "citation": "(cite: 2003Draine; 2008WarrenBrandt; 1993Hudgins; 1993Preibisch)"
+  },
+  {
+   "what": {
+    "value": "AMES-COND models used to convert contrast to mass",
+    "evidence": [
+     {
+      "loc": "3.5 Constraints from scattered light",
+      "quote": "The masses were converted from the measured contrast using the AMES-COND grid of models (cite: 2001Allard)."
+     }
+    ]
+   },
+   "citation": "(cite: 2001Allard)"
+  },
+  {
+   "what": {
+    "value": "Predicted CO emission level of the disc",
+    "evidence": [
+     {
+      "loc": "3.3 Millimetre CO line emission",
+      "quote": "predicted CO emission level of 1.1$\\times10^{-23}$ W/m$^{2}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2017Kral)"
+  },
+  {
+   "what": {
+    "value": "Steady-state collisional cascade size exponent q = 3.5",
+    "evidence": [
+     {
+      "loc": "3.4 Spectral energy distribution",
+      "quote": "size distribution component to be 3.5 (cite: 1969Dohnanyi)"
+     }
+    ]
+   },
+   "citation": "(cite: 1969Dohnanyi)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive stellar parameters",
+   "method": "Bayesian inference on a PARSEC v1.2S model grid using Gaia absolute G magnitude, BP-RP colour and [Fe/H], with a pre-main-sequence prior",
+   "software": [
+    "Bayesian inference code of delburgo2016/2018",
+    "PARSEC v1.2S"
+   ],
+   "key_parameters": [
+    "Inputs: M_G, G_BP-G_RP, [Fe/H]"
+   ],
+   "assumptions": [
+    "Null extinction"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit the ALMA continuum visibilities with a Gaussian belt",
+   "method": "Single Gaussian belt model, RADMC-3D images converted to model visibilities with Galario, sampled with emcee",
+   "software": [
+    "emcee",
+    "RADMC-3D",
+    "Galario"
+   ],
+   "key_parameters": [
+    "90 walkers, 1,000 steps (90,000 realisations); posterior from last 10,000 realisations",
+    "Priors for radius, inclination, position angle normal with sd 3% of initial value, from Herschel"
+   ],
+   "assumptions": [
+    "Star at the phase centre; offsets of the disc centre fitted"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Search for CO (2-1) gas emission",
+   "method": "Mask the cube to the disc annulus, shift spectra by projected Keplerian velocity, interpolate to common velocities and sum",
+   "software": [],
+   "key_parameters": [
+    "Spectrum centred on stellar radial velocity of -9.38 km/s from Gaia DR3"
+   ],
+   "assumptions": [
+    "Keplerian rotation with the continuum-derived disc extent and orientation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain the inner belt from the SED",
+   "method": "Stardust SED fit with inner and outer belts free, then re-run with fixed inner-belt s_min, q and fractional width, leaving only radius and mass free",
+   "software": [
+    "Stardust",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Fixed for inner belt: s_min = 12 um, q = 3.5, Delta r/r = 0.3",
+    "Maximum grain size 3000 um; inner belt astronomical silicate"
+   ],
+   "assumptions": [
+    "Outer belt grains pure astronomical silicate when fixing the inner belt"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare outer-belt dust compositions",
+   "method": "Stardust + emcee for each composition (astronomical silicate mixed with crystalline/amorphous water-ice, amorphous carbon or vacuum at volume fractions 0.5, 0.25, 0.1), outer belt radius and width fixed to ALMA values, ranked by BIC",
+   "software": [
+    "Stardust",
+    "emcee"
+   ],
+   "key_parameters": [
+    "s_min set to the blowout limit of each composition; q allowed 2 to 5",
+    "BIC with k = 3 or 4 and N = 15"
+   ],
+   "assumptions": [
+    "Inner belt fixed from the pure-silicate run; may bias toward astronomical silicate"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain scattered-light brightness, albedo and companion masses from imaging",
+   "method": "Inject model discs into SHARDDS data and reduce with classical ADI; RSM contrast curve converted to mass with AMES-COND; HST/ACS surface-brightness limit converted to albedo limit",
+   "software": [
+    "Regime Switching Model"
+   ],
+   "key_parameters": [
+    "Ages 30 ± 10 Ma, 45 ± 5 Ma and 348 (+39/-54) Ma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Infer planetary companion mass limits from belt architecture",
+   "method": "Single-planet sculpting and self-stirring calculations following Pearce et al. using the belt inner edge and stellar parameters",
+   "software": [],
+   "key_parameters": [
+    "Disc inner edge at 101 au (R - sigma_R)"
+   ],
+   "assumptions": [
+    "Single planet sculpting, or self-stirring by planetesimals up to 100 km"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Outer belt radius (R_peak)",
+   "value": "150",
+   "uncertainty": "+10/-7",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "These reveal its radial extent to be 150$^{+10}_{-7}$ au with a width ($\\sigma$) of 49$^{+7}_{-6}$ au ($\\Delta R/R = 0.77$), at a moderate inclination of 49.9$^\\circ$$^{+3.3}_{-3.7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer belt width (sigma_R)",
+   "value": "49",
+   "uncertainty": "+7/-6",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "These reveal its radial extent to be 150$^{+10}_{-7}$ au with a width ($\\sigma$) of 49$^{+7}_{-6}$ au ($\\Delta R/R = 0.77$), at a moderate inclination of 49.9$^\\circ$$^{+3.3}_{-3.7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Belt FWHM",
+   "value": "115",
+   "uncertainty": "+16/-14",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Millimetre continuum emission",
+     "quote": "a width of 49$^{+7}_{-6}$ au (FWHM = 115$^{+16}_{-14}$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional width Delta R / R",
+   "value": "0.77",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "These reveal its radial extent to be 150$^{+10}_{-7}$ au with a width ($\\sigma$) of 49$^{+7}_{-6}$ au ($\\Delta R/R = 0.77$), at a moderate inclination of 49.9$^\\circ$$^{+3.3}_{-3.7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination",
+   "value": "49.9",
+   "uncertainty": "+3.3/-3.7",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "These reveal its radial extent to be 150$^{+10}_{-7}$ au with a width ($\\sigma$) of 49$^{+7}_{-6}$ au ($\\Delta R/R = 0.77$), at a moderate inclination of 49.9$^\\circ$$^{+3.3}_{-3.7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle",
+   "value": "173.3",
+   "uncertainty": "+3.7/-4.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Millimetre continuum emission",
+     "quote": "and position angle, $\\phi = 173.3\\ensuremath{^\\circ}^{+3.7}_{-4.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative scale height h = z/R (unconstrained)",
+   "value": "0.15",
+   "uncertainty": "+0.07/-0.08",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Millimetre continuum emission",
+     "quote": "The large relative vertical scale height, $h = 0.15^{+0.07}_{-0.08}$, might be taken as a further indication of the disc being stirred."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc flux density at 1.269 mm",
+   "value": "1.46",
+   "uncertainty": "0.23",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Millimetre continuum emission",
+     "quote": "We find that HD 138965’s disc has a total flux density of 1.46 $\\pm$ 0.23 mJy at a wavelength of 1.269 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar photospheric emission at 1.3 mm (3-sigma upper limit)",
+   "value": "<90",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Millimetre continuum emission",
+     "quote": "obtain a 3-$\\sigma$ upper limit of 90 $\\mu$Jy on the stellar photospheric emission"
+    }
+   ]
+  },
+  {
+   "quantity": "CO (2-1) 5-sigma upper limit in a 10 km/s channel",
+   "value": "<3.35 mJy/beam (2.7e-23 W/m^2)",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Millimetre CO line emission",
+     "quote": "obtain a 5-$\\sigma$ upper limit of 3.35 mJy/beam in a 10 km/s wide channel, equivalent to 2.7$\\times10^{-23}$ W/m$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar effective temperature",
+   "value": "8881",
+   "uncertainty": "31",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Fundamental stellar parameters",
+     "quote": "Our effective temperature ($T_{\\rm eff}$ = 8881$~\\pm~$ 31 K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar age (pre-main-sequence prior)",
+   "value": "31",
+   "uncertainty": "11",
+   "units": "Ma",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Fundamental stellar parameters",
+     "quote": "Our age estimation of 31$~\\pm~$11 Ma is consistent with that of"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner belt mean radial location",
+   "value": "15",
+   "uncertainty": "+3/-2",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6 Conclusions",
+     "quote": "determining its location to be 15$^{+3}_{-2}$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner belt dust temperature (12 um silicate at 15 au)",
+   "value": "168",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Spectral energy distribution",
+     "quote": "The effective temperature of 12 $\\mu$m astronomical silicate dust grains is 168 K at 15 au from HD 138965"
+    }
+   ]
+  },
+  {
+   "quantity": "Scattering albedo upper limit (HST/ACS)",
+   "value": "<=0.09",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Constraints from scattered light",
+     "quote": "resulting in a limit of $\\omega \\leq 0.09$ at optical wavelengths"
+    }
+   ]
+  },
+  {
+   "quantity": "SHARDDS 5-sigma surface brightness limit at 2''",
+   "value": "83",
+   "uncertainty": "not stated",
+   "units": "uJy/arcsec^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Constraints from scattered light",
+     "quote": "we obtain a 5-$\\sigma$ upper limit of 83 $\\mu$Jy/arcsec$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum integrated disc brightness detectable in SHARDDS",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Constraints from scattered light",
+     "quote": "We find a minimum brightness of around 10 mJy is required for the disc to be detected in the SHARDDS data."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion mass limits near 80 au from contrast (31, 45, 348 Ma)",
+   "value": "4, 5, 15",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Constraints from scattered light",
+     "quote": "we obtain upper limits to the mass of any companion of 4$~M_{\\rm Jup}$ ($t_{\\star} =$ 31 Ma), 5$~M_{\\rm Jup}$ ($t_{\\star} =$ 45 Ma), and 15$~M_{\\rm Jup}$ ($t_{\\star} =$ 348 Ma)"
+    }
+   ]
+  },
+  {
+   "quantity": "Model albedo over all angles at 1.6 um",
+   "value": "0.56",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5 Constraints from scattered light",
+     "quote": "We infer a scattering albedo of $\\omega = 0.56$ over all angles at a wavelength of 1.6 $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "Single sculpting planet mass lower limit",
+   "value": ">=2.3 at semi-major axis <=74 au",
+   "uncertainty": "0.4 (mass); +8/-6 au (semi-major axis)",
+   "units": "M_Jup",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "we calculate a planetary mass $\\geq$ 2.3 $\\pm$ 0.4 $M_{\\rm J}$ at a semi-major axis $\\leq~74^{+8}_{-6}$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum total disc mass for self-stirring (bodies up to 100 km)",
+   "value": "400",
+   "uncertainty": "100",
+   "units": "M_Earth",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "we can constrain the total mass of the debris disc to be at least $400~\\pm~100~M_{\\oplus}$ in bodies up to 100 km in size"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the ALMA pipeline or manual calibration was used, and the CASA / pipeline version",
+  "Self-calibration, if any, and the exact flagging applied to the flux calibrator",
+  "How the 4 SPWs were combined for continuum, and which channels were line-free",
+  "tclean settings: image size, cell size, deconvolver, masking, clean threshold, uv taper",
+  "How the visibilities were binned for the Galario fit (bin widths, number of bins) and the noise or weight treatment in the likelihood",
+  "RADMC-3D setup for the disc model (grid, wavelength, dust opacity or emissivity) and Galario settings",
+  "Initial values and prior bounds for each disc parameter beyond Table ranges, and how the 3% prior width was applied to each",
+  "Priors/ranges and likelihood for the Stardust SED fits, and how the 15 data points (N = 15) were chosen",
+  "Stardust code is not stated to be released; implementation details beyond the appendix equations are needed",
+  "SHARDDS reduction details (ADI parameters, injection procedure) and the exact albedo calculation from the HST limit",
+  "Inputs and equations used for the Pearce et al. companion-mass calculation beyond the disc inner edge of 101 au",
+  "The abstract gives the companion semi-major axis limit as <= 78 au while the Discussion gives <= 74 (+8/-6) au; the intended value is unclear"
+ ],
+ "missing_for_reproduction": [
+  "Imaging and calibration settings (CASA version, tclean parameters, line-free channels)",
+  "Visibility binning and likelihood details of the Galario/RADMC-3D fit",
+  "Stardust source code and SED priors",
+  "SHARDDS ADI reduction parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, observing setup, beam, robust and MCMC settings are given and the ALMA continuum fit is repeatable with public data, but calibration/imaging details are generic and the custom Stardust SED code is not released.",
+ "rediscovery_reason": "ALMA data are public and the Gaussian-belt visibility fit has numeric targets (R, sigma, i, PA, flux), although the SED composition analysis cannot be redone without Stardust.",
+ "source_card": "cards/2025MNRAS.541...71M/sonnet/card.md"
+}

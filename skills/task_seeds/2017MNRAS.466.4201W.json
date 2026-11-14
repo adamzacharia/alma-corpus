@@ -1,0 +1,264 @@
+{
+ "bibcode": "2017MNRAS.466.4201W",
+ "title": "1.3-mm ALMA observations of the Fomalhaut debris system",
+ "year": 2017,
+ "doi": "10.1093/mnras/stw3303",
+ "arxiv_id": "1612.01648",
+ "fields": [
+  "debris_disks",
+  "stellar_physics"
+ ],
+ "question": "What is the 1.3 mm morphology of Fomalhaut's debris ring, its mm spectral index and grain size slope, and is there central emission in excess of the stellar photosphere indicating an inner debris component?",
+ "alma_project_codes": [
+  "2013.1.00486.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~233 GHz, 1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.329 x 0.234 arcsec, PA 83.6 deg",
+  "sensitivity": "17 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Literature disc and stellar flux densities 70 um-6.6 mm and 0.554-24 um used in SED and spectral index fits (Table flux_list)",
+    "evidence": [
+     {
+      "loc": "4 SED Modelling",
+      "quote": "with literature values for flux densities at different wavelengths (see Table [\\[flux_list\\]](#flux_list))."
+     }
+    ]
+   },
+   "citation": "Ricci 2012, Boley 2012, Su 2016, Holland 2003/1998, Acke 2012, Ishihara 2010, Pickles 2010, Boyajian 2013"
+  },
+  {
+   "what": {
+    "value": "Stellar photosphere temperature 8600 +/- 200 K",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The photosphere temperature of the star is constrained to be T$_{B} = 8600 \\pm200$ K from *Herschel* observations (cite: acke)."
+     }
+    ]
+   },
+   "citation": "(cite: acke)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "CASA CLEAN of 233 GHz continuum, natural weighting, threshold 0.5 sigma",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image-plane MCMC ring + point source fit",
+   "method": "Model attenuated by primary beam, convolved with synthetic beam, compared to dirty image with chi^2; Metropolis-Hastings",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 chains, 100000 links, thinned by 10, sigma = 374 uJy"
+   ],
+   "assumptions": [
+    "Gaussian radial profile, vertical Gaussian width 1 deg, point source at phase centre"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Visibility-plane MCMC fit",
+   "method": "Predict model visibilities with setvp/predict and chi^2 on real and imaginary parts with weights",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "10 chains, 100000 links, acceptance ~26%"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Eccentricity and mass estimates",
+   "method": "e from de-projected offsets over semi-major axis; mass from grain size distribution q=3.5",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "density 2.5 g/cc for 1.3 mm grains; 1 g/cc, Dmax 50 km for cascade"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Spectral index and grain size slope",
+   "method": "Bayesian MCMC fit of F_nu ∝ nu^alpha to ring fluxes; q=(alpha_mm-alpha_pl)/beta_s+3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_pl=1.84±0.02 (dust 45±5 K), beta_s=1.8±0.2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Stellar brightness temperature fits",
+   "method": "Bayesian black body fits to subsets of stellar flux data; 10% uncertainty when missing",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Su et al. 870 um flux used rather than Boley"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Ring radius (visibility fit)",
+   "value": "139",
+   "uncertainty": "[136,141] 95%",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Centre \\[au\\]                 | $139$         | $[136, 141]$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring FWHM",
+   "value": "13",
+   "uncertainty": "[10,16] 95%",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Width \\[au\\]                  | $13$          | $[10, 16]$            |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring flux (visibility)",
+   "value": "30.8",
+   "uncertainty": "[27.8,34.2] 95%",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Disc Flux \\[mJy\\]             | $30.8$        | $[27.8, 34.2]$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Central emission flux",
+   "value": "0.90",
+   "uncertainty": "±0.12 (incl. calibration)",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with a most probable flux of $0.90\\pm 0.12$ mJy (including calibration uncertainties)"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "66.7",
+   "uncertainty": "[66.0,67.2]",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Inclination \\[$^{\\circ}$\\]    | $66.7$        | $[66.0, 67.2]$        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Eccentricity",
+   "value": "0.12",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "which yields an eccentricity of $0.12 \\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 350-6600 um",
+   "value": "-2.73",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 SED Modelling",
+     "quote": "$\\alpha_{mm} = -2.73 \\pm 0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Grain size slope q (350-6600 um)",
+   "value": "3.50",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 SED Modelling",
+     "quote": "$q = 3.50\\pm 0.14$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar brightness temperature from 870-6600 um",
+   "value": "5540",
+   "uncertainty": "3570-7860",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 870 - 6600            | 5540                  | 3570-7860         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass for D<50 km",
+   "value": "~6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we find a total mass of M$(\\rm D<50\\,km) \\sim 6~ M_{\\bigoplus}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and cell size for CLEAN",
+  "Whether pipeline or manual calibration and CASA version",
+  "Flux scale uncertainty treatment (calibration uncertainty inflating 0.12 vs 0.15 mJy)",
+  "MCMC proposal widths and initial parameter values, prior ranges",
+  "Mapping of image-plane sigma and treatment of primary beam in the fits",
+  "Code for the ring model is not provided"
+ ],
+ "missing_for_reproduction": [
+  "Ring model code",
+  "CASA version and imaging parameters",
+  "MCMC step sizes and priors"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and clear model description, but custom code and imaging details are missing.",
+ "rediscovery_reason": "Public data, numeric results, model equations given, though code not released.",
+ "source_card": "cards/2017MNRAS.466.4201W/sonnet/card.md"
+}

@@ -1,0 +1,1787 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...692A.151S",
+  "title": "Uncovering the structure and kinematics of the ionized core of M 2-9 with ALMA",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Sánchez Contreras, C.",
+  "n_authors": 6,
+  "arxiv_id": "2411.03825",
+  "doi": "10.1051/0004-6361/202451669",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00161.S",
+   "2017.1.00376.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this work, we present an ALMA-based study of the nascent compact ionized region at the center of the pPN/yPN candidate M 2-9."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "M 2-9",
+     "coordinates": {
+      "value": "RA 17h05m37.9668s, Dec -10d08m32.65s (J2000), peak of the 3 mm continuum",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "The peak surface brightness of the 3 mm continuum is located at coordinates R.A.=17$^{\\rm h}$05$^{\\rm m}$37.9668s and Dec.=$-$10$^\\circ$08$'$32$.\\!\\!^{\\prime\\prime}$65 (J2000)"
+       },
+       {
+        "loc": "M 2-9",
+        "quote": "In this study, we adopt a distance of 650 pc for M 2-9, which is based on the analysis of the proper motions of the optical knots by (cite: sch97)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "650 pc (literature range 50 pc to 3 kpc)",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "The peak surface brightness of the 3 mm continuum is located at coordinates R.A.=17$^{\\rm h}$05$^{\\rm m}$37.9668s and Dec.=$-$10$^\\circ$08$'$32$.\\!\\!^{\\prime\\prime}$65 (J2000)"
+       },
+       {
+        "loc": "M 2-9",
+        "quote": "In this study, we adopt a distance of 650 pc for M 2-9, which is based on the analysis of the proper motions of the optical knots by (cite: sch97)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "proper motions of optical knots (cite: sch97) and spatio-kinematics of the molecular rings (cite: cc12)",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "The peak surface brightness of the 3 mm continuum is located at coordinates R.A.=17$^{\\rm h}$05$^{\\rm m}$37.9668s and Dec.=$-$10$^\\circ$08$'$32$.\\!\\!^{\\prime\\prime}$65 (J2000)"
+       },
+       {
+        "loc": "M 2-9",
+        "quote": "In this study, we adopt a distance of 650 pc for M 2-9, which is based on the analysis of the proper motions of the optical knots by (cite: sch97)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the structure, kinematics and physical conditions of the nascent compact ionized core (wind/jet) of the pPN/yPN candidate M 2-9, probed at 1 and 3 mm continuum and the H30alpha and H39alpha mRRLs down to ~0.03 arcsec?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work, we present an ALMA-based study of the nascent compact ionized region at the center of the pPN/yPN candidate M 2-9."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00161.S",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The observations of M 2-9 were conducted using the ALMA 12-m array as part of projects 2016.1.00161.S and 2017.1.00376.S."
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00376.S",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The observations of M 2-9 were conducted using the ALMA 12-m array as part of projects 2016.1.00161.S and 2017.1.00376.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm) and Band 6 (1 mm), twelve SPWs",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The observations were carried out in Band 3 (3 mm) and Band 6 (1 mm), with a total of twelve different spectral windows (SPWs) dedicated to mapping the emission of various mRRLs (and CO lines) as well as the continuum"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "12 SPWs, see Table 1 (Band 3 centers 95.350-110.201 GHz; Band 6 centers 215.400-232.900 GHz; channel widths 0.3-3 km/s)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Central frequency, bandwidth, velocity resolution, detected spectral lines and continuum fluxes in the different spectral windows (SPWs)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H (mRRL)",
+     "transition": "H30alpha",
+     "rest_frequency": "231.900 GHz (Table 2)",
+     "evidence": [
+      {
+       "loc": "Line emission",
+       "quote": "We observed several mRRLs (including, H30$\\alpha$, He30$\\alpha$, H39$\\alpha$, and H55$\\gamma$) in M 2-9 using ALMA."
+      }
+     ]
+    },
+    {
+     "species": "H (mRRL)",
+     "transition": "H39alpha",
+     "rest_frequency": "106.737 GHz (Table 2)",
+     "evidence": [
+      {
+       "loc": "Line emission",
+       "quote": "We observed several mRRLs (including, H30$\\alpha$, He30$\\alpha$, H39$\\alpha$, and H55$\\gamma$) in M 2-9 using ALMA."
+      }
+     ]
+    },
+    {
+     "species": "He (mRRL)",
+     "transition": "He30alpha",
+     "rest_frequency": "231.995 GHz (Table 2)",
+     "evidence": [
+      {
+       "loc": "Line emission",
+       "quote": "We observed several mRRLs (including, H30$\\alpha$, He30$\\alpha$, H39$\\alpha$, and H55$\\gamma$) in M 2-9 using ALMA."
+      }
+     ]
+    },
+    {
+     "species": "H (mRRL)",
+     "transition": "H55gamma",
+     "rest_frequency": "109.536 GHz (Table 2)",
+     "evidence": [
+      {
+       "loc": "Line emission",
+       "quote": "We observed several mRRLs (including, H30$\\alpha$, He30$\\alpha$, H39$\\alpha$, and H55$\\gamma$) in M 2-9 using ALMA."
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz (Table 1 SPW center)",
+     "evidence": [
+      {
+       "loc": "Line emission",
+       "quote": "We have also mapped two rotational transitions of carbon monoxide ($^{12}$CO 2–1 and $^{13}$CO 1–0)."
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Line emission",
+       "quote": "We have also mapped two rotational transitions of carbon monoxide ($^{12}$CO 2–1 and $^{13}$CO 1–0)."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12-m array, 45-50 antennas",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The observations utilized 45-50 antennas, with baselines ranging from 41.4 m to 16.2 km for Band 3, and from 113.0 m to 13.9 km for Band 6."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "41.4 m to 16.2 km (Band 3); 113.0 m to 13.9 km (Band 6)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "with baselines ranging from 41.4 m to 16.2 km for Band 3, and from 113.0 m to 13.9 km for Band 6."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~40x30 mas at 1 mm; ~90x60 mas at 3 mm",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "resulting in angular resolutions of $\\sim$40$\\times$30 mas at 1 mm and $\\sim$90$\\times$60 mas at 3 mm"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~0.8 arcsec (3 mm), ~0.7 arcsec (1 mm)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The maximum recoverable scale (MRS) of the observations is $\\sim$0$.\\!\\!^{\\prime\\prime}$8 and $\\sim$0$.\\!\\!^{\\prime\\prime}$7 at 3 and 1 mm, respectively."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "continuum rms ~25-85 uJy/beam (Band 3) and ~60-100 uJy/beam (Band 6); cube rms ~1 mJy/beam (1 mm) and 0.80 mJy/beam (3 mm) at 3 km/s",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The rms noise level range in the continuum maps is $\\sim$25-85 $\\mu$Jy beam$^{-1}$ and $\\sim$60-100 $\\mu$Jy beam$^{-1}$ for the individual SPWs within Band 3 and Band 6, respectively."
+     },
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The typical rms noise level per channel of our spectral cubes is $\\sigma$$\\sim$1 mJy beam$^{-1}$ (1 mm) and 0.80 mJy beam$^{-1}$ (3 mm) at 3 km s$^{-1}$ resolution."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "about 49 min (Band 3), 33 min (Band 6)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The total time spent on the science target, M 2-9, was about 49 min in Band 3 and 33 min in Band 6."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Band 3 on 2017-10-15; Band 6 on 2017-11-12 (two execution blocks of ~1.5 and ~1.1 hr)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The Band 3 and Band 6 observations were conducted separately in two different execution blocks, with a duration of approximately 1.5 and 1.1 hr, in October and November 2017, respectively."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM-30 m",
+     "provided": {
+      "value": "earlier single-dish H30alpha and H39alpha mRRL spectra (CSC17) compared with the ALMA profiles",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "A recent pilot study of millimeter radio recombination lines (mRRLs) in a sample of pPNe/yPNe with the IRAM-30 m radiotelescope (cite: san17)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "JVLA",
+     "provided": {
+      "value": "7 mm continuum maps (last observed 2006) used for comparison of the C-shaped curvature",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "The orientation of the C-shaped curvature in our maps is the same as in the JVLA maps of the 7 mm-continuum emission last observed in 2006 (cite: dlF22)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLTI/MIDI",
+     "provided": {
+      "value": "mid-IR interferometry confirming a compact disk (cite: lyk11)",
+      "evidence": [
+       {
+        "loc": "Spectral energy distribution: free-free and dust continuum emission",
+        "quote": "was further supported by (cite: lyk11), who used mid-IR interferometry to confirm the presence of a compact disk"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Input physical model of M 2-9 from the single-dish study CSC17 (their Table 4), used as the starting model",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "began by employing the identical physical model utilized by CSC17 (see their Table 4)."
+       }
+      ]
+     },
+     "citation": "CSC17 (cite: san17)"
+    },
+    {
+     "what": {
+      "value": "Non-LTE departure coefficients b_n (Case B tables)",
+      "evidence": [
+       {
+        "loc": "The non-ETL free-free continuum and mRRL radiative transfer code",
+        "quote": "are obtained from the tables provided by (cite: sto95) for Case B."
+       }
+      ]
+     },
+     "citation": "Storey & Hummer 1995 (cite: sto95)"
+    },
+    {
+     "what": {
+      "value": "Distance of 650 pc",
+      "evidence": [
+       {
+        "loc": "M 2-9",
+        "quote": "In this study, we adopt a distance of 650 pc for M 2-9, which is based on the analysis of the proper motions of the optical knots by (cite: sch97)"
+       }
+      ]
+     },
+     "citation": "(cite: sch97); (cite: cc12)"
+    },
+    {
+     "what": {
+      "value": "Inclination of ~17 deg to the line of sight from the CO rings",
+      "evidence": [
+       {
+        "loc": "M 2-9",
+        "quote": "inclined by $i$$\\sim$17$^\\circ$ with respect to the line of sight"
+       }
+      ]
+     },
+     "citation": "(cite: cc12; cc17)"
+    },
+    {
+     "what": {
+      "value": "Mid-IR image of an unresolved central core (compact dust component, ~260 K fit)",
+      "evidence": [
+       {
+        "loc": "Spectral energy distribution: free-free and dust continuum emission",
+        "quote": "the mid-IR images of M 2-9 reported by (cite: smg05) revealed the presence of an unresolved central core"
+       }
+      ]
+     },
+     "citation": "Smith & Gehrz 2005 (cite: smg05)"
+    },
+    {
+     "what": {
+      "value": "CO-to-H2 abundance X_CO = 2e-4 adopted for the absorbing layers",
+      "evidence": [
+       {
+        "loc": "Disk physical conditions",
+        "quote": "which is typical of O-rich sources (cite: ram18)"
+       }
+      ]
+     },
+     "citation": "(cite: ram18)"
+    },
+    {
+     "what": {
+      "value": "Grid of early B-type star model atmospheres (Lyman continuum output) used to compare with the required N_LyC",
+      "evidence": [
+       {
+        "loc": "Ionizing central source",
+        "quote": "This value has been compared with the Lyman continuum output rate from the grid of model atmospheres of early B-type stars by (cite: lan07) to investigate the central ionizing source."
+       }
+      ]
+     },
+     "citation": "Lanz & Hubeny 2007 (cite: lan07)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Synthetic ALMA-like cubes of the CSC17 single-dish model (93 GHz continuum, H30alpha, H39alpha) compared with the ALMA data",
+     "evidence": [
+      {
+       "loc": "Comparison of CSC17 model for M 2-9 with new ALMA maps",
+       "quote": "we show synthetic ALMA-like cubes representing emission from 93 GHz free-free continuum"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "automated ALMA pipeline initial calibration, followed by self-calibration",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "An initial calibration of the data was performed using the automated ALMA pipeline of the Common Astronomy Software Applications"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2 and 5.1.1",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "versions 4.7.2 and 5.1.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J 1751+0939: 1.95 Jy at 108.970 GHz and 1.38 Jy at 231.845 GHz, spectral index -0.294",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The flux density adopted for J 1751+0939 is 1.95 Jy at 108.970 GHz"
+      },
+      {
+       "loc": "Observations and data reduction",
+       "quote": "and and 1.38 Jy at 231.845 GHz with the same spectral index."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The absolute calibration uncertainties, estimated at around 10%, were determined by comparing"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "self-calibration with an initial source model from the standard calibration, done in GILDAS MAPPING",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "we self-calibrated our data using the initial model of the source derived from the standard calibration to improve the sensitivity and fidelity of the images."
+      },
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Self-calibration as well as image restoration and deconvolution was done using the GILDAS"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "GILDAS MAPPING (restoration and deconvolution)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Self-calibration as well as image restoration and deconvolution was done using the GILDAS"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Hogbom",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "using the Hogbom deconvolution method with a robust weighting scheme"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "robust threshold = 0.5 in MAPPING",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "We used a value of 0.5 for the threshold of the robust weighting in MAPPING."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum of the SPW containing the line subtracted from that SPW",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Line emission cubes were constructed by subtracting the corresponding continuum data from each SPW, specifically subtracting the continuum of the SPW containing the specific line of interest."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "line-free channels identified from calibrated data, used to make continuum images of each of the 12 SPWs (ranges not given)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Continuum images were generated for each of the 12 SPWs by utilizing line-free channels."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "continuum maps also restored with a circular beam of 40 mas at 1 mm and 3 mm",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Continuum maps with a circular restoring beam of half power beam width (HPBW) of 40 mas at 1 mm and 3 mm were also created to facilitate a better comparison between the two images."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "~40x30 mas (1 mm), ~90x60 mas (3 mm)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "resulting in angular resolutions of $\\sim$40$\\times$30 mas at 1 mm and $\\sim$90$\\times$60 mas at 3 mm"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "cube rms ~1 mJy/beam (1 mm), 0.80 mJy/beam (3 mm) at 3 km/s; continuum rms ~25-85 uJy/beam (Band 3), ~60-100 uJy/beam (Band 6)",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The typical rms noise level per channel of our spectral cubes is $\\sigma$$\\sim$1 mJy beam$^{-1}$ (1 mm) and 0.80 mJy beam$^{-1}$ (3 mm) at 3 km s$^{-1}$ resolution."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Starting physical model for the non-LTE modeling is the single-dish CSC17 model",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "began by employing the identical physical model utilized by CSC17 (see their Table 4)."
+       }
+      ]
+     },
+     "from_reference": "CSC17 (cite: san17)"
+    },
+    {
+     "what": {
+      "value": "Adopted distance of 650 pc chosen to allow direct comparison with CSC17",
+      "evidence": [
+       {
+        "loc": "M 2-9",
+        "quote": "This distance choice allows for a direct comparison with the study conducted by CSC17 on the nascent ionized core of M 2-9."
+       }
+      ]
+     },
+     "from_reference": "CSC17 (cite: san17)"
+    },
+    {
+     "what": {
+      "value": "Method for constraining excitation temperature and opacity from the CO absorption follows the NaCl absorption analysis of OH 231.8+4.2",
+      "evidence": [
+       {
+        "loc": "Disk physical conditions",
+        "quote": "As shown in detail, for example, by (cite: san22) in their analysis of the compact NaCl absorption feature observed at the central rotating disk of the post-AGB nebula"
+       }
+      ]
+     },
+     "from_reference": "(cite: san22)"
+    },
+    {
+     "what": {
+      "value": "Free-free Gaunt factor formulation taken from earlier work",
+      "evidence": [
+       {
+        "loc": "The non-ETL free-free continuum and mRRL radiative transfer code",
+        "quote": "Following (cite: bae13), the Gaunt factor for free-free transitions is calculated in the following way:"
+       }
+      ]
+     },
+     "from_reference": "(cite: bae13)"
+    },
+    {
+     "what": {
+      "value": "Formula for the Lyman continuum photon rate from free-free flux",
+      "evidence": [
+       {
+        "loc": "Ionizing central source",
+        "quote": "As is well known (cite: con16), the number of Lyman continuum photons emitted per second"
+       }
+      ]
+     },
+     "from_reference": "(cite: con16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "GILDAS MAPPING parameters: cell size, image size, clean mask, number of iterations or threshold, uv-range and what robust threshold 0.5 means numerically",
+    "Self-calibration details: solution intervals, number of iterations, amplitude versus phase, and the initial model used",
+    "Line-free channel ranges per SPW and the order or degree of continuum subtraction",
+    "Which execution blocks, MOUS and SPWs belong to each of the two project codes, and the pipeline version",
+    "Flagging applied after the ALMA pipeline and whether archive pipeline products or a re-run were used",
+    "How the source-integrated line profiles were extracted (aperture or mask) and the Gaussian fitting setup",
+    "How the SED decomposition (free-free plus ~200-300 K dust with emissivity 0.2-0.5) was fitted, and its error estimation",
+    "Co3RaL source code, grid setup and exact functional forms (C-shaped horn curvature, position angle, step functions) of the final model",
+    "The ~300 trial models and the criterion for a reasonable match (no quantitative goodness of fit)",
+    "RADEX inputs for the CO absorption (kinetic temperature, background, collision partner, line width treatment)",
+    "Rest frequencies adopted for each line and the velocity reference frame used for the cubes"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "calibrate and self-calibrate the visibilities",
+    "method": {
+     "value": "ALMA pipeline calibration in CASA, then self-calibration with an initial source model in GILDAS MAPPING",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "we self-calibrated our data using the initial model of the source derived from the standard calibration to improve the sensitivity and fidelity of the images."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "GILDAS MAPPING"
+    ],
+    "key_parameters": [
+     {
+      "value": "flux calibrator J 1751+0939 adopted at 1.95 Jy at 108.970 GHz",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "The flux density adopted for J 1751+0939 is 1.95 Jy at 108.970 GHz"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "no significant complex large-scale structure, so a point-like initial model is adequate for self-calibration",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "the absence of significant/complex large-scale structure in M 2-9 in our observations"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "calibration uncertainty (~10%) from comparing continuum fluxes of phase, check and flux calibrators before and after self-calibration with pipeline values",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The absolute calibration uncertainties, estimated at around 10%, were determined by comparing"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "image the continuum and mRRL/CO cubes and measure fluxes and line parameters",
+    "method": {
+     "value": "continuum maps per SPW from line-free channels; continuum flux integrated in a circular aperture; line cubes continuum-subtracted; Gaussian fits to source-integrated line profiles",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Flux measurements of the continuum emission for each SPW were obtained integrating the surface brightness within a circular aperture"
+      },
+      {
+       "loc": "Table 2",
+       "quote": "Line parameters from Gaussian fitting to the source-integrated profiles of the mRRLs in this study."
+      }
+     ]
+    },
+    "software": [
+     "GILDAS MAPPING"
+    ],
+    "key_parameters": [
+     {
+      "value": "aperture radius 0.25 arcsec",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "with a radius of 0$.\\!\\!^{\\prime\\prime}$25 fully enclosing the continuum source"
+       }
+      ]
+     },
+     {
+      "value": "Hogbom deconvolution with robust weighting (threshold 0.5)",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "using the Hogbom deconvolution method with a robust weighting scheme"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fits (sampler, priors, likelihood not stated)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "Line parameters from Gaussian fitting to the source-integrated profiles of the mRRLs in this study."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "fit the mm SED and separate free-free from dust",
+    "method": {
+     "value": "power-law fit to the 1-3 mm fluxes; then a combination of ~200-300 K dust plus a free-free power law, with the ~260 K compact-disk dust subtracted from the total",
+     "evidence": [
+      {
+       "loc": "Spectral energy distribution: free-free and dust continuum emission",
+       "quote": "Under the assumption that a fraction of the mm-continuum flux observed with ALMA originates from the warm"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "spectral index 0.92 +/- 0.1 for the ALMA band fluxes; free-free component index 0.89",
+      "evidence": [
+       {
+        "loc": "Spectral energy distribution: free-free and dust continuum emission",
+        "quote": "yields $S_\\nu$ $\\propto$ $\\nu^{0.92\\pm 0.1}$"
+       },
+       {
+        "loc": "Spectral energy distribution: free-free and dust continuum emission",
+        "quote": "a free-free component that varies as $S_\\nu$ $\\propto$ $\\nu^{0.89}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "compact warm (~260 K) disk contributes to the mm continuum and is not affected by interferometric flux loss",
+      "evidence": [
+       {
+        "loc": "Spectral energy distribution: free-free and dust continuum emission",
+        "quote": "Unlike the emission from the extended dust structures mentioned in the previous paragraph, the emission from this compact disk is not expected to be affected by interferometric flux losses in our ALMA maps."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "described as a rough estimate; compared with single-dish fluxes (about 20% flux loss) and with the cm-wavelength continuum",
+     "evidence": [
+      {
+       "loc": "Spectral energy distribution: free-free and dust continuum emission",
+       "quote": "is subject to uncertainties and should be considered as a rough estimate"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "model the ionized wind with non-LTE 3D radiative transfer",
+    "method": {
+     "value": "forward modeling of continuum and H30alpha/H39alpha cubes with Co3RaL, starting from the CSC17 model and adjusting parameters by hand to match the ALMA maps, PV diagrams and SED",
+     "evidence": [
+      {
+       "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+       "quote": "To obtain an improved model that fits these new details, we progressively adjusted the parameters of the input model"
+      }
+     ]
+    },
+    "software": [
+     "Co3RaL"
+    ],
+    "key_parameters": [
+     {
+      "value": "Te ~ 15000 K, constant",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "The value deduced $T_{\\rm e}$$\\sim$15000 K"
+       }
+      ]
+     },
+     {
+      "value": "inclination i = 12 deg (models around 17 deg examined)",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "with the most successful models having an inclination of $i$=12$^\\circ$"
+       }
+      ]
+     },
+     {
+      "value": "R_out ~ 40 au, R_eq ~ 8 au",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "a much narrower bipolar structure (particularly an outer radius value of $R_{\\rm out}$$\\sim$40 au)"
+       },
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "a narrow waist at the base of the wind ($R_{\\rm eq}$$\\sim$8 au)"
+       }
+      ]
+     },
+     {
+      "value": "high-velocity shells: velocity rises from ~70 to ~90 km/s; ~10 km/s inside ~15 au",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "within the HVSs, the velocity rises from $\\sim$70 to $\\sim$90 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "constant electron temperature across the wind",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "To simplify, we maintain a constant value for the electron temperature throughout the various regions of the wind."
+       }
+      ]
+     },
+     {
+      "value": "distance 650 pc",
+      "evidence": [
+       {
+        "loc": "M 2-9",
+        "quote": "In this study, we adopt a distance of 650 pc for M 2-9"
+       }
+      ]
+     },
+     {
+      "value": "constant rotation velocity because resolution cannot distinguish Keplerian from momentum-conserving profiles",
+      "evidence": [
+       {
+        "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+        "quote": "Since the angular resolution of the data does not allow us to distinguish between Keplerian or momentum conservation velocity profiles"
+       }
+      ]
+     },
+     {
+      "value": "no turbulent line broadening",
+      "evidence": [
+       {
+        "loc": "The non-ETL free-free continuum and mRRL radiative transfer code",
+        "quote": "turbulence velocity dispersion is not considered as an additional form of line broadening"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "manual iterative adjustment; no sampler, priors or likelihood",
+     "evidence": [
+      {
+       "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+       "quote": "until a reasonable match was achieved between the model predictions and the data"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Co3RaL benchmarked against MORELI with identical inputs; the authors state no comprehensive parameter-space study was done",
+     "evidence": [
+      {
+       "loc": "Comparison of Co3RaL with MORELI",
+       "quote": "This comparison serves as a mutual benchmarking exercise of both codes."
+      },
+      {
+       "loc": "Model caveats and final modeling remarks",
+       "quote": "Although a comprehensive parameter space study has not been performed and is beyond the scope of this paper"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "derive disk conditions from the CO absorption",
+    "method": {
+     "value": "compare on-source absorption brightness, off-source emission and continuum peak to get Tex and tau; RADEX for N_CO; scale to N_H2 with an assumed abundance; infall mass from the redshift of the absorption",
+     "evidence": [
+      {
+       "loc": "Disk physical conditions",
+       "quote": "the presence of absorption enables constraining the excitation temperature and opacity of the absorption line observed."
+      },
+      {
+       "loc": "Disk physical conditions",
+       "quote": "we used the on-line version of the non-LTE line radiative transfer code RADEX"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tex <~ 330 K, tau ~ 0.16",
+      "evidence": [
+       {
+        "loc": "Disk physical conditions",
+        "quote": "we deduce $T_{\\rm ex}$$\\raisebox{-.4ex}{$\\stackrel{<}{\\scriptstyle \\sim}$}$330 K and $\\tau$$\\sim$0.16."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "X_CO = 2e-4 (O-rich), likely overestimated by photodissociation",
+      "evidence": [
+       {
+        "loc": "Disk physical conditions",
+        "quote": "which is typical of O-rich sources (cite: ram18)"
+       }
+      ]
+     },
+     {
+      "value": "gas falls in from near zero velocity from far beyond the infall radius",
+      "evidence": [
+       {
+        "loc": "Disk kinematics",
+        "quote": "assuming that the gas started falling with (near) zero velocity from a point much far beyond the observed infall radius."
+       }
+      ]
+     },
+     {
+      "value": "average disk density similar to OH 231.8+4.2 disk (n_H2 ~ 1e8 cm-3)",
+      "evidence": [
+       {
+        "loc": "Disk physical conditions",
+        "quote": "Assuming the average density of both disks is similar"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "alternative rotation explanation for the redshift tested and rejected (implies >30 Msun)",
+     "evidence": [
+      {
+       "loc": "Disk kinematics",
+       "quote": "Such a high velocity would imply an unreasonably massive central object, exceeding 30 $M_{\\odot}$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "constrain the ionizing source",
+    "method": {
+     "value": "compute the Lyman continuum photon rate from the free-free flux and compare with B-star and WD model atmospheres",
+     "evidence": [
+      {
+       "loc": "Ionizing central source",
+       "quote": "can be computed using the measured value of the free-free continuum flux"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "free-free continuum 102.80 mJy at 95.3 GHz after subtracting the 260 K dust",
+      "evidence": [
+       {
+        "loc": "Ionizing central source",
+        "quote": "a free-free continuum of 102.80 mJy at 95.3 GHz"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Te ~ 15000 K, d = 650 pc",
+      "evidence": [
+       {
+        "loc": "Ionizing central source",
+        "quote": "For an electron temperature of"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2 and 5.1.1",
+    "used_for": {
+     "value": "automated ALMA pipeline initial calibration",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "An initial calibration of the data was performed using the automated ALMA pipeline of the Common Astronomy Software Applications"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS MAPPING",
+    "version": "not stated",
+    "used_for": {
+     "value": "self-calibration, image restoration and deconvolution",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Self-calibration as well as image restoration and deconvolution was done using the GILDAS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Co3RaL",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE 3D radiative transfer modeling of free-free continuum and mRRLs (authors' own code)",
+     "evidence": [
+      {
+       "loc": "The non-ETL free-free continuum and mRRL radiative transfer code",
+       "quote": "is a C-based code designed to calculate the intensity of the free-free continuum and recombination line emission originating from an ionised nebula."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MORELI",
+    "version": "not stated",
+    "used_for": {
+     "value": "code used by CSC17 for the single-dish model; benchmarked against Co3RaL",
+     "evidence": [
+      {
+       "loc": "Footnote 6",
+       "quote": "MORELI is the code used in the analysis by CSC17 (cite: bae13)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "CO column density from the CO absorption (on-line version)",
+     "evidence": [
+      {
+       "loc": "Disk physical conditions",
+       "quote": "we used the on-line version of the non-LTE line radiative transfer code RADEX"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum spectral index (1-3 mm)",
+    "value": "0.92",
+    "uncertainty": "+/-0.1",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Spectral energy distribution: free-free and dust continuum emission",
+      "quote": "yields $S_\\nu$ $\\propto$ $\\nu^{0.92\\pm 0.1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Free-free component spectral index",
+    "value": "0.89",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Spectral energy distribution: free-free and dust continuum emission",
+      "quote": "a free-free component that varies as $S_\\nu$ $\\propto$ $\\nu^{0.89}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Interferometric flux loss relative to single-dish mm fluxes",
+    "value": "~20",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Spectral energy distribution: free-free and dust continuum emission",
+      "quote": "reveals flux losses of approximately 20% in our high-resolution interferometric measurements"
+     }
+    ]
+   },
+   {
+    "quantity": "H30alpha line parameters (Freq, integrated flux, V_LSR, FWHM, peak)",
+    "value": "231.900 GHz; 13.3 Jy km/s; 73.0 km/s; 44.9 km/s; 280 mJy",
+    "uncertainty": "+/-0.3; +/-0.4; +/-0.9; +/-5",
+    "units": "GHz; Jy km/s; km/s; km/s; mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "H30$\\alpha$ | 231.900 | 13.3$\\pm$0.3 | 73.0$\\pm$0.4 | 44.9$\\pm$0.9 | 280$\\pm$5"
+     }
+    ]
+   },
+   {
+    "quantity": "H39alpha line parameters (Freq, integrated flux, V_LSR, FWHM, peak)",
+    "value": "106.737 GHz; 2.07 Jy km/s; 75.1 km/s; 54.0 km/s; 36 mJy",
+    "uncertainty": "+/-0.08; +/-0.7; +/-1.7; +/-1",
+    "units": "GHz; Jy km/s; km/s; km/s; mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "H39$\\alpha$ | 106.737 | 2.07$\\pm$0.08 | 75.1$\\pm$0.7 | 54.0$\\pm$1.7 | 36$\\pm$1"
+     }
+    ]
+   },
+   {
+    "quantity": "He30alpha line parameters (Freq, integrated flux, V_LSR, FWHM, peak)",
+    "value": "231.995 GHz; 0.96 Jy km/s; 71.5 km/s; 44 km/s; 20 mJy",
+    "uncertainty": "+/-0.07; +/-1.0; +/-3; +/-1",
+    "units": "GHz; Jy km/s; km/s; km/s; mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "He30$\\alpha$ | 231.995 | 0.96$\\pm$0.07 | 71.5$\\pm$1.0 | 44$\\pm$3 | 20$\\pm$1"
+     }
+    ]
+   },
+   {
+    "quantity": "H55gamma line parameters (Freq, integrated flux, V_LSR, FWHM, peak)",
+    "value": "109.536 GHz; 0.17 Jy km/s; 78 km/s; 50 km/s; 3.3 mJy",
+    "uncertainty": "+/-0.05; +/-4; +/-10; +/-0.6",
+    "units": "GHz; Jy km/s; km/s; km/s; mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "H55$\\gamma$ | 109.536 | 0.17$\\pm$0.05 | 78$\\pm$4 | 50$\\pm$10 | 3.3$\\pm$0.6"
+     }
+    ]
+   },
+   {
+    "quantity": "Change of H30alpha brightness relative to IRAM-30 m",
+    "value": "factor ~2.2 in line flux, ~1.6 in peak intensity",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Millimeter recombination lines",
+      "quote": "a notable increase in brightness (by a factor of $\\sim$2.2 in line flux and $\\sim$1.6 in line peak intensity)"
+     }
+    ]
+   },
+   {
+    "quantity": "Average velocity gradient of the inner ionized wind",
+    "value": "~1150",
+    "uncertainty": "not stated",
+    "units": "km/s per arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Millimeter recombination lines",
+      "quote": "is $\\nabla \\upsilon$$\\sim$1150km s$^{-1}$ arcsec$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H30alpha emission extent along the axis (3 sigma, deconvolved)",
+    "value": "~0.07 arcsec (~45 au at 650 pc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Millimeter recombination lines",
+      "quote": "extends along the axis to a radial distance of $\\sim$0$.\\!\\!^{\\prime\\prime}$07 ($\\sim$45au at $d$=650pc) from the center"
+     }
+    ]
+   },
+   {
+    "quantity": "3 mm continuum dimensions",
+    "value": "0.4 x 0.13 arcsec (260 x 85 au)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "with dimensions of 0$.\\!\\!^{\\prime\\prime}$4$\\times$0$.\\!\\!^{\\prime\\prime}$13 (260$\\times$85 au at $d$=650 pc) at 3 mm"
+     }
+    ]
+   },
+   {
+    "quantity": "Electron temperature of the ionized wind (model)",
+    "value": "~15000",
+    "uncertainty": "~15-20%",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "The value deduced $T_{\\rm e}$$\\sim$15000 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Ionized mass of the model wind",
+    "value": "~4e-6",
+    "uncertainty": "factor <~2-3",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "$M_{\\rm ion}$$\\sim$4$\\times 10^{\\rm -6}$ $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Average mass-loss rate of the ionized wind (model)",
+    "value": "~7e-7",
+    "uncertainty": "factor <~2-3",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "the average mass-loss rate implied from the model is $\\dot{M}$$\\sim$7$\\times 10^{\\rm -7}$ $M_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Model wind inclination",
+    "value": "12",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "with the most successful models having an inclination of $i$=12$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Model wind outer radius and equatorial radius",
+    "value": "R_out ~40 au; R_eq ~8 au",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "a much narrower bipolar structure (particularly an outer radius value of $R_{\\rm out}$$\\sim$40 au)"
+     },
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "a narrow waist at the base of the wind ($R_{\\rm eq}$$\\sim$8 au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity in the high-velocity shells",
+    "value": "rises from ~70 to ~90",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "within the HVSs, the velocity rises from $\\sim$70 to $\\sim$90 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central system mass range from rotation and infall",
+    "value": "0.4 to 2",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "but it is likely in the range of 0.4 to 2 $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO absorption excitation temperature and opacity",
+    "value": "Tex <~330 K; tau ~0.16",
+    "uncertainty": "not stated",
+    "units": "K; dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Disk physical conditions",
+      "quote": "we deduce $T_{\\rm ex}$$\\raisebox{-.4ex}{$\\stackrel{<}{\\scriptstyle \\sim}$}$330 K and $\\tau$$\\sim$0.16."
+     }
+    ]
+   },
+   {
+    "quantity": "CO column density of the absorbing layers",
+    "value": "<~6e17",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Disk physical conditions",
+      "quote": "imply a CO column density of $N_{\\rm CO}$$\\raisebox{-.4ex}{$\\stackrel{<}{\\scriptstyle \\sim}$}$6$\\times 10^{\\rm 17}$ $\\,$cm$^{\\rm -2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total H2 column density of the absorbing layers",
+    "value": "~3e21",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Disk physical conditions",
+      "quote": "we derive a total column density of $N_{\\rm H_2}$$\\sim$3$\\times 10^{\\rm 21}$$\\,$cm$^{\\rm -2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Equatorial disk mass",
+    "value": ">2e-6",
+    "uncertainty": "lower limit",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "A lower limit to the mass of the disk of $>$2$\\times 10^{\\rm -6}$ $M_{\\odot}$ is deduced."
+     }
+    ]
+   },
+   {
+    "quantity": "Equatorial disk radius",
+    "value": "~50",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "disk with a radius of $\\sim$50 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Deprojected redshift of CO absorption relative to the mRRL centroid",
+    "value": "~6.2",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "CO lines",
+      "quote": "The redshift of the CO absorption feature by $\\sim$6.2 km s$^{-1}$ (deprojected velocity adopting $i$=17$^\\circ$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass from infall at 27-38 au",
+    "value": "~0.7",
+    "uncertainty": "lower limit",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Disk kinematics",
+      "quote": "would imply a central mass of $\\sim$0.7 $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass if infall starts from ~50 au",
+    "value": "~2.0",
+    "uncertainty": "upper limit",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Disk kinematics",
+      "quote": "then the central mass would be $\\sim$2.0 $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Lyman continuum photon rate",
+    "value": "log N_LyC ~ 43.8",
+    "uncertainty": "not stated",
+    "units": "s-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Ionizing central source",
+      "quote": "we calculate a Lyman continuum photon rate of log$N_{\\rm LyC}$$\\sim$43.8 s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Effective temperature of the ionizing star accounting for N_LyC",
+    "value": "~25",
+    "uncertainty": "not stated",
+    "units": "kK",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Ionizing central source",
+      "quote": "We find that a star with an effective temperature of around $T_{\\rm eff}$$\\sim$25 kK"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The ionized wind is collimated and shows a C-shaped curvature at 3 mm consistent with 7 mm JVLA maps taken 11 yr earlier",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The ionized wind is collimated and displays a C-shaped curvature at 3 mm consistent with previous observations taken 11 yr earlier at 7 mm."
+     }
+    ]
+   },
+   {
+    "value": "The 1 mm continuum has a broad-waisted morphology perpendicular to the lobes, attributed to dust in an equatorial disk",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The 1 mm-continuum map reveals a broad-waisted morphology oriented perpendicularly to the wind lobes, which is plausibly the counterpart of the compact"
+     }
+    ]
+   },
+   {
+    "value": "Short kinematic age of the wind explains year-scale mRRL profile changes",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The ionized wind has a short kinematical age, including regions of less than a year old, explaining changes in the mRRL profiles on similar year-long timescales."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the mm continuum of M 2-9 dominated by free-free emission from the ionized core, with a dust contribution?",
+    "experiment": "1 mm and 3 mm continuum imaging, SED power-law fit and free-free plus dust decomposition",
+    "result": "Spectral index 0.92+/-0.1 (free-free component 0.89); 1 mm map shows a broad waist absent in H30alpha",
+    "finding": "Predominantly free-free emission from an ionized wind with a minor dust contribution from a warm compact disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "suggests predominantly free-free emission from an ionized wind, with a minor contribution from dust possibly originating from a warm compact disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the ionized core host a compact, collimated, fast jet with structured density and velocity?",
+    "experiment": "H30alpha and H39alpha cubes and PV diagrams, compared with non-LTE Co3RaL models",
+    "result": "S-shaped axial PV diagrams requiring dense high-velocity shells at ~15-30 au with ~70-90 km/s; model Te ~15000 K, Mdot ~7e-7 Msun/yr",
+    "finding": "A compact bent jet with velocities up to ~80 km/s and non-uniform density",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "Our data provides detailed evidence for the presence of a compact, bent jet expanding with velocities of up to"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there an equatorial disk around the ionized wind?",
+    "experiment": "CO and 13CO absorption against the continuum, the 1 mm broad waist, and RADEX analysis",
+    "result": "narrow redshifted CO absorption offset north by ~0.012 arcsec; Tex <~330 K, tau ~0.16; disk radius ~50 au, mass >2e-6 Msun",
+    "finding": "A likely circumbinary equatorial disk with gas infall toward the center",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "absorption features further support the presence of an equatorial disk with a radius of"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Has the wind changed between the 2015 IRAM-30 m and the 2017 ALMA observations?",
+    "experiment": "Compare ALMA source-integrated H30alpha and H39alpha profiles with IRAM-30 m profiles",
+    "result": "H30alpha flux up by a factor ~2.2, profiles broader, new broad wings",
+    "finding": "The wind has become faster and its physical conditions changed on ~2 yr timescales",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The wind has become faster during this time period."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is a hot (white dwarf) companion needed to ionize the nebula?",
+    "experiment": "N_LyC from the free-free flux compared with B-star and WD model atmospheres",
+    "result": "log N_LyC ~43.8 matches Teff ~25 kK, L ~600 Lsun; a WD would need Teff > 50000 K",
+    "finding": "No need to invoke a hotter companion; a WD companion is not ruled out",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "While a WD companion is not ruled out, our findings do not provide empirical evidence for it."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "mRRLs probe the deepest regions of pPNe/yPNe with minimal dust extinction, where the fast winds are launched",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "shows that mRRLs are optimal tracers to probe the deepest regions at the heart"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Non-LTE modeling was used because the new data deviate from LTE expectations; self-calibration was used because of high S/N and no complex large-scale structure",
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "has not been run under the LTE approximation but in non-LTE."
+     },
+     {
+      "loc": "Observations and data reduction",
+      "quote": "the absence of significant/complex large-scale structure in M 2-9 in our observations"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Alternative velocity laws inside the high-velocity shells (including constant velocity) gave a poorer match",
+     "evidence": [
+      {
+       "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+       "quote": "Within the HVSs, we explored alternative velocity functions that varied in steepness (including constant velocity), but these produced a poorer match to the data."
+      }
+     ]
+    },
+    {
+     "value": "A single smooth density power law cannot reproduce the S-shape of the axial PV diagrams",
+     "evidence": [
+      {
+       "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+       "quote": "Without these dense shells (i.e. with a unique, smooth density power-law) is not possible to reproduce the S-shape of the axial position-velocity diagrams"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "model parameters were adjusted until a reasonable match with the data was reached, keeping the parameter count low",
+    "evidence": [
+     {
+      "loc": "Non-LTE radiative transfer modeling of mRRL and free-free continuum emission",
+      "quote": "until a reasonable match was achieved between the model predictions and the data"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Model is probably not unique; more complex geometries and profiles cannot be dismissed",
+     "evidence": [
+      {
+       "loc": "Model caveats and final modeling remarks",
+       "quote": "is probably not unique and that more intricate geometries, kinematics, and density and temperature profiles (e.g. latitude-dependent) cannot be dismissed as possibilities."
+      }
+     ]
+    },
+    {
+     "value": "No comprehensive parameter space study was performed",
+     "evidence": [
+      {
+       "loc": "Model caveats and final modeling remarks",
+       "quote": "Although a comprehensive parameter space study has not been performed and is beyond the scope of this paper"
+      }
+     ]
+    },
+    {
+     "value": "Model fails to reproduce the H30alpha profile asymmetry",
+     "evidence": [
+      {
+       "loc": "Model caveats and final modeling remarks",
+       "quote": "One shortcoming of our model is its failure to predict the asymmetry in the"
+      }
+     ]
+    },
+    {
+     "value": "Continuum SED decomposition is only a rough estimate",
+     "evidence": [
+      {
+       "loc": "Spectral energy distribution: free-free and dust continuum emission",
+       "quote": "is subject to uncertainties and should be considered as a rough estimate"
+      }
+     ]
+    },
+    {
+     "value": "Distance to M 2-9 is highly uncertain",
+     "evidence": [
+      {
+       "loc": "M 2-9",
+       "quote": "The distance to M 2-9 is highly uncertain, with values ranging from 50 pc to 3 kpc in the literature (cite: san17)."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Key physical results (Mdot, Mion, central mass, luminosity) scale with the adopted 650 pc distance, which spans a factor of 60 in the literature",
+    "Model tuned by hand with ~300 trials and no formal fit statistic or uncertainty from a fit; degeneracies between density, pressure broadening and size are acknowledged",
+    "Observed N_CO sign is quoted as both upper and lower limit in different sections",
+    "Disk detection rests on a single narrow absorption feature at ~0.012 arcsec offset, below the beam size, plus the 1 mm waist",
+    "Flux loss of ~20% and MRS of 0.7-0.8 arcsec may bias the dust versus free-free decomposition",
+    "Only one epoch per band; variability claim relies on a 2015 single-dish comparison with a different resolution"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Co3RaL code and final model input files are not stated as released",
+    "GILDAS MAPPING scripts and self-calibration settings",
+    "Line-free channel ranges, cell and image sizes, clean masks",
+    "Explicit SPW to project-code mapping",
+    "Procedure and statistics of the SED decomposition and the Gaussian line fits"
+   ],
+   "estimated_data_volume_inferred": "Tens of GB (two execution blocks of ~1.5 and ~1.1 hr, 12 SPWs, baselines up to 16 km); only about 10-20 GB if just the two science targets' calibrated MS are retained",
+   "score_inferred": 3,
+   "score_reason": "Score on a 1-5 scale. Observational setup, calibrators and several final numbers are well documented, but imaging and self-calibration parameters are sparse, the key model uses an unreleased custom code tuned by hand, and no archive product status is given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Line fluxes, widths and continuum fluxes could be redone from archive data, but the central model results depend on unreleased Co3RaL and hand-tuned parameters, and the imaging and self-calibration recipe is incomplete; public status of the data is not stated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Sanchez Contreras et al. 2017, A&A 603, A67 (cite: san17)",
+     "why": "CSC17 single-dish mRRL study and the starting model for the M 2-9 ionized wind"
+    },
+    {
+     "citation": "Baez-Rubio et al. 2013 (cite: bae13)",
+     "why": "MORELI code, Gaunt factors and pressure-broadening expressions used in Co3RaL"
+    },
+    {
+     "citation": "Sanchez Contreras et al. 2022 (cite: san22)",
+     "why": "Method for constraining Tex and opacity from a compact absorption feature"
+    },
+    {
+     "citation": "Storey & Hummer 1995 (cite: sto95)",
+     "why": "Departure coefficients b_n for non-LTE recombination lines"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Castro-Carrizo et al. 2012 (cite: cc12) and 2017 (cite: cc17)",
+     "why": "CO rings and hourglass of M 2-9 that fix the inclination and kinematics"
+    },
+    {
+     "citation": "de la Fuente et al. 2022 (cite: dlF22)",
+     "why": "multi-epoch 23-43 GHz continuum showing the C-shaped curvature"
+    },
+    {
+     "citation": "Sanchez Contreras et al. 2019 (cite: san19)",
+     "why": "ALMA mRRL study of the rotating bipolar wind and disk in MWC 922"
+    },
+    {
+     "citation": "Lykou et al. 2011 (cite: lyk11)",
+     "why": "mid-IR interferometry of the compact central disk"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA 2016.1.00161.S",
+    "ALMA 2017.1.00376.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024A%26A...692A.151S",
+  "batch_id": null,
+  "run": "cc_pilot",
+  "collected_at": "2026-10-29T11:34:20",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 147,
+  "quotes_ok": 147,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 28,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 112,
+   "stated": 92,
+   "rate": 0.821
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,274 @@
+{
+ "bibcode": "2017A&A...600A.141K",
+ "title": "Resolving the fragmentation of high line-mass filaments with ALMA: the integral shaped filament in Orion A",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201628481",
+ "arxiv_id": "1603.05688",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the fragmentation length scales of the Orion A integral shaped filament, is there a preferred fragmentation scale or grouping of cores, and how do these relate to the young stellar population?",
+ "alma_project_codes": [
+  "2013.1.01114.S"
+ ],
+ "data": {
+  "bands": "3 mm continuum (plus C18O line, not used)",
+  "arrays": "12-m array and 7-m ACA",
+  "angular_resolution": "Combined beam 3.75'' x 2.27'' (PA 71 deg)",
+  "sensitivity": "rms 0.23 mJy/beam combined (0.14 12-m, 2.3 7-m)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel column density map of Orion A",
+    "evidence": [
+     {
+      "loc": "Observations and methods",
+      "quote": "We refer to (cite: stu15) for the details of the map."
+     }
+    ]
+   },
+   "citation": "(cite: stu15)"
+  },
+  {
+   "what": {
+    "value": "Protostar catalog",
+    "evidence": [
+     {
+      "loc": "Observations and methods",
+      "quote": "(cite: meg12) for the disks and (cite: fur16) for the protostars"
+     }
+    ]
+   },
+   "citation": "(cite: fur16); disks (cite: meg12)"
+  },
+  {
+   "what": {
+    "value": "ISF density profile and line-mass used in model comparison",
+    "evidence": [
+     {
+      "loc": "4.3 Comparison against gravitational fragmentation models",
+      "quote": "(cite: stu15prep) have evaluated the (cylindric) density profile of the ISF to be 17 M$_\\odot$ pc$^{-3} (r / \\mathrm{pc})^{-13/8}$"
+     }
+    ]
+   },
+   "citation": "(cite: stu15prep)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "Joint 7-m+12-m mosaic cleaning with natural weighting and box masks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "statwt weight adjustment; 11.1 GHz bandwidth"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify dense cores",
+   "method": "2D Gaussian fitting with gaussclumps after median-filter background subtraction",
+   "software": [
+    "gaussclumps (starlink/cupid 2.0)"
+   ],
+   "key_parameters": [
+    "Threshold 3 x rms = 0.23 mJy/beam rms; filter width 10''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Classify cores as protostellar or starless",
+   "method": "Cross-match core centroids with HOPS protostars and disks within 2''; reclassify four disk matches as protostars based on chance-alignment probability",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate core masses",
+   "method": "Optically thin dust emission M = F d^2 / (B(T) kappa)",
+   "software": [],
+   "key_parameters": [
+    "T = 20 K; d = 420 pc; kappa = 0.1 (nu/1000 GHz)^1.5 cm2/g"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio 100; kappa_100GHz = 0.0032 cm2/g"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Nearest-neighbour separation statistics",
+   "method": "Mean, median and CDFs of projected nearest neighbour separations for cores, protostars and disks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Two-point correlation function of separations",
+   "method": "Landy-Szalay estimator with Monte Carlo random samples and Gaussian density estimator",
+   "software": [],
+   "key_parameters": [
+    "10 000 random realisations with N=43 points; smoothing FWHM 5'' (20'' for large scales)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Large-scale grouping and model comparison",
+   "method": "Core surface density map smoothed with 40'' Gaussian kernel; compared with Herschel peaks; Jeans and cylindrical fragmentation scales computed",
+   "software": [],
+   "key_parameters": [
+    "T = 20 K; density 1e5 to 2e5 cm-3"
+   ],
+   "assumptions": [
+    "Inclination angle of zero; spherical structures for density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of dense cores",
+   "value": "43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 Identification of dense cores",
+     "quote": "Running gaussclumps resulted in detection of 43 compact objects from the ALMA map."
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar / starless cores",
+   "value": "26 / 17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.1 Identification of dense cores",
+     "quote": "our dense core catalog consists of 26 protostellar cores and 17 starless cores."
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass range",
+   "value": "0.2-2.6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.1 Identification of dense cores",
+     "quote": "The masses of the cores span 0.2-2.6 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean nearest neighbour separation, all cores",
+   "value": "7.7 (median 4.2)",
+   "uncertainty": "not stated",
+   "units": "kAU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "All dense cores | 43 | 7.7 | 4.2 | 0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Grouping scale of cores (significant / strong)",
+   "value": "<17 000 / <6 000",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 Two-point correlation function",
+     "quote": "it shows significant grouping below 17 000 AU and strong grouping below $\\sim$6 000 AU."
+    }
+   ]
+  },
+  {
+   "quantity": "Group separation (six largest groups)",
+   "value": "62 000",
+   "uncertainty": "19 000",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 The fragmentation picture",
+     "quote": "62 000 $\\pm$ 19 000 AU when considering the six largest groups"
+    }
+   ]
+  },
+  {
+   "quantity": "Herschel column density peak mean separation",
+   "value": "56 000",
+   "uncertainty": "14 000",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 The fragmentation picture",
+     "quote": "mean separation of 56 000 $\\pm$ 14 000 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans fragmentation scale",
+   "value": "~10 000 (7 000 from Herschel density)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Comparison against gravitational fragmentation models",
+     "quote": "the density of $\\sim10^5$ cm$^{-3}$ and the fragmentation scale of $\\sim$10 000 AU follows."
+    }
+   ]
+  },
+  {
+   "quantity": "Cylindrical fragmentation scale",
+   "value": "~40 000 (30 000 from Herschel density)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3 Comparison against gravitational fragmentation models",
+     "quote": "the $FWHM$$\\approx$0.06 pc follows, yielding the fragmentation scale of $\\sim$40 000 AU."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Clean threshold, niter, cell size, image size and mosaic gridding",
+  "Exact channels excluded from continuum",
+  "Mask box coordinates",
+  "Exact gaussclumps parameter file beyond Thresh and filter width (e.g. other FWHMBeam, Rms, fit-failure settings)",
+  "Whether primary-beam correction was applied",
+  "Exact HOPS catalog versions (Furlan 2016 was submitted)",
+  "Area used for random placement and boundary treatment in the Monte Carlo",
+  "Random seed"
+ ],
+ "missing_for_reproduction": [
+  "Full clean parameters",
+  "Final HOPS catalog (Furlan 2016 submitted)",
+  "Full cupid configuration",
+  "Core catalog is in the paper table, so downstream stats can be redone"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and fully listed core catalog, with main gaussclumps settings given, but imaging parameters and the protostar catalog details are missing.",
+ "rediscovery_reason": "Public data, a core catalog table and stated gaussclumps settings, and numeric results (43 cores, 2-pt scales) that can be redone.",
+ "source_card": "cards/2017A%26A...600A.141K/sonnet/card.md"
+}

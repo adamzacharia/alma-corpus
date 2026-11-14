@@ -1,0 +1,331 @@
+{
+"depth": "full",
+"paper_type": "large_program_or_survey",
+"paper_type_evidence": [
+{"loc": "2 Data", "quote": "A sample of 146 massive clumps was observed in the ALMA band 3 survey, the ALMA-ATOMS project (ALMA ID: 2019.1.00685.S; PI: Tie Liu)."}
+],
+"fields": ["star_formation", "astrochemistry"],
+"question": {
+"value": "Identify hot cores in the ALMA-ATOMS sample with molecular line stacking, especially weak-emission candidates, to provide one of the largest hot core candidate samples",
+"evidence": [
+{"loc": "abstract", "quote": "to identify hot cores, with a particular focus on weak-emission candidates, and to provide one of the largest samples of hot core candidates to date."}
+]
+},
+"targets": [
+{
+"name": "146 ATOMS massive clumps (hot core candidates in 100 cores)",
+"details": [
+{"loc": "2 Data", "quote": "A sample of 146 massive clumps was observed in the ALMA band 3 survey, the ALMA-ATOMS project"},
+{"loc": "Additional tables (Table notes)", "quote": "The distances from the Sun are compiled in (cite: 2020MNRAS.496.2790L)."}
+],
+"coordinates": "not stated in text (peak positions of the 100 cores are tabulated in the additional tables)",
+"redshift_or_distance": "per-source distances, tabulated in the additional tables",
+"distance_source": "compiled in (cite: 2020MNRAS.496.2790L)"
+},
+{
+"name": "I18032-2032 (G9.62+0.19), template/calibration source",
+"details": [
+{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "from the well-known source I18032-2032 (G9.62+0.19)"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "not stated",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.00685.S", "evidence": [{"loc": "2 Data", "quote": "ALMA ID: 2019.1.00685.S; PI: Tie Liu"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (3 mm)", "evidence": [{"loc": "2 Data", "quote": "A sample of 146 massive clumps was observed in the ALMA band 3 survey"}]},
+{"field": "frequencies_and_spectral_setup", "value": "SPW 7: 97 536-99 442 MHz; SPW 8: 99 470-101 390 MHz; 1 875.00 MHz bandwidth each; ~1.6 km/s spectral resolution", "evidence": [
+{"loc": "2 Data", "quote": "The frequency ranges of SPW 7 and SPW 8 are 97 536 to 99 442 MHz and 99 470 to 101 390 MHz, respectively"},
+{"loc": "2 Data", "quote": "SPWs 7 and 8 have a large bandwidth of 1 875.00 MHz and a spectral resolution of $\\sim$1.6 km s$^{-1}$."}
+]},
+{"field": "arrays", "value": "ACA and 12-m array observed; this work uses 12-m array data", "evidence": [
+{"loc": "2 Data", "quote": "Observations were conducted using both the Atacama Compact 7-meter Array (ACA) and the 12-meter array (C43-2 or C43-3 configurations) from September to mid-November 2019."},
+{"loc": "2 Data", "quote": "This work utilizes the 3 mm continuum data and the two wide-band line data cubes (SPWs 7 and 8) obtained from the 12-meter array"}
+]},
+{"field": "configurations", "value": "12-m: C43-2 or C43-3", "evidence": [{"loc": "2 Data", "quote": "the 12-meter array (C43-2 or C43-3 configurations)"}]},
+{"field": "angular_resolution", "value": "~1.2'' to 1.9'' across the 146 clumps", "evidence": [{"loc": "2 Data", "quote": "which have angular resolutions ranging from approximately 1.2$''$ to 1.9$''$"}]},
+{"field": "max_recoverable_scale", "value": "14.5'' to 20.3''", "evidence": [{"loc": "2 Data", "quote": "with the maximum recoverable angular scale ranging from 14.5$''$ to 20.3$''$ across the 146 clumps."}]},
+{"field": "sensitivity", "value": "mean 1 sigma below 10 mJy/beam per channel (line); 0.4 mJy/beam (continuum)", "evidence": [{"loc": "2 Data", "quote": "The mean 1 $\\sigma$ noise level is below 10 mJy beam$^{-1}$ per channel for line data and 0.4 mJy beam$^{-1}$ for the continuum."}]},
+{"field": "observing_dates", "value": "September to mid-November 2019", "evidence": [{"loc": "2 Data", "quote": "from September to mid-November 2019."}]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA-ATOMS project, PI Tie Liu", "evidence": [{"loc": "2 Data", "quote": "the ALMA-ATOMS project (ALMA ID: 2019.1.00685.S; PI: Tie Liu)"}]}
+],
+"lines_targeted": [
+{"species": "CH3OH", "transition": "multiple unblended transitions (CH3OH 2(1)-2(1) at 97582.898 MHz excluded)", "rest_frequency": "several, 97.5-100.7 GHz; listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}, {"loc": "abstract", "quote": "The molecules involved include CH$_3$OH, CH$_3$OCHO, C$_2$H$_5$CN, C$_2$H$_5$OH, CH$_3$OCH$_3$, CH$_3$COCH$_3$, and CH$_3$CHO."}]},
+{"species": "CH3OCHO", "transition": "multiple unblended transitions", "rest_frequency": "several, listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}]},
+{"species": "C2H5CN", "transition": "multiple unblended transitions", "rest_frequency": "several, listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}]},
+{"species": "C2H5OH", "transition": "multiple unblended transitions", "rest_frequency": "several, listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}]},
+{"species": "CH3OCH3", "transition": "multiple unblended transitions", "rest_frequency": "several, listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}]},
+{"species": "CH3COCH3", "transition": "multiple unblended transitions", "rest_frequency": "several, listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}]},
+{"species": "CH3CHO", "transition": "multiple unblended transitions", "rest_frequency": "several, listed in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The rest frequencies of these unblended transitions are listed in Table"}]},
+{"species": "SiO", "transition": "2-1", "rest_frequency": "not stated", "evidence": [{"loc": "4.3 Spatial distributions of complex molecular line emission", "quote": "We compare the integrated intensity maps of the stacked cube of CH$_3$CHO with those of SiO (2-1)"}]}
+],
+"other_facilities": [
+{"name": "JPL molecular spectroscopy database", "provided": {"value": "Molecular line rest frequencies and line information accessed through XCLASS", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "All necessary molecular line information from the Jet Propulsion Laboratory"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Strong sample of 60 hot cores previously identified in ATOMS", "evidence": [{"loc": "3.2.1 Identification", "quote": "60 of which are identical to the strong sample previously identified by (cite: 2022MNRAS.511.3463Q)"}]}, "citation": "Qin et al. 2022 (cite: 2022MNRAS.511.3463Q)"},
+{"what": {"value": "LTE-fitted column densities of the 60 strong hot cores, used for comparison with stacking results", "evidence": [{"loc": "3.2.3 Column density", "quote": "with those derived by (cite: 2022MNRAS.511.3463Q) through LTE fitting for the 60 strong hot cores."}]}, "citation": "Qin et al. 2022 (cite: 2022MNRAS.511.3463Q)"},
+{"what": {"value": "Source distances", "evidence": [{"loc": "Additional tables (Table notes)", "quote": "The distances from the Sun are compiled in (cite: 2020MNRAS.496.2790L)."}]}, "citation": "Liu et al. 2020b (cite: 2020MNRAS.496.2790L)"},
+{"what": {"value": "Typical COM line width of ~5 km/s (FWHM) in strong hot cores, used to set the integration range", "evidence": [{"loc": "3.1.5 Integrated intensity maps of stacked cubes", "quote": "for the strong sample of hot cores is approximately 5 km s$^{-1}$ (cite: 2020MNRAS.496.2790L)"}]}, "citation": "Liu et al. 2020b (cite: 2020MNRAS.496.2790L)"},
+{"what": {"value": "Molecular line spectroscopic data (rest frequencies etc.)", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "All necessary molecular line information from the Jet Propulsion Laboratory"}]}, "citation": "Pickett et al. 1998 (cite: 1998JQSRT..60..883P)"},
+{"what": {"value": "Previously identified molecular species in G9.62+0.19, used to label the source-stacked template spectrum", "evidence": [{"loc": "5.1 Source-stacking spectrum of hot-cores", "quote": "We fit the template spectrum with the emissions of species already identified from G9.62+0.19"}]}, "citation": "Liu et al. 2020b (cite: 2020MNRAS.496.2790L); Peng et al. 2022 (cite: 2022MNRAS.512.4419P)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Noise-free XCLASS LTE model spectrum of G9.62+0.19 (standard spectrum) used for weights and column density calibration", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "A noise-free standard spectrum then modeled using XCLASS, adopting the fitted parameters"}]}
+],
+"calibration": [],
+"imaging": [
+{"field": "final_beam", "value": "angular resolution ~1.2'' to 1.9''", "evidence": [{"loc": "2 Data", "quote": "which have angular resolutions ranging from approximately 1.2$''$ to 1.9$''$"}]},
+{"field": "final_rms", "value": "mean 1 sigma below 10 mJy/beam per channel (line); 0.4 mJy/beam (continuum)", "evidence": [{"loc": "2 Data", "quote": "The mean 1 $\\sigma$ noise level is below 10 mJy beam$^{-1}$ per channel for line data and 0.4 mJy beam$^{-1}$ for the continuum."}]}
+],
+"inherited": [
+{"what": {"value": "ALMA observations and data reduction", "evidence": [{"loc": "2 Data", "quote": "Details of ALMA observations and data reduction can be found in (cite: 2020MNRAS.496.2821L; 2020MNRAS.496.2790L)."}]}, "from_reference": "(cite: 2020MNRAS.496.2821L; 2020MNRAS.496.2790L)"},
+{"what": {"value": "XCLASS LTE fitting of G9.62+0.19 hot core spectra", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "following (cite: 2022MNRAS.512.4419P), assuming local thermodynamic equilibrium (LTE)"}]}, "from_reference": "(cite: 2022MNRAS.512.4419P)"},
+{"what": {"value": "Stacking procedure (rest frequency correction, coordinate axis reconstruction, reweighting, normalization)", "evidence": [{"loc": "3.1 Spectral line stacking", "quote": "This technique is implemented by correcting for the rest frequency, reconstructing the coordinate axis, and applying reweighting and normalization before stacking (cite: 2022ApJS..263...13L; 2024ApJS..271....3L)."}]}, "from_reference": "(cite: 2022ApJS..263...13L; 2024ApJS..271....3L)"},
+{"what": {"value": "Weighting scheme giving highest S/N in the stacked cube", "evidence": [{"loc": "3.1.4 Spectral stacking and normalization", "quote": "this set of weights could achieve the highest S/N for the stacked cube (cite: 2022ApJS..263...13L)"}]}, "from_reference": "(cite: 2022ApJS..263...13L)"}
+],
+"unstated_but_needed": [
+"Source systemic velocities V_LSR used for each of the 146 clumps (value and origin)",
+"Calibration/imaging recipe and exact data products (pipeline vs manual, CASA version, continuum subtraction, line-free channels, robust weighting, cell size, taper, primary beam correction) are deferred to ATOMS papers",
+"Whether cubes were convolved to a common beam before stacking transitions at different frequencies, and the interpolation scheme used in the 1.25 km/s resampling",
+"Noise definition for the visual >~5 sigma CH3OH criterion (which rms, which map) and how 'compact' was judged for each source",
+"XCLASS version, fitting algorithm, priors, and fit uncertainties for the G9.62+0.19 standard spectrum (only best-fit values are tabulated)",
+"CASA version and imfit settings (region, initial guesses, fixed parameters) for the 2D Gaussian fits",
+"Type of correlation coefficient and fitting method for the column-density pair correlations and for CH3CHO vs SiO/H13CO+ maps; how 'as extended as' was decided; image matching for these comparisons",
+"Uncertainty propagation for stacking-derived column densities",
+"Zenodo location of the supplementary data is not given"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Build standard hot core spectrum of G9.62+0.19 with XCLASS",
+"method": {"value": "Extract peak spectra of G9.62+0.19 cores C1-C3 with CASA, fit with XCLASS assuming LTE, adopt fitted parameters as standard for each species, and model a noise-free standard spectrum", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "Their peak spectra are extracted using CASA (cite: 2007ASPC..376..127M; 2022PASP..134k4501C)"}, {"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "following (cite: 2022MNRAS.512.4419P), assuming local thermodynamic equilibrium (LTE)"}]},
+"software": ["CASA", "XCLASS"],
+"key_parameters": [
+{"value": "Standard parameters from C1 for CH3OH, CH3OCHO, C2H5OH, CH3OCH3, CH3CHO; text says CH3COCH3 and C2H5OH from C2 and C3 respectively", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "the fitted parameters from C1 are adopted as the standard parameters."}, {"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "We adopt the parameters of CH$_{3}$COCH$_{3}$ and C$_{2}$H$_{5}$OH from the fits of C2 and C3, respectively."}]},
+{"value": "Table 1 standard values (source size '', Tk K, N x1e15 cm-2, dV km/s): CH3OH 1.6/100/200/5; CH3OCHO 1.2/123/32/5; C2H5CN 1.4/140/1.2/4.5 (C3); C2H5OH 1.6/100/9/4; CH3OCH3 1.6/95/30/4; CH3CHO 1.6/100/3.8/5; CH3COCH3 1.4/140/20/5 (C2)", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "For each species, the XCLASS fitting parameters, including source size, rotational temperature, column density, line width, as well as the core from which the spectrum is extracted, are listed in Table"}]}
+],
+"assumptions": [
+{"value": "LTE valid because hot core densities exceed the ~1e6 cm-3 critical density", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "The size of a hot core is very compact, with number densities generally above this threshold; therefore, the LTE assumption is valid"}]},
+{"value": "Adopted transitions are optically thin in the standard spectrum and assumed so in other hot cores", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "it is therefore natural to assume the same for other hot cores, especially those with weak COM emission"}]},
+{"value": "In the optically thin limit, beam dilution scales column density and intensity equally so their ratio is unchanged", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "Note that, in the optically thin limit, both the column density and spectral intensity will be modified by the same beam dilution factor, and their ratio will remain unchanged."}]}
+],
+"fitting": {"value": "XCLASS LTE fit; algorithm, priors and likelihood not stated", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "following (cite: 2022MNRAS.512.4419P), assuming local thermodynamic equilibrium (LTE)"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Select unblended transitions and derive stacking weights",
+"method": {"value": "Keep transitions detected in G9.62+0.19 hot cores and unblended with other molecules; weight each by its peak brightness temperature on the XCLASS noise-free model spectrum", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "(2) unblended with transitions of any other molecular lines."}, {"loc": "3.1.2 Transitions and weights for stacking", "quote": "The peak brightness temperatures of these transitions on the XCLASS-fitted noise-free spectra of G9.62+0.19 are adopted as the weights for line stacking in following analysis."}]},
+"software": ["XCLASS"],
+"key_parameters": [
+{"value": "Flux-to-brightness-temperature conversion T = 1.222e3 I/(nu^2 theta_maj theta_min), I in mJy/beam, nu in GHz, beam axes in arcsec", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "In XCLASS, the conversion between the brightness temperature (in K) and the flux intensity of a line is conducted using the following equation:"}]},
+{"value": "CH3OH 2(1)-2(1) at 97582.898 MHz excluded from stacking", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "It has a low $E_{\\rm u}$ of 20 K, which makes its emission typically optically thick and extensively distributed in high-mass star-forming regions."}]},
+{"value": "Weights tabulated in Table 1", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "The weights are also listed in Table"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Cut out and resample line cubes to a common velocity grid",
+"method": {"value": "For each source and transition, cut a ~60 km/s cube centred on the rest frequency shifted by V_LSR, convert frequency to velocity, and resample to 1.25 km/s channels", "evidence": [{"loc": "3.1.3 Resampling", "quote": "For each ATOMS source, we cut out a spectral cube with a bandwidth of $\\sim60$ km s$^{-1}$ for each transition selected above."}, {"loc": "3.1.3 Resampling", "quote": "To align the velocity channels, we further resample the cut cube of each transition to a velocity resolution of 1.25 km s$^{-1}$."}]},
+"software": [],
+"key_parameters": [
+{"value": "Cube bandwidth ~60 km/s; velocity resolution 1.25 km/s; central frequency nu_c = nu_0 (1 - V_LSR/c)", "evidence": [{"loc": "3.1.3 Resampling", "quote": "where $V_{\\rm LSR}$ is the systematic velocity of the source"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Weighted stacking of transitions per species per source",
+"method": {"value": "Average the resampled cubes of all transitions of a species with weights W_k: D = sum(W_k D_k)/sum(W_k)", "evidence": [{"loc": "3.1.4 Spectral stacking and normalization", "quote": "is obtained by averaging the resampled cubes"}]},
+"software": [],
+"key_parameters": [
+{"value": "Weights W_k from Table 1 (peak Tb of XCLASS model)", "evidence": [{"loc": "3.1.4 Spectral stacking and normalization", "quote": "this set of weights could achieve the highest S/N for the stacked cube (cite: 2022ApJS..263...13L)"}]}
+],
+"assumptions": [
+{"value": "Optimal weighting assumes transition intensities proportional to the template and equal noise", "evidence": [{"loc": "3.1.4 Spectral stacking and normalization", "quote": "if the intensities of the different transitions of the same species are proportional to those of the template spectra"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Make moment 0 maps of the stacked cubes",
+"method": {"value": "Integrate the stacked cubes over +/-5 km/s", "evidence": [{"loc": "3.1.5 Integrated intensity maps of stacked cubes", "quote": "After stacking, we integrated the emission for the stacked lines within a velocity range of $\\pm 5$ km s$^{-1}$."}]},
+"software": [],
+"key_parameters": [
+{"value": "Integration range +/-5 km/s, chosen to match typical COM FWHM of ~5 km/s in strong hot cores", "evidence": [{"loc": "3.1.5 Integrated intensity maps of stacked cubes", "quote": "We chose this value because the typical COM line width, measured as the full width at half maximum (FWHM), for the strong sample of hot cores is approximately 5 km s$^{-1}$"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Checked that the range covers most of the G9.62+0.19 stacked emission while avoiding blending", "evidence": [{"loc": "3.1.5 Integrated intensity maps of stacked cubes", "quote": "the adopted velocity range for integration covers the majority of the emission in the stacked spectra of G9.62+0.19 while avoiding blending."}]}
+},
+{
+"order": 6,
+"goal": "Identify hot core candidates from moment 0 maps",
+"method": {"value": "Visual identification of strong (>~5 sigma), compact CH3OH emission; cores also need at least one other COM", "evidence": [{"loc": "3.2.1 Identification", "quote": "An HMC candidate is visually identified by the presence of strong ($\\gtrsim 5\\sigma$), compact CH$_3$OH emission."}, {"loc": "abstract", "quote": "We classify cores with dense emission of CH$_3$OH and at least one molecule from the other six molecules as hot core candidates."}]},
+"software": [],
+"key_parameters": [
+{"value": "Compact = round morphology with central brightest part unresolved or partly resolved", "evidence": [{"loc": "3.2.1 Identification", "quote": "a compact core is defined as one with a round morphology, where its central brightest part is not resolved or is only partly resolved under the current spatial resolution"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "60 of the 100 candidates coincide with the previously identified strong sample", "evidence": [{"loc": "3.2.1 Identification", "quote": "60 of which are identical to the strong sample previously identified by (cite: 2022MNRAS.511.3463Q)"}]}
+},
+{
+"order": 7,
+"goal": "Measure core sizes and peak fluxes with 2D Gaussian fits",
+"method": {"value": "2D Gaussian fit of the CH3OH moment 0 map of each of the 100 cores with CASA imfit; same procedure for the other six species", "evidence": [{"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "Two-dimensional Gaussian fitting is applied to the 100 cores on the Moment 0 maps of CH$_3$OH using the CASA"}, {"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "The same fitting procedure was applied for the other six COM species (if detected)."}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Beam-deconvolved size, position angle, peak and integrated flux adopted; theta_source = sqrt(ab) from deconvolved FWHM axes", "evidence": [{"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "The beam-deconvolved fitting parameters are adopted, including the source size"}, {"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "$\\theta_{\\rm source}=\\sqrt{ab}$, where $a$ and $b$ represent the deconvolved major and minor FWHM axes of the cores"}]}
+],
+"assumptions": [],
+"fitting": {"value": "Gaussian least-squares via imfit; details not stated", "evidence": [{"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "Two-dimensional Gaussian fitting is applied to the 100 cores on the Moment 0 maps of CH$_3$OH using the CASA"}]},
+"validation": {"value": "CH3CHO fits flagged as less reliable where extended emission is present", "evidence": [{"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "the emission of CH$_3$CHO displays extended components, making the fitting of CH$_3$CHO less reliable."}]}
+},
+{
+"order": 8,
+"goal": "Derive column densities by scaling to the G9.62+0.19 standard",
+"method": {"value": "N = (N_cali / I_cali) I, with I_cali the integrated (+/-5 km/s) stacked intensity of the standard spectrum and N_cali the XCLASS column density of G9.62+0.19; applied to moment maps and beam-deconvolved peak values", "evidence": [{"loc": "3.2.3 Column density", "quote": "G9.62+0.19 is adopted as the calibration source to estimate the column densities of hot core candidates from their stacked emission."}, {"loc": "3.2.3 Column density", "quote": "To evaluate the column density of each species, we use the following conversion formula:"}, {"loc": "3.2.3 Column density", "quote": "enabling us to directly calculate the beam-deconvolved peak column density"}]},
+"software": [],
+"key_parameters": [
+{"value": "N_cali values are the Table 1 column densities of the G9.62+0.19 core used for each species", "evidence": [{"loc": "3.2.3 Column density", "quote": "is adopted as the standard column density (denoted as $N_{\\rm cali}$) for the corresponding species."}]}
+],
+"assumptions": [
+{"value": "Same excitation conditions and optically thin emission as G9.62+0.19 for all candidates", "evidence": [{"loc": "3.2.3 Column density", "quote": "the good agreement between the XCLASS fitting and the stacking conversion suggests comparable excitation conditions for different hot core candidates."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with LTE-fit column densities of Qin et al. 2022 for the 60 strong cores; generally in good agreement", "evidence": [{"loc": "3.2.3 Column density", "quote": "The results are generally in good agreement, supporting the reliability of column densities estimated through stacking."}]}
+},
+{
+"order": 9,
+"goal": "Source-stack spectra of all 100 hot cores into a template spectrum",
+"method": {"value": "Extract full-band SPW 7 and 8 spectra at the stacked CH3OH peak of each core, correct the frequency axis for V_LSR, resample to 0.49 MHz channels, average with equal weights, and fit with XCLASS", "evidence": [{"loc": "5.1 Source-stacking spectrum of hot-cores", "quote": "For each of the 100 hot core candidates, we extract the full-band spectra of SPW 7 and SPW 8 at the peak location of CH$_3$OH (after stacking)."}, {"loc": "5.1 Source-stacking spectrum of hot-cores", "quote": "A source-stacking template spectrum is obtained by averaging these spectra with equal weighting."}]},
+"software": ["XCLASS"],
+"key_parameters": [
+{"value": "Channel width 0.49 MHz", "evidence": [{"loc": "5.1 Source-stacking spectrum of hot-cores", "quote": "We then resample the spectra to have aligned channels with a channel width of 0.49 MHz."}]}
+],
+"assumptions": [],
+"fitting": {"value": "XCLASS fit with species already identified in G9.62+0.19; details not stated", "evidence": [{"loc": "5.1 Source-stacking spectrum of hot-cores", "quote": "We fit the template spectrum with the emissions of species already identified from G9.62+0.19"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 10,
+"goal": "Correlate column densities between COM species",
+"method": {"value": "Plot column densities of molecular pairs for strong and weak cores and compute correlation coefficients", "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "show the correlations between the column densities of molecular pairs for the seven molecules, including both the strong hot cores and the weak candidates."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Weak candidates lie at the low end of the linear trend defined by the whole sample, supporting the stacking-based column densities", "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "This supports the validity of estimating column density through stacking"}]}
+},
+{
+"order": 11,
+"goal": "Compare CH3CHO distribution with SiO and H13CO+",
+"method": {"value": "Compare moment 0 maps of stacked CH3CHO with SiO (2-1) and H13CO+ (1-0) and compute correlations of the integrated intensity maps for 43 sources where CH3CHO is as extended", "evidence": [{"loc": "5.3 Spatial distributions of complex molecular line emission", "quote": "We compare the integrated intensity maps of the stacked cube of CH$_3$CHO with those of SiO (2-1)"}, {"loc": "5.3 Spatial distributions of complex molecular line emission", "quote": "To quantify this, we calculate the correlation between the integrated intensity maps of CH$_3$CHO, SiO"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Extracting peak spectra of G9.62+0.19 and 2D Gaussian fitting (imfit) of moment 0 maps", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "Their peak spectra are extracted using CASA (cite: 2007ASPC..376..127M; 2022PASP..134k4501C)"}, {"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "Two-dimensional Gaussian fitting is applied to the 100 cores on the Moment 0 maps of CH$_3$OH using the CASA"}]}},
+{"name": "XCLASS", "version": "not stated", "used_for": {"value": "LTE fitting of G9.62+0.19 spectra, noise-free standard model, and fit of the source-stacked template spectrum", "evidence": [{"loc": "3.1.1 Standard spectrum of G9.62+0.19", "quote": "A noise-free standard spectrum then modeled using XCLASS, adopting the fitted parameters"}, {"loc": "5.1 Source-stacking spectrum of hot-cores", "quote": "We fit the template spectrum with the emissions of species already identified from G9.62+0.19"}]}},
+{"name": "JPL molecular database", "version": "not stated", "used_for": {"value": "Molecular line information accessed through XCLASS", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "All necessary molecular line information from the Jet Propulsion Laboratory"}]}}
+],
+"results_numeric": [
+{"quantity": "Total hot core candidates (strong + new weak)", "value": "100 (60 strong + 40 new weak)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.2.1 Identification", "quote": "In total, we identified 100 HMC candidates, 60 of which are identical to the strong sample previously identified by (cite: 2022MNRAS.511.3463Q), and the remaining 40 are weak candidates newly identified in this work."}]},
+{"quantity": "Number of the 100 cores detected in each COM (CH3OH, CH3OCHO, C2H5CN, C2H5OH, CH3OCH3, CH3CHO, CH3COCH3)", "value": "100, 90, 80, 46, 77, 59, 27", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.2.1 Identification", "quote": "In total, 100 hot cores show CH$_3$OH emission, 90 show CH$_3$OCHO emission, 80 show C$_2$H$_5$CN emission, 46 show C$_2$H$_5$OH emission, 77 show CH$_3$OCH$_3$ emission, 59 show CH$_3$CHO emission, and 27 show CH$_3$COCH$_3$ emission."}]},
+{"quantity": "Number of the 40 new candidates with compact emission of CH3OCHO, C2H5CN, C2H5OH, CH3OCH3, CH3CHO, CH3COCH3", "value": "36, 29, 5, 25, 16, 1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.2.1 Identification", "quote": "Specifically, 36 show CH$_3$OCHO emission, 29 display C$_2$H$_5$CN emission, 5 reveal C$_2$H$_5$OH emission, 25 demonstrate CH$_3$OCH$_3$ emission, 16 present CH$_3$CHO emission, and only one core shows CH$_3$COCH$_3$ emission."}]},
+{"quantity": "CH3OH emission size range", "value": "1092 to 46884", "uncertainty": "not stated", "units": "AU", "from_step": 7, "evidence": [{"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "The sizes of molecular CH$_3$OH emission range from 1092 to 46884 AU for sources at different distances."}]},
+{"quantity": "Deconvolved emission sizes: six COMs (excluding CH3CHO) / CH3CHO", "value": "940 to 57 306 / 4 033 to 91 884", "uncertainty": "not stated", "units": "AU", "from_step": 7, "evidence": [{"loc": "5.3 Spatial distributions of complex molecular line emission", "quote": "range from approximately 940 to 57 306 AU, while the deconvolved sizes for CH$_3$CHO range from 4 033 to 91 884 AU."}]},
+{"quantity": "CH3OH column density range", "value": "1.4e18 to 4.4e20", "uncertainty": "not stated", "units": "cm^-2", "from_step": 8, "evidence": [{"loc": "3.2.3 Column density", "quote": "CH$_{3}$OH stands out with the highest column densities, ranging from 1.4$\\times$10$^{18}$ to 4.4$\\times$10$^{20}$ cm$^{-2}$."}]},
+{"quantity": "CH3OCHO and CH3OCH3 column density ranges", "value": "5.3e17 to 2.8e20 and 1.0e18 to 1.4e20", "uncertainty": "not stated", "units": "cm^-2", "from_step": 8, "evidence": [{"loc": "3.2.3 Column density", "quote": "from 5.3$\\times$10$^{17}$ to 2.8$\\times$10$^{20}$ cm$^{-2}$ and from 1.0$\\times$10$^{18}$ to 1.4$\\times$10$^{20}$ cm$^{-2}$, respectively."}]},
+{"quantity": "C2H5OH, CH3CHO and CH3COCH3 column density range", "value": "1.3e17 to 5.9e19", "uncertainty": "not stated", "units": "cm^-2", "from_step": 8, "evidence": [{"loc": "3.2.3 Column density", "quote": "ranging from 1.3$\\times$10$^{17}$ to 5.9$\\times$10$^{19}$ cm$^{-2}$."}]},
+{"quantity": "C2H5CN column density range", "value": "1.6e15 to 7.1e18", "uncertainty": "not stated", "units": "cm^-2", "from_step": 8, "evidence": [{"loc": "3.2.3 Column density", "quote": "spans a range from 1.6$\\times$10$^{15}$ to 7.1$\\times$10$^{18}$ cm$^{-2}$"}]},
+{"quantity": "Column density of weak candidates relative to strong sample", "value": "approximately one order of magnitude lower", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "These weak candidates exhibit column densities of COMs that are approximately one order of magnitude lower than those of the strong sample."}]},
+{"quantity": "Correlation coefficients CH3OH-CH3OCHO, CH3OCHO-C2H5CN, CH3OCHO-CH3OCH3", "value": "0.89, 0.88, 0.94", "uncertainty": "not stated", "units": "dimensionless", "from_step": 10, "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "Their correlation coefficients are 0.89, 0.88, and 0.94, respectively."}]},
+{"quantity": "Correlation coefficient C2H5OH-CH3OCHO", "value": "0.86", "uncertainty": "not stated", "units": "dimensionless", "from_step": 10, "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "also exhibits a strong correlation (0.86) with CH$_3$OCHO"}]},
+{"quantity": "Correlation coefficient C2H5CN-CH3OCH3", "value": "0.86", "uncertainty": "not stated", "units": "dimensionless", "from_step": 10, "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "also shows a strong overall correlation with CH$_{3}$OCH$_{3}$, with a correlation coefficient of 0.86."}]},
+{"quantity": "Number of sources where CH3CHO is extended like SiO and H13CO+", "value": "43 of 100", "uncertainty": "not stated", "units": "dimensionless", "from_step": 11, "evidence": [{"loc": "abstract", "quote": "Among the 100 hot cores in total, 43 exhibit extended CH$_3$CHO emission spatially correlated with SiO"}]},
+{"quantity": "Correlation of CH3CHO with H13CO+ maps in those 43 sources", "value": "exceeding 0.8", "uncertainty": "not stated", "units": "dimensionless", "from_step": 11, "evidence": [{"loc": "5.3 Spatial distributions of complex molecular line emission", "quote": "with correlation coefficients exceeding 0.8."}]}
+],
+"findings_qualitative": [
+{"value": "All hot core candidates show compact emission from at least one of the six COMs other than CH3OH", "evidence": [{"loc": "abstract", "quote": "All hot core candidates display compact emission from at least one of the other six COM species."}]},
+{"value": "For the weak candidates all species except CH3CHO are compact in the stacked image but not fully resolved spatially", "evidence": [{"loc": "abstract", "quote": "all species except CH$_3$CHO show compact emission in the stacked image, which cannot be fully resolved spatially."}]},
+{"value": "Stacking is faster and more sensitive than line fitting for finding weak hot cores", "evidence": [{"loc": "abstract", "quote": "it is faster and more convenient, and allows for greater sensitivity to detect weaker hot cores."}]}
+],
+"claims": [
+{"hypothesis": "Molecular line stacking can find weak hot cores missed by line-fitting selection in the ATOMS sample", "experiment": "Stack unblended transitions of seven COMs, make moment 0 maps and identify compact CH3OH cores", "result": "100 candidates, 60 known strong and 40 new weak", "finding": "40 new hot core candidates identified", "support": "supported", "evidence": [{"loc": "abstract", "quote": "we have detected 40 new weak candidates through stacking."}]},
+{"hypothesis": "Stacking-based scaling gives reliable column densities", "experiment": "Scale G9.62+0.19 XCLASS column densities by stacked integrated intensity and compare with LTE fits of the 60 strong cores", "result": "Generally good agreement, with some discrepancy attributed to excitation and spatial differences", "finding": "Stacking column densities consistent with previous fitting results", "support": "supported", "evidence": [{"loc": "abstract", "quote": "the stacking method provides molecular column density estimates that are consistent with previous fitting results."}]},
+{"hypothesis": "Weak candidates differ from strong hot cores in COM abundance", "experiment": "Compare stacked column densities across the sample", "result": "Weak candidates have COM column densities about an order of magnitude lower and lie at the low end of the correlation trends", "finding": "Weak candidates are a lower-column-density extension of the hot core population", "support": "supported", "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "the column densities of weak hot core candidates lie at the lower end of the linear correlation trend"}]},
+{"hypothesis": "CH3OH is a precursor of other COMs and COMs share chemical environment", "experiment": "Correlate column densities between COM pairs across 100 cores", "result": "Strong correlations (0.89 CH3OH-CH3OCHO, 0.94 CH3OCHO-CH3OCH3, 0.88 CH3OCHO-C2H5CN)", "finding": "COMs may share a similar chemical environment with CH3OH potentially a precursor", "support": "partially", "evidence": [{"loc": "abstract", "quote": "suggesting they may share a similar chemical environment for COMs"}]},
+{"hypothesis": "CH3CHO traces shocks rather than compact hot core gas", "experiment": "Compare stacked CH3CHO moment 0 maps with SiO and H13CO+ maps in 100 cores", "result": "43 cores show extended CH3CHO correlated with H13CO+ (>0.8) and, in 8 sources, SiO (>0.8)", "finding": "CH3CHO may form in widely distributed shock regions", "support": "partially", "evidence": [{"loc": "5.3 Spatial distributions of complex molecular line emission", "quote": "This finding supports the possibility that CH$_3$CHO could be formed in shock-processed regions, a hypothesis that warrants further investigation in future studies"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "ATOMS Band 3 survey provides an excellent dataset covering 146 massive clumps", "evidence": [{"loc": "1 Introduction", "quote": "providing an excellent dataset for identifying hot cores."}]},
+{"field": "why_this_method", "value": "Stacking is faster and more sensitive than line fitting; species chosen because each has multiple transitions in the ATOMS band", "evidence": [{"loc": "abstract", "quote": "Compared to spectral line fitting methods, it is faster and more convenient, and allows for greater sensitivity to detect weaker hot cores."}, {"loc": "1 Introduction", "quote": "These species were selected for spectral stacking because they all have multiple transitions covered by the ATOMS survey, ensuring a robust dataset for analysis."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "CH3OH 2(1)-2(1) line excluded from stacking because it is typically optically thick and extended", "evidence": [{"loc": "3.1.2 Transitions and weights for stacking", "quote": "It has a low $E_{\\rm u}$ of 20 K, which makes its emission typically optically thick and extensively distributed in high-mass star-forming regions."}]}
+],
+"limitations_admitted": [
+{"value": "Weak candidates cannot be fully resolved spatially", "evidence": [{"loc": "abstract", "quote": "which cannot be fully resolved spatially."}]},
+{"value": "Unresolved optically thick regions may contribute to discrepancy with LTE-fit column densities", "evidence": [{"loc": "3.2.3 Column density", "quote": "unresolved optically thick regions, which cannot be distinguished at the current resolution, may also contribute to the discrepancy."}]},
+{"value": "Details of G9.62+0.19 hot cores unclear, so similarity of candidates' emitting regions and excitation to the template cannot be confirmed", "evidence": [{"loc": "3.2.3 Column density", "quote": "we cannot confirm whether different hot core candidates exhibit similar distributions of emitting regions and excitation conditions."}]},
+{"value": "CH3CHO Gaussian fits less reliable where extended emission is present", "evidence": [{"loc": "3.2.2 Two-dimensional Gaussian fitting", "quote": "making the fitting of CH$_3$CHO less reliable."}]},
+{"value": "Nitrogen versus oxygen differentiation remains uncertain because of limited angular resolution", "evidence": [{"loc": "5.2 Correlations of complex molecules", "quote": "remains uncertain due to the limited angular resolution in our observations"}]}
+],
+"referee_caveats_inferred": [
+"All column densities are scaled from one template core (G9.62+0.19), so they inherit its Tk, source size and optical-depth assumptions; no excitation temperature is derived per source",
+"Pair correlations between species may be partly built in because every N is proportional to a stacked intensity calibrated on the same template",
+"Candidate selection is visual (>~5 sigma, round morphology) with no stated completeness or false-positive test for the 40 weak cores",
+"Text says C2H5OH parameters come from C3 and CH3COCH3 from C2, while Table 1 labels C2H5OH as C1 and C2H5CN as C3",
+"No uncertainty budget for stacking-derived column densities or for the standard-spectrum fit",
+"Beam differences across frequencies in stacking and between SiO/H13CO+/CH3CHO maps are not discussed",
+"Correlation coefficient type and the 'as extended as' criterion for CH3CHO are not defined"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Only derived data stated as available (article and Zenodo supplement); public status of ALMA raw data not stated", "evidence": [{"loc": "Data Availability", "quote": "The derived data underlying this article are available in thearticle and in its online supplementary material on Zenodo."}]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"V_LSR per source",
+"Calibration and imaging settings (deferred to ATOMS papers) or the exact data products used",
+"XCLASS fit details and uncertainties for the template",
+"imfit settings and region choices",
+"Objective criteria for compact and extended classifications",
+"Correlation method details",
+"Software versions",
+"No analysis code released"
+],
+"estimated_data_volume_inferred": "Hundreds of GB to ~1 TB if calibrated 12-m SPW 7 and 8 cubes for 146 clumps are rebuilt from the archive; far less if only released products are used",
+"score_inferred": 3,
+"score_reason": "ALMA project code is given and the stacking recipe, weights and standard parameters are tabulated with numeric results, but calibration, imaging, V_LSR and selection details are deferred or missing and no code is released.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "ALMA data are from a named project and the recipe (template, weights, resample, stack, moment 0, imfit, scaling) is largely complete with numeric tables, though visual selection and V_LSR are underspecified.",
+"methods_papers": [
+{"citation": "Liu et al. 2020a (cite: 2020MNRAS.496.2821L)", "why": "ATOMS observations and data reduction"},
+{"citation": "Liu et al. 2020b (cite: 2020MNRAS.496.2790L)", "why": "ATOMS survey overview, distances, previous hot core line identification"},
+{"citation": "Liu et al. 2022 (cite: 2022ApJS..263...13L)", "why": "Spectral stacking method and weights"},
+{"citation": "Liu et al. 2024a (cite: 2024ApJS..271....3L)", "why": "Stacking technique"},
+{"citation": "Peng et al. 2022 (cite: 2022MNRAS.512.4419P)", "why": "XCLASS LTE fitting of G9.62+0.19"},
+{"citation": "Moller et al. 2017 (cite: 2017A&A...598A...7M)", "why": "XCLASS software"}
+],
+"companion_papers": [
+{"citation": "Qin et al. 2022 (cite: 2022MNRAS.511.3463Q)", "why": "Catalog of 60 strong ATOMS hot cores with LTE-fit column densities used for comparison"},
+{"citation": "Liu et al. 2024b (cite: 2024RAA....24b5009L)", "why": "ALMA-QUARKS Band 6 follow-up survey"}
+],
+"related_projects_or_surveys": ["ALMA-ATOMS", "ALMA-QUARKS", "CoCCoa", "DIHCA", "ALMA-IMF"]
+}

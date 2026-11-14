@@ -1,0 +1,278 @@
+{
+ "bibcode": "2017MNRAS.472..483F",
+ "title": "The dust attenuation of star-forming galaxies at z ∼ 3 and beyond: New insights from ALMA observations",
+ "year": 2017,
+ "doi": "10.1093/mnras/stx1948",
+ "arxiv_id": "1705.01559",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Does the IRX-beta_UV relation of massive star-forming galaxies at z~3 follow the local M99 relation, and does it evolve toward lower IRX at z~4-6?",
+ "alma_project_codes": [
+  "2013.1.00151.S",
+  "2013.1.00034.S",
+  "2012.1.00523.S"
+ ],
+ "data": {
+  "bands": "Band 6 for the z~4-5 comparison sample",
+  "arrays": "not stated",
+  "angular_resolution": "1.8\"x1.1\" (19 fields) and 1.7\"x1.1\" (48 fields)",
+  "sensitivity": "rms 66 (77) uJy/beam for 19 (48) fields"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA band-6 fluxes of 19 z~4-5 galaxies (Table 8)",
+    "evidence": [
+     {
+      "loc": "2.2 $z\\ge4$ Galaxy Samples",
+      "quote": "ALMA band-6 fluxes of the $z\\sim4-5$ sample are taken from Table 8 of (cite: Scoville2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Scoville2016)"
+  },
+  {
+   "what": {
+    "value": "L_IR, L_UV, beta_UV of z~5-6 galaxies (Table 1)",
+    "evidence": [
+     {
+      "loc": "2.2 $z\\ge4$ Galaxy Samples",
+      "quote": "We utilise the $L_{\\rm IR}$, $L_{\\rm UV}$, and $\\beta_{\\rm UV}$ estimates of the targets from Table 1 of (cite: Barisic2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Barisic2017; Capak2015)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1.3-mm fluxes of the z~3 sample",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations of $z\\sim3.2$ Targets",
+      "quote": "and our ALMA 1.3-mm fluxes (cite: Schinnerer2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Schinnerer2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive L_IR from ALMA 240 GHz fluxes",
+   "method": "Fit single-component modified blackbody to the 240 GHz flux and integrate 8-1000 um",
+   "software": [],
+   "key_parameters": [
+    "Integrated over 8-1000 um; 3 sigma upper limits for 26 non-detections"
+   ],
+   "assumptions": [
+    "beta_d=1.5; fiducial T_d=40 K (stack best fit 41.5+-2.5 K); 35 K as alternative"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure beta_UV and L_UV",
+   "method": "Power-law fit to COSMOS15 photometry over rest-frame 1500-2500 A; L_UV at 1600 A",
+   "software": [],
+   "key_parameters": [
+    "3 arcsec aperture photometry, typically >10 data points"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Stellar masses via SED fitting",
+   "method": "MAGPHYS SED fits to optical/NIR, MIPS 24um, PACS 100um and ALMA fluxes",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Stack ALMA images in beta_UV bins",
+   "method": "Pixel-wise median stack of ALMA maps in three beta_UV bins and for non-detections; weighted by inverse L_UV; peak flux corrected to total flux using mean of detected sources",
+   "software": [],
+   "key_parameters": [
+    "Bins beta_UV <-1.5, -1.5 to -1.0, >-1.0 (14, 30, 23 galaxies)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare IRX-beta and fit IRX-M* relation, test evolution to z~4-6",
+   "method": "Compare with M99 and SMC curves; fit normalisation of IRX-M* with slope fixed to Heinis2013; compare with Scoville2016 and Capak2015/Barisic2017 samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_d evolution ∝(1+z)^0.32 tested as caveat"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of ALMA detections (>3 sigma)",
+   "value": "41 of 67",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA Observations of $z\\sim3.2$ Targets",
+     "quote": "A total of 41 of our 67 targets were detected at more than $>3\\,\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked dust temperature",
+   "value": "41.5",
+   "uncertainty": "2.5",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 $L_{\\rm IR}$, $L_{\\rm UV}$, and $\\beta_{\\rm UV}$",
+     "quote": "we obtain a best-fit dust temperature of $T_d=41.5\\pm2.5\\,{\\rm K}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR of detected targets",
+   "value": "5.9e11 to 5.8e12",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 $L_{\\rm IR}$, $L_{\\rm UV}$, and $\\beta_{\\rm UV}$",
+     "quote": "The $L_{\\rm IR}$ of our detected targets range between $5.9\\times10^{11}$ and $5.8\\times10^{12}\\,L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log IRX stack, beta_UV<-1.5",
+   "value": "0.97",
+   "uncertainty": "+0.12/-0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$<-1.5$ | 14 | $10.7$ | $11.8$ | $0.97^{+0.12}_{-0.12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log IRX stack, beta_UV -1.5 to -1.0",
+   "value": "1.11",
+   "uncertainty": "+0.07/-0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$-1.5$ to $-1.0$ | 30 | $10.6$ | $11.9$ | $1.11^{+0.07}_{-0.08}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log IRX stack, beta_UV>-1.0",
+   "value": "1.28",
+   "uncertainty": "+0.06/-0.09",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$>-1.0$ | 23 | $10.8$ | $12.0$ | $1.28^{+0.06}_{-0.09}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log IRX stack of 26 non-detections",
+   "value": "0.37",
+   "uncertainty": "+0.11/-0.09",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "All | 26 | $10.7$ | $11.1$ | $0.37^{+0.11}_{-0.09}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Significance of non-detection stack",
+   "value": "~4.3",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Stacking Analysis",
+     "quote": "The stack reveals a tentative detection with a significance of $\\sim4.3\\,\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit IRX-M* relation",
+   "value": "log(IRX)=0.72[log(M*)-10.35]+1.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 The IRX-$M_{\\ast}$ Relation",
+     "quote": "${\\rm log(IRX)}=0.72\\,[{\\rm log(M_{\\ast})}-10.35]+1.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "Normalisation offset relative to Heinis2013",
+   "value": "0.24",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 The IRX-$M_{\\ast}$ Relation",
+     "quote": "The offset in normalisation relative to (cite: Heinis2013) is thus $0.24\\,{\\rm dex}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median IRX offsets from best-fit relation at z~4.3 and z~5.5",
+   "value": "~0.31 and ~1.2",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 The Evolution of IRX–$\\beta_{\\rm UV}$ Beyond $z=3$",
+     "quote": "The median offsets from our best-fit IRX–$M_{\\ast}$ relation are $\\sim0.31\\,{\\rm dex}$ and $\\sim1.2\\,{\\rm dex}$ for the samples at $z\\sim4.3$ and $z\\sim5.5$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration/imaging details (CASA version, cell size, image size) are deferred to Schinnerer2016",
+  "Flux measurement method for individual detections (aperture or peak, noise estimation)",
+  "Number of bootstrap resamples and the stack total-flux correction factor",
+  "Exact IR SED fit procedure including CMB correction",
+  "Source coordinates and individual catalogue values",
+  "The UV luminosity-inverse weighting scheme used in stacking is only loosely described"
+ ],
+ "missing_for_reproduction": [
+  "Calibration and imaging details (in Schinnerer2016)",
+  "Bootstrap details and total flux correction",
+  "Source catalogue and individual values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple recipe, but key processing details are deferred to a companion paper and fitting and stacking details are thin.",
+ "rediscovery_reason": "Public data, numeric stack IRX results, and a simple recipe, though calibration details must come from Schinnerer2016.",
+ "source_card": "cards/2017MNRAS.472..483F/sonnet/card.md"
+}

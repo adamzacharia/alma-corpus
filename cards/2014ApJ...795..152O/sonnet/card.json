@@ -1,0 +1,984 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014ApJ...795..152O",
+  "title": "A Substellar-mass Protostar and its Outflow of IRAS 15398-3359 Revealed by Subarcsecond-resolution Observations of H<SUB>2</SUB>CO and CCH",
+  "year": 2014,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Oya, Yoko",
+  "n_authors": 10,
+  "arxiv_id": "1410.5945",
+  "doi": "10.1088/0004-637X/795/2/152",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00628.S",
+   "2011.0.00777.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Sub-arcsecond ($0.5\\ensuremath{''}$) images of H$_2$CO and CCH line emission have been obtained in the $0.8$ mm band toward the low-mass protostar IRAS 15398–3359"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 15398-3359",
+     "coordinates": {
+      "value": "15h43m02.24s, -34d09m06.7s (continuum peak, J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "IRAS 15398–3359 is a low-mass Class 0 protostar in the Lupus 1 molecular cloud at a distance of $155$ pc (Lombardi et al. 2008)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "The continuum peak is: ($\\alpha_{2000}, \\delta_{2000}) = (15^{\\rm h} 43^{\\rm m} 02.24s, -34\\ensuremath{^\\circ} 09^\\prime 06.7\\ensuremath{''})$."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "155 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "IRAS 15398–3359 is a low-mass Class 0 protostar in the Lupus 1 molecular cloud at a distance of $155$ pc (Lombardi et al. 2008)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "The continuum peak is: ($\\alpha_{2000}, \\delta_{2000}) = (15^{\\rm h} 43^{\\rm m} 02.24s, -34\\ensuremath{^\\circ} 09^\\prime 06.7\\ensuremath{''})$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lombardi et al. 2008",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "IRAS 15398–3359 is a low-mass Class 0 protostar in the Lupus 1 molecular cloud at a distance of $155$ pc (Lombardi et al. 2008)."
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "The continuum peak is: ($\\alpha_{2000}, \\delta_{2000}) = (15^{\\rm h} 43^{\\rm m} 02.24s, -34\\ensuremath{^\\circ} 09^\\prime 06.7\\ensuremath{''})$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the outflow inclination and the infalling/rotating envelope structure and protostellar mass of the Class 0 WCCC source IRAS 15398-3359, and is there a rotationally supported disk?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "it is interesting to investigate whether the envelope of IRAS 15398–3359 has a similar structure."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00628.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The CCH data were combined with those taken in another observing program (2011.0.00628.S; PI: Jes Jørgensen) with $15-16$ antennas."
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00777.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data set ADS/JAO.ALMA$\\#$2011.0.00777.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (0.8 mm)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Spectral lines of H$_2$CO and CCH were observed with the Band 7 receiver at frequencies of $349$–$352$ GHz, and $364$ GHz."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "122 kHz resolution, 469 MHz bandwidth, 0.1 km/s velocity resolution at 366 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The backend correlator was tuned to a resolution of $122$ kHz and a bandwidth of $469$ MHz, which corresponds to the velocity resolution of $0.1$ km s$^{-1}$ at $366$ GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H2CO",
+     "transition": "5_15-4_14",
+     "rest_frequency": "351.7686450 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$5_{15}$–$4_{14}$ | 351.7686450 | 49 | 26.096"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "5_05-4_04",
+     "rest_frequency": "362.7360480 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$5_{05}$–$4_{04}$             | 362.7360480 | 42"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "5_24-4_23",
+     "rest_frequency": "363.9458940 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$5_{24}$–$4_{23}$             | 363.9458940 | 75"
+      }
+     ]
+    },
+    {
+     "species": "CCH",
+     "transition": "N=4-3, J=7/2-5/2, F=4-3",
+     "rest_frequency": "349.3992756 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$N$=4–3, $J$=7/2–5/2, $F$=4–3 | 349.3992756 | 34"
+      }
+     ]
+    },
+    {
+     "species": "CCH",
+     "transition": "N=4-3, J=7/2-5/2, F=3-2",
+     "rest_frequency": "349.4006712 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$N$=4–3, $J$=7/2–5/2, $F$=3–2 | 349.4006712 | 34"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "13 to 338 m, 25 antennas",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Twenty-five antennas were used in the observations, where the baseline length ranged from $13$ to $338$ m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.60\"x0.44\" (H2CO); 0.70\"x0.46\" (combined CCH)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "$0.60\\ensuremath{''} \\times 0.44\\ensuremath{''}$ (P.A. $= 46\\ensuremath{^\\circ}$) for the H$_2$CO image."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "emission over >12\" not reliable due to lack of short baselines",
+    "evidence": [
+     {
+      "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+      "quote": "the emission extending over scales of $12^{\\prime \\prime}$ or larger is not reliable due to the lack of short baselines."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 0.001 Jy/beam continuum, 0.01 Jy/beam H2CO, 0.015 Jy/beam CCH combined",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The rms noise levels for the continuum and H$_2$CO emission are $0.001$ and $0.01\\ {\\rm Jy\\ beam}^{-1}$, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "27 min H2CO, 21 min CCH",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The total on-source time was $27$ minutes for H$_2$CO and $21$ minutes for CCH."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012 December 31",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Observations of IRAS 15398–3359 were carried out with ALMA in Cycle 0 operations on 2012 December 31."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Envelope mass 0.5 Msun",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "an envelope mass of $0.5\\ M_\\odot$ (Kristensen et al. 2012)"
+       }
+      ]
+     },
+     "citation": "Kristensen et al. 2012"
+    },
+    {
+     "what": {
+      "value": "Luminosity L = 1.8 Lsun",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "$L = 1.8\\ L_\\odot$ (Jørgensen et al. 2013)"
+       }
+      ]
+     },
+     "citation": "Jørgensen et al. 2013"
+    },
+    {
+     "what": {
+      "value": "Outflow dynamical timescale 1-2e3 yr per lobe",
+      "evidence": [
+       {
+        "loc": "4 Discussion",
+        "quote": "the dynamical timescale of the extended outflow ($1$–$2 \\times 10^3$ yr for each lobe; U.A., Yıldız et al. submitted to A&A)"
+       }
+      ]
+     },
+     "citation": "Yıldız et al. 2014, submitted to A&A"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Mars and Titan",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "whereas the absolute flux density scale was derived from Mars and Titan, respectively."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "<10%",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "uncertainties are less than $10 \\%$."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN algorithm",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Images were obtained by using the CLEAN algorithm."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from line-free channels, subtracted from visibilities",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The continuum image was prepared by averaging line-free channels and the line maps were obtained after subtracting the continuum directly from the visibilities."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "CCH data combined with project 2011.0.00628.S (15-16 antennas)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The CCH data were combined with those taken in another observing program (2011.0.00628.S; PI: Jes Jørgensen) with $15-16$ antennas."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.57\"x0.42\" PA 49 deg continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The synthesized-beam size is $0.57\\ensuremath{''} \\times 0.42\\ensuremath{''}$ (P.A. $= 49\\ensuremath{^\\circ}$) for the continuum image"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Infalling rotating envelope toy model applied as in L1527",
+      "evidence": [
+       {
+        "loc": "3.4 Comparison with an Envelope Model",
+        "quote": "Therefore, it is worth applying the same model to the velocity structure observed for H$_2$CO and CCH in IRAS 15398–3359."
+       }
+      ]
+     },
+     "from_reference": "Sakai et al. 2014a, 2014b"
+    },
+    {
+     "what": {
+      "value": "Parabolic outflow cavity model",
+      "evidence": [
+       {
+        "loc": "3.2 Outflow",
+        "quote": "We employ the standard model of an outflow cavity from Lee et al. (2000)"
+       }
+      ]
+     },
+     "from_reference": "Lee et al. (2000)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration procedure",
+    "CLEAN weighting/robust, cell and image size, masks, thresholds",
+    "line-free channels used for continuum",
+    "how the 2011.0.00628.S and 2011.0.00777.S data were combined",
+    "H2CO PV cut widths and position angles",
+    "model grid values of mass and r_CB, and by-eye comparison criteria"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and line cubes",
+    "method": {
+     "value": "CLEAN imaging, continuum subtracted in visibilities; CCH combined with second project",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Images were obtained by using the CLEAN algorithm."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive H2CO column density, temperature, ortho/para ratio",
+    "method": {
+     "value": "RADEX fit to para-H2CO 5_05-4_04 and 5_24-4_23 intensities",
+     "evidence": [
+      {
+       "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+       "quote": "Using the RADEX program (van der Tak et al. 2007) to fit the intensity of the two temperature sensitive lines of para-H$_2$CO"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "H2 density 1e7-1e8 cm-3, line width 1.8 km/s",
+      "evidence": [
+       {
+        "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+        "quote": "on the assumption that H$_2$ density is $1 \\times 10^7$–$1 \\times 10^8\\ {\\rm cm}^{-3}$ and the line width is $1.8\\ {\\rm km\\ s}^{-1}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "optical depths <1 so lines not opaque",
+     "evidence": [
+      {
+       "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+       "quote": "therefore the lines are not opaque."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Outflow cavity inclination",
+    "method": {
+     "value": "Compare PV diagrams with parabolic cavity model with linear velocity, free parameters C and v0, trying inclinations",
+     "evidence": [
+      {
+       "loc": "3.2 Outflow",
+       "quote": "$C$ and $v_0$ are free parameters. The best results are obtained with an inclination angle of $20\\ensuremath{^\\circ}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "R0=z0=1 arcsec",
+      "evidence": [
+       {
+        "loc": "3.2 Outflow",
+        "quote": "$R_0$ and $z_0$ are both normalization constants, and are set to be $1^{\\prime \\prime}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "by-eye comparison",
+     "evidence": [
+      {
+       "loc": "Comparison with an Envelope Model",
+       "quote": "The models with a central mass of $0.02\\ M_\\odot$ and a radius of the centrifugal barrier of $0 - 30$ AU are chosen as the best simulations among the $20$ models shown in Figure $\\ref{H2CO_PVdiff}$ by eye."
+      }
+     ]
+    },
+    "validation": {
+     "value": "inclination >30 or <10 deg fails for any C, v0",
+     "evidence": [
+      {
+       "loc": "3.2 Outflow",
+       "quote": "When the inclination angle is higher than $30\\ensuremath{^\\circ}$ or less than $10\\ensuremath{^\\circ}$, the model does not reproduce the observations well with any values of $C$ and $v_0$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Upper limit of protostellar mass from velocity shift",
+    "method": {
+     "value": "M = r/(2G)(v_infall^2+v_rot^2) at 0.5\" (78 AU) with max velocity 1 km/s",
+     "evidence": [
+      {
+       "loc": "3.3 Protostellar Envelope",
+       "quote": "the central mass can roughly be estimated to be smaller than $0.09\\ M_\\odot$ with a maximum velocity of less than $1$ km s$^{-1}$ at $0.5\\ensuremath{''}$ ($78$ AU) from the protostar."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "infall and rotation velocities both 1 km/s",
+      "evidence": [
+       {
+        "loc": "3.3 Protostellar Envelope",
+        "quote": "we assume as a robust case that the infalling velocity and the rotating velocity are both the observed maximum value of $1\\ {\\rm km\\ s}^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Envelope model PV comparison",
+    "method": {
+     "value": "Toy infalling-rotating envelope model, 20 models of M and r_CB compared by eye with H2CO PV diagram, r_CB limited to <=80 AU",
+     "evidence": [
+      {
+       "loc": "3.4 Comparison with an Envelope Model",
+       "quote": "The models with a central mass of $0.02\\ M_\\odot$ and a radius of the centrifugal barrier of $0 - 30$ AU are chosen as the best simulations among the $20$ models shown in Figure $\\ref{H2CO_PVdiff}$ by eye."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "flared angle 20 deg, outer radius 240 AU, density ~ r^-1.5, line width 0.5 km/s, beam 0.6\"",
+      "evidence": [
+       {
+        "loc": "Appendix",
+        "quote": "The envelope has a flared shape with a flared angle of $20\\ensuremath{^\\circ}$. Its outer radius is fixed to be $240$ AU"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "optically thin, no disk inside centrifugal barrier",
+      "evidence": [
+       {
+        "loc": "Appendix",
+        "quote": "The molecular emission is simply assumed to be optically thin."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "consistent with step 4 upper limit",
+     "evidence": [
+      {
+       "loc": "3.4 Comparison with an Envelope Model",
+       "quote": "The mass is consistent with the upper limit estimated in Section 3.3."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "H2CO column density and temperature",
+     "evidence": [
+      {
+       "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+       "quote": "Using the RADEX program (van der Tak et al. 2007)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "outflow inclination",
+    "value": "20",
+    "uncertainty": "±10 deg",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Outflow",
+      "quote": "the inclination angle is determined to be $20\\ensuremath{^\\circ} \\pm 10\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "outflow model C",
+    "value": "0.8",
+    "uncertainty": "not stated",
+    "units": "arcsec^-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Outflow",
+      "quote": "$C = 0.8$ arcsec$^{-1}$ and $v_0 = 0.38$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "protostellar mass upper limit",
+    "value": "<0.09",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the mass of the protostar is estimated to be less than $0.09\\ M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "best model mass",
+    "value": "0.02",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.4 Comparison with an Envelope Model",
+      "quote": "central mass of $0.02\\ M_\\odot$ and a radius of the centrifugal barrier of $0 - 30$ AU"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO column density",
+    "value": "3e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+      "quote": "estimated to be $3 \\times 10^{13}\\ {\\rm cm}^{-2}$ and $36$–$38\\ {\\rm K}$"
+     }
+    ]
+   },
+   {
+    "quantity": "kinetic temperature",
+    "value": "36-38",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+      "quote": "$3 \\times 10^{13}\\ {\\rm cm}^{-2}$ and $36$–$38\\ {\\rm K}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO ortho/para ratio",
+    "value": "2.8",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+      "quote": "the ortho/para ratio is estimated to be $2.8$"
+     }
+    ]
+   },
+   {
+    "quantity": "average accretion rate upper limit",
+    "value": "<9.0e-5",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "the average accretion rate is calculated to be less than $9.0 \\times 10^{-5}\\ M_\\odot$ yr$^{-1}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Well-collimated NE-SW outflow cavity, redshifted NE and blueshifted SW, plus compact central component ~2\" (310 AU)",
+    "evidence": [
+     {
+      "loc": "3.1 Overall Distribution of H$_2$CO and CCH",
+      "quote": "The most prominent feature is a well-collimated outflow extending symmetrically from the protostar along a northeast–southwest axis."
+     }
+    ]
+   },
+   {
+    "value": "No obvious rotation signature; possible faint high-velocity H2CO hints at a disk",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "hinted at by a weak high-velocity H$_2$CO emission associated with the protostar."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the outflow pole-on as previously suggested?",
+    "experiment": "Fit parabolic cavity model to H2CO PV diagrams",
+    "result": "Inclination 20±10 deg",
+    "finding": "Outflow is nearly edge-on",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The inclination angle of the outflow is found to be about $20\\ensuremath{^\\circ}$, or almost edge-on"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the protostar mass low?",
+    "experiment": "Velocity shift at 78 AU and envelope model comparison",
+    "result": "<0.09 Msun; best model 0.02 Msun",
+    "finding": "Substellar-mass protostar",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Protostellar Envelope",
+      "quote": "Hence, the small velocity shift likely implies a low protostellar mass."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is a rotationally supported disk present?",
+    "experiment": "PV diagrams of H2CO and CCH near protostar",
+    "result": "No clear rotation; weak high-velocity H2CO",
+    "finding": "Higher resolution needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Higher spatial resolution data are needed to infer the presence of a rotationally supported disk for this source"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Same toy envelope model as for L1527 used for comparison",
+    "evidence": [
+     {
+      "loc": "3.4 Comparison with an Envelope Model",
+      "quote": "it is worth applying the same model to the velocity structure observed for H$_2$CO and CCH in IRAS 15398–3359."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Dense gas mostly in the outflow rejected since outflow model cannot explain velocity gradient",
+     "evidence": [
+      {
+       "loc": "3.3 Protostellar Envelope",
+       "quote": "the outflow motion cannot well explain the velocity gradient in Figure $\\ref{PV2x2}$(b) for H$_2$CO"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mass estimate depends on inclination; emission >12\" unreliable",
+     "evidence": [
+      {
+       "loc": "4 Discussion",
+       "quote": "The above mass estimate may suffer from the uncertainty of the inclination angle of the envelope/disk."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mass limits rely on rough PV velocity reading and by-eye model selection with no formal fit",
+    "Toy model ignores radiative transfer and pressure",
+    "Single 0.5\" resolution; velocity shifts near the channel and line widths"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA Cycle 0 data sets cited by project code",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data set ADS/JAO.ALMA$\\#$2011.0.00777.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "Model code and grid not released",
+    "PV cut definitions"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw for two Cycle 0 projects",
+   "score_inferred": 3,
+   "score_reason": "Public Cycle 0 data and a simple, fully described model, but imaging parameters and by-eye fitting are unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results rely on by-eye model comparison and unstated imaging settings."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Lee et al. 2000",
+     "why": "Outflow cavity model"
+    },
+    {
+     "citation": "Sakai et al. 2014a, 2014b",
+     "why": "Infalling rotating envelope model applied to L1527"
+    },
+    {
+     "citation": "van der Tak et al. 2007",
+     "why": "RADEX"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Jørgensen et al. 2013",
+     "why": "Earlier ALMA observation of the same source (H13CO+ ring, CH3OH)"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "L1527 ALMA observations"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-920d37d6323310b3a821d4777b12f101",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:24",
+  "usage": {
+   "input_tokens": 16368,
+   "output_tokens": 8293,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.058439,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 66,
+  "quotes_ok": 66,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 73,
+   "stated": 44,
+   "rate": 0.603
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:39:55",
+  "custom_id": "repair-sonnet-c4dd916617f9e565ff012a71f79a97cc",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "The models with a central mass of $0.02\\ M_\\odot$ and a radius of the centrifugal barrier of $0 - 30$ AU are chosen as the best simulations among the $20$ models shown in Figure $\\ref{H2CO_PVdiff}$ by eye."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "by eye"
+   }
+  ],
+  "dropped_items": []
+ }
+}

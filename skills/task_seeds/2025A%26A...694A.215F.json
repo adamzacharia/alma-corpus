@@ -1,0 +1,481 @@
+{
+ "bibcode": "2025A&A...694A.215F",
+ "title": "ALMA observations of super-early galaxies: Attenuation-free model predictions",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202452368",
+ "arxiv_id": "2409.17223",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Can the FIR dust continuum emission produced by extended, outflow-ejected dust distributions around super-early (z > 10) galaxies predicted by the Attenuation-Free Model be detected by ALMA?",
+ "alma_project_codes": [
+  "2023.A.00037.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.418\" (Fig. 1 caption) / 0.451\" (Section 3)",
+  "sensitivity": "18 µJy/beam (3σ continuum sensitivity limit)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Measured redshift, A_V, SFR, stellar mass, and effective radius for GS-z14-0 and GS-z14-1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "GS-z14-0 a 14.32 0 . 31 +0 − 0 . . 14 17 22 +6 − 6 8 . 60 +0 − 0 . . 7 2 260 +2 − 2 14.9 40.1 0.73"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "GS-z14-1 a 13.90 0 . 20 +0 − 0 . . 11 07 2 +0 − 0 . . 7 4 8 . 00 +0 − 0 . . 4 4 < 160 2.0 3.8 0.70"
+     }
+    ]
+   },
+   "citation": "Carniani et al. (2024); Robertson et al. (2023b)"
+  },
+  {
+   "what": {
+    "value": "Measured redshift, A_V, SFR, stellar mass, and effective radius for UNCOVER-z12",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "UNCOVER-z12 b 12.39 0 . 19 +0 − 0 . . 17 10 3 . 08 +1 − 0 . . 81 68 8 . 35 +0 − 0 . . 21 16 426 +40 − 42 4.4 8.5 0.47"
+     }
+    ]
+   },
+   "citation": "Wang et al. (2023); Fujimoto et al. (2023a); Atek et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Measured redshift, A_V, SFR, stellar mass, and effective radius for GS-z11-0",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "GS-z11-0 c 11.58 0 . 18 +0 − 0 . . 06 06 2 . 20 +0 − 0 . . 28 22 8 . 67 +0 − 0 . . 08 13 77 † 5.2 7.8 1.38"
+     }
+    ]
+   },
+   "citation": "Curtis-Lake et al. (2023); Robertson et al. (2023a)"
+  },
+  {
+   "what": {
+    "value": "Measured redshift, A_V, SFR, stellar mass, and effective radius for GHZ2",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "GHZ2 d 12.34 0 . 04 +0 − 0 . . 07 03 5 . 2 +1 − 0 . . 1 6 9 . 05 +0 − 0 . . 10 25 105 +9 − 9 3.4 4.0 1.76"
+     }
+    ]
+   },
+   "citation": "Castellano et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Alternative A_V range (0.01 - 0.2) for GHZ2",
+    "evidence": [
+     {
+      "loc": "3.2. Other super-early galaxies",
+      "quote": "We have also included GHZ2 in spite of its very low attenuation ( A V = 0 . 04, Castellano et al. 2024, but see Zavala et al. 2024 who find A V = 0 . 01 − 0 . 2 depending of the SED fitter used)"
+     }
+    ]
+   },
+   "citation": "Zavala et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "NOEMA 1σ upper limit of 13 µJy/beam at 160 µm for GN-z11",
+    "evidence": [
+     {
+      "loc": "3.2. Other super-early galaxies",
+      "quote": "However, this galaxy has been observed by the Northern Extended Millimeter Array (NOEMA, Fudamoto et al. 2023). These observations, have put a 1 σ upper limit of 13 µ Jy/beam at 160 µ m."
+     }
+    ]
+   },
+   "citation": "Fudamoto et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "Optical properties of large silicate grains (κ_UV^large = 5085 cm^2 g^-1, κ_88^large = 15 cm^2 g^-1)",
+    "evidence": [
+     {
+      "loc": "3.1. Large grains",
+      "quote": "These estimates are confirmed by detailed calculations performed by Ysard et al. (2019) that we use here."
+     },
+     {
+      "loc": "3.1. Large grains",
+      "quote": "With these assumptions they indeed find κ large UV ≃ 3 / 4 δ g a = 5085 cm 2 g − 1 , and κ large 88 = 15 cm 2 g − 1 ."
+     }
+    ]
+   },
+   "citation": "Ysard et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Quantify dust production and total dust mass",
+   "method": "Calculate dust-to-stellar mass ratio ξ_d = y_d * ν from SN rate and dust yield per SN, and multiply by stellar mass M_* to obtain dust mass M_d",
+   "software": [],
+   "key_parameters": [
+    "ν^-1 = 52.9 M_sun per SN, fiducial y_d = 0.1 M_sun/SN, fiducial ξ_d = 1/529, explored range -5 < log ξ_d < -1.6"
+   ],
+   "assumptions": [
+    "Salpeter IMF in the range 1 - 100 M_sun; dust production dominated by SNe and instantaneous on timescale <= 20 Myr"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model spatial distribution of dust and optical depth",
+   "method": "Compute UV optical depth τ_1500 as a function of dust distribution radius r_d, and determine the radius matching the observed V-band attenuation A_V",
+   "software": [],
+   "key_parameters": [
+    "κ_1500 = 1.26 x 10^5 cm^2 g^-1 (standard WD01 MW dust); κ_UV^large = 5085 cm^2 g^-1 (large silicate grains, a_0 = 0.5 µm, σ = 0.7, δ_g = 2.95 g cm^-3)"
+   ],
+   "assumptions": [
+    "Spherical dust distribution of radius r_d; MW-like extinction curve (or geometric absorption cross section for large silicate grains)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute luminosity-weighted and CMB-corrected dust temperature and observed 88 µm continuum flux",
+   "method": "Calculate mean dust temperature from UV energy balance (Eq. 1-2), apply radiative transfer slab correction to get luminosity-weighted temperature <T_d>_L and reduced mass M'_d (Eq. 3), apply CMB heating correction T'_d (Eq. 5), and compute observed rest-frame 88 µm flux F_88 against the CMB background (Eq. 4)",
+   "software": [],
+   "key_parameters": [
+    "K_1500 = 0.587 x 10^10 L_sun / (M_sun yr^-1), f_bol = 2, κ_88 = 34.15 cm^2 g^-1 (or κ_88^large = 15 cm^2 g^-1), β_d = 2.03, T_0 = 2.7255 K"
+   ],
+   "assumptions": [
+    "Flat Universe cosmology (Ω_M = 0.3075, Ω_Λ = 1 - Ω_M, Ω_b = 0.0486, h = 0.6774, σ_8 = 0.826); neglect dust self-heating and scattering"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for GS-z14-0 (F_88^fid)",
+   "value": "14.9",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Once applied to the most distant galaxy known, GS-z14-0 at z = 14 . 32, the fiducial model ( ξ d = 1 / 529) predicts F 88 fid = 14 . 9 µ Jy, and a dust extent r d = 1 . 4 kpc."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "GS-z14-0 a 14.32 0 . 31 +0 − 0 . . 14 17 22 +6 − 6 8 . 60 +0 − 0 . . 7 2 260 +2 − 2 14.9 40.1 0.73"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 88 µm continuum flux for GS-z14-0 (F_88^max)",
+   "value": "40.1",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "If the galaxy is very dust-rich ( ξ d = 1 / 40), F 88 max = 40 . 1 µ Jy."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "GS-z14-0 a 14.32 0 . 31 +0 − 0 . . 14 17 22 +6 − 6 8 . 60 +0 − 0 . . 7 2 260 +2 − 2 14.9 40.1 0.73"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial dust extent for GS-z14-0 (r_d)",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Once applied to the most distant galaxy known, GS-z14-0 at z = 14 . 32, the fiducial model ( ξ d = 1 / 529) predicts F 88 fid = 14 . 9 µ Jy, and a dust extent r d = 1 . 4 kpc."
+    },
+    {
+     "loc": "2.2. Dust spatial distribution",
+     "quote": "which corresponds to r d ≃ 1 . 4 kpc, for the fiducial ξ d value."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial log(r_d^fid / r_e) for GS-z14-0",
+   "value": "0.73",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z14-0 a 14.32 0 . 31 +0 − 0 . . 14 17 22 +6 − 6 8 . 60 +0 − 0 . . 7 2 260 +2 − 2 14.9 40.1 0.73"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial luminosity-weighted dust temperature for GS-z14-0",
+   "value": "72",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "By looking at the circles ( A V = 0 . 31) we see that the fiducial model (black line, ξ d = 1 / 529) predicts a 88 µ m flux F 88 fid = 14 . 9 µ Jy, essentially at the 3 σ detection limit of the experiment, and a luminosity-weighted temperature of 72 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial dust mass for GS-z14-0",
+   "value": "7.5e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1. Dust production",
+     "quote": "For the fiducial value of ξ d and the measured stellar mass of GS-z14-0 ( M ⋆ = 4 × 10 8 M ⊙ ; Carniani et al. 2024), we find that 7 . 5 × 10 5 M ⊙ of dust should have been produced by the time of the observation."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted 88 µm flux for GS-z14-0 if dust remains within r_e (no outflow)",
+   "value": "5.3",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "These two properties act as to dramatically suppress the flux: independently of ξ d (unless extremely small), F 88 = 5 . 3 µ Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for GS-z14-0 assuming large silicate grains (F_88^fid)",
+   "value": "9.5",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "These values are smaller ( F 88 fid = 9 . 5 µ Jy) if the dust is predominantly made of large grains as those formed in SN ejecta."
+    },
+    {
+     "loc": "3.1. Large grains",
+     "quote": "As a result, for any given ξ d , the flux is smaller, e.g. F 88 fid = 9 . 5 µ Jy, and shifted to smaller radii compared to the standard case."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for GS-z14-1 (F_88^fid)",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z14-1 a 13.90 0 . 20 +0 − 0 . . 11 07 2 +0 − 0 . . 7 4 8 . 00 +0 − 0 . . 4 4 < 160 2.0 3.8 0.70"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 88 µm continuum flux for GS-z14-1 (F_88^max)",
+   "value": "3.8",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z14-1 a 13.90 0 . 20 +0 − 0 . . 11 07 2 +0 − 0 . . 7 4 8 . 00 +0 − 0 . . 4 4 < 160 2.0 3.8 0.70"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial log(r_d^fid / r_e) for GS-z14-1",
+   "value": "0.70",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z14-1 a 13.90 0 . 20 +0 − 0 . . 11 07 2 +0 − 0 . . 7 4 8 . 00 +0 − 0 . . 4 4 < 160 2.0 3.8 0.70"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for UNCOVER-z12 (F_88^fid)",
+   "value": "4.4",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "UNCOVER-z12 b 12.39 0 . 19 +0 − 0 . . 17 10 3 . 08 +1 − 0 . . 81 68 8 . 35 +0 − 0 . . 21 16 426 +40 − 42 4.4 8.5 0.47"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 88 µm continuum flux for UNCOVER-z12 (F_88^max)",
+   "value": "8.5",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "UNCOVER-z12 b 12.39 0 . 19 +0 − 0 . . 17 10 3 . 08 +1 − 0 . . 81 68 8 . 35 +0 − 0 . . 21 16 426 +40 − 42 4.4 8.5 0.47"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial log(r_d^fid / r_e) for UNCOVER-z12",
+   "value": "0.47",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "UNCOVER-z12 b 12.39 0 . 19 +0 − 0 . . 17 10 3 . 08 +1 − 0 . . 81 68 8 . 35 +0 − 0 . . 21 16 426 +40 − 42 4.4 8.5 0.47"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for GS-z11-0 (F_88^fid)",
+   "value": "5.2",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z11-0 c 11.58 0 . 18 +0 − 0 . . 06 06 2 . 20 +0 − 0 . . 28 22 8 . 67 +0 − 0 . . 08 13 77 † 5.2 7.8 1.38"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 88 µm continuum flux for GS-z11-0 (F_88^max)",
+   "value": "7.8",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z11-0 c 11.58 0 . 18 +0 − 0 . . 06 06 2 . 20 +0 − 0 . . 28 22 8 . 67 +0 − 0 . . 08 13 77 † 5.2 7.8 1.38"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial log(r_d^fid / r_e) for GS-z11-0",
+   "value": "1.38",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GS-z11-0 c 11.58 0 . 18 +0 − 0 . . 06 06 2 . 20 +0 − 0 . . 28 22 8 . 67 +0 − 0 . . 08 13 77 † 5.2 7.8 1.38"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for GHZ2 with A_V = 0.04 (F_88^fid)",
+   "value": "3.4",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GHZ2 d 12.34 0 . 04 +0 − 0 . . 07 03 5 . 2 +1 − 0 . . 1 6 9 . 05 +0 − 0 . . 10 25 105 +9 − 9 3.4 4.0 1.76"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 88 µm continuum flux for GHZ2 with A_V = 0.04 (F_88^max)",
+   "value": "4.0",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GHZ2 d 12.34 0 . 04 +0 − 0 . . 07 03 5 . 2 +1 − 0 . . 1 6 9 . 05 +0 − 0 . . 10 25 105 +9 − 9 3.4 4.0 1.76"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial log(r_d^fid / r_e) for GHZ2 with A_V = 0.04",
+   "value": "1.76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GHZ2 d 12.34 0 . 04 +0 − 0 . . 07 03 5 . 2 +1 − 0 . . 1 6 9 . 05 +0 − 0 . . 10 25 105 +9 − 9 3.4 4.0 1.76"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted fiducial 88 µm continuum flux for GHZ2 with A_V = 0.2 (F_88^fid)",
+   "value": "11.2",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Other super-early galaxies",
+     "quote": "For GHZ2, if we instead assume the largest attenuation found by Zavala et al. (2024), A V = 0 . 2, we find a larger fiducial and maximum flux, F 88 fid = 11 . 2 µ Jy, and F 88 max = 16 . 3 µ Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 88 µm continuum flux for GHZ2 with A_V = 0.2 (F_88^max)",
+   "value": "16.3",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Other super-early galaxies",
+     "quote": "For GHZ2, if we instead assume the largest attenuation found by Zavala et al. (2024), A V = 0 . 2, we find a larger fiducial and maximum flux, F 88 fid = 11 . 2 µ Jy, and F 88 max = 16 . 3 µ Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted maximum 160 µm continuum flux for GN-z11 (F_160^max)",
+   "value": "14.1",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Other super-early galaxies",
+     "quote": "When applied to GN-z11, our model (fiducial case) predicts a maximum flux F 160 max = 14 . 1 µ Jy."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Input physical properties (redshift, A_V, SFR, M_*, r_e) used to compute the 160 um prediction for GN-z11",
+  "Exact differential attenuation factor between 1500 A and V-band used for the large silicate grain case"
+ ],
+ "missing_for_reproduction": [
+  "Input parameters (z, A_V, SFR, M_*, r_e) used for the GN-z11 160 um calculation",
+  "Exact V-band to 1500 A extinction ratio adopted in the large-grain calculation (Fig. 2)"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "The paper presents a closed-form analytical model with all equations (Eqs. 1-5), physical constants, dust absorption coefficients, and galaxy input parameters (Table 1) explicitly stated in the text.",
+ "rediscovery_reason": "All equations and input parameters in Table 1 are explicitly given, making the numeric predictions for F_88, r_d, and T_d straightforward to reproduce analytically.",
+ "source_card": "cards/2025A%26A...694A.215F/sonnet/card.md"
+}

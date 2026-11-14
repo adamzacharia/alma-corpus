@@ -1,0 +1,945 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...609A..67K",
+  "title": "The close circumstellar environment of Betelgeuse. V. Rotation velocity and molecular envelope properties from ALMA",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Kervella, Pierre",
+  "n_authors": 9,
+  "arxiv_id": "1711.07983",
+  "doi": "10.1051/0004-6361/201731761",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00206.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We observed Betelgeuse using ALMA’s extended configuration in band 7 ($f \\approx 340$ GHz, $\\lambda \\approx 0.88$ mm), resulting in a very high angular resolution of 18 mas."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "Betelgeuse",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "parallax 4.51 ± 0.80 mas",
+      "evidence": [
+       {
+        "loc": "3.3 Radial rotation velocity profile",
+        "quote": "the parallax $\\pi = 4.51 \\pm 0.80$ mas by"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "parallax from a cited work (citation not shown in text)",
+      "evidence": [
+       {
+        "loc": "3.3 Radial rotation velocity profile",
+        "quote": "the parallax $\\pi = 4.51 \\pm 0.80$ mas by"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the rotation velocity of Betelgeuse and what are the properties of its close molecular envelope, as measured from high-resolution ALMA band 7 line emission?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We present here new spatially resolved observations of the close-in molecular envelope of Betelgeuse in the submillimeter domain using the most extended configuration of the ALMA array"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00206.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "(project code: 2015.1.00206.S, PI: P. Kervella)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (275–373 GHz)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "during cycle 3 in band 7 (275–373 GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "5 spws centered 330.65, 332.55, 343.19, 345.15, 345.80 GHz; channel widths 0.85–1.69 km/s",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2 | 343.19 | 1.88 | 0.85 |"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "28SiO",
+     "transition": "v=2 J=8-7",
+     "rest_frequency": "342.50438 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{28}$SiO        | $\\varv=2$ | $8-7$    | $342.50438$ | 2487.33            |"
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "v=0 J=3-2",
+     "rest_frequency": "345.79599 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{12}$CO         | $\\varv=0$ | $3-2$    | $345.79599$ | 11.54              |"
+      }
+     ]
+    },
+    {
+     "species": "28SiO",
+     "transition": "v=1 J=8-7",
+     "rest_frequency": "344.91633 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{28}$SiO        | $\\varv=1$ | $8-7$    | $344.91633$ | 1269.89            |"
+      }
+     ]
+    },
+    {
+     "species": "29SiO",
+     "transition": "v=0 J=8-7",
+     "rest_frequency": "342.98085 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{29}$SiO        | $\\varv=0$ | $8-7$    | $342.98085$ | 40.05              |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "TE extended (0.056–16 km) and TC compact (0.013–1.2 km)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Observations were made in the extended configuration (hereafter TE, baseline lengths of 0.056 to 16 km)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "18 mas (TE), 190 mas (TC), 22 mas (TE+TC)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "18 mas and 1.3 mJy, 190 mas and 1.7 mJy, 22 mas and 1 mJy, for the TE, TC, and TE+TC combined data, respectively"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "2 arcsec (TE); 8 arcsec (TC and combined)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The TE-only cubes are sensitive to emission on angular scales up to 2 arcseconds; the TC and combined cubes up to 8 arcseconds."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "noise 1.3 mJy (TE), 1.7 mJy (TC), 1 mJy (TE+TC)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "18 mas and 1.3 mJy, 190 mas and 1.7 mJy, 22 mas and 1 mJy, for the TE, TC, and TE+TC combined data, respectively"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "TE 112 min; TC 38 min",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "on 16 Aug 2016, using 42 good antennas, for 38 min on target"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "TE: 6, 7, 9 Nov 2015; TC: 16 Aug 2016",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "on 6, 7, and 9 Nov 2015, using 47 good antennas, for a total of 112 minutes on target."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "AAVSO",
+     "provided": {
+      "value": "visible light curve of Betelgeuse",
+      "evidence": [
+       {
+        "loc": "Acknowledgements",
+        "quote": "We acknowledge with thanks the variable star observations from the AAVSO International Database contributed by observers worldwide and used in this research."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Parallax 4.51 ± 0.80 mas used for radius, Keplerian velocity and rotation period",
+      "evidence": [
+       {
+        "loc": "3.3 Radial rotation velocity profile",
+        "quote": "the parallax $\\pi = 4.51 \\pm 0.80$ mas by"
+       }
+      ]
+     },
+     "citation": "not shown in text (citation key stripped)"
+    },
+    {
+     "what": {
+      "value": "Rest frequencies of lines",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "The rest frequencies are taken from the CDMS database ."
+       }
+      ]
+     },
+     "citation": "CDMS database"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard ALMA procedures; self-calibration on continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Standard ALMA procedures were used for instrumentally derived calibration (system temperature measurements, water vapor radiometry, etc.), bandpass, flux scale, and phase reference calibration."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Continuum images from line-free channels used for self-calibration; solutions applied to all data in same configuration; 9 Nov 2015 TE data used as starting model for other TE epochs",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We identified the line-free channels and used these to make continuum images for self-calibration, applying the solutions to all data in the same configuration."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "line-free continuum subtracted from full-resolution calibrated data",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We subtracted the line-free continuum from the full-spectral-resolution, fully calibrated data and made image cubes of all spectral windows"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied to TC images (~16 arcsec FWHM)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we made TC images of comparable size, applying the primary beam correction."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "TE, TC and combined cubes made",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "made image cubes of all spectral windows for the TE, TC, and combined data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "18 mas (TE)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "18 mas and 1.3 mJy"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Continuum analysis and further observational details of the 9 Nov data, and astrometric analysis, given in earlier papers",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "were used for detailed continuum analysis (; also see that paper for more observational details) and astrometric analysis ."
+       }
+      ]
+     },
+     "from_reference": "earlier Betelgeuse ALMA papers (citations stripped)"
+    },
+    {
+     "what": {
+      "value": "Spherical thin molecular shell model",
+      "evidence": [
+       {
+        "loc": "3.2 Shell model",
+        "quote": "we model our ALMA observations using a spherical thin molecular shell of angular radius $R_\\mathrm{shell}$ located above the spherical stellar photosphere"
+       }
+      ]
+     },
+     "from_reference": "Following earlier works (citations stripped)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Task, weighting, robust, cell and image size, deconvolver and masking for tclean",
+    "CASA version",
+    "Line-free channel ranges and self-cal solution intervals",
+    "Flux calibrator and phase calibrator names (stripped)",
+    "Exact procedure for velocity-map fitting and absorption compensation",
+    "Fit region/radius range for the radial profile fit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure stellar continuum radius and brightness",
+    "method": {
+     "value": "Measure I_star at disk center and equivalent uniform-disk R_star from integrated continuum flux in spw2 continuum image",
+     "evidence": [
+      {
+       "loc": "3.3.1 Stellar radius",
+       "quote": "we estimate $R_\\mathrm{star}$ from the integrated continuum flux $I(r,\\theta)$ and the surface brightness measured at the center of the disk $I_\\mathrm{star}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Determine line profile and systemic velocity",
+    "method": {
+     "value": "Gaussian profile from absorption at disk center and emission ring; emission velocity adopted as systemic",
+     "evidence": [
+      {
+       "loc": "3.3.2 Line profile",
+       "quote": "We adopted the emission line velocity as the systemic velocity $\\varv_\\mathrm{sys}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit thin shell model to radial profile",
+    "method": {
+     "value": "R_shell from peak of azimuthally averaged radial profile; fit I_shell*tau_shell and tau_cool with beam-convolved model",
+     "evidence": [
+      {
+       "loc": "3.3.3 Shell radius",
+       "quote": "The model profile is adjusted to the ALMA radial intensity profile $I(r)$ (Fig. [7](#radprofiles)), using as variables $I_\\mathrm{shell}\\,\\tau_\\mathrm{shell}$ and the optical depth of the cooler absorbing layer"
+      }
+     ]
+    },
+    "software": [
+     "SciPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "optically thin shell assumed (tau_shell << 1)",
+      "evidence": [
+       {
+        "loc": "3.2 Shell model",
+        "quote": "We make the assumption here that the light-emitting layer is optically thin ($\\tau_\\mathrm{shell} \\ll 1$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Levenberg–Marquardt chi2 minimization with scipy.optimize.leastsq",
+     "evidence": [
+      {
+       "loc": "3.3.3 Shell radius",
+       "quote": "we used a classical Levenberg–Marquardt algorithm based on the SciPy routine `scipy.optimize.leastsq`"
+      }
+     ]
+    },
+    "validation": {
+     "value": "A thick-shell fit was attempted but was unstable",
+     "evidence": [
+      {
+       "loc": "3.3.3 Shell radius",
+       "quote": "We attempted to fit a thick shell model, adding one parameter in the model (the shell thickness), but the results are unstable"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Build emission velocity map",
+    "method": {
+     "value": "Compensate absorption in the cube, then fit Gaussian (amplitude, width, velocity) per position",
+     "evidence": [
+      {
+       "loc": "3.4 Molecular emission velocity map",
+       "quote": "At each position of the absorption compensated data cube, we fit a Gaussian profile on the emission line with three parameters"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit solid body rotation model",
+    "method": {
+     "value": "Fit solid body rotation (v_sys, v_eq sin i, PA), with and without expansion term, to velocity map within stellar disk",
+     "evidence": [
+      {
+       "loc": "3.5 Rotation velocity",
+       "quote": "The three model parameters are the systemic velocity $\\varv_\\mathrm{sys}$ in the local standard of rest (LSR), the projected rotation velocity $\\varv_\\mathrm{eq}\\,\\sin i$, and the position angle of the polar axis $PA$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "v_sys fixed to emission ring value; fit radius varied by ±15% for systematics",
+      "evidence": [
+       {
+        "loc": "3.5 Rotation velocity",
+        "quote": "we chose the approach to modulate the radius over which the fit is computed by $\\pm 15\\%$ around the continuum radius of the star"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "angular velocity independent of latitude",
+      "evidence": [
+       {
+        "loc": "3.5 Rotation velocity",
+        "quote": "This simple model assumes that the angular rotation velocity is independent of latitude."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 fit; uncertainties scaled by sqrt(chi2_red)",
+     "evidence": [
+      {
+       "loc": "3.5 Rotation velocity",
+       "quote": "The listed uncertainties of the model parameters have been scaled by $(\\chi^2_\\mathrm{red})^{1/2}$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared four lines; differential rotation fit gave no significant improvement",
+     "evidence": [
+      {
+       "loc": "4.4 Inclination",
+       "quote": "the adjustment of this model does not bring a significant improvement of the $\\chi^2$ or residuals of the fit"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive rotation period, Keplerian comparison",
+    "method": {
+     "value": "Combine parallax, R_star and v_eq sin i; compare with Keplerian velocity",
+     "evidence": [
+      {
+       "loc": "4.4 Inclination",
+       "quote": "we obtain a rotation period of $P / \\sin i = 36\\pm 8$ years"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "mass 15 ± 5 Msun",
+      "evidence": [
+       {
+        "loc": "3.3 Radial rotation velocity profile",
+        "quote": "Assuming a mass of $m_\\mathrm{Bet} = 15 \\pm 5\\ M_\\odot$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Levenberg–Marquardt least squares fit (scipy.optimize.leastsq)",
+     "evidence": [
+      {
+       "loc": "3.3.3 Shell radius",
+       "quote": "a classical Levenberg–Marquardt algorithm based on the SciPy routine `scipy.optimize.leastsq`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "general analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made use of Astropy[^1], a community-developed core Python package for Astronomy ."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "v_eq sin i",
+    "value": "5.47",
+    "uncertainty": "0.25",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\varv_\\mathrm{eq}\\sin i = 5.47\\pm 0.25$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "R_star (ALMA continuum)",
+    "value": "29.50",
+    "uncertainty": "0.14",
+    "units": "mas",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$R_\\mathrm{star} = 29.50\\pm 0.14$ mas"
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle of north pole",
+    "value": "48.0",
+    "uncertainty": "3.5",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$PA = 48.0\\pm 3.5^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "omega sin i",
+    "value": "5.6e-9",
+    "uncertainty": "1.3e-9",
+    "units": "rad/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\omega\\,\\sin i = (5.6\\pm 1.3) \\times 10^{-9}$ rad s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "P / sin i",
+    "value": "36",
+    "uncertainty": "8",
+    "units": "years",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$P / \\sin i = 36\\pm 8$ years"
+     }
+    ]
+   },
+   {
+    "quantity": "R_shell (SiO v=2)",
+    "value": "37.8",
+    "uncertainty": "2.5",
+    "units": "mas",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3.3 Shell radius",
+      "quote": "$R_\\mathrm{shell} = 37.8 \\pm 2.5$ mas"
+     }
+    ]
+   },
+   {
+    "quantity": "Systemic LSR velocity (SiO v=2 emission)",
+    "value": "+4.52",
+    "uncertainty": "0.09",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.3.2 Line profile",
+      "quote": "$\\varv_\\mathrm{sys\\,LSR} = +4.52 \\pm 0.09$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Expansion velocity (SiO v=2)",
+    "value": "+0.69",
+    "uncertainty": "0.08",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.5 Rotation velocity",
+      "quote": "$\\varv_\\mathrm{exp} = +0.69\\pm 0.08$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Keplerian velocity at stellar surface",
+    "value": "45",
+    "uncertainty": "28",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.3 Radial rotation velocity profile",
+      "quote": "the Keplerian rotation velocity at the surface of Betelgeuse is $\\varv_K = 45 \\pm 28$ km s$^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Molecular shell co-rotates with star; no significant global outflow at 40 mas; hot spot, plume and dust arc aligned with polar axis, suggesting focused mass loss from a rogue convection cell",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggests that focused mass loss is currently taking place in the polar region of the star."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Betelgeuse's rotation can be measured from ALMA SiO velocity map",
+    "experiment": "Solid body rotation fit to SiO v=2 J=8-7 emission velocity map",
+    "result": "v_eq sin i = 5.47 ± 0.25 km/s, PA = 48.0 ± 3.5 deg",
+    "finding": "Betelgeuse rotates slowly with P/sin i = 36 ± 8 yr",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we show that the supergiant is rotating with a projected equatorial velocity of $\\varv_\\mathrm{eq}\\sin i = 5.47\\pm 0.25$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The chromosphere co-rotates with the star",
+    "experiment": "Compare ALMA velocity with UV measurements at larger radii",
+    "result": "Linear velocities similar, angular velocity lower at larger radii",
+    "finding": "Co-rotation up to ≈10 au",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the chromosphere is co-rotating with the star up to a radius of $\\approx 10$ au"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Hot spot, plume and dust shell reveal focused mass loss from rogue convection cells",
+    "experiment": "Compare PA of pole, ALMA hot spot, molecular plume, and dust arc",
+    "result": "Position angles coincide",
+    "finding": "Focused mass loss from rogue cell; scenario not directly confirmed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We propose that this hot spot corresponds to the location of a particularly strong “rogue” convection cell"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "SiO v=2 line chosen as best match to thin shell model and likely traces regions closest to star",
+    "evidence": [
+     {
+      "loc": "3.3 Static shell model parameters",
+      "quote": "We chose this line as its intensity profile is the best match to our thin shell model"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Thick shell model unstable; differential rotation model gave no significant improvement",
+     "evidence": [
+      {
+       "loc": "3.3.3 Shell radius",
+       "quote": "We attempted to fit a thick shell model, adding one parameter in the model (the shell thickness), but the results are unstable"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Inclination cannot be determined; resolution insufficient for differential rotation",
+     "evidence": [
+      {
+       "loc": "4.4 Inclination",
+       "quote": "For this reason, we cannot conclude firmly on the inclination of the polar axis on the line of sight."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Rotation signal could be mimicked by non-radial pulsation or turbulence; only ~4 resolution elements across disk",
+    "Simple thin-shell model with fixed parameters; no joint fit or MCMC",
+    "Systematic errors estimated ad hoc",
+    "Single epoch, unknown masing effects"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; ALMA data acknowledged",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00206.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (weighting, cell, mask)",
+    "CASA version and calibrator names",
+    "Analysis code not released",
+    "Exact fitting procedure for velocity maps"
+   ],
+   "estimated_data_volume_inferred": "~100s of GB raw for extended-config multi-epoch band 7 (estimate)",
+   "score_inferred": 4,
+   "score_reason": "Data public and models clearly defined with explicit equations, but imaging and calibration settings and code are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe and fitting details are incomplete, and the extended-configuration data are large."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "earlier papers in the Close circumstellar environment of Betelgeuse series (citations stripped)",
+     "why": "continuum hot spot and astrometry from 9 Nov 2015 data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-981bd21389c8bbde34bcbdc081d7b884",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:38",
+  "usage": {
+   "input_tokens": 30802,
+   "output_tokens": 8131,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.072064,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 61,
+  "quotes_ok": 61,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 75,
+   "stated": 43,
+   "rate": 0.573
+  },
+  "evidence_ok": true
+ }
+}

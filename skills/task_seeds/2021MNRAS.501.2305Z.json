@@ -1,0 +1,350 @@
+{
+ "bibcode": "2021MNRAS.501.2305Z",
+ "title": "The effect of stellar multiplicity on protoplanetary discs: a near-infrared survey of the Lupus star-forming region",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3674",
+ "arxiv_id": "2011.12297",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Identify (sub)stellar companions down to ~20 au separation in the Lupus Molecular Cloud and investigate the effects of stellar multiplicity on circumstellar disc properties (masses, sizes, brightness profiles).",
+ "alma_project_codes": [
+  "2015.1.00222.S",
+  "2018.1.00437.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm / 1.33 mm) for Class II; Band 7 (860 um) for Class III",
+  "arrays": "not stated",
+  "angular_resolution": "0.25 arcsec (~0.2 arcsec) for Class II; ~0.7 arcsec for Class III",
+  "sensitivity": "0.10 mJy beam^-1 (median 1.3 mm continuum rms for Class II); ~37 uJy at 860 um (Class III)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Class II disc dust masses (Table 1), disc sizes/semi-major axes (Table 3), companion mm fluxes and flux ratios (Table 4), and ALMA coordinates",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The dust mass for each disc is taken from the last column of Table 1 in (cite: Ansdell2018) for the Class II objects"
+     },
+     {
+      "loc": "Results",
+      "quote": "The values of their masses are obtained from the millimetre fluxes listed in Table 4 of (cite: Ansdell2018)"
+     },
+     {
+      "loc": "Results",
+      "quote": "The disc size for the Class II objects is used when available in (cite: Ansdell2018) (Table 3), otherwise we assume the disc is unresolved."
+     }
+    ]
+   },
+   "citation": "(cite: Ansdell2018)"
+  },
+  {
+   "what": {
+    "value": "Class III disc dust masses (Table 1) and disc resolution/size information",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The dust mass for each disc is taken from the last column of Table 1 in (cite: Ansdell2018) for the Class II objects, and from Table 1 of (cite: 2020MNRAS.tmp.3151L) for the Class III objects."
+     },
+     {
+      "loc": "Results",
+      "quote": "Concerning the Class III objects, 3 discs were unresolved, and only one was marginally resolved (cite: 2020MNRAS.tmp.3151L)."
+     }
+    ]
+   },
+   "citation": "(cite: 2020MNRAS.tmp.3151L)"
+  },
+  {
+   "what": {
+    "value": "Gaia DR2 distances for primary and secondary components",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Most of the systems have *Gaia* Data Release 2 (DR2) parallax measurements (cite: Bailer_Jones_2018), which we report in Table [\\[t:bin\\]](#t:bin)"
+     }
+    ]
+   },
+   "citation": "(cite: Bailer_Jones_2018)"
+  },
+  {
+   "what": {
+    "value": "Ophiuchus NIR-ODISEA multiplicity, disc mass, size, and radial profile dataset for combined statistical analysis",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "In Figure [11](#f:histo_sp_com) we show the histograms that include also the Ophiuchus sample, which follows the same trend."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "To strengthen the statistical analysis, we combined this Lupus survey with its twin in Ophiuchus (cite: Zurlo2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Zurlo2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce VLT/NACO images and detect visual companion candidates",
+   "method": "Background subtract, flat-field, re-centre and average pairs of frames; astrometrically calibrate using ALMA coordinates and pixel scale; identify >5sigma signals using Daophot via photutils followed by visual inspection; compute azimuthal rms contrast curves.",
+   "software": [
+    "astropy",
+    "photutils"
+   ],
+   "key_parameters": [
+    "detection threshold > 5 sigma; pixel scale = 0.02719 arcsec/pixel; FOV ~ 32 arcsec"
+   ],
+   "assumptions": [
+    "ALMA coordinates correspond to the center of the star"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Assess physical boundness and background probability of detected companions",
+   "method": "Compare Gaia DR2 distances of components where available; for unconfirmed candidates, model background stars as a homogeneous spatial Poisson point process within a circle of radius equal to the companion separation using TRILEGAL galaxy model number densities; estimate substellar mass using AMES-COND models.",
+   "software": [
+    "TRILEGAL"
+   ],
+   "key_parameters": [
+    "Circle radius = candidate separation"
+   ],
+   "assumptions": [
+    "Homogeneous spatial Poisson point process for background stars; discordant Gaia distances imply unbound systems"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compile disc dust masses and sizes and compare cumulative distributions across multiplicity categories",
+   "method": "Take Class II/III disc dust masses and sizes (90% flux curve-of-growth radius) from Ansdell et al. (2018) and Lovell et al. (2020); compute companion dust masses from Ansdell et al. (2018) mm fluxes; construct Kaplan-Meier cumulative distribution functions accounting for non-detections using lifelines; perform two-sample Kolmogorov-Smirnov tests for Lupus and combined Lupus+Ophiuchus samples.",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [
+    "Disc radius defined as aperture containing 90% of total 1.33 mm continuum flux"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Extract deprojected normalized 1.3 mm radial brightness profiles",
+   "method": "Deproject 1.3 mm ALMA continuum brightness profiles using inclination and position angle from imfit for sources in Lupus and Ophiuchus with peak SNR > 10 x rms and where the imfit Gaussian coincides with the signal peak.",
+   "software": [
+    "imfit"
+   ],
+   "key_parameters": [
+    "peak SNR > 10 x rms; imfit Gaussian coincides with signal peak; 147 radial profiles total"
+   ],
+   "assumptions": [
+    "At 1.3 mm the brightness profile is well correlated with the distribution of mass as a function of radius"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Visual companion multiplicity fraction in Lupus (20-4800 au)",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The fraction of visual multiple systems (with separations of 20–4800 au) are similar in both samples, with 12$\\%$ (13/105) in Lupus and 18$\\%$ (43/236) in Ophiuchus."
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The frequency of visual companion multiplicity in Lupus in the range 20-4800 au is then 12% (13/105)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of physically bound multiple systems identified in Lupus",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We identify a total of 13 multiple systems, including 11 doubles and 2 triples."
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "In total we report the detection of 11 potentially bound binary systems and 2 triple systems"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of single objects in NIR-Lupus sample",
+   "value": "92",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| Single objects | 92 | Single class II and class III objects in Lupus |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined Lupus + Ophiuchus visual multiplicity fraction (20-4000 au, flux ratio > 0.01)",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "Considering the Lupus and Ophiuchus regions, the fraction of stellar multiplicity for circumstellar discs with visual companions (separations $\\sim$20–4000 au, flux ratios $>$ 0.01) is 16%."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass threshold below which single and multiple disc distributions are similar",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "the distribution of disc masses and sizes are similar for single and multiple systems for M$_{\\rm dust} < 50$ M$_{\\oplus}$ and radii $R_{\\rm dust}<$ 70 au."
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The distribution of the dust mass of discs around single stars and multiple systems are similar up to M$_{\\rm dust}$ = 50 M$_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum dust mass of discs around single stars in Lupus and Ophiuchus",
+   "value": "200",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "Note that the most massive discs of both Lupus and Ophiuchus have M$_{\\rm dust}$ $\\simeq$ 200 M$_{\\oplus}$."
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "Higher mass discs (up to $\\sim$200 M$_{\\oplus}$) are only found around single stars."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc dust radius threshold above which discs are only seen around single stars",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "we find that the most massive (M$_{\\rm dust}$ $>$ 50 M$_{\\oplus}$) and largest ($R_{\\rm dust}>$ 70 au) discs are only seen around stars lacking visual companions"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum disc semi-major axis for multiple systems in combined Lupus+Ophiuchus sample",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "From the complete samples of all the discs of Lupus and Ophiuchus we can constrain the maximum size for multiple-system discs to be $\\sim$80 au, while discs around single stars can be more than 3 times larger."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum disc semi-major axis for single stars in combined sample",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "Discs around single stars can have semi-major axes up to 300 au, while discs around multiple systems are 3 times smaller."
+    }
+   ]
+  },
+  {
+   "quantity": "KS test p-value comparing single vs multiple disc dust mass distributions in Lupus",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "A Kolmogorov-Smirnov test comparing the distributions of singles versus multiples gives a p-value of 40% for Lupus and 51% for Lupus and Ophiuchus combined."
+    }
+   ]
+  },
+  {
+   "quantity": "KS test p-value comparing single vs multiple disc dust mass distributions in Lupus + Ophiuchus",
+   "value": "51",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "A Kolmogorov-Smirnov test comparing the distributions of singles versus multiples gives a p-value of 40% for Lupus and 51% for Lupus and Ophiuchus combined."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated mass of companion candidate 2MASS J16095628-3859518C",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "From the AMES-COND evolutionary models, following the same procedure used in (cite: Zurlo2020), the object would have an estimated mass of 12 M$_{\\mathrm{Jup}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Incidence of tight visual binaries (10-40 au) in Lupus and Ophiuchus",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The fraction of binary systems in Lupus and Ophiuchus is only 4% from the NIR-Lupus and NIR-ODISEA surveys"
+    },
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The incidence of tight visual binaries (with separations of 10-40 au) that are likely to prevent the formation of planets is rather low (4 %)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact dust temperature, opacity, and distance assumptions used in the Ansdell et al. (2018) procedure when converting companion millimetre fluxes to dust masses",
+  "Details of the deprojection procedure (radial bin size, azimuthal averaging method) used to compute the 1.3 mm normalized radial brightness profiles from the ALMA images",
+  "Full list of the 105 Lupus targets observed and their individual single/multiple classification and spectral types"
+ ],
+ "missing_for_reproduction": [
+  "Complete target table of the 105 observed Lupus sources with their individual single/multiple status and adopted values",
+  "Exact parameters for the deprojection and radial profile extraction from the ALMA continuum images",
+  "Scripts for NACO data reduction and lifelines survival analysis"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "ALMA disc masses and sizes are directly taken from published tables in Ansdell et al. (2018) and Lovell et al. (2020), and all ESO/ALMA program IDs and detected binaries are tabulated, though the full 105-object master table and radial profile extraction parameters are not explicitly provided.",
+ "rediscovery_reason": "All ALMA and VLT/NACO datasets are public, the published catalog tables in Ansdell et al. (2018) and Lovell et al. (2020) provide the exact disc masses and sizes, and the statistical comparison (Kaplan-Meier curves and KS tests) produces clear numeric benchmarks.",
+ "source_card": "cards/2021MNRAS.501.2305Z/sonnet/card.md"
+}

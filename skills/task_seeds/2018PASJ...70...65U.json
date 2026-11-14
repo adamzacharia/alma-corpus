@@ -1,0 +1,283 @@
+{
+ "bibcode": "2018PASJ...70...65U",
+ "title": "ALMA deep field in SSA22: Survey design and source catalog of a 20 arcmin<SUP>2</SUP> survey at 1.1 mm",
+ "year": 2018,
+ "doi": "10.1093/pasj/psy065",
+ "arxiv_id": "1804.08842",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Does the z=3.09 SSA22 proto-cluster show enhanced dust-obscured star formation, as seen in 1.1 mm source number counts over a 20 arcmin^2 ALMA map, relative to blank fields?",
+ "alma_project_codes": [
+  "2016.1.00580.S",
+  "2013.1.00162.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.1 mm), central 263 GHz (1.14 mm)",
+  "arrays": "42–43 12m antennas",
+  "angular_resolution": "0.26x0.20 arcsec untapered; 0.53x0.52 arcsec tapered",
+  "sensitivity": "1 sigma 73 uJy/beam typical"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ADF22A source catalog and number counts",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "ADF22A source counts are from (cite: 2017ApJ...835...98U)."
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...835...98U)"
+  },
+  {
+   "what": {
+    "value": "Blank-field counts used for double power-law fit",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "we focus the counts from (cite: 2016ApJ...833...68A), (cite: 2016ApJ...822...36O), and (cite: 2016PASJ...68...36H)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJ...833...68A); (cite: 2016ApJ...822...36O); (cite: 2016PASJ...68...36H); (cite: 2015ApJ...807..128S); (cite: 2013MNRAS.432....2K)"
+  },
+  {
+   "what": {
+    "value": "SED template set for flux to LIR conversion",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "using a template set of spectral energy distribution (SED) for ALMA-identified SMGs ((cite: 2017ApJ...840...78D))"
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...840...78D)"
+  },
+  {
+   "what": {
+    "value": "DRG selection catalog",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "DRGs ($J-K>1.4$ and $K<24$; (cite: 2013ApJ...778..170K))"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...778..170K)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the mosaic",
+   "method": "ALMA pipeline calibration per tile; combine uv data; tclean with natural weighting, mosaic gridder, hogbom, uvtaper 0.5 arcsec",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "uvtaper = 0.5 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract sources",
+   "method": "bane sensitivity map with 3 sigma clipping in 100x100 pixel boxes; aegean peaks above S/N=4; negative peaks used to set 5 sigma threshold",
+   "software": [
+    "Aegean",
+    "BANE"
+   ],
+   "key_parameters": [
+    "S/N>5 adopted; 17 sources, 1 negative peak"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Completeness and flux boosting",
+   "method": "Inject mock Gaussian sources (FWHM 0.1-0.5\", S/N 3-10), 1000 per S/N bin, re-extract with aegean",
+   "software": [
+    "Aegean"
+   ],
+   "key_parameters": [
+    "recovered if >4 sigma and within 1.0 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure flux and size",
+   "method": "2D Gaussian fits with imfit on primary-beam-corrected map; sizes from non-tapered map; bootstrap 95% CI for median",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "IR luminosity from Danielson et al. SMG SED templates at z=3.09; Chabrier IMF; cosmology Om=0.3, OL=0.7, H0=70"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Cumulative number counts and blank-field comparison",
+   "method": "Counts corrected for completeness and boosting, bootstrap errors, combined with ADF22A weighted by area; compared with double power-law fit to blank-field counts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Fluxes scaled to 1.1 mm with modified blackbody, beta=1.5, T=35 K, z=2.5"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare to AzTEC and stack DRGs",
+   "method": "Compare ALMA flux sums within AzTEC beam to deboosted AzTEC flux; stack 67 undetected DRGs at Ks positions on map smoothed to 1 arcsec, imfit for flux",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Typical 1 sigma depth",
+   "value": "73",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.3 Data Reduction",
+     "quote": "The typical 1$\\sigma$ depth measured over a large central area of the map is 73 $\\mu$Jy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "ADF22B sources at S/N>5",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "Consequently 17 sources are found above S/N=5."
+    }
+   ]
+  },
+  {
+   "quantity": "Total ADF22 sources",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Summary",
+     "quote": "making a total of 35 ALMA sources in ADF22"
+    }
+   ]
+  },
+  {
+   "quantity": "Completeness at S/N=5",
+   "value": "~55",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "At SNR=5, which is the detection threshold, the completeness is estimated to be $\\sim$55%."
+    }
+   ]
+  },
+  {
+   "quantity": "Flux boosting at S/N~5",
+   "value": "~20",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "Sources with SNR$\\sim$5 may suffer from $\\approx$20% artificial increase of flux density"
+    }
+   ]
+  },
+  {
+   "quantity": "Median deconvolved major axis",
+   "value": "0.27",
+   "uncertainty": "+0.05/-0.12 (95% bootstrap)",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "The median deconvolved major axis is $0.27_{-0.12}^{+0.05}$ arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "Blank-field double power-law fit",
+   "value": "N'=220, S'=4.8 mJy, alpha=10.1, beta=1.7",
+   "uncertainty": "±40, ±0.2, ±1.7, ±0.1",
+   "units": "deg^-2, mJy, dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$N'=220\\pm40$ deg$^{-2}$, $S'=4.8\\pm0.2$ mJy, $\\alpha=10.1\\pm1.7$, and $\\beta=1.7\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median S_ALMA/S_AzTEC",
+   "value": "0.70",
+   "uncertainty": "+0.11/-0.10",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "The median, $S^{\\rm ALMA}/S^{\\rm AzTEC} =0.70_{-0.10}^{+0.11}$, is well below unity."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked DRG flux density",
+   "value": "0.13",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$S_{\\rm 1.1mm}=0.13\\pm0.02$ mJy, on average"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA tclean parameters: image size, mosaic phase centre, niter, exact clean threshold and mask",
+  "Whether ADF22A and ADF22B were combined in uv or only catalog level",
+  "Aegean detection and fitting parameters beyond S/N=4 (seed/flood thresholds)",
+  "Flux bins and the exact bootstrap procedure for counts",
+  "Details of the AzTEC deboosting and source list",
+  "Archive-calibration scripts for ADF22A Cycle 2 data",
+  "Stacking aperture and positions (Ks catalog) and exact imfit settings"
+ ],
+ "missing_for_reproduction": [
+  "Full tclean parameters (imsize, niter, threshold)",
+  "Counts flux bins and ADF22A-linked processing",
+  "Hatsukade et al. in-preparation recipe",
+  "Keck redshifts in preparation",
+  "AzTEC catalog details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Main imaging and extraction recipe given, but several parameters and companion recipes missing; counts rely on literature.",
+ "rediscovery_reason": "Data are archival ALMA projects and key results (source count, S/N, flux) are numeric, though some imaging parameters are missing.",
+ "source_card": "cards/2018PASJ...70...65U/sonnet/card.md"
+}

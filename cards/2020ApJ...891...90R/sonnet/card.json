@@ -1,0 +1,754 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...891...90R",
+  "title": "Pressure Profiles and Mass Estimates Using High-resolution Sunyaev-Zel'dovich Effect Observations of Zwicky 3146 with MUSTANG-2",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Romero, Charles E.",
+  "n_authors": 15,
+  "arxiv_id": "1908.09200",
+  "doi": "10.3847/1538-4357/ab6d70",
+  "heldout": false,
+  "archival_class_ours": "unknown",
+  "alma_projects_obscore": []
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "data taken at 90 GHz by MUSTANG-2 to a noise level better than $15\\ \\mu$K at the center, and a cluster detection of $104\\sigma$."
+   },
+   {
+    "loc": "Acknowledgements",
+    "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00001.CAL."
+   }
+  ],
+  "science": {
+   "fields": [
+    "galaxy_clusters_and_sz"
+   ],
+   "targets": [
+    {
+     "name": "Zwicky 3146",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z=0.291",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "The galaxy cluster Zwicky 3146 is a sloshing cool core cluster at $z=0.291$"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "At $z=0.291$, one arcsecond corresponds to 4.36 kpc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can MUSTANG-2 90 GHz SZ data constrain the pressure profile and mass (M500, M2500) of the relaxed cluster Zwicky 3146, and how consistent are different mass estimators?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here, we investigate the ability to estimate the mass of Zwicky 3146 via the Sunyaev-Zel’dovich (SZ) effect with data taken at 90 GHz by MUSTANG-2"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "MUSTANG-2 90 GHz on the GBT (not ALMA)",
+    "evidence": [
+     {
+      "loc": "3.1 MUSTANG-2 observations",
+      "quote": "Observing at 90 GHz on the 100-meter Robert C. Byrd Green Bank Telescope (GBT), MUSTANG-2 achieves a resolution of 10$''$"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "15 uK RMS within central 2' radius (beam-smoothed)",
+    "evidence": [
+     {
+      "loc": "3.1 MUSTANG-2 observations",
+      "quote": "have a RMS noise of $15~\\mu$K (when smoothed to beam resolution) within the central $2\\ensuremath{'}$ radius"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "22.7 hours total; 21.4 hours after flagging",
+    "evidence": [
+     {
+      "loc": "3.1 MUSTANG-2 observations",
+      "quote": "with a total on-source integration time of 22.7 hours. Excising bad scans, our final maps incorporate 21.4 hours of data"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "GBT project AGBT18A_175",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "GBT data was taken under the project ID AGBT18A_175."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "GBT/MUSTANG-2",
+     "provided": {
+      "value": "90 GHz SZ data for all main results",
+      "evidence": [
+       {
+        "loc": "3.1 MUSTANG-2 observations",
+        "quote": "Observing at 90 GHz on the 100-meter Robert C. Byrd Green Bank Telescope (GBT), MUSTANG-2 achieves a resolution of 10$''$"
+       }
+      ]
+     }
+    },
+    {
+     "name": "XMM-Newton",
+     "provided": {
+      "value": "electron density profile for hydrostatic masses and temperature/entropy",
+      "evidence": [
+       {
+        "loc": "4.3.2 via hydrostatic equilibrium",
+        "quote": "In this work, we make use of an electron density profile from *XMM* (cite: ghirardini2018)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "ALMA",
+     "provided": {
+      "value": "grid calibrators used for MUSTANG-2 flux calibration",
+      "evidence": [
+       {
+        "loc": "3.1 MUSTANG-2 observations",
+        "quote": "We additionally use ALMA grid calibrators (cite: fomalont2014; vanKempen2014)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "XMM electron density profile",
+      "evidence": [
+       {
+        "loc": "4.3.2 via hydrostatic equilibrium",
+        "quote": "we make use of an electron density profile from *XMM* (cite: ghirardini2018)."
+       }
+      ]
+     },
+     "citation": "(cite: ghirardini2018)"
+    },
+    {
+     "what": {
+      "value": "FIRST radio source positions/fluxes",
+      "evidence": [
+       {
+        "loc": "4.1 Compact source removal",
+        "quote": "There are six radio sources identified by FIRST (cite: becker1994) which correspond to sources found in the MUSTANG-2 maps."
+       }
+      ]
+     },
+     "citation": "(cite: becker1994)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Mars, Uranus, Jupiter, Saturn, Ceres, plus ALMA grid calibrators",
+     "evidence": [
+      {
+       "loc": "3.1 MUSTANG-2 observations",
+       "quote": "Absolute flux calibrations are preferentially based on the Solar System objects Mars, Uranus, Jupiter, Saturn, and Ceres."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observational techniques and data reduction",
+      "evidence": [
+       {
+        "loc": "3.1 MUSTANG-2 observations",
+        "quote": "Our observational techniques and data reduction are largely the same as with MUSTANG (cite: romero2015a; romero2017)."
+       }
+      ]
+     },
+     "from_reference": "(cite: romero2015a; romero2017)"
+    },
+    {
+     "what": {
+      "value": "gNFW shape parameters alpha, beta, gamma fixed to A10 values",
+      "evidence": [
+       {
+        "loc": "4.2 Pressure profile fitting",
+        "quote": "we choose to fix $\\alpha$, $\\beta$, and $\\gamma$ to their respective values found in (cite: arnaud2010) (hereafter, A10): 1.05, 5.41, and 0.31"
+       }
+      ]
+     },
+     "from_reference": "(cite: arnaud2010)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Minkasi code/version and availability",
+    "MCMC settings and priors for pressure profile fits",
+    "Y-M relation parameters (tabulated A,B but sources unnamed in text)",
+    "Flux calibration uncertainty derivation",
+    "Point source fit details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Map TODs with Minkasi and fit surface brightness annuli",
+    "method": {
+     "value": "Maximum-likelihood fit of concentric annuli to TODs, PCG solver, deconvolved profile with covariance",
+     "evidence": [
+      {
+       "loc": "3.2.2 Surface brightness profiles",
+       "quote": "we opt to fit a surface brightness profile directly to the MUSTANG-2 timestreams within the Minkasi pipeline."
+      }
+     ]
+    },
+    "software": [
+     "Minkasi"
+    ],
+    "key_parameters": [
+     {
+      "value": "30 to 60 PCG steps",
+      "evidence": [
+       {
+        "loc": "3.2.1 Minkasi pipeline",
+        "quote": "We find sufficient convergence with 30 to 60 steps in the PCG."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with MIDAS pipeline",
+     "evidence": [
+      {
+       "loc": "3.2 MUSTANG-2 data reduction",
+       "quote": "A comparison of the performance between the two approaches is in Appendix [11](#sec:appendix_midas_minkasi)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit pressure profiles (NP and gNFW) with point sources",
+    "method": {
+     "value": "Compton y profile to T_B, matched to Minkasi bins with full covariance; 12 NP bins 5'' to 5'; A10 gNFW",
+     "evidence": [
+      {
+       "loc": "4.2 Pressure profile fitting",
+       "quote": "We define twelve bins with twelve logarithmically spaced radii between 5$''$ and 5$'$."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "relativistic correction with kT_e = 7 keV; line of sight integration to ±5 R500",
+      "evidence": [
+       {
+        "loc": "4.2 Pressure profile fitting",
+        "quote": "we assume $k_B T_e = 7$ keV"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "spherical symmetry",
+      "evidence": [
+       {
+        "loc": "4.2 Pressure profile fitting",
+        "quote": "The choice of adopting spherical symmetry is motivated by (1) the ease of interpretation of results and comparison to the literature"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee MCMC with full covariance likelihood",
+     "evidence": [
+      {
+       "loc": "4.2 Pressure profile fitting",
+       "quote": "In both cases, the fitting is done with the MCMC package `emcee` (cite: foreman2013)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Agreement with XMM pressure profile",
+     "evidence": [
+      {
+       "loc": "7 Conclusions",
+       "quote": "The pressure profile recovered is in excellent agreement with the pressure profile derived from *XMM*."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive M500 and M2500",
+    "method": {
+     "value": "Y-M relations, hydrostatic equilibrium with XMM n_e, virial theorem; self-consistent R500 at each MCMC step",
+     "evidence": [
+      {
+       "loc": "4.3 Mass derivations",
+       "quote": "We investigate mass estimates via three avenues: (1) employing a $Y$-$M$ relation, (2) employing spherical hydrostatic equilibrium (HE) and (3) employing the virial theorem (VT)"
+      }
+     ]
+    },
+    "software": [
+     "scipy"
+    ],
+    "key_parameters": [
+     {
+      "value": "mu = 0.61; mu_e = 1.17; f_gas = 0.13",
+      "evidence": [
+       {
+        "loc": "4.3.3 via virial equilibrium",
+        "quote": "we take $\\mu_e = 1.17$ and $f_{\\text{gas}} = 0.13$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "NFW matter profile for VT; central 100 kpc excluded",
+      "evidence": [
+       {
+        "loc": "4.3.3 via virial equilibrium",
+        "quote": "We exclude the points within the central 100 kpc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "VT: scipy curve fit for rho0 and 1/Rs, 1000 iterations",
+     "evidence": [
+      {
+       "loc": "4.3.3 via virial equilibrium",
+       "quote": "$M_{500}$ is calculated self-consistently from the NFW mass curve (as for the hydrostatic mass) over 1000 iterations"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "Minkasi",
+    "version": "not stated",
+    "used_for": {
+     "value": "maximum-likelihood TOD map and profile fitting",
+     "evidence": [
+      {
+       "loc": "3.2 MUSTANG-2 data reduction",
+       "quote": "the second method is a maximum likelihood approach (Minkasi)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "IDL pipeline for comparison",
+     "evidence": [
+      {
+       "loc": "3.2 MUSTANG-2 data reduction",
+       "quote": "The first method, called the MUSTANG IDL Data Analysis System (MIDAS)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fitting",
+     "evidence": [
+      {
+       "loc": "4.2 Pressure profile fitting",
+       "quote": "the fitting is done with the MCMC package `emcee` (cite: foreman2013)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "photutils",
+    "version": "not stated",
+    "used_for": {
+     "value": "Herschel photometry of radio sources",
+     "evidence": [
+      {
+       "loc": "Appendix Radio Sources",
+       "quote": "We obtain photometry of point sources from the level 2 maps with `photutils`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Fiducial M500 (Y-M)",
+    "value": "8.16",
+    "uncertainty": "+0.44/-0.54 stat; +0.46/-0.43 Y-M sys; +0.59/-0.55 cal",
+    "units": "1e14 Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "7 Conclusions",
+      "quote": "We take our fiducial mass to be $8.16^{+0.44}_{-0.54}$ ($\\pm 5.5$% stat)"
+     }
+    ]
+   },
+   {
+    "quantity": "M500 from hydrostatic equilibrium",
+    "value": "8.29",
+    "uncertainty": "+1.93/-1.24 stat; +0.74/-0.68 cal",
+    "units": "1e14 Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "our estimate from hydrostatic equilibrium, is $8.29^{+1.93}_{-1.24}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak decrement (deconvolved)",
+    "value": "1002",
+    "uncertainty": "70",
+    "units": "uK",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.2.2 Surface brightness profiles",
+      "quote": "we find a peak decrement of $1002 \\pm 70$ $\\mu$K"
+     }
+    ]
+   },
+   {
+    "quantity": "Entropy slope NP (100-600 kpc)",
+    "value": "1.34",
+    "uncertainty": "0.06",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.4.2 Entropy",
+      "quote": "$\\alpha_{\\text{NP}} = 1.34 \\pm 0.06$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Pressure profile constrained to better than 15% out to 240'' (twice radial FOV) and matches XMM",
+    "evidence": [
+     {
+      "loc": "6.2 Recovery of pressure profile",
+      "quote": "achieving constraints on the pressure profile to better than 15% out to 240$''$, or twice our radial FOV, is a marked improvement."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can Minkasi recover pressure profile beyond the FOV?",
+    "experiment": "Fit NP and gNFW profiles to TODs",
+    "result": "Constraints <15% to 240''",
+    "finding": "Agrees with XMM",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Conclusions",
+      "quote": "The pressure profile recovered is in excellent agreement with the pressure profile derived from *XMM*."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are mass estimators consistent with each other and with lensing?",
+    "experiment": "Y-M, HE, VT masses compared with literature",
+    "result": "M500 6.23 to 10.6e14; 2 sigma from lensing",
+    "finding": "Systematic mass uncertainties remain",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "7 Conclusions",
+      "quote": "this corresponds to only a $2\\sigma$ discrepancy with the latest weak lensing measurement (cite: okabe2016)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Outermost pressure bin likely biased low; unquantified additional systematic",
+     "evidence": [
+      {
+       "loc": "7 Conclusions",
+       "quote": "there is an additional systematic error due the issues discussed in the previous two paragraphs, but which we are currently unable to quantify."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Hydrostatic bias comes out negative, suggesting problems in data or Y-M relations",
+    "Spherical assumption despite central ellipticity"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Minkasi code and MUSTANG-2 TODs",
+    "Y-M relation sources",
+    "MCMC priors"
+   ],
+   "estimated_data_volume_inferred": "not applicable to ALMA; GBT TODs of ~22 hours",
+   "score_inferred": 2,
+   "score_reason": "Data are GBT MUSTANG-2, not ALMA; ALMA only calibrators.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "No ALMA science data; pipeline code and TODs not described as public."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: romero2015a; romero2017)",
+     "why": "MUSTANG data reduction approach"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": [
+    "MUSTANG-2",
+    "FIRST"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-1f4c46e5103fd8cd9a17295681c30266",
+  "batch_id": "msgbatch_012UviaDL888tR5UUnc1ND6B",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T21:46:10",
+  "usage": {
+   "input_tokens": 41847,
+   "output_tokens": 5511,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.070009,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 41,
+  "quotes_ok": 41,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2011.0.00001.CAL"
+  ],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 70,
+   "stated": 32,
+   "rate": 0.457
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:33",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].validation",
+    "old_value": "Compare estimators and literature masses"
+   }
+  ],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,998 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...868..113T",
+  "title": "Evidence for a Vertical Dependence on the Pressure Structure in AS 209",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Teague, Richard",
+  "n_authors": 4,
+  "arxiv_id": "1810.04961",
+  "doi": "10.3847/1538-4357/aae836",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00486.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "3 The Rotation Curve of AS 209",
+    "quote": "To demonstrate this method we use archival data of AS 209 (2015.1.00486.S, PI Fedele, D.)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "AS 209",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can an improved Gaussian-Process rotation-velocity method applied to archival 12CO data of AS 209 reveal pressure perturbations and their relation to mm and NIR rings?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We present an improved method to measure the rotation curves for disks with non-axisymmetric brightness profiles initially published in (cite: Teague_ea_2018a)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00486.S",
+     "evidence": [
+      {
+       "loc": "3 The Rotation Curve of AS 209",
+       "quote": "we use archival data of AS 209 (2015.1.00486.S, PI Fedele, D.)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "not stated",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3 The Rotation Curve of AS 209",
+       "quote": "Here we focus only on $^{12}$CO emission"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "12CO natural weighting: 0.23'' x 0.19'' at PA -79.3 deg; continuum uniform: 0.15'' x 0.13''",
+    "evidence": [
+     {
+      "loc": "3.1 Observations",
+      "quote": "yielding beam sizes of $0.23\\ensuremath{''} \\times 0.19\\ensuremath{''}$ at a position angle of $-79.3\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "12CO rms 3.3 mJy/beam per channel; continuum rms 65 uJy/beam",
+    "evidence": [
+     {
+      "loc": "3.1 Observations",
+      "quote": "The RMS noise in a line free channel was $3.3~{\\rm mJy~beam^{-1}}$"
+     },
+     {
+      "loc": "3.1 Observations",
+      "quote": "A RMS noise of $\\sigma = 65~\\mu {\\rm Jy~beam^{-1}}$ was measured in continuum free regions of the continuum map"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival, PI Fedele",
+    "evidence": [
+     {
+      "loc": "3 The Rotation Curve of AS 209",
+      "quote": "we use archival data of AS 209 (2015.1.00486.S, PI Fedele, D.)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLT/SPHERE scattered light",
+     "provided": {
+      "value": "NIR scattered light data of AS 209 from Avenhaus et al. 2018, shared by H. Avenhaus",
+      "evidence": [
+       {
+        "loc": "Acknowledgments",
+        "quote": "Henning Avenhaus for sharing the scattered light data"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Model structure parameters (surface density, CO abundance) taken from Huang et al. 2016",
+      "evidence": [
+       {
+        "loc": "4.1 The Toy Model",
+        "quote": "with specific values taken from (cite: Huang_ea_2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Huang_ea_2016)"
+    },
+    {
+     "what": {
+      "value": "Scattered-light radial profile and preferred disk orientation",
+      "evidence": [
+       {
+        "loc": "4.3 Pressure Profile",
+        "quote": "the $r^2$-scaled scattered light intensity from (cite: Avenhaus_ea_2018)"
+       }
+      ]
+     },
+     "citation": "(cite: Avenhaus_ea_2018)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Provided scripts in CASA 4.4, then CASA 5.2 for imaging and self-calibration",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The data were calibrated using the provided scripts in `casa v4.4` before moving to `casa v5.2` for the imaging and self-calibration."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase gains from continuum window applied to the three 12CO windows",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "Phase gain tables were calculated on the continuum window then applied to the three spectral line windows containing $^{12}$CO emission."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "Using the `tclean` task, we first image the emission with natural weighting"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural for 12CO; uniform for continuum",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "Therefore we use natural weighting for the imaging"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Keplerian mask from first-moment fit, convolved with beam",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The data were then imaged and CLEANed again using this Keplerian mask."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub, linear interpolation from line-free channels; also case without subtraction",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The continuum is removed using the task `uvcontsub` which linearly interpolates the the continuum from line-free channels in the $uv$-plane."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.23'' x 0.19'', PA -79.3 deg, ~160 m/s channels",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The data were imaged at a velocity resolution of $\\approx 160~{\\rm m\\,s^{-1}}$ ($\\approx 244~{\\rm kHz}$)."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "3.3 mJy/beam per channel",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The RMS noise in a line free channel was $3.3~{\\rm mJy~beam^{-1}}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction process",
+      "evidence": [
+       {
+        "loc": "3.1 Observations",
+        "quote": "Data reduction followed the same process as outlined in (cite: Fedele_ea_2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Fedele_ea_2018)"
+    },
+    {
+     "what": {
+      "value": "Rotation velocity measurement method (modified here)",
+      "evidence": [
+       {
+        "loc": "3.2 Measuring Rotation Curves",
+        "quote": "Following the method in (cite: Teague_ea_2018a) and with the modification described in Section [2](#sec:methodology) we measure an azimuthally averaged rotation profile."
+       }
+      ]
+     },
+     "from_reference": "(cite: Teague_ea_2018a)"
+    },
+    {
+     "what": {
+      "value": "Inclination fixed at 35.3 deg",
+      "evidence": [
+       {
+        "loc": "3.1 Observations",
+        "quote": "holding the inclination constant at $i = 35.3\\ensuremath{^\\circ}$ (cite: Fedele_ea_2018)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Fedele_ea_2018)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels used for uvcontsub",
+    "Self-calibration solution intervals",
+    "Clean threshold, cell and image size, and number of iterations",
+    "Priors and walker/step settings for the emcee Keplerian fit",
+    "Gaussian-Process kernel and hyperparameters in celerite",
+    "Rest frequency/transition of 12CO and distance to AS 209",
+    "Details of the six-Gaussian perturbation fit (priors, parametrisation)",
+    "Source of the continuum profile used in Fig. 6"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and 12CO",
+    "method": {
+     "value": "tclean with Keplerian mask from moment-map fit; natural weighting for 12CO",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The data were then imaged and CLEANed again using this Keplerian mask."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "160 m/s channels",
+      "evidence": [
+       {
+        "loc": "3.1 Observations",
+        "quote": "The data were imaged at a velocity resolution of $\\approx 160~{\\rm m\\,s^{-1}}$ ($\\approx 244~{\\rm kHz}$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "i = 35.3 deg fixed",
+      "evidence": [
+       {
+        "loc": "3.1 Observations",
+        "quote": "holding the inclination constant at $i = 35.3\\ensuremath{^\\circ}$ (cite: Fedele_ea_2018)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mask checked to encompass whole emission",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "checked to encompass the whole emission"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit Keplerian pattern and emission surface",
+    "method": {
+     "value": "Fit line-of-sight velocity map (parabola fit to peak pixel) with conical emission surface, convolved with beam",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "we fit a Keplerian pattern, including a conical emission surface (cite: Rosenfeld_ea_2013) using the MCMC ensemble sampler `emcee`"
+      }
+     ]
+    },
+    "software": [
+     "emcee",
+     "bettermoments"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "i = 35.3 deg fixed; z = r tan psi",
+      "evidence": [
+       {
+        "loc": "3.2 Measuring Rotation Curves",
+        "quote": "The emission surface is calculated as $z = r \\cdot \\tan \\psi$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee; uncertainties are posterior standard deviations",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "The uncertainties are the standard deviation of the posterior distribution."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Emission height cross-checked with Pinte et al. 2018 method, psi ~13 deg",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "we find good agreement with a conical model with $\\psi \\approx 13\\ensuremath{^\\circ}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure azimuthally averaged rotation curve",
+    "method": {
+     "value": "Deproject spectra into annuli, shift by v_rot cos(theta), stack, model stack as Gaussian Process and minimise residual variance; annuli of quarter beam",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "we then bin the data into annuli with a width of a quarter of the beam ($\\approx 0.05\\ensuremath{''}$) and derive a $v_{\\rm rot}$ value."
+      }
+     ]
+    },
+    "software": [
+     "eddy",
+     "celerite"
+    ],
+    "key_parameters": [
+     {
+      "value": "three cases: flared, thin, flared without continuum subtraction",
+      "evidence": [
+       {
+        "loc": "3.2 Measuring Rotation Curves",
+        "quote": "firstly we deproject the sky-plane coordinates into disk coordinates to correctly account for the flaring, secondly we consider a geometrically thin disk, and finally we consider the flared disk with no continuum subtraction."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian Process via celerite; radial profile also modelled as GP",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "We further model the radial profile as a Gaussian Process, requiring the profile to be smoothly varying"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Simulated spectra tests (Appendix); three cases consistent within 3 sigma",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "All three scenarios yield comparable radial $v_{\\rm rot}$ profiles which are consistent within $3\\sigma$ of one another."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Model perturbed physical structure to reproduce rotation residuals",
+    "method": {
+     "value": "Toy disk model; power laws for T, n, z of 12CO layer; multiply one property by a sum of six Gaussians, fix others, compute v_rot and fit to observed",
+     "evidence": [
+      {
+       "loc": "4.2 Perturbations",
+       "quote": "we model a perturbation vector as a sum of six Gaussian curves and multiply the power-law describing that property by this to create a perturbed profile"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "30 au <= r <= 320 au",
+      "evidence": [
+       {
+        "loc": "4.2 Perturbations",
+        "quote": "$30~{\\rm au} \\leq r \\leq 320~{\\rm au}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Disk mass 0.035 Msun, CO abundance 1.7e-6, Dartois temperature structure",
+      "evidence": [
+       {
+        "loc": "4.1 The Toy Model",
+        "quote": "we chose a relative abundance of $x({\\rm CO}) = 1.7 \\times 10^{-6}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC; scatter of 200 draws shown",
+     "evidence": [
+      {
+       "loc": "4.2 Perturbations",
+       "quote": "The error bars on the perturbed model represents the scatter of 200 draws from the MCMC fitting."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with brightness temperature and emission surface",
+     "evidence": [
+      {
+       "loc": "4.2 Perturbations",
+       "quote": "Large changes in temperature as shown in panel (b) can be ruled out by the line emission as $T_B \\leq T_{\\rm gas}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compute pressure profile and compare with rings",
+    "method": {
+     "value": "Pressure from perturbed T and n; compare maxima with mm continuum and scattered-light rings",
+     "evidence": [
+      {
+       "loc": "4.3 Pressure Profile",
+       "quote": "From the perturbed radial profiles of $T_{^{12}\\rm CO}$ and $n_{^{12}\\rm CO}$ we can calculate the pressure profile traced by the $^{12}$CO emission."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.4 (calibration), 5.2 (imaging)",
+    "used_for": {
+     "value": "calibration, self-calibration, imaging, uvcontsub, tclean",
+     "evidence": [
+      {
+       "loc": "3.1 Observations",
+       "quote": "The data were calibrated using the provided scripts in `casa v4.4` before moving to `casa v5.2` for the imaging and self-calibration."
+      }
+     ]
+    }
+   },
+   {
+    "name": "eddy",
+    "version": "1.0",
+    "used_for": {
+     "value": "rotation velocity measurement",
+     "evidence": [
+      {
+       "loc": "2 Measuring The Rotation Velocity",
+       "quote": "Version 1.0 of the code used for this paper can be obtained from <https://doi.org/10.5281/zenodo.1440051>."
+      }
+     ]
+    }
+   },
+   {
+    "name": "celerite",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian Process modelling of stacked spectra",
+     "evidence": [
+      {
+       "loc": "2 Measuring The Rotation Velocity",
+       "quote": "In practice this is performed using the Python package `celerite`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fit of Keplerian pattern",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "using the MCMC ensemble sampler `emcee`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "line-of-sight velocity map via parabola fit",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "which fits a parabola to the pixel of peak intensity and its two neighbouring pixels"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Stellar mass from Keplerian fit (i=35.3 deg)",
+    "value": "1.16",
+    "uncertainty": "0.01",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "$M_{\\star} = 1.16 \\pm 0.01~M_{\\rm sun}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle",
+    "value": "86.7",
+    "uncertainty": "0.1",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "${\\rm PA} = 86.7\\ensuremath{^\\circ} \\pm 0.1\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "v_LSR",
+    "value": "4670",
+    "uncertainty": "5",
+    "units": "m/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "$v_{\\rm LSR} = 4670 \\pm 5~{\\rm m\\,s^{-1}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Emission surface angle psi",
+    "value": "13.1",
+    "uncertainty": "0.3",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "$\\psi = 13.1\\ensuremath{^\\circ} \\pm 0.3\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "12CO integrated flux",
+    "value": "7.99",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Observations",
+      "quote": "we measure an integrated flux of 7.99 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum integrated intensity",
+    "value": "251",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Observations",
+      "quote": "an integrated intensity of 251 mJy was measured"
+     }
+    ]
+   },
+   {
+    "quantity": "Thin-disk reference Keplerian stellar mass (i=35.7 deg)",
+    "value": "1.25",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "resulting in $M_{\\rm star} = 1.25~M_{\\rm sun}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Cloud absorption of 12CO on western side",
+    "value": "~30",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Observations",
+      "quote": "the cloud absorbs $\\approx 30\\%$ of the $^{12}$CO emission on the Western side of the disk"
+     }
+    ]
+   },
+   {
+    "quantity": "Max deviation from Keplerian rotation",
+    "value": "up to 5",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "shows substantial deviations from Keplerian rotation of up to $\\pm 5\\%$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Inner two mm and NIR rings lie at pressure maxima; outer scattered-light ring at ~250 au sits at the edge of a pressure minimum",
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "The outer ring in scattered light, however, appears at the outer edge of a large pressure minimum centred at $\\approx 250$ au."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does AS 209's rotation curve deviate from Keplerian due to pressure perturbations?",
+    "experiment": "GP-based rotation curve of 12CO, residuals vs thin Keplerian",
+    "result": "Deviations up to ±5%, including a feature at ~250 au",
+    "finding": "Pressure perturbations are present, including one detected only kinematically",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These deviations are most likely due to perturbations in the gas pressure profile"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are rings in NIR and mm emission coincident with pressure maxima?",
+    "experiment": "Compare inferred pressure profile with continuum and scattered light profiles",
+    "result": "Better match with micron-sized grains than mm",
+    "finding": "Vertical dependence of pressure maxima location",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3 Pressure Profile",
+      "quote": "We see a slight offset in the radial location of the rings in mm and $\\ensuremath{\\mu}m$ sized grains, with a better match to the pressure maxima with the $\\ensuremath{\\mu}m$ sized particles."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is continuum subtraction affecting the rotation profile?",
+    "experiment": "Compare profiles with and without subtraction",
+    "result": "Consistent within 3 sigma",
+    "finding": "No significant effect",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 Measuring Rotation Curves",
+      "quote": "This suggests that continuum subtraction does not significantly affect the derived rotation profile."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Sensitivity matters more than resolution for precise v_rot, so natural weighting used",
+    "evidence": [
+     {
+      "loc": "3.1 Observations",
+      "quote": "For precise measurements of $v_{\\rm rot}$, sensitivity is more important than spatial resolution."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Emission height perturbations rejected as they require larger deviations than allowed",
+     "evidence": [
+      {
+       "loc": "4.2 Perturbations",
+       "quote": "Changes in the emission height, shown in panel (c), require larger deviations, particularly between 150 and 250 au, than are allowed from observations."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution (~29 au) leaves velocity features unresolved, underestimating depth",
+     "evidence": [
+      {
+       "loc": "4.3 Pressure Profile",
+       "quote": "the velocity features are not resolved and so will underestimate the true depth"
+      }
+     ]
+    },
+    {
+     "value": "Cannot disentangle pressure gradient from stellar mass; pressure scaling depends on assumed density",
+     "evidence": [
+      {
+       "loc": "3.2 Measuring Rotation Curves",
+       "quote": "we are unable to disentangle large scale effects of the pressure gradient from the stellar mass"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Toy model degenerate: temperature, density and height changes are treated one at a time",
+    "Cloud absorption strongly affects western side",
+    "Pressure offsets between mm and NIR rings are small relative to resolution",
+    "Distance and ring positions rely on external data"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data",
+    "evidence": [
+     {
+      "loc": "3 The Rotation Curve of AS 209",
+      "quote": "we use archival data of AS 209 (2015.1.00486.S, PI Fedele, D.)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "eddy on GitHub and Zenodo v1.0",
+     "evidence": [
+      {
+       "loc": "2 Measuring The Rotation Velocity",
+       "quote": "Examples of the code used for this and Jupyter Notebooks containing guides on how to use them can be found at <https://github.com/richteague/eddy>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact imaging parameters (cell, size, threshold)",
+    "MCMC priors and GP settings",
+    "Scattered-light and continuum profile data",
+    "Perturbation fit details"
+   ],
+   "estimated_data_volume_inferred": "tens of GB (calibrated multi-EB band 6 CO line data)",
+   "score_inferred": 3,
+   "score_reason": "Public data and released code, but many imaging and fitting settings are unstated and the model fit is under-specified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Rotation curve is reproducible with eddy, but the perturbation modelling and external data are incompletely specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Teague_ea_2018a)",
+     "why": "Original rotation-curve method"
+    },
+    {
+     "citation": "(cite: Foreman-Mackey_ea_2017)",
+     "why": "celerite Gaussian Process"
+    },
+    {
+     "citation": "(cite: Teague_Foreman-Mackey_2018)",
+     "why": "bettermoments velocity map method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Fedele_ea_2018)",
+     "why": "Continuum data and reduction of the same project"
+    },
+    {
+     "citation": "(cite: Huang_ea_2016)",
+     "why": "CO isotopologue ring structure and model parameters"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-7a46fe79262f41d129b93f6e2037c3d4",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:11",
+  "usage": {
+   "input_tokens": 19644,
+   "output_tokens": 8591,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.063205,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 48,
+   "rate": 0.6
+  },
+  "evidence_ok": true
+ }
+}

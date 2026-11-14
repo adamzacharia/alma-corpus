@@ -1,0 +1,465 @@
+{
+ "bibcode": "2023A&A...671A...3J",
+ "title": "VERTICO. III. The Kennicutt-Schmidt relation in Virgo cluster galaxies",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202244718",
+ "arxiv_id": "2211.16521",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Are there significant differences in the Kennicutt-Schmidt law between star forming regions in Virgo cluster galaxies and those of normal, star-forming disks, and does the cluster environment modify the star formation process at sub-kpc scales?",
+ "alma_project_codes": [
+  "2019.1.00763.L",
+  "2017.1.00886.L",
+  "2016.1.00912.S",
+  "2015.1.00956.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "ACA and Total Power (TP)",
+  "angular_resolution": "9\" (720 pc) and 15\" (1.2 kpc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Orientation parameters (optical inclinations and position angles) and CO(2-1)-to-CO(1-0) line ratio R21 = 0.7",
+    "evidence": [
+     {
+      "loc": "VERTICO galaxies",
+      "quote": "A summary with the basic properties of the working sample of galaxies can be found in Table [\\[tab:sample\\]](#tab:sample), orientation parameters are drawn from (cite: Brown2021)"
+     },
+     {
+      "loc": "Molecular gas",
+      "quote": "In this paper, we derive the molecular surface densities directly from the VERTICO and HERACLES surveys CO (2-1) integrated intensity maps, assuming a fixed CO (2-1)-to-CO (1-0) line ratio, $R_{21}$, of 0.7 as derived by (cite: Brown2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Brown2021)"
+  },
+  {
+   "what": {
+    "value": "Global star formation rates, integrated stellar masses, and NUV+WISE4 SFR calibration",
+    "evidence": [
+     {
+      "loc": "VERTICO galaxies",
+      "quote": "global SFR and stellar masses are adopted from (cite: Leroy2019)"
+     },
+     {
+      "loc": "Star Formation Rates",
+      "quote": "With GALEX NUV and color-corrected WISE3 images for each galaxy, we then apply the NUV+WISE4 SFR calibration from (cite: Leroy2019) to derive spatially resolved SFR maps in units $M_\\odot$/yr/kpc$^2$."
+     }
+    ]
+   },
+   "citation": "(cite: Leroy2019)"
+  },
+  {
+   "what": {
+    "value": "Global HI deficiencies calculated using predicted HI mass from field galaxies at fixed stellar mass",
+    "evidence": [
+     {
+      "loc": "VERTICO galaxies",
+      "quote": "H I deficiencies are calculated using the predicted H I mass from field galaxies at fixed stellar mass, from (cite: Zabel2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Zabel2022)"
+  },
+  {
+   "what": {
+    "value": "Common distance of 16.5 Mpc to all Virgo galaxies",
+    "evidence": [
+     {
+      "loc": "VERTICO galaxies",
+      "quote": "Based on (cite: Mei2007), we employ a common distance of 16.5 Mpc to all Virgo galaxies throughout the paper."
+     }
+    ]
+   },
+   "citation": "(cite: Mei2007)"
+  },
+  {
+   "what": {
+    "value": "Galactic CO-to-H2 conversion factor alpha_CO = 4.35 M_sun pc^-2 (K km s^-1)^-1",
+    "evidence": [
+     {
+      "loc": "Molecular gas",
+      "quote": "Throughout the paper we assume a constant Galactic value, $\\alpha^{MW}_{\\textrm{CO}}=4.35\\,M_\\odot\\,\\textrm{pc}^{-2}\\textrm{(K km s}^{-1}\\textrm{)}^{-1}$ (cite: Bolatto2013), for which the corresponding $X_\\mathrm{CO}$ is $2\\times10^{20}\\,\\textrm{cm}^{-2}\\textrm{(K km s}^{-1}\\textrm{)}^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Convolve CO(2-1) datacubes and compute Moment-0 integrated intensity maps",
+   "method": "Convolve imaged ALMA datacubes to 9\" (720 pc) and 15\" (1.2 kpc) resolution, apply a spatially and spectrally varying S/N mask (core mask S/N >= 3.5 in >= 3 channels, wing mask S/N >= 2 in >= 2 channels), and integrate along the spectral axis to obtain Moment-0 maps in K km s^-1.",
+   "software": [
+    "VERTICO pipeline"
+   ],
+   "key_parameters": [
+    "Angular resolution = 9\" (720 pc) and 15\" (1.2 kpc)",
+    "Core mask S/N >= 3.5 in >= 3 consecutive channels; wing mask S/N >= 2 in >= 2 consecutive channels"
+   ],
+   "assumptions": [
+    "Common distance to all Virgo galaxies = 16.5 Mpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive molecular gas mass surface density maps",
+   "method": "Convert CO(2-1) integrated intensity maps to molecular gas surface density using Sigma_mol = alpha_CO * (I_CO(2-1) / R_21) * cos(i) for both VERTICO and HERACLES samples.",
+   "software": [],
+   "key_parameters": [
+    "Inclination cut i <= 80 deg for the 37-galaxy subsample"
+   ],
+   "assumptions": [
+    "CO(2-1)-to-CO(1-0) line ratio R_21 = 0.7",
+    "Constant Galactic conversion factor alpha_CO = 4.35 M_sun pc^-2 (K km s^-1)^-1 (including 1.36 helium factor)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct spatially resolved Star Formation Rate (SFR) surface density maps",
+   "method": "Mask Gaia DR2 stars, subtract background using Astropy Background2D, convolve GALEX NUV and WISE images to 9\" using Aniano et al. (2011) kernels, apply a pixel-by-pixel radial linear WISE3-to-WISE4 color correction to WISE3 images, and apply the Leroy et al. (2019) NUV+WISE4 SFR calibration.",
+   "software": [
+    "Astropy"
+   ],
+   "key_parameters": [
+    "Common working resolution = 9\""
+   ],
+   "assumptions": [
+    "Kroupa (2003) stellar initial mass function (0.1 to 100 M_sun, slope -2.35 between 1 and 100 M_sun, slope -1.3 between 0.1 and 1 M_sun)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the resolved Kennicutt-Schmidt relation and compute depletion times and SFE",
+   "method": "Fit log(Sigma_SFR) = A + N log(Sigma_mol) using Least Trimmed Squares (LTS) robust linear regression for the ensemble (at 720 pc and 1.2 kpc), HI-deficient vs. HI-normal subsamples (cut at def_HI,M* > 0.3), and individual galaxies; compute SFE_mol = Sigma_SFR / Sigma_mol, tau_dep = Sigma_mol / Sigma_SFR, and Pearson correlation coefficients.",
+   "software": [],
+   "key_parameters": [
+    "HI-deficiency threshold def_HI,M* > 0.3"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Analyze azimuthal variations in molecular gas SFE",
+   "method": "Sample each galaxy from its optical center with 18 radial vectors in the RA-DEC plane, compute angular separation (0 to 180 deg) to each pixel in the SFE map, and select by eye the reference angle that most cleanly separates the SFE distribution in the resolved KS plot.",
+   "software": [],
+   "key_parameters": [
+    "18 radial vectors; angular offsets from 0 deg to 180 deg"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Ensemble KS slope N (720 pc resolution)",
+   "value": "0.97",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find the KS slope for the entire population to be $N=0.97\\pm0.07$, with a characteristic molecular gas depletion time of $1.86\\,\\mathrm{Gyr}$ for our full sample"
+    },
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| Galaxies: $720\\mathrm{pc}$ | $0.97\\pm0.07$ | $-3.20\\pm0.08$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble KS intercept log10 A (720 pc resolution)",
+   "value": "-3.20",
+   "uncertainty": "0.08",
+   "units": "log10(M_sun yr^-1 pc^2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| Galaxies: $720\\mathrm{pc}$ | $0.97\\pm0.07$ | $-3.20\\pm0.08$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble KS scatter sigma (720 pc resolution)",
+   "value": "0.42",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| Galaxies: $720\\mathrm{pc}$ | $0.97\\pm0.07$ | $-3.20\\pm0.08$ | $0.42$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic molecular gas depletion time (full sample)",
+   "value": "1.86",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find the KS slope for the entire population to be $N=0.97\\pm0.07$, with a characteristic molecular gas depletion time of $1.86\\,\\mathrm{Gyr}$ for our full sample"
+    },
+    {
+     "loc": "Kennicutt-Schmidt in Virgo",
+     "quote": "We also find a median $\\tau_{\\mathrm{dep}}=1.86\\,\\mathrm{Gyr}$ for our full sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble KS slope N (1.2 kpc resolution)",
+   "value": "0.91",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| Galaxies: $1.2\\mathrm{kpc}$ | $0.91\\pm0.08$ | $-3.15\\pm0.11$ | $0.35$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble KS intercept log10 A (1.2 kpc resolution)",
+   "value": "-3.15",
+   "uncertainty": "0.11",
+   "units": "log10(M_sun yr^-1 pc^2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| Galaxies: $1.2\\mathrm{kpc}$ | $0.91\\pm0.08$ | $-3.15\\pm0.11$ | $0.35$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble KS scatter sigma (1.2 kpc resolution)",
+   "value": "0.35",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| Galaxies: $1.2\\mathrm{kpc}$ | $0.91\\pm0.08$ | $-3.15\\pm0.11$ | $0.35$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HI-deficient ensemble KS slope N",
+   "value": "0.93",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| HI-deficient | $0.93\\pm0.04$ | -2.98 $\\pm$ 0.09 | 0.30 |"
+    },
+    {
+     "loc": "The KS relation in HI-deficient environments",
+     "quote": "we obtain a resolved KS slope of $N=0.93\\pm0.04$, a $< \\mathrm{log}_{10} \\Sigma_\\mathrm{SFR}/\\Sigma_\\mathrm{mol} > =-9.34\\pm0.04$ and a 1-$\\sigma$ scatter of 0.30 dex for those galaxies classified as HI-deficient."
+    }
+   ]
+  },
+  {
+   "quantity": "HI-deficient ensemble KS intercept log10 A",
+   "value": "-2.98",
+   "uncertainty": "0.09",
+   "units": "log10(M_sun yr^-1 pc^2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| HI-deficient | $0.93\\pm0.04$ | -2.98 $\\pm$ 0.09 | 0.30 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HI-deficient ensemble mean log10(Sigma_SFR / Sigma_mol)",
+   "value": "-9.34",
+   "uncertainty": "0.04",
+   "units": "log10(yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The KS relation in HI-deficient environments",
+     "quote": "we obtain a resolved KS slope of $N=0.93\\pm0.04$, a $< \\mathrm{log}_{10} \\Sigma_\\mathrm{SFR}/\\Sigma_\\mathrm{mol} > =-9.34\\pm0.04$ and a 1-$\\sigma$ scatter of 0.30 dex for those galaxies classified as HI-deficient."
+    }
+   ]
+  },
+  {
+   "quantity": "HI-deficient ensemble KS scatter sigma",
+   "value": "0.30",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| HI-deficient | $0.93\\pm0.04$ | -2.98 $\\pm$ 0.09 | 0.30 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HI-normal ensemble KS slope N",
+   "value": "0.84",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| HI-normal | $0.84\\pm0.04$ | -3.26 $\\pm$ 0.10 | 0.41 |"
+    },
+    {
+     "loc": "The KS relation in HI-deficient environments",
+     "quote": "In comparison, the resulting quantities for the HI-normal galaxies show a characteristic slope of $N=0.84\\pm0.04$, a $< \\mathrm{log}_{10} \\Sigma_\\mathrm{SFR}/\\Sigma_\\mathrm{mol} > =-9.10\\pm0.06$ and a 1-$\\sigma$ scatter of 0.41 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "HI-normal ensemble KS intercept log10 A",
+   "value": "-3.26",
+   "uncertainty": "0.10",
+   "units": "log10(M_sun yr^-1 pc^2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| HI-normal | $0.84\\pm0.04$ | -3.26 $\\pm$ 0.10 | 0.41 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HI-normal ensemble mean log10(Sigma_SFR / Sigma_mol)",
+   "value": "-9.10",
+   "uncertainty": "0.06",
+   "units": "log10(yr^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The KS relation in HI-deficient environments",
+     "quote": "In comparison, the resulting quantities for the HI-normal galaxies show a characteristic slope of $N=0.84\\pm0.04$, a $< \\mathrm{log}_{10} \\Sigma_\\mathrm{SFR}/\\Sigma_\\mathrm{mol} > =-9.10\\pm0.06$ and a 1-$\\sigma$ scatter of 0.41 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "HI-normal ensemble KS scatter sigma",
+   "value": "0.41",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "VERTICO galaxies",
+     "quote": "| HI-normal | $0.84\\pm0.04$ | -3.26 $\\pm$ 0.10 | 0.41 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SFR offset of HI-deficient galaxies below SFMS at fixed stellar mass",
+   "value": "0.60",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The KS relation in HI-deficient environments",
+     "quote": "HI-deficient galaxies also have global SFRs that are, on average, 0.60 dex lower than those of galaxies on the SFMS, for a fixed stellar mass."
+    }
+   ]
+  },
+  {
+   "quantity": "Individual galaxies KS slope N range",
+   "value": "0.69 to 1.40",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The KS relation for individual galaxies",
+     "quote": "Table [\\[tab:indiv_slopes\\]](#tab:indiv_slopes) shows that the slopes obtained by fitting individual $\\Sigma_\\textrm{SFR}$-to-$\\Sigma_\\textrm{mol}$ relations range between $N=0.69$ and $N=1.40$, with a mean typical scatter of $\\pm0.21$dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean values across individual galaxies (slope N, log10 A, median log10(Sigma_SFR/Sigma_mol), scatter)",
+   "value": "0.91",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The KS relation for individual galaxies",
+     "quote": "| Whole sample | $0.91\\pm0.04$ | -3.21 $\\pm$ 0.12 | 0.8 (\\<0.01) | -9.25$\\pm$0.12 | 0.23 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy-weighted ensemble KS slope N",
+   "value": "0.99",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting methodology and sample",
+     "quote": "Following this procedure, we obtain a resolved KS slope of $N=0.99\\pm0.02$, with a median $\\mathrm{log}_{10} \\Sigma_\\mathrm{SFR}/\\Sigma_\\mathrm{mol}=-9.25\\pm0.06$ and a 1-$\\sigma$ scatter of 0.40 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time in NGC 4654 interaction side vs opposite side",
+   "value": "0.9 vs 0.5",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiencies in VERTICO",
+     "quote": "Figure [7](#fig:angle_az) shows that disk regions within $\\sim 70^o$ from the direction of interaction tend to follow a KS relation characterized by slightly longer depletion times ($\\sim0.9$ Gyr) than those regions in the opposite side ($\\sim0.5$ Gyr)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median depletion time along semi-minor axis of NGC 4383",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star Formation Efficiencies in VERTICO",
+     "quote": "The region along the semi-minor axis of the galaxy shows much higher star formation efficiencies, with median depletion times of $\\sim 0.4$ Gyr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration pipeline version, and imaging parameters (tclean weighting, cell size, image size, ACA+TP feathering/combination details), which are deferred to Brown et al. (2021)",
+  "Exact spatial pixel grid / hexagonal or Nyquist sampling grid spacing used to extract resolved data points from the 9\" and 15\" maps for the KS fits",
+  "Exact parameters of the Astropy Background2D function and Gaia DR2 star masking radii used in the GALEX/WISE processing",
+  "Exact trimming fraction parameter used in the Cappellari et al. (2013) Least Trimmed Squares (LTS) regression"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel/spaxel sampling grid used to extract points from the 9\" and 15\" maps (e.g., whether pixels are Nyquist-sampled, hexagonally binned, or native map pixels)",
+  "Exact galaxy-by-galaxy linear fit parameters for the radial WISE3/WISE4 color correction (deferred to Roberts et al., in prep.)",
+  "Exact trimming fraction parameter used in the LTS regression",
+  "Exact subset of 21 HERACLES galaxies used (the 5 duplicates and 5 interacting galaxies removed from the 48 HERACLES galaxies leave 38, so the criteria selecting the final 21 CO-detected targets are not explicitly listed by name)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The high-level analysis recipe, equations, conversion factors, sample tables, and fitting methods are clearly documented and the VERTICO survey products are publicly released via Brown et al. (2021), though full reproduction requires consulting Brown et al. (2021) for CO data products, Roberts et al. (in prep.) for the exact WISE3/WISE4 color-correction fits, and knowing the exact pixel sampling grid and LTS trimming fraction.",
+ "rediscovery_reason": "All ALMA project codes are public, VERTICO high-level moment-0 maps are publicly available, ancillary GALEX/WISE data are archival, and the main results are well-defined numeric KS slopes, intercepts, scatters, and depletion times for both the ensemble and 35 individual galaxies.",
+ "source_card": "cards/2023A%26A...671A...3J/sonnet/card.md"
+}

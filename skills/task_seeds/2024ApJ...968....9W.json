@@ -1,0 +1,237 @@
+{
+ "bibcode": "2024ApJ...968....9W",
+ "title": "A Spatially Resolved [C II] Survey of 31 z ∼ 7 Massive Galaxies Hosting Luminous Quasars",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad3fb4",
+ "arxiv_id": "2404.15413",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the [C II] and FIR continuum properties, sizes, kinematics, dynamical masses and SMBH-host relations of host galaxies of 31 luminous z>6.5 quasars?",
+ "alma_project_codes": [
+  "2018.1.01188.S",
+  "2019.1.01025.S",
+  "2019.A.00017.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "NOEMA: 10 antennas, C configuration, PolyFiX",
+  "angular_resolution": "not stated",
+  "sensitivity": "design ~0.3 mJy/beam per 100 km/s; resolution 0.4''-0.7''"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mg II redshifts and M1450 of quasars",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "References for the quasar discovery (first number) and for $z_{\\rm MgII}$ and $M_{\\rm 1450}$ measurements (second number)."
+     }
+    ]
+   },
+   "citation": "Yang21 and others (cite: Yang21)"
+  },
+  {
+   "what": {
+    "value": "Mg II black hole masses for the quasars",
+    "evidence": [
+     {
+      "loc": "4.3 SMBH-host Co-evolution",
+      "quote": "are measured from the Mg II emission line and are collected from the literature (cite: Banados21; Wang21b; Yang21)"
+     }
+    ]
+   },
+   "citation": "(cite: Banados21; Wang21b; Yang21)"
+  },
+  {
+   "what": {
+    "value": "[C II]/FIR properties and kinematics of z>5.7 quasars from the literature",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "There are 65 $z>5.7$ quasars with [C II] and FIR continuum observations in the literature at the time of doing our analyses."
+     }
+    ]
+   },
+   "citation": "(cite: Decarli18; Venemans20; Neeleman21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA data and extract spectra",
+   "method": "tclean dirty map, cubes at ~30 km/s, 1.5'' aperture 1D spectra fitted with flat continuum plus Gaussian",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "aperture diameter 1.5''; robust 2.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make [C II] line and continuum maps and measure 2D flux and size",
+   "method": "collapse ±1.4 sigma_line (~83% flux, corrected), imfit 2D Gaussian",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive L_[CII], L_FIR, SFR, dust mass, C+ mass",
+   "method": "Luminosity equation; graybody and Haro 11 templates; De Looze14 and Murphy11 SFR relations; dust mass with CMB correction",
+   "software": [],
+   "key_parameters": [
+    "T_dust=47 K, beta=1.6; T_ex=100 K for C+"
+   ],
+   "assumptions": [
+    "dust-to-gas ratio 100, molecular fraction 0.75"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Classify kinematics and estimate dynamical masses",
+   "method": "re-image with robust 0.5, moment maps with immoments, v_proj/2sigma_int>0.4 criterion; thin-disk M_dyn and Neeleman21 relation",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "D=1.5×FWHM major axis; i=arccos(b/a)"
+   ],
+   "assumptions": [
+    "[C II] from thin rotating disk"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L_[CII] range",
+   "value": "0.3-5.5",
+   "uncertainty": "not stated",
+   "units": "1e9 Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\rm [CII]}=(0.3-5.5)\\times10^9~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR range",
+   "value": "0.5-13.0",
+   "uncertainty": "not stated",
+   "units": "1e12 Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\rm FIR}=(0.5-13.0)\\times10^{12}~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho L_[CII] vs L_bol",
+   "value": "0.43",
+   "uncertainty": "p=1.7e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "correlation coefficient of $\\rho=0.43$ and a chance probability of $p=1.7\\times10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho L_FIR vs L_bol",
+   "value": "0.48",
+   "uncertainty": "p=7.4e-6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "correlation coefficient of $\\rho=0.48$ and a chance probability of $p=7.4\\times10^{-6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median host diameter and inclination",
+   "value": "D=5.0 kpc, i=46 deg",
+   "uncertainty": "not stated",
+   "units": "kpc, deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The median values are $D=5.0$ kpc and $i=46^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-dominated fraction",
+   "value": "10 of 23 (43%)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Kinematics and Morphology",
+     "quote": "(43%) as rotation-dominated galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dyn range of rotation-dominated hosts",
+   "value": "0.1-7.5",
+   "uncertainty": "large",
+   "units": "1e11 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Dynamical Mass",
+     "quote": "The dynamical mass spans a broad range of $\\sim(0.1-7.5)\\times10^{11}~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH/M_dyn excess over local",
+   "value": "~10 (range 0.6-60)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 SMBH-host Co-evolution",
+     "quote": "with a broad range spanning from approximately 0.6 to 60"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum maps",
+  "Clean threshold, niter, cell and image size, and mask details",
+  "Self-calibration usage",
+  "Flux calibrators and flux-scale uncertainty",
+  "How v_proj was measured from velocity maps",
+  "Scheme for correcting missing flux in 3'' aperture NOEMA fluxes",
+  "Exact L_bolometric values used for Spearman tests",
+  "Cosmic-microwave-background correction details for the graybody fit"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel definitions",
+  "Clean parameters",
+  "Bolometric luminosities and literature compilation",
+  "NOEMA mapping details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps are described with equations, but several imaging parameters and the literature compilation are missing.",
+ "rediscovery_reason": "ALMA data are public in the listed projects, steps are largely specified, and results are numeric (fluxes, luminosities, sizes).",
+ "source_card": "cards/2024ApJ...968....9W/sonnet/card.md"
+}

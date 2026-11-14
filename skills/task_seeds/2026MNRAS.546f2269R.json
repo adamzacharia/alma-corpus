@@ -1,0 +1,573 @@
+{
+ "bibcode": "2026MNRAS.546f2269R",
+ "title": "The link between galaxy merger, radio jet expansion, and molecular outflow in the ULIRG IRAS 00183−7111",
+ "year": 2026,
+ "doi": "10.1093/mnras/staf2269",
+ "arxiv_id": "2506.07852",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What is the link between galaxy merger, AGN ignition, radio jet expansion and kpc-scale molecular outflow in the ULIRG IRAS 00183-7111?",
+ "alma_project_codes": [
+  "2019.1.00851.S",
+  "2013.1.00826.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6",
+  "arrays": "12-m array (44 antennas in Band 3; 35 antennas in Band 6)",
+  "angular_resolution": "0.38'' x 0.28'' (Band 3), 0.29'' x 0.21'' (Band 6)",
+  "sensitivity": "Continuum: 18 uJy/beam (100 GHz), 20 uJy/beam (250 GHz). Line (20 km/s channels): 0.22 mJy/beam for CO(1-0), 0.23 mJy/beam for CO(3-2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2.3 GHz VLBI continuum map, radio core position, and radio power log P_2.3GHz = 25.8 W Hz^-1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(6) Radio power at 2.3 GHz taken from (cite: Norris12), and including all the radio emission associated with the source."
+     },
+     {
+      "loc": "Line ratio",
+      "quote": "overlaid in white the 2.3 GHz continuum contours from the VLBI observations of I00183 presented by (cite: Norris12)."
+     }
+    ]
+   },
+   "citation": "(cite: Norris12)"
+  },
+  {
+   "what": {
+    "value": "Galaxy redshift z = 0.3282 ± 0.0005",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(4) | Redshift | $0.3282\\pm0.0005$"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(4) Galaxy redshift from (cite: Calderon16)."
+     }
+    ]
+   },
+   "citation": "(cite: Calderon16)"
+  },
+  {
+   "what": {
+    "value": "Lower-resolution Cycle 0 ALMA CO(1-0) data, diffuse outflow mass, SFR = 260 M_sun yr^-1, and intrinsic 2-10 keV X-ray luminosity L_X,2-10 = 7.46 (+1.29/-1.15) x 10^43 erg s^-1",
+    "evidence": [
+     {
+      "loc": "What powers the outflow?",
+      "quote": "Adopting a SFR of 260 M$_{\\rm \\odot}$ yr$^{-1}$ (as estimated in (cite: Ruffa18) from the FIR luminosity), we obtain Ṁ$_{\\rm SNe}=68$ M$_{\\rm \\odot}$ yr$^{-1}$"
+     },
+     {
+      "loc": "What powers the outflow?",
+      "quote": "We take this latter from the *Chandra* spectral fitting presented in (cite: Ruffa18), whereby $L_{\\rm X,2-10}=7.46^{+1.29}_{-1.15}\\times10^{43}$ erg s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Ruffa18)"
+  },
+  {
+   "what": {
+    "value": "[OIII]5007 outflow contours",
+    "evidence": [
+     {
+      "loc": "CO kinematics",
+      "quote": "the blueshifted CO plume is clearly spatially-correlated with the \\[Oiii\\]$\\lambda5007$ outflow, as illustrated in the middle panel of Figure 5 (cite: Iwasawa17)."
+     }
+    ]
+   },
+   "citation": "(cite: Iwasawa17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create CO moment maps and position-velocity diagrams",
+   "method": "Masked moment technique: smooth a copy of the cleaned cube spatially with a Gaussian (FWHM = 1.5x synthesized beam) and in velocity with Hanning smoothing, apply a 0.9 sigma flux-density threshold to create a 3D mask, and compute moments 0, 1, and 2 from the un-smoothed cubes within the mask; extract PVDs along slits A, B, and C",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "spatial smoothing FWHM = 1.5x synthesized beam, velocity smoothing = Hanning, mask threshold = 0.9 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract integrated CO spectra, fit line profiles, and measure integrated flux densities",
+   "method": "Extract spectra from un-smoothed cubes within polygonal areas drawn by-eye around line structures; fit single and double Gaussian components using lmfit; integrate flux density over FWZI velocity range where channel intensities >= 3 sigma",
+   "software": [
+    "lmfit"
+   ],
+   "key_parameters": [
+    "FWZI threshold >= 3 sigma; 1-Gaussian vs 2-Gaussian models (mean, sigma, normalisation free)"
+   ],
+   "assumptions": [
+    "Systemic velocity of each CO line corresponds to nominal redshifted central frequency at optical systemic velocity (z = 0.3282)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate molecular gas luminosity and total molecular gas mass",
+   "method": "Calculate L'_CO from integrated CO(1-0) flux density following Carilli & Walter (2013) and convert to M(H2) using alpha_CO following Bolatto et al. (2013)",
+   "software": [],
+   "key_parameters": [
+    "nu_obs = 86.735 GHz, z = 0.3282, D_L = 1722 Mpc"
+   ],
+   "assumptions": [
+    "ULIRG CO-to-H2 conversion factor alpha = 0.8 M_sun (K km s^-1 pc^2)^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct CO(3-2)/CO(1-0) line ratio map and evaluate gas excitation",
+   "method": "Re-image both CO datasets with identical channel count, channel width (20 km/s), pixel and image size, common uv range, and convolved to a common beam (0.42'' x 0.32''); create masked moment 0 maps and divide them using CASA task immath",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "channel width = 20 km s^-1, common beam = 0.42'' x 0.32''"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) and optically thin conditions for R31 > 20"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Perform optical isophotal analysis, 2D light modelling, and merger simulation comparison",
+   "method": "Mask bright field sources on sky-subtracted i-band VST image, run IRAF ELLIPSE for radial profiles of ellipticity, PA, and surface brightness, build 2D axisymmetric model with IRAF BMODEL, subtract from original image and smooth residual with Gaussian filter (sigma = 1); visually compare morphology with GALMER merger simulations",
+   "software": [
+    "IRAF"
+   ],
+   "key_parameters": [
+    "Gaussian filter standard deviation sigma = 1 for residual map visualization; galaxy centre fixed by-eye at geometrical centre"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Estimate molecular outflow mass, energetics, and driving mechanisms",
+   "method": "Extract CO(1-0) spectrum in a 1.0'' x 0.3'' box along slit C, integrate high-velocity channel wings to get M_out, compute outflow velocity, mass outflow rate, depletion time, momentum rate, and kinetic power; compare with supernova driving, AGN radiation pressure, and dynamical radio jet models",
+   "software": [],
+   "key_parameters": [
+    "extraction box = 1.0'' x 0.3'', r_out = 1.0'' (~5 kpc) [or 7'' (~34 kpc) including diffuse component], C = 3"
+   ],
+   "assumptions": [
+    "Constant average volume density in a cone or sphere (C = 3); blueshifted component moves directly along observer line of sight; alpha_CO = 0.8; gas density = 10^4 cm^-3 for jet model; AGN bolometric correction L_BOL = 83 x L_X,2-10"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1-0) peak flux",
+   "value": "1.96",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$^{12}$CO(1-0) | 0.22 | 1.96 | 9 | 20"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) peak flux",
+   "value": "7.58",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$^{12}$CO(3-2) | 0.23 | 7.58 | 33 | 20"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) main Gaussian centroid shift",
+   "value": "+76",
+   "uncertainty": "±10",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Main  | | | $+76\\pm10$  | | | $109\\pm15$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) main Gaussian FWHM",
+   "value": "109",
+   "uncertainty": "±15",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Main  | | | $+76\\pm10$  | | | $109\\pm15$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) broad Gaussian centroid shift",
+   "value": "+107",
+   "uncertainty": "±26",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Broad | | | $+107\\pm26$ | | | $392\\pm73$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) broad Gaussian FWHM",
+   "value": "392",
+   "uncertainty": "±73",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Broad | | | $+107\\pm26$ | | | $392\\pm73$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) FWZI",
+   "value": "1100",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(1-0) | | | | | | | | | | 1100 | 2.3$\\pm0.2$ | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) integrated flux density S_CO",
+   "value": "2.3",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(1-0) | | | | | | | | | | 1100 | 2.3$\\pm0.2$ | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) main Gaussian centroid shift",
+   "value": "-34",
+   "uncertainty": "±3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Main  | | | $-34\\pm3$ |   | |  $94\\pm6$  |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) main Gaussian FWHM",
+   "value": "94",
+   "uncertainty": "±6",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Main  | | | $-34\\pm3$ |   | |  $94\\pm6$  |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) broad Gaussian centroid shift",
+   "value": "+3",
+   "uncertainty": "±7",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Broad | | | $+3\\pm7$  |   | | $218\\pm18$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) broad Gaussian FWHM",
+   "value": "218",
+   "uncertainty": "±18",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Broad | | | $+3\\pm7$  |   | | $218\\pm18$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) FWZI",
+   "value": "820",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | | | | | | | | | | 820 | 17.1$\\pm1.7$ | $7.4\\pm1.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) integrated flux density S_CO",
+   "value": "17.1",
+   "uncertainty": "±1.7",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | | | | | | | | | | 820 | 17.1$\\pm1.7$ | $7.4\\pm1.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average integrated flux density ratio R_31 (S_CO(3-2)/S_CO(1-0))",
+   "value": "7.4",
+   "uncertainty": "±1.8",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | | | | | | | | | | 820 | 17.1$\\pm1.7$ | $7.4\\pm1.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) luminosity L'_CO",
+   "value": "1.8e10",
+   "uncertainty": "±0.2e10",
+   "units": "K km s^-1 pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "We obtained $L'_{\\rm CO}=1.8\\pm0.2\\times10^{10}$ K km s$^{-1}$ pc$^{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol",
+   "value": "1.0e10",
+   "uncertainty": "±0.1e10",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "The obtained molecular gas mass is $M_{\\rm mol}=(1.0\\pm0.1)\\times10^{10}$ M~$\\odot$~."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak spatially resolved CO(3-2)/CO(1-0) flux ratio R_31",
+   "value": ">=60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Line ratio",
+     "quote": "the gas can be overall considered as highly excited, with average $R_{\\rm 31}\\approx10$, reaching values $\\geq60$ around the location of the SE radio jet"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular outflow mass M_out (compact base)",
+   "value": "2.2e9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "We then estimated the mass of the outflow ($M_\\mathrm{out}$) using the same methods described in Sections 3.2 and 3.3, and obtaining $M_\\mathrm{out}\\approx2.2\\times10^{9}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular outflow velocity V_out (compact base)",
+   "value": "439",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "The estimated $V_{\\rm out}$ is thus $\\approx439$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass outflow rate M_dot_out (compact base)",
+   "value": "609",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "Using these values, we **estimated** a mass outflow rate of $\\dot{M}_{\\rm out}\\approx609$ M$_{\\odot}$ yr$^{-1}$ and a gas depletion timescale of $t_{\\rm dep}=M_{\\rm tot}/\\dot{M}_{\\rm out}\\approx16$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale t_dep (compact base)",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "Using these values, we **estimated** a mass outflow rate of $\\dot{M}_{\\rm out}\\approx609$ M$_{\\odot}$ yr$^{-1}$ and a gas depletion timescale of $t_{\\rm dep}=M_{\\rm tot}/\\dot{M}_{\\rm out}\\approx16$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow momentum rate P_dot_out (compact base)",
+   "value": "1.2e36",
+   "uncertainty": "not stated",
+   "units": "g cm s^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "The former has been determined as $\\dot{P}_{\\rm out}=\\dot{M}_{\\rm out} \\times V_{\\rm out}\\approx1.2\\times10^{36}$ g cm s$^{-2}$ (cite: Garcia15)."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic power E_dot (compact base)",
+   "value": "1.82e43",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "We obtained $\\dot{E}\\approx1.82\\times10^{43}$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass outflow rate M_dot_out (including diffuse component)",
+   "value": "150",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "Using these values, we obtain $\\dot{M}_{\\rm out}\\approx150$ M$_{\\odot}$ yr$^{-1}$, $t_{\\rm dep}\\approx67$ Myr, $\\dot{P}_{\\rm out}\\approx5.28\\times10^{35}$ g cm s$^{-2}$, and $\\dot{E}\\approx6.54\\times10^{42}$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Supernova-driven mass outflow rate M_dot_SNe",
+   "value": "68",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What powers the outflow?",
+     "quote": "Adopting a SFR of 260 M$_{\\rm \\odot}$ yr$^{-1}$ (as estimated in (cite: Ruffa18) from the FIR luminosity), we obtain Ṁ$_{\\rm SNe}=68$ M$_{\\rm \\odot}$ yr$^{-1}$, which is much lower than the mass outflow rates estimated for I00183."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN bolometric luminosity L_AGN",
+   "value": "6.19e45",
+   "uncertainty": "+1.07e45/-0.95e45",
+   "units": "erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What powers the outflow?",
+     "quote": "obtaining $L_{\\rm AGN}=6.19^{+1.07}_{-0.95}\\times10^{45}$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN radiation pressure force L_AGN/c",
+   "value": "2.06e35",
+   "uncertainty": "+0.36e35/-0.32e35",
+   "units": "g cm s^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What powers the outflow?",
+     "quote": "The force exerted on the gas due to the AGN radiation pressure is thus $L_{\\rm AGN}/c=2.06^{+0.36}_{-0.32}\\times10^{35}$ g cm s$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet kinetic power",
+   "value": "~1e43",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What powers the outflow?",
+     "quote": "we obtain a jet power of $\\sim10^{43}$ erg s$^{-1}$ and age of $14$ Myr, for the observed radio source size and luminosity"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio jet age",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What powers the outflow?",
+     "quote": "we obtain a jet power of $\\sim10^{43}$ erg s$^{-1}$ and age of $14$ Myr, for the observed radio source size and luminosity"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel cell size and image dimensions (number of pixels) used in tclean for both Band 3 and Band 6 continuum and line cubes",
+  "Exact frequency/channel ranges selected as line-free channels in uvcontsub and continuum imaging",
+  "Names of the flux, bandpass, and phase calibrator quasars for both ALMA projects",
+  "Exact common uv-range limits used when re-imaging CO(1-0) and CO(3-2) for the R31 line ratio map",
+  "Exact coordinates of the polygonal apertures drawn by eye for extracting the integrated CO(1-0) and CO(3-2) spectra",
+  "Exact velocity channel ranges selected for the outflow wing integration (blue shaded regions in Figure 17)"
+ ],
+ "missing_for_reproduction": [
+  "Unpublished VST i-band mosaic (available only upon request to VEGAS PIs)",
+  "Exact polygonal region definitions used to extract integrated CO(1-0) and CO(3-2) spectra",
+  "Exact central coordinates and PA of the 1.0'' x 0.3'' box along slit C and exact velocity channel bounds used to integrate the outflow wing flux in Figure 17",
+  "Exact uv-range tapering/clipping parameters used to match CO(1-0) and CO(3-2) cubes for the R_31 ratio map",
+  "Exact pixel size and image size used in tclean"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Both ALMA datasets are public in the archive, CASA versions and key imaging parameters (Briggs robust=0.5, 20 km/s channels, 1.5x rms clean threshold, 0.9 sigma masked moment threshold) and analytic equations are clearly specified. Minor deductions for interactive clean/spectral masks, unstated uv-range cut for the ratio map, and the VST image being available only upon request.",
+ "rediscovery_reason": "All ALMA data (2013.1.00826.S and 2019.1.00851.S) are public in the archive, the CASA imaging and spectral fitting steps are standard and well-documented, and the primary results (CO fluxes, Gaussian profile parameters, gas mass, line ratios, and outflow energetics) are quantitative and directly verifiable.",
+ "source_card": "cards/2026MNRAS.546f2269R/sonnet/card.md"
+}

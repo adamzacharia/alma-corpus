@@ -1,0 +1,1337 @@
+OpenAI Codex v0.165.0-alpha.1.2
+--------
+workdir: C:\Users\adama\Desktop\Quasar-main
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a184c0-2763-78f2-8fa6-aa7cd2f3967c
+--------
+user
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (hydro-simulation-comparison) ===
+---
+name: alma-hydro-simulation-comparison
+description: "Compare ALMA continuum and line data with hydrodynamic simulations (planet-disk interaction, circumbinary and misaligned disks, disk instabilities, AGB binary winds, cloud collisions): choose a code and setup, run a model grid, post-process it into synthetic ALMA images, and judge the match. Use when a task asks for a planet mass from gaps, rings, spirals or velocity kinks, for a companion orbit that explains disk morphology, for SPH or grid models of an observed source, or for checking whether a simulated feature would survive ALMA uv coverage and noise. Built from 52 on-topic ALMA papers (2012-2026)."
+---
+
+# Comparing ALMA data to hydrodynamic simulations
+
+A hydro comparison runs a physical simulation (gas, often plus dust and sink particles), turns a snapshot into
+synthetic ALMA images, and asks which setup reproduces the data. The result is usually a planet mass, a
+companion orbit or a mechanism. Two mistakes matter most: (1) presenting a by-eye match from a handful of runs
+as a measurement, when the authors themselves say the degeneracy between planet mass, viscosity, aspect ratio
+and dust properties was not quantified (2019A&A...622A..75L, 2018MNRAS.475.5296D, 2018ApJ...857...87L); and
+(2) comparing a simulation that is locally isothermal with a radiative transfer step that uses a different
+temperature, which biases kinematic amplitudes (2023PASJ...75.1105K, 2019A&A...625A.118K, 2025ApJ...984L..15P).
+
+Evidence base: the `hydro-simulation-comparison` pack (53 regex-tagged papers). I drop 2018MNRAS.474.5105B
+(a SPHERE/ZIMPOL paper whose only pack entry is "data not flux calibrated"), leaving 52. Counts marked "pack"
+are the pack's software aggregate (per matched analysis step, all 53 papers). Counts marked "pack lines" are my
+own count of the pack's excerpt, key-parameter and assumption lines. Several papers do not run a simulation but
+use a scaling relation derived from one (2016PASJ...68...43K, 2017ApJ...851L..23C, 2019ApJ...880...69Y,
+2024ApJ...976..132H); those are covered here only as the quick route.
+
+Related skills: post-processing a density field into images is `alma-radiative-transfer-modelling`; measuring
+the radial profile, gap width and depth you will compare against is `alma-disk-substructure-profiles`;
+Keplerian masks, rotation curves and velocity residual extraction are `alma-keplerian-disk-kinematics`.
+
+## When to use
+
+- Infer planet mass and location from dust gaps and rings by running planet-disk models
+  (2019A&A...622A..75L, 2018MNRAS.475.5296D, 2019AJ....158...15P, 2020ApJ...888L...4T, 2018ApJ...866L...6C).
+- Explain localized velocity kinks or deviations in CO channel maps with an embedded planet
+  (2019NatAs...3.1109P, 2025ApJ...984L..15P, 2023MNRAS.526L..41P, 2023PASJ...75.1105K).
+- Constrain a stellar companion's orbit from spirals, cavities or disk misalignment in binaries and triples
+  (2020MNRAS.499.3837G, 2020MNRAS.499.3857N, 2024A&A...688A.102T, 2020ApJ...895L..18B, 2024MNRAS.534.2904C).
+- Test a mechanism: gravitational instability vs companions for spirals (2017ApJ...839L..24M), VSI/MRI/GI
+  turbulence signatures (2025ApJ...984L..21B), gas gaps and turbulence levels (2018ApJ...857...87L,
+  2019ApJ...871..107F).
+- Protostellar circumbinary disks with infall (2014ApJ...796....1T, 2020ApJ...898...10T).
+- AGB binary or triple wind morphology (2012Natur.490..232M, 2020A&A...633A..13D, 2024A&A...691A..57M) and
+  galactic cloud-cloud collisions (2020MNRAS.494.2131F).
+- Building a model grid that maps observables to planet mass for a survey (2018ApJ...869L..47Z,
+  2015ApJ...809...93D, 2026ApJ..1003..215F, 2016PASJ...68...43K).
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| Static parametric disk/envelope model fitted to data, no dynamics | `alma-radiative-transfer-modelling` |
+| Only need gap location, width, depth or ring contrast | `alma-disk-substructure-profiles` |
+| Planet mass from a published gap-width or gap-depth scaling, no new run | the quick route in Step 1 below, profile measurement in `alma-disk-substructure-profiles` |
+| Rotation curves, dynamical stellar mass, Keplerian residual maps | `alma-keplerian-disk-kinematics` |
+| Galaxy-scale gas dynamics around SMBHs, tilted rings | `alma-smbh-gas-dynamics`, `alma-galaxy-3d-kinematics` |
+| Cloud virial analysis without simulations | `alma-gmc-decomposition-virial` |
+
+## Steps
+
+1. **Decide whether a simulation is needed.** Goal: avoid running hydro for something a scaling relation
+   answers. Quick route (no new run): gap width as 4-8 Hill radii with r_Hill = a (m_p/3M*)^(1/3)
+   (2017ApJ...851L..23C, 2025ApJ...986L..11S); 4 R_Hill (2018ApJ...869...17L); 5 Hill radii
+   (2016A&A...586A..99H); the Kanagawa gap-width formula with edges where the optical depth crosses half the
+   unperturbed fit, Rp = (Rin+Rout)/2 (2016PASJ...68...43K); Kanagawa gap depth (2019ApJ...880...69Y); Zhang et
+   al. 2018 width relations (2024ApJ...976..132H); debris-disk chaotic zone (2015ApJ...798..124R). These need
+   alpha, h/r, temperature and an opacity, and inherit the simulation assumptions they came from. Run a
+   simulation when the claim is morphological (spirals, kinks, misalignment, vortices) or when several gaps,
+   migration or gas and dust must be matched together.
+2. **Pick the code by physics.** Goal: a code that represents the features you will compare.
+   - 3D SPH with sink particles for planets, binaries, misalignment and wind injection: PHANTOM
+     (2019NatAs...3.1109P, 2019A&A...622A..75L, 2024A&A...688A.102T, 2024A&A...691A..57M); one-fluid
+     dust or multigrain dust (11 bins in 2019NatAs...3.1109P, 2023MNRAS.526L..41P).
+   - 2D grid two-fluid or Lagrangian dust for gap and ring profiles and survey grids: FARGO, Dusty FARGO-ADSG,
+     FARGO3D, LA-COMPASS, PEnGUIn (2015ApJ...809...93D, 2018ApJ...869L..47Z, 2026ApJ..1003..215F,
+     2018ApJ...857...87L, 2019ApJ...879L...2M).
+   - 3D grid for vertical kinematics or inclined planets: Athena++ (2023PASJ...75.1105K), FARGO3D 3D
+     (2019A&A...625A.118K), PLUTO (2021A&A...654A..35B).
+   - AMR for protostellar binaries with infall: SFUMATO (2014ApJ...796....1T, 2020ApJ...898...10T); galaxy
+     scale: ENZO (2020MNRAS.494.2131F). AGB winds: GADGET-2 variants (2012Natur.490..232M,
+     2020A&A...633A..13D).
+3. **Set up the disk from the data.** Goal: initial conditions tied to the source, not defaults. Fix stellar
+   mass, distance, disk extent and inclination/PA from observations (2019NatAs...3.1109P uses 2.4 Msun and
+   185 pc; 2024MNRAS.534.2904C rescales a model to 1.8 Msun, i = 27 deg, PA = -20 deg). Choose Sigma(R) slope
+   (p = 1 in 2024MNRAS.534.2904C, 2020MNRAS.499.3837G, 2016ApJ...819..134B), aspect ratio, viscosity, disk
+   mass, dust-to-gas ratio and grain size (table below). Planets: fixed circular orbits (2015ApJ...809...93D,
+   2026ApJ..1003..215F) or free to migrate and accrete (2018MNRAS.475.5296D, 2020ApJ...888L...4T,
+   2019ApJ...879L...2M). For multiple-star systems check orbital stability first (Mardling and Aarseth
+   criterion plus REBOUND over 1000 outer periods, 2024A&A...691A..57M).
+4. **Run long enough and pick the snapshot deliberately.** Goal: a quasi-steady or source-age-appropriate
+   state. Run lengths range from about 20 orbits (2025ApJ...984L..15P, 2014ApJ...796....1T) and 100 orbits
+   (2023MNRAS.526L..41P, 2016ApJ...819..134B) to 1000 orbits (2018ApJ...869L..47Z, 2019A&A...625A.118K,
+   2018ApJ...857...87L, 2019ApJ...871..107F) and beyond (1500 in 2026ApJ..1003..215F; up to 3000 in
+   2024A&A...688A.102T). State which snapshot was compared and why; 2026ApJ..1003..215F checked ring steady
+   state over the last 600 orbits, while 2018MNRAS.475.5296D chose the snapshot by eye.
+5. **Post-process into observables.** Goal: same quantity, units and resolution as the data. Compute
+   temperatures and images with MCFOST (Voronoi cells on SPH particles, Tgas = Tdust, LTE CO;
+   2019NatAs...3.1109P, 2025ApJ...984L..15P) or RADMC-3D (2017ApJ...839L..24M, 2019A&A...625A.118K,
+   2025ApJ...984L..21B, via fargo2radmc3d in the last); LIME for AGB envelopes (2012Natur.490..232M,
+   2020A&A...633A..13D). The RT setup itself (opacities, abundances, freeze-out) belongs to
+   `alma-radiative-transfer-modelling`; keep it consistent with the hydro temperature.
+6. **Make synthetic ALMA data.** Goal: compare like with like. Best practice in the pack: CASA simobserve with
+   the same antenna configuration, then the same imaging (2020ApJ...898...10T, 2019A&A...625A.118K,
+   2021A&A...654A..35B); CASA ft plus CLEAN (2018ApJ...866L...6C); simdata (2012Natur.490..232M). At minimum,
+   compute channels finer than the data, bin to the observed channel width, Hanning smooth if the data are,
+   and convolve with the CLEAN beam (2019NatAs...3.1109P). Papers that skipped the simulator say so as a
+   limitation (2024A&A...691A..57M, 2017ApJ...839L..24M).
+7. **Compare and choose.** Goal: a defensible best model and bracket. Typical comparisons: azimuthally
+   averaged radial profiles (2018MNRAS.475.5296D, 2019A&A...622A..75L), ring locations and fluxes
+   (2019AJ....158...15P), inner-edge radius at 10% of peak surface density against the observed range
+   (2020MNRAS.499.3857N), rotation-curve deviation delta v_rot (2019A&A...625A.118K), kink shape and amplitude
+   in channel maps (2019NatAs...3.1109P, 2025ApJ...984L..15P), velocity residuals (2024MNRAS.534.2904C),
+   flattening ratio of AGB arcs (2024A&A...691A..57M). Most papers judge by eye (pack lines: 17 of the 40
+   excerpts describe a visual, qualitative or by-eye comparison). Report the range of models that are acceptable and the
+   ones ruled out, for example moment-2 line broadening ruling out the upper planet masses
+   (2019NatAs...3.1109P).
+8. **Rescale and report.** Scale-free runs are rescaled by stellar mass (2018ApJ...869...17L,
+   2019ApJ...880...69Y) or length (2024MNRAS.534.2904C). Report code, resolution, alpha, h/r, EOS, dust
+   treatment, run length, snapshot, RT inputs and synthetic-observation settings; the cards flag these as often
+   missing.
+
+## Parameter defaults and ranges
+
+Counts are my count of pack lines (excerpts, key parameters, assumptions) unless marked otherwise.
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| Equation of state | locally or vertically isothermal | isothermal; flux-limited diffusion; polytropic gamma 1.2 with H I cooling; ENZO cooling/heating | 16 isothermal | 2019NatAs...3.1109P, 2024A&A...688A.102T, 2017ApJ...839L..24M, 2024A&A...691A..57M |
+| Viscosity alpha (grid / alpha_SS) | 1e-3 | 0 to 0.014 | 1e-3 in 11 | 2023PASJ...75.1105K, 2015ApJ...809...93D, 2019ApJ...871..107F (0), 2019AJ....158...15P (1e-5), 2018ApJ...866L...6C (0.014) |
+| SPH alpha_AV (gives alpha_SS) | 0.1-0.2 | 0.1-0.31; alpha_SPH 0.1-1.0 | 5 | 2018MNRAS.475.5296D (0.1 to 0.003), 2019A&A...622A..75L (0.15 to 5e-3), 2025ApJ...984L..15P (0.2), 2020ApJ...895L..18B (0.31), 2017ApJ...839L..24M |
+| alpha_SS in SPH disks | 5e-3 | 3e-3 to 5e-3 | 6 | 2020ApJ...888L...4T, 2020MNRAS.499.3837G, 2024A&A...688A.102T, 2020MNRAS.499.3857N, 2019A&A...624A..33V |
+| Aspect ratio h/r | 0.05 | 0.033-0.14 | 0.05 in 7 | 2020ApJ...895L..18B, 2018ApJ...869L..47Z (0.05, 0.07, 0.1), 2019AJ....158...15P (0.033), 2017ApJ...846...70P (0.14) |
+| SPH particles | 1e6 | 2.5e5 to 5e6 | 1e6 in 6 | 2020ApJ...888L...4T, 2017ApJ...839L..24M (2.5e5), 2019NatAs...3.1109P (2e6), 2024MNRAS.534.2904C (5e6) |
+| 2D grid (r x phi) | ~1000 x 1000-2000 | 256x256 to 1766x4096 | 9 | 2015ApJ...809...93D, 2016PASJ...68...43K (1024x2048), 2019ApJ...879L...2M (20 cells per H), 2019ApJ...871..107F |
+| Disk gas mass | 3e-3 to 1e-2 Msun | 3e-3 to 0.12 Msun | 9 | 2019NatAs...3.1109P, 2025ApJ...984L..15P (5e-3), 2019A&A...625A.118K (3e-3), 2024A&A...688A.102T (0.12) |
+| Dust-to-gas ratio | 0.01 | 0.009-0.2 | 0.01 in 9 | 2018ApJ...869L..47Z, 2026ApJ..1003..215F, 2018MNRAS.475.5296D (0.1), 2019A&A...622A..75L (0.01-0.2) |
+| Dust grain size | 1 mm single size | 0.15 mm; 11 bins 1 um-1.6 mm; Stokes 0.002-0.2 | 1 mm in 6 | 2020ApJ...888L...4T, 2018ApJ...857...87L, 2019NatAs...3.1109P, 2026ApJ..1003..215F |
+| Run length | 1000 orbits (grid) | 20 to 3000 orbits; 1e4-1e5 orbits for gap-width fits | 1000 in 4 | 2018ApJ...869L..47Z, 2025ApJ...984L..15P (20), 2024A&A...688A.102T, 2016PASJ...68...43K |
+| Planet accretion / sink radius | 0.125 Hill radius | tested stellar accretion radius 1 au | 2 | 2025ApJ...984L..15P, 2020ApJ...888L...4T |
+| Schmidt number | Sc = 1 | - | 2 | 2015ApJ...809...93D, 2018ApJ...869L..47Z |
+| CO abundance (RT) | 12CO/H2 = 1e-4 | 13CO 7e-7; C18O 5.1e-7 | 3 | 2019A&A...625A.118K, 2019NatAs...3.1109P, 2020ApJ...898...10T |
+| CO freeze-out | deplete below 20-21 K | factor 1e-5 or free | 2 | 2025ApJ...984L..21B, 2025ApJ...984L..15P |
+| Microturbulence (RT) | 0 | 0-50 m/s | 4 | 2023MNRAS.526L..41P, 2019A&A...625A.118K (30 m/s), 2019NatAs...3.1109P (50 m/s) |
+| Synthetic channel width | finer than data, then binned | 26-50 m/s | 2 | 2019NatAs...3.1109P, 2025ApJ...984L..21B |
+
+Longer setups per paper (stellar mass, disk extent, temperature laws, binary parameters) are in
+`references/parameters.md`.
+
+## Software
+
+Pack aggregate counts (per matched analysis step, all 53 papers):
+
+| Purpose | Software (pack count) | Notes |
+|---|---|---|
+| 3D SPH gas+dust, sinks | PHANTOM (15), generic "sph code" (1), GADGET-2 (2 as gadget-2/gadget2) | PHANTOM dominates disk and AGB work |
+| 2D/3D grid planet-disk | FARGO (4), FARGO3D (4) + FARGO-3D (2), Dusty FARGO-ADSG (2), FARGO-ADSG (1), FARGO2D (1), Athena++ (1), PLUTO (1), LA-COMPASS (1), PEnGUIn (1) | FARGO family is the default for 2D gap grids |
+| AMR / galaxy | SFUMATO (2), ENZO (1) | protostellar binaries; barred galaxy clouds |
+| N-body stability | REBOUND (2) | triple-star orbits (2024A&A...691A..57M) |
+| RT post-processing | MCFOST (6) + pymcfost (1), RADMC-3D (5) + radmc3d (1), LIME (2), fargo2radmc3d (1), HOCHUNK3D (1), optool (1), Synthesizer (1) | MCFOST pairs with PHANTOM; RADMC-3D with grid codes |
+| Synthetic observations | CASA (3), simobserve (2), simdata (1), simanalyze (1) | simulator use is rarer than RT use |
+| Kinematics extraction | eddy (1), bettermoments (1) | on observed and synthetic cubes alike (2024MNRAS.534.2904C) |
+| Visualization | SPLASH (1) | SPH rendering |
+
+The phantom+mcfost pipeline was benchmarked in the exoALMA papers (2025ApJ...984L..15P).
+
+## Pitfalls
+
+- **Isothermal hydro vs RT temperature.** Locally isothermal hydro with a different RT temperature is
+  inconsistent (2023PASJ...75.1105K, 2014ApJ...796....1T); the vertically isothermal assumption is called a
+  major limitation (2025ApJ...984L..15P) and may underestimate delta v_rot (2019A&A...625A.118K). A
+  radiative-equilibrium rerun changed velocities by only ~0.1 and 0.05 km/s in one case (2019NatAs...3.1109P);
+  run that test rather than assume it.
+- **By-eye fits hide degeneracy.** Planet mass, alpha, h/r, dust-to-gas and grain size trade off; several
+  papers say they cannot quantify it (2019A&A...622A..75L, 2018MNRAS.475.5296D, 2018ApJ...857...87L,
+  2020A&A...633A..13D). 2020MNRAS.499.3837G tested only seven orbits and calls the comparison subjective.
+- **Different tracers give different masses.** In PDS 70 the continuum gap matched 5 MJup but the kinematic
+  depth matched 10 MJup (2019A&A...625A.118K). Report both, not the convenient one.
+- **Snapshot and run length.** Gap profiles fitted at a fixed 1000 orbits (2018ApJ...869L..47Z); single
+  snapshots with particular parameters (2025ApJ...984L..21B). Features evolve; a match at one time is not a
+  unique solution.
+- **Numerical artefacts.** Inner boundaries can make a central 12CO peak much stronger than observed
+  (2019ApJ...879L...2M) or produce tails (2023PASJ...75.1105K). Instant accretion at the sink radius may
+  overestimate planet accretion (2020ApJ...888L...4T).
+- **Missing physics.** No dust feedback (2018ApJ...869L..47Z, 2015ApJ...809...93D); no growth, fragmentation
+  or back-reaction (2019AJ....158...15P); 2D only (2016ApJ...819..134B); no magnetic fields or non-ideal MHD
+  (2020ApJ...898...10T, 2025ApJ...984L..21B); migration and inclination damping ignored
+  (2023PASJ...75.1105K); no stellar pulsations in AGB winds (2024A&A...691A..57M).
+- **No uv-plane simulation.** Comparing a sky model to a CLEANed image without the same uv coverage is admitted
+  as a limitation (2024A&A...691A..57M, 2017ApJ...839L..24M). On the observed side, eddy ignores beam
+  convolution (2025ApJ...986L..11S) and beam smearing complicates rotation curves (2019A&A...625A.118K).
+- **Gaps may not be planets.** Planet-based occurrence rates are upper limits (2018ApJ...869L..47Z); MHD and
+  instabilities remain possible (2017ApJ...851L..23C); several simulations could not reproduce all features
+  (2021A&A...654A..35B, 2018ApJ...869...17L, 2024A&A...688A.102T).
+- **Scaling-relation inputs dominate.** Gap-width masses depend on beta and dust filtration
+  (2016PASJ...68...43K); temperature uncertainty dominates trap and mass estimates (2024ApJ...976..132H);
+  partially resolved gaps make width and depth degenerate (2017ApJ...851L..23C).
+- **Contaminated channels.** Cloud absorption can hide the channels where a kink is expected, so no kinematic
+  mass is possible (2023MNRAS.526L..41P).
+- **What cards flag as not stated.** MCFOST photon and grid settings, the quantitative criterion for the
+  best planet mass, disk i and PA adopted in models, simobserve weather and noise inputs, snapshot choice, and
+  code availability (pack "not stated" list; 2019NatAs...3.1109P, 2025ApJ...984L..15P, 2020ApJ...898...10T).
+
+## Verification checks
+
+What papers did:
+- Run the synthetic data through the ALMA simulator and confirm the feature survives uv sampling and noise
+  (2019NatAs...3.1109P).
+- Numerical convergence: double resolution (2016ApJ...819..134B), +-50% resolution moving the planet position
+  less than 8% (2019ApJ...879L...2M), smoothing length (2016PASJ...68...43K), solver and CFL changes
+  (2023PASJ...75.1105K), accretion radius (2020ApJ...888L...4T), temperature 13.5 vs 25 K
+  (2014ApJ...796....1T).
+- Steady state of rings over the final orbits (2026ApJ..1003..215F); orbit stability for multiples
+  (2024A&A...691A..57M).
+- Benchmark against earlier simulations in the overlapping parameter space (2024A&A...688A.102T,
+  2025ApJ...984L..15P).
+- Independent observables: moment-2 broadening and a SPHERE non-detection to rule out high masses
+  (2019NatAs...3.1109P); gap-depth vs gap-width masses (2016PASJ...68...43K); disk mass, kinematics,
+  asymmetry and depth consistency (2018ApJ...869L..47Z); accretion rate and spectral index
+  (2018ApJ...866L...6C); dust settling H_d/H_g against the RT value (2019A&A...622A..75L); final disk
+  orientation (2020MNRAS.499.3837G); comparison with DSHARP planet masses (2024ApJ...976..132H).
+
+What a careful referee adds:
+- A stated goodness-of-fit metric on the compared quantity (profile residuals, kink amplitude) instead of
+  "by eye", and the bracketing models that fail.
+- The radiative-equilibrium or vertically stratified temperature test whenever kinematic amplitudes are
+  quoted.
+- Identical imaging (weighting, channel width, beam) for data and model; run the same extraction tools on
+  both.
+- At least two independent observables (continuum and gas, or gap and kink) before claiming a planet mass.
+
+## Source cards
+
+Full list: `references/sources.md`. Most informative for this technique:
+
+- 2019NatAs...3.1109P: phantom+mcfost kink detection; simulator test, channel binning, moment-2 check.
+- 2025ApJ...984L..15P: exoALMA channel-map kinks; phantom setup, CO depletion, benchmarked pipeline.
+- 2019A&A...625A.118K: FARGO3D + RADMC3D + simobserve for PDS 70; continuum vs kinematic masses.
+- 2018ApJ...869L..47Z: DSHARP Dusty FARGO-ADSG grid; gap width to planet mass relations.
+- 2019A&A...622A..75L: PHANTOM dust gap fit; by-eye admitted; settling check.
+- 2018MNRAS.475.5296D: Elias 24 migrating, accreting planet; radial profile comparison.
+- 2018ApJ...857...87L: LA-COMPASS, >100 runs, radially varying alpha.
+- 2019ApJ...879L...2M: PEnGUIn PDS 70; resolution tests, inner boundary artefact.
+- 2023PASJ...75.1105K: Athena++ inclined planet; numerical checks, temperature inconsistency.
+- 2016PASJ...68...43K: FARGO gap-width mass formula applied to HL Tau.
+- 2026ApJ..1003..215F: FARGO3D ring properties vs pebble isolation mass.
+- 2024MNRAS.534.2904C: circumbinary velocity residuals; rescaling to HD 142527.
+- 2020MNRAS.499.3837G: HD 100453 binary orbit; rewind runs.
+- 2024A&A...688A.102T: GG Tau A coplanar vs misaligned; benchmarking.
+- 2020ApJ...898...10T: SFUMATO L1551 IRS 5 with simobserve and LTE RT.
+- 2025ApJ...984L..21B: VSI/MRI/GI turbulence signatures; RADMC-3D setup.
+- 2018ApJ...866L...6C: CI Tau FARGO3D with dust; CASA ft plus CLEAN.
+- 2019AJ....158...15P: mini-Neptune in a ring; Dusty FARGO-ADSG with Lagrangian dust.
+- 2024A&A...691A..57M: AGB triple winds; REBOUND stability; no simulator admitted.
+- 2017ApJ...839L..24M: Elias 2-27 spirals, SPH with flux-limited diffusion, RADMC-3D.
+
+=== references/parameters.md ===
+# Per-paper simulation setups (from the hydro-simulation-comparison pack)
+
+Values are copied from the pack's key-parameter, assumption and excerpt lines. Off-topic paper excluded:
+2018MNRAS.474.5105B. "-" means the pack does not give it.
+
+## Planet-disk, SPH (PHANTOM unless noted)
+
+| Bibcode | Star / disk | Viscosity, h/r | Dust | Particles, run length | Post-processing |
+|---|---|---|---|---|---|
+| 2019NatAs...3.1109P | 2.4 Msun, 185 pc, gas 1e-2 Msun, 40-700 au | alpha_SS ~1e-3, h/r 0.06 at 40 au, vertically isothermal | 11 bins 1.5625-1600 um, dust-to-gas 1/100 | 2e6, 800 orbits; planets 1 MJup at 30 au, 1-5 MJup at 130 au | MCFOST, 13CO 7e-7, turbulence 50 m/s, 50 m/s channels binned and Hanning smoothed |
+| 2025ApJ...984L..15P | disk 5e-3 Msun, inner radius 5 au, no self-gravity | alpha_av 0.2, H/R 0.1 at 50 au, gamma 0.8 | gas only in hydro; RT astrosilicate 0.03-1000 um, gas-to-dust 100 | 1e6, 20 orbits then particle split x13 and 2 more orbits; accretion radius 0.125 Hill | MCFOST, 12CO 1e-4 rel. H, depleted below 20 K by a free factor |
+| 2023MNRAS.526L..41P | 1.5 Msun, 140 pc, disk 0.01 Msun | H/R 0.1 at 50 au | 11 sizes 1 um-1 mm | 1e6, 100 orbits; planets 1-10 MJup at 65 au | MCFOST, Tgas = Tdust, LTE, zero turbulence |
+| 2020ApJ...888L...4T | 1.65 Msun, 5-150 au, gas ~1e-2 Msun, dust 1.2e-4 Msun | alpha_SS 0.005, locally isothermal | 1 mm | 1e6; two migrating, accreting planets; match at 160 orbits | - |
+| 2019A&A...622A..75L | MWC 480 | alpha_AV ~0.15 (alpha_SS ~5e-3), locally isothermal | one-fluid, dust-to-gas 0.01-0.2 | 5e5; planets 0.4-2 MJ at 85-120 au | RADMC-3D profile comparison, by eye |
+| 2018MNRAS.475.5296D | Elias 24, 1-180 au | alpha_AV 0.1 (alpha_SS ~0.003), vertically isothermal | 1 mm, dust-to-gas 0.1 | 1e6; migrating, accreting planet; snapshot by eye | RADMC-3D, CASA simulator |
+| 2024A&A...688A.102T | GG Tau A triple, Rout 800 au, disk 0.12 Msun | alpha_SS 0.005, T = 20 K (R/300 au)^-0.9 | 1 mm, dust-to-gas 0.01 | 1e6, up to 3000/1500 orbits | MCFOST |
+| 2020MNRAS.499.3837G | HD 100453, disk 0.003 Msun, 12-60 au, Sigma ~ R^-1 | alpha_SS 5e-3, H/R 0.05 at 12 au | gas, then gas + 11 grain sizes | seven orbits tested, rewind runs | MCFOST |
+| 2020MNRAS.499.3857N | HD 100453 inner companion | alpha 5e-3 | dust and gas well coupled | planets 5, 10, 20 MJ at 10, 15, 20 au | inner edge at 10% of max Sigma |
+| 2020ApJ...895L..18B | GW Ori, 0.1 Msun, 40-400 au | alpha_AV 0.31, h/r 0.05, locally isothermal | - | 1e6 | - |
+| 2024MNRAS.534.2904C | primary 2 Msun; HD 142527 rescaled to 1.8 Msun, x3.8 length | p = 1, q_T = 0.25, locally isothermal | gas only | 5e6 | MCFOST; eddy, bettermoments |
+| 2017ApJ...839L..24M | 0.5 Msun, 10-400 au (SPH code not named) | alpha_SPH 0.1-1.0, beta_SPH = 2 alpha_SPH, flux-limited diffusion | well mixed | 2.5e5 | RADMC-3D at 1.3 mm, 0.005-1000 um, slope -3.5 |
+| 2019A&A...624A..33V | MA 1.7, MB 0.3 Msun, a = 120 au, disk 0.003 Msun, 12-96 au | alpha_SS 5e-3, H/r 0.05 | 1 mm | - | - |
+| 2019NatAs...3..278K | polar circumbinary disk | - | - | 3e5 | - |
+
+## Planet-disk, grid codes
+
+| Bibcode | Code | Grid, domain | Viscosity, h/r | Dust, run length |
+|---|---|---|---|---|
+| 2015ApJ...809...93D | FARGO (2-fluid) | 256x256, 1-500 au | alpha 0.001, T = 221 (r/AU)^-1/2 K | 1 mm, dust-to-gas 0.9%, Sc = 1, Epstein drag, no feedback |
+| 2016PASJ...68...43K | FARGO | 1024x2048, R/Rp 0.4-4.0, smoothing 0.6 hp | grid over Mp, h/R, alpha | 1e4-1e5 orbits |
+| 2016ApJ...819..134B | FARGO (2-fluid) | - | alpha 1e-4, (H/R)p 0.1, Sigma ~ R^-1 | 0.1 um-5.3 mm, a^-3.5, 3 g cm^-3; 100 orbits |
+| 2018ApJ...869L..47Z | Dusty FARGO-ADSG | - | h/r 0.05, 0.07, 0.1; alpha 1e-4, 1e-3, 1e-2; q 3.3e-5 to 3.3e-3 (45 runs) | Lagrangian dust, Sc = 1, rho_p 1 g cm^-3; 1000 orbits |
+| 2019AJ....158...15P | Dusty FARGO-ADSG | 900x1200, 35-105 au | alpha 1e-5, h/r 0.033 at 69 au, 8 K at 70 au | 200,000 particles 10 um-3 mm |
+| 2018ApJ...857...87L | LA-COMPASS | 1024x768, 10-500 au | h = 0.05 (r/r0)^0.25, radially varying alpha (1e-5 inner, 7.5e-3 outer) | 0.15 mm; 1000 orbits; >100 runs |
+| 2019ApJ...871..107F | FARGO-3D (2D) | 1766 log x 4096, 19-285 au | inviscid, h/r 0.1 (R/100 au)^0.225 | 0.2 and 0.3 MJup at 95 au; 1000 orbits |
+| 2018ApJ...866L...6C | FARGO3D (2D, dust) | 350x512, 5.6-378 au | alpha 0.014, disk 20 MJ within 200 au | fragmentation 10 m/s, dust-to-gas 0.01, a^-3 |
+| 2019ApJ...879L...2M | PEnGUIn | 960x1944, 5-100 au, 20 cells per H at 22 au | alpha0 0.001, Sigma0 3.86 g cm^-2 | migrating, accreting planet from 10 Earth masses; 4.6 Myr |
+| 2026ApJ..1003..215F | FARGO3D (2D, 5 dust fluids) | 504x1170 | alpha 1e-4, h/r 0.05-0.07 | Stokes 0.002-0.2, dust-to-gas 0.01; 0.5-2 M_iso; 1500 orbits |
+| 2017ApJ...846...70P | - | 512x950, 0.2-6 r_p | h0 0.14, flaring 0.25, disk 2 MJup | brown dwarf disks |
+| 2019A&A...625A.118K | FARGO3D (3D) | - | alpha 1e-3, gas 0.003 Msun, vertically isothermal | 2, 5, 10 MJup; 1000 orbits; RADMC3D, 12CO 1e-4, 30 m/s, simobserve |
+| 2023PASJ...75.1105K | Athena++ (3D spherical) | 192x80x640, r 0.4-3.0 R0 | alpha 1e-3, H0 0.07 and 0.1 | inclined planet, no migration |
+| 2021A&A...654A..35B | PLUTO (3D gas), FARGO3D (2D gas+dust) | - | - | RADMC-3D, optool, CASA simobserve/tclean |
+
+## Other systems
+
+| Bibcode | System | Code and setup |
+|---|---|---|
+| 2014ApJ...796....1T | L1551 NE protobinary | SFUMATO AMR, box 1740 AU, finest cell 0.85 AU, sink 3.4 AU, n_inj 1.5e5 cm^-3, T 13.5 K, ~20 binary orbits |
+| 2020ApJ...898...10T | L1551 IRS 5 | SFUMATO isothermal (100 K), LTE RT with X(C18O) 5.1e-7, simobserve, snapshot at 58.7 periods |
+| 2024A&A...691A..57M | R Aql AGB triple | PHANTOM + REBOUND; M1 1.6, M2 0.4 Msun, ai 5 au, ao 35 au, Mdot 1.1e-6 Msun/yr, gamma 1.2, mu 2.38 |
+| 2012Natur.490..232M | R Scl | GADGET-2 binary wind, LIME, CASA simdata, inclination 90 deg |
+| 2020A&A...633A..13D | pi1 Gru | ESI-GADGET e = 0 and 0.8, LIME |
+| 2020MNRAS.494.2131F | NGC 1300 bar | ENZO AMR, pattern speed 20 km/s/kpc, cooling and heating |
+| 2025ApJ...984L..21B | VSI/MRI/GI disks | RADMC-3D via fargo2radmc3d, 12CO/H2 1e-4, freeze-out below 21 K and photodissociation below 1e21 cm^-2 (factor 1e-5), i 5-60 deg, 26 m/s, 140 pc |
+| 2024A&A...682A..56Z | IRAS 16293 B SPH disk | RADMC-3D full Stokes, Synthesizer, carbon sublimation 300 K, ~1e10 photons |
+
+## Scaling-relation papers (no new simulation)
+
+| Bibcode | Relation and inputs |
+|---|---|
+| 2016PASJ...68...43K | gap width formula; tau_unp = 9.5 (R/1 AU)^-0.4; alpha 1e-3, beta 1.5, M* 1 Msun |
+| 2017ApJ...851L..23C | gap width = 4-8 R_Hill, M* 1.0 Msun, gaps fully evacuated |
+| 2025ApJ...986L..11S | Hill radius with k = 4-8, alpha < 0.01, one planet per gap |
+| 2018ApJ...869...17L | gap radius = 4 R_Hill; Rosotti diagnostic with alpha 1e-4 or 1e-2, rescaled by stellar mass |
+| 2016A&A...586A..99H | gap width = 5 Hill radii |
+| 2019ApJ...880...69Y | Kanagawa depth formula, depth 4-8, M* 2.1 Msun, T 60 K, alpha 1e-3 |
+| 2024ApJ...976..132H | Zhang et al. 2018 relations, kappa_abs 0.43 cm^2/g, amax 0.1 mm, alpha 1e-3 |
+| 2015ApJ...798..124R | chaotic / crossing zone width for a debris-disk gap |
+| 2018A&A...619A.161C | gap width ~20 au at ~68 au, alpha 1e-3 |
+
+=== EVIDENCE PACK (hydro-simulation-comparison) ===
+# Evidence pack: Comparing ALMA data to hydrodynamic simulations (`hydro-simulation-comparison`)
+
+Scope: planet-disk and cloud simulations post-processed to match ALMA images
+
+Built from 53 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `phantom|fargo|hydrodynamic(?:al)? simulation|\bsph\b|athena|planet[- ]disk interaction|planet[- ]disc interaction|planet mass from|gap width`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- protoplanetary_disks: 48
+- star_formation: 11
+- exoplanets: 6
+- evolved_stars: 3
+- astrochemistry: 2
+- debris_disks: 1
+- nearby_galaxies: 1
+
+### Software named in the matched steps
+- phantom: 15
+- mcfost: 6
+- radmc-3d: 5
+- fargo: 4
+- fargo3d: 4
+- casa: 3
+- sfumato: 2
+- rebound: 2
+- lime: 2
+- dusty fargo-adsg: 2
+- casa simobserve: 2
+- fargo-3d: 2
+- pymcfost: 1
+- synthesizer: 1
+- enzo: 1
+- casa simdata: 1
+- gadget-2: 1
+- gadget2: 1
+- eddy: 1
+- bettermoments: 1
+- athena++: 1
+- iraf: 1
+- sph code: 1
+- fargo2radmc3d: 1
+- radmc3d: 1
+- optool: 1
+- pluto: 1
+- la-compass: 1
+- penguin: 1
+- casa simanalyze: 1
+- hochunk3d: 1
+- splash: 1
+- fargo2d: 1
+- fargo-adsg: 1
+
+### Fitting methods (most common phrasings)
+- Abundance adjusted by eye to match intensities; no formal fit: 1
+- Fit by eye, no statistical test: 1
+- Gaussian fits with splot: 1
+- Qualitative comparison by eye; no formal fit: 1
+- by eye, no statistical test: 1
+- Parameter sampling, no exhaustive fit: 1
+- Monte Carlo resampling of radii and densities; Gaussian fits to parameter distributions give best-fit and 1 sigma: 1
+- Manual exploration of more than 100 simulations compared with I16 fiducial surface densities; no MCMC: 1
+
+### Validation checks used
+- Radiative-equilibrium phantom+mcfost runs show differences of only ~0.1 and 0.05 km/s in azimuthal and radial velocities: 1
+- CASA ALMA simulator test shows kink shape not affected by uv sampling and noise: 1
+- Moment-2 map shows no significant line broadening, ruling out the upper end of tested masses; consistent with SPHERE no…: 1
+- phantom+mcfost benchmarked by Bae et al.: 1
+- Visual comparison of kink shape and amplitude with data: 1
+- Qualitative comparison of model channel maps with the observations: 1
+- Qualitative comparison of continuum images, channel maps and P-V diagrams: 1
+- Tested T=25 K with no significant difference in gas distributions: 1
+- Mardling & Aarseth stability criterion and REBOUND N-body integration over 1000 outer periods: 1
+- Convergence of scattering Monte Carlo reached at about 1e10 photons: 1
+- Bar size and rotation curve compared with observations: 1
+- Model brightness distribution compared visually with observed intensities: 1
+- Visual comparison of branching feature: 1
+- Checked smoothing length does not significantly influence gap width: 1
+- 30 AU result consistent with gap-depth estimate of Paper I; compared with Dong et al. and Jin et al.: 1
+- Qualitative visual comparison: 1
+- Tested stellar accretion radius of 1 au, no significant differences: 1
+- Compared azimuthally averaged dust surface density with RT-derived profile; dust settling check H_d/H_g ~0.28 vs Lambda…: 1
+- Result unchanged with the second-order van Leer scheme and CFL 0.3: 1
+- Equivalent widths consistent with integrating area and the deprojected radial average: 1
+- Comparison with DSHARP planet masses: 1
+- Rewind final disc orientation agrees with observed: 1
+- Consistency check with assumed mass, kinematics, asymmetry, depth: 1
+- Benchmarked against earlier gas-only results (Cazzoletti 2017, Aly 2018): 1
+- Inner edge compared with observed 18-23 au range: 1
+- Gap width and depth match 5 MJup; kinematic depth matches 10 MJup: 1
+- Checked steady state of rings over last 600 orbits: 1
+- visual comparison to observed spirals: 1
+- Fluxes compared with pre-ALMA measurements: 1
+- Compared to CI Tau hydrodynamic modeling of Clarke et al. 2018: 1
+- Compare with Elias 24 radial profile: 1
+- Compare ring locations and fluxes to ALMA image: 1
+- 10,000 iterations sufficient to converge: 1
+- Compare simulated gas/dust surface densities with I16 parametric model: 1
+- Qualitative comparison of gap width/depth with C18O data: 1
+- Compare with accretion rate and spectral index: 1
+- Resolution doubled for 10 MJ planet at 100 au; consistent morphology and radial profiles: 1
+- Resolution tests +-50% give planet position within 8%: 1
+- compared with planet masses in simulations rescaled by stellar mass: 1
+- Similar values from gap width and depth: 1
+
+### Key parameters and settings (bibcode: value)
+- 2019NatAs...3.1109P: Star 2.4 Msun, gas disc mass 1e-2 Msun, h/r=0.06 at 40 au, alpha_SS ~1e-3, inner/outer radius 40/700 au
+- 2019NatAs...3.1109P: 13CO abundance 7e-7; turbulent velocity 50 m/s; star R=2.25 Rsun, Kurucz 10,000 K
+- 2025ApJ...984L..15P: alpha_av = 0.2; inner radius 5 au; H/R=0.1 at 50 au; gamma=0.8; accretion radius 0.125 Hill radius
+- 2025ApJ...984L..15P: 12CO abundance 1e-4 relative to H in warm layer; depleted below 20 K by a variable factor
+- 2023MNRAS.526L..41P: 10^6 particles, 11 grain sizes 1 um-1 mm, M*=1.5 Msun, disc 0.01 Msun, H/R=0.1 at 50 au
+- 2020ApJ...898...10T: X(C18O)=5.1e-7; T(r)=max[62 K (r_N/100au)^-0.5, 48 K (r_S/100au)^-0.5]; snapshot at 58.7 orbital periods
+- 2014ApJ...796....1T: Box 1740 AU, finest cell 0.85 AU, sink radius 3.4 AU, n_inj=1.5e5 cm-3, T=13.5 K
+- 2024A&A...691A..57M: M1=1.6, M2=0.4 Msun, ai=5 au, ao=35 au, Mdot=1.1e-6 Msun/yr, T1=2800 K, v_ini 8 or 15 km/s, M3=0.1/0.6/1.2 Msun
+- 2015ApJ...798..124R: Tex = 50 K, FWHM 1.9 km/s, inclination ~20 deg
+- 2024A&A...682A..56Z: Carbon sublimation at 300 K (also 500 K) with 50% and 80% organics tested
+- 2020MNRAS.494.2131F: pattern speed 20 km/s/kpc
+- 2015ApJ...809...93D: 1 mm particles; initial dust-to-gas 0.9%; T = 221 (r/AU)^-1/2 K; 1 Msun star
+- 2016PASJ...68...43K: Domain R/Rp 0.4-4.0 with 1024x2048 zones; smoothing length 0.6 hp; 1e4-1e5 orbits
+- 2016PASJ...68...43K: tau_unp = 9.5 (R/1AU)^-0.4
+- 2024MNRAS.534.2904C: p = 1, q_T = 0.25, primary mass 2 Msun
+- 2024MNRAS.534.2904C: HD 142527: primary 1.8 Msun, length rescale 3.8, i=27 deg, PA=-20 deg
+- 2020ApJ...888L...4T: 10^6 SPH particles, R_in=5 to R_out=150 au, alpha_SS=0.005, 1 mm grains
+- 2019A&A...622A..75L: Mp range 0.4-3 MJ; simulated 0.4-2 MJ
+- 2019A&A...622A..75L: Dust/gas 0.01-0.2; Rp = 85-120 au; alpha_AV ~0.15 (alpha_SS ~5e-3)
+- 2025ApJ...986L..11S: flaring angle 0.02
+- 2023PASJ...75.1105K: H0=0.07 (fiducial) and 0.1; α=1e-3; domain r=0.4-3.0 R0; 192x80x640 cells
+- 2024ApJ...976..132H: kappa_abs = 0.43 cm^2/g, amax=0.1 mm, n(a)∝a^-3.5, alpha = 1e-3
+- 2020MNRAS.499.3837G: Disc mass 0.003 Msun, 12-60 au, Sigma∝R^-1, H/R=0.05 at 12 au, alpha_SS=5e-3
+- 2018ApJ...869L..47Z: h/r = 0.05, 0.07, 0.1; alpha = 1e-4, 1e-3, 1e-2; q = 3.3e-5 to 3.3e-3
+- 2024A&A...688A.102T: 1e6 SPH particles, Rout=800 au, disc mass 0.12 Msun, dust-to-gas 0.01, 1 mm grains, alpha_SS=0.005
+- 2017ApJ...839L..24M: alpha_SPH 0.1-1.0, beta_SPH = 2 alpha_SPH
+- 2017ApJ...839L..24M: lambda = 1.3 mm
+- 2025ApJ...984L..21B: 12CO/H2 = 1e-4; freeze-out below 21 K (factor 1e-5); photodissociation below 1e21 cm^-2 (factor 1e-5)
+- 2025ApJ...984L..21B: PA = 90 deg, distance 140 pc
+- 2020ApJ...895L..18B: alpha_AV=0.31, h/r=0.05, disk mass 0.1 Msun, 40-400 AU
+- 2019A&A...625A.118K: alpha=1e-3; gas mass 0.003 Msun; 12CO/H2 = 1e-4; microturbulence 30 m/s
+- 2026ApJ..1003..215F: alpha=1e-4; Stokes 0.002-0.2; dust-to-gas 0.01; grid 504x1170; planets 0.5-2 M_iso; h/r 0.05, 0.06, 0.07
+- 2018MNRAS.475.5296D: alpha_AV=0.1 (alpha_SS~0.003); dust-to-gas 0.1; H_in=0.075 au; r 1-180 au
+- 2019AJ....158...15P: 900x1200 cells, 35-105 au; alpha 1e-5; h/r 0.033 at 69 au
+- 2016ApJ...820L..25Y: 10,000 Monte Carlo iterations
+- 2018ApJ...857...87L: Grid 1024x768, disk 10-500 au, dust grain size 0.15 mm, h=0.05(r/r0)^0.25
+- 2019ApJ...871..107F: grid 19-285 au, 1766 log radial cells, 4096 azimuthal cells; aspect ratio 0.1(R/100 au)^0.225
+- 2018ApJ...866L...6C: alpha=0.014, disc mass 20 MJ within 200 au, 350x512 cells, 5.6-378 au
+- 2016ApJ...819..134B: alpha = 1e-4; (H/R)_p = 0.1; Sigma ∝ R^-1; dust-to-gas 1%
+- 2019ApJ...879L...2M: 960 x 1944 cells, 20 cells per scale height at 22 au
+- 2019AJ....157..237R: planet at 20 au, inclination 32 deg, central mass 1.75 Msun
+- 2019A&A...624A..33V: MA=1.7, MB=0.3 Msun, a=120 au, circular, rin=12, rout=96 au, Md=0.003 Msun, H/r=0.05, alpha_SS=5e-3, grain 1 mm
+- 2016A&A...586A..99H: Gap centered at 20 au
+- 2018A&A...619A.161C: gap width ~20 au at ~68 au, alpha = 1e-3
+- 2019NatAs...3..278K: 300,000 SPH particles
+- 2018A&A...610A..24F: T=190(R/100au)^-0.55, Sigma_gas=7.5(R/100au)^-1, grain size 1 mm, alpha 0 or 1e-4
+- 2017ApJ...846...70P: 512 radial x 950 azimuthal cells, 0.2 to 6 r_p, h0=0.14, flaring 0.25, disk mass 2 MJup
+
+
+### Assumptions (bibcode: value)
+- 2019NatAs...3.1109P: Distance 185 pc; vertically isothermal equation of state
+- 2019NatAs...3.1109P: Dust mix 60% silicate, 15% amorphous carbon, hollow spheres (max void 0.8), dn/da ~ a^-3.5, dust-to-gas 1/100
+- 2025ApJ...984L..15P: Vertically isothermal; self-gravity neglected; disk mass 5e-3 Msun
+- 2025ApJ...984L..15P: Astrosilicate grains, dn ∝ a^-3.5 da, 0.03-1000 micron, gas-to-dust 100; zero turbulent velocity; 1 Myr isochrones
+- 2023MNRAS.526L..41P: distance 140 pc, gas-to-dust 100, astrosilicate grains, Tgas=Tdust, CO LTE, turbulent velocity zero
+- 2020ApJ...898...10T: LTE
+- 2014ApJ...796....1T: Circular binary orbit, isothermal gas, self-gravity ignored, disk coplanar with orbit
+- 2024A&A...691A..57M: gamma = 1.2, mu = 2.38
+- 2015ApJ...798..124R: LTE
+- 2015ApJ...809...93D: Schmidt number Sc=1; Epstein drag; no dust feedback
+- 2012Natur.490..232M: Inclination 90 deg; inter-pulse time 50,000 yr
+- 2016PASJ...68...43K: alpha=1e-3, beta=1.5, M*=1 Msun; constant opacity; gas and dust gap widths similar (weak dust filtration)
+- 2024MNRAS.534.2904C: Locally isothermal equation of state
+- 2020ApJ...888L...4T: Locally isothermal; initial gas mass ~1e-2 Msun; dust mass 1.2e-4 Msun
+- 2019A&A...622A..75L: Locally isothermal; uniform dust properties; temperature and opacity effects negligible
+- 2025ApJ...986L..11S: kappa=2 cm2/g, T~12 K, dust-to-gas 100 for disk mass
+- 2025ApJ...986L..11S: Low viscosity (alpha<0.01), one planet per gap
+- 2023PASJ...75.1105K: Planet torque and migration ignored
+- 2017ApJ...851L..23C: Gaps are fully evacuated
+- 2017ApJ...851L..23C: Stellar mass 1.0 Msun
+- 2024ApJ...976..132H: One planet per gap; DSHARP dust composition
+- 2018ApJ...869L..47Z: Locally isothermal, Sc=1, dust-to-gas 1/100, rho_p = 1 g cm-3
+- 2018ApJ...869L..47Z: GI limit with Toomre Q=1 caps gas surface density; preferred alpha=1e-3 and DSD1
+- 2024A&A...688A.102T: Locally isothermal, T=20 K (R/300 au)^-0.9; no disc self-gravity; no circumstellar discs
+- 2020MNRAS.499.3857N: alpha=5e-3, dust and gas well coupled
+- 2017ApJ...839L..24M: gas and dust well mixed; surface temperature held at T(R)=13.4 K (R/200 au)^-q
+- 2017ApJ...839L..24M: uniform gas-to-dust ratio 100; dust and gas temperatures identical
+- 2025ApJ...984L..21B: Same parametric temperature profile for all models
+- 2019A&A...625A.118K: Vertically isothermal disk, LTE CO
+- 2026ApJ..1003..215F: Stellar mass 1 Msun; scale-free; fixed planet orbit
+- 2018ApJ...869...17L: alpha=1e-4 or 1e-2; simulations for 1 Msun star rescaled by mass ratio
+- 2018MNRAS.475.5296D: vertically isothermal; initial dust-to-gas ratio 0.1 for mm grains
+- 2019AJ....158...15P: Gas surface density 2.9 g cm-2 at 100 au; locally isothermal, 8 K at 70 au
+- 2016ApJ...820L..25Y: HCO+ abundance constant across gaps
+- 2018ApJ...857...87L: Isothermal T(r)=24.1(r/r0)^-0.5; viscosity nu=alpha c_s h
+- 2019ApJ...871..107F: viscosity alpha = 0
+- 2018ApJ...866L...6C: fragmentation velocity 10 m/s; dust-to-gas 0.01; a^-3 size distribution of compact silicate grains
+- 2016ApJ...819..134B: Dust size distribution dn ∝ a^-3.5 da between 0.1 um and 5.3 mm; grain density 3 g cm^-3
+- 2019ApJ...879L...2M: M* = 0.76 Msun, 2D, fixed boundaries
+- 2019ApJ...880...69Y: vertically isothermal disk
+- 2019AJ....157..237R: viscosity and scale height fixed; only planet mass varied
+- 2016ApJ...829L..35T: viscosity alpha=1e-3, aspect ratio 0.05
+- 2016A&A...586A..99H: Gap width of 5 Hill radii for planet mass conversion
+- 2016ApJ...818..158A: M*=0.55 Msun; Kwon11 disk model
+- 2018ApJ...857...18S: Stellar mass ~0.25 Msun at ~0.5 Myr from Baraffe models
+
+
+### Limitations the authors admit
+- 2025ApJ...984L..15P: Classification is subjective and inclination-biased
+- 2025ApJ...984L..15P: Vertically isothermal assumption is a major limitation
+- 2023MNRAS.526L..41P: Cloud contamination hides the channels where a velocity kink is expected, so no robust kinematic mass is possible.
+- 2020ApJ...898...10T: Model CBD larger than observed; magnetic field not included; high-velocity blueshifted components near Source N not reproduced; infall not identified observationally
+- 2014ApJ...796....1T: Missing flux and outflow complicate other lines near systemic velocity; temperatures in hydrodynamics (isothermal 13.5 K) and radiative transfer (power law) are inconsistent.
+- 2024A&A...691A..57M: Parameter space degenerate; no ALMA simulator applied; pulsations missing
+- 2015ApJ...798..124R: Data cannot distinguish between gap and double power-law forms; dust opacity degenerate with surface density
+- 2024A&A...682A..56Z: Disk model lacks the east-west asymmetry of the observed source, so outskirts are overpredicted
+- 2012Natur.490..232M: Intensity contrast between spiral windings and interwinding material indicates a more complicated mass-loss-rate variation than modelled
+- 2020A&A...633A..13D: Model not formally fit; chosen by eye
+- 2020A&A...633A..13D: Mass-loss rate is a lower limit as optical depth is about unity
+- 2016PASJ...68...43K: Estimates depend on beta (dust particle size) and dust filtration model
+- 2024MNRAS.534.2904C: Residuals are model dependent; Keplerian background assumed
+- 2020ApJ...888L...4T: Instant accretion at the sink radius may overestimate planet accretion
+- 2019A&A...622A..75L: Degeneracy among simulation parameters cannot be quantified; fit by eye
+- 2019A&A...622A..75L: Planet not confirmed; high-contrast searches needed
+- 2025ApJ...986L..11S: Low S/N; EDDY ignores beam convolution; visibility mass inconsistent with Teff
+- 2025ApJ...986L..11S: Substructure tentative; BIC prefers no ring
+- 2023PASJ...75.1105K: Temperature in the radiative transfer is inconsistent with the locally isothermal hydrodynamics; the inner boundary may cause artifacts; the tail feature may come from the unresolved circumplanetary …
+- 2023PASJ...75.1105K: Inclination damping is not included
+- 2017ApJ...851L..23C: Gaps only partially resolved, degeneracy between width and depth
+- 2017ApJ...851L..23C: Other explanations (MHD, instabilities) remain possible
+- 2024ApJ...976..132H: FUV fields are upper bounds from projected separations; temperature uncertainty dominates dust-trap and planet-mass estimates; SVI is approximate
+- 2020MNRAS.499.3837G: Only seven orbits tested; comparison is visual and subjective
+- 2018ApJ...869L..47Z: Gap profiles fitted at fixed 1000 orbits; dust feedback ignored
+- 2018ApJ...869L..47Z: Occurrence rates are upper limits since gaps may not be planetary
+- 2024A&A...688A.102T: Models do not fully reproduce SPHERE morphology; comparison is qualitative, deferred to future work
+- 2020MNRAS.499.3857N: Kozai-Lidov oscillations were not seen in hydrodynamic simulations; N-body neglects gas effects
+- 2017ApJ...839L..24M: Aim is morphological similarity, not exact fit; different uv coverage used
+- 2025ApJ...984L..21B: Single simulation snapshots with particular parameters; no Hall effect or ambipolar diffusion; no embedded planets; limited 20-100 au range
+- 2020ApJ...895L..18B: Mutual inclinations cannot be determined from dust alone due to unknown orbital direction; gas model has no uncertainties for the gap.
+- 2019A&A...625A.118K: Hydro models assume vertically isothermal disk; delta v_rot may be underestimated
+- 2019A&A...625A.118K: Beam smearing and limited spectral resolution complicate rotation-curve interpretation
+- 2021A&A...654A..35B: Simulations cannot reproduce the spiral break, gap and ring
+- 2018ApJ...869...17L: Formal errors on fit parameters likely underestimated
+- 2018ApJ...869...17L: Dust mass uncertainties ignore temperature and optical depth
+- 2018ApJ...869...17L: Model fails to reproduce amplitude of azimuthal asymmetries
+- 2018MNRAS.475.5296D: Fit done by eye; degeneracy cannot be quantified
+- 2019AJ....158...15P: Not an exhaustive fit; no dust growth, fragmentation or back-reaction
+- 2016ApJ...820L..25Y: Column density biased by poorly constrained dust and gas temperature profiles.
+- 2018ApJ...857...87L: Degeneracy among acceptable alpha values not fully characterized
+- 2019ApJ...871..107F: Model does not fully reproduce observations because of 2D temperature structure uncertainties
+- 2019ApJ...871..107F: Insufficient sensitivity to see the co-rotation bump
+- 2018ApJ...866L...6C: Innermost gap poorly resolved; shape unconstrained
+- 2016ApJ...819..134B: 2D only; scattered light compared only qualitatively
+- 2019ApJ...879L...2M: Model 12CO shows a central peak far stronger than observed, likely from the inner boundary
+- 2019ApJ...880...69Y: Spiral velocities depend on the assumed mid-plane location and conserved angular momentum
+- 2019ApJ...880...69Y: Inner-radius line width overestimated, so column density, Tex and tau at the inner radius may be underestimated
+- 2019AJ....157..237R: Models are generic, not fine tuned; viscosity, scale height and gas surface density not varied; inner cavity not modeled
+- 2016ApJ...829L..35T: Results depend on assumed smooth temperature profiles; more bands needed
+- 2016ApJ...829L..35T: Planet mass is an upper limit
+- 2019A&A...624A..33V: Unclear whether mm excess is spiral counterpart or vortex; higher resolution needed
+- 2016A&A...586A..99H: Cannot infer both surface density and opacity from single wavelength; errors are formal only
+- 2016ApJ...818..158A: Only 17 of 780 baselines exceed 10 km; images could be improved
+- 2018A&A...619A.161C: Emission only marginally optically thin so masses are lower limits; large uncertainties in opacity and gas surface density
+- 2018A&A...619A.161C: Spectral index decrease may be due to optical thickness rather than grain growth
+- 2019NatAs...3..278K: Gas and dust mass estimates have large systematic uncertainties from optical depth, temperature and H2/CO.
+- 2018ApJ...857...18S: Inner and outer gap depths not well constrained; planet mass estimates are crude without gas information
+- 2017ApJ...846...70P: Two of the spectral indices are only lower limits
+- 2016PhRvL.117y1101I: Large CO optical depth prevents ruling out a shallow gas gap in the inner gap
+- 2017A&A...607A..55V: Dust temperature is likely overestimated so dust mass is a lower limit
+- 2018MNRAS.474.5105B: Data not flux calibrated
+
+### Settings cards flag as needed but not stated
+- clean mask, threshold, cell and image size: 3
+- self-calibration solution intervals and number of iterations: 3
+- clean threshold, niter and masks: 2
+- self-calibration solution interval and reference antenna: 2
+- casa version and pipeline version: 2
+- line-free channels for uvcontsub: 2
+- briggs robust value, cell and image size, and clean threshold/masking: 1
+- casa version and whether the pipeline or manual calibration was used: 1
+- self-calibration solution intervals and reference datasets: 1
+- method for extracting kink location and amplitude (done by eye?): 1
+- quantitative criterion for choosing the best-matching planet mass: 1
+- rest frequency and systemic velocity adopted: 1
+- disc inclination and pa adopted in models: 1
+- fluffy-grain shift factor applied to sph grain sizes: 1
+- weighting schemes (robust, taper) and exact channel binning for each disk's reimaged cubes: 1
+- which channels are shown for each disk: 1
+- exact dynamite fitting setup and uncertainties: 1
+- criteria for the visual classification: 1
+- beam and noise for the figure 6 cubes: 1
+- planet-wake projection details: 1
+- specific depletion factor grid values: 1
+- number of mcfost photons and grid setup: 1
+- robust and taper values of the imaging grid: 1
+- fiducial cube robust value: 1
+- continuum-subtraction channels: 1
+- mcfost grid and photon settings: 1
+- how the co spot gaussian fit was done: 1
+- the exact mcfost accretion rates for each model: 1
+- line-free channel ranges for continuum and continuum subtraction: 1
+- self-calibration reference/model details and which antennas/spws: 1
+- spectral index map method details (regridding, alignment of 1.3 mm proper motion shift): 1
+- simulation initial conditions, snapshot choice details, casa simulobserve weather parameters: 1
+- continuum flux extraction region for cbd (1.40 jy): 1
+- velocity channel width used for maps: 1
+- casa version used for calibration and imaging: 1
+- clean threshold, mask, niter, cell and image size, and whether multiscale was used: 1
+- line-free channel ranges for continuum and constant continuum level: 1
+- details of the keplerian subtraction implementation and gaussian fit procedure: 1
+- simulation initial conditions, hydrodynamic code (sfumato modified) not public; simobserve inputs a…: 1
+- primary beam correction treatment: 1
+
+## Paper excerpts (40 of 53, chosen for detail and spread over fields/years)
+
+### 2019NatAs...3.1109P: Kinematic detection of a planet carving a gap in a protoplanetary disk (2019; protoplanetary_disks, exoplanets; observational_alma_primary)
+- question: Is a localised deviation from Keplerian flow in 13CO emission of HD 97048 spatially coincident with a dust gap, indicating an embedded planet, and what is its mass?
+- step 3: Run SPH gas+dust simulations with embedded planets
+  - method: phantom multi-grain SPH, 2 million particles, 11 dust bins 1.5625-1600 um, planets at 30 au (1 MJup) and 130 au (1, 2, 3, 5 MJup), 800 orbits [3D modelling procedure.: "using 2 million SPH particles and following the dust fraction of particles of sizes ranging from 1.5625 to 1600 $\mu$m (11 bins total, each bin doubling the grain size)"]
+  - software: phantom
+  - parameter: Star 2.4 Msun, gas disc mass 1e-2 Msun, h/r=0.06 at 40 au, alpha_SS ~1e-3, inner/outer radius 40/700 au [3D modelling procedure.: "The disc aspect ratio was set to 0.06 at 40 au"]
+  - assumption: Distance 185 pc; vertically isothermal equation of state [3D modelling procedure.: "We assume a central mass of 2.4 M$_\odot$ and a distance of 185 pc (cite: Gaia-Collaboration2018)."]
+  - validation: Radiative-equilibrium phantom+mcfost runs show differences of only ~0.1 and 0.05 km/s in azimuthal and radial velocities [Radiative-equilibrium hydrodynamics cal…: "they remain limited to $\approx$0.1 and 0.05 km/s for the azimuthal and radial velocities, respectively."]
+- step 4: Radiative transfer to synthesize continuum and 13CO maps
+  - method: mcfost Monte Carlo RT with Voronoi cells from SPH particles, LTE, Tgas=Tdust; maps at 50 m/s, binned and Hanning smoothed, convolved with the CLEAN beam [3D modelling procedure.: "CO maps were generated at a spectral resolution of 50 m/s, binned at the observed resolution and Hanning smoothed to match the observed spectral resolution."]
+  - software: mcfost
+  - parameter: 13CO abundance 7e-7; turbulent velocity 50 m/s; star R=2.25 Rsun, Kurucz 10,000 K [3D modelling procedure.: "We set the $^{13}$CO abundance to 7 10$^{-7}$"]
+  - assumption: Dust mix 60% silicate, 15% amorphous carbon, hollow spheres (max void 0.8), dn/da ~ a^-3.5, dust-to-gas 1/100 [3D modelling procedure.: "assuming a power-law $\mathrm{d}n(a) \propto a^{-3.5}\mathrm{d}a$"]
+  - validation: CASA ALMA simulator test shows kink shape not affected by uv sampling and noise [Impact of observational noise and $uv$ …: "The shape of the velocity kink is not affected by observational effects"]
+- step 5: Compare models with data to estimate planet mass and dust Stokes number
+  - method: Visual comparison of channel maps and gap profile; mimic fluffy grains by shifting SPH grain sizes [main text: "The channel maps are best reproduced with an embedded planet of 2-3 M$_\mathrm{Jup}$, giving a velocity kink with amplitude matching the observations."]
+  - software: mcfost
+  - validation: Moment-2 map shows no significant line broadening, ruling out the upper end of tested masses; consistent with SPHERE non-detection [main text: "This also rules out the upper end of the range tested in our simulations."]
+- result: Planet mass preferred by kinematics = 2-3 ± not stated MJup [main text: "The channel maps are best reproduced with an embedded planet of 2-3 M$_\mathrm{Jup}$"]
+- result: Stokes number of emitting dust grains = a few 1e-2 ± not stated dimensionless [main text: "dust grains dominating the thermal emission must have a Stokes number around a few $10^{-2}$ to reproduce the observed gap profile."]
+- result: Channel velocity of strongest kink = 0.96 ± not stated km/s [main text: "the 0.96 km/s channel where the deviation is the strongest"]
+- not stated (card): Briggs robust value, cell and image size, and CLEAN threshold/masking; CASA version and whether the pipeline or manual calibration was used; Self-calibration solution intervals and reference datasets; Method for extracting kink location and amplitude (done by eye?); Quantitative criterion for choosing the best-matching planet mass; Rest frequency and systemic velocity adopted; Disc inclination an…
+
+### 2025ApJ...984L..15P: exoALMA. X. Channel Maps Reveal Complex <SUP>12</SUP>CO Abundance Distributions and a Variety of Kinematic Structures with Evidence for Embedded Planets (2025; protoplanetary_disks, astrochemistry, exoplanets; large_program_or_survey)
+- question: What kinematic substructures and CO abundance distributions appear in individual 12CO J=3-2 channel maps of the 15 exoALMA disks, and are they consistent with embedded planets?
+- step 3: Hydrodynamical planet simulations
+  - method: 3D gas-only SPH with phantom, 10^6 particles, 20 orbits, then each particle split into 13 and evolved 2 more orbits [Modeling: "We used $10^6$ particles and evolved the system for 20 planet orbits"]
+  - software: phantom
+  - parameter: alpha_av = 0.2; inner radius 5 au; H/R=0.1 at 50 au; gamma=0.8; accretion radius 0.125 Hill radius [Modeling: "we set the shock viscosity to $\alpha_{\rm av} = 0.2$"]
+  - assumption: Vertically isothermal; self-gravity neglected; disk mass 5e-3 Msun [Modeling: "We neglect self-gravity and use a disk mass of $5 \times 10^{-3} \, \mathrm{M}_\odot$ for all disks"]
+  - validation: phantom+mcfost benchmarked by Bae et al. [Modeling: "The combination of phantom and mcfost was benchmarked and validated by (cite: Bae_exoALMA)."]
+- step 4: Radiative transfer synthetic CO channel maps
+  - method: mcfost for dust temperature and CO maps with Voronoi cells matched to SPH particles; Tgas=Tdust, LTE [Modeling: "We postprocessed the models with the radiative transfer code mcfost (cite: Pinte2006; Pinte2009) to compute the dust temperature structure and CO maps"]
+  - software: mcfost, pymcfost
+  - parameter: 12CO abundance 1e-4 relative to H in warm layer; depleted below 20 K by a variable factor [Modeling: "Below 20 K, we deplete this abundance by a factor that we allow to vary"]
+  - assumption: Astrosilicate grains, dn ∝ a^-3.5 da, 0.03-1000 micron, gas-to-dust 100; zero turbulent velocity; 1 Myr isochrones [Modeling: "a uniform gas-to-dust ratio of 100"]
+  - validation: Visual comparison of kink shape and amplitude with data [Comparison with Data: "The planet model matches the observations well for LkCa 15, J1615, and J1842, in terms of both shape and amplitude of the kink."]
+- limitation (authors): Classification is subjective and inclination-biased [A Variety of Kinematic Substructures: "Our classification is subjective, and some sources clearly exhibit multiple types of substructures."]
+- limitation (authors): Vertically isothermal assumption is a major limitation [Discussion: "One major limitation of our models is the assumption of a vertically isothermal profile in phantom."]
+- not stated (card): Weighting schemes (robust, taper) and exact channel binning for each disk's reimaged cubes; Which channels are shown for each disk; Exact dynamite fitting setup and uncertainties; Criteria for the visual classification; Beam and noise for the Figure 6 cubes; Planet-wake projection details; Specific depletion factor grid values; Number of mcfost photons and grid setup
+
+### 2023MNRAS.526L..41P: Kinematic and thermal signatures of the directly imaged protoplanet candidate around Elias 2-24 (2023; protoplanetary_disks, exoplanets; archival_reuse)
+- question: Does the directly imaged protoplanet candidate in the Elias 2-24 disc have kinematic and thermal counterparts in the DSHARP 12CO data, and what planet mass or accretion do they imply?
+- step 3: Model the planet-disc interaction
+  - method: phantom SPH simulations with planets of 1-10 MJup at 65 au, run for 100 orbits, post-processed with mcfost for dust temperature and CO channel maps [Models and disccussion: "We evolved the simulations for 100 planet orbits"]
+  - software: phantom, mcfost
+  - parameter: 10^6 particles, 11 grain sizes 1 um-1 mm, M*=1.5 Msun, disc 0.01 Msun, H/R=0.1 at 50 au [Models and disccussion: "We adopted a vertically isothermal equation of state with $H/R=0.1$ at $r=50$ au"]
+  - assumption: distance 140 pc, gas-to-dust 100, astrosilicate grains, Tgas=Tdust, CO LTE, turbulent velocity zero [Models and disccussion: "a gas-to-dust ratio of 100"]
+  - validation: Qualitative comparison of model channel maps with the observations [Models and disccussion: "None of our models reproduce all the observations."]
+- result: dynamical stellar mass = close to 1.5 ± not stated Msun [Models and disccussion: "we find a dynamical stellar mass close to $1.5$M$_\odot$"]
+- limitation (authors): Cloud contamination hides the channels where a velocity kink is expected, so no robust kinematic mass is possible. [Models and disccussion: "Hence it is not possible to estimate a robust planet mass from kinematics."]
+- not stated (card): robust and taper values of the imaging grid; fiducial cube robust value; continuum-subtraction channels; mcfost grid and photon settings; how the CO spot Gaussian fit was done; the exact mcfost accretion rates for each model
+
+### 2020ApJ...898...10T: Circumbinary Disks of the Protostellar Binary Systems in the L1551 Region (2020; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: What are the structures, gas motions and temperatures of the circumbinary and circumstellar disks of the protobinary L1551 IRS 5, and how do they compare with L1551 NE and with hydrodynamical simulations?
+- step 5: Compare with hydrodynamic simulation
+  - method: SFUMATO isothermal simulation (T=100 K) tailored to IRS 5, LTE radiative transfer with fitted T(r) and C18O abundance, CASA observing simulation, same imaging [4.1: "Then CASA observing simulations were performed to create the simulated visibility data for the model images with the same antenna configuration"]
+  - software: SFUMATO, CASA
+  - parameter: X(C18O)=5.1e-7; T(r)=max[62 K (r_N/100au)^-0.5, 48 K (r_S/100au)^-0.5]; snapshot at 58.7 orbital periods [4.1: "the adopted value is $X$(C$^{18}$O) = 5.1 $\times$ 10$^{-7}$"]
+  - assumption: LTE [4.1: "constructed on the assumption of the LTE condition"]
+  - fitting: Abundance adjusted by eye to match intensities; no formal fit [4.1: "The C$^{18}$O abundance was adjusted to approximately match the observed and model C$^{18}$O (3–2) intensities"]
+  - validation: Qualitative comparison of continuum images, channel maps and P-V diagrams [4.2: "Such features in the model appear to be consistent with the observed spiral arms"]
+- result: Fitted temperature profile normalizations at 100 au = 62 (N), 48 (S), exponent -0.5 ± not stated K [4.1: "$T(r) = \max\left[ 62~{\rm K} \left(\frac{r_N}{100~{\rm au}}\right)^{-0.5},"]
+- result: Model C18O abundance = 5.1e-7 ± not stated dimensionless [4.1: "$X$(C$^{18}$O) = 5.1 $\times$ 10$^{-7}$"]
+- limitation (authors): Model CBD larger than observed; magnetic field not included; high-velocity blueshifted components near Source N not reproduced; infall not identified observationally [5 Summary: "On the other hand, the model velocity channel maps do not reproduce the observed highly blueshifted components to the north and south of Source N."]
+- not stated (card): Line-free channel ranges for continuum and continuum subtraction; Clean threshold, niter and masks; Self-calibration reference/model details and which antennas/spws; Spectral index map method details (regridding, alignment of 1.3 mm proper motion shift); Simulation initial conditions, snapshot choice details, CASA simulobserve weather parameters; Continuum flux extraction region for CBD (1.40 Jy)…
+
+### 2014ApJ...796....1T: Angular Momentum Exchange by Gravitational Torques and Infall in the Circumbinary Disk of the Protostellar System L1551 NE (2014; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: Do gravitational torques from the central binary drive angular momentum exchange and infall in the circumbinary disk of L1551 NE, as seen in non-axisymmetric dust features and gas velocities?
+- step 4: Hydrodynamic simulation of binary + circumbinary disk
+  - method: 3D AMR isothermal simulation in a rotating frame with sink particles, gas injected at boundary with specific angular momentum for 300 AU centrifugal radius; adopt state after ~20 orbits [4.1 Nature of the Circumbinary Disk: "We adopted the simulation result after the $\sim$20 orbital periods of the binary ($\sim$4 $\times$ 10$^{4}$ $yr$)."]
+  - software: SFUMATO
+  - parameter: Box 1740 AU, finest cell 0.85 AU, sink radius 3.4 AU, n_inj=1.5e5 cm-3, T=13.5 K [Table 2: "Gas Number Density at the Boundary | 1.5 $\times$ 10$^{5}$ cm$^{-3}$"]
+  - assumption: Circular binary orbit, isothermal gas, self-gravity ignored, disk coplanar with orbit [C.1 Model of the Hydrodynamic Simulation: "The self-gravity of the gas can be safely ignored"]
+  - validation: Tested T=25 K with no significant difference in gas distributions [4.1 Nature of the Circumbinary Disk: "we confirmed that using a temperature of 25 K does not produce any significant differences in the gas distributions in our hydrodynamic simulations"]
+- result: Model mass infall rate onto circumbinary disk = 3.3e-6 ± not stated Msun yr-1 [4.1 Nature of the Circumbinary Disk: "which give a comparable mass-infall rate from the envelope to the circumbinary disk of 3.3 $\times$ 10$^{-6}$ $M_{\odot}~yr^{-1}$"]
+- limitation (authors): Missing flux and outflow complicate other lines near systemic velocity; temperatures in hydrodynamics (isothermal 13.5 K) and radiative transfer (power law) are inconsistent. [2 ALMA Observation and Data Reduction: "Closer to the systemic velocity, the spatial-kinematic structure in the other lines is complicated by the effects of missing flux as well as an outflow (see Appendix A)."]
+- not stated (card): CASA version used for calibration and imaging; Clean threshold, mask, niter, cell and image size, and whether multiscale was used; Line-free channel ranges for continuum and constant continuum level; Details of the Keplerian subtraction implementation and Gaussian fit procedure; Simulation initial conditions, hydrodynamic code (SFUMATO modified) not public; simobserve inputs and noise settings; P…
+
+### 2024A&A...691A..57M: SPH modelling of AGB wind morphology in hierarchical triple systems and a comparison to observation of R Aql (2024; evolved_stars; theory_or_simulation_compared_to_alma)
+- question: How do coplanar hierarchical triple systems shape AGB outflows, and could R Aql's complex wind be shaped by such a system?
+- step 1: Run SPH simulations of triple and binary AGB winds
+  - method: PHANTOM SPH with sink particles and wind injection; free-wind approximation; H I cooling [2.1 Input physics SPH model: "We perform hydrodynamic simulations of an AGB outflow in a hierarchical triple system with the smoothed-particle hydrodynamics (SPH) code PHANTOM (cite: phantom)."]
+  - software: PHANTOM, REBOUND
+  - parameter: M1=1.6, M2=0.4 Msun, ai=5 au, ao=35 au, Mdot=1.1e-6 Msun/yr, T1=2800 K, v_ini 8 or 15 km/s, M3=0.1/0.6/1.2 Msun [Table 1: "$a_{\rm{o}}$ | \[au\] | $35$ |"]
+  - assumption: gamma = 1.2, mu = 2.38 [2.1 Input physics SPH model: "We adopt constant values of the polytropic index $\gamma = 1.2$ and the mean molecular weight $\mu = 2.38$"]
+  - validation: Mardling & Aarseth stability criterion and REBOUND N-body integration over 1000 outer periods [2.2 Grid setup triples: "the orbit of all systems is integrated with the REBOUND N-body code (cite: rebound) over $1000$ outer orbital periods $P_{\rm o}$, to confirm the stability of the orbits."]
+- result: Inner binary orbital period = 7.91 ± not stated yr [2.2 Grid setup triples: "The orbital period of the inner binary $M_{\rm 1}$–$M_{\rm 2}$ is $P_{\rm i} = 7.91 \, {\rm yrs}$"]
+- result: Outer orbital period for M3=0.6 Msun = 128.5 ± not stated yr [2.2 Grid setup triples: "$P_{\rm o} = 143.0, 128.5 \, {\rm and}\, 115.8 \, {\rm yrs}$"]
+- result: Measured flattening ratio, triple v08 models = ~0.5 ± not stated dimensionless [4.2 Impact of different wind velocity: "This measured $R_{\rm f}$ is approximately $0.5$ for all masses of $M_3$."]
+- limitation (authors): Parameter space degenerate; no ALMA simulator applied; pulsations missing [5.2 Comparison to synthetic observation: "the SPH models lack some physics such as the impact of the stellar pulsations, that may affect the wind morphology"]
+- not stated (card): ALMA project code and CASA/pipeline versions for the ATOMIUM R Aql data; SPH particle number and resolution; MAGRITTE grid/mesh settings, image resolution and velocity channel setup; Procedure used to measure arc spacing in observed channel maps; Why the simulated model was not convolved with the ALMA beam
+
+### 2015ApJ...798..124R: ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146 (2015; debris_disks; observational_alma_primary)
+- question: What is the radial distribution of mm-sized dust in the HD 107146 debris disk, and is there a gap or dip in the dust surface density?
+- step 6: CO upper limit and planet mass from gap width
+  - method: LTE CO column/mass upper limit from non-detection; chaotic/crossing zone relation for planet mass using gap width [7 The non-detection of CO: "we derived a $3\sigma$ upper limit for the mass of gaseous CO of $M_{\rm{CO}} < 1.9 \times 10^{-6}~M_{\oplus}$"]
+  - parameter: Tex = 50 K, FWHM 1.9 km/s, inclination ~20 deg [7 The non-detection of CO: "uniform excitation temperature of 50 K throughout the disk"]
+  - assumption: LTE [7 The non-detection of CO: "after assuming LTE"]
+- result: CO mass 3σ upper limit (Tex=50 K) = 1.9e-6 ± not stated Earth masses [7 The non-detection of CO: "$M_{\rm{CO}} < 1.9 \times 10^{-6}~M_{\oplus}$"]
+- result: Planet mass from gap, crossing zone (coefficient 2.1) = 6.1 ± +2.1/-3.1 Earth masses [9.1 A gap in the disk?: "We obtain $6.1^{+2.1}_{-3.1}~M_{\oplus}$ and $4.1^{+1.4}_{-2.1}~M_{\oplus}$"]
+- limitation (authors): Data cannot distinguish between gap and double power-law forms; dust opacity degenerate with surface density [5.3 Double power-law: "The ALMA data presented in this paper do not allow us to distinguish between these possible different functional forms"]
+- not stated (card): Number of emcee walkers and iterations (only 'several hundreds') and burn-in; Priors and bounds on model parameters; Clean threshold, mask, cell and image size of the CLEAN images; Whether CASA clean or other tools were used for the visibility extraction and weight rescaling in detail; Which spectral windows/channels were used for continuum (line-free channels excluded CO); Exact dust opacity tab…
+
+### 2024A&A...682A..56Z: Exploring the dust grain size and polarization mechanism in the hot and massive Class 0 disk IRAS 16293-2422 B (2024; star_formation, protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: How do different maximum grain sizes and carbon sublimation change the continuum and self-scattering polarization of a hot, massive Class 0 disk model, and can they reproduce IRAS 16293 B observations?
+- step 2: Radiative transfer of the SPH disk
+  - method: Interpolate SPH particles to Cartesian grid, run RADMC3D with full Mie scattering in all four Stokes [3.5: "We have performed radiative transfer calculations in all four Stokes components (I, Q, U, V) using the radiative transfer code RADMC3D"]
+  - software: RADMC-3D, Synthesizer
+  - parameter: Carbon sublimation at 300 K (also 500 K) with 50% and 80% organics tested [4.2: "set a sublimation temperature of 300 K"]
+  - validation: Convergence of scattering Monte Carlo reached at about 1e10 photons [3.5: "The convergence was reached at about 10$^{10}$ photons."]
+- result: Optical depth range 1.3 to 18 mm = 130 to 2 ± not stated dimensionless [abstract: "Optical depths are in the range of 130 to 2 from 1.3 to 18 mm, respectively."]
+- result: Max polarization fraction from self-scattering at 1.3 mm (a_max=100 um) = ~0.1 ± not stated percent [abstract: "The polarization fraction produced by self-scattering reaches a maximum of $\sim$0.1% at 1.3 mm for a maximum grain size of 100 $\mu$m"]
+- result: Flux difference with vs without sublimation = <10 ± not stated percent [Conclusions: "The difference in the fluxes with and without sublimation are small ($<10$%)."]
+- limitation (authors): Disk model lacks the east-west asymmetry of the observed source, so outskirts are overpredicted [4.1: "This east-west difference is because our disk model does not have such a marked east-west asymmetry as the one observed in IRAS 16293 B"]
+- not stated (card): Grain size distribution power-law slope q; Synthetic observation array configurations, integration times and tclean parameters; Disk inclination and orientation used in radiative transfer; Number of RADMC3D grid cells and grid extent; Calibration and imaging details of Band 6/3 ALMA data are only in Zamponi2021; Mass-loss factor details for sublimated dust-to-gas ratio
+
+### 2020MNRAS.494.2131F: Fast cloud-cloud collisions in a strongly barred galaxy: suppression of massive star formation (2020; nearby_galaxies, star_formation; theory_or_simulation_compared_to_alma)
+- question: Why do bars of strongly barred galaxies lack massive star formation? Tested with a hydrodynamical simulation of NGC1300 comparing cloud properties and cloud-cloud collisions in bar, bar-end and arm regions.
+- step 2: Run the hydrodynamic simulation
+  - method: ENZO AMR with ZEUS solver, cooling/heating from t=560 Myr, fixed stellar potential, NFW halo [2.1 The code: "we include the cooling and heating of the gas and additional two levels of refinement"]
+  - software: ENZO
+  - parameter: pattern speed 20 km/s/kpc [2.2.1 Stellar potential: "We select $\Omega =$ 20 $\mathrm{km\ s^{-1}\ kpc^{-1}}$ for the production run"]
+  - validation: Bar size and rotation curve compared with observations [2.2.2 Dark matter potential: "We also compare and roughly match the rotation curve from the simulation with the observational results"]
+- not stated (card): Line-free channels and continuum/cube imaging details (cell, image size, masking, clean threshold) for the ACA CO(2-1) cube; Flux calibrator and CASA version; Total power data handling and feathering parameters; Initial conditions random seeds and ENZO parameter files; Observed SFR values (Maeda et al. in preparation)
+
+### 2015ApJ...809...93D: Observational Signatures of Planets in Protoplanetary Disks I. Gaps Opened by Single and Multiple Young Planets in Disks (2015; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Are gaps opened by one or several planets in protoplanetary disks broadly consistent with observed gaps/cavities in transitional disks at NIR and mm wavelengths?
+- step 1: 2D two-fluid hydro simulations
+  - method: FARGO with dust fluid, planets on fixed circular orbits, no accretion, alpha=0.001, 256x256 cells, 1-500 AU [2.1 Hydrodynamical Gas+Dust Simulations: "The simulations have 256 grid cells in both radial (1-500 AU) and azimuthal ($2\pi$) directions."]
+  - software: FARGO
+  - parameter: 1 mm particles; initial dust-to-gas 0.9%; T = 221 (r/AU)^-1/2 K; 1 Msun star [2.1 Hydrodynamical Gas+Dust Simulations: "We further assume a radial temperature distribution $T = 221 (r/{\rm AU})^{-1/2}$ K"]
+  - assumption: Schmidt number Sc=1; Epstein drag; no dust feedback [2.1 Hydrodynamical Gas+Dust Simulations: "No feedback from the dust on the gas is considered since gas-to-dust mass ratio is always much larger than 1 in our simulations."]
+- result: Big-grain gap density contrast, models with Mp>=1MJ = >~1e9 ± lower limit (hard floor) dimensionless [Table 2: "$\gtrsim10^9$"]
+- not stated (card): Whitney MCRT code version and input parameter files; Hydro floor value for big-grain surface density; Stellar luminosity; Inclined-image azimuthal averaging details
+
+### 2012Natur.490..232M: Unexpectedly large mass loss during the thermal pulse cycle of the red giant star R Sculptoris (2012; evolved_stars; observational_alma_primary)
+- question: What are the timescales and mass-loss properties during and after a thermal pulse of the AGB star R Sculptoris, as revealed by the CO(3-2) detached shell and spiral structure?
+- step 2: SPH and radiative transfer modelling
+  - method: SPH binary wind model with derived velocity and mass-loss profiles as input, LIME radiative transfer, simdata, compared to observed image [main text: "The modeled density, temperature, and velocity structures of the SPH model are then used as input in the 3-dimensional radiative transfer code LIME [16] ."]
+  - software: GADGET-2, LIME, CASA simdata
+  - assumption: Inclination 90 deg; inter-pulse time 50,000 yr [Figure 4 caption: "The inclination angle of the binary system to the line of sight is 90 [o] ."]
+  - validation: Model brightness distribution compared visually with observed intensities [main text: "the brightness distribution reproduces the observed intensities well (Fig. 4)"]
+- limitation (authors): Intensity contrast between spiral windings and interwinding material indicates a more complicated mass-loss-rate variation than modelled [Figure 4 caption: "variations in the intensity contrast between the spiral windings and interwinding material indicate a more complicated mass-loss-rate variation."]
+- not stated (card): Calibration and imaging procedures (CASA version, weighting, cleaning), in supplementary information not provided; Distance to R Scl; SPH model parameters (masses, separation, particle numbers); Gas-mass and CO abundance assumptions for mass-loss rates; LIME setup
+
+### 2020A&A...633A..13D: The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. II. The spiral-outflow observed at high-angular resolu… (2020; evolved_stars; observational_alma_primary)
+- question: What are the morphology and kinematics of the circumstellar envelope of the AGB star pi1 Gru at high angular resolution, and what do they imply about an undetected close companion and a mass-loss eruption?
+- step 6: Compare spiral branching with SPH models
+  - method: ESI-GADGET SPH simulations with e=0 and 0.8, post-processed with LIME [4.3 Eccentric orbit of the undetected c…: "The simulation uses the Evolved Stellar Interactions with GADGET in 3D that is a modified version of the GADGET2 code (cite: spri05; rams17)."]
+  - software: GADGET2, LIME
+  - validation: Visual comparison of branching feature [4.3 Eccentric orbit of the undetected c…: "The branching feature seen in the observations is produced with an eccentric orbit ($e$=0.8) model."]
+- limitation (authors): Model not formally fit; chosen by eye [4.2 Modelling results: "no formal fitting procedure has been performed"]
+- limitation (authors): Mass-loss rate is a lower limit as optical depth is about unity [4.2 The mass-loss eruption: "the estimated mass-loss rate should be considered as a lower limit."]
+- not stated (card): CLEAN parameters: weighting, robust, cell size, image size, masks, thresholds; Calibrators and calibration approach (manual or pipeline); Observing dates and execution blocks; Line-free channels and continuum subtraction; TP combination method (feather or other); Exact SHAPE/LIME model files and parameters (arm width, flaring, R1, opening angle details); SIMALMA settings; Spiral line fit paramete…
+
+### 2016PASJ...68...43K: Mass constraint for a planet in a protoplanetary disk from the gap width (2016; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: How can the mass of a planet embedded in a protoplanetary disk be constrained from the observed gap width, and what planet masses follow for the HL Tau gaps?
+- step 1: Run hydrodynamic gap simulations
+  - method: 2D FARGO simulations of planet-disk interaction over a grid of Mp, h/R, alpha [2 Numerical method: "using the two–dimensional hydrodynamic code FARGO (cite: Masset2000)"]
+  - software: FARGO
+  - parameter: Domain R/Rp 0.4-4.0 with 1024x2048 zones; smoothing length 0.6 hp; 1e4-1e5 orbits [2 Numerical method: "The computational domain ranges from $R/R_p=0.4$ to $4.0$ with $1024 \times 2048$ radial and azimuthal zones."]
+  - validation: Checked smoothing length does not significantly influence gap width [2 Numerical method: "We have checked that the choice of the smoothing length does not significantly influence the gap width."]
+- step 3: Measure HL Tau gap widths and estimate planet masses
+  - method: Fit tau outside gaps as unperturbed profile, edges at intersections with tau_unp/2, Rp=(Rin+Rout)/2, then apply mass formula [4 Application to HL Tau disk: "The locations of the inner and outer gap edges, $R_{\rm in}$ and $R_{\rm out}$, are determined by intersection points with $\tau^{\rm unp}/2$"]
+  - parameter: tau_unp = 9.5 (R/1AU)^-0.4 [4 Application to HL Tau disk: "The optical depth outside the gaps can be fitted by $\tau^{\rm unp} = 9.5(R/1\mbox{AU})^{-0.4}$"]
+  - assumption: alpha=1e-3, beta=1.5, M*=1 Msun; constant opacity; gas and dust gap widths similar (weak dust filtration) [4 Application to HL Tau disk: "We assume that the gap widths of the gas and dust disks are similar."]
+  - validation: 30 AU result consistent with gap-depth estimate of Paper I; compared with Dong et al. and Jin et al. [4 Application to HL Tau disk: "The estimated mass of the planet at $30$AU gap is consistent with that estimated from the gap depth in Paper I."]
+- result: Planet mass, 10 AU gap (beta=1.5, alpha=1e-3) = 1.4 ± not stated M_J [4 Application to HL Tau disk: "The planet masses for the gaps at $10$AU, $30$AU and $80$AU are estimated to be $1.4 M_J$, $0.2 M_J$ and $0.5 M_J$ from the gap widths"]
+- result: Planet mass, 30 AU gap = 0.2 ± not stated M_J [4 Application to HL Tau disk: "The planet masses for the gaps at $10$AU, $30$AU and $80$AU are estimated to be $1.4 M_J$, $0.2 M_J$ and $0.5 M_J$ from the gap widths"]
+- result: Planet mass, 80 AU gap = 0.5 ± not stated M_J [4 Application to HL Tau disk: "The planet masses for the gaps at $10$AU, $30$AU and $80$AU are estimated to be $1.4 M_J$, $0.2 M_J$ and $0.5 M_J$ from the gap widths"]
+- result: Innermost gap mass for beta=1 (beta=2) = 3.3 (1.3) ± not stated M_J [4 Application to HL Tau disk: "the planet mass is estimated to be $3.3M_J$ ($1.3M_J$) if $\beta=1$ ($2$) from the gap width"]
+- limitation (authors): Estimates depend on beta (dust particle size) and dust filtration model [Summary: "Our estimate depends on the particle size of dusts (i.e., the dust opacity index of $\beta$) and the disk model for the dust filtration."]
+- not stated (card): The ALMA continuum images, radial profile extraction and beam/resolution used for HL Tau brightness temperatures are not described; Method to convert brightness temperatures to optical depth and temperature is only referred to Paper I; Opacity values and the exact fit procedure for tau_unp; Distance to HL Tau; Numerical details of FARGO runs (table of models not given in text)
+
+### 2024MNRAS.534.2904C: Observational signatures of circumbinary discs - II. Kinematic signatures in velocity residuals (2024; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: What kinematic signatures do circumbinary discs leave in velocity-map residuals, and do they match observed discs such as HD 142527 and HD 100546?
+- step 1: Run SPH simulations
+  - method: Phantom gas-only SPH with sink-particle binary/companion, locally isothermal [2.1 SPH Simulations and Synthetic Obser…: "Our gas discs are initialised with $5\times 10^{6}$ SPH particles following a surface density profile $\Sigma (R)\propto R^{-p}$"]
+  - software: phantom
+  - parameter: p = 1, q_T = 0.25, primary mass 2 Msun [2.1 SPH Simulations and Synthetic Obser…: "where we set $p = 1$ in all models."]
+  - assumption: Locally isothermal equation of state [2.1 SPH Simulations and Synthetic Obser…: "We assume a locally isothermal equation of state with a temperature profile $T(R) \propto R^{-2q_T}$"]
+- step 4: Compare to HD 142527 and HD 100546
+  - method: Rescale OD model for HD 142527 and new eccentric companion simulation (a=10 au, e=0.4) for HD 100546; compare velocity residuals with ALMA data [4.2 HD 100546: "We also reproduced our eccentric companion model with a new simulation with a binary semi-major of 10 au, and eccentricity of 0.4."]
+  - software: phantom, mcfost, eddy, bettermoments
+  - parameter: HD 142527: primary 1.8 Msun, length rescale 3.8, i=27 deg, PA=-20 deg [4.1 HD 142527: "we rescale our model OD such that the primary star has a mass of 1.8 M$_\odot$"]
+  - validation: Qualitative visual comparison [Applications to Observed Kinematic Feat…: "Firstly, we see that our model recreates the observed spiral arms in the outer region of the disc found by (cite: christiaens2014) and further studied by (cite: garg2021)."]
+- limitation (authors): Residuals are model dependent; Keplerian background assumed [3.1 Doppler-Flips: "By their very definition velocity residuals are model dependent, and the appearance of a Doppler-flip is therefore also model dependent."]
+- not stated (card): Briggs robust values and per-target tclean parameters (cell, image size, scales, masks); Which cubes were self-calibrated and the self-cal settings; eddy fit settings for observations (inclination, PA, mass, r_min/r_max, emission surface); Moment 1 vs quadratic choice per target; Private-communication data products are not available; CASA versions and software versions
+
+### 2020ApJ...888L...4T: Long-lived Dust Rings around HD 169142 (2020; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Can two giant planets in resonant locking explain the long-lived inner dust rings and gas cavity of HD 169142?
+- step 1: Run SPH simulation
+  - method: 3D PHANTOM single-fluid dust-gas simulation with two migrating, accreting sink-particle planets [Hydrodynamical simulation: "We consider a star with mass 1.65 M$_\odot$ and two planets allowed to migrate and accrete mass."]
+  - software: PHANTOM
+  - parameter: 10^6 SPH particles, R_in=5 to R_out=150 au, alpha_SS=0.005, 1 mm grains [Hydrodynamical simulation: "a disc of $10^6$ SPH particles, extending from $\rm{R}_{\rm{in}} = 5$ to $\rm{R}_{\rm{out}} = 150$ au."]
+  - assumption: Locally isothermal; initial gas mass ~1e-2 Msun; dust mass 1.2e-4 Msun [Hydrodynamical simulation: "The initial dust mass is $1.2 \times 10^{-4} \rm{M}_\odot$"]
+  - validation: Tested stellar accretion radius of 1 au, no significant differences [Hydrodynamical simulation: "We also tested our results for an accretion radius of 1 au, finding no significant differences."]
+- result: Best-agreement time = 160 T_orb = 5e4 yr ± not stated yr [Results: "obtained after $160~\rm{T}_{orb} = 5 \times 10^{4}$ yr"]
+- result: Planet masses at best match = ~2.4 ± not stated M_J [Results: "with almost equal masses, $\sim 2.4$ M$_J$"]
+- result: Planet locations = 17.4 and 50 ± not stated au [Results: "The inner planet is located at $\sim 17.4$ au and the outer at $\sim50$ au"]
+- result: Dust ring lifetime = >= 2e5 ± not stated yr [Results: "preserved for at least $\sim$ 500 orbits, i.e for over $\sim 2\times 10^5$ yr"]
+- result: Disc total mass and dust mass = ~6e-3 and ~0.9e-4 ± not stated M_sun [Results: "The total mass of the disc is $\sim 6\times 10^{-3}$ M$_\odot$ and the dust mass is $\sim 0.9\times 10^{-4} ~\rm{M}_\odot$."]
+- limitation (authors): Instant accretion at the sink radius may overestimate planet accretion [Hydrodynamical simulation: "This may over-estimate the accretion onto the planet"]
+- not stated (card): Exact reference radius R_ref; Synthetic imaging and beam convolution details; How ALMA data from 2013.1.00592.S were processed, if used; Simulation snapshot and output files; MCFOST photon numbers and inclination handling details
+
+### 2019A&A...622A..75L: Ring structure in the MWC 480 disk revealed by ALMA (2019; protoplanetary_disks; observational_alma_primary)
+- question: What is the dust ring/gap structure of the MWC 480 disk at 1.3 mm, and can a planet–disk interaction explain it (planet mass)?
+- step 4: Estimate planet mass analytically
+  - method: Gap width ~ x R_Hill, with Rp=73.4 au, Delta=23 au, plus gap-opening criteria [4.2 Analytical estimate of the planet p…: "assuming $R_{\rm p}=73.4 \,{\rm au}$ and $\Delta=23 \,{\rm au}$."]
+  - parameter: Mp range 0.4-3 MJ; simulated 0.4-2 MJ [4.2 Analytical estimate of the planet p…: "our numerical simulations adopt planet masses spanning $M_{\rm p}=[0.4,2] \, \rm{M_{J}}$."]
+- step 5: SPH gas/dust simulations to match dust profile
+  - method: PHANTOM 3D SPH one-fluid dust, varying dust-to-gas ratio, planet mass and initial radius; 5e5 particles [4.1 Initial conditions: "modeled as a set of $5\,{\times}\,10^{5}$ SPH gas/dust particles"]
+  - software: PHANTOM
+  - parameter: Dust/gas 0.01-0.2; Rp = 85-120 au; alpha_AV ~0.15 (alpha_SS ~5e-3) [4.1 Initial conditions: "We set the SPH $\alpha_{\rm AV}$ viscosity parameter to $\sim$0.15, resulting in an effective (cite: shakura73a) viscosity $\alpha_{\rm{SS}} \approx 5 \times 10^{-3}$."]
+  - assumption: Locally isothermal; uniform dust properties; temperature and opacity effects negligible [4 Modeling the dust gap: "we assume that these two contributions have a negligible effect on the disk emission with respect to the effects of dust density."]
+  - fitting: Fit by eye, no statistical test [4 Modeling the dust gap: "the fitting procedure is done by eye without performing any statistical test to quantify the goodness of the fit."]
+  - validation: Compared azimuthally averaged dust surface density with RT-derived profile; dust settling check H_d/H_g ~0.28 vs Lambda 0.25 [4.2 Dust-to-gas mass ratio: "This value is quite close to the value of $\Lambda\,{=}\,0.25$"]
+- result: Best-model planet mass after 50 orbits = ~2.3 (initial 1.25 at 85 au) ± not stated MJ [4.3 Results: "the planet reaches the distance of 78.4 au from the central star and its mass is ${\sim}\,2.3\,\mathrm{M_{\mathrm{J}}}$"]
+- result: Analytic planet mass estimate = 0.4-3 ± not stated MJ [4.2 Analytical estimate of the planet p…: "\sim 0.4 \textrm{--}3\, {\rm M_J}"]
+- result: Missing dust mass in gap = ~5 ± not stated MJ [5.2 On the origin of the gap/ring struc…: "The difference between these two integrated masses is ${\sim}5\,\rm{M_{J}}$"]
+- limitation (authors): Degeneracy among simulation parameters cannot be quantified; fit by eye [4 Modeling the dust gap: "we cannot reasonably quantify this degeneracy"]
+- limitation (authors): Planet not confirmed; high-contrast searches needed [5.2 On the origin of the gap/ring struc…: "deep high-contrast searches for planets in the gap are required to confirm the presence of a planet"]
+- not stated (card): Self-calibration solints, number of rounds and reference antenna; tclean cell size, image size, mask, niter and threshold; Phase center/coordinates of MWC 480; Pipeline vs manual flagging details; SED photometry table used in the fit; Simulated annealing settings (priors ranges, cooling schedule, merit function); Stellar spectrum/photosphere model inputs for RADMC-3D beyond Table 1, number of pho…
+
+### 2025ApJ...986L..11S: Hints of Disk Substructure in the First Brown Dwarf with a Dynamical Mass Constraint (2025; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Does the disk of the brown dwarf 2M0444 show Keplerian rotation (giving a dynamical mass), radial drift, and dust substructure at high resolution?
+- step 7: Estimate disk mass, optical depth and planet mass
+  - method: Disk mass from continuum flux; optical depth from temperature profile; planet mass from Hill radius with gap width and k=4-8 [Discussion, Maximum possible planet mas…: "where k is a constant ranging from 4 to 8 depending on the disk parameters"]
+  - parameter: flaring angle 0.02 [Temperature and optical depth profile: "$\varphi$ represents the flaring angle, which we set to 0.02"]
+  - assumption: kappa=2 cm2/g, T~12 K, dust-to-gas 100 for disk mass [4.1 Substellar Mass of 2M0444: "dust opacity of $\kappa\nu = 2$ cm$^2$/g, temperature of $\sim$12 K, and a dust-to-gas ratio of 100"]
+  - assumption: Low viscosity (alpha<0.01), one planet per gap [4.3 Maximum possible planet mass carvin…: "the disks have low viscosity (with $\alpha < 0.01$)"]
+- result: Planet mass range = 0.3-7.7 ± not stated Earth masses [4.3 Maximum possible planet mass carvin…: "the planet able to carve that gap would have an estimated mass between 0.3 and 7.7 M$_{\oplus}$, assuming k values of 4 and 8"]
+- result: Disk mass = 1.36 ± ±0.2 MJup [4.1 Substellar Mass of 2M0444: "we derived a similar but slightly higher disk mass of $1.36 \pm 0.2$ M$_{\text{Jup}}$"]
+- limitation (authors): Low S/N; EDDY ignores beam convolution; visibility mass inconsistent with Teff [4.1 Substellar Mass of 2M0444: "EDDY` does not take the beam convolution into account, which may result in smaller stellar mass"]
+- limitation (authors): Substructure tentative; BIC prefers no ring [Statistical comparison of dust substruc…: "the evidence for the additional substructure is less compelling under BIC"]
+- not stated (card): Self-calibration solution intervals for each iteration; Line-free channels and continuum-subtraction method/order; Cell size and image size; Flagged channel ranges and reference antenna; Priors ranges and parameter list for 12CO two-layer visibility model and code used; galario prior bounds and initial positions; Keplerian mask parameters and EDDY settings (radial range, fitting method); Which 12…
+
+### 2023PASJ...75.1105K: Kinematic signatures of a low-mass planet with a moderately inclined orbit in a protoplanetary disk (2023; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Can a low-mass planet on a moderately inclined orbit produce kinematic (velocity-kink) features in CO channel maps as prominent as a massive coplanar planet, and how do these differ across CO isotopologues?
+- step 1: Run 3D hydrodynamic simulations of an inclined planet
+  - method: Athena++ spherical-grid locally isothermal simulation with alpha=1e-3, planet ramped up over 2π/Ω_K, inclined orbit [2.3.1 Hydrodynamic simulations: "We used Athena++[^1] (cite: Athena++) to solve basic equations"]
+  - software: Athena++
+  - parameter: H0=0.07 (fiducial) and 0.1; α=1e-3; domain r=0.4-3.0 R0; 192x80x640 cells [2.3.1 Hydrodynamic simulations: "The computational domain runs from $r=0.4R_0$ to $r=3.0R_0$ in $r$-direction"]
+  - assumption: Planet torque and migration ignored [2.3.2 Planet: "we ignored a torque from the surrounding gas and planetary migration."]
+  - validation: Result unchanged with the second-order van Leer scheme and CFL 0.3 [2.3.1 Hydrodynamic simulations: "we confirmed that the result does not change if we chose the second-order van Leer scheme"]
+- result: v_r perturbation amplitude relative to Keplerian velocity = ~30 % ± not stated % [3.2 Kinematic features: "its amplitude is approximately 30 % of the Keplerian rotation velocity."]
+- limitation (authors): Temperature in the radiative transfer is inconsistent with the locally isothermal hydrodynamics; the inner boundary may cause artifacts; the tail feature may come from the unresolved circumplanetary disk [3.5 Comparison with the case with the c…: "this tail structure can be the artifact caused by the unresolved circumplanetary disk."]
+- limitation (authors): Inclination damping is not included [4.2 Possible mechanisms: "The orbital inclination is damped due to disk–planet interaction; however, we did not consider this in our paper."]
+- not stated (card): MAPS data product (robust/taper/velocity resolution) used for Figure 13; Exact velocity channel width and beam for synthetic channel maps; Full parameter table (Runs 1-11) is not in the text; Procedure for matching synthetic maps to the observed HD 163296 geometry; Hydrodynamic code configuration files
+
+### 2017ApJ...851L..23C: ALMA Observations of Elias 2-24: A Protoplanetary Disk with Multiple Gaps in the Ophiuchus Molecular Cloud (2017; protoplanetary_disks; observational_alma_primary)
+- question: Does the Elias 2-24 disk show gaps in 1.3 mm continuum, and do the gap temperatures and widths point to snow-lines or forming planets?
+- step 5: Gap temperatures, widths and missing mass
+  - method: Midplane temperature from model at gap locations; Gaussian fits to gaps with IRAF splot; integrate model surface density over gap width [Radiative transfer modeling: "We can also estimate the mass of the “missing material" at each gap by integrating the surface density profile of the best-fit model over the width of the gap."]
+  - software: IRAF
+  - assumption: Gaps are fully evacuated [Radiative transfer modeling: "We estimate the widths of the gaps by assuming that they are fully evacuated"]
+  - fitting: Gaussian fits with splot [Radiative transfer modeling: "Gaussian fits to the gaps using the `splot` routine within the IRAF package noao.onedspec"]
+  - validation: Equivalent widths consistent with integrating area and the deprojected radial average [Radiative transfer modeling: "produce consistent equivalent widths."]
+- step 6: Planet mass estimates
+  - method: Gap width = 4-8 Hill radii; r_Hill = a (m_p/3M*)^(1/3) [Discussion: "planets can open gaps that are 4 to 8 times the Hill radius"]
+  - assumption: Stellar mass 1.0 Msun [Discussion: "a stellar mass of 1.0 M$_{\odot}$ (Andrews et al. 2016)"]
+- result: Gap locations = 20, 52, 87 ± ±3, ±2, ±3 au [Radiative transfer modeling: "the gaps are located at 20$\pm$3 au, 52$\pm$2 au, 87$\pm$3 au"]
+- result: Gap widths = 6, 28, 11 ± ±2, ±3, ±4 au [Radiative transfer modeling: "have widths of 6$\pm$2 au, 28$\pm$3 au, and 11$\pm$4 au."]
+- result: Midplane temperature at gaps = 23, 15, 12 (at 20, 52, 87 au) ± not stated K [Radiative transfer modeling: "$\sim$23 K at 20 au, $\sim$15 K at 52 au, and $\sim$12 K at 87 au"]
+- result: Missing mass at gaps = ~4, 20, 10 (at 20, 52, 87 au) ± not stated MJup [Radiative transfer modeling: "we derive “missing masses" of $\sim$4 $M_{\mathrm{Jup}}$, 20 $M_{\mathrm{Jup}}$, and 10 $M_{\mathrm{Jup}}$ for the gaps at 20, 52 and 87 au"]
+- result: Planet masses = 0.2–1.5, 1.0–8.0, 0.02–0.15 (inner, middle, outer) ± range from 4-8 Hill radii MJup [Discussion: "we derive planets masses in the range of 0.2–1.5 $M_{\mathrm{Jup}}$, 1.0–8.0 $M_{\mathrm{Jup}}$, and 0.02–0.15 $M_{\mathrm{Jup}}$"]
+- limitation (authors): Gaps only partially resolved, degeneracy between width and depth [Radiative transfer modeling: "Since the gaps are only partially resolved, there is a degeneracy between the width and the depth of the gaps."]
+- limitation (authors): Other explanations (MHD, instabilities) remain possible [Summary and Conclusions: "However, other potential explanations still exist, including magneto-hydrodynamic effects and disk instabilities."]
+- not stated (card): Dust opacity law and stellar luminosity/Teff used in RADMC-3D; Priors and parameter bounds for the MCMC; Number of photons and grid setup for RADMC-3D; Clean mask, threshold, cell and image size; Self-calibration solution interval and reference antenna; Which fluxes were used to set flux scale; uvmem weights and regularization details beyond the quoted values; Stellar mass assumption for the plan…
+
+### 2024ApJ...976..132H: High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis (2024; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Do millimeter continuum substructures (gaps, rings) form and survive in disks exposed to intermediate external UV radiation in sigma Orionis, and how do disk sizes compare to nearby regions?
+- step 8: Estimate planet masses from gaps
+  - method: Zhang et al. 2018 scaling relations with gap width, Sigma_dust, St_max, h/r [Planet mass estimates: "In brief, we assume that each observed gap corresponds to one protoplanet."]
+  - parameter: kappa_abs = 0.43 cm^2/g, amax=0.1 mm, n(a)∝a^-3.5, alpha = 1e-3 [Planet mass estimates: "We assume that $\alpha=10^{-3}$."]
+  - assumption: One planet per gap; DSHARP dust composition [Planet mass estimates: "the dust absorption opacity is set to 0.43 cm$^{2}$ g$^{-1}$"]
+  - validation: Comparison with DSHARP planet masses [Planet mass estimates: "The overall ranges of inferred planet masses and semi-major axes are similar"]
+- result: SO 844 D10 planet mass = 7.9 ± +0.13/-0.16 (log Mp) M_Jup [Table 8: "SO 844 | D10 | 0.74 | 0.53 | 0.06 | 736 | 0.3 | 7.9"]
+- limitation (authors): FUV fields are upper bounds from projected separations; temperature uncertainty dominates dust-trap and planet-mass estimates; SVI is approximate [2 Sample overview: "The FUV field estimates from (cite: 2023AA...679A..82M) are based on projected separations, so they should be considered upper bounds."]
+- not stated (card): Exact line-free/flagged channel ranges in archival data; Self-calibration solution intervals and which EBs/ cleaning parameters (niter, thresholds, masks, scales, cell, image size) were used; Prior means and standard deviations for the parametric model; Initial guesses for N rings and hyperparameters of the pyro guide beyond learning rate; Zenodo products must be downloaded to reproduce; CLEAN mo…
+
+### 2020MNRAS.499.3837G: Spirals, shadows, and precession in HD 100453 - I. The orbit of the binary (2020; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Which orbit of the secondary HD 100453 B (eccentricity, semi-major axis, inclination relative to the disc) best reproduces the observed spirals and CO gas structure of the outer disc of HD 100453 A?
+- step 1: Run SPH simulations for seven orbits
+  - method: PHANTOM gas-only forward runs, then rewind runs from extrapolated relative angles, then gas+11-grain dust runs [3.2 Rewind simulations: "we choose to extrapolate the evolution of the relative angles $i_\mathrm{rel}$ and $\Omega_\mathrm{rel}$ between disc and binary orbit backwards in time"]
+  - software: PHANTOM
+  - parameter: Disc mass 0.003 Msun, 12-60 au, Sigma∝R^-1, H/R=0.05 at 12 au, alpha_SS=5e-3 [2.1 Hydrodynamic simulations: "The disc has a mass $M_\mathrm{disc}=0.003$ M$_\odot$ and extends between $R_\mathrm{in}=12$ au and $R_\mathrm{out}=60$ au."]
+  - validation: Rewind final disc orientation agrees with observed [3.2 Rewind simulations: "with the final values after 10 orbits very similar to the observed ones"]
+- limitation (authors): Only seven orbits tested; comparison is visual and subjective [5.3 Caveats: "The main caveat of this work is the small number of orbital configurations tested"]
+- not stated (card): Band 7 data calibration and imaging details (in Rosotti2020); Spectral line channel width and CLEAN parameters for CO cube; Exact simulation snapshot/viewing geometry conversion to MCFOST inputs; Input files only available on request
+
+### 2018ApJ...869L..47Z: The Disk Substructures at High Angular Resolution Project (DSHARP). VII. The Planet-Disk Interactions Interpretation (2018; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: What planet masses and orbits could explain the gaps and rings in the DSHARP disks, and what young wide-orbit planet population results if the gaps are planet-induced?
+- step 1: Run hydrodynamical grid
+  - method: 2-D gas plus Lagrangian dust particle simulations, no dust feedback, run 1000 orbits [Method: "We carry out 2-D hydrodynamical planet-disk simulations using the modified version of the grid-based code FARGO (cite: masset2000) called Dusty FARGO-ADSG"]
+  - software: Dusty FARGO-ADSG
+  - parameter: h/r = 0.05, 0.07, 0.1; alpha = 1e-4, 1e-3, 1e-2; q = 3.3e-5 to 3.3e-3 [Method: "Thus, we have 45 simulations in total."]
+  - assumption: Locally isothermal, Sc=1, dust-to-gas 1/100, rho_p = 1 g cm-3 [Method: "We set $Sc=1$ which serves as a good first order approximation"]
+- step 4: Infer planet masses for DSHARP gaps
+  - method: Measure observed gap widths, estimate gas surface density from outer-disk dust surface density, compute Stokes number, use width-K' relation, break degeneracy with h/r and alpha [Planet Properties: "Third, with known $\Sigma_{g,0}$ and the assumed dust size distribution, we can calculate $St_{max}$ and use the $\Delta$-$K'$ relationship"]
+  - assumption: GI limit with Toomre Q=1 caps gas surface density; preferred alpha=1e-3 and DSD1 [Planet Properties: "we prefer $M_{p,am3}$ with DSD1 size distribution."]
+  - validation: Consistency check with assumed mass, kinematics, asymmetry, depth [Planet Properties: "We can also do a consistency check with the derived $M_p$."]
+- result: Occurrence rate of >5 MJ planets beyond 5-10 au = 1/18 (6%) ± not stated percent [Young Planet Population: "the occurrence rate for $>$5 $M_J$ planets beyond 5-10 au is 1/18 or 6%."]
+- result: Occurrence rate of 0.2-5 MJ planets beyond 5-10 au = 8/18 (44%) ± not stated percent [Young Planet Population: "The occurrence rate for 0.2 $M_J\lesssim M_p\lesssim$ 5 $M_J$ planets beyond 5-10 au is 8/18 or 44%"]
+- result: HD 143006 22 au gap planet mass (alpha=1e-3, DSD1) = 19.91 ± not stated M_Jup [Table 3: "HD 143006 | 1.78 | 22 | 0.62"]
+- limitation (authors): Gap profiles fitted at fixed 1000 orbits; dust feedback ignored [Caveats: "Another major caveat in this work is that we fit the gap profiles at 1000 planetary orbits."]
+- limitation (authors): Occurrence rates are upper limits since gaps may not be planetary [Young Planet Population: "our derived planet occurrence rates should be considered as the upper limits."]
+- not stated (card): Exact Dusty FARGO-ADSG code version and setup files; Random seeds for the super-particle initial conditions; Details of the by-eye matching for narrow gaps; Exact gap identification and edge measurements in the observed profiles
+
+### 2024A&A...688A.102T: Orbital dynamics in the GG Tau A system: Investigating its enigmatic disc (2024; protoplanetary_disks, star_formation; theory_or_simulation_compared_to_alma)
+- question: What is the most likely orbital configuration (coplanar vs misaligned) of the GG Tau A triple and its circumtriple disc, tested via new astrometry and SPH gas+dust simulations compared with ALMA 1.3 mm and SPHERE 1.67 micron images?
+- step 2: Run SPH gas+dust simulations
+  - method: 3D SPH with PHANTOM, one-fluid dust, sink-particle stars, coplanar and 30 deg misaligned orbits, evolved up to 3000/1500 orbits [Numerical simulations: "We perform two sets of gas and dust 3D hydrodynamic simulations using the SPH (Smoothed Particle Hydrodynamics) code `PHANTOM`"]
+  - software: PHANTOM
+  - parameter: 1e6 SPH particles, Rout=800 au, disc mass 0.12 Msun, dust-to-gas 0.01, 1 mm grains, alpha_SS=0.005 [Initial Conditions: "The system is surrounded by a disc of 1$\times 10^6$ SPH particles"]
+  - assumption: Locally isothermal, T=20 K (R/300 au)^-0.9; no disc self-gravity; no circumstellar discs [Initial Conditions: "We neglect the disc self-gravity, as our disc mass results in a gravitationally stable disc."]
+  - validation: Benchmarked against earlier gas-only results (Cazzoletti 2017, Aly 2018) [Previous results: "We summarise here previous findings for bench-marking our gas dynamics results in the overlapping parameter space"]
+- limitation (authors): Models do not fully reproduce SPHERE morphology; comparison is qualitative, deferred to future work [Observed features: "We therefore defer to a future work a more quantitative characterisation of the observed features."]
+- not stated (card): ALMA imaging parameters (weighting, robust, cleaning, rms) are not given; must be taken from Phuong et al. 2020; How the observed ALMA image was registered and compared quantitatively (comparison is visual only); MCFOST wavelength/image grid settings and Voronoi cell numbers; SPH snapshot output times and CaSh annulus width; Observed continuum flux/rms values
+
+### 2020MNRAS.499.3857N: Spirals, shadows &amp; precession in HD 100453 - II. The hidden companion (2020; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: What are the properties of the hidden inner companion in HD 100453, and how did the inner/outer disc misalignment arise?
+- step 2: SPH simulations of inner planet
+  - method: Grid of planet masses 5, 10, 20 MJ at 10, 15, 20 au; inner edge defined at 10% of max surface density [3.2.1 Hydrodynamics: "We measure the inner edge of the outer disc (shown in Figure [3](#fig:C_OD_P_sigma) with vertical, dashed lines) where the surface density profile drops below $10\%$ of the maximum surface density."]
+  - software: PHANTOM
+  - assumption: alpha=5e-3, dust and gas well coupled [3.2.1 Hydrodynamics: "For these simulations we have adopted $\alpha=5 \times 10^{-3}$ as in ."]
+  - validation: Inner edge compared with observed 18-23 au range [3.2.1 Hydrodynamics: "We find five cases that show agreement between the inner edge of the disc in our simulations and the range from observations."]
+- limitation (authors): Kozai-Lidov oscillations were not seen in hydrodynamic simulations; N-body neglects gas effects [5.2 Limitations: "our simulation in that goes for twice this length of time does not show any evidence of these oscillations"]
+- not stated (card): Companion-paper (Paper I) setup details for the SPH runs; MCFOST inclination/PA and disc geometry for synthetic maps; Velocity channels and noise treatment when comparing to ALMA; Disc surface density profile parameters; Inner disc and dust properties for radiative transfer
+
+### 2017ApJ...839L..24M: On the Origin of the Spiral Morphology in the Elias 2-27 Circumstellar Disk (2017; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: What causes the two large-scale spiral arms and inner structures in the Elias 2-27 disc: an internal companion, an external companion, or gravitational instability?
+- step 1: Run SPH simulations
+  - method: 3D SPH with flux-limited diffusion, 250,000 particles; 0.5 Msun star, disc 10-400 au; internal/external companion or self-gravitating setups [2.1 Hydrodynamics: "Each disc is modelled using 250,000 sph gas particles."]
+  - software: sph code
+  - parameter: alpha_SPH 0.1-1.0, beta_SPH = 2 alpha_SPH [2.1 Hydrodynamics: "with the sph parameter, $\alpha_{\rm SPH}$, varying between 0.1 – 1.0 and $\beta_{\rm SPH} = 2 \alpha_{\rm SPH}$"]
+  - assumption: gas and dust well mixed; surface temperature held at T(R)=13.4 K (R/200 au)^-q [2.1 Hydrodynamics: "We assume that the gas and dust are well mixed."]
+- step 2: Radiative transfer to 1.3 mm images
+  - method: RADMC-3D with astronomical silicate Mie opacities, size distribution 0.005-1000 um slope -3.5, gas-to-dust 100, SPH interpolation [2.2 Radiative Transfer & Synthetic Imag…: "assuming a power-law grain size distribution between 0.005 – 1000 $\mu$m with a power exponent of $-3.5$"]
+  - software: RADMC-3D
+  - parameter: lambda = 1.3 mm [2.2 Radiative Transfer & Synthetic Imag…: "we calculate images at $\lambda=1.3$ mm using the raytracer in RADMC-3D"]
+  - assumption: uniform gas-to-dust ratio 100; dust and gas temperatures identical [2.2 Radiative Transfer & Synthetic Imag…: "The dust and gas temperatures are assumed to be identical."]
+- limitation (authors): Aim is morphological similarity, not exact fit; different uv coverage used [2.2 Radiative Transfer & Synthetic Imag…: "Since our goal is not to fit the observations exactly, but merely to show the morphological similarities between our models and the observations"]
+- not stated (card): Scaling factor of the unsharp mask subtraction; clean parameters (weighting, cell, image size, niter, threshold); Dust inclination/position angle and distance used for ray tracing; Which of the 72 simulations are shown and full parameter table; Time/snapshot selected for imaging; Inward extrapolation power-law exponent
+
+### 2025ApJ...984L..21B: exoALMA. XVI. Predicting Signatures of Large-scale Turbulence in Protoplanetary Disks (2025; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: What observational signatures would large-scale flows driven by the VSI, MRI and GI produce in exoALMA-quality 12CO(3-2) observations?
+- step 2: Radiative transfer of 12CO(3-2)
+  - method: RADMC-3D ray tracing of upper hemisphere only, with parametric temperature, CO freeze-out and photodissociation, five inclinations 5-60 deg, 26 m/s channels [3.1 Radiative Transfer Setup: "We computed images for five disk inclinations ranging from $i=5^{\circ}$ to $i=60^{\circ}$"]
+  - software: RADMC-3D, fargo2radmc3d
+  - parameter: 12CO/H2 = 1e-4; freeze-out below 21 K (factor 1e-5); photodissociation below 1e21 cm^-2 (factor 1e-5) [3.1 Radiative Transfer Setup: "reducing the CO number density by a factor $10^{-5}$ in regions where the gas temperature falls below $21$ K"]
+  - parameter: PA = 90 deg, distance 140 pc [3.1 Radiative Transfer Setup: "We assumed a disk position angle $\rm PA$ of $90^{\circ}$ east of north"]
+  - assumption: Same parametric temperature profile for all models [3.1 Radiative Transfer Setup: "For simplicity and to have the same temperature structure for all disk models, we assumed a parametric temperature profile"]
+- limitation (authors): Single simulation snapshots with particular parameters; no Hall effect or ambipolar diffusion; no embedded planets; limited 20-100 au range [4 Results from Numerical Simulations: "our unstable disks simulations are for particular sets of parameters, which control the resulting strength of the instabilities."]
+- not stated (card): Which simulation snapshot/output number was used for each instability; Initial emission surface parameter values for the eddy fit; Noise realization/seed and exact synthetic channel width and number of channels; bettermoments clipping/masking settings; Raw simulation data availability; Radiative transfer photon number and dust opacity settings
+
+### 2020ApJ...895L..18B: GW Ori: Interactions between a Triple-star System and Its Circumtriple Disk in Action (2020; protoplanetary_disks; observational_alma_primary)
+- question: What substructures (rings, eccentricity, misalignment) does the circumtriple disk of GW Ori have, and do they indicate ongoing interactions with the triple stars?
+- step 5: Timescale analysis and SPH simulation
+  - method: Analytic radial communication, precession and alignment timescales; PHANTOM SPH simulation with 10^6 particles [5.4 Hydrodynamic Simulations: "We carry out a demonstrative smoothed particle hydrodynamic (SPH) simulation with the PHANTOM code"]
+  - software: PHANTOM
+  - parameter: alpha_AV=0.31, h/r=0.05, disk mass 0.1 Msun, 40-400 AU [5.4 Hydrodynamic Simulations: "We take a locally isothermal disk with a constant aspect ratio $h/r=0.05$"]
+- result: Global precession and radial communication timescales = 0.83 and 0.06 ± not stated Myr [5.3 Misalignment Within the Disk: "the global precession time-scale of the entire disk is $\sim$ 0.83 Myr, and the radial communication time-scale is $\sim$ 0.06 Myr"]
+- limitation (authors): Mutual inclinations cannot be determined from dust alone due to unknown orbital direction; gas model has no uncertainties for the gap. [4.1 Visibility Modelling: "we cannot determine the mutual inclinations between them (i.e., the angles between their angular momentum vectors) from dust emission modelling alone"]
+- not stated (card): CASA version and pipeline version; CLEAN threshold, mask, cell and image size, number of iterations; Self-calibration reference model and how many rounds; MCMC priors' numeric bounds, initial walker positions, and convergence checks; Line-free channels and moment-map details; DALI chemistry and model setup details beyond Table 4; Flux scale calibrator
+
+### 2019A&A...625A.118K: Highly structured disk around the planet host PDS 70 revealed by high-angular resolution observations with ALMA (2019; protoplanetary_disks, exoplanets; observational_alma_primary)
+- question: What direct and indirect imprints does the planet PDS 70 b leave on the gas and dust of its circumstellar disk, and what limits can be placed on circumplanetary material?
+- step 8: Hydrodynamic and RT comparison
+  - method: FARGO3D 3D hydro with 2, 5, 10 MJup for 1000 orbits; RADMC3D 12CO cubes; simobserve; same moment and rotation analysis [4.1 Model setup: "we carried out three-dimensional hydrodynamic calculations using FARGO3D"]
+  - software: FARGO3D, RADMC3D, CASA simobserve
+  - parameter: alpha=1e-3; gas mass 0.003 Msun; 12CO/H2 = 1e-4; microturbulence 30 m/s [4.1 Model setup: "A disk viscosity of $\alpha=10^{-3}$ was added to the simulations."]
+  - assumption: Vertically isothermal disk, LTE CO [4.1 Model setup: "We assumed a vertically isothermal disk temperature structure and used an isothermal equation of state."]
+  - fitting: Qualitative comparison by eye; no formal fit [4.1.2 Comparison with observations: "The width and depth of the depleted flux density in the observations are reasonably well reproduced by a 5 $\rm M_{Jup}$ planet."]
+  - validation: Gap width and depth match 5 MJup; kinematic depth matches 10 MJup [4.1.2 Comparison with observations: "the radial location and the amplitude of the minimum $\delta v_{\rm rot}$ of the rotation curve of the PDS 70 disk is best matched by the perturbations created by a 10 $\rm M_{Jup}$ planet"]
+- limitation (authors): Hydro models assume vertically isothermal disk; delta v_rot may be underestimated [4.1.2 Comparison with observations: "our hydrodynamic models consider a vertically isothermal temperature structure"]
+- limitation (authors): Beam smearing and limited spectral resolution complicate rotation-curve interpretation [3.2.2 12CO rotation curve: "this makes a direct analysis challenging"]
+- not stated (card): CLEAN threshold, masks, image size and cell size; Which Cycle 3 execution blocks and any flux rescaling between epochs; Line-free channels for continuum subtraction; MCMC priors, walker number and step count for ring fit and rotation-surface fit; Annulus bin parameters and exact uv-weighting used for visibility fits; Primary beam correction details
+
+### 2026ApJ..1003..215F: Reading between the Rings: Observed Dust Ring Properties as Probes of Planet Masses (2026; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: How do dust ring properties (mass, peak location, width) produced by an embedded planet depend on planet mass relative to the pebble-isolation mass, and can they constrain planet masses in observed discs?
+- step 1: Run hydrodynamic simulations
+  - method: FARGO3D 2D gas plus 5 pressureless dust fluids, no dust feedback, fixed planet orbit [3.2 Simulation setup: "We run a series of 2D ($r + \phi$) simulations of gas and 5 dust species using FARGO3D"]
+  - software: FARGO3D
+  - parameter: alpha=1e-4; Stokes 0.002-0.2; dust-to-gas 0.01; grid 504x1170; planets 0.5-2 M_iso; h/r 0.05, 0.06, 0.07 [3.2 Simulation setup: "This corresponds to cylindrical grid dimensions of 504 radial cells against 1170 azimuthal cells"]
+  - assumption: Stellar mass 1 Msun; scale-free; fixed planet orbit [Table 1: "The stellar mass across all models is $1 M_\odot$."]
+  - validation: Checked steady state of rings over last 600 orbits [4 Results: "We find that the ring surface mass density is unchanging and the dust rings have reached an approximately steady height and width by 1500 orbits"]
+- not stated (card): FARGO3D version and numerical parameters (flaring index only implied, viscosity prescription details, planet smoothing length, damping zones); Exact pressure-gradient extraction and interpolation from Stadler et al. digitized curves; Uncertainty derivation method for planet masses; Stellar masses and gap/ring locations used per exoALMA disc; Details of how the PDS 70 ring locations/uncertainties …
+
+### 2021A&A...654A..35B: A multiwavelength analysis of the spiral arms in the protoplanetary disk around WaOph 6 (2021; protoplanetary_disks; multi_facility_alma_minor)
+- question: What is the morphology of the WaOph 6 disk in NIR scattered light versus ALMA mm continuum, and can a planetary perturber explain the spiral arms?
+- step 3: Hydro + radiative transfer test of planet perturber
+  - method: PLUTO 3D gas and FARGO3D 2D gas+dust simulations, then RADMC-3D and CASA simobserve/tclean synthetic ALMA images [5 Modeling: "we performed 3D gas-only and 2D gas+dust hydrodynamical simulations in which a massive planet at a separations $\geq 90$ au generates large-scale spiral arms interior to its orbit."]
+  - software: PLUTO, FARGO3D, RADMC-3D, CASA, optool
+  - validation: visual comparison to observed spirals [Results and comparison to observations: "The obtained images resemble the ones detected both in the scattered light and millimeter continuum observations, except for the fact that we are only able to fit either the inner or the outer spirals"]
+- limitation (authors): Simulations cannot reproduce the spiral break, gap and ring [5.3: "This is likely due to missing physics in our simulations"]
+- not stated (card): frank hyperparameters; Pixel size and image size for ALMA tclean images; Clean masks and threshold; Exact peak-search parameters for spiral tracing; Priors' bounds for spiral fits
+
+### 2018ApJ...869...17L: Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region (2018; protoplanetary_disks; observational_alma_primary)
+- question: What are the properties and likely origins (planets vs condensation fronts) of dust gaps and rings in 12 Taurus disks with substructure from an unbiased high-resolution ALMA 1.33 mm survey?
+- step 4: Derive flux, R_eff, gap and ring properties
+  - method: Integrate best-fit profile; R_eff at 90% flux; gap location at local minimum; gap width full width at half depth; contrast ratio ring peak/gap; uncertainties from 100 chain samples [4.2 Properties of Gaps and Rings: "The gap width is defined as the full width at half depth"]
+  - validation: Fluxes compared with pre-ALMA measurements [3.2.2 mm Flux and Dust Disk Size: "our flux measurements at 1.33 mm are consistent with pre-ALMA interferometry measurements"]
+- step 6: Compare gaps with planet-disk interaction expectations
+  - method: Normalized ring-gap distance vs gap location and stellar mass; planet mass via 4 R_Hill and Rosotti et al. 2016 diagnostic [4.3.1 Planet-disk Interactions: "If we simply assume that the gap radius corresponds to 4 $R_{\rm Hill}$ (cite: dodson-Robinson2011), most of our gaps are related to planets with mass of 0.1–0.5 $M_{\rm J}$"]
+  - assumption: alpha=1e-4 or 1e-2; simulations for 1 Msun star rescaled by mass ratio [4.3.1 Planet-disk Interactions: "When the turbulence parameter (cite: shakura1973) is assumed to be $\alpha=10^{-4}$"]
+  - validation: Compared to CI Tau hydrodynamic modeling of Clarke et al. 2018 [Footnote 7: "consistent with our simple estimation here"]
+- result: MWC 480 total 1.33 mm flux = 267.76 ± +0.18/-0.21 mJy [Table 3: "| MWC 480 | 267.76$_{-0.21}^{+0.18}$ | 104.97$_{-0.16}^{+0.16}$ |"]
+- result: CI Tau effective radius = 173.8 ± +0.47/-0.32 au [Table 3: "| CI Tau | 142.4$_{-0.24}^{+0.15}$ | 173.8$_{-0.32}^{+0.47}$ |"]
+- result: RY Tau flux = 210.39 ± +0.09/-0.1 mJy [Table 3: "| RY Tau | 210.39$_{-0.1}^{+0.09}$ | 60.8$_{-0.13}^{+0.0}$ |"]
+- result: Number of gap-ring pairs analyzed = 19 ± not stated dimensionless [4.2 Properties of Gaps and Rings: "We analyze a total of 19 gap and ring pairs"]
+- result: Gap locations range = 10-120 ± not stated au [4.2 Properties of Gaps and Rings: "gaps are located from 10 to 120 au with no preferred distance"]
+- result: Normalized gap-ring distance = 0.2-0.3 ± not stated dimensionless [4.3.1 Planet-disk Interactions: "The normalized gap-ring distance is typically 0.2–0.3"]
+- result: Planet mass for alpha=1e-4 at diagnostic 0.25 = ~15 (0.05 MJ) ± not stated M_earth [4.3.1 Planet-disk Interactions: "the diagnostic of 0.25 corresponds to a planet mass $\sim$ 15 M$_\oplus$ (0.05 M$_{\rm J}$)"]
+- limitation (authors): Formal errors on fit parameters likely underestimated [3.2.1 Best-Fit Models: "suggest that the formal errors listed in Table 3 are likely underestimated"]
+- limitation (authors): Dust mass uncertainties ignore temperature and optical depth [4.1 Source Properties: "do not take into account the differences in dust temperature and dust optical depth"]
+- limitation (authors): Model fails to reproduce amplitude of azimuthal asymmetries [3.2 Modeling Results: "our model fail to accurately reproduce the amplitude of the substructure component"]
+- not stated (card): Which spectral channels/line-free channels were used for continuum; Image size, cell size, clean threshold, masking and deconvolver for TCLEAN; Self-calibration solution intervals for amplitude and the per-target number of rounds; Prior ranges for ring/Gaussian amplitudes, locations and widths in the MCMC; Initial guesses for each disk's model components; Details of the uv-data averaging/binning …
+
+### 2018MNRAS.475.5296D: Rings and gaps in the disc around Elias 24 revealed by ALMA (2018; protoplanetary_disks; observational_alma_primary)
+- question: What are the gap and ring structures in the Elias 24 1.3 mm continuum, and can an embedded migrating, accreting planet in SPH gas/dust simulations reproduce them?
+- step 4: SPH gas/dust simulations with embedded planet
+  - method: PHANTOM one-fluid dust, 1 mm grains, sink-particle planet free to migrate and accrete; 10^6 particles; snapshot chosen by eye [3.1.1 Dust/gas numerical simulations: "In all our simulations we set the dust grain size to be $s_{\rm grain}=1\, {\rm mm}$"]
+  - software: PHANTOM
+  - parameter: alpha_AV=0.1 (alpha_SS~0.003); dust-to-gas 0.1; H_in=0.075 au; r 1-180 au [3.2 Initial conditions: "We set the SPH $\alpha_{\rm AV}$ viscosity parameter to 0.1, resulting in an effective (cite: shakura73a) viscosity $\alpha_{\mathrm{SS}} \approx 0.003$"]
+  - assumption: vertically isothermal; initial dust-to-gas ratio 0.1 for mm grains [3.2.2 Dust-to-gas mass ratio: "In our modelling, we therefore adopt a total initial dust-to-gas ratio for millimetre grains of 0.1."]
+  - fitting: by eye, no statistical test [3 Modelling the continuum dust emission: "the fitting procedure is done by eye without performing any statistical test to quantify the goodness of the fit."]
+  - validation: Compare with Elias 24 radial profile [Comparison with ALMA observations: "In Fig. [6](#fig:cfrphotom) we show the data vs model comparison in terms of the azimuthally averaged surface brightness at different angular separations from the disc center."]
+- result: Planet mass and location in best model = 0.7 MJ at 61.7 au ± not stated MJ, au [3.3.1 Disc structure: "At this stage of the simulation, the planet is at 61.7 au from the central star and its mass is $0.7\, \mathrm{M_{\mathrm{J}}}$."]
+- limitation (authors): Fit done by eye; degeneracy cannot be quantified [3.3 Results: "Given the large range of parameters involved in the fitting procedure, we cannot reasonably quantify this degeneracy"]
+- not stated (card): Line-free channels and continuum spectral window selection for imaging; Self-calibration solution intervals and number of iterations; clean threshold, masks, image size; Dust opacity table details beyond reference to Andrews et al. 2010; SPH initial planet/disc parameter grid explored and selection of best snapshot (fit by eye); Number of azimuthal/vertical RADMC-3D grid cells and CASA simulator …
+
+### 2019AJ....158...15P: Dust Unveils the Formation of a Mini-Neptune Planet in a Protoplanetary Ring (2019; protoplanetary_disks; observational_alma_primary)
+- question: Can the fine triple-ring structure in the outer disk of HD 169142 be explained by a single migrating low-mass planet?
+- step 5: Hydrodynamic simulation of migrating planet
+  - method: 2D gas plus Lagrangian dust simulation with 11 Earth-mass planet at 69 au, alpha=1e-5, 200,000 dust particles [3.2.1 Hydrodynamical simulations: "The code solves the equations of motion for 200,000 dust particles with radii between 10 $\mu$m and 3 mm."]
+  - software: Dusty FARGO-ADSG
+  - parameter: 900x1200 cells, 35-105 au; alpha 1e-5; h/r 0.033 at 69 au [3.2.1 Hydrodynamical simulations: "The $\alpha$ turbulent viscosity is set to $10^{-5}$."]
+  - assumption: Gas surface density 2.9 g cm-2 at 100 au; locally isothermal, 8 K at 70 au [3.2.1 Hydrodynamical simulations: "The initial surface density is 2.9 g cm$^{-2}$ at 100 au"]
+  - fitting: Parameter sampling, no exhaustive fit [3.2.1 Hydrodynamical simulations: "no exhaustive exploration is intended as finding a perfect fit is not in the scope of this work."]
+  - validation: Compare ring locations and fluxes to ALMA image [Radiative transfer calculation: "The hydrodynamical model reproduces the locations of B2, B3, and B4 as well as the level of flux along rings B2 and B3, and to a lesser extend ring B4’s."]
+- result: Planet mass in model = ~10 (11 for 2 Msun, 9.6 for 1.7 Msun) ± not stated Earth masses [3.2.1 Hydrodynamical simulations: "which for a 2 $M_\odot$ star translates into 11 $M_{\oplus}$"]
+- limitation (authors): Not an exhaustive fit; no dust growth, fragmentation or back-reaction [3.4.2 How does an inner giant planet im…: "Finding a perfect fit to the data is not in the scope of this work."]
+- not stated (card): Robust/weighting, cell size, image size and masks for tclean images; GPUVMEM parameters (regularisation weight, lambda, iterations, prior); Which ALMA execution blocks/datasets were used for the short baseline configuration; Dusty FARGO-ADSG code is only available on request; Self-calibration solution interval and reference antenna; Dust opacity data used in RADMC-3D
+
+### 2016ApJ...820L..25Y: Gas Gaps in the Protoplanetary Disk around the Young Protostar HL Tau (2016; protoplanetary_disks, star_formation; archival_reuse)
+- question: Do the millimeter continuum gaps in the HL Tau disk have counterparts in the HCO+ (1-0) gas, and what do the gas gap widths and depths imply for their origin?
+- step 4: Fit gap widths and depths
+  - method: Power law fit near each gap, subtract, Gaussian fit to gap for FWHM and central column density; contrast vs power law [3.3 HCO+ Gaps: "we first fitted a power-law function to the column densities only at the radial bins near the gap"]
+  - parameter: 10,000 Monte Carlo iterations [3.3 HCO+ Gaps: "We repeated this fitting process for a 10,000 times"]
+  - assumption: HCO+ abundance constant across gaps [3.3 HCO+ Gaps: "Assuming the HCO$^+$ abundance does not vary across the gaps"]
+  - fitting: Monte Carlo resampling of radii and densities; Gaussian fits to parameter distributions give best-fit and 1 sigma [3.3 HCO+ Gaps: "the centers and standard deviations of the fitted Gaussian functions were adopted as the best-fit values and the 1$\sigma$ uncertainties"]
+  - validation: 10,000 iterations sufficient to converge [3.3 HCO+ Gaps: "the 10,000 iterations is sufficient to converge"]
+- result: Inner HCO+ gap radius = 28 ± 2 AU [Table 1: "5$\pm$1 | 28$\pm$2 | 14$\pm$7 | 2.4$\pm$0.5"]
+- result: Outer HCO+ gap radius = 69 ± 2 AU [Table 1: "1.4$\pm$0.4 | 69$\pm$2 | 14$\pm$7 | 5.0$\pm$1.2"]
+- result: Gap FWHM widths = 14 ± 7 AU [3.3 HCO+ Gaps: "Both HCO$^+$ gaps have similar FWHM widths of $\sim$14$\pm$7 AU."]
+- result: Inner gap contrast = 2.4 ± 0.5 dimensionless [3.3 HCO+ Gaps: "a factor of $\sim$2.4$\pm$0.5 and $\sim$5.0$\pm$1.2"]
+- result: Outer gap contrast = 5.0 ± 1.2 dimensionless [3.3 HCO+ Gaps: "a factor of $\sim$2.4$\pm$0.5 and $\sim$5.0$\pm$1.2"]
+- result: HCO+ column density in inner gap = 5e15 ± 1e15 cm^-2 [3.3 HCO+ Gaps: "$\sim$(5$\pm$1) $\times$ 10$^{15}$ cm$^{-2}$ and $\sim$(1.4$\pm$0.4) $\times$ 10$^{15}$ cm$^{-2}$"]
+- result: HCO+ column density in outer gap = 1.4e15 ± 0.4e15 cm^-2 [3.3 HCO+ Gaps: "$\sim$(5$\pm$1) $\times$ 10$^{15}$ cm$^{-2}$ and $\sim$(1.4$\pm$0.4) $\times$ 10$^{15}$ cm$^{-2}$"]
+- limitation (authors): Column density biased by poorly constrained dust and gas temperature profiles. [3.1 HCO+ (1-0) Intensity Profile: "the overall HCO$^+$ column density profile remains biased by the not as well constrained radial temperature profiles of the dust and the gas."]
+- not stated (card): Spectral window and execution block selection from the SV data set; uvcontsub line-free channels and fit order; Image size and cell size; Line-free channels for noise estimation in averaged spectra; Exact radial range used for the power-law fits near each gap; Continuum image and its beam used for tau_3mm; Whether the CO cube was primary-beam corrected
+
+### 2018ApJ...857...87L: New Constraints on Turbulence and Embedded Planet Mass in the HD 163296 Disk from Planet-Disk Hydrodynamic Simulations (2018; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Can planet-disk interaction with a radially varying alpha viscosity explain the dust gaps and CO depletion pattern in the HD 163296 disk, and what planet masses and turbulence levels are required?
+- step 1: Run 2D two-fluid hydrodynamic simulations
+  - method: LA-COMPASS gas+dust simulations with three fixed planets at 59, 105, 160 au for 1000 orbits, scanning constant and radially varying alpha and planet masses [2.1 Hydrodynamic simulation: "We assume that planets do not migrate for 1000 orbits ($\sim 3\times 10^5$ yr), so the gaps can be fully developed."]
+  - software: LA-COMPASS
+  - parameter: Grid 1024x768, disk 10-500 au, dust grain size 0.15 mm, h=0.05(r/r0)^0.25 [2.1 Hydrodynamic simulation: "The disk extends from 10 to 500 au, and is simulated with a resolution of $1024\times768$ grids along the radial and azimuthal direction."]
+  - assumption: Isothermal T(r)=24.1(r/r0)^-0.5; viscosity nu=alpha c_s h [2.1 Hydrodynamic simulation: "we assume the turbulent viscosity has the form $\nu = \alpha c_{\textrm{s}} h$"]
+  - fitting: Manual exploration of more than 100 simulations compared with I16 fiducial surface densities; no MCMC [3 Results: "We have performed more than one hundred simulations in total with various initial conditions of planet mass, disk mass and effective viscosity."]
+  - validation: Compare simulated gas/dust surface densities with I16 parametric model [3 Results: "we improve our fitting by comparing our hydrodynamic simulations to the I16 fiducial model."]
+- result: Nominal planet masses at 59, 105, 160 au = 0.46, 0.46, 0.58 ± not stated M_J [abstract: "three half-Jovian-mass planets (0.46, 0.46 and 0.58 $M_\textrm{J}$) at 59, 105 and 160 au"]
+- result: Nominal alpha_in and alpha_out = 1e-5 and 7.5e-3 ± not stated dimensionless [3.2 Varying alpha: "we choose $\alpha_\textrm{in} = 10^{-5}$ and $\alpha_\textrm{out} = 7.5 \times 10^{-3}$"]
+- limitation (authors): Degeneracy among acceptable alpha values not fully characterized [4.2: "our simulations also show there is some degeneracy of acceptable $\alpha$ values, which is not fully characterized in this study."]
+- not stated (card): Public ALMA data processing/imaging details (beam, rms, calibration) not given; taken from I16; LA-COMPASS code version and dust-gas coupling/boundary condition details; CO abundance and isotope ratios, and the radially varying CO/H2 profile; RADMC-3D photon numbers and beam convolution parameters; Quantitative goodness-of-fit metric; fits judged by eye
+
+### 2019ApJ...871..107F: Gas Density Perturbations Induced by One or More Forming Planets in the AS 209 Protoplanetary Disk as Seen with ALMA (2019; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Is the gas surface density perturbed in the AS 209 disk gaps, as traced by optically thin C18O and DCO+, consistent with forming planet(s)?
+- step 5: Hydrodynamical simulations of planet-disk
+  - method: 2D inviscid FARGO-3D runs with a 0.2 and a 0.3 M_Jup planet at 95 au for 1000 orbits [Comparison with hydrodynamical simulati…: "2D hydrodynamical simulations using FARGO-3D (cite: Benitez-Llambay:2016; Rosotti:2016) for a planet of 0.2 M$\rm_{Jupiter}$ and one of 0.3 M$\rm_{Jupiter}$ located at 95 au"]
+  - software: FARGO-3D
+  - parameter: grid 19-285 au, 1766 log radial cells, 4096 azimuthal cells; aspect ratio 0.1(R/100 au)^0.225 [Comparison with hydrodynamical simulati…: "using 1766 logarithmically spaced cells in radius and 4096 cells in azimuth"]
+  - assumption: viscosity alpha = 0 [Comparison with hydrodynamical simulati…: "are inviscid (i.e. the viscosity, $\alpha$, is null)"]
+  - validation: Qualitative comparison of gap width/depth with C18O data [Comparison with hydrodynamical simulati…: "This is commensurate with our C$^{18}$O observations and the results of Section [4](#modeling)."]
+- result: Inferred planet mass = 0.2-0.3 M_Jupiter at about 100 au ± not stated M_Jupiter [Conclusions: "formation of a planet of 0.2–0.3 M$_{Jupiter}$ at about 100 au is occurring in the AS 209 protoplanetary disk"]
+- limitation (authors): Model does not fully reproduce observations because of 2D temperature structure uncertainties [Modelling results: "our present modelling does not fully reproduce the observations because of uncertainties on the 2D temperature structure"]
+- limitation (authors): Insufficient sensitivity to see the co-rotation bump [Comparison with hydrodynamical simulati…: "This feature is not seen in our data because we do not have sufficient sensitivity."]
+- not stated (card): Self-calibration solution intervals, number of rounds, and reference models; Line-free channels and continuum subtraction details; CLEAN mask, threshold, cell and image size; Gas-to-dust mass ratio and Sigma_c,gas values for the DALI grid; Statistic used to compare model and data (best values appear chosen by eye); Radial profile bin width and averaging method; Cycle 2 and Cycle 4 data weighting …
+
+### 2018ApJ...866L...6C: High-resolution Millimeter Imaging of the CI Tau Protoplanetary Disk: A Massive Ensemble of Protoplanets from 0.1 to 100 au (2018; protoplanetary_disks, exoplanets; observational_alma_primary)
+- question: What is the continuum structure of the CI Tau disc at high resolution, and can its annular gaps be explained by massive planets accompanying the hot Jupiter?
+- step 3: Hydrodynamic modelling of gaps with planets
+  - method: 2D FARGO3D with dust, synthetic emissivity compared to fitted profile, then synthetic image via CASA ft and CLEAN [4 Modeling: "using the 2D version of the FARGO3D code (cite: fargo3d) with our implementation of drag coupled dust (cite: Rosotti2016)"]
+  - software: FARGO3D, CASA
+  - parameter: alpha=0.014, disc mass 20 MJ within 200 au, 350x512 cells, 5.6-378 au [4 Modeling: "parameters $\alpha=0.014$ and total disc mass within 200 au of $20 \,M_\mathrm{Jupiter}$"]
+  - assumption: fragmentation velocity 10 m/s; dust-to-gas 0.01; a^-3 size distribution of compact silicate grains [4 Modeling: "We assume an initial dust to gas ratio of 0.01."]
+  - validation: Compare with accretion rate and spectral index [4 Modeling: "yield a profile of $a_{max}$ that is compatible with measurements of the disc-averaged spectral index in CI Tau"]
+- result: Planet masses at 14, 43, 108 au = 0.75, 0.15, 0.4 ± factor ~2 inner, ~30% outer two MJupiter [4 Modeling: "planets of mass 0.75, 0.15 and 0.4 $M_\mathrm{Jupiter}$ are located at orbital radii of 14, 43, and 108 au"]
+- limitation (authors): Innermost gap poorly resolved; shape unconstrained [3 Visibility modelling: "Thus we cannot firmly constrain the detailed shape of the innermost gap"]
+- not stated (card): Cell size, image size, masks, CLEAN threshold; Cleaning/imaging details of the modelling visibilities (averaging, any self-calibration); Prior ranges for the parameters; Target coordinates and distance used; Details of the dust opacity table and temperature profile; Flux calibrator and flux scale uncertainty
+
+### 2016ApJ...819..134B: Planetary Signatures in the SAO 206462 (HD 135344B) Disk: A Spiral Arm Passing through Vortex? (2016; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Can a planetary-mass companion in the outer disk of SAO 206462 produce the observed spiral arms, asymmetric sub-mm continuum and dust-depleted inner cavity?
+- step 1: Run 2D gas+dust hydrodynamic simulations
+  - method: Two-fluid FARGO with planet; 100 orbits; planet mass and semi-major axis varied [3 RESULTS: "All the calculations were run for $100~T_p$ where $T_p$ refers to the orbital time at the planet’s location."]
+  - software: FARGO
+  - parameter: alpha = 1e-4; (H/R)_p = 0.1; Sigma ∝ R^-1; dust-to-gas 1% [2.1 Disk Model: "For the gas component a uniform viscosity parameter $\alpha=10^{-4}$ is implemented."]
+  - assumption: Dust size distribution dn ∝ a^-3.5 da between 0.1 um and 5.3 mm; grain density 3 g cm^-3 [2.2 Dust Component: "We assume that the dust density is $3~{\rm g~cm^{-3}}$."]
+  - validation: Resolution doubled for 10 MJ planet at 100 au; consistent morphology and radial profiles [Resolution Test: "While the high-resolution run shows more small-scale structures, the overall morphology is in good agreement with the low-resolution run"]
+- result: Planet mass preferred = 10-15 ± not stated MJ [abstract: "We suggest that a planetary companion with a mass of 10–15 $M_J$ is orbiting SAO 206462 at 100–120 au."]
+- result: Planet orbital radius = 100-120 ± not stated au [abstract: "We suggest that a planetary companion with a mass of 10–15 $M_J$ is orbiting SAO 206462 at 100–120 au."]
+- result: Peak dust-to-gas ratio in vortex = ~1:25 ± not stated mass ratio [3 RESULTS: "the dust-to-gas mass ratio inside the vortex becomes as large as $\sim1:25$"]
+- result: Vortex total mass at 50 Tp = about 3 ± not stated MJ [3 RESULTS: "it is about $3~M_J$ at $50~T_p$"]
+- result: Horseshoe width = about 25 ± not stated au [3 RESULTS: "The width of the horseshoe region ($x_{\rm hs}$) is about 25 au"]
+- limitation (authors): 2D only; scattered light compared only qualitatively [4 DISCUSSION: "Thus, we compare the morphology of the arms and density distribution in a qualitative manner, rather than in a quantitative manner."]
+- not stated (card): Observation duration and integration time passed to simobserve; Antenna configuration file and exact simobserve/cleaning parameters (weighting, robust); Which simulation snapshot time was used for each synthetic image; Dust opacity composition/optical constants for Mie calculation; Code release of modified FARGO
+
+### 2019ApJ...879L...2M: PDS 70: A Transition Disk Sculpted by a Single Planet (2019; protoplanetary_disks, exoplanets; theory_or_simulation_compared_to_alma)
+- question: Can a single accreting super-Jupiter (PDS 70b) carve the observed ~30 au gas and ~60 au dust cavity of the PDS 70 transition disk?
+- step 1: Run 2D hydrodynamic simulations
+  - method: PEnGUIn with accretion prescription, planet migrating and accreting from 10 Earth masses at 23 au, run to 4.6 Myr; alpha0=0.001, Sigma0=3.86 g/cm2, domain 5-100 au [Results: "best-fit fiducial model, in which the planet is free to both migrate and accrete, with $\alpha_0 = 0.001$ and $\Sigma_0 = \SI{3.86}{\gram\per\cm\squared}$"]
+  - software: PEnGUIn
+  - parameter: 960 x 1944 cells, 20 cells per scale height at 22 au [Resolution: "960 ($r$) $\times$ 1944 ($\phi$) cells"]
+  - assumption: M* = 0.76 Msun, 2D, fixed boundaries [HYDRODYNAMICS SIMULATIONS: "Radial boundaries are fixed to their initial values"]
+  - validation: Resolution tests +-50% give planet position within 8% [Resolution: "we find that the position of the planet agrees to within 8%"]
+- result: Planet eccentricity saturation = 0.25 ± not stated dimensionless [Disk-Planet Evolution: "which eventually saturates at $e_{\rm p} \approx 0.25$"]
+- result: Planet mass for eccentricity onset = 2.7 ± not stated MJ [Table: "960 $\times$ 1944 & 5–100 & 1 & 100 & 4600000 & 23 & 21 & 2.7 & Fiducial"]
+- result: Gas depleted below 0.01 g/cm2 out to = 30 ± not stated au [Results: "the planet has depleted the gas below $\Sigma = \SI{0.01}{\gram\per\cm\squared}$ out to 30 au, and produced a pressure peak at 62 au"]
+- limitation (authors): Model 12CO shows a central peak far stronger than observed, likely from the inner boundary [Radiative transfer modeling: "it also exhibits a bright central peak, significantly stronger than that found by ALMA"]
+- not stated (card): ALMA CASA/pipeline version and tclean parameters (cell, image size, masking, continuum subtraction); Disk gas surface density profile and temperature/aspect ratio profile of initial condition; DALI stellar spectrum, luminosity, CO abundance, grain properties, inclination, PA; How model images were convolved/compared quantitatively to ALMA data; Simulation code availability
+
+### 2019ApJ...880...69Y: HL Tau Disk in HCO<SUP>+</SUP> (3-2) and (1-0) with ALMA: Gas Density, Temperature, Gap, and One-arm Spiral (2019; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Does the HL Tau disk show HCO+ gas gaps coincident with the dust gaps, and what are the gas kinematics, density, temperature and surrounding spiral structure?
+- step 8: Planet mass from gap depth
+  - method: Kanagawa15 formula with depth 4-8, M_star 2.1 Msun, T 60 K, alpha 1e-3 [5.1 Gap opened by a planet?: "a gas temperature of 60 K, and a viscosity $\alpha$ of 10$^{-3}$"]
+  - assumption: vertically isothermal disk [Discussion, Gap opened by a planet?: "We note that the formula of planet mass and gap depth in (cite: Kanagawa15) is derived for vertically isothermal disks."]
+  - validation: compared with planet masses in simulations rescaled by stellar mass [Footnote 3: "we linearly scaled the mass of planets in these simulations by the ratio of their adopted and our measured stellar masses."]
+- result: Planet mass opening the 30 au gap = 0.5-0.8 ± not stated MJ [5.1 Gap opened by a planet?: "the planet mass is estimated to be 0.5–0.8 $M_{\rm J}$ from the gap depth of 4–8"]
+- limitation (authors): Spiral velocities depend on the assumed mid-plane location and conserved angular momentum [4.3 kinematics of the one-arm spiral: "If the spiral structure is not in the disk mid-plane or the angular momentum is not conserved, the derived profiles of the infalling and rotational velocities are not valid."]
+- limitation (authors): Inner-radius line width overestimated, so column density, Tex and tau at the inner radius may be underestimated [4.2 HCO+ density and temperature profil…: "the column density, $T_{\rm ex}$, and $\tau_{\rm g}$ at the inner radius can be underestimated."]
+- not stated (card): Self-calibration solution intervals and number of iterations; Line-free channels for uvcontsub and fit order; tclean cell size, image size, masks and clean threshold; Exact radial bin centers and the numeric inputs for each bin; Details of the absorption masks per radial bin; Keplerian masking parameters for the HCO+ (1-0) moment map; Spiral peak positions used in the fit; Uncertainties on the fi…
+
+## All papers in this technique
+
+- 2012Natur.490..232M (2012): Unexpectedly large mass loss during the thermal pulse cycle of the red giant star R Sculptoris
+- 2014ApJ...796....1T (2014): Angular Momentum Exchange by Gravitational Torques and Infall in the Circumbinary Disk of the Protostellar System L1551 NE
+- 2015ApJ...798..124R (2015): ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146
+- 2015ApJ...809...93D (2015): Observational Signatures of Planets in Protoplanetary Disks I. Gaps Opened by Single and Multiple Young Planets in Disks
+- 2016A&A...586A..99H (2016): Steepening of the 820 μm continuum surface brightness profile signals dust evolution in TW Hydrae's disk
+- 2016ApJ...818..158A (2016): Planetary System Formation in the Protoplanetary Disk around HL Tauri
+- 2016ApJ...819..134B (2016): Planetary Signatures in the SAO 206462 (HD 135344B) Disk: A Spiral Arm Passing through Vortex?
+- 2016ApJ...820L..25Y (2016): Gas Gaps in the Protoplanetary Disk around the Young Protostar HL Tau
+- 2016ApJ...829L..35T (2016): A Gap with a Deficit of Large Grains in the Protoplanetary Disk around TW Hya
+- 2016PASJ...68...43K (2016): Mass constraint for a planet in a protoplanetary disk from the gap width
+- 2016PhRvL.117y1101I (2016): Ringed Structures of the HD 163296 Protoplanetary Disk Revealed by ALMA
+- 2017A&A...607A..55V (2017): An 80 au cavity in the disk around HD 34282
+- 2017ApJ...839L..24M (2017): On the Origin of the Spiral Morphology in the Elias 2-27 Circumstellar Disk
+- 2017ApJ...846...70P (2017): Millimeter Spectral Indices and Dust Trapping By Planets in Brown Dwarf Disks
+- 2017ApJ...851L..23C (2017): ALMA Observations of Elias 2-24: A Protoplanetary Disk with Multiple Gaps in the Ophiuchus Molecular Cloud
+- 2018A&A...610A..24F (2018): ALMA continuum observations of the protoplanetary disk AS 209. Evidence of multiple gaps opened by a single planet
+- 2018A&A...619A.161C (2018): Evidence for a massive dust-trapping vortex connected to spirals. Multi-wavelength analysis of the HD 135344B protoplanetary disk
+- 2018ApJ...857...18S (2018): Multiple Gaps in the Disk of the Class I Protostar GY 91
+- 2018ApJ...857...87L (2018): New Constraints on Turbulence and Embedded Planet Mass in the HD 163296 Disk from Planet-Disk Hydrodynamic Simulations
+- 2018ApJ...866L...6C (2018): High-resolution Millimeter Imaging of the CI Tau Protoplanetary Disk: A Massive Ensemble of Protoplanets from 0.1 to 100 au
+- 2018ApJ...869...17L (2018): Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region
+- 2018ApJ...869L..47Z (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). VII. The Planet-Disk Interactions Interpretation
+- 2018MNRAS.474.5105B (2018): HD 169142 in the eyes of ZIMPOL/SPHERE
+- 2018MNRAS.475.5296D (2018): Rings and gaps in the disc around Elias 24 revealed by ALMA
+- 2019A&A...622A..75L (2019): Ring structure in the MWC 480 disk revealed by ALMA
+- 2019A&A...624A..33V (2019): ALMA study of the HD 100453 AB system and the tidal interaction of the companion with the disk
+- 2019A&A...625A.118K (2019): Highly structured disk around the planet host PDS 70 revealed by high-angular resolution observations with ALMA
+- 2019AJ....157..237R (2019): Constraints on a Putative Planet Sculpting the V4046 Sagittarii Circumbinary Disk
+- 2019AJ....158...15P (2019): Dust Unveils the Formation of a Mini-Neptune Planet in a Protoplanetary Ring
+- 2019ApJ...871..107F (2019): Gas Density Perturbations Induced by One or More Forming Planets in the AS 209 Protoplanetary Disk as Seen with ALMA
+- 2019ApJ...879L...2M (2019): PDS 70: A Transition Disk Sculpted by a Single Planet
+- 2019ApJ...880...69Y (2019): HL Tau Disk in HCO<SUP>+</SUP> (3-2) and (1-0) with ALMA: Gas Density, Temperature, Gap, and One-arm Spiral
+- 2019NatAs...3..278K (2019): Publisher Correction: A circumbinary protoplanetary disk in a polar configuration
+- 2019NatAs...3.1109P (2019): Kinematic detection of a planet carving a gap in a protoplanetary disk
+- 2020A&A...633A..13D (2020): The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. II. The spiral-outflow observed at…
+- 2020ApJ...888L...4T (2020): Long-lived Dust Rings around HD 169142
+- 2020ApJ...895L..18B (2020): GW Ori: Interactions between a Triple-star System and Its Circumtriple Disk in Action
+- 2020ApJ...898...10T (2020): Circumbinary Disks of the Protostellar Binary Systems in the L1551 Region
+- 2020MNRAS.494.2131F (2020): Fast cloud-cloud collisions in a strongly barred galaxy: suppression of massive star formation
+- 2020MNRAS.499.3837G (2020): Spirals, shadows, and precession in HD 100453 - I. The orbit of the binary
+- 2020MNRAS.499.3857N (2020): Spirals, shadows &amp; precession in HD 100453 - II. The hidden companion
+- 2021A&A...654A..35B (2021): A multiwavelength analysis of the spiral arms in the protoplanetary disk around WaOph 6
+- 2023MNRAS.526L..41P (2023): Kinematic and thermal signatures of the directly imaged protoplanet candidate around Elias 2-24
+- 2023PASJ...75.1105K (2023): Kinematic signatures of a low-mass planet with a moderately inclined orbit in a protoplanetary disk
+- 2024A&A...682A..56Z (2024): Exploring the dust grain size and polarization mechanism in the hot and massive Class 0 disk IRAS 16293-2422 B
+- 2024A&A...688A.102T (2024): Orbital dynamics in the GG Tau A system: Investigating its enigmatic disc
+- 2024A&A...691A..57M (2024): SPH modelling of AGB wind morphology in hierarchical triple systems and a comparison to observation of R Aql
+- 2024ApJ...976..132H (2024): High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis
+- 2024MNRAS.534.2904C (2024): Observational signatures of circumbinary discs - II. Kinematic signatures in velocity residuals
+- 2025ApJ...984L..15P (2025): exoALMA. X. Channel Maps Reveal Complex <SUP>12</SUP>CO Abundance Distributions and a Variety of Kinematic Structures with Evidence for Emb…
+- 2025ApJ...984L..21B (2025): exoALMA. XVI. Predicting Signatures of Large-scale Turbulence in Protoplanetary Disks
+- 2025ApJ...986L..11S (2025): Hints of Disk Substructure in the First Brown Dwarf with a Dynamical Mass Constraint
+- 2026ApJ..1003..215F (2026): Reading between the Rings: Observed Dust Ring Properties as Probes of Planet Masses
+
+codex
+# Codex review: hydro-simulation-comparison
+VERDICT: FIX
+## Findings
+- SR-01 | medium | attribution | “Several papers do not run a simulation … (2016PASJ...68...43K)” | That paper’s pack excerpt explicitly includes new 2D FARGO simulations over a parameter grid; parameters.md also incorrectly classifies it under “no new simulation.” | Distinguish its simulation-calibration step from its subsequent scaling-relation application.
+- SR-02 | medium | attribution | “tested only seven orbits” | The pack’s 2020MNRAS.499.3837G summary is ambiguous, but its quoted caveat concerns the “small number of orbital configurations tested”; the validation quote describes evolution over 10 orbits. | Say seven orbital configurations were tested; do not interpret this as simulation duration.
+- SR-03 | high | attribution | “gap width … 4 R_Hill (2018ApJ...869...17L)” | The cited excerpt says “gap radius corresponds to 4 R_Hill,” not full gap width. Interchanging radius and full width changes the inferred Hill-based mass cubically. | Preserve the paper’s gap-radius convention and explicitly distinguish it from full-width prescriptions in Step 1.
+- SR-04 | high | attribution | “no magnetic fields or non-ideal MHD … (2025ApJ...984L..21B)” | The pack includes MRI models and identifies the omitted physics specifically as Hall effect and ambipolar diffusion. | Attribute absence of magnetic fields to 2020ApJ...898...10T; list the two omitted non-ideal effects separately for 2025ApJ...984L..21B.
+- SR-05 | medium | attribution | “Papers that skipped the simulator … (2017ApJ...839L..24M)” | That entry states “different uv coverage used,” which does not establish that no simulator was used. The corresponding Pitfalls sentence repeats this overstatement. | Describe mismatched uv coverage for this paper; reserve “no ALMA simulator” for 2024A&A...691A..57M.
+- SR-06 | medium | attribution | “alpha_SS in SPH disks … 3e-3 to 5e-3” | The pack explicitly gives alpha_SS approximately 1e-3 for the PHANTOM simulation in 2019NatAs...3.1109P. | Extend the reported range to approximately 1e-3–5e-3.
+- SR-07 | medium | attribution | “SPH particles … 2.5e5 to 5e6” | 2025ApJ...984L..15P starts with 1e6 particles, then splits each into 13 before the final two orbits. | Label the range as initial particle counts or include the final 1.3e7-particle stage.
+- SR-08 | medium | attribution | “Viscosity alpha … 1e-3 in 11” | Ten distinct bibcodes explicitly give this value in the supplied pack. Repeated key-parameter, assumption and excerpt entries do not establish eleven papers; “count of pack lines” also conflicts with the table’s “Papers” heading. | Recount using distinct bibcodes, provide the contributing list, and distinguish paper counts from repeated line occurrences.
+- SR-09 | medium | attribution | “Most papers judge by eye … 17 of the 40 excerpts” | Seventeen of forty is not a majority, and selected excerpts cannot establish the proportion across all 52 retained papers. | Say qualitative or visual comparison is frequent in the excerpted sample; remove “most.”
+- SR-10 | medium | unsupported | “Planet accretion / sink radius … Common choice: 0.125 Hill radius … 2” | Only 2025ApJ...984L..15P supplies that planetary value. The other cited check concerns a stellar accretion radius of 1 au in 2020ApJ...888L...4T. | Separate stellar and planetary sink radii and present 0.125 Hill radius as one paper’s setup, without a shared default.
+- SR-11 | high | science | “CO abundance … 12CO/H2 = 1e-4” | The table merges incompatible abundance conventions: 2025ApJ...984L..15P specifies 1e-4 relative to H, whereas 2019A&A...625A.118K and 2025ApJ...984L..21B specify relative to H2. | Record the denominator per paper and convert explicitly before configuring RT; preserve this distinction in the main table as parameters.md already does.
+- SR-12 | medium | science | “These need alpha, h/r, temperature and an opacity” | This blanket requirement incorrectly applies gas-disk inputs to every listed estimator. The quoted Hill prescription uses gap size, orbital radius, stellar mass and a coefficient; the debris-disk chaotic-zone route is a different physical regime. | Give method-specific inputs and applicability conditions rather than one universal input list.
+- SR-13 | medium | omission | “velocity residuals (2024MNRAS.534.2904C)” | The skill recommends residual comparisons but omits that paper’s explicit warning that residuals and Doppler-flips depend on the assumed Keplerian background. | Require the background model to be documented and its uncertainty or plausible alternatives tested before interpreting a residual as a companion signature.
+- SR-14 | medium | omission | “disk misalignment … (2020ApJ...895L..18B)” | The pack explicitly warns that dust alone cannot determine mutual angular-momentum inclinations because orbital directions are unknown. | Add this ambiguity and require gas-kinematic or orbital-direction constraints before claiming a unique mutual inclination.
+- SR-15 | medium | omission | “channel-map kinks … (2025ApJ...984L..15P)” | The skill retains subjectivity but drops the paper’s explicit inclination bias in kinematic-structure classification. | State that classification and detectability depend on viewing inclination; do not treat absence or class frequencies as directly comparable across geometries.
+- SR-16 | medium | omission | “Report … synthetic-observation settings” | The pack specifically flags missing rest frequency/systemic velocity, wake projection, extraction settings, and imaging masks/thresholds. Broad reporting language does not make these actionable, especially for kink amplitudes. | Add a concrete checklist covering spectral reference/frame, geometry and emission surface, extraction/masking, imaging parameters, and noise inputs.
+
+## Notes
+The software aggregate counts are transcribed accurately, and the workflow captures many important caveats.
+The principal risks are conflated conventions, overstated literature frequencies, and missing geometry-dependent qualifications.
+Keep reported example settings separate from recommended defaults.
+tokens used
+74,017
+# Codex review: hydro-simulation-comparison
+VERDICT: FIX
+## Findings
+- SR-01 | medium | attribution | “Several papers do not run a simulation … (2016PASJ...68...43K)” | That paper’s pack excerpt explicitly includes new 2D FARGO simulations over a parameter grid; parameters.md also incorrectly classifies it under “no new simulation.” | Distinguish its simulation-calibration step from its subsequent scaling-relation application.
+- SR-02 | medium | attribution | “tested only seven orbits” | The pack’s 2020MNRAS.499.3837G summary is ambiguous, but its quoted caveat concerns the “small number of orbital configurations tested”; the validation quote describes evolution over 10 orbits. | Say seven orbital configurations were tested; do not interpret this as simulation duration.
+- SR-03 | high | attribution | “gap width … 4 R_Hill (2018ApJ...869...17L)” | The cited excerpt says “gap radius corresponds to 4 R_Hill,” not full gap width. Interchanging radius and full width changes the inferred Hill-based mass cubically. | Preserve the paper’s gap-radius convention and explicitly distinguish it from full-width prescriptions in Step 1.
+- SR-04 | high | attribution | “no magnetic fields or non-ideal MHD … (2025ApJ...984L..21B)” | The pack includes MRI models and identifies the omitted physics specifically as Hall effect and ambipolar diffusion. | Attribute absence of magnetic fields to 2020ApJ...898...10T; list the two omitted non-ideal effects separately for 2025ApJ...984L..21B.
+- SR-05 | medium | attribution | “Papers that skipped the simulator … (2017ApJ...839L..24M)” | That entry states “different uv coverage used,” which does not establish that no simulator was used. The corresponding Pitfalls sentence repeats this overstatement. | Describe mismatched uv coverage for this paper; reserve “no ALMA simulator” for 2024A&A...691A..57M.
+- SR-06 | medium | attribution | “alpha_SS in SPH disks … 3e-3 to 5e-3” | The pack explicitly gives alpha_SS approximately 1e-3 for the PHANTOM simulation in 2019NatAs...3.1109P. | Extend the reported range to approximately 1e-3–5e-3.
+- SR-07 | medium | attribution | “SPH particles … 2.5e5 to 5e6” | 2025ApJ...984L..15P starts with 1e6 particles, then splits each into 13 before the final two orbits. | Label the range as initial particle counts or include the final 1.3e7-particle stage.
+- SR-08 | medium | attribution | “Viscosity alpha … 1e-3 in 11” | Ten distinct bibcodes explicitly give this value in the supplied pack. Repeated key-parameter, assumption and excerpt entries do not establish eleven papers; “count of pack lines” also conflicts with the table’s “Papers” heading. | Recount using distinct bibcodes, provide the contributing list, and distinguish paper counts from repeated line occurrences.
+- SR-09 | medium | attribution | “Most papers judge by eye … 17 of the 40 excerpts” | Seventeen of forty is not a majority, and selected excerpts cannot establish the proportion across all 52 retained papers. | Say qualitative or visual comparison is frequent in the excerpted sample; remove “most.”
+- SR-10 | medium | unsupported | “Planet accretion / sink radius … Common choice: 0.125 Hill radius … 2” | Only 2025ApJ...984L..15P supplies that planetary value. The other cited check concerns a stellar accretion radius of 1 au in 2020ApJ...888L...4T. | Separate stellar and planetary sink radii and present 0.125 Hill radius as one paper’s setup, without a shared default.
+- SR-11 | high | science | “CO abundance … 12CO/H2 = 1e-4” | The table merges incompatible abundance conventions: 2025ApJ...984L..15P specifies 1e-4 relative to H, whereas 2019A&A...625A.118K and 2025ApJ...984L..21B specify relative to H2. | Record the denominator per paper and convert explicitly before configuring RT; preserve this distinction in the main table as parameters.md already does.
+- SR-12 | medium | science | “These need alpha, h/r, temperature and an opacity” | This blanket requirement incorrectly applies gas-disk inputs to every listed estimator. The quoted Hill prescription uses gap size, orbital radius, stellar mass and a coefficient; the debris-disk chaotic-zone route is a different physical regime. | Give method-specific inputs and applicability conditions rather than one universal input list.
+- SR-13 | medium | omission | “velocity residuals (2024MNRAS.534.2904C)” | The skill recommends residual comparisons but omits that paper’s explicit warning that residuals and Doppler-flips depend on the assumed Keplerian background. | Require the background model to be documented and its uncertainty or plausible alternatives tested before interpreting a residual as a companion signature.
+- SR-14 | medium | omission | “disk misalignment … (2020ApJ...895L..18B)” | The pack explicitly warns that dust alone cannot determine mutual angular-momentum inclinations because orbital directions are unknown. | Add this ambiguity and require gas-kinematic or orbital-direction constraints before claiming a unique mutual inclination.
+- SR-15 | medium | omission | “channel-map kinks … (2025ApJ...984L..15P)” | The skill retains subjectivity but drops the paper’s explicit inclination bias in kinematic-structure classification. | State that classification and detectability depend on viewing inclination; do not treat absence or class frequencies as directly comparable across geometries.
+- SR-16 | medium | omission | “Report … synthetic-observation settings” | The pack specifically flags missing rest frequency/systemic velocity, wake projection, extraction settings, and imaging masks/thresholds. Broad reporting language does not make these actionable, especially for kink amplitudes. | Add a concrete checklist covering spectral reference/frame, geometry and emission surface, extraction/masking, imaging parameters, and noise inputs.
+
+## Notes
+The software aggregate counts are transcribed accurately, and the workflow captures many important caveats.
+The principal risks are conflated conventions, overstated literature frequencies, and missing geometry-dependent qualifications.
+Keep reported example settings separate from recommended defaults.

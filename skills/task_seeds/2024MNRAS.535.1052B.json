@@ -1,0 +1,308 @@
+{
+ "bibcode": "2024MNRAS.535.1052B",
+ "title": "The radio-infrared nebula in II Zw 40: clusters forming in colliding elongated clouds",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae2447",
+ "arxiv_id": "2410.17788",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Deduce the history of the current active starburst centered on the radio-infrared supernebula in II Zw 40 and test whether it is the collision or merger of two star clusters associated with elongated molecular clouds.",
+ "alma_project_codes": [
+  "2013.1.00122.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.34 x 0.25 arcsec",
+  "sensitivity": "3.5 x 10^-5 Jy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Luminosity and mass of SSC-N (9.1 +/- 1 x 10^5 M_sun, 1.1 +/- 0.1 x 10^9 L_sun)",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "The luminosity and mass of SSC-N deduced from optical and UV observations are an order of magnitude greater than those of 30 Doradus (9 . 1±1×10 [5] M ⊙, 1 . 1±0 . 1×10 [9] L ⊙, (Leitherer et al. 2018))."
+     }
+    ]
+   },
+   "citation": "Leitherer et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass on components W and C (3.5 x 10^5 M_sun) and source positions/identifications (W, C, E)",
+    "evidence": [
+     {
+      "loc": "3.2 Spatial Structure of Dense Molecular Gas",
+      "quote": "The dominant molecular peak marked as ’W4’ in Figure 6, agrees with Consiglio et al. (2017)’s CO and 3 mm continuum peak ’W’, and is co-incident with the radio and infrared cluster."
+     },
+     {
+      "loc": "6.2 Summary and Comments",
+      "quote": "the 3.5×10 [5] M ⊙ of molecular gas Consiglio et al. (2017) find on ’W’ and ’C’ is less than the stellar mass deduced for the clusters."
+     }
+    ]
+   },
+   "citation": "Consiglio et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Upper range of the age of SSC-N (3 Myr)",
+    "evidence": [
+     {
+      "loc": "6.2 Summary and Comments",
+      "quote": "As the upper range of the age of SSC-N is 3Myr Vanzi et al. (2008), both options are at present valid and the simulations cannot at present distinguish."
+     }
+    ]
+   },
+   "citation": "Vanzi et al. (2008)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Map radio continuum and mid-IR [S IV] emission of ionized gas",
+   "method": "Clean and image JVLA 15 and 22 GHz continuum data with natural and Briggs (robust = 0) weighting; scan Gemini North TEXES slit across target to build [S IV] 10.5 um spectral cube; collapse cube and extract spectrum and 2-Gaussian fit.",
+   "software": [
+    "JVLA pipeline 4.7.1",
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [
+    "robust = 0 (Briggs weighting) and natural weighting for JVLA maps",
+    "TEXES cube: 23 x 0.25 arcsec pixels in RA, 32 x 0.14 arcsec pixels in Dec, 256 x 0.95 km s^-1 channels"
+   ],
+   "assumptions": [
+    "T_e ~ 10^4 K giving S^+++ thermal broadening of ~3.5 km s^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Analyze spatial distribution and kinematics of CO(3-2) molecular gas",
+   "method": "Generate moment 0, 1, and 2 maps, position-velocity diagrams (PVDs) along RA and Dec, and region-integrated line profiles (5 positions) from the continuum-subtracted ALMA CO(3-2) spectral cube.",
+   "software": [
+    "CASA 4.2.2"
+   ],
+   "key_parameters": [
+    "2 km s^-1 spectral channels, 0.34 x 0.25 arcsec beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Simulate individual star cluster evolution prior to collision",
+   "method": "Evolve two isolated star clusters (large and small) for 2 Myr using AMUSE coupling N-body (ph4), Tree-SPH (GADGET-2), stellar evolution (SeBA), and stellar winds ('heat' mode) via a Bridge scheme.",
+   "software": [
+    "AMUSE",
+    "ph4",
+    "GADGET-2",
+    "SeBA"
+   ],
+   "key_parameters": [
+    "Cluster total masses: 4.5 x 10^5 M_sun (large) and 2.2 x 10^5 M_sun (small); O star counts: 4300 and 2150",
+    "SPH particle mass = 1.5 M_sun; initial gas T = 10^4 K; evolution time = 2 Myr; timestep = 10 kyr"
+   ],
+   "assumptions": [
+    "Star cluster has already formed in each clump prior to collision; gas comprises 70% of total cluster mass",
+    "Plummer sphere for gas; King model for stars; Salpeter IMF in mass range [15, 120] M_sun"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simulate cluster-cluster collisions and generate synthetic CO(3-2) and [S IV] observations",
+   "method": "Trim evolved clusters to slightly above virial radius, collide them over a grid of impact parameters (b = 0 to 6 pc), interpolate SPH gas properties onto a 3D grid, run RADMC-3D at inclinations of 45, 60, and 75 deg, convolve with observed beam, and compare moment 0, PVDs, and line profiles to ALMA and TEXES observations.",
+   "software": [
+    "AMUSE",
+    "ph4",
+    "GADGET-2",
+    "SeBA",
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "Initial collision velocity ~ 120 km s^-1; impact parameter b = 0 to 6 pc in 0.5 pc increments; runtime = 0.5 Myr with 10^4 yr timestep",
+    "RADMC-3D grid: 256 x 256 x 256 covering 60 x 60 x 60 pc; inclinations: 45, 60, and 75 deg"
+   ],
+   "assumptions": [
+    "Large-scale spatial distribution and kinematics of CO and [S IV] are similar as they roughly trace the same gas mass"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "22 GHz radio continuum bright clump resolved size",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Radio Continuum: Multiple Clusters?",
+     "quote": "The highest resolution radio map, Figure 1c, has a 0.12 [′′] beam and shows the bright clump to be resolved with size 0.13 [′′] or ≈ 6 . 5 pc (in both axes) and flux 0.59 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "22 GHz radio continuum bright clump physical size",
+   "value": "6.5",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Radio Continuum: Multiple Clusters?",
+     "quote": "The highest resolution radio map, Figure 1c, has a 0.12 [′′] beam and shows the bright clump to be resolved with size 0.13 [′′] or ≈ 6 . 5 pc (in both axes) and flux 0.59 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "22 GHz radio continuum bright clump flux",
+   "value": "0.59",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Radio Continuum: Multiple Clusters?",
+     "quote": "The highest resolution radio map, Figure 1c, has a 0.12 [′′] beam and shows the bright clump to be resolved with size 0.13 [′′] or ≈ 6 . 5 pc (in both axes) and flux 0.59 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "[S IV] 10.5 um line peak velocity",
+   "value": "745",
+   "uncertainty": "5",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Ionized Gas:Double Peak or Extended Wing?",
+     "quote": "The new data confirm that 1) the line peaks at 745 ± 5 km s [−][1], 2) emission covers an extraordinarily large velocity range of ∼ 130 km s [−][1] FWZI"
+    }
+   ]
+  },
+  {
+   "quantity": "[S IV] 10.5 um velocity range (FWZI)",
+   "value": "130",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Ionized Gas:Double Peak or Extended Wing?",
+     "quote": "The new data confirm that 1) the line peaks at 745 ± 5 km s [−][1], 2) emission covers an extraordinarily large velocity range of ∼ 130 km s [−][1] FWZI"
+    }
+   ]
+  },
+  {
+   "quantity": "[S IV] 2-Gaussian fit component velocities",
+   "value": "744, 775",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Ionized Gas:Double Peak or Extended Wing?",
+     "quote": "The line profile could be formally fit by 2 gaussians at ∼ 744 , 775 km s [−][1] consistent with the IRTF results"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) velocity range in eastern clump (Feature E)",
+   "value": "750-780",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular Gas: Two Elongated Clouds at Different Velocities",
+     "quote": "In the eastern clump (Feature E of Consiglio et al. (2017)) the profile is flat-topped, almost rectangular, and covers ∼ 750 − 780 km s [−][1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) blue velocity peak in main molecular streamer",
+   "value": "745-750",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular Gas: Two Elongated Clouds at Different Velocities",
+     "quote": "The blue peak is consistently at ∼ 745 − 750 km s [−][1] and the red varies between ∼ 760−772 km s [−][1]"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) red velocity peak in main molecular streamer",
+   "value": "760-772",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular Gas: Two Elongated Clouds at Different Velocities",
+     "quote": "The blue peak is consistently at ∼ 745 − 750 km s [−][1] and the red varies between ∼ 760−772 km s [−][1]"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-matching cluster collision impact parameter (b)",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3.2 Cluster Collision",
+     "quote": "We determine that the best match to the CO and [S IV] observations occurs for the 𝑏 = 4pc impact parameter, at the 𝑇 = 0 . 5Myr timestep, when observed at a 45° inclination angle."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-matching cluster collision simulation timestep (T)",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3.2 Cluster Collision",
+     "quote": "We determine that the best match to the CO and [S IV] observations occurs for the 𝑏 = 4pc impact parameter, at the 𝑇 = 0 . 5Myr timestep, when observed at a 45° inclination angle."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-matching observation inclination angle",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3.2 Cluster Collision",
+     "quote": "We determine that the best match to the CO and [S IV] observations occurs for the 𝑏 = 4pc impact parameter, at the 𝑇 = 0 . 5Myr timestep, when observed at a 45° inclination angle."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA tclean/clean imaging parameters (weighting scheme, robust parameter, cell size, image size, deconvolution algorithm, masking, stopping threshold)",
+  "Frequency or channel ranges used for ALMA uv-plane continuum subtraction",
+  "Exact virial radii and initial Plummer/King scale radii used to initialize and trim the two simulated star clusters",
+  "Initial separation distance and exact 3D trajectory angle for the colliding cluster simulation",
+  "Chemical abundances (CO and S^3+ relative abundances), excitation/temperature assumptions, and gas-to-dust parameters used in RADMC-3D line radiative transfer"
+ ],
+ "missing_for_reproduction": [
+  "Custom AMUSE simulation scripts and RADMC-3D setup scripts",
+  "Initial scale radii (Plummer sphere radius, King model W0 and core/virial radii) for the two model clusters",
+  "Exact 3D initial position vector and velocity vector of the small cluster in the collision runs",
+  "RADMC-3D input parameters (assumed CO abundance, S^3+ abundance, level population / excitation treatment, microturbulence)",
+  "ALMA imaging script and tclean/clean parameters (weighting, cell size, threshold) used to produce the CO(3-2) cube"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Raw observational datasets (ALMA, JVLA, Gemini) are public and basic observational metrics (flux, size, line velocities) can be re-measured from the cubes/maps, but ALMA imaging parameters are largely omitted (likely inherited from Consiglio et al. 2016/2017) and the AMUSE/RADMC-3D simulation scripts and several initial condition / radiative transfer parameters are not released.",
+ "rediscovery_reason": "All observational data (ALMA 2013.1.00122.S, JVLA 16B-067, Gemini GN-2017A-Q-57) are public in observatory archives, and the primary observational measurements (22 GHz clump size and flux, [S IV] and CO(3-2) velocity components and PVDs) can be directly reproduced from the archival data.",
+ "source_card": "cards/2024MNRAS.535.1052B/sonnet/card.md"
+}

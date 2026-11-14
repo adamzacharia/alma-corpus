@@ -1,0 +1,452 @@
+{
+ "bibcode": "2024A&A...688A...3H",
+ "title": "High-mass star formation across the Large Magellanic Cloud: I. Chemical properties and hot molecular cores observed with ALMA at 1.2 mm",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202349077",
+ "arxiv_id": "2405.01710",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "nearby_galaxies"
+ ],
+ "question": "How does sub-solar metallicity in the Large Magellanic Cloud impact high-mass star formation, the formation of different molecular species, and the properties of hot molecular cores?",
+ "alma_project_codes": [
+  "2017.1.00696.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm)",
+  "arrays": "12-m Array",
+  "angular_resolution": "~0.4\" (~0.09 pc); ~0.35\" (0.08 pc)",
+  "sensitivity": "continuum: ~65 uJy beam^-1 (10 mK); cubes: ~1.92 mJy beam^-1 (0.23 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "YSO catalog and coordinates",
+    "evidence": [
+     {
+      "loc": "2.1. Sample selection",
+      "quote": "We selected 20 massive YSOs identified with Spitzer (e.g., Gruendl & Chu 2009) distributed throughout the LMC to be observed with ALMA (see Table 1 for their names and coordinates"
+     }
+    ]
+   },
+   "citation": "Gruendl & Chu 2009"
+  },
+  {
+   "what": {
+    "value": "Core masses, H2 densities, H2 column densities, and continuum core definitions for the 65 compact sources",
+    "evidence": [
+     {
+      "loc": "3. Results and analysis",
+      "quote": "A total of 65 compact sources were identified in the continuum images of the 20 fields in the LMC, defined by the 50% intensity contour level around well-defined intensity peaks (see Paper II)."
+     },
+     {
+      "loc": "3.2.3. Chemical contents of the cores",
+      "quote": "The abundances were derived by dividing the column density of every molecule by the molecular hydrogen column density (N(H2), derived in Paper II)."
+     }
+    ]
+   },
+   "citation": "Hamedani Golshan et al. 2024 (Paper II)"
+  },
+  {
+   "what": {
+    "value": "Temperatures and molecular abundances for LMC hot cores ST11, ST16, N113 A1, N113 B3, N105-2 A, and N105-2 B",
+    "evidence": [
+     {
+      "loc": "Figure 12 caption",
+      "quote": "The top panels show a comparison of 4A and ST16 (Shimonishi et al. 2020), the middle panels show 6A and N105-2B, and the bottom panels show 6B and N105-2A (Sewiło et al. 2022)."
+     },
+     {
+      "loc": "4.2.1. Comparison of the hot cores in the LMC",
+      "quote": "Sewiło et al. (2018) discovered the first two chemically rich hot cores in the N113 star-forming region, N113 A1 and N113 B3"
+     },
+     {
+      "loc": "4.2.1. Comparison of the hot cores in the LMC",
+      "quote": "In contrast, the hot core ST11 reported by Shimonishi et al. (2016b) was detected based on the presence of hot SO2"
+     }
+    ]
+   },
+   "citation": "Shimonishi et al. 2016b; Sewiło et al. 2018; Shimonishi et al. 2020; Sewiło et al. 2022"
+  },
+  {
+   "what": {
+    "value": "Molecular abundances for SMC hot cores S07 and S09, outer Galaxy hot core WB 89-789 SMM1, Orion Hot Core, Sgr B2(N), and W3(H2O)",
+    "evidence": [
+     {
+      "loc": "Figure 15 caption",
+      "quote": "The SMC hot cores are included, S07 and S09 (Shimonishi et al. 2023)."
+     },
+     {
+      "loc": "4.3. Hot cores in the LMC, SMC, and MW",
+      "quote": "In the case of WB 89−789 SMM1, we used the abundances calculated for a source with a size of 0.1 pc (from Table 4 of Shimonishi et al. (2021))."
+     },
+     {
+      "loc": "4.3. Hot cores in the LMC, SMC, and MW",
+      "quote": "In particular, we considered the Orion Hot Core (Sutton et al. 1995), Sgr B2(N) (Nummelin et al. 2000) and W3(H2O) (Helmich & van Dishoeck 1997)"
+     }
+    ]
+   },
+   "citation": "Sutton et al. 1995; Helmich & van Dishoeck 1997; Nummelin et al. 2000; Shimonishi et al. 2021; Shimonishi et al. 2023"
+  },
+  {
+   "what": {
+    "value": "CDMS spectroscopic catalog and LAMDA collision parameters",
+    "evidence": [
+     {
+      "loc": "3.1. Spectral analysis of the continuum cores",
+      "quote": "we identified the molecular lines toward the most chemically rich sources (i.e., spectra with the largest number of line detections; see Fig. 3 for an example) using the CDMS catalog (Cologne Database for Molecular Spectroscopy; Müller et al. 2005)."
+     },
+     {
+      "loc": "3.1. Spectral analysis of the continuum cores",
+      "quote": "The collision parameters are from the Leiden Atomic and Molecular Database (LAMDA, Schöier et al. 2005)."
+     }
+    ]
+   },
+   "citation": "Müller et al. 2005; Schöier et al. 2005"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify compact continuum cores and extract average spectra",
+   "method": "Identify 65 compact cores using the 50% peak-intensity contour around intensity peaks (>5 sigma_rms) on 1.2 mm continuum maps (in Paper II), and extract average spectra from primary beam corrected cubes over enclosed pixels.",
+   "software": [
+    "spectral-cube"
+   ],
+   "key_parameters": [
+    "50% peak-intensity contour aperture; peak continuum flux > 5 sigma_rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate spectral noise and identify molecular transitions",
+   "method": "Perform sigma-clipping analysis on each extracted spectrum to determine noise (sigma_rms), classify lines as definite (>5 sigma_rms) or tentative (3-5 sigma_rms), and identify transitions using the CDMS catalog.",
+   "software": [],
+   "key_parameters": [
+    "Definite detection threshold > 5 sigma_rms; tentative detection threshold 3 to 5 sigma_rms; upper limit threshold S/N < 3"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model molecular spectra and derive physical parameters (T, N, FWHM, v_LSR)",
+   "method": "Solve 1D radiative transfer equation with XCLASS. Fit CH3OH in non-LTE (and LTE for comparison), SO2 and CH3CN in LTE when >2 transitions detected, and fix T for remaining molecules to the CH3OH temperature (or median 27 K). Use a two-layer model (sub-beam hot core + beam-filling cold envelope) for hot cores 4A, 6A, 6B, and 14A.",
+   "software": [
+    "XCLASS",
+    "MAGIX"
+   ],
+   "key_parameters": [
+    "Beam-filling factor = 1 (for single-component fits and foreground envelope); A/E CH3OH ratio = 1; fixed n_col = 2.0e6 cm^-3 when <=2 CH3OH lines; fixed median T = 27 K when CH3OH undetected; fixed T_e = 10^4 K for H36beta fit"
+   ],
+   "assumptions": [
+    "All molecular species are located within a core layer at the position of the source (except the 4 two-component hot cores); isotopologues share the same temperature and velocity profile as main species; LAMDA collision rates apply for non-LTE CH3OH."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate core masses, H2 column densities, and fractional molecular abundances",
+   "method": "Calculate dust and gas masses and H2 column densities from 1.2 mm continuum using XCLASS temperatures (in Paper II), then divide molecular column densities N(X) by N(H2) to obtain fractional abundances.",
+   "software": [],
+   "key_parameters": [
+    "Dust opacity = 1.04 cm^2 g^-1; gas-to-dust mass ratio = 316 (or 320); metallicity scaling factors: 5 (SMC), 2.6 (LMC), 4 (outer Galaxy)"
+   ],
+   "assumptions": [
+    "1.2 mm continuum emission originates in optically thin dust; dust and gas are well mixed and have the same temperature."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare observed hot core abundances with chemical models and across galaxies",
+   "method": "Compare observed LMC hot core abundances against time-dependent astrochemical models from Acharyya & Herbst (2018) for different initial dust temperatures (10, 15, 20, 25 K), and compare metallicity-scaled abundances across LMC, SMC, and MW hot cores.",
+   "software": [],
+   "key_parameters": [
+    "Initial dust temperatures = 10, 15, 20, 25 K; final hot core temperatures = 100, 200 K"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of compact 1.2 mm continuum cores detected",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected a total of 65 compact 1.2 mm continuum cores in the 20 ALMA fields and analyzed their spectra with XCLASS software."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass range of continuum cores",
+   "value": "20–1000",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "masses [2] in the range of 20–1000 M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 volume density range of continuum cores",
+   "value": "1.2e5–4.0e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "H 2 densities in the range 1.2 × 10 [5] –4.0 × 10 [6] cm [−][3]"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density range of continuum cores",
+   "value": "6.0e22–1.5e24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "6.0 × 10 [22] –1.5 × 10 [24] cm [−][2]"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of hot molecular cores detected in sample",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "According to the chemical richness of the cores and high temperatures from the XCLASS fitting, we report the detection of four hot cores and one hot core candidate."
+    }
+   ]
+  },
+  {
+   "quantity": "Hot CH3OH temperature in hot core 14A",
+   "value": "163",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "14A CH3OH 163 1.79 × 10^15 4.9 249.8 1.06 × 10^-8"
+    },
+    {
+     "loc": "3.1. Spectral analysis of the continuum cores",
+     "quote": "The error values range from 40%-60% for the temperatures, 20%-40% for the column densities, and 10%-30% for the line widths and velocity shifts."
+    }
+   ]
+  },
+  {
+   "quantity": "HotCH3OH column density in hot core 14A",
+   "value": "1.79e15",
+   "uncertainty": "20%-40%",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "14A CH3OH 163 1.79 × 10^15 4.9 249.8 1.06 × 10^-8"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot CH3OH abundance in hot core 14A",
+   "value": "1.06e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "14A CH3OH 163 1.79 × 10^15 4.9 249.8 1.06 × 10^-8"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot SO2 temperature in hot core 14A",
+   "value": "138",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "SO2 138 1.48 × 10^15 8.0 250.6 7.36 × 10^-9"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot SO2 column density in hot core 14A",
+   "value": "1.48e15",
+   "uncertainty": "20%-40%",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "SO2 138 1.48 × 10^15 8.0 250.6 7.36 × 10^-9"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN temperature in hot core 14A",
+   "value": "42",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "CH3CN 42 1.78 × 10^13 4.2 249.9 2.42 × 10^-11"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot CH3OH temperature in hot core 4A",
+   "value": "151",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "4A CH3OH 151 1.29 × 10^15 3.2 264.3 3.55 × 10^-9"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot SO2 temperature in hot core 4A",
+   "value": "249",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "SO2 249 4.47 × 10^15 7.1 265.5 2.06 × 10^-8"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot CH3OH temperature in hot core 6A",
+   "value": "149",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "6A CH3OH 149 1.46 × 10^15 5.7 242.4 3.60 × 10^-9"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot SO2 temperature in hot core 6A",
+   "value": "161",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "SO2 161 5.28 × 10^15 12.5 245.5 1.42 × 10^-8"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot CH3OH temperature in hot core 6B",
+   "value": "181",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "6B CH3OH 181 1.60 × 10^15 2.9 243.1 5.50 × 10^-9"
+    }
+   ]
+  },
+  {
+   "quantity": "Hot SO2 temperature in hot core 6B",
+   "value": "175",
+   "uncertainty": "40%-60%",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.2",
+     "quote": "SO2 175 1.53 × 10^15 6.0 243.0 5.03 × 10^-9"
+    }
+   ]
+  },
+  {
+   "quantity": "32S/33S isotopic ratio in hot cores 4A and 6A",
+   "value": "12 to 21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1. Hot cores in our survey",
+     "quote": "We derived the isotopic ratios of 32S/33S and 32S/34S toward hot cores 4A and 6A and found them to vary between 12 and 21 and 9 and 19."
+    }
+   ]
+  },
+  {
+   "quantity": "32S/34S isotopic ratio in hot cores 4A and 6A",
+   "value": "9 to 19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1. Hot cores in our survey",
+     "quote": "We derived the isotopic ratios of 32S/33S and 32S/34S toward hot cores 4A and 6A and found them to vary between 12 and 21 and 9 and 19."
+    }
+   ]
+  },
+  {
+   "quantity": "Emission measure of H36beta in source 3A",
+   "value": "2.5e6",
+   "uncertainty": "not stated",
+   "units": "pc cm^-6",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Spectral analysis of the continuum cores",
+     "quote": "obtaining an emission measure estimate of 2.5 × 10 [6] pc cm [−][6], a line"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of line-free channels used for uvcontsub continuum subtraction",
+  "Deconvolver, pixel cell size, image dimensions, clean threshold, and masking strategy used in CASA tclean",
+  "Exact coordinates and 50% peak-intensity contour apertures for each of the 65 compact cores (deferred to Paper II)",
+  "Exact sub-beam source sizes fixed for the hot core component in the two-layer XCLASS models for sources 4A, 6A, 6B, and 14A",
+  "Resolution of discrepancy between gas-to-dust mass ratio stated as 316 in Section 3 and 320 in Section 4.1.2 and Table B.2 notes"
+ ],
+ "missing_for_reproduction": [
+  "Exact coordinates, sizes, and N(H2) values for all 65 continuum cores (published separately in Paper II)",
+  "Exact sub-beam source size values fixed for the hot core components of 4A, 6A, 6B, and 14A in XCLASS",
+  "Exact frequency ranges of line-free channels used for uvcontsub",
+  "tclean imaging parameters (cell size, image size, stopping threshold, deconvolver, masking)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project code (2017.1.00696.S), calibration software, spectral setup, and XCLASS fitting methodology/results (Tables B.1 and B.2) are thoroughly documented, but full standalone reproduction requires core positions/apertures and N(H2) values from Paper II as well as the unstated sub-beam source sizes used in the two-layer hot core fits.",
+ "rediscovery_reason": "Public Cycle 5 ALMA dataset (2017.1.00696.S) with clear numeric targets (65 continuum cores, 4 hot cores with T > 100 K including newly discovered hot core 14A, and complete tables of XCLASS temperatures, column densities, line widths, and sulfur isotopic ratios).",
+ "source_card": "cards/2024A%26A...688A...3H/sonnet/card.md"
+}

@@ -1,0 +1,369 @@
+{
+ "bibcode": "2022A&A...665A..82O",
+ "title": "CO line observations of OH/IR stars in the inner Galactic Bulge: Characteristics of stars at the tip of the AGB",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202244053",
+ "arxiv_id": "2207.09701",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "Characterise the stellar and circumstellar properties (luminosities, mass-loss rates, expansion velocities, gas-to-dust ratios, and 12CO/13CO abundance ratios) of high-mass-loss-rate OH/IR stars in the inner Galactic Bulge.",
+ "alma_project_codes": [
+  "2016.1.00983.S"
+ ],
+ "data": {
+  "bands": "Band 6, Band 7",
+  "arrays": "12 m array (41 to 45 antennas)",
+  "angular_resolution": "0.16''-0.18'' (typically) and 0.19'' (final) in Band 6; 0.11''-0.17'' (typically) and 0.14'' (final) in Band 7",
+  "sensitivity": "Line rms (at 5 km/s): ~4 mJy/beam (13CO 3-2), ~9 mJy/beam (12CO 2-1), ~24 mJy/beam (12CO 3-2); Continuum rms: ~0.23, 0.13, and 0.65 mJy/beam at 222, 324, and 339 GHz"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "OH 1612 MHz maser detections and source lists in the inner Galactic Bulge",
+    "evidence": [
+     {
+      "loc": "The sample",
+      "quote": "The objects were selected among the OH/IR stars detected in OH 1612 MHz emission by (cite: lindetal92a), (cite: seveetal97a), and (cite: sjouetal98) within about 2$^\\circ$ of the GC (corresponding to $\\ensuremath{\\lesssim}$ 300 pc), that is the inner GB."
+     }
+    ]
+   },
+   "citation": "(cite: lindetal92a), (cite: seveetal97a), (cite: sjouetal98)"
+  },
+  {
+   "what": {
+    "value": "Interstellar CO(J=2-1) line emission maps used for sample selection (<2.2 K)",
+    "evidence": [
+     {
+      "loc": "The sample",
+      "quote": "Stars in directions where the CO($J$ = 2–1) line emission obtained by (cite: sawaetal01) exceeds 2.2 K in intensity were omitted in order to minimise the effect of interstellar CO line emission along the line of sight."
+     }
+    ]
+   },
+   "citation": "(cite: sawaetal01)"
+  },
+  {
+   "what": {
+    "value": "Distance to the Galactic Centre (8.2 kpc)",
+    "evidence": [
+     {
+      "loc": "The sample",
+      "quote": "We have adopted a distance to the GC of 8.2 kpc, based on the recent estimate of the distance to the black hole in the GC by the Gravity Collaboration (cite: gravcoll19)."
+     }
+    ]
+   },
+   "citation": "(cite: gravcoll19)"
+  },
+  {
+   "what": {
+    "value": "Photometric catalogues (ISOGAL, MSX, UKIDSS-DR6, MIPSGAL, AllWISE, Pan-STARRS DR1, Hi-GAL, IRAS, NOMAD, GLIMPSE, AKARI, Herschel/PACS)",
+    "evidence": [
+     {
+      "loc": "Photometry and variability",
+      "quote": "The specific catalogues used were the ISOGAL Point Source Catalogue (cite: omonetal03), the Midcourse Space Experiment Point Source Catalog Version 2.3 (cite: eganetal03), OH-selected AGB and post-AGB objects (cite: seve02), the UKIDSS-DR6 Galactic Plane Survey (cite: lucaetal08)"
+     },
+     {
+      "loc": "Photometry and variability",
+      "quote": "the MIPSGAL 24 $\\mu$m point source catalogue (cite: guteheye15), AllWISE (cite: cutretal13), the Pan-STARRS release 1 (PS1) Survey - DR1 (cite: chametal16), the Hi-GAL inner Milky Way: +68 $\\ge$ $\\ell$ $\\le$ +70 (cite: molietal16), the Hi-GAL compact source catalogue (cite: eliaetal17)"
+     },
+     {
+      "loc": "Photometry and variability",
+      "quote": "the IRAS PSC/FSC Combined Catalogue (cite: abraetal15), Catalog of 24 $\\mu$m sources toward Galactic Center (cite: hinzetal09), NOMAD Catalog (cite: zachetal05), the Galactic Legacy Infrared Midplane Survey Extraordinaire (cite: spitscie09), AKARI/IRC mid-IR all-sky Survey (cite: ishietal10), and the Herschel/PACS Point Source Catalogs (cite: hpsc20)."
+     }
+    ]
+   },
+   "citation": "(cite: omonetal03; eganetal03; seve02; lucaetal08; guteheye15; cutretal13; chametal16; molietal16; eliaetal17; abraetal15; hinzetal09; zachetal05; spitscie09; ishietal10; hpsc20)"
+  },
+  {
+   "what": {
+    "value": "Reddening E(J-Ks) and interstellar extinction laws up to 30 um",
+    "evidence": [
+     {
+      "loc": "Photometry and variability",
+      "quote": "We have retrieved the reddening $E(J-K_{\\rm s})$ towards each source using the results of (cite: gonzetal18)."
+     },
+     {
+      "loc": "Photometry and variability",
+      "quote": "The reddening is converted into extinction in the $K_{\\rm s}$ band, $A_{K_{\\rm s}}$ given in Table 2, and extrapolated up to 8 $\\mu$m using the relationships provided by (cite: nishetal09). In the range 8 to 30 $\\mu$m we use the results of (cite: wangetal15) and (cite: xueetal16)."
+     }
+    ]
+   },
+   "citation": "(cite: gonzetal18), (cite: nishetal09), (cite: wangetal15), (cite: xueetal16)"
+  },
+  {
+   "what": {
+    "value": "Collisional rate coefficients between CO and para-/ortho-H2",
+    "evidence": [
+     {
+      "loc": "CO line radiation",
+      "quote": "The collisional rate coefficients between CO and para- and ortho-H$_2$ are taken from (cite: yangetal10)."
+     }
+    ]
+   },
+   "citation": "(cite: yangetal10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Suppress interstellar CO contamination and image line and continuum emission",
+   "method": "Image visibilities using CASA tclean with Briggs weighting (robust = 0.5). Where interstellar CO emission contaminates the line of sight, reject visibilities from shortest baselines (<25 m or <50 m) before imaging.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5; velocity resolution = 5 km s^-1; baseline cutoffs >25 m or >50 m for affected sources"
+   ],
+   "assumptions": [
+    "Eliminating baselines <= 50 m suppresses extended emission on scales > 5-10'' without significant loss of circumstellar flux"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure source positions, sizes, and continuum flux densities, and extract line profiles",
+   "method": "Fit 2D Gaussians in the image plane to velocity-integrated line brightness distributions and continuum maps to determine positions, deconvolved FWHMs, and continuum fluxes. Extract line spectra over apertures 2-3 times the brightness distribution FWHM and fit an analytical line profile function.",
+   "software": [],
+   "key_parameters": [
+    "Aperture size = 2-3 times FWHM of brightness distribution; Line shape function S(v) = S(v_c) [1 - ((v - v_c)/v_inf)^2]^beta"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Construct extinction-corrected SEDs and determine pulsation periods",
+   "method": "Gather archival photometry (1-30+ um), correct for interstellar extinction up to 30 um using reddening maps and extinction laws, and analyse VVV Ks and WISE W1/W2 light curves to determine single pulsation periods.",
+   "software": [],
+   "key_parameters": [
+    "Wavelengths corrected for extinction: <= 30 um"
+   ],
+   "assumptions": [
+    "Single pulsation period assumed in light curve fitting"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model dust continuum SEDs to derive luminosities, dust mass-loss rates, and CSE inner radii",
+   "method": "Fit dust radiative transfer models using MCMax to extinction-corrected photometry at wavelengths > 1 um, and integrate the fitted SED over wavelength using the adopted distance to derive stellar luminosity and dust mass-loss rate.",
+   "software": [
+    "MCMax"
+   ],
+   "key_parameters": [
+    "Grain size distribution power-law index = -3.5, a_min = 0.001 um, a_max = 1.0 um; R_out = 10000 au; initial T_* = 2500 K; T_d(R_in) = 1000 K (for standard envelopes)"
+   ],
+   "assumptions": [
+    "Spherical symmetry; r^-2 density distribution (constant mass-loss rate and expansion velocity); astronomical silicate grains (cite: osseetal92); dust expansion velocity equals CO gas expansion velocity; GC distance = 8.2 kpc for inner-GB sources"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model CO line radiative transfer to derive gas mass-loss rates, terminal expansion velocities, gas-to-dust ratios, and 12CO/13CO abundance ratios",
+   "method": "Run non-LTE Monte Carlo radiative transfer models for a spherically expanding CSE to fit velocity-integrated 12CO(2-1) and 12CO(3-2) flux densities for gas mass-loss rate and expansion velocity, then match the 12CO/13CO(J=3-2) integrated flux ratio to derive the 13CO abundance.",
+   "software": [
+    "Monte Carlo non-LTE radiative transfer code (Bernes 1979; Schoier & Olofsson 2001)"
+   ],
+   "key_parameters": [
+    "R_in = 4e14 cm; R_out = 3 * R_1/2; v_turb = 1 km s^-1; T_min = 7.5 K; 82 rotational levels (up to J=40, v=0 and v=1); ortho-to-para-H2 = 3"
+   ],
+   "assumptions": [
+    "Constant isotropic expansion and mass-loss rate; kinetic and dust temperature profiles from IK Tau (cite: ramsolof14); initial 12CO/H2 abundance f_i = 4e-4; photodissociation profile from (cite: sabeetal19); central star blackbody at 2500 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median luminosity (inner-GB sub-sample)",
+   "value": "5600",
+   "uncertainty": "range 2100 to 8700 (plus two outliers at 25000)",
+   "units": "L_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The median luminosity of the inner-Galactic-Bulge sub-sample, 5600 $L_\\odot$, corresponds to an initial mass in the range 1.2 $-$ 1.6 $M_\\odot$, indicating that these inner-Galactic-Bulge OH/IR stars descend from solar-type stars."
+    },
+    {
+     "loc": "Luminosities",
+     "quote": "The median luminosity is 5600 $L_\\odot$ and the range covered is 2100 to 8700 $L_\\odot$ for the majority of the objects. There are two outliers at a higher luminosity, 25000 $L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Initial stellar mass corresponding to median luminosity (inner-GB sub-sample)",
+   "value": "1.2 - 1.6",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The median luminosity of the inner-Galactic-Bulge sub-sample, 5600 $L_\\odot$, corresponds to an initial mass in the range 1.2 $-$ 1.6 $M_\\odot$, indicating that these inner-Galactic-Bulge OH/IR stars descend from solar-type stars."
+    }
+   ]
+  },
+  {
+   "quantity": "Population age of lower-mass inner-GB sources",
+   "value": "4 - 7",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Luminosities",
+     "quote": "The initial mass estimates translates to an age in the range 4 $-$ 7 Gyr for these sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Detached dust envelope inner radii (DE sources)",
+   "value": "200 - 600",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Eleven objects have SEDs that are well matched by models invoking dust envelopes extending from a few stellar radii and outwards, while six objects are better modelled as having detached dust envelopes with inner radii in the range 200 $-$ 600 au and warmer central stars."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature at inner radius for DE sources",
+   "value": "185",
+   "uncertainty": "±25",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Objects with detached dust CSEs",
+     "quote": "Furthermore, the dust temperatures at the inner radii of the dust CSEs are remarkably similar for all the DE sources, 185$\\pm$25 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-mass-loss rate (inner-GB sub-sample)",
+   "value": "2e-5",
+   "uncertainty": "factor of five",
+   "units": "M_odot yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The median gas-mass-loss rate, gas terminal expansion velocity, gas-to-dust mass ratio, and circumstellar $^{12}$CO/$^{13}$CO abundance ratio have been estimated to be 2$\\times$10$^{-5}$ $M_\\odot$ yr$^{-1}$, 18 km s$^{-1}$, 200 (excluding the sources with detached dust envelopes, which show markedly lower gas-to-dust ratios), and 5, respectively, for the inner-Galactic-Bulge sub-sample."
+    },
+    {
+     "loc": "CO line radiation",
+     "quote": "The availability of only two $^{12}$CO lines (and their generally low S/N) and the use of the same circumstellar model for all stars make our mass-loss rate estimates particularly uncertain, at least by a factor of five."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas terminal expansion velocity (inner-GB sub-sample)",
+   "value": "18",
+   "uncertainty": "±1.5",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Mass-loss rates and gas kinematics",
+     "quote": "The terminal gas-expansion velocity distribution of our inner-GB sources, see Fig 7, has a median of 18 km s$^{-1}$."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "The uncertainties are estimated to be $\\pm$ 1.0 and $\\pm$ 1.5 km s$^{-1}$ for the systemic and expansion velocities, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-to-dust mass ratio (inner-GB SE sources)",
+   "value": "200",
+   "uncertainty": "factor of seven (range 70 to 780)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-dust mass ratios",
+     "quote": "For the SE sources the resulting $R_{\\rm gd}$ values range from about 70 to 780 with a median of 200."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "$^{(d)}$ The gas-to-dust mass ratio estimated as $\\dot{M}_{\\rm g}/\\dot{M}_{\\rm d}$. The uncertainty is estimated to be a factor of seven."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-to-dust mass ratio (inner-GB DE sources)",
+   "value": "36",
+   "uncertainty": "range 5 to 143",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Objects with detached dust CSEs",
+     "quote": "For the DE sources we find a range in $R_{\\rm gd}$ from 5 to 143, and a median of 36."
+    }
+   ]
+  },
+  {
+   "quantity": "Median circumstellar 12CO/13CO abundance ratio (inner-GB sub-sample)",
+   "value": "5",
+   "uncertainty": "factor of four (range 1.6 to 16, outlier at 50)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The circumstellar $^{12}$CO/$^{13}$CO abundance ratio",
+     "quote": "For the inner-GB objects the $^{12}$CO/$^{13}$CO abundance ratios range from 1.6 to 16 (with an outlier at 50) with a median of 5."
+    },
+    {
+     "loc": "CO line radiation",
+     "quote": "In total, the uncertainty of the $^{12}$CO/$^{13}$CO abundance ratio is about a factor of four."
+    }
+   ]
+  },
+  {
+   "quantity": "Pulsation periods of Mira-like variables in sample",
+   "value": "500 - 1200",
+   "uncertainty": "not stated",
+   "units": "days",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Stellar variability",
+     "quote": "All but one, are long-period (in the range 500–1200$^{\\rm d}$), large-amplitude (a maximum to minimum ratio in the range 0.8 – 2.2 magnitudes in the WISE W1 and W2 bands) pulsators, that is they have Mira-like variability."
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved sizes of 13CO(J=3-2) brightness distributions",
+   "value": "0.2 - 1",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The $^{12}$CO and $^{13}$CO lines",
+     "quote": "The estimated sizes of the $^{13}$CO($J$ = 3–2) brightness distributions ($\\theta_{\\rm s}$) lie in the range 0.2–1$''$, that is they are all resolved."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA versions used for calibration and imaging",
+  "tclean parameters: pixel/cell size, image size, deconvolver, stopping threshold, and masking strategy",
+  "Weighting scheme used for continuum imaging (only line image weighting is explicitly stated)",
+  "Exact aperture sizes (in arcseconds) used for extracting CO line profiles for each individual source",
+  "Whether continuum subtraction (uvcontsub) was performed prior to line imaging"
+ ],
+ "missing_for_reproduction": [
+  "The non-LTE Monte Carlo radiative transfer code (Bernes 1979; Schoier & Olofsson 2001) is not publicly released in a standard repository.",
+  "Exact aperture radii used to extract the CO spectra for each of the 22 sources are only described as 'normally 2-3 times larger' than the brightness FWHM.",
+  "SED fits in MCMax were done 'by eye' without a reproducible objective function or grid search definition.",
+  "tclean imaging parameters (cell size, image size, stopping threshold, masking) are not stated."
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Observational setups, baseline cutoffs per source (in Tables 6-8), spectral resolutions, and radiative transfer model equations/parameters are well documented, and photometry is hosted at CDS. However, the 1D Monte Carlo line radiative transfer code is not public, SED fitting was done by eye, and exact spectral extraction aperture sizes and tclean imaging parameters are omitted.",
+ "rediscovery_reason": "The ALMA dataset (2016.1.00983.S) is public and small (1 hr total on-source), coordinates for all 22 targets are tabulated, baseline uv-cuts are flagged per source in the appendix tables, and the main observational and physical quantities (line fluxes, expansion velocities, continuum fluxes, mass-loss rates, and 12CO/13CO ratios) are numeric and tabulated per source.",
+ "source_card": "cards/2022A%26A...665A..82O/sonnet/card.md"
+}

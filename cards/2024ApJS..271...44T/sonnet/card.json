@@ -1,0 +1,739 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJS..271...44T",
+  "title": "High-dimensional Statistical Analysis and Its Application to an ALMA Map of NGC 253",
+  "year": 2024,
+  "journal": "The Astrophysical Journal Supplement Series",
+  "first_author": "Takeuchi, Tsutomu T.",
+  "n_authors": 9,
+  "arxiv_id": "2203.04535",
+  "doi": "10.3847/1538-4365/ad2517",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.00099.S",
+   "2013.1.00735.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "3.1 ALMA map of NGC 253",
+    "quote": "The data used in this work is a spectroscopic map of a nearby archetype starburst galaxy NGC 253, obtained by A17, at Band 7."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "other"
+   ],
+   "targets": [
+    {
+     "name": "NGC 253",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "3.5 Mpc; z = 0.000811",
+      "evidence": [
+       {
+        "loc": "3 Data",
+        "quote": "Our target galaxy, NGC 253, is a nearby barred spiral galaxy at a distance of $3.5\\;\\mbox{Mpc}$, i.e., $1''$ corresponds to $17\\; \\mbox{pc}$ (cite: 2005MNRAS.361..330R)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Rekola et al. 2005 (distance); Kamphuis et al. 2015 (redshift)",
+      "evidence": [
+       {
+        "loc": "3 Data",
+        "quote": "Our target galaxy, NGC 253, is a nearby barred spiral galaxy at a distance of $3.5\\;\\mbox{Mpc}$, i.e., $1''$ corresponds to $17\\; \\mbox{pc}$ (cite: 2005MNRAS.361..330R)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Whether high-dimensional PCA methods (NRPCA and A-SPCA) can analyze an HDLSS ALMA spectral map of NGC 253 and extract rotation and outflow information objectively.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We apply two representative methods in the high-dimensional statistical analysis methods, the noise-reduction principal component analysis (NRPCA) and automatic sparse principal component analysis (A-SPCA), to a spectroscopic map of a nearby archetype starburst galaxy NGC 253"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00735.S",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "two projects in the ALMA Cycle 2 observations: 2013.1.00735.S (PI: Nakanishi) and 2013.1.00099.S (PI: Mangum)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00099.S",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "two projects in the ALMA Cycle 2 observations: 2013.1.00735.S (PI: Nakanishi) and 2013.1.00099.S (PI: Mangum)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (340–365 GHz, ~0.85 mm)",
+    "evidence": [
+     {
+      "loc": "3.1 ALMA map of NGC 253",
+      "quote": "They obtained the 340–365 GHz ($\\lambda \\simeq 0.85$ mm) spectra covering a total frequency range of 11 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "340.2–343.4 and 352.5–355.7 GHz (2013.1.00735.S); 350.6–352.4 and 362.2–365.2 GHz (2013.1.00099.S)",
+    "evidence": [
+     {
+      "loc": "3.1 ALMA map of NGC 253",
+      "quote": "The observations cover the frequency range of 340.2–343.4 GHz and 352.5–355.7 GHz for 2013.1.00735.S, and 350.6–352.4 GHz and 362.2–365.2 GHz are covered by 2013.1.00099.S."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HCN",
+     "transition": "4–3",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.2 Doppler shifts",
+       "quote": "We made a Gaussian fit to three prominent emission lines HCN(4–3), HNC(4–3), and CS(7–6)"
+      }
+     ]
+    },
+    {
+     "species": "HNC",
+     "transition": "4–3",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.2 Doppler shifts",
+       "quote": "We made a Gaussian fit to three prominent emission lines HCN(4–3), HNC(4–3), and CS(7–6)"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "7–6",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.2 Doppler shifts",
+       "quote": "We made a Gaussian fit to three prominent emission lines HCN(4–3), HNC(4–3), and CS(7–6)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.45'' x 0.3'' (8 pc x 5 pc)",
+    "evidence": [
+     {
+      "loc": "3.1 ALMA map of NGC 253",
+      "quote": "The synthesized beam size of the final images is $0.\\hspace{-0.5mm}''45 \\times 0.\\hspace{-0.5mm}''3$, which corresponds to $8 \\;\\mbox{pc} \\times 5\\;\\mbox{pc}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 1.0–2.4 mJy/beam at 5.0 km/s resolution",
+    "evidence": [
+     {
+      "loc": "3.1 ALMA map of NGC 253",
+      "quote": "With a velocity resolution of $5.0\\;\\mbox{km\\,s}^{-1}$, the rms noise levels are $1.0\\mbox{--}2.4\\; \\mbox{mJy\\,beam}^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Data from Ando et al. 2017 (A17); PIs Nakanishi and Mangum",
+    "evidence": [
+     {
+      "loc": "3.1 ALMA map of NGC 253",
+      "quote": "two projects in the ALMA Cycle 2 observations: 2013.1.00735.S (PI: Nakanishi) and 2013.1.00099.S (PI: Mangum)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMA Band 7 NGC 253 spectral map (image cube)",
+      "evidence": [
+       {
+        "loc": "3.1 ALMA map of NGC 253",
+        "quote": "The data used in this work is a spectroscopic map of a nearby archetype starburst galaxy NGC 253, obtained by A17, at Band 7."
+       }
+      ]
+     },
+     "citation": "Ando et al. 2017 (cite: 2017ApJ...849...81A)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.2.1 and 4.2.2",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "Data reduction is conducted with Common Astronomy Software Applications (cite: 2007ASPC..376..127M), versions 4.2.1 and 4.2.2."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "The uncertainty of the flux calibration in ALMA Band 7 observations is $\\sim 10$ % according to the ALMA Cycle 2 Proposer’s Guide."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "clean",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "The image of the central region of NGC 253 was created by using task `clean`."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.45'' x 0.3''",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "The synthesized beam size of the final images is $0.\\hspace{-0.5mm}''45 \\times 0.\\hspace{-0.5mm}''3$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "1.0–2.4 mJy/beam",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "the rms noise levels are $1.0\\mbox{--}2.4\\; \\mbox{mJy\\,beam}^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Calibration, imaging and the original 864x864x2248 cube come from A17",
+      "evidence": [
+       {
+        "loc": "3.1 ALMA map of NGC 253",
+        "quote": "The A17 original map consists of $864 \\times 864$ points in the spatial domain (R.A and dec.), and 2248 components along the frequency domain"
+       }
+      ]
+     },
+     "from_reference": "Ando et al. 2017 (cite: 2017ApJ...849...81A)"
+    },
+    {
+     "what": {
+      "value": "NRPCA method, estimation of number of spikes m, and A-SPCA method",
+      "evidence": [
+       {
+        "loc": "2.2.2 NRPCA",
+        "quote": "Estimation of $m$ is given by (cite: AY18)."
+       }
+      ]
+     },
+     "from_reference": "Yata & Aoshima 2012; 2018; 2022"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging details (robust, cell size, deconvolver, continuum subtraction) are only in A17",
+    "Exact method for estimating m and how many PCs were retained",
+    "Exact regridding and Doppler shift implementation, and the systemic velocity used",
+    "Code for NRPCA and A-SPCA not named or released",
+    "Threshold I > 1.0 Jy/beam unit and the integration definition are ambiguous",
+    "Spatial pixel ordering details for vectorizing 2D map"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Regrid map to independent pixels and mask low signal",
+    "method": {
+     "value": "Regridded spatially using the equivalent circular beam of 0.37''; kept pixels with total frequency-integrated intensity I > 1.0, leaving n = 231",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "The equivalent circular beam size corresponding to the elliptical beam of $0.\\hspace{-0.5mm}''45 \\times 0.\\hspace{-0.5mm}''3$ is $0.\\hspace{-0.5mm}''37$. We used this effective beam size to regrid the image map."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "230 x 230 pixels after regridding; n = 231 pixels retained",
+      "evidence": [
+       {
+        "loc": "3.1 ALMA map of NGC 253",
+        "quote": "The number of remaining pixels $n$ is 231."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Doppler-shift correction",
+    "method": {
+     "value": "Gaussian fits to HCN(4–3), HNC(4–3), CS(7–6) line centers; averaged shifts and shifted spectra to rest; kept common frequency range, d = 1971",
+     "evidence": [
+      {
+       "loc": "3.2 Doppler shifts",
+       "quote": "We determined the amount of the shift by averaging the shifts obtained from three lines."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian line fits",
+     "evidence": [
+      {
+       "loc": "3.2 Doppler shifts",
+       "quote": "We made a Gaussian fit to three prominent emission lines HCN(4–3), HNC(4–3), and CS(7–6)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Corrected HCN line centers agree with the rest frequency (Fig. 21)",
+     "evidence": [
+      {
+       "loc": "Doppler shift correction of a line: example",
+       "quote": "we see that the line center agree with its restframe frequency"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Apply NRPCA and A-SPCA to original and Doppler-corrected data",
+    "method": {
+     "value": "NRPCA via dual covariance with noise-reduced eigenvalues; A-SPCA thresholds eigenvectors with omega = 1/2; 2D map vectorized by sorting along RA then dec",
+     "evidence": [
+      {
+       "loc": "2.2.3 A-SPCA",
+       "quote": "In this paper, we set $\\omega=1/2$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "omega = 1/2 (obtained by simulations)",
+      "evidence": [
+       {
+        "loc": "Footnote 13",
+        "quote": "The value of $\\omega=1/2$ was obtained by simulations."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Spiked eigenvalue distribution; comparison with directly measured velocity field, and with literature outflow (SW streamer); comparison of traditional vs NR eigenvalues",
+     "evidence": [
+      {
+       "loc": "5.2 Map of PCs",
+       "quote": "the position of the root of the SW streamer precisely agrees with the region with negative PC3"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.1 and 4.2.2",
+    "used_for": {
+     "value": "Data reduction and imaging (task clean)",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA map of NGC 253",
+       "quote": "Data reduction is conducted with Common Astronomy Software Applications (cite: 2007ASPC..376..127M), versions 4.2.1 and 4.2.2."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in software section, use not specified",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "astropy (cite: astropy2013; 2018AJ....156..123A), casa (cite: 2007ASPC..376..127M), topcat (cite: 2005ASPC..347...29T)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TOPCAT",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in software section, use not specified",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "astropy (cite: astropy2013; 2018AJ....156..123A), casa (cite: 2007ASPC..376..127M), topcat (cite: 2005ASPC..347...29T)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of samples n",
+    "value": "231",
+    "uncertainty": "not stated",
+    "units": "pixels",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.3 Spectral map as HDLSS data",
+      "quote": "i.e., $n = 231$ and $d = 1971$, and clearly $n \\ll d$."
+     }
+    ]
+   },
+   {
+    "quantity": "Data dimension d",
+    "value": "1971",
+    "uncertainty": "not stated",
+    "units": "channels",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.3 Spectral map as HDLSS data",
+      "quote": "i.e., $n = 231$ and $d = 1971$, and clearly $n \\ll d$."
+     }
+    ]
+   },
+   {
+    "quantity": "Contribution of PC1+PC2 (original data)",
+    "value": "> 50",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "the contribution of the 1st and 2nd PCs is $> 50$ %"
+     }
+    ]
+   },
+   {
+    "quantity": "Elements per PC in A-SPCA",
+    "value": "~5–20",
+    "uncertainty": "not stated",
+    "units": "elements",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "Each PC consists of $\\sim 5\\mbox{--}20$ elements, much fewer than $d$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "PC1 traces line intensity and PC2 traces rotation in the original data; after Doppler correction PC2 traces small-scale (~10 pc) outflow, PC3/4 blueshifted flow matching the SW streamer root, and PC5 redshifted distortion.",
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "We find that the negative PC3 region agrees well with the root of the molecular outflow, named “SW streamer”."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "High-dimensional PCA works on an HDLSS ALMA spectral map with line shifts and broadening",
+    "experiment": "Applied NRPCA and A-SPCA to the original NGC 253 map",
+    "result": "Spiked eigenvalues; PC1 tracks intensity, PC2 tracks rotation; HCN and HNC features control PCs",
+    "finding": "The method works for spectral maps",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.4 Spectral features",
+      "quote": "The performance of the A-SPCA to the ALMA spectroscopic map as HDLSS data is certainly guaranteed by this preparatory analysis."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The method can extract outflow information after removing systemic rotation",
+    "experiment": "Applied to Doppler-corrected map and compared PC3 map to literature",
+    "result": "Negative-PC3 region coincides with the SW streamer root",
+    "finding": "PCA extracts the outflow objectively",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2 Map of PCs",
+      "quote": "All these clues indicate that the high-dimensional PCA efficiently extract an outflow phenomenon from an ALMA spectroscopic map, in a purely objective way."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Traditional PCA is unreliable for n << d data; NRPCA reduces the noise bias and avoids prior knowledge of line frequencies.",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "While some frequency regions are considered to contain no information, we proceeded extracting information not by traditional procedure, but by an objective statistical method without a prior information."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Neighboring spectral channels are not independent due to line broadening, and continuum is not treated.",
+     "evidence": [
+      {
+       "loc": "3.3 Spectral map as HDLSS data",
+       "quote": "Then, the information carried by each spectral resolution unit is not independent"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mainly qualitative comparison with literature outflow, no quantitative test",
+    "Spatial pixels are correlated and i.i.d. assumption is not satisfied",
+    "Frequency gaps and Doppler cropping lose spectral information",
+    "No uncertainty on PCs"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data are ALMA Cycle 2 projects with codes given; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA${\\#}$2013.1.00099.S, ADS/JAO.ALMA$\\#$2013.1.00735.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "A17 imaging parameters and cube",
+    "NRPCA/A-SPCA implementation",
+    "Systemic velocity value used and Doppler details"
+   ],
+   "estimated_data_volume_inferred": "~10-100 GB raw; processed cube a few GB",
+   "score_inferred": 3,
+   "score_reason": "Data are identifiable, but cube generation is inherited from A17 and the algorithm code and parameters are incomplete; results are mostly qualitative.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are qualitative PC maps and spectral features, not numeric, and the recipe is incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Yata & Aoshima 2012 (cite: YATA2012193)",
+     "why": "NRPCA method"
+    },
+    {
+     "citation": "Yata & Aoshima 2022 (cite: YATA2022)",
+     "why": "A-SPCA method"
+    },
+    {
+     "citation": "Aoshima & Yata 2018 (cite: AY18)",
+     "why": "Estimation of number of spikes m"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Ando et al. 2017 (cite: 2017ApJ...849...81A)",
+     "why": "Source of the ALMA NGC 253 spectral map"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALCHEMI"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-57660d0614acab17f3b80d171861e147",
+  "batch_id": "msgbatch_01QWcLjT8YK6BSYKFu4oj18V",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:20:16",
+  "usage": {
+   "input_tokens": 35644,
+   "output_tokens": 6627,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.069386,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 43,
+  "quotes_ok": 43,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 62,
+   "stated": 31,
+   "rate": 0.5
+  },
+  "evidence_ok": true
+ }
+}

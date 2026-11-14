@@ -1,0 +1,349 @@
+{
+ "bibcode": "2017ApJ...851...98T",
+ "title": "No Sign of Strong Molecular Gas Outflow in an Infrared-bright Dust-obscured Galaxy with Strong Ionized-gas Outflow",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa9d17",
+ "arxiv_id": "1711.10091",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Does an IR-bright DOG with a strong ionized-gas ([O III]) outflow also show a strong molecular (CO) gas outflow?",
+ "alma_project_codes": [
+  "2015.1.00199.S"
+ ],
+ "data": {
+  "bands": "Band 4 (CO 2-1) and Band 7 (CO 4-3)",
+  "arrays": "not stated",
+  "angular_resolution": "0.74\" x 0.68\" (PA -42 deg) band 4; 0.60\" x 0.36\" (PA -62 deg) band 7",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[OIII] velocity offset and dispersion, systemic redshift from SDSS spectrum",
+    "evidence": [
+     {
+      "loc": "2.1 Target selection",
+      "quote": "Its $v_{\\rm [OIII]}$ and $\\sigma_{\\rm [OIII]}$ are $-1485.0 \\pm 207.7$ km s$^{-1}$ and $986.9 \\pm 146.6$ km s$^{-1}$, respectively"
+     }
+    ]
+   },
+   "citation": "(cite: Toba_17c)"
+  },
+  {
+   "what": {
+    "value": "Comparison ULIRG sample on SFR-M* plane",
+    "evidence": [
+     {
+      "loc": "3.2 The stellar mass and star formation rate relation",
+      "quote": "those of ULIRGs at $0 < z < 0.5$ presented by (cite: Kilerci) are also shown in Figure [4]"
+     }
+    ]
+   },
+   "citation": "(cite: Kilerci)"
+  },
+  {
+   "what": {
+    "value": "Local IR galaxy L_FIR-L'CO relation",
+    "evidence": [
+     {
+      "loc": "3.3 $L_{\\rm FIR}$ and $L^\\prime_{\\rm CO}$ relation",
+      "quote": "The relation for local IR galaxies at $z < 0.1$ reported by (cite: Kamenetzky) is also plotted."
+     }
+    ]
+   },
+   "citation": "(cite: Kamenetzky)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO cubes",
+   "method": "Pipeline calibrated data, continuum subtraction in line-free velocity ranges, CLEAN imaging with Briggs weighting",
+   "software": [
+    "CLEAN"
+   ],
+   "key_parameters": [
+    "robust=2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line and continuum fluxes and moment maps",
+   "method": "2-D Gaussian fitting without sigma clipping; moment 0 and 1 maps",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit line profiles for outflow wings",
+   "method": "Single Gaussian fit to spectra in 1\" diameter apertures; check for broad wing with FWHM>500 km/s",
+   "software": [],
+   "key_parameters": [
+    "1 arcsec aperture"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "SED fitting for M*, L_IR, L_FIR, SFR",
+   "method": "SEABASs SED fitting with 12 photometric points including ALMA continuum; SFR from L_IR(SF)",
+   "software": [
+    "SEABASs"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive CO luminosities, r42, gas and dust masses",
+   "method": "Solomon & Vanden Bout relation for L'CO; M_gas = alpha_CO/r21 * L'CO(2-1); dust mass from SED flux at 850 um",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa(850um)=0.383 cm2/g, T_dust=40 K",
+    "Flat cosmology H0=70, OmegaM=0.3, OmegaL=0.7"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Upper limit on broad CO(2-1) outflow component",
+   "method": "3-sigma upper limit from spectrum rms assuming unresolved broad component with FWHM 1000 km/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) integrated flux",
+   "value": "1.90",
+   "uncertainty": "0.13",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\rm CO (2-1)}$ $\\Delta v$ \\[Jy km s$^{-1}$\\] | 1.90 $\\pm$ 0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3) integrated flux",
+   "value": "4.66",
+   "uncertainty": "0.47",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\rm CO (4-3)}$ $\\Delta v$ \\[Jy km s$^{-1}$\\] | 4.66 $\\pm$ 0.47"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) FWHM",
+   "value": "336.3",
+   "uncertainty": "32.4",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM$_{\\rm CO (2-1)}$ \\[km s$^{-1}$\\] | 336.3 $\\pm$ 32.4"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3) FWHM",
+   "value": "373.1",
+   "uncertainty": "15.1",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM$_{\\rm CO (4-3)}$ \\[km s$^{-1}$\\] | 373.1 $\\pm$ 15.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 4 continuum (146.6 GHz)",
+   "value": "0.18",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Band 4 continuum (146.6 GHz) \\[mJy\\] | 0.18 $\\pm$ 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum (303.9 GHz)",
+   "value": "0.85",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Band 7 continuum (303.9 GHz) \\[mJy\\] | 0.85 $\\pm$ 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "log L_IR (8-1000 um)",
+   "value": "12.40",
+   "uncertainty": "+0.70/-0.17",
+   "units": "log Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\log\\,L_{\\rm IR}$ (8-1000 $\\ensuremath{\\mu}m$) \\[$L_{\\ensuremath{\\odot}}$\\] | $12.40^{+0.70}_{-0.17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN fraction of L_IR",
+   "value": "about 54%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 The stellar mass and star formation rate relation",
+     "quote": "$L_{\\rm IR}$(AGN)/$L_{\\rm IR}$ is about 54%"
+    }
+   ]
+  },
+  {
+   "quantity": "log M*",
+   "value": "10.8",
+   "uncertainty": "+0.02/-0.06",
+   "units": "log Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\log$ $M_*$ \\[$M_{\\ensuremath{\\odot}}$\\] | $10.8^{+0.02}_{-0.06}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log SFR",
+   "value": "2.11",
+   "uncertainty": "+0.64/-0.28",
+   "units": "log Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\log$ SFR \\[$M_{\\ensuremath{\\odot}}$ yr$^{-1}$\\] | $2.11^{+0.64}_{-0.28}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1)",
+   "value": "10.25",
+   "uncertainty": "0.03",
+   "units": "K km/s pc2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\log\\,L^{\\prime}_{\\rm CO (2-1)}$ \\[K km s$^{-1}$ pc$^2$\\] | $10.25 \\pm  0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(4-3)",
+   "value": "10.04",
+   "uncertainty": "0.04",
+   "units": "K km/s pc2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\log\\,L^{\\prime}_{\\rm CO (4-3)}$ \\[K km s$^{-1}$ pc$^2$\\] | $10.04 \\pm  0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "r42 (luminosity ratio)",
+   "value": "0.61",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 $L_{\\rm FIR}$ and $L^\\prime_{\\rm CO}$ relation",
+     "quote": "We found that the luminosity ratio of CO(4–3) and CO(2–1) lines ($r_{\\rm 42}$) to be 0.61 $\\pm$ 0.07."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Gas-to-dust mass ratio of WISE1029",
+     "quote": "The estimated $M_{\\rm gas}$/$M_{\\rm dust}$ of WISE1029 is 53"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad CO(2-1) flux upper limit",
+   "value": "<0.02",
+   "uncertainty": "3 sigma",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Gas-to-dust mass ratio of WISE1029",
+     "quote": "We obtained the broad CO (2–1) line flux is $<$ 0.02 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow gas mass upper limit",
+   "value": "log M_gas < 8.1",
+   "uncertainty": "not stated",
+   "units": "log Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4 Gas-to-dust mass ratio of WISE1029",
+     "quote": "its mass is $\\log \\, (M_{\\rm gas}/M_{\\ensuremath{\\odot}}) <  8.1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, clean threshold, masks and channel width of the cubes",
+  "Whether robust=2 was used for both bands and the CASA version",
+  "Aperture/fit details for continuum and line flux (2-D Gaussian parameters)",
+  "Broad-component noise rms and spectral binning used for the upper limit",
+  "SED photometry list, templates and priors used in SEABASs",
+  "Rest frequencies used for L'CO and observed frequencies"
+ ],
+ "missing_for_reproduction": [
+  "Cell/image size, clean parameters, CASA version",
+  "SED photometry and SEABASs configuration",
+  "Aperture and noise details for upper limit"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis, but imaging and SED details are incomplete.",
+ "rediscovery_reason": "Data public, simple numeric results (fluxes, FWHM, r42, luminosities) can be redone, though some settings are missing.",
+ "source_card": "cards/2017ApJ...851...98T/sonnet/card.md"
+}

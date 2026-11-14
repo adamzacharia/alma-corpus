@@ -1,0 +1,162 @@
+{
+ "bibcode": "2016A&A...593A..61M",
+ "title": "Dual differential polarimetry. A technique to recover polarimetric information from dual-polarization observations",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201628225",
+ "arxiv_id": "1603.06072",
+ "fields": [
+  "instrumentation",
+  "agn_and_quasars"
+ ],
+ "question": "Can polarimetric information of resolved sources be recovered from dual-polarization (XX, YY only) interferometric data using Earth-rotation synthesis of the parallactic angle?",
+ "alma_project_codes": [
+  "2011.0.00017.SV"
+ ],
+ "data": {
+  "bands": "Band 6 (225 GHz) for 3C 286",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CASA Guide 3C286 polarization results (p = 0.1645 ± 0.0002, angle 38.30 ± 0.02 deg) used as comparison",
+    "evidence": [
+     {
+      "loc": "4 Test with ALMA Science Verification data",
+      "quote": "which is similar to the one reported in the CASA Guide ($p = 0.1645  \\pm  0.0002$)"
+     }
+    ]
+   },
+   "citation": "CASA Guide; Nagai et al. 2016 (cite: Nagai)"
+  },
+  {
+   "what": {
+    "value": "PKS 1830-211 ALMA data and RM results of earlier paper, reanalysed",
+    "evidence": [
+     {
+      "loc": "Reanalysis of Martí-Vidal et al. (2015)",
+      "quote": "In Fig. [7](#NEWSCI) we show the results of a reanalysis of the data reported in (cite: Science), but using the correct feed angles."
+     }
+    ]
+   },
+   "citation": "(cite: Science)"
+  },
+  {
+   "what": {
+    "value": "Beam squint estimates from ALMA Memo 362 Table VI",
+    "evidence": [
+     {
+      "loc": "Effect of an off-axis receiver",
+      "quote": "estimates of the beam squint (although in a circular polarization basis) are given in (cite: ALMA362) (Table VI)"
+     }
+    ]
+   },
+   "citation": "(cite: ALMA362)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Deconvolve Stokes I",
+   "method": "CLEAN deconvolution of full dataset without polarization calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit component fluxes per scan in XX and YY",
+   "method": "Visibility fitting of fixed-position CLEAN components, only flux densities free, per parallactic angle scan",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compute Rpol and fit sinusoid vs parallactic angle",
+   "method": "Compute Rpol per pixel relative to fiducial source element and fit Rpol = pdif cos(2(phi-alpha-psi))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Short baselines so parallactic angle is same for all antennas; for 3C 286, constant gain amplitude ratio and Ceres unpolarized"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "3C 286 fractional polarization",
+   "value": "0.189",
+   "uncertainty": "0.001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Test with ALMA Science Verification data",
+     "quote": "Our best-fit fractional polarization is $p = 0.189  \\pm  0.001$"
+    }
+   ]
+  },
+  {
+   "quantity": "3C 286 polarization angle",
+   "value": "37.04",
+   "uncertainty": "0.12",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Test with ALMA Science Verification data",
+     "quote": "we obtain a source polarization angle of $\\phi = 37.04 \\pm 0.12$ deg."
+    }
+   ]
+  },
+  {
+   "quantity": "PKS 1830-211 RM, 10 April 2012 (reanalysis)",
+   "value": "2.0e6",
+   "uncertainty": "1.0e6",
+   "units": "rad/m^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Reanalysis of Martí-Vidal et al. (2015)",
+     "quote": "$(2.0\\pm1.0)\\times10^6$ rad/m$^2$ and $(3.7\\pm0.5)\\times10^6$ rad/m$^2$ (observer’s frame)"
+    }
+   ]
+  },
+  {
+   "quantity": "PKS 1830-211 RM, 23 May 2012 (reanalysis)",
+   "value": "3.7e6",
+   "uncertainty": "0.5e6",
+   "units": "rad/m^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Reanalysis of Martí-Vidal et al. (2015)",
+     "quote": "$(2.0\\pm1.0)\\times10^6$ rad/m$^2$ and $(3.7\\pm0.5)\\times10^6$ rad/m$^2$ (observer’s frame)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters (niter, threshold, masks) for simulations and 3C 286",
+  "Scan/time binning used to define constant parallactic angle",
+  "Noise levels in simulations",
+  "In-house modified simobserve not available",
+  "Details of the fit initial values and uncertainties for the PKS 1830-211 reanalysis",
+  "Corrected feed angles and spectral windows/epochs used in reanalysis"
+ ],
+ "missing_for_reproduction": [
+  "Modified simobserve",
+  "CLEAN settings",
+  "Scan definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public SV data and clear equations, but CLEAN and scan settings are missing and the simulation code is not released.",
+ "rediscovery_reason": "The SV data are public, the recipe is mostly clear, and the results are numeric (p and phi of 3C 286).",
+ "source_card": "cards/2016A%26A...593A..61M/sonnet/card.md"
+}

@@ -1,0 +1,20 @@
+# Reconciliation: dust-continuum-mass
+- SR-01 | FIXED | Split 2020ApJ...891..164S into dust-to-gas 0.0027 (gas-to-dust about 370) for continuum N(H2) and 300 for its chemical model (pack step 4 vs step 7), in both SKILL.md and parameters.md; range widened to "40 to about 370".
+- SR-02 | FIXED | 2016ApJ...832..148V now labelled a CO missing-flux example (pack limitation is in "Distribution of Molecular Gas"); removed from the continuum resolved-out row; 2014ApJ...787...48X 0.53 ratio kept as the continuum example.
+- SR-03 | FIXED | Step 9 now quotes the actual budget (30% kappa, 15% flux cal, about 10% T; 2014ApJ...787...48X) and says term ordering depends on the case.
+- SR-04 | FIXED | 2013ApJ...764L..14Z moved out of the opacity bullet and described as a disk-mass lower limit with factor-five uncertainty; opacity range now "factor 2 to 3 in papers that quote it".
+- SR-05 | FIXED | Removed the causal "warm dust dominates" link for 2016MNRAS.457.4536W; each paper's limitation now stated separately (upper limits from isothermal assumption vs 2016ApJ...833L...6C underestimate because warm dust dominates the SED peak).
+- SR-06 | FIXED | "Mass-weighted" attributed only to 2020ApJ...892...66M; 2024ApJ...963....1O listed as an assumed 25 K in both files.
+- SR-07 | FIXED | Temperature hierarchy relabelled as the skill author's guidance with a same-component requirement; astrodendro/Clumpfind given as examples (2020ApJ...894L..14L, 2020ApJ...890...76N, 2019ApJ...871..185L) with "pack does not show which is more common".
+- SR-08 | FIXED | Replaced with "The pack does not establish a dominant implementation of the thin formula".
+- SR-09 | FIXED | Replaced tau = -ln(1 - T_b/T_d) with the Planck-intensity absorption-only slab form including filling factor f and background, assumptions stated; 2018A&A...619A.161C described as a brightness-based check (tau about 0.4 at 1.5x T_d, per pack).
+- SR-10 | FIXED | parameters.md row for 2016ApJ...833..209O now flags that the pack's "(lambda/1.3 mm)^beta" inverts kappa proportional to nu^beta and says to verify, giving (1.3 mm/lambda)^beta for positive beta.
+- SR-11 | FIXED | Split into mu_H2 = 2.8 (13 distinct bibcodes quote 2.8, 6 label it mu_H2) and other mu 2.3 to 2.37 (8 bibcodes, definition rarely stated); counts made by matching mu values in the pack's parameter/assumption lines; step 5 warns not to substitute per-particle mu.
+- SR-12 | FIXED | Added explicit high-z formula with nu_rest, T_CMB(z), (1+z) placement and B(T_d)-B(T_CMB) contrast term, and separated contrast correction from CMB heating (general practice, flagged as such).
+- SR-13 | FIXED | Step 8 and When-to-use now state thin limits are conditional; compact thick material can evade them; cites 2017ApJ...842....8M thin-mass vs thick clump-size and 2019MNRAS.488.1005P RT.
+- SR-14 | FIXED | Step 2 specifies integrated flux for mass, beam solid angle for surface brightness, local PB-corrected noise (2024ApJ...974..102S gap rms); step 8 and a pitfall cover point-source vs extended limits (2017ApJ...842....8M).
+- SR-15 | FIXED | Step 6 and referee checks now require filling-factor/resolution and scattering checks and state low beam-averaged brightness is inconclusive (2016Sci...353.1519P, 2020A&A...644A..11L, 2019MNRAS.488.1005P).
+- SR-16 | FIXED | n(H2) labelled a spherical mean with r definition; geometry uncertainty and unresolved-size bounds added (2019ApJ...871..185L, 2014ApJ...795L..25R).
+- SR-17 | FIXED | Lensing correction added to step 5 and Pitfalls (divide by magnification; single magnification is a simplification, 2016ApJ...822...80S).
+- SR-18 | FIXED | "When not to use" SED row and a pitfall now require reconciling SED dust conventions (2025A&A...694A..82S divides CIGALE masses by 2).
+- Note (merged software totals) | FIXED | Software section states which rows are sums of label counts with unchecked overlap.

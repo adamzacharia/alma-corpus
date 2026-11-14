@@ -1,0 +1,444 @@
+{
+ "bibcode": "2023ApJ...953L...6P",
+ "title": "Detection of a High-velocity Jet from MWC 349A Traced by Hydrogen Recombination Line Maser Emission",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/ace7ba",
+ "arxiv_id": "2307.15050",
+ "fields": [
+  "stellar_physics",
+  "evolved_stars"
+ ],
+ "question": "What are the spatial distribution and kinematics of the H26alpha and H30alpha radio recombination line masers and millimeter continuum emission in MWC 349A, particularly in the high-velocity wind?",
+ "alma_project_codes": [
+  "2017.1.00404.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.4 mm) and Band 7 (0.8 mm / 0.87 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.075'' x 0.025'' (Band 6 continuum) and 0.107'' x 0.051'' (Band 7 continuum); ~0.03'' (H30alpha) and ~0.1'' (H26alpha)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum angular size and flux density measurements versus frequency from VLA observations",
+    "evidence": [
+     {
+      "loc": "Interferometric Continuum Emission",
+      "quote": "Figure [2](#fig:scalingrelations) shows the angular size and the flux versus frequency, including the data points reported in (cite: tafoya2004)."
+     }
+    ]
+   },
+   "citation": "(cite: tafoya2004)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination angle of 9 degrees from the line of sight / PA around 98 degrees",
+    "evidence": [
+     {
+      "loc": "Interferometric Continuum Emission",
+      "quote": "Others (cite: rodriguez2007; baez-rubio2013) have estimated this inclination angle to be around 98$^{\\circ}$ in PA; our 1.4mm continuum image above appears to be consistent with this finding."
+     },
+     {
+      "loc": "Hydrogen Recombination Line Emission",
+      "quote": "Since the disk is nearly edge-on with an inclination angle of 9$^{\\circ}$ from the LOS, the space velocity of these maser features can be as high as $V_{LOS}/$sin(9$^{\\circ}$), or up to 575 km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: rodriguez2007; baez-rubio2013)"
+  },
+  {
+   "what": {
+    "value": "Distance of 1.2 kpc to MWC 349A",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "At an estimated distance of 1.2 kpc from the Sun (cite: cohen1985), it is believed to be a hot, massive B\\[e\\] star (cite: merrill1933)"
+     }
+    ]
+   },
+   "citation": "(cite: cohen1985)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Model continuum image morphology and determine astrometric reference centers",
+   "method": "Fit 2D elliptical Gaussian models to the Band 6 and Band 7 continuum images and quadratically subtract the synthesized beam to obtain deconvolved sizes and continuum centroid positions",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Band 6 and Band 7 continuum emissions trace nearly the same material and share a common physical center"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive total continuum flux densities, angular sizes, and frequency scaling relations from visibilities",
+   "method": "Perform linear regression on visibility amplitude versus projected baseline distance V(b) = S_nu(1 - A b) for short baselines, compute angular size Theta = 1.19e5 A, and fit power-law scaling relations combining ALMA, SMA, and literature VLA measurements",
+   "software": [],
+   "key_parameters": [
+    "Baseline cutoff < 500,000 wavenumbers for visibility linear regression"
+   ],
+   "assumptions": [
+    "Spherically symmetric ionized wind source extending to infinity"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract 2D positions and intensities of H30alpha and H26alpha masers across velocity channels",
+   "method": "Fit a 2D Gaussian to each spectral channel image of the H30alpha and H26alpha cubes to measure centroid positions and peak amplitudes, register offsets relative to the respective band's continuum centroid, and combine fit errors in quadrature with bandpass phase calibration positional errors",
+   "software": [],
+   "key_parameters": [
+    "Channel width = 1.26 km s^-1; bandpass positional error = 0.042 mas (Band 6, SNR = 470 on J2148+0657) and 0.038 mas (Band 7, SNR = 1400 on J2253+161)"
+   ],
+   "assumptions": [
+    "Single 2D Gaussian per velocity channel represents the centroid of the maser emission at that velocity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit disk geometry, kinematics, enclosed stellar mass, and deprojected jet velocity",
+   "method": "Perform linear least-squares fits to disk masers (-12 to 28 km s^-1) in sky coordinates to determine disk PA and polar axis, fit linear position-velocity relations to derive systemic velocity and velocity-distance slopes, calculate enclosed mass from Keplerian thin-annulus relation V_LOS = sqrt(GM/R^3) l, and deproject polar maser velocities using disk inclination",
+   "software": [],
+   "key_parameters": [
+    "Disk velocity range: -12 to 28 km s^-1; maser spatial extent (diameter 2R): 45 mas (H26alpha) and 54 mas (H30alpha); distance = 1.2 kpc; inclination = 9 deg from LOS"
+   ],
+   "assumptions": [
+    "Perfectly edge-on Keplerian disk with H26alpha and H30alpha masers localized on two thin annuli of fixed radii equal to the spatial extent of the masers; high-velocity masers distributed along the polar axis at 9 deg inclination from LOS"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 6 (217.0 GHz) total continuum flux density",
+   "value": "1620.8",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 217.0 | 1620.8 | 0.0718 |"
+    },
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": ": Total flux and angular sizes for ALMA band 6 ($217.0$ GHz) and band 7 ($341.55$ GHz) continuum images."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 6 (217.0 GHz) continuum angular size",
+   "value": "0.0718",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 217.0 | 1620.8 | 0.0718 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 (341.6 GHz) total continuum flux density",
+   "value": "2754.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 341.6 | 2754.6 | 0.0421 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 (341.6 GHz) continuum angular size",
+   "value": "0.0421",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 341.6 | 2754.6 | 0.0421 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 continuum hourglass structure FWHM (east-west)",
+   "value": "59",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": "The approximate extent of the hourglass structure, as measured by the FWHM of this Gaussian, is 59 mas in the east-west direction."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 continuum deconvolved Gaussian size",
+   "value": "0.10 x 0.10",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": "The deconvolved size, obtained by quadratically subtracting the beam size from the FWHM of the Gaussian fit, is 0.10$^{\\prime\\prime}$$\\times$ 0.10$^{\\prime\\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA continuum flux density at 221.9 GHz (2014 and 2012)",
+   "value": "1.7",
+   "uncertainty": "10%",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SMA",
+     "quote": "The measured continuum flux for MWC 349A was 1.7 Jy at 221.9 GHz, and 2.4 Jy at 345.6 GHz, respectively."
+    },
+    {
+     "loc": "SMA",
+     "quote": "The typical uncertainty in flux calibrations with the SMA is 10% for 230 GHz observations and 15% for 345 GHz observations."
+    }
+   ]
+  },
+  {
+   "quantity": "SMA continuum flux density at 345.6 GHz (2014) and 343.6 GHz (2012)",
+   "value": "2.4",
+   "uncertainty": "15%",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SMA",
+     "quote": "The measured continuum flux density for MWC 349A was 1.7 Jy at 221.9 and 2.4 Jy at 343.6 GHz, respectively. The typical uncertainty in flux calibrations with the SMA is 10% for 230 GHz observations and 15% for 345 GHz observations."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum angular size frequency scaling exponent",
+   "value": "-0.68",
+   "uncertainty": "±0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": "\\Theta_\\nu\\text{/arcsec} &= (2.3\\pm 0.2)(\\nu\\text{/GHz})^{-0.68 \\pm 0.03},"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum angular size scaling normalization at 1 GHz",
+   "value": "2.3",
+   "uncertainty": "±0.2",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": "\\Theta_\\nu\\text{/arcsec} &= (2.3\\pm 0.2)(\\nu\\text{/GHz})^{-0.68 \\pm 0.03},"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density frequency spectral index",
+   "value": "0.64",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": "S_v\\text{/mJy} &= (56 \\pm 4)(\\nu\\text{/GHz})^{0.64 \\pm 0.02}."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density scaling normalization at 1 GHz",
+   "value": "56",
+   "uncertainty": "±4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Interferometric Continuum Emission",
+     "quote": "S_v\\text{/mJy} &= (56 \\pm 4)(\\nu\\text{/GHz})^{0.64 \\pm 0.02}."
+    }
+   ]
+  },
+  {
+   "quantity": "H26alpha disk maser maximum spatial extent",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "The masers have a maximum spatial extent of approximately $45$ mas in the H$26\\alpha$ transition and $54$ mas in the H$30\\alpha$ transition."
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha disk maser maximum spatial extent",
+   "value": "54",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "The masers have a maximum spatial extent of approximately $45$ mas in the H$26\\alpha$ transition and $54$ mas in the H$30\\alpha$ transition."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk axis position angle (H26alpha)",
+   "value": "98.6",
+   "uncertainty": "±0.007",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "A linear least-squares fit to these maser points in the disk gives a position angle of the disk axis of $98.6\\pm0.007$$^{\\circ}$ in H$26\\alpha$ and $99.7\\pm0.002$$^{\\circ}$ in H$30\\alpha$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk axis position angle (H30alpha)",
+   "value": "99.7",
+   "uncertainty": "±0.002",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "A linear least-squares fit to these maser points in the disk gives a position angle of the disk axis of $98.6\\pm0.007$$^{\\circ}$ in H$26\\alpha$ and $99.7\\pm0.002$$^{\\circ}$ in H$30\\alpha$."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic LSR velocity from H30alpha rotation curve",
+   "value": "8.7",
+   "uncertainty": "±0.2",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "Using the H30$\\alpha$ rotation curve, this linear fit yielded a y-intercept of 8.7 ± 0.2 km s$^{-1}$, and using the H26$\\alpha$ rotation curve, we obtain 8.4 ± 0.1 km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic LSR velocity from H26alpha rotation curve",
+   "value": "8.4",
+   "uncertainty": "±0.1",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "Using the H30$\\alpha$ rotation curve, this linear fit yielded a y-intercept of 8.7 ± 0.2 km s$^{-1}$, and using the H26$\\alpha$ rotation curve, we obtain 8.4 ± 0.1 km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Position-velocity slope of disk masers (H26alpha)",
+   "value": "771",
+   "uncertainty": "±7",
+   "units": "km s^-1 arcsec^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "The slopes obtained from these linear fits to the disk maser position-velocity plots were 771 ± 7 km s$^{-1}$ per arcsecond and 661 ± 9 km s$^{-1}$ per arcsecond for H$26\\alpha$ and H$30\\alpha$ masers, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Position-velocity slope of disk masers (H30alpha)",
+   "value": "661",
+   "uncertainty": "±9",
+   "units": "km s^-1 arcsec^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "The slopes obtained from these linear fits to the disk maser position-velocity plots were 771 ± 7 km s$^{-1}$ per arcsecond and 661 ± 9 km s$^{-1}$ per arcsecond for H$26\\alpha$ and H$30\\alpha$ masers, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed stellar mass from H26alpha masers",
+   "value": "9.6",
+   "uncertainty": "±1.6",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "The H$26\\alpha$ masers yield an estimate of 9.6 ± 1.6 M$_\\odot$, while for the H$30\\alpha$ masers it is 11.5 ± 1.7 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed stellar mass from H30alpha masers",
+   "value": "11.5",
+   "uncertainty": "±1.7",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "The H$26\\alpha$ masers yield an estimate of 9.6 ± 1.6 M$_\\odot$, while for the H$30\\alpha$ masers it is 11.5 ± 1.7 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum deprojected space velocity of polar jet masers",
+   "value": "575",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "If these masers lie close to the polar axis, their velocities could be as high as 575 km s$^{-1}$ which cannot be explained solely by a single expanding wind as proposed in (cite: baez-rubio2013)."
+    },
+    {
+     "loc": "Hydrogen Recombination Line Emission",
+     "quote": "Since the disk is nearly edge-on with an inclination angle of 9$^{\\circ}$ from the LOS, the space velocity of these maser features can be as high as $V_{LOS}/$sin(9$^{\\circ}$), or up to 575 km s$^{-1}$, if these masers are distributed along the polar axis."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for calibration and imaging",
+  "Exact synthesized beam sizes and position angles for the natural-weighted H30alpha and H26alpha line cubes (only approximate 0.03'' and 0.1'' are stated)",
+  "Pixel/cell size, image dimensions, and stopping threshold/niter used in CASA CLEAN for continuum and line cubes",
+  "Whether continuum subtraction (e.g., uvcontsub) was performed on the spectral line windows before imaging and centroid fitting",
+  "Exact flux calibrators used for the ALMA Band 6 and Band 7 observations",
+  "Absolute rms noise levels (in mJy/beam) in the final continuum images and spectral line cubes"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and specific CLEAN parameters (cell size, image size, masking, stopping threshold/niter)",
+  "Whether continuum subtraction was applied to the H30alpha and H26alpha line visibilities prior to imaging",
+  "Exact synthesized beam dimensions for the natural-weighted H30alpha and H26alpha spectral cubes",
+  "Tabulated VLA and SMA flux/size points used in the combined power-law regression if exact fit parameters are to be reproduced"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA project ID is clearly stated, the self-calibration intervals and iterations are specified, weighting schemes for continuum and line imaging are given, and the 2D Gaussian centroiding and linear fitting equations are explicit. Minor deductions for missing CASA version, CLEAN imaging parameters (cell size, thresholds), and unstated continuum subtraction details for the line cubes.",
+ "rediscovery_reason": "Public archival data from a single ALMA project (2017.1.00404.S) on a very bright target (MWC 349A) with a straightforward analysis pipeline (self-calibration, imaging, per-channel 2D Gaussian centroid fitting, and linear fits to position-velocity diagrams) yielding clear, quantitative answer keys (continuum fluxes/sizes, disk PA, systemic velocity, PV slopes, enclosed mass, and polar jet maser offsets).",
+ "source_card": "cards/2023ApJ...953L...6P/sonnet/card.md"
+}

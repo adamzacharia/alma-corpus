@@ -1,0 +1,271 @@
+{
+ "bibcode": "2018A&A...616A.127R",
+ "title": "The role of molecular gas in the nuclear regions of IRAS 00183-7111. ALMA and X-ray investigations of an ultraluminous infrared galaxy",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201732268",
+ "arxiv_id": "1805.06477",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "To what level can the molecular gas, traced by CO, be responsible for the AGN obscuration seen at X-ray energies in the ULIRG IRAS 00183-7111",
+ "alma_project_codes": [
+  "2011.0.00034.S",
+  "2011.0.00020.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~87 GHz) and Band 6 (~270 GHz)",
+  "arrays": "12 m antennas, compact configuration",
+  "angular_resolution": "Band 3 continuum beam 3.01\"x2.05\"; CO cube 3.1\"x2.2\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio data and spectral index (0.84-87 GHz) alpha=-1.38 for SED",
+    "evidence": [
+     {
+      "loc": "4.4 Continuum analysis",
+      "quote": "reported a radio spectral index (in the range 0.84$-$87 GHz) $\\alpha=-1.38$"
+     }
+    ]
+   },
+   "citation": "(cite: Norris12)"
+  },
+  {
+   "what": {
+    "value": "Dust absorption coefficient k_o at 2141 GHz",
+    "evidence": [
+     {
+      "loc": "4.4 Continuum analysis",
+      "quote": "we assumed the value of k$_{o}$ tabulated by (cite: Li01) at the reference observed frequency $\\nu_{o}=2141$ GHz"
+     }
+    ]
+   },
+   "citation": "(cite: Li01)"
+  },
+  {
+   "what": {
+    "value": "NuSTAR data courtesy of PI",
+    "evidence": [
+     {
+      "loc": "5 X-ray observations and spectral fitting",
+      "quote": "*NuSTAR* data were obtained by courtesy of the PI (K. Iwasawa; see (cite: Iwasawa17) for details)"
+     }
+    ]
+   },
+   "citation": "(cite: Iwasawa17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and image ALMA data",
+   "method": "Recalibrate from ASDM, combine same-configuration datasets, CLEAN continuum (natural and robust 0.5) with phase-only self-cal",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make CO cube and moment 0, measure flux and size",
+   "method": "uvcontsub, CLEAN cube at ~90 km/s, masked moment 0, 2-D Gaussian fit for size",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive L'CO, H2 mass, SFR",
+   "method": "Solomon05 L'CO formula; M(H2)=alpha L'CO; Carilli13 L_IR relation; SFR=delta_MF x 1e-10 L_IR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha=0.8; Salpeter IMF delta_MF=1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit dust SED to estimate thermal contribution",
+   "method": "Single-temperature modified blackbody to Herschel data, extrapolate to ALMA frequencies",
+   "software": [],
+   "key_parameters": [
+    "beta fixed 1.5; Td and Md free"
+   ],
+   "assumptions": [
+    "Herschel flux uncertainty 20%"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit X-ray spectra and compare NH with molecular column",
+   "method": "XSPEC fits of Chandra, XMM, NuSTAR individually and jointly with XILLVER; molecular NH from uniform sphere",
+   "software": [
+    "XSPEC",
+    "CIAO",
+    "SAS"
+   ],
+   "key_parameters": [
+    "Gamma fixed 1.9; inclination fixed 87 deg; errors 90% confidence"
+   ],
+   "assumptions": [
+    "uniform sphere of radius median of axes (6.4 kpc)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1-0) integrated flux",
+   "value": "2.56",
+   "uncertainty": "0.26",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 CO as molecular gas tracer",
+     "quote": "S$_{CO}=(2.56\\pm0.26)$ Jy km s$^{-1}$ at 86.8 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO",
+   "value": "1.42e10",
+   "uncertainty": "+0.08/-0.12 e10",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 CO as molecular gas tracer",
+     "quote": "$L'_{CO}=1.42^{+0.08}_{-0.12}\\times10^{10}$ K km s$^{-1}$ pc$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M(H2)",
+   "value": "1.14e10",
+   "uncertainty": "0.11e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 CO as molecular gas tracer",
+     "quote": "M$(H_{2})=(1.14\\pm0.11)\\times10^{10}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR",
+   "value": "260",
+   "uncertainty": "28",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 CO as molecular gas tracer",
+     "quote": "the SFR results to be $260\\pm28$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature",
+   "value": "68",
+   "uncertainty": "10",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Continuum analysis",
+     "quote": "$T_{d}=68\\pm10$ K and $M_{d}=(2.7\\pm1.4)\\times10^{7}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA spectral index 87-270 GHz",
+   "value": "-0.24",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Continuum analysis",
+     "quote": "$\\alpha=-0.24\\pm0.10$ between 87 and 270 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-continuum offset",
+   "value": "0.53 arcsec (2.5 kpc)",
+   "uncertainty": "0.08 arcsec (0.4 kpc)",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.5 Line-continuum emission offset",
+     "quote": "The observed offset is 0.53\"$\\pm$0.08\" ($\\sim7 \\sigma$), corresponding to $2.5\\pm0.4$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular column density",
+   "value": "8.0e21",
+   "uncertainty": "0.9e21",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.1 Cold absorber: X-ray versus ALMA",
+     "quote": "obtaining N$_{H}=(8.0\\pm0.9)\\times10^{21}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray broad-band NH",
+   "value": "6.8e22",
+   "uncertainty": "+2.1/-1.5 e22",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 Broad-band spectral fitting",
+     "quote": "$6.8^{+2.1}_{-1.5}\\times10^{22}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO line FWHM",
+   "value": "400",
+   "uncertainty": "27",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Outflow hint",
+     "quote": "FWHM$=400\\pm27$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for uvcontsub",
+  "Clean iteration limits, cell and image sizes",
+  "Primary beam correction details",
+  "Herschel flux densities used in SED fit",
+  "Exact CASA flux model library version",
+  "Self-calibration solution intervals",
+  "Masking details for continuum CLEAN"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels and clean parameters",
+  "Herschel flux values",
+  "Exact CASA flux model library",
+  "NuSTAR data access"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data public and recipe mostly described with numeric results, but several imaging parameters and Herschel inputs are missing.",
+ "rediscovery_reason": "Public Cycle 0 data, stated CASA workflow, and numeric CO flux, mass, SFR and offset results.",
+ "source_card": "cards/2018A%26A...616A.127R/sonnet/card.md"
+}

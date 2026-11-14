@@ -1,0 +1,810 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...820..118Z",
+  "title": "ALMA Imaging of the CO (6-5) Line Emission in NGC 7130*",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Zhao, Yinghe",
+  "n_authors": 14,
+  "arxiv_id": "1602.07070",
+  "doi": "10.3847/0004-637X/820/2/118",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00524.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we report our high-resolution ($0^{\\prime\\prime}.20\\times0^{\\prime\\prime}.14$ or $\\sim$$70\\times49$ pc) observations of the CO (6$-$5) line emission"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 7130",
+     "coordinates": {
+      "value": "21:48:19.50 -34:57:04.7 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| NGC 7130     | 21:48:19.50  | $-$34:57:04.7     | 72.7          | 4842          | Sa pec        | Sy 1.9        | 11.42         |"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "At its distance of 72.7 Mpc (Table [1](#obslog); Armus et al. 2009), $1^{\\prime\\prime}$ corresponds to 352 pc."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "72.7 Mpc (cz = 4842 km/s)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| NGC 7130     | 21:48:19.50  | $-$34:57:04.7     | 72.7          | 4842          | Sa pec        | Sy 1.9        | 11.42         |"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "At its distance of 72.7 Mpc (Table [1](#obslog); Armus et al. 2009), $1^{\\prime\\prime}$ corresponds to 352 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Armus et al. 2009",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| NGC 7130     | 21:48:19.50  | $-$34:57:04.7     | 72.7          | 4842          | Sa pec        | Sy 1.9        | 11.42         |"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "At its distance of 72.7 Mpc (Table [1](#obslog); Armus et al. 2009), $1^{\\prime\\prime}$ corresponds to 352 pc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Where is the warm dense gas (CO 6-5) relative to dust continuum, AGN radio emission and star formation in the LIRG NGC 7130 at <100 pc scales, and how much does the AGN heat it?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggests that the heating contribution of the AGN to the CO (6$-$5) emission in NGC 7130 is negligible."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00524.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00524.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 9",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using the Band 9 receivers of ALMA in the time division mode"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 SPWs centered at 680.423, 682.178, 676.693, 678.631 GHz, 2 GHz each; ~6.8 km/s velocity resolution",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "were centered at the sky frequencies of 680.423, 682.178, 676.693, and 678.631 GHz, respectively, each with a bandwidth of 2 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "6-5",
+     "rest_frequency": "691.473 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "CO (6$-$5) line emission (rest-frame frequency $=691.473$ GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C34-5",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The observations were carried out in the relatively extended configuration C34-5"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "25.8-820.2 m",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "with the baselines in the range of $25.8-820.2$ m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.20\" x 0.14\" (70 x 49 pc), PA -79 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "with the full width of half maximum (FWHM) of $\\sim$$0^{\\prime\\prime}.20\\times0^{\\prime\\prime}.14$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~3.1\"",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "the maximum recoverable scale is $\\sim$$3^{\\prime\\prime}.1$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "11 mJy/beam per 13.5 km/s channel; continuum 1.3 mJy/beam; moment-0 1.1 Jy/beam km/s",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "For the continuum, the $1\\sigma$ rms noise is 1.3 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "315 s",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The total on-source integration time was 315 seconds."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014/07/26",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| X87b480_Xa11 | 2014/07/26   | 02:40:41-03:04:14 | C34-5         | 25            | 650           | 315           | 677           |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST",
+     "provided": {
+      "value": "F210M UV, F160W and extinction-corrected Pa-alpha images",
+      "evidence": [
+       {
+        "loc": "3.3 Comparison with Other Observations",
+        "quote": "F160W continuum and Pa-$\\alpha$ (Alonso-Herrero et al. 2006; Diáz-Santos et al. 2008)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "8.4 GHz continuum reduced from archive data",
+      "evidence": [
+       {
+        "loc": "3.3 Comparison with Other Observations",
+        "quote": "The radio image was obtained by reducing the raw data downloaded from the NRAO VLA science archive"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel SPIRE/FTS",
+     "provided": {
+      "value": "total CO(6-5) flux and 350/500 um fluxes for recovered-flux fractions",
+      "evidence": [
+       {
+        "loc": "3.1 CO (6-5) Emission",
+        "quote": "our SPIRE/FTS-measured flux of $1223\\pm82$ Jy km s$^{-1}$ (Lu et al. 2015, in preparation)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Herschel SPIRE/FTS total CO(6-5) flux 1223±82 Jy km/s",
+      "evidence": [
+       {
+        "loc": "3.1 CO (6-5) Emission",
+        "quote": "our SPIRE/FTS-measured flux of $1223\\pm82$ Jy km s$^{-1}$ (Lu et al. 2015, in preparation)"
+       }
+      ]
+     },
+     "citation": "Lu et al. 2015, in preparation"
+    },
+    {
+     "what": {
+      "value": "HST extinction-corrected Pa-alpha map",
+      "evidence": [
+       {
+        "loc": "3.3 Comparison with Other Observations",
+        "quote": "The extinction-corrected Pa-$\\alpha$ map was obtained from a set of *HST* near-IR (NIR) narrow- and broad-band images (Diáz-Santos et al. 2008)."
+       }
+      ]
+     },
+     "citation": "Diáz-Santos et al. 2008"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.3.1",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The data were reduced with CASA 4.3.1."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "7%",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The error in the flux calibration was estimated to be 7%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs weighting (robust value not stated)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The raw images were cleaned using the Briggs weightings"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "flux measurements after PB correction; figures and noise before",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Unless otherwise stated, flux measurements are based on the images after the primary beam correction"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "cubes binned to 13.5 km/s channels",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The spectral cubes were binned into channels with a width of $\\delta v=13.5$ km s$^{-1}$."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.20\" x 0.14\", PA -79 deg",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "a position angle (north to east) of $-79^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum 1.3 mJy/beam; line map 1.1 Jy/beam km/s",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "is 1.1 Jy beam$^{-1}$ km s$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Total continuum flux estimated by interpolating SPIRE 350 and 500 um measurements",
+      "evidence": [
+       {
+        "loc": "3.2 Continuum Emission at 434 um",
+        "quote": "Following a similar procedure (i.e., interpolating the SPIRE measurements at 350 and 500 $\\mu$m to obtain the total flux) in Xu et al. (2014, 2015)"
+       }
+      ]
+     },
+     "from_reference": "Xu et al. (2014, 2015)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Briggs robust value, clean threshold, mask and cell/image size",
+    "Calibrators for bandpass and flux",
+    "Line-free channels and continuum subtraction method",
+    "Integration velocity range definition and how moment maps were clipped",
+    "Clumpfind contour levels",
+    "Details of Pa-alpha extinction correction and HST/ALMA registration",
+    "SPIRE 350/500 um fluxes used"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and CO(6-5) cube",
+    "method": {
+     "value": "Continuum from SPWs 1-3; cube from SPW-0 with 800 km/s bandpass, cleaned with Briggs weighting, binned to 13.5 km/s",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The continuum was estimated using data in SPWs 1-3."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Side-lobe check using beam image and simulated images",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "the maximum side-lobe level of our observation is around 25%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify clumps and make moment maps/spectra",
+    "method": {
+     "value": "Clumpfind (Williams et al. 1994) on integrated map; Gaussian fits to regional spectra",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Emission",
+       "quote": "three clumps were found by the clump-finding algorithm of Williams et al. (1994)"
+      }
+     ]
+    },
+    "software": [
+     "Clumpfind"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian line profile fits",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Emission",
+       "quote": "together with the central velocity and FWHM from a Gaussian fit"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Total flux compared with SPIRE/FTS",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Emission",
+       "quote": "which agrees well with our SPIRE/FTS-measured flux"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compare with multiwavelength data and estimate AGN contribution",
+    "method": {
+     "value": "Overlay on HST and VLA images; CO/radio ratios; CO flux within r=0.2\" of radio peak as AGN upper limit",
+     "evidence": [
+      {
+       "loc": "3.3 Comparison with Other Observations",
+       "quote": "we measured the CO (6$-$5) flux within the region ($r=0^{\\prime\\prime}.2$; hereafter A$_{\\rm XDR}$) centered at the radio peak"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "XDR region unresolved by ALMA; F160W peak coincides with radio peak",
+      "evidence": [
+       {
+        "loc": "3.3 Comparison with Other Observations",
+        "quote": "Assuming that the X-ray dominated region associated with the AGN is unresolved by ALMA"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "HST dust lanes coincide with CO",
+     "evidence": [
+      {
+       "loc": "3.3 Comparison with Other Observations",
+       "quote": "This indicates that our method for improving the astrometry of the *HST* images is reasonable."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.1",
+    "used_for": {
+     "value": "data reduction and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The data were reduced with CASA 4.3.1."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Clumpfind",
+    "version": "not stated",
+    "used_for": {
+     "value": "identify clumps in CO map",
+     "evidence": [
+      {
+       "loc": "3.1 CO (6-5) Emission",
+       "quote": "three clumps were found by the clump-finding algorithm of Williams et al. (1994)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total CO(6-5) flux",
+    "value": "1230",
+    "uncertainty": "74",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 CO (6-5) Emission",
+      "quote": "The total flux of CO (6$-$5) measured from the integrated image is $1230\\pm74$ Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "434 um continuum flux density",
+    "value": "814",
+    "uncertainty": "52",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission at 434 um",
+      "quote": "$f_{434\\,\\mu{\\rm m,\\,ALMA}}=814\\pm52$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of total dust continuum detected",
+    "value": "0.51",
+    "uncertainty": "0.05",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission at 434 um",
+      "quote": "we estimated about $0.51\\pm0.05$ of the total dust continuum is detected"
+     }
+    ]
+   },
+   {
+    "quantity": "CO-to-continuum ratio SW/NE/central",
+    "value": "2100 / 1700 / 1300",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission at 434 um",
+      "quote": "The corresponding values of $R_{\\rm CO/cont}$ are 2100 (SW), 1700 (NE) and 1300 (central)"
+     }
+    ]
+   },
+   {
+    "quantity": "CO flux in A_XDR as fraction of central region",
+    "value": "~15%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 Comparison with Other Observations",
+      "quote": "it only accounts for $\\sim$15% of our ALMA-detected flux within the central region"
+     }
+    ]
+   },
+   {
+    "quantity": "CO-peak to continuum-peak offset",
+    "value": "~0.2 (~70 pc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Continuum Emission at 434 um",
+      "quote": "have a small offset of $\\sim$0$^{\\prime\\prime}$.2 (or $\\sim$70 pc)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO(6-5) shows a clumpy central region plus NE and SW regions coincident with optical dust lanes, in common rotation.",
+    "evidence": [
+     {
+      "loc": "4 Summary",
+      "quote": "The CO (6$-$5)-emiting gas appears to participate in the general rotation of the galaxy disk."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do CO(6-5) and dust emission trace the same gas on small scales?",
+    "experiment": "Compare CO(6-5) and 434 um maps",
+    "result": "Spatially correlated but ~70 pc peak offset; CO/continuum varies",
+    "finding": "Gas and dust may decouple at ~70 pc",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4 Summary",
+      "quote": "there is a $\\sim$70 pc offset between their emission peaks"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the AGN heat the CO(6-5)?",
+    "experiment": "Compare with VLA radio peak and CO flux within r=0.2\"",
+    "result": "Only ~15% of central CO flux near radio peak; poor correspondence",
+    "finding": "AGN heating is insignificant",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4 Summary",
+      "quote": "AGN heating plays an insignificant role in the mid-J CO line emission."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does CO(6-5) correlate with SF at <100 pc?",
+    "experiment": "Compare with extinction-corrected Pa-alpha",
+    "result": "Pa-alpha smooth, no clumps matching CO",
+    "finding": "Possible breakdown, uncertain due to extinction correction",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.3 Comparison with Other Observations",
+      "quote": "Nevertheless, a quantitative analysis, using a higher-quality radio image, is needed to reach a solid conclusion"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Extinction correction of Pa-alpha uncertain; radio image of limited quality",
+     "evidence": [
+      {
+       "loc": "3.3 Comparison with Other Observations",
+       "quote": "the extinction correction for the Pa-$\\alpha$ image may suffer from some uncertainties"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single short 315 s observation; no quantitative uncertainty on peak offsets beyond astrometry",
+    "Recovered flux comparison depends on unpublished SPIRE value",
+    "AGN upper limit assumes unresolved XDR and is crude",
+    "Self-registration of HST to radio assumes nucleus coincidence"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2013.1.00524.S cited; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00524.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (robust, threshold, masks)",
+    "Clumpfind settings",
+    "Calibrator names for flux/bandpass",
+    "HST and SPIRE reduced data"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB",
+   "score_inferred": 3,
+   "score_reason": "Single public dataset and simple analysis, but imaging parameters and external data are unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe incomplete and key comparisons depend on non-ALMA data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Williams et al. 1994",
+     "why": "clump-finding algorithm"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Xu et al. 2014, 2015",
+     "why": "ALMA CO(6-5) of NGC 34 and NGC 1614, same program and method"
+    },
+    {
+     "citation": "Lu et al. 2014",
+     "why": "SPIRE FTS CO ladder, SFR and AGN heating"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GOALS",
+    "Herschel SPIRE/FTS LIRG sample"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-71f98b853a6204952d8307bfd82b1ae3",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:46",
+  "usage": {
+   "input_tokens": 15438,
+   "output_tokens": 6722,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.049654,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 54,
+  "quotes_ok": 54,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 63,
+   "stated": 39,
+   "rate": 0.619
+  },
+  "evidence_ok": true
+ }
+}

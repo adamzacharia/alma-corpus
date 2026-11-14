@@ -1,0 +1,187 @@
+{
+ "bibcode": "2024ApJ...977L...6F",
+ "title": "The Impact of Shear on Disk Galaxy Star Formation Rates",
+ "year": 2024,
+ "doi": "10.3847/2041-8213/ad91a3",
+ "arxiv_id": "2409.07622",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Does the star formation efficiency per orbital time depend on orbital shear (beta) as predicted by the shear-driven GMC collision model, eps_orb proportional to (1-0.7 beta)?",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00392.S",
+  "2017.1.00886.L",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "azimuthal averages in 500 pc-wide radial bins",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Machine-readable tables of Sigma_SFR, Sigma_mol, Sigma_atom, Omega, beta in 500 pc radial bins",
+    "evidence": [
+     {
+      "loc": "Method",
+      "quote": "We extract these measurements from machine-readable tables (cite: Sun_etal_2022)"
+     }
+    ]
+   },
+   "citation": "Sun et al. 2022 (cite: Sun_etal_2022)"
+  },
+  {
+   "what": {
+    "value": "Bar footprint definitions",
+    "evidence": [
+     {
+      "loc": "4.2 Impact of a Bar on Star Formation",
+      "quote": "annuli that do and do not overlap with the footprint of a stellar bar, (cite: Querejeta_etal_2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta_etal_2021)"
+  },
+  {
+   "what": {
+    "value": "Rotation curves and v_circ from CO kinematics",
+    "evidence": [
+     {
+      "loc": "Method",
+      "quote": "$v_\\mathrm{circ}$ and $\\beta$ were based on CO kinematics (cite: Lang_etal_2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Lang_etal_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Assemble radial-bin measurements",
+   "method": "Take Sigma_SFR, Sigma_gas, Sigma_mol, Omega, beta from published tables; compute eps_orb = Sigma_SFR t_orb / Sigma_gas",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Metallicity-dependent CO-to-H2 conversion factor"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Bin by beta and fit shear law",
+   "method": "Median eps_orb in beta bins of width 0.05, excluding bins with <10 points; fit eps_orb0(1-alpha_CC beta) for beta<=0.5",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compare barred and non-barred annuli",
+   "method": "Split annuli by overlap with bar footprint; compare median eps_orb and refit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "alpha_CC (total gas, 32 galaxies)",
+   "value": "0.76",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Impact of Shear on Star Formation",
+     "quote": "$\\epsilon_\\mathrm{orb,\\,0}=0.045\\pm0.002$ and $\\alpha_\\mathrm{CC}=0.76\\pm0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CC excluding inner 1 kpc",
+   "value": "0.73",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Impact of Shear on Star Formation",
+     "quote": "$\\epsilon_\\mathrm{orb,\\,0}=0.045\\pm0.002$ and $\\alpha_\\mathrm{CC}=0.73\\pm0.21$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CC* (galaxy-normalized)",
+   "value": "0.80",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Impact of Shear on Star Formation",
+     "quote": "derive $\\alpha_\\mathrm{CC}^*=0.80\\pm0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CC,mol (49 galaxies)",
+   "value": "1.08",
+   "uncertainty": "0.23",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Impact of Shear on Star Formation",
+     "quote": "$\\epsilon_\\mathrm{orb,\\,mol,\\,0}=0.088\\pm0.005$ and $\\alpha_\\mathrm{CC,\\,mol}=1.08\\pm0.23$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median eps_orb barred",
+   "value": "0.0324",
+   "uncertainty": "0.0017",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Impact of a Bar on Star Formation",
+     "quote": "The barred sample has $\\overline{\\epsilon_\\mathrm{orb}}=0.0324\\pm0.0017$ and the non-barred has $\\overline{\\epsilon_\\mathrm{orb}}=0.0375\\pm0.0015$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median eps_orb non-barred",
+   "value": "0.0375",
+   "uncertainty": "0.0015",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Impact of a Bar on Star Formation",
+     "quote": "The barred sample has $\\overline{\\epsilon_\\mathrm{orb}}=0.0324\\pm0.0017$ and the non-barred has $\\overline{\\epsilon_\\mathrm{orb}}=0.0375\\pm0.0015$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Fitting method, likelihood and uncertainty estimation for alpha_CC",
+  "How binned-median uncertainties were computed",
+  "Exact galaxy list and the 32-galaxy HI subsample",
+  "Version of the Sun et al. 2022 tables",
+  "Treatment of the inner-kpc exclusion in detail"
+ ],
+ "missing_for_reproduction": [
+  "Fitting code and procedure",
+  "Exact table version and galaxy lists"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple analysis on public tables, but fitting details are unstated.",
+ "rediscovery_reason": "Public derived tables, simple binned fit, numeric results; fit details must be inferred.",
+ "source_card": "cards/2024ApJ...977L...6F/sonnet/card.md"
+}

@@ -1,0 +1,257 @@
+{
+ "bibcode": "2014ApJ...783L..13P",
+ "title": "Large-scale Asymmetries in the Transitional Disks of SAO 206462 and SR 21",
+ "year": 2014,
+ "doi": "10.1088/2041-8205/783/1/L13",
+ "arxiv_id": "1402.0832",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the large-scale structure of the dust emission in the transitional disks of SAO 206462 and SR 21, and are the asymmetries consistent with vortex-like features?",
+ "alma_project_codes": [
+  "2011.0.00724.S"
+ ],
+ "data": {
+  "bands": "0.45 mm (690 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "Continuum beams 0.27x0.19 arcsec (SAO 206462), 0.29x0.18 arcsec (SR 21)",
+  "sensitivity": "Continuum RMS 0.0020 (SAO 206462) and 0.0011 (SR 21) Jy/beam; line RMS 0.11 and 0.07 Jy/beam per 0.5 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "H-band polarized intensity images of SAO 206462 and SR 21",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we present polarized intensity maps at H-band of both disks (cite: 2012Muto; 2013ApJ...767...10F)"
+     }
+    ]
+   },
+   "citation": "Muto et al. 2012 (cite: 2012Muto); Follette et al. 2013 (cite: 2013ApJ...767...10F)"
+  },
+  {
+   "what": {
+    "value": "Dust surface density at cavity edge ~0.1 g cm^-2 from 850 um observations",
+    "evidence": [
+     {
+      "loc": "Observational Results",
+      "quote": "constrained the surface density at the edge of the cavity to be $\\Sigma_{dust}\\sim0.1\\:\\textrm{gm~cm}^{-2}$ for both SAO 206462 and SR 21"
+     }
+    ]
+   },
+   "citation": "Andrews et al. 2011 (cite: 2011ApJ...732...42A)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 10 cm^2/g at 450 um",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "a dust opacity of $\\kappa_{\\nu}=10\\:\\textrm{cm}^{2}\\:\\textrm{g}^{-1}$ at $450\\:\\mu$m (cite: 1990AJ.....99..924B)"
+     }
+    ]
+   },
+   "citation": "Beckwith et al. 1990 (cite: 1990AJ.....99..924B)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO moment maps",
+   "method": "Visibilities calibrated and imaged in CASA with Briggs weighting; CO moment 0 and 1 maps made",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate optical depth and brightness temperature",
+   "method": "Brightness temperature computed without Rayleigh-Jeans approximation; optical depth from literature surface density and opacity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 10 cm^2/g at 450 um"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit ring and ring+vortex models to visibilities",
+   "method": "Gaussian radial ring and Lyra & Lin vortex (Gaussian in r and theta) Fourier transformed and sampled at observed uv-positions; chi^2 minimized; PA fixed from CO moment 1; center and inclination free",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "SR 21 ring+vortex inclination fixed to 15 deg"
+   ],
+   "assumptions": [
+    "Ring emission axisymmetric; PA fixed to 62 deg (SAO 206462) and 16 deg (SR 21)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive vortex mass and turbulence",
+   "method": "Convert vortex flux to mass; use vortex aspect ratio and Stokes number to infer turbulent velocity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T=35 K, gas-to-dust 100, kappa=10 cm^2/g at 450 um for mass",
+    "a=1 mm, rho_s=1 g/cm3, Sigma=10 g/cm2, St~1e-2; gas T=50 K for sound speed"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Asymmetry contrast SAO 206462",
+   "value": "1.5",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observational Results",
+     "quote": "$1.5\\pm0.02$ in SAO 206462 and $1.9\\pm0.01$ in SR 21"
+    }
+   ]
+  },
+  {
+   "quantity": "Asymmetry contrast SR 21",
+   "value": "1.9",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observational Results",
+     "quote": "$1.5\\pm0.02$ in SAO 206462 and $1.9\\pm0.01$ in SR 21"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi^2 ring vs ring+vortex, SAO 206462",
+   "value": "1.18 vs 1.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\chi^2_{red}=1.18$  | $\\chi^2_{red}=1.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi^2 ring vs ring+vortex, SR 21",
+   "value": "1.39 vs 1.06",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\chi^2_{red}=1.39$  | $\\chi^2_{red}=1.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vortex fraction of total flux",
+   "value": "15% (SAO 206462), 28% (SR 21)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The vortex encompasses 15% of the total flux density for SAO 206462 and 28% for SR 21."
+    }
+   ]
+  },
+  {
+   "quantity": "Vortex mass",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The flux density in the asymmetry corresponds to a mass (dust+gas) of $\\sim2\\:M_{\\textrm{Jup}}$ for both SAO 206462 and SR 21"
+    }
+   ]
+  },
+  {
+   "quantity": "Vortex aspect ratio SAO 206462 / SR 21",
+   "value": "7.1 / 2.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$\\sigma_{\\phi,V}/\\sigma_{r,V}=7.1$ for SAO 206462 and $\\sigma_{\\phi,V}/\\sigma_{r,V}=2.8$ for SR 21"
+    }
+   ]
+  },
+  {
+   "quantity": "Required turbulent velocity",
+   "value": "90 (SAO 206462), 68 (SR 21)",
+   "uncertainty": "not stated",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "turbulent velocities of about $90\\:\\textrm{m~s}^{-1}$ and $68\\:\\textrm{m~s}^{-1}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius (ring+vortex)",
+   "value": "65.3 AU (SAO 206462), 35.0 AU (SR 21)",
+   "uncertainty": "0.1 AU",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$65.3\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature",
+   "value": "~30 K (SAO 206462), ~35 K (SR 21)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observational Results",
+     "quote": "$T_b\\sim30$ K for SAO 206462, and $T_b\\sim35$ K for SR 21"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Self-calibration solution intervals and reference antenna",
+  "Cell size, image size, deconvolver and masking",
+  "MCMC walkers, steps, burn-in, priors and parameter bounds",
+  "Flux calibrator model for Titan and flux uncertainty",
+  "How the moment maps were made (channel range, clip)",
+  "Continuum channel selection / line-free channels"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and self-calibration parameters",
+  "MCMC configuration and priors",
+  "Imaging geometry parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public Cycle 0 data and a simple model with a table of results, but calibration, self-cal and MCMC details are missing.",
+ "rediscovery_reason": "Data are public, the model is simple and results are numeric, though some details must be guessed.",
+ "source_card": "cards/2014ApJ...783L..13P/sonnet/card.md"
+}

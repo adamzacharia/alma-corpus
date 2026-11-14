@@ -1,0 +1,212 @@
+{
+ "bibcode": "2025MNRAS.541.4031D",
+ "title": "VERTICO ─ IX. Signatures of environmental processing of the gas in Virgo cluster spiral galaxies through mapping of CO isotopologues",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf1230",
+ "arxiv_id": "2507.17553",
+ "fields": [
+  "nearby_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "How do 13CO and C18O emission and line ratios in Virgo cluster spirals vary with galaxy properties, and what do they imply about environmental processing of the molecular gas?",
+ "alma_project_codes": [
+  "2019.1.00763.L",
+  "2017.1.00886.L",
+  "2016.1.00912.S",
+  "2015.1.00956.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "ACA (7-m) plus Total Power for the most extended 25 of 36 new targets",
+  "angular_resolution": "typical beam ≈7 arcsec (≈560 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VERTICO 12CO moment maps, mean gas and SFR surface densities and other galaxy properties",
+    "evidence": [
+     {
+      "loc": "3.3 12CO/13CO global line ratios",
+      "quote": "These galaxy properties are taken directly from the other VERTICO papers"
+     }
+    ]
+   },
+   "citation": "(cite: Brown2021)"
+  },
+  {
+   "what": {
+    "value": "HI deficiencies",
+    "evidence": [
+     {
+      "loc": "3.5 Correlations with H deficiency",
+      "quote": "where the deficiencies are taken from (cite: Yoon2017) and (cite: 2012MNRAS.422.1835S)"
+     }
+    ]
+   },
+   "citation": "(cite: Yoon2017); (cite: 2012MNRAS.422.1835S)"
+  },
+  {
+   "what": {
+    "value": "HI tail angles",
+    "evidence": [
+     {
+      "loc": "3.7 Tailed galaxies",
+      "quote": "using the tail angles derived in (cite: 2022MNRAS.517.2912L)"
+     }
+    ]
+   },
+   "citation": "(cite: 2022MNRAS.517.2912L)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples: EMPIRE field spirals and ATLAS3D ETGs line ratios",
+    "evidence": [
+     {
+      "loc": "3.4 Correlations with morphology",
+      "quote": "field spirals from EMPIRE, and field and Virgo cluster ETGs from the ATLAS$^{\\rm 3D}$ survey (cite: 2019ApJ...880..127J; 2015MNRAS.450.3874A)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...880..127J); (cite: 2015MNRAS.450.3874A)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make masked moment maps and directly detect isotopologues",
+   "method": "Moment maps from native cubes with Sun2018 masks; check 13CO and C18O at 5 sigma",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack cubes globally with STACKARATOR",
+   "method": "Shift spectra of every 12CO-detected spaxel by 12CO moment-1 velocity and co-add",
+   "software": [
+    "STACKARATOR"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit stacked lines and estimate uncertainties",
+   "method": "Single vs double gaussian (same centre) fitted with MCMC; double only if BIC lower; flux by integrating model; errors from 1000 random off-line window sums",
+   "software": [
+    "GAStimator"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Radial and quadrant stacking",
+   "method": "Stack in concentric elliptical beam-width apertures, and in quadrants toward/away from HI tails",
+   "software": [
+    "STACKARATOR"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Correlate line ratios with galaxy properties",
+   "method": "Spearman rank, LTSFIT linear fit against mean gas surface density, k-sample Anderson-Darling tests across environment/morphology/HI-deficiency groups",
+   "software": [
+    "LTSFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "13CO optically thin, [12C/13C]=70, temperature effects minor"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spearman correlation 12CO/13CO vs mean molecular gas surface density",
+   "value": "-0.56",
+   "uncertainty": "p = 0.002",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "Spearmans rank correlation coefficient (for the detected galaxies) of $\\rho=-0.56$, and a $p$-value of 0.002"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit slope of 12CO/13CO vs log Sigma_mol",
+   "value": "-4.6",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "(-4.6\\pm0.5)\\log_{10}"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of 12CO/13CO global ratios",
+   "value": "10-43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "ranging from 10 – 43"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation with SFR surface density",
+   "value": "-0.11",
+   "uncertainty": "p = 0.6",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "$\\rho=-0.11$, $p$-value of 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O global detections",
+   "value": "9 galaxies in Sec 3.2 (8 in Sec 3.8)",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "C$^{18}$O, on the other hand, was detected in 9 galaxies."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration pipeline/CASA versions and imaging parameters (robust, channel width) for VERTICO cubes",
+  "GAStimator priors, initial guesses, chain length",
+  "Radial aperture count and widths, and S/N criteria for radial bin detections",
+  "Conversion of Jy km/s to K km/s used for ratios",
+  "Definition of detection threshold in stacks beyond 5 sigma",
+  "LTSFIT settings",
+  "Anderson-Darling test implementation",
+  "Stack-based quadrant wedge angles for tails"
+ ],
+ "missing_for_reproduction": [
+  "VERTICO product moment maps/masks details",
+  "GAStimator configuration",
+  "Radial bin definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and code, but fitting settings, radial analysis details and upstream cubes depend on other papers.",
+ "rediscovery_reason": "Public data, public stacking code, numeric tables of fluxes and ratios exist, though some settings unstated.",
+ "source_card": "cards/2025MNRAS.541.4031D/sonnet/card.md"
+}

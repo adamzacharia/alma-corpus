@@ -1,0 +1,2216 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...973..135H",
+  "title": "Constraints on the Gas-phase C/O Ratio of DR Tau's Outer Disk from CS, SO, and C<SUB>2</SUB>H Observations",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Huang, Jane",
+  "n_authors": 7,
+  "arxiv_id": "2407.01679",
+  "doi": "10.3847/1538-4357/ad6447",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2016.1.01164.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observations and Data Reduction",
+    "quote": "Observations of DR Tau were obtained with the NOEMA PolyFiX correlator in dual polarization mode under program W21BE (PI: J. Huang)."
+   },
+   {
+    "loc": "DR Tau ALMA continuum data reduction",
+    "quote": "1.3 mm continuum observations of DR Tau from program 2016.1.01164.S were retrieved from the ALMA archive."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "DR Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "192 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "DR Tau is located 192 pc away in the Taurus star-forming region (cite: 1949ApJ...110..424J; 2021AJ....161..147B)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: 2021AJ....161..147B)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "DR Tau is located 192 pc away in the Taurus star-forming region (cite: 1949ApJ...110..424J; 2021AJ....161..147B)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the gas-phase C/O ratio in the outer disk of DR Tau, constrained by NOEMA CS, SO and C2H observations compared with DALI thermochemical models?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "we used the Northern Extended Millimeter Array (NOEMA) to obtain spatially resolved images of CS, SO,"
+     },
+     {
+      "loc": "Summary",
+      "quote": "toward the DR Tau disk, which we used to constrain its gas-phase C/O ratio."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01164.S",
+     "evidence": [
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "1.3 mm continuum observations of DR Tau from program 2016.1.01164.S were retrieved from the ALMA archive."
+      },
+      {
+       "loc": "Summary",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.01164.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "NOEMA new data, ~244-268 GHz; ALMA archival 1.3 mm continuum (project 2016.1.01164.S)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The correlator was configured to cover frequencies from $244.2-252.3$ GHz and $259.7-267.8$ GHz at a resolution of 2 MHz"
+     },
+     {
+      "loc": "DR Tau ALMA continuum data reduction",
+      "quote": "1.3 mm continuum observations of DR Tau from program 2016.1.01164.S"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "NOEMA PolyFiX: 244.2-252.3 GHz and 259.7-267.8 GHz at 2 MHz resolution; individual lines at 62.5 kHz",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "The correlator was configured to cover frequencies from $244.2-252.3$ GHz and $259.7-267.8$ GHz at a resolution of 2 MHz"
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "while individual lines of interest within these frequency ranges were covered at a higher resolution of 62.5 kHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CS",
+     "transition": "J = 5-4",
+     "rest_frequency": "244.9355565 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "244.9355565"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "J_N = 5_6-4_5",
+     "rest_frequency": "251.82577 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "251.82577"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "J = 3-2",
+     "rest_frequency": "260.2553390 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "260.2553390"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "J_N = 7_6-6_5",
+     "rest_frequency": "261.843721 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "261.843721"
+      }
+     ]
+    },
+    {
+     "species": "C2H",
+     "transition": "N = 3-2, J = 7/2-5/2, F = 4-3",
+     "rest_frequency": "262.00426 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "262.00426"
+      }
+     ]
+    },
+    {
+     "species": "C2H",
+     "transition": "N = 3-2, J = 7/2-5/2, F = 3-2",
+     "rest_frequency": "262.006482 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "262.006482"
+      }
+     ]
+    },
+    {
+     "species": "C2H",
+     "transition": "N = 3-2, J = 5/2-3/2, F = 3-2",
+     "rest_frequency": "262.064986 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "262.064986"
+      }
+     ]
+    },
+    {
+     "species": "C2H",
+     "transition": "N = 3-2, J = 5/2-3/2, F = 2-1",
+     "rest_frequency": "262.067469 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "262.067469"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J = 3-2",
+     "rest_frequency": "265.8864339 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "265.8864339"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J = 3-2",
+     "rest_frequency": "267.5576259 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "267.5576259"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "NOEMA, 10 antennas (Dec 2021) and 11 antennas (Feb 2022); ALMA array for 2016.1.01164.S not stated",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using 10 antennas with baselines ranging from 24 to 400 m"
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using 11 antennas with baselines ranging from 32 to 920 m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "24-400 m (19 Dec 2021); 32-920 m (26 Feb 2022)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using 10 antennas with baselines ranging from 24 to 400 m"
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "using 11 antennas with baselines ranging from 32 to 920 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "3 h (19 Dec 2021) + 3.4 h (26 Feb 2022) on source",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "DR Tau was observed for 3 hours on source on 19 December 2021"
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "for 3.4 hours on source on 26 February 2022"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "19 December 2021 and 26 February 2022 (NOEMA)",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "DR Tau was observed for 3 hours on source on 19 December 2021"
+     },
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "for 3.4 hours on source on 26 February 2022"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "NOEMA program W21BE (PI: J. Huang), new data; ALMA 2016.1.01164.S retrieved from the ALMA archive",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "under program W21BE (PI: J. Huang)"
+     },
+     {
+      "loc": "DR Tau ALMA continuum data reduction",
+      "quote": "were retrieved from the ALMA archive"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "NOEMA",
+     "provided": {
+      "value": "New CS, SO, C2H, HCN, HCO+ and H13CO+ line observations of DR Tau (program W21BE); C18O data from earlier NOEMA observations",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "Observations of DR Tau were obtained with the NOEMA PolyFiX correlator in dual polarization mode under program W21BE (PI: J. Huang)."
+       },
+       {
+        "loc": "Observational constraints",
+        "quote": "observations were originally published in (cite: 2023ApJ...943..107H; huang_2023_7370498)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ALMA",
+     "provided": {
+      "value": "Archival 1.3 mm continuum (project 2016.1.01164.S) used to constrain the disk physical structure models",
+      "evidence": [
+       {
+        "loc": "Observational constraints",
+        "quote": "we retrieved higher resolution 1.3 millimeter continuum observations originally published in (cite: 2019ApJ...882...49L) from the ALMA archive."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dereddened SED of DR Tau",
+      "evidence": [
+       {
+        "loc": "Observational constraints",
+        "quote": "The dereddened SED is taken from (cite: 2022AA...660A.126S)."
+       }
+      ]
+     },
+     "citation": "(cite: 2022AA...660A.126S)"
+    },
+    {
+     "what": {
+      "value": "NOEMA C18O 2-1 observations of DR Tau (also data release)",
+      "evidence": [
+       {
+        "loc": "Observational constraints",
+        "quote": "observations were originally published in (cite: 2023ApJ...943..107H; huang_2023_7370498)"
+       }
+      ]
+     },
+     "citation": "(cite: 2023ApJ...943..107H; huang_2023_7370498)"
+    },
+    {
+     "what": {
+      "value": "Literature values of v_sys, M_star, inclination and position angle used for the Keplerian model (v_sys=9.9 km/s, M_star ~1.18-1.2 Msun from Braun 2021; i=5.4 deg, PA=3.4 deg from Long 2019)",
+      "evidence": [
+       {
+        "loc": "Emission Morphology",
+        "quote": "using parameters measured from previous observations of DR Tau"
+       }
+      ]
+     },
+     "citation": "(cite: 2021ApJ...908...46B); (cite: 2019ApJ...882...49L)"
+    },
+    {
+     "what": {
+      "value": "Stellar T_eff, L_star and accretion luminosity of DR Tau",
+      "evidence": [
+       {
+        "loc": "Details on modeling DR Tau's disk physical structure",
+        "quote": "which corresponds to the DR Tau accretion luminosity derived by (cite: 2019AA...632A..32M)"
+       }
+      ]
+     },
+     "citation": "(cite: 2019AA...632A..32M)"
+    },
+    {
+     "what": {
+      "value": "X-ray plasma temperature and luminosity of DR Tau",
+      "evidence": [
+       {
+        "loc": "C18O modeling",
+        "quote": "corresponding to the high energy component fit to DR Tau’s X-ray spectrum in (cite: 2019AA...625A..66D)"
+       }
+      ]
+     },
+     "citation": "(cite: 2019AA...625A..66D)"
+    },
+    {
+     "what": {
+      "value": "Sulfur and hydrocarbon chemical network (modified)",
+      "evidence": [
+       {
+        "loc": "Chemical Network",
+        "quote": "we used a modified version of the network from (cite: 2023NatAs...7..684K)"
+       }
+      ]
+     },
+     "citation": "(cite: 2023NatAs...7..684K)"
+    },
+    {
+     "what": {
+      "value": "Fiducial initial chemical abundances",
+      "evidence": [
+       {
+        "loc": "C18O modeling",
+        "quote": "Our initial abundances are adopted from (cite: 2021ApJS..257....7B) and (cite: 2023AA...673A...7L)"
+       }
+      ]
+     },
+     "citation": "(cite: 2021ApJS..257....7B); (cite: 2023AA...673A...7L)"
+    },
+    {
+     "what": {
+      "value": "DIANA standard dust opacities",
+      "evidence": [
+       {
+        "loc": "Dust modeling",
+        "quote": "We adopted the DIANA standard dust opacities (cite: 2016AA...586A.103W)"
+       }
+      ]
+     },
+     "citation": "(cite: 2016AA...586A.103W)"
+    },
+    {
+     "what": {
+      "value": "Molecular line data (A_ij, E_u, g_u, rest frequencies)",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "Molecular data from the Cologne Database for Molecular Spectroscopy (cite: 2001AA...370L..49M; 2005JMoSt.742..215M)."
+       }
+      ]
+     },
+     "citation": "(cite: 2001AA...370L..49M; 2005JMoSt.742..215M)"
+    },
+    {
+     "what": {
+      "value": "MAPS disk line fluxes (C18O) used for the flux-ratio comparison",
+      "evidence": [
+       {
+        "loc": "Comparison with other systems",
+        "quote": "fluxes are taken from (cite: 2021ApJS..257....1O)"
+       }
+      ]
+     },
+     "citation": "(cite: 2021ApJS..257....1O)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "DALI thermochemical chemistry-only models (physical structures A and B) with input C/O = 0.47, 0.7, 0.9, 1.0, compared with observed radial profiles",
+     "evidence": [
+      {
+       "loc": "Modeling Procedure",
+       "quote": "we ran chemistry-only models for 1 Myr each using input elemental C/O ratios of 0.47, 0.7, 0.9, and 1.0."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "NOEMA data: NOEMA pipeline in GILDAS; ALMA 2016.1.01164.S: re-calibrated with the ALMA pipeline in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The observations were calibrated with the NOEMA pipeline in"
+      },
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "The raw data were re-calibrated with the ALMA pipeline in"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.4 (imaging of NOEMA data)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "for imaging in Common Astronomy Software Applications (CASA) 6.4"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "No: ALMA raw data were re-calibrated",
+     "evidence": [
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "The raw data were re-calibrated with the ALMA pipeline in"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "NOEMA: LkHalpha 101 (flux), 3C84 (bandpass), 0507+179 (phase), 0446+112 extra phase calibrator in second epoch",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Both sets of observations employed LkH$\\alpha$ 101 as the flux calibrator, 3C84 as the bandpass calibrator, and 0507+179 as a phase calibrator."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "0446+112 was included as an additional phase calibrator for the second set of observations."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "A systematic flux calibration uncertainty is included in column densities; it cancels in the CS/SO ratio because CS and SO were observed simultaneously",
+     "evidence": [
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "However, since CS and SO were observed simultaneously, the flux calibration uncertainties cancel out when taking the CS/SO ratio."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "NOEMA: three rounds of phase self-cal on continuum SPWs with solution intervals 180, 90, 45 s (S/N x7), applied to high-resolution SPWs; ALMA: three rounds with 60, 30, 15 s (S/N x2)",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Three rounds of phase self-calibration were applied to each of the continuum SPWs using solution intervals of 180, 90, and 45 seconds, respectively."
+      },
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "We then applied three rounds of phase self-calibration to the continuum data using solution intervals of 60, 30, and 15 seconds, respectively"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Multi-scale CLEAN in CASA 6.4 with 0.2 km/s channel spacing (NOEMA lines); tclean not named",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Line images were produced with channel spacings of 0.2 km s$^{-1}$ using multi-scale CLEAN"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multi-scale CLEAN",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "using multi-scale CLEAN (cite: 2008ISTSP...2..793C)"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "NOEMA: robust = 0.5; CS re-imaged with robust = 0 for the CS/SO profile; ALMA 1.3 mm continuum: robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The robust value was set to 0.5."
+      },
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "we re-imaged CS with a robust value of 0 so that its beam size more closely matched that of SO"
+      },
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "and a robust value of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.5'' for weak C2H hyperfine lines; 0.3'' for stacked C2H",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "we employed a $uv$ taper of $0.5\\ensuremath{''}$"
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "imaged them with a $uv$ taper of $0.3\\ensuremath{''}$"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "circular masks with 2'' radius",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "and circular masks with a radius of $2''$"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "[0'', 0.25'', 0.5'']",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "with scales of \\[$0''$, $0.25\\ensuremath{''}$, $0.5\\ensuremath{''}$\\]"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "uv-plane subtraction per SPW by fitting a linear baseline",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Continuum subtraction was performed in the $uv-$plane for each SPW by fitting a linear baseline."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied after CLEANing",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Primary beam corrections were then applied after CLEANing."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "CS and SO cubes smoothed with imsmooth to a common 0.59'' x 0.29'' (12 deg) beam",
+     "evidence": [
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "We then smoothed both image cubes in CASA with `imsmooth` to a common beam size of $0.59''\\times0.29''$ ($12^\\circ$)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "CS 5-4: 0.62'' x 0.32'' (12.4 deg); SO 7_6-6_5: 0.58'' x 0.29'' (12.1 deg)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "$0.62\\ensuremath{''}\\times0.32\\ensuremath{''}$ ($12.4\\ensuremath{^\\circ}$)"
+      },
+      {
+       "loc": "Table 2",
+       "quote": "$0.58\\ensuremath{''}\\times0.29\\ensuremath{''}$ ($12.1\\ensuremath{^\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Disk physical-structure modeling procedure with DALI",
+      "evidence": [
+       {
+        "loc": "Thermochemical modeling",
+        "quote": "Employing a procedure adapted from that of (cite: 2022AA...660A.126S), we used the DALI thermochemical code"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2022AA...660A.126S)"
+    },
+    {
+     "what": {
+      "value": "Starting values of the disk structure parameters",
+      "evidence": [
+       {
+        "loc": "Dust modeling",
+        "quote": "the other disk structure parameters were initialized based on the best-fit DR Tau model from (cite: 2022AA...660A.126S)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2022AA...660A.126S)"
+    },
+    {
+     "what": {
+      "value": "Two-component stellar spectrum",
+      "evidence": [
+       {
+        "loc": "Disk structure parametrization",
+        "quote": "As in (cite: 2022AA...660A.126S), the stellar spectrum is modelled with two components."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2022AA...660A.126S)"
+    },
+    {
+     "what": {
+      "value": "Chemical network for sulfur and hydrocarbon chemistry",
+      "evidence": [
+       {
+        "loc": "Chemical Network",
+        "quote": "we used a modified version of the network from (cite: 2023NatAs...7..684K)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2023NatAs...7..684K)"
+    },
+    {
+     "what": {
+      "value": "Iterative procedure for matching radial profiles by adjusting abundances",
+      "evidence": [
+       {
+        "loc": "Modeling Procedure",
+        "quote": "using an approach similar to the iterative procedure described by (cite: 2016ApJ...816...25P)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2016ApJ...816...25P)"
+    },
+    {
+     "what": {
+      "value": "Description of the ALMA 1.3 mm observations",
+      "evidence": [
+       {
+        "loc": "DR Tau ALMA continuum data reduction",
+        "quote": "The data were originally presented in (cite: 2019ApJ...882...49L), which describes the observations in more detail."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2019ApJ...882...49L)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Which channels were flagged as line emission when building NOEMA continuum uv-tables, and the channel ranges used for the linear baseline continuum subtraction",
+    "Reference antenna, solution settings and pipeline version for the NOEMA GILDAS calibration; flux density model adopted for LkHalpha 101",
+    "How the two NOEMA epochs were combined and weighted before imaging",
+    "CASA clean parameters not given: niter, threshold, cell size, image size, gain, and whether tclean was used",
+    "Line-free channel ranges used for the rms and for the spectrum baseline",
+    "Exact phase centre and the centre used for azimuthal averaging of radial profiles; bin widths of radial profiles",
+    "ALMA 2016.1.01164.S execution blocks, spectral windows, flagged line channels and imaging parameters (cell, size, threshold) for the re-reduced continuum",
+    "DALI version, grid, number of photon packages, raytracing parameters and input files; final sulfur abundance profiles for each model",
+    "Parameters for vis_sample synthetic visibilities and CLEAN of model cubes",
+    "Weights used and normalization when stacking the four C2H hyperfine components"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate NOEMA data and prepare uv-tables",
+    "method": {
+     "value": "NOEMA pipeline in GILDAS, each SPW written to a uv-table; continuum from line-flagged wide SPWs; phase self-calibration applied to high-resolution SPWs",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Continuum $uv-$tables were produced by flagging strong line emission in the wide-bandwidth SPWs and averaging the unflagged channels."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The resulting self-calibration tables were then applied to the high-resolution SPWs that fell within the same basebands."
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [
+     {
+      "value": "Self-calibration: three phase rounds, solution intervals 180, 90, 45 s",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "Three rounds of phase self-calibration were applied to each of the continuum SPWs using solution intervals of 180, 90, and 45 seconds, respectively."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Self-calibration improved continuum S/N by a factor of 7",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Self-calibration improved the continuum S/N by a factor of 7."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image lines, make moment maps and measure line fluxes",
+    "method": {
+     "value": "CASA multi-scale CLEAN cubes, moment 0 maps, spectra from circular apertures, fluxes by integrating over the moment-map velocity range",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Line images were produced with channel spacings of 0.2 km s$^{-1}$ using multi-scale CLEAN (cite: 2008ISTSP...2..793C) with scales of \\[$0''$, $0.25\\ensuremath{''}$, $0.5\\ensuremath{''}$\\] and circular masks with a radius of $2''$."
+      },
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "Line fluxes were measured from the spectra by integrating through the same velocity range used to make the moment maps."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Moment 0 velocity range: 6.6-12.4 km/s (HCO+); 9.2-10.6 km/s (other lines, set by CS)",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "Moment 0 (integrated intensity) maps were created for HCO$^+$ by integrating between LSRK velocities of 6.6 and 12.4 km s$^{-1}$ and for the other lines by integrating between LSRK velocities of 9.2 and 10.6 km s$^{-1}$."
+       }
+      ]
+     },
+     {
+      "value": "Spectra extracted in circular apertures of 1.5'' radius",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "Spectra were extracted from the image cubes using circular apertures with radii of $1.5''$, chosen to cover the extent of emission detected above $3\\sigma$."
+       }
+      ]
+     },
+     {
+      "value": "Flux uncertainty sqrt(N) * dv * sigma_spec",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "The flux uncertainties were estimated as $\\sqrt{N}\\Delta v\\sigma_\\text{spec}$, where $N$ is the number of channels included in the integrated intensity map"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Stack C2H hyperfine components and validate the detection",
+    "method": {
+     "value": "Stacked visibilities of the four C2H components with equal weights, imaged with a 0.3'' uv taper; matched filter validation",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "we stacked the visibilities (with each component equally weighted) and imaged them with a $uv$ taper of $0.3\\ensuremath{''}$"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "VISIBLE"
+    ],
+    "key_parameters": [
+     {
+      "value": "Matched filter template: CLEAN model of CS",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "The CLEAN model for CS was selected as the matched filter template"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "CS is a suitable template because it is detected at high significance and lacks obvious non-disk emission",
+      "evidence": [
+       {
+        "loc": "2 Observations and Data Reduction",
+        "quote": "because this line is detected at high significance and does not have obvious emission originating from non-disk components"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Matched filter confirms the four C2H hyperfine components above 5 sigma",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "confirming that the four targeted C$_2$H hyperfine components are detected above $5\\sigma$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Test SO clump kinematics against a Keplerian model",
+    "method": {
+     "value": "Keplerian fit to the SO 7_6-6_5 velocity map was attempted but failed; a model Keplerian map with literature parameters was subtracted from the observed map",
+     "evidence": [
+      {
+       "loc": "Emission Morphology",
+       "quote": "but the data quality was not sufficient to obtain a reliable fit"
+      },
+      {
+       "loc": "Emission Morphology",
+       "quote": "we generated a model Keplerian velocity map with `eddy` using parameters measured from previous observations of DR Tau"
+      }
+     ]
+    },
+    "software": [
+     "eddy"
+    ],
+    "key_parameters": [
+     {
+      "value": "i = 5.4 deg, PA = 3.4 deg (Long 2019); v_sys = 9.9 km/s, M_star = 1.18 Msun (Braun 2021)",
+      "evidence": [
+       {
+        "loc": "Emission Morphology",
+        "quote": "$i=5.4^\\circ$, and P.A. $=3.4^\\circ$ (cite: 2019ApJ...882...49L)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Literature M_star, i and PA are uncertain because of low inclination and compact disk",
+      "evidence": [
+       {
+        "loc": "Emission Morphology",
+        "quote": "The literature values of $M_\\star$, $i$, and P.A. have large uncertainties due to the low inclination and compactness of the disk."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Clump deviates from Keplerian model by ~50 m/s, below the spectral resolution",
+     "evidence": [
+      {
+       "loc": "Emission Morphology",
+       "quote": "The line-of-sight velocity clump differs from the Keplerian model by $\\sim$ 50 m s$^{-1}$, which is smaller than the spectral resolution."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive disk-averaged column densities and CS/SO",
+    "method": {
+     "value": "Optically thin LTE column density from CS 5-4 and SO 7_6-6_5 fluxes at assumed temperatures",
+     "evidence": [
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "Under the assumption that the molecular emission is in LTE and optically thin, the column density $N$ can be estimated by"
+      },
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "We first estimated the source-averaged CS/SO ratio using the CS $5-4$ and SO $7_6-6_5$ flux measurements in Table"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Assumed temperatures 30 K and 80 K",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "We therefore calculated column densities for assumed temperatures of 30 K and 80 K"
+       }
+      ]
+     },
+     {
+      "value": "Partition function Q(T) interpolated from CDMS",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "$Q(T)$ is computed by interpolating the values from the database"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE and optically thin emission",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "Under the assumption that the molecular emission is in LTE and optically thin"
+       }
+      ]
+     },
+     {
+      "value": "Temperatures from CO brightness temperatures in other T Tauri disks",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "chosen based on gas temperatures estimated from CO brightness temperature measurements in other disks hosted by T Tauri stars"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Measure radial CS/SO profile and CS/SO at the SO clump",
+    "method": {
+     "value": "Re-imaged CS (robust 0), smoothed CS and SO to a common beam, made azimuthally averaged radial profiles excluding the NE clump for SO; upper limit on CS/SO at the clump peak",
+     "evidence": [
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "we re-imaged CS with a robust value of 0 so that its beam size more closely matched that of SO $7_6-6_5$."
+      },
+      {
+       "loc": "The CS/SO ratio",
+       "quote": "The SO radial intensity profile was computed only with pixels located at position angles between 90 and 360$^\\circ$ in order to exclude the northeast clump."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Common beam 0.59'' x 0.29'' (12 deg)",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "to a common beam size of $0.59''\\times0.29''$ ($12^\\circ$)"
+       }
+      ]
+     },
+     {
+      "value": "Clump CS/SO upper limits use 3 sigma limits on N_CS",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "At $T=30$ K, $N_\\text{SO}=3.5\\pm0.7 \\times10^{13}$, the $3\\sigma$ upper limit for $N_\\text{CS}$ is $5\\times10^{12}$ cm$^{-2}$, and the $3\\sigma$ upper limit for CS/SO is $<0.15$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Same optically thin LTE assumption at T = 30 K and 80 K",
+      "evidence": [
+       {
+        "loc": "The CS/SO ratio",
+        "quote": "At $T=30$ K, the CS/SO values range from a minimum of $0.3$ at the disk center to a maximum of $0.6$ at a radius of $90$ au."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Re-reduce archival ALMA 1.3 mm continuum",
+    "method": {
+     "value": "Re-calibrate with the ALMA pipeline in CASA, flag line channels, average, three rounds of phase self-cal, multiscale CLEAN with robust 0.5, aperture flux",
+     "evidence": [
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "Channels with line emission were flagged, and the remaining channels were spectrally averaged to produce a set of continuum-only visibilities."
+      },
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "The final continuum image was produced with multiscale `CLEAN ` (cite: 2008ISTSP...2..793C) and a robust value of 0.5."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Phase self-cal intervals 60, 30, 15 s; S/N improved by factor of 2",
+      "evidence": [
+       {
+        "loc": "DR Tau ALMA continuum data reduction",
+        "quote": "using solution intervals of 60, 30, and 15 seconds, respectively, which improved the continuum S/N by a factor of 2"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux consistent with Long et al. 2019; uncertainty from 500 random apertures",
+     "evidence": [
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "which is consistent with (cite: 2019ApJ...882...49L)"
+      },
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "taking the standard deviation of 500 measurements"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Model disk physical structure (SED, 1.3 mm continuum, C18O) with DALI",
+    "method": {
+     "value": "DALI models with two dust populations and a generalized surface density profile; two physical models A and B, parameters varied by hand to match SED, continuum profile and C18O radial profile; synthetic visibilities CLEANed for comparison",
+     "evidence": [
+      {
+       "loc": "Modeling DR Tau's disk physical structure",
+       "quote": "we used the DALI thermochemical code (cite: 2012AA...541A..91B; 2013AA...559A..46B) to model DR Tau’s SED, spatially resolved millimeter continuum, and C$^{18}$O $J=2-1$ images in order to constrain the disk density and temperature."
+      },
+      {
+       "loc": "Dust modeling",
+       "quote": "Synthetic visibilities sampled at the same $uv$ points as the 1.3 mm continuum observations were generated from the model images using the `vis_sample` package"
+      }
+     ]
+    },
+    "software": [
+     "DALI",
+     "optool",
+     "vis_sample",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "f_lg = 0.99 (model A) and 0.90 (model B)",
+      "evidence": [
+       {
+        "loc": "Dust modeling",
+        "quote": "We fixed $f_{lg}$ to 0.99 for Physical Model A and to 0.90 for Physical Model B"
+       }
+      ]
+     },
+     {
+      "value": "Grain size distribution slope p = 3.5 (MRN)",
+      "evidence": [
+       {
+        "loc": "Disk structure parametrization",
+        "quote": "The value of $p$ is fixed to 3.5, corresponding to the MRN distribution from (cite: 1977ApJ...217..425M)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gas-to-dust ratio fixed to 100",
+      "evidence": [
+       {
+        "loc": "Disk structure parametrization",
+        "quote": "and $M_\\text{gas}/M_\\text{dust}$ was fixed to the ISM value of 100"
+       }
+      ]
+     },
+     {
+      "value": "PAH abundance 0.1 x ISM; cosmic ray ionization rate 1e-18 s^-1",
+      "evidence": [
+       {
+        "loc": "Disk structure parametrization",
+        "quote": "The PAH abundance was fixed to $0.1\\times$ the ISM value"
+       },
+       {
+        "loc": "C18O modeling",
+        "quote": "the cosmic ray ionization rate was set to a relatively low value of 10$^{-18}$ s$^{-1}$"
+       }
+      ]
+     },
+     {
+      "value": "Axisymmetric disk; spiral structure not modelled",
+      "evidence": [
+       {
+        "loc": "Disk structure parametrization",
+        "quote": "we employ an axisymmetric disk parametrization"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Manual iteration of parameters to improve visual match; no sampler or priors",
+     "evidence": [
+      {
+       "loc": "Dust modeling",
+       "quote": "We then varied these values to improve the visual match between the dust models and the observations."
+      }
+     ]
+    },
+    "validation": {
+     "value": "C18O model radial profile matched to within ~10% interior to 200 au",
+     "evidence": [
+      {
+       "loc": "C18O modeling",
+       "quote": "This procedure was repeated until the model matched the observed C$^{18}$O radial intensity profile to within $\\sim10\\%$ interior to $r=200$ au."
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Model CS, SO and C2H chemistry and constrain C/O",
+    "method": {
+     "value": "Chemistry-only DALI runs for 1 Myr on physical structures A and B for input C/O of 0.47, 0.7, 0.9, 1.0; sulfur abundance profile iteratively adjusted to match the observed CS radial profile; SO and C2H profiles then compared with observations",
+     "evidence": [
+      {
+       "loc": "Modeling Procedure",
+       "quote": "we ran chemistry-only models for 1 Myr each using input elemental C/O ratios of 0.47, 0.7, 0.9, and 1.0."
+      },
+      {
+       "loc": "Modeling Procedure",
+       "quote": "We first ran a model with a guess for the sulfur abundance, raytraced the CS image cube, subtracted the continuum, generated and CLEANed synthetic visibilities, and then extracted the radial intensity profile."
+      }
+     ]
+    },
+    "software": [
+     "DALI",
+     "vis_sample",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Network of 131 species and 1721 reactions",
+      "evidence": [
+       {
+        "loc": "Chemical Network",
+        "quote": "Overall, the network consists of 131 species and 1721 reactions."
+       }
+      ]
+     },
+     {
+      "value": "Radial intensity profiles binned at 10 au",
+      "evidence": [
+       {
+        "loc": "Modeling Procedure",
+        "quote": "which were binned at intervals of 10 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "All C and O initially in gas-phase CO and H2O ice",
+      "evidence": [
+       {
+        "loc": "Modeling Procedure",
+        "quote": "We assumed that all of the C and O are initially in gas-phase CO and H$_2$O ice."
+       }
+      ]
+     },
+     {
+      "value": "Volatile sulfur begins in atomic form",
+      "evidence": [
+       {
+        "loc": "Chemical Network",
+        "quote": "For simplicity, volatile sulfur in our models begins in atomic form."
+       }
+      ]
+     },
+     {
+      "value": "SO radial profiles exclude PA 0-90 deg because models lack the NE clump",
+      "evidence": [
+       {
+        "loc": "Chemical modeling results",
+        "quote": "azimuthal angles at P.A.s between 0 and $90^\\circ$ were excluded, since the models did not include the northeast clump."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Iterative scaling of the input S abundance by the ratio of observed to model CS radial profiles, linearly interpolated onto model cells; no sampler or priors",
+     "evidence": [
+      {
+       "loc": "Modeling Procedure",
+       "quote": "We then performed new model runs after adjusting the input sulfur abundance profile based on the ratio of the observed and model CS radial intensity profiles"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Iteration stopped when CS profiles matched within 10% inside 200 au; test with all sulfur initially in SO and test with input C/O = 0.2",
+     "evidence": [
+      {
+       "loc": "Modeling Procedure",
+       "quote": "We stopped this procedure after the observed and model CS radial intensity profiles matched within 10% at radii within 200 au."
+      },
+      {
+       "loc": "Chemical modeling results",
+       "quote": "We ran tests with an input C/O value of 0.2 and found that the CS and SO column densities barely changed beyond 100 au."
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Compare line fluxes with MAPS disks and the literature",
+    "method": {
+     "value": "Compared line flux ratios to C18O 2-1 for DR Tau against the five MAPS disks; total C2H flux estimated by multiplying stacked flux by 4",
+     "evidence": [
+      {
+       "loc": "Comparison with other systems",
+       "quote": "we estimated the total flux from all observed components by multiplying the stacked image flux by 4"
+      },
+      {
+       "loc": "Comparison with other systems",
+       "quote": "compares the ratio of line fluxes to C$^{18}$O $J=2-1$ fluxes for DR Tau and the five Class II protoplanetary disks observed in the MAPS ALMA Large Program (cite: 2021ApJS..257....1O)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "10% systematic flux calibration uncertainty assumed for all measurements",
+      "evidence": [
+       {
+        "loc": "Comparison with other systems",
+        "quote": "A $10\\%$ systematic flux calibration uncertainty was assumed for all measurements."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "NOEMA pipeline calibration and uv-tables",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "The observations were calibrated with the NOEMA pipeline in"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "6.4",
+    "used_for": {
+     "value": "Imaging of NOEMA data (multi-scale CLEAN), imsmooth, ALMA pipeline re-calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "for imaging in Common Astronomy Software Applications (CASA) 6.4"
+      },
+      {
+       "loc": "DR Tau ALMA continuum data reduction",
+       "quote": "The raw data were re-calibrated with the ALMA pipeline in"
+      }
+     ]
+    }
+   },
+   {
+    "name": "VISIBLE",
+    "version": "not stated",
+    "used_for": {
+     "value": "Matched filter validation of the stacked C2H detection",
+     "evidence": [
+      {
+       "loc": "2 Observations and Data Reduction",
+       "quote": "we used the matched filter method implemented in the `VISIBLE` Python package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "eddy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Keplerian model velocity map for the SO clump kinematics",
+     "evidence": [
+      {
+       "loc": "Emission Morphology",
+       "quote": "we generated a model Keplerian velocity map with `eddy` using parameters measured from previous observations of DR Tau"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Thermochemical and physical structure modeling, raytracing",
+     "evidence": [
+      {
+       "loc": "Modeling DR Tau's disk physical structure",
+       "quote": "we used the DALI thermochemical code (cite: 2012AA...541A..91B; 2013AA...559A..46B)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "vis_sample",
+    "version": "not stated",
+    "used_for": {
+     "value": "Synthetic visibilities from DALI model images",
+     "evidence": [
+      {
+       "loc": "Dust modeling",
+       "quote": "were generated from the model images using the `vis_sample` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "optool",
+    "version": "not stated",
+    "used_for": {
+     "value": "Computing DIANA dust opacities",
+     "evidence": [
+      {
+       "loc": "Dust modeling",
+       "quote": "which were computed with the `optool` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "analysisUtils",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`analysisUtils` (cite: 2023zndo...7502160H)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AstroPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`AstroPy` (cite: 2013AA...558A..33A; 2018AJ....156..123A; 2022ApJ...935..167A)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`matplotlib` (cite: Hunter:2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`SciPy` (cite: 2020SciPy-NMeth)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scikit-image",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`scikit-image` (cite: scikit-image)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "cmasher",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`cmasher` (cite: cmasher)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CS 5-4 integrated flux",
+    "value": "385",
+    "uncertainty": "10 (excludes ~10% systematic)",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$385\\pm10$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO 7_6-6_5 integrated flux",
+    "value": "231",
+    "uncertainty": "11 (excludes ~10% systematic)",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$231\\pm11$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO 5_6-4_5 integrated flux",
+    "value": "141",
+    "uncertainty": "10 (excludes ~10% systematic)",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$141\\pm10$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked C2H integrated flux",
+    "value": "24",
+    "uncertainty": "5",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$24\\pm5$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ 3-2 integrated flux",
+    "value": "2220",
+    "uncertainty": "40",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$2220\\pm40$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CO+ 3-2 integrated flux",
+    "value": "122",
+    "uncertainty": "12",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$122\\pm12$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN 3-2 integrated flux",
+    "value": "143",
+    "uncertainty": "11",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$143\\pm11$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged CS/SO at T = 30 K",
+    "value": "0.43",
+    "uncertainty": "0.02",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "For an assumed $T=30$ K, we estimate that $N_\\text{CS} = 3.8\\pm0.4 \\times 10^{12}$ cm$^{-2}$, $N_\\text{SO} = 8.8\\pm1.0\\times 10^{12}$ cm$^{-2}$, and CS/SO $=0.43\\pm0.02$."
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged CS/SO at T = 80 K",
+    "value": "0.48",
+    "uncertainty": "0.03",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "For an assumed $T=80$ K, we estimate that $N_\\text{CS} = 4.8\\pm0.5 \\times 10^{12}$ cm$^{-2}$, $N_\\text{SO} = 9.9\\pm1.1\\times 10^{12}$ cm$^{-2}$, and CS/SO $=0.48\\pm0.03$."
+     }
+    ]
+   },
+   {
+    "quantity": "N_CS disk-averaged at T = 30 K",
+    "value": "3.8e12",
+    "uncertainty": "0.4e12",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "we estimate that $N_\\text{CS} = 3.8\\pm0.4 \\times 10^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_SO disk-averaged at T = 30 K",
+    "value": "8.8e12",
+    "uncertainty": "1.0e12",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "$N_\\text{SO} = 8.8\\pm1.0\\times 10^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_CS disk-averaged at T = 80 K",
+    "value": "4.8e12",
+    "uncertainty": "0.5e12",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "we estimate that $N_\\text{CS} = 4.8\\pm0.5 \\times 10^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_SO disk-averaged at T = 80 K",
+    "value": "9.9e12",
+    "uncertainty": "1.1e12",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "$N_\\text{SO} = 9.9\\pm1.1\\times 10^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial CS/SO range at T = 30 K",
+    "value": "0.3 (disk center) to 0.6 (90 au)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "At $T=30$ K, the CS/SO values range from a minimum of $0.3$ at the disk center to a maximum of $0.6$ at a radius of $90$ au."
+     }
+    ]
+   },
+   {
+    "quantity": "Radial CS/SO range at T = 80 K",
+    "value": "0.33 to 0.68",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "the estimated CS/SO values are slightly higher, ranging from $0.33$ to $0.68$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_SO at the NE clump peak, T = 30 K",
+    "value": "3.5e13",
+    "uncertainty": "0.7e13",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "At $T=30$ K, $N_\\text{SO}=3.5\\pm0.7 \\times10^{13}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CS/SO upper limit at the NE clump, T = 30 K",
+    "value": "<0.15",
+    "uncertainty": "3 sigma upper limit",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "At $T=30$ K, $N_\\text{SO}=3.5\\pm0.7 \\times10^{13}$, the $3\\sigma$ upper limit for $N_\\text{CS}$ is $5\\times10^{12}$ cm$^{-2}$, and the $3\\sigma$ upper limit for CS/SO is $<0.15$."
+     }
+    ]
+   },
+   {
+    "quantity": "CS/SO upper limit at the NE clump, T = 80 K",
+    "value": "<0.17",
+    "uncertainty": "3 sigma upper limit",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "The CS/SO ratio",
+      "quote": "At $T=80$ K, $N_\\text{SO}=3.9\\pm0.7 \\times10^{13}$, the $3\\sigma$ upper limit for $N_\\text{CS}$ is $6\\times10^{12}$ cm$^{-2}$, and the $3\\sigma$ upper limit for CS/SO is $<0.17$."
+     }
+    ]
+   },
+   {
+    "quantity": "SO clump separation and position angle",
+    "value": "~180 au, PA ~50 deg",
+    "uncertainty": "not stated",
+    "units": "au; deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Emission Morphology",
+      "quote": "a clump-like structure at a separation of $\\sim180$ au from DR Tau and a P.A. of $\\sim50^\\circ$."
+     }
+    ]
+   },
+   {
+    "quantity": "SO clump line-of-sight velocity deviation from Keplerian model",
+    "value": "~50",
+    "uncertainty": "not stated",
+    "units": "m/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Emission Morphology",
+      "quote": "The line-of-sight velocity clump differs from the Keplerian model by $\\sim$ 50 m s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA 1.3 mm continuum flux in 1'' diameter aperture",
+    "value": "126.4",
+    "uncertainty": "0.5",
+    "units": "mJy",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "DR Tau ALMA continuum data reduction",
+      "quote": "The flux measured within a circular aperture with a diameter of $1''$ is $126.4\\pm0.5$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas mass, physical models A and B",
+    "value": "0.015 (A), 0.018 (B)",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$M_\\text{gas}$ ($M_\\odot$) | 0.015 | 0.018"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas characteristic radius r_c,gas, models A and B",
+    "value": "100 (A), 80 (B)",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$r_{c,\\,gas}$ (au) | 100 | 80"
+     }
+    ]
+   },
+   {
+    "quantity": "CO depletion factor f_CO",
+    "value": "~0.08-0.09",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Comparison with other systems",
+      "quote": "Based on modeling of C$^{18}$O emission, we estimated a CO depletion factor of $\\sim0.08-0.09$ for DR Tau."
+     }
+    ]
+   },
+   {
+    "quantity": "Model sulfur abundance S/H range",
+    "value": "~1e-9 to 1e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Comparison with other systems",
+      "quote": "Our model S/H values range from $\\sim10^{-9}-10^{-5}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Models indicate a gas-phase C/O < 1 in the disk regions traced by NOEMA",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "indicate that the gas-phase C/O ratio of DR Tau is $<1$, in contrast with most disks with reported C/O measurements."
+     }
+    ]
+   },
+   {
+    "value": "The SO clump has no counterpart in other lines, suggesting a localized chemical change rather than a gas overdensity",
+    "evidence": [
+     {
+      "loc": "Emission Morphology",
+      "quote": "The clump does not have a clear counterpart in any other line observed toward DR Tau, suggesting that it traces a localized chemical change rather than a gas overdensity."
+     }
+    ]
+   },
+   {
+    "value": "HCN/C18O and C2H/C18O flux ratios are markedly lower than in MAPS disks",
+    "evidence": [
+     {
+      "loc": "Comparison with other systems",
+      "quote": "the HCN/C$^{18}$O and C$_2$H/C$^{18}$O ratios are markedly lower than the MAPS disks"
+     }
+    ]
+   },
+   {
+    "value": "DCO+ is compact and centrally peaked while H13CO+ is extended and ring-like, opposite to other disks",
+    "evidence": [
+     {
+      "loc": "Comparison with other systems",
+      "quote": "The DCO$^+$ emission is comparatively compact and centrally peaked, while the H$^{13}$CO$^+$ emission is more radially extended and ring-like."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does DR Tau's disk have a low CS/SO ratio, unlike other T Tauri disks where only lower limits exist?",
+    "experiment": "Optically thin LTE column densities from NOEMA CS 5-4 and SO 7_6-6_5 fluxes at assumed 30 K and 80 K",
+    "result": "CS/SO = 0.43 +/- 0.02 (30 K) and 0.48 +/- 0.03 (80 K)",
+    "finding": "Lowest CS/SO reported so far for a T Tauri disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Estimates for the disk-averaged CS/SO ratio range from $\\sim0.4-0.5$, the lowest value reported thus far for a T Tauri disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the gas-phase C/O ratio of DR Tau's outer disk below 1?",
+    "experiment": "Compare CS, SO and stacked C2H radial profiles with DALI thermochemical models of physical structures A and B for input C/O 0.47-1.0",
+    "result": "Low CS/SO and faint C2H are explained by C/O < 1 at the radii traced; SO is underpredicted inside 50 au and beyond 100 au, and C2H is mismatched inside 100 au",
+    "finding": "Gas-phase C/O < 1 at the radii traced, with limits set by uncertain physical structure",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Thermochemical models calculated with DALI indicate that DR Tau’s low CS/SO ratio and faint C$_2$H emission can be explained by a gas-phase C/O ratio that is $<1$ at the disk radii traced by NOEMA."
+     },
+     {
+      "loc": "Model limitations",
+      "quote": "which supports the inference that C/O$<1$ in the regions of the DR Tau disk traced by our NOEMA observations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the SO clump northeast of DR Tau a localized chemical feature with a lower CS/SO?",
+    "experiment": "SO moment maps compared with other lines, Keplerian subtraction, and CS/SO upper limit at the clump peak",
+    "result": "Clump at ~180 au has no counterpart in other lines, CS/SO < 0.15 (30 K) and < 0.17 (80 K), no significant Keplerian deviation",
+    "finding": "The clump is a localized chemical change with lower CS/SO",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the SO moment maps exhibit a clump that has no counterpart in the other lines, and the CS/SO value decreases to $<0.2$ at its location."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does late infall contribute to driving down the gas-phase C/O ratio of the disk?",
+    "experiment": "Compare SO 7_6-6_5 map with 13CO 2-1 channel maps of extended structures",
+    "result": "Several streamer-like 13CO structures may be connected to the SO clump, but the 13CO resolution is too low to confirm",
+    "finding": "Late infall may contribute, but higher resolution data are needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Origins of DR Tau’s SO clump",
+      "quote": "shows that there are several streamer-like structures traced by $^{13}$CO that may be connected to the SO clump"
+     },
+     {
+      "loc": "Origins of DR Tau’s SO clump",
+      "quote": "higher resolution $^{13}$CO observations will be required to ascertain definitively whether the SO clump coincides with a streamer"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does DR Tau have chemical properties different from the MAPS disks?",
+    "experiment": "Compare line flux ratios to C18O 2-1 for HCN, C2H, H2CO, DCO+ and H13CO+ against MAPS disks",
+    "result": "HCN/C18O and C2H/C18O are markedly lower; H2CO/C18O and H13CO+/C18O are within the MAPS range",
+    "finding": "DR Tau shows markedly different chemistry from the MAPS disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "we find that its disk exhibits markedly different chemical properties from ALMA MAPS Large Program disks"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "SO alone does not constrain C/O because it also depends on total sulfur, so resolved CS, SO and C2H images were obtained",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "SO emission by itself does not constrain the C/O ratio, since it is also dependent upon the total sulfur abundance."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "CS was used as the reference for the sulfur abundance matching because of its higher SNR",
+    "evidence": [
+     {
+      "loc": "Modeling Procedure",
+      "quote": "we selected CS as the common reference because of its higher SNR"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "12CO and 13CO not used to constrain models because disk emission is hard to separate from large-scale emission",
+     "evidence": [
+      {
+       "loc": "Observational constraints",
+       "quote": "we elected not to use them to constrain the models because it is not straightforward to distinguish the disk emission from the complex large-scale emission."
+      }
+     ]
+    },
+    {
+     "value": "Higher-resolution ALMA CO isotopologue data of Sturm et al. not used because of spatial filtering",
+     "evidence": [
+      {
+       "loc": "Observational constraints",
+       "quote": "Given that their observations appear to be affected by spatial filtering, we did not include them in our analysis either."
+      }
+     ]
+    },
+    {
+     "value": "Lower input C/O of 0.2 tested; no change in CS and SO beyond 100 au",
+     "evidence": [
+      {
+       "loc": "Chemical modeling results",
+       "quote": "We ran tests with an input C/O value of 0.2 and found that the CS and SO column densities barely changed beyond 100 au."
+      }
+     ]
+    },
+    {
+     "value": "Initial reservoir of SO tested; does not enhance outer-disk SO",
+     "evidence": [
+      {
+       "loc": "Chemical modeling results",
+       "quote": "an initial reservoir of SO does not enhance the final abundance of SO in the outer disk because SO is efficiently converted to CS."
+      }
+     ]
+    },
+    {
+     "value": "Protoplanet explanation for the SO clump considered less likely",
+     "evidence": [
+      {
+       "loc": "Origins of DR Tau’s SO clump",
+       "quote": "so we consider the protoplanet explanation less likely for this system"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Iteration stopped when model and observed CS profiles agreed within 10% inside 200 au",
+    "evidence": [
+     {
+      "loc": "Modeling Procedure",
+      "quote": "We stopped this procedure after the observed and model CS radial intensity profiles matched within 10% at radii within 200 au."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Vertical temperature and density structure uncertain (face-on disk, one CO isotopologue line)",
+     "evidence": [
+      {
+       "loc": "Model limitations",
+       "quote": "the vertical temperature and density structures are uncertain because the disk is nearly face-on and only one CO isotopologue line is used to constrain the models."
+      }
+     ]
+    },
+    {
+     "value": "Chemical network lacks grain-surface SO pathways",
+     "evidence": [
+      {
+       "loc": "Model limitations",
+       "quote": "The limited chemical network used in this study does not include grain surface pathways to produce SO"
+      }
+     ]
+    },
+    {
+     "value": "Shock heating not included in the models",
+     "evidence": [
+      {
+       "loc": "Model limitations",
+       "quote": "Our models do not include the effect of shock heating, which can enhance SO production"
+      }
+     ]
+    },
+    {
+     "value": "Disk models have unexplored degeneracies",
+     "evidence": [
+      {
+       "loc": "Dust modeling",
+       "quote": "Disk modeling suffers from substantial degeneracies that are computationally expensive to explore"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "C/O < 1 conclusion rests on two hand-tuned physical models without a formal fit or uncertainty on C/O",
+    "Disk-averaged CS/SO assumes optically thin LTE at two temperatures and CS is likely optically thick inside ~50 au",
+    "The SO clump significance is only ~5-6 sigma and the infall link is qualitative",
+    "Models underpredict SO in the inner 50 au and beyond 100 au and misfit C2H, so the C/O inference is partly model dependent"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Calibrated visibilities and images are on Zenodo; ALMA 2016.1.01164.S retrieved from the ALMA archive",
+    "evidence": [
+     {
+      "loc": "2 Observations and Data Reduction",
+      "quote": "Calibrated visibilities and images can be downloaded at <https://zenodo.org/records/12600447>."
+     },
+     {
+      "loc": "DR Tau ALMA continuum data reduction",
+      "quote": "were retrieved from the ALMA archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "DALI input files, grids and final sulfur abundance profiles are not released",
+    "CASA clean parameters (cell, image size, threshold, niter) and line-free channels not given",
+    "GILDAS calibration scripts and continuum flagging ranges not given",
+    "Whether NOEMA raw data are public is not stated"
+   ],
+   "estimated_data_volume_inferred": "Calibrated Zenodo products likely a few GB; raw NOEMA two tracks plus one ALMA 1.3 mm project would be tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Calibrated visibilities are public and the imaging and CS/SO steps are described with numbers, but the DALI modeling is manual, uses unreleased inputs, and several imaging parameters are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The headline C/O conclusion depends on hand-tuned DALI thermochemical models with unreleased inputs; only the flux and CS/SO measurements are readily redoable."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2022AA...660A.126S)",
+     "why": "DR Tau DALI disk modeling procedure and starting parameters"
+    },
+    {
+     "citation": "(cite: 2023NatAs...7..684K)",
+     "why": "Chemical network for sulfur and hydrocarbons"
+    },
+    {
+     "citation": "(cite: 2012AA...541A..91B; 2013AA...559A..46B)",
+     "why": "DALI thermochemical code"
+    },
+    {
+     "citation": "(cite: 2018AJ....155..182L)",
+     "why": "VISIBLE matched filter and vis_sample"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2023ApJ...943..107H)",
+     "why": "Earlier NOEMA DR Tau observations of C18O, 12CO, 13CO and SO"
+    },
+    {
+     "citation": "(cite: 2019ApJ...882...49L)",
+     "why": "Original publication of the ALMA 1.3 mm continuum data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "NOEMA W21BE",
+    "NOEMA W20BE",
+    "ALMA 2016.1.01164.S",
+    "MAPS ALMA Large Program"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024ApJ...973..135H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T12:05:24",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 196,
+  "quotes_ok": 196,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 25,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 145,
+   "stated": 120,
+   "rate": 0.828
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,217 @@
+{
+ "bibcode": "2024IJAsB..23...14M",
+ "title": "Detection and prebiotic chemistry of possible glycine precursor molecule methylenimine towards the hot molecular core G10.47+0.03",
+ "year": 2024,
+ "doi": "10.1017/S1473550424000107",
+ "arxiv_id": "2404.12212",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Can the possible glycine precursor methylenimine (CH2NH) be detected towards the hot core G10.47+0.03 with ACA, and what are its column density, temperature and abundance, and likely formation route?",
+ "alma_project_codes": [
+  "2016.2.00005.S"
+ ],
+ "data": {
+  "bands": "ACA Band 4",
+  "arrays": "ACA 7-m array, 11 antennas",
+  "angular_resolution": "10.48″×6.28″ to 12.08″×6.90″ (cube beams)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "H2 column density of 1.30e23 cm^-2 used for abundance",
+    "evidence": [
+     {
+      "loc": "3.3 Rotational diagram analysis of CH$_{2}$NH",
+      "quote": "the column density of H$_{2}$ towards G10.47+0.03 was 1.30$\\times$10$^{23}$ cm$^{-2}$ (cite: suz16)"
+     }
+    ]
+   },
+   "citation": "(cite: suz16)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity 68.50 km/s",
+    "evidence": [
+     {
+      "loc": "3.2 Identification of the CH$_{2}$NH in the G10.47+0.03",
+      "quote": "The systematic velocity ($V_{LSR}$) of G10.47+0.03 is 68.50 km s$^{-1}$ (cite: rof11)."
+     }
+    ]
+   },
+   "citation": "(cite: rof11)"
+  },
+  {
+   "what": {
+    "value": "Partition functions of CH2NH from CDMS",
+    "evidence": [
+     {
+      "loc": "3.3 Rotational diagram analysis of CH$_{2}$NH",
+      "quote": "The rotational partition function of CH$_{2}$NH at 75 K is 740.457, that at 150 K is 2084.970, and that at 300 K is 5892.504 (cite: mu05)."
+     }
+    ]
+   },
+   "citation": "(cite: mu05)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "CASA pipeline calibration, mstransform, uvcontsub, tclean cubes, impbcor",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum",
+   "method": "2D Gaussian fit to continuum images",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify CH2NH lines via LTE modelling",
+   "method": "Extract spectrum in 23.75″ circle, subtract 2nd-order polynomial baseline, fit LTE model with CDMS in CASSIS using MCMC",
+   "software": [
+    "CASSIS",
+    "CDMS"
+   ],
+   "key_parameters": [
+    "V_LSR = 68.50 km/s"
+   ],
+   "assumptions": [
+    "LTE valid given gas density 7e7 cm^-3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Rotational diagram",
+   "method": "Gaussian fits (Levenberg-Marquardt) to lines, optically thin rotational diagram in CASSIS",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin, LTE; N(H2)=1.30e23 cm^-2 for abundance"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Moment maps and emitting size",
+   "method": "immoments over line velocity ranges, imfit 2D Gaussian, deconvolve via theta_S",
+   "software": [
+    "CASA immoments",
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH2NH column density (rotational diagram)",
+   "value": "3.40e15",
+   "uncertainty": "0.2e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(3.40$\\pm$0.2)$\\times$10$^{15}$ cm$^{-2}$ with a rotational temperature of 218.70$\\pm$20 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature",
+   "value": "218.70",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "rotational temperature of 218.70$\\pm$20 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2NH fractional abundance wrt H2",
+   "value": "2.61e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The fractional abundance of CH$_{2}$NH with respect to H$_{2}$ towards G10.47+0.03 is 2.61$\\times$10$^{-8}$."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE-fit column density",
+   "value": "3.21e15",
+   "uncertainty": "1.5e15",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Identification of the CH$_{2}$NH in the G10.47+0.03",
+     "quote": "the best-fit column density of CH$_{2}$NH was (3.21$\\pm$1.5)$\\times$10$^{15}$ cm$^{-2}$ with an excitation temperature of 210.50$\\pm$32.82 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Glycine conformer I upper limit",
+   "value": "≤1.02e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$\\leq$1.02$\\times$10$^{15}$ cm$^{-2}$ and $\\leq$2.36$\\times$10$^{13}$ cm$^{-2}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Emitting region size",
+   "value": "10.520″ to 10.781″ (0.43–0.45 pc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "The emitting region of CH$_{2}$NH varied between 10.520$^{\\prime\\prime}$ and 10.781$^{\\prime\\prime}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, cleaning threshold, niter, masks",
+  "Line-free channels for uvcontsub",
+  "Spectral window / channel width after imaging and velocity frame",
+  "CASSIS MCMC priors and fit ranges",
+  "Spectral extraction region centre",
+  "Source size and partition function used for the CH2NH rotational-diagram fit",
+  "Details of the glycine upper limits (line frequencies, assumed Tex, linewidth)"
+ ],
+ "missing_for_reproduction": [
+  "tclean image parameters and masks",
+  "CASSIS fit priors and inputs",
+  "Line-free channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and software named, but imaging and fit details are sparse.",
+ "rediscovery_reason": "Public ACA data, simple rotational-diagram recipe, numeric results.",
+ "source_card": "cards/2024IJAsB..23...14M/sonnet/card.md"
+}

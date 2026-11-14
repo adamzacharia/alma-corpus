@@ -1,0 +1,210 @@
+{
+ "bibcode": "2015ApJ...808...36M",
+ "title": "New Measurements of the Radio Photosphere of Mira Based on Data from the JVLA and ALMA",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/808/1/36",
+ "arxiv_id": "1506.03075",
+ "fields": [
+  "evolved_stars"
+ ],
+ "question": "Do JVLA and ALMA continuum data at 46, 96 and 229 GHz match the radio photosphere model of Mira A (size, shape, flux, brightness structure), and what are the properties of Mira B?",
+ "alma_project_codes": [
+  "2011.0.00014.SV"
+ ],
+ "data": {
+  "bands": "ALMA Band 3 (94 GHz) and Band 6 (229 GHz); JVLA Q band 46 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "Dirty beams 79x58 mas (B3), 32x23 mas (B6)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio photosphere model S=0.50(nu/10GHz)^1.86 (D/100pc)^-2 mJy",
+    "evidence": [
+     {
+      "loc": "4.1.1 Mira A",
+      "quote": "represents the flux density as a function of frequency predicted by the radio photosphere model of RM97"
+     }
+    ]
+   },
+   "citation": "Reid & Menten 1997 (RM97)"
+  },
+  {
+   "what": {
+    "value": "338 GHz ALMA flux points for Mira A and B",
+    "evidence": [
+     {
+      "loc": "4.1.1 Mira A",
+      "quote": "Additional data points at 338 GHz from Ramstedt et al. (2014) are also included."
+     }
+    ]
+   },
+   "citation": "Ramstedt et al. 2014"
+  },
+  {
+   "what": {
+    "value": "3C48 flux density scale",
+    "evidence": [
+     {
+      "loc": "3.1 JVLA Data",
+      "quote": "The absolute flux density scale was calculated using the latest time-dependent flux density values for 3C48 from Perley & Butler (2013)."
+     }
+    ]
+   },
+   "citation": "Perley & Butler (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate JVLA data",
+   "method": "AIPS calibration with 3C48 flux scale, NRAO150 bandpass, J0215-0222 gains, SiO maser phase self-cal",
+   "software": [
+    "AIPS",
+    "Obit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Self-calibrate ALMA pipeline data",
+   "method": "Self-cal on Mira AB continuum, phase then amp+phase",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image the data",
+   "method": "AIPS imaging, robust 0, 5 mas cells, circular restoring beam",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit size, shape, flux of Mira A and B",
+   "method": "Uniform elliptical disk fits to visibilities and elliptical Gaussian fits to images",
+   "software": [
+    "AIPS (OMFIT, JMFIT)"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 110 pc; Tb=2Sc^2/(k nu^2 pi theta_maj theta_min)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test brightness non-uniformity",
+   "method": "Compare multi-component visibility models (ring, point, Gaussian) and residual images for 229 GHz",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mira A 229 GHz flux density (uniform disk)",
+   "value": "150",
+   "uncertainty": "±30",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 6 (229 GHz) | 0.51 | 46.2$\\pm$2.3 (0.03) | 41.5$\\pm$2.3 (0.02) | 144$\\pm$11 (0.1) | 0.90$\\pm$0.07 | 150$\\pm$30 (0.04) | 2620$\\pm$560 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A 46 GHz flux density",
+   "value": "7.4",
+   "uncertainty": "±1.5",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Q (46 GHz) | 0.76 | 60.0$\\pm$2.0 (0.7) | 49.3$\\pm$1.6 (0.5) | $156\\pm$4 (1) | 0.82$\\pm$0.04 | 7.4$\\pm$1.5 (0.04) | 2110$\\pm$440 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A photospheric radius at 46/96/229 GHz",
+   "value": "3.0 / 2.6 / 2.4 AU",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.1 Mira A",
+     "quote": "4.5$\\times10^{13}$ cm (3.0 AU) at 46 GHz, 3.9$\\times10^{13}$ cm (2.6 AU) at 96 GHz, and 3.6$\\times10^{13}$ cm (2.4 AU) at 229 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B radius from 229 GHz",
+   "value": "≈2.0e13",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.2 Mira B",
+     "quote": "we derive a radius for Mira B of $\\approx2.0\\times10^{13}$ cm"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B 229 GHz flux density",
+   "value": "11.5",
+   "uncertainty": "±2.3",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 6 (229 GHz) | 25.4$\\pm$0.6 (0.4) | 23.4$\\pm$0.6 (0.4) | 69$\\pm$7 (7) | 11.5$\\pm$2.3 (0.09) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk+Gaussian model hot spot fraction at 229 GHz",
+   "value": "39% of 151 mJy in Gaussian FWHM 26 mas",
+   "uncertainty": "not stated",
+   "units": "mixed",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "The total flux density in this model was 151 mJy, with 39% in a Gaussian component with FWHM 26 mas"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, clean masks/thresholds in AIPS",
+  "Exact AIPS/CASA versions",
+  "Which flagged channels containing line emission in JVLA data",
+  "Data selection and weighting for uv fits (OMFIT settings)",
+  "Exact target coordinates",
+  "Whether ALMA self-cal reference antenna and models were specified"
+ ],
+ "missing_for_reproduction": [
+  "AIPS clean parameters",
+  "JVLA data in archive but program details limited",
+  "Uv-fit starting values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and clear calibration, but AIPS imaging and fitting details are partial.",
+ "rediscovery_reason": "Public SV data, numeric results in tables, fairly complete recipe for ALMA part.",
+ "source_card": "cards/2015ApJ...808...36M/sonnet/card.md"
+}

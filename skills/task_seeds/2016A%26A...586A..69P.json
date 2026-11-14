@@ -1,0 +1,225 @@
+{
+ "bibcode": "2016A&A...586A..69P",
+ "title": "The radio continuum spectrum of Mira A and Mira B up to submillimeter wavelengths",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201527833",
+ "arxiv_id": "1512.08638",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What is the origin of the cm-to-submm continuum emission of Mira A and Mira B, and does the relative position of the pair agree with the preliminary orbit?",
+ "alma_project_codes": [
+  "2012.1.00047.S",
+  "2013.1.00047.S"
+ ],
+ "data": {
+  "bands": "Band 9 (679 GHz), Band 7 (338 GHz); SV Bands 6 and 3",
+  "arrays": "not stated",
+  "angular_resolution": "Band 9 0.21''x0.15''; Band 7 0.32''x0.30''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA 8.5 and 22.5 GHz fluxes of Mira A and B",
+    "evidence": [
+     {
+      "loc": "The shape and origin of the continuum spectra",
+      "quote": "the weighted average of measurements made at 8.5 and 22.5 GHz by (cite: matthews2006)"
+     }
+    ]
+   },
+   "citation": "(cite: matthews2006)"
+  },
+  {
+   "what": {
+    "value": "Mira A 43.1 GHz flux",
+    "evidence": [
+     {
+      "loc": "The shape and origin of the continuum spectra",
+      "quote": "the Mira A measurements at 43.1 GHz by (cite: reid2007)"
+     }
+    ]
+   },
+   "citation": "(cite: reid2007)"
+  },
+  {
+   "what": {
+    "value": "Preliminary orbit parameters",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The latest orbit parameters can at best be considered preliminary (cite: prieur2002)."
+     }
+    ]
+   },
+   "citation": "(cite: prieur2002)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "Clean line-free channels, self-calibrate, primary-beam correct",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure fluxes and positions",
+   "method": "Simultaneous 2D Gaussian fit of A and B; also polygon total flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit spectral indices",
+   "method": "Power-law fits to ALMA plus literature VLA fluxes; two-component for Mira B",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thick thermal emission, Te 1e4 K, distance 110 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Relative astrometry vs orbit",
+   "method": "Gaussian-fit centroid offsets of B relative to A compared with preliminary orbit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mira A spectral index",
+   "value": "1.98",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The Mira A continuum emission has a spectral index of $1.98\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B spectral index, high frequency",
+   "value": "1.93",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The spectral index of the Mira B continuum emission is $1.93\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B spectral index, below ~95 GHz",
+   "value": "1.22",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a shallower spectral index of $1.22\\pm0.09$ at longer wavelengths"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 flux Mira A",
+   "value": "1460.8",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "The total flux is $1460.8\\pm0.5$ mJy for Mira A and $124.8\\pm0.5$ mJy for Mira B."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 flux Mira B",
+   "value": "124.8",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "The total flux is $1460.8\\pm0.5$ mJy for Mira A and $124.8\\pm0.5$ mJy for Mira B."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 flux Mira B",
+   "value": "25.5",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "$25.5\\pm0.2$ mJy for Mira B"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset from preliminary orbit",
+   "value": "~0.014",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "we have found a significant discrepancy, of the order of 0.014$''$, between the ALMA measurements and the predicted orbit."
+    }
+   ]
+  },
+  {
+   "quantity": "Mira B emitting region size (Gaussian HWHM-power size)",
+   "value": "0.019 arcsec = 3.1e13 cm",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The shape and origin of the continuum spectra",
+     "quote": "we derive a half power angular size of a Gaussian distribution of $0.019\\ensuremath{''}$, which corresponds to 3.1 $10^{13}$ cm at a distance of 110 pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Self-calibration solution intervals and number of iterations",
+  "Line-free channel list",
+  "Image size and cell size",
+  "Clean masks and thresholds",
+  "Fitting method and weighting for spectral-index power-law fits",
+  "Which band 7 date/dataset gave the quoted fluxes",
+  "HST analysis procedure"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and scripts",
+  "self-cal parameters",
+  "fitting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple recipe, but missing imaging and fitting details.",
+ "rediscovery_reason": "Public data, numeric fluxes and spectral indices from simple imaging and Gaussian fits.",
+ "source_card": "cards/2016A%26A...586A..69P/sonnet/card.md"
+}

@@ -1,0 +1,425 @@
+{\\text{BH}}$."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The amount of non-rotating SoI gas alone determines current AGN accretion efficiency.",
+      "experiment": "Compare non-rotating gas masses with Eddington ratios and AGN bolometric luminosities.",
+      "result": "Eddington ratio: τ = -0.4, p = 0.05; AGN luminosity: τ = -0.08, p = 0.5.",
+      "finding": "The available non-rotating gas does not significantly elevate current accretion efficiency; only a fraction may presently reach the SMBH.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "the non-rotating molecular gas mass and the Eddington ratio (Figure [14](#fig:Edd_NR); $\\tau = -0.4$ and $p$-value = 0.05)"
+        },
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "nor the AGN luminosity (Figure [15](#fig:Lumin_NR); $\\tau = -0.08$ and $p$-value = 0.5)."
+        },
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "This shows that the availability of non-rotating gas does not elevate the current accretion efficiency of the SMBH, suggesting that only a fraction of the observed non-rotating gas is presently reaching the SMBH."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The observed non-rotating gas reservoirs imply limited median short-term SMBH growth.",
+      "experiment": "Assume eventual accretion of all non-rotating SoI gas and compare its mass with SMBH mass.",
+      "result": "Median potential mass increases are ∼1% at lower-bound SoIs and 3% at upper-bound SoIs.",
+      "finding": "Expected short-term SMBH growth is limited and differs substantially among systems.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "these estimated mass increases range from $0-14$% and have a median of $\\sim$1%."
+        },
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "At the SoI upper-bound, the SMBHs are expected to grow by $\\sim0-95\\%$ with a median of 3%."
+        },
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "Given these low medians and wide ranges, we find that while the molecular gas reservoirs are significant, the expected short-term SMBH growth is limited and varies significantly by system."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Single and dual AGN differ intrinsically in their nuclear molecular gas supply.",
+      "experiment": "Compare five dual-AGN systems with two single-AGN systems, including gas around inactive SMBHs.",
+      "result": "No significant nuclear gas mass differences are tentatively found; some active nuclei also have small gas fractions.",
+      "finding": "AGN variability and/or obscuration are favored over an intrinsic supply difference, pending a larger comparison sample.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "Finally, we tentatively find no significant differences in the nuclear molecular gas masses of single AGN and dual AGN hosts, both within the SMBH sphere of influence and within the central kiloparsec."
+        },
+        {
+          "loc": "Structural differences between Single and Dual AGN",
+          "quote": "we speculate that the differences between single and dual AGN systems are more likely to be driven by AGN variability rather than by an intrinsic difference in the available supply of molecular gas."
+        },
+        {
+          "loc": "Structural differences between Single and Dual AGN",
+          "quote": "Future analysis of the molecular gas properties of a larger sample of single AGN systems in major mergers is necessary to confirm this theory."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "High resolution probes SMBH SoIs; low-J CO estimates total molecular gas; ESO 253-G003 CO(1-0) avoids an assumed line ratio.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "Studying the molecular gas kinematics within the SMBH sphere of influence (SoI) could, therefore, provide crucial insight into current and future SMBH growth, but this requires high angular resolution observations that can resolve the SoI."
+        },
+        {
+          "loc": "Introduction",
+          "quote": "are able to provide estimates of the total molecular gas mass and its distributions due to their low excitation temperatures"
+        },
+        {
+          "loc": "Data Description",
+          "quote": "we prioritized the $^{12}$CO(1-0) transition for which the line luminosity can be directly converted into a molecular gas mass"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Rotating-disk subtraction isolates non-rotating gas; skySampler accommodates non-central morphologies; arctangent profiles are motivated by prior sub-kpc CO fits.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "We perform kinematic modeling of the ALMA data cubes to determine the rotational component of the $^{12}$CO line emission. This allows us to isolate the non-rotating component of the molecular gas."
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "the standard analytic models available in `KinMS_fitter` (e.g., exponential disks, Gaussians) were not suitable because they assumed a centrally-peaked brightness profile."
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "we select this model because arctangential velocity profiles have been shown to provide a good fit to (sub-)kiloparsec $^{12}$CO disks in galaxies across different evolutionary stages"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "At least 30,000 and up to 65,000 fitting iterations to obtain reasonable 1σ errors; inspect residuals for overfitting.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "At least 30,000 iterations were performed for each fitting, with some models having up to 65,000 iterations to obtain reasonable $1\\sigma$ errors."
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "we examined the model-subtracted residual images to confirm that significant negative features, a common indicator of overfitting or a poor choice of model, are not present."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "For multiply observed systems generally use the newest data; use ESO 253-G003 CO(1-0) instead of CO(2-1) to avoid r21.",
+      "evidence": [
+        {
+          "loc": "Data Description",
+          "quote": "Generally, for systems that have been observed during multiple ALMA observing cycles, we analyzed the most recent data set."
+        },
+        {
+          "loc": "Data Description",
+          "quote": "we prioritized the $^{12}$CO(1-0) transition for which the line luminosity can be directly converted into a molecular gas mass, whereas the $^{12}$CO(2-1) transition would require assuming a line ratio"
+        }
+      ]
+    },
+    {
+      "value": "Centrally peaked analytic brightness profiles rejected for ring-like and clumpy systems in favor of fixed moment 0 morphology.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "the standard analytic models available in `KinMS_fitter` (e.g., exponential disks, Gaussians) were not suitable because they assumed a centrally-peaked brightness profile."
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "Instead, we fixed the morphology of these systems from their moment 0 intensity maps"
+        }
+      ]
+    },
+    {
+      "value": "Single- and two-component rotating disks rejected for NGC 6240 and NGC 985.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "we attempted to model the emission using both a single-component and a two-component rotating disk model."
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "For the two-component model, we also attempted to manually constrain the parameter space"
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "Both the single-component and two-component MCMC models failed to converge after 30,000 iterations."
+        }
+      ]
+    },
+    {
+      "value": "Aperture-size explanation for the SMBH–gas correlation tested against a uniform 3σ mass distribution and gas surface densities.",
+      "evidence": [
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "the positive trend between $M_{\\text{BH}}$ and non-rotating molecular gas mass could be an artifact of differing SoI’s"
+        },
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "This suggests that the $M_{\\text{BH}}$ correlation in Figure [11](#fig:SMBH_NR) is driven by differences in molecular gas concentration rather than an increase in spatial scale/aperture size."
+        }
+      ]
+    },
+    {
+      "value": "Recoiling SMBHs rejected as the interpretation of offsets because coalescence has not occurred.",
+      "evidence": [
+        {
+          "loc": "Off-nuclear SMBHs",
+          "quote": "Since SMBH coalescence has not yet occurred in these merger systems, we do not interpret these spatial offsets as evidence of recoiling SMBHs."
+        }
+      ]
+    },
+    {
+      "value": "CO peak offsets could reflect higher excitation, feedback destruction, outflows or accretion-driven depletion.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "The molecular gas in the vicinity of the AGN is either being destroyed by AGN feedback, depleted by nuclear outflows, accretion onto the SMBH, or it is at a higher excitation"
+        }
+      ]
+    },
+    {
+      "value": "An imbalanced gravitational potential cannot alone explain single-AGN systems because only the less massive Mrk 975 SMBH is active.",
+      "evidence": [
+        {
+          "loc": "Structural differences between Single and Dual AGN",
+          "quote": "AGN activity is only detected for the *less* massive SMBH (Mrk 975 NE)."
+        },
+        {
+          "loc": "Structural differences between Single and Dual AGN",
+          "quote": "an imbalanced gravitational potential well cannot solely explain why only one SMBH is active."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Only two single-AGN systems provide an incomplete, preliminary comparison sample.",
+      "evidence": [
+        {
+          "loc": "Sample Selection",
+          "quote": "Though not a complete comparison sample, the inclusion of these two single AGN will serve as a preliminary point of comparison"
+        }
+      ]
+    },
+    {
+      "value": "SMBH masses and SoI radii depend on methodology; merger systems may depart from the MBH–σ* relation.",
+      "evidence": [
+        {
+          "loc": "Black Hole Masses & Sphere of Influences",
+          "quote": "SMBH mass measurements can be highly uncertain, and vary substantially based on the method followed"
+        },
+        {
+          "loc": "Black Hole Masses & Sphere of Influences",
+          "quote": "there can be up to a factor of $\\sim4$ difference in the derived SoI based on methodology and definition."
+        }
+      ]
+    },
+    {
+      "value": "Most lower-bound SoIs are unresolved, limiting correlation constraints.",
+      "evidence": [
+        {
+          "loc": "Gas inside each SMBH’s sphere of influence",
+          "quote": "the SoI lower-bound is unresolved in a high fraction of sources, resulting in the molecular gas measurements being dominated by upper-limits."
+        },
+        {
+          "loc": "Gas inside each SMBH’s sphere of influence",
+          "quote": "We therefore lack sufficient information to quantify a precise correlation at the SoI lower-bound."
+        }
+      ]
+    },
+    {
+      "value": "Galaxy-integrated r21 is used because robust 50–100 pc line ratios in major mergers are unavailable.",
+      "evidence": [
+        {
+          "loc": "CO Maps and Properties",
+          "quote": "this value represents our best estimate given that $^{12}$CO line ratios at 50$-$100 pc resolutions have not been studied in a robust sample of major mergers."
+        }
+      ]
+    },
+    {
+      "value": "Global missing flux can inflate SoI gas fractions by ∼3 for ESO 253-G003 and ∼1.2–1.4 for other systems.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "a factor of $\\sim3$ for ESO 253-G003, and a factor of $\\sim1.2-1.4$ for the remaining systems"
+        },
+        {
+          "loc": "Kinematics",
+          "quote": "likely overestimate the true fraction by approximately the same order of magnitude as the flux loss on global/kiloparsec scales"
+        }
+      ]
+    },
+    {
+      "value": "Some MCMC posteriors are bimodal or non-Gaussian.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "We find that the MCMC probability distributions for some parameters are bimodal and/or non-Gaussian."
+        }
+      ]
+    },
+    {
+      "value": "Projected SoI gas masses and non-rotating gas masses are upper limits to enclosed and infalling gas masses, respectively.",
+      "evidence": [
+        {
+          "loc": "Kinematics",
+          "quote": "Formally, these are projected molecular gas masses and should be treated as upper-limits to the true mass within the SMBH SoI."
+        },
+        {
+          "loc": "Feeding the Supermassive Black Holes",
+          "quote": "These non-rotating gas masses serve as upper limits to the total infalling gas mass, given that they may include low velocity outflows, bar-driven streaming, and other components."
+        }
+      ]
+    },
+    {
+      "value": "The nuclear concentration versus activity trend is not statistically significant and needs a larger sample.",
+      "evidence": [
+        {
+          "loc": "Spatial misalignment with $^{12}$CO peaks",
+          "quote": "the observed trend is not statistically significant ($\\tau = -0.2$, $p$-value = 0.4)."
+        },
+        {
+          "loc": "Spatial misalignment with $^{12}$CO peaks",
+          "quote": "High resolution $^{12}$CO observations of a larger sample of AGN in major galaxy mergers are necessary to fully evaluate the observed trend."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Failed disk fits do not by themselves establish that all enclosed gas is non-rotating.",
+    "The SoI aperture depends on SMBH mass, so residual coupling may remain despite the aperture and partial-correlation checks.",
+    "The missing-flux test assumes a smooth distribution; more concentrated filtered emission would behave differently.",
+    "The empirical 1.5 kpc division and small, censored sample limit the strength of merger-stage conclusions.",
+    "Cycle 9 text gives ∼20 km s−1 final channels, while Table 2 describes all RMS values per 10 km/s channel.",
+    "Cycle 9 imaging text calls TM1 compact, but the observing setup identifies C43-9 and ∼15 km baselines.",
+    "NGC 6240 has a 0.95 kpc separation in Table 1 and 1.4 kpc in its source description.",
+    "NGC 985 has a Table 3 mass ratio of 6.9 despite the stated parent major-merger criterion below 5:1.",
+    "NGC 985W gas fractions in Table 6 differ from the <0.05% value in the discussion.",
+    "Mrk 975 NE upper-bound non-rotating mass range ends at 7.21 in Table 6, versus 7.51 at the lower bound; retain the printed values pending clarification.",
+    "Table 5 labels the eastern Mrk 463 fit as Mrk 436E; component identification needs confirmation."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Executable imaging, moment-map, aperture-photometry and correlation scripts.",
+    "Exact channel selections and complete tclean parameter files.",
+    "Versioned KinMS fitting configurations, spatial masks, priors and saved posterior samples.",
+    "Exact continuum-derived AGN positions and continuum luminosities deferred to Droguett et al. (in prep).",
+    "Detailed MUSE dispersion fitting configuration inherited from earlier work.",
+    "NGC 6240 archival reduction details inherited from (cite: treister20).",
+    "Clarification of channel-width, table/prose and component-label inconsistencies.",
+    "Explicit public-access status and availability of the final science cubes and residual products."
+  ],
+  "estimated_data_volume_inferred": "Byte volume cannot be estimated reliably from the supplied text; multiple configurations, execution blocks and four-spw observations are involved.",
+  "score_inferred": 6,
+  "score_reason": "On a 0–10 scale: project IDs, pipeline versions, broad imaging choices, equations and numeric results are given, but exact imaging and MCMC configurations, scripts and companion continuum inputs are missing.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric and NGC 6240 data are described as archival, but public availability of every dataset is not stated and the supplied recipe lacks essential imaging, fitting and companion-continuum inputs.",
+  "methods_papers": [
+    {
+      "citation": "(cite: CASA2022; ALMA2023)",
+      "why": "ALMA pipeline reduction and calibration."
+    },
+    {
+      "citation": "(cite: briggs95)",
+      "why": "Briggs weighting."
+    },
+    {
+      "citation": "(cite: Davis2013; Davis2020)",
+      "why": "KinMS rotating-disk modeling."
+    },
+    {
+      "citation": "(cite: Curran2014; Privon2020)",
+      "why": "Monte Carlo correlation analysis with pymccorrelation."
+    },
+    {
+      "citation": "(cite: solomon05)",
+      "why": "CO line luminosity calculation."
+    },
+    {
+      "citation": "(cite: kormendy13)",
+      "why": "MBH–σ* relation."
+    },
+    {
+      "citation": "(cite: koss22)",
+      "why": "Ca II stellar velocity dispersion measurements and SoI prescription."
+    },
+    {
+      "citation": "(cite: koss23)",
+      "why": "SMBH mass estimation procedure followed for additional nuclei."
+    },
+    {
+      "citation": "(cite: medling15)",
+      "why": "NGC 6240 SMBH masses and motivation for upper-bound SoI radii."
+    },
+    {
+      "citation": "(cite: MA2023)",
+      "why": "Adopted r21 line ratio."
+    },
+    {
+      "citation": "(cite: GB2021)",
+      "why": "Nuclear-to-circumnuclear gas concentration comparison."
+    },
+    {
+      "citation": "(cite: Kawamuro2022; Ricci2023)",
+      "why": "Millimeter–X-ray luminosity relation."
+    },
+    {
+      "citation": "(cite: Vasudevan2009; Gupta2024)",
+      "why": "X-ray bolometric correction."
+    },
+    {
+      "citation": "(cite: weilbacher20)",
+      "why": "MUSE instrument pipeline."
+    },
+    {
+      "citation": "(cite: powell18a)",
+      "why": "Procedure underlying adopted stellar mass estimates."
+    },
+    {
+      "citation": "(cite: vestergaard06)",
+      "why": "Hβ-based procedure underlying literature Mrk 739 SMBH masses."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: treister20)",
+      "why": "First presentation and observational setup of the archival NGC 6240 CO data."
+    },
+    {
+      "citation": "Droguett et al. (in prep)",
+      "why": "Continuum AGN positions, continuum measurements and ESO 253-G003 luminosity inputs."
+    },
+    {
+      "citation": "Ramos et al. (in prep.)",
+      "why": "Remaining single-AGN merger sample and comprehensive comparison."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "BAT Spectroscopic Survey (BASS) Data Release 2",
+    "Swift-BAT 70-months all-sky catalog",
+    "Great Observatories All-sky LIRGs Survey (GOALS)",
+    "ESO Program 0104.B-0497",
+    "ESO Program 096.D-0296",
+    "ESO Program 094.B-0345",
+    "ESO Program 114.27GQ.001"
+  ]
+}
+tokens used
+107,228

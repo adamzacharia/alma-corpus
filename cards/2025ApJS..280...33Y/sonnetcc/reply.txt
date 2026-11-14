@@ -1,0 +1,646 @@
+{
+"depth": "full",
+"paper_type": "large_program_or_survey",
+"paper_type_evidence": [
+ {"loc": "abstract", "quote": "The Querying Underlying mechanisms of massive star formation with ALMA-Resolved gas Kinematics and Structures (QUARKS) survey observed 139 infrared-bright (IR-bright) massive protoclusters at 1.3 mm wavelength with ALMA."},
+ {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "The QUARKS survey (PIs: Lei Zhu, Guido Garay, and Tie Liu; Project ID: 2021.1.00095.S"}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {
+ "value": "How do IR-bright massive protocluster clumps fragment into cores (observed core separation vs thermal Jeans length), and are there candidate high-mass starless cores among them?",
+ "evidence": [
+  {"loc": "abstract", "quote": "This study investigates clump-to-core fragmentation and searches for candidate high-mass starless cores within IR-bright clumps using combined ALMA 12-m (C-2) and Atacama Compact Array (ACA) 7-m data"}
+ ]
+},
+"targets": [
+ {
+  "name": "139 IR-bright massive protocluster clumps of the QUARKS sample (156 single pointings)",
+  "details": [
+   {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "we observed in the QUARKS survey 139 IR-bright massive protocluster clumps"},
+   {"loc": "3.3 Physical parameters of dense cores", "quote": "is the distance for each source, adopted from (cite: 2024RAA....24b5009L)"},
+   {"loc": "2.3 Continuum imaging with self-calibration", "quote": "at a median distance of 3.7 kpc for the QUARKS survey"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "median distance 3.7 kpc; per-source distances in the core table",
+  "distance_source": "adopted from (cite: 2024RAA....24b5009L)"
+ }
+],
+"alma_project_codes": [
+ {"code": "2021.1.00095.S", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "Project ID: 2021.1.00095.S"},
+  {"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2021.1.00095.S"}
+ ]}
+],
+"data_settings": [
+ {"field": "bands", "value": "Band 6 (~1.3 mm), dual polarization", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "The ALMA band 6 receivers were used in a dual-polarization mode for the QUARKS observations."}
+ ]},
+ {"field": "frequencies_and_spectral_setup", "value": "4 SPWs (SPW1-4), ~2 GHz bandwidth each, ~1.3 km/s velocity resolution; centred at ~217.92, 220.32, 231.37, 233.52 GHz", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "Four spectral windows (SPWs 1–4) were configured with a bandwidth of $\\sim$2 GHz, a velocity resolution of $\\sim\\rm 1.3\\,km\\,s^{-1}$ for each SPW."},
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "The frequencies of the four SPWs were centered at approximately 217.92 GHz, 220.32 GHz, 231.37 GHz, and 233.52 GHz, respectively."}
+ ]},
+ {"field": "continuum_bandwidth", "value": "all four SPWs used for continuum (line-free channels)", "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "All four SPWs visibility data were used to ensure a rather high sensitivity for the QUARKS TM2+ACA continuum image."}
+ ]},
+ {"field": "arrays", "value": "ALMA 12-m (C-2, TM2) combined with ACA 7-m", "evidence": [
+  {"loc": "abstract", "quote": "using combined ALMA 12-m (C-2) and Atacama Compact Array (ACA) 7-m data"}
+ ]},
+ {"field": "configurations", "value": "TM2 = 12-m C-2 and ACA 7-m used here (QUARKS also has extended C-5 TM1, not used in this paper)", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "ACA 7-m array, ALMA 12-m compact array C-2 (TM2) and extended C-5 (TM1) configurations, respectively"}
+ ]},
+ {"field": "baselines", "value": "~15.1-313.7 m for TM2 (Group 1: 15.1/500.6 m)", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "all Groups have similar minimum and maximum baselines (BL; $\\sim$ 15.1-313.7 m)"}
+ ]},
+ {"field": "angular_resolution", "value": "~1 arcsec for TM2; TM2+ACA continuum beam ~1.3 x 1.1 arcsec; line beam ~1.4 x 1.1 arcsec", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "angular resolution (AR; $\\sim$1$''$), and maximum recoverable scale (MRS; $\\sim$ 11$''$)"},
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "with an average beam size of $\\sim1.3$ $''$$\\times1.1$ $''$"}
+ ]},
+ {"field": "max_recoverable_scale", "value": "~11 arcsec for TM2 (before adding ACA)", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "angular resolution (AR; $\\sim$1$''$), and maximum recoverable scale (MRS; $\\sim$ 11$''$)"}
+ ]},
+ {"field": "sensitivity", "value": "continuum ~0.6 mJy/beam; line rms ~10 mJy/beam per channel (~0.2 K)", "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "the average noise level of the reduced TM2+ACA continuum data is $\\sim\\rm 0.6\\,mJy\\,beam^{-1}$"},
+  {"loc": "2.4 Line Imaging", "quote": "the average rms level of the reduced line data is $\\sim \\rm 10\\,mJy\\,beam^{-1}$ ($\\sim \\rm 0.2\\,K$) per channel"}
+ ]},
+ {"field": "observing_dates", "value": "TM2: 9 April 2022 to 22 March 2024 (ACA first completed late May 2022)", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "starting on April 9, 2022, and completed on March 22, 2024"},
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "ACA observations were first completed in late May 2022"}
+ ]},
+ {"field": "pi_or_archival_as_stated", "value": "PI observations of the QUARKS survey (PIs: Lei Zhu, Guido Garay, Tie Liu)", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "The QUARKS survey (PIs: Lei Zhu, Guido Garay, and Tie Liu; Project ID: 2021.1.00095.S"}
+ ]}
+],
+"lines_targeted": [
+ {"species": "N2D+", "transition": "3-2", "rest_frequency": "not stated", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "cold gas tracer (e.g., $\\rm N_2D^+$ 3–2)"}
+ ]},
+ {"species": "CO", "transition": "2-1", "rest_frequency": "not stated", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "outflow gas tracers (e.g., CO (2–1), SiO (5–4)"}
+ ]},
+ {"species": "SiO", "transition": "5-4", "rest_frequency": "not stated", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "outflow gas tracers (e.g., CO (2–1), SiO (5–4)"}
+ ]},
+ {"species": "CH3CN", "transition": "12-11", "rest_frequency": "not stated", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "hot molecular core tracers (e.g., $\\rm CH_3CN$ (12–11)"}
+ ]},
+ {"species": "H30alpha", "transition": "recombination line (ionized gas tracer)", "rest_frequency": "not stated", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "ionized gas tracer, $\\rm H30\\alpha$"}
+ ]}
+],
+"other_facilities": [
+ {"name": "ALMA ATOMS survey (Band 3, ~3 mm)", "provided": {"value": "3 mm continuum and H40alpha comparison images; clump parameters; catalog of ATOMS 'unknown' sources cross-matched with QUARKS cores", "evidence": [
+  {"loc": "3.1 Core extraction", "quote": "a comparison of continuum images between the 3 mm ATOMS data (left panels) and the 1.3 mm QUARKS TM2+ACA data (right panels) for two example targets"}
+ ]}},
+ {"name": "MeerKAT 1.3 GHz radio continuum", "provided": {"value": "cross-match to check free-free contamination of the 27 cores above 100 Msun", "evidence": [
+  {"loc": "Appendix: Physical parameters", "quote": "From the cross-match between these cores and MeerKAT 1.3 GHz radio continuum arising from free-free emission"}
+ ]}}
+],
+"external_data_from_literature": [
+ {"what": {"value": "Per-source distances to the clumps", "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "is the distance for each source, adopted from (cite: 2024RAA....24b5009L)"}
+ ]}, "citation": "(cite: 2024RAA....24b5009L)"},
+ {"what": {"value": "Clump number densities and dust temperatures (clump SED-derived) used for Jeans length and starless upper-limit temperature", "evidence": [
+  {"loc": "3.5 Analysis of thermal Jeans length", "quote": "Using physical parameters from Table A1 in (cite: 2020MNRAS.496.2790L), we find that the clump number densities range from"}
+ ]}, "citation": "(cite: 2020MNRAS.496.2790L), Table A1; SED method (cite: 2004A&A...426...97F)"},
+ {"what": {"value": "Dust opacity kappa = 0.9 cm2/g at 1.3 mm", "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "is taken as 0.9 $\\rm cm^{2}\\,g^{-1}$ (cite: 1994A&A...291..943O)"}
+ ]}, "citation": "(cite: 1994A&A...291..943O)"},
+ {"what": {"value": "Warm-core dust temperature of 30 K", "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "For candidate warm cores, a dust temperature of 30 K was adopted (cite: 2023MNRAS.520.2306T)"}
+ ]}, "citation": "(cite: 2023MNRAS.520.2306T)"},
+ {"what": {"value": "Laboratory spectral line database used to build the model spectrum for line-free channel identification", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "matching the ALMA pipeline reduced datacube with the laboratory database of spectral lines (CDMS; (cite: 2001A&A...370L..49M))"}
+ ]}, "citation": "CDMS (cite: 2001A&A...370L..49M)"},
+ {"what": {"value": "ATOMS 'unknown' source catalog (280 compact fragments) used for cross-match", "evidence": [
+  {"loc": "4.2 Comparison with ATOMS unknown source catalog", "quote": "identified 280 compact fragments lacking signatures of HMCs or UCHii regions"}
+ ]}, "citation": "(cite: 2021MNRAS.505.2801L)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+ {"field": "pipeline_or_manual", "value": "ALMA pipeline-reduced datacube used to identify lines; continuum self-calibration done manually and iteratively (the calibration of the raw data itself is not described)", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "matching the ALMA pipeline reduced datacube with the laboratory database of spectral lines"},
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "Self-calibration was carried out manually and iteratively to optimize the cleaning thresholds"}
+ ]},
+ {"field": "casa_version", "value": "CASA 6.6.0 (used for combining and imaging)", "evidence": [
+  {"loc": "2.2 Data Reduction", "quote": "Common Astronomy Software Applications (CASA, version 6.6.0"}
+ ]},
+ {"field": "flux_calibrator", "value": "Bandpass/Flux calibrators listed per Group in the observation table (Col. 9)", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "The phase and bandpass calibrators are listed in Column 8 and Column 9 of Table"}
+ ]},
+ {"field": "self_calibration", "value": "three rounds of phase self-calibration on continuum (hogbom), calibration tables later applied to line data", "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "we performed three rounds of phase self-calibration"},
+  {"loc": "2.4 Line Imaging", "quote": "we applied to four SPWs all the calibration tables from three rounds of continuum self-calibration"}
+ ]}
+],
+"imaging": [
+ {"field": "task", "value": "CASA tclean on concatenated TM2+ACA visibilities (continuum and lines)", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "The combined imaging processes of both continuum and lines were performed using the CASA task *tclean*, with a *briggs* robust weighting of 0.5."}
+ ]},
+ {"field": "deconvolver", "value": "hogbom during phase self-cal rounds; mtmfs (nterm=2) for final continuum; multiscale for line cubes", "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "we selected the *hogbom* deconvolving algorithm"},
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "the Multi-Term Multi-Frequency Synthesis (*mtmfs*) with an *nterm* of 2 was employed for the last *tclean* procedure"},
+  {"loc": "2.4 Line Imaging", "quote": "with the *mutilscale* deconvolution approach and a uniform cleaning threshold of 25$\\,\\rm mJy\\,beam^{-1}$"}
+ ]},
+ {"field": "weighting_robust", "value": "briggs, robust = 0.5", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "with a *briggs* robust weighting of 0.5"}
+ ]},
+ {"field": "cell_size", "value": "0.15 arcsec (Group 1); 0.2 arcsec (Groups 2-15)", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "the image size for each field in Group 1 was set to be \\[300, 300\\] pixels, with a pixel size of 0.15$''$"},
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "for the fields in Groups 2-15 each image was set to have \\[250, 250\\] pixels, with a pixel size of 0.2$''$"}
+ ]},
+ {"field": "image_size", "value": "300x300 pixels (Group 1); 250x250 pixels (Groups 2-15)", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "the image size for each field in Group 1 was set to be \\[300, 300\\] pixels, with a pixel size of 0.15$''$"},
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "for the fields in Groups 2-15 each image was set to have \\[250, 250\\] pixels, with a pixel size of 0.2$''$"}
+ ]},
+ {"field": "continuum_subtraction", "value": "uvcontsub in the uv plane, linear fit (fitorder=1), line-free channels", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "employing the CASA task *uvcontsub* with a linear fitting (fitorder=1)"}
+ ]},
+ {"field": "line_free_channels", "value": "automatic selection from CDMS model spectrum shifted to field Vlsr and widened to 50 km/s, then manually re-identified per field with Linemarker; the channel lists are not given", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "we shifted the model spectrum and expanded it to a width of 50 $\\rm km\\,s^{-1}$"},
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "we manually reidentified the line-free channels for each field based on the TM2+ACA first version data using *Linemarker*"}
+ ]},
+ {"field": "primary_beam_correction", "value": "pblimit = 0.2 in tclean; getsf run on images without primary beam correction, with getsf fluxes then corrected for the primary beam response", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "The image cleaning procedure was conducted with in *pblimit* of 0.2 in each field."},
+  {"loc": "3.1 Core extraction", "quote": "the *getsf* was applied to images without primary beam correction"}
+ ]},
+ {"field": "array_combination", "value": "ACA and TM2 raw visibilities concatenated (concat) and imaged jointly; two-pointing clumps mosaicked except I12572-6316 and I17269-3312", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "the raw visibility data for the QUARKS ACA and TM2 observations were first concatenated using the CASA task *concat*"},
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "For 15 of them, we made the mosaic before imaging."}
+ ]},
+ {"field": "final_beam", "value": "continuum ~1.3 x 1.1 arcsec; line cubes ~1.4 x 1.1 arcsec (averages)", "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "with an average beam size of $\\sim1.3$ $''$$\\times1.1$ $''$"},
+  {"loc": "2.4 Line Imaging", "quote": "at an average synthesized beam of $\\sim 1.4$ $''$$\\times1.1$ $''$"}
+ ]},
+ {"field": "final_rms", "value": "continuum ~0.6 mJy/beam; line ~10 mJy/beam per channel at ~1.3 km/s", "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "the average noise level of the reduced TM2+ACA continuum data is $\\sim\\rm 0.6\\,mJy\\,beam^{-1}$"},
+  {"loc": "2.4 Line Imaging", "quote": "the average rms level of the reduced line data is $\\sim \\rm 10\\,mJy\\,beam^{-1}$ ($\\sim \\rm 0.2\\,K$) per channel"}
+ ]}
+],
+"inherited": [
+ {"what": {"value": "Line-free channel identification method (CDMS-matched model spectrum)", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "we followed the method developed by (cite: 2024RAA....24b5009L) for the QUARKS survey"}
+ ]}, "from_reference": "(cite: 2024RAA....24b5009L)"},
+ {"what": {"value": "ALMA configurations and observing details deferred to the QUARKS overview paper", "evidence": [
+  {"loc": "2.1 QUARKS sample and ALMA observations", "quote": "see Table 1 in (cite: 2024RAA....24b5009L)"}
+ ]}, "from_reference": "(cite: 2024RAA....24b5009L)"},
+ {"what": {"value": "Minimum core radius of half the beam size to mitigate deconvolution artifacts", "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "was enforced, following (cite: 2022A&A...664A..26P)"}
+ ]}, "from_reference": "(cite: 2022A&A...664A..26P)"},
+ {"what": {"value": "Monte Carlo uncertainty propagation for mass, density and surface density", "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "using the Monte Carlo approach as adopted in (cite: 2024ApJ...974..239S)"}
+ ]}, "from_reference": "(cite: 2024ApJ...974..239S)"},
+ {"what": {"value": "Projection correction factor 4/pi applied to core separations", "evidence": [
+  {"loc": "3.5 Analysis of thermal Jeans length", "quote": "consider the factor of $4/\\pi$, e.g., (cite: 2024ApJ...974...95I)"}
+ ]}, "from_reference": "(cite: 2024ApJ...974...95I)"},
+ {"what": {"value": "Cold-gas upper-level energy criterion (Eu below 22 K) for candidate starless cores", "evidence": [
+  {"loc": "3.2.1 Candidate starless and warm cores", "quote": "with upper energy levels ($E_u$) below 22 K (cite: 2019ApJ...886..102S)"}
+ ]}, "from_reference": "(cite: 2019ApJ...886..102S)"}
+],
+"unstated_but_needed": [
+ "Per-field line-free channel lists (the manual Linemarker step cannot be repeated without them)",
+ "Self-calibration solution intervals, per-round cleaning thresholds, masks and number of iterations per field for the continuum",
+ "tclean multiscale scales, continuum cleaning thresholds, niter and spectral-cube channel/velocity gridding for each field",
+ "getsf version and configuration beyond min/max size (e.g. filtering scales, background settings) and the exact edge-exclusion rule",
+ "How the original ALMA data were calibrated (pipeline version / manual scripts) and which products were used",
+ "Per-clump Vlsr used to shift the model spectrum",
+ "Method and thresholds for identifying CO outflows and H30alpha detections for each core (flagging as star-forming signatures)",
+ "How cores are assigned to clumps for the MST and how clump density, temperature and Jeans length were computed per clump (exact density-to-length chain, mean molecular weight for c_s)",
+ "Velocity dispersions adopted for the virial parameter of the two high-mass starless candidates",
+ "Full per-core table values behind the starless/warm/evolved medians (only partial tables printed)"
+],
+"analysis_steps": [
+ {
+  "order": 1,
+  "goal": "Concatenate ACA+TM2 and set line-free channels",
+  "method": {"value": "Concatenate visibilities; auto-flag line channels from CDMS-matched model spectrum (width 50 km/s around Vlsr); uvcontsub; first tclean; then manual re-identification of line-free channels with Linemarker and iterate", "evidence": [
+   {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "the raw visibility data for the QUARKS ACA and TM2 observations were first concatenated using the CASA task *concat*"},
+   {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "we manually reidentified the line-free channels for each field based on the TM2+ACA first version data using *Linemarker*"}
+  ]},
+  "software": ["CASA", "Linemarker", "CDMS"],
+  "key_parameters": [
+   {"value": "model spectrum width 50 km/s, shifted by field Vlsr", "evidence": [
+    {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "we shifted the model spectrum and expanded it to a width of 50 $\\rm km\\,s^{-1}$"}
+   ]},
+   {"value": "uvcontsub linear fit, fitorder=1", "evidence": [
+    {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "employing the CASA task *uvcontsub* with a linear fitting (fitorder=1)"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "First-version data showed skewed baselines for some fields, motivating manual line-free re-selection", "evidence": [
+   {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "the TM2+ACA first version data reveal a skewed baseline for some fields instead of a constant level"}
+  ]}
+ },
+ {
+  "order": 2,
+  "goal": "Make self-calibrated continuum image",
+  "method": {"value": "Three rounds of phase self-calibration with hogbom tclean, final tclean with mtmfs (nterm=2) using all four SPWs", "evidence": [
+   {"loc": "2.3 Continuum imaging with self-calibration", "quote": "we performed three rounds of phase self-calibration"},
+   {"loc": "2.3 Continuum imaging with self-calibration", "quote": "the Multi-Term Multi-Frequency Synthesis (*mtmfs*) with an *nterm* of 2 was employed for the last *tclean* procedure"}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [
+   {"value": "briggs robust 0.5; pblimit 0.2; cell 0.15 arcsec (Group 1) or 0.2 arcsec (Groups 2-15)", "evidence": [
+    {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "with a *briggs* robust weighting of 0.5"},
+    {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "The image cleaning procedure was conducted with in *pblimit* of 0.2 in each field."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Cleaning thresholds tuned manually to improve sensitivity while preventing divergence", "evidence": [
+   {"loc": "2.3 Continuum imaging with self-calibration", "quote": "Self-calibration was carried out manually and iteratively to optimize the cleaning thresholds"}
+  ]}
+ },
+ {
+  "order": 3,
+  "goal": "Make line cubes",
+  "method": {"value": "Apply continuum self-cal tables, uvcontsub, then tclean multiscale with a uniform threshold", "evidence": [
+   {"loc": "2.4 Line Imaging", "quote": "we applied to four SPWs all the calibration tables from three rounds of continuum self-calibration"},
+   {"loc": "2.4 Line Imaging", "quote": "with the *mutilscale* deconvolution approach and a uniform cleaning threshold of 25$\\,\\rm mJy\\,beam^{-1}$"}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [
+   {"value": "cleaning threshold 25 mJy/beam (~0.4 K) for all fields", "evidence": [
+    {"loc": "2.4 Line Imaging", "quote": "with the *mutilscale* deconvolution approach and a uniform cleaning threshold of 25$\\,\\rm mJy\\,beam^{-1}$"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}
+ },
+ {
+  "order": 4,
+  "goal": "Extract compact cores from 1.3 mm continuum",
+  "method": {"value": "getsf run on the continuum image without primary beam correction, minimum/maximum source size half and three times the beam; post-select on SIGNM > 5 and GOODM > 1, excluding edge cores", "evidence": [
+   {"loc": "3.1 Core extraction", "quote": "to identify compact structures within the TM2+ACA continuum data at 1.3 mm"},
+   {"loc": "3.1 Core extraction", "quote": "we set the minimum and maximum sizes of the extracted compact sources to half and three times the synthesized beam size, respectively"},
+   {"loc": "3.1 Core extraction", "quote": "we retained only the cores with a significance level (*SIGNM*; detection significance from monochromatic single scales) greater than 5"}
+  ]},
+  "software": ["getsf"],
+  "key_parameters": [
+   {"value": "GOODM greater than unity", "evidence": [
+    {"loc": "3.1 Core extraction", "quote": "a goodness (*GOODM*; monochromatic goodness combining significance and signal-to-noise ratio) greater than unity"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Reliability via getsf quality parameters; admitted that a few weak peaks are missed", "evidence": [
+   {"loc": "3.1 Core extraction", "quote": "a few potential sources could be still missing"}
+  ]}
+ },
+ {
+  "order": 5,
+  "goal": "Classify cores by evolutionary stage",
+  "method": {"value": "Count line peaks above 3 sigma in core-averaged spectra (N_line), combine with CO outflows and H30alpha: starless (N_line<=6, no outflow/H30alpha), warm (6<N_line<=15 or N_line<=6 with outflow, no H30alpha), evolved (HMC, UCHii-h, UCHii-l)", "evidence": [
+   {"loc": "3.2 Classification of cores", "quote": "we identified the number of line emission peaks from the core-averaged spectra exceeding a $3\\sigma$ noise level across the four SPWs"},
+   {"loc": "3.2.1 Candidate starless and warm cores", "quote": "candidate starless cores are required to only have such cold gas emission of lines with $N_{\\rm line} \\leq 6$"},
+   {"loc": "3.2.1 Candidate starless and warm cores", "quote": "the number of emission lines for candidate warm cores to be $6 < N_{\\rm line} \\leq 15$"}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [
+   {"value": "1 sigma = std of line-free channel amplitudes per core (~20 mJy/beam on average)", "evidence": [
+    {"loc": "3.2 Classification of cores", "quote": "The $1\\sigma$ noise level was calculated as the standard deviation of the amplitudes in the line-free emission channels for each core"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Candidate starless cores lack outflows (CO) and ionized gas (H30alpha)", "evidence": [
+    {"loc": "3.2.1 Candidate starless and warm cores", "quote": "such candidates should lack any star formation signatures, such as outflows traced by CO emission or ionized gas by H30$\\alpha$ emission"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Checked starless candidates for broad line wings in H2CO and DCN spectra; none seen", "evidence": [
+   {"loc": "3.2.1 Candidate starless and warm cores", "quote": "no broad line-wings were observed in the spectral line profiles (not shown here)"}
+  ]}
+ },
+ {
+  "order": 6,
+  "goal": "Derive core masses, densities and surface densities",
+  "method": {"value": "Optically thin dust mass at 1.3 mm with class-dependent T_dust; spherical geometry for n_H2 and surface density; deconvolved radius from getsf sizes; Monte Carlo uncertainties", "evidence": [
+   {"loc": "3.3 Physical parameters of dense cores", "quote": "Assuming dust continuum emission at 1.3 mm to be optically thin, the masses of the cores can be estimated as follows"},
+   {"loc": "3.3 Physical parameters of dense cores", "quote": "a minimum radius of half the beam size ($\\sim0.5$ $''$) was enforced"}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "T_dust: starless 20 K lower limit to clump average (upper limit); warm 30 K; evolved 100 K", "evidence": [
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "we adopted here a lower limit of temperature of 20 K for all candidate starless cores"},
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "For candidate warm cores, a dust temperature of 30 K was adopted"},
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "Finally, for candidate evolved cores, we assumed a dust temperature of 100 K"}
+   ]},
+   {"value": "kappa = 0.9 cm2/g", "evidence": [
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "is taken as 0.9 $\\rm cm^{2}\\,g^{-1}$ (cite: 1994A&A...291..943O)"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "gas-to-dust ratio 100", "evidence": [
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "is the gas-to-dust ratio, assumed to be 100"}
+   ]},
+   {"value": "mean molecular weight mu = 2.8; spherical geometry", "evidence": [
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "Assuming a spherical geometry, the number density of the cores was calculated as"},
+    {"loc": "3.3 Physical parameters of dense cores", "quote": "where $\\mu = 2.8$ is the mean molecular weight"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Uncertainty ~50% for mass, density and surface density via Monte Carlo", "evidence": [
+   {"loc": "3.3 Physical parameters of dense cores", "quote": "we estimated the uncertainty of mass, number density, and surface density of $\\rm\\sim 50\\%$, using the Monte Carlo approach as adopted in (cite: 2024ApJ...974..239S)"}
+  ]}
+ },
+ {
+  "order": 7,
+  "goal": "Measure core separations",
+  "method": {"value": "Minimum spanning tree of core positions within each clump; linear separations from distance; separations treated as lower limits due to projection", "evidence": [
+   {"loc": "3.4 Core Separation", "quote": "method was used to determine the shortest separation between the cores within each clump"},
+   {"loc": "3.4 Core Separation", "quote": "the measured core separations could represent lower limits due to projection effects, with actual values being potentially 1–2 times greater"}
+  ]},
+  "software": [],
+  "key_parameters": [],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Distance dependence of separations assessed with Spearman tests; attributed to observational effects", "evidence": [
+   {"loc": "3.4 Core Separation", "quote": "This reflects an observational effect rather than a physical phenomenon"}
+  ]}
+ },
+ {
+  "order": 8,
+  "goal": "Compare separations with thermal Jeans length",
+  "method": {"value": "Compute thermal Jeans length per clump from SED-derived clump density and temperature (Liu et al. 2020), form lambda_obs/lambda_J, apply 4/pi projection correction", "evidence": [
+   {"loc": "3.5 Analysis of thermal Jeans length", "quote": "These conditions yield Jeans lengths ($\\lambda_{\\rm J}=c_s(\\pi/G\\rho)^{1/2}$) of $\\rm\\sim [0.07, 1.1]\\,pc$"},
+   {"loc": "3.5 Analysis of thermal Jeans length", "quote": "consider the factor of $4/\\pi$, e.g., (cite: 2024ApJ...974...95I)"}
+  ]},
+  "software": [],
+  "key_parameters": [],
+  "assumptions": [
+   {"value": "Clump number densities ~1e3-1e5 cm-3 and dust temperatures 19.5-45.5 K from literature", "evidence": [
+    {"loc": "3.5 Analysis of thermal Jeans length", "quote": "Using physical parameters from Table A1 in (cite: 2020MNRAS.496.2790L), we find that the clump number densities range from"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Ratio less distance-dependent than lambda_obs or lambda_J alone (Spearman tests)", "evidence": [
+   {"loc": "3.5 Analysis of thermal Jeans length", "quote": "Both $\\lambda_{\\rm obs}$ and $\\lambda_{\\rm J}$ exhibit positive correlations with source distance"}
+  ]}
+ },
+ {
+  "order": 9,
+  "goal": "Search for high-mass starless core candidates",
+  "method": {"value": "Select starless cores with M >= 16 Msun at 20 K (assuming 50% star formation efficiency); check virial parameter with literature velocity dispersions", "evidence": [
+   {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "only two candidates (with $M_{\\rm core} \\geq 16\\,M_{\\odot}$ at $T_{\\rm d} = 20\\,\\rm K$) could potentially form high-mass stars independently"},
+   {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "we find $\\alpha_{\\rm vir} < 2$ for the two candidates studied here"}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "star formation efficiency 50%", "evidence": [
+    {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "Assuming a star formation efficiency of 50% as adopted in (cite: 2018A&A...618L...5N)"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "total velocity dispersion ~0.4-0.8 km/s from literature high-mass prestellar cores", "evidence": [
+    {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "Considering typical total velocity dispersions of high-mass prestellar cores in the literature"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "CO outflow maps and line spectra of the two candidates shown", "evidence": [
+   {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "Line spectra of the two candidate cores and detection maps of CO outflows within their natal clumps are shown in Figures"}
+  ]}
+ },
+ {
+  "order": 10,
+  "goal": "Cross-match with ATOMS unknown sources",
+  "method": {"value": "Cross-match 280 ATOMS unknown sources with the 1562 QUARKS cores (Venn diagram)", "evidence": [
+   {"loc": "4.2 Comparison with ATOMS unknown source catalog", "quote": "while the remaining 211 correspond to 464 QUARKS cores"}
+  ]},
+  "software": [],
+  "key_parameters": [],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}
+ }
+],
+"software": [
+ {"name": "CASA", "version": "6.6.0", "used_for": {"value": "concat, flag, uvcontsub, tclean, self-calibration of combined TM2+ACA data", "evidence": [
+  {"loc": "2.2 Data Reduction", "quote": "Common Astronomy Software Applications (CASA, version 6.6.0"}
+ ]}},
+ {"name": "getsf", "version": "not stated", "used_for": {"value": "compact core extraction in 1.3 mm continuum", "evidence": [
+  {"loc": "3.1 Core extraction", "quote": "to identify compact structures within the TM2+ACA continuum data at 1.3 mm"}
+ ]}},
+ {"name": "Linemarker", "version": "not stated", "used_for": {"value": "manual identification of line-free channels", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "we manually reidentified the line-free channels for each field based on the TM2+ACA first version data using *Linemarker*"}
+ ]}},
+ {"name": "CDMS", "version": "not stated", "used_for": {"value": "laboratory line database to build the model spectrum for automatic line-free channel selection", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "matching the ALMA pipeline reduced datacube with the laboratory database of spectral lines"}
+ ]}},
+ {"name": "ALMA pipeline", "version": "not stated", "used_for": {"value": "pipeline-reduced datacube used to identify lines for the model spectrum", "evidence": [
+  {"loc": "2.2.1 Data Flag and Basic Setups of Data Reduction", "quote": "matching the ALMA pipeline reduced datacube with the laboratory database of spectral lines"}
+ ]}}
+],
+"results_numeric": [
+ {"quantity": "Number of compact cores extracted", "value": "1562", "uncertainty": "not stated", "units": "cores", "from_step": 4, "evidence": [
+  {"loc": "3.1 Core extraction", "quote": "a total of 1562 compact structures (i.e., cores) were identified across 156 fields"}
+ ]},
+ {"quantity": "Candidate starless cores", "value": "127 (8.1%)", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+  {"loc": "3.2.1 Candidate starless and warm cores", "quote": "127 (8.1%) out of 1562 cores were finally classified as candidate starless cores"}
+ ]},
+ {"quantity": "Candidate warm cores", "value": "971 (62.2%)", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+  {"loc": "3.2.1 Candidate starless and warm cores", "quote": "971 cores (62.2%) were identified as candidate warm cores"}
+ ]},
+ {"quantity": "Candidate evolved cores", "value": "464 (~30%)", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+  {"loc": "3.2.2 Candidate hot molecular and UCHii cores", "quote": "the remaining 464 cores ($\\sim$30%) were classified as evolved cores"}
+ ]},
+ {"quantity": "Candidate hot molecular cores (HMCs)", "value": "314", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+  {"loc": "3.2.2 Candidate hot molecular and UCHii cores", "quote": "314 candidate HMCs without associated"}
+ ]},
+ {"quantity": "UCHii-h candidate cores", "value": "63", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+  {"loc": "3.2.2 Candidate hot molecular and UCHii cores", "quote": "63 UCHii-*h* candidates with associated"}
+ ]},
+ {"quantity": "UCHii-l candidate cores", "value": "87", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+  {"loc": "3.2.2 Candidate hot molecular and UCHii cores", "quote": "87 UCHii-*l* candidates with associated"}
+ ]},
+ {"quantity": "Average continuum noise (TM2+ACA)", "value": "~0.6", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 2, "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "the average noise level of the reduced TM2+ACA continuum data is $\\sim\\rm 0.6\\,mJy\\,beam^{-1}$"}
+ ]},
+ {"quantity": "Continuum mass sensitivity at 30 K and median distance 3.7 kpc", "value": "~0.3", "uncertainty": "not stated", "units": "Msun", "from_step": 2, "evidence": [
+  {"loc": "2.3 Continuum imaging with self-calibration", "quote": "corresponding to a mass sensitivity of $\\sim 0.3$ $M_{\\odot}$ for a 30 K dust temperature"}
+ ]},
+ {"quantity": "Average line rms per channel", "value": "~10", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 3, "evidence": [
+  {"loc": "2.4 Line Imaging", "quote": "the average rms level of the reduced line data is $\\sim \\rm 10\\,mJy\\,beam^{-1}$ ($\\sim \\rm 0.2\\,K$) per channel"}
+ ]},
+ {"quantity": "Starless core masses at 20 K: range and median", "value": "0.2-21.0 (median 1.5)", "uncertainty": "~50% (per-core mass)", "units": "Msun", "from_step": 6, "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "candidate starless cores have masses (at 20 K) ranging from \\[0.2–21.0\\] M$_{\\odot}$, with a median of 1.5 M$_{\\odot}$"}
+ ]},
+ {"quantity": "Median radius of candidate starless cores (20 K)", "value": "2800", "uncertainty": "not stated", "units": "au", "from_step": 6, "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "The median radius, number density, and surface density of candidate starless cores are 2800 au, $2.0 \\times 10^6$ cm$^{-3}$, and 0.5 g cm$^{-2}$, respectively"}
+ ]},
+ {"quantity": "Median number density of candidate starless cores (20 K)", "value": "2.0e6", "uncertainty": "not stated", "units": "cm^-3", "from_step": 6, "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "The median radius, number density, and surface density of candidate starless cores are 2800 au, $2.0 \\times 10^6$ cm$^{-3}$, and 0.5 g cm$^{-2}$, respectively"}
+ ]},
+ {"quantity": "Median surface density of candidate starless cores (20 K)", "value": "0.5", "uncertainty": "not stated", "units": "g cm^-2", "from_step": 6, "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "The median radius, number density, and surface density of candidate starless cores are 2800 au, $2.0 \\times 10^6$ cm$^{-3}$, and 0.5 g cm$^{-2}$, respectively"}
+ ]},
+ {"quantity": "Angular core separation range", "value": "0.9-17.9", "uncertainty": "not stated", "units": "arcsec", "from_step": 7, "evidence": [
+  {"loc": "3.4 Core Separation", "quote": "spanning \\[0.9, 17.9\\] $''$ (corresponding to $\\rm [0.005, 0.72]\\,pc$)"}
+ ]},
+ {"quantity": "Peak of angular separation distribution", "value": "2.5", "uncertainty": "not stated", "units": "arcsec", "from_step": 7, "evidence": [
+  {"loc": "3.4 Core Separation", "quote": "The distribution peaks at 2.5 $''$"}
+ ]},
+ {"quantity": "Peak of linear core separation distribution", "value": "~0.05", "uncertainty": "not stated", "units": "pc", "from_step": 7, "evidence": [
+  {"loc": "4.1 Fragmentation of Protocluster clumps", "quote": "the peak of the core separation distribution at $\\sim$0.05 pc"}
+ ]},
+ {"quantity": "Clump thermal Jeans length range", "value": "~0.07-1.1", "uncertainty": "not stated", "units": "pc", "from_step": 8, "evidence": [
+  {"loc": "3.5 Analysis of thermal Jeans length", "quote": "These conditions yield Jeans lengths ($\\lambda_{\\rm J}=c_s(\\pi/G\\rho)^{1/2}$) of $\\rm\\sim [0.07, 1.1]\\,pc$"}
+ ]},
+ {"quantity": "lambda_obs/lambda_J without projection correction: fraction below 1 and peak", "value": "~99% (1407/1421) below 1; peak ~0.1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [
+  {"loc": "3.5 Analysis of thermal Jeans length", "quote": "Almost all ratios ($\\sim99\\%$, 1407/1421) are below 1, peaking at $\\sim\\rm 0.1$"}
+ ]},
+ {"quantity": "lambda_obs/lambda_J with 4/pi projection correction: fraction below 1 and peak", "value": "~98% (1391/1421) below 1; peak ~0.2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [
+  {"loc": "3.5 Analysis of thermal Jeans length", "quote": "shows that $\\sim98\\%$ (1391/1421) of the ratios remain below unity, with a peak at $\\sim\\rm 0.2$"}
+ ]},
+ {"quantity": "High-mass starless candidates (>=16 Msun at 20 K): radii and masses", "value": "2 cores; radii 5000-7000 au; masses 17-21 Msun", "uncertainty": "not stated", "units": "au; Msun", "from_step": 9, "evidence": [
+  {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "which have radii of 5000–7000 au and masses of 17–21 M$_{\\odot}$"}
+ ]},
+ {"quantity": "Virial parameter of the two high-mass starless candidates", "value": "< 2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 9, "evidence": [
+  {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "we find $\\alpha_{\\rm vir} < 2$ for the two candidates studied here"}
+ ]},
+ {"quantity": "Fraction of candidate starless cores with M <= 8 Msun", "value": "90%", "uncertainty": "not stated", "units": "percent", "from_step": 9, "evidence": [
+  {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "we find that 90% of candidate starless cores ($M_{\\rm core} \\leq 8\\,M_{\\odot}$) lack sufficient mass"}
+ ]},
+ {"quantity": "ATOMS unknown sources inside QUARKS field and number of matching QUARKS cores", "value": "211 sources correspond to 464 QUARKS cores", "uncertainty": "not stated", "units": "counts", "from_step": 10, "evidence": [
+  {"loc": "4.2 Comparison with ATOMS unknown source catalog", "quote": "while the remaining 211 correspond to 464 QUARKS cores"}
+ ]}
+],
+"findings_qualitative": [
+ {"value": "Thermal Jeans fragmentation has occurred in the IR-bright protocluster clumps, with core separations well below the thermal Jeans length", "evidence": [
+  {"loc": "abstract", "quote": "This indicates that thermal Jeans fragmentation has taken place within the IR-bright protocluster clumps studied here."}
+ ]},
+ {"value": "Few high-mass starless candidates favour competitive accretion over turbulent core accretion in these clumps", "evidence": [
+  {"loc": "abstract", "quote": "The scarcity of such candidates suggests that competitive accretion-type models could be more applicable than turbulent core accretion-type models"}
+ ]},
+ {"value": "Linear separation dependence on distance is an observational effect", "evidence": [
+  {"loc": "3.4 Core Separation", "quote": "This reflects an observational effect rather than a physical phenomenon"}
+ ]},
+ {"value": "Total flux increases with core evolution but mass, radius, density and surface density show no significant differences between categories", "evidence": [
+  {"loc": "3.3 Physical parameters of dense cores", "quote": "no significant differences are observed in other parameters"}
+ ]}
+],
+"claims": [
+ {
+  "hypothesis": "Fragmentation of IR-bright protocluster clumps into cores follows thermal Jeans fragmentation",
+  "experiment": "Extract cores with getsf, measure MST separations, compare with clump thermal Jeans length",
+  "result": "lambda_obs/lambda_J peaks at ~0.2 (after projection correction) with ~98% of ratios below unity",
+  "finding": "Thermal Jeans fragmentation has taken place; the low ratio may come from evolving core separation or hierarchical fragmentation",
+  "support": "supported",
+  "evidence": [
+   {"loc": "abstract", "quote": "This indicates that thermal Jeans fragmentation has taken place within the IR-bright protocluster clumps studied here."},
+   {"loc": "abstract", "quote": "The observed low ratio of $\\lambda_{\\rm obs}/\\lambda_{\\rm J}\\ll 1$ could be the result of evolving core separation or hierarchical fragmentation."}
+  ]
+ },
+ {
+  "hypothesis": "Cores in the QUARKS clumps span a range of evolutionary stages that can be separated using line richness, outflows and ionized gas",
+  "experiment": "Classify 1562 cores using N_line, CO outflows and H30alpha emission",
+  "result": "127 starless, 971 warm, 464 evolved cores",
+  "finding": "Most cores already show star-formation signatures; starless cores are a small minority",
+  "support": "supported",
+  "evidence": [
+   {"loc": "abstract", "quote": "we classified cores into three categories: 127 starless, 971 warm, and 464 evolved cores"}
+  ]
+ },
+ {
+  "hypothesis": "High-mass starless cores exist in IR-bright clumps in numbers that would favour turbulent core accretion",
+  "experiment": "Mass of starless cores at 20 K compared with a 16 Msun threshold; virial check",
+  "result": "Only two starless cores exceed 16 Msun (17-21 Msun); 90% have M <= 8 Msun",
+  "finding": "Scarcity of candidates suggests competitive accretion-type models are more applicable; candidate count is a lower limit",
+  "support": "partially",
+  "evidence": [
+   {"loc": "abstract", "quote": "Two starless cores have mass exceeding 16 $M_{\\odot}$, and represent high-mass candidates."},
+   {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "It is worth noting that the number of high-mass starless candidates identified here likely represents a lower limit."}
+  ]
+ },
+ {
+  "hypothesis": "Observed linear core separation depends on source distance for physical reasons",
+  "experiment": "Compare separations, minimum core mass and core counts versus distance (Spearman tests)",
+  "result": "Linear separation grows with distance; ratio to Jeans length is weakly distance dependent",
+  "finding": "Distance trend is an observational effect of sensitivity and linear resolution",
+  "support": "supported",
+  "evidence": [
+   {"loc": "3.4 Core Separation", "quote": "This reflects an observational effect rather than a physical phenomenon"}
+  ]
+ }
+],
+"reasoning": [
+ {"field": "why_this_data", "value": "Evolved IR-bright clumps may harbour more massive starless cores, motivating a search beyond IR-dark clouds", "evidence": [
+  {"loc": "1 Introduction", "quote": "This finding motivates searches for high-mass starless cores not only in IR-dark clouds but also in more evolved IR-bright environments."}
+ ]},
+ {"field": "why_this_method", "value": "Core separation is used instead of mass-based Jeans mass because mass estimates carry large uncertainties", "evidence": [
+  {"loc": "3.4 Core Separation", "quote": "core separation could serve as a more suitable proxy for analyzing fragmentation properties in clumps"}
+ ]},
+ {"field": "how_they_decided_enough", "value": "Each clump has enough cores (4 to 33, with two exceptions of 3) for fragmentation analysis", "evidence": [
+  {"loc": "3.1 Core extraction", "quote": "our clump sample contains 4 to 33 cores, which provides rather sufficient core numbers for our following fragmentation analysis"}
+ ]}
+],
+"alternatives_considered_or_rejected": [
+ {"value": "Half-beam vs one-beam minimum size for getsf: half-beam chosen to recover weaker cores for a complete fragment sample", "evidence": [
+  {"loc": "3.1 Core extraction", "quote": "the choice of minimum size (whether half- or one-beam size) does not significantly influence the parameters (e.g., size, flux) of the extracted sources with strong emission"}
+ ]},
+ {"value": "Lower starless dust temperature of 10-15 K would move six cores from 8-16 Msun to above 16 Msun", "evidence": [
+  {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "this would shift the masses of six cores (i.e., $8-16\\,M_{\\odot}$ at 20 K) to values greater than 16 $M_{\\odot}$"}
+ ]},
+ {"value": "Hierarchical fragmentation (clump to subclumps to cores) as alternative to evolving core separation for the low lambda_obs/lambda_J", "evidence": [
+  {"loc": "4.1 Fragmentation of Protocluster clumps", "quote": "An alternative explanation for the observed $\\lambda_{\\rm obs}/\\lambda_{\\rm J} \\sim 0.2$ significantly below unity could be due to the existence of a hierarchical fragmentation mode within the clumps."}
+ ]}
+],
+"limitations_admitted": [
+ {"value": "A few weak continuum peaks are missed by getsf", "evidence": [
+  {"loc": "3.1 Core extraction", "quote": "a few potential sources could be still missing"}
+ ]},
+ {"value": "Core separations are lower limits owing to projection", "evidence": [
+  {"loc": "3.4 Core Separation", "quote": "the measured core separations could represent lower limits due to projection effects"}
+ ]},
+ {"value": "N_line can be underestimated for line-rich cores", "evidence": [
+  {"loc": "3.2 Classification of cores", "quote": "could be underestimated for cores having a large number of complex molecular transitions"}
+ ]},
+ {"value": "Free-free emission may inflate the 1.3 mm flux and masses of 27 cores above 100 Msun", "evidence": [
+  {"loc": "Appendix: Physical parameters", "quote": "The 1.3 mm flux of these 27 cores could be significantly affected by free-free emission, potentially leading to mass overestimation."}
+ ]},
+ {"value": "1.3 mm high-resolution data trace core kernels and filter out envelope mass, so high-mass candidates are a lower limit", "evidence": [
+  {"loc": "4.3 Search for candidate high-mass starless cores", "quote": "primarily trace dense kernels of cores, likely filtering out significantly their envelope mass"}
+ ]}
+],
+"referee_caveats_inferred": [
+ "Dust temperatures are assigned by core class rather than measured, so the 16 Msun threshold and starless counts depend on T = 20 K",
+ "Starless classification relies on N_line<=6 and absence of CO outflow and H30alpha, limited by 1 arcsec resolution and sensitivity",
+ "Virial parameters use velocity dispersions borrowed from the literature rather than QUARKS measurements",
+ "Core-scale separations are compared with clump-scale Jeans lengths built from lower-resolution ATOMS-era clump parameters",
+ "Single ALMA configuration pair (TM2+ACA); TM1 data not used so close cores below ~1 arcsec are unresolved",
+ "Distance-dependent mass completeness may bias separation statistics"
+],
+"reproducibility": [],
+"code_released": [
+ {"value": "Linemarker tool (third-party, hosted on gitee) used for line-free channel selection; no new code from this paper stated", "evidence": [
+  {"loc": "Footnote 1", "quote": "A tool for manually identifying the line-free or line-emission channels in an astronomical spectrum."},
+  {"loc": "Footnote 1", "quote": "https://gitee.com/liuxunchuan/linemarker"}
+ ]}
+],
+"missing_for_reproduction": [
+ "Per-field line-free channel lists and Linemarker choices",
+ "Self-calibration and continuum cleaning parameters per field",
+ "getsf configuration files and version",
+ "Per-core line detections used for N_line, outflow and H30alpha flags",
+ "Per-clump density and temperature inputs (from another paper) for the Jeans lengths",
+ "Complete core catalogue (tables printed only as excerpts)"
+],
+"estimated_data_volume_inferred": "Several TB of raw visibilities for 156 fields of TM2+ACA with four SPWs; roughly tens of GB per field after imaging cubes, much less for continuum-only reproduction of a few fields",
+"score_inferred": 3,
+"score_reason": "ALMA project code and software (CASA 6.6.0, getsf) are given and the physical-parameter recipe is clear, but manual line-free channel selection, self-calibration settings and getsf configuration are not given.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Results are numeric and the project code is stated, but the manual Linemarker channel selection, self-calibration and getsf details are missing, so counts such as 1562 cores cannot be matched exactly.",
+"methods_papers": [
+ {"citation": "(cite: 2024RAA....24b5009L)", "why": "QUARKS survey overview: observations, line-free channel method, distances"},
+ {"citation": "(cite: 2024RAA....24f5011X)", "why": "QUARKS ACA data and clump sample"},
+ {"citation": "(cite: 2021A&A...649A..89M)", "why": "getsf core extraction algorithm"},
+ {"citation": "(cite: 2022A&A...664A..26P)", "why": "core radius definition and minimum size"}
+],
+"companion_papers": [
+ {"citation": "(cite: 2020MNRAS.496.2790L)", "why": "ATOMS survey and clump parameters (Table A1)"},
+ {"citation": "(cite: 2021MNRAS.505.2801L)", "why": "ATOMS cores, N_line and unknown-source catalog"},
+ {"citation": "(cite: 2024ApJS..270....9X)", "why": "ALMA study of core separations in IR-bright clumps"},
+ {"citation": "(cite: 2024ApJ...976..241Y)", "why": "QUARKS study of I08448-4343"}
+],
+"related_projects_or_surveys": ["QUARKS (2021.1.00095.S)", "ATOMS", "ALMA-IMF", "ALMAGAL", "ALMA-ASHES"]
+}

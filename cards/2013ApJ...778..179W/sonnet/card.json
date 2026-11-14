@@ -1,0 +1,969 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2013ApJ...778..179W",
+  "title": "An ALMA Survey of Submillimeter Galaxies in the Extended Chandra Deep Field-South: The AGN Fraction and X-Ray Properties of Submillimeter Galaxies",
+  "year": 2013,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Wang, S. X.",
+  "n_authors": 20,
+  "arxiv_id": "1310.6364",
+  "doi": "10.1088/0004-637X/778/2/179",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00294.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 The Submm Catalog",
+    "quote": "We use the ALESS SMG catalog presented in (cite: Hodge2013) (see also (cite: Karim2013)) based on ALMA follow-up observations on the submm sources detected by LESS"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "ALESS SMGs in the E-CDF-S (99 main-catalog SMGs; 10 X-ray detected)",
+     "coordinates": {
+      "value": "E-CDF-S field; individual positions in Table 1 for X-ray detected SMGs",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "We found 10 X-ray sources associated with SMGs (median redshift $z=2.3$), of which 8 were identified as AGNs using several techniques that enable cross-checking."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "median z=2.3 for X-ray detected SMGs",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "We found 10 X-ray sources associated with SMGs (median redshift $z=2.3$), of which 8 were identified as AGNs using several techniques that enable cross-checking."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "zLESS spectroscopic redshifts or literature; photo-z from Simpson et al. 2013 for ALESS 45.1 and X-ray undetected SMGs",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "We found 10 X-ray sources associated with SMGs (median redshift $z=2.3$), of which 8 were identified as AGNs using several techniques that enable cross-checking."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the AGN fraction and what are the X-ray properties of submillimeter galaxies, using ALMA-identified SMG positions matched to Chandra X-ray sources in the E-CDF-S?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we set improved constraints on the AGN fraction and X-ray properties of the SMGs with ALMA and *Chandra* observations in the Extended *Chandra* Deep Field-South (E-CDF-S)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00294.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "The ALMA observations were carried out under program ADS/JAO.ALMA#2011.0.00294.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~1.5'' (ALESS); typical <1.5'' or <0.5''",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "With the exquisite angular resolution and great sensitivity of ALMA ($\\sim\n1.5\\ensuremath{''}$ and 3$\\times$ deeper than LESS; (cite: Hodge2013))"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "RMS 0.6 mJy",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "which have a typical angular resolution of $<1.5\\ensuremath{''}$ or even $<0.5\\ensuremath{''}$ and an RMS of $0.6$ mJy"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Chandra (4 Ms CDF-S, 250 ks E-CDF-S)",
+     "provided": {
+      "value": "X-ray catalogs, spectra and counts used for counterpart matching, spectral analysis and stacking",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we use the deep *Chandra* data in the E-CDF-S region ((cite: Lehmer2005); L05), including the most sensitive X-ray survey to date, the 4 Ms CDF-S survey"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA 1.4 GHz",
+     "provided": {
+      "value": "radio fluxes from Biggs et al. 2011 catalog",
+      "evidence": [
+       {
+        "loc": "3.3 Multiwavelength Properties",
+        "quote": "The radio counterparts and radio fluxes of the X-ray detected SMGs are from the catalog of (cite: Biggs2011)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer IRAC, Herschel",
+     "provided": {
+      "value": "photometry for SED fitting (L_IR, stellar mass, 3.6 um flux)",
+      "evidence": [
+       {
+        "loc": "3.3 Multiwavelength Properties",
+        "quote": "The SEDs were fitted using *Spitzer*, *Herschel*, ALMA, and VLA photometry"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALESS main-source catalog of 99 SMGs (positions, 870 um fluxes)",
+      "evidence": [
+       {
+        "loc": "2.1 The Submm Catalog",
+        "quote": "The main-source catalog in (cite: Hodge2013) contains 99 SMGs that are within the primary beam of ALMA"
+       }
+      ]
+     },
+     "citation": "(cite: Hodge2013); (cite: Karim2013)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshifts and stellar masses",
+      "evidence": [
+       {
+        "loc": "3.1 Redshifts",
+        "quote": "Whenever reshifts are needed for the X-ray undetected SMGs in the E-CDF-S, we adopt the photo-z values from (cite: Simpson2013)."
+       }
+      ]
+     },
+     "citation": "(cite: Simpson2013)"
+    },
+    {
+     "what": {
+      "value": "L_IR and L_FIR from SED fitting",
+      "evidence": [
+       {
+        "loc": "3.3 Multiwavelength Properties",
+        "quote": "derived based on NIR-through-radio SED fitting by (cite: Swinbank2013)"
+       }
+      ]
+     },
+     "citation": "(cite: Swinbank2013)"
+    },
+    {
+     "what": {
+      "value": "X-ray catalogs and fluxes (4 Ms CDF-S, 250 ks E-CDF-S)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Positions and ID numbers are the same as in X11 for CDF-S or L05 for sources only in the E-CDF-S."
+       }
+      ]
+     },
+     "citation": "(cite: Xue2011); (cite: Lehmer2005)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic redshifts (zLESS)",
+      "evidence": [
+       {
+        "loc": "3.1 Redshifts",
+        "quote": "all X-ray detected SMGs have spectroscopic redshifts either from the redshift follow-up survey zLESS (cite: Danielson2013) or from the literature"
+       }
+      ]
+     },
+     "citation": "(cite: Danielson2013)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "X-ray spectral extraction with ACIS Extract for CDF-S sources",
+      "evidence": [
+       {
+        "loc": "3.2 X-ray Properties",
+        "quote": "The spectra for sources within the 4 Ms CDF-S region were extracted by X11 using `ACIS Extract` (AE; (cite: Broos2010))."
+       }
+      ]
+     },
+     "from_reference": "(cite: Xue2011)"
+    },
+    {
+     "what": {
+      "value": "Gamma_eff derivation from hardness ratio and fixed values (1.4, 1.8)",
+      "evidence": [
+       {
+        "loc": "3.2.1",
+        "quote": "The effective photon index $\\Gamma_{\\rm eff}$ is then derived from the hardness ratio following the methods described in L05 and X11."
+       }
+      ]
+     },
+     "from_reference": "L05 and X11"
+    },
+    {
+     "what": {
+      "value": "Likelihood-ratio matching details",
+      "evidence": [
+       {
+        "loc": "2.3 Source Matching",
+        "quote": "Then we iterate to find a likelihood-ratio cut that maximizes the sum of the matching completeness and reliability (see (cite: Luo2010) for details)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Luo2010)"
+    },
+    {
+     "what": {
+      "value": "Stacking procedure",
+      "evidence": [
+       {
+        "loc": "6 Stacking",
+        "quote": "We follow the stacking procedures detailed in Section 3.1 of (cite: Luo2011)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Luo2011)"
+    },
+    {
+     "what": {
+      "value": "AGN fraction method",
+      "evidence": [
+       {
+        "loc": "5.1 Methodology",
+        "quote": "We follow the method discussed in Section 3.1 of (cite: Lehmer2007) and Section 5 of (cite: Silverman2008) to calculate $f_{\\rm AGN}$"
+       }
+      ]
+     },
+     "from_reference": "(cite: Lehmer2007); (cite: Silverman2008)"
+    },
+    {
+     "what": {
+      "value": "Variability analysis",
+      "evidence": [
+       {
+        "loc": "4.4 Method V",
+        "quote": "Here we follow the method in Section 3 of (cite: Young2012)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Young2012)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact ALESS catalog positions and fluxes for all 99 SMGs (in Hodge 2013, not reproduced)",
+    "Simpson 2013 and Swinbank 2013 were in prep.; their photo-z, mass and L_IR tables are required",
+    "X-ray sensitivity maps used for the 1/N method",
+    "Extra WAVDETECT catalogs for additional sources",
+    "ALMA data reduction details (not covered; taken from Hodge 2013)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "match X-ray sources to ALMA SMG positions",
+    "method": {
+     "value": "Likelihood-ratio matching of 99 SMGs to merged CDF-S and E-CDF-S catalogs, within 5''; cross-checked with closest-counterpart within 1.5''",
+     "evidence": [
+      {
+       "loc": "2.3 Source Matching",
+       "quote": "We found secure X-ray counterparts for 10 ALESS SMGs with a false-match probability of 3% (i.e., an expected number of false matches of 0.3)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "False matches estimated by shifting catalogs by 10-60'' in 10'' steps",
+     "evidence": [
+      {
+       "loc": "2.3 Source Matching",
+       "quote": "The number of false matches for a certain matching radius $r_{\\rm s}$ was estimated by manually shifting the X-ray catalogs in RA and Dec by $\\pm 10$–$60\\ensuremath{''}$ in $10\\ensuremath{''}$ increments"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "derive X-ray spectral properties",
+    "method": {
+     "value": "BEHR hardness ratios and Gamma_eff; XSPEC cstat fits of wabs*zwabs*zpow for sources with >100 counts; simulations at fixed Gamma_int=1.8 for low counts",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "The basic model we adopted was `wabs*zwabs*zpow` in `XSPEC`"
+      }
+     ]
+    },
+    "software": [
+     "XSPEC",
+     "BEHR",
+     "CIAO"
+    ],
+    "key_parameters": [
+     {
+      "value": "Energy range 0.5-8 keV; Cash statistic without binning",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "we adopted the Cash statistic ((cite: Cash1979); `cstat` in `XSPEC`) for finding the best-fit parameters"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Galactic N_H = 8.8e19 cm^-2; cosmology H0=70.4, Om=0.27, OL=0.73",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a Galactic column density of $N_{\\rm H}=8.8\\times 10^{19}$ cm$^{-2}$ for the line of sight to the E-CDF-S region"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Cash statistic minimization; Fe Kalpha test with BIC; MCMC via XSPEC chain for equivalent width",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We evaluated if the model including the Fe K$\\alpha$ line is statistically a better model by computing the Bayesian Information Criterion (BIC)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Low-count L_corr typically agrees within ~30% with spectral fits (per X11)",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "values estimated for the lower count sources typically agree within $\\sim 30\\%$ compared with those from direct spectral fitting"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "classify X-ray SMGs as AGN or star-formation dominated",
+    "method": {
+     "value": "Five methods: Gamma_eff<1.0; L_corr>3e42; L_X >5x L_X,SF from radio/IR SFR; log(fX/f3.6um)>-1; X-ray variability",
+     "evidence": [
+      {
+       "loc": "4.5 Summary",
+       "quote": "Combining the results of all the methods described above, 8 out of the 10 X-ray detected SMGs show strong evidence of containing AGNs under at least one classification method"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Salpeter IMF; SFR from Kennicutt 1998 L_IR relation; L_X,SF from Lehmer 2010",
+      "evidence": [
+       {
+        "loc": "4.2 Method III",
+        "quote": "The SFRs were derived following Equation 3 in (cite: Kennicutt1998)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cross-check between independent methods; 3.6um threshold calibrated on X11 sources (~95% AGN)",
+     "evidence": [
+      {
+       "loc": "4.3 Method IV",
+       "quote": "as $\\sim\n95$% of the X11 sources that satisfy this criterion are AGNs"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "compute cumulative AGN fraction",
+    "method": {
+     "value": "1/N_SMG,i sum accounting for spatially varying X-ray sensitivity; Gehrels errors; N_H drawn from Rafferty 2011 distribution for L_corr case",
+     "evidence": [
+      {
+       "loc": "5.1 Methodology",
+       "quote": "The error for $f_{\\rm AGN}$ is calculated by adding in quadrature the error for each $1/N_{\\rm SMG,i}$ term (estimated following Gehrels 1986)."
+      }
+     ]
+    },
+    "software": [
+     "XSPEC"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with previous studies; repeated with S870>3.5 mJy flux-limited sample",
+     "evidence": [
+      {
+       "loc": "5.2 The AGN Fractions",
+       "quote": "We hence removed the SMGs (including SMG-AGNs) with $S_{\\rm 870\\mu m} < 3.5$ mJy in our sample and calculated the AGN fraction for the flux-limited ($\\geqslant 3.5$ mJy) SMG sample in the E-CDF-S."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "stack X-ray undetected SMGs",
+    "method": {
+     "value": "Counts in 1.5'' radius apertures at ALMA positions of 49 SMGs within 7' of aim points; background from 1000 random apertures",
+     "evidence": [
+      {
+       "loc": "6 Stacking",
+       "quote": "The background counts for each SMG were estimated by extracting counts within 1000 randomly placed $1.5\n\\ensuremath{''}$-radius apertures within $1 \\ensuremath{'}$ of each SMG"
+      }
+     ]
+    },
+    "software": [
+     "BEHR"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "1000 fake catalogs of 49 random positions",
+     "evidence": [
+      {
+       "loc": "6 Stacking",
+       "quote": "We performed a robustness test by generating 1000 fake submm catalogs at random RA and Dec with 49 sources each (avoiding X-ray sources)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "XSPEC",
+    "version": "not stated",
+    "used_for": {
+     "value": "X-ray spectral fitting and simulations",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We used `XSPEC` (cite: Arnaud1996) for spectral fitting and modeling."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CIAO",
+    "version": "4.4.1",
+    "used_for": {
+     "value": "extracting and combining E-CDF-S-only spectra (specextract, combine_spectra, chandra_repro)",
+     "evidence": [
+      {
+       "loc": "3.2 X-ray Properties",
+       "quote": "`CIAO` (version $4.4.1$; (cite: Fruscione2006)) tools `specextract` and `combine_spectra`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "BEHR",
+    "version": "not stated",
+    "used_for": {
+     "value": "Bayesian hardness ratios",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "The hardness ratios were derived using the Bayesian Estimation of Hardness Ratios (BEHR) package by (cite: Park2006)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ACIS Extract",
+    "version": "not stated",
+    "used_for": {
+     "value": "spectra for CDF-S sources (done by X11)",
+     "evidence": [
+      {
+       "loc": "3.2 X-ray Properties",
+       "quote": "The spectra for sources within the 4 Ms CDF-S region were extracted by X11 using `ACIS Extract`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "WAVDETECT",
+    "version": "not stated",
+    "used_for": {
+     "value": "additional lower-significance X-ray source catalogs",
+     "evidence": [
+      {
+       "loc": "2.2 The X-ray Catalog",
+       "quote": "290 additional sources from a `WAVDETECT` catalog with a false-positive probability threshold of $10^{-5}$"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of SMGs with X-ray counterparts",
+    "value": "10",
+    "uncertainty": "false-match probability 3%",
+    "units": "count",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.3 Source Matching",
+      "quote": "We found secure X-ray counterparts for 10 ALESS SMGs with a false-match probability of 3%"
+     }
+    ]
+   },
+   {
+    "quantity": "AGN fraction, L_X,corr >= 7.8e42 erg/s",
+    "value": "17",
+    "uncertainty": "+16/-6",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "yields an AGN fraction of $17^{+16}_{-6}\\%$ for AGNs with rest-frame 0.5–8 keV absorption-corrected luminosity $\\geqslant 7.8 \\times 10^{42}$ erg s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "AGN fraction for massive SMGs (M*>=1e11)",
+    "value": "33",
+    "uncertainty": "+30/-12",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "7.2.1",
+      "quote": "$f_{\\rm AGN}$ for the massive SMGs is $33^{+30}_{-12}\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked soft-band S/N, 49 SMGs",
+    "value": "5.4",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6 Stacking",
+      "quote": "the signal to noise ratios S/N[^3] ($(S-B)/\\sqrt{B}$) are 5.4$\\sigma$ (soft) and 2.1$\\sigma$ (hard)"
+     }
+    ]
+   },
+   {
+    "quantity": "Gamma_eff of 4 radio-excess stacked SMGs",
+    "value": "0.8",
+    "uncertainty": "+0.6/-0.5",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6 Stacking",
+      "quote": "$\\Gamma_{\\rm eff}=0.8^{+0.6}_{-0.5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean L_0.5-8keV of 4 radio-excess stacked SMGs",
+    "value": "3.6e42",
+    "uncertainty": "not stated",
+    "units": "erg/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6 Stacking",
+      "quote": "we estimate their average rest-frame 0.5–8.0 keV apparent luminosity to be $L_{\\rm 0.5-8\\ keV}=3.6\\times 10^{42}$ erg s$^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "6 of 8 SMG-AGNs are moderately/highly absorbed with N_H>1e23 cm^-2",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "6 of the 8 SMG-AGNs are moderately/highly absorbed, with $N_{\\rm H}> 10^{23}\\ {\\rm cm^{-2}}$."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "What fraction of ALMA-identified SMGs host X-ray AGNs?",
+    "experiment": "Match ALESS positions to Chandra, classify with five methods, compute 1/N cumulative fraction",
+    "result": "10 X-ray SMGs, 8 AGNs; f_AGN=17 +16/-6%",
+    "finding": "AGN fraction is consistent with earlier single-dish based estimates but with more reliable counterparts",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we provide estimated AGN fractions as a function of X-ray flux and luminosity."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do X-ray undetected SMGs contain additional AGNs?",
+    "experiment": "Stack X-ray counts at ALMA positions of 49 SMGs, including radio-excess subsample",
+    "result": "Significant soft-band stack; 4 radio-excess SMGs hard (Gamma_eff=0.8) with excess over SF expectation",
+    "finding": "4 potential SMG-AGNs in stacking sample",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we found 4 potential SMG-AGNs in our stacking sample."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are SMG-AGNs more massive than other SMGs?",
+    "experiment": "Compare stellar masses and f_AGN for massive subsample",
+    "result": "mean 1.8e11 vs 8.0e10 Msun, K-S p=0.01",
+    "finding": "SMG-AGNs are more massive",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7.2.1",
+      "quote": "A K-S test for the mass distributions of these two populations has revealed that they are likely from different parent distributions ($p=0.01$)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALMA gives a fully submm-identified SMG sample, avoiding counterpart ambiguity of single-dish surveys",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "ALESS provides the *first* fully submm-identified sample of SMGs based on a large, contiguous, and well-defined survey (LESS)"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small sample of matched sources limits statistics; stacking results tentative",
+     "evidence": [
+      {
+       "loc": "Future Work",
+       "quote": "the sample size of matched objects is small and limits detailed statistical analyses"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Key inputs (photo-z, SED L_IR, masses) rely on in-prep papers",
+    "AGN classification thresholds calibrated on local galaxies",
+    "Small-number statistics in f_AGN",
+    "ALMA flux/position quality inherited without independent check"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA and Chandra data available from archives",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "The data used in this paper are available from the ALMA and *Chandra* data archives."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALESS catalog tables (Hodge 2013)",
+    "Simpson 2013 and Swinbank 2013 derived tables",
+    "X-ray sensitivity maps and WAVDETECT additional catalogs"
+   ],
+   "estimated_data_volume_inferred": "Small if using published ALESS catalog; Chandra 4 Ms data tens of GB",
+   "score_inferred": 3,
+   "score_reason": "Methods well described but rely on external catalogs and in-prep papers; ALMA data used only as catalog",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Results depend on external catalogs and Chandra reduction by other papers, with no ALMA processing in this paper."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Hodge2013)",
+     "why": "ALESS catalog and ALMA reduction"
+    },
+    {
+     "citation": "(cite: Xue2011)",
+     "why": "4 Ms CDF-S catalog and X-ray methods"
+    },
+    {
+     "citation": "(cite: Luo2010)",
+     "why": "likelihood-ratio matching"
+    },
+    {
+     "citation": "(cite: Luo2011)",
+     "why": "stacking procedure"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Karim2013)",
+     "why": "ALESS number counts"
+    },
+    {
+     "citation": "(cite: Simpson2013)",
+     "why": "ALESS photometric redshifts and stellar masses"
+    },
+    {
+     "citation": "(cite: Swinbank2013)",
+     "why": "ALESS SED fitting"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALESS",
+    "LESS",
+    "CDF-S",
+    "E-CDF-S",
+    "zLESS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-8fa5407cb8496db083d7ac6c6de49da0",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:21",
+  "usage": {
+   "input_tokens": 67276,
+   "output_tokens": 8275,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.109257,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 54,
+  "quotes_ok": 54,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 82,
+   "stated": 43,
+   "rate": 0.524
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:40:01",
+  "custom_id": "repair-sonnet-9b9a11dc86a4565034b055535be43942",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "We hence removed the SMGs (including SMG-AGNs) with $S_{\\rm 870\\mu m} < 3.5$ mJy in our sample and calculated the AGN fraction for the flux-limited ($\\geqslant 3.5$ mJy) SMG sample in the E-CDF-S."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

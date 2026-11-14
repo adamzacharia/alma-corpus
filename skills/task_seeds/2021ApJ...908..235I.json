@@ -1,0 +1,586 @@
+{
+ "bibcode": "2021ApJ...908..235I",
+ "title": "Subaru High-z Exploration of Low-luminosity Quasars (SHELLQs). XII. Extended [C II] Structure (Merger or Outflow) in a z = 6.72 Red Quasar",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abd7ef",
+ "arxiv_id": "2101.01199",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Is the highest-redshift red quasar (z = 6.72) in a merger-driven to outflow-driven transition: what are its FIR continuum and extended [C II] properties, and is the extended [C II] structure companion/merging galaxies or a cold AGN-driven outflow?",
+ "alma_project_codes": [
+  "2019.1.00074.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "41 antennas, single pointing with 24'' diameter field of view (array type not stated)",
+  "angular_resolution": "0.77'' x 0.48'', P.A. = -58 deg (100 km/s cube, natural weighting)",
+  "sensitivity": "1 sigma channel rms 0.13 mJy/beam at 100 km/s; continuum 1 sigma = 17.6 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Extinction-corrected M1450 = -26.1 mag, E(B-V) = 0.12 mag and Eddington ratio 0.22 of the quasar",
+    "evidence": [
+     {
+      "loc": "Our target: J1205-0000",
+      "quote": "the quasar has $M_{\\rm 1450} = -26.1$ mag, with an Eddington ratio of 0.22 (cite: 2020PASJ..tmp..230K)"
+     }
+    ]
+   },
+   "citation": "(cite: 2020PASJ..tmp..230K)"
+  },
+  {
+   "what": {
+    "value": "Observed rest-frame UV magnitude M1450 = -24.4 mag (HSC)",
+    "evidence": [
+     {
+      "loc": "Our target: J1205-0000",
+      "quote": "has a rest-frame UV magnitude of $M_{\\rm 1450} = -24.4$ mag (cite: 2016ApJ...828...26M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJ...828...26M)"
+  },
+  {
+   "what": {
+    "value": "Nuclear outflow evidence (N V and C IV BALs) and Mg II redshift of the quasar",
+    "evidence": [
+     {
+      "loc": "Our target: J1205-0000",
+      "quote": "J1205$-$0000 hosts prominent N V and C IV BALs as well, confirming the existence of nuclear outflows (cite: 2019ApJ...880...77O)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...880...77O)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature 47 K and emissivity index beta = 1.6, taken as characteristic of high-z luminous quasars",
+    "evidence": [
+     {
+      "loc": "FIR continuum properties",
+      "quote": "values which are characteristic of high-redshift luminous quasars (cite: 2006ApJ...642..694B)"
+     }
+    ]
+   },
+   "citation": "(cite: 2006ApJ...642..694B)"
+  },
+  {
+   "what": {
+    "value": "Correction for contrast and additional heating by the CMB",
+    "evidence": [
+     {
+      "loc": "FIR continuum properties",
+      "quote": "After correcting for the contrast and the additional heating effects of the cosmic microwave background radiation (cite: 2013ApJ...766...13D)"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...766...13D)"
+  },
+  {
+   "what": {
+    "value": "SFR calibration from L_TIR",
+    "evidence": [
+     {
+      "loc": "FIR continuum properties",
+      "quote": "With this $L_{\\rm TIR}$ ($T_d = 47$ K) and the calibration of (cite: 2011ApJ...737...67M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2011ApJ...737...67M)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient kappa_nu = 0.4 (nu/250 GHz)^beta cm^2 g^-1",
+    "evidence": [
+     {
+      "loc": "FIR continuum properties",
+      "quote": "by adopting a rest-frame mass absorption coefficient of $\\kappa_\\nu = 0.4~(\\nu/250{\\rm GHz})^\\beta$ cm$^2$ g$^{-1}$ (cite: 2004A&A...425..109A)"
+     }
+    ]
+   },
+   "citation": "(cite: 2004A&A...425..109A)"
+  },
+  {
+   "what": {
+    "value": "[C II]-luminosity-to-SFR calibration (~0.3 dex dispersion)",
+    "evidence": [
+     {
+      "loc": "[C II] line emission",
+      "quote": "with the (cite: 2011MNRAS.416.2712D) calibration, which has $\\sim 0.3$ dex dispersion."
+     }
+    ]
+   },
+   "citation": "(cite: 2011MNRAS.416.2712D)"
+  },
+  {
+   "what": {
+    "value": "Bolometric correction factor 4.4 from 1450 A luminosity",
+    "evidence": [
+     {
+      "loc": "Comparison to the other $z \\gtrsim 6$ quasars",
+      "quote": "we adopted the bolometric correction factor 4.4 from 1450 Å luminosity (cite: 2006ApJS..166..470R) to compute $L_{\\rm Bol}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2006ApJS..166..470R)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of optically luminous z>~6 quasars",
+    "evidence": [
+     {
+      "loc": "Comparison to the other $z \\gtrsim 6$ quasars",
+      "quote": "Optically luminous quasar data is compiled from a recent survey work of (cite: 2018ApJ...866..159V)"
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...866..159V)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of relatively low-luminosity z>~6 quasars",
+    "evidence": [
+     {
+      "loc": "Comparison to the other $z \\gtrsim 6$ quasars",
+      "quote": "we collected the data of relatively low-luminosity quasars from (cite: 2013ApJ...770...13W; 2015ApJ...801..123W; 2017ApJ...850..108W) and (cite: 2018PASJ...70...36I; 2019PASJ...71..111I)."
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...770...13W; 2015ApJ...801..123W; 2017ApJ...850..108W; 2018PASJ...70...36I; 2019PASJ...71..111I)"
+  },
+  {
+   "what": {
+    "value": "C+ abundance X_C+ = 1.4e-4 and T_ex = 200 K adopted for the outflow mass",
+    "evidence": [
+     {
+      "loc": "Cold neutral outflows?",
+      "quote": "we adopt $X_{\\rm C^+} = 1.4 \\times 10^{-4}$ and $T_{\\rm ex} = 200$ K"
+     }
+    ]
+   },
+   "citation": "(cite: 2012MNRAS.425L..66M; 2015A&A...574A..14C; 1997ARA&A..35..179H)"
+  },
+  {
+   "what": {
+    "value": "Molecular outflow rate ~0.5 dex above atom-only value (used for total outflow rate)",
+    "evidence": [
+     {
+      "loc": "Cold neutral outflows?",
+      "quote": "(cite: 2019MNRAS.483.4586F) found in local galaxies that the total mass-flow rate is $\\sim 0.5$ dex larger than the atom-only value."
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.483.4586F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the [C II] cube and FIR continuum",
+   "method": "tclean with natural weighting; first clean cube including continuum to 3 sigma to find the line; integrate line-free channels into continuum map; subtract continuum in the uv plane with a first-order polynomial; average channels to 100 km/s",
+   "software": [
+    "CASA 5.6",
+    "tclean"
+   ],
+   "key_parameters": [
+    "velocity resolution 100 km/s, channel rms 0.13 mJy/beam",
+    "continuum map 1 sigma = 17.6 uJy/beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure the continuum flux density and source size",
+   "method": "2'' diameter circular aperture centred on the continuum peak for flux density; 2-D elliptical Gaussian fits with imfit for sizes",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "aperture diameter 2'' at the continuum peak"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive L_FIR, L_TIR, SFR_TIR and dust mass",
+   "method": "optically-thin modified black body at fixed T_d and beta, with CMB correction; SFR from L_TIR calibration; dust mass from a mass absorption coefficient",
+   "software": [],
+   "key_parameters": [
+    "T_d = 47 K, beta = 1.6; L_FIR over 42.5-122.5 um, L_TIR over 8-1000 um"
+   ],
+   "assumptions": [
+    "T_d = 35 K (local star-forming galaxies) would make luminosities ~2x smaller",
+    "SFR_TIR is an upper limit since all FIR emission is assumed to come from star formation (AGN contribution ignored)",
+    "kappa_nu = 0.4 (nu/250 GHz)^beta cm^2 g^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the area-integrated [C II] spectrum",
+   "method": "single Gaussian then double Gaussian fit (core + wing) to the spectrum integrated within a 1.5'' radius of the nucleus where [C II] is detected above 3 sigma",
+   "software": [],
+   "key_parameters": [
+    "chi2/d.o.f. computed over +-1200 km/s"
+   ],
+   "assumptions": [
+    "core component attributed to the host galaxy and used for the systemic redshift"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive [C II] luminosity, SFR and equivalent width",
+   "method": "[C II] SFR from the core L_[CII] with a literature calibration; rest-frame EW from the [C II] core flux and the 1.2 mm continuum flux density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "SFR_[CII] is an upper limit because part of [C II] may come from the quasar narrow line region"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Characterize extended [C II] at positions A-C",
+   "method": "spectra at three off-centre positions (A, B, C) give line centre, FWHM, flux and L_[CII]; extended structure judged real from several contiguous velocity channels",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compare L_FIR with L_Bol of z>~6 quasars",
+   "method": "L_Bol from 1450 A luminosity with a bolometric correction of 4.4; L_FIR derived with the same assumptions; linear fit of log L_FIR versus log L_Bol excluding upper limits; Spearman correlation",
+   "software": [],
+   "key_parameters": [
+    "bolometric correction factor 4.4"
+   ],
+   "assumptions": [
+    "J1205-0000 compared after its dust extinction is corrected"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate outflow mass, rate, kinetic power and momentum load for blobs A-C",
+   "method": "Mdot_out = M_out v_out / R_out with v_out = |dv| + FWHM/2; M_out from L_[CII] under the high-density limit (lower limit); kinetic power and momentum load from the standard formulae",
+   "software": [],
+   "key_parameters": [
+    "R_out = 3.5, 6.4, 5.1 kpc for blobs A-C",
+    "X_C+ = 1.4e-4, T_ex = 200 K, n_crit ~3e3 cm^-3"
+   ],
+   "assumptions": [
+    "high density limit n >> n_crit, giving a lower limit on M_out",
+    "70% of [C II] arises from PDRs (factor 0.7)",
+    "projection correction averages to unity over all angles; entire extended structure assumed to be outflow"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Constrain star formation in potential companions",
+   "method": "3 sigma upper limit on SFR_IR at the extended [C II] regions from undetected FIR continuum, with T_d = 35 K; compare with HSC y-band depth",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_d = 35 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Systemic redshift z_[CII] (core component)",
+   "value": "6.7224",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "[C II] line emission",
+     "quote": "providing its systemic redshift as $z_{\\rm [CII]} = 6.7224 \\pm 0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm continuum flux density (2'' aperture)",
+   "value": "1.17",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "FIR continuum properties",
+     "quote": "resulting in $f_{\\rm 1.2mm} = 1.17 \\pm 0.04$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR (T_d = 47 K, beta = 1.6)",
+   "value": "2.7e12",
+   "uncertainty": "0.1e12",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FIR continuum properties",
+     "quote": "we obtain $L_{\\rm FIR} = (2.7 \\pm 0.1) \\times 10^{12}~L_\\odot$ and $L_{\\rm TIR} = (3.9 \\pm 0.1) \\times 10^{12}~L_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR (T_d = 47 K, beta = 1.6)",
+   "value": "3.9e12",
+   "uncertainty": "0.1e12",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FIR continuum properties",
+     "quote": "we obtain $L_{\\rm FIR} = (2.7 \\pm 0.1) \\times 10^{12}~L_\\odot$ and $L_{\\rm TIR} = (3.9 \\pm 0.1) \\times 10^{12}~L_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from L_TIR",
+   "value": "575",
+   "uncertainty": "21",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FIR continuum properties",
+     "quote": "we found a SFR of $575 \\pm 21$ $M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "2.0e8",
+   "uncertainty": "0.1e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FIR continuum properties",
+     "quote": "we find a dust mass of $M_{\\rm dust} = (2.0 \\pm 0.1) \\times 10^8~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "chi2/d.o.f. single Gaussian fit",
+   "value": "37.6/22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "[C II] line emission",
+     "quote": "we found $\\chi^2$/d.o.f. = 37.6/22"
+    }
+   ]
+  },
+  {
+   "quantity": "chi2/d.o.f. double Gaussian fit",
+   "value": "21.1/19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "[C II] line emission",
+     "quote": "This works fairly well with a returned $\\chi^2$/d.o.f. = 21.1/19."
+    }
+   ]
+  },
+  {
+   "quantity": "Total [C II] luminosity (core + wing)",
+   "value": "1.9e9",
+   "uncertainty": "0.1e9",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "we found the line luminosity of $L_{\\rm [CII]} = (1.9 \\pm 0.1) \\times 10^9~L_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame [C II] equivalent width",
+   "value": "0.67",
+   "uncertainty": "0.05",
+   "units": "um",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "[C II] line emission",
+     "quote": "$\\rm{EW}_{\\rm [CII]} = 0.67 \\pm 0.05$ $\\ensuremath{\\mu}m$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from [C II] core luminosity",
+   "value": "108",
+   "uncertainty": "7",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "[C II] line emission",
+     "quote": "giving $108 \\pm 7~M_\\odot$ yr$^{-1}$ with the (cite: 2011MNRAS.416.2712D) calibration"
+    }
+   ]
+  },
+  {
+   "quantity": "Extent of [C II] emission (radius)",
+   "value": "~1'' (5.4 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec / kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "[C II] line emission",
+     "quote": "extending to $r \\sim 1\\ensuremath{''}$ (5.4 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of [C II] at extended regions",
+   "value": "~630-780",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "(FWHM $\\sim 630-780$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log L_FIR vs log L_Bol",
+   "value": "0.64",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison to the other $z \\gtrsim 6$ quasars",
+     "quote": "(0.64 \\pm 0.03) \\times \\log \\left( \\frac{L_{\\rm Bol}}{L_\\odot} \\right) + (3.55 \\pm 0.45)."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log L_FIR vs log L_Bol",
+   "value": "3.55",
+   "uncertainty": "0.45",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison to the other $z \\gtrsim 6$ quasars",
+     "quote": "(0.64 \\pm 0.03) \\times \\log \\left( \\frac{L_{\\rm Bol}}{L_\\odot} \\right) + (3.55 \\pm 0.45)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient (L_Bol vs L_FIR)",
+   "value": "0.56 (p = 2.0e-4)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparison to the other $z \\gtrsim 6$ quasars",
+     "quote": "A Spearman correlation coefficient for this $\\log L_{\\rm Bol}$–$\\log L_{\\rm FIR}$ data is 0.56 ($p$-value = $2.0 \\times 10^{-4}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total atomic outflow mass (blobs A-C)",
+   "value": "9.0e8",
+   "uncertainty": "0.9e8",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Cold neutral outflows?",
+     "quote": "the total atomic outflow mass and outflow rate are $M_{\\rm out,A-C} = 9.0 \\pm 0.9) \\times 10^8~M_\\odot$ and $\\dot{M}_{\\rm out,A-C} = 97 \\pm 15$ $M_\\odot$ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total atomic outflow rate (blobs A-C, lower limit)",
+   "value": "97",
+   "uncertainty": "15",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Cold neutral outflows?",
+     "quote": "the total atomic outflow mass and outflow rate are $M_{\\rm out,A-C} = 9.0 \\pm 0.9) \\times 10^8~M_\\odot$ and $\\dot{M}_{\\rm out,A-C} = 97 \\pm 15$ $M_\\odot$ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole accretion rate",
+   "value": "~12.5",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Cold neutral outflows?",
+     "quote": "($\\dot{M}_{\\rm BH} \\sim 12.5~M_\\odot$ yr$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Possible total outflow rate including molecular phase",
+   "value": ">~300",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Cold neutral outflows?",
+     "quote": "$\\dot{M}_{\\rm tot} \\gtrsim 300~M_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit SFR_IR at extended [C II] regions (T_d = 35 K)",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Companion/merging galaxies?",
+     "quote": "is only $\\sim 10~M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters: cell size, image size, niter, deconvolver, robust (only 'natural' given), masking and clean threshold for the final images",
+  "Whether the archive/pipeline calibration was used as delivered or manually reprocessed, and any extra flagging",
+  "Spectral window setup, channel widths before averaging, and the exact line-free channel ranges used for the continuum",
+  "Whether the continuum map was primary-beam corrected, and the continuum effective frequency/bandwidth (only 1.2 mm given)",
+  "How the area-integrated spectrum was extracted (aperture definition, noise per channel, error treatment in the chi2 fits)",
+  "How the spectra at positions A-C were extracted (aperture size and centres) and fitted (single Gaussian assumed?)",
+  "How the 'blob' radii R_out were measured from the figure and how the 3 sigma region for the 1.5'' spectrum was defined",
+  "Fitting method (e.g. least squares or MCMC, weighting, treatment of limits) for the L_FIR-L_Bol linear relation and the literature sample values used",
+  "Which analyses were done in MIRIAD versus CASA, and the astropy use"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters (cell, image size, masks, thresholds, deconvolver) and exact line-free channels",
+  "Spectral window layout and channel ranges used for continuum",
+  "Extraction apertures and fitting setup for area-integrated spectrum and for positions A-C",
+  "Exact positions and radii of blobs A-C",
+  "Literature sample values and fit method for the L_FIR-L_Bol relation",
+  "Statement of data public availability or archive product versions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, CASA version, weighting, channel width and continuum subtraction are given and results are numeric, but imaging masks/sizes, spectrum extraction details, blob definitions and literature-sample fit are unspecified.",
+ "rediscovery_reason": "Single ALMA project code given, simple imaging recipe (tclean natural weighting, 100 km/s) and numeric results (z, flux density, L_FIR, chi2, outflow rates) allow redoing the continuum and [C II] measurements; public status of the data is not stated by the paper.",
+ "source_card": "cards/2021ApJ...908..235I/sonnet/card.md"
+}

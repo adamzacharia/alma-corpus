@@ -1,0 +1,212 @@
+{
+ "bibcode": "2017ApJ...841L..21H",
+ "title": "Evolutionary Phases of Gas-rich Galaxies in a Galaxy Cluster at z = 1.46",
+ "year": 2017,
+ "doi": "10.3847/2041-8213/aa71ad",
+ "arxiv_id": "1705.02567",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Where do gas-rich (CO-detected) galaxies sit in the cluster and phase-space diagram, and what does this imply for environmental quenching in a z=1.46 cluster?",
+ "alma_project_codes": [
+  "2015.1.00779.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "1.79'' x 1.41'', PA -80 deg",
+  "sensitivity": "0.17, 0.12, 0.11, 0.12, 0.12 mJy/beam at 50, 100, 200, 400, 600 km/s (upper limits)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic cluster members (34 within R200)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "The optical and NIR spectroscopies already confirm 34 cluster member galaxies within a radius of $R_{200}$ (cite: Hilton2010; Hayashi2011)."
+     }
+    ]
+   },
+   "citation": "(cite: Hilton2010; Hayashi2011)"
+  },
+  {
+   "what": {
+    "value": "Median SFR of star-forming members = 88 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Implications for the evolution of cluster galaxies",
+      "quote": "(the median SFR = 88 M$_{\\odot}$ yr$^{-1}$) (cite: Hayashi2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Hayashi2010)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes",
+   "method": "Natural weighted mosaicked cubes at 50–600 km/s resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search emission lines",
+   "method": "Clumpfind on cubes without PB correction in each velocity resolution",
+   "software": [
+    "Clumpfind"
+   ],
+   "key_parameters": [
+    "Delta T = 2 sigma, T_low = 5 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Counterpart cross-match",
+   "method": "Match to optical/NIR catalogs within 1 arcsec; drop candidates without counterparts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit line profiles and derive luminosities and gas masses",
+   "method": "Gaussian fit to spectra; L'CO from map integrated over 2xFWHM; M_H2 from L'CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "L'CO(2-1)/L'CO(1-0)=1; alpha_CO=4.36"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Phase-space analysis",
+   "method": "Place CO emitters, [O II] emitters and other members on velocity vs radius diagram with Jaffe2015 virialized region and Noble2016 zones",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "sigma=720 km/s, R200=0.8 Mpc, H0=70, Om=0.3, OL=0.7"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of CO(2-1) emitters within R200",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We have detected emission lines from 17 galaxies within a radius of $R_{200}$ from the cluster center"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO(2-1) range",
+   "value": "4.5–22 x10^9",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO(2–1) emission lines from cluster galaxies",
+     "quote": "ranges (4.5–22) $\\times10^{9}$ K km $^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 range",
+   "value": "2.0–9.4 x10^10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications for the evolution of cluster galaxies",
+     "quote": "$M_{\\rm H2}$=(2.0–9.4)$\\times10^{10}$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Line width range",
+   "value": "207–593",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO(2–1) emission lines from cluster galaxies",
+     "quote": "The width of the lines ranges from 207 to 593 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "No CO detection inside",
+   "value": "R < 0.14 R200 (0.11 Mpc)",
+   "uncertainty": "not stated",
+   "units": "R200",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO(2–1) emission lines from cluster galaxies",
+     "quote": "i.e., $R < 0.14 R_{200}$ or 0.11 Mpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO emitters in central phase-space zone",
+   "value": "29% (5 galaxies)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Phase-space diagram",
+     "quote": "The five CO emitters (29%) are in the “central” phase-space"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time",
+   "value": "~1e9",
+   "uncertainty": "order of magnitude",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Implications for the evolution of cluster galaxies",
+     "quote": "a depletion time scale is estimated to be an order of $\\sim10^{9}$ yr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Flux calibrator and flux scale uncertainty",
+  "Cube channel/pixel size and image size",
+  "Continuum subtraction and line-free channels",
+  "Primary-beam correction details",
+  "Clumpfind implementation details and beam handling",
+  "Exact aperture/mask for intensity maps",
+  "Velocity dispersion/phase-space velocity computation details"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Cube pixel/image parameters",
+  "Noise and Clumpfind implementation details",
+  "Ancillary narrowband/HST catalogs from other papers"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and standard steps with a numeric catalog, but imaging details and ancillary catalogs are missing.",
+ "rediscovery_reason": "Public data, line search recipe and a numeric line table give a checkable answer key.",
+ "source_card": "cards/2017ApJ...841L..21H/sonnet/card.md"
+}

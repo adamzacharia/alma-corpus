@@ -1,0 +1,289 @@
+{
+ "bibcode": "2025A&A...704A.158C",
+ "title": "Pushing JWST to the extremes: Search and scrutiny of bright galaxy candidates at z ≃ 15─30",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202555082",
+ "arxiv_id": "2504.05893",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Investigate the galaxy UV Luminosity Function at zsimeq15-30 by selecting and scrutinizing bright galaxy candidates and characterizing lower-redshift interlopers.",
+ "alma_project_codes": [
+  "2015.1.01074.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ASTRODEEP-JWST multi-band photometric catalogs of 531173 objects across seven fields",
+    "evidence": [
+     {
+      "loc": "Observations and data analysis",
+      "quote": "We used JWST and HST photometric measurements from the ASTRODEEP-JWST catalogs presented in M24."
+     },
+     {
+      "loc": "Observations and data analysis",
+      "quote": "The seven fields comprise a total of 531173 objects in an area of $\\sim$615 sq. arcmin, making the ASTRODEEP-JWST the largest publicly released JWST catalogs available to date."
+     }
+    ]
+   },
+   "citation": "M24 (cite: Merlin2024)"
+  },
+  {
+   "what": {
+    "value": "Lensing magnification model for the Abell 2744 cluster field",
+    "evidence": [
+     {
+      "loc": "The computation of the LF",
+      "quote": "in the case of A2744, which is affected by lensing, we adopt the approach in Eq. 1 of (cite: Castellano2023a), namely the effective volumes in each bin are obtained by taking into account the area at different magnification levels computed on the basis of the model by (cite: Bergamini2022)"
+     }
+    ]
+   },
+   "citation": "(cite: Bergamini2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Design and apply Lyman-break color selection criteria for z ~ 15-20 and z ~ 20-28 candidates",
+   "method": "Test color cuts on EGG and JAGUAR mock catalogs perturbed with observational noise, then apply SNR and color thresholds to the ASTRODEEP-JWST multi-band catalogs and HST stacks",
+   "software": [
+    "EGG",
+    "SEXTRACTOR",
+    "A-PHOT",
+    "Rainbow JWST pipeline",
+    "GALIGHT"
+   ],
+   "key_parameters": [
+    "SNR > 10 in F356W+F444W detection band; SNR < 2.0 in bands blueward of the break; (F200W-F277W) > 1.5 for z~15-20; (F277W-F356W) > 1.5 for z~20-28"
+   ],
+   "assumptions": [
+    "z = 18 assumed to convert observed F277W magnitude to rest-frame M_UV for the 5 F200W-dropout candidates"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute photometric redshift probability distributions P(z) and evaluate low-z interloper solutions",
+   "method": "Multi-wavelength SED fitting using four independent codes across eight configurations",
+   "software": [
+    "ZPHOT",
+    "EAZY",
+    "BAGPIPES",
+    "CLOUDY",
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "BAGPIPES live points increased from 400 to 2000, ionization parameter up to log U = -1"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF (or BPASS IMF cutoff 300 M_sun in BAGPIPES), Calzetti (2000) attenuation law, flat LambdaCDM (H0=70, Omega_M=0.30)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Spectroscopically confirm and characterize F200W-dropout interlopers including ALMA 870 um continuum analysis of UDS_56824",
+   "method": "Reduce CAPERS NIRSpec PRISM spectra, measure emission line fluxes with Gaussian fits, image archival ALMA Band 7 continuum data for UDS_56824, and perform constrained SED fitting and dust mass estimation",
+   "software": [
+    "STScI Calibration Pipeline",
+    "CASA",
+    "tclean",
+    "ZPHOT",
+    "BAGPIPES"
+   ],
+   "key_parameters": [
+    "Natural weighting and uvtaper tested in tclean; A_V constrained between 1.8 and 5 in BAGPIPES energy-balance fit for UDS_56824"
+   ],
+   "assumptions": [
+    "Dust opacity kappa_450um = 0.13 m^2 kg^-1, dust temperature T_d = 25 K (also tested T_d = 50 K), and dust emissivity index beta_dust = 1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute the binned UV Luminosity Function at z = 15-20 and z = 20-30 and compare with theoretical models",
+   "method": "Inject 2.5e5 mock galaxies into blank image regions to measure completeness and effective volume per field, then evaluate binned UV LF under Case 1 (all candidates real) and Case 2 (all candidates interlopers)",
+   "software": [],
+   "key_parameters": [
+    "500 mock objects inserted per simulation run; Sersic index n = 1, fixed half-light radius R_h = 0.2 kpc; lensing magnification mu < 5 in A2744"
+   ],
+   "assumptions": [
+    "Small number Poisson statistics (Gehrels 1986) for 1-sigma upper limits"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 870 um integrated flux density of UDS_56824",
+   "value": "0.54",
+   "uncertainty": "0.19",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "UDS_56824 at $z_{spec}$=6.56",
+     "quote": "A $\\sim$3$\\sigma$ detection is found at the NIRCam position of UDS_56824, with an integrated flux density of $S_{870_{\\rm \\mu m}}=0.54 \\pm 0.19\\,$mJy (see Fig. 6)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of UDS_56824",
+   "value": "6.56",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "UDS_56824 at $z_{spec}$=6.56",
+     "quote": "The redshift can be accurately measured to be $z_{spec}$=6.56$\\pm$0.01 from the H$\\alpha$, H$\\beta$, \\[O III\\]$\\lambda_{4959,5007}$ lines"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M_star/M_sun) of UDS_56824",
+   "value": "9.8",
+   "uncertainty": "0.18",
+   "units": "dex (M_sun)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "UDS_56824 at $z_{spec}$=6.56",
+     "quote": "The best-fit stellar mass and star formation rate are log$(M_{\\rm star}/{\\rm M}_{\\odot})$ = 9.8 $\\pm$ 0.18 and SFR= 40 $^{+20}_{-10}$ M$_{\\odot}$ yr$^{-1}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate of UDS_56824",
+   "value": "40",
+   "uncertainty": "+20/-10",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "UDS_56824 at $z_{spec}$=6.56",
+     "quote": "The best-fit stellar mass and star formation rate are log$(M_{\\rm star}/{\\rm M}_{\\odot})$ = 9.8 $\\pm$ 0.18 and SFR= 40 $^{+20}_{-10}$ M$_{\\odot}$ yr$^{-1}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of UDS_56824 (assuming T_d = 25 K)",
+   "value": "5.5e8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "UDS_56824 at $z_{spec}$=6.56",
+     "quote": "This yields a dust mass of $\\sim$5.5$\\times 10^8\\,$M$_{\\odot}$, close to 10% of the stellar mass - a remarkably high value given the redshift of the galaxy."
+    }
+   ]
+  },
+  {
+   "quantity": "Color excess E(B-V) of UDS_56824",
+   "value": "0.85",
+   "uncertainty": "0.46",
+   "units": "mag",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "UDS_56824 at $z_{spec}$=6.56",
+     "quote": "The Balmer ratio implies a high dust attenuation with $E(B-V)$=0.85$\\pm$0.46."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of CEERS_15937",
+   "value": "4.91",
+   "uncertainty": "+0.03/-0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CEERS_15937 at $z_{spec}$=4.91",
+     "quote": "We find that the object is fitted by a low-mass (log$(M_{\\rm star}/{\\rm M}_{\\odot})$ = 8.9 $\\pm$ 0.05) galaxy at $z_{spec}$=4.91$^{+0.03}_{-0.05}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M_star/M_sun) of CEERS_15937",
+   "value": "8.9",
+   "uncertainty": "0.05",
+   "units": "dex (M_sun)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CEERS_15937 at $z_{spec}$=4.91",
+     "quote": "We find that the object is fitted by a low-mass (log$(M_{\\rm star}/{\\rm M}_{\\odot})$ = 8.9 $\\pm$ 0.05) galaxy at $z_{spec}$=4.91$^{+0.03}_{-0.05}$"
+    }
+   ]
+  },
+  {
+   "quantity": "UV Luminosity Function phi at z=15-20 (M_UV = -22.5, Case 1)",
+   "value": "0.06",
+   "uncertainty": "+0.14/-0.05",
+   "units": "10^-5 Mpc^-3 mag^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "-22.5 | 1 | 0.06 $^{+0.14}_{-0.05}$ | $<$0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "UV Luminosity Function phi at z=15-20 (M_UV = -21.5, Case 1)",
+   "value": "0.07",
+   "uncertainty": "+0.16/-0.05",
+   "units": "10^-5 Mpc^-3 mag^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "-21.5 | 1 | 0.07 $^{+0.16}_{-0.05}$ | $<$0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "UV Luminosity Function phi at z=15-20 (M_UV = -20.5, Case 1)",
+   "value": "0.25",
+   "uncertainty": "+0.3/-0.16",
+   "units": "10^-5 Mpc^-3 mag^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "-20.5 | 2 | 0.25 $^{+0.3}_{-0.16}$ | $<$0.23"
+    }
+   ]
+  },
+  {
+   "quantity": "UV Luminosity Function phi at z=15-20 (M_UV = -19.5, Case 1)",
+   "value": "0.6",
+   "uncertainty": "+1.4/-0.5",
+   "units": "10^-5 Mpc^-3 mag^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "-19.5 | 1 | 0.6 $^{+1.4}_{-0.5}$ | $<$1.1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for ALMA imaging of UDS_56824",
+  "Exact uvtaper value, cell size, image size, and stopping threshold used in CASA tclean for UDS_56824",
+  "Final synthesized beam size and RMS noise of the ALMA 870 um continuum map"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (uvtaper value, cell size, threshold, aperture/fitting method for integrated flux) for ALMA project 2015.1.01074.S on UDS_56824",
+  "Exact effective volume grids as a function of M_UV derived from the 2.5e5 image injection simulations"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The primary photometric catalogs (ASTRODEEP-JWST) and ALMA archival dataset (2015.1.01074.S) are public, and color selection equations, SED-fitting configurations, and target coordinates are thoroughly documented. Minor imaging details for the ALMA continuum map (exact uvtaper, beam size) and the completeness simulation grids are not explicitly tabulated.",
+ "rediscovery_reason": "The ASTRODEEP-JWST catalogs and ALMA project 2015.1.01074.S are public, the color selection criteria are given as explicit algebraic cuts, and both the candidate properties and the ALMA 870 um flux density of UDS_56824 are quantitative answer keys.",
+ "source_card": "cards/2025A%26A...704A.158C/sonnet/card.md"
+}

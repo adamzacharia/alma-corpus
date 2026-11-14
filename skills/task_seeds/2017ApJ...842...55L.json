@@ -1,0 +1,211 @@
+{
+ "bibcode": "2017ApJ...842...55L",
+ "title": "A Radio-to-mm Census of Star-forming Galaxies in Protocluster 4C23.56 at Z = 2.5: Gas Mass and Its Fraction Revealed with ALMA",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa74c2",
+ "arxiv_id": "1705.10330",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "What are the molecular gas masses and gas fractions of main-sequence Halpha-emitting galaxies in protocluster 4C23.56 at z=2.49, and how do they compare with field galaxies?",
+ "alma_project_codes": [
+  "2012.1.00242.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO 3-2) and Band 6 (1.1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3 0.91x0.66 arcsec; Band 6 0.78x0.68 arcsec",
+  "sensitivity": "Band 6 ~0.08 mJy/beam; Band 3 ~0.17 mJy at 100 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PHIBBS-I comparison sample (Mstar, SFR from Table 2)",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "the values of $M_{\\star}$ and SFR are simply adopted from Table 2 in (cite: Tacconi2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Tacconi2013)"
+  },
+  {
+   "what": {
+    "value": "ALESS SMG 870 um fluxes and SED parameters",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "primary beam corrected flux, column 8 in Table 3"
+     }
+    ]
+   },
+   "citation": "(cite: Hodge2013); (cite: da Cunha2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image",
+   "method": "CLEAN with natural weighting on calibrated visibilities",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "detect sources and measure fluxes",
+   "method": "Smooth images with imsmooth, take peak flux (1.1 mm) or peak velocity-integrated flux (CO moment 0); detection criteria within 1 arcsec of HAEs",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "1.1 mm detection >4 sigma; CO needs 2 of 3 criteria (peak >4 sigma, two channels >3.5 sigma, integrated S/N >5)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "CO-based gas mass",
+   "method": "M_gas = alpha_CO x L'_CO with alpha_MW=4.36 times metallicity factor A(Z), R13=1.9",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO,1 in range [4.4, 5.9]"
+   ],
+   "assumptions": [
+    "metallicity from empirical mass-metallicity relation (Genzel2015 eq 12a, Wuyts2014)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "dust-based gas mass",
+   "method": "Scoville RJ-tail luminosity-to-mass relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 25 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "gas fraction, comparison and gas density",
+   "method": "f_gas = Mgas/(Mgas+Mstar); compare with PHIBBS-I and ALESS main-sequence galaxies; protocluster gas density from CO detections over survey volume",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) detections",
+   "value": "7 of 22 HAEs",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "seven CO detections out of 22 targeted H$\\alpha$ emitters (HAEs)"
+    }
+   ]
+  },
+  {
+   "quantity": "1.1 mm detections",
+   "value": "4 of 19",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "four out of 19 in 1.1 mm dust continuum"
+    }
+   ]
+  },
+  {
+   "quantity": "mean f_gas from CO(3-2)",
+   "value": "0.53",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\langle f_{\\rm gas}\\rangle = 0.53 \\pm 0.07$ from CO (3–2)"
+    }
+   ]
+  },
+  {
+   "quantity": "mean f_gas from 1.1 mm",
+   "value": "0.50",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7 Conclusion",
+     "quote": "0.50 $\\pm$ 0.06 for 1.1 mm measurement"
+    }
+   ]
+  },
+  {
+   "quantity": "protocluster cosmic gas density (CO-detected range)",
+   "value": "~5e9",
+   "uncertainty": "not stated",
+   "units": "Msun Mpc^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.3",
+     "quote": "the cosmic gas density is estimated as $\\rho_{\\rm gas, 4C23.56}\\sim 5 \\times 10^{9} \\,M_{\\odot}\\, {\\rm Mpc}^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mgas from dust",
+   "value": "(0.5-1.4)e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "in the range of $(0.5-1.4)\\times 10^{11}$ M$_{\\odot}$ for four objects"
+    }
+   ]
+  },
+  {
+   "quantity": "Mstar-SFE Pearson correlation excluding AGN",
+   "value": "0.89",
+   "uncertainty": "p=0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.4.2",
+     "quote": "Pearson’s correlation coefficient (in log scale) = 0.89 with a p-value of 0.02"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Array configurations and observing dates",
+  "Pipeline vs manual calibration",
+  "Cell size, image size, clean threshold and masks",
+  "Continuum line-free channels and continuum subtraction",
+  "Exact velocity integration ranges per source",
+  "Stellar masses and SFRs depend on unpublished Tanaka et al. analysis",
+  "Projected-density kernel details and survey volume computation"
+ ],
+ "missing_for_reproduction": [
+  "Mstar and SFR tables depend on in-preparation paper",
+  "Detailed imaging parameters and velocity ranges"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public project and clear gas mass formulae, but imaging details and Mstar/SFR inputs are partly unstated.",
+ "rediscovery_reason": "Public data, formulae stated, results numeric; Mstar/SFR taken from Table 1.",
+ "source_card": "cards/2017ApJ...842...55L/sonnet/card.md"
+}

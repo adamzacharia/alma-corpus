@@ -1,0 +1,481 @@
+{
+ "bibcode": "2024A&A...690A.197M",
+ "title": "The ALMA-CRISTAL survey: Widespread dust-obscured star formation in typical star-forming galaxies at z = 4─6",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348782",
+ "arxiv_id": "2311.17671",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Investigate dust-obscured star formation activity and the spatial extent of dust emission in 26 normal, representative star-forming galaxies at z = 4–6, and examine distributions of the dust-obscured and unobscured star-forming regions.",
+ "alma_project_codes": [
+  "2021.1.00280.L",
+  "2017.1.00428.L",
+  "2017.1.00428.S",
+  "2018.1.01359.S",
+  "2019.1.01075.S",
+  "2018.1.01605.S",
+  "2019.1.00226.S",
+  "2012.1.00978.S",
+  "2012.1.00523.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12m array (C43)",
+  "angular_resolution": "~ 0.3'' (~ 1.9 kpc at z = 5); average natural-weighted beam 0.46'' (2.9 kpc)",
+  "sensitivity": "10–20 µJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Publicly available photometric catalog in COSMOS field (COSMOS2015 catalog) with 10 broad bands, 12 medium bands, and 4 Spitzer bands",
+    "evidence": [
+     {
+      "loc": "2.2 Properties of the CRISTAL galaxies",
+      "quote": "We cross-match positions of the CRISTAL galaxies to publicly available photometric catalogs in COSMOS (COSMOS2015 catalog, Laigle et al. 2016)"
+     },
+     {
+      "loc": "Appendix A",
+      "quote": "and 12 medium bands on Ground-based telescopes, and 4 _Spitzer_ bands that achieve the best sensitivities among the bands covering similar wavelength."
+     }
+    ]
+   },
+   "citation": "Laigle et al. 2016"
+  },
+  {
+   "what": {
+    "value": "Publicly available photometric catalog in GOODS-S field (ASTRODEEP catalog) with 4 broad bands, 23 medium bands, 10 HST and 4 Spitzer bands",
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "and 23 medium bands on Ground-based telescopes, and 10 _HST_ and 4 _Spitzer_ bands on space telescopes from the ASTRODEEP catalog."
+     },
+     {
+      "loc": "Appendix A: CIGALE parameters used to estimate global properties",
+      "quote": "We take 4 broad bands (U, B, R, K_s) and 23 medium bands on Ground-based telescopes, and 10 HST and 4 Spitzer bands on space telescopes from the ASTRODEEP catalog."
+     }
+    ]
+   },
+   "citation": "Merlin et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Best-fit FIR SED template and scaling factor (ν L_ν=158µm / L_IR = 0.133) for main-sequence galaxies at z = 4-6",
+    "evidence": [
+     {
+      "loc": "3.3. FIR luminosity",
+      "quote": "we use the best-fit FIR SED presented in Béthermin et al. (2017) to estimate the total IR (8–1000 µm) luminosities of the CRISTAL galaxies."
+     },
+     {
+      "loc": "3.3. FIR luminosity",
+      "quote": "We calculate the total FIR luminosities of the CRISTAL galaxies by converting the measured dust continuum fluxes at the rest-frame 158 µm using a scaling factor described Béthermin et al. (2020, ν L_ν=158µm / L_IR = 0.133)."
+     }
+    ]
+   },
+   "citation": "Béthermin et al. 2017; Béthermin et al. 2020"
+  },
+  {
+   "what": {
+    "value": "Integrated [C II] spectral line profiles and central frequencies from the ALPINE survey",
+    "evidence": [
+     {
+      "loc": "2.3. Observation and Data products",
+      "quote": "We determine the spectral frequency coverages by centering [C II] frequency derived from the integrated [C II] spectral line profile in the ALPINE survey."
+     }
+    ]
+   },
+   "citation": "Le Fèvre et al. 2020"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Estimate galaxy-integrated stellar masses, SFR_SED, and L_UV via multi-wavelength SED fitting",
+   "method": "Cross-match galaxy positions within 1'' to COSMOS2015 and ASTRODEEP catalogs and perform multi-wavelength SED fitting using CIGALE",
+   "software": [
+    "CIGALE",
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "Delayed-τ SFH: τ_main = [100, 300, 500, 1000, 2000, 5000] Myr; Age_main = 50 Myr steps in [50: 1000] Myr; τ_burst = [10, 50, 100] Myr; Age_burst = [10, 20, 50] Myr; f_burst = [0.0, 0.05, 0.1, 0.2]",
+    "Metallicity Z = [0.2, 1] Z_⊙; Nebular log_10 U = -3.0, line width = 300 km s^-1; E(B-V) = 0.1 steps in [0.0: 2.0], E(B-V) factor = 0.44, R_v = 3.1",
+    "SFR_SED averaged over the last 100 Myr"
+   ],
+   "assumptions": [
+    "Bruzual & Charlot (2003) stellar population synthesis models, Chabrier (2003) IMF (0.1-100 M_⊙), Calzetti et al. (2000) dust attenuation law, flat universe with Ω_M = 0.3, Ω_Λ = 0.7, H_0 = 70 km s^-1 Mpc^-1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Combine visibilities, image rest-frame 158 µm dust continuum, and measure flux densities and S/N",
+   "method": "Concatenate visibilities with CASA/concat, exclude ±0.45 GHz around [C II] line, make dirty mfs continuum images (natural weighting and uv-tapered) without primary beam correction, pick peak flux within 0.5'' radius of [C II] position, and smooth 2.0''-tapered image to 3.0'' beam with imsmooth for total flux densities",
+   "software": [
+    "CASA",
+    "concat",
+    "tclean",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "uv taper scales: 0.25'', 0.5'', 1.0'', 2.0''; final smoothed beam: 3.0''; search aperture radius: 0.5''; RMS calculated with 3σ clipping where PB response is 0.5 to 0.9; detection threshold S/N >= 4"
+   ],
+   "assumptions": [
+    "Excluding ±0.45 GHz avoids broad [C II] line contamination (FWHM/2 ~ 250 km s^-1); 3.0'' beam includes all flux density within a single beam"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure effective radii of rest-frame 158 µm dust continuum in the visibility plane",
+   "method": "Subtract continuum sources > 2'' away using CASA tclean (down to 1.5σ with 2'' masks) and uvsub; fit a 2D circular exponential disk profile (n = 1) directly to visibilities using UVMultifit",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvsub",
+    "fixplanet",
+    "concat",
+    "UVMultifit"
+   ],
+   "key_parameters": [
+    "Sérsic index n = 1 (exponential profile), circular disk fixed axis ratio (q = 0 as written in text); two-component fitting when residual map shows second component with S/N > 10 (CRISTAL-22)"
+   ],
+   "assumptions": [
+    "Surface density profiles of dust continuum are represented by a circular exponential profile (n = 1)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive total infrared luminosities (L_IR) and infrared surface densities (Σ_IR)",
+   "method": "Convert rest-frame 158 µm dust continuum fluxes to total IR (8–1000 µm) luminosity using the scaling factor from Béthermin et al. (2020), and calculate Σ_IR = L_IR / (2π r_e,dust^2)",
+   "software": [],
+   "key_parameters": [
+    "ν L_ν=158µm / L_IR = 0.133"
+   ],
+   "assumptions": [
+    "Best-fit Draine & Li (2007) dust emission model from Béthermin et al. (2017) corresponding to modified blackbody with T_dust ~ 42 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure rest-frame UV effective radii from HST/WFC3 F160W images",
+   "method": "Construct empirical PSF by stacking normalized, reprojected point sources; generate sigma maps from drizzle weights and mask maps from SExtractor segmentation maps; fit 2D Sérsic profile (fixed n = 1) using GALFIT and circularize radius via r_e,UV = r_e,UV^major * sqrt(q)",
+   "software": [
+    "GALFIT",
+    "SExtractor",
+    "photutils"
+   ],
+   "key_parameters": [
+    "Point source selection: 2.0'' to 0.5'' aperture flux ratio in [1.2, 1.4], S/N > 7500, no neighbors within 3''; SExtractor: detect_minarea=5, detect_thresh=2, detect_nthresh=16, deblend_mincont=0.0001; GALFIT: Sérsic index n = 1 (axis ratio fixed to 1 if non-convergent)"
+   ],
+   "assumptions": [
+    "Single Sérsic profile with n = 1"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Calculate obscured fraction of star formation (f_obs) individually and via stacking in stellar mass bins, and evaluate correlations with galaxy properties",
+   "method": "Compute f_obs = SFR_IR / (SFR_UV + SFR_IR) for individual galaxies and in 3 stellar mass bins via median image stacking of 3''-smoothed images scaled by (1+z)/d_L^2; compute Spearman rank correlation coefficients between Δf_obs and UV-dust spatial offset, size ratio, Σ_IR, and axis ratios",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Stellar mass bins: log_10 M_* [M_⊙] = [9.3 : 9.8], [9.8: 10.2], [10.2: 10.9]; taper scale 2'', smoothed beam 3''; redshift scaling factor (1+z)/d_L^2"
+   ],
+   "assumptions": [
+    "Madau & Dickinson (2014) conversion from L_UV and L_IR to SFR_UV and SFR_IR; β_int = -2.41 for molecular index I_m"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of galaxies detected in rest-frame 158 µm dust continuum (S/N >= 4)",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Among 26 galaxies composed of 20 galaxies observed by the Cycle-8 ALMA Large Program, CRISTAL, and six galaxies from archival data, we have individually detected rest-frame 158µm dust continuum emission from 19 galaxies, nine of which are reported for the first time."
+    },
+    {
+     "loc": "3.1. Dust continuum detected galaxies",
+     "quote": "In a total of 26 extended CRISTAL samples (18 original CRISTAL targets, 6 CRISTAL+ galaxies, and 2 serendipitously detected galaxies in original CRISTAL fields), we found that 7, 8, and 11 galaxies have dust continuum emissions with S/N < 4, 4 <= S/N < 6.5, and S/N >= 6.5 respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust continuum detection rate for log_10 M_* [M_⊙] > 9.7",
+   "value": "89",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Dust continuum detected galaxies",
+     "quote": "The detection rate is 89% (16/18) in a stellar mass range of"
+    }
+   ]
+  },
+  {
+   "quantity": "Median stellar mass of dust-detected sample (log_10 M_*)",
+   "value": "10.1",
+   "uncertainty": "not stated",
+   "units": "dex (M_⊙)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Dust continuum detected galaxies",
+     "quote": "The median stellar mass and SFR of the dust-detected and undetected sample are log 10 _M_ ∗ [ _M_ ⊙ ] = 10.1, log 10 SFR [ _M_ ⊙ yr [−][1] ] = 1.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFR of dust-detected sample (log_10 SFR)",
+   "value": "1.8",
+   "uncertainty": "not stated",
+   "units": "dex (M_⊙ yr^-1)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Dust continuum detected galaxies",
+     "quote": "The median stellar mass and SFR of the dust-detected and undetected sample are log 10 _M_ ∗ [ _M_ ⊙ ] = 10.1, log 10 SFR [ _M_ ⊙ yr [−][1] ] = 1.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Far-infrared luminosity range (log_10 L_IR)",
+   "value": "10.9–12.4",
+   "uncertainty": "not stated",
+   "units": "dex (L_⊙)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The derived far-infrared luminosities are in the range log_10 L_IR [L_⊙] =10.9–12.4"
+    },
+    {
+     "loc": "3.3. FIR luminosity",
+     "quote": "The resulting L_IR of CRISTAL galaxies fall within a range of log_10 L_IR [L_⊙] = 10.9–12.4."
+    }
+   ]
+  },
+  {
+   "quantity": "Median infrared surface density (Σ_IR) of CRISTAL galaxies",
+   "value": "2.0e10",
+   "uncertainty": "not stated",
+   "units": "L_⊙ kpc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The infrared surface densities of these galaxies (Σ IR ∼ 2.0 × 10 [10] _L_ ⊙ kpc [−][2] ) are one order of magnitude lower than those of DSFGs that host compact central starbursts."
+    },
+    {
+     "loc": "3.3 FIR luminosity",
+     "quote": "The median Σ IR of the CRISTAL galaxies is 2.0 × 10 [10] _L_ ⊙ kpc [−][2] and ∼10 times smaller than that of the central compact star-forming regions of DSFGs or SMGs"
+    }
+   ]
+  },
+  {
+   "quantity": "Average effective radius of dust emission (r_e,dust)",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The effective radii of the dust emission are on average ~1.5 kpc and are ~ 2 times more extended than the rest-frame UV."
+    }
+   ]
+  },
+  {
+   "quantity": "Average size ratio of dust continuum to UV continuum (r_e,dust / r_e,UV)",
+   "value": "1.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Figure 6 caption",
+     "quote": "An average size ratio of the CRISTAL galaxies (r_e,dust / r_e,UV ~ 1.8) are shown in the red solid line."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked dust effective radius for 6 low-S/N galaxies (4.4 <= S/N <= 5.5)",
+   "value": "0.209",
+   "uncertainty": "±0.061",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Appendix C.2: Stacked size",
+     "quote": "The estimated average size is 0.209±0.061'', which is consistent with the average of the individually measured sizes (0.237'') within 1σ uncertainty."
+    }
+   ]
+  },
+  {
+   "quantity": "Median obscured fraction of star formation (f_obs) of individual detected galaxies",
+   "value": "0.61",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1. Fraction of obscured star formation",
+     "quote": "Some CRISTAL galaxies show smaller f_obs than galaxies individually detected in Fudamoto et al. (2020a), with a median f_obs in Fudamoto et al. (2020a) of 0.70 compared to 0.61 in our work, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Range of individual obscured fraction of star formation (f_obs)",
+   "value": "0.2–0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1. Fraction of obscured star formation",
+     "quote": "The CRISTAL galaxies show a large diversity of f_obs = 0.2–0.9."
+    }
+   ]
+  },
+  {
+   "quantity": "Average obscured fraction of multiple (merging) galaxy sample (<f_obs>_multiple)",
+   "value": "0.43",
+   "uncertainty": "+0.03/-0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 inhomogeneous dust reddening",
+     "quote": "The average obscured fraction and SFR of the multiple galaxy sample (⟨ _f_ obs ⟩ multiple = 0.43"
+    }
+   ]
+  },
+  {
+   "quantity": "Average obscured fraction of single (isolated) galaxy sample (<f_obs>_single)",
+   "value": "0.34",
+   "uncertainty": "+0.03/-0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 inhomogeneous dust reddening",
+     "quote": "than that of the single galaxy samples (⟨ _f_ obs ⟩ single = 0.34"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between Δf_obs and UV-dust spatial offset",
+   "value": "-0.58",
+   "uncertainty": "+0.30/-0.20 (p = 0.082)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.1 inhomogeneous dust reddening",
+     "quote": "We find a negative correlation between ∆ _f_ obs and the spatial offset within 1σ uncertainty of the correlation coefficient of ρ corr = −0.58"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between Δf_obs and Σ_IR",
+   "value": "0.30",
+   "uncertainty": "+0.22/-0.26 (p = 0.245)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.2. concentration of the star-forming regions",
+     "quote": "but Σ_IR has potential correlation with f_obs (ρ_corr = 0.30^+0.22_-0.26 with a p-value of 0.245)."
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-02 rest-frame 158 µm flux (S_tap) and dust effective radius (r_e,dust)",
+   "value": "S_tap = 0.362, r_e,dust = 0.326",
+   "uncertainty": "S_tap: ±0.055, r_e,dust: ±0.076",
+   "units": "mJy, arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-02 10.30 ± 0.28 9.3 0.405 ± 0.075 0.362 ± 0.055 11.80^+0.06_-0.07 0.629^+0.105_-0.122 0.326 ± 0.076 - e multiple"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-06a rest-frame 158 µm flux (S_tap), dust effective radius (r_e,dust), and UV radius (r_e,UV)",
+   "value": "S_tap = 0.254, r_e,dust = 0.310, r_e,UV = 0.214",
+   "uncertainty": "S_tap: ±0.029, r_e,dust: ±0.071, r_e,UV: ±0.010",
+   "units": "mJy, arcsec, arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-06a 10.09 ± 0.30 13.1 0.280 ± 0.051 0.254 ± 0.029 11.55^+0.05_-0.05 0.794^+0.109_-0.122 0.310 ± 0.071 0.214 ± 0.010 multiple"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-20 rest-frame 158 µm flux (S_tap), dust effective radius (r_e,dust), and UV radius (r_e,UV)",
+   "value": "S_tap = 0.144, r_e,dust = 0.251, r_e,UV = 0.060",
+   "uncertainty": "S_tap: ±0.015, r_e,dust: ±0.054, r_e,UV: ±0.002",
+   "units": "mJy, arcsec, arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-20 10.11 ± 0.35 13.8 0.157 ± 0.025 0.144 ± 0.015 11.43^+0.04_-0.05 0.459^+0.049_-0.055 0.251 ± 0.054 0.060 ± 0.002 single"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-22ab rest-frame 158 µm flux (S_tap), dust effective radius (r_e,dust), and UV radius (r_e,UV)",
+   "value": "S_tap = 1.343, r_e,dust = 0.150, r_e,UV = 0.129",
+   "uncertainty": "S_tap: ±0.158, r_e,dust: ±0.011, r_e,UV: ±0.008",
+   "units": "mJy, arcsec, arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-22ab h 10.35 ± 0.37 22.9 1.522 ± 0.074 1.343 ± 0.158 12.42^+0.05_-0.05 0.927^+0.140_-0.158 0.150 ± 0.011 0.129 ± 0.008 multiple"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-24 rest-frame 158 µm flux (S_tap), dust effective radius (r_e,dust), and UV radius (r_e,UV)",
+   "value": "S_tap = 1.236, r_e,dust = 0.204, r_e,UV = 0.105",
+   "uncertainty": "S_tap: ±0.092, r_e,dust: ±0.028, r_e,UV: ±0.020",
+   "units": "mJy, arcsec, arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-24 10.53 ± 0.08 22.3 1.201 ± 0.100 1.236 ± 0.092 12.24^+0.03_-0.03 0.956^+0.094_-0.102 0.204 ± 0.028 0.105 ± 0.020 single"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and imaging",
+  "Calibration details (pipeline vs manual, self-calibration, flux calibrators), which are deferred to Herrera-Camus et al. (in prep)",
+  "Image cell size and image dimensions (imsize) used in CASA tclean",
+  "Exact coordinates, redshifts, and [C II] central frequencies of each individual CRISTAL target",
+  "[C II] emission central positions and axis ratios deferred to Ikeda et al. (in prep)",
+  "Exact time on source per array configuration for each galaxy"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates, redshifts, and [C II] central frequencies for each of the 26 CRISTAL galaxies (deferred to Herrera-Camus et al. in prep)",
+  "Calibration and data reduction scripts or parameters (deferred to Herrera-Camus et al. in prep)",
+  "[C II] central coordinates and axis ratios used for stacking and inclination tests (deferred to Ikeda et al. in prep)",
+  "Individual L_UV and SFR_SED values from CIGALE for each galaxy (deferred to Herrera-Camus et al. in prep)",
+  "Exact mapping between CRISTAL-01 through CRISTAL-19 IDs and their parent ALPINE catalog names"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The core analysis workflow (CIGALE SED parameters, continuum channel exclusion, tclean uv-tapering, UVMultifit exponential profile fitting, and GALFIT UV fitting) is well documented and uses standard tools, and Table 1 provides a rich numeric answer key. However, crucial target metadata (coordinates, redshifts, [C II] frequencies, ALPINE cross-IDs) and calibration details are deferred to companion papers in preparation.",
+ "rediscovery_reason": "All ALMA datasets are now public in the archive via the listed project codes, the visibility-fitting and tapered-imaging recipe is clear, and Table 1 provides exact per-target flux densities, L_IR, f_obs, and dust/UV effective radii to benchmark against once target cross-identifications are obtained.",
+ "source_card": "cards/2024A%26A...690A.197M/sonnet/card.md"
+}

@@ -1,0 +1,418 @@
+{
+ "bibcode": "2021A&A...650A.117N",
+ "title": "The host galaxy of the short GRB 050709",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039689",
+ "arxiv_id": null,
+ "fields": [
+  "transients",
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Characterize the physical properties (star formation rate, metallicity, gas kinematics, excitation mechanisms, merger history) of the host galaxy of short GRB 050709 and constrain late-time radio emission.",
+ "alma_project_codes": [
+  "2016.1.01333.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.1–1.4 mm, 211–275 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.22'' x 0.18'' (0.6 x 0.5 kpc^2)",
+  "sensitivity": "5 sigma rms upper limit of 55 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Host galaxy stellar mass log M_star/M_sun = 8.8",
+    "evidence": [
+     {
+      "loc": "2.2.1. Ground-based observations",
+      "quote": "According to these authors, the SED reveals a dominating stellar population with an age of about 2 Gyr and a stellar mass of log M ⋆ / M ⊙ = 8.8."
+     },
+     {
+      "loc": "5.1 The GRB host galaxy",
+      "quote": "its stellar mass (log M⋆/M⊙= 8.8; Leibler & Berger 2010)"
+     }
+    ]
+   },
+   "citation": "Leibler & Berger 2010"
+  },
+  {
+   "what": {
+    "value": "Host galaxy B-band absolute magnitude M_B = -16.9 ± 0.1",
+    "evidence": [
+     {
+      "loc": "2.2.1. Ground-based observations",
+      "quote": "According to Hjorth et al. (2005), the host of GRB 050709 is a blue dwarf galaxy with an absolute magnitude M B = −16.9 ± 0.1."
+     }
+    ]
+   },
+   "citation": "Hjorth et al. 2005"
+  },
+  {
+   "what": {
+    "value": "MAGMA sample of local star-forming galaxies for mass-metallicity and star-formation main sequence comparisons",
+    "evidence": [
+     {
+      "loc": "4.5. Metallicity",
+      "quote": "The galaxies illustrated in the mass–metallicity relation (MZR) are taken from the MAGMA (Metallicity and Gas for Mass Assembly) sample of local star-forming galaxies (e.g., Ginolfi et al. 2020; Hunt et al. 2020)."
+     }
+    ]
+   },
+   "citation": "Ginolfi et al. 2020; Hunt et al. 2020"
+  },
+  {
+   "what": {
+    "value": "Galactic foreground reddening E(B - V) = 0.01 mag",
+    "evidence": [
+     {
+      "loc": "3.4. VLT/MUSE spectroscopy",
+      "quote": "The data were corrected for Galactic foreground reddening ( E ( B − V ) = 0.01 mag; Schlafly & Finkbeiner 2011), assuming an average Milky Way extinction law (Pei 1992) and R V = 3.08."
+     }
+    ]
+   },
+   "citation": "Schlafly & Finkbeiner 2011"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image ALMA 1.3 mm continuum data and derive SFR upper limit",
+   "method": "Combine two ALMA Band 6 execution blocks in CASA tclean, measure 5 sigma rms upper limit at phase center, and convert to SFR upper limit using redshifted and renormalized Chary & Elbaz (2001) IR SED templates and the Kennicutt (1998) relation.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust = 2.0"
+   ],
+   "assumptions": [
+    "z = 0.1606, H_0 = 68 km s^-1 Mpc^-1, Omega_M = 0.31, Omega_Lambda = 0.69",
+    "SFR(M_sun yr^-1) = 10^-10 (L_IR / L_sun)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce Spitzer 24 um data and derive mid-IR SFR upper limit",
+   "method": "Reduce MIPS 24 um data with MOPEX, measure sky noise in ten empty regions to derive 3 sigma flux upper limit following Dale et al. (2012), and convert to SFR using Tzanavaris et al. (2010) and Murphy et al. (2011) relations.",
+   "software": [
+    "MOPEX"
+   ],
+   "key_parameters": [
+    "10 empty sky regions, N_pix = N_sky slightly larger than MIPS PSF"
+   ],
+   "assumptions": [
+    "Spectral slope beta between 3 and 4 in L_nu ~ nu^-beta"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Reduce ATCA radio continuum data and measure fluxes/upper limits",
+   "method": "Reduce ATCA 5.5 and 9.0 GHz visibilities in MIRIAD, image with robust weighting (0.0 to 2.0) and tapering, check astrometry against cataloged quasars, and derive upper limits on point-source afterglow/kilonova emission and extended emission flux.",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.0 to 2.0; uv taper FWHM = 5 arcsec"
+   ],
+   "assumptions": [
+    "Isotropic emission, spectral slope beta = -1/3 or 0.7 for radio AG and beta = 0.7 for kilonova flare"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Reduce VLT/MUSE IFU data and separate stellar and gas-phase emission",
+   "method": "Reduce MUSE exposures with the ESO MUSE pipeline, remove telluric absorption with molecfit, align astrometry to HST/F814W with SAOimage DS9 using point source Q, correct for Galactic foreground extinction, and fit and subtract stellar continuum using Starlight with Bruzual & Charlot (2003) SSP models.",
+   "software": [
+    "MUSE data reduction pipeline",
+    "molecfit",
+    "SAOimage DS9",
+    "Starlight"
+   ],
+   "key_parameters": [
+    "S/N >= 4 for bright lines (Halpha, [O III] 5007) and S/N >= 2 for faint lines (Hbeta, [N II] 6584, [S II] 6718)"
+   ],
+   "assumptions": [
+    "Galactic foreground E(B-V) = 0.01 mag, Milky Way extinction law (Pei 1992), R_V = 3.08"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Map host galaxy reddening, SFR, EW(Halpha), metallicity, kinematics, and BPT diagnostics",
+   "method": "From spaxel emission line fluxes in the MUSE gas cube, compute E(B-V)_host via Balmer decrement, extinction-corrected SFR(Halpha) via Murphy et al. (2011), EW(Halpha), O3N2 oxygen abundance via Pettini & Pagel (2004), Halpha radial velocity and intrinsic velocity dispersion, and [N II] and [S II] BPT diagrams.",
+   "software": [],
+   "key_parameters": [
+    "2 arcsec radius aperture for global SFR; continuum flux density >= 2e-20 erg s^-1 cm^-2 A^-1 for EW(Halpha); sigma_instr = 42 km s^-1, sigma_T,gas = 9.1 km s^-1"
+   ],
+   "assumptions": [
+    "Case B recombination at T = 10^4 K, n_e ~ 10^2 - 10^4 cm^-3, intrinsic Halpha/Hbeta = 2.85, R_V = 3.08",
+    "Solar oxygen abundance 12 + log(O/H) = 8.69 (Asplund et al. 2009)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 1.3 mm continuum flux density (5 sigma upper limit)",
+   "value": "< 55",
+   "uncertainty": "not stated",
+   "units": "µJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3 ALMA millimeter observations",
+     "quote": "a 5σ rms upper limit of 55 µJy beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate upper limit from ALMA 1.3 mm",
+   "value": "< 4.5",
+   "uncertainty": "not stated",
+   "units": "M_⊙ yr^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3. ALMA millimeter observations",
+     "quote": "From this analysis, we inferred SFR < 4.5 M ⊙ yr − 1 , in agreement with the Spitzer data (Sect. 3.1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFR of renormalized templates at ALMA 1.3 mm limit",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "M_⊙ yr^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3. ALMA millimeter observations",
+     "quote": "This can, however, be considered as a very conservative upper limit as the median SFR of these renormalized templates is ∼1.6 M ⊙ yr − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Spitzer 24 um flux density (3 sigma upper limit)",
+   "value": "< 34",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1. Spitzer Space Telescope mid-infrared observations",
+     "quote": "In doing so, we find F ν 24 µm < 34 µJy (3σ)."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate upper limit from Spitzer 24 um (Murphy et al. 2011, beta=4)",
+   "value": "< 1.5",
+   "uncertainty": "not stated",
+   "units": "M_⊙ yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1. Spitzer Space Telescope mid-infrared observations",
+     "quote": "Following Murphy et al. (2011, their Eq. (5)), the constraint on the SFR is slightly higher: For β = 3 we have SFR 24 µm < 1.4 M ⊙ yr − 1 , and for β = 4 it is SFR 24 µm < 1.5 M ⊙ yr − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 5.5 GHz point-source flux density at GRB position (3 sigma upper limit)",
+   "value": "< 15",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. ATCA radio-continuum observations",
+     "quote": "At standard resolution (robust parameter = 0), there is no evidence for a source at the GRB position at either frequency ( F ν (5.5 GHz) < 15 µJy, F ν (9.0 GHz) < 15 µJy; 3σ)."
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 9.0 GHz point-source flux density at GRB position (3 sigma upper limit)",
+   "value": "< 15",
+   "uncertainty": "not stated",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. ATCA radio-continuum observations",
+     "quote": "At standard resolution (robust parameter = 0), there is no evidence for a source at the GRB position at either frequency ( F ν (5.5 GHz) < 15 µJy, F ν (9.0 GHz) < 15 µJy; 3σ)."
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 5.5 GHz tapered extended emission flux near GRB position",
+   "value": "40",
+   "uncertainty": "8",
+   "units": "µJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. ATCA radio-continuum observations",
+     "quote": "Adding some tapering (full width half maximum = 5 arcsec) increases the noise level to 8 µJy and the extended emission level to 40 µJy;"
+    }
+   ]
+  },
+  {
+   "quantity": "Late-time 5.5 GHz radio specific luminosity upper limit (beta = 0.7)",
+   "value": "< 1.8e28",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 Hz^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5.5 GHz 1.5 1.8 0.8 0.9"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Columns 2 and 3 provide the specific luminosities in units of 10 28 erg s − 1 Hz − 1 (assuming isotropic emission)."
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy redshift (VLT/MUSE)",
+   "value": "0.1607",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4. Results",
+     "quote": "The MUSE data revealed that the entire host is a source of emission lines at a common redshift of z = 0.1607 ± 0.0001."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean internal host galaxy reddening E(B - V)_host",
+   "value": "0.27",
+   "uncertainty": "0.20 (median error)",
+   "units": "mag",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Host-galaxy reddening E(B – V)",
+     "quote": "The mean in this region is E ( B − V ) host = 0.28 mag. The mean over the entire galaxy is basically the same (0.27 mag)."
+    },
+    {
+     "loc": "4.2. Host-galaxy reddening E(B – V)",
+     "quote": "The corresponding median for all spaxels is 0.13 mag for region B and 0.20 mag when considering the entire galaxy."
+    }
+   ]
+  },
+  {
+   "quantity": "Global extinction-corrected Halpha star formation rate",
+   "value": "0.15",
+   "uncertainty": "0.02",
+   "units": "M_⊙ yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Using the Balmer decrement, we map the internal host-galaxy reddening and derive an extinction-corrected star formation rate based on the flux in the Hα line of 0.15 ± 0.02 M ⊙ yr − 1 ."
+    },
+    {
+     "loc": "4.3. Star formation rate",
+     "quote": "For the entire galaxy, inside a circle with a radius of 2 arcsec centered at the central part of the host, the SFR is 0.15 ± 0.02 M ⊙ yr − 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak SFR surface density in region B",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "M_⊙ yr^-1 kpc^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3. Star formation rate",
+     "quote": "The SFR pattern is rather smooth across the entire galaxy; however, it shows an asymmetric structure with a single peak of ∼0.04 M ⊙ yr − 1 kpc − 2 in the northwestern quadrant of the optically brightest part (B) of the host (Fig. 5)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median equivalent width EW(Halpha) of entire galaxy",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "Å",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4. Equivalent width (H α )",
+     "quote": "In doing so, the medians of the entire galaxy and of region B are 40 and 55 Å, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak equivalent width EW(Halpha)",
+   "value": "230",
+   "uncertainty": "10",
+   "units": "Å",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4. Equivalent width (H α )",
+     "quote": "The equivalent width peaks at the position where the Hα flux has its maximum. Here we measure EW(Hα) = 230 ± 10 Å."
+    }
+   ]
+  },
+  {
+   "quantity": "Median host oxygen abundance 12 + log(O/H)",
+   "value": "8.40",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Using the O3N2 metallicity indicator, we measure an average 12 + log (O/H) = 8.40 ± 0.05 (corresponding to ∼0.5 solar)."
+    },
+    {
+     "loc": "4.5. Metallicity",
+     "quote": "Using only spaxels that fulfill our aforementioned S/N criterion (Fig. 6), for the entire galaxy we measure a median of 12 + log(O/H) = 8.40 ± 0.05."
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy metallicity Z",
+   "value": "0.51",
+   "uncertainty": "+0.07/-0.05",
+   "units": "Z_⊙",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5. Metallicity",
+     "quote": "The measured median of 12 + log(O/H) corresponds to a metallicity Z = 0.51 − + 0 0 . . 05 07 Z ⊙ , for a solar value of 12 + log(O/H) = 8.69 (Asplund et al. 2009;"
+    }
+   ]
+  },
+  {
+   "quantity": "Median intrinsic Halpha gas velocity dispersion sigma_dyn,gas",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6. Velocity pattern",
+     "quote": "In the entire galaxy, σdyn,gas has values between about 20 and 40 km s−1; the median is 30 km s−1."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA tclean cell size, image size, and deconvolver settings for ALMA imaging",
+  "Relative data weights applied when combining the C40-6 and C40-3 ALMA execution blocks",
+  "Exact emission line profile fitting procedure/code used to extract line fluxes, velocities, and velocity dispersions from the gas-phase MUSE cube"
+ ],
+ "missing_for_reproduction": [
+  "Specific emission-line fitting tool and line-window definitions used to measure fluxes and kinematics from the Starlight-subtracted MUSE cube",
+  "Exact Starlight configuration parameters and stellar library subset from Bruzual & Charlot (2003)",
+  "CASA tclean imaging parameters (cell size, image size) for the ALMA Band 6 data"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All observational program IDs across ALMA, VLT/MUSE, ATCA, Spitzer, and HST are clearly documented, and standard reduction pipelines and empirical calibrations (equations, S/N thresholds, apertures, and cosmology) are explicitly stated. Minor deductions for omitting the exact line-fitting code for the MUSE cube and low-level tclean parameters.",
+ "rediscovery_reason": "All datasets (ALMA 2016.1.01333.S, ESO VLT/MUSE 099.D-0115(A), ATCA C2840, Spitzer, HST) are public in archives, the analysis equations and S/N cuts are explicitly given, and the main results are quantitative (ALMA/Spitzer/ATCA upper limits, MUSE global SFR, E(B-V), O3N2 metallicity, and velocity dispersion).",
+ "source_card": "cards/2021A%26A...650A.117N/sonnet/card.md"
+}

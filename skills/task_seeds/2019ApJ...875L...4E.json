@@ -1,0 +1,130 @@
+{
+ "bibcode": "2019ApJ...875L...4E",
+ "title": "First M87 Event Horizon Telescope Results. IV. Imaging the Central Supermassive Black Hole",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab0e85",
+ "arxiv_id": "1906.11241",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What does the 1.3 mm EHT 2017 data of M87 look like when imaged, and how robust are the ring diameter and asymmetry to the imaging method and parameters?",
+ "alma_project_codes": [
+  "2016.1.01154.V"
+ ],
+ "data": {
+  "bands": "1.3 mm (two 2 GHz bands centered on 227.1 and 229.1 GHz)",
+  "arrays": "Phased ALMA (37 antennas as a 73 m telescope) as one station of the EHT VLBI array",
+  "angular_resolution": "~20 μas (minimum fringe spacing 24.8 μas)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Calibration, correlation and reduction of EHT 2017 data",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "details of the 2017 observations, correlation, and calibration are given in EHT Collaboration et al. (2019c, hereafter Paper III)."
+     }
+    ]
+   },
+   "citation": "EHT Collaboration et al. 2019c (Paper III)"
+  },
+  {
+   "what": {
+    "value": "GMVA 86 GHz compact flux densities 2004–2015",
+    "evidence": [
+     {
+      "loc": "Section 4 (86 GHz compact flux density)",
+      "quote": "around the peak of the GMVA images from 2004 to 2015, but excluding the 2009"
+     }
+    ]
+   },
+   "citation": "Kim et al. 2018a"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Estimate compact flux density",
+   "method": "Constraints from LMT–SMT amplitudes, crossing-track gain correction and multi-wavelength VLBI extrapolation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Blind imaging by four teams",
+   "method": "Four teams imaged April 11 data independently (two RML, two CLEAN)",
+   "software": [
+    "DIFMAP",
+    "eht-imaging",
+    "SMILI"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Parameter surveys on synthetic data to select fiducial parameters",
+   "method": "Grid surveys of imaging parameters; Top Set requires χ²<2 on M87 and α_char below nominal resolution on synthetic data",
+   "software": [
+    "DIFMAP",
+    "eht-imaging",
+    "SMILI"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure ring parameters",
+   "method": "Ring center from minimizing radial peak dispersion; diameter, width, orientation, asymmetry, central brightness",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total compact flux density (EHT + multi-wavelength)",
+   "value": "0.66",
+   "uncertainty": "+0.16/−0.10",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "B.2",
+     "quote": "Combining them, we obtain _F_ cpct,230 = 0.66 -+ 0.100.16 Jy ."
+    }
+   ]
+  },
+  {
+   "quantity": "Image dynamic range",
+   "value": "~50",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "7.2 Image Uncertainties",
+     "quote": "these variations indicate that our images achieve a dynamic range of ∼50"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact script parameters and random seeds for the DIFMAP, eht-imaging and SMILI pipelines (scripts are only on the EHT data portal)",
+  "ALMA-specific phasing and calibration details (in Paper III and Matthews et al. 2018)",
+  "Software versions for DIFMAP and SMILI"
+ ],
+ "missing_for_reproduction": [
+  "Upstream correlation/calibration is in Paper III",
+  "Full scripts and parameter files not in text"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Parameters, grids and fiducials largely tabulated, data and software public; ALMA role is only a phased station.",
+ "rediscovery_reason": "Public calibrated visibilities, stated fiducial parameters, numeric ring results; but ALMA is minor and scripts are external.",
+ "source_card": "cards/2019ApJ...875L...4E/sonnet/card.md"
+}

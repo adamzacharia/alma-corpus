@@ -1,0 +1,293 @@
+{
+ "bibcode": "2020ApJ...888...72K",
+ "title": "The Detection of Dust Gap-ring Structure in the Outer Region of the CR Cha Protoplanetary Disk",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab5d2b",
+ "arxiv_id": "1911.13017",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the CR Cha disk have dust gap/ring substructure, and what mechanism (planet gap opening or dust trapping at a gas temperature/pressure bump) could produce it?",
+ "alma_project_codes": [
+  "2017.1.00286.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.087x0.052 arcsec (continuum); ~0.19x0.13 arcsec (CO)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity kappa_225GHz = 2.3 cm^2/g",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$\\rm \\kappa_{\\rm 225GHz}=2.3~cm^{2}~g^{-1}$ (cite: Beckwith1990) is the dust opacity at 225 GHz."
+     }
+    ]
+   },
+   "citation": "(cite: Beckwith1990)"
+  },
+  {
+   "what": {
+    "value": "Stellar parameters: M*=1.657 Msun, Teff 4800 K, R*=3.113 Rsun",
+    "evidence": [
+     {
+      "loc": "4.4.2",
+      "quote": "We adopt the stellar mass of $\\rm 1.657~M_{\\odot}$, the effective temperature of 4800 K, and the stellar radius of $\\rm 3.113~R_{\\rm \\odot}$ (cite: Villebrun2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Villebrun2019)"
+  },
+  {
+   "what": {
+    "value": "Isotopologue abundance ratios 12CO/C18O=444, 12CO/13CO=67",
+    "evidence": [
+     {
+      "loc": "4.4.2",
+      "quote": "We also assume the abundance ratio of $\\rm^{12}CO/C^{18}O=444$ and $\\rm ^{12}CO/^{13}CO=67$ (cite: Qi2011)."
+     }
+    ]
+   },
+   "citation": "(cite: Qi2011)"
+  },
+  {
+   "what": {
+    "value": "C18O molecular data (S mu^2, Eu/k) from LAMDA and CDMS",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "from the Leiden Atomic and Molecular Database (cite: Schoier2005) and Cologne Database for Molecular Spectroscopy (cite: Muller2001CDMS)"
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2005; Muller2001CDMS)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO lines",
+   "method": "CASA pipeline calibration, then CLEAN with Briggs robust 0 (continuum) and 2.0 (CO), phase self-cal on continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Disk geometry",
+   "method": "Ellipse fitting of continuum with imfit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Radial profiles and line ratios",
+   "method": "Azimuthal averaging in 8 au annuli within r<240 au; CO uses only the southern half-disk to avoid absorption",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Gas temperature from peak brightness temperature",
+   "method": "Moment 8 maps without continuum subtraction; I_peak=B_nu(T_B,peak); fit power law + Gaussian over 20-200 au",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "12CO and 13CO optically thick so T_B = T_gas"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust surface density and gap fit",
+   "method": "Sigma_dust from I_cont=B(T)(1-exp(-tau)), tau=kappa*Sigma; fit baseline power-law with exponential tail plus Gaussian gap",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust=T_gas=T_B,peak; kappa=2.3 cm2/g"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "C18O column density and dust-to-CO-gas ratio",
+   "method": "Optical depth from Gaussian-fitted azimuthally averaged spectra (velocity-shifted by moment 1) with T_gas=T_B(13CO); column density via Yamamoto 2017 equation; N_CO=444 N_C18O",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X0=1e-4, eps0=1e-2 ISM values"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Planet-gap interpretation",
+   "method": "Fit Kanagawa et al. 2017 gap profile; minimum mass from Rosotti et al. 2016; upper limits from non-detection of gas gap",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T=22 K at gap center 91.47 au; M*=1.657 Msun; dust traces gas gap"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Dust-trap radiative transfer model",
+   "method": "HO-CHUNK Monte Carlo RT with compact dust disk (20-100 au), small and large grain populations, to get r-z temperature and 12CO/13CO photospheres",
+   "software": [
+    "HO-CHUNK"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "n(a)∝a^-3.5; small 0.0025-0.2 um, large 0.01 um-1 mm; small surface density 10x smaller than large"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum total flux density",
+   "value": "~0.139",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The total flux density of the dust disk is $\\sim0.139$ Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "31.0",
+   "uncertainty": "1.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The estimated inclination of the disk is $31.0^{\\circ}\\pm1.4^{\\circ}$ and disk PA is $36.2^{\\circ}\\pm1.8^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "36.2",
+   "uncertainty": "1.8",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The estimated inclination of the disk is $31.0^{\\circ}\\pm1.4^{\\circ}$ and disk PA is $36.2^{\\circ}\\pm1.8^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "13CO T_B,peak bump amplitude at ~127 au",
+   "value": "~4.3 (~1.4 sigma)",
+   "uncertainty": "1 sigma ≈ 3 K",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "has $\\sim 4.3$ K amplitude, corresponding to $\\sim1.4\\sigma$ at this radius ($1\\sigma\\approx3$ K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust gap depth",
+   "value": "~20",
+   "uncertainty": "upper limit",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The derived gap depth is $\\sim20\\%$ on average."
+    }
+   ]
+  },
+  {
+   "quantity": "Gap center (13CO case)",
+   "value": "91.47",
+   "uncertainty": ">500%",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "T$_{\\rm B,peak.^{13}CO}$ | 91.47 | 6.72 | 0.038  | $\\sim19.94$"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum planet mass",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "M_J",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4.1",
+     "quote": "we obtain $M_{\\rm p,min}\\sim0.2~M_{\\rm J}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass for gap",
+   "value": "0.99 (alpha/0.01)^0.5",
+   "uncertainty": "large",
+   "units": "M_J",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4.1",
+     "quote": "$$\\begin{equation}\n M_{\\rm p} = 0.99 M_{\\rm J}\\left(\\frac{\\alpha}{0.01}\\right)^{0.5},\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-to-CO-gas ratio enhancement inside 80 au",
+   "value": "~50 times ISM",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "the dust-to-CO-gas mass ratio is $\\sim50$ times higher than the typical ISM value."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters: cell size, image size, masks, threshold, niter, uv taper",
+  "Self-calibration solution intervals and number of iterations",
+  "Line-free channels and continuum subtraction method",
+  "Whether primary beam correction was applied",
+  "Radial binning center/annulus details beyond 8 au, and how uncertainties were computed",
+  "Fitting method details/priors and initial guesses for the Gaussian and power-law fits",
+  "Disk-structure inputs for HO-CHUNK beyond those listed (luminosity, gas-dust coupling, grid setup)",
+  "Pipeline version"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "Self-cal details",
+  "Fit initial conditions and error estimation",
+  "HO-CHUNK input configuration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and analysis steps described with equations, but imaging and fitting details are incomplete.",
+ "rediscovery_reason": "Archive data public; numeric profiles and gap parameters derivable, though imaging details are missing.",
+ "source_card": "cards/2020ApJ...888...72K/sonnet/card.md"
+}

@@ -1,0 +1,277 @@
+{
+ "bibcode": "2016ApJ...829L..35T",
+ "title": "A Gap with a Deficit of Large Grains in the Protoplanetary Disk around TW Hya",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/829/2/L35",
+ "arxiv_id": "1605.00289",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the dust continuum structure (gaps, rings) and the radial profile of spectral index and dust opacity index beta in the TW Hya disk at ~3 au resolution, and what do they imply for the gap origin?",
+ "alma_project_codes": [
+  "2015.A.00005.S",
+  "2012.1.00422.S"
+ ],
+ "data": {
+  "bands": "Band 4 (145 GHz) and Band 6 (233 GHz)",
+  "arrays": "36 12-m antennas",
+  "angular_resolution": "88.1x62.1 mas (B4), 75.4x55.2 mas (B6), 72.7x47.8 mas (MFS)",
+  "sensitivity": "12.4 (B4), 28.7 (B6), 15.9 (MFS) uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Band 7 high-resolution (~1 au) ALMA results used for comparison",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "These observed features agree with those found by recent high-resolution ($\\sim$1 au) observations at band 7 (cite: bib:andrews2016)."
+     }
+    ]
+   },
+   "citation": "(cite: bib:andrews2016)"
+  },
+  {
+   "what": {
+    "value": "Archival Band 6 short-baseline data 2012.1.00422.S",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We have combined band 6 archival data (2012.1.00422.S)"
+     }
+    ]
+   },
+   "citation": "not stated"
+  },
+  {
+   "what": {
+    "value": "Dust mass opacity theory for interpreting small beta",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "according to the theoretical calculation of dust mass opacity (cite: bib:draine2006)"
+     }
+    ]
+   },
+   "citation": "(cite: bib:draine2006)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and combine visibilities",
+   "method": "CASA calibration; combine archival B6 short baselines with new B6 after phase shift; flag B6 uv>3000 klambda",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Self-calibrate and image each band",
+   "method": "Iterative self-calibration using the initial CLEAN image as model; multiscale CLEAN with Briggs weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5/1.0; scales [0,100,300]/[0,50,150] mas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make combined MFS image and alpha map",
+   "method": "MFS imaging of all self-calibrated data at 190 GHz, robust=0, scales 0,60,180 mas",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive deprojected radial profiles of brightness temperature and alpha",
+   "method": "Deprojected azimuthal averaging; flux converted to Tb with Planck function; errors from azimuthal standard deviation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk inclination 7 deg"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive tau(R) and beta(R)",
+   "method": "Solve I_nu = B_nu(Td)(1-exp(-tau)) and alpha equation with tau_nu ∝ nu^beta given assumed Td(R)",
+   "software": [],
+   "key_parameters": [
+    "T10 22-30 K, q 0.3-0.5"
+   ],
+   "assumptions": [
+    "Td = T10 (R/10 au)^-q, smooth"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate planet mass from gap",
+   "method": "Kanagawa et al. gap shape-planet mass relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "viscosity alpha=1e-3, aspect ratio 0.05"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Gap locations (deep)",
+   "value": "22 and 37",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "There are two prominent gaps at 22 and 37 au, and relatively weak decrements are also seen at 6, 28, and 44 au."
+    }
+   ]
+  },
+  {
+   "quantity": "22 au gap FWHM and relative depth",
+   "value": "7 au, 50%",
+   "uncertainty": "not stated",
+   "units": "au, %",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The full width at half maximum and the relative depth are roughly 7 au and 50 % for the 22 au gap"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density Band 4",
+   "value": "152.0",
+   "uncertainty": "0.3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The total flux densities are 152.0$\\pm$0.3 and 558.3$\\pm$0.7 Jy for band 4 and 6, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density Band 6",
+   "value": "558.3",
+   "uncertainty": "0.7",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The total flux densities are 152.0$\\pm$0.3 and 558.3$\\pm$0.7 Jy for band 4 and 6, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density at 190 GHz (SN>10)",
+   "value": "360.3",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "360.3$\\pm$0.5 mJy at 190 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean spectral index",
+   "value": "2.42",
+   "uncertainty": "0.42",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the weighted mean value is estimated to be $<\\alpha>=2.42\\pm0.42$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak alpha at 22 au",
+   "value": "~3.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "There is a prominent peak around 22 au with $\\alpha\\sim3.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "beta at 22 au gap",
+   "value": "~1.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The derived power-law index of the dust opacity $\\beta (R)$ is $\\sim1.7$ at the 22 au gap and decreases toward the disk center to $\\sim0$."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass upper limit",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "M_Neptune",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "a planet with 1.5 $M_\\mathrm{Neptune}$ may be responsible for the gap"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner hole radius",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "we have resolved an inner hole with radius $\\sim3$ au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Disk center, position angle for deprojection and radial bin widths",
+  "Line-free channel selection and flagging details",
+  "Number of self-calibration iterations and clean thresholds/masks",
+  "Flux model for J1037-2934 and flux scale details",
+  "How the alpha map was made in CASA (Taylor terms nterms)",
+  "Procedure for solving tau and beta from I and alpha (grid, error propagation)",
+  "Reference frequencies for Band 4 and 6 images",
+  "Proper-motion shift values"
+ ],
+ "missing_for_reproduction": [
+  "Deprojection geometry and radial binning",
+  "Self-calibration iteration details and masks",
+  "Exact procedure for tau/beta solution and error ranges",
+  "Flux calibrator flux model"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and imaging parameters mostly given, but geometry, self-cal and inversion details missing.",
+ "rediscovery_reason": "Public data, fairly complete imaging recipe, numeric results (alpha, beta, gap positions).",
+ "source_card": "cards/2016ApJ...829L..35T/sonnet/card.md"
+}

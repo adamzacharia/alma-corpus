@@ -1,0 +1,578 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "Target: zC406690", "quote": "Previously unpublished archival ALMA observations are also available (2013.1.00668.S, 2017.1.01020.S)."},
+{"loc": "Introduction", "quote": "archival low-resolution ALMA interferometry"}
+],
+"fields": ["high_z_galaxies"],
+"question": {
+"value": "What is the nature of the clumpy ring galaxy zC406690 at z=2.196: a massive dynamical ring vs a flux-emitting ring vs a contracted halo, and can dust hide the central bulge implied by the kinematics, using JWST, SINFONI and archival ALMA gas/dust constraints",
+"evidence": [
+{"loc": "abstract", "quote": "We combine new *JWST*/NIRCam and ALMA band 4 observations, together with previous VLT/SINFONI integral field spectroscopy and HST imaging to re-examine its nature."}
+]
+},
+"targets": [
+{
+"name": "zC406690",
+"details": [
+{"loc": "Target: zC406690", "quote": "zC406690 is a rotating, massive SFG at $z=2.196$ (RA 09:58:59.1, dec 02:05:04.2)"},
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "with $D_L = 17.64\\, \\mathrm{Gpc}$"}
+],
+"coordinates": "RA 09:58:59.1, dec 02:05:04.2",
+"redshift_or_distance": "z = 2.196; D_L = 17.64 Gpc",
+"distance_source": "z listed in Table 1 with refs Mancini2011 and ForsterSchreiber2018; D_L under flat LCDM (Omega_m=0.3, H0=70)"
+},
+{
+"name": "Western companion (compact red source)",
+"details": [
+{"loc": "Western Companion", "quote": "about $1.6^{\\prime \\prime}$ west from its center"},
+{"loc": "Western Companion", "quote": "we estimate its photometric redshift $z_\\mathrm{phot} = 2.14^{+0.32}_{-0.42}$"}
+],
+"coordinates": "about 1.6 arcsec west of the zC406690 center",
+"redshift_or_distance": "z_phot = 2.14 +0.32/-0.42",
+"distance_source": "SED fitting with Bagpipes (this paper)"
+}
+],
+"alma_project_codes": [
+{"code": "2013.1.00668.S", "evidence": [
+{"loc": "Target: zC406690", "quote": "The dust and cold gas of zC406690 were previously observed with ALMA in band 4 and band 6 (programs 2013.1.00668.S, 2017.1.01020.S), but remained unpublished so far."},
+{"loc": "acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00668.S, ADS/JAO.ALMA#2017.1.01020.S."}
+]},
+{"code": "2017.1.01020.S", "evidence": [
+{"loc": "Target: zC406690", "quote": "The dust and cold gas of zC406690 were previously observed with ALMA in band 4 and band 6 (programs 2013.1.00668.S, 2017.1.01020.S), but remained unpublished so far."},
+{"loc": "acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00668.S, ADS/JAO.ALMA#2017.1.01020.S."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 4 and Band 6 (which project is which band is not stated)", "evidence": [
+{"loc": "Target: zC406690", "quote": "were previously observed with ALMA in band 4 and band 6 (programs 2013.1.00668.S, 2017.1.01020.S)"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "CO(4-3) at ~142 GHz observed; continuum at 142 GHz (rest 453 GHz) and 236 GHz (rest 754 GHz); datasets regridded to a common spectral axis with 25 km/s channels", "evidence": [
+{"loc": "Target: zC406690", "quote": "marginally-resolved detection of the CO(4-3) line emission"},
+{"loc": "Target: zC406690", "quote": "dust continuum in both 142GHz (rest 453GHz, $\\rm{S/N} = 4.5$) and 236GHz (rest 754GHz, $\\rm{S/N} = 2.5$)"},
+{"loc": "Target: zC406690", "quote": "to convert the two datasets onto the same spectral axis with a channel width of 25 km/s"}
+]},
+{"field": "angular_resolution", "value": "PSF FWHM 1.5 arcsec in Band 4 and 0.74 arcsec in Band 6", "evidence": [
+{"loc": "Target: zC406690", "quote": "PSF FWHM $1.5^{\\prime \\prime}$ in band 4, and $0.74^{\\prime \\prime}$ in band 6"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "archival, previously unpublished", "evidence": [
+{"loc": "Target: zC406690", "quote": "Previously unpublished archival ALMA observations are also available (2013.1.00668.S, 2017.1.01020.S)."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=4-3", "rest_frequency": "not stated (observed at ~142 GHz)", "evidence": [
+{"loc": "abstract", "quote": "The low-resolution CO(4-3) line and 142GHz continuum emission imply"}
+]}
+],
+"other_facilities": [
+{"name": "JWST/NIRCam", "provided": {"value": "imaging in F115W, F150W, F277W, F444W showing the ring and dark centre; program #1727", "evidence": [
+{"loc": "acknowledgments", "quote": "The *JWST* data used in this paper are associated with program #1727 and can be found in MAST"},
+{"loc": "SED fitting of the western companion", "quote": "(HST/WFC3: F438W, F814W, F110W, F160W; JWST/NIRCam: F115W, F150W, F277W, F444W)"}
+]}},
+{"name": "VLT/SINFONI (AO)", "provided": {"value": "H-alpha integral-field spectroscopy and rotation curve (reduced data from earlier paper), 10 hours during 2010-2011", "evidence": [
+{"loc": "Target: zC406690", "quote": "10 hours of data was collected for this source during 2010-2011 with the VLT/SINFONI including adaptive-optics"}
+]}},
+{"name": "HST", "provided": {"value": "optical imaging (and WFC3 bands) used for morphology, SED of companion, and inclination from earlier work", "evidence": [
+{"loc": "Fitting procedure", "quote": "The inclination is based on previous 2D optical *HST* imaging (cite: Lang2014; Tacchella2015)"}
+]}},
+{"name": "GAIA DR3", "provided": {"value": "astrometric frame for registering CO position with NIRCam", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "as both are registered to GAIA DR3 astrometry"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Reduced SINFONI-AO H-alpha data cubes, kinematic maps and kinematic PA used to build the rotation curve", "evidence": [
+{"loc": "Target: zC406690", "quote": "on the reduced data and kinematic PA derived in (cite: ForsterSchreiber2018), which are described in detail in their paper"}
+]}, "citation": "(cite: ForsterSchreiber2018)"},
+{"what": {"value": "Stellar mass, SFR, metallicity and [NII]/H-alpha of zC406690 (Table 1)", "evidence": [
+{"loc": "Table 1", "quote": "Selected properties of zC406690, and their references."},
+{"loc": "Target: zC406690", "quote": "based on the $\\rm {[NII] / H\\alpha} = 0.12$ line ratio. (cite: Mancini2011; ForsterSchreiber2018)"}
+]}, "citation": "(cite: Mancini2011; ForsterSchreiber2018)"},
+{"what": {"value": "Molecular gas mass in the brightest clumps, M_mol,clumps ~ 3.4e10 Msun, from SFR-Mstar scaling relations", "evidence": [
+{"loc": "Target: zC406690", "quote": "collectively contain a molecular gas mass of $M_{\\mathrm{mol,clumps}} \\sim 3.4 \\times 10^{10}\\, \\mathrm{M_\\odot}$"}
+]}, "citation": "Table 1 refs 4, 5: (cite: genzel_sins_2011), (cite: newman_shocked_2012)"},
+{"what": {"value": "Stellar mass-to-light ratios M/L_g=1.1, M/L_i=0.8, M/L_J=0.45 from (g-i) colour relations", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "We take $M/L$ ratios of $M/L_{\\rm g} = 1.1$, $M/L_{i} = 0.8$, and $M/L_{\\rm J} = 0.45$"},
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "(cite: Zibetti2009; LopezSanjuan2019)"}
+]}, "citation": "(cite: Zibetti2009; LopezSanjuan2019)"},
+{"what": {"value": "Extinction ratios A_g/A_V=1.24, A_i/A_V=0.62, A_J/A_V=0.27", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "for which $A_{\\rm g}/A_{\\rm V}=1.24$, $A_{i}/A_{\\rm V}=0.62$ and $A_{\\rm J}/A_{\\rm V}=0.27$ (cite: Draine2003)"}
+]}, "citation": "(cite: Draine2003)"},
+{"what": {"value": "Halo mass prior from stellar-halo mass relations", "evidence": [
+{"loc": "Fitting procedure", "quote": "is initially set to match cosmological stellar-halo mass relations (cite: Moster2018)"}
+]}, "citation": "(cite: Moster2018)"},
+{"what": {"value": "NFW concentration fixed at 4 from a redshift-dependent scaling relation", "evidence": [
+{"loc": "Fitting procedure", "quote": "based on redshift dependent scaling relation (cite: dutton_cold_2014)"}
+]}, "citation": "(cite: dutton_cold_2014)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Mock rotation curve from best-fit Model A degraded to the ALMA resolution, compared with the CO rotation curve", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "We create a mock model using our best-fit values for the Dynamical ring model (A), with the degraded resolution of the ALMA observation."}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "standard scriptForPI scripts", "evidence": [
+{"loc": "Target: zC406690", "quote": "We reduced the data with the standard `scriptForPI` scripts in the corresponding CASA versions 4.2.2 (for program 2013.1.00668.S) and 5.1.1 (for program 2017.1.01020.S)."}
+]},
+{"field": "casa_version", "value": "CASA 4.2.2 (2013.1.00668.S) and 5.1.1 (2017.1.01020.S) for calibration; CASA 5.7.2 for mstransform", "evidence": [
+{"loc": "Target: zC406690", "quote": "in the corresponding CASA versions 4.2.2 (for program 2013.1.00668.S) and 5.1.1 (for program 2017.1.01020.S)"},
+{"loc": "Target: zC406690", "quote": "we run the `mstransform` task in CASA 5.7.2"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "mstransform (common 25 km/s axis), statwt, uvcontsub, then tclean for the cube", "evidence": [
+{"loc": "Target: zC406690", "quote": "Next, we recompute the visibility weights with `statwt` and subtract the continuum with `uvcontsub` using line-free channels."},
+{"loc": "Target: zC406690", "quote": "Finally, we run the `tclean` task to produce the clean data cube at the phase center"}
+]},
+{"field": "masking", "value": "no complex clean mask; clean threshold 2-sigma, with sigma the RMS from a previous clean run", "evidence": [
+{"loc": "Target: zC406690", "quote": "The clean threshold is set to 2-sigma, where sigma is the RMS noise measured from a previous clean run."},
+{"loc": "Target: zC406690", "quote": "we do not use a complex clean mask or multiscale clean"}
+]},
+{"field": "multiscale_scales", "value": "multiscale clean not used", "evidence": [
+{"loc": "Target: zC406690", "quote": "we do not use a complex clean mask or multiscale clean"}
+]},
+{"field": "continuum_subtraction", "value": "uvcontsub using line-free channels (channels not given)", "evidence": [
+{"loc": "Target: zC406690", "quote": "subtract the continuum with `uvcontsub` using line-free channels"}
+]},
+{"field": "final_beam", "value": "PSF FWHM 1.5 arcsec (Band 4), 0.74 arcsec (Band 6)", "evidence": [
+{"loc": "Target: zC406690", "quote": "PSF FWHM $1.5^{\\prime \\prime}$ in band 4, and $0.74^{\\prime \\prime}$ in band 6"}
+]}
+],
+"inherited": [
+{"what": {"value": "Reduced SINFONI H-alpha cubes, kinematic centre, kinematic PA and kinematic maps", "evidence": [
+{"loc": "Target: zC406690", "quote": "on the reduced data and kinematic PA derived in (cite: ForsterSchreiber2018), which are described in detail in their paper"}
+]}, "from_reference": "(cite: ForsterSchreiber2018)"},
+{"what": {"value": "2D forward-modelling tool for rotation-curve fitting", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "(ii) a 2D forward modeling tool, taking the galactic mid-plane to reconstruct the observed velocity field taking into account instrumental and beam smearing effects (cite: nestor_shachar_rc100_2023)"}
+]}, "from_reference": "(cite: nestor_shachar_rc100_2023)"},
+{"what": {"value": "dysmalpy forward-modelling code", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "We adopt both (i) the forward-modeling code `dysmalpy`[^1]"}
+]}, "from_reference": "(cite: Davies2004_dysmalpy; Davies2004b_dysmalpy; Cresci2009_dysmalpy; Davies2011; Wuyts2016; Lang2017; Price2021_rc41; Lee2025)"},
+{"what": {"value": "CO(4-3) flux to molecular gas mass conversion", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "We convert it to mass following (cite: Tacconi2018):"}
+]}, "from_reference": "(cite: Tacconi2018)"},
+{"what": {"value": "Dust mass equation from the continuum flux density", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "from which we can derive the total dust mass $M_{\\mathrm{dust}}$ (cite: Magnelli2020)"}
+]}, "from_reference": "(cite: Magnelli2020)"},
+{"what": {"value": "Pressure-support (asymmetric drift) correction to the rotation velocity", "evidence": [
+{"loc": "Mass modelling", "quote": "Assuming hydrostatic equilibrium, the corrected rotational velocity is given by (cite: Burkert2010)"}
+]}, "from_reference": "(cite: Burkert2010)"}
+],
+"unstated_but_needed": [
+"Which ALMA project supplies the Band 4 CO(4-3) and 142 GHz continuum data and which the 236 GHz data",
+"Array configurations, baselines, observing dates, time on source and calibrators (flux, bandpass, phase)",
+"Flux-scale uncertainty and any self-calibration",
+"Visibility weighting (robust/uv taper), cell size, image size, deconvolver and clean mask, and the RMS used for the 2-sigma threshold",
+"Line-free channels used in uvcontsub and the velocity range/channels used for the CO moment/spectrum",
+"Spectral windows and bandwidth used to form the 142 GHz and 236 GHz continuum images",
+"How the 44.0 uJy continuum flux density and the 167 mJy km/s CO flux were measured (aperture centre, continuum aperture, primary-beam correction)",
+"The rest frequency and redshift used to convert velocities for CO(4-3)",
+"Likelihood function, convergence settings and error model for the MCMC rotation-curve fit",
+"The extracted H-alpha rotation-curve data points (taken from an earlier paper) and the code for the in-house 2D forward-modelling tool",
+"Photometry values and apertures other than the companion's used in the NIRCam analysis"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Reduce ALMA data and make CO(4-3) cube and continuum maps",
+"method": {"value": "Standard scriptForPI calibration in two CASA versions, mstransform to a common 25 km/s axis, statwt, uvcontsub, then tclean", "evidence": [
+{"loc": "Target: zC406690", "quote": "We reduced the data with the standard `scriptForPI` scripts in the corresponding CASA versions 4.2.2 (for program 2013.1.00668.S) and 5.1.1 (for program 2017.1.01020.S)."},
+{"loc": "Target: zC406690", "quote": "Next, we recompute the visibility weights with `statwt` and subtract the continuum with `uvcontsub` using line-free channels."}
+]},
+"software": ["CASA", "scriptForPI", "mstransform", "statwt", "uvcontsub", "tclean"],
+"key_parameters": [
+{"value": "channel width 25 km/s", "evidence": [{"loc": "Target: zC406690", "quote": "to convert the two datasets onto the same spectral axis with a channel width of 25 km/s"}]},
+{"value": "clean threshold 2-sigma, sigma from a previous clean run", "evidence": [{"loc": "Target: zC406690", "quote": "The clean threshold is set to 2-sigma, where sigma is the RMS noise measured from a previous clean run."}]},
+{"value": "phase centre J2000 149.746250 deg, 2.084444 deg", "evidence": [{"loc": "Target: zC406690", "quote": "to produce the clean data cube at the phase center ’J2000 149.746250$^\\circ$ 2.084444$^\\circ$"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Obtain the H-alpha major-axis rotation curve",
+"method": {"value": "Reuse earlier SINFONI-AO reduction; kinematic maps from pixel-by-pixel single-Gaussian fits; rotation curve along the kinematic major axis", "evidence": [
+{"loc": "Target: zC406690", "quote": "The kinematic maps were obtained by a pixel-by-pixel single-Gaussian fitting (with H$\\alpha$ $\\rm S/N>5$ per pixel)"},
+{"loc": "Target: zC406690", "quote": "allow for the construction of an extended rotation curve along the kinematic major-axis, up to twice the effective radius"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "SINFONI-AO, 50 mas/pixel scale, effective spatial resolution 0.18 arcsec", "evidence": [{"loc": "Target: zC406690", "quote": "at a scale of $\\rm 50\\, mas/pixel$ and an effective spatial resolution of 0.18$^{\\prime \\prime}$ for the reduced data cubes"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Fit mass models (dynamical ring, flux ring, contracted halo) to the H-alpha rotation curve",
+"method": {"value": "Parametric forward modelling of the major-axis rotation curve with DM halo, bulge, thick disk and/or razor-thin Gaussian ring; three models A (dynamical ring), B (flux ring), C (contracted halo); fitted with a 2D tool and with dysmalpy", "evidence": [
+{"loc": "Mass modelling", "quote": "We use a parametric forward-modelling approach, with a mass model consisting of a dark matter halo, a central stellar bulge, a thick disk and a razor-thin Gaussian ring"},
+{"loc": "Rotation Curve Fitting", "quote": "we consider three different mass models representing three different scenarios"}
+]},
+"software": ["emcee", "dysmalpy"],
+"key_parameters": [
+{"value": "400 walkers, 300 iterations each after 100 burn-in iterations", "evidence": [{"loc": "Rotation Curve Fitting", "quote": "The MCMC fitting procedure is run using 400 walkers with 300 iterations each after a burn-in phase of 100 iterations."}]},
+{"value": "NFW concentration fixed to 4; inclination fixed to 25 deg", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "The concentration of the NFW profile is fixed to $c_{\\mathrm{NFW}}=4$"},
+{"loc": "Table 3", "quote": "$i$ | $25^{o}$ | fixed"}
+]},
+{"value": "baryon mass prior: initial log M = 11.2, Gaussian with 0.5 dex standard deviation", "evidence": [{"loc": "Rotation Curve Fitting", "quote": "This gives $\\log {\\left( M_{\\mathrm{baryon, init}}/M_\\odot \\right)} = 11.2$ which is then free to vary with a Gaussian prior with a 0.5dex standard deviation."}]},
+{"value": "ring R_peak = 4.6 +/- 0.15 kpc and FWHM_ring = 5.0 +/- 0.3 kpc from the H-alpha flux used as initial values with Gaussian priors", "evidence": [{"loc": "Rotation Curve Fitting", "quote": "We find $R_{\\rm peak} = 4.6 \\pm 0.15\\, \\rm kpc$ and $\\rm FWHM_{\\rm ring} = 5.0 \\pm 0.3\\, \\rm kpc$"}]},
+{"value": "free parameters: M_baryon, B/T, R_p, FWHM_ring, M_vir (or f_DM) and sigma_0", "evidence": [{"loc": "Rotation Curve Fitting", "quote": "In total, our free parameters are $M_{\\rm baryon}, B/T, R_{\\rm p}, FWHM_{\\rm ring}, M_{\\rm vir}$ (or $f_{\\rm DM}(R_{\\rm eff})$) and $\\sigma_0$."}]}
+],
+"assumptions": [
+{"value": "constant velocity dispersion sigma_0 with pressure-support correction", "evidence": [{"loc": "Mass modelling", "quote": "taking a constant velocity dispersion $\\sigma_0$ throughout the midplane"}]},
+{"value": "razor-thin ring adequate for a toroidal distribution", "evidence": [{"loc": "Ring Mass Distribution", "quote": "an infinitely thin ring is an adequate approximation for a toroidal mass distribution, particularly along the mid-plane"}]},
+{"value": "disk thickness fixed at q0 = 0.25", "evidence": [{"loc": "Rotation Curve Fitting", "quote": "the intrinsic thickness of the disk is fixed to $q_0 = 0.25$"}]},
+{"value": "bulge de Vaucouleurs profile with R_eff,bulge = 1 kpc", "evidence": [{"loc": "Mass modelling", "quote": "an effective radius of $R_{\\mathrm{eff,bulge}} =1\\, \\mathrm{kpc}$ to represent a compact distribution"}]}
+],
+"fitting": {"value": "MCMC with emcee; best fit = posterior median, 1-sigma from 16th and 84th percentiles; likelihood not stated", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "using a Markov Chain Monte Carlo Bayesian analysis exploring the posterior distribution of our model parameters simultaneously, using the `PYTHON` package `emcee`"},
+{"loc": "Rotation Curve Fitting", "quote": "The bestfit values are estimated as the median of the posterior distribution"}
+]},
+"validation": {"value": "Walker trace plots checked (>50 autocorrelation times); chi2_red and AIC model comparison; dysmalpy and 2D fits agree", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "Reviewing the walker trace plots verifies that our parameter space is well explored with $>50$ times the autocorrelation time."},
+{"loc": "Rotation Curve fitting with dysmalpy", "quote": "We find that all best-fitting values agree well within their uncertainties for each of the three models respectively, when comparing both fitting procedures."}
+]}
+},
+{
+"order": 4,
+"goal": "Derive CO(4-3) kinematics and compare with the H-alpha model",
+"method": {"value": "Per-spaxel single Gaussian velocity map; rotation curve from circular apertures of 0.5 x PSF along the major axis with Gaussian centroid; compared with a mock Model A rotation curve at ALMA resolution", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "By performing individual Gaussian fitting for each spaxel, we construct a CO(4-3) velocity map"},
+{"loc": "CO(4-3) emission line kinematics", "quote": "We position circular apertures of $0.5\\times$PSF along the major-axis that maximizes S/N and fit a Gaussian profile to determine the centroid velocity"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "CO position calibrated with JWST/NIRCam (both on GAIA DR3), SINFONI moment-0 aligned to clump positions", "evidence": [{"loc": "CO(4-3) emission line kinematics", "quote": "we calibrate the CO position first using *JWST*/NIRCam, as both are registered to GAIA DR3 astrometry"}]}
+],
+"assumptions": [],
+"fitting": {"value": "single-Gaussian fits per spaxel and per aperture; the CO rotation curve is not fitted directly", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "The resulting rotation curve obviously cannot be fitted for directly, as our model has more degrees of freedom than data points"}
+]},
+"validation": {"value": "Mock Model A rotation curve at ALMA resolution compared with the CO points", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "We create a mock model using our best-fit values for the Dynamical ring model (A), with the degraded resolution of the ALMA observation."}
+]}
+},
+{
+"order": 5,
+"goal": "Measure CO(4-3) flux and total molecular gas mass",
+"method": {"value": "Circular aperture of radius 1 arcsec over the galaxy centre, single-Gaussian fit to the line; converted with the Tacconi2018 prescription", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "by placing a circular aperture with radius $1^{\\prime \\prime}$ over the center of the galaxy, and fitting a single-Gaussian for the line intensity"},
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "We convert it to mass following (cite: Tacconi2018):"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "D_L = 17.64 Gpc, R_41 = 2.4, alpha_CO = 3.6", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "with $D_L = 17.64\\, \\mathrm{Gpc}$, and standard conversion factor for the CO($4 \\rightarrow 3$) emission ($R_{41} = 2.4$, $\\alpha_{\\mathrm{CO}} = 3.6$)"}]}
+],
+"assumptions": [
+{"value": "metallicity function chi(Z) from Genzel2012 with 12+log(O/H) = 8.38", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "from (cite: Genzel2012), for a metallicity of"}]}
+],
+"fitting": {"value": "single Gaussian to the aperture spectrum", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "fitting a single-Gaussian for the line intensity"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Derive the total dust mass from the 142 GHz continuum",
+"method": {"value": "Optically thin modified-blackbody conversion of the 142 GHz flux density following Magnelli2020", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "from which we can derive the total dust mass $M_{\\mathrm{dust}}$ (cite: Magnelli2020)"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "rest-frame T = 25 K, beta = 1.8, kappa = 0.0431 m^2/kg at 352.6 GHz", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "(taking a rest-temperature of $25\\, \\text{K}$)"},
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "$\\beta = 1.8$ is the dust emissivity, $\\kappa_{\\nu_0}=0.0431\\, \\mathrm{m^2\\, kg^{-1}}$"}
+]}
+],
+"assumptions": [
+{"value": "CMB corrections negligible; optically thin emission", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "We assume corrections due to CMB photons typically negligible at this redshift and an optically thin emission."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Dust-to-gas ratio and metallicity implied by it compared with the ionized-gas metallicity", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "in good agreement with the estimate based on the ionized gas"}
+]}
+},
+{
+"order": 7,
+"goal": "Test whether dust and gas can hide the central bulge",
+"method": {"value": "Compute A_V from the H2 column in a 2 kpc aperture scaled by the dust-to-gas ratio; attenuate bulge light in g, i and J bands for screen and mixed geometries; find the gas fraction needed to drop below 3 sigma", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "We consider two cases for the absorbing dust: (i) assuming the dust is distributed between the observer and the bulge (“screen\")"},
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "The flux can drop bellow a $3\\sigma$ (dotted red line) detection in all filters only when at least $\\gtrsim 10$% of the total molecular gas"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "bulge aperture 2 kpc", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "the Hydrogen column density within an aperture of $2$ kpc (matching the assumed bulge size)"}]},
+{"value": "M/L_g = 1.1, M/L_i = 0.8, M/L_J = 0.45", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "We take $M/L$ ratios of $M/L_{\\rm g} = 1.1$, $M/L_{i} = 0.8$, and $M/L_{\\rm J} = 0.45$"}]}
+],
+"assumptions": [
+{"value": "N_H approximately N_H2 at z=2", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "it can be assumed that $\\mathrm{N_H} \\approx \\mathrm{N_{H_2}}$"}]},
+{"value": "tau = A_lambda / 1.038", "evidence": [{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "with the optical depth being $\\tau_\\lambda = A_\\lambda / 1.038$"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with the upper limit on available cold gas set from the clump SFRs", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "This is consistent with the upper limit we have set earlier for the available cold gas."}
+]}
+},
+{
+"order": 8,
+"goal": "Estimate photometric redshift and mass of the western companion",
+"method": {"value": "SED fit with Bagpipes to HST and JWST photometry in a 0.5 arcsec radius aperture; Kroupa IMF, Calzetti attenuation, BC03 models, solar metallicity, exponentially declining SFH", "evidence": [
+{"loc": "SED fitting of the western companion", "quote": "We fit the SED using the code BAGPIPES (cite: Carnall2018), assuming a (cite: Kroupa2001) initial mass function"},
+{"loc": "SED fitting of the western companion", "quote": "We fix the metallicity to a fiducial Solar value and adopt an exponentially declining star formation history."}
+]},
+"software": ["Bagpipes"],
+"key_parameters": [
+{"value": "A_V bounded 0-5, z_phot bounded 0-4", "evidence": [{"loc": "SED fitting of the western companion", "quote": "The visual extinction is bound between $0<A_{\\mathrm{V}}<5$ and the redshift $0<z_\\mathrm{phot}<4$."}]}
+],
+"assumptions": [],
+"fitting": {"value": "Bagpipes SED fit; median and 16th/84th percentiles reported", "evidence": [{"loc": "SED fitting of the western companion", "quote": "The median $z_\\mathrm{phot} = 2.14^{+0.32}_{-0.42}$ (16$^{th}$ and 84$^{th}$ percentiles)"}]},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "4.2.2, 5.1.1 (calibration); 5.7.2 (mstransform)", "used_for": {"value": "reduction, regridding, weighting, continuum subtraction and imaging of ALMA data", "evidence": [
+{"loc": "Target: zC406690", "quote": "Then, we run the `mstransform` task in CASA 5.7.2 to convert the two datasets onto the same spectral axis"}
+]}},
+{"name": "scriptForPI", "version": "not stated", "used_for": {"value": "standard ALMA calibration scripts", "evidence": [
+{"loc": "Target: zC406690", "quote": "We reduced the data with the standard `scriptForPI` scripts"}
+]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "producing the clean CO(4-3) data cube", "evidence": [
+{"loc": "Target: zC406690", "quote": "Finally, we run the `tclean` task to produce the clean data cube at the phase center"}
+]}},
+{"name": "statwt", "version": "not stated", "used_for": {"value": "recomputing visibility weights", "evidence": [
+{"loc": "Target: zC406690", "quote": "Next, we recompute the visibility weights with `statwt`"}
+]}},
+{"name": "uvcontsub", "version": "not stated", "used_for": {"value": "continuum subtraction using line-free channels", "evidence": [
+{"loc": "Target: zC406690", "quote": "subtract the continuum with `uvcontsub` using line-free channels"}
+]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC fitting of the rotation curve", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "using the `PYTHON` package `emcee`"}
+]}},
+{"name": "dysmalpy", "version": "not stated", "used_for": {"value": "forward modelling and fitting of the rotation curve (3D reconstruction with LSF and beam smearing)", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "We adopt both (i) the forward-modeling code `dysmalpy`[^1]"}
+]}},
+{"name": "Bagpipes", "version": "not stated", "used_for": {"value": "SED fitting of the western companion", "evidence": [
+{"loc": "SED fitting of the western companion", "quote": "We fit the SED using the code BAGPIPES (cite: Carnall2018)"}
+]}},
+{"name": "astropy", "version": "not stated", "used_for": {"value": "listed as used in the work; specific purpose not stated", "evidence": [
+{"loc": "Summary", "quote": "We have made use of `astropy` (cite: AstropyCollaboration2013), `scipy` (cite: scipy2020), `numpy` (cite: numpy2011)"}
+]}},
+{"name": "scipy", "version": "not stated", "used_for": {"value": "listed as used in the work; specific purpose not stated", "evidence": [
+{"loc": "Summary", "quote": "We have made use of `astropy` (cite: AstropyCollaboration2013), `scipy` (cite: scipy2020), `numpy` (cite: numpy2011)"}
+]}},
+{"name": "numpy", "version": "not stated", "used_for": {"value": "listed as used in the work; specific purpose not stated", "evidence": [
+{"loc": "Summary", "quote": "We have made use of `astropy` (cite: AstropyCollaboration2013), `scipy` (cite: scipy2020), `numpy` (cite: numpy2011)"}
+]}},
+{"name": "matplotlib", "version": "not stated", "used_for": {"value": "listed as used in the work; specific purpose not stated", "evidence": [
+{"loc": "Summary", "quote": "`matplotlib` (cite: matplotlib2007), `emcee` (cite: Foreman-Mackey2013), `pandas` (cite: pandas2022), `Bagpipes` (cite: Carnall2018_bagpipes)"}
+]}},
+{"name": "pandas", "version": "not stated", "used_for": {"value": "listed as used in the work; specific purpose not stated", "evidence": [
+{"loc": "Summary", "quote": "`matplotlib` (cite: matplotlib2007), `emcee` (cite: Foreman-Mackey2013), `pandas` (cite: pandas2022), `Bagpipes` (cite: Carnall2018_bagpipes)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "CO(4-3) integrated S/N", "value": "7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [
+{"loc": "Target: zC406690", "quote": "marginally-resolved detection of the CO(4-3) line emission (integrated $\\rm{S/N} = 7$)"}
+]},
+{"quantity": "142 GHz continuum S/N", "value": "4.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [
+{"loc": "Target: zC406690", "quote": "dust continuum in both 142GHz (rest 453GHz, $\\rm{S/N} = 4.5$)"}
+]},
+{"quantity": "236 GHz continuum S/N", "value": "2.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [
+{"loc": "Target: zC406690", "quote": "236GHz (rest 754GHz, $\\rm{S/N} = 2.5$)"}
+]},
+{"quantity": "Integrated CO(4-3) line flux (1 arcsec radius aperture)", "value": "167", "uncertainty": "23", "units": "mJy km/s", "from_step": 5, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "$F_\\nu = 167 \\pm 23\\, \\mathrm{mJy\\, km\\, s^{-1}}$"}
+]},
+{"quantity": "CO(4-3) line width", "value": "240", "uncertainty": "39", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "a linewidth of $\\Delta V = 240 \\pm 39\\, \\mathrm{km s^{-1}}$"}
+]},
+{"quantity": "Total molecular gas mass", "value": "7.1e10", "uncertainty": "1.0e10", "units": "Msun", "from_step": 5, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "= 7.1 \\pm 1.0 \\times 10^{10}\\, \\mathrm{M_{\\odot}}"}
+]},
+{"quantity": "Cold gas fraction mu_gas", "value": "1.65", "uncertainty": "0.34", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "this yields a cold gas fraction of $\\mu_{\\mathrm{gas}} = 1.65 \\pm 0.34$"}
+]},
+{"quantity": "142 GHz continuum flux density", "value": "44.0", "uncertainty": "9.5", "units": "uJy", "from_step": 6, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "the observed flux density is $S_{\\mathrm{\\nu}} = 44.0 \\pm 9.5 \\, \\mathrm{\\mu Jy}$"}
+]},
+{"quantity": "Total dust mass", "value": "2.97e8", "uncertainty": "0.66e8", "units": "Msun", "from_step": 6, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "= 2.97 \\pm 0.66  \\times 10^8\\, \\mathrm{M_\\odot}"}
+]},
+{"quantity": "Dust-to-gas ratio", "value": "0.0068", "uncertainty": "0.0017", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "this yields a dust-to-gas ratio (DGR) of $\\delta_{\\rm d} = M_{\\mathrm{dust}}/M_{\\mathrm{gas}} = 0.0068 \\pm 0.0017$"}
+]},
+{"quantity": "Metallicity inferred from the DGR, 12+log(O/H)", "value": "8.23", "uncertainty": "0.18", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "$12+\\log {\\mathrm{O/H}} = 8.23\\pm 0.18$"}
+]},
+{"quantity": "V-band attenuation as function of the molecular gas fraction covering the bulge", "value": "A_V = 315 f_mol,bulge", "uncertainty": "not stated", "units": "mag", "from_step": 7, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "A_{\\mathrm{V}} =315 f_{\\mathrm{mol,bulge}}"}
+]},
+{"quantity": "Minimum fraction of total molecular gas acting as a screen to hide the bulge at 3 sigma in all filters", "value": ">~10% (>~7.1e9 Msun)", "uncertainty": "not stated", "units": "fraction of M_mol,gas", "from_step": 7, "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "The flux can drop bellow a $3\\sigma$ (dotted red line) detection in all filters only when at least $\\gtrsim 10$% of the total molecular gas, i.e. $\\gtrsim 7.1\\times 10^{9}\\, M_{\\odot}$"}
+]},
+{"quantity": "Ring mass (Model A)", "value": "1.2-2.5e10", "uncertainty": "range stated", "units": "Msun", "from_step": 3, "evidence": [
+{"loc": "Results: Mass Decomposition", "quote": "We find the total mass in the ring to be $M_{\\mathrm{ring}} = 1.2-2.5 \\times 10^{10}\\, \\mathrm{M_\\odot}$"}
+]},
+{"quantity": "Ring peak radius R_p (Model A, 2D fit)", "value": "4.52", "uncertainty": "+0.33/-0.34", "units": "kpc", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$4.52^{+0.33}_{-0.34}$"}
+]},
+{"quantity": "Ring shape parameter h (Model A, 2D fit)", "value": "0.89", "uncertainty": "+0.08/-0.09", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$0.89^{+0.08}_{-0.09}$"}
+]},
+{"quantity": "log baryon mass (Model A, 2D fit)", "value": "10.99", "uncertainty": "+0.05/-0.06", "units": "log10 Msun", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$10.99^{+0.05}_{-0.06}$"}
+]},
+{"quantity": "Bulge-to-total ratio (Model A, 2D fit)", "value": "0.87", "uncertainty": "+0.09/-0.10", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$0.87^{+0.09}_{-0.10}$"}
+]},
+{"quantity": "DM fraction within R_eff (Model A, 2D fit)", "value": "0.07", "uncertainty": "+0.10/-0.04", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$0.07^{+0.10}_{-0.04}$"}
+]},
+{"quantity": "Velocity dispersion sigma_0 (Model A, 2D fit)", "value": "67", "uncertainty": "+4/-5", "units": "km/s", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$67^{+4}_{-5}$"}
+]},
+{"quantity": "Dynamical bulge mass", "value": "8e10", "uncertainty": "not stated", "units": "Msun", "from_step": 3, "evidence": [
+{"loc": "abstract", "quote": "$M_{\\mathrm{bulge}} = 8 \\times 10^{10}\\, \\mathrm{M_{\\odot}}$"}
+]},
+{"quantity": "Reduced chi-square, Models A / B / C (2D fits)", "value": "0.99 / 1.42 / 1.57", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table (RC fitting results)", "quote": "$\\chi^2_{red}$ | 0.99 | 1.15 | 1.42 | 1.54 | 1.57 | 1.71"}
+]},
+{"quantity": "Predicted ALMA Band 4 integration time for S/N=5 on central emission at 0.25 arcsec", "value": "10.5", "uncertainty": "not stated", "units": "hours", "from_step": 7, "evidence": [
+{"loc": "Discussion", "quote": "it could be observed at a S/N$=5$ in an integration time of 10.5 hours using *ALMA* band 4, at a resolution of $0.25^{\\prime \\prime}$."}
+]}
+],
+"findings_qualitative": [
+{"value": "CO(4-3) velocity map shows a clear rotation pattern with a PA very similar to that of H-alpha", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "we construct a CO(4-3) velocity map that reveals a clear rotation pattern with a very similar PA as the H$\\alpha$"}
+]},
+{"value": "CO(4-3) and the 142 GHz continuum peak between the dynamical centre and the western clumps; the ALMA resolution is too low to localise the emission", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "indicating that the CO(4-3) peaks between the center of the ring and the western clump."},
+{"loc": "Target: zC406690", "quote": "The spatial resolution of these observations is too low to localize the origin of the emission"}
+]},
+{"value": "No dust continuum or CO(4-3) detection of the western companion in the ALMA field", "evidence": [
+{"loc": "Discussion", "quote": "there is no detection of either dust continuum or CO(4-3) emission"}
+]}
+],
+"claims": [
+{
+"hypothesis": "The H-alpha kinematics are better explained by a massive dynamical Gaussian ring than by a flux-emitting ring over a smooth disk or a contracted dark-matter halo",
+"experiment": "Fit the major-axis H-alpha rotation curve with models A (dynamical ring), B (flux ring) and C (contracted halo) using MCMC, in a 2D tool and in dysmalpy, and compare chi2_red and AIC",
+"result": "Model A has chi2_red 0.99 (2D) vs 1.42 (B) and 1.57 (C); AIC indicates the others have 0.1-0.5% probability of fitting better; M_ring = 1.2-2.5e10 Msun, R_peak ~4.5 kpc, h ~0.9",
+"finding": "A massive dynamical ring plus a dark central bulge component (M_bulge ~8e10 Msun) describes the data best",
+"support": "supported",
+"evidence": [
+{"loc": "Results: Mass Decomposition", "quote": "The kinematics of zC406690 is best described using a dynamical massive ring (A)"},
+{"loc": "Results: Mass Decomposition", "quote": "The AIC values indicate the other models have a probability of only $0.1\\% - 0.5 \\%$ to better describe the data over model (A)."},
+{"loc": "Table (RC fitting results)", "quote": "$\\chi^2_{red}$ | 0.99 | 1.15 | 1.42 | 1.54 | 1.57 | 1.71"}
+]
+},
+{
+"hypothesis": "The molecular gas kinematics follow the same rotation as the ionized gas and are consistent with the ring mass model",
+"experiment": "Single-Gaussian velocity map and aperture centroids from the CO(4-3) cube; compare with a mock rotation curve from Model A at ALMA resolution",
+"result": "CO shows ordered rotation with a PA similar to H-alpha; the beam-degraded Model A curve matches the few CO points",
+"finding": "CO emission originates at least partly from the ring/clumps, consistent with the mass decomposition",
+"support": "supported",
+"evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "The resulting RC (red line) is an excellent fit, matching the molecular gas kinematics very well."},
+{"loc": "CO(4-3) emission line kinematics", "quote": "The resulting rotation curve obviously cannot be fitted for directly, as our model has more degrees of freedom than data points"}
+]
+},
+{
+"hypothesis": "The archival ALMA data constrain the total molecular gas and dust content of the galaxy",
+"experiment": "Measure the CO(4-3) flux in a 1 arcsec aperture and the 142 GHz continuum flux density, then convert to gas and dust masses",
+"result": "M_mol,gas = 7.1 +/- 1.0e10 Msun, M_dust = 2.97 +/- 0.66e8 Msun, DGR = 0.0068 +/- 0.0017, mu_gas = 1.65 +/- 0.34",
+"finding": "Gas fraction and dust-to-gas ratio are typical for a main-sequence galaxy at z~2",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "The low-resolution CO(4-3) line and 142GHz continuum emission imply a total molecular and dust gas masses of"},
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "this yields a dust-to-gas ratio (DGR) of $\\delta_{\\rm d} = M_{\\mathrm{dust}}/M_{\\mathrm{gas}} = 0.0068 \\pm 0.0017$"}
+]
+},
+{
+"hypothesis": "A dusty screen could hide the massive central bulge implied by the kinematics",
+"experiment": "Compute bulge attenuation in g, i and J bands from the ALMA-derived dust-to-gas ratio and gas column for screen and mixed geometries and compare with the JWST non-detection",
+"result": "The bulge flux falls below 3 sigma in all filters only if >~10% of the total molecular gas (>~7.1e9 Msun) acts as a screen",
+"finding": "The current observations cannot rule out an extincted bulge; this needs higher-resolution, deeper ALMA data to confirm",
+"support": "partially",
+"evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "This is consistent with the upper limit we have set earlier for the available cold gas."},
+{"loc": "Discussion", "quote": "and show that the current observation cannot rule out such scenario"}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "ALMA gas and dust data used to test whether enough dust exists to extinguish a central bulge", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "Using the observations taken with *ALMA* we can test if there is enough dust to allow for such high extinction of the bulge."}
+]},
+{"field": "why_this_method", "value": "Major-axis rotation curve used because it is less sensitive to non-circular motions", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "We use the major-axis RC as it is less sensitive to deviations from circular motions which are more noticeable along the minor-axis"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "A flux-emitting ring over a faint exponential disk (Model B) and a cuspy/contracted dark matter halo (Model C) were considered and disfavoured against the massive ring model", "evidence": [
+{"loc": "abstract", "quote": "We also consider a purely flux-emitting ring superposed over a faint exponential disk"},
+{"loc": "abstract", "quote": "both disfavored against a massive ring model"}
+]},
+{"value": "A companion piercing the centre (interaction-induced ring) is judged unlikely", "evidence": [
+{"loc": "Discussion", "quote": "With this data at hand, we conclude it is unlikely to be a satellite of zC406690."}
+]}
+],
+"limitations_admitted": [
+{"value": "ALMA resolution too low to locate the dust and CO emission", "evidence": [
+{"loc": "Target: zC406690", "quote": "A specific determination as to the location of the dust is unclear given the low resolution"}
+]},
+{"value": "CO rotation curve has too few points to be fitted directly", "evidence": [
+{"loc": "CO(4-3) emission line kinematics", "quote": "as our model has more degrees of freedom than data points"}
+]},
+{"value": "Current ALMA data are too shallow to detect central emission", "evidence": [
+{"loc": "Hiding the Bulge - Dust and molecular gas", "quote": "The current ALMA observations are x5 shorter than what would be needed to achieve a detection."}
+]},
+{"value": "Low MCMC acceptance rate may indicate slow convergence", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "which might indicate slow convergence, but encourages parameter exploration"}
+]}
+],
+"referee_caveats_inferred": [
+"Continuum S/N of 4.5 at 142 GHz and 2.5 at 236 GHz is low, so dust mass and DGR rest on a marginal detection with an assumed 25 K temperature",
+"A single dust temperature and emissivity are assumed for the whole galaxy, and the gas mass uses an assumed R_41 and alpha_CO",
+"CO flux comes from a 1 arcsec aperture on a barely resolved source and the second ALMA dataset is not clearly used for the headline numbers",
+"The bulge-hiding argument relies on assumed M/L ratios and attenuation geometry and is untested at the centre",
+"Model comparison relies on a single rotation curve with few independent points"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Archival ALMA projects 2013.1.00668.S and 2017.1.01020.S; JWST program #1727 in MAST", "evidence": [
+{"loc": "Target: zC406690", "quote": "Previously unpublished archival ALMA observations are also available (2013.1.00668.S, 2017.1.01020.S)."},
+{"loc": "acknowledgments", "quote": "are associated with program #1727 and can be found in MAST"}
+]}
+],
+"code_released": [
+{"value": "dysmalpy is public (URL given); the in-house 2D forward-modelling tool is only cited", "evidence": [
+{"loc": "Rotation Curve Fitting", "quote": "[^1]: https://www.mpe.mpg.de/resources/IR/DYSMALPY"}
+]}
+],
+"missing_for_reproduction": [
+"Imaging parameters (weighting, cell, image size, mask), line-free channels and continuum spectral windows",
+"Flux measurement apertures for CO and the 142 GHz continuum",
+"The SINFONI rotation-curve data points and the 2D fitting code",
+"Likelihood and exact prior forms for all fitted parameters"
+],
+"estimated_data_volume_inferred": "Two small ALMA projects (Band 4 and Band 6 continuum/line); likely tens of GB of raw data; JWST/HST images are separate and the SINFONI data are not public in the paper",
+"score_inferred": 3,
+"score_reason": "ALMA data are archival and the CASA workflow is described, so CO flux, gas and dust masses can be approximately redone, but imaging choices and apertures are missing and the main dynamical results need SINFONI data and an unreleased 2D tool.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The ALMA gas and dust masses are numeric and the data public, but the headline kinematic results depend on non-public rotation-curve data and code, and key imaging parameters are not stated.",
+"methods_papers": [
+{"citation": "(cite: ForsterSchreiber2018)", "why": "source of the reduced SINFONI-AO data cubes, kinematic PA and kinematic maps"},
+{"citation": "(cite: nestor_shachar_rc100_2023)", "why": "2D forward-modelling tool for rotation-curve fitting"},
+{"citation": "(cite: Tacconi2018)", "why": "CO(4-3) flux to molecular gas mass conversion"},
+{"citation": "(cite: Magnelli2020)", "why": "dust mass from continuum flux density"},
+{"citation": "(cite: Noordermeer2008)", "why": "circular velocities of Sersic bulge and disk"}
+],
+"companion_papers": [
+{"citation": "(cite: genzel_sins_2011)", "why": "earlier study of the clumps and outflows in zC406690"},
+{"citation": "(cite: Genzel2020)", "why": "earlier rotation-curve modelling finding a baryon-dominated galaxy with a massive compact central component"},
+{"citation": "(cite: Price2021_rc41)", "why": "earlier rotation-curve fitting of the galaxy"}
+],
+"related_projects_or_surveys": ["SINS/zC-SINF", "COSMOS", "zCOSMOS", "JWST program #1727"]
+}

@@ -1,0 +1,189 @@
+{
+ "bibcode": "2023ApJ...945...40C",
+ "title": "Multifrequency Black Hole Imaging for the Next-generation Event Horizon Telescope",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acb7e4",
+ "arxiv_id": "2210.12226",
+ "fields": [
+  "agn_and_quasars",
+  "protoplanetary_disks",
+  "instrumentation"
+ ],
+ "question": "How to simultaneously reconstruct interferometric images at multiple frequencies along with their spectral index and curvature maps using Regularized Maximum Likelihood (RML) methods.",
+ "alma_project_codes": [
+  "2011.0.000015.SV"
+ ],
+ "data": {
+  "bands": "Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total flux densities and multi-frequency CLEAN images of HL Tau",
+    "evidence": [
+     {
+      "loc": "ALMA imaging of HL Tau",
+      "quote": "During the eht-imaging procedure, we rescale the total flux density of the intermediate images used for self-calibration to the total flux density values reported in Table 1 of (cite: ALMA_HlTau)."
+     },
+     {
+      "loc": "ALMA imaging of HL Tau",
+      "quote": "We compare our results to the original images presented in (cite: ALMA_HlTau), which were conducted with multi-frequency CLEAN imaging in CASA (cite: Rau_2011)."
+     }
+    ]
+   },
+   "citation": "(cite: ALMA_HlTau)"
+  },
+  {
+   "what": {
+    "value": "MOJAVE VLBA datasets and CLEAN images at 8.1, 8.4, and 12.1 GHz",
+    "evidence": [
+     {
+      "loc": "VLBA imaging of MOJAVE data sets",
+      "quote": "We then enforced the total flux density at each frequency through self-calibration of the visibility amplitudes using the total flux densities taken from the publicly available MOJAVE images reconstructed with CLEAN."
+     },
+     {
+      "loc": "VLBA imaging of MOJAVE data sets",
+      "quote": "In 12 and 13 we show results for both our simultaneous eht-imaging RML reconstructions and the original CLEAN reconstructions presented in (cite: Hovatta_2014), which were preformed independently at the three frequencies and then aligned."
+     }
+    ]
+   },
+   "citation": "(cite: Hovatta_2014; Lister2018)"
+  },
+  {
+   "what": {
+    "value": "Historical atmospheric data from the MERRA-2 database",
+    "evidence": [
+     {
+      "loc": "Generating synthetic ngEHT data",
+      "quote": "We use historical atmospheric data from the MERRA-2 database (cite: Gelaro_2017) as inputs to the am radiative transfer code (cite: Paine_2019),"
+     }
+    ]
+   },
+   "citation": "(cite: Gelaro_2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate synthetic ngEHT multi-frequency data from GRMHD models",
+   "method": "Simulate uv-coverage for the proposed ngEHT array, sample the Fourier transform of GRMHD model images (from KORAL/grtrans, BHAC/BHOSS, kharma/ipole), and add thermal noise (using MERRA-2 and am atmospheric model) plus systematic gain and phase errors.",
+   "software": [
+    "eht-imaging",
+    "am",
+    "KORAL",
+    "grtrans",
+    "BHAC",
+    "BHOSS",
+    "kharma",
+    "ipole"
+   ],
+   "key_parameters": [
+    "Bandwidth 2 GHz per sub-band, integration time 120 s, quantization efficiency 0.88",
+    "Receiver temperatures: 40 K at 86 GHz, 50 K at 230 GHz, 75 K at 345 GHz"
+   ],
+   "assumptions": [
+    "No frequency phase transfer (FPT) techniques used"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reconstruct multi-frequency images and spectral maps from synthetic ngEHT and real MOJAVE VLBI data",
+   "method": "Simultaneously fit reference image, spectral index map, and spectral curvature map by minimizing the RML objective function first using closure phases and log-closure amplitudes, then self-calibrating once and re-imaging with calibrated visibility amplitudes and closure phases.",
+   "software": [
+    "eht-imaging",
+    "Scipy",
+    "NFFT"
+   ],
+   "key_parameters": [
+    "Curvature beta=0 for 230 GHz narrow-band ngEHT and MOJAVE reconstructions"
+   ],
+   "assumptions": [
+    "Good independent measurements of total flux density are available to rescale closure-only images prior to self-calibration"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Average and reconstruct multi-frequency ALMA images and spectral index map of HL Tau",
+   "method": "Average ALMA Band 6 and Band 7 complex visibilities across eight spectral windows and in 300 s time windows, then simultaneously fit reference image (at 287 GHz) and spectral index map directly to complex visibilities with three rounds of self-calibration.",
+   "software": [
+    "eht-imaging",
+    "Scipy",
+    "NFFT"
+   ],
+   "key_parameters": [
+    "Time averaging window = 300 s; reference frequency = 287 GHz; spectral curvature beta = 0; fiducial spectral index alpha_0 = 0"
+   ],
+   "assumptions": [
+    "Total flux densities rescaled to Table 1 of ALMA Partnership et al. (2015)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HL Tau unresolved spectral index (224 to 351 GHz, eht-imaging)",
+   "value": "2.74",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA imaging of HL Tau",
+     "quote": "This procedure produces an unresolved spectral index $\\alpha=2.74$ over the band from 224 to 351 GHz, which matches the reported unresolved spectral index of $\\alpha=2.77\\pm0.13$ in (cite: ALMA_HlTau)."
+    }
+   ]
+  },
+  {
+   "quantity": "HL Tau reduced chi-squared for complex visibilities at 224 GHz",
+   "value": "1.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA imaging of HL Tau",
+     "quote": "| HL Tau ([14](#fig:HLTau)) | Multi-Frequency |  224 GHz  |     1.07     |"
+    }
+   ]
+  },
+  {
+   "quantity": "HL Tau reduced chi-squared for complex visibilities at 345 GHz",
+   "value": "1.01",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA imaging of HL Tau",
+     "quote": "|                           |                 |  345 GHz  |     1.01     |"
+    }
+   ]
+  },
+  {
+   "quantity": "S5 0212+735 downstream jet lowest spectral index (eht-imaging)",
+   "value": "-1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VLBA imaging of MOJAVE data sets",
+     "quote": "The recovered spectral index far from the core in S5 0212+735 (12) is more negative in the original CLEAN reconstructions of these datasets (where it reaches values of $\\alpha\\sim-2.5$) than in the eht-imaging reconstruction (where the lowest values are $\\alpha\\sim-1.5$)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact numerical values of the regularizer hyperparameters (lambda_I, lambda_alpha, lambda_beta) and data weights (kappa_D) in the text (though scripts are provided on GitHub)",
+  "Pixel size and grid dimensions (n x n) used for the HL Tau, MOJAVE, and synthetic ngEHT reconstructions"
+ ],
+ "missing_for_reproduction": [
+  "Exact hyperparameter values and pixel grid settings are not tabulated in the paper text, though they are available in the linked GitHub repository."
+ ],
+ "reproducibility_score": 95,
+ "score_reason": "The open-source software (eht-imaging v1.2.4) and the exact imaging scripts, synthetic datasets, ground-truth models, and reduced archival datasets are publicly released in a dedicated GitHub repository.",
+ "rediscovery_reason": "Publicly available ALMA SV data for HL Tau, public MOJAVE data, open-source software, and complete reproduction scripts with quantitative chi-squared and spectral index benchmarks.",
+ "source_card": "cards/2023ApJ...945...40C/sonnet/card.md"
+}

@@ -1,0 +1,195 @@
+{
+ "bibcode": "2014Sci...343.1490D",
+ "title": "Molecular Gas Clumps from the Destruction of Icy Bodies in the β Pictoris Debris Disk",
+ "year": 2014,
+ "doi": "10.1126/science.1248726",
+ "arxiv_id": "1404.1380",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "Is gas also released in collisions of icy bodies in the beta Pic debris disk, and how is it distributed?",
+ "alma_project_codes": [
+  "2011.0.00087.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.56x0.71 arcsec at PA=62 deg",
+  "sensitivity": "continuum rms 61 µJy/beam; cube rms 0.004 Jy/channel/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO column from UV absorption lines, 0.6-2.1x10^15 cm^-2, and 20 K excitation temperature",
+    "evidence": [
+     {
+      "loc": "Main Text",
+      "quote": "results from UV absorption line measurements range between 0.6-­‐2.1x10 [15 ] cm [-­‐2] ( _13_ )"
+     }
+    ]
+   },
+   "citation": "Roberge et al. 2000 (ref 13)"
+  },
+  {
+   "what": {
+    "value": "Projected separation of beta Pic b, 8.7 AU",
+    "evidence": [
+     {
+      "loc": "Main Text",
+      "quote": "with a projected separation of 8.7AU ( _11_ )"
+     }
+    ]
+   },
+   "citation": "Chauvin et al. 2012 (ref 11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "image continuum and CO cube",
+   "method": "CASA reduction, clean with natural weighting, 0.1 arcsec pixels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "derive dust mass",
+   "method": "flux to mass with standard opacity and temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "opacity 0.15 m2/kg at 850 µm; T=85 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "derive CO mass",
+   "method": "CO J=3-2 flux with excitation temperature 20-85 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex 20-85 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "PV diagram and deprojection",
+   "method": "PV cut along major axis integrated ±1 arcsec; deprojected assuming circular Keplerian orbits",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "stellar mass 1.75 Msun, circular orbits"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "dust radial distribution",
+   "method": "11 annuli fitted iteratively from outermost inward, separately for SW and NE",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "black-body emissivities, L*=8.7 Lsun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "continuum total flux",
+   "value": "60",
+   "uncertainty": "6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Main Text",
+     "quote": "The total flux of 60±6mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass",
+   "value": "4.7e23 kg (6.4 M_Moon)",
+   "uncertainty": "0.5e23 kg",
+   "units": "kg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Main Text",
+     "quote": "dust mass of 4.7±0.5x10 [23] kg"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=3-2 total flux",
+   "value": "7.6e-20",
+   "uncertainty": "0.8e-20",
+   "units": "W/m^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Main Text",
+     "quote": "The CO J=3-­‐2 emission totals 7.6±0.8x10 [-­‐20] W/m [2]"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass",
+   "value": "1.7e20 kg (0.0023 M_Moon)",
+   "uncertainty": "factor of 2",
+   "units": "kg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Main Text",
+     "quote": "CO mass of 1.7x10 [20] kg (0.0023M Moon ) within a factor of 2"
+    }
+   ]
+  },
+  {
+   "quantity": "clump CO flux fraction at 85 AU",
+   "value": "~30",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Main Text",
+     "quote": "which contains ~30% of the flux"
+    }
+   ]
+  },
+  {
+   "quantity": "CO production rate",
+   "value": "~1.4e18",
+   "uncertainty": "not stated",
+   "units": "kg/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Main Text",
+     "quote": "production rate of ~1.4x10 [18] kg/yr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration details",
+  "clean threshold, masks, iterations",
+  "line-free channels used for continuum",
+  "CO line flux integration method and aperture",
+  "CO mass calculation details and excitation assumptions",
+  "deprojection implementation details"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and cleaning parameters",
+  "Deprojection code",
+  "Flux integration regions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short report with sparse processing details but public data and simple numeric results.",
+ "rediscovery_reason": "Public single-execution data; numeric flux, dust and CO masses are checkable.",
+ "source_card": "cards/2014Sci...343.1490D/sonnet/card.md"
+}

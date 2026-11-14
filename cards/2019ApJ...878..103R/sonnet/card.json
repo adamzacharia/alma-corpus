@@ -1,0 +1,880 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...878..103R",
+  "title": "Modeling the Protoplanetary Disks of Two Brown Dwarfs in the Taurus Molecular Cloud",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Rilinger, Anneliese M.",
+  "n_authors": 3,
+  "arxiv_id": "1905.05829",
+  "doi": "10.3847/1538-4357/ab211d",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2015.1.00934.S",
+   "2016.1.01511.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observations",
+    "quote": "Archival ALMA Band 7 (0.89 mm) continuum observations of the two BDs were used in this analysis."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "CFHT Tau 4 (2MASS J04394748+2601407)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "147.1±5.1 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distances are derived from Gaia DR2 parallax measurements"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 parallax",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distances are derived from Gaia DR2 parallax measurements"
+       }
+      ]
+     }
+    },
+    {
+     "name": "2M0444 (2MASS J04442713+2512164)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "141.0±2.7 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distances are derived from Gaia DR2 parallax measurements"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 parallax",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distances are derived from Gaia DR2 parallax measurements"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the disk radii and masses of two Taurus brown dwarfs (CFHT Tau 4, 2M0444), and what do they imply for brown dwarf formation and planet formation?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "By combining modeling of the spectral energy distributions and ALMA images, we obtain disk radii and masses for these objects"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01511.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Observations of CFHT Tau 4 were taken in Cycle 4 on 2017 July 6 (project code: 2016.1.01511.S)"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00934.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Observations of 2M0444 were taken in Cycle 3 on 2016 July 24 (project code: 2015.1.00934.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (0.89 mm)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Archival ALMA Band 7 (0.89 mm) continuum observations of the two BDs were used in this analysis."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Two 2 GHz SPWs; CFHT Tau 4: 333.806, 343.911 GHz; 2M0444: 332.013, 344.013 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "For CFHT Tau 4, the spectral windows were centered on 333.806 GHz and 343.911 GHz; for 2M0444, 332.013 GHz and 344.013 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array; 42 antennas (CFHT Tau 4), 39 antennas (2M0444)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "using 39 antennas in the 12 m array"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "17 m to 2600 m (CFHT Tau 4); 15 m to 1100 m (2M0444)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Baselines ranged from 17 m to 2600 m for CFHT Tau 4 and 15 m to 1100 m for 2M0444."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.24x0.12 arcsec (CFHT Tau 4); 0.28x0.19 arcsec (2M0444)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "For 2M0444, the resulting beam size is $0\\rlap.''28 \\times 0\\rlap.''19$ (position angle = $-31.02^{\\circ}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "4.5 min (CFHT Tau 4); 46 min (2M0444), total integration",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The total integration time was 4.5 minutes for CFHT Tau 4 and 46 minutes for 2M0444."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 July 6 (CFHT Tau 4); 2016 July 24 (2M0444)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Observations of CFHT Tau 4 were taken in Cycle 4 on 2017 July 6"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Archival ALMA Band 7 (0.89 mm) continuum observations"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer IRS/IRAC/MIPS, WISE, 2MASS, UKIDSS, SDSS, Pan-STARRS, Herschel, SCUBA, IRAM, SMA, VLA, Gaia",
+     "provided": {
+      "value": "Photometry for SEDs (via VizieR), Spitzer IRS spectrum for 2M0444, Gaia distances",
+      "evidence": [
+       {
+        "loc": "3.1.1 SED Fitting",
+        "quote": "The SEDs were constructed using photometric data points from visible to millimeter wavelengths taken from the VizieR catalogue access tool"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "All stellar parameters of CFHT Tau 4",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "All values for CFHT Tau 4 are from (cite: andrews13)."
+       }
+      ]
+     },
+     "citation": "(cite: andrews13)"
+    },
+    {
+     "what": {
+      "value": "2M0444 temperature and luminosity; mass from Ricci13; extinction from Bouy08",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Temperature and luminosity for 2M0444 are from (cite: luhman04); mass for 2M0444 is from (cite: ricci13)"
+       }
+      ]
+     },
+     "citation": "(cite: luhman04); (cite: ricci13); (cite: bouy08)"
+    },
+    {
+     "what": {
+      "value": "2M0444 mass accretion rate 2e-10 Msun/yr",
+      "evidence": [
+       {
+        "loc": "3.1.1 SED Fitting",
+        "quote": "We fixed $\\dot{M}$ at $2\\times10^{-10}$ ${\\rm {\\it M}_{\\odot}\\,yr^{-1}}$ for 2M0444 (cite: bouy08)"
+       }
+      ]
+     },
+     "citation": "(cite: bouy08)"
+    },
+    {
+     "what": {
+      "value": "Photospheric color table (M6 adopted)",
+      "evidence": [
+       {
+        "loc": "3.1.1 SED Fitting",
+        "quote": "The photospheres are constructed using the (cite: kh95) color table and the dereddened observed J-band magnitude of the object."
+       }
+      ]
+     },
+     "citation": "(cite: kh95)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Archive calibration scripts from ALMA staff, no extra flagging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We used the calibration scripts as provided by ALMA staff in the archive with no additional flagging required."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v5.1.2",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA (v5.1.2; McMullin et al. 2007)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0510+1800 (flux and bandpass)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The quasar J0510+1800 was observed as a flux and bandpass calibrator for both objects."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Deconvolved images were obtained using the task CLEAN with natural weighting in CASA."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Deconvolved images were obtained using the task CLEAN with natural weighting in CASA."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "0.13 mJy/beam (CFHT Tau 4); 0.09 mJy/beam (2M0444)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "with an rms of 0.09 mJy beam$^{-1}$, producing a peak S/N of 60"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Procedure for modeling ALMA Band 7 data with SED-based model images",
+      "evidence": [
+       {
+        "loc": "3.1.2 ALMA Data",
+        "quote": "Following (cite: macias18), we modeled the ALMA Band 7 data described in Section [2](#obs)."
+       }
+      ]
+     },
+     "from_reference": "(cite: macias18)"
+    },
+    {
+     "what": {
+      "value": "Pre-transitional disk structure with annular gap",
+      "evidence": [
+       {
+        "loc": "3.1.1 SED Fitting",
+        "quote": "the disk structure can be modified to include an annular gap within the disk following (cite: espaillat11)"
+       }
+      ]
+     },
+     "from_reference": "(cite: espaillat11)"
+    },
+    {
+     "what": {
+      "value": "Wall radii and disk mass computation",
+      "evidence": [
+       {
+        "loc": "Table 3",
+        "quote": "$^{d}$ Calculated using $\\dot{M}$ and $\\alpha$ following (cite: diad05)"
+       }
+      ]
+     },
+     "from_reference": "(cite: diad05)"
+    }
+   ],
+   "unstated_but_needed": [
+    "DIAD code availability and exact grid steps",
+    "Photometry flux uncertainties used in chi2",
+    "Clean parameters (cell, image size, mask, threshold)",
+    "How model images were generated from SED models (scaling, wavelength)",
+    "Criteria for model-vs-data comparison in visibilities (no quantitative fit statistic)",
+    "Gap inner edge assumptions for 2M0444 (0.02 au)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit SEDs with DIAD models",
+    "method": {
+     "value": "Grid of DIAD models, best fit by minimum chi2, visual inspection and iterative grid refinement",
+     "evidence": [
+      {
+       "loc": "3.1.1 SED Fitting",
+       "quote": "We ran grids of models and determined the best-fit parameters by selecting models with minimum $\\chi^2$, visually inspecting the model fits, and iteratively refining the grids."
+      }
+     ]
+    },
+    "software": [
+     "DIAD"
+    ],
+    "key_parameters": [
+     {
+      "value": "Ranges: amax_atm 0.25–1.0 um, amax_mid 500 um–1 cm, epsilon 0.001–0.1, Twall,out 75–1400 K, alpha 0.0001–0.01, Rout 30–100 au, i 25–80 deg",
+      "evidence": [
+       {
+        "loc": "3.1.1 SED Fitting",
+        "quote": "0.25–1.0 $\\mu$m for a$_{max, atm}$, 500 $\\mu$m–1 cm for a$_{max, mid}$, 0.001–0.1 for $\\epsilon$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust-to-gas 0.01; Twall,in 1400 K; Mdot fixed (1e-10 CFHT Tau 4, 2e-10 2M0444); grain size power law -3.5, min size 0.005 um",
+      "evidence": [
+       {
+        "loc": "3.1.1 SED Fitting",
+        "quote": "We assumed a fixed dust-to-gas mass ratio of 0.01."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Grid search, chi2 minimum; no MCMC because too costly",
+     "evidence": [
+      {
+       "loc": "3.1.1 SED Fitting",
+       "quote": "This expense renders common statistical methods of estimating best-fit model parameters and their uncertainties"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Uncertainties are only qualitative ranges",
+     "evidence": [
+      {
+       "loc": "3.1.1 SED Fitting",
+       "quote": "should not be considered an accurate quantitative estimate of the uncertainties, but rather a qualitative approximation"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit ALMA continuum geometry and radius",
+    "method": {
+     "value": "Make model images from best SED models, Fourier transform and sample at observed uv coverage in CASA; adjust inclination, PA, radius",
+     "evidence": [
+      {
+       "loc": "3.1.2 ALMA Data",
+       "quote": "Three parameters were adjusted to improve the fit of the model image to the data: inclination, position angle, and radius."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Manual adjustment; contour comparison",
+     "evidence": [
+      {
+       "loc": "3.1.2 ALMA Data",
+       "quote": "Contours of the models and the ALMA observations were compared to assess the model fit."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Radial profiles within 1 sigma and visibility comparison",
+     "evidence": [
+      {
+       "loc": "3.1.2 ALMA Data",
+       "quote": "We varied disk radius, position angle, and inclination for each object until the model profile was within 1$\\sigma$ of the observed profile and the residuals were minimized."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compute disk mass and compare to formation models",
+    "method": {
+     "value": "Integrate surface density (from Mdot and alpha) over disk radius",
+     "evidence": [
+      {
+       "loc": "3.2 Model Results",
+       "quote": "The total disk mass was computed by integrating over the surface mass density of the disk (as determined by $\\dot{M}$ and the best-fit $\\alpha$) over the radius of the disk."
+      }
+     ]
+    },
+    "software": [
+     "DIAD"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "dust-to-gas 0.01",
+      "evidence": [
+       {
+        "loc": "3.2 Model Results",
+        "quote": "assuming a dust-to-gas mass ratio of 0.01"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.2",
+    "used_for": {
+     "value": "Calibration, CLEAN imaging, simulating model visibilities",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data were calibrated using the Common Astronomy Software Applications (CASA) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Disk radiative transfer SED models",
+     "evidence": [
+      {
+       "loc": "3.1.1 SED Fitting",
+       "quote": "The disk structure is modeled using the D’Alessio Irradiated Accretion Disk (DIAD) radiative transfer models"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CFHT Tau 4 disk mass",
+    "value": "0.42",
+    "uncertainty": "+0.08/-0.05",
+    "units": "M_Jup",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "0.42$^{+0.08}_{-0.05}$"
+     }
+    ]
+   },
+   {
+    "quantity": "2M0444 disk mass",
+    "value": "2.05",
+    "uncertainty": "+0.07/-0.06",
+    "units": "M_Jup",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "2.05$^{+0.07}_{-0.06}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CFHT Tau 4 outer radius",
+    "value": "80",
+    "uncertainty": "10",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "80$\\pm$10"
+     }
+    ]
+   },
+   {
+    "quantity": "2M0444 outer radius",
+    "value": "100",
+    "uncertainty": "10",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "100$\\pm$10"
+     }
+    ]
+   },
+   {
+    "quantity": "CFHT Tau 4 inclination / PA",
+    "value": "70 / 40",
+    "uncertainty": "10 / 10",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Model Results",
+      "quote": "a position angle of 40$^{\\circ}$, and an inclination of 70$^{\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "2M0444 inclination / PA",
+    "value": "40 / 70",
+    "uncertainty": "10 / 10",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Model Results",
+      "quote": "a position angle of 70$^{\\circ}$, and an inclination of 40$^{\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "2M0444 disk temperature at 0.27 au",
+    "value": "117",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.3 Gap in the Disk of 2M0444",
+      "quote": "We find the temperature of the disk at 0.27 au to be 117 K."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "2M0444 SED requires a pre-transitional disk with gap 0.02–0.27 au",
+    "evidence": [
+     {
+      "loc": "4.3 Gap in the Disk of 2M0444",
+      "quote": "the disk of 2M0444 is best fit with a pre-transitional disk model with a gap in the disk from 0.02 au to 0.27 au"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do BD disk radii favor ejection or non-ejection formation?",
+    "experiment": "Model ALMA Band 7 visibilities with SED-based models",
+    "result": "Radii 80 au and 100 au",
+    "finding": "Radii larger than ejection simulations predict, favoring non-ejection, though selection effects limit firmness",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1 Disk Radius and BD Formation",
+      "quote": "Given the large radii of the disks presented here, it is unlikely that these objects formed via ejection."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are the disks massive enough to form planets?",
+    "experiment": "DIAD disk masses compared to Payne & Lodato core accretion results",
+    "result": "0.42 and 2.05 M_Jup",
+    "finding": "2M0444 can form Earth-mass planets; CFHT Tau 4 unlikely",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2 Disk Mass and Planet Formation",
+      "quote": "CFHT Tau 4 is unlikely to form Earth-mass planets, given that its total mass is less than 1 M$_{Jup}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does 2M0444 have a disk gap?",
+    "experiment": "SED fit with full vs pre-transitional models",
+    "result": "Full disk fails mid-IR excess; pre-transitional fits",
+    "finding": "2M0444 is a pre-transitional disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 Model Results",
+      "quote": "The SED of 2M0444 shows significant excess emission above the photosphere, particularly at mid-IR wavelengths, that could not be reproduced by a full-disk model."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "MCMC infeasible because DIAD is computationally expensive, so grids were used",
+    "evidence": [
+     {
+      "loc": "3.1.1 SED Fitting",
+      "quote": "Given the complexity of DIAD, running disk models is computationally expensive."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Snowline origin of the 2M0444 gap rejected: temperature 117 K at 0.27 au does not match H2O, CO or CO2 snowlines",
+     "evidence": [
+      {
+       "loc": "4.3 Gap in the Disk of 2M0444",
+       "quote": "The snowlines of common molecules were either too warm (H$_2$O at 128–150 K) or too cold"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Uncertainties are qualitative; selection effects make conclusions difficult; brightest disks may be atypical",
+     "evidence": [
+      {
+       "loc": "4.1 Disk Radius and BD Formation",
+       "quote": "The selection effects resulting from the evolution of the disk, and the timescale on which this evolution occurs, make firm conclusions difficult."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No formal fit or uncertainty for radius; by-eye matching",
+    "Mdot fixed and assumed for CFHT Tau 4 drives disk mass",
+    "Mass depends on assumed dust-to-gas 0.01 and alpha",
+    "Short 4.5 min observation of CFHT Tau 4 gives S/N of 14",
+    "Two objects only"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data with project codes given",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Archival ALMA Band 7 (0.89 mm) continuum observations of the two BDs were used in this analysis."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "DIAD code access and best-fit model SED files",
+    "Clean parameters",
+    "Procedure details for model images in uv fitting"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB for both continuum datasets",
+   "score_inferred": 3,
+   "score_reason": "Public data and numeric results, but DIAD is a specialized code and the fitting is by eye with sparse imaging details.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "DIAD model code is not generally available and the fitting is manual."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: macias18)",
+     "why": "ALMA data modeling approach followed"
+    },
+    {
+     "citation": "(cite: diad05)",
+     "why": "DIAD model and mass calculation"
+    },
+    {
+     "citation": "(cite: espaillat11)",
+     "why": "Pre-transitional disk modification"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ricci13); (cite: ricci14)",
+     "why": "Previous ALMA/SMA observations and radius constraints of the same disks"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-0d0b57d07384487799f098ee82b49185",
+  "batch_id": "msgbatch_019YWVxz74gaBdDUmtwUveVm",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:54:03",
+  "usage": {
+   "input_tokens": 20967,
+   "output_tokens": 7345,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.058299,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 57,
+  "quotes_ok": 57,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 44,
+   "rate": 0.62
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,1883 @@
+{
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+    {
+      "loc": "Abstract",
+      "quote": "We present an analysis of rest-frame optical and far-infrared continuum emission in three luminous submillimeter galaxies (SMGs) at $3.0\\lesssim z\\lesssim4.5$. The SMGs are spatially resolved down to 400-500 pc ($\\sim0.05\\ensuremath{''}$) resolution by James Webb Space telescope (JWST) and Atacama Large Millimeter/submillimeter Array (ALMA) observations."
+    },
+    {
+      "loc": "Introduction",
+      "quote": "In this paper, we provide a detailed analysis toward three luminous SMGs: COSMOS-AzTEC-1, COSMOS-AzTEC-4, and COSMOS-AzTEC-8 (hereafter AzTEC-1, AzTEC-4, and AzTEC-8, respectively), as part of the Formation Of Sub-Structure In Luminous SMGs (FOSSILS; Ikeda et al. in preparation)"
+    }
+  ],
+  "fields": [
+    "high_z_galaxies",
+    "star_formation"
+  ],
+  "question": {
+    "value": "How are sub-structures of the interstellar medium and stellar morphology related to the physical mechanisms triggering starbursts in luminous submillimeter galaxies at high redshifts?",
+    "evidence": [
+      {
+        "loc": "Introduction",
+        "quote": "The key question, however, is how these sub-structures are related to the origin of starbursts at high redshifts."
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "AzTEC-1",
+      "details": [
+        {
+          "loc": "Table 1",
+          "quote": "| AzTEC-1 | 149.92855 | 2.49395 | 4.342 | 385499 | AzTEC/C5, AS2COS0023.1, eMORA.3 |"
+        },
+        {
+          "loc": "Sample",
+          "quote": "AzTEC-1 at $z_{\\mathrm{spec}}=4.342$ (cite: 2015MNRAS.454.3485Y) is the most luminous SMG among the parent sample presented in (cite: 2007ApJ...671.1531Y)."
+        }
+      ],
+      "coordinates": "R.A. 149.92855 deg, Decl. 2.49395 deg",
+      "redshift_or_distance": "z = 4.342",
+      "distance_source": "(cite: 2015MNRAS.454.3485Y)"
+    },
+    {
+      "name": "AzTEC-4",
+      "details": [
+        {
+          "loc": "Table 1",
+          "quote": "| AzTEC-4 | 149.88207 | 2.51223 | 4.198 $^{$^{\\rm b}$}$ | 385679 | AzTEC/C4, AS2COS0155.1 |"
+        },
+        {
+          "loc": "Sample",
+          "quote": "The spectroscopic redshift of AzTEC-4 has been confirmed to be $z_{\\rm spec}=4.198$ by ALMA Band 3 spectral scan observations (Section [3.1.3](#subsubsec:Section3.1.3))."
+        }
+      ],
+      "coordinates": "R.A. 149.88207 deg, Decl. 2.51223 deg",
+      "redshift_or_distance": "z = 4.198",
+      "distance_source": "this work (ALMA Band 3 spectral scan)"
+    },
+    {
+      "name": "AzTEC-8",
+      "details": [
+        {
+          "loc": "Table 1",
+          "quote": "| AzTEC-8 | 149.99721 | 2.57805 | 3.097 | 400785 | AzTEC/C2, AS2COS0028.1 |"
+        },
+        {
+          "loc": "Sample",
+          "quote": "(cite: 2022ApJ...929..159C) report an ALMA Band 3 spectroscopic scan for this source, successfully determining the spectroscopic redshift of $z_{\\mathrm{spec}}=3.097$."
+        }
+      ],
+      "coordinates": "R.A. 149.99721 deg, Decl. 2.57805 deg",
+      "redshift_or_distance": "z = 3.097",
+      "distance_source": "(cite: 2022ApJ...929..159C)"
+    },
+    {
+      "name": "AzTEC-8.2",
+      "details": [
+        {
+          "loc": "Table 1",
+          "quote": "| AzTEC-8.2$^{$^{\\rm c}$}$ | 149.99795 | 2.57822 | $2.83^{+0.04}_{-0.03}$ | 400901 | AS2COS0028.2 |"
+        },
+        {
+          "loc": "Table 1",
+          "quote": "The photometric redshifts are taken from the catalog of the COSMOS-Web Public Data Release 1 (cite: 2025arXiv250603243S)."
+        }
+      ],
+      "coordinates": "R.A. 149.99795 deg, Decl. 2.57822 deg",
+      "redshift_or_distance": "z_phot = 2.83 +0.04/-0.03",
+      "distance_source": "(cite: 2025arXiv250603243S)"
+    },
+    {
+      "name": "AzTEC-8.3",
+      "details": [
+        {
+          "loc": "Table 1",
+          "quote": "| AzTEC-8.3$^{$^{\\rm c}$}$ | 149.99834 | 2.57657 | $3.00^{+0.03}_{-0.04}$ | 400614 | – |"
+        },
+        {
+          "loc": "Table 1",
+          "quote": "The photometric redshifts are taken from the catalog of the COSMOS-Web Public Data Release 1 (cite: 2025arXiv250603243S)."
+        }
+      ],
+      "coordinates": "R.A. 149.99834 deg, Decl. 2.57657 deg",
+      "redshift_or_distance": "z_phot = 3.00 +0.03/-0.04",
+      "distance_source": "(cite: 2025arXiv250603243S)"
+    }
+  ],
+  "alma_project_codes": [
+    {
+      "code": "2015.1.01345.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "The extended configuration data, which achieves the highest angular resolution of $0.015\\ensuremath{''}$ as presented in (cite: 2016ApJ...829L..10I), were initially taken as part of the ALMA Cycle 3 program (# 2015.1.01345.S) with a $uv$ range of $750\\,{\\rm k}\\lambda \\lesssim uv \\lesssim 7500\\,{\\rm k}\\lambda$."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2016.1.00012.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "Subsequently, the compact configuration data were taken in Cycle 4 (# 2016.1.00012.S; $uv \\lesssim 700\\,{\\rm k}\\lambda$) for AzTEC-8 and in Cycle 5 (# 2017.1.00127.S; $uv \\lesssim 1200\\,{\\rm k}\\lambda$) for AzTEC-1 and AzTEC-4."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2017.1.00127.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "Subsequently, the compact configuration data were taken in Cycle 4 (# 2016.1.00012.S; $uv \\lesssim 700\\,{\\rm k}\\lambda$) for AzTEC-8 and in Cycle 5 (# 2017.1.00127.S; $uv \\lesssim 1200\\,{\\rm k}\\lambda$) for AzTEC-1 and AzTEC-4."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2017.1.00487.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "AzTEC-8 was observed in the Band 6 (# 2017.1.00487.S) using the extended array configuration ($480\\,{\\rm k}\\lambda \\lesssim uv \\lesssim 5500\\,{\\rm k}\\lambda$)."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2018.1.01136.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "AzTEC-1 was observed in Band 4, using multiple configurations through the Cycle 6 program (#2018.1.01136.S; $70\\,{\\rm k}\\lambda \\lesssim uv \\lesssim3600\\,{\\rm k}\\lambda$)."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2017.A.00034.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+          "quote": "In order to study the gas and dynamical properties traced by CO and \\[C i\\] lines, we analyzed the data taken by two ALMA Band 3 spectral scan observations, targeting AzTEC-4 (# 2017.A.00034.S) and AzTEC-8 (# 2019.1.01600.S)."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2019.1.01600.S",
+      "evidence": [
+        {
+          "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+          "quote": "In order to study the gas and dynamical properties traced by CO and \\[C i\\] lines, we analyzed the data taken by two ALMA Band 3 spectral scan observations, targeting AzTEC-4 (# 2017.A.00034.S) and AzTEC-8 (# 2019.1.01600.S)."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    },
+    {
+      "code": "2018.1.00081.S",
+      "evidence": [
+        {
+          "loc": "Infrared luminosity",
+          "quote": "To obtain the photometry of 470 $\\mu$m continuum of AzTEC-1, we reduced the Band 9 data (# 2018.1.00081.S) and apply a $2''$-aperture."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "This paper makes use of the following ALMA data:ADS/JAO.ALMA #2015.1.01345.S, #2016.1.00012.S, #2017.A.00034.S, #2017.1.00127.S, #2017.1.00487.S, #2018.1.00081.S, #2018.1.01136.S, and #2019.1.01600.S."
+        }
+      ]
+    }
+  ],
+  "data_settings": [
+    {
+      "field": "bands",
+      "value": "Bands 3 (3.0 mm), 4 (2.1 mm), 6 (1.3 mm), 7 (860 um), and 9 (470 um)",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "In this paper, we mainly analyzed ALMA (Bands 3, 4, 6, and 7) and JWST/NIRCam data."
+        },
+        {
+          "loc": "Infrared luminosity",
+          "quote": "To obtain the photometry of 470 $\\mu$m continuum of AzTEC-1, we reduced the Band 9 data (# 2018.1.00081.S) and apply a $2''$-aperture."
+        }
+      ]
+    },
+    {
+      "field": "frequencies_and_spectral_setup",
+      "value": "Band 6: two spectral setups covering ~4 GHz centered at 221.6, 236.8, 249.3, and 263.9 GHz (~16 GHz total); Band 3: five spectral setups covering ~84-116 GHz continuously",
+      "evidence": [
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "The observations were performed using two spectral setups, covering $\\sim4$ GHz range centered at 221.6, 236.8, 249.3, and 263.9 GHz ($\\sim 16$ GHz frequency width in total)."
+        },
+        {
+          "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+          "quote": "Both observations cover continuous frequency range of Band 3 ($\\sim84-116$ GHz) consisting of five spectral setups."
+        }
+      ]
+    },
+    {
+      "field": "configurations",
+      "value": "Extended and compact configurations (Band 7); extended configuration (Band 6); multiple configurations (Band 4)",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "The extended configuration data, which achieves the highest angular resolution of $0.015\\ensuremath{''}$ as presented in (cite: 2016ApJ...829L..10I), were initially taken as part of the ALMA Cycle 3 program (# 2015.1.01345.S) with a $uv$ range of $750\\,{\\rm k}\\lambda \\lesssim uv \\lesssim 7500\\,{\\rm k}\\lambda$."
+        },
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "AzTEC-8 was observed in the Band 6 (# 2017.1.00487.S) using the extended array configuration ($480\\,{\\rm k}\\lambda \\lesssim uv \\lesssim 5500\\,{\\rm k}\\lambda$)."
+        },
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "AzTEC-1 was observed in Band 4, using multiple configurations through the Cycle 6 program (#2018.1.01136.S; $70\\,{\\rm k}\\lambda \\lesssim uv \\lesssim3600\\,{\\rm k}\\lambda$)."
+        }
+      ]
+    },
+    {
+      "field": "baselines",
+      "value": "Band 7: 750-7500 klambda (Cycle 3), <=700 klambda (Cycle 4), <=1200 klambda (Cycle 5); Band 6: 480-5500 klambda; Band 4: 70-3600 klambda",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "Subsequently, the compact configuration data were taken in Cycle 4 (# 2016.1.00012.S; $uv \\lesssim 700\\,{\\rm k}\\lambda$) for AzTEC-8 and in Cycle 5 (# 2017.1.00127.S; $uv \\lesssim 1200\\,{\\rm k}\\lambda$) for AzTEC-1 and AzTEC-4."
+        },
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "AzTEC-8 was observed in the Band 6 (# 2017.1.00487.S) using the extended array configuration ($480\\,{\\rm k}\\lambda \\lesssim uv \\lesssim 5500\\,{\\rm k}\\lambda$)."
+        },
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "AzTEC-1 was observed in Band 4, using multiple configurations through the Cycle 6 program (#2018.1.01136.S; $70\\,{\\rm k}\\lambda \\lesssim uv \\lesssim3600\\,{\\rm k}\\lambda$)."
+        }
+      ]
+    },
+    {
+      "field": "angular_resolution",
+      "value": "Band 7: ~0.06'' (~460 pc); Band 6: 0.064'' x 0.048''; Band 4: 0.061'' x 0.055'' (or 0.072'' x 0.059''); Band 9: 0.19'' x 0.15''; Band 3: ~2.3'' to ~2.5''",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "The final synthesized beam sizes are $0.077\\ensuremath{''}$ $\\times$ $0.062\\ensuremath{''}$ with a position angle (PA) of ${\\rm PA}=87.3^{\\circ}$ for AzTEC-1 and AzTEC-4, and $0.070\\ensuremath{''}$ $\\times$ $0.052\\ensuremath{''}$ with ${\\rm PA}=65.5^{\\circ}$ for AzTEC-8, corresponding to $\\sim$460 pc resolution."
+        },
+        {
+          "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+          "quote": "The beam size and rms noise level are $\\sim2.3\\ensuremath{''}$ and 125 $\\mu$Jy/beam per 150 km/s bin for AzTEC-4, and $\\sim2.5\\ensuremath{''}$ and 273 $\\mu$Jy/beam per 150 km/s bin for AzTEC-8."
+        },
+        {
+          "loc": "Table 2",
+          "quote": "| AzTEC-1 | 9 | $0.19\\ensuremath{''}\\times0.15\\ensuremath{''}$, -$79.8^{\\circ}$ | 264 (continuum) | – |"
+        }
+      ]
+    },
+    {
+      "field": "sensitivity",
+      "value": "Band 7: 29.7-33.6 uJy/beam; Band 6: 31.6 uJy/beam; Band 4: 4.64 uJy/beam; Band 9: 264 uJy/beam; Band 3: 125-273 uJy/beam per 150 km/s bin",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| AzTEC-1 | 9 | $0.19\\ensuremath{''}\\times0.15\\ensuremath{''}$, -$79.8^{\\circ}$ | 264 (continuum) | – |"
+        },
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "The final synthesized beam size and the rms noise level are $0.061\\ensuremath{''}\\times0.055\\ensuremath{''}$ with ${\\rm PA}=40.9^{\\circ}$ and 4.64 $\\mu$Jy/beam, respectively."
+        },
+        {
+          "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+          "quote": "The beam size and rms noise level are $\\sim2.3\\ensuremath{''}$ and 125 $\\mu$Jy/beam per 150 km/s bin for AzTEC-4, and $\\sim2.5\\ensuremath{''}$ and 273 $\\mu$Jy/beam per 150 km/s bin for AzTEC-8."
+        }
+      ]
+    }
+  ],
+  "lines_targeted": [
+    {
+      "species": "CO",
+      "transition": "J=4-3",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| | 3 | $2.28\\ensuremath{''}\\times1.93\\ensuremath{''},\\,58.5^{\\circ}$ | 125 (150 km/s bin) | CO(4-3), \\[C i\\](1-0), CO(5-4) |"
+        },
+        {
+          "loc": "Molecular gas and dynamical masses",
+          "quote": "Three emission lines (CO $J=4-3/5-4$ and \\[C i\\] $^{3}P_{1}-^{3}P_{0}$) are detected in AzTEC-4, confirming the spectroscopic redshift of AzTEC-4 as $z=4.1979\\pm0.0003$."
+        }
+      ]
+    },
+    {
+      "species": "CO",
+      "transition": "J=5-4",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| | 3 | $2.28\\ensuremath{''}\\times1.93\\ensuremath{''},\\,58.5^{\\circ}$ | 125 (150 km/s bin) | CO(4-3), \\[C i\\](1-0), CO(5-4) |"
+        },
+        {
+          "loc": "Molecular gas and dynamical masses",
+          "quote": "Three emission lines (CO $J=4-3/5-4$ and \\[C i\\] $^{3}P_{1}-^{3}P_{0}$) are detected in AzTEC-4, confirming the spectroscopic redshift of AzTEC-4 as $z=4.1979\\pm0.0003$."
+        }
+      ]
+    },
+    {
+      "species": "[CI]",
+      "transition": "3P1-3P0 (1-0)",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| | 3 | $2.28\\ensuremath{''}\\times1.93\\ensuremath{''},\\,58.5^{\\circ}$ | 125 (150 km/s bin) | CO(4-3), \\[C i\\](1-0), CO(5-4) |"
+        },
+        {
+          "loc": "Molecular gas and dynamical masses",
+          "quote": "Three emission lines (CO $J=4-3/5-4$ and \\[C i\\] $^{3}P_{1}-^{3}P_{0}$) are detected in AzTEC-4, confirming the spectroscopic redshift of AzTEC-4 as $z=4.1979\\pm0.0003$."
+        }
+      ]
+    },
+    {
+      "species": "CO",
+      "transition": "J=3-2",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| | 3 | $2.72\\ensuremath{''}\\times2.37\\ensuremath{''},\\,79.4^{\\circ}$ | 273 (150 km/s bin) | CO(3-2), CO(4-3) |"
+        },
+        {
+          "loc": "Molecular gas and dynamical masses",
+          "quote": "Two emission lines (CO $J=3-2/4-3$) are detected in AzTEC-8 ($z=3.097$; (cite: 2022ApJ...929..159C))."
+        }
+      ]
+    }
+  ],
+  "other_facilities": [
+    {
+      "name": "JWST/NIRCam (COSMOS-Web)",
+      "provided": {
+        "value": "Near-infrared imaging in F115W, F150W, F277W, and F444W filters for rest-frame UV/optical continuum morphology and color profiles",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "Three SMGs were observed in four JWST NIRCam filters (F115W, F150W, F277W, and F444W) through COSMOS-Web, a JWST Cycle 1 treasury survey program (cite: 2023ApJ...954...31C)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "HST/ACS",
+      "provided": {
+        "value": "F814W mosaics used to derive a reference catalog for astrometric alignment of NIRCam images",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "To refine the astrometry, we used the JWST/Hubble Space Telescope (HST) Alignment Tool (JHAT; (cite: 2023zndo...7892935R)) to align the NIRCam images with a reference catalog derived from HST/ACS F814W mosaics (cite: 2007ApJS..172..196K)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Gaia EDR3",
+      "provided": {
+        "value": "Astrometric adjustment for JWST NIRCam images",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "The alignment was further adjusted using Gaia Early Data Release 3 (EDR3; (cite: 2021A&A...649A...1G)), achieving sub-5 mas median absolute positional offsets and a median absolute deviation (MAD) below 12 mas across all bands."
+          }
+        ]
+      }
+    }
+  ],
+  "external_data_from_literature": [
+    {
+      "what": {
+        "value": "Photometric redshifts of AzTEC-8.2 and AzTEC-8.3 from COSMOS-Web Public Data Release 1 catalog",
+        "evidence": [
+          {
+            "loc": "Table 1",
+            "quote": "The photometric redshifts are taken from the catalog of the COSMOS-Web Public Data Release 1 (cite: 2025arXiv250603243S)."
+          }
+        ]
+      },
+      "citation": "(cite: 2025arXiv250603243S)"
+    },
+    {
+      "what": {
+        "value": "Galaxy-integrated stellar masses and SED-based star formation rates for AzTEC-1, AzTEC-4, and AzTEC-8",
+        "evidence": [
+          {
+            "loc": "Stellar mass and star formation rate",
+            "quote": "In this study, we adopt the stellar mass and SFR derived by (cite: 2025ApJ...979..229M), who modeled $\\sim300$ submillimeter detected galaxies in the COSMOS-Web field, including the three SMGs studied in this paper, by using the `CIGALE` SED fitting code (cite: 2019A&A...622A.103B)."
+          }
+        ]
+      },
+      "citation": "(cite: 2025ApJ...979..229M)"
+    },
+    {
+      "what": {
+        "value": "CO(1-0) line intensity (I_CO(1-0) = 0.09 +/- 0.04 Jy km/s) of AzTEC-1 from VLA observations",
+        "evidence": [
+          {
+            "loc": "Table 3",
+            "quote": "d. Derived from $I_{\\rm{CO(1-0)}}=0.09\\pm0.04$ Jy km/s measured by (cite: 2023ApJ...945..128F)."
+          }
+        ]
+      },
+      "citation": "(cite: 2023ApJ...945..128F)"
+    },
+    {
+      "what": {
+        "value": "CO(4-3) and [CI](1-0) line properties, CO(4-3) FWHM (305 +/- 17 km/s), and resolved CO axis ratio/radius for AzTEC-1",
+        "evidence": [
+          {
+            "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+            "quote": "The CO and \\[C i\\] line properties of AzTEC-1 are reported in (cite: 2018Natur.560..613T)."
+          },
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "We use the average $\\rm FWHM$ of the CO lines derived from the single Gaussian fitting for AzTEC-4 and AzTEC-8 (Figure [5](#fig:Figure5)) and ${\\rm FWHM}=305\\pm17$ km/s measured from the CO $J=4-3$ line for AzTEC-1 (cite: 2018Natur.560..613T)."
+          }
+        ]
+      },
+      "citation": "(cite: 2018Natur.560..613T)"
+    },
+    {
+      "what": {
+        "value": "Compilation of 22 SMGs and DSFGs at z > 2 with high-resolution optical and FIR observations for comparison",
+        "evidence": [
+          {
+            "loc": "Discussion and summary",
+            "quote": "In addition to the three SMGs, we have compiled 22 SMGs and DSFGs at $z>2$ which have been studied in high-resolution images in both rest-frame optical and FIR wavelengths ((cite: 2023ApJ...948L...8R); (cite: 2025ApJ...978..165H); (cite: 2025arXiv250201868U))."
+          }
+        ]
+      },
+      "citation": "(cite: 2023ApJ...948L...8R); (cite: 2025ApJ...978..165H); (cite: 2025arXiv250201868U)"
+    }
+  ],
+  "simulations_or_models_as_data": [],
+  "calibration": [
+    {
+      "field": "pipeline_or_manual",
+      "value": "ALMA Pipeline in CASA; custom flagging of bad antennas (DA45, DV03, DV10 in Cycle 3 Band 7; DA06, DV09, DV61 in Band 6) and visibility reweighting with statwt",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "All of the ALMA data used in this paper were calibrated using Common Astronomy Software Application package (`CASA`; (cite: 2022PASP..134k4501C)) and the ALMA Pipeline (cite: 2023PASP..135g4501H) with the versions described in the Quality Assurance Level 2 (QA2) report ."
+        },
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "We flagged three bad antennas (DA45, DV03, and DV10) in Cycle 3 data which cause artificial ripples in the reconstructed images."
+        },
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "We excluded three bad antennas (DA06, DV09, and DV61) which cause the ripples in the image."
+        }
+      ]
+    },
+    {
+      "field": "casa_version",
+      "value": "versions described in the QA2 report",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "All of the ALMA data used in this paper were calibrated using Common Astronomy Software Application package (`CASA`; (cite: 2022PASP..134k4501C)) and the ALMA Pipeline (cite: 2023PASP..135g4501H) with the versions described in the Quality Assurance Level 2 (QA2) report ."
+        }
+      ]
+    },
+    {
+      "field": "pipeline_version",
+      "value": "versions described in the QA2 report",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "All of the ALMA data used in this paper were calibrated using Common Astronomy Software Application package (`CASA`; (cite: 2022PASP..134k4501C)) and the ALMA Pipeline (cite: 2023PASP..135g4501H) with the versions described in the Quality Assurance Level 2 (QA2) report ."
+        }
+      ]
+    }
+  ],
+  "imaging": [
+    {
+      "field": "deconvolver",
+      "value": "multi-scale CLEAN",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "We apply the multi-scale (cite: 2008ISTSP...2..793C) and auto-multithresh CLEAN algorithm."
+        }
+      ]
+    },
+    {
+      "field": "weighting_robust",
+      "value": "Briggs weighting with R = 0.5 (Bands 7, 4, and 3) and R = 2.0 (Band 6)",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "We use a 0.02$''$ $uv$-taper with the Briggs weighting (a robust parameter $R=0.5$)."
+        },
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "We follow the same procedures for imaging as Band 7, but applying the Briggs weighting with $R=2.0$ to increase the S/N and to recover the extended emission."
+        },
+        {
+          "loc": "ALMA Band 3 ($\\lambda=3.0\\,mm$)",
+          "quote": "We CLEANed the dirty cubes down to $1.5\\sigma$ using Briggs weighting ($R=0.5$)."
+        }
+      ]
+    },
+    {
+      "field": "uv_taper",
+      "value": "0.02'' (Band 7); 0.03'' (Band 6 and Band 4)",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "We use a 0.02$''$ $uv$-taper with the Briggs weighting (a robust parameter $R=0.5$)."
+        },
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "We apply a $0.03\\ensuremath{''}$ $uv$-taper to the Band 6 data so that the spatial resolution is consistent with the Band 7 images."
+        },
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "We follow the same approach as Band 7 imaging to create the CLEAN image, but modified the automasking parameters as $\\rm noisethreshold = 3.5$ and $\\rm sidelobethreshold = 1.5$, and applied a $0.03\\ensuremath{''}$ $uv$-taper."
+        }
+      ]
+    },
+    {
+      "field": "masking",
+      "value": "auto-multithresh (Band 7: noisethreshold=4.0, lownoisethreshold=1.5, minbeamfrac=0.3, sidelobethreshold=2.5 for AzTEC-1 and 2.0 for AzTEC-4/8; Band 4: noisethreshold=3.5, sidelobethreshold=1.5), CLEANed down to 1.5 sigma",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "For the auto-multithresh CLEAN algorithm, the automasking parameters of $\\rm noisethreshold=4.0$, $\\rm lownoisethreshold=1.5$, and $\\rm minbeamfrac=0.3$ are used for all SMGs."
+        },
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "For $\\rm sidelobethreshold$, we use 2.5 for AzTEC-1, and 2.0 for AzTEC-4 and AzTEC-8, which are determined by visually inspecting the spatial coverage of the created CLEAN mask on the SMGs."
+        },
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "We follow the same approach as Band 7 imaging to create the CLEAN image, but modified the automasking parameters as $\\rm noisethreshold = 3.5$ and $\\rm sidelobethreshold = 1.5$, and applied a $0.03\\ensuremath{''}$ $uv$-taper."
+        }
+      ]
+    },
+    {
+      "field": "line_free_channels",
+      "value": "Band 4: excluded one spectral window containing CO J=7-6 and [CI] 3P2-3P1, used remaining three spectral windows for continuum",
+      "evidence": [
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "Two redshifted emission lines (CO $J=7-6$ and \\[C i\\] $^{3}P_{2}-^{3}P_{1}$ lines) fall in one of the four spectral windows, thus we use the remaining three spectral windows to image the continuum emission."
+        }
+      ]
+    },
+    {
+      "field": "array_combination",
+      "value": "CASA/concat and CASA/statwt to combine visibility data from extended and compact configurations",
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "Then, we combine visibility data by using the `CASA/concat` task. As the visibility weights taken in different programs in multiple ALMA cycles are not fine-tuned to create a synthesized Gaussian beam, we applied `CASA/statwt` to put the relative weight on different configuration data."
+        }
+      ]
+    },
+    {
+      "field": "final_beam",
+      "value": "AzTEC-1: 0.19''x0.15'' (B9), 0.077''x0.062'' (B7), 0.072''x0.059'' or 0.061''x0.055'' (B4); AzTEC-4: 0.077''x0.062'' (B7), 2.28''x1.93'' (B3); AzTEC-8: 0.070''x0.052'' (B7), 0.064''x0.048'' (B6), 2.72''x2.37'' (B3)",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| AzTEC-1 | 9 | $0.19\\ensuremath{''}\\times0.15\\ensuremath{''}$, -$79.8^{\\circ}$ | 264 (continuum) | – |"
+        },
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "The final synthesized beam sizes are $0.077\\ensuremath{''}$ $\\times$ $0.062\\ensuremath{''}$ with a position angle (PA) of ${\\rm PA}=87.3^{\\circ}$ for AzTEC-1 and AzTEC-4, and $0.070\\ensuremath{''}$ $\\times$ $0.052\\ensuremath{''}$ with ${\\rm PA}=65.5^{\\circ}$ for AzTEC-8, corresponding to $\\sim$460 pc resolution."
+        },
+        {
+          "loc": "Table 2",
+          "quote": "| | 3 | $2.28\\ensuremath{''}\\times1.93\\ensuremath{''},\\,58.5^{\\circ}$ | 125 (150 km/s bin) | CO(4-3), \\[C i\\](1-0), CO(5-4) |"
+        }
+      ]
+    },
+    {
+      "field": "final_rms",
+      "value": "AzTEC-1: 264 (B9), 33.6 (B7), 4.64 (B4) uJy/beam; AzTEC-4: 29.7 (B7), 125 per 150 km/s bin (B3) uJy/beam; AzTEC-8: 31.4 (B7), 31.6 (B6), 273 per 150 km/s bin (B3) uJy/beam",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| AzTEC-1 | 9 | $0.19\\ensuremath{''}\\times0.15\\ensuremath{''}$, -$79.8^{\\circ}$ | 264 (continuum) | – |"
+        },
+        {
+          "loc": "Table 2",
+          "quote": "| | 7 | $0.077\\ensuremath{''} \\times 0.062\\ensuremath{''},\\,87.3^{\\circ}$ | 33.6 (continuum) | – |"
+        },
+        {
+          "loc": "Table 2",
+          "quote": "| | 3 | $2.72\\ensuremath{''}\\times2.37\\ensuremath{''},\\,79.4^{\\circ}$ | 273 (150 km/s bin) | CO(3-2), CO(4-3) |"
+        }
+      ]
+    }
+  ],
+  "inherited": [
+    {
+      "what": {
+        "value": "Complete JWST NIRCam data reduction process for COSMOS-Web",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "A complete overview of the data reduction process will be detailed in (cite: 2025arXiv250603256F), while we provide a brief summary here."
+          }
+        ]
+      },
+      "from_reference": "(cite: 2025arXiv250603256F)"
+    },
+    {
+      "what": {
+        "value": "Supplementary NIRCam reduction corrections (1/f noise mitigation, background modeling, artifact removal, defective pixel masking)",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "Several supplementary corrections were applied inspired by (cite: 2024ApJ...965L...6B), including mitigation of $1/f$ noise, background modeling, artifact removal, and masking of defective pixels."
+          }
+        ]
+      },
+      "from_reference": "(cite: 2024ApJ...965L...6B)"
+    },
+    {
+      "what": {
+        "value": "Photometry and CIGALE SED fitting for stellar masses and star formation rates",
+        "evidence": [
+          {
+            "loc": "Stellar mass and star formation rate",
+            "quote": "For more details on the photometry and SED fitting, we refer the readers to (cite: 2025ApJ...979..229M)."
+          }
+        ]
+      },
+      "from_reference": "(cite: 2025ApJ...979..229M)"
+    },
+    {
+      "what": {
+        "value": "Single modified blackbody plus mid-infrared power-law FIR SED model and GOALS ULIRG parameters (alpha, lambda_c)",
+        "evidence": [
+          {
+            "loc": "Infrared luminosity",
+            "quote": "We follow the prescription of the single MBB and MIR power-law model described in (cite: 2012MNRAS.425.3094C);"
+          },
+          {
+            "loc": "Infrared luminosity",
+            "quote": "We adopt the reference wavelength of $\\lambda_{0}=200$ $\\mu$m ($\\nu_{0}=1500$ GHz; (cite: 2011ApJ...732L..35C) and the parameters used to constrain the MIR power-law component ($\\alpha, \\lambda_{c}$) based on the SED fitting of nearby ULIRGs from the GOALS Survey ((cite: 2012MNRAS.425.3094C); (cite: 2012ApJS..203....9U))."
+          }
+        ]
+      },
+      "from_reference": "(cite: 2012MNRAS.425.3094C); (cite: 2012ApJS..203....9U)"
+    },
+    {
+      "what": {
+        "value": "Two-dimensional Fourier analysis method for characterizing multi-arm spiral structure",
+        "evidence": [
+          {
+            "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+            "quote": "We follow the method presented by (cite: 1992A&AS...93..469P), which was originally proposed by (cite: 1977ApJ...212..637K) and has been mostly applied to nearby galaxies to characterize the multi-arm spiral structure (e.g., (cite: 2012ApJS..199...33D); (cite: 2019A&A...631A..94D); (cite: 2020ApJ...900..150Y))."
+          }
+        ]
+      },
+      "from_reference": "(cite: 1992A&AS...93..469P); (cite: 1977ApJ...212..637K)"
+    }
+  ],
+  "unstated_but_needed": [
+    "Exact CASA and ALMA pipeline versions from the QA2 reports for each of the 8 ALMA programs",
+    "Image pixel (cell) size, image dimensions, and multiscale CLEAN scale sizes used during ALMA imaging",
+    "Whether continuum subtraction (e.g., uvcontsub) was performed on Band 3 spectral scan cubes and which channels were selected as line-free",
+    "Band 9 imaging parameters (weighting, taper, cleaning threshold) for AzTEC-1 (#2018.1.00081.S)",
+    "Exact numerical values of MIR power-law parameters (alpha and lambda_c) adopted from Casey (2012) and best-fit dust temperature T of AzTEC-1",
+    "Aperture size or extraction region used to extract the 1D Band 3 spectra of AzTEC-4 and AzTEC-8, and the measured integrated line fluxes and FWHMs of CO(4-3), CO(5-4), [CI](1-0), and CO(3-2)",
+    "Inner and outer radial limits used when computing the 2D Fourier spiral amplitude A(m, p)"
+  ],
+  "analysis_steps": [
+    {
+      "order": 1,
+      "goal": "Combine multi-configuration ALMA visibilities and image submillimeter continuum and spectral cubes",
+      "method": {
+        "value": "Flag bad antennas causing artificial ripples, concatenate multi-configuration visibilities with CASA/concat, reweight with CASA/statwt, and deconvolve using multi-scale and auto-multithresh CLEAN with Briggs weighting and uv-tapering.",
+        "evidence": [
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "Then, we combine visibility data by using the `CASA/concat` task. As the visibility weights taken in different programs in multiple ALMA cycles are not fine-tuned to create a synthesized Gaussian beam, we applied `CASA/statwt` to put the relative weight on different configuration data."
+          },
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "We apply the multi-scale (cite: 2008ISTSP...2..793C) and auto-multithresh CLEAN algorithm. We use a 0.02$''$ $uv$-taper with the Briggs weighting (a robust parameter $R=0.5$)."
+          }
+        ]
+      },
+      "software": [
+        "CASA"
+      ],
+      "key_parameters": [
+        {
+          "value": "Briggs robust R = 0.5 (Bands 7, 4, 3) and R = 2.0 (Band 6); uv-taper = 0.02'' (Band 7) and 0.03'' (Bands 6, 4); CLEANed to 1.5 sigma",
+          "evidence": [
+            {
+              "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+              "quote": "All CLEAN masks are CLEANed down to $1.5\\sigma$ significance level."
+            },
+            {
+              "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+              "quote": "We follow the same procedures for imaging as Band 7, but applying the Briggs weighting with $R=2.0$ to increase the S/N and to recover the extended emission."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Compare curve of growth of CLEAN image flux density with visibility-modeled zero-baseline amplitude and 2''-aperture flux from compact-configuration (0.2''-resolution) images; measure rms uncertainty via random apertures on blank sky.",
+        "evidence": [
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "To verify whether the total flux is recovered, we compare the curve of growths of the flux density as a function of radius, centered at the peak position of the CLEAN images, with the flux density inferred from the extrapolated zero-baseline amplitude by modeling the visibility in Figure [2](#fig:Figure2) (panels a, c, and d)."
+          },
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "The uncertainties are measured by setting random apertures on a blank sky region and then computing the standard deviation of the fluxes within the apertures."
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "goal": "Model ALMA visibilities to measure FIR total flux densities and effective radii, and measure clump photometry",
+      "method": {
+        "value": "Fit an elliptical exponential disk model (n=1 fixed) directly to the ALMA visibilities using UVMULTIFIT; measure total flux in 2'' apertures on 0.2''-resolution images and clump fluxes in 0.12'' diameter apertures.",
+        "evidence": [
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "We used `UVMULTIFIT` (cite: 2014A&A...563A.136M) by applying an elliptical exponential disk model."
+          },
+          {
+            "loc": "Results",
+            "quote": "We measure the flux density of each clump using an aperture with $0.12\\ensuremath{''}$ diameter."
+          }
+        ]
+      },
+      "software": [
+        "UVMULTIFIT"
+      ],
+      "key_parameters": [
+        {
+          "value": "n = 1 (fixed) elliptical exponential disk model; 0.12'' diameter aperture for clumps; 2'' aperture for total flux",
+          "evidence": [
+            {
+              "loc": "Table 4",
+              "quote": "| | 860 | – | $1.19\\pm0.02$ | 1 (fixed) | $0.64\\pm0.01$ |"
+            },
+            {
+              "loc": "Results",
+              "quote": "We measure the flux density of each clump using an aperture with $0.12\\ensuremath{''}$ diameter."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Elliptical exponential disk profile (n = 1) for FIR continuum visibility modeling",
+          "evidence": [
+            {
+              "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+              "quote": "We used `UVMULTIFIT` (cite: 2014A&A...563A.136M) by applying an elliptical exponential disk model."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Visibility plane modeling with UVMULTIFIT",
+        "evidence": [
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "We used `UVMULTIFIT` (cite: 2014A&A...563A.136M) by applying an elliptical exponential disk model."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Comparison with curve of growth and 2'' aperture photometry on 0.2'' compact-array images",
+        "evidence": [
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "Overall, the total fluxes in $\\sim0.06\\ensuremath{''}$-resolution images fully recover those in $\\sim0.2\\ensuremath{''}$-resolution images."
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "goal": "Fit FIR SED and derive infrared luminosities and dust-obscured star formation rates",
+      "method": {
+        "value": "Measure Band 9 (470 um) flux of AzTEC-1 in a 2'' aperture; fit a single-temperature modified blackbody plus MIR power-law model to AzTEC-1 FIR photometry (Bands 9, 7, 4) using scipy/curve_fit; apply the best-fit AzTEC-1 template normalized by 860 um flux density to AzTEC-4 and AzTEC-8 to integrate L_IR (8-1000 um) and compute SFR_IR.",
+        "evidence": [
+          {
+            "loc": "Infrared luminosity",
+            "quote": "Thus, we first perform a FIR SED fitting of AzTEC-1 assuming a combination of a single dust temperature, modified blackbody (MBB) and mid-infrared (MIR) power-law components (cite: 2012MNRAS.425.3094C), and apply the best-fit model of AzTEC-1 as a template to AzTEC-4 and AzTEC-8."
+          },
+          {
+            "loc": "Infrared luminosity",
+            "quote": "We used the `scipy/curve_fit` function (cite: 2020NatMe..17..261V) for the fitting and applied a Monte Carlo method to derive the 16th-84th percentile range as an uncertainty."
+          }
+        ]
+      },
+      "software": [
+        "scipy"
+      ],
+      "key_parameters": [
+        {
+          "value": "Reference wavelength lambda_0 = 200 um (nu_0 = 1500 GHz); dust emissivity index beta = 1.9; integration range 8-1000 um",
+          "evidence": [
+            {
+              "loc": "Infrared luminosity",
+              "quote": "We adopt the reference wavelength of $\\lambda_{0}=200$ $\\mu$m ($\\nu_{0}=1500$ GHz; (cite: 2011ApJ...732L..35C) and the parameters used to constrain the MIR power-law component ($\\alpha, \\lambda_{c}$) based on the SED fitting of nearby ULIRGs from the GOALS Survey ((cite: 2012MNRAS.425.3094C); (cite: 2012ApJS..203....9U))."
+            },
+            {
+              "loc": "Infrared luminosity",
+              "quote": "We fix the emissivity index as $\\beta= 1.9$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Chabrier IMF (correction factor 0.63 applied to Kennicutt 1998 SFR_IR relation); AzTEC-1 FIR SED shape applies as a template to AzTEC-4 and AzTEC-8",
+          "evidence": [
+            {
+              "loc": "Infrared luminosity",
+              "quote": "Having modeled the FIR SED of AzTEC-1, we apply this as a template to AzTEC-4 and AzTEC-8, by normalizing the best-fit SED shape by 860 $\\mu$m flux density after correcting for the effect of redshift."
+            },
+            {
+              "loc": "Infrared luminosity",
+              "quote": "after applying the correction factor of 0.63 attributed to the difference in the adopted IMF (cite: 2014ARA&A..52..415M)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Least-squares fitting with scipy/curve_fit for 2 free parameters (N_BB and T) with Monte Carlo 16th-84th percentile uncertainties",
+        "evidence": [
+          {
+            "loc": "Infrared luminosity",
+            "quote": "Therefore, the normalization factor $N_{\\rm BB}$ and the dust temperature $T$ are the two free parameters during the fitting. We used the `scipy/curve_fit` function (cite: 2020NatMe..17..261V) for the fitting and applied a Monte Carlo method to derive the 16th-84th percentile range as an uncertainty."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compared derived SFR_IR with CIGALE SED-based SFRs",
+        "evidence": [
+          {
+            "loc": "Infrared luminosity",
+            "quote": "The SED-based SFRs and dust-obscured SFRs are in reasonable agreement except AzTEC-1."
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "goal": "Fit ALMA Band 3 spectral lines and derive molecular gas masses, dynamical masses, and mass fractions",
+      "method": {
+        "value": "Fit single Gaussian profiles to 60 km/s resolution Band 3 spectra of CO and [CI] lines using scipy/curve_fit to measure line fluxes and FWHMs; convert line luminosities to molecular gas mass using excitation ratios and conversion factors; compute dynamical mass from line FWHM, inclination from axis ratio q, and effective radius.",
+        "evidence": [
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "To measure the line flux and FWHM, we performed a single Gaussian fitting to each line, using the `scipy/curve_fit` function."
+          },
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "For a spherically symmetric rotating system, the dynamical mass can be calculated as $M_{\\rm dyn}=v_{\\rm rot}^{2}r/G$, where $G$ and $v_{\\rm rot}$ are the gravitational constant and rotation velocity, respectively."
+          }
+        ]
+      },
+      "software": [
+        "scipy"
+      ],
+      "key_parameters": [
+        {
+          "value": "Spectral binning = 150-200 km/s (full spectrum) and 60 km/s (line zoom-in); r = 1.8 R_e; v_rot = 0.75 FWHM / sin(i); cos(i) = q",
+          "evidence": [
+            {
+              "loc": "Molecular gas and dynamical masses",
+              "quote": "For rotating velocity, we apply $v_{\\rm rot}=0.75\\,{\\rm FWHM}/\\sin{i}$, where $i$ is the inclination of the rotating disk and FWHM is measured from the best-fit Gaussian model of emission lines."
+            },
+            {
+              "loc": "Molecular gas and dynamical masses",
+              "quote": "We applied the radius of $r=1.8R_{e}$ to Equation [\\[eq:Equation3\\]](#eq:Equation3) which contains 80 % of the total flux assuming an exponential disk model."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Excitation ratios r_41 = 0.34 +/- 0.04 (AzTEC-4) and r_31 = 0.63 +/- 0.12 (AzTEC-8); alpha_CO = 1.1 M_sun (K km s^-1 pc^-2)^-1; alpha_[CI] = 4.4 M_sun (K km s^-1 pc^-2)^-1; spherically symmetric rotating system; R_e,CO approx R_e,F444W for AzTEC-4 and AzTEC-8",
+          "evidence": [
+            {
+              "loc": "Molecular gas and dynamical masses",
+              "quote": "For excitation ratios, we adopt the values derived by (cite: 2021MNRAS.501.3926B): $r_{41} = 0.34 \\pm 0.04$ for AzTEC-4 and $r_{31} = 0.63 \\pm 0.12$ for AzTEC-8, which are broadly consistent with values reported in the literature (e.g., (cite: 2020ApJ...902..109B); (cite: 2021ApJ...908...95H); (cite: 2023ApJ...945..128F))."
+            },
+            {
+              "loc": "Molecular gas and dynamical masses",
+              "quote": "Thus, we adopt the CO-to-H$_{2}$ conversion factor of $\\alpha_{\\rm{CO}}=1.1$ $M_{\\odot}({\\rm K\\,km\\,s^{-1}\\,pc^{-2}})^{-1}$ derived by (cite: 2018ApJ...863...56C). For the \\[C i\\]-to-H$_{2}$ conversion factor, we use the $\\alpha_{\\rm{[CI]}}=4.4$ $M_{\\odot}({\\rm K\\,km\\,s^{-1}\\,pc^{-2}})^{-1}$ ($\\alpha_{\\rm{[CI]}}/\\alpha_{\\rm CO}\\sim4$ derived by (cite: 2021MNRAS.501.3926B))."
+            },
+            {
+              "loc": "Molecular gas and dynamical masses",
+              "quote": "Thus, for AzTEC-4 and AzTEC-8, we adopt the effective radius measured from the F444W images which both returns Sérsic index of $n\\sim1$ (Section [3.2](#subsec:Section3.2)), as the average size ratio between the CO $J=3-2$ line and the 4.4 $\\mu$m continuum emission is close to unity ($R_{e,{\\rm CO}}/R_{e,{\\rm F444W}}=0.97\\pm0.30$) among ten massive DSFGs at $z\\sim2$ (cite: 2023ApJ...957L..15T)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Single Gaussian line profile fitting with scipy/curve_fit",
+        "evidence": [
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "To measure the line flux and FWHM, we performed a single Gaussian fitting to each line, using the `scipy/curve_fit` function."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Cross-checked CO-based and [CI]-based molecular gas masses for AzTEC-1 and AzTEC-4; increased lower uncertainty on M_dyn by a factor of two to account for spherical symmetry overestimation.",
+        "evidence": [
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "We find that molecular gas mass measurements from CO and \\[C i\\] lines are in reasonable agreement for both AzTEC-1 and AzTEC-4 within the uncertainties."
+          },
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "It has been suggested that assuming a spherically symmetric model may overestimate the dynamical mass by up to 20-30% compared to a thin disk model or a combination of bulge and disk components ((cite: 2008gady.book.....B); (cite: 2020MNRAS.497.4051W)), thus we increase the lower uncertainties by a factor of two to take into account this overestimation."
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "goal": "Measure rest-frame optical color profiles and perform 2D parametric morphological fitting on JWST F444W images",
+      "method": {
+        "value": "Match PSFs of NIRCam filters to F444W using pypher to construct F277W - F444W color maps and radial profiles; fit 2D single, PSF+single, double, and triple Sersic profiles to 15''x15'' F444W cutouts using GALFIT with PSFEx-reconstructed PSFs.",
+        "evidence": [
+          {
+            "loc": "Results",
+            "quote": "Figure [6](#fig:Figure6) shows the spatial variation and the radial profile of the F277W - F444W color of the three SMGs, constructed by matching the PSFs of the F277W and F444W images using `pypher`."
+          },
+          {
+            "loc": "Morphological properties",
+            "quote": "We run `GALFIT` by feeding a $15''\\times15''$ cutout science image, standard deviation (ERR extension) image produced by the JWST pipeline, and the PSF image."
+          },
+          {
+            "loc": "Morphological properties",
+            "quote": "The presence of significant residuals in the AzTEC-4 and AzTEC-8 images prompted us to further fit double and triple Sérsic components for AzTEC-4 and AzTEC-8, respectively."
+          }
+        ]
+      },
+      "software": [
+        "PSFEx",
+        "pypher",
+        "GALFIT"
+      ],
+      "key_parameters": [
+        {
+          "value": "15'' x 15'' cutout size; pixel scale = 0.03''/pixel; F444W PSF FWHM = 0.14''",
+          "evidence": [
+            {
+              "loc": "JWST NIRCam",
+              "quote": "The final mosaics were constructed at a pixel scale of $0.03\\ensuremath{''}$/pixel, balancing spatial resolution and photometric accuracy."
+            },
+            {
+              "loc": "Morphological properties",
+              "quote": "We run `GALFIT` by feeding a $15''\\times15''$ cutout science image, standard deviation (ERR extension) image produced by the JWST pipeline, and the PSF image."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Rest-frame optical emission can be represented by single or multi-component Sersic profiles (plus optional central point source for AzTEC-1)",
+          "evidence": [
+            {
+              "loc": "Morphological properties",
+              "quote": "We applied the `GALFIT` analyses to JWST F444W images assuming that the rest-frame optical emission can be well represented by a Sérsic profile (cite: 1968adga.book.....S)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "2D parametric chi-square minimization with GALFIT using pipeline ERR extension",
+        "evidence": [
+          {
+            "loc": "Morphological properties",
+            "quote": "As expected, these multi-component fit returns smaller reduced chi-square ($\\chi^{2}$) values than the single component fit."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Inspection of residual maps and comparison of reduced chi-square between single and multi-component Sersic fits",
+        "evidence": [
+          {
+            "loc": "Morphological properties",
+            "quote": "The presence of significant residuals in the AzTEC-4 and AzTEC-8 images prompted us to further fit double and triple Sérsic components for AzTEC-4 and AzTEC-8, respectively."
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "goal": "Deproject galaxy images and perform 2D Fourier analysis to detect spiral arm modes and pitch angles",
+      "method": {
+        "value": "Estimate inclination from F444W GALFIT axis ratio (q = cos i), deproject ALMA 860 um and JWST 4.4 um images to face-on using AffineTransform in scikit-image, and compute 2D logarithmic spiral Fourier amplitudes A(m, p) for modes m = 1-4 and p = -30 to 30.",
+        "evidence": [
+          {
+            "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+            "quote": "We estimate the inclination ($i$) of the galaxies based on the minor-to-major axis ratio ($q$) of the F444W image measured by `GALFIT` by assuming that the stellar disk is thin and circular, i.e., $q = \\cos i$."
+          },
+          {
+            "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+            "quote": "We then deproject the galaxies to a face-on view by adjusting their aspect ratios along the minor axis while preserving the pixel scale and the beam size, using the `AffineTransform` function implemented in `scikit-image` (cite: 2014PeerJ...2..453V). We subsequently calculate the Fourier amplitudes for modes $m = 1$–$4$, with $p$ sampled from $-30$ to $30$."
+          }
+        ]
+      },
+      "software": [
+        "scikit-image"
+      ],
+      "key_parameters": [
+        {
+          "value": "Modes m = 1 to 4; pitch parameter p sampled from -30 to 30; pitch angle alpha given by p = -m / tan(alpha)",
+          "evidence": [
+            {
+              "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+              "quote": "A radial profile of an $m$-mode logarithmic spiral can be described as $r=r_{0}\\exp[-(m/p)\\theta]$ in the polar coordinates ($r$, $\\theta$), where $p$ is the dimensionless parameter which characterizes the pitch angle ($\\alpha$) of a spiral through $p=-m/\\tan(\\alpha)$."
+            },
+            {
+              "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+              "quote": "We subsequently calculate the Fourier amplitudes for modes $m = 1$–$4$, with $p$ sampled from $-30$ to $30$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Stellar disk is thin and circular so inclination is given by q = cos(i)",
+          "evidence": [
+            {
+              "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+              "quote": "We estimate the inclination ($i$) of the galaxies based on the minor-to-major axis ratio ($q$) of the F444W image measured by `GALFIT` by assuming that the stellar disk is thin and circular, i.e., $q = \\cos i$."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Direct Fourier transform decomposition on deprojected pixel flux densities",
+        "evidence": [
+          {
+            "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+            "quote": "Fourier analysis decomposes the image into Fourier amplitude $A$ determined by each $m$ and $p$:"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Comparison of normalized Fourier spectra across modes m=1-4 and between 860 um dust and 4.4 um stellar images",
+        "evidence": [
+          {
+            "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+            "quote": "We find that the 860 $\\mu$m continuum of AzTEC-4 shows the strongest Fourier amplitude in $(m, p)=(2, -2.0)$, corresponding to a two-arm spiral with a pitch angle of $\\alpha=44.7^{\\circ}$ (Figure [9](#fig:Figure9))."
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "CASA",
+      "version": "versions described in the QA2 report",
+      "used_for": {
+        "value": "ALMA data calibration, visibility concatenation (concat), statistical reweighting (statwt), and multi-scale/auto-multithresh CLEAN imaging",
+        "evidence": [
+          {
+            "loc": "Observations",
+            "quote": "All of the ALMA data used in this paper were calibrated using Common Astronomy Software Application package (`CASA`; (cite: 2022PASP..134k4501C)) and the ALMA Pipeline (cite: 2023PASP..135g4501H) with the versions described in the Quality Assurance Level 2 (QA2) report ."
+          },
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "Then, we combine visibility data by using the `CASA/concat` task. As the visibility weights taken in different programs in multiple ALMA cycles are not fine-tuned to create a synthesized Gaussian beam, we applied `CASA/statwt` to put the relative weight on different configuration data."
+          }
+        ]
+      }
+    },
+    {
+      "name": "ALMA Pipeline",
+      "version": "versions described in the QA2 report",
+      "used_for": {
+        "value": "Calibration of ALMA visibility data",
+        "evidence": [
+          {
+            "loc": "Observations",
+            "quote": "All of the ALMA data used in this paper were calibrated using Common Astronomy Software Application package (`CASA`; (cite: 2022PASP..134k4501C)) and the ALMA Pipeline (cite: 2023PASP..135g4501H) with the versions described in the Quality Assurance Level 2 (QA2) report ."
+          }
+        ]
+      }
+    },
+    {
+      "name": "UVMULTIFIT",
+      "version": "not stated",
+      "used_for": {
+        "value": "Modeling ALMA visibilities with an elliptical exponential disk model to measure total flux densities and FIR effective radii",
+        "evidence": [
+          {
+            "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+            "quote": "We used `UVMULTIFIT` (cite: 2014A&A...563A.136M) by applying an elliptical exponential disk model."
+          }
+        ]
+      }
+    },
+    {
+      "name": "JWST Calibration Pipeline",
+      "version": "1.14.0",
+      "used_for": {
+        "value": "Reduction of raw JWST NIRCam exposures",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "The raw exposures from NIRCam were retrieved from the Mikulski Archive for Space Telescopes (MAST) and reduced using pipeline version 1.14.0."
+          }
+        ]
+      }
+    },
+    {
+      "name": "PSFEx",
+      "version": "not stated",
+      "used_for": {
+        "value": "Reconstructing the PSF for each JWST NIRCam filter",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "The PSF for each NIRCam filter was reconstructed using `PSFEx` (cite: 2011ASPC..442..435B)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "JHAT",
+      "version": "not stated",
+      "used_for": {
+        "value": "Aligning JWST NIRCam images with HST/ACS F814W reference catalog",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "To refine the astrometry, we used the JWST/Hubble Space Telescope (HST) Alignment Tool (JHAT; (cite: 2023zndo...7892935R)) to align the NIRCam images with a reference catalog derived from HST/ACS F814W mosaics (cite: 2007ApJS..172..196K)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "pypher",
+      "version": "not stated",
+      "used_for": {
+        "value": "Matching the PSFs of NIRCam F150W and F277W images to F444W for RGB images and F277W-F444W color maps",
+        "evidence": [
+          {
+            "loc": "JWST NIRCam",
+            "quote": "To create the RGB images, we use `pypher` (cite: 2016zndo.....61392B) to match the PSF of F150W and F277W to that of F444W."
+          },
+          {
+            "loc": "Results",
+            "quote": "Figure [6](#fig:Figure6) shows the spatial variation and the radial profile of the F277W - F444W color of the three SMGs, constructed by matching the PSFs of the F277W and F444W images using `pypher`."
+          }
+        ]
+      }
+    },
+    {
+      "name": "scipy",
+      "version": "not stated",
+      "used_for": {
+        "value": "Fitting the FIR SED of AzTEC-1 and fitting single Gaussian profiles to Band 3 emission lines via scipy/curve_fit",
+        "evidence": [
+          {
+            "loc": "Infrared luminosity",
+            "quote": "We used the `scipy/curve_fit` function (cite: 2020NatMe..17..261V) for the fitting and applied a Monte Carlo method to derive the 16th-84th percentile range as an uncertainty."
+          },
+          {
+            "loc": "Molecular gas and dynamical masses",
+            "quote": "To measure the line flux and FWHM, we performed a single Gaussian fitting to each line, using the `scipy/curve_fit` function."
+          }
+        ]
+      }
+    },
+    {
+      "name": "GALFIT",
+      "version": "not stated",
+      "used_for": {
+        "value": "Two-dimensional parametric Sersic fitting of JWST F444W images",
+        "evidence": [
+          {
+            "loc": "Morphological properties",
+            "quote": "We quantify the morphological properties using `GALFIT` (cite: 2002AJ....124..266P) which performs parametric fitting of objects in two-dimensional images."
+          }
+        ]
+      }
+    },
+    {
+      "name": "scikit-image",
+      "version": "not stated",
+      "used_for": {
+        "value": "Deprojecting galaxy images to a face-on view using the AffineTransform function",
+        "evidence": [
+          {
+            "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+            "quote": "We then deproject the galaxies to a face-on view by adjusting their aspect ratios along the minor axis while preserving the pixel scale and the beam size, using the `AffineTransform` function implemented in `scikit-image` (cite: 2014PeerJ...2..453V)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "astropy",
+      "version": "not stated",
+      "used_for": {
+        "value": "General astronomical data analysis (listed in Software section)",
+        "evidence": [
+          {
+            "loc": "Software",
+            "quote": "ALMA Interforometric Pipeline (cite: 2023PASP..135g4501H); `astropy` (cite: 2022ApJ...935..167A); `CASA` (cite: 2022PASP..134k4501C); `GALFIT` (cite: 2002AJ....124..266P); `PSFEx` (cite: 2011ASPC..442..435B); `pypher` (cite: boucaud2016); Scientific colour maps (cite: 2021zndo...1243862C); `scikit-image` (cite: 2014PeerJ...2..453V); `UVMULTIFIT` (cite: 2014A&A...563A.136M)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scientific colour maps",
+      "version": "not stated",
+      "used_for": {
+        "value": "Plotting color maps (listed in Software section)",
+        "evidence": [
+          {
+            "loc": "Software",
+            "quote": "ALMA Interforometric Pipeline (cite: 2023PASP..135g4501H); `astropy` (cite: 2022ApJ...935..167A); `CASA` (cite: 2022PASP..134k4501C); `GALFIT` (cite: 2002AJ....124..266P); `PSFEx` (cite: 2011ASPC..442..435B); `pypher` (cite: boucaud2016); Scientific colour maps (cite: 2021zndo...1243862C); `scikit-image` (cite: 2014PeerJ...2..453V); `UVMULTIFIT` (cite: 2014A&A...563A.136M)"
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "AzTEC-1 860 um visibility-modeled flux density (f_860um,uv)",
+      "value": "17.61",
+      "uncertainty": "0.16",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 860 um 2''-aperture flux density (f_860um,2'')",
+      "value": "19.48",
+      "uncertainty": "0.80",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 2.1 mm visibility-modeled flux density",
+      "value": "0.88",
+      "uncertainty": "0.02",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "ALMA Band 4 ($\\lambda=2.1\\,mm$)",
+          "quote": "Compared to the total flux ($0.88 \\pm 0.02$ mJy) derived from the visibility modeling, the cumulative flux at $1''$ radius is higher by $\\sim15$ %, but consistent with the photometry from the $0.2\\ensuremath{''}$-resolution image."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 470 um 2''-aperture flux density (f_470um)",
+      "value": "25.01",
+      "uncertainty": "3.16",
+      "units": "mJy",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Infrared luminosity",
+          "quote": "We derived the total flux density of $f_{\\rm 470\\mu m}=25.01\\pm3.16$ mJy, which is slightly higher than the value reported in (cite: 2019ApJ...876....1T)."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 Clump A flux density at 860 um",
+      "value": "1.15",
+      "uncertainty": "0.07",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "Clump A has a flux density of $1.15\\pm0.07$ mJy at 860 $\\mu$m and $0.081\\pm0.015$ mJy at 2.06 mm, clump B has $0.93\\pm0.07$ mJy at 860 $\\mu$m and $0.068\\pm0.015$ mJy at 2.06 mm, and clump C has $0.76\\pm0.08$ mJy at 860 $\\mu$m and $0.048\\pm0.015$ mJy at 2.06 mm, where the uncertainties are derived from setting the random aperture on a blank sky region."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 Clump B flux density at 860 um",
+      "value": "0.93",
+      "uncertainty": "0.07",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "Clump A has a flux density of $1.15\\pm0.07$ mJy at 860 $\\mu$m and $0.081\\pm0.015$ mJy at 2.06 mm, clump B has $0.93\\pm0.07$ mJy at 860 $\\mu$m and $0.068\\pm0.015$ mJy at 2.06 mm, and clump C has $0.76\\pm0.08$ mJy at 860 $\\mu$m and $0.048\\pm0.015$ mJy at 2.06 mm, where the uncertainties are derived from setting the random aperture on a blank sky region."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 Clump C flux density at 860 um",
+      "value": "0.76",
+      "uncertainty": "0.08",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "Clump A has a flux density of $1.15\\pm0.07$ mJy at 860 $\\mu$m and $0.081\\pm0.015$ mJy at 2.06 mm, clump B has $0.93\\pm0.07$ mJy at 860 $\\mu$m and $0.068\\pm0.015$ mJy at 2.06 mm, and clump C has $0.76\\pm0.08$ mJy at 860 $\\mu$m and $0.048\\pm0.015$ mJy at 2.06 mm, where the uncertainties are derived from setting the random aperture on a blank sky region."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 infrared luminosity (L_IR)",
+      "value": "12.46",
+      "uncertainty": "+2.50/-1.93",
+      "units": "10^12 L_odot",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 dust-obscured star formation rate (SFR_IR)",
+      "value": "1358",
+      "uncertainty": "+273/-211",
+      "units": "M_odot/yr",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 CO-based molecular gas mass (M_mol gas, CO)",
+      "value": "7.1",
+      "uncertainty": "3.1",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 [CI]-based molecular gas mass (M_mol gas, [CI])",
+      "value": "7.8",
+      "uncertainty": "1.9",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 dynamical mass (M_dyn)",
+      "value": "5.68",
+      "uncertainty": "+0.64/-1.28",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-1 | $17.61\\pm0.16$ | $19.48\\pm0.80$ | $8.1_{-1.2}^{+1.4}$ | $723\\pm120$ | $12.46_{-1.93}^{+2.50}$ | $1358_{-211}^{+273}$ | $7.1\\pm3.1$$^{$^{\\rm d}$}$ | $7.8\\pm1.9$ | $5.68^{+0.64}_{-1.28}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 molecular gas mass fraction (f_mol gas)",
+      "value": "0.47",
+      "uncertainty": "0.22",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Baryonic mass and gas mass fractions",
+          "quote": "AzTEC-1 has a gas mass fraction, defined as $f_{\\rm mol \\ gas}= M_{\\rm mol\\ gas}/(M_{\\star}+M_{\\rm mol \\ gas})$, of $f_{\\rm mol \\ gas}=0.47\\pm0.22$, which is in agreement with the scaling relation from (cite: 2020ARA&A..58..157T), whereas AzTEC-4 and AzTEC-8 have $f_{\\rm mol \\ gas}\\lesssim0.2$, which are $\\sim0.3-0.5$ dex below the scaling relation."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 spectroscopic redshift",
+      "value": "4.1979",
+      "uncertainty": "0.0003",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Molecular gas and dynamical masses",
+          "quote": "Three emission lines (CO $J=4-3/5-4$ and \\[C i\\] $^{3}P_{1}-^{3}P_{0}$) are detected in AzTEC-4, confirming the spectroscopic redshift of AzTEC-4 as $z=4.1979\\pm0.0003$."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 860 um visibility-modeled flux density (f_860um,uv)",
+      "value": "12.88",
+      "uncertainty": "0.17",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 860 um 2''-aperture flux density (f_860um,2'')",
+      "value": "14.52",
+      "uncertainty": "0.71",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 infrared luminosity (L_IR)",
+      "value": "9.65",
+      "uncertainty": "+2.04/-1.62",
+      "units": "10^12 L_odot",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 dust-obscured star formation rate (SFR_IR)",
+      "value": "1048",
+      "uncertainty": "+221/-176",
+      "units": "M_odot/yr",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 CO-based molecular gas mass (M_mol gas, CO)",
+      "value": "9.8",
+      "uncertainty": "3.0",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 [CI]-based molecular gas mass (M_mol gas, [CI])",
+      "value": "5.4",
+      "uncertainty": "3.0",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 dynamical mass (M_dyn)",
+      "value": "43.5",
+      "uncertainty": "+5.81/-11.6",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-4 | $12.88\\pm0.17$ | $14.52\\pm0.71$ | $37.2_{-13.2}^{+20.4}$ | $715\\pm594$ | $9.65_{-1.62}^{+2.04}$ | $1048_{-176}^{+221}$ | $9.8\\pm3.0$ | $5.4\\pm3.0$ | $43.5^{+5.81}_{-11.6}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 860 um visibility-modeled flux density (f_860um,uv)",
+      "value": "12.20",
+      "uncertainty": "0.09",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-8 | $12.20\\pm0.09$ | $13.39\\pm0.48$ | $56.2_{-8.4}^{+9.8}$ | $977\\pm75$ | $8.53_{-1.40}^{+1.78}$ | $931_{-153}^{+194}$ | $10.0\\pm3.9$ | – | $51.4^{+4.59}_{-9.18}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 860 um 2''-aperture flux density (f_860um,2'')",
+      "value": "13.39",
+      "uncertainty": "0.48",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-8 | $12.20\\pm0.09$ | $13.39\\pm0.48$ | $56.2_{-8.4}^{+9.8}$ | $977\\pm75$ | $8.53_{-1.40}^{+1.78}$ | $931_{-153}^{+194}$ | $10.0\\pm3.9$ | – | $51.4^{+4.59}_{-9.18}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 1.3 mm visibility-modeled flux density",
+      "value": "3.3",
+      "uncertainty": "0.3",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "ALMA Band 6 ($\\lambda=1.3\\,mm$)",
+          "quote": "Compared to the total flux ($3.3 \\pm 0.3$ mJy) derived from the visibility modeling, the flux is systematically lower by $\\sim60$ %, indicating that some extended flux is lost, presumably due to the lack of short baseline data."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 infrared luminosity (L_IR)",
+      "value": "8.53",
+      "uncertainty": "+1.78/-1.40",
+      "units": "10^12 L_odot",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-8 | $12.20\\pm0.09$ | $13.39\\pm0.48$ | $56.2_{-8.4}^{+9.8}$ | $977\\pm75$ | $8.53_{-1.40}^{+1.78}$ | $931_{-153}^{+194}$ | $10.0\\pm3.9$ | – | $51.4^{+4.59}_{-9.18}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 dust-obscured star formation rate (SFR_IR)",
+      "value": "931",
+      "uncertainty": "+194/-153",
+      "units": "M_odot/yr",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-8 | $12.20\\pm0.09$ | $13.39\\pm0.48$ | $56.2_{-8.4}^{+9.8}$ | $977\\pm75$ | $8.53_{-1.40}^{+1.78}$ | $931_{-153}^{+194}$ | $10.0\\pm3.9$ | – | $51.4^{+4.59}_{-9.18}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 CO-based molecular gas mass (M_mol gas, CO)",
+      "value": "10.0",
+      "uncertainty": "3.9",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-8 | $12.20\\pm0.09$ | $13.39\\pm0.48$ | $56.2_{-8.4}^{+9.8}$ | $977\\pm75$ | $8.53_{-1.40}^{+1.78}$ | $931_{-153}^{+194}$ | $10.0\\pm3.9$ | – | $51.4^{+4.59}_{-9.18}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 dynamical mass (M_dyn)",
+      "value": "51.4",
+      "uncertainty": "+4.59/-9.18",
+      "units": "10^10 M_odot",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "| AzTEC-8 | $12.20\\pm0.09$ | $13.39\\pm0.48$ | $56.2_{-8.4}^{+9.8}$ | $977\\pm75$ | $8.53_{-1.40}^{+1.78}$ | $931_{-153}^{+194}$ | $10.0\\pm3.9$ | – | $51.4^{+4.59}_{-9.18}$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8.2 Band 7 flux density",
+      "value": "1.82",
+      "uncertainty": "not stated",
+      "units": "mJy",
+      "from_step": 1,
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "Two galaxies, AzTEC-8.2 and AzTEC-8.3, are serendipitously detected in the ALMA Band 7 image of AzTEC-8 with a flux density of 1.82 mJy and 0.37 mJy, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8.3 Band 7 flux density",
+      "value": "0.37",
+      "uncertainty": "not stated",
+      "units": "mJy",
+      "from_step": 1,
+      "evidence": [
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "Two galaxies, AzTEC-8.2 and AzTEC-8.3, are serendipitously detected in the ALMA Band 7 image of AzTEC-8 with a flux density of 1.82 mJy and 0.37 mJy, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 F444W single Sersic effective radius (R_e,major) and Sersic index (n)",
+      "value": "R_e,major = 1.38, n = 5.43",
+      "uncertainty": "R_e,major: 0.02, n: 0.10",
+      "units": "kpc (R_e,major), dimensionless (n)",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| AzTEC-1 | 4.44 | single | $1.38\\pm0.02$ | $5.43\\pm0.10$ | $0.74\\pm0.01$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-1 860 um effective radius (R_e,major)",
+      "value": "1.19",
+      "uncertainty": "0.02",
+      "units": "kpc",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| | 860 | – | $1.19\\pm0.02$ | 1 (fixed) | $0.64\\pm0.01$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 F444W single Sersic effective radius (R_e,major) and Sersic index (n)",
+      "value": "R_e,major = 2.68, n = 1.02",
+      "uncertainty": "R_e,major: 0.01, n: 0.01",
+      "units": "kpc (R_e,major), dimensionless (n)",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| AzTEC-4 | 4.44 | single | $2.68\\pm0.01$ | $1.02\\pm0.01$ | $0.74\\pm0.00$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 860 um effective radius (R_e,major)",
+      "value": "1.49",
+      "uncertainty": "0.03",
+      "units": "kpc",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| | 860 | – | $1.49\\pm0.03$ | 1 (fixed) | $0.61\\pm0.02$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 F444W single Sersic effective radius (R_e,major) and Sersic index (n)",
+      "value": "R_e,major = 1.91, n = 0.96",
+      "uncertainty": "R_e,major: 0.00, n: 0.00",
+      "units": "kpc (R_e,major), dimensionless (n)",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| AzTEC-8 | 4.44 | single | $1.91\\pm0.00$ | $0.96\\pm0.00$ | $0.87\\pm0.00$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-8 860 um effective radius (R_e,major)",
+      "value": "0.83",
+      "uncertainty": "0.01",
+      "units": "kpc",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "| | 860 | – | $0.83\\pm0.01$ | 1 (fixed) | $0.92\\pm0.02$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "AzTEC-4 860 um dust spiral pitch angle (alpha)",
+      "value": "44.7",
+      "uncertainty": "not stated",
+      "units": "deg",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+          "quote": "We find that the 860 $\\mu$m continuum of AzTEC-4 shows the strongest Fourier amplitude in $(m, p)=(2, -2.0)$, corresponding to a two-arm spiral with a pitch angle of $\\alpha=44.7^{\\circ}$ (Figure [9](#fig:Figure9))."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Despite similar FIR flux densities, infrared luminosities, and effective radii, AzTEC-1, AzTEC-4, and AzTEC-8 exhibit diverse morphologies across rest-frame UV/optical and FIR wavelengths, demonstrating multiple pathways to trigger starbursts in luminous SMGs.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "Despite similarities in their observed far-infrared properties (flux density, infrared luminosity, and effective radius), the three SMGs exhibit heterogeneous morphologies both across wavelengths and among the sources themselves."
+        }
+      ]
+    },
+    {
+      "value": "AzTEC-1 has a highly concentrated rest-frame UV/optical stellar core (n = 5.4) with a positive radial color gradient and an extended FIR disk containing three off-center clumps with no optical counterparts, consistent with a gas-rich major merger remnant transitioning toward a dust-obscured quasar.",
+      "evidence": [
+        {
+          "loc": "Discussion and summary",
+          "quote": "AzTEC-1 has a concentrated structure ($n=5.4$) in the optical wavelengths and a clumpy morphology in the FIR wavelengths which shows at least three FIR clumps with no clear optical counterparts."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "In concordance with the above discussion that AzTEC-1 is a major merger remnant, we suggest that AzTEC-1 is in a transition phase between a SMG and a dust-obscured quasar (cite: 2010MNRAS.407.1701N)."
+        }
+      ]
+    },
+    {
+      "value": "AzTEC-4 (confirmed at z = 4.198) exhibits a two-arm spiral structure in 860 um dust emission (pitch angle 44.7 deg) but a smooth disk-like stellar distribution (n = 1.02) without spiral arms, favoring a starburst driven by gravitational instability in a gas-rich rotating disk.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "AzTEC-4, which is confirmed to be at $z=4.198$, shows a two-arm spiral of dust, but not in the stellar distribution."
+        },
+        {
+          "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+          "quote": "Since the optical morphology of AzTEC-4 appears relatively undisturbed and no clear companion galaxies based on the photometric redshifts from the COSMOS2025 catalog were found within 30 kpc radius from AzTEC-4, we favor the scenario where its intense star formation is primarily driven by gravitationally instability of a gas-rich disk"
+        }
+      ]
+    },
+    {
+      "value": "AzTEC-8 shows an extended, clumpy disk-like optical morphology (single Sersic n = 0.96, triple Sersic fit preferred) and compact central FIR continuum, consistent with secular disk instability, minor mergers, or a combination of both.",
+      "evidence": [
+        {
+          "loc": "Discussion and summary",
+          "quote": "The nature of AzTEC-8 ($z=3.10$) remains unclear; however, it is considered to follow either of the following scenarios: a starburst triggered by a gravitationally unstable gas disk, an ongoing minor merger, or a combination of both."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Luminous SMGs at 3.0 <= z <= 4.5 can be triggered by multiple distinct physical mechanisms rather than a single universal major-merger pathway.",
+      "experiment": "Combined ~500 pc resolution ALMA (Bands 4, 6, 7) FIR continuum and JWST/NIRCam rest-frame UV/optical imaging, GALFIT morphological modeling, 2D Fourier spiral analysis, and ALMA Band 3 CO/[CI] spectral line analysis of AzTEC-1, AzTEC-4, and AzTEC-8.",
+      "result": "AzTEC-1 has a concentrated stellar core (n = 5.43, R_e = 1.38 kpc), three off-center FIR clumps, and lies 0.7-1.0 dex above the SFMS; AzTEC-4 has an exponential stellar disk (n = 1.02), double-peaked CO lines, and an m = 2 dusty spiral (alpha = 44.7 deg); AzTEC-8 has a clumpy disk-like stellar distribution (n = 0.96) and compact FIR core.",
+      "finding": "Multiple physical mechanisms trigger starbursts in luminous SMGs: post gas-rich major merger with disk reformation (AzTEC-1), secular gravitational instability in a gas disk (AzTEC-4), and disk instability and/or minor mergers (AzTEC-8).",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "These three SMGs exemplify that multiple physical mechanisms exist in triggering starbursts in luminous SMGs at high redshift: secular instability in gas disks (AzTEC-4) in addition to possible minor mergers (AzTEC-8), and a combination of the efficient gas supply to the central core induced by a gas-rich major merger and the reformation of cold gas disk (AzTEC-1)."
+        }
+      ]
+    },
+    {
+      "hypothesis": "AzTEC-4 at z = 4.198 is a rotating disk hosting a two-arm spiral in dust continuum rather than an ongoing major merger.",
+      "experiment": "ALMA Band 3 spectral scan for CO/[CI] lines, deprojection of ALMA 860 um and JWST F444W images using GALFIT axis ratio, and 2D logarithmic spiral Fourier decomposition for modes m = 1-4.",
+      "result": "Detection of double-peaked CO J=4-3 and J=5-4 lines at z = 4.1979 +/- 0.0003; strongest Fourier peak in 860 um continuum at (m, p) = (2, -2.0) corresponding to a two-arm spiral with pitch angle 44.7 deg, while F444W shows n = 1.02 and no strong m = 2 mode.",
+      "finding": "AzTEC-4 is a rotating disk galaxy with a two-arm dusty spiral and undisturbed stellar disk, whose starburst is driven by gravitational instability rather than an ongoing major merger.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Molecular gas and dynamical masses",
+          "quote": "Three emission lines (CO $J=4-3/5-4$ and \\[C i\\] $^{3}P_{1}-^{3}P_{0}$) are detected in AzTEC-4, confirming the spectroscopic redshift of AzTEC-4 as $z=4.1979\\pm0.0003$. The double-peak profile seen in CO $J=4-3$ and $J=5-4$ lines suggests that AzTEC-4 is a rotating gas disk."
+        },
+        {
+          "loc": "Detection of the two-arm spiral of dust at z = 4.2",
+          "quote": "We find that the 860 $\\mu$m continuum of AzTEC-4 shows the strongest Fourier amplitude in $(m, p)=(2, -2.0)$, corresponding to a two-arm spiral with a pitch angle of $\\alpha=44.7^{\\circ}$ (Figure [9](#fig:Figure9))."
+        }
+      ]
+    },
+    {
+      "hypothesis": "AzTEC-1 is a gas-rich major merger remnant in a transition phase between a dusty starburst and a quasar, featuring three real off-center FIR clumps.",
+      "experiment": "Multi-band high-resolution ALMA imaging at 860 um (Band 7) and 2.06 mm (Band 4) compared with JWST NIRCam F277W/F444W GALFIT modeling and global dynamical/baryonic mass analysis.",
+      "result": "Three off-center clumps (A, B, C) are detected at >5 sigma in both 860 um and 2.06 mm with no 2.77 um stellar counterparts, accounting for ~16% and ~22% of total flux; F444W shows n = 5.43 and log(Sigma_star) = 9.83 +/- 0.07 M_odot kpc^-2; M_dyn (5.68 x 10^10 M_odot) is smaller than baryonic mass.",
+      "finding": "The three FIR clumps in AzTEC-1 are real young massive clumps in a reformed gas disk around a compact, non-virialized post-merger stellar core transitioning toward a quasar phase.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "The 2.06 mm image of AzTEC-1 exhibits three off-center clumps detected at $>5\\sigma$ significance which are all spatially consistent with the three clumps seen in the 860 $\\mu$m image."
+        },
+        {
+          "loc": "Discussion and summary",
+          "quote": "We suggest that AzTEC-1 is a major merger remnant of gas-rich galaxies. The highly concentrated and compact stellar morphology with a substantial amount of molecular gas disk ($f_{\\rm mol \\ gas}=0.47\\pm0.22$) support this scenario, indicating that the formation of the stellar core was triggered by the efficient loss of angular momentum of the cold gas."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Combining extended and compact ALMA configurations in Band 7 recovers total submillimeter flux (lost in earlier extended-only observations) while achieving ~500 pc resolution to match JWST NIRCam rest-frame optical imaging.",
+      "evidence": [
+        {
+          "loc": "Sample",
+          "quote": "However, the lack of observations in short baselines causes the missing flux for more than half of the total flux according to that measured with the Submillimeter Array (SMA) observation."
+        },
+        {
+          "loc": "ALMA Band 7 ($\\lambda=860\\,\\mu m$)",
+          "quote": "In order to reconstruct flux-complete high-resolution images of submillilimeter continuum, we combine observational data from three different ALMA programs, which cover different spatial scales."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Adopted alpha_CO = 1.1 (instead of the Milky Way value) because Milky Way conversion factors overestimate molecular gas mass above dynamical mass; adopted [CI]-based gas mass for AzTEC-1 and AzTEC-4 to avoid CO excitation ratio uncertainties

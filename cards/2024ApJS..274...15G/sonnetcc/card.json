@@ -1,0 +1,1847 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJS..274...15G",
+  "title": "ALMA-IMF. XIV. Free─Free Templates Derived from H41α and Ionized Gas Content in 15 Massive Protoclusters",
+  "year": 2024,
+  "journal": "The Astrophysical Journal Supplement Series",
+  "first_author": "Galván-Madrid, Roberto",
+  "n_authors": 28,
+  "arxiv_id": "2407.07359",
+  "doi": "10.3847/1538-4365/ad61e6",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.01355.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "The ALMA-IMF Large Program targeted fifteen of the most massive star-forming clumps within 5 kpc from the Sun"
+   },
+   {
+    "loc": "Conclusions",
+    "quote": "With this paper we distribute the input cubes, the derived data products, and associated scripts"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "15 ALMA-IMF protoclusters (G008.67, G010.62, G012.80, G327.29, G328.25, G333.60, G337.92, G338.93, G351.77, G353.41, W43-MM1, W43-MM2, W43-MM3, W51-E, W51-IRS2)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "within 5 kpc from the Sun (Introduction); per-protocluster d listed in the HII-region table (2.0 to 5.5 kpc)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The ALMA-IMF Large Program targeted fifteen of the most massive star-forming clumps within 5 kpc from the Sun"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Use the H41alpha recombination line to build free-free templates of the ALMA-IMF 3 mm and 1.3 mm continuum maps (separating free-free from dust), then derive HII-region properties (Q0, EM, n_e, spectral type), He abundances and kinematics across 15 massive protoclusters",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We use the H$41\\alpha$ recombination line to create templates of the millimeter free-free emission in the ALMA-IMF continuum maps, which allows to separate it from dust emission."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We use the derived maps to estimate the properties of up to 34 HII regions across the ALMA-IMF protoclusters."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 3 (3 mm) and Band 6 (1 mm); H41alpha cubes from Band 3 (spw1)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The two-band (3 mm and 1 mm), two-configuration, mosaic observing mode allows to map the extent of these protocluster clumps with excellent imaging quality"
+     },
+     {
+      "loc": "3.1 Procedure",
+      "quote": "We use the H$41\\alpha$ line to create maps of the free-free emission at the frequencies of the ALMA-IMF continuum images in Bands 3 and 6."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Cubes cover H41alpha, He41alpha, C41alpha (rest 92.034434, 92.071938, 92.080355 GHz), total width 270 km/s centred on each protocluster LSR velocity",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "The rest frequencies of the targeted lines are respectively 92.034434, 92.071938, and 92.080355 GHz"
+     },
+     {
+      "loc": "2 Data",
+      "quote": "All the cubes were made covering a total width of 270 km s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H",
+     "transition": "41alpha",
+     "rest_frequency": "92.034434 GHz",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The rest frequencies of the targeted lines are respectively 92.034434, 92.071938, and 92.080355 GHz"
+      }
+     ]
+    },
+    {
+     "species": "He",
+     "transition": "41alpha",
+     "rest_frequency": "92.071938 GHz",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The rest frequencies of the targeted lines are respectively 92.034434, 92.071938, and 92.080355 GHz"
+      }
+     ]
+    },
+    {
+     "species": "C",
+     "transition": "41alpha",
+     "rest_frequency": "92.080355 GHz",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The rest frequencies of the targeted lines are respectively 92.034434, 92.071938, and 92.080355 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m array (12M cubes and continuum)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The ALMA-IMF consortium has provided science-ready data products to the community, including 12m-array continuum images"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Cube beams listed per protocluster in Table 1 (HPBW from 0.39x0.35 arcsec for W51-E to 2.28x1.93 arcsec for G012.80)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(2) cube half-power beamwidth and position angle"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "Cleaning scales extend to ~8 arcsec, about half of the largest recoverable scale (value taken from DiazGonzalez23)",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "or about half of the largest recoverable scale in the data"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Moment 0 noise (MAD std) per protocluster given in Table 1 (5 to 83 mJy/beam km/s)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(4) MAD standard deviation of the moment 0 image."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA-IMF Large Program data (consortium data products)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The ALMA-IMF Large Program targeted fifteen of the most massive star-forming clumps within 5 kpc from the Sun"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "Ku-band 2.2 cm (13.4 GHz) image of W51 used as independent free-free estimate for validation",
+      "evidence": [
+       {
+        "loc": "3.3 Validation",
+        "quote": "the Ku-band (2.2 cm, 13.4 GHz) VLA image presented in"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ATLASGAL",
+     "provided": {
+      "value": "Larger parent sample from which the ALMA-IMF protoclusters were selected",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "based on the larger ATLASGAL sample across the Galaxy"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "LSR systemic velocities of each protocluster used as cube reference velocities",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "The reference velocities for the cube construction were set to the LSR systemic velocities of each protocluster reported in Table 1 of"
+       }
+      ]
+     },
+     "citation": "(cite: Motte22)"
+    },
+    {
+     "what": {
+      "value": "ALMA-IMF continuum images used for the startmodel and for the free-free subtraction",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "Also, a `startmodel` is used based on the continuum images published in (cite: Ginsburg22)."
+       }
+      ]
+     },
+     "citation": "(cite: Ginsburg22)"
+    },
+    {
+     "what": {
+      "value": "VLA Ku-band (2.2 cm) image of W51 used for cross-validation",
+      "evidence": [
+       {
+        "loc": "3.3 Validation",
+        "quote": "the Ku-band (2.2 cm, 13.4 GHz) VLA image presented in"
+       }
+      ]
+     },
+     "citation": "(cite: Ginsburg16)"
+    },
+    {
+     "what": {
+      "value": "Hot molecular core catalogue (76 sources) used to check molecular-line contamination",
+      "evidence": [
+       {
+        "loc": "3.3 Validation",
+        "quote": "the 76 sources in the hot molecular core (HMC) catalogue of"
+       }
+      ]
+     },
+     "citation": "(cite: Bonfand24_arxiv)"
+    },
+    {
+     "what": {
+      "value": "Stellar spectral-type calibrations (O-type and B-type) to convert Q0 to spectral type",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "The spectral types of the ionizing stars are determined using the calibrations of"
+       }
+      ]
+     },
+     "citation": "(cite: Martins05) for O-type, (cite: Panagia73) for B-type"
+    },
+    {
+     "what": {
+      "value": "Evolutionary stage (young, intermediate, evolved) of the protoclusters",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "the evolutionary stage (young, intermediate, or evolved) of the ALMA-IMF protoclusters determined by (cite: Motte22)"
+       }
+      ]
+     },
+     "citation": "(cite: Motte22)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA-IMF data pipeline (imaging and self-calibration pipeline of Ginsburg22)",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "using the ALMA-IMF data pipeline (cite: Ginsburg22)"
+      },
+      {
+       "loc": "Introduction",
+       "quote": "together with an imaging and self-calibration pipeline (cite: Ginsburg22)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.3.0",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The cubes were created in `CASA` version 6.3.0 (cite: CASA2022)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean, via the ALMA-IMF pipeline",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "This is defined using the `threshold` parameter of the `tclean` task."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Multi-scale clean",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "Multi-scale cleaning is used by setting the `deconvolver` and `scales` parameters in `tclean`."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "Point source, the beamsize, and multiples of x2 the beamsize up to ~8 arcsec",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The scales are selected to clean model components of size zero (point source), the beamsize, and multiples of $\\times 2$ the beamsize until reaching $\\sim 8$ arcsec"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "Cubes are continuum-subtracted (contsub in file names); method not described",
+     "evidence": [
+      {
+       "loc": "Filenames and data products",
+       "quote": "`FIELD_B3_spw1_12M_h41a.JvM.image.contsub.fits`"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Applied last, to the free-free map, error map and pure-dust map",
+     "evidence": [
+      {
+       "loc": "3.1 Procedure",
+       "quote": "Finally, the primary-beam (PB) correction is applied to the regridded free-free estimation map and the associated error map, as well as to the pure dust map."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Continuum images convolved to the slightly larger beam of the line cube and moment 0 maps",
+     "evidence": [
+      {
+       "loc": "3.1 Procedure",
+       "quote": "which in turn are convolved to the slightly larger beamsize"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "See Table 1 (cube beams per protocluster)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "(2) cube half-power beamwidth and position angle"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Moment 0 MAD std per protocluster in Table 1 (5 to 83 mJy/beam km/s)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "(4) MAD standard deviation of the moment 0 image."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Cube imaging procedures",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "We followed the procedures developed for the imaging of cubes as described in (cite: Cunningham2023)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Cunningham2023)"
+    },
+    {
+     "what": {
+      "value": "Cleaning parameters kept in the pipeline repository script imaging_parameters.py",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "The cleaning parameters are available in the `imaging_parameters.py` script in the public repository of the ALMA-IMF data processing pipeline."
+       }
+      ]
+     },
+     "from_reference": "ALMA-IMF reduction pipeline (cite: Ginsburg22)"
+    },
+    {
+     "what": {
+      "value": "Largest recoverable scale of the data",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "or about half of the largest recoverable scale in the data (cite: DiazGonzalez23)"
+       }
+      ]
+     },
+     "from_reference": "(cite: DiazGonzalez23)"
+    },
+    {
+     "what": {
+      "value": "Free-free intensity equation from H41alpha integrated intensity",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "the free-free estimation map $I_\\mathrm{ff}$ in units of Jy beam$^{-1}$ is constructed using the following equation (cite: Wilson09; Wenger19):"
+       }
+      ]
+     },
+     "from_reference": "(cite: Wilson09; Wenger19)"
+    },
+    {
+     "what": {
+      "value": "Equations for optical depth, EM, n_e and Q0",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "We then used the following equations (cite: Wilson09; RS20) to derive their average emission measures"
+       }
+      ]
+     },
+     "from_reference": "(cite: Wilson09; RS20)"
+    },
+    {
+     "what": {
+      "value": "He+/H+ abundance equation",
+      "evidence": [
+       {
+        "loc": "5 Helium abundances",
+        "quote": "We calculate the number abundance of singly-ionized He to ionized H using the following equation (cite: RoelfsemaGoss92):"
+       }
+      ]
+     },
+     "from_reference": "(cite: RoelfsemaGoss92)"
+    },
+    {
+     "what": {
+      "value": "Collisional broadening estimate",
+      "evidence": [
+       {
+        "loc": "6.3 Evolution of the HII regions",
+        "quote": "Following the equations in the appendix of (cite: GM12), we estimate that collisional broadening is about $0.05$ km s$^{-1}$"
+       }
+      ]
+     },
+     "from_reference": "(cite: GM12)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean weighting (robust value), cell size and image size of the H41alpha cubes",
+    "Channel width and exact spectral window/MS selection of the cubes (only 'spw1' and 270 km/s total width are given)",
+    "Continuum-subtraction method and line-free channels used to make the contsub cubes",
+    "tclean masking strategy, number of iterations and the absolute threshold in each cube (only 3-5 x rms is stated)",
+    "Exact scale list in pixels and the clean-component start model details",
+    "Commit/version of the ALMA-IMF reduction pipeline repository and the imaging_parameters.py values",
+    "Definition and measurement method of the effective diameter D of each HII-region aperture (aperture files are only in the data release)",
+    "Weighting scheme used in the weighted least-squares fits of Q0, n_e and EM versus D",
+    "PySpeckit fit bounds, error estimation and the exact mask/spectrum extraction for each aperture",
+    "Formula and conversion used to deconvolve the dynamical width from thermal and collisional widths",
+    "Source of the distances d used in the HII-region table",
+    "How uncertainties other than the 20% Te error were propagated into Q0, EM and n_e"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image H41alpha/He41alpha/C41alpha line cubes",
+    "method": {
+     "value": "Build 270 km/s wide cubes in CASA with the ALMA-IMF pipeline, multi-scale clean with a startmodel, then apply the JvM correction",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The cubes were created in `CASA` version 6.3.0 (cite: CASA2022) using the ALMA-IMF data pipeline (cite: Ginsburg22)."
+      },
+      {
+       "loc": "2 Data",
+       "quote": "Finally, the JvM correction (cite: JvM95) is applied to the `CASA`-generated cubes in order to correct the flux scale of the residuals and of the restored image"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean",
+     "ALMA-IMF pipeline",
+     "beam-volume-tools"
+    ],
+    "key_parameters": [
+     {
+      "value": "Clean threshold 3 to 5 x rms noise of channels with H41alpha emission",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "Each cube is cleaned down to a residual level of $\\times 3$ to $\\times 5$ the rms noise ($\\sigma_\\mathrm{rms}$) of channels with H$41\\alpha$ emission."
+       }
+      ]
+     },
+     {
+      "value": "gain = 0.08 for all cubes",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "The `gain` parameter was set to 0.08 for all the cubes, which is slightly slower than the default (0.1) in `CASA`."
+       }
+      ]
+     },
+     {
+      "value": "startmodel from the published ALMA-IMF continuum images",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "Also, a `startmodel` is used based on the continuum images published in (cite: Ginsburg22)."
+       }
+      ]
+     },
+     {
+      "value": "Cube width 270 km/s, centred on protocluster LSR velocity",
+      "evidence": [
+       {
+        "loc": "2 Data",
+        "quote": "All the cubes were made covering a total width of 270 km s$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make H41alpha velocity-integrated (moment 0) maps",
+    "method": {
+     "value": "Moment 0 over a visually chosen velocity range per protocluster; free-free estimated only above 5 sigma (MAD std)",
+     "evidence": [
+      {
+       "loc": "3.1 Procedure",
+       "quote": "The velocity range is optimized by visual inspection to cover only channels where the line is detected."
+      },
+      {
+       "loc": "3.2 Products",
+       "quote": "above a threshold of $5\\sigma$, where $\\sigma$ is defined as the robust standard deviation using the median absolute deviation (MAD) implemented in `astropy.stats.mad_std`"
+      }
+     ]
+    },
+    "software": [
+     "astropy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Default +-10 km/s about systemic velocity for faint or non-detected protoclusters",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "A default value of $\\pm 10$ km s$^{-1}$ from the cloud systemic velocity is used for the protoclusters where the line is faint or non-detected"
+       }
+      ]
+     },
+     {
+      "value": "Free-free maps of G338.93, W43-MM1 and G328.25 set manually to zero (non-detections / molecular contamination)",
+      "evidence": [
+       {
+        "loc": "3.2 Products",
+        "quote": "we manually set their free-free maps to zero"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Convert moment 0 to free-free intensity and error maps",
+    "method": {
+     "value": "I_ff = 1.432e-4 (nu0^-1.1 Te^1.15)(1+NHe/NH) x moment 0, rescaled to continuum frequencies with alpha_ff = -0.1; error map combines moment 0 noise and 20% Te error",
+     "evidence": [
+      {
+       "loc": "3.1 Procedure",
+       "quote": "the free-free estimation map $I_\\mathrm{ff}$ in units of Jy beam$^{-1}$ is constructed using the following equation (cite: Wilson09; Wenger19):"
+      },
+      {
+       "loc": "3.1 Procedure",
+       "quote": "Maps of the error of the free-free intensity $\\sigma_\\mathrm{ff}$ are also generated."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Te = 7000 K, NHe/NH = 0.08, nu0 = H41alpha central frequency",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "where the electron temperature $T_e = 7000$ K, the helium to hydrogen number ratio $N_\\mathrm{He}/N_\\mathrm{H} = 0.08$, and $\\nu_0$ is the central frequency of the H$41\\alpha$ line."
+       }
+      ]
+     },
+     {
+      "value": "Scaling to Band 3 (98.6 GHz) and Band 6 (224.6 GHz) factors 0.99 and 0.92",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "The flux scalings to the Band 3 (98.6 GHz) and Band 6 (224.6 GHz) continuum frequencies are then 0.99 and 0.92, respectively."
+       }
+      ]
+     },
+     {
+      "value": "20% error in Te propagated",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "We consider a $20\\%$ error in $T_e$ and propagate it through our measurements to acknowledge the possibility of spatial variations in this quantity."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE for the H41alpha line",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "assumes LTE conditions, and we found a posteriori that this assumption is generally valid"
+       }
+      ]
+     },
+     {
+      "value": "Optically thin free-free at mm wavelengths, alpha_ff = -0.1",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "the output free-free map at the frequency of H$41\\alpha$ (92.03 GHz) is rescaled to the desired frequency of the continuum image assuming $\\alpha_\\mathrm{ff} = -0.1$."
+       }
+      ]
+     },
+     {
+      "value": "Te = 7000 K chosen near the middle of the expected range and to minimize oversubtraction",
+      "evidence": [
+       {
+        "loc": "3.1 Procedure",
+        "quote": "Our selection is close to the middle of this range and minimized regions of oversubtraction of the free-free emission in the continuum maps."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Validated a posteriori against the VLA 2 cm extrapolation (step 5)",
+     "evidence": [
+      {
+       "loc": "3.3 Validation",
+       "quote": "To cross-validate our method, we compare the H$41\\alpha$-derived free-free estimation $I_\\mathrm{ff,H41}$ at 98 GHz for the W51 protoclusters to an independent estimation $I_\\mathrm{ff,2cm}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Regrid, subtract free-free from continuum and apply primary-beam correction",
+    "method": {
+     "value": "Regrid ff and error maps to the continuum pixel grid, convolve continuum to the line-cube beam, subtract to obtain pure-dust map, then apply PB correction",
+     "evidence": [
+      {
+       "loc": "3.1 Procedure",
+       "quote": "A subtraction is then performed of the convolved continuum image minus the regridded free-free map, resulting in an estimated map of pure-dust emission $I_\\mathrm{dust}$."
+      },
+      {
+       "loc": "3.1 Procedure",
+       "quote": "Performing the PB correction as a last step has the advantage of working with images with spatially uniform noise levels in the intermediate steps."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "astropy"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Cross-validate H41alpha free-free against VLA 2 cm extrapolation in W51",
+    "method": {
+     "value": "Convolve VLA 2 cm image to the H41alpha-map beam, regrid, scale to 98.6 GHz assuming optically thin free-free, mask below 5 sigma and compare pixel by pixel",
+     "evidence": [
+      {
+       "loc": "3.3 Validation",
+       "quote": "Next, we assume that the 2-cm free-free emission is optically thin and rescale the cm map by a factor $(98.6/13.4)^{-0.1}$ to estimate the free-free intensity in the ALMA-B3 map."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Mask pixels below 5 sigma = 5 x 92 microJy/beam",
+      "evidence": [
+       {
+        "loc": "3.3 Validation",
+        "quote": "Finally, we mask out all pixels below $5\\sigma = 5 \\times 92~\\mu$Jy beam$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "2 cm emission optically thin with spectral index -0.1 up to 98.6 GHz",
+      "evidence": [
+       {
+        "loc": "3.3 Validation",
+        "quote": "Next, we assume that the 2-cm free-free emission is optically thin"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "96.8% of 145,862 pixels within 3 sigma of the one-to-one relation; bright outliers at W51 d2 and e2",
+     "evidence": [
+      {
+       "loc": "3.3 Validation",
+       "quote": "$96.8~\\%$ are within $3\\sigma$ of the one-to-one relation, where $\\sigma$ is determined for each pixel using the H$41\\alpha$ free-free error map"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive HII-region EM, n_e, Q0 and spectral types",
+    "method": {
+     "value": "Define apertures on the 3 mm free-free maps; compute tau_ff from mean intensity, then EM, Q0 and n_e for a sphere of diameter D; assign spectral type from Q0",
+     "evidence": [
+      {
+       "loc": "4 HII region properties",
+       "quote": "We then used the following equations (cite: Wilson09; RS20) to derive their average emission measures (EM, pc cm$^{-6}$), electron densities ($n_e$, cm$^{-3}$), and hydrogen ionizing-photon rates ($Q_0$, s$^{-1}$):"
+      },
+      {
+       "loc": "4 HII region properties",
+       "quote": "we first define apertures of distinct HII emission in each of the 12 protoclusters with recombination line detection"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "alpha_B = 2e-13 case-B recombination coefficient",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "$\\alpha_\\mathrm{B} = 2\\times10^{-13}$ cm$^{-3}$ s$^{-1}$ is the case-B hydrogen recombination coefficient."
+       }
+      ]
+     },
+     {
+      "value": "Spectral types from Martins05 (O) and Panagia73 (B)",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "The spectral types of the ionizing stars are determined using the calibrations of (cite: Martins05) for O-type, and of (cite: Panagia73) for B-type."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Spherical geometry, integration path equals diameter D",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "thus under spherical geometry the diameter of the emitting HII region is $\\int dl = D$."
+       }
+      ]
+     },
+     {
+      "value": "A single ionizing star per HII region",
+      "evidence": [
+       {
+        "loc": "4 HII region properties",
+        "quote": "A single ionizing star is assumed."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with H30alpha 3D radiative transfer Q0 for G010.62",
+     "evidence": [
+      {
+       "loc": "4 HII region properties",
+       "quote": "the inferred $Q_0$ is 6 to $7\\times10^{48}$ s$^{-1}$ (cite: GM23), which is consistent the spherical value reported here: $5.1\\pm1.4 \\times10^{48}$ s$^{-1}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Measure He/H abundance from H41alpha and He41alpha Gaussian fits",
+    "method": {
+     "value": "Fit Gaussians to H41alpha and He41alpha spectra averaged in each HII-region mask (PySpeckit); N_H/N_He taken from the integrated-line ratio",
+     "evidence": [
+      {
+       "loc": "5 Helium abundances",
+       "quote": "We performed Gaussian fitting using `Pyspeckit` (cite: Ginsburg22_pyspeckit)."
+      },
+      {
+       "loc": "5 Helium abundances",
+       "quote": "We calculate the number abundance of singly-ionized He to ionized H using the following equation (cite: RoelfsemaGoss92):"
+      }
+     ]
+    },
+    "software": [
+     "PySpecKit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Spectra in brightness temperature versus LSR velocity; cubes without PB correction",
+      "evidence": [
+       {
+        "loc": "5 Helium abundances",
+        "quote": "We use the H$41\\alpha$ cubes without primary-beam correction to have a noise closer to spatially uniform."
+       }
+      ]
+     },
+     {
+      "value": "Reject He fits with peak > 0.3 of the H peak",
+      "evidence": [
+       {
+        "loc": "5 Helium abundances",
+        "quote": "we rejected He$41\\alpha$ fits with a peak brightness $> 0.3$ of the hydrogen peak."
+       }
+      ]
+     },
+     {
+      "value": "Reject He centroids outside +-10 km/s of -122.17 km/s from H41alpha",
+      "evidence": [
+       {
+        "loc": "5 Helium abundances",
+        "quote": "we rejected results with a He$41\\alpha$ centroid outside a range of $\\pm10$ km s$^{-1}$ of its theoretical position at $-122.17$ km s$^{-1}$ from the H$41\\alpha$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "H and He recombination lines of the same quantum number trace the same gas; N_H+/N_He+ approximates N_H/N_He",
+      "evidence": [
+       {
+        "loc": "5 Helium abundances",
+        "quote": "Abundances of helium with respect to hydrogen can be derived under the assumption that for a given quantum number the recombination lines of the different atoms trace the same gas"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Hydrogen-only fit first, then helium added with the first fit as initial guess; initial N_He/N_H = 0.08; C41alpha attempted but not used",
+     "evidence": [
+      {
+       "loc": "5 Helium abundances",
+       "quote": "An initial round of fitting included only the hydrogen recombination line, and helium was added later using as initial guesses the parameters of the first fitting."
+      },
+      {
+       "loc": "5 Helium abundances",
+       "quote": "The final fits only consider hydrogen and helium lines."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Rejection criteria set empirically from the fit plots",
+     "evidence": [
+      {
+       "loc": "5 Helium abundances",
+       "quote": "These criteria were found empirically"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Search for H41alpha maser amplification",
+    "method": {
+     "value": "Look for significantly negative 'potholes' in the pure-dust maps in Bands 3 and 6 and test them against the free-free error maps",
+     "evidence": [
+      {
+       "loc": "6.2 A search for sites with excess recombination line emission",
+       "quote": "looked for areas that are significantly negative"
+      },
+      {
+       "loc": "6.2 A search for sites with excess recombination line emission",
+       "quote": "iii) that the absolute value of the pothole minimum be larger than the respective error in the free-free estimation, both in Band 3 and Band 6."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Pothole visible in both bands and larger than one beam area",
+      "evidence": [
+       {
+        "loc": "6.2 A search for sites with excess recombination line emission",
+        "quote": "i) that the pothole is clearly visible both in the Band 3 and Band 6 subtraction (pure dust) maps"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "A negative pothole would indicate H41alpha brighter than the LTE expectation",
+      "evidence": [
+       {
+        "loc": "6.2 A search for sites with excess recombination line emission",
+        "quote": "A naive interpretation of those potholes would be that they are regions where the H$41\\alpha$ is brighter than the LTE assumption"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Candidate potholes consistent with zero within free-free errors (G010.62 within 1 sigma)",
+     "evidence": [
+      {
+       "loc": "6.2 A search for sites with excess recombination line emission",
+       "quote": "This target was our clearest candidate, yet the central hole is within $1\\sigma$ of the free-free estimation error at that position."
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Correlate HII-region properties with size and fit power laws",
+    "method": {
+     "value": "Pearson correlations and weighted least-squares fits in log space of Q0, n_e and EM versus D",
+     "evidence": [
+      {
+       "loc": "6.3 Evolution of the HII regions",
+       "quote": "A weighted least-squares fit to the $Q_0$ vs $D$ relation gives $\\log [Q_0 / \\mathrm{s}^{-1}] = (2.49\\pm0.18) \\times \\log [D/\\mathrm{pc}] + (49.89\\pm0.23)$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Pearson (r,p) for Q0 vs D = (0.89, 1.6e-12)",
+      "evidence": [
+       {
+        "loc": "6.3 Evolution of the HII regions",
+        "quote": "$Q_0$ is well correlated with $D$, with a Pearson correlation coefficient $r$ and p-value $(r,p) = (0.89,1.6\\times10^{-12})$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Weighted least-squares in log-log space; priors/likelihood not applicable",
+     "evidence": [
+      {
+       "loc": "6.3 Evolution of the HII regions",
+       "quote": "we fit a posteriori the $n_e$ vs $D$ and EM vs $D$ relations in logarithmic space"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with expected Q0 proportional to D^3 (constant n_e) and D^2 (constant EM)",
+     "evidence": [
+      {
+       "loc": "6.3 Evolution of the HII regions",
+       "quote": "the observed $Q_0 \\propto D^{2.5}$ relation falls in between the expected relations if $n_e$ or EM were constant among the sample of HII regions"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Derive dynamical linewidths of the HII regions",
+    "method": {
+     "value": "Deconvolve thermal and collisional broadening from the observed H41alpha FWHM and compare with 2 c_s",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "was deconvolved from the thermal and collisional widths"
+      },
+      {
+       "loc": "6.3 Evolution of the HII regions",
+       "quote": "The thermal FWHM linewidth at $T_e=7000$ K $\\pm 20~\\%$ is $17.9\\pm1.8$ km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Collisional broadening ~0.05 km/s for densities up to 1e5 cm^-3, neglected",
+      "evidence": [
+       {
+        "loc": "6.3 Evolution of the HII regions",
+        "quote": "we estimate that collisional broadening is about $0.05$ km s$^{-1}$ for densities as high as $10^5$ cm$^{-3}$, therefore it can be neglected."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Ionized-gas sound speed c_s ~ 10 km/s; optically thin HII region expected to show dynamical width <~ 2 c_s",
+      "evidence": [
+       {
+        "loc": "6.3 Evolution of the HII regions",
+        "quote": "Therefore, an optically-thin HII region is expected to have an observed dynamical linewidth $\\lesssim 2c_s$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.3.0",
+    "used_for": {
+     "value": "Imaging of the H41alpha cubes with tclean",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "The cubes were created in `CASA` version 6.3.0 (cite: CASA2022)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Multi-scale cleaning with threshold, startmodel, scales and gain settings",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "Multi-scale cleaning is used by setting the `deconvolver` and `scales` parameters in `tclean`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA-IMF data pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging and self-calibration pipeline used to build the cubes",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "using the ALMA-IMF data pipeline (cite: Ginsburg22)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "JvM correction scripts (beam-volume-tools)",
+    "version": "not stated",
+    "used_for": {
+     "value": "JvM correction of the CASA-generated cubes",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "The scripts to apply the JvM correction that were used for the imaging presented in this paper"
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy (astropy.stats.mad_std)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Robust (MAD) standard deviation of the moment 0 maps",
+     "evidence": [
+      {
+       "loc": "3.2 Products",
+       "quote": "the median absolute deviation (MAD) implemented in `astropy.stats.mad_std`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PySpecKit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian fitting of H41alpha and He41alpha spectra",
+     "evidence": [
+      {
+       "loc": "5 Helium abundances",
+       "quote": "We performed Gaussian fitting using `Pyspeckit` (cite: Ginsburg22_pyspeckit)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ffsub.py and ff_tools.py (h41a-freefree scripts)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Recalculate any free-free estimation image",
+     "evidence": [
+      {
+       "loc": "3.2 Products",
+       "quote": "permit the user to easily recalculate any free-free estimation image by editing `ffsub.py`, which makes use of the functions defined in `ff_tools.py`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "APLpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Listed in the Software section; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "APLpy (cite: APLpy)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Q0 versus D power-law slope",
+    "value": "2.49",
+    "uncertainty": "0.18",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "$\\log [Q_0 / \\mathrm{s}^{-1}] = (2.49\\pm0.18) \\times \\log [D/\\mathrm{pc}] + (49.89\\pm0.23)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Q0 versus D intercept (log Q0 at log D = 0)",
+    "value": "49.89",
+    "uncertainty": "0.23",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "$\\log [Q_0 / \\mathrm{s}^{-1}] = (2.49\\pm0.18) \\times \\log [D/\\mathrm{pc}] + (49.89\\pm0.23)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson (r,p) for Q0 versus D",
+    "value": "r = 0.89, p = 1.6e-12",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "$(r,p) = (0.89,1.6\\times10^{-12})$"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson (r,p) for n_e vs D and EM vs D",
+    "value": "n_e: (-0.25, 0.15); EM: (0.12, 0.50)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "with $(r,p) = (-0.25,0.15)$ and $(0.12,0.50)$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "n_e versus D log-log slope and intercept",
+    "value": "-0.23 and 3.70",
+    "uncertainty": "0.08 and 0.10 (1 sigma)",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "($-0.23\\pm0.08$, $3.70\\pm0.10$) and ($0.52\\pm0.17$, $7.39\\pm0.22$)"
+     }
+    ]
+   },
+   {
+    "quantity": "EM versus D log-log slope and intercept",
+    "value": "0.52 and 7.39",
+    "uncertainty": "0.17 and 0.22 (1 sigma)",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "($-0.23\\pm0.08$, $3.70\\pm0.10$) and ($0.52\\pm0.17$, $7.39\\pm0.22$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Number of HII regions defined",
+    "value": "34",
+    "uncertainty": "not stated",
+    "units": "count",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We defined 34 regions of HII emission and measured their photometry."
+     }
+    ]
+   },
+   {
+    "quantity": "Free-free flux scaling factors from 92.03 GHz to Band 3 and Band 6",
+    "value": "0.99 (98.6 GHz) and 0.92 (224.6 GHz)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Procedure",
+      "quote": "The flux scalings to the Band 3 (98.6 GHz) and Band 6 (224.6 GHz) continuum frequencies are then 0.99 and 0.92, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of validation pixels within 3 sigma of the one-to-one relation",
+    "value": "96.8 % (of 145,862 pixels)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Validation",
+      "quote": "$96.8~\\%$ are within $3\\sigma$ of the one-to-one relation, where $\\sigma$ is determined for each pixel using the H$41\\alpha$ free-free error map"
+     }
+    ]
+   },
+   {
+    "quantity": "Q0 of central HII region in G010.62",
+    "value": "5.1e48",
+    "uncertainty": "1.4e48",
+    "units": "s^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4 HII region properties",
+      "quote": "$5.1\\pm1.4 \\times10^{48}$ s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Q0 of W51-E",
+    "value": "7.4e48",
+    "uncertainty": "1.7e48",
+    "units": "s^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4 HII region properties",
+      "quote": "W51-E is found to have the second largest $Q_0$ ($7.4\\pm1.7\\times10^{48}$ s$^{-1}$) among the ALMA-IMF protoclusters."
+     }
+    ]
+   },
+   {
+    "quantity": "Total Q0 of G333.60",
+    "value": "~3e49",
+    "uncertainty": "not stated",
+    "units": "s^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "totalling $Q_0\\approx3\\times10^{49}$ s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_He/N_H, G010.62 HII region 2 (low outlier)",
+    "value": "0.028",
+    "uncertainty": "0.012",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5 Helium abundances",
+      "quote": "HII region 2 in G010.62 with $0.028\\pm0.012$, and HII region 3 in G012.80 with $0.045\\pm0.005$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_He/N_H, G012.80 HII region 3 (low outlier)",
+    "value": "0.045",
+    "uncertainty": "0.005",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5 Helium abundances",
+      "quote": "HII region 2 in G010.62 with $0.028\\pm0.012$, and HII region 3 in G012.80 with $0.045\\pm0.005$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_He/N_H, W43-MM2 HII region 2 (MM13, high outlier)",
+    "value": "0.187",
+    "uncertainty": "0.058",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5 Helium abundances",
+      "quote": "with $N_\\mathrm{He} / N_\\mathrm{H} = 0.187\\pm0.058$"
+     }
+    ]
+   },
+   {
+    "quantity": "Relative He mass abundance Y range (excluding outliers)",
+    "value": "0.202 to 0.288",
+    "uncertainty": "0.012 and 0.010",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Appendix: Abundance and metallicity definitions",
+      "quote": "this translates into $Y = 0.202\\pm0.012$ to $Y = 0.288\\pm0.010$."
+     }
+    ]
+   },
+   {
+    "quantity": "Thermal FWHM linewidth at Te = 7000 K",
+    "value": "17.9",
+    "uncertainty": "1.8",
+    "units": "km/s",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "The thermal FWHM linewidth at $T_e=7000$ K $\\pm 20~\\%$ is $17.9\\pm1.8$ km s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical linewidth of W43-MM2 HII region 2 (MM13)",
+    "value": "39.1",
+    "uncertainty": "2.0",
+    "units": "km/s",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "$\\Delta V_\\mathrm{dyn} = 39.1\\pm2.0$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson (r,p) for dynamical width versus D and versus Q0",
+    "value": "(0.34, 0.05) and (0.33, 0.06)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "6.3 Evolution of the HII regions",
+      "quote": "with $(r,p) = (0.34, 0.05)$ and $(0.33,0.06)$, respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Three protoclusters (W43-MM1, G338.93, G328.25) show no ionized-gas emission; the youngest protoclusters lack detectable ionized gas",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The youngest protoclusters (W43-MM1, G338.93, G328.25) lack detectable emission from ionized gas."
+     }
+    ]
+   },
+   {
+    "value": "Bright outlier pixels in the W51 validation coincide with UC HII regions d2 (W51-IRS2) and e2 (W51-E)",
+    "evidence": [
+     {
+      "loc": "3.3 Validation",
+      "quote": "Further inspection reveals that these pixels are located exactly at the position of the two well known UC HII regions: d2 in W51-IRS2 and e2 W51-E"
+     }
+    ]
+   },
+   {
+    "value": "Molecular line contamination is important only in three hot molecular cores (G327 HMC 1, G337 HMCs 1 and 4)",
+    "evidence": [
+     {
+      "loc": "3.3 Validation",
+      "quote": "Analysis of the spectra around their positions shows that recombination line emission dominates in all cases except for G327 HMC 1 and G337 HMCs 1 and 4."
+     }
+    ]
+   },
+   {
+    "value": "No significant evidence for H41alpha masers in the ALMA-IMF data",
+    "evidence": [
+     {
+      "loc": "6.2 A search for sites with excess recombination line emission",
+      "quote": "We conclude that there is no significant evidence for H$41\\alpha$ masers in the ALMA-IMF data"
+     }
+    ]
+   },
+   {
+    "value": "Most HII regions have dynamical widths between about one and two times the ionized-gas sound speed; MM13 is an outlier",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\Delta V_\\mathrm{dyn}$ increases from about one to two times the ionized-gas sound speed."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "H41alpha-derived free-free templates agree with independent centimeter-extrapolated free-free estimates",
+    "experiment": "Compare H41alpha free-free map at 98.6 GHz with the VLA 2 cm map rescaled with alpha = -0.1 for W51-E and W51-IRS2",
+    "result": "96.8% of 145,862 pixels lie within 3 sigma of one-to-one; two UC HII regions are bright outliers",
+    "finding": "The procedure agrees within errors for the vast majority of pixels, with exceptions at a few UC HII regions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "we found that both approaches give the same result within the errors for the vast majority of the pixels with emission in both tracers"
+     }
+    ]
+   },
+   {
+    "hypothesis": "HII-region ionizing-photon rates and spectral types follow the proposed evolutionary sequence of the protoclusters",
+    "experiment": "Derive Q0 and spectral type for 34 HII regions from the 3 mm free-free maps and compare with the Motte22 evolutionary classes",
+    "result": "Youngest protoclusters lack ionized gas; total Q0 rises from ~1e45 to >1e49 s^-1 with evolution",
+    "finding": "Q0 and spectral types follow the evolutionary trend",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "$Q_0$ and SpT follow a trend consistent with the evolutionary picture proposed by (cite: Motte22)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Helium abundances in the ionized gas are consistent with the Galactic ISM",
+    "experiment": "Fit H41alpha and He41alpha Gaussians in 25 HII regions and compute N_He/N_H",
+    "result": "Most values near 0.08; two low outliers (G010.62 HII 2, G012.80 HII 3) and one high candidate (W43-MM2 HII 2, 0.187+-0.058)",
+    "finding": "Abundances broadly consistent with the ISM, with a few outliers discussed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "finding values consistent with the Galactic interstellar medium, although a few outliers are discussed."
+     }
+    ]
+   },
+   {
+    "hypothesis": "H41alpha maser amplification could be present at some sites",
+    "experiment": "Search for negative potholes in the Band 3 and Band 6 pure-dust maps and test against the free-free errors",
+    "result": "All potholes are consistent with zero within the free-free estimation errors",
+    "finding": "No significant evidence for H41alpha masers",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "This search returned negative results when the errors of the free-free estimation maps are considered."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Smaller UC HII regions are the dynamically younger versions of larger ones",
+    "experiment": "Correlate Q0, n_e and EM with HII-region size D and fit power laws",
+    "result": "Q0 proportional to D^(2.49+-0.18); n_e and EM correlations with D are weak",
+    "finding": "Smaller UC HII regions are on average ionized by less massive stars rather than being younger",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "This favors an interpretation where the smaller UC HII regions are not necessarily the less dynamically evolved versions of the larger ones"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The outlier HII region south of W43-MM2 (MM13) has a distinct ionization or kinematic origin",
+    "experiment": "Compare its dynamical width, He abundance and line profile with the sample",
+    "result": "Broadest line (dynamical width 39.1+-2.0 km/s), double-peaked, N_He/N_H = 0.187+-0.058",
+    "finding": "Suggested embedded stellar or disk wind, not firmly established",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We suggest that this source could harbor an embedded stellar or disk wind."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Free-free emission contaminates the dust continuum of the ALMA-IMF dense-core science case",
+    "evidence": [
+     {
+      "loc": "3.1 Procedure",
+      "quote": "The free-free estimations are useful to the main scientific case of the ALMA-IMF project of characterizing the dust emission of the dense-core population in the target protoclusters."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Using H41alpha within the same data set gives the same uv coverage and beam as the continuum and a free-free estimate at a similar frequency",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "This method offers several advantages, namely: covering the whole survey, having approximately the same uv-coverage and beamsize as the corresponding continuum images"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Extrapolating centimeter-wavelength VLA maps to the millimeter (used only for validation; 10 of 15 protoclusters are hard to observe with the VLA)",
+     "evidence": [
+      {
+       "loc": "3.3 Validation",
+       "quote": "ten out of fifteen ALMA-IMF protoclusters have declinations $< -15^\\circ$, which makes them difficult to observe with the VLA"
+      }
+     ]
+    },
+    {
+     "value": "Fits including C41alpha were attempted but rejected: extra parameters had low S/N and did not improve the fit",
+     "evidence": [
+      {
+       "loc": "5 Helium abundances",
+       "quote": "Valid fits including C$41\\alpha$ were found occasionally, but the extra fitted parameters had low S/N and did not improve the overall fit quality."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "LTE assumption for H41alpha and molecular-line contamination may fail in some objects",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "However, the method is not without its caveats, mainly that the line can be out of LTE under certain conditions (cite: Walmsley90; Peters12), and molecular line contamination."
+      }
+     ]
+    },
+    {
+     "value": "The recombination-line free-free map is less sensitive than the continuum, so faint ionized emission is missed",
+     "evidence": [
+      {
+       "loc": "6.1 On the subtraction of free-free contamination",
+       "quote": "the free-free map derived from the recombination line is less sensitive than the corresponding millimeter continuum image"
+      }
+     ]
+    },
+    {
+     "value": "Templates should not be used blindly where free-free dominates or at line-rich hot molecular cores",
+     "evidence": [
+      {
+       "loc": "3.2 Products",
+       "quote": "We caution the user against blindly using the calculated free-free templates in regions where it dominates the total continuum emission, or at the position of line rich hot molecular cores."
+      }
+     ]
+    },
+    {
+     "value": "Spherical HII-region approximation is only good for isolated, round regions",
+     "evidence": [
+      {
+       "loc": "4 HII region properties",
+       "quote": "Our spherical approximation will be good for HII regions that are isolated and round."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single fixed Te = 7000 K and 20% error for all HII regions; Te dominates many error bars and could vary between regions",
+    "Q0 and spectral type assume a single ionizing star and spherical geometry; compact regions in clusters may be multiple stars",
+    "Correlation significance for dynamical width is marginal (p about 0.05)",
+    "LTE for H41alpha is argued a posteriori and bright outliers in W51 show departures or optical-thickness effects"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA-IMF science-ready products released to the community; the paper distributes its input cubes, free-free templates and scripts",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The ALMA-IMF consortium has provided science-ready data products to the community"
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "With this paper we distribute the input cubes, the derived data products, and associated scripts"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "Products hosted on Harvard Dataverse (doi 10.7910/DVN/LWILNE); not stated to be in the ALMA archive",
+    "evidence": [
+     {
+      "loc": "Filenames and data products",
+      "quote": "We make available the following FITS images in the following url, hosted by the Harvard Dataverse service:"
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "Scripts ffsub.py and ff_tools.py in the public h41a-freefree repository",
+     "evidence": [
+      {
+       "loc": "footnote 3",
+       "quote": "<https://github.com/ALMA-IMF/h41a-freefree>"
+      },
+      {
+       "loc": "3.2 Products",
+       "quote": "permit the user to easily recalculate any free-free estimation image by editing `ffsub.py`, which makes use of the functions defined in `ff_tools.py`."
+      }
+     ]
+    },
+    {
+     "value": "ALMA-IMF data-processing pipeline (reduction) repository",
+     "evidence": [
+      {
+       "loc": "footnote 2",
+       "quote": "<https://github.com/ALMA-IMF/reduction>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "ALMA project code(s) are not printed in the paper (only 'ALMA-IMF Large Program')",
+    "Cube imaging settings beyond threshold, gain and scales (robust, cell, image size, channel width, masks) are only in the pipeline imaging_parameters.py",
+    "Aperture definitions are in the released .reg files, not described numerically in the text",
+    "Fit weighting and exact PySpeckit configuration",
+    "Per-protocluster distances are tabulated without stated source"
+   ],
+   "estimated_data_volume_inferred": "Large if re-imaging from raw ALMA data (15 mosaic fields, Band 3 spw1 12m line cubes); small (a few GB) if the released H41alpha cubes and continuum images are used",
+   "score_inferred": 4,
+   "score_reason": "Public ALMA-IMF data, released cubes and templates, released scripts, explicit equations and parameters (Te, NHe/NH, alpha_ff, thresholds), and tabulated numeric results; only low-level imaging settings and aperture/fit details are deferred to other works or repositories.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data and scripts are public, the free-free recipe and HII-region equations are fully given, and main results (Q0, EM, n_e, He abundances, power-law fits) are tabulated numbers."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Ginsburg et al. 2022, A&A 662, A9 (cite: Ginsburg22)",
+     "why": "ALMA-IMF imaging and self-calibration pipeline and continuum images"
+    },
+    {
+     "citation": "Cunningham et al. 2023, A&A 678, A194 (cite: Cunningham2023)",
+     "why": "Cube imaging procedures followed here"
+    },
+    {
+     "citation": "Motte et al. 2022, A&A 662, A8 (cite: Motte22)",
+     "why": "Survey description, systemic velocities and evolutionary classification"
+    },
+    {
+     "citation": "Diaz-Gonzalez et al. 2023, ApJS 269, 55 (cite: DiazGonzalez23)",
+     "why": "Combination with single-dish data, largest recoverable scale, spectral index maps"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Pouteau et al. 2022, 2023 (cite: Pouteau22; Pouteau23)",
+     "why": "Core mass function of young protoclusters"
+    },
+    {
+     "citation": "Nony et al. 2023 (cite: Nony2023)",
+     "why": "Core mass function study using spectral-index information"
+    },
+    {
+     "citation": "Armante et al. 2024 (cite: Armante24)",
+     "why": "CMF of G012.80 using results of this paper"
+    },
+    {
+     "citation": "Bonfand et al. 2024 (cite: Bonfand24_arxiv)",
+     "why": "Hot molecular core catalogue used to check line contamination"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-IMF Large Program",
+    "ATLASGAL"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024ApJS..274...15G",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T22:27:23",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 149,
+  "quotes_ok": 149,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2017.1.01355.L"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 19,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 136,
+   "stated": 104,
+   "rate": 0.765
+  },
+  "evidence_ok": true
+ }
+}

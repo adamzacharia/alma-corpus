@@ -1,0 +1,268 @@
+{
+ "bibcode": "2020A&A...641A.124L",
+ "title": "Etching glass in the early Universe: Luminous HF and H<SUB>2</SUB>O emission in a QSO-SMG pair at z = 4.7",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/201935755",
+ "arxiv_id": "2004.04176",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Do HF J=1-0 and para-H2O (2_20-2_11) trace outflows and energy dissipation in the QSO and SMG of BR 1202-0725 at z=4.7?",
+ "alma_project_codes": [
+  "2015.1.01489.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "36 antennas",
+  "angular_resolution": "0.56'' x 0.49'', PA=-74 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel HF and H2O line fluxes and LIR for local AGN galaxies",
+    "evidence": [
+     {
+      "loc": "4.1 HF",
+      "quote": "we extracted the HF emission line fluxes from local galaxies observed with Herschel in the sample of (cite: yang13)"
+     }
+    ]
+   },
+   "citation": "(cite: yang13)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) line widths at various beam sizes (VLA)",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "we compare all of the line widths of CO(2–1) with restoring beam sizes of $\\ensuremath{\\lesssim}$0.6$''$ from (cite: jones16)"
+     }
+    ]
+   },
+   "citation": "(cite: jones16)"
+  },
+  {
+   "what": {
+    "value": "[CII] redshift and line width of the SMG",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "we constrained this to the \\[CII\\] redshift (cite: carilli13)"
+     }
+    ]
+   },
+   "citation": "(cite: carilli13)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature of 43 K, SFR ~1e3 Msun/yr, CO models",
+    "evidence": [
+     {
+      "loc": "4.1 HF",
+      "quote": "The estimated temperature of the dust continuum is about 43 K (cite: salome12)."
+     }
+    ]
+   },
+   "citation": "(cite: salome12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image data",
+   "method": "Supplied calibration script in CASA; continuum model subtraction then linear fit of line-free channels; natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum and line properties",
+   "method": "Point-source fit to continuum; Gaussian fit to H2O and HF lines",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model HF excitation in QSO",
+   "method": "RADEX models to match HF brightness temperature, source size = beam",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "N(HF)=1e15 cm-2, n_H2=1e5 cm-3, Tgas=43 K, Tbg=15.5 K, ne=10 cm-3, turbulent dispersion 5 km/s"
+   ],
+   "assumptions": [
+    "Turbulent velocity dispersion of 5 km/s as in Orion Bar"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Bootstrap HF absorption in SMG and outflow rate limit",
+   "method": "1000 realizations of data binned by 10 to 60 km/s; optical depth integrated over 0 to -400 km/s; Neufeld relation for N(HF); wind rate Mdot=pi m_H2 N(H2) V R",
+   "software": [],
+   "key_parameters": [
+    "V_wind=400 km/s; R_wind=half beam size"
+   ],
+   "assumptions": [
+    "All HF in ground state; HF abundance 3.5e-8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "QSO HF J=1-0 integrated flux",
+   "value": "0.25",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S\\Delta$v (Jy beam$^{-1}$ km s$^{-1}$) | 0.25$\\pm$0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "QSO HF FWHM",
+   "value": "285",
+   "uncertainty": "45",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM (km s$^{-1}$) | 285$\\pm$45"
+    }
+   ]
+  },
+  {
+   "quantity": "QSO H2O FWHM",
+   "value": "340",
+   "uncertainty": "15",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM (km s$^{-1}$) | 340$\\pm$15"
+    }
+   ]
+  },
+  {
+   "quantity": "SMG H2O FWHM",
+   "value": "1020",
+   "uncertainty": "50",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM (km s$^{-1}$) | 340$\\pm$15 | 1020$\\pm$50"
+    }
+   ]
+  },
+  {
+   "quantity": "QSO H2O integrated flux",
+   "value": "0.80",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S\\Delta$v (Jy beam$^{-1}$ km s$^{-1}$) | 0.80$\\pm$0.03 | 1.1$\\pm$0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "QSO 216 GHz continuum",
+   "value": "4.9",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\textrm{216\\,GHz}}$ (mJy) | 4.9$\\pm$0.2 | 5.1$\\pm$0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "QSO H2O redshift",
+   "value": "4.6948",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$z$ | 4.6948$\\pm$0.0001"
+    }
+   ]
+  },
+  {
+   "quantity": "SMG HF-absorption N(HF) 95% limit",
+   "value": "<=4e13",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 HF absorption",
+     "quote": "N(HF)$\\ensuremath{\\lesssim}$4$\\times$10$^{13}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMG outflow rate upper limit",
+   "value": "<=45",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 HF absorption",
+     "quote": "$\\dot{\\rm M}_{\\rm wind}\\ensuremath{\\lesssim}$45 M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular column from HF assuming solar F",
+   "value": "~1e22",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 HF",
+     "quote": "then the total molecular column is $\\sim$10$^{22}$ cm$^{-2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum fitting",
+  "Image size, cell size, and CLEAN threshold/masking",
+  "CASA version",
+  "Flux calibrator and flux scale uncertainty",
+  "Spectral resolution/channel width of line cubes",
+  "Exact LIR values and adopted sources for the L_HF/L_IR plot",
+  "Full RADEX grid and fit procedure for brightness temperature matching"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Cube/image parameters",
+  "Literature L_IR values and HF fluxes for comparison sample"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and simple fits, but imaging and modelling details are sparse.",
+ "rediscovery_reason": "Public data, simple Gaussian fits and numeric results in Table 1; imaging details partly missing.",
+ "source_card": "cards/2020A%26A...641A.124L/sonnet/card.md"
+}

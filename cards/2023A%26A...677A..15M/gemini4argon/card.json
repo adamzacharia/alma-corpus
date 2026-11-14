@@ -1,0 +1,1902 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023A&A...677A..15M",
+  "title": "The GUAPOS project. III. Characterization of the O- and N-bearing complex organic molecules content and search for chemical differentiation",
+  "year": 2023,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Mininni, C.",
+  "n_authors": 11,
+  "arxiv_id": "2306.13563",
+  "doi": "10.1051/0004-6361/202245277",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00501.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "The G31.41+0.31 Unbiased ALMA sPectral Observational Survey (GUAPOS) project targets the hot molecular core (HMC) G31.41+0.31 (G31), to unveil the complex chemistry of one of the most chemically rich high-mass star-forming regions outside the Galactic Center (GC)."
+   },
+   {
+    "loc": "Observations",
+    "quote": "The observations were carried out with ALMA during Cycle 5, (project 2017.1.00501.S, P.I.: M. T. Beltrán), and cover the complete spectral range of ALMA band 3, between 84.05 GHz and 115.91 GHz"
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "G31.41+0.31",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "3.75 kpc (D_GC = 5.02 kpc)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The target of the G31.41+0.31 (hereafter, G31) Unbiased ALMA sPectral Observational Survey (GUAPOS, (cite: mininni2020; colziguapos)) is a well-known and studied HMC located at a distance of 3.75 kpc (cite: immer2019)"
+       },
+       {
+        "loc": "Analysis",
+        "quote": "considering the Galactocentric distance of G31, $D_{\\rm{GC}}=5.02$ kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: immer2019)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The target of the G31.41+0.31 (hereafter, G31) Unbiased ALMA sPectral Observational Survey (GUAPOS, (cite: mininni2020; colziguapos)) is a well-known and studied HMC located at a distance of 3.75 kpc (cite: immer2019)"
+       },
+       {
+        "loc": "Analysis",
+        "quote": "considering the Galactocentric distance of G31, $D_{\\rm{GC}}=5.02$ kpc"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Characterize the abundances and emission morphology of nine O-bearing and six N-bearing complex organic molecules toward the hot molecular core G31.41+0.31, compare them with other sources and chemical models, and search for chemical differentiation.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The aim of this work is to characterize the abundances in G31 and to compare them with the values estimated in other sources. Moreover, we search for a possible chemical segregation between O-bearing and N-bearing species in G31"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00501.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The observations were carried out with ALMA during Cycle 5, (project 2017.1.00501.S, P.I.: M. T. Beltrán)"
+      },
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00501.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out with ALMA during Cycle 5, (project 2017.1.00501.S, P.I.: M. T. Beltrán), and cover the complete spectral range of ALMA band 3, between 84.05 GHz and 115.91 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "84.05 to 115.91 GHz (~32 GHz bandwidth), spectral resolution ~0.488 MHz (~1.3-1.7 km s^-1), nine correlator configurations with four contiguous basebands each",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "cover the complete spectral range of ALMA band 3, between 84.05 GHz and 115.91 GHz ( $\\sim 32\\,\\mathrm{GHz}$ bandwidth), with a spectral resolution of $\\sim0.488\\,\\mathrm{MHz}$ ($\\sim1.3\\,-\\, 1.7\\,\\mathrm{km\\,s^{-1}}$)."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The observations were divided in nine correlator configurations, and for each of them four contiguous basebands were observed."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH",
+     "transition": "v=0 and v_t=1 rotational transitions (7 unblended in v_t=1)",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 93196.672-105187.877 MHz)",
+     "evidence": [
+      {
+       "loc": "Methanol: CH$_3$OH, $^{13}$CH$_3$OH, and CH$_3^{18}$OH",
+       "quote": "We have analyzed the emission of the rotational transitions in the first torsionally excited state, v$_{t}=1$, whose transitions have optical depths estimated by MADCUBA between 0.1 and 0.2, with only two exceptions."
+      }
+     ]
+    },
+    {
+     "species": "13CH3OH",
+     "transition": "12 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 92588.704-112143.546 MHz)",
+     "evidence": [
+      {
+       "loc": "Methanol: CH$_3$OH, $^{13}$CH$_3$OH, and CH$_3^{18}$OH",
+       "quote": "We also analyzed the emission of $^{13}$CH$_3$OH and CH$_3^{18}$OH, whose lines are optically thin. The 12 unblended transitions used to constrain the fit of $^{13}$CH$_3$OH are given in Table 2"
+      }
+     ]
+    },
+    {
+     "species": "CH318OH",
+     "transition": "15 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 84727.078-114179.077 MHz)",
+     "evidence": [
+      {
+       "loc": "Methanol: CH$_3$OH, $^{13}$CH$_3$OH, and CH$_3^{18}$OH",
+       "quote": "For CH$_3^{18}$OH we selected 15 transitions to constrain the fit (see Table 3)."
+      }
+     ]
+    },
+    {
+     "species": "CH3CHO",
+     "transition": "10 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 93595.235-115634.704 MHz)",
+     "evidence": [
+      {
+       "loc": "Acetaldehyde: CH$_3$CHO",
+       "quote": "We have detected 10 unblended lines of acetaldehyde. The spectral parameters of the corresponding transitions are given in Table 4."
+      }
+     ]
+    },
+    {
+     "species": "CH3OCH3",
+     "transition": "33 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 84632.274-115712.828 MHz)",
+     "evidence": [
+      {
+       "loc": "Dimethyl ether: CH$_3$OCH$_3$",
+       "quote": "We have identified 33 unblended transitions of dimethyl ether covering energies from $\\sim11\\,\\rm{K}$ to $\\sim230\\,\\rm{K}$, listed in Table 5."
+      }
+     ]
+    },
+    {
+     "species": "CH3COCH3",
+     "transition": "38 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 88441.793-115115.980 MHz)",
+     "evidence": [
+      {
+       "loc": "Acetone: CH$_3$COCH$_3$",
+       "quote": "We have identified 38 unblended transitions of acetone, covering energies from $\\sim15\\,\\rm{K}$ to $\\sim170\\,\\rm{K}$, listed in Table 6."
+      }
+     ]
+    },
+    {
+     "species": "C2H5OH",
+     "transition": "39 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 86311.282-106931.229 MHz)",
+     "evidence": [
+      {
+       "loc": "Ethanol: C$_2$H$_5$OH",
+       "quote": "We have detected 39 unblended transitions of ethanol. They are listed in Table 7"
+      }
+     ]
+    },
+    {
+     "species": "gGg'-(CH2OH)2",
+     "transition": "7 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 93016.853-113997.038 MHz)",
+     "evidence": [
+      {
+       "loc": "Ethylene glycol: gGg’-(CH$_2$OH)$_2$ and aGg’-(CH$_2$OH)$_2$",
+       "quote": "We have detected 7 most unblended transitions of gGg’-(CH$_2$OH)$_2$, covering energies from $\\sim20\\,\\rm{K}$ to $\\sim120\\,\\rm{K}$."
+      }
+     ]
+    },
+    {
+     "species": "aGg'-(CH2OH)2",
+     "transition": "20 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (84439.522-111579.436 MHz)",
+     "evidence": [
+      {
+       "loc": "Ethylene glycol: gGg’-(CH$_2$OH)$_2$ and aGg’-(CH$_2$OH)$_2$",
+       "quote": "For the conformer aGg’-(CH$_2$OH)$_2$, already detected in G31 by (cite: rivilla2017a), we have detected 20 unblended transitions."
+      }
+     ]
+    },
+    {
+     "species": "CH3CN",
+     "transition": "v=0 (5_K-4_K, 6_K-5_K) and v_8=1 rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 92247.240-110823.126 MHz for v_8=1)",
+     "evidence": [
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "The transitions of CH$_3$CN v$=0$ present within the observed GUAPOS bandwidth are CH$_3$CN(5$_{\\rm{K}}-4_{\\rm{K}}$) and CH$_3$CN(6$_{\\rm{K}}-5_{\\rm{K}}$)."
+      },
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "Because of the optical thickness of the ground transitions, we have analyzed the vibrationally excited ones, CH$_3$CN v$_8 =1$."
+      }
+     ]
+    },
+    {
+     "species": "13CH3CN",
+     "transition": "5 unblended rotational transitions (J=5-4 and 6-5)",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 89329.600-107196.570 MHz)",
+     "evidence": [
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "As for CH$_3$OH, we have also analyzed the emission of the isotopologue $^{13}$CH$_3$CN. We detected only 5 transitions not affected by blending, with $E_{\\rm{U}}$ between $\\sim10\\,\\rm{K}$ and $\\sim80\\,\\rm{K}$."
+      }
+     ]
+    },
+    {
+     "species": "CH313CN",
+     "transition": "3 unblended rotational transitions (J=5-4 and 6-5)",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 91934.531-110309.800 MHz)",
+     "evidence": [
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "Moreover, we have analyzed the isotopologue CH$_3^{13}$CN. We detected only 3 unblended transitions, listed in Table 12."
+      }
+     ]
+    },
+    {
+     "species": "C2H3CN",
+     "transition": "11 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 94913.115-114621.567 MHz)",
+     "evidence": [
+      {
+       "loc": "Vinyl cyanide: C$_2$H$_3$CN",
+       "quote": "We have detected 11 unblended transitions of vinyl cyanide. They are listed in Table 13"
+      }
+     ]
+    },
+    {
+     "species": "C2H5CN",
+     "transition": "16 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 88323.735-109650.295 MHz)",
+     "evidence": [
+      {
+       "loc": "Ethyl cyanide: C$_2$H$_5$CN and C$_2$H$_5^{13}$CN",
+       "quote": "We have detected 16 unblended transitions of C$_2$H$_5$CN, listed in Table 14."
+      }
+     ]
+    },
+    {
+     "species": "C2H513CN",
+     "transition": "7 unblended rotational transitions",
+     "rest_frequency": "84.05-115.91 GHz (e.g., 89116.016-115871.741 MHz)",
+     "evidence": [
+      {
+       "loc": "Ethyl cyanide: C$_2$H$_5$CN and C$_2$H$_5^{13}$CN",
+       "quote": "We have detected only 7 most unblended transitions of C$_2$H$_5^{13}$CN, listed in Table 15."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.2'' x 1.2'' (~4400 au x 4400 au)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with an angular resolution of $1.2\\ensuremath{''}\\times1.2\\ensuremath{''}$ ($\\sim4400\\,\\mathrm{au}\\times4400\\,\\mathrm{au}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~11'' (minimum)",
+    "evidence": [
+     {
+      "loc": "Methanol: CH$_3$OH, $^{13}$CH$_3$OH, and CH$_3^{18}$OH",
+      "quote": "Taking into account that the minimum maximum recoverable scale of the GUAPOS project is $\\sim11\\ensuremath{''}$, it is unlikely that the filtering effect has a major impact."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "0.5 mJy/beam to 1.9 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The noise of the maps, $rms$, varies between 0.5 mJy/beam and 1.9 mJy/beam."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Cycle 5",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out with ALMA during Cycle 5, (project 2017.1.00501.S, P.I.: M. T. Beltrán)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "P.I.: M. T. Beltrán",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out with ALMA during Cycle 5, (project 2017.1.00501.S, P.I.: M. T. Beltrán)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectral fitting parameters and emission peak coordinates for C2H4O2 isomers (CH3OCHO, CH3COOH, CH2OHCHO) and H2 column density N_H2 = (1.0 +/- 0.2) x 10^25 cm^-2",
+      "evidence": [
+       {
+        "loc": "Spectral fitting",
+        "quote": "The abundances have been calculated using the column density of H$_2$ derived in the first paper of the GUAPOS project, $N_{\\rm{H_2}}=(1.0\\pm0.2)\\times 10^{25}\\,\\rm{cm^{-2}}$ (cite: mininni2020)."
+       },
+       {
+        "loc": "Isomers of C$_2$H$_4$O$_2$: CH$_3$OCHO, CH$_3$COOH, and CH$_2$OHCHO",
+        "quote": "The analysis of methyl formate, acetic acid and glycolaldehyde has been presented in (cite: mininni2020)."
+       }
+      ]
+     },
+     "citation": "(cite: mininni2020)"
+    },
+    {
+     "what": {
+      "value": "Spectral fitting parameters and emission maps for O- and N-bearing COMs (CH3NCO, NH2CHO, CH3C(O)NH2, CH3NHCHO)",
+      "evidence": [
+       {
+        "loc": "O- and N-bearing species",
+        "quote": "The COMs formamide, NH$_2$CHO, methyl isocyanate, CH$_3$NCO, acetamide, CH$_3$C(O)NH$_2$, and N-methylformamide, CH$_3$NHCHO have been analyzed by (cite: colziguapos)."
+       }
+      ]
+     },
+     "citation": "(cite: colziguapos)"
+    },
+    {
+     "what": {
+      "value": "Isotopic ratio 12C/13C = 37 +/- 12",
+      "evidence": [
+       {
+        "loc": "Spectral fitting",
+        "quote": "We have adopted a value of $^{12}$C/$^{13}$C = $37\\pm12$, derived from (cite: yan2019)."
+       }
+      ]
+     },
+     "citation": "(cite: yan2019)"
+    },
+    {
+     "what": {
+      "value": "Isotopic ratio 16O/18O = 333 +/- 143",
+      "evidence": [
+       {
+        "loc": "Spectral fitting",
+        "quote": "and of $^{16}$O/$^{18}$O = $333\\pm143$, derived from (cite: wilsonrood), using the galactocentric distance of 5.02 kpc for G31"
+       }
+      ]
+     },
+     "citation": "(cite: wilsonrood)"
+    },
+    {
+     "what": {
+      "value": "High-resolution 3.5 mm continuum data and core positions of G31",
+      "evidence": [
+       {
+        "loc": "Positions of molecular species emission peaks",
+        "quote": "in Fig. 3 we have plotted the continuum emission of the GUAPOS data and the high-resolution continuum data at 3.5 mm from (cite: beltran2021)"
+       }
+      ]
+     },
+     "citation": "(cite: beltran2021)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic entries and partition functions from CDMS and JPL databases",
+      "evidence": [
+       {
+        "loc": "Spectral fitting",
+        "quote": "The spectroscopic data were taken from the Cologne Database for Molecular Spectroscopy (CDMS, (cite: cdms2001; cdms2005)) and from the JPL database of molecular spectroscopy (cite: jpl1998)."
+       }
+      ]
+     },
+     "citation": "(cite: cdms2001; cdms2005; jpl1998)"
+    },
+    {
+     "what": {
+      "value": "Energies of vibrational states of C2H5OH for partition function correction factor",
+      "evidence": [
+       {
+        "loc": "Ethanol: C$_2$H$_5$OH",
+        "quote": "so we used the values of the energy of the vibrational states by (cite: 2011Durig) to calculate the correction factor."
+       }
+      ]
+     },
+     "citation": "(cite: 2011Durig)"
+    },
+    {
+     "what": {
+      "value": "COM abundances in 27 comparison sources (HMCs, hot corinos, shocked regions, YSO envelopes, quiescent clouds)",
+      "evidence": [
+       {
+        "loc": "Comparison with other sources",
+        "quote": "In Fig. 5 we plot the abundances w.r.t. methanol of the O-bearing, N-bearing, and O- and N-bearing species detected in G31, together with the abundances of the same COMs found in other twenty-seven sources in literature."
+       }
+      ]
+     },
+     "citation": "(cite: belloche2016; bonfand2019; bogelund2019; zernickel2012; tercero2018; vanderWalt2021; allen2017; peng2022; Jorge2016; manigand2020; lopezsepulcre2017; taquet2019; vangelder2020; nazari2021; Csengeri19shock; lefloch2017; codella2009; requena-torres2006; requena-torres2008; zeng2018; bizzocchi2020; rodriguez-almenida2021; rivilla2022; sanz-novo2022; martin2008NH2G0.69)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Gas-grain chemical models (slow, medium, and fast warm-up timescales) from Garrod et al. (2022)",
+     "evidence": [
+      {
+       "loc": "Comparison with chemical models",
+       "quote": "In this section we compare the abundances of COMs in G31 with the results of the final models presented by (cite: garrod2022)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "~5%",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The uncertainties in the flux calibration are $\\sim5\\%$ (from Quality Assesment 2 reports), in good agreement with ALMA Band 3 flux uncertainties reported by (cite: bonatoALMAcalibrator)."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The maps were created using a robust parameter of (cite: briggs) set equal to 0 and a common restoring synthesized beam of $1.2\\ensuremath{''}\\times1.2\\ensuremath{''}$."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "STATCONT statistical continuum determination on extracted spectrum and cubes",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The baseline has been analyzed by (cite: colziguapos) with the software STATCONT (cite: alvaro2018), to statistically determine the value of the continuum level and then subtract it from the spectrum."
+      },
+      {
+       "loc": "Analysis of the maps",
+       "quote": "To create the maps of each line, we first removed the continuum emission from the cubes using the software STATCONT (cite: alvaro2018), and then created the integrated intensity (moment 0) map for each line."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.2'' x 1.2''",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The maps were created using a robust parameter of (cite: briggs) set equal to 0 and a common restoring synthesized beam of $1.2\\ensuremath{''}\\times1.2\\ensuremath{''}$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.5 to 1.9 mJy/beam",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The noise of the maps, $rms$, varies between 0.5 mJy/beam and 1.9 mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observational details, spectral setups, calibrators, correlator configurations, and alignment of spectra across basebands",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The data have been firstly presented by (cite: mininni2020), where it is possible to find more details about the spectral setups, the flux and phase calibrators, and the configurations of the correlators."
+       },
+       {
+        "loc": "Observations",
+        "quote": "(cite: mininni2020) described the steps made to align the spectra of the different correlator configurations and basebands to obtain the final spectrum."
+       }
+      ]
+     },
+     "from_reference": "(cite: mininni2020)"
+    },
+    {
+     "what": {
+      "value": "Baseline/continuum subtraction on the extracted spectrum using STATCONT and preliminary line identification across the band",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The baseline has been analyzed by (cite: colziguapos) with the software STATCONT (cite: alvaro2018), to statistically determine the value of the continuum level and then subtract it from the spectrum."
+       },
+       {
+        "loc": "Spectral fitting",
+        "quote": "The analysis has been performed after a preliminary line identification, where we identified a large fraction of the molecular species present in the source (see Appendix E of (cite: colziguapos))."
+       }
+      ]
+     },
+     "from_reference": "(cite: colziguapos)"
+    },
+    {
+     "what": {
+      "value": "Methodology for creating normalized mean moment-0 maps and 2D Gaussian fitting",
+      "evidence": [
+       {
+        "loc": "Analysis of the maps",
+        "quote": "The coordinates of the peak of the emission for CH$_3$NCO, NH$_2$CHO, CH$_3$C(O)NH$_2$, and CH$_3$NHCHO have been derived from the maps presented in (cite: colziguapos) following the same methodology presented in this paper and in (cite: mininni2020)."
+       }
+      ]
+     },
+     "from_reference": "(cite: mininni2020; colziguapos)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version used for calibration, imaging, immath, and imfit",
+    "MADCUBA version used for SLIM/AUTOFIT analysis",
+    "Exact coordinates of the continuum peak from which the 1.2'' beam spectrum was extracted",
+    "Velocity integration ranges used to compute the moment-0 maps of each selected transition",
+    "Details of calibration and imaging (e.g. self-calibration, cell size, image size, masking) deferred to Mininni et al. (2020)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract and baseline-subtract the central spectrum",
+    "method": {
+     "value": "Extract spectra from an area equal to the beam size centered on the continuum peak across all basebands, align them, and subtract continuum baseline using STATCONT.",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "For all the observed basebands, the spectra have been extracted from an area equal to the size of the beam and centered toward the peak of the continuum."
+      },
+      {
+       "loc": "Observations",
+       "quote": "The baseline has been analyzed by (cite: colziguapos) with the software STATCONT (cite: alvaro2018), to statistically determine the value of the continuum level and then subtract it from the spectrum."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "STATCONT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Aperture size = 1.2'' x 1.2'' (beam size)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "the spectra have been extracted from an area equal to the size of the beam and centered toward the peak of the continuum."
+       }
+      ]
+     },
+     {
+      "value": "Continuum level uncertainty = ~11%",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Both from the alignment of the different spectra and from the statistical analysis performed with STATCONT on the final spectrum, the uncertainty on the determination of the continuum level is $\\sim11\\%$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistency between spectral alignment and STATCONT statistical analysis (~11% continuum uncertainty)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Both from the alignment of the different spectra and from the statistical analysis performed with STATCONT on the final spectrum, the uncertainty on the determination of the continuum level is $\\sim11\\%$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit molecular transitions under LTE to derive physical parameters and abundances",
+    "method": {
+     "value": "Select unblended transitions based on preliminary line identification and fit synthetic LTE spectra using MADCUBA-SLIM AUTOFIT, applying vibrational partition function corrections and isotopic ratios for optically thick species.",
+     "evidence": [
+      {
+       "loc": "Spectral fitting",
+       "quote": "The baseline-subtracted spectrum has been analyzed with the SLIM (Spectral Line Identification and Modeling) tool within the MADCUBA package (cite: martin2019)."
+      },
+      {
+       "loc": "Spectral fitting",
+       "quote": "we assumed a single temperature component that fills the beam and used the AUTOFIT tool of MADCUBA-SLIM, which finds the best agreement, minimizing the $\\chi^{2}$, between the observed spectra and the predicted LTE model, taking into account also the optical depth."
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA",
+     "SLIM",
+     "AUTOFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Reference velocity V_0 = 96.5 km s^-1",
+      "evidence": [
+       {
+        "loc": "Spectral fitting",
+        "quote": "instead of the absolute value of V$_{\\rm LSR}$, we give the difference V–V$_0$ using as reference velocity V$_0=96.5\\,$km s$^{-1}$ (cite: beltran2018)."
+       }
+      ]
+     },
+     {
+      "value": "Partition function correction factors: 1.13 for C2H5OH (at 119 K), 1.062 for C2H5CN (at 83 K), 1.24 for C2H513CN (at 126 K)",
+      "evidence": [
+       {
+        "loc": "Analysis",
+        "quote": "$c$) corrected for the partition function factor at 119 K of 1.13;"
+       },
+       {
+        "loc": "Analysis",
+        "quote": "$e$) corrected for the partition function factor at 83 K of 1.062; $f$) corrected for the partition function factor at 126 K of 1.24;"
+       }
+      ]
+     },
+     {
+      "value": "Fixed FWHM for selected species: 7.0 km s^-1 (CH318OH, CH3OCH3, CH3COCH3), 7.5 km s^-1 (CH3CHO), 7.2 km s^-1 (aGg' and gGg'-(CH2OH)2), 9.7 km s^-1 (C2H3CN), 6.0 km s^-1 (C2H513CN); fixed T_ex = 120 K for aGg'-(CH2OH)2",
+      "evidence": [
+       {
+        "loc": "Analysis",
+        "quote": "$a$): quantity kept fixed during the fitting;"
+       },
+       {
+        "loc": "Ethylene glycol: gGg’-(CH$_2$OH)$_2$ and aGg’-(CH$_2$OH)$_2$",
+        "quote": "Therefore, to help the fitting algorithm to converge, we have fixed the excitation temperature to the value found for gGg’-(CH$_2$OH)$_2$ and the FWHM to 7.2 $\\mathrm{km\\,,s^{-1}}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Local thermodynamic equilibrium (LTE), single temperature component filling the 1.2'' beam",
+      "evidence": [
+       {
+        "loc": "Spectral fitting",
+        "quote": "we assumed a single temperature component that fills the beam"
+       },
+       {
+        "loc": "Spectral fitting",
+        "quote": "During the fit we have assumed local thermodynamic equilibrium (LTE), justified by the high density of G31 (rough estimate of $n\\sim10^8\\,\\mathrm{cm^{-3}}$ , (cite: mininni2020))."
+       }
+      ]
+     },
+     {
+      "value": "N_H2 = (1.0 +/- 0.2) x 10^25 cm^-2, 12C/13C = 37 +/- 12, 16O/18O = 333 +/- 143, 11% error floor on N and T_ex",
+      "evidence": [
+       {
+        "loc": "Analysis",
+        "quote": "The abundances have been calculated using $N_{\\rm{H_2}}=(1.0\\pm0.2)\\times10^{25}\\,\\rm{cm^{-2}}$ (cite: mininni2020); to calculate the corrected values of column densities and abundances of a species from the analysis of its $^{13}$C or $^{18}$O isotopologue, we have used the ratios $^{12}$C/$^{13}$C = $37\\pm12$ ( from (cite: yan2019)) and $^{16}$O/$^{18}$O = $333\\pm143$ (from (cite: wilsonrood))"
+       },
+       {
+        "loc": "Spectral fitting",
+        "quote": "For all the species we have assumed an error of 11% on the values of $N$ and $T_{\\rm{ex}}$, to reflect the uncertainty on the level of continuum."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Chi-squared minimization via MADCUBA-SLIM AUTOFIT",
+     "evidence": [
+      {
+       "loc": "Spectral fitting",
+       "quote": "used the AUTOFIT tool of MADCUBA-SLIM, which finds the best agreement, minimizing the $\\chi^{2}$, between the observed spectra and the predicted LTE model, taking into account also the optical depth."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Sensitivity tests fixing T_ex (e.g., fixing T_ex = 120 K for CH3CHO and 100 K for CH313CN) and cross-checking isotopologues and vibrationally excited states",
+     "evidence": [
+      {
+       "loc": "Acetaldehyde: CH$_3$CHO",
+       "quote": "To quantify how the column density would change if the temperature were higher, we have performed a fit using the same transitions and fixing the value of $T_{\\rm{ex}}$ to 120 K."
+      },
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "Fixing the value of $T_{\\rm{ex}}$ to 100 K the column density from the fitting procedure would be $8.1\\times10^{15}\\,\\rm{cm^{-2}}$, consistent inside the errors with the estimate leaving $T_{\\rm{ex}}$ as a free parameter."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Create normalized mean emission maps and fit 2D Gaussians to determine peak positions and sizes",
+    "method": {
+     "value": "Subtract continuum from cubes with STATCONT, compute moment-0 maps for up to 8 unblended lines per species, normalize each map to its peak, average them with CASA immath, and fit a 2D Gaussian and compute residuals with CASA imfit.",
+     "evidence": [
+      {
+       "loc": "Analysis of the maps",
+       "quote": "To create the maps of each line, we first removed the continuum emission from the cubes using the software STATCONT (cite: alvaro2018), and then created the integrated intensity (moment 0) map for each line."
+      },
+      {
+       "loc": "Analysis of the maps",
+       "quote": "To obtain a mean map of each species, we normalized each map to its peak intensity and then averaged all the maps of the same species together, using the task *immath* of CASA."
+      },
+      {
+       "loc": "Analysis of the maps",
+       "quote": "The mean maps obtained with this procedure are shown in Fig. 1, and have been fitted with a 2D Gaussian using the task *imfit* inside CASA to obtain the position of the peak of emission and the size of the emission."
+      }
+     ]
+    },
+    "software": [
+     "STATCONT",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Up to 8 unblended lines per species covering low and high E_U",
+      "evidence": [
+       {
+        "loc": "Analysis of the maps",
+        "quote": "To create the emission maps of the species analyzed in this work we selected for each of them eight of the most unblended lines, or the maximum number possible for those species for which we detect less than eight (mostly) unblended transitions to fit."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian fit using CASA task imfit",
+     "evidence": [
+      {
+       "loc": "Analysis of the maps",
+       "quote": "have been fitted with a 2D Gaussian using the task *imfit* inside CASA to obtain the position of the peak of emission and the size of the emission."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Inspection of 2D Gaussian residual maps (residuals in core center <= 3% of peak) and comparison with moment-0 maps of individual low-energy transitions in Appendix D",
+     "evidence": [
+      {
+       "loc": "Analysis of the maps",
+       "quote": "The task *imfit* produces also the maps of the residuals (i.e. the difference between the maps in input and the best 2D models computed by the task itself)"
+      },
+      {
+       "loc": "Positions of molecular species emission peaks",
+       "quote": "This is due to the fact that the emission is nearly Gaussian, with the residual values contributing at maximum for a factor of 3% with respect to the peak emission."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Compare COM abundances with 27 astronomical sources and gas-grain chemical models",
+    "method": {
+     "value": "Compare abundances relative to methanol with 27 literature sources and compare absolute abundances (w.r.t. H2) with the slow, medium, and fast warm-up chemical models of Garrod et al. (2022).",
+     "evidence": [
+      {
+       "loc": "Comparison with other sources",
+       "quote": "In Fig. 5 we plot the abundances w.r.t. methanol of the O-bearing, N-bearing, and O- and N-bearing species detected in G31, together with the abundances of the same COMs found in other twenty-seven sources in literature."
+      },
+      {
+       "loc": "Comparison with chemical models",
+       "quote": "In Fig. 6 we plot the ratio between the peak abundances reached in the three final models (*slow* in the upper panel, *medium* in the middle panel, and *fast* in the lower panel) and the abundance derived in G31 for the COMs presented in this work."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "30% assumed uncertainty on chemical model abundances",
+      "evidence": [
+       {
+        "loc": "Comparison with chemical models",
+        "quote": "We assumed an error of 30% on the values derived from the chemical models."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Checked beam-dilution effects by comparing 1.2'' column densities against 0.2'' high-resolution ALMA data from Beltrán et al. (2018) and Colzi et al. (2021)",
+     "evidence": [
+      {
+       "loc": "Comparison with other sources",
+       "quote": "(cite: colziguapos) presented the emission maps of O- and N-bearing species at a higher resolution of 0.2$''$ and confirmed that for these species the emission fills the beam of 1.2$''$ of the data analyzed in this paper. Moreover, the estimate of the column density from the high-resolution data is consistent within a factor 2 with the estimate obtained with our resolution."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data calibration, imaging, normalizing and averaging moment-0 maps (immath), and 2D Gaussian fitting of mean maps (imfit)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated and imaged with CASA (the *Common Astronomy Software Applications* package, (cite: CASAmcmullin))."
+      },
+      {
+       "loc": "Analysis of the maps",
+       "quote": "averaged all the maps of the same species together, using the task *immath* of CASA."
+      },
+      {
+       "loc": "Analysis of the maps",
+       "quote": "fitted with a 2D Gaussian using the task *imfit* inside CASA to obtain the position of the peak of emission and the size of the emission."
+      }
+     ]
+    }
+   },
+   {
+    "name": "STATCONT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Statistical determination and subtraction of continuum emission in extracted 1D spectra and 3D data cubes",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The baseline has been analyzed by (cite: colziguapos) with the software STATCONT (cite: alvaro2018), to statistically determine the value of the continuum level and then subtract it from the spectrum."
+      },
+      {
+       "loc": "Analysis of the maps",
+       "quote": "To create the maps of each line, we first removed the continuum emission from the cubes using the software STATCONT (cite: alvaro2018)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MADCUBA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line identification and LTE spectral fitting using the SLIM and AUTOFIT tools",
+     "evidence": [
+      {
+       "loc": "Spectral fitting",
+       "quote": "The baseline-subtracted spectrum has been analyzed with the SLIM (Spectral Line Identification and Modeling) tool within the MADCUBA package (cite: martin2019)."
+      },
+      {
+       "loc": "Spectral fitting",
+       "quote": "used the AUTOFIT tool of MADCUBA-SLIM, which finds the best agreement, minimizing the $\\chi^{2}$, between the observed spectra and the predicted LTE model"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CH3OH v_t=1 excitation temperature (T_ex)",
+    "value": "208",
+    "uncertainty": "24",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$OH v$_t=1$ | $208\\pm24$ | $100\\pm12$ | $100\\pm30$ | $8.3\\pm0.4$ | $0.94\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH v_t=1 column density (N)",
+    "value": "100",
+    "uncertainty": "12",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$OH v$_t=1$ | $208\\pm24$ | $100\\pm12$ | $100\\pm30$ | $8.3\\pm0.4$ | $0.94\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "13CH3OH excitation temperature (T_ex)",
+    "value": "152",
+    "uncertainty": "20",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| $^{13}$CH$_{3}$OH | $152\\pm20$ | $9.6\\pm1.7$ | $10\\pm3$ | $7.2\\pm0.3$ | $1.09\\pm0.10$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "13CH3OH column density (N)",
+    "value": "9.6",
+    "uncertainty": "1.7",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| $^{13}$CH$_{3}$OH | $152\\pm20$ | $9.6\\pm1.7$ | $10\\pm3$ | $7.2\\pm0.3$ | $1.09\\pm0.10$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH318OH excitation temperature (T_ex)",
+    "value": "153",
+    "uncertainty": "20",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_{3}^{18}$OH | $153\\pm20$ | $2.4\\pm0.4$ | $2.4\\pm0.7$ | $7.0^{a}$ | $1.28\\pm0.13$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH318OH column density (N)",
+    "value": "2.4",
+    "uncertainty": "0.4",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_{3}^{18}$OH | $153\\pm20$ | $2.4\\pm0.4$ | $2.4\\pm0.7$ | $7.0^{a}$ | $1.28\\pm0.13$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH corrected column density (from CH318OH)",
+    "value": "800",
+    "uncertainty": "130",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_{3}$OH$^{b}$ | | $800\\pm130$ | $800\\pm200$ | | |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH corrected abundance w.r.t. H2 (X)",
+    "value": "800",
+    "uncertainty": "200",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_{3}$OH$^{b}$ | | $800\\pm130$ | $800\\pm200$ | | |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO excitation temperature (T_ex)",
+    "value": "82",
+    "uncertainty": "20",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CHO | $82\\pm20$ | $0.34\\pm0.16$ | $0.34\\pm0.18$ | $7.5^{a}$ | $0.45\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO column density (N)",
+    "value": "0.34",
+    "uncertainty": "0.16",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CHO | $82\\pm20$ | $0.34\\pm0.16$ | $0.34\\pm0.18$ | $7.5^{a}$ | $0.45\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO abundance w.r.t. H2 (X)",
+    "value": "0.34",
+    "uncertainty": "0.18",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CHO | $82\\pm20$ | $0.34\\pm0.16$ | $0.34\\pm0.18$ | $7.5^{a}$ | $0.45\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO velocity offset (V-V_0)",
+    "value": "0.45",
+    "uncertainty": "0.11",
+    "units": "km s^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CHO | $82\\pm20$ | $0.34\\pm0.16$ | $0.34\\pm0.18$ | $7.5^{a}$ | $0.45\\pm0.11$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCH3 excitation temperature (T_ex)",
+    "value": "98",
+    "uncertainty": "11",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$OCH$_3$ | $98\\pm11$ | $8.1\\pm1.0$ | $8\\pm2$ | $7.0^{a}$ | $1.07\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCH3 column density (N)",
+    "value": "8.1",
+    "uncertainty": "1.0",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$OCH$_3$ | $98\\pm11$ | $8.1\\pm1.0$ | $8\\pm2$ | $7.0^{a}$ | $1.07\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCH3 abundance w.r.t. H2 (X)",
+    "value": "8",
+    "uncertainty": "2",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$OCH$_3$ | $98\\pm11$ | $8.1\\pm1.0$ | $8\\pm2$ | $7.0^{a}$ | $1.07\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3COCH3 excitation temperature (T_ex)",
+    "value": "170",
+    "uncertainty": "21",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$COCH$_3$ | $170\\pm21$ | $5.6\\pm1.3$ | $5.6\\pm1.4$ | $7.0^{a}$ | $0.84\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3COCH3 column density (N)",
+    "value": "5.6",
+    "uncertainty": "1.3",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$COCH$_3$ | $170\\pm21$ | $5.6\\pm1.3$ | $5.6\\pm1.4$ | $7.0^{a}$ | $0.84\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3COCH3 abundance w.r.t. H2 (X)",
+    "value": "5.6",
+    "uncertainty": "1.4",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$COCH$_3$ | $170\\pm21$ | $5.6\\pm1.3$ | $5.6\\pm1.4$ | $7.0^{a}$ | $0.84\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5OH excitation temperature (T_ex)",
+    "value": "119",
+    "uncertainty": "14",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$OH | $119\\pm14$ | $4.7\\pm0.6^{c}$ | $4.7\\pm1.2^{c}$ | $7.02\\pm0.09$ | $1.00\\pm0.04$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5OH column density (N)",
+    "value": "4.7",
+    "uncertainty": "0.6",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$OH | $119\\pm14$ | $4.7\\pm0.6^{c}$ | $4.7\\pm1.2^{c}$ | $7.02\\pm0.09$ | $1.00\\pm0.04$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5OH abundance w.r.t. H2 (X)",
+    "value": "4.7",
+    "uncertainty": "1.2",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$OH | $119\\pm14$ | $4.7\\pm0.6^{c}$ | $4.7\\pm1.2^{c}$ | $7.02\\pm0.09$ | $1.00\\pm0.04$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "aGg'-(CH2OH)2 column density (N)",
+    "value": "1.45",
+    "uncertainty": "0.17",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| aGg’-(CH$_2$OH)$_2$ | $120^{a}$ | $1.45\\pm0.17$ | $1.5\\pm0.4$ | $7.2^{a}$ | $0.48\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "aGg'-(CH2OH)2 abundance w.r.t. H2 (X)",
+    "value": "1.5",
+    "uncertainty": "0.4",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| aGg’-(CH$_2$OH)$_2$ | $120^{a}$ | $1.45\\pm0.17$ | $1.5\\pm0.4$ | $7.2^{a}$ | $0.48\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "aGg'-(CH2OH)2 velocity offset (V-V_0)",
+    "value": "0.48",
+    "uncertainty": "0.06",
+    "units": "km s^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| aGg’-(CH$_2$OH)$_2$ | $120^{a}$ | $1.45\\pm0.17$ | $1.5\\pm0.4$ | $7.2^{a}$ | $0.48\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "gGg'-(CH2OH)2 excitation temperature (T_ex)",
+    "value": "120",
+    "uncertainty": "28",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| gGg’-(CH$_2$OH)$_2$ | $120\\pm28$ | $0.87\\pm0.19$ | $0.9\\pm0.3$ | $7.2^{a}$ | $1.0\\pm0.2$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "gGg'-(CH2OH)2 column density (N)",
+    "value": "0.87",
+    "uncertainty": "0.19",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| gGg’-(CH$_2$OH)$_2$ | $120\\pm28$ | $0.87\\pm0.19$ | $0.9\\pm0.3$ | $7.2^{a}$ | $1.0\\pm0.2$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "gGg'-(CH2OH)2 abundance w.r.t. H2 (X)",
+    "value": "0.9",
+    "uncertainty": "0.3",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| gGg’-(CH$_2$OH)$_2$ | $120\\pm28$ | $0.87\\pm0.19$ | $0.9\\pm0.3$ | $7.2^{a}$ | $1.0\\pm0.2$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CN v_8=1 excitation temperature (T_ex)",
+    "value": "197",
+    "uncertainty": "51",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CN v$_8=1$ | $197\\pm51$ | $3.2\\pm0.9$ | $3.2\\pm1.1$ | $8.6\\pm0.3$ | $0.68\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CN v_8=1 column density (N)",
+    "value": "3.2",
+    "uncertainty": "0.9",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CN v$_8=1$ | $197\\pm51$ | $3.2\\pm0.9$ | $3.2\\pm1.1$ | $8.6\\pm0.3$ | $0.68\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "13CH3CN excitation temperature (T_ex)",
+    "value": "111",
+    "uncertainty": "17",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| $^{13}$CH$_{3}$CN | $111\\pm17$ | $0.073\\pm0.011$ | $0.073\\pm0.019$ | $7.1\\pm0.2$ | $0.95\\pm0.09$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "13CH3CN column density (N)",
+    "value": "0.073",
+    "uncertainty": "0.011",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| $^{13}$CH$_{3}$CN | $111\\pm17$ | $0.073\\pm0.011$ | $0.073\\pm0.019$ | $7.1\\pm0.2$ | $0.95\\pm0.09$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH313CN excitation temperature (T_ex)",
+    "value": "54",
+    "uncertainty": "10",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_{3}^{13}$CN | $54\\pm10$ | $0.069\\pm0.011$ | $0.069\\pm0.018$ | $7.2\\pm0.5$ | $0.97\\pm0.19$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH313CN column density (N)",
+    "value": "0.069",
+    "uncertainty": "0.011",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_{3}^{13}$CN | $54\\pm10$ | $0.069\\pm0.011$ | $0.069\\pm0.018$ | $7.2\\pm0.5$ | $0.97\\pm0.19$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CN corrected column density (from 13CH3CN)",
+    "value": "2.7",
+    "uncertainty": "0.4",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CN$^{d}$ | | $2.7\\pm0.4$ | $2.7\\pm0.7$ | | |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CN corrected abundance w.r.t. H2 (X)",
+    "value": "2.7",
+    "uncertainty": "0.7",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| CH$_3$CN$^{d}$ | | $2.7\\pm0.4$ | $2.7\\pm0.7$ | | |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H3CN excitation temperature (T_ex)",
+    "value": "104",
+    "uncertainty": "17",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_3$CN | $104\\pm17$ | $0.21\\pm0.04$ | $0.21\\pm0.06$ | $9.7^{a}$ | $1.05\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H3CN column density (N)",
+    "value": "0.21",
+    "uncertainty": "0.04",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_3$CN | $104\\pm17$ | $0.21\\pm0.04$ | $0.21\\pm0.06$ | $9.7^{a}$ | $1.05\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H3CN abundance w.r.t. H2 (X)",
+    "value": "0.21",
+    "uncertainty": "0.06",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_3$CN | $104\\pm17$ | $0.21\\pm0.04$ | $0.21\\pm0.06$ | $9.7^{a}$ | $1.05\\pm0.15$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5CN excitation temperature (T_ex)",
+    "value": "83",
+    "uncertainty": "10",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$CN | $83\\pm10$ | $0.56\\pm0.08^{e}$ | $0.56\\pm0.14^{e}$ | $7.94\\pm0.13$ | $1.37\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5CN column density (N)",
+    "value": "0.56",
+    "uncertainty": "0.08",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$CN | $83\\pm10$ | $0.56\\pm0.08^{e}$ | $0.56\\pm0.14^{e}$ | $7.94\\pm0.13$ | $1.37\\pm0.06$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H513CN excitation temperature (T_ex)",
+    "value": "126",
+    "uncertainty": "37",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5^{13}$CN | $126\\pm37$ | $0.042\\pm0.012^{f}$ | $0.042\\pm0.017^{f}$ | $6.0^{a}$ | $1.8\\pm0.3$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H513CN column density (N)",
+    "value": "0.042",
+    "uncertainty": "0.012",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5^{13}$CN | $126\\pm37$ | $0.042\\pm0.012^{f}$ | $0.042\\pm0.017^{f}$ | $6.0^{a}$ | $1.8\\pm0.3$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5CN corrected column density (from C2H513CN)",
+    "value": "1.6",
+    "uncertainty": "0.5",
+    "units": "10^17 cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$CN$^{g}$ | | $1.6\\pm0.5$ | $1.6\\pm0.7$ | | |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5CN corrected abundance w.r.t. H2 (X)",
+    "value": "1.6",
+    "uncertainty": "0.7",
+    "units": "10^-8",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "| C$_2$H$_5$CN$^{g}$ | | $1.6\\pm0.5$ | $1.6\\pm0.7$ | | |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO emission peak position (J2000) and size",
+    "value": "18h 47m 34.308s, -01d 12m 46.132s, 1.64'' x 1.60'' (PA 50 deg)",
+    "uncertainty": "not stated",
+    "units": "hms, dms, arcsec, deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Vinyl cyanide: C$_2$H$_3$CN",
+      "quote": "| CH$_3$CHO | $\\sim10-70$ | 34.308 | 46.132 | $1.64\\times1.60$ | 50 |"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCH3 emission peak position (J2000) and size",
+    "value": "18h 47m 34.319s, -01d 12m 46.052s, 1.98'' x 1.83'' (PA 22 deg)",
+    "uncertainty": "not stated",
+    "units": "hms, dms, arcsec, deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Vinyl cyanide: C$_2$H$_3$CN",
+      "quote": "| CH$_3$OCH$_3$ | $\\sim10-220$ | 34.319 | 46.052 | $1.98\\times1.83$ | 22 |"
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5CN emission peak position (J2000) and size",
+    "value": "18h 47m 34.311s, -01d 12m 46.094s, 1.95'' x 1.59'' (PA 20 deg)",
+    "uncertainty": "not stated",
+    "units": "hms, dms, arcsec, deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Vinyl cyanide: C$_2$H$_3$CN",
+      "quote": "| C$_2$H$_5$CN | $\\sim20-120$ | 34.311 | 46.094 | $1.95\\times1.59$ | 20 |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The emission of all analyzed COMs is centered toward the continuum peak of the G31 HMC, with CH3CHO showing a South-West contour shift and extended diffuse residual emission.",
+    "evidence": [
+     {
+      "loc": "Emission morphology",
+      "quote": "From the mean maps of the different species shown in Fig. 1, we can see that the emission of all the COMs analyzed is centered toward the continuum peak of the HMC"
+     },
+     {
+      "loc": "Emission morphology",
+      "quote": "with the exception of CH$_3$CHO that shows very diffuse emission in all the envelope around the HMC, with spots over the 10 *rms* level, and a prominent more compact spot to the southern edge of the G31 main core."
+     }
+    ]
+   },
+   {
+    "value": "There is no clear systematic difference in excitation temperature or FWHM between O-bearing, N-bearing, and O- and N-bearing species in G31.",
+    "evidence": [
+     {
+      "loc": "Spectral analysis",
+      "quote": "From Fig. 4, $T_{\\rm{ex}}$ does not show a clear difference between O-bearing species, N-bearing species, and O- and N-bearing species."
+     },
+     {
+      "loc": "Spectral analysis",
+      "quote": "The FWHM values vary between 6 to 10 km s$^{-1}$, not showing any particular trend among molecular species."
+     }
+    ]
+   },
+   {
+    "value": "Both peak velocity differences (V-V_0) and emission peak positions indicate possible chemical differentiation of CH3CHO and CH2OHCHO with respect to the other O-bearing species.",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Considering together the hints from spectral analysis and from map analysis, there are multiple indications of a possible chemical differentiation for the two O-bearing species CH$_3$CHO and CH$_2$OHCHO, with respect to the other O-bearing species."
+     }
+    ]
+   },
+   {
+    "value": "There is no unique template for COM abundances in hot molecular cores; G31 matches AFGL4176 well, while Galactic Center HMCs have significantly higher COM abundances relative to methanol.",
+    "evidence": [
+     {
+      "loc": "Comparison with other sources",
+      "quote": "Overall, it seems that there is not a unique template for the abundances of COMs in HMCs."
+     },
+     {
+      "loc": "Comparison with other sources",
+      "quote": "The only source with a remarkable similarity in chemical composition with G31, over the large number of molecules presented in this discussion, is AFGL4176."
+     }
+    ]
+   },
+   {
+    "value": "The COM abundances in G31 agree within a factor of 10 with the Garrod et al. (2022) gas-grain chemical models, best matching an intermediate warm-up timescale between the slow (5x10^4 yr) and medium (2x10^5 yr) models, except for CH3NCO which is underproduced by at least a factor of 500.",
+    "evidence": [
+     {
+      "loc": "Comparison with chemical models",
+      "quote": "This might indicate that the best match with G31 could be with an intermediate timescale between the *slow* and the *medium* values."
+     },
+     {
+      "loc": "Comparison with chemical models",
+      "quote": "The only species that is not well reproduced by any of the models is CH$_3$NCO, which is at least a factor $500$ more abundant in G31."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Spatial or kinematic chemical segregation exists between O-bearing, N-bearing, and O- and N-bearing COMs in the G31.41+0.31 hot molecular core.",
+    "experiment": "Performed LTE spectral fitting with MADCUBA-SLIM and 2D Gaussian fitting of normalized mean moment-0 maps with CASA imfit at 1.2'' resolution for 14 species plus 7 species from previous GUAPOS papers.",
+    "result": "Peak separations are smaller than the 1.2'' beam and T_ex/FWHM show no class-wide trend, but V-V_0 is ~1.0 km s^-1 for most species versus ~0.0-0.5 km s^-1 for CH3CHO, CH3COOH, CH2OHCHO, aGg'-(CH2OH)2, and the four O- and N-bearing species, with CH3CHO and CH2OHCHO also showing the largest spatial offset from other O-bearing COMs.",
+    "finding": "The 1.2'' spatial resolution is insufficient for conclusive global O- vs N-bearing spatial segregation, but combined velocity and positional shifts indicate chemical differentiation for selected O-bearing species (especially CH3CHO and CH2OHCHO) and velocity differentiation for O- and N-bearing species.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Positions of molecular species emission peaks",
+      "quote": "The distances between the center of emission of the different species are smaller than the beam (1.2$''$), therefore the spatial resolution of the observations is not sufficient to have conclusive results about the possible presence of spatial segregation"
+     },
+     {
+      "loc": "Spectral analysis",
+      "quote": "The stronger indications are for CH$_3$CHO and CH$_2$OHCHO, which have the largest separation in the peak position from all the other O-bearing species, and a discrepancy also in V–V$_{0}$"
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "Considering together the hints from spectral analysis and from map analysis, there are multiple indications of a possible chemical differentiation for the two O-bearing species CH$_3$CHO and CH$_2$OHCHO, with respect to the other O-bearing species."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Hot molecular cores share a unique template of COM abundances relative to methanol.",
+    "experiment": "Compared abundances w.r.t. methanol of O-bearing, N-bearing, and O- and N-bearing COMs in G31 with 27 astronomical sources from the literature (HMCs inside and outside the GC, hot corinos, shocked regions, YSO envelopes, and quiescent clouds).",
+    "result": "Galactic Center HMCs show ~1 order of magnitude higher abundances of N-bearing and O- and N-bearing COMs w.r.t. methanol than G31; non-GC HMCs show a wide spread in abundances, with only AFGL4176 closely matching G31 across many species.",
+    "finding": "There is not a unique template for COM abundances in HMCs, pointing to the importance of individual thermal histories and environmental conditions such as cosmic-ray ionization rate.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "From the comparison with other sources there is not a unique template for the abundances in hot molecular cores, pointing towards the importance of the thermal history for the chemistry of the various sources."
+     },
+     {
+      "loc": "Comparison with other sources",
+      "quote": "Overall, it seems that there is not a unique template for the abundances of COMs in HMCs."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Two-phase gas-grain chemical models with nondiffusive surface reactions (Garrod et al. 2022) can reproduce the absolute COM abundances observed in G31.",
+    "experiment": "Compared the absolute abundances w.r.t. H2 of COMs in G31 against the peak abundances of the slow (5x10^4 yr), medium (2x10^5 yr), and fast (1x10^6 yr) warm-up models of Garrod et al. (2022).",
+    "result": "Most COMs agree within a factor of 10 with the slow and medium models; (CH2OH)2 matches the medium model (R_mod/G31 ~ 1) while being 10^4 times overabundant relative to the slow model, and CH3NCO is underproduced by at least a factor of 500 in all models.",
+    "finding": "The chemical models agree remarkably well with G31, suggesting an intermediate warm-up timescale between the slow and medium models (~5x10^4 to 2x10^5 yr).",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The abundances derived from the chemical models are well in agreement, within a factor ten, with those of G31."
+     },
+     {
+      "loc": "Comparison with chemical models",
+      "quote": "The best overall agreement is with the *slow* model with a few exceptions, but the values from the *medium* model are also very close to those of G31."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "This might indicate that the best model to reproduce the abundances in G31 could have an intermediate timescale between the *slow* and the *medium* one, when (CH$_2$OH)$_2$ is still not heavily destroyed."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "G31 is an extremely chemically rich HMC outside the Galactic Center with four embedded compact sources, and the unbiased 32 GHz ALMA Band 3 survey (GUAPOS) covers many transitions of O- and N-bearing COMs free from extreme GC environmental effects.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Thus, G31 is an ideal candidate to investigate the complex chemistry in high-mass star-forming regions outside the Galactic Center (GC), because the extreme conditions in the GC, in terms of interstellar radiation field and cosmic-rays flux can have an impact on the chemistry"
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "In fact, (cite: beltran2021) highlighted the presence of four sources (labeled as A, B, C, and D) when observing this region at high angular resolution, which makes G31 an ideal laboratory to test whether different sources embedded in the same core show different chemistry."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Simultaneous LTE fitting of multiple unblended transitions in MADCUBA-SLIM constrains V_LSR better than the velocity resolution, and normalizing moment-0 maps to their peak before averaging prevents the brightest lines from biasing the emission size and peak position.",
+    "evidence": [
+     {
+      "loc": "Spectral fitting",
+      "quote": "The simultaneous fit of multiple transitions for each molecular species allows the determination of V$_{\\rm LSR}$ with an error smaller than the resolution in velocity of the spectrum ($\\sim1.5\\,\\rm{km/s}$)."
+     },
+     {
+      "loc": "Analysis of the maps",
+      "quote": "Normalizing the different maps before averaging allows us to give the same weight to every map, and to obtain a mean map in which the FWHM of the emitting region is not biased by the brightest lines."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Fitting the ground state transitions of CH3OH (v=0) and CH3CN (v=0) with a single temperature component was rejected because the lines are optically thick (with CH3OH showing inverse P-Cygni profiles) and G31 has a temperature gradient; isotopologues and vibrationally/torsionally excited states were used instead.",
+     "evidence": [
+      {
+       "loc": "Methanol: CH$_3$OH, $^{13}$CH$_3$OH, and CH$_3^{18}$OH",
+       "quote": "We have not been able to constrain the fit of CH$_3$OH v=0 with a single temperature component. This could be connected both to the presence of a temperature gradient in the source, studied with high angular resolution data by (cite: beltran2018), and to the high abundance of this molecular species that leads to optically thick transitions."
+      },
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "For CH$_3$CN v$=0$, it has not been possible to have a good convergence of the fit because the majority of the transitions (K=0, 1, and 2) have high optical depths."
+      }
+     ]
+    },
+    {
+     "value": "Deriving CH3OH column density from 13CH3OH or CH3OH v_t=1 was rejected in favor of CH318OH because CH318OH is optically thinner, and deriving CH3CN column density from CH313CN was rejected in favor of 13CH3CN because 13CH3CN is optically thinner.",
+     "evidence": [
+      {
+       "loc": "Methanol: CH$_3$OH, $^{13}$CH$_3$OH, and CH$_3^{18}$OH",
+       "quote": "we can see that CH$_3^{18}$OH is optically thinner than $^{13}$CH$_3$OH, therefore in the discussion we will adopt the value derived from CH$_3^{18}$OH for the column density of CH$_3$OH"
+      },
+      {
+       "loc": "Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$CN, and CH$_3^{13}$CN",
+       "quote": "we can see that $^{13}$CH$_3$CN is optically thinner than CH$_3^{13}$CN, therefore in the discussion we will adopt the value derived from $^{13}$CH$_3$CN for the column density of CH$_3$CN."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "The 1.2'' angular resolution is insufficient to resolve the four embedded compact cores (A, B, C, D) or conclusively establish spatial segregation between molecular species whose peak separations are smaller than the beam.",
+     "evidence": [
+      {
+       "loc": "Positions of molecular species emission peaks",
+       "quote": "The distances between the center of emission of the different species are smaller than the beam (1.2$''$), therefore the spatial resolution of the observations is not sufficient to have conclusive results about the possible presence of spatial segregation for some classes of molecular species, or for selected species."
+      }
+     ]
+    },
+    {
+     "value": "A single-temperature LTE model cannot fully capture the temperature gradient in G31, causing a small number of transitions (e.g. in CH3COCH3 and CH3OH v=0) to be poorly reproduced.",
+     "evidence": [
+      {
+       "loc": "Acetone: CH$_3$COCH$_3$",
+       "quote": "A small number of transitions of CH$_3$COCH$_3$ are overestimated by the best-fit model. A better agreement over the whole spectra would require a more accurate description of the temperature gradient of the source G31"
+      }
+     ]
+    },
+    {
+     "value": "For species whose unblended transitions only span low upper-state energies (E_U < 100 K, such as CH3CHO, aGg'-(CH2OH)2, 13CH3CN, CH313CN, C2H3CN, C2H5CN), the fitted excitation temperatures may be underestimated.",
+     "evidence": [
+      {
+       "loc": "Spectral analysis",
+       "quote": "some of the molecular species presented in this work do not have unblended transitions with $E_{\\rm{U}}>100\\,\\rm{K}$, leading to possibly underestimated excitation temperatures."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Fixing FWHM (and T_ex for aGg'-(CH2OH)2) by visual inspection for several species reduces the formal uncertainties on column density and velocity offset V-V_0.",
+    "Velocity differences of ~0.5-1.0 km s^-1 are smaller than the spectral resolution (~1.3-1.7 km s^-1) and could be influenced by optical depth, line blending, or different spatial filtering/weighting across the rotating toroid and outflows rather than purely chemical differentiation among the four sub-cores.",
+    "A single H2 column density and a single beam-filling factor of unity are assumed for all molecules despite measured emission sizes varying from ~1.4'' to ~2.0'' and excitation temperatures spanning 54 K to 285 K."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Exact sky coordinates of the continuum peak where the 1.2'' spectrum was extracted (reported in Mininni et al. 2020)",
+    "Exact velocity/frequency integration windows used to create the moment-0 maps for each of the selected transitions",
+    "Specific calibration and imaging scripts/parameters from Mininni et al. (2020) and STATCONT parameters from Colzi et al. (2021)",
+    "Software version numbers for CASA, MADCUBA, and STATCONT"
+   ],
+   "estimated_data_volume_inferred": "Tens of GB (36 spectral windows covering 32 GHz at 0.488 MHz resolution in ALMA Band 3)",
+   "score_inferred": 75,
+   "score_reason": "The ALMA project code is public, the spectroscopic catalogs (with exact URLs) and selected transitions (with frequencies, quantum numbers, and map-selection flags) are exhaustively tabulated in Appendices A and C, and all fixed parameters and isotopic/partition-function corrections are explicitly stated. Minor deductions for deferring data reduction, spectral alignment, continuum peak coordinates, and STATCONT parameters to Papers I and II, and not stating moment-0 velocity integration windows.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA Cycle 5 dataset (2017.1.00501.S) with complete transition tables in Appendix C and well-defined numeric targets (LTE column densities, excitation temperatures, velocity offsets, and 2D Gaussian peak positions)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: martin2019)",
+     "why": "MADCUBA and SLIM/AUTOFIT spectral line identification and LTE modeling package"
+    },
+    {
+     "citation": "(cite: alvaro2018)",
+     "why": "STATCONT statistical continuum level determination and subtraction method"
+    },
+    {
+     "citation": "(cite: CASAmcmullin)",
+     "why": "CASA calibration, imaging, and image analysis package"
+    },
+    {
+     "citation": "(cite: cdms2001; cdms2005)",
+     "why": "CDMS spectroscopic database"
+    },
+    {
+     "citation": "(cite: jpl1998)",
+     "why": "JPL molecular spectroscopy database"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: mininni2020)",
+     "why": "GUAPOS I: First presentation of the survey, data reduction, spectral alignment, H2 column density, and analysis of C2H4O2 isomers"
+    },
+    {
+     "citation": "(cite: colziguapos)",
+     "why": "GUAPOS II: STATCONT baseline subtraction, full preliminary line identification, and analysis of O- and N-bearing COMs (NH2CHO, CH3NCO, CH3C(O)NH2, CH3NHCHO)"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GUAPOS (G31.41+0.31 Unbiased ALMA sPectral Observational Survey)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2023A%26A...677A..15M",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-30T00:46:09",
+  "usage": {
+   "input": 74025,
+   "output": 18282,
+   "thoughts": 0
+  },
+  "usd": 0.33087,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "thinking": "low",
+  "seconds": 267.6,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 166,
+  "quotes_ok": 166,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 10,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 47,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 89,
+   "stated": 61,
+   "rate": 0.685
+  },
+  "evidence_ok": true
+ }
+}

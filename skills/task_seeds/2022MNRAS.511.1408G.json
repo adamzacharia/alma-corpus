@@ -1,0 +1,218 @@
+{
+ "bibcode": "2022MNRAS.511.1408G",
+ "title": "The far-infrared/radio correlation for a sample of strongly lensed dusty star-forming galaxies detected by Herschel",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac145",
+ "arxiv_id": "2201.06466",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "agn_and_quasars"
+ ],
+ "question": "Investigate the radio-far infrared (FIR) correlation, its redshift evolution, and its radio luminosity dependence for a sample of 28 strongly lensed high-redshift dusty star-forming galaxies.",
+ "alma_project_codes": [
+  "2013.1.00164.S",
+  "2013.1.00358.S",
+  "2015.1.00415.S",
+  "2015.1.01455.S",
+  "2016.1.00282.S",
+  "2016.1.00450.S",
+  "2017.1.00027.S",
+  "2018.1.00526.S",
+  "2019.1.01477.S"
+ ],
+ "data": {
+  "bands": "Bands 4, 6, and 7",
+  "arrays": "not stated",
+  "angular_resolution": "~1.7 arcsec (SGP Band 4), ~1.2 to <0.1 arcsec (Northern and Equatorial Bands 4, 6, 7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Parent catalog of 80 candidate strongly lensed dusty star-forming galaxies with S_500um > 100 mJy and redshifts",
+    "evidence": [
+     {
+      "loc": "The H-ATLAS lensed galaxies",
+      "quote": "(cite: Negrello2017) extracted a sample of 80 bright FIR/submm-selected galaxies with flux density $S_{500\\mu\\rm m}>100\\,$mJy from the H-ATLAS fields."
+     }
+    ]
+   },
+   "citation": "(cite: Negrello2017)"
+  },
+  {
+   "what": {
+    "value": "H-ATLAS Data Release 1 and 2 point-source Herschel/SPIRE photometry",
+    "evidence": [
+     {
+      "loc": "The H-ATLAS lensed galaxies",
+      "quote": "The SPIRE photometry is obtained from the point-source Herschel/SPIRE catalogues of the H-ATLAS Data Release 1 and 2, described in (cite: Valiante2016) and (cite: Maddox2017a)."
+     }
+    ]
+   },
+   "citation": "(cite: Valiante2016) and (cite: Maddox2017a)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts of H-ATLASJ130333.1+244643, H-ATLASJ131540.6+262322 and H-ATLASJ133255.7+342207",
+    "evidence": [
+     {
+      "loc": "FIRST catalogue counterparts",
+      "quote": "$^\\dag$ spectroscopic redshifts of H-ATLASJ130333.1+244643, H-ATLASJ131540.6+262322 and H-ATLASJ133255.7+342207 are taken from (cite: Neri2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Neri2020)"
+  },
+  {
+   "what": {
+    "value": "JVLA 7 GHz radio flux density converted to 1.4 GHz for H-ATLAS J142935.3-002836",
+    "evidence": [
+     {
+      "loc": "FIRST catalogue counterparts",
+      "quote": "For one of the matched source, namely H-ATLAS J142935.3-002836, the FIRST flux density value has been replaced with the more reliable one coming from the JVLA 7 GHz high resolution ($\\sim$ 0.3 arcsec) and high sensitivity (10 $\\mu$Jy beam$^{-1}$) observations described in (cite: Messias2014) (converted at 1.4 GHz)."
+     }
+    ]
+   },
+   "citation": "(cite: Messias2014)"
+  },
+  {
+   "what": {
+    "value": "JVLA 6.89 GHz radio flux density reported at 1.4 GHz for H-ATLASJ133542.9+300401",
+    "evidence": [
+     {
+      "loc": "FIRST catalogue counterparts",
+      "quote": "Observations at 6.89 GHz from the JVLA are available for one additional source (H-ATLASJ133542.9+300401) and are described in details by (cite: Nayyeri2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Nayyeri2017)"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of strongly gravitationally-lensed quasars with FIR and radio measurements",
+    "evidence": [
+     {
+      "loc": "The FIR-radio correlation for (candidate) lensed galaxies",
+      "quote": "Such a behaviour is similar to what have been revealed by (cite: Stacey2018) observing a sample of strong gravitationally-lensed quasars."
+     },
+     {
+      "loc": "The FIR-radio correlation for (candidate) lensed galaxies",
+      "quote": "Two additional sources are the gravitationally lensed radio-quiet quasars targeted by the LOFAR Two-metre Sky Survey (LoTSS) and detected by Herschel described in (cite: Stacey2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Stacey2018), (cite: Stacey2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and extract 2.1 GHz radio continuum flux densities from ATCA observations",
+   "method": "Automatic flagging with PGFLAG, standard 16 cm calibration, uv-combination with UVAVER, self-calibration, Briggs-weighted (robust=0.5) continuum imaging in Miriad, and conversion from 2.1 GHz to 1.4 GHz using a power-law spectral index",
+   "software": [
+    "Miriad"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "5% calibration error added in quadrature to image noise"
+   ],
+   "assumptions": [
+    "Power-law radio spectrum S_nu = nu^alpha with alpha = -0.7 +/- 0.14"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Cross-match H-ATLAS candidates with FIRST, ATCA, and literature radio data using NIR and archival ALMA high-resolution imaging",
+   "method": "Cross-match within 10 arcsec of H-ATLAS position in FIRST catalogue/maps and ATCA maps for >3 sigma detections, selecting the component nearest to the SPIRE peak that overlaps with NIR (HST, UKIDSS, VIKING) or archival ALMA Band 4/6/7 continuum emission",
+   "software": [],
+   "key_parameters": [
+    "Detection threshold > 3 sigma (and 3 sigma upper limits for non-detections)"
+   ],
+   "assumptions": [
+    "Observed SPIRE flux density is mostly originated by the lensed object with negligible contamination from nearby sources in the Herschel beam"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute rest-frame 1.4 GHz radio luminosities, integrated FIR luminosities (8-1000 um), and q_FIR parameters",
+   "method": "Compute L_1.4GHz from 1.4 GHz flux densities, fit Herschel/SPIRE photometry with an optically-thin single-temperature modified blackbody integrated from 8 to 1000 um to obtain L_FIR, and calculate q_FIR (all uncorrected for lensing magnification)",
+   "software": [],
+   "key_parameters": [
+    "Wavelength integration range 8-1000 um"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with Omega_M = 0.32, Omega_Lambda = 0.63, Omega_b = 0.05, h = 0.67, sigma_8 = 0.81",
+    "Optically-thin single-temperature modified blackbody with dust emissivity index beta = 1.5",
+    "Radio spectral index alpha = -0.7"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of candidate lensed galaxies with detected radio counterparts",
+   "value": "28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Counterparts selection",
+     "quote": "Therefore, combining ATCA follow-up and FIRST cross-matches we collected radio measurements for 28 out of the 80 galaxies in the original sample by (cite: Negrello2017), that will constitute our reference in the present paper."
+    }
+   ]
+  },
+  {
+   "quantity": "Median rest-frame 1.4 GHz radio luminosity L_1.4GHz (uncorrected for magnification)",
+   "value": "2.4e25",
+   "uncertainty": "not stated",
+   "units": "W Hz^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical properties of the sample",
+     "quote": "Our 28 objects span a range $1.9\\times10^{24}\\lesssim L_{\\rm 1.4 GHz}\\lesssim 1.8\\times 10^{26}$ W Hz$^{-1}$ (uncorrected for the lens magnification factor $\\mu$), with a median value of $L_{\\rm 1.4 GHz}\\sim 2.4\\times 10^{25}$ W Hz$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median FIR luminosity L_FIR (uncorrected for magnification)",
+   "value": "3.5e13",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical properties of the sample",
+     "quote": "The FIR luminosities span the range $1.3\\times 10^{13}\\lesssim L_{\\rm FIR} \\lesssim 1.1\\times 10^{14}$ $L_{\\odot}$, with a median value of $L_{\\rm FIR} \\sim 3.5 \\times 10^{13}$ $L_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median dust temperature T_dust for the total sample of candidate strongly lensed galaxies",
+   "value": "35.2",
+   "uncertainty": "2.1",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical properties of the sample",
+     "quote": "The median value of the dust temperature for the total sample of candidate strongly lensed galaxies is $T_{\\rm dust}= 35.2 \\pm 2.1$, consistently with what was found by (cite: Negrello2017) for the same sample."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact method used to extract flux densities (e.g., peak pixel vs aperture/Gaussian fitting) in ATCA and FIRST maps",
+  "Specific ALMA Science Archive image product files or member OUS IDs used for each target",
+  "Details of the chi-squared minimization routine and uncertainty estimation for T_dust and L_FIR"
+ ],
+ "missing_for_reproduction": [
+  "Exact flux extraction method (e.g. peak vs integrated Gaussian fit) for ATCA and FIRST map detections",
+  "Note on target ID mismatch between Table in Section 2.3 (lists J002624.8-341737) and Table 1 in Section 2.5 (lists J005132.8-301848 in the 4th row)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "All raw and archival datasets are publicly available with explicit project codes and URLs, and the analytic equations and full photometry/luminosity tables for the 28 sources are provided in the text; minor details on radio flux extraction and a single row target ID discrepancy between tables slightly limit end-to-end automation.",
+ "rediscovery_reason": "All datasets are public, the photometry and redshifts for the 28 targets are tabulated in the paper, and the analytical equations for L_1.4GHz, L_FIR (modified blackbody fit), and q_FIR are straightforward to reproduce.",
+ "source_card": "cards/2022MNRAS.511.1408G/sonnet/card.md"
+}

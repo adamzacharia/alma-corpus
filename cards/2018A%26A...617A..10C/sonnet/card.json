@@ -1,0 +1,974 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...617A..10C",
+  "title": "Water and interstellar complex organics associated with the HH 212 protostellar disc. On disc atmospheres, disc winds, and accretion shocks",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Codella, C.",
+  "n_authors": 17,
+  "arxiv_id": "1806.07967",
+  "doi": "10.1051/0004-6361/201832765",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01475.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "The HH 212 protostellar system, in Orion B, has been mapped thanks to ALMA-Band 7 Cycle 1 and Cycle 4 observations of dueterated water (HDO) and acetaldehyde (CH$_3$CHO) emission"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "HH 212 mm (MM1)",
+     "coordinates": {
+      "value": "RA(J2000) 05h43m51.41s, Dec -01d02m53.17s",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "at a distance that has recently been estimated to be 405$\\pm$15 pc (Kounkel et al. 2017; Kounkel, private communication)"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "located at $\\alpha({\\rm J2000})$ = 05$^h$ 43$^m$ 51$s$41, $\\delta({\\rm J2000})$ = –01$\\ensuremath{^\\circ}$ 02$\\ensuremath{'}$ 53$\\ensuremath{''}$17"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "405±15 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "at a distance that has recently been estimated to be 405$\\pm$15 pc (Kounkel et al. 2017; Kounkel, private communication)"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "located at $\\alpha({\\rm J2000})$ = 05$^h$ 43$^m$ 51$s$41, $\\delta({\\rm J2000})$ = –01$\\ensuremath{^\\circ}$ 02$\\ensuremath{'}$ 53$\\ensuremath{''}$17"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Kounkel et al. 2017; Kounkel, private communication",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "at a distance that has recently been estimated to be 405$\\pm$15 pc (Kounkel et al. 2017; Kounkel, private communication)"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "located at $\\alpha({\\rm J2000})$ = 05$^h$ 43$^m$ 51$s$41, $\\delta({\\rm J2000})$ = –01$\\ensuremath{^\\circ}$ 02$\\ensuremath{'}$ 53$\\ensuremath{''}$17"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the physical properties, kinematics and origin (disc atmosphere, accretion shock, disc wind) of HDO and CH3CHO emission within ~70 au of the HH 212 protostar?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We investigate the physical and chemical properties of the gas associated with water and interstellar complex organic molecules around a protostar on solar system scales."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01475.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the ADS/JAO.ALMA#2016.1.01475.S data (PI: C. Codella)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (Cycle 1 and Cycle 4)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "HH 212 was also observed in Band 7 during Cycle 4 using 44 12m antennas"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Cycle 1: SPWs 337.1–338.9 and 348.4–350.7 GHz, 488 kHz channels smoothed to 1 km/s; Cycle 4: single SPW 334.1–336.0 GHz, 0.42 km/s smoothed to 1 km/s",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "two spectral windows (337.1–338.9 GHz and 348.4–350.7 GHz) were simultaneously observed using spectral channels of 488 kHz"
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "we used a single spectral window between 334.1–336.0 GHz with a 0.42 km s$^{-1}$ spectral resolution"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HDO",
+     "transition": "3(3,1)-4(2,2)",
+     "rest_frequency": "335.3955 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HDO 3$_{\\rm 3,1}$–4$_{2,2}$                       | 335.3955"
+      }
+     ]
+    },
+    {
+     "species": "CH3CHO",
+     "transition": "18-17 series (14 lines)",
+     "rest_frequency": "335–351 GHz",
+     "evidence": [
+      {
+       "loc": "3 Spectra and images",
+       "quote": "Our ALMA dataset allows us to detect 14 CH$_3$CHO emission lines (12 in Cycle 1, and 2 in Cycle 4)."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m antennas: 34 (Cycle 1), 44 (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "using 34 12m antennas between 15 June and 19 July 2014"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "max 650 m (Cycle 1), 3 km (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The maximum baselines were 650 m for Cycle 1 and 3 km for Cycle 4"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Cycle 1 ~0.4 arcsec; Cycle 4 0.15x0.12 arcsec",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "typical clean-beam FWHM of $0.15\\ensuremath{''}\\times0.12\\ensuremath{''}$ (PA = -88$\\ensuremath{^\\circ}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~3 arcsec (1200 au)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "the maximum unfiltered scale is $\\sim$ 3$\\ensuremath{''}$, that is, 1200 au"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms ~2 mJy/beam (Cycle 1), ~1 mJy/beam (Cycle 4) per 1 km/s channel",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "an r.m.s. noise level of $\\sim$ 1 mJy beam$^{-1}$ per channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Cycle 1: 15 June–19 July 2014; Cycle 4: 6 Oct–26 Nov 2016",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "between 6 October and 26 November 2016"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "H2 column density ~1e24 cm-2 typical of hot corinos, used for abundance",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "assuming H$_2$ column densities around 10$^{24}$ cm$^{-2}$, which is a typical value for hot corinos in Perseus and in B335"
+       }
+      ]
+     },
+     "citation": "Taquet et al. 2015, Imai et al. 2016"
+    },
+    {
+     "what": {
+      "value": "HDO-H2 collisional coefficients",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "assuming collisional coefficients for the system HDO-H$_2$ computed by Faure et al. (2012)"
+       }
+      ]
+     },
+     "citation": "Faure et al. 2012"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic parameters from JPL database",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Frequencies and spectroscopic parameters have been extracted from the Jet Propulsion Laboratory molecular database (Pickett et al. 1998)"
+       }
+      ]
+     },
+     "citation": "Pickett et al. 1998"
+    },
+    {
+     "what": {
+      "value": "Systemic velocity +1.7 km/s",
+      "evidence": [
+       {
+        "loc": "3 Spectra and images",
+        "quote": "systemic velocity $v_{\\rm sys}$ = +1.7 km s$^{-1}$ (Lee et al. 2014)"
+       }
+      ]
+     },
+     "citation": "Lee et al. 2014"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard procedures",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Standard procedures were used to calibrate the data, using quasars J0607-0834, J0541–0541, J0423–013, and Ganymede."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum from line-free channels; continuum-subtracted images",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The spectral windows were also used to derive continuum from the line-free channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Smoothed to 1 km/s",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "and then smoothed to 1.0 km s$^{-1}$ to increase sensitivity"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "Cycle 1 ~0.41x0.33 to 0.44x0.34 arcsec (PA -63); Cycle 4 0.15x0.12 arcsec (PA -88)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "clean-beam FWHMs around $0.41\\ensuremath{''}\\times0.33\\ensuremath{''}$ to $0.44\\ensuremath{''}\\times0.34\\ensuremath{''}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~2 mJy/beam (C1), ~1 mJy/beam (C4)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "an r.m.s. noise level of $\\sim$ 2 mJy beam$^{-1}$ in the 1 km s$^{-1}$ channels"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Hot-corino LVG method and HDO/H2O assumptions",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "non-LTE Large Velocity Gradient (LVG) model (see Ceccarelli et al. 2003)"
+       }
+      ]
+     },
+     "from_reference": "Ceccarelli et al. 2003"
+    },
+    {
+     "what": {
+      "value": "Continuum cannot be used to derive N(H2) (optically thick)",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "As stressed in Codella et al. (2016), the continuum emission, being optically thick"
+       }
+      ]
+     },
+     "from_reference": "Codella et al. 2016"
+    },
+    {
+     "what": {
+      "value": "Protostar position reference",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "continuum peak located at $\\alpha({\\rm J2000})$ = 05$^h$ 43$^m$ 51$s$41"
+       }
+      ]
+     },
+     "from_reference": "Lee et al. 2014"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and tclean parameters (weighting, robust, cell, image size, masks, deconvolver)",
+    "Line-free channels used for continuum subtraction",
+    "Flux calibrator details and flux scale uncertainty; self-calibration",
+    "Which Cycle 1 execution blocks/project code (Cycle 1 code not printed)",
+    "Exact rotational-diagram fit procedure and beam-dilution correction details",
+    "LVG code input parameters (linewidth, grid ranges)",
+    "PV diagram cut widths and position angles"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra and fit lines",
+    "method": {
+     "value": "Gaussian fits to spectra at protostar position",
+     "evidence": [
+      {
+       "loc": "3 Spectra and images",
+       "quote": "the profiles, fit using the GILDAS package (see Table 1; note that in two cases, 2 CH$_3$CHO lines are blended), are Gaussian-like"
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [
+     {
+      "value": "1 km/s resolution",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Gaussian fit. Spectral resolution of 1 km s$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure emitting region size",
+    "method": {
+     "value": "2D Gaussian fits of integrated maps after beam deconvolution",
+     "evidence": [
+      {
+       "loc": "3 Spectra and images",
+       "quote": "obtained with 2D Gaussian fits (after deconvolving the beam size): 161$\\pm$17 mas (HDO), 205$\\pm$25 mas (CH$_3$CHO-A), and 213$\\pm$34 mas (CH$_3$CHO-E)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "CH3CHO temperature and column density",
+    "method": {
+     "value": "Rotational diagram with Cycle 1 and 4 lines, intensities corrected for 0.18 arcsec source size",
+     "evidence": [
+      {
+       "loc": "4 Physical properties",
+       "quote": "derived using the rotational diagram approach (Fig. 3), assuming local thermodynamic equilibrium (LTE) conditions and optically thin emission."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "source size 0.18 arcsec",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "corrected the observed intensities for a source size (of the total emitting region) of 0$\\ensuremath{''}$18"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, optically thin, N(H2)=1e24 cm-2 for abundance",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "assuming H$_2$ column densities around 10$^{24}$ cm$^{-2}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Cycle 0 results and methanol temperatures",
+     "evidence": [
+      {
+       "loc": "4 Physical properties",
+       "quote": "The temperature agrees reasonably well with the Cycle 0 results reported by Codella et al. (2016)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "HDO density and column density constraints",
+    "method": {
+     "value": "Non-LTE LVG model in Tkin–N(HDO) plane for n = 1e8, 1e9, 1e10 cm-3",
+     "evidence": [
+      {
+       "loc": "4 Physical properties",
+       "quote": "Figure 3 shows the LVG predictions in the $T_{\\rm kin}$–$N$(HDO) plane for densities of 10$^8$ cm$^{-3}$ (blue)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "source size 0.18 arcsec",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "we can now use the measured size of 0$\\ensuremath{''}$18"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "N(HDO)/N(H2O) <= 0.1, X_H2O = 3e-5",
+      "evidence": [
+       {
+        "loc": "4 Physical properties",
+        "quote": "When we assume $N$(HDO)/$N$(H$_2$O) $\\leq$ 0.1, $X_{\\rm H_2O}$ = 3 $\\times$ 10$^{-5}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tkin consistent with CH3CHO",
+     "evidence": [
+      {
+       "loc": "4 Physical properties",
+       "quote": "The temperatures derived from CH$_3$CHO (grey region in Fig. 3) are consistent with the solutions found with HDO."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Kinematics: moment maps, uv-plane centroids, PV diagrams",
+    "method": {
+     "value": "First moment maps; elliptical Gaussian fits in uv domain per channel for sizes and centroids; PV diagrams along equatorial plane and jet axis",
+     "evidence": [
+      {
+       "loc": "5 Kinematics",
+       "quote": "The sizes and centroids of the emitting regions were obtained from elliptical Gaussian fits in the $uv$ domain"
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [
+     {
+      "value": "0.42 km/s channels for centroids",
+      "evidence": [
+       {
+        "loc": "5 Kinematics",
+        "quote": "also obtained from elliptical Gaussian fits in the $uv$ domain with the original 0.42 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "GILDAS uv-fit",
+     "evidence": [
+      {
+       "loc": "5 Kinematics",
+       "quote": "We used the GILDAS $uv-fit$ task, which allows fitting models directly through the $uv$ visibilities."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Comparison with literature kinematics and continuum disc",
+     "evidence": [
+      {
+       "loc": "Kinematics",
+       "quote": "Although comparisons between images taken at different angular resolutions have to be made with caution, Fig. 5 suggests that HDO and CH$_3$CHO originate from a radius consistent with that of the dusty disc"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Spectral line imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Spectral line imaging was achieved with the CASA[^2] package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data analysis, line fits, uv-fit",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "data analysis was performed using the GILDAS[^3] package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CH3CHO excitation temperature",
+    "value": "78",
+    "uncertainty": "14",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Physical properties",
+      "quote": "We derived an excitation temperature of 78$\\pm$14 K and column density of 7.6$\\pm$3.2 $\\times$ 10$^{15}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO column density",
+    "value": "7.6e15",
+    "uncertainty": "3.2e15",
+    "units": "cm-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Physical properties",
+      "quote": "column density of 7.6$\\pm$3.2 $\\times$ 10$^{15}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO abundance",
+    "value": "8e-9",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Physical properties",
+      "quote": "we can infer $X_{\\rm CH_3CHO}$ $\\simeq$ 8 $\\times$ 10$^{-9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO emission size",
+    "value": "161",
+    "uncertainty": "17",
+    "units": "mas",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3 Spectra and images",
+      "quote": "161$\\pm$17 mas (HDO), 205$\\pm$25 mas (CH$_3$CHO-A), and 213$\\pm$34 mas (CH$_3$CHO-E)"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO density lower limit",
+    "value": ">=1e8",
+    "uncertainty": "not stated",
+    "units": "cm-3",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 Physical properties",
+      "quote": "only densities of at least 10$^8$ cm$^{-3}$ are possible, leading to $N$(HDO) $\\leq$ 3 $\\times$ 10$^{17}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO column density upper limit",
+    "value": "<=3e17",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 Physical properties",
+      "quote": "leading to $N$(HDO) $\\leq$ 3 $\\times$ 10$^{17}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO line opacity at n=1e8",
+    "value": "0.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4 Physical properties",
+      "quote": "the opacity of the HDO line is 0.3"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity gradient",
+    "value": "±2",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5 Kinematics",
+      "quote": "We detect a velocity gradient ($\\pm$ 2 km s$^{-1}$ with respect to the systemic velocity)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HDO and CH3CHO are more compact than C17O along the equatorial plane",
+    "evidence": [
+     {
+      "loc": "5 Kinematics",
+      "quote": "HDO and CH$_3$CHO are more compact than C$^{17}$O, which is more elongated along the equatorial plane."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "HDO and CH3CHO trace chemically enriched gas at the centrifugal barrier of the HH 212 disc",
+    "experiment": "Cycle 4 imaging, PV diagrams and centroid fits",
+    "result": "Linear PV gradient, emission radius ~60 au",
+    "finding": "Emission arises from an edge-on ring where envelope meets disc, probably through low-velocity accretion shocks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "This is most likely the signature of emission from an edge-on ring of chemically enriched warm gas."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Physical conditions of HDO and CH3CHO gas",
+    "experiment": "Rotational diagram and LVG analysis",
+    "result": "T=78±14 K, N=7.6e15 cm-2, n>=1e8 cm-3",
+    "finding": "Warm, dense gas with X(CH3CHO)~8e-9",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the LVG analysis of the HDO emission at 335 K severely constrains the volume density, n$_{\\rm H_2}$ $\\geq$ 10$^8$ cm$^{-3}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "iCOMs and HDO are outflowing in a disc wind",
+    "experiment": "Low-velocity channel maps offsets",
+    "result": "Peaks offset from equatorial plane at ±1 km/s",
+    "finding": "Possibly outflowing, expanding, rotating rings tracing the base of a wind; needs verification",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "could be a signature of the basis of a disc wind. Clearly, further ALMA observations are needed to verify this possibility."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Self-gravitating structure (M∝r^3) and infall motions rejected for the velocity pattern",
+     "evidence": [
+      {
+       "loc": "6.1 Origin of the iCOM emission",
+       "quote": "Other interpretations in terms of a strongly self-gravitating structure with $M$ $\\propto$ $r^{3}$ are unlikely"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Comparisons across different angular resolutions must be treated with caution; low-velocity offset needs higher-resolution verification",
+     "evidence": [
+      {
+       "loc": "6.2 Low-velocity emission",
+       "quote": "Although this result has to be verified using datasets with higher spatial resolution"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Optically thin LTE assumption and assumed N(H2)=1e24 make abundance uncertain",
+    "Cycle 1 maps are unresolved yet source size from Cycle 4 applied to all lines",
+    "Sub-beam centroid offsets from uv-fits are interpreted with small errors",
+    "Wind interpretation is speculative"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code 2016.1.01475.S printed (PI Codella)",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the ADS/JAO.ALMA#2016.1.01475.S data (PI: C. Codella)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA/tclean imaging parameters",
+    "Cycle 1 project code",
+    "Rotational diagram fitting details and LVG inputs"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB (two cycles, Band 7)",
+   "score_inferred": 4,
+   "score_reason": "Data public and results numeric, but imaging and fitting settings are sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe incomplete and Cycle 1 project code not given, though main results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Ceccarelli et al. 2003",
+     "why": "LVG model"
+    },
+    {
+     "citation": "Martí-Vidal et al. 2014",
+     "why": "uv-fitting over-resolution power"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Codella et al. 2016",
+     "why": "Cycle 0 HDO and CH3CHO detection"
+    },
+    {
+     "citation": "Lee et al. 2017b",
+     "why": "Higher-resolution iCOM disc atmosphere"
+    },
+    {
+     "citation": "Bianchi et al. 2017",
+     "why": "13CH3OH from the same Cycle 4 dataset"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-9e3bc0cc37d41bae8ba073c08217b7cb",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:54",
+  "usage": {
+   "input_tokens": 19259,
+   "output_tokens": 8223,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.06098,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 45,
+   "rate": 0.592
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T03:04:10",
+  "custom_id": "repair-sonnet-f5507912cf2012da2d6b1b0ee6c1d944",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "Although comparisons between images taken at different angular resolutions have to be made with caution, Fig. 5 suggests that HDO and CH$_3$CHO originate from a radius consistent with that of the dusty disc"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

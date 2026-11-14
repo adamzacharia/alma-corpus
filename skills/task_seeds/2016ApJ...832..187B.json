@@ -1,0 +1,227 @@
+{
+ "bibcode": "2016ApJ...832..187B",
+ "title": "The Massive Protostellar Cluster NGC 6334I at 220 au Resolution: Discovery of Further Multiplicity, Diversity, and a Hot Multi-core",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/832/2/187",
+ "arxiv_id": "1609.07470",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What is the multiplicity, nature and SED of the sources in the massive protocluster NGC6334I at ~220 AU resolution from 5 cm to 1.3 mm?",
+ "alma_project_codes": [
+  "2013.1.00600.S"
+ ],
+ "data": {
+  "bands": "ALMA 3 mm and 1.3 mm (Cycle 2); VLA 5 cm, 1.5 cm, 7 mm",
+  "arrays": "not stated",
+  "angular_resolution": "0.51x0.35 arcsec (3 mm); 0.20x0.15 arcsec (1.3 mm)",
+  "sensitivity": "rms 0.5 mJy/beam (3 mm); 1.2 mJy/beam (1.3 mm)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SMA 1.3 mm total integrated intensity 10.7±0.1 Jy at 1.6'' resolution",
+    "evidence": [
+     {
+      "loc": "4.1 Fitted Properties",
+      "quote": "The total 1.3 mm integrated intensity reported by (cite: Hunter06) for NGC6334I using $1.6''$ resolution SMA data is $10.7\\pm 0.1$ Jy."
+     }
+    ]
+   },
+   "citation": "(cite: Hunter06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging",
+   "method": "Line-free continuum imaging with MTMFS and multiscale clean, self-cal, primary-beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust -1.0; scales 0,5,15 pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Spectral index map 3-1.3 mm",
+   "method": "Linear spectral index S∝ν^α from 3 and 1.3 mm images, 1.3 mm convolved to 3 mm beam",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit Gaussian components to sources",
+   "method": "Multi-step 2D Gaussian decomposition of MM1 (7 components), MM2 core/halo, MM4A/MM6, subtracting components iteratively",
+   "software": [],
+   "key_parameters": [
+    "extra 10% (Band 6) and 30% (Band 3) uncertainty added in quadrature for confused sources"
+   ],
+   "assumptions": [
+    "MM1B 1.3 mm flux extrapolated from 7 mm with spectral index 3.05"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SED modeling",
+   "method": "Free-free model V of Olnon75 (fit r_e) plus modified greybody dust fits with fixed beta=1.7; uncertainties from 1000 Monte Carlo realizations",
+   "software": [],
+   "key_parameters": [
+    "Te=1e4 K; ne = 3e5, 3e6, 3e7 cm-3 for MM1D, MM1B, CM1"
+   ],
+   "assumptions": [
+    "beta=1.7 (MM1D uses 2.4)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive masses, densities, luminosities",
+   "method": "Dust mass equation with opacity correction; brightness temperature in Rayleigh-Jeans limit; Stefan-Boltzmann luminosities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "D=1.3 kpc, R=100, kappa_1.3mm=1 cm2/g (Ossenkopf & Henning 1994), spherical geometry"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total 1.3 mm flux of NGC6334I",
+   "value": "13.2",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Fitted Properties",
+     "quote": "The ALMA 1.3 mm data with a resolution of $\\sim 0.17''$ actually recover more flux, 13.2 Jy, an increase of $23\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "MM4A brightness temperature",
+   "value": "97",
+   "uncertainty": "5",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| MM4A | 97 (5) | 98$^{+5}_{-6}$ | 5.3$^{+1.6}_{-1.0}$ | 12.1$^{+3.2}_{-1.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "MM4A dust temperature",
+   "value": "98",
+   "uncertainty": "+5/-6",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| MM4A | 97 (5) | 98$^{+5}_{-6}$ | 5.3$^{+1.6}_{-1.0}$"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1B 1.3 mm brightness temperature",
+   "value": "254",
+   "uncertainty": "30",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| MM1B | 254 (30) | 442$^{+419}_{-120}$"
+    }
+   ]
+  },
+  {
+   "quantity": "MM2A-core dust temperature",
+   "value": "152",
+   "uncertainty": "+48/-19",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| MM2Acore | 98 (4) | 152$^{+48}_{-19}$"
+    }
+   ]
+  },
+  {
+   "quantity": "MM2B 7mm-1.3mm spectral index",
+   "value": "1.63",
+   "uncertainty": "0.44",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2.3 The Hot Core MM2",
+     "quote": "The SED of MM2B exhibits a 7 mm-1.3 mm spectral index of $1.63\\pm0.44$"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 alpha_mm range",
+   "value": "2.6-3.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Emission",
+     "quote": "MM1 shows considerable variation and structure in $\\alpha_{mm}$, varying from 2.6-3.4"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1B-MM1D projected separation",
+   "value": "440",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The close proximity of MM1B and MM1D (440 AU)"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1D beta",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 SEDs",
+     "quote": "The fit shown in Fig. [6](#seds1) uses $\\beta=2.4$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges and threshold per spw",
+  "Image sizes, clean thresholds and masks",
+  "Self-calibration solution intervals",
+  "Greybody fit code and frequency/flux inputs details",
+  "Initial guesses for Gaussian fits and fitting software",
+  "Details of the rms measurement regions"
+ ],
+ "missing_for_reproduction": [
+  "Gaussian fit initial guesses and code",
+  "Line-free channel lists",
+  "Self-calibration parameters",
+  "Greybody fitting implementation"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "ALMA project code and most settings given, but fitting details and channel selections missing.",
+ "rediscovery_reason": "Data are archival, recipe is mostly described, results (fluxes, sizes, Tb) are numeric.",
+ "source_card": "cards/2016ApJ...832..187B/sonnet/card.md"
+}

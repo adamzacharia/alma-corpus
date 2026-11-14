@@ -1,0 +1,356 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 5,
+    "shows": "Herschel/PACS 70 µm image of the Helix Nebula with a zoom-in grid of four cutaway panels centred on WD 2226-210, comparing Spitzer 24 µm, SOFIA HAWC+ 54 µm, Herschel 70 µm and ALMA Band 6 imaging of the white dwarf region; only Spitzer and Herschel detect excess emission at the white dwarf.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness (70 µm large-scale map)",
+      "units": "mJy/arcsec^2"
+     },
+     {
+      "axis": "x",
+      "quantity": "East offset",
+      "units": "arcmin (large map) / arcsec (zoom panels)"
+     },
+     {
+      "axis": "y",
+      "quantity": "North offset",
+      "units": "arcmin (large map) / arcsec (zoom panels)"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density in zoom panels",
+      "units": "mJy/arcsec^2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 70 µm colour scale spans -2.0 to 1.0 mJy/arcsec^2",
+     "approx. Spitzer 24 µm panel colour scale spans 1.0 to 1.5 mJy/arcsec^2",
+     "approx. Herschel 70 µm zoom colour scale spans 0 to 0.5 mJy/arcsec^2",
+     "approx. HAWC+ and ALMA panel colour scales span -2 to 2 mJy/arcsec^2"
+    ],
+    "caption_quote": "Only the Spitzer and Herschel observations detect the excess emission associated with the white dwarf.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "other",
+    "panels": 6,
+    "shows": "Herschel/PACS 70 µm imaging of the white dwarf region showing the two-component decomposition: the original map, the fitted 2D Gaussian extended component, its residual, the compact PSF-matched Gaussian, and the final residual with the extended and compact component footprints overlaid.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "East offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "North offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "intensity",
+      "units": "mJy/pixel"
+     },
+     {
+      "axis": "colour",
+      "quantity": "normalised intensity of model components",
+      "units": "arb. units"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 1,
+    "validation_check": "Shows the residual after subtracting the fitted extended and compact Gaussian components, testing whether the central 70 µm emission is separated into components.",
+    "readable_values": [
+     "approx. colour scale of data maps 0 to 1.0 mJy/pixel",
+     "approx. extended-component ellipse FWHM 28 by 24 arcsec",
+     "approx. compact component FWHM 5.4 arcsec"
+    ],
+    "caption_quote": "The shaded ellipses in this panel denote the extent of the extended (FWHM 28′′ × 24′′, φ 65◦) and compact (FWHM 5.4′′) components subtracted from the image.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "spectrum",
+    "panels": 1,
+    "shows": "Spectral energy distribution of the central source WD 2226-210 from optical to millimetre wavelengths, with the white dwarf photosphere model, the compact and extended modified blackbody dust components, and their model realisations drawn from the tested parameter ranges.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Wavelength",
+      "units": "µm"
+     },
+     {
+      "axis": "y",
+      "quantity": "Flux density",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Model fit to photometry and upper limits for the compact and extended dust components, showing which parameter ranges are consistent with the observations.",
+    "readable_values": [
+     "approx. peak white dwarf photosphere flux about 1000 mJy near 0.05 µm",
+     "approx. compact component peak about 50 mJy near 30 µm",
+     "approx. extended component peak about 200 mJy near 100 µm"
+    ],
+    "caption_quote": "The black solid line denotes the white dwarf photopshere model scaled to optical and near-infrared photometry, shown as grey circles.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "model_vs_data",
+    "panels": 4,
+    "shows": "Comparison of observed photometry with model SEDs for four debris-disc scenarios (A to D) differing in dust radius and grain size range, showing that only scenario A with small minimum grain size matches all observations.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Wavelength",
+      "units": "µm"
+     },
+     {
+      "axis": "y",
+      "quantity": "Flux density",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "Tests whether each grain-size and disc-architecture scenario reproduces the mid-infrared rise and far-infrared and millimetre constraints, favouring a small minimum grain size.",
+    "readable_values": [
+     "approx. Model A far-infrared peak about 30 mJy near 30 µm",
+     "approx. Model A 24 µm data point about 50 mJy",
+     "approx. Model B and C peak values near 50 to 80 mJy",
+     "approx. 3-sigma upper limit at 1.3 mm about 0.2 mJy"
+    ],
+    "caption_quote": "Of the four scenarios considered here, only scenario A, with a small minimum grain size and narrow size distribution is consistent with all the observations.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 4,
+  "caption_quotes_ok": 4,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 3,
+  "reproduction_targets": 2,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.993,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 5,
+    "shows": "Herschel/PACS 70 µm image of the Helix Nebula with a zoom-in grid of four cutaway panels centred on WD 2226-210, comparing Spitzer 24 µm, SOFIA HAWC+ 54 µm, Herschel 70 µm and ALMA Band 6 imaging of the white dwarf region; only Spitzer and Herschel detect excess emission at the white dwarf.",
+    "axes": [
+     {
+      "axis": "colour",
+      "quantity": "surface brightness (70 µm large-scale map)",
+      "units": "mJy/arcsec^2"
+     },
+     {
+      "axis": "x",
+      "quantity": "East offset",
+      "units": "arcmin (large map) / arcsec (zoom panels)"
+     },
+     {
+      "axis": "y",
+      "quantity": "North offset",
+      "units": "arcmin (large map) / arcsec (zoom panels)"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density in zoom panels",
+      "units": "mJy/arcsec^2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 70 µm colour scale spans -2.0 to 1.0 mJy/arcsec^2",
+     "approx. Spitzer 24 µm panel colour scale spans 1.0 to 1.5 mJy/arcsec^2",
+     "approx. Herschel 70 µm zoom colour scale spans 0 to 0.5 mJy/arcsec^2",
+     "approx. HAWC+ and ALMA panel colour scales span -2 to 2 mJy/arcsec^2"
+    ],
+    "caption_quote": "Only the Spitzer and Herschel observations detect the excess emission associated with the white dwarf.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "other",
+    "panels": 6,
+    "shows": "Herschel/PACS 70 µm imaging of the white dwarf region showing the two-component decomposition: the original map, the fitted 2D Gaussian extended component, its residual, the compact PSF-matched Gaussian, and the final residual with the extended and compact component footprints overlaid.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "East offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "North offset",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "intensity",
+      "units": "mJy/pixel"
+     },
+     {
+      "axis": "colour",
+      "quantity": "normalised intensity of model components",
+      "units": "arb. units"
+     }
+    ],
+    "roles": [
+     "data",
+     "model",
+     "residual"
+    ],
+    "supports_step": 1,
+    "validation_check": "Shows the residual after subtracting the fitted extended and compact Gaussian components, testing whether the central 70 µm emission is separated into components.",
+    "readable_values": [
+     "approx. colour scale of data maps 0 to 1.0 mJy/pixel",
+     "approx. extended-component ellipse FWHM 28 by 24 arcsec",
+     "approx. compact component FWHM 5.4 arcsec"
+    ],
+    "caption_quote": "The shaded ellipses in this panel denote the extent of the extended (FWHM 28′′ × 24′′, φ 65◦) and compact (FWHM 5.4′′) components subtracted from the image.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "spectrum",
+    "panels": 1,
+    "shows": "Spectral energy distribution of the central source WD 2226-210 from optical to millimetre wavelengths, with the white dwarf photosphere model, the compact and extended modified blackbody dust components, and their model realisations drawn from the tested parameter ranges.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Wavelength",
+      "units": "µm"
+     },
+     {
+      "axis": "y",
+      "quantity": "Flux density",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Model fit to photometry and upper limits for the compact and extended dust components, showing which parameter ranges are consistent with the observations.",
+    "readable_values": [
+     "approx. peak white dwarf photosphere flux about 1000 mJy near 0.05 µm",
+     "approx. compact component peak about 50 mJy near 30 µm",
+     "approx. extended component peak about 200 mJy near 100 µm"
+    ],
+    "caption_quote": "The black solid line denotes the white dwarf photopshere model scaled to optical and near-infrared photometry, shown as grey circles.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "model_vs_data",
+    "panels": 4,
+    "shows": "Comparison of observed photometry with model SEDs for four debris-disc scenarios (A to D) differing in dust radius and grain size range, showing that only scenario A with small minimum grain size matches all observations.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Wavelength",
+      "units": "µm"
+     },
+     {
+      "axis": "y",
+      "quantity": "Flux density",
+      "units": "mJy"
+     }
+    ],
+    "roles": [
+     "model",
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "Tests whether each grain-size and disc-architecture scenario reproduces the mid-infrared rise and far-infrared and millimetre constraints, favouring a small minimum grain size.",
+    "readable_values": [
+     "approx. Model A far-infrared peak about 30 mJy near 30 µm",
+     "approx. Model A 24 µm data point about 50 mJy",
+     "approx. Model B and C peak values near 50 to 80 mJy",
+     "approx. 3-sigma upper limit at 1.3 mm about 0.2 mJy"
+    ],
+    "caption_quote": "Of the four scenarios considered here, only scenario A, with a small minimum grain size and narrow size distribution is consistent with all the observations.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,603 @@
+{
+ "bibcode": "2024ApJ...970...75Z",
+ "title": "The Resolved Star Formation Law in NGC 7469 from JWST, ALMA, and VLA",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad57bd",
+ "arxiv_id": "2406.07901",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Investigate the spatially resolved star formation process and correlations between PAHs, star formation rate surface density, and cold molecular gas mass surface density within the central 3.3 kpc region of NGC 7469.",
+ "alma_project_codes": [
+  "2017.1.00078.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 m array (44 antennas)",
+  "angular_resolution": "~0.4 arcsec (0.492 arcsec x 0.360 arcsec for continuum; 0.508 arcsec x 0.374 arcsec for CO(2-1))",
+  "sensitivity": "0.0121 mJy/beam (1.3 mm continuum); 0.518 mJy/beam per 5 km s^-1 channel (CO(2-1) cube, or 7.8 M_sun/beam); 0.56 Jy/beam.km/s (CO(2-1) moment-0)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "AGN position (23:03:15.617 +08:52:26.00 J2000) and naming of continuum clumps A to D.",
+    "evidence": [
+     {
+      "loc": "3. ANALYSIS",
+      "quote": "We used the task os.system to model a point source at the AGN position (23:03:15.617 +08:52:26.00 J2000, Izumi et al. 2020) with a flux of 5.037 mJy at 22 GHz"
+     },
+     {
+      "loc": "4.1. Morphology of the SB ring",
+      "quote": "Clumps from A to D are named as in Izumi et al. (2020), who first identified the clumps using the ALMA 860 µm continuum map."
+     }
+    ]
+   },
+   "citation": "Izumi et al. 2020"
+  },
+  {
+   "what": {
+    "value": "Galaxy inclination angle i = 45 deg.",
+    "evidence": [
+     {
+      "loc": "3. ANALYSIS",
+      "quote": "The cos i factor is the correction for galaxy inclination, which we assume i =45 deg (Davies et al. 2004)."
+     }
+    ]
+   },
+   "citation": "Davies et al. 2004"
+  },
+  {
+   "what": {
+    "value": "Stellar mass log(M_*/M_sun) = 10.5.",
+    "evidence": [
+     {
+      "loc": "3. ANALYSIS",
+      "quote": "for a stellar mass of log(M∗/M⊙) = 10.5"
+     }
+    ]
+   },
+   "citation": "Díaz-Santos et al. 2007"
+  },
+  {
+   "what": {
+    "value": "CO ladder correction factor R_21 = 0.7 and K-S relation for local AGN host galaxies: log Sigma_SFR = (1.14 +- 0.01) log Sigma_H2 + (-3.41 +- 0.02).",
+    "evidence": [
+     {
+      "loc": "3. ANALYSIS",
+      "quote": "We adopt a CO ladder correction factor of R_21 = 0.7 equal to the mean value found by Casasola et al. (2015)"
+     },
+     {
+      "loc": "Figure 4 caption",
+      "quote": "The purple shaded area shows the range of values found by Casasola et al. (2015) for local AGN host galaxies: logΣ_SFR = (1.14 ± 0.01)logΣ_H2 + (−3.41 ± 0.02)."
+     }
+    ]
+   },
+   "citation": "Casasola et al. 2015"
+  },
+  {
+   "what": {
+    "value": "Outer starburst ring radius r_SB ~ 900 pc.",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "where r_SB ∼ 900pc is the outer SB ring radius (Song et al. 2021)."
+     },
+     {
+      "loc": "4.2. PAH emission",
+      "quote": "To quantify this steepening, we divided the data into two subsamples: an inner region within the SB ring (r < r_SB) and an outer region with r > r_SB, where r_SB = 900 pc. This value has been measured by (Song et al. 2021)"
+     }
+    ]
+   },
+   "citation": "Song et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Spatially resolved star formation law measurements for NGC 2992 on ~200 pc scales.",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "Triangles show the derived quantities for NGC 2992 (Zanchettin et al. 2023)."
+     },
+     {
+      "loc": "4.3. The star formation law",
+      "quote": "The plot also includes NGC 2992 measurements obtained with a similar method on ∼ 200 pc scales (Zanchettin et al. 2023)"
+     }
+    ]
+   },
+   "citation": "Zanchettin et al. 2023"
+  },
+  {
+   "what": {
+    "value": "Best-fit K-S correlation for dusty starbursts and U/LIRGs: log Sigma_SFR = (0.98 +- 0.07) log Sigma_H2 + (-2.27 +- 0.21) with 0.33 dex scatter.",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "The yellow shaded area shows the best-fit correlation with 0.33 dex scatter found using global measurements for (Kennicutt & De Los Reyes 2021): logΣ_SFR = (0.98 ± 0.07)logΣ_H2 + (−2.27 ± 0.21)."
+     }
+    ]
+   },
+   "citation": "Kennicutt & De Los Reyes 2021"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA Band 6 continuum and CO(2-1) data cube and generate Moment 0 map",
+   "method": "Average visibilities across 4 spectral windows excluding CO(2-1) line to image 1.3 mm continuum; subtract 1st-order polynomial from CO(2-1) spw visibilities and image cube with tclean; integrate in velocity to produce CO(2-1) moment-0 map blanked below 1 sigma.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "deconvolver = hogbom, threshold = 3 rms, Briggs robust b = 0.5 (continuum), natural weighting (CO(2-1) cube), channel width = 5 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model and subtract central AGN point source from VLA 22 GHz visibilities and image continuum",
+   "method": "Average 62 spws of calibrated VLA K-band visibilities; model a central point source at the AGN position with flux 5.037 mJy (90% of central beam flux), subtract it from visibilities using uvsub, and clean with tclean.",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvsub"
+   ],
+   "key_parameters": [
+    "AGN position = 23:03:15.617 +08:52:26.00 J2000, point source flux = 5.037 mJy (90% of central beam flux), circumnuclear flux correction = 15%, Briggs robust b = 0.5, hogbom, threshold = 3 rms"
+   ],
+   "assumptions": [
+    "90% of the central beam flux at 22 GHz is due to the central AGN point source."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model and subtract radial PSF contribution from JWST/MIRI F770W map",
+   "method": "Simulate the JWST/MIRI F770W PSF using WebbPSF (pixel size 0.027 arcsec), model the radial PSF contribution in circular sectors with radius equal to the grid cell size (1 arcsec), and apply radial correction to extracted F770W fluxes and errors.",
+   "software": [
+    "WebbPSF"
+   ],
+   "key_parameters": [
+    "Simulated PSF pixel size = 0.027 arcsec, circular sector radius = 1 arcsec, central 1 arcsec (~330 pc) excluded"
+   ],
+   "assumptions": [
+    "90% of the F770W filter flux is attributed to the 7.7 um PAH feature (10% hot dust continuum contamination)."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Regrid maps to common resolution, extract grid fluxes, and compute physical surface densities (Sigma_H2, Sigma_SFR, SB_PAH)",
+   "method": "Regrid ALMA CO(2-1), VLA 22 GHz, and JWST F770W maps to the VLA spatial resolution; apply a 10 arcsec x 10 arcsec grid of 1 arcsec x 1 arcsec (0.330 kpc) cells centered on the AGN; exclude the central AGN cell and cells with mean flux < 3 rms/pixel; convert extracted fluxes to Sigma_H2 (Eq. 1), Sigma_SFR (via 1.4 GHz extrapolation and Shao et al. 2018), and SB_PAH, plus integrated M(H2), SFR, and depletion time tau_dep = M(H2)/SFR.",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [
+    "Grid size = 10 arcsec x 10 arcsec (3.3 kpc x 3.3 kpc), cell size = 1 arcsec x 1 arcsec (0.330 kpc), detection threshold = 3 rms per pixel, number of valid data points = 82 (31 at r < r_SB, 51 at r > r_SB)"
+   ],
+   "assumptions": [
+    "D_L = 72.1 Mpc (0.338 kpc/arcsec); inclination i = 45 deg; R_21 = 0.7; alpha_CO = 4.2 (+1.961/-1.341) M_sun (K km s^-1 pc^2)^-1 for log(M_*/M_sun) = 10.5; radio spectral index alpha = -0.85 between 1.4 and 22 GHz; 90% of F770W flux from PAH."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Quantify correlations and fit linear scaling relations between SB_PAH, Sigma_SFR, and Sigma_H2",
+   "method": "Compute Pearson rho and Kendall tau rank correlation coefficients; fit linear relations y = n x + k in log-log space using MCMC (emcee) for the full sample (r > 0), inner SB ring (r < r_SB = 900 pc), and outer region (r > r_SB) for SB_PAH vs Sigma_SFR, SB_PAH vs Sigma_H2, and the Kennicutt-Schmidt law (log Sigma_SFR vs log Sigma_H2).",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "r_SB = 900 pc; N = 82 total points (31 for r < r_SB, 51 for r > r_SB)"
+   ],
+   "assumptions": [
+    "Constant error on Sigma_H2 and Sigma_SFR equal to the rms noise of each regridded map; error on SB_PAH obtained by convolving rms noise of regridded MIRI map with PSF uncertainty."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum map rms sensitivity",
+   "value": "0.0121",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. OBSERVATIONS AND DATA REDUCTION",
+     "quote": "The resulting synthesized beam for the continuum map is 0.492 arcsec × 0.360 arcsec (corresponding to 164 pc × 120 pc), with an rms of 0.0121 mJy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) cube rms noise (per 5 km s^-1 channel)",
+   "value": "0.518",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. OBSERVATIONS AND DATA REDUCTION",
+     "quote": "The CO(2-1) data cube has a beam size of 0.508 arcsec × 0.374 arcsec and a rms noise of 0.518 mJy/beam for a channel width of 5 km s^-1."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) mass surface density sensitivity (per 5 km s^-1 channel)",
+   "value": "7.8",
+   "uncertainty": "not stated",
+   "units": "M_sun/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. OBSERVATIONS AND DATA REDUCTION",
+     "quote": "This translates into a mass surface density sensitivity of 7.8 M_⊙/beam for a channel width of 5 km s^-1, computed using equation 1."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) moment-0 map rms noise",
+   "value": "0.56",
+   "uncertainty": "not stated",
+   "units": "Jy/beam.km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Figure 1 caption",
+     "quote": "Right panel: velocity integrated CO(2-1) (moment-0) map. White contours are drawn at (3, 5, 10, 15, 20, 30) σ, σ = 0.56 Jy/beam.km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 22 GHz continuum map rms noise",
+   "value": "23.2",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2. OBSERVATIONS AND DATA REDUCTION",
+     "quote": "The final continuum map has an rms of 23.2 µJy/beam and a clean beam of 1.029 arcsec × 0.967 arcsec (i.e. 342 pc × 322 pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled AGN point source flux at 22 GHz",
+   "value": "5.037",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. ANALYSIS",
+     "quote": "We used the task os.system to model a point source at the AGN position (23:03:15.617 +08:52:26.00 J2000, Izumi et al. 2020) with a flux of 5.037 mJy at 22 GHz, corresponding to 90% of the central beam flux."
+    }
+   ]
+  },
+  {
+   "quantity": "Average galaxy radio spectral index (alpha)",
+   "value": "-0.85",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3. ANALYSIS",
+     "quote": "First, we derived the radio luminosity at 1.4 GHz by assuming an average radio spectrum steepness α = −0.85 for the entire galaxy."
+    }
+   ]
+  },
+  {
+   "quantity": "Global SFR (central 3.3 kpc x 3.3 kpc, excluding central cell)",
+   "value": "11.5",
+   "uncertainty": "± 0.3",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We estimate a global star formation rate SFR ∼ 11.5 M_⊙ yr^-1 from the radio at 22 GHz"
+    },
+    {
+     "loc": "4.1. Morphology of the SB ring",
+     "quote": "We estimate the global SFR integrated over the central 3.3 kpc × 3.3 kpc into SFR = 11.5 ± 0.3 M_⊙ yr^-1, following the prescription of Shao et al. (2018), see Section 3."
+    }
+   ]
+  },
+  {
+   "quantity": "Cold molecular gas mass M(H2) (central 3.3 kpc x 3.3 kpc)",
+   "value": "6.4e9",
+   "uncertainty": "± 2.0e9",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "and a cold molecular gas mass M(H2) ∼ 6.4 × 10^9 M_⊙ from the CO(2-1) emission."
+    },
+    {
+     "loc": "4.1. Morphology of the SB ring",
+     "quote": "We computed the molecular gas mass over the central 3.3 kpc × 3.3 kpc M(H2) = (6.4 ± 2.0) × 10^9 M_⊙, where the error is dominated by the uncertainty on α_CO (0.165 dex, Accurso et al. 2017)."
+    }
+   ]
+  },
+  {
+   "quantity": "Cold molecular gas mass in the starburst ring M(H2)_SB",
+   "value": "3.3e9",
+   "uncertainty": "± 1.0e9",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Morphology of the SB ring",
+     "quote": "We computed that ∼ 50% of the total cold molecular gas mass is contained in the SB ring, M(H2)_SB = (3.3 ± 1.0) × 10^9 M_⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale tau_dep (central 3.3 kpc x 3.3 kpc)",
+   "value": "0.56",
+   "uncertainty": "± 0.18",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Morphology of the SB ring",
+     "quote": "We obtained τ_dep = (0.56 ± 0.18) Gyr for the central 3.3 kpc × 3.3 kpc region, and a shorter τ_dep = (0.47 ± 0.15) Gyr for the SB ring."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale tau_dep (starburst ring)",
+   "value": "0.47",
+   "uncertainty": "± 0.15",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Morphology of the SB ring",
+     "quote": "We obtained τ_dep = (0.56 ± 0.18) Gyr for the central 3.3 kpc × 3.3 kpc region, and a shorter τ_dep = (0.47 ± 0.15) Gyr for the SB ring."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas depletion timescale across grid cells (tau_dep,mean)",
+   "value": "0.66",
+   "uncertainty": "± 0.02",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3. The star formation law",
+     "quote": "In Figure 4, we report the characteristic gas depletion timescales: NGC 7469 data points show an average τ_dep,mean = (0.66 ± 0.02) Gyr, where the uncertainty is the standard error of the mean."
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR - SB_PAH correlation slope n (all points, r > 0)",
+   "value": "1.77",
+   "uncertainty": "± 0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "r > 0 82 0.91 0.75 1.77 ± 0.08 -2.56 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR - SB_PAH correlation zero-point k (all points, r > 0)",
+   "value": "-2.56",
+   "uncertainty": "± 0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "r > 0 82 0.91 0.75 1.77 ± 0.08 -2.56 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR - SB_PAH correlation slope n (SB ring, r < r_SB)",
+   "value": "2.16",
+   "uncertainty": "± 0.20",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "r < r_SB 31 0.76 0.56 2.16 ± 0.20 -2.78 ± 0.02"
+    },
+    {
+     "loc": "4.2. PAH emission",
+     "quote": "In particular, the slope at the SB ring is n = (2.16 ± 0.20) whereas at r > r_SB is n = (0.83 ± 0.10)."
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR - SB_PAH correlation zero-point k (SB ring, r < r_SB)",
+   "value": "-2.78",
+   "uncertainty": "± 0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "r < r_SB 31 0.76 0.56 2.16 ± 0.20 -2.78 ± 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR - SB_PAH correlation slope n (outer region, r > r_SB)",
+   "value": "0.83",
+   "uncertainty": "± 0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "r > r_SB 51 0.77 0.56 0.83 ± 0.10 -2.36 ± 0.03"
+    },
+    {
+     "loc": "4.2. PAH emission",
+     "quote": "In particular, the slope at the SB ring is n = (2.16 ± 0.20) whereas at r > r_SB is n = (0.83 ± 0.10)."
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR - SB_PAH correlation zero-point k (outer region, r > r_SB)",
+   "value": "-2.36",
+   "uncertainty": "± 0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "r > r_SB 51 0.77 0.56 0.83 ± 0.10 -2.36 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_H2 - SB_PAH correlation slope n (all points, r > 0)",
+   "value": "2.17",
+   "uncertainty": "± 0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.84 0.68 2.17 ± 0.11 -15.48 ± 0.36"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_H2 - SB_PAH correlation zero-point k (all points, r > 0)",
+   "value": "-15.48",
+   "uncertainty": "± 0.36",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.84 0.68 2.17 ± 0.11 -15.48 ± 0.36"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_H2 - SB_PAH correlation slope n (SB ring, r < r_SB)",
+   "value": "2.61",
+   "uncertainty": "± 0.25",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.71 0.52 2.61 ± 0.25 -10.25 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_H2 - SB_PAH correlation zero-point k (SB ring, r < r_SB)",
+   "value": "-10.25",
+   "uncertainty": "± 0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.71 0.52 2.61 ± 0.25 -10.25 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_H2 - SB_PAH correlation slope n (outer region, r > r_SB)",
+   "value": "0.72",
+   "uncertainty": "± 0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.66 0.47 0.72 ± 0.09 -4.39 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_H2 - SB_PAH correlation zero-point k (outer region, r > r_SB)",
+   "value": "-4.39",
+   "uncertainty": "± 0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.66 0.47 0.72 ± 0.09 -4.39 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-Schmidt law slope n (log Sigma_SFR vs log Sigma_H2, all points)",
+   "value": "1.02",
+   "uncertainty": "± 0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Figure 4 caption",
+     "quote": "The dashed green lines are the linear fit to the data logΣ_SFR = (1.02 ± 0.07)logΣ_H2 + (−2.85 ± 0.02), derived by using the python emcee library (Foreman-Mackey et al. 2013)."
+    },
+    {
+     "loc": "4.3. The star formation law",
+     "quote": "the best fit linear relation for all data points is logΣ_SFR = (1.02 ± 0.07)logΣ_H2 + (−2.85 ± 0.02) (green solid line in Figure 4)."
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-Schmidt law zero-point k (log Sigma_SFR vs log Sigma_H2, all points)",
+   "value": "-2.85",
+   "uncertainty": "± 0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Figure 4 caption",
+     "quote": "The dashed green lines are the linear fit to the data logΣ_SFR = (1.02 ± 0.07)logΣ_H2 + (−2.85 ± 0.02), derived by using the python emcee library (Foreman-Mackey et al. 2013)."
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-Schmidt law slope n (outer region, r > r_SB)",
+   "value": "0.5",
+   "uncertainty": "± 0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3. The star formation law",
+     "quote": "The slope of this relation is consistent with that obtained by fitting the SB ring alone, while we find a flatter slope for the fit of the outer region (n = 0.5 ± 0.1)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size (arcsec/pixel) and image size (pixels) used in CASA tclean for ALMA 1.3 mm continuum, ALMA CO(2-1) cube, and VLA 22 GHz continuum.",
+  "Exact velocity/frequency range excluded for the CO(2-1) emission line during continuum averaging and uv-plane continuum subtraction, and the velocity range integrated to create the CO(2-1) moment-0 map.",
+  "Whether primary beam correction was applied to the ALMA and VLA maps.",
+  "Whether the ALMA CO(2-1) and JWST/MIRI F770W maps were convolved to match the VLA 1.03 x 0.97 arcsec PSF before regridding onto the 1 arcsec x 1 arcsec grid, or simply rebinned/regridded.",
+  "Exact CASA task/tool used to create the point-source visibility model for VLA AGN subtraction (paper prints 'task os.system', which is a Python module call rather than a CASA modeling task such as cl.addcomponent or ft).",
+  "Exact metallicity / [O/H] value input into Equation 25 of Accurso et al. (2017) to obtain alpha_CO = 4.2.",
+  "Units and definition of SB_PAH in Figure 3 and Table 1 (e.g., whether in MJy/sr, erg s^-1 cm^-2, or W kpc^-2, as the y-axis label is truncated/missing units in Figure 3)."
+ ],
+ "missing_for_reproduction": [
+  "Exact frequency/velocity channel ranges for ALMA continuum averaging, uv-plane continuum subtraction, and CO(2-1) moment-0 velocity integration.",
+  "Image pixel sizes and dimensions in CASA tclean for ALMA and VLA imaging.",
+  "Exact implementation of the radial WebbPSF sector subtraction on the JWST/MIRI F770W map.",
+  "Exact physical units of SB_PAH used in the linear regressions in Table 1 and Figure 3.",
+  "Details of whether PSF matching (convolution to VLA beam) was performed prior to regridding onto the 1 arcsec x 1 arcsec grid."
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "All three datasets (ALMA, VLA, JWST) are publicly available in archives with explicit project codes/DOIs, software versions (CASA 5.1.1-5, WebbPSF 1.2.1) and main tclean parameters (hogbom, robust=0.5/natural, 3rms threshold) as well as physical conversion formulas and assumptions are clearly stated; however, minor imaging parameters (pixel/image sizes, velocity integration windows), PSF-matching details prior to regridding, and the exact units of SB_PAH in Table 1/Figure 3 are omitted.",
+ "rediscovery_reason": "All raw/calibrated data are public in the ALMA, VLA, and MAST archives, the data reduction and 1-arcsec grid analysis recipe are straightforward, and the paper reports clear numeric benchmarks (rms noises, global SFR and M(H2), depletion timescales, and MCMC correlation slopes).",
+ "source_card": "cards/2024ApJ...970...75Z/sonnet/card.md"
+}

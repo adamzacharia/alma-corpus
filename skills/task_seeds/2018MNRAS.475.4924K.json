@@ -1,0 +1,313 @@
+{
+ "bibcode": "2018MNRAS.475.4924K",
+ "title": "ALMA observations of the narrow HR 4796A debris ring",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty135",
+ "arxiv_id": "1801.05429",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "What are the radial and vertical structure of the HR 4796A debris ring at 880 um, is CO gas present, and what do these imply for dynamics and an interior planet?",
+ "alma_project_codes": [
+  "2015.1.00032.S"
+ ],
+ "data": {
+  "bands": "Band 7 (880 um)",
+  "arrays": "not stated",
+  "angular_resolution": "0.16x0.18 arcsec (11.6x13.1 au) continuum, robust 0.5",
+  "sensitivity": "31 uJy/beam continuum; 2 mJy/beam per 0.42 km/s channel in cube"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass 2.18 Msun",
+    "evidence": [
+     {
+      "loc": "2.2 Spectral data and CO",
+      "quote": "an estimated stellar mass of 2.18 M$_{\\odot}$ (cite: 1999A&AS..137..273G)"
+     }
+    ]
+   },
+   "citation": "(cite: 1999A&AS..137..273G)"
+  },
+  {
+   "what": {
+    "value": "Scattered-light power-law indices and FWHM_r of 7 au",
+    "evidence": [
+     {
+      "loc": "3.3 Power-law torus",
+      "quote": "the latter authors found $p_{\\rm in} = 23$, and $p_{\\rm out} = 13$ to $18$"
+     }
+    ]
+   },
+   "citation": "(cite: 2017A&A...599A.108M)"
+  },
+  {
+   "what": {
+    "value": "9650K PHOENIX stellar model atmosphere",
+    "evidence": [
+     {
+      "loc": "4.2.1 CO mass upper limit",
+      "quote": "The stellar emission is taken as that of a 9650K PHOENIX model atmosphere (cite: 2005ESASP.576..565B)"
+     }
+    ]
+   },
+   "citation": "(cite: 2005ESASP.576..565B)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux",
+   "method": "CLEAN imaging, phase self-cal, elliptical mask photometry",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search for CO emission",
+   "method": "uvcontsub, natural-weight cube, velocity-shifted filtering over pixels >5 sigma in continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "CO co-located with dust; stellar mass 2.18 Msun"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit disk models to visibilities",
+   "method": "radmc-3d optically thin torus models, FT to uv points, chi2 minimisation with MCMC; Gaussian, box, power-law, eccentric variants",
+   "software": [
+    "radmc-3d",
+    "emcee",
+    "CASA"
+   ],
+   "key_parameters": [
+    "40 walkers, 1000 steps, ~100 burn-in; data averaged to 10 s and four channels per SPW; weights recomputed with statwt; reweighting 1/2.5"
+   ],
+   "assumptions": [
+    "Dust size 10 um to 1 cm, q=11/6; 880 um opacity 0.17 m2/kg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Convert CO flux limit to CO mass and ice fraction",
+   "method": "NLTE statistical equilibrium over electron density and kinetic temperature, optically thin; photodissociation timescale; steady-state ratio to collisional mass loss rate",
+   "software": [],
+   "key_parameters": [
+    "electron density 1e-3 to 1e12 cm-3; T 10 to 250 K"
+   ],
+   "assumptions": [
+    "Electrons main collider; CO optically thin"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain interior planet from secular perturbations",
+   "method": "Resonance overlap, secular precession and crossing-time criteria with Laplace coefficients",
+   "software": [],
+   "key_parameters": [
+    "r0 = 79 au, e_f = 0.06, M_star = 2.18 Msun"
+   ],
+   "assumptions": [
+    "Initial disk width ~5 au"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total disk flux at 880 um",
+   "value": "14.8",
+   "uncertainty": "1.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Basic continuum analysis",
+     "quote": "we measure a total disk flux of $14.8 \\pm 1.5$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO J=3-2 integrated flux upper limit (3 sigma)",
+   "value": "25",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Spectral data and CO",
+     "quote": "yields an integrated line flux upper limit (3$\\sigma$) of 25 mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian torus FWHM_r",
+   "value": "10",
+   "uncertainty": "1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM$_r$ (au)               | 10    | 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian torus FWHM_h",
+   "value": "7",
+   "uncertainty": "1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM$_h$ (au)               | 7     | 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "0.35",
+   "uncertainty": "0.04",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_{\\rm dust}$ ($M_\\oplus$) | 0.35  | 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring radius r0 (Gaussian)",
+   "value": "78.6",
+   "uncertainty": "0.2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$r_0$ (au)                  | 78.6  | 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle",
+   "value": "26.7",
+   "uncertainty": "0.1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\Omega$ ($^\\circ$)         | 26.7  | 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "76.6",
+   "uncertainty": "0.2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$I$ ($^\\circ$)              | 76.6  | 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law index p",
+   "value": "24",
+   "uncertainty": "2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Power-law torus",
+     "quote": "is $p = 24 \\pm 2$, which corresponds to a FWHM of only 5au"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limit adopted",
+   "value": "3.7e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.1 CO mass upper limit",
+     "quote": "we therefore adopt 3.7 $\\times$ 10$^{-6}$ M$_{\\oplus}$ as the strict upper limit on the CO mass"
+    }
+   ]
+  },
+  {
+   "quantity": "CO photodissociation timescale",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.2 Primordial origin of undetected CO excluded",
+     "quote": "we derive a photodissociation timescale of eight years at the radial location of the ring’s centre"
+    }
+   ]
+  },
+  {
+   "quantity": "CO+CO2 ice mass fraction upper limit",
+   "value": "<1.8",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.3 The CO+CO2 ice reservoir in HR 4796A’s exocomets",
+     "quote": "upper limit of $<$1.8% on the CO+CO$_2$ ice mass fraction"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass loss rate",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "Earth masses per Myr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Collisional status",
+     "quote": "The estimated mass loss rate is 26 $M_\\oplus$ Myr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used in uvcontsub",
+  "Image size, cell size, and clean threshold/mask",
+  "Self-calibration solution interval",
+  "Priors and bounds on MCMC parameters",
+  "Model grid/radmc-3d settings (photon number, image resolution)",
+  "Details of CO NLTE code (not public; Matra et al. submitted)",
+  "Mass-loss rate calculation inputs (stellar luminosity, f) not fully listed"
+ ],
+ "missing_for_reproduction": [
+  "Fit priors and parameter bounds",
+  "Imaging gridding and clean parameters",
+  "Line-free channels",
+  "Unreleased NLTE code with fluorescence",
+  "Radmc-3d configuration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and general recipe given and public archive, but fit priors, imaging parameters and CO code details are missing.",
+ "rediscovery_reason": "Archival data with a numeric result table (ring radius, widths, mass) and a defined fitting recipe.",
+ "source_card": "cards/2018MNRAS.475.4924K/sonnet/card.md"
+}

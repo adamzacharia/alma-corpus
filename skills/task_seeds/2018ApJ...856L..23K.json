@@ -1,0 +1,215 @@
+{
+ "bibcode": "2018ApJ...856L..23K",
+ "title": "Massive, Absorption-selected Galaxies at Intermediate Redshifts",
+ "year": 2018,
+ "doi": "10.3847/2041-8213/aab6ab",
+ "arxiv_id": "1803.07563",
+ "fields": [
+  "nearby_galaxies",
+  "high_z_galaxies"
+ ],
+ "question": "Do high-metallicity absorption-selected (DLA/sub-DLA) galaxies at z~0.5-0.8 have molecular gas properties similar to emission-selected star-forming galaxies?",
+ "alma_project_codes": [
+  "2013.1.01178.S",
+  "2015.1.01034.S",
+  "2015.1.00561.S"
+ ],
+ "data": {
+  "bands": "Band 4",
+  "arrays": "not stated",
+  "angular_resolution": "Beams ~1.6-2.9 arcsec",
+  "sensitivity": "RMS 150-275 uJy per 100 km/s channel; continuum RMS ~13-20 uJy (~40 uJy for B0827+243)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COLD GASS comparison sample (212 CO(1-0) detections)",
+    "evidence": [
+     {
+      "loc": "Results and Discussion",
+      "quote": "the *COLD GASS* sample at low redshifts ($z \\lesssim 0.05$), with 212 CO(1$-$0) detections"
+     }
+    ]
+   },
+   "citation": "(cite: saintonge11)"
+  },
+  {
+   "what": {
+    "value": "PHIBSS comparison sample (49 CO(3-2) detections)",
+    "evidence": [
+     {
+      "loc": "Results and Discussion",
+      "quote": "the *PHIBSS* sample at high redshifts ($z \\approx 1.3,2.2$) with 49 CO(3$-$2) detections"
+     }
+    ]
+   },
+   "citation": "(cite: tacconi13)"
+  },
+  {
+   "what": {
+    "value": "SFRs from [OII] or Hbeta lines, or U-band continuum for B1629+120",
+    "evidence": [
+     {
+      "loc": "Results and Discussion",
+      "quote": "the star formation rates (SFRs) of the DLA galaxies were inferred from either the \\[Oii\\]$\\lambda$3727Å or H$\\beta$$\\lambda$4382Å lines"
+     }
+    ]
+   },
+   "citation": "(cite: chen05; christensen14; straka16; moller18; rhodin18; rao03)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(2-1) cubes",
+   "method": "Pipeline calibration, AIPS self-cal of continuum for two fields, continuum subtraction, natural-weighted CASA imaging, primary beam correction",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract CO spectra and measure sizes",
+   "method": "Flux per channel in elliptical region containing emission; sizes with CASA fitter",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas masses",
+   "method": "Convert CO(2-1) to CO(1-0) luminosity and apply alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.36 Msun (K km/s pc^2)^-1; CO(2-1)/(1-0) flux ratio 2.5"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate stellar masses",
+   "method": "SED fitting of multi-band photometry with BC03 templates, chi2 minimisation over grid",
+   "software": [
+    "HyperZ",
+    "LePhare"
+   ],
+   "key_parameters": [
+    "ages 0.01-13.5 Gyr; e-folding 0.1-30 Gyr; A_V 0-1 mag"
+   ],
+   "assumptions": [
+    "Chabrier IMF, LMC-Fitzpatrick extinction"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with COLD GASS and PHIBSS",
+   "method": "Compare SFR, Mmol, fmol, depletion times against emission-selected samples with same alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular gas mass range (detections)",
+   "value": "(0.6-8.2)e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$M_{\\rm Mol} \\approx (0.6 - 8.2) \\times 10^{10} \\: {\\rm M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas fraction range",
+   "value": "0.29-0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$f_{\\rm Mol} \\equiv \\: M_{\\rm Mol}/(M_\\ast + M_{\\rm Mol}) \\approx 0.29-0.87)$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR range",
+   "value": "0.3-9.5",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\approx (0.3-9.5) \\: {\\rm M}_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time range",
+   "value": "3-120",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$\\approx (3 - 120)$ Gyr"
+    }
+   ]
+  },
+  {
+   "quantity": "Median DLA depletion time",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results and Discussion",
+     "quote": "the median gas depletion time for the DLA galaxies is $\\rm \\tau_{\\rm depl,DLA} \\approx 10$ Gyr"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux B0827+243",
+   "value": "3.11",
+   "uncertainty": "0.16",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$3.11 \\pm 0.16$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and tclean parameters (cell, image size, masking, deconvolution)",
+  "Channels used for continuum model/subtraction",
+  "Self-calibration solution intervals",
+  "Region definitions for spectral extraction",
+  "Stellar-mass photometry sources and SFR values per galaxy",
+  "How uncertainties on line fluxes were derived",
+  "Flux calibrators and flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Photometry and SFR inputs",
+  "Spectral extraction regions"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and simple derivations, but imaging details and photometry/SFR inputs are missing.",
+ "rediscovery_reason": "Public data, numeric CO fluxes and masses via a simple recipe.",
+ "source_card": "cards/2018ApJ...856L..23K/sonnet/card.md"
+}

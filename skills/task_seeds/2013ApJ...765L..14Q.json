@@ -1,0 +1,215 @@
+{
+ "bibcode": "2013ApJ...765L..14Q",
+ "title": "First Detection of c-C<SUB>3</SUB>H<SUB>2</SUB> in a Circumstellar Disk",
+ "year": 2013,
+ "doi": "10.1088/2041-8205/765/1/L14",
+ "arxiv_id": "1302.0251",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Is c-C3H2 present in the HD 163296 disk, and what are its radial distribution, column density and ortho/para ratio?",
+ "alma_project_codes": [
+  "2011.0.00010.SV"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "25 12-m antennae (ACA 7-m flagged)",
+  "angular_resolution": "0.9x0.7\" (PA=84)",
+  "sensitivity": "2.2 mJy/beam per 1 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk physical structure model (temperature, density, geometry; Table 3)",
+    "evidence": [
+     {
+      "loc": "Ring structure model",
+      "quote": "based on a previously developed accretion disk model with well-defined temperature and density structures (cite: Qi11)"
+     }
+    ]
+   },
+   "citation": "Qi11"
+  },
+  {
+   "what": {
+    "value": "Collisional rates",
+    "evidence": [
+     {
+      "loc": "Ring structure model",
+      "quote": "The collisional rates are taken from (cite: Chandra00)"
+     }
+    ]
+   },
+   "citation": "Chandra00"
+  },
+  {
+   "what": {
+    "value": "Molecular data file (LAMDA), Einstein A",
+    "evidence": [
+     {
+      "loc": "Ring structure model",
+      "quote": "the molecular data file is retrieved from the Leiden Atomic and Molecular Database (cite: Schoier05)"
+     }
+    ]
+   },
+   "citation": "Schoier05"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "Calibrated SV data; continuum from line-free channels; lines continuum-subtracted and binned to 1 km/s; taper for weak lines",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and fluxes",
+   "method": "Per-channel masks from 6-5 emission applied to all c-C3H2 lines",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit radial ring model in the uv-plane",
+   "method": "Grid of synthetic 6-5 visibilities over Rout, Rin, p, N100; chi2 minimization on real and imaginary visibilities",
+   "software": [
+    "RATRAN"
+   ],
+   "key_parameters": [
+    "Vertical boundaries fixed: sigma_s = 0.32, sigma_m = 3.2"
+   ],
+   "assumptions": [
+    "Keplerian rotation; Qi11 disk structure; constant abundance in a layer; power-law column density"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain ortho/para ratio",
+   "method": "Fit unresolved 5-4 ortho line flux assuming 6-5 distribution; compare with total from 6-5",
+   "software": [
+    "RATRAN"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "6-5 ortho and para lines blended with equal A coefficients; fit ortho only gives o+p"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "218 GHz continuum flux",
+   "value": "608.5",
+   "uncertainty": "2.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "the flux is determined to be 608.5$\\pm$2.5 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2 6-5 integrated flux",
+   "value": "185",
+   "uncertainty": "10",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "185\\[10\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2 5-4 integrated flux",
+   "value": "74",
+   "uncertainty": "9",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "74\\[9\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2 3-2 integrated flux",
+   "value": "53",
+   "uncertainty": "9",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "53\\[9\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit inner radius, outer radius, power-law index",
+   "value": "Rin 30 AU, Rout 165 AU, p = -2",
+   "uncertainty": "1 sigma: Rin 15-40, Rout 150-200 AU, p -2.5 to -1.5",
+   "units": "AU / dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Ring structure model",
+     "quote": "with best-fit values at -2, 30 and 165 AU, respectively (reduced $\\chi^2=1.07$)"
+    }
+   ]
+  },
+  {
+   "quantity": "N(c-C3H2) at 100 AU",
+   "value": "2.2e12",
+   "uncertainty": "0.2e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Ring structure model",
+     "quote": "N($c$-C$_3$H$_2$) is determined to be 2.2$\\pm$0.2 $\\times$10$^{12}$ cm$^{-2}$ at 100 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "ortho/para ratio",
+   "value": "2.7",
+   "uncertainty": "1.7",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Ring structure model",
+     "quote": "Hence $o/p$=2.7$\\pm$1.7, which is close to the statistical value of 3"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters (weighting, robust, cell, image size, clean threshold)",
+  "Line-free channels used for continuum subtraction",
+  "Details of the chi2 model grid ranges and step sizes",
+  "RATRAN settings (number of photons, grid)",
+  "Spectral extraction mask thresholds",
+  "Flux/gain calibrators (in SV scripts)"
+ ],
+ "missing_for_reproduction": [
+  "Model grid specification and RATRAN settings",
+  "Mask construction details",
+  "Qi11 disk model parameter table is external"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and scripts, clear model approach, but fitting grid and masking details are not given.",
+ "rediscovery_reason": "Public SV data and a stated ring-model recipe with numeric results, though requires the Qi11 model.",
+ "source_card": "cards/2013ApJ...765L..14Q/sonnet/card.md"
+}

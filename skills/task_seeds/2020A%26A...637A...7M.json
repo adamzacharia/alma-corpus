@@ -1,0 +1,330 @@
+{
+ "bibcode": "2020A&A...637A...7M",
+ "title": "Detection of deuterated molecules, but not of lithium hydride, in the z = 0.89 absorber toward PKS 1830-211",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202037628",
+ "arxiv_id": "2003.13436",
+ "fields": [
+  "astrochemistry",
+  "high_z_galaxies"
+ ],
+ "question": "Are deuterated molecules (ND, NH2D, HDO) and lithium hydride detectable in the z=0.89 absorber toward PKS 1830-211, and what are their abundance ratios?",
+ "alma_project_codes": [
+  "2018.1.00692.S",
+  "2018.1.00051.S",
+  "2018.1.00187.S"
+ ],
+ "data": {
+  "bands": "Band 6 (2019 Apr 11) and Band 7 (2019 Jul 28)",
+  "arrays": "not stated",
+  "angular_resolution": "0.6 arcsec (Apr, B6); 0.03 arcsec (Jul, B7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "16O/18O = 69 ± 11 from HCO+ isotopologues",
+    "evidence": [
+     {
+      "loc": "3.1.2 HDO",
+      "quote": "we adopt the ratio $^{16}$O/$^{18}$O $= 69 \\pm 11$ derived from observations of HCO$^+$ isotopologues by (cite: mul06; mul11)"
+     }
+    ]
+   },
+   "citation": "(cite: mul06; mul11)"
+  },
+  {
+   "what": {
+    "value": "N(H2) = 2e22 cm-2 along SW line of sight",
+    "evidence": [
+     {
+      "loc": "3.3 Non-detection of 7LiH",
+      "quote": "Taking the column density of H$_2$ estimated along the SW line of sight [^6], $2 \\times 10^{22}$ cm$^{-2}$ (cite: mul14)"
+     }
+    ]
+   },
+   "citation": "(cite: mul14)"
+  },
+  {
+   "what": {
+    "value": "2012 p-NH2 and o-NH3 spectra; 2014 o-H2O/H2(18)O spectra for comparison",
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "two others were observed together with ortho-NH$_3$ back in 2012 (cite: mul14)"
+     }
+    ]
+   },
+   "citation": "(cite: mul14; mul16b)"
+  },
+  {
+   "what": {
+    "value": "NH/NH2/NH3 abundance ratios in diffuse gas (3–2:1:1) and dark clouds (3:1:19)",
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "NH:NH$_2$:NH$_3$= 3–2:1:1 observed in the Galactic diffuse gas (cite: per10; per12)"
+     }
+    ]
+   },
+   "citation": "(cite: per10; per12; legal14)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopy parameters from CDMS and JPL",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "Spectroscopy parameters are taken from the Cologne Database for Molecular Spectroscopy (cite: CDMS01; CDMS05; CDMS16)"
+     }
+    ]
+   },
+   "citation": "(cite: CDMS01; CDMS05; CDMS16; pic98)"
+  },
+  {
+   "what": {
+    "value": "Collisional rates for NH2D and HDO",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The rates are taken from (cite: dan14) for NH$_2$D and from (cite: fau12) for HDO."
+     }
+    ]
+   },
+   "citation": "(cite: dan14; fau12)"
+  },
+  {
+   "what": {
+    "value": "H2 column density 8e21 cm-2 toward B0218+357",
+    "evidence": [
+     {
+      "loc": "3.3 Non-detection of 7LiH",
+      "quote": "we estimate an H$_2$ column density of $8 \\times 10^{21}$ cm$^{-2}$ (cite: wal16)"
+     }
+    ]
+   },
+   "citation": "(cite: wal16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract normalized spectra",
+   "method": "Fit two point sources to visibilities with UVMULTIFIT; normalize Stokes I spectra to continuum and average the two executions",
+   "software": [
+    "CASA",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Convert opacity to column density",
+   "method": "N = alpha * integral tau dv with alpha computed for Tex=TCMB; RADEX check of collisional effects",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "TCMB=5.14 K at z=0.89"
+   ],
+   "assumptions": [
+    "covering factor fc=1; only H2 collision partner; OPR=3"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit Gaussian velocity components",
+   "method": "One or two Gaussian components per spectrum; joint tight 2-Gaussian fit of p-NH2, NH2D, HDO; ND forced with p-NH2 components",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive deuterium fractionation ratios",
+   "method": "Ratios of integrated opacities with pivot species (NH2 for NH/NH3, H2-18O for H2O), OPR and time-variation corrections",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "NH2/NH3=1, NH/NH2=3, 16O/18O=69±11, factor 2 variation Apr–Jul 2019"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "7LiH upper limit",
+   "method": "3 sigma_tau sqrt(dv*Dv) with Dv=20 km/s, times alpha; divide by N(H2)",
+   "software": [],
+   "key_parameters": [
+    "sigma_tau=1e-3 per 4.7 km/s channel; line width 20 km/s; alpha=2.5e11"
+   ],
+   "assumptions": [
+    "N(H2)=2e22 cm-2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NH2D/NH2 (v~-4 km/s)",
+   "value": "2.7e-3",
+   "uncertainty": "0.3e-3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 NH2",
+     "quote": "NH$_2$D/NH$_2$ = $(2.7 \\pm 0.3)\\times 10^{-3}$ for the $v\\sim-4$ km s$^{-1}$ velocity component"
+    }
+   ]
+  },
+  {
+   "quantity": "ND/NH2D (v~-4 km/s)",
+   "value": "2.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 NH2",
+     "quote": "we derive ND/NH$_2$D = $2.7 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "ND/NH (v~-4 km/s)",
+   "value": "2.44e-3",
+   "uncertainty": "0.07e-3 (fit only)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 NH2",
+     "quote": "we further derive ND/NH $= (2.44 \\pm 0.07) \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ND/NH (v=+5 km/s)",
+   "value": "1.3e-4",
+   "uncertainty": "0.8e-4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 NH2",
+     "quote": "we obtain a ratio ND/NH = $(1.3 \\pm 0.8) \\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2D/NH3 (v~-4 km/s)",
+   "value": "~3e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 NH2",
+     "quote": "NH$_2$D/NH$_3$ $\\sim 3 \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO/H2O (v=-4 km/s)",
+   "value": "~1e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.2 HDO",
+     "quote": "we end up with a ratio HDO/H$_2$O $\\sim 1 \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HDO/H2O (v~+5 km/s)",
+   "value": "~6e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.2 HDO",
+     "quote": "we estimate a ratio HDO/H$_2$O $\\sim 6 \\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(7LiH) upper limit (3σ)",
+   "value": "7e9",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Non-detection of 7LiH",
+     "quote": "we then obtain an upper limit of $7 \\times 10^9$ cm$^{-2}$ for the column density of $^7$LiH"
+    }
+   ]
+  },
+  {
+   "quantity": "7LiH/H2 upper limit (PKS 1830-211)",
+   "value": "<4e-13",
+   "uncertainty": "3σ",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Non-detection of 7LiH",
+     "quote": "we derive a stringent upper limit $^7$LiH/H$_2$ $< 4 \\times 10^{-13}$ (3$\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "7LiH/H2 upper limit (B0218+357)",
+   "value": "<5e-11",
+   "uncertainty": "3σ",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Non-detection of 7LiH",
+     "quote": "corresponding to an abundance ratio $^7$LiH/H$_2$ $< 5 \\times 10^{-11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2/NH3 (2012)",
+   "value": "~1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 NH2",
+     "quote": "yield a total column density $\\sim 3 \\times 10^{14}$ cm$^{-2}$ for both, that is, NH$_2$/NH$_3$ $\\sim 1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum normalization procedure",
+  "Gaussian fitting code and fitting/error method",
+  "Exact CASA version and bandpass/flux calibrator flux scale",
+  "Velocity-resolution/Hanning details per project",
+  "Details of the time-variation correction applied to final ratios",
+  "Phase center/coordinates of target",
+  "Exact RADEX input parameters beyond range"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, calibrators' flux scale",
+  "Line-free channel ranges and normalization",
+  "Fitting code/procedure for Gaussians",
+  "Exact time-variation correction"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the recipe is simple, but processing details (versions, fitting, line-free channels) and assumed corrections are loosely specified.",
+ "rediscovery_reason": "Archival data, simple spectra extraction and ratios, numeric results, though corrections are partly judgemental.",
+ "source_card": "cards/2020A%26A...637A...7M/sonnet/card.md"
+}

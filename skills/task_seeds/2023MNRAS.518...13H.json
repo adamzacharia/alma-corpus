@@ -1,0 +1,556 @@
+{
+ "bibcode": "2023MNRAS.518...13H",
+ "title": "Kinematics of molecular gas in star-forming galaxies with large-scale ionized outflows",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3083",
+ "arxiv_id": "2204.02925",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Explore the diversity of molecular gas kinematic structures across edge-on galaxies hosting large-scale ionised outflows and test whether a single mechanism like bar instabilities explains central gas and SFR concentrations.",
+ "alma_project_codes": [
+  "2011.0.01234.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "1'' (~ 0.5 kpc - 1 kpc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PHANGS-ALMA CO(2-1) sample degraded to ~1 kpc resolution to create a control distribution of flux asymmetry.",
+    "evidence": [
+     {
+      "loc": "Dynamically Cold Discs",
+      "quote": "To compare the flux asymmetry we observe in our objects to a control sample, we use the PHANGS-ALMA (cite: leroy21) sample to create a distribution of flux asymmetry."
+     },
+     {
+      "loc": "Dynamically Cold Discs",
+      "quote": "We degrade the PHANGS-ALMA CO(2) resolution to be comparable to our physical resolution of $\\rm\\approx 1~kpc$ and perform the same procedure summarised by Equation [\\[eq: flux\\]](#eq: flux)."
+     }
+    ]
+   },
+   "citation": "(cite: leroy21)"
+  },
+  {
+   "what": {
+    "value": "Effective radius (r_e) values from the GAMA DR3 catalogue.",
+    "evidence": [
+     {
+      "loc": "Minor Axis PVDs",
+      "quote": "For these PVDs we use slit width equal to the effective radius ($r_e$) of the objects (where we use $r_e$ values from the GAMA DR3 catalogue), so that the slit extends half an $r_e$ either side of the kinematic centre along the major axis."
+     }
+    ]
+   },
+   "citation": "GAMA DR3 catalogue"
+  },
+  {
+   "what": {
+    "value": "g-band and r-band magnitudes from SDSS DR16.",
+    "evidence": [
+     {
+      "loc": "Circular Velocity",
+      "quote": "where $g$ and $r$ are the g-band and r-band magnitudes for our objects from SDSS DR16 (cite: ahumada20), which using SDSS conversions in Equation [\\[eq: bv\\]](#eq: bv), we transform into $B-V$ colours."
+     }
+    ]
+   },
+   "citation": "(cite: ahumada20)"
+  },
+  {
+   "what": {
+    "value": "r-band photometry from HSC.",
+    "evidence": [
+     {
+      "loc": "Circular Velocity",
+      "quote": "We attempt this by extracting Multi-Gaussian Expansion (MGE) models (cite: emsellem94) using r-band photometry from HSC (cite: aihara19)."
+     }
+    ]
+   },
+   "citation": "(cite: aihara19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce ALMA data and extract basic data products",
+   "method": "Reduce ALMA data with standard CASA pipeline subroutines and extract total CO(1-0) emission, moment maps, and PVDs as in H21.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "synthesised beam = 1'', spectral resolution ~ 10 km/s"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m0 = 0.3, Omega_Lambda = 0.7, Chabrier (2003) IMF"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "3D kinematic modelling of CO(1-0) data cubes",
+   "method": "Fit simulated 3D interferometric data cubes to ALMA CO(1-0) cubes using multiple candidate surface brightness profiles combined with an arctangent velocity curve.",
+   "software": [
+    "KinMS",
+    "KinMS_fitter",
+    "GAStimator"
+   ],
+   "key_parameters": [
+    "Position angle, RA centre, Dec centre, velocity centre, inclination, total flux, velocity dispersion, surface brightness parameters, arctan velocity parameters (V_max, R_turn); total flux fixed for GAMA228432, GAMA238125, and GAMA574200."
+   ],
+   "assumptions": [
+    "Gas is dynamically cold and relaxed, symmetric about spatial and spectral kinematic centres, following an arctangent rotation curve."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive stellar circular velocity curves via Multi-Gaussian Expansion (MGE)",
+   "method": "Mask dust regions by eye in HSC r-band images, fit MGE surface brightness models, circularise components for edge-on deprojection, and compute circular velocity curves with upper/lower limits by including/excluding unresolved central components.",
+   "software": [
+    "MgeFit",
+    "JamPy"
+   ],
+   "key_parameters": [
+    "Circularised MGE input [S_i, sigma_i * sqrt(q_obs,i), 1]"
+   ],
+   "assumptions": [
+    "Constant mass-to-light ratio (M/L) from Bell & de Jong (2001) colour calibration using SDSS DR16 g and r magnitudes (log M/L = -0.66 + 1.222(B-V) +/- 0.1 dex); dust acts as a foreground screen."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract and compare major- and minor-axis PVDs and compute V/sigma",
+   "method": "Rotate ALMA cubes and 2D SAMI maps by KinMS position angle and centre on kinematic centre; extract major-axis PVDs (2 kpc slit) and minor-axis PVDs (r_e slit), compute normalised data-model residuals, and calculate V/sigma from KinMS parameters.",
+   "software": [
+    "KinMS"
+   ],
+   "key_parameters": [
+    "Major axis slit width = 2 kpc; minor axis slit width = r_e"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Quantify velocity and flux asymmetries in major-axis PVDs",
+   "method": "For velocity asymmetry, binarise major-axis PVDs (1 where gas is present, 0 otherwise), rotate by 180 deg, and subtract from unrotated binary PVD. For flux asymmetry, compute sum(|PVD - PVD_rot|)/(2*sum(PVD)) and compare with PHANGS-ALMA CO(2-1) degraded to ~1 kpc resolution.",
+   "software": [],
+   "key_parameters": [
+    "180 deg rotation; degraded PHANGS-ALMA resolution ~ 1 kpc"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Model radial bar-flow in GAMA593680",
+   "method": "Re-model GAMA593680 in KinMS_fitter by adding a bi-symmetric radial bar-flow component (radial_barflow) to the two-Gaussian surface brightness profile and arctan rotation curve.",
+   "software": [
+    "KinMS",
+    "KinMS_fitter",
+    "GAStimator"
+   ],
+   "key_parameters": [
+    "4 additional parameters: bar radius (R_bar), bar phase (phi_bar), radial velocity (V_r), transverse velocity (V_t)"
+   ],
+   "assumptions": [
+    "Non-axisymmetric bi-symmetric bar-flow from galaxy centre to R_bar with fixed radial and transverse velocities."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "GAMA106389 integrated CO(1-0) S/N",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "106389 | 33 | gauss | 11"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA228432 integrated CO(1-0) S/N",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "228432 | 15 | exp + hole | 10"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA238125 integrated CO(1-0) S/N",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "238125 | 14 | exp | 9"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA31452 integrated CO(1-0) S/N",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "31452 | 19 | $\\ldots$ | $\\ldots$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA417678 integrated CO(1-0) S/N",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "417678 | 53 | gauss | 11"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA567624 integrated CO(1-0) S/N",
+   "value": "<3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "567624 | <3 | $\\ldots$ | $\\ldots$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA574200 integrated CO(1-0) S/N",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "574200 | 18 | exp | 9"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 integrated CO(1-0) S/N",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "593680 | 100 | gauss + gauss | 14"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA618906 integrated CO(1-0) S/N",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "618906 | 10 | exp | 10"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA106389 KinMS V_max",
+   "value": "211",
+   "uncertainty": "+6/-5",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 189 | [0, 1000] | $211\\substack{+6\\\\-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA106389 KinMS vel_disp",
+   "value": "14",
+   "uncertainty": "+3/-2",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10 | [0, 50] | $14\\substack{+3\\\\-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA228432 KinMS V_max",
+   "value": "147",
+   "uncertainty": "+30/-20",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 100 | [0, 1000] | $147\\substack{+30\\\\-20}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA228432 KinMS vel_disp",
+   "value": "13",
+   "uncertainty": "+/-2",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10 | [0,50] | $13 \\pm 2$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA238125 KinMS V_max",
+   "value": "124",
+   "uncertainty": "+/-10",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 122 | [0, 1000] | $124 \\pm 10$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA238125 KinMS vel_disp",
+   "value": "15",
+   "uncertainty": "+/-3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10 | [0,50] | $15 \\pm 3$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA417678 KinMS V_max",
+   "value": "195",
+   "uncertainty": "+/-5",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 179 | [0, 1000] | $195 \\pm 5$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA417678 KinMS vel_disp",
+   "value": "18",
+   "uncertainty": "+/-1",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10 | [0, 50] | $18 \\pm 1$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA574200 KinMS V_max",
+   "value": "162",
+   "uncertainty": "+30/-20",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 107 | [0, 1000] | $162\\substack{+30\\\\-20}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA574200 KinMS vel_disp",
+   "value": "17",
+   "uncertainty": "+4/-3",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10 | [0, 50] | $17\\substack{+4\\\\-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 KinMS V_max (pure rotation)",
+   "value": "256",
+   "uncertainty": "+12/-9",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 187 | [0, 1000] | $256\\substack{+12\\\\-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 KinMS vel_disp (pure rotation)",
+   "value": "39.7",
+   "uncertainty": "+1.0/-0.9",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10.0 | [0.0, 50.0] | $39.7\\substack{+1.0\\\\-0.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA618906 KinMS V_max",
+   "value": "196",
+   "uncertainty": "+/-4",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | 209 | [0, 1000] | $196 \\pm 4$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA618906 KinMS vel_disp",
+   "value": "16",
+   "uncertainty": "+5/-4",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | 10 | [0, 50] | $16\\substack{+5\\\\-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 radial bar-flow V_max",
+   "value": "189",
+   "uncertainty": "+3/-2",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{max}$ (${\\rm km~s}^{-1}$) | $189\\substack{+3\\\\-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 radial bar-flow vel_disp",
+   "value": "25",
+   "uncertainty": "+/-2",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm vel_{disp}$ (${\\rm km~s}^{-1}$) | $25 \\pm 2$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 radial bar-flow transverse velocity V_t",
+   "value": "112",
+   "uncertainty": "+/-4",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{t}$ (${\\rm km~s}^{-1}$) | $112 \\pm 4$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 radial bar-flow radial velocity V_r",
+   "value": "63",
+   "uncertainty": "+6/-5",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm V_{r}$ (${\\rm km~s}^{-1}$) | $63\\substack{+6\\\\-5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 radial bar-flow bar radius R_bar",
+   "value": "4.39",
+   "uncertainty": "+0.10/-0.09",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm R_{bar}$ ($''$) | $4.39\\substack{+0.10\\\\-0.09}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GAMA593680 radial bar-flow bar phase Phi_bar",
+   "value": "71",
+   "uncertainty": "+/-1",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "KinMS Parameters",
+     "quote": "$\\rm Phi_{bar}$ ($^\\circ$) | $71 \\pm 1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMA project code (the paper prints the placeholder S/JAO.ALMA#2011.0.01234.S; the archive links 2017.1.00601.S)",
+  "CASA version and imaging parameters (tclean settings, weighting, robust parameter, pixel size, masking thresholds, continuum subtraction) which are deferred to H21",
+  "Specific masking thresholds used when generating binary PVDs for the velocity asymmetry analysis",
+  "Individual galaxy redshifts/distances and M/L ratios derived from SDSS g-r colours"
+ ],
+ "missing_for_reproduction": [
+  "Actual ALMA project code in the text (placeholder 2011.0.01234.S is printed instead of 2017.1.00601.S)",
+  "Exact imaging and cube generation parameters (channel width, pixel scale, cleaning mask/threshold, weighting) which are deferred to H21",
+  "Exact BIC values for the competing surface brightness models for each galaxy",
+  "By-eye dust masks applied to the HSC r-band images prior to MgeFit",
+  "Masking thresholds used to define where gas is present when creating binary PVDs for the velocity asymmetry analysis"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Public data and open-source fitting tools (KinMS, KinMS_fitter, GAStimator, MgeFit, JamPy) with full tables of initial guesses, priors, and best-fit parameters in Appendix B, though raw cube imaging parameters are deferred to H21 and HSC dust masks are manual.",
+ "rediscovery_reason": "Public ALMA data cubes and open-source KinMS_fitter/GAStimator software with explicitly tabulated priors, initial guesses, and best-fit kinematic parameters for all seven galaxies provide a clear numeric benchmark.",
+ "source_card": "cards/2023MNRAS.518...13H/sonnet/card.md"
+}

@@ -1,0 +1,544 @@
+{
+ "bibcode": "2025ApJ...994..214T",
+ "title": "Dynamical Masses for 23 Pre-main-sequence Stars in Upper Scorpius: A Critical Test of Stellar Evolutionary Models",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ae0f18",
+ "arxiv_id": "2509.23001",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "Do pre-main-sequence evolutionary models reproduce Keplerian dynamical masses of K/M stars in Upper Sco (5-11 Myr), and does using dynamical instead of isochronal masses change the dust mass vs stellar mass slope?",
+ "alma_project_codes": [
+  "2019.1.00493.S"
+ ],
+ "data": {
+  "bands": "870 um (345 GHz) continuum with 12CO and 13CO J=3-2",
+  "arrays": "not stated",
+  "angular_resolution": "requested 0.27 arcsec; 12CO beams (0.31-0.32) x 0.23 arcsec, 13CO (0.34-0.35) x 0.26 arcsec, continuum 0.33 x 0.24 arcsec",
+  "sensitivity": "designed for 5 mJy/beam per ~0.5 km/s channel and 55 uJy/beam continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectral types and Teff for the targets (Teff from spectral-type conversion)",
+    "evidence": [
+     {
+      "loc": "The Sample",
+      "quote": "The spectral types and T$_{eff}$ come from"
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld2016), and references therein; J16113134-1838259 A & B from (cite: Eisner2005)"
+  },
+  {
+   "what": {
+    "value": "Luminosities of J16113134-1838259 A & B",
+    "evidence": [
+     {
+      "loc": "The Sample",
+      "quote": "for these sources, luminosities come from"
+     }
+    ]
+   },
+   "citation": "(cite: Eisner2005)"
+  },
+  {
+   "what": {
+    "value": "Candidate companions inside the continuum disks of several targets",
+    "evidence": [
+     {
+      "loc": "Impacts of Binarity and Methodology on the Observed Trends",
+      "quote": "In all three cases, the candidate companion lies within the radius of the continuum disk."
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld2019_binaries)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity of 2.7 cm^2/g at 345 GHz (2.3 at 230 GHz scaled as nu^0.4)",
+    "evidence": [
+     {
+      "loc": "M$_{disk}$ vs. M$_{\\star}$",
+      "quote": "We assume a dust opacity of $\\kappa_{\\nu}$ $=$ 2.7 cm$^2$ g$^{-1}$ at 345 GHz"
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld2016)"
+  },
+  {
+   "what": {
+    "value": "Isochronal stellar mass and disk mass-stellar mass slope of the comparison sample (slope 1.67+-0.37)",
+    "evidence": [
+     {
+      "loc": "M$_{disk}$ vs. M$_{\\star}$",
+      "quote": "find a slope of 1.67$\\pm$0.37 for the older Upper Scorpius region"
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld2016); (cite: Pascucci2016)"
+  },
+  {
+   "what": {
+    "value": "Five sets of PMS evolutionary tracks used to derive isochronal masses (BHAC15, PARSEC v1.1, PARSEC v1.2S, Feiden 2016 non-magnetic and magnetic)",
+    "evidence": [
+     {
+      "loc": "Stellar Evolutionary Models Considered",
+      "quote": "five sets of evolutionary models: the BHAC15 tracks of"
+     }
+    ]
+   },
+   "citation": "(cite: Baraffe2015); (cite: Bressan2012); (cite: Chen2014); (cite: Feiden2016)"
+  },
+  {
+   "what": {
+    "value": "Gaia DR3 and ground-based optical/IR catalog photometry for the BT-Settl SED fits",
+    "evidence": [
+     {
+      "loc": "Additional Figures for SED and pdspy Fitting",
+      "quote": "We retrieve all APASS data from the APASS Catalog for Data Release 10"
+     }
+    ]
+   },
+   "citation": "(cite: Henden2019_apass_dr10); (cite: Flewelling2020_panstarrs); (cite: DENIS2005); (cite: Skrutskie2006)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the ALMA data",
+   "method": "ALMA pipeline calibration in CASA; pipeline continuum images used; line cubes resampled to 0.4 km/s with cvel2 and imaged with tclean (Briggs, robust 0.5 for most sources, multiscale and robust 0.0-1.0 for extended sources)",
+   "software": [
+    "CASA",
+    "cvel2",
+    "tclean"
+   ],
+   "key_parameters": [
+    "velocity resolution 0.4 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect lines and continuum and characterise morphology",
+   "method": "CO detection = >5 sigma in at least two consecutive channels; continuum detection at 3 sigma; 2D Gaussian imfit to moment 0 and continuum images; compare continuum and CO position angles to test for outflow contamination",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "continuum detection threshold 3 sigma (~0.30-0.50 mJy/beam)"
+   ],
+   "assumptions": [
+    "~90 degree misalignment of continuum and CO major axes is the outflow signature"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive stellar luminosities from SED fits",
+   "method": "Fit optical-infrared photometry to BT-Settl models over a grid in A_V and theta=R*/d with Gaia distances; L* from integrated best-fit SED",
+   "software": [],
+   "key_parameters": [
+    "log(g) 3.0-4.5; A_V 0 to 4.5 in steps of 0.1"
+   ],
+   "assumptions": [
+    "Solar metallicity, no alpha enhancement; extinction law of Wang & Chen 2019; extra 10% flux uncertainty for variability"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit Keplerian disk models to the CO visibilities with MCMC",
+   "method": "pdspy MCMC fit in visibility space of an exponentially tapered, hydrostatic, vertically isothermal flared disk (15 free parameters) with RADMC-3D models, galario for Fourier transform and emcee sampler",
+   "software": [
+    "pdspy",
+    "radmc3d",
+    "galario",
+    "emcee"
+   ],
+   "key_parameters": [
+    "200 walkers; minimum burn-in 1000 steps; convergence evaluated from 2500 steps",
+    "Position offsets restricted to initial imfit guess +-0.25 arcsec; V_LSR +-1.2 km/s (+-2.4 km/s for low S/N)",
+    "Temperature exponent q range expanded from [0,1] to [0,2] for sources piling up at q = 1"
+   ],
+   "assumptions": [
+    "Fixed CO/H2 = 1e-4 and 13CO/H2 = 10^-5.3; mean molecular weight 2.37; hydrostatic equilibrium; vertically isothermal disk",
+    "Pure Keplerian rotation (with pressure effects through the flared model); the CO traces disk gas, not outflows"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Choose best-fit values and uncertainties from the chains",
+   "method": "Report the minimum-chi^2 fit with uncertainties from the min/max parameter values within Delta chi^2 = 15.975 over the last 1000 steps, instead of median and standard deviation",
+   "software": [
+    "pdspy"
+   ],
+   "key_parameters": [
+    "Delta chi^2 = 15.975 (1 sigma, 15 parameters)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive isochronal masses from five evolutionary model sets",
+   "method": "Draw normal distributions in L* and Teff, interpolate through each track set with pdspy.stars, and take the median and scaled MAD of the mass distribution",
+   "software": [
+    "pdspy.stars"
+   ],
+   "key_parameters": [
+    "Model sets: BHAC15, PARSEC v1.1, PARSEC v1.2S, Feiden (2016) non-magnetic and magnetic"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compare dynamical and isochronal masses",
+   "method": "Orthogonal distance regression of M_iso vs M_dyn, mass-ratio statistics, Spearman correlation of ratio with M_dyn, and two-sample KS tests, for the full sample and for M_dyn <= 1 Msun",
+   "software": [
+    "scipy.odr"
+   ],
+   "key_parameters": [
+    "Significance threshold p < 6.3e-5 (4 sigma) for Spearman correlation",
+    "Mass-limited sample M_dyn <= 1.0 Msun (excludes five sources)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Derive disk dust masses and the Mdust-Mstar relation",
+   "method": "Optically thin dust mass from the 870 um flux density, Gaia distance, opacity and dust temperature; ODR fit of log(Mdisk) vs log(Mstar) for dynamical and BHAC15 masses",
+   "software": [
+    "CASA imfit",
+    "scipy.odr"
+   ],
+   "key_parameters": [
+    "kappa = 2.7 cm^2/g at 345 GHz; T_dust = 20 K or 25 K (L*/Lsun)^0.25"
+   ],
+   "assumptions": [
+    "Optically thin dust emission at 870 um with the stated opacity and the two T_dust prescriptions (gas-to-dust ratio not applied; dust masses only)"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Test for bias from binaries and inclination",
+   "method": "Recompute all statistics without the five known or candidate binaries; compare M* and i with Barenfeld et al. 2017 using Spearman, medians and KS tests",
+   "software": [
+    "scipy.odr"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dynamical stellar mass, J16090075-1908526 (12CO fit)",
+   "value": "0.71",
+   "uncertainty": "+0.03/-0.03",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J16090075-1908526 | 4004 | 0.71$^{+0.03}_{-0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical stellar mass, J16082324-1930009 (12CO fit)",
+   "value": "0.91",
+   "uncertainty": "+0.04/-0.02",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J16082324-1930009 | 6024 | 0.91$^{+0.04}_{-0.02}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical stellar mass, J16020757-2257467 (12CO fit)",
+   "value": "0.53",
+   "uncertainty": "+0.05/-0.04",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J16020757-2257467 | 3502 | 0.53$^{+0.05}_{-0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical stellar mass, J16035793-1942108 (12CO fit)",
+   "value": "0.56",
+   "uncertainty": "+0.05/-0.04",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "J16035793-1942108 | 7369 | 0.56$^{+0.05}_{-0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical stellar mass, J16035767-2031055 and J16142029-1906481",
+   "value": "4.0 and 1.32",
+   "uncertainty": "+4.0/-2.0 and +-0.06",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "J16035767-2031055 and J16142029-1906481",
+     "quote": "Our Keplerian modeling instead returns stellar masses of 4.0$^{+4.0}_{-2.0}$ M$_{\\odot}$ and 1.32$^{+0.06}_{-0.06}$ M$_{\\odot}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of J16113134-1838259 B (13CO fit)",
+   "value": "1.53",
+   "uncertainty": "+0.14/-0.12",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "J16113134-1838259 B",
+     "quote": "(M$_{\\star}$ $=$ 1.53$^{+0.14}_{-0.12}$ M$_{\\odot}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on mass of J15562477-2225552",
+   "value": "<= 1.45",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "J15562477-2225552",
+     "quote": "For this source, we report the mass as an upper limit: M$_{\\star}$ $\\leq$ 1.45M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum and maximum dynamical masses",
+   "value": "0.13 and 4.0",
+   "uncertainty": "+0.07/-0.05 and +4.0/-2.0",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "a minimum and maximum mass of 0.13$^{+0.07}_{-0.05}$ M$_{\\odot}$ and 4.0$^{+4.0}_{-2.0}$ M$_{\\odot}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median and mean dynamical mass",
+   "value": "0.51 and 0.76",
+   "uncertainty": "+-0.26 and +-0.84 (standard deviation and scaled MAD)",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The sample median and mean masses are M$_{\\star}$ = 0.51$\\pm$0.26 M$_{\\odot}$ and M$_{\\star}$ = 0.76$\\pm$0.84 M$_{\\odot}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median lower- and upper-bound mass uncertainty",
+   "value": "0.06 (16%) and 0.09 (19%)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The median lower-bound uncertainty is 0.06 M$_{\\odot}$ (or, 16% of the mass of a given source), and the median upper-bound uncertainty is 0.09 M$_{\\odot}$ (or, 19% of the source mass)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median standard-deviation-based vs Delta chi^2-based log(M*) uncertainties",
+   "value": "9% vs 17% (lower) and 30% (upper)",
+   "uncertainty": "+-7%, +-11%, +-25%",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparing Methods of Deriving Parameter Values and Uncertainties",
+     "quote": "The median standard deviation-based uncertainty in log(M$_{\\star}$) is 9$\\pm$7%, whereas the median lower- and upper-bound $\\Delta\\chi^2$ uncertainties are 17$\\pm$11% and 30$\\pm$25%, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total steps to convergence (most sources)",
+   "value": "~6500",
+   "uncertainty": "not stated",
+   "units": "steps",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fitting Procedure",
+     "quote": "For most sources, the walkers meet the convergence criteria within $\\sim$6500 total steps."
+    }
+   ]
+  },
+  {
+   "quantity": "Median and mean dynamical mass excess over Barenfeld et al. 2016 isochronal masses",
+   "value": "70% and 105% larger",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "We find that our median and mean dynamical masses are 70% and 105% larger, respectively, than the isochronal masses derived by (cite: Barenfeld2016) for these same sources."
+    }
+   ]
+  },
+  {
+   "quantity": "ODR slope and intercept, Feiden magnetic M_iso vs M_dyn (M_dyn <= 1 Msun)",
+   "value": "slope 1.0, intercept 0.03",
+   "uncertainty": "+-0.1, +-0.05",
+   "units": "dimensionless (slope), Msun (intercept)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparing Dynamical and Isochronal Masses",
+     "quote": "The ODR best-fit line (slope = 1.0$\\pm$0.1, intercept = 0.03$\\pm$0.05)"
+    }
+   ]
+  },
+  {
+   "quantity": "ODR slope and intercept, PARSEC v1.2S M_iso vs M_dyn (M_dyn <= 1 Msun)",
+   "value": "slope 0.6, intercept 0.2",
+   "uncertainty": "+-0.1, +-0.0",
+   "units": "dimensionless (slope), Msun (intercept)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparing Dynamical and Isochronal Masses",
+     "quote": "slope = 0.6$\\pm$0.1, intercept = 0.2$\\pm$0.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Median M_dyn - M_iso, BHAC15 (M_dyn <= 1 Msun)",
+   "value": "+0.13",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 7 notes",
+     "quote": "$+$0.13 M$_{\\odot}$ for BHAC15"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho of M_iso/M_dyn vs M_dyn, PARSEC v1.2S",
+   "value": "-0.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparing Dynamical and Isochronal Masses",
+     "quote": "Both the highly-negative correlation coefficient ($\\rho$ $=$ -0.84)"
+    }
+   ]
+  },
+  {
+   "quantity": "KS statistic D, Feiden magnetic tracks vs dynamical masses (M_dyn <= 1 Msun)",
+   "value": "0.22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Comparing Dynamical and Isochronal Masses",
+     "quote": "the magnetic tracks of (cite: Feiden2016) show the smallest difference with our dynamical masses (D$=$0.22)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(Mdisk)-log(M*) relation, dynamical masses, L*-scaled T_dust",
+   "value": "slope 2.8, intercept 1.0",
+   "uncertainty": "+-0.6, +-0.3",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "M$_{disk}$ vs. M$_{\\star}$",
+     "quote": "log(M_{disk}) = (2.8\\pm0.6)log(M_{\\star}) + (1.0\\pm0.3)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(Mdisk)-log(M*) relation, BHAC15 masses, L*-scaled T_dust",
+   "value": "slope 3.3, intercept 1.9",
+   "uncertainty": "+-1.2, +-0.7",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "M$_{disk}$ vs. M$_{\\star}$",
+     "quote": "log(M_{disk}) = (3.3\\pm1.2)log(M_{\\star}) + (1.9\\pm0.7)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(Mdisk)-log(M*) relation, dynamical masses, T_dust = 20 K",
+   "value": "slope 2.8, intercept 0.9",
+   "uncertainty": "+-0.5, +-0.2",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "M$_{disk}$ vs. M$_{\\star}$",
+     "quote": "log(M_{disk}) = (2.8\\pm0.5)log(M_{\\star}) + (0.9\\pm0.2)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(Mdisk)-log(M*) relation, BHAC15 masses, T_dust = 20 K",
+   "value": "slope 3.4, intercept 1.7",
+   "uncertainty": "+-0.9, +-0.5",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "M$_{disk}$ vs. M$_{\\star}$",
+     "quote": "log(M_{disk}) = (3.4\\pm0.9)log(M_{\\star}) + (1.7\\pm0.5)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used for calibration and imaging",
+  "Flux calibrator and flux-scale uncertainty for the continuum flux densities",
+  "cvel2 parameters (start, width, rest frequency, output frame) and whether continuum subtraction was applied before modelling",
+  "tclean cell size, image size, masks, niter/threshold and multiscale scales; which sources used which robust value",
+  "How the line data were converted to the visibilities fit by pdspy (uv averaging, weights, spectral windows, channel selection)",
+  "pdspy version and RADMC-3D/galario grid, image and sampling settings used in the models",
+  "Per-source initial values and ranges for V_LSR, position, PA, q, and the exact 'by-eye' V_LSR estimates",
+  "Channel and uv-range flags applied for J16113134-1838259 B and J16154416-1921171 beyond the V_LSR +-2.2 km/s flag",
+  "Gaia data release used for the parallaxes in Table 1",
+  "Aperture sizes for the manual aperture photometry of the dagger sources in Table 8",
+  "Exact IMF parameterization used to seed the stellar-mass walkers",
+  "Full machine-readable fit tables are 'in the online material' and not in the text"
+ ],
+ "missing_for_reproduction": [
+  "CASA and pipeline versions, imaging scripts and masks",
+  "The conversion of the 0.4 km/s cubes into pdspy input visibilities and per-source ranges",
+  "Per-source flagging for J16113134-1838259 B and J16154416-1921171, and the by-eye V_LSR estimates",
+  "Full parameter tables (online material only) and photometric aperture details for dagger sources",
+  "Dependence on the unreleased companion paper (Towner et al. 2025b) for ages"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, pdspy settings, priors, ranges, walkers, burn-in, convergence rule and statistical tests are given and numeric results are tabulated, but CASA/pdspy versions, imaging scripts, uv-data preparation and per-source adjustments are missing, and a full MCMC rerun of 23 radiative-transfer fits is expensive.",
+ "rediscovery_reason": "Data come from a Cycle 7 program (2019.1.00493.S), the code is open and the recipe and numeric masses are tabulated; a reproducer could redo a handful of well-behaved sources, though full reproduction is compute-heavy and some per-source settings are not stated.",
+ "source_card": "cards/2025ApJ...994..214T/sonnet/card.md"
+}

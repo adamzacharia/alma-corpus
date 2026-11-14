@@ -1,0 +1,331 @@
+{
+ "bibcode": "2017ApJ...850....1R",
+ "title": "Rise of the Titans: A Dusty, Hyper-luminous “870 μm Riser” Galaxy at z ∼ 6",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa8ccf",
+ "arxiv_id": "1705.09660",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is ADFS-27, an extremely red '870 um riser' selected from Herschel/SPIRE and LABOCA, a very high-redshift dusty starburst, and what are its redshift, gas content, and merger/starburst properties?",
+ "alma_project_codes": [
+  "2013.1.00001.S",
+  "2016.1.00613.S"
+ ],
+ "data": {
+  "bands": "870 um continuum (343 GHz LO); 3 mm scan 84.077–113.280 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "870 um: 0.20x0.17 (natural), 0.17x0.14 arcsec (robust 0.5); 3 mm continuum: 3.13x2.36 and 2.48x1.86 arcsec",
+  "sensitivity": "870 um: 99 and 108 uJy/beam; 3 mm continuum: 11.2 and 13.6 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Average SMG CO(6-5)/(5-4) ratio r65=0.66 for comparison",
+    "evidence": [
+     {
+      "loc": "Line Emission",
+      "quote": "average value for SMGs within the uncertainties ($r_{65}$=0.66; (cite: bothwell13))"
+     }
+    ]
+   },
+   "citation": "(cite: bothwell13)"
+  },
+  {
+   "what": {
+    "value": "Average SMG r51=0.39",
+    "evidence": [
+     {
+      "loc": "Line Emission",
+      "quote": "assuming the average CO($J$=5$\\to$4)/CO($J$=1$\\to$0) line brightness temperature ratio for SMGs of $r_{51}$=0.39 (cite: cw13)"
+     }
+    ]
+   },
+   "citation": "(cite: cw13)"
+  },
+  {
+   "what": {
+    "value": "Dust absorption coefficient 2.64 m2/kg at 125 um",
+    "evidence": [
+     {
+      "loc": "3.1 Spectral Energy Distribution Properties",
+      "quote": "Assuming a dust absorption coefficient of $\\kappa_\\nu$=2.64 m$^2$kg$^{-1}$ at 125 $\\mu$m (cite: dunne03)"
+     }
+    ]
+   },
+   "citation": "(cite: dunne03)"
+  },
+  {
+   "what": {
+    "value": "HFLS3 MAGPHYS-based SED template used for stellar mass limit",
+    "evidence": [
+     {
+      "loc": "3.1 Spectral Energy Distribution Properties",
+      "quote": "normalizing the MAGPHYS-based SED template of HFLS3 in Fig. [4](#f4) to the observed-frame 4.5 $\\mu$m limit"
+     }
+    ]
+   },
+   "citation": "(cite: cooray14)"
+  },
+  {
+   "what": {
+    "value": "Confusion noise 5.9, 6.3, 6.8 mJy at 250, 350, 500 um",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "which is 5.9, 6.3, and 6.8 mJy (1$\\sigma$) at 250, 350, and 500 $\\mu$m, respectively (cite: nguyen10)"
+     }
+    ]
+   },
+   "citation": "(cite: nguyen10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum and cubes",
+   "method": "CLEAN with natural and robust 0.5 weighting in CASA",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities and sizes",
+   "method": "Two-dimensional Gaussian fitting of the two components",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Find lines and measure redshift and line properties",
+   "method": "Search 3 mm sweep; Gaussian fits to line profiles for flux, FWHM; unique redshift solution",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit SED for dust temperature, L_IR, dust mass, SFR",
+   "method": "Modified blackbody plus blue power law, optically thin and general (optical depth) models, affine-invariant MCMC, 500 um flux as normalization",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=2.64 m2/kg at 125 um; Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular gas mass, gas-to-dust, depletion time",
+   "method": "L'CO(1-0) from CO(5-4) with r51=0.39, times alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 0.8 Msun (K km/s pc2)^-1; r51=0.39"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive surface densities, dynamical masses, alpha_CO limit",
+   "method": "Sizes and flux ratio from 870 um; isotropic virial estimator with radii x1.5; common linewidth",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "100% of dynamical mass is molecular gas for alpha_CO upper limit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Redshift",
+   "value": "5.6550",
+   "uncertainty": "0.0001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Line Emission",
+     "quote": "we obtain a unique (median) redshift solution at $z$=5.6550$\\pm$0.0001"
+    }
+   ]
+  },
+  {
+   "quantity": "870 um ALMA flux density",
+   "value": "28.1",
+   "uncertainty": "0.9",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Emission",
+     "quote": "(0.512$\\pm$0.023) and (28.1$\\pm$0.9) mJy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum flux density",
+   "value": "0.512",
+   "uncertainty": "0.023",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Emission",
+     "quote": "(0.512$\\pm$0.023) and (28.1$\\pm$0.9) mJy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) integrated flux",
+   "value": "2.68",
+   "uncertainty": "0.20",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| CO($J$=5$\\to$4)  | 2.68 $\\pm$ 0.20 | 11.96 $\\pm$ 0.92 | 7.32 $\\pm$ 0.56 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) integrated flux",
+   "value": "2.82",
+   "uncertainty": "0.34",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| CO($J$=6$\\to$5)  | 2.82 $\\pm$ 0.34 | 8.73 $\\pm$ 1.07 | 9.24 $\\pm$ 1.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "r65",
+   "value": "0.73",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Line Emission",
+     "quote": "$r_{65}$=0.73$\\pm$0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR",
+   "value": "2.42e13",
+   "uncertainty": "+0.48/-0.47 e13",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Spectral Energy Distribution Properties",
+     "quote": "$L_{\\rm\n  IR}$=2.42$^{+0.48}_{-0.47}$$\\times$10$^{13}$ $L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust (general fit)",
+   "value": "55.3",
+   "uncertainty": "+7.8/-7.6",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Spectral Energy Distribution Properties",
+     "quote": "$T_{\\rm\n  dust}$=55.3$^{+7.8}_{-7.6}$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "4.4e9",
+   "uncertainty": "+2.3/-2.4 e9",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Spectral Energy Distribution Properties",
+     "quote": "$M_{\\rm\n  dust}$=4.4$^{+2.3}_{-2.4}$$\\times$10$^9$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass",
+   "value": "2.5e11 (alpha_CO/0.8)(0.39/r51)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular Gas Mass",
+     "quote": "$M_{\\rm\n  gas}$=2.5$\\times$10$^{11}$ $(\\alpha_{\\rm\n  CO}/0.8)\\,(0.39/r_{51})$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Component separation",
+   "value": "1.49",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum Emission",
+     "quote": "separated by 1.49$''$ in the high-resolution 870 $\\mu$m data"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR surface densities N and S",
+   "value": "730 and 750",
+   "uncertainty": "not stated",
+   "units": "Msun/yr/kpc2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 Star Formation Rate and Gas Surface Densities",
+     "quote": "SFR surface densities of $\\Sigma_{\\rm SFR}$=730 and 750 $M_{\\odot}$ yr$^{-1}$ kpc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical masses N and S",
+   "value": "3.25e11 and 3.66e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 Star Formation Rate and Gas Surface Densities",
+     "quote": "We find $M_{\\rm dyn}^{\\rm N}$=3.25$\\times$10$^{11}$ $M_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel selection and continuum subtraction approach",
+  "CLEAN threshold, masking, cell and image size",
+  "Self-calibration status and whether pipeline or manual calibration was used",
+  "Rest frequencies used for the lines",
+  "MCMC priors, sampler settings and SFR/L_IR conversion",
+  "Details of Gaussian fitting for component flux densities and sizes",
+  "Method to derive redshift solution and dynamical mass numbers (adopted linewidth)"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters and masks",
+  "Line-free channel selection",
+  "MCMC priors/settings",
+  "Exact flux extraction procedure for components"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data IDs, CASA version, weighting and beams given, but imaging and fitting details sparse.",
+ "rediscovery_reason": "Archive ALMA data, numeric results (flux, line fluxes, redshift) can be re-measured, though SED and mass steps need assumptions.",
+ "source_card": "cards/2017ApJ...850....1R/sonnet/card.md"
+}

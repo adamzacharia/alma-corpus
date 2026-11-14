@@ -1,0 +1,192 @@
+{
+ "bibcode": "2018MNRAS.475.5322S",
+ "title": "Deuterated formaldehyde in the low-mass protostar HH212",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty190",
+ "arxiv_id": "1801.06699",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Is HDCO emitted from the inner region of HH212, what does its distribution and kinematics say about its origin, and how does it compare with CH3OH, C34S and C17O?",
+ "alma_project_codes": [
+  "2011.0.00647.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.65\" x 0.47\" at PA ~49 deg",
+  "sensitivity": "3-4 mJy/beam in 0.43 km/s channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic data from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "molecular data has been taken from the CDMS (cite: muller01; muller05) and JPL molecular database (cite: pic1998)."
+     }
+    ]
+   },
+   "citation": "(cite: muller01; muller05; pic1998)"
+  },
+  {
+   "what": {
+    "value": "CH3CHO temperature 87±47 K",
+    "evidence": [
+     {
+      "loc": "3.1 HDCO emission",
+      "quote": "from optically thin LTE analysis of CH$_3$CHO they suggested a temperature of $87\\pm47$K"
+     }
+    ]
+   },
+   "citation": "(cite: code2016)"
+  },
+  {
+   "what": {
+    "value": "Methanol D/H 2.4±0.4e-2",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Methanol deuteration (D/H) for the HH212 is 2.4$\\pm 0.4 \\times 10^{-2}$ as reported by (cite: bian2017)."
+     }
+    ]
+   },
+   "citation": "(cite: bian2017)"
+  },
+  {
+   "what": {
+    "value": "X_CO/X_C17O = 1792",
+    "evidence": [
+     {
+      "loc": "3.4 disk mass",
+      "quote": "we use $X_{CO}/X_{C^{17}O}$=1792 (cite: wilson1994)"
+     }
+    ]
+   },
+   "citation": "(cite: wilson1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes",
+   "method": "Continuum subtraction in visibilities and Briggs-weighted CLEAN",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Channel maps and centroid positions of velocity channels",
+   "method": "Compare HDCO with C34S, CH3OH and C17O via channel maps and emission centroids per velocity channel",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Column densities of HDCO and C17O",
+   "method": "Optically thin LTE column density from integrated intensity over 0.5\" circular regions, with a range of Trot",
+   "software": [],
+   "key_parameters": [
+    "Trot = 20, 40, 90, 160, 300 K",
+    "source size 0.2\" for beam dilution"
+   ],
+   "assumptions": [
+    "Optically thin, LTE"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Disk mass from C17O and from continuum",
+   "method": "C17O N to H2 via X_CO/X_C17O=1792 and X_CO~1e-4, then mass from disk geometry; cross-check with optically thin dust continuum at 90 K",
+   "software": [],
+   "key_parameters": [
+    "disk radius 90 AU, H~40 AU"
+   ],
+   "assumptions": [
+    "beta=1, kappa0=0.035 g cm-2 at 850 um, Tdust=90 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HDCO column density, region M, Trot=160 K",
+   "value": "5.6e14",
+   "uncertainty": "22.8%",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (column densities)",
+     "quote": "| M       | 12.3            | 5.6             | 3.1             | 2.0             | ..              | 22.8% |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass from C17O",
+   "value": "0.016",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we derive the disk mass to be 0.016 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass from continuum (90 K)",
+   "value": "0.0159",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "With T$_{dust}$=90 K, the disk mass is 0.0159 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "HDCO abundance",
+   "value": "~1e-10",
+   "uncertainty": "not stated",
+   "units": "relative to H2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "Considering the H$_2$ column density $\\sim 10^{24}$cm$^{-2}$ (see next section), X$_{HDCO} \\sim 10^{-10}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "tclean parameters other than robust (cell, image size, masks, niter, threshold)",
+  "line-free channels for continuum subtraction",
+  "how the continuum flux for the continuum disk mass was measured",
+  "integration windows and Gaussian fit details for column densities",
+  "partition function values used",
+  "method for centroid determination",
+  "region definitions beyond 0.5 arcsec circles"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and clean parameters",
+  "line-free channels",
+  "regions' exact definitions and integration ranges",
+  "partition functions used"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and a simple LTE recipe with Trot grid, but imaging details and region/integration choices are missing.",
+ "rediscovery_reason": "Public archival data, stated line frequencies and formulas, numeric column densities in a table.",
+ "source_card": "cards/2018MNRAS.475.5322S/sonnet/card.md"
+}

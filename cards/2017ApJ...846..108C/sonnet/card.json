@@ -1,0 +1,1408 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...846..108C",
+  "title": "A Spatially Resolved Study of Cold Dust, Molecular Gas, H II Regions, and Stars in the z = 2.12 Submillimeter Galaxy ALESS67.1",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Chen, Chian-Chou",
+  "n_authors": 20,
+  "arxiv_id": "1708.08937",
+  "doi": "10.3847/1538-4357/aa863a",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00307.S",
+   "2013.1.00470.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present detailed studies of a $z=2.12$ submillimeter galaxy, ALESS67.1, using sub-arcsecond resolution ALMA, AO-aided VLT/SINFONI, and *HST*/CANDELS data"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "ALESS67.1",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 2.1230",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "ALESS67.1 has a spectroscopic redshift at $z_{\\rm spec}=2.1230$ (cite: Danielson:2017aa)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Danielson et al. 2017 spectroscopic redshift",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "ALESS67.1 has a spectroscopic redshift at $z_{\\rm spec}=2.1230$ (cite: Danielson:2017aa)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the sizes, spatial distributions and kinematics of dust, CO gas, H II regions and stars compare in the z=2.12 SMG ALESS67.1, and what does this imply for alpha_CO, IRX-beta and the Schmidt-Kennicutt relation?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find a factor of 4–6 smaller sizes in dust continuum compared to all the other tracers, including $^{12}$CO, and UV and H$\\alpha$ emission is significantly offset from the dust continuum."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00307.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870 μm continuum",
+       "quote": "as part of a Cycle 1 project #2012.1.00307.S (PI: J. Hodge)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00470.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "as part of project 2013.1.00470.S (PI: J. Hodge)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (870 μm continuum, 344 GHz); Band 3 (CO 3-2)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "the Band 7 data were centered on 344 GHz ($\\sim$870 $\\mu$m)"
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "The data were taken in Band 3"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 7 single continuum mode, 4x128 channels over 8 GHz; Band 3 FDM lowest-resolution mode, 8 channels averaged, CO in upper sideband plus three continuum basebands",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "We used the “single continuum” spectral mode, with $4\\times128$ dual polarization channels over the 8 GHz bandwidth."
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "We used the lowest-resolution FDM mode and averaged over eight channels"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "345.7959899 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "the expected frequency of the redshifted CO($J$=3-2) line ($\\nu_{\\rm rest}$ = 345.7959899 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Band 7: C32-6, 46 antennas; Band 3: intermediate configuration, 36 antennas",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "The ALMA data were obtained using 46 antennas in an extended configuration (C32-6; maximum baseline of $\\sim$1.6 km)."
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "The observations were carried out with 36 antennas in an intermediate configuration (maximum baseline 1.6 km)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 7 beam 0.18''x0.15''; CO beam 0.57''x0.49''",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "The FWHM of the synthesized beam is 0$\\ensuremath{''}$18$\\times$0$\\ensuremath{''}$15"
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "has an average synthesized beam of 0$\\ensuremath{''}$57$\\times$0$\\ensuremath{''}$49"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "4.7'' (Band 3)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "the maximum recoverable scale is 4.7$''$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Band 7 rms 0.07 mJy/beam; CO 0.25 mJy/beam per 48 MHz channel",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "The r.m.s. noise of the dirty map is 1 $\\sigma=0.07$ mJy beam$^{-1}$."
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "The sensitivity of the CO cube is 0.25 mJy beam$^{-1}$ per 48MHz channel."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 7 about eight minutes total; Band 3 29 minutes on target",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "the total integration time was approximately eight minutes"
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "the total integration time on the target was 29 minutes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "11 Aug 2015 (Band 7); 6 Sep 2015 (Band 3)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA 870 μm continuum",
+      "quote": "The ALMA Band 7 data were taken on the 11$^{\\rm th}$ August 2015"
+     },
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "The ALMA data were taken on the 6$^{\\rm th}$ September 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI J. Hodge projects",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA 12CO J=3–2",
+      "quote": "as part of project 2013.1.00470.S (PI: J. Hodge)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLT/SINFONI",
+     "provided": {
+      "value": "AO-aided IFU Halpha, [NII], [SII] maps and kinematics",
+      "evidence": [
+       {
+        "loc": "2.3 VLT/SINFONI",
+        "quote": "AO-assisted, IFU observations of the strong optical lines in ALESS 67.1 were taken with the SINFONI IFU between 2013 January and October."
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST/CANDELS",
+     "provided": {
+      "value": "optical/NIR imaging of stellar continuum",
+      "evidence": [
+       {
+        "loc": "2.4 HST optical/NIR imaging",
+        "quote": "The optical and near-infrared (NIR) images from the ACS and WFC3 cameras mounted on the *Hubble Space Telescope* (*HST*) were taken as part of the Cosmic Assembly Near-IR Deep Extragalactic Legacy Survey"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ATCA",
+     "provided": {
+      "value": "CO(1-0) luminosity (Huynh et al. 2017)",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA 12CO J=3–2",
+        "quote": "(cite: Huynh:2017aa) have recently conducted $^{12}$CO(1-0) observations on ALESS67.1 using the Australia Telescope Compact Array (ATCA)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO(1-0) luminosity (9.9±1.8)e10 K km/s pc^2",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA 12CO J=3–2",
+        "quote": "they detect strong $^{12}$CO(1-0) emission with a total flux of $L^\\prime_{\\rm CO(1-0)}=(9.9\\pm1.8)\\times10^{10}$ K km s$^{-1}$ pc$^2$"
+       }
+      ]
+     },
+     "citation": "Huynh et al. 2017 (cite: Huynh:2017aa)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass ~2e11 Msun",
+      "evidence": [
+       {
+        "loc": "4.2 alpha_CO",
+        "quote": "The stellar mass is estimated to be $M_{\\rm star}=2\\times10^{11}$M$_\\odot$ (cite: Simpson:2014aa; da-Cunha:2015aa)."
+       }
+      ]
+     },
+     "citation": "(cite: Simpson:2014aa; da-Cunha:2015aa)"
+    },
+    {
+     "what": {
+      "value": "Dust mass of ALESS67.1 used in gas-to-dust method",
+      "evidence": [
+       {
+        "loc": "4.2 alpha_CO",
+        "quote": "By adopting the dust mass of ALESS67.1 derived by (cite: Swinbank:2014aa)"
+       }
+      ]
+     },
+     "citation": "(cite: Swinbank:2014aa)"
+    },
+    {
+     "what": {
+      "value": "Infrared luminosity (L_IR 10^12.7 Lsun) from deblended Herschel data",
+      "evidence": [
+       {
+        "loc": "4.4 IRX-β",
+        "quote": "The infrared luminosity is adopted from (cite: Swinbank:2014aa), which uses deblended *Herschel* data."
+       }
+      ]
+     },
+     "citation": "(cite: Swinbank:2014aa)"
+    },
+    {
+     "what": {
+      "value": "Rest-frame UV fluxes from 3D-HST catalogue",
+      "evidence": [
+       {
+        "loc": "4.4 IRX-β",
+        "quote": "the multi-wavelength photometry and rest-frame UV flues at 1400, 1700, 2200, 2700, 2800 Å  are provided in (cite: Skelton:2014aa)"
+       }
+      ]
+     },
+     "citation": "(cite: Skelton:2014aa)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Band 3: standard pipeline calibration with extra flags; Band 7: not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "Data were reduced using casa version 4.3.1 and the standard pipeline calibration, with some additional flags applied to address bad antennas or times."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.3.1 (calibration), 4.7.0 (imaging) for Band 3",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "Imaging was carried out using casa version 4.7.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Band 7: J0334–401 (flux); bandpass J0522–3627; phase J0348–2749",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870 μm continuum",
+       "quote": "The bandpass, phase, and flux calibrators were J0522–3627, J0348–2749, and J0334–401, respectively"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting (both bands)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870 μm continuum",
+       "quote": "The *uv*–data were inverse Fourier–transformed using natural weighting to produce the dirty continuum image"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "tapering tried to test for resolved-out ALESS67.2; parameters not stated",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "We have tried tapering the map to lower spatial resolution in order to test the possibility that the lack of detection is due to extended structures"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "0.02'' (Band 7)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870 μm continuum",
+       "quote": "The image is gridded to a pixel scale of 0$\\ensuremath{''}$02 and a size of 20$\\ensuremath{''}$48 (1024 pixels) per side"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "1024 pixels, 20.48'' (Band 7)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870 μm continuum",
+       "quote": "a size of 20$\\ensuremath{''}$48 (1024 pixels) per side"
+      }
+     ]
+    },
+    "masking": {
+     "value": "Band 7: circular region of 1'' radius cleaned to 2 sigma; CO: circular aperture cleaned to 2 sigma",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "We clean a circular region with 1$''$ radius around the source down to 2 $\\sigma$"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "CO channels 48 MHz (~130 km/s); maps convolved with CO beam for comparison",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "The CO cube is gridded into 48MHz per channel ($\\sim$130 km s$^{-1}$)"
+      },
+      {
+       "loc": "4.3 Sizes and morphology",
+       "quote": "All maps are convolved with the $^{12}$CO beam to make the spatial resolution comparable."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.18''x0.15'', PA 64.8 deg (Band 7); 0.57''x0.49'' (CO)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA 870 μm continuum",
+       "quote": "with a position angle of 64.8$^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.07 mJy/beam (Band 7 dirty); 0.25 mJy/beam per 48 MHz (CO)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "The sensitivity of the CO cube is 0.25 mJy beam$^{-1}$ per 48MHz channel."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Full description of the Band 7 project and the Band 7 setup follow the Cycle 0 ALESS program",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA 870 μm continuum",
+        "quote": "For a full detail description of the project please refer to (cite: Hodge:2016aa)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Hodge:2016aa)"
+    },
+    {
+     "what": {
+      "value": "uv-fitting details of CO to be presented elsewhere",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA 12CO J=3–2",
+        "quote": "More details on the uv-fitting will be presented in Calistro Rivera et al. in preparation."
+       }
+      ]
+     },
+     "from_reference": "Calistro Rivera et al. in preparation"
+    },
+    {
+     "what": {
+      "value": "Kinemetry criterion K_asym=0.5 for disk vs merger",
+      "evidence": [
+       {
+        "loc": "3.3.2 Two-dimensional kinematics",
+        "quote": "(cite: Shapiro:2008aa) proposed a criteria of $K_{asym} = (v_{asym}^2+\\sigma_{asym}^2)^{1/2}=0.5$ to separate rotating disk ($K_{asym} < 0.5$) and merger ($K_{asym} > 0.5$)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Shapiro:2008aa)"
+    },
+    {
+     "what": {
+      "value": "Turbulence correction to circular velocity",
+      "evidence": [
+       {
+        "loc": "4.2 alpha_CO",
+        "quote": "$v_c^2(r_e) = v^2(r_e) + 3.36\\times\\sigma^2$ (Equation 11 in (cite: Burkert:2010aa) assuming exponential surface density distribution)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Burkert:2010aa)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CLEAN threshold, iterations and any robust/taper values for Band 7 and Band 3 imaging",
+    "Calibration details for Band 7 (pipeline/manual, CASA version)",
+    "Line-free channels and continuum subtraction for CO cube; frequency width of averaged CO map",
+    "SINFONI reduced cubes (custom routines not released)",
+    "MCMC priors, walkers and chain length for the rotating disk fit",
+    "uvmodelfit starting parameters",
+    "Inclination value used for dynamical mass beyond <sin^2 i>=2/3 and exact r_e conversions",
+    "Photometric flux calibration uncertainty of ALMA data"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image Band 7 continuum and measure flux and size",
+    "method": {
+     "value": "Natural-weight dirty image, clean a 1'' circle to 2 sigma; uvmodelfit Gaussian fit to the uv data, cross-checked with imfit and sextractor",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "we first use the uvmodelfit algorithm to model the *uv*–data. We find that the best bit (reduced $\\chi^2$=0.5) Gaussian profile has an intensity of 3.7$\\pm$0.2 mJy"
+      }
+     ]
+    },
+    "software": [
+     "CASA uvmodelfit",
+     "imfit",
+     "sextractor"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profile, chi-square fit in uv plane",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "the best bit (reduced $\\chi^2$=0.5) Gaussian profile"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistent with imfit and sextractor on cleaned image",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "We obtain consistent results if we instead using the imfit algorithm or sextractor on the cleaned image."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract CO(3-2) spectrum and line properties",
+    "method": {
+     "value": "Iterative procedure: weight-averaged map over best-guess width, curve-of-growth aperture, clean to 2 sigma, Gaussian fit, update FWHM until convergence",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "Next the extracted spectrum is fitted with a Gaussian profile and the frequency width used for obtaining the averaged map is updated to be the FWHM of the spectral fit."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "line flux contained within 2'' circular radius",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA 12CO J=3–2",
+        "quote": "all the line flux is contained within a circular radius of 2$''$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fit; errors from fit and Monte Carlo injection of model profiles in random cube regions",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "We create fake spectra by injecting model profile into spectra extracted from randomly selected regions of the data cube"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Fit errors consistent with Monte Carlo errors",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "The errors are estimates from the fit, and they are consistent with the errors derived from a Monte Carlo simulation."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "CO luminosity and brightness temperature ratio",
+    "method": {
+     "value": "Solomon & Vanden Bout relation for L'CO; ratio with ATCA CO(1-0)",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "$L^\\prime_{\\rm CO}=3.25\\times10^7 S_{\\rm CO}\\Delta v\\nu_{\\rm obs}^{-2}D_{\\rm L}^2(1+z)^{-3}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Planck cosmology H0=67.77, OmegaM=0.31, OmegaL=0.69",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "H$_0 =$ 67.77 km s$^{-1}$ Mpc$^{-1}$, $\\Omega_M =$ 0.31, and $\\Omega_\\Lambda =$ 0.69"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure CO half-light size",
+    "method": {
+     "value": "imfit on averaged map with bias correction from 36000 injected models, plus uv-plane chi-square Gaussian fit; uv-based result adopted",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "We therefore adopt the *uv*-based measurement for the $^{12}$CO size."
+      }
+     ]
+    },
+    "software": [
+     "imfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "36000 injected models, peak SNR 1-10, radius up to 2''",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA 12CO J=3–2",
+        "quote": "In total we inject 36000 models with the peak SNR, major axis, minor axis, and positional angle all randomized"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "chi-square Gaussian fit to averaged visibilities vs uv distance",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "perform $\\chi^2$ fitting assuming a Gaussian profile"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Image-plane and uv results agree; injection tests for bias (3%) and scatter (20%)",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA 12CO J=3–2",
+       "quote": "We find a 3% upward bias in median (0.028$\\pm$0.007) and a 20% scatter."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit SINFONI lines and measure integrated Halpha properties and size",
+    "method": {
+     "value": "Chi-square fit of Halpha+[NII]+[SII] Gaussians with linear continuum over 1.9-2.2 um; AICc model selection; curve-of-growth aperture of 1.8'' radius",
+     "evidence": [
+      {
+       "loc": "3.3 SINFONI spectra",
+       "quote": "The spectra are fit with four Gaussian models, in which all include a linear continuum component with the slope and normalization allowed free."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "[NII] doublet ratio fixed to 3; skylines masked; significance Delta chi2>25 ([SII] additional >9)",
+      "evidence": [
+       {
+        "loc": "3.3 SINFONI spectra",
+        "quote": "a fit with line components is considered significant if the fit, compared to a simple continuum-only model, has a lower AICc and provides a $\\chi^2$ improvement of $\\Delta\\chi^2>25$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Minimum chi-square with Monte Carlo errors",
+     "evidence": [
+      {
+       "loc": "3.3 SINFONI spectra",
+       "quote": "The errors are derived using Monte Carlo simulations similar to those used for measuring the errors of the CO emission."
+      }
+     ]
+    },
+    "validation": {
+     "value": "AICc model comparison",
+     "evidence": [
+      {
+       "loc": "3.3 SINFONI spectra",
+       "quote": "The model selection is determined based on the Akaike information criterion."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "2D kinematic modelling and kinemetry",
+    "method": {
+     "value": "Adaptive binning (1,3x3,5x5 spaxels); arctan rotation curve fit with emcee; kinemetry K_asym",
+     "evidence": [
+      {
+       "loc": "3.3.2 Two-dimensional kinematics",
+       "quote": "we run emcee, a Markov chain Monte Carlo (MCMC) ensemble sampler (cite: Foreman-Mackey:2013aa), to explore the parameter space and derive uncertainties."
+      }
+     ]
+    },
+    "software": [
+     "emcee",
+     "kinemetry code (Krajnovic et al. 2006)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fit v_asym sin(i) as a single parameter; centre and r_t within SINFONI FoV; PA 0-180 deg",
+      "evidence": [
+       {
+        "loc": "3.3.2 Two-dimensional kinematics",
+        "quote": "Because $v_{asym}$ and $i$ are essentially degenerate for our data quality we treat $v_{asym}{\\rm sin}(i)$ as a single parameter."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Maximum likelihood with emcee; centre perturbed within MCMC errors for kinemetry",
+     "evidence": [
+      {
+       "loc": "3.3.2 Two-dimensional kinematics",
+       "quote": "We fit the 2D model to the measured data based on maximum likelihood"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi2=14.8 indicates poor disk fit; K_asym compared with Shapiro et al. criterion",
+     "evidence": [
+      {
+       "loc": "3.3.2 Two-dimensional kinematics",
+       "quote": "The reduced $\\chi^2_\\nu=14.8$, indicating a relatively poor fit to the data and suggesting ALESS67.1 is not a pure rotating disk."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Derive alpha_CO dynamically and via gas-to-dust ratio",
+    "method": {
+     "value": "Mdyn from turbulence-corrected vc at r_e; subtract stellar mass and 15% dark matter to get gas mass; divide by L'CO(1-0). Cross-check with gas-to-dust ratio from metallicity (N2 calibration)",
+     "evidence": [
+      {
+       "loc": "4.2 alpha_CO",
+       "quote": "the gas mass is derived by subtracting stellar and dark-matter mass from the dynamical mass"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "dark matter fraction 15%; <sin^2 i>=2/3; median sigma 154±5 km/s",
+      "evidence": [
+       {
+        "loc": "4.2 alpha_CO",
+        "quote": "so we adopt 15%"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gas and stars share same half-light radius; constant velocity dispersion",
+      "evidence": [
+       {
+        "loc": "4.2 alpha_CO",
+        "quote": "we assume the gas and stars have the same r$_e$ given this is what we find"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Gas-to-dust method gives alpha_CO=1.4±0.7, consistent with dynamical estimate",
+     "evidence": [
+      {
+       "loc": "4.2 alpha_CO",
+       "quote": "we calculate a gas mass of $(5.5\\pm0.6)\\times 10^{10} M_\\odot$, and therefore a $\\alpha_{\\rm CO,GDR}=1.4\\pm0.7$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Resolved Schmidt-Kennicutt analysis",
+    "method": {
+     "value": "0.5'' concentric rings centred on 870um peak; maps convolved to CO beam; SFR from L_IR and Halpha (Kennicutt 1998), alpha_CO=0.8",
+     "evidence": [
+      {
+       "loc": "4.5 The Schmidt-Kennicutt relationship",
+       "quote": "we construct concentric rings with a width of 0$\\ensuremath{''}$5 ($\\sim$4 kpc) for each ring and centered at the peak of the 870 $\\mu$m continuum."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Chabrier IMF; alpha_CO=0.8; Halpha not extinction corrected",
+      "evidence": [
+       {
+        "loc": "4.5 The Schmidt-Kennicutt relationship",
+        "quote": "We assume a Chabrier initial mass function (cite: Chabrier:2003aa) and adopt 0.8 for $\\alpha_{\\rm CO}$ in order to make comparisons with other studies."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.1 (calibration), 4.7.0 (imaging)",
+    "used_for": {
+     "value": "Band 3 calibration and imaging; uvmodelfit; imfit",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA 12CO J=3–2",
+       "quote": "Data were reduced using casa version 4.3.1 and the standard pipeline calibration"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fit of 2D velocity field",
+     "evidence": [
+      {
+       "loc": "3.3.2 Two-dimensional kinematics",
+       "quote": "we run emcee, a Markov chain Monte Carlo (MCMC) ensemble sampler"
+      }
+     ]
+    }
+   },
+   {
+    "name": "esorex",
+    "version": "not stated",
+    "used_for": {
+     "value": "SINFONI data reduction",
+     "evidence": [
+      {
+       "loc": "2.3 VLT/SINFONI",
+       "quote": "Data reduction was performed using the esorex pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "name": "sextractor",
+    "version": "not stated",
+    "used_for": {
+     "value": "cross-check of continuum flux/size",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "We obtain consistent results if we instead using the imfit algorithm or sextractor on the cleaned image."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "general analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "870 um Gaussian flux density",
+    "value": "3.7",
+    "uncertainty": "0.2",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 ALMA 870 μm continuum",
+      "quote": "has an intensity of 3.7$\\pm$0.2 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "870 um continuum half-light radius (circularized)",
+    "value": "1.2",
+    "uncertainty": "0.1",
+    "units": "kpc",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "5 Summary",
+      "quote": "finding 1.2$\\pm$0.1 kpc (circularized) for 870 $\\mu$m (rest-frame 280 $\\mu$m) continuum"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) redshift",
+    "value": "2.1196",
+    "uncertainty": "0.0009",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA 12CO J=3–2",
+      "quote": "$z=2.1196\\pm0.0009$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) line flux",
+    "value": "4.2",
+    "uncertainty": "1.2",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA 12CO J=3–2",
+      "quote": "we derive a total line flux of 4.2$\\pm$1.2 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) line FWHM",
+    "value": "862",
+    "uncertainty": "195",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA 12CO J=3–2",
+      "quote": "with a velocity FWHM of 862$\\pm$195 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "L'CO(3-2)",
+    "value": "1.1e11",
+    "uncertainty": "0.3e11",
+    "units": "K km/s pc^2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA 12CO J=3–2",
+      "quote": "$L^\\prime_{\\rm CO(3-2)}=(1.1\\pm0.3)\\times10^{11}$ K km s$^{-1}$ pc$^2$"
+     }
+    ]
+   },
+   {
+    "quantity": "r_3,1 luminosity ratio",
+    "value": "1.1",
+    "uncertainty": "0.4",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA 12CO J=3–2",
+      "quote": "$r_{3,1} = 1.1\\pm0.4$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) half-light radius",
+    "value": "6.5",
+    "uncertainty": "0.9",
+    "units": "kpc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA 12CO J=3–2",
+      "quote": "$r_{1/2,{\\rm CO}}=6.5\\pm0.9$ kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Halpha half-light radius",
+    "value": "6.6",
+    "uncertainty": "0.9",
+    "units": "kpc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3.1 Integrated spectrum",
+      "quote": "$r_{1/2,{\\rm H\\alpha}}=6.6\\pm0.9$ kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Halpha redshift",
+    "value": "2.1228",
+    "uncertainty": "0.0006",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3.1 Integrated spectrum",
+      "quote": "we measure a redshift of $z=2.1228\\pm0.0006$"
+     }
+    ]
+   },
+   {
+    "quantity": "Halpha luminosity",
+    "value": "9.2e42",
+    "uncertainty": "1.5e42",
+    "units": "erg/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3.1 Integrated spectrum",
+      "quote": "$L_{\\rm H\\alpha}=9.2\\pm1.5\\times10^{42}$ ergs s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "v_asym sin i",
+    "value": "290",
+    "uncertainty": "70",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.3.2 Two-dimensional kinematics",
+      "quote": "$v_{asym}{\\rm sin}(i) = 290\\pm70$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "K_asym",
+    "value": "0.64",
+    "uncertainty": "0.15",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.3.2 Two-dimensional kinematics",
+      "quote": "$K_{asym} = 0.64\\pm0.15$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical mass within r_e",
+    "value": "2.2e11",
+    "uncertainty": "0.6e11",
+    "units": "Msun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 alpha_CO",
+      "quote": "$M_{\\rm dyn}(r\\leq r_e)=(2.2\\pm0.6)\\times10^{11}$M$_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO (dynamical)",
+    "value": "1.8",
+    "uncertainty": "1.0 (1.1 in Section 4.2)",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Using a dynamical method we derive an $\\alpha_{\\rm CO}=1.8\\pm1.0$"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha_CO (gas-to-dust, central)",
+    "value": "1.4",
+    "uncertainty": "0.7",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 alpha_CO",
+      "quote": "$\\alpha_{\\rm CO,GDR}=1.4\\pm0.7$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust to CO size ratio",
+    "value": "5.2",
+    "uncertainty": "0.8",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Sizes and morphology",
+      "quote": "factor of 5.2$\\pm$0.8 difference in half-light radius"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Halpha and 870um dust emission are spatially offset (0.4''), with H-alpha ~3x more extended",
+    "evidence": [
+     {
+      "loc": "3.3.2 Two-dimensional kinematics",
+      "quote": "The sky separation between the peaks of the H$\\alpha$ and 870 $\\mu$m continuum is 0$\\ensuremath{''}$4"
+     }
+    ]
+   },
+   {
+    "value": "CO and Halpha kinematics are in broad agreement",
+    "evidence": [
+     {
+      "loc": "4.1 Kinematics – CO and Halpha",
+      "quote": "In general we find that the kinematics of both HII regions as traced by the optical emission lines and molecular gas as traced by $^{12}$CO(J=3-2) are in broad agreement."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "ALESS67.1 is a pure rotating disk",
+    "experiment": "Arctan disk fit and kinemetry of Halpha velocity and dispersion maps",
+    "result": "Reduced chi2=14.8; K_asym=0.64±0.15",
+    "finding": "Not a pure rotating disk; likely a merger",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Dynamical modelling of the optical emission lines suggests that ALESS67.1 is not a pure rotating disk but a merger"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dust, CO gas, Halpha and stars have similar sizes",
+    "experiment": "Half-light radii measured for each tracer",
+    "result": "Dust 1.2 kpc vs 5-6.6 kpc for others",
+    "finding": "Dust is a factor 4-6 more compact and offset",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Summary",
+      "quote": "We therefore find that the dust continuum has a factor of 4–6 smaller size than that of strong optical emission lines, NIR continuum, and $^{12}$CO($J$=3-2)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Spatial mismatch of dust and UV explains offset on the IRX-beta diagram",
+    "experiment": "Compare L_IR/L_UV and beta with image overlays",
+    "result": "Source lies above local relations with decoupled dust and UV",
+    "finding": "Geometry plausibly part of the cause",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.4 IRX-β",
+      "quote": "confirms the hypothesis that the deviation from the IRX-$\\beta$ relationship is caused, at least partially, by the different distributions between dust and UV"
+     }
+    ]
+   },
+   {
+    "hypothesis": "alpha_CO in this SMG is low like mergers",
+    "experiment": "Dynamical method and gas-to-dust ratio method",
+    "result": "alpha_CO=1.8±1.0 and 1.4±0.7",
+    "finding": "Low alpha_CO consistent with merger",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Summary",
+      "quote": "Using the dynamical method we derive the CO-to-H$_2$ conversion factor of $\\alpha_{\\rm CO} = 1.8\\pm1.0$, supported by the estimates based on the gas-to-dust ratio method."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Star-formation efficiency is uniform within the galaxy",
+    "experiment": "Resolved ring-by-ring Sigma_SFR vs Sigma_H2 with alpha_CO=0.8",
+    "result": "Core lies with mergers, outskirts with normal SFGs",
+    "finding": "Different efficiencies within one galaxy",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Summary",
+      "quote": "The core shares the same locus as mergers whereas the outskirts lie close to the SFGs selected in UV/optical, suggesting different star formation efficiency within one galaxy."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALESS67.1 is covered by all necessary follow-up observations and is representative of the ALESS sample",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "ALESS67.1 is one of the few SMGs so far that is covered by all the necessary follow-up observations, and it is representative of the ALESS sample"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Rotation-dominated criterion (vmax-vmin)/2sigma=0.4 suggested a disk, but detailed modelling used instead",
+     "evidence": [
+      {
+       "loc": "3.3.2 Two-dimensional kinematics",
+       "quote": "However, the availability of the 2D velocity map allows us to conduct detail kinematic modelling to more reliably differentiate rotating systems from mergers."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "CO detection is only ~3 sigma peak SNR so 2D CO kinematics and central detail are limited",
+     "evidence": [
+      {
+       "loc": "4.1 Kinematics – CO and Halpha",
+       "quote": "Our $^{12}$CO(J=3-2) detection does not have high enough SNR to produce 2D kinematic maps like H$\\alpha$"
+      }
+     ]
+    },
+    {
+     "value": "ALESS67.2 nature inconclusive",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA 870 μm continuum",
+       "quote": "so the nature of ALESS67.2 remains inconclusive"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single object, so generality of size contrast is uncertain",
+    "SINFONI astrometry uncertainty (0.2-0.3'') comparable to dust-Halpha offset",
+    "alpha_CO from dynamical method relies on assumed dark matter fraction, inclination average and point-mass approximation despite merger evidence",
+    "Sigma_SFR and Sigma_H2 rings depend on assumed alpha_CO=0.8 and uncorrected Halpha"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project codes cited with PI J. Hodge; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA \\# 2012.1.00307.S and 2013.1.00407.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "SINFONI cubes and custom reduction routines",
+    "Band 7 calibration details",
+    "Clean parameters and CO averaging channel range",
+    "MCMC priors/settings"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for two short ALMA EBs",
+   "score_inferred": 3,
+   "score_reason": "ALMA data are archival with project codes and the methods are described, but many imaging and fitting parameters are missing, and SINFONI/HST inputs are needed.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results need non-ALMA SINFONI data and unstated parameters."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Krajnović et al. 2006 (cite: Krajnovic:2006aa)",
+     "why": "kinemetry code"
+    },
+    {
+     "citation": "Shapiro et al. 2008 (cite: Shapiro:2008aa)",
+     "why": "K_asym merger criterion"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Hodge et al. 2016 (cite: Hodge:2016aa)",
+     "why": "Describes the Band 7 high-resolution ALESS project"
+    },
+    {
+     "citation": "Huynh et al. 2017 (cite: Huynh:2017aa)",
+     "why": "ATCA CO(1-0) of ALESS67.1"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALESS",
+    "LESS",
+    "CANDELS",
+    "3D-HST"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-7400970dfcbf739d656bf36939a2ed63",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:38",
+  "usage": {
+   "input_tokens": 40395,
+   "output_tokens": 14827,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.115137,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 108,
+  "quotes_ok": 108,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2013.1.00407.S"
+  ],
+  "numeric_results": 17,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 97,
+   "stated": 74,
+   "rate": 0.763
+  },
+  "evidence_ok": true
+ }
+}

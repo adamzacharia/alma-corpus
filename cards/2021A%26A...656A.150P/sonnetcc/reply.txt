@@ -1,0 +1,415 @@
+{
+"depth": "full",
+"paper_type": "theory_or_simulation_compared_to_alma",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present the self-calibrated $0.9\\,$mm ALMA observations of the dust continuum emission from the circumstellar disk around HD 100546."},
+{"loc": "abstract", "quote": "We reproduced this appearance closely with a numerical model that assumes two embedded planets."}
+],
+"fields": ["protoplanetary_disks"],
+"question": {
+"value": "Constrain masses and orbital radii of potential embedded planets in the HD 100546 disk, assuming they induce the observed rings and gaps; test whether one or two planets are required",
+"evidence": [
+{"loc": "abstract", "quote": "Our aim is to constrain some of the properties of potential planets embedded in the disk, assuming that they induce the observed rings and gaps."},
+{"loc": "Introduction", "quote": "Particularly, we wish to determine whether one or two planets are required to explain the observed substructures and to obtain their masses and distances from the central star."}
+]
+},
+"targets": [
+{
+"name": "HD 100546",
+"details": [
+{"loc": "Introduction", "quote": "This target is found at a distance of $108.1\\pm 0.5\\,$pc ((cite: gaia_edr3_2021))"},
+{"loc": "Introduction", "quote": "with a right ascension of $11^h\\, 33^m\\, 25.3^s$ and a declination of $-70^\\circ\\, 11'\\, 41.2''$ ((cite: gaia_edr3_2021))"}
+],
+"coordinates": "RA 11h 33m 25.3s, Dec -70d 11' 41.2'' (Gaia EDR3)",
+"redshift_or_distance": "108.1 +/- 0.5 pc",
+"distance_source": "Gaia EDR3 (cite: gaia_edr3_2021)"
+}
+],
+"alma_project_codes": [
+{"code": "2016.1.00497.S", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "ALMA observations of HD 100546 at $0.9$ mm wavelength (ALMA Band 7) under ALMA projects 2016.1.00497.S. (PI: A. Pohl) and 2015.1.00806.S (PI: J. Pineda)"}]},
+{"code": "2015.1.00806.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00497.S., and ADS/JAO.ALMA#2015.1.00806.S."}]},
+{"code": "2015.1.00934.S", "evidence": [{"loc": "Table obs_log (Observation details)", "quote": "2015.1.00934.S | 2015-12-02 | 27.8 | 36 | 17.4 - 10803.7 | Extended (LB)"}]},
+{"code": "2016.1.01511.S", "evidence": [{"loc": "Table obs_log (Observation details)", "quote": "2016.1.01511.S | 2016-10-26 | 69.4 | 43 | 15.1 - 1124.3 | Compact (SB)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (0.9 mm)", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "ALMA observations of HD 100546 at $0.9$ mm wavelength (ALMA Band 7) under ALMA projects 2016.1.00497.S. (PI: A. Pohl) and 2015.1.00806.S (PI: J. Pineda)"}]},
+{"field": "frequencies_and_spectral_setup", "value": "SB: four continuum spws centred at 336.495, 338.432, 348.494, 350.494 GHz (2 GHz each); LB: two continuum spws at 331.988 and 343.488 GHz plus two spws on 12CO(3-2) and 13CO(3-2)", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "the correlator was configured to observe dust continuum in its four spectral windows centered at $336.495\\,$GHz, $338.432\\,$GHz, $348.494\\,$GHz, and $350.494\\,$GHz, each with a bandwidth of $2\\,$GHz"},
+{"loc": "ALMA Observations / Calibration", "quote": "the correlator was configured to observe two spectral windows with dust continuum at $331.988\\,$GHz and $343.488\\,$GHz, and the two remaining windows were aimed at the molecular lines $^{12}$CO ($J:3-2$) and $^{13}$CO ($J:3-2$)"}
+]},
+{"field": "continuum_bandwidth", "value": "2 GHz per continuum spw (SB and LB); 0.469 GHz for the LB line spws", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "The bandwidth of the dust continuum spectral windows in the LB dataset was also $2\\,$GHz and $0.469\\,$GHz for the remaining windows."}
+]},
+{"field": "configurations", "value": "Extended (LB) and Compact (SB)", "evidence": [
+{"loc": "Table obs_log (Observation details)", "quote": "2015.1.00934.S | 2015-12-02 | 27.8 | 36 | 17.4 - 10803.7 | Extended (LB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2016.1.01511.S | 2016-10-26 | 69.4 | 43 | 15.1 - 1124.3 | Compact (SB)"}
+]},
+{"field": "baselines", "value": "17.4 - 10803.7 m (LB); 15.1 - 1124.3 m and 15.1 - 460.0 m (SB)", "evidence": [
+{"loc": "Table obs_log (Observation details)", "quote": "2015.1.00934.S | 2015-12-02 | 27.8 | 36 | 17.4 - 10803.7 | Extended (LB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2016.1.01511.S | 2016-10-26 | 69.4 | 43 | 15.1 - 1124.3 | Compact (SB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2017-04-23 | 104.1 | 44 | 15.1 - 460.0 | Compact (SB)"}
+]},
+{"field": "angular_resolution", "value": "Observed beam not stated; synthetic images convolved with a 0.3'' Gaussian beam 'similar to the actual observations'", "evidence": [
+{"loc": "Synthetic observations with RADMC-3D", "quote": "all synthetic observations are convolved with a $0.3''$ Gaussian beam similar to the actual observations"}
+]},
+{"field": "time_on_source", "value": "Exp. time 27.8 min (LB, 2015-12-02); 69.4 min and 104.1 min (SB)", "evidence": [
+{"loc": "Table obs_log (Observation details)", "quote": "2015.1.00934.S | 2015-12-02 | 27.8 | 36 | 17.4 - 10803.7 | Extended (LB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2016.1.01511.S | 2016-10-26 | 69.4 | 43 | 15.1 - 1124.3 | Compact (SB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2017-04-23 | 104.1 | 44 | 15.1 - 460.0 | Compact (SB)"}
+]},
+{"field": "observing_dates", "value": "2015-12-02 (LB); 2016-10-26 and 2017-04-23 (SB)", "evidence": [
+{"loc": "Table obs_log (Observation details)", "quote": "2015.1.00934.S | 2015-12-02 | 27.8 | 36 | 17.4 - 10803.7 | Extended (LB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2016.1.01511.S | 2016-10-26 | 69.4 | 43 | 15.1 - 1124.3 | Compact (SB)"},
+{"loc": "Table obs_log (Observation details)", "quote": "2017-04-23 | 104.1 | 44 | 15.1 - 460.0 | Compact (SB)"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "PI A. Pohl (SB, 2016.1.00497.S); PI J. Pineda (LB, 2015.1.00806.S)", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "ALMA observations of HD 100546 at $0.9$ mm wavelength (ALMA Band 7) under ALMA projects 2016.1.00497.S. (PI: A. Pohl) and 2015.1.00806.S (PI: J. Pineda)"}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "the two remaining windows were aimed at the molecular lines $^{12}$CO ($J:3-2$) and $^{13}$CO ($J:3-2$)"}]},
+{"species": "13CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "the two remaining windows were aimed at the molecular lines $^{12}$CO ($J:3-2$) and $^{13}$CO ($J:3-2$)"}]}
+],
+"other_facilities": [
+{"name": "Gaia EDR3", "provided": {"value": "Distance (108.1 pc) and coordinates of HD 100546", "evidence": [{"loc": "Introduction", "quote": "This target is found at a distance of $108.1\\pm 0.5\\,$pc ((cite: gaia_edr3_2021))"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Distance 108.1 +/- 0.5 pc and coordinates of HD 100546", "evidence": [{"loc": "Introduction", "quote": "This target is found at a distance of $108.1\\pm 0.5\\,$pc ((cite: gaia_edr3_2021))"}]}, "citation": "(cite: gaia_edr3_2021)"},
+{"what": {"value": "Disk geometry for deprojection: inclination 45 deg, PA 150 deg", "evidence": [{"loc": "Observational results: Outer ring", "quote": "When the disk is deprojected using the geometry from (cite: casassus_2019), with an inclination of $45^\\circ$ and a position angle (PA) of $150^\\circ$"}]}, "citation": "(cite: casassus_2019)"},
+{"what": {"value": "Dust mass absorption coefficient kappa_nu = 2.3 (nu/230 GHz)^0.4 cm^2 g^-1", "evidence": [{"loc": "Observational results: Outer ring", "quote": "$\\kappa_\\nu=2.3 \\times (\\nu/230\\,\\rm{GHz})^{0.4}\\,\\rm{cm}^{2}\\rm{g}^{-1}$ is the frequency-dependent mass absorption coefficient (cite: andrews2013)"}]}, "citation": "(cite: andrews2013)"},
+{"what": {"value": "Inner planet position of 13 au taken from earlier studies", "evidence": [{"loc": "Planet locations", "quote": "we reverted to the estimated planet position from previous studies, specifically (cite: p15; w14), suggesting that the inner planet is located at $13\\,$au."}]}, "citation": "(cite: p15; w14)"},
+{"what": {"value": "Gap-width to planet-mass relation with K between 7 and 10", "evidence": [
+{"loc": "Planet mass estimates", "quote": "The precise relation of gap width and planet mass was studied by ((cite: Dodson_Robinson_2011; Pinilla_2012; rosotti2016; Fung_2016; 2018facchini)), yielding the dependence"},
+{"loc": "Planet mass estimates", "quote": "has been found to lie within the interval $7\\leq K \\leq 10$"}
+]}, "citation": "(cite: Dodson_Robinson_2011; Pinilla_2012; rosotti2016; Fung_2016; 2018facchini)"},
+{"what": {"value": "Minimum gap-opening planet mass criteria", "evidence": [{"loc": "Planet mass estimates", "quote": "following the studies of (cite: c6) and (cite: l19)"}]}, "citation": "(cite: c6); (cite: l19)"},
+{"what": {"value": "System age 4.8 Myr", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "which has been estimated to be $4.8\\,\\rm{Myr}$ ((cite: Wichittanakom_2020))"}]}, "citation": "(cite: Wichittanakom_2020)"},
+{"what": {"value": "Silicate composition with optical constants from the Jena database", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "We assumed the disk to be composed of silicates ((cite: d95))"}]}, "citation": "(cite: d95)"}
+],
+"simulations_or_models_as_data": [
+{"value": "2D multifluid FARGO3D simulations (one gas and four dust fluids) of seven model setups I-VII with one or two embedded planets", "evidence": [
+{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "We used a multifluid approach and model the gaseous dusty disk around HD 100546 as five fluids: one fluid represents the gas, and the four remaining fluids describe the dust"},
+{"loc": "Parameter space exploration", "quote": "Then, we executed simulations with two planets for both initial conditions (model III with the power law, and model IV with the self-similar solution)."}
+]},
+{"value": "RADMC-3D synthetic 0.9 mm images of the FARGO3D outputs, convolved with a 0.3'' Gaussian beam", "evidence": [
+{"loc": "Synthetic observations with RADMC-3D", "quote": "we performed a radiative transfer simulation and rendered a synthetic observation"},
+{"loc": "Synthetic observations with RADMC-3D", "quote": "all synthetic observations are convolved with a $0.3''$ Gaussian beam similar to the actual observations"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA standard pipeline calibration, then manual self-calibration in CASA", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "After ALMA standard pipeline calibration, we used"},
+{"loc": "ALMA Observations / Calibration", "quote": "to handle and self-calibrate the datasets"}
+]},
+{"field": "casa_version", "value": "CASA 5.6.2", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "CASA 5.6.2"}]},
+{"field": "flux_scale_uncertainty", "value": "10% ALMA flux uncertainty (not included in the quoted ring flux error)", "evidence": [{"loc": "Observational results: Outer ring", "quote": "We detect the ring to be $4.5\\pm0.2\\,$mJy, which does not include the $10\\%$ ALMA flux uncertainty."}]},
+{"field": "self_calibration", "value": "SB: two stages (shortest-baseline April 2017 data first, then joined with October 2016 data); phase solints 360, 150, 60, 24 s and amplitude 150 s. LB independently: phase solints 360 and 150 s, amplitude 360 s", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "First, we self-calibrated the shortest baseline observations, taken in April 2017, with solution intervals of $360\\,$s, $150\\,$s, $60\\,$s, and $24\\,$s for the phase calibration and $150\\,$s for the amplitude calibration."},
+{"loc": "ALMA Observations / Calibration", "quote": "The LB data were self-calibrated independently from the SB data, with solution intervals of $360\\,$s and $150\\,$s for the phase calibration and $360\\,$s for the amplitude."}
+]}
+],
+"imaging": [
+{"field": "continuum_subtraction", "value": "Continuum extracted by flagging channels within +/-25 km/s of each targeted line (line spws of LB)", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "we flagged the channels located at $\\pm 25\\,$km s$^{-1}$ from each targeted spectral line"}]},
+{"field": "line_free_channels", "value": "All channels beyond +/-25 km/s of the 12CO and 13CO lines, averaged into 125 MHz channels", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "we flagged the channels located at $\\pm 25\\,$km s$^{-1}$ from each targeted spectral line"},
+{"loc": "ALMA Observations / Calibration", "quote": "the remaining channels from all spectral windows were averaged into 125 MHz channels"}
+]},
+{"field": "array_combination", "value": "SB and LB combined after shifting all phase centres to the LB phase centre", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "Before combining the datasets, we corrected their phase centers such that the center of all observations was the center of the LB dataset."}]}
+],
+"inherited": [
+{"what": {"value": "Channel averaging of continuum data into 125 MHz channels follows the DSHARP calibration", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "Similarly to the calibration of the DSHARP sources (cite: andrews2018), the remaining channels from all spectral windows were averaged into 125 MHz channels."}]}, "from_reference": "(cite: andrews2018) DSHARP"},
+{"what": {"value": "JvM correction of the images", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "as described in (cite: jorsater1995) and also used in (cite: andrews2021)"}]}, "from_reference": "(cite: jorsater1995); (cite: andrews2021)"},
+{"what": {"value": "Optically thin dust mass formula (Hildebrand)", "evidence": [{"loc": "Observational results: Outer ring", "quote": "We followed (cite: h83),"}]}, "from_reference": "(cite: h83)"},
+{"what": {"value": "Constant dust temperature of 20 K", "evidence": [{"loc": "Observational results: Outer ring", "quote": "assuming that the flux ($F_\\nu$) received at $0.9\\,$mm is being emitted by dust with a constant temperature of $T=20\\,$K (cite: ansdell2016; pinilla2018)"}]}, "from_reference": "(cite: ansdell2016; pinilla2018)"},
+{"what": {"value": "Mass-tapering of the planet is a variation of the algorithm already in FARGO3D", "evidence": [{"loc": "Mass-tapering model", "quote": "This formula is a variation of the mass-tapering algorithm that is included in `FARGO3D`."}]}, "from_reference": "FARGO3D (cite: b16; m0; 2019fargomulti; 2019diffusionfargo)"},
+{"what": {"value": "Self-similar initial gas surface density profile", "evidence": [{"loc": "Initial conditions", "quote": "The other initial condition used in this work is the self-similar solution from (cite: lynden-bell_pringle_1974)"}]}, "from_reference": "(cite: lynden-bell_pringle_1974)"},
+{"what": {"value": "Initial dust size distribution follows an MRN distribution", "evidence": [{"loc": "Initial conditions", "quote": "following an MRN distribution ((cite: mathis_1977))"}]}, "from_reference": "(cite: mathis_1977)"},
+{"what": {"value": "Vertical dust scale-height model", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "with the disk height model of (cite: d4)"}]}, "from_reference": "(cite: d4)"}
+],
+"unstated_but_needed": [
+"The observation log table lists program IDs 2015.1.00934.S and 2016.1.01511.S while the text names 2015.1.00806.S (LB) and 2016.1.00497.S (SB); which execution blocks were actually used is unclear",
+"Imaging recipe for SB, LB and combined images: tclean parameters, weighting and robust value, uv taper, cell and image size, masks, clean threshold, deconvolver, and final beam and rms",
+"Self-calibration details: reference antenna, spectral-window combination, solution mode and number of iterations, clean masks per round, and SNR cuts",
+"Whether the 12CO and 13CO line spws were used only for continuum (after flagging) and any other flagging beyond the +/-25 km/s channels",
+"How the radial profile was extracted (annulus widths, centre, deprojection angles used) and how the per-radius sigma used for the '3 sigma' criterion was computed",
+"Image normalisation and any peak or beam used before comparing normalised radial profiles of the models and the data",
+"FARGO3D setup not given: aspect ratio or temperature profile and flaring index, equation of state, planet potential smoothing, dust diffusion and drag settings, number of outputs and the output snapshot used for comparison",
+"The modified FARGO3D mass-taper code (Delta_i offset parameter) is not stated to be released",
+"RADMC-3D settings: how dust temperatures were obtained, stellar parameters, opacity treatment per grain size, number of photon packages, scattering, and the inclination and PA applied to the model images",
+"galario settings used for the model VII visibilities and the imaging parameters applied to the simulated visibilities",
+"Gas temperature, H/r and Stokes numbers used when computing M_K and the minimum masses (Crida and Lodato) for alpha = 1e-4 and 1e-3",
+"Versions of FARGO3D, RADMC-3D and galario"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Self-calibrate and combine SB and LB continuum data",
+"method": {"value": "After pipeline calibration, flag +/-25 km/s around each line, average to 125 MHz channels, self-calibrate SB in two stages and LB separately, align phase centres, then average to one channel per spw and 30 s", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "First, we self-calibrated the shortest baseline observations, taken in April 2017, with solution intervals of $360\\,$s, $150\\,$s, $60\\,$s, and $24\\,$s for the phase calibration and $150\\,$s for the amplitude calibration."},
+{"loc": "ALMA Observations / Calibration", "quote": "The LB data were self-calibrated independently from the SB data, with solution intervals of $360\\,$s and $150\\,$s for the phase calibration and $360\\,$s for the amplitude."},
+{"loc": "ALMA Observations / Calibration", "quote": "After self-calibration, we reduced the data volume by averaging the continuum emission into one channel per spectral window and $30$ s of time binning."}
+]},
+"software": ["CASA 5.6.2"],
+"key_parameters": [
+{"value": "Line channels flagged at +/-25 km/s", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "we flagged the channels located at $\\pm 25\\,$km s$^{-1}$ from each targeted spectral line"}]},
+{"value": "125 MHz channel averaging before self-calibration", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "the remaining channels from all spectral windows were averaged into 125 MHz channels"}]},
+{"value": "SB second stage repeats the same solution intervals on SB joined with the October 2016 data", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "This calibrated dataset was joined with the remaining observations from SB taken on October 2016 and was again self-calibrated by repeating the same solution intervals."}]},
+{"value": "Phase centres of all data shifted to the LB phase centre before combining", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "Before combining the datasets, we corrected their phase centers such that the center of all observations was the center of the LB dataset."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Image SB, LB and combined data with JvM correction",
+"method": {"value": "Images of SB, LB and SB+LB combined were made from the self-calibrated data and corrected with the JvM factor", "evidence": [
+{"loc": "ALMA Observations / Calibration", "quote": "Finally, we applied the JvM correction to the images generated from the self-calibrated datasets."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "epsilon_v = 0.69 for SB and LB images; 0.88 for SB+LB combined", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "We find $\\epsilon_v=0.69$ for the SB and LB images and $\\epsilon_v=0.88$ for the images with SB and LB combined."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Measure the outer ring position, flux, optical depth and dust mass",
+"method": {"value": "Deproject with inclination 45 deg and PA 150 deg to locate the outer ring peak; integrate SB-only image flux between 1.1'' and 2.5'' in an elliptical mask; estimate optical depth from the brightness temperature; estimate dust mass in the optically thin limit", "evidence": [
+{"loc": "Observational results: Outer ring", "quote": "we calculated the flux density from the image generated using only the SB dataset with an elliptical mask with the inclination and position angle of the source, and we integrated the emission between $1.1''-2.5''$"},
+{"loc": "Observational results: Outer ring", "quote": "When the disk is deprojected using the geometry from (cite: casassus_2019), with an inclination of $45^\\circ$ and a position angle (PA) of $150^\\circ$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Integration annulus 1.1''-2.5'' in the SB-only image", "evidence": [{"loc": "Observational results: Outer ring", "quote": "we integrated the emission between $1.1''-2.5''$"}]},
+{"value": "kappa_nu = 2.3 (nu/230 GHz)^0.4 cm^2 g^-1", "evidence": [{"loc": "Observational results: Outer ring", "quote": "$\\kappa_\\nu=2.3 \\times (\\nu/230\\,\\rm{GHz})^{0.4}\\,\\rm{cm}^{2}\\rm{g}^{-1}$ is the frequency-dependent mass absorption coefficient (cite: andrews2013)"}]},
+{"value": "Dust mass uncertainty taken as 10%", "evidence": [{"loc": "Observational results: Outer ring", "quote": "we obtained a dust mass of $0.7\\pm0.07\\,M_\\oplus$, where we assumed a conservative uncertainty of $10\\%$"}]}
+],
+"assumptions": [
+{"value": "Optically thin emission with constant dust temperature T = 20 K", "evidence": [{"loc": "Observational results: Outer ring", "quote": "assuming that the flux ($F_\\nu$) received at $0.9\\,$mm is being emitted by dust with a constant temperature of $T=20\\,$K (cite: ansdell2016; pinilla2018)"}]},
+{"value": "Midplane physical temperature of 20 K constant for the optical depth estimate", "evidence": [{"loc": "Observational results: Outer ring", "quote": "and $T_{\\text{phys}}$ is the physical temperature of the midplane, which we assumed to be $T_{\\text{phys}}=20\\,$K constant"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Authors note the optical depth is highly uncertain because the physical temperature estimate is uncertain", "evidence": [{"loc": "Observational results: Outer ring", "quote": "This is highly uncertain, however, because the underlying estimate of $T_{\\text{phys}}$ has a high level of uncertainty."}]}
+},
+{
+"order": 4,
+"goal": "Derive planet locations and masses from the radial profile",
+"method": {"value": "Planet radii from local minima in the combined-image radial profile (inner 13 au taken from earlier work, outer 143 au from the local minimum); masses from gap-width relation M_K with K between 7 and 10, bounded below by the larger of the Crida and Lodato minimum gap-opening masses", "evidence": [
+{"loc": "Planet locations", "quote": "We estimate the orbital separation of the outer planet to be at $143\\,$au, corresponding to the local minimum in the observed intensity profile."},
+{"loc": "Planet mass estimates", "quote": "where $M_K$ is the planet mass estimate, which depends on the dimensionless parameter $K$, the stellar mass $M_\\star$, the orbit of the planet $r$, and the gap width in the millimeter dust continuum $D$"},
+{"loc": "Planet mass estimates", "quote": "From these two criteria, we estimated the minimum planet mass by choosing the maximum of the two models,"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Gap widths D1 = 14 au (inner), D2 = 79 au (outer)", "evidence": [{"loc": "Planet mass estimates", "quote": "This yields $D_1=14$ au for the inner and $D_2=79$ au for the outer gap"}]},
+{"value": "alpha = 1e-4 and 1e-3 used for the minimum-mass criteria", "evidence": [
+{"loc": "Planet mass estimates", "quote": "For $\\alpha=10^{-4}$, we obtain $M_{\\rm{min},1}=0.3\\,M_{\\rm{Jup}}$ for the inner and $M_{\\rm{min},2}=1.7\\,M_{\\rm{Jup}}$ for the outer planet."}
+]}
+],
+"assumptions": [
+{"value": "One planet per gap", "evidence": [{"loc": "Planet locations", "quote": "It is important to note that the assumption that exactly one planet is responsible for each gap is a simplification."}]},
+{"value": "Lowest possible planet mass adopted for the simulations", "evidence": [{"loc": "Planet mass estimates", "quote": "We took the lowest possible mass for each of the planets for our simulations because planets have not directly been observed in this disk, and thus a lower-mass companion is more likely to exist."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Run 2D multifluid FARGO3D planet-disk simulations (models I-VII)",
+"method": {"value": "Two-dimensional polar-grid FARGO3D runs with one gas and four dust fluids, with one or two planets of fixed orbit and time-tapered mass, for seven combinations of initial profile, taper timing and viscosity", "evidence": [
+{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "The `FARGO3D` simulations were performed in two dimensions on a polar grid"},
+{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "We used a multifluid approach and model the gaseous dusty disk around HD 100546 as five fluids: one fluid represents the gas, and the four remaining fluids describe the dust"}
+]},
+"software": ["FARGO3D"],
+"key_parameters": [
+{"value": "Grid n_r = 540, n_phi = 1024, one cell per tenth of the pressure scale height", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "which equates to an azimuthal resolution of $n_\\phi = 1024$ cells and a radial resolution of $n_r = 540$ cells"}]},
+{"value": "r_min = 2.6 au, r_max = 500 au", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "They were calculated based on the planet Hill radius $R_H$ as $r_{\\rm{min}}=(r_1-3 R_{H,1})/3 =2.6\\,$au and $r_{\\rm{max}}=3(r_2+3 R_{H,2})=500\\,$au."}]},
+{"value": "Run time 0.74 Myr", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "We instead ran our simulations for $0.74\\,$Myr (corresponding to $2.3\\times 10^4$ orbits of the inner planet or $6.3\\times 10^2$ orbits of the outer planet)"}]},
+{"value": "Self-similar initial profile with critical radius R_c = 80 au", "evidence": [{"loc": "Initial conditions", "quote": "Here, $R_c = 80\\,$au is the critical radius"}]},
+{"value": "Dust-to-gas mass ratio 1e-2", "evidence": [{"loc": "Initial conditions", "quote": "Here, $\\epsilon = 10^{-2}$ corresponds to the dust-to-gas mass ratio, taken to be equal to the interstellar value"}]},
+{"value": "Fiducial planet mass taper: delays zero, tapers 16 Kyr", "evidence": [{"loc": "Mass-tapering model", "quote": "We fiducially set the delays $\\Delta_1$ and $\\Delta_2$ to zero and the tapers $\\tau_1$ and $\\tau_2$ to $16\\,$Kyr."}]},
+{"value": "Model V: outer planet delay 6e5 yr; model VI: outer planet taper 6e5 yr", "evidence": [{"loc": "Parameter space exploration", "quote": "In model V we set $\\Delta_2 = 6\\times 10^5\\,$yr while keeping $\\tau_2 =16\\,$Kyr, while in model VI, we kept $\\Delta_2 = 0$ and set $\\tau_2 = 6\\times 10^5\\,$yr."}]},
+{"value": "Model VII: alpha = 1e-3 with outer planet 3 M_Jup", "evidence": [{"loc": "Parameter space exploration", "quote": "We chose a higher viscosity of $\\alpha=10^{-3}$ in model VII."}]}
+],
+"assumptions": [
+{"value": "Disk reaches a quasi-steady state within the simulated time", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "assuming that, qualitatively, the disk reaches a quasi-steady state within this time"}]},
+{"value": "No accretion onto the planet", "evidence": [{"loc": "Mass-tapering model", "quote": "the actual physical accretion process is ignored in this present work, that is, there is no mass transfer from the dust or gas fluids onto the planet."}]},
+{"value": "Planet orbit fixed, no migration", "evidence": [{"loc": "Mass-tapering model", "quote": "We also fixed the planets orbit and neglected its potential migration."}]},
+{"value": "Dust growth neglected", "evidence": [{"loc": "Discussion", "quote": "In our current approach, however, we modeled gas and dust evolution simultaneously, but we neglected dust growth."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Convergence in time (gas surface density stable from 200 Kyr) and a higher-resolution run (one-twentieth scale height) that changes the result little", "evidence": [
+{"loc": "Convergence and resolution tests", "quote": "show that our gas surface density does not vary significantly from $200\\,$Kyr."},
+{"loc": "Convergence and resolution tests", "quote": "The result does not change significantly by the higher resolution."}
+]}
+},
+{
+"order": 6,
+"goal": "Generate synthetic observations with RADMC-3D (and galario for model VII)",
+"method": {"value": "Expand FARGO3D 2D dust densities to 3D with a Gaussian vertical profile, run RADMC-3D at 0.9 mm with silicate opacities, convolve with a 0.3'' Gaussian beam; for model VII also compute visibilities with galario at the observed uv-coverage and image them", "evidence": [
+{"loc": "Synthetic observations with RADMC-3D", "quote": "This requires expanding the two-dimensional dust surface density distributions into three dimensions, which we did by using a Gaussian distribution along the vertical ($z$) axis, assuming hydrostatic equilibrium in this direction"},
+{"loc": "Results", "quote": "used the package `galario` to calculate the visibilities with the same uv-coverage as the observations"}
+]},
+"software": ["RADMC-3D", "galario"],
+"key_parameters": [
+{"value": "Wavelength 0.9 mm", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "the wavelength was fixed at $\\lambda=0.9\\,$mm"}]},
+{"value": "Convolution with a 0.3'' Gaussian beam", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "all synthetic observations are convolved with a $0.3''$ Gaussian beam similar to the actual observations"}]},
+{"value": "Dust settling factor chi = 3% for grains larger than 1 micron", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "and $\\chi=3\\%$ is the scale height reduction factor encoding the effect of dust settling"}]}
+],
+"assumptions": [
+{"value": "Disk composed of silicates with Jena-database optical constants", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "We assumed the disk to be composed of silicates ((cite: d95))"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Image-plane and visibility-plane synthetic images of model VII agree and reproduce the observed radial profile", "evidence": [{"loc": "Results", "quote": "Both images are consistent with each another and reproduce the observed radial profile, proving the observability of the structures generated in our simulations."}]}
+},
+{
+"order": 7,
+"goal": "Compare normalised radial profiles of models and ALMA data to select the best model",
+"method": {"value": "Compare each synthetic image with the combined ALMA image, both normalised to their maxima, using azimuthally averaged normalised radial profiles and the deviation in sigma", "evidence": [
+{"loc": "Results", "quote": "For each setup, we present the corresponding synthetic observation and the combined ALMA image, both normalized to their respective maximum, and using the same color map."},
+{"loc": "Results", "quote": "In addition, we display the azimuthally averaged normalized radial profiles as a metric to compare the two images quantitatively."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Acceptance criterion: normalised radial profile within 3 sigma of the observation", "evidence": [{"loc": "Results", "quote": "Model IV is within a $3\\sigma$ range around the observation in the normalized radial profile."}]}
+],
+"assumptions": [],
+"fitting": {"value": "No sampler or likelihood; manual iteration over model setups until agreement is reached", "evidence": [{"loc": "Introduction", "quote": "we tested different planet setup scenarios until we reached the best possible agreement between the synthetic and real observations by comparing their respective images and radial profiles"}]},
+"validation": {"value": "Higher-viscosity model VII gives an azimuthally symmetric ring and a profile within 3 sigma", "evidence": [{"loc": "Results", "quote": "Consequently, model VII leads to the best agreement between our synthetic observation and the real one."}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.6.2", "used_for": {"value": "Handling and self-calibrating the ALMA datasets", "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "to handle and self-calibrate the datasets"}]}},
+{"name": "FARGO3D", "version": "not stated", "used_for": {"value": "Multifluid 2D hydrodynamic planet-disk simulations (with modified mass-tapering)", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "The `FARGO3D` simulations were performed in two dimensions on a polar grid"}]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Radiative transfer to render synthetic 0.9 mm observations", "evidence": [{"loc": "Synthetic observations with RADMC-3D", "quote": "we performed a radiative transfer simulation and rendered a synthetic observation"}]}},
+{"name": "galario", "version": "not stated", "used_for": {"value": "Computing model visibilities at the observed uv-coverage", "evidence": [{"loc": "Results", "quote": "used the package `galario` to calculate the visibilities with the same uv-coverage as the observations"}]}}
+],
+"results_numeric": [
+{"quantity": "JvM epsilon_v, SB and LB images", "value": "0.69", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "We find $\\epsilon_v=0.69$ for the SB and LB images and $\\epsilon_v=0.88$ for the images with SB and LB combined."}]},
+{"quantity": "JvM epsilon_v, SB+LB combined images", "value": "0.88", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "ALMA Observations / Calibration", "quote": "We find $\\epsilon_v=0.69$ for the SB and LB images and $\\epsilon_v=0.88$ for the images with SB and LB combined."}]},
+{"quantity": "Outer ring peak radius", "value": "1.85'' (200 au)", "uncertainty": "0.1'' (11 au)", "units": "arcsec; au", "from_step": 3, "evidence": [{"loc": "Observational results: Outer ring", "quote": "we find that the outer disk peaks at $\\approx1.85''\\pm0.1''\\,$ from the disk center, which is $200\\pm11\\,$au at the distance of the source"}]},
+{"quantity": "Outer ring flux density", "value": "4.5", "uncertainty": "0.2 (excludes 10% flux-scale uncertainty)", "units": "mJy", "from_step": 3, "evidence": [{"loc": "Observational results: Outer ring", "quote": "We detect the ring to be $4.5\\pm0.2\\,$mJy, which does not include the $10\\%$ ALMA flux uncertainty."}]},
+{"quantity": "Outer ring peak optical depth", "value": "0.005", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Observational results: Outer ring", "quote": "this very low temperature translates into an equally low estimated optical depth of $\\tau_{\\text{peak}}=0.005$"}]},
+{"quantity": "Outer ring dust mass", "value": "0.7", "uncertainty": "0.07", "units": "Earth masses", "from_step": 3, "evidence": [{"loc": "Observational results: Outer ring", "quote": "we obtained a dust mass of $0.7\\pm0.07\\,M_\\oplus$, where we assumed a conservative uncertainty of $10\\%$"}]},
+{"quantity": "Total dust disk mass (from combined 435 mJy continuum flux)", "value": "66", "uncertainty": "not stated", "units": "Earth masses", "from_step": 3, "evidence": [{"loc": "Initial conditions", "quote": "$M_{\\rm{dust}}=66\\,M_\\oplus$ is the total dust disk mass obtained from the total observed flux of our combined ALMA dust continuum emission of $435$ mJy"}]},
+{"quantity": "Gap widths D1 (inner) and D2 (outer)", "value": "14 au and 79 au", "uncertainty": "not stated", "units": "au", "from_step": 4, "evidence": [{"loc": "Planet mass estimates", "quote": "This yields $D_1=14$ au for the inner and $D_2=79$ au for the outer gap"}]},
+{"quantity": "Gap-width planet mass ranges M_K", "value": "8-24 M_Jup (inner), 1.1-3.3 M_Jup (outer)", "uncertainty": "not stated", "units": "Jupiter masses", "from_step": 4, "evidence": [{"loc": "Planet mass estimates", "quote": "$8\\,M_{\\rm{Jup}}\\leq M_{K,1} \\leq 24\\,M_{\\rm{Jup}}$ for the inner and $1.1\\,M_{\\rm{Jup}} \\leq M_{K,2} \\leq 3.3\\,M_{\\rm{Jup}}$ for the outer planet"}]},
+{"quantity": "Minimum gap-opening masses for alpha = 1e-4", "value": "0.3 M_Jup (inner), 1.7 M_Jup (outer)", "uncertainty": "not stated", "units": "Jupiter masses", "from_step": 4, "evidence": [{"loc": "Planet mass estimates", "quote": "For $\\alpha=10^{-4}$, we obtain $M_{\\rm{min},1}=0.3\\,M_{\\rm{Jup}}$ for the inner and $M_{\\rm{min},2}=1.7\\,M_{\\rm{Jup}}$ for the outer planet."}]},
+{"quantity": "Best-fit planet orbits and masses (model VII)", "value": "inner 13 au, 8 M_Jup; outer 143 au, 3 M_Jup", "uncertainty": "not stated", "units": "au; Jupiter masses", "from_step": 7, "evidence": [{"loc": "abstract", "quote": "an inner planet located at $r_1 = 13\\,$au with a mass $M_1 = 8 M_{\\rm{Jup}}$ and an outer planet located at $r_2 = 143\\,$au with a mass $M_2 = 3 M_{\\rm{Jup}}$"}]},
+{"quantity": "Single-planet model I largest deviation (at 110 au) and model II deviation (at 200 au)", "value": "133 sigma and 4 sigma", "uncertainty": "not stated", "units": "sigma", "from_step": 7, "evidence": [{"loc": "Results", "quote": "Model I reaches its largest deviation at $110\\,$au with $133\\sigma$, while it is $4\\sigma$ at $200\\,$au for model II."}]},
+{"quantity": "Model III relative outer-to-inner peak intensity versus ALMA", "value": "86 times higher", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "Results", "quote": "the relative peak intensity of the outer ring is $86$ times higher than in the ALMA observation"}]},
+{"quantity": "Reduction of outer substructure strength, model V relative to IV", "value": "~80%", "uncertainty": "not stated", "units": "percent", "from_step": 7, "evidence": [{"loc": "Results", "quote": "This reduces the relative strength of the outer substructure by $\\sim 80\\%$ compared to model IV."}]},
+{"quantity": "Reduction of outer ring flux, model VI relative to IV", "value": "~40%", "uncertainty": "not stated", "units": "percent", "from_step": 7, "evidence": [{"loc": "Results", "quote": "This reduces the outer rings flux by $\\sim 40\\%$ relative to the base model IV."}]}
+],
+"findings_qualitative": [
+{"value": "Two-planet models IV-VII stay within 3 sigma of the normalised radial profile, while one-planet models deviate by more than 3 sigma", "evidence": [{"loc": "Discussion", "quote": "the models with a single planet have an above-significant deviation ($>3\\sigma$) from the observation, while the models with two planets IV-VII have a deviation of less than $3\\sigma$ in the radial profile"}]},
+{"value": "alpha = 1e-3 removes the azimuthal asymmetry of the outer ring seen at alpha = 1e-4", "evidence": [{"loc": "Results", "quote": "The outer substructure in the synthetic observation of model VII agrees well with the ALMA observation because it does not display the asymmetry seen in previous models."}]},
+{"value": "The proposed planets (8 and 3 M_Jup) are below current ALMA direct-detection capability", "evidence": [{"loc": "Conclusions", "quote": "This means that the detection of the proposed planets with $8\\,M_{\\rm{Jup}}$ and $3\\,M_{\\rm{Jup}}$ is still beyond our current ALMA capabilities."}]}
+],
+"claims": [
+{
+"hypothesis": "Two embedded planets, not one, are needed to explain both the inner and the newly resolved outer ring",
+"experiment": "Compared one-planet (I, II) and two-planet (III-VII) FARGO3D plus RADMC-3D models with the combined ALMA image via normalised radial profiles",
+"result": "One-planet models deviate by more than 3 sigma (model I up to 133 sigma); two-planet models IV-VII are within 3 sigma",
+"finding": "Two planets are required to reproduce both rings",
+"support": "supported",
+"evidence": [{"loc": "Discussion", "quote": "the models with a single planet have an above-significant deviation ($>3\\sigma$) from the observation, while the models with two planets IV-VII have a deviation of less than $3\\sigma$ in the radial profile"}]
+},
+{
+"hypothesis": "The initial gas surface density profile affects the inner-to-outer ring brightness ratio",
+"experiment": "Ran power-law (models I, III) and self-similar (models II, IV) initial profiles",
+"result": "The power-law model III overestimates the outer ring peak intensity relative to the inner ring by a factor of 86; model IV reproduces the ratio",
+"finding": "An exponentially tapered (self-similar) initial profile is needed",
+"support": "supported",
+"evidence": [{"loc": "abstract", "quote": "To match the very low brightness of the outer structure relative to the inner ring, the initial disk gas surface density profile needs to follow an exponentially tapered power law (self-similar solution), rather than a simple power-law profile."}]
+},
+{
+"hypothesis": "Planet masses and orbits can be constrained by matching the ALMA continuum",
+"experiment": "Planet radii and masses from the radial profile and gap-width relations, then tested in seven FARGO3D and RADMC-3D model setups",
+"result": "Model VII (alpha = 1e-3, self-similar profile) gives the best agreement and an azimuthally symmetric outer ring, with inner planet 8 M_Jup at 13 au and outer 3 M_Jup at 143 au",
+"finding": "The best matching setup has inner planet 8 M_Jup at 13 au and outer planet 3 M_Jup at 143 au",
+"support": "supported",
+"evidence": [{"loc": "Results", "quote": "Consequently, model VII leads to the best agreement between our synthetic observation and the real one."}]
+},
+{
+"hypothesis": "The outer planet needs to be old and massive to produce the outer ring",
+"experiment": "Delayed the outer planet by 6e5 yr (model V) and tapered its mass over 6e5 yr (model VI)",
+"result": "Models IV, V and VI all stay within 3 sigma; a 1.7 M_Jup planet that began forming 140 Kyr before the end still induces the outer ring",
+"finding": "Outer planet mass can be as low as 1.7-3 M_Jup, lower than earlier estimates, with formation timing not strongly constrained",
+"support": "partially",
+"evidence": [{"loc": "Discussion", "quote": "This means that the outer planets mass of $1.7 M_{\\rm{Jup}}$ in model V, where the planet started to form very recently ($140\\,$Kyr before the end of the simulation), is sufficient to successfully induce the outer substructure."}]
+},
+{
+"hypothesis": "The disk viscosity can be constrained by the symmetry of the outer ring",
+"experiment": "Compared alpha = 1e-4 models with alpha = 1e-3 model VII",
+"result": "Low alpha gives an asymmetric outer ring with strong accumulation absent in the ALMA image; alpha = 1e-3 gives a symmetric ring",
+"finding": "Favours alpha of about 1e-3 or higher, though the asymmetry at low alpha may be an artefact of not modelling planetary accretion",
+"support": "partially",
+"evidence": [
+{"loc": "Discussion", "quote": "Our study favors a (cite: s73) disk viscosity of $\\alpha\\gtrsim10^{-3}$ because we searched for an $\\alpha$ that avoids asymmetric accumulations in the outer ring"},
+{"loc": "Discussion", "quote": "we suspect that this accumulation is an artifact of not simulating the accretion of the surrounding material onto the planet."}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Recent ALMA observations resolve the faint outer ring suggested in earlier work", "evidence": [{"loc": "Introduction", "quote": "we calibrated and analyzed recent ALMA observations of the system to identify the main features and focused on resolving the outer ring that was suggested in (cite: w14; p15)."}]},
+{"field": "why_this_method", "value": "Assume planet-disk interaction drives the observed substructures and model it with hydrodynamics plus radiative transfer", "evidence": [{"loc": "Introduction", "quote": "in this work we assume the planet-disk interaction to be the main driver for the observed substructures of HD 100546"}]},
+{"field": "how_they_decided_enough", "value": "Iterated model setups until normalised radial profiles were within 3 sigma and the outer ring was azimuthally symmetric", "evidence": [
+{"loc": "Results", "quote": "Its normalized radial profile resides within a frame of $3\\sigma$ around the detection."},
+{"loc": "Introduction", "quote": "we tested different planet setup scenarios until we reached the best possible agreement between the synthetic and real observations by comparing their respective images and radial profiles"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Single-planet models I and II rejected because they produce no outer ring", "evidence": [{"loc": "Results", "quote": "However, these models do not create an outer ring because there is no second planet that might induce an outer trap."}]},
+{"value": "Power-law initial gas profile rejected because the outer ring comes out too bright relative to the inner ring", "evidence": [{"loc": "Results", "quote": "In model III the outer structures are relatively bright compared to the inner ring, which is strongly overestimated"}]},
+{"value": "Other ring-forming mechanisms (dead-zone edge, ice lines, magnetic disk winds) are mentioned but not tested", "evidence": [{"loc": "Introduction", "quote": "in this work we assume the planet-disk interaction to be the main driver for the observed substructures of HD 100546"}]}
+],
+"limitations_admitted": [
+{"value": "Planet accretion not simulated; accumulation near the outer planet may be an artefact", "evidence": [{"loc": "Mass-tapering model", "quote": "the actual physical accretion process is ignored in this present work, that is, there is no mass transfer from the dust or gas fluids onto the planet."}]},
+{"value": "Planet orbits fixed, migration neglected", "evidence": [{"loc": "Mass-tapering model", "quote": "We also fixed the planets orbit and neglected its potential migration."}]},
+{"value": "Dust growth neglected", "evidence": [{"loc": "Discussion", "quote": "In our current approach, however, we modeled gas and dust evolution simultaneously, but we neglected dust growth."}]},
+{"value": "Simulations run for 0.74 Myr rather than the system age because of computational cost", "evidence": [{"loc": "Hydrodynamic simulations with FARGO3D", "quote": "However, a simulation of such a duration is computationally unfeasible because we need to choose a high grid resolution"}]},
+{"value": "Inner planet orbit could not be taken from a resolved local minimum", "evidence": [{"loc": "Planet locations", "quote": "Because we were unable to resolve the corresponding local minimum, we reverted to the estimated planet position from previous studies"}]},
+{"value": "One planet per gap is a simplification", "evidence": [{"loc": "Planet locations", "quote": "It is important to note that the assumption that exactly one planet is responsible for each gap is a simplification."}]}
+],
+"referee_caveats_inferred": [
+"Model selection is by eye over seven hand-picked setups with a 3 sigma criterion; no parameter grid, likelihood or uncertainties on planet mass or radius",
+"Planet masses are largely set by the gap-width formula (lowest K) and the Crida/Lodato floor, so the results depend on the assumed K, alpha and temperature rather than a fit",
+"The inner planet radius (13 au) is inherited from earlier work and not measured here",
+"Observation log table program IDs differ from those in the text",
+"Radial-profile sigma and the effect of image-plane normalisation on the comparison are not described",
+"Degeneracy between alpha, planet mass and formation timing is only partly explored"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"tclean and imaging parameters for the SB, LB and combined images",
+"Self-calibration details beyond solution intervals",
+"FARGO3D temperature, aspect ratio and numerical setup, and the modified mass-taper code",
+"RADMC-3D and galario settings, and the model inclination and PA",
+"Radial profile extraction and sigma definition used in the model comparison",
+"Resolution of the program ID discrepancy between text and observation table"
+],
+"estimated_data_volume_inferred": "Roughly 50-150 GB of raw ALMA data for the three execution blocks (one extended with 10.8 km baselines and two compact), with the 2D FARGO3D runs needing substantial compute but small data products",
+"score_inferred": 3,
+"score_reason": "ALMA data are public and self-calibration intervals are given, and the simulation grid and main parameters are tabulated, but imaging parameters, FARGO3D thermal setup, the modified code, and the profile-comparison details are missing, and the model comparison is manual",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Imaging recipe and simulation setup are incomplete and model selection is a manual iteration, so the main numbers (13 au/8 M_Jup, 143 au/3 M_Jup) could not be rederived without extra choices",
+"methods_papers": [
+{"citation": "Andrews, S. M., Huang, J., Pérez, L. M., et al. 2018, ApJL, 869, L41 (cite: andrews2018)", "why": "DSHARP calibration procedure followed for channel averaging"},
+{"citation": "Jorsater & van Moorsel 1995 (cite: jorsater1995); Andrews et al. 2021 (cite: andrews2021)", "why": "JvM correction of the images"},
+{"citation": "Benitez-Llambay & Masset 2016 (cite: b16); Masset 2000 (cite: m0)", "why": "FARGO3D code"},
+{"citation": "Dullemond et al. 2012 (cite: d12)", "why": "RADMC-3D radiative transfer code"},
+{"citation": "Casassus & Pérez 2019 (cite: casassus_2019)", "why": "Disk inclination and position angle used for deprojection"}
+],
+"companion_papers": [
+{"citation": "Pinilla, Birnstiel & Walsh 2015 (cite: p15)", "why": "Earlier two-planet model of HD 100546; source of the 13 au inner planet location and mass comparisons"},
+{"citation": "Fedele et al. 2021 (cite: fedele2021)", "why": "Independent ALMA 870 micron analysis and SPH modelling of the same disk, compared in the discussion"},
+{"citation": "Walsh et al. 2014 (cite: w14)", "why": "Earlier ALMA detection of the faint outer ring"},
+{"citation": "Pérez et al. 2020 (cite: perez_2020)", "why": "Prior ALMA observations of the compact disk of HD 100546"}
+],
+"related_projects_or_surveys": ["DSHARP"]
+}

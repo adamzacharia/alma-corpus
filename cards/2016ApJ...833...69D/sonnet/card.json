@@ -1,0 +1,959 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...833...69D",
+  "title": "ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: CO Luminosity Functions and the Evolution of the Cosmic Density of Molecular Gas",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Decarli, Roberto",
+  "n_authors": 40,
+  "arxiv_id": "1607.06770",
+  "doi": "10.3847/1538-4357/833/1/69",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00146.S",
+   "2013.1.00718.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we use ASPECS, the ALMA Spectroscopic Survey in the Hubble Ultra Deep Field (UDF) in band 3 and band 6, to place blind constraints on the CO luminosity function"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "cosmology"
+   ],
+   "targets": [
+    {
+     "name": "Hubble Ultra Deep Field (ASPECS field)",
+     "coordinates": {
+      "value": "RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "centered at RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "blind CO detections at z~0.5-4.5",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "centered at RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "line identification with optical/near-IR spectroscopic, grism or photometric redshifts",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "centered at RA = 03:32:37.900, Dec = –27:46:25.00 (J2000.0)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the blind CO luminosity functions and the evolution of the cosmic molecular gas density rho(H2) up to z~4.5, from ALMA band 3 and 6 scans of the UDF?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "place blind constraints on the CO luminosity function and the evolution of the cosmic molecular gas density as a function of redshift up to $z\\sim 4.5$"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 3 (3mm) and Band 6 (1mm)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "two frequency scans at 3mm (band 3) and 1mm (band 6) obtained with ALMA in the UDF"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "3mm: 84-115 GHz, single pointing; 1mm: 212-272 GHz, 7-point mosaic",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The 3mm scan covers the 84-115 GHz range with a single spatial pointing."
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "The 1mm scan encompasses the frequency window 212-272 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=1-0 through 6-5 (CO(2-1) to CO(4-3) used in luminosity functions)",
+     "rest_frequency": "CO(2-1) 230.538 GHz; CO(3-2) 345.796 GHz; CO(4-3) 461.041 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| CO(2-1) | 230.538 | 1.0059 | 1.7387 | 1.4277 | 1920 | 3 |"
+      }
+     ]
+    },
+    {
+     "species": "[C II]",
+     "transition": "2P3/2-2P1/2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "1mm.4 | 03:32:37.36 | –27:46:10.0 | 0.85 | 0.65 | N | *i* | \\[C ii\\] | 6.3570"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~3.5'' x 2.0'' at 3mm, ~1.5'' x 1.0'' at 1mm",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The synthesized beams are $\\sim 3.5''\\times 2.0''$ at 3mm and $\\sim 1.5''\\times 1.0''$ at 1mm."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.15 mJy/beam per 20 MHz channel (3mm); ~0.5 mJy/beam per 30 MHz channel (1mm)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The typical RMS noise is 0.15 mJy beam$^{-1}$ per 20 MHz channel."
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "The typical depth of the data is $\\sim 0.5$ mJy beam$^{-1}$ per 30 MHz channel."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST / optical-NIR spectroscopy and photometry",
+     "provided": {
+      "value": "Redshifts (slit spectroscopy, 3D-HST grism, photometric) for line identification and stacking",
+      "evidence": [
+       {
+        "loc": "3.1.1 Blind detections",
+        "quote": "Optical spectroscopy (cite: lefevre05; coe06; skelton14; morris15) is considered secure"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Blind CO line catalog (10 3mm and 11 1mm candidates) with line fluxes, widths, frequencies",
+      "evidence": [
+       {
+        "loc": "3 Analysis",
+        "quote": "We first concentrated on the “blind” CO detections presented in Paper I (Tab. 2)"
+       }
+      ]
+     },
+     "citation": "Paper I (cite: walter16)"
+    },
+    {
+     "what": {
+      "value": "CO excitation ratios r_J1 = 0.76, 0.42, 0.23 for J=2,3,5",
+      "evidence": [
+       {
+        "loc": "3.2 CO luminosity functions",
+        "quote": "we adopt $r_{\\rm J1}$=$0.76\\pm0.09$, $0.42\\pm0.07$, $0.23\\pm0.04$ for J=2,3,5"
+       }
+      ]
+     },
+     "citation": "(cite: daddi15)"
+    },
+    {
+     "what": {
+      "value": "1mm continuum source flux densities used for dust-based ISM masses",
+      "evidence": [
+       {
+        "loc": "3.4 Estimates from dust continuum emission",
+        "quote": "for each 1mm continuum source (see the companion paper (cite: aravena16a)), the ISM mass is computed"
+       }
+      ]
+     },
+     "citation": "(cite: aravena16a)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Semi-analytical model and empirical CO luminosity function predictions (Lagos+12, Popping+16, Vallini+16) compared with the measurements",
+     "evidence": [
+      {
+       "loc": "3.2 CO luminosity functions",
+       "quote": "we include the predictions based on semi-analytical models by (cite: lagos12) and (cite: popping16) and on empirical IR luminosity function of *Herschel* sources by (cite: vallini16)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observations, data reduction and imaging are described in Paper I",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "Details on the observations and data reduction are presented in Paper I, but the relevant information is briefly summarized here."
+       }
+      ]
+     },
+     "from_reference": "Paper I (cite: walter16)"
+    },
+    {
+     "what": {
+      "value": "Fidelity estimate from negative peaks",
+      "evidence": [
+       {
+        "loc": "3.1.1 Blind detections",
+        "quote": "as described in Sec. 3.1.1 of Paper I"
+       }
+      ]
+     },
+     "from_reference": "Paper I (cite: walter16)"
+    },
+    {
+     "what": {
+      "value": "Dust-based ISM mass recipe",
+      "evidence": [
+       {
+        "loc": "3.4 Estimates from dust continuum emission",
+        "quote": "These are derived following (cite: scoville14)."
+       }
+      ]
+     },
+     "from_reference": "(cite: scoville14)"
+    },
+    {
+     "what": {
+      "value": "alpha_CO = 3.6",
+      "evidence": [
+       {
+        "loc": "3.3 Cosmic H2 mass density",
+        "quote": "Following (cite: daddi10a), we thus assume $\\alpha_{\\rm CO} = 3.6$"
+       }
+      ]
+     },
+     "from_reference": "(cite: daddi10a)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibration and imaging settings (all in Paper I)",
+    "ALMA project codes and observing dates",
+    "Exact floating-average channel widths and S/N thresholds of the blind search",
+    "Redshift-bin volume derivation details",
+    "Luminosity bin edges and mapping to the plotted points",
+    "Gamma_RJ values used for the dust masses",
+    "Complete catalog of mock line parameters for completeness"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Blind line search and line identification",
+    "method": {
+     "value": "Floating average of channels in 50-300 km/s bins, S/N peak selection; identification via multiple lines, absence of counterparts, and optical/NIR redshifts",
+     "evidence": [
+      {
+       "loc": "3.1.1 Blind detections",
+       "quote": "we perform a floating average of consecutive frequency channels in bins of $\\sim$50–300 km s$^{-1}$ in the imaged cubes."
+      }
+     ]
+    },
+    "software": [
+     "findclumps.cl"
+    ],
+    "key_parameters": [
+     {
+      "value": "21 line candidates (10 at 3mm, 11 at 1mm); S/N>5",
+      "evidence": [
+       {
+        "loc": "3.1.1 Blind detections",
+        "quote": "The final catalogue consists of 10 line candidates from the 3mm cube, and 11 from the 1mm cube."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fit to candidate spectra for flux, width, frequency",
+     "evidence": [
+      {
+       "loc": "3.1.1 Blind detections",
+       "quote": "We use a Gaussian fit of the candidate spectra to estimate the line flux, width, and frequency"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Bootstrap of 1000 redshift draws proportional to comoving volume over possible line identifications",
+     "evidence": [
+      {
+       "loc": "3.1.1 Blind detections",
+       "quote": "We then run 1000 extractions of the redshift values picked from their probability distributions"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fidelity and completeness",
+    "method": {
+     "value": "Fidelity from negative peaks; completeness from 2500 injected mock point-source lines",
+     "evidence": [
+      {
+       "loc": "3.1.1 Blind detections",
+       "quote": "This is obtained by creating a sample of 2500 mock lines (as point sources)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "fidelity = (Npos-Nneg)/Npos",
+      "evidence": [
+       {
+        "loc": "3.2 CO luminosity functions",
+        "quote": "the fidelity at a given S/N is defined as $(N_{\\rm pos}-N_{\\rm neg})/N_{\\rm pos}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux boosting argued negligible due to S/N>5",
+     "evidence": [
+      {
+       "loc": "3.1.1 Blind detections",
+       "quote": "make the impact of flux boosting negligible in our analysis"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Line luminosity and CO luminosity functions",
+    "method": {
+     "value": "L' from Solomon+97 formula; Phi = (1/V) sum Fid/C in 1-dex bins; Gehrels Poisson errors",
+     "evidence": [
+      {
+       "loc": "3.2 CO luminosity functions",
+       "quote": "The uncertainties on $\\Phi(\\log L_i)$ are set by the Poissonian errors on $N_i$, according to (cite: gehrels86)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Planck15-like cosmology H0=70, Om=0.3, OL=0.7",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "$H_0=70$ km s$^{-1}$ Mpc$^{-1}$, $\\Omega_{\\rm m}=0.3$ and $\\Omega_{\\Lambda}=0.7$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Comparison with Lagos+12, Popping+16, Vallini+16 predictions and HDF-N",
+     "evidence": [
+      {
+       "loc": "3.2 CO luminosity functions",
+       "quote": "we include the predictions based on semi-analytical models by (cite: lagos12) and (cite: popping16) and on empirical IR luminosity function of *Herschel* sources by (cite: vallini16), as well as the constraints obtained by the earlier study of the HDF–N"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Convert to CO(1-0) luminosity functions",
+    "method": {
+     "value": "log L'(1-0) = log L'(J) - log r_J1 with Daddi+15 template",
+     "evidence": [
+      {
+       "loc": "3.2 CO luminosity functions",
+       "quote": "$$\\log L_{\\rm CO(1-0)}'=\\log L_{\\rm CO(J-[J-1])}'-\\log r_{\\rm J1}$$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "r41 = 0.31±0.06 by interpolation (20% uncertainty)",
+      "evidence": [
+       {
+        "loc": "3.2 CO luminosity functions",
+        "quote": "yielding $r_{41}$=$0.31\\pm0.06$, where we conservatively assume a 20% uncertainty"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Robustness checked with the CO(2-1) bin where excitation corrections are small",
+     "evidence": [
+      {
+       "loc": "3.2 CO luminosity functions",
+       "quote": "This result is robust against CO excitation uncertainties: For example, it is already apparent in the $\\langle z\\rangle =1.43$ bin, where we covered the CO(2-1) line in our 3mm cube"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Cosmic H2 density",
+    "method": {
+     "value": "M_H2 = alpha_CO L'(1-0); rho(H2) = (1/V) sum M P / C",
+     "evidence": [
+      {
+       "loc": "3.3 Cosmic H2 mass density",
+       "quote": "$$M_{\\rm H2}=\\alpha_{\\rm CO} \\, L_{\\rm CO(1-0)}'$$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO = 3.6 Msun (K km/s pc^2)^-1 for all sources",
+      "evidence": [
+       {
+        "loc": "3.3 Cosmic H2 mass density",
+        "quote": "we thus assume $\\alpha_{\\rm CO} = 3.6$ M$_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ for all the sources in our sample"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Not extrapolated beyond the observed luminosity range",
+     "evidence": [
+      {
+       "loc": "3.3 Cosmic H$_2$ mass density",
+       "quote": "we do not attempt to correct for undetected galaxies in lower luminosity bins given the large uncertainties in the individual luminosity bins and the unknown intrinsic shape of the CO luminosity function."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Dust-based rho(ISM) comparison",
+    "method": {
+     "value": "Scoville+14 recipe on 1mm continuum sources detected to S/N=3, summed per redshift bin",
+     "evidence": [
+      {
+       "loc": "3.4 Estimates from dust continuum emission",
+       "quote": "We include here all the sources detected down to S/N=3 in the 1mm continuum."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "nu = 242 GHz, Gamma0 = 0.71",
+      "evidence": [
+       {
+        "loc": "3.4 Estimates from dust continuum emission",
+        "quote": "$\\Gamma_0=0.71$ is the tuning value obtained at low-$z$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust temperature 25 K",
+      "evidence": [
+       {
+        "loc": "3.4 Estimates from dust continuum emission",
+        "quote": "The dust temperature (implicit in the definition of $\\Gamma_{\\rm RJ}$), is set to 25 K."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with CO-based estimates",
+     "evidence": [
+      {
+       "loc": "3.4 Estimates from dust continuum emission",
+       "quote": "we compare the constraints on $\\rho$(H$_2$) inferred from CO with those on $\\rho$(ISM) derived from the dust continuum in our observations of the UDF."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "findclumps.cl",
+    "version": "not stated",
+    "used_for": {
+     "value": "Blind search of line candidates",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "The code for the blind search of line candidates is publicly available at http://www.mpia.de/homes/decarli/ASPECS/findclumps.cl."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Fraction of CO luminosity recovered (lower bound)",
+    "value": ">50%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 Summary and Discussion",
+      "quote": "we recover a large part ($>$50%) of the total CO luminosity per comoving volume"
+     }
+    ]
+   },
+   {
+    "quantity": "Evolution of cosmic H2 density z~2 vs z=0",
+    "value": "3-10 times larger",
+    "uncertainty": "large",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Cosmic H2 mass density",
+      "quote": "The global amount of molecular gas stored in galaxies at the peak epoch of galaxy assembly is 3–10 times larger than at the present day."
+     }
+    ]
+   },
+   {
+    "quantity": "Completeness 50% limit at 3mm (J>1)",
+    "value": "(4-6)e9",
+    "uncertainty": "not stated",
+    "units": "K km/s pc^2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1.1 Blind detections",
+      "quote": "Our analysis is 50% complete down to line luminosities of $(4-6) \\times 10^9$ K km s$^{-1}$ pc$^2$ at 3mm for any J$>$1"
+     }
+    ]
+   },
+   {
+    "quantity": "Cosmic variance fractional uncertainty at z~2.5",
+    "value": "~20% (~60% with Poisson)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4 Summary and Discussion",
+      "quote": "the fractional uncertainty in the number counts due to cosmic variance is $\\sim 20$% ($\\sim 60$% if we include Poissonian fluctuations)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO luminosity function knee shifts to higher luminosities from z~0 to z~2, with excess of bright sources relative to models at z>1, while 1mm shows low CO excitation",
+    "evidence": [
+     {
+      "loc": "3.2 CO luminosity functions",
+      "quote": "Our measurements reveal that the knee of the CO(1-0) luminosity function shifts toward higher luminosities as we move from $z\\approx 0$"
+     }
+    ]
+   },
+   {
+    "value": "Dust-based densities are consistent with CO-based at z<2 but lower at z>2",
+    "evidence": [
+     {
+      "loc": "3.4 Estimates from dust continuum emission",
+      "quote": "discrepancies are found at $z>2$, where $\\rho$(H$_2$) estimates based on CO tend to be larger than $\\rho$(ISM) estimates based on dust"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the CO luminosity function evolve from z~0 to z~2?",
+    "experiment": "Blind CO LFs in redshift bins, converted to CO(1-0)",
+    "result": "Knee shifts to higher luminosities; excess of bright sources at z>1 vs models",
+    "finding": "More CO-luminous, gas-rich galaxies at z~2 than models predict",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 CO luminosity functions",
+      "quote": "at $z>1$ they suggest an excess of CO–luminous sources, compared to the current models"
+     }
+    ]
+   },
+   {
+    "hypothesis": "How does rho(H2) evolve with redshift?",
+    "experiment": "Sum of completeness- and fidelity-corrected H2 masses per bin",
+    "result": "3-10x higher at z~2 than z=0, possible decline at z>3",
+    "finding": "Cosmic gas density follows the SFR density evolution partly",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "shows a factor 3–10 drop from $z \\sim 2$ to $z \\sim 0$ (with significant error bars), and possibly a decline at $z>3$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do dust-based and CO-based gas densities agree?",
+    "experiment": "Scoville+14 recipe on 1mm continuum sources",
+    "result": "Roughly consistent at z<2, dust lower at z>2",
+    "finding": "Possible causes are dust temperature/opacity or alpha_CO",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.4 Estimates from dust continuum emission",
+      "quote": "even applying the more recent calibration would not be sufficient to significantly mitigate the discrepancy"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Blank-field scan avoids pre-selection bias and gives a well-defined volume",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "By focusing on a blank field, we avoid the biases due to pre-selection of sources."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Stack of 36 spectroscopic-redshift galaxies excluded due to only ~2-sigma detections",
+     "evidence": [
+      {
+       "loc": "3.1.2 CO line stack",
+       "quote": "we opt not to include them in the remainder of the analysis"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "rho(H2) is a lower limit as faint end not recovered; Poisson errors and cosmic variance large",
+     "evidence": [
+      {
+       "loc": "4 Summary and Discussion",
+       "quote": "our constraints on $\\rho$(H$_2$) are actually lower limits, in the sense that they do not recover the full extent of the luminosity function"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single small field with strong cosmic variance",
+    "Ambiguous line identifications for 11 of 21 lines handled statistically",
+    "Fixed alpha_CO and excitation template drive rho(H2)",
+    "Few sources per bin"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Blind search code public; data in Paper I",
+    "evidence": [
+     {
+      "loc": "footnote 1",
+      "quote": "The code for the blind search of line candidates is publicly available"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "findclumps.cl at mpia.de/homes/decarli/ASPECS",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "The code for the blind search of line candidates is publicly available at http://www.mpia.de/homes/decarli/ASPECS/findclumps.cl."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Cubes and calibration details (Paper I)",
+    "Project codes",
+    "Redshift catalogs compilation"
+   ],
+   "estimated_data_volume_inferred": "Large: two spectral-scan cubes (~tens of GB raw each)",
+   "score_inferred": 3,
+   "score_reason": "Analysis equations are clear, but data reduction and the line catalog depend on Paper I and project codes are not stated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Depends on Paper I for imaging and the line catalog, and project codes are not printed."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Paper I (cite: walter16)",
+     "why": "Data reduction, blind search, fidelity"
+    },
+    {
+     "citation": "(cite: scoville14)",
+     "why": "Dust-based ISM mass recipe"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: aravena16a)",
+     "why": "1mm continuum sources"
+    },
+    {
+     "citation": "(cite: decarli16)",
+     "why": "Detailed analysis of CO-bright sources"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASPECS",
+    "Hubble Ultra Deep Field",
+    "3D-HST"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4cbfa53294b40b9c4a72219e05145c3e",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:19",
+  "usage": {
+   "input_tokens": 31560,
+   "output_tokens": 7628,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.070306,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 57,
+  "quotes_ok": 57,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2013.1.00146.S",
+   "2013.1.00718.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 83,
+   "stated": 45,
+   "rate": 0.542
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:04",
+  "custom_id": "repair-sonnet-a746c4edd85f375b9e615ce1c1fdc4b8",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "we include the predictions based on semi-analytical models by (cite: lagos12) and (cite: popping16) and on empirical IR luminosity function of *Herschel* sources by (cite: vallini16), as well as the constraints obtained by the earlier study of the HDF–N"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "This result is robust against CO excitation uncertainties: For example, it is already apparent in the $\\langle z\\rangle =1.43$ bin, where we covered the CO(2-1) line in our 3mm cube"
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "we do not attempt to correct for undetected galaxies in lower luminosity bins given the large uncertainties in the individual luminosity bins and the unknown intrinsic shape of the CO luminosity function."
+   },
+   {
+    "path": "analysis_steps[5].validation.evidence[0]",
+    "old": null,
+    "new": "we compare the constraints on $\\rho$(H$_2$) inferred from CO with those on $\\rho$(ISM) derived from the dust continuum in our observations of the UDF."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

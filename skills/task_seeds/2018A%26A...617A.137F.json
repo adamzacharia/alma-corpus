@@ -1,0 +1,260 @@
+{
+ "bibcode": "2018A&A...617A.137F",
+ "title": "An ALMA 3 mm continuum census of Westerlund 1",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201832754",
+ "arxiv_id": "1804.04675",
+ "fields": [
+  "star_formation",
+  "stellar_physics",
+  "milky_way_ism"
+ ],
+ "question": "Determine mass-loss rates and mm properties of the post-main-sequence massive stars (WR, OB super/hypergiants, cool hypergiants) in the cluster Westerlund 1 from a 3 mm ALMA continuum census",
+ "alma_project_codes": [
+  "2013.1.00897.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~100 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "fitted beam 750×570 mas",
+  "sensitivity": "~28 µJy/beam noise in central regions"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "3.6 cm radio flux densities and limits used for spectral indices",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "3.6 cm flux densities and spectral indices taken from Do10 are also listed."
+     }
+    ]
+   },
+   "citation": "Dougherty et al. 2010 (Do10)"
+  },
+  {
+   "what": {
+    "value": "Teff and v_inf for B supergiants, WN and WC stars",
+    "evidence": [
+     {
+      "loc": "3.1.3 Mass-loss determination",
+      "quote": "we have adopted the (observational) compilations of Crowther et al. (2006b) and Searle et al. (2008) for B0-B5 supergiants; Crowther (2007) and Sander et al. (2012) for WN stars"
+     }
+    ]
+   },
+   "citation": "Crowther et al. (2006b); Searle et al. (2008); Crowther (2007); Sander et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "Spectral types of stars",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Spectral type identifications have been taken from Crowther et al. (2006a) for WR stars, Clark et al. (2010) for the YHGs and RSGs"
+     }
+    ]
+   },
+   "citation": "Crowther et al. 2006a; Clark et al. 2010; Negueruela et al. 2010"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-calibrate and self-calibrate",
+   "method": "Pipeline calibration, re-calibration with less flagging and REMCLOUD for 30 June, phase self-cal then final amp+phase",
+   "software": [
+    "CASA",
+    "REMCLOUD",
+    "GAINCAL",
+    "APPLYCAL"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image mosaic",
+   "method": "Multi-scale mosaic CLEAN with natural weighting after subtracting Wd1-9 compact component; PB correction",
+   "software": [
+    "CASA CLEAN"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Astrometric alignment",
+   "method": "Gaussian fit to Wd1-9 compact component in ALMA and FORS images and shift ALMA image",
+   "software": [
+    "AIPS",
+    "HGEOM",
+    "JMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Source detection and catalogue",
+   "method": "SEAC flood-fill with 5σ seed and 3σ flood thresholds on local rms; lower seeds 4.5/4σ for optically known undetected stars; cross-match with catalogues",
+   "software": [
+    "SEAC"
+   ],
+   "key_parameters": [
+    "σ from rms in 6×6 grid cells"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure flux densities and sizes",
+   "method": "Gaussian fits (JMFIT) to pixels >3×local rms, or SEAC island integrated flux; LAS for non-Gaussian; IRING annular profiles; 5% calibration error added in quadrature",
+   "software": [
+    "AIPS JMFIT",
+    "IRING",
+    "SEAC"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive spectral indices",
+   "method": "Two-point index between 8.6 GHz (3.6 cm) Do10 fluxes and 3 mm; limits from 170 µJy/beam radio limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Derive mass-loss rates",
+   "method": "Wright & Barlow free-free relation (Eq. 1) with Gaunt factor approximation, smooth wind (fcl=1)",
+   "software": [],
+   "key_parameters": [
+    "Te = 0.5 Teff; d = 5 kpc; mu=1.4,Z=1,gamma=1 for OB; mu=4.0 (WN6 or earlier), 2.0 (later WN), 4.7 (WC8/9); mu=1.6, gamma=0.8, Z=0.9 for BHGs"
+   ],
+   "assumptions": [
+    "mm flux not affected by binarity; wind emission thermal; two non-thermal sources excluded"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test whether sources are resolved and wind photosphere size",
+   "method": "Compare fitted sizes with analytic mm-photosphere radius from Wright & Barlow",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total 3 mm sources detected",
+   "value": "101",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.2 Identification of 3 mm stars",
+     "quote": "The total 3 mm catalogue list therefore contains 101 sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar sources detected",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "stars",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 3-mm star characteristics",
+     "quote": "Of the total 101 objects detected in these observations, 50 have been identified as stellar sources"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean WR mass-loss rate (excl. WR S, Wd1-13)",
+   "value": "3.6e-5",
+   "uncertainty": "±0.4e-5",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.2 Mass-loss rates",
+     "quote": "( M [˙] ∼ 3.6 ± 0.4 × 10 [−][5] _M_ ⊙ yr [−][1] ; excluding WR S and Wd1-13)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean WC mass-loss rate",
+   "value": "4.2e-5",
+   "uncertainty": "±0.7e-5",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.2 Mass-loss rates",
+     "quote": "∼ 4.2 ± 0.7 × 10 [−][5] _M_ ⊙ yr [−][1] ) are entirely consistent"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam / 3σ-like noise",
+   "value": "750×570 mas; ~28 µJy/beam",
+   "uncertainty": "not stated",
+   "units": "mas; µJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 Observations and imaging",
+     "quote": "The final image has a fitted beam of 750×570 mas."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-loss rate of LBV Wd1-243 (3 mm)",
+   "value": "log Mdot ~ -4.6",
+   "uncertainty": "not stated",
+   "units": "log Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 The LBV Wd1-243",
+     "quote": "mm determinations (log( M [˙] /M ⊙ yr [−][1] ) ∼−4.6; data obtained in 2015)"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on magnetar continuum",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "µJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7. The magnetar CXO J164710.2-455216",
+     "quote": "our ALMA observations yield only an upper limit to the continuum flux of 65 µJy beam [−][1] ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "SEAC code availability/parameters beyond 5σ/3σ thresholds and 6x6 grid",
+  "Which pointings and model components were used in each self-cal iteration; solints",
+  "CLEAN threshold, mask, cell and image size, iteration counts",
+  "Exact scale-size units (listed '1, 14, 12, 37 & 119' appear garbled)",
+  "Exact Teff/v_inf choices for stars not in tables and values of fcl used (assumed 1)",
+  "REMCLOUD parameters"
+ ],
+ "missing_for_reproduction": [
+  "Full CLEAN parameters",
+  "Self-cal details",
+  "SEAC code",
+  "Adopted stellar parameters for all stars"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Data public and main steps described, but imaging/self-cal parameters and SEAC details missing; results mostly numeric tables.",
+ "rediscovery_reason": "Public data, numeric flux catalogue and mass-loss formula given, though imaging details partial.",
+ "source_card": "cards/2018A%26A...617A.137F/sonnet/card.md"
+}

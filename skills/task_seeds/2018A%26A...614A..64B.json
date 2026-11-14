@@ -1,0 +1,226 @@
+{
+ "bibcode": "2018A&A...614A..64B",
+ "title": "Magnetic fields at the onset of high-mass star formation",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201732378",
+ "arxiv_id": "1802.00005",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the magnetic field properties (morphology, strength, stability) at the earliest evolutionary stage of high-mass star formation in the starless region IRDC 18310-4?",
+ "alma_project_codes": [
+  "2015.1.00492.S"
+ ],
+ "data": {
+  "bands": "1 mm band (1.3 mm), full polarization",
+  "arrays": "not stated",
+  "angular_resolution": "1.01'' x 0.83'' (PA 89 deg)",
+  "sensitivity": "1sigma rms 0.15 mJy/beam (Stokes I), 6 uJy/beam (linear polarization)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N2H+ line width ~0.3 km/s used for sigma_v",
+    "evidence": [
+     {
+      "loc": "4.1 Magnetic field strength via Davis-Chandrasekhar-Fermi method",
+      "quote": "The one-dimensional velocity dispersion $\\sigma_{v}$ is estimated from the width of the N$_2$H$^+$ line measured in this region (cite: beuther2015a)."
+     }
+    ]
+   },
+   "citation": "(cite: beuther2015a)"
+  },
+  {
+   "what": {
+    "value": "Average density n=10^6 cm^-3 and clump line width 1.5 km/s, single-dish column density 1.3e23 cm^-2",
+    "evidence": [
+     {
+      "loc": "4.1 Magnetic field strength via Davis-Chandrasekhar-Fermi method",
+      "quote": "We estimate $\\rho$ assuming an average number density $n=10^6$ cm$^{-3}$ (cite: beuther2013a)"
+     }
+    ]
+   },
+   "citation": "(cite: beuther2013a)"
+  },
+  {
+   "what": {
+    "value": "MAMBO 1.2 mm flux densities (132 mJy in 11'', ~410 mJy in primary beam)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "within the inner $11''$ beam size is 132 mJy"
+     }
+    ]
+   },
+   "citation": "(cite: beuther2002a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image Stokes I, Q, U and combine fields",
+   "method": "Mosaic of two fields, natural weighting with small uv-taper; consistency tested using Q/U residuals",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive core masses and column densities",
+   "method": "Optically thin dust emission from 1.3 mm flux within 4 sigma contours",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T~15 K, gas-to-dust 150, kappa_1.3mm~0.9 cm2/g (Ossenkopf & Henning thin ice mantles, 1e6 cm-3)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Magnetic field strength via DCF",
+   "method": "B = sqrt(4 pi rho) sigma_v/sigma_psi with sigma_psi from Stokes Q and U",
+   "software": [],
+   "key_parameters": [
+    "n=1e6 cm-3, mu=2.8 m_p, sigma_v=0.13 km/s from N2H+ width 0.3 km/s"
+   ],
+   "assumptions": [
+    "Same sigma_v and n for all sub-regions; frozen-in field, Alfven waves"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Structure function analysis of polarization angles",
+   "method": "Fit square of S2(l) with b(l)+a2' l^2 for l>0.5'' and take intercept b(0) as angle dispersion",
+   "software": [],
+   "key_parameters": [
+    "fit for l>0.5''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Energy ratio and mass-to-flux ratio",
+   "method": "Alfven velocity, beta~3(sigma_v/sigma_A)^2, M/Phi=7.6e-24 N_H2/B in critical units",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Alfven velocity in plane of sky equals that along line of sight"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Synthesized beam",
+   "value": "1.01 x 0.83 (PA 89)",
+   "uncertainty": "not stated",
+   "units": "arcsec, deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The synthesized beam of these images is $1.01''\\times 0.83''$ (PA 89$^o$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Core masses mm1-mm4",
+   "value": "22.4, 9.6, 16.7, 4.5",
+   "uncertainty": "factor 2",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| mm1 | 4.9 | 19.4 | 5.7 | 22.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "B_DCF mm1, mm2, mm3",
+   "value": "0.3, 0.6, 1.3",
+   "uncertainty": "0.1, 0.2, 0.4",
+   "units": "mG",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| mm2    |      9.8      |      0.6$\\pm$0.2       |   8.8   |     0.6$\\pm$0.2      |"
+    }
+   ]
+  },
+  {
+   "quantity": "B_SF mm1, mm2, mm3",
+   "value": "3.7, 0.6, 1.7",
+   "uncertainty": "1.3, 0.2, 0.6",
+   "units": "mG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| mm1    |     23.1      |      0.3$\\pm$0.1       |   1.6   |     3.7$\\pm$1.3      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent-to-magnetic energy ratio beta",
+   "value": "0.18 (clump), 0.008 (cores)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Magnetic field implications",
+     "quote": "turbulent-to-magnetic energy ratio of $\\beta \\approx 0.18$ whereas the lower $\\sigma_{v}$ for the individual cores would result in $\\beta \\approx 0.008$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-to-flux ratio",
+   "value": "~0.5 (large scale), ~3.1 (ALMA column density)",
+   "uncertainty": "not stated",
+   "units": "critical units",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Magnetic field implications",
+     "quote": "one gets $M/\\Phi_B\\sim 3.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of flux recovered",
+   "value": "20-50%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "approximately 20-50% of the total flux are recovered by our interferometer observations"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "uv-taper value",
+  "Pixel/image size and cell size",
+  "Deconvolver, cleaning threshold and masks",
+  "Polarization calibration details and debiasing of polarized intensity",
+  "Pixel selection and SNR cuts for sigma_psi and structure function",
+  "Source regions/apertures for each core",
+  "Exact mean-field and error propagation for DCF",
+  "Correction factor used in DCF (Planck procedure details)",
+  "Which flux calibrator for which execution"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, taper, cleaning)",
+  "Pixel selection for DCF and structure function",
+  "Polarization calibration/debiasing details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Data public and methods described, but imaging and pixel selection details missing.",
+ "rediscovery_reason": "Public data, analysis steps and tabulated numeric results exist, though some settings are unstated.",
+ "source_card": "cards/2018A%26A...614A..64B/sonnet/card.md"
+}

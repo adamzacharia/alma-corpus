@@ -1,0 +1,298 @@
+{
+ "bibcode": "2018A&A...614A..26A",
+ "title": "Chemistry of a newly detected circumbinary disk in Ophiuchus",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201731603",
+ "arxiv_id": "1802.09286",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "protoplanetary_disks"
+ ],
+ "question": "Is there a circumbinary disk around the Class I proto-binary Oph-IRS67AB, and what are its kinematics, chemistry, mass and temperature structure?",
+ "alma_project_codes": [
+  "2013.1.00955.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "beam 0.44'' x 0.33''",
+  "sensitivity": "continuum rms 0.4 mJy/beam; 10 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to IRS67AB of 151.2 pc",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "in this paper, we adopt the latter."
+     }
+    ]
+   },
+   "citation": "(cite: OrtizLeon2017)"
+  },
+  {
+   "what": {
+    "value": "System velocity VLSR 4.2 km/s",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission",
+      "quote": "relative to the system velocity ($V_{\\rm LSR}$) of 4.2 km s$^{-1}$ (cite: Lindberg2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Lindberg2017)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity at 0.87 mm",
+    "evidence": [
+     {
+      "loc": "4.2 Disk mass",
+      "quote": "opacity at 0.87 mm (cite: Ossenkopf1994)"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "IRAS 16293-2422 abundance ratios for comparison",
+    "evidence": [
+     {
+      "loc": "4.3 Fits and abundances",
+      "quote": "taken from (cite: Schoier2002)"
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2002)"
+  },
+  {
+   "what": {
+    "value": "Standard isotope ratios",
+    "evidence": [
+     {
+      "loc": "4.3 Fits and abundances",
+      "quote": "employing standard isotope ratios (cite: Wilson1999)"
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1999)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum structure and source positions",
+   "method": "2D Gaussian fits to both peaks; deconvolved size of disk-like structure; inclination from toy thin circular model",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Thin circular structure gives inclination ~80 deg"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps, spectra and channel maps of lines",
+   "method": "Moment 0/1 maps; spectra extracted over 1 pixel (0.1''x0.1''); channel maps; two-component Gaussian for SO2",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit velocity profiles (Keplerian vs infalling)",
+   "method": "Peak emission per channel via imfit; fit v∝r^-0.5 and v∝r^-1 to points >1.7 km/s along PA=234 deg",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Centre at geometric centre; inclination 80 deg"
+   ],
+   "assumptions": [
+    "Inclination 80 deg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive dust and gas masses and CO abundance",
+   "method": "Optically thin dust mass from 0.87 mm flux; gas mass from C17O 3-2 integrated intensity; CO abundance by inverting gas-mass equation with gas-to-dust 100",
+   "software": [],
+   "key_parameters": [
+    "C17O integrated over 20 km/s, 5.31 ± 0.01 Jy km/s above 5 sigma"
+   ],
+   "assumptions": [
+    "Dust T=30 K, Ossenkopf & Henning opacity, gas-to-dust 100, C17O/CO=4.5e-4 and CO/H2=2.7e-4"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate optical depth, column densities and abundances",
+   "method": "Non-LTE RADEX at source B, n(H2)=1e7 cm-3, Tkin=30 and 100 K, b=FWHM; abundance ratios vs CO compared with IRAS 16293",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Standard isotope ratios 16O/17O=2005, 12C/13C=69"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Circumbinary disk deconvolved continuum size",
+   "value": "4.1'' x 0.82'' (620 x 124 AU)",
+   "uncertainty": "±0.2'' x ±0.05''",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum emission",
+     "quote": "(4.1$''$ $\\pm$ 0.2$''$) $\\times$ (0.82$''$ $\\pm$ 0.05$''$) or (620 $\\pm$ 20 AU) $\\times$ (124 $\\pm$ 7 AU)"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux of Oph-IRS67B",
+   "value": "155",
+   "uncertainty": "±4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Oph-IRS67B | 16$^\\mathrm{h}$32$^\\mathrm{m}$00.978$^\\mathrm{s}$ $\\pm$ 0.001$^\\mathrm{s}$ | $-$24$^\\circ$56$'$43.44$''$ $\\pm$ 0.01$''$ | 155 $\\pm$ 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux of Oph-IRS67A",
+   "value": "30",
+   "uncertainty": "±3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "30 $\\pm$ 3"
+    }
+   ]
+  },
+  {
+   "quantity": "A-B separation",
+   "value": "0.71'' (107 AU)",
+   "uncertainty": "±0.01'' (±2 AU)",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum emission",
+     "quote": "The separation between sources A and B is 0.71$''$ $\\pm$ 0.01$''$ (107 $\\pm$ 2 AU)."
+    }
+   ]
+  },
+  {
+   "quantity": "Keplerian central mass",
+   "value": "2.2",
+   "uncertainty": "±0.2",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "C$^{17}$O | Keplerian | 2.2 $\\pm$ 0.2 | 3.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Infalling central mass for c-C3H2",
+   "value": "3.6",
+   "uncertainty": "±0.3",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2 High-density region",
+     "quote": "the central mass associated with the infalling fit is 3.6 $\\pm$ 0.3 M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass at 30 K",
+   "value": "1.1e-2",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk mass",
+     "quote": "a value of 1.1 $\\times$ 10$^{-2}$ *M$_{\\odot}$* is obtained for the total mass"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass at 30 K",
+   "value": "1.1e-4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk mass",
+     "quote": "a dust mass of 1.1 $\\times$ 10$^{-4}$ *M$_{\\odot}$* is derived"
+    }
+   ]
+  },
+  {
+   "quantity": "C17O column density (30 K)",
+   "value": "2.0e16",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "C$^{17}$O *J*=3$-$2 | Central | 30 | 2.4 | 0.76 | 2.0 $\\times$ 10$^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density upper limit",
+   "value": "<1.6e14",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "\\< 1.6 $\\times$ 10$^{14}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether pipeline or manual calibration",
+  "Imaging parameters: weighting/robust, cell and image size, deconvolver, masks",
+  "Continuum subtraction method and line-free channels",
+  "Whether spws were combined across the four sessions",
+  "Flux calibration uncertainty and any self-calibration",
+  "Velocity ranges for moment maps and clipping thresholds",
+  "Uncertainty and weighting details of the imfit peak-position PV fits",
+  "RADEX setup details beyond density, Tkin, and b",
+  "Dust temperature adopted for the 30 K versus 100 K masses (continuum flux used for mass)"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Line-free channels and continuum subtraction",
+  "PV fitting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and analysis simple, but imaging and fitting settings are missing.",
+ "rediscovery_reason": "Public data and numeric results such as continuum fluxes and central mass, though imaging details must be chosen.",
+ "source_card": "cards/2018A%26A...614A..26A/sonnet/card.md"
+}

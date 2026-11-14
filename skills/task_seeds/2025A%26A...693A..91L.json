@@ -1,0 +1,610 @@
+{
+ "bibcode": "2025A&A...693A..91L",
+ "title": "Gas dynamics in an AGN-host galaxy at z ≃ 2.6: Regular rotation, noncircular motions, and mass models",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202450814",
+ "arxiv_id": "2411.08958",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the gas distribution, circular rotation, non-circular motions, and mass models (baryonic and dark matter contributions) in the radio-loud AGN-host galaxy PKS 0529-549 at z ≃ 2.6?",
+ "alma_project_codes": [
+  "2018.1.01669.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.18 arcsec ([C I] (2-1) cube, circularized from 0.178 x 0.163 arcsec); 0.199 x 0.195 arcsec (Band 6 continuum)",
+  "sensitivity": "~0.15 mJy beam^-1 per 25.8 km s^-1 channel ([C I] (2-1) cube); ~0.012 mJy beam^-1 (Band 6 continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass M_* = 3 x 10^11 M_sun from SED fitting",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "PKS 0529-549 has an estimated stellar mass (M⋆) of 3 × 1011 M⊙ (De Breuck et al. 2010) derived by fitting the stellar spectral energy distribution (SED),"
+     }
+    ]
+   },
+   "citation": "De Breuck et al. 2010"
+  },
+  {
+   "what": {
+    "value": "Star formation rate SFR = 1020 +190/-170 M_sun yr^-1 from total infrared luminosity",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "and a star formation rate (SFR) of 1020+190−170 M⊙ yr−1 (Falkendal et al. 2019) derived by the total infrared luminosity."
+     }
+    ]
+   },
+   "citation": "Falkendal et al. 2019"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 4 continuum map (625 um rest-frame), CO(4-3) luminosity L'_CO(4-3) = (4.2 +- 0.5) x 10^10 K km s^-1 pc^2, [C I](1-0) luminosity L'_[CI] = (3.12 +- 0.67) x 10^10 K km s^-1 pc^2, and molecular gas mass 7.3 +- 0.9 x 10^10 M_sun",
+    "evidence": [
+     {
+      "loc": "3.2. Radial surface brightness profiles",
+      "quote": "To test this effect, we measure the radial profile using also the ALMA band-4 continuum map at 625 µm rest-frame (Huang et al. 2024)."
+     },
+     {
+      "loc": "5.3.1. Baryons only",
+      "quote": "Based on the CO (4-3) flux, the CO line ratio r41 = 0.46, and a CO conversion factor αCO = 0.8, Huang et al. (2024) estimate that the molecular gas mass of PKS 0529-549 is 7.3 ± 0.9 × 1010 M⊙."
+     },
+     {
+      "loc": "6.2.1. Discrepancies in gas masses and conversion factors",
+      "quote": "In the case of PKS 0529-549, using the CO (4-3) luminosity L′CO (4−3) = (4.2 ± 0.5) × 1010 K km s−1 pc2 (Huang et al. 2024),"
+     }
+    ]
+   },
+   "citation": "Huang et al. 2024"
+  },
+  {
+   "what": {
+    "value": "[O III] lambda5007 velocity field and redshift z = 2.5745 +- 0.0001 from VLT/SINFONI",
+    "evidence": [
+     {
+      "loc": "6.2.2. Discrepancies in stellar masses",
+      "quote": "The redshifts of [C i] (2-1) and [O iii] λ5007 lines are 2.5706 ± 0.0002 and 2.5745 ± 0.0001 (Nesvadba et al. 2017), respectively."
+     },
+     {
+      "loc": "Figure 12",
+      "quote": "ted from Nesvadba et al. 2017; Lelli et al. 2018) is overlaid with the radio lobes from ATCA 18-G"
+     }
+    ]
+   },
+   "citation": "Nesvadba et al. 2017"
+  },
+  {
+   "what": {
+    "value": "VLT/X-Shooter spectrum and ages of two recent star formation bursts (6 Myr and > 20 Myr)",
+    "evidence": [
+     {
+      "loc": "6.2.2 Discrepancies in stellar masses",
+      "quote": "This is larger than the time from the two recent bursts of star formation: 6 Myr and > 20 Myr (Man et al. 2019)."
+     },
+     {
+      "loc": "6.2.2. Discrepancies in stellar masses",
+      "quote": "This is larger than the time from the two recent bursts of star formation: 6 Myr and > 20 Myr (Man et al. 2019)."
+     }
+    ]
+   },
+   "citation": "Man et al. 2019"
+  },
+  {
+   "what": {
+    "value": "Prior [C I](2-1) redshift z = 2.570 and initial disk geometry/dispersion estimates",
+    "evidence": [
+     {
+      "loc": "4.1. Disk geometry",
+      "quote": "The initial value of σv is 30 km s−1 (Lelli et al. 2018)."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Vsys is relative to z = 2.570, as measured by the [C i] (2-1) emission from Lelli et al. (2018)."
+     }
+    ]
+   },
+   "citation": "Lelli et al. 2018"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Subtract Eastern synchrotron component to isolate dust continuum and generate [C I] (2-1) moment maps",
+   "method": "Interactively mask only the Eastern synchrotron component in tclean (savemodel='modelcolumn'), subtract its clean components from the uv-data with uvsub, and re-image; construct [C I] (2-1) moment maps using 3DBarolo with a Smooth & Search mask",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvsub",
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "savemodel='modelcolumn'",
+    "MASK=SMOOTH&SEARCH, FACTOR=1.8, SNRCUT=4, GROWTHCUT=3, MINCHANNELS=2"
+   ],
+   "assumptions": [
+    "Eastern continuum source is synchrotron emission from the radio lobe and central continuum is cold dust emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure and fit radial surface brightness profiles of dust and gas",
+   "method": "Average surface brightness over elliptical annuli positioned at the kinematic center, inclination, and PA of the rotating disk (using synchrotron-subtracted Band 6 continuum for dust and an unmasked moment-0 map integrated over (-550, 550) km s^-1 for [C I](2-1)); fit 1D Sersic profiles using orthogonal distance regression",
+   "software": [
+    "scipy.odr"
+   ],
+   "key_parameters": [
+    "Annulus spacing = 0.10 arcsec (dust) and 0.09 arcsec (gas, half beam size); fitting range R <= 1 arcsec (dust) and R < 0.7 arcsec (gas)"
+   ],
+   "assumptions": [
+    "Elliptical geometry defined by kinematic center, inclination i = 53 deg, and PA = 75 deg"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit 3D tilted-ring kinematic model and apply asymmetric drift correction",
+   "method": "Two-stage 3D tilted-ring fitting with 3DBarolo: (1) fix kinematic center on the minor axis and run 3DFIT to find median V_sys, PA, and i across 5 rings; (2) fix geometry, run SPACEPAR to explore V_rot-sigma_v space, adopt median sigma_v = 47 km s^-1, and rerun 3DFIT with WFUNC=2 for V_rot; compute asymmetric drift correction (ADC) for circular velocity V_c",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "5 rings of width 0.09 arcsec; NORM=AZIM; LTYPE=3 (exponential vertical profile) with scale height z0 = 300 pc; V_rad = 0",
+    "Step 1: WFUNC=0, SIDE=B, initial PA=75 deg, initial i=50 deg, DELTAPA=15, DELTAINC=15, initial sigma_v=30 km s^-1, fixed center (5h30m25.447s, -54d54m23.165s)",
+    "Step 2: SPACEPAR grid V_rot in [200, 450] km s^-1 and sigma_v in [1, 200] km s^-1 with step 1 km s^-1, FUNC=2 (|M-D|), SIDE=A, R, B; final 3DFIT with fixed sigma_v = 47 km s^-1 and WFUNC=2"
+   ],
+   "assumptions": [
+    "Exponential vertical profile with constant scale height z0 = 300 pc; zero radial velocity (V_rad = 0); radially constant intrinsic velocity dispersion sigma_v = 47 km s^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Identify and measure fluxes of non-circular kinematic components",
+   "method": "Subtract best-fit 3DBarolo model cube from observed cube to create a residual moment-0 map; construct Renzograms integrated over (-191, -88) km s^-1 and (274, 377) km s^-1; extract PV diagram along a 0.225 arcsec wide path; sum pixels with S/N > 3 inside apertures in the residual moment-0 map",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "Velocity intervals: SW-tail (-191 to -88 km s^-1), E-tail (274 to 377 km s^-1), anomalous structure (-501 to -346 km s^-1); PV path width = 0.225 arcsec; pixel threshold S/N > 3"
+   ],
+   "assumptions": [
+    "10% fiducial flux calibration uncertainty; same flux-to-mass conversion factor in the non-circular structures as in the rotating disk"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit dynamical mass models to the circular velocity curve and derive conversion factor constraints",
+   "method": "Numerically solve Poisson's equation for the finite-thickness gas disk using vcdisk; model stars with a spherical Sersic profile (or exponential disk + De Vaucouleurs bulge) and DM with an NFW profile; sample posterior probability distributions of partial (gas-only, stars-only) and complete (baryons-only, baryons+DM) mass models using MCMC; compare dynamical masses with CO, [C I], and SED estimates (including preliminary 22-point CIGALE fits)",
+   "software": [
+    "vcdisk",
+    "corner",
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Normalization mass M0 = 10^11 M_sun; gas disk vertical scale height = 300 pc; Sersic gas profile n = 0.52, Re = 2.57 kpc"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with H0 = 67.4 km s^-1 Mpc^-1, Omega_m = 0.315, Omega_Lambda = 0.685 (1 arcsec = 8.22 kpc at z = 2.57)",
+    "Spherical Sersic stellar mass distribution (or exponential disk with Re = Re,dust plus n=4 bulge with Re = 0.1 Re,dust); NFW dark matter halo profile; CO line ratio r41 = 0.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Gas radial profile Sersic index (n)",
+   "value": "0.52",
+   "uncertainty": "+-0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Gas 0.52 ± 0.01 0.313 ± 0.003 2.57 ± 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas effective radius (R_e)",
+   "value": "0.313",
+   "uncertainty": "+-0.003",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Gas 0.52 ± 0.01 0.313 ± 0.003 2.57 ± 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas effective radius (R_e)",
+   "value": "2.57",
+   "uncertainty": "+-0.02",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Gas 0.52 ± 0.01 0.313 ± 0.003 2.57 ± 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust radial profile Sersic index (n)",
+   "value": "1.3",
+   "uncertainty": "+-0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Dust 1.3 ± 0.2 0.57 ± 0.04 4.7 ± 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius (R_e)",
+   "value": "0.57",
+   "uncertainty": "+-0.04",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Dust 1.3 ± 0.2 0.57 ± 0.04 4.7 ± 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius (R_e)",
+   "value": "4.7",
+   "uncertainty": "+-0.3",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Dust 1.3 ± 0.2 0.57 ± 0.04 4.7 ± 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (V_sys, relative to z = 2.570)",
+   "value": "47",
+   "uncertainty": "+-16",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Vsys (km s−1) 47 ± 16"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle (PA)",
+   "value": "75",
+   "uncertainty": "+-7",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "PA (◦) 75 ± 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination (i)",
+   "value": "53",
+   "uncertainty": "+-5",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "i (◦) 53 ± 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic gas velocity dispersion (sigma_v)",
+   "value": "47",
+   "uncertainty": "+-16",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 4 caption",
+     "quote": "The green band is centered at the median σ v = 47 km s"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-dispersion ratio (V_rot / sigma_v)",
+   "value": "6",
+   "uncertainty": "+-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find that (1) the molecular gas forms a rotation-supported disk with Vvrot/σv = 6 ± 3 and displays a flat rotation curve out to 3.3 kpc;"
+    },
+    {
+     "loc": "4.3. Asymmetric drift correction",
+     "quote": "The gas disk of PKS 0529-549 is rotationally supported, having a median Vrot/σv = 6 ± 3."
+    }
+   ]
+  },
+  {
+   "quantity": "Total [C I] (2-1) flux in the gas disk",
+   "value": "2.8",
+   "uncertainty": "+-0.3",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4. Non-circular motions",
+     "quote": "The non-circular motions are responsible for at least 12% of the total flux in the gas disk (2.8 ± 0.3 Jy km s−1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Anomalous structure [C I] (2-1) flux",
+   "value": "0.20",
+   "uncertainty": "+-0.02",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Anomalous structure 0.20 ± 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "SW-tail [C I] (2-1) flux",
+   "value": "0.10",
+   "uncertainty": "+-0.01",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SW-tail 0.10 ± 0.01"
+    }
+   ]
+  },
+  {
+   "quantity": "E-tail [C I] (2-1) flux",
+   "value": "0.030",
+   "uncertainty": "+-0.003",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "E-tail 0.030 ± 0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass (Gas-only model, M_gas)",
+   "value": "8.5",
+   "uncertainty": "+1.7/-1.6",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Gas only 53.0+4.8−4.9 8.5+1.7−1.6 ... 8.5+1.7−1.6 ... ... ... ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (Stars-only model, M_*)",
+   "value": "10.5",
+   "uncertainty": "+3.4/-4.2",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Stars only 53.0+4.8−4.9 ... 10.5+3.4−4.2 10.5+3.4−4.2 5.6+2.3−2.0 3.0+1.4−1.5 ... ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (Disk + bulge stars-only model)",
+   "value": "8.0",
+   "uncertainty": "+3.5/-7.8",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Figure A.3",
+     "quote": "This model gives a total stellar mass (bulge plus disk) of 8.0+3.5−7.8 × 1010 M⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass (Baryons-only model, M_gas)",
+   "value": "1.8",
+   "uncertainty": "+1.3/-1.8",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons only 52.5+4.9−4.9 1.8+1.3−1.8 6.9+3.6−4.6 8.7+3.8−4.9 5.0+1.6−1.5 1.8+1.9−1.2 ... ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (Baryons-only model, M_*)",
+   "value": "6.9",
+   "uncertainty": "+3.6/-4.6",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons only 52.5+4.9−4.9 1.8+1.3−1.8 6.9+3.6−4.6 8.7+3.8−4.9 5.0+1.6−1.5 1.8+1.9−1.2 ... ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Total baryonic mass (Baryons-only model, M_bar)",
+   "value": "8.7",
+   "uncertainty": "+3.8/-4.9",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons only 52.5+4.9−4.9 1.8+1.3−1.8 6.9+3.6−4.6 8.7+3.8−4.9 5.0+1.6−1.5 1.8+1.9−1.2 ... ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass (Baryons + DM model, M_gas)",
+   "value": "1.4",
+   "uncertainty": "+1.1/-1.4",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons + DM 52.4+4.9−4.9 1.4+1.1−1.4 4.7+2.5−2.8 6.1+2.7−3.2 5.1+1.7−1.7 1.3+1.7−0.8 2.2+1.4−1.3 3.6+0.9−0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass (Baryons + DM model, M_*)",
+   "value": "4.7",
+   "uncertainty": "+2.5/-2.8",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons + DM 52.4+4.9−4.9 1.4+1.1−1.4 4.7+2.5−2.8 6.1+2.7−3.2 5.1+1.7−1.7 1.3+1.7−0.8 2.2+1.4−1.3 3.6+0.9−0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Total baryonic mass (Baryons + DM model, M_bar)",
+   "value": "6.1",
+   "uncertainty": "+2.7/-3.2",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons + DM 52.4+4.9−4.9 1.4+1.1−1.4 4.7+2.5−2.8 6.1+2.7−3.2 5.1+1.7−1.7 1.3+1.7−0.8 2.2+1.4−1.3 3.6+0.9−0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark matter halo mass (Baryons + DM model, M_200)",
+   "value": "2.2",
+   "uncertainty": "+1.4/-1.3",
+   "units": "10^12 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons + DM 52.4+4.9−4.9 1.4+1.1−1.4 4.7+2.5−2.8 6.1+2.7−3.2 5.1+1.7−1.7 1.3+1.7−0.8 2.2+1.4−1.3 3.6+0.9−0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark matter halo concentration (Baryons + DM model, C_200)",
+   "value": "3.6",
+   "uncertainty": "+0.9/-0.9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Baryons + DM 52.4+4.9−4.9 1.4+1.1−1.4 4.7+2.5−2.8 6.1+2.7−3.2 5.1+1.7−1.7 1.3+1.7−0.8 2.2+1.4−1.3 3.6+0.9−0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on CO conversion factor (alpha_CO, gas-only model, for r_41 = 0.5)",
+   "value": "< 1.0",
+   "uncertainty": "not stated",
+   "units": "M_sun (K km s^-1 pc^2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.2.1. Discrepancies in gas masses and conversion factors",
+     "quote": "we get an upper limit on αCO < 1.0 (r41/0.5) M⊙ (K km s−1 pc2)−1."
+    }
+   ]
+  },
+  {
+   "quantity": "CO conversion factor (alpha_CO, baryons+DM model, for r_41 = 0.5)",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "M_sun (K km s^-1 pc^2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.2.1. Discrepancies in gas masses and conversion factors",
+     "quote": "If we instead consider the gas mass from the complete mass model with baryons plus DM, we find αCO = 0.17 (r41/0.5) M⊙ (K km s−1 pc2)−1."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on [C I]-to-M_gas conversion factor (alpha_[CI], gas-only model)",
+   "value": "< 2.8",
+   "uncertainty": "+-0.8",
+   "units": "M_sun (K km s^-1 pc^2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.2.1. Discrepancies in gas masses and conversion factors",
+     "quote": "we get an upper limit on the [C i]-to-Mgas conversion factor α[C I] ≡ Mgas/L′[C I] < 2.8 ± 0.8 M⊙ (K km s−1 pc2)−1."
+    }
+   ]
+  },
+  {
+   "quantity": "[C I]-to-M_gas conversion factor (alpha_[CI], baryons+DM model)",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "M_sun (K km s^-1 pc^2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6.2.1. Discrepancies in gas masses and conversion factors",
+     "quote": "If we consider the gas mass from the complete mass model with baryons plus DM, the inferred value of α[C I] goes down to 0.4 M⊙ (K km s−1 pc2)−1, which is 50 times lower than the usual value."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Details of the manual calibration steps applied to the first QA0 semi-pass execution block",
+  "Array configuration and baseline lengths of the ALMA Cycle 6 observations",
+  "Pixel cell size, image size, stopping threshold, and deconvolver algorithm in CASA tclean",
+  "Exact MCMC sampler software (e.g., emcee), number of walkers, steps, and burn-in length used for Bayesian rotation-curve fitting",
+  "Exact positions and radii of the circular apertures used to measure the [C I] (2-1) fluxes of the three non-circular structures in the residual moment-0 map"
+ ],
+ "missing_for_reproduction": [
+  "Manual calibration commands/flags applied to the QA0 semi-pass execution block",
+  "CASA tclean cell size, image size, deconvolver, and stopping criteria",
+  "Exact coordinates and radii of the circular apertures in Fig. 8 used to integrate the non-circular residual fluxes",
+  "MCMC sampler implementation and chain configuration for the mass models",
+  "The 22-band photometric catalog and CIGALE configuration used for the preliminary SED fit"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project code, CASA versions, weighting, uv-taper, line-free channels, rebinning, 3DBarolo parameters, and Bayesian priors/equations are all explicitly documented. Minor deductions for the unstated manual calibration details of the semi-pass EB, tclean cell/threshold settings, and MCMC sampler details.",
+ "rediscovery_reason": "Public Cycle 6 ALMA dataset (2018.1.01669.S) with a clearly specified imaging, 3DBarolo tilted-ring modeling, and Bayesian rotation-curve fitting workflow leading to well-defined quantitative kinematic and dynamical mass results.",
+ "source_card": "cards/2025A%26A...693A..91L/sonnet/card.md"
+}

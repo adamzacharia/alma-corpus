@@ -1,0 +1,264 @@
+{
+ "bibcode": "2017MNRAS.465.4390B",
+ "title": "The discovery of gas-rich, dusty starbursts in luminous reddened quasars at z ∼ 2.5 with ALMA",
+ "year": 2017,
+ "doi": "10.1093/mnras/stw3019",
+ "arxiv_id": "1610.04907",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Are dusty, massive reddened quasars at z~2.5 gas-rich, starbursting hosts, representing an evolutionary link between SMGs and unobscured quasars?",
+ "alma_project_codes": [
+  "2015.1.01247.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~3 mm continuum)",
+  "arrays": "not stated",
+  "angular_resolution": "~2-3 arcsec",
+  "sensitivity": "continuum RMS 11-20 uJy/beam; channel RMS 0.11-0.21 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(3-2) detections and FIR/dust properties of ULASJ1539+0557 and ULASJ1002+0137",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^\\ast$This Work; $^+$(cite: Feruglio:14); $^\\dagger$(cite: Brusa:15)"
+     }
+    ]
+   },
+   "citation": "(cite: Feruglio:14); (cite: Brusa:15)"
+  },
+  {
+   "what": {
+    "value": "CO and IR luminosity compilations of high-z galaxies and quasars",
+    "evidence": [
+     {
+      "loc": "4.3 Star Formation Efficiencies",
+      "quote": "the compilations of CO detections in high redshift galaxies and quasars published by (cite: Carilli:13) and (cite: Heywood:13)"
+     }
+    ]
+   },
+   "citation": "(cite: Carilli:13); (cite: Heywood:13)"
+  },
+  {
+   "what": {
+    "value": "Gas-to-dust ratio of 91",
+    "evidence": [
+     {
+      "loc": "3.2 CO",
+      "quote": "assuming a gas-to-dust ratio of 91$\\pm^{60}_{36}$ from observations of nearby galaxies (cite: Sandstrom:13)"
+     }
+    ]
+   },
+   "citation": "(cite: Sandstrom:13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO line cubes",
+   "method": "Pipeline calibration, MFS continuum clean (natural), uvcontsub, line cube clean, primary beam correction",
+   "software": [
+    "CASA",
+    "clean",
+    "uvcontsub"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Dust masses, FIR luminosity and SFR from 3 mm continuum",
+   "method": "Optically thin Rayleigh-Jeans dust mass from single photometric point; greybodies scaled to ALMA flux for L_FIR (40-300 um); Kennicutt relation for SFR",
+   "software": [],
+   "key_parameters": [
+    "average of (T=47K, beta=1.6) and (T=41K, beta=1.95)"
+   ],
+   "assumptions": [
+    "kappa0=0.045 m2/kg at 250 GHz"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Gas masses from CO and dust",
+   "method": "CO(3-2) to CO(1-0) with r32/10=0.8, alpha_CO=0.8; dust-based gas mass with gas-to-dust 91; derived alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=0.8; gas-to-dust ratio 91"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Line fits, spectroastrometry and dynamical masses",
+   "method": "Single/double Gaussian fits and moments; red/blue spectroastrometric offset; Gnerucci, virial and Neri estimators",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "R=4 kpc for sources not resolved"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Tilted-ring kinematic model of ULASJ2315+0143",
+   "method": "rotcur in iterative mode on single-Gaussian velocity field, PA fixed, 1-15 rings",
+   "software": [
+    "GIPSY rotcur"
+   ],
+   "key_parameters": [
+    "PA fixed at 352.3 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Source size measurement",
+   "method": "2-D Gaussian fits to collapsed CO maps; checked with Briggs robust=0.5 and uvmodelfit",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Population comparisons",
+   "method": "Compare 850um fluxes, LCO-LIR, FWHM-LCO with SMGs, quasars, HotDOGs; KS tests",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean dust mass range",
+   "value": "2.5e8 to 1.2e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The dust masses range from 2.5$\\times$10$^{8}$M$_\\odot$ to 1.2$\\times$10$^9$M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR ULASJ2315+0143",
+   "value": "6100",
+   "uncertainty": "400",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SFR / M$_\\odot$ yr$^{-1}$$^a$ | 2500$\\pm$500 | 2500$\\pm$900 | 1200$\\pm$400 | 6100$\\pm$400 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale",
+   "value": "~5-20",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "the gas depletion timescales are very short - $\\sim5-20$ Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroastrometric offset ULASJ2315+0143",
+   "value": "1.20",
+   "uncertainty": "0.13",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "We measure a (1.20$\\pm$0.13) arcsec offset between the two maps"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination ULASJ2315+0143",
+   "value": "57",
+   "uncertainty": "8",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.2",
+     "quote": "The best fit tilted ring model has $i$=57$\\pm$8$^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Max rotational velocity ULASJ2315+0143",
+   "value": "125",
+   "uncertainty": "6",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4.2",
+     "quote": "The maximum rotational velocity, $v_{\\rm{max}}$=125$\\pm$6 km s$^{-1}$ at r=21.5 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "CO deconvolved size ULASJ2315+0143",
+   "value": "2.84x1.36",
+   "uncertainty": "0.30x0.53",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.4.2",
+     "quote": "is (2.84$\\times$1.36) $\\pm$ (0.30$\\times$0.53) arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass G1234-N",
+   "value": "3.3e10",
+   "uncertainty": "0.6e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4.1",
+     "quote": "(3.3$\\pm$0.6)$\\times10^{10}$M$_\\odot$ and (1.9$\\pm$0.5)$\\times10^{10}$M$_\\odot$ respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters: cell size, image size, masks, cleaning threshold, niter",
+  "which channels were treated as line-free per source",
+  "exact pipeline version",
+  "how Herschel SPIRE/PACS photometry was taken (from Banerji et al. 2014)",
+  "pixel-level moment fitting details and ring widths/initial guesses for rotcur",
+  "how the 15 rotcur rings were set up and the uncertainty criteria",
+  "KS-test sample definitions",
+  "source radius R=4 kpc assumption for non-resolved sources justification"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters (cell, image size, masks, thresholds)",
+  "line-free channel choices",
+  "per-ring rotcur setup",
+  "Herschel photometry source tables"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data and simple analysis with explicit equations and assumptions, but imaging parameters and some fitting details are missing.",
+ "rediscovery_reason": "Data are public, recipe is largely complete, and results (fluxes, line intensities, masses) are numeric.",
+ "source_card": "cards/2017MNRAS.465.4390B/sonnet/card.md"
+}

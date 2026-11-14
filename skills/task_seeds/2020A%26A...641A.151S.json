@@ -1,0 +1,324 @@
+{
+ "bibcode": "2020A&A...641A.151S",
+ "title": "Molecular gas in the central region of NGC 7213",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202037660",
+ "arxiv_id": "2007.02990",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the AGN power, molecular gas kinematics, gas mass and depletion time in the central region of the LLAGN NGC 7213, and what is the AGN impact on the host ISM and star formation?",
+ "alma_project_codes": [
+  "2012.1.00474.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.5 arcsec (60 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SED decomposition results (M*, SFR, L_IR, SED fit) and photometry",
+    "evidence": [
+     {
+      "loc": "3.4 SED decomposition",
+      "quote": "NGC 7213 benefits from a detailed SED decomposition performed by G16"
+     }
+    ]
+   },
+   "citation": "(cite: Gruppioni16)"
+  },
+  {
+   "what": {
+    "value": "ATCA 5, 8, 20 GHz radio flux densities",
+    "evidence": [
+     {
+      "loc": "4.1 The point-like continuum",
+      "quote": "radio flux densities at 5, 8 and 20 GHz (obtained simultaneously at the Australia Telescope Compact Array, ATCA; (cite: Murphy10))"
+     }
+    ]
+   },
+   "citation": "(cite: Murphy10)"
+  },
+  {
+   "what": {
+    "value": "Disc inclination i=30 deg",
+    "evidence": [
+     {
+      "loc": "4.2 The molecular gas kinematics",
+      "quote": "We also fixed the inclination of the disc with respect to the line of sight to $i=30^\\circ$, as estimated in literature works"
+     }
+    ]
+   },
+   "citation": "(cite: StorchiBergmann96); (cite: Lin18)"
+  },
+  {
+   "what": {
+    "value": "Bolometric correction k_bol=9±5",
+    "evidence": [
+     {
+      "loc": "3.1.2 X-ray data analysis",
+      "quote": "Assuming a bolometric conversion factor of $k_{bol}=9\\pm$5 as from (cite: Lusso12)"
+     }
+    ]
+   },
+   "citation": "(cite: Lusso12)"
+  },
+  {
+   "what": {
+    "value": "Black hole mass ~1e8 Msun",
+    "evidence": [
+     {
+      "loc": "3.1.2 X-ray data analysis",
+      "quote": "assuming a black hole mass M$_{BH}\\sim10^8$ M$_{\\odot}$, as from (cite: WooUrry02)"
+     }
+    ]
+   },
+   "citation": "(cite: WooUrry02)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum flux",
+   "method": "Elliptical Gaussian fit to 235.1 GHz continuum map",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "CO(2-1) flux in ALMA and APEX",
+   "method": "ALMA flux in 25 arcsec circular aperture; APEX double-Gaussian fit converted K to Jy with 35 Jy/K",
+   "software": [
+    "CASA",
+    "CLASS/GILDAS"
+   ],
+   "key_parameters": [
+    "APEX Jy/K = 35±3; calibration uncertainty 15%"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model CO kinematics",
+   "method": "3D tilted-ring fit of the CO(2-1) cube with local normalisation, smoothing factor 2, S/N cut 4",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [
+    "PA=330 deg, i=30 deg fixed, centre at continuum centroid, 8 rings separated by 1.5 arcsec; free: v_circ, v_sys, dispersion"
+   ],
+   "assumptions": [
+    "Thin disc, rotation dominated"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Outflow rates from residuals",
+   "method": "Mass from residual flux with alpha_CO=1.1; Mdot=3 v_max M/R spherical",
+   "software": [
+    "3DBarolo"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=1.1 Msun pc^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Gas mass and depletion time",
+   "method": "APEX CO(2-1) -> CO(1-0) with ratio 3, L' via Carilli & Walter, M_gas=alpha_CO L'; SFR scaled by Herschel 70um aperture ratio; t_depl=M_gas/SFR",
+   "software": [],
+   "key_parameters": [
+    "F_tot/F_25\" = 2.0±0.3 at 70 um"
+   ],
+   "assumptions": [
+    "alpha_CO=1.1, solar metallicity, CO(2-1)/CO(1-0)=3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA continuum flux density at 235.1 GHz",
+   "value": "40.1",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2.1 The continuum emission",
+     "quote": "F$_{\\nu, \\rm cont}=40.1\\pm0.1$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux, ALMA",
+   "value": "112",
+   "uncertainty": "5",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.2 The CO(2-1) emission line",
+     "quote": "f$_{\\rm CO, ALMA}= 112\\pm$5 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux, APEX",
+   "value": "340",
+   "uncertainty": "60",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 APEX data",
+     "quote": "f$_{\\rm CO, APEX}= 340\\pm$60 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray photon index (NuSTAR)",
+   "value": "1.81",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.81$\\pm$0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "L_2-10keV",
+   "value": "1.25e42",
+   "uncertainty": "0.02e42",
+   "units": "erg/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1.2 X-ray data analysis",
+     "quote": "L$_{\\rm 2-10 keV}=(1.25\\pm0.02)\\times10^{42}$ ergs s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity",
+   "value": "1.1e43",
+   "uncertainty": "0.6e43",
+   "units": "erg/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1.2 X-ray data analysis",
+     "quote": "L$_{bol}=(1.1\\pm0.6)\\times10^{43}$ ergs s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio spectral slope",
+   "value": "0.54",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 The point-like continuum",
+     "quote": "We obtained a slope $\\alpha=0.54\\pm$0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "1716",
+   "uncertainty": "10",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 The molecular gas kinematics",
+     "quote": "V$_{\\rm sys}=1716\\pm$10 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow rate Region C",
+   "value": "0.03",
+   "uncertainty": "0.02",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Complex structures in the CO emission",
+     "quote": "$\\dot{M}_{OF}\\sim0.03\\pm0.02$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'_CO(1-0) APEX",
+   "value": "1.8e8",
+   "uncertainty": "0.3e8",
+   "units": "K km/s pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 The molecular gas mass",
+     "quote": "L$^{\\prime}_{\\rm CO(1-0), APEX}=(1.8\\pm0.3)\\times10^8$K km s$^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass",
+   "value": "2.0e8",
+   "uncertainty": "0.3e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 The molecular gas mass",
+     "quote": "M$_{\\rm gas}=(2.0\\pm0.3)\\times10^8$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time",
+   "value": "0.4",
+   "uncertainty": "0.1",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 The molecular gas mass",
+     "quote": "t$_{\\rm depl}$=0.4$\\pm$0.1 Gyr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Clean threshold, niter, masks, cell and image size",
+  "Line-free channels and continuum-subtraction order",
+  "Primary-beam correction details",
+  "Moment-map clipping thresholds",
+  "3DBarolo parameter file details (e.g. normalisation, fitting mode, VDISP initial)",
+  "How APEX baseline/windows and double-Gaussian fit were set",
+  "Outflow velocity/size/flux extraction details for Regions A and C",
+  "Exact NED coordinates used"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "3DBarolo input parameters",
+  "APEX raw data reduction details",
+  "G16 SED outputs needed externally"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "ALMA project and software versions are given, but imaging and 3DBarolo parameters are partly unstated and key inputs come from G16.",
+ "rediscovery_reason": "Public ALMA data, a fairly clear recipe, and numeric results (continuum flux, CO flux, v_sys).",
+ "source_card": "cards/2020A%26A...641A.151S/sonnet/card.md"
+}

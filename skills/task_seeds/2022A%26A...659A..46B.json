@@ -1,0 +1,522 @@
+{
+ "bibcode": "2022A&A...659A..46B",
+ "title": "A Virgo Environmental Survey Tracing Ionised Gas Emission (VESTIGE). XII. Ionised gas emission in the inner regions of lenticular galaxies",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142482",
+ "arxiv_id": "2111.06635",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "What are the ionisation sources, star formation efficiency, dust and gas properties, and evolutionary origins of the ionised gas discs and filaments in the inner regions of massive lenticular galaxies in the Virgo cluster?",
+ "alma_project_codes": [
+  "2013.1.00493.S",
+  "2017.1.00766.S",
+  "2018.1.01599.S"
+ ],
+ "data": {
+  "bands": "Band 7 (NGC 4429), Band 6 (NGC 4459, NGC 4476, NGC 4526 as stated)",
+  "arrays": "12 m array (42 antennae for NGC 4429; 12 m for NGC 4526); 12 m and 7 m arrays (NGC 4459, NGC 4476)",
+  "angular_resolution": "NGC 4429: 0.19x0.16'' (or 0.18x0.15''); NGC 4459: 0.58x0.50'' (12m), 6.64x4.99'' (7m); NGC 4476: 0.744x0.555'' (12m), 7.08x4.77'' (7m); NGC 4526: 1.14x0.76''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CARMA 12CO(1-0) interferometric data for NGC 4429, 4459, 4476, 4477, and 4526",
+    "evidence": [
+     {
+      "loc": "Multifrequency data",
+      "quote": "Finally, $^{12}$CO(1-0) interferometric data obtained using the CARMA radiotelescope at an angular resolution significantly coarser than that reached by ALMA are available for five galaxies"
+     },
+     {
+      "loc": "Multifrequency data",
+      "quote": "These data have been taken during the molecular gas survey of nearby early-type galaxies conducted by Alatalo et al. (2013)."
+     }
+    ]
+   },
+   "citation": "Alatalo et al. (2013)"
+  },
+  {
+   "what": {
+    "value": "HI masses and upper limits from WSRT and Arecibo",
+    "evidence": [
+     {
+      "loc": "Cold gas content",
+      "quote": "Among the eight galaxies, only three have been detected in HI (NGC 4262, Serra et al. 2012; NGC 4469 and NGC 4526, Haynes et al. 2018)."
+     }
+    ]
+   },
+   "citation": "Serra et al. (2012), Boselli et al. (2014a), Haynes et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "WISE, Spitzer, and Herschel mid- and far-IR datasets",
+    "evidence": [
+     {
+      "loc": "Multifrequency data",
+      "quote": "Mid and far-IR data in the WISE (Wright et al. 2010) and MIPS/*Spitzer* (Rieke et al. 2004) bands, necessary for an accurate dust attenuation correction and for the determination of the total dust content of the target galaxies, are available from Bendo et al. (2012a), Ciesla et al. (2014), and Boselli et al. (2014a)."
+     }
+    ]
+   },
+   "citation": "Bendo et al. (2012a), Ciesla et al. (2012), Cortese et al. (2014), Auld et al. (2013), Boselli et al. (2014a)"
+  },
+  {
+   "what": {
+    "value": "ATLAS3D IFU spectroscopy and fast/slow rotator classifications",
+    "evidence": [
+     {
+      "loc": "Source of ionisation",
+      "quote": "IFU data in the blue spectral domain (4800-5380 Å) are available from the ATLAS$^{3D}$ survey (Cappellari et al. 2011)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: 1) NED, 2) Gavazzi et al. (2018a) (BTP and WHAN classification), 3) derived from the SDSS spectrum, 4) Mei et al. (2007), 5) Gavazzi et al. (1999), 6) NGVS, 7) Emsellem et al. (2011)"
+     }
+    ]
+   },
+   "citation": "Cappellari et al. (2011), Emsellem et al. (2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and compute moment maps of archival ALMA CO data and derive H2 masses",
+   "method": "Recalibrate raw ALMA data in CASA 4.2.0, image with TCLEAN in CASA 5.8 using Briggs weighting (robust 0.5), compute moment maps with threshold masking in IMMOMENT, and convert integrated CO fluxes to molecular gas masses",
+   "software": [
+    "CASA",
+    "TCLEAN",
+    "IMMOMENT"
+   ],
+   "key_parameters": [
+    "robust parameter 0.5"
+   ],
+   "assumptions": [
+    "X_CO = 2.3 x 10^20 cm^-2/(K km s^-1) (Strong et al. 1988)",
+    "CO(2-1)/CO(1-0) = R_21 = 0.65 and CO(3-2)/CO(1-0) = R_31 = 0.31 (Leroy et al. 2021)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce VESTIGE narrow-band Halpha+[NII] images, subtract stellar continuum, and extract integrated fluxes",
+   "method": "Reduce MegaCam images with Elixir-LSB, subtract stellar continuum using r-band and NGVS g-r colour map, and extract fluxes and sky background in elliptical apertures using 1000 random sky displacements",
+   "software": [
+    "Elixir-LSB"
+   ],
+   "key_parameters": [
+    "1000 random sky displacements; central saturated region masked in NGC 4262, 4459, 4526, 4552"
+   ],
+   "assumptions": [
+    "Poissonian distribution for source photo-electrons"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract emission line maps and ratios from MUSE and SOAR spectroscopy to determine gas density, metallicity, and ionisation mechanism",
+   "method": "Fit stellar continuum and nebular emission lines with GANDALF using MILES library; map Balmer decrement, [SII]6716/6731 electron density, O/H metallicity (Curti et al. 2017 calibration), and BPT diagnostic diagrams",
+   "software": [
+    "GANDALF"
+   ],
+   "key_parameters": [
+    "S/N > 5 for oxygen abundance lines; radial extraction 3.3''-7.5'' (NGC 4429) and 3.3''-7.8'' (NGC 4476) for SOAR"
+   ],
+   "assumptions": [
+    "Curti et al. (2017) O/H calibration; Osterbrock & Ferland (2006) and Proxauf et al. (2014) for ne from [SII] doublet"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Correct Halpha luminosities for [NII] contamination and dust attenuation, derive SFRs, and characterise individual HII regions",
+   "method": "Correct Halpha+[NII] for [NII] and for dust attenuation via Balmer decrement (or A(g) scaling) and Spitzer 24 um emission, convert to SFR, and run HIIPHOT to detect and measure individual HII regions",
+   "software": [
+    "HIIPHOT"
+   ],
+   "key_parameters": [
+    "L(Halpha) >= 10^37 erg s^-1, r_eq(Halpha) >= 50 pc, surface brightness limit Sigma(Halpha) = 3 x 10^-17 erg s^-1 cm^-2"
+   ],
+   "assumptions": [
+    "[NII]/Halpha = 0.78 when spectroscopy unavailable; Halpha/Hbeta ~ 5 for NGC 4429 and NGC 4476; A(Halpha) = 3.01 x A(g) for NGC 4459 and 4477; Kennicutt (1998a) calibration and Chabrier (2003) IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure dust masses from optical A(g) attenuation maps and from UV-to-far-IR CIGALE SED fitting, and compute gas-to-dust ratios",
+   "method": "Subtract 2D stellar models from NGVS g-band images to compute A(g) dust masses; fit stellar and IR SEDs with CIGALE to derive total dust masses; compare radial profiles of convolved Balmer decrement and Herschel PACS 100 um in NGC 4526; compute G/D ratios",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "10 photometric bands (FUV to K) for stellar SED; 8 IR bands (WISE 22 um, MIPS 24, 70 um, PACS/SPIRE 100, 160, 250, 350, 500 um) for dust SED; 0.4 kpc elliptical annuli for NGC 4526 radial profile"
+   ],
+   "assumptions": [
+    "Milky Way extinction curve; Q_ext = 2, rho_dust = 3 g cm^-3, a = 0.1 um; Bruzual & Charlot (2003) models, Chabrier (2003) IMF, Draine & Li (2007) dust models; K_100 = 27.15 cm^2 g^-1, T = 22.6 K for NGC 4526; G/D = 80 for estimating H2 mass when CO unavailable"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Analyse the spatially resolved Kennicutt-Schmidt relation at ~100 pc scales using ALMA and VESTIGE data",
+   "method": "Convolve ALMA moment 0 and VESTIGE Halpha NB images to matching resolution, rebin to 1.2'' pixels, mask S/N < 5 and central <= 2'' pixels, and compare Sigma_SFR vs Sigma_gas with late-type galaxy relations",
+   "software": [],
+   "key_parameters": [
+    "matching resolutions: 0.70'' (NGC 4429), 0.86'' (NGC 4459), 0.86'' (NGC 4476), 1.14''x0.76'' (NGC 4526); pixel size 1.2''; S/N >= 5; central <= 2'' masked"
+   ],
+   "assumptions": [
+    "X_CO = 2.3 x 10^20 cm^-2/(K km s^-1), R_21 = 0.65, R_31 = 0.31, and mean dust attenuation corrections"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA CO(3-2) integrated intensity I(CO) of NGC 4429",
+   "value": "52.70",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4429 & CO(3-2) & 0.18$\\times$0.15 & 52.70 & 4.15$\\times$10$^8$ & CO(1-0) & 4.69$\\times$3.73 & 64.66 & 1.58$\\times$10$^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M(H2) of NGC 4429 (ALMA CO(3-2))",
+   "value": "4.15e8",
+   "uncertainty": "0.1 dex (log M(H2) = 8.62+-0.20 in Table 1)",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4429 & CO(3-2) & 0.18$\\times$0.15 & 52.70 & 4.15$\\times$10$^8$ & CO(1-0) & 4.69$\\times$3.73 & 64.66 & 1.58$\\times$10$^8$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "log $M(H_2)^c$ & M$_{\\odot}$ & 8.47$\\pm$0.30 & T.W. & 8.62$\\pm$0.20 & T.W. & 8.68$\\pm$0.10 & T.W. & 8.79$\\pm$0.30 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 12m CO(2-1) integrated intensity I(CO) of NGC 4459",
+   "value": "127.00",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4459 & CO(2-1) & 0.58$\\times$0.50 & 127.00 & 4.77$\\times$10$^8$ & CO(1-0) & 9.01$\\times$5.53 & 55.52 & 1.36$\\times$10$^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M(H2) of NGC 4459 (ALMA 12m CO(2-1))",
+   "value": "4.77e8",
+   "uncertainty": "0.1 dex (log M(H2) = 8.68+-0.10 in Table 1)",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4459 & CO(2-1) & 0.58$\\times$0.50 & 127.00 & 4.77$\\times$10$^8$ & CO(1-0) & 9.01$\\times$5.53 & 55.52 & 1.36$\\times$10$^8$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "log $M(H_2)^c$ & M$_{\\odot}$ & 8.47$\\pm$0.30 & T.W. & 8.62$\\pm$0.20 & T.W. & 8.68$\\pm$0.10 & T.W. & 8.79$\\pm$0.30 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 7m CO(2-1) integrated intensity I(CO) of NGC 4459",
+   "value": "103.90",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4459 & CO(2-1) & 6.64$\\times$4.99 & 103.90 & 3.90$\\times$10$^8$ & CO(1-0) & & &"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M(H2) of NGC 4459 (ALMA 7m CO(2-1))",
+   "value": "3.90e8",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4459 & CO(2-1) & 6.64$\\times$4.99 & 103.90 & 3.90$\\times$10$^8$ & CO(1-0) & & &"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 12m CO(2-1) integrated intensity I(CO) of NGC 4476",
+   "value": "39.15",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4476 & CO(2-1) & 0.74$\\times$0.55 & 39.15 & 1.47$\\times$10$^8$ & CO(1-0) & 8.29$\\times$5.66 & 29.25 & 7.14$\\times$10$^7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M(H2) of NGC 4476 (ALMA 12m CO(2-1))",
+   "value": "1.47e8",
+   "uncertainty": "0.1 dex (log M(H2) = 8.17+-0.10 in Table 1)",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4476 & CO(2-1) & 0.74$\\times$0.55 & 39.15 & 1.47$\\times$10$^8$ & CO(1-0) & 8.29$\\times$5.66 & 29.25 & 7.14$\\times$10$^7$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "log $M(H_2)^c$ & M$_{\\odot}$ & 8.17$\\pm$0.10 & T.W. & 7.25$\\pm$0.20 & T.W. & 8.50$\\pm$0.10 & T.W. & 8.68$\\pm$0.30 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 7m CO(2-1) integrated intensity I(CO) of NGC 4476",
+   "value": "40.17",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4476 & CO(2-1) & 7.08$\\times$4.77 & 40.17 & 1.51$\\times$10$^8$ & CO(1-0) & & &"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M(H2) of NGC 4476 (ALMA 7m CO(2-1))",
+   "value": "1.51e8",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4476 & CO(2-1) & 7.08$\\times$4.77 & 40.17 & 1.51$\\times$10$^8$ & CO(1-0) & & &"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 12m CO(1-0) integrated intensity I(CO) of NGC 4526",
+   "value": "128.60",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4526 & CO(1-0) & 1.14$\\times$0.76 & 128.60 & 3.14$\\times$10$^8$ & CO(1-0) & 4.99$\\times$3.84 & 166.10 & 4.06$\\times$10$^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M(H2) of NGC 4526 (ALMA 12m CO(1-0))",
+   "value": "3.14e8",
+   "uncertainty": "0.1 dex (log M(H2) = 8.50+-0.10 in Table 1)",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "4526 & CO(1-0) & 1.14$\\times$0.76 & 128.60 & 3.14$\\times$10$^8$ & CO(1-0) & 4.99$\\times$3.84 & 166.10 & 4.06$\\times$10$^8$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "log $M(H_2)^c$ & M$_{\\odot}$ & 8.17$\\pm$0.10 & T.W. & 7.25$\\pm$0.20 & T.W. & 8.50$\\pm$0.10 & T.W. & 8.68$\\pm$0.30 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of NGC 4429",
+   "value": "0.059",
+   "uncertainty": "0.005",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$SFR$ & M$_{\\odot}$yr$^{-1}$ & 0.027$\\pm$0.019 & T.W. & 0.059$\\pm$0.005 & T.W. & 0.040$\\pm$0.019 & T.W. &0.155$\\pm$0.019& T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of NGC 4459",
+   "value": "0.040",
+   "uncertainty": "0.019",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$SFR$ & M$_{\\odot}$yr$^{-1}$ & 0.027$\\pm$0.019 & T.W. & 0.059$\\pm$0.005 & T.W. & 0.040$\\pm$0.019 & T.W. &0.155$\\pm$0.019& T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of NGC 4469",
+   "value": "0.155",
+   "uncertainty": "0.019",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$SFR$ & M$_{\\odot}$yr$^{-1}$ & 0.027$\\pm$0.019 & T.W. & 0.059$\\pm$0.005 & T.W. & 0.040$\\pm$0.019 & T.W. &0.155$\\pm$0.019& T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of NGC 4476",
+   "value": "0.025",
+   "uncertainty": "0.002",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$SFR^b$ & M$_{\\odot}$yr$^{-1}$ & 0.025$\\pm$0.002& T.W. & 0.042$\\pm$0.006& T.W.& 0.148$\\pm$0.001 & T.W. & 0.057$\\pm$0.003 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of NGC 4477",
+   "value": "0.042",
+   "uncertainty": "0.006",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$SFR^b$ & M$_{\\odot}$yr$^{-1}$ & 0.025$\\pm$0.002& T.W. & 0.042$\\pm$0.006& T.W.& 0.148$\\pm$0.001 & T.W. & 0.057$\\pm$0.003 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR) of NGC 4526",
+   "value": "0.148",
+   "uncertainty": "0.001",
+   "units": "M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$SFR^b$ & M$_{\\odot}$yr$^{-1}$ & 0.025$\\pm$0.002& T.W. & 0.042$\\pm$0.006& T.W.& 0.148$\\pm$0.001 & T.W. & 0.057$\\pm$0.003 & T.W."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass M_dust(SED) of NGC 4429",
+   "value": "1.83e6",
+   "uncertainty": "2.9e5",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "4429 & 1.83$\\times$10$^6$ $\\pm$2.9$\\times$10$^5$ & 5.0$\\times$10$^{4}$ & 86.1 ~(226.4)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass M_dust(SED) of NGC 4459",
+   "value": "1.50e6",
+   "uncertainty": "1.1e5",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "4459 & 1.50$\\times$10$^6$ $\\pm$1.1$\\times$10$^5$ & 2.4$\\times$10$^{4}$ & 90.5 ~(318.4)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass M_dust(SED) of NGC 4476",
+   "value": "1.06e6",
+   "uncertainty": "1.4e5",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "4476 & 1.06$\\times$10$^6$ $\\pm$1.4$\\times$10$^5$ & 5.7$\\times$10$^{3}$ & 67.1 ~(138.1)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass M_dust(SED) of NGC 4526",
+   "value": "9.95e6",
+   "uncertainty": "1.6e6",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "4526 & 9.95$\\times$10$^6$ $\\pm$1.6$\\times$10$^6$ & 9.4$\\times$10$^{4}$ & 40.8 ~(31.6)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio G/D of target lenticular galaxies",
+   "value": "80",
+   "uncertainty": "+240/-50 (range 30 to 320)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We have also shown that these galaxies have gas-to-dust ratios of $G/D$ $\\simeq$ 80$^{320}_{30}$, and that the star formation within these discs follows the Schmidt relation, albeit with an efficiency reduced by a factor of $\\sim$ 2.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Reduction factor in star formation efficiency relative to the Schmidt relation of late-type galaxies",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "and that the star formation within these discs follows the Schmidt relation, albeit with an efficiency reduced by a factor of $\\sim$ 2.5."
+    },
+    {
+     "loc": "Schmidt relation",
+     "quote": "Figure 20, however, also shows that the molecular gas is transformed into stars with an efficiency $\\sim$ 2.5 times lower than that measured in the discs of star-forming galaxies"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact noise threshold value used for masking in CASA IMMOMENT when creating CO moment maps",
+  "Continuum subtraction method and line-free channel ranges for the ALMA CO cubes",
+  "Channel width / velocity resolution and velocity integration range used for ALMA TCLEAN imaging and moment 0 maps",
+  "Cell size, image size, stopping threshold, and deconvolver algorithm used in CASA TCLEAN",
+  "Primary beam correction status for ALMA CO flux integrations",
+  "Exact aperture sizes and shapes used to extract integrated I(CO) fluxes in Table 6"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA TCLEAN imaging parameters (cell size, image dimensions, channel width, cleaning threshold, continuum subtraction details)",
+  "Threshold values and velocity ranges used in CASA IMMOMENT to generate the CO moment 0 maps",
+  "Aperture definitions used to integrate CO fluxes in Table 6 and Halpha+[NII] fluxes in Table 1",
+  "Access to the reduced VESTIGE narrow-band Halpha+[NII] images and custom-reduced MUSE cubes",
+  "Exact 2D stellar surface brightness models subtracted from the NGVS g-band images to produce the A(g) dust maps"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "All three ALMA project codes, CASA versions, weighting, and conversion factors are explicitly stated and key numerical outputs (I(CO), M(H2), SFR, M_dust) are tabulated, but low-level imaging/masking parameters, aperture definitions, and proprietary/custom-reduced optical datasets (VESTIGE, NGVS models, SOAR) prevent a full end-to-end reproduction without external files.",
+ "rediscovery_reason": "The ALMA raw data for NGC 4429, 4459, 4476, and 4526 are public in the ALMA archive with explicit project codes, and the integrated CO fluxes and derived H2 masses in Table 6 provide a clear numeric target for reproducing the ALMA portion of the analysis.",
+ "source_card": "cards/2022A%26A...659A..46B/sonnet/card.md"
+}

@@ -1,0 +1,614 @@
+{
+ "bibcode": "2022A&A...664A.171V",
+ "title": "FAUST. V. Hot methanol in the [BHB2007] 11 protobinary system; hot corino versus shock origin",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202243414",
+ "arxiv_id": "2206.10176",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the physical properties, spatial origin, and desorption mechanism (hot corino thermal desorption versus accretion shock) of hot methanol in the [BHB2007] 11 protobinary system?",
+ "alma_project_codes": [
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "Band 6, Band 3",
+  "arrays": "12-m array and 7-m array (ACA)",
+  "angular_resolution": "~0.4 arcsec (0.35 arcsec common beam for continuum; 0.38x0.34 to 0.47x0.40 arcsec for lines)",
+  "sensitivity": "19 to 158 mK for detected methanol transitions; 0.9 K at 94.4 GHz"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "225 GHz dust continuum flux densities and deconvolved source sizes towards 11A and 11B",
+    "evidence": [
+     {
+      "loc": "Dust opacity towards the binary system objects, 11A and 11B",
+      "quote": "To this scope, we use the dust continuum observations by (cite: Alves2019) at 225 GHz, who found a flux density $F_{225}$ equal to $5.2 \\pm 0.53$ mJy towards 11A and $5.62 \\pm 0.45$ mJy towards 11B."
+     },
+     {
+      "loc": "Dust opacity towards the binary system objects, 11A and 11B",
+      "quote": "The deconvolved sizes are $7.3(\\pm 1.3) \\times 5.4(\\pm 1.1)$ au$^2$ and $4.9 (\\pm 1.1) \\times 3.7 (\\pm 1.0)$ au$^2$ for 11A and 11B, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: Alves2019)"
+  },
+  {
+   "what": {
+    "value": "CO (2-1) emission maps and velocity centroids",
+    "evidence": [
+     {
+      "loc": "Origin of the observed methanol components",
+      "quote": "The CO emission observed by (cite: Alves2017) and shown in the left panel of our Fig. 2 traces primarily large-scale outflowing gas emission"
+     },
+     {
+      "loc": "Origin of the observed methanol components",
+      "quote": "This can be shown on the right side of Fig. 18 where we also present the CO emission as circles with green borders, as opposed to the methanol emission as circles with black borders."
+     }
+    ]
+   },
+   "citation": "(cite: Alves2017)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity V_LSR = 3.6 km/s",
+    "evidence": [
+     {
+      "loc": "Line identification",
+      "quote": "The systemic velocity of [BHB2007] 11 with respect to the local standard of rest is V$\\rm_{LSR}$ = 3.6 km s$^{-1}$ (cite: Onishi1999)."
+     }
+    ]
+   },
+   "citation": "(cite: Onishi1999)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity L_bol ~ 4.4 L_sun",
+    "evidence": [
+     {
+      "loc": "The [BHB2007] 11 protobinary system",
+      "quote": "and a Spectral Energy Distribution (SED) consistent with a Class 0/I protostar with bright far-infrared emission and $L_\\mathrm{bol} \\sim 4.4$ $L_\\mathrm{\\odot}$ (cite: Sandell2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Sandell2021)"
+  },
+  {
+   "what": {
+    "value": "Collisional coefficients of CH3OH with para-H2 between 10 and 200 K for the first 256 levels from BASECOL",
+    "evidence": [
+     {
+      "loc": "Non-LTE LVG analysis",
+      "quote": "We used the collisional coefficients with para-H$_2$, computed by (cite: Rabli2010) between 10 and 200 K for the first 256 levels and provided by the BASECOL database (cite: Dubernet2012; Dubernet2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Rabli2010), (cite: Dubernet2012; Dubernet2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reconstruct continuum maps, extract radial profiles, and compute continuum SED and spectral indices for disk and envelope",
+   "method": "Reconstruct continuum maps across the three setups with a common 0.35 arcsec clean beam, extract radial brightness profiles in elliptical annuli (PA = 167 deg), measure disk fluxes via 2D Gaussian fits (or closed contours at 15, 120, 230 sigma) and envelope fluxes via contours (>5 sigma excluding the disk), and perform a linear fit in log-log scale to compute the SED spectral index.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Common clean beam = 0.35 arcsec; elliptical annuli PA = 167 deg East of North; disk closed contours at 15, 120, 230 x rms (setups 3, 1, 2); envelope contour > 5 x rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create moment maps, extract spectra, identify molecular transitions, and fit Gaussian velocity components",
+   "method": "Create integrated intensity (moment 0) and velocity field (moment 1) maps for methanol lines using 12-m data; extract average spectra over the >4 sigma polygon of the 218.440 GHz moment 0 map; identify transitions using CASSIS linked to CDMS/JPL databases; fit 3 Gaussian velocity components (-2.0, 2.8, 9.9 km/s) using Levenberg-Marquardt fitting in CASSIS; fit 2D Gaussians to channel maps using CASA imfit to measure deconvolved component sizes.",
+   "software": [
+    "CASA",
+    "CASSIS",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "Polygon extraction threshold > 4 sigma in integrated intensity map; 3 velocity components at V_LSR = -2.0, 2.8, and 9.9 km/s"
+   ],
+   "assumptions": [
+    "Systemic velocity V_LSR = 3.6 km/s"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate beam-averaged methanol column density and rotational temperature via LTE Rotational Diagram analysis",
+   "method": "Construct rotational diagrams in CASSIS for each of the three velocity components from the integrated intensities extracted in the 4-sigma polygon of the 218.440 GHz transition, excluding the blended 261.7 GHz component at -2 km/s, and fit a straight line (order 1 polynomial) accounting for rms and 10% calibration uncertainty.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Calibration uncertainty = 10%"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE), optically thin emission, beam-filling factor of 1 (beam-averaged)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive gas kinetic temperature, H2 volume density, methanol column density, and source size via non-LTE LVG radiative transfer modelling",
+   "method": "Model the 12C and 13C methanol transitions up to J=15 simultaneously for each of the three velocity components using the LVG code grelvg over a grid of ~10000 models, minimizing chi^2 over N(CH3OH), n_H2, T, and source size theta_s.",
+   "software": [
+    "grelvg"
+   ],
+   "key_parameters": [
+    "Transitions up to J=15 (7 CH3OH transitions + 1 13CH3OH transition); Linewidths = 3.2 km/s (-2 km/s comp), 6 km/s (2.8 km/s comp), 5 km/s (9.9 km/s comp); Grid: N(CH3OH) = 1e13 to 2e18 cm^-2, n_H2 = 1e5 to 1e9 cm^-3, T = 15 to 200 K (~10000 models)"
+   ],
+   "assumptions": [
+    "Spherical geometry; A-/E- CH3OH ratio = 1; 12C/13C = 68; para-H2 collisional coefficients from Rabli & Flower (2010)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate foreground dust optical depth and line attenuation towards 11A and 11B",
+   "method": "Invert the Planck flux density equation using 225 GHz continuum flux densities and deconvolved source sizes from Alves et al. (2019) to compute dust optical depth tau_nu over a grid of dust temperatures T_d from 100 to 500 K.",
+   "software": [],
+   "key_parameters": [
+    "T_d = 100 to 500 K (steps of 10 K from 100-200 K, 20 K from 200-500 K); nu = 225 GHz"
+   ],
+   "assumptions": [
+    "Distance d = 163 +/- 5 pc; solid angle Omega_s ~ A/d^2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Determine spatial and kinematic origin of the three methanol velocity components via PV diagram and 2D Gaussian channel centroid fitting",
+   "method": "Extract a position-velocity (PV) diagram along the velocity gradient (PA = 140 deg, width = 0.5 arcsec) for the 243.916 GHz line; create moment 0 and 1 maps over three velocity intervals ([-7, 0], [0, 6], [6, 16] km/s); fit 2D Gaussians to each velocity channel of the 243.916 GHz line to measure peak centroids and compare with 11A, 11B, and high-velocity CO centroids.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "PV cut PA = 140 deg East of North, width = 0.5 arcsec; centroid selection thresholds: peak > 5 x Gaussian fit error and SNR > 10.0 (accuracy < 0.02 arcsec)"
+   ],
+   "assumptions": [
+    "Emission in each velocity channel is compact and centrally peaked; positional accuracy is Theta / (2 x SNR)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Circumbinary disk continuum peak flux at 100.6 GHz (Setup 3)",
+   "value": "5.4",
+   "uncertainty": "0.2",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3 | 100.6 | 5.4 $\\pm$ 0.2 | 20.9 $\\pm$ 0.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disk continuum peak flux at 225.4 GHz (Setup 1)",
+   "value": "49",
+   "uncertainty": "1",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1 | 225.4 | 49 $\\pm$ 1 | 233 $\\pm$ 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disk continuum peak flux at 253.0 GHz (Setup 2)",
+   "value": "76",
+   "uncertainty": "2",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2 | 253.0 | 76 $\\pm$ 2 | 331 $\\pm$ 12"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disk dust continuum spectral index",
+   "value": "3.0",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Dust emission",
+     "quote": "Table 2 reports the peak flux and flux density for the circumbinary disk, for which we find a spectral index of $3.0 \\pm 0.1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner envelope dust continuum spectral index",
+   "value": "3.4",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Dust emission",
+     "quote": "In contrast, the dust emission from the inner envelope has a spectral index of $3.4 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of 243.916 GHz methanol 9.9 km/s component",
+   "value": "0.27 x 0.23",
+   "uncertainty": "not stated",
+   "units": "arcsec x arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CH$_{3}$OH line identification",
+     "quote": "At 243.916 GHz, the image component size (deconvolved from beam) for (i) the 9.9 km s$^{-1}$ velocity component (channel 195) is 0.27$^{\\prime\\prime}$ $\\times$ 0.23$^{\\prime\\prime}$ (major axis FWHM $\\times$ minor axis FWHM)"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of 243.916 GHz methanol -2 km/s component",
+   "value": "0.27 x 0.16",
+   "uncertainty": "not stated",
+   "units": "arcsec x arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CH$_{3}$OH line identification",
+     "quote": "(ii) the -2 km s$^{-1}$ (channel 274) is 0.27$^{\\prime\\prime}$ $\\times$ 0.16$^{\\prime\\prime}$ (major axis FWHM $\\times$ minor axis FWHM)"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of 243.916 GHz methanol 2.8 km/s component",
+   "value": "0.53 x 0.36",
+   "uncertainty": "not stated",
+   "units": "arcsec x arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CH$_{3}$OH line identification",
+     "quote": "(iii) the 2.8 km s$^{-1}$ (channel 242) is 0.53$^{\\prime\\prime}$ $\\times$ 0.36$^{\\prime\\prime}$ (major axis FWHM $\\times$ minor axis FWHM)."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE beam-averaged CH3OH column density (-2 km/s component)",
+   "value": "1.0e16",
+   "uncertainty": "0.4e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "LTE Rotational Diagram analysis",
+     "quote": "-2 km s$^{-1}$: N = (1.0 $\\pm$ 0.4) 10$^{16}$ cm$^{-2}$, $\\rm T_{rot}$ = (167 $\\pm$ 31) K,"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE rotational temperature (-2 km/s component)",
+   "value": "167",
+   "uncertainty": "31",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "LTE Rotational Diagram analysis",
+     "quote": "-2 km s$^{-1}$: N = (1.0 $\\pm$ 0.4) 10$^{16}$ cm$^{-2}$, $\\rm T_{rot}$ = (167 $\\pm$ 31) K,"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE beam-averaged CH3OH column density (2.8 km/s component)",
+   "value": "1.1e16",
+   "uncertainty": "0.3e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "LTE Rotational Diagram analysis",
+     "quote": "2.8 km s$^{-1}$: N = (1.1 $\\pm$ 0.3) 10$^{16}$ cm$^{-2}$, $\\rm T_{rot}$ = (152 $\\pm$ 16) K,"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE rotational temperature (2.8 km/s component)",
+   "value": "152",
+   "uncertainty": "16",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "LTE Rotational Diagram analysis",
+     "quote": "2.8 km s$^{-1}$: N = (1.1 $\\pm$ 0.3) 10$^{16}$ cm$^{-2}$, $\\rm T_{rot}$ = (152 $\\pm$ 16) K,"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE beam-averaged CH3OH column density (9.9 km/s component)",
+   "value": "1.2e16",
+   "uncertainty": "0.4e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "LTE Rotational Diagram analysis",
+     "quote": "9.9 km s$^{-1}$: N = (1.2 $\\pm$ 0.4) 10$^{16}$ cm$^{-2}$, $\\rm T_{rot}$ = (165 $\\pm$ 27) K,"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE rotational temperature (9.9 km/s component)",
+   "value": "165",
+   "uncertainty": "27",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "LTE Rotational Diagram analysis",
+     "quote": "9.9 km s$^{-1}$: N = (1.2 $\\pm$ 0.4) 10$^{16}$ cm$^{-2}$, $\\rm T_{rot}$ = (165 $\\pm$ 27) K,"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE CH3OH column density (-2 km/s component)",
+   "value": "1.4e18",
+   "uncertainty": "0.6e18",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(A+E CH$_3$OH) = ($1.4 \\pm 0.6$) $\\times 10^{18}$ cm$^{-2}$, T = ($110 \\pm 10$) K and n$_{H2}$ = ($1.0^{+3}_{-0.5}$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = ($0.15^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE kinetic temperature (-2 km/s component)",
+   "value": "110",
+   "uncertainty": "10",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(A+E CH$_3$OH) = ($1.4 \\pm 0.6$) $\\times 10^{18}$ cm$^{-2}$, T = ($110 \\pm 10$) K and n$_{H2}$ = ($1.0^{+3}_{-0.5}$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = ($0.15^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE H2 volume density (-2 km/s component)",
+   "value": "1.0e7",
+   "uncertainty": "+3e7/-0.5e7",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(A+E CH$_3$OH) = ($1.4 \\pm 0.6$) $\\times 10^{18}$ cm$^{-2}$, T = ($110 \\pm 10$) K and n$_{H2}$ = ($1.0^{+3}_{-0.5}$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = ($0.15^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE emitting source size (-2 km/s component)",
+   "value": "0.15",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(A+E CH$_3$OH) = ($1.4 \\pm 0.6$) $\\times 10^{18}$ cm$^{-2}$, T = ($110 \\pm 10$) K and n$_{H2}$ = ($1.0^{+3}_{-0.5}$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = ($0.15^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE CH3OH column density (+9.9 km/s component)",
+   "value": "3.0e18",
+   "uncertainty": "0.8e18",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($3.0 \\pm 0.8$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.5 \\pm 2.2$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = (0.12$^{\\prime\\prime}$ $\\pm$ 0.10$^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE kinetic temperature (+9.9 km/s component)",
+   "value": "130",
+   "uncertainty": "10",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($3.0 \\pm 0.8$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.5 \\pm 2.2$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = (0.12$^{\\prime\\prime}$ $\\pm$ 0.10$^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE H2 volume density (+9.9 km/s component)",
+   "value": "2.5e7",
+   "uncertainty": "2.2e7",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($3.0 \\pm 0.8$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.5 \\pm 2.2$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = (0.12$^{\\prime\\prime}$ $\\pm$ 0.10$^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE emitting source size (+9.9 km/s component)",
+   "value": "0.12",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($3.0 \\pm 0.8$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.5 \\pm 2.2$) $\\times 10^{7}$ cm$^{-3}$ and $\\theta_s$ = (0.12$^{\\prime\\prime}$ $\\pm$ 0.10$^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE CH3OH column density (+2.8 km/s component)",
+   "value": "4.0e18",
+   "uncertainty": "1.0e18",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($4.0 \\pm 1.0$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.0 \\pm 0.5$) $\\times 10^{6}$ cm$^{-3}$ and $\\theta_s$ = ($0.13^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE kinetic temperature (+2.8 km/s component)",
+   "value": "130",
+   "uncertainty": "10",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($4.0 \\pm 1.0$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.0 \\pm 0.5$) $\\times 10^{6}$ cm$^{-3}$ and $\\theta_s$ = ($0.13^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE H2 volume density (+2.8 km/s component)",
+   "value": "2.0e6",
+   "uncertainty": "0.5e6",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($4.0 \\pm 1.0$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.0 \\pm 0.5$) $\\times 10^{6}$ cm$^{-3}$ and $\\theta_s$ = ($0.13^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Non-LTE emitting source size (+2.8 km/s component)",
+   "value": "0.13",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "N(CH$_3$OH) = ($4.0 \\pm 1.0$) $\\times 10^{18}$ cm$^{-2}$, T = ($130 \\pm 10$) K and n$_{H2}$ = ($2.0 \\pm 0.5$) $\\times 10^{6}$ cm$^{-3}$ and $\\theta_s$ = ($0.13^{\\prime\\prime} \\pm 0.10^{\\prime\\prime}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol abundance with respect to H2",
+   "value": "1e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Non-LTE LVG analysis",
+     "quote": "Assuming that the emission in each velocity component originates in a spherically symmetric region, one can estimate the approximate H$_2$ column density ($\\sim 2 \\times 10^{23}$ cm$^{-2}$) and, then, the methanol abundance, whose value ends up to be very high, $\\sim 10^{-5}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum dust temperature in 11A from 225 GHz continuum",
+   "value": "130",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust opacity towards the binary system objects, 11A and 11B",
+     "quote": "Specifically, the condition $F_\\nu$/$\\Omega_s \\leq B_\\nu (T_d)$ implies $T_d \\geq 130$ K in 11A and $T_d \\geq 300$ K in 11B (as it is more compact)."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum dust temperature in 11B from 225 GHz continuum",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust opacity towards the binary system objects, 11A and 11B",
+     "quote": "Specifically, the condition $F_\\nu$/$\\Omega_s \\leq B_\\nu (T_d)$ implies $T_d \\geq 130$ K in 11A and $T_d \\geq 300$ K in 11B (as it is more compact)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust optical depth at 225 GHz in 11A at T_d ~ 130 K",
+   "value": "5",
+   "uncertainty": "+48/-5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust opacity towards the binary system objects, 11A and 11B",
+     "quote": "Specifically, in 11A $\\tau_{\\nu}$ varies from $5^{+48}_{-5}$ at $T_d \\sim 130$ K to $0.3^{+0.2}_{-0.1}$ at $T_d =500$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust optical depth at 225 GHz in 11B at T_d ~ 300 K",
+   "value": "3",
+   "uncertainty": "+9/-3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust opacity towards the binary system objects, 11A and 11B",
+     "quote": "in 11B, $\\tau_{\\nu}$ varies from $3^{+9}_{-3}$ at $T_d \\sim 300$ K to $0.8^{+0.7}_{-0.6}$ at $T_d =500$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of shocked gas traced by methanol",
+   "value": "1e-6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Origin of the gaseous methanol: shock versus thermal desorption",
+     "quote": "The mass contained in the shocked gas traced by methanol would then be about 10$^{-6}$ M$_{\\odot}$, namely a very minor fraction of the dynamical mass ($\\sim$ 2.2 M$_{\\odot}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA imaging task name (e.g., tclean), deconvolver algorithm, cell size, image dimensions, and cleaning stopping criteria/thresholds",
+  "Exact line-free channel ranges used for continuum imaging and self-calibration in each spectral setup",
+  "Exact solution intervals (solint) and S/N thresholds used in the per-configuration and cross-configuration phase and amplitude self-calibration",
+  "Calibrators used for Setup 3 (Band 3) and 7-m array observations",
+  "Continuum rms noise values in Setups 1, 2, and 3 (needed to define the 5, 15, 120, and 230 sigma contours for the SED measurement)",
+  "Exact vertices/coordinates of the 4-sigma polygon from the 218.440 GHz moment 0 map used for spectral extraction",
+  "Unit discrepancy in Table 2 for continuum Flux Density (header states Jy with values 20.9, 233, 331, whereas Peak Flux is 5.4, 49, 76 mJy/beam; likely mJy)"
+ ],
+ "missing_for_reproduction": [
+  "The exact in-house calibration script/routine and modified ALMA pipeline parameters used for T_sys and spectral line normalisation",
+  "Self-calibration solution intervals, clean mask definitions, and cleaning thresholds for per-configuration and cross-configuration alignment",
+  "The exact polygon coordinates defined from the 4-sigma contour of the 218.440 GHz moment 0 map",
+  "Availability of the private/in-house LVG radiative transfer code grelvg (though standard LVG codes like RADEX with Rabli & Flower 2010 rates can approximate it)",
+  "Exact continuum rms values in Setups 1, 2, and 3 used to define the disk and envelope SED integration contours"
+ ],
+ "reproducibility_score": 68,
+ "score_reason": "Observational setups, spectral windows, line spectroscopic parameters, extracted line intensities (Tables 1-3), and LVG model grid assumptions are thoroughly documented. However, exact imaging parameters (tclean settings, cell/image size, self-cal solints), continuum rms values, polygon vertices, and the grelvg code itself are not provided.",
+ "rediscovery_reason": "The ALMA Large Program 2018.1.01205.L data are public in the archive, the target and spectral lines are unambiguously specified, and the main quantitative results (continuum spectral indices, 3-component Gaussian line fits, LTE rotational temperatures/column densities, non-LTE LVG parameters, and 2D channel centroids) are tabularly reported and can be reproduced from the visibility data.",
+ "source_card": "cards/2022A%26A...664A.171V/sonnet/card.md"
+}

@@ -1,0 +1,253 @@
+{
+ "bibcode": "2016ApJ...822L..10I",
+ "title": "ALMA 0.1-0.2 arcsec Resolution Imaging of the NGC 1068 Nucleus: Compact Dense Molecular Gas Emission at the Putative AGN Location",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/822/1/L10",
+ "arxiv_id": "1604.03953",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Can compact dense molecular gas emission (HCN and HCO+ J=3-2) from the putative dusty torus at the AGN location in NGC 1068 be separated from the brighter eastern and western knots at 0.1-0.2 arcsec resolution, and what are its properties?",
+ "alma_project_codes": [
+  "2013.1.00188.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211-275 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.23x0.12 arcsec continuum; 0.1-0.2 arcsec lines",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Clumpy torus model: torus outer size 20 (+6/-10) pc and gas mass (2.1±1.2)e5 Msun",
+    "evidence": [
+     {
+      "loc": "4.1 Molecular emission from the putative AGN dusty torus",
+      "quote": "(2.1$\\pm$1.2)$\\times$10$^{5}$ M$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: gar14)"
+  },
+  {
+   "what": {
+    "value": "AGN location coordinates",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "reported AGN location at (02$^{h}$42$^{m}$40.71$^{s}$, $-$00$^{\\circ}$00$'$47.94$''$)J2000"
+     }
+    ]
+   },
+   "citation": "(cite: roy98; gar14)"
+  },
+  {
+   "what": {
+    "value": "AGN luminosity L_AGN ~ 6e44 erg/s",
+    "evidence": [
+     {
+      "loc": "4.3 Molecular emission at the nuclear region",
+      "quote": "central AGN luminosity of L$_{\\rm AGN}$ $\\sim$ 6 $\\times$ 10$^{44}$ \\[erg s$^{-1}$\\]"
+     }
+    ]
+   },
+   "citation": "(cite: boc00)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and imaging",
+   "method": "uvcontsub with constant continuum, then clean with natural weighting; mfs for continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "gain 0.1, threshold 0.8 mJy, 40 channels binned, 0.03 arcsec pixel"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and spectral Gaussian fits",
+   "method": "Moment 0 and 1 maps; Gaussian fits to spectra at E-peak, W-subpeak, C-peak and 2.4 arcsec radius region",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Torus size and dense gas mass",
+   "method": "imfit for deconvolved size; HCN J=3-2 to J=1-0 luminosity assuming thermalized optically thick; M_dense=10 x L'HCN(1-0)",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "HCN thermalized to J=3 and optically thick; conversion factor 10 Msun/(K km/s pc^2)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Star formation estimate in SW region",
+   "method": "Continuum flux in rectangle assuming solely free-free emission, converted to FIR luminosity and SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Emission purely thermal free-free (upper limit)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak flux",
+   "value": "9.2",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The peak flux is estimated to be 9.2 mJy beam$^{-1}$ (51$\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=3-2 deconvolved size at C-peak",
+   "value": "175x92 mas (12.3x6.2 pc)",
+   "uncertainty": "±52, ±31 mas",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular emission from the putative AGN dusty torus",
+     "quote": "175$\\pm$52 \\[mas\\] $\\times$ 92$\\pm$31 \\[mas\\], or 12.3$\\pm$3.6 \\[pc\\] $\\times$ 6.2$\\pm$2.2 \\[pc\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=1-0 luminosity at C-peak",
+   "value": "8.8e4",
+   "uncertainty": "2.6e4",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular emission from the putative AGN dusty torus",
+     "quote": "(8.8$\\pm$2.6)$\\times$10$^{4}$ \\[K km s$^{-1}$ pc$^{2}$\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "Dense molecular mass in torus",
+   "value": "several x 1e5",
+   "uncertainty": "large potential uncertainty",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular emission from the putative AGN dusty torus",
+     "quote": "we obtain a dense molecular mass in the torus of several $\\times$ 10$^{5}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=3-2 flux at C-peak",
+   "value": "1.1",
+   "uncertainty": "0.3",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.1$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "SW region continuum flux",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Continuum emission",
+     "quote": "to be $\\sim$10 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "SW star-formation FIR luminosity",
+   "value": "~6e43",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Continuum emission",
+     "quote": "$\\sim$6 $\\times$ 10$^{43}$ \\[erg s$^{-1}$\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "SW star formation rate",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Continuum emission",
+     "quote": "a star formation rate of $\\sim$3 M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN-to-HCO+ J=3-2 flux ratio",
+   "value": "1.6-3.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Molecular emission at the nuclear region",
+     "quote": "The HCN-to-HCO$^{+}$ J=3–2 flux ratios were 1.6–3.3 (Table 1)"
+    }
+   ]
+  },
+  {
+   "quantity": "Vibrationally excited line 3-sigma upper limit",
+   "value": "<0.15",
+   "uncertainty": "not stated",
+   "units": "Jy/beam km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "3$\\sigma$ upper limits of $<$0.15 \\[Jy beam$^{-1}$ km s$^{-1}$\\]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum estimation",
+  "Clean mask/iteration settings and image size",
+  "Continuum bandwidth and exact channels used for the mfs image",
+  "Gaussian-fit procedure and baseline treatment for spectra",
+  "imfit region/parameters for deconvolved size",
+  "Exact continuum-to-free-free conversion assumptions (temperature, spectral index)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "Image size and masks",
+  "imfit settings",
+  "Free-free conversion assumptions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short letter with single dataset and public CASA tasks, but several imaging and fitting details are missing.",
+ "rediscovery_reason": "Data public, simple CASA workflow, numeric results (fluxes, size, ratios) available.",
+ "source_card": "cards/2016ApJ...822L..10I/sonnet/card.md"
+}

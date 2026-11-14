@@ -1,0 +1,271 @@
+{
+ "bibcode": "2020A&A...633A.127F",
+ "title": "A CO molecular gas wind 340 pc away from the Seyfert 2 nucleus in ESO 420-G13 probes an elusive radio jet",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/201936552",
+ "arxiv_id": "1911.00015",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Is there a molecular gas outflow in the Seyfert 2 galaxy ESO 420-G13, and is it driven by a jet, AGN radiation or star formation?",
+ "alma_project_codes": [
+  "2017.1.00236.S"
+ ],
+ "data": {
+  "bands": "Band 6, CO(2-1) plus two ~1.2 mm continuum bands and a CS(5-4) band",
+  "arrays": "12 m array",
+  "angular_resolution": "0.11'' x 0.14'' at PA 108.5 deg (26.3 x 33.5 pc)",
+  "sensitivity": "0.02 mJy/beam continuum; 0.5 mJy/beam per 10 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio and far-IR fluxes (VLA 1.4 GHz, SUMSS 843 MHz, PACS, SPIRE) from literature and NED",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Flux measurements other than ALMA have been compiled from the literature and the NED database."
+     }
+    ]
+   },
+   "citation": "NED / literature"
+  },
+  {
+   "what": {
+    "value": "Integrated K-band magnitude 9.51 mag from HyperLeda used for black hole mass",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "For an integrated *K* band magnitude of $9.51 \\pm 0.08\\, \\rm{mag}$ taken from the *HyperLeda*[^3] database"
+     }
+    ]
+   },
+   "citation": "HyperLeda (Makarov et al. 2014)"
+  },
+  {
+   "what": {
+    "value": "Axis ratio b/a = 0.96 from NED (2MASS)",
+    "evidence": [
+     {
+      "loc": "3.1 A molecular gas wind",
+      "quote": "we fixed the axis ratio at $b/a = 0.96$ (from NED[^8] based on 2MASS images)"
+     }
+    ]
+   },
+   "citation": "NED"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO/CS cubes",
+   "method": "tclean with hogbom, briggs robust 2.0, auto-multithresh, uv continuum subtraction, primary beam correction",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "10 km/s channels, 0.02'' pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit disc rotation for kinematic axes and systemic velocity",
+   "method": "DISKFIT chi-square fit of circular rotation only, axis ratio fixed",
+   "software": [
+    "DISKFIT"
+   ],
+   "key_parameters": [
+    "b/a fixed at 0.96"
+   ],
+   "assumptions": [
+    "No radial flows or non-circular motions"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract wind spectrum and derive mass",
+   "method": "3D mask on cube to isolate outflow; integrate flux; convert to H2 mass with alpha_CO = 0.8",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 0.8 (alternative 4.3); optically thick"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute outflow rate, kinetic luminosity and momentum rate",
+   "method": "Mdot = M V/d; Lkin = 1/2 M V^3/d",
+   "software": [],
+   "key_parameters": [
+    "V = 160 km/s projected, d ~ 100 pc"
+   ],
+   "assumptions": [
+    "Wind starts at the jet-ISM impact point; values are lower limits due to projection"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate jet power from radio SED and compare with wind",
+   "method": "Fit radio-to-IR SED (modified blackbody plus broken power law with cutoff) by chi^2; use f_cav calibration for total mechanical power",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Synchrotron from nucleus dominates at low frequencies"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(2-1) flux",
+   "value": "260",
+   "uncertainty": "2",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The total CO(2–1) intensity integrated in the ALMA map is $260 \\pm 2\\, \\rm{Jy\\,\\,\\hbox{\\hbox{km}\\,\\hbox{s}$^{-1}$}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "3.07e8",
+   "uncertainty": "0.02e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "$M_{\\rm tot} = (3.07 \\pm 0.02) \\times 10^8\\, \\rm{M_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic major axis PA",
+   "value": "57.8",
+   "uncertainty": "0.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 A molecular gas wind",
+     "quote": "The best-fit model has a *PA* $= 57.8\\ensuremath{^\\circ} \\pm 0.1\\ensuremath{^\\circ}$ for the kinematic major axis"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "3568",
+   "uncertainty": "7",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 A molecular gas wind",
+     "quote": "a systemic velocity of $v_{\\rm sys} = 3568 \\pm 7\\, \\rm{\\,\\hbox{\\hbox{km}\\,\\hbox{s}$^{-1}$}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Wind integrated flux",
+   "value": "7.0",
+   "uncertainty": "0.6",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 A molecular gas wind",
+     "quote": "The integrated wind emission ($7.0 \\pm 0.6\\, \\rm{Jy\\,\\,\\hbox{\\hbox{km}\\,\\hbox{s}$^{-1}$}}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Wind molecular mass (alpha=0.8)",
+   "value": "8.3e6",
+   "uncertainty": "0.7e6",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 A molecular gas wind",
+     "quote": "a molecular gas mass of $(8.3 \\pm 0.7) \\times 10^6\\, \\rm{\\,\\hbox{$M_{\\odot}$}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate",
+   "value": "14",
+   "uncertainty": "1",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Energy and momentum balance",
+     "quote": "$\\dot{M} \\sim M V/d = 14 \\pm 1\\, \\rm{M_\\odot\\,yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Wind kinetic luminosity",
+   "value": "1.1e41",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Energy and momentum balance",
+     "quote": "a kinetic luminosity of $L_{\\rm kin} = 1.1 \\times 10^{41}\\, \\rm{erg\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central 1.2 mm continuum core flux",
+   "value": "0.30",
+   "uncertainty": "0.08",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "($\\sim 0.30 \\pm 0.08\\, \\rm{mJy}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.5 Further evolution of ESO 420-G13",
+     "quote": "the depletion time would be of $\\eta = M_{\\rm tot}/\\dot{M} = 23\\, \\rm{Myr}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and exact continuum channel ranges for subtraction",
+  "auto-multithresh parameters and clean threshold",
+  "Exact definition of the 3D outflow mask",
+  "DISKFIT inputs (inclination, centre, radial bins, initial guesses)",
+  "How the wind velocity of 160 km/s was averaged from the spectrum",
+  "Radio SED fit details (priors, parameters of broken power law and modified blackbody)",
+  "Number of execution blocks and calibrators used"
+ ],
+ "missing_for_reproduction": [
+  "Custom imaging scripts not released",
+  "3D mask definition",
+  "DISKFIT configuration",
+  "SED fit parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters mostly given and data likely public, but mask definition, velocity averaging and fit details are missing.",
+ "rediscovery_reason": "Single public ALMA dataset, stated imaging recipe, numeric results (flux, mass, Mdot) can be recomputed.",
+ "source_card": "cards/2020A%26A...633A.127F/sonnet/card.md"
+}

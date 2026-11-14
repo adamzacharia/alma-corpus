@@ -1,0 +1,274 @@
+{
+ "bibcode": "2016ApJ...830L..37I",
+ "title": "Discovery of a Hot Corino in the Bok Globule B335",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/830/2/L37",
+ "arxiv_id": "1610.03942",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Does the isolated Bok globule protostar B335 (IRAS 19347+0727) harbor a hot corino, i.e. compact emission from saturated complex organic molecules?",
+ "alma_project_codes": [
+  "2013.1.01102.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm, 250 GHz), Cycle 2",
+  "arrays": "not stated",
+  "angular_resolution": "0.58'' x 0.52'' (P.A. = 75 deg)",
+  "sensitivity": "rms 3-7 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mass absorption coefficient at 850 um (1.48e-2) and beta index 2.38 for B335, used to get kappa at 1.2 mm (0.0068 cm2/g)",
+    "evidence": [
+     {
+      "loc": "4.3 Derivation of Column Density and Fractional Abundance",
+      "quote": "which are reported for B335 by (cite: shirley2011)"
+     }
+    ]
+   },
+   "citation": "(cite: shirley2011)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity 8.34 km/s",
+    "evidence": [
+     {
+      "loc": "4.2 Detected Molecules and Their Distribution",
+      "quote": "assuming the systemic velocity of 8.34 km s$^{-1}$ (cite: yen2015)"
+     }
+    ]
+   },
+   "citation": "(cite: yen2015)"
+  },
+  {
+   "what": {
+    "value": "Mass-weighted dust temperature 111 K at ~0.5'' beam",
+    "evidence": [
+     {
+      "loc": "4.3 Derivation of Column Density and Fractional Abundance",
+      "quote": "mass-weighted dust temperature (cite: kauffmann2008) at a roughly 0.5$''$ beam (111 K) reported for B335 by (cite: evans2015)"
+     }
+    ]
+   },
+   "citation": "(cite: evans2015)"
+  },
+  {
+   "what": {
+    "value": "COM abundances in IRAS 16293-2422, IRAS 4A, IRAS 2A, L1689B, Orion KL for comparison",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "comparable to that reported for the prototypical hot corino IRAS 16293-2422 ($9 \\times 10^{-9}$) (cite: jaber2014)"
+     }
+    ]
+   },
+   "citation": "(cite: jaber2014); (cite: taquet2015); (cite: bacmann2012); (cite: friedel2005)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and fit its size/flux",
+   "method": "Continuum averaged over line-free channels; Gaussian fit for peak position and deconvolved size",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify lines and fit line parameters",
+   "method": "Assign lines with CDMS and JPL, assuming v_sys 8.34 km/s; Gaussian fits for intensity, width, v_lsr",
+   "software": [
+    "CDMS",
+    "JPL catalog"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make moment 0 maps and measure emitting-region sizes",
+   "method": "Moment 0 maps of selected lines; deconvolved FWHM sizes for HCOOCH3 and NH2CHO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive beam-averaged column densities",
+   "method": "LTE, optically thin formula using integrated intensity at the continuum peak",
+   "software": [],
+   "key_parameters": [
+    "Tex = 100 K"
+   ],
+   "assumptions": [
+    "Tex 100 K as typical of IRAS 16293-2422 COMs and close to 111 K dust temperature"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive H2 column density and fractional abundances",
+   "method": "H2 column density from peak continuum flux with dust opacity; abundances = N(X)/N(H2)",
+   "software": [],
+   "key_parameters": [
+    "kappa(1.2 mm)=0.0068 cm2/g; mean molecular weight 2.33"
+   ],
+   "assumptions": [
+    "Dust temperature equals LTE temperature (100 K)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain emitting size and protostellar mass",
+   "method": "HNCO brightness temperature 4.2 K in beam with Tb<100 K gives diameter >=11 au; line width then gives mass limit (Keplerian or infall)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HNCO co-spatial with COMs at 100 K average temperature"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total 1.2 mm continuum flux",
+   "value": "92.8",
+   "uncertainty": "2.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Dust Continuum",
+     "quote": "The total integrated flux is 92.8$\\pm$2.1 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of compact continuum component",
+   "value": "0.43'' x 0.28'', PA 23 deg",
+   "uncertainty": "PA ±15 deg",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Dust Continuum",
+     "quote": "A deconvolved size of the compact component of the continuum emission is 0.43$''$ $\\times$ 0.28$''$ with the position angle of 23$\\pm$15$^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density (Td=100 K)",
+   "value": "5.66e23",
+   "uncertainty": "0.11e23",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Derivation of Column Density and Fractional Abundance",
+     "quote": "$(5.66 \\pm 0.11) \\times 10^{23}\\ \\mathrm{cm}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOCH3 fractional abundance",
+   "value": "4.6e-9",
+   "uncertainty": "5e-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HCOOCH$_3$$^{b,c}$   | 26(3)                               |         | 46(5)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CHO fractional abundance",
+   "value": "2.4e-9",
+   "uncertainty": "4e-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$CHO$^{d}$      | 14(2)                               |         | 24(4)"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO fractional abundance",
+   "value": "4.3e-10",
+   "uncertainty": "4e-11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NH$_2$CHO            | 2.4(2)                              |         | 4.3(4)"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO/HNCO ratio",
+   "value": "0.024",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "In B335, the NH$_2$CHO/HNCO ratio is 0.024"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum emitting-region diameter",
+   "value": ">=11",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "the diameter of the emitting region is estimated to be 11 au or larger"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar mass lower limit",
+   "value": ">=0.04 (Keplerian); >=0.02 (infall)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "the protostellar mass is estimated to be 0.04 $M_\\odot$ or higher, if the motion responsible to the line width is Keplerian."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the pipeline or manual calibration was used",
+  "Line-free channels used for continuum",
+  "CLEAN threshold, masks, cell and image size, number of iterations",
+  "Primary beam correction and how moment 0 maps were made (velocity ranges, clipping)",
+  "Gaussian fit procedures for line parameters and source-size deconvolution",
+  "Partition functions and spectroscopy entries used for column densities",
+  "Beam/aperture and pixel used for the continuum peak flux in N(H2)",
+  "Inconsistent beam P.A. (75 vs 55 deg) not clarified"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact imaging parameters",
+  "Line-free channel selection and moment velocity ranges",
+  "Partition functions/spectroscopic constants used"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis with a clear LTE recipe, but imaging details and software versions are missing.",
+ "rediscovery_reason": "Public data, numeric abundances from a straightforward LTE recipe, though imaging details must be reconstructed.",
+ "source_card": "cards/2016ApJ...830L..37I/sonnet/card.md"
+}

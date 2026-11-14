@@ -1,0 +1,284 @@
+{
+ "bibcode": "2018ApJ...855...24P",
+ "title": "Thermal Jeans Fragmentation within ∼1000 au in OMC-1S",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aaad03",
+ "arxiv_id": "1706.04623",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What processes regulate fragmentation of the OMC-1S region down to ~1000 AU scales, and is it consistent with thermal Jeans fragmentation?",
+ "alma_project_codes": [
+  "2013.1.01037.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) ALMA; VLA 7 mm",
+  "arrays": "12 m antennas, 38 (May 19) and 37 (Aug 18)",
+  "angular_resolution": "0.28x0.22 arcsec combined; 0.22x0.17 arcsec (~74 AU) extended only",
+  "sensitivity": "rms 0.7 mJy/beam (combined); 0.45 mJy/beam (extended only)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1.3 cm peak intensities and spectral indices of counterparts",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "In the Table, we also give the peak intensity of the 1.3 cm emission from Zapata et al. (2004)."
+     }
+    ]
+   },
+   "citation": "Zapata et al. (2004)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 0.00899 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "dust (+gas) mass opacity coefficient at 1.3 mm of 0.00899 cm$^2$ g$^{-1}$ (Ossenkopf & Henning 1994, see main text)"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning 1994"
+  },
+  {
+   "what": {
+    "value": "Dust temperature 25 K from NH3 (2,2)/(1,1) rotational temperatures 18–33 K",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "the ratio ranges from 0.5 to 1, corresponding to rotational temperatures from 18 to 33 K"
+     }
+    ]
+   },
+   "citation": "Wiseman & Ho (1998)"
+  },
+  {
+   "what": {
+    "value": "X-ray counterpart catalog",
+    "evidence": [
+     {
+      "loc": "4.4 Fragmentation level vs evolutionary stage",
+      "quote": "we searched for *Chandra* X-ray counterparts to the ALMA cores (Rivilla et al. 2013)."
+     }
+    ]
+   },
+   "citation": "Rivilla et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image 1.3 mm continuum",
+   "method": "CLEAN of concatenated epochs and extended-only data, robust 0, primary beam corrected",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify sources and fit them",
+   "method": "12 sigma threshold in extended image, discarding peaks with 12 sigma area under half a beam; 2D Gaussians with IMFIT on combined image; extra Gaussians for N1 and SF5",
+   "software": [
+    "CASA IMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive source masses",
+   "method": "Flux density to gas+dust mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 25 K; kappa(1.3mm) = 0.00899 cm2/g; factor-2 opacity uncertainty; d = 388 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract 7 mm sources",
+   "method": "5 sigma threshold in VLA image; flux integrated in 2.5 sigma contour; compare with ALMA",
+   "software": [
+    "AIPS IMAGR"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "spectral index 2 to map 7 mm limit to 18 mJy/beam at 1.3 mm"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Mean surface density of companions",
+   "method": "Separations histogram; MSDC and two-point correlation function with Monte Carlo random points; linear fit in log-log",
+   "software": [],
+   "key_parameters": [
+    "0.1 dex annuli, -6<log theta<0; field area 1e-4 deg2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Define cores and fragmentation level",
+   "method": "Group sources with separation <556 AU; count sources within 1100 AU diameter; compare with density within 1100 AU",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "temperature structure similar across cores"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Jeans comparison",
+   "method": "Compute Jeans mass and length at mean density and 25 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T = 25 K; filament surface density ~2 g cm-2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of 1.3 mm sources",
+   "value": "31",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "We identified 31 compact sources above a 12$\\sigma$ threshold"
+    }
+   ]
+  },
+  {
+   "quantity": "Source masses range",
+   "value": "0.02–1.5",
+   "uncertainty": "factor 2 (opacity)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The derived masses range from 0.02 to 1.5 $M_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "MSDC slope 44–556 AU",
+   "value": "-1.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Typical separations between the ALMA sources",
+     "quote": "has a well defined slope of $-1.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic scales (MSDC breaks)",
+   "value": "556 and 2787 AU (~2900)",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Typical separations between the ALMA sources",
+     "quote": "at $\\log{\\theta}=-3.4$ and $-2.7$ (556 and 2787 AU respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of cores",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Cores defined as groups of ALMA sources",
+     "quote": "By doing this, we identified 19 cores"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean density within 1100 AU, fragmenting vs non-fragmenting",
+   "value": "36e7 vs 9.3e7",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Fragmentation level vs density",
+     "quote": "is $36\\times10^{7}$ cm$^{-3}$, while the average density within 1100 AU for the non-fragmenting cores is about a factor of 4 smaller, $9.3\\times10^{7}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of Eastern Filament fragmentation",
+   "value": "~0.0071",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Fragmentation level vs density",
+     "quote": "the probability of drawing three ones as in the Eastern Filament is $\\sim0.0071$%"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans mass / Jeans length",
+   "value": "0.04 Msun / 360 AU",
+   "uncertainty": "not stated",
+   "units": "Msun; AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "the Jeans mass is $\\sim0.04$ $M_{\\ensuremath{\\odot}}$ (following Palau et al. 2015), while the Jeans length is 360 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Filament Jeans length",
+   "value": "1780",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "the Jeans length is 1780 AU"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, mask, niter, and cell/image size",
+  "Which calibrator served which role and flux calibrator model",
+  "Line-free channel selection",
+  "Self-calibration, if any",
+  "Exact Gaussian fitting regions and residual criteria",
+  "Details of density-within-1100-AU aperture measurement",
+  "Calibrated data/scripts not provided; VLA reduction in AIPS unspecified"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters other than robust",
+  "VLA AIPS reduction details",
+  "Density-within-aperture procedure",
+  "Flux calibrator assignments"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and mostly numeric method, but imaging details and aperture procedures are under-specified.",
+ "rediscovery_reason": "Data are from an ALMA program (public after proprietary period), recipe is mostly given, results are numeric (31 sources, MSDC breaks).",
+ "source_card": "cards/2018ApJ...855...24P/sonnet/card.md"
+}

@@ -1,0 +1,1995 @@
+# Evidence pack: Spectral line identification and line surveys (`line-identification`)
+
+Scope: assigning transitions in spectral scans and crowded hot-core spectra
+
+Built from 257 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2013-2026.
+Matcher (regex over analysis steps): `line identif|identify (?:the )?(?:\w+ )?lines|splatalogue|\bcdms\b|\bjpl\b|line survey|spectral survey|complex organic|\bcoms?\b|line assignment`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- astrochemistry: 210
+- star_formation: 169
+- protoplanetary_disks: 41
+- milky_way_ism: 41
+- high_z_galaxies: 23
+- evolved_stars: 21
+- nearby_galaxies: 18
+- agn_and_quasars: 10
+- solar_system: 9
+- stellar_physics: 9
+- exoplanets: 4
+- cosmology: 2
+- galaxy_clusters_and_sz: 2
+- debris_disks: 1
+- other: 1
+
+### Software named in the matched steps
+- cdms: 65
+- cassis: 55
+- splatalogue: 31
+- casa: 24
+- jpl: 15
+- xclass: 14
+- jpl catalog: 13
+- gildas: 13
+- weeds: 12
+- madcuba: 8
+- class: 7
+- emcee: 5
+- radex: 5
+- slim: 5
+- magix: 4
+- spectral-cube: 4
+- autofit: 4
+- madex: 4
+- cologne database for molecular spectroscopy: 3
+- jpl horizons: 3
+- lamda: 3
+- tclean: 3
+- class/weeds: 3
+- astropy: 3
+- cdms database: 3
+- jpl molecular database: 2
+- lille spectroscopic database: 2
+- gofish: 2
+- pyspeckit: 2
+- hitran: 2
+- jpl catalogue: 2
+- splatalogue database for astronomical spectroscopy (sdas): 2
+- statcont: 2
+- uvcontsub: 2
+- python: 2
+- madcubaij: 2
+- jpl database: 2
+- class/gildas: 2
+- madcuba (slim): 2
+- keplerian mask package (name not preserved in text): 1
+
+### Fitting methods (most common phrasings)
+- MCMC in CASSIS; priors and likelihood not stated: 2
+- N alone free in median-constrained fits; baseline test adds 1 rms and refits N and FWHM with s, vLSR and Tex fixed.: 1
+- Use second-run column densities for non-methanol species despite different methanol vLSR: 1
+- Third set of fits uses CH3OH fit parameters after unsatisfactory median-constrained fits: 1
+- MCMC in both approaches: 1
+- 2D Gaussian fitting to smoothed 1.3 mm continuum: 1
+- Gaussian fit: 1
+- Chi^2 minimization on a coarse-to-fine grid in (N, T_ex, FWHM) with 2-sigma uncertainty contours, or interactive visual…: 1
+- Reduced chi2 minimum over grid; for CH3CN species Tex fixed to average from fit of CH3C15N and CHD2CN: 1
+- Eye-fit of column density, as for NCCONH2: 1
+- emcee; H2CO posteriors Gaussian, median with 16th-84th percentile uncertainty; priors and likelihood not stated beyond …: 1
+- Gaussian line fits per (binned) spaxel; no sampler stated: 1
+- Gaussian fit to candidate spectra for flux, width, frequency: 1
+- Linear fit to ln(N_u / g_u) versus E_u / k_B.: 1
+- Fit and subtract additive wisp structure using templates derived from GO-2561 UNCOVER data.: 1
+- Soft-parabola profile, not aimed at best-fit parameters: 1
+- Linear regression of ln(3kW / (8 pi^3 nu S mu^2)) vs E_u/k with 1-sigma error propagation: 1
+- MAGIX optimisation; errors include 10% calibration and fit error: 1
+- Third order polynomial fit to recomputed partition functions: 1
+- Gaussian fit of normalized profiles: 7.6 km/s centre, 2.3 km/s width: 1
+- Gaussian spatial fits with pyspeckit: 1
+- Direct solution of the equations with Monte Carlo error propagation (no priors): 1
+- Fit the TiO γ(0,0) F2–F2 band.: 1
+- Damped least squares with numerical Jacobian held constant over iterations; initial guess from the previously inverted …: 1
+- Genetic + Levenberg-Marquardt chi2 optimization; molecular data from CDMS: 1
+- Greybody fit with dust luminosity and T_dust free: 1
+- Gaussian fit; no sampler: 1
+- Least squares, 101 evaluations: 1
+- by-eye matching: 1
+- Combined visible/ALMA analysis inherited from (cite: Akeson2021): 1
+- Least-squares fit of skewed Gaussian to the age distribution; line fit by CASSIS (method not further described): 1
+- Fit of LTE Nu equation: 1
+- chi2 grid search (no sampler or priors); N and FWHM free, Vlsr fixed: 1
+- Free parameters: rotation temperatures, column densities, and velocity widths optimized via MAGIX: 1
+- Gaussian profile fits; blended lines fit with extra Gaussians: 1
+- chi2 minimization; errors via Interval Nested Sampling in XCLASS: 1
+- Chi-squared minimization via MADCUBA-SLIM AUTOFIT: 1
+- Visual optimization, no sampler: 1
+- LTE model spectra generated from the derived column densities and fixed rotation temperatures and overlaid on the obser…: 1
+- LTE spectral modelling in CASSIS at fixed excitation temperatures (100 K, and 70-250 K range; 40 K for NO): 1
+
+### Validation checks used
+- Compare continuum-peak and displaced spectra; continuum-peak lines are weaker.: 1
+- Isotope-scaled methanol agrees with high-excitation fit within factors 2–3; most residuals below 3σ; baseline shift inc…: 1
+- Models match data below the 3σ level; abundance ratios acknowledged as uncertain.: 1
+- Visual comparison favors methanol constraints for strongest species; 18 profiles differ from synthetic profiles.: 1
+- Compare methanol normalization from main, 13C and 18O isotopologues: 1
+- Check whether conclusions depend on the COM used as denominator; sample too small for firm conclusions.: 1
+- Comparison of 2'' and 10'' averaged spectra between 12-m array and 12-m+ACA combined data in Appendix A shows no differ…: 1
+- Derived continuum optical depths tau_nu are ~10^-2 (0.96x10^-2 to 1.60x10^-2), confirming optically thin dust; derived …: 1
+- Density estimate ~5e8 cm-3 justifies LTE: 1
+- Consistent with Yen et al. mass >0.05 Msun: 1
+- Confirmed co-spatial emission using moment 0 maps of other O-COMs in G19.88-0.53: 1
+- More than 70% of line features in G19.88-0.53 are fitted well with uncertainties < 30%; changing fixed T_ex by 20-50 K …: 1
+- Compared results with and without the 16O/18O relation intercept error in Fig. 14: 1
+- Errors estimated by varying Ntot and Tex and checking the fit: 1
+- Signal-to-noise about 3 sigma so detection is not secure; remaining blended lines do not contradict expected intensities: 1
+- Flux uncertainty from rms of masks shifted to 8 positions at 1.4 arcsec and five velocities (40 non-overlapping locatio…: 1
+- Two methods consistent within 3 sigma; Keplerian-mask fluxes adopted because some flux may be lost to beam smearing in …: 1
+- concordance of the three C2H components supports well-constrained N and LTE: 1
+- identification confirmed by CO(5-4) in an independent paper; redshifts agree within errors: 1
+- Bootstrap of 1000 redshift draws proportional to comoving volume over possible line identifications: 1
+- Compared derived T_rot against literature values for IRC +10 216.: 1
+- F277W relative correction based on PRIMER observations of the same sources on both detectors.: 1
+- Manual inspection of blends: 1
+- Comparison with single-dish literature values in Table 3 and IRC+10216: 1
+- Compared with rotation diagram of 13CH3OH (factor 7.6 difference explained by continuum opacity): 1
+- Twenty laboratory transitions agree with CDMS predictions to an RMS deviation of 16 kHz.: 1
+- Snyder et al. criteria plus spatial coherence across transitions: 1
+- Synthetic spectrum overlaid on observed spectrum: 1
+- H2CO peak positions compared with continuum and literature positions: 1
+- CO(3-2)/CO(2-1) opacity ratio is not consistent with LTE expectations, motivating non-LTE modelling: 1
+- Broad CO deficits and excesses attributed to bandpass patterns because contemporaneous data sets disagree over the same…: 1
+- Comparison with the mostly unchanged 2016 spectrum; HCO+ partially resolved in 2019.: 1
+- Check uncertain atomic identifications with NIST multiplets and relative intensities.: 1
+- Parameters are independent per Jacobian study; about 95% of HCN and 98% of CO retrievals converge automatically; uncert…: 1
+- Monte Carlo with 100 noise realizations (sigma 0.46 K); median and 16-84th percentiles: 1
+- Confirmation with APEX [CII], ATCA, SMA, Z-Spec, VLT for five sources: 1
+- HFS line ratios compared with theoretical LTE optically thin ratios: 1
+- Varying T_ex from 2.73 to 5 K changes the ratio by less than 1%: 1
+- Sensitivity of parallax to radio noise explored: 1
+- Compared with SMA detections of K+13a,b: 1
+
+### Key parameters and settings (bibcode: value)
+- 2025A&A...696A..18C: Spectral extraction coordinates: N 04:31:34.1575 +18:08:04.793; S 04:31:34.1669 +18:08:04.253; Haro 05:35:26.5616 -05:03:55.064; V346 16:32:32.1951 -44:55:30.7…
+- 2025A&A...696A..18C: CDMS for most species; JPL for CHD2OH, CH3COCH3 and CH3OCHO as written; LSD for CH3CHO.
+- 2025A&A...696A..18C: Initial vLSR range: 7.0–12.5 km s−1
+- 2025A&A...696A..18C: CH2DOH: upper Ka < 10, present in JPL and Oyama list, J < 26; retain lowest-opacity transitions
+- 2025A&A...696A..18C: Fixed-parameter isotope test: 10 000 iterations, first 5 000 discarded; exclude optically thick CH3OH and CH2DOH fits from medians.
+- 2025A&A...696A..18C: s = 0.08 arcsec; vLSR range 2–5 km s−1
+- 2025A&A...696A..18C: Median Tex = 193.90 K, FWHM = 2.23 km s−1, vLSR = 3.47 km s−1; exclude CH3OCH3 from median computation.
+- 2025A&A...696A..18C: s = 0.177 arcsec; vLSR range −5.0 to −2.0 km s−1
+- 2025A&A...696A..18C: Second approach fixes vLSR and FWHM from the first approach
+- 2025A&A...696A..18C: Only interferometric sources; CALYPSO subset restricted to five sources with estimated abundances
+- 2022MNRAS.512.4419P: Detection threshold: > 3 sigma (1 sigma RMS = 0.12 - 0.14 K computed in line-free channels)
+- 2022MNRAS.512.4419P: Gas-to-dust mass ratio eta = 100
+- 2022MNRAS.512.4419P: Mean molecular mass per H2 molecule mu = 2.8
+- 2022MNRAS.512.4419P: Dust absorption coefficient kappa_nu = 0.899 cm^2 g^-1 at 1.3 mm
+- 2016ApJ...830L..37I: Tex = 100 K
+- 2023A&A...678A.137C: CH3OH 19_{3,17}-19_{2,18} transition (E_up = 490 K, A_ij = 9.27e-5 s^-1); extraction coordinates in Table 1
+- 2023A&A...678A.137C: 3-sigma detection threshold for unblended lines; T_ex fixed to MF when unconstrained; T_ex of g-EG fixed to a-EG
+- 2023A&A...678A.137C: (16O/18O) = (58.8 +/- 11.8) D_GC + (37.1 +/- 82.6); intercept error excluded from main error propagation
+- 2018A&A...616A..90C: Tex 90-300 K; N 1e13-1e17 cm-2; FWHM 1.8-2.4 (A), 0.8-1.2 (B) km/s
+- 2018A&A...616A..90C: Only optically thin lines (tau<0.2) used
+- 2024PASJ...76...54L: each spectral window of each setup modelled separately with the same parameter set
+- 2024PASJ...76...54L: about 120 lines expected; 10 unblended and 21 partially blended possibly seen at about 3 sigma
+- 2024PASJ...76...54L: nine CH3NCO lines and thirteen CH3NHCHO lines detected; four urea lines all blended
+- 2025NatAs...9.1486L: distance 400 pc, stellar mass 1.3 Msun, inclination 38.3 deg, PA 32 deg, emitting region 40-120 au, z/r = 0.4
+- 2025NatAs...9.1486L: line width 350 m/s x sqrt(40 au / r); mask shifted by systemic velocity 4.3 km/s
+- 2025NatAs...9.1486L: Mask convolved with Gaussian 0.5 (D2O), 1.25 (HDO), 0.75 (H2-18-O) x beam, chosen by visual inspection; channels 1.2-6.4 km/s used
+- 2025NatAs...9.1486L: Noise from rms of 520 independent shifted spectra in a 19 arcsec square without primary beam correction, excluding the inner 2.4 arcsec square
+- 2021AJ....162...99F: H2CO: 128 walkers, 1000 burn-in steps, 500 sampling steps per radial bin
+- 2021AJ....162...99F: C2H: Tex fixed to 20, 30, 50 K; 128 walkers, 1000 burn-in, 500 sampling steps
+- 2021AJ....162...99F: radial bins 0.1'' wide; c-C3H2 disk average uses a 3'' radius
+- 2021AJ....162...99F: C2H blended lines fitted with two Gaussians (scipy curve_fit), line centres fixed to the rest frequencies
+- 2020MNRAS.495.3409S: taper to 0.4 arcsec FWHM synthesized beam; median 1.0 mJy/beam per 32 MHz channel
+- 2020MNRAS.495.3409S: adaptive binning to max 1.5 x beam FWHM until SNR > 5
+- 2016ApJ...833...69D: 21 line candidates (10 at 3mm, 11 at 1mm); S/N>5
+- 2024A&A...684A...4U: Survey aperture radius = 12.5''; molecule-specific aperture radius = R_p + 2.5 * HWHM; detection threshold = 3 sigma
+- 2024A&A...684A...4U: Minimum 3 transitions required; optical depth correction factor C_tau = tau / (1 - exp(-tau))
+- 2024ApJ...974...92B: JWST calibration pipeline v1.8.4; jwst_0995.pmap.
+- 2024ApJ...974...92B: Snowballs: large groups of DQ=4 pixels, with a conservatively grown mask.
+- 2024ApJ...974...92B: Mask sky-flat values outside [0.7, 1.4].
+- 2024ApJ...974...92B: Custom sky flats from COM-1063 commissioning exposures.
+- 2024ApJ...974...92B: Residual relative correction: 0.94 for F277W in NIRCam module A.
+- 2018A&A...615A..28D: Apertures 80/320/800 mas (IK Tau), 75/300/1000 mas (R Dor)
+- 2023FrASS..1015642F: R = 3'' (for AI Vol)
+- 2023FrASS..1015642F: E_u and S*mu^2 from Splatalogue
+- 2019NatAs...3..314L: FWHM fixed at 2 km/s, Tex = 120 K, emission size 0.6"
+- 2025PSJ.....6..107N: Partition functions tabulated at 300.0, 225.0, 150.0, 75.00, 37.50, 18.75 and 9.375 K
+- 2025PSJ.....6..107N: Laboratory checks: K=0 to 9, J=14-13 at 257 GHz and J=15-14 at 275 GHz; room temperature, around 1 mTorr
+- 2015A&A...576A.129B: Q(T) = 234 500 (CDMS at 145 K)
+- 2019ApJ...871..170M: Tracer lines C18O 2-1 (B6) and H2CO 5_15-4_14 (B7); mask at 1-sigma on model Gaussian; detections >2 sigma
+- 2025ApJ...989...83B: 10^5 MC iterations with tau_CO drawn from normal distributions (std = 1-sigma uncertainty); 1-sigma and 3-sigma percentile ranges
+- 2025ApJ...989...83B: Ozone lines tabulated down to CDMS/JPL log intensity -5.3
+- 2024A&A...682A.127S: Flux errors: 5σ, with noise rms multiplied by the square root of line width in pixels.
+- 2024A&A...682A.127S: TiO temperature 240 K; Gaussian smoothing kernel 3.5 Å.
+- 2023NatAs...7.1048C: Convergence when reduced chi-squared improves by less than 0.5%
+- 2023NatAs...7.1048C: Regularization parameter alpha fixed for all retrievals after trial and error with synthetic inversions
+- 2020ApJ...897..176K: Genetic algorithm 50 iterations then Levenberg-Marquardt 50 iterations
+- 2020ApJ...897..176K: Limits: N 1e12-1e25 cm-2, width 5-80 km/s, centroid ±10 km/s
+- 2013ApJ...767...88W: Retain dust temperatures with probability >10%
+- 2022A&A...667A.131B: T = 50 K to 400 K
+- 2018A&A...610A..43R: Linewidths fixed to values from isolated-component Gaussian fit when fits did not converge
+- 2024A&A...690A.372L: T_ex = 2.73 K for both HCO+ and H13CO+
+- 2025ApJ...989L..22B: Hour-by-hour ephemeris including parallax from JWST’s L2 orbit
+- 2025ApJ...989L..22B: Convert sky offsets to instrument (x,y) at the exact epoch and V3 angle using pysiaf.
+- 2025A&A...699A.183H: 32S/34S range limited to values giving [Fe/H] <= 0.5 (ratio >= 13.3)
+- 2017AJ....154..206L: threshold 18 mJy; pixel 0.1''
+- 2024A&A...689A.248S: Tex fixed to 150 K
+- 2024A&A...689A.248S: N grid 1e13 to 1e17 cm-2, step 0.1 in log10
+- 2024A&A...689A.248S: FWHM grid 3 to 11 km/s, spacing 0.1 km/s linear
+- 2024A&A...689A.248S: Vlsr derived by eye in 0.1 km/s increments, then fixed
+- 2024A&A...689A.248S: 2-sigma errors from reduced chi2 of each grid point; minimum 20% uncertainty adopted
+- 2024A&A...689A.248S: two-component sources (G025.6498p01.0491 for one species; 126348 and 707948 for the other): fit one Gaussian with Vlsr fixed to the mean of the by-eye componen…
+- 2024A&A...689A.248S: 3-sigma upper limits when the line does not exceed the detection threshold (manual fitting)
+- 2022MNRAS.511.3463Q: More than 3 transitions of C2H5CN, CH3OCHO, or CH3OH detected
+- 2022MNRAS.511.3463Q: Source size fixed to deconvolved angular size of the continuum source (theta_source = sqrt(a*b))
+- 2022MNRAS.511.3463Q: Velocity offset fixed with reference to CH3OH line at 100.6389 GHz
+- 2022MNRAS.511.3463Q: Hot core criteria: T_rot > 100 K and source size < 0.1 pc
+- 2017A&A...603A.133A: Candidate selection: Einstein A >~1e-7 s-1, E_up generally <500 K, within 2 km/s; detection threshold 3 sigma (~0.5 K)
+- 2017A&A...603A.133A: COMs: size 0.1-1.5", Tex 50-500 K, N 1e13-1e19 cm-2; extended (H2CS, SO2): size 1.0-3.5", Tex 20-200 K, N 1e12-1e16
+- 2023A&A...677A..15M: Reference velocity V_0 = 96.5 km s^-1
+- 2023A&A...677A..15M: Partition function correction factors: 1.13 for C2H5OH (at 119 K), 1.062 for C2H5CN (at 83 K), 1.24 for C2H513CN (at 126 K)
+- 2023A&A...677A..15M: Fixed FWHM for selected species: 7.0 km s^-1 (CH318OH, CH3OCH3, CH3COCH3), 7.5 km s^-1 (CH3CHO), 7.2 km s^-1 (aGg' and gGg'-(CH2OH)2), 9.7 km s^-1 (C2H3CN), 6.…
+- 2023A&A...677A..15M: 30% assumed uncertainty on chemical model abundances
+- 2019A&A...628A..10B: source size 2''; Trot 160 K; Delta V 5.0 km/s
+- 2026A&A...705A.132W: Six CH3(17)OH lines identified at S/N more than 50 sigma; 5_2-4_2 A- blended with 5_3-4_3 E at 236.554 GHz
+- 2026A&A...705A.132W: Rotation temperature 58 K (MeOH1) and 130 K (MeOH2), fixed
+- 2024ApJ...975...72B: Excitation temperatures 30 to 150 K in steps of 10 K; fiducial 60 K
+- 2024ApJ...975...72B: SO column density from the J=3_3-3_2 line only; two-line average for the other isotopologues
+- 2024ApJ...975...72B: Column density errors propagated from the integrated intensity map errors
+- 2022A&A...659A..29B: FWHM ~ 7 km s^-1
+- 2022A&A...659A..29B: T_ex = 100 K (and range 70 - 250 K for detected COMs; 40 K for NO)
+- 2020MNRAS.496..875R: L_FIR integrated between 8 and 1000 um; continuum observed at ~845-880 um
+- 2020MNRAS.496..875R: L_FIR(8-1000)/L_FIR(40-400) ~ 1.4 on average
+- 2025MNRAS.536..684D: Detection threshold >= 3 sigma in spectrum and/or zeroth moment map
+- 2025MNRAS.536..684D: T_* = 2000 K at R_* = 1.3e14 cm, T_SO2 = 25 K at R_SO2 = 1e17 cm (~1.7")
+- 2025ApJ...993..111W: r31=0.63±0.12; r41=0.34±0.04.
+- 2020MNRAS.494.1323D: IK Tau SO aperture radii 80, 320 and 800 mas
+- 2020MNRAS.494.1323D: rotational levels up to N=30, v=0, data from CDMS
+- 2019A&A...623A.124C: Tex = 25, 50, 75 K
+- 2024RAA....24l5009M: extraction aperture diameter = 0.8''
+- 2024RAA....24l5009M: source size ~ 0.5''
+- 2018ApJ...863..129S: T_bg = 2.73 K
+- 2025ApJ...985..259J: Moment 0 integrated over all channels with >3 sigma line emission
+- 2025ApJ...985..259J: Flux integrated over a velocity range of twice the Gaussian FWHM
+- 2025ApJ...985..259J: Flux uncertainty from spectrum RMS plus an assumed 10% Band 6 flux uncertainty
+- 2025A&A...694L..15H: Reference frequency 256.302035 GHz, LSR velocities
+- 2025A&A...694L..15H: Coarse spectral sampling of 8.8 km/s
+- 2023PSJ.....4..206R: Assumed line width 2 km/s
+- 2021MNRAS.502.3021R: Baseline polynomial order 0-1; upper limits at 3 sigma
+- 2020PASA...37...26D: Continuum modelled as a constant, except 0918 where a spectral index is added
+- 2024ApJ...969..102N: Q_CMB from CDMS or by summing states, with T_CMB = 2.73 K
+- 2025A&A...696A...7L: Free parameters per molecule: source size, rotation temperature, column density, line width, velocity offset
+- 2025A&A...696A...7L: Source size fixed to the deconvolved continuum size
+- 2025A&A...696A...7L: Upper level energy ranges: 93-485 K CH3COCH3, 227-459 K CH3OH, 36-144 K 13CH3OH, 64-441 K C2H5CN; CH3CHO two lines at 166 K
+- 2025A&A...696A...7L: C2H5CN partition function includes only the ground state, so its column densities are corrected by f_vib
+- 2021ApJ...907..108G: CH3SH multi-Gaussian: fixed velocity separation and line-intensity ratio, FWHM free
+- 2021ApJ...907..108G: column densities 3.55e15 (H13CO+), 8.92e15 (HCN), 1.18e15 (SiO) cm-2
+- 2018A&A...620A..80M: Temperatures between 50–250 K tested in one-component models
+- 2021A&A...647A..87L: T_ex free range: 50 – 350 K; N_T free range: two orders of magnitude centered on by-eye fit
+- 2021A&A...647A..87L: SMM1-a: ΔV = 1.0 – 4.0 km s^-1, V_LSR = 6.0 – 9.0 km s^-1, θ_source = 1''.2, T_bg = 5.2 K
+- 2021A&A...647A..87L: IRAS 16293B: ΔV = 1.0 km s^-1 (fixed), V_LSR = 2.7 km s^-1 (fixed), θ_source = 0''.5, T_bg = 21 K
+- 2019MNRAS.484L..43Z: Free: Ntot, Tex, VLSR, linewidth; cold component linewidth fixed to 1 km/s; warm source size 0.5", cold >20"
+- 2026A&A...711A.118A: S/N >= 5 (~1.35 K)
+- 2026A&A...711A.118A: Initial guesses: V = -34.4 km s^-1, FWHM = 5 km s^-1, theta_s = 0 (no beam dilution), initial T_ex from rotational diagram of 41 MF transitions (T_ex^CH3OCHO =…
+- 2024A&A...688L..22P: Average excitation temperature 45 K
+- 2024A&A...688L..22P: CDMS partition functions; statistical ortho-to-para ratios 3 for H2CO and 2 for D2CO
+- 2023A&A...675A.131T: T_rot = 35 K for single-transition disk-averaged column densities; Omega = 4.7e-11 sr (annulus ~115 au to ~395 au) for H2CO rotational diagram
+- 2021MNRAS.508.5259M: Spatial Gaussian kernels: 3, 6, 9''; spectral kernels: 60, 120, 180, 240, 300, 360 km/s; moment 0 detection threshold = 5 (median absolute deviation noise); mi…
+- 2024ApJ...966L..13D: Stellar rest frame with V* = V_helio = 20.9 km/s (V_lsr 4.9 km/s)
+- 2025A&A...693A.309S: Continuum power law with fixed slope 3.7 in frequency
+- 2017A&A...598A..53D: FWHM grid 0.5-25 km/s in 0.5 km/s steps
+- 2021A&A...653A..53A: 10 arcsec aperture.
+- 2021A&A...653A..53A: Line frequencies from Splatalogue.
+- 2019A&A...623L...6P: Tex = 30-300 K; ring 0.33-0.75 arcsec (40-90 au)
+- 2025PSJ.....6..286M: 9×9 pixel star subframe for x; 11×11 for y
+- 2025PSJ.....6..286M: Convert detector offsets using plate scale and JPL HORIZONS Titan–Earth distance
+- 2015ApJ...803...97S: NB if contaminant weaker than ~10% of methyl formate line
+- 2025ApJ...991...59B: Detection: three consecutive channels at least 3 sigma; tentative: four channels above 2 sigma with at least one above 3 sigma; sigma per source and spectral w…
+- 2025ApJ...991...59B: Only lines fit by a single Gaussian (no blends or multi-peaked lines); Smu^2, Eu and partition function from CDMS, partition function interpolated to the fitte…
+- 2025ApJ...991...59B: Three SO2 transitions (Eu < 100 K and log(S mu^2) > 1) excluded to avoid opacity effects
+- 2025ApJ...991...59B: LMC and SMC abundances multiplied by 2 and 5; ST11 and N 132-14A abundances recalculated with the same gas-to-dust ratio (and H2 column from same method)
+- 2020ApJ...891...61Y: Trial Tex 100 K, line width 3.5 km/s; line fitting with Gaussians in CLASS
+- 2020ApJ...891...61Y: M=0.15 Msun, inclination 130 deg, line width 1 km/s, rin=15 au, rout=50 au
+- 2019A&A...631A..64B: source size 0.15''
+- 2021ApJ...909..214L: Initial parameter space 1e14-1e20 cm^-2 and 10-800 K, then a second iteration with narrower species-specific grids
+- 2021ApJ...909..214L: Partition functions linearly interpolated from catalog values (JPL, CDMS)
+- 2021ApJ...909..214L: Reported values are the 50th, 16th and 84th percentiles of the marginalized posteriors
+- 2016A&A...595A.117J: Tex = 300 K; source size 0.5''; fixed line width and LSR velocity
+- 2026ApJ..1004L...6D: VLSR = 15.9 km s^-1 from H2CO at 291948.067 MHz
+- 2026ApJ..1004L...6D: Ten unblended MC transitions; Eu = 103–333 K
+- 2026ApJ..1004L...6D: Seven transitions exceed 3σ peak intensity; σ measured in line-free channels
+- 2024ApJ...973..135H: Assumed temperatures 30 K and 80 K
+- 2024ApJ...973..135H: Partition function Q(T) interpolated from CDMS
+- 2020A&A...644A.119P: Tex = TK = 20-100 K
+- 2023ApJ...953...75H: Flat priors: beta in [-0.7, 0.4], E(B-V) in [0, 10], redshift z in [0, 8]; SFR averaged over past 30 Myr
+- 2025A&A...704A..18O: Five disk positions: center (pos 0) and radial offset 15 mas (0.5 R_cont) at PA = -15, 75, 165, 255 deg; off-limb positions at radii 50 mas and 90 mas; p-V sli…
+- 2019A&A...623L...1K: v_LSR uncertainty 1.5 km/s; sigma floored at channel width
+- 2017A&A...606A.125S: Tex 10 and 25 K for N2D+; 25 and 80 K for DCN and DCO+
+- 2025A&A...702A..27P: Blue velocity range: 87.6 - 96.0 km s^-1; Red velocity range: 102 - 108 km s^-1; Excluded range: 97.2 - 102.0 km s^-1; Systemic velocity: 101 km s^-1; Outflow …
+- 2025A&A...702A..27P: 1.3 mm integrated flux S_nu = 0.03 Jy
+- 2022ApJ...927..218H: Detection threshold SNR > 5
+- 2022ApJ...927..218H: At least one transition with E_up > 100 K
+- 2022ApJ...927..218H: PEACHES-matched criteria: L_bol > 1 L_sun and 3 sigma methanol detection
+- 2019A&A...629A..29J: Tex 100 K for most species; CH3OCHO slightly better at 300 K
+- 2020ApJ...899...65S: Vsys 6.9 km/s (IRAS 4A2), 3.1 km/s (I16293B); FWHM 2.0 and 1 km/s
+- 2019ApJ...882..118X: Tbg 11.5, 27.4, 33.9, 43.1 K for Band 4, Band 6, Band 7 1.1 mm, 0.87 mm
+- 2024MNRAS.533.1143M: FWHM 3.21 km s−1
+- 2024MNRAS.533.1143M: Source size 0.50 arcsec
+- 2026ApJ..1005..199C: Solid angle Omega from R90 radius; convergence threshold < 0.001% or max 5000 iterations; 4 MCMC walkers, 5000 steps, burn-in 100 steps, thinning every 15th st…
+- 2023A&A...678A.146B: uvcontsub fit order = 1; Briggs robust = 0.5 or 2.0; 0.4" uv-taper for 2016.1.00344.S lines (except HC3N); 0.25" uv-taper and 0.2" imsmooth kernel for CS J=7-6
+- 2021A&A...655A..42S: fixed integration width 200 km/s; detection threshold 3 sigma
+- 2024A&A...690L..16J: lines at 222.52 GHz (S/N=11 or 23) and 223.27 GHz in Band 6; 95.4 GHz in Band 3
+- 2024RAA....24b5009L: Core 6: test for broad H30α, ΔV>20 km s−1; narrow feature ΔV∼6 km s−1
+- 2024RAA....24b5009L: CH3CN: 220.52–220.7 GHz; NH2CHO: 233.24–233.85 GHz
+- 2023A&A...678A.194C: Core aperture = 2x continuum FWHM; background annulus = 2x to 3x continuum FWHM; detection criteria: S/N > 4 sigma (from MAD in 30 line-free channels) and velo…
+- 2018ApJ...862..102S: Blended 241.90416 GHz line intensity divided by two
+- 2023Ap&SS.368...33M: Circular aperture diameter = 0.781'', V_LSR = –16.5 km s^-1
+- 2026ApJ...999..194I: Elliptical extraction aperture: 0.89'' x 0.70'' centered at RA = 6h38m29.660s, Dec = 0d44m40.75s
+- 2026ApJ...999..194I: Detection criteria: >= 3 sigma and within ~+-2 km s^-1 of V_sys = 53.2 km s^-1 (2.5–3 sigma with spatial coincidence for tentative detections)
+- 2026ApJ...999..194I: Savitzky-Golay filter: window size = 5 channels, polynomial order = 3; or 2-channel binning
+- 2025A&A...694A.108P: Equal Gaussian width for all components
+- 2025A&A...694A.108P: Fixed shifts: 2.5 MHz (C2H), 2.09 and 1.54 MHz (HCN); sigma bounded to half the component separation; intensity ratio priors xi in [0.2,1.5] (C2H) and [0.1,1] …
+- 2023ApJ...956..135W: A_20 = 1.33e-8 s^-1, nu = 233.94618 GHz, D = 60.1 pc, upper state energy 11.23 K, degeneracy 3
+- 2024JApA...45....3M: PN J = 3–2 rest frequency without hyperfine structure: 140967.684 MHz.
+- 2024JApA...45....3M: G10 source size: 10.78″.
+- 2024JApA...45....3M: Excitation temperature, column density, source size, FWHM, and VLSR can be varied.
+- 2020ApJ...904..181L: Primary focus: CH3CN J=19–18, K=0 through K=10
+- 2016ApJ...833..219P: Q(500 K)=15611 from CDMS
+- 2023A&A...670A.177F: Frequency range = 82.5–450 GHz, 853 transitions fitted, 40 spectroscopic constants varied
+- 2023A&A...670A.177F: Catalogue up to J = 28, LOGSTR0 = -8, LOGSTR1 = -8, minimum calculated error = 10 kHz
+- 2017MNRAS.469.2230M: Linewidth 1.1 km/s; source size 0.5"
+- 2026ApJ...998..277M: 0.42'' (0.1 pc) diameter spectral extraction region
+- 2026ApJ...998..277M: Detection threshold S/N >= 3
+- 2026ApJ...998..277M: Fitting velocity range: 229 to 236 km s^-1 (N79S-1) and 230 to 238 km s^-1 (N79S-2)
+- 2025ApJS..276...49J: v_width = 3 km/s, T_rot = 120 K, eta = 0.384, N free
+- 2020ApJ...893..101L: templates: 12CO, 13CO, C18O, DCO+, H13CO+, plus H2CO, N2H+, CS from survey
+- 2026ApJ..1005..142S: Aperture diameter = 0.50'' (560 au); convolved circular beam = 0.54''
+- 2026ApJ..1005..142S: Detection threshold = 3 sigma at V_sys = -8.0 km s^-1 (tentative = 2.5 to 3 sigma); upper limit assumed FWHM = 4 km s^-1 at 2 sigma
+- 2026ApJ..1005..142S: n(H2) = 10^7 cm^-3; T_gas = 150 K; A_V = 20 mag; ionization rate zeta = 10^-17 to 10^-14 s^-1
+- 2022A&A...664A.171V: Polygon extraction threshold > 4 sigma in integrated intensity map; 3 velocity components at V_LSR = -2.0, 2.8, and 9.9 km/s
+- 2023Ap&SS.368...44M: Circular extraction aperture diameter = 2.5" centred at RA = 18h08m38.232s, Dec = -19d51m50.440s
+- 2023Ap&SS.368...44M: V_LSR = 68.50 km s^-1, source size = 2.5", FWHM = 10.2 km s^-1, T_ex = 300 K
+- 2017MNRAS.469.2219L: Source size 0.5 arcsec; Tex 100 and 300 K
+- 2024NewA..10902199M: Best fit: N = (1.10±0.31)e17 cm^-2, Tex = 180.8±25.5 K, source size 0.5 arcsec
+- 2026ApJ..1000L..32A: 256 walkers, 5000 steps after 1000 burn-in
+- 2021A&A...651L...5V: first order polynomial for uvcontsub
+- 2026ApJS..282...64S: Hot core classification threshold: T_rot > 100 K
+- 2026ApJS..282...64S: Two-component fit boundary for SO2 and 34SO2: E_u <= 80 K and E_u >= 90 K
+- 2023ApJ...946L..41S: 3sigma detection threshold; systemic velocities 163.1 km s^-1 (S07) and 132.0 km s^-1 (S09); Delta V = 4 km s^-1 for non-detection upper limits
+- 2017ApJ...843...27L: robust = 0.5; uv<8000 m for COMs; uv<3000 m for HCO+
+- 2023JMoSp.39411777M: T_rot = 125 K, FWHM linewidth = 1 km s^-1, v_LSR = 2.6 km s^-1
+- 2018A&A...612A.107C: IRAS16293 B: Tex 300 K, source size 0.5''; IRAS2A: Tex 130 K, size 0.5''
+- 2024RAA....24g5014M: Detection criterion: non-blended lines at >=4 sigma (NH2CHO) and >=4.5 sigma (HNCO)
+- 2024A&A...684A.189V: Extraction region 0.82'' x 0.77'' centred at 17h11m23.107s, -27d24m33.005s
+- 2024A&A...684A.189V: Excitation temperature 80 K for all three components; source sizes 0.15, 0.13, 0.12''; DeltaV 2, 5, 4 km/s
+- 2024A&A...684A.189V: Partition function fit Q(T) = a x T^b to CDMS values: C2H5CN (a, b) = (7.2158, 1.4995); C2H3CN (a, b) = (0.95923, 2.0865)
+- 2020MNRAS.496..394R: Tex = 20 K; median in 1.2"x0.9" ellipse, PA 60 deg
+- 2022A&A...668A.109N: beam size between 0.5'' and 1.5''
+- 2022A&A...668A.109N: CH3CN 12_7-11_7 detection threshold ~2.5-3 sigma
+- 2019MNRAS.483..806R: Molecular emission size assumed equal to continuum: 0.88 arcsec (A), 0.44 arcsec (B)
+- 2025ApJ...988L..44F: emission radius R = 0.3''
+- 2025ApJ...988L..44F: distance d = 400 pc
+- 2025ApJ...988L..44F: line FWHM = 2 km/s
+- 2024MNRAS.534.3576K: Delta nu = 6 km/s; d = 115 pc; T = 20-3000 K; Mp = 2.2 MJ, Rp = 2 RJ; sublimation T ~1500 K
+- 2025A&A...697A.190L: Integration range +/-5 km/s, chosen to match typical COM FWHM of ~5 km/s in strong hot cores
+- 2025A&A...697A.190L: Compact = round morphology with central brightest part unresolved or partly resolved
+- 2023MNRAS.525.6146W: typical hot core model parameters, T > 100 K, used for the identification spectra
+- 2022JApA...43...83M: 2.5" diameter circular region at RA (J2000) = 18h08m38.232s, Dec (J2000) = -19d51'50.440"
+- 2022JApA...43...83M: V_LSR ~ 68.50 km s^-1
+- 2024ESC.....8..665M: source size 1.3″; Tbg = 2.73 K; Tc = 0; systemic velocity 97 km/s
+- 2024AJ....167...66Y: Aul >= 1e-8 s-1, Eu <= 1000 K
+- 2025SciA...11.6953M: Excitation temperature 20 K
+- 2025SciA...11.6953M: H13CO+ abundance 1.28e-10, CCH abundance 3.72e-8
+- 2025SciA...11.6953M: Spectroscopic constants from CDMS
+- 2022A&A...662A...8M: N2H+ (1-0) isolated satellite frequency ~93.176 GHz
+- 2023MNRAS.525.2229M: Best fit: source size 0.45 arcsec, FWHM 3.35 km/s
+- 2024IJAsB..23...14M: V_LSR = 68.50 km/s
+- 2025ApJ...986L...9B: Briggs robust 2.0; channel width 0.55 km s−1.
+- 2024A&A...681A.104B: Five inputs per molecule: column density, rotational temperature, emission size, velocity offset, linewidth
+- 2024A&A...681A.104B: Emission size fixed at 2''
+- 2024A&A...681A.104B: Systemic velocity 62 km s^-1
+- 2022MNRAS.509..748W: 19 lines in broad spws + 1 narrow-band CH3OH line; 3 lines with extended emission excluded from disc PA and inclination averages
+- 2023JApA...44...69M: Source size = 0.5'', V_LSR = 2.7 km s^-1, CDMS entry 062515
+- 2019ApJ...871..251P: 5σ detection threshold; rms from line-free channels among nearby 50 channels
+- 2026A&A...713A..67X: Robust identification criterion: >= 3 spectrally independent unblended or marginally blended features with peak intensity > 3 sigma reproduced simultaneously b…
+- 2026ApJ...999...62H: Reference velocities: 3.5 km s^-1 (source A), 6.5 km s^-1 (source B); outer rotation radii: 200 au (0.50", source A), 40 au (0.1", source B)
+- 2023ApJ...948..127O: Blueshifted velocity range: -0.2 km s^-1 to 5.0 km s^-1; Redshifted velocity range: 5.8 km s^-1 to 10.6 km s^-1
+- 2018ApJS..236...45G: VLSR between -6 and -17 km/s
+- 2021ApJ...919....4L: Linewidth = 4.2(0.5) km s^-1, T_ex = 150 K, source size ~ 0.3''; same parameters used for v=0 and v=1 states
+- 2017A&A...604L...2F: Ethylene glycol: Eup up to ~400 K, Aij >= 1e-4 s-1
+- 2025ApJ...981...49S: T_rot = 20-50 K (also tested 10 K)
+- 2025ApJ...981...49S: T_bg = 2.73 K
+- 2026A&A...706A.256A: H2 number densities 10^6, 10^7, and 10^8 cm−3.
+- 2026A&A...706A.256A: Energy levels, transition frequencies, and Einstein A coefficients from CDMS; collisional rates from (cite: Lique2006).
+- 2026A&A...706A.256A: Displayed temperature upper limit 220 K chosen because gas-phase SO2 formation is more efficient below 200 K.
+- 2022A&A...665A.140B: 3 sigma threshold for pixel map; 1 sigma and 2 sigma channel thresholds for C_Lines^core and F_Lines^core
+- 2020MNRAS.492.1180R: Tex fixed: 5 K for PN/PO, 34 K for SO; free N, v, FWHM
+- 2024A&A...687A...8M: Accuracy check: calculation at 300 K up to 1.5 THz.
+- 2024A&A...686A.122A: Outflow velocity ranges: ambient within +-5 km/s of vlsr = 37 km/s; blue [12;32] km/s and red [42;62] km/s
+- 2024A&A...686A.122A: COM search at 2 sigma for CH3OCHO, CH3CN, CH3OH, C2H5CN and H2CS in named spectral windows
+- 2024A&A...686A.122A: Scenario A: 21 protostellar (26%) and 59 prestellar; scenario B: 37 protostellar (46%) and 43 prestellar
+- 2021MNRAS.507.1886F: Detection limit = 4 sigma in integrated intensity
+- 2017A&A...606L...6Z: robust = 0.5
+- 2020A&A...636A..29W: r0=6010 au, n0=1.54e7 cm-3, T0=135.5 K, alpha=1.5, q=0.38, nf=2.74e9 cm-3
+- 2024A&A...683A..62M: Search window +/-10 MHz around 494.032 GHz; also searched around 261.961 GHz (z=0 case)
+- 2025MNRAS.539.3808U: Detection threshold >=3 sigma with rms 4 mJy/beam
+- 2025MNRAS.539.3808U: Spectral extraction diameter 0.5 arcsec (0.7 arcsec for CO in MM1a)
+- 2021A&A...655A..65T: 3'' extraction region; FWHM fixed at 3 km s^-1
+- 2020MNRAS.491..427B: Spectrum rms 44 mK (core), 36 mK (tail)
+- 2019MNRAS.490...50D: Tex = 125 K and 300 K for glycine; 125 K for PN
+- 2025A&A...694A.166C: Detection requires 3 sigma and velocity near systemic; need at least three lines per state to fit
+- 2020ApJ...896...35J: CH3OH LTE reference: N_H2=4e25 cm-2, vLSR=-52, FWHM 5 km/s, T=160 K, size 0.5'', abundance 1e-8
+- 2020A&A...644A..84M: Eu < 250 K for the main fit; 25 MF, 12 GA, 14 AA lines
+- 2024A&A...682A..78V: Resolved line FWHM: 3.5 km s^-1.
+- 2023MNRAS.519L..68B: Systemic velocity = 550 km s^-1
+- 2022A&A...659A..69D: LOGSTR0 = LOGSTR1 = -9; minimum ERR 10 kHz; lines below 500 GHz
+- 2025A&A...701A.141L: Optical depth correction factor f_tau = tau/(1-exp(-tau)) with tau from peak Tb/Tex
+- 2020ApJ...889..178B: Mx 1-4, MBN 8-18, MI 5-25 Msun
+- 2018A&A...618A..11T: Vlsr = 2.7 km/s, FWHM = 1 km/s, source size 0.5 arcsec, beam filling factor 0.5
+- 2021A&A...651A.120R: Degeneracy factor g_n = 1 for symmetric and 2 for asymmetric conformer in the rigid-rotor approximation
+- 2025ApJ...988..111I: T_rot(SiO) = 100–500 K and T_rot(CO) = 11 K (L1448 comparison); T_rot = 150 K for both (Orion comparison)
+- 2021A&A...650A.202R: A_ul = 1.20e-8 s^-1, g_u = 9, E_u = 17.9 K, Q(10 K) = 10.48
+- 2019ApJ...872..196S: vsys = 6.96 km/s; match at 3 sigma for Aij >= 1e-5
+- 2020ApJ...901...37L: V_LSR and dV errors +-0.3 km/s
+- 2026AJ....171..368M: Aperture diameter = 2.32''; source size = 2.32''; V_LSR = 5.0 km s^-1; 1000 walkers; 20,000 burn-in steps
+- 2021ApJ...922..206S: Assumed line width Delta V = 4 km s^-1 for 2sigma upper limits
+- 2025A&A...702A..35D: Five model parameters: source size (fixed to deconvolved continuum angular size), line width (from Gaussian fitting), velocity offset (calibrated via CH3OH at …
+- 2021A&A...653A.129C: A line is non-contaminated if the peak of another species lies farther than FWHM from it; in a blend with separation below FWHM the contamination must be below…
+- 2024RAA....24f5008M: V_LSR = 33.8 km/s
+- 2026A&A...713A.167D: Free parameters per component: source size (θ_source), rotational temperature (T_rot), column density (N), linewidth (Δv), velocity offset (v_off)
+- 2026ApJ..1001..161H: Tex = 50 K; Tbg = 2.7 K; Qrot = 18.45; g_u = 5; A_ul = 6.911e-7 s^-1; E_l = 5.53 K
+- 2026ApJ..1001..161H: 12CO/13CO abundance ratio chi = (7.5+/-1.9) D_GC + (7.6+/-12.9), D_GC = 6.2 kpc
+- 2024ApJ...971..187A: Main upper limit assumes Trot 51 K and line width 0.7 km/s
+- 2025ApJS..280...33Y: model spectrum width 50 km/s, shifted by field Vlsr
+- 2025ApJS..280...33Y: uvcontsub linear fit, fitorder=1
+- 2026A&A...709A.173M: Free parameters: column density N, excitation temperature T_ex, central velocity, FWHM
+- 2022BAAA...63..140M: spatial scale of about 0.02 pc
+- 2024ApJ...962...13C: Line-rich: at least 50 lines and potential CH3OCHO detection
+- 2024ApJ...962...13C: Warm cores: H2CS detected, no CH3OCHO
+- 2024ApJ...962...13C: Cold cores: one or no H2CS line
+- 2024A&A...686A..31B: Optical depth 0 to 10 in steps of 0.1 (tau<1) and 0.5 (tau>1)
+- 2026ApJ..1003..219W: 52 identified non-blended spectral lines
+- 2025ApJ...985..226W: Circular aperture radius 1.0 arcsec for continuum-window source spectra
+- 2024A&A...688A...3H: Definite detection threshold > 5 sigma_rms; tentative detection threshold 3 to 5 sigma_rms; upper limit threshold S/N < 3
+- 2026MNRAS.551g1639M: Time interval bin = 8 x 10^4 yr (0.08 Myr, 2000 timesteps); bound criterion E_min < 0
+
+
+### Assumptions (bibcode: value)
+- 2025A&A...696A..18C: Methanol isotopologues and other COMs arise from the same region
+- 2025A&A...696A..18C: Isotopic ratios: 12C/13C = 68; 16O/18O = 560
+- 2025A&A...696A..18C: Same source size as Northern disk
+- 2025A&A...696A..18C: Use methanol-derived parameters for final COM column densities
+- 2025A&A...696A..18C: Only one transition per molecule; source size and Tex must be assumed
+- 2025A&A...696A..18C: Treat COM/CH3OH abundance ratios in remaining FUors as upper limits because methanol is optically thick
+- 2025A&A...696A..18C: HOPS 108 and IRAS 16293 use 16O/18O = 560; cited 13C-based samples use 12C/13C = 60; B335 uses 68.
+- 2022MNRAS.512.4419P: Transitions of a specific species are excited by similar conditions and share similar LSR velocity and spatial distribution
+- 2022MNRAS.512.4419P: Optically thin dust continuum emission
+- 2022MNRAS.512.4419P: Dust temperature equals average rotational temperature of COMs (thermal coupling at n_H2 > 10^6 cm^-3): 99 K (MM7), 134 K (MM8), 137 K (MM4), 100 K (MM11)
+- 2022MNRAS.512.4419P: Dust grains with thin ice mantles at a gas density of 10^6 cm^-3
+- 2016ApJ...830L..37I: Tex 100 K as typical of IRAS 16293-2422 COMs and close to 111 K dust temperature
+- 2016ApJ...830L..37I: HNCO co-spatial with COMs at 100 K average temperature
+- 2023A&A...678A.137C: Other O-COMs peak at similar locations to methanol emission
+- 2023A&A...678A.137C: Single excitation temperature (LTE) per species; vibrational corrections applied to GA and EG
+- 2023A&A...678A.137C: CH3^18OH lines are optically thin while 13CH3OH lines are marginally optically thick
+- 2018A&A...616A..90C: LTE, source size 0.5 arcsec, Gaussian profiles, continuum as background temperature
+- 2024PASJ...76...54L: LTE
+- 2024PASJ...76...54L: Same size (2.3'') and Trot (150 K) as for NCCONH2
+- 2025NatAs...9.1486L: Emission from disk at 40-120 au on a z/r = 0.4 surface; same mask parameters for all three isotopologues
+- 2025NatAs...9.1486L: Emission assumed to originate from the disk midplane
+- 2021AJ....162...99F: LTE, top-hat line profile for tau, partition function interpolated with cubic spline, CDMS molecular data
+- 2020MNRAS.495.3409S: [CII] is the most likely line identification (later confirmed by CO(5-4) from another paper); lensing amplification not corrected
+- 2020MNRAS.495.3409S: pairs in a ~10^13 Msun NFW halo have ~700 km/s velocity separation at ~20 kpc projected separation (following Wardlow et al.)
+- 2024A&A...684A...4U: All observed SiS line emissions are assumed to be primarily thermal in nature.
+- 2024A&A...684A...4U: LTE Boltzmann level populations described by a single rotational temperature T_rot; linear rigid rotor partition functions for all species except asymmetric to…
+- 2018A&A...615A..28D: vLSR 33 km/s (IK Tau), 7 km/s (R Dor)
+- 2018A&A...615A..28D: Optically thin, LTE, no radiative pumping differences; masers excluded
+- 2023FrASS..1015642F: Local Thermodynamic Equilibrium (LTE)
+- 2023FrASS..1015642F: Mean molecular weight mu = 2.8
+- 2019NatAs...3..314L: LTE; CH3OH column = 13CH3OH x 60
+- 2025PSJ.....6..107N: Exclude v8=1 and nitrogen hyperfine structure from the parent partition function, matching the isotopic species.
+- 2025PSJ.....6..107N: Relevant hyperfine splittings are much smaller than the observed spectral resolution.
+- 2015A&A...576A.129B: Optically thin lines and LTE
+- 2025ApJ...989...83B: Single-zone LTE with adjacent transitions under the same conditions; beam filling factor ignored; CMB negligible; T_K = T_ex
+- 2025ApJ...989...83B: Diffuse-gas CO/H2 abundance ratios (~2e-6 to ~8e-7) preferred over the standard 3.2e-4 for N_H2
+- 2025ApJ...989...83B: N_O3 scales linearly with the depth of unsaturated O3 absorption lines
+- 2024A&A...682A.127S: Pgopher parameterises TiO by a single rotational temperature.
+- 2023NatAs...7.1048C: Lines not optically thick (tau 0.2 for CO, 0.4 for HCN at high latitudes, 1.6 for HCN at low-to-mid latitudes)
+- 2023NatAs...7.1048C: Pressure broadening and NH3/PH3 profiles as given
+- 2020ApJ...897..176K: Source size fixed to unity (fills beam); Trot=130 K, Tvib=300 K fixed; LTE; emission-only components
+- 2013ApJ...767...88W: Greybody beta=2, T_dust distribution of known-z sample (mean 37.2+-8.2 K) as prior
+- 2022A&A...667A.131B: Local Thermodynamic Equilibrium (LTE)
+- 2022A&A...667A.131B: Beam filling factor Delta Omega_a / Delta Omega_s = 1 (source completely fills the beam)
+- 2022A&A...667A.131B: Optically thin limit tau = 0
+- 2018A&A...610A..43R: Optically thin LTE for HFS
+- 2024A&A...690A.372L: T_ex of HCO+ close to T_CMB in diffuse molecular clouds
+- 2017AJ....154...11H: JPL DE405 ephemerides for parallax
+- 2015MNRAS.447.1826Z: LTE, optically thin
+- 2015A&A...580A..36D: Stellar vLSR of 22 km/s
+- 2025A&A...699A.183H: LTE, single component; CDMS spectroscopy
+- 2021A&A...650A..37D: Line shift is due to position in the Galaxy, not intrinsic to the source
+- 2015A&A...582A..91C: Source size 0.4''; LTE
+- 2015ApJ...809L..26H: Tex 10-25 K, optically thin, co-spatial N2D+ and N2H+
+- 2024A&A...689A.248S: LTE, single Tex = 150 K (only one line per species per source)
+- 2024A&A...689A.248S: beam dilution factor of unity (source fills the beam)
+- 2022MNRAS.511.3463Q: Local thermodynamical equilibrium (LTE)
+- 2022MNRAS.511.3463Q: For cores with <3 CH3OH transitions detected, CH3OH gas temperature is assumed equal to T_rot of CH3OCHO (or C2H5CN if CH3OCHO is undetected)
+- 2017A&A...603A.133A: LTE, isothermal 1D source; isotopologues coupled with fixed/varied ratios (12C/13C=50 for HC3N)
+- 2023A&A...677A..15M: Local thermodynamic equilibrium (LTE), single temperature component filling the 1.2'' beam
+- 2023A&A...677A..15M: N_H2 = (1.0 +/- 0.2) x 10^25 cm^-2, 12C/13C = 37 +/- 12, 16O/18O = 333 +/- 143, 11% error floor on N and T_ex
+- 2019A&A...628A..10B: LTE, source size 2'' for all species
+- 2026A&A...705A.132W: LTE justified by dense gas (n_H2 > 1e8 cm^-3 vs n_crit ~1e5 cm^-3); optically thin lines
+- 2024ApJ...975...72B: Optically thin emission and LTE
+- 2024ApJ...975...72B: SO traces the same warm gas as a companion molecule with rotational temperature about 60 K (no independent SO temperature)
+- 2024ApJ...975...72B: Temperature range 30-150 K bounded below by the midplane mm dust brightness temperature (minimum 30 K) and above by the optically thick CO isotopologue brightn…
+- 2022A&A...659A..29B: Local thermodynamic equilibrium (LTE)
+- 2022A&A...659A..29B: Source emitting area based on 5 sigma continuum emission (1.4 x 10^-11 sr) and beam dilution factor
+- 2022A&A...659A..29B: 12C/13C ratio of 60 for methanol isotopologue upper limit
+- 2020MNRAS.496..875R: LambdaCDM H0 = 70, Om = 0.3, OL = 0.7; Chabrier IMF
+- 2020MNRAS.496..875R: 0.5 dex systematic error from FIR SED template choice added in quadrature
+- 2020MNRAS.496..875R: SFR scaled from Salpeter to Chabrier by dividing by 1.7
+- 2018ApJ...866L..12G: LTE, optically thin, 300 K
+- 2025MNRAS.536..684D: Power-law radial temperature profile T(r) = T_*(r/R_*)^-epsilon; constant expansion velocity of 23 km/s at distance 3.9 kpc
+- 2025ApJ...993..111W: Planck cosmology: H0=67.8 km s−1 Mpc−1, Ω_MΛ=0.307, ΩΛ=0.69.
+- 2019ApJ...883..165H: LTE line strengths for consistency check
+- 2020MNRAS.494.1323D: Gaussian abundance distribution with the e-folding radius found for SO by Danilovich2016
+- 2019A&A...623A.124C: Optically thin, LTE, disk mass ~0.09 Msun all H2, d=122 pc
+- 2024RAA....24l5009M: Local Thermodynamic Equilibrium (LTE) and optically thin emission lines
+- 2014Sci...345.1584B: LTE
+- 2018ApJ...863..129S: optically thin, LTE, single component
+- 2025ApJ...985..259J: Rest frequencies from Splatalogue; D_L and z from Armus et al. 2009
+- 2025A&A...694L..15H: Gaussian line profile only (no Lorentzian component) because of low SNR
+- 2023PSJ.....4..206R: Gas rotational temperature 1000 K; gas extended perpendicular to line of sight filtered out so limits constrain line-of-sight emission
+- 2014ApJ...781L..39T: αCO = 0.8 Msun (K km/s pc2)^-1, thermalized lines; Tdust 40 or 50 K
+- 2020PASA...37...26D: All detected lines are CO (plus [CI], H2O predicted) and share one amplitude and width in the fit; HCN and HCO+ ignored
+- 2018A&A...617A.129K: Oxygen-rich chemistry (C/O<1)
+- 2025A&A...696A...7L: LTE
+- 2025A&A...696A...7L: CH3CHO fit temperature fixed to the CH3COCH3 excitation temperature
+- 2025A&A...696A...7L: CH3OH rotation temperature equal to that of 13CH3OH
+- 2025A&A...696A...7L: CH3OH column density = 13CH3OH column density times 12C/13C from the R_GC relation
+- 2021ApJ...907..108G: Line identification with CDMS and JPL spectroscopic databases
+- 2021ApJ...907..108G: Collisional rates from LAMDA; spectroscopic constants from JPL/CDMS
+- 2018A&A...620A..80M: LTE
+- 2021A&A...647A..87L: Local thermodynamic equilibrium (LTE) and optically thin lines (τ ≪ 1.0)
+- 2021A&A...647A..87L: Source size equal to beam size (beam filling factor = 0.5)
+- 2021A&A...647A..87L: Isotopic ratios 16O/18O = 560 and 12C/13C = 52.5±15.4; T_ex = 200 K for SMM1-a upper limits
+- 2019MNRAS.484L..43Z: LTE
+- 2026A&A...711A.118A: Local thermodynamic equilibrium (LTE), justified by n_H2 = 1.72 x 10^8 cm^-3
+- 2026A&A...711A.118A: N_H2 = 7.35 x 10^24 cm^-2 derived from M_core = 124.2 M_sun, D_core = 6396 au, m_H = 1.67 x 10^-24 g, mu = 2.8
+- 2026A&A...711A.118A: Isotopic ratios at D_GAL = 6.84 kpc: 12C/13C = 46.6 +/- 10, 32S/33S = 88.9 +/- 7.7, 32S/34S = 20.7 +/- 1.2
+- 2024A&A...688L..22P: LTE and optically thin emission
+- 2024A&A...688L..22P: H2CO, HDCO and D2CO emission originates from the same disk layer
+- 2024A&A...688L..22P: Distance 144 pc
+- 2023A&A...675A.131T: LTE / Boltzmann level populations; T_rot = 35 K for single transitions
+- 2021MNRAS.508.5259M: Point-like continuum source at continuum map centroid; negative features in inverted cubes are purely spurious.
+- 2016ApJ...822...80S: single line assumed to be CO
+- 2024ApJ...966L..13D: Line identification by Rydberg formula rest frequencies; TiO2 excluded using relative CDMS/JPL intensities
+- 2017A&A...598A..53D: Optically thin, LTE; same FWHM for all HFS components
+- 2019A&A...623L...6P: LTE, optically thin, CH3OH co-spatial with H2CO
+- 2025ApJ...991...59B: LTE and optically thin lines
+- 2025ApJ...991...59B: Simple metallicity scaling accounts for lower C, N, O abundances; detailed physicochemical modelling not done
+- 2020ApJ...891...61Y: COM emission optically thin
+- 2019A&A...631A..64B: LTE, optically thin; CDMS spectroscopy
+- 2021ApJ...909..214L: LTE level populations; optical depth correction factor applied; solid angle set by the 0.018 arcsec pixel
+- 2021ApJ...909..214L: Optically thick lines excluded
+- 2016A&A...595A.117J: LTE, 16O/18O = 560, vibrational corrections (1.47 glycolaldehyde vs JPL; 4.02 ethylene glycol; 1.38 gGg')
+- 2026ApJ..1004L...6D: Local thermodynamic equilibrium
+- 2024ApJ...973..135H: LTE and optically thin emission
+- 2024ApJ...973..135H: Temperatures from CO brightness temperatures in other T Tauri disks
+- 2020A&A...644A.119P: LTE, optically thin, o/p ratio of H2CO from Guzman+18
+- 2023ApJ...953...75H: Chabrier (2003) IMF; Planck 2018 cosmology; two Noll et al. (2009) / Calzetti et al. (2000) modified dust attenuation curves with old-star attenuation forced s…
+- 2017A&A...608A.138G: Redshift of nearest counterpart applies to the line
+- 2025A&A...704A..18O: Systemic velocity V_sys = 40.4 km s^-1 LSR; partial spherical shells for p-V kinematic curves
+- 2025A&A...698A.204H: only two redshift possibilities (z~1.5 and z~2.3) for non-SCUBA-2 lines
+- 2017A&A...606A.125S: 12C/13C = 69; optically thin emission; Df are lower limits
+- 2025A&A...702A..27P: LTE excitation temperature T_ex = 20 K, abundance ratio [CO/H2] = 10^-4, mean molecular weight mu_H2 = 2.72, distance = 6.2 kpc
+- 2025A&A...702A..27P: LTE and optically thin emission for rotational diagrams; thermal coupling of gas and dust with T_dust = 361 K (from CH3CN); dust opacity per gram of matter kap…
+- 2022ApJ...927..218H: 12C/13C = 50 in the Orion cloud to rescale 13CH3OH column density to main CH3OH
+- 2020ApJ...899...65S: LTE with Tex = 100 K and 300 K because rotational temperature cannot be constrained
+- 2020ApJ...899...65S: COM species reside in the same volume
+- 2019ApJ...882..118X: Negligible beam dilution; thermalized transitions since n_H2 >> n_crit (~1e5 cm-3)
+- 2024MNRAS.533.1143M: LTE, justified by maximum warm-inner-region gas density 1×10^8 cm−3
+- 2026ApJ..1005..199C: Local thermodynamic equilibrium (LTE), nuclear spin-weights of 3:1 for ortho:para H2CO in CDMS partition function
+- 2021A&A...655A..42S: [CI] detection accepted on strong priors on frequency, position and width set by the CO line
+- 2019ApJ...870L..19N: Flat LCDM, Omega_lambda=0.7, H0=70 km/s/Mpc
+- 2017A&A...605A..21C: LTE; Trot equals kinetic temperature; co-spatial emitting regions
+- 2024RAA....24b5009L: LTE for the 33SO2 line assignment
+- 2024RAA....24b5009L: Both line groups trace COM-rich hot gas
+- 2023A&A...678A.194C: DCN (3-2) is an optically thin dense gas tracer with critical density ~10^7 cm^-3; FWHM linewidth = sigma_obs * sqrt(8 ln 2)
+- 2018ApJ...862..102S: Optically thin, LTE
+- 2023Ap&SS.368...33M: LTE conditions for urea upper limit estimation
+- 2019A&A...628A..27B: LTE valid at high densities
+- 2023ApJ...956..135W: LTE, temperature range 9.4 K to 300.0 K (set by the range of the JPL partition functions)
+- 2021ApJ...907..122M: Typical SMG SEDs (Arp220, Cosmic Eyelash, composite SMGs)
+- 2024JApA...45....3M: Excitation temperature assumed to be 150±25 K for the single PN transition in both hot cores.
+- 2024JApA...45....3M: LTE justified by warm inner-region gas densities of ∼1.2×10^7 cm−3.
+- 2020ApJ...904..181L: K=3n transitions doubly degenerate; optically thin intensities would be roughly twice neighboring K lines
+- 2020ApJ...904..181L: 12C/13C ratio likely no smaller than 50
+- 2016ApJ...833..219P: v=0 and v2=1 ladders thermalized at same temperature
+- 2023A&A...670A.177F: E_d = 14.487 cm^-1 computed from ab initio B3LYP/6-31G(d) ratio r = E_d/E_d' = 0.9311 and CH2DCHO E_d' = 15.55866(4) cm^-1
+- 2023A&A...670A.177F: Zero energy set at Out configurations 0_00,+ level; rotational partition function degeneracy factor = (2J+1)
+- 2017MNRAS.469.2230M: LTE
+- 2025ApJS..276...49J: LTE
+- 2026ApJ..1005..142S: Distance = 1.12 +/- 0.01 kpc
+- 2026ApJ..1005..142S: Fixed physical conditions (n_H2 = 10^7 cm^-3, T = 150 K, A_V = 20 mag); X-ray and cosmic-ray ionization not distinguished; initial abundances from typical inte…
+- 2022A&A...664A.171V: Systemic velocity V_LSR = 3.6 km/s
+- 2019A&A...632A..57C: All COMs share Tkin of methanol
+- 2023Ap&SS.368...44M: Local Thermodynamic Equilibrium (LTE) valid due to high gas density of 7x10^7 cm^-3
+- 2017MNRAS.469.2219L: LTE, optically thin lines
+- 2024NewA..10902199M: LTE valid because the inner hot core gas density is 2e7 cm^-3
+- 2024NewA..10902199M: Hyperfine structure not considered
+- 2026ApJ..1000L..32A: OPR = 3
+- 2026ApJS..282...64S: Optically thin condition, LTE, beam filling factor of unity, and T_rot >> T_bg (T_bg = 2.73 K)
+- 2026ApJS..282...64S: T_rot(SO, SO+) = T_rot(high-T SO2); T_rot(other COMs) = T_rot(CH3OH); T_rot(SiO) = T_rot(high-T SO2 or CH3OH or average) with 50% uncertainty; T_rot(H13CO+) = …
+- 2026ApJS..282...64S: Isotope ratios: 12C/13C = 49 (+/- 30%) and 32S/34S = 15 (+/- 10%)
+- 2023ApJ...946L..41S: Delta V = 4 km s^-1 assumed for upper limits on non-detected lines
+- 2023JMoSp.39411777M: Optically thin emission and local thermodynamical equilibrium (LTE)
+- 2023JMoSp.39411777M: Statistical factor of 2 ways to form c-CD2CH2O compared to 1 way for c-C2H4O
+- 2018A&A...612A.107C: LTE valid owing to densities >~1e10 cm-3
+- 2024RAA....24g5014M: LTE holds because the gas density of the inner MM1 region is high
+- 2024ApJ...974...83Y: Gas temperature = dust temperature; constant abundance in regions above sublimation temperature
+- 2024A&A...684A.189V: LTE; T_BB = 2.73 K
+- 2020MNRAS.496..394R: single Tex=20 K; higher or variable Tex changes results by factor <~2
+- 2016ApJ...827...72S: Optically thin, LTE
+- 2022A&A...668A.109N: CH3CN 12_4-11_4 traces the overall N-bearing COM emission
+- 2019MNRAS.483..806R: Line emission unresolved, same size as continuum
+- 2025ApJ...988L..44F: LTE; fixed emitting area and FWHM based on earlier higher-resolution COM observations
+- 2024MNRAS.534.3576K: LTE, optically thick emission, 100 K for accretion-shock gas, CPD aspect ratio 0.1
+- 2023MNRAS.525.6146W: Lines at the source systemic velocity of MM1
+- 2017A&A...604A..60B: LTE; Gaussian source
+- 2018ApJ...853L..19S: LTE
+- 2024ESC.....8..665M: LTE valid since gas density ~1e8 cm^-3
+- 2024AJ....167...66Y: common emitting size, Tex and line width under LTE
+- 2025SciA...11.6953M: Inclination 45 deg for all arms except S2 (30 deg) and S5 (60 deg)
+- 2025SciA...11.6953M: Moment 1 velocity gradient is due to inflow
+- 2017MNRAS.468.3694C: T_ex=30 K, X_CO=1e-4, X_H2CO=1e-8, v_LSR=35 km/s, no inclination correction
+- 2023MNRAS.525.2229M: Local thermodynamic equilibrium, justified by gas density 2e7 cm^-3
+- 2019ApJ...883..129E: single Tex, LTE
+- 2024IJAsB..23...14M: LTE valid given gas density 7e7 cm^-3
+- 2025ApJ...986L...9B: Expected Keplerian rotation; previously stated disk position and inclination angles; range of radial extents.
+- 2024A&A...681A.104B: LTE; resolved emission
+- 2022MNRAS.509..748W: LTE conditions with hot core rotational temperatures > 100 K
+- 2023JApA...44...69M: Local thermodynamic equilibrium (LTE), T_c = 0, cosmic background temperature T_bg = 2.73 K
+- 2026A&A...713A..67X: Only transitions from the ground vibrational state are considered
+- 2026ApJ...999...62H: Disk mass much smaller than stellar mass; edge-on geometry; Keplerian rotation; distance = 400 pc
+- 2026ApJ...999...62H: ISM 12C/13C ratio of 68 adopted when deriving adjusted D/H ratios from 13CH3OH
+- 2023ApJ...948..127O: Systemic velocity of 5.5 km s^-1
+- 2021ApJ...919....4L: LTE conditions with T_ex = 150 K
+- 2025ApJ...981...49S: Optically-thin emission under Local Thermodynamic Equilibrium (LTE) with T_rot = 20-50 K (excluding T_rot >= 80 K due to non-detection of hot-core tracers)
+- 2022A&A...665A.140B: Core sizes and positions from Motte et al. (2018)
+- 2018ApJ...857...35S: LTE, optically thin
+- 2020MNRAS.492.1180R: LTE, single transition so Tex cannot be derived
+- 2024A&A...687A...8M: Ground vibrational state includes both tunneling states 0+ and 0−.
+- 2024A&A...686A.122A: A hot core is a sufficient but not necessary condition for a protostellar core; presence of an outflow indicates a protostellar object
+- 2021MNRAS.507.1886F: 32S/34S = 22.5
+- 2017A&A...606L...6Z: Rest frequency of the CH3OH 14_1-14_0 A-+ line assumed for channel maps
+- 2020A&A...636A..29W: alpha from Shu 1977, q from Terebey 1993; COM rotational temperature equals dust temperature
+- 2025MNRAS.539.3808U: Sources are isolated within the extraction diameter, comparable to the synthesized beam
+- 2021A&A...655A..65T: LTE, T_ex = 20 K, optically thin emission for trace species, 12C/13C = 70 for CH3OH upper limit
+- 2025A&A...694A.166C: LTE
+- 2025A&A...694A.166C: mu=2.8; kappa=0.24 cm2/g; gas-to-dust ratio from R_GC relation
+- 2024A&A...682A..78V: LTE for pure rotational lines; first excited vibrational states included in the partition function.
+- 2023MNRAS.519L..68B: Local Thermodynamic Equilibrium (LTE); T_vib ~ T_dust because HC3N* is mid-IR pumped and mid-IR dust emission is optically thick
+- 2025A&A...701A.141L: Optically thin limit; partition function Q(Tex) from CDMS tables
+- 2020ApJ...889..178B: OMC1 at rest in ONC frame; D = 400 pc
+- 2025ApJ...988..111I: CO and SiO optically thin and in LTE
+- 2025ApJ...988..111I: T_rot unknown because only one transition per molecule is detected
+- 2021A&A...650A.202R: T_ex = 10 K
+- 2026AJ....171..368M: LTE and optically thin emission; CMB temperature = 2.7 K
+- 2025A&A...702A..35D: Local thermodynamic equilibrium (LTE) and uniform source-filling emission
+- 2021A&A...653A.129C: LTE with line opacity included, justified by n(H2) ~ 1e8 cm-3
+- 2024RAA....24f5008M: LTE, justified by gas density 1.3e7 cm-3 of the warm inner region
+- 2020ApJ...889...20L: kappa 3.4 cm2/g, gas-to-dust 100, T 30/50/70 K
+- 2026A&A...713A.167D: Local thermodynamic equilibrium (LTE), justified by core number densities n >= 10^6 cm^-3, and T_kin ≈ T_rot
+- 2020ApJ...898..107H: 12C/13C=70 for 13CH3OH proxy
+- 2026ApJ..1001..161H: Same Tex for 12CO and 13CO
+- 2026ApJ..1001..161H: Tex 50 K chosen from outflow temperatures of ~20-100 K in the literature
+- 2024ApJ...971..187A: Rotational, gas and dust temperatures are equal at the densities of the condensations
+- 2026A&A...709A.173M: Local thermodynamic equilibrium (LTE) and Gaussian line profiles
+- 2024A&A...686A..31B: Source size for the beam filling factor taken as the size of the regions in Leroy et al. 2018
+- 2024BAAA...65..173M: Optically thin lines, LTE
+- 2026ApJ..1003..219W: One-dimensional LTE spectral model
+
+
+### Limitations the authors admit
+- 2025A&A...696A..18C: Fit uncertainties are statistical and underestimated
+- 2025A&A...696A..18C: Baseline placement changes column densities by factors 1.2–1.8 in L1551 IRS 5 North
+- 2025A&A...696A..18C: Haro 5a IRS source size and column density are degenerate
+- 2025A&A...696A..18C: L1551 IRS 5 South methanol velocity differs from other COMs, making abundance ratios uncertain
+- 2025A&A...696A..18C: V346 Nor profile discrepancies cannot be diagnosed at the available resolution
+- 2025A&A...696A..18C: V346 Nor D/H is highly uncertain because of methanol opacity and poor CH2DOH modeling
+- 2025A&A...696A..18C: Alternative-pixel abundance tests are infeasible for the other targets
+- 2025A&A...696A..18C: Comparison sample too small for firm conclusions
+- 2022MNRAS.512.4419P: 12-m array observations are affected by missing flux (~5% of extended continuum emission missed compared to 12-m+ACA, and HC3N v=0 / 13C isotopologue ratios underestimated by a factor of six due to l…
+- 2022MNRAS.512.4419P: Cores MM2, MM3, MM5, MM9, and MM10 are not resolved in the 3 mm continuum map due to the relatively lower spatial resolution, and 2D Gaussian fitting toward MM7 failed to converge because it is not w…
+- 2022MNRAS.512.4419P: For several molecules in specific cores (e.g., CH3OH in MM7/MM8/MM11, CH3CHO, HC5N, HC13CCN, HCC13CN, CH3OCH3 in MM7, C2H5OH in MM11), fewer than three transitions or insufficient Eu range were detec…
+- 2022MNRAS.512.4419P: Four dense cores in G9.62+0.19 provide a very limited sample size for testing chemical correlations among COMs.
+- 2016ApJ...830L..37I: COM distribution is not resolved; acetone detection tentative; angular resolution insufficient to see distribution trends
+- 2023A&A...678A.137C: Emitting regions of O-COMs are barely or not spatially resolved at 0.3'' resolution, causing species- and source-dependent beam dilution.
+- 2023A&A...678A.137C: Excitation temperatures of CH3^18OH, GA, and g-EG could not be independently constrained in most sources due to few unblended lines across E_up, requiring T_ex to be fixed.
+- 2023A&A...678A.137C: Sample size for comparing O-COMs across evolutionary stages (protostars, disks, comets) is too small for robust statistical conclusions.
+- 2018A&A...616A..90C: Errors depend on LTE, optically thin and Gaussian assumptions; HC3N only 3 lines, two blended
+- 2024PASJ...76...54L: Detection is only at about 3 sigma, not secure
+- 2024PASJ...76...54L: Line blending toward other directions prevents mapping and detection elsewhere
+- 2024PASJ...76...54L: Emission size hard to determine because morphology is not Gaussian
+- 2024PASJ...76...54L: Confirmation observations needed
+- 2025NatAs...9.1486L: Excitation temperature taken from two HDO lines, one heavily blended, so somewhat uncertain; only a single line per isotopologue
+- 2025NatAs...9.1486L: HDO and H2-18-O may be weakly masing, which would make the double ratio not meaningful
+- 2025NatAs...9.1486L: Line-flux uncertainties exclude absolute flux calibration uncertainty
+- 2021AJ....162...99F: Literature C/O models are tuned for disks without large cavities; a PDS 70-specific forward model is needed
+- 2021AJ....162...99F: Fractionation conclusions depend on assumed uniform carbon fractionation
+- 2021AJ....162...99F: Long-baseline (0.1'') data not yet taken; resolution only ~50 au
+- 2020MNRAS.495.3409S: multiplicity is a lower limit because the sample is very incomplete near 1 mJy
+- 2020MNRAS.495.3409S: observational constraints on projected versus associated companions are weak
+- 2020MNRAS.495.3409S: simulation-based line-of-sight correction assumes no clustering
+- 2016ApJ...833...69D: rho(H2) is a lower limit as faint end not recovered; Poisson errors and cosmic variance large
+- 2024A&A...684A...4U: Gaussian fits to AARPs of centrally-peaked species in IRAS 15194-5115 and IRAS 15082-4808 underestimate the true outer radii because the brightness profiles peak sharply at the centre and fall off gr…
+- 2024A&A...684A...4U: Interferometric filtering out of extended emission (negative bowls at large radii) affects SiC2, C4H, HC5N, CN, and CO due to the lack of very short baselines / single-dish total-power combination.
+- 2024A&A...684A...4U: Population diagrams for centrally-peaked species (except SiS) yield unrealistically low rotational temperatures (10-20 K) due to limited upper-energy coverage, radially varying excitation conditions,…
+- 2024A&A...684A...4U: Abundance calculations assume LTE and a smooth, isotropic, constant mass-loss wind (r^-2 density), neglecting non-LTE radiative transfer effects and the observed arc/shell density enhancements; overa…
+- 2024A&A...684A...4U: Lower spatial resolution towards IRAS 07454-7112 prevents resolving inner CSE central components or arc substructures.
+- 2024ApJ...974...92B: Weight maps omit correlated noise from drizzle resampling.
+- 2024ApJ...974...92B: Masked pixels reduce local effective exposure time.
+- 2024ApJ...974...92B: Wavelength-dependent MSA slit losses complicate precise spectroscopic flux calibration.
+- 2024ApJ...974...92B: Theoretical models dominate uncertainty in predicted galaxy counts.
+- 2024ApJ...974...92B: Some NIRSpec observations failed and required repeat visits.
+- 2018A&A...615A..28D: Dust masses and dust-to-gas ratios uncertain by about a factor of 5
+- 2018A&A...615A..28D: Extended emission may be resolved out
+- 2023FrASS..1015642F: Because the upper energy levels of the observed transitions are close in temperature (11.23 to 19.22 K), the errors on the derived excitation temperatures and column densities are rather large.
+- 2023FrASS..1015642F: The 4_2,2 - 3_2,1 transition was not detected in II Lup (possibly due to an anomalous 300x300 pixel map size in the archive data), and the rotational diagram fitting of II Lup was performed using onl…
+- 2023FrASS..1015642F: More sensitive observations may detect SiC2 emission at low levels in the inner CSE.
+- 2019NatAs...3..314L: XCLASS fit is imperfect; CH3OH lines likely optically thick, requiring 2-D modelling postponed
+- 2025PSJ.....6..107N: Disk-averaged spectra cannot locate the abundance peak in latitude.
+- 2025PSJ.....6..107N: Physical origin of the relatively narrow ~250 km abundance feature is uncertain.
+- 2025PSJ.....6..107N: Minor-isotopologue SNR is insufficient to constrain altitude-dependent nitrogen isotope ratios.
+- 2025PSJ.....6..107N: Future altitude-dependent measurements require at least five times higher minor-isotopologue SNR.
+- 2025PSJ.....6..107N: ALMA flux-scale uncertainty may reach ≈10%; continuum scaling also absorbs tropopause-temperature errors.
+- 2025PSJ.....6..107N: Excluding the CH3CN vibrationally excited state underestimates its partition function by 7%.
+- 2025PSJ.....6..107N: Photochemical models still require improvement in the treatment of cosmic rays and electrons.
+- 2015A&A...576A.129B: Hypotheses for gGg' upper limit admittedly questionable; lines too few and weak to dispel confusion
+- 2019ApJ...871..170M: Rgd for diffuse Milky Way gas may not apply to the dense CMZ
+- 2019ApJ...871..170M: H3O+/SO ratio affected by optical depth and calibration; factor of two differences possible
+- 2019ApJ...871..170M: Total Power data unusable so no zero-spacing beyond ACA
+- 2025ApJ...989...83B: Bandpass calibration effects on tau_0 and tau_CO are not quantified
+- 2025ApJ...989...83B: CO(3-2) and CO(2-1) opacities are less reliable than CO(1-0), so LTE reconciliation is not attempted
+- 2025ApJ...989...83B: Xa1 maximum recoverable scale cannot entirely rule out diffuse emission over larger regions
+- 2024A&A...682A.127S: Spatially unresolved asymmetry and only marginal resolution of the molecular remnant.
+- 2024A&A...682A.127S: Overlapping components and moderate/high optical depths undermine detailed component fits.
+- 2024A&A...682A.127S: CASSIS saturation correction is limited.
+- 2024A&A...682A.127S: CO may have been ejected before the merger, changing the expansion-time assumption; paper describes the distance as an upper limit.
+- 2024A&A...682A.127S: Atomic shock models cannot constrain density or shock velocity.
+- 2024A&A...682A.127S: H2 models do not constrain external UV or cosmic-ray ionisation; density limit reaches the model boundary.
+- 2024A&A...682A.127S: Reliable rotational and vibrational temperatures unavailable for VO, CrO, and ScO.
+- 2024A&A...682A.127S: 2022 optical physical-condition analysis not attempted because extinction makes constraints increasingly difficult.
+- 2023NatAs...7.1048C: Uniform-disk continuum subtraction leaves residuals, giving about 30% uncertainty on column densities, the largest uncertainty
+- 2023NatAs...7.1048C: Temperature model limited by interpolation in gaps of TEXES coverage of auroral regions
+- 2023NatAs...7.1048C: Northern aurora geometry less favorable at the time of observations
+- 2023NatAs...7.1048C: Only northernmost latitudes unobserved; 2D temperature maps per limb ignore other longitudes
+- 2020ApJ...897..176K: LTE assumption and fixed Tex give systematic column density errors of a factor of two; absorption may bias ratios
+- 2013ApJ...767...88W: Eight ambiguous redshifts hamper determination of the distribution shape; small sample
+- 2013ApJ...767...88W: Dust temperatures not physical; lensing size-evolution bias cannot be excluded
+- 2022A&A...667A.131B: Not all sub-regions have been observed at all spatial resolutions for all molecules; NSB-b lacks consistent resolution observations and NSB-c has only a single high-resolution ratio (with HCN(4-3) an…
+- 2022A&A...667A.131B: Gas kinetic temperature, gas density (except in E Knot, W Knot, and NSB-a at 40 pc), and linewidth are poorly constrained by the MCMC RADEX fitting across resolutions.
+- 2022A&A...667A.131B: Follow-up studies of other nearby galaxies are required to confirm whether HCN(4-3)/HCO+(4-3) and HCN(4-3)/CS(2-1) hold as reliable diagnostics beyond NGC 1068.
+- 2018A&A...610A..43R: Low spectral resolution (~10 km/s) prevents linewidth analysis; T_ex=T_bg assumption untested; mass based on single sightline
+- 2024A&A...690A.372L: Gradient depends on the accuracy of kinematic-distance-based R_GC
+- 2024A&A...690A.372L: Limited R_GC range of the sample
+- 2024A&A...690A.372L: Pure circular motions may fail near the GC
+- 2017AJ....154...11H: Radio noise value is approximate; ALMA compact-configuration uncertainty may be underestimated
+- 2015MNRAS.447.1826Z: Full Keplerian motion not seen; innermost parts unresolved or possibly non-Keplerian
+- 2015A&A...580A..36D: Continuum leakage and cleaning artefacts in the 312-314 GHz window; blending
+- 2025ApJ...989L..22B: Only one JWST sighting; planet status cannot be confirmed.
+- 2025ApJ...989L..22B: S1 orbit cannot be uniquely constrained; modeling links S1 and C1.
+- 2025ApJ...989L..22B: Two photometric points leave substantial atmospheric degeneracies.
+- 2025ApJ...989L..22B: Ring geometry, shadowing and emitting area are highly unconstrained.
+- 2025ApJ...989L..22B: Exozodi sensitivity assumes binary-coplanar, near-edge-on disks and a tailored recovery method.
+- 2025ApJ...989L..22B: JWST observations are insensitive to a possible exozodi interior to ∼0.4 au.
+- 2025ApJ...989L..22B: June 1 ALMA phase tracking leaves the absolute image frame uncertain.
+- 2025ApJ...989L..22B: Phase-calibrator absolute-position uncertainty limits absolute astrometry.
+- 2025ApJ...989L..22B: February Roll 2 and April Roll 1 are lower quality because of centering offsets.
+- 2025A&A...699A.183H: Large uncertainties on the observed Halpha/Hbeta ratio (10 to nearly 90%)
+- 2021A&A...650A..37D: Line identification and maser nature need higher resolution follow-up and other SiO transitions
+- 2021A&A...650A..37D: Many jet-ISM molecular tracers (CS, HNCO, HCO+) were not covered
+- 2015A&A...582A..91C: Unresolved emission: source size and common beam filling factor are the main uncertainties; line blending ~20%
+- 2015ApJ...809L..26H: Low SNR; spatial distributions not constrained; asymmetry needs higher SNR confirmation
+- 2017AJ....154..206L: C3H8 lines blended so abundance uncertain; south pole partly hidden
+- 2024A&A...689A.248S: sample biased toward line-rich sources
+- 2024A&A...689A.248S: absolute column densities depend on the assumed emitting area; only ratios are reliable
+- 2024A&A...689A.248S: only two dark-cloud ice data points available
+- 2024A&A...689A.248S: low-mass gas ratios mostly from the main isotopologue, possibly outflow-contaminated or optically thick
+- 2022MNRAS.511.3463Q: Targeted C2H5CN and CH3OCHO transitions at 3 mm have low upper-level energies (30-139 K and 22-58 K), so the innermost, hottest gas components of the hot cores are not sampled.
+- 2022MNRAS.511.3463Q: A 48 MHz frequency setup difference between C43-2 and C43-3 configurations caused two CH3OH transitions not to be covered in C43-3 observations.
+- 2022MNRAS.511.3463Q: The spatial resolution (~1.2-1.9 arcsec beam) may cover parts of both nitrogen and oxygen cores simultaneously.
+- 2017A&A...603A.133A: Mass and column densities are lower limits since only ~30% of flux recovered; H2 from dust may not trace warm gas
+- 2017A&A...603A.133A: Single-temperature XCLASS model inadequate given temperature gradients
+- 2023A&A...677A..15M: The 1.2'' angular resolution is insufficient to resolve the four embedded compact cores (A, B, C, D) or conclusively establish spatial segregation between molecular species whose peak separations are…
+- 2023A&A...677A..15M: A single-temperature LTE model cannot fully capture the temperature gradient in G31, causing a small number of transitions (e.g. in CH3COCH3 and CH3OH v=0) to be poorly reproduced.
+- 2023A&A...677A..15M: For species whose unblended transitions only span low upper-state energies (E_U < 100 K, such as CH3CHO, aGg'-(CH2OH)2, 13CH3CN, CH313CN, C2H3CN, C2H5CN), the fitted excitation temperatures may be un…
+- 2019A&A...628A..10B: Line-continuum splitting is preliminary with unexplained baseline artifacts
+- 2026A&A...705A.132W: Column densities from single transitions with fixed rotation temperatures carry uncertainties
+- 2026A&A...705A.132W: Missing flux from different antenna configurations or subthermal excitation might affect the 16O/18O ratio
+- 2026A&A...705A.132W: Several CH3(17)OH lines are contaminated by other molecular emission
+- 2024ApJ...975...72B: The 18O-bearing line is only tentatively detected in one channel, so only an abundance upper limit is derived
+- 2024ApJ...975...72B: Dust optical depth may hide gas below the dust surface and bias column densities low
+- 2024ApJ...975...72B: Ratios depend on assumed binding energies and the adopted gas temperature
+
+### Settings cards flag as needed but not stated
+- line-free channels used for continuum subtraction: 8
+- self-calibration solution intervals and number of iterations: 6
+- casa version: 6
+- casa version and pipeline version: 5
+- flux calibration uncertainty: 5
+- continuum subtraction method and line-free channels: 5
+- continuum subtraction and line-free channels: 5
+- self-calibration solution intervals: 5
+- line-free channels for continuum subtraction: 5
+- line-free channels and continuum subtraction method: 4
+- whether self-calibration was applied: 3
+- exact casa version and pipeline version used for calibration and imaging: 3
+- flux scale uncertainty: 3
+- casa version used for calibration and imaging: 2
+- line-free channels and continuum subtraction specifics: 2
+- moment map clipping thresholds: 2
+- whether pipeline or manual calibration was used: 2
+- pixel cell size and image dimensions used in tclean: 2
+- clean stopping threshold and masking strategy in tclean: 2
+- image size and cell size for tclean: 2
+- line-free channels used for uvcontsub: 2
+- line-free channel ranges for continuum: 2
+- clean masks, thresholds, cell and image size: 2
+- cell size, image size, clean threshold and masks: 2
+- image size and cell size: 2
+- casa version and calibration/pipeline details: 2
+- spectral extraction aperture size: 2
+- calibration scripts, pipeline/manual status, calibrators, flagging and flux-scale transfer.: 1
+- self-calibration model, solution intervals, iterations, reference antenna and solution acceptance c…: 1
+- continuum-subtraction task, fit order and exact line-free channels.: 1
+- numerical image and pixel sizes, deconvolver, masks, stopping threshold and primary-beam treatment.: 1
+- exact velocity integration intervals and masking used for each moment map.: 1
+- numerical flux calibration uncertainty and how it is combined with channel rms in χ².: 1
+- cassis version, database releases, mcmc proposal settings, priors, chain count and convergence diag…: 1
+- exact fitted-line and excluded-line lists from the separately hosted appendices.: 1
+- numerical shared fixed parameters for every final fit, especially the l1551 irs 5 north median fwhm…: 1
+- coordinates of the three additional l1551 irs 5 north extraction pixels.: 1
+- imaging task (e.g., tclean), deconvolver, weighting scheme, and briggs robust parameter: 1
+- cell size, image size, and cleaning mask/threshold parameters: 1
+- method and relative weighting used to combine 12-m and aca visibility/image data: 1
+
+## Paper excerpts (40 of 257, chosen for detail and spread over fields/years)
+
+### 2025A&A...696A..18C: The hot corino-like chemistry of four FUor-like protostars (2025; star_formation, astrochemistry, protoplanetary_disks; observational_alma_primary)
+- question: Investigate the chemical composition of four FUor-like Class I YSOs and compare their COM abundances with other YSOs.
+- step 2: Extract spectra and identify molecules
+  - method: Search individual pixels for strongest line emission in both windows; extract off-center spectra; identify lines with CASSIS and molecular databases. [Spectra: "We chose these positions by extracting spectra using a pixel-size aperture placed at multiple positions throughout the disks, and finding the pixels where the line emission was stronger in both spectral windows."] [Spectra: "For the line identification we used the CASSIS[^1] software"]
+  - software: CASSIS, CDMS, JPL molecular database, Lille Spectroscopic Database
+  - parameter: Spectral extraction coordinates: N 04:31:34.1575 +18:08:04.793; S 04:31:34.1669 +18:08:04.253; Haro 05:35:26.5616 -05:03:55.064; V346 16:32:32.1951 -44:55:30.769; OO 18:29:49.1535 +01:16:19.646. [Spectra: "04:31:34.1575 $+$18:08:04.793"] [Spectra: "04:31:34.1669 $+$18:08:04.253"]
+  - parameter: CDMS for most species; JPL for CHD2OH, CH3COCH3 and CH3OCHO as written; LSD for CH3CHO. [Spectra: "We used CDMS for most of the species."] [Spectra: "For CHD$_2$OH, CH$_3$COCH$_3$, and CH$_3$OCHO, we utilized the JPL database, and for CH$_3$CHO we used LSD."]
+  - validation: Compare continuum-peak and displaced spectra; continuum-peak lines are weaker. [Spectra: "We found weaker line emission in the spectra extracted on the pixel closest to the protostar."]
+- step 5: Resolve opacity and baseline effects in L1551 IRS 5 North
+  - method: Fit all species freely, check blending with a combined reference spectrum, refit methanol with high-excitation lines and CH2DOH with low-opacity lines, then refit N with other parameters fixed to species medians. [L1551 IRS 5 North: "After obtaining a first version of the best-fit spectrum for all species, we incorporated it into a “reference” spectrum, which was used to double-check that the lines used in the fitting process were not blended."] [L1551 IRS 5 North: "we ran our fitting again using only lines with $E_\mathrm{up}$ $\gtrsim$ 657 K."]
+  - software: CASSIS
+  - parameter: Initial vLSR range: 7.0–12.5 km s−1 [L1551 IRS 5 North: "7.0 km s$^{-1}$$\leq v_\mathrm{LSR} \leq$ 12.5 km s$^{-1}$"]
+  - parameter: CH2DOH: upper Ka < 10, present in JPL and Oyama list, J < 26; retain lowest-opacity transitions [L1551 IRS 5 North: "only included the lines with $K_a$ $<$ 10 in the upper transition."] [L1551 IRS 5 North: "we only kept the CH$_2$DOH transitions that were present in the JPL database and in their list, and those with $J$ $<$ 26."]
+  - parameter: Fixed-parameter isotope test: 10 000 iterations, first 5 000 discarded; exclude optically thick CH3OH and CH2DOH fits from medians. [L1551 IRS 5 North: "When determining the medians, we excluded the results of CH$_3$OH (and CH$_2$DOH) that were obtained using optically thick lines."] [L1551 IRS 5 North: "Here we ran the MCMC for 10 000 iterations and dropped the first 5 000 as a burn-in phase."]
+  - assumption: Methanol isotopologues and other COMs arise from the same region [L1551 IRS 5 North: "assuming all the CH$_3$OH isotopologues and the COMs come from the same region"]
+  - assumption: Isotopic ratios: 12C/13C = 68; 16O/18O = 560 [L1551 IRS 5 North: "[$^{12}$C]/[$^{13}$C] = 68 (cite: Milam2005_ApJ6341126M)"] [L1551 IRS 5 North: "[$^{16}$O]/[$^{18}$O] = 560 (cite: WilsonRood1994_ARA&A32191W)."]
+  - fitting: N alone free in median-constrained fits; baseline test adds 1 rms and refits N and FWHM with s, vLSR and Tex fixed. [L1551 IRS 5 North: "which left the column density as the only free parameter."] [L1551 IRS 5 North: "We assumed that our continuum level was overestimated by 1 *rms* so we added 1 *rms* to the spectrum and performed a new set of fits."]
+  - validation: Isotope-scaled methanol agrees with high-excitation fit within factors 2–3; most residuals below 3σ; baseline shift increases N by factors 1.2–1.8. [L1551 IRS 5 North: "These are in reasonable agreement with the fit of the high-excitation lines ($1.60 \times 10^{19}$ cm$^{-2}$) by factors of 2–3"] [L1551 IRS 5 North: "For the majority of the lines, the differences between the data (black line) and the total model (green line) are below the 3$\sigma$ level (shaded area)."]
+- step 6: Fit L1551 IRS 5 South
+  - method: Fix source size; first fit N, Tex, vLSR and FWHM; refit non-methanol COMs using median Tex, vLSR and FWHM. [L1551 IRS 5 South: "The first set of MCMC runs were with $N$, $T_\mathrm{ex}$, $v_\mathrm{LSR}$ and FWHM left as free parameters."] [L1551 IRS 5 South: "We carried out a second set of MCMC runs for CH$_3$OCH$_3$, CH$_3$OCHO and $^{13}$CH$_3$CN by fixing $T_\mathrm{ex}$, $v_\mathrm{LSR}$ and FWHM to the medians found from the first run."]
+  - software: CASSIS
+  - parameter: s = 0.08 arcsec; vLSR range 2–5 km s−1 [L1551 IRS 5 South: "Due to a lack of constraints, we assumed for these MCMC runs the same source size as the Northern disk (0.08$''$)."] [L1551 IRS 5 South: "except for $v_\mathrm{LSR}$ which we limited to within 2 and 5 km s$^{-1}$."]
+  - parameter: Median Tex = 193.90 K, FWHM = 2.23 km s−1, vLSR = 3.47 km s−1; exclude CH3OCH3 from median computation. [L1551 IRS 5 South: "We computed the medians of this first set of MCMC runs and found $T_\mathrm{ex}$ = 193.90 K, FWHM = 2.23 km s$^{-1}$ and $v_\mathrm{LSR}$ = 3.47 km s$^{-1}$."] [L1551 IRS 5 South: "we excluded the results for CH$_3$OCH$_3$ because its best-fit $T_\mathrm{ex}$ value cannot be constrained"]
+  - assumption: Same source size as Northern disk [L1551 IRS 5 South: "we assumed for these MCMC runs the same source size as the Northern disk (0.08$''$)."]
+  - fitting: Use second-run column densities for non-methanol species despite different methanol vLSR [L1551 IRS 5 South: "This second set of column densities will be the ones used to compute the abundances w.r.t. methanol (see below) even though CH$_3$OH has a different $v_\mathrm{LSR}$ than the other three COMs."]
+  - validation: Models match data below the 3σ level; abundance ratios acknowledged as uncertain. [L1551 IRS 5 South: "match the data, with the uncertainties being less than the 3$\sigma$ level."] [L1551 IRS 5 South: "These abundance ratios could then be quite uncertain."]
+- step 8: Fit V346 Nor
+  - method: Fix size from methanol integrated emission; fit remaining parameters; compare median-constrained and methanol-constrained refits; retain methanol constraints. [V346 Nor: "So we assumed the size determined from the integrated emission map of CH$_3$OH, 0.177$''$"] [V346 Nor: "We first ran the MCMC with $N$, $T_\mathrm{ex}$, $v_\mathrm{LSR}$ and FWHM as free parameters."]
+  - software: CASSIS
+  - parameter: s = 0.177 arcsec; vLSR range −5.0 to −2.0 km s−1 [V346 Nor: "So we assumed the size determined from the integrated emission map of CH$_3$OH, 0.177$''$"] [V346 Nor: "The parameter space for $v_\mathrm{LSR}$ was from -5.0 km s$^{-1}$ to -2.0 km s$^{-1}$"]
+  - assumption: Use methanol-derived parameters for final COM column densities [V346 Nor: "we decided to keep the column densities obtained using the CH$_3$OH parameters for the remaining of this paper."]
+  - fitting: Third set of fits uses CH3OH fit parameters after unsatisfactory median-constrained fits [V346 Nor: "the models obtained using the median values was not satisfactory, and we ran a third set of fits using the results of the CH$_3$OH fit."]
+  - validation: Visual comparison favors methanol constraints for strongest species; 18 profiles differ from synthetic profiles. [V346 Nor: "We carried out a visual comparison between the models obtained using the medians and the models obtained with the values found for CH$_3$OH."] [V346 Nor: "We noted that 18 lines in this source have line profiles different from the synthetic ones"]
+- step 10: Bracket small-molecule column densities
+  - method: First fix size and Tex to COM values and fit N, vLSR and FWHM; then use a 2 arcsec source and Tex = 50 and 300 K to bracket N. [Small molecules: "First, for each target, we fixed the source size and $T_\mathrm{ex}$ to the values obtained for the COMs, and we let $N$, $v_\mathrm{LSR}$ and FWHM be free parameters."] [Small molecules: "Second, we assumed a source size of 2$''$, so that there is no beam dilution, and considered two $T_\mathrm{ex}$ values (50 K and 300 K) to provide a range of possible column densities for these molecules."]
+  - software: CASSIS
+  - parameter: Second approach fixes vLSR and FWHM from the first approach [Small molecules: "Here we fixed the $v_\mathrm{LSR}$ and FWHM to the values obtained in the first approach, and computed another set of MCMC runs."]
+  - assumption: Only one transition per molecule; source size and Tex must be assumed [Small molecules: "For the small molecules, we only have one transition of each. To derive column densities, we consequently need to assume a source size and $T_\mathrm{ex}$."]
+  - fitting: MCMC in both approaches [Small molecules: "We then ran an MCMC as for the previous fits."] [Small molecules: "computed another set of MCMC runs."]
+- step 11: Compute abundance and deuteration ratios
+  - method: Calculate COM/methanol column-density ratios, compare methanol isotopologue normalizations, and calculate statistical methanol D/H in L1551 IRS 5 North and V346 Nor. [Comparison with other YSOs: "For the four eruptive young stars of this work, we used the abundances calculated w.r.t. CH$_3$OH. We also compared the abundances of L1551 IRS 5 North calculated using $^{13}$CH$_3$OH and CH$_3$$^{18}$OH."] [L1551 IRS 5: "We used the best-fit column densities obtained using the median $T_\mathrm{ex}$ of 177.6 K to calculate the deuteration ratio, D/H, of methanol for the Northern disk of L1551 IRS 5."]
+  - assumption: Treat COM/CH3OH abundance ratios in remaining FUors as upper limits because methanol is optically thick [Conclusions: "For the remaining FUors, the CH$_3$OH emission lines should be considered as optically thick and the abundance ratios of COMs as upper limits."]
+  - validation: Compare methanol normalization from main, 13C and 18O isotopologues [Comparison with other YSOs: "We also compared the abundances of L1551 IRS 5 North calculated using $^{13}$CH$_3$OH and CH$_3$$^{18}$OH."]
+- step 13: Compare eruptive and quiescent chemistry
+  - method: Compare interferometric COM abundance ratios with literature Class 0/I sources and outburst-model predictions; repeat using other COMs as denominators. [Comparison with other YSOs: "We compare the chemical composition of these FUor-like eruptive young stars with other Class 0/I objects including quiescent sources from the literature by determining the abundance ratios of COMs w.r.t. CH$_3$OH."] [Comparison with other YSOs: "The goal is to determine whether the presence of bursts could affect the molecular composition and search for differences in the abundances w.r.t. methanol that were predicted by (cite: Molyarova2018_ApJ86646M)."]
+  - parameter: Only interferometric sources; CALYPSO subset restricted to five sources with estimated abundances [Comparison with other YSOs: "We limited this comparison only to sources that have been observed with interferometers"] [Comparison with other YSOs: "From the CALYPSO survey, we included into our analysis only the five sources with estimated abundances"]
+  - assumption: HOPS 108 and IRAS 16293 use 16O/18O = 560; cited 13C-based samples use 12C/13C = 60; B335 uses 68. [Comparison with other YSOs: "In the case of HOPS 108 and the two protostars in IRAS 16293, the abundances were computed using CH$_3$$^{18}$OH and an isotopic ratio [$^{16}$O]/[$^{18}$O] of 560."] [Comparison with other YSOs: "For V883 Ori (cite: Lee2019NatAs3314L), SVS13-A (cite: Bianchi2022_ApJ928L3B), and HOPS 373SW (cite: Lee2023_ApJ95643L), their respective authors calculated their abundances using $^{13}$CH$_3$OH and an isotopic ratio [$^{12}$C]/[$^{13}$C] of 60."]
+  - validation: Check whether conclusions depend on the COM used as denominator; sample too small for firm conclusions. [Comparison with other YSOs: "Regardless of the COM used to calculate the abundance ratios, no trend is seen between the outbursting and quiescent sources but the sample is too small for any firm conclusion."]
+- result: L1551 IRS 5 N identified COM transitions = 249 ± not stated transitions [Spectra: "The L1551 IRS 5 N spectrum includes 249 transitions from these 12 COMs."]
+- result: L1551 IRS 5 S identified COM transitions = 37 ± not stated transitions [Spectra: "for a total of 37 COM transitions."]
+- result: Haro 5a IRS identified COM transitions = 46 ± not stated transitions [Spectra: "The spectra of Haro 5a IRS also include 46 transitions from the COMS"]
+- result: V346 Nor identified COM transitions = 70 ± not stated transitions [Spectra: "V346 Nor (6 COMs and 70 transitions)"]
+- result: OO Ser identified COM transitions = 51 ± not stated transitions [Spectra: "OO Ser (6 COMs and 51 transitions)."]
+- result: L1551 IRS 5 N final high-excitation CH3OH column density = 1.60 × 10^19 ± +0.06/-0.07 × 10^19 cm−2 [L1551 IRS 5 North: "$\left(1.60_{-0.07}^{+0.06}\right) \times 10^{19}$"]
+- result: L1551 IRS 5 N final 13CH3OH column density = 4.97 × 10^17 ± +0.30/-0.27 × 10^17 cm−2 [L1551 IRS 5 North: "$\left(4.97_{-0.27}^{+0.30}\right) \times 10^{17}$"]
+- result: L1551 IRS 5 N final CH3(18)OH column density = 9.94 × 10^16 ± ±0.49 × 10^16 cm−2 [L1551 IRS 5 North: "$\left(9.94_{-0.49}^{+0.49}\right) \times 10^{16}$"]
+- result: L1551 IRS 5 N final low-opacity CH2DOH column density = 2.81 × 10^18 ± +0.19/-0.17 × 10^18 cm−2 [L1551 IRS 5 North: "$\left(2.81_{-0.17}^{+0.19}\right) \times 10^{18}$"]
+- result: L1551 IRS 5 N final CH3CHO column density = 8.04 × 10^16 ± +0.18/-0.17 × 10^16 cm−2 [L1551 IRS 5 North: "$\left(8.04_{-0.17}^{+0.18}\right) \times 10^{16}$"]
+- result: L1551 IRS 5 N final CH3OCH3 column density = 3.41 × 10^17 ± +0.11/-0.10 × 10^17 cm−2 [L1551 IRS 5 North: "$\left(3.41_{-0.10}^{+0.11}\right) \times 10^{17}$"]
+- result: L1551 IRS 5 N final CH3OCHO column density = 5.05 × 10^17 ± ±0.11 × 10^17 cm−2 [L1551 IRS 5 North: "$\left(5.05_{-0.11}^{+0.11}\right) \times 10^{17}$"]
+- result: L1551 IRS 5 N final CH3COCH3 column density = 1.10 × 10^17 ± ±0.07 × 10^17 cm−2 [L1551 IRS 5 North: "$\left(1.10_{-0.07}^{+0.07}\right) \times 10^{17}$"]
+- result: L1551 IRS 5 N final C2H5OH column density = 3.39 × 10^17 ± ±0.12 × 10^17 cm−2 [L1551 IRS 5 North: "$\left(3.39_{-0.12}^{+0.12}\right) \times 10^{17}$"]
+- result: L1551 IRS 5 N final C2H5CN column density = 8.84 × 10^15 ± +0.22/-0.23 × 10^15 cm−2 [L1551 IRS 5 North: "$\left(8.84_{-0.23}^{+0.22}\right) \times 10^{15}$"]
+- result: L1551 IRS 5 N final 13CH3CN column density = 2.73 × 10^15 ± +0.11/-0.12 × 10^15 cm−2 [L1551 IRS 5 North: "$\left(2.73_{-0.12}^{+0.11}\right) \times 10^{15}$"]
+- result: L1551 IRS 5 N final CH3C15N column density = 1.15 × 10^15 ± +0.16/-0.15 × 10^15 cm−2 [L1551 IRS 5 North: "$\left(1.15_{-0.15}^{+0.16}\right) \times 10^{15}$"]
+- result: L1551 IRS 5 N methanol column density inferred from 13C isotopologue = 3.38 × 10^19 ± not stated cm−2 [L1551 IRS 5 North: "computed methanol column density values of $3.38 \times 10^{19}$ cm$^{-2}$ and $5.57 \times 10^{19}$ cm$^{-2}$ for the $^{13}$C and $^{18}$O isotopologues, respectively."]
+- result: L1551 IRS 5 N methanol column density inferred from 18O isotopologue = 5.57 × 10^19 ± not stated cm−2 [L1551 IRS 5 North: "computed methanol column density values of $3.38 \times 10^{19}$ cm$^{-2}$ and $5.57 \times 10^{19}$ cm$^{-2}$ for the $^{13}$C and $^{18}$O isotopologues, respectively."]
+- result: L1551 IRS 5 N median COM excitation temperature = 177.6 ± not stated K [L1551 IRS 5: "the median of all the COMs (177.6 K)."]
+- result: L1551 IRS 5 S CH3OH column density = 3.99 × 10^17 ± ±0.24 × 10^17 cm−2 [L1551 IRS 5 South: "$\left(3.99_{-0.24}^{+0.24}\right) \times 10^{17}$"]
+- result: L1551 IRS 5 S final CH3OCH3 column density = 6.86 × 10^16 ± +0.39/-0.36 × 10^16 cm−2 [L1551 IRS 5 South: "$\left(6.86_{-0.36}^{+0.39}\right) \times 10^{16}$"]
+- result: L1551 IRS 5 S final CH3OCHO column density = 5.58 × 10^16 ± ±0.21 × 10^16 cm−2 [L1551 IRS 5 South: "$\left(5.58_{-0.21}^{+0.21}\right) \times 10^{16}$"]
+- result: L1551 IRS 5 S final 13CH3CN column density = 5.87 × 10^14 ± ±0.61 × 10^14 cm−2 [L1551 IRS 5 South: "$\left(5.87_{-0.61}^{+0.61}\right) \times 10^{14}$"]
+- result: L1551 IRS 5 S CH3OH excitation temperature = 193.90 ± +10.90/-11.20 K [L1551 IRS 5 South: "$193.90_{-11.20}^{+10.90}$"]
+- result: V346 Nor final CH3OH column density = 2.04 × 10^18 ± ±0.03 × 10^18 cm−2 [V346 Nor: "$\left(2.04_{-0.03}^{+0.03}\right) \times 10^{18}$"]
+- result: V346 Nor final CH2DOH column density = 3.40 × 10^17 ± ±0.03 × 10^17 cm−2 [V346 Nor: "$\left(3.40_{-0.03}^{+0.03}\right) \times 10^{17}$"]
+- result: V346 Nor final CH3CHO column density = 2.17 × 10^16 ± ±0.05 × 10^16 cm−2 [V346 Nor: "$\left(2.17_{-0.05}^{+0.05}\right) \times 10^{16}$"]
+- result: V346 Nor final CH3OCH3 column density = 1.10 × 10^17 ± ±0.02 × 10^17 cm−2 [V346 Nor: "$\left(1.10_{-0.02}^{+0.02}\right) \times 10^{17}$"]
+- result: V346 Nor final CH3OCHO column density = 7.68 × 10^16 ± +0.20/-0.16 × 10^16 cm−2 [V346 Nor: "$\left(7.68_{-0.16}^{+0.20}\right) \times 10^{16}$"]
+- result: V346 Nor final C2H5CN column density = 2.85 × 10^15 ± ±0.07 × 10^15 cm−2 [V346 Nor: "$\left(2.85_{-0.07}^{+0.07}\right) \times 10^{15}$"]
+- result: V346 Nor CH3OH excitation temperature = 210.70 ± +3.90/-3.00 K [V346 Nor: "$210.70_{-3.00}^{+3.90}$"]
+- result: L1551 IRS 5 N methanol statistical D/H using main isotopologue = 5.9 ± not stated % [L1551 IRS 5: "which gives a statistical D/H ratio of CH$_3$OH of 5.9%."]
+- result: L1551 IRS 5 N methanol statistical D/H using 13C normalization = 2.8 ± not stated % [L1551 IRS 5: "lead to isotopic ratios of $8.2 \times 10^{-2}$ and $5.1 \times 10^{-2}$, and statistical D/H ratios of 2.8% and 1.7%."]
+- result: L1551 IRS 5 N methanol statistical D/H using 18O normalization = 1.7 ± not stated % [L1551 IRS 5: "lead to isotopic ratios of $8.2 \times 10^{-2}$ and $5.1 \times 10^{-2}$, and statistical D/H ratios of 2.8% and 1.7%."]
+- result: V346 Nor methanol statistical D/H = 5.6 ± highly uncertain % [V346 Nor: "which gives a statistical D/H ratio of CH$_3$OH of 5.6%."]
+- limitation (authors): Fit uncertainties are statistical and underestimated [L1551 IRS 5 North: "We emphasize that these uncertainties are purely statistical and should be considered as underestimated."]
+- limitation (authors): Baseline placement changes column densities by factors 1.2–1.8 in L1551 IRS 5 North [L1551 IRS 5 North: "found that the values of $N$ were higher by a factor between 1.2 to 1.8, depending on the COM."]
+- limitation (authors): Haro 5a IRS source size and column density are degenerate [Haro 5a IRS: "There is a degeneracy between the column densities and the source size."]
+- not stated (card): Calibration scripts, pipeline/manual status, calibrators, flagging and flux-scale transfer.; Self-calibration model, solution intervals, iterations, reference antenna and solution acceptance criteria.; Continuum-subtraction task, fit order and exact line-free channels.; Numerical image and pixel sizes, deconvolver, masks, stopping threshold and primary-beam treatment.; Exact velocity integration …
+
+### 2022MNRAS.512.4419P: ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - X. Chemical differentiation among the massive cores in G9.62+0.19 (2022; star_formation, astrochemistry, milky_way_ism; large_program_or_survey)
+- question: Investigate the physical and chemical conditions (rotational temperatures, column densities, abundances, chemical differentiation, and COM formation routes) of dense cores at different evolutionary stages in G9.62+0.19.
+- step 2: Extract spectra and identify molecular line transitions
+  - method: Extract full-band beam-averaged spectra at the continuum peaks from 12-m array observations and identify transitions above 3 sigma using XCLASS with CDMS and JPL databases, requiring consistent rest frequencies, LSR velocities, and spatial… [Results / Molecular lines identification: "We identified spectral line transitions using the eXtended CASA Line Analysis Software Suite (XCLASS; (cite: Moller17))."] [Results / Molecular lines identification: "Furthermore, all lines above the 3$\sigma$ "detection level" are available in our identification and follow-up analyses."]
+  - software: XCLASS, CDMS, JPL
+  - parameter: Detection threshold: > 3 sigma (1 sigma RMS = 0.12 - 0.14 K computed in line-free channels) [Results / Molecular lines identificatio…: "Estimated 1$\sigma$ RMS is 0.13 K, 0.12 K, 0.13 K, 0.14 K, 0.12 K, and 0.12 K for MM1, MM6, MM7, MM8, MM4, and MM11, respectively."] [Results / Molecular lines identificatio…: "The noise level $\sigma$ in each spectrum is computed in line-free channels."]
+  - assumption: Transitions of a specific species are excited by similar conditions and share similar LSR velocity and spatial distribution [Results / Molecular lines identification: "The rest frequency must be consistent with the value from laboratory measurement; for a certain species, all detected transitions from the same source must have a similar LSR velocity; and transitions for a specific species should have similar spatial distribution owing to that they are excited by similar conditions (…"]
+  - validation: Comparison of 2'' and 10'' averaged spectra between 12-m array and 12-m+ACA combined data in Appendix A shows no difference for compact hot core chemistry. [Results / Molecular lines identification: "In the Appendix A, we make a comparison between 12-m array and combined data, suggesting there is no difference when using them to study the hot core chemistry."]
+- step 5: Derive H2 column densities, molecular fractional abundances, and carbon isotopic ratios
+  - method: Smooth archival 1.3 mm continuum data to 3 mm resolution, fit 2D Gaussians to get core sizes and fluxes, compute H2 column density and continuum optical depth, and calculate fractional abundances chi = N_T / N_H2 and 12C/13C ratios. [LTE Analyses / Molecular abundance: "The fractional abundance of a certain molecule relative to H$_{2}$ ($\chi$ = $N_{\rm T}/N_{\rm H_{2}}$) can be estimated from the source-averaged total column density of the certain molecule and that of the molecular hydrogen."] [LTE Analyses / Molecular abundance: "Instead, we use 1.3 mm continuum data from (cite: Liu17), and smooth it to the same spatial resolution as that of 3 mm continuum data."]
+  - parameter: Gas-to-dust mass ratio eta = 100 [LTE Analyses / Molecular abundance: "where S$_{\nu}$ is the total integrated flux of the continuum, $\eta$ = 100 is gas-to-dust mass ratio (cite: Lis91; Hasegawa1992), $\mu$ =2.8 is the mean molecular mass per H$_{2}$ molecule (cite: Kauffmann08), $m_{\rm H}$ is the mass of the hydrogen atom, $\Omega$ is the solid angle subtended by the source, $\kappa_{…"]
+  - parameter: Mean molecular mass per H2 molecule mu = 2.8 [LTE Analyses / Molecular abundance: "where S$_{\nu}$ is the total integrated flux of the continuum, $\eta$ = 100 is gas-to-dust mass ratio (cite: Lis91; Hasegawa1992), $\mu$ =2.8 is the mean molecular mass per H$_{2}$ molecule (cite: Kauffmann08), $m_{\rm H}$ is the mass of the hydrogen atom, $\Omega$ is the solid angle subtended by the source, $\kappa_{…"]
+  - parameter: Dust absorption coefficient kappa_nu = 0.899 cm^2 g^-1 at 1.3 mm [LTE Analyses / Molecular abundance: "$\kappa_{\nu}$ of 0.899 cm$^{2}$g$^{-1}$ at 1.3 mm for dust grains with thin ice mantles at a gas density of 10$^{6}$ cm$^{-3}$ is adopted (cite: Ossenkopf1994)."]
+  - assumption: Optically thin dust continuum emission [LTE Analyses / Molecular abundance: "With assumption of optically thin emission from dust, the column density of H$_{2}$ can be derived by using the following equation (e.g., (cite: Frau10; Bonfand19; Gieser21)):"]
+  - assumption: Dust temperature equals average rotational temperature of COMs (thermal coupling at n_H2 > 10^6 cm^-3): 99 K (MM7), 134 K (MM8), 137 K (MM4), 100 K (MM11) [LTE Analyses / Molecular abundance: "The dust temperature should equal to the rotation temperature of the core derived from COMs, since gas and dust are expected to be thermally coupled well at density higher than 10$^{6}$ cm$^{-3}$ (cite: Goldsmith2001)."]
+  - assumption: Dust grains with thin ice mantles at a gas density of 10^6 cm^-3 [LTE Analyses / Molecular abundance: "$\kappa_{\nu}$ of 0.899 cm$^{2}$g$^{-1}$ at 1.3 mm for dust grains with thin ice mantles at a gas density of 10$^{6}$ cm$^{-3}$ is adopted (cite: Ossenkopf1994)."]
+  - fitting: 2D Gaussian fitting to smoothed 1.3 mm continuum [LTE Analyses / Molecular abundance: "Notes. $^{a}$ The deconvolved size and total flux density of each core are obtained from 2D Gaussian fitting to 1.3 mm continuum."]
+  - validation: Derived continuum optical depths tau_nu are ~10^-2 (0.96x10^-2 to 1.60x10^-2), confirming optically thin dust; derived 12C/13C ratios (23.9-25.6) agree with Galactocentric relation (29 +/- 8 at 3.4 kpc). [LTE Analyses / Molecular abundance: "The derived $\tau_{\nu}$ toward four cores are on the order of $10^{-2}$, guaranteeing reliable H$_{2}$ column density."] [Carbon Isotopic Ratio: "Other five values are in the range of 23.9$-$25.6, which is in good agreement with the value derived from equation"]
+- result: H2 column density N_H2 for MM7, MM8, MM4, MM11 = 2.3e23, 3.8e23, 3.3e23, 2.8e23 ± 0.2e23, 0.3e23, 0.4e23, 0.2e23 cm^-2 [LTE Analyses / Molecular abundance: "The $N_{\rm H_{2}}$ derived from 1.3 mm continuum emission are: (2.3$\pm$0.2) $\times$ 10$^{23}$ cm$^{-2}$ for MM7, (3.8$\pm$0.3) $\times$ 10$^{23}$ cm$^{-2}$ for MM8, (3.3$\pm$0.4) $\times$ 10$^{23}$ cm$^{-2}$ for MM4 and (2.8$\pm$0.2) $\times$ 10$^{23}$ cm$^{-2}$ for MM11."]
+- result: 12C/13C isotopic ratio from C2H5CN in MM8 = 24 ± 8 dimensionless [LTE Analyses / Rotational Temperatures …: "Therefore, $^{12}$C/$^{13}$C ratio of 24$\pm$8 is derived (see Section 4.4 for more details)."]
+- limitation (authors): 12-m array observations are affected by missing flux (~5% of extended continuum emission missed compared to 12-m+ACA, and HC3N v=0 / 13C isotopologue ratios underestimated by a factor of six due to large optical depth and possible missing … [Results / ALMA 3 mm continuum emission: "The observations of 12-m array missed $\sim$ 5% of extended emissions compared to the observations of 12-m + ACA combined data."]
+- limitation (authors): Cores MM2, MM3, MM5, MM9, and MM10 are not resolved in the 3 mm continuum map due to the relatively lower spatial resolution, and 2D Gaussian fitting toward MM7 failed to converge because it is not well resolved. [Results / ALMA 3 mm continuum emission: "However, these cores are not resolved in 3 mm map possibly because of the relatively lower spatial resolution of our observations."]
+- limitation (authors): For several molecules in specific cores (e.g., CH3OH in MM7/MM8/MM11, CH3CHO, HC5N, HC13CCN, HCC13CN, CH3OCH3 in MM7, C2H5OH in MM11), fewer than three transitions or insufficient Eu range were detected, requiring T_rot to be fixed to the … [LTE Analyses / Rotational Temperatures …: "For MM7, three transitions with $E_{\rm u}$ of 10 K are observed. Therefore, its temperatures and densities cannot be calculated due to lack of sufficient $E_{u}$ range."]
+- not stated (card): CASA version used for calibration and imaging; Imaging task (e.g., tclean), deconvolver, weighting scheme, and Briggs robust parameter; Cell size, image size, and cleaning mask/threshold parameters; Method and relative weighting used to combine 12-m and ACA visibility/image data; Exact frequency ranges of line-free channels used for continuum construction and spectral RMS estimation; Exact extrac…
+
+### 2016ApJ...830L..37I: Discovery of a Hot Corino in the Bok Globule B335 (2016; star_formation, astrochemistry; observational_alma_primary)
+- question: Does the isolated Bok globule protostar B335 (IRAS 19347+0727) harbor a hot corino, i.e. compact emission from saturated complex organic molecules?
+- step 2: Identify lines and fit line parameters
+  - method: Assign lines with CDMS and JPL, assuming v_sys 8.34 km/s; Gaussian fits for intensity, width, v_lsr [4.2 Detected Molecules and Their Distri…: "We assigned 31 spectral lines using the Cologne Database for Molecular Spectroscopy (CDMS) (cite: muller2005) and Jet Propulsion Laboratory (JPL) (cite: pickett1998) databases"]
+  - software: CDMS, JPL catalog
+  - fitting: Gaussian fit [4.2 Detected Molecules and Their Distri…: "as well as the line parameters obtained by the Gaussian fit"]
+- step 4: Derive beam-averaged column densities
+  - method: LTE, optically thin formula using integrated intensity at the continuum peak [4.3 Derivation of Column Density and Fr…: "assuming the local thermodynamic equilibrium (LTE) and optically thin conditions"]
+  - parameter: Tex = 100 K [4.3 Derivation of Column Density and Fr…: "the column densities are calculated for the excitation temperature of 100 K"]
+  - assumption: Tex 100 K as typical of IRAS 16293-2422 COMs and close to 111 K dust temperature [4.3 Derivation of Column Density and Fr…: "This temperature is a typical excitation temperature of COMs in the hot corino source IRAS 16293-2422"]
+  - validation: Density estimate ~5e8 cm-3 justifies LTE [4.3 Derivation of Column Density and Fr…: "Such a relatively high density justifies the LTE assumption employed in derivation of the column densities."]
+- step 6: Constrain emitting size and protostellar mass
+  - method: HNCO brightness temperature 4.2 K in beam with Tb<100 K gives diameter >=11 au; line width then gives mass limit (Keplerian or infall) [5 Discussion: "From this condition, the diameter of the emitting region is estimated to be 11 au or larger."]
+  - assumption: HNCO co-spatial with COMs at 100 K average temperature [5 Discussion: "HNCO is most likely present in the same region where the COMs exist."]
+  - validation: Consistent with Yen et al. mass >0.05 Msun [5 Discussion: "These mass estimates are consistent with that reported by (cite: yen2015) ($> 0.05\ M_\odot$)."]
+- result: Minimum emitting-region diameter = >=11 ± not stated au [5 Discussion: "the diameter of the emitting region is estimated to be 11 au or larger"]
+- result: Protostellar mass lower limit = >=0.04 (Keplerian); >=0.02 (infall) ± not stated Msun [5 Discussion: "the protostellar mass is estimated to be 0.04 $M_\odot$ or higher, if the motion responsible to the line width is Keplerian."]
+- limitation (authors): COM distribution is not resolved; acetone detection tentative; angular resolution insufficient to see distribution trends [5 Discussion: "probably because of the insufficient angular resolution in this study"]
+- not stated (card): CASA version and whether the pipeline or manual calibration was used; Line-free channels used for continuum; CLEAN threshold, masks, cell and image size, number of iterations; Primary beam correction and how moment 0 maps were made (velocity ranges, clipping); Gaussian fit procedures for line parameters and source-size deconvolution; Partition functions and spectroscopy entries used for column de…
+
+### 2023A&A...678A.137C: CoCCoA: Complex Chemistry in hot Cores with ALMA. Selected oxygen-bearing species (2023; astrochemistry, star_formation; large_program_or_survey)
+- question: What are the column density ratios of six oxygen-bearing complex organic molecules (O-COMs) with respect to methanol in 14 high-mass protostellar sources, and how do they constrain COM formation through ice and/or gas-phase chemistry?
+- step 1: Generate moment 0 maps and extract single-pixel spectra
+  - method: Make integrated intensity (moment 0) maps of the unblended CH3OH 19_{3,17}-19_{2,18} line and extract spectra from the peak methanol pixel (or brightest pixel on the ring for G34.30+0.20, or offset by ~9 pixels for G34.41+0.24 and ~3 pixel… [Spectral analyses: "Figure [1](#fig:maps) shows the continuum maps and the integrated intensity (moment 0) maps of the 19$_{3,17}$–19$_{2,18}$ transition with upper energy $E_\mathrm{up}$ = 490 K and Einstein $A$ coefficient $A_\mathrm{ij} = 9.27\times10^{-5}$ s$^{-1}$."] [Spectral analyses: "The spectra are extracted from the peak pixel of the methanol intensity maps."]
+  - parameter: CH3OH 19_{3,17}-19_{2,18} transition (E_up = 490 K, A_ij = 9.27e-5 s^-1); extraction coordinates in Table 1 [Spectral analyses: "Figure [1](#fig:maps) shows the continuum maps and the integrated intensity (moment 0) maps of the 19$_{3,17}$–19$_{2,18}$ transition with upper energy $E_\mathrm{up}$ = 490 K and Einstein $A$ coefficient $A_\mathrm{ij} = 9.27\times10^{-5}$ s$^{-1}$."]
+  - assumption: Other O-COMs peak at similar locations to methanol emission [Spectral analyses: "The moment 0 maps of other selected O-COMs of one example source G19.88-0.53 are shown in Fig. [7](#fig:OCOM_mom0_G19.88), which confirmed that their emission peaks at similar regions to the methanol emission."]
+  - validation: Confirmed co-spatial emission using moment 0 maps of other O-COMs in G19.88-0.53 [Spectral analyses: "The moment 0 maps of other selected O-COMs of one example source G19.88-0.53 are shown in Fig. [7](#fig:OCOM_mom0_G19.88), which confirmed that their emission peaks at similar regions to the methanol emission."]
+- step 2: Identify lines and fit LTE synthetic spectra for O-COMs and methanol isotopologues
+  - method: Identify transitions using JPL and CDMS catalogs in CASSIS and fit LTE models (N, T_ex, FWHM, v_lsr) per species using chi^2 grid-fitting on unblended lines for narrow/weak sources or interactive visual inspection for blended/bright source… [Spectral analyses: "After extracting all the spectra, we performed line identification and spectral fitting using the spectral analysis software CASSIS[^2] (cite: Vastel2015CASSIS)."] [Spectral analyses: "We adopted two methods for fitting the spectra: $\chi^2$ minimization or visual inspection when the former is not applicable."]
+  - software: CASSIS
+  - parameter: 3-sigma detection threshold for unblended lines; T_ex fixed to MF when unconstrained; T_ex of g-EG fixed to a-EG [Spectra and detection: "The identified transitions of the selected O-COMs are listed in Table [1](#table:transition), where transitions that are above 3$\sigma$ and not fully blended with other strong lines are considered as “identified.”"] [Spectral analyses: "As a solution, $T_\mathrm{ex}$ was fixed to that of MF, which has the most identified transitions and therefore the best constraint on $T_\mathrm{ex}$, and only $N$ was fitted and estimated for uncertainties."]
+  - assumption: Single excitation temperature (LTE) per species; vibrational corrections applied to GA and EG [Spectral analyses: "Here we assume one $T_\mathrm{ex}$ for each species, that is, the populations of all levels can be characterized by a single $T_\mathrm{ex}$, which is often called “local thermodynamic equilibrium (LTE)” in radio astronomy."] [Spectral analyses: "Vibrational corrections were applied to GA and EG (cite: Jorgensen2016)."]
+  - fitting: Chi^2 minimization on a coarse-to-fine grid in (N, T_ex, FWHM) with 2-sigma uncertainty contours, or interactive visual inspection with upper/lower limit comparisons [Spectral analyses: "Finally, we ended up with a fine grid around the best-fit grid point, from which we could make the contour plot and estimate the 2$\sigma$ uncertainties."] [Spectral analyses: "When it came to fitting by visual inspection, we started with an initial guess of the parameters and adjusted them to a better fit until no improvement could be made."]
+  - validation: More than 70% of line features in G19.88-0.53 are fitted well with uncertainties < 30%; changing fixed T_ex by 20-50 K changes N within a factor of two [Spectra and detection: "More than 70% of the line features can be fitted quite well with uncertainties of \< 30% ."] [Spectral analyses: "We consider the fitting results of $N$ still representative since the difference would be within a factor of two if we change the fixed value of $T_\mathrm{ex}$ by 20–50 K in the range of 100–250 K"]
+- step 3: Infer main methanol column density and compute O-COM column density ratios
+  - method: Calculate 16O/18O ratio from Galactocentric distance D_GC for each source, multiply N(CH3^18OH) by 16O/18O to get N(CH3OH), sum a-EG and g-EG, and compute ratios N(O-COM)/N(CH3OH) and pairwise O-COM ratios to compare with low-mass protosta… [Isotope ratio calibration for methanol: "The isotope ratios of $\mathrm{^{16}O/^{18}O}$ and $\mathrm{^{12}C/^{13}C}$ can be calculated from the distance to the Galactic center ($D_\mathrm{GC}$) using the equations in (cite: Wilson1994ARAA) and (cite: Milam2005)"] [Isotope ratio calibration for methanol: "Therefore, only CH$_3^{18}$OH is used to calculate the column density of methanol."]
+  - parameter: (16O/18O) = (58.8 +/- 11.8) D_GC + (37.1 +/- 82.6); intercept error excluded from main error propagation [Isotope ratio calibration for methanol: "(\mathrm{^{16}O/^{18}O}) & = & (58.8\pm11.8)D_\text{GC} + (37.1\pm82.6)"] [Isotope ratio calibration for methanol: "Considering that only the slope in Eq. \[\[eqn:18O_ratio\]\](#eqn:18O_ratio) contains the information of the trend between the $\mathrm{^{16}O/^{18}O}$ ratio and $D_\mathrm{GC}$, and the intercept error only represents the scatter of the sources from which the equation was originally fitted, we did not include the int…"]
+  - assumption: CH3^18OH lines are optically thin while 13CH3OH lines are marginally optically thick [Isotope ratio calibration for methanol: "If both $^{13}$ and CH$_3^{18}$OH are optically thin, we can expect their column density ratio to be 7–8. However, our fitting results show a ratio of 2–5, which indicates that $^{13}$ is also (marginally) optically thick."]
+  - validation: Compared results with and without the 16O/18O relation intercept error in Fig. 14 [Isotope ratio calibration for methanol: "Results that include the intercept error are shown in Fig. [14](#fig:O-COM ratio full error)."]
+- result: Typical methanol (CH3OH) column density across sample = 10^18–10^19 ± not stated cm^-2 [Column density and excitation temperatu…: "With the uniform beam size of 0.33$''$, most sources have a methanol column density of 10$^{18}$–10$^{19}$ cm$^{-2}$, except the weakest source IRAS 1851-1208, which has $N=7\times10^{17}$cm$^{-2}$."]
+- result: G19.88-0.53 inferred CH3OH column density = 4.4e18 ± 1.3e18 cm^-2 [Data reduction: "| G19.88-0.53 | (4.4$\pm$1.3)$\times10^{18}$ | (1.3$\pm$0.3)$\times10^{16}$ | \[180\] | 2.7 | 46.2 | (4.0$\pm$1.5)$\times10^{15}$ | 100$\pm$30 | 3.0 | 46.4 | (5.5$\pm$1.5)$\times10^{16}$ | 170$\pm$30 | 3.5 | 46.4 |"]
+- result: G19.88-0.53 CH3^18OH column density = 1.3e16 ± 0.3e16 cm^-2 [Data reduction: "| G19.88-0.53 | (4.4$\pm$1.3)$\times10^{18}$ | (1.3$\pm$0.3)$\times10^{16}$ | \[180\] | 2.7 | 46.2 | (4.0$\pm$1.5)$\times10^{15}$ | 100$\pm$30 | 3.0 | 46.4 | (5.5$\pm$1.5)$\times10^{16}$ | 170$\pm$30 | 3.5 | 46.4 |"]
+- result: G19.88-0.53 CH3CHO column density = 4.0e15 ± 1.5e15 cm^-2 [Data reduction: "| G19.88-0.53 | (4.4$\pm$1.3)$\times10^{18}$ | (1.3$\pm$0.3)$\times10^{16}$ | \[180\] | 2.7 | 46.2 | (4.0$\pm$1.5)$\times10^{15}$ | 100$\pm$30 | 3.0 | 46.4 | (5.5$\pm$1.5)$\times10^{16}$ | 170$\pm$30 | 3.5 | 46.4 |"]
+- result: G19.88-0.53 C2H5OH column density = 5.5e16 ± 1.5e16 cm^-2 [Data reduction: "| G19.88-0.53 | (4.4$\pm$1.3)$\times10^{18}$ | (1.3$\pm$0.3)$\times10^{16}$ | \[180\] | 2.7 | 46.2 | (4.0$\pm$1.5)$\times10^{15}$ | 100$\pm$30 | 3.0 | 46.4 | (5.5$\pm$1.5)$\times10^{16}$ | 170$\pm$30 | 3.5 | 46.4 |"]
+- result: G19.88-0.53 DME column density = 1.1e17 ± 0.3e17 cm^-2 [Data reduction: "| G19.88-0.53 | | (1.1$\pm$0.3)$\times10^{17}$ | 130$\pm$20 | 3.5 | 46.0 | (1.1$\pm$0.3)$\times10^{17}$ | 180$\pm$40 | 4.0 | 46.0 | (6.0$\pm$1.3)$\times10^{15}$ | 160$\pm$40 | 2.5 | 46.4 |"]
+- result: G19.88-0.53 MF column density = 1.1e17 ± 0.3e17 cm^-2 [Data reduction: "| G19.88-0.53 | | (1.1$\pm$0.3)$\times10^{17}$ | 130$\pm$20 | 3.5 | 46.0 | (1.1$\pm$0.3)$\times10^{17}$ | 180$\pm$40 | 4.0 | 46.0 | (6.0$\pm$1.3)$\times10^{15}$ | 160$\pm$40 | 2.5 | 46.4 |"]
+- result: G19.88-0.53 GA column density = 6.0e15 ± 1.3e15 cm^-2 [Data reduction: "| G19.88-0.53 | | (1.1$\pm$0.3)$\times10^{17}$ | 130$\pm$20 | 3.5 | 46.0 | (1.1$\pm$0.3)$\times10^{17}$ | 180$\pm$40 | 4.0 | 46.0 | (6.0$\pm$1.3)$\times10^{15}$ | 160$\pm$40 | 2.5 | 46.4 |"]
+- result: G19.88-0.53 a-EG column density = 5.7e16 ± 1.2e16 cm^-2 [Data reduction: "| G19.88-0.53 | (5.7$\pm$1.2)$\times10^{16}$ | 220$\pm$20 | 3.0 | 46.7 | (2.9$\pm$0.7)$\times10^{16}$ | \[220\] | 3.0 | 46.7 |"]
+- result: G19.88-0.53 g-EG column density = 2.9e16 ± 0.7e16 cm^-2 [Data reduction: "| G19.88-0.53 | (5.7$\pm$1.2)$\times10^{16}$ | 220$\pm$20 | 3.0 | 46.7 | (2.9$\pm$0.7)$\times10^{16}$ | \[220\] | 3.0 | 46.7 |"]
+- result: G23.21-0.37 inferred CH3OH column density = 2.6e19 ± 0.7e19 cm^-2 [Data reduction: "| G23.21-0.37 | (2.6$\pm$0.7)$\times10^{19}$ | (9.0$\pm$2.0)$\times10^{16}$ | \[170\] | 3.0 | 76.8 | (4.0$\pm$0.6)$\times10^{16}$ | 150$\pm$30 | 3.5 | 77.0 | (2.4$\pm$0.4)$\times10^{17}$ | 160$\pm$40 | 3.3 | 77.2 |"]
+- result: IRAS 1851-1208 inferred CH3OH column density = 5.3e17 ± 2.0e17 cm^-2 [Data reduction: "| IRAS 1851-1208 | (5.3$\pm$2.0)$\times10^{17}$ | (1.5$\pm$0.5)$\times10^{15}$ | \[180\] | 2.0 | 35.0 | (9.0$\pm$2.0)$\times10^{14}$ | 150$\pm$30 | 2.0 | 35.0 | (2.0$\pm$0.5)$\times10^{15}$ | \[180\] | 1.9 | 35.3 |"]
+- result: DME and MF column density ratios with respect to methanol = 2–3% ± not stated dimensionless [Column density ratios: "Among the six species, DME and MF have the highest and similar ratios with respect to methanol (2–3%)."]
+- result: CH3CHO and GA column density ratios with respect to methanol = ~0.1% ± not stated dimensionless [Column density ratios: "and GA have the lowest ratios at around 0.1%."]
+- result: Excitation temperature of C2H5OH, MF, and a-EG = >=150 ± not stated K [Column density and excitation temperatu…: "As for the excitation temperature, , MF, and $a$-EG tend to have a warm $T_\mathrm{ex}$ of $\gtrsim$150 K, while and DME have a relatively lower $T_\mathrm{ex}$ of 100–130 K."]
+- result: Excitation temperature of CH3CHO and DME = 100–130 ± not stated K [Column density and excitation temperatu…: "As for the excitation temperature, , MF, and $a$-EG tend to have a warm $T_\mathrm{ex}$ of $\gtrsim$150 K, while and DME have a relatively lower $T_\mathrm{ex}$ of 100–130 K."]
+- result: Observed C2H5OH/GA column density ratio = ~10 ± not stated dimensionless [C2H5OH: "In our observations, the /GA ratios are around 10 (see Fig. [5](#fig:2COM_ratio)d)."]
+- result: Observed GA/EG column density ratio = 0.1–1 ± not stated dimensionless [(GA) and (EG): "The observed abundance ratios of GA over EG are $\sim$0.1–1 (Fig. [5](#fig:2COM_ratio)g), which corresponds to $n_\mathrm{initial}$(H)/$n_\mathrm{initial}$(CO) \> 0.25 in their models."]
+- limitation (authors): Emitting regions of O-COMs are barely or not spatially resolved at 0.3'' resolution, causing species- and source-dependent beam dilution. [Column density ratios: "This is likely the case in the CoCCoA observations since the moment 0 maps of selected O-COMs given in Fig. [7](#fig:OCOM_mom0_G19.88) show that the emission of these molecules are barely or not spatially resolved."]
+- limitation (authors): Excitation temperatures of CH3^18OH, GA, and g-EG could not be independently constrained in most sources due to few unblended lines across E_up, requiring T_ex to be fixed. [Spectral analyses: "For species such as CH$_3^{18}$OH, GA, and $g$-EG, there are few unblended lines covering a wide range of $E_\mathrm{up}$."]
+- limitation (authors): Sample size for comparing O-COMs across evolutionary stages (protostars, disks, comets) is too small for robust statistical conclusions. [O-COMs from clouds to comets: "However, the sample here is too small to draw any robust conclusion. A larger sample of sources at different evolutionary stages are needed to study the chemical inheritance throughout star formation."]
+- not stated (card): Exact per-source values of sigmaFindContinuum and the resulting line-free channel ranges used for continuum subtraction; Self-calibration solution intervals, number of iterations, and S/N thresholds; tclean stopping threshold, niter, masking strategy, and exact pixel cellsize and image dimensions; Exact values of the vibrational correction factors applied to GA and EG; Assumed source size / beam …
+
+### 2018A&A...616A..90C: The ALMA-PILS survey: complex nitriles towards IRAS 16293-2422 (2018; astrochemistry, star_formation; archival_reuse)
+- question: What is the inventory, abundance, excitation, isotopic ratios and spatial extent of complex nitriles towards the two hot corino sources IRAS 16293A and B?
+- step 2: LTE spectral modelling for Tex and N
+  - method: Grid of LTE models in CASSIS; best fit by minimum reduced chi2; blended and optically thick lines excluded [3: "A large grid of models was run to determine the best fit excitation temperature, $FWHM$, velocity peak $V\rm{_{peak}}$, and column density for each molecule."]
+  - software: CASSIS, CDMS
+  - parameter: Tex 90-300 K; N 1e13-1e17 cm-2; FWHM 1.8-2.4 (A), 0.8-1.2 (B) km/s [3: "Excitation temperatures of 90 – 300 K are explored for both sources."]
+  - parameter: Only optically thin lines (tau<0.2) used [3: "only optically thin lines ($\tau$\<0.2) are used to determine the best fit model"]
+  - assumption: LTE, source size 0.5 arcsec, Gaussian profiles, continuum as background temperature [Table 1 notes: "All models assume LTE and a source size of 0.5$''$."]
+  - fitting: Reduced chi2 minimum over grid; for CH3CN species Tex fixed to average from fit of CH3C15N and CHD2CN [3.1: "We then performed a second fit for all methyl cyanide species to determine their column densities with a fixed excitation temperature of the average determined from the first fit."]
+  - validation: Errors estimated by varying Ntot and Tex and checking the fit [3: "We estimate the errors, based on varying the $N_{\rm tot}$ and $T_{\rm ex}$ to determine the impact this has on the fit of the observations."]
+- result: CH3CN (v8=1) column density, IRAS 16293A = 8.0e16 ± 1.0e16 cm-2 [Table 1: "| CH$_3$CN$^{\dagger}$ | 120 (10) | 8.0 (1.0)$\times$10$^{16}$ | 1 |"]
+- result: CH3CN (v8=1) column density, IRAS 16293B = 4.0e16 ± 1.0e16 cm-2 [Table 1: "| CH$_3$CN$^{\dagger}$ | 110 (10) | 4.0 (1.0)$\times$10$^{16}$ | 1 |"]
+- result: Tex CH3CN, A / B = 120 / 110 ± 10 K [Table 1: "| CH$_3$CN$^{\dagger}$ | 110 (10) | 4.0 (1.0)$\times$10$^{16}$ | 1 |"]
+- result: C2H5CN column density A / B = 9.0e15 / 3.6e15 ± 0.2e15 (A), 0.2e15 (B) cm-2 [Table 1: "| C$_2$H$_5$CN | 140 (10) | 9.0 (0.2)$\times$10$^{15}$ | 0.113 |"]
+- result: C2H3CN column density B = 7.4e14 ± 0.2e14 cm-2 [Table 1: "| C$_2$H$_3$CN | 110 (10) | 7.4 (0.2)$\times$10$^{14}$ | 0.019 |"]
+- result: CHD2CN column density A / B = 2.2e14 / 2.0e14 ± 0.5e14 / 0.2e14 cm-2 [Table 1: "| CHD$_2$CN | 120 (10) | 2.2 (0.5)$\times$10$^{14}$ | 0.003 |"]
+- limitation (authors): Errors depend on LTE, optically thin and Gaussian assumptions; HC3N only 3 lines, two blended [3: "which relies on the assumption of LTE, optically thin emission and Gaussian profiles"]
+- not stated (card): Calibration pipeline/CASA version and self-calibration details; Clean parameters and weighting used for the combined PILS cubes; Line-free channels and continuum subtraction specifics; Grid step sizes for Tex, N, FWHM and Vpeak in CASSIS; Exact method to compute the velocity map and channels integrated for VINE maps; How the error bars were quantified
+
+### 2024PASJ...76...54L: Tentative detection of cyanoformamide NCCONH<SUB>2</SUB> in space (2024; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: Is cyanoformamide (NCCONH2) present toward Sgr B2(N1E) in archival ReMoCA 3 mm data, and how do peptide-like molecule abundances there compare with Sgr B2(N1S)?
+- step 3: identify NCCONH2 lines with LTE modelling
+  - method: LTE model with five parameters per spectral window in Weeds (GILDAS), using JPL and CDMS catalogs [Identification of NCCONH$_2$: "Weeds in Gildas package was used for line identification and spectral modeling."] [Identification of NCCONH$_2$: "The 3-mm emission of NCCONH$_2$ is modeled assuming LTE conditions with five parameters: column density, temperature, source size, velocity offset, and linewidth."]
+  - software: Weeds, GILDAS
+  - parameter: each spectral window of each setup modelled separately with the same parameter set [Identification of NCCONH$_2$: "Each spectral window of each observed setup was modeled separately to account for the varying angular resolution, but with a same set of parameters."]
+  - parameter: about 120 lines expected; 10 unblended and 21 partially blended possibly seen at about 3 sigma [Identification of NCCONH$_2$: "Approximately 120 NCCONH$_2$ lines were expected to be seen in the observed frequency ranges."]
+  - assumption: LTE [Identification of NCCONH$_2$: "is modeled assuming LTE conditions"]
+  - validation: Signal-to-noise about 3 sigma so detection is not secure; remaining blended lines do not contradict expected intensities [Identification of NCCONH$_2$: "it is not possible to claim secure detection of NCCONH$_2$ with these data."] [Identification of NCCONH$_2$: "the observed results do not contradict with the expected intensities."]
+- step 5: search related peptide-like molecules and compare N1E with N1S
+  - method: Search selected clean transitions of CH3NCO, CH3NHCHO and urea toward N1E, model with the same size and Tex, compare column densities and abundances with Sgr B2(N1S) values from Belloche19 [Column densities of NCCONH$_2$ and rela…: "We also modeled the emission of CH$_3$NCO and CH$_3$NHCHO toward Sgr B2(N1E) with the same size and excitation temperature"] [Comparison of Sgr B2(N1E) and Sgr B2(N1…: "We compared these results with those of Sgr B2(N1S) presented in (cite: Belloche19)."]
+  - software: Weeds, GILDAS, CDMS, Lille Spectroscopic Database
+  - parameter: nine CH3NCO lines and thirteen CH3NHCHO lines detected; four urea lines all blended [Search of related molecules toward Sgr …: "Nine clean lines were detected."] [Search of related molecules toward Sgr …: "All of these lines were detected."]
+  - assumption: Same size (2.3'') and Trot (150 K) as for NCCONH2 [Table 2: "Parameters of LTE model of NCCONH$_2$ and related molecules toward Sgr B2(N1E)."]
+  - fitting: Eye-fit of column density, as for NCCONH2 [Column densities of NCCONH$_2$ and rela…: "The column densities of NCCONH$_2$ and related molecules are obtained by eye-fitting the spectra in Weeds."]
+- result: number of unblended NCCONH2 transitions (about 3 sigma) = 10 ± not stated lines [abstract: "Ten unblended lines of NCCONH$_2$ were seen around 3$\sigma$ noise levels toward Sagittarius B2(N1E)"]
+- result: number of partially blended NCCONH2 transitions = 21 ± not stated lines [Identification of NCCONH$_2$: "Ten unblended transitions, and 21 partially blended transitions of NCCONH$_2$ were possibly seen toward Sgr B2(N1E)"]
+- result: CH3NCO column density toward Sgr B2(N1E) = 2.4e16 ± not stated cm^-2 [Column densities of NCCONH$_2$ and rela…: "A column density of 2.4$\times 10^{16}$ cm$^{-2}$ was obtained for CH$_3$NCO."]
+- result: CH3NHCHO column density toward Sgr B2(N1E) = 2.1e16 ± not stated cm^-2 [Column densities of NCCONH$_2$ and rela…: "A column density of $2.1\times10^{16}$ cm$^{-2}$ was obtained for CH$_3$NHCHO."]
+- result: CH3NCO to NH2CHO abundance ratio toward Sgr B2(N1E) = 0.086 ± not stated dimensionless [Comparison of Sgr B2(N1E) and Sgr B2(N1…: "The abundance ratio of CH$_3$NCO to NH$_2$CHO, was 0.086 toward Sgr B2(N1E)"]
+- limitation (authors): Detection is only at about 3 sigma, not secure [Identification of NCCONH$_2$: "it is not possible to claim secure detection of NCCONH$_2$ with these data."]
+- limitation (authors): Line blending toward other directions prevents mapping and detection elsewhere [Identification of NCCONH$_2$: "However, serious line-blending prevents detection of this molecule toward other directions."]
+- limitation (authors): Emission size hard to determine because morphology is not Gaussian [Column densities of NCCONH$_2$ and rela…: "The physical size of the emission region is hard to determine"]
+- not stated (card): tclean parameters: weighting and robust value, cell size, image size, niter, threshold, masks, deconvolver, primary-beam correction; which execution blocks and spectral windows were imaged and the synthesized beam per spectral window; array configurations and baseline range of the ReMoCA data; how the 0.4-1 mJy/beam rms varies per spectral window and the exact rms adopted per window; which spectr…
+
+### 2025NatAs...9.1486L: Pristine ices in a planet-forming disk revealed by heavy water (2025; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Is the water ice in the outbursting V883 Ori disk inherited from the cold cloud or reset? Tested by detecting doubly deuterated water (D2O) and measuring D2O/H2O and (D2O/HDO)/(HDO/H2O) ratios.
+- step 4: Measure line fluxes with Keplerian masks (fiducial)
+  - method: Compute region in RA/Dec where each molecule should emit given disk Keplerian rotation in each channel; sum flux inside mask over channels 1.2-6.4 km/s; mask also shifted to COM line frequencies to test contamination [Methods, Flux measurements: "the lines are separated in the image plane by computing the region in Right Ascension and Declination where a molecule is expected to emit based on the Keplerian rotation of the disk"] [Methods, Flux measurements: "The effect of neighboring COMs is investigated using an identical mask but then shifted to the frequency of those lines."]
+  - software: Keplerian mask package (name not preserved in text)
+  - parameter: distance 400 pc, stellar mass 1.3 Msun, inclination 38.3 deg, PA 32 deg, emitting region 40-120 au, z/r = 0.4 [Methods, Flux measurements: "an emitting region extending from 40 au to 120 au tracing $z/r=0.4$"] [Methods, Flux measurements: "a stellar mass of 1.3 M$_{\odot}$, a disk inclination of 38.3$\degree$, and a position angle of 32$\degree$"]
+  - parameter: line width 350 m/s x sqrt(40 au / r); mask shifted by systemic velocity 4.3 km/s [Methods, Flux measurements: "The line width is assumed to follow 350 m s$^{-1} \times \sqrt{40~\mathrm{au}/r}$"] [Methods, Flux measurements: "the mask is shifted by 4.3 km s$^{-1}$ to match the systemic velocity of V883 Ori"]
+  - parameter: Mask convolved with Gaussian 0.5 (D2O), 1.25 (HDO), 0.75 (H2-18-O) x beam, chosen by visual inspection; channels 1.2-6.4 km/s used [Methods, Flux measurements: "This parameter is chosen after visual inspection of the data."] [Methods, Flux measurements: "To measure the disk integrated flux, only the channels between 1.2 and 6.4 km s$^{-1}$ are used"]
+  - assumption: Emission from disk at 40-120 au on a z/r = 0.4 surface; same mask parameters for all three isotopologues [Methods, Flux measurements: "These parameters are identical between all three analyzed water isotopologues."]
+  - validation: Flux uncertainty from rms of masks shifted to 8 positions at 1.4 arcsec and five velocities (40 non-overlapping locations); compared against the spectral-shifting method (consistent within 3 sigma) [Methods, Flux measurements: "the rms of the flux measured in masks shifted to eight different positions"] [Methods, Flux measurements: "and to five different velocities resulting in 40 unique, non-overlapping locations"]
+- step 5: Measure line fluxes from Keplerian-shifted spectra (cross-check)
+  - method: Shift each pixel by the projected Keplerian velocity, extract disk-integrated spectrum in an elliptical region (0.4 arcsec semi-major axis), mirror the non-blended side of each COM line and subtract it, build line templates for D2O and H2-… [Methods, Flux measurements: "Each pixel is shifted to correct for the projected Keplerian velocity expected at this location in the disk."] [Methods, Flux measurements: "The non-blended side of COM emission line is mirrored in the line center creating a symmetric line profile that is then subtracted from the shifted spectrum."]
+  - software: not stated (custom code, available on request)
+  - parameter: Noise from rms of 520 independent shifted spectra in a 19 arcsec square without primary beam correction, excluding the inner 2.4 arcsec square [Results: "the noise is estimated using the rms of 520 independent shifted spectra extracted from a 19" square in the cube without primary beam correction"]
+  - assumption: Emission assumed to originate from the disk midplane [Methods, Flux measurements: "the emission is assumed to be originating from the disk midplane"]
+  - validation: Two methods consistent within 3 sigma; Keplerian-mask fluxes adopted because some flux may be lost to beam smearing in shifted spectra [Methods, Flux measurements: "The two methods to measure the line fluxes are consistent within $\leq 3\sigma$ for all three water isotopologues."]
+- result: D2O peak signal-to-noise ratio in shifted spectrum = 11 ± not stated dimensionless [Results: "The line is detected at a peak signal-to-noise ratio of 11 in the shifted spectrum"]
+- result: D2O line flux (Keplerian mask) = 53 ± 4 mJy km/s [Table 2: "$53 \pm 4$ | $61 \pm 4$"]
+- result: D2O line flux (shifted spectrum) = 61 ± 4 mJy km/s [Table 2: "$53 \pm 4$ | $61 \pm 4$"]
+- result: HDO 225 GHz line flux (Keplerian mask; shifted spectrum) = 358 ; 408 ± 14 ; 12 mJy km/s [Table 2: "$358 \pm 14$ | $408 \pm 12$"]
+- result: H2-18-O 203 GHz line flux (Keplerian mask; shifted spectrum) = 43 ; 58 ± 9 ; 10 mJy km/s [Table 2: "$43 \pm 9$ | $58 \pm 10$"]
+- limitation (authors): Excitation temperature taken from two HDO lines, one heavily blended, so somewhat uncertain; only a single line per isotopologue [Supplementary, Excitation temperature: "the derived excitation temperature is somewhat uncertain"]
+- limitation (authors): HDO and H2-18-O may be weakly masing, which would make the double ratio not meaningful [Supplementary, Masing: "the HDO 225 GHz and the H$_2^{18}$O lines are possibly weakly masing in a large region in the V883 Ori disk"]
+- limitation (authors): Line-flux uncertainties exclude absolute flux calibration uncertainty [Methods, Flux measurements: "The reported uncertainties on the line fluxes do include the statistical uncertainty but not the 5% absolute flux calibration uncertainty"]
+- not stated (card): Name and version of the package used to build the Keplerian masks and the code for the pixel-by-pixel velocity shifting; Which channels were flagged as line-free for the pseudo-continuum and for the mtmfs continuum model; tclean image size, cell size, niter, clean mask and the numeric 1 sigma threshold for the line cubes; Line-cube velocity range and reference frame/rest frequency handling for th…
+
+### 2021AJ....162...99F: The Chemical Inventory of the Planet-hosting Disk PDS 70 (2021; protoplanetary_disks, astrochemistry, exoplanets; observational_alma_primary)
+- question: What is the chemical inventory of the planet-hosting PDS 70 disk (detections, radial profiles, column densities, deuteration and N fractionation, C/O) and what does it imply for the gas accreted by the two planets?
+- step 8: Derive column densities, optical depths and H2CO excitation temperature
+  - method: Optically thin column density with optical-depth correction, LTE; H2CO N and Tex fitted jointly from two transitions per 0.1'' annulus; other molecules fitted at fixed Tex of 20, 30, 50 K with tau<1 prior; c-C3H2, SO, CH3OH disk-averaged (… [C2H: "Instead we follow a similar approach to that used for H$_2$CO, but for each individual component separately, which implicitly assumes that local thermodynamic equilibrium (LTE) is valid."] [Other Molecules: "We add a prior on the optical depth to be $<1$ for all molecules"]
+  - software: emcee, scipy.optimize.curve_fit, GoFish
+  - parameter: H2CO: 128 walkers, 1000 burn-in steps, 500 sampling steps per radial bin [H2CO: "For each radial bin, we use 128 walkers, each taking 1,000 steps to burn in, and then an additional 500 steps to sample the posterior distributions."]
+  - parameter: C2H: Tex fixed to 20, 30, 50 K; 128 walkers, 1000 burn-in, 500 sampling steps [C2H: "As only a single transition is considered, $T_{\rm ex}$ was held constant at values of $\{20,\, 30,\, 50\}$ K"] [C2H: "The 128 walkers took 1,000 steps to burn in and an additional 500 to sample the posteriors."]
+  - parameter: radial bins 0.1'' wide; c-C3H2 disk average uses a 3'' radius [Other Molecules: "binned into annuli of $0.1\ensuremath{''}$"] [c-C3H2 and upper limits on SO and CH3OH: "A radius of $3\ensuremath{''}$ is used to compute $\Omega$."]
+  - parameter: C2H blended lines fitted with two Gaussians (scipy curve_fit), line centres fixed to the rest frequencies [C2H: "we fit two Gaussian components using the `scipy.optimize.curve_fit` routine, fixing the line centers to the rest frequency of the two transitions"]
+  - assumption: LTE, top-hat line profile for tau, partition function interpolated with cubic spline, CDMS molecular data [Column Densities and Optical Depths: "taken from the CDMS catalogue (cite: cdms), and interpolate the partition function, $Q$, with a cubic spline."]
+  - fitting: emcee; H2CO posteriors Gaussian, median with 16th-84th percentile uncertainty; priors and likelihood not stated beyond tau<1 [H2CO: "As the posteriors were found to be Gaussian, we take the median value for each parameter as the most likely value, and the 16th to 84th percentile as a quantification of the uncertainty on this."]
+  - validation: concordance of the three C2H components supports well-constrained N and LTE [C2H: "The concordance between these three transitions suggests that the C$_2$H column density is well constrained and that LTE is a reasonable assumption."]
+- result: H2CO excitation temperature range = ~10-40 ± large (low snr) K [H2CO: "The excitation temperature ranges between $\sim10-40\,$K, with the temperature decreasing in the outer disk regions."]
+- result: H2CO column density across 0.5''-2'' = 10^13-10^14 ± not stated cm^-2 [H2CO: "Column densities across the $0.5-2\ensuremath{''}$ interval range between $10^{13}-10^{14}\,$cm$^{-2}$"]
+- result: Peak N(C18O) at Tex 30 K = 6.2e15 ± +0.2/-2.8 e15 cm^-2 [Table 4: "28.81 | $6.2^{+0.2}_{-2.8} \times10^{15}$ | $9.8^{+0.02}_{-0.41} \times10^{-1}$ |"]
+- result: Peak optical depth tau(C18O 2-1) = 0.98 ± +0.02/-0.41 (in 1e-1 units: 9.8) dimensionless [Table 4: "28.81 | $6.2^{+0.2}_{-2.8} \times10^{15}$ | $9.8^{+0.02}_{-0.41} \times10^{-1}$ |"]
+- result: Peak N(H2CO) (Tex fitted) = 8.4e13 ± +1.8/-1.4 e13 cm^-2 [Table 4: "361.72 | $8.4^{+1.8}_{-1.4} \times10^{13}$ | $8.8^{+11.3}_{-5.8} \times10^{-1}$ |"]
+- result: Peak N(C2H) from J=7/2-5/2 F=4-3 (Tex 30 K) = 2.0e14 ± +0.5/-0.1 e14 cm^-2 [Table 4: "144.71 | $2.0^{+0.5}_{-0.1} \times10^{14}$ | $3.5^{+0.2}_{-1.1} \times10^{-2}$ |"]
+- result: Peak N(C2H) from J=7/2-5/2 F=3-2 (Tex 30 K) = 3.4e14 ± +2.0/-1.5 e14 cm^-2 [Table 4: "144.71 | $3.4^{+2.0}_{-1.5} \times10^{14}$ | $7.4^{+1.7}_{-1.8} \times10^{-2}$ |"]
+- result: Peak N(C2H) from J=5/2-3/2 F=3-2 (Tex 30 K) = 1.8e14 ± +0.3/-0.1 e14 cm^-2 [Table 4: "144.71 | $1.8^{+0.3}_{-0.1} \times10^{14}$ | $3.8^{+2.2}_{-0.1} \times10^{-2}$ |"]
+- result: Disk-averaged N(c-C3H2) (r=3'', Tex 20-50 K) = 5.7e12 ± +4.0/-1.6 e12 cm^-2 [c-C3H2 and upper limits on SO and CH3OH: "A column density of $5.7^{+4.0}_{-1.6}\times10^{12}$ cm$^{-2}$ is obtained"]
+- result: Peak N(H13CN) (Tex 30 K) = 5.4e12 ± +0.4/-1.3 e12 cm^-2 [Table 4: "109.62 | $5.4^{+0.4}_{-1.3} \times10^{12}$ | $6.9^{+3.0}_{-3.0} \times10^{-1}$ |"]
+- result: Peak N(HC15N) (Tex 30 K) = 1.1e12 ± +0.2/-0.1 e12 cm^-2 [Table 4: "36.66 | $1.1^{+0.2}_{-0.1} \times10^{12}$ | $1.4^{+1.2}_{-0.5} \times10^{-1}$ |"]
+- result: Peak N(DCN) (Tex 30 K) = 3.7e12 ± +0.5/-0.3 e12 cm^-2 [Table 4: "130.51 | $3.7^{+0.5}_{-0.3} \times10^{12}$ | $3.6^{+3.7}_{-1.4} \times10^{-1}$ |"]
+- result: Peak N(H13CO+) (Tex 30 K) = 2.2e12 ± +0.3/-0.1 e12 cm^-2 [Table 4: "36.37 | $2.2^{+0.3}_{-0.1} \times10^{12}$ | $4.9^{+4.7}_{-1.9} \times10^{-1}$ |"]
+- result: Peak N(CS) (Tex 30 K) = 1.0e13 ± +2.6/-0.6 e13 cm^-2 [Table 4: "64.15 | $1.0^{+2.6}_{-0.6} \times10^{13}$ | $5.0^{+4.8}_{-1.8} \times10^{-1}$ |"]
+- result: N(SO) disk-averaged 3-sigma upper limit from SO 7_6-6_5 (Table 4) = <1.5e10 ± not stated cm^-2 [Table 4: "197.51 | $<1.5\times10^{10}$ | ...$^c$ |"]
+- result: N(CH3OH) disk-averaged upper limit from 5_1-4_1 (A-) = <6.5e12 ± not stated cm^-2 [Table 4: "731.07 | $<6.5 \times10^{12}$ | ...$^c$ |"]
+- limitation (authors): Literature C/O models are tuned for disks without large cavities; a PDS 70-specific forward model is needed [C/O ratio: "However, we note that all these models have been fine tuned for disks that do not exhibit a large cavity, as is the case for PDS 70."]
+- limitation (authors): Fractionation conclusions depend on assumed uniform carbon fractionation [Deuteration and N fractionation: "We thus caution that our conclusions about deuteration and nitrogen fractionation may be affected by the carbon fractionation profile, were this not uniform"]
+- limitation (authors): Long-baseline (0.1'') data not yet taken; resolution only ~50 au [Observations and data reduction: "for which the long baseline data have not been taken yet."]
+- not stated (card): Image size and cell size for continuum and every line cube; Multiscale scales and clean thresholds/niter per line cube; Line-free channels and spw handling used in uvcontsub; Keplerian mask parameters (mask radii, velocity tolerance, per-line settings); Per-EB flux-scale factors found with gaincal and the Band 3/Band 7 calibrator flux values; Amplitude self-cal solution interval details and which…
+
+### 2020MNRAS.495.3409S: An ALMA survey of the brightest sub-millimetre sources in the SCUBA-2-COSMOS field (2020; high_z_galaxies; large_program_or_survey)
+- question: Using ALMA 870-um continuum maps of the brightest SCUBA-2 sources in COSMOS: what is the intrinsic bright-end 870-um number count, how much does blending/multiplicity affect single-dish sources, and what is the photometric redshift distrib…
+- step 12: analyse serendipitous [CII] emission in AS2COS 0001.1 and 0001.2
+  - method: taper cube to 0.4 arcsec beam, clean as for continuum, Gaussian fits per spaxel with adaptive binning for kinematic maps; infer association from velocity and projected separation versus a 10^13 Msun NFW halo [3.4 AS2COS 0001.1 & 0001.2: "The kinematic maps were derived from Gaussian fits to the line emission from each source using an adaptive pixel grid"]
+  - software: CASA
+  - parameter: taper to 0.4 arcsec FWHM synthesized beam; median 1.0 mJy/beam per 32 MHz channel [3.4 AS2COS 0001.1 & 0001.2: "tapering the data cube to a synthesized beam of 0.4$''$ FWHM provided a good comprise between resolution"] [3.4 AS2COS 0001.1 & 0001.2: "The cleaned cube reaches a median sensitivity of 1.0 mJy beam$^{-1}$ per 32 MHz channel"]
+  - parameter: adaptive binning to max 1.5 x beam FWHM until SNR > 5 [3.4 AS2COS 0001.1 & 0001.2: "adaptively bin pixels to a maximum of 1.5 $\times$ beam FWHM until we achieve a SNR $>$ 5 integrated across the line emission"]
+  - assumption: [CII] is the most likely line identification (later confirmed by CO(5-4) from another paper); lensing amplification not corrected [3.4 AS2COS 0001.1 & 0001.2: "At the depth of our observations, \[Cii\] is the most likely identification for the line emission"]
+  - assumption: pairs in a ~10^13 Msun NFW halo have ~700 km/s velocity separation at ~20 kpc projected separation (following Wardlow et al.) [3.4 AS2COS 0001.1 & 0001.2: "typical velocity seperations of $\sim$ 700 km s$^{-1}$ for a projected spatial separation of $\sim$ 20 kpc"]
+  - fitting: Gaussian line fits per (binned) spaxel; no sampler stated [3.4 AS2COS 0001.1 & 0001.2: "The kinematic maps were derived from Gaussian fits to the line emission from each source using an adaptive pixel grid"]
+  - validation: identification confirmed by CO(5-4) in an independent paper; redshifts agree within errors [3.4 AS2COS 0001.1 & 0001.2: "our redshift measurements agree within the errors with those from (cite: JimenezAndrade20)"]
+- result: redshift of AS2COS 0001.1 and 0001.2 from [CII] = 4.624 and 4.635 ± 0.001 each dimensionless [3.4 AS2COS 0001.1 & 0001.2: "$z$ = 4.624 $\pm$ 0.001 and 4.635 $\pm$ 0.001, respectively"]
+- result: velocity separation of AS2COS 0001.1 and 0001.2 = 590 ± 40 km/s [3.4 AS2COS 0001.1 & 0001.2: "corresponds to a velocity separation of 590 $\pm$ 40 km s$^{-1}$"]
+- limitation (authors): multiplicity is a lower limit because the sample is very incomplete near 1 mJy [3.3 Multiplicity: "our estimate of the multiplicity of SCUBA-2 sources is undoubtably a lower limit"]
+- limitation (authors): observational constraints on projected versus associated companions are weak [3.3 Multiplicity: "current observational constraints on the relative mix of projected and associated companions in blended SMG maps are weak"]
+- limitation (authors): simulation-based line-of-sight correction assumes no clustering [2.4 Completeness and Flux Recovery: "the statistical correction for line-of-sight multiplicity assumes no clustering"]
+- not stated (card): tclean deconvolver, specmode/gridder, niter and the auto-masking parameters (sidelobethreshold, noisethreshold, etc.) behind the sigma thresholds; the exact uv-taper applied to each of the 182 maps and the ALMA execution blocks / CASA pipeline versions used for each of the seven archival projects; which archival project corresponds to which of the 24 archival S2COSMOS sources; SExtractor configur…
+
+### 2016ApJ...833...69D: ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: CO Luminosity Functions and the Evolution of the Cosmic Density of Molecular Gas (2016; high_z_galaxies, cosmology; observational_alma_primary)
+- question: What are the blind CO luminosity functions and the evolution of the cosmic molecular gas density rho(H2) up to z~4.5, from ALMA band 3 and 6 scans of the UDF?
+- step 1: Blind line search and line identification
+  - method: Floating average of channels in 50-300 km/s bins, S/N peak selection; identification via multiple lines, absence of counterparts, and optical/NIR redshifts [3.1.1 Blind detections: "we perform a floating average of consecutive frequency channels in bins of $\sim$50–300 km s$^{-1}$ in the imaged cubes."]
+  - software: findclumps.cl
+  - parameter: 21 line candidates (10 at 3mm, 11 at 1mm); S/N>5 [3.1.1 Blind detections: "The final catalogue consists of 10 line candidates from the 3mm cube, and 11 from the 1mm cube."]
+  - fitting: Gaussian fit to candidate spectra for flux, width, frequency [3.1.1 Blind detections: "We use a Gaussian fit of the candidate spectra to estimate the line flux, width, and frequency"]
+  - validation: Bootstrap of 1000 redshift draws proportional to comoving volume over possible line identifications [3.1.1 Blind detections: "We then run 1000 extractions of the redshift values picked from their probability distributions"]
+- limitation (authors): rho(H2) is a lower limit as faint end not recovered; Poisson errors and cosmic variance large [4 Summary and Discussion: "our constraints on $\rho$(H$_2$) are actually lower limits, in the sense that they do not recover the full extent of the luminosity function"]
+- not stated (card): Calibration and imaging settings (all in Paper I); ALMA project codes and observing dates; Exact floating-average channel widths and S/N thresholds of the blind search; Redshift-bin volume derivation details; Luminosity bin edges and mapping to the plotted points; Gamma_RJ values used for the dust masses; Complete catalog of mock line parameters for completeness
+
+### 2024A&A...684A...4U: Charting circumstellar chemistry of carbon-rich asymptotic giant branch stars. I. ALMA 3 mm spectral surveys (2024; evolved_stars, astrochemistry; observational_alma_primary)
+- question: Obtain a more generalised understanding of the chemistry in C-rich AGB circumstellar envelopes by studying three carbon stars (IRAS 15194-5115, IRAS 15082-4808, IRAS 07454-7112) and observationally test the archetypal status of IRC +10 216.
+- step 1: Continuum imaging and subtraction, spectral extraction, and line identification
+  - method: Image continuum from line-free channels across 85-116 GHz using multi-frequency synthesis, subtract continuum from visibilities, extract spectra from 12.5'' radius circular apertures centred on continuum peaks (and molecule-specific apertu… [4.1 Line detection and identification: "Continuum maps were produced from the line-free channels across the survey bandwidth (85-116 GHz) using multifrequency synthesis (Rau & Cornwell 2011)."] [4.1. Line detection and identification: "The full line-labelled ALMA Band 3 spectra of the three sources, extracted by integrating the intensity in a circular aperture of 12.5'' radius centred on the respective continuum peaks, so as to recover emission from all molecules, are presented in App. A."]
+  - software: CASA, GILDAS, Weeds, CDMS, Splatalogue
+  - parameter: Survey aperture radius = 12.5''; molecule-specific aperture radius = R_p + 2.5 * HWHM; detection threshold = 3 sigma [4.1. Line detection and identification: "We detect, above the 3σ noise level, a total of 314 spectral emission features across the three stars"] [4.3.2. Azimuthally averaged radial brig…: "For each molecule, the aperture from which line spectra are extracted is set to a circular region with a radius equal to the peak position + 3σ of the Gaussian fit to the AARP (i.e., R p + 2.5×HWHM) of the corresponding molecule"]
+  - assumption: All observed SiS line emissions are assumed to be primarily thermal in nature. [4.1. Line detection and identification: "In this work, we have therefore assumed that all of the observed SiS line emissions are of primarily thermal nature."]
+- step 5: Estimate rotational temperatures and column densities using population diagrams
+  - method: For species with >=3 rotational transitions (combining ALMA and APEX lines), perform linear fit of ln(N_u/g_u) vs E_u/k_B with C_tau = 1, compute line optical depths tau_nu, apply optical depth correction factor C_tau, and re-fit to obtain… [4.4. Column density and rotation temper…: "We produce population diagrams (also referred to as rotation diagrams) to obtain the rotational temperature ( T rot ) and the column density ( N tot ) for molecules with detected lines from three or more rotational transitions."] [Appendix E.1: The population diagram me…: "Using this method, we first obtained estimates of the rotational temperature and total column density for each species without an optical depth correction (C τ ν = 1)."]
+  - software: CDMS
+  - parameter: Minimum 3 transitions required; optical depth correction factor C_tau = tau / (1 - exp(-tau)) [4.4. Column density and rotation temper…: "We produce population diagrams (also referred to as rotation diagrams) to obtain the rotational temperature ( T rot ) and the column density ( N tot ) for molecules with detected lines from three or more rotational transitions."]
+  - assumption: LTE Boltzmann level populations described by a single rotational temperature T_rot; linear rigid rotor partition functions for all species except asymmetric tops SiC2 and c-C3H2 (interpolated from CDMS); no hyperfine structure for partitio… [Appendix E.1: The population diagram me…: "For the calculation of partition functions, all molecules used for producing population diagrams (see Table 6) have been regarded as linear rigid rotors, except SiC 2 and c-C 3 H 2, which are asymmetric tops."] [Appendix E.1: The population diagram me…: "If the assumptions that the populations of the corresponding energy levels follow a Boltzmann distribution which can be described by a single excitation temperature, T rot, and that the lines are optically thin are correct, the points in the plot of ln( N u / g u ) versus E u / k B are expected to lie on a straight li…"]
+  - fitting: Linear fit to ln(N_u / g_u) versus E_u / k_B. [Appendix E.1: The population diagram me…: "The rotational temperature and column density of each molecule are calculated from the slope and intercept, respectively, of a linear fit to such a plot."]
+  - validation: Compared derived T_rot against literature values for IRC +10 216. [5. Discussion: "The rotation temperatures we estimate from our population diagrams match reasonably well with those estimated for IRC +10 216."]
+- result: 3 mm continuum flux density (IRAS 15194-5115) = 3.25 ± ± 0.04 mJy [Table 4: "15194−5115 15:23:05.048 ± 0.004 −51:25:58.95 ± 0.06 3.25 ± 0.04"]
+- result: 3 mm continuum flux density (IRAS 15082-4808) = 1.84 ± ± 0.04 mJy [Table 4: "15082−4808 15:11:41.453 ± 0.005 −48:19:58.95 ± 0.08 1.84 ± 0.04"]
+- result: 3 mm continuum flux density (IRAS 07454-7112) = 2.17 ± ± 0.03 mJy [Table 4: "07454−7112 07:45:02.456 ± 0.008 −71:19:45.79 ± 0.12 2.17 ± 0.03"]
+- result: Total identified spectral emission features = 311 ± not stated dimensionless [4.1. Line detection and identification: "We detect, above the 3σ noise level, a total of 314 spectral emission features across the three stars, out of which 311 could be identified and assigned to 132 known rotational transitions of 49 molecular species"]
+- limitation (authors): Gaussian fits to AARPs of centrally-peaked species in IRAS 15194-5115 and IRAS 15082-4808 underestimate the true outer radii because the brightness profiles peak sharply at the centre and fall off gradually. [4.3.3. Centrally-peaked species: "For IRAS 15194−5115 and IRAS 15082−4808, the emissions from these molecules peak sharply at the centre, and then gradually fall off at larger radii. Due to this, the Gaussian fits underestimate the radii of the actual emitting regions"]
+- limitation (authors): Interferometric filtering out of extended emission (negative bowls at large radii) affects SiC2, C4H, HC5N, CN, and CO due to the lack of very short baselines / single-dish total-power combination. [4.3.4. Shell species: "We note that towards IRAS 15082−4808, the SiC 2 AARPs show negative dips at larger radii (see Fig. 9), which is evidence of interferometric filtering out of extended emission. A similar behaviour is exhibited by C 4 H towards both IRAS 15194−5115 and IRAS 15082−4808, and possibly HC 5 N towards IRAS 15194−5115."]
+- limitation (authors): Population diagrams for centrally-peaked species (except SiS) yield unrealistically low rotational temperatures (10-20 K) due to limited upper-energy coverage, radially varying excitation conditions, and high optical depths, making their d… [4.4. Column density and rotation temper…: "However, for all centrally-peaked species, except SiS, the population diagrams yield much lower temperatures than expected (∼10 − 20 K; Fig. 12, left panel)."]
+- not stated (card): Exact multi-scale scales parameter values used in CASA tclean.; Pixel/cell size and image dimensions (in pixels) used in tclean.; Specific auto-multithresh parameters (sidelobethreshold, noisethreshold, lownoisethreshold, minbeamfrac) in tclean.; Exact frequency/channel ranges selected as line-free channels for uv-plane continuum subtraction.; Exact flux densities and interpolated spectral indice…
+
+### 2024ApJ...974...92B: The JWST UNCOVER Treasury Survey: Ultradeep NIRSpec and NIRCam Observations before the Epoch of Reionization (2024; high_z_galaxies; multi_facility_alma_minor)
+- question: Detecting and spectroscopically characterizing the properties of the first galaxies.
+- step 1: Correct the calibrated JWST exposures
+  - method: Start from MAST rate.fits; correct 1/f noise, mask snowballs, apply custom sky flats, subtract wisps and apply photometric corrections. [Image Reduction: "We start with the MAST `rate.fits` products produced by Stage 1 of the *JWST* calibration pipeline (v1.8.4) using calibration set `jwst_0995.pmap`."] [Image Reduction: "We derive a correction for the “$1/f$ noise” (cite: rauscher:15) by subtracting the source-masked median image values computed along detector rows and columns."]
+  - software: Grizli, JWST calibration pipeline
+  - parameter: JWST calibration pipeline v1.8.4; jwst_0995.pmap. [Image Reduction: "We start with the MAST `rate.fits` products produced by Stage 1 of the *JWST* calibration pipeline (v1.8.4) using calibration set `jwst_0995.pmap`."]
+  - parameter: Snowballs: large groups of DQ=4 pixels, with a conservatively grown mask. [Image Reduction: "we identify likely snowballs as large groups of pixels with the $\mathrm{DQ}=4$ bit set in the exposure data quality array and grow a conservative mask around them."]
+  - parameter: Mask sky-flat values outside [0.7, 1.4]. [Image Reduction: "We apply an additional mask to the exposure data quality arrays to ignore any pixels where the sky flat is outside of the range \[0.7, 1.4\]"]
+  - parameter: Custom sky flats from COM-1063 commissioning exposures. [Image Reduction: "from on-sky commissioning data from program COM-1063 (PI: Sunnquist) from normalized, source-masked exposures in each of the filter/detector combinations used in the UNCOVER field."]
+  - parameter: Residual relative correction: 0.94 for F277W in NIRCam module A. [Image Reduction: "we adopt a residual relative correction of 0.94 for the F277W filter in the NIRCam A module based on observations from the PRIMER program"]
+  - fitting: Fit and subtract additive wisp structure using templates derived from GO-2561 UNCOVER data. [Image Reduction: "we fit and subtract the additive “wisp” structure in some of the short-wavelength filter/detector combinations (cite: Rigby:22) using wisp templates"] [Image Reduction: "derived from the GO-2561 UNCOVER data themselves."]
+  - validation: F277W relative correction based on PRIMER observations of the same sources on both detectors. [Image Reduction: "based on observations from the PRIMER program (GO-1837, PI: Dunlop) where the same sources were observed in the same filter on both detectors"]
+- limitation (authors): Weight maps omit correlated noise from drizzle resampling. [Image Reduction: "The weight map does not account for correlated noise of the finite drizzle pixel resampling (cite: casertano:00)."]
+- limitation (authors): Masked pixels reduce local effective exposure time. [Image Reduction: "Any masked pixels will not contribute to the mosaic and the total effective exposure time at those positions will therefore decrease."]
+- limitation (authors): Wavelength-dependent MSA slit losses complicate precise spectroscopic flux calibration. [Scheduled NIRSpec/PRISM spectroscopic f…: "Slit loss through the MSA will be significant and wavelength dependent due to variation in the PSF, complicating precise flux calibration."]
+- not stated (card): ALMA execution identifiers, observing dates, array configurations and baseline ranges.; ALMA spectral-window centers, channel widths and scan tuning boundaries.; ALMA calibration software versions, calibrators and flux-scale uncertainties.; ALMA imaging weighting, robust values, cell sizes, masks, cleaning thresholds, beams and noise.; ALMA continuum-channel selection, continuum subtraction and s…
+
+### 2018A&A...615A..28D: ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz (2018; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the dominant physical, dynamical and chemical processes in the inner wind of the low mass-loss rate AGB star R Dor and the high mass-loss rate AGB star IK Tau, as traced by an ALMA band 7 spectral line and imaging survey?
+- step 3: Identify spectral lines
+  - method: Extract spectra in circular apertures, accept lines above 3x local rms, match with JPL/CDMS catalogues and the SMA VY CMa atlas, check with non-LTE spectra, fit soft-parabola to find blends [4.1 Line identification: "lines were required to have continuous emission above 3$\times$ the local channel-map off-source rms."]
+  - software: RADEX, CASA
+  - parameter: Apertures 80/320/800 mas (IK Tau), 75/300/1000 mas (R Dor) [4.1 Line identification: "of 80, 320 and 800 mas in radius (IK Tau) or 75, 300 and 1000 mas (R Dor)"]
+  - assumption: vLSR 33 km/s (IK Tau), 7 km/s (R Dor) [4.1 Line identification: "$v_{\rm{LSR}}$, of 33 km/s for IK Tau and of 7 km/s for R Dor"]
+  - fitting: Soft-parabola profile, not aimed at best-fit parameters [4.1 Line identification: "This fit was not aimed to retrieve the best-fit parameters since many lines display complex profiles."]
+  - validation: Manual inspection of blends [4.1 Line identification: "to identify in a last step by manual inspection blended lines and to determine the main component in the case of blends."]
+- step 5: Compute isotopic ratios
+  - method: Intensity ratios of isotopologue lines with same quantum numbers, corrected for Einstein A / CDMS predicted intensity, frequency, partition function and lower energy [5.4 Isotopic ratios: "Line intensity ratios are corrected for the difference in Einstein A-coefficient"]
+  - assumption: Optically thin, LTE, no radiative pumping differences; masers excluded [5.4 Isotopic ratios: "the method of line intensities ratios is only valid under the assumption of optically thin emission in LTE"]
+- result: Number of lines detected = 168 (IK Tau), 197 (R Dor); 66 unidentified ± not stated lines [4.1 Line identification: "A total of 168 lines is detected in IK Tau and of 197 lines in R Dor arising from 15 molecules"]
+- result: 29Si/30Si IK Tau = 4.1 ± not stated dimensionless [5.4 Isotopic ratios: "For IK Tau, we derive that $^{29}$Si/$^{30}$Si$\approx$4.1"]
+- result: 34S/33S IK Tau = 5.6 ± 0.36 dimensionless [5.4 Isotopic ratios: "$^{34}$S/$^{33}$S$\approx$5.6$\pm$0.36"]
+- result: 35Cl/37Cl IK Tau = 1.1 ± 0.21 dimensionless [5.4 Isotopic ratios: "$^{35}$Cl/$^{37}$Cl$\approx$1.1$\pm$0.21"]
+- result: 34S/33S R Dor = 7.8 ± 0.7 dimensionless [5.4 Isotopic ratios: "while for R Dor $^{34}$S/$^{33}$S$\approx$7.8$\pm$0.7"]
+- limitation (authors): Dust masses and dust-to-gas ratios uncertain by about a factor of 5 [3 Continuum image: "subject to large uncertainties (being around a factor of 5)"]
+- limitation (authors): Extended emission may be resolved out [2.2 Data reduction: "we have resolved-out extended emission"]
+- not stated (card): Number of execution blocks and exact calibrator assignment per spectral window; Line-free channel ranges used for continuum and self-calibration; Self-calibration solution intervals and number of iterations; tclean deconvolver, masks, clean thresholds and iteration counts; Per-cube beam and rms for each spectral window; Exact adopted stellar flux model at 345 GHz; Parameters of the RADEX models u…
+
+### 2023FrASS..1015642F: Photochemical origin of SiC2 in the circumstellar envelope of carbon-rich AGB stars revealed by ALMA (2023; evolved_stars, astrochemistry; archival_reuse)
+- question: Whether SiC$_2$ is a parent species or a daughter species in the circumstellar envelopes of carbon-rich AGB stars.
+- step 4: Derive excitation temperature, column density, and fractional abundance of SiC2
+  - method: Linear fitting of rotational diagrams to derive T_ex and N(SiC2), calculation of average H2 column density within the SiC2 radius from mass-loss rate and expansion velocity, and computing fractional abundance f = N(SiC2)/N(H2). [4.2 Abundance: "In the practical calculations, firstly, the excited temperature and column density of SiC$_2$ are fitted by using the rotation diagram method that described in equation [\[equ:1\]](#equ:1), and plotted in Figure [7](#fig:7); secondly, the fractional abundance of SiC$_2$ is calculated by $f$ = $N/N_{\rm H_2}$."]
+  - parameter: R = 3'' (for AI Vol) [4.2 Abundance: "R is the radius of the peak of the highest brightness point in Figure [4](#fig:4), which is 3$^{\prime \prime}$;"]
+  - parameter: E_u and S*mu^2 from Splatalogue [4.2 Abundance: "The values of $S \mu^2$ and $E\rm_u/k$ are taken from the splatalogue databases[^6]."]
+  - assumption: Local Thermodynamic Equilibrium (LTE) [4.2 Abundance: "Using the parameters in Table [2](#table:2), the molecular excitation temperature and column density are calculated under the assumption of LTE, and the equation is as follows (cite: zhang2009molecular; wangke2014),"]
+  - assumption: Mean molecular weight mu = 2.8 [4.2 Abundance: "$\mu$ the mean molecular weight of 2.8 of (cite: gong20151)."]
+  - fitting: Linear regression of ln(3kW / (8 pi^3 nu S mu^2)) vs E_u/k with 1-sigma error propagation [4.2 Abundance: "In the rotational analysis using Equation [\[equ:1\]](#equ:1), we added error propagating and obtained the error of excitation temperature ($\delta$$T \rm _{ex}$) and column density ($\delta$$N$), with the integral intensity of 1$\sigma$-error."]
+  - validation: Comparison with single-dish literature values in Table 3 and IRC+10216 [Table 3: ": The deduced excitation temperature ($T\rm_{ex}$), column density ($N$), fractional abundance ($f$) of SiC$_2$ relative to H$_2$ in the target sources by the rotational diagram method, along with the previous observational results."]
+- result: H2 column density in AI Vol = 5.52e20 ± not stated cm^-2 [4.2 Abundance: "The derived column density of $\rm H_2$ is 5.52 $\times$ $10^{20}$ $\rm cm^{-2}$."]
+- result: Excitation temperature T_ex of SiC2 in AI Vol = 6.66 ± 1.33 K [Table 3: "| AI Vol | 6.66 ($\pm$ 1.33) | 0.90 ($\pm$ 0.49) | 1.64 |"]
+- result: Column density N of SiC2 in AI Vol = 0.90e13 ± 0.49e13 cm^-2 [Table 3: "| AI Vol | 6.66 ($\pm$ 1.33) | 0.90 ($\pm$ 0.49) | 1.64 |"]
+- result: Fractional abundance f(SiC2) in AI Vol = 1.64e-8 (1.55e-8 in text) ± not stated dimensionless [Table 3: "| AI Vol | 6.66 ($\pm$ 1.33) | 0.90 ($\pm$ 0.49) | 1.64 |"]
+- result: Excitation temperature T_ex of SiC2 in RAFGL 4211 = 17.25 ± 13.07 K [Table 3: "| RAFGL 4211 | 17.25 ($\pm$ 13.07) | 1.60 ($\pm$ 2.10) | 4.62 |"]
+- result: Column density N of SiC2 in RAFGL 4211 = 1.60e13 ± 2.10e13 cm^-2 [Table 3: "| RAFGL 4211 | 17.25 ($\pm$ 13.07) | 1.60 ($\pm$ 2.10) | 4.62 |"]
+- result: Fractional abundance f(SiC2) in RAFGL 4211 = 4.62e-8 ± not stated dimensionless [Table 3: "| RAFGL 4211 | 17.25 ($\pm$ 13.07) | 1.60 ($\pm$ 2.10) | 4.62 |"]
+- result: Excitation temperature T_ex of SiC2 in II Lup = 4.12 ± not stated K [Table 3: "| II Lup | 4.12 | 43.22 | 47.46 |"]
+- result: Column density N of SiC2 in II Lup = 43.22e13 ± not stated cm^-2 [Table 3: "| II Lup | 4.12 | 43.22 | 47.46 |"]
+- result: Fractional abundance f(SiC2) in II Lup = 47.46e-8 ± not stated dimensionless [Table 3: "| II Lup | 4.12 | 43.22 | 47.46 |"]
+- limitation (authors): Because the upper energy levels of the observed transitions are close in temperature (11.23 to 19.22 K), the errors on the derived excitation temperatures and column densities are rather large. [4.2 Abundance: "As the upper energy levels are close in temperature, the errors on the derived quantities are rather large."]
+- limitation (authors): The 4_2,2 - 3_2,1 transition was not detected in II Lup (possibly due to an anomalous 300x300 pixel map size in the archive data), and the rotational diagram fitting of II Lup was performed using only two data points, resulting in lower pr… [4.1 Spatial distribution of SiC2: "In contrast, the data without signal detection only covered a map size of 300 $\times$ 300 pixels. We speculate that there may have been some unknown special circumstances during the observations that led to the absence of signal."]
+- limitation (authors): More sensitive observations may detect SiC2 emission at low levels in the inner CSE. [Conclusion: "More sensitive observations may, of course, detect SiC$_2$ emission at low levels in the inner CSE."]
+- not stated (card): Whether continuum subtraction (e.g., uvcontsub) was performed prior to imaging the spectral lines; Clean stopping threshold, number of iterations, and masking strategy in CASA clean; Aperture or spatial region over which the spectra were extracted before shell fitting in GILDAS; Exact partition function Q(T_ex) values or functional form used in the rotational diagram analysis; Radius R used in Eq…
+
+### 2019NatAs...3..314L: The ice composition in the disk around V883 Ori revealed by its stellar outburst (2019; protoplanetary_disks, astrochemistry, star_formation; observational_alma_primary)
+- question: Can the outburst-driven expansion of the snow line in V883 Ori reveal the ice composition (COM abundances) of the disk midplane, and how does it compare with hot corinos and comets?
+- step 3: Fit COM column densities in spectra
+  - method: Extract spectra in 0.6" circular aperture, shift to source velocity, fit LTE model with XCLASS/MAGIX [Methods: "all lines were extracted with the circular aperture of 0.6$^{\prime \prime}$"]
+  - software: XCLASS, MAGIX, CDMS, JPL
+  - parameter: FWHM fixed at 2 km/s, Tex = 120 K, emission size 0.6" [Methods: "All lines are assumed to be Gaussian profiles with a FWHM fixed at 2 km s$^{-1}$"] [Methods: "The excitation temperature of 120 K is adopted from the disk model below"]
+  - assumption: LTE; CH3OH column = 13CH3OH x 60 [Methods: "we assume that the true column density of CH$_3$OH is the column density of $^{13}$CH$_3$OH multiplied by the elemental abundance of $^{12}$C/$^{13}$C$=60$"]
+  - fitting: MAGIX optimisation; errors include 10% calibration and fit error [Methods: "The error of the column density is calculated by taking absolute calibration uncertainty and fitting error into consideration."]
+  - validation: Compared with rotation diagram of 13CH3OH (factor 7.6 difference explained by continuum opacity) [Methods: "The derived column density of $^{13}$CH$_3$OH is larger than that from the excitation diagram (Supplementary Figure 1) by a factor of 7.6."]
+- result: Excitation temperature 13CH3OH = 91.5 ± 3.5 K [main text: "We find excitation temperatures for $^{13}$CH$_3$OH of 91.5 $\pm$ 3.5 K"]
+- result: Excitation temperature CH3OCHO = 103.3 ± 34.9 K [main text: "for CH$_3$OCHO of 103.3 $\pm$ 34.9 K"]
+- result: 13CH3OH column density = 5.26e16 ± +0.53/-0.55e16 cm-2 [Supplementary Table 1: "$^{13}$CH$_{3}$OH & 5.26$_{-0.55}^{+0.53}$ $\times$ 10$^{16}$"]
+- result: CH3OCHO column density = 2.37e17 ± +/-0.24e17 cm-2 [Supplementary Table 1: "CH$_{3}$OCHO & 2.37$_{-0.24}^{+0.24}$ $\times$ 10$^{17}$"]
+- result: CH3COCH3 column density = 4.32e16 ± +0.45/-0.46e16 cm-2 [Supplementary Table 1: "Acetone & CH$_{3}$COCH$_{3}$ & 4.32 $_{-0.46}^{+0.45}$ $\times$ 10$^{16}$"]
+- result: CH3CN/CH3OH ratio = 7.76e-4 ± not stated dimensionless [Supplementary Table 1: "7.76$\times$ 10$^{-4}$"]
+- result: CH3OH abundance w.r.t. H2 = 2e-7 ± not stated dimensionless [Methods: "is then $2\times 10^{-7}$, which is in reasonable agreement with the recent study"]
+- result: D/H and 13C/12C ratios of CH3OH = 0.16 and 0.13 ± not stated dimensionless [main text: "The D/H and $^{13}$C/$^{12}$C ratios of CH$_3$OH are 0.16 and 0.13"]
+- limitation (authors): XCLASS fit is imperfect; CH3OH lines likely optically thick, requiring 2-D modelling postponed [Methods: "The XCLASS fitting of the spectra in Figure 1 is not perfect"]
+- not stated (card): Which continuum image (Band 6) and its reduction were used for the radiative transfer fit; CASA task parameters (tclean deconvolver, cell/image size, masks, niter, threshold); Line-free channels and continuum subtraction method; Self-calibration details; Moment map clipping thresholds; XCLASS/MAGIX fit priors and ranges; Supplementary Tables 1 and 3 line lists partially incomplete; Beam used for …
+
+### 2025PSJ.....6..107N: Improved Carbon and Nitrogen Isotopic Ratios for CH<SUB>3</SUB>CN in Titan's Atmosphere Using ALMA (2025; solar_system, astrochemistry; observational_alma_primary)
+- question: Measure CH3CN nitrogen and carbon isotopic ratios in Titan’s stratosphere to test nitrogen chemistry and fractionation.
+- step 3: Prepare consistent spectroscopy
+  - method: Update NEMESIS to GEISA 211 format; recompute line intensities and partition functions consistently; fit tabulated partition functions with a third order polynomial. [Radiative Transfer Modeling: "The NEMESIS line database was updated to the GEISA 211 format (cite: geisa_2003) for additional precision on the rest frequencies and intensities."] [Radiative Transfer Modeling: "all of the values were re-computed without hyperfine or vibrational corrections in a self-consistent manner."]
+  - software: NEMESIS, CDMS
+  - parameter: Partition functions tabulated at 300.0, 225.0, 150.0, 75.00, 37.50, 18.75 and 9.375 K [Table 2: "| 300.0 | 10118.2635 | 10418.8811 | 10123.2613 | 10431.9556 |"] [Radiative Transfer Modeling: "the re-computed values listed in Table [2](#tab:partition_fcn_vals)."]
+  - parameter: Laboratory checks: K=0 to 9, J=14-13 at 257 GHz and J=15-14 at 275 GHz; room temperature, around 1 mTorr [CH$_3$CN spectroscopic parameters and p…: "by measuring $K$=0 to 9 transitions for $J$=14-13 at 257 GHz and $J$=15-14 at 275 GHz."] [CH$_3$CN spectroscopic parameters and p…: "Measurements were made at room temperature, and at around 1 mTorr sample pressure"]
+  - assumption: Exclude v8=1 and nitrogen hyperfine structure from the parent partition function, matching the isotopic species. [CH$_3$CN spectroscopic parameters and p…: "we re-evaluated the partition function for the ground state of the parent at the same conditions as for the isotopic species, namely without the $v_8$=1 state, and without accounting for the nitrogen hyperfine structure"]
+  - assumption: Relevant hyperfine splittings are much smaller than the observed spectral resolution. [Radiative Transfer Modeling: "Note that the hyperfine splittings for all relevant transitions are much smaller than the resolution of our observed spectra."]
+  - fitting: Third order polynomial fit to recomputed partition functions [Radiative Transfer Modeling: "using a third order polynomial fit to the re-computed values"]
+  - validation: Twenty laboratory transitions agree with CDMS predictions to an RMS deviation of 16 kHz. [CH$_3$CN spectroscopic parameters and p…: "CDMS predictions and currently measured frequencies for 20 different transitions were in agreement to a root mean square deviation of 16 kHz, which is well within the nominal uncertainty of the employed spectrometer."]
+- result: Laboratory frequency agreement with CDMS predictions = 16 ± not stated kHz [CH$_3$CN spectroscopic parameters and p…: "CDMS predictions and currently measured frequencies for 20 different transitions were in agreement to a root mean square deviation of 16 kHz"]
+- limitation (authors): Disk-averaged spectra cannot locate the abundance peak in latitude. [Results: "It therefore cannot be determined where exactly (latitudinally) in Titan’s atmosphere this peak originates."]
+- limitation (authors): Physical origin of the relatively narrow ~250 km abundance feature is uncertain. [Results: "there may be some doubt as to the physical origin of this relatively narrow feature"]
+- limitation (authors): Minor-isotopologue SNR is insufficient to constrain altitude-dependent nitrogen isotope ratios. [Results: "the spectroscopic signal-to-noise ratio of 16 was found to be insufficient to provide useful constraints on the $^{14}$N/$^{15}$N ratio as a function of altitude"]
+- not stated (card): Exact execution-block and spectral-window selections, channel flags and spectral averaging.; Bandpass smoothing kernel and width.; tclean weighting/robust value, deconvolver, cell size, image size, masks, stopping threshold and primary-beam treatment.; Combination procedure for execution blocks and configurations.; Exact continuum flux scaling factor for each fitted spectrum; only ≈1.02 is suppli…
+
+### 2015A&A...576A.129B: Antifreeze in the hot core of Orion. First detection of ethylene glycol in <ASTROBJ>Orion-KL</ASTROBJ> (2015; astrochemistry, star_formation; archival_reuse)
+- question: Is ethylene glycol (aGg' and gGg' conformers) detectable in Orion-KL hot core, and how do its abundance relative to methanol, ethanol and glycolaldehyde compare with Sgr B2 and comets?
+- step 3: Identify ethylene glycol lines and spatial distribution
+  - method: Search CDMS aGg' and gGg' transitions predicted at 120 K; compare profiles and integrated maps of the least-blended lines [3.1: "From line intensity predictions at 120 K, a typical temperature for the region (cite: Favre:2011a), we have examined the strongest lines among the ethylene glycol transitions"]
+  - software: CDMS
+  - fitting: Gaussian fit of normalized profiles: 7.6 km/s centre, 2.3 km/s width [3.2: "They can be fitted with a Gaussian centred at a velocity of 7.6 km s$^{-1}$ and a line width of 2.3 km s$^{-1}$."]
+  - validation: Snyder et al. criteria plus spatial coherence across transitions [3.3: "For interferometric observations, another criterion can be added: the coherence of the spatial distribution."]
+- step 4: Rotational diagram and column density
+  - method: Rotational diagram at emission peak from less-contaminated lines [3.4: "The rotational diagram is obtained at the emission peak from the less-contaminated ethylene glycol lines to derive reliable physical parameters"]
+  - parameter: Q(T) = 234 500 (CDMS at 145 K) [3.4: "Taking the partition function *Q*(*T*) = 234 500 from the nonlinear plot of the CDMS values of *Q* at 145 K"]
+  - assumption: Optically thin lines and LTE [3.4: "Assuming optically thin lines and local thermodynamic equilibrium"]
+  - validation: Synthetic spectrum overlaid on observed spectrum [3.4: "Figure [6](#spesyn) shows the synthetic spectrum overlaid on the observed ALMA spectrum towards the ethylene glycol peak"]
+- result: Rotational temperature of aGg' = 145 ± ±30 K [3.4: "we obtain a rotational temperature of 145$\pm$30 K"]
+- result: Column density of aGg' = 4.6e15 ± ±0.8e15 cm^-2 [3.4: "total column density averaged over the synthesized beam *N*$\rm_{\textit{aGg'}}$ of 4.6$\pm$0.8 10$^{15}~$cm$^{-2}$"]
+- result: Deconvolved size upper limit = 2.4 x 1.1 ± not stated arcsec [3.2: "We find an upper limit for the deconvolved size of 2.4$\ensuremath{''}$$\times$ 1.1$\ensuremath{''}$."]
+- result: Ethylene glycol abundance relative to H2 = ~1e-9 ± not stated dimensionless [3.4: "we find an ethylene glycol abundance of $\sim$10$^{-9}$"]
+- limitation (authors): Hypotheses for gGg' upper limit admittedly questionable; lines too few and weak to dispel confusion [3.5: "Making the simplifying, but admittedly questionable, hypotheses"]
+- not stated (card): CASA version and the initial processing/calibration steps; Robust/weighting, cell and image size, and clean thresholds for GILDAS imaging; Exact line-free channel lists and the continuum levels subtracted; Integration windows and uncertainty treatment for rotational-diagram integrated intensities; Treatment of beam dilution/source size in column density; Method for deriving the H2 column density …
+
+### 2019ApJ...871..170M: Fire in the Heart: A Characterization of the High Kinetic Temperatures and Heating Sources in the Nucleus of NGC 253 (2019; nearby_galaxies, astrochemistry; observational_alma_primary)
+- question: What is the kinetic temperature of the dense star-forming gas in the NGC 253 nucleus, and what heating processes (cosmic rays, mechanical, PDR/XDR) drive it?
+- step 4: Identify lines and extract integrated intensities
+  - method: ALMA Data-Mining Toolkit plus by-eye line lists; CubeLineMoment masking with Gaussian PPV masks; gaussfit_catalog spatial fits [4.2 Spectral Line Signal Extraction and…: "we have developed a python script, called `CubeLineMoment`, which uses a series of spectral and spatial masks to extract integrated intensities for a defined list of target spectral frequencies."]
+  - software: CubeLineMoment, spectral-cube, gaussfit_catalog, pyspeckit, ALMA Data-Mining Toolkit
+  - parameter: Tracer lines C18O 2-1 (B6) and H2CO 5_15-4_14 (B7); mask at 1-sigma on model Gaussian; detections >2 sigma [4.2 Spectral Line Signal Extraction and…: "For each spatial pixel, spectral pixels are masked out below the 1-$\sigma$ level evaluated on the model Gaussian."]
+  - fitting: Gaussian spatial fits with pyspeckit [4.2 Spectral Line Signal Extraction and…: "which uses `pyspeckit` to perform gaussian fits of the spatial molecular spectral line components"]
+  - validation: H2CO peak positions compared with continuum and literature positions [4.2 Spectral Line Signal Extraction and…: "all peak H$_2$CO positions are consistent within respective measurement uncertainties with their corresponding ALMA Band 6 and 7 continuum positions"]
+- limitation (authors): Rgd for diffuse Milky Way gas may not apply to the dense CMZ [3.3 Spatial Component Hydrogen Column D…: "Even though it is not clear whether a diffuse gas Milky Way value for $R_{gd}$ is appropriate to the dense CMZ of NGC 253"]
+- limitation (authors): H3O+/SO ratio affected by optical depth and calibration; factor of two differences possible [7.2 Chemical Diagnostics of Dense Gas H…: "Factor of two differences could be explained by these two effects."]
+- limitation (authors): Total Power data unusable so no zero-spacing beyond ACA [2 Observations: "The TP measurements have proven to be unusable owing to incomplete telluric line removal"]
+- not stated (card): clean parameters (weighting/robust, cell size, image size, niter, threshold, masks); self-calibration solution intervals beyond 60 s averaging, reference antenna, which datasets and whether archive products were used; feather parameters (sdfactor, uv cut) and primary beam correction details; which channels were line-free in each window and where polynomial order exceptions apply; exact ALMA/CASA …
+
+### 2025ApJ...989...83B: CO Emission and Absorption-line Survey of the M87 Nucleus Using Archival ALMA Imaging (2025; agn_and_quasars, nearby_galaxies; archival_reuse)
+- question: Is there molecular gas in the inner kpc of M87 (CO emission from the circumnuclear disk, ionized-gas filaments and dusty clouds, or CO absorption against the nucleus), as probed by archival ALMA imaging?
+- step 8: Derive excitation temperature and column density (LTE)
+  - method: Solve the opacity-ratio equation for T_ex(2-1), then N_CO from CO(1-0) opacity and Q_rot; error bars from Monte Carlo draws of tau_CO; N_H2 from CO/H2 abundance ratios [Temperature and Column Densities: "To determine a total column density $N_\mathrm{CO}$, we primarily considered CO(1$-$0) absorption and an excitation temperature for the lowest-$J$ transitions:"] [Temperature and Column Densities: "After $10^5$ iterations, we used the 15.9 to 84.1 (0.14 to 99.87) percentile levels of the $T^{21}_\mathrm{ex}$ distribution"]
+  - software: Splatalogue
+  - parameter: 10^5 MC iterations with tau_CO drawn from normal distributions (std = 1-sigma uncertainty); 1-sigma and 3-sigma percentile ranges [Temperature and Column Densities: "We recovered more reliable error bars in a series of trials by drawing individual $\tau_\mathrm{CO}$ randomly from normal distributions centered on their measured value with standard deviations equal to their 1$\sigma$ uncertainties in Table"]
+  - assumption: Single-zone LTE with adjacent transitions under the same conditions; beam filling factor ignored; CMB negligible; T_K = T_ex [Temperature and Column Densities: "This assumes a single-zone system in local thermodynamic equilibrium (LTE) where adjacent transitions (e.g., $J = 0\rightarrow1$ and $1\rightarrow2$) originate under the same conditions."] [Temperature and Column Densities: "We have ignored beam filling factors and also considered the impact of the CMB background to be negligible"]
+  - assumption: Diffuse-gas CO/H2 abundance ratios (~2e-6 to ~8e-7) preferred over the standard 3.2e-4 for N_H2 [Column Densities: "CO/H$_2$ abundances of $\sim$2$\times$10$^{-6}$ (cite: liszt19) to $\sim$8$\times$10$^{-7}$ (cite: pineda10)"]
+  - fitting: Direct solution of the equations with Monte Carlo error propagation (no priors) [Temperature and Column Densities: "After calculating weighted-average opacities at each iteration, we used the newly-fit $T_\mathrm{ex}$ to find a new $Q_\mathrm{rot}$ and $N_\mathrm{CO}$."]
+  - validation: CO(3-2)/CO(2-1) opacity ratio is not consistent with LTE expectations, motivating non-LTE modelling [Temperature and Column Densities: "is not consistent with LTE expectations."]
+- step 12: Test telluric and bandpass origins of spurious spectral features
+  - method: Model atmospheric transmission with am for each spw, compare ozone residuals with line catalogs, and compare peak spectra across spws and EBs to evaluate bandpass stability [Atmospheric Modeling: "To aid in identifying and characterizing faint ozone features, we employed the"] [Bandpass Calibration Accuracy: "In Figure [14](#fig:bandpass), we compare the spectral behavior for individual spws in a single sideband from all standard ALMA programs covering redshifted CO(1$-$0) and CO(2$-$1) transitions."]
+  - software: am, CDMS/JPL catalogs
+  - parameter: Ozone lines tabulated down to CDMS/JPL log intensity -5.3 [Atmospheric Modeling: "we indicate the frequencies of the ozone and water vapor transitions that have CDMS/JPL logarithmic intensities"]
+  - assumption: N_O3 scales linearly with the depth of unsaturated O3 absorption lines [Atmospheric Modeling: "Assuming that $N_\mathrm{O_3}$ scales linearly with the depth of unsaturated O$_3$ absorption lines"]
+  - validation: Broad CO deficits and excesses attributed to bandpass patterns because contemporaneous data sets disagree over the same frequency range [Bandpass Calibration Accuracy: "For example, the $S_\nu$ behavior over 102$-$104 GHz in the X5 data set is inconsistent with those covering the same spectral range in Xbe and X135 data sets, which were obtained just weeks apart."]
+- result: Excitation temperature T_ex(2-1) (median) = 7.77 ± +1.34/-1.94 (1-sigma); +14.88/-2.90 (3-sigma) K [Temperature and Column Densities: "we used the 15.9 to 84.1 (0.14 to 99.87) percentile levels of the $T^{21}_\mathrm{ex}$ distribution to find a median $T^{21}_\mathrm{ex} = 7.77^{+1.34}_{-1.94}\left(^{+14.88}_{-2.90}\right)$ K"]
+- result: CO column density N_CO = 1.16e15 ± +0.21/-0.28 (1-sigma); +3.55/-0.47 (3-sigma), in 1e15 cm^-2 [Temperature and Column Densities: "$N_\mathrm{CO}/10^{15}\,\mathrm{cm}\ensuremath{^{-2}}= 1.16^{+0.21}_{-0.28}\left(^{+3.55}_{-0.47}\right)$ with 1$\sigma$ (3$\sigma$) error bars"]
+- result: Excitation temperature T_ex(3-2) (median) = 28.6 ± +26.7/-14.9 K [Temperature and Column Densities: "we find higher median $T^{32}_\mathrm{ex} = 28.6^{+26.7}_{-14.9}$ K with $N_\mathrm{CO} \sim 10^{16}$ cm$^{-2}$"]
+- result: H2 column density range N_H2 (in 1e20) = 0.92 to 2.3 ± +0.68/-0.36 and +1.7/-0.9 (1-sigma) cm^-2 [Conclusion: "$N_\mathrm{H_2}/10^{20}\,\mathrm{cm}\ensuremath{^{-2}}= 0.92^{+0.68}_{-0.36} - 2.3^{+1.7}_{-0.9}$ (1$\sigma$ uncertainties)"]
+- result: Change in line-of-sight ozone column during a single EB = up to ~6% over 30 min ± not stated percent [Atmospheric Modeling: "suggest that either stratospheric or ground-layer $N_\mathrm{O_3}$ along the line of sight changed by up to $\sim$6% over just 30 min."]
+- limitation (authors): Bandpass calibration effects on tau_0 and tau_CO are not quantified [CO Absorption-line Properties: "However, we do not attempt to quantify here the bandpass calibration effects on"]
+- limitation (authors): CO(3-2) and CO(2-1) opacities are less reliable than CO(1-0), so LTE reconciliation is not attempted [Temperature and Column Densities: "Unfortunately, neither $\tau_\mathrm{CO(3-2)}$ or $\overline{\tau}_\mathrm{CO(2-1)}$ values are as reliable as is $\overline{\tau}_\mathrm{CO(1-0)}$"]
+- limitation (authors): Xa1 maximum recoverable scale cannot entirely rule out diffuse emission over larger regions [Channel Maps: "cannot entirely rule out diffuse emission spread out over a couple of the larger regions with $\sim$5$''$ extent"]
+- not stated (card): CASA and pipeline versions used for each data set (only 'the appropriate pipeline version' is given); Briggs robust value for MFS maps, cell size, image size, niter/threshold, deconvolver and masks for tclean MFS and cube imaging; Which flux calibrator and which spws had setjy rescaling, and the exact rescale factors per spw; Self-calibration details: refant, solint sequence, number of loops, whi…
+
+### 2024A&A...682A.127S: A bipolar structure and shocks surrounding the stellar-merger remnant V1309 Scorpii (2024; stellar_physics, evolved_stars, astrochemistry; observational_alma_primary)
+- question: Spatio-kinematic and chemical properties, physical conditions, and origins of the circumstellar components of V1309 Sco.
+- step 1: Identify sub-mm lines and compare epochs
+  - method: Use CASSIS with CDMS and JPL spectroscopic information; identify lines and compare CO moment-0 fluxes. [Line identification: "we used the CASSIS spectroscopic analysis tool"] [Line identification: "to extract spectroscopic information from the Cologne Database for Molecular Spectroscopy (cite: CDMSref) and the Jet Propulsion Laboratory database (cite: JPLref)."]
+  - software: CASSIS, Cologne Database for Molecular Spectroscopy, Jet Propulsion Laboratory database
+  - validation: Comparison with the mostly unchanged 2016 spectrum; HCO+ partially resolved in 2019. [Line identification: "the majority of lines seen in the 2019 spectrum could be identified without major effort."] [Line identification: "This observation, coupled with the better spectral resolution of the 2019 ALMA spectrum, allowed HCO$^+$ to be (partially) resolved from SO$_2$."]
+- step 8: Measure optical/NIR lines and remove TiO contamination
+  - method: Identify atomic lines, measure fluxes and widths with IRAF splot, and model TiO with Pgopher to recover [S II] λ6730. [Line identification and analysis: "Flux and width measurements of the 2016 observations were done using `splot`, as part of the `onedspec` package in IRAF."] [VIS range: "We used the Pgopher[^6] tool (cite: western2017pgopher) to model the TiO emission across a short wavelength range spanning the \[S II\] $\lambda$6730 line"]
+  - software: IRAF, onedspec, splot, Pgopher, NIST
+  - parameter: Flux errors: 5σ, with noise rms multiplied by the square root of line width in pixels. [Line identification and analysis: "Errors are estimated at 5$\sigma$, where 1$\sigma$ is equal to the noise rms, and multiplying by the square root of the width of the line in pixels."]
+  - parameter: TiO temperature 240 K; Gaussian smoothing kernel 3.5 Å. [VIS range: "The best-fitting temperature was 240 K, with a Gaussian smoothing kernel of 3.5 Å."]
+  - assumption: Pgopher parameterises TiO by a single rotational temperature. [VIS range: "Pgopher was used rather than ExoMol–ExoCross for convenience, but is less accurate as it is parameterised by a single (rotational) temperature."]
+  - fitting: Fit the TiO γ(0,0) F2–F2 band. [VIS range: "TiO was modelled to best fit the TiO $\gamma$ (0,0) F$_2$–F$_2$ band, as it had sufficient SNR and was devoid of saturation effects,"]
+  - validation: Check uncertain atomic identifications with NIST multiplets and relative intensities. [Line identification and analysis: "In order to confirm uncertain lines, the NIST database[^4] was used to look for lines of the same multiplet, as well as compare relative intensities."]
+- result: CO (3–2) moment-0 flux, 2016 = 181.5 ± not stated Jy/(beam km s−1) [Line identification: "From the moment-0 maps of CO (3–2), the flux has increased from 181.5 Jy/(beam km s$^{-1}$) in 2016 to 226.0 Jy/(beam km s$^{-1}$) in 2019 (26% increase)."]
+- result: CO (3–2) moment-0 flux, 2019 = 226.0 ± not stated Jy/(beam km s−1) [Line identification: "From the moment-0 maps of CO (3–2), the flux has increased from 181.5 Jy/(beam km s$^{-1}$) in 2016 to 226.0 Jy/(beam km s$^{-1}$) in 2019 (26% increase)."]
+- result: CO moment-0 flux increase = 26 ± not stated % [Line identification: "From the moment-0 maps of CO (3–2), the flux has increased from 181.5 Jy/(beam km s$^{-1}$) in 2016 to 226.0 Jy/(beam km s$^{-1}$) in 2019 (26% increase)."]
+- result: Average LSR peak velocity of identified ALMA lines = –81 ± not stated km s−1 [Line identification: "is –81 km s$^{-1}$."]
+- result: H2 1–0 S(1) integrated flux = 2.66×10^−16 ± 1.93×10^−17 erg/s/cm2 [Table 5: "| 21202.70 | 21218.00 | H$_2$ 1–0 S(1) | | 2.66$\times$10$^{-16}$ | 1.93$\times$10$^{-17}$ | 105.52 | -216.18 |"]
+- result: H2 1–0 Q(1) integrated flux = 5.11×10^−15 ± 1.04×10^−16 erg/s/cm2 [Table 5: "| 24048.70 | 24066.00 | H$_2$ 1–0 Q(1) | | 5.11$\times$10$^{-15}$ | 1.04$\times$10$^{-16}$ | 123.88 | –215.51 |"]
+- result: H2 1–0 S(1) FWHM = 105.52 ± not stated km s−1 [Table 5: "| 21202.70 | 21218.00 | H$_2$ 1–0 S(1) | | 2.66$\times$10$^{-16}$ | 1.93$\times$10$^{-17}$ | 105.52 | -216.18 |"]
+- result: H2 1–0 Q(1) FWHM = 123.88 ± not stated km s−1 [Table 5: "| 24048.70 | 24066.00 | H$_2$ 1–0 Q(1) | | 5.11$\times$10$^{-15}$ | 1.04$\times$10$^{-16}$ | 123.88 | –215.51 |"]
+- limitation (authors): Spatially unresolved asymmetry and only marginal resolution of the molecular remnant. [CSE structure: "Our ALMA maps only marginally resolve the cool component of the V1309 Sco remnant."]
+- limitation (authors): Overlapping components and moderate/high optical depths undermine detailed component fits. [CSE structure: "It is unlikely to be a real change in the physical parameters of the flow and rather reflects the large uncertainties in modelling the multiple overlapping components."]
+- limitation (authors): CASSIS saturation correction is limited. [Optical depth: "The CASSIS software applies a limited correction on line saturation effects."]
+- not stated (card): 2016 ALMA project code and exact execution-block identifiers for both epochs.; Array configuration and antenna selection, channel flags, and the actual default calibration scripts.; tclean cell size, image size, deconvolver, masks, stopping threshold, iterations, and weighting for each delivered image.; Continuum treatment, line-free channels if subtraction was used, primary-beam correction, and …
+
+### 2023NatAs...7.1048C: Evidence for auroral influence on Jupiter's nitrogen and oxygen chemistry revealed by ALMA (2023; solar_system; observational_alma_primary)
+- question: How are CO and HCN, long-lived species deposited by comet Shoemaker-Levy 9, distributed in latitude and altitude in Jupiter's stratosphere in March 2017, and what does this imply for jovian chemistry and dynamics (notably in the auroral re…
+- step 5: Retrieve HCN and CO vertical profiles per limb spectrum
+  - method: Forward radiative transfer plus iterative damped least-squares (Twomey-Tikhonov) retrieval of a three-parameter tanh vertical profile for each limb spectrum [Methods - Retrieval model: "We solved the inverse problem with an iterative damped least-squares method, also known as Twomey–Tikhonov in Earth atmospheric science literature (50)."] [Methods - Retrieval model: "The mixing ratio as a function of height in km above the 1 bar level, f(z), is parameterized with three independent numbers, $a_1$, $a_2$, $a_3$ as follows:"]
+  - software: radiative transfer model of Cavalie et al. 2019, JPL catalog, JPL Horizons
+  - parameter: Convergence when reduced chi-squared improves by less than 0.5% [Methods - Retrieval model: "The iterative process continues while the current reduced $\chi_i^2$ is smaller than the one from previous iteration within a threshold of 0.5%."]
+  - parameter: Regularization parameter alpha fixed for all retrievals after trial and error with synthetic inversions [Methods - Retrieval model: "The regularization parameter, $\alpha$, was estimated by trial and error with synthetic inversions and then fixed for all subsequent iterations of all retrievals."]
+  - assumption: Lines not optically thick (tau 0.2 for CO, 0.4 for HCN at high latitudes, 1.6 for HCN at low-to-mid latitudes) [Observations: "because the lines are not optically thick (i.e., $\tau$$=$ 0.2 for CO, 0.4 for HCN at high latitudes, and 1.6 for HCN in the low-to-mid latitudes)."]
+  - assumption: Pressure broadening and NH3/PH3 profiles as given [Methods - Radiative transfer: "We adopted a pressure broadening coefficient $\gamma$ of 0.145 cm$^{-1}$.atm$^{-1}$ and a temperature dependence exponent $n$ of 0.75 for the HCN line according to (43)."]
+  - fitting: Damped least squares with numerical Jacobian held constant over iterations; initial guess from the previously inverted limb point (first point set manually); uncertainties from the solution covariance matrix [Methods - Retrieval model: "This matrix remains constant during iterations."] [Methods - Retrieval model: "For subsequent points on the map, they were however taken from the previously inverted measurement before running the first retrieval iteration."]
+  - validation: Parameters are independent per Jacobian study; about 95% of HCN and 98% of CO retrievals converge automatically; uncertainties generally <3% on a1, <1% on a2, 5-10% on a3 [Methods - Retrieval model: "About 95% of HCN retrievals converge automatically to the set criteria, and about 98% in case of CO which is more optically thin."] [Methods - Retrieval model: "We studied the forward radiance Jacobians (as used in inverse problems) and found that the three parameters can be estimated with a high-degree of independence."]
+- result: CO cut-off pressure (meridionally uniform) = 3 ± 1 mbar [The spatial distribution of CO and HCN: "we find a CO mole fraction of 41$\pm$12 ppb (1-$\sigma$ uncertainty) at pressures lower than an average cut-off of 3$\pm$1 mbar."]
+- result: CO mole fraction above cut-off = 41 ± 12 (1-sigma) ppb [The spatial distribution of CO and HCN: "we find a CO mole fraction of 41$\pm$12 ppb (1-$\sigma$ uncertainty)"]
+- result: HCN mole fraction in low-to-mid latitudes = 0.9 ± 0.5 (1-sigma) ppb [The spatial distribution of CO and HCN: "we find an HCN mole fraction of 0.9$\pm$0.5 ppb (1-$\sigma$ uncertainty)"]
+- result: HCN cut-off pressure in low-to-mid latitudes = 2 ± +2/-1 mbar [The spatial distribution of CO and HCN: "at pressures lower than an average cut-off of 2$_{-1}^{+2}$ mbar."]
+- result: HCN cut-off pressure in the auroral regions = 0.04 ± +0.07/-0.03 mbar [The spatial distribution of CO and HCN: "the HCN profile is cut-off at a pressure higher than 0.04$_{-0.03}^{+0.07}$ mbar in these regions"]
+- result: HCN abundance interior of southern auroral oval vs surrounding polar region (sub-mbar) = ~10 times higher ± not stated dimensionless [HCN interior of the southern auroral ov…: "There is thus a $\sim$10 times higher abundance of HCN at sub-mbar pressures interior of the southern aurora compared to the surrounding polar region."]
+- limitation (authors): Uniform-disk continuum subtraction leaves residuals, giving about 30% uncertainty on column densities, the largest uncertainty [Methods - Observations: "The resulting uncertainty on the column densities is about 30% and is the biggest source of uncertainty in this study."]
+- limitation (authors): Temperature model limited by interpolation in gaps of TEXES coverage of auroral regions [HCN interior of the southern auroral ov…: "Since our temperature model is inherently limited by the interpolation that we apply in the few gaps in the coverage of the auroral regions the Gemini/TEXES data have"]
+- limitation (authors): Northern aurora geometry less favorable at the time of observations [HCN at high latitudes: "Although the geometry was less favorable at the time of the observations with the northern auroral oval just rising over the 170W limb"]
+- not stated (card): tclean/imaging parameters (weighting, robust, cell size, image size, deconvolver, cleaning masks) used to make the HCN and CO cubes; Channel ranges used for the uniform-disk continuum model and uv-plane subtraction, and the disk model parameters; Calibration flux model for Ganymede and any flux-scale corrections; How the 557 HCN and 540 CO limb spectra were extracted (positions, limb definition, …
+
+### 2020ApJ...897..176K: The Molecular Interstellar Medium in the Super Star Clusters of the Starburst NGC 253 (2020; nearby_galaxies, astrochemistry, star_formation; observational_alma_primary)
+- question: What are the physical and chemical properties of the molecular gas in the 14 embedded (proto-)super star cluster candidates of NGC 253, and what energy sources (PDR, XDR, mechanical, IR pumping) heat them?
+- step 2: Identify lines
+  - method: Splatalogue with CDMS and JPL catalogs; four investigators independently; only consistent lines kept [2.3 Line Identification: "The lines consistently identified by all investigators form the final line list"]
+  - software: Splatalogue
+- step 3: Fit spectra for column density, linewidth, centroid
+  - method: XCLASS LTE radiative transfer in three runs: independent per-species, joint fit with ranges limited to 16-84th percentile of run 1, refinement of Trot for SO2 and H2CS (25-1000 K) [3.2 Spectral fitting procedure: "(1) an unconstrained, independent XCLASS fit of each species individually for each source, followed by (2) a joint fit of all detected species to the whole data range for each source, and (3) refinement fits"]
+  - software: XCLASS, MAGIX
+  - parameter: Genetic algorithm 50 iterations then Levenberg-Marquardt 50 iterations [Appendix: Fit algorithm: "combination of 50 iterations of the “Genetic” algorithm followed by 50 iterations of the “Levenberg-Marquardt” algorithm"]
+  - parameter: Limits: N 1e12-1e25 cm-2, width 5-80 km/s, centroid ±10 km/s [Appendix: XCLASS fit parameters: "We apply loose limits on column density ($10^{12} - 10^{25}$ cm$^{-2}$), linewidth ($5-80$ km s$^{-1}$)"]
+  - assumption: Source size fixed to unity (fills beam); Trot=130 K, Tvib=300 K fixed; LTE; emission-only components [3.2 Spectral fitting procedure: "we fix $\mathrm{T_{rot}}=130$ K for the purely rotationally excited species and $\mathrm{T_{vib}}=300$ K for the ro-vibrational transitions."]
+  - fitting: Genetic + Levenberg-Marquardt chi2 optimization; molecular data from CDMS [3.2 Spectral fitting procedure: "The molecular parameters required for this task are obtained from the CDMS catalog."]
+  - validation: Monte Carlo with 100 noise realizations (sigma 0.46 K); median and 16-84th percentiles [Appendix: Error estimation: "We draw 100 versions of Gaussian noise and add it to the observed spectra which are then fitted as described above."]
+- result: Number of lines/species detected in SSC 14 = 55 lines, 19 species ± not stated dimensionless [abstract: "we detect 55 lines belonging to 19 different chemical species"]
+- result: Mean SO2 rotational temperature = 127 ± not stated K [4.5 ISM temperature: "The mean rotational temperature over the SSCs with good estimates is 127 K in SO$_2$."]
+- result: SSC 14 SO2 Trot = 228 ± +15/-20 K [Table 4: "14 | 141$^{+ 15}_{- 16}$ | 228$^{+ 15}_{- 20}$"]
+- limitation (authors): LTE assumption and fixed Tex give systematic column density errors of a factor of two; absorption may bias ratios [Appendix: XCLASS fit parameters: "the derived column densities should be understood with a systematic error of a factor of two."]
+- not stated (card): SSC center coordinates (from Leroy et al. 2018); line-free channels used for continuum fit; CASA version and pipeline version; XCLASS version and exact fit configuration/initial guesses; Observing dates, array configurations, time on source; Spectral axis rest-frame velocities of each SSC; Gaussian fitting details for integrated intensities
+
+### 2013ApJ...767...88W: ALMA Redshifts of Millimeter-selected Galaxies from the SPT Survey: The Redshift Distribution of Dusty Star-forming Galaxies (2013; high_z_galaxies; observational_alma_primary)
+- question: What is the redshift distribution of strongly lensed, mm-selected SPT dusty star-forming galaxies, measured through a blind ALMA 3 mm CO line survey, and how does lensing and selection bias affect it?
+- step 2: Derive redshifts from line identification
+  - method: Unique solution from multiple lines; for single lines use additional spectroscopy or SED dust temperature priors [3 Results: "In this case, a unique redshift solution can be derived from the ALMA 3 mm spectral scans alone."]
+  - parameter: Retain dust temperatures with probability >10% [3.2 Ambiguous cases: "We retain only dust temperatures with probabilities $>$10%"]
+  - assumption: Greybody beta=2, T_dust distribution of known-z sample (mean 37.2+-8.2 K) as prior [3.2 Ambiguous cases: "For these sources we find a mean of T$_{\rm dust}$=37.2$\pm$8.2 K and no apparent trend with redshift"]
+  - fitting: Greybody fit with dust luminosity and T_dust free [3.2 Ambiguous cases: "where the only free parameters are the dust luminosity and the dust temperature, T$_{\rm dust}$"]
+  - validation: Confirmation with APEX [CII], ATCA, SMA, Z-Spec, VLT for five sources [Supplementary redshift information: "The identification of the 98 GHz line as CO(3–2) is confirmed with a CO(1–0) detection using the Australia Telescope Compact Array"]
+- result: Mean dust temperature of known-z sample = 37.2 ± 8.2 K [3.2 Ambiguous cases: "For these sources we find a mean of T$_{\rm dust}$=37.2$\pm$8.2 K"]
+- limitation (authors): Eight ambiguous redshifts hamper determination of the distribution shape; small sample [4.3 The redshift distribution: "The determination of the shape of our redshift distribution is currently hampered by the eight ambiguous redshifts."]
+- limitation (authors): Dust temperatures not physical; lensing size-evolution bias cannot be excluded [3.2 Ambiguous cases: "the “temperatures” should not be interpreted as physical temperatures"]
+- not stated (card): CASA version and calibration/imaging task parameters (weighting, cleaning, masks); Line-free channels and continuum subtraction method; Line detection/integration procedure and SNR>5 criteria details; Gaussian line-fit procedure for redshift uncertainties; Calibrator names per session; Exact probability calculation for dust temperature/redshift options; Intrinsic dn/dz and size-evolution lensing …
+
+### 2022A&A...667A.131B: Understanding if molecular ratios can be used as diagnostics of AGN and starburst activity: The case of NGC 1068 (2022; agn_and_quasars, nearby_galaxies, astrochemistry; archival_reuse)
+- question: Whether molecular line ratios between HCN, HCO+, and CS are useful tracers of AGN-dominated versus starburst-dominated gas in NGC 1068 across spatial scales, and what physical or chemical differences drive the observed ratio variations.
+- step 3: Calculate LTE column density bounds for HCN, HCO+, and CS
+  - method: Calculate upper-state column density N_u and total molecular column density N independently for each transition using LTE equations and CDMS partition functions to establish minimum and maximum column density limits for non-LTE grids [LTE analysis: "Using the observed line intensities from the archival data, we were able to estimate the column densities by assuming LTE and by using the same groupings of observations as discussed earlier, devolved to the lowest resolution of that group."] [LTE analysis: "To compute the partition function, we made use of molecular data from the Cologne Database for Molecular Spectroscopy (CDMS) (cite: CDMS)."]
+  - parameter: T = 50 K to 400 K [LTE analysis: "We used temperatures in the range 50 K to 400 K and computed the column density from each transition independently"]
+  - assumption: Local Thermodynamic Equilibrium (LTE) [LTE analysis: "Using the observed line intensities from the archival data, we were able to estimate the column densities by assuming LTE"]
+  - assumption: Beam filling factor Delta Omega_a / Delta Omega_s = 1 (source completely fills the beam) [LTE analysis: "Since we are investigating the regions themselves, we made the assumption that the source completely fills the beam, such that $\frac{\Delta\Omega_a}{\Delta\Omega_s}=1$."]
+  - assumption: Optically thin limit tau = 0 [LTE analysis: "We set $\tau = 0$ for our lines, following the example of (cite: Krips_2008)."]
+- result: LTE column density range for CS (N_min to N_max) = 3.34E+12 to 2.44E+16 ± not stated cm^-2 [Table 3: "CS | 3.34E+12 | 2.44E+16"]
+- result: LTE column density range for HCO+ (N_min to N_max) = 1.73E+11 to 3.43E+16 ± not stated cm^-2 [Table 3: "HCO+ | 1.73E+11 | 3.43E+16"]
+- result: LTE column density range for HCN (N_min to N_max) = 2.62E+13 to 7.38E+17 ± not stated cm^-2 [Table 3: "HCN | 2.62E+13 | 7.38E+17"]
+- limitation (authors): Not all sub-regions have been observed at all spatial resolutions for all molecules; NSB-b lacks consistent resolution observations and NSB-c has only a single high-resolution ratio (with HCN(4-3) and HCO+(4-3) below 3 sigma), excluding NS… [Comparison between observations: "We note that not all sub-regions listed in Table [1](#tab:Regions), and shown in Figures [1](#fig:HCO$^+$) and [2](#fig:HCN), have been observed at all resolutions for all molecules."]
+- limitation (authors): Gas kinetic temperature, gas density (except in E Knot, W Knot, and NSB-a at 40 pc), and linewidth are poorly constrained by the MCMC RADEX fitting across resolutions. [Non-LTE analysis: "Neither the CND nor the SB ring regions can be reasonably constrained in the temperature or density planes, at least with regards to showing distinguishing qualities within these parameters."]
+- limitation (authors): Follow-up studies of other nearby galaxies are required to confirm whether HCN(4-3)/HCO+(4-3) and HCN(4-3)/CS(2-1) hold as reliable diagnostics beyond NGC 1068. [Summary and conclusion: "whereas HCN(4-3)/HCO+(4-3) HCN(4-3)/CS(2-1) may show promise at certain resolutions but follow up studies, especially of other nearby galaxies, is required in order to confirm our findings."]
+- not stated (card): CASA version and specific imaging parameters (cell size, image size, cleaning threshold, continuum subtraction method, velocity integration ranges for moment 0 maps) for the re-analysed Band 3 HCN(1-0) and HCO+(1-0) data.; Exact aperture size or pixel extraction method used to extract sub-region intensities from the moment 0 maps.; Which specific MCMC Python package (e.g., emcee) was used and how…
+
+### 2018A&A...610A..43R: The diffuse molecular component in the nuclear bulge of the Milky Way (2018; milky_way_ism, astrochemistry; observational_alma_primary)
+- question: Is there diffuse, low-density molecular gas in the Galactic bulge, detectable via 3-mm molecular absorption against the quasar J1744-312, and what is its chemistry and mass?
+- step 2: Identify lines and fit Gaussians/HFS
+  - method: CDMS and JPL catalogs for identification; Gaussian fits to continuum-subtracted spectra; CLASS HFS method for HCO, CN, CCH [3.1: "The absorption profiles were fitted with Gaussian functions"] [3.1: "These lines were modeled using the HFS method of CLASS assuming optically thin emission, and the same excitation temperature and linewidth for all components of the multiplet."]
+  - software: CLASS, CDMS, JPL catalog
+  - parameter: Linewidths fixed to values from isolated-component Gaussian fit when fits did not converge [3.1: "in those cases we fixed the linewidths to the value given by the Gaussian fit isolating each corresponding velocity component"]
+  - assumption: Optically thin LTE for HFS [3.1: "These results indicate that we can assume that CCH, CN and HCO are optically thin following LTE conditions"]
+  - fitting: Gaussian fit; no sampler [Results and analysis, Line identificati…: "The absorption profiles were fitted with Gaussian functions"]
+  - validation: HFS line ratios compared with theoretical LTE optically thin ratios [3.1: "We compared the observed with the predicted line intensity (S$_l$, flux density peak) ratios of different HFS components in the optically thin case"]
+- limitation (authors): Low spectral resolution (~10 km/s) prevents linewidth analysis; T_ex=T_bg assumption untested; mass based on single sightline [4.2: "this analysis is not possible with our data because of the lower spectral resolution of our survey ($\sim 10$ km s$^{-1}$)"]
+- not stated (card): Excitation temperature used explicitly (T_ex=T_bg=2.73 K implied by Q_2.73); CASA version and pipeline version; Extraction aperture/pixel for the spectrum and continuum-level definition; Which four lines were stacked; How the 3-sigma upper limits were computed; Geometry details for the mass estimate
+
+### 2024A&A...690A.372L: A new measurement of the Galactic <SUP>12</SUP>C/<SUP>13</SUP>C gradient from sensitive HCO<SUP>+</SUP> absorption observations (2024; milky_way_ism, astrochemistry; observational_alma_primary)
+- question: What is the Galactic 12C/13C radial gradient, measured from H12CO+ and H13CO+ J=1-0 absorption against strong continuum sources (quasars and UCH II regions)?
+- step 4: Derive HCO+/H13CO+ column density ratios
+  - method: Column density from integrated optical depth (Mangum & Shirley 2015) with CDMS constants; ratio simplified to 0.974 x ratio of integrated optical depths [3.1 Absorption spectra and integrated o…: "The molecular column density can be written as a function of $\int \tau_\nu d\upsilon$ (cite: Mangum2015)"] [3.1 Absorption spectra and integrated o…: "were taken from the Cologne Database for Molecular Spectroscopy (cite: Muller2001; Muller2005)"]
+  - software: CDMS
+  - parameter: T_ex = 2.73 K for both HCO+ and H13CO+ [3.1 Absorption spectra and integrated o…: "take $T_{\rm ex} = 2.73$ K for both HCO$^+$ and H$^{13}$CO$^+$, the column density ratios can be simplified as"]
+  - assumption: T_ex of HCO+ close to T_CMB in diffuse molecular clouds [3.1 Absorption spectra and integrated o…: "The excitation temperature of HCO$^+$ in diffuse molecular clouds is usually close to the cosmic microwave background temperature"]
+  - validation: Varying T_ex from 2.73 to 5 K changes the ratio by less than 1% [3.1 Absorption spectra and integrated o…: "only results in a variance of the column density ratio of less than 1%."]
+- result: Weighted-mean 12C/13C toward the GC = 42 ± 1 dimensionless [3.2 The 12C/13C gradient: "The weighted-mean $^{12}$C/$^{13}$C ratios increase from 42$\pm$1 toward the GC to 66$\pm$5 in the solar neighborhood."]
+- result: Weighted-mean 12C/13C in the solar neighborhood (7.6 <= R_GC <= 8.6 kpc) = 66 ± 5 dimensionless [4.1 The 12C/13C ratios in the solar nei…: "with a weighted mean value of 66$\pm$5."]
+- result: Range of measured HCO+/H13CO+ ratios (lowest) = 12.7 ± 0.2 dimensionless [3.1 Absorption spectra and integrated o…: "The calculated ratios in our samples range from 12.7$\pm$0.2"]
+- result: Range of measured HCO+/H13CO+ ratios (highest; text gives 38.0, Table 2 gives 41.9) = 139.4 ± 38.0 (text) dimensionless [3.1 Absorption spectra and integrated o…: "to 139.4$\pm$38.0"]
+- result: 12C/13C at R_GC < 2 kpc, two components = 42.2 and 37.5 ± 1.7 and 6.5 dimensionless [4.2 The 12C/13C ratios in the Galactic …: "The two measurements at $R_{\rm GC} < 2$ kpc from our observations have $^{12}$C/$^{13}$C ratios of 42.2$\pm$1.7 and 37.5$\pm$6.5"]
+- result: Lower limits on 12C/13C at -181 and -162 km/s toward J1720-3552 = >19 and >31 ± not stated dimensionless [4.2 The 12C/13C ratios in the Galactic …: "Furthermore, the two lower limits of $^{12}$C/$^{13}$C at $-$181 and $-$162 km s$^{-1}$ of J1720-3552 are $>19$ and $>31$."]
+- result: Highest HCO+ column density = ~3.4e13 ± not stated cm^-2 [4.4 Chemical effects on the measured 12…: "is $\sim 3.4\times10^{13}$ cm$^{-2}$, corresponding to an H$_2$ column density of $10^{22}$ cm$^{-2}$"]
+- limitation (authors): Gradient depends on the accuracy of kinematic-distance-based R_GC [4.3 The 12C/13C gradient and comparison…: "the formula of the isotopic gradient strongly depends on the accuracy of the $R_{\rm GC}$, which is mostly based on the kinematic distance estimation."]
+- limitation (authors): Limited R_GC range of the sample [4.3 The 12C/13C gradient and comparison…: "Given the limited range of $R_{\rm GC}$ in the current samples"]
+- limitation (authors): Pure circular motions may fail near the GC [3.2 The 12C/13C gradient: "We note that such an estimation with pure circular motions may fail to predict the $R_{\rm GC}$ near the GC"]
+- not stated (card): Continuum-peak pixel selection and exact spectrum normalisation procedure (continuum level, continuum subtraction) used to turn spectra into optical depth; Exact velocity integration ranges per component (only the V_lsr centres are tabulated) and the RMS used in the uncertainty formula for each source; CASA version used for the five quasar data sets, line-free channels, cell size, image size, mas…
+
+### 2017AJ....154...11H: An Updated 2017 Astrometric Solution for Betelgeuse (2017; stellar_physics, evolved_stars; multi_facility_alma_minor)
+- question: Does the revised 2007 Hipparcos intermediate astrometric data, combined with VLA, e-MERLIN and ALMA radio positions, change Betelgeuse's parallax and distance?
+- step 3: Combined radio+HIAD astrometric fit
+  - method: Minimize chi2 of HIAD abscissa residuals plus radio position offsets [4.2 Radio Positions and HIAD: "We used Levenberg-Marquardt least-squares minimization (cite: 2009ASPC..411..251M) with the 65 1D HIAD scans and each of the 18 2D radio position."]
+  - software: Levenberg-Marquardt (MPFIT)
+  - assumption: JPL DE405 ephemerides for parallax [3 Radio-Only Proper Motions and Parallax: "We compute the parallaxes using the JPL DE405 IRCF ephemerides"]
+  - fitting: Least squares, 101 evaluations [4.2 Radio Positions and HIAD: "for a total of 101 individual evaluations"]
+  - validation: Sensitivity of parallax to radio noise explored [4.2 Radio Positions and HIAD: "Figure [2](#fig:radionoise) shows the sensitivity of the new parallax to the adopted radio *cosmic noise*."]
+- result: Radio-fixed-proper-motion + HIAD parallax = 5.27 ± 0.78 mas [4.1: "we find a parallax of $\pi=5.27\pm 0.78$ mas"]
+- result: Combined radio+Hipparcos parallax = 4.51 ± 0.80 mas [Table 4: "Parallax $\pi$ (mas) | 6.55(0.83) | 4.51(0.80)"]
+- result: Combined distance = 222 ± +48/-34 pc [abstract: "$4.51 \pm 0.80$ mas ($222^{+48}_{-34}$ pc)"]
+- result: Combined mu_delta = 9.60 ± 0.12 mas/yr [Table 4: "$\mu_\delta$ ( mas ${\rm yr}^{-1}$ ) | 11.30(0.65) | 9.60(0.12)"]
+- limitation (authors): Radio noise value is approximate; ALMA compact-configuration uncertainty may be underestimated [2.1 ALMA: "This in turn might lead to an underestimation of the uncertainty reported in Table [2](#tab:propermotion_alt)."]
+- not stated (card): CASA version and calibration procedure for ALMA data; Flux calibrator and ALMA flux scale; Exact uvmultifit settings and fitted ellipse parameters; Full 18 radio position list (VLA values in Harper et al. 2008); Details of the eight alternative ALMA fits used for 0.43 mas
+
+### 2015MNRAS.447.1826Z: ALMA reveals a candidate hot and compact disc around the O-type protostar IRAS 16547-4247 (2015; star_formation, astrochemistry; observational_alma_primary)
+- question: Does the O-type protostar IRAS 16547-4247 host a rotating disk, and how do molecular line kinematics at different excitation temperatures trace the jet/outflow versus the disk?
+- step 3: Line identification
+  - method: Synthetic LTE optically thin spectra, linewidth 7 km/s (10 for SO2), Trot 70-300 K, column density varied to match [Line thermal emission: "We then varied the column density until the synthetic spectra reasonably matched the observed spectra."]
+  - software: JPL catalog, CDMS, Splatalogue
+  - assumption: LTE, optically thin [Line thermal emission: "assuming Local Thermodynamic Equilibrium and optically thin emission"]
+  - fitting: by-eye matching [Line thermal emission: "We then varied the column density until the synthetic spectra reasonably matched the observed spectra."]
+- limitation (authors): Full Keplerian motion not seen; innermost parts unresolved or possibly non-Keplerian [Line thermal emission: "there is also the possibility that the motions of the innermost parts of the disk are intrinsically non-Keplerian."]
+- not stated (card): CASA version and calibration procedure details (manual vs pipeline); Which channels were line-free; Imaging parameters: cell size, image size, deconvolver, masking, clean threshold; Moment map clipping thresholds; Column densities and exact synthetic-spectrum fit results; Radius, velocity and inclination used for dynamical mass; Flux calibration uncertainty
+
+### 2015A&A...580A..36D: ALMA observations of TiO<SUB>2</SUB> around VY Canis Majoris (2015; evolved_stars, astrochemistry; archival_reuse)
+- question: Distribution and excitation of gas-phase TiO2 around the red supergiant VY CMa, and its role in dust condensation
+- step 1: Extract spectra and identify TiO2 lines
+  - method: Spectra extracted in 1'' diameter aperture around the star; lines identified with CDMS [3. Results: "We analysed spectra extracted for a 1 [′′] diameter region around the stellar position."]
+  - assumption: Stellar vLSR of 22 km/s [3. Results: "Assuming [1] a stellar � LSR of 22 km s [−][1]"]
+  - validation: Compared with SMA detections of K+13a,b [3. Results: "The peak fluxes of the ALMA and SMA detections are consistent within the uncertainties."]
+- result: Number of TiO2 lines detected = 15 ± not stated dimensionless [abstract: "We detect 15 transitions of TiO 2"]
+- limitation (authors): Continuum leakage and cleaning artefacts in the 312-314 GHz window; blending [2. Observations: "These features are artefacts of the cleaning procedure likely caused by imperfect phase corrections on a number of intermediate baselines."]
+- not stated (card): CASA version and tclean parameters (cell, image size, masks, threshold); Line-free channels used for continuum subtraction; Exact procedure for correcting continuum leakage in the 312 GHz window; Rotation diagram fitting method and treatment of blends; Self-calibration and flux calibration details (deferred to R+14)
+
+### 2025ApJ...989L..22B: Worlds Next Door: A Candidate Giant Planet Imaged in the Habitable Zone of α Centauri A. I. Observations, Orbital and Physical Properties, and Exozodi Upper Li… (2025; exoplanets, debris_disks, stellar_physics; multi_facility_alma_minor)
+- question: Search for planets and exozodiacal disk emission in α Centauri A’s habitable zone; improve the stellar ephemeris with ALMA astrometry.
+- step 2: Update the ephemeris for JWST target acquisition
+  - method: Combine visible and ALMA astrometry following Akeson2021; calculate apparent positions from JWST’s location. [Astrometry of $\alpha$ Cen A, $\alpha$ …: "The analysis method for determining the astrometric properties of the $\alpha$ Cen AB system using the combined visible and ALMA data is described in (cite: Akeson2021)."] [Astrometry of $\alpha$ Cen A, $\alpha$ …: "as seen from JWST’s location (which is obtained from the HORIZONS database"]
+  - software: JPL Horizons, pysiaf
+  - parameter: Hour-by-hour ephemeris including parallax from JWST’s L2 orbit [Astrometry of $\alpha$ Cen and $\epsilo…: "The ephemeris was calculated on an hour-by-hour basis, including the effects of parallax as observed from the vantage point of JWST’s L2 orbit"]
+  - parameter: Convert sky offsets to instrument (x,y) at the exact epoch and V3 angle using pysiaf. [Astrometry of $\alpha$ Cen and $\epsilo…: "The conversion of the offset in $(\Delta\alpha,\:\Delta\delta)$ to instrument $(x,y)$ was calculated for the exact epoch of observation and desired V3 angle using a model of the MIRI focal plane using STScI’s `pysiaf` routine"]
+  - fitting: Combined visible/ALMA analysis inherited from (cite: Akeson2021) [Astrometry of $\alpha$ Cen A, $\alpha$ …: "The analysis method for determining the astrometric properties of the $\alpha$ Cen AB system using the combined visible and ALMA data is described in (cite: Akeson2021)."]
+  - validation: Predicted α Cen A position uncertainty reduced from ∼5–6 mas to ∼2 mas through 2028. [Astrometry of $\alpha$ Cen A, $\alpha$ …: "Finally, we note that the addition of the ALMA DDT observations reduced the uncertainty in the positions of $\alpha$ Cen A from $\sim$5–6 mas to $\sim$2 mas through 2028"]
+- result: Updated α Cen A position uncertainty through 2028 = ∼2 ± not stated mas [Astrometry of $\alpha$ Cen A, $\alpha$ …: "reduced the uncertainty in the positions of $\alpha$ Cen A from $\sim$5–6 mas to $\sim$2 mas through 2028"]
+- limitation (authors): Only one JWST sighting; planet status cannot be confirmed. [Conclusions: "However, with only a single sighting by JWST, the candidate cannot be unambiguously confirmed as a bona fide planet."]
+- limitation (authors): S1 orbit cannot be uniquely constrained; modeling links S1 and C1. [Orbital Modeling of $S1$ + $C1$: "With only a single JWST/MIRI sighting (and non-detections at two other epochs), it is challenging to uniquely constrain the orbit of $S1$."]
+- limitation (authors): Two photometric points leave substantial atmospheric degeneracies. [Planet Atmospheric Models: "Given the numerous atmospheric parameter degeneracies involved in fitting two photometric data points"]
+- not stated (card): 2023 ALMA spectral-window centers, bandwidths, channelization and selected continuum channels.; 2023 ALMA array configurations, baselines, antenna counts and synthesized beams.; ALMA pipeline and software versions, calibration scripts, flux/bandpass calibrators and flagging.; ALMA imaging task, weighting, pixel scale, image dimensions, deconvolution and any self-calibration.; Position estimator a…
+
+### 2025A&A...699A.183H: Spatially resolved spectrophotometric SED modeling of NGC 253's central molecular zone: I. Star formation in extragalactic giant molecular clouds (2025; nearby_galaxies, star_formation; multi_facility_alma_minor)
+- question: Build the first spatially-resolved panchromatic (near-UV to cm) SED of GMCs in the NGC 253 central molecular zone at 3 arcsec (~51 pc) and derive SFRs, stellar and dust masses, and test monochromatic SFR tracers against the SED values
+- step 9: Estimate age from 32S/34S metallicity in GMC 5
+  - method: LTE fit of 13CS and 13C34S spectra, 32S/34S converted to [Fe/H], compared to age-metallicity relation with skewed Gaussian least-squares fit [9 Sulfur ratios and Age-metallicity rel…: "Assuming LTE conditions, we fitted the observed spectra with a single component to account for the very dense regions that CS isotopologues trace."] [9 Sulfur ratios and Age-metallicity rel…: "The fitting process involved optimizing the parameters of the skewed Gaussian function"]
+  - software: CASSIS, RADEX
+  - parameter: 32S/34S range limited to values giving [Fe/H] <= 0.5 (ratio >= 13.3) [9 Sulfur ratios and Age-metallicity rel…: "we expect $^{32}$S/$^{34}$S isotopologue ratios no lower than 13.3"]
+  - assumption: LTE, single component; CDMS spectroscopy [9 Sulfur ratios and Age-metallicity rel…: "we have utilized the Cologne Database for Molecular Spectroscopy (cite: Mueller2005) for spectroscopic data"]
+  - fitting: Least-squares fit of skewed Gaussian to the age distribution; line fit by CASSIS (method not further described) [9 Sulfur ratios and Age-metallicity rel…: "using a least-squares approach"]
+  - validation: Compared with Kobayashi et al. 2020 bulge-outflow model ages [9 Sulfur ratios and Age-metallicity rel…: "Both results are in good agreement with the AMR-derived estimations."]
+- result: 32S/34S column density ratio in GMC 5 = 14.26 ± +7.53/-4.72 dimensionless [9 Sulfur ratios and Age-metallicity rel…: "The resulting $^{32}$S/$^{34}$S column density ratio is 14.26$^{7.53}_{-4.72}$"]
+- result: Age from age-metallicity relation for GMC 5 = 7.85 ± +0.18/-5.39 Gyr [9 Sulfur ratios and Age-metallicity rel…: "is 7.85$^{+0.18}_{-5.39}$ Gyrs"]
+- limitation (authors): Large uncertainties on the observed Halpha/Hbeta ratio (10 to nearly 90%) [4.2.2 Attenuation estimations: "ranging from 10 to nearly 90%"]
+- not stated (card): How the 3 arcsec aperture fluxes were measured from the ALCHEMI continuum maps (continuum definition, line-free channels, primary-beam correction, aperture centering software); ALMA continuum bandwidth/frequency selection behind each band flux, and flux scale/calibrator details (deferred to Martin et al. 2021); GalaPy sampler settings (number of walkers, steps, convergence) and likelihood form; F…
+
+### 2021A&A...650A..37D: A search for signatures of interactions of X-ray binary outflows with their environments with ALMA (2021; stellar_physics, milky_way_ism; observational_alma_primary)
+- question: Do five persistently accreting X-ray binaries (NS and BH, LMXB and HMXB) show atomic or molecular line emission from their accretion discs or from nearby sites of jet-ISM interaction, as seen with ALMA Band 3?
+- step 6: identify the lines and constrain distances
+  - method: Tentative SiO v=1 J=2-1 identification, with near and far kinematic distances computed from the velocity shift [Line emission in the field of view of G…: "We tentatively identified the line with emission from vibrationally excited SiO (v=1, J=2-1)"] [Line emission in the field of view of G…: "we obtain 2.5 and 13.3 kpc as near and far kinematic distances"]
+  - assumption: Line shift is due to position in the Galaxy, not intrinsic to the source [Line emission in the field of view of G…: "Assuming the line identification is correct and that its shift is not intrinsic to the source but is instead due to its position in the galaxy"]
+  - validation: Spatial coincidence of two lines at the SE position favours SO and CH3OH over H2O and H(40)alpha [Line emission in the field of view of G…: "The spatial coincidence of two lines at the SE position indicates that a similar redshift of 18–20 km s$^{-1}$ for the lines, and thus an identification with SO and CH$_3$OH, is more plausible."]
+- result: SiO line velocity redshift = 25 ± not stated km/s [Line emission in the field of view of G…: "with a redshift of 25 km s$^{-1}$"]
+- result: Near and far kinematic distances of the SiO source = 2.5 and 13.3 ± not stated kpc [Line emission in the field of view of G…: "we obtain 2.5 and 13.3 kpc as near and far kinematic distances"]
+- limitation (authors): Line identification and maser nature need higher resolution follow-up and other SiO transitions [Line emission in the field of view of G…: "Further observations of the detected line and of other SiO transitions at a higher angular resolution are necessary to confirm the maser nature of the emission and the line identification."]
+- limitation (authors): Many jet-ISM molecular tracers (CS, HNCO, HCO+) were not covered [Discussion: "many of the molecular tracers of jet-ISM interactions, such as the shock tracer CS or the high-density tracers HNCO or HCO+, remain unexplored for the sources of this study"]
+- not stated (card): CASA tasks and parameters (tclean deconvolver, cell size, image size, masking, niter/threshold) for continuum and cube imaging; Line-free channels and the continuum subtraction method used for the data cubes; Exact spectral resolution and channel width of the cubes and any velocity smoothing or rebinning; Reference antenna, uv range and combination of spectral windows used for the self-calibratio…
+
+### 2015A&A...582A..91C: Exploring the molecular chemistry and excitation in obscured luminous infrared galaxies. An ALMA mm-wave spectral scan of NGC 4418 (2015; nearby_galaxies, astrochemistry; observational_alma_primary)
+- question: What are the molecular abundances and excitation in the compact obscured nucleus of NGC 4418, and how do they compare with other Galactic and extragalactic environments?
+- step 3: Population diagram analysis
+  - method: Gaussian line fits, optically thin Nu with opacity correction, fit Tex and N for 12 species [3.2.1 Population diagrams: "we perform a population diagram analysis for the molecules which have at least two non-blended lines in different ALMA bands."]
+  - software: Splatalogue
+  - assumption: Source size 0.4''; LTE [3.2.1 Population diagrams: "We take as source size of the emission the upper limit of 0$''$.4"]
+  - fitting: Fit of LTE Nu equation [Population diagrams: "By fitting Eq. [\[eq:lte\]](#eq:lte) to the derived N$_\mathrm{u}$ we can derive $T_\mathrm{ex}$ and $N$ for each molecule."]
+- result: HC3N excitation temperature (population diagram) = 65 ± 4 K [Table 3: "| HC$_3$N | J=10-9 | 90.98 | 4.0$\pm$0.8 | 110$\pm$20 | 34$\pm$7 | 65$\pm$4 | 1$\pm$0.1$\times$10$^{17}$ | 0.5 |"]
+- limitation (authors): Unresolved emission: source size and common beam filling factor are the main uncertainties; line blending ~20% [3.4 Limitations: "Because the emission is unresolved in the ALMA beam, the main uncertainty in our LTE/NLTE fit is the source size."]
+- not stated (card): Phase/bandpass calibration details and CASA version; Coordinates of the continuum peak used for the point-source fit; Line-free channel ranges used for the continuum polynomial; Exact line-list/species list and the fitting code (not released); Priors/grid steps of the RADEX grid and the molecule ordering; Flux-scale handling for tunings with 3C 273 as flux calibrator
+
+### 2015ApJ...809L..26H: Detection of N<SUB>2</SUB>D<SUP>+</SUP> in a Protoplanetary Disk (2015; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Is N2D+ detectable in a protoplanetary disk, and what disk-averaged N2D+/N2H+ (D/H) ratio does it imply?
+- step 3: Derive column densities and D/H
+  - method: Optically thin LTE; N2H+ averaged over 5"x5" circle, N2D+ over 4"x4" circle; Tex 10-25 K; molecules assumed co-spatial [Results: "Hence we assume that the molecules are co-spatial in the disk based on their similar formation and destruction chemistry."] [Results: "The excitation temperature is expected to be between 10 and 25 K in the outer regions of the disk"]
+  - software: CDMS
+  - assumption: Tex 10-25 K, optically thin, co-spatial N2D+ and N2H+ [Results: "The excitation temperature is expected to be between 10 and 25 K in the outer regions of the disk"]
+  - validation: RADEX non-LTE grid (Tkin 10-25 K, n(H2) 1e6-1e10 cm-3) gave similar N2H+ columns of 1.7-7.8e11 cm-2 [Results: "The resulting column densities ranged from 1.7 to 7.8$\times 10^{11}$ cm$^{-2}$, similar to the column density range estimated through LTE calculations."]
+- result: N2D+ column density (10-25 K) = 2.1e11 to 1.4e11 ± ±0.5e11 / ±0.3e11 cm^-2 [Results: "At 10 K, the disk-averaged column density of N$_2$D$^+$ is $2.1\pm 0.5\times 10^{11}$ cm$^{-2}$"]
+- result: N2H+ column density (10-25 K) = 6.3e11 to 3.1e11 ± ±0.8e11 / ±0.4e11 cm^-2 [Results: "At 10 K, the disk-averaged column density of N$_2$D$^+$ is $2.1\pm 0.5\times 10^{11}$ cm$^{-2}$ and that of N$_2$H$^+$ is $6.3\pm 0.8\times 10^{11}$ cm$^{-2}$."]
+- result: Disk-averaged N2D+/N2H+ ratio = 0.3-0.5 ± not stated dimensionless [Results: "The resulting D/H ratio is estimated to be between 0.3 and 0.5."]
+- limitation (authors): Low SNR; spatial distributions not constrained; asymmetry needs higher SNR confirmation [Results: "Because the SNR is low for both molecules, their spatial distributions are not well-constrained by the current set of observations."]
+- not stated (card): CLEAN threshold, weighting/robust, cell and image size; Keplerian mask parameters (stellar mass, inclination, PA); Line-free channels used for continuum subtraction; Exact spectrum extraction details and FWHM value; Whether SMA N2H+ beam differences were corrected; Whether pipeline or manual calibration was used
+
+### 2015ApJ...800L..14C: Ethyl Cyanide On Titan: Spectroscopic Detection and Mapping Using Alma (2015; solar_system, astrochemistry; archival_reuse)
+- question: Is gas-phase ethyl cyanide (C2H5CN) present in Titan's atmosphere, and what are its vertical and spatial distributions compared with HC3N, CH3CN and CH3CCH?
+- step 2: extract disk-integrated spectra and identify lines
+  - method: Integrate cubes in circular region radius 1.1''; assign with Splatalogue, CDMS, JPL [Results: "integrating the reduced ALMA data cubes within a circular region of radius $1.1''$ from the center of Titan"]
+  - software: Splatalogue
+  - validation: Features detected at >3 sigma; spectra uncrowded [Results: "The spectra are sufficiently uncrowded that unambiguous assignments were possible for all detected lines."]
+- not stated (card): uvcontsub line-free channels and fit order; clean mask and iterations; Titan-frame velocity handling details; Specific aerosol and isotopologue abundance values; Noise estimation for fit uncertainties and the 3 sigma line detection; Exact lines summed for the C2H5CN map; Fitting algorithm details within NEMESIS
+
+### 2017AJ....154..206L: Mapping Vinyl Cyanide and Other Nitriles in Titan's Atmosphere Using ALMA (2017; solar_system, astrochemistry; archival_reuse)
+- question: Can C2H3CN be detected at submillimeter frequencies in Titan's atmosphere and spatially mapped, along with other nitriles, to constrain abundances and photochemistry/circulation?
+- step 1: calibrate and image
+  - method: JAO scripts, flux scaling to Butler-JPL-Horizons, uvcontsub, clean (Hogbom, natural) [Observations: "Imaging and deconvolution were performed using the `clean` task; the point-spread function was deconvolved using the Hogbom algorithm, with natural visibility weighting"]
+  - software: CASA
+  - parameter: threshold 18 mJy; pixel 0.1'' [Observations: "The image pixel size was set to $0.1''\times0.1''$"]
+- limitation (authors): C3H8 lines blended so abundance uncertain; south pole partly hidden [Results: "our fitted value should be treated with extreme caution due to the fact that the two propane lines are both blended"]
+- not stated (card): Line-free channels used for continuum subtraction; Velocity integration ranges for moment maps; Contour factor n and per-map RMS values; Exact CIRS temperature profile data; Initial values and optimizer settings for NEMESIS fits; Number of iterations/clean mask; Spectral windows and calibrators other than flux scale
+
+### 2024A&A...689A.248S: SO<SUB>2</SUB> and OCS toward high-mass protostars: A comparative study of ice and gas (2024; star_formation, astrochemistry; archival_reuse)
+- question: Chemical history of interstellar SO2 and OCS: derive gas-phase column density ratios w.r.t. CH3OH toward massive protostars and compare with ices (dark clouds, protostars) and comets
+- step 2: LTE grid fit of 34SO2 and O13CS column density and FWHM
+  - method: CASSIS LTE model grid; best fit = lowest chi2 over a grid of N and FWHM; Vlsr fixed to the by-eye value [2.2 Spectral analysis: "assuming that the excitation is under local thermodynamic equilibrium (LTE)"] [2.2 Spectral analysis: "a grid of column densities and FWHMs is tested and the best fit model is assigned to the combination with the lowest $\chi ^2$"]
+  - software: CASSIS, CDMS
+  - parameter: Tex fixed to 150 K [2.2 Spectral analysis: "the excitation temperature is fixed to $T_{\text{ex}}=150$ K in the spectral fittings"]
+  - parameter: N grid 1e13 to 1e17 cm-2, step 0.1 in log10 [2.2 Spectral analysis: "In this work $N$ was varied from $1\times10^{13}$ cm$^{−2}$ to $1\times10^{17}$ cm$^{−2}$ with a step of 0.1 on a logarithmic scale"]
+  - parameter: FWHM grid 3 to 11 km/s, spacing 0.1 km/s linear [2.2 Spectral analysis: "the FWHM was varied from 3 km s$^{−1}$ to 11 km s$^{−1}$ with a spacing of 0.1 km s$^{−1}$ on a linear scale"]
+  - parameter: Vlsr derived by eye in 0.1 km/s increments, then fixed [2.2 Spectral analysis: "The radial velocities ($V_{\text{lsr}}$) are derived by eye using increments of 0.1 km s$^{-1}$"]
+  - parameter: 2-sigma errors from reduced chi2 of each grid point; minimum 20% uncertainty adopted [2.2 Spectral analysis: "The $2\sigma$ errors are derived from the reduced $\chi ^2$ calculated from the comparison between the resulting model of each grid point and the observed spectrum."] [2.2 Spectral analysis: "we assume a 20% uncertainty as a conservative estimate to account for systematic sources of errors"]
+  - parameter: two-component sources (G025.6498p01.0491 for one species; 126348 and 707948 for the other): fit one Gaussian with Vlsr fixed to the mean of the by-eye component values [2.2 Spectral analysis: "we perform the grid fits assuming one Gaussian and fixing the $V_{\text{lsr}}$ to the mean between the values derived by eye for each component"]
+  - parameter: 3-sigma upper limits when the line does not exceed the detection threshold (manual fitting) [3.2 Fitting results: "$3\sigma$ upper limits are provided when line intensities do not surpass this detection threshold."]
+  - assumption: LTE, single Tex = 150 K (only one line per species per source) [2.2 Spectral analysis: "Since we only detect one line per species per source, the excitation temperature is fixed to"]
+  - assumption: beam dilution factor of unity (source fills the beam) [2.2 Spectral analysis: "we assume that the source fully fills the beam (i.e., a beam dilution factor of unity)"]
+  - fitting: chi2 grid search (no sampler or priors); N and FWHM free, Vlsr fixed [2.2 Spectral analysis: "a grid of column densities and FWHMs is tested and the best fit model is assigned to the combination with the lowest $\chi ^2$"]
+  - validation: Tex sensitivity: fixing Tex to 60-250 K changes column densities by up to a factor ~3, both molecules in the same direction; ratios therefore robust; two-component fits vs one Gaussian agree within 20% [2.2 Spectral analysis: "only changes the derived column densities by up to a factor of $\sim$ 3, and both molecules in the same direction"] [2.2 Spectral analysis: "This procedure yields column densities within 20$\%$ of the ones obtained by manually fitting each component separately."]
+- result: median offset in line width between isotopologues and CH3OH = 0.15 ± not stated km/s [3.2 Fitting results: "The median offsets of the line widths and peak velocities between the three different species are, respectively, 0.15 and 0.35 km s$^{-1}$."]
+- result: median offset in Vlsr between isotopologues and CH3OH = 0.35 ± not stated km/s [3.2 Fitting results: "The median offsets of the line widths and peak velocities between the three different species are, respectively, 0.15 and 0.35 km s$^{-1}$."]
+- limitation (authors): sample biased toward line-rich sources [5 Conclusions: "the dataset studied here is biased in favor of line rich sources and therefore our results might nor represent all massive protostars"]
+- limitation (authors): absolute column densities depend on the assumed emitting area; only ratios are reliable [3.2 Fitting results: "Absolute column densities are nevertheless subject to biases such as the assumed emitting area and thus are not ideal to be directly compared."]
+- limitation (authors): only two dark-cloud ice data points available [4.1 N(OCS)/N(CH3OH): "only two data points are available for ices in prestellar cores so far"]
+- not stated (card): Which ALMAGAL data products were used (calibrated MS vs released images/cubes), their version/release, and the exact imaging parameters (weighting/robust, cell, continuum subtraction, line-free channels, primary-beam correction); Exact integrated-intensity (moment 0) velocity range used to find the CH3OH peak pixel; CASSIS version and the exact chi2 definition (rms used, channels included, handli…
+
+### 2022MNRAS.511.3463Q: ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - VIII. A search for hot cores by using C<SUB>2</SUB>H<SUB>5</SUB>CN, CH<SUB>3</SUB>O… (2022; star_formation, astrochemistry, milky_way_ism; large_program_or_survey)
+- question: To build a large sample of hot cores using C2H5CN, CH3OCHO, and CH3OH lines from the ATOMS 3 mm survey, and investigate their heating mechanisms and nitrogen/oxygen chemical differentiation.
+- step 1: Inspect cores, extract spectra, and select hot core candidates
+  - method: Inspect line emission of the 453 compact dense cores one by one, extract spectra at the line-rich positions, and select line-rich cores with >3 transitions of COMs. [Line and hot core identifications: "We have inspected the line emission of the 453 cores one by one and extracted spectra at the line-rich positions."] [Line and hot core identifications: "In total 60 line-rich cores are considered as hot core candidates."]
+  - parameter: More than 3 transitions of C2H5CN, CH3OCHO, or CH3OH detected [Line and hot core identifications: "More than 3 transitions of C$_2$H$_5$CN and CH$_3$OCHO are detected in the 59 line-rich cores."] [Conclusions: "We identify a dense core as a hot core if more than 3 transitions of the COMs are identified and have rotation temperature above 100 K."]
+  - validation: Compared with statistical detection of >=20 COM transitions (>3 sigma) in 54 cores by Liu et al. (2021) [Line and hot core identifications: "The results are in good agreement with those by Liu et al. (2021) where 54 cores were found in a statistic manner to have significant detection of at least 20 COM transitions with line intensities larger than 3 $\sigma$ level."]
+- step 2: Identify molecular lines and derive rotation temperatures, column densities, and relative abundances
+  - method: Solve the radiative transfer equation and generate synthetic spectra for C2H5CN, CH3OCHO, and CH3OH using XCLASS and optimize parameters with MAGIX. [Line and hot core identifications: "Then we use the eXtended CASA Line Analysis Software Suite (XCLASS, Möller et al. 2017) for further line identification and parameter calculation."] [Line and hot core identifications: "Assuming the molecular gas satisfies local thermodynamical equilibrium condition (LTE), the XCLASS solves radiative transfer equation and produces synthetic spectra for specific molecular transitions by taking source size, beam filling factor, line profile, line blending, excitation, and opacity into account."]
+  - software: XCLASS, MAGIX, CDMS, JPL
+  - parameter: Source size fixed to deconvolved angular size of the continuum source (theta_source = sqrt(a*b)) [Line and hot core identifications: "In our case, we take deconvolved angular sizes of the continuum sources as source sizes which are listed in Table 1."] [Table 1: "$\theta_{\rm source}$ is the source size derived from the deconvolved continuum size on assuming $\pi\theta^{2}$=$\pi$ab, where a and b are major and minor axes of the continuum source from Gaussian fitting."]
+  - parameter: Velocity offset fixed with reference to CH3OH line at 100.6389 GHz [Line and hot core identifications: "The velocity offsets are determined when referred to commonly detected CH$_3$OH line at 100.6389 GHz."]
+  - parameter: Hot core criteria: T_rot > 100 K and source size < 0.1 pc [Line and hot core identifications: "The XCLASS calculations suggested that all the 59 line-rich cores have gas temperature derived from C$_2$H$_5$CN and CH$_3$OCHO higher than 100 K."] [Line and hot core identifications: "Considering the distances (Liu et al. 2021a) and source sizes, the 60 cores have source size smaller than 0.1 pc."]
+  - assumption: Local thermodynamical equilibrium (LTE) [Line and hot core identifications: "Assuming the molecular gas satisfies local thermodynamical equilibrium condition (LTE), the XCLASS solves radiative transfer equation and produces synthetic spectra for specific molecular transitions by taking source size, beam filling factor, line profile, line blending, excitation, and opacity into account."]
+  - assumption: For cores with <3 CH3OH transitions detected, CH3OH gas temperature is assumed equal to T_rot of CH3OCHO (or C2H5CN if CH3OCHO is undetected) [Line and hot core identifications: "For CH$_3$OH with less than 3 transitions detected, column densities are estimated by assuming gas temperature equal to the rotation temperatures of oxygen-bearing molecule CH$_3$OCHO, or equal to the rotation temperatures of C$_2$H$_5$CN in case that CH$_3$OCHO is not detected."]
+  - fitting: Free parameters: rotation temperatures, column densities, and velocity widths optimized via MAGIX [Line and hot core identifications: "Therefore we set rotation temperatures, column densities and velocity widths as free parameters to simulate the observed spectra."] [Line and hot core identifications: "To obtain optimized rotation temperature and column density parameters, we employ Modeling and Analysis Generic Interface for eXternal numerical codes (MAGIX; Möller et al. 2013) for further calculation."]
+  - validation: Visual overlay of modeled molecular spectra on observed spectra [Line and hot core identifications: "Figure 1 presents sample spectra toward a few hot cores with modeled molecular spectra (C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH) overlaid on the observed ones."]
+- result: Total number of identified hot cores = 60 ± not stated dimensionless [Abstract: "A total of 60 hot cores are identified with 45 being newly detected, in which the complex organic molecules have high gas temperatures ($>$ 100 K) and small source sizes ($<$ 0.1 pc)."]
+- result: Number of newly detected hot cores = 45 ± not stated dimensionless [Abstract: "A total of 60 hot cores are identified with 45 being newly detected, in which the complex organic molecules have high gas temperatures ($>$ 100 K) and small source sizes ($<$ 0.1 pc)."]
+- result: Rotation temperature range of C2H5CN = 100-285 ± not stated K [Rotation temperatures, column densities…: "From Table 1, one can see that the rotation temperatures of C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH range from 100–285 K, 100–230 K and 100–290 K respectively."]
+- result: Rotation temperature range of CH3OCHO = 100-230 ± not stated K [Rotation temperatures, column densities…: "From Table 1, one can see that the rotation temperatures of C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH range from 100–285 K, 100–230 K and 100–290 K respectively."]
+- result: Rotation temperature range of CH3OH = 100-290 ± not stated K [Rotation temperatures, column densities…: "From Table 1, one can see that the rotation temperatures of C$_2$H$_5$CN, CH$_3$OCHO and CH$_3$OH range from 100–285 K, 100–230 K and 100–290 K respectively."]
+- result: Column density range of CH3OH = 8.6e16 to 1.5e19 ± not stated cm^-2 [Rotation temperatures, column densities…: "When compared with C$_2$H$_5$CN and CH$_3$OCHO, CH$_3$OH has the largest column densities ranging from 8.6$\times$10$^{16}$ to 1.5 $\times$10$^{19}$ cm$^{-2}$ which is 2–3 orders of magnitude higher than those of C$_2$H$_5$CN and 1–2 orders of magnitude higher than those of CH$_3$OCHO."]
+- result: Relative abundance of C2H5CN to CH3OH = 8.4e-4 to 4e-2 ± not stated dimensionless [Rotation temperatures, column densities…: "The relative abundances range from 8.4$\times$10$^{-4}$ to 4$\times$10$^{-2}$ for C$_2$H$_5$CN and from 2.2$\times$10$^{-2}$ to 2.8 $\times$10$^{-1}$ for CH$_3$OCHO, respectively, which are in agreement with previous results in hot cores (Bøelund et al. 2019; Mookerjea et al. 2007; Allen et al. 2017; Guzmán et al. 201…"]
+- result: Relative abundance of CH3OCHO to CH3OH = 2.2e-2 to 2.8e-1 ± not stated dimensionless [Rotation temperatures, column densities…: "The relative abundances range from 8.4$\times$10$^{-4}$ to 4$\times$10$^{-2}$ for C$_2$H$_5$CN and from 2.2$\times$10$^{-2}$ to 2.8 $\times$10$^{-1}$ for CH$_3$OCHO, respectively, which are in agreement with previous results in hot cores (Bøelund et al. 2019; Mookerjea et al. 2007; Allen et al. 2017; Guzmán et al. 201…"]
+- limitation (authors): Targeted C2H5CN and CH3OCHO transitions at 3 mm have low upper-level energies (30-139 K and 22-58 K), so the innermost, hottest gas components of the hot cores are not sampled. [Line and hot core identifications: "The observed C$_2$H$_5$CN and CH$_3$OCHO transitions span upper level energies of 30–139 K and 22–58 K, respectively."]
+- limitation (authors): A 48 MHz frequency setup difference between C43-2 and C43-3 configurations caused two CH3OH transitions not to be covered in C43-3 observations. [Line and hot core identifications: "Note that this is a lower limit since the frequency setup of C43-2 and C43-3 configurations has a 48 MHz difference which leads to two CH$_3$OH transitions not covered in C43-3 observations."]
+- limitation (authors): The spatial resolution (~1.2-1.9 arcsec beam) may cover parts of both nitrogen and oxygen cores simultaneously. [Chemistry: "Another reason is that in most cases our beam may cover part of both nitrogen and nitrogen cores."]
+- not stated (card): Calibration method (pipeline vs manual) and specific calibrator sources; Imaging parameters in CASA (e.g., tclean weighting/robust parameter, deconvolver, cell size, image size, continuum subtraction task and line-free channel selection); Method for extracting spectra at the line-rich positions (single pixel peak vs aperture averaged); Optimization algorithm chosen within MAGIX for fitting XCLASS…
+
+### 2017A&A...603A.133A: Chemical segregation in hot cores with disk candidates. An investigation with ALMA (2017; star_formation, astrochemistry; archival_reuse)
+- question: What are the chemical composition and spatial distribution of molecules in the hot cores G35.20-0.74N (four continuum peaks) and G35.03+0.35, and what does chemical segregation imply about the disk/multiple-protostar nature of the sources?
+- step 2: Identify lines and measure line parameters
+  - method: Gaussian fits to lines with Cassis; identification by catalogs, Einstein A, E_up, velocity tolerance, in stages [2.2 Line Identification Process: "Line parameters were measured by fitting a Gaussian profile to the emission line with the Cassis "Line Spectrum" tool."]
+  - software: Cassis, CDMS, JPL
+  - parameter: Candidate selection: Einstein A >~1e-7 s-1, E_up generally <500 K, within 2 km/s; detection threshold 3 sigma (~0.5 K) [2.2 Line Identification Process: "limited to a minimum of about 10$^{-7}$ s$^{-1}$, or with a upper level energy (E$_{up}$) within the expected range, generally less than 500 K"]
+  - fitting: Gaussian profile fits; blended lines fit with extra Gaussians [2.2 Line Identification Process: "In some cases, partially blended lines were fit together with one or more extra Gaussians for a more accurate measurement, though the errors were then larger."]
+  - validation: Simultaneous XCLASS fits of all species; residuals 5-25% [2.2 Line Identification Process: "The residuals between the fitted lines and the observed spectra are between 5 and 25$\%$, validating the XCLASS fits and our line identifications."]
+- step 6: Fit LTE models for column densities
+  - method: XCLASS chi2 minimization over source size, T_ex, N, v_LSR, linewidth; INS error estimator; single-line species at fixed size and T=50/100 K [3.4 Molecular column densities: "The fitting process compares the synthetic spectrum to the observed one, and minimizes the $\chi^2$ by changing the five parameters indicated above."]
+  - software: XCLASS
+  - parameter: COMs: size 0.1-1.5", Tex 50-500 K, N 1e13-1e19 cm-2; extended (H2CS, SO2): size 1.0-3.5", Tex 20-200 K, N 1e12-1e16 [3.4 Molecular column densities: "the source size was varied from 0.1-1.5$''$ to be comparable with the observed emission extent and the T$_{ex}$ was allowed to vary from 50-500 K."]
+  - assumption: LTE, isothermal 1D source; isotopologues coupled with fixed/varied ratios (12C/13C=50 for HC3N) [2.2 Line Identification Process: "This program models the data by solving the radiative transfer equation for an isothermal object in one dimension, taking into account source size and dust attenuation."]
+  - fitting: chi2 minimization; errors via Interval Nested Sampling in XCLASS [XCLASS fit errors: "The errors were calculated using the Interval Nested Sampling (INS) error estimator algorithm in XCLASS."]
+  - validation: Checked against Cassis rotation diagrams [3.4 Molecular column densities: "The modeled values for column density and excitation temperature were checked against rotational diagrams from Cassis and found to be in agreement."]
+- result: Number of transitions identified = 431 ± not stated dimensionless [3.1 Line Detections: "A total of 431 different transitions were identified in 52 different catalog entries"]
+- result: X-CHO/X-CH3 ratio at B2 = 1.6 ± not stated dimensionless [4.1 Overall chemical composition: "we also see a higher ratio of X-CHO/X-CH$_3$ at the coolest peak, G35.20 B2, where the ratio is 1.6"]
+- result: N(HNCO)/N(NH2CHO) = 2-8 (HNCO at 50 K); 1-10 (100 K) ± not stated dimensionless [4.3 HNCO and Formamide co-spatial emiss…: "Our modeled abundance values show N(HNCO)/N(NH$_2$CHO) is between 2 and 8 for HNCO at 50 K and between 1 and 10 for HNCO modeled at 100 K."]
+- limitation (authors): Mass and column densities are lower limits since only ~30% of flux recovered; H2 from dust may not trace warm gas [3.4 Molecular column densities: "These mass and column density estimates are lower limits"]
+- limitation (authors): Single-temperature XCLASS model inadequate given temperature gradients [4.1 Overall chemical composition: "a single temperature model is inadequate to fit lines with very different excitation energy"]
+- not stated (card): Calibration pipeline/CASA version, calibrators and imaging parameters (weighting, robust, cleaning, beam) - only deferred to earlier papers; Beam size and per-channel rms of the line cubes; Brightness-temperature conversion/beam used for T_peak; XCLASS version and fit settings (iteration algorithm, number of iterations); Line-free channels/continuum subtraction method; How dust attenuation/ conti…
+
+### 2023A&A...677A..15M: The GUAPOS project. III. Characterization of the O- and N-bearing complex organic molecules content and search for chemical differentiation (2023; astrochemistry, star_formation; observational_alma_primary)
+- question: Characterize the abundances and emission morphology of nine O-bearing and six N-bearing complex organic molecules toward the hot molecular core G31.41+0.31, compare them with other sources and chemical models, and search for chemical diffe…
+- step 2: Fit molecular transitions under LTE to derive physical parameters and abundances
+  - method: Select unblended transitions based on preliminary line identification and fit synthetic LTE spectra using MADCUBA-SLIM AUTOFIT, applying vibrational partition function corrections and isotopic ratios for optically thick species. [Spectral fitting: "The baseline-subtracted spectrum has been analyzed with the SLIM (Spectral Line Identification and Modeling) tool within the MADCUBA package (cite: martin2019)."] [Spectral fitting: "we assumed a single temperature component that fills the beam and used the AUTOFIT tool of MADCUBA-SLIM, which finds the best agreement, minimizing the $\chi^{2}$, between the observed spectra and the predicted LTE model, taking into account also the optical depth."]
+  - software: MADCUBA, SLIM, AUTOFIT
+  - parameter: Reference velocity V_0 = 96.5 km s^-1 [Spectral fitting: "instead of the absolute value of V$_{\rm LSR}$, we give the difference V–V$_0$ using as reference velocity V$_0=96.5\,$km s$^{-1}$ (cite: beltran2018)."]
+  - parameter: Partition function correction factors: 1.13 for C2H5OH (at 119 K), 1.062 for C2H5CN (at 83 K), 1.24 for C2H513CN (at 126 K) [Analysis: "$c$) corrected for the partition function factor at 119 K of 1.13;"] [Analysis: "$e$) corrected for the partition function factor at 83 K of 1.062; $f$) corrected for the partition function factor at 126 K of 1.24;"]
+  - parameter: Fixed FWHM for selected species: 7.0 km s^-1 (CH318OH, CH3OCH3, CH3COCH3), 7.5 km s^-1 (CH3CHO), 7.2 km s^-1 (aGg' and gGg'-(CH2OH)2), 9.7 km s^-1 (C2H3CN), 6.0 km s^-1 (C2H513CN); fixed T_ex = 120 K for aGg'-(CH2OH)2 [Analysis: "$a$): quantity kept fixed during the fitting;"] [Ethylene glycol: gGg’-(CH$_2$OH)$_2$ an…: "Therefore, to help the fitting algorithm to converge, we have fixed the excitation temperature to the value found for gGg’-(CH$_2$OH)$_2$ and the FWHM to 7.2 $\mathrm{km\,,s^{-1}}$."]
+  - assumption: Local thermodynamic equilibrium (LTE), single temperature component filling the 1.2'' beam [Spectral fitting: "we assumed a single temperature component that fills the beam"] [Spectral fitting: "During the fit we have assumed local thermodynamic equilibrium (LTE), justified by the high density of G31 (rough estimate of $n\sim10^8\,\mathrm{cm^{-3}}$ , (cite: mininni2020))."]
+  - assumption: N_H2 = (1.0 +/- 0.2) x 10^25 cm^-2, 12C/13C = 37 +/- 12, 16O/18O = 333 +/- 143, 11% error floor on N and T_ex [Analysis: "The abundances have been calculated using $N_{\rm{H_2}}=(1.0\pm0.2)\times10^{25}\,\rm{cm^{-2}}$ (cite: mininni2020); to calculate the corrected values of column densities and abundances of a species from the analysis of its $^{13}$C or $^{18}$O isotopologue, we have used the ratios $^{12}$C/$^{13}$C = $37\pm12$ ( from…"] [Spectral fitting: "For all the species we have assumed an error of 11% on the values of $N$ and $T_{\rm{ex}}$, to reflect the uncertainty on the level of continuum."]
+  - fitting: Chi-squared minimization via MADCUBA-SLIM AUTOFIT [Spectral fitting: "used the AUTOFIT tool of MADCUBA-SLIM, which finds the best agreement, minimizing the $\chi^{2}$, between the observed spectra and the predicted LTE model, taking into account also the optical depth."]
+  - validation: Sensitivity tests fixing T_ex (e.g., fixing T_ex = 120 K for CH3CHO and 100 K for CH313CN) and cross-checking isotopologues and vibrationally excited states [Acetaldehyde: CH$_3$CHO: "To quantify how the column density would change if the temperature were higher, we have performed a fit using the same transitions and fixing the value of $T_{\rm{ex}}$ to 120 K."] [Methyl cyanide: CH$_3$CN, $^{13}$CH$_3$…: "Fixing the value of $T_{\rm{ex}}$ to 100 K the column density from the fitting procedure would be $8.1\times10^{15}\,\rm{cm^{-2}}$, consistent inside the errors with the estimate leaving $T_{\rm{ex}}$ as a free parameter."]
+- step 4: Compare COM abundances with 27 astronomical sources and gas-grain chemical models
+  - method: Compare abundances relative to methanol with 27 literature sources and compare absolute abundances (w.r.t. H2) with the slow, medium, and fast warm-up chemical models of Garrod et al. (2022). [Comparison with other sources: "In Fig. 5 we plot the abundances w.r.t. methanol of the O-bearing, N-bearing, and O- and N-bearing species detected in G31, together with the abundances of the same COMs found in other twenty-seven sources in literature."] [Comparison with chemical models: "In Fig. 6 we plot the ratio between the peak abundances reached in the three final models (*slow* in the upper panel, *medium* in the middle panel, and *fast* in the lower panel) and the abundance derived in G31 for the COMs presented in this work."]
+  - parameter: 30% assumed uncertainty on chemical model abundances [Comparison with chemical models: "We assumed an error of 30% on the values derived from the chemical models."]
+  - validation: Checked beam-dilution effects by comparing 1.2'' column densities against 0.2'' high-resolution ALMA data from Beltrán et al. (2018) and Colzi et al. (2021) [Comparison with other sources: "(cite: colziguapos) presented the emission maps of O- and N-bearing species at a higher resolution of 0.2$''$ and confirmed that for these species the emission fills the beam of 1.2$''$ of the data analyzed in this paper. Moreover, the estimate of the column density from the high-resolution data is consistent within a…"]
+- result: CH3OH v_t=1 excitation temperature (T_ex) = 208 ± 24 K [Analysis: "| CH$_3$OH v$_t=1$ | $208\pm24$ | $100\pm12$ | $100\pm30$ | $8.3\pm0.4$ | $0.94\pm0.15$ |"]
+- result: CH3OH v_t=1 column density (N) = 100 ± 12 10^17 cm^-2 [Analysis: "| CH$_3$OH v$_t=1$ | $208\pm24$ | $100\pm12$ | $100\pm30$ | $8.3\pm0.4$ | $0.94\pm0.15$ |"]
+- result: 13CH3OH excitation temperature (T_ex) = 152 ± 20 K [Analysis: "| $^{13}$CH$_{3}$OH | $152\pm20$ | $9.6\pm1.7$ | $10\pm3$ | $7.2\pm0.3$ | $1.09\pm0.10$ |"]
+- result: 13CH3OH column density (N) = 9.6 ± 1.7 10^17 cm^-2 [Analysis: "| $^{13}$CH$_{3}$OH | $152\pm20$ | $9.6\pm1.7$ | $10\pm3$ | $7.2\pm0.3$ | $1.09\pm0.10$ |"]
+- result: CH318OH excitation temperature (T_ex) = 153 ± 20 K [Analysis: "| CH$_{3}^{18}$OH | $153\pm20$ | $2.4\pm0.4$ | $2.4\pm0.7$ | $7.0^{a}$ | $1.28\pm0.13$ |"]
+- result: CH318OH column density (N) = 2.4 ± 0.4 10^17 cm^-2 [Analysis: "| CH$_{3}^{18}$OH | $153\pm20$ | $2.4\pm0.4$ | $2.4\pm0.7$ | $7.0^{a}$ | $1.28\pm0.13$ |"]
+- result: CH3OH corrected column density (from CH318OH) = 800 ± 130 10^17 cm^-2 [Analysis: "| CH$_{3}$OH$^{b}$ | | $800\pm130$ | $800\pm200$ | | |"]
+- result: CH3OH corrected abundance w.r.t. H2 (X) = 800 ± 200 10^-8 [Analysis: "| CH$_{3}$OH$^{b}$ | | $800\pm130$ | $800\pm200$ | | |"]
+- result: CH3CHO excitation temperature (T_ex) = 82 ± 20 K [Analysis: "| CH$_3$CHO | $82\pm20$ | $0.34\pm0.16$ | $0.34\pm0.18$ | $7.5^{a}$ | $0.45\pm0.11$ |"]
+- result: CH3CHO column density (N) = 0.34 ± 0.16 10^17 cm^-2 [Analysis: "| CH$_3$CHO | $82\pm20$ | $0.34\pm0.16$ | $0.34\pm0.18$ | $7.5^{a}$ | $0.45\pm0.11$ |"]
+- result: CH3CHO abundance w.r.t. H2 (X) = 0.34 ± 0.18 10^-8 [Analysis: "| CH$_3$CHO | $82\pm20$ | $0.34\pm0.16$ | $0.34\pm0.18$ | $7.5^{a}$ | $0.45\pm0.11$ |"]
+- result: CH3CHO velocity offset (V-V_0) = 0.45 ± 0.11 km s^-1 [Analysis: "| CH$_3$CHO | $82\pm20$ | $0.34\pm0.16$ | $0.34\pm0.18$ | $7.5^{a}$ | $0.45\pm0.11$ |"]
+- result: CH3OCH3 excitation temperature (T_ex) = 98 ± 11 K [Analysis: "| CH$_3$OCH$_3$ | $98\pm11$ | $8.1\pm1.0$ | $8\pm2$ | $7.0^{a}$ | $1.07\pm0.06$ |"]
+- result: CH3OCH3 column density (N) = 8.1 ± 1.0 10^17 cm^-2 [Analysis: "| CH$_3$OCH$_3$ | $98\pm11$ | $8.1\pm1.0$ | $8\pm2$ | $7.0^{a}$ | $1.07\pm0.06$ |"]
+- result: CH3OCH3 abundance w.r.t. H2 (X) = 8 ± 2 10^-8 [Analysis: "| CH$_3$OCH$_3$ | $98\pm11$ | $8.1\pm1.0$ | $8\pm2$ | $7.0^{a}$ | $1.07\pm0.06$ |"]
+- result: CH3COCH3 excitation temperature (T_ex) = 170 ± 21 K [Analysis: "| CH$_3$COCH$_3$ | $170\pm21$ | $5.6\pm1.3$ | $5.6\pm1.4$ | $7.0^{a}$ | $0.84\pm0.06$ |"]
+- result: CH3COCH3 column density (N) = 5.6 ± 1.3 10^17 cm^-2 [Analysis: "| CH$_3$COCH$_3$ | $170\pm21$ | $5.6\pm1.3$ | $5.6\pm1.4$ | $7.0^{a}$ | $0.84\pm0.06$ |"]
+- result: CH3COCH3 abundance w.r.t. H2 (X) = 5.6 ± 1.4 10^-8 [Analysis: "| CH$_3$COCH$_3$ | $170\pm21$ | $5.6\pm1.3$ | $5.6\pm1.4$ | $7.0^{a}$ | $0.84\pm0.06$ |"]
+- result: C2H5OH excitation temperature (T_ex) = 119 ± 14 K [Analysis: "| C$_2$H$_5$OH | $119\pm14$ | $4.7\pm0.6^{c}$ | $4.7\pm1.2^{c}$ | $7.02\pm0.09$ | $1.00\pm0.04$ |"]
+- result: C2H5OH column density (N) = 4.7 ± 0.6 10^17 cm^-2 [Analysis: "| C$_2$H$_5$OH | $119\pm14$ | $4.7\pm0.6^{c}$ | $4.7\pm1.2^{c}$ | $7.02\pm0.09$ | $1.00\pm0.04$ |"]
+- result: C2H5OH abundance w.r.t. H2 (X) = 4.7 ± 1.2 10^-8 [Analysis: "| C$_2$H$_5$OH | $119\pm14$ | $4.7\pm0.6^{c}$ | $4.7\pm1.2^{c}$ | $7.02\pm0.09$ | $1.00\pm0.04$ |"]
+- result: aGg'-(CH2OH)2 column density (N) = 1.45 ± 0.17 10^17 cm^-2 [Analysis: "| aGg’-(CH$_2$OH)$_2$ | $120^{a}$ | $1.45\pm0.17$ | $1.5\pm0.4$ | $7.2^{a}$ | $0.48\pm0.06$ |"]
+- result: aGg'-(CH2OH)2 abundance w.r.t. H2 (X) = 1.5 ± 0.4 10^-8 [Analysis: "| aGg’-(CH$_2$OH)$_2$ | $120^{a}$ | $1.45\pm0.17$ | $1.5\pm0.4$ | $7.2^{a}$ | $0.48\pm0.06$ |"]
+- result: aGg'-(CH2OH)2 velocity offset (V-V_0) = 0.48 ± 0.06 km s^-1 [Analysis: "| aGg’-(CH$_2$OH)$_2$ | $120^{a}$ | $1.45\pm0.17$ | $1.5\pm0.4$ | $7.2^{a}$ | $0.48\pm0.06$ |"]
+- result: gGg'-(CH2OH)2 excitation temperature (T_ex) = 120 ± 28 K [Analysis: "| gGg’-(CH$_2$OH)$_2$ | $120\pm28$ | $0.87\pm0.19$ | $0.9\pm0.3$ | $7.2^{a}$ | $1.0\pm0.2$ |"]
+- result: gGg'-(CH2OH)2 column density (N) = 0.87 ± 0.19 10^17 cm^-2 [Analysis: "| gGg’-(CH$_2$OH)$_2$ | $120\pm28$ | $0.87\pm0.19$ | $0.9\pm0.3$ | $7.2^{a}$ | $1.0\pm0.2$ |"]
+- result: gGg'-(CH2OH)2 abundance w.r.t. H2 (X) = 0.9 ± 0.3 10^-8 [Analysis: "| gGg’-(CH$_2$OH)$_2$ | $120\pm28$ | $0.87\pm0.19$ | $0.9\pm0.3$ | $7.2^{a}$ | $1.0\pm0.2$ |"]
+- result: CH3CN v_8=1 excitation temperature (T_ex) = 197 ± 51 K [Analysis: "| CH$_3$CN v$_8=1$ | $197\pm51$ | $3.2\pm0.9$ | $3.2\pm1.1$ | $8.6\pm0.3$ | $0.68\pm0.15$ |"]
+- result: CH3CN v_8=1 column density (N) = 3.2 ± 0.9 10^17 cm^-2 [Analysis: "| CH$_3$CN v$_8=1$ | $197\pm51$ | $3.2\pm0.9$ | $3.2\pm1.1$ | $8.6\pm0.3$ | $0.68\pm0.15$ |"]
+- result: 13CH3CN excitation temperature (T_ex) = 111 ± 17 K [Analysis: "| $^{13}$CH$_{3}$CN | $111\pm17$ | $0.073\pm0.011$ | $0.073\pm0.019$ | $7.1\pm0.2$ | $0.95\pm0.09$ |"]
+- result: 13CH3CN column density (N) = 0.073 ± 0.011 10^17 cm^-2 [Analysis: "| $^{13}$CH$_{3}$CN | $111\pm17$ | $0.073\pm0.011$ | $0.073\pm0.019$ | $7.1\pm0.2$ | $0.95\pm0.09$ |"]
+- result: CH313CN excitation temperature (T_ex) = 54 ± 10 K [Analysis: "| CH$_{3}^{13}$CN | $54\pm10$ | $0.069\pm0.011$ | $0.069\pm0.018$ | $7.2\pm0.5$ | $0.97\pm0.19$ |"]
+- result: CH313CN column density (N) = 0.069 ± 0.011 10^17 cm^-2 [Analysis: "| CH$_{3}^{13}$CN | $54\pm10$ | $0.069\pm0.011$ | $0.069\pm0.018$ | $7.2\pm0.5$ | $0.97\pm0.19$ |"]
+- result: CH3CN corrected column density (from 13CH3CN) = 2.7 ± 0.4 10^17 cm^-2 [Analysis: "| CH$_3$CN$^{d}$ | | $2.7\pm0.4$ | $2.7\pm0.7$ | | |"]
+- result: CH3CN corrected abundance w.r.t. H2 (X) = 2.7 ± 0.7 10^-8 [Analysis: "| CH$_3$CN$^{d}$ | | $2.7\pm0.4$ | $2.7\pm0.7$ | | |"]
+- result: C2H3CN excitation temperature (T_ex) = 104 ± 17 K [Analysis: "| C$_2$H$_3$CN | $104\pm17$ | $0.21\pm0.04$ | $0.21\pm0.06$ | $9.7^{a}$ | $1.05\pm0.15$ |"]
+- result: C2H3CN column density (N) = 0.21 ± 0.04 10^17 cm^-2 [Analysis: "| C$_2$H$_3$CN | $104\pm17$ | $0.21\pm0.04$ | $0.21\pm0.06$ | $9.7^{a}$ | $1.05\pm0.15$ |"]
+- result: C2H3CN abundance w.r.t. H2 (X) = 0.21 ± 0.06 10^-8 [Analysis: "| C$_2$H$_3$CN | $104\pm17$ | $0.21\pm0.04$ | $0.21\pm0.06$ | $9.7^{a}$ | $1.05\pm0.15$ |"]
+- result: C2H5CN excitation temperature (T_ex) = 83 ± 10 K [Analysis: "| C$_2$H$_5$CN | $83\pm10$ | $0.56\pm0.08^{e}$ | $0.56\pm0.14^{e}$ | $7.94\pm0.13$ | $1.37\pm0.06$ |"]
+- result: C2H5CN column density (N) = 0.56 ± 0.08 10^17 cm^-2 [Analysis: "| C$_2$H$_5$CN | $83\pm10$ | $0.56\pm0.08^{e}$ | $0.56\pm0.14^{e}$ | $7.94\pm0.13$ | $1.37\pm0.06$ |"]
+- result: C2H513CN excitation temperature (T_ex) = 126 ± 37 K [Analysis: "| C$_2$H$_5^{13}$CN | $126\pm37$ | $0.042\pm0.012^{f}$ | $0.042\pm0.017^{f}$ | $6.0^{a}$ | $1.8\pm0.3$ |"]
+- result: C2H513CN column density (N) = 0.042 ± 0.012 10^17 cm^-2 [Analysis: "| C$_2$H$_5^{13}$CN | $126\pm37$ | $0.042\pm0.012^{f}$ | $0.042\pm0.017^{f}$ | $6.0^{a}$ | $1.8\pm0.3$ |"]
+- result: C2H5CN corrected column density (from C2H513CN) = 1.6 ± 0.5 10^17 cm^-2 [Analysis: "| C$_2$H$_5$CN$^{g}$ | | $1.6\pm0.5$ | $1.6\pm0.7$ | | |"]
+- result: C2H5CN corrected abundance w.r.t. H2 (X) = 1.6 ± 0.7 10^-8 [Analysis: "| C$_2$H$_5$CN$^{g}$ | | $1.6\pm0.5$ | $1.6\pm0.7$ | | |"]
+- limitation (authors): The 1.2'' angular resolution is insufficient to resolve the four embedded compact cores (A, B, C, D) or conclusively establish spatial segregation between molecular species whose peak separations are smaller than the beam. [Positions of molecular species emission…: "The distances between the center of emission of the different species are smaller than the beam (1.2$''$), therefore the spatial resolution of the observations is not sufficient to have conclusive results about the possible presence of spatial segregation for some classes of molecular species, or for selected species."]
+- limitation (authors): A single-temperature LTE model cannot fully capture the temperature gradient in G31, causing a small number of transitions (e.g. in CH3COCH3 and CH3OH v=0) to be poorly reproduced. [Acetone: CH$_3$COCH$_3$: "A small number of transitions of CH$_3$COCH$_3$ are overestimated by the best-fit model. A better agreement over the whole spectra would require a more accurate description of the temperature gradient of the source G31"]
+- limitation (authors): For species whose unblended transitions only span low upper-state energies (E_U < 100 K, such as CH3CHO, aGg'-(CH2OH)2, 13CH3CN, CH313CN, C2H3CN, C2H5CN), the fitted excitation temperatures may be underestimated. [Spectral analysis: "some of the molecular species presented in this work do not have unblended transitions with $E_{\rm{U}}>100\,\rm{K}$, leading to possibly underestimated excitation temperatures."]
+- not stated (card): CASA version used for calibration, imaging, immath, and imfit; MADCUBA version used for SLIM/AUTOFIT analysis; Exact coordinates of the continuum peak from which the 1.2'' beam spectrum was extracted; Velocity integration ranges used to compute the moment-0 maps of each selected transition; Details of calibration and imaging (e.g. self-calibration, cell size, image size, masking) deferred to Mini…
+
+## All papers in this technique
+
+- 2013ApJ...767...88W (2013): ALMA Redshifts of Millimeter-selected Galaxies from the SPT Survey: The Redshift Distribution of Dusty Star-forming Galaxies
+- 2013ApJ...778L..25C (2013): Unveiling the Dust Nucleation Zone of IRC+10216 with ALMA
+- 2014ApJ...781L..39T (2014): Serendipitous ALMA Detection of a Distant CO-emitting X-Ray Bright Galaxy
+- 2014Sci...345.1584B (2014): Detection of a branched alkyl molecule in the interstellar medium: iso-propyl cyanide
+- 2015A&A...576A.129B (2015): Antifreeze in the hot core of Orion. First detection of ethylene glycol in <ASTROBJ>Orion-KL</ASTROBJ>
+- 2015A&A...580A..36D (2015): ALMA observations of TiO<SUB>2</SUB> around VY Canis Majoris
+- 2015A&A...581A..48G (2015): A 1.3 cm line survey toward Orion KL
+- 2015A&A...582A..91C (2015): Exploring the molecular chemistry and excitation in obscured luminous infrared galaxies. An ALMA mm-wave spectral scan of NGC 4418
+- 2015ApJ...800L..14C (2015): Ethyl Cyanide On Titan: Spectroscopic Detection and Mapping Using Alma
+- 2015ApJ...803...97S (2015): An ALMA Imaging Study of Methyl Formate (HCOOCH<SUB>3</SUB>) in Torsionally Excited States toward Orion KL
+- 2015ApJ...809L..26H (2015): Detection of N<SUB>2</SUB>D<SUP>+</SUP> in a Protoplanetary Disk
+- 2015MNRAS.447.1826Z (2015): ALMA reveals a candidate hot and compact disc around the O-type protostar IRAS 16547-4247
+- 2016A&A...586L...3C (2016): Water and acetaldehyde in HH212: The first hot corino in Orion
+- 2016A&A...590L...6C (2016): The ALMA-PILS survey: First detections of deuterated formamide and deuterated isocyanic acid in the interstellar medium
+- 2016A&A...595A.117J (2016): The ALMA Protostellar Interferometric Line Survey (PILS). First results from an unbiased submillimeter wavelength line survey of the Class …
+- 2016A&A...595L...4L (2016): Hot methanol from the inner region of the HH 212 protostellar system
+- 2016ApJ...822...80S (2016): The Redshift Distribution of Dusty Star-forming Galaxies from the SPT Survey
+- 2016ApJ...827...72S (2016): The Detection of a Hot Molecular Core in the Large Magellanic Cloud with ALMA
+- 2016ApJ...830L..37I (2016): Discovery of a Hot Corino in the Bok Globule B335
+- 2016ApJ...833...69D (2016): ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: CO Luminosity Functions and the Evolution of the Cosmic Density of Molecular Gas
+- 2016ApJ...833..219P (2016): ALMA Observations of Orion Source I at 350 and 660 GHz
+- 2016MNRAS.462.1989A (2016): HerMES: a search for high-redshift dusty galaxies in the HerMES Large Mode Survey - catalogue, number counts and early results
+- 2017A&A...597A..53L (2017): The ALMA-PILS survey: First detections of ethylene oxide, acetone and propanal toward the low-mass protostar IRAS 16293-2422
+- 2017A&A...598A..53D (2017): Search for aluminium monoxide in the winds of oxygen-rich AGB stars
+- 2017A&A...603A.133A (2017): Chemical segregation in hot cores with disk candidates. An investigation with ALMA
+- 2017A&A...604A..60B (2017): Exploring molecular complexity with ALMA (EMoCA): Detection of three new hot cores in Sagittarius B2(N)
+- 2017A&A...604L...2F (2017): The complexity of Orion: an ALMA view. II. gGg'-ethylene glycol and acetic acid
+- 2017A&A...605A..21C (2017): Increased H<SUB>2</SUB>CO production in the outer disk around HD 163296
+- 2017A&A...606A.121L (2017): Complex organics in IRAS 4A revisited with ALMA and PdBI: Striking contrast between two neighbouring protostellar cores
+- 2017A&A...606A.125S (2017): DCO<SUP>+</SUP>, DCN, and N<SUB>2</SUB>D<SUP>+</SUP> reveal three different deuteration regimes in the disk around the Herbig Ae star HD 16…
+- 2017A&A...606L...6Z (2017): Detection of a new methanol maser line with ALMA
+- 2017A&A...606L...7B (2017): Deuterated methanol on a solar system scale around the HH212 protostar
+- 2017A&A...608A.138G (2017): The ALMA Frontier Fields Survey. III. 1.1 mm emission line identifications in Abell 2744, MACSJ 0416.1-2403, MACSJ 1149.5+2223, Abell 370, …
+- 2017AJ....154...11H (2017): An Updated 2017 Astrometric Solution for Betelgeuse
+- 2017AJ....154..206L (2017): Mapping Vinyl Cyanide and Other Nitriles in Titan's Atmosphere Using ALMA
+- 2017ApJ...843...27L (2017): Formation and Atmosphere of Complex Organic Molecules of the HH 212 Protostellar Disk
+- 2017ApJ...849...81A (2017): Diverse Nuclear Star-forming Activities in the Heart of NGC 253 Resolved with 10-pc-scale ALMA Images
+- 2017MNRAS.468.3694C (2017): Simultaneous low- and high-mass star formation in a massive protocluster: ALMA observations of G11.92-0.61<SUP>★</SUP>
+- 2017MNRAS.469.2219L (2017): The ALMA-PILS survey: detection of CH<SUB>3</SUB>NCO towards the low-mass protostar IRAS 16293-2422 and laboratory constraints on its forma…
+- 2017MNRAS.469.2230M (2017): Detection of methyl isocyanate (CH<SUB>3</SUB>NCO) in a solar-type protostar
+- 2018A&A...610A..43R (2018): The diffuse molecular component in the nuclear bulge of the Milky Way
+- 2018A&A...612A.107C (2018): First detection of cyanamide (NH<SUB>2</SUB>CN) towards solar-type protostars
+- 2018A&A...615A..28D (2018): ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz
+- 2018A&A...615A..88B (2018): Low levels of methanol deuteration in the high-mass star-forming region NGC 6334I
+- 2018A&A...616A..90C (2018): The ALMA-PILS survey: complex nitriles towards IRAS 16293-2422
+- 2018A&A...617A.129K (2018): Submillimeter-wave emission of three Galactic red novae: cool molecular outflows produced by stellar mergers
+- 2018A&A...618A..11T (2018): Linking interstellar and cometary O<SUB>2</SUB>: a deep search for <SUP>16</SUP>O<SUP>18</SUP>O in the solar-type protostar IRAS 16293-2422
+- 2018A&A...620A..80M (2018): ALMA observations of the young protostellar system Barnard 1b: Signatures of an incipient hot corino in B1b-S
+- 2018AJ....155...47A (2018): Optical and Radio Observations of the T Tauri Binary KH 15D (V582 Mon): Stellar Properties, Disk Mass Limit, and Discovery of a CO Outflow
+- 2018ApJ...853L..19S (2018): The Detection of Hot Cores and Complex Organic Molecules in the Large Magellanic Cloud
+- 2018ApJ...855..113D (2018): Constraints on Metal Oxide and Metal Hydroxide Abundances in the Winds of AGB Stars: Potential Detection of FeO in R Dor
+- 2018ApJ...857...35S (2018): ALMA Observations of the IRDC Clump G34.43+00.24 MM3: Complex Organic and Deuterated Molecules
+- 2018ApJ...862..102S (2018): A Multiline Study of a High-mass Young Stellar Object in the Small Magellanic Cloud with ALMA: The Detection of Methanol Gas at 0.2 Solar M…
+- 2018ApJ...863..129S (2018): Spatially Resolved Dense Molecular Gas Excitation in the Nearby LIRG VV 114
+- 2018ApJ...866L..12G (2018): A Magnified View of Circumnuclear Star Formation and Feedback around an Active Galactic Nucleus at z = 2.6
+- 2018ApJS..236...45G (2018): Chemistry of the High-mass Protostellar Molecular Clump IRAS 16562-3959
+- 2019A&A...622A..26G (2019): Molecular ion abundances in the diffuse ISM: CF<SUP>+</SUP>, HCO<SUP>+</SUP>, HOC<SUP>+</SUP>, and C<SUB>3</SUB>H<SUP>+</SUP>
+- 2019A&A...623A.124C (2019): Upper limits on CH<SUB>3</SUB>OH in the HD 163296 protoplanetary disk. Evidence for a low gas-phase CH<SUB>3</SUB>OH-to-H<SUB>2</SUB>CO rat…
+- 2019A&A...623L...1K (2019): Detection of highly excited OH towards AGB stars. A new probe of shocked gas in the extended atmospheres
+- 2019A&A...623L...6P (2019): Organic molecules in the protoplanetary disk of DG Tauri revealed by ALMA
+- 2019A&A...623L..13C (2019): The ALMA-PILS survey: First detection of nitrous acid (HONO) in the interstellar medium
+- 2019A&A...624A..70C (2019): Astrophysical detections and databases for the mono deuterated species of acetaldehyde CH<SUB>2</SUB>DCOH and CH<SUB>3</SUB>COD
+- 2019A&A...626A.132M (2019): Molecular analysis of a high-mass prestellar core candidate in W43-MM1
+- 2019A&A...628A...2B (2019): Molecular complexity on disc scales uncovered by ALMA. Chemical composition of the high-mass protostar AFGL 4176
+- 2019A&A...628A..10B (2019): Re-exploring Molecular Complexity with ALMA (ReMoCA): interstellar detection of urea
+- 2019A&A...628A..27B (2019): The complex chemistry of hot cores in Sgr B2(N): influence of cosmic-ray ionization and thermal history
+- 2019A&A...629A..29J (2019): Organic chemistry in the innermost, infalling envelope of the Class 0 protostar L483
+- 2019A&A...631A..64B (2019): Kinematics around the B335 protostar down to au scales
+- 2019A&A...632A..57C (2019): Search for high-mass protostars with ALMA revealed up to kilo-parsec scales (SPARKS). II. Complex organic molecules and heavy water in shoc…
+- 2019ApJ...870L..19N (2019): [C II] 158 μm Emission from z ∼ 4 H I Absorption-selected Galaxies
+- 2019ApJ...871..170M (2019): Fire in the Heart: A Characterization of the High Kinetic Temperatures and Heating Sources in the Nucleus of NGC 253
+- 2019ApJ...871..251P (2019): ALMA Observations of Ethyl Formate toward Orion KL
+- 2019ApJ...872...54G (2019): Orion SrcI’s Disk Is Salty
+- 2019ApJ...872..196S (2019): Implications of a Hot Atmosphere/Corino from ALMA Observations toward NGC 1333 IRAS 4A1
+- 2019ApJ...876...63L (2019): First Abundance Measurement of Organic Molecules in the Atmosphere of HH 212 Protostellar Disk
+- 2019ApJ...880..130M (2019): A New, Rotating Hot Corino in Serpens
+- 2019ApJ...882..118X (2019): ALMA Detection of Vibrationally Excited (v <SUB>t</SUB> = 1, 2) Acetic Acid toward NGC 6334I
+- 2019ApJ...883..129E (2019): Interstellar Glycolaldehyde, Methyl Formate, and Acetic Acid. I. A Bimodal Abundance Pattern in Star-forming Regions
+- 2019ApJ...883..165H (2019): ALMA Monitoring of Millimeter Line Variation in IRC +10216. I. Overview of Millimeter Variability
+- 2019ApJ...885...82L (2019): Sulfur-bearing Molecules in Orion KL
+- 2019MNRAS.483..806R (2019): First ALMA maps of HCO, an important precursor of complex organic molecules, towards IRAS 16293-2422
+- 2019MNRAS.483.2014H (2019): Modelling the abundance structure of isocyanic acid (HNCO) towards the low-mass solar type protostar IRAS 16293-2422
+- 2019MNRAS.484L..43Z (2019): First detection of the pre-biotic molecule glycolonitrile (HOCH<SUB>2</SUB>CN) in the interstellar medium
+- 2019MNRAS.486..283B (2019): Young massive star cluster formation in the Galactic Centre is driven by global gravitational collapse of high-mass molecular clouds
+- 2019MNRAS.490...50D (2019): Ingredients for solar-like systems: protostar IRAS 16293-2422 B versus comet 67P/Churyumov-Gerasimenko
+- 2019MNRAS.490.1220K (2019): ALMACAL - VI. Molecular gas mass density across cosmic time via a blind search for intervening molecular absorbers
+- 2019NatAs...3..314L (2019): The ice composition in the disk around V883 Ori revealed by its stellar outburst
+- 2020A&A...633A...7V (2020): Temperature profiles of young disk-like structures. The case of IRAS 16293A
+- 2020A&A...635A..48M (2020): The ALMA-PILS survey: inventory of complex organic molecules towards IRAS 16293-2422 A
+- 2020A&A...636A..29W (2020): Exploring molecular complexity with ALMA (EMoCA): complex isocyanides in Sgr B2(N)
+- 2020A&A...644A..84M (2020): The GUAPOS project: G31.41+0.31 Unbiased ALMA sPectral Observational Survey. I. Isomers of C<SUB>2</SUB>H<SUB>4</SUB>O<SUB>2</SUB>
+- 2020A&A...644A.119P (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). III. The interplay between gas and dust in the protoplanetary disk of DG…
+- 2020ApJ...889...20L (2020): The Circumstellar Environment around the Embedded Protostar EC 53
+- 2020ApJ...889..178B (2020): The Orion Protostellar Explosion and Runaway Stars Revisited: Stellar Masses, Disk Retention, and an Outflow from the Becklin-Neugebauer Ob…
+- 2020ApJ...891...61Y (2020): Constraining the Infalling Envelope Models of Embedded Protostars: BHR 71 and Its Hot Corino
+- 2020ApJ...893..101L (2020): An Unbiased ALMA Spectral Survey of the LkCa 15 and MWC 480 Protoplanetary Disks
+- 2020ApJ...895...86G (2020): Identification of Prebiotic Molecules Containing Peptide-like Bonds in a Hot Molecular Core, G10.47+0.03
+- 2020ApJ...896...35J (2020): A Detailed View of the Circumstellar Environment and Disk of the Forming O-star AFGL 4176
+- 2020ApJ...897..176K (2020): The Molecular Interstellar Medium in the Super Star Clusters of the Starburst NGC 253
+- 2020ApJ...898..107H (2020): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP). I. Detection of New Hot Corinos with the ACA
+- 2020ApJ...899...65S (2020): Constraints of the Formation and Abundances of Methyl Carbamate, a Glycine Isomer, in Hot Corinos
+- 2020ApJ...901...37L (2020): The Family of Amide Molecules toward NGC 6334I
+- 2020ApJ...902..110D (2020): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Multiband Constraints on Line-luminosity Functions and the Cosmic Density of …
+- 2020ApJ...904..181L (2020): ALMA View of the Infalling Envelope around a Massive Protostar in S255IR SMA1
+- 2020MNRAS.491..427B (2020): Sulphur-bearing and complex organic molecules in an infrared cold core
+- 2020MNRAS.492.1180R (2020): ALMA and ROSINA detections of phosphorus-bearing molecules: the interstellar thread between star-forming regions and comets
+- 2020MNRAS.494.1323D (2020): An ALMA view of SO and SO<SUB>2</SUB> around oxygen-rich AGB stars
+- 2020MNRAS.495.3409S (2020): An ALMA survey of the brightest sub-millimetre sources in the SCUBA-2-COSMOS field
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2020MNRAS.496..875R (2020): The ALPINE-ALMA [C II] Survey: on the nature of an extremely obscured serendipitous galaxy
+- 2020MNRAS.497.5454I (2020): Multiwavelength investigation of extended green object G19.88-0.53: revealing a protocluster
+- 2020PASA...37...26D (2020): The GLEAMing of the first supermassive black holes
+- 2021A&A...646A..76L (2021): The ALPINE-ALMA [C II] survey. Luminosity function of serendipitous [C II] line emitters at z ∼ 5
+- 2021A&A...647A..87L (2021): The prebiotic molecular inventory of Serpens SMM1. I. An investigation of the isomers CH<SUB>3</SUB>NCO and HOCH<SUB>2</SUB>CN
+- 2021A&A...650A..37D (2021): A search for signatures of interactions of X-ray binary outflows with their environments with ALMA
+- 2021A&A...650A.172J (2021): ALMA observations of doubly deuterated water: inheritance of water from the prestellar environment
+- 2021A&A...650A.202R (2021): Identification of pre-stellar cores in high-mass star forming clumps via H<SUB>2</SUB>D<SUP>+</SUP> observations with ALMA
+- 2021A&A...651A..35O (2021): Heavy-element Rydberg transition line emission from the post-giant-evolution star HD 101584
+- 2021A&A...651A.120R (2021): Torsional-rotational spectrum of doubly deuterated dimethyl ether (CH<SUB>3</SUB>OCHD<SUB>2</SUB>). First ALMA detection in the interstella…
+- 2021A&A...651L...5V (2021): A major asymmetric ice trap in a planet-forming disk. I. Formaldehyde and methanol
+- 2021A&A...653A..53A (2021): DEATHSTAR: nearby AGB stars with the Atacama Compact Array. II. CO envelope sizes and asymmetries: the S-type stars
+- 2021A&A...653A.129C (2021): The GUAPOS project. II. A comprehensive study of peptide-like bond molecules
+- 2021A&A...655A..42S (2021): Molecular gas budget and characterization of intermediate-mass star-forming galaxies at z ≈ 2-3
+- 2021A&A...655A..65T (2021): Which molecule traces what: Chemical diagnostics of protostellar sources
+- 2021AJ....162...99F (2021): The Chemical Inventory of the Planet-hosting Disk PDS 70
+- 2021ApJ...907..108G (2021): Identification of Methyl Isocyanate and Other Complex Organic Molecules in a Hot Molecular Core, G31.41+0.31
+- 2021ApJ...907..122M (2021): FIR-luminous [C II] Emitters in the ALMA-SCUBA-2 COSMOS Survey (AS2COSMOS): The Nature of Submillimeter Galaxies in a 10 Comoving Megaparse…
+- 2021ApJ...909..214L (2021): Subarcsecond Imaging of the Complex Organic Chemistry in Massive Star-forming Region G10.6-0.4
+- 2021ApJ...919....4L (2021): Propionamide (C<SUB>2</SUB>H<SUB>5</SUB>CONH<SUB>2</SUB>): The Largest Peptide-like Molecule in Space
+- 2021ApJ...922..206S (2021): The Detection of a Hot Molecular Core in the Extreme Outer Galaxy
+- 2021MNRAS.502.3021R (2021): Vibrationally excited HC<SUB>3</SUB>N emission in NGC 1068: tracing the recent star formation in the starburst ring
+- 2021MNRAS.507.1886F (2021): Probing the kinematics and chemistry of the hot core Mon R2 IRS 3 using ALMA observations
+- 2021MNRAS.508.5259M (2021): An ACA 1 mm survey of HzRGs in the ELAIS-S1: survey description and first results
+- 2022A&A...659A..29B (2022): A major asymmetric ice trap in a planet-forming disk. III. First detection of dimethyl ether
+- 2022A&A...659A..69D (2022): Successive deuteration in low-mass star-forming regions: The case of D<SUB>2</SUB>-methanol (CHD<SUB>2</SUB>OH) in IRAS 16293-2422
+- 2022A&A...662A...8M (2022): ALMA-IMF. I. Investigating the origin of stellar masses: Introduction to the Large Program and first results
+- 2022A&A...664A.171V (2022): FAUST. V. Hot methanol in the [BHB2007] 11 protobinary system; hot corino versus shock origin
+- 2022A&A...665A.140B (2022): ALMA-IMF. IV. A comparative study of the main hot cores in W43-MM1: Detection, temperature, and molecular composition
+- 2022A&A...667A.131B (2022): Understanding if molecular ratios can be used as diagnostics of AGN and starburst activity: The case of NGC 1068
+- 2022A&A...668A.109N (2022): N-bearing complex organics toward high-mass protostars. Constant ratios pointing to formation in similar pre-stellar conditions across a la…
+- 2022ApJ...927..218H (2022): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): A Hot Corino Survey toward Protostellar Cores in the Orion Cloud
+- 2022BAAA...63..140M (2022): Studying a hot molecular core embedded in a photodissociation region
+- 2022JApA...43...83M (2022): Detection of interstellar cyanamide (NH<inline-formula id="IEq1"><mml:math><mml:msub><mml:mrow></mml:mrow><mml:mn>2</mml:mn></mml:msub></mm…
+- 2022MNRAS.509..748W (2022): ALMA observations of the Extended Green Object G19.01-0.03 - I. A Keplerian disc in a massive protostellar system
+- 2022MNRAS.511.3463Q (2022): ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - VIII. A search for hot cores by using C<SUB>2</SUB>H<SUB>5</SUB…
+- 2022MNRAS.512.4419P (2022): ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - X. Chemical differentiation among the massive cores in G9.62+0.…
+- 2023A&A...669A..56Q (2023): History of two mass loss processes in VY CMa. Fast outflows carving older ejecta
+- 2023A&A...670A.177F (2023): Millimetre and sub-millimetre spectroscopy of doubly deuterated acetaldehyde (CHD<SUB>2</SUB>CHO) and first detection towards IRAS 16293-24…
+- 2023A&A...675A.131T (2023): Investigating the asymmetric chemistry in the disk around the young star HD 142527
+- 2023A&A...677A..15M (2023): The GUAPOS project. III. Characterization of the O- and N-bearing complex organic molecules content and search for chemical differentiation
+- 2023A&A...678A.137C (2023): CoCCoA: Complex Chemistry in hot Cores with ALMA. Selected oxygen-bearing species
+- 2023A&A...678A.146B (2023): Tracing snowlines and C/O ratio in a planet-hosting disk. ALMA molecular line observations towards the HD 169142 disk
+- 2023A&A...678A.194C (2023): ALMA-IMF. VII. First release of the full spectral line cubes: Core kinematics traced by DCN J = (3‒2)
+- 2023Ap&SS.368...33M (2023): Identification of interstellar cyanamide towards the hot molecular core G358.93─0.03 MM1
+- 2023Ap&SS.368...44M (2023): Detection of complex nitrogen-bearing molecule ethyl cyanide towards the hot molecular core G10.47 + 0.03
+- 2023ApJ...946L..41S (2023): The Detection of Hot Molecular Cores in the Small Magellanic Cloud
+- 2023ApJ...948..127O (2023): FAUST. VII. Detection of a Hot Corino in the Prototypical Warm Carbon-chain Chemistry Source IRAS 15398-3359
+- 2023ApJ...953...75H (2023): Characterizing CO Emitters in the SSA22-AzTEC26 Field
+- 2023ApJ...956..135W (2023): Deep Search for Molecular Oxygen in TW Hya
+- 2023FrASS..1015642F (2023): Photochemical origin of SiC2 in the circumstellar envelope of carbon-rich AGB stars revealed by ALMA
+- 2023JApA...44...69M (2023): Detection of monothioformic acid towards the solar-type protostar IRAS 16293─2422
+- 2023JMoSp.39411777M (2023): Rotational spectroscopy of oxirane-2,2-d<SUB>2</SUB>, c-CD<SUB>2</SUB>CH<SUB>2</SUB>O, and its tentative detection toward IRAS 16293-2422 B
+- 2023MNRAS.519L..68B (2023): Positive feedback, quenching, and sequential super star cluster (SSC) formation in NGC 4945
+- 2023MNRAS.525.2229M (2023): Identification of the simplest sugar-like molecule glycolaldehyde towards the hot molecular core G358.93-0.03 MM1
+- 2023MNRAS.525.6146W (2023): ALMA observations of the Extended Green Object G19.01-0.03 - II. A massive protostar with typical chemical abundances surrounded by four lo…
+- 2023NatAs...7.1048C (2023): Evidence for auroral influence on Jupiter's nitrogen and oxygen chemistry revealed by ALMA
+- 2023PSJ.....4..206R (2023): ALMA Observations of the DART Impact: Characterizing the Ejecta at Submillimeter Wavelengths
+- 2024A&A...681A.104B (2024): Shocking Sgr B2 (N1) with its own outflow. A new perspective on segregation between O- and N-bearing molecules
+- 2024A&A...682A..78V (2024): JOYS+: Mid-infrared detection of gas-phase SO<SUB>2</SUB> emission in a low-mass protostar. The case of NGC 1333 IRAS 2A: Hot core or accre…
+- 2024A&A...682A.127S (2024): A bipolar structure and shocks surrounding the stellar-merger remnant V1309 Scorpii
+- 2024A&A...683A..62M (2024): Protonated acetylene in the z = 0.89 molecular absorber toward PKS 1830-211
+- 2024A&A...684A...4U (2024): Charting circumstellar chemistry of carbon-rich asymptotic giant branch stars. I. ALMA 3 mm spectral surveys
+- 2024A&A...684A.189V (2024): FAUST. XI. Enhancement of the complex organic material in the shocked matter surrounding the [BHB2007] 11 protobinary system
+- 2024A&A...686A..31B (2024): Molecular isotopologue measurements toward super star clusters and the relation to their ages in NGC 253 with ALCHEMI
+- 2024A&A...686A.122A (2024): ALMA-IMF. X. The core population in the evolved W33-Main (G012.80) protocluster
+- 2024A&A...687A...8M (2024): The rotation-tunneling spectrum of 3-hydroxypropenal and confirmation of its detection toward IRAS 16293-2422 B
+- 2024A&A...688A...3H (2024): High-mass star formation across the Large Magellanic Cloud: I. Chemical properties and hot molecular cores observed with ALMA at 1.2 mm
+- 2024A&A...688L..22P (2024): FAUST. XVII. Super deuteration in the planet-forming system IRS 63 where the streamer strikes the disk
+- 2024A&A...689A.248S (2024): SO<SUB>2</SUB> and OCS toward high-mass protostars: A comparative study of ice and gas
+- 2024A&A...690A.372L (2024): A new measurement of the Galactic <SUP>12</SUP>C/<SUP>13</SUP>C gradient from sensitive HCO<SUP>+</SUP> absorption observations
+- 2024A&A...690L..16J (2024): A photo-z cautionary tale: Redshift confirmation of COSBO-7 at z = 2.625
+- 2024AJ....167...66Y (2024): Chemistry of Complex Organic Molecules in the V883 Ori Disk Revealed by ALMA Band 3 Observations
+- 2024AJ....167..165B (2024): An ALMA Molecular Inventory of Warm Herbig Ae Disks. II. Abundant Complex Organics and Volatile Sulphur in the IRS 48 Disk
+- 2024ApJ...962...13C (2024): ALMA High-resolution Spectral Survey of Thioformaldehyde (H<SUB>2</SUB>CS) toward Massive Protoclusters
+- 2024ApJ...962...48J (2024): Thermal Properties of the Hot Core Population in Sagittarius B2 Deep South.
+- 2024ApJ...966..119L (2024): ALMA Spectral Survey of an Eruptive Young Star, V883 Ori (ASSAY). I. What Triggered the Current Episode of Eruption?
+- 2024ApJ...966L..13D (2024): Detection of Rydberg Lines from the Atmosphere of Betelgeuse
+- 2024ApJ...969..102N (2024): Physical and Chemical Properties of Galactic Molecular Gas toward QSO J1851+0035
+- 2024ApJ...971..187A (2024): High-resolution Study of the Outflow Activity and Chemical Environment of Chamaeleon-MMS1
+- 2024ApJ...973..135H (2024): Constraints on the Gas-phase C/O Ratio of DR Tau's Outer Disk from CS, SO, and C<SUB>2</SUB>H Observations
+- 2024ApJ...974...83Y (2024): Detection of Dimethyl Ether in the Central Region of the MWC 480 Protoplanetary Disk
+- 2024ApJ...974...92B (2024): The JWST UNCOVER Treasury Survey: Ultradeep NIRSpec and NIRCam Observations before the Epoch of Reionization
+- 2024ApJ...975...72B (2024): Measuring the <SUP>34</SUP>S and <SUP>33</SUP>S Isotopic Ratios of Volatile Sulfur during Planet Formation
+- 2024BAAA...65..173M (2024): Understanding the chemistry of the young stellar object G29.862-0.0044
+- 2024ESC.....8..665M (2024): Detection and Chemical Modeling of Complex Prebiotic Molecule Cyanamide in the Hot Molecular Core G31.41 + 0.31
+- 2024IJAsB..23...14M (2024): Detection and prebiotic chemistry of possible glycine precursor molecule methylenimine towards the hot molecular core G10.47+0.03
+- 2024JApA...45....3M (2024): ACA observation and chemical modeling of phosphorus nitride towards hot molecular cores G10.47<inline-formula id="IEq1"><mml:math><mml:mrow…
+- 2024MNRAS.533.1143M (2024): Detection of antifreeze molecule ethylene glycol in the hot molecular core G358.93-0.03 MM1
+- 2024MNRAS.534.3576K (2024): Volatile composition of the HD 169142 disc and its embedded planet
+- 2024NewA..10902199M (2024): Detection of possible glycine precursor molecule methylamine towards the hot molecular core G358.93─0.03 MM1
+- 2024PASJ...76...54L (2024): Tentative detection of cyanoformamide NCCONH<SUB>2</SUB> in space
+- 2024RAA....24b5009L (2024): The ALMA-QUARKS Survey. I. Survey Description and Data Reduction
+- 2024RAA....24f5008M (2024): Study of Complex Nitrogen and Oxygen-bearing Molecules toward the High-mass Protostar IRAS 18089─1732
+- 2024RAA....24g5014M (2024): Observation of Complex Organic Molecules Containing Peptide-like Bonds Toward Hot Core G358.93─0.03 MM1
+- 2024RAA....24l5009M (2024): ALMA and GMRT Studies of Dust Continuum Emission and Spectral Lines Toward Oort Cloud Comet C/2022 E3 (ZTF)
+- 2025A&A...693A.309S (2025): Behind the dust veil: A panchromatic view of an optically dark galaxy at z = 4.82
+- 2025A&A...694A.108P (2025): The two-dimensional pressure structure of the HD 163296 protoplanetary disk as probed by multi-molecule kinematics
+- 2025A&A...694A.166C (2025): The ALMA-ATOMS survey: Vibrationally excited HC<SUB>3</SUB>N lines in hot cores
+- 2025A&A...694L..15H (2025): Discovery of ionized circumstellar gas emission around the long-period Cepheid ℓ Carinae with ALMA
+- 2025A&A...696A...7L (2025): ALMA observations of CH<SUB>3</SUB>COCH<SUB>3</SUB> and the related species CH<SUB>3</SUB>CHO, CH<SUB>3</SUB>OH, and C<SUB>2</SUB>H<SUB>5</…
+- 2025A&A...696A..18C (2025): The hot corino-like chemistry of four FUor-like protostars
+- 2025A&A...697A.190L (2025): The ALMA-ATOMS survey: A sample of weak hot core candidates identified through line stacking
+- 2025A&A...698A.204H (2025): An ALMA spectroscopic survey of the Planck high-redshift object PLCK G073.4−57.5 confirms two protoclusters
+- 2025A&A...699A.183H (2025): Spatially resolved spectrophotometric SED modeling of NGC 253's central molecular zone: I. Star formation in extragalactic giant molecular …
+- 2025A&A...699A.361V (2025): JWST Observations of Young protoStars (JOYS): Overview of program and early results
+- 2025A&A...701A.141L (2025): Sulfur oxides tracing streamers and shocks at low-mass protostellar disk─envelope interfaces
+- 2025A&A...702A..27P (2025): Revisiting G29.862─0.0044: A jet cavity disrupted by an outflow in a likely young stellar object wide binary system
+- 2025A&A...702A..35D (2025): The ALMA-QUARKS survey: Extensive detection of acetamide in multiple high-mass star-forming regions
+- 2025A&A...704A..18O (2025): High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB…
+- 2025ApJ...981...49S (2025): ALMA Observations of Peculiar Embedded Icy Objects
+- 2025ApJ...985..226W (2025): A Multiwavelength Study of the Dynamic Environment Surrounding the FUor V960 Mon
+- 2025ApJ...985..259J (2025): Searching for Compact Obscured Nuclei in Compton-thick Active Galactic Nuclei
+- 2025ApJ...986L...9B (2025): Ice Sublimation in the Dynamic HD 100453 Disk Reveals a Rich Reservoir of Inherited Complex Organics
+- 2025ApJ...988..111I (2025): The Detection of Spatially Resolved Protostellar Outflows and Episodic Jets in the Outer Galaxy
+- 2025ApJ...988L..44F (2025): A Deep Search for Ethylene Glycol and Glycolonitrile in the V883 Ori Protoplanetary Disk
+- 2025ApJ...989...83B (2025): CO Emission and Absorption-line Survey of the M87 Nucleus Using Archival ALMA Imaging
+- 2025ApJ...989L..22B (2025): Worlds Next Door: A Candidate Giant Planet Imaged in the Habitable Zone of α Centauri A. I. Observations, Orbital and Physical Properties, …
+- 2025ApJ...991...59B (2025): ALMA Observations of Molecular Complexity in the Large Magellanic Cloud: Probing the Star-forming Region N 160
+- 2025ApJ...993..111W (2025): A Multiwavelength Study of ELAN Environments (AMUSE<SUP>2</SUP>): The Impact of Dense Environment on Massive Dusty Star-forming Galaxies at…
+- 2025ApJS..276...49J (2025): ALMA Spectral Survey of an Eruptive Young Star, V883 Ori (ASSAY). II. Freshly Sublimated Complex Organic Molecules in the Keplerian Disk
+- 2025ApJS..280...33Y (2025): The ALMA-QUARKS Survey. III. Clump-to-core Fragmentation and Searches for High-mass Starless Cores
+- 2025Galax..13...82Z (2025): Molecules and Chemistry in Red Supergiants
+- 2025MNRAS.536..684D (2025): The salty emission of the intermediate-mass AGB star OH 30.1-0.7
+- 2025MNRAS.539.3808U (2025): Physical properties and gas kinematics of massive star forming region G328.24−0.55
+- 2025NatAs...9.1476C (2025): A D/H ratio consistent with Earth's water in Halley-type comet 12P from ALMA HDO mapping
+- 2025NatAs...9.1486L (2025): Pristine ices in a planet-forming disk revealed by heavy water
+- 2025PSJ.....6..107N (2025): Improved Carbon and Nitrogen Isotopic Ratios for CH<SUB>3</SUB>CN in Titan's Atmosphere Using ALMA
+- 2025PSJ.....6..286M (2025): Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics
+- 2025SciA...11.6953M (2025): A misaligned protostellar disk fed by gas streamers in a barred spiral-like massive dense core
+- 2026A&A...705A.132W (2026): Observation of CH<SUB>3</SUB><SUP>17</SUP>OH and CH<SUB>3</SUB><SUP>18</SUP>OH in Orion KL: A new tool to study star formation history
+- 2026A&A...706A.256A (2026): Characterizing the physical and chemical properties of the Class I protostellar system Oph-IRS 44: Binarity, infalling streamers, and accre…
+- 2026A&A...709A.173M (2026): ALMAGAL: VIII. Early phases of triggered star formation in source AG286.0716─1.8229
+- 2026A&A...711A.118A (2026): ALMAGAL: IX. The chemical complexity of AG318.9477−00.1960: A line-identification template for ALMAGAL
+- 2026A&A...713A..67X (2026): Local constraints on alcohol-thioalcohol analogs in G35.2N
+- 2026A&A...713A.167D (2026): The dynamical environment of the high-mass star-forming region G28.288-0.364
+- 2026AJ....171..368M (2026): Digging into the Massive Protostar S255IR NIRS3: A Study of Nitrogen-bearing Molecules and Their Prebiotic Chemistry
+- 2026ApJ...998..277M (2026): ALMA Observations of Cold Methanol Gas in the Large Magellanic Cloud: N79 South Giant Molecular Cloud
+- 2026ApJ...999...62H (2026): HOPS-288: A Laboratory for Complex Organics in Proto-binary/Proto-multiple Systems
+- 2026ApJ...999..194I (2026): Digging into the Chemical Complexity in the Outer Galaxy: A Hot Molecular Core in Sh 2-283
+- 2026ApJ..1000L..32A (2026): exoALMA. XXIV. Formaldehyde Emission in Protoplanetary Disks of exoALMA Compared with Their Properties and Dynamical State
+- 2026ApJ..1001..161H (2026): The ALMA-QUARKS Survey: Evidence of an Explosive Molecular Outflow in IRAS 15520─5234
+- 2026ApJ..1003..219W (2026): The Keplerian Disk, Envelope, and Streamers Surrounding an Early O-type Protostar in the Sagittarius C Cloud of the Central Molecular Zone
+- 2026ApJ..1004L...6D (2026): First Interstellar Detection of Methyl Carbamate: A New Observational Anchor for Glycine Chemistry
+- 2026ApJ..1005..142S (2026): Survival of Molecular Complexity under Recent Supernova Feedback: Detection of Hot Cores in RX J1713.7−3946
+- 2026ApJ..1005..199C (2026): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO): Formaldehyde (H<SUB>2</SUB>CO) Emission and Its Links to Disk Properties
+- 2026ApJS..282...64S (2026): Magellanic Outflow and Chemistry Survey (MAGOS): Hot Cores in the LMC
+- 2026MNRAS.551g1639M (2026): Exploring the survivability of higher-order multiple protostellar systems - the case of VLA1623

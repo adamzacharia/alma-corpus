@@ -1,0 +1,932 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017NatAs...1E.152L",
+  "title": "A rotating protostellar jet launched from the innermost disk of HH 212",
+  "year": 2017,
+  "journal": "Nature Astronomy",
+  "first_author": "Lee, Chin-Fei",
+  "n_authors": 6,
+  "arxiv_id": "1706.06343",
+  "doi": "10.1038/s41550-017-0152",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00122.S",
+   "2015.1.00024.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "Observations of the HH 212 protostellar system were carried out with ALMA in Band 7 at $\\sim$ 350 GHz in Cycles 1 and 3, with 32-45 antennas"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "HH 212 (IRAS 05413-0104)",
+     "coordinates": {
+      "value": "RA(J2000) 05h43m51.4086s, Dec -01d02m53.147s",
+      "evidence": [
+       {
+        "loc": "Figure 1 caption",
+        "quote": "Asterisks mark the source position at $\\alpha_{(2000)}=05^\\mathrm{h} 43^\\mathrm{m} 51^\\mathrm{s}_{^\\textrm{.}} 4086$"
+       },
+       {
+        "loc": "main text",
+        "quote": "HH 212 is a nearby protostellar system deeply embedded in a compact molecular cloud core in the L1630 cloud of Orion at a distance of $\\sim$ 400 pc."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~400 pc",
+      "evidence": [
+       {
+        "loc": "Figure 1 caption",
+        "quote": "Asterisks mark the source position at $\\alpha_{(2000)}=05^\\mathrm{h} 43^\\mathrm{m} 51^\\mathrm{s}_{^\\textrm{.}} 4086$"
+       },
+       {
+        "loc": "main text",
+        "quote": "HH 212 is a nearby protostellar system deeply embedded in a compact molecular cloud core in the L1630 cloud of Orion at a distance of $\\sim$ 400 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Does the HH 212 protostellar jet rotate, and if so, from what disk radius is it launched (does the jet remove angular momentum from the innermost disk)?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we show that highly collimated protostellar jets remove the residual angular momenta at the $\\sim$ 0.05 AU scale"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00122.S",
+     "evidence": [
+      {
+       "loc": "acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00122.S and 2015.1.00024.S."
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00024.S",
+     "evidence": [
+      {
+       "loc": "acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00122.S and 2015.1.00024.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (~350 GHz), Cycles 1 and 3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "carried out with ALMA in Band 7 at $\\sim$ 350 GHz in Cycles 1 and 3, with 32-45 antennas"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Cycle 1: 4 spws (CO 3-2, SiO 8-7, HCO+ 4-3, continuum 358 GHz); Cycle 3 adds SO and H13CO+; 0.212 km/s channels binned by 4 to 0.848 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The velocity resolution is 0.212 km s$^{-1}$ per channel. However, we binned 4 channels to have a velocity resolution of 0.848 km s$^{-1}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "SiO",
+     "transition": "J=8-7",
+     "rest_frequency": "347.330631 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "one for SiO $J=8-7$ at 347.330631 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Cycle 1: 15-1466 m; Cycle 3: 17-16196 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The projected baselines are 17-16196 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Cycle 1 ~0.16\" (64 AU); Cycle 3 0.02\" (8 AU); tapered 0.06\" (24 AU)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "One pointing was used to map the innermost part of the jet at an angular resolution of $0^{\\prime\\prime}_{^\\textrm{.}}02$ (8 AU)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "Cycle 1 ~2.5\"; Cycle 3 ~0.4\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The maximum recoverable size scale is $\\sim$ $0^{\\prime\\prime}_{^\\textrm{.}}4$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "1.6 mJy/beam (~40 K) at 0.02\"; 1.9 mJy/beam (~6 K) at 0.06\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "found to be $\\sim$ 1.6 mJy beam$^{-1}$ (or $\\sim$ 40 K) for a beam of $\\sim$ $0^{\\prime\\prime}_{^\\textrm{.}}02$ (8 AU)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~148 minutes total",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total time on the HH 212 system is $\\sim$ 148 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Cycle 1: 2015 Aug 29 (2 executions); Cycle 3: 2015 Nov 5 and Dec 3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "one on November 5 and the other on December 3, during the Early Science Cycle 3 phase."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "350 GHz dust continuum map of the disk, overlaid",
+      "evidence": [
+       {
+        "loc": "Figure 1 caption",
+        "quote": "on top of the dust continuum map (orange image) of the accretion disk at 352 GHz(cite: Lee2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Lee2017)"
+    },
+    {
+     "what": {
+      "value": "Jet velocity ~115±50 km/s",
+      "evidence": [
+       {
+        "loc": "main text",
+        "quote": "a jet velocity(cite: Lee2015) of $v_j\n\\sim$ 115$\\pm$50 km s$^{-1}$"
+       }
+      ]
+     },
+     "citation": "(cite: Lee2015)"
+    },
+    {
+     "what": {
+      "value": "Protostellar mass 0.25±0.05 Msun",
+      "evidence": [
+       {
+        "loc": "main text",
+        "quote": "With a protostellar mass of $M_\\ast \\sim$ 0.25$\\pm$0.05 $M_\\odot$(cite: Lee2014; Codella2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Lee2014; Codella2014)"
+    },
+    {
+     "what": {
+      "value": "Jet inclination ~4 deg to plane of sky",
+      "evidence": [
+       {
+        "loc": "main text",
+        "quote": "The jet, lying close ($\\sim$ 4$^\\circ$) to the plane of the sky(cite: Claussen1998)"
+       }
+      ]
+     },
+     "citation": "(cite: Claussen1998)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA calibration of passband, flux, gain",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated with the CASA package (versions 4.3.1 and 4.5) for the passband, flux, and gain"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "4.3.1 and 4.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated with the CASA package (versions 4.3.1 and 4.5) for the passband, flux, and gain"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust = 2 (natural weighting)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We used a robust factor of 2 (natural weighting) for the visibility weighting to generate the SiO maps."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.05\" taper giving 0.06\" (24 AU) beam",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "a taper of $0^{\\prime\\prime}_{^\\textrm{.}}05$ was used to degrade the beam size to $0^{\\prime\\prime}_{^\\textrm{.}}06$ (24 AU"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Cycle 3 only for innermost jet; Cycle 1+3 for outer knots",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "In order to map the knots further out, which are more extended, we also include the Cycle 1 data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "4 channels binned to 0.848 km/s",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we binned 4 channels to have a velocity resolution of 0.848 km s$^{-1}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.02\" (8 AU) and 0.06\" (24 AU)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "This generates a synthesized beam with a size of $0^{\\prime\\prime}_{^\\textrm{.}}02$ (8 AU)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "1.6 mJy/beam (8 AU beam); 1.9 mJy/beam (24 AU beam)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "1.9 mJy beam$^{-1}$ (or $\\sim$ 6 K) for a beam of $\\sim$ $0^{\\prime\\prime}_{^\\textrm{.}}06$ (24 AU)"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Systemic velocity 1.7 km/s LSR and disk rotation sense taken from earlier work",
+      "evidence": [
+       {
+        "loc": "Figure 1 caption",
+        "quote": "The systemic velocity is assumed to be 1.7$\\pm$0.1 km s$^{-1}$ LSR, as found before(cite: Lee2014)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Lee2014)"
+    },
+    {
+     "what": {
+      "value": "Launching radius derived from Eq. 4 of Anderson et al. 2003",
+      "evidence": [
+       {
+        "loc": "Estimation of Jet Launching Radius",
+        "quote": "the governing equation (Eq. 4 in Anderson et al. 2003)(cite: Anderson2003) that is used to derive the jet launching radius can be simplified"
+       }
+      ]
+     },
+     "from_reference": "(cite: Anderson2003)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Flux/passband/gain calibrator names (only in Supplementary tables not given)",
+    "Deconvolver, clean threshold, masks, cell and image size",
+    "Continuum subtraction and line-free channels",
+    "Self-calibration",
+    "Which CASA version applies to which dataset",
+    "Rest-frame/systemic velocity choice for each knot cut and PV cut widths",
+    "Details of Gaussian peak fitting and error treatment"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image SiO jet at 8 AU and 24 AU",
+    "method": {
+     "value": "Cycle 3 only for 0.02\" maps; Cycle 1+3 with 0.05\" taper for 0.06\" maps; natural weighting, 0.848 km/s channels",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "only Cycle 3 data are used to study the jet rotation in the innermost part of the jet."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 2; taper 0.05\"",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We used a robust factor of 2 (natural weighting) for the visibility weighting to generate the SiO maps."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure knot widths",
+    "method": {
+     "value": "Gaussian fits to spatial profiles perpendicular to the jet axis, deconvolved by the 8 AU beam",
+     "evidence": [
+      {
+       "loc": "Gaussian deconvolved width",
+       "quote": "we fitted the spatial profiles of the knots with a gaussian profile."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profile",
+     "evidence": [
+      {
+       "loc": "Gaussian deconvolved width of the jet knots:",
+       "quote": "In order to derive the width of the knots, we fitted the spatial profiles of the knots with a gaussian profile."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure velocity gradients across knots",
+    "method": {
+     "value": "PV diagrams cut across knots; emission peaks from Gaussian fits; linear least-squares fit; peak position errors = quarter FWHM; >7 sigma detections",
+     "evidence": [
+      {
+       "loc": "main text",
+       "quote": "we identified the emission peaks (as marked by the green squares) with Gaussian fits and then fitted them with a linear velocity gradient using the least squares method."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Peak position uncertainty = a quarter of the FWHM",
+      "evidence": [
+       {
+        "loc": "Figure 4 caption",
+        "quote": "which are assumed to be given by a quarter of the FWHM."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "linear least squares",
+     "evidence": [
+      {
+       "loc": "main text",
+       "quote": "we identified the emission peaks (as marked by the green squares) with Gaussian fits and then fitted them with a linear velocity gradient using the least squares method."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Same sense of gradient in all resolved knots, consistent with disk rotation; precession ruled out as small",
+     "evidence": [
+      {
+       "loc": "main text",
+       "quote": "Since the sense of the gradient is the same in the resolved knots, the gradients are unlikely due to random velocity fluctuations in the jet."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Specific angular momentum",
+    "method": {
+     "value": "l = m (ΔV)^2/4 from gradient m and velocity range ΔV; mean excluding N3",
+     "evidence": [
+      {
+       "loc": "main text",
+       "quote": "the resulting specific angular momentum is $l=m (\\triangle V)^2/4$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Jet rotation symmetric about knot center",
+      "evidence": [
+       {
+        "loc": "main text",
+        "quote": "Assuming that the jet rotation is symmetric about the knot center"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive jet launching radius",
+    "method": {
+     "value": "Approximate analytic solution of magneto-centrifugal energy and angular momentum conservation (Anderson et al. 2003) with correction terms in eta",
+     "evidence": [
+      {
+       "loc": "Estimation of Jet Launching Radius",
+       "quote": "They can improve the accuracy of the launching radius estimate in the case where the dimensionless parameter $\\eta$ is not much smaller than unity"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "M*=0.25±0.05 Msun; v_j=115±50 km/s; l_j=10.2±1.0 AU km/s",
+      "evidence": [
+       {
+        "loc": "main text",
+        "quote": "a mean jet specific angular momentum of $l_j\\sim$ 10.2$\\pm$1.0 AU km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gravitational potential negligible at large distance, jet velocity much larger than rotation, inclination ~4 deg",
+      "evidence": [
+       {
+        "loc": "Estimation of Jet Launching Radius",
+        "quote": "the jet inclination angle is very small ($\\sim$ 4$^\\circ$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.1 and 4.5",
+    "used_for": {
+     "value": "Calibration (passband, flux, gain) of the data",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated with the CASA package (versions 4.3.1 and 4.5) for the passband, flux, and gain"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Velocity gradient knot N2",
+    "value": "0.363",
+    "uncertainty": "0.040",
+    "units": "AU/(km/s)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "0.363$\\pm$0.040 AU/(km s$^{-1}$) for knot N2"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity gradient knot N3",
+    "value": "0.533",
+    "uncertainty": "0.326",
+    "units": "AU/(km/s)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "0.533$\\pm$0.326 AU/(km s$^{-1}$) for knot N3"
+     }
+    ]
+   },
+   {
+    "quantity": "Velocity gradient knot S3",
+    "value": "0.635",
+    "uncertainty": "0.070",
+    "units": "AU/(km/s)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "0.635$\\pm$0.070 AU/(km s$^{-1}$) for knot S3"
+     }
+    ]
+   },
+   {
+    "quantity": "Specific angular momentum N2, N3, S3",
+    "value": "9.4, 9.6, 11.4",
+    "uncertainty": "1.0, 6.0, 1.3",
+    "units": "AU km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "9.4$\\pm$1.0, 9.6$\\pm$6.0, and 11.4$\\pm$1.3 AU km s$^{-1}$ for knots N2, N3, and S3"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean specific angular momentum (excl. N3)",
+    "value": "10.2",
+    "uncertainty": "1.0",
+    "units": "AU km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "the mean specific angular momentum is $l_j \\sim 10.2\\pm1.0$ AU km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Jet launching radius",
+    "value": "0.05",
+    "uncertainty": "+0.05/-0.02",
+    "units": "AU",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "the launching radius of the jet is estimated to be $r_\\textrm{\\scriptsize 0}\\sim$ 0.05$_{-0.02}^{+0.05}$ AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Jet position angle",
+    "value": "~23",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "with a position angle measured to be $\\sim$ 23$^\\circ$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean velocity northern / southern jet",
+    "value": "-3 / 4",
+    "uncertainty": "not stated",
+    "units": "km/s LSR",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Mean (or Systemic) Velocities of the Jet",
+      "quote": "with a mean velocity of $\\sim$ 4 km s$^{-1}$ LSR"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Both northern and southern jets rotate clockwise viewed from north to south, same as disk rotation",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "both the northern and southern jets are rotating clockwise when viewed along the jet axis from north to south"
+     }
+    ]
+   },
+   {
+    "value": "Knot widths decrease toward the source, from ~9-16 AU (N3, S3) to <~5-6 AU (N1, S1)",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "decreasing toward the central source, from $\\sim$ 9-16 AU for knots N3 and S3"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the HH 212 SiO jet rotate?",
+    "experiment": "PV cuts across knots at 8 AU, 1 km/s resolution",
+    "result": "Consistent velocity gradients in N2, N3, S3, same sense as the disk",
+    "finding": "Jet rotation detected; specific angular momentum ~10 AU km/s",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "The consistency of the sense of the gradients supports the interpretation that they are dominated by the intrinsic jet rotation."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Where is the jet launched?",
+    "experiment": "Magneto-centrifugal relation with measured l_j, v_j, M*",
+    "result": "r0 ~0.05 AU",
+    "finding": "Jet launched from innermost disk, removing angular momentum there",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The measurement implies a jet launching radius of $\\sim 0.05_{-0.02}^{+0.05}$ AU on the disk"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Only Cycle 3 data used for rotation to avoid proper motion between epochs",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "In order to avoid the proper motion effect"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Gradients unlikely due to random velocity fluctuations or jet precession",
+     "evidence": [
+      {
+       "loc": "main text",
+       "quote": "The gradients are also unlikely due to jet precession"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Disk is optically thick, preventing detection of the jet further in; knot N3 gradient quite uncertain",
+     "evidence": [
+      {
+       "loc": "main text",
+       "quote": "Unfortunately, the disk is flared and optically thick(cite: Lee2017), preventing us from detecting the jet further in."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Launching radius relies on a model with large uncertainty in v_j and M*",
+    "Only three marginally resolved knots give gradients; N1, S1, S2 unresolved",
+    "Gradient could be affected by shock or beam smearing, not tested"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data available from the corresponding author on request; ALMA codes given",
+    "evidence": [
+     {
+      "loc": "acknowledgements",
+      "quote": "The data that support the plots within this paper and other findings of this study are available from the corresponding author upon reasonable request."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibrator details and imaging parameters beyond weighting/taper",
+    "Peak fitting details"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for the two projects",
+   "score_inferred": 3,
+   "score_reason": "Simple analysis with stated numbers, but imaging details and calibration are sparse.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA archive data; short recipe with numeric results, though imaging details are missing."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Anderson2003)",
+     "why": "Launching radius formulation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Lee2017)",
+     "why": "Disk continuum map"
+    },
+    {
+     "citation": "(cite: Lee2017b)",
+     "why": "Disk CH3OH/CD3OD observations"
+    },
+    {
+     "citation": "(cite: Lee2015)",
+     "why": "Jet velocity and precession"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-898e07c032202ab0295d133bbf477b66",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:39",
+  "usage": {
+   "input_tokens": 15165,
+   "output_tokens": 7708,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.054311,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 61,
+  "quotes_ok": 61,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 45,
+   "rate": 0.608
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:02",
+  "custom_id": "repair-sonnet-12a81b691f2da0aafd9fe6975907f1e2",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "In order to derive the width of the knots, we fitted the spatial profiles of the knots with a gaussian profile."
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "we identified the emission peaks (as marked by the green squares) with Gaussian fits and then fitted them with a linear velocity gradient using the least squares method."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

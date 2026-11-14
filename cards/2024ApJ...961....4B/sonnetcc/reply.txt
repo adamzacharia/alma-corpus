@@ -1,0 +1,431 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Observations and data reduction", "quote": "This paper utilizes the data from ALMA Cycle 4 project 2016.1.00550.S."},
+{"loc": "abstract", "quote": "We present 500 AU and 700 AU resolution 1 mm and 3 mm ALMA observations, respectively, of protostellar cores in protoclusters Sagittarius B2 (Sgr B2) North (N) and Main (M)"}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {
+"value": "Resolve protostellar cores in Sgr B2 N and M at ~500-700 AU, establish their nature and evolutionary stage (Stage 0/I YSOs), and derive lower-limit core masses, the core mass function, inferred stellar mass and star formation rate",
+"evidence": [
+{"loc": "Introduction", "quote": "We establish the possible nature and evolutionary stage of the sources."},
+{"loc": "Introduction", "quote": "We place lower limits on cores’ masses in the attempt to understand whether the core mass function is top-heavy in young cluster and varies with the surrounding conditions."}
+]
+},
+"targets": [
+{
+"name": "Sgr B2 N",
+"details": [
+{"loc": "Observations and data reduction", "quote": "The observations consist of two pointings centered on Sgr B2 N (ICRS 17:47:19.925; -28:22:18.608)"},
+{"loc": "Introduction", "quote": "Throughout this paper, we assume a distance to Sgr B2 of 8.4 kpc to remain consistent with the similar work by (cite: Ginsburg2018)."}
+],
+"coordinates": "ICRS 17:47:19.925; -28:22:18.608",
+"redshift_or_distance": "8.4 kpc",
+"distance_source": "assumed to stay consistent with Ginsburg et al. 2018 (Galactic Center distance 8.127 kpc from GRAVITY Collaboration 2018)"
+},
+{
+"name": "Sgr B2 M",
+"details": [
+{"loc": "Observations and data reduction", "quote": "Sgr B2 M (ICRS 17:47:20.174; -28:23:04.788) with the 12m antennas."},
+{"loc": "Introduction", "quote": "Throughout this paper, we assume a distance to Sgr B2 of 8.4 kpc to remain consistent with the similar work by (cite: Ginsburg2018)."}
+],
+"coordinates": "ICRS 17:47:20.174; -28:23:04.788",
+"redshift_or_distance": "8.4 kpc",
+"distance_source": "assumed to stay consistent with Ginsburg et al. 2018 (Galactic Center distance 8.127 kpc from GRAVITY Collaboration 2018)"
+}
+],
+"alma_project_codes": [
+{"code": "2016.1.00550.S", "evidence": [{"loc": "Observations and data reduction", "quote": "This paper utilizes the data from ALMA Cycle 4 project 2016.1.00550.S."}]},
+{"code": "2013.1.00269.S", "evidence": [{"loc": "Introduction", "quote": "We report follow-up ALMA observations to ALMA project 2013.1.00269.S"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 and Band 6 (3 mm and 1 mm)", "evidence": [{"loc": "Observations and data reduction", "quote": "Both locations were observed in Band 3 and Band 6"}]},
+{"field": "frequencies_and_spectral_setup", "value": "4 spectral windows per band, 1920 channels each, 976.6 kHz channels; central frequencies 217.84, 219.79, 231.80, 233.67 GHz (Band 6) and 85.47, 87.37, 97.42, 99.42 GHz (Band 3)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The spectral setup for each Band consists of 4 spectral windows with 1920 channels each and channel frequency width of 976.6 kHz (1.875 GHz bandwidth)"},
+{"loc": "Observations and data reduction", "quote": "The central spectral window frequencies are 217.84, 219.79, 231.80, and 233.67 GHz for Band 6 and 85.47, 87.37, 97.42, and 99.42 GHz for Band 3."}
+]},
+{"field": "continuum_bandwidth", "value": "4 spectral windows of 1.875 GHz each per band; Band 3 data centered at 92.45 GHz", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The spectral setup for each Band consists of 4 spectral windows with 1920 channels each and channel frequency width of 976.6 kHz (1.875 GHz bandwidth)"},
+{"loc": "3.2.1 Photometry comparison", "quote": "our observations are centered at 92.45 GHz with four spectral windows of the same bandwidth."}
+]},
+{"field": "arrays", "value": "12m antennas", "evidence": [{"loc": "Observations and data reduction", "quote": "The observations consist of two pointings centered on Sgr B2 N (ICRS 17:47:19.925; -28:22:18.608) and Sgr B2 M (ICRS 17:47:20.174; -28:23:04.788) with the 12m antennas."}]},
+{"field": "baselines", "value": "shortest baseline 41 m; up to 12100 m (observations table)", "evidence": [
+{"loc": "Core fragmentation", "quote": "Our shortest baseline length of 41 m is longer than the 15 m in G18 data."},
+{"loc": "Table (observations)", "quote": "41-12100"}
+]},
+{"field": "angular_resolution", "value": "500 AU (1 mm) and 700 AU (3 mm); 0.096\" x 0.073\" (Band 3) and 0.083\" x 0.038\" (Band 6)", "evidence": [
+{"loc": "abstract", "quote": "We present 500 AU and 700 AU resolution 1 mm and 3 mm ALMA observations, respectively"},
+{"loc": "Observations and data reduction", "quote": "Both locations were observed in Band 3 and Band 6 with resolution of 0.096\" $\\times$ 0.073\" ($\\sim$700 AU) and 0.083\" $\\times$ 0.038\" ($\\sim$500 AU), respectively."}
+]},
+{"field": "max_recoverable_scale", "value": "~7500 AU (0.9\")", "evidence": [{"loc": "Protostellar cores / Source masses", "quote": "as our largest recoverable scale of $\\sim$7500 AU"}]},
+{"field": "sensitivity", "value": "RMS 0.033 mJy (N Band 3), 0.05 mJy (M Band 3), 0.35 mJy (N Band 6), 0.25 mJy (M Band 6)", "evidence": [{"loc": "Observations and data reduction", "quote": "is 0.033 mJy for N Band 3, 0.05 mJy for M Band 3, 0.35 mJy for N Band 6, and 0.25 mJy for M Band 6."}]},
+{"field": "observing_dates", "value": "07-Sep-2017, 16-Sep-2017 (Band 6); 18-Sep-2017 (two Band 3 execution blocks)", "evidence": [
+{"loc": "Table (observations)", "quote": "18-Sep-2017"},
+{"loc": "Table (observations)", "quote": "07-Sep-2017"},
+{"loc": "Table (observations)", "quote": "16-Sep-2017"}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "VLA (literature catalogs)", "provided": {"value": "Previously known compact HII regions used for cross-matching", "evidence": [{"loc": "3.1 Source extraction", "quote": "We find that VLA-detected regions do not perfectly align with region candidates in our data, especially in Sgr B2 M"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Lower-resolution ALMA Band 3 catalog and image of Sgr B2 (project 2013.1.00269.S) used for photometry, fragmentation and stellar-mass comparison", "evidence": [{"loc": "3.2.1 Photometry comparison", "quote": "(cite: Ginsburg2018) obtained Band 3 observations of the extended Sgr B2 cloud at"}]}, "citation": "(cite: Ginsburg2018)"},
+{"what": {"value": "Catalogs of known HII regions cross-matched to remove compact regions from the core sample", "evidence": [{"loc": "3.1 Source extraction", "quote": "In addition, we cross-match our detections with (cite: DePree1998) and (cite: Meng2022) to remove known compact regions from our core sample and label them as known regions."}]}, "citation": "(cite: DePree1998); (cite: Meng2022)"},
+{"what": {"value": "Dust opacity models (kappa at 92 and 226 GHz) extrapolated as a power law with beta_dust = 1.75", "evidence": [
+{"loc": "3.5 Source masses", "quote": "Extrapolating the (cite: Ossenkopf1994) opacity models for dust grains with thin ice mantles"},
+{"loc": "3.5 Source masses", "quote": "as a power law, assuming $\\beta_{\\text{dust}} = 1.75$, we obtain $\\kappa_{92 GHz} = 0.0017\\ \\frac{cm^2}{g}$ and $\\kappa_{226 GHz} = 0.0083\\ \\frac{cm^2}{g}$"}
+]}, "citation": "(cite: Ossenkopf1994)"},
+{"what": {"value": "Average gas column density of Sgr B2 N and M clusters (~3e24 cm^-2) used in the optically-thick-core-in-dust model", "evidence": [{"loc": "4.1.1 Protostellar cores: Stage 0/I YSOs", "quote": "with an average over the Sgr B2 N and M cluster of around $3\\times10^{24}$ $\\mathrm{cm}^{-2}$ (cite: Sanchez-Monge2017)"}]}, "citation": "(cite: Sanchez-Monge2017)"},
+{"what": {"value": "Kroupa initial mass function used to extrapolate the low-mass end for inferred stellar mass", "evidence": [{"loc": "4.2 Inferred stellar mass", "quote": "extrapolate the low-mass end of the Kroupa initial mass function (cite: Kroupa2001) to obtain the core-based inferred stellar mass"}]}, "citation": "(cite: Kroupa2001)"},
+{"what": {"value": "Star-forming age of the cloud, 0.74 Myr, used for the star formation rate", "evidence": [{"loc": "4.2 Inferred stellar mass", "quote": "Taking the star-forming age of the cloud as 0.74 Myr (cite: Kruijssen2015), we estimate the star formation rate (SFR) for each cluster."}]}, "citation": "(cite: Kruijssen2015)"},
+{"what": {"value": "Roughly one third of a core mass ends up in a star", "evidence": [{"loc": "4.2 Inferred stellar mass", "quote": "We further assume that roughly one third of a core mass will end up in a star (cite: Lada2003)."}]}, "citation": "(cite: Lada2003)"},
+{"what": {"value": "Disk dust-to-stellar mass ratio of ~1% extrapolated to more massive objects", "evidence": [{"loc": "4.1.4 Stage II and III YSOs?", "quote": "We extrapolate the ratio of the dust mass and the central star of $\\sim$1% (cite: Williams2011) one order of magnitude for more massive objects"}]}, "citation": "(cite: Williams2011)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline calibration run before delivery (data used as delivered, then self-calibrated)", "evidence": [{"loc": "Cleaning and self-calibration testing / QA-flagged data", "quote": "We discovered that one of the measurement sets for Sgr B2 N Band 6 pointing had 16 ID-sequential antennas flagged during the very first stages of ALMA pipeline run prior to the delivery to the user."}]},
+{"field": "casa_version", "value": "CASA 5.7.0-134.el7", "evidence": [{"loc": "Observations and data reduction", "quote": "The data were imaged using CASA version 5.7.0-134.el7"}]},
+{"field": "self_calibration", "value": "Multi-step phase then amplitude+phase self-calibration (solint inf, int, inf; extra 15 s step for Sgr B2 N Band 6; Sgr B2 N Band 3 used pre-amplitude image)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Therefore, we decided to self-calibrate the data to improve the quality of the final image."},
+{"loc": "Observations and data reduction", "quote": "In summary, our standard self-calibration procedure consisted of the following steps:"},
+{"loc": "Observations and data reduction", "quote": "The Sgr B2 N Band 3 pointing did not benefit from the amplitude self-calibration step and introduced additional minor artifacts."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean, standard gridder (not mosaic); each of the four pointings imaged separately", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The data were imaged using CASA version 5.7.0-134.el7 `tclean` with robust parameter set to 0.5 (cite: McMullin2007)."},
+{"loc": "Observations and data reduction", "quote": "Each of the four pointings were imaged separately."},
+{"loc": "Observations and data reduction", "quote": "Despite the overlap between the Band 3 pointings, we used the standard gridder instead of the mosaic gridder."}
+]},
+{"field": "weighting_robust", "value": "robust = 0.5", "evidence": [{"loc": "Observations and data reduction", "quote": "The data were imaged using CASA version 5.7.0-134.el7 `tclean` with robust parameter set to 0.5 (cite: McMullin2007)."}]},
+{"field": "masking", "value": "Hand-drawn polygon masks: a strict mask for the first two iterations then a broad mask; thresholds 6 sigma then 3 sigma (up to 10 sigma before amplitude self-cal for Sgr B2 N Band 6)", "evidence": [
+{"loc": "A.1 Cleaning and self-calibration testing", "quote": "We then switched to a less restrictive approach: we drew polygons around visually identified emission regions."},
+{"loc": "A.1 Cleaning and self-calibration testing", "quote": "Generally, we used $6\\sigma$ cleaning threshold for the first two cleaning iterations and $3\\sigma$ for the remainder of the cleaning and calibration."}
+]},
+{"field": "continuum_subtraction", "value": "none; no line subtraction or flagging performed", "evidence": [{"loc": "Observations and data reduction", "quote": "We found that for the majority of sources the line contribution was insignificant and thus no line subtraction or flagging was performed."}]},
+{"field": "primary_beam_correction", "value": "Source extraction on primary-beam-corrected images out to primary beam response of 0.1", "evidence": [{"loc": "3.1 Source extraction", "quote": "We divide each primary-beam corrected image in 30 concentric annuli out to the edge of the image, primary beam response of 0.1, and a circle at the center."}]},
+{"field": "smoothing", "value": "Band 6 data convolved to the Band 3 beam for spectral index", "evidence": [{"loc": "3.4 Spectral indexes", "quote": "Thus, we convolve the Band 6 data to the Band 3 beam, accounting for the beam area change as our data are in units of Jy/beam."}]},
+{"field": "final_beam", "value": "0.096\" x 0.073\" (Band 3, ~700 AU); 0.083\" x 0.038\" (Band 6, ~500 AU)", "evidence": [{"loc": "Observations and data reduction", "quote": "Both locations were observed in Band 3 and Band 6 with resolution of 0.096\" $\\times$ 0.073\" ($\\sim$700 AU) and 0.083\" $\\times$ 0.038\" ($\\sim$500 AU), respectively."}]},
+{"field": "final_rms", "value": "0.033 mJy (N Band 3), 0.05 mJy (M Band 3), 0.35 mJy (N Band 6), 0.25 mJy (M Band 6)", "evidence": [{"loc": "Observations and data reduction", "quote": "is 0.033 mJy for N Band 3, 0.05 mJy for M Band 3, 0.35 mJy for N Band 6, and 0.25 mJy for M Band 6."}]}
+],
+"inherited": [
+{"what": {"value": "Distance to Sgr B2 of 8.4 kpc adopted for consistency with earlier work", "evidence": [{"loc": "Introduction", "quote": "Throughout this paper, we assume a distance to Sgr B2 of 8.4 kpc to remain consistent with the similar work by (cite: Ginsburg2018)."}]}, "from_reference": "(cite: Ginsburg2018)"},
+{"what": {"value": "Stage 0/I definitions extrapolated from low-mass luminosity-accretion-based definitions to high-mass analogues", "evidence": [{"loc": "Footnote 4", "quote": "We extrapolate the original luminosity-accretion-based definition of stages for low-mass sources to their high-mass analogues from (cite: Robitaille2006)."}]}, "from_reference": "(cite: Robitaille2006)"},
+{"what": {"value": "Masking recommendation: mask only real emission", "evidence": [{"loc": "A.1 Cleaning and self-calibration testing", "quote": "Generally, it is recommended to mask the images conscientiously, only including the real emission (cite: Richards2022)."}]}, "from_reference": "(cite: Richards2022)"},
+{"what": {"value": "Dendrogram source-finding algorithm", "evidence": [{"loc": "3.1 Source extraction", "quote": "Therefore, we utilized the automated source-finding dendrogram algorithm (cite: Rosolowsky2008) augmented with a by-hand approach described below."}]}, "from_reference": "(cite: Rosolowsky2008)"}
+],
+"unstated_but_needed": [
+"tclean cell size, image size, niter, deconvolver and weighting beyond robust=0.5 (Briggs assumed but not stated)",
+"Which spectral windows/channels formed the continuum images and whether all four spws per band were combined",
+"Exact strict and broad polygon masks per pointing (only on GitHub), plus the clean threshold values in absolute units",
+"Self-calibration details of the original reduction: reference antenna, combine, minsnr (only the 'SNR from 3 to 5' change is stated for the conservative test), calmode/applymode, number of rounds per pointing",
+"ALMA pipeline version / calibrator identities and flux scale uncertainty",
+"Rules and individual per-source decisions for the 0/1/2 core scoring, which is admitted to be subjective",
+"Execution block and time-on-source details are only in a table; configuration names are not given"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Image and self-calibrate the four pointings",
+"method": {"value": "tclean imaging with iterative masked cleaning interleaved with phase then amplitude+phase self-calibration", "evidence": [
+{"loc": "Observations and data reduction", "quote": "In summary, our standard self-calibration procedure consisted of the following steps:"},
+{"loc": "Observations and data reduction", "quote": "The initial cleaned images contained many imaging artifacts, such as radial streaks, circular patterns, and parallel “wavy\" streaks."}
+]},
+"software": ["CASA", "tclean", "gaincal"],
+"key_parameters": [
+{"value": "robust = 0.5", "evidence": [{"loc": "Observations and data reduction", "quote": "The data were imaged using CASA version 5.7.0-134.el7 `tclean` with robust parameter set to 0.5 (cite: McMullin2007)."}]},
+{"value": "Phase self-cal solint inf, then solint int, then phase+amp solint inf", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Complete a phase self-calibration with `solint` set to `inf`."},
+{"loc": "Observations and data reduction", "quote": "Self-calibrate the image with `solint` set to `int`."},
+{"loc": "Observations and data reduction", "quote": "Complete a round of phase and amplitude self-calibration with `solint` set to `inf`."}
+]},
+{"value": "Sgr B2 N Band 6: cleaning threshold raised to 10 sigma until amplitude self-cal, then extra phase+amplitude step with solint 15 s", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Thus, we opted to increase the cleaning threshold up to ten times the noise until the amplitude self-calibration step was completed."},
+{"loc": "Observations and data reduction", "quote": "After, we cleaned to three times the noise and added an extra amplitude and phase self-calibration step with `solint` set to 15 s, which we found to produce the best results."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Checked that self-calibration does not shift positions or change flux; compared against a more conservative self-calibration giving flux ratio scatter up to 40% and mean ratio close to 1", "evidence": [
+{"loc": "Observations and data reduction", "quote": "We made sure that the phase self-calibration does not introduce spatial shifts and amplitude self-calibration does not change the flux erroneously."},
+{"loc": "A.2.4 Final result", "quote": "This indicates that we can expect a large flux uncertainty for individual sources due to radiointerferometric imaging, but there is no systematic error in the approach we used to create the final catalogs"}
+]}
+},
+{
+"order": 2,
+"goal": "Check line contribution to the continuum",
+"method": {"value": "Extract spectra at core peak pixels in Sgr B2 N cubes, sigma-clip lines, compare mean before and after line removal", "evidence": [
+{"loc": "Appendix: Line contribution to continuum", "quote": "We extracted spectra at the location of the brightest pixels of the cores cataloged in this work."},
+{"loc": "Appendix: Line contribution to continuum", "quote": "We removed line emission and absorption from the spectra using the `astropy’s` implementation of sigma clipping with `sigma`=2 and `maxiters`=5."}
+]},
+"software": ["astropy"],
+"key_parameters": [
+{"value": "sigma clipping with sigma=2, maxiters=5", "evidence": [{"loc": "Appendix: Line contribution to continuum", "quote": "We removed line emission and absorption from the spectra using the `astropy’s` implementation of sigma clipping with `sigma`=2 and `maxiters`=5."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Mean relative line contribution -4.4% (Band 3) and -1.2% (Band 6); significant changes only for SNR < 10", "evidence": [{"loc": "Appendix: Line contribution to continuum", "quote": "We find that the mean relative line contribution for all cores is $-4.4\\%$ for Band 3 and $-1.2\\%$ for Band 6."}]}
+},
+{
+"order": 3,
+"goal": "Extract sources with dendrograms",
+"method": {"value": "Noise measured in 30 concentric annuli with 7-sigma clipping, then a separate astrodendro run per annulus on the primary-beam-corrected image", "evidence": [
+{"loc": "3.1 Source extraction", "quote": "We then use 7-sigma clipping to remove most of the signal from each of the annuli and calculate the standard deviation for each region."},
+{"loc": "3.1 Source extraction", "quote": "We generate a separate dendrogram for each concentric annulus using noise estimation for input parameters."}
+]},
+"software": ["astrodendro"],
+"key_parameters": [
+{"value": "min_value = 4 x noise, min_delta = 0.7 x noise, min_npix = 3 pixels", "evidence": [{"loc": "3.1 Source extraction", "quote": "We set *min_value* to be equal to four times the noise estimate, *min_delta* to be 0.7 times the estimated noise, and *min_npix* to be 3 pixels."}]},
+{"value": "30 concentric annuli, widths ~7.8\" (Band 3) and 1.1\" (Band 6)", "evidence": [{"loc": "3.1 Source extraction", "quote": "The width of the concentric annuli is $\\sim$$7.8$$''$ and $1.1''$ for Band 3 and Band 6 respectively."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Combinations of annuli number, min_value, min_delta and min_npix inspected by hand for a compromise between false positives and likely positives", "evidence": [{"loc": "Footnote 1", "quote": "We inspected each combination by hand to find a compromise between reducing the number of false positives due to artifacts and noise and increasing the number of likely positives."}]}
+},
+{
+"order": 4,
+"goal": "Vet sources and build the core catalog",
+"method": {"value": "Manual exclusion polygons around extended emission, cross-match with known HII region catalogs, by-eye scoring 0/1/2 using 1 mm and 3 mm morphology, spectral index map", "evidence": [
+{"loc": "3.1 Source extraction", "quote": "We rank every source as not-a-core (0), core candidate (1), or core (2)."},
+{"loc": "3.1 Source extraction", "quote": "We draw polygons"},
+{"loc": "3.1 Source extraction", "quote": "To further identify regions based on their spectral properties, we create a 1 mm to 3 mm spectral index map of the central, most dense parts of Sgr B2 N and M."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Score 1 and 2 both kept (complete catalog); robust and complete catalogs gave no significant difference", "evidence": [{"loc": "3.1 Source extraction", "quote": "Thus, we report and use only the “complete\" catalog in the rest of this work."}]}
+],
+"assumptions": [
+{"value": "A 3 mm filamentary structure without a 1 mm counterpart indicates free-free emission", "evidence": [{"loc": "3.1 Source extraction", "quote": "Such a filamentary structure at 3 mm without a strong counterpart at 1 mm is indicative of free-free emission."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Difference between scores 1 and 2 admitted to be subjective", "evidence": [{"loc": "3.1 Source extraction", "quote": "We note that the difference between a score of 1 and 2 is subjective."}]}
+},
+{
+"order": 5,
+"goal": "Measure source fluxes and sizes",
+"method": {"value": "Integrated flux within the dendrogram leaf contour and brightest pixel; peak-to-contour flux ratio used to judge whether a source is resolved", "evidence": [
+{"loc": "3.2 Photometry", "quote": "We use the integrated flux within the dendrogram structure contour and the brightest pixel within the contour as the primary observables."},
+{"loc": "3.3 Source sizes", "quote": "Thus, we use a ratio of brightest pixel flux and summed flux within dendrogram structure to serve as a metric of whether a source is resolved or not."}
+]},
+"software": ["astrodendro"],
+"key_parameters": [
+{"value": "Aperture correction factor 1.465 for a 1-sigma aperture (used to compare with G18); frequency correction ~0.92", "evidence": [
+{"loc": "3.2.1 Photometry comparison", "quote": "We calculate the aperture correction factor as the fraction of the Gaussian distribution that is cut off after using a 1-$\\sigma$-sized aperture to be 1.465."},
+{"loc": "3.2.1 Photometry comparison", "quote": "the frequency correction factor is $\\sim$0.92."}
+]}
+],
+"assumptions": [
+{"value": "Optically thick part of the core with spectral index of two for the G18 frequency correction", "evidence": [{"loc": "3.2.1 Photometry comparison", "quote": "Assuming that the majority of the flux within the G18 beam is coming from the optically thick part of the core or an region and it has an average spectral index of two"}]}
+],
+"fitting": {"value": "2D Gaussian fitting with gaussfit_catalog was tested and abandoned", "evidence": [{"loc": "3.2 Photometry", "quote": "During testing, we attempted to perform 2D Gaussian photometry using the `gaussfit_catalog` python package."}]},
+"validation": {"value": "Aperture photometry comparison with G18 fluxes", "evidence": [{"loc": "3.2.1 Photometry comparison", "quote": "We compare our and G18 images by performing aperture photometry on G18 data."}]}
+},
+{
+"order": 6,
+"goal": "Derive 3 mm to 1 mm spectral indexes",
+"method": {"value": "Band 6 convolved to the Band 3 beam; brightest-pixel fluxes at 3 mm positions compared at both bands; limits for single-band detections", "evidence": [
+{"loc": "3.4 Spectral indexes", "quote": "To calculate the spectral index, we take the brightest pixel values for detections at 3 mm and take the corresponding positions on the sky at 1 mm."},
+{"loc": "3.4 Spectral indexes", "quote": "In addition to calculating spectral indexes for sources present in both bands, we are also able to place upper and lower limits for sources detected only at 3 mm and 1 mm respectively."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Errors only for sources with SNR > 10 in both bands; all catalog sources SNR > 4", "evidence": [
+{"loc": "3.4 Spectral indexes", "quote": "We calculate the spectral index errors only for sources with SNR over 10 in both bands."},
+{"loc": "3.4 Spectral indexes", "quote": "All sources in our catalog have the SNR $>$ 4."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Tested using 1 mm brightest-pixel positions instead; results very similar; in-band tclean alpha maps too noisy to use", "evidence": [
+{"loc": "3.4 Spectral indexes", "quote": "We find that using the 1 mm data’s brightest pixel locations produces very similar individual measurements, much less than the calculated errors."},
+{"loc": "3.4 Spectral indexes", "quote": "Thus, our data is not sensitive enough to produce in-band spectral indexes."}
+]}
+},
+{
+"order": 7,
+"goal": "Compute lower-limit core masses and fit the core mass function",
+"method": {"value": "Optically thin modified blackbody in the Rayleigh-Jeans limit, M = T_B d^2 / (kappa T_KE), applied to total dendrogram leaf flux with aperture correction; power law fit above completeness limit", "evidence": [
+{"loc": "3.5 Source masses", "quote": "Using a number of assumptions about the properties of a core, including that the dust is optically thin, we can derive the mass of such a core."},
+{"loc": "3.5 Source masses", "quote": "We then incorporate an aperture correction factor for the source flux."}
+]},
+"software": ["plfit"],
+"key_parameters": [
+{"value": "Uniform core temperature T_KE = 50 K", "evidence": [{"loc": "4.1.1 Protostellar cores", "quote": "Thus, in this work we take the average core temperature to be 50 K."}]},
+{"value": "Distance 8.4 kpc; 8.127 kpc would give 7% lower masses", "evidence": [{"loc": "Footnote 3", "quote": "Using the most recently measured distance of 8.127 kpc (cite: GRAVITYCollaboration2018) would result in 7% lower masses."}]},
+{"value": "Dust opacity kappa(92 GHz) = 0.0017 cm^2/g, kappa(226 GHz) = 0.0083 cm^2/g, beta_dust = 1.75", "evidence": [{"loc": "3.5 Source masses", "quote": "as a power law, assuming $\\beta_{\\text{dust}} = 1.75$, we obtain $\\kappa_{92 GHz} = 0.0017\\ \\frac{cm^2}{g}$ and $\\kappa_{226 GHz} = 0.0083\\ \\frac{cm^2}{g}$"}]},
+{"value": "Completeness threshold 6 sigma (13.5 Msun); also 8 sigma (18 Msun)", "evidence": [
+{"loc": "3.5 Source masses", "quote": "The core mass distributions have the turnover point around our completeness threshold over the whole imaged area at 6$\\sigma$ (13.5 M$_\\odot$)."},
+{"loc": "3.5 Source masses", "quote": "If we increase the fitting threshold to 8$\\sigma$ (18 M$_\\odot$)"}
+]}
+],
+"assumptions": [
+{"value": "Dust optically thin (so masses are lower limits); 3 mm masses adopted as lower limits", "evidence": [
+{"loc": "3.5 Source masses", "quote": "In addition, since the cores are at least partially optically thick, we can obtain only a lower limit on their dust masses."},
+{"loc": "3.5 Source masses", "quote": "Thus, we use the masses based on the 3 mm data as the lower limits in the rest of the paper."}
+]}
+],
+"fitting": {"value": "Maximum-likelihood power-law fit with plfit to masses above completeness limit", "evidence": [{"loc": "3.5 Source masses", "quote": "Using `plfit`, a Python implementation of the general power law fitting algorithm (cite: Clauset2009), we fit a power law to the masses above the completeness limit."}]},
+"validation": {"value": "Compared fitted slope with Kroupa IMF slope and tested a higher fitting threshold", "evidence": [{"loc": "3.5 Source masses", "quote": "The resulting fit of 191 sources is $\\alpha = 2.4\\pm 0.1$, which is consistent with the Kroupa IMF $\\alpha = 2.35$."}]}
+},
+{
+"order": 8,
+"goal": "Test the nature of the sources (Stage 0/I vs other options)",
+"method": {"value": "Simple model of an optically thick sphere inside optically thin dust for expected spectral indexes; Stromgren-sphere test for HII regions; free-fall time and Bonnor-Ebert mass for prestellar nature; mass extrapolation for Stage II", "evidence": [
+{"loc": "4.1.1 Protostellar cores", "quote": "To test our assumptions, we create a simple model of our observed sources."},
+{"loc": "4.1.2 regions?", "quote": "Using a Strömgren sphere as an approximation, we know that:"},
+{"loc": "4.1.3 Prestellar cores?", "quote": "We can further estimate the effects of the high-pressure environment using the Bonnor-Ebert mass:"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Average dust temperature 50 K, gas-to-dust ratio 100, gas column ~3e24 cm^-2", "evidence": [{"loc": "4.1.1 Protostellar cores", "quote": "Assuming a gas-to-dust ratio of 100, we represent the dust surface density using gas column density, with an average over the Sgr B2 N and M cluster of around $3\\times10^{24}$ $\\mathrm{cm}^{-2}$ (cite: Sanchez-Monge2017)."}]}
+],
+"assumptions": [
+{"value": "Magnetic fields do not contribute to core collapse support", "evidence": [{"loc": "4.1.3 Prestellar cores?", "quote": "Thus, in this work we assume that the magnetic fields do not contribute to the core collapse support."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Conclusion: sources are most consistent with Stage 0/I YSOs; very few HII regions contaminate; no prestellar cores", "evidence": [{"loc": "4.1.2 regions?", "quote": "Thus, we claim that there are very few to none regions contaminating our catalog."}]}
+},
+{
+"order": 9,
+"goal": "Infer total stellar mass and star formation rate",
+"method": {"value": "Sum core masses above completeness limit within cluster radii, extrapolate the Kroupa IMF down to 0.3 Msun, add HII regions at 45 Msun each, divide by cluster age", "evidence": [
+{"loc": "4.2 Inferred stellar mass", "quote": "We take the calculated masses from Section [3.5](#sec:source_masses) and extrapolate the low-mass end of the Kroupa initial mass function (cite: Kroupa2001) to obtain the core-based inferred stellar mass."},
+{"loc": "4.2 Inferred stellar mass", "quote": "Taking the star-forming age of the cloud as 0.74 Myr (cite: Kruijssen2015), we estimate the star formation rate (SFR) for each cluster."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Cluster radii 0.4 pc (N) and 0.5 pc (M); 6 sigma completeness 0.3 mJy (M), 0.2 mJy (N); upper core limit 20 Msun", "evidence": [
+{"loc": "4.2 Inferred stellar mass", "quote": "we take the radii of Sgr B2 N and M clusters to be 0.4 pc and 0.5 pc, respectively."},
+{"loc": "4.2 Inferred stellar mass", "quote": "We take 6$\\sigma$ as our completeness limit within the cluster boundaries"}
+]}
+],
+"assumptions": [
+{"value": "One third of a core mass ends up in a star; each HII region powered by a >20 Msun star with IMF-weighted mean 45 Msun", "evidence": [
+{"loc": "4.2 Inferred stellar mass", "quote": "We further assume that roughly one third of a core mass will end up in a star (cite: Lada2003)."},
+{"loc": "4.2 Inferred stellar mass", "quote": "Assuming that each region is powered by a $>$ 20M$_\\odot$ star, the IMF-weighted average mass of such star is 45M$_\\odot$."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with Ginsburg et al. 2018 (G18) estimates", "evidence": [{"loc": "4.2 Inferred stellar mass", "quote": "Compared to G18 we find that the total inferred stellar mass in Sgr B2 N increased by more than a factor of two, but is slightly lower for Sgr B2 M."}]}
+},
+{
+"order": 10,
+"goal": "Quantify core fragmentation relative to the lower-resolution catalog",
+"method": {"value": "Count high-resolution detections within 1.5 x beam FWHM of each G18 source centre", "evidence": [{"loc": "4.3 Core fragmentation", "quote": "For each low-resolution detection, we find the number of high-resolution detections within 1.5 $\\times$ beam FWHM of the source center."}]},
+"software": [],
+"key_parameters": [
+{"value": "Excluded G18 sources not detectable at pointing edges", "evidence": [{"loc": "4.3 Core fragmentation", "quote": "We exclude sources from the G18 catalog that would not be detectable in our data, specifically at the pointing edges where the sensitivity is lower."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.7.0-134.el7", "used_for": {"value": "Imaging with tclean and self-calibration (gaincal)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The data were imaged using CASA version 5.7.0-134.el7 `tclean` with robust parameter set to 0.5 (cite: McMullin2007)."},
+{"loc": "A.2.3 Poor self-calibration solutions", "quote": "We used `uvrange` parameter in `gaincal` task to limit the baseline lengths used to calculate the calibration solutions."}
+]}},
+{"name": "astrodendro", "version": "not stated", "used_for": {"value": "Source detection via dendrograms and flux measurement", "evidence": [{"loc": "3.1 Source extraction", "quote": "Then, we perform source detection on the primary-beam-corrected images using the `astrodendro` source-finding algorithm."}]}},
+{"name": "plfit", "version": "not stated", "used_for": {"value": "Power-law fit to the core mass distribution", "evidence": [{"loc": "3.5 Source masses", "quote": "Using `plfit`, a Python implementation of the general power law fitting algorithm (cite: Clauset2009), we fit a power law to the masses above the completeness limit."}]}},
+{"name": "astropy", "version": "not stated", "used_for": {"value": "Sigma clipping for line removal in the line-contribution test (also listed as a tool used)", "evidence": [
+{"loc": "Appendix: Line contribution to continuum", "quote": "We removed line emission and absorption from the spectra using the `astropy’s` implementation of sigma clipping with `sigma`=2 and `maxiters`=5."},
+{"loc": "Software", "quote": "This work utilized the following tools: `astropy` (cite: astropy:2013; astropy:2018)"}
+]}},
+{"name": "gaussfit_catalog", "version": "not stated", "used_for": {"value": "2D Gaussian photometry tested and abandoned (fewer than 10% satisfactory fits)", "evidence": [{"loc": "3.2 Photometry", "quote": "During testing, we attempted to perform 2D Gaussian photometry using the `gaussfit_catalog` python package."}]}},
+{"name": "dendrocat", "version": "not stated", "used_for": {"value": "Listed among tools used; specific use not described", "evidence": [{"loc": "Software", "quote": "`dendrocat`, `radiobeam`."}]}},
+{"name": "radiobeam", "version": "not stated", "used_for": {"value": "Listed among tools used; specific use not described", "evidence": [{"loc": "Software", "quote": "`dendrocat`, `radiobeam`."}]}}
+],
+"results_numeric": [
+{"quantity": "Number of sources detected at 3 mm and 1 mm", "value": "371 (3 mm); 218 (1 mm)", "uncertainty": "not stated", "units": "sources", "from_step": 4, "evidence": [{"loc": "abstract", "quote": "we detect 371 sources at 3 mm and 218 sources in the smaller field of view at 1 mm."}]},
+{"quantity": "Unique cores detected at at least one wavelength", "value": "410", "uncertainty": "not stated", "units": "sources", "from_step": 4, "evidence": [{"loc": "3.1 Source extraction", "quote": "Thus, the total number of individual cores identified at at least one wavelength is 410."}]},
+{"quantity": "HII region census in the catalog", "value": "17 known, 16 candidates, 8 new", "uncertainty": "not stated", "units": "regions", "from_step": 4, "evidence": [{"loc": "3.1 Source extraction", "quote": "In total, our catalog contains 17 known hyper-compact and ultra-compact regions, 16 region candidates, and 8 new hyper-compact regions."}]},
+{"quantity": "Final average image RMS", "value": "0.033 / 0.05 / 0.35 / 0.25 (N Band 3 / M Band 3 / N Band 6 / M Band 6)", "uncertainty": "not stated", "units": "mJy", "from_step": 1, "evidence": [{"loc": "Observations and data reduction", "quote": "is 0.033 mJy for N Band 3, 0.05 mJy for M Band 3, 0.35 mJy for N Band 6, and 0.25 mJy for M Band 6."}]},
+{"quantity": "Mean relative line contribution to continuum", "value": "-4.4% (Band 3); -1.2% (Band 6)", "uncertainty": "scaled MAD 5.2% (Band 3), 11.2% (Band 6)", "units": "percent", "from_step": 2, "evidence": [{"loc": "Appendix: Line contribution to continuum", "quote": "We find that the mean relative line contribution for all cores is $-4.4\\%$ for Band 3 and $-1.2\\%$ for Band 6."}]},
+{"quantity": "Core mass function power-law slope above 6 sigma completeness (191 sources)", "value": "2.4", "uncertainty": "0.1", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "3.5 Source masses", "quote": "The resulting fit of 191 sources is $\\alpha = 2.4\\pm 0.1$, which is consistent with the Kroupa IMF $\\alpha = 2.35$."}]},
+{"quantity": "Core mass function power-law slope above 8 sigma (144 sources)", "value": "2.6", "uncertainty": "0.1", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "3.5 Source masses", "quote": "the 144 sources produce a slightly steeper fit $\\alpha = 2.6\\pm 0.1$."}]},
+{"quantity": "Inferred stellar mass and SFR, Sgr B2 N", "value": "2800 Msun; 0.0038 Msun/yr", "uncertainty": "not stated", "units": "Msun; Msun/yr", "from_step": 9, "evidence": [{"loc": "abstract", "quote": "We report source-counting-based inferred stellar mass and the star formation rate of the cloud: 2800M$_\\odot$, 0.0038M$_\\odot$ yr$^{-1}$ for Sgr B2 N and 6900M$_\\odot$, 0.0093M$_\\odot$ yr$^{-1}$ for Sgr B2 M respectively."}]},
+{"quantity": "Inferred stellar mass and SFR, Sgr B2 M", "value": "6900 Msun; 0.0093 Msun/yr", "uncertainty": "not stated", "units": "Msun; Msun/yr", "from_step": 9, "evidence": [{"loc": "abstract", "quote": "We report source-counting-based inferred stellar mass and the star formation rate of the cloud: 2800M$_\\odot$, 0.0038M$_\\odot$ yr$^{-1}$ for Sgr B2 N and 6900M$_\\odot$, 0.0093M$_\\odot$ yr$^{-1}$ for Sgr B2 M respectively."}]},
+{"quantity": "Total star formation rate (N + M)", "value": "0.013", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 9, "evidence": [{"loc": "Summary", "quote": "The resulting star formation rate is 0.0038M$_\\odot$ yr$^{-1}$ for Sgr B2 N and 0.0093M$_\\odot$ yr$^{-1}$ for Sgr B2 M totalling 0.013M$_\\odot$ yr$^{-1}$"}]},
+{"quantity": "Average number of cores per low-resolution (G18) source", "value": "2", "uncertainty": "not stated", "units": "cores per source", "from_step": 10, "evidence": [{"loc": "4.3 Core fragmentation", "quote": "On average, each detected G18 source fragments into 2 cores."}]},
+{"quantity": "Average cores per fragmenting G18 source", "value": "3.4", "uncertainty": "not stated", "units": "cores per source", "from_step": 10, "evidence": [{"loc": "4.3 Core fragmentation", "quote": "then there is an average of 3.4 cores per G18 fragmenting source."}]},
+{"quantity": "G18 sources detectable and detected at high resolution", "value": "94 detectable; 77 detected", "uncertainty": "not stated", "units": "sources", "from_step": 10, "evidence": [{"loc": "4.3 Core fragmentation", "quote": "Of the 94 potentially detectable G18 sources, only 77 are detected at high-resolution."}]},
+{"quantity": "Spectral index range of most sources", "value": "2 < alpha <~ 3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Summary", "quote": "We find most sources to be marginally resolved and have a spectral index consistent with ${2<\\alpha\\lesssim3}$."}]},
+{"quantity": "Aperture correction factor for 1-sigma aperture", "value": "1.465", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "3.2.1 Photometry comparison", "quote": "We calculate the aperture correction factor as the fraction of the Gaussian distribution that is cut off after using a 1-$\\sigma$-sized aperture to be 1.465."}]}
+],
+"findings_qualitative": [
+{"value": "Sources are most consistent with warm Stage 0/I YSOs (rotationally supported disks with protostar and envelope)", "evidence": [{"loc": "abstract", "quote": "We determine that the observed sources are most consistent with Stage 0/I YSOs, i.e., rotationally supported disks with an active protostar and an envelope, that are warmer than those observed in the solar neighborhood."}]},
+{"value": "Low-resolution sources fragment into about two cores on average", "evidence": [{"loc": "abstract", "quote": "The sources seen at low resolution are observed to fragment into an average of two objects."}]},
+{"value": "Most sources are marginally resolved and at least partially optically thick", "evidence": [{"loc": "abstract", "quote": "Most of the sources we report are marginally resolved and are at least partially optically thick."}]}
+],
+"claims": [
+{"hypothesis": "Higher resolution reveals more and fragmented sources compared with the 5000 AU survey", "experiment": "Cross-match the 700 AU catalog with the G18 catalog within 1.5 x beam FWHM", "result": "371 sources at 3 mm; each G18 source fragments into about 2 cores on average; about a third fragment", "finding": "Tenfold better resolution splits low-resolution sources into multiple cores", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The sources seen at low resolution are observed to fragment into an average of two objects."},
+{"loc": "abstract", "quote": "About a third of the observed sources fragment."}
+]},
+{"hypothesis": "The compact sources are Stage 0/I YSOs rather than HII regions, prestellar cores or Stage II/III", "experiment": "Brightness temperature and spectral-index modelling, Stromgren sphere, free-fall time, Bonnor-Ebert mass and disk-mass extrapolation", "result": "Sources consistent with ~50 K, partially optically thick disks; few HII contaminants", "finding": "Sample is primarily Stage 0/I YSOs, warmer than local disks", "support": "supported", "evidence": [{"loc": "Summary", "quote": "We therefore conclude that the sample is comprised primarily of Stage 0/I YSOs."}]},
+{"hypothesis": "The core mass function is top-heavy in Sgr B2", "experiment": "Power-law fit with plfit to 3 mm lower-limit masses above 6 sigma completeness", "result": "alpha = 2.4 +/- 0.1 (and 2.6 +/- 0.1 above 8 sigma)", "finding": "The core mass function is consistent with the Kroupa IMF", "support": "partially", "evidence": [{"loc": "Summary", "quote": "We find that the core mass function of our sample is consistent with the Kroupa IMF."}]},
+{"hypothesis": "Source counting gives the stellar mass and star formation rate of Sgr B2 N and M", "experiment": "Core-based plus HII-region-based mass with Kroupa IMF extrapolation and 0.74 Myr age", "result": "2800 Msun / 0.0038 Msun/yr (N); 6900 Msun / 0.0093 Msun/yr (M)", "finding": "Total SFR 0.013 Msun/yr, similar to previous estimates", "support": "supported", "evidence": [{"loc": "Summary", "quote": "Using direct source counting, we infer the total stellar mass of 2800M$_\\odot$ for Sgr B2 N and 6900M$_\\odot$ for Sgr B2 M."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Follow-up at higher resolution to the earlier ALMA Band 3 survey of the region", "evidence": [{"loc": "Introduction", "quote": "We report follow-up ALMA observations to ALMA project 2013.1.00269.S"}]},
+{"field": "why_this_method", "value": "Fully automated source detection is inefficient in this high dynamic range, complex field, so dendrograms plus manual vetting were used", "evidence": [
+{"loc": "3.1 Source extraction", "quote": "Combining this with the irregular structure of the observed objects makes fully automated source detection inefficient."},
+{"loc": "3.1 Source extraction", "quote": "Therefore, we utilized the automated source-finding dendrogram algorithm (cite: Rosolowsky2008) augmented with a by-hand approach described below."}
+]},
+{"field": "how_they_decided_enough", "value": "Self-calibration stopped at the step where noise stopped improving; extra step added only for Sgr B2 N Band 6", "evidence": [{"loc": "Observations and data reduction", "quote": "Running this extra self-calibration step on the other pointings did not reduce the noise in the images."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "2D Gaussian photometry rejected in favor of dendrogram contours", "evidence": [{"loc": "3.2 Photometry", "quote": "Thus, we concluded that our sources are not well-represented by simple 2D Gaussians and decided to use dendrogram contours to define sources."}]},
+{"value": "Mosaic gridder for the overlapping Band 3 pointings rejected", "evidence": [{"loc": "A.3 Imaging overlapping pointings", "quote": "We find no significant benefit of imaging the two pointings together with mosaic gridder when compared to using standard gridder on each pointing individually."}]},
+{"value": "RMS-based clean masks replaced by hand-drawn polygons", "evidence": [{"loc": "A.1 Cleaning and self-calibration testing", "quote": "At first, we tried to use RMS-based masks."}]},
+{"value": "More conservative self-calibration tested but gives 20% higher noise", "evidence": [{"loc": "A.2.4 Final result", "quote": "With the self-calibration approach used in this paper, we are able to achieve 20% lower noise compared to the more conservative self-calibration."}]}
+],
+"limitations_admitted": [
+{"value": "Hand-drawn exclusion polygons can remove true sources", "evidence": [{"loc": "3.1 Source extraction", "quote": "Excluding detections within polygons that were drawn by eye can potentially exclude true positives."}]},
+{"value": "Local imaging artifacts (negative bowls, wave patterns) remain after self-calibration", "evidence": [{"loc": "3.1 Source extraction", "quote": "Even after extensive self-calibration and cleaning, the data still include local artifacts such as negative bowls around bright sources and wave-like patterns on different scales."}]},
+{"value": "Masses are lower limits and may be underestimated, especially in crowded regions", "evidence": [{"loc": "3.5 Source masses", "quote": "Thus, even with this correction some masses might be underestimated."}]},
+{"value": "Core scoring (1 versus 2) is subjective", "evidence": [{"loc": "3.1 Source extraction", "quote": "We note that the difference between a score of 1 and 2 is subjective."}]}
+],
+"referee_caveats_inferred": [
+"Single assumed T = 50 K and optically thin kappa for all cores; masses are lower limits by construction and the mass function slope depends on this.",
+"Only 60% of 3 mm sources lie in the 1 mm field, so spectral-index conclusions are extrapolated.",
+"Hand scoring of cores and hand-drawn masks make the catalog hard to reproduce exactly.",
+"Flux scatter up to 40% per source from self-calibration choices; no ALMA absolute flux uncertainty quoted.",
+"Mass function compared with Kroupa IMF without a completeness-corrected treatment of fragmentation or unresolved multiplicity."
+],
+"reproducibility": [],
+"code_released": [
+{"value": "Image reduction code and final catalogs on GitHub (nbudaiev/SgrB2_ALMA_continuum), including polygon regions", "evidence": [
+{"loc": "Software", "quote": "Image reduction and final catalogs are available on GitHub: <https://github.com/nbudaiev/SgrB2_ALMA_continuum/releases/tag/Accepted-15-Sep-2023>."},
+{"loc": "Footnote 2", "quote": "The polygon regions are available on GitHub with the rest of the reduction code: <https://github.com/nbudaiev/SgrB2_ALMA_continuum>"}
+]},
+{"value": "Self-calibrated FITS images on Zenodo (doi:10.5281/zenodo.8377186)", "evidence": [{"loc": "Observations and data reduction", "quote": "The FITS files of the self-calibrated data were published in a Zenodo repository at [doi:10.5281/zenodo.8377186](https://doi.org/10.5281/zenodo.8377186)."}]}
+],
+"missing_for_reproduction": [
+"tclean cell/image size, niter, deconvolver, and per-pointing absolute clean thresholds",
+"Self-calibration solution parameters of the original reduction (refant, minsnr, combine)",
+"Subjective per-source scores (obtainable from the released catalog)",
+"Pipeline version / calibrators used to produce the delivered calibrated data"
+],
+"estimated_data_volume_inferred": "Several hundred GB: four execution blocks, 43-46 12 m antennas, 4 x 1920 channels per band, baselines to 12 km, ~2600-3000 s each (calibrated MS plus cleaning products)",
+"score_inferred": 3,
+"score_reason": "Public ALMA projects, released code, catalogs and images, and numeric results, but several imaging/self-cal parameters are unstated and core vetting is manual and subjective.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "ALMA projects are named and code, polygons and catalogs are released; main results are numeric counts, masses, slopes and SFRs, though the manual vetting limits exact recovery.",
+"methods_papers": [
+{"citation": "McMullin et al. 2007 (CASA)", "why": "Cited for CASA tclean imaging"},
+{"citation": "Rosolowsky et al. 2008 (astrodendro)", "why": "Dendrogram source-finding algorithm"},
+{"citation": "Clauset et al. 2009 (plfit)", "why": "Power-law fitting algorithm"},
+{"citation": "Richards et al. 2022", "why": "Recommended practice for masking when cleaning"}
+],
+"companion_papers": [
+{"citation": "Ginsburg et al. 2018 (G18)", "why": "Lower-resolution 3 mm survey of Sgr B2 (2013.1.00269.S) used for comparison and as the earlier stellar mass estimate"},
+{"citation": "Sanchez-Monge et al. 2017", "why": "Earlier ALMA study of Sgr B2 N and M: line-rich nature and gas column density"},
+{"citation": "Schmiedeke et al. 2016", "why": "Model dust temperatures and HII region density in Sgr B2"},
+{"citation": "Meng et al. 2022", "why": "Catalog of HII regions used for cross-matching"}
+],
+"related_projects_or_surveys": ["2013.1.00269.S", "2016.1.00550.S"]
+}

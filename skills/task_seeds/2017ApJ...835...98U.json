@@ -1,0 +1,267 @@
+{
+ "bibcode": "2017ApJ...835...98U",
+ "title": "ALMA Deep Field in SSA22: Source Catalog and Number Counts",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/835/1/98",
+ "arxiv_id": "1611.09857",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What 1.1 mm sources and number counts does a deep contiguous ALMA mosaic reveal in the core of the z=3.09 SSA22 protocluster, and how do they relate to AzTEC sources and the protocluster?",
+ "alma_project_codes": [
+  "2013.1.00162.S"
+ ],
+ "data": {
+  "bands": "Band 6, 1.1 mm",
+  "arrays": "not stated",
+  "angular_resolution": "1.16x1.02 arcsec (FULL/LORES, tapered); 0.70x0.59 arcsec (DEEP/HIRES)",
+  "sensitivity": "median 1sigma 75 uJy/beam (FULL/LORES), 60 uJy/beam (DEEP/HIRES)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "AzTEC source IDs and flux densities",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Flux density of AzTEC source ((cite: 2014MNRAS.440.3462U))"
+     }
+    ]
+   },
+   "citation": "(cite: 2014MNRAS.440.3462U)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic redshifts for some SMGs",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "d; $^{12}$CO(3-2) ((cite: 2013MNRAS.429.3047B), see also (cite: 2005MNRAS.359.1165G), (cite: 2005ApJ...622..772C))"
+     }
+    ]
+   },
+   "citation": "(cite: 2013MNRAS.429.3047B)"
+  },
+  {
+   "what": {
+    "value": "SMA 860um flux density of ADF22.1 (12.2+-2.3 mJy)",
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "Tamura et al. reported the 860$\\mu$m flux density of ADF22.1, $S_{\\rm 860\\mu m}=12.2\\pm2.3$ mJy"
+     }
+    ]
+   },
+   "citation": "(cite: 2010ApJ...724.1270T)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the mosaic",
+   "method": "Combine uv data, clean with mosaic mode; tapered FULL/LORES map (fields 1-103) and untapered DEEP/HIRES map (fields 1-80)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "outertaper = 120 klambda; clean to 1.5 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make sensitivity map",
+   "method": "rms per 0.1\" pixel from surrounding 100x100 pixels on map before primary beam correction",
+   "software": [
+    "AIPS rmsd"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract sources",
+   "method": "Find positive sources above 3.5 sigma with aegean; negative sources counted to estimate spurious fraction; adopt >5 sigma",
+   "software": [
+    "aegean"
+   ],
+   "key_parameters": [
+    "5 sigma detection limit; 17 FULL/LORES + 1 DEEP/HIRES-only source"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure flux densities",
+   "method": "imfit Gaussian fits on primary-beam-corrected map; integrated flux adopted unless lower than peak",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Completeness and flux boosting",
+   "method": "Inject model sources (scaled synthesized beam) at 0.02-0.6 mJy, re-extract, 1000 repeats per bin; recovery within 1\" at >=4 sigma",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compare with AzTEC",
+   "method": "Sum ALMA >=5 sigma fluxes within 30\" AzTEC beam vs deboosted AzTEC flux; also convolve ALMA map with 30\" Gaussian",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Measure sizes and SFR surface density",
+   "method": "2D Gaussian fits on DEEP/HIRES map for SNR>10 sources; L_IR from SED templates; SFR via Kennicutt calibration (Kroupa IMF); Sigma_SFR with SFR/2",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "z=3.0 for ADF22.2 and ADF22.5 lacking zspec"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Number counts",
+   "method": "Differential and cumulative counts of 17 SMGs >5 sigma (FULL/LORES), completeness-corrected, and for 7 non-z=3.09 SMGs; cumulative field counts fit to a double power law with literature counts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Literature counts scaled to 1.1 mm with modified blackbody beta=1.5, T=35 K, z=2.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of robust ALMA sources (SNR>5)",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Source Extraction and Characterization",
+     "quote": "Therefore in total 18 sources were detected at SNR$>5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median size of nine brightest SMGs (FWHM)",
+   "value": "0.32",
+   "uncertainty": "+0.13/-0.06",
+   "units": "arcsec",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "the median value for the nine SMGs is $0^{\\prime\\prime}.32^{+0^{\\prime\\prime}.13}_{-0^{\\prime\\prime}.06}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median physical size",
+   "value": "2.4",
+   "uncertainty": "+1.0/-0.4",
+   "units": "kpc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$2.4^{+1.0}_{-0.4}$ physical kpc at $z=3.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Sigma_SFR",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "Msun/yr/kpc^2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "The median value is $\\Sigma_{\\rm SFR}$=50 $M_\\odot$ yr$^{-1}$ kpc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux ratio ALMA/AzTEC for AzTEC1",
+   "value": "0.64",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.1",
+     "quote": "$S^{\\rm ALMA}$/$S^{\\rm AzTEC}=0.64\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "Double power-law fit N'",
+   "value": "200",
+   "uncertainty": "30",
+   "units": "deg^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3 Number Counts",
+     "quote": "$N'=200\\pm30$ deg$^{-2}$, $S'=4.9\\pm0.2$ mJy, $\\alpha=10.4\\pm1.6$, and $\\beta=1.9\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Completeness at SNR=5",
+   "value": "~90%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Completeness and Flux boosting",
+     "quote": "The completeness of our source extraction is $\\sim70$% at SNR=4 and rises to $\\sim90$% at SNR=5."
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative counts N(>0.40 mJy), all 17 SMGs",
+   "value": "9.8",
+   "uncertainty": "+5.1/-2.2",
+   "units": "10^3 deg^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 0.40            | 17            | $9.8^{+5.1}_{-2.2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "aegean detection parameters beyond the 3.5 sigma threshold",
+  "exact clean parameters (niter, cell, image size, mosaic gridder)",
+  "which SEDs templates and exact weights for L_IR",
+  "injected model source count per trial and details of the model profile",
+  "Poisson/completeness correction procedure details for number counts",
+  "line-free channels used for continuum"
+ ],
+ "missing_for_reproduction": [
+  "Detailed clean parameters",
+  "aegean settings",
+  "SED template details for L_IR",
+  "Redshifts from unpublished works (Umehata et al., Hayatsu et al. in prep)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and main steps described, but several imaging and extraction parameters and unpublished redshifts are missing.",
+ "rediscovery_reason": "ALMA project code given, recipe largely described, results numeric (source catalog, counts, sizes).",
+ "source_card": "cards/2017ApJ...835...98U/sonnet/card.md"
+}

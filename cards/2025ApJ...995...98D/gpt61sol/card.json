@@ -1,0 +1,2693 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...995...98D",
+  "title": "DiskMINT: Self-consistent Thermochemical Disk Models with Radially Varying Gas and Dust—Application to the Massive, CO-Rich Disk of IM Lup",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Deng, Dingshan",
+  "n_authors": 4,
+  "arxiv_id": "2509.15487",
+  "doi": "10.3847/1538-4357/ae0e66",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2016.1.00484.L",
+   "2018.1.01055.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Step 1. Derive dust surface density",
+    "quote": "We compare the radial profile inferred from the synthetic continuum image with the profile inferred from a high angular resolution image from DSHARP (cite: huang_disk_2018),"
+   },
+   {
+    "loc": "dust-to-gas mass ratio",
+    "quote": "generate synthetic images using the same imaging parameters from MAPS data,"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "IM Lup (Sz 82)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "158.9 pc in text; 158±0.5 pc in Table 1",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "IM Lup (Sz 82) is a $\\sim 1$ Myr-old star (cite: mawet_direct_2012) located at a distance of $158.9\\,{\\rm pc}$ (`Gaia` DR3; (cite: gaia_collaboration_gaia_2023)) in the Lupus star-forming region."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| distance | $D$ | 158$\\pm$0.5 pc | \\[2\\] |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "\\[2\\] (cite: gaia_collaboration_gaia_2023);"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 (cite: gaia_collaboration_gaia_2023)",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "IM Lup (Sz 82) is a $\\sim 1$ Myr-old star (cite: mawet_direct_2012) located at a distance of $158.9\\,{\\rm pc}$ (`Gaia` DR3; (cite: gaia_collaboration_gaia_2023)) in the Lupus star-forming region."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| distance | $D$ | 158$\\pm$0.5 pc | \\[2\\] |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "\\[2\\] (cite: gaia_collaboration_gaia_2023);"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Infer the mass and surface density distribution of the IM Lup disk with self-consistent thermochemical models.",
+    "evidence": [
+     {
+      "loc": "The Large Disk of IM Lup",
+      "quote": "we use `DiskMINT` to investigate the mass and surface density distribution of the IM Lup disk."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00484.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO. ALMA#2016.1.00484.L, ADS/JAO.ALMA#2018.1.01055.L."
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01055.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO. ALMA#2016.1.00484.L, ADS/JAO.ALMA#2018.1.01055.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 for fitting; Band 3 for validation",
+    "evidence": [
+     {
+      "loc": "Band 3 analysis",
+      "quote": "Note that the models are fit to the higher quality ALMA Band 6 data, without considering the poorer quality Band 3 information."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Continuum at 110 GHz and 240 GHz; C18O (2-1) fitting and C18O (1-0) validation",
+    "evidence": [
+     {
+      "loc": "Band 3 analysis",
+      "quote": "Here we present the results of the ALMA Band 3 continuum at 110 GHz and $\\rm C^{18}O\\,(1-0)$ line emission for the structured model"
+     },
+     {
+      "loc": "Band 3 analysis",
+      "quote": "The continuum emission shows that the slightly larger dust grains ($\\sim 0.03\\,{\\rm cm}$) traced at 110 GHz have a similar distribution compared to the grains ($\\sim 0.01\\,{\\rm cm}$) traced at 240 GHz."
+     },
+     {
+      "loc": "Step 2. Derive gas surface density",
+      "quote": "both $\\Sigma_{\\rm dust}(r)$ and $\\Sigma_{\\rm gas}(r)$ are set in iterations by fitting the dust continuum and $\\rm C^{18}O\\,(2-1)$ line radial profiles"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "C18O",
+     "transition": "2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Step 2. Derive gas surface density",
+       "quote": "both $\\Sigma_{\\rm dust}(r)$ and $\\Sigma_{\\rm gas}(r)$ are set in iterations by fitting the dust continuum and $\\rm C^{18}O\\,(2-1)$ line radial profiles"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Band 3 analysis",
+       "quote": "Here we present the results of the ALMA Band 3 continuum at 110 GHz and $\\rm C^{18}O\\,(1-0)$ line emission for the structured model"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia DR3",
+     "provided": {
+      "value": "Distance to IM Lup",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "located at a distance of $158.9\\,{\\rm pc}$ (`Gaia` DR3; (cite: gaia_collaboration_gaia_2023))"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SMA",
+     "provided": {
+      "value": "Multiwavelength (sub)millimeter continuum measurements used in earlier dust-mass estimates",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "A large $M_{\\rm dust}\\sim 1.0-2.0\\times10^{-3}\\,M_\\odot$ was inferred from its bright (sub)millimeter continuum emission observed from SMA and ALMA using multiple wavelengths."
+       }
+      ]
+     }
+    },
+    {
+     "name": "University of Arizona HPC",
+     "provided": {
+      "value": "High Performance Computing resources",
+      "evidence": [
+       {
+        "loc": "Acknowledgments",
+        "quote": "This work made use of the High Performance Computing (HPC) resources, which are supported by the University of Arizona TRIF, UITS, and Research, Innovation, and Impact (RII)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "DSHARP high angular resolution continuum image and radial profile",
+      "evidence": [
+       {
+        "loc": "Step 1. Derive dust surface density",
+        "quote": "We compare the radial profile inferred from the synthetic continuum image with the profile inferred from a high angular resolution image from DSHARP (cite: huang_disk_2018),"
+       }
+      ]
+     },
+     "citation": "(cite: huang_disk_2018)"
+    },
+    {
+     "what": {
+      "value": "MAPS imaging parameters, gas inclination 47.5°, PA 144.5°, systemic velocity 4.5 km s−1",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "generate synthetic images using the same imaging parameters from MAPS data,"
+       },
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "The adopted gas disk inclination ($i = 47.5\\ensuremath{^\\circ}$), position angles (${\\rm PA} = 144.5\\ensuremath{^\\circ}$), and the systematic velocity ($v_{\\rm sys} = 4.5 \\,\\mathrm{km\\,s^{-1}}$) are also from MAPS CO isotopologue data (cite: zhang_MAPS_molecules_2021)."
+       }
+      ]
+     },
+     "citation": "(cite: zhang_MAPS_molecules_2021)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass 1.1 M_sun and radius 2.5 R_sun",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| stellar mass | $M_\\mathrm{\\star}$ | 1.1$\\,M_\\odot$ | \\[1\\] |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| stellar radius | $r_\\mathrm{\\star}$ | 2.5$\\,R_\\odot$ | \\[1\\] |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "\\[1\\] (cite: zhang_MAPS_molecules_2021);"
+       }
+      ]
+     },
+     "citation": "(cite: zhang_MAPS_molecules_2021)"
+    },
+    {
+     "what": {
+      "value": "Distance: 158.9 pc in text; 158±0.5 pc in Table 1",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "located at a distance of $158.9\\,{\\rm pc}$ (`Gaia` DR3; (cite: gaia_collaboration_gaia_2023))"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| distance | $D$ | 158$\\pm$0.5 pc | \\[2\\] |"
+       }
+      ]
+     },
+     "citation": "(cite: gaia_collaboration_gaia_2023)"
+    },
+    {
+     "what": {
+      "value": "Extinction A_V = 0.7 mag",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| extinction | $A_V$ | 0.7 mag | \\[3\\] |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "\\[3\\] (cite: gunther_disk-bearing_2010);"
+       }
+      ]
+     },
+     "citation": "(cite: gunther_disk-bearing_2010)"
+    },
+    {
+     "what": {
+      "value": "Mass accretion rate 1×10−8 M_sun yr−1",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| mass accretion rate | $\\dot{M}_\\mathrm{acc}$ | $1\\times 10^{-8}\\,M_\\odot\\,\\mathrm{yr^{-1}}$ | \\[4\\] |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "\\[4\\] (cite: alcala_x-shooter_2017);"
+       }
+      ]
+     },
+     "citation": "(cite: alcala_x-shooter_2017)"
+    },
+    {
+     "what": {
+      "value": "Dust radius containing 90% of flux: 264±1 AU",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "Its dust disk, measured as the radius containing 90% of the flux, is $R^{90}_{\\rm mm} \\sim 264\\pm1\\,{\\rm AU}$ (cite: huang_disk_2018)."
+       }
+      ]
+     },
+     "citation": "(cite: huang_disk_2018)"
+    },
+    {
+     "what": {
+      "value": "12CO gas radius containing 90% of flux: 481±6 AU",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "Its $\\rm {}^{12}CO$ gas disk is nearly double the size of the dust disk $R^{90}_{\\rm {}^{12}CO}\\sim 481\\pm6\\,{\\rm AU}$ (cite: law_IMLup_molecules_vertical_2021)."
+       }
+      ]
+     },
+     "citation": "(cite: law_IMLup_molecules_vertical_2021)"
+    },
+    {
+     "what": {
+      "value": "System age ~1 Myr",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "IM Lup (Sz 82) is a $\\sim 1$ Myr-old star (cite: mawet_direct_2012)"
+       }
+      ]
+     },
+     "citation": "(cite: mawet_direct_2012)"
+    },
+    {
+     "what": {
+      "value": "BT-settl stellar photosphere spectrum, T_eff = 4300 K",
+      "evidence": [
+       {
+        "loc": "Models and Main Results",
+        "quote": "a `BT-settl` stellar photosphere spectrum with $T_{\\rm eff} = 4300\\,{\\rm K}$ (cite: Allard_2003IAUS..211..325A; Allard_2011ASPC..448...91A);"
+       }
+      ]
+     },
+     "citation": "(cite: Allard_2003IAUS..211..325A; Allard_2011ASPC..448...91A)"
+    },
+    {
+     "what": {
+      "value": "DIANA standard dust opacities and composition",
+      "evidence": [
+       {
+        "loc": "Dust properties",
+        "quote": "we use the DIANA standard opacities (cite: Woitke_diana_2016; min_multiwavelength_2016),"
+       }
+      ]
+     },
+     "citation": "(cite: Woitke_diana_2016; min_multiwavelength_2016)"
+    },
+    {
+     "what": {
+      "value": "Amorphous silicate and amorphous carbon BE-sample optical materials",
+      "evidence": [
+       {
+        "loc": "Dust properties",
+        "quote": "a mixture 60% of amorphous silicates ((cite: dorschner_steps_1995), ${\\rm Mg_{0.7}Fe_{0.3}SiO_{3}}$) with 15% amorphous carbon ((cite: zubko_optical_1996), BE-sample), with 25% porosity, by volume."
+       }
+      ]
+     },
+     "citation": "(cite: dorschner_steps_1995); (cite: zubko_optical_1996)"
+    },
+    {
+     "what": {
+      "value": "Dynamical gas-mass estimates for comparison",
+      "evidence": [
+       {
+        "loc": "Summary",
+        "quote": "Considering the underlying uncertainties, this range of values agrees with dynamical-based estimates (cite: lodato_dynamical_mass_2023; martire_rotation_2024)"
+       }
+      ]
+     },
+     "citation": "(cite: lodato_dynamical_mass_2023; martire_rotation_2024)"
+    },
+    {
+     "what": {
+      "value": "Earlier thermochemical gas-mass estimate ~2.0×10−3 M_sun and factor-100 homogeneous CO reduction",
+      "evidence": [
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "However, the $M_{\\rm gas}$ inferred from thermochemical models matching CO isotopologue data is reported to be only $\\sim 2.0\\times10^{-3}\\,M_\\odot$ (cite: zhang_MAPS_molecules_2021)."
+       },
+       {
+        "loc": "The Large Disk of IM Lup",
+        "quote": "The authors can reconcile models with data if gas-phase CO is homogeneously reduced by a factor of 100 from their model output."
+       }
+      ]
+     },
+     "citation": "(cite: zhang_MAPS_molecules_2021)"
+    },
+    {
+     "what": {
+      "value": "Dust-mass comparisons: ~137 M_earth; 656 M_earth; ~639 M_earth",
+      "evidence": [
+       {
+        "loc": "Uncertainties on the dust disk mass",
+        "quote": "With these assumptions, the dust disk mass of IM Lup is $M_{\\rm dust}\\sim 137\\,M_\\oplus$ (cite: Manara2022DemographicsFormation) with the revised Gaia distance."
+       },
+       {
+        "loc": "Uncertainties on the dust disk mass",
+        "quote": "Using this approach, (cite: zhang_MAPS_molecules_2021) found $M_{\\rm dust}= 1.97\\times10^{-3}\\,M_\\odot = 656\\,M_{\\oplus}$,"
+       },
+       {
+        "loc": "Uncertainties on the dust disk mass",
+        "quote": "They also adopted the DSHARP dust composition and inferred $M_{\\rm dust}\\sim 639\\,M_{\\oplus}$,"
+       }
+      ]
+     },
+     "citation": "(cite: Manara2022DemographicsFormation); (cite: zhang_MAPS_molecules_2021); (cite: sierra_molecules_2021)"
+    },
+    {
+     "what": {
+      "value": "CO-isotopologue and N2H+ thermochemical gas-mass estimate for comparison",
+      "evidence": [
+       {
+        "loc": "Summary",
+        "quote": "a new thermochemical model-based estimate using a combination of CO isotopologues and ${\\rm N_2H^+}$ emission (cite: trapman_exoalma_2025)."
+       }
+      ]
+     },
+     "citation": "(cite: trapman_exoalma_2025)"
+    },
+    {
+     "what": {
+      "value": "Streaming-instability threshold Z ~0.02 for alpha_v ~10−3",
+      "evidence": [
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "Therefore, the $Z \\sim 0.02$ threshold inferred with $\\alpha_{\\rm v} \\sim 10^{-3}$ (cite: li_thresholds_2021) is a good approximation for the IM Lup disk."
+       }
+      ]
+     },
+     "citation": "(cite: li_thresholds_2021)"
+    },
+    {
+     "what": {
+      "value": "Literature turbulence constraints from CO rotation, dust settling, and midplane grains",
+      "evidence": [
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "(cite: flaherty_evidence_2024) found $0.03 \\lesssim \\alpha_{\\rm v} \\lesssim 0.08$ by modeling the rotation curves of CO isotopologues that emit at disk surface;"
+       },
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "(cite: franceschi_IMLup_constraining_2022) found $2.1\\times10^{-3} \\lesssim \\alpha_{\\rm v} \\lesssim 3.4\\times10^{-3}$ by modeling the multi-wavelength observations regarding the dust vertical structure with settling;"
+       },
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "(cite: jiang_grain-size_2024) found $\\alpha_{\\rm v} \\sim 10^{-3}$ by modeling the grains in the pebble-settled midplane."
+       }
+      ]
+     },
+     "citation": "(cite: flaherty_evidence_2024); (cite: franceschi_IMLup_constraining_2022); (cite: jiang_grain-size_2024)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "BT-settl stellar photosphere spectrum with T_eff = 4300 K",
+     "evidence": [
+      {
+       "loc": "Models and Main Results",
+       "quote": "a `BT-settl` stellar photosphere spectrum with $T_{\\rm eff} = 4300\\,{\\rm K}$ (cite: Allard_2003IAUS..211..325A; Allard_2011ASPC..448...91A);"
+      }
+     ]
+    },
+    {
+     "value": "DIANA standard opacities",
+     "evidence": [
+      {
+       "loc": "Dust properties",
+       "quote": "we use the DIANA standard opacities (cite: Woitke_diana_2016; min_multiwavelength_2016),"
+      }
+     ]
+    },
+    {
+     "value": "Full thermochemical models used to assess omitted gas cooling",
+     "evidence": [
+      {
+       "loc": "Omission of gas cooling",
+       "quote": "this simplified approach yields a thermal profile relatively similar to the full model, particularly near the disk midplane,"
+      },
+      {
+       "loc": "Omission of gas cooling",
+       "quote": "compared to the full model in (cite: Ruaud2022)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "Synthetic images: field-of-view out to 20″",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "with a synthetic beam size of $0.15\\ensuremath{''} \\times 0.15\\ensuremath{''}$ and field-of-view out to 20$''$."
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Synthetic images: 0.15″ × 0.15″",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "with a synthetic beam size of $0.15\\ensuremath{''} \\times 0.15\\ensuremath{''}$ and field-of-view out to 20$''$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Well-mixed modeling and vertical hydrostatic equilibrium procedure",
+      "evidence": [
+       {
+        "loc": "Models and Main Results",
+        "quote": "We start with a well-mixed model, following the same approach used on the disk around RU Lup as in (cite: Deng_2023_diskmint)."
+       },
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "Following (cite: Deng_2023_diskmint), we run `DiskMINT` by solving for disk vertical hydrostatic equilibrium."
+       }
+      ]
+     },
+     "from_reference": "(cite: Deng_2023_diskmint)"
+    },
+    {
+     "what": {
+      "value": "Reduced chemical network and ISM chemical abundances",
+      "evidence": [
+       {
+        "loc": "Models and Main Results",
+        "quote": "it includes a reduced chemical network (cite: Ruaud2022)"
+       },
+       {
+        "loc": "Models and Main Results",
+        "quote": "we run the reduced chemical network using the ISM chemical abundances (cite: Ruaud2022; Deng_2023_diskmint) to determine the CO abundances."
+       }
+      ]
+     },
+     "from_reference": "(cite: Ruaud2022; Deng_2023_diskmint)"
+    },
+    {
+     "what": {
+      "value": "DIANA standard opacities and Bruggeman mixing rule",
+      "evidence": [
+       {
+        "loc": "Dust properties",
+        "quote": "using the Bruggeman (cite: bruggeman_berechnung_1935) mixing rule,"
+       },
+       {
+        "loc": "Dust properties",
+        "quote": "we use the DIANA standard opacities (cite: Woitke_diana_2016; min_multiwavelength_2016),"
+       }
+      ]
+     },
+     "from_reference": "(cite: bruggeman_berechnung_1935); (cite: Woitke_diana_2016; min_multiwavelength_2016)"
+    },
+    {
+     "what": {
+      "value": "20 logarithmic grain-size bins; stated thermal-structure accuracy 5%",
+      "evidence": [
+       {
+        "loc": "Dust properties",
+        "quote": "We divide the dust grains into 20 different size bins – which is sufficient to constrain the resulting thermal structure to an accuracy of $5\\%$"
+       },
+       {
+        "loc": "Dust properties",
+        "quote": "(for details, see Section 2.1 in (cite: Deng_2023_diskmint))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Deng_2023_diskmint), Section 2.1"
+    },
+    {
+     "what": {
+      "value": "Self-similar viscous surface-density distribution",
+      "evidence": [
+       {
+        "loc": "A self-similar surface density distribution",
+        "quote": "This well-mixed model uses the surface density distribution that follows the similarity solutions of viscously evolving disks (cite: lynden-bell_evolution_1974; Hartmann1998):"
+       }
+      ]
+     },
+     "from_reference": "(cite: lynden-bell_evolution_1974; Hartmann1998)"
+    },
+    {
+     "what": {
+      "value": "Well-mixed characteristic radius 100 AU and surface-density slope 1.0",
+      "evidence": [
+       {
+        "loc": "A self-similar surface density distribution",
+        "quote": "We adopt typical values for the characteristic radius of $r_{c} = 100\\,\\mathrm{AU}$ and $\\gamma = 1.0$ as in previous thermochemical models"
+       },
+       {
+        "loc": "A self-similar surface density distribution",
+        "quote": "(cite: Miotello2014; Miotello2016; miotello_lupus_2017; Ruaud2022; trapman_exoalma_2025; Trapman_AGEPRO_V_gas_masses)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Miotello2014; Miotello2016; miotello_lupus_2017; Ruaud2022; trapman_exoalma_2025; Trapman_AGEPRO_V_gas_masses)"
+    },
+    {
+     "what": {
+      "value": "Continuum inclination 47.5° from DSHARP",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "The SED is generated using `RADMC3D` with the disk inclination ($i = 47.5\\ensuremath{^\\circ}$) from ALMA continuum images by DSHARP (cite: huang_disk_2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: huang_disk_2018)"
+    },
+    {
+     "what": {
+      "value": "LIME non-LTE line radiative transfer",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "Then we utilize `LIME` to conduct non-Local Thermal Equilibrium line radiative transfer as in (cite: Deng_2023_diskmint)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Deng_2023_diskmint)"
+    },
+    {
+     "what": {
+      "value": "MAPS synthetic imaging parameters and gas geometry",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "generate synthetic images using the same imaging parameters from MAPS data,"
+       },
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "The adopted gas disk inclination ($i = 47.5\\ensuremath{^\\circ}$), position angles (${\\rm PA} = 144.5\\ensuremath{^\\circ}$), and the systematic velocity ($v_{\\rm sys} = 4.5 \\,\\mathrm{km\\,s^{-1}}$) are also from MAPS CO isotopologue data (cite: zhang_MAPS_molecules_2021)."
+       }
+      ]
+     },
+     "from_reference": "MAPS data; (cite: zhang_MAPS_molecules_2021)"
+    },
+    {
+     "what": {
+      "value": "Steady-state dust diffusion formulation; Schmidt number ~1",
+      "evidence": [
+       {
+        "loc": "Vertical distribution: dust settling",
+        "quote": "We consider the transport of dust particles by the turbulent fluctuations as a diffusion process in steady state (cite: dullemond_flaring_2004; fromang_n_Nelson_settling_2009):"
+       },
+       {
+        "loc": "Vertical distribution: dust settling",
+        "quote": "${\\rm Sc}$ is the Schmidt number assumed to be $\\sim 1$ (cite: fromang_n_Nelson_settling_2009)."
+       }
+      ]
+     },
+     "from_reference": "(cite: dullemond_flaring_2004; fromang_n_Nelson_settling_2009)"
+    },
+    {
+     "what": {
+      "value": "Fragmentation threshold grain size",
+      "evidence": [
+       {
+        "loc": "Dust fragmentation",
+        "quote": "We consider the dust fragmentation by including the threshold grain size following (cite: birnstiel_simple_2012),"
+       }
+      ]
+     },
+     "from_reference": "(cite: birnstiel_simple_2012)"
+    },
+    {
+     "what": {
+      "value": "Drift threshold grain-size estimate",
+      "evidence": [
+       {
+        "loc": "Dust radial drifting",
+        "quote": "The drift threshold size $a_{\\rm drift}$ can also be estimated as (cite: birnstiel_simple_2012; birnstiel_dust_2024):"
+       }
+      ]
+     },
+     "from_reference": "(cite: birnstiel_simple_2012; birnstiel_dust_2024)"
+    },
+    {
+     "what": {
+      "value": "Drift-velocity calibration f_d = 0.3",
+      "evidence": [
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "Here $f_{\\rm d}$ is an order-of-unity constant introduced in (cite: birnstiel_simple_2012) and was taken to be $0.3$ according to the calibration to more comprehensive numerical simulations (cite: birnstiel_outer_2014),"
+       }
+      ]
+     },
+     "from_reference": "(cite: birnstiel_simple_2012); (cite: birnstiel_outer_2014)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact observed continuum images, C18O cubes, product filenames, and versioned download locations.",
+    "Photometric measurements, uncertainties, source citations for individual SED points, and multi-epoch averaging procedure.",
+    "Observed-data calibration, self-calibration, continuum subtraction, spectral channelization, weighting, masks, and noise estimates.",
+    "Annular widths, radial sampling, image centering, spectral integration limits, and radial-profile uncertainty calculation.",
+    "Numerical a_max and q values: the supplied model-parameter tables do not retain them.",
+    "Numerical model grid, radiative-transfer sampling, scattering treatment, and convergence tolerances.",
+    "Chemical evolution time, initial abundance values, reaction-network configuration, and radiation or ionization inputs.",
+    "LIME molecular data, collision rates, sampling, spectral resolution, and numerical convergence settings.",
+    "Fit objective, data weighting, parameter search strategy, and statistical uncertainty procedure.",
+    "Normalization and radial prescription for the small-grain component beyond the continuum edge.",
+    "Resolution of the distance values 158.9 pc versus 158±0.5 pc and dust-edge values 300 AU versus 320 AU."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Set stellar illumination and dust opacities",
+    "method": {
+     "value": "Use a three-component stellar spectrum and compute size-dependent wavelength-dependent dust opacities.",
+     "evidence": [
+      {
+       "loc": "Models and Main Results",
+       "quote": "For all of the models, we adopt an input stellar spectrum with three components:"
+      },
+      {
+       "loc": "Dust properties",
+       "quote": "We use the `optool`[^3] (cite: dominik_optool_2021) package to compute the wavelength-dependent dust opacity using the Bruggeman (cite: bruggeman_berechnung_1935) mixing rule,"
+      }
+     ]
+    },
+    "software": [
+     "optool"
+    ],
+    "key_parameters": [
+     {
+      "value": "BT-settl 4300 K; blackbodies 8500 K and 1500 K, the latter at 0.055 AU",
+      "evidence": [
+       {
+        "loc": "Models and Main Results",
+        "quote": "a `BT-settl` stellar photosphere spectrum with $T_{\\rm eff} = 4300\\,{\\rm K}$ (cite: Allard_2003IAUS..211..325A; Allard_2011ASPC..448...91A);"
+       },
+       {
+        "loc": "Models and Main Results",
+        "quote": "a $8500\\,{\\rm K}$ blackbody radiation fitting the UV data-point in the SED; and a $1500\\,{\\rm K}$ blackbody radiation at $0.055\\,{\\rm AU}$ representing the accreting gas in the inner disk."
+       }
+      ]
+     },
+     {
+      "value": "a_min = 10−5 cm; fit a_max and q; 20 size bins",
+      "evidence": [
+       {
+        "loc": "Dust properties",
+        "quote": "We fix $a_{\\rm min} = 10^{-5}\\,\\mathrm{cm}$ and fit the SED to infer the $a_{\\rm max}$ and $q$."
+       },
+       {
+        "loc": "Dust properties",
+        "quote": "We divide the dust grains into 20 different size bins"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Power-law grain-size distribution n(a) ∝ a−q; DIANA composition: 60% amorphous silicates, 15% amorphous carbon, 25% porosity by volume",
+      "evidence": [
+       {
+        "loc": "Dust properties",
+        "quote": "The dust number density follows a power-law distribution"
+       },
+       {
+        "loc": "Dust properties",
+        "quote": "a mixture 60% of amorphous silicates ((cite: dorschner_steps_1995), ${\\rm Mg_{0.7}Fe_{0.3}SiO_{3}}$) with 15% amorphous carbon ((cite: zubko_optical_1996), BE-sample), with 25% porosity, by volume."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Fit SED for a_max and q; fit UV point with 8500 K blackbody.",
+     "evidence": [
+      {
+       "loc": "Dust properties",
+       "quote": "We fix $a_{\\rm min} = 10^{-5}\\,\\mathrm{cm}$ and fit the SED to infer the $a_{\\rm max}$ and $q$."
+      },
+      {
+       "loc": "Models and Main Results",
+       "quote": "a $8500\\,{\\rm K}$ blackbody radiation fitting the UV data-point in the SED;"
+      }
+     ]
+    },
+    "validation": {
+     "value": "20 size bins stated to constrain thermal structure to 5%, referring to earlier work.",
+     "evidence": [
+      {
+       "loc": "Dust properties",
+       "quote": "We divide the dust grains into 20 different size bins – which is sufficient to constrain the resulting thermal structure to an accuracy of $5\\%$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit the well-mixed dust disk",
+    "method": {
+     "value": "Solve vertical hydrostatic equilibrium and fit the SED at wavelengths ≳100 μm for dust mass and thermal structure.",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "Following (cite: Deng_2023_diskmint), we run `DiskMINT` by solving for disk vertical hydrostatic equilibrium."
+      },
+      {
+       "loc": "Models and Main Results",
+       "quote": "We fit the long wavelengths ($\\gtrsim 100\\,{\\rm\\mu  m}$) SED to derive the dust disk mass ($M_{\\rm dust}$) and thermal structure."
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT",
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "r_c = 100 AU; gamma = 1.0; r_in = 0.055 AU; r_out ~1000 AU",
+      "evidence": [
+       {
+        "loc": "A self-similar surface density distribution",
+        "quote": "We adopt typical values for the characteristic radius of $r_{c} = 100\\,\\mathrm{AU}$ and $\\gamma = 1.0$"
+       },
+       {
+        "loc": "A self-similar surface density distribution",
+        "quote": "We set the inner disk radius $r_{\\rm in} = 0.055\\,\\mathrm{AU}$"
+       },
+       {
+        "loc": "A self-similar surface density distribution",
+        "quote": "We also adopt $r_{\\rm out} \\sim 1000\\,\\mathrm{AU}$ to ensure that all disk emission is included beyond $r_c$."
+       }
+      ]
+     },
+     {
+      "value": "Inclination 47.5°",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "The SED is generated using `RADMC3D` with the disk inclination ($i = 47.5\\ensuremath{^\\circ}$) from ALMA continuum images by DSHARP (cite: huang_disk_2018)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Fixed gas-to-dust spatial coupling and constant dust-to-gas mass ratio",
+      "evidence": [
+       {
+        "loc": "Well-mixed model: Perfectly coupled gas and dust with a uniform dust-to-gas mass ratio",
+        "quote": "We first build a well-mixed model where the dust and gas have a fixed mass ratio all through the disk (at all $(r,z)$)"
+       }
+      ]
+     },
+     {
+      "value": "Long-wavelength emission likely optically thin",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "where the disk emission is likely optically thin and a better indicator of dust mass."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "SED fitting, mainly using ALMA mm-wavelength continuum flux densities for dust mass.",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "We estimate $M_{\\rm dust}$ from the SED, mainly referring to the $\\mathrm{mm}$-wavelength continuum flux densities from ALMA,"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Integrated emission fits; radial continuum and C18O distributions do not reproduce observations well.",
+     "evidence": [
+      {
+       "loc": "Discussions and implications",
+       "quote": "the first well-mixed model reproduces the SED and the integrated $\\rm C^{18}O$ luminosity,"
+      },
+      {
+       "loc": "Spatially Structured Model: decoupled gas and dust and fitting the radial profiles",
+       "quote": "the radial distributions of neither the dust nor $\\rm C^{18}O$ gas line emission of the well-mixed model well reproduce the observations"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Infer well-mixed gas mass",
+    "method": {
+     "value": "Run chemistry for several constant dust-to-gas ratios; synthesize non-LTE C18O images and fit integrated luminosity.",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "we run `DiskMINT` with different constant $\\varepsilon$ around the fiducial ISM value of $0.01$, including $\\varepsilon = 0.02$, $0.01$, and $0.005$,"
+      },
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "Then we utilize `LIME` to conduct non-Local Thermal Equilibrium line radiative transfer as in (cite: Deng_2023_diskmint)"
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT",
+     "LIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "epsilon = 0.02, 0.01, 0.005",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "including $\\varepsilon = 0.02$, $0.01$, and $0.005$,"
+       }
+      ]
+     },
+     {
+      "value": "i = 47.5°; PA = 144.5°; v_sys = 4.5 km s−1",
+      "evidence": [
+       {
+        "loc": "dust-to-gas mass ratio",
+        "quote": "The adopted gas disk inclination ($i = 47.5\\ensuremath{^\\circ}$), position angles (${\\rm PA} = 144.5\\ensuremath{^\\circ}$), and the systematic velocity ($v_{\\rm sys} = 4.5 \\,\\mathrm{km\\,s^{-1}}$) are also from MAPS CO isotopologue data (cite: zhang_MAPS_molecules_2021)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "ISM chemical abundances; isotope-selective photodissociation and CO/CO2 ice conversion",
+      "evidence": [
+       {
+        "loc": "Models and Main Results",
+        "quote": "we run the reduced chemical network using the ISM chemical abundances (cite: Ruaud2022; Deng_2023_diskmint) to determine the CO abundances."
+       },
+       {
+        "loc": "Models and Main Results",
+        "quote": "has a detailed treatment of CO isotopologue chemistry, including isotope-selective photodissociation and grain-surface chemistry with ${\\rm CO}$/${\\rm CO_2}$ ice conversion."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Compare synthetic C18O luminosity with observations to find best-fit epsilon.",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "Then we compare the synthetic $\\rm C^{18}O$ luminosity with observations"
+      },
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "find the best-fit $\\varepsilon=6.41\\times10^{-3}$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare mass estimates with the structured model.",
+     "evidence": [
+      {
+       "loc": "Discussions and implications",
+       "quote": "the models provide consistent $M_{\\rm dust}$ and $M_{\\rm gas}$ within a factor of a few."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Solve settled vertical structure",
+    "method": {
+     "value": "Iterate dust radiative transfer, dust-gas thermal equilibrium, gas hydrostatic equilibrium, and steady-state dust diffusion.",
+     "evidence": [
+      {
+       "loc": "Vertical distribution: dust settling",
+       "quote": "we go through iterations including solving radiative transfer with `RADMC3D` to estimate $T_{\\rm dust}(a)$, thermal equilibrium to estimate $T_{\\rm gas}$, vertical hydrostatic equilibrium to estimate $\\rho_{\\rm gas}$, and the dust diffusive equation to estimate $\\rho_{\\rm dust}(a)$."
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT",
+     "RADMC-3D"
+    ],
+    "key_parameters": [
+     {
+      "value": "Best-fit alpha_v = 10−3 from SED; test alpha_v = 10−4, 10−3, 10−2",
+      "evidence": [
+       {
+        "loc": "Results for Structured Model",
+        "quote": "we also find the best-fit value for the turbulent parameter $\\alpha_{\\rm v} = 10^{-3}$ based on the SED fitting"
+       },
+       {
+        "loc": "Effect of dust settling",
+        "quote": "apply dust settling with three different $\\alpha_{\\rm v} = 10^{-4}, 10^{-3}, 10^{-2}$,"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Schmidt number ~1; vertically integrated grain-size distributions remain fixed at each radius",
+      "evidence": [
+       {
+        "loc": "Vertical distribution: dust settling",
+        "quote": "${\\rm Sc}$ is the Schmidt number assumed to be $\\sim 1$ (cite: fromang_n_Nelson_settling_2009)."
+       },
+       {
+        "loc": "Vertical distribution: dust settling",
+        "quote": "the overall dust size distribution at each radius and the vertically integrated (surface) densities for each size, $\\Sigma_{\\rm dust}(a, r)$ – are kept fixed."
+       }
+      ]
+     },
+     {
+      "value": "Gas-phase heating and cooling omitted; gas temperature from thermal equilibrium with dust grains",
+      "evidence": [
+       {
+        "loc": "Omission of gas cooling",
+        "quote": "Specifically, gas-phase heating and cooling mechanisms are omitted and $T_{\\rm gas}$ is computed from the thermal equilibrium with dust grains of different sizes"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Constrain turbulence from the infrared SED near 100 μm.",
+     "evidence": [
+      {
+       "loc": "alpha_v",
+       "quote": "It is constrained from the infrared SED at $\\sim 100\\,{\\rm\\mu  m}$, and we use the best-fit $\\alpha_{\\rm v} \\sim 10^{-3}$ from the structured model."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Settling models improve the ~100 μm SED; mass estimates are insensitive to tested alpha_v choices.",
+     "evidence": [
+      {
+       "loc": "Effect of dust settling",
+       "quote": "We find that the models with dust settling (green, red, and purple lines) match the SED better at $\\lambda \\sim 100\\,{\\rm\\mu  m}$,"
+      },
+      {
+       "loc": "Effect of dust settling",
+       "quote": "We also find that neither the $M_{\\rm dust}$ nor $M_{\\rm gas}$ estimates are sensitive to the choice of $\\alpha_{\\rm v}$,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Recover dust surface density",
+    "method": {
+     "value": "Extract continuum profiles in elliptical annuli; multiply each radial dust surface density by observed/model intensity and iterate from the well-mixed model.",
+     "evidence": [
+      {
+       "loc": "Step 1. Derive dust surface density",
+       "quote": "We derive the continuum radial profile from the images using elliptical annuli, utilizing the inclination and position angles from the observation, and get the intensity per area for each annulus."
+      },
+      {
+       "loc": "Step 1. Derive dust surface density",
+       "quote": "\\Sigma_{{\\rm dust,model\\,}i+1}(r) =  \\Sigma_{{\\rm dust,model\\,}i}(r) R_{{\\rm cont},i}(r)"
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Typically three iterations for dust",
+      "evidence": [
+       {
+        "loc": "Step 2. Derive gas surface density",
+        "quote": "It typically takes three iterations to find the converged best-fit $\\Sigma_{\\rm dust}(r)$ and five iterations for the converged best-fit $\\Sigma_{\\rm gas}(r)$,"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust emission optically thin in the majority of the outer disk",
+      "evidence": [
+       {
+        "loc": "Step 1. Derive dust surface density",
+        "quote": "Because the dust thermal emission is expected to be optically thin in the majority of the outer disk,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Iterative radial-profile matching using the observed/model continuum ratio.",
+     "evidence": [
+      {
+       "loc": "Step 1. Derive dust surface density",
+       "quote": "We start from the image generated from the well-mixed model, and modify $\\Sigma_{\\rm dust}$ until it matches the observed continuum radial intensity profile."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Best-fit structured model matches the long-wavelength SED and continuum radial profile.",
+     "evidence": [
+      {
+       "loc": "Results for Structured Model",
+       "quote": "We find this structured model with the same dust size distribution (described by $a_{\\rm max}$ and $q$) as the well-mixed model can also fit the slope of the SED at longer wavelengths"
+      },
+      {
+       "loc": "Discussions and implications",
+       "quote": "the second structured model also matches the continuum emission profile and the $\\rm C^{18}O$ radial profile."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Recover gas surface density",
+    "method": {
+     "value": "Multiply each radial gas surface density by the observed/model C18O (2-1) profile ratio and iterate.",
+     "evidence": [
+      {
+       "loc": "Step 2. Derive gas surface density",
+       "quote": "\\Sigma_{{\\rm gas,model\\,}i+1}(r) =  \\Sigma_{{\\rm gas,model\\,}i}(r) R_{{\\rm \\rm C^{18}O},i}(r)"
+      },
+      {
+       "loc": "Step 2. Derive gas surface density",
+       "quote": "where $R_{{\\rm \\rm C^{18}O},i}(r)$ is the ratio between the observation and the synthetic image from the model $i$ for $\\rm C^{18}O$ line radial profile."
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT",
+     "LIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "Typically five iterations for gas; profiles in Jy AU−2 and Jy m s−1 AU−2",
+      "evidence": [
+       {
+        "loc": "Step 2. Derive gas surface density",
+        "quote": "It typically takes three iterations to find the converged best-fit $\\Sigma_{\\rm dust}(r)$ and five iterations for the converged best-fit $\\Sigma_{\\rm gas}(r)$,"
+       },
+       {
+        "loc": "Step 2. Derive gas surface density",
+        "quote": "they are presented in the flux per unit area ($\\mathrm{Jy\\,AU^{-2}}$ and $\\mathrm{Jy\\,m\\,s^{-1}\\,AU^{-2}}$),"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "C18O emission optically thin and close to the disk midplane",
+      "evidence": [
+       {
+        "loc": "Step 2. Derive gas surface density",
+        "quote": "we derive $\\Sigma_{\\rm gas}$ based on the radial profile of the $\\rm C^{18}O$ line emission because it is optically thin and its emission layer is close to the disk midplane"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Iteratively fit the C18O (2-1) radial profile from the well-mixed starting distribution.",
+     "evidence": [
+      {
+       "loc": "Step 2. Derive gas surface density",
+       "quote": "We start from what is adopted in the well-mixed model"
+      },
+      {
+       "loc": "Step 2. Derive gas surface density",
+       "quote": "both $\\Sigma_{\\rm dust}(r)$ and $\\Sigma_{\\rm gas}(r)$ are set in iterations by fitting the dust continuum and $\\rm C^{18}O\\,(2-1)$ line radial profiles"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare the structured model with SED, continuum and C18O profiles, and C18O spectra.",
+     "evidence": [
+      {
+       "loc": "Results for Structured Model",
+       "quote": "The main results including the SED fitting, continuum and $\\rm C^{18}O(2-1)$ radial profile, and the $\\rm C^{18}O(2-1)$ line spectra for the structured model are presented"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Validate with Band 3",
+    "method": {
+     "value": "Predict 110 GHz continuum and C18O (1-0) emission from the Band 6 best-fit structured model.",
+     "evidence": [
+      {
+       "loc": "Band 3 analysis",
+       "quote": "Here we present the results of the ALMA Band 3 continuum at 110 GHz and $\\rm C^{18}O\\,(1-0)$ line emission for the structured model"
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Band 3 data excluded from fitting.",
+     "evidence": [
+      {
+       "loc": "Band 3 analysis",
+       "quote": "Note that the models are fit to the higher quality ALMA Band 6 data, without considering the poorer quality Band 3 information."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Both longer-wavelength continuum and C18O (1-0) match within uncertainties.",
+     "evidence": [
+      {
+       "loc": "Band 3 analysis",
+       "quote": "Both the continuum and $\\rm C^{18}O\\,(1-0)$ line emission from the best-fit model match the these longer wavelength data within the uncertainties."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Bound gas mass and compare methods",
+    "method": {
+     "value": "Assess omitted gas cooling, inner optical depth and outer sensitivity; compare with dynamical and other gas-mass estimates.",
+     "evidence": [
+      {
+       "loc": "Gas masses constrained within a factor of a few",
+       "quote": "Here, we discuss two main sources of uncertainty in our gas mass estimates: i) the omission of gas thermal processes in `DiskMINT` and ii) the limited observational constraints in the optically thick inner disk and the faint outer disk."
+      },
+      {
+       "loc": "C18O: a reliable Mgas tracer with self-consistent models",
+       "quote": "Our $M_{\\rm gas}$ estimates, obtained with an ISM CO abundance as input, are consistent with the dynamical mass estimate,"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Optically thick inside ≲40 AU; direct sensitivity limits ~300 AU dust and ~400 AU C18O; model extends to 1000 AU",
+      "evidence": [
+       {
+        "loc": "The optically thick inner disk and faint outer disk",
+        "quote": "the dust and gas become optically thick inside $\\lesssim 40\\,{\\rm AU}$,"
+       },
+       {
+        "loc": "The optically thick inner disk and faint outer disk",
+        "quote": "In the outer disk, sensitivity sets a limit at $\\sim 300\\,{\\rm AU}$ for dust and at $\\sim 400\\,{\\rm AU}$ for $\\rm C^{18}O$ gas,"
+       },
+       {
+        "loc": "The optically thick inner disk and faint outer disk",
+        "quote": "the structured model grid extends out to $1,000\\,{\\rm AU}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "A full thermochemical calculation expected to raise the inferred mass by at most ~2",
+      "evidence": [
+       {
+        "loc": "Omission of gas cooling",
+        "quote": "a detailed thermo-chemical model is expected to yield a mass at most larger than a factor of $\\sim2$ compared to `DiskMINT`,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Gas-mass estimates from different methods converge within a factor ≲2–3.",
+     "evidence": [
+      {
+       "loc": "C18O: a reliable Mgas tracer with self-consistent models",
+       "quote": "the $M_{\\rm gas}$ estimates derived from different methods converge within a factor of $\\lesssim 2-3$,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Construct the dust-evolution test",
+    "method": {
+     "value": "Fit structured-model gas surface density with a self-similar profile; apply fragmentation then drift to redistribute dust by grain size.",
+     "evidence": [
+      {
+       "loc": "Setup for the dust dynamics test",
+       "quote": "We fit the $\\Sigma_{\\rm gas}(r)$ profile that is derived to match the $\\rm C^{18}O(2-1)$ radial emission between $40$ and $300\\,{\\rm AU}$,"
+      },
+      {
+       "loc": "Setup for the dust dynamics test",
+       "quote": "We solve for fragmentation equilibrium first and then consider drift."
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT"
+    ],
+    "key_parameters": [
+     {
+      "value": "gamma ~0.4; r_c ~300 AU; alpha_v ~10−3",
+      "evidence": [
+       {
+        "loc": "Setup for the dust dynamics test",
+        "quote": "find best-fit values of the parameters $\\gamma \\sim 0.4$ and $r_{c} \\sim 300\\,{\\rm AU}$."
+       },
+       {
+        "loc": "alpha_v",
+        "quote": "we use the best-fit $\\alpha_{\\rm v} \\sim 10^{-3}$ from the structured model."
+       }
+      ]
+     },
+     {
+      "value": "r_drift = 300 AU; a_drift ~0.01 cm; u_frag = 750 cm s−1",
+      "evidence": [
+       {
+        "loc": "r_drift and a_drift",
+        "quote": "we set $r_{\\rm drift}$ to $300\\,{\\rm AU}$ ($\\sim R_{\\rm dust}$), and find $a_{\\rm drift} \\sim 0.01\\,{\\rm cm}$"
+       },
+       {
+        "loc": "u_frag",
+        "quote": "we therefore adopt $u_{\\rm frag} = 750\\,{\\rm cm\\,s^{-1}}$ to reduce the mass in small grains that remain beyond $r_{\\rm drift}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Fragmented mass redistributed to smaller grains at the same radius; grains above the drift threshold moved inside r_drift",
+      "evidence": [
+       {
+        "loc": "Dust fragmentation",
+        "quote": "This ensures that we retain and redistribute the mass in the fragmented grains at the same radius."
+       },
+       {
+        "loc": "Dust radial drifting",
+        "quote": "We move all the mass of large dust grains with $a \\geq a_{\\rm drift}$ inside $r_{\\rm drift}$,"
+       }
+      ]
+     },
+     {
+      "value": "Initial constant epsilon; dust boundary assumed shaped by radial drift",
+      "evidence": [
+       {
+        "loc": "Setup for the dust dynamics test",
+        "quote": "Then, we initially assume an arbitrary constant $\\varepsilon$ to obtain the original dust surface density"
+       },
+       {
+        "loc": "Dust radial drifting",
+        "quote": "Here we estimate the radial drift from the observations, by assuming that the dust disk boundary ($R_{\\rm dust}$) is shaped by the radial drift barrier."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Vary total dust mass to match the mm-wavelength flux-density profile.",
+     "evidence": [
+      {
+       "loc": "Results for the test of dust dynamical effects",
+       "quote": "The shape of $\\Sigma_{\\rm dust}(r,a)$ is determined by solving fragmentation and drift, and we vary the total $M_{\\rm dust}$ to match the mm-wavelength flux density profile."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Dust continuum matches data; self-similar gas fit omits low-level structures and an outer mass enhancement.",
+     "evidence": [
+      {
+       "loc": "Results for the test of dust dynamical effects",
+       "quote": "The dust continuum emission from our test model can provide a good match to the data"
+      },
+      {
+       "loc": "Results for the test of dust dynamical effects",
+       "quote": "The lower total mass for this case is because we neglected structures by using a self-similar fit,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Test whether radial drift is needed",
+    "method": {
+     "value": "Compare fragmentation-only continuum profiles with fragmentation-plus-drift; estimate drifted mass and an age-based drift distance.",
+     "evidence": [
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "From our structured model, we estimate $\\Sigma_{\\rm gas}/c_s^2$ and vary $u_{\\rm frag}$ and test the fragmentation-only scenario."
+      },
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "We estimate the fraction of dust mass that needs to have drifted inside $r_{\\rm drift}$ in our test model with dust dynamics."
+      }
+     ]
+    },
+    "software": [
+     "DiskMINT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Fragmentation-only tests: u_frag = 100, 500, 750 and 1000 cm s−1",
+      "evidence": [
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "four different values of $u_{\\rm frag}=100, 500, 750\\,{\\rm and}\\,1000\\,{\\rm cm\\,s^{-1}}$"
+       }
+      ]
+     },
+     {
+      "value": "Age ~1 Myr; initial radius ~1000 AU; initial epsilon ~0.01; f_d = 0.3",
+      "evidence": [
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "the dust-to-gas mass ratio starts from the ISM value $\\varepsilon \\sim 0.01$, both the gas and dust are well-coupled with the initial radius of $R^{o} \\sim 1000\\,{\\rm AU}$,"
+       },
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "the disk evolved for $\\sim 1\\,{\\rm Myr}$,"
+       },
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "was taken to be $0.3$ according to the calibration to more comprehensive numerical simulations (cite: birnstiel_outer_2014),"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Axisymmetric distribution; order-of-magnitude drift estimate",
+      "evidence": [
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "Note that this is an order-of-magnitude consistency estimate."
+       },
+       {
+        "loc": "Indications of radial drift in the IM Lup disk",
+        "quote": "IM Lup is observed to have spiral arms in the outer disk, while we have assumed an axisymmetric distribution,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Fix drift radius to observed dust radius; fit epsilon and fragmentation velocity.",
+     "evidence": [
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "the dust drift radius was fixed to be the observationally constrained radius $R_{\\rm dust}$, and fits to ALMA data provided values of $\\epsilon=0.02$ and $u_{\\rm frag}=750\\,{\\rm cm\\,s^{-1}}$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Fragmentation-only profiles cannot reproduce the sharp dust edge; drift models match it.",
+     "evidence": [
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "In this model without radial drift, the decrease of the millimeter-wavelength continuum radial profile is also shallower and cannot reproduce the observed sharp drop at $R_{\\rm dust}$."
+      },
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "We find that the mm-dust edge is well explained by considering radial drift,"
+      }
+     ]
+    }
+   },
+   {
+    "order": 11,
+    "goal": "Assess streaming-instability conditions",
+    "method": {
+     "value": "Compare structured-model dust-to-gas ratio and midplane Stokes numbers with turbulence-dependent streaming-instability thresholds.",
+     "evidence": [
+      {
+       "loc": "Dust-to-gas mass ratio and planetesimal formation",
+       "quote": "We plot the dust-to-gas mass ratio (metallicity) for the structured model"
+      },
+      {
+       "loc": "Dust-to-gas mass ratio and planetesimal formation",
+       "quote": "we also show Stokes number in the midplane for the large grains ($\\sim 0.1\\,{\\rm cm}$) at the top axis."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Large grains ~0.1 cm; reference SI threshold Z ~0.02 at alpha_v ~10−3",
+      "evidence": [
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "the large grains ($\\sim 0.1\\,{\\rm cm}$)"
+       },
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "Therefore, the $Z \\sim 0.02$ threshold inferred with $\\alpha_{\\rm v} \\sim 10^{-3}$ (cite: li_thresholds_2021) is a good approximation for the IM Lup disk."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust-derived turbulence is relevant to midplane dust clumping.",
+      "evidence": [
+       {
+        "loc": "Dust-to-gas mass ratio and planetesimal formation",
+        "quote": "we also mostly utilize the dust disk to constrain $\\alpha_{\\rm v}$ – and this should be most relevant to the dust clumping in the disk midplane."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consider ratios within one pressure scale height and a factor-5 dust-opacity change; SI remains unlikely in their interpretation.",
+     "evidence": [
+      {
+       "loc": "Dust-to-gas mass ratio and planetesimal formation",
+       "quote": "this ratio is higher if we consider only the region of the disk within one pressure scale height $1\\,h$, and it could potentially be as high as 0.1 for a different choice of dust opacity"
+      },
+      {
+       "loc": "Dust-to-gas mass ratio and planetesimal formation",
+       "quote": "the derived metallicity is still likely small enough that SI may not be triggered for a disk with a moderate level of turbulence."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "DiskMINT",
+    "version": "v1.5.0",
+    "used_for": {
+     "value": "Self-consistent thermochemical disk structures and models",
+     "evidence": [
+      {
+       "loc": "Models and Main Results",
+       "quote": "`DiskMINT` computes self-consistent disk structures, iterating between density and temperature,"
+      },
+      {
+       "loc": "Acknowledgments",
+       "quote": "The models in this work is created with `DiskMINT` (cite: Deng_2023_diskmint) v1.5.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D / RADMC3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer, dust temperatures and synthetic SEDs",
+     "evidence": [
+      {
+       "loc": "Models and Main Results",
+       "quote": "`DiskMINT` is an open-source tool built on `RADMC-3D` (cite: Dullemond_radmc-3d_2012) for radiative transfer,"
+      },
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "The SED is generated using `RADMC3D`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "radmc3dPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Basis for developing the authors' code",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "The authors thank C.P. Dullemond and A. Juhasz for their helpful assistance and suggestions in developing our code based on `RADMC-3D` and `radmc3dPy`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE line radiative transfer and synthetic images",
+     "evidence": [
+      {
+       "loc": "dust-to-gas mass ratio",
+       "quote": "Then we utilize `LIME` to conduct non-Local Thermal Equilibrium line radiative transfer as in (cite: Deng_2023_diskmint)"
+      },
+      {
+       "loc": "Models and Main Results",
+       "quote": "Then, we utilize `LIME` [^2] (cite: BrichHogerheijde_LIME_2010) to generate synthetic images."
+      }
+     ]
+    }
+   },
+   {
+    "name": "optool / Optool",
+    "version": "not stated",
+    "used_for": {
+     "value": "Wavelength-dependent dust opacities",
+     "evidence": [
+      {
+       "loc": "Dust properties",
+       "quote": "We use the `optool`[^3] (cite: dominik_optool_2021) package to compute the wavelength-dependent dust opacity"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Scipy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Python",
+    "version": "not stated",
+    "used_for": {
+     "value": "Language underlying the figure-generation package",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "All figures were generated with the `Python`-based package `MATPLOTLIB` (cite: Hunter2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MATPLOTLIB",
+    "version": "not stated",
+    "used_for": {
+     "value": "All figures",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "All figures were generated with the `Python`-based package `MATPLOTLIB` (cite: Hunter2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RAC2D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Earlier literature thermochemical gas-mass estimate",
+     "evidence": [
+      {
+       "loc": "C18O: a reliable Mgas tracer with self-consistent models",
+       "quote": "The earliest and lowest $M_{\\rm gas}$ value"
+      },
+      {
+       "loc": "C18O: a reliable Mgas tracer with self-consistent models",
+       "quote": "is from (cite: zhang_MAPS_molecules_2021) using `RAC2D` (cite: du_water_2014)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Literature models compared with this work",
+     "evidence": [
+      {
+       "loc": "C18O: a reliable Mgas tracer with self-consistent models",
+       "quote": "(cite: paneque-carreno_vertical_2025) and (cite: trapman_exoalma_2025) both used `DALI` (cite: bruderer_warm_2012; bruderer_survival_2013),"
+      }
+     ]
+    }
+   },
+   {
+    "name": "BT-settl",
+    "version": "not stated",
+    "used_for": {
+     "value": "Input stellar photosphere spectrum",
+     "evidence": [
+      {
+       "loc": "Models and Main Results",
+       "quote": "a `BT-settl` stellar photosphere spectrum with $T_{\\rm eff} = 4300\\,{\\rm K}$"
+      }
+     ]
+    }
+   },
+   {
+    "name": "zenodo",
+    "version": "not stated",
+    "used_for": {
+     "value": "Frozen DiskMINT v1.5.0 release",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "v1.5.0 (frozen version released on `zenodo` (cite: Deng_2025_diskmint_zenodo_v1p5))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GitHub",
+    "version": "not stated",
+    "used_for": {
+     "value": "Public DiskMINT repository",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "it can also be downloaded from our public `GitHub` repository: <https://github.com/DingshanDeng/DiskMINT>."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Well-mixed dust mass",
+    "value": "2.5×10−4",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "dust-to-gas mass ratio",
+      "quote": "we find $M_{\\rm dust}= 2.5\\times10^{-4}\\,M_\\odot = 83\\,M_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "Well-mixed dust mass",
+    "value": "83",
+    "uncertainty": "not stated",
+    "units": "M_earth",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "dust-to-gas mass ratio",
+      "quote": "we find $M_{\\rm dust}= 2.5\\times10^{-4}\\,M_\\odot = 83\\,M_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "Well-mixed dust-to-gas mass ratio",
+    "value": "6.41×10−3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "dust-to-gas mass ratio",
+      "quote": "find the best-fit $\\varepsilon=6.41\\times10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Well-mixed gas mass",
+    "value": "3.9×10−2",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "dust-to-gas mass ratio",
+      "quote": "corresponding to $M_{\\rm gas}= 3.9\\times10^{-2}\\,M_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Structured dust mass",
+    "value": "4.0×10−4",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results for Structured Model",
+      "quote": "with the best-fit $M_{\\rm dust}= 4.0\\times 10^{-4}\\,M_\\odot = 133\\,M_\\oplus$ and $M_{\\rm gas}=2.8\\times 10^{-2}\\,M_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Structured dust mass",
+    "value": "133",
+    "uncertainty": "not stated",
+    "units": "M_earth",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Results for Structured Model",
+      "quote": "with the best-fit $M_{\\rm dust}= 4.0\\times 10^{-4}\\,M_\\odot = 133\\,M_\\oplus$ and $M_{\\rm gas}=2.8\\times 10^{-2}\\,M_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Structured gas mass",
+    "value": "2.8×10−2",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Results for Structured Model",
+      "quote": "with the best-fit $M_{\\rm dust}= 4.0\\times 10^{-4}\\,M_\\odot = 133\\,M_\\oplus$ and $M_{\\rm gas}=2.8\\times 10^{-2}\\,M_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Structured turbulence parameter",
+    "value": "10−3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Results for Structured Model",
+      "quote": "we also find the best-fit value for the turbulent parameter $\\alpha_{\\rm v} = 10^{-3}$ based on the SED fitting"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas mass including discussed systematic bounds",
+    "value": "0.02-0.08",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "We find $M_{\\rm gas}\\sim 0.02-0.08\\,M_\\odot$ for the IM Lup disk."
+     }
+    ]
+   },
+   {
+    "quantity": "Structured gas mass inside the optically thick inner region",
+    "value": "~2.7×10−3",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "The optically thick inner disk and faint outer disk",
+      "quote": "in the structured model, the integrated mass in this optically thick region is $\\sim 2.7\\times10^{-3}\\,M_{\\odot}$, $< 10\\%$ of the total gas mass."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-mass fraction at ~400-1000 AU",
+    "value": "approximately 25%",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "The optically thick inner disk and faint outer disk",
+      "quote": "The mass from $\\sim400-1000\\,{\\rm AU}$ (which consists of approximately 25% of the total $M_{\\rm gas}$) is therefore a little uncertain."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-mass range across models",
+    "value": "83 - 153",
+    "uncertainty": "not stated",
+    "units": "M_earth",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Uncertainties on the dust disk mass",
+      "quote": "In this work, we find the following range $M_{\\rm dust}\\sim 83 - 153\\,M_\\oplus$,"
+     }
+    ]
+   },
+   {
+    "quantity": "Modeled optical depth beyond r ≳50 AU",
+    "value": "≲0.01",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Uncertainties on the dust disk mass",
+      "quote": "our detailed modeling finds an optical depth $\\tau \\lesssim 0.01$ beyond $r \\gtrsim 50\\,{\\rm AU}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Self-similar gas-profile slope in dust-evolution test",
+    "value": "~0.4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Setup for the dust dynamics test",
+      "quote": "find best-fit values of the parameters $\\gamma \\sim 0.4$ and $r_{c} \\sim 300\\,{\\rm AU}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Self-similar characteristic radius in dust-evolution test",
+    "value": "~300",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Setup for the dust dynamics test",
+      "quote": "find best-fit values of the parameters $\\gamma \\sim 0.4$ and $r_{c} \\sim 300\\,{\\rm AU}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-evolution test dust mass",
+    "value": "4.6×10−4",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Results for the test of dust dynamical effects",
+      "quote": "We find the best-fit is $M_{\\rm dust}= 4.6\\times 10^{-4}\\,M_\\odot = 153\\,M_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-evolution test dust mass",
+    "value": "153",
+    "uncertainty": "not stated",
+    "units": "M_earth",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Results for the test of dust dynamical effects",
+      "quote": "We find the best-fit is $M_{\\rm dust}= 4.6\\times 10^{-4}\\,M_\\odot = 153\\,M_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-evolution test gas mass in the stated radial range",
+    "value": "~2.3×10−2",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Results for the test of dust dynamical effects",
+      "quote": "we obtain a similar estimate of $M_{\\rm gas}\\sim 2.3\\times10^{-2}\\,M_\\odot$ in that radius range."
+     }
+    ]
+   },
+   {
+    "quantity": "Fitted dust-evolution epsilon",
+    "value": "0.02",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "fits to ALMA data provided values of $\\epsilon=0.02$ and $u_{\\rm frag}=750\\,{\\rm cm\\,s^{-1}}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Fitted fragmentation velocity",
+    "value": "750",
+    "uncertainty": "not stated",
+    "units": "cm s−1",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "fits to ALMA data provided values of $\\epsilon=0.02$ and $u_{\\rm frag}=750\\,{\\rm cm\\,s^{-1}}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Estimated inward-drifted dust mass",
+    "value": "~9",
+    "uncertainty": "not stated",
+    "units": "M_earth",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "suggesting that $\\sim 8\\%$ of the mass ($\\sim 9 M_\\oplus$) that is currently inside could have drifted from outside of $r_{\\rm drift}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Estimated inward-drifted fraction of current inner dust mass",
+    "value": "~8%",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "suggesting that $\\sim 8\\%$ of the mass ($\\sim 9 M_\\oplus$) that is currently inside could have drifted from outside of $r_{\\rm drift}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Order-of-magnitude drift distance",
+    "value": "~625",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "gives $\\Delta R_{dr}\\sim 625\\,{\\rm AU}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Order-of-magnitude dust outer edge after 1 Myr",
+    "value": "~375",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "This would result in an approximate dust disk outer edge at $R^{1\\,{\\rm Myr}} \\sim R^{o} - \\Delta R_{\\rm drift} \\sim 375\\,{\\rm AU}$,"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-to-gas mass ratio between ~40-300 AU",
+    "value": "~0.02",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 11,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "For the specific case of IM Lup, we find a dust-to-gas mass ratio of $\\sim 0.02$ between $\\sim 40 -300\\,{\\rm AU}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Radial variation of outer dust-to-gas mass ratio",
+    "value": "factor of ≲2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 11,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "nearly constant with small variations within a factor of $\\lesssim 2$."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-mass range in settling sensitivity tests",
+    "value": "0.025 - 0.056",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Effect of dust settling",
+      "quote": "We find the best-fit $\\varepsilon = 0.007-0.016$ with $M_{\\rm gas}= 0.025 - 0.056\\,M_\\odot$,"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Self-consistent models reproduce gas masses consistent with dynamical estimates without global CO depletion.",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the gas mass of IM Lup is consistent with the dynamical mass within the described uncertainties – without requiring global CO depletion"
+     }
+    ]
+   },
+   {
+    "value": "Spatially decoupled dust and gas are needed to reproduce resolved radial profiles.",
+    "evidence": [
+     {
+      "loc": "Spatially Structured Model: decoupled gas and dust and fitting the radial profiles",
+      "quote": "the radial distributions of neither the dust nor $\\rm C^{18}O$ gas line emission of the well-mixed model well reproduce the observations"
+     },
+     {
+      "loc": "Discussions and implications",
+      "quote": "the second structured model also matches the continuum emission profile and the $\\rm C^{18}O$ radial profile."
+     }
+    ]
+   },
+   {
+    "value": "The sharp outer mm-continuum decline is most likely shaped by radial drift.",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the fast decline of the mm continuum emission beyond $\\sim 250$ AU is most likely shaped by drift."
+     }
+    ]
+   },
+   {
+    "value": "Modeling does not provide support for streaming-instability conditions.",
+    "evidence": [
+     {
+      "loc": "Dust-to-gas mass ratio and planetesimal formation",
+      "quote": "Therefore, our modeling results for IM Lup do not provide support for SI condition."
+     }
+    ]
+   },
+   {
+    "value": "Dust opacity is the primary uncertainty in dust mass.",
+    "evidence": [
+     {
+      "loc": "Uncertainties on the dust disk mass",
+      "quote": "uncertainties in dust properties that determine the opacity are the primary source of uncertainty."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "C18O alone can recover IM Lup gas mass without homogeneous CO depletion.",
+    "experiment": "Fit self-consistent dust and C18O models and compare gas masses with dynamical estimates.",
+    "result": "M_gas ~0.02-0.08 M_sun.",
+    "finding": "C18O is a reliable gas-mass tracer within the stated self-consistent framework and uncertainties.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "We find $M_{\\rm gas}\\sim 0.02-0.08\\,M_\\odot$ for the IM Lup disk."
+     },
+     {
+      "loc": "Summary",
+      "quote": "the gas mass of IM Lup is consistent with the dynamical mass within the described uncertainties – without requiring global CO depletion"
+     },
+     {
+      "loc": "C18O: a reliable Mgas tracer with self-consistent models",
+      "quote": "We conclude that our results strongly support the use of $\\rm C^{18}O$ alone as a reliable tracer of gas mass when used within a self-consistent modeling framework."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Spatially decoupled dust and gas distributions improve the resolved-data fit.",
+    "experiment": "Iteratively fit separate continuum and C18O radial profiles with settled vertical structure.",
+    "result": "Structured model gives M_dust = 4.0×10−4 M_sun and M_gas = 2.8×10−2 M_sun.",
+    "finding": "The structured model reproduces radial profiles that the well-mixed model does not.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Results for Structured Model",
+      "quote": "with the best-fit $M_{\\rm dust}= 4.0\\times 10^{-4}\\,M_\\odot = 133\\,M_\\oplus$ and $M_{\\rm gas}=2.8\\times 10^{-2}\\,M_\\odot$."
+     },
+     {
+      "loc": "Discussions and implications",
+      "quote": "the second structured model also matches the continuum emission profile and the $\\rm C^{18}O$ radial profile."
+     },
+     {
+      "loc": "Spatially Structured Model: decoupled gas and dust and fitting the radial profiles",
+      "quote": "the radial distributions of neither the dust nor $\\rm C^{18}O$ gas line emission of the well-mixed model well reproduce the observations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Fragmentation alone explains the sharp mm-dust edge.",
+    "experiment": "Test fragmentation-only profiles over four fragmentation velocities and compare with drift models.",
+    "result": "Fragmentation-only profiles are too shallow and leave excessive outer mm emission.",
+    "finding": "Fragmentation alone is insufficient in the tested models; radial drift is favored.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "In this model without radial drift, the decrease of the millimeter-wavelength continuum radial profile is also shallower and cannot reproduce the observed sharp drop at $R_{\\rm dust}$."
+     },
+     {
+      "loc": "Indications of radial drift in the IM Lup disk",
+      "quote": "We find that the mm-dust edge is well explained by considering radial drift,"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The inferred disk conditions establish that streaming instability can operate.",
+    "experiment": "Compare radial dust-to-gas ratios and Stokes numbers with turbulence-dependent SI conditions.",
+    "result": "Dust-to-gas ratio ~0.02 over ~40-300 AU, with modest radial variations.",
+    "finding": "The models do not support SI conditions; the conclusion remains sensitive to dust opacity and turbulence.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "For the specific case of IM Lup, we find a dust-to-gas mass ratio of $\\sim 0.02$ between $\\sim 40 -300\\,{\\rm AU}$"
+     },
+     {
+      "loc": "Dust-to-gas mass ratio and planetesimal formation",
+      "quote": "the derived metallicity is still likely small enough that SI may not be triggered for a disk with a moderate level of turbulence."
+     },
+     {
+      "loc": "Dust-to-gas mass ratio and planetesimal formation",
+      "quote": "Therefore, our modeling results for IM Lup do not provide support for SI condition."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The Band 6 best-fit model predicts longer-wavelength emission without refitting.",
+    "experiment": "Compare synthetic Band 3 continuum and C18O (1-0) with data excluded from fitting.",
+    "result": "Both observables match within uncertainties.",
+    "finding": "The independent wavelength comparison supports the modeled CO snowline.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Band 3 analysis",
+      "quote": "Note that the models are fit to the higher quality ALMA Band 6 data, without considering the poorer quality Band 3 information."
+     },
+     {
+      "loc": "Band 3 analysis",
+      "quote": "Both the continuum and $\\rm C^{18}O\\,(1-0)$ line emission from the best-fit model match the these longer wavelength data within the uncertainties."
+     },
+     {
+      "loc": "Band 3 analysis",
+      "quote": "shows that our model provides good estimates on the CO snowline"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "IM Lup combines a young age, large radial extent, inferred CO abundance anomaly, and resolved dust and gas observations.",
+    "evidence": [
+     {
+      "loc": "The Large Disk of IM Lup",
+      "quote": "The young age, large radial extent, and large inferred CO abundance anomaly make the disk around IM Lup an interesting target to attempt to model in a self-consistent fashion."
+     },
+     {
+      "loc": "Spatially Structured Model: decoupled gas and dust and fitting the radial profiles",
+      "quote": "IM Lup has high angular resolution ALMA observations on both dust continuum and $\\rm C^{18}O$ line emission, which enables us to radially resolve its dust and gas line emission."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Use self-consistent structure and CO chemistry; prioritize optically thin long-wavelength dust emission and C18O near the midplane.",
+    "evidence": [
+     {
+      "loc": "Models and Main Results",
+      "quote": "`DiskMINT` computes self-consistent disk structures, iterating between density and temperature, and has a detailed treatment of CO isotopologue chemistry, including isotope-selective photodissociation and grain-surface chemistry with ${\\rm CO}$/${\\rm CO_2}$ ice conversion."
+     },
+     {
+      "loc": "dust-to-gas mass ratio",
+      "quote": "where the disk emission is likely optically thin and a better indicator of dust mass."
+     },
+     {
+      "loc": "Step 2. Derive gas surface density",
+      "quote": "because it is optically thin and its emission layer is close to the disk midplane"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Well-mixed gas and dust: adequate for integrated quantities but inadequate for resolved profiles.",
+     "evidence": [
+      {
+       "loc": "Discussions and implications",
+       "quote": "the first well-mixed model reproduces the SED and the integrated $\\rm C^{18}O$ luminosity,"
+      },
+      {
+       "loc": "Spatially Structured Model: decoupled gas and dust and fitting the radial profiles",
+       "quote": "the radial distributions of neither the dust nor $\\rm C^{18}O$ gas line emission of the well-mixed model well reproduce the observations"
+      }
+     ]
+    },
+    {
+     "value": "Standard particle-scale-height prescriptions rejected because they assume vertical isothermality.",
+     "evidence": [
+      {
+       "loc": "Vertical distribution: dust settling",
+       "quote": "We do not adopt the standard approach of calculating particle scale height (cite: dubrulle_dust_settling_1995; Estrada_2016_particle_distribution) as these expressions implicitly assume a vertically isothermal temperature profile."
+      }
+     ]
+    },
+    {
+     "value": "Fragmentation alone does not reproduce the sharp outer continuum edge.",
+     "evidence": [
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "the difference in dust and gas disk radii of the IM Lup disk is not easily explained with a dust evolution model that includes only fragmentation."
+      }
+     ]
+    },
+    {
+     "value": "DSHARP instead of DIANA dust opacity could increase inferred dust mass by ~5.",
+     "evidence": [
+      {
+       "loc": "Uncertainties on the dust disk mass",
+       "quote": "If the dust in the IM Lup disk has been processed to the extent that it resembles meteoritic compositions, which the DSHARP values are based on, then our dust mass estimates could be underestimated by a factor of $\\sim 5$."
+      }
+     ]
+    },
+    {
+     "value": "12CO and 13CO could constrain farther-out gas, but require more detailed thermal and kinematic modeling.",
+     "evidence": [
+      {
+       "loc": "The optically thick inner disk and faint outer disk",
+       "quote": "more detailed models are needed to properly infer $\\Sigma_{\\rm gas}(r)$ from those two tracers in the outer disk,"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Iterate to converged radial profiles; typically three dust and five gas iterations; validate against unfitted Band 3 data.",
+    "evidence": [
+     {
+      "loc": "Step 2. Derive gas surface density",
+      "quote": "It typically takes three iterations to find the converged best-fit $\\Sigma_{\\rm dust}(r)$ and five iterations for the converged best-fit $\\Sigma_{\\rm gas}(r)$,"
+     },
+     {
+      "loc": "Band 3 analysis",
+      "quote": "Both the continuum and $\\rm C^{18}O\\,(1-0)$ line emission from the best-fit model match the these longer wavelength data within the uncertainties."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Gas-phase heating and cooling omitted; gas masses may be underestimated by up to ~2.",
+     "evidence": [
+      {
+       "loc": "Omission of gas cooling",
+       "quote": "Specifically, gas-phase heating and cooling mechanisms are omitted"
+      },
+      {
+       "loc": "Omission of gas cooling",
+       "quote": "a detailed thermo-chemical model is expected to yield a mass at most larger than a factor of $\\sim2$ compared to `DiskMINT`,"
+      }
+     ]
+    },
+    {
+     "value": "Inside ≲40 AU, optical thickness makes surface densities lower limits.",
+     "evidence": [
+      {
+       "loc": "The optically thick inner disk and faint outer disk",
+       "quote": "the dust and gas become optically thick inside $\\lesssim 40\\,{\\rm AU}$, hence what we derive within is a lower limit to the surface density."
+      }
+     ]
+    },
+    {
+     "value": "No direct constraints beyond ~300 AU for dust and ~400 AU for C18O.",
+     "evidence": [
+      {
+       "loc": "The optically thick inner disk and faint outer disk",
+       "quote": "In the outer disk, sensitivity sets a limit at $\\sim 300\\,{\\rm AU}$ for dust and at $\\sim 400\\,{\\rm AU}$ for $\\rm C^{18}O$ gas, thus we have no direct observational constraints at larger radii."
+      }
+     ]
+    },
+    {
+     "value": "Dust composition can shift mass by ~5; omitted ice-mantle opacity effects could increase dust mass by ~20%.",
+     "evidence": [
+      {
+       "loc": "Uncertainties on the dust disk mass",
+       "quote": "our dust mass estimates could be underestimated by a factor of $\\sim 5$."
+      },
+      {
+       "loc": "Uncertainties on the dust disk mass",
+       "quote": "we also ignore the effects of ice mantles in the midplane on dust opacities in the radiative transfer, although these effects are included in the chemistry."
+      },
+      {
+       "loc": "Uncertainties on the dust disk mass",
+       "quote": "This would lower the opacities and increase our dust mass estimates by $\\sim 20$% as well."
+      }
+     ]
+    },
+    {
+     "value": "Axisymmetry neglects observed spiral arms; simple drift calculation is only an order-of-magnitude consistency estimate.",
+     "evidence": [
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "Note that this is an order-of-magnitude consistency estimate."
+      },
+      {
+       "loc": "Indications of radial drift in the IM Lup disk",
+       "quote": "IM Lup is observed to have spiral arms in the outer disk, while we have assumed an axisymmetric distribution,"
+      }
+     ]
+    },
+    {
+     "value": "The dust-dynamics test smooths away low-level structures and is not an independent surface-density inference.",
+     "evidence": [
+      {
+       "loc": "Placing the derived gas and dust surface densities in the context of dust dynamical evolution",
+       "quote": "is not a separate attempt or approach to infer the surface densities."
+      },
+      {
+       "loc": "Results for the test of dust dynamical effects",
+       "quote": "with the smoother slope for both $\\Sigma_{\\rm gas}(r)$ and $\\Sigma_{\\rm dust}(r)$ compared to those in the structured model, the low-level structures are ignored"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The paper does not give a formal likelihood or posterior uncertainty analysis; the gas-mass interval is a systematic assessment.",
+    "Integrated-mass agreement does not establish unique radial surface densities.",
+    "The drift test fixes the drift radius to the observed edge, so it establishes consistency rather than an independent prediction of that edge.",
+    "The SI conclusion depends strongly on adopted opacity, settling, turbulence and the applicable threshold.",
+    "The supplied parameter tables lose a_max and q, preventing exact reconstruction from this text.",
+    "Distance and dust-edge values differ across sections and need reconciliation."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "DiskMINT v1.5.0 frozen on Zenodo; DOI 10.5281/zenodo.17042059",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "v1.5.0 (frozen version released on `zenodo` (cite: Deng_2025_diskmint_zenodo_v1p5))"
+      },
+      {
+       "loc": "References",
+       "quote": "v1.5.0 Zenodo, doi: [`10.5281/zenodo.17042059`](http://doi.org/10.5281/zenodo.17042059)"
+      }
+     ]
+    },
+    {
+     "value": "https://github.com/DingshanDeng/DiskMINT",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "it can also be downloaded from our public `GitHub` repository: <https://github.com/DingshanDeng/DiskMINT>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact observed image/cube products and radial-profile tables with uncertainties.",
+    "Complete SED photometry with provenance and averaging details.",
+    "Intact numerical model-parameter tables, particularly a_max and q.",
+    "Paper-specific model input files, final radial surface-density arrays, and outer small-grain prescription.",
+    "Chemical-network and radiative-transfer numerical settings inherited from earlier work.",
+    "Fit statistic, search procedure, stopping criteria and uncertainty calculation.",
+    "Explicit ALMA data-publicity statement and archive-product inventory."
+   ],
+   "estimated_data_volume_inferred": "Cannot estimate from the supplied text: product dimensions, channel counts and visibility sizes are absent.",
+   "score_inferred": 5,
+   "score_reason": "Versioned public modeling code, project codes, an explicit iterative recipe and numeric results are provided, but essential observed products, numerical inputs and fit settings are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The supplied text does not establish public availability of the ALMA products, and the recipe lacks inputs needed for exact reproduction despite numeric main results."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Deng_2023_diskmint)",
+     "why": "Original DiskMINT framework, well-mixed procedure, hydrostatic solution, grain binning and non-LTE synthesis."
+    },
+    {
+     "citation": "(cite: Ruaud2022)",
+     "why": "Reduced chemistry, ISM abundances, self-consistent thermochemistry and full-model comparison."
+    },
+    {
+     "citation": "(cite: Dullemond_radmc-3d_2012)",
+     "why": "RADMC-3D radiative transfer."
+    },
+    {
+     "citation": "(cite: BrichHogerheijde_LIME_2010)",
+     "why": "LIME line radiative transfer."
+    },
+    {
+     "citation": "(cite: dominik_optool_2021)",
+     "why": "Dust-opacity calculation."
+    },
+    {
+     "citation": "(cite: Woitke_diana_2016; min_multiwavelength_2016)",
+     "why": "DIANA dust composition and opacities."
+    },
+    {
+     "citation": "(cite: bruggeman_berechnung_1935)",
+     "why": "Dust-material mixing rule."
+    },
+    {
+     "citation": "(cite: lynden-bell_evolution_1974; Hartmann1998)",
+     "why": "Self-similar viscous surface-density prescription."
+    },
+    {
+     "citation": "(cite: dullemond_flaring_2004; fromang_n_Nelson_settling_2009)",
+     "why": "Steady-state dust diffusion and settling."
+    },
+    {
+     "citation": "(cite: birnstiel_simple_2012; birnstiel_dust_2024)",
+     "why": "Fragmentation and radial-drift grain-size thresholds."
+    },
+    {
+     "citation": "(cite: birnstiel_outer_2014)",
+     "why": "Drift-velocity calibration."
+    },
+    {
+     "citation": "(cite: li_thresholds_2021)",
+     "why": "Streaming-instability threshold comparison."
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Deng_2023_diskmint)",
+     "why": "Earlier DiskMINT application to RU Lup and inherited model details."
+    },
+    {
+     "citation": "(cite: Deng_2025_diskmint_zenodo_v1p5)",
+     "why": "Frozen code release used for the models."
+    },
+    {
+     "citation": "(cite: huang_disk_2018)",
+     "why": "DSHARP continuum constraints."
+    },
+    {
+     "citation": "(cite: zhang_MAPS_molecules_2021)",
+     "why": "MAPS CO constraints, adopted geometry and earlier thermochemical comparison."
+    },
+    {
+     "citation": "(cite: Deng_2025_AGEPRO_III_Lupus)",
+     "why": "Related application of self-consistent gas-mass modeling to AGE-PRO Lupus disks."
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DSHARP",
+    "MAPS",
+    "ALMA AGE-PRO"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gpt-6.1-sol",
+  "custom_id": "gpt61sol-2025ApJ...995...98D",
+  "batch_id": null,
+  "run": "codex_run4",
+  "collected_at": "2026-10-29T17:55:31",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "effort": "high",
+  "seconds": 360.4
+ },
+ "checks": {
+  "quotes": 261,
+  "quotes_ok": 261,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 27,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 174,
+   "stated": 136,
+   "rate": 0.782
+  },
+  "evidence_ok": true
+ }
+}

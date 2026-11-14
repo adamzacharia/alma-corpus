@@ -1,0 +1,472 @@
+{
+ "bibcode": "2024ApJ...961....4B",
+ "title": "Protostellar Cores in Sagittarius B2 N and M",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad0383",
+ "arxiv_id": "2309.14407",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Resolve protostellar cores in Sgr B2 N and M at ~500-700 AU, establish their nature and evolutionary stage (Stage 0/I YSOs), and derive lower-limit core masses, the core mass function, inferred stellar mass and star formation rate",
+ "alma_project_codes": [
+  "2016.1.00550.S",
+  "2013.1.00269.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6 (3 mm and 1 mm)",
+  "arrays": "12m antennas",
+  "angular_resolution": "500 AU (1 mm) and 700 AU (3 mm); 0.096\" x 0.073\" (Band 3) and 0.083\" x 0.038\" (Band 6)",
+  "sensitivity": "RMS 0.033 mJy (N Band 3), 0.05 mJy (M Band 3), 0.35 mJy (N Band 6), 0.25 mJy (M Band 6)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lower-resolution ALMA Band 3 catalog and image of Sgr B2 (project 2013.1.00269.S) used for photometry, fragmentation and stellar-mass comparison",
+    "evidence": [
+     {
+      "loc": "3.2.1 Photometry comparison",
+      "quote": "(cite: Ginsburg2018) obtained Band 3 observations of the extended Sgr B2 cloud at"
+     }
+    ]
+   },
+   "citation": "(cite: Ginsburg2018)"
+  },
+  {
+   "what": {
+    "value": "Catalogs of known HII regions cross-matched to remove compact regions from the core sample",
+    "evidence": [
+     {
+      "loc": "3.1 Source extraction",
+      "quote": "In addition, we cross-match our detections with (cite: DePree1998) and (cite: Meng2022) to remove known compact regions from our core sample and label them as known regions."
+     }
+    ]
+   },
+   "citation": "(cite: DePree1998); (cite: Meng2022)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity models (kappa at 92 and 226 GHz) extrapolated as a power law with beta_dust = 1.75",
+    "evidence": [
+     {
+      "loc": "3.5 Source masses",
+      "quote": "Extrapolating the (cite: Ossenkopf1994) opacity models for dust grains with thin ice mantles"
+     },
+     {
+      "loc": "3.5 Source masses",
+      "quote": "as a power law, assuming $\\beta_{\\text{dust}} = 1.75$, we obtain $\\kappa_{92 GHz} = 0.0017\\ \\frac{cm^2}{g}$ and $\\kappa_{226 GHz} = 0.0083\\ \\frac{cm^2}{g}$"
+     }
+    ]
+   },
+   "citation": "(cite: Ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Average gas column density of Sgr B2 N and M clusters (~3e24 cm^-2) used in the optically-thick-core-in-dust model",
+    "evidence": [
+     {
+      "loc": "4.1.1 Protostellar cores: Stage 0/I YSOs",
+      "quote": "with an average over the Sgr B2 N and M cluster of around $3\\times10^{24}$ $\\mathrm{cm}^{-2}$ (cite: Sanchez-Monge2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Sanchez-Monge2017)"
+  },
+  {
+   "what": {
+    "value": "Kroupa initial mass function used to extrapolate the low-mass end for inferred stellar mass",
+    "evidence": [
+     {
+      "loc": "4.2 Inferred stellar mass",
+      "quote": "extrapolate the low-mass end of the Kroupa initial mass function (cite: Kroupa2001) to obtain the core-based inferred stellar mass"
+     }
+    ]
+   },
+   "citation": "(cite: Kroupa2001)"
+  },
+  {
+   "what": {
+    "value": "Star-forming age of the cloud, 0.74 Myr, used for the star formation rate",
+    "evidence": [
+     {
+      "loc": "4.2 Inferred stellar mass",
+      "quote": "Taking the star-forming age of the cloud as 0.74 Myr (cite: Kruijssen2015), we estimate the star formation rate (SFR) for each cluster."
+     }
+    ]
+   },
+   "citation": "(cite: Kruijssen2015)"
+  },
+  {
+   "what": {
+    "value": "Roughly one third of a core mass ends up in a star",
+    "evidence": [
+     {
+      "loc": "4.2 Inferred stellar mass",
+      "quote": "We further assume that roughly one third of a core mass will end up in a star (cite: Lada2003)."
+     }
+    ]
+   },
+   "citation": "(cite: Lada2003)"
+  },
+  {
+   "what": {
+    "value": "Disk dust-to-stellar mass ratio of ~1% extrapolated to more massive objects",
+    "evidence": [
+     {
+      "loc": "4.1.4 Stage II and III YSOs?",
+      "quote": "We extrapolate the ratio of the dust mass and the central star of $\\sim$1% (cite: Williams2011) one order of magnitude for more massive objects"
+     }
+    ]
+   },
+   "citation": "(cite: Williams2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and self-calibrate the four pointings",
+   "method": "tclean imaging with iterative masked cleaning interleaved with phase then amplitude+phase self-calibration",
+   "software": [
+    "CASA",
+    "tclean",
+    "gaincal"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "Phase self-cal solint inf, then solint int, then phase+amp solint inf",
+    "Sgr B2 N Band 6: cleaning threshold raised to 10 sigma until amplitude self-cal, then extra phase+amplitude step with solint 15 s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Check line contribution to the continuum",
+   "method": "Extract spectra at core peak pixels in Sgr B2 N cubes, sigma-clip lines, compare mean before and after line removal",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [
+    "sigma clipping with sigma=2, maxiters=5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract sources with dendrograms",
+   "method": "Noise measured in 30 concentric annuli with 7-sigma clipping, then a separate astrodendro run per annulus on the primary-beam-corrected image",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min_value = 4 x noise, min_delta = 0.7 x noise, min_npix = 3 pixels",
+    "30 concentric annuli, widths ~7.8\" (Band 3) and 1.1\" (Band 6)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Vet sources and build the core catalog",
+   "method": "Manual exclusion polygons around extended emission, cross-match with known HII region catalogs, by-eye scoring 0/1/2 using 1 mm and 3 mm morphology, spectral index map",
+   "software": [],
+   "key_parameters": [
+    "Score 1 and 2 both kept (complete catalog); robust and complete catalogs gave no significant difference"
+   ],
+   "assumptions": [
+    "A 3 mm filamentary structure without a 1 mm counterpart indicates free-free emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure source fluxes and sizes",
+   "method": "Integrated flux within the dendrogram leaf contour and brightest pixel; peak-to-contour flux ratio used to judge whether a source is resolved",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "Aperture correction factor 1.465 for a 1-sigma aperture (used to compare with G18); frequency correction ~0.92"
+   ],
+   "assumptions": [
+    "Optically thick part of the core with spectral index of two for the G18 frequency correction"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive 3 mm to 1 mm spectral indexes",
+   "method": "Band 6 convolved to the Band 3 beam; brightest-pixel fluxes at 3 mm positions compared at both bands; limits for single-band detections",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Errors only for sources with SNR > 10 in both bands; all catalog sources SNR > 4"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compute lower-limit core masses and fit the core mass function",
+   "method": "Optically thin modified blackbody in the Rayleigh-Jeans limit, M = T_B d^2 / (kappa T_KE), applied to total dendrogram leaf flux with aperture correction; power law fit above completeness limit",
+   "software": [
+    "plfit"
+   ],
+   "key_parameters": [
+    "Uniform core temperature T_KE = 50 K",
+    "Distance 8.4 kpc; 8.127 kpc would give 7% lower masses",
+    "Dust opacity kappa(92 GHz) = 0.0017 cm^2/g, kappa(226 GHz) = 0.0083 cm^2/g, beta_dust = 1.75",
+    "Completeness threshold 6 sigma (13.5 Msun); also 8 sigma (18 Msun)"
+   ],
+   "assumptions": [
+    "Dust optically thin (so masses are lower limits); 3 mm masses adopted as lower limits"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test the nature of the sources (Stage 0/I vs other options)",
+   "method": "Simple model of an optically thick sphere inside optically thin dust for expected spectral indexes; Stromgren-sphere test for HII regions; free-fall time and Bonnor-Ebert mass for prestellar nature; mass extrapolation for Stage II",
+   "software": [],
+   "key_parameters": [
+    "Average dust temperature 50 K, gas-to-dust ratio 100, gas column ~3e24 cm^-2"
+   ],
+   "assumptions": [
+    "Magnetic fields do not contribute to core collapse support"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Infer total stellar mass and star formation rate",
+   "method": "Sum core masses above completeness limit within cluster radii, extrapolate the Kroupa IMF down to 0.3 Msun, add HII regions at 45 Msun each, divide by cluster age",
+   "software": [],
+   "key_parameters": [
+    "Cluster radii 0.4 pc (N) and 0.5 pc (M); 6 sigma completeness 0.3 mJy (M), 0.2 mJy (N); upper core limit 20 Msun"
+   ],
+   "assumptions": [
+    "One third of a core mass ends up in a star; each HII region powered by a >20 Msun star with IMF-weighted mean 45 Msun"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Quantify core fragmentation relative to the lower-resolution catalog",
+   "method": "Count high-resolution detections within 1.5 x beam FWHM of each G18 source centre",
+   "software": [],
+   "key_parameters": [
+    "Excluded G18 sources not detectable at pointing edges"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of sources detected at 3 mm and 1 mm",
+   "value": "371 (3 mm); 218 (1 mm)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "we detect 371 sources at 3 mm and 218 sources in the smaller field of view at 1 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "Unique cores detected at at least one wavelength",
+   "value": "410",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Source extraction",
+     "quote": "Thus, the total number of individual cores identified at at least one wavelength is 410."
+    }
+   ]
+  },
+  {
+   "quantity": "HII region census in the catalog",
+   "value": "17 known, 16 candidates, 8 new",
+   "uncertainty": "not stated",
+   "units": "regions",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Source extraction",
+     "quote": "In total, our catalog contains 17 known hyper-compact and ultra-compact regions, 16 region candidates, and 8 new hyper-compact regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Final average image RMS",
+   "value": "0.033 / 0.05 / 0.35 / 0.25 (N Band 3 / M Band 3 / N Band 6 / M Band 6)",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "is 0.033 mJy for N Band 3, 0.05 mJy for M Band 3, 0.35 mJy for N Band 6, and 0.25 mJy for M Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean relative line contribution to continuum",
+   "value": "-4.4% (Band 3); -1.2% (Band 6)",
+   "uncertainty": "scaled MAD 5.2% (Band 3), 11.2% (Band 6)",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Appendix: Line contribution to continuum",
+     "quote": "We find that the mean relative line contribution for all cores is $-4.4\\%$ for Band 3 and $-1.2\\%$ for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass function power-law slope above 6 sigma completeness (191 sources)",
+   "value": "2.4",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.5 Source masses",
+     "quote": "The resulting fit of 191 sources is $\\alpha = 2.4\\pm 0.1$, which is consistent with the Kroupa IMF $\\alpha = 2.35$."
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass function power-law slope above 8 sigma (144 sources)",
+   "value": "2.6",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.5 Source masses",
+     "quote": "the 144 sources produce a slightly steeper fit $\\alpha = 2.6\\pm 0.1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred stellar mass and SFR, Sgr B2 N",
+   "value": "2800 Msun; 0.0038 Msun/yr",
+   "uncertainty": "not stated",
+   "units": "Msun; Msun/yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We report source-counting-based inferred stellar mass and the star formation rate of the cloud: 2800M$_\\odot$, 0.0038M$_\\odot$ yr$^{-1}$ for Sgr B2 N and 6900M$_\\odot$, 0.0093M$_\\odot$ yr$^{-1}$ for Sgr B2 M respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred stellar mass and SFR, Sgr B2 M",
+   "value": "6900 Msun; 0.0093 Msun/yr",
+   "uncertainty": "not stated",
+   "units": "Msun; Msun/yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We report source-counting-based inferred stellar mass and the star formation rate of the cloud: 2800M$_\\odot$, 0.0038M$_\\odot$ yr$^{-1}$ for Sgr B2 N and 6900M$_\\odot$, 0.0093M$_\\odot$ yr$^{-1}$ for Sgr B2 M respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total star formation rate (N + M)",
+   "value": "0.013",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "The resulting star formation rate is 0.0038M$_\\odot$ yr$^{-1}$ for Sgr B2 N and 0.0093M$_\\odot$ yr$^{-1}$ for Sgr B2 M totalling 0.013M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average number of cores per low-resolution (G18) source",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "cores per source",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.3 Core fragmentation",
+     "quote": "On average, each detected G18 source fragments into 2 cores."
+    }
+   ]
+  },
+  {
+   "quantity": "Average cores per fragmenting G18 source",
+   "value": "3.4",
+   "uncertainty": "not stated",
+   "units": "cores per source",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.3 Core fragmentation",
+     "quote": "then there is an average of 3.4 cores per G18 fragmenting source."
+    }
+   ]
+  },
+  {
+   "quantity": "G18 sources detectable and detected at high resolution",
+   "value": "94 detectable; 77 detected",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.3 Core fragmentation",
+     "quote": "Of the 94 potentially detectable G18 sources, only 77 are detected at high-resolution."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index range of most sources",
+   "value": "2 < alpha <~ 3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "We find most sources to be marginally resolved and have a spectral index consistent with ${2<\\alpha\\lesssim3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Aperture correction factor for 1-sigma aperture",
+   "value": "1.465",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.1 Photometry comparison",
+     "quote": "We calculate the aperture correction factor as the fraction of the Gaussian distribution that is cut off after using a 1-$\\sigma$-sized aperture to be 1.465."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean cell size, image size, niter, deconvolver and weighting beyond robust=0.5 (Briggs assumed but not stated)",
+  "Which spectral windows/channels formed the continuum images and whether all four spws per band were combined",
+  "Exact strict and broad polygon masks per pointing (only on GitHub), plus the clean threshold values in absolute units",
+  "Self-calibration details of the original reduction: reference antenna, combine, minsnr (only the 'SNR from 3 to 5' change is stated for the conservative test), calmode/applymode, number of rounds per pointing",
+  "ALMA pipeline version / calibrator identities and flux scale uncertainty",
+  "Rules and individual per-source decisions for the 0/1/2 core scoring, which is admitted to be subjective",
+  "Execution block and time-on-source details are only in a table; configuration names are not given"
+ ],
+ "missing_for_reproduction": [
+  "tclean cell/image size, niter, deconvolver, and per-pointing absolute clean thresholds",
+  "Self-calibration solution parameters of the original reduction (refant, minsnr, combine)",
+  "Subjective per-source scores (obtainable from the released catalog)",
+  "Pipeline version / calibrators used to produce the delivered calibrated data"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA projects, released code, catalogs and images, and numeric results, but several imaging/self-cal parameters are unstated and core vetting is manual and subjective.",
+ "rediscovery_reason": "ALMA projects are named and code, polygons and catalogs are released; main results are numeric counts, masses, slopes and SFRs, though the manual vetting limits exact recovery.",
+ "source_card": "cards/2024ApJ...961....4B/sonnet/card.md"
+}

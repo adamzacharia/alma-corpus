@@ -1,0 +1,243 @@
+{
+ "bibcode": "2013ApJ...768...91H",
+ "title": "An ALMA Survey of Submillimeter Galaxies in the Extended Chandra Deep Field South: Source Catalog and Multiplicity",
+ "year": 2013,
+ "doi": "10.1088/0004-637X/768/1/91",
+ "arxiv_id": "1304.4266",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the interferometric 870um positions, fluxes and multiplicity of the LESS submillimeter sources, and how reliable are earlier single-dish positions and radio/mid-IR counterpart identifications?",
+ "alma_project_codes": [
+  "2011.1.00294.S"
+ ],
+ "data": {
+  "bands": "Band 7, centered at 344 GHz (870 um)",
+  "arrays": "12-m antennas, 12-15 per SB",
+  "angular_resolution": "median 1.6\" x 1.15\"",
+  "sensitivity": "median rms 0.4 mJy/beam (requested 0.4)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "LESS source positions and deboosted LABOCA flux densities",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The beam was centered on the catalogued positions of the LESS sources"
+     }
+    ]
+   },
+   "citation": "Weiß et al. 2009 (cite: 2009ApJ...707.1201W)"
+  },
+  {
+   "what": {
+    "value": "Radio/MIR counterpart catalog (robust/tentative)",
+    "evidence": [
+     {
+      "loc": "5.5 Radio/MIR IDs",
+      "quote": "used radio and mid–infrared data from the Very Large Array and *Spitzer* to identify potential counterparts to the LESS sources"
+     }
+    ]
+   },
+   "citation": "Biggs et al. 2011 (cite: 2011MNRAS.413.2314B)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshift and SFR for ALESS 007.1",
+    "evidence": [
+     {
+      "loc": "5.1 Source sizes",
+      "quote": "photometric redshift estimate of $z_{\\rm phot}=2.81\\pm^{0.18}_{0.07}$"
+     }
+    ]
+   },
+   "citation": "Wardlow et al. 2011 (cite: 2011MNRAS.415.1479W)"
+  },
+  {
+   "what": {
+    "value": "VLA 1.4 GHz ECDFS maps (DR1 and DR2)",
+    "evidence": [
+     {
+      "loc": "3.4 Astrometry",
+      "quote": "Recently, (cite: 2013arXiv1301.7004M) also released another re–reduction of the (cite: 2008ApJS..179..114M) data"
+     }
+    ]
+   },
+   "citation": "Miller et al. 2008, 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Manual CASA calibration (Tsys, WVR, bandpass, phase, flux) then clean with natural weighting, boxes around >5 sigma sources",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract sources",
+   "method": "Iterative pixel-peak (>2.5 sigma) fitting of elliptical Gaussians with MH-MCMC in 2\"x2\" boxes; 3-parameter point-source and 6-parameter fits; subtract model and repeat",
+   "software": [
+    "IDL custom code"
+   ],
+   "key_parameters": [
+    "detection threshold 3.5 sigma in good maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Completeness, reliability, flux scale and astrometry checks",
+   "method": "Fake-source insertion; extraction on inverted maps; ALMA maps convolved to 19\" compared with LABOCA; comparison with VLA, MIPS and IRAC positions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Define samples and multiplicity",
+   "method": "MAIN: rms<0.6, axis ratio<2, inside primary beam FWHM, S/N>3.5; supplementary samples with S/N>4; count SMGs per LESS source; compare separations to random simulation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "z = 2.5 for projected separations"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test LABOCA position uncertainty and radio/MIR counterparts",
+   "method": "Fit offset vs S/N relation (Ivison 2007) for k; compare ALESS SMGs to Biggs et al. counterparts; stack VLA DR2 cutouts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median rms noise",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.3 Final Maps",
+     "quote": "The median rms noise (at field center) of the maps is $\\sigma = 0.4$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "MAIN sample size",
+   "value": "99",
+   "uncertainty": "not stated",
+   "units": "SMGs",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Sample Definitions",
+     "quote": "These 99 SMGs are the most reliable SMGs"
+    }
+   ]
+  },
+  {
+   "quantity": "Median S_ALMA/S_LABOCA (3 sigma threshold)",
+   "value": "0.97",
+   "uncertainty": "+0.07/-0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Absolute Flux Scale",
+     "quote": "S$_{\\rm ALMA}$/S$_{\\rm LABOCA}$ $=$ 0.97$\\pm^{0.07}_{0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LESS sources split into multiple MAIN SMGs",
+   "value": "24 of 69",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Multiplicity",
+     "quote": "we find that 24 of 69 LESS sources split into two or more MAIN ALESS SMGs"
+    }
+   ]
+  },
+  {
+   "quantity": "Non-detections in good quality maps",
+   "value": "17/88 (~19%)",
+   "uncertainty": "4%",
+   "units": "fraction",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 Non–detections",
+     "quote": "We therefore find that 17/88 ($\\sim$19%$\\pm$4%) of the LESS sources with high–quality ALMA coverage are non–detections."
+    }
+   ]
+  },
+  {
+   "quantity": "Positional offset normalization k (all)",
+   "value": "0.66",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4 LABOCA Positional Offsets",
+     "quote": "we find $k = 0.66\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS 007.1 intrinsic size",
+   "value": "(1.1\")x(0.7\")",
+   "uncertainty": "0.3\" / 0.2\"",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1 Source sizes",
+     "quote": "(1.1$^{\\prime\\prime}$$\\pm$0.3$^{\\prime\\prime}$)$\\times$(0.7$^{\\prime\\prime}$$\\pm$0.2$^{\\prime\\prime}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio/MIR robust counterpart completeness",
+   "value": "~45% (55% incl. tentative)",
+   "uncertainty": "not stated",
+   "units": "fraction",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.5 Radio/MIR IDs",
+     "quote": "completeness of only $\\sim$45%, but a reliability of $\\sim$80%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Source extraction code is custom IDL and not released; MCMC step sizes, chain length and box-size choices not given",
+  "Which SBs used Mars vs Uranus and flux values adopted",
+  "Exact clean iteration counts and masks",
+  "Rule for primary-beam correction of fluxes",
+  "Simulation details of fake-source flux distribution",
+  "Details of the random separation simulation"
+ ],
+ "missing_for_reproduction": [
+  "Custom IDL extraction code",
+  "Fake source simulation specifics",
+  "Per-SB flux calibrator values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and calibration/imaging well described, but custom unreleased source extraction code and companion-paper completeness inputs.",
+ "rediscovery_reason": "Public data, simple imaging recipe, numeric results (rms, source counts, fluxes).",
+ "source_card": "cards/2013ApJ...768...91H/sonnet/card.md"
+}

@@ -1,0 +1,198 @@
+{
+ "bibcode": "2015A&A...576L...2S",
+ "title": "ALMA detection of [C ii] 158 μm emission from a strongly lensed z = 2.013 star-forming galaxy",
+ "year": 2015,
+ "doi": "10.1051/0004-6361/201425542",
+ "arxiv_id": "1502.03842",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the ISM/PDR properties ([CII]/FIR and [CII]/CO ratios) of a typical, IR-faint lensed star-forming galaxy at z=2.013, compared with nearby and high-z galaxies?",
+ "alma_project_codes": [
+  "2011.0.00130.S"
+ ],
+ "data": {
+  "bands": "Band 9",
+  "arrays": "25 antennas",
+  "angular_resolution": "0.33'' x 0.34'' (natural weighting); 0.5'' tapered for Fig. 1",
+  "sensitivity": "9.8 mJy/beam in 14.9 km/s channels; continuum 0.84 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens model/magnification and Hα redshift",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "adopting the magnification factor µ = 49 from the updated lens model of Richard et al. (2011)."
+     }
+    ]
+   },
+   "citation": "Richard et al. (2011)"
+  },
+  {
+   "what": {
+    "value": "L_CO = (5.1 ± 1.5)e4 Lsun",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "From DessaugesZavadsky et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Dessauges-Zavadsky et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "L_IR of southern arc",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "IR luminosity of the S of the arc (cf. Sklias et al. 2014)."
+     }
+    ]
+   },
+   "citation": "Sklias et al. (2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image cube",
+   "method": "Calibrate visibilities and clean with CASA, natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "continuum limit",
+   "method": "Mask line, integrate 4 sub-bands, sum flux in box, primary beam correct, quote 3σ upper limit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "measure [CII] line flux and luminosity",
+   "method": "Integrate primary-beam-corrected spectrum in box over 630.5-631.0 GHz; divide by magnification",
+   "software": [],
+   "key_parameters": [
+    "µ = 49 ± 5"
+   ],
+   "assumptions": [
+    "Missing short-spacing flux negligible"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compare [CII]/FIR and [CII]/CO with literature",
+   "method": "Place source on L_CII/L_FIR vs L_FIR and L_CII/L_FIR vs L_CO/L_FIR diagrams with literature samples; compare to SFR-L_CII relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "S_CII",
+   "value": "37.7",
+   "uncertainty": "± 3.7",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "S CII b 37.7 ± 3.8 Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic L_CII",
+   "value": "1.21e8",
+   "uncertainty": "± 0.12e8 (formal, excl. ~25% calibration)",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "(1.21 ± 0.12) × 10 [8] L ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] frequency",
+   "value": "630.743",
+   "uncertainty": "± 0.015",
+   "units": "GHz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "ν CII 630.743 ± 0.015 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 3σ upper limit",
+   "value": "<27",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observations and results",
+     "quote": "we obtain a 3 σ upper limit of < 27 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CII/L_FIR",
+   "value": "(1.2-2.4)e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "L [CII] / L FIR ≈ (1.2 − 2.4) × 10 [−][3]"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CII/L_CO",
+   "value": "2.3e3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "L [CII] / L CO = 2.3 × 10 [3]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the pipeline or manual scripts were used",
+  "clean parameters (threshold, masks, niter, cell, image size, taper value)",
+  "box coordinates for spectrum integration",
+  "continuum-subtraction/line-free channels",
+  "conversion from flux to luminosity formula",
+  "how the L_FIR range was obtained",
+  "flux scaling of J0423-013 values"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and cleaning parameters",
+  "integration box definition",
+  "lens model details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple measurement and public Cycle 0 data, but processing details are sparse.",
+ "rediscovery_reason": "Cycle 0 data likely public, single integrated flux and luminosity are numeric; recipe is simple though lacking some details.",
+ "source_card": "cards/2015A%26A...576L...2S/sonnet/card.md"
+}

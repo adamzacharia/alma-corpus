@@ -1,0 +1,3150 @@
+# Review task: a REFRESHED ALMA agent skill against its rebuilt evidence pack
+
+The skill below was first written from a ~1,600-paper corpus, reviewed, and fixed (the fix record is the
+RECONCILIATION section). The corpus then grew to ~3,500 papers, the evidence pack was rebuilt, and a writer began
+updating the skill to the new pack. The writer may have been cut off before finishing, so expect a mix: some
+counts and ranges updated to the new pack, others still at the old values, and possibly a half-edited section.
+
+Apply every check from the standard review (attribution, unsupported practice, scientific correctness, omissions,
+usability: see below), and also these refresh checks:
+
+A. **Stale or mixed numbers.** Paper counts, "used in N papers", common choices and ranges that do not match the
+   NEW pack aggregates (the old corpus was about half the size, so old counts are usually roughly half). The
+   description line's "Built from N ALMA papers" must match the pack.
+B. **Lost fixes.** Any item the RECONCILIATION marks FIXED that the current skill has undone or reintroduced.
+C. **Broken edits.** Duplicated sections, contradictory statements left from an unfinished rewrite, tables whose
+   rows disagree with the text, dangling references.
+D. **Length.** Over ~300 lines is a low-severity usability finding; say what could move to references/parameters.md.
+
+Standard checks, in this order:
+1. Attribution: every number, range, default, software attribution and "papers do X" claim that cites bibcodes is
+   supported by the pack for those bibcodes; counts match the pack aggregates.
+2. Unsupported practice presented as literature practice.
+3. Scientific correctness: formulas, units, CASA task/parameter names and semantics, unsafe advice.
+4. Omissions: important pitfalls, assumptions or validation checks clearly present in the pack but missing.
+5. Usability: anything an agent would misread or could not act on.
+
+You have no file access: everything you need is in this message.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex refresh review: <slug>
+VERDICT: CLEAN | FIX
+REFRESH: COMPLETE | PARTIAL   (PARTIAL if any section still carries old-pack numbers or an unfinished edit)
+## Findings
+- RR-01 | high|medium|low | <stale|lost-fix|broken-edit|length|attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- RR-02 | ...
+## Notes
+<at most 5 lines>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (envelope-kinematics-pv) ===
+---
+name: alma-envelope-kinematics-pv
+description: "Measure infall and rotation in protostellar envelopes from ALMA line cubes with position-velocity (PV) diagrams: rotation-profile power laws and break (Keplerian) radii, infalling-rotating envelope (centrifugal barrier, Ulrich) models, streamer trajectories, redshifted-absorption infall, specific angular momentum, protostellar mass and mass infall rate. Use when a cube shows a velocity gradient across a Class 0/I source or a massive hot core and you must decide whether it is infall, rotation or both, or when you check someone else's PV analysis. Built from a 493-paper ALMA evidence pack (2012-2026); 303 of those papers carry the star-formation field tag (pack aggregate)."
+---
+
+# Envelope kinematics from PV diagrams (infall, rotation, centrifugal barrier)
+
+Papers cut PV diagrams along the disk/envelope major axis (perpendicular to the outflow) and along the minor axis.
+Under a thin, axisymmetric, flattened geometry with known near side, rotation shows up mainly along the major
+axis and infall adds a velocity gradient along the minor axis. That reading is not unique: expansion, projection,
+warps and foreground gas can mimic it (L1489 IRS turned out to be a warped-disk system, 2020ApJ...893...51S; a
+PV gradient alone cannot tell inflow behind a source from outflow in front of it, 2014ApJ...784...78R). Papers
+then (a) fit a power law to a rotation profile V(R), (b) fit or compare forward models of an infalling-rotating
+envelope plus disk, or (c) look for redshifted absorption against the continuum. The mistakes that matter most:
+(1) trusting low-velocity and large-radius PV points, where interferometric filtering, cloud contamination and
+self-absorption distort the profile (2014ApJ...796..131O kept only R<100 AU because resolved-out large scales
+overestimate rotation; 2023ApJ...958...98F excluded filtered-out channels), and (2) quoting masses, break radii and
+infall speeds without saying how inclination (and its convention), systemic velocity, emission threshold and
+resolution bias were handled (the mean-position method "may systematically underestimate" the break radius at
+limited resolution, 2015ApJ...812...27A; the fitted index moved from 0.49 to 0.81 when the extraction threshold
+dropped from 16 to 9 sigma in 2026ApJ..1003..219W).
+
+> Always report: line and an optical-depth check, PV cut PA and width, systemic velocity and whether it was fit,
+> inclination with its source and convention (i = 90 deg edge-on or i = 0 edge-on), near side, distance, emission
+> threshold for data points, velocity ranges excluded, flux-scale uncertainty, and whether models were spatially
+> filtered. Cards flag PV extraction widths as not stated (2018ApJ...863...72O, 2014ApJ...784...78R).
+
+**Scope of the evidence.** The regex tagger pulled 493 papers; the science-field aggregate lists star formation
+303, astrochemistry 132, protoplanetary disks 107, nearby galaxies 90, Milky Way ISM 76, AGN 65, evolved stars 52
+(pack aggregates; papers carry several fields). Many hits are outflow, galaxy or AGB-star PV work, and most of the
+40 full excerpts are off-topic. This skill cites the protostellar envelope, core and streamer papers for the recipe
+and the others only for generic PV practice. It does not claim which workflow most envelope papers follow: the
+pack has no envelope-only denominator.
+
+## When to use
+
+- A Class 0/I protostar shows a velocity gradient in C18O, 13CO, CS, SO, CH3OH or HCO+ and you need the
+  transition from infall to Keplerian rotation (2015ApJ...812...27A, 2017ApJ...849...56A, 2023ApJ...958...98F,
+  2025ApJ...993..120H, 2024ApJ...966...32E).
+- You want the centrifugal barrier radius and protostellar mass from an infalling-rotating envelope model
+  (2015ApJ...812...59O, 2016ApJ...824...88O, 2017ApJ...837..174O, 2020ApJ...904..185O, 2024ApJ...970...28O,
+  2025A&A...701A.141L).
+- Pseudodisk or flattened envelope with infall plus angular-momentum-conserving rotation (2014ApJ...786..114L,
+  2017ApJ...843...27L, 2019ApJ...879..101L, 2019ApJ...871..100H, 2018A&A...615A..58Y).
+- Streamers feeding a disk: trajectory fits, infall time, mass infall rate (2024A&A...683A.133G,
+  2023ApJ...958...98F, 2025ApJ...985..166K, 2024A&A...682A..61C, 2014ApJ...793....1Y, 2025SciA...11.4512O).
+- Infall from redshifted (inverse P-Cygni) absorption or asymmetric profiles (2015ApJ...814...22E,
+  2012A&A...544L...7P, 2013ApJ...764L..14Z, 2018A&A...615A.141B, 2018ApJ...861...14C).
+- Massive hot cores and disks with rotation plus infall (2020ApJ...904..181L, 2026ApJ..1003..219W,
+  2025SciA...11.6953M, 2017A&A...603A..10B, 2015ApJ...813L..19J, 2019ApJ...877L..25M, 2024ApJ...967...15K).
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| A settled, mostly Keplerian protoplanetary or Class II disk; you want M*, emission height, i, PA | `keplerian-disk-kinematics` skill. PV-curve masses of edge-on Class II disks (2026A&A...710A.140M) belong there; use this skill only for the envelope-to-disk transition |
+| Rotation curves, dispersion and inflow/outflow in galaxies (3DBarolo, GalPak3D, kinemetry) | `galaxy-3d-kinematics` skill; `smbh-gas-dynamics` for black-hole masses. Galaxy PV papers here (2021A&A...655A..25Z, 2020MNRAS.493.3744F, 2019A&A...623A..79C) follow that workflow |
+| Outflow mass, momentum, rotating outflows or disk winds | `outflow-energetics` skill. Outflow PV papers here (2018A&A...618A.120L, 2018ApJ...863...72O, 2020A&A...634L..12D) measure the flow, not the envelope |
+| AGB or post-AGB expanding or rotating envelopes | `evolved-star-envelopes` skill (2018A&A...614A.113H, 2020ApJ...890L..14T are in this pack only by regex) |
+| Cluster-scale or filament inflow without a central protostar's potential | Hub-filament velocity-gradient work (2024A&A...690A.185W uses region rest velocity as a proxy for core velocity); this skill's point-mass models do not apply |
+| Single moment-1 map is all you need for PA | `moment-maps` skill |
+
+## Steps
+
+1. **Fix the geometry before cutting PV diagrams.**
+   - Centre: continuum peak (2026ApJ..1003..219W centred its priors on the dust peak; 2025SciA...11.6953M used
+     the long-baseline 1.3 mm peak; 2021A&A...655A..25Z did the same in a galaxy).
+   - PA of the disk/envelope major axis: perpendicular to the jet or outflow (2015ApJ...812...59O assumes the
+     outflow axis is perpendicular to the envelope mid-plane), the steepest velocity gradient (2025SciA...11.6953M)
+     or a Gaussian-fit PA of the emission (2024ApJ...966...32E). Check the gradient is perpendicular to the outflow
+     before calling it rotation (2020ApJ...904..181L). Warped systems have different inner and outer PAs (69 and
+     54 deg in 2020ApJ...893...51S); 2026ApJ..1003..219W fit separate envelope and disk PAs (18 and 43 deg).
+   - Inclination: continuum aspect ratio, i = arccos(minor/major) for a thin disk (2017ApJ...845...58Z,
+     2018A&A...619A..39F; 74 deg for VLA1623 B in 2022MNRAS.515..543C); an axis ratio near 0.5 gave only i >= 60 deg
+     in 2020ApJ...904..181L. A thick-disk version, cos^2 i = ((b/a)^2 - q^2)/(1 - q^2) with q = 0.2, is used for
+     galaxies (2024ApJ...977..161V). Other routes: an outflow model fit (75-90 deg allowed in 2018ApJ...863...72O),
+     a model grid in 5 deg steps of PA and i (2017ApJ...834..178Y), a free parameter in a cube fit (50 +/- 4 deg in
+     2026ApJ..1003..219W), or fixed edge-on for L1527 (85 deg in 2017ApJ...849...56A, 90 deg in 2014ApJ...796..131O).
+   - **Pick one inclination convention and convert everything to it.** This skill uses i = 90 deg for edge-on (as
+     2014ApJ...796..131O, 2017ApJ...849...56A and 2020ApJ...904..181L, which states i = 0 is face-on).
+     2019ApJ...873...73Z defines i = 0 as edge-on, so convert with i_here = 90 deg - i_paper; 2024ApJ...966..192S
+     measures i between the line of sight and the outflow axis. Record the original convention and the near side
+     (2023ApJ...958...98F: near side 59 deg E of N), which you need to tell infall from expansion.
+   - Systemic velocity: fit it, then check. 2017ApJ...849...56A left it free and recovered 5.8 km/s;
+     2024A&A...690A..46S fixed 2.84 km/s after a first fit; 2018ApJ...864L..25O found 5.3 km/s fit better than
+     5.5 km/s; 2019ApJ...879..101L refined it to 9.10 km/s; 2024A&A...682A..61C explored 2.9-3.9 km/s. The PV fit
+     Vsys moved from -51.27 to -52.10 km/s between thresholds in 2026ApJ..1003..219W.
+2. **Choose lines by what they trace.** C18O and 13CO are candidate lower-opacity tracers for the rotation
+   profile (2017ApJ...849...56A, 2015ApJ...812...27A, 2023ApJ...958...98F), but isotopologue identity does not
+   make a line optically thin: check opacity first (2015ApJ...812...27A lists optical depth among its mass
+   uncertainties). 2023ApJ...958...98F found peak 13CO/C18O brightness ratios of 2-3, so C18O thin and 13CO thick
+   (ratio < 4). CS, SO, CH3OH and HCOOH resolve the envelope and centrifugal barrier (2015ApJ...812...59O CS,
+   2014ApJ...796..131O SO ring at 70-120 AU, 2024ApJ...970...28O CH3OH and HCOOH, 2025A&A...701A.141L SO ring
+   taken as the barrier at 65 au). For massive cores, CH3CN K ladders get more compact with steeper gradients at
+   higher K (2020ApJ...904..181L); 2026ApJ..1003..219W stacked CH3OCHO lines weighted by integrated flux.
+   Tracer split by velocity: 2019ApJ...871..100H fit C18O at abs(V-Vlsr) < 1.6 km/s and CO above.
+3. **Extract the PV diagrams.** Major and minor axis cuts through the centre are the standard pair
+   (2015ApJ...812...27A compared models with both). Cut width (my count, 9 envelope and core papers): about one
+   beam (2018ApJ...863...19A, 2024ApJ...966...32E, 1.6 arcsec in 2024A&A...682A..61C) or 0.1-0.5 arcsec (0.5 in
+   2023ApJ...958...98F, 2022A&A...664A.171V and 2024A&A...684A.189V, 0.2 in 2019A&A...621A..83S, 0.1 in
+   2024A&A...686L..13D; 5 pixels in 2020ApJ...897...59M). Tools: CASA `impv` (2020ApJ...904..181L ran it on observed and model cubes),
+   `pvextractor` (2018ApJ...863..193V along a curved filament path), SLAM (2023ApJ...958...98F).
+4. **Measure the rotation profile V(R)** (the "ridge" approach).
+   - Per channel, take the intensity-weighted mean position of pixels above a clip level (5 sigma in
+     2017ApJ...849...56A, 6 sigma in 2015ApJ...812...27A) or a Gaussian-fit centroid (2022A&A...664A.171V kept
+     centroids with peak > 5x the fit error and SNR > 10; positional accuracy Theta/(2 SNR)).
+   - Drop low velocities where filtering and envelope confusion dominate: abs(dV) < 1.2 km/s in
+     2015ApJ...812...27A; 7.7-8.9 km/s in 2018A&A...615A..58Y; filtered-out channels in 2023ApJ...958...98F;
+     range not given in the pack for 2017ApJ...834..178Y. Limit radii too (r < 100 au inner fit in
+     2020ApJ...893...51S, R < 100 AU in 2014ApJ...796..131O).
+   - Fit V = V_b (R/R_b)^-p in log R - log V, single and double power law, by chi2 (2017ApJ...849...56A,
+     2015ApJ...812...27A) or orthogonal distance regression with errors on both axes and inverse-square weights
+     (2026ApJ..1003..219W). p = 0.5 means Keplerian; p = 1 means rotation plus infall conserving angular momentum
+     (general practice; stated in 2024ApJ...966...32E).
+   - Errors: Monte Carlo dispersal of points within the error bars, Gaussian in log R and rectangular in log V
+     (2015ApJ...812...27A).
+   - Ridge and edge methods (SLAM, 4 in the software aggregate): MCMC fits in both modes, final values averaged
+     (2023ApJ...958...98F; mean of ridge and edge masses in 2025ApJ...993..120H, with 5 sigma for 12CO and C18O and
+     6 sigma for 13CO, p fixed 0.5 for the 12CO mass). Ridge and edge bracket the Keplerian mass
+     (2024ApJ...966...32E). 2024ApJ...966...32E fit only the opposite side of each disk to limit contamination.
+   - Test the threshold: 16 sigma traced the inner Keplerian part (p = 0.49 +/- 0.04) and 9 sigma the extended
+     transition (p = 0.81 +/- 0.06) in 2026ApJ..1003..219W.
+   - Correct the apparent break radius for resolution: 67 AU apparent became ~90 AU in 2015ApJ...812...27A;
+     56 AU became ~74 AU in 2017ApJ...849...56A.
+5. **Convert to mass and angular momentum** (general practice; assumptions in brackets).
+   - Keplerian: M* = R V_rot^2 / G with V_rot = V_obs / sin i [i = 90 deg edge-on convention; point mass, disk
+     mass neglected as in 2019ApJ...873...73Z]. M* scales as 1/sin^2 i; 2020ApJ...904..181L quotes masses as
+     M/sin^2 i, which is the safe way to report them when i is poor.
+   - Centrifugal barrier of a ballistic infalling-rotating envelope (general practice): M = r_CB v_CB^2 / (2G)
+     [zero-energy (parabolic) orbit with conserved j, as assumed in 2025A&A...701A.141L; v_CB is the deprojected
+     rotation speed where the radial velocity vanishes]. It does not hold for infall slower than free fall or
+     finite-energy streamers. The centrifugal radius is r_c = l^2/(GM) and the barrier r_0 = l^2/(2GM)
+     (2017ApJ...843...27L).
+   - Specific angular momentum: for flattened rotation the axial part is j_z = R V_phi (cylindrical R,
+     deprojected V_phi); for a streamer on an arbitrary path use the full vector j = r x v (general practice).
+     Examples: j = 6.1e-4 km/s pc (about 126 au km/s) in L1527 (2014ApJ...796..131O); j_IRE = 7.9e-4 km/s pc in
+     L483 (2018ApJ...863...72O); an upper limit ~3.6e2 au km/s from an assumed 20 Msun and r_CB < 125 au, against
+     ~1e4 au km/s "apparent" j from larger-scale gradients (2020ApJ...904..181L).
+6. **Forward-model the envelope plus disk and compare with PV diagrams or the cube.**
+   - Ballistic infalling-rotating envelope (IRE, "CB model"; FERIA, 3 in the software aggregate, no paper-level
+     attribution): M, r_CB, i free in 2017ApJ...837..174O; density r^-1.5 (2015ApJ...812...59O,
+     2016ApJ...824...88O, 2017ApJ...837..174O, 2019ApJ...873...73Z, 2016ApJ...820L..34S); thin envelope (30 au in
+     2017ApJ...837..174O, 20 au in 2024ApJ...970...28O, h = 0.2 r in 2019ApJ...873...73Z) or flared 20-30 deg
+     (2014ApJ...795..152O, 2020ApJ...904..185O); optically thin, no radiative transfer (2020ApJ...904..185O,
+     2018ApJ...854...96O). 2024ApJ...970...28O explored i 70-90 deg, M* 0.02-0.08 Msun, r_CB 2-9 au;
+     2020ApJ...904..185O compared Keplerian with IRE at r_CB = 5, 10, 20 au.
+   - Infall slower than free fall, V_r = alpha V_ff: alpha = 0.3 fit in 2015ApJ...812...27A; ~0.3 inferred, not
+     fit, from an isothermal shock condition in 2017ApJ...849...56A; free-fall speeds scaled down by ~1.5 in
+     2025A&A...701A.141L. 2020ApJ...904..181L compared Keplerian plus constant 2.5 km/s infall with an Ulrich flow.
+   - Parametric infall plus rotation fit to PV: free-fall, conserved j, LTE, q = -0.4, polar region within 80 deg
+     empty (2017ApJ...834..178Y); n(R0), p, Vin(R0) free with j fixed at 3e-5 km/s pc or 0 and a 60 deg polar
+     cavity (2018A&A...615A..58Y); rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O free (2019ApJ...871..100H);
+     seven free parameters including vr0, vphi0 (2014ApJ...786..114L).
+   - Ulrich (rotating collapse) envelopes: 2020A&A...634L..12D (Rd 700 au, theta0 70 deg, 1.1 Msun);
+     2019A&A...623A..96Y (particle model, 1.8 Msun, centrifugal radius 100 au, r^-1.5). 2026ApJ..1003..219W fit
+     a Keplerian disk plus Ulrich envelope to the whole PPV cube with emcee (chi2 likelihood, model and data
+     normalised to their peaks, bounded priors on M*, Rin, Rc, Rout, i, PAs, mass ratio).
+   - Full radiative transfer when temperature and abundance matter: RADMC-3D (2015ApJ...811...92C, warped disk),
+     SPARX (2020ApJ...904..181L, LTE CH3CN cubes smoothed with `imsmooth`, PV with `impv`), LIME
+     (2020ApJ...891...61Y). 2020ApJ...901..166V added a 3000 au rotating infalling envelope when a disk alone could
+     not reproduce the short-uv visibilities.
+   - Filter models through the same uv coverage (`simobserve`, 2015ApJ...812...27A). 2020ApJ...904..181L states it
+     applied no interferometric filtering to its model cubes; treat such comparisons as weaker.
+   - Before calling a gradient infall, run the competing models: pure Keplerian, Keplerian plus infall, pure
+     envelope, expansion and a warp. Papers that did parts of this: four models M1-M4 in 2020ApJ...904..181L; pure
+     disk and pure Ulrich both failed in 2026ApJ..1003..219W; spherical vs flattened envelope in
+     2015ApJ...812...27A.
+7. **Streamers.** Fit point-mass trajectories (Mendoza et al. 2009 type) in position and velocity.
+   - Manual tuning of initial polar and azimuthal angles and cloud radius, with j set so the centrifugal radius
+     equals the disk radius (2023ApJ...958...98F; same assumption in 2025ApJ...985..166K). The authors say the
+     values may not be best or unique (2023ApJ...958...98F). Families of trajectories with varying theta0
+     (2026ApJ..1003..219W); initial angles to +/- 3 deg (2014ApJ...793....1Y).
+   - TIPSY (2024A&A...683A.133G): point-mass gravity only, M*, distance and Vsys fixed, line intensity assumed
+     to trace density, T = 25 K, 13CO 1.45e-6 and HCO+ 1e-9, optically thin. Masses and rates inherit all of
+     these.
+   - Streamer edges at 3 sigma in moment 0 and t_ff = sqrt(R^3 / 2GM*) (2025ApJ...985..166K); then
+     Mdot = M_streamer / t_ff (general practice). PV path width equal to the beam along the streamer (2024A&A...682A..61C).
+   - Mass from C18O in LTE with T_ex from peak 13CO, X(C18O) = 3e-7 (2023ApJ...958...98F); abundance (1-2)e-7
+     and T_ex 10-30 K set the mass uncertainty in 2025ApJ...985..166K.
+8. **Infall from absorption.** Look for redshifted absorption against compact continuum
+   (2015ApJ...814...22E, 2012A&A...544L...7P, 2013ApJ...764L..14Z). Report the observed velocity offset of the
+   absorption from Vsys first; it is a line-of-sight quantity, and opacity and foreground gas can move the
+   absorption minimum. Turning it into a radial infall speed at a radius needs an explicit geometry and
+   line-transfer model (2018A&A...615A.141B reports 5.1 km/s at 1.54 arcsec; the pack does not give its
+   extraction rule; 2019ApJ...885...98S used a 1D spherical collapse model with n ~ r^-1.8). Hill5-type fits to
+   asymmetric profiles: initial guesses tau 0.1-30, v_in 0.1-4 km/s (2018ApJ...861...14C), which may underestimate
+   v_in, so the rate is a lower limit. 2018ApJ...869..158F treats infall as detected only near the compact source
+   and an upper limit elsewhere.
+9. **Infall rate.** Flattened: Mdot = 2 pi R V_r Sigma, (1.5-3.0)e-6 Msun/yr at 100-200 AU in
+   2015ApJ...812...27A; 2.3e-4 Msun/yr from Sigma = 0.71 g cm^-2 and 2.5 km/s at 900 au in 2020ApJ...904..181L
+   (consistent with 2 pi R V_r Sigma, my arithmetic). Ulrich envelope: Mdot = M_env / I, with I the streamline
+   integral of normalised density, 7e-3 Msun/yr as an order-of-magnitude value (2026ApJ..1003..219W). Spherical
+   shell (general practice): Mdot = Omega r^2 rho_mass v_in, with v_in the positive inward speed, Omega the solid
+   angle covered by infall (4 pi for a full sphere) and rho_mass = mu m_H n, n a number density and mu the mean
+   mass per particle of that species in units of m_H (2.33 in 2025SciA...11.4512O, 2.37 in 2017ApJ...849...56A,
+   2.3 in 2012A&A...544L...7P). Example inputs: r ~80 AU, density ~2.3e9 cm-3, v_in ~7.1 km/s, ~50% (~2 pi)
+   covered (2017A&A...603A..10B; the pack does not say which particle the density counts). Envelope infall is a
+   mass supply, not instantaneous accretion onto the star (2026ApJ..1003..219W).
+
+## Parameter defaults and ranges
+
+Counts are my counts of bibcodes in the pack's parameter, assumption, limitation and excerpt lines, envelope, core
+and streamer papers only. Longer per-paper values: `references/parameters.md`.
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| Pixel clip for mean positions in V(R) | 5 sigma | 5-6 sigma | 2 | 2017ApJ...849...56A (5), 2015ApJ...812...27A (6) |
+| Ridge/edge or PV-point threshold | 5 sigma | 3-6 sigma by line; 9 and 16 sigma in a massive disk | 4 | 2025ApJ...993..120H (5, 6), 2025ApJ...992...18P (ridge 6 for 13CO, 3 for C18O), 2023ApJ...958...98F (>5), 2026ApJ..1003..219W (9, 16) |
+| Centroid acceptance | SNR > 10 | SNR > 5 to > 10 | 2 | 2022A&A...664A.171V (>10), 2018ApJ...859..111H (>5, channel-map astrometry) |
+| PV cut width | ~1 beam or 0.5 arcsec | 0.1-1.6 arcsec | 9 | see Step 3 |
+| Low-velocity exclusion in V(R) | drop channels near Vsys | abs(dV) < 1.2 km/s where stated | 4 | 2015ApJ...812...27A, 2018A&A...615A..58Y (7.7-8.9 km/s), 2023ApJ...958...98F (filtered channels), 2017ApJ...834..178Y (range not in pack) |
+| Tracer split by velocity | isotopologue at low abs(V-Vlsr), 12CO at high | 1.6 km/s boundary | 1 | 2019ApJ...871..100H |
+| Inner rotation index p | 0.5 (Keplerian) | 0.48-0.61 | 4 | 2017ApJ...849...56A (0.50), 2015ApJ...812...27A (0.54), 2023ApJ...958...98F (~0.6 CO, 0.48 SO edge), 2026ApJ..1003..219W (0.49, single law at 16 sigma) |
+| Outer (envelope) index p | ~1 | 0.81-1.22 (1.6 in one edge fit) | 4 | 2017ApJ...849...56A (1.22), 2015ApJ...812...27A (0.85), 2023ApJ...958...98F (1.2 +/- 0.4; edge 1.6, ridge 0.9), 2026ApJ..1003..219W (0.81, 9 sigma single law) |
+| Envelope-to-disk break, measured | - | 56-265 au | 3 | 2017ApJ...849...56A (56), 2015ApJ...812...27A (67), 2023ApJ...958...98F (265 +/- 9 in 13CO; SO 97 edge, 120 ridge) |
+| Same break, resolution corrected | - | ~74-90 AU | 2 | 2017ApJ...849...56A (~74), 2015ApJ...812...27A (~90) |
+| Infall speed / free fall (alpha) | model dependent | 0.3 to ~0.67 | 3 | 2015ApJ...812...27A (0.3 fit), 2017ApJ...849...56A (~0.3 inferred), 2025A&A...701A.141L (V_ff / ~1.5) |
+| Centrifugal barrier or radius, low mass | tens of au | 2-100 au | 6 | 2024ApJ...970...28O (2-9), 2016ApJ...824...88O (40-60), 2020ApJ...904..185O (50), 2025A&A...701A.141L (65), 2015ApJ...812...59O (100), 2019A&A...623A..96Y (100) |
+| Centrifugal barrier or radius, massive | hundreds of au | < 125 to ~1300 au | 4 | 2020ApJ...904..181L (< 125), 2025SciA...11.4512O (250), 2025SciA...11.6953M (grid 0-200), 2026ApJ..1003..219W (1300; streamers 1100-1200) |
+| Envelope density law | r^-1.5 | r^-1.5; r^-1.8 in a 1D collapse model | 9 | 2015ApJ...812...59O, 2016ApJ...824...88O, 2017ApJ...837..174O, 2019ApJ...873...73Z, 2019A&A...623A..96Y, 2014ApJ...795..152O, 2016ApJ...820L..34S, 2018ApJ...854...96O; 2019ApJ...885...98S (r^-1.8) |
+| Temperature law | power law, index -0.4 | -0.3 to -0.7, or constant 15-44 K | 9 | 2017ApJ...834..178Y (-0.4), 2018A&A...615A..58Y (38 K, -0.4), 2019ApJ...871..100H (70 K, -0.4), 2014ApJ...793....1Y (44 K, -0.3), 2019A&A...623A..96Y (-0.6), 2020ApJ...904..181L (-0.7 beyond 214 au), 2017ApJ...849...56A (44 K), 2024A&A...683A.133G (25 K), 2025ApJ...985..166K (15 K) |
+| Envelope thickness | thin | 20-50 au, h = 0.2 r, or flared 20-30 deg | 6 | 2017ApJ...837..174O (30), 2024ApJ...970...28O (20), 2018ApJ...854...96O (50), 2019ApJ...873...73Z (0.2 r), 2014ApJ...795..152O (20 deg), 2020ApJ...904..185O (30 deg) |
+| Model intrinsic line width | 0.5 km/s | 0.5-1 km/s fixed; 0.1-1.0 explored | 6 | 2015ApJ...812...59O, 2014ApJ...795..152O, 2016ApJ...820L..34S, 2018ApJ...854...96O (0.5); 2020ApJ...904..185O (1 FWHM); 2013A&A...560A.103M (free 0.1-1.0) |
+| C18O abundance X(C18O) | ~1-3e-7 | 4e-8 to ~9e-7 | 8 | 2017ApJ...849...56A (4e-8), 2015ApJ...815..106H (1e-7), 2017ApJ...837...86T and 2025ApJ...985..166K (1.7e-7), 2014ApJ...793....1Y and 2023ApJ...958...98F (3e-7), 2018ApJ...869...59W (4.8e-7), 2019ApJ...871..100H (~8.9e-7 from X_CO 5e-4 and ratio 560, my arithmetic) |
+| Model grid steps | 5 deg in PA and i | - | 1 | 2017ApJ...834..178Y |
+
+## Software
+
+Counts are from the pack aggregate "Software named in the matched steps" and cover all 493 papers, including
+off-topic ones. Paper examples are given only where an excerpt, parameter line or title names the tool.
+
+| Task | Tools (aggregate count) | Paper examples |
+|---|---|---|
+| Calibration, imaging, PV cuts | casa 60, impv 5, casa imfit 3, carta 5, casa viewer 2 | 2020ApJ...904..181L (imsmooth, impv) |
+| Model filtering | casa simobserve 4, casa simulator 2 | 2015ApJ...812...27A (simobserve) |
+| PV extraction and cubes in Python | pvextractor 12, spectral-cube 9, astropy 6 | 2018ApJ...863..193V (PVExtractor and LMFIT, galaxy cluster) |
+| Older or alternative reduction | gildas 16, miriad 6, karma 3 | 2022MNRAS.515..543C (IRAM-GILDAS) |
+| PV rotation-curve fitting | slam 4, keplerfit 2 | 2023ApJ...958...98F (SLAM ridge and edge, MCMC) |
+| Infalling-rotating envelope models | feria 3 | no paper-level attribution in the pack |
+| Streamer trajectories | tipsy 3 | 2024A&A...683A.133G (TIPSY paper) |
+| Radiative transfer for synthetic cubes | radmc-3d 17, lime 4, hyperion 4, sparx 3, radex 3, ratran 2, hochunk 2, pdspy 2 | 2015ApJ...811...92C (RADMC-3D), 2020ApJ...904..181L (SPARX), 2020ApJ...891...61Y (LIME grid) |
+| Samplers and fitting | emcee 7, scipy 5, matlab 3, lmfit 2, mpfit 2 | 2026ApJ..1003..219W (emcee on the PPV cube) |
+| Galaxy kinematics (off-topic here) | 3dbarolo 9, galpak3d 3, kinemetry 2 | use the galaxy skill |
+
+The fitting-method aggregate (all 493 papers) lists 40 phrasings, almost all used once. By my count 14 describe
+manual, visual or qualitative tuning ("by-eye comparison of models, no formal fit", "Manual visual adjustment of
+theta, phi, and R_cloud" and similar), 2 name MCMC (emcee, SLAM) and about 5 name chi2 fits. Both styles occur;
+this does not establish which dominates.
+
+## Pitfalls
+
+- **Missing flux and cloud contamination bias low velocities and outer radii.** 2014ApJ...796..131O: resolved-out
+  scales overestimate rotation at large radii, so fit only R<100 AU. 2023ApJ...958...98F: cloud contamination and
+  filtering near Vsys make the C18O envelope mass a lower limit. 2024ApJ...966..192S: no emission near Vsys
+  because optically thick foreground CO is resolved out. 2020ApJ...904..181L: missing flux beyond 2 arcsec can
+  flatten the density profile. Filter models with simobserve (2015ApJ...812...27A) or add ACA/TP data.
+- **Resolution and threshold bias.** Mean-position fits underestimate R_b at limited resolution
+  (2015ApJ...812...27A); correct it. The extraction threshold selects which regime you fit (p 0.49 at 16 sigma
+  vs 0.81 at 9 sigma, 2026ApJ..1003..219W): report it and test another.
+- **Inclination is weakly constrained, degenerate and convention dependent.** 2015ApJ...812...27A could not
+  constrain i from its disk model; 2020ApJ...904..181L says i is not well constrained. Near face-on, M scales
+  steeply: 2025SciA...11.6953M fit i 0-20 deg and got 45 Msun, judged too massive for an early protostar; its
+  spectral-type mass of 8-16 Msun implies i 20-30 deg instead. Some papers quote masses uncorrected for i (2015MNRAS.447.1826Z). Putting an i = 0 edge-on
+  value (2019ApJ...873...73Z) into the 1/sin^2 i formula gives a badly wrong mass.
+- **PV-curve masses are ill-defined at modest SNR.** 2026A&A...710A.140M: SNR per spaxel, cloud contamination and
+  asymmetries preclude a robust statistical approach, masses scale linearly with distance, and its masses came out
+  30-50% above literature values.
+- **The major/minor-axis split is not a unique diagnostic.** Expansion, projection, warps and foreground gas can
+  mimic infall (2020ApJ...893...51S warped disk; 2014ApJ...784...78R inflow behind vs outflow in front). You need
+  the near side. 2025A&A...701A.141L assumes negligible flare so infall does not project onto the major axis;
+  state that assumption when you use it.
+- **Self-absorption and line optical depth.** 2017ApJ...843...27L weighted its fit to the blueshifted side because
+  of redshifted self-absorption; 2014ApJ...791..123W treats the absorption dip as optically thick.
+- **Dust opacity hides the midplane and biases masses low.** Sub-mm dust opacity may hide line emission in an
+  optically thick disk midplane (2022MNRAS.515..543C); thick inner dust makes continuum masses lower limits
+  (2023ApJ...958...98F, 2026ApJ..1003..219W). Missing line emission there need not mean missing gas.
+- **Continuum subtraction can fake absorption.** 2023ApJ...958...98F: continuum over-subtraction made negative
+  artifacts at the disk centre in optically thick lines. Interferometric filtering can also mimic absorption
+  (2021A&A...653A..77P). Compare cubes with and without subtraction before reading absorption.
+- **Outflow and companion contamination.** 2025SciA...11.6953M dropped a velocity cluster as outflow-related;
+  2024ApJ...966...32E fit only the opposite side of each disk in a protobinary.
+- **Do not assume free fall.** alpha ~0.3 in 2015ApJ...812...27A (fit) and 2017ApJ...849...56A (inferred through
+  a shock condition, so model dependent); ~1/1.5 in 2025A&A...701A.141L. 2023ApJ...958...98F lists the free-fall
+  assumption as a reason its infall rate is only an order of magnitude.
+- **Non-unique and idealised models.** Streamer parameters tuned by hand "might not be the best or even unique"
+  (2023ApJ...958...98F); alternative origins of spirals remain possible (2026ApJ..1003..219W); a parametric warp
+  model is not dynamically consistent and had no systematic parameter search (2015ApJ...811...92C); an
+  axisymmetric PPV model leaves spiral residuals (2026ApJ..1003..219W).
+- **Fixed model structure is a systematic, not a statistical, error.** 2017ApJ...849...56A fixed a vertically
+  isothermal temperature profile because the resolution could not resolve vertical structure. Quote such limits
+  next to the fit errors.
+- **Errors that are not propagated.** Parameters held fixed (M*, distance, Vsys in TIPSY, 2024A&A...683A.133G)
+  carry no uncertainty into the fit unless you vary them. By-eye fits give no formal uncertainties
+  (2015ApJ...812...27A; 2018ApJ...863...72O). Calibration uncertainty can sit outside an MCMC fit
+  (2020ApJ...892...99C).
+- **Masses, rates and j are limits, and the reason matters.** Lower limits: C18O envelope mass under filtering
+  (2023ApJ...958...98F), Hill5 infall rate (2018ApJ...861...14C). Upper estimates: a streamer rate that assumes the
+  whole streamer falls in (2024A&A...682A..61C), j from an upper-limit r_CB (2020ApJ...904..181L). An optically thin
+  assumption generally underestimates mass where dust is thick. Say what sets each limit.
+- **Unstated settings.** Pack aggregates: CASA version not stated in 31 cards, self-calibration solution intervals
+  in 23 (21 more with iterations), flux scale uncertainty in 20, line-free channels and continuum subtraction in
+  20 (plus similar phrasings 18, 17, 13), image and cell size in 11. Record these and the PV cut width.
+
+## Verification checks
+
+What the papers did:
+- Compare single and double power-law fits by reduced chi2: 1.6 vs 4.0 (2017ApJ...849...56A), 1.6 vs 2.0
+  (2015ApJ...812...27A).
+- Leave Vsys free and confirm it (2017ApJ...849...56A recovered 5.8 km/s); analyse resolution bias
+  (2015ApJ...812...27A appendix).
+- Cross-check PV masses with the cube model: 40.7 vs 40 Msun in 2026ApJ..1003..219W; compare the kinematic break
+  radius with the moment-1 transition (2023ApJ...958...98F).
+- Run ridge and edge and average them (2023ApJ...958...98F, 2025ApJ...993..120H); they bracket the mass
+  (2024ApJ...966...32E).
+- Try other geometries: spherical vs flattened envelope (2015ApJ...812...27A); pure disk vs pure Ulrich vs both
+  (2026ApJ..1003..219W); four kinematic models across all CH3CN K components (2020ApJ...904..181L). The validation
+  aggregate also lists "Singular isothermal sphere gives indistinguishable fit" and "Rejected a bicone-projection
+  alternative by comparing with PV shapes" (one paper each, not named there).
+- Scan one parameter and show where the model breaks: inclination outside 75-90 deg fails in 2018ApJ...863...72O;
+  j = 0, 1, 2, 4 times j_IRE overlaid, 4x overestimates rotation (2018ApJ...863...72O); distance 2.38 vs 1.7 kpc
+  (2024ApJ...967...15K).
+- Check opacity with an isotopologue ratio (13CO/C18O 2-3, 2023ApJ...958...98F).
+- Compare with literature after rescaling for distance and inclination (2023ApJ...958...98F: 0.5 vs 0.4 Msun;
+  envelope 0.04 vs 0.07 Msun).
+
+What a careful referee adds:
+- Show both major and minor axis PV diagrams with the model overlaid and residuals, and state the near side.
+- Fit rotation-only, rotation plus infall, expansion and warp models before claiming infall.
+- Propagate inclination, distance and Vsys uncertainties into M*, r_CB, j and Mdot, and state the convention.
+- Show the result survives a change of emission threshold and of the excluded low-velocity range.
+- State whether models were filtered through the same uv coverage, and quantify missing flux.
+- Quote flux-scale uncertainty and fixed-structure assumptions separately from statistical errors.
+
+## Source cards
+
+Full list with titles: `references/sources.md`. Most informative for this technique:
+
+- 2015ApJ...812...27A: TMC-1A, double power law with MC errors, alpha = 0.3, resolution bias, simobserve, Mdot
+- 2017ApJ...849...56A: L1527 rotation break, Vsys free, chi2 single vs double, shock-inferred alpha
+- 2023ApJ...958...98F: eDisk IRS 63, SLAM ridge/edge, Mendoza streamers, 13CO/C18O opacity check, limits
+- 2026ApJ..1003..219W: massive disk plus Ulrich envelope fit to the PPV cube with emcee, PV thresholds, ODR
+- 2020ApJ...904..181L: S255IR SMA1, four SPARX models, M/sin^2 i, infall rate and j upper limit
+- 2025ApJ...993..120H: ridge and edge per line, mean mass
+- 2024ApJ...966...32E: ridge and edge bracket the Keplerian mass, one-sided fits
+- 2014ApJ...796..131O: L1527, R<100 AU because of missing flux, SO ring, j
+- 2015ApJ...812...59O: ballistic envelope (CB) model in CS, fixed line width
+- 2016ApJ...824...88O: IRE plus Keplerian model in IRAS 16293 A, r_CB 40-60 AU
+- 2020ApJ...904..185O: IRE vs Keplerian at several r_CB on a 10 au scale
+- 2024ApJ...970...28O: IRE/Keplerian grid at a few au in B335
+- 2025A&A...701A.141L: SO ring as centrifugal barrier, slowed free fall
+- 2019ApJ...873...73Z: massive envelope-disk transition; inclination defined edge-on = 0
+- 2018A&A...615A..58Y: B335 infall model, low-velocity exclusion, polar cavity
+- 2017ApJ...834..178Y: infall plus conserved-j model, 5 deg grid
+- 2019ApJ...871..100H: envelope model with C18O and CO velocity split
+- 2024A&A...683A.133G: TIPSY streamer trajectories and their assumptions
+- 2025ApJ...985..166K: eDisk streamers, t_ff, mass uncertainty from abundance and T_ex
+- 2024A&A...682A..61C: streamer PV path, rate as upper estimate
+- 2018ApJ...863...72O: outflow inclination and j scans on PV (useful test design)
+- 2015ApJ...814...22E: infall detected in B335
+- 2018ApJ...861...14C: Hill5 infall fits, lower-limit rate
+- 2018A&A...615A.141B: infall velocity toward a hot core
+
+=== references/parameters.md ===
+# Envelope kinematics: per-paper settings and results
+
+All values are from the rebuilt `envelope-kinematics-pv` evidence pack (493 papers; verified quotes in the methods
+cards). Only envelope, core and streamer papers are listed. "n.s." = not stated in the pack (it may be in the
+paper). Inclinations are as the paper states them: 2019ApJ...873...73Z uses i = 0 for edge-on, 2020ApJ...904..181L
+and 2025SciA...11.6953M use i = 0 for face-on, 2024ApJ...966..192S measures i from the outflow axis; the others
+quote edge-on near 90 deg.
+
+## Rotation-profile (PV data point) fits
+
+| Paper | Source | Points / settings | Fit | Result |
+|---|---|---|---|---|
+| 2017ApJ...849...56A | L1527 IRS | mean positions of pixels >5 sigma; Vsys 5.8 km/s; d 140 pc; i 85 deg | chi2 double vs single power law in log R - log V | p_in 0.50 +/- 0.05, p_out 1.22 +/- 0.04, R_b 56 +/- 2 AU (corrected ~74 AU), M* ~0.45 Msun; reduced chi2 1.6 vs 4.0 |
+| 2015ApJ...812...27A | TMC-1A | mean positions >6 sigma on PA 73 deg cut; no points at abs(dV) < 1.2 km/s; Vsys 6.4 km/s | chi2, Gaussian errors in log R, rectangular in log V, MC dispersal | p_in 0.54 +/- 0.14, p_out 0.85 +/- 0.04, R_b 67 AU apparent (~90 AU corrected), M* 0.68 Msun; reduced chi2 1.6 vs 2.0 |
+| 2023ApJ...958...98F | Oph IRS 63 | 13CO, C18O, SO; cut 5 pixels (~0.5 arcsec), PA 149 deg; >5 sigma; filtered channels excluded; d 132 pc; i 47 deg | SLAM ridge and edge, MCMC, averaged | M* 0.5 +/- 0.2 Msun; R_b 265 +/- 9 au (13CO); p_in ~0.6 +/- 0.04; 13CO p_in+dp 1.2 +/- 0.4 (edge 1.6, ridge 0.9); SO edge p_in 0.48, R_b 97 au |
+| 2026ApJ..1003..219W | Sgr C O-type protostar | major-axis PV (PA 42 deg); 16 sigma and 9 sigma extraction; R0 1300 au; i 50 deg | power law by ODR, inverse-square error weights | 16 sigma: p 0.49 +/- 0.04, 42.95 Msun; 9 sigma: p 0.81 +/- 0.06, 40.73 Msun |
+| 2025ApJ...993..120H | IRAS 04169+2702 | ridge and edge on 12CO, 13CO, C18O; Vsys 6.9 km/s; i 43 deg; 5 sigma (12CO, C18O), 6 sigma (13CO) | power law; p fixed 0.5 for 12CO mass | mass = mean of ridge and edge |
+| 2025ApJ...992...18P | eDisk Class 0 | ridge 6 sigma (13CO), 3 sigma (C18O); edge threshold n.s. | ridge/edge | n.s. beyond these |
+| 2024ApJ...966...32E | eDisk protobinary | PV along Gaussian-fit PA, width ~1 beam; A to 2 arcsec, B to 1.5 arcsec; opposite side of each disk only | ridge and edge | p ~0.5 Keplerian; ridge and edge bracket the Keplerian mass |
+| 2014ApJ...796..131O | L1527 IRS | radii <100 AU (resolved-out scales overestimate rotation); Vsys 5.9 km/s; edge-on 90 deg | n.s. in pack | disk 54 AU, 0.3 Msun; j 6.1e-4 km/s pc |
+| 2020ApJ...893...51S | L1489 IRS (warped disk) | inner fit r < 100 au; inner 0.1-200 au PA 69 deg, outer 300-600 au PA 54 deg; i 73 deg | n.s. in pack | M* 1.6 Msun, Mdisk 0.0071 Msun |
+| 2017ApJ...834..178Y | Class 0/I protostars | R0 = 1 arcsec; low-velocity channels excluded (range n.s.); PA and i in 5 deg steps | n.s. in pack | n.s. in pack |
+| 2022A&A...664A.171V | [BHB2007] 11 | cut PA 140 deg, width 0.5 arcsec; centroids with peak > 5x fit error and SNR > 10; accuracy Theta/(2 SNR) | centroid positions | n.s. in pack |
+| 2024A&A...690A..46S | eDisk Class 0 | Vsys 2.84 km/s fixed after first fit | Keplerian inside break radius | n.s. beyond these |
+| 2018ApJ...859..111H | EX Lup | channels with SNR > 5 for astrometry (not PV mean positions); M* 0.5 Msun | n.s. in pack | n.s. in pack |
+| 2013A&A...560A.103M | VLA1623A | M* 0.2 Msun, PA 35 deg, vlsr 4.0 km/s fixed (vlsr range 3.4-4.0 seen); d 120 pc | free vwidth 0.1-1.0 km/s, i 0-90 deg, Rout 100-200 AU | n.s. in pack |
+
+## Infalling-rotating envelope, CB and Ulrich models
+
+| Paper | Model | Fixed / assumed | Free or explored | Fit and checks |
+|---|---|---|---|---|
+| 2015ApJ...812...59O | ballistic envelope plus outflow (L1527, CS) | density r^-1.5, outer radius 1000 AU, line width 0.5 km/s, beam 0.5 arcsec, optically thin, Gaussian profile; outflow perpendicular to mid-plane | M = 0.18 Msun, r_CB = 100 AU; R0 = z0 = 1 arcsec | n.s. |
+| 2014ApJ...795..152O | IRE (IRAS 15398) | flared 20 deg, outer 240 AU, r^-1.5, line width 0.5 km/s, beam 0.6 arcsec; optically thin; no disk inside CB | infall and rotation 1 km/s | n.s. |
+| 2016ApJ...820L..34S | IRE (IRAS 04365+2535) | r^-1.5, constant abundance, optically thin, extension angle 30 deg; outer 350 AU; 0.5 km/s width | n(H2) 3e6-3e8 cm-3, T 30-120 K | n.s. |
+| 2016ApJ...824...88O | IRE plus Keplerian (IRAS 16293 A) | r^-1.5, constant abundance, optically thin, i 60 deg | r_CB 40-60 AU, M 0.75 Msun, outer radius 180 AU | n.s. |
+| 2017ApJ...837..174O | IRE (L483) | envelope thickness 30 au, r^-1.5; i 80 deg, PA 15 deg | M, r_CB, i | n.s. |
+| 2018ApJ...854...96O | envelope model (IRAS 16293 B) | thickness 50 au, outer 300 au, i 5 deg, line width 0.5 km/s, Vsys 2.9 km/s; emissivity ~ density, no RT | n.s. | n.s. |
+| 2020ApJ...904..185O | IRE vs Keplerian (IRAS 16293 A) | flared 30 deg, intrinsic FWHM 1 km/s, PA 50 deg; optically thin, no RT | r_CB 50 au; r_CB 5, 10, 20 au vs Keplerian | n.s. |
+| 2019ApJ...873...73Z | IRE plus Keplerian (G339.88-1.26) | h(r) = 0.2 r; envelope r^-1.5; disk r^-2.5; r_out/d = 0.8 arcsec; optically thin; disk mass neglected; i = 0 is edge-on | n.s. | n.s. |
+| 2024ApJ...970...28O | IRE/Keplerian (B335, CH3OH, HCOOH) | height 20 au, R_out 24 au (CH3OH), 10 au (HCOOH), PA 5 deg | i 70-90 deg, M* 0.02-0.08 Msun, r_CB 2-9 au | n.s. |
+| 2025A&A...701A.141L | ballistic envelope plus SO ring | CB 65 au (SO ring); parabolic orbit; negligible flare; v_phi ~ r^-1, free fall scaled down ~1.5; M 0.5 Msun in the model (central mass 0.35 Msun also stated) | velocity ratio adjusted | n.s. |
+| 2017ApJ...843...27L | flared envelope with parabolic boundaries (HH 212) | Vsys 1.7 km/s; boundaries a = 0.05, b = 0.45 and a = -0.05, b = -0.6 | l and M; r_c = l^2/GM, r_0 = l^2/2GM | fit weighted to blueshifted side (redshifted self-absorption) |
+| 2014ApJ...786..114L | pseudodisk plus disk (HH 212, HCO+) | disk outer 0.3 arcsec (120 AU), half thickness 0.1 arcsec; envelope outer 5 arcsec; LTE; Beckwith opacity beta = 1; free fall, constant j | T0, n0, vr0, vphi0, m, q, x(HCO+) (7 free) | n.s. |
+| 2019ApJ...871..100H | rotating infalling envelope (IRAS 16253) | X_CO 5e-4, X_CO/X_C18O 560 (so X_C18O ~8.9e-7), T0 70 K, T ~ r^-0.4 | rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O | C18O fit at abs(V-Vlsr) < 1.6 km/s, CO above (tracer split) |
+| 2017ApJ...834..178Y | free fall plus conserved j, LTE | q fixed -0.4; zero density within 80 deg of polar axis | n.s. in pack | n.s. in pack |
+| 2018A&A...615A..58Y | infall plus rotation (B335) | i 87 deg, d 100 pc, T 38 K (r/100 au)^-0.4, polar cavity within 60 deg empty; R0 100 au, outer 700 au; 7.7-8.9 km/s excluded | n(R0), p, Vin(R0); j fixed 3e-5 km/s pc or 0 | n.s. |
+| 2015ApJ...812...27A | flattened envelope (to 900 AU) plus disk, V_r = alpha V_ff | surface density beyond 200 AU reduced by 2 | v_out, R_kep, alpha, i: best (0.85, 100 AU, 0.3, 65 deg) | by eye; spherical envelope models worse; simobserve filtering |
+| 2017ApJ...849...56A | disk plus envelope, C18O radiative transfer | T 44 K, mu 2.37 m_H, vertically isothermal; C18O 4e-8 (alternative 5e-7 at 80-88 AU, 2.8e-8 elsewhere) | alpha ~0.3 inferred from isothermal shock condition, not fit | moment-0 residuals (9 sigma left for constant abundance) |
+| 2020ApJ...904..181L | M1-M4 SPARX models (S255IR SMA1, CH3CN) | Sigma ~ r^-1.1; T 430 K inside 214 au, then r^-0.7; CH3CN 2e-8 to 900 au; turbulence 2 km/s; LTE; no interferometric filtering | M1 20 Msun at 25 deg; M2 4.76 Msun at 60 deg; M3 M2 plus 2.5 km/s infall; M4 Ulrich, r_CB 90 au (arbitrary) | qualitative PV comparison of the central "waist" |
+| 2026ApJ..1003..219W | Keplerian disk (h = 0.2 r) plus Ulrich envelope, PPV fit | thermal Gaussian line profile; model and data peak-normalised | priors: M* 20-50 Msun, Rin 80-400, Rc 400-1600, Rout 1600-2500 au, i 30-90 deg | emcee, chi2 likelihood; M* 40 Msun, Rc 1300 au, i 50 deg; pure disk and pure Ulrich both fail |
+| 2020A&A...634L..12D | Ulrich-type infall (DG Tau B) | i 63 deg | Rd 700 au, theta0 70 deg, M 1.1 Msun | n.s. |
+| 2019A&A...623A..96Y | collisionless particle envelope (HL Tau) | M* 1.8 Msun, centrifugal radius 100 au, i 47 deg, PA 138 deg, envelope 3000 au, r^-1.5, 1e4 yr; T = 15 (r/1000 au)^-0.6 K; self-gravity ignored | n.s. | n.s. |
+| 2025SciA...11.6953M | point mass plus rotating plane (massive core) | PV cut along steepest gradient; centre at long-baseline continuum peak | M 20-70 Msun, i 0-20 deg (0 = face-on), r_CB 0-200 au, r_out 800-1200 au | 45 Msun best fit judged too massive; spectral type gives i 20-30 deg |
+
+## Streamers and infall rates
+
+| Paper | Method | Settings | Result |
+|---|---|---|---|
+| 2024A&A...683A.133G | TIPSY trajectories | point-mass gravity only; M*, d, Vsys fixed; line intensity traces density; T 25 K; 13CO 1.45e-6, HCO+ 1e-9, optically thin | n.s. in pack |
+| 2023ApJ...958...98F | Mendoza 2009 streamers, manual tuning | M* 0.5 Msun; i 47 deg; near side 59 deg E of N; R_cloud 5300 au; h_0 = sqrt(R_disk G M*); LTE, T_ex 21 K, X(C18O) 3e-7 | envelope 0.04 Msun (lower limit); Mdot ~4e-6 Msun/yr (order of magnitude); not unique |
+| 2025ApJ...985..166K | streamer trajectories | i_s 107 deg, r_d 55 au, M* 0.14 Msun fixed; theta_0, phi_0 free; edges at 3 sigma; t_ff = sqrt(R^3/2GM*); C18O 15 K LTE thin | mass uncertainty from X(C18O) (1-2)e-7 and T_ex 10-30 K |
+| 2024A&A...682A..61C | dusty streamer | M 0.15 Msun; Vsys 2.9-3.9 km/s explored; PV path width = beam (1.6 arcsec); only central gravity | rate is an upper estimate (whole streamer assumed to fall in) |
+| 2026ApJ..1003..219W | trajectory families plus Ulrich Mdot | M* 40 Msun, PA 42 deg, i 50 deg; r_cb 1100-1200 au; theta0 families | Mdot = M_env / I = 7e-3 Msun/yr (order of magnitude; mass supply, not accretion) |
+| 2014ApJ...793....1Y | infalling flows (L1489 IRS) | 1.6 Msun, conserved j, zero energy; theta0, phi0 +/- 3 deg; flows 5000 au (red), 2000 au (blue); X(C18O) 3e-7 | n.s. in pack |
+| 2015ApJ...812...27A | Mdot = 2 pi R V_r Sigma | R 100-200 AU | (1.5-3.0)e-6 Msun/yr |
+| 2020ApJ...904..181L | flattened envelope | Sigma 0.71 g cm^-2 at 900 au, V_r 2.5 km/s (M4: 2.99 km/s) | 2.3e-4 Msun/yr |
+| 2017A&A...603A..10B | spherical infall | r ~80 AU, density ~2.3e9 cm-3 (particle species n.s.), v_in ~7.1 km/s; disk covers ~50% (~2 pi) | n.s. in pack |
+| 2025SciA...11.4512O | massive streamers | i 65 deg, disk PA -55 deg; CB 250 au; T 100 K, kappa 1 cm2/g at 1.3 mm, dust-to-gas 0.01, mu 2.33, d 3.1 kpc; v_ff 6 km/s, l 500 au | n.s. in pack |
+| 2018A&A...615A.141B | absorption toward the hot core | radius 1.54 arcsec | infall velocity 5.1 km/s (extraction rule n.s.) |
+| 2018ApJ...861...14C | Hill5 fits to asymmetric profiles | initial tau 0.1-30, v_in 0.1-4 km/s, sigma 0.3-0.9 km/s | Hill5 may underestimate v_in, so the rate is a lower limit |
+| 2015ApJ...814...22E | infall from absorption in B335 | T_dust 111 K (mass weighted); opacity 1.48e-2 cm2/g; gas-to-dust 100; constant infall rate | n.s. in pack |
+| 2019ApJ...885...98S | 1D spherical collapse (IRAS 4A) | n = 3.05e9 (r/33.5 au)^-1.8 cm-3; v 1.1 km/s at 1000 au; turbulence 0.4 km/s | n.s. in pack |
+| 2015ApJ...813L..19J | disk plus infall model (AFGL 4176) | disk 2000 AU, 12 Msun gas, Sigma ~ r^-1.5, i 30 deg, 25 Msun star; Draine dust R_V 5.5 | infall 4.6e-4 Msun/yr |
+| 2024ApJ...967...15K | infall in a hot core | distance 2.38 kpc, 1.7 kpc also tested | n.s. in pack |
+
+=== RECONCILIATION (first review, fixes to keep) ===
+# Reconciliation: envelope-kinematics-pv
+- SR-01 | FIXED | Low-velocity exclusion row now cites only 2015ApJ...812...27A (abs(dV) < 1.2 km/s) and 2017ApJ...834..178Y (range not in pack), count 2; the 2019ApJ...871..100H 1.6 km/s boundary moved to a separate "tracer split by velocity" row and is described as a tracer split in Step 2 and parameters.md.
+- SR-02 | FIXED | C18O row is now absolute X(C18O) only: 4e-8 (2017ApJ...849...56A), 1e-7 (2015ApJ...815..106H), 4.8e-7 (2018ApJ...869...59W), ~8.9e-7 derived from X_CO 5e-4 and ratio 560 (2019ApJ...871..100H, arithmetic stated); range 4e-8 to ~9e-7, count 4.
+- SR-03 | FIXED | Split into three rows: pixel clip for mean positions (2017ApJ...849...56A 5 sigma, 2015ApJ...812...27A 6 sigma; 2), ridge/edge threshold (2025ApJ...993..120H; 1), channel SNR>5 for channel-map astrometry (2018ApJ...859..111H; 1). parameters.md row for 2018ApJ...859..111H added with the same distinction.
+- SR-04 | FIXED | SLAM now cited only as aggregate count 2 with no paper attribution; 2025ApJ...993..120H keeps ridge/edge, per-line thresholds, p=0.5 for 12CO and mean mass (pack line 378); rejected edge radii and ridge intersections removed from SKILL.md, verification checks and parameters.md; 2024A&A...690A..46S kept only for Vsys fixed after first fit and Keplerian inside break.
+- SR-05 | FIXED | Removed pvextractor for 2025SciA...11.4512O, FERIA reduced-chi2 grid for 2024ApJ...970...28O and emcee for 2019ApJ...887..209A. Software table now gives paper examples only where an excerpt names the tool (PVExtractor 2018ApJ...863..193V, emcee 2018ApJ...861...72C, GILDAS 2025A&A...693A..76C); SLAM and FERIA marked as no paper-level attribution.
+- SR-06 | FIXED | RADMC-3D now attributed to 2020ApJ...893...51S and 2015ApJ...811...92C (both excerpts name it); LIME to 2018A&A...614A.113H; RADMC-3D for 2021ApJ...908..108F and 2019ApJ...871..100H and MOLLIE/Hyperion for 2015ApJ...813L..19J removed (aggregate counts only).
+- SR-07 | FIXED | Deleted 2019ApJ...873...73Z grid (i, r_CB, v_CB steps), the 1 km/s line width for 2016ApJ...824...88O and the 2025SciA...11.4512O streamline grid and 10 Msun. Line-width row recomputed: 0.5 km/s fixed (2015ApJ...812...59O) and 0.1-1.0 km/s explored (2013A&A...560A.103M), count 2; grid-steps row now only 2017ApJ...834..178Y, count 1.
+- SR-08 | FIXED | Removed the +5/-5 deg inclination test and six cuts (2015ApJ...812...59O), PA 20 deg cut (2019ApJ...873...73Z) and 2D Gaussian centre fit (2015ApJ...814...22E); centre choice now marked general practice, PA rule cites the 2015ApJ...812...59O assumption that the outflow is perpendicular to the mid-plane (pack line 348).
+- SR-09 | FIXED | Removed XCLASS/non-subtracted-cube and deepest-absorption-channel attributions to 2018A&A...615A.141B and the r_inf, c_s,eff setup and off-source validation of 2015ApJ...814...22E; 2018A&A...615A.141B keeps only radius 1.54 arcsec and 5.1 km/s; 2015ApJ...814...22E keeps pack lines 244 and 390. Continuum-subtraction advice now rests on 2024AJ....167...94H and is labelled general practice in Step 8.
+- SR-10 | FIXED | Removed r^0/r^-2.5 and Keplerian-only tests (2016ApJ...824...88O), 23 Msun rejection and SED mass (2019ApJ...873...73Z) and the velocity-gradient mass check (2024ApJ...967...15K). Density row now r^-1.5 with 2017ApJ...834..178Y's tested indices -1.5, -2, -2.5 (pack line 1091); 2024ApJ...967...15K now cited for its 1.7 vs 2.38 kpc distance test and unpropagated errors.
+- SR-11 | FIXED | Break-radius row split into: measured envelope-to-disk break 53.7-67 AU (3), resolution-corrected ~74-90 AU (2), kinematic-model disk radius 130 AU (2017ApJ...834..178Y), and 2020ApJ...893...51S 624 au labelled an outer-disk break in a warped disk, not an envelope transition. The "50-130 AU" common default is gone.
+- SR-12 | FIXED | Removed "roughly 50 papers", "most envelope papers do this after step 4" and "aggregate is dominated"; description now quotes the 124 star-formation aggregate; scope note says the pack has no envelope-only denominator; fitting paragraph gives my count of phrasing lines (about ten by-eye, four MCMC/Bayesian of 40) and says it does not establish dominance.
+- SR-13 | FIXED | Step 1 defines i = 90 deg edge-on as the skill's convention, gives i_here = 90 - i_paper for 2019ApJ...873...73Z (pack line 369), asks for near side; Step 5, Pitfalls and parameters.md header restate the convention.
+- SR-14 | FIXED | Summary and a new pitfall state the thin, axisymmetric, known-near-side assumptions and that expansion, projection, warps and foreground gas can mimic infall (2013A&A...560A.103M, 2020ApJ...893...51S); Step 6 and referee checks require competing rotation, infall, expansion and warp models.
+- SR-15 | FIXED | Spherical Mdot now uses rho_mass = mu m_H n with defined mu (2.33 in 2025SciA...11.4512O, 2.37 in 2017ApJ...849...56A), positive inward v_in and Omega as covered solid angle (4 pi full sphere); the 2017A&A...603A..10B value is labelled a density in cm-3 with particle species not stated in the pack.
+- SR-16 | FIXED | M = r_CB v_CB^2/(2G) now marked general practice with its zero-energy ballistic, conserved-j assumptions and v_CB defined as deprojected tangential speed where radial speed vanishes; stated not to hold for slowed infall or finite-energy streamers; circularization radius l^2/(GM) distinguished from barrier l^2/(2GM). Attribution of the formula to 2019ApJ...873...73Z removed (not in current pack).
+- SR-17 | FIXED | Step 5 separates axial j_z = R V_phi (cylindrical R, deprojected V_phi) from full j = r x v for streamers, citing TIPSY r0 x v0 (2024A&A...683A.133G).
+- SR-18 | FIXED | Step 8 now says report the observed absorption velocity offset first, notes opacity and foreground can move the minimum, and requires a geometry and line-transfer model to infer radial speed; the deepest-channel estimator is gone.
+- SR-19 | FIXED | Step 2 calls C18O/13CO candidate lower-opacity tracers and requires an opacity check, citing the optical-depth limitation of 2015ApJ...812...27A (pack line 438).
+- SR-20 | FIXED | Pitfall now keeps the upper-limit statement specific to ALMA1 in 2025SciA...11.4512O, notes that an optically thin assumption generally underestimates mass where dust is thick, and asks to state what sets each limit.
+- SR-21 | FIXED | alpha ~0.3 in 2017ApJ...849...56A described as inferred from the isothermal shock condition (pack line 626), alpha 0.3 in 2015ApJ...812...27A as a model fit; A = 0.42 (2025A&A...693A..76C) kept separate with normalization not defined; alpha row count reduced to 2.
+- SR-22 | FIXED | Added pitfall "Dust opacity hides the midplane" from 2017ApJ...843...27L (pack line 532).
+- SR-23 | FIXED | Step 7 and the limits pitfall state TIPSY's intensity-traces-density assumption (pack line 316), its excitation/abundance inputs and the lower-limit, order-of-magnitude status of masses and rates.
+- SR-24 | FIXED | Unstated-settings pitfall adds flux scale uncertainty (13 cards); new pitfall on fixed model structure cites the vertically isothermal temperature of 2017ApJ...849...56A and the proof-of-concept model of 2025A&A...693A..76C; report box and referee checks ask for flux-scale and fixed-structure systematics separately from statistical errors.
+- SR-25 | FIXED | All literal pipes in table cells replaced with abs(dV) and abs(V-Vlsr) in references/parameters.md (and SKILL.md for consistency).
+
+Also changed (same cause as SR-04 to SR-10, not separately flagged): removed the 2019ApJ...871..100H "chi2 on major and minor cuts", OCS and H2CO tracer attributions, the 2016ApJ...824...88O and 2019ApJ...873...73Z by-eye claims, and the GILDAS attribution to 2018A&A...615A.141B, none of which the current pack shows. Counts in the parameter table are my counts of bibcodes in the pack's parameter, assumption and excerpt lines.
+
+=== EVIDENCE PACK (envelope-kinematics-pv, rebuilt) ===
+# Evidence pack: Position-velocity analysis of rotating/infalling envelopes (`envelope-kinematics-pv`)
+
+Scope: PV diagrams, infall and rotation profiles, centrifugal barrier, angular momentum
+
+Built from 493 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `position[- ]velocity|\bpv\b|\bp-v\b|infall|centrifugal barrier|rotating[- ]infalling|ulrich|specific angular momentum`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 303
+- astrochemistry: 132
+- protoplanetary_disks: 107
+- nearby_galaxies: 90
+- milky_way_ism: 76
+- agn_and_quasars: 65
+- evolved_stars: 52
+- high_z_galaxies: 39
+- stellar_physics: 18
+- galaxy_clusters_and_sz: 13
+- debris_disks: 9
+- exoplanets: 2
+- solar_system: 1
+- other: 1
+- transients: 1
+
+### Software named in the matched steps
+- casa: 60
+- radmc-3d: 17
+- gildas: 16
+- pvextractor: 12
+- 3dbarolo: 9
+- spectral-cube: 9
+- emcee: 7
+- miriad: 6
+- astropy: 6
+- impv: 5
+- shape: 5
+- scipy: 5
+- carta: 5
+- casa simobserve: 4
+- slam: 4
+- lime: 4
+- hyperion: 4
+- sparx: 3
+- karma: 3
+- radex: 3
+- galpak3d: 3
+- feria: 3
+- casa imfit: 3
+- tipsy: 3
+- matlab: 3
+- lmfit: 2
+- dog-hit: 2
+- shapemol: 2
+- mpfit: 2
+- casa simulator: 2
+- astrodendro: 2
+- radiative transfer code (cite: lee2014): 2
+- kinemetry: 2
+- casa viewer: 2
+- ratran: 2
+- lamda: 2
+- hochunk: 2
+- clumpfind: 2
+- pdspy: 2
+- keplerfit: 2
+
+### Fitting methods (most common phrasings)
+- Gaussian fits: 2
+- linear least squares: 2
+- chi2 fit of double power law (Rb,Vb,pin,pout); compared with single power law: 1
+- Manual comparison of abundance profiles; no formal fit: 1
+- emcee MCMC; χ² likelihood; model and data normalized by their respective peak intensities: 1
+- Orthogonal Distance Regression; positional and velocity uncertainties; inverse-square-error weighting: 1
+- Tune free parameters for best-match trajectories; North and South use families with varying initial polar angle: 1
+- Qualitative comparison of observed P-V emission with Keplerian curves: 1
+- Qualitative comparison of modeled and observed P-V morphology, especially the central waist and edge-brightening: 1
+- chi2 with Monte Carlo dispersal of points within errors; compared with single power law: 1
+- by-eye comparison of models, no formal fit: 1
+- 2D Gaussian fit: 1
+- AGA-based optimization, run 100 times to get standard deviations: 1
+- Fit rotational and radial components to PV slopes and velocities; approximately resolve their degeneracy using line-of-…: 1
+- Tilted-ring model fitting in 3DBarolo: 1
+- Welch's t-test between distributions: 1
+- MCMC fitting in SLAM using both ridge (emission peak) and edge (outermost contour) modes; final parameters obtained by …: 1
+- Manual visual adjustment of theta, phi, and R_cloud: 1
+- Sine wave frequencies/phases/smearing estimated by eye; linear coefficients a, b, c found by best fit in each R interva…: 1
+- Direct extraction of maximum velocity from PV line connecting maximum and minimum moment 1 pixels: 1
+- Single Gaussian: 1
+- manual iterative adjustment; no sampler, priors or likelihood: 1
+- Fit of velocity profile; sampler/priors not stated: 1
+- Reduced chi-square (chi^2_nu) evaluation on ALMA-PV-NOEMA, ALMA-SMT-KP, and combined triangles.: 1
+- Gaussian fits to beam-sized spectra: 1
+- Visual coarse exploration of 3 Keplerian velocity curves on PV diagrams: 1
+- Manual parameter exploration; no statistical fit: 1
+- Monte Carlo with normal distributions of T_e and n_e for errors on alpha_B and emissivity: 1
+- Ellipse fitting to radial peak positions (HD 9985, HD 155853); 2D elliptical Gaussian fit to moment 0 map (HD 145101): 1
+- Gaussian fit to the single-peak H30alpha profile; no sampler stated: 1
+- Manual model optimization by visual comparison (no formal fitting stated): 1
+- Gaussian models; fit method not stated: 1
+- Zero degrees of freedom; chi2 contours 1, 2, 3, error bars at chi2=1: 1
+- linear model x=av+b within ±300 km/s: 1
+- Qualitative comparison of model overlays; no sampler or likelihood stated: 1
+- by visual comparison: 1
+- Manual adjustment, no objective function stated; theta0 uncertainty ~10 deg: 1
+- Gaussian fits to averaged transverse SO and CO profiles; t-stat = |mu_CO - mu_SO| / sqrt(sigma_CO^2 + sigma_SO^2): 1
+- Linear fit by MPFIT; moments 1 and 2 of the distribution give value and uncertainty: 1
+- chi2 grid search: 1
+
+### Validation checks used
+- Qualitative comparison of simulated and observed PV diagrams: 2
+- Reduced chi2 1.6 (double) vs 4.0 (single); systemic velocity left free confirms 5.8 km/s: 1
+- Envelope density compared with Kenyon et al. 1993 and Tobin et al. 2013: 1
+- Residual of moment 0 maps (9 sigma for constant abundance): 1
+- Inspect channel-map residuals; compare with pure disk and pure envelope fits; independently check with PV analysis.: 1
+- Inner slope agrees with Keplerian rotation; PV masses agree with the PPV dynamical model.: 1
+- Trajectory models reproduce observations; alternative spiral origins remain possible.: 1
+- Compare elongation and velocity-gradient orientation with the outflow; inspect compactness and gradient changes with K: 1
+- Compare K=3 observations with all four models; compare M4 predictions with all observed K components: 1
+- M4 gives a comparable infall rate; compare envelope infall with literature burst accretion and larger-scale velocity gr…: 1
+- reduced chi2 1.6 (double) vs 2.0 (single); resolution bias analysed in Appendix: 1
+- spherical envelope (SE) models compared in Appendix; q=-0.5 tested: 1
+- same estimate at 100 and 300 AU gives similar results: 1
+- Rejected a bicone-projection alternative by comparing with PV shapes: 1
+- Parameters consistent within errors among all lines: 1
+- Model PV diagrams visually compared to observed ones: 1
+- Model lines overlaid on observed PV diagram; more complex cone variants tested and rejected: 1
+- Keplerian curves overlaid on PV diagram: 1
+- visual agreement with cube and PV diagram: 1
+- consistency with IR spiral arm and brightness asymmetry: 1
+- Compare modified and purely circular velocity fields; assess the fraction of gas within ±50 km s^-1 of the fitted curves: 1
+- Check flow lines against gas-bar morphology and compare instantaneous inflow with reservoir-mass/travel-time estimate a…: 1
+- Average r21 in PV diagram compared with luminosity-weighted r21 over the whole map and found consistent within standard…: 1
+- Tested contour levels 5 sigma above and below the threshold and tested modeling with CO 21 instead of CO 10: 1
+- Compared non-normalized and sample-normalized PV pixel distributions: 1
+- Compared derived dynamical stellar mass with Brinch & Jørgensen (2013) after rescaling for distance and inclination; co…: 1
+- Visual comparison of model trajectories over moment maps and velocity curves over PV diagrams: 1
+- Compared derived envelope mass (0.04 M_sun) with Brinch & Jørgensen (2013) radiative transfer value (0.07 M_sun): 1
+- Comparison of data V_z vs omega maps and position angle distributions with the 3-sine-wave model across all five radial…: 1
+- Ray-traced the image-plane synthesized beam at the flux peak to verify source-plane resolution (0.26'' x 0.09'') and ch…: 1
+- Co3RaL benchmarked against MORELI with identical inputs; the authors state no comprehensive parameter-space study was d…: 1
+- alternative rotation explanation for the redshift tested and rejected (implies >30 Msun): 1
+- Inclination checked against a contour enclosing 20% of the peak moment-0 intensity: 1
+- All sources except C7 meet the criteria; C7 is discarded as a probable major merger: 1
+- Applied although the sample does not meet the SNR criterion of the method; compared with Figure 17 of Rizzo et al. 2022: 1
+- Positional agreement of continuum and H30a checked using IRS16NE: 1
+- Consistency with VLBA upper limit on second black hole mass: 1
+- Compared with HI systemic velocity: 1
+- Compared with expected accretion rate ~1e-2 Msun/yr: 1
+- Singular isothermal sphere gives indistinguishable fit: 1
+
+### Key parameters and settings (bibcode: value)
+- 2017ApJ...849...56A: Pixels above 5 sigma used; V_LSR=5.8 km/s; distance 140 pc; i=85 deg
+- 2017ApJ...849...56A: Constant abundance 4e-8 nominal; alternative ISM abundance 5e-7 at 80-88 AU and 2.8e-8 elsewhere
+- 2026ApJ..1003..219W: Separate envelope and disk position angles; common inclination; M*, Rin, Rc, Rout, menv/mdisk, fnorm
+- 2026ApJ..1003..219W: Prior bounds: θenv (−10,60)°; θdisk (0,90)°; M* (20,50) M⊙
+- 2026ApJ..1003..219W: Prior bounds: Rin (80,400) au; Rc (400,1600) au; Rout (1600,2500) au
+- 2026ApJ..1003..219W: Prior bounds: i (30,90)°; menv/mdisk (0.5,2); fnorm (0.7,1.3)
+- 2026ApJ..1003..219W: Systemic-velocity prior centered at −51 km s−1; positional priors centered on continuum peak
+- 2026ApJ..1003..219W: 16σ extraction for inner emission; 9σ for extended emission
+- 2026ApJ..1003..219W: Reference radius R0 = 1300 au; inclination 50°
+- 2026ApJ..1003..219W: Numerically solve rd x³ + (r − rd)x − r cosθ = 0 for x = cosθ0
+- 2026ApJ..1003..219W: 2D integration over r ∈ [rin,rout], θ ∈ [0,π]; use best-fit dynamical parameters
+- 2026ApJ..1003..219W: Fixed M* = 40 M⊙; position angle 42° clockwise from North; inclination 50°
+- 2026ApJ..1003..219W: Ws: r0=2400 au; rcb=1200 au; θ0=30°; φ0=95°; v0=1.5 km s−1
+- 2026ApJ..1003..219W: Ns: r0=3000 au; rcb=1100 au; θ0=[35°,41°,47°,53°,59°,65°]; φ0=−15°; v0=6 km s−1
+- 2026ApJ..1003..219W: Ss: r0=2500 au; rcb=1200 au; θ0=[85°,91°,98°,104°,110°]; φ0=−125°; v0=4.5 km s−1
+- 2020ApJ...904..181L: Cut P.A. 165 degree; systemic velocity 5.2 km s^-1
+- 2020ApJ...904..181L: Keplerian comparison curves: 8.04/sin^2 i, 3.57/sin^2 i and 0.89/sin^2 i M☉
+- 2020ApJ...904..181L: M1: pure Keplerian, 20 M☉, 25 degree; M2: pure Keplerian, 4.76 M☉, 60 degree; Table 1 rounds the latter mass to 4.8 M☉
+- 2020ApJ...904..181L: M3: Keplerian azimuthal motion around 4.76 M☉ at 60 degree, plus constant radial infall 2.5 km s^-1
+- 2020ApJ...904..181L: M4: Ulrich accretion-flow velocity field; arbitrarily assumed centrifugal barrier 90 au
+- 2020ApJ...904..181L: Surface-density profile r^-1.1; at 900 au M1 has 0.79 g cm^-2 and M2–M4 have 0.71 g cm^-2
+- 2020ApJ...904..181L: Temperature: 430 K at r < 214 au; 430 (r/214)^-0.7 K at r ≥ 214 au
+- 2020ApJ...904..181L: CH3CN abundance 2 × 10^-8; abundance truncated at radius 900 au; turbulent velocity 2 km s^-1
+- 2020ApJ...904..181L: M3 surface density 0.71 g cm^-2 at 900 au; infall velocity 2.5 km s^-1
+- 2020ApJ...904..181L: M4 modeled infall velocity 2.99 km s^-1 at 900 au
+- 2015ApJ...812...27A: mean positions not measured for |dV|<1.2 km/s; Vsys=6.4 km/s
+- 2015ApJ...812...27A: best model A: (v_out, R_kep, alpha, i)=(0.85, 100 AU, 0.3, 65 deg)
+- 2016A&A...590A..73A: clip 3 sigma (moment 0), 4 sigma (moments 1 and 2)
+- 2016A&A...590A..73A: theta=10-25 deg; v_proj 100-150 km/s
+- 2018MNRAS.480.4991G: Tex 60-180 K; 12CO/H2 = 3e-4; 16O/18O ~330
+- 2018MNRAS.480.4991G: Tmax 180 K, Tmin 60 K, turbulence >~2 km/s, HCO+ abundance ~1e-7
+- 2018MNRAS.480.4991G: theta~106 deg, half-opening theta0~28 deg, dv/dr=73 km/s/arcsec, v0~23 km/s
+- 2017ApJ...845...10F: gamma=0.8; fiducial radius 1 arcsec (120 AU)
+- 2021A&A...645A..49G: Circular radii 3, 2, 1.5, 1, and 0.5 arcsec; moment-0 interval -300 to +300 km s^-1
+- 2021A&A...645A..49G: Major kinematic axis PA 133 deg; inclination 43 deg
+- 2021A&A...645A..49G: CO luminosity restricted to ±50 km s^-1 around fitted PV curves
+- 2021A&A...645A..49G: Bar pattern speed 250 km s^-1 kpc^-1; velocity field linearly interpolated between four radial positions
+- 2021A&A...645A..49G: Inclination geometrical factors f_r and f_s each span 0.73–1
+- 2025ApJ...980..126K: Slit width = 1', edge exclusion = 28", threshold = 20 sigma (10 sigma for NGC 1512 and NGC 4579)
+- 2025ApJ...980..126K: Ring width = 28.8", radial gas inflow/outflow fixed to 0, PA, inclination, and rotation velocity free in each ring
+- 2025ApJ...980..126K: Model PV contour threshold = 30 sigma (10 sigma for NGC 1512 and NGC 4579)
+- 2025ApJ...980..126K: Histogram bin width = 0.027; radial bin width = 5.6"; minimum 3 data points per radial bin
+- 2023ApJ...958...98F: PV cut width = 5 pixels (~0.5''); P.A. = 149 deg; emission threshold > 5 sigma; filtered-out velocity channels excluded
+- 2023ApJ...958...98F: M_star = 0.5 M_sun; i = 47 deg; P.A. = 149 deg; near side = 59 deg E of N; For C18O: R_disk = 265 au, R_cloud = 5300 au, h_0 = 1250 au km s^-1, (theta, phi) = …
+- 2023ApJ...958...98F: T_bg = 2.7 K; T_ex = 21 K; inner disk exclusion radius = 265 au; d = 132 pc
+- 2022MNRAS.510.2363H: Aperture radius = 12 mas
+- 2022MNRAS.510.2363H: Sine wave 1 (dominant, coeff b): V_z = 1.64 sin(omega - 57 deg); Sine wave 2 (coeff a): 1.50 sin(omega - 230 deg); Sine wave 3 (coeff c): 2.43 sin(omega - 208 …
+- 2022MNRAS.510.2363H: |V_z| < 1 km s^-1 for Band 7 lines; |sin(omega)| < 0.5 wedge for CO(2-1); velocity range -5 to -3 km s^-1 for northern blob
+- 2021ApJ...917...99Y: source-plane pixel size = 0.04''
+- 2021ApJ...917...99Y: integrated flux SNR > 10 threshold for moment 1 and 2
+- 2018A&A...619A..39F: PV slit 0.5 arcsec, PA=30 deg
+- 2018A&A...619A..39F: spectra from 0.5 arcsec radius region
+- 2024A&A...692A.151S: Te ~ 15000 K, constant
+- 2024A&A...692A.151S: inclination i = 12 deg (models around 17 deg examined)
+- 2024A&A...692A.151S: R_out ~ 40 au, R_eq ~ 8 au
+- 2024A&A...692A.151S: high-velocity shells: velocity rises from ~70 to ~90 km/s; ~10 km/s inside ~15 au
+- 2024A&A...692A.151S: Tex <~ 330 K, tau ~ 0.16
+- 2024ApJ...977..161V: cos^2 i = ((b/a)^2 - q^2)/(1 - q^2) with q = 0.2; cos i = b/a for edge-on C1, C4, C5
+- 2024ApJ...977..161V: V/sigma > 3 for rotation support
+- 2017ApJ...850L...5T: robust 0.5; integration -400 to +400 km/s
+- 2017ApJ...850L...5T: a~1.4e17 cm, e=0.96-0.98, dV~600 km/s
+- 2018ApJ...863..193V: Hernquist a = 5.2 kpc; stellar mass 5e11 Msun
+- 2026A&A...706A..27S: Triangles: ALMA-PV-NOEMA and ALMA-SMT-KP; Date: April 18, 2021
+- 2026A&A...706A..27S: Fixed flux density 60 mJy and size 180 microarcseconds for spatial chi-square map over [-400, 400] microarcseconds in relative RA and Dec
+- 2020ApJ...902...99I: Keplerian curve V ∝ r^-0.5 for a point mass of 1e7 Msun, and sub-Keplerian V ∝ r^-0.31 from H2O masers
+- 2015ApJ...811...92C: Stellar mass 1.8 Msun; outer disk i=20 deg, PA=-20 deg; inner disk relative inclination 70 deg, PA=-8 deg; warp between 20 and 23 AU; free-fall at 30 AU
+- 2015A&A...574A...5D: best fit a=1.12", p=2, b=0, c=3e12 cm, w=30 deg, i=60-80 deg
+- 2024ApJ...977...37N: 4 sigma_rms pixel cutoff plus 5 sigma threshold on moment 0; sigma = sqrt(N) sigma_rms dv with N the full velocity-range channel count
+- 2024ApJ...977...37N: PV velocity range = cloud range plus 20 km/s each side
+- 2024ApJ...977...37N: H30alpha cloud diameter = 4 times the sigma of a Gaussian fit to the PV diagram collapsed along velocity
+- 2024ApJ...977...37N: Upper limit is 2 sigma, i.e. twice the Q computed from the noise
+- 2015A&A...580A...1M: effective radius 21.5 arcsec (4.3 kpc)
+- 2015A&A...580A...1M: inclination 80 deg, PA 115 deg; lateral expansion up to 200 km/s; ring R rotation ~50 km/s at r=2 arcsec vs nominal 170 km/s
+- 2017MNRAS.464.1415M: mask highest 10% of ratios (>3.80); spaxels >4 sigma
+- 2025A&A...703A..15M: Radial cuts in 5 deg increments from 0 to 360 deg
+- 2020PASJ...72...36T: channel maps with dV = 10 km/s; moment 0 over V_LSR = -400 to 400 km/s
+- 2018A&A...617A.129K: opening angle ~60 deg, radius 0.28 arcsec, inclination 0<i<~30 deg, max velocity ~420 km/s
+- 2020PASJ...72L...5T: Keplerian orbit with a ~1 pc, e ~0.8, i ~140 deg
+- 2022MNRAS.515..543C: Velocity integration ranges for channel maps: B (-11 to +14 km/s, or -16 to +24 km/s for 20_3,17-20_2,18 A), A (-2 to +7 km/s); velocity shifts: +/- 6-7 km/s f…
+- 2024ApJ...963....1O: free-fall: inclination 72 deg, v_ICM +600 km/s, drop height 16 kpc
+- 2018AJ....156..270S: eta = 1.175, emissivity 0.70, beta = 0.25
+- 2021A&A...654A..69S: NFW halo with concentration c = 6 for escape velocity
+- 2018ApJ...863...72O: outflow P.A. assumed 105 deg
+- 2018ApJ...863...72O: i = 80 deg (75-90 allowed), C = 0.0025 au^-1, v0 = 0.0015 km/s; z0 = R0 = 1 au
+- 2018ApJ...863...72O: j_IRE = 7.9e-4 km/s pc
+- 2025A&A...701A.141L: Radius of centrifugal barrier 65 au (semi-major axis of SO ring)
+- 2025A&A...701A.141L: theta_view and phi_view fixed to the SO ring values (theta_view = 45 deg during follow-up fitting)
+- 2025A&A...701A.141L: Free-fall velocities scaled down by ~1.5
+- 2025A&A...701A.141L: Rotation power-law index beta = -1; infall velocity fixed; velocity ratio adjusted to match data
+- 2025A&A...701A.141L: r_out ~150 au (~1''), r_in ~35 au
+- 2025A&A...701A.141L: M = 0.5 Msun, R_C = 1'', theta_view = phi_view = 90 deg, theta0 = 45 deg, phi0 = 0 deg
+- 2025A&A...701A.141L: j(theta0) = 1; v_phi ~ r^-1 and v_r constant in the inner envelope
+- 2020ApJ...905...25G: Natural weighting; ~35 mas; moment 1 and 2 threshold 7 mJy (~3-4σ); velocity extent avoids nearby lines
+- 2020ApJ...905...25G: CH3CN K-ladder lower energy levels 122–515 K
+- 2020ApJ...905...25G: Ṁ_infall~3–6 Ṁ_ejection; Ṁ_accretion~2–5 Ṁ_ejection
+- 2020ApJ...905...25G: Disk radius 350 au, disk mass 1 M_sun, central star 20 M_sun
+- 2020ApJ...905...25G: Impactor mass 0.25–0.5 M_sun; impact at 350 au and 10 km s^-1; α=90° for quoted flip
+- 2015ApJ...812..129Y: Only channels with peaks >5σ and ΔV>1.2 km/s
+- 2015ApJ...812..129Y: Free parameters M*, j, n0, T0; p = -1.5 or -2, q = -0.4; outer radius 3'' (450 AU); cavity of 60 deg
+- 2015ApJ...812..129Y: Grid: M* 0.03-0.07 Msun step 0.01; j 0-5e-5 step 1e-5; n0 5e6-4e7 factors of two; T0 20-60 K step 10 K
+- 2019A&A...623A..79C: 1 million particles, Toomre Q=1, nuclear region 120 pc diameter
+- 2018A&A...614A.113H: PA 25° and 115°, uncertainty ~5°
+- 2018A&A...614A.113H: radial velocity 1 km/s, turbulence 1 km/s, temperature power-law index -0.5
+- 2017A&A...608A.134Y: R0 = 1'' (140 au); free parameters V_rot(R0), f, V_sys; high-velocity ranges only
+- 2017A&A...608A.134Y: M*=1.8 Msun, i=47 deg, PA=138 deg, Vsys=7.04 km/s
+- 2023A&A...676A..67W: Tile size ~60" x 60"; persistence >= 3 channels (~7.5 km s^-1); 25 candidates rejected via PV diagrams, leaving 325 bubbles
+- 2023A&A...676A..67W: Mass aperture = 1.6R (15% additional mass uncertainty); velocity measurement uncertainty = 3.0 km s^-1 (channel width 2.5 km s^-1)
+- 2025A&A...699A.187G: Major axis PA 114 deg, minor axis PA 24 deg
+- 2025A&A...699A.187G: Peritrepa 0.1 pc (axis along line of sight) and 0.5 pc (axis perpendicular)
+- 2022ApJ...937...10L: E_u < 120 K and E_u > 120 K energy bins
+- 2022ApJ...937...10L: Lines with E_u < 120 K
+- 2020CPhy...30...85D: High velocity cut: |Vz| > 7.5 km s^-1; spectral extraction radius = 1 arcsec; channel map bin width = 1 km s^-1
+- 2020CPhy...30...85D: Integration cuts: |Vz| > 7.0 (CO), 8.3 (SiO), 6.2 (SO), 6.0 (SO2) km s^-1
+- 2021MNRAS.507.3998P: Rebin factor x15 for UDF1, x5 for ALESS067.1 (2016.1.00564.S); pv diagram axis inclination ~70 degrees for ALESS067.1
+- 2019A&A...624A.138Y: q0 = 0.2
+- 2024RAA....24c5009N: Inner rings: 100 mas width from R = 100 to 500 mas
+- 2024RAA....24c5009N: Outer EDE region: 1.2 < R < 5.2 arcsec, |Vz| < 2 km s^-1, bin size 10 deg x 100 mas
+- 2024RAA....24c5009N: 51 frequency channels (-8.2 < Vz < +8.2 km s^-1), radial range 1.2 < R < 5.2 arcsec
+- 2024RAA....24c5009N: 20 annular rings of 20 mas width, mean radii from 10 mas to 390 mas; FWTM threshold at 10% of maximum
+- 2024A&A...686A.156D: HR+MR for most sources; HR+MR+LR for DC8737.
+- 2024A&A...686A.156D: Slit width: average of beam minor and major axes; contours: 0.7, 0.8 and 0.9 times peak PV flux.
+- 2024A&A...686A.156D: Examine residual components near +400 and −400 km/s.
+- 2019PASJ...71..105T: V_rot ~150/cos i km/s; r ~ 6e15 cm
+- 2018ApJ...859..144A: PA=355 deg, i=60 deg, vsys=1198 km/s
+- 2024NatAs...8..256O: PA 90 deg slice through the CND; PA 150 deg along filament D centred 0.3 arcsec W of the centre
+- 2024NatAs...8..256O: Gas mass of about 5e8 Msun inside radius 0.7 arcsec (~250 pc) for alpha_CO = 4.3; v = 200 km/s
+- 2020MNRAS.493.3744F: Exponential disk, arctan rotation curve, default settings
+- 2015PASJ...67..122M: stellar mass fixed within 2.2 +/- 0.3 Msun; free: systemic velocity, centre, inclination
+- 2025A&A...694A..86Y: SiO integrated emission S/N > 3, coherent PV velocity, aspect ratio > 10
+- 2025A&A...694A..86Y: Continuum non-detection limit 5 sigma = 0.2 mJy/beam
+- 2024ApJ...962..166W: 5σ edge threshold; exclude offsets without emission above 5σ
+- 2023ApJ...953L...6P: Disk velocity range: -12 to 28 km s^-1; maser spatial extent (diameter 2R): 45 mas (H26alpha) and 54 mas (H30alpha); distance = 1.2 kpc; inclination = 9 deg fr…
+- 2018MNRAS.481.4931E: vLSR = -38 km/s
+- 2017ApJ...834..178Y: PA in steps of 5 deg, i in steps of 5 deg
+- 2017ApJ...834..178Y: R0 = 1''; low-velocity channels excluded
+- 2017ApJ...834..178Y: q fixed -0.4; envelope within 80 deg of polar axis zero density
+- 2025SciA...11.6953M: S2: initial distance 52,000 au, position angle 21 deg, polar angle 70 deg
+- 2025SciA...11.6953M: Angular velocity 4e-14 rad/s, initial radial velocity 0.6 km/s
+- 2025SciA...11.6953M: Central mass 50-80 Msun
+- 2025SciA...11.6953M: Position angle fixed to the velocity gradient in the centroid velocity map
+- 2025SciA...11.6953M: Fine-grid ranges: M 20-70 Msun, i 0-20 deg, r_CB 0-200 au, r_out 800-1200 au
+- 2025SciA...11.6953M: Southeast and northwest blueshifted/redshifted clusters selected by hand; northeast cluster excluded as outflow-related
+- 2025SciA...11.6953M: PA of PV cut fixed to steepest velocity gradient in ALMA data; disk center at the long-baseline 1.3 mm continuum peak
+- 2025SciA...11.6953M: min-value = 3 sigma(1.3 mm), min-delta = 1 sigma(1.3 mm), min-npix = N_beam
+- 2021ApJ...907L..41L: SO abundance relative to molecular hydrogen is free
+- 2021ApJ...907L..41L: Shell density ~4 times the unperturbed disk-wind model
+- 2021ApJ...907L..41L: Modified λ~3.5; jet inner launch radius 0.05 au
+- 2014ApJ...793....1Y: Initial solid angle theta0±3, phi0±3 deg; n1=3e7 cm-3; flow lengths 5000 AU (red), 2000 AU (blue)
+- 2019ApJ...876..141I: masked cube: seed pairs of channels >5 sigma, expand to >1.5 sigma
+- 2018A&A...618A.120L: pv diagrams every 0.15" from z=0.1" to 1.75"
+- 2023A&A...673A..46B: PV diagram slit sizes ~30'' and ~9'' aligned with major and minor axes of NED01
+- 2025MNRAS.540.2396S: Contours at 2^n sigma with sigma = 1.4e19 cm^-2
+- 2025MNRAS.540.2396S: PV slice across the centre at PA = 315 deg intersecting the left-most bright spot
+- 2023MNRAS.518.2034H: Shell mean radius = 6 arcsec, mean expansion velocity = 5.5 km s^-1, 12 sectors of 30 deg width, intervals |rho - 1| < 0.25 and |rho - 1| < 0.5
+- 2023MNRAS.518.2034H: Expansion velocity = 10.6 km s^-1 (from Vlemmings 2019), observed |V_z| ~ 6 km s^-1
+- 2023MNRAS.521.1045R: SVM dividing plane: -0.63 P_major - 0.27 P_V + 2.78 P_R - 2.72 = 0
+- 2017ApJ...841L..25T: Re fixed to CO size; inclination from sin^2 i=(1-q^2)/(1-thickness^2), thickness 0.25
+- 2024NatAs...8..308D: Slit width 3 arcsec (0.3 arcsec gave lower SNR)
+- 2024NatAs...8..308D: Slit angles scanned in 5 deg steps, then 1 deg steps around the best angles
+- 2024NatAs...8..308D: Continuum peak taken as AGB star position (0,0)
+- 2026A&A...707A.252K: Smooth & Search masking with 3 sigma cut; 11 rings with radial separation 0.0138'' (theta_maj / 2.5); center fixed via 2D-Gaussian fit to moment-0 map; fixed i…
+- 2017MNRAS.472.4024R: Channels -100 to -250 km/s; collision regions excluded
+- 2025ApJ...995..108J: Non-detection limits are 3σ; SoI fractions divide aperture gas mass by host global gas mass.
+- 2025ApJ...993...90S: 3 sigma_CO threshold
+- 2024MNRAS.527.3559P: Inclination and PA from scattered light, stellar mass 1.8 Msun
+- 2019A&A...623A..96Y: Rsh = 90"; Vsys = 7 km/s
+- 2019A&A...623A..96Y: M*=1.8 Msun, centrifugal radius 100 au, i=47 deg, PA=138 deg, envelope radius 3000 au, density ∝ r^-1.5, evolution 1e4 yr, disk cylinder 100 au radius and 10 a…
+- 2019A&A...623A..96Y: T(r) = 15 (r/1000 au)^-0.6 K
+- 2025ApJ...995L...7L: PV cut at robust 0.5 and -2 for low and high resolution
+- 2025ApJ...995L...7L: C18O abundance fixed at 1.7e-7 relative to H2
+- 2025ApJ...995L...7L: inclination ~18 deg to the plane of sky; model spans 10 au to 8000 au
+- 2025ApJ...995L...7L: best-fit structure: H0 ~0.4 arcsec (160 au), theta0 ~18 deg, n0 ~1.3e6 cm^-3, p ~ -0.13+/-0.01, T0 ~20+/-1 K, q ~ -0.5+/-0.1
+- 2025ApJ...995L...7L: b ~0.38 (l0 ~1333 au km/s, ~530 au km/s at Rd ~160 au)
+- 2025ApJ...995L...7L: first attempt: A_phi ~0.8, R_phi,dip ~1.5 arcsec (600 au), sigma_in ~1.6, sigma_out ~0.4; Rc ~5 arcsec, sigma_c ~1
+- 2025ApJ...995L...7L: infall: A_r ~0.35, R_r,dip ~7.5 arcsec (3000 au), sigma_r ~0.3, R_c ~3.5 arcsec (1400 au), sigma_c ~0.85
+- 2025ApJ...995L...7L: rotation (refined): R_phi,dip ~1.5 arcsec (600 au), A_phi ~0.9, sigma_in ~1.3, sigma_out ~0.5
+- 2020ApJ...891...61Y: 50 000 LIME grid points in 30 000 au sphere, minimum scale 1 au; zero abundance in cavities
+- 2020ApJ...891...61Y: 54-model drop-function grid tested and rejected; parameterized profile with Xout, Xevap, radii, af=2, ap=-2
+- 2020ApJ...891...61Y: M=0.15 Msun, inclination 130 deg, line width 1 km/s, rin=15 au, rout=50 au
+- 2014ApJ...796..131O: systemic velocity 5.9 km/s
+- 2014ApJ...796..131O: SO ring 70-120 AU, 32 K, SO abundance 9e-7 (5000x outside); disk 54 AU, 0.3 Msun; j=6.1e-4 km/s pc
+- 2019A&A...632A..61G: disk radius 4-5 pc, torus radius 5-6 pc, PA=113, i=-80, 5 pc FWHM beam
+- 2016A&A...590A.127W: R_continuum = 3.60e13 cm, pseudo-continuum T = 2600 K
+- 2016A&A...590A.127W: SiO abundance drop at r_cond = 1.0e14 cm (~5 R*), outer ~1% of inner; H2O abundance 5.0e-6 (5.0e-5 near photosphere)
+- 2017MNRAS.468..685Q: Example 1: 10 000 points, 151 channels, 100 m s^-1 spectral resolution, 0.1 arcsec pixel size, 141 pixels
+- 2017MNRAS.468..685Q: Benchmarking (Appendix B): 101 992 points in LIME, 191 shells in RATRAN, 71 channels, 100 m s^-1 resolution, pixel size 0.2 arcsec (and 0.02 arcsec test)
+- 2021MNRAS.500.3802H: spatial box ~22'' x 22'', channel range ~45 - 50 channels
+- 2021MNRAS.500.3802H: spectral smoothing factor = 4, spatial smoothing factor = 1.5, mask threshold = 3 sigma
+- 2021MNRAS.500.3802H: PVD slit width enclosing 95% of CO(1) emission (e.g. 1.6'', 2.4'', 2.0'' for GAMA593680, GAMA106389, GAMA417678)
+- 2026A&A...705A..51D: PV major-axis PAs: 40, -7, 32 degrees; minor axes perpendicular; third PAs: 16, -36, 0 degrees
+- 2026A&A...705A..51D: Exclude Mrk 915's farthest c2 cloud
+- 2020ApJ...901..166V: Visibility profiles in 0.5 km s^-1 channels
+- 2020ApJ...901..166V: Add a rotating infalling envelope of radius 3000 au when the disk cannot reproduce small-uv-distance emission
+- 2023A&A...669A..56Q: Inclination of outflow C assumed <= 15 deg
+- 2024A&A...687A.112M: Spectral apertures approximately 10% of shell diameters
+- 2024A&A...687A.112M: Use 12CO (2-1) for U Ant
+- 2025A&A...693A..91L: Velocity intervals: SW-tail (-191 to -88 km s^-1), E-tail (274 to 377 km s^-1), anomalous structure (-501 to -346 km s^-1); PV path width = 0.225 arcsec; pixel…
+- 2026MNRAS.546f2269R: spatial smoothing FWHM = 1.5x synthesized beam, velocity smoothing = Hanning, mask threshold = 0.9 sigma
+- 2016ApJ...820L..34S: blue/red components 2.5<|dV|<3.5 km/s from systemic 6.5 km/s
+- 2016ApJ...820L..34S: outer radius 350 AU; convolved with 0.5 km/s velocity width and 0.69"x0.40" beam
+- 2016ApJ...820L..34S: H2 density 3e6-3e8 cm-3, temperature 30-120 K
+- 2025ApJ...989...56H: distance 445 pc
+- 2025ApJ...989...56H: b_cav sampled 1.00, 1.25, 1.50, 1.75; a_cav set so R spans 1 to 2 arcsec at z=3 arcsec
+- 2025ApJ...989...56H: scaling factor s 0.90 to 1.10
+- 2025ApJ...989...56H: CH3OH relative abundance 1e-6; E_u = 45 K for the 5(1,4)-4(2,4) line
+- 2020ApJ...904..185O: Inner radius = 50 au (or r_CB = 50 au), outer radius = 300 au, P.A. = 50 deg, V_sys = 3.9 km/s, flared angle = 30 deg, intrinsic FWHM = 1 km/s, emissivity prop…
+- 2020ApJ...904..185O: V_sys = 2.5 km/s, outer radius = 30 au, inner radius = 0.56 au (1 pixel) for Keplerian or r_CB = 5, 10, 20 au for IRE, P.A. = 50 deg, flared angle = 30 deg, in…
+- 2014ApJ...795..152O: R0=z0=1 arcsec
+- 2014ApJ...795..152O: flared angle 20 deg, outer radius 240 AU, density ~ r^-1.5, line width 0.5 km/s, beam 0.6"
+- 2016ApJ...832..142Z: disk inclination 65 deg, PA 210 deg, dispersion 15 km/s, scale height 4"
+- 2017ApJ...835L..13S: moment-0 integrated over ±260 km/s of Vlsr~45 km/s
+- 2017ApJ...835L..13S: Tex=65 K from 12CO/13CO
+- 2018ApJ...859..111H: Channels with SNR>5 used for astrometry
+- 2023ApJ...942...25F: Outflow distance r = 1 arcsec (460 pc), velocity v = 100 km s^-1, flux fraction = 15% of total CO flux
+- 2024A&A...689A.163L: Ellipse width 120 km/s, height 120 mas, shift 40 km/s, skew 0.5 km/s/mas
+- 2020MNRAS.496.5330F: Threshold >3sigma (sigma = 2.4 mJy/beam) for zero-moment map
+- 2020MNRAS.496.5330F: Jet 1 PA = 222 deg, Jet 2 PA = 195 deg, systemic velocity v_lsr = 6.3 km s^-1
+- 2020ApJ...889...85H: CO integrated from -15 to 45 km/s; Vsys = 14 km/s
+- 2020ApJ...889...85H: inner arcs ~13 km/s, outer arcs ~14.4 km/s
+- 2020MNRAS.496.4358I: Assumed infall velocity of order 1,000 km/s
+- 2019ApJ...871...85L: sigma_v = 75 km/s subtracted; inclination 41.3 deg
+- 2025PASJ...77..432U: Dusty core profile fit on 0.04 arcsec resolution image
+- 2018PASJ...70...85T: inclination i~30±5 deg from aspect ratio; Vrot~100/cos i, Vrad~20/cos i
+- 2025ApJ...985..259J: PV slice width about one beam
+- 2025ApJ...985..259J: Systemic velocity from the peak of the HCN (3-2) line in extracted spectra
+- 2014ApJ...788L..34P: moment 0 over -2.1 to 14.0 km/s; moment 1 voxels >3 rms, pixels with integrated intensity >0.4 Jy/beam km/s
+- 2017ApJ...843...27L: upper boundary a=0.05, b=0.45; lower a=-0.05, b=-0.6
+- 2017ApJ...843...27L: l and M free; r_c = l^2/GM; r_0 = l^2/2GM
+- 2025ApJ...985..166K: NW and NNW: i_s = 107 deg, theta_s = -45 deg, r_d = 55 au, M* = 0.14 Msun fixed; theta_0, phi_0 free
+- 2025ApJ...985..166K: Streamer edges set at 3 sigma in moment 0 maps
+- 2025ApJ...985..166K: Velocity ranges NE 3.6-4.7, NW -0.1-4.9, NNW 5.2-6.8 km/s
+- 2025ApJ...985..166K: Free-fall time t_ff = sqrt(R^3 / 2GM*)
+- 2025ApJ...985..166K: Radial range 1-9000 au, distance 151 pc, stellar mass 0.14 Msun, disk radius 55 au, disk mass 1.0e-2 Msun, envelope mass 0.52 Msun, C18O abundance 1.7e-7
+- 2025ApJ...985..166K: Disk P.A. 45 deg and inclination 73 deg
+- 2025ApJ...985..166K: Lbol = 0.89 Lsun, Lacc = 50% of Lbol, R* = 3 Rsun
+- 2021A&A...650A.142M: PA = 133°; average three pixels, 21 mas, perpendicular to the cut
+- 2021A&A...650A.142M: Ionized gradient ΔV ≈12 km s−1 across ΔS ≈850 au
+- 2021A&A...650A.142M: PA = 133°; extent threshold 20% of peak
+- 2013A&A...560A.103M: vlsr range 3.4-4.0 km/s, mean 3.7 used
+- 2013A&A...560A.103M: M*=0.2 Msun, PA=35 deg, vlsr=4.0 km/s fixed; free: vwidth 0.1-1.0 km/s, i 0-90 deg, Rout 100-200 AU
+- 2019A&A...628A..65A: Kinematic center at AGN position of the unresolved 1.3 mm component
+- 2018A&A...614A..58B: Inclination 70 deg to plane of sky axis, PA -15 deg, X(13CO)=1.5e-5, X(12CO)=1.5e-4
+- 2016Natur.535..258C: PA 32.4 deg, inclination 38.3±1 deg, v_src 4.3 km/s, distance 414 pc
+- 2023PASJ...75..646K: cloud must exceed beam size (~100 pc) and the 5 km/s velocity resolution; clouds truncated at the field edge excluded
+- 2023PASJ...75..646K: filament defined as integrated intensity > 0.5 Jy km/s in the white box and emission above 4.5 mJy/beam (3 sigma) in the P-V diagram
+- 2024ApJ...963..103G: 3D-Barolo primary S/N = 5, secondary S/N = 3; PVD PA = 100 deg, bin width = 0.3" (CO 3-2) and 0.45" (CO 1-0), velocity gradient range = -0.4" to 0.8" (CO 3-2) …
+- 2021ApJ...908..250H: PA 165.71 deg and i 75.13 deg taken from the visibility fit
+- 2024AJ....167...94H: Uncertainty roughly FWHM/5, +-3 km/s typical
+- 2019ApJ...881L..42C: vs=5-30 km/s; n(H)=1e4-1e5 cm-3; zeta=1e-17-5e-15 s-1; B=100-1000 uG; T=15 K
+- 2025A&A...699A..83A: Gaussian smoothing sigma = 1.5 for R32 PVDs
+- 2019A&A...629A..29J: Keplerian mass 0.01-1.5 Msun; specific angular momentum 1e4-1.5e5 m2/s; 2.8e5 uniform steps; rest velocity 6.0 km/s
+- 2019A&A...629A..29J: Initial Tav=100 K, icy/bare ratio 0.5, radius 56 au, gas-to-dust 100
+- 2024A&A...688A...8W: 11 free parameters; sampled ranges in Table 1
+- 2024A&A...688A...8W: Dust sublimation temperature 1600 K
+- 2024A&A...688A...8W: Burst duration 8.4 yrs
+- 2020ApJ...904...78S: chi^2 weights w_vis = 0.5, w_SED = 1
+- 2020ApJ...904...78S: Protostar temperature 4000 K; luminosity L* free
+- 2020ApJ...904...78S: Dust: 60% silicate, 15% amorphous carbon, 25% porosity; minimum grain size 0.005 micron; envelope max grain 1 micron; disk max grain size and p (2.5-4.5) free
+- 2020ApJ...904...78S: SMA visibilities not fit
+- 2015ApJ...812...59O: M=0.18 Msun, r_CB=100 AU, outer radius 1000 AU, density ∝ r^-1.5, line width 0.5 km/s, beam 0.5"x0.5"
+- 2015ApJ...812...59O: R0 = z0 = 1"
+- 2018A&A...615A.155H: Briggs robust = +2.0; 5 sigma clipping for moment 1 and 2 maps
+- 2017NatAs...1..848V: Rout = 2.4 R★ (4.8 au); spectra binned to 3 km/s for chi2
+- 2018RAA....18...31P: brightness-weighted averaging over 0.8<r<2.5 arcsec
+- 2021A&A...655A..25Z: kinematic centre fixed to continuum position; PV slit 0.45 arcsec wide
+- 2025ApJ...995..211I: Systemic velocity V_sys = 1130 km/s; moment-1 redshift/blueshift ranges V_sys ± 110 km/s (J=4-3) and ± 60 km/s (J=3-2) for Figures 5e,f
+- 2020ApJ...904L...6A: Central channels of 12CO contaminated by cloud; C18O less contaminated
+- 2021A&A...646A...1K: k=37 km/s/arcsec within 1", k=58–68 outward; northern lobe i=10°, southern i=0
+- 2021ApJ...918...69U: 2 sigma voxel threshold connected in velocity space; 0.9" pseudo-slit width
+- 2025A&A...704A..18O: Five disk positions: center (pos 0) and radial offset 15 mas (0.5 R_cont) at PA = -15, 75, 165, 255 deg; off-limb positions at radii 50 mas and 90 mas; p-V sli…
+- 2025A&A...694A..92B: 5 sigma rms threshold, velocity range includes target line only
+- 2025A&A...694A..92B: 0.15 arcsec synthesised beam data; cut step 0.15 arcsec (~500 au)
+- 2025A&A...694A..92B: Errors from spatial (0.15 arcsec, 500 au) and spectral (0.35 km/s) resolution
+- 2025A&A...694A..92B: Mass 15 Msun (not inclination-corrected); j ~4500 (NE) and ~1600 (SW) au km/s
+- 2025A&A...694A..92B: Outflow velocity ~30 km/s (also tested ~100 km/s)
+- 2020ApJ...894...23H: M=0.2 Msun, i=55 deg, T0~30 K, T∝R^-0.5, Sigma∝R^-1
+- 2020ApJ...894...23H: b=1.29, C18O/H2=1.7e-7, disk mass 0.02 Msun, radius 180 AU, i=55 deg, d=120 pc, 500^3 grid at 0.72 AU, T0=30 K
+- 2014A&A...566A..74L: PA -65 deg, centre LSR velocity 6.2 km/s
+- 2014A&A...566A..74L: free parameters: central mass and disc radius
+- 2019ApJ...881...43K: Dv(x)=120 exp(-(x/2.5)^2)+100 km/s, x in arcsec
+- 2019A&A...629A...8T: HVC: vi=382, vf=212 km/s, eta=4.5; LVC: vi=5, vf=212 km/s, eta=1.6
+- 2019A&A...624A...7V: velocity resolution 0.11 km/s
+- 2022MNRAS.509.2920N: alpha = 3, beta = 0.75
+- 2025MNRAS.541.3799K: 29 barred galaxies (Class B and C in Stuber et al. 2023) and 13 unbarred test galaxies (Class A and SA)
+- 2020A&A...640A..82T: M*=0.1 Msun, r_in=0.25 au, r_out=8 au, i=87 deg, alpha=-2, beam 225 au, z_cut=225 au
+- 2021MNRAS.504.2687N: PA = 140 deg; PV slit width = +/- 3 au; R_1 ~ 10 au, R_2 ~ 30 au; |V_z1| ~ 7 km s^-1, |V_z2| ~ 18 km s^-1
+- 2021A&A...653A.111R: averaging width 5 pixels, pseudo-slit length 3'' unless otherwise stated
+- 2025A&A...699A..22M: adopted orbital inclination 38 +/- 5 deg (broader than the literature 38 +/- 3 deg)
+- 2019ApJ...879..101L: Vsys refined to 9.10 km/s LSR
+- 2019ApJ...879..101L: kappa=0.016 cm2/g, Texc~40 K, path length ~100 au, subtended angle ~10 deg
+- 2026A&A...706A.248T: slit width 4 arcsec
+- 2026A&A...706A.248T: jet velocity 61 km/s; ejection followed for 650 yr; inclination 47 deg (and 90 deg); lateral velocity up to 15 km/s
+- 2026A&A...706A.248T: constant n0(r) adopted for the density profile
+- 2026A&A...706A.248T: jet velocity 61 km/s, inclination 47 deg, eight ejections
+- 2020ApJ...893...51S: inner fit uses r<100 au
+- 2020ApJ...893...51S: M*=1.6 Msun, Mdisk=0.0071 Msun, p=0.5, i=73 deg; inner 0.1-200 au PA 69; outer 300-600 au PA 54
+- 2014ApJ...796....1T: M=0.8 Msun, i=62 deg, theta=167 deg
+- 2014ApJ...796....1T: Box 1740 AU, finest cell 0.85 AU, sink radius 3.4 AU, n_inj=1.5e5 cm-3, T=13.5 K
+- 2017ApJ...840L..12S: Rc ~ Rdisk; envelope inner radius 0.1 AU
+- 2020ApJ...889....9M: slit 20 arcsec long, 9 arcsec wide, PA 0.66 deg
+- 2024A&A...686A..48N: Pixel size = 0.05'' x 0.05''; spaxel size = 0.05'' x 0.05'' x 20 km s^-1; clipping = 3-sigma; structure threshold = 90th percentile
+- 2021A&A...646A..59R: Major-axis P.A. ~93.5 degrees; CN B reference
+- 2022ApJ...927..169N: |V_z| < 4 km s^-1; 12CO intensity > 10 Jy arcsec^-2 km s^-1; coordinate rotation angle 35 deg; fragment boundaries in x', y', V_z from Table 3
+- 2025A&A...700L..11S: Bar along PA = 143 deg; line widths Delta v10% ~54 km/s (CO) and ~20 km/s (SiO)
+- 2016ApJ...826..213L: systemic velocity refined to 8.85 km/s to fit both sides
+- 2024ApJ...977..126L: Perpendicular cuts every 50 au for z = 300-400 au and every 30 au for z = 50-200 au
+- 2024ApJ...977..126L: Ellipse points at the 2 sigma limit
+- 2024ApJ...977..126L: M* = 0.25 +/- 0.05 Msun
+- 2022ApJ...931L...5J: Error on D_obs assumed to be -0.5 Delta D_obs and +0.5 beam size
+- 2015ApJ...813L..19J: Disk radius 2000 AU, gas mass 12 Msun, surface density r^-1.5, inclination 30 deg, O7 star 25 Msun, infall 4.6e-4 Msun/yr
+- 2019A&A...621A..83S: slit width 0.2"
+- 2016A&A...596A..92K: slit 20 mas, PA = 90 deg
+- 2024MNRAS.535.1052B: 2 km s^-1 spectral channels, 0.34 x 0.25 arcsec beam
+- 2023A&A...670L...8G: Distance threshold L_BH ~ 2000 au
+- 2017ApJ...843...45K: major axis PA 129±3 deg
+- 2017ApJ...843...45K: M*=0.1 Msun, R*=3 Rsun, L_bol=160 Lsun
+- 2025A&A...693A..76C: PA_ja fixed at -60 deg; free: theta, phi, V0/R0
+- 2025A&A...693A..76C: lines K=2,3,4,5,7,8 and v8=1 K,l=2,1; at least three lines detected per pixel
+- 2025A&A...693A..76C: PA_d fixed to 48 deg; Rd=0.3"=490 au
+- 2020A&A...634L..12D: i = 63 deg
+- 2020A&A...634L..12D: Rd=700 au, theta0=70 deg, M=1.1 Msun
+- 2013A&A...555A.112P: rho∝r^-1.5, T=20 K, X(HCO+)=7e-10, [HCO+]/[H13CO+]=30
+- 2019MNRAS.487..622T: Jet selection R<2.5 arcsec, |Vz|>12 km/s, f>0.02 Jy/beam
+- 2021A&A...654A...8N: Delta v/2 = 316 km/s at turnover radius 5.2 kpc; i = 59 deg
+- 2024MNRAS.527.1444A: HI velocity channel integration every 3.9 km/s from 188.5 to 153.3 km/s; HI integrated map over 160.1-168.9 km/s; PV slice Dec -72d01m42.9s to -72d02m02.1s
+- 2020ApJ...902L..33G: Bridge channel map spans 0.25 to 1.75 km/s
+- 2019ApJ...873...73Z: h(r)=0.2r; envelope rho~r^-1.5; disk rho~r^-2.5; r_out/d=0.8"
+- 2025ApJ...993..200C: M*+Mdisk = 0.08 Msun, Rc = 42 au, i = 98 deg, PA = 64 deg
+- 2025ApJ...993..200C: Best trajectory theta0 = 90 deg, phi0 = 90 deg; others 80 < theta0 < 90 deg, 90 < phi0 < 95 deg
+- 2025ApJ...993..200C: Central region with I > 50 sigma_I excluded; Band 6 integrated flux 10 mJy; T = 5-10 K; kappa = 0.01 cm2 g-1 at 233 GHz
+- 2020ApJ...903..119L: Velocity range threshold > 2 sigma (rms in line-free channels); outflow lobe contour threshold > 4 sigma (rms of integrated intensity map)
+- 2020ApJ...903..119L: Uncertainties estimated as 2 km s^-1 for velocities (3x channel width) and 0''.5 for lengths (half angular resolution)
+- 2014ApJ...786..114L: 7 free parameters: T0, n0, vr0, vphi0, m, q, x(HCO+)
+- 2014ApJ...786..114L: Disk outer radius 0.3 arcsec (120 AU), half thickness 0.1 arcsec, inner radius 0.01 arcsec; envelope outer radius 5 arcsec
+- 2021PASJ...73S..35T: Clipping threshold > 1.5 K (1 sigma) for 1st and 2nd moments; V_LSR integration range 1300-1795 km s^-1 for total intensity
+- 2021PASJ...73S..35T: Velocity ranges: SGMC1 [1350-1460, 1505-1550 km s^-1, bridge 1460-1505 km s^-1]; SGMC2 [1400-1530, 1580-1700 km s^-1, bridge 1530-1580 km s^-1]; SGMC4-5 [1450-…
+- 2025A&A...693A.174E: Slit width 0.6''
+- 2018ApJ...864...76Z: cuts 0.5" wide, z=+0.5" to +6" (east), peaks defined as 0.9x peak intensity, PA of axis 96 deg
+- 2024ApJ...966..192S: P.A. 355 deg (NR1), 182 deg (SB), 332 deg (NR2), 155 deg (SEB)
+- 2024ApJ...966..192S: 5 sigma contours define morphology and velocity structure; data sampled at half-beam offsets
+- 2024ApJ...966..192S: Velocity data points below 4.4 km/s (SB), above 6.34 km/s (NR1) and 6.25 km/s (NR2) excluded
+- 2020ApJ...897...59M: cut PA 65 deg (A1), 30 deg (A2); width 5 pixels; fit ranges 0.9-4 and 4.7-8 km/s
+- 2020ApJ...897...59M: Keplerian regime to 20 au (A1), 50 au (A2)
+- 2015ApJ...815..106H: Tex = 50, 100, 150 K
+- 2024A&A...689A.263D: v_max=400 km/s at r0=50 pc, r_out=750 pc
+- 2017NatAs...1E.146H: linear fits use 6 channels (3 km/s) of highest-velocity or outermost FWHM data
+- 2024A&A...682A..61C: Central mass 0.15 Msun; v_sys explored 2.9 to 3.9 km/s
+- 2024A&A...682A..61C: PV path width equal to the beam, 1.6 arcsec
+- 2024A&A...682A..61C: Dust-to-gas ratio 0.01; free-fall time ~50 kyr
+- 2021ApJ...909...11J: v_j ~102 km/s; velocity amplitude ~30 km/s; period of outer-knot velocity variation ~20 years
+- 2021ApJ...909...11J: R_j = 0.2 arcsec; z_bo = 0.5 arcsec; c_s = 8 km/s; beta = 4; v_s = 14 km/s; bow shock thickness 0.3 arcsec
+- 2013ApJ...764L..14Z: Tc = 160 K, Phi = 0.37, Tx = 50 K
+- 2017ApJ...840...60B: moment I excludes pixels below 5 sigma
+- 2019ApJ...885...98S: n = 3.05e9 cm^-3 (r/33.5 au)^-1.8; v1000 = 1.1 km/s; turbulence 0.4 km/s; rin 33.2 au, rout 11200 au; X(H2CO) jump at 100 K
+- 2026AJ....172...75M: Protostar mass = 60 M_sun, envelope mass = 80 M_sun, inner radius r0 = 730 AU, outer radius R = 12600 AU, density profile rho prop r^-2.5
+- 2026AJ....172...75M: B_pos,u = 1.7 mG; M_out = 54 M_sun and 10 M_sun; v_rot = 2.4 km s^-1; V_A = 2.5 km s^-1; density power-law index n = 0 and 1.5; pseudo-disk radius R ~ 2500 AU;…
+- 2020ApJ...904..158L: M*=15 Msun, Rcen=40 au, alpha=0.1, v_w~800 km/s, beta~4
+- 2014ApJ...782L..28H: Best model rin=45 AU, rout=50 AU, Mrot=7 Msun
+- 2019MNRAS.489.1927S: PV axis PA = 42 deg
+- 2018A&A...620A..31M: M 5-50 Msun, Rinner 10-50 au, Router 100-600 au, p+q -2.6 to -1.8
+- 2025A&A...696A.202S: Integrated intensity cut 11 K km/s
+- 2025A&A...696A.202S: gamma = 3.1; M = 270 and 2700 Msun giving rho_0 = 3.466 and 34.66 Msun/pc^3
+- 2023ApJ...944...49F: R bin width = 0.0055 for median infall rate fit
+- 2014ApJ...796..117G: theta_b=1.7", d=1.7 kpc, i=45 deg
+- 2019ApJ...872..176Z: fixed: beam-width 0.06", inner radius 0.005"; power-law indices 0.5 (rotation, infall), 1.0 (intensity)
+- 2024A&A...683A.133G: A=6.038e-7 s^-1, Eu=15.87 K (13CO); A=1.453e-3 s^-1, Eu=25.68 K (HCO+); Q=19.6, 12.0 at 25 K
+- 2021A&A...653A..77P: G20.747-mm1/2 circle radius 1.2 arcsec
+- 2021A&A...653A..77P: G24.464-mm1 circle radius 1.3 arcsec
+- 2021A&A...653A..77P: G33.133-mm1/2/3 circle radius 1 arcsec
+- 2015ApJ...814...22E: T_dust mass-weighted 111 K; opacity 1.48e-2 cm2/g; gas-to-dust 100
+- 2018A&A...620L...1G: v_sys ≈ 5.5 km/s
+- 2018ApJ...856...14L: v0 ~42 (radial) and ~45 (along shell) km/s/arcsec
+- 2025ApJ...992...18P: Ridge threshold 6 sigma for 13CO and 3 sigma for C18O; edge threshold not stated
+- 2025ApJ...992...18P: SiO moments computed in -70 to 70 km/s with 3 sigma threshold
+- 2025ApJ...992...18P: Average jet velocity 40 km/s within 11 arcsec radius; inclination 47 deg for the ejection period
+- 2021A&A...645A.142A: Velocity gradient of 155 km/s/pc from CO
+- 2021A&A...645A.142A: f_ent = 0.5, Mdot_w/Mdot_acc = 0.15, v_w = 40 km/s
+- 2013ApJ...774...39A: i constrained to 30±10 deg; distance 450 pc
+- 2017A&A...607L...6T: lambda and W=r_max/r0; r_in, r_out; alpha
+- 2026ApJ...999...62H: PA = 127 deg; systemic velocity v_CBD = 5.0 km s^-1; outer radius = 1.25" (500 au)
+- 2026ApJ...999...62H: Reference velocities: 3.5 km s^-1 (source A), 6.5 km s^-1 (source B); outer rotation radii: 200 au (0.50", source A), 40 au (0.1", source B)
+- 2022A&A...664A.171V: PV cut PA = 140 deg East of North, width = 0.5 arcsec; centroid selection thresholds: peak > 5 x Gaussian fit error and SNR > 10.0 (accuracy < 0.02 arcsec)
+- 2019PASJ...71...85M: LRIS slit PA 158.56 deg, 1.0" slit, velocity accuracy ~100 km/s
+- 2017ApJ...840...32T: M* = 2.4 Msun, vsys 5.85 km/s, i 23.2 deg
+- 2024MNRAS.528.7383C: slice width equal to the beam
+- 2024MNRAS.528.7383C: R = 1500 au; total mass 1-2 Msun
+- 2024MNRAS.528.7383C: Lbol(B) = 0.2-0.3 Lsun, M* = 1.7 Msun, R* = 2 Rsun
+- 2023A&A...677A..80W: a = 0.65" (4088 au), b = 0.41" (2608 au), R_disk = 0.325"
+- 2023A&A...677A..80W: FWHM(CH3OH) = 6 km s^-1
+- 2022MNRAS.509..748W: i = 40 deg, R_out = 2000 AU (or 3500 AU for extended lines), R_in = 1700 AU (fixed to beamsize)
+- 2019ApJ...877L..25M: M_in = 12 Msun; inclination 8 deg; flaring angle ~35 deg
+- 2024AJ....167...72D: Low-velocity CO emission above 3sigma
+- 2021ApJ...908...92H: V_c = 10.05 km s^-1 at r = 0; central density rho_0 = 3.0 x 10^-17 g cm^-3; dimensionless truncation radius x = 3.0
+- 2017NatAs...1E.152L: Peak position uncertainty = a quarter of the FWHM
+- 2025A&A...693A.199C: σ_tot includes thermal and non-thermal N2H+ broadening
+- 2020ApJ...894...87C: Surface pressure and magnetic terms ignored
+- 2018A&A...615A..58Y: Free parameters n(R0), p, Vin(R0); j fixed at 3e-5 km/s pc or 0; low-velocity channels 7.7–8.9 km/s excluded; R0=100 au; outer radius 700 au
+- 2025SciA...11.4512O: inclination 65 deg, P.A. disk -55 deg, centrifugal barrier 250 au
+- 2025SciA...11.4512O: T=100 K, kappa=1 cm2/g at 1.3 mm, R_dg=0.01, d=3.1 kpc, mu=2.33, alpha 0.1-1, v_ff=6 km/s, l=500 au
+- 2020ApJ...902..141S: Protostar T=4000 K, luminosity free; inner disk radius 0.1 au; cavity or gap added
+- 2019ApJ...883....1Z: i 30-45 deg step 5; t0 0.05-1 arcsec km-1 s step 0.05; R0 1-3 arcsec step 0.01
+- 2024ApJ...963..163I: Moment-map velocity ranges approximately 5–25 km s^-1; visually selected per clump
+- 2024ApJ...963..163I: Re-bin pixels from 0.2 to 0.6 arcsec
+- 2024ApJ...963..163I: C18O/H2CO comparisons require both lines above 3σ
+- 2024ApJ...963..163I: Blue/red velocity ranges manually selected from spectra
+- 2021RAA....21...26Y: Free parameters: u_t(R) and v_g(R)
+- 2018ApJ...864L..25O: systemic velocity 5.5 km/s
+- 2018ApJ...864L..25O: systemic velocity 5.3 km/s gives better fit
+- 2024A&A...686A.146Z: Filaments selected through the redshifted and blueshifted peaks (LAsMA-f3 and ALMA-f3)
+- 2024A&A...686A.146Z: V_rotation,ALMA ~3.29 km/s and r_c,ALMA ~0.21 pc
+- 2022MNRAS.514..578W: Channel map bins = 5 km/s; impv slice widths = 5 pixels (left flow) and 1 pixel (right flow)
+- 2018ApJ...861...14C: initial guesses: tau 0.1-30, vlsr -89 to -86.6, vin 0.1-4, sigma 0.3-0.9 km/s, Tpeak 2-30 K
+- 2026A&A...706A.256A: CO channel maps in ranges of 2 km s−1.
+- 2026A&A...706A.256A: Archival CO cube for spatial scales 1.0″–5.0″; excluded from quantitative analysis.
+- 2021MNRAS.508.4639Z: Averaging aperture size = 36''; 12m+7m moment 1 velocity range = [-23, -16.5] km s^-1; ACA 7m blue/red integration ranges = [-60, -19.8] km s^-1 and [-19.8, 20…
+- 2016ApJ...824...88O: r_CB 40–60 AU, M=0.75 Msun, outer radius 180 AU
+- 2024A&A...686A.122A: Outflow velocity ranges: ambient within +-5 km/s of vlsr = 37 km/s; blue [12;32] km/s and red [42;62] km/s
+- 2024A&A...686A.122A: COM search at 2 sigma for CH3OCHO, CH3CN, CH3OH, C2H5CN and H2CS in named spectral windows
+- 2024A&A...686A.122A: Scenario A: 21 protostellar (26%) and 59 prestellar; scenario B: 37 protostellar (46%) and 43 prestellar
+- 2020ApJ...898...10T: v_sys = 6.4 km/s
+- 2018ApJ...865..131L: Disk PA 106.5 deg; inclination 25.2 deg; systemic velocity 6.61 km/s
+- 2024ApJ...966...32E: PV cut angle = Gaussian-fit position angles; PV line width ~1 beam
+- 2024ApJ...966...32E: Source A PV extended to 2 arcsec, source B to 1.5 arcsec; only the opposite side of each disk fitted to limit contamination
+- 2023ApJ...956L..45G: H2CO integrated over V_LSR ~ -4 to +23 km/s
+- 2023ApJ...956L..45G: Blueshifted SiO lobe V_LSR = -16.6 to -3.1 km/s; redshifted +23.9 to +37.4 km/s
+- 2018ApJ...860..119G: 5-sigma threshold
+- 2021A&A...653A.166C: Central object mass 0.05-0.26 Msun adopted from infall models
+- 2018A&A...614A..26A: Centre at geometric centre; inclination 80 deg
+- 2024ApJ...963...72O: M* = 0.25 Msun
+- 2021ApJ...907..108G: Outflow velocity taken as maximum outflow velocity relative to 97 km/s LSR; SiO blue/red lobe velocities 23 and 33 km/s
+- 2021MNRAS.507.1886F: Reflection nebula direction P.A. ~ 40 deg; systemic velocity v_sys ~ 9 km s^-1
+- 2018ApJ...854...96O: thickness 50 au, outer radius 300 au, inclination 5 deg, line width 0.5 km/s, systemic velocity 2.9 km/s
+- 2025ApJ...985..226W: 14 channels, 21.17–22.36 km s−1; 2σrms clipping per channel
+- 2025ApJ...985..226W: Restricted moment-0 rms approximately 3 Jy beam−1 m s−1; displayed contours at 6 Jy beam−1 m s−1
+- 2021PASJ...73S..62S: 5 sigma detection threshold for 1.3 mm continuum sources; size defined as (S / pi)^0.5 * 2
+- 2021PASJ...73S..62S: Blue cloud velocity range: V_LSR = -143.0 to -134.0 km s^-1; Red cloud velocity range: V_LSR = -133.0 to -127.0 km s^-1
+- 2021PASJ...73S..62S: PV diagram R.A. integration range: 01h33m35.243s to 01h33m35.341s
+- 2019A&A...623A..77S: H/R=0.1, inclination 10 deg, 20 Msun, CH3CN abundance 2e-8 at 500 au, grid 152x20
+- 2024A&A...681A.104B: Velocity-channel maps integrated over 10 km s^-1
+- 2024A&A...681A.104B: aB1/B2 projected length ~7'' (0.3 pc); projected outflow velocity 27 km s^-1
+- 2021ApJ...910...11O: Cut P.A. 140 deg
+- 2019ApJ...887..209A: Low-velocity ranges filled with emission, e.g. 6-10 km/s in S68N
+- 2024A&A...690A..46S: Systemic velocity 2.84 km/s fixed after first fit
+- 2023A&A...674A..46W: Rectangular central region [-0.12 - 0.12 pc]; 1 beam exclusion mask around cores A and B
+- 2018A&A...615A.141B: radius 1.54", infall velocity 5.1 km/s
+- 2024ApJ...965...99T: Sigma0 ~5e24 cm^-2 at disk edge, r ~4 au, M* = 0.2 Msun
+- 2024ApJ...965...99T: Envelope density 1e-13 g cm^-3; free-fall velocity ~9 km/s at 4 au
+- 2021PASJ...73..205T: velocity integration range = -2 to +4 km s^-1
+- 2018ApJ...869L..24I: R_in = 270 au fixed; R_out steps of ~150 au; mass steps of 5 Msun; infall at 40% of free-fall
+- 2025ApJ...993..120H: Vsys 6.9 km/s, inclination 43 deg; thresholds 5σ (12CO, C18O), 6σ (13CO)
+- 2023MNRAS.526.4402B: min_value = 3 sigma = 7 mJy/beam; min_delta = 1 sigma = 2.3 mJy/beam; min_npix = 74 pixels
+- 2019ApJ...884...48C: R = 0.3 pc; mu=2.35; n_H2 from Table 3; filling factor 0
+- 2025A&A...699A.382M: transversal cuts perpendicular to PA = 8 deg
+- 2020MNRAS.496..394R: DeltaV=1.4 km/s (C18O J=2-1), R=3000 AU
+- 2017ApJ...837..174O: envelope thickness 30 au, density r^-1.5; M, r_CB, i free
+- 2026ApJ...997..155M: n_cl = 4 x 10^4 cm^-3; sigma_cl = 1 km s^-1; external infall duration = 30 kyr
+- 2017A&A...603A..10B: r ~80 AU, rho ~2.3e9 cm-3, v_in ~7.1 km/s
+- 2026MNRAS.551g1645K: PV contour levels: starting at 3 sigma in increments of 3 sigma; knot interval = 0.2 arcsec
+- 2019A&A...626A..71A: Velocities above ±2 km/s used to avoid envelope
+- 2026A&A...709A.173M: 500 emission-free channels for rms; 5 sigma seed threshold; 2 consecutive channels > 2 sigma; expanded by 0.25*FWHM spatially and 2 channels spectrally; moment…
+- 2018A&A...617A..10C: 0.42 km/s channels for centroids
+- 2019ApJ...881..112O: M=1.0 Msun, i=65 deg, PA 0 deg, radius 100 au, emissivity r^-2.0
+- 2024A&A...686L..13D: Velocity ranges: (-6, -2) km s^-1 and (+2, +6) km s^-1 wrt v_sys = 6.8 km s^-1 (i.e., 0.8 to 4.8 km s^-1 and 8.8 to 12.8 km s^-1)
+- 2024A&A...686L..13D: PV slice width = 0''.1, parallel slice length = 3''.6 (at PA ~ 30 deg), 7 perpendicular slices of length 1''.6 separated by 0''.3, plus ~7'' path following SiO…
+- 2019ApJ...871..100H: Free: rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O; C18O fit at |V-Vlsr|<1.6 km/s, CO at >1.6 km/s
+- 2024ApJ...976...29H: Outflow axis PA = -4 deg, centered at 1.3 mm continuum peak
+- 2024ApJ...976...29H: PV cut width = 3 pixels (pixel size = 0.06'')
+- 2024ApJ...976...29H: Detection threshold = 5 sigma for velocity width and PV ratio calculations
+- 2026A&A...711A.239S: Spatial rotation angle = 45 deg; R1 and R2 box dimensions = 0.56 pc length x 0.22 pc width
+- 2026A&A...711A.239S: FilFinder parameters: smooth size = 5 pix (0.05 pc), size thresh = 550 pix^2 (0.05 pc^2), adapt thresh = 50 pix (0.49 pc), fill hole size = 20 pix^2 (0.002 pc^…
+- 2020A&A...633A.126B: vsys = 4.43 km/s; inner limits 3.4 and 5.5 km/s
+- 2024ApJ...961..228S: Outflow area: intensity > 0.5 K km/s; v_sys = 4 km/s; i_out = i_ring
+- 2024ApJ...963L..31H: Significant gradient threshold ~1.0 km/s/arcsec
+- 2018A&A...617A..89C: grid 2x2500 au, 0.7 km/s velocity resolution, n∝r^-1.5, ring 300-900 au, vrot=4.5 km/s at 300 au; Keplerian disk up to 600 au
+- 2026A&A...713A.149V: Density profile power-law index p = 0 for prestellar cores and p = 2 for protostellar cores; core radius R = FWHM^dec
+- 2026AJ....172..108L: M = 0.95 M_sun, R = 2400 au
+- 2024ApJ...964...34L: Velocity gradients 270 and 120 km/s/arcsec
+- 2020MNRAS.497.5454I: Blue 36.1-42.1, red 45.1-51.1 km/s for C18O low-res
+- 2024A&A...692A.181Z: Keplerian curves for M sin^2 i = 10 and 15 Msun overlaid (not fitted)
+- 2017MNRAS.466.3519R: 12CO blue -5.25 to 4.75 km/s, red 6.75 to 18 km/s
+- 2024ApJ...970...28O: Disk/envelope height 20 au, R_out 24 au (CH3OH) and 10 au (HCOOH), P.A. 5 deg, i 70-90 deg, Mstar 0.02-0.08 Msun, r_CB 2-9 au
+- 2019NatAs...3..517Z: Tdust 50-100 K, kappa1.3mm=0.00899 cm2/g, D=1680 pc
+- 2025ApJ...988..111I: PV cut along the flow axis at position angle 1.1 deg
+- 2019A&A...628A...6S: local gradients from linear fits in 0.014 pc sections
+- 2024MNRAS.535.1364Z: Histogram dispersion difference N vs F about 1.7 km/s; measure error 0.1-0.2 km/s
+- 2017MNRAS.467L..76S: Keplerian model mass 0.18 Msun, outer radius 160 au
+- 2025A&A...695A.278H: Velocity range = +/- 10 km s^-1 around V_sys = 5.5 km s^-1; cutoff level = 4 sigma for moment 1 maps; 1'' x 3'' rectangular slice in north-south direction for …
+- 2018ApJ...863...19A: velocity range 15<|V-Vsys|<50 km/s, Vsys=7.9 km/s; 1 beam cut width
+- 2024A&A...684A.189V: Cut PA = 140 deg east of north; cut width 0.5''
+- 2018MNRAS.478.2505I: Grid resolution 23.3 au
+- 2019ApJ...874...31W: half-opening angle 7.5 deg displayed
+- 2025ApJ...995..111Z: Channel map velocity bin: 3 km s^-1 (±1.3 km s^-1 around each velocity)
+- 2025ApJ...995..111Z: CO (2-1) RGB velocity intervals: -42 to -12 km s^-1 (blue), ±12 km s^-1 (green), +12 to +42 km s^-1 (red)
+- 2024MNRAS.527.5895D: moment-0 over [24.9, 36.3] km/s; two components at [24.9, 30.2] and [30.9, 36.3] km/s
+- 2025ApJ...986..150H: Outflow axis P.A. = 235 deg
+- 2019Sci...366...90A: SNR threshold 5; PV emission >5σ
+- 2026ApJ..1001..161H: Ch2/Ch1 >= 1.5 indicates shocked emission (criterion from takami2010)
+- 2017ApJ...835..108S: blue -8.0 to -1.6, green -1.4 to +1.0, red +1.2 to +7.8 km/s
+- 2024ApJ...969L...6Z: |V-Vsys| >= 7 km/s to exclude cloud emission; EHV defined as |V-Vsys| > 30 km/s
+- 2025A&A...695A.236L: H2CO moments over 4-21 km/s; N2H+ hyperfine line moments over -0.05-7.02 km/s
+
+
+### Assumptions (bibcode: value)
+- 2017ApJ...849...56A: Distance 140 pc; inclination 85 deg
+- 2017ApJ...849...56A: M*=0.45 Msun, T=44 K, mean molecular weight 2.37 mH; infall velocity = alpha times free fall
+- 2017ApJ...849...56A: Gas and dust well coupled; rotation break at 74 AU, density jump at 84 AU
+- 2026ApJ..1003..219W: Disk h(r) = 0.2 × r; sharp inner and centrifugal-radius truncations
+- 2026ApJ..1003..219W: Ulrich envelope: spherically symmetric gas, uniform solid-body rotation, negligible pressure forces
+- 2026ApJ..1003..219W: Thermal Gaussian line profile using the average temperature; smooth model to observed spatial and spectral resolution
+- 2026ApJ..1003..219W: Gravitationally bound gas dominated by the central-source potential
+- 2026ApJ..1003..219W: Ulrich density proportional to Ṁ; idealized symmetric envelope
+- 2026ApJ..1003..219W: Conserved angular momentum in a rotating and collapsing envelope
+- 2020ApJ...904..181L: Axisymmetric circumstellar structure; inclination i=0 is face-on
+- 2020ApJ...904..181L: Flattened two-dimensional structure; empirical column-density and temperature profiles; gas-to-dust ratio 100
+- 2020ApJ...904..181L: LTE; no interferometric spatial filtering of model cubes
+- 2020ApJ...904..181L: Neglect gas self-gravity in the gas-kinematic model calculations
+- 2020ApJ...904..181L: Nearly r^-1 surface density and fixed infall velocity imply nearly constant mass infall rate
+- 2020ApJ...904..181L: Central stellar mass 20 M☉; centrifugal barrier upper limit 125 au; angular momentum conservation in M4
+- 2015ApJ...812...27A: errors: Gaussian for log R, rectangular for log V
+- 2015ApJ...812...27A: flattened envelope to 900 AU; envelope surface density beyond 200 AU reduced by factor 2
+- 2015ApJ...812...27A: R_curv ~ scale height H; B ∝ rho^(2/3); steady state; gas pressure ignored
+- 2016A&A...590A..73A: Constant outflow velocity; precession axis in the plane of the sky
+- 2018MNRAS.480.4991G: LTE, optically thin C18O
+- 2018MNRAS.480.4991G: explosive event with ballistic particles; d=3.38 kpc
+- 2017ApJ...845...10F: distance 120 pc
+- 2017ApJ...845...10F: SR24N disk rotates in same sense as the close binary; infall rather than outflow
+- 2021A&A...645A..49G: Gas remains in the galaxy plane when interpreting minor-axis velocity shifts as radial inflow; NE far side, SW near side
+- 2021A&A...645A..49G: alpha_CO = 0.78 M_sun/(K km s^-1 pc^2); equal CO 1-0 and 2-1 brightness
+- 2021A&A...645A..49G: Gas orbits approximately stationary in the rotating bar frame
+- 2025ApJ...980..126K: Pure circular rotation in tilted rings with zero radial inflow/outflow
+- 2023ApJ...958...98F: d = 132 pc; i = 47 deg; Keplerian rotation forced to derive M_star
+- 2023ApJ...958...98F: Negligible pressure gradient (supersonic flow); rigid-body rotation at spherical cloud boundary; negligible self-gravity (central star dominates); aligned clou…
+- 2023ApJ...958...98F: LTE; optically thick 13CO and optically thin C18O; [12C]/[13C] = 77 and [16O]/[18O] = 560; X(C18O)/X(H2) = 3 x 10^-7; free-fall velocity from outermost edge
+- 2022MNRAS.510.2363H: Inner rim of gas disc is at R ~ 31 mas so r < 12 mas receives no contribution from rotation
+- 2022MNRAS.510.2363H: Flared disc with Gaussian distribution of flaring angles (rms sigma_fl) and constant velocity smearing sigma_Vz = 0.55 km s^-1; V_exp = 1.6 / sin(i) km s^-1
+- 2021ApJ...917...99Y: Default lensing model mapping from image plane to source plane
+- 2018A&A...619A..39F: Velocity gradient due to rotating disk; i=cos^-1(minor/major); v_rot=1.3 Δv/2 sin i; sigma from outer parts
+- 2024A&A...692A.151S: constant electron temperature across the wind
+- 2024A&A...692A.151S: distance 650 pc
+- 2024A&A...692A.151S: constant rotation velocity because resolution cannot distinguish Keplerian from momentum-conserving profiles
+- 2024A&A...692A.151S: X_CO = 2e-4 (O-rich), likely overestimated by photodissociation
+- 2024A&A...692A.151S: gas falls in from near zero velocity from far beyond the infall radius
+- 2024A&A...692A.151S: average disk density similar to OH 231.8+4.2 disk (n_H2 ~ 1e8 cm-3)
+- 2024ApJ...977..161V: Intrinsic axis ratio q = 0.2 (mildly thick disc)
+- 2017ApJ...850L...5T: inclination i~0 deg (edge-on orbit); apoastron PA~60 deg to line of sight
+- 2018A&A...614A..42M: all absorbing gas at 75 pc
+- 2018ApJ...863..193V: Cloud starts at rest with respect to ICM; Hernquist potential
+- 2026A&A...706A..27S: Small-scale ring emission is fixed by long-baseline reconstructions and intermediate-scale jet base emission is derived from residuals between observed closure…
+- 2026A&A...706A..27S: Source consists of the compact DoG-HIT ring plus a single faint symmetric Gaussian component.
+- 2020ApJ...902...99I: Torus inclination i ~ 90 deg (edge-on); even i = 34–66 deg raises intrinsic velocity by only 1.1–1.8
+- 2026A&A...710A.140M: Keplerian rotation; distances of 130 pc (Taurus), 140 pc (Ophiuchus, Upper-Scorpius), 160 pc (Lupus), 190 pc (Chamaeleon) from Zucker et al. (2020); inclinatio…
+- 2015ApJ...811...92C: X_CO = 1e-4; HCO+ abundance 1e-9; T=70 K inside 30 AU, r^-0.5 beyond
+- 2015A&A...574A...5D: Distance 150 pc, Mdot 1.5e-5 Msun/yr, CO/H2 6e-4, 12CO/13CO 30, v=14.5 km/s, density divided by 100
+- 2024ApJ...977...37N: 13CO used for moment range because it is observed for all clouds and less contaminated than 12CO
+- 2024ApJ...977...37N: Electron temperature from the Quireza gradient; electron density from Hunt et al. relation; Calzetti relation derived from extragalactic regions; 24 micron SFR…
+- 2015A&A...580A...1M: light traces mass; spherical mass distribution
+- 2015A&A...580A...1M: jet in the plane of the sky (lower limit on expansion velocity); uniform density for O and R; large-scale disk D excluded
+- 2017MNRAS.464.1415M: M*=1.75 Msun, mu=14, vertically isothermal, Keplerian
+- 2017MNRAS.464.1415M: Optically thin CO, electrons as only colliders (upper limits)
+- 2025A&A...703A..15M: Keplerian rotation around central star
+- 2020PASJ...72...36T: hydrogen ion temperature equals the electron temperature, Te* = 4650 K
+- 2020PASJ...72...36T: observed velocity extent comes from gas expansion alone
+- 2018A&A...617A.129K: Homologous expansion velocity field
+- 2020PASJ...72L...5T: Molecular gas physically mixed with the ionized gas shares its PV velocity pattern, so the ionized-gas pattern is a template
+- 2020PASJ...72L...5T: The NA trajectory is Keplerian; CH3OH decays gradually while the arm falls toward Sgr A*
+- 2014Sci...343.1490D: stellar mass 1.75 Msun, circular orbits
+- 2022MNRAS.515..543C: Inclined Keplerian disk; for B: disk inclination = 74 deg, protostellar mass = 1.7 M_sun, d = 131 pc; for A1: disk inclination = 47 deg, protostellar mass = 0.…
+- 2024ApJ...963....1O: Hernquist potential, M ~1e13 Msun within 30 kpc
+- 2018AJ....156..270S: Spherical, slow rotator, no nightside emission
+- 2014ApJ...790..160S: Vc = sqrt2 sigma*
+- 2020ApJ...892...99C: Mstar 1.7 Msun, i = 83.6 deg
+- 2018ApJ...863...72O: elliptic PV feature traces the outflow cavity wall
+- 2018ApJ...863...72O: velocity on the cavity wall proportional to distance to the protostar
+- 2018ApJ...863...72O: specific angular momentum conserved along the outflow
+- 2025A&A...701A.141L: Pure rotation along the ring; Keplerian rotation at 65 au
+- 2025A&A...701A.141L: Central mass 0.35 Msun
+- 2025A&A...701A.141L: Zero mechanical energy, non-zero specific angular momentum (parabolic orbit)
+- 2025A&A...701A.141L: Negligible envelope flare so infall does not project onto the major axis
+- 2025A&A...701A.141L: Edge-on rotating rings with Keplerian rotation, V_grad ~ r^-1.5
+- 2025A&A...701A.141L: SO layer undergoes free-fall infall rather than outflow
+- 2025A&A...701A.141L: Gas pressure ignored in the free-fall envelope; envelope self-gravity ignored; spherically symmetric accretion at large distance; no magnetic fields
+- 2020ApJ...905...25G: f_j=0.2-0.5 from models
+- 2020ApJ...905...25G: Infalling gas not accreted is re-ejected through winds/jets
+- 2020ApJ...905...25G: Single major accretion event; constant infall during transition
+- 2020ApJ...905...25G: Keplerian disk with gas density constant as a function of radius
+- 2015ApJ...812..129Y: Inclination 80 deg, LTE, C18O abundance 3.7e-7, free-fall infall
+- 2015ApJ...812..129Y: Krasnopolsky & Königl 2002 formula; sound speed 0.23 km/s
+- 2019A&A...623A..79C: Axisymmetric disks only; bar/spiral perturbations neglected
+- 2018A&A...614A.113H: gas-to-dust mass ratio 100
+- 2018A&A...614A.113H: 1 Msun central star
+- 2017A&A...608A.134Y: Disk inclination 47 deg
+- 2017A&A...608A.134Y: Arcs in disk plane for thin models; particles anywhere along line of sight for 3D
+- 2023A&A...676A..67W: Halpha emission limits detected single-burst bubble ages to <10 Myr
+- 2023A&A...676A..67W: Spherical expansion geometry (valid since average bubble radius ~130 pc is smaller than 3x molecular scale height ~300 pc); galactocentric metallicity-dependen…
+- 2025A&A...699A.187G: Pole of orbit in the plane of sky; features within 80 km/s of systemic ignored; no filament physics (temperature, density, ionisation) included
+- 2022ApJ...937...10L: Keplerian rotation around a central mass of ~ 0.25 M_sun
+- 2022ApJ...937...10L: Distance of ~ 400 pc
+- 2020CPhy...30...85D: Distance to R Doradus is ~59 pc (converting angular scales to au); illustrative stream length of 60 au (or mean distance 30 au) along the line of sight to esti…
+- 2021MNRAS.507.3998P: Distance between the peaks of the two spectral line components represents the CO emission size for unresolved double-peaked sources
+- 2019A&A...624A.138Y: R and B are thin disks
+- 2024RAA....24c5009N: EDE inclination of 10 deg with respect to the plane of the sky and rms flaring angle of ~15 deg
+- 2024RAA....24c5009N: Thin radially expanding shell geometry where Vz = V sin(alpha) and R = r cos(alpha)
+- 2024A&A...686A.156D: An offset broad component can indicate an outflow, but an infalling merging object can also produce an additional component.
+- 2019PASJ...71..105T: gas on a single circular orbit
+- 2016ApJ...832..148V: scale length 7.4 kpc from 2MASS R_e; total mass from Main et al. 2015 NFW
+- 2024NatAs...8..256O: Filaments pointing toward 3C 84 with organised E-W kinematics are infalling, not pushed outward by the N-S jets
+- 2024NatAs...8..256O: Infall velocity 200 km/s taken from radial infall models; same conversion factor for filaments and CND
+- 2024AJ....167...77D: near Keplerian rotation
+- 2013ApJ...777...92S: radial expansion and cylindrical S-lobe geometry
+- 2013A&A...558A.124C: Outflow angle alpha to line of sight unknown; tan(alpha) ~ 1; velocity 100-200 km/s
+- 2024ApJ...962..166W: Stellar mass 1.84 M_sun; inclination 85.5 degrees from (cite: Hales2022)
+- 2023ApJ...953L...6P: Perfectly edge-on Keplerian disk with H26alpha and H30alpha masers localized on two thin annuli of fixed radii equal to the spatial extent of the masers; high-…
+- 2017ApJ...834..178Y: Free-fall infall, constant angular momentum, LTE
+- 2025SciA...11.6953M: Velocity gradients are interpreted as infall toward the central object
+- 2025SciA...11.6953M: Rotating-plane inclination between 0 and 20 deg (0 deg = face-on); 10 deg plane used for the polar angle
+- 2025SciA...11.6953M: Model has only a central point mass; 45 Msun best fit considered too massive for an early protostar
+- 2025SciA...11.6953M: Stellar mass 8-16 Msun from spectral type B3-B0 gives disk inclination 20-30 deg
+- 2025SciA...11.6953M: Gas-to-dust ratio 100
+- 2025SciA...11.6953M: Dust opacity 1 cm2/g interpolated to 1.3 mm with beta = 1.6; dust temperature 20 K
+- 2021ApJ...907L..41L: LTE
+- 2021ApJ...907L..41L: Northern inclination ~-3°; southern inclination ~2° for the wide-angle outflow and jet
+- 2021ApJ...907L..41L: Angular-momentum removal requires SO abundance close to that in the disk
+- 2014ApJ...793....1Y: LTE, isotropic T=44(r/100AU)^-0.3 K
+- 2014ApJ...793....1Y: Gravity dominated by 1.6 Msun protostar, conserved angular momentum, zero total energy
+- 2014ApJ...793....1Y: X(C18O)=3e-7
+- 2019ApJ...876..141I: XCO = 2e20 cm^-2 (K km/s)^-1, factor 1.36 for helium, distance 8.7 Mpc, edge-on rotation for dynamical mass
+- 2019A&A...623A.153O: Symmetric source, constant axis direction, expansion velocity linear in distance (Hubble-like)
+- 2018A&A...618A.120L: Narrow circular ring at each z; V0=0 (no orbital motion) for inclination
+- 2018A&A...618A.120L: Steady wind, M_star=0.45 Msun, gas flows along conical surface
+- 2023A&A...673A..46B: alpha_CO = 4.3 ± 1.3 M_sun (K km s^-1 pc^2)^-1 for galaxy disks
+- 2023A&A...673A..46B: Systematic flux calibration error of 5% included in integrated flux uncertainties
+- 2025MNRAS.540.2396S: alpha_CO = 4.35 Msun pc^-2 (K km/s)^-1 and R21 = 0.65 (from PHANGS)
+- 2020A&A...635A..12P: Infall neglected in outer disk; i=35 deg
+- 2023MNRAS.518.2034H: Distance d = 114 pc
+- 2023MNRAS.518.2034H: Actual expansion velocity of SiO maser layer equals the 10.6 km s^-1 continuum expansion velocity from Vlemmings (2019)
+- 2017ApJ...841L..25T: U4-16504 uses mean sin i=0.79 for isotropic disks
+- 2026A&A...707A.252K: Static source-plane beam of 0.035'' x 0.027''; V_rot in the outermost ring approximates V_max
+- 2017MNRAS.472.4024R: Gradient not corrected for inclination
+- 2025ApJ...995..108J: All gas within the SoIs of NGC 6240 and NGC 985 is treated as non-rotating after unsuccessful rotating-disk fits.
+- 2025ApJ...995..108J: Projected gas masses are upper limits to the true mass within the SoI; non-rotating gas masses are upper limits to infalling gas mass.
+- 2021A&A...652A..98G: Thin coplanar disks; dynamical center at AGN position
+- 2025ApJ...993...90S: X_CO=1e-4, T_ex=50 K; alternative CO-to-H2 factor 2.0e20
+- 2014ApJ...796..120W: i_A=65 deg; distance 400 pc
+- 2015A&A...576L..15O: Inclination about half the hour-glass opening angle, ≈ 10 deg
+- 2026ApJ..1001..184M: Distance 8.3 kpc
+- 2014ApJ...797...90S: Southern disk inclination ~80 deg (70-85)
+- 2024MNRAS.527.3559P: Keplerian rotation
+- 2019A&A...623A..96Y: Spherical symmetric shell centred on the driving source
+- 2019A&A...623A..96Y: Self-gravity ignored, collisionless particles, accretion onto disk removes particles
+- 2025ApJ...995L...7L: single power-law density and temperature across envelope, transition region and disk
+- 2025ApJ...995L...7L: total mass of protostar plus disk 1.8 Msun; envelope mass neglected in infall velocity
+- 2025ApJ...995L...7L: envelope ballistic with conserved angular momentum and energy; rotation and radial velocities same as mid-plane values
+- 2025ApJ...995L...7L: density and temperature power-law simplifications do not affect the inferred velocity structure
+- 2020ApJ...891...61Y: Gas temperature = dust temperature above 10 K; H13CN abundance = HCN/77 initially
+- 2020ApJ...891...61Y: COM emission optically thin
+- 2014ApJ...796..131O: Radii <100 AU used because resolved-out large scales overestimate rotation velocity
+- 2014ApJ...796..131O: edge-on, inclination 90 deg
+- 2019A&A...632A..61G: axisymmetric, constant-density gas
+- 2016A&A...590A.127W: Collisional partner purely rotational ground-state H2; spherical symmetry; distance 110 pc; R* = 12.3 mas
+- 2017MNRAS.468..685Q: Gas-to-dust ratio of 100
+- 2017MNRAS.468..685Q: Ideal gas law, infall velocity for spherical envelope, Keplerian rotation for disc, constant velocity parallel to outflow axis plus infall for outflow
+- 2021MNRAS.500.3802H: Position angle taken from SAMI Galaxy Survey catalogues
+- 2026A&A...705A..51D: One component initially assumed rotation-dominated; c1 need not solely trace disk rotation
+- 2020ApJ...901..166V: Literature stellar masses, disk radii, inclinations and position angles; constant molecular abundances throughout the disk
+- 2023A&A...669A..56Q: Hubble-like linear velocity field v proportional to r
+- 2020NatAs...4..670A: Infalling gas uniformly in a thin shell; radius ~8 kpc
+- 2018ApJ...863...56C: Rotating disk; first moment pixels with SNR<2 masked
+- 2024A&A...687A.112M: High shell excitation temperatures make 12CO (1-0) and (2-1) structurally comparable.
+- 2025A&A...693A..91L: 10% fiducial flux calibration uncertainty; same flux-to-mass conversion factor in the non-circular structures as in the rotating disk
+- 2017ApJ...842...94T: GCBH mass ~4e6 Msun
+- 2017ApJ...836..130R: Hydrostatic spherical atmosphere; Re ~17 kpc, a=9.4 kpc
+- 2020ApJ...895...73K: CND rotationally supported ring seen edge-on
+- 2024A&A...686A.120U: Flat circular disk in Keplerian rotation
+- 2016ApJ...820L..34S: r^-1.5 density profile, constant abundances, optically thin, no excitation, envelope thickness extension angle 30 deg
+- 2025ApJ...989...56H: Edge-on Keplerian ring, disk mass much smaller than stellar mass
+- 2025ApJ...989...56H: distance 445 pc; system treated as purely edge-on after the fit
+- 2025ApJ...989...56H: C18O emission dominated by the extended envelope
+- 2025ApJ...989...56H: Inner radii of disk and envelope set to the dust sublimation radius
+- 2025ApJ...989...56H: LTE; gas-phase CH3OH from thermal desorption above 100 K
+- 2020ApJ...904..185O: Optically thin line emission, no radiative transfer, ballistic motion conserving energy and specific angular momentum for IRE model
+- 2020ApJ...904..185O: Optically thin line emission, center of gravity at continuum peak A1
+- 2014ApJ...795..152O: infall and rotation velocities both 1 km/s
+- 2014ApJ...795..152O: optically thin, no disk inside centrifugal barrier
+- 2016ApJ...832..142Z: All excess emission in the restricted region is outflow
+- 2017ApJ...835L..13S: uniform radial outflow speed of 250 km/s; distance 2 kpc
+- 2017ApJ...835L..13S: H13CN abundance one-third of HCN; f(HCN) from IK Tau or theory
+- 2018ApJ...859..111H: Stellar mass 0.5 Msun
+- 2023ApJ...942...25F: Outflowing component contains 15% of the CO (1-0)-inferred molecular gas mass; fraction of stellar mass within central 1 arcsec is 0.17 from HST F625W profile
+- 2024A&A...689A.163L: Ellipse in p-v space interpreted as a rotating, wide-angle, hollow outflow (front and back sides), following Tabone et al. 2020
+- 2020MNRAS.496.5330F: Stellar mass M_* = 0.8 M_sun and trial inclinations i = 20 deg, 40 deg, and 65 deg for Keplerian curves
+- 2020MNRAS.496.4358I: Lambda-CDM with Omega_m=0.3, Omega_Lambda=0.7, H0=70 km/s/Mpc; 1 arcsec = 7.0 kpc at z=4.0
+- 2024A&A...691L..14O: Optically thin dust so that polarized intensity traces dust distribution
+- 2024A&A...691L..14O: Gas and grains kinematically coupled when inferring dust infall from H2O kinematics
+- 2024ApJ...966..119L: Distance 388 pc, M*=1.2 Msun, inclination 38.3 deg, PA ~120 deg
+- 2017ApJ...843...27L: Vsys = 1.7 km/s; maps rotated 23 deg clockwise
+- 2017ApJ...843...27L: Flared envelope with parabolic boundaries; fit weighted to blueshifted side because of redshifted self-absorption
+- 2025ApJ...985..166K: NW and NNW streamers share the disk rotation axis and have centrifugal radius equal to the gas disk radius
+- 2025ApJ...985..166K: C18O abundance (1-2)e-7 and excitation temperature 10-30 K give the mass uncertainty
+- 2025ApJ...985..166K: Isothermal 15 K, LTE, optically thin C18O; dust opacity table of Semenov et al. 2003
+- 2025ApJ...985..166K: Accretion luminosity is 50% of the bolometric luminosity
+- 2021A&A...650A.142M: Rotation in gravito-centrifugal equilibrium; central mass is a lower limit without an inclination correction
+- 2021A&A...650A.142M: Distance 6.7 kpc
+- 2021A&A...650A.142M: Disk gas temperature decreases with radius
+- 2013A&A...560A.103M: d=120 pc; optically thin emission, constant density, adjusted temperature gradient
+- 2018A&A...614A..58B: LTE level populations, constant abundances, axial symmetry, D = 1100 pc
+- 2016Natur.535..258C: Pure Keplerian, no infall
+- 2021ApJ...908..250H: Foreground cloud absorption negligible in the central CO region because of high inclination
+- 2020ApJ...890L..14T: inclination 35 deg to plane of sky; Vsys=34 km/s
+- 2020ApJ...890L..14T: H2S traces the shell kinematics
+- 2020MNRAS.492.1778M: Gaussian prior on z_sys (6.5285, 0.001) from [CII]
+- 2024AJ....167...94H: VY CMa LSR velocity 22+-1 km/s
+- 2019A&A...629A..29J: Inclination 75-90 deg; optically thin emission for rest velocity
+- 2019A&A...629A..29J: gas-to-dust 100; bare-grain opacities; distance 200 pc
+- 2024A&A...688A...8W: Axisymmetric geometry and 2-D cylindrical adaptive mesh
+- 2024A&A...688A...8W: Protostar, passive disk, curved bipolar cavity and Ulrich-type envelope
+- 2024A&A...688A...8W: MRN grains: 62.5% silicate, 37.5% graphite; n ∝ a−3.5, 5–250 nm
+- 2024A&A...688A...8W: Gas/dust ratio 100; masses and densities are total values
+- 2024A&A...688A...8W: Mean-model best fit within distance/extinction errors: 3.9 kpc and 19 mag
+- 2024A&A...688A...8W: Infall from a large distance releases its entire gravitational energy at the protostellar surface within the burst.
+- 2024A&A...688A...8W: ZAMS stellar parameters provide a lower limit on accreted mass.
+- 2020ApJ...904...78S: Models constrain dust mass only; total mass quoted with gas-to-dust ratio of 100
+- 2020ApJ...904...78S: Protostar mass used only to set the envelope density structure, not fit
+- 2015ApJ...812...59O: Optically thin line, Gaussian profile
+- 2015ApJ...812...59O: Outflow axis perpendicular to envelope mid-plane
+- 2018A&A...615A.155H: Spherical/disk mass distribution parameter eta = 1 in equation (1) of Mauersberger et al. (1996); D = 3.8 Mpc
+- 2017NatAs...1..848V: CO/H2 abundance 4x10^-4; constant density and excitation temperature per layer
+- 2018RAA....18...31P: V_fall neglected to first order
+- 2021A&A...655A..25Z: inclination 44 deg from GALEX UV imaging
+- 2020ApJ...904L...6A: Infall from rest with no energy dissipation; protostellar mass M_star
+- 2021A&A...646A...1K: Optically thin, homologous expansion, arbitrary flux scale, single temperature ~14 K
+- 2019ApJ...887...55C: 870um sizes used with CO velocity dispersion
+- 2025A&A...704A..18O: Systemic velocity V_sys = 40.4 km s^-1 LSR; partial spherical shells for p-V kinematic curves
+- 2024A&A...685A..80Z: Rotation contribution to dispersion neglected; sigma ~20 km/s
+- 2016ApJ...832..158Z: v_rot=j/R, infall from energy conservation
+- 2016ApJ...832..158Z: Angular momentum transport equal to linear momentum transport
+- 2025A&A...694A..92B: SO2 and SO trace the walls of rotating outflow cavities in each lobe
+- 2025A&A...694A..92B: Outflow velocity ~30 km/s assumed from water maser proper motions
+- 2020ApJ...894...23H: Hydrostatic equilibrium; fixed temperature profile
+- 2014A&A...566A..74L: Flat disc, n∝r^-1, T∝r^-0.5, LTE, optically thin, inclination 60 deg
+- 2019A&A...629A...8T: inclination 45 deg, D=2 kpc, LTE, constant density and Tex for HVC
+- 2019A&A...624A...7V: M*=1.4 Msun, i=74 deg
+- 2025MNRAS.541.3799K: Distances from Anand et al. (2021) and PAs of LON and inclinations from Lang et al. (2020) or Salo et al. (2015)
+- 2020A&A...640A..82T: Steady, axisymmetric, self-similar wind; optically thin
+- 2021MNRAS.504.2687N: Circular orbit of companion around a 1.4 M_sun star; orbital axis aligned with gas rotation axis (PA = 10 +/- 5 deg)
+- 2025A&A...699A..22M: inner gas follows the orbital motion; radial outflow negligible; gas plane co-planar with the orbit
+- 2019ApJ...879..101L: Constant specific angular momentum and total energy; M* from disk Keplerian rotation
+- 2019ApJ...879..101L: Isothermal model, no rotation or B in collapse model; a~0.23 km/s for 15 K
+- 2026A&A...706A.248T: Ambient gas has a shear-flow velocity field with radial speed depending on angle from the jet axis, and a limb-brightened density profile
+- 2026A&A...706A.248T: Optically thin CO(2-1) in the EHV regime
+- 2020ApJ...893...51S: i=73 deg for stellar mass
+- 2020ApJ...893...51S: h/r=0.03 (r/1au)^0.25, Keplerian, Semenov dust opacity, T*=4000 K
+- 2014ApJ...796....1T: Geometrically thin disk, circular Keplerian bulk motion
+- 2014ApJ...796....1T: Circular binary orbit, isothermal gas, self-gravity ignored, disk coplanar with orbit
+- 2017ApJ...845...58Z: inclination i = arccos q
+- 2018A&A...616A..61R: Disk aligned with orbital plane, viewed 20 deg below edge-on
+- 2021A&A...646A..59R: Geometrically thin Keplerian disk; distance 120 pc
+- 2022ApJ...927..169N: Unresolved central continuum contribution of ~2.7 Jy km s^-1 excluded from central radial extrapolation
+- 2020ApJ...890..171J: gas and dust co-spatial; sigma<=100 km/s upper limit
+- 2025A&A...700L..11S: SiO emission is optically thick thermal emission at the stellar position; bar interpreted as a detached disk-like structure viewed edge-on
+- 2016ApJ...826..213L: jet inclination ~10 deg, edge-on envelope-disk
+- 2016ApJ...826..213L: infall velocity scales as r^-0.5
+- 2016ApJ...826..213L: steady-state flow
+- 2024ApJ...977..126L: Expansion, rotation and axial velocities corrected for inclination i ~ 86 deg
+- 2024ApJ...977..126L: Ellipse method strictly valid only for a narrow emitting ring
+- 2024ApJ...977..126L: Free, dynamically cold wind (Anderson2003 conditions); justified by the disk wind outside the jet-perturbed cone being unperturbed (Tabone2018)
+- 2022ApJ...931L...5J: Peak emission in C18O PV cut perpendicular to the jet axis represents the systemic velocity
+- 2022ApJ...931L...5J: Knots very close to the central source (blueshifted side of G205S3, both sides of G206, BK0/RK0 in HH 211, R1-a/BI-a in L1448C(N)) have a different origin and …
+- 2022ApJ...931L...5J: Outflow shell is a radially expanding parabolic shell with z = c R^2 and v_R = R / t_0
+- 2015ApJ...813L..19J: Draine dust with R_V=5.5; CH3CN abundance 1e-8 at >100 K, 5e-9 at 90-100 K, 1e-10 below 90 K
+- 2019A&A...621A..83S: outflow in the plane of the disk
+- 2018ApJ...857...18S: Lynden-Bell & Pringle surface density, Ulrich envelope, 10% uncertainty on literature photometry and IRS points
+- 2020ApJ...901..151S: Outflow perpendicular to disk (theta ~ 0)
+- 2023A&A...670L...8G: Bondi-Hoyle length scale L_BH = 2GM_*/v^2 with M_* = 1 M_sun and v = 1 km s^-1
+- 2023A&A...670L...8G: Median SFR distances from Zucker et al. (2020) used for physical scale conversion
+- 2020MNRAS.495..943H: Systemic velocity 47.7 km/s; distance 100 pc
+- 2017ApJ...843...45K: d = 700±100 pc; mass independent of inclination along major axis
+- 2017ApJ...843...45K: V346 Nor velocity field similar to L1551 IRS 5
+- 2025A&A...693A..76C: LTE, density >1e7 cm-3
+- 2025A&A...693A..76C: kappa_d=0.01 cm2/g; halo density ∝ 1/r; dust-free optically thick thin disk
+- 2020A&A...634L..12D: Axisymmetry, so velocity difference is rotation
+- 2013A&A...555A.112P: Non-filament gas collapses at similar infall velocity
+- 2017ApJ...835..265W: Projection correction factor ~3
+- 2019MNRAS.487..622T: Same radial range r* in all directions
+- 2019ApJ...880...69Y: spiral lies in the disk mid-plane
+- 2019ApJ...873...73Z: Disk mass neglected for Keplerian curve; inclination i defined edge-on = 0
+- 2019ApJ...873...73Z: Optically thin emission, universal excitation
+- 2025ApJ...993..200C: Initial solid-body rotation, central point mass, pressure forces and magnetic fields neglected
+- 2025ApJ...993..200C: Optically thin thermal dust emission; stream mass is an upper limit because of foreground and background contribution
+- 2025ApJ...993..200C: Accretion luminosity 0.5-1 Lbol; stellar radius 1-3 Rsun
+- 2020ApJ...903..119L: Optically thin and LTE conditions for SiO 5-4 emission
+- 2014ApJ...786..114L: Dust and gas same temperature; LTE; kappa from Beckwith1990 with beta=1; thermal line width only; free-fall infall and constant specific angular momentum in th…
+- 2018ApJ...864..120M: inclination of flow 45 deg
+- 2018MNRAS.474.4988S: inclination 41 deg
+- 2018A&A...609A..47P: Central mass 1 Msun (PV fit), distance 161 pc
+- 2020ApJ...889..140Y: dust opacity 2.3 cm2/g at 1.3 mm, dust T 20 K, gas-to-dust 100:1
+- 2018ApJ...864...76Z: edge-on inclination for rotation velocity
+- 2018ApJ...864...76Z: CS traces envelope outside barrier; SO enhanced at barrier
+- 2024ApJ...966..192S: Absence of emission near the systemic velocity attributed to resolved-out optically thick foreground CO
+- 2024ApJ...966..192S: R0 and z0 fixed at 1 arcsec
+- 2024ApJ...966..192S: Inclination angle defined between line of sight and outflow axis
+- 2020ApJ...897...59M: Inclination 64 deg from circumbinary structure; 30% mass uncertainty
+- 2015ApJ...815..106H: Vsys = 63 km/s
+- 2015ApJ...815..106H: X(C18O)=1e-7; uniform relative abundances over position-velocity space
+- 2017A&A...608A..22A: edge-on disk
+- 2018ApJ...859..150R: PA 41 deg and inclination 55 deg for A
+- 2017NatAs...1E.146H: Keplerian rotation; distance 418 pc
+- 2024A&A...682A..61C: Parcel of gas feels only the gravity of the central source; inner envelope and streamer mass not included
+- 2024A&A...682A..61C: Whole streamer falls onto the inner system; rate is an upper estimate
+- 2013ApJ...764L..14Z: Tx decreases as sqrt of distance; Pineda gas 50% more distant
+- 2018PASJ...70L...1M: [C]/[H2]~1.5e-3; [12CO]/[13CO]=60; spherical expansion
+- 2017ApJ...840...60B: distance 156 pc
+- 2020AJ....159..180K: Outflow perpendicular to disk; inclination 35 deg, v_z = v_outflow/cos i; helium factor 1.36
+- 2019ApJ...885...98S: 1D spherically symmetric collapse
+- 2019ApJ...885...98S: Gas temperature ~100 K; density and temperature structure same as earlier low-resolution model
+- 2026AJ....172...75M: Thermal velocity is negligible
+- 2026AJ....172...75M: Solid-body rotation and spherical moment of inertia for energy ratios; transitions localized on a fixed-radius disk (R ~ 2500 AU) for centroid velocity slope; …
+- 2020ApJ...904..158L: Inclination 10 deg, V_LSR = 5 km/s
+- 2014ApJ...782L..28H: Uniform H2O density 5e5 cm-3
+- 2018A&A...618A.164S: i=30-35 deg
+- 2016ApJ...832..110C: distance 161 pc
+- 2020ApJ...890..149T: gas disk PA and inclination same as stellar disks
+- 2018A&A...620A..31M: Inclination 70 deg
+- 2018A&A...620A..31M: turbulent width 0.5 km/s, surface layer scale height 10 au
+- 2025A&A...696A.202S: Average 45 deg inclination for all timescales and mass inflow rates
+- 2025A&A...696A.202S: Simple sphere with only infall and Keplerian rotation
+- 2023ApJ...944...49F: Distance D = 400 pc, dust temperature T = 15 K, dust opacity = 2.57 cm^2 g^-1 at 700 μm scaled to 870 μm with beta = 1.8, dust-to-gas ratio = 0.01
+- 2023ApJ...944...49F: Spherically symmetric freefall with total mass M = 0.25 M_sun, outer envelope radius r_outer = 2500 au, constant star formation rate, and protostellar lifetime…
+- 2014ApJ...796..117G: Centrifugal support against central mass
+- 2019A&A...629A.136S: edge-on disk, Keplerian rotation, d=1.7 kpc
+- 2017A&A...607A.130D: CO J=2-1 optically thick and thermalized
+- 2019ApJ...872..176Z: inclination 55°
+- 2019ApJ...872..176Z: optically thin emission; single temperature and density
+- 2024A&A...683A.133G: Only point-mass gravity of the protostar; stellar mass, distance, systemic velocity fixed
+- 2024A&A...683A.133G: Line intensity traces gas density
+- 2024A&A...683A.133G: T=25 K, abundances 1.45e-6 (13CO), 1e-9 (HCO+), optically thin
+- 2021A&A...653A..77P: Absorption may be missing flux from extended scales filtered out by the interferometer, not recoverable even with accurate imaging
+- 2015ApJ...814...22E: Constant infall rate, wind mass loss neglected
+- 2018A&A...620L...1G: Inclination 38 deg
+- 2018ApJ...856...14L: Inclination ~4 deg so no correction needed
+- 2025ApJ...992...18P: Distance 156 pc and i = 47 deg used to convert projected distance and velocity to the ejection period
+- 2021A&A...645A.142A: Same entrainment efficiency and wind properties as Duarte-Cabral et al.
+- 2017ApJ...835..213P: non-circular motion 50% of circular velocity
+- 2019A&A...622L..14F: Orbital gas with M~0.5-1.0 Msun, inclination 25-50 deg reproduces Doppler shift
+- 2017ApJ...840...23L: stellar mass 0.85 Msun
+- 2017A&A...607L...6T: Inclination i ~ 87 deg for deprojecting speeds
+- 2017A&A...607L...6T: Fixed i=87 deg, M*=0.2 Msun, optically thin, 0.6 km/s dispersion, power-law emissivity
+- 2026ApJ...999...62H: Keplerian rotation around a central mass M_cen; distance of 400 pc
+- 2026ApJ...999...62H: Disk mass much smaller than stellar mass; edge-on geometry; Keplerian rotation; distance = 400 pc
+- 2022A&A...664A.171V: Emission in each velocity channel is compact and centrally peaked; positional accuracy is Theta / (2 x SNR)
+- 2012A&A...544L...7P: spherical symmetry, free-fall, mu=2.3
+- 2017ApJ...837...86T: binary mass 0.8 Msun, i=62 deg, Source A 0.675 Msun
+- 2017ApJ...837...86T: Tex=42 K, X(C18O)=1.7e-7, LTE, R_in = 4 Rsun
+- 2024MNRAS.528.7383C: Lbol = Lacc (all luminosity from accretion)
+- 2023A&A...677A..80W: Circular disk/toroid perpendicular to the jet with jet inclination i = 8 deg; distance = 6.3 kpc; 1.3 mm continuum dominated by dust
+- 2014ApJ...791..123W: Source I Vsys same as MM1; dip optically thick
+- 2019A&A...631A..64B: source velocity 8.3 km/s
+- 2019A&A...631A..64B: inclination 10 deg
+- 2024A&A...686A.201N: inclination 30-44 deg
+- 2024A&A...686A.201N: poloidal velocity tangential to flow
+- 2022MNRAS.509..748W: Thin circumstellar disc with circular symmetry in Keplerian rotation and freefall infall; d = 4.0 kpc
+- 2015A&A...581A..85P: inclination ~4 deg
+- 2018ApJ...860L..14K: Galactic CO-H2 conversion factor 1.8e20 K km/s^-1
+- 2019ApJ...877L..25M: axisymmetric counterclockwise rotation, no outflow contribution
+- 2019ApJ...877L..25M: 50% of accreting mass goes to outflow
+- 2024AJ....167...72D: Molecular CO outflow shell is a radially expanding parabolic shell with expansion velocity proportional to radial distance (v_R = R/t_0)
+- 2024AJ....167...72D: Central protostellar mass M_* = 0.05 - 0.30 M_sun (or 0.1 M_sun in Figure 13)
+- 2021ApJ...908...92H: Isothermal rotating cylinder in hydrostatic equilibrium at T = 10 K
+- 2015MNRAS.447.1826Z: Mass uncorrected for inclination
+- 2017ApJ...840L..11S: LTE, 13CO and C18O optically thin, total star-forming molecular mass 10^9 Msun, Z=0.02
+- 2017NatAs...1E.152L: Jet rotation symmetric about knot center
+- 2025A&A...693A.199C: a=2±1; magnetic fields omitted; infalling and outflowing material omitted
+- 2025A&A...693A.199C: a=2±1; no infalling or out-falling material
+- 2020ApJ...894...87C: Distance 2.5 kpc; inclination 60 deg; T = 20 K; mu_p = 2.33
+- 2015Natur.527...70P: Knots travel at constant velocity from launch; inclination unknown
+- 2018A&A...615A..58Y: Distance 100 pc, inclination 87 deg, T=38 K (r/100au)^-0.4, polar cavity within 60 deg of axis empty
+- 2025SciA...11.4512O: Optically thin dust, dust-to-gas 0.01, Ossenkopf1994 opacity
+- 2020ApJ...902..141S: Distance 400 pc; axisymmetric models; Ulrich envelope
+- 2013ApJ...775L..31S: inclination 45 degrees
+- 2019ApJ...883....1Z: Same inclination for shells in the same lobe; distance 450 pc for ages
+- 2021RAA....21...26Y: Neglect effect of radial density profile on line width to first order; neglect core rotation and outflows
+- 2015ApJ...804...37L: circular orbit with 100-300 Msun in A1 at 0.0068 pc
+- 2018ApJ...864L..25O: Keplerian rotation, no radiative transfer or self-absorption
+- 2024A&A...686A.146Z: Infalling and rotating envelope model as in Sakai et al. 2014
+- 2022MNRAS.514..578W: Velocity along the line of sight is comparable to velocity in the plane of the sky; material sits in the same plane of the sky
+- 2018ApJ...861...14C: Hill5 may underestimate infall velocity, so rate is a lower limit
+- 2026A&A...706A.256A: Higher velocities closer to the protostar interpreted as infalling gas.
+- 2026A&A...706A.256A: Prior centrifugal barrier r_CB = 0.08″; r_CB is half r_CR; infalling-rotation between the radii.
+- 2016ApJ...824...88O: Density r^-1.5, constant abundance, optically thin, inclination 60 deg
+- 2024A&A...686A.122A: A hot core is a sufficient but not necessary condition for a protostellar core; presence of an outflow indicates a protostellar object
+- 2020ApJ...898...10T: Binary mass 0.5 Msun, equal masses
+- 2018ApJ...865..131L: Circular disk; inclination from arcsin(b/a)
+- 2024ApJ...966...32E: p ~ 0.5 consistent with Keplerian rotation; p ~ 1 with rotation plus infall conserving angular momentum; ridge and edge fits bracket the Keplerian mass; inclin…
+- 2018ApJ...860..119G: edge-on disk, point-like gravitational potential
+- 2024ApJ...967...15K: Distance 2.38 kpc; also tested 1.7 kpc
+- 2021A&A...653A.166C: Maximum velocity difference along the line of sight occurs at the core center; envelope mass uses standard dust assumptions
+- 2018A&A...614A..26A: Inclination 80 deg
+- 2024ApJ...963...72O: Inclination i=51.1 deg from continuum; jets normal to disk
+- 2024ApJ...963...72O: Axisymmetric rotating outflow; only redshifted lobe used
+- 2021ApJ...907..108G: Same abundance 1.0e-8 and excitation temperature 20 K for SiO and HCN; distance 7.9 kpc, with values for 3.7 kpc given in parentheses
+- 2019ApJ...872..200H: constant expansion velocity ring
+- 2024ApJ...974..150W: Disk inclination 80 to 85 deg
+- 2024ApJ...974..150W: Stellar radius 1 AU, colour temperature 4000 K; infall 5e-3 Msun/yr onto 15 Msun
+- 2021MNRAS.507.1886F: Total stellar mass M_stars = 40 M_sun and inclination angle i = 45 deg for Keplerian comparison
+- 2018ApJ...854...96O: Emissivity proportional to H2 density (n ∝ r^-1.5), no radiative transfer
+- 2025ApJ...985..226W: The elongated structure is behind V960 Mon, so its blue-shift implies motion toward the star.
+- 2019A&A...623A..77S: Gas-to-dust 100, dust opacity 1.0 cm2/g at 1.3 mm, dust and gas temperature equal, LTE
+- 2024A&A...681A.104B: Distance 8.2 kpc; inclination 10°–80° for the most collimated feature; intermediate example 45°
+- 2021ApJ...910...11O: Systemic velocity 5.2 km/s
+- 2024A&A...690A..46S: Keplerian inside break radius
+- 2024ApJ...965...99T: Observed disk-edge densities not used for the infalling material because the disk is not smoothly connected to the envelope; envelope density adopted from nume…
+- 2021PASJ...73..205T: Tested Keplerian rotation or infall motion (v proportional to r^-1)
+- 2018ApJ...869L..24I: Inclination ~70±10 deg from continuum aspect ratio of flat disk
+- 2025ApJ...993..120H: p fixed to 0.5 for 12CO mass; final mass is mean of ridge and edge
+- 2025A&A...699A.382M: equal-mass system, combined mass from Alves 2019
+- 2020MNRAS.496..394R: constant photoevaporation rate
+- 2017ApJ...837..174O: inclination 80 deg, PA 15 deg for disk/envelope
+- 2026ApJ...997..155M: External mass infall rate follows a power-law dependence on core mass over a constant duration of 30 kyr
+- 2017A&A...603A..10B: spherical symmetry; disk covers ~50% (~2 pi)
+- 2026MNRAS.551g1645K: Keplerian disk rotation around a 0.7 M_sun protostar for translating periodicity timescale to disk radius
+- 2019A&A...626A..71A: Inclination 70 deg from plane of sky
+- 2026A&A...709A.173M: Hyperfine splitting of deuterated species is neglected in Gaussian FWHM fits, so FWHM values are upper limits
+- 2020ApJ...889...20L: source velocity 8.5 km/s
+- 2023PASJ...75..225M: Minor-axis velocity gives radial motion only; major-axis gives rotation only
+- 2019ApJ...881..112O: Keplerian rotation, no radiative transfer; M = 0.82 Msun / sin^2 i
+- 2024A&A...686L..13D: v_sys = 6.8 km s^-1, distance = 300 pc
+- 2020ApJ...888...41A: Keplerian rotation, inclination-corrected
+- 2019ApJ...871..100H: X_CO=5e-4, X_CO/X_C18O=560, T0=70 K, T ∝ r^-0.4
+- 2021A&A...648A..41V: Wide-angle wind vs jet-driven models (Lee+2000) as interpretive frameworks
+- 2016ApJ...830L..16B: VLA 2 disk position angle adopted along the velocity gradient, assumed to be the CO disk of Herczeg et al. (2011)
+- 2018ApJ...869..158F: Infall near the compact source; otherwise upper limit
+- 2024ApJ...961..228S: mu = 2.8; X_CO = 2.0e20; protostellar mass 1 Msun for Keplerian; constant mass loss rate
+- 2020ApJ...893...63T: uniform density (alpha=0), <sin i> = pi/4
+- 2017A&A...602A..59C: Keplerian pattern edge-on, zero line width, infinite resolution, not a fit
+- 2024ApJ...963L..31H: Envelope angular momentum expected parallel to the outflow
+- 2026A&A...713A.149V: Simplified virial theorem limited to volume terms (neglecting surface terms); central protostellar mass neglected (Class 0-like envelopes dominate); cylindrica…
+- 2019ApJ...880..130M: Outflow direction is rotation axis of potential disk
+- 2026AJ....172..108L: r^-2 density profile with p/q = 0.22 (also compared with uniform density profile which increases beta by a factor of three)
+- 2024ApJ...964...34L: HR1 knots ballistically ejected
+- 2024A&A...692A.181Z: Central mass from bolometric luminosity (~20 Msun); edge-on disk (~80 deg) taken from literature
+- 2020ApJ...889...43Z: Td=50 K, gas-to-dust ratio 100
+- 2024A&A...690A.185W: Region rest velocity is a proxy for core velocity
+- 2016ApJ...830L..37I: HNCO co-spatial with COMs at 100 K average temperature
+- 2025A&A...695A.278H: Systemic velocity V_LSR = 5.5 km s^-1
+- 2018ApJ...863...19A: LTE, Tex=30 K, optically thin, X(12CO)=2.7e-4, same intrinsic momentum in all four flows
+- 2024ApJ...970L..40S: Ring inclination not considered
+- 2018MNRAS.478.2505I: Gas-to-dust mass ratio 100; dust opacity kappa=0.5 (nu/220 GHz)^1.7 cm2/g; LTE
+- 2025ApJ...994..225N: Sound speed 0.3–0.5 km/s; B = 0.2 mG lower limit, T = 20 K, n = 1e4 cm-3 for plasma beta
+- 2017NatAs...1E.172L: Edge-on for minimum mass; inclinations from continuum
+- 2024ApJ...961..108K: Inclination 10 deg from plane of sky; systemic velocity 8.3-8.5 km/s
+- 2025ApJ...992L..15L: thin spherical shell expanding at constant velocity
+- 2018ApJ...869...59W: Envelope T=15 K, C18O abundance 4.8e-7, LTE optically thin
+- 2018ApJ...863...94L: Inclination 6 deg
+- 2019ApJ...886...15T: LTE
+- 2026ApJ..1000..184N: inclination 64 deg
+- 2025ApJ...986..150H: Systemic velocity v_sys = 5.24 km s^-1
+- 2019ApJ...874..120F: colliding cloud depth 88 pc (twice Firecracker diameter)
+- 2024MNRAS.532L..36R: Central object mass of 18 MJup
+- 2018RAA....18...93Z: inclination unknown
+
+
+### Limitations the authors admit
+- 2017ApJ...849...56A: Resolution not high enough to resolve vertical structures; temperature profile fixed and vertically isothermal; abundance constraints weak
+- 2026ApJ..1003..219W: Low-SNR temperature fits are unreliable at boundaries and in the southwest; some southwestern fits do not converge.
+- 2026ApJ..1003..219W: Optically thick inner dust emission makes the 5.5 M⊙ estimate a lower limit.
+- 2026ApJ..1003..219W: Axisymmetric PPV model excludes spirals and leaves localized residuals.
+- 2026ApJ..1003..219W: Infall rate is an order-of-magnitude estimate affected by model symmetry, fitting errors, and mass errors.
+- 2026ApJ..1003..219W: Envelope infall measures mass supply rather than instantaneous accretion onto the protostar.
+- 2026ApJ..1003..219W: Southeastern extension is not modeled because molecular line emission is absent.
+- 2026ApJ..1003..219W: West spiral mass cannot be estimated without temperature or continuum measurements.
+- 2026ApJ..1003..219W: Chemical segregation remains entangled with radiative transfer effects.
+- 2020ApJ...904..181L: Cooler outer temperatures and missing flux beyond 2 arcsec can increase inferred outer masses and flatten the density profile.
+- 2020ApJ...904..181L: Several spectral components are blended, uncertain or unidentified.
+- 2020ApJ...904..181L: Inclination is not well constrained observationally.
+- 2020ApJ...904..181L: M4 specific angular momentum and centrifugal barrier are unknown; 90 au was chosen arbitrarily.
+- 2020ApJ...904..181L: Resolution prevents identification of central substructure, small clumps and a putative inner disc.
+- 2020ApJ...904..181L: Mass estimates depend on uncertain temperature, dust opacity and variable flux; gas and dust may be thermally decoupled during the burst.
+- 2020ApJ...904..181L: The simulated pseudo-disc is smaller than the observed structure; the simulation omits magnetic fields.
+- 2020ApJ...904..181L: Temporal variation and chemical differentiation require higher-sensitivity confirmation.
+- 2015ApJ...812...27A: Inclination poorly constrained by the disk model; mass estimates are uncertain by optical depth, temperature, abundance
+- 2015ApJ...812...27A: PV mean-position method underestimates break radius at limited resolution
+- 2016A&A...590A..73A: Resolution is insufficient for proper model fits; the jet mass is uncertain because of the CO-to-H2 conversion factor
+- 2018MNRAS.480.4991G: Mass and mass-loss estimates are very uncertain; distance is a single uncertain literature estimate
+- 2018MNRAS.480.4991G: Torus model too simple for close reproduction; no detailed fit
+- 2017ApJ...845...10F: SR24N analysis limited by low S/N and cloud absorption in 12CO
+- 2021A&A...645A..49G: Some extra-nuclear contribution to the lowest-lying H2O lines is not excluded.
+- 2021A&A...645A..49G: Core lines are saturated; core optical depth, abundance, mass, and size are uncertain.
+- 2021A&A...645A..49G: The three-component geometry is schematic with sharp transitions.
+- 2021A&A...645A..49G: Other molecular species favor disk tau_100 approximately 1.5–3, potentially higher than the fiducial H2O value.
+- 2021A&A...645A..49G: Limited spatial resolution and beam smearing prevent more detailed nuclear velocity modeling.
+- 2021A&A...645A..49G: High turbulence masks rotation and possible CO inflow at radii <= 1 arcsec.
+- 2021A&A...645A..49G: Flow lines rely on four radial samples and interpolation and are not realistic gas orbits.
+- 2021A&A...645A..49G: CO inflow rates are not corrected for feedback from the nuclear region.
+- 2021A&A...645A..49G: OH119 profiles have significant modeling discrepancies; OH inflow rate is uncertain.
+- 2025ApJ...980..126K: NGC 628 had to be excluded from the PV analysis due to its very small velocity width (~70 km/s).
+- 2025ApJ...980..126K: The coarse spatial resolution of the TP array (56.6" or ~3.1 kpc) smears out smaller-scale variations (such as star-forming regions, bars, and bar ends) and prevents identifying the exact physical me…
+- 2025ApJ...980..126K: The S/N contour thresholds used to separate disk and outlier components in the PV diagram are somewhat arbitrary, and for NGC 3521 and NGC 4579 the outlier separation is sensitive to the threshold ch…
+- 2025ApJ...980..126K: Adjacent radial bins (5.6" width) are not completely independent because they are 1/10 of the 56.6" beam size.
+- 2023ApJ...958...98F: Cloud contamination and interferometric filtering affect molecular channels near the systemic velocity and cause missing flux, making the C18O envelope mass a lower limit.
+- 2023ApJ...958...98F: Continuum over-subtraction causes negative absorption artifacts at the disk center in optically thick lines (all species except SO), and cannot be completely ruled out as the cause of the central dep…
+- 2023ApJ...958...98F: The 1.3 mm dust continuum is optically thick in the disk, so the derived dust masses are lower limits; Toomre Q also depends on the assumed gas-to-dust ratio of 100.
+- 2023ApJ...958...98F: The streamer parameters in the Mendoza et al. (2009) model were adjusted manually without mathematical optimization and are not unique solutions.
+- 2023ApJ...958...98F: The envelope-to-disk mass infall rate is only an order-of-magnitude estimate, subject to missing interferometric flux and the assumption of free-fall velocity.
+- 2023ApJ...958...98F: The gas-to-dust disk size ratio uses a kinematic break radius for gas rather than a flux-enclosed radius due to envelope contamination, making it not directly comparable to Class II disk studies.
+- 2022MNRAS.510.2363H: In the first set of observations (Band 7), sparse and uneven baselines < 500 m limit reliable imaging to R < ~0.2 arcsec and cause an isotropic wind to artificially appear as north-south emission bey…
+- 2022MNRAS.510.2363H: The parameterization of the emission in phase opposition to the dominant sine wave in terms of two weaker sine waves with eye-estimated parameters is somewhat arbitrary.
+- 2022MNRAS.510.2363H: The inclination angle i of the large-scale expanding wind disc is unknown, making the retained range of 40+-20 deg and the resulting mass loss rate estimate crude and dependent on somewhat arbitrary …
+- 2022MNRAS.510.2363H: Below ~1 arcsec from the star, insufficient uv coverage in the first dataset, insufficient angular resolution in the second dataset, and complex dynamics prevent definitively ruling out north/south o…
+- 2021ApJ...917...99Y: The high-resolution C43-8 ALMA configuration observations from Program 2018.1.00566.S were not yet completed.
+- 2021ApJ...917...99Y: The inclination angle i of the host galaxy rotation axis remains unconstrained, leaving sin(i) dependencies in the dynamical mass, gas fraction, and SMBH-to-host mass ratio.
+- 2021ApJ...917...99Y: The SIE + Sérsic lensing model is an over-simplification that leaves statistically significant residual clumps (4.9% of continuum peak, 8.1% of [C II] peak), and Table 1 uncertainties only include st…
+- 2021ApJ...917...99Y: Simple image-plane inverse ray-tracing fails for multiply-imaged pixels inside the caustics, producing a likely artificial low-velocity component in the PV diagram, and suffers from beam smearing.
+- 2018A&A...619A..39F: Candidate emitters unconfirmed; CO/[CII] profile differences need more data; Q is global average
+- 2024A&A...692A.151S: Model is probably not unique; more complex geometries and profiles cannot be dismissed
+- 2024A&A...692A.151S: Model fails to reproduce the H30alpha profile asymmetry
+- 2024A&A...692A.151S: Continuum SED decomposition is only a rough estimate
+- 2024A&A...692A.151S: Distance to M 2-9 is highly uncertain
+- 2024ApJ...977..161V: Thin-disc assumption may overestimate inclination (thick-disc comparison suggests about 7 deg lower)
+- 2024ApJ...977..161V: Rotating discs cannot be cleanly distinguished from compact mergers at this resolution
+- 2024ApJ...977..161V: MCMC errors are not statistical errors
+- 2024ApJ...977..161V: PVsplit SNR criterion not met by the sample
+- 2024ApJ...977..161V: Gas surface density is the largest source of Q_T uncertainty
+- 2024ApJ...977..161V: Lower sensitivity than Hill et al. 2020 so C12 and C14-C23 are not detected
+- 2017ApJ...850L...5T: Orbital parameters cannot be uniquely determined from the PV diagram
+- 2018A&A...614A..42M: Only CO(2-1) available; cannot constrain temperature, pressure, heating
+- 2018ApJ...863..193V: The cavity is poorly defined and may not be real
+- 2018ApJ...863..193V: HST images manually aligned, so small-scale offsets between gas and UV may be missed
+- 2026A&A...706A..27S: With only two intermediate baselines (PV-NOEMA and SMT-KP), the (u, v) coverage is too sparse to robustly reconstruct the morphology of the jet base emission, and the model remains weakly constrained…
+- 2026A&A...706A..27S: Other unknown sources of non-closing systematic errors corrupting the single-baseline/small-triangle measurements cannot be completely ruled out.
+- 2026A&A...706A..27S: The detected component (~300 microarcseconds from the core) is too far out to draw conclusions about jet launching physics within the first ten Schwarzschild radii.
+- 2020ApJ...902...99I: Emission larger than the maximum recoverable scale may be resolved out
+- 2020ApJ...902...99I: Extended host-galaxy emission is not recovered in the Cycle 6 data, so only compact torus emission is discussed
+- 2020ApJ...902...99I: Continuum peak flux uncertainties exclude absolute flux calibration and continuum frequency-range choice
+- 2020ApJ...902...99I: C-peak spectra can be contaminated by innermost torus emission because the beam is not much smaller than the separation
+- 2020ApJ...902...99I: HCO+-VIB emission candidate is below 3 sigma and may be HOC+
+- 2026A&A...710A.140M: Sample suffers from a selection bias toward larger disks because edge-on disks were identified from resolved HST images.
+- 2026A&A...710A.140M: PV diagram dynamical mass estimation is ill-defined due to modest SNR per spaxel, cloud contamination, and substructures/asymmetries, and scales linearly with assumed star-forming region distance.
+- 2026A&A...710A.140M: The 1/cos(i) flux correction assumes an infinitely thin emitting layer, which is imperfect near 90 deg inclination or for vertically extended CO emission, and small inclination uncertainties cause la…
+- 2026A&A...710A.140M: Measured vertical extents H represent apparent full emitting heights rather than hydrostatic scale heights h.
+- 2026A&A...710A.140M: Scattered light vertical extents are underestimated if one side of the disk extends radially further than the other.
+- 2026A&A...710A.140M: Dedicated radiative transfer models for highly inclined disks are lacking to disentangle radial drift from optical depth effects and to reconstruct vertical temperature profiles.
+- 2015ApJ...811...92C: Model is parametric, not dynamically consistent, no systematic parameter search
+- 2015ApJ...811...92C: MEM resolution varies with image
+- 2015A&A...574A...5D: Short observation and sparse uv coverage hamper interpretation
+- 2024ApJ...977...37N: NH3 and H2CO temperatures cannot be compared quantitatively because of a factor of four beam-size difference and peak offsets
+- 2024ApJ...977...37N: 24 micron SFRs are lower limits because masked pixels around bright sources are interpolated
+- 2024ApJ...977...37N: Errors on SFR likely underestimated because of IMF stochasticity for small clusters
+- 2024ApJ...977...37N: H2CO temperature errors underestimated above 80 K
+- 2024ApJ...977...37N: Distances for non-bar clouds may be highly uncertain
+- 2024ApJ...977...37N: Single-phase gas assumption is an oversimplification
+- 2015A&A...580A...1M: Only one molecular line, so excitation mechanisms cannot be discriminated; X_CO uncertain
+- 2015A&A...580A...1M: Jet orientation degenerate with lateral expansion velocity
+- 2017MNRAS.464.1415M: Electron densities are upper limits since other colliders may contribute
+- 2017MNRAS.464.1415M: Edge-on assumption and degeneracy; CO abundance depends on uncertain cascade assumptions
+- 2025A&A...703A..15M: Dust mass uncertainties are formal only and do not include systematic uncertainties in dust opacity (which can reach a factor of several) or non-single dust temperatures.
+- 2025A&A...703A..15M: CO mass estimates assume LTE at 20 K and ISM isotopic ratios; non-LTE/subthermal excitation, different kinetic temperatures, isotope-selective photodissociation, or fractionation can alter true CO ma…
+- 2025A&A...703A..15M: Predicted collisional mass loss rates (M_dot_Dmin) have large uncertainties (40-60% formal, potentially much larger systematically) because smallest grain sizes may deviate from the blowout size in h…
+- 2025A&A...703A..15M: Secular planet stirring calculations assume a massless disk and neglect disk self-gravity, which would require a more massive planet if the disk mass exceeds the planet mass.
+- 2020PASJ...72...36T: IRS 7 image is slightly distorted by unavoidable sidelobes of Sgr A*
+- 2020PASJ...72...36T: Electron temperature distribution may contribute to the appearance difference from 34.5 GHz
+- 2018A&A...617A.129K: Masses are lower limits, accurate to about a factor of ~2 at best owing to the CO/H2 conversion; line saturation uncertain
+- 2018A&A...617A.129K: Velocity field and density degenerate in the Shape model
+- 2020PASJ...72L...5T: The IRS 13E3 distance bound for the Northern arm test is an assumption, not a measurement
+- 2015A&A...584A..99E: Resolution insufficient to determine disc rotation axes and properties
+- 2014Sci...343.1490D: Deprojection has near/far ambiguity; clump motion not confirmed
+- 2022MNRAS.515..543C: Collisional coefficients for CH3OH are lacking for transitions with J >= 16.
+- 2022MNRAS.515..543C: LVG analysis is challenged by the limited number of lines with collisional rates (5 lines, with 4 in the narrow E_u = 45-61 K range).
+- 2022MNRAS.515..543C: For source A, the E_u range of the 4 detected CH3OH lines (45-61 K) is too narrow for a free rotational diagram fit, only allowing an upper limit on T_rot.
+- 2022MNRAS.515..543C: The ~0.4'' (50 au) angular resolution cannot disentangle the binary components A1 and A2 in the continuum and hampers detailed kinematic modeling of the spatially unresolved iCOM emission.
+- 2022MNRAS.515..543C: Sub-mm dust opacity may hide iCOM emission around A2 and in the optically thick disk midplane of B.
+- 2024ApJ...963....1O: X_CO uncertainty may overestimate molecular mass by a factor of a few
+- 2024ApJ...963....1O: Chandra data too shallow to resolve cavity
+- 2018AJ....156..270S: Single thermal wavelength so beaming parameter cannot be determined; assumed parameters add about 5% to D and 10% to albedo uncertainty
+- 2014ApJ...790..160S: Outflow quantities order-of-magnitude; XCO and line ratio uncertain
+- 2020ApJ...892...99C: Temperature poorly constrained by the data
+- 2020ApJ...892...99C: Calibration uncertainty not included in MCMC fit
+- 2021A&A...654A..69S: Low number statistics: only three star-forming CL1301.7-1139 galaxies between 1 and 4 R200
+- 2021A&A...654A..69S: Photometry cannot identify AGN, which could bias SFRs
+- 2021A&A...654A..69S: Low gas fraction is defined relative to field surveys, not in absolute terms
+- 2021A&A...654A..69S: SFR estimates in comparison samples rely on a larger set of methods
+- 2014ApJ...784...78R: Cannot tell whether gas lies in front of or behind the BCG
+- 2018ApJ...863...72O: Rotation is marginal and angular momentum cannot be accurately evaluated
+
+### Settings cards flag as needed but not stated
+- casa version: 31
+- self-calibration solution intervals: 23
+- self-calibration solution intervals and number of iterations: 21
+- flux scale uncertainty: 20
+- line-free channels and continuum subtraction method: 20
+- continuum subtraction and line-free channels: 18
+- continuum subtraction method and line-free channels: 17
+- line-free channels used for continuum: 13
+- line-free channels used for continuum subtraction: 13
+- line-free channels for continuum subtraction: 13
+- line-free channel ranges for continuum: 11
+- image size and cell size: 11
+- primary beam correction details: 8
+- casa version and whether the pipeline or manual calibration was used: 7
+- flux calibration uncertainty: 7
+- casa version and pipeline version: 7
+- flux calibrator and flux scale uncertainty: 6
+- line-free channels for uvcontsub: 6
+- line-free channel ranges: 6
+- self-calibration solution intervals and number of rounds: 6
+- line-free channel ranges for continuum subtraction: 6
+- line-free channel ranges for uvcontsub: 6
+- continuum-subtraction and line-free channels: 6
+- casa version and whether pipeline or manual calibration: 5
+- self-calibration, if any: 5
+- self-calibration solution intervals and reference antenna: 5
+- clean threshold, mask, niter, cell and image size: 4
+- casa version used: 4
+- line-free channel selection for continuum: 4
+- clean masks, thresholds, cell and image size: 4
+- self-calibration status: 4
+- flux calibrator and flux-scale uncertainty: 4
+- image sizes and cell sizes: 4
+- flux calibrators and flux scale uncertainty: 4
+- self-calibration solution intervals and reference: 3
+- briggs robust value: 3
+- image size, cell size, clean threshold and masks: 3
+- line-free channels and continuum subtraction method for line cubes: 3
+- line-free channel ranges for continuum and uvcontsub: 3
+- casa version and calibration procedure: 3
+
+## Paper excerpts (40 of 493, chosen for detail and spread over fields/years)
+
+### 2017ApJ...849...56A: ALMA Observations of the Protostar L1527 IRS: Probing Details of the Disk and the Envelope Structures (2017; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: Can the disk and envelope around the protostar L1527 IRS be distinguished kinematically and geometrically, and what are their structures?
+- step 2: Derive rotation profile and Keplerian mass/radius
+  - method: Intensity-weighted mean positions per channel from major-axis PV diagram, fit with double power law in log R-log V [4.1 Rotation Profile: "The data points in the $\log R-\log V$ plane are, therefore, fitted by a double power-law function with four free parameters"]
+  - parameter: Pixels above 5 sigma used; V_LSR=5.8 km/s; distance 140 pc; i=85 deg [4.1 Rotation Profile: "Pixels having intensity more than $5\sigma$ are used to calculate the sum."]
+  - assumption: Distance 140 pc; inclination 85 deg [4.1 Rotation Profile: "by assuming that the distance of L1527 IRS is 140 pc"]
+  - fitting: chi2 fit of double power law (Rb,Vb,pin,pout); compared with single power law [4.1 Rotation Profile: "For comparison, $\chi ^{2}$ fitting with a single power function is also performed, where $V_{b}$ is fixed at $2.31\ {\rm km~s^{-1}}$."]
+  - validation: Reduced chi2 1.6 (double) vs 4.0 (single); systemic velocity left free confirms 5.8 km/s [4.1 Rotation Profile: "giving a reasonable reduced $\chi ^{2}$ of 1.6."]
+- step 4: Test hydrostatic equilibrium and origin of density jump
+  - method: Compare model scale height at Rout with HSEQ value; isothermal shock condition Sdamp = cs^2/ur^2 [5.1 Possible Origin of the Surface Dens…: "the isothermal shock condition is $S_{\rm damp}=\rho _{\rm env}/\rho _{\rm disk}=c_{s}^{2}/u_{r}^{2}$"]
+  - assumption: M*=0.45 Msun, T=44 K, mean molecular weight 2.37 mH; infall velocity = alpha times free fall [4.2.2 Model fitting: "a mean molecular weight is $2.37\ m_{\rm H}$"]
+  - validation: Envelope density compared with Kenyon et al. 1993 and Tobin et al. 2013 [5.1 Possible Origin of the Surface Dens…: "This indicates that the envelope density in the best-fit model is also reasonable when compared with other observations."]
+- step 5: Model C18O moment 0 map
+  - method: 3D radiative transfer C18O cubes using the dust best-fit structure plus observed rotation and infall, convolved with beam, compared in moment 0 within 1'' and |V|>2.0 km/s [5.2 Structures of the C18O gas disk: "comparisons between C$^{18}$O models and observations should be made only within a radius of $1\ensuremath{''}$."]
+  - parameter: Constant abundance 4e-8 nominal; alternative ISM abundance 5e-7 at 80-88 AU and 2.8e-8 elsewhere [5.2 Structures of the C18O gas disk: "the ISM abundance (cite: la1994; jo2005; wi.ro1994) at 80$\leq R\leq$88 AU and a lower constant abundance of $2.8\times 10^{-8}$ elsewhere"]
+  - assumption: Gas and dust well coupled; rotation break at 74 AU, density jump at 84 AU [5.2 Structures of the C18O gas disk: "we adopt 74 AU as the radius where the rotation profile has a break even though the geometrical boundary between the disk and the envelope is set at 84 AU in radius"]
+  - fitting: Manual comparison of abundance profiles; no formal fit [Structures of the C$^{18}$O gas disk: "Note that neither a higher nor a lower constant value than $4.0\times 10^{-8}$ of the C$^{18}$O abundance improves the model."]
+  - validation: Residual of moment 0 maps (9 sigma for constant abundance) [5.2 Structures of the C18O gas disk: "significant residuals at 9$\sigma$ level are left"]
+- result: Rotation double power-law inner index p_in = 0.50 ± 0.05 dimensionless [4.1 Rotation Profile: "$(R_{b},V_{b},p_{\rm in},p_{\rm out})=(56\pm 2\ {\rm AU}, 2.31\pm 0.07\ {\rm km~s^{-1}},0.50\pm 0.05, 1.22\pm 0.04)$"]
+- result: Rotation outer index p_out = 1.22 ± 0.04 dimensionless [4.1 Rotation Profile: "$(R_{b},V_{b},p_{\rm in},p_{\rm out})=(56\pm 2\ {\rm AU}, 2.31\pm 0.07\ {\rm km~s^{-1}},0.50\pm 0.05, 1.22\pm 0.04)$"]
+- result: Break radius / break velocity = 56 AU / 2.31 km/s ± ±2 AU / ±0.07 km/s AU; km/s [4.1 Rotation Profile: "$(56\pm 2\ {\rm AU}, 2.31\pm 0.07\ {\rm km~s^{-1}}"]
+- result: Keplerian disk radius (corrected) = ~74 ± not stated AU [4.1 Rotation Profile: "the Keplerian disk radius is estimated to be $\sim 74$ AU"]
+- result: Central protostellar mass = ~0.45 ± not stated Msun [4.1 Rotation Profile: "$M_{*}\sim 0.45\ M_{\ensuremath{\odot}}$"]
+- result: Model scale height at Rout vs HSEQ = ~20 vs ~15 ± not stated AU [4.2.2 Model fitting: "The scale height of the best-fit model at $R=R_{\rm out}$ is calculated to be $\sim 20$ AU while the scale height of a disk in HSEQ is estimated to be $\sim 15$ AU"]
+- result: Required infall coefficient alpha = ~0.3 ± not stated dimensionless [5.1 Possible Origin of the Surface Dens…: "In order to explain $S_{\rm damp}=0.19$, $\alpha$ should be $\sim 0.3$"]
+- limitation (authors): Resolution not high enough to resolve vertical structures; temperature profile fixed and vertically isothermal; abundance constraints weak [4.2.2 Model fitting: "because our angular resolution is not high enough to resolve vertical structures of the disk, the radial temperature profile we adopted is vertically isothermal."]
+- not stated (card): Exact self-calibration solution intervals, number of iterations and reference antenna; Calibration pipeline/manual choice and CASA version; Line-free channels used for continuum and continuum subtraction method; Image cell size and image size, number of clean iterations; MCMC settings (sampler, priors, chain length); Details of the radiative transfer code used to produce model images; Flux densit…
+
+### 2026ApJ..1003..219W: The Keplerian Disk, Envelope, and Streamers Surrounding an Early O-type Protostar in the Sagittarius C Cloud of the Central Molecular Zone (2026; star_formation, astrochemistry; observational_alma_primary)
+- question: Disentangle the disk, envelope, and streamers around an early O-type protostar and constrain its mass and mass accretion.
+- step 5: Fit the disk and envelope dynamics
+  - method: Stack CH3OCHO using Gaussian-integrated-flux weights; generate density-weighted disk-plus-envelope PPV cubes and fit the observed cube. [Fitting the PPV cube: "Therefore, we stacked all CH$_3$OCHO transitions in [1](#tab:lines) for subsequent dynamical modeling."] [Fitting the PPV cube: "We performed a Gaussian fit to the spatially integrated spectrum of each identified CH$_3$OCHO line to derive its integrated flux, which were then used as weight factors during the stacking."]
+  - software: emcee
+  - parameter: Separate envelope and disk position angles; common inclination; M*, Rin, Rc, Rout, menv/mdisk, fnorm [Fitting the PPV cube: "The parameters explored in the fit are: $\theta_{\mathrm{env}}$, $\theta_{\mathrm{disk}}$, $M_{\star}$, $R_{\rm c}$, $R_{\rm in}$, $R_{\rm out}$, $i$, $m_\text{env}/m_\text{disk}$, and $f_\text{norm}$."]
+  - parameter: Prior bounds: θenv (−10,60)°; θdisk (0,90)°; M* (20,50) M⊙ [Table 2: "| $\theta_{\mathrm{env}}$ | ($-$10, 60) |"] [Table 2: "| $\theta_{\mathrm{disk}}$ | (0, 90) |"]
+  - parameter: Prior bounds: Rin (80,400) au; Rc (400,1600) au; Rout (1600,2500) au [Table 2: "| $R_{\mathrm{in}}$ | (80, 400) |"] [Table 2: "| $R_{\mathrm{c}}$ | (400, 1600) |"]
+  - parameter: Prior bounds: i (30,90)°; menv/mdisk (0.5,2); fnorm (0.7,1.3) [Table 2: "| $i$ | (30, 90) |"] [Table 2: "| $m_\text{env}/m_\text{disk}$ | (0.5,2) |"]
+  - parameter: Systemic-velocity prior centered at −51 km s−1; positional priors centered on continuum peak [Fitting the PPV cube: "The prior for $v_{\rm sys}$ is centered at $-51 \text{ km s}^{-1}$, based on the identification of molecular lines."] [Fitting the PPV cube: "corresponding to the peak of the dust continuum emission, which was assumed to be the location of the protostar."]
+  - assumption: Disk h(r) = 0.2 × r; sharp inner and centrifugal-radius truncations [Fitting the PPV cube: "The model assumes that the disk has a scale height relative to the midplane $h(r) = 0.2 \times r$ and is sharply truncated at an inner boundary $R_{\rm in}$ and an outer radius $R_{\rm c}$"]
+  - assumption: Ulrich envelope: spherically symmetric gas, uniform solid-body rotation, negligible pressure forces [Fitting the PPV cube: "For the envelope, we adopted the Ulrich infall model (cite: Ulrich1976), which provides an analytical solution for the collapse of spherically symmetric gas in uniform solid-body rotation when pressure forces are negligible."]
+  - assumption: Thermal Gaussian line profile using the average temperature; smooth model to observed spatial and spectral resolution [Fitting the PPV cube: "where the thermal broadening line width $\sigma=\sqrt{kT/\mu \mathrm{m}_\text{H}}$, and $\mu$ is the molecular weight of the molecule in use."] [Fitting the PPV cube: "$T$ is the average temperature estimated in [3.2](#subsec: temperature and mass)."]
+  - fitting: emcee MCMC; χ² likelihood; model and data normalized by their respective peak intensities [Fitting the PPV cube: "We determined the best-fit parameters by comparing the model to the observation using a chi-squared ($\chi^2$) likelihood."] [Fitting the PPV cube: "For subsequent comparison in the PPV cube, both the best-fitting model and the data are normalized by their respective peak intensities."]
+  - validation: Inspect channel-map residuals; compare with pure disk and pure envelope fits; independently check with PV analysis. [Fitting the PPV cube: "Despite the localized residuals in the right panels, the model reproduces the large-scale velocity field of CH$_3$OCHO."] [Fitting the PPV cube: "We also performed fits using a standalone pure Keplerian disk or an Ulrich infall model, respectively. However, neither could adequately reproduce the observed kinematics."]
+- step 6: Check rotation profiles and stellar mass
+  - method: Extract major-axis PV velocity structures at two thresholds; fit a velocity power law and deproject its amplitude to estimate dynamical mass. [PV diagram across the Sgr C disk: "We analyze the position-velocity diagram extracted along the major axis (42$^{\circ}$ north-to-west) of the Sgr C disk to constrain its dynamical properties and central mass."] [PV diagram across the Sgr C disk: "v(x) = v_{\mathrm{sys}} + \text{sign}(x - \theta_{\mathrm{off}}) a (|x - \theta_{\mathrm{off}}| / R_0)^{-\alpha}"]
+  - parameter: 16σ extraction for inner emission; 9σ for extended emission [PV diagram across the Sgr C disk: "As shown in the PV diagram using a $16\sigma$ extraction threshold, the data points predominantly trace the inner, high-velocity emission within a radius of $1300~\mathrm{au}$."] [PV diagram across the Sgr C disk: "when a lower threshold $9\sigma$ is adopted, the extracted data points trace the more extended, lower-velocity emission to $1800~\mathrm{au}$."]
+  - parameter: Reference radius R0 = 1300 au; inclination 50° [PV diagram across the Sgr C disk: "adopting a disk inclination angle of $i=50^{\circ}$."] [PV diagram across the Sgr C disk: "We set $R_0 = 1300$ au, which is the radius of the inner Keplerian disk derived in [3.3.2](#subsec: model lines)."]
+  - assumption: Gravitationally bound gas dominated by the central-source potential [PV diagram across the Sgr C disk: "under the assumption that the gas kinematics are gravitationally bound and dominated by the potential of the central source"]
+  - fitting: Orthogonal Distance Regression; positional and velocity uncertainties; inverse-square-error weighting [PV diagram across the Sgr C disk: "We determine the optimal parameters using Orthogonal Distance Regression (ODR) to account for uncertainties in both the positional offsets and the measured velocities, weighting the data points by the inverse square of their respective errors."]
+  - validation: Inner slope agrees with Keplerian rotation; PV masses agree with the PPV dynamical model. [PV diagram across the Sgr C disk: "This result matches the theoretical expectation for a rotationally supported purely Keplerian accretion disk ($\alpha = 0.5$)."] [PV diagram across the Sgr C disk: "the estimated central mass, $M_* \approx 40.7~M_{\odot}$, remains to be consistent with the result from the PPV dynamical modeling"]
+- step 7: Derive envelope mass and infall rate
+  - method: Partition the continuum-derived mass using the fitted envelope/disk mass ratio; solve the Ulrich streamline cubic and integrate normalized density to obtain Ṁ = Menv/I. [Fitting the PPV cube: "We obtained an outer envelope to inner disk mass ratio of 1.1 from the best-fit results"] [Fitting the PPV cube: "by substituting this into the total mass of 5.5 $M_{\odot}$ estimated in [3.2](#subsec: temperature and mass), we found the mass of the envelope to be 2.9 $M_{\odot}$."]
+  - parameter: Numerically solve rd x³ + (r − rd)x − r cosθ = 0 for x = cosθ0 [Estimating the accretion rate: "r_d x^3 + (r - r_d)x - r\cos\theta = 0."] [Estimating the accretion rate: "At each integration step for a given $(r, \theta)$, we first numerically solved [\[eq:cubic\]](#eq:cubic) to find the corresponding $\cos\theta_0$."]
+  - parameter: 2D integration over r ∈ [rin,rout], θ ∈ [0,π]; use best-fit dynamical parameters [Estimating the accretion rate: "We then performed a 2D numerical integration over $r \in [r_{\text{in}}, r_{\text{out}}]$ and $\theta \in [0, \pi]$."] [Estimating the accretion rate: "By adopting the best-fit results from [3.3.2](#subsec: model lines), we obtained $\dot{M}_{\rm inf} = 7 \times 10^{-3}\ M_{\odot}\ \mathrm{yr^{-1}}$."]
+  - assumption: Ulrich density proportional to Ṁ; idealized symmetric envelope [Estimating the accretion rate: "The density of the model is directly proportional to $\dot{M}$, allowing the accretion rate to be factored out of the integral"] [Estimating the accretion rate: "Considering the uncertainties in the estimate, such as the use of an idealized symmetric model, the fitting errors of *emcee*, and the error in the disk mass, the result should be considered as an order-of-magnitude estimate."]
+- step 8: Test infalling-streamer trajectories
+  - method: Tune analytic rotating, collapsing particle trajectories to the spatial and velocity structures of West, North, and South spirals in stacked CH3OCHO. [Spirals in the Sgr C disk as infalling …: "we model the kinematics observed in the stacked CH$_3$OCHO emission using analytic solutions for a particle infalling toward a central mass within rotating gas."] [Spirals in the Sgr C disk as infalling …: "We tune the free parameters to reproduce the observed kinematic features."]
+  - parameter: Fixed M* = 40 M⊙; position angle 42° clockwise from North; inclination 50° [Spirals in the Sgr C disk as infalling …: "we fix the central mass at $M_{*}=40~M_{\odot}$ and the position angle at $42^{\circ}$."] [Spirals in the Sgr C disk as infalling …: "The position angle is measured clockwise from the North, and the polar angle is defined relative to the spin axis of a plane with an inclination angle of $50^{\circ}$."]
+  - parameter: Ws: r0=2400 au; rcb=1200 au; θ0=30°; φ0=95°; v0=1.5 km s−1 [Spirals in the Sgr C disk as infalling …: "the best-match model parameters are $r_0=2400$ au, $r_{cb}=1200$ au, $\theta_0=30^{\circ}$, $\phi_0=95^{\circ}$, and $v_0=1.5~\mathrm{km\ s^{-1}}$."]
+  - parameter: Ns: r0=3000 au; rcb=1100 au; θ0=[35°,41°,47°,53°,59°,65°]; φ0=−15°; v0=6 km s−1 [Spirals in the Sgr C disk as infalling …: "$r_0=3000$ au, $r_{cb}=1100$ au, $\theta_0=[35^{\circ},41^{\circ},47^{\circ},53^{\circ},59^{\circ},65^{\circ}]$, $\phi_0=-15^{\circ}$, and $v_0= 6\ \mathrm{km\ s^{-1}}$ for Ns"]
+  - parameter: Ss: r0=2500 au; rcb=1200 au; θ0=[85°,91°,98°,104°,110°]; φ0=−125°; v0=4.5 km s−1 [Spirals in the Sgr C disk as infalling …: "$r_0=2500$ au, $r_{cb}=1200$ au, $\theta_0=[85^{\circ},91^{\circ},98^{\circ},104^{\circ},110^{\circ}]$, $\phi_0=-125^{\circ}$, and $v_0= 4.5\ \mathrm{km\ s^{-1}}$ for Ss."]
+  - assumption: Conserved angular momentum in a rotating and collapsing envelope [Spirals in the Sgr C disk as infalling …: "The velocity distribution is approximated by that of a rotating and collapsing envelope with conserved angular momentum (cite: Mendoza2009)"]
+  - fitting: Tune free parameters for best-match trajectories; North and South use families with varying initial polar angle [Spirals in the Sgr C disk as infalling …: "We tune the free parameters to reproduce the observed kinematic features."] [Spirals in the Sgr C disk as infalling …: "The kinematics of Ns and Ss are best explained by a family of trajectories with varying initial polar angles"]
+  - validation: Trajectory models reproduce observations; alternative spiral origins remain possible. [Spirals in the Sgr C disk as infalling …: "These streamline models reproduce the observations, supporting the interpretation as streamers undergoing gravitational collapse and rotation toward the central protostar."] [Spirals in the Sgr C disk as infalling …: "future higher-resolution observations are required to more clearly elucidate the origin of these spiral structures."]
+- step 12: Place the system in Galactic context
+  - method: Compare stellar mass and infall rate with literature high-mass protostars; calculate the reported disk-to-star mass ratio and discuss stability using earlier Toomre Q results. [Accretion rate: "we compare the Sgr C system with a representative sample of well-characterized high-mass protostars hosting (sub-)Keplerian disks or other rotating structures."] [Accretion rate: "The derived disk-to-star mass ratio $\mu = M_\text{disk}/M_{*} \approx 0.14$"]
+- result: Envelope position angle = 18.2 ± +4/-6 ° [Table 2: "| $\theta_{\mathrm{env}}$ | ($-$10, 60) | 18.2$^{+4}_{-6}$ | $\ensuremath{^\circ}$ |"]
+- result: Disk position angle = 42.6 ± +3/-5 ° [Table 2: "| $\theta_{\mathrm{disk}}$ | (0, 90) | 42.6$^{+3}_{-5}$ | $\ensuremath{^\circ}$ |"]
+- result: Central protostellar mass = 40 ± +2/-3 M⊙ [Table 2: "| $M_*$ | (20, 50) | 40$^{+2}_{-3}$ | $M_{\odot}$ |"]
+- result: Disk inner radius = 240 ± +50/-40 au [Table 2: "| $R_{\mathrm{in}}$ | (80, 400) | 240$^{+50}_{-40}$ | au |"]
+- result: Centrifugal radius = 1300 ± +100/-120 au [Table 2: "| $R_{\mathrm{c}}$ | (400, 1600) | 1300$^{+100}_{-120}$ | au |"]
+- result: Envelope outer radius = 1800 ± +80/-100 au [Table 2: "| $R_{\mathrm{out}}$ | (1600, 2500) | 1800$^{+80}_{-100}$ | au |"]
+- result: Inclination = 50 ± +4/-4 ° [Table 2: "| $i$ | (30, 90) | 50$^{+4}_{-4}$ | $\ensuremath{^\circ}$ |"]
+- result: Envelope-to-inner-disk mass ratio = 1.1 ± +0.1/-0.1 dimensionless [Table 2: "| $m_\text{env}/m_\text{disk}$ | (0.5,2) | 1.1$^{+0.1}_{-0.1}$ |"]
+- result: PPV intensity normalization factor = 1.08 ± +0.06/-0.04 dimensionless [Table 2: "| $f_\text{norm}$ | (0.7,1.3) | 1.08$^{+0.06}_{-0.04}$ |"]
+- result: Inner PV power-law index at 16σ = 0.49 ± ±0.04 dimensionless [Table 3: "| $16\sigma$ | $0.49 \pm 0.04$ | 42.95 | $-$51.27 | $-$110.2 | Keplerian Disk |"]
+- result: PV dynamical mass at 16σ = 42.95 ± not stated M⊙ [Table 3: "| $16\sigma$ | $0.49 \pm 0.04$ | 42.95 | $-$51.27 | $-$110.2 | Keplerian Disk |"]
+- result: PV systemic velocity at 16σ = −51.27 ± not stated km s−1 [Table 3: "| $16\sigma$ | $0.49 \pm 0.04$ | 42.95 | $-$51.27 | $-$110.2 | Keplerian Disk |"]
+- result: PV positional offset at 16σ = −110.2 ± not stated au [Table 3: "| $16\sigma$ | $0.49 \pm 0.04$ | 42.95 | $-$51.27 | $-$110.2 | Keplerian Disk |"]
+- result: Extended PV power-law index at 9σ = 0.81 ± ±0.06 dimensionless [Table 3: "| $9\sigma$ | $0.81 \pm 0.06$ | 40.73 | $-$52.10 | 34.8 | Infalling Envelope Transition |"]
+- result: PV dynamical mass at 9σ = 40.73 ± not stated M⊙ [Table 3: "| $9\sigma$ | $0.81 \pm 0.06$ | 40.73 | $-$52.10 | 34.8 | Infalling Envelope Transition |"]
+- result: PV systemic velocity at 9σ = −52.10 ± not stated km s−1 [Table 3: "| $9\sigma$ | $0.81 \pm 0.06$ | 40.73 | $-$52.10 | 34.8 | Infalling Envelope Transition |"]
+- result: PV positional offset at 9σ = 34.8 ± not stated au [Table 3: "| $9\sigma$ | $0.81 \pm 0.06$ | 40.73 | $-$52.10 | 34.8 | Infalling Envelope Transition |"]
+- result: Envelope mass = 2.9 ± not stated M⊙ [Fitting the PPV cube: "we found the mass of the envelope to be 2.9 $M_{\odot}$."]
+- result: Envelope-to-disk mass infall rate = 7 × 10−3 ± order-of-magnitude estimate M⊙ yr−1 [Estimating the accretion rate: "we obtained $\dot{M}_{\rm inf} = 7 \times 10^{-3}\ M_{\odot}\ \mathrm{yr^{-1}}$."]
+- result: West spiral extent = 3500 ± not stated au [Spirals in the Sgr C disk as infalling …: "most notably revealing an extended spiral feature in the west out to $3500$ au"]
+- result: West streamer best-match r0 and rcb = 2400, 1200 ± not stated au [Spirals in the Sgr C disk as infalling …: "the best-match model parameters are $r_0=2400$ au, $r_{cb}=1200$ au, $\theta_0=30^{\circ}$, $\phi_0=95^{\circ}$, and $v_0=1.5~\mathrm{km\ s^{-1}}$."]
+- result: West streamer best-match θ0 and φ0 = 30, 95 ± not stated ° [Spirals in the Sgr C disk as infalling …: "$\theta_0=30^{\circ}$, $\phi_0=95^{\circ}$, and $v_0=1.5~\mathrm{km\ s^{-1}}$."]
+- result: West streamer best-match initial radial velocity = 1.5 ± not stated km s−1 [Spirals in the Sgr C disk as infalling …: "$v_0=1.5~\mathrm{km\ s^{-1}}$."]
+- result: North streamer best-match r0 and rcb = 3000, 1100 ± not stated au [Spirals in the Sgr C disk as infalling …: "$r_0=3000$ au, $r_{cb}=1100$ au, $\theta_0=[35^{\circ},41^{\circ},47^{\circ},53^{\circ},59^{\circ},65^{\circ}]$, $\phi_0=-15^{\circ}$, and $v_0= 6\ \mathrm{km\ s^{-1}}$ for Ns"]
+- result: North streamer initial polar angles = [35,41,47,53,59,65] ± not stated ° [Spirals in the Sgr C disk as infalling …: "$\theta_0=[35^{\circ},41^{\circ},47^{\circ},53^{\circ},59^{\circ},65^{\circ}]$, $\phi_0=-15^{\circ}$, and $v_0= 6\ \mathrm{km\ s^{-1}}$ for Ns"]
+- result: North streamer initial azimuthal angle = −15 ± not stated ° [Spirals in the Sgr C disk as infalling …: "$\phi_0=-15^{\circ}$, and $v_0= 6\ \mathrm{km\ s^{-1}}$ for Ns"]
+- result: North streamer initial radial velocity = 6 ± not stated km s−1 [Spirals in the Sgr C disk as infalling …: "$v_0= 6\ \mathrm{km\ s^{-1}}$ for Ns"]
+- result: South streamer best-match r0 and rcb = 2500, 1200 ± not stated au [Spirals in the Sgr C disk as infalling …: "$r_0=2500$ au, $r_{cb}=1200$ au, $\theta_0=[85^{\circ},91^{\circ},98^{\circ},104^{\circ},110^{\circ}]$, $\phi_0=-125^{\circ}$, and $v_0= 4.5\ \mathrm{km\ s^{-1}}$ for Ss."]
+- result: South streamer initial polar angles = [85,91,98,104,110] ± not stated ° [Spirals in the Sgr C disk as infalling …: "$\theta_0=[85^{\circ},91^{\circ},98^{\circ},104^{\circ},110^{\circ}]$, $\phi_0=-125^{\circ}$, and $v_0= 4.5\ \mathrm{km\ s^{-1}}$ for Ss."]
+- result: South streamer initial azimuthal angle = −125 ± not stated ° [Spirals in the Sgr C disk as infalling …: "$\phi_0=-125^{\circ}$, and $v_0= 4.5\ \mathrm{km\ s^{-1}}$ for Ss."]
+- result: South streamer initial radial velocity = 4.5 ± not stated km s−1 [Spirals in the Sgr C disk as infalling …: "$v_0= 4.5\ \mathrm{km\ s^{-1}}$ for Ss."]
+- result: Reported disk-to-star mass ratio = ≈0.14 ± not stated dimensionless [Accretion rate: "The derived disk-to-star mass ratio $\mu = M_\text{disk}/M_{*} \approx 0.14$"]
+- limitation (authors): Low-SNR temperature fits are unreliable at boundaries and in the southwest; some southwestern fits do not converge. [Rotational temperature and disk mass: "Spurious high-temperature pixels are observed at the disk boundaries; these likely arise from the low signal-to-noise ratio (SNR) in the outer regions, which compromises the reliability of the temperature fit."]
+- limitation (authors): Optically thick inner dust emission makes the 5.5 M⊙ estimate a lower limit. [Rotational temperature and disk mass: "our 5.5 $\mbox{$M_\odot$}$ estimate represents a lower limit to the true disk mass."]
+- not stated (card): Exact line-free channel selections for each SPW and epoch, continuum-subtraction task, and subtraction fit order.; CLEAN masks, stopping thresholds, iteration limits, multifrequency Taylor terms, and primary-beam correction.; Intermediate phase self-calibration solution intervals, reference antenna, solution SPW combinations, and amplitude normalization settings.; Numerical aperture geometry for …
+
+### 2020ApJ...904..181L: ALMA View of the Infalling Envelope around a Massive Protostar in S255IR SMA1 (2020; star_formation, astrochemistry; observational_alma_primary)
+- question: Characterize the gas around S255IR NIRS3/SMA1 and distinguish a Keplerian disc from a rotating infalling envelope.
+- step 6: Measure morphology and inspect rotational kinematics
+  - method: Inspect integrated K=3 emission, channel maps and a position-frequency cut through the continuum peak; extract P-V diagrams for K=0–10 and compare Keplerian curves. [CH$_3$CN: distribution and temperature: "the integrated intensity map of the CH$_3$CN $J$=19–18 $K$=3 transition"] [CH$_3$CN: kinematic signatures: "made with a cut running through the SMA1 peak at a P.A. of 165 degree."]
+  - parameter: Cut P.A. 165 degree; systemic velocity 5.2 km s^-1 [CH$_3$CN: kinematic signatures: "made with a cut running through the SMA1 peak at a P.A. of 165 degree."] [Observations: "We adopt a systemic velocity of 5.2 km s$^{-1}$ for the target."]
+  - parameter: Keplerian comparison curves: 8.04/sin^2 i, 3.57/sin^2 i and 0.89/sin^2 i M☉ [CH$_3$CN: kinematic signatures: "Keplerian rotation of (8.04/$sin^2 i$) M$_\odot$, (3.57/$sin^2 i$) M$_\odot$, and (0.89/$sin^2 i$) M$_\odot$"]
+  - assumption: Axisymmetric circumstellar structure; inclination i=0 is face-on [CH$_3$CN: kinematic signatures: "where $i$ represents the inclination angle of the system with $i = 0$ meaning face-on."] [CH$_3$CN: kinematic signatures: "a axisymmetric circumstellar structure with a diameter of 1$''$, a P.A. of 165 degree"]
+  - fitting: Qualitative comparison of observed P-V emission with Keplerian curves [CH$_3$CN: kinematic signatures: "the blue curve matches reasonably the emission pattern at the two ends."]
+  - validation: Compare elongation and velocity-gradient orientation with the outflow; inspect compactness and gradient changes with K [CH$_3$CN: kinematic signatures: "Since this gradient is closely perpendicular to the general direction of the bipolar outflows, it most plausibly indicates rotation."] [CH$_3$CN: kinematic signatures: "at progressively higher $K$s, the emission extent becomes more compact and the apparent velocity gradient gets steeper."]
+- step 7: Test rotating-disc and infalling-envelope models
+  - method: Generate SPARX molecular-line cubes for M1–M4, convolve with CASA imsmooth, extract CASA impv diagrams and compare with observed CH3CN P-V structure. [Radiative transfer modeling: "The software package produces image cubes through radiative transfer calculations of molecular line radiation with input physical models."] [Radiative transfer modeling: "We further convolve these synthetic image cubes output by SPARX with the observing resolution (0.14$''$) using the *"imsmooth"* command in CASA and generate the model P-V diagrams with the CASA *"impv"* task."]
+  - software: SPARX, CASA, imsmooth, impv
+  - parameter: M1: pure Keplerian, 20 M☉, 25 degree; M2: pure Keplerian, 4.76 M☉, 60 degree; Table 1 rounds the latter mass to 4.8 M☉ [Radiative transfer modeling: "In toy Model 1 (M1) and Model 2 (M2), we assumed the emissions are from gas following pure Keplerian rotation."] [Radiative transfer modeling: "their central YSO masses and inclination angles being 20 M$_\odot$and 4.76 M$_\odot$, and 25 degree and 60 degree, respectively."]
+  - parameter: M3: Keplerian azimuthal motion around 4.76 M☉ at 60 degree, plus constant radial infall 2.5 km s^-1 [Radiative transfer modeling: "around a central mass of 4.76 M$_\odot$at an inclination angle of 60 degree"] [Radiative transfer modeling: "also bears a radial infall velocity of 2.5 km s$^{-1}$at all radii."]
+  - parameter: M4: Ulrich accretion-flow velocity field; arbitrarily assumed centrifugal barrier 90 au [Radiative transfer modeling: "another model (M4) in which the gas follows the accretion flow prescribed by (cite: Ulrich76)."] [Radiative transfer modeling: "For the purposing of testing, we assume arbitrarily its centrifugal barrier at a small radius of 90 au (or 0.05$''$)."]
+  - parameter: Surface-density profile r^-1.1; at 900 au M1 has 0.79 g cm^-2 and M2–M4 have 0.71 g cm^-2 [Table 1: "$r^{-1.1}$"] [Table 1: "(0.79 g cm$^{-2}$)"]
+  - parameter: Temperature: 430 K at r < 214 au; 430 (r/214)^-0.7 K at r ≥ 214 au [Table 1: "430~\mbox{K} & r < 214~\mbox{au}"] [Table 1: "430~(r/214)^{-0.7}~\mbox{K} & r \geq 214~\mbox{au}"]
+  - parameter: CH3CN abundance 2 × 10^-8; abundance truncated at radius 900 au; turbulent velocity 2 km s^-1 [Radiative transfer modeling: "We then set a CH$_3$CN fractional abundance be $2\times 10^{-8}$"] [Radiative transfer modeling: "we truncate the CH$_3$CN abundance at a radius of 900 au"]
+  - assumption: Flattened two-dimensional structure; empirical column-density and temperature profiles; gas-to-dust ratio 100 [Radiative transfer modeling: "we first assume that the emission originates from a flattened two-dimensional structure, possibly a disc or an envelope."] [Radiative transfer modeling: "For the molecular gas column density and temperature, we adopt the empirical profiles inferred in Section 3.3."]
+  - assumption: LTE; no interferometric spatial filtering of model cubes [Radiative transfer modeling: "We carry out our calculations in the LTE regime since the observed transitions are most likely thermalized."] [Radiative transfer modeling: "no interferometric spatial filtering was applied to form the model cubes during this process"]
+  - assumption: Neglect gas self-gravity in the gas-kinematic model calculations [Molecular gas mass estimates: "the subsequent model calculations of gas kinematics without considering their self-gravity should be reasonable."]
+  - fitting: Qualitative comparison of modeled and observed P-V morphology, especially the central waist and edge-brightening [Radiative transfer modeling: "the central emission "waist" between the two ends at the two "quadrants" in the simulated P-V pattern is significant narrower than that of the observed emission."] [Radiative transfer modeling: "the emission is stronger on the "edges" of the "waist", similar to that in the observed pattern."]
+  - validation: Compare K=3 observations with all four models; compare M4 predictions with all observed K components [Radiative transfer modeling: "we compare the observed $J=19-18, K=3$ emission features"] [Radiative transfer modeling: "the P-V diagram of the observed CH$_3$CN emission for all $K$ components in false color and the corresponding model emission in contours."]
+- step 8: Infer infall rate and constrain the unresolved disc and angular momentum
+  - method: Use envelope surface density and radial velocity to infer mass infall; use an unresolved centrifugal barrier and assumed stellar mass to constrain specific angular momentum. [An observed non-Keplerian velocity prof…: "a surface density of 0.71 g cm$^{-2}$ at 900 au and an infall velocity of 2.5 km s$^{-1}$"] [Angular momentum considerations: "If we assume a central stellar mass $M$ of 20 M$_\odot$ and an upper limit of $r_{\mbox{\tiny CB}}$ of 125 au"]
+  - parameter: M3 surface density 0.71 g cm^-2 at 900 au; infall velocity 2.5 km s^-1 [An observed non-Keplerian velocity prof…: "a surface density of 0.71 g cm$^{-2}$ at 900 au and an infall velocity of 2.5 km s$^{-1}$"]
+  - parameter: M4 modeled infall velocity 2.99 km s^-1 at 900 au [An observed non-Keplerian velocity prof…: "Model 4 gives a modeled gas infalling velocity 2.99 km s$^{-1}$ at 900 au and hence a comparable mass infall rate."]
+  - assumption: Nearly r^-1 surface density and fixed infall velocity imply nearly constant mass infall rate [An observed non-Keplerian velocity prof…: "a radial dependence $r^{-1.1}$, which is very close to $r^{-1}$, and a fixed infalling velocity would gives rise to a nearly constant mass infall rate."]
+  - assumption: Central stellar mass 20 M☉; centrifugal barrier upper limit 125 au; angular momentum conservation in M4 [Angular momentum considerations: "If we assume a central stellar mass $M$ of 20 M$_\odot$ and an upper limit of $r_{\mbox{\tiny CB}}$ of 125 au"] [Angular momentum considerations: "In Model 4, the infalling rotating gas motion, due to the assumption of angular momentum conservation"]
+  - validation: M4 gives a comparable infall rate; compare envelope infall with literature burst accretion and larger-scale velocity gradients [An observed non-Keplerian velocity prof…: "Model 4 gives a modeled gas infalling velocity 2.99 km s$^{-1}$ at 900 au and hence a comparable mass infall rate."] [Angular momentum considerations: "The “apparent” specific angular momentum deduced from these velocity gradients are on the order of $\sim 10^4$ au km s$^{-1}$."]
+- result: Integrated CH3CN emission extent = around 1 arcsec (or 1800) ± not stated au [CH$_3$CN: distribution and temperature: "an extent of around 1$''$ (or 1800 au)"]
+- result: Integrated CH3CN elongation position angle = 165 ± not stated degree [CH$_3$CN: distribution and temperature: "a position angle (P.A., measured from north towards east) of 165 degree."]
+- result: Morphology-inferred inclination lower limit = no less than 60 ± not stated degree [CH$_3$CN: kinematic signatures: "the minor axis of the structure being roughly half in length of the major axis, would suggest an inclination angle of no less than 60 degree."]
+- result: Keplerian-equivalent central mass of the preferred velocity curve at inclination 60 degree = no larger than ∼4.76 ± not stated M☉ [Angular momentum considerations: "This blue Keplerian velocity pattern, at an inclination angle of 60 degree, corresponds to a central mass no larger than $\sim$4.76 M$_\odot$."]
+- result: M3 envelope mass infall rate = 2.3 × 10^-4 ± not stated M☉ yr^-1 [An observed non-Keplerian velocity prof…: "the mass infall rate to be 2.3 $\times$ 10$^{-4}$ M$_\odot$ yr$^{-1}$."]
+- result: Putative unresolved rotationally supported disc radius = less than 125 ± not stated au [An observed non-Keplerian velocity prof…: "If it exists, it would be presumably unresolved with a radius less than 125 au."]
+- result: Envelope specific angular momentum upper limit = ∼3.6 × 10^2 ± not stated au km s^-1 [Angular momentum considerations: "we reach an upper limit for the specific angular momentum $L_{\mbox{\tiny S}}$ of $\sim 3.6 \times 10^2$ au km s$^{-1}$ in our observed infalling envelope."]
+- limitation (authors): Cooler outer temperatures and missing flux beyond 2 arcsec can increase inferred outer masses and flatten the density profile. [Dust continuum, gas column density and …: "the averaged temperature over a larger area would likely be cooler"]
+- limitation (authors): Several spectral components are blended, uncertain or unidentified. [Spectral features: "the CH$_3$CN $K$=0 and $K$=1 transitions are blended themselves."]
+- limitation (authors): Inclination is not well constrained observationally. [Central YSO mass and the geometry of th…: "this angle in fact has not been very well constrained observationally."]
+- not stated (card): CASA version and the observatory calibration script or pipeline version.; Calibrator identities, adopted flux models and flux-scale uncertainty; these are deferred to earlier papers.; Self-calibration solution intervals, phase/amplitude sequence, reference antenna, masks and acceptance criteria.; Continuum spectral windows, usable bandwidth and line-free channel selection.; Whether and how contin…
+
+### 2015ApJ...812...27A: ALMA Observations of the Transition from Infall Motion to Keplerian Rotation around the Late-phase Protostar TMC-1A (2015; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: How does infall motion in the envelope of the Class I protostar TMC-1A transition to Keplerian rotation in the disk, and what does this imply for Keplerian disk formation?
+- step 2: Measure rotation profile from major-axis PV diagram
+  - method: Intensity-weighted mean position per channel (>6 sigma) on PV along disk major axis (PA 73 deg); double power-law chi2 fit in log R - log V [4.2 Rotation Profile: "We performed a $\chi^{2}$ fitting to Fig. [9](#fig:ll) with a double power model"]
+  - parameter: mean positions not measured for |dV|<1.2 km/s; Vsys=6.4 km/s [4.2 Rotation Profile: "The mean position is not measured at low velocities ($|\Delta V|<1.2\ {\rm km\ s^{-1}}$)"]
+  - assumption: errors: Gaussian for log R, rectangular for log V [4.2 Rotation Profile: "We adopted a Gaussian distribution for the error of $\log R$ and a rectangular distribution for the error of $\log V$"]
+  - fitting: chi2 with Monte Carlo dispersal of points within errors; compared with single power law [4.2 Rotation Profile: "The error of each parameter is derived by dispersing the data points randomly within the error bars of $\log R$ and $\log V$."]
+  - validation: reduced chi2 1.6 (double) vs 2.0 (single); resolution bias analysed in Appendix [4.2 Rotation Profile: "giving reduced $\chi^{2}=1.6$"]
+- step 4: Model infalling envelope plus disk and compare with PV diagrams
+  - method: FE models (A-F) with Vr = alpha x free-fall, varied v_out, R_kep, alpha, i, compared with major and minor axis PV diagrams; simobserve for spatial filtering [5.2 Nature of the infall motion: "Four parameters of the model mentioned above, $v_{\rm out}$, $R_{\rm kep}$, $\alpha$, and the inclination angle of the disk $i$ are changed to reproduce the observed PV diagrams."]
+  - software: CASA simobserve
+  - parameter: best model A: (v_out, R_kep, alpha, i)=(0.85, 100 AU, 0.3, 65 deg) [5.2 Nature of the infall motion: "$(v_{\rm out},\ R_{\rm kep},\ \alpha,\ i)=(0.85,\ 100\ {\rm AU},\ 0.3,\ 65^{\circ})$"]
+  - assumption: flattened envelope to 900 AU; envelope surface density beyond 200 AU reduced by factor 2 [5.2 Nature of the infall motion: "the surface density of the envelope at radii more than 200 AU is reduced by a factor of two"]
+  - fitting: by-eye comparison of models, no formal fit [Discussion, Nature of the infall motion: "such fittings are not performed here. This is because models including the infalling envelope must be compared with the channel maps not only at higher velocities, but also at lower velocities"]
+  - validation: spherical envelope (SE) models compared in Appendix; q=-0.5 tested [5.2 Nature of the infall motion: "It is found that models with a spherical envelope cannot explain the observations better than FE models."]
+- step 5: Estimate magnetic field required for slow infall
+  - method: Order-of-magnitude radial equation of motion with magnetic pressure and tension at 200 AU [5.3 Magnetic Pressure and Tension: "The magnetic flux density required to make the infall velocity as small as $0.3 V_{\rm ff}$ is estimated from the equation of motion"]
+  - assumption: R_curv ~ scale height H; B ∝ rho^(2/3); steady state; gas pressure ignored [5.3 Magnetic Pressure and Tension: "We also assume $B\propto \rho ^{2/3}$"]
+  - validation: same estimate at 100 and 300 AU gives similar results [5.3 Magnetic Pressure and Tension: "The same estimations are also done at radii of 100 AU and 300 AU, providing results similar to that at 200 AU."]
+- result: Double power-law inner index p_in = 0.54 ± ±0.14 dimensionless [4.2 Rotation Profile: "$(67\ {\rm AU},\ 2.4\ {\rm km\ s^{-1}},\ 0.54\pm 0.14,\ 0.85\pm 0.04)$"]
+- result: Outer index p_out = 0.85 ± ±0.04 dimensionless [4.2 Rotation Profile: "$(67\ {\rm AU},\ 2.4\ {\rm km\ s^{-1}},\ 0.54\pm 0.14,\ 0.85\pm 0.04)$"]
+- result: Apparent break radius = 67 AU (corrected ~90 AU) ± ~1% AU [4.2 Rotation Profile: "the real break radius can be estimated to be $\sim 90$ AU from the apparent break radius of 67 AU"]
+- result: Inclination-corrected dynamical mass = 0.68 ± not stated Msun [5.2 Nature of the infall motion: "the inclination-corrected central stellar mass is calculated at $M_{*}=0.68\ M_{\odot}$"]
+- result: Infall velocity factor alpha = 0.3 ± not stated dimensionless [5.2 Nature of the infall motion: "$(v_{\rm out},\ R_{\rm kep},\ \alpha,\ i)=(0.85,\ 100\ {\rm AU},\ 0.3,\ 65^{\circ})$"]
+- result: Mass infall rate = (1.5-3.0)e-6 at R=100-200 AU ± not stated Msun/yr [5.2 Nature of the infall motion: "$\dot{M}=2\pi RV_{r}\Sigma =(1.5-3.0)\times 10^{-6}\ M_{\odot}\,{\rm yr}^{-1}\ (R=100-200\ {\rm AU})$"]
+- result: Keplerian disk mass (R_kep=100 AU) = 2.5e-3 ± not stated Msun [5.2 Nature of the infall motion: "$M_{\rm disk}=\int \Sigma 2\pi RdR=2.5\times 10^{-3}\ M_{\odot}$"]
+- result: Magnetic field for slow infall = ~2 ± not stated mG [5.3 Magnetic Pressure and Tension: "the magnetic flux density required for $V_{r}=0.3V_{\rm ff}$ is estimated to be $B\sim 2$ mG"]
+- limitation (authors): Inclination poorly constrained by the disk model; mass estimates are uncertain by optical depth, temperature, abundance [4.3 Rotating Disk Models: "it is difficult to give a constraint on the inclination angle in this model fitting"]
+- limitation (authors): PV mean-position method underestimates break radius at limited resolution [4.2 Rotation Profile: "may systematically underestimate $R_{b}$ when the spatial resolution is not high enough"]
+- not stated (card): MCMC details for disk model fit (sampler, priors, steps, convergence); CASA version and calibration pipeline/script version; CLEAN iterations/threshold, cell and image size; Line-free channel ranges for continuum; Exact flux-correction handling beyond the 0.85 factor; Mask definitions and uncertainty computation for mean positions; Disk code is from Ohashi et al. 2014, not available here; Continu…
+
+### 2016A&A...590A..73A: A precessing molecular jet signaling an obscured, growing supermassive black hole in NGC 1377? (2016; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the nature of the buried nuclear source in NGC 1377 and the structure and evolutionary status of its molecular outflow, as seen in high-resolution ALMA CO 3–2?
+- step 2: Make moment maps and PV diagrams
+  - method: Flux-weighted first and second moments after smoothing and clipping; five PV diagrams along and across the jet [3.1 CO 3–2 moment maps: "The velocity centroids were determined through a flux-weighted first moment of the spectrum of each pixel"]
+  - parameter: clip 3 sigma (moment 0), 4 sigma (moments 1 and 2) [3.1 CO 3–2 moment maps: "for the moment 0 map we clipped at the 3$\sigma$ level, and for the moment 1 and 2 maps we clipped at 4$\sigma$"]
+- step 4: Model jet precession and derive jet parameters
+  - method: Simple analytic precessing-jet model compared with PV diagrams, giving precession angle, v_out, period and dynamical age; no formal fit [4.1.1 Simple models: "We require higher spatial resolution to carry out proper model fits to the jet properties."]
+  - parameter: theta=10-25 deg; v_proj 100-150 km/s [4.1.2 Jet parameters: "The east-offset implies a precession angle $\theta$=10$^{\circ}$-25$^{\circ}$"]
+  - assumption: Constant outflow velocity; precession axis in the plane of the sky [4.1.1 Simple models: "the inclination of the precession axis is zero (i.e. in the plane of the sky), and the outflow velocity $v_{\rm out}$ is constant"]
+  - validation: Rejected a bicone-projection alternative by comparing with PV shapes [Other potential explanations: "Another important argument against the cone-projection model is the shape of the observed PV diagrams transverse to the jet symmetry axis"]
+- result: Molecular jet CO 3-2 flux = 23.2 ± 0.5 Jy km/s [Table 1: "(molecular jet)$^d$ | $23.2 \pm 0.5$ (Jy ${\rm km\,s}^{-1}$)"]
+- result: Outflow velocity range = 240-850 ± not stated km/s [4.1.2 Jet parameters: "The outflow velocity should, therefore, lie in the range $v_{\rm out}$=240-850 ${\rm km\,s}^{-1}$ with a precession period $P$=0.3-1.1 Myr."]
+- result: Jet mass outflow rate = 9-40 ± not stated Msun/yr [4.4 Mass and outflow rate: "we estimate the mass outflow rate in the jet at 9 – 40 M$_{\odot}$ yr$^{-1}$"]
+- limitation (authors): Resolution is insufficient for proper model fits; the jet mass is uncertain because of the CO-to-H2 conversion factor [4.1.1 Simple models: "We require higher spatial resolution to carry out proper model fits to the jet properties."]
+- not stated (card): Flux density of J0334-401 and the flux scale uncertainty; CASA version and the calibration scripts; AIPS version and imaging parameters (cell size, image size, clean masks, iterations); Line-free channels used for the continuum; Exact PV cut positions and widths; Jet inclination, v_out and precession-period derivation details, and the mass outflow rate calculation; Distance and conversion-factor …
+
+### 2018MNRAS.480.4991G: ALMA imaging of the nascent planetary nebula IRAS 15103-5754 (2018; evolved_stars; observational_alma_primary)
+- question: What are the morphology and kinematics of the circumstellar structure of the nascent PN IRAS 15103-5754, and what physical processes operate at the beginning of the PN phase?
+- step 3: Torus geometry, kinematics and mass
+  - method: Integrated intensity maps and PV diagrams along major/minor axes; C18O LTE mass; HCO+ parameters [3.2 Line emission: an expanding torus: "The estimated mass of the structure is 0.4-1.0 M ⊙ assuming local thermodynamic equilibrium (LTE) with a temperature of 60-180 K"]
+  - parameter: Tex 60-180 K; 12CO/H2 = 3e-4; 16O/18O ~330 [3.2 Line emission: an expanding torus: "a [16] O/ [18] O ratio of ≃ 330"]
+  - assumption: LTE, optically thin C18O [3.2 Line emission: an expanding torus: "Because the C [18] O(2-1) line is optically thinner, it can provide a better estimate of the mass of the torus."]
+  - validation: Parameters consistent within errors among all lines [3.2 Line emission: an expanding torus: "the obtained geometric and kinematic parameters are consistent, within the errors, for all observed lines."]
+- step 4: Model HCO+ emission from expanding torus
+  - method: Radiative transfer model of an LTE expanding torus with power-law temperature (Appendix A), compared qualitatively with PV diagrams [3.2 Line emission: an expanding torus: "We have modelled the HCO [+] emission from an expanding torus, as described in Appendix A."]
+  - parameter: Tmax 180 K, Tmin 60 K, turbulence >~2 km/s, HCO+ abundance ~1e-7 [3.2 Line emission: an expanding torus: "for a torus with a maximum (inner) temperature of 180 K, and a minimum (outer) temperature of 60 K."]
+  - validation: Model PV diagrams visually compared to observed ones [3.2 Line emission: an expanding torus: "the resulting positionvelocity diagrams (Fig. 5) reasonably resemble the observed ones (Fig. 4)"]
+- step 6: Biconical outflow kinematic model
+  - method: Analytic PV relation for the walls of truncated cones with linear velocity gradient and equatorial velocity V0 (Appendix C), matched to the PV diagram along p.a.=36 deg [3.3.1 A biconical outflow: "We have modelled the outflow geometry and kinematics as arising from the walls of a biconical structure, in order to reproduce the position-velocity diagram in Fig. 7."]
+  - parameter: theta~106 deg, half-opening theta0~28 deg, dv/dr=73 km/s/arcsec, v0~23 km/s [APPENDIX C: "θ ≃ 106 [◦], a half opening angle θ 0 ≃ 28 [◦], a velocity gradient � dvdr � = 73 km s [−][1] arcsec [−][1] and v 0 ≃ 23 km s [−][1]"]
+  - assumption: explosive event with ballistic particles; d=3.38 kpc [APPENDIX C: "The conical outflow model assumes an explosive event with particles having ballistic trajectories."]
+  - validation: Model lines overlaid on observed PV diagram; more complex cone variants tested and rejected [APPENDIX C: "None of these spatial changes led to a PV diagram in agreement with the data."]
+- result: Torus mass (C18O, LTE) = 0.4-1.0 ± not stated Msun [3.2 Line emission: an expanding torus: "The estimated mass of the structure is 0.4-1.0 M ⊙"]
+- result: Torus expansion velocity (deprojected) = 23 ± not stated km/s [3.2 Line emission: an expanding torus: "we obtain a deprojected expansion velocity of 23 km s [−][1]"]
+- result: Torus mean diameter = 0.6 (2000 au) ± not stated arcsec [3.2 Line emission: an expanding torus: "We obtain a torus mean diameter of ≃ 0.6 arcsec (2000 au at 3.38 kpc)"]
+- result: Torus dynamical age = 200 ± not stated yr [3.2 Line emission: an expanding torus: "we estimate a dynamical age of 200 yr for the expanding torus."]
+- result: Cone opening angle (2 theta0) = 56 ± not stated deg [3.3.1 A biconical outflow: "an opening angle of the cone (2 × θ 0 ) of ≃ 56 [◦]"]
+- result: Misalignment of cone axis with torus axis = 14 ± not stated deg [3.3.1 A biconical outflow: "so the total 3-D misalignment is ≃ 14 [◦]"]
+- result: Maximum deprojected outflow velocity = 250 ± not stated km/s [3.3.1 A biconical outflow: "we estimate a maximum deprojected outflow velocity of ≃ 250 km s [−][1]"]
+- result: Velocity gradient along cone = 73 ± not stated km/s/arcsec [3.3.1 A biconical outflow: "The velocity gradient along the conical surface is 73 km s [−][1] arcsec [−][1]"]
+- result: Outflow dynamical age = 220 ± not stated yr [3.3.1 A biconical outflow: "This gradient indicates a dynamical age of ≃ 220 yr for the outflow."]
+- limitation (authors): Mass and mass-loss estimates are very uncertain; distance is a single uncertain literature estimate [3.1 Continuum emission: "our estimates of mass and mass-loss rate are very uncertain, as they depend on several parameters that are not well constrained"]
+- limitation (authors): Torus model too simple for close reproduction; no detailed fit [3.2 Line emission: an expanding torus: "Our model of HCO [+] emission is only intended as an illustration of the general geometric characteristics of the torus"]
+- not stated (card): cell size and image size; clean masks, threshold and number of iterations; line-free channel ranges for continuum; self-calibration solution intervals and number of iterations; flux scale uncertainty; uv-range/taper details beyond the 300 kilolambda cut; free parameter values (density, HCO+ profile exponents) of the torus model; fitting procedure used for the biconical model (done by eye?); metho…
+
+### 2017ApJ...845...10F: Strongly Misaligned Triple System in SR 24 Revealed by ALMA (2017; protoplanetary_disks, star_formation; archival_reuse)
+- question: Are the disks of the young triple system SR24 misaligned, and what are their masses, kinematics and the extended gas structures around them?
+- step 3: Characterize 12CO disk kinematics and SR24N dynamical mass
+  - method: 2D Gaussian fits to moment 0, PV diagrams with Keplerian curves, M=0.00121*(dv/2)^2*r [3.2 12CO Molecular emission from the di…: "$(M/M_{\ensuremath{\odot}})=0.00121\times((\Delta v/km~s^{-1})/2)^2\times(r/AU)$"]
+  - software: CASA, KARMA, MIRIAD
+  - fitting: 2D Gaussian fit [Results, 12CO Molecular emission from t…: "This absorption is possibly affecting the results of our 2D-Gaussian fit, which would explain the different inclination obtained"]
+  - validation: Keplerian curves overlaid on PV diagram [3.2 12CO Molecular emission from the di…: "we overlapped three Keplerian rotation curves produced with central masses ranging between 0.1 $M_{\ensuremath{\odot}}$ and 1 $M_{\ensuremath{\odot}}$"]
+- step 4: Fit SR24S C18O velocity cube with kinematic model
+  - method: Thin rotating, accreting disk with tapered power-law surface density, r^-0.5 rotation and infall, no radiative transfer; 9 free parameters; M=v_rot^2 r/G [3.3 Simple modeling of the SR24S disk k…: "Our model of the velocity cube has 9 free parameters"]
+  - software: MIRIAD (velmodel, velimage)
+  - parameter: gamma=0.8; fiducial radius 1 arcsec (120 AU) [3.3 Simple modeling of the SR24S disk k…: "at a fiducial radius of $1\ensuremath{''}$ (120 AU for the adopted distance)"]
+  - assumption: distance 120 pc [Results, Molecular extended emission: "the distance is d=0.12 kpc"]
+  - fitting: AGA-based optimization, run 100 times to get standard deviations [3.3 Simple modeling of the SR24S disk k…: "ran it a 100 times in order to extract a standard deviation for the averaged parameters"]
+  - validation: visual agreement with cube and PV diagram [3.3 Simple modeling of the SR24S disk k…: "Figure [5](#Ffit) shows the good agreement between the simple model and the C$^{18}$O (2-1) observed velocity cube"]
+- step 5: Determine tilt/sense of rotation and misalignment angle
+  - method: PV cuts perpendicular to major axis compared with synthetic infall models; angle via cosΔ=cos i1 cos i2+sin i1 sin i2 cos(PA1-PA2) [Footnote 8: "$\cos{\Delta}=\cos{i_1}\cdot\cos{i_2}+\sin{i_1}\cdot\sin{i_2}\cdot\cos{(PA_1-PA_2)}$"]
+  - software: MIRIAD
+  - assumption: SR24N disk rotates in same sense as the close binary; infall rather than outflow [4.1 Geometry of the disks: "we assume that the sense of the disk rotation matches that of the close binary system SR24Nb and SR24Nc"]
+  - validation: consistency with IR spiral arm and brightness asymmetry [Discussion, Geometry of the disks: "The curvature of the spiral arm would indicate that the disk is rotating counterclockwise (as seen in projection), which implies that east is its near side."]
+- result: SR24S C18O dynamical mass = 1.5 ± 0.5 Msun [3.3 Simple modeling of the SR24S disk k…: "of 1.5$\pm$0.5 $M_{\ensuremath{\odot}}$"]
+- result: SR24S fitted inclination (C18O) = 46 ± 8 deg [Table 3: "$i$ | $46\ensuremath{^\circ}$ | $8\ensuremath{^\circ}$ |"]
+- result: SR24S fitted characteristic radius = 1.3 ± 0.2 arcsec [Table 3: "$r_c$ | $1.3\ensuremath{''}$ | $0.2\ensuremath{''}$ |"]
+- result: SR24N dynamical mass = 0.8 (order-zero; abstract/summary quote 1.1) ± not stated Msun [3.2 12CO Molecular emission from the di…: "The resulting mass, 0.8 $M_{\ensuremath{\odot}}$, is in good agreement"]
+- result: Angle between disk angular momentum vectors = 108 ± 25 deg [4.1 Geometry of the disks: "we derive an angle between the angular momentum vectors of the two disks[^8] of $108\ensuremath{^\circ}\pm25\ensuremath{^\circ}$"]
+- limitation (authors): SR24N analysis limited by low S/N and cloud absorption in 12CO [4.1 Geometry of the disks: "the lower signal-to-noise ratio and the foreground cloud absorption of the $^{12}$CO data prevent a similar analysis"]
+- not stated (card): CASA version and whether the pipeline or manual calibration was used; self-calibration solution intervals and reference; uv-taper value and clean parameters (threshold, niter, cell, image size); line-free channels and continuum subtraction method; AGA code and parameter bounds/priors; how the 12CO disk velocity ranges and 2D Gaussian fits were done; how errors on inclination and PA were propagate…
+
+### 2021A&A...645A..49G: A proto-pseudobulge in ESO 320-G030 fed by a massive molecular inflow driven by a nuclear bar (2021; nearby_galaxies, star_formation, astrochemistry; archival_reuse)
+- question: Infer the nuclear physical conditions and structure of ESO 320-G030, and test whether bar-driven molecular inflow feeds its nuclear starburst.
+- step 8: Infer noncircular CO gas motions
+  - method: Extract circular PV diagrams and modify the large-scale rotational field with an azimuth-dependent radial component; infer velocities from line-of-sight values and slopes. [The velocity field: "PV diagrams along these circles are shown in panels d-h"] [The velocity field: "We have then modified this regular velocity field to account for the main kinematic departures from the green curves"]
+  - parameter: Circular radii 3, 2, 1.5, 1, and 0.5 arcsec; moment-0 interval -300 to +300 km s^-1 [The velocity field: "integrated intensity (moment 0, between $-300$ and $+300$ km s$^{-1}$)"] [The velocity field: "circles in the plane of the galaxy with radii $r=3''$, $2''$, $1.5''$, $1''$, and $0.5''$."]
+  - parameter: Major kinematic axis PA 133 deg; inclination 43 deg [The velocity field: "$\theta_0=133^{\circ}$ is the position angle of the major kinematic axis (MKA), $i=43^{\circ}$ is the inclination angle"]
+  - assumption: Gas remains in the galaxy plane when interpreting minor-axis velocity shifts as radial inflow; NE far side, SW near side [The velocity field: "If the gas in these regions remains in the plane of the galaxy, the observed velocity shifts are ascribed to an inflow"] [The velocity field: "the NE region is the far-side of the disk (cite: caz14)"]
+  - fitting: Fit rotational and radial components to PV slopes and velocities; approximately resolve their degeneracy using line-of-sight velocity slopes [The velocity field: "we have some degeneracy between $V_{\mathrm{rot}}$ and $V_{\mathrm{rad}}$, which is approximately solved from the slope of $V_{\mathrm{LOS}}$."]
+  - validation: Compare modified and purely circular velocity fields; assess the fraction of gas within ±50 km s^-1 of the fitted curves [The velocity field: "The modified velocity field is displayed with dashed red curves in panels d-h"] [The velocity field: "The fraction of gas mass sampled within a velocity range of $\pm50$ km s$^{-1}$ around the red curves in Fig. [15](#co)d-g ranges from 43% at $r=1''$ to 87% at $r=3''$."]
+- step 9: Estimate bar-driven mass transport
+  - method: Integrate CO luminosity times radial velocity around deprojected circles, including beam and projection factors; calculate angular-momentum transport, bar-frame flow lines, and replenishment times. [The mass inflow rate: "We estimate the instantaneous mass inflow rate at a radius $r$ as the net gas mass crossing in the inward direction the circles depicted in Fig. [15](#co)a-c per unit time"] [The mass inflow rate: "by including the factor $r\,V_{\mathrm{rot}}(r,\theta)$ in the second equality"]
+  - parameter: CO luminosity restricted to ±50 km s^-1 around fitted PV curves [The mass inflow rate: "the CO luminosity $L'_{\mathrm{CO}}$ only involves line-of-sight velocities within $\pm50$ km s$^{-1}$ from the red curves"]
+  - parameter: Bar pattern speed 250 km s^-1 kpc^-1; velocity field linearly interpolated between four radial positions [The gas flow: "after correcting for the assumed $\Omega_s= 250$ km s$^{-1}$ kpc$^{-1}$."] [The gas flow: "the velocity field is only determined at four radial positions and a linear interpolation is performed at all other radii."]
+  - parameter: Inclination geometrical factors f_r and f_s each span 0.73–1 [The mass inflow rate: "$f_r$ and $f_s$ (both within the range $0.73-1$) are geometrical factors that account for the source inclination"]
+  - assumption: alpha_CO = 0.78 M_sun/(K km s^-1 pc^2); equal CO 1-0 and 2-1 brightness [The mass inflow rate: "We adopt a conversion factor $\alpha_{\mathrm{CO}}=0.78$ $M_{\odot}/(\mathrm{K\,km\,s^{-1}\,pc^2})$, and implicitly assume the same brightness for the CO $1-0$ and $2-1$ lines."]
+  - assumption: Gas orbits approximately stationary in the rotating bar frame [The gas flow: "Since the gas orbits are expected to be approximately stationary in the rotating bar frame"]
+  - validation: Check flow lines against gas-bar morphology and compare instantaneous inflow with reservoir-mass/travel-time estimate and nuclear SFR. [The gas flow: "This connection between kinematics and morphology gives support to the model"] [The mass inflow rate: "it gives an independent estimate of $\dot{M}_{\mathrm{inf}}\sim15$ $M_{\odot}$ yr$^{-1}$."]
+- result: CO inflow velocities at r = 2–1 arcsec = 80-180 ± not stated km s^-1 [The velocity field: "Inflow velocities as large as $80-180$ km s$^{-1}$ are obtained at $r=2''-1''$ ($460-230$ pc)."]
+- result: CO rotational velocity near the minor kinematic axis at r = 1–2 arcsec = 150-200 ± not stated km s^-1 [The velocity field: "at $r=1''-2''$, $V_{\mathrm{rot}}$ sharply decreases to $150-200$ km s$^{-1}$."]
+- result: Expected nuclear bar pattern speed = approximately 250 ± not stated km s^-1 kpc^-1 [The gas flow: "The nuclear bar pattern speed is expected to be $\Omega_s= V_{\mathrm{rot}}(R_{\mathrm{cor}})/R_{\mathrm{cor}}\sim250$ km s$^{-1}$ kpc$^{-1}$"]
+- result: Calculated flow-line elapsed times = 13 and 24 ± not stated Myr [The gas flow: "The elapsed time along the calculated lines is 13 and 24 Myr, corresponding to $\sim0.5-1$ turns of the bar."]
+- result: Net CO mass inflow rate at r = 3 arcsec = approximately 0 ± not stated M_sun yr^-1 [Table 1: "| 3 | $\sim0$ | $-10^5$ |"]
+- result: Net CO mass inflow rate at r = 2 arcsec = 11.3 ± not stated M_sun yr^-1 [Table 1: "| 2 | 11.3 | $6.2\times10^5$ |"]
+- result: Net CO mass inflow rate at r = 1.5 arcsec = 16.0 ± not stated M_sun yr^-1 [Table 1: "| 1.5 | 16.0 | $8.3\times10^5$ |"]
+- result: Net CO mass inflow rate at r = 1 arcsec = 19.9 ± not stated M_sun yr^-1 [Table 1: "| 1 | 19.9 | $6.8\times10^5$ |"]
+- result: Net inward angular-momentum flux at r = 3 arcsec = -10^5 ± not stated M_sun pc km s^-1 yr^-1 [Table 1: "| 3 | $\sim0$ | $-10^5$ |"]
+- result: Net inward angular-momentum flux at r = 2 arcsec = 6.2 × 10^5 ± not stated M_sun pc km s^-1 yr^-1 [Table 1: "| 2 | 11.3 | $6.2\times10^5$ |"]
+- result: Net inward angular-momentum flux at r = 1.5 arcsec = 8.3 × 10^5 ± not stated M_sun pc km s^-1 yr^-1 [Table 1: "| 1.5 | 16.0 | $8.3\times10^5$ |"]
+- result: Net inward angular-momentum flux at r = 1 arcsec = 6.8 × 10^5 ± not stated M_sun pc km s^-1 yr^-1 [Table 1: "| 1 | 19.9 | $6.8\times10^5$ |"]
+- result: Complete nuclear gas replenishment time = approximately 23 ± not stated Myr [The mass inflow rate: "This gives the time for complete nuclear gas replenishment, $t\sim23$ Myr"]
+- result: Independent reservoir/travel-time CO inflow estimate = approximately 15 ± not stated M_sun yr^-1 [The mass inflow rate: "it gives an independent estimate of $\dot{M}_{\mathrm{inf}}\sim15$ $M_{\odot}$ yr$^{-1}$."]
+- limitation (authors): Some extra-nuclear contribution to the lowest-lying H2O lines is not excluded. [The core, disk, and envelope components: "although some extra-nuclear contribution to the lowest-lying H$_2$O lines is not ruled out."]
+- limitation (authors): Core lines are saturated; core optical depth, abundance, mass, and size are uncertain. [H2O excitation, column densities, and a…: "all lines -including the submillimeter H$_2$O448 transition- are saturated in this component."]
+- limitation (authors): The three-component geometry is schematic with sharp transitions. [Additional remarks: "it is obviously very schematic with sharp edges and transitions from one component to the next."]
+- not stated (card): ALMA CASA version, calibration scripts, flagging choices, calibrators, and any self-calibration history.; Exact spectral-window setup, continuum channel selections, and H2O448 continuum-subtraction procedure.; Imaging task, image dimensions, clean masks, stopping thresholds, deconvolver, and primary-beam treatment.; Coordinates, systemic-velocity definition, and the intended frequency-frame speci…
+
+### 2025ApJ...980..126K: ALMA FACTS. II. Large Scale Variations in the <SUP>12</SUP>CO(J = 2 ─ 1) to <SUP>12</SUP>CO(J = 1 ─ 0) Line Ratio in Nearby Galaxies (2025; nearby_galaxies, star_formation; observational_alma_primary)
+- question: Reveal if there are spatial and large-scale radial variations in the 12CO(J=2-1)/12CO(J=1-0) line ratio r21 in nearby galaxies and differences depending on galaxy morphology.
+- step 3: Generate major-axis position-velocity (PV) diagrams of r21
+  - method: Extract PV diagrams along the major axis for CO 10 and CO 21 using CASA impv with a 1' slit width, exclude pixels within 28" of map edges, measure CO 10 PV rms in emission-free regions, and divide the CO 21 PV diagram by the CO 10 PV diagr… [3.3. PV Diagram: "The PV diagrams for both CO 10 and CO 21 data are created using CASA task impv, using the position angles presented in Table 1. The widths of the slits are set to 1 ¢, comparable to the beam size of the TP array data."] [3.3. PV Diagram: "Pixels within half a beam (28″) from the edges of the maps are shown but were excluded from further analysis."]
+  - software: CASA, impv
+  - parameter: Slit width = 1', edge exclusion = 28", threshold = 20 sigma (10 sigma for NGC 1512 and NGC 4579) [3.3. PV Diagram: "The widths of the slits are set to 1 ¢, comparable to the beam size of the TP array data."] [3.3. PV Diagram: "Pixels within half a beam (28″) from the edges of the maps are shown but were excluded from further analysis."]
+  - validation: Average r21 in PV diagram compared with luminosity-weighted r21 over the whole map and found consistent within standard deviation [3.3. PV Diagram: "The two estimates therefore do not necessarily have to match, but they are consistent and well within the standard deviation."]
+- step 4: Separate circularly rotating disk from kinematic outliers via tilted-ring modeling
+  - method: Fit the CO 10 cube with a tilted-ring model in 3DBarolo using concentric 28.8" rings, create a major-axis PV diagram from the model cube, and define regions inside the 30 sigma model contour (10 sigma for NGC 1512 and NGC 4579) as 'disk' a… [4.1. Modeling the Galactic Disk: "In order to distinguish between the edges of the PV diagrams and the normal galactic rotation in a physically motivated manner, we use 3DBarolo (E. M. Di Teodoro & F. Fraternali 2015) to fit the data cube with a tilted-ring model (D. H. Rogstad et al. 1974)."] [4.1. Modeling the Galactic Disk: "The CO 10 data cube was modeled using the position angle and inclination given in Table 1 as initial parameters, with concentric rings 28.8  in width."]
+  - software: 3DBarolo
+  - parameter: Ring width = 28.8", radial gas inflow/outflow fixed to 0, PA, inclination, and rotation velocity free in each ring [4.1. Modeling the Galactic Disk: "The CO 10 data cube was modeled using the position angle and inclination given in Table 1 as initial parameters, with concentric rings 28.8  in width. The position angle, inclination, and rotation velocity were allowed to change in each ring. The radial gas inflow/outflow was fixed to 0."]
+  - parameter: Model PV contour threshold = 30 sigma (10 sigma for NGC 1512 and NGC 4579) [4.1. Modeling the Galactic Disk: "A contour in the model PV diagram was drawn at 30σ (i.e., 10σ above the threshold level used in calculating the observed ratio), inside which the observed data were assigned to be the “disk” component."] [4.1. Modeling the Galactic Disk: "For NGC 1512 and NGC 4579, a 10σ threshold was used for defining the contour of the disk component, for the same reason as explained in Section 3.3."]
+  - assumption: Pure circular rotation in tilted rings with zero radial inflow/outflow [4.1. Modeling the Galactic Disk: "The radial gas inflow/outflow was fixed to 0."] [4.1. Modeling the Galactic Disk: "We use this model CO 10 PV diagram, indicating pure-circular rotation, to distinguish rotating gas with gas in noncircular rotation."]
+  - fitting: Tilted-ring model fitting in 3DBarolo [4.1. Modeling the Galactic Disk: "In order to distinguish between the edges of the PV diagrams and the normal galactic rotation in a physically motivated manner, we use 3DBarolo (E. M. Di Teodoro & F. Fraternali 2015) to fit the data cube with a tilted-ring model (D. H. Rogstad et al. 1974)."]
+  - validation: Tested contour levels 5 sigma above and below the threshold and tested modeling with CO 21 instead of CO 10 [4.1. Modeling the Galactic Disk: "In Figure 2 we also show the contour level 5σ above and below the threshold explained above to illustrate how our choice of the sigma threshold affects the results."] [4.1. Modeling the Galactic Disk: "The PV diagrams of both CO lines were nearly identical, and using CO 21 to model the galaxy parameters produced consistent results in the analyses, even though we use the S/N ratio for the distinction of disks and outliers."]
+- step 5: Compare r21 distributions and radial profiles across kinematic components and galaxy morphologies
+  - method: Compute raw and sample-normalized histograms of r21 in PV pixels for disk and outlier components across SA, SAB, and SB classes, perform Welch's t-tests, and compute radial profiles in 5.6" bins normalized by central 28" mean r21, optical … [4.2. Number Distribution of r 21: "The normalized distribution matches the non-normalized distribution very well, and a Welch's t-test between the disk and outliers in the normalized data set gives a p-value of 0.009, indicating that the disk and outliers likely come from different distributions."] [4.3. Radial Gradient: "The radial profiles of the disk, outlier, and the two components combined are shown in the right-hand panel of Figure 2. The width of the radial bins is 5.6 , corresponding to the pixel size, i.e., 1/10 of the beam."]
+  - parameter: Histogram bin width = 0.027; radial bin width = 5.6"; minimum 3 data points per radial bin [4.2. Number Distribution of r 21: "The bins in the histogram have width of 0.027, i.e., larger than δr 21 ."] [4.3. Radial Gradient: "The width of the radial bins is 5.6 , corresponding to the pixel size, i.e., 1/10 of the beam."]
+  - fitting: Welch's t-test between distributions [4.2. Number Distribution of r 21: "The normalized distribution matches the non-normalized distribution very well, and a Welch's t-test between the disk and outliers in the normalized data set gives a p-value of 0.009, indicating that the disk and outliers likely come from different distributions."]
+  - validation: Compared non-normalized and sample-normalized PV pixel distributions [4.2. Number Distribution of r 21: "The normalized distribution matches the non-normalized distribution very well, and a Welch's t-test between the disk and outliers in the normalized data set gives a p-value of 0.009, indicating that the disk and outliers likely come from different distributions."]
+- result: Mean PV r21 (all galaxies, disk + outlier) = 0.63 ± 0.09 dimensionless [Table 3: "All galaxies 0.63 ± 0.09 0.62 ± 0.08 0.69 ± 0.10"]
+- result: Mean PV r21 (all galaxies, disk component) = 0.62 ± 0.08 dimensionless [Table 3: "All galaxies 0.63 ± 0.09 0.62 ± 0.08 0.69 ± 0.10"]
+- result: Mean PV r21 (all galaxies, outlier component) = 0.69 ± 0.10 dimensionless [Table 3: "All galaxies 0.63 ± 0.09 0.62 ± 0.08 0.69 ± 0.10"]
+- result: Mean PV r21 (SA galaxies, disk / outlier) = 0.64 / 0.70 ± 0.06 / 0.10 dimensionless [Table 3: "SA 0.65 ± 0.07 0.64 ± 0.06 0.70 ± 0.10"]
+- result: Mean PV r21 (SAB galaxies, disk / outlier) = 0.61 / 0.70 ± 0.08 / 0.08 dimensionless [Table 3: "SAB 0.63 ± 0.09 0.61 ± 0.08 0.70 ± 0.08"]
+- result: Mean PV r21 (SB galaxies, disk / outlier) = 0.60 / 0.68 ± 0.10 / 0.11 dimensionless [Table 3: "SB 0.62 ± 0.11 0.60 ± 0.10 0.68 ± 0.11"]
+- result: Welch's t-test p-value between disk and outlier r21 (normalized, all galaxies) = 0.009 ± not stated dimensionless [4.2. Number Distribution of r 21: "The normalized distribution matches the non-normalized distribution very well, and a Welch's t-test between the disk and outliers in the normalized data set gives a p-value of 0.009, indicating that the disk and outliers likely come from different distributions."]
+- limitation (authors): NGC 628 had to be excluded from the PV analysis due to its very small velocity width (~70 km/s). [2.2. Data Reduction: "We exclude NGC 628 from this paper because the very small velocity width (∼70km/s) of this galaxy severely limited our analyses using position–velocity (PV) diagrams in Section 3.3."]
+- limitation (authors): The coarse spatial resolution of the TP array (56.6" or ~3.1 kpc) smears out smaller-scale variations (such as star-forming regions, bars, and bar ends) and prevents identifying the exact physical mechanism causing the high-r21 PV outliers. [3.2. Ratio Map: "It should be noted that the variations we find in this study using the TP array are the minimal variations within the galaxy; larger variations at smaller spatial scales (e.g., with individual star-forming regions) are smeared out."]
+- limitation (authors): The S/N contour thresholds used to separate disk and outlier components in the PV diagram are somewhat arbitrary, and for NGC 3521 and NGC 4579 the outlier separation is sensitive to the threshold choice. [4.1. Modeling the Galactic Disk: "The S/N cuts used above are somewhat arbitrary."]
+- not stated (card): Exact CASA version and 3DBarolo version used; Which specific Execution Blocks were rejected due to bad weather and the S/N threshold used for rejection; Exact velocity channel ranges where CO was detected for each galaxy (used for baseline subtraction, moment 0 integration, and rms calculation); Whether CO 2-1 cube was regridded to the 5.62" pixel grid of CO 1-0 before pixel-by-pixel ratio and PV…
+
+### 2023ApJ...958...98F: Early Planet Formation in Embedded Disks (eDisk). XII. Accretion Streamers, Protoplanetary Disk, and Outflow in the Class I Source Oph IRS 63 (2023; protoplanetary_disks, star_formation, astrochemistry; large_program_or_survey)
+- question: Characterize the gas and dust structures, kinematics, accretion streamers, and mass budget (envelope infall versus stellar accretion) of the Class I source Oph IRS63 in the context of early planet formation.
+- step 4: Kinematic analysis of the disk and envelope via Position-Velocity (PV) diagrams
+  - method: Extract PV cuts along the disk major axis (5-pixel wide or ~0.5'') for 13CO, C18O, and SO; fit broken power-law (13CO, SO) or single power-law (C18O) rotation profiles using SLAM in both ridge and edge modes with MCMC to determine inner po… [Kinematic analysis of the disk and enve…: "To determine if the compact ($<2\ensuremath{''}$) disk-like structure is a rotating Keplerian disk and whether the large ($\sim10\ensuremath{''}$) structure is an infalling envelope, we perform a kinematic analysis using the Spectral Line Analysis/Modeling (SLAM) code (cite: SLAM)."] [CO emission: "First, we obtained PV cuts along the major axis of the disk for the $^{13}$CO and C$^{18}$O isotopologues (5-pixel wide or $\sim 0.5\ensuremath{''}$) and show them in Figure [1](#fig:CO_PV_digrams_SLAM)."]
+  - software: SLAM
+  - parameter: PV cut width = 5 pixels (~0.5''); P.A. = 149 deg; emission threshold > 5 sigma; filtered-out velocity channels excluded [CO emission: "First, we obtained PV cuts along the major axis of the disk for the $^{13}$CO and C$^{18}$O isotopologues (5-pixel wide or $\sim 0.5\ensuremath{''}$)"] [CO emission: "In both cases, we assumed a distance of $d$=132 pc, a disk inclination of $i=47\degree$, and excluded the filtered-out velocity channels from the fit."]
+  - assumption: d = 132 pc; i = 47 deg; Keplerian rotation forced to derive M_star [CO emission: "In both cases, we assumed a distance of $d$=132 pc, a disk inclination of $i=47\degree$, and excluded the filtered-out velocity channels from the fit."] [CO emission: "The stellar mass obtained from SLAM relates to this inner power law index, and by forcing Keplerian rotation, we derive a mass of $M_\star = 0.5 \pm 0.2$ $M_\odot$ (fifth column in Table [1](#table:slam_parameters))."]
+  - fitting: MCMC fitting in SLAM using both ridge (emission peak) and edge (outermost contour) modes; final parameters obtained by averaging/median of ridge and edge results [Kinematic analysis of the disk and enve…: "SLAM selects data points from the input PV in two ways; the ridge mode traces the peak of the emission at different channels, while the edge mode traces the outermost emission contour. SLAM performs the fitting process in an MCMC fashion"] [Table 1: "The indicated uncertainties are the 14th and 68th statistical uncertainties from the MCMC analysis from SLAM. The adopted disk and stellar properties are obtained by averaging the results from the edge and ridge methods."]
+  - validation: Compared derived dynamical stellar mass with Brinch & Jørgensen (2013) after rescaling for distance and inclination; compared kinematic break radius with moment 1 velocity gradient transition [CO emission: "Our derived dynamical mass, is approximately consistent with the one derived by (cite: Brinch2013) of $\rm M_\star =0.4 \, M_\odot$ after re-scaling by our chosen source distance ($d$) and disk inclination angle"] [SO emission: "The results from SLAM are consistent with what is seen in the SO moment 1 map in Figure [\[fig:Disk-size-comparison\]](#fig:Disk-size-comparison)"]
+- step 5: Model C18O and SO spiral/arc structures as infalling rotating streamers
+  - method: Apply the Mendoza et al. (2009) analytical ballistic model of a finite-sized rotating cloud collapsing onto a central point mass; manually adjust initial polar angle theta, azimuthal angle phi, and cloud radius R_cloud to visually match pr… [Infalling streamer model: "Thus, we would like to test whether their morphology can be reproduced by a collapsing rotating cloud that accretes to a central gravitational object. For this, we follow the analytical solutions proposed by (cite: Mendoza2009)."] [Infalling streamer model: "We manually adjusted the $\theta$ and $\phi$ angles to match the position and velocities of the three arc-like features."]
+  - parameter: M_star = 0.5 M_sun; i = 47 deg; P.A. = 149 deg; near side = 59 deg E of N; For C18O: R_disk = 265 au, R_cloud = 5300 au, h_0 = 1250 au km s^-1, (theta, phi) = (57, 188), (85, 270), (108, 300) deg; For SO: R_disk = 110 au, R_cloud = 550, 27… [Infalling streamer model: "For simplicity, we assume that the rotational axis of the cloud and the disk are aligned ($i=47\degree$, P.A.= $149\degree$, the near side is $59\degree$ east of north)."] [Infalling streamer model: "To model C$^{18}$O, we defined the inner edge of the cloud to be of size $R_{cloud} \sim 5300$ au (20 times the disk’s radius), fixed the mass of the protostar to $M_{\star} =0.5 \, M_\odot$ protostar, and set the initial angular specific momentum of the particles to $h_0 = \sqrt{R_{disk} \, GM_\star} \sim 1250$ $\rm …"]
+  - assumption: Negligible pressure gradient (supersonic flow); rigid-body rotation at spherical cloud boundary; negligible self-gravity (central star dominates); aligned cloud and disk rotational axes [Infalling streamer model: "The assumptions involved in this model are: 1) The pressure gradient of the flow is negligible, 2) the particles at the boundary of the spherical cloud rotate as a rigid body, 3) self-gravity is negligible, and thus the massive central source dominates the motion."]
+  - fitting: Manual visual adjustment of theta, phi, and R_cloud [Infalling streamer model: "We manually adjusted the $\theta$ and $\phi$ angles to match the position and velocities of the three arc-like features."] [Infalling streamer model: "We acknowledge that since we have not performed a mathematical fitting procedure, the values shown in Table [2](#table:streamer_c18o_parameters) might not be the best or even unique solutions to match the observations."]
+  - validation: Visual comparison of model trajectories over moment maps and velocity curves over PV diagrams [Infalling streamer model: "As shown in Figure [2](#fig:C18O_streamer_model), the streamer model reproduces well the projected positions as well as the velocity structure along the trajectories of the C$^{18}$O line."] [Infalling streamer model: "The velocity profiles of the three streamer (white dashed lines) follow well the emission seen in the PV diagrams"]
+- step 6: Derive envelope mass and envelope-to-disk mass infall rate
+  - method: Verify C18O is optically thin and 13CO is optically thick using their brightness temperature ratio; compute gas excitation temperature T_ex from peak 13CO brightness temperature assuming LTE; compute C18O column density and total H2 envelo… [Mass infalling rate: "For the gas around Oph IRS63, we find that the ratio between the peak brightness temperature of the $^{13}$CO and C$^{18}$O lines is between 2 and 3 in the region where most of the CO gas is detected. This result confirms that C$^{18}$O is optically thin, and because the ratio is $<4$, it also confirms that $^{13}$CO …"] [Mass infalling rate: "From this equation, we measure a peak excitation temperature of 21 K in the envelope. Once the excitation temperature is obtained, we then use the C$^{18}$O emission to calculate the gas mass of the streamer according to equations ([\[eq:column_density\]](#eq:column_density)) and ([\[eq:mass\]](#eq:mass))"]
+  - parameter: T_bg = 2.7 K; T_ex = 21 K; inner disk exclusion radius = 265 au; d = 132 pc [Mass infalling rate: "for the microwave background temperature of 2.7 K."] [Mass infalling rate: "From this equation, we measure a peak excitation temperature of 21 K in the envelope."]
+  - assumption: LTE; optically thick 13CO and optically thin C18O; [12C]/[13C] = 77 and [16O]/[18O] = 560; X(C18O)/X(H2) = 3 x 10^-7; free-fall velocity from outermost edge [Mass infalling rate: "assuming standard isotope ratios of \[$^{12}$C\]/\[$^{13}$C\] = 77 and \[$^{16}$O\]/\[$^{18}$O\] = 560 (cite: Wilson1994)."] [Mass infalling rate: "Using a standard abundance of $3 \times 10^{-7}$ (cite: Frerking1982) for C$^{18}$O and $B_e$ value taken from the JPL database (cite: Pickett1998)"]
+  - validation: Compared derived envelope mass (0.04 M_sun) with Brinch & Jørgensen (2013) radiative transfer value (0.07 M_sun) [Mass infalling rate: "This is already suggested by the fact that our value is about half of the total envelope mass derived from (cite: Brinch2013), which was 0.07$~M\odot$."]
+- result: Protostellar dynamical mass (M_star) = 0.5 ± 0.2 M_sun [Abstract: "By analyzing the velocity pattern of $^{13}$CO and C$^{18}$O, we measure a protostellar mass of $\rm M_\star = 0.5 \pm 0.2$ $\rm M_\odot$"]
+- result: Gas disk radius (R_b / R_gas from 13CO) = 265 ± 9 au [CO emission: "We obtain that such a radius is at $R_b = 265 \pm 9$ au using ridge and edge methods."]
+- result: Inner rotational velocity power-law index (p_in for CO) = 0.61 (or ~0.6) ± 0.04 dimensionless [CO emission: "For both CO isotopologues, we find almost Keplerian inner power law indices of $p_{in}\sim0.6\pm 0.04$ using the edge and ridge methods (second column in Table [1](#table:slam_parameters))."]
+- result: Outer velocity power-law index (p_in + dp for 13CO) = 1.2 ± 0.4 dimensionless [CO emission: "The $p_{in}+dp$ values measured for the edge and ridge method are 1.6 and 0.9, respectively, which gives an average of $p_{in}+dp=1.2 \pm 0.4$, where the uncertainty is dominated by the standard deviation."]
+- result: SO kinematic break radius (R_b) = 97 (edge) / 120 (ridge) (~100-110) ± 12 (edge) / 39 (ridge) au [Table 1: "SO (edge) | $0.48 \pm 0.19$ | $1.13 \pm 0.23$ | $97 \pm 12$ | $0.76 \pm 0.19$ | $3.05 \pm 0.02$"]
+- result: Systemic velocity (V_sys) = 2.8 ± 0.01 km s^-1 [Spirals: "with respect to $V_{sys}$=2.8 $\rm km \, s^{-1}$."]
+- result: Envelope peak excitation temperature (T_ex) = 21 ± not stated K [Mass infalling rate: "From this equation, we measure a peak excitation temperature of 21 K in the envelope."]
+- result: C18O infalling envelope mass (M_envelope) = 0.04 ± not stated M_sun [Mass infalling rate: "we obtain a total C$^{18}$O mass of $M_{envelope} \sim 0.04~M_\odot$."]
+- result: Envelope-to-disk mass infall rate = 4e-6 ± not stated M_sun yr^-1 [Mass infalling rate: "Finally, we estimate a mass infalling rate from the envelope to the disk of $\dot{M}_{infall} \sim 4\times 10^{-6}$ $M_\odot \, yr^{-1}$."]
+- limitation (authors): Cloud contamination and interferometric filtering affect molecular channels near the systemic velocity and cause missing flux, making the C18O envelope mass a lower limit. [Molecular tracers: "In some molecular tracers, our observations suffer from cloud contamination at channel maps close to systemic velocity. This feature is most likely caused by gas being filtered out by the ALMA interferometer."]
+- limitation (authors): Continuum over-subtraction causes negative absorption artifacts at the disk center in optically thick lines (all species except SO), and cannot be completely ruled out as the cause of the central depression in SO. [Molecular tracers: "Additionally, we see a strong negative absorption at the disk position for all the molecular species (except in SO). This artifact is caused by continuum over-subtraction, resulting from optically thick molecular lines at the line center"]
+- limitation (authors): The 1.3 mm dust continuum is optically thick in the disk, so the derived dust masses are lower limits; Toomre Q also depends on the assumed gas-to-dust ratio of 100. [Millimeter continuum: "These values should be regarded as lower limits for the total disk mass of solids since the 1.3 mm emission in the disk is optically thick as discussed in (cite: Segura-Cox2020)."]
+- not stated (card): Self-calibration parameters (solution intervals, number of phase/amplitude rounds) which are deferred to Ohashi et al. (2023); Imaging parameters in tclean (pixel/cell size, image dimensions, cleaning threshold, masking strategy, multiscale scales); Whether the short-baseline continuum from 2019.A.00034.S was combined with the long-baseline continuum from 2015.1.01512.S or if 2015.1.01512.S was i…
+
+### 2022MNRAS.510.2363H: Morpho-kinematics of the wind of asymptotic giant branch star L<SUB>2</SUB> Pup (2022; evolved_stars; archival_reuse)
+- question: What is the morpho-kinematics of the wind escaping the gravity of the AGB star L2 Pup, including line broadening in the nascent wind near the star and the presence of predicted collimated radial outflows?
+- step 2: Measure absorption over the stellar disc and radial extent of self-absorption
+  - method: Extract spectra inside a circle of 12 mas radius centred on L2 Pup for 12,13CO(3-2) and 29SiO(8-7), compare with R Dor, and construct PV maps of V_z vs R in four quadrants (northern, eastern, southern, western). [Absorption over the stellar disc: "The absorption spectra measured inside a circle of 12 mas radius centred on L$_2$ Pup are shown in the right panel of Figure 5 for both $^{12,13}$CO(3-2) and $^{29}$SiO(8-7) emissions."] [Absorption over the stellar disc: "Figure 6 displays PV maps of $V_z$ vs $R$ for each of the northern, eastern, southern and western quadrants separately."]
+  - parameter: Aperture radius = 12 mas [Absorption over the stellar disc: "The absorption spectra measured inside a circle of 12 mas radius centred on L$_2$ Pup are shown in the right panel of Figure 5 for both $^{12,13}$CO(3-2) and $^{29}$SiO(8-7) emissions."]
+  - assumption: Inner rim of gas disc is at R ~ 31 mas so r < 12 mas receives no contribution from rotation [Absorption over the stellar disc: "They are located well within the inner rim of the gas disc, evaluated at $R$$\sim$31 mas by (cite: Homan2017) and should receive no contribution from rotation."]
+- step 4: Parameterize large-scale wind morpho-kinematics within 200 au using 12CO(2-1) and 28SiO(5-4)
+  - method: Construct intensity maps, radial distributions, moment 1 maps, and PV maps (V_z vs R and V_z vs omega) for 12CO(2-1) and 28SiO(5-4). In 0.5 arcsec radial intervals from R = 1 to 3.5 arcsec, model V_z vs omega flux density as the sum of thr… [The wind of L$_2$ Pup: "The central and right panels of Figure 5 display PV maps of the CO(2-1) emission, both in $V_z$ vs $R$ and in $V_z$ vs $\omega$."] [The wind of L$_2$ Pup: "In order to obtain a simple parameterization of these features, we write the dominant sine wave as $V_z$ [km s$^{-1}$]$=$1.64sin($\omega$$-$57$^\circ$)and the weaker sine waves as 1.50sin($\omega$$-$230$^\circ$) and 2.43sin($\omega$$-$208$^\circ$), respectively."]
+  - parameter: Sine wave 1 (dominant, coeff b): V_z = 1.64 sin(omega - 57 deg); Sine wave 2 (coeff a): 1.50 sin(omega - 230 deg); Sine wave 3 (coeff c): 2.43 sin(omega - 208 deg); Gaussian smearing sigma_Vz = 0.55 km s^-1, sigma_omega = 15 deg; radial in… [The wind of L$_2$ Pup: "In order to obtain a simple parameterization of these features, we write the dominant sine wave as $V_z$ [km s$^{-1}$]$=$1.64sin($\omega$$-$57$^\circ$)and the weaker sine waves as 1.50sin($\omega$$-$230$^\circ$) and 2.43sin($\omega$$-$208$^\circ$), respectively."] [The wind of L$_2$ Pup: "Each sine wave is smeared with Gaussians having $\sigma$'s of 0.55 km s$^{-1}$ in amplitude and 15$^\circ$in phase."]
+  - assumption: Flared disc with Gaussian distribution of flaring angles (rms sigma_fl) and constant velocity smearing sigma_Vz = 0.55 km s^-1; V_exp = 1.6 / sin(i) km s^-1 [The wind of L$_2$ Pup: "To see that better, we use the simple picture of a flared disc having a Gaussian distribution of flaring angles with an rms value of $\sigma_{fl}$ and we approximate the smearing in $V_z$ as a constant $\sigma_{Vz}$$=$0.55 km s$^{-1}$, independent from $\omega$."] [The wind of L$_2$ Pup: "The amplitude of the sine wave, 1.6$\pm$0.1 km s$^{-1}$, is the product of $V_{exp}$ by the sine of $i$: $V_{exp}$$=$$1.6/\sin i$ km s$^{-1}$."]
+  - fitting: Sine wave frequencies/phases/smearing estimated by eye; linear coefficients a, b, c found by best fit in each R interval; global sine wave fit to Figure 14 right panel. [The wind of L$_2$ Pup: "All these parameters have been estimated by eye to approximately match the data."] [The wind of L$_2$ Pup: "What can be stated with confidence is the dominance of a sine wave with amplitude 1.6$\pm$0.1 km s$^{-1}$ and a phase of 54$^\circ$$\pm$6$^\circ$, as obtained from a fit to the right panel of Figure 5"]
+  - validation: Comparison of data V_z vs omega maps and position angle distributions with the 3-sine-wave model across all five radial rings (Figure 15). [The wind of L$_2$ Pup: "Figure 6 illustrates the radial evolution of the $^{12}$CO(2-1) emission in successive intervals of $R$, each 0.5 arcsec wide, starting from $R$$=$1 arcsec."]
+- step 6: Search for north-south bipolar outflows and blue-shifted emission features near the star
+  - method: Integrate 12,13CO(3-2) and 29SiO(8-7) intensity maps over |V_z| < 1 km s^-1 within R < 0.2 arcsec; construct PV map (V_z vs y) of 12CO(2-1) integrated within a north-south wedge |sin(omega)| < 0.5 (+-30 deg from y-axis); map 12CO(2-1) and … [The wind of L$_2$ Pup, 5.1 Searching fo…: "displays intensity maps integrated over \|$V_z|$$<$1 km s$^{-1}$ for each of the three lines."] [A second search for north-south bipolar…: "We use again the CO(2-1) emission and explore the wedge defined as $|\sin\omega|$$<$0.5, meaning $\pm$30$^\circ$ from the $y$ axis."]
+  - parameter: |V_z| < 1 km s^-1 for Band 7 lines; |sin(omega)| < 0.5 wedge for CO(2-1); velocity range -5 to -3 km s^-1 for northern blob [The wind of L$_2$ Pup, 5.1 Searching fo…: "displays intensity maps integrated over \|$V_z|$$<$1 km s$^{-1}$ for each of the three lines."] [A second search for north-south bipolar…: "We use again the CO(2-1) emission and explore the wedge defined as $|\sin\omega|$$<$0.5, meaning $\pm$30$^\circ$ from the $y$ axis."]
+- result: Possible expansion velocity of the inner gas and dust disc = 0.8 ± +-0.5 km s^-1 [Absorption over the stellar disc: "Its slightly negative Doppler shift (also visible on the $^{29}$SiO absorption spectrum of Figure 5) may reveal a possible expansion of the disc, at the level of 0.8$\pm$0.5 km s$^{-1}$."]
+- result: Radial confinement of 28SiO(5-4) emission = 80 ± not stated au [The wind of L$_2$ Pup: "As commonly observed in oxygen-rich AGB stars, the SiO emission is confined near the star, here within $\sim$80 au, and displays therefore a slightly broader Doppler velocity spectrum"]
+- result: Amplitude of dominant sine wave in 12CO(2-1) V_z vs omega = 1.6 ± +-0.1 km s^-1 [The wind of L$_2$ Pup: "What can be stated with confidence is the dominance of a sine wave with amplitude 1.6$\pm$0.1 km s$^{-1}$ and a phase of 54$^\circ$$\pm$6$^\circ$, as obtained from a fit to the right panel of Figure 5, together with a flow of about half the intensity in phase opposition."]
+- result: Phase of dominant sine wave in 12CO(2-1) V_z vs omega = 54 ± +-6 deg [The wind of L$_2$ Pup: "What can be stated with confidence is the dominance of a sine wave with amplitude 1.6$\pm$0.1 km s$^{-1}$ and a phase of 54$^\circ$$\pm$6$^\circ$, as obtained from a fit to the right panel of Figure 5, together with a flow of about half the intensity in phase opposition."]
+- result: Position angle of projection of large-scale expanding disc axis on sky plane = 144 ± +-6 deg [The wind of L$_2$ Pup: "The position angle of the projection of the disc axis on the plane of the sky is simply 54$^\circ$+90$^\circ$$=$144$^\circ$$\pm$6$^\circ$."]
+- result: Inclination angle i of large-scale expanding wind disc = 40 ± +-20 deg [The wind of L$_2$ Pup: "Yet, too thin a disc would be highly improbable in the CSE of an AGB star and we retain as a reasonable range of acceptable values of $i$ the interval [20$^\circ$,60$^\circ$], which we write as 40$^\circ$$\pm$20$^\circ$, it being understood that this estimate rests on sensible but somewhat arbitrary arguments."]
+- result: Upper limit to radial expansion velocity of large-scale wind disc = 5 ± not stated km s^-1 [Summary and conclusion: "Beyond $\sim$1 arcsec from the centre of the star, the wind of L$_2$ Pup is dominated by a disc, or equatorial enhancement, expanding isotropically with a radial velocity not exceeding some 5 km s$^{-1}$, inclined in the north-west/south-east direction with respect to the sky plane by $\sim$40$^\circ$$\pm$20$^\circ$."]
+- limitation (authors): In the first set of observations (Band 7), sparse and uneven baselines < 500 m limit reliable imaging to R < ~0.2 arcsec and cause an isotropic wind to artificially appear as north-south emission beyond R ~ 0.15 arcsec. [Overall picture: "Baselines smaller than 500 m are sparse and unevenly distributed, limiting the range of reliable imaging to projected distances from the star $R$$<$$\sim$0.2 arcsec."]
+- limitation (authors): The parameterization of the emission in phase opposition to the dominant sine wave in terms of two weaker sine waves with eye-estimated parameters is somewhat arbitrary. [The wind of L$_2$ Pup: "All these parameters have been estimated by eye to approximately match the data."]
+- limitation (authors): The inclination angle i of the large-scale expanding wind disc is unknown, making the retained range of 40+-20 deg and the resulting mass loss rate estimate crude and dependent on somewhat arbitrary arguments. [The wind of L$_2$ Pup: "Yet, too thin a disc would be highly improbable in the CSE of an AGB star and we retain as a reasonable range of acceptable values of $i$ the interval [20$^\circ$,60$^\circ$], which we write as 40$^\circ$$\pm$20$^\circ$, it being understood that this estimate rests on sensible but somewhat arbitrary arguments."]
+- not stated (card): Software versions for both CASA and GILDAS; Deconvolution stopping criteria (threshold, niter) and masking strategies used in CASA and GILDAS cleaning; Image dimensions (number of pixels) for both Band 6 and Band 7 cubes; Exact details of the self-calibration or calibration procedures inherited from Kervella et al. (2016) and Homan et al. (2017); Exact density and velocity profile assumed for the…
+
+### 2021ApJ...917...99Y: ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System at the Epoch of Reion… (2021; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the sub-kpc spatial structure, lensing configuration, physical properties, and gas kinematics of the host galaxy of the z=6.51 gravitationally lensed quasar J0439+1634?
+- step 4: Reconstruct source-plane [C II] data cube, moment maps, and kinematics
+  - method: Attempt uv-plane axisymmetric thin rotating disk fit with VISILENS (rejected due to poor fit). Reconstruct source-plane data cube via inverse ray-tracing of the cleaned image cube onto a 0.04'' grid using the default lens model, compute mo… [3.4 [C ii] Kinematics: "We thus fit the [C ii] emission using an axisymmetric rotating thin disk, following the method described in (cite: neeleman19)."] [3.4 [C ii] Kinematics: "Specifically, we reconstruct the source (i.e., un-lensed) data cube on a grid with a pixel size of $0.04\ensuremath{''}$."]
+  - software: VISILENS
+  - parameter: source-plane pixel size = 0.04'' [3.4 [C ii] Kinematics: "Specifically, we reconstruct the source (i.e., un-lensed) data cube on a grid with a pixel size of $0.04\ensuremath{''}$."]
+  - parameter: integrated flux SNR > 10 threshold for moment 1 and 2 [3.4 [C ii] Kinematics: "When calculating the first and the second moments, we only include pixels that have integrated flux SNR larger than $10$."]
+  - assumption: Default lensing model mapping from image plane to source plane [3.4 [C ii] Kinematics: "We then trace all the pixels in the image-plane data cube (i.e., the clean image) to the source plane according to the default lensing model."]
+  - fitting: Direct extraction of maximum velocity from PV line connecting maximum and minimum moment 1 pixels [3.4 [C ii] Kinematics: "We extract the velocities along the black line, which connects the pixels with the maximum and minimum moment 1 value (i.e., the red and blue peaks)."]
+  - validation: Ray-traced the image-plane synthesized beam at the flux peak to verify source-plane resolution (0.26'' x 0.09'') and checked caustic positions for multiply-imaged regions. [3.4 [C ii] Kinematics: "The lower-right corner of the reconstructed moment 0 map illustrates the output when we perform the inverse ray-tracing analysis to an image-plane beam located at the image-plane flux peak."] [3.4 [C ii] Kinematics: "The source-plane beam has a size of $0.26\ensuremath{''}\times0.09\ensuremath{''}$, which further illustrates that a source-plane pixel size of $0.04\ensuremath{''}$ is appropriate."]
+- result: Maximum line-of-sight rotation velocity (v_max sin(i)) = 130 ± not stated km s^-1 [3.4 [C ii] Kinematics: "The maximum rotation velocity is roughly $v_\text{max}\sin(i)=130\text{ km s}^{-1}$ where $i$ is the inclination angle of the rotation axis, and the velocity is measured out to $r_\text{max}=2\text{ kpc}$."]
+- result: Outer rotation velocity dispersion (sigma) = 70 ± not stated km s^-1 [3.4 [C ii] Kinematics: "The moment 2 map suggests that these regions have $\sigma\sim70 \text{ km s}^{-1}$, which means that a thick geometry is likely."]
+- result: Median source-plane velocity dispersion (sigma_med) = 94 ± not stated km s^-1 [5.2 SMBH-Host Co-evolution: "We thus adopt the median value of the source-plane moment 2 map, $\sigma_\text{med}=94 \text{ km s}^{-1}$, which gives $r_h = 0.18 \text{ kpc}$."]
+- limitation (authors): The high-resolution C43-8 ALMA configuration observations from Program 2018.1.00566.S were not yet completed. [Data: "The high-resolution observation with configuration C43-8 is not completed at the time of this paper’s writing."]
+- limitation (authors): The inclination angle i of the host galaxy rotation axis remains unconstrained, leaving sin(i) dependencies in the dynamical mass, gas fraction, and SMBH-to-host mass ratio. [Abstract: "However, our data cannot be fit by an axisymmetric thin rotating disk, and the inclination of the rotation axis, $i$, remains unconstrained."]
+- limitation (authors): The SIE + Sérsic lensing model is an over-simplification that leaves statistically significant residual clumps (4.9% of continuum peak, 8.1% of [C II] peak), and Table 1 uncertainties only include statistical errors. [Table 1: "Besides, note that the uncertainties only include statistical errors, and do not take into account the systematic errors introduced by the model choice (see Section 3.5 for more discussion)."]
+- not stated (card): Exact frequency/channel ranges used as line-free channels in UVCONTSUB; Self-calibration solution interval (solint) and number of self-calibration iterations; TCLEAN imaging parameters: cell size, image size, stopping threshold, masking, and spectral channel width of the cleaned cube; Flux calibrator identity; Priors and MCMC sampler configuration (number of walkers, steps, burn-in) in VISILENS; …
+
+### 2018A&A...619A..39F: The dense molecular gas in the z ∼ 6 QSO SDSS J231038.88+185519.7 resolved by ALMA (2018; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Resolve the dense molecular gas (CO(6-5)) and 3.3 mm continuum in the z~6 QSO J2310+1855 host to derive gas, dynamical and BH masses and compare CO(6-5) with [CII].
+- step 3: Spectrum and kinematics
+  - method: Extract spectrum with ≥2σ mask, single Gaussian fit, moment maps, PV diagrams; derive inclination, v_rot, sigma [3.2 CO(6-5) emission line: "We then extracted the spectrum in Fig. [1](#Fig-sp) using a mask that encompasses the $\geq2\sigma$ region in the velocity-integrated CO(6-5) map."]
+  - parameter: PV slit 0.5 arcsec, PA=30 deg [3.2 CO(6-5) emission line: "along $\rm PA=30$ $\deg$ (i.e., along the velocity gradient) and orthogonal to it, through the peak CO position, with a slit of 0.5 arcsec in width"]
+  - assumption: Velocity gradient due to rotating disk; i=cos^-1(minor/major); v_rot=1.3 Δv/2 sin i; sigma from outer parts [3.2 CO(6-5) emission line: "$i\rm= cos^{-1}~ (minor/major) = 53$ deg"]
+  - fitting: Single Gaussian [Results, CO(6-5) emission line: "A Gaussian fit with a single component gives a peak intensity of the line of $I=2.94\pm0.06$ mJy,"]
+- step 4: CO/[CII] comparison
+  - method: Compare CO and [CII] cubes at same beam and registered frame; ratio maps, spectra, PV [3.2 [CII] and the CO(6-5)/[CII] ratio: "We computed the ratio of CO(6-5)/[CII] by combining the respective velocity-integrated data cubes."]
+  - parameter: spectra from 0.5 arcsec radius region [3.2 [CII] and the CO(6-5)/[CII] ratio: "and with a radius of 0.5 arcsec for both lines"]
+- result: z_CO = 6.0028 ± ±0.0003 dimensionless [3.2 CO(6-5) emission line: "$z_{CO}=6.0028\pm0.0003$"]
+- result: CO line FWHM = 361 ± ±9 km/s [3.2 CO(6-5) emission line: "FWHM$=361\pm9$ km/s"]
+- result: Mean CO(6-5)/[CII] ratio = 0.19 ± not stated dimensionless [3.2 [CII] and the CO(6-5)/[CII] ratio: "with a velocity-averaged mean ratio of 0.19"]
+- result: Inclination = 53 ± lower limit 25 deg deg [3.2 CO(6-5) emission line: "$i\rm= cos^{-1}~ (minor/major) = 53$ deg"]
+- limitation (authors): Candidate emitters unconfirmed; CO/[CII] profile differences need more data; Q is global average [3.2 [CII] and the CO(6-5)/[CII] ratio: "Confirmation of whether the small discrepancies in the line profiles are genuine would require additional observations."]
+- not stated (card): Briggs robust value; CASA version and calibration details for band 3 data; Image/cell sizes; Exact mask regions for spectrum extraction beyond ≥2σ; Bolometric luminosity details/1450 Å magnitude source; Stellar mass uncertainty treatment; Band 6 data project/details used in emitter search
+
+### 2024A&A...692A.151S: Uncovering the structure and kinematics of the ionized core of M 2-9 with ALMA (2024; evolved_stars; observational_alma_primary)
+- question: What are the structure, kinematics and physical conditions of the nascent compact ionized core (wind/jet) of the pPN/yPN candidate M 2-9, probed at 1 and 3 mm continuum and the H30alpha and H39alpha mRRLs down to ~0.03 arcsec?
+- step 4: model the ionized wind with non-LTE 3D radiative transfer
+  - method: forward modeling of continuum and H30alpha/H39alpha cubes with Co3RaL, starting from the CSC17 model and adjusting parameters by hand to match the ALMA maps, PV diagrams and SED [Non-LTE radiative transfer modeling of …: "To obtain an improved model that fits these new details, we progressively adjusted the parameters of the input model"]
+  - software: Co3RaL
+  - parameter: Te ~ 15000 K, constant [Non-LTE radiative transfer modeling of …: "The value deduced $T_{\rm e}$$\sim$15000 K"]
+  - parameter: inclination i = 12 deg (models around 17 deg examined) [Non-LTE radiative transfer modeling of …: "with the most successful models having an inclination of $i$=12$^\circ$"]
+  - parameter: R_out ~ 40 au, R_eq ~ 8 au [Non-LTE radiative transfer modeling of …: "a much narrower bipolar structure (particularly an outer radius value of $R_{\rm out}$$\sim$40 au)"] [Non-LTE radiative transfer modeling of …: "a narrow waist at the base of the wind ($R_{\rm eq}$$\sim$8 au)"]
+  - parameter: high-velocity shells: velocity rises from ~70 to ~90 km/s; ~10 km/s inside ~15 au [Non-LTE radiative transfer modeling of …: "within the HVSs, the velocity rises from $\sim$70 to $\sim$90 km s$^{-1}$"]
+  - assumption: constant electron temperature across the wind [Non-LTE radiative transfer modeling of …: "To simplify, we maintain a constant value for the electron temperature throughout the various regions of the wind."]
+  - assumption: distance 650 pc [M 2-9: "In this study, we adopt a distance of 650 pc for M 2-9"]
+  - assumption: constant rotation velocity because resolution cannot distinguish Keplerian from momentum-conserving profiles [Non-LTE radiative transfer modeling of …: "Since the angular resolution of the data does not allow us to distinguish between Keplerian or momentum conservation velocity profiles"]
+  - fitting: manual iterative adjustment; no sampler, priors or likelihood [Non-LTE radiative transfer modeling of …: "until a reasonable match was achieved between the model predictions and the data"]
+  - validation: Co3RaL benchmarked against MORELI with identical inputs; the authors state no comprehensive parameter-space study was done [Comparison of Co3RaL with MORELI: "This comparison serves as a mutual benchmarking exercise of both codes."] [Model caveats and final modeling remarks: "Although a comprehensive parameter space study has not been performed and is beyond the scope of this paper"]
+- step 5: derive disk conditions from the CO absorption
+  - method: compare on-source absorption brightness, off-source emission and continuum peak to get Tex and tau; RADEX for N_CO; scale to N_H2 with an assumed abundance; infall mass from the redshift of the absorption [Disk physical conditions: "the presence of absorption enables constraining the excitation temperature and opacity of the absorption line observed."] [Disk physical conditions: "we used the on-line version of the non-LTE line radiative transfer code RADEX"]
+  - software: RADEX
+  - parameter: Tex <~ 330 K, tau ~ 0.16 [Disk physical conditions: "we deduce $T_{\rm ex}$$\raisebox{-.4ex}{$\stackrel{<}{\scriptstyle \sim}$}$330 K and $\tau$$\sim$0.16."]
+  - assumption: X_CO = 2e-4 (O-rich), likely overestimated by photodissociation [Disk physical conditions: "which is typical of O-rich sources (cite: ram18)"]
+  - assumption: gas falls in from near zero velocity from far beyond the infall radius [Disk kinematics: "assuming that the gas started falling with (near) zero velocity from a point much far beyond the observed infall radius."]
+  - assumption: average disk density similar to OH 231.8+4.2 disk (n_H2 ~ 1e8 cm-3) [Disk physical conditions: "Assuming the average density of both disks is similar"]
+  - validation: alternative rotation explanation for the redshift tested and rejected (implies >30 Msun) [Disk kinematics: "Such a high velocity would imply an unreasonably massive central object, exceeding 30 $M_{\odot}$."]
+- result: Electron temperature of the ionized wind (model) = ~15000 ± ~15-20% K [Non-LTE radiative transfer modeling of …: "The value deduced $T_{\rm e}$$\sim$15000 K"]
+- result: Ionized mass of the model wind = ~4e-6 ± factor <~2-3 Msun [Non-LTE radiative transfer modeling of …: "$M_{\rm ion}$$\sim$4$\times 10^{\rm -6}$ $M_{\odot}$"]
+- result: Average mass-loss rate of the ionized wind (model) = ~7e-7 ± factor <~2-3 Msun/yr [Non-LTE radiative transfer modeling of …: "the average mass-loss rate implied from the model is $\dot{M}$$\sim$7$\times 10^{\rm -7}$ $M_{\odot}$ yr$^{-1}$"]
+- result: Model wind inclination = 12 ± not stated deg [Non-LTE radiative transfer modeling of …: "with the most successful models having an inclination of $i$=12$^\circ$"]
+- result: Model wind outer radius and equatorial radius = R_out ~40 au; R_eq ~8 au ± not stated au [Non-LTE radiative transfer modeling of …: "a much narrower bipolar structure (particularly an outer radius value of $R_{\rm out}$$\sim$40 au)"]
+- result: Velocity in the high-velocity shells = rises from ~70 to ~90 ± not stated km/s [Non-LTE radiative transfer modeling of …: "within the HVSs, the velocity rises from $\sim$70 to $\sim$90 km s$^{-1}$"]
+- result: Central system mass range from rotation and infall = 0.4 to 2 ± not stated Msun [Summary and conclusions: "but it is likely in the range of 0.4 to 2 $M_{\odot}$"]
+- result: CO absorption excitation temperature and opacity = Tex <~330 K; tau ~0.16 ± not stated K; dimensionless [Disk physical conditions: "we deduce $T_{\rm ex}$$\raisebox{-.4ex}{$\stackrel{<}{\scriptstyle \sim}$}$330 K and $\tau$$\sim$0.16."]
+- result: CO column density of the absorbing layers = <~6e17 ± not stated cm-2 [Disk physical conditions: "imply a CO column density of $N_{\rm CO}$$\raisebox{-.4ex}{$\stackrel{<}{\scriptstyle \sim}$}$6$\times 10^{\rm 17}$ $\,$cm$^{\rm -2}$"]
+- result: Total H2 column density of the absorbing layers = ~3e21 ± not stated cm-2 [Disk physical conditions: "we derive a total column density of $N_{\rm H_2}$$\sim$3$\times 10^{\rm 21}$$\,$cm$^{\rm -2}$"]
+- result: Equatorial disk mass = >2e-6 ± lower limit Msun [Summary and conclusions: "A lower limit to the mass of the disk of $>$2$\times 10^{\rm -6}$ $M_{\odot}$ is deduced."]
+- result: Equatorial disk radius = ~50 ± not stated au [Summary and conclusions: "disk with a radius of $\sim$50 au"]
+- result: Deprojected redshift of CO absorption relative to the mRRL centroid = ~6.2 ± not stated km/s [CO lines: "The redshift of the CO absorption feature by $\sim$6.2 km s$^{-1}$ (deprojected velocity adopting $i$=17$^\circ$)"]
+- result: Central mass from infall at 27-38 au = ~0.7 ± lower limit Msun [Disk kinematics: "would imply a central mass of $\sim$0.7 $M_{\odot}$"]
+- result: Central mass if infall starts from ~50 au = ~2.0 ± upper limit Msun [Disk kinematics: "then the central mass would be $\sim$2.0 $M_{\odot}$"]
+- limitation (authors): Model is probably not unique; more complex geometries and profiles cannot be dismissed [Model caveats and final modeling remarks: "is probably not unique and that more intricate geometries, kinematics, and density and temperature profiles (e.g. latitude-dependent) cannot be dismissed as possibilities."]
+- limitation (authors): Model fails to reproduce the H30alpha profile asymmetry [Model caveats and final modeling remarks: "One shortcoming of our model is its failure to predict the asymmetry in the"]
+- not stated (card): GILDAS MAPPING parameters: cell size, image size, clean mask, number of iterations or threshold, uv-range and what robust threshold 0.5 means numerically; Self-calibration details: solution intervals, number of iterations, amplitude versus phase, and the initial model used; Line-free channel ranges per SPW and the order or degree of continuum subtraction; Which execution blocks, MOUS and SPWs bel…
+
+### 2024ApJ...977..161V: Kinematic Analysis of z = 4.3 Galaxies in the SPT2349─56 Protocluster Core (2024; high_z_galaxies; observational_alma_primary)
+- question: How do galaxies in the SPT2349-56 protocluster core move: are they rotating discs, and what are their rotation velocities, velocity dispersions, disc stability and dynamical support in a protocluster environment?
+- step 4: Derive initial guesses for the 3D fit
+  - method: Take x0, y0, Vrot, Vsys from SEARCH (flux-weighted moment-0 centre, adjusted with moment-1 and p-v maps where not at the kinematic centre); phi from moment-1; i from the (b/a) axis ratio measured with fitcomponents; sigma_disp set arbitrar… [3.2 Kinematic fitting: "We provide initial guesses for $x_0$, $y_0$, $V_{\mathrm{rot}}$ and $V_{\mathrm{sys}}$ using the results from the `SEARCH` task."] [3.2 Kinematic fitting: "Lastly, $\sigma_{\mathrm{disp}}$ is arbitrarily set at values between 30–150 km s$^{-1}$."]
+  - software: CASA imageanalysis fitcomponents, 3DBAROLO SEARCH
+  - parameter: cos^2 i = ((b/a)^2 - q^2)/(1 - q^2) with q = 0.2; cos i = b/a for edge-on C1, C4, C5 [3.2 Kinematic fitting: "$i$ is then estimated using $\cos^2 i = ((b/a)^2 - q^2) / (1-q^2)$, where $q = 0.2$ for a mildly thick disc."] [3.2 Kinematic fitting: "for galaxies that appear edge-on (C1, C4, and C5), we use $\cos i = (b/a)$"]
+  - assumption: Intrinsic axis ratio q = 0.2 (mildly thick disc) [3.2 Kinematic fitting: "where $q = 0.2$ for a mildly thick disc."]
+  - validation: Inclination checked against a contour enclosing 20% of the peak moment-0 intensity [3.2 Kinematic fitting: "The estimated $i$ is also verified against a fraction-of-peak contour that encloses 20% of the peak moment-0 intensity"]
+- step 7: Classify rotators versus mergers with dynamical criteria
+  - method: Test five literature criteria: smooth velocity gradient, V/sigma > 3, coincident centres (< 0.22''), kinematic and morphological axes within 30 deg, centrally peaked dispersion; plus p-v symmetry and double-peaked spectra [5.1.1 Rotators vs. Mergers: "Therefore, for condition 3, if the distance between the kinematic and morphological center (determined using simple geometry) is less than $\theta_x = 0.22\ensuremath{''}$, then we assume that the centers are spatially coincident."] [5.1.1 Rotators vs. Mergers: "Has morphological and kinematic major axes separated by less than $30\ensuremath{^\circ}$."]
+  - parameter: V/sigma > 3 for rotation support [5.1.1 Rotators vs. Mergers: "Is rotation-supported and has $V/\sigma > 3$."]
+  - validation: All sources except C7 meet the criteria; C7 is discarded as a probable major merger [5.1.1 Rotators vs. Mergers: "The exception is source C7, which appears to be a major merger"]
+- step 9: Classify morpho-kinematics with PVsplit
+  - method: Compute P_major, P_V, P_R from the p-v maps (Eqns. 6, 7, 8 of Rizzo et al. 2022) and classify with the dividing plane -0.63 P_major - 0.27 P_V + 2.78 P_R - 2.72 = 0 [5.3 PVsplit: "Applying Eqns. 6, 7 and 8 in (cite: Rizzo_2022) to our $p-v$ maps"] [5.3 PVsplit: "$-0.63P_{\mathrm{major}} - 0.27P_{\mathrm{V}} + 2.78P_{\mathrm{R}} - 2.72 = 0$ (cite: Roman_Oliviera_2023)"]
+  - software: PVsplit
+  - validation: Applied although the sample does not meet the SNR criterion of the method; compared with Figure 17 of Rizzo et al. 2022 [5.3 PVsplit: "Targets in our sample do not meet the criteria for SNR, but we nevertheless apply the method"]
+- limitation (authors): Thin-disc assumption may overestimate inclination (thick-disc comparison suggests about 7 deg lower) [5 Discussion: "there may be a possibility that we are overestimating the inclination angles"]
+- limitation (authors): Rotating discs cannot be cleanly distinguished from compact mergers at this resolution [5.1.1 Rotators vs. Mergers: "At the spatial resolution of our study, it remains difficult to distinguish between rotating discs and compact mergers."]
+- limitation (authors): MCMC errors are not statistical errors [4.3 Velocity profiles: "We note here that the errors are not statistical errors, but a measure of how the well-behaved the parameter space is around the best-fit value"]
+- not stated (card): CASA version and whether the calibration was manual or the archive pipeline; flux calibrator and flux-scale uncertainty (only phase and band-pass calibrators are named); Which execution blocks and array configurations (12-m vs 7-m) were concatenated and any self-calibration; tclean parameters beyond weighting: cell size, image size, deconvolver, masking, niter, mosaic gridder, primary-beam correc…
+
+### 2017ApJ...850L...5T: The Second Galactic Center Black Hole? A Possible Detection of Ionized Gas Orbiting around an IMBH Embedded in the Galactic Center IRS13E Complex (2017; milky_way_ism, star_formation; observational_alma_primary)
+- question: Does the IRS13E complex near Sgr A* contain an intermediate mass black hole, tested by searching for compact, wide-velocity-width ionized gas in H30alpha with ALMA
+- step 2: Make H30alpha cube and moment/PV maps
+  - method: Continuum subtraction, tclean with auto-multithresh, channel maps (50 km/s), integrated intensity and PV diagram [Results: "The velocity width of the channel maps is $\Delta v=50$ km s$^{-1}$."]
+  - software: CASA
+  - parameter: robust 0.5; integration -400 to +400 km/s [Results: "integrated velocity range from -400 km s$^{-1}$ to +400 km s$^{-1}$ in $V_{\mathrm {LSR}}$"]
+  - validation: Positional agreement of continuum and H30a checked using IRS16NE [Compactness of the Ionized Gas toward I…: "according to the comparison between the 340 GHz continuum and H30$\alpha$ moment 0 positions of IRS16NE"]
+- step 3: Estimate enclosed mass from Keplerian eccentric orbit
+  - method: Compare PV shape with calculated Keplerian orbits to get a and e; mass from M ~ a dV^2 (...)^-2 / G [The Enclosed Mass of IRS13E3: "The observed velocity width is $\Delta V\sim 600$ km s$^{-1}$, and the enclosed mass of the object is estimated to be $M\sim4-7\times10^{4}$ M$_\odot$"]
+  - parameter: a~1.4e17 cm, e=0.96-0.98, dV~600 km/s [The Enclosed Mass of IRS13E3: "for $e=0.96-0.98$ and $a\sim1.4\times10^{17}$ cm"]
+  - assumption: inclination i~0 deg (edge-on orbit); apoastron PA~60 deg to line of sight [Keplerian Orbit with High Eccentricity …: "The inclination angle of the orbit would be $i\sim0^\circ$"]
+  - validation: Consistency with VLBA upper limit on second black hole mass [The Enclosed Mass of IRS13E3: "there is no conflict between our derived enclosed mass and the upper limit mass of the second black hole"]
+- result: H30a velocity width at IRS13E3 = ~650 ± not stated km/s (FWZI) [Results: "reaches to $\Delta v_{\mathrm{FWZI}} \sim 650$ km s$^{-1}$"]
+- result: Enclosed mass = 4-7e4 ± not stated Msun [The Enclosed Mass of IRS13E3: "$M\sim4-7\times10^{4}$ M$_\odot$, comparable to the mass of an IMBH, for $e=0.96-0.98$"]
+- result: Orbital eccentricity = ~0.97 ± not stated dimensionless [Keplerian Orbit with High Eccentricity …: "the eccentricity of the orbit is estimated to be $e\sim0.97$"]
+- result: Semi-major axis = 1.4e17 cm (1e4 AU) ± not stated cm [Keplerian Orbit with High Eccentricity …: "the semi-major axis of the orbit is estimated to be $a\sim1.4\times10^{17}$ cm $=1\times10^4$ AU"]
+- limitation (authors): Orbital parameters cannot be uniquely determined from the PV diagram [Keplerian Orbit with High Eccentricity …: "it is difficult to determine exclusively the accurate orbital parameters by fitting in the position velocity diagram"]
+- not stated (card): Image size, cell size and channel width/line-free channels for H30a cube and continuum fit; Self-calibration solution intervals and reference datasets; Number of tclean iterations and thresholds; Flux scale uncertainty; Pipeline vs manual calibration and CASA version for calibration; Orbit model details: how e=0.97 was chosen from PV comparison, and the 650 vs 600 km/s velocity width definition; …
+
+### 2018A&A...614A..42M: ALMA observations of AGN fuelling. The case of PKS B1718-649 (2018; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Is cold molecular gas falling onto the SMBH of the young radio AGN PKS B1718-649, and does it fuel the radio source (e.g. via chaotic cold accretion)?
+- step 2: Moment maps, flux and kinematics of CO emission
+  - method: Total intensity and velocity maps, PV diagram along disk major axis; systemic velocity from mean of velocity range [Results: "We measure the systemic velocity of the $^{12}$CO (2–1) as the mean point of this range of velocities, $4250\pm20$$\,$km s$^{-1}$."]
+  - validation: Compared with HI systemic velocity [Results: "This velocity is comparable to the systemic velocity measured from the kinematics of the H I gas"]
+- step 5: Infall time-scale and accretion rate
+  - method: Distance limit from co-spatial red-shifted H2 (75 pc) and infall velocity, with absorber mass range [Discussion: "the time-scale of accretion is $t_\mathrm{accretion}\sim5\times10^5$ years."]
+  - assumption: all absorbing gas at 75 pc [Discussion: "assuming that all the absorbing $^{12}$CO (2–1) gas is at the maximum distance of in-fall, $d_\mathrm{infall}\sim 75$ pc"]
+  - validation: Compared with expected accretion rate ~1e-2 Msun/yr [Discussion: "is compatible with the expected accretion rate of PKS B1718–649"]
+- result: Total CO(2-1) flux = 174 ± 17.4 Jy km/s [Results: "$S_{\rm CO} \Delta v = 174\pm17.4$ Jy km s$^{-1}$"]
+- result: Circumnuclear disk CO flux = 29.5 ± 2.95 Jy km/s [Results: "$S_{\rm CO} \Delta v =29.5\pm 2.95$ Jy km s$^{-1}$"]
+- result: CO systemic velocity = 4250 ± 20 km/s [Results: "$4250\pm20$$\,$km s$^{-1}$"]
+- result: Accretion rate = 1.6e-3 to 2.2 ± not stated Msun/yr [Discussion: "$1.6\times10^{-3}$ ${\rm M}_\odot$ yr$^{-1}$ $\lesssim\dot{M}_{\rm H_2}\lesssim2.2$ ${\rm M}_\odot$ yr$^{-1}$"]
+- limitation (authors): Only CO(2-1) available; cannot constrain temperature, pressure, heating [Conclusions: "do not allow us to constrain the physical conditions of the circumnuclear disk, such as temperature, pressure and heating mechanism of the gas"]
+- not stated (card): Briggs robust values explored and the continuum-free channels for subtraction; MIRIAD self-calibration parameters and CASA version; Clean masks, thresholds and cell/image size; How moment maps and PV cuts were made (clipping); Cosmology-based D_L value used and exact absorption spectrum extraction aperture; Inconsistencies: L'CO 7.4e7 vs 7.3e7, FWHM 57.4 vs 54, Delta v 365 vs 345 km/s
+
+### 2018ApJ...863..193V: Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248 (2018; galaxy_clusters_and_sz, nearby_galaxies, star_formation; observational_alma_primary)
+- question: What are the mass, morphology, kinematics, origin and star formation of the molecular gas in the RXCJ1504 BCG, and how does it relate to an X-ray cavity?
+- step 5: Map flux, velocity, FWHM and extract position-velocity curve
+  - method: Per-pixel Gaussian fitting; PV from CO(3-2) along filament path in 0.6 arcsec intervals with 0.75 arcsec width [4.2 Motion Along the Filament: "Spectra were extracted in $0.6''$ ($2.1\rm\; kpc$) intervals along this path, each with a width of $0.75''$ ($2.6\rm\; kpc$)."]
+  - software: PVExtractor, LMFIT
+- step 6: Test free-fall of the filament
+  - method: Fit PV curve with Hernquist-potential free-fall model v_obs = v sin i + v_ICM; v_ICM and i free, r0 fixed at 17.5 kpc [4.2 Motion Along the Filament: "$v_{\rm ICM}$ and $i$ are allowed to vary, while $r_0$ is fixed to the maximum radial extent of the filament ($17.5\rm\; kpc$)."]
+  - parameter: Hernquist a = 5.2 kpc; stellar mass 5e11 Msun [4.2 Motion Along the Filament: "$a=5.2\rm\; kpc$ is a scale factor determined from the galaxy’s half-light radius"]
+  - assumption: Cloud starts at rest with respect to ICM; Hernquist potential [4.2 Motion Along the Filament: "For a hydrostatic atmosphere a condensing cloud should initially be at rest with respect to the ICM, so we take $v(r_0)=0$."]
+  - fitting: Fit of velocity profile; sampler/priors not stated [4.2 Motion Along the Filament: "The velocity profile of the filament is fitted with this expression. $v_{\rm ICM}$ and $i$ are allowed to vary, while $r_0$ is fixed to the maximum radial extent of the filament ($17.5\rm\; kpc$)."]
+  - validation: Singular isothermal sphere gives indistinguishable fit [4.2 Motion Along the Filament: "The best-fitting velocity profile for this potential is indistinguishable from the Hernquist profile"]
+- result: Filament velocity gradient = 16 ± not stated km/s/kpc [4.2 Motion Along the Filament: "the velocity gradient is $16\hbox{$\rm\; km\rm\; s^{-1}\,$}\rm\; kpc^{-1}$"]
+- result: Filament mass flow rate = 75 ± not stated Msun/yr [4.2 Motion Along the Filament: "we estimate a mass flow rate of $75\hbox{$\hbox{$\rm\thinspace M_{\odot}$}\rm\; yr^{-1}\,$}$."]
+- result: Free-fall inclination to plane of sky (r0=17.5 kpc) = -22 ± not stated deg [4.2 Motion Along the Filament: "requires an inclination angle of $-22^{\circ}$ with a bulk offset of $v_{\rm ICM}=140\hbox{$\rm\; km\rm\; s^{-1}\,$}$"]
+- limitation (authors): The cavity is poorly defined and may not be real [4.1 Gas Origin: "The feature identified as a potential cavity is poorly defined, so it is not clear if it is a real cavity."]
+- limitation (authors): HST images manually aligned, so small-scale offsets between gas and UV may be missed [3.5 Spatial Correlation with UV Emission: "Spatial offsets between the molecular gas and young stars could be present, but would be missed due to this manual alignment."]
+- not stated (card): Line-free channels and continuum-subtraction order for uvcontsub; Clean masks, threshold, niter, cell and image size; Self-calibration solution intervals; Exact HST data sets and pipeline products, and manual shifts beyond those quoted; Regions (polygon and extraction boxes) definitions for spectra and SFR; Flux calibrator and flux scale uncertainty; Extraction details of the Chandra surface brig…
+
+### 2026A&A...706A..27S: Probing jet base emission of M87* with the 2021 Event Horizon Telescope observations (2026; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Investigate the presence and spatial characteristics of the jet base emission in M87* at 230 GHz on intermediate spatial scales (~250 to 2500 microarcseconds) using the 2021 Event Horizon Telescope observations.
+- step 1: Identify closure phase residuals on intermediate-baseline triangles
+  - method: Compare observed closure phases on the ALMA-PV-NOEMA and ALMA-SMT-KP triangles (April 18, 2021, non-self-calibrated data) against predictions from compact ring-only images reconstructed by Difmap, DoG-HIT, and Comrade. [3.1. Bump and offset in closure phases: "To overcome this problem, we analyze data that were not self-calibrated, and use closure phases that are insensitive to station-based gain errors (e.g., Blackburn et al. 2020) to probe the jet base emission at scales accessible with SMT-KP and PV-NOEMA."] [3.1. Bump and offset in closure phases: "We thus focused on the ALMA-SMT-KP and ALMA-PV-NOEMA triangles in this analysis."]
+  - software: Difmap, DoG-HIT, Comrade
+  - parameter: Triangles: ALMA-PV-NOEMA and ALMA-SMT-KP; Date: April 18, 2021 [2. EHT observations of M87* in 2021: "The ALMA-PV-NOEMA (middle) and ALMA-SMT-KP (bottom) closure phases on M87* observed on April 18, 2021 (figure is adapted from EHTC et al. (2025)) are shown together with ring-image models obtained with different imaging algorithms (see text for details)."]
+  - assumption: Small-scale ring emission is fixed by long-baseline reconstructions and intermediate-scale jet base emission is derived from residuals between observed closure phases and the ring-only image. [3.1. Bump and offset in closure phases: "Since the small-scale information of the long ALMA baselines in those triangles cannot be disentangled from the intermediate-scale information, the jet base information has to be derived from the difference between the data and the ring-only image."]
+  - validation: Cross-validation across seven imaging teams and synthetic data tests with an extended jet component in EHTC et al. (2025). [2. EHT observations of M87* in 2021: "In EHTC et al. (2025), the data were analyzed by seven teams using different imaging algorithms. The robustness of the reconstruction was demonstrated via cross-validation."] [4.2. Symmetric Gaussian component: "Finally, synthetic data tests were performed in EHTC et al. (2025). These tests also include the validation of a ring image with an extended jet component."]
+- step 2: Grid search and parameter exploration of an offset Gaussian component
+  - method: Add a symmetric Gaussian component onto the DoG-HIT compact ring image and evaluate closure phase fits and reduced chi-square across a grid of positions, flux densities, and FWHM sizes. [4.1. Impact of the model parameters: "We base our analysis on a DoG-HIT reconstruction: since the algorithm separates small and large scale emission naturally, it is optimized to fit to the closure phases and closure amplitudes in the 2021 data."] [4.1. Impact of the model parameters: "Figure 3 shows the ring image obtained by DoG-HIT with an additional Gaussian added on top, varying some of the parameters described in Section 3.2."]
+  - software: DoG-HIT
+  - parameter: Fixed flux density 60 mJy and size 180 microarcseconds for spatial chi-square map over [-400, 400] microarcseconds in relative RA and Dec [4.1. Impact of the model parameters: "In the left panel we show an example of reduced χ2 (χ2ν) of the ALMA-PV-NOEMA triangle as a function of the location of the Gaussian component with a fixed flux density of 60 mJy and a size of 180 µas."]
+  - assumption: Source consists of the compact DoG-HIT ring plus a single faint symmetric Gaussian component. [3.2. Model: "Based on these simple considerations, we propose the following source model: the compact ring emission as seen on long baselines, with an additional, faint, Gaussian component located at scales 100 − 2000 µas from the center of the ring emission."]
+  - fitting: Reduced chi-square (chi^2_nu) evaluation on ALMA-PV-NOEMA, ALMA-SMT-KP, and combined triangles. [Fig. 4 caption: "The left and middle panels show the χ2ν for the ALMA-PV-NOEMA and the ALMA-SMT-KP triangles, respectively, and the right panel shows the combined χ2ν."]
+- limitation (authors): With only two intermediate baselines (PV-NOEMA and SMT-KP), the (u, v) coverage is too sparse to robustly reconstruct the morphology of the jet base emission, and the model remains weakly constrained with posterior degeneracies. [abstract: "While our findings point to detectable jet base emission at 230 GHz, the limited coverage provided by only two intermediate baselines limits our ability to robustly reconstruct its morphology."]
+- limitation (authors): Other unknown sources of non-closing systematic errors corrupting the single-baseline/small-triangle measurements cannot be completely ruled out. [5.2.4. Data corruptions and systematic …: "Nevertheless, we cannot rule out the possibility that other unknown sources of systematic error may corrupt the data."]
+- limitation (authors): The detected component (~300 microarcseconds from the core) is too far out to draw conclusions about jet launching physics within the first ten Schwarzschild radii. [6. Discussion: "While this is an anticipated observable for the EHT and its successors to connect the jet dynamics to the black hole and study jet launching mechanisms (EHTC 2024), we note that the jet base component found in this study is too far out to make reliable conclusions about the physics of the jet within the first ten Schw…"]
+- not stated (card): Exact time averaging interval for the visibility data and closure phases used in the MCMC and chi-square fitting; Number of walkers, chain length, and burn-in steps for the emcee MCMC runs; Whether the MCMC likelihood was evaluated on all closure triangles simultaneously or restricted to the ALMA-PV-NOEMA and ALMA-SMT-KP triangles; Exact wavelet scales and threshold parameters used in the DoG-HIT…
+
+### 2020ApJ...902...99I: ALMA 0"02 Resolution Observations Reveal HCN-abundance-enhanced Counter-rotating and Outflowing Dense Molecular Gas at the NGC 1068 Nucleus (2020; agn_and_quasars, nearby_galaxies, astrochemistry; observational_alma_primary)
+- question: Morphological, dynamical, chemical and physical properties of dense molecular gas in the putative dusty molecular torus of the type-2 AGN NGC 1068, probed at ~0.02'' with HCN/HCO+/HNC J=3-2, 13C isotopologue and vibrationally excited lines
+- step 8: Analyse torus rotation along the torus axis and compare with Keplerian and maser curves
+  - method: Beam-sized spectra at various distances from the SMBH along PA = 115 deg fitted with Gaussians for peak velocity and width (Figure 14); position-velocity diagrams (Figure 13); compare with Keplerian and H2O maser curves [4.3 Redshifted dense molecular emission…: "Figure 13 shows position velocity diagrams of HCN J=3–2 and HCO$^{+}$ J=3–2 lines along the position angle of PA = 115$^{\circ}$ east of north."] [4.4 Dynamical properties of the torus: "based on the Gaussian fit of beam-sized spectra extracted at various distances from the central SMBH along PA = 115$^{\circ}$"]
+  - parameter: Keplerian curve V ∝ r^-0.5 for a point mass of 1e7 Msun, and sub-Keplerian V ∝ r^-0.31 from H2O masers [4.3 Redshifted dense molecular emission…: "overplotted with (1) Keplerian rotation (V $\propto$ r$^{-0.5}$) dominated by a point source with mass of 1 $\times$ 10$^{7}$M$_{\odot}$"]
+  - assumption: Torus inclination i ~ 90 deg (edge-on); even i = 34–66 deg raises intrinsic velocity by only 1.1–1.8 [4.4 Dynamical properties of the torus: "it is very likely that the torus inclination is *i* $\sim$ 90$^{\circ}$ (edge-on)"]
+  - fitting: Gaussian fits to beam-sized spectra [4.4 Dynamical properties of the torus: "based on the Gaussian fit of beam-sized spectra extracted at various distances from the central SMBH along PA = 115$^{\circ}$"]
+  - validation: Innermost HCN and HCO+ dynamics roughly agree with VLBI H2O maser dynamics at <0.7 pc [4.3 Redshifted dense molecular emission…: "Our ALMA data demonstrate that HCN J=3–2 and HCO$^{+}$ J=3–2 emission line dynamics roughly agrees with the VLBI-detected H$_{2}$O maser dynamics at $<$0.7 pc."]
+- limitation (authors): Emission larger than the maximum recoverable scale may be resolved out [2 Observations and Data Analyses: "Emission with a spatial extent larger than these MRSs may be resolved out and may not be recovered in our ALMA data."]
+- limitation (authors): Extended host-galaxy emission is not recovered in the Cycle 6 data, so only compact torus emission is discussed [3 Results: "We will thus discuss only compact torus emission."]
+- limitation (authors): Continuum peak flux uncertainties exclude absolute flux calibration and continuum frequency-range choice [Table 2: "Possible systematic uncertainties coming from absolute flux calibration ambiguity in individual ALMA observations and choice of frequency range to determine the continuum level are not taken into account."]
+- not stated (card): CASA version used for uvcontsub, clean and imsmooth, and whether the ALMA-delivered calibration was re-run or used as delivered; Frequency or channel ranges treated as line free for the constant continuum fit in each spectral window (only 'obvious emission and absorption lines excluded'); clean settings other than robust and gain: deconvolver, niter, threshold, masks, image size, uv taper, primar…
+
+### 2026A&A...710A.140M: Observations of highly inclined disks with ALMA: Results from <SUP>12</SUP>CO gas and continuum observations (2026; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Study the radial and vertical extents of 12CO gas, millimeter dust continuum, and optical/NIR scattered light in 14 highly inclined protoplanetary disks to constrain radial drift and vertical settling, and estimate dynamical stellar masses.
+- step 5: Estimate dynamical stellar masses and systemic velocities from PV diagrams
+  - method: Construct position-velocity (PV) diagrams and superimpose 3 Keplerian velocity curves (fitting outermost maximum intensity for lower limit, signal-to-noise transition for preferred mass, and off-signal for upper limit) while visually align… [3.5. Dynamical masses: "With a coarse exploration, we thus choose to add 3 Keplerian velocity curves: a first one which fits the outermost maximum intensity of the PV diagram, a second one which follows the transition between the signal and the noise and a last one clearly off the signal."] [3.5. Dynamical masses: "These 3 Keplerian curves allow to constrain a lower limit, a preferred mass as well as an upper limit, respectively."]
+  - assumption: Keplerian rotation; distances of 130 pc (Taurus), 140 pc (Ophiuchus, Upper-Scorpius), 160 pc (Lupus), 190 pc (Chamaeleon) from Zucker et al. (2020); inclinations from literature or midpoint between continuum axis-ratio lower limit and 90 d… [3.5. Dynamical masses: "To draw these curves, we considered inclinations from the literature when available or used the results from column 3 of Table 2 for systems with no previous values. For the latter, when a lower limit is estimated, we considered the midpoint between this lower limit and 90°"] [3.5. Dynamical masses: "we considered distance of 130 pc for Taurus, 140 pc for Ophiuchus, 140 pc for Upper-Scorpius, 160 pc for Lupus and 190 pc for Chamaeleon (Zucker et al. 2020)."]
+  - fitting: Visual coarse exploration of 3 Keplerian velocity curves on PV diagrams [3.5. Dynamical masses: "With a coarse exploration, we thus choose to add 3 Keplerian velocity curves: a first one which fits the outermost maximum intensity of the PV diagram, a second one which follows the transition between the signal and the noise and a last one clearly off the signal."]
+  - validation: Comparison of derived dynamical masses with literature values and stellar spectral types. [5.2.2. Stellar properties: "By comparing our dynamical masses values with the ones in the literature, when available, we found our values systematically higher than those of the literature by 30–50%, although our values are consistent within uncertainties, at the exception of Haro 6-5B (see Table 6)."]
+- result: Dynamical stellar mass (Flying Saucer) = 0.9 ± 0.6..1.5 M_sun [Table 6: "Flying Saucer 3.2 0.9 (0.6..1.5) 0.60 [a]"]
+- result: Dynamical stellar mass (PDS 144 N) = 2.1 ± 1.4..2.8 M_sun [Table 6: "PDS 144 N 4.9 2.1 (1.4..2.8)"]
+- result: Dynamical stellar mass (Oph 162305) = 1.2 ± 0.7..1.7 M_sun [Table 6: "Oph 162305 2.5 1.2 (0.7..1.7)"]
+- result: Dynamical stellar mass (Lup 160703) = 0.4 ± 0.2..0.6 M_sun [Table 6: "Lup 160703 3.1 0.4 (0.2..0.6)"]
+- result: Dynamical stellar mass (Lup 160708) = 1.0 ± 0.5..1.3 M_sun [Table 6: "Lup 160708 2.7 1.0 (0.5..1.3)"]
+- result: Dynamical stellar mass (HK Tau B) = 1.2 ± 0.9..1.5 M_sun [Table 6: "HK Tau B 6.9 1.2 (0.9..1.5) 0.89 ± 0.04 [b]"]
+- result: Dynamical stellar mass (HV Tau C) = 1.9 ± 1.2..2.3 M_sun [Table 6: "HV Tau C 6.4 1.9 (1.2..2.3) 1.33 ± 0.04 [b]"]
+- result: Dynamical stellar mass (Haro 6-5B) = 1.6 ± 1.0..2.5 M_sun [Table 6: "Haro 6-5B 7.5 1.6 (1.0..2.5) 0.25 [c]"]
+- result: Dynamical stellar mass (Tau 042307) = 0.7 ± 0.5..1.0 M_sun [Table 6: "Tau 042307 6.3 0.7 (0.5..1.0) 0.52 ± 0.04 [b]"]
+- result: Dynamical stellar mass (Tau 042021) = 0.5 ± 0.3..0.6 M_sun [Table 6: "Tau 042021 7.4 0.5 (0.3..0.6) 0.25 - 0.4 [d]"]
+- result: Dynamical stellar mass (ESO Ha 569) = 0.7 ± 0.4..0.9 M_sun [Table 6: "ESO Hα 569 4.7 0.7 (0.4..0.9)"]
+- result: Dynamical stellar mass (ESO Ha 574) = 1.2 ± 0.7..1.5 M_sun [Table 6: "ESO Hα 574 4.3 1.2 (0.7..1.5)"]
+- result: Dynamical stellar mass (HH 48 NE) = 1.5 ± 1.0..2.5 M_sun [Table 6: "HH 48 NE 4.75 1.5 (1.0..2.5) 1 - 1.4 [e]"]
+- result: Dynamical stellar mass (Oph 163131) = 1.6 ± 1.1..2.2 M_sun [Table 6: "Oph 163131 4.5 1.6 (1.1..2.2) 1.2 ± 0.2 [f]"]
+- result: Dynamical stellar mass (PDS 144 S) = 2.0 ± 1.3..2.6 M_sun [Table B.5: "PDS 144 S 3.5 2.0 (1.3..2.6)"]
+- result: Dynamical stellar mass (HK Tau A) = 0.6 ± 0.3..1.0 M_sun [Table B.5: "HK Tau A 6.0 0.6 (0.3..1.0) 0.53 ± 0.03 [a]"]
+- result: Dynamical stellar mass (HH 48 SW) = 0.9 ± 0.5..2.0 M_sun [Table B.5: "HH 48 SW 4.8 0.9 (0.5..2.0)"]
+- limitation (authors): Sample suffers from a selection bias toward larger disks because edge-on disks were identified from resolved HST images. [5.1.1. Radial extents: "This is a consequence of a known selection bias as only the larger edge-on disks are well-resolved in the HST images used to identify them in the first place (Angelo et al. 2023)."]
+- limitation (authors): PV diagram dynamical mass estimation is ill-defined due to modest SNR per spaxel, cloud contamination, and substructures/asymmetries, and scales linearly with assumed star-forming region distance. [3.5. Dynamical masses: "The estimation of stellar masses from PV diagrams is generally ill defined due to the modest SNR per spaxel, cloud contamination, and the presence of possible substructures and asymmetries, which precludes a robust statistical approach."]
+- limitation (authors): The 1/cos(i) flux correction assumes an infinitely thin emitting layer, which is imperfect near 90 deg inclination or for vertically extended CO emission, and small inclination uncertainties cause large errors in the correction factor. [5.1.1. Radial extents: "We note that this correction assumes an infinitely thin emitting layer, which may not be perfect for the CO emission or for the continuum emission when the inclination approaches 90 [◦] . Furthermore, small inclination uncertainties result in large errors on the correction factor."]
+- not stated (card): Solution intervals, SNR thresholds, and exact number of rounds per source for phase-only self-calibration; Imaging parameters for the new continuum images in 2022.1.00742.S (deconvolver, robust parameter if different from line, stopping threshold); Exact uvtaper values applied to Tau 042021, HK Tau B, HV Tau C, Haro 6-5B, and Tau 042307; tclean stopping criteria (threshold, niter) and masking str…
+
+### 2015ApJ...811...92C: Accretion Kinematics through the Warped Transition Disk in HD142527 from Resolved CO(6-5) Observations (2015; protoplanetary_disks; observational_alma_primary)
+- question: What physical structure underlies the non-Keplerian intra-cavity gas kinematics in HD 142527, as seen in new CO(6-5) data?
+- step 3: Parametric warped accretion model with radiative transfer
+  - method: RADMC-3D line predictions for a warped disk with radial infall and steady-state surface density, smoothed to MEM resolution and compared with data [3.1 Parametric modeling: "Emergent specific intensity fields were predicted by transferring the stellar radiation through the model circumstellar material with the radmc3d"]
+  - software: RADMC-3D
+  - parameter: Stellar mass 1.8 Msun; outer disk i=20 deg, PA=-20 deg; inner disk relative inclination 70 deg, PA=-8 deg; warp between 20 and 23 AU; free-fall at 30 AU [3.1 Parametric modeling: "The stellar mass is set at $1.8~M_\odot$; higher masses produce higher velocities inside the cavity than observed."]
+  - assumption: X_CO = 1e-4; HCO+ abundance 1e-9; T=70 K inside 30 AU, r^-0.5 beyond [3.2.1 Adopted abundance fields and dept…: "We adopted a nominal H$_2$/$^{12}$CO ratio $X_{\mathrm{CO}}=10^{-4}$"]
+  - validation: Qualitative match to CO(6-5) centroid, CO isotopologue non-detections in cavity, and CRIRES spectro-astrometry [3.2.1 Adopted abundance fields and dept…: "The model is in agreement with the non-detection of $^{13}$CO and C$^{18}$O inside the gap."]
+- limitation (authors): Model is parametric, not dynamically consistent, no systematic parameter search [3.1 Parametric modeling: "It is not a dynamically consistent model."]
+- limitation (authors): MEM resolution varies with image [2.1 Choice of image-plane representatio…: "the resolution of the MEM images is variable and depends on the image."]
+- not stated (card): Calibrator and pipeline/CASA version, flux scale uncertainty; Self-calibration solution intervals; Line-free channels for continuum fit; Channel width and velocity resolution; uvmem code and regularization settings; Dust model, disk mass and dust SED parameters for the RADMC-3D model; Photodissociation/abundance taper details beyond Gaussian width
+
+### 2015A&A...574A...5D: ALMA data suggest the presence of spiral structure in the inner wind of CW Leonis (2015; evolved_stars; observational_alma_primary)
+- question: What is the morpho-kinematical structure of the inner wind of the carbon star CW Leo, and does it show a binary-induced spiral?
+- step 4: PV diagrams
+  - method: impv with 201 slits, 1 pixel wide, 101 pixels long, at various PA [5.2 Position-velocity diagrams and morp…: "In the standard set-up, 201 slits with a width of 1 pixel ( = 0.060$^{\prime\prime}$) and a length of 101 pixels ( = 6.06$^{\prime\prime}$) were taken."]
+  - software: CASA
+- step 5: Model spiral in 13CO PV
+  - method: Shape/Shapemol Archimedean spiral models passed through simobserve and compared with observed PV [7.2.2 PV-diagram for binary-induced spi…: "As setup for our basic spiral model, we chose as free parameters $i=80$$^\circ$ (cite: Jeffers2014), $a=1.45$$^{\prime\prime}$, $p=2$, $b=0$"]
+  - software: Shape, Shapemol, CASA simobserve
+  - parameter: best fit a=1.12", p=2, b=0, c=3e12 cm, w=30 deg, i=60-80 deg [8.1: "A good fit to correlated structures in the ALMA PV data is obtained for the spiral parameters $a=1.12\hbox{$^{\prime\prime}$}$, $p=2$, $b=0$, $c=3\times 10^{12}$ cm, and $w=30\hbox{$^\circ$}$, and $i=60-80$$^\circ$"]
+  - assumption: Distance 150 pc, Mdot 1.5e-5 Msun/yr, CO/H2 6e-4, 12CO/13CO 30, v=14.5 km/s, density divided by 100 [7.2: "a distance of 150 pc, a constant gas mass-loss rate of 1.5$\times$10$^{-5}$ M$_{\odot}$/yr, a fractional abundance \[CO/H$_2$\] of 6$\times$10$^{-4}$"]
+  - fitting: Manual parameter exploration; no statistical fit [7.2.2 PV-diagram for binary-induced spi…: "Each of the parameters is then changed one after the other to demonstrate its effect"]
+- result: Spiral arm spacing a = 1.12 ± ~10% arcsec [8.1: "The best constrained parameter is the spiral arm distance $a$, with an uncertainty of only $\sim$10%."]
+- limitation (authors): Short observation and sparse uv coverage hamper interpretation [8.1: "With an on-source integration time of only 17 minutes, an in-depth understanding of the $^{13}$CO J=6-5 channel maps"]
+- not stated (card): CASA version; clean threshold, niter, mask, and robust/uniform weighting parameter; line-free channel ranges for continuum; self-calibration solution intervals; Shape model files and full parameter set (orientation angles, PA); Exact simobserve settings; How the best-fit spiral was judged (visual comparison, no statistic)
+
+### 2024ApJ...977...37N: Turbulent Pressure Heats Gas and Suppresses Star Formation in Galactic Bar Molecular Clouds (2024; milky_way_ism, star_formation, astrochemistry; observational_alma_primary)
+- question: Are 20 warm, broad-line clouds with |l|<10 deg located in the Galactic bar, and how do temperature, turbulence, shocks, star formation and mass behave in them (including the CO-to-H2 X-factor)?
+- step 2: Make moment, ratio and PV maps
+  - method: Moment 0 integrated over the 13CO cloud velocity range with a 4 sigma_rms cutoff; moment 1, moment 2 and peak maps; line ratio maps vs 12CO and 13CO; PV diagrams [2.3 ALMA Maps: "we set a cutoff at 4$\sigma_\text{rms}$, then integrate over the velocity range of the cloud in ^13^CO $J=2\to 1$"] [2.3 ALMA Maps: "We also create position-velocity (PV) diagrams for each cube using the packages"]
+  - software: spectral-cube, pvextractor
+  - parameter: 4 sigma_rms pixel cutoff plus 5 sigma threshold on moment 0; sigma = sqrt(N) sigma_rms dv with N the full velocity-range channel count [2.3 ALMA Maps: "we again use a 4$\sigma_\text{rms}$ pixel cutoff, as well as a 5$\sigma$ threshold on the moment 0 map"] [2.3 ALMA Maps: "Here, $N$ is the number of channels integrated over for the moment 0 map, and $\Delta v = 0.332$ km s$^{-1}$ is the channel velocity width."]
+  - parameter: PV velocity range = cloud range plus 20 km/s each side [2.3 ALMA Maps: "with an extra 20 km s$^{-1}$ on each side"]
+  - assumption: 13CO used for moment range because it is observed for all clouds and less contaminated than 12CO [2.3 ALMA Maps: "which is observed for all clouds and is less contaminated with foreground and background emission than the more common isotopologue"]
+  - validation: Ratio errors use a propagated-error approximation acknowledged as inexact [2.3 ALMA Maps: "Although this equation does not hold under all circumstances, we use it as an approximation of the error for the integrated intensity ratios."]
+- step 6: Estimate star formation rates and SFR surface densities
+  - method: Ionizing photon rate Q from H30alpha flux in a 1 arcmin box with electron temperature from the Galactic gradient and electron density from the size-density relation; 24 micron SFR from Calzetti relation in a 2 arcmin box; Q-to-SFR conversi… [4.3 Star Formation: "We can calculate the ionizing photon production rate, $Q$, from measurements of H30$\alpha$, via"] [4.3 Star Formation: "We can also estimate the SFR in the clouds from 24 $\mu$m emission using the relationship from (cite: calzetti_calibration_2007)"]
+  - software: reproject, STARBURST99
+  - parameter: H30alpha cloud diameter = 4 times the sigma of a Gaussian fit to the PV diagram collapsed along velocity [4.3 Star Formation: "We take the angular diameter of the cloud to be 4 times the standard deviation of the fitted Gaussian, then calculate a physical size using the distance to the cloud."]
+  - parameter: Upper limit is 2 sigma, i.e. twice the Q computed from the noise [4.3 Star Formation: "we take a 2$\sigma$ upper limit of twice this $Q$ value."]
+  - assumption: Electron temperature from the Quireza gradient; electron density from Hunt et al. relation; Calzetti relation derived from extragalactic regions; 24 micron SFRs treated as lower limits because of masked pixels [4.3 Star Formation: "This relation is derived from extragalactic star-forming regions, so it may not be fully applicable to the clouds in our sample"] [4.3 Star Formation: "We thus treat the resultant SFR values as lower limits."]
+  - fitting: Monte Carlo with normal distributions of T_e and n_e for errors on alpha_B and emissivity [4.3 Star Formation: "We calculate errors on these values using a simple Monte Carlo simulation, assuming a normal distribution for $T_e$ and $n_e$."]
+  - validation: Stromgren-sphere radius compared with measured H30alpha radius (internal consistency check) [4.3 Star Formation: "this provides a check of internal consistency within the calculations."]
+- result: H30alpha cloud sizes = 0.3 to 5 ± not stated pc [4.3 Star Formation: "The resulting cloud sizes all lie within the range of 0.3 and 5 pc"]
+- result: Average r_H30alpha / r_Stromgren ratio = 2.2 ± not stated dimensionless [4.3 Star Formation: "with an average $r_{\text{H30}\alpha}/r_S$ ratio of 2.2"]
+- limitation (authors): NH3 and H2CO temperatures cannot be compared quantitatively because of a factor of four beam-size difference and peak offsets [4.1.3 Ammonia versus Formaldehyde Tempe…: "A direct, quantitative comparison between the ammonia and formaldehyde temperature measurements is difficult because of the factor of four difference in beam size between the HOPS and ALMA data"]
+- limitation (authors): 24 micron SFRs are lower limits because masked pixels around bright sources are interpolated [4.3 Star Formation: "We thus treat the resultant SFR values as lower limits."]
+- limitation (authors): Errors on SFR likely underestimated because of IMF stochasticity for small clusters [4.3 Star Formation: "are likely underestimates, as there is additional uncertainty from the stochastic distribution around the initial mass function (IMF) for small clusters."]
+- not stated (card): Which ACA TP calibration products/scheduling blocks and pipeline versions per project were used, and whether the archive pipeline products or a re-run were used; How the TP data were gridded and imaged by the pipeline (cell, convolution function, baseline fitting) before the authors' smoothing and regridding; The line-free channel ranges and any continuum-subtraction fit order for each cloud; Per…
+
+### 2015A&A...580A...1M: The fast molecular outflow in the Seyfert galaxy IC 5063 as seen by ALMA (2015; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Where and how does the cold molecular gas outflow in IC 5063 relate to the radio jet, and how massive is it?
+- step 2: Build position-velocity diagram and compare with rotation curve
+  - method: pv diagram along the major axis integrated over 2 arcsec perpendicular; overplot rotation curve from de Vaucouleurs HST light profile, light traces mass, spherical, amplitude matched to outer regions [4.1 A complex, extended outflow of mole…: "we have integrated the data over a length of 2$''$ in the direction perpendicular to the major axis."]
+  - parameter: effective radius 21.5 arcsec (4.3 kpc) [4.3 The regularly rotating CO disk: "The horizontal scale of the rotation curve is set by the observed effective radius (21$''$5 corresponding to 4.3 kpc)"]
+  - assumption: light traces mass; spherical mass distribution [4.3 The regularly rotating CO disk: "we have assumed that the light traces the mass distribution and that the mass distribution is spherical."]
+- step 5: Geometric kinematic model of jet-driven lateral expansion
+  - method: Concentric elliptical rings with orientation, density, rotation and radial velocity; model cube compared qualitatively to the pv diagram [5.2 Modeling of the kinematics of the g…: "each ring has an orientation, a density, and a rotation- and radial velocity."]
+  - parameter: inclination 80 deg, PA 115 deg; lateral expansion up to 200 km/s; ring R rotation ~50 km/s at r=2 arcsec vs nominal 170 km/s [5.2 Modeling of the kinematics of the g…: "For the inclination of the rings, we choose 80$^\circ$ and for the position angle 115$^\circ$."]
+  - assumption: jet in the plane of the sky (lower limit on expansion velocity); uniform density for O and R; large-scale disk D excluded [5.2 Modeling of the kinematics of the g…: "We have therefore chosen to consider only models for which the jet is moving the plane of the sky"]
+  - validation: Radial-expansion and circular-shape variants tested and found worse [5.2 Modeling of the kinematics of the g…: "We found, however, that such models do not reproduce the observed $pv$ diagram very well."]
+- limitation (authors): Only one molecular line, so excitation mechanisms cannot be discriminated; X_CO uncertain [4.2 The bright inner CO(2-1) distributi…: "we not able to discriminate between these different processes."]
+- limitation (authors): Jet orientation degenerate with lateral expansion velocity [5.2 Modeling of the kinematics of the g…: "We found, however, this parameter to be strongly degenerate with the outflow velocity of component $O$"]
+- not stated (card): Line-free channels used for MIRIAD continuum subtraction; Self-calibration solution intervals and number of iterations; Clean mask, threshold and iteration count; Velocity ranges defining anomalous versus regular gas in the cube; Mask/region definitions for the radio-co-spatial and W-lobe fluxes; Model code and exact ring parameters (density, radial profile, ring radii) for the kinematic model; F…
+
+### 2017MNRAS.464.1415M: Exocometary gas structure, origin and physical properties around β Pictoris through ALMA CO multitransition observations (2017; debris_disks, astrochemistry; observational_alma_primary)
+- question: What are the structure, origin and physical conditions (electron/H2 density, CO mass, exocometary ice content) of CO gas in the beta Pic debris disk, from ALMA CO J=2-1 combined with archival J=3-2?
+- step 4: Map PV diagrams to orbital plane and derive H(R), T(R)
+  - method: Keplerian PV-to-radius mapping; H vs R power law; T from hydrostatic equilibrium [3.3.1: "the scale height can then be used to trace the disk temperature at a certain orbital radius"]
+  - assumption: M*=1.75 Msun, mu=14, vertically isothermal, Keplerian [3.3.1: "giving a mean molecular mass $\mu=14$"]
+- step 6: NLTE line ratio modelling for electron and H2 density
+  - method: Compare 3-2/2-1 ratios per PV spaxel with NLTE grid in (Tk, ne) / (Tk, nH2), assuming Kral temperature profile [4.1: "our measurements can confidently constrain the electron density in the disk to around $10^2$-$10^3$ cm$^{-3}$"]
+  - parameter: mask highest 10% of ratios (>3.80); spaxels >4 sigma [4.1: "we mask the highest 10% of the line ratios (i.e. those above 3.80)"]
+  - assumption: Optically thin CO, electrons as only colliders (upper limits) [4: "We begin by assuming CO line emission to be optically thin at the wavelengths of the observed transitions"]
+  - validation: Optical depth check at brightest spaxel [4.3: "we obtain an optical thickness $\tau_{3-2}=0.27\pm0.05$ for the 3-2 line at the clump location"]
+- result: Scale height at 85 AU = 7.0 ± +/-0.6 AU [3.3.1: "H=7.0^{+0.6}_{-0.6} \times \left(\frac{R}{85 \rm AU}\right)^{0.75^{+0.02}_{-0.02}}"]
+- result: Scale height power-law index = 0.75 ± +/-0.02 dimensionless [3.3.1: "H=7.0^{+0.6}_{-0.6} \times \left(\frac{R}{85 \rm AU}\right)^{0.75^{+0.02}_{-0.02}}"]
+- result: Temperature at 85 AU = 2.1e2 ± +/-0.4e2 K [3.3.1: "T=\left(2.1^{+0.4}_{-0.4} \times 10^{2}\right) \times \left(\frac{R}{85 \rm AU}\right)^{-1.58}"]
+- result: Electron density = 10^2-10^3 ± not stated cm^-3 [4.1: "our measurements can confidently constrain the electron density in the disk to around $10^2$-$10^3$ cm$^{-3}$"]
+- result: H2 density upper limit = 10^3-10^5 ± not stated cm^-3 [4.2: "its density would be between 10$^3$ and 10$^5$ cm$^{-3}$ at radii between 50 and 200 AU"]
+- limitation (authors): Electron densities are upper limits since other colliders may contribute [4.1: "the electron densities probed here should strictly speaking be considered upper limits"]
+- limitation (authors): Edge-on assumption and degeneracy; CO abundance depends on uncertain cascade assumptions [5.2.1: "We note that there is a considerable uncertainty on this number"]
+- not stated (card): tclean/clean parameters: cell size, image size, masking, iterations, threshold; Line-free channels for uvcontsub; Self-calibration not mentioned; Exact moment-0 integration region for flux; Collisional rate files and NLTE code settings not given here; Dust continuum and astrometric offsets deferred to forthcoming work
+
+### 2025A&A...703A..15M: Discovery of carbon monoxide emission from five debris disks around young A-type stars (2025; debris_disks, protoplanetary_disks; observational_alma_primary)
+- question: Expand the sample of known CO-bearing debris disks around young intermediate-mass stars and explore the environmental conditions and origin (primordial vs. secondary) of their gas.
+- step 6: Analyze spatial distribution of CO gas via position-velocity (PV) diagrams and radial profiles
+  - method: Construct 12CO PV diagrams along the disk major axis and compare with Keplerian rotation curves; fit ellipses to radial intensity peaks of moment 0 maps for HD 9985 and HD 155853; fit 2D Gaussian to HD 145101 moment 0 map [Spatial distribution of CO gas: "To investigate whether the detected CO gas is co-located with the dust in HD 9985, HD 155853, HD 152989, and HD 170116, we constructed their $^{12}$CO position-velocity (PV) diagrams along the major axis of the disks (Figs. [4](#fig:pvd)a-d)."] [Spatial distribution of CO gas: "To this end we made cuts from the stellar position toward position angles between 0 and 360$^\circ$ in 5$^\circ$ increments, determined the location of maximum intensity along these cuts, and finally the derived positions were fitted with an ellipse."]
+  - parameter: Radial cuts in 5 deg increments from 0 to 360 deg [Spatial distribution of CO gas: "To this end we made cuts from the stellar position toward position angles between 0 and 360$^\circ$ in 5$^\circ$ increments, determined the location of maximum intensity along these cuts, and finally the derived positions were fitted with an ellipse."]
+  - assumption: Keplerian rotation around central star [Spatial distribution of CO gas: "while the diagonal black dashed lines mark the radial velocities and positions of the gas orbiting at two orbital radii, assuming Keplerian rotation."]
+  - fitting: Ellipse fitting to radial peak positions (HD 9985, HD 155853); 2D elliptical Gaussian fit to moment 0 map (HD 145101) [Spatial distribution of CO gas: "determined the location of maximum intensity along these cuts, and finally the derived positions were fitted with an ellipse."] [Spatial distribution of CO gas: "By fitting a two-dimensional elliptical Gaussian model to the $^{12}$CO moment 0 map of HD 145101, we found that its gas disk is marginally resolved"]
+  - validation: CO disk PA and inclination agree within uncertainties with continuum estimates [Spatial distribution of CO gas: "We note that these disk parameters are in very good agreement within the uncertainties with the $PA$ and $i$ estimates obtained from their continuum observations (Table [\[tab:contdiskprops\]](#tab:contdiskprops))."]
+- result: HD 145101 characteristic CO gas disk radius = 27 ± +-8 au [Spatial distribution of CO gas: "By fitting a two-dimensional elliptical Gaussian model to the $^{12}$CO moment 0 map of HD 145101, we found that its gas disk is marginally resolved and has FWHMs of 0.39$''$$\pm$0.11$''$$\times$0.30$''$$\pm$0.10$''$, implying a characteristic disk radius of 27$\pm$8 au."]
+- limitation (authors): Dust mass uncertainties are formal only and do not include systematic uncertainties in dust opacity (which can reach a factor of several) or non-single dust temperatures. [Dust masses: "We caution that the uncertainties given are formal errors only, taking into account the errors in the measured flux density, the distance of the system, and the derived dust temperature, but do not consider the possible systematic uncertainties associated with the value of the dust opacity, which can reach a factor of…"]
+- limitation (authors): CO mass estimates assume LTE at 20 K and ISM isotopic ratios; non-LTE/subthermal excitation, different kinetic temperatures, isotope-selective photodissociation, or fractionation can alter true CO masses by a factor of several. [CO mass estimates: "For our adopted excitation temperature of 20 K and LTE, the $J=2$ rotational level is very efficiently populated, but a significantly different temperature and/or non-LTE environment may result in a lower fractional population than assumed and, accordingly, a higher CO mass."]
+- limitation (authors): Predicted collisional mass loss rates (M_dot_Dmin) have large uncertainties (40-60% formal, potentially much larger systematically) because smallest grain sizes may deviate from the blowout size in high-f_d or gas-bearing disks. [Second generation gas produced in a ste…: "First, the typical formal uncertainty of the $\dot{M}_\mathrm{D_{min}}$ estimate is 40–60%, and the real uncertainty could be even substantially higher as there are a number of simplifying assumptions behind Eq. [\[eq:mdustprod\]](#eq:mdustprod)."]
+- not stated (card): Exact pixel size (cell size) and image dimensions (imsize) used in TCLEAN for continuum and line cubes; Stopping criteria / threshold and masking strategy in TCLEAN; Whether primary beam correction was applied to continuum images and line cubes before flux extraction; Exact velocity intervals integrated to construct the moment 0 maps for HD 9985, HD 145101, HD 152989, and HD 155853; Exact apertur…
+
+### 2020PASJ...72...36T: Sub-millimeter detection of a Galactic center cool star IRS 7 by ALMA (2020; stellar_physics, evolved_stars, milky_way_ism; observational_alma_primary)
+- question: Can the 340 GHz continuum of the red supergiant IRS 7 and the H30alpha ionized gas around it be detected, and what do they say about photosphere size, electron temperature and density, mass loss and kinematics
+- step 5: characterise the H30alpha kinematics
+  - method: channel maps, moment 0 and peak intensity maps, position-velocity diagram, Gaussian fit to the line profile, then sound speed, expansion velocity and spatial velocity from formulae [Kinematics of the Surrounding Structure…: "The central velocity and FWHM velocity width by Gaussian fitting is $V_\mathrm{c} = -124.4\pm0.63$ km s$^{-1}$ and $V_\mathrm{FWHM} =31.9\pm1.5$ km s$^{-1}$, respectively."]
+  - parameter: channel maps with dV = 10 km/s; moment 0 over V_LSR = -400 to 400 km/s [Results: "The integrated velocity range is $V_\mathrm{LSR} = -400$ to $400$ km s$^{-1}$."] [Results: "The velocity width of each map is $\Delta V=10$ km s$^{-1}$."]
+  - assumption: hydrogen ion temperature equals the electron temperature, Te* = 4650 K [Kinematics of the Surrounding Structure…: "Assuming Hydrogen ion temperature is equal to the electron temperature"]
+  - assumption: observed velocity extent comes from gas expansion alone [Kinematics of the Surrounding Structure…: "If the observed velocity extent originates from the gas expansion alone"]
+  - fitting: Gaussian fit to the single-peak H30alpha profile; no sampler stated [Kinematics of the Surrounding Structure…: "The shell like structure around IRS 7 has a single-peak line profile."]
+  - validation: SiO v=2 maser velocity (-120 km/s) compared with the ionized gas central velocity [Kinematics of the Surrounding Structure…: "There is a peak of the SiO maser emission line at $V_\mathrm{LSR} = -120$ km s$^{-1}$."]
+- result: Shell diameter after beam subtraction = 1.38 arcsec = 0.055 pc ± not stated arcsec; pc [Results: "The diameter of the structure is $\theta_\mathrm{d}=1.38\ensuremath{''}$ after synthesized beam subtraction or $D=0.055$ pc."]
+- result: H30alpha line central velocity = -124.4 ± 0.63 km/s [Kinematics of the Surrounding Structure…: "$V_\mathrm{c} = -124.4\pm0.63$ km s$^{-1}$"]
+- result: H30alpha line FWHM velocity width = 31.9 ± 1.5 km/s [Kinematics of the Surrounding Structure…: "$V_\mathrm{FWHM} =31.9\pm1.5$ km s$^{-1}$"]
+- result: Velocity gradient of the north extension = ~22 ± not stated km/s/arcsec [Kinematics of the Surrounding Structure…: "a velocity gradient of $\sim22$ km s$^{-1}$ arcsec$^{-1}$"]
+- result: Sound speed of the ionized gas = 8.9 ± not stated km/s [Kinematics of the Surrounding Structure…: "the sound velocity of the ionized gas is estimated to $C_\mathrm{s} = 8.9$ km s$^{-1}$"]
+- result: Expansion velocity of the shell = 14 ± 1 km/s [Kinematics of the Surrounding Structure…: "the expanding velocity is estimated to $V_\mathrm{exp} = 14\pm1$ km s$^{-1}$"]
+- result: Spatial traveling velocity of IRS 7 = ~181 ± not stated km/s [Kinematics of the Surrounding Structure…: "The spatial traveling velocity of IRS 7 is estimated to be $V_\mathrm{t}\sim181$ km s$^{-1}$"]
+- limitation (authors): IRS 7 image is slightly distorted by unavoidable sidelobes of Sgr A* [Results: "the image is slightly distorted by unavoidable side lobes of Sgr A"]
+- limitation (authors): Electron temperature distribution may contribute to the appearance difference from 34.5 GHz [Kinematics of the Surrounding Structure…: "However, it cannot completely ruled out another cause, that is the distribution of the electron temperature because the line/continuum ratio is sensitive to the electron temperature."]
+- not stated (card): Spectral windows, channel widths and total continuum bandwidth used for the 340 GHz map and for the H30alpha cube; Cell size, image size, clean threshold, niter, deconvolver and masks for the 340 GHz continuum clean; Self-calibration solution intervals, number of rounds, reference model and which execution blocks were self-calibrated; Which execution blocks of 2015.1.01080.S and 2015.A.00021.S we…
+
+### 2018A&A...617A.129K: Submillimeter-wave emission of three Galactic red novae: cool molecular outflows produced by stellar mergers (2018; stellar_physics, astrochemistry, evolved_stars; observational_alma_primary)
+- question: What are the physical, kinematic and chemical properties of the cool molecular remnants of three Galactic red novae (V4332 Sgr, V1309 Sco, V838 Mon), and how do they compare with post-AGB/pre-PN objects?
+- step 4: Model 3D structure of V4332 Sgr CO emission
+  - method: Shape model with homologous expansion and shapemol radiative transfer, optimized against total intensity, channel maps, PV diagrams and profiles [3.6 A 3-dimensional model of the CO emi…: "The model was optimized by referring to the total intensity and channel maps, PV diagrams, and spectral profiles of the CO 3–2 emission."]
+  - software: Shape, shapemol
+  - parameter: opening angle ~60 deg, radius 0.28 arcsec, inclination 0<i<~30 deg, max velocity ~420 km/s [3.6 A 3-dimensional model of the CO emi…: "a wide opening angle of $\sim$60$^\circ$, a de-projected radius corresponding to 0.28$''$, and low inclination angle of 0$^\circ$ $< i \lesssim$30$^\circ$"]
+  - assumption: Homologous expansion velocity field [3.6 A 3-dimensional model of the CO emi…: "we adopted homologous expansion, where the velocity is proportional to the distance from the source"]
+  - fitting: Manual model optimization by visual comparison (no formal fitting stated) [3.5 A 3-dimensional model of the CO emi…: "The model was optimized by referring to the total intensity and channel maps, PV diagrams, and spectral profiles of the CO 3–2 emission."]
+  - validation: Degeneracy between velocity field and density noted [3.6 A 3-dimensional model of the CO emi…: "There is strong degeneracy between the velocity field and the density distribution which could not be broken with the current observations."]
+- limitation (authors): Masses are lower limits, accurate to about a factor of ~2 at best owing to the CO/H2 conversion; line saturation uncertain [6.2 Masses dispersed in the merger even…: "The minimum masses we derive are accurate to within a factor of about $\sim$2, at best, owing to uncertain conversion factor"]
+- limitation (authors): Velocity field and density degenerate in the Shape model [3.6 A 3-dimensional model of the CO emi…: "There is strong degeneracy between the velocity field and the density distribution which could not be broken with the current observations."]
+- not stated (card): Cell size, image size, masks and clean thresholds for all ALMA imaging; Continuum subtraction method and line-free channels; Exact Gaussian-fit procedure (task/region) for sizes and positions; CASSIS fit setup: priors, line widths per species, source sizes for each component; Shape model parameters (density profile, velocity law details) and how best model chosen; SMA reduction details (MIR flagg…
+
+### 2020PASJ...72L...5T: How far actually is the Galactic Center IRS 13E3 from Sagittarius A<SUP>*</SUP>? (2020; milky_way_ism, astrochemistry; archival_reuse)
+- question: Can the line-of-sight (3D) distance of IRS 13E3 from Sgr A* be estimated from the presence of a vibrationally excited CH3OH line in the ionized gas stream, given that CH3OH is destroyed by cosmic rays near Sgr A*?
+- step 1: Build PV diagram along the IRS 13E3 stream and identify features
+  - method: Position-velocity diagram along a rectangle on the H30alpha map, features A to D identified by their velocity pattern [Search for the molecular emission line …: "Figure 1b is the position-velocity (PV) diagram along a red rectangular shown in Figure 1a."]
+  - assumption: Molecular gas physically mixed with the ionized gas shares its PV velocity pattern, so the ionized-gas pattern is a template [Search for the molecular emission line …: "The molecular gas would have a similar velocity feature in the PV diagram to that of the ionized gas if they are physically mixed in the same region."]
+- step 6: Test the method on the Northern arm and locate the molecular gas front
+  - method: PV diagram along the Northern arm; a faint ridge ~400 km/s from the H30alpha ridge is taken as CH3OH v=1; its disappearance point is placed on a Keplerian orbit to obtain the 3D distance [Vibrationally excited CH$_3$OH emission…: "the 3D distance of the disappearance point (molecular gas front) is estimated to be $r \sim 0.4$ pc (please see figure 2c)"]
+  - parameter: Keplerian orbit with a ~1 pc, e ~0.8, i ~140 deg [Vibrationally excited CH$_3$OH emission…: "Assuming the trajectory of the NA is described by a Keplerian orbit with the semi-major axis of $a\sim1$ pc, the eccentricity of $e\sim0.8$, and the inclination angle of $i\sim 140^\circ$ ((cite: Zhao2009))"]
+  - assumption: The NA trajectory is Keplerian; CH3OH decays gradually while the arm falls toward Sgr A* [Vibrationally excited CH$_3$OH emission…: "The gradual decay would be why CH$_3$OH molecule is survived up to $r \sim 0.4$ pc."]
+- result: 3D distance lower limit of IRS 13E3 from Sgr A* (abstract) = >~0.4 ± not stated pc [abstract: "This indicates that IRS 13E3 is located at $r\gtrsim 0.4$ pc from Sgr A$^{\ast}$."]
+- result: Apparent velocity at the CH3OH disappearance point in the Northern arm = ~350 ± not stated km/s [Vibrationally excited CH$_3$OH emission…: "The apparent velocity at the disappearance point is $V_\mathrm{LSR} \sim 350$ km s$^{-1}$."]
+- result: Projection distance of the CH3OH disappearance point = ~0.1 ± not stated pc [Vibrationally excited CH$_3$OH emission…: "$r_{\mathrm{p}} \sim 0.1$ pc, the 3D distance may be larger than the projection distance"]
+- result: 3D distance of the Northern arm molecular gas front = ~0.4 ± not stated pc [Vibrationally excited CH$_3$OH emission…: "the 3D distance of the disappearance point (molecular gas front) is estimated to be $r \sim 0.4$ pc (please see figure 2c)"]
+- result: Elapsed time moving from r ~1 pc to r ~0.4 pc along the Northern arm = ~(1-2)x10^3 ± not stated yr [Vibrationally excited CH$_3$OH emission…: "The elapse time moving from $r \sim 1$ pc to $r \sim 0.4$ pc is $\sim(1-2)\times10^3$ yr."]
+- limitation (authors): The IRS 13E3 distance bound for the Northern arm test is an assumption, not a measurement [Vibrationally excited CH$_3$OH emission…: "It is assumed here that IRS 13E3 is located at $r \gtrsim 0.4$ pc."]
+- not stated (card): Which ALMA project (2015.1.01080.S or 2017.1.00503.S) supplies each figure, and the band, spectral windows and array configurations; CASA version, calibration and any self-calibration applied to the H30alpha cube; Imaging parameters: weighting, robust, cell size, beam, channel width and rms of the cube used for the PV diagrams and channel maps; Continuum subtraction method and line-free channels;…
+
+### 2015A&A...584A..99E: The Dragonfly Galaxy. II. ALMA unveils a triple merger and gas exchange in a hyper-luminous radio galaxy at z = 2 (2015; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What triggered the hyper-luminous starburst and radio-AGN in the Dragonfly Galaxy (MRC 0152-209), and how is its molecular gas distributed and moving?
+- step 2: Kinematics: PV diagrams and Gaussian line fits
+  - method: Four pseudo-slits; Gaussian components fitted to spectra (2 for NW, 3 for SE) [3.2 Kinematics: "The best-fit models are derived when using two Gaussian components for NW and three for SE."]
+  - fitting: Gaussian models; fit method not stated [Kinematics: "Fig. [3](#fig:kinematics) (right) also shows Gaussian model fits that approximate the complex gas kinematics seen in the PV plots."]
+  - validation: alternative 3-component NW model leaves noise-consistent residuals [3.2 Kinematics: "An alternative 3-component model in NW, in which the main Gaussian is similar to that of SE, only leaves residuals that are consistent with the noise"]
+- result: Main-component velocity NW = -30 ± 10 km/s [3.2 Kinematics: "central velocity of $-$30 $\pm$ 10 km s$^{-1}$ for NW and $-$15$\pm$30 km s$^{-1}$ for SE"]
+- result: FWHM main component NW = 360 ± 20 km/s [3.2 Kinematics: "larger FWHM in NW (360 $\pm$ 20 km s$^{-1}$)"]
+- limitation (authors): Resolution insufficient to determine disc rotation axes and properties [3.2 Kinematics: "The resolution of our CO(6-5) data is insufficient to securely determine the rotation axis and detailed properties of these putative discs"]
+- not stated (card): CASA version; tclean parameters (cell, image size, niter, threshold, scales); line-free channel ranges; flux/bandpass/phase calibrators; Gaussian fitting software and priors; exact aperture/region definitions for fluxes; mask details and moment map settings; ALMA coordinates of the field
+
+### 2014Sci...343.1490D: Molecular Gas Clumps from the Destruction of Icy Bodies in the β Pictoris Debris Disk (2014; debris_disks; observational_alma_primary)
+- question: Is gas also released in collisions of icy bodies in the beta Pic debris disk, and how is it distributed?
+- step 4: PV diagram and deprojection
+  - method: PV cut along major axis integrated ±1 arcsec; deprojected assuming circular Keplerian orbits [Supplementary Materials: "a cut was taken along the disk major axis and the emission was integrated over ±1 arcsec orthogonal to the disk plane"]
+  - assumption: stellar mass 1.75 Msun, circular orbits [Supplementary Materials: "Keplerian velocity of a 1.75M sun star"]
+  - validation: emission in empty quadrants indicates noise level [Supplementary Materials: "the emission in the mostly empty quadrants in Fig. 3 indicate the level of noise in the deprojected images"]
+- result: clump CO flux fraction at 85 AU = ~30 ± not stated percent [Main Text: "which contains ~30% of the flux"]
+- limitation (authors): Deprojection has near/far ambiguity; clump motion not confirmed [Supplementary Materials: "there are two solutions for the gas location, on the near and far side of the disk"]
+- not stated (card): CASA version and calibration details; clean threshold, masks, iterations; line-free channels used for continuum; CO line flux integration method and aperture; CO mass calculation details and excitation assumptions; deprojection implementation details
+
+### 2022MNRAS.515..543C: FAUST VI. VLA1623-2417 B: a new laboratory for astrochemistry around protostars on 50 au scale (2022; astrochemistry, star_formation, protoplanetary_disks; large_program_or_survey)
+- question: What is the molecular complexity (specifically iCOM emission from CH3OH, HCOOCH3, and related species) and its physical and kinematic origin around the protostars in the VLA1623-2417 multiple system on a 50 au scale?
+- step 5: Kinematic analysis and estimation of Keplerian emitting radii
+  - method: Map red- and blue-shifted CH3OH emission, construct Position-Velocity (PV) diagram along the disk equatorial plane of VLA1623 B, and calculate Keplerian radii from velocity shifts, disk inclinations, and protostellar masses [Kinematics: on the origin of chemical e…: "Figure 8 shows the Position-Velocity (PV) diagram of the CH$_3$OH(4$_{\rm 2,3}$–3$_{\rm 1,2}$) E emission (representative of the line sample) for VLA1623 B."] [Kinematics: on the origin of chemical e…: "If we assume methanol is tracing an inclined Keplerian disk, the bulk of the emission would arise at a radius of 33 au."]
+  - software: IRAM-GILDAS
+  - parameter: Velocity integration ranges for channel maps: B (-11 to +14 km/s, or -16 to +24 km/s for 20_3,17-20_2,18 A), A (-2 to +7 km/s); velocity shifts: +/- 6-7 km/s for B, +/- 2 km/s for A1 [Kinematics: on the origin of chemical e…: "The emission is integrated between –11 km s$^{-1}$ (–2 km s$^{-1}$) and +14 km s$^{-1}$ (+7 km s$^{-1}$) for VLA1623 B (A) for all the lines eacept 20$_{\rm 3,17}$–20$_{\rm 2,18}$ A, which is integrated in the –16, +24 km s$^{-1}$ range toward VLA1623 B."] [Kinematics: on the origin of chemical e…: "The protostellar mass is 1.7 $M_{\rm \ensuremath{\odot}}$ (cite: Ohashi2022), and the two CH$_3$OH peaks are located at $\pm$ 6–7 km s$^{-1}$ with respect to the systemic velocity."]
+  - assumption: Inclined Keplerian disk; for B: disk inclination = 74 deg, protostellar mass = 1.7 M_sun, d = 131 pc; for A1: disk inclination = 47 deg, protostellar mass = 0.1-0.2 M_sun [Kinematics: on the origin of chemical e…: "According to the high-angular resolution continuum measurements from (cite: Harris2018), the VLA1623 B disk inclination derived from the ratio between the observed minor and major axes is 74$\ensuremath{^\circ}$."] [Kinematics: on the origin of chemical e…: "The protostellar mass is 1.7 $M_{\rm \ensuremath{\odot}}$ (cite: Ohashi2022), and the two CH$_3$OH peaks are located at $\pm$ 6–7 km s$^{-1}$ with respect to the systemic velocity."]
+  - validation: Derived radii (33 au for B, 12-24 au for A1) are comparable to continuum disk sizes from Harris et al. (2018) and LVG emitting size for B (14-45 au) [Kinematics: on the origin of chemical e…: "Noticeably, this distance is comparable with both the disk size imaged in the continuum by (cite: Harris2018) as well as the methanol-emitting size derived by the present LVG analysis (14–45 au)."] [Kinematics: on the origin of chemical e…: "Again, this size in agreement with $\sim$ 14–21 au disk derived by (cite: Harris2018) from the A1 continuum."]
+- result: Keplerian radius of CH3OH ring in VLA1623 B = 33 ± not stated au [Abstract: "Assuming a chemically enriched ring within the accretion disk, close to the centrifugal barrier, its radius is calculated to be 33 au."]
+- result: Keplerian radius of CH3OH ring in VLA1623 A1 = 12-24 ± not stated au [Abstract: "The methanol spectra towards A1 are somewhat narrower ($\sim$ 4 km s$^{-1}$), implying a radius of 12–24 au."]
+- limitation (authors): Collisional coefficients for CH3OH are lacking for transitions with J >= 16. [Physical properties: LTE and LVG analys…: "Given the lack of collisional coefficients for methanol at transitions with rotational number $J$ $\geq$ 16 (cite: Rabli2010), our approach to deriving physical proporties is twofold:"]
+- limitation (authors): LVG analysis is challenged by the limited number of lines with collisional rates (5 lines, with 4 in the narrow E_u = 45-61 K range). [Physical properties: LTE and LVG analys…: "The limited number of methanol lines and the fact that 4 lines out of 5 are in the narrow $E_{\rm u}$ = 45–61 K range make this analysis challenging."]
+- limitation (authors): For source A, the E_u range of the 4 detected CH3OH lines (45-61 K) is too narrow for a free rotational diagram fit, only allowing an upper limit on T_rot. [Physical properties: LTE and LVG analys…: "For source A, the $E_{\rm u}$ range sampled by the 4 detected lines is too small to obtain a proper free fit."]
+- not stated (card): Specific line-free channel ranges used for continuum extraction, self-calibration, and continuum subtraction; Self-calibration solution intervals, number of phase/amplitude rounds, and application to line cubes; Exact cleaning parameters (pixel/cell size, image dimensions, stopping threshold, masking strategy, and deconvolver algorithm); Method for combining multiple array configurations (e.g., 1…
+
+### 2024ApJ...963....1O: "Beads-on-a-string" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster (2024; galaxy_clusters_and_sz, star_formation, agn_and_quasars; multi_facility_alma_minor)
+- question: How do the cooling ICM, an AGN outburst, the warm ionized gas, cold molecular gas and the 'beads on a string' star formation relate in the merging cool-core cluster SDSS 1531?
+- step 5: Compare CO with Halpha and test free-fall and ram-pressure scenarios
+  - method: Reproject ALMA maps onto GMOS grid for velocity difference; Hernquist free-fall model on PV diagram; ram-pressure separation timescale [3.4.5 Comparison with the Warm Ionized …: "Using the REPROJECT module from the ASTROPY package, the ALMA maps were resampled onto GMOS pixel grids."]
+  - software: astropy
+  - parameter: free-fall: inclination 72 deg, v_ICM +600 km/s, drop height 16 kpc [4.1.4: "The trajectory assumes an inclination angle of 72$^\circ$ and $v_{ICM}$ of $+600$ km s$^{-1}$."]
+  - assumption: Hernquist potential, M ~1e13 Msun within 30 kpc [4.1.4: "The BCGs’ total mass interior to 30 kpc is $\sim 10^{13} M_\odot$ (cite: sharon_mass_2014)."]
+  - validation: Free-fall model qualitatively reproduces PV velocity gradient [4.1.4: "This simple gravitational free-fall model broadly reproduces the observed velocity gradient and velocities spanned by the molecular gas"]
+- limitation (authors): X_CO uncertainty may overestimate molecular mass by a factor of a few [3.4.3 Mass Distribution: "we may overestimate the total molecular mass by a factor of a few"]
+- limitation (authors): Chandra data too shallow to resolve cavity [3.1.1: "the current X-ray data is too shallow to resolve"]
+- not stated (card): Briggs robust value tested; Line-free channels and order used for continuum subtraction; clean threshold, mask, niter, cell and image size; Which of the Compact/Extended execution blocks were combined in the final cube; Aperture definition and four-Gaussian fit initial guesses for spectrum; Rest frequency/velocity frame used for channel binning; Whether archive pipeline products were used or the …
+
+### 2018AJ....156..270S: The Albedos, Sizes, Colors, and Satellites of Dwarf Planets Compared with Newly Measured Dwarf Planet 2013 FY27 (2018; solar_system; multi_facility_alma_minor)
+- question: What are the size, albedo, color and satellite properties of the dwarf planet 2013 FY27, and how do they compare with other large TNOs?
+- step 3: Solve size and albedo with NEATM
+  - method: NEATM fit of thermal flux 25.0+-5.5 microJy at 3.075 mm and V=22.35+-0.03 for D and pV; errors at chi2=1 [Size and Albedo: "We used a flux density from thermal emission of $25.0\pm5.5$ $\mu$Jy at a wavelength of 3.075 mm, and a V-band magnitude of $22.35\pm0.03$ to fit $D$ and $p_V$."]
+  - parameter: eta = 1.175, emissivity 0.70, beta = 0.25 [Size and Albedo: "Lellouch et al. (2017) advise using a value of $\eta=1.175$ for TNOs observed with ALMA, so we adopt that value here."]
+  - assumption: Spherical, slow rotator, no nightside emission [Size and Albedo: "(i) the object is spherical"]
+  - fitting: Zero degrees of freedom; chi2 contours 1, 2, 3, error bars at chi2=1 [Size and Albedo: "Since there are zero degrees of freedom (using two measurements to fit two parameters), we cannot formerly calculate a reduced-$\chi^2$; instead we use $\chi^2$ itself."]
+- result: Geometric albedo pV = 0.17 ± +0.045/-0.030 dimensionless [abstract: "$p_V = 0.17_{-0.030}^{+0.045}$"]
+- result: Effective diameter = 765 ± +80/-85 km [abstract: "$D = 765_{-85}^{+80}$ km"]
+- result: Primary diameter with satellite = 740 ± +85/-90 km [abstract: "making the primary $D = 740_{-90}^{+85}$ km"]
+- limitation (authors): Single thermal wavelength so beaming parameter cannot be determined; assumed parameters add about 5% to D and 10% to albedo uncertainty [Size and Albedo: "since we have measurements at only one thermal wavelength, we cannot independently determine what the beaming parameter should be."]
+- not stated (card): tclean parameters (cell size, image size, mask, niter, threshold); CASA/pipeline version; how the source flux (25 microJy) was measured (peak vs fit); spectral window setup and any flagging; calibrators other than J1127-1857 and J1058+0133 details; solar V magnitude and exact NEATM implementation code
+
+### 2014ApJ...790..160S: ALMA Observations of a Candidate Molecular Outflow in an Obscured Quasar (2014; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: What are the morphology, kinematics and mass of molecular gas in the obscured quasar SDSS J1356+1026, and is there a molecular outflow related to the known ionized outflow?
+- step 5: N nucleus kinematics
+  - method: 2-D Gaussian fit per channel, linear fit of position vs velocity for PA, pv-diagram of width 0.5" along PA [4.1 The N nucleus: "In each channel we fit the emission with a 2-D Gaussian profile, and derive the best fit x and y positions"]
+  - assumption: Vc = sqrt2 sigma* [4.1 The N nucleus: "$V_c = \sqrt{2}\sigma_* = 291 \pm 50$ km s$^{-1}$ for an isothermal sphere"]
+  - fitting: linear model x=av+b within ±300 km/s [4.1 The N nucleus: "We fit a linear model $\textbf{\emph{x}}=\textbf{\emph{a}}v+\textbf{\emph{b}}$ to the best fit positions in the velocity range of $\pm300$ km s$^{-1}$"]
+- result: N nucleus velocity gradient = 1077 ± not stated km/s/kpc [4.1 The N nucleus: "best-fit gradient of 1077 km s$^{-1}$ kpc$^{-1}$"]
+- limitation (authors): Outflow quantities order-of-magnitude; XCO and line ratio uncertain [5.2.1 Properties of the Molecular Outfl…: "First, the $X_{\rm{CO}}$ factor in the context of an outflow is uncertain."]
+- not stated (card): Exact clean parameters (cell size, image size, niter, masks, spectral-line channel ranges for CO 3-2); Line-free channel ranges for CO(3-2) 300 GHz continuum check; Aperture sizes/centres for flux extraction; Kinematic fitting details of 2D Gaussian per channel; Herschel photometry values (Petric et al. in prep.); Exact formulae for outflow energetics and Kennicutt SFR conversion; HST astrometric…
+
+### 2020ApJ...892...99C: The Surprisingly Low Carbon Mass in the Debris Disk around HD 32297 (2020; debris_disks; observational_alma_primary)
+- question: What are the spatial distribution and mass of neutral carbon in the HD 32297 debris disk, and can a secondary gas production model explain the C0 and CO observations?
+- step 4: Position-velocity diagram
+  - method: Rotate cube by PA, integrate from -0.6 to 0.7 arcsec vertically, overplot Keplerian curve [3.2 Position-velocity diagram: "The rotated data cube is then integrated from $-0.6\ensuremath{''}$ to $0.7\ensuremath{''}$ in the vertical direction $z$"]
+  - assumption: Mstar 1.7 Msun, i = 83.6 deg [3.2 Position-velocity diagram: "a stellar mass of 1.7 M$_\odot$ and an inclination of 83.6$^\circ$"]
+- limitation (authors): Temperature poorly constrained by the data [3.3 Modeling of the C I emission: "We note that the temperature is not well constrained by our data."]
+- limitation (authors): Calibration uncertainty not included in MCMC fit [3.3 Modeling of the C I emission: "We note that the calibration uncertainty, not included in the MCMC fit, might introduce some additional uncertainty in the fitted parameters."]
+- not stated (card): Line-free channels and continuum fit order for uvcontsub; Clean threshold, niter, mask, cell and image size, channel width of the cube; Exact model grid size/resolution and the likelihood form; Initial walker positions and convergence checks for emcee; Photodissociation cross-section files (private communication); ISRF scaling used (Draine 1978 normalisation); Whether the line cube was Hanning-sm…
+
+### 2021A&A...654A..69S: SEEDisCS. II. Molecular gas in galaxy clusters and their large-scale structure: low gas fraction galaxies, the case of CL1301.7‒1139 (2021; galaxy_clusters_and_sz, high_z_galaxies; observational_alma_primary)
+- question: How much cold molecular gas do normal star-forming galaxies in and around the z=0.4828 cluster CL1301.7-1139 hold, and are low gas fraction galaxies linked to the cluster infall regions?
+- step 8: Examine projected phase space and infall regions of both clusters
+  - method: Projected phase-space diagram of star-forming spectroscopic members within 4 sigma_cl and 8 R200 relative to virialised, infall and escape boundaries; infalling = 1 to ~5 R200 [4.2 Comparison with CL1411.1-1148: "The spectroscopic members, including the ALMA targets, within 4 $\sigma_{cl}$ and $8 \times R_{200}$, are seen relatively to the virialised, infall, and escape region boundaries (cite: Mahajan2011)."] [4.2 Comparison with CL1411.1-1148: "Galaxies are considered infalling onto the clusters when they are located between 1 and $\sim 5$ virial radii"]
+  - parameter: NFW halo with concentration c = 6 for escape velocity [4.2 Comparison with CL1411.1-1148: "we assumed a NFW halo profile with a concentration of ${\rm c} = 6$"]
+- result: Low-mu_H2 fraction among CL1411.1-1148 infalling galaxies = 44% ± not stated percent [4.2 Comparison with CL1411.1-1148: "these low-$\mu_\mathrm{H_2}$ galaxies represent 44% of the full infalling population"]
+- result: Low-mu_H2 fraction among CL1411.1-1148 galaxies between 1 and 4 R200 = 66% ± not stated percent [4.2 Comparison with CL1411.1-1148: "66% of the galaxies located between 1 and $4 \times R_{200}$"]
+- limitation (authors): Low number statistics: only three star-forming CL1301.7-1139 galaxies between 1 and 4 R200 [4.2 Comparison with CL1411.1-1148: "given that we only observed three CL1301.7$-$1139 star-forming galaxies between 1 and $4 \times R_{200}$"]
+- limitation (authors): Photometry cannot identify AGN, which could bias SFRs [3.2 Stellar masses and SFRs: "The photometric wavelength coverage does not allow for the identification of active galactic nuclei (AGNs), which could affect the SFRs in particular."]
+- limitation (authors): Low gas fraction is defined relative to field surveys, not in absolute terms [4.1 Gas fractions: "It does not necessarily imply that these star-forming galaxies have a low cold gas content in absolute terms"]
+- not stated (card): Pipeline (CASA) version and whether archive-delivered products or a local reprocessing were used; Imaging parameters: tclean weighting/robust, cell size, image size, deconvolver, masking and cleaning threshold for the cubes; Which spectral channels were excluded as line emission in the continuum fit, per target; Channel width and spectral binning used to reach 50.7 km/s; whether the maps were ima…
+
+### 2014ApJ...784...78R: Massive Molecular Gas Flows in the A1664 Brightest Cluster Galaxy (2014; galaxy_clusters_and_sz, nearby_galaxies; observational_alma_primary)
+- question: What are the mass, kinematics and origin (inflow, outflow or merger) of the molecular gas in the Abell 1664 BCG?
+- step 3: Make moment maps and PV diagrams
+  - method: Integrated intensity maps over velocity ranges; PV cuts along PA 77 deg (systemic) and 120 deg (HVS), PA from 2D Gaussian fit [3.2: "A two-dimensional Gaussian was fitted to the integrated intensity maps of the BCG systemic component to determine this best fit PA"]
+  - validation: PA consistent between CO(1-0) and CO(3-2) [3.2: "this was found to be consistent at both CO(1-0) and CO(3-2) within the error"]
+- limitation (authors): Cannot tell whether gas lies in front of or behind the BCG [4.4: "we cannot distinguish between an inflow of gas located behind the BCG and an outflow of gas located in front of the BCG."]
+- not stated (card): Line-free channels and continuum subtraction method/order; Image size, cell size, clean threshold and iterations; Channel binning used for spectra; Spectral extraction details and baseline fitting; Flux calibration uncertainty; Pixel/region definitions for clumps A, B and HVS sub-regions; PV slice widths; Luminosity distance value used
+
+### 2018ApJ...863...72O: Sub-arcsecond Kinematic Structure of the Outflow in the Vicinity of the Protostar in L483 (2018; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: What are the geometry, kinematics and possible rotation of the outflow cavity wall in the Class 0 protostar L483, and how do its parabolic-model parameters compare with those of other outflow sources?
+- step 2: Extract PV diagrams across the outflow
+  - method: PV diagrams along P.A. 105 deg and perpendicular cuts at P.A. 15 deg with offsets 0-10 arcsec on both lobes [5. Model Analysis of the Outflow: "which are prepared for the position axes taken along the lines with the position angle of 15 ◦ (Figure 1b) with the offsets (0 ′′ − 10 ′′ )"]
+  - parameter: outflow P.A. assumed 105 deg [3. Distribution: "the position angle (P.A.) of the outflow is assumed to be 105 ◦ (Chapman et al. 2013)"]
+  - assumption: elliptic PV feature traces the outflow cavity wall [4. Outflow Structure Traced by CS: "this elliptic feature likely corresponds to the outflow cavity wall."]
+- step 3: Fit parabolic outflow model to PV diagrams
+  - method: Parabolic cavity wall z = C R^2 with velocity proportional to distance; fit free parameters C and v0 to PV diagrams and constrain inclination [Appendix B: "We fit this model to the observed PV diagrams, and determine the two free parameters, C and v 0 ."]
+  - parameter: i = 80 deg (75-90 allowed), C = 0.0025 au^-1, v0 = 0.0015 km/s; z0 = R0 = 1 au [5. Model Analysis of the Outflow: "The model parameters employed here are as follows; i = 80 ◦, C = 0.0025 au − 1, and v 0 = 0.0015 km s − 1 ."]
+  - assumption: velocity on the cavity wall proportional to distance to the protostar [5. Model Analysis of the Outflow: "cavity wall is assumed to be proportional to the distance to the protostar."]
+  - fitting: Qualitative comparison of model overlays; no sampler or likelihood stated [5. Model Analysis of the Outflow: "In Figure 2, the outflow model result is overlaid in white lines on the PV diagrams"]
+  - validation: Inclination below 75 or above 90 deg cannot reproduce the structure [5. Model Analysis of the Outflow: "With the inclination angle less than 75 ◦ or larger than 90 ◦, the kinematic structure cannot be reproduced by the model."]
+- step 6: Test outflow rotation
+  - method: Overlay models with angular momentum conservation, j = 0, 1, 2, 4 x j_IRE, on PV diagrams [7. Rotation Motion in the Outflow: "The rotation velocity of the outflow cavity wall is simply calculated under assumption of the angular momentum conservation."]
+  - parameter: j_IRE = 7.9e-4 km/s pc [7. Rotation Motion in the Outflow: "( j IRE = 7 . 9 × 10 − 4 km s − 1 pc; Oya et al. 2017)"]
+  - assumption: specific angular momentum conserved along the outflow [Figure 5 caption: "The specific angular momentum of the gas is assumed to be conserved in each outflow model."]
+  - fitting: by visual comparison [7. Rotation Motion in the Outflow: "Comparing the model results with the observations, we find a hint that the first and second models"]
+  - validation: j = 1-2 x j_IRE better than no rotation at small offsets; 4x overestimates [7. Rotation Motion in the Outflow: "The rotation motion seems to be overestimated in the third model ( j = 4 × j IRE ; red ellipses)."]
+- result: Outflow inclination angle = 80 (allowed 75-90) ± not stated deg [abstract: "We constrain the inclination angle of the outflow to be from 75 ◦ to 90 ◦"]
+- result: Curvature parameter C = 0.0025 ± not stated au^-1 [9. Summary: "C = 0.0025 au − 1, and v 0 = 0.0015 km s − 1 ."]
+- result: Velocity parameter v0 = 0.0015 ± not stated km/s [9. Summary: "C = 0.0025 au − 1, and v 0 = 0.0015 km s − 1 ."]
+- limitation (authors): Rotation is marginal and angular momentum cannot be accurately evaluated [7. Rotation Motion in the Outflow: "it is difficult to evaluate the amount of the specific angular momentum and the total angular momentum extracted by the outflow accurately at the current stage."]
+- limitation (authors): Extended emission is heavily resolved out [3. Distribution: "Thus, CS also traces the outflow in spite of a heavy resolving-out problem."]
+- not stated (card): Array configurations, baselines, time on source, calibrators and CASA version (deferred to Oya et al. 2017); Self-calibration solution intervals; Line-free channels used for the continuum; Image size, cell size, and CLEAN threshold/masks; Fitting procedure for C and v0 (appears to be by-eye overlay on PV diagrams; no statistic or uncertainties given); PV extraction widths; Values for the other so…
+
+## All papers in this technique
+
+- 2012A&A...544L...7P (2012): The first ALMA view of IRAS 16293-2422. Direct detection of infall onto source B and high-resolution kinematics of source A
+- 2013A&A...549L...6K (2013): ALMA CO J = 6-5 observations of IRAS 16293-2422. Shocks and entrainment
+- 2013A&A...555A.112P (2013): Global collapse of molecular clouds as a formation mechanism for the most massive stars
+- 2013A&A...558A.124C (2013): ALMA observations of feeding and feedback in nearby Seyfert galaxies: an AGN-driven outflow in NGC 1433
+- 2013A&A...560A.103M (2013): A Keplerian disk around a Class 0 source: ALMA observations of VLA1623A
+- 2013ApJ...763..120C (2013): The Anatomy of an Extreme Starburst within 1.3 Gyr of the Big Bang Revealed by ALMA
+- 2013ApJ...764L..14Z (2013): ALMA 690 GHz Observations of IRAS 16293-2422B: Infall in a Highly Optically Thick Disk
+- 2013ApJ...774...39A (2013): ALMA Observations of the HH 46/47 Molecular Outflow
+- 2013ApJ...774L...7M (2013): ALMA Observations of the Massive Molecular Outflow G331.512-0.103
+- 2013ApJ...775L..31S (2013): ALMA Observations of the IRDC Clump G34.43+00.24 MM3: Hot Core and Molecular Outflows
+- 2013ApJ...776...77K (2013): ALMA Observations of the Molecular Gas in the Debris Disk of the 30 Myr Old Star HD 21997
+- 2013ApJ...777...92S (2013): ALMA Observations of the Coldest Place in the Universe: The Boomerang Nebula
+- 2014A&A...566A..74L (2014): ALMA observations of the kinematics and chemistry of disc formation
+- 2014A&A...568L...5C (2014): The ALMA view of the protostellar system HH212. The wind, the cavity, and the disk
+- 2014A&A...569A..11S (2014): A necklace of dense cores in the high-mass star forming region G35.20-0.74 N: ALMA observations
+- 2014A&A...570L..14R (2014): The wonderful complexity of the Mira AB system
+- 2014AJ....147..141H (2014): ALMA View of G0.253+0.016: Can Cloud-Cloud Collision form the Cloud?
+- 2014ApJ...782L..28H (2014): A Hot Molecular Circumstellar Disk around the Massive Protostar Orion Source I
+- 2014ApJ...784...78R (2014): Massive Molecular Gas Flows in the A1664 Brightest Cluster Galaxy
+- 2014ApJ...786..114L (2014): ALMA Results of the Pseudodisk, Rotating Disk, and Jet in the Continuum and HCO<SUP>+</SUP> in the Protostellar System HH 212
+- 2014ApJ...788L..34P (2014): Resolved Images of the Protoplanetary Disk around HD 100546 with ALMA
+- 2014ApJ...790..160S (2014): ALMA Observations of a Candidate Molecular Outflow in an Obscured Quasar
+- 2014ApJ...791..123W (2014): A Study of Dynamical Processes in the Orion KL Region Using ALMA—Probing Molecular Outflow and Inflow
+- 2014ApJ...793....1Y (2014): ALMA Observations of Infalling Flows toward the Keplerian Disk around the Class I Protostar L1489 IRS
+- 2014ApJ...794L..10Y (2014): ALMA Observations of the IRDC Clump G34.43+00.24 MM3: 278 GHz Class I Methanol Masers
+- 2014ApJ...795..152O (2014): A Substellar-mass Protostar and its Outflow of IRAS 15398-3359 Revealed by Subarcsecond-resolution Observations of H<SUB>2</SUB>CO and CCH
+- 2014ApJ...796....1T (2014): Angular Momentum Exchange by Gravitational Torques and Infall in the Circumbinary Disk of the Protostellar System L1551 NE
+- 2014ApJ...796..117G (2014): The Slow Ionized Wind and Rotating Disklike System that are Associated with the High-mass Young Stellar Object G345.4938+01.4677
+- 2014ApJ...796..120W (2014): ALMA Observations of a Misaligned Binary Protoplanetary Disk System in Orion
+- 2014ApJ...796..131O (2014): Formation of a Keplerian Disk in the Infalling Envelope around L1527 IRS: Transformation from Infalling Motions to Kepler Motions
+- 2014ApJ...797...90S (2014): An Infrared-luminous Merger with Two Bipolar Molecular Outflows: ALMA and SMA Observations of NGC 3256
+- 2014PASJ...66..106H (2014): VERA and ALMA observations of the H<SUB>2</SUB>O supermaser burst in Orion KL
+- 2014Sci...343.1490D (2014): Molecular Gas Clumps from the Destruction of Icy Bodies in the β Pictoris Debris Disk
+- 2015A&A...574A...5D (2015): ALMA data suggest the presence of spiral structure in the inner wind of CW Leonis
+- 2015A&A...575L...5H (2015): High-resolution observations of the outer disk around T Chamaeleontis: the view from ALMA
+- 2015A&A...576L..15O (2015): ALMA view of the circumstellar environment of the post-common-envelope-evolution binary system HD 101584
+- 2015A&A...579A.114M (2015): A low-mass protostar's disk-envelope interface: disk-shadowing evidence from ALMA DCO<SUP>+</SUP> observations of VLA1623
+- 2015A&A...580A...1M (2015): The fast molecular outflow in the Seyfert galaxy IC 5063 as seen by ALMA
+- 2015A&A...581A..85P (2015): The jet and the disk of the HH 212 low-mass protostar imaged by ALMA: SO and SO<SUB>2</SUB> emission
+- 2015A&A...584A..99E (2015): The Dragonfly Galaxy. II. ALMA unveils a triple merger and gas exchange in a hyper-luminous radio galaxy at z = 2
+- 2015ApJ...804...37L (2015): ALMA Resolves the Spiraling Accretion Flow in the Luminous OB Cluster-forming Region G33.92+0.11
+- 2015ApJ...804..141Z (2015): Fragmentation of Molecular Clumps and Formation of a Protocluster
+- 2015ApJ...811...92C (2015): Accretion Kinematics through the Warped Transition Disk in HD142527 from Resolved CO(6-5) Observations
+- 2015ApJ...811L...4Z (2015): Origin and Kinematics of the Eruptive Flow from XZ Tau Revealed by ALMA
+- 2015ApJ...812...27A (2015): ALMA Observations of the Transition from Infall Motion to Keplerian Rotation around the Late-phase Protostar TMC-1A
+- 2015ApJ...812...59O (2015): Geometric and Kinematic Structure of the Outflow/Envelope System of L1527 Revealed by Subarcsecond-resolution Observation of CS
+- 2015ApJ...812..129Y (2015): No Keplerian Disk &gt;10 AU Around the Protostar B335: Magnetic Braking or Young Age?
+- 2015ApJ...813L..19J (2015): A Keplerian-like Disk around the Forming O-type Star AFGL 4176
+- 2015ApJ...814...22E (2015): Detection of Infall in the Protostar B335 with ALMA
+- 2015ApJ...815..106H (2015): Sgr B2(N): A Bipolar Outflow and Rotating Hot Core Revealed by ALMA
+- 2015MNRAS.447.1826Z (2015): ALMA reveals a candidate hot and compact disc around the O-type protostar IRAS 16547-4247
+- 2015Natur.527...70P (2015): Episodic molecular outflow in the very young protostellar cluster Serpens South
+- 2015PASJ...67..122M (2015): Significant gas-to-dust ratio asymmetry and variation in the disk of HD 142527 and the indication of gas depletion
+- 2016A&A...590A..73A (2016): A precessing molecular jet signaling an obscured, growing supermassive black hole in NGC 1377?
+- 2016A&A...590A.127W (2016): Resolving the extended atmosphere and the inner wind of Mira (o Ceti) with long ALMA baselines
+- 2016A&A...592A..76D (2016): ALMA-resolved salt emission traces the chemical footprint and inner wind morphology of VY Canis Majoris
+- 2016A&A...596A..92K (2016): ALMA observations of the nearby AGB star L<SUB>2</SUB> Puppis. I. Mass of the central star and detection of a candidate planet
+- 2016ApJ...816...25P (2016): Dust and Gas in the Disk of HL Tauri: Surface Density, Dust Settling, and Dust-to-gas Ratio
+- 2016ApJ...820L..34S (2016): Subarcsecond Analysis of the Infalling-Rotating Envelope around the Class I Protostar IRAS 04365+2535
+- 2016ApJ...821L...3T (2016): An Ordered Bipolar Outflow from a Massive Early-stage Core
+- 2016ApJ...823L..12G (2016): ALMA Resolves the Torus of NGC 1068: Continuum and Molecular Line Emission
+- 2016ApJ...824...88O (2016): Infalling-Rotating Motion and Associated Chemical Change in the Envelope of IRAS 16293-2422 Source A Studied with ALMA
+- 2016ApJ...826..213L (2016): Angular Momentum Loss in the Envelope-Disk Transition Region of the HH 111 Protostellar System: Evidence for Magnetic Braking?
+- 2016ApJ...828..100F (2016): Outflow Detection in a 70 μm Dark High-Mass Core
+- 2016ApJ...829L...7G (2016): High-velocity Bipolar Molecular Emission from an AGN Torus
+- 2016ApJ...830L..16B (2016): Misaligned Disks in the Binary Protostar IRS 43
+- 2016ApJ...830L..37I (2016): Discovery of a Hot Corino in the Bok Globule B335
+- 2016ApJ...832..110C (2016): The Coupled Physical Structure of Gas and Dust in the IM Lup Protoplanetary Disk
+- 2016ApJ...832..142Z (2016): The Molecular Wind in the Nearest Seyfert Galaxy Circinus Revealed by ALMA
+- 2016ApJ...832..148V (2016): Molecular Gas Along a Bright Hα Filament in 2A 0335+096 Revealed by ALMA
+- 2016ApJ...832..158Z (2016): ALMA Cycle 1 Observations of the HH46/47 Molecular Outflow: Structure, Entrainment, and Core Impact
+- 2016MNRAS.458.3134R (2016): ALMA observations of cold molecular gas filaments trailing rising radio bubbles in PKS 0745-191
+- 2016MNRAS.460..673N (2016): Morphology and kinematics of the gas envelope of Mira Ceti
+- 2016Natur.535..258C (2016): Imaging the water snow-line during a protostellar outburst
+- 2016Natur.538..483T (2016): A triple protostar system formed via fragmentation of a gravitationally unstable disk
+- 2016Natur.540..406B (2016): Resolved images of a protostellar outflow driven by an extended disk wind
+- 2016Sci...353.1519P (2016): Spiral density waves in a young protoplanetary disk
+- 2017A&A...597L...5B (2017): A second post-AGB nebula that contains gas in rotation and in expansion: ALMA maps of IW Carinae
+- 2017A&A...602A..59C (2017): Chasing discs around O-type (proto)stars: Evidence from ALMA observations
+- 2017A&A...603A..10B (2017): Fragmentation and disk formation in high-mass star formation: The ALMA view of G351.77-0.54 at 0.06'' resolution
+- 2017A&A...603L...3A (2017): Molecular outflow launched beyond the disk edge
+- 2017A&A...605A.126R (2017): The circumstellar envelope around the S-type AGB star W Aql. Effects of an eccentric binary orbit
+- 2017A&A...607A.130D (2017): The Flying Saucer: Tomography of the thermal and density gas structure of an edge-on protoplanetary disk
+- 2017A&A...607L...6T (2017): ALMA discovery of a rotating SO/SO<SUB>2</SUB> flow in HH212. A possible MHD disk wind?
+- 2017A&A...608A..22A (2017): Luminous, pc-scale CO 6-5 emission in the obscured nucleus of NGC 1377
+- 2017A&A...608A..38O (2017): Properties of the molecular gas in the fast outflow in the Seyfert galaxy IC 5063
+- 2017A&A...608A..56G (2017): ALMA imaging of C<SUB>2</SUB>H emission in the disk of <ASTROBJ>NGC 1068</ASTROBJ>
+- 2017A&A...608A.134Y (2017): 1000 au exterior arcs connected to the protoplanetary disk around HL Tauri
+- 2017ApJ...834..178Y (2017): Signs of Early-stage Disk Growth Revealed with ALMA
+- 2017ApJ...835..108S (2017): Kinematic Structure of Molecular Gas around High-mass YSO, Papillon Nebula, in N159 East in the Large Magellanic Cloud: A New Perspective w…
+- 2017ApJ...835..213P (2017): The Dense Molecular Gas and Nuclear Activity in the ULIRG IRAS 13120-5453
+- 2017ApJ...835..265W (2017): Dense Molecular Gas Tracers in the Outflow of the Starburst Galaxy NGC 253
+- 2017ApJ...835L..13S (2017): ALMA Observations of the Water Fountain Pre-planetary Nebula IRAS 16342-3814: High-velocity Bipolar Jets and an Expanding Torus
+- 2017ApJ...836..130R (2017): Alma Observations of Massive Molecular Gas Filaments Encasing Radio Bubbles in the Phoenix Cluster
+- 2017ApJ...837...86T (2017): Spiral Arms, Infall, and Misalignment of the Circumbinary Disk from the Circumstellar Disks in the Protostellar Binary System L1551 NE
+- 2017ApJ...837..174O (2017): L483: Warm Carbon-chain Chemistry Source Harboring Hot Corino Activity
+- 2017ApJ...840...23L (2017): A Multi-ringed, Modestly Inclined Protoplanetary Disk around AA Tau
+- 2017ApJ...840...32T (2017): Planet Formation in AB Aurigae: Imaging of the Inner Gaseous Spirals Observed inside the Dust Cavity
+- 2017ApJ...840...60B (2017): A Close-up View of the Young Circumbinary Disk HD 142527
+- 2017ApJ...840L..11S (2017): Extreme CO Isotopic Abundances in the ULIRG IRAS 13120-5453: An Extremely Young Starburst or Top-heavy Initial Mass Function
+- 2017ApJ...840L..12S (2017): WL 17: A Young Embedded Transition Disk
+- 2017ApJ...841L..25T (2017): Rotating Starburst Cores in Massive Galaxies at z = 2.5
+- 2017ApJ...842...92G (2017): Thermal Feedback in the High-mass Star- and Cluster-forming Region W51
+- 2017ApJ...842...94T (2017): ALMA View of the Galactic Center Minispiral: Ionized Gas Flows around Sagittarius A<SUP>∗</SUP>
+- 2017ApJ...843...27L (2017): Formation and Atmosphere of Complex Organic Molecules of the HH 212 Protostellar Disk
+- 2017ApJ...843...45K (2017): Mass Transport from the Envelope to the Disk of V346 Nor: A Case Study for the Luminosity Problem in an FUor-type Young Eruptive Star
+- 2017ApJ...843..136E (2017): Disentangling the Circumnuclear Environs of Centaurus A. III. An Inner Molecular Ring, Nuclear Shocks, and the CO to Warm H<SUB>2</SUB> Int…
+- 2017ApJ...845...10F (2017): Strongly Misaligned Triple System in SR 24 Revealed by ALMA
+- 2017ApJ...845...58Z (2017): ALMA Maps of Dust and Warm Dense Gas Emission in the Starburst Galaxy IC 5179
+- 2017ApJ...849...56A (2017): ALMA Observations of the Protostar L1527 IRS: Probing Details of the Disk and the Envelope Structures
+- 2017ApJ...850L...2A (2017): ALMA Observations of SMM11 Reveal an Extremely Young Protostar in Serpens Main Cluster
+- 2017ApJ...850L...5T (2017): The Second Galactic Center Black Hole? A Possible Detection of Ionized Gas Orbiting around an IMBH Embedded in the Galactic Center IRS13E C…
+- 2017ApJ...851...76M (2017): ALMA Observations of the Physical and Chemical Conditions in Centaurus A
+- 2017MNRAS.464.1415M (2017): Exocometary gas structure, origin and physical properties around β Pictoris through ALMA CO multitransition observations
+- 2017MNRAS.466.3519R (2017): The ALMA early science view of FUor/EXor objects - II. The very wide outflow driven by HBC 494
+- 2017MNRAS.467L..76S (2017): Vertical structure of the transition zone from infalling rotating envelope to disc in the Class 0 protostar, IRAS 04368+2557
+- 2017MNRAS.468..685Q (2017): Modelling the 3D physical structure of astrophysical sources with gass
+- 2017MNRAS.468.3468G (2017): Molecular gas on large circumgalactic scales at z = 3.47
+- 2017MNRAS.472.4024R (2017): Close entrainment of massive molecular gas flows by radio bubbles in the central galaxy of Abell 1795
+- 2017NatAs...1..848V (2017): The shock-heated atmosphere of an asymptotic giant branch star resolved by ALMA
+- 2017NatAs...1E.146H (2017): Disk-driven rotating bipolar outflow in Orion Source I
+- 2017NatAs...1E.152L (2017): A rotating protostellar jet launched from the innermost disk of HH 212
+- 2017NatAs...1E.172L (2017): Formation of wide binaries by turbulent fragmentation
+- 2017PASJ...69....6U (2017): ALMA observations of the dense and shocked gas in the nuclear region of NGC 4038 (Antennae galaxies)
+- 2017Sci...355.1285N (2017): [C II] 158-μm emission from the host galaxies of damped Lyman-alpha systems
+- 2018A&A...609A..47P (2018): Direct mapping of the temperature and velocity gradients in discs. Imaging the vertical CO snow line around IM Lupi
+- 2018A&A...611A..99K (2018): The evolution of young HII regions. I. Continuum emission and internal dynamics
+- 2018A&A...614A..26A (2018): Chemistry of a newly detected circumbinary disk in Ophiuchus
+- 2018A&A...614A..42M (2018): ALMA observations of AGN fuelling. The case of PKS B1718-649
+- 2018A&A...614A..58B (2018): High-resolution observations of IRAS 08544-4431. Detection of a disk orbiting a post-AGB star and of a slow disk wind
+- 2018A&A...614A.113H (2018): ALMA detection of a tentative nearly edge-on rotating disk around the nearby AGB star R Doradus
+- 2018A&A...615A..58Y (2018): Constraint on ion-neutral drift velocity in the Class 0 protostar B335 from ALMA observations
+- 2018A&A...615A.141B (2018): Accelerating infall and rotational spin-up in the hot molecular core G31.41+0.31
+- 2018A&A...615A.155H (2018): Molecular line emission in NGC 4945, imaged with ALMA
+- 2018A&A...616A..34H (2018): An unusual face-on spiral in the wind of the M-type AGB star EP Aquarii
+- 2018A&A...616A..61R (2018): CO envelope of the symbiotic star R Aquarii seen by ALMA
+- 2018A&A...617A..10C (2018): Water and interstellar complex organics associated with the HH 212 protostellar disc. On disc atmospheres, disc winds, and accretion shocks
+- 2018A&A...617A..89C (2018): Search for high-mass protostars with ALMA revealed up to kilo-parsec scales (SPARKS). I. Indication for a centrifugal barrier in the enviro…
+- 2018A&A...617A.129K (2018): Submillimeter-wave emission of three Galactic red novae: cool molecular outflows produced by stellar mergers
+- 2018A&A...618A.120L (2018): The HH30 edge-on T Tauri star. A rotating and precessing monopolar outflow scrutinized by ALMA
+- 2018A&A...618A.164S (2018): Through the magnifying glass: ALMA acute viewing of the intricate nebular architecture of OH 231.8+4.2
+- 2018A&A...619A..39F (2018): The dense molecular gas in the z ∼ 6 QSO SDSS J231038.88+185519.7 resolved by ALMA
+- 2018A&A...620A..31M (2018): Chasing discs around O-type (proto)stars. ALMA evidence for an SiO disc and disc wind from G17.64+0.16
+- 2018A&A...620L...1G (2018): ALMA detects a radial disk wind in DG Tauri
+- 2018AJ....156..270S (2018): The Albedos, Sizes, Colors, and Satellites of Dwarf Planets Compared with Newly Measured Dwarf Planet 2013 FY27
+- 2018ApJ...854...83T (2018): Optical, Near-IR, and Sub-mm IFU Observations of the Nearby Dual Active Galactic Nuclei MRK 463
+- 2018ApJ...854...96O (2018): Chemical and Physical Picture of IRAS 16293-2422 Source B at a Sub-arcsecond Scale Studied with ALMA
+- 2018ApJ...856...14L (2018): A 100 au Wide Bipolar Rotating Shell Emanating from the HH 212 Protostellar Disk: A Disk Wind?
+- 2018ApJ...856L...5F (2018): ALMA Detections of CO Emission in the Most Luminous, Heavily Dust-obscured Quasars at z &gt; 3
+- 2018ApJ...857...18S (2018): Multiple Gaps in the Disk of the Class I Protostar GY 91
+- 2018ApJ...859...86T (2018): ALMA Images of the Host Cloud of the Intermediate-mass Black Hole Candidate CO-0.40-0.22*: No Evidence for Cloud-Black Hole Interaction, bu…
+- 2018ApJ...859..111H (2018): The Circumstellar Disk and Asymmetric Outflow of the EX Lup Outburst System
+- 2018ApJ...859..144A (2018): Resolving the Nuclear Obscuring Disk in the Compton-thick Seyfert Galaxy NGC 5643 with ALMA
+- 2018ApJ...859..150R (2018): Multiple Stellar Flybys Sculpting the Circumstellar Architecture in RW Aurigae
+- 2018ApJ...860..119G (2018): A Keplerian Disk around Orion SrCI, a ∼ 15 M <SUB>☉</SUB> YSO
+- 2018ApJ...860..162F (2018): The Maser-emitting Structure and Time Variability of the SiS Lines J = 14-13 and 15-14 in IRC+10216
+- 2018ApJ...860L..14K (2018): Discovery of a Molecular Collision Front in Interacting Galaxies NGC 4567/4568 with ALMA
+- 2018ApJ...861...14C (2018): Infall Signatures in a Prestellar Core Embedded in the High-mass 70 μm Dark IRDC G331.372-00.116
+- 2018ApJ...861...72C (2018): ALMA Resolves C I Emission from the β Pictoris Debris Disk
+- 2018ApJ...863...19A (2018): The Distinct Evolutionary Nature of Two Class 0 Protostars in Serpens Main SMM4
+- 2018ApJ...863...56C (2018): Resolving the ISM at the Peak of Cosmic Star Formation with ALMA: The Distribution of CO and Dust Continuum in z ∼ 2.5 Submillimeter Galaxi…
+- 2018ApJ...863...72O (2018): Sub-arcsecond Kinematic Structure of the Outflow in the Vicinity of the Protostar in L483
+- 2018ApJ...863...94L (2018): ALMA Observations of the Very Young Class 0 Protostellar System HH211-mms: A 30 au Dusty Disk with a Disk Wind Traced by SO?
+- 2018ApJ...863..193V (2018): Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248
+- 2018ApJ...864...76Z (2018): Rotation in the NGC 1333 IRAS 4C Outflow
+- 2018ApJ...864..120M (2018): ALMA Observations toward the Starburst Dwarf Galaxy NGC 5253. I. Molecular Cloud Properties and Scaling Relations
+- 2018ApJ...864L..11X (2018): Flat Rotation Curves Found in Merging Dusty Starbursts at z = 2.3 through Tilted-ring Modeling
+- 2018ApJ...864L..25O (2018): The Co-evolution of Disks and Stars in Embedded Stages: The Case of the Very-low-mass Protostar IRAS 15398-3359
+- 2018ApJ...865..131L (2018): High-resolution ALMA Study of the Proto-brown-dwarf Candidate L328-IRS
+- 2018ApJ...867....7S (2018): Molecular Clouds Associated with the Type Ia SNR N103B in the Large Magellanic Cloud
+- 2018ApJ...867..166S (2018): Internal Structures of Molecular Clouds in the LMC Revealed by ALMA
+- 2018ApJ...868L...5K (2018): A Spatially Resolved au-scale Inner Disk around DM Tau
+- 2018ApJ...869...59W (2018): Physical and Chemical Conditions of the Protostellar Envelope and the Protoplanetary Disk in HL Tau
+- 2018ApJ...869..158F (2018): ALMA Detections of the Youngest Protostars in Ophiuchus
+- 2018ApJ...869L..24I (2018): G11.92-0.61 MM 1: A Fragmented Keplerian Disk Surrounding a Proto-O Star
+- 2018MNRAS.474.4988S (2018): A disrupted molecular torus around Eta Carinae as seen in <SUP>12</SUP>CO with ALMA
+- 2018MNRAS.475..448T (2018): Mapping jet-ISM interactions in X-ray binaries with ALMA: a GRS 1915+105 case study
+- 2018MNRAS.475.3004S (2018): ALMA observation of the disruption of molecular gas in M87
+- 2018MNRAS.478.2505I (2018): Radiative transfer modelling of W33A MM1: 3D structure and dynamics of a complex massive star-forming region
+- 2018MNRAS.480.4991G (2018): ALMA imaging of the nascent planetary nebula IRAS 15103-5754
+- 2018MNRAS.481.4931E (2018): ALMA reveals the aftermath of a white dwarf-brown dwarf merger in CK Vulpeculae
+- 2018PASJ...70...85T (2018): ALMA view of the circumnuclear disk of the Galactic Center: tidally disrupted molecular clouds falling to the Galactic Center
+- 2018PASJ...70L...1M (2018): ALMA [C I] observations toward the central region of Seyfert galaxy NGC 613
+- 2018RAA....18...31P (2018): Morphology of the <SUP>13</SUP>CO(3-2) millimetre emission across the gas disc surrounding the triple protostar GG Tau A using ALMA observa…
+- 2018RAA....18...93Z (2018): Disks and outflows in the S255IR area of high mass star formation from ALMA observations
+- 2019A&A...621A..83S (2019): Outflows in the inner kiloparsec of NGC 1566 as revealed by molecular (ALMA) and ionized gas (Gemini-GMOS/IFU) kinematics
+- 2019A&A...621A.122B (2019): High-mass star formation at sub-50 au scales
+- 2019A&A...622A..99L (2019): Lack of high-mass pre-stellar cores in the starless MDCs of NGC 6334
+- 2019A&A...622L..14F (2019): Gas infall and possible circumstellar rotation in R Leonis
+- 2019A&A...623A..77S (2019): Discovery of a sub-Keplerian disk with jet around a 20 M<SUB>☉</SUB> young star. ALMA observations of G023.01-00.41
+- 2019A&A...623A..79C (2019): ALMA observations of molecular tori around massive black holes
+- 2019A&A...623A..96Y (2019): Signs of outflow feedback from a nearby young stellar object on the protostellar envelope around HL Tauri
+- 2019A&A...623A.153O (2019): HD 101584: circumstellar characteristics and evolutionary status
+- 2019A&A...624A...7V (2019): Spatial segregation of dust grains in transition disks. SPHERE observations of 2MASS J16083070-3828268 and RXJ1852.3-3700
+- 2019A&A...624A.138Y (2019): CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP> line and dust emission in a z = 3.63 strongly lensed starburst merger at sub-kiloparsec scal…
+- 2019A&A...626A..71A (2019): Physical and chemical fingerprint of protostellar disc formation
+- 2019A&A...627L...6M (2019): Substructures in the Keplerian disc around the O-type (proto-)star G17.64+0.16
+- 2019A&A...628A...6S (2019): The physical and chemical structure of Sagittarius B2. IV. Converging filaments in the high-mass cluster forming region Sgr B2(N)
+- 2019A&A...628A..65A (2019): Nuclear molecular outflow in the Seyfert galaxy NGC 3227
+- 2019A&A...629A...8T (2019): Spatio-kinematical model of the collimated molecular outflow in the water-fountain nebula IRAS 16342-3814
+- 2019A&A...629A..29J (2019): Organic chemistry in the innermost, infalling envelope of the Class 0 protostar L483
+- 2019A&A...629A.136S (2019): A rotating fast bipolar wind and disk system around the B[e]-type star MWC 922
+- 2019A&A...629A.146V (2019): IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS
+- 2019A&A...631A..22O (2019): Ubiquitous cold and massive filaments in cool core clusters
+- 2019A&A...631A..64B (2019): Kinematics around the B335 protostar down to au scales
+- 2019A&A...632A..61G (2019): ALMA images the many faces of the <ASTROBJ>NGC 1068</ASTROBJ> torus and its surroundings
+- 2019A&A...632A..66O (2019): ALMA observations of PKS 1549-79: a case of feeding and feedback in a young radio quasar
+- 2019ApJ...870...80L (2019): Spatially Resolved [C II] Emission in SPT0346-52: A Hyper-starburst Galaxy Merger at z ∼ 5.7
+- 2019ApJ...870...81T (2019): The Formation Conditions of the Wide Binary Class 0 Protostars within BHR 71
+- 2019ApJ...871...85L (2019): The ISM Properties and Gas Kinematics of a Redshift 3 Massive Dusty Star-forming Galaxy
+- 2019ApJ...871..100H (2019): ALMA Observations of the Protostellar Disk around the VeLLO IRAS 16253-2429
+- 2019ApJ...871..221M (2019): A Very Compact Extremely High Velocity Flow toward MMS 5/OMC-3 Revealed with ALMA
+- 2019ApJ...871..243Y (2019): JCMT POL-2 and ALMA Polarimetric Observations of 6000-100 au Scales in the Protostar B335: Linking Magnetic Field and Gas Kinematics in Obs…
+- 2019ApJ...872....2R (2019): ALMA Detection of Extreme Blueshifted Ionized Gas within 0.2 pc of Sgr A* from -480 to -300 km s<SUP>-1</SUP>
+- 2019ApJ...872..176Z (2019): An Asymmetric Keplerian Disk Surrounding the O-type Protostar IRAS 16547-4247
+- 2019ApJ...872..200H (2019): ALMA Observations of the Massive Molecular Outflow G331.512-0.103. II. Physical Properties, Kinematics, and Geometry Modeling
+- 2019ApJ...873...73Z (2019): An Ordered Envelope-Disk Transition in the Massive Protostellar Source G339.88-1.26
+- 2019ApJ...874...31W (2019): Ejection History of the IRAS 04166+2706 Molecular Jet
+- 2019ApJ...874..120F (2019): New Insights into the Physical Conditions and Internal Structure of a Candidate Proto-globular Cluster
+- 2019ApJ...876..141I (2019): ALMA Observations of Giant Molecular Clouds in the Starburst Dwarf Galaxy Henize 2-10
+- 2019ApJ...877L..25M (2019): The First Bird’s-eye View of a Gravitationally Unstable Accretion Disk in High-mass Star Formation
+- 2019ApJ...879..101L (2019): A Pseudodisk Threaded with a Toroidal and Pinched Poloidal Magnetic Field Morphology in the HH 211 Protostellar System
+- 2019ApJ...880...69Y (2019): HL Tau Disk in HCO<SUP>+</SUP> (3-2) and (1-0) with ALMA: Gas Density, Temperature, Gap, and One-arm Spiral
+- 2019ApJ...880..130M (2019): A New, Rotating Hot Corino in Serpens
+- 2019ApJ...880..157D (2019): ALMA and HST Kiloparsec-scale Imaging of a Quasar-galaxy Merger at Z ≈ 6.2
+- 2019ApJ...881...43K (2019): The Molecular Outflow in NGC 253 at a Resolution of Two Parsecs
+- 2019ApJ...881..112O (2019): Sulfur-bearing Species Tracing the Disk/Envelope System in the Class I Protostellar Source Elias 29
+- 2019ApJ...881..124M (2019): Resolved UV and [C II] Structures of Luminous Galaxies within the Epoch of Reionization
+- 2019ApJ...881L..42C (2019): Interstellar Plunging Waves: ALMA Resolves the Physical Structure of Nonstationary MHD Shocks
+- 2019ApJ...883....1Z (2019): An Episodic Wide-angle Outflow in HH 46/47
+- 2019ApJ...883..180H (2019): First Subarcsecond Submillimeter-wave [C I] Image of 49 Ceti with ALMA
+- 2019ApJ...884...48C (2019): The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields
+- 2019ApJ...885...98S (2019): The Infall Motion in the Low-mass Protostellar Binary NGC 1333 IRAS 4A1/4A2
+- 2019ApJ...886...14F (2019): An ALMA View of Molecular Filaments in the Large Magellanic Cloud. I. The Formation of High-mass Stars and Pillars in the N159E-Papillon Ne…
+- 2019ApJ...886...15T (2019): An ALMA View of Molecular Filaments in the Large Magellanic Cloud. II. An Early Stage of High-mass Star Formation Embedded at Colliding Clo…
+- 2019ApJ...887...55C (2019): Physical Characterization of an Unlensed, Dusty Star-forming Galaxy at z = 5.85
+- 2019ApJ...887..209A (2019): Protostellar Evolution in Serpens Main: Possible Origin of Disk-size Diversity
+- 2019ESC.....3.2110C (2019): The HH 212 Interstellar Laboratory: Astrochemistry as a Tool To Reveal Protostellar Disks on Solar System Scales around a Rising Sun
+- 2019MNRAS.487..622T (2019): Observation of narrow polar jets in the nascent wind of oxygen-rich AGB star EP Aqr
+- 2019MNRAS.489.1927S (2019): Testing the blast-wave AGN feedback scenario in MCG-03-58-007
+- 2019MNRAS.490.3329N (2019): The nascent wind of AGB star R doradus: evidence for a recent episode of enhanced mass loss
+- 2019NatAs...3..517Z (2019): Dynamics of a massive binary at birth
+- 2019PASJ...71...85M (2019): Complex distribution and velocity field of molecular gas in NGC 1316 as revealed by the Morita Array of ALMA
+- 2019PASJ...71..105T (2019): Rotating ionized gas ring around the Galactic center IRS13E3
+- 2019Sci...366...90A (2019): Gas flow and accretion via spiral streamers and circumstellar disks in a young binary protostar
+- 2020A&A...633A..13D (2020): The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. II. The spiral-outflow observed at…
+- 2020A&A...633A.126B (2020): The dynamically young outflow of the Class 0 protostar Cha-MMS1
+- 2020A&A...634L..12D (2020): ALMA reveals a large structured disk and nested rotating outflows in DG Tauri B
+- 2020A&A...635A..12P (2020): GG Tauri A: gas properties and dynamics from the cavity to the outer disk
+- 2020A&A...636A..38N (2020): Episodic accretion constrained by a rich cluster of outflows
+- 2020A&A...640A..82T (2020): Constraining MHD disk winds with ALMA. Apparent rotation signatures and application to HH212
+- 2020A&A...643A...1L (2020): The ALPINE-ALMA [CII] survey. Survey strategy, observations, and sample properties of 118 star-forming galaxies at 4 &lt; z &lt; 6
+- 2020A&A...643A...7G (2020): The ALPINE-ALMA [CII] survey. Circumgalactic medium pollution and gas mixing by tidal stripping in a merging system at z ∼ 4.57
+- 2020AJ....159..180K (2020): Outflow from Outer-arm Starburst in a Grazing Collision between Galaxies
+- 2020ApJ...888...41A (2020): Modeling the Accretion Disk around the High-mass Protostar GGD 27-MM1
+- 2020ApJ...889....9M (2020): GASP. XXII. The Molecular Gas Content of the JW100 Jellyfish Galaxy at z ∼ 0.05: Does Ram Pressure Promote Molecular Gas Formation?
+- 2020ApJ...889...20L (2020): The Circumstellar Environment around the Embedded Protostar EC 53
+- 2020ApJ...889...43Z (2020): Dense Cores, Filaments, and Outflows in the S255IR Region of High-mass Star Formation
+- 2020ApJ...889...85H (2020): Evolution from Spherical AGB Wind to Multipolar Outflow in Pre-planetary Nebula IRAS 17150-3224
+- 2020ApJ...889..140Y (2020): High-resolution Near-infrared Polarimetry and Submillimeter Imaging of FS Tau A: Possible Streamers in Misaligned Circumbinary Disk System
+- 2020ApJ...890...76N (2020): ALMA Observations of Two Massive and Dense MALT90 Clumps
+- 2020ApJ...890..149T (2020): The Molecular Gas in the NGC 6240 Merging Galaxy System at the Highest Spatial Resolution
+- 2020ApJ...890..171J (2020): The Redshift and Star Formation Mode of AzTEC2: A Pair of Massive Galaxies at z = 4.63
+- 2020ApJ...890L..14T (2020): Shaping the Envelope of the Asymptotic Giant Branch Star W43A with a Collimated Fast Jet
+- 2020ApJ...891...61Y (2020): Constraining the Infalling Envelope Models of Embedded Protostars: BHR 71 and Its Hot Corino
+- 2020ApJ...892...99C (2020): The Surprisingly Low Carbon Mass in the Debris Disk around HD 32297
+- 2020ApJ...892L..18I (2020): ALMA 50-parsec-resolution Imaging of Jet-ISM Interaction in the Lensed Quasar MG J0414+0534
+- 2020ApJ...893...51S (2020): Disk Structure around the Class I Protostar L1489 IRS Revealed by ALMA: A Warped-disk System
+- 2020ApJ...893...63T (2020): Physical Conditions and Kinematics of the Filamentary Structure in Orion Molecular Cloud 1
+- 2020ApJ...894...23H (2020): Determining the Physical Conditions of an Extremely Young Class 0 Circumbinary Disk around VLA 1623A
+- 2020ApJ...894...87C (2020): Gas Kinematics of the Massive Protocluster G286.21+0.17 Revealed by ALMA
+- 2020ApJ...895...73K (2020): A Massive Molecular Torus inside a Gas-poor Circumnuclear Disk in the Radio Galaxy NGC 1052 Discovered with ALMA
+- 2020ApJ...895..119T (2020): ALMA ACA and Nobeyama Observations of Two Orion Cores in Deuterated Molecular Lines
+- 2020ApJ...896...36T (2020): ALMA Observations of Giant Molecular Clouds in M33. I. Resolving Star Formation Activities in the Giant Molecular Filaments Possibly Formed…
+- 2020ApJ...897...59M (2020): Orbital and Mass Constraints of the Young Binary System IRAS 16293-2422 A
+- 2020ApJ...898...10T (2020): Circumbinary Disks of the Protostellar Binary Systems in the L1551 Region
+- 2020ApJ...899...94R (2020): Recombination Lines and Molecular Gas from Hypercompact H II regions in W51 A
+- 2020ApJ...899..165A (2020): Local Starburst Conditions and Formation of GRB 980425/SN 1998bw within a Collisional Ring
+- 2020ApJ...900L...2T (2020): Salt, Hot Water, and Silicon Compounds Tracing Massive Twin Disks
+- 2020ApJ...901..151S (2020): Molecular Gas Outflow in the Starburst Galaxy NGC 1482
+- 2020ApJ...901..166V (2020): Temperature Structures of Embedded Disks: Young Disks in Taurus Are Warm
+- 2020ApJ...902...99I (2020): ALMA 0"02 Resolution Observations Reveal HCN-abundance-enhanced Counter-rotating and Outflowing Dense Molecular Gas at the NGC 1068 Nucleus
+- 2020ApJ...902..141S (2020): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. III. Substructures in Protostellar Disks
+- 2020ApJ...902L..33G (2020): A Tale of Two Transition Disks: ALMA Long-baseline Observations of ISO-Oph 2 Reveal Two Closely Packed Nonaxisymmetric Rings and a ∼2 au Ca…
+- 2020ApJ...903...94M (2020): ALMA Observations of Giant Molecular Clouds in M33. II. Triggered High-mass Star Formation by Multiple Gas Colliding Events at the NGC 604 …
+- 2020ApJ...903..119L (2020): The ALMA Survey of 70 μm Dark High-mass Clumps in Early Stages (ASHES). II. Molecular Outflows in the Extreme Early Stages of Protocluster …
+- 2020ApJ...904...78S (2020): Constraining the Chemical Signatures and the Outburst Mechanism of the Class 0 Protostar HOPS 383
+- 2020ApJ...904..158L (2020): ALMA Observations and Modeling of the Rotating Outflow in Orion Source I
+- 2020ApJ...904..181L (2020): ALMA View of the Infalling Envelope around a Massive Protostar in S255IR SMA1
+- 2020ApJ...904..185O (2020): Substructures in the Disk-forming Region of the Class 0 Low-mass Protostellar Source IRAS 16293-2422 Source A on a 10 au Scale
+- 2020ApJ...904L...6A (2020): A Case of Simultaneous Star and Planet Formation
+- 2020ApJ...905...25G (2020): Multidirectional Mass Accretion and Collimated Outflows on Scales of 100-2000 au in Early Stages of High-mass Protostars
+- 2020CPhy...30...85D (2020): Observation of High Doppler Velocity Wings in the Nascent Wind of R Doradus
+- 2020MNRAS.491L..18J (2020): The ALPINE-ALMA [C II] survey: a triple merger at z ∼ 4.56
+- 2020MNRAS.492.1778M (2020): Resolved Lyman-α properties of a luminous Lyman-break galaxy in a large ionized bubble at z = 6.53
+- 2020MNRAS.492.2481W (2020): Colliding winds in and around the stellar group IRS 13E at the galactic centre
+- 2020MNRAS.493.3744F (2020): SMM J04135+10277: a distant QSO-starburst system caught by ALMA
+- 2020MNRAS.493.5290S (2020): Smoke on the water: CO and H<SUB>2</SUB>O in a circumnuclear disc around a quasar at redshift 2.64
+- 2020MNRAS.495..943H (2020): Revealing new features of the millimetre emission of the circumbinary envelope of Mira Ceti
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2020MNRAS.496.4358I (2020): ALMA unveils wider environment of distant red protocluster core
+- 2020MNRAS.496.5330F (2020): Gas kinematics of key prebiotic molecules in GV Tau N revealed with an ALMA, PdBI, and Herschel synergy
+- 2020MNRAS.497.3504T (2020): Jet-ISM interactions near the microquasars GRS 1758-258 and 1E 1740.7-2942
+- 2020MNRAS.497.5454I (2020): Multiwavelength investigation of extended green object G19.88-0.53: revealing a protocluster
+- 2020NatAs...4..670A (2020): Infalling gas in a Lyman-α blob
+- 2020PASJ...72...36T (2020): Sub-millimeter detection of a Galactic center cool star IRS 7 by ALMA
+- 2020PASJ...72L...5T (2020): How far actually is the Galactic Center IRS 13E3 from Sagittarius A<SUP>*</SUP>?
+- 2021A&A...645A..49G (2021): A proto-pseudobulge in ESO 320-G030 fed by a massive molecular inflow driven by a nuclear bar
+- 2021A&A...645A.142A (2021): Continuity of accretion from clumps to Class 0 high-mass protostars in SDC335
+- 2021A&A...646A...1K (2021): Molecular remnant of Nova 1670 (CK Vulpeculae). II. A three-dimensional view of the gas distribution and velocity field
+- 2021A&A...646A..59R (2021): Tracing molecular stratification within an edge-on protoplanetary disk
+- 2021A&A...648A..41V (2021): Outflows, envelopes, and disks as evolutionary indicators in Lupus young stellar objects
+- 2021A&A...650A.142M (2021): The ionized heart of a molecular disk. ALMA observations of the hyper-compact HII region G24.78+0.08 A1
+- 2021A&A...652A..98G (2021): The Galaxy Activity, Torus, and Outflow Survey (GATOS). I. ALMA images of dusty molecular tori in Seyfert galaxies
+- 2021A&A...653A..77P (2021): Cyano radical emission at small spatial scales towards massive protostars
+- 2021A&A...653A.111R (2021): The ALPINE-ALMA [CII] survey. The contribution of major mergers to the galaxy mass assembly at z ∼ 5
+- 2021A&A...653A.166C (2021): Structured velocity field in the inner envelope of B335: ALMA observations of rare CO isotopologues
+- 2021A&A...654A...8N (2021): Jet-driven AGN feedback on molecular gas and low star-formation efficiency in a massive local spiral galaxy with a bright X-ray halo
+- 2021A&A...654A..69S (2021): SEEDisCS. II. Molecular gas in galaxy clusters and their large-scale structure: low gas fraction galaxies, the case of CL1301.7‒1139
+- 2021A&A...655A..25Z (2021): The IBISCO survey. I. Multiphase discs and winds in the Seyfert galaxy Markarian 509
+- 2021ApJ...907..108G (2021): Identification of Methyl Isocyanate and Other Complex Organic Molecules in a Hot Molecular Core, G31.41+0.31
+- 2021ApJ...907L..41L (2021): First Detection of Interaction between a Magnetic Disk Wind and an Episodic Jet in a Protostellar System
+- 2021ApJ...908...92H (2021): Rotating Filament in Orion B: Do Cores Inherit Their Angular Momentum from Their Parent Filament?
+- 2021ApJ...908..108F (2021): Physical and Chemical Structure of the Disk and Envelope of the Class 0/I Protostar L1527
+- 2021ApJ...908..250H (2021): ALMA Observations of the Inner Cavity in the Protoplanetary Disk around Sz 84
+- 2021ApJ...909...11J (2021): 25 au Angular Resolution Observations of HH 211 with ALMA: Jet Properties and Shock Structures in SiO, CO, and SO
+- 2021ApJ...909...98Y (2021): The Evolution of NGC 7465 as Revealed by Its Molecular Gas Properties
+- 2021ApJ...910...11O (2021): FAUST. II. Discovery of a Secondary Outflow in IRAS 15398-3359: Variability in Outflow Direction during the Earliest Stage of Star Formatio…
+- 2021ApJ...917...99Y (2021): ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System a…
+- 2021ApJ...918...69U (2021): ALMA Observations of Lyα Blob 1: Multiple Major Mergers and Widely Distributed Interstellar Media
+- 2021MNRAS.500.3802H (2021): Centrally concentrated molecular gas driving galactic-scale ionized gas outflows in star-forming galaxies
+- 2021MNRAS.504.2687N (2021): Morpho-kinematics of the circumstellar envelope of the AGB star R Dor: a global view
+- 2021MNRAS.507.1886F (2021): Probing the kinematics and chemistry of the hot core Mon R2 IRS 3 using ALMA observations
+- 2021MNRAS.507.3998P (2021): An ALMA view of 11 dusty star-forming galaxies at the peak of cosmic star formation history
+- 2021MNRAS.508.4639Z (2021): ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions-VI. On the formation of the 'L' type filament in G286.21+0.17
+- 2021PASJ...73..205T (2021): ALMA view of the Galactic super star cluster RCW 38 at 270 au resolution
+- 2021PASJ...73S..35T (2021): The formation of young massive clusters triggered by cloud-cloud collisions in the Antennae galaxies NGC 4038/NGC 4039
+- 2021PASJ...73S..62S (2021): ALMA CO observations of a giant molecular cloud in M 33: Evidence for high-mass star formation triggered by cloud-cloud collisions
+- 2021RAA....21...26Y (2021): Collapsing index: a new method to identify star-forming cores based on ALMA images
+- 2022A&A...664A.171V (2022): FAUST. V. Hot methanol in the [BHB2007] 11 protobinary system; hot corino versus shock origin
+- 2022ApJ...927..169N (2022): Mira Ceti, Atypical Archetype
+- 2022ApJ...931L...5J (2022): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Deriving Inclination Angle and Velocity of the Protostellar Jets from Their SiO…
+- 2022ApJ...937...10L (2022): Stratified Distribution of Organic Molecules at the Planet-formation Scale in the HH 212 Disk Atmosphere
+- 2022MNRAS.509..748W (2022): ALMA observations of the Extended Green Object G19.01-0.03 - I. A Keplerian disc in a massive protostellar system
+- 2022MNRAS.509.2920N (2022): The MBHBM<SUP>⋆</SUP> Project - II. Molecular gas kinematics in the lenticular galaxy NGC 3593 reveal a supermassive black hole
+- 2022MNRAS.510.2363H (2022): Morpho-kinematics of the wind of asymptotic giant branch star L<SUB>2</SUB> Pup
+- 2022MNRAS.514..578W (2022): The initial conditions for young massive cluster formation in the Galactic Centre: convergence of large-scale gas flows
+- 2022MNRAS.515..543C (2022): FAUST VI. VLA1623-2417 B: a new laboratory for astrochemistry around protostars on 50 au scale
+- 2023A&A...669A..56Q (2023): History of two mass loss processes in VY CMa. Fast outflows carving older ejecta
+- 2023A&A...670L...8G (2023): Reflections on nebulae around young stars. A systematic search for late-stage infall of material onto Class II disks
+- 2023A&A...673A..46B (2023): Another X-ray UFO without a momentum-boosted molecular outflow. ALMA CO(1-0) observations of the galaxy pair IRAS 05054+1718
+- 2023A&A...674A..46W (2023): Highly structured turbulence in high-mass star formation: An evolved infrared-dark cloud G35.20-0.74 N
+- 2023A&A...676A..67W (2023): Quantifying the energetics of molecular superbubbles in PHANGS galaxies
+- 2023A&A...677A..80W (2023): ALMA and VLBA views on the outflow associated with an O-type protostar in G26.50+0.28
+- 2023ApJ...942...25F (2023): The State of the Molecular Gas in Post-starburst Galaxies
+- 2023ApJ...944...49F (2023): 300: An ACA 870 μm Continuum Survey of Orion Protostars and Their Evolution
+- 2023ApJ...953L...6P (2023): Detection of a High-velocity Jet from MWC 349A Traced by Hydrogen Recombination Line Maser Emission
+- 2023ApJ...956L..16T (2023): An ALMA-resolved View of 7000 au Protostellar Gas Ring around the Class I Source CrA-IRS 2 as a Possible Sign of Magnetic Flux Advection
+- 2023ApJ...956L..45G (2023): An SiO Toroid and Wide-angle Outflow Associated with the Massive Protostar W75N(B)-VLA2
+- 2023ApJ...958...98F (2023): Early Planet Formation in Embedded Disks (eDisk). XII. Accretion Streamers, Protoplanetary Disk, and Outflow in the Class I Source Oph IRS …
+- 2023MNRAS.518.2034H (2023): Evidence for episodic and patchy mass ejection in the circumstellar envelope of AGB star R Leonis
+- 2023MNRAS.521.1045R (2023): Regular rotation and low turbulence in a diverse sample of z ∼ 4.5 galaxies observed with ALMA
+- 2023MNRAS.526.4402B (2023): Fragmentation and dynamics of dense gas structures in the proximity of massive young stellar object W42-MME
+- 2023PASJ...75..120F (2023): Twisted magnetic field in star formation processes of L1521 F revealed by submillimeter dual-band polarimetry using the James Clerk Maxwell…
+- 2023PASJ...75..225M (2023): An expanding ring of the hypercompact H II region W 49 N:A2
+- 2023PASJ...75..424O (2023): ALMA Band 6 high-resolution observations of the transitional disk around SY Chamaeleontis
+- 2023PASJ...75..646K (2023): Investigating physical states of molecular gas in the overlapping region of interacting galaxies NGC 4567/4568 using ALMA
+- 2023RAA....23a5004N (2023): Contributions of Rotation, Expansion and Line Broadening to the Morphology and Kinematics of the Inner CSE of Oxygen-rich AGB Star R Hya
+- 2024A&A...681A.104B (2024): Shocking Sgr B2 (N1) with its own outflow. A new perspective on segregation between O- and N-bearing molecules
+- 2024A&A...682A..61C (2024): A dusty streamer infalling onto the disk of a class I protostar. ALMA dual-band constraints on grain properties and the mass-infall rate
+- 2024A&A...683A.133G (2024): TIPSY: Trajectory of Infalling Particles in Streamers around Young stars. Dynamical analysis of the streamers around S CrA and HL Tau
+- 2024A&A...684A.189V (2024): FAUST. XI. Enhancement of the complex organic material in the shocked matter surrounding the [BHB2007] 11 protobinary system
+- 2024A&A...685A..80Z (2024): Unveiling [C II] clumps in a lensed star-forming galaxy at z ∼ 3.4
+- 2024A&A...686A..48N (2024): CON-quest. II. Spatially and spectrally resolved HCN/HCO<SUP>+</SUP> line ratios in local luminous and ultraluminous infrared galaxies
+- 2024A&A...686A.120U (2024): Vertical and radial distribution of atomic carbon in HD 163296
+- 2024A&A...686A.122A (2024): ALMA-IMF. X. The core population in the evolved W33-Main (G012.80) protocluster
+- 2024A&A...686A.146Z (2024): Gas inflows from cloud to core scales in G332.83-0.55: Hierarchical hub-filament structures and tide-regulated gravitational collapse
+- 2024A&A...686A.156D (2024): ALMA-ALPINE [CII] survey: The sub-kpc morphology of three main sequence galaxy systems at z ∼ 4.5 revealed by ALMA
+- 2024A&A...686A.201N (2024): ALMA view of the L1448-mm protostellar system on disk scales: CH<SUB>3</SUB>OH and H<SUP>13</SUP>CN as new disk wind tracers
+- 2024A&A...686L..13D (2024): FAUST. XV. A disc wind mapped by CH<SUB>3</SUB>OH and SiO in the inner 300 au of the NGC 1333 IRAS 4A2 protostar
+- 2024A&A...687A.112M (2024): Probing the dynamical and kinematical structures of detached shells around AGB stars
+- 2024A&A...688A...8W (2024): The accretion burst of the massive young stellar object G323.46‒0.08
+- 2024A&A...689A.163L (2024): The fountain of the luminous infrared galaxy Zw049.057 as traced by its OH megamaser
+- 2024A&A...689A.263D (2024): GATOS: missing molecular gas in the outflow of NGC 5728 revealed by JWST
+- 2024A&A...690A..46S (2024): Early Planet Formation in Embedded Disks (eDisk): XVI. Asymmetric dust disk driving a multicomponent molecular outflow in the young Class 0…
+- 2024A&A...690A.185W (2024): Dynamical accretion flows: ALMAGAL: Flows along filamentary structures in high-mass star-forming clusters
+- 2024A&A...691L..14O (2024): Contemporaneous high-angular-resolution imaging of the AGB star W Hya in vibrationally excited H<SUB>2</SUB>O lines and visible polarized l…
+- 2024A&A...692A.151S (2024): Uncovering the structure and kinematics of the ionized core of M 2-9 with ALMA
+- 2024A&A...692A.181Z (2024): Fine structure and kinematics of the ionized and molecular gas in the jet and disk around S255IR NIRS3 from high-resolution ALMA observatio…
+- 2024AJ....167...72D (2024): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Molecular Jets and Episodic Accretion in Protostars
+- 2024AJ....167...77D (2024): JWST Imaging of Edge-on Protoplanetary Disks. I. Fully Vertically Mixed 10 μm Grains in the Outer Regions of a 1000 au Disk
+- 2024AJ....167...94H (2024): The Hidden Clumps in VY CMa Uncovered by the Atacama Large Millimeter/submillimeter Array
+- 2024ApJ...961..108K (2024): The CO Outflow Components Ejected by a Recent Accretion Event in B335
+- 2024ApJ...961..228S (2024): Ring Gap Structure around Class I Protostar WL 17
+- 2024ApJ...961L..35M (2024): The ALMA-QUARKS Survey: Detection of Two Extremely Dense Substructures in a Massive Prestellar Core
+- 2024ApJ...962..166W (2024): Vertical Structure of Gas and Dust in Four Debris Disks
+- 2024ApJ...963....1O (2024): "Beads-on-a-string" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster
+- 2024ApJ...963...72O (2024): Revealing Multiple Nested Molecular Outflows with Rotating Signatures in HH270mms1-A with ALMA
+- 2024ApJ...963..103G (2024): The ALMA View of Positive Black Hole Feedback in the Dwarf Galaxy Henize 2─10
+- 2024ApJ...963..163I (2024): The ALMA Survey of 70 μm Dark High-mass Clumps in Early Stages (ASHES). X. Hot Gas Reveals Deeply Embedded Star Formation
+- 2024ApJ...963L..31H (2024): On the Magnetic Field Properties of Protostellar Envelopes in Orion
+- 2024ApJ...964...34L (2024): Multiple Jets in the Bursting Protostar HOPS 373SW
+- 2024ApJ...964...48T (2024): An Extremely Young Protostellar Core, MMS 1/OMC-3: Episodic Mass Ejection History Traced by the Micro SiO Jet
+- 2024ApJ...965...99T (2024): Discovery of Asymmetric Spike-like Structures of the 10 au Disk around the Very Low-luminosity Protostar Embedded in the Taurus Dense Core …
+- 2024ApJ...966...32E (2024): Early Planet Formation in Embedded Disks (eDisk). XIII. Aligned Disks with Nonsettled Dust around the Newly Resolved Class 0 Protobinary R …
+- 2024ApJ...966..119L (2024): ALMA Spectral Survey of an Eruptive Young Star, V883 Ori (ASSAY). I. What Triggered the Current Episode of Eruption?
+- 2024ApJ...966..192S (2024): Multiple Outflows around a Single Protostar IRAS 15398−3359
+- 2024ApJ...967...15K (2024): Infall Motions in the Hot Core Associated with the Hypercompact H II Region G345.0061+01.794 B
+- 2024ApJ...969L...6Z (2024): M17 MIR: A Massive Star Is Forming via Episodic Mass Accretion
+- 2024ApJ...970...28O (2024): CH<SUB>3</SUB>OH and Its Deuterated Species in the Disk/Envelope System of the Low-mass Protostellar Source B335
+- 2024ApJ...970L..40S (2024): Direct Observational Evidence of Multi-epoch Massive Star Formation in G24.47+0.49
+- 2024ApJ...971L..33K (2024): An HI-absorption-selected Cold Rotating Disk Galaxy at z ≈ 2.193
+- 2024ApJ...974..150W (2024): Accretion and Outflow in Orion-KL Source I
+- 2024ApJ...976...29H (2024): ALMASOP. The Localized and Chemically Rich Features near the Bases of the Protostellar Jet in HOPS 87
+- 2024ApJ...977...37N (2024): Turbulent Pressure Heats Gas and Suppresses Star Formation in Galactic Bar Molecular Clouds
+- 2024ApJ...977..126L (2024): Multiple Components of the Outflow in the Protostellar System HH 212: Outer Outflow Shell, Rotating Wind, Shocked Wind, and Jet
+- 2024ApJ...977..161V (2024): Kinematic Analysis of z = 4.3 Galaxies in the SPT2349─56 Protocluster Core
+- 2024MNRAS.527.1444A (2024): ATCA study of Small Magellanic Cloud supernova remnant 1E 0102.2-7219
+- 2024MNRAS.527.3559P (2024): The debris disc of HD 131488: bringing together thermal emission and scattered light
+- 2024MNRAS.527.5895D (2024): Galactic 'Snake' IRDC G11.11-0.12: a site of multiple hub-filament systems and colliding filamentary clouds
+- 2024MNRAS.528.7383C (2024): FAUST XII. Accretion streamers and jets in the VLA 1623-2417 protocluster
+- 2024MNRAS.532L..36R (2024): HCN as a probe of the inner disc in a candidate proto-brown dwarf
+- 2024MNRAS.535.1052B (2024): The radio-infrared nebula in II Zw 40: clusters forming in colliding elongated clouds
+- 2024MNRAS.535.1364Z (2024): ATOMS: ALMA three-millimeter observations of massive star-forming regions - XVIII. On the origin and evolution of dense gas fragments in mo…
+- 2024MNRAS.535.2538Z (2024): A resolved, multiwavelength study of gas-rich dwarf galaxies in the Fornax cluster using MUSE, MeerKAT, and ALMA
+- 2024NatAs...8..256O (2024): Closing the feedback-feeding loop of the radio galaxy 3C 84
+- 2024NatAs...8..308D (2024): Chemical tracers of a highly eccentric AGB-main-sequence star binary
+- 2024RAA....24c5009N (2024): EP Aquarii: A New Picture of the Circumstellar Envelope
+- 2025A&A...693A..76C (2025): Dissecting the disk and the jet of a massive (proto)star: An ALMA view of IRAS 20126+4104
+- 2025A&A...693A..91L (2025): Gas dynamics in an AGN-host galaxy at z ≃ 2.6: Regular rotation, noncircular motions, and mass models
+- 2025A&A...693A.174E (2025): Molecular gas stratification and disturbed kinematics in the Seyfert galaxy MCG-05-23-16 revealed by JWST and ALMA
+- 2025A&A...693A.199C (2025): Interaction between the supernova remnant W44 and the infrared dark cloud G034.77-00.55: Shock induced star formation
+- 2025A&A...694A..86Y (2025): ALMA observations of massive clouds in the central molecular zone: slim filaments tracing parsec-scale shocks
+- 2025A&A...694A..92B (2025): Protostellar Outflows at the EarliesT Stages (POETS) VI. Evidence of disk-wind in G11.92-0.61 MM1
+- 2025A&A...695A..51B (2025): Hierarchical accretion flow from the G351 infrared dark filament to its central cores
+- 2025A&A...695A.236L (2025): Erosion of a dense molecular core by a strong outflow from a massive protostar
+- 2025A&A...695A.278H (2025): FAUST: XXIII. SiO outflow in the protobinary system L483
+- 2025A&A...696A.202S (2025): ALMA-IMF: XVIII. The assembly of a star cluster: Dense N<SUB>2</SUB>H<SUP>+</SUP> (1─0) kinematics in the massive G351.77 protocluster
+- 2025A&A...699A..22M (2025): An accreting dwarf star orbiting the S-type giant star π<SUP>1</SUP> Gru
+- 2025A&A...699A..83A (2025): Molecular gas excitation and outflow properties of obscured quasars at z ∼ 0.1
+- 2025A&A...699A.187G (2025): Decoding the molecular torus of NGC 1068: Insights into its structure and kinematics from high-resolution ALMA observations
+- 2025A&A...699A.256P (2025): The ALMA-CRISTAL survey: Extended [CII] emission in an interacting galaxy system at z ∼ 5.5
+- 2025A&A...699A.382M (2025): FAUST: XXV. A potential new molecular outflow in [BHB2007] 11
+- 2025A&A...700L..11S (2025): Stephenson 2 DFK 52: Discovery of an exotic red supergiant in the massive stellar cluster RSGC2
+- 2025A&A...701A.141L (2025): Sulfur oxides tracing streamers and shocks at low-mass protostellar disk─envelope interfaces
+- 2025A&A...703A..15M (2025): Discovery of carbon monoxide emission from five debris disks around young A-type stars
+- 2025A&A...704A..18O (2025): High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB…
+- 2025ApJ...980..126K (2025): ALMA FACTS. II. Large Scale Variations in the <SUP>12</SUP>CO(J = 2 ─ 1) to <SUP>12</SUP>CO(J = 1 ─ 0) Line Ratio in Nearby Galaxies
+- 2025ApJ...985..166K (2025): Early Planet Formation in Embedded Disks (eDisk). XXI. Limited Role of Streamers in Mass Supply to the Disk in the Class 0 Protostar IRAS 1…
+- 2025ApJ...985..226W (2025): A Multiwavelength Study of the Dynamic Environment Surrounding the FUor V960 Mon
+- 2025ApJ...985..259J (2025): Searching for Compact Obscured Nuclei in Compton-thick Active Galactic Nuclei
+- 2025ApJ...986..150H (2025): Origin of the Shell Structure in the Primary Outflow from IRAS 15398−3359
+- 2025ApJ...987..197H (2025): The ALMA-ATOMS Survey: Exploring Protostellar Outflows in HC<SUB>3</SUB>N
+- 2025ApJ...988..111I (2025): The Detection of Spatially Resolved Protostellar Outflows and Episodic Jets in the Outer Galaxy
+- 2025ApJ...989...56H (2025): ALMASOP. A Rotating Feature Rich in Complex Organic Molecules in a Protostellar Core
+- 2025ApJ...992...18P (2025): Early Planet Formation in Embedded Disks (eDisk). XXII. Keplerian Disk, Disk Structures, and Jets/Outflows in the Class 0 Protostar IRAS 04…
+- 2025ApJ...992...44D (2025): Revisiting the Gas Dynamics of Henize 2─10: Possible Drivers of the Starburst
+- 2025ApJ...992L..15L (2025): A Dense Molecular Ringlike Structure in Gaseous CO Depletion Region G34.74−0.12
+- 2025ApJ...993...90S (2025): ALMA High-resolution Observation for the Transitional Disk Around IRAS 04125+2902
+- 2025ApJ...993..120H (2025): Early Planet Formation in Embedded Disks (eDisk). XVII. A Compact but Structured Keplerian Disk and Large-scale Streamers Revealed in the C…
+- 2025ApJ...993..200C (2025): The Hourglass-shaped Magnetic Fields and Dust Filaments in the HH 211 Protostellar Envelope
+- 2025ApJ...994..225N (2025): Unveiling Stellar Feedback and Cloud Structure in the ρ Ophiuchi-A Region Using ALMA and JWST: Discovery of Substellar Cores, C<SUP>18</SUP…
+- 2025ApJ...995..108J (2025): Molecular Gas in Major Mergers Hosting Dual and Single AGNs at &lt;10 kpc Nuclear Separations
+- 2025ApJ...995..111Z (2025): The ALMA-ATOMS-QUARKS Survey: Resolving a Chemically Rich Massive Protostellar Outflow
+- 2025ApJ...995..211I (2025): ALMA Subparsec Resolution Dense Molecular Line Observations of the NGC 1068 Nucleus
+- 2025ApJ...995L...7L (2025): The Rotation Dip in the Envelope─Disk Transition of HH 111: Evidence for Magnetic Braking
+- 2025MNRAS.537.3009R (2025): Into the Mystic: the MUSE view of the ionized gas in the Mystic Mountains in Carina
+- 2025MNRAS.540.2396S (2025): MeerKAT discovery of an infalling cold gas tail on to the nearby barred spiral galaxy, NGC 5643
+- 2025MNRAS.541.3799K (2025): Extreme cloud collisions in nearby barred galaxies
+- 2025PASJ...77..432U (2025): ADF22-WEB: A giant barred spiral starburst galaxy in the z = 3.1 SSA22 protocluster core
+- 2025SciA...11.4512O (2025): Massive extended streamers feed high-mass young stars
+- 2025SciA...11.6953M (2025): A misaligned protostellar disk fed by gas streamers in a barred spiral-like massive dense core
+- 2026A&A...705A..51D (2026): NGC 6860, Mrk 915, and MCG -01-24-012: II. Inflowing and outflowing cold molecular gas and the connection with ionized gas in Seyfert galax…
+- 2026A&A...706A..27S (2026): Probing jet base emission of M87* with the 2021 Event Horizon Telescope observations
+- 2026A&A...706A.248T (2026): Interaction of the central jet with the surrounding gas in the protostellar outflow from IRAS 04166+2706
+- 2026A&A...706A.256A (2026): Characterizing the physical and chemical properties of the Class I protostellar system Oph-IRS 44: Binarity, infalling streamers, and accre…
+- 2026A&A...707A.252K (2026): Detailed lens modeling and kinematics of the submillimeter galaxy G09v1.97: An analysis of CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP>, …
+- 2026A&A...709A.173M (2026): ALMAGAL: VIII. Early phases of triggered star formation in source AG286.0716─1.8229
+- 2026A&A...710A.140M (2026): Observations of highly inclined disks with ALMA: Results from <SUP>12</SUP>CO gas and continuum observations
+- 2026A&A...711A.239S (2026): ALMA-IMF: XXI. N<SUB>2</SUB>H<SUP>+</SUP> kinematics in the G012.80 protocluster: Evidence of filament rotation and evolution
+- 2026A&A...712A.227E (2026): ALMA CO-CAVITY: I. Resolved molecular gas in void galaxies
+- 2026A&A...713A.149V (2026): Challenges in probing turbulent and magnetic support in cores: The W43-MM1 protocluster case study
+- 2026AJ....172...75M (2026): ALMA Observations of Magnetic Fields in the Massive Star-forming Region IRAS 18360-0537
+- 2026AJ....172..108L (2026): Formation of a Protostellar Multiple System via Rotational Fragmentation
+- 2026ApJ...997..155M (2026): The ALMA Survey of 70 µm Dark High-mass Clumps in Early Stages (ASHES). XIII. Core Mass Function, Lifetime, and Growth of Prestellar Cores
+- 2026ApJ...999...62H (2026): HOPS-288: A Laboratory for Complex Organics in Proto-binary/Proto-multiple Systems
+- 2026ApJ..1000..184N (2026): Investigating the Nested Structure of the Outflow from the Low Luminosity Protostar IRAS 16253-2429 Using JWST and ALMA
+- 2026ApJ..1001..161H (2026): The ALMA-QUARKS Survey: Evidence of an Explosive Molecular Outflow in IRAS 15520─5234
+- 2026ApJ..1001..184M (2026): Reconciling 3D Models for the Central 10 pc of the Milky Way
+- 2026ApJ..1003..219W (2026): The Keplerian Disk, Envelope, and Streamers Surrounding an Early O-type Protostar in the Sagittarius C Cloud of the Central Molecular Zone
+- 2026ApJ..1004..207M (2026): Global and Local Infall in the ASHES Sample (GLASHES). II. Asymmetric Line Profiles Around Dense Cores in 70 μm Dark Massive Clumps
+- 2026MNRAS.546f2269R (2026): The link between galaxy merger, radio jet expansion, and molecular outflow in the ULIRG IRAS 00183−7111
+- 2026MNRAS.551g1645K (2026): A high-velocity SiO jet from S255N SMA3

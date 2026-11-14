@@ -1,0 +1,576 @@
+{
+ "bibcode": "2022A&A...657A.136E",
+ "title": "SOLIS. XIII. Nitrogen fractionation towards the protocluster OMC-2 FIR4",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142147",
+ "arxiv_id": "2110.10427",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "How does the $^{14}$N/$^{15}$N isotopic ratio vary across the protocluster OMC-2 FIR4, and how does it compare at high angular resolution between HCN and N$_2$H$^+$?",
+ "alma_project_codes": [
+  "2016.0.00681.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~600 au linear resolution (ALMA); ~4.1 x 2.2 arcsec or ~860 au (NOEMA)",
+  "sensitivity": "rms is 10.1 mK for 15NNH+, 10.3 mK for N15NH+ and 31 mK for N2H+ (ALMA extracted spectra)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAM 30m single-dish observations of H13CN and HC15N and the average 12C/13C ratio of 50 +- 5",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we used publicly available IRAM 30m observations of OMC-2 FIR4 to achieve this ((cite: Kahane2018))."
+     },
+     {
+      "loc": "HCN isotopologues",
+      "quote": "However, the column density ratio $N_{\\rm TOT}$(H$^{13}$CN)/$N_{\\rm TOT}$(HC$^{15}$N) has to be corrected by the $^{12}$C/$^{13}$C ratio, which was assumed to be 50$\\pm$5 as measured by (cite: Kahane2018) using CN, HCN and HC$_3$N lines."
+     }
+    ]
+   },
+   "citation": "(cite: Kahane2018)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 3 dataset of N2H+, 15NNH+, and N15NH+ (1-0) towards OMC-2 FIR4",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "As stated above, we extracted spectra of N$_2$H$^+$, $^{15}$NNH$^+$ and N$^{15}$NH$^+$ $(1-0)$, observed with ALMA, from the dataset published in (cite: Fontani2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Fontani2020)"
+  },
+  {
+   "what": {
+    "value": "3 mm NOEMA continuum emission map",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "For comparison, Fig. 3 shows the continuum emission obtained from the NOEMA data at 3 mm published in (cite: Fontani2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Fontani2017)"
+  },
+  {
+   "what": {
+    "value": "Average H2 volume density of OMC-2 FIR4 (1.2x10^6 cm^-3) and kinetic/excitation temperature range (35-45 K)",
+    "evidence": [
+     {
+      "loc": "Source background",
+      "quote": "The envelope of OMC-2 FIR4, having an angular size of $\\sim 10-15$$^{\\prime\\prime}$or $\\sim$ 4000-6000 au (e.g. (cite: Fontani2017; Fontani2020)), is believed to have a temperature of 35-45 K and an average H$_2$ volume density of 1.2$\\times$10$^6$ cm$^{-3}$ ((cite: Ceccarelli2014b))"
+     },
+     {
+      "loc": "HCN isotopologues",
+      "quote": "Therefore, the spectra were modelled for two fixed temperatures, corresponding to the range of temperatures found for FIR4 using previous data: an upper temperature of 45 K and a lower temperature of 35 K (taken from (cite: Ceccarelli2014b), (cite: Favre2018))."
+     }
+    ]
+   },
+   "citation": "(cite: Ceccarelli2014b), (cite: Favre2018)"
+  },
+  {
+   "what": {
+    "value": "Collisional coefficients for HCN and N2H+ from the CASSIS collision database",
+    "evidence": [
+     {
+      "loc": "Extraction of the spectra and analysis",
+      "quote": "We use collisional coefficients taken from the CASSIS collision database and calculated by (cite: Hernandez-Vera2014) for HCN and by (cite: Daniel2005) and (cite: Lique2015) for N$_2$H$^+$."
+     }
+    ]
+   },
+   "citation": "(cite: Hernandez-Vera2014), (cite: Daniel2005), (cite: Lique2015)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters and HFS relative intensities and velocity separations from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "CLASS",
+      "quote": "Both inputs were in this case obtained from the Cologne Molecular Database for Spectroscopy (CDMS) for each isotopologue."
+     },
+     {
+      "loc": "Extraction of the spectra and analysis",
+      "quote": "Based on analysis carried out with the CASSIS software ((cite: Vastel2015)) and JPL (http://spec.jpl.nasa.gov/) and CDMS (https://cdms.astro.uni-koeln.de/classic/) molecular databases."
+     }
+    ]
+   },
+   "citation": "CDMS, JPL"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Estimate interferometric flux recovery for NOEMA HCN isotopologue cubes",
+   "method": "Extract H13CN and HC15N spectra from the NOEMA cube within a 28 arcsec polygon matching the IRAM 30m beam and compare to velocity-resampled IRAM 30m single-dish spectra",
+   "software": [
+    "GILDAS MAPPING",
+    "GILDAS CLASS"
+   ],
+   "key_parameters": [
+    "Polygon size ~ 28 arcsec; velocity resolution resampled to ~6.9 km s^-1"
+   ],
+   "assumptions": [
+    "Flux filtering affects H13CN and HC15N homogeneously if their spatial distributions are similar"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Define sub-region polygons and extract H13CN, HC15N, N2H+, 15NNH+, and N15NH+ spectra",
+   "method": "Identify five gaseous cores with average H13CN (1-0) emission > 3 sigma rms, decompose by eye into non-overlapping polygons (NW, NE, S, E, FIR3), extract spectra in Jy using GILDAS MAPPING, and convert to temperature units (K) using GILDAS CLASS",
+   "software": [
+    "GILDAS MAPPING",
+    "GILDAS CLASS",
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Detection threshold > 3 sigma rms on average emission map (-1 to 18 km s^-1 for H13CN, 5 to 15 km s^-1 for HC15N)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Verify LTE condition by calculating critical densities",
+   "method": "Calculate critical density n_CRIT = A_ul / C_ul at 40 K for each transition and compare with the average H2 volume density of OMC-2 FIR4",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Temperature = 40 K; average H2 density = 1.2x10^6 cm^-3"
+   ],
+   "assumptions": [
+    "15N and 13C isotopologues have the same collisional coefficients as their main isotopologues for the 1-0 transition"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit H13CN and HC15N spectra and derive HCN 14N/15N ratios",
+   "method": "Fit single Gaussians in CASSIS using Levenberg-Marquardt fitting to obtain FWHM, then perform LTE radiative transfer modelling at fixed upper and lower excitation temperatures to determine column densities and 14N/15N ratios",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "T_ex = 35 K and 45 K for FIR4 regions; T_ex = 100 K and 150 K for FIR3; T_bg = 2.73 K; calibration error = 10%"
+   ],
+   "assumptions": [
+    "Lines are optically thin (opacities 8.1x10^-4 to 1.6x10^-2) and in LTE; 12C/13C = 50 +- 5"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit N2H+, 15NNH+, and N15NH+ hyperfine spectra and derive column densities using CLASS HFS routine",
+   "method": "Fit hyperfine structure using the CLASS HFS routine, obtain total integrated intensity W (by summing all HF components, scaling the strongest component by 9/5 for faint 15N isotopologues, or scaling the isolated faintest J'F'-JF = 01-12 component by 27/3 for optically thick N2H+), and compute column densities assuming optically thin LTE",
+   "software": [
+    "GILDAS CLASS"
+   ],
+   "key_parameters": [
+    "T_ex = 35 K and 45 K; T_bg = 2.73 K; FWHM = 0.8 km s^-1; velocity resolution = 0.2 km s^-1; cal = 10%"
+   ],
+   "assumptions": [
+    "LTE and optically thin conditions hold for 15N isotopologues and for the isolated faintest HF component (3/27 weight) of N2H+"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit N2H+, 15NNH+, and N15NH+ spectra using CASSIS MCMC LTE modelling and derive N2H+ 14N/15N ratios",
+   "method": "Run Jython LTE modelling scripts (LineAnalysisScripting.py) in CASSIS using MCMC to fit N_TOT, T_ex, FWHM, and V_LSR; for three very low S/N spectra (E Region of both 15N isotopologues and S Region of N15NH+), fix V_LSR from L-M Gaussian fit and T_ex to 35-45 K and vary N_TOT manually",
+   "software": [
+    "CASSIS",
+    "LineAnalysisScripting.py"
+   ],
+   "key_parameters": [
+    "N_TOT: 10^10 to 10^15 cm^-2 (15N isotopologues), 10^12 to 10^15 cm^-2 (main N2H+); FWHM: 0.3 to 1.2 km s^-1; T_ex: 30 to 50 K (or +-3 sigma of main isotopologue for 15N); V_LSR: 8 to 15 km s^-1"
+   ],
+   "assumptions": [
+    "LTE conditions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Flux recovered by NOEMA relative to IRAM 30m for H13CN and HC15N",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The resulting comparison can be seen in Fig. 1 and showed that we recovered approximately 20% of the flux from both the H$^{13}$CN and HC$^{15}$N observations."
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN column density in E Region",
+   "value": "1.9-2.3e13",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E Region  | (1.9-2.3)$\\times$10$^{13}$ | (1.7-2.1)$\\times$10$^{12}$ | 452-676           |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC15N column density in E Region",
+   "value": "1.7-2.1e12",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E Region  | (1.9-2.3)$\\times$10$^{13}$ | (1.7-2.1)$\\times$10$^{12}$ | 452-676           |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from HCN in E Region",
+   "value": "452-676",
+   "uncertainty": "range",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| E Region  | (1.9-2.3)$\\times$10$^{13}$ | (1.7-2.1)$\\times$10$^{12}$ | 452-676           |"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN column density in NW Region",
+   "value": "2.9-4.3e13",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NW Region | (2.9-4.3)$\\times$10$^{13}$ | (5.3-6.5)$\\times$10$^{12}$ | 273-406           |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC15N column density in NW Region",
+   "value": "5.3-6.5e12",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NW Region | (2.9-4.3)$\\times$10$^{13}$ | (5.3-6.5)$\\times$10$^{12}$ | 273-406           |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from HCN in NW Region",
+   "value": "273-406",
+   "uncertainty": "range",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NW Region | (2.9-4.3)$\\times$10$^{13}$ | (5.3-6.5)$\\times$10$^{12}$ | 273-406           |"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN column density in NE Region",
+   "value": "2.6-3.2e13",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NE Region | (2.6-3.2)$\\times$10$^{13}$ | (5.4-6.6)$\\times$10$^{12}$ | 197-296           |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC15N column density in NE Region",
+   "value": "5.4-6.6e12",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NE Region | (2.6-3.2)$\\times$10$^{13}$ | (5.4-6.6)$\\times$10$^{12}$ | 197-296           |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from HCN in NE Region",
+   "value": "197-296",
+   "uncertainty": "range",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NE Region | (2.6-3.2)$\\times$10$^{13}$ | (5.4-6.6)$\\times$10$^{12}$ | 197-296           |"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN column density in S Region",
+   "value": "2.4-3.0e13",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S Region  | (2.4-3.0)$\\times$10$^{13}$ | (3.9-4.9)$\\times$10$^{12}$ | 245-385           |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC15N column density in S Region",
+   "value": "3.9-4.9e12",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S Region  | (2.4-3.0)$\\times$10$^{13}$ | (3.9-4.9)$\\times$10$^{12}$ | 245-385           |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from HCN in S Region",
+   "value": "245-385",
+   "uncertainty": "range",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S Region  | (2.4-3.0)$\\times$10$^{13}$ | (3.9-4.9)$\\times$10$^{12}$ | 245-385           |"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN column density in FIR3",
+   "value": "1.9-2.4e13",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| FIR3      | (1.9-2.4)$\\times$10$^{13}$ | (5.0-6.3)$\\times$10$^{12}$ | 151-240           |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC15N column density in FIR3",
+   "value": "5.0-6.3e12",
+   "uncertainty": "range",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| FIR3      | (1.9-2.4)$\\times$10$^{13}$ | (5.0-6.3)$\\times$10$^{12}$ | 151-240           |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from HCN in FIR3",
+   "value": "151-240",
+   "uncertainty": "range",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| FIR3      | (1.9-2.4)$\\times$10$^{13}$ | (5.0-6.3)$\\times$10$^{12}$ | 151-240           |"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ column density in E Region (CASSIS HFS)",
+   "value": "8.2e13",
+   "uncertainty": "+0.6e13/-0.6e13",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| N$_2$H$^+$     | E Region  | (8.2$^{+0.6}_{-0.6}$)$\\times$10$^{13}$    | (8.9$\\pm$0.9)$\\times$10$^{13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ column density in NW Region (CASSIS HFS)",
+   "value": "1.21e14",
+   "uncertainty": "+0.09e14/-0.09e14",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "|                | NW Region | (1.21$^{+0.09}_{-0.09}$)$\\times$10$^{14}$ | (1.7$\\pm$0.7)$\\times$10$^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ column density in NE Region (CASSIS HFS)",
+   "value": "1.1e14",
+   "uncertainty": "+0.1e14/-0.1e14",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "|                | NE Region | (1.1$^{+0.1}_{-0.1}$)$\\times$10$^{14}$    | (1.3$\\pm$0.1)$\\times$10$^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ column density in S Region (CASSIS HFS)",
+   "value": "1.4e14",
+   "uncertainty": "+0.1e14/-0.2e14",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "|                | S Region  | (1.4$^{+0.1}_{-0.2}$)$\\times$10$^{14}$    | (1.6$\\pm$0.2)$\\times$10$^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from 15NNH+ in E Region (CASSIS HFS)",
+   "value": "270",
+   "uncertainty": "+70/-70",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| E Region\\* | 270$^{70}_{70}$                    | 200$^{50}_{50}$                    | 200$^{40}_{40}$                    | 240$^{30}_{30}$                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from N15NH+ in E Region (CASSIS HFS)",
+   "value": "200",
+   "uncertainty": "+50/-50",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| E Region\\* | 270$^{70}_{70}$                    | 200$^{50}_{50}$                    | 200$^{40}_{40}$                    | 240$^{30}_{30}$                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from 15NNH+ in NW Region (CASSIS HFS)",
+   "value": "240",
+   "uncertainty": "+20/-20",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| NW Region  | 240$^{20}_{20}$                    | 280$^{30}_{40}$                    | 320$^{100}_{100}$                  | 450$^{200}_{200}$                  |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from N15NH+ in NW Region (CASSIS HFS)",
+   "value": "280",
+   "uncertainty": "+30/-40",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| NW Region  | 240$^{20}_{20}$                    | 280$^{30}_{40}$                    | 320$^{100}_{100}$                  | 450$^{200}_{200}$                  |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from 15NNH+ in NE Region (CASSIS HFS)",
+   "value": "350",
+   "uncertainty": "+40/-40",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| NE Region  | 350$^{40}_{40}$                    | 460$^{70}_{60}$                    | 340$^{50}_{50}$                    | 360$^{60}_{60}$                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from N15NH+ in NE Region (CASSIS HFS)",
+   "value": "460",
+   "uncertainty": "+70/-60",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| NE Region  | 350$^{40}_{40}$                    | 460$^{70}_{60}$                    | 340$^{50}_{50}$                    | 360$^{60}_{60}$                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from 15NNH+ in S Region (CASSIS HFS)",
+   "value": "350",
+   "uncertainty": "+60/-40",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| S Region   | 350$^{60}_{40}$                    | 320$^{80}_{80}$                    | 330$^{60}_{60}$                    | 260$^{50}_{50}$                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N ratio from N15NH+ in S Region (CASSIS HFS)",
+   "value": "320",
+   "uncertainty": "+80/-80",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| S Region   | 350$^{60}_{40}$                    | 320$^{80}_{80}$                    | 330$^{60}_{60}$                    | 260$^{50}_{50}$                    |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact vertex coordinates of the five extraction polygons (NW, NE, S, E, FIR3) decomposed by eye and the high/low cosmic-ray ionisation polygons",
+  "ALMA calibration and imaging parameters (CASA version, weighting, robust parameter, synthesized beam size in arcsec), which are deferred to Fontani et al. (2020)",
+  "MCMC sampler hyperparameters in CASSIS (number of walkers/iterations, burn-in steps, convergence criteria)",
+  "Whether the ALMA and NOEMA cubes were convolved to a common angular resolution before extracting spectra from the polygons"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates of the vertices of the five extraction polygons (NW, NE, S, E, FIR3) and the high/low cosmic-ray ionisation polygons (only shown graphically in Figures 4, 6, and 7)",
+  "The CASSIS Jython MCMC scripts and sampler settings (number of iterations, burn-in, step sizes)",
+  "Full ALMA imaging parameters (available only by consulting Fontani et al. 2020)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Both the ALMA dataset (archival project 2016.0.00681.S) and NOEMA FITS images (deposited at CDS) are public, and the analytic radiative transfer equations, spectroscopic constants, and parameter bounds are explicitly stated. However, the extraction polygons were drawn by eye without tabulated vertex coordinates, and three low-S/N spectra were fitted by manual parameter adjustment.",
+ "rediscovery_reason": "Public ALMA archival data and CDS NOEMA cubes allow direct re-extraction of regional spectra (approximating the polygons from Figs. 4 and 6) and quantitative reproduction of the LTE column densities and 14N/15N ratios in Tables 3, 4, and 5.",
+ "source_card": "cards/2022A%26A...657A.136E/sonnet/card.md"
+}

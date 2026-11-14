@@ -1,0 +1,228 @@
+{
+ "bibcode": "2019ApJ...870...59S",
+ "title": "ALMA, ATCA, and Spitzer Observations of the Luminous Extragalactic Supernova SN 1978K",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaf1a3",
+ "arxiv_id": "1811.11267",
+ "fields": [
+  "star_formation",
+  "nearby_galaxies",
+  "other"
+ ],
+ "question": "What is the radio-millimeter spectrum of SN 1978K, and what do ALMA, ATCA and Spitzer data imply for the synchrotron emission and for warm and cold dust?",
+ "alma_project_codes": [
+  "2015.1.00869.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 6, 7 (Cycle 3, 2016)",
+  "arrays": "not stated",
+  "angular_resolution": "Beams 0.36-0.69 arcsec across bands",
+  "sensitivity": "Image rms 0.015-0.065 mJy/beam (all-4-SPW: 0.025, 0.015, 0.026, 0.030)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "AKARI infrared points and dust models of SN 1978K",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The *AKARI* infrared points show SN 1978K on 2006 December 03–04."
+     }
+    ]
+   },
+   "citation": "Tanaka2012"
+  },
+  {
+   "what": {
+    "value": "GLEAM 200 MHz peak brightness 94 mJy/beam",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "shows a source at the location of SN 1978K with a peak brightness of 94 mJy/beam at 200 MHz"
+     }
+    ]
+   },
+   "citation": "Hurley-Walker2017"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum and measure flux densities",
+   "method": "Pipeline calibration, mtmfs tclean per SPW, pairs and whole band; point-like source flux",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust=0.5, nterms=2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure ATCA fluxes",
+   "method": "Miriad calibration, robust 0.5 imaging, Gaussian point-source fit; 16 cm band split into four 512 MHz sub-bands",
+   "software": [
+    "Miriad"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Spitzer IRAC photometry and light curves",
+   "method": "Point source photometry on CBCD with APEX in MOPEX using PRF map; handbook correction factors",
+   "software": [
+    "MOPEX APEX"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Model radio-millimeter spectrum",
+   "method": "Compare modified Montes+1997 parameterized model with a broken power law GRB fireball cooling-break model with wind scaling",
+   "software": [],
+   "key_parameters": [
+    "Radio decay t^-1.53 gives p=2.373; indices -0.687 below and -1.187 above the break"
+   ],
+   "assumptions": [
+    "Generic fireball formalism with wind scaling; ISM scaling rejected"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Assess warm and cold dust",
+   "method": "Extrapolate synchrotron models back to AKARI epoch, compare with Tanaka+2012 dust models, fit IRAC decay",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "ALMA/ATCA points extrapolated back assuming fireball evolution"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 3 flux density (all 4 SPW, 103.5 GHz)",
+   "value": "1.412",
+   "uncertainty": "rms 0.025 mJy/beam",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "& All 4 & & 0.59 & 1.412 & 0.025\\"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 4 flux density (145 GHz)",
+   "value": "0.855",
+   "uncertainty": "rms 0.015 mJy/beam",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "& All 4 & 145.0147 & 0.52 & 0.855 & 0.015\\"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 6 flux density (233 GHz)",
+   "value": "0.525",
+   "uncertainty": "rms 0.026 mJy/beam",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "& All 4 & 233.0049 & 0.63 & 0.525 & 0.026\\"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 flux density (343.5 GHz)",
+   "value": "0.458",
+   "uncertainty": "rms 0.030 mJy/beam",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "& All 4 & 343.5020 & 0.36 & 0.458 & 0.030"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio decay index",
+   "value": "-1.53",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the non-thermal radio continuum continues to decay as $t^{-1.53}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron spectral index p (wind fireball)",
+   "value": "2.373",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "this implies $p=2.373$"
+    }
+   ]
+  },
+  {
+   "quantity": "Change in spectral index at break",
+   "value": "~0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "the change in the spectral index appears to be $\\sim 0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAC 3.6/4.5 micron decay index",
+   "value": "-2.45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The $t^{-2.45}$ power law decay in both channels is much faster than we have found in the radio"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, masks, clean threshold for ALMA",
+  "Method of flux extraction (point-source fit vs peak) and flux uncertainty/absolute calibration error for ALMA",
+  "Which channels were flagged as bad",
+  "Fitting method, priors and uncertainties for the broken power law and Montes model",
+  "How power-law decay indices and their errors were fit",
+  "Exact Montes model parameter names (lost in table conversion)"
+ ],
+ "missing_for_reproduction": [
+  "Image/cell size and masks",
+  "Model fitting procedure and uncertainties",
+  "Full Montes parameter table (conversion garbled)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA recipe mostly specified (CASA 4.7.2, robust 0.5, mtmfs) and fluxes tabulated, but model fitting details are missing.",
+ "rediscovery_reason": "Public ALMA data, simple point-source continuum fluxes in a table can be reproduced.",
+ "source_card": "cards/2019ApJ...870...59S/sonnet/card.md"
+}

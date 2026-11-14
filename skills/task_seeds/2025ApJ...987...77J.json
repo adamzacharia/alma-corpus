@@ -1,0 +1,400 @@
+{
+ "bibcode": "2025ApJ...987...77J",
+ "title": "Why is the Star Formation Rate Proportional to Dense Gas Mass?",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/add480",
+ "arxiv_id": "2505.07764",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Why is the star formation rate linearly proportional to the dense molecular gas mass (the Gao-Solomon relation), and can this proportionality be explained by deterministic relationships between the gravitationally bound gas mass, the mass of the most massive core, the mass of the most massive star, and the star formation rate?",
+ "alma_project_codes": [
+  "2017.1.01355.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.3'' to 1.5'' (2000 AU / ~0.01 pc native; smoothed to 0.03 pc or ~1.1'' to ~3.1'')",
+  "sensitivity": "0.03–0.18 mJy beam^-1 (point mass sensitivity of 0.15 M_sun at 1.3 mm)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "10'' dust column density map of Orion A",
+    "evidence": [
+     {
+      "loc": "B. CORE EXTRACTION",
+      "quote": "To identify cores with a consistent spatial resolution of ~0.03 pc, we utilized the 10'' dust column density map of Orion A from Jiao et al. (2022a) to perform the core extraction."
+     }
+    ]
+   },
+   "citation": "Jiao et al. (2022a)"
+  },
+  {
+   "what": {
+    "value": "Herschel PACS 70 um source catalog for cross-matching massive cores",
+    "evidence": [
+     {
+      "loc": "C. TEMPERATURE ESTIMATION OF CORES WITHIN MASSIVE CLOUDS",
+      "quote": "We cross-match the sources with the highest flux density (potentially the most massive one) with the Herschel PACS 70 µm source catalog (Molinari et al. 2016)."
+     }
+    ]
+   },
+   "citation": "Molinari et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "1.3 mm free-free subtracted continuum images from ALMA-IMF",
+    "evidence": [
+     {
+      "loc": "2.2. ALMA-IMF observation dataset",
+      "quote": "The ALMA-IMF consortium produces the 1.3 mm dust continuum images where the free-free contribution was subtracted"
+     }
+    ]
+   },
+   "citation": "Motte et al. 2022; Ginsburg et al. 2022; Galván-Madrid et al. 2024"
+  },
+  {
+   "what": {
+    "value": "Theoretical galactic-scale SFR-m_star^max model",
+    "evidence": [
+     {
+      "loc": "4.1. Connection to the star formation relation",
+      "quote": "Yan et al. (2017) by performing linear regression to the model presented in their Figure 7."
+     }
+    ]
+   },
+   "citation": "Yan et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Observational SFRs for nearby clouds from YSO counting",
+    "evidence": [
+     {
+      "loc": "D. COMPARISON BETWEEN SFR^THEORY AND SFR^OBSERVATION",
+      "quote": "For nearby clouds, the SFR^observation is constrained by counting young stellar objects (YSOs; Evans et al. 2009; Heiderman et al. 2010)."
+     }
+    ]
+   },
+   "citation": "Evans et al. 2009; Heiderman et al. 2010"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive molecular hydrogen column density (N_H2) maps for nearby and distant clouds from Herschel data",
+   "method": "Convolve Herschel 5-band images (70, 160, 250, 350, 500 um) to a common 36.9'' resolution, regrid to 4.0'' pixel size, and perform pixelwise single-component modified black-body SED fitting.",
+   "software": [],
+   "key_parameters": [
+    "Common angular resolution = 36.9'', pixel size = 4.0''"
+   ],
+   "assumptions": [
+    "Dust opacity kappa_nu = 1.0(nu/230 GHz)^beta cm^2 g^-1, dust emissivity index beta = 1.8, gas-to-dust mass ratio R = 100, mean molecular weight mu = 2.8, scattering opacity ignored."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure parental gravitationally bound gas mass (M_gas^bound) from N-PDFs",
+   "method": "Set an optimal column density cutoff (N_cut) based on sensitivity, map area, and last closed contour; fit the N-PDF with a log-normal plus power-law function to find the transitional column density (N_threshold), and integrate the mass above N_threshold.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Cloud-specific N_cut values (0.28 to 3.55 x 10^21 cm^-2 for nearby clouds; 6.3 to 19.9 x 10^21 cm^-2 for distant clouds)"
+   ],
+   "assumptions": [
+    "Power-law tail of the N-PDF above N_threshold traces self-gravitating, gravitationally bound gas."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract dense cores and derive the mass of the most massive core (M_core^max)",
+   "method": "Smooth nearby cloud N_H2 maps and distant cloud ALMA-IMF 1.3 mm free-free subtracted continuum maps to a consistent 0.03 pc spatial resolution; subtract background using a 256-pixel box; extract cores with SExtractor; compute core masses by summing N_H2 pixels for nearby clouds or applying gray-body dust emission equation for distant clouds.",
+   "software": [
+    "SExtractor"
+   ],
+   "key_parameters": [
+    "Spatial resolution = 0.03 pc; background box = 256 pixels; nthresh = 3; deblend_nthresh = 512; deblend_cont = 10^-5; min_npix = number of pixels in a Herschel or ALMA beam; deconvolution factor eta = 2.4"
+   ],
+   "assumptions": [
+    "Mean molecular weight mu = 2.8; for distant clouds: specific dust opacity at 1.3 mm kappa_1.3mm = 0.01 cm^2 g^-1 (beta = 1.8), uniform dust temperature T_dust = 100 K (or 300 K for W51-E, W51-IRS2, and G327.29 in fiducial Method Two)."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Determine the scaling relation between M_core^max and M_gas^bound and connect it to the Gao-Solomon SFR relation",
+   "method": "Perform linear regression in log-log space between M_core^max and M_gas^bound for the 23 clouds (and excluding 4 outliers with missing flux); combine with SFE = 30% and the theoretical SFR-m_star^max relation from Yan et al. (2017) to infer SFR^theory and compare with the Gao-Solomon relation and observational SFRs.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Star-forming efficiency SFE = 30% (m_star^max ~ 0.3 * M_core^max); M_gas^bound approximates M_gas^dense; Gao-Solomon relation scaled upward by factor 2.7."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test whether observed M_core^max values are consistent with random (stochastic) sampling of the CMF",
+   "method": "Fit the CMF of nearby clouds at the high-mass end; run Monte Carlo simulations drawing n(M > 3 M_sun) cores from a power-law CMF (pool of 10^6 cores) 5000 times per cloud (and 10^6 iterations for Taurus+Perseus combined), comparing simulated M_core^max distributions and scatter to observations.",
+   "software": [],
+   "key_parameters": [
+    "Low-mass cutoff = 3 M_sun; CMF power-law index Gamma = -1.00 and -1.35; initial pool size = 10^6 cores; 5000 repetitions per cloud; 10^6 iterations for Taurus+Perseus test"
+   ],
+   "assumptions": [
+    "Largest possible stellar mass m_up = 150 M_sun or 100 M_sun; SFE = 30%; largest probable core mass = m_up / SFE (500 M_sun or 333 M_sun); total core mass in set C cannot exceed SFE * M_gas^bound."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Slope of log(M_core^max) vs log(M_gas^bound) relation (all clouds, Method Two)",
+   "value": "0.506",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Mass correlation between most massive core and gravitationally bound gas",
+     "quote": "log( _M_ core [max] _[/M]_ _[⊙]_ [) = 0] _[.]_ [506 log(] _[M]_ [ bound] gas _/M_ _⊙_ ) _−_ 0 _._ 32"
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log(M_core^max) vs log(M_gas^bound) relation (all clouds, Method Two)",
+   "value": "-0.32",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Mass correlation between most massive core and gravitationally bound gas",
+     "quote": "log( _M_ core [max] _[/M]_ _[⊙]_ [) = 0] _[.]_ [506 log(] _[M]_ [ bound] gas _/M_ _⊙_ ) _−_ 0 _._ 32"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient for M_core^max vs M_gas^bound (all clouds, Method Two)",
+   "value": "0.83",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Mass correlation between most massive core and gravitationally bound gas",
+     "quote": "with a Spearman coefficient of 0.83 and a p-value of 7.8 × 10^-7 that is much lower than 0.001."
+    }
+   ]
+  },
+  {
+   "quantity": "Standard deviation of linear regression residual for M_core^max vs M_gas^bound (all clouds, Method Two)",
+   "value": "0.29",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Figure 2 caption",
+     "quote": "The standard deviation of linear regression residual σ is 0.29 and the gray-shaded region corresponds to the regimes with 95% confidence interval."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(M_core^max) vs log(M_gas^bound) relation (outliers excluded, Method Two)",
+   "value": "0.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Mass correlation between most massive core and gravitationally bound gas",
+     "quote": "We found that by excluding these four sources from our sample, the power-law index becomes 0.55, which is ~10% steeper than that derived from the whole sample; the correlation becomes more robust with the Spearman correlation coefficient of 0.96 and the standard deviation of linear regression residual σ becomes even tighter as 0.21."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient for M_core^max vs M_gas^bound (outliers excluded, Method Two)",
+   "value": "0.96",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Mass correlation between most massive core and gravitationally bound gas",
+     "quote": "the correlation becomes more robust with the Spearman correlation coefficient of 0.96 and the standard deviation of linear regression residual σ becomes even tighter as 0.21."
+    }
+   ]
+  },
+  {
+   "quantity": "Standard deviation of linear regression residual for M_core^max vs M_gas^bound (outliers excluded, Method Two)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Mass correlation between most massive core and gravitationally bound gas",
+     "quote": "the correlation becomes more robust with the Spearman correlation coefficient of 0.96 and the standard deviation of linear regression residual σ becomes even tighter as 0.21."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of SFR^theory vs M_gas^bound relation (all clouds)",
+   "value": "1.03",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Connection to the star formation relation",
+     "quote": "The black dashed line shows a linear regression of all the data points, yielding a slope of 1.03 across all clouds."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of SFR^theory vs M_gas^bound relation (outliers excluded)",
+   "value": "1.11",
+   "uncertainty": "+0.10/-0.10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Connection to the star formation relation",
+     "quote": "slightly steeper slope of 1 _._ 11"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved radii of extracted most massive cores",
+   "value": "0.04 to 0.23 (median 0.1)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. The most massive core",
+     "quote": "As shown in Table 1, the extracted cores have deconvolved radii from 0.04 to 0.23 pc, with a median value of 0.1 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Standard deviation of observed nearby cloud points from linear regression in M_core^max vs M_gas^bound",
+   "value": "0.077",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Indication of a non-stochastic sampling of core mass",
+     "quote": "In Figure 5, the standard deviation of the observed points from a linear regression line is 0.077."
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in Ophiuchus",
+   "value": "14.9 (M_core^max); 0.96 (M_gas^bound)",
+   "uncertainty": "± 4.5 (M_core^max); +0.35/-0.20 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Ophiuchus 128 ± 6 1.41 / 3.25 +0.05 -0.07 0.96 +0.35 -0.20 16:26:27.8 -24:23:51.2 0.10 14.9 ± 4.5 15 115.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in Orion A",
+   "value": "264.1 (M_core^max); 26.58 (M_gas^bound)",
+   "uncertainty": "± 79.2 (M_core^max); +4.78/-9.13 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Orion A 399 ± 19 0.71 / 2.05 +1.95 -0.16 26.58 +4.78 -9.13 05:35:13.5 -05:23:57.5 0.14 264.1 ± 79.2 249 4439.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in Taurus",
+   "value": "26.7 (M_core^max); 3.25 (M_gas^bound)",
+   "uncertainty": "± 8.0 (M_core^max); +0.65/-0.65 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Taurus 156 ± 7 1.05 / 1.62 +0.03 -0.05 3.25 +0.65 -0.65 04:41:26.5 +25:23:57.2 0.23 26.7 ± 8.0 48 326.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in Perseus",
+   "value": "41.1 (M_core^max); 4.75 (M_gas^bound)",
+   "uncertainty": "± 12.3 (M_core^max); +1.18/-0.99 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Perseus 256 ± 12 0.56 / 1.50 +0.01 -0.01 4.75 +1.18 -0.99 03:28:39.2 +31:18:40.6 0.15 41.1 ± 12.3 124 903.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in G012.80",
+   "value": "32.1 (M_core^max); 17 (M_gas^bound)",
+   "uncertainty": "± 15.6 (M_core^max); +5/-5 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G012.80 2400 ± 200 19.9 / 35.6 +0.3 -0.3 17 +5 -5 18:14:13.7 -17:55:43.07 0.05 32.1 ± 15.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in W43",
+   "value": "275.0 (M_core^max); 99 (M_gas^bound)",
+   "uncertainty": "± 131.0 (M_core^max); +29/-29 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "W43 5500 ± 400 14.1 / 26.1 +0.2 -0.2 99 +29 -29 18:47:47.0 -01:54:26.56 0.10 275.0 ± 131.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Most massive core mass (M_core^max) and bound gas mass (M_gas^bound) in W51",
+   "value": "323.8 (M_core^max); 82 (M_gas^bound)",
+   "uncertainty": "± 143.7 (M_core^max); +25/-24 (M_gas^bound)",
+   "units": "M_sun (M_core^max); 10^3 M_sun (M_gas^bound)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "W51 5400 ± 300 11.2 / 20.7 +1.2 -2.4 82 +25 -24 19:23:43.9 +14:30:34.83 0.11 323.8 ± 143.7"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Reason why 3 out of the 15 ALMA-IMF star-forming regions are absent from the 12 distant clouds in Table 1 (e.g., W43-MM1/MM2/MM3 and W51-E/IRS2 are listed separately in Table 3 as 15 fields, but combined into W43 and W51 in Table 1, while one other ALMA-IMF region is missing entirely)",
+  "Exact spatial boundaries or polygon masks used to define each molecular cloud before computing the N-PDF",
+  "Resolution of Orion A column density map used for N-PDF vs core extraction (Table 1 gives distance 399 pc, Appendix B gives 414 pc and says a 10'' map from Jiao et al. 2022a was used for core extraction)",
+  "Exact MCMC settings for emcee (number of walkers, steps, burn-in, and priors) when fitting the N-PDF",
+  "Pixel sizes of the ALMA-IMF images after smoothing to 0.03 pc spatial resolution (Appendix B says the background box is 256 pixels corresponding to 12.8', which matches 3'' pixels, whereas Herschel maps were regridded to 4.0'' pixels)"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial cutouts / polygon masks used for the Herschel N-PDF analysis of each cloud",
+  "The 10'' dust column density map of Orion A from Jiao et al. (2022a) if not publicly hosted",
+  "Exact pixel scale used when regridding smoothed 0.03 pc ALMA-IMF images for SExtractor (where background box = 256 pixels)",
+  "Full N-PDF fitted parameter table (deferred to Jiao et al. submitted)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The paper uses publicly released, fully reduced archival FITS images (ALMA-IMF Dataverse and HGBS/Hi-GAL archives), states all SExtractor parameters, equations, dust opacities, temperatures, and N-PDF cutoffs in tables, and provides complete output tables for verification. Minor deductions are due to reliance on a custom Orion A map from an earlier paper, unstated cloud boundary definitions for N-PDFs, and details deferred to a submitted companion paper.",
+ "rediscovery_reason": "All input ALMA-IMF 1.3 mm free-free subtracted continuum images and Herschel maps are publicly downloadable, the core extraction and mass calculation recipes (smoothing to 0.03 pc, SExtractor settings, gray-body equations, and N-PDF thresholds) are explicitly specified, and the main results (core masses, bound gas masses, and power-law slope 0.506) are numeric and tabulated.",
+ "source_card": "cards/2025ApJ...987...77J/sonnet/card.md"
+}

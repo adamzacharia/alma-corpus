@@ -1,0 +1,558 @@
+{
+ "bibcode": "2024MNRAS.533..771R",
+ "title": "Two distinct molecular cloud populations detected in massive galaxies",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae1831",
+ "arxiv_id": "2403.03974",
+ "fields": [
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "What are the bulk motions, physical properties, and locations of molecular clouds seen via intrinsic absorption against compact radio continuum sources in massive galaxies?",
+ "alma_project_codes": [
+  "2017.1.00629.S",
+  "2021.1.00766.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.020\" to 2.07\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCO+(2-1) and HCN(2-1) absorption spectra and fits of Centaurus-A",
+    "evidence": [
+     {
+      "loc": "2.2 Moments maps and spectra",
+      "quote": "In Figure 13, we also show HCO [+] (2-1) and HCN(2-1) spectra seen against the central radio source of the iconic radio galaxy Centaurus-A, from Wiklind & Combes (1997a)."
+     },
+     {
+      "loc": "Figure 13 caption",
+      "quote": "Spectra extracted from along the line of sight to the central radio continuum source of Centaurus-A, from (Wiklind & Combes 1997a). Fits to the spectra can also be seen in that paper."
+     }
+    ]
+   },
+   "citation": "Wiklind & Combes (1997a)"
+  },
+  {
+   "what": {
+    "value": "Molecular mass of Centaurus-A",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "∗ The molecular mass of Centaurus-A is taken from Parkin et al. (2012)."
+     }
+    ]
+   },
+   "citation": "Parkin et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "CND molecular mass of NGC 1052",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "NGC 1052 Elliptical 70 Gas poor with 5.3 × 10 [5] M ⊙ CND (Kameno et al. 2020) -"
+     }
+    ]
+   },
+   "citation": "Kameno et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Spiral arms inclination of Circinus",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Circinus Sb spiral 64 Spiral arms inclined at ≈ 65 [◦] (Izumi et al. 2018) -"
+     }
+    ]
+   },
+   "citation": "Izumi et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "HI spectrum of NGC 6868",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "An HI spectrum also extracted against the radio core is shown in green (Tom Oosterloo, private communication)."
+     }
+    ]
+   },
+   "citation": "Tom Oosterloo, private communication"
+  },
+  {
+   "what": {
+    "value": "HI spectrum of Hydra-A",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "An HI spectrum also extracted against the radio core is shown in green (Taylor 1996)."
+     }
+    ]
+   },
+   "citation": "Taylor (1996)"
+  },
+  {
+   "what": {
+    "value": "HI spectra of Abell 2597 and Abell 2390",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "An HI spectrum also extracted against the radio core is shown in green (Hernández et al. 2008)."
+     },
+     {
+      "loc": "Figure 5 caption",
+      "quote": "An HI spectrum also extracted against the radio core is shown in green (Hernández et al. 2008)."
+     }
+    ]
+   },
+   "citation": "Hernández et al. (2008)"
+  },
+  {
+   "what": {
+    "value": "HI spectrum of NGC 4261",
+    "evidence": [
+     {
+      "loc": "Figure 9 caption",
+      "quote": "An HI spectrum also extracted against the radio core is shown in green (Jaffe & McNamara 1994)."
+     }
+    ]
+   },
+   "citation": "Jaffe & McNamara (1994)"
+  },
+  {
+   "what": {
+    "value": "Excitation temperature and best fits for Hydra-A absorption lines",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "Due to the complex nature of the absorption, we do not show best fits in the spectra above, but they can also be seen in (Rose et al. 2020)."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "[1] For Hydra-A, we estimate the excitation temperature from the higher sensitivity HCO [+] (2-1) and (1-0) observations (Rose et al. 2020)."
+     }
+    ]
+   },
+   "citation": "Rose et al. (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and spectral cube imaging",
+   "method": "Subtract continuum and image measurement sets using uvcontsub and tclean at the narrowest channel width with natural and uniform weighting",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "deconvolver = hogbom; weighting = natural or uniform; narrowest possible channel width"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Generate moment maps and extract spectra against the radio core",
+   "method": "Create moment 0, 1, and 2 maps using immoments and extract spectra at the position of the compact radio continuum source",
+   "software": [
+    "CASA",
+    "immoments"
+   ],
+   "key_parameters": [
+    "includepix = [0,100] for moment 0 maps with overlapping absorption; >4 sigma threshold for moments 1 and 2 maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit Gaussian components to emission and absorption spectra",
+   "method": "Incrementally add Gaussian lines and fit with SciPy curve_fit, masking absorption while fitting overlapping emission first, then run 10,000 Monte Carlo simulations for uncertainties",
+   "software": [
+    "Python",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Stopping criterion: no channel > 5 sigma and fitting region RMS < 1.5 times remainder RMS; 10,000 Monte Carlo realizations"
+   ],
+   "assumptions": [
+    "Errors from fitting emission do not significantly propagate to overlapping absorption fits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate excitation temperatures and absorption column densities",
+   "method": "Compute excitation temperatures from CO(2-1)/CO(1-0) velocity-integrated optical depth ratios (Eq. 2) and column densities using optical-depth corrected LTE formula (Eqs. 3 and 4)",
+   "software": [],
+   "key_parameters": [
+    "T_ex = 5 K for column density calculations"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium, ground state excitation temperature T_ex = 5 K, optical depth correction factor tau / (1 - exp(-tau))"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate molecular gas masses and disk inclinations from CO emission",
+   "method": "Calculate molecular gas mass from CO emission integral using Bolatto et al. (2013) relation (Eq. 5) and estimate disk inclination from axis ratios",
+   "software": [],
+   "key_parameters": [
+    "X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1; F_10 = 1; F_21 = 3.2; r_0^2 = 0.2; H_0 = 70 km/s/Mpc, Omega_M = 0.3, Omega_Lambda = 0.7"
+   ],
+   "assumptions": [
+    "Standard Milky Way CO-to-H2 conversion factor and circular disk with r_0^2 = 0.2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Molecular mass of NGC 6868",
+   "value": "1.3e8",
+   "uncertainty": "0.2e8",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NGC 6868 Elliptical 41 0.5 kpc wide disk inclined at ≈ 70 [◦] 1.3±0.2 × 10 [8]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of Abell S555",
+   "value": "5.6e8",
+   "uncertainty": "0.5e8",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Abell S555 Unknown - Plume of 2.5 kpc as measured along l.o.s. 5.6±0.5 × 10 [8]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of Hydra-A",
+   "value": "3.1e9",
+   "uncertainty": "0.2e9",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Hydra-A Elliptical-S0 79 5 kpc molecular disc inclined at ≈ 90 [◦] 3.1±0.2 × 10 [9]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of Abell 2390",
+   "value": "2.2e10",
+   "uncertainty": "0.2e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Abell 2390 Irregular - Plume of 15 kpc as measured along l.o.s. 2.2±0.2 × 10 [10]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of RXCJ0439.0+0520",
+   "value": "1.3e10",
+   "uncertainty": "0.4e10",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "RXCJ0439.0+0520 Irregular - Plume of 9 kpc as measured along l.o.s. 1.3±0.4 × 10 [10]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of Abell 1644",
+   "value": "1.6e9",
+   "uncertainty": "0.3e9",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Abell 1644 Irregular - Clumps distributed along an arc 1.6±0.3 × 10 [9]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of IC 4296",
+   "value": "2.3e7",
+   "uncertainty": "0.2e7",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IC 4296 Elliptical 90 0.5 kpc wide disk inclined at ≈ 74 [◦] 2.3±0.2 × 10 [7]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of Abell 2597",
+   "value": "4.6e9",
+   "uncertainty": "0.5e9",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Abell 2597 Elliptical 68 Irregular central 7 kpc, faint emission to 30 kpc 4.6±0.5 × 10 [9]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of NGC 5044",
+   "value": "2.4e7",
+   "uncertainty": "0.4e7",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NGC 5044 Elliptical 43 One or two weak clumps 200-500 pc from AGN 2.4±0.4 × 10 [7]"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass of NGC 4261",
+   "value": "2.1e7",
+   "uncertainty": "0.2e7",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "NGC 4261 Elliptical 56 200 pc wide disk inclined at ≈ 42 [◦] 2.1±0.2 × 10 [7]"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for NGC 6868",
+   "value": "7.1",
+   "uncertainty": "+1.8/-1.8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 6868 7.1 [+] − [1] 1 [.] . [8] 8 -15 [+] − [4] 15"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for NGC 6868",
+   "value": "-15",
+   "uncertainty": "+4/-15",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 6868 7.1 [+] − [1] 1 [.] . [8] 8 -15 [+] − [4] 15"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for Abell S555",
+   "value": "9.5",
+   "uncertainty": "+0.8/-0.8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "S555 9.5 [+] − [0] 0 [.] . [8] 8 -10.0 [+] − [0] 1 [.] . [9] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for Abell S555",
+   "value": "-10.0",
+   "uncertainty": "+0.9/-1.1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "S555 9.5 [+] − [0] 0 [.] . [8] 8 -10.0 [+] − [0] 1 [.] . [9] 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for Abell 2390",
+   "value": "10.7",
+   "uncertainty": "+1.7/-1.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Abell 2390 10.7 [+] − [1] 1 [.] . [7] 4 -8.9 [+] − [1] 1 [.] . [1] 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for Abell 2390",
+   "value": "-8.9",
+   "uncertainty": "+1.1/-1.4",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Abell 2390 10.7 [+] − [1] 1 [.] . [7] 4 -8.9 [+] − [1] 1 [.] . [1] 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for RXCJ0439.0+0520 (0 km/s feature)",
+   "value": "3.4",
+   "uncertainty": "+0.3/-0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RXCJ0439.0+0520 3.4 [+] − [0] 0 [.] . [3] 3 [, 10.6] [+] − [1] 1 [.] . [3] 2 48 [+] − [44] 16 [, -9.2] [+] − [0] 1 [.] . [9] 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for RXCJ0439.0+0520 (0 km/s feature)",
+   "value": "48",
+   "uncertainty": "+44/-16",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RXCJ0439.0+0520 3.4 [+] − [0] 0 [.] . [3] 3 [, 10.6] [+] − [1] 1 [.] . [3] 2 48 [+] − [44] 16 [, -9.2] [+] − [0] 1 [.] . [9] 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for RXCJ0439.0+0520 (550 km/s feature)",
+   "value": "10.6",
+   "uncertainty": "+1.3/-1.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RXCJ0439.0+0520 3.4 [+] − [0] 0 [.] . [3] 3 [, 10.6] [+] − [1] 1 [.] . [3] 2 48 [+] − [44] 16 [, -9.2] [+] − [0] 1 [.] . [9] 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for RXCJ0439.0+0520 (550 km/s feature)",
+   "value": "-9.2",
+   "uncertainty": "+0.9/-1.3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RXCJ0439.0+0520 3.4 [+] − [0] 0 [.] . [3] 3 [, 10.6] [+] − [1] 1 [.] . [3] 2 48 [+] − [44] 16 [, -9.2] [+] − [0] 1 [.] . [9] 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for Abell 1644",
+   "value": "37",
+   "uncertainty": "+17/-9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Abell 1644 37 [+] − [17] 9 -4.1 [+] − [0] 0 [.] . [5] 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for Abell 1644",
+   "value": "-4.1",
+   "uncertainty": "+0.5/-0.5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Abell 1644 37 [+] − [17] 9 -4.1 [+] − [0] 0 [.] . [5] 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated optical depth ratio CO(2-1)/CO(1-0) for NGC 1052",
+   "value": "1.2",
+   "uncertainty": "+0.1/-0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1052 1.2 [+] − [0] 0 [.] . [1] 1 5.9 [+] − [0] 0 [.] . [5] 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied excitation temperature for NGC 1052",
+   "value": "5.9",
+   "uncertainty": "+0.5/-0.5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1052 1.2 [+] − [0] 0 [.] . [1] 1 5.9 [+] − [0] 0 [.] . [5] 5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) absorption column density of Abell 2390",
+   "value": "1e18",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Abell 2390 6 × 10 [16] 1 × 10 [18] - 1 × 10 [15] 2 × 10 [15] - -"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free frequency channels and polynomial order used in uvcontsub for each source and spectral window",
+  "tclean stopping threshold, niter, cell size, and image size for each cube",
+  "Exact extraction aperture size/shape used to extract core spectra against the continuum source",
+  "Exact smoothing kernel parameters applied to data cubes for moments 1 and 2 maps",
+  "Specific velocity masking boundaries used when subtracting overlapping emission prior to absorption fitting",
+  "Values of partition functions Q(T), Einstein A_ul coefficients, and level degeneracies used in Equation 3 for each molecular transition"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral extraction aperture definitions (single peak pixel vs integrated over synthesized beam) for each target",
+  "Exact channel ranges used for continuum subtraction in uvcontsub and for masking absorption during emission fitting",
+  "Cleaning thresholds and cell/image sizes in tclean",
+  "Smoothing kernel sizes applied before generating moment 1 and 2 maps"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "All 13 ALMA project codes, observing dates, integration times, CASA version (6.6.3.22), imaging tasks, and analytical equations (with key conversion factors and cosmology) are explicitly stated, and best-fit line parameters are released as supplementary material; however, custom scripts, exact tclean/uvcontsub parameters, extraction apertures, and visual masking windows are not provided.",
+ "rediscovery_reason": "All ALMA data are public in the archive, the data reduction and Gaussian fitting procedures use standard CASA and SciPy tools, and the main results (molecular gas masses, optical depth ratios, excitation temperatures, and absorption column densities) are quantitative and tabulated.",
+ "source_card": "cards/2024MNRAS.533..771R/sonnet/card.md"
+}

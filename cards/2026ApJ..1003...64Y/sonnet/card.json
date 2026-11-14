@@ -1,0 +1,1099 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2026ApJ..1003...64Y",
+  "title": "Compact Hydrogen Sulfide Emission Indicates Sulfur-bearing Ice Sublimation in the Inner Disk of HD 163296",
+  "year": 2026,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Yamato, Yoshihide",
+  "n_authors": 11,
+  "arxiv_id": "2604.11408",
+  "doi": "10.3847/1538-4357/ae5f95",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01259.S",
+   "2021.1.00535.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here, we present deep Atacama Large Millimeter/submillimeter Array (ALMA) observations of hydrogen sulfide (H$_2$S) along with SO and SO$_2$ in the disk around HD 163296"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "HD 163296",
+     "coordinates": {
+      "value": "ICRS 17h56m21.277s, -21d57m22.73s (continuum peak, used as disk center)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HD 163296 is a nearby ($d\\approx 101$ pc; (cite: Gaia2023)) Herbig Ae star with a mass of $2.0\\,M_\\odot$ (cite: Teague2021)"
+       },
+       {
+        "loc": "2 Observation",
+        "quote": "$\\alpha_\\mathrm{ICRS} = 17^{\\mathrm{h}}56^{\\mathrm{m}}21.277s, \\delta_\\mathrm{ICRS} = -21^{\\mathrm{d}}57\\ensuremath{'}22.73\\ensuremath{''}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "d ≈ 101 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HD 163296 is a nearby ($d\\approx 101$ pc; (cite: Gaia2023)) Herbig Ae star with a mass of $2.0\\,M_\\odot$ (cite: Teague2021)"
+       },
+       {
+        "loc": "2 Observation",
+        "quote": "$\\alpha_\\mathrm{ICRS} = 17^{\\mathrm{h}}56^{\\mathrm{m}}21.277s, \\delta_\\mathrm{ICRS} = -21^{\\mathrm{d}}57\\ensuremath{'}22.73\\ensuremath{''}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: Gaia2023)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HD 163296 is a nearby ($d\\approx 101$ pc; (cite: Gaia2023)) Herbig Ae star with a mass of $2.0\\,M_\\odot$ (cite: Teague2021)"
+       },
+       {
+        "loc": "2 Observation",
+        "quote": "$\\alpha_\\mathrm{ICRS} = 17^{\\mathrm{h}}56^{\\mathrm{m}}21.277s, \\delta_\\mathrm{ICRS} = -21^{\\mathrm{d}}57\\ensuremath{'}22.73\\ensuremath{''}$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Where do H2S, SO and SO2 emit in the HD 163296 disk, and do they trace sulfur-bearing ice sublimation in the inner disk?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Constraining the sublimation front (i.e., snowline) of H$_2$S and its abundance by observations is crucial to understanding the sulfur chemistry and its evolution in protoplanetary disks."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00535.S",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "We observed the HD 163296 disk in Band 7 during ALMA Cycle 8 (project code: 2021.1.00535.S, PI: Y, Yamato)."
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01259.S",
+     "evidence": [
+      {
+       "loc": "4.2.2 Abundances Relative to Water",
+       "quote": "We reanalyzed this archival data[^4] (project code: 2015.1.01259.S)"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00863.S",
+     "evidence": [
+      {
+       "loc": "4.3 In the Context of Other Herbig Disks",
+       "quote": "an old Cycle 0 dataset toward HD 100546 disk (project code: 2011.0.00863.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "We observed the HD 163296 disk in Band 7 during ALMA Cycle 8"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "SO in dedicated SPW at 282 kHz (0.28 km/s); H2S and two SO2 lines in wide continuum SPW at 1.1 MHz (1.1 km/s)",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "was covered by a dedicated spectral window with a resolution of 282 kHz ($\\approx0.28$ km s$^{-1}$)"
+     },
+     {
+      "loc": "2 Observation",
+      "quote": "originally dedicated for continuum acquisition"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "ortho-H2S",
+     "transition": "3(3,0)-3(2,1)",
+     "rest_frequency": "300.5055600 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| ortho-H$_2$S $J_{K_a, K_c} = 3_{3,0}$–$3_{2,1}$ | 300.5055600 | 168.9 |"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "7_7-6_6",
+     "rest_frequency": "301.2861240 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| SO $3\\Sigma\\,J_N=7_7$–$6_6$ | 301.2861240 | 71.0 |"
+      }
+     ]
+    },
+    {
+     "species": "SO2",
+     "transition": "19(3,17)-19(2,18)",
+     "rest_frequency": "299.3168185 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| SO$_2$ $J_{K_a, K_c} = 19_{3,17}$–$19_{2,18}$ | 299.3168185 | 197.0 |"
+      }
+     ]
+    },
+    {
+     "species": "SO2",
+     "transition": "32(3,29)-32(2,30)",
+     "rest_frequency": "300.2734184 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| SO$_2$ $J_{K_a, K_c} = 32_{3,29}$–$32_{2,30}$ | 300.2734184 | 518.7 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15–783.5 m to 15–1213 m",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2022 Jun. 10 | 42         | 43             | 0.1    | 15–1213  | 0.3                 | 4.1                 | J1924-2914         | J1742-1517 |"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "≈0.3'' (≈30 au)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "at an angular resolution of $\\approx0.3\\ensuremath{''}$ (or $\\approx30$ au)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "4.1–4.3''",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2022 Jun. 11 | 43         | 43             | 0.4    | 15–1213  | 0.3                 | 4.3                 | J1924-2914         | J1742-1517 |"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "43 min per execution block, four blocks",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2022 Jun. 9  | 41         | 43             | 0.7    | 15–783.5 | 0.3                 | 4.2                 | J1924-2914         | J1742-1517 |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2022 June 9, 10, 11 (two blocks)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2022 Jun. 9  | 41         | 43             | 0.7    | 15–783.5 | 0.3                 | 4.2                 | J1924-2914         | J1742-1517 |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel (literature)",
+     "provided": {
+      "value": "CO ladder constraints on the 150 K midplane radius, from literature",
+      "evidence": [
+       {
+        "loc": "4.1.1",
+        "quote": "constrained from *Herschel* observations of the CO ladder (cite: Pirovano2022)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "High-resolution 0.88 mm dust continuum image",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "along with the high-resolution 0.88 mm dust continuum image taken from (cite: Guidi2022)"
+       }
+      ]
+     },
+     "citation": "(cite: Guidi2022)"
+    },
+    {
+     "what": {
+      "value": "Disk geometry P.A.=133.3 deg, i=46.7 deg",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "known disk geometries ($\\mathrm{P.A.}=133.3\\ensuremath{^\\circ}$, $i=46.7\\ensuremath{^\\circ}$; (cite: Huang2018))"
+       }
+      ]
+     },
+     "citation": "(cite: Huang2018)"
+    },
+    {
+     "what": {
+      "value": "C34S J=6-5 radial profile",
+      "evidence": [
+       {
+        "loc": "4.2.1",
+        "quote": "radial intensity profiles of the C$^{34}$S $J=6$–5 line (taken from (cite: Law2025))"
+       }
+      ]
+     },
+     "citation": "(cite: Law2025)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass 2.0 Msun and systemic velocity 5.76 km/s",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "$v_\\mathrm{sys}\\approx5.76$ km s$^{-1}$ (cite: Teague2019; Teague2021)"
+       }
+      ]
+     },
+     "citation": "(cite: Teague2021)"
+    },
+    {
+     "what": {
+      "value": "Comet 67P and molecular cloud NIR38 abundances relative to water",
+      "evidence": [
+       {
+        "loc": "4.2.2",
+        "quote": "compare them with those in the molecular cloud NIR38 (cite: McClure2023) and comet 67P/C-G (cite: Calmonte2016)"
+       }
+      ]
+     },
+     "citation": "(cite: McClure2023; Calmonte2016)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Initial calibration by ALMA staff with standard pipeline; self-calibration in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "Initial calibration was performed by ALMA staff using the standard ALMA pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA modular 6.6.4.34",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "modular version 6.6.4.34"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1924-2914 (bandpass/amplitude)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "J1924-2914"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% in likelihood",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "We considered a flux calibration uncertainty of 10% in the likelihood function"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "seven rounds phase-only and one round amplitude; peak S/N up by ~9",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "seven rounds of phase-only self-calibration and one round of amplitude self-calibration were performed on the continuum data"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "We imaged the visibilities of these spectral windows by `tclean` task in CASA"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale, scales [0, 5, 15, 25] pixels",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "multiscale deconvolver with scales of \\[0, 5, 15, 25\\] pixels"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "briggsbwtaper, robust = 0.5 (tested 0.5, 1.0, 2.0)",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "We used `robust` $=0.5$ as we found it provides the highest S/Ns after testing different values"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "cleaned down to 3x RMS",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "by cleaning down to 3$\\times$ RMS levels"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub, first-order polynomial to line-free channels",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "fitting a first-order polynomial to line-free channels using the CASA task `uvcontsub`"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "cubes at 1.2 and 4.8 km/s channel widths",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "two different velocity channel widths of 1.2 km s$^{-1}$ and 4.8 km s$^{-1}$"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.37'' x 0.25'' (69 deg)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "$0.37\\ensuremath{''} \\times0.25\\ensuremath{''}\\,(69\\ensuremath{^\\circ})$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.47–0.65 mJy/beam at 1.2 km/s",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 0.65 |"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Keplerian line-profile model approach",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "axisymmetric, geometrically-thin Keplerian-rotating disk to quantitatively assess their emitting radii (cite: Bosman2021; Facchini2024)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Bosman2021; Facchini2024)"
+    },
+    {
+     "what": {
+      "value": "Matched filter analysis",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "we also performed a matched filter analysis (cite: Loomis2018)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Loomis2018)"
+    },
+    {
+     "what": {
+      "value": "Flaring angle 0.02",
+      "evidence": [
+       {
+        "loc": "4.2.1",
+        "quote": "assume $\\varphi = 0.02$ as in (cite: Huang2018)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Huang2018)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum",
+    "Self-calibration solution intervals",
+    "Image size and cell size",
+    "Mean of the two SO2 line partition functions/molecular weights used",
+    "Water line frequencies and ARI-L product specifics for 2015.1.01259.S reanalysis",
+    "How the 1.2 km/s model was binned/convolved to channel resolution"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Self-calibrate and image",
+    "method": {
+     "value": "Align execution blocks, self-calibrate continuum, apply to full data, subtract continuum, tclean",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "The solutions were then applied to the non-averaged dataset."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5, multiscale [0,5,15,25]",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "multiscale deconvolver with scales of \\[0, 5, 15, 25\\] pixels"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "robust chosen by peak S/N comparison",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "after testing different values (0.5, 1.0, and 2.0) for all three lines"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Moment maps and spectra",
+    "method": {
+     "value": "Integrate ±20 km/s about vsys; extract spectra from two-beam elliptical aperture",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "we spectrally integrated over $\\pm20$ km s$^{-1}$ with respect to the systemic velocity"
+      }
+     ]
+    },
+    "software": [
+     "bettermoments"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Confirm detections",
+    "method": {
+     "value": "Matched filter with Keplerian disk (Rout 10 au) and SO2 stacking",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "a simple Keplerian-rotating disk model with a small outer radius of 10 au"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "H2S response ~6-7 sigma; SO2 <5 sigma, stacked 3.6 sigma",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "While the H$_2$S line yields $\\sim6$–$7\\sigma$ response, the two SO$_2$ lines show responses with $<5\\sigma$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit line profiles",
+    "method": {
+     "value": "Thin Keplerian disk, LTE, thermal broadening; free R, T, N per species plus common vsys (9 params)",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "We left three parameters free for each molecular species: emitting radius $R$, gas temperature $T$, and column density $N$."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "100 walkers, 15,000 steps, 2,000 burn-in",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "We used 100 walkers to sample in 15,000 steps, of which initial 2,000 steps are discarded as burn-in."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "H2S ortho-to-para ratio 3; LTE; SO2 radius same as SO; M*=2.0 Msun; i=46.7 deg",
+      "evidence": [
+       {
+        "loc": "3 Analysis & results",
+        "quote": "we assumed a statistical ortho-to-para ratio of 3 to calculate total H$_2$S column density"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "likelihood exp(-chi2/2); uniform priors U(1,40) au R, U(20,500) K T, U(14,20) logN, U(0,11) km/s vsys; lower limits from 95% HDI",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "We used uniform priors, i.e., $\\mathcal{U}(1,40)$ for $R$ in au, $\\mathcal{U}(20,500)$ for $T$ in K"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Model reproduces H2S and SO profiles; vsys consistent with literature",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "The systemic velocity $v_\\mathrm{sys}$ derived here is consistent with the known literature value"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Column density ratios and water-relative abundances",
+    "method": {
+     "value": "Ratios from posterior samples with T>300 K; reanalyze archival water data for 3 sigma upper limits and compute abundances relative to water",
+     "evidence": [
+      {
+       "loc": "4.2.1",
+       "quote": "we tentatively derived the column density ratios of SO and SO$_2$ relative to H$_2$S for the posterior MCMC samples with $T>300$ K to be 0.13 and 0.46"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "line width 40 km/s; point source; H2O/H2(18)O=557; HDO/H2O=2e-3; H2O abundance 1e-4",
+      "evidence": [
+       {
+        "loc": "4.2.2",
+        "quote": "H$_2$$^{16}$O/H$_2$$^{18}$O $=557$ (cite: Wilson1999) and HDO/H$_2$O $=2\\times10^{-3}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.6.4.34",
+    "used_for": {
+     "value": "self-calibration, uvcontsub, tclean imaging",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "Subsequent self-calibration and imaging were performed using the Common Astronomy Software Applications (cite: CASA) modular version 6.6.4.34."
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "velocity-integrated maps",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "Using the Python package `bettermoments` (cite: bettermoments)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC posterior sampling",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "affine-invariant Markov Chain Monte Carlo (MCMC) code `emcee` (cite: emcee)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "deprojected radial profiles",
+     "evidence": [
+      {
+       "loc": "Additional Line Detections",
+       "quote": "`radial_profile` function built in the Python package `GoFish` (cite: GoFish)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "H2S emitting radius",
+    "value": "3.0",
+    "uncertainty": "+0.6/-0.3",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| H$_2$S  | $3.0_{-0.3}^{+0.6}$ | $>120$ | $>1.0\\times10^{16}$  | $5.7^{+0.7}_{-0.9}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "SO emitting radius",
+    "value": "4.6",
+    "uncertainty": "+0.5/-0.6",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| SO      | $4.6^{+0.5}_{-0.6}$ | $>92$  | $>5.7\\times 10^{15}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "H2S temperature lower limit",
+    "value": ">120",
+    "uncertainty": "95% HDI lower end",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$>120$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2S column density lower limit",
+    "value": ">1.0e16",
+    "uncertainty": "95% HDI lower end",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$>1.0\\times10^{16}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO/H2S column ratio (T>300 K)",
+    "value": "0.13",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "to be 0.13 and 0.46, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "SO2/H2S column ratio (T>300 K)",
+    "value": "0.46",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "to be 0.13 and 0.46, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "H2S flux",
+    "value": "39",
+    "uncertainty": "10",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$39\\pm10$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO flux",
+    "value": "52",
+    "uncertainty": "12",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$52\\pm12$"
+     }
+    ]
+   },
+   {
+    "quantity": "Water 3σ flux upper limits (H2O, H2-18O, HDO)",
+    "value": "69, 96, 48",
+    "uncertainty": "not stated",
+    "units": "mJy km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "to be 69, 96, and 48  mJy km s$^{-1}$ for H$_2$O, H$_2$$^{18}$O, and HDO lines"
+     }
+    ]
+   },
+   {
+    "quantity": "CH2CN column density",
+    "value": "1.1e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Additional Line Detections",
+      "quote": "we derived a disk-averaged CH$_2$CN column density of $\\approx1.1\\times10^{13}$ cm$^{-2}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Compact unresolved H2S and SO emission with ~40 km/s line width at disk center",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We detect unresolved, compact emission of H$_2$S and SO (and tentatively SO$_2$) at the disk center with a broad line width of $\\sim40$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "value": "CS and SO radial profiles anti-correlated",
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "showcasing a clear anti-correlation in radial distributions"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the compact H2S/SO emission from the innermost warm disk?",
+    "experiment": "Keplerian line profile fits with MCMC",
+    "result": "R ≈3–5 au, T ≳90–120 K",
+    "finding": "Emission traces inner warm region consistent with ice sublimation alongside water",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we constrain the emitting radii and gas temperatures of these molecules to be $\\approx$3–5 au and $\\gtrsim90$–120 K"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is H2S an important volatile sulfur reservoir?",
+    "experiment": "Column density ratios from high-T posterior samples",
+    "result": "SO/H2S=0.13, SO2/H2S=0.46",
+    "finding": "H2S could be the major gas-phase sulfur carrier, but constraints are limited",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "suggesting that H$_2$S could be the most abundant gas-phase volatile sulfur species in the inner region"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are abundances relative to water consistent with ISM and comets?",
+    "experiment": "Compared lower limits with water upper limits from archival data",
+    "result": "H2S broadly consistent; SO and SO2 possibly higher at high T",
+    "finding": "Consistent with limited constraints",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "the abundance ratios are broadly consistent with both ISM and comets"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Emission is unresolved so line profiles used to infer emitting radius",
+    "evidence": [
+     {
+      "loc": "3 Analysis & results",
+      "quote": "the line profiles still provide information about the emitting radii under the assumption that the emitting gas follows Keplerian rotation"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "T and N degenerate; mostly optically thick; only lower limits; low S/N",
+     "evidence": [
+      {
+       "loc": "3 Analysis & results",
+       "quote": "gas temperature $T$ and column densities $N$ are highly degenerate, and the solutions are mostly in the optically thick regime"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Weak detections (S/N ~4-7); SO2 only tentative",
+    "Single-transition fits, strong T–N degeneracy",
+    "Assumed SO2 radius equals SO",
+    "Thermal-only line width and thin-disk geometry",
+    "Water upper limits from different data with assumed emitting size"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data; ARI-L products used for 2015.1.01259.S",
+    "evidence": [
+     {
+      "loc": "footnote 4",
+      "quote": "We used the Additional Representative Images for Legacy (ARI-L) products available at the ALMA Science Archive."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Line-free channels",
+    "Self-cal solints",
+    "Image size/cell",
+    "Exact model binning"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB for 2021.1.00535.S (four EBs, Band 7)",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear fitting recipe with priors, but several imaging and self-cal details unstated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, nearly complete recipe, numeric results (R, T, N limits)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Loomis2018)",
+     "why": "matched filter technique"
+    },
+    {
+     "citation": "(cite: Bosman2021; Facchini2024)",
+     "why": "Keplerian line profile model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Law2025)",
+     "why": "analysis of C34S and H2C34S from same dataset"
+    },
+    {
+     "citation": "(cite: Notsu2019)",
+     "why": "archival water observations"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "2015.1.01259.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-cb4dfb561aad687b43a46ab4524b2415",
+  "batch_id": "msgbatch_01UpDVsyBtWjxy9v24Eo24ek",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T18:01:21",
+  "usage": {
+   "input_tokens": 23339,
+   "output_tokens": 9466,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.071276,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 80,
+  "quotes_ok": 80,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2011.0.00863.S"
+  ],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 55,
+   "rate": 0.705
+  },
+  "evidence_ok": true
+ }
+}

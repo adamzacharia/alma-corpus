@@ -1,0 +1,241 @@
+{
+ "bibcode": "2017A&A...603A..10B",
+ "title": "Fragmentation and disk formation in high-mass star formation: The ALMA view of G351.77-0.54 at 0.06'' resolution",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201630126",
+ "arxiv_id": "1703.07235",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "How does the high-mass hot core G351.77-0.54 fragment, and what are the kinematics, temperature structure and gravitational stability of its central disk-like structure at 0.06'' resolution?",
+ "alma_project_codes": [
+  "2013.1.00260.S"
+ ],
+ "data": {
+  "bands": "Band 9 (690 GHz)",
+  "arrays": "42 antennas, one execution",
+  "angular_resolution": "0.06'' continuum, 0.07'' line",
+  "sensitivity": "1 sigma rms 7 mJy/beam continuum; 30 mJy/beam line at 0.5 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Large-scale 870 um gas mass of ~664 Msun at 1 kpc, 25 K",
+    "evidence": [
+     {
+      "loc": "G351.77-0.54 (IRAS 17233-3606):",
+      "quote": "From large-scale 870 $\\mu$m continuum emission, (cite: leurini2011b) estimate a gas mass reservoir of $\\sim$664 M$_{\\odot}$ for a distance of 1 kpc and a temperature of 25 K."
+     }
+    ]
+   },
+   "citation": "(cite: leurini2011b)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_438um = 6.3 cm2/g extrapolated to 1e6 cm-3",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "we use a dust opacity $\\kappa_{438\\mu\\rm{m}}=6.3$ cm$^2$ g$^{-1}$, extrapolated for densities of $10^6$ cm$^{-3}$ from (cite: ossenkopf1994)"
+     }
+    ]
+   },
+   "citation": "(cite: ossenkopf1994)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity vlsr = -3.63 km/s",
+    "evidence": [
+     {
+      "loc": "G351.77-0.54 (IRAS 17233-3606):",
+      "quote": "we use as a reference $v_{\\rm{lsr}}$ a value of $-3.63$ km s$^{-1}$ measured for CH$_3$CN$(12_2-11_2)v_8=1$ by (cite: leurini2011)"
+     }
+    ]
+   },
+   "citation": "(cite: leurini2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum sources",
+   "method": "438 um continuum image from line-avoided channels; peak positions, fluxes, Planck brightness temperatures; integrated flux within 4 sigma contours",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust column densities and masses",
+   "method": "Optically thin dust emission following Hildebrand/Schuller",
+   "software": [],
+   "key_parameters": [
+    "T = 200 K; kappa_438um = 6.3 cm2/g"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 150; distance 2.2 kpc (1.0 kpc alternative)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Outflow and CH3CN kinematics",
+   "method": "CO(6-5) channel maps, red lobe integrated 25-42 km/s; CH3CN first-moment maps and pv cuts perpendicular to outflow, compared with Keplerian curves for 10 (4.5) Msun",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Infall rate toward source #2",
+   "method": "Spherical Mdot = 4 pi r^2 rho v_in from red-shifted absorption, then scaled by disk solid angle",
+   "software": [],
+   "key_parameters": [
+    "r ~80 AU, rho ~2.3e9 cm-3, v_in ~7.1 km/s"
+   ],
+   "assumptions": [
+    "spherical symmetry; disk covers ~50% (~2 pi)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Gas temperature map",
+   "method": "Pixel-by-pixel LTE fit of CH3CN and CH3(13)CN k-ladders, two components, hot component used",
+   "software": [
+    "XCLASS",
+    "MAGIX",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE, isothermal homogeneous"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Toomre Q map",
+   "method": "Q = c_s kappa/(pi G Sigma) per pixel with Keplerian Omega for 10 Msun, Sigma from the continuum; three temperature prescriptions",
+   "software": [],
+   "key_parameters": [
+    "T = T_rot; T = 200 K; T ∝ r^-0.4 with 1400 K at 10 AU"
+   ],
+   "assumptions": [
+    "Keplerian rotation around 10 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak brightness temperature source #1",
+   "value": "201",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #1 | 17:26:42.534 | -36:09:17.38 | 0.255 | 201 | 2.33 | 6.2 | 0.49 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of source #1 (200 K, 2.2 kpc)",
+   "value": "0.49",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #1 | 17:26:42.534 | -36:09:17.38 | 0.255 | 201 | 2.33 | 6.2 | 0.49 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Infall rate toward #2 (spherical)",
+   "value": "1.6e-3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "approximate mass infall rates toward submm source #2 of $\\dot{M}_{\\rm{in}} \\sim 1.6\\times\n10^{-3}$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk infall rate toward #2",
+   "value": "0.8e-3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "disk infall rates around $\\dot{M}_{\\rm{disk,in}}\\sim 0.8\\times 10^{-3}$  M$_{\\odot}$ yr$^{-1}$ at 2.2 kpc distance"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN gas temperature",
+   "value": "largely ~1000",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "We find very warm gas with temperatures largely around 1000 K with no steep gradient."
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q minimum, T∝r^-0.4 case",
+   "value": ">~1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "even the lowest values in the map derived with the temperature distribution are greater than $\\sim$1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Source density",
+   "value": "1.8e4 (2.2 kpc) to 2.0e5 (1 kpc)",
+   "uncertainty": "not stated",
+   "units": "pc-3",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "source densities of $\\sim 1.8\\times\n10^4$ pc$^{-3}(2.0\\times 10^5$ pc$^{-3}$) at 2.2(1) kpc distance"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Channel/line selection and fitting ranges, priors and initial parameters for XCLASS pixel-by-pixel fits",
+  "Image size, cell size, deconvolver, masks and clean threshold",
+  "Self-calibration and flux-scale uncertainty details",
+  "Continuum frequency used for the 438 um image (collapsed channels list)",
+  "How the Toomre Q uncertainties/epicyclic frequency were computed per pixel and inclination",
+  "Exact pv-cut width and position angle"
+ ],
+ "missing_for_reproduction": [
+  "XCLASS fit setup",
+  "Imaging parameters (cell, size, clean settings)",
+  "pv cut definition"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Single public dataset and a clear recipe, but imaging and XCLASS fit details are missing.",
+ "rediscovery_reason": "Public data with numeric continuum and infall results; the recipe is reasonably clear.",
+ "source_card": "cards/2017A%26A...603A..10B/sonnet/card.md"
+}

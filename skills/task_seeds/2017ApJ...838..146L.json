@@ -1,0 +1,235 @@
+{
+ "bibcode": "2017ApJ...838..146L",
+ "title": "ALMA Observations of the Interaction of a Radio Jet with Molecular Gas in Minkowski's Object",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa65d7",
+ "arxiv_id": "1703.03006",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Is there molecular gas in Minkowski's Object, and do its properties support jet-induced star formation (positive AGN feedback)?",
+ "alma_project_codes": [
+  "2015.1.00570.S"
+ ],
+ "data": {
+  "bands": "CO(1-0) at 113.15 GHz plus continuum windows at 99.2, 101.1, 111.2 GHz (Band 3)",
+  "arrays": "not stated",
+  "angular_resolution": "CO beam 3.2\" x 2.4\", PA 275 deg; continuum 3.5\" x 2.6\"",
+  "sensitivity": "CO: 0.5 mJy/beam per 3 km/s channel; continuum: 60 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "H-alpha image used for SFR surface density",
+    "evidence": [
+     {
+      "loc": "5.1 Star formation rate and gas depletion time",
+      "quote": "by scaling the CO(1-0) image and the H$\\alpha$ image (from C06)"
+     }
+    ]
+   },
+   "citation": "Croft et al. 2006 (cite: 2006ApJ...647.1040C)"
+  },
+  {
+   "what": {
+    "value": "Total SFR 0.47 Msun/yr",
+    "evidence": [
+     {
+      "loc": "5.1 Star formation rate and gas depletion time",
+      "quote": "we assume a SFR of 0.47 M$_{\\odot}$ yr$^{-1}$ (Salomé et al. 2015)"
+     }
+    ]
+   },
+   "citation": "Salomé et al. 2015"
+  },
+  {
+   "what": {
+    "value": "HI gas mass 4.9e8 Msun",
+    "evidence": [
+     {
+      "loc": "4.4 Molecular gas content",
+      "quote": "C06 give the atomic gas mass in H`I` as $4.9\\times 10^8 M_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "Croft et al. 2006"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO cube",
+   "method": "CASA clean MFS (2 Taylor terms) for continuum, natural weighting; uvcontsub for CO cube",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Spectral index map 1.5-106 GHz",
+   "method": "convolve ALMA image to VLA resolution and compute per-pixel spectral index",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure CO flux and correct for resolved-out emission",
+   "method": "Integrate over 16\" aperture, 5535-5586 km/s; simulate spatial filtering to derive factor 1.4",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "emission is a uniform disk of 16\" diameter; 20% uncertainty"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive L_CO and H2 mass",
+   "method": "Obreschkow L_CO formula; M_H2 = alpha_CO * L_CO for alpha_CO=4.6 and 27",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Z'=0.5, source area 201 arcsec^2 (29.2 kpc^2)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Star formation law and depletion time",
+   "method": "Scale CO and H-alpha images to Sigma_H2 and Sigma_SFR; depletion time = ratio; compare with Kennicutt-Schmidt",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "normal IMF"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Minimum-energy pressure in interaction region",
+   "method": "standard equipartition formulation from VLA 1.5 GHz",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=100, filling factor 1, path length 4.0 kpc, phi=45 deg, alpha=-0.8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated CO(1-0) flux (corrected)",
+   "value": "405",
+   "uncertainty": "81",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Integrated &01:25:47.40 -01:22:19.0 &16 & 5556$\\pm$1 & 26$\\pm$3 & $405\\pm 81$ & 3-18"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 (alpha_CO=4.6)",
+   "value": "3.0e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$M_{\\rm H_2} =3.0 \\times 10^7~M_{\\odot}$, 6% of the H`I` gas mass"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 (alpha_CO=27)",
+   "value": "1.8e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$M_{\\rm H_2} =1.8 \\times 10^8~M_{\\odot}$, 36% of the H`I` mass"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO line FWHM",
+   "value": "26",
+   "uncertainty": "3",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "5556$\\pm$1 & 26$\\pm$3"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum pressure",
+   "value": "1.3e-12",
+   "uncertainty": "not stated",
+   "units": "Pa",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Physical conditions in the ISM",
+     "quote": "we find a minimum pressure of $1.3 \\times 10^{-12}$ Pa"
+    }
+   ]
+  },
+  {
+   "quantity": "Background source 106 GHz peak flux",
+   "value": "118",
+   "uncertainty": "8",
+   "units": "uJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.3 Background starburst galaxy",
+     "quote": "$S_{\\rm 106\\,GHz}=118 \\pm 8 \\mu{\\rm Jy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average gas depletion time",
+   "value": "0.6-3.8e8",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Star formation rate and gas depletion time",
+     "quote": "this leads to a short average gas depletion timescale $\\sim 0.6-3.8\\times 10^8$ yr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for uvcontsub",
+  "Clean threshold, masking, cell and image size",
+  "Pipeline/CASA version",
+  "Details of the ALMA simulator setup (configuration, noise)",
+  "Method for moment map clipping",
+  "How pixel-level Sigma_SFR was derived from H-alpha (extinction, calibration)",
+  "Spectral-fitting method for clump line parameters"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and line-free channels",
+  "CASA version",
+  "Simulator setup",
+  "H-alpha SFR calibration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and main numbers clear, but many imaging parameters are unstated.",
+ "rediscovery_reason": "Public ALMA data, simple flux and mass derivation with numeric results.",
+ "source_card": "cards/2017ApJ...838..146L/sonnet/card.md"
+}

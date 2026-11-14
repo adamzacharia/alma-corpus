@@ -1,0 +1,688 @@
+{
+ "bibcode": "2021A&A...653A.129C",
+ "title": "The GUAPOS project. II. A comprehensive study of peptide-like bond molecules",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202141573",
+ "arxiv_id": "2107.11258",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Measure the column densities, abundances and spatial distribution of nine peptide-like bond molecules (HNCO, HC(O)NH2, CH3NCO, CH3C(O)NH2, CH3NHCHO, CH3CH2NCO, NH2C(O)NH2, NH2C(O)CN, HOCH2C(O)NH2) toward the hot core G31.41+0.31 from one spectral survey, then compare with other sources to constrain their formation",
+ "alma_project_codes": [
+  "2017.1.00501.S",
+  "2013.1.00489.S"
+ ],
+ "data": {
+  "bands": "Band 3 (GUAPOS survey, 84.05-115.91 GHz); Band 6 (higher angular resolution project)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3 GUAPOS: ~1.2'' (~4500 au); Band 6: 0.2''x0.2'' (~750 au)",
+  "sensitivity": "Band 3 maps rms 0.5-1.9 mJy/beam; Band 3 extracted spectrum rms 7-27 mK; Band 6 maps rms ~1.3 mJy/beam at ~217 and 218 GHz, ~1.5 at ~219 GHz, ~2 at ~220 GHz"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N(H2) = (1.0+/-0.2)e25 cm-2 from the continuum in the spectrum extraction area, used for all abundances",
+    "evidence": [
+     {
+      "loc": "2.3 Spectral analysis",
+      "quote": "obtained from the continuum emission inside the area from which we extracted the spectrum"
+     }
+    ]
+   },
+   "citation": "(see (cite: mininni2020))"
+  },
+  {
+   "what": {
+    "value": "Distance to G31 of 3.75 kpc",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "G31 is a HMC located at a distance of 3.75 kpc ((cite: immer2019))"
+     }
+    ]
+   },
+   "citation": "(cite: immer2019)"
+  },
+  {
+   "what": {
+    "value": "Temperature gradient of G31: ~100 K in the outer part (~0.03 pc), ~450 K toward the center",
+    "evidence": [
+     {
+      "loc": "2.3 Spectral analysis",
+      "quote": "it is well know that the HMC G31 has a temperature gradient, with temperatures of"
+     }
+    ]
+   },
+   "citation": "(cite: beltran2018)"
+  },
+  {
+   "what": {
+    "value": "12C/13C galactocentric trend used to correct 13C-isotopologue column densities (37+/-12 at D_GC = 5.02 kpc)",
+    "evidence": [
+     {
+      "loc": "3.1.1 Isocyanic acid (HNCO)",
+      "quote": "following the galactocentric trend recently obtained by (cite: yan2019)"
+     }
+    ]
+   },
+   "citation": "(cite: yan2019)"
+  },
+  {
+   "what": {
+    "value": "Galactic 14N/15N linear relation (value 340+/-90) used as a consistency check",
+    "evidence": [
+     {
+      "loc": "3.1.1 Isocyanic acid (HNCO)",
+      "quote": "derived from the linear relation found by (cite: colzi18b)"
+     }
+    ]
+   },
+   "citation": "(cite: colzi18b)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic entries from CDMS and JPL catalogues (plus entries added to MADCUBA from laboratory works for species not in catalogues)",
+    "evidence": [
+     {
+      "loc": "2.3 Spectral analysis",
+      "quote": "SLIM uses the spectroscopic entries from the Cologne Database for Molecular Spectroscopy"
+     }
+    ]
+   },
+   "citation": "(cite: muller2001; muller2005); (cite: endres2016); (cite: pickett1998)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic data for HNCO vibrationally excited states",
+    "evidence": [
+     {
+      "loc": "Appendix: Spectroscopy",
+      "quote": "have been obtained using the spectroscopic data reported in (cite: yamada1977type; yamada1977b; niedenhoff1996pure)"
+     }
+    ]
+   },
+   "citation": "(cite: yamada1977type; yamada1977b; niedenhoff1996pure)"
+  },
+  {
+   "what": {
+    "value": "Column densities and abundances of the same molecules in other sources (Sgr B2 positions, G10.47, Orion BN/KL, NGC 6334I, G328.2551, IRAS 16293, G+0.693) used for the comparison",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "we have compared the results obtained in G31 with those in other interstellar sources"
+     }
+    ]
+   },
+   "citation": "(cite: belloche2013); (cite: belloche2017); (cite: belloche2019); (cite: bonfand2019); (cite: gorai2020); (cite: cernicharo2016); (cite: ligterink2020); (cite: csengeri2019); (cite: martin-domenech2017); (cite: ligterink2017); (cite: ligterink2018); (cite: manigand2020); (cite: zeng2018)"
+  },
+  {
+   "what": {
+    "value": "Comet 67P column densities and upper limits for HNCO, HC(O)NH2, CH3NCO, CH3C(O)NH2",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "by the ROSINA experiment on ESA’s Rosetta mission reported by (cite: altwegg2017)"
+     }
+    ]
+   },
+   "citation": "(cite: altwegg2017)"
+  },
+  {
+   "what": {
+    "value": "CH3OH column densities for the comparison sources and for G31 (G31 from 13CH3OH, Mininni et al. in prep)",
+    "evidence": [
+     {
+      "loc": "4.2 Abundances with respect to CH3OH",
+      "quote": "(for G31, Mininni et al. in prep)"
+     }
+    ]
+   },
+   "citation": "(cite: rodriguez-almeida2021); (cite: belloche2013); (cite: bogelund2018); (cite: manigand2020); (cite: jorgensen2018); Mininni et al. in prep"
+  },
+  {
+   "what": {
+    "value": "Earlier power-law fits between HC(O)NH2 and HNCO abundances (X[HC(O)NH2]=0.04 X[HNCO]^0.93 and X[HC(O)NH2]=32.14 X[HNCO]^1.29)",
+    "evidence": [
+     {
+      "loc": "4.1 Molecular abundances",
+      "quote": "the best power-law fits derived by (cite: lopez-sepulcre2015)"
+     }
+    ]
+   },
+   "citation": "(cite: lopez-sepulcre2015); (cite: quenard2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract the Band 3 spectrum and subtract the continuum",
+   "method": "Extract a spectrum over a beam-sized area at the continuum peak; split into 32 windows of 1 GHz, apply STATCONT c-SMC to each, average the continuum-subtracted windows with MADCUBA; fit a power law to the STATCONT continuum levels",
+   "software": [
+    "STATCONT",
+    "MADCUBA"
+   ],
+   "key_parameters": [
+    "32 spectral windows of 1 GHz each",
+    "Continuum uncertainty +/-1.2 K, 11% of the continuum level at the reference frequency 84.579 GHz, added to the fit errors"
+   ],
+   "assumptions": [
+    "Continuum brightness temperature follows a power law in frequency with alpha = 2 + beta for optically thin dust emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify lines and check contamination",
+   "method": "Build LTE synthetic spectra in MADCUBA-SLIM from CDMS/JPL entries (plus added entries); identify other species preliminarily to evaluate line contamination",
+   "software": [
+    "MADCUBA",
+    "SLIM",
+    "CDMS",
+    "JPL"
+   ],
+   "key_parameters": [
+    "A line is non-contaminated if the peak of another species lies farther than FWHM from it; in a blend with separation below FWHM the contamination must be below 15%"
+   ],
+   "assumptions": [
+    "LTE with line opacity included, justified by n(H2) ~ 1e8 cm-3"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit LTE models to get N, Tex, vLSR and FWHM",
+   "method": "MADCUBA-AUTOFIT non-linear least-squares fit of the LTE synthetic spectrum to the non-contaminated transitions of each species; vibrational states and 13C isotopologues fitted separately for HNCO, HC(O)NH2 and CH3NCO; CH3C(O)NH2 v=0 and vt=1,2 fitted together",
+   "software": [
+    "MADCUBA",
+    "AUTOFIT"
+   ],
+   "key_parameters": [
+    "Free parameters: column density N, excitation temperature Tex, peak velocity vLSR, FWHM; FWHM, vLSR and/or Tex fixed when the fit does not converge (e.g. HNCO FWHM fixed to 8 km/s; 13C isotopologue parameters fixed to the main species)",
+    "Total partition function Qvibrot = Qrot x Qvib when vibrational spectroscopy exists"
+   ],
+   "assumptions": [
+    "Emission fills the beam, so no beam dilution correction"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Correct for optical thickness to get final column densities",
+   "method": "Where the main-isotopologue ground state is optically thick (HNCO, HC(O)NH2), take N from the optically thinner 13C isotopologue multiplied by the Galactic 12C/13C ratio; for CH3NCO adopt the vb=1 result; compare with the vibrationally excited states",
+   "software": [
+    "MADCUBA"
+   ],
+   "key_parameters": [
+    "12C/13C = 37+/-12 at the galactocentric distance of G31 (5.02 kpc)"
+   ],
+   "assumptions": [
+    "13C isotopologues and vibrationally excited states are optically thin; 12C/13C follows the Galactic trend"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive upper limits for non-detections and undetected states",
+   "method": "Assume Tex, vLSR and FWHM from a related species or fixed values, then raise N to the maximum value compatible with the observed spectrum; MADCUBA upper limits on integrated intensity use 3 x rms x dv / sqrt(n_chan)",
+   "software": [
+    "MADCUBA"
+   ],
+   "key_parameters": [
+    "For NH2C(O)NH2, NH2C(O)CN, HOCH2C(O)NH2: Tex = 150 K, vLSR = 96.5 km/s, FWHM = 7 km/s; CH3CH2NCO uses the CH3NCO vb=1 values"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Convert column densities to abundances",
+   "method": "X = N / N(H2), with N(H2) from the continuum inside the extraction area; abundances relative to CH3OH also derived",
+   "software": [],
+   "key_parameters": [
+    "N(H2) = (1.0+/-0.2)e25 cm-2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Map the emission at 1.2'' and 0.2'' and test spatial consistency",
+   "method": "Crop each cube around the rest frequency, subtract the continuum pixel by pixel, integrate four channels per transition; compare emission regions across Eup and molecules, and compare 1.4 mm column densities from the Band 6 data with the 3 mm ones",
+   "software": [
+    "CASA",
+    "MADCUBA"
+   ],
+   "key_parameters": [
+    "Velocity range for the maps 93 to 100 km/s; four channels correspond to 6.5 km/s at ~90 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Compare with other sources and fit abundance correlations",
+   "method": "Compare abundances relative to H2 and to CH3OH, and column density ratios relative to HC(O)NH2, across hot cores, hot corinos, a GC cloud and comet 67P; fit power laws between pairs of abundances and report Pearson coefficients",
+   "software": [],
+   "key_parameters": [
+    "A 25% error is assumed where literature errors are not given"
+   ],
+   "assumptions": [
+    "CH3OH column densities from 13CH3OH or CH3 18OH are corrected with 12C/13C and 16O/18O ratios as a function of galactocentric distance"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust opacity index beta from the Band 3 continuum slope",
+   "value": "0.71",
+   "uncertainty": "+/-0.06",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Appendix: Continuum determination",
+     "quote": "obtaining $\\beta$=0.71$\\pm$0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO Tex (v=0 fit)",
+   "value": "217",
+   "uncertainty": "+/-22",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Isocyanic acid (HNCO)",
+     "quote": "The best fit of HNCO provided $T_{\\rm ex}$ = 217$\\pm$22 K"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO column density, corrected with 12C/13C from HN13CO",
+   "value": "1.4e18",
+   "uncertainty": "+/-0.5e18",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 Isocyanic acid (HNCO)",
+     "quote": "Thus, the corrected column density is $N$ = (1.4$\\pm$0.5)$\\times$10$^{18}$ cm$^{-2}$, and the corrected abundance is $X$=(1.4$\\pm$0.6)$\\times$10$^{-7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO abundance relative to H2 (corrected)",
+   "value": "1.4e-7",
+   "uncertainty": "+/-0.6e-7",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1.1 Isocyanic acid (HNCO)",
+     "quote": "Thus, the corrected column density is $N$ = (1.4$\\pm$0.5)$\\times$10$^{18}$ cm$^{-2}$, and the corrected abundance is $X$=(1.4$\\pm$0.6)$\\times$10$^{-7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C from HNCO v=0 and HN13CO fits (affected by opacity)",
+   "value": "3.0",
+   "uncertainty": "+/-0.6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Isocyanic acid (HNCO)",
+     "quote": "we have derived a $^{12}$C/$^{13}$Cratio of 3.0$\\pm$0.6 and a $^{14}$N/$^{15}$Nratio of 23$\\pm$6 using HNCO, $v$=0"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N from HNCO v=0 fits (affected by opacity)",
+   "value": "23",
+   "uncertainty": "+/-6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Isocyanic acid (HNCO)",
+     "quote": "we have derived a $^{12}$C/$^{13}$Cratio of 3.0$\\pm$0.6 and a $^{14}$N/$^{15}$Nratio of 23$\\pm$6 using HNCO, $v$=0"
+    }
+   ]
+  },
+  {
+   "quantity": "HC(O)NH2 v=0 Tex",
+   "value": "150",
+   "uncertainty": "+/-26",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.2 Formamide (HC(O)NH2)",
+     "quote": "$T_{\\rm ex}$ = 150$\\pm$26 K, FWHM = 8.6$\\pm$0.2 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HC(O)NH2 column density, corrected with 12C/13C from H13C(O)NH2",
+   "value": "1.7e17",
+   "uncertainty": "+/-0.6e17",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.2 Formamide (HC(O)NH2)",
+     "quote": "Thus, the corrected column density is $N$ = (1.7$\\pm$0.6)$\\times$10$^{17}$ cm$^{-2}$, and the corrected abundance is $X$ = (1.7$\\pm$0.7)$\\times$10$^{-8}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HC(O)NH2 abundance relative to H2 (corrected)",
+   "value": "1.7e-8",
+   "uncertainty": "+/-0.7e-8",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1.2 Formamide (HC(O)NH2)",
+     "quote": "Thus, the corrected column density is $N$ = (1.7$\\pm$0.6)$\\times$10$^{17}$ cm$^{-2}$, and the corrected abundance is $X$ = (1.7$\\pm$0.7)$\\times$10$^{-8}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO vb=1 Tex",
+   "value": "91",
+   "uncertainty": "+/-37",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3 Methyl isocyanate (CH3NCO)",
+     "quote": "resulted in $T_{\\rm ex}$ = 91$\\pm$37 K, $N$ = (1.2$\\pm$0.3)$\\times$10$^{17}$ cm$^{-2}$, and $X$ = (1.2$\\pm$0.4)$\\times$10$^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO column density (vb=1, adopted)",
+   "value": "1.2e17",
+   "uncertainty": "+/-0.3e17",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.3 Methyl isocyanate (CH3NCO)",
+     "quote": "resulted in $T_{\\rm ex}$ = 91$\\pm$37 K, $N$ = (1.2$\\pm$0.3)$\\times$10$^{17}$ cm$^{-2}$, and $X$ = (1.2$\\pm$0.4)$\\times$10$^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO abundance relative to H2 (vb=1, adopted)",
+   "value": "1.2e-8",
+   "uncertainty": "+/-0.4e-8",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1.3 Methyl isocyanate (CH3NCO)",
+     "quote": "resulted in $T_{\\rm ex}$ = 91$\\pm$37 K, $N$ = (1.2$\\pm$0.3)$\\times$10$^{17}$ cm$^{-2}$, and $X$ = (1.2$\\pm$0.4)$\\times$10$^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3C(O)NH2 Tex (v=0 and vt=1,2 fitted together)",
+   "value": "285",
+   "uncertainty": "+/-50",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.4 Acetamide (CH3C(O)NH2)",
+     "quote": "$T_{\\rm ex}$ = 285$\\pm$50 K, FWHM = 6.2$\\pm$0.4 km s$^{-1}$, $N$ = (8$\\pm$4)$\\times$10$^{16}$ cm$^{-2}$, and $X$ = (8$\\pm$4)$\\times$10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3C(O)NH2 column density",
+   "value": "8e16",
+   "uncertainty": "+/-4e16",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.4 Acetamide (CH3C(O)NH2)",
+     "quote": "$T_{\\rm ex}$ = 285$\\pm$50 K, FWHM = 6.2$\\pm$0.4 km s$^{-1}$, $N$ = (8$\\pm$4)$\\times$10$^{16}$ cm$^{-2}$, and $X$ = (8$\\pm$4)$\\times$10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3C(O)NH2 abundance relative to H2",
+   "value": "8e-9",
+   "uncertainty": "+/-4e-9",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1.4 Acetamide (CH3C(O)NH2)",
+     "quote": "$T_{\\rm ex}$ = 285$\\pm$50 K, FWHM = 6.2$\\pm$0.4 km s$^{-1}$, $N$ = (8$\\pm$4)$\\times$10$^{16}$ cm$^{-2}$, and $X$ = (8$\\pm$4)$\\times$10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NHCHO column density (Tex fixed to 285 K)",
+   "value": "3.7e16",
+   "uncertainty": "+/-1.6e16",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.5 N-methylformamide (CH3NHCHO)",
+     "quote": "gives $N$ = (3.7$\\pm$1.6)$\\times$10$^{16}$ cm$^{-2}$, and $X$ = (3.7$\\pm$1.7)$\\times$10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NHCHO abundance relative to H2",
+   "value": "3.7e-9",
+   "uncertainty": "+/-1.7e-9",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1.5 N-methylformamide (CH3NHCHO)",
+     "quote": "gives $N$ = (3.7$\\pm$1.6)$\\times$10$^{16}$ cm$^{-2}$, and $X$ = (3.7$\\pm$1.7)$\\times$10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CH2NCO column density upper limit",
+   "value": "<=5e15",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.6 Non detections",
+     "quote": "We have obtained $N\\le$5$\\times$10$^{15}$ cm$^{-2}$, and a molecular abundance $X\\le$5$\\times$10$^{-10}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CH2NCO abundance upper limit",
+   "value": "<=5e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.6 Non detections",
+     "quote": "We have obtained $N\\le$5$\\times$10$^{15}$ cm$^{-2}$, and a molecular abundance $X\\le$5$\\times$10$^{-10}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO/CH3CH2NCO column density ratio lower limit",
+   "value": ">24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.6 Non detections",
+     "quote": "This gives a CH$_{3}$NCO/CH$_{3}$CH$_{2}$NCOratio $>$24"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2C(O)NH2 column density upper limit",
+   "value": "<=1.6e14",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.6 Non detections",
+     "quote": "found $N\\le$1.6$\\times$10$^{14}$ cm$^{-2}$ for NH$_{2}$C(O)NH$_{2}$, $N\\le$3$\\times$10$^{15}$ cm$^{-2}$ for NH$_{2}$C(O)CN, and $N\\le$7$\\times$10$^{14}$ cm$^{-2}$ for HOCH$_{2}$C(O)NH$_{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "NH2C(O)CN column density upper limit",
+   "value": "<=3e15",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.6 Non detections",
+     "quote": "found $N\\le$1.6$\\times$10$^{14}$ cm$^{-2}$ for NH$_{2}$C(O)NH$_{2}$, $N\\le$3$\\times$10$^{15}$ cm$^{-2}$ for NH$_{2}$C(O)CN, and $N\\le$7$\\times$10$^{14}$ cm$^{-2}$ for HOCH$_{2}$C(O)NH$_{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HOCH2C(O)NH2 column density upper limit",
+   "value": "<=7e14",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.6 Non detections",
+     "quote": "found $N\\le$1.6$\\times$10$^{14}$ cm$^{-2}$ for NH$_{2}$C(O)NH$_{2}$, $N\\le$3$\\times$10$^{15}$ cm$^{-2}$ for NH$_{2}$C(O)CN, and $N\\le$7$\\times$10$^{14}$ cm$^{-2}$ for HOCH$_{2}$C(O)NH$_{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO/CH3NCO abundance ratio",
+   "value": "12",
+   "uncertainty": "+/-6",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular abundances",
+     "quote": "the HNCO/CH$_{3}$NCOabundance ratio found for G31 of 12$\\pm$6"
+    }
+   ]
+  },
+  {
+   "quantity": "HC(O)NH2 column density from 1.4 mm (0.2'') data",
+   "value": "2.5e16",
+   "uncertainty": "+/-1.9e16",
+   "units": "cm-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2 Integrated intensity maps",
+     "quote": "$N$(HC(O)NH$_{2}$)=(2.5$\\pm$1.9)$\\times$10$^{16}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO column densities from the two 1.4 mm transitions (as printed)",
+   "value": "1.12e17 and 9.1e16",
+   "uncertainty": "+/-0.04e17 and +/-1.8e16",
+   "units": "cm-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2 Integrated intensity maps",
+     "quote": "$N$(HNCO)=(1.12$\\pm$0.04)$\\times$10$^{17}$ cm$^{-2}$, $N$(HNCO)=(9.1$\\pm$1.8)$\\times$10$^{16}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO column density from 1.4 mm (0.2'') data",
+   "value": "6.9e16",
+   "uncertainty": "+/-1.8e16",
+   "units": "cm-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2 Integrated intensity maps",
+     "quote": "$N$(CH$_{3}$NCO)=(6.9$\\pm$1.8)$\\times$10$^{16}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law fit X[HC(O)NH2] = 0.006 X[HNCO]^0.73 (Pearson 0.99)",
+   "value": "coefficient 0.006, exponent 0.73",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular abundances",
+     "quote": "$X$\\[HC(O)NH$_{2}$\\]=0.006$\\times$ $X$\\[HNCO\\]$^{0.73}$"
+    },
+    {
+     "loc": "4.1 Molecular abundances",
+     "quote": "with a Pearson coefficient of 0.99 and a P-value"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law fit X[CH3NCO] = 0.0015 X[HNCO]^0.73",
+   "value": "coefficient 0.0015, exponent 0.73",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular abundances",
+     "quote": "$X$\\[CH$_{3}$NCO\\] = 0.0015$\\times$ $X$\\[HNCO\\]$^{0.73}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law fit X[CH3NCO] = 0.02 X[HC(O)NH2]^0.84",
+   "value": "coefficient 0.02, exponent 0.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.1 Molecular abundances",
+     "quote": "$X$\\[CH$_{3}$NCO\\]=0.02$\\times$ $X$\\[HC(O)NH$_{2}$\\]$^{0.84}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether the ALMA pipeline or manual scripts were used for either project; calibrators and calibration products (the Band 3 cubes come from Mininni et al. 2020)",
+  "Imaging parameters for the Band 3 cubes and Band 6 maps: weighting/robust, cell size, image size, deconvolver, masks, clean threshold, uv range, primary-beam correction",
+  "Band 3 array configuration, baselines, time on source and maximum recoverable scale; Band 6 array configuration and baseline range",
+  "Exact line-free channel ranges used for pixel-by-pixel continuum subtraction in the integrated maps",
+  "How the Band 3 spectrum was combined across the survey spectral windows and which pixels or aperture shape were used beyond 'area equal to the beam size'",
+  "MADCUBA version beyond the SLIM date (01/12/2020), AUTOFIT initial guesses, convergence criteria and weighting of lines",
+  "The MADCUBA-added spectroscopic entries (13C and 15N isotopologues, vibrationally excited HNCO, CH3C(O)NH2 from A. Belloche, CH3NHCHO, CH3CH2NCO) are not distributed with the paper",
+  "Which transitions of each molecule were excluded as contaminated beyond the Table of used lines, and the model of the other species used for contamination",
+  "Method for the power-law and Pearson fits (weights, handling of upper limits, which sources entered each fit)",
+  "CH3OH column density of G31 (13CH3OH, in prep.) and the literature values used for each comparison source",
+  "Band 6 spectral resolution and the numeric transitions used for the 1.4 mm column densities (the paper prints 219.656 GHz twice)"
+ ],
+ "missing_for_reproduction": [
+  "Reduced Band 3 spectrum from Mininni et al. 2020 or the calibration and imaging recipe to rebuild it",
+  "Custom MADCUBA spectroscopic entries added in December 2020",
+  "Band 6 imaging and calibration details and line selection",
+  "Details of the correlation fits and the literature numbers used for every comparison source",
+  "N(CH3OH) of G31 from work in preparation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Scale 1-5. Transitions, free and fixed parameters, and the fitting tool are given and the key numbers are tabulated, but calibration, imaging, spectrum extraction details and custom spectroscopy entries are inherited or missing.",
+ "rediscovery_reason": "Both ALMA projects are in the archive, the LTE fit recipe and transition lists are given, and the main results are numeric (N, Tex, X per species); full reproduction needs the GUAPOS spectrum procedure from Mininni et al. 2020.",
+ "source_card": "cards/2021A%26A...653A.129C/sonnet/card.md"
+}

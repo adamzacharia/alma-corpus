@@ -1,0 +1,167 @@
+{
+ "bibcode": "2019AJ....158..208G",
+ "title": "First Detection of CS Masers around a High-mass Young Stellar Object, W51 e2e",
+ "year": 2019,
+ "doi": "10.3847/1538-3881/ab4790",
+ "arxiv_id": "1909.11089",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Do the CS J=1-0 and J=2-1 rotational transitions show maser emission toward high-mass protostars in W51 A, and where do they arise?",
+ "alma_project_codes": [
+  "2013.1.01596.S",
+  "2017.1.00293.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 6 (1 mm) and Band 3 (3 mm); VLA Q-band (7 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "CS 2-1 beam 0.067\"x0.043\"; CS 1-0 beam 0.043\"x0.037\"",
+  "sensitivity": "CS 2-1 0.59 mJy/beam (3 km/s channels); CS 1-0 1.3 mJy/beam (6 km/s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Positions of OH, water and CH3OH masers for comparison",
+    "evidence": [
+     {
+      "loc": "5 Analysis",
+      "quote": "The closest OH and water masers (cite: Fish2007a; Sato2010a) are separated by $>0.2\\arcsec$ ($>1000$ AU)."
+     }
+    ]
+   },
+   "citation": "Fish2007a; Sato2010a; Etoka2012a; Surcis2012a"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CS lines",
+   "method": "Imaged CS J=2-1 (3 km/s channels, robust 0.5) and CS J=1-0 (6 km/s, robust 0) from calibrated data",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit line and position",
+   "method": "Gaussian fits to line profiles and peak intensity images",
+   "software": [
+    "pyspeckit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Infer enclosed mass from maser separation",
+   "method": "Assume masers at opposite ends of an orbiting disk, v_orb=15 km/s, R=95 AU",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Masers trace orbiting material; invalid if from outflow"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CS J=2-1 maser v_LSR",
+   "value": "34.50",
+   "uncertainty": "0.07",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$34.50 \\pm       0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "CS J=1-0 v_LSR",
+   "value": "64",
+   "uncertainty": "6",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$64 \\pm        6$"
+    }
+   ]
+  },
+  {
+   "quantity": "CS J=2-1 amplitude (brightness temperature)",
+   "value": "6700",
+   "uncertainty": "200",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$6700 \\pm        200$"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset between CS 1-0 and 2-1 masers",
+   "value": "190",
+   "uncertainty": "60",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "($190\\pm60$ AU)"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied enclosed mass",
+   "value": "24",
+   "uncertainty": "+12/-10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 Analysis",
+     "quote": "the implied contained mass is $M=24_{-10}^{+12}$ $\\mathrm{M}_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CS 2-1 flux limit toward IRS2/North and e8",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "5 Analysis",
+     "quote": "peak CS 2-1 flux limit ${S_{98\n\\mathrm{GHz}} \\leq 15 \\mathrm{mJy~\\ensuremath{\\textrm{beam}^{-1}}}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and tclean parameters (cell, image size, masks, niter, deconvolver)",
+  "Continuum subtraction and line-free channels",
+  "Whether the VLA continuum band used for CS 1-0 was continuum-subtracted",
+  "ALMA configurations, baselines, and integration times",
+  "Details of the FK5-to-ICRS correction procedure",
+  "Gaussian fit method details for the line profiles"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and tclean parameters",
+  "Continuum subtraction details",
+  "Exact fitting procedure",
+  "Positional correction procedure"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and key imaging weights are given, but CASA version and many imaging parameters are missing; the results are few.",
+ "rediscovery_reason": "Data are public, imaging choices (robust, channel width) are stated, and the results are numeric line parameters.",
+ "source_card": "cards/2019AJ....158..208G/sonnet/card.md"
+}

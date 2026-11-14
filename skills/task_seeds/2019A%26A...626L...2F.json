@@ -1,0 +1,238 @@
+{
+ "bibcode": "2019A&A...626L...2F",
+ "title": "High gas-to-dust size ratio indicating efficient radial drift in the mm-faint CX Tauri disk",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935496",
+ "arxiv_id": "1905.09204",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How compact is the mm dust disk of CX Tau relative to its CO gas disk, and does it show substructure, indicating radial drift?",
+ "alma_project_codes": [
+  "2016.1.00715.S"
+ ],
+ "data": {
+  "bands": "1.3 mm (Band 6)",
+  "arrays": "not stated",
+  "angular_resolution": "55x32 mas continuum; 0.17''x0.13'' CO",
+  "sensitivity": "20.3 uJy/beam continuum; 4.4 mJy/beam per 0.1 km/s channel CO"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass 0.31 Msun (dynamical)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The dynamical estimate for the mass of the star is $0.31\\,M_\\odot$"
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...844..158S)"
+  },
+  {
+   "what": {
+    "value": "Lupus gas-to-dust ratio at 90% radius: 1.96 ± 0.04",
+    "evidence": [
+     {
+      "loc": "3.2 Radial extent of CO",
+      "quote": "they found that the typical ratio is $1.96$, with a standard error on the mean of $0.04$"
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...859...21A)"
+  },
+  {
+   "what": {
+    "value": "Unresolved spectral index 1-3 mm of 2.3",
+    "evidence": [
+     {
+      "loc": "3.3 Continuum intensity profile",
+      "quote": "The unresolved spectral index between 1 and 3  mm is $2.3$"
+     }
+    ]
+   },
+   "citation": "(cite: 2010A&A...512A..15R)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit continuum visibilities",
+   "method": "Azimuthally symmetric two-component intensity profile fitted in uv-plane with GALARIO and MCMC",
+   "software": [
+    "GALARIO",
+    "emcee"
+   ],
+   "key_parameters": [
+    "90 walkers, 18000 steps after 2000 burn-in; uniform priors"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO flux and radii",
+   "method": "Curve of growth in elliptical apertures from moment maps/images using continuum inclination, PA and center",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate continuum optical depth",
+   "method": "Mid-plane temperature profile from stellar luminosity, then invert I = B(T)(1-exp(-tau)) using the best-fit model",
+   "software": [],
+   "key_parameters": [
+    "flaring angle 0.02"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Test for inner cavity",
+   "method": "Add R_trunc to the intensity profile and refit with 100 walkers; upper limit from 95% of MC realizations",
+   "software": [
+    "GALARIO",
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated continuum flux density",
+   "value": "9.75",
+   "uncertainty": "0.12",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Radial extent of continuum",
+     "quote": "The derived integrated flux density is $9.75\\pm0.12\\,$mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust radius enclosing 68% of flux",
+   "value": "14.0",
+   "uncertainty": "0.3",
+   "units": "AU",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Radial extent of continuum",
+     "quote": "The radius enclosing 68% of the continuum flux density is $14.0\\pm0.3\\,$AU"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO J=2-1 integrated flux",
+   "value": "1937",
+   "uncertainty": "54",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Radial extent of CO",
+     "quote": "The integrated flux of the line is $1937\\pm54\\,$mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas radius enclosing 68% of 12CO flux",
+   "value": "75",
+   "uncertainty": "5",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Radial extent of CO",
+     "quote": "The radius enclosing $68\\%$ of the $^{12}$CO $J$=2-1 flux is $75\\pm$5 AU."
+    }
+   ]
+  },
+  {
+   "quantity": "R_gas/R_dust at 68%",
+   "value": "5.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Radial extent of CO",
+     "quote": "At the $68\\%$ enclosing flux radius the ratio of $R_{\\rm gas}$ to $R_{\\rm dust}\\approx5.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "R_gas/R_dust at 90%",
+   "value": "3.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Radial extent of CO",
+     "quote": "while at the $90\\%$ enclosing flux radius the ratio is $\\approx3.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak optical depth",
+   "value": "~0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Continuum intensity profile",
+     "quote": "the peak of $\\tau$ being $\\sim0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on cavity radius",
+   "value": "0.54",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Continuum intensity profile",
+     "quote": "with an upper limit on $R_{\\rm trunc}$ of $0.54\\,$AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "55.1",
+   "uncertainty": "±1.0",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Fitting and MCMC results",
+     "quote": "$55.1^{+1.0}_{-1.0}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold and masks",
+  "Cell and image size",
+  "Which ALMA calibrator flux values were adopted and flux scale uncertainty",
+  "Self-calibration reference antenna and the number of iterations",
+  "Exact continuum uv-fit initial conditions and the uv-binning",
+  "Details of flux-density radii error computation"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "CO aperture details",
+  "GALARIO version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps are described with an MCMC prior list, but imaging details are missing.",
+ "rediscovery_reason": "Archive data are likely public after proprietary period, recipe is largely complete, and results are numeric (radii, flux).",
+ "source_card": "cards/2019A%26A...626L...2F/sonnet/card.md"
+}

@@ -1,0 +1,508 @@
+{
+ "bibcode": "2022ApJ...937...10L",
+ "title": "Stratified Distribution of Organic Molecules at the Planet-formation Scale in the HH 212 Disk Atmosphere",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac8c28",
+ "arxiv_id": "2208.10693",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What is the spatial distribution, origin, and formation pathway of formamide (NH2CHO) and related organic molecules (HNCO, H2CO, CH3OH, CH3CHO) in the atmosphere of the HH 212 protostellar disk?",
+ "alma_project_codes": [
+  "2017.1.00712.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~ 226 GHz or lambda ~ 1.33 mm)",
+  "arrays": "12m array (46 antennas)",
+  "angular_resolution": "~ 0.02\" (continuum: 0.021\" x 0.016\"; lines: 0.055\" x 0.042\")",
+  "sensitivity": "continuum: ~ 20 uJy beam^-1 (1.4 K); channel maps: ~ 0.9 mJy beam^-1 (~ 10 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "t-HCOOH emission at ~ 346 GHz used for spatial and kinematic comparison",
+    "evidence": [
+     {
+      "loc": "Stratified Distribution of Molecules",
+      "quote": "Looking back at the previous results of other iCOMs detected at higher frequency of $\\sim$ 346 GHz (cite: Lee2019COM), we find that t-HCOOH was also detected with the spatial distribution and radial extent consistent with NH$_2$CHO (cite: Lee2019COM)."
+     }
+    ]
+   },
+   "citation": "(cite: Lee2019COM)"
+  },
+  {
+   "what": {
+    "value": "Central mass of ~ 0.25 M_sun for Keplerian rotation curves",
+    "evidence": [
+     {
+      "loc": "Kinematics",
+      "quote": "Previously, the disk was found to be rotating roughly with a Keplerian rotation due a central mass of $\\sim$ 0.25 $M_\\odot$ (including the masses of the central protostar and the disk) (cite: Codella2014; Lee2017COM)."
+     }
+    ]
+   },
+   "citation": "(cite: Codella2014; Lee2017COM)"
+  },
+  {
+   "what": {
+    "value": "Collisional coefficients of methanol with para-H2 between 10 and 200 K for J<=15",
+    "evidence": [
+     {
+      "loc": "Physical Properties in the Disk Atmosphere",
+      "quote": "We used the collisional coefficients of methanol with para-H$_2$, computed by (cite: Rabli2010) between 10 and 200 K for the J$\\leq$15 levels and provided by the BASECOL database (cite: Dubernet2012; Dubernet2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Rabli2010), (cite: Dubernet2012; Dubernet2013)"
+  },
+  {
+   "what": {
+    "value": "Dusty disk model providing mean H2 column density (~ 1.08 x 10^25 cm^-2), dust continuum optical depth, and temperature structure",
+    "evidence": [
+     {
+      "loc": "Physical Properties in the Disk Atmosphere",
+      "quote": "In addition, the abundance of these molecules are also estimated by dividing the column density of the molecules by the mean H$_2$ column density derived from a dusty disk model (cite: Lee2021Pdisk) in the same region, which is found to be $\\sim$ 1.08$\\times 10^{25}$ cm$^{-2}$."
+     }
+    ]
+   },
+   "citation": "(cite: Lee2021Pdisk)"
+  },
+  {
+   "what": {
+    "value": "[12C]/[13C] ratio of ~ 50 in the Orion Complex",
+    "evidence": [
+     {
+      "loc": "Physical Properties in the Disk Atmosphere",
+      "quote": "Indeed, the H$_2$CO column density can be better derived from the H$_2$$^{13}$CO line assuming \\[$^{12}$C\\]/\\[$^{13}$C\\] ratio of $\\sim$ 50, as estimated in the Orion Complex (cite: Kahane2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Kahane2018)"
+  },
+  {
+   "what": {
+    "value": "Binding energies and sublimation temperatures of molecules on amorphous solid water ice",
+    "evidence": [
+     {
+      "loc": "Distribution of Molecules and Binding Energy",
+      "quote": "For consistent comparison, we adopt the values obtained from similar methods on amorphous solid water ice (cite: Ferrero2020; Ferrero2022). Since HNCO was not included in those studies, we adopt its value from (cite: Song2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Ferrero2020; Ferrero2022), (cite: Song2016)"
+  },
+  {
+   "what": {
+    "value": "Line properties from Splatalogue (CDMS and JPL)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Line Properties from Splatalogue"
+     }
+    ]
+   },
+   "citation": "Splatalogue (CDMS, JPL)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Stack molecular lines by upper energy level and produce total intensity maps and PV diagrams",
+   "method": "Divide detected lines into two ranges of upper level energies (E_u < 120 K and E_u > 120 K), stack them to produce mean channel maps, then integrate to get total line intensity maps and extract position-velocity (PV) diagrams across the upper and lower disk atmospheres",
+   "software": [],
+   "key_parameters": [
+    "E_u < 120 K and E_u > 120 K energy bins"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure vertical heights and outer disk radii of molecules",
+   "method": "Measure vertical height along the jet axis in the lower atmosphere using E_u < 120 K maps; determine outer disk radius from linear PV structures in the upper disk atmosphere where they intersect the Keplerian rotation curve",
+   "software": [],
+   "key_parameters": [
+    "Lines with E_u < 120 K"
+   ],
+   "assumptions": [
+    "Keplerian rotation around a central mass of ~ 0.25 M_sun",
+    "Distance of ~ 400 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive CH3OH physical properties via non-LTE LVG modeling and rotation diagram",
+   "method": "Non-LTE Large Velocity Gradient (LVG) modeling of 7 CH3OH lines with E_u < 200 K at the lower disk atmosphere peak using GRELVG, combined with LTE rotation diagram linear fit of 5 CH3OH lines with E_u > 200 K, then taking the mean of the two methods",
+   "software": [
+    "GRELVG",
+    "BASECOL"
+   ],
+   "key_parameters": [
+    "N(A-CH3OH) and N(E-CH3OH) varied from 2x10^15 to 1x10^19 cm^-2 (step factor of 2); n_H2 from 10^6 to 10^9 cm^-3 (step factor of 2); T from 50 to 120 K (step of 5 K); linewidth = 4 km s^-1"
+   ],
+   "assumptions": [
+    "A-/E- CH3OH ratio = 1; semi-infinite slab geometry; 40% measurement uncertainty; optically thin and LTE for E_u > 200 K lines"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive excitation temperatures, column densities, and abundances for NH2CHO, HNCO, H2CO, D2CO, H2(13)CO, and CH3CHO",
+   "method": "Measure integrated line intensities averaged over a 68 au x 20 au (0.17\" x 0.05\") rectangular region in the lower atmosphere with a 2 sigma cutoff; fit LTE rotation diagrams for NH2CHO, HNCO, and CH3CHO (with T fixed to 100 K); calculate column densities for H2CO, D2CO, and H2(13)CO at assumed temperatures; divide by model H2 column density to obtain abundances",
+   "software": [],
+   "key_parameters": [
+    "Rectangular region size 68 au x 20 au (0.17\" x 0.05\"); cutoff of 2 sigma"
+   ],
+   "assumptions": [
+    "Optically thin emission and LTE; T_ex = 92 K for D2CO, 60 K for H2CO and H2(13)CO, 100 K for CH3CHO; [12C]/[13C] = 50; H2 column density = 1.08 x 10^25 cm^-2; 40% line intensity uncertainty"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Outer emission radius of NH2CHO and HNCO",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "with the outer emission radius increasing from $\\sim$ 24 au for NH$_2$CHO and HNCO, to 36 au for CH$_3$CHO, to 40 au for CH$_3$OH, and then to 48 au for H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer emission radius of CH3CHO",
+   "value": "36",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "with the outer emission radius increasing from $\\sim$ 24 au for NH$_2$CHO and HNCO, to 36 au for CH$_3$CHO, to 40 au for CH$_3$OH, and then to 48 au for H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer emission radius of CH3OH and D2CO",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinematics",
+     "quote": "we find that the disk radius of these molecules increases from $\\sim$ 24 au for NH$_2$CHO/HNCO/t-HCOOH, to $\\sim$ 36 au for CH$_3$CHO, to $\\sim$ 40 au for CH$_3$OH/D$_2$CO, and then to $\\sim$ 48 au for H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer emission radius of H2CO",
+   "value": "48",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "with the outer emission radius increasing from $\\sim$ 24 au for NH$_2$CHO and HNCO, to 36 au for CH$_3$CHO, to 40 au for CH$_3$OH, and then to 48 au for H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical height of NH2CHO in lower atmosphere",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stratified Distribution of Molecules",
+     "quote": "We can also measure the vertical height of these molecules (using lines with $E_u < 120$ K) along the jet axis in the lower atmosphere where the emission is brighter, and find it to be $\\sim$ 15, 19, 20, 24, and 26 au, respectively for NH$_2$CHO, HNCO, CH$_3$CHO, CH$_3$OH, and H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical height of HNCO in lower atmosphere",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stratified Distribution of Molecules",
+     "quote": "We can also measure the vertical height of these molecules (using lines with $E_u < 120$ K) along the jet axis in the lower atmosphere where the emission is brighter, and find it to be $\\sim$ 15, 19, 20, 24, and 26 au, respectively for NH$_2$CHO, HNCO, CH$_3$CHO, CH$_3$OH, and H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical height of CH3CHO in lower atmosphere",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stratified Distribution of Molecules",
+     "quote": "We can also measure the vertical height of these molecules (using lines with $E_u < 120$ K) along the jet axis in the lower atmosphere where the emission is brighter, and find it to be $\\sim$ 15, 19, 20, 24, and 26 au, respectively for NH$_2$CHO, HNCO, CH$_3$CHO, CH$_3$OH, and H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical height of CH3OH in lower atmosphere",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stratified Distribution of Molecules",
+     "quote": "We can also measure the vertical height of these molecules (using lines with $E_u < 120$ K) along the jet axis in the lower atmosphere where the emission is brighter, and find it to be $\\sim$ 15, 19, 20, 24, and 26 au, respectively for NH$_2$CHO, HNCO, CH$_3$CHO, CH$_3$OH, and H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical height of H2CO in lower atmosphere",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Stratified Distribution of Molecules",
+     "quote": "We can also measure the vertical height of these molecules (using lines with $E_u < 120$ K) along the jet axis in the lower atmosphere where the emission is brighter, and find it to be $\\sim$ 15, 19, 20, 24, and 26 au, respectively for NH$_2$CHO, HNCO, CH$_3$CHO, CH$_3$OH, and H$_2$CO."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH mean excitation temperature",
+   "value": "92",
+   "uncertainty": "+48/-37",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties in the Disk Atmosphere",
+     "quote": "Taking the mean values from the two methods, we have $T\\sim 92^{+48}_{-37}$ K and N(CH$_3$OH)$=1.5^{+4.5}_{-0.8}\\times 10^{18}$ cm$^{-2}$."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OH$^a$ | $92^{+48}_{-37}$ | $1.5^{+4.5}_{-0.8} \\times 10^{18}$ cm$^{-2}$ | $1.4^{+4.2}_{-0.7} \\times 10^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH mean column density",
+   "value": "1.5e18",
+   "uncertainty": "+4.5e18/-0.8e18",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OH$^a$ | $92^{+48}_{-37}$ | $1.5^{+4.5}_{-0.8} \\times 10^{18}$ cm$^{-2}$ | $1.4^{+4.2}_{-0.7} \\times 10^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH abundance",
+   "value": "1.4e-7",
+   "uncertainty": "+4.2e-7/-0.7e-7",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OH$^a$ | $92^{+48}_{-37}$ | $1.5^{+4.5}_{-0.8} \\times 10^{18}$ cm$^{-2}$ | $1.4^{+4.2}_{-0.7} \\times 10^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO excitation temperature",
+   "value": "221",
+   "uncertainty": "132",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NH$_2$CHO$^b$ | $221\\pm132$ | ($5.2\\pm 2.6$)$\\times 10^{15}$ | ($4.8\\pm 2.4$)$\\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO column density",
+   "value": "5.2e15",
+   "uncertainty": "2.6e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NH$_2$CHO$^b$ | $221\\pm132$ | ($5.2\\pm 2.6$)$\\times 10^{15}$ | ($4.8\\pm 2.4$)$\\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO abundance",
+   "value": "4.8e-10",
+   "uncertainty": "2.4e-10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NH$_2$CHO$^b$ | $221\\pm132$ | ($5.2\\pm 2.6$)$\\times 10^{15}$ | ($4.8\\pm 2.4$)$\\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO excitation temperature",
+   "value": "231",
+   "uncertainty": "100",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HNCO$^b$ | $231\\pm100$ | ($1.8\\pm 0.5$)$\\times 10^{16}$ | ($1.7\\pm 0.9$)$\\times 10^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO column density",
+   "value": "1.8e16",
+   "uncertainty": "0.5e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HNCO$^b$ | $231\\pm100$ | ($1.8\\pm 0.5$)$\\times 10^{16}$ | ($1.7\\pm 0.9$)$\\times 10^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO abundance",
+   "value": "1.7e-9",
+   "uncertainty": "0.9e-9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HNCO$^b$ | $231\\pm100$ | ($1.8\\pm 0.5$)$\\times 10^{16}$ | ($1.7\\pm 0.9$)$\\times 10^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO column density (from H2(13)CO)",
+   "value": "4.5e16",
+   "uncertainty": "2.3e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "H$_2$CO$^d$ | | ($4.5\\pm 2.3$)$\\times 10^{16}$ | ($4.2\\pm 2.1$)$\\times 10^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO abundance (from H2(13)CO)",
+   "value": "4.2e-9",
+   "uncertainty": "2.1e-9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "H$_2$CO$^d$ | | ($4.5\\pm 2.3$)$\\times 10^{16}$ | ($4.2\\pm 2.1$)$\\times 10^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2(13)CO column density",
+   "value": "9.0e14",
+   "uncertainty": "4.5e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "H$_2$$^{13}$CO | $60\\pm20^e$ | ($9.0\\pm 4.5$)$\\times 10^{14}$ | ($8.3\\pm 4.2$)$\\times 10^{-11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO column density",
+   "value": ">= 2.4e15",
+   "uncertainty": "1.2e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "D$_2$CO | $92\\pm30^f$ | $\\mathrel{\\hbox{\\rlap{\\hbox{\\lower 4pt\\hbox{$\\sim$}}}\\hbox{$>$}}}$($2.4\\pm 1.2$)$\\times 10^{15}$ | $\\mathrel{\\hbox{\\rlap{\\hbox{\\lower 4pt\\hbox{$\\sim$}}}\\hbox{$>$}}}$ ($2.2\\pm 1.1$)$\\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Deuteration ratio [D2CO]/[H2CO]",
+   "value": ">= 0.053",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical Properties in the Disk Atmosphere",
+     "quote": "Thus, the deuteration of H$_2$CO, i.e., the abundance ratio \\[D$_2$CO\\]/\\[H$_2$CO\\], is $\\mathrel{\\hbox{\\rlap{\\hbox{\\lower 4pt\\hbox{$\\sim$}}}\\hbox{$>$}}}$ 0.053."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CHO column density",
+   "value": "8.7e15",
+   "uncertainty": "4.4e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$CHO | $100\\pm50^g$ | ($8.7\\pm 4.4$)$\\times 10^{15}$ | ($8.0\\pm 4.0$)$\\times 10^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CHO abundance",
+   "value": "8.0e-10",
+   "uncertainty": "4.0e-10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$CHO | $100\\pm50^g$ | ($8.7\\pm 4.4$)$\\times 10^{15}$ | ($8.0\\pm 4.0$)$\\times 10^{-10}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of line-free channels used for continuum imaging and subtraction",
+  "Whether self-calibration was performed on the continuum and applied to the lines",
+  "Imaging task (e.g., clean or tclean), deconvolver algorithm, masking strategy, cell size, and image size",
+  "Velocity range and channel spacing used when stacking lines and integrating total intensity maps",
+  "Exact position and orientation of the PV diagram cuts and rectangular extraction box"
+ ],
+ "missing_for_reproduction": [
+  "Exact coordinates of the phase center, the CH3OH peak pixel, the 0.17\" x 0.05\" rectangular extraction region, and the PV cut axes",
+  "Details of the line stacking procedure (e.g., weighting, velocity alignment, and channel interpolation)",
+  "GRELVG code availability and exact input files",
+  "Self-calibration and tclean imaging parameters"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA project code, calibration CASA version, calibrators, robust weightings, synthesized beams, noise levels, and complete line tables with integrated intensities are clearly provided, allowing direct reproduction of the rotation diagrams; however, imaging parameters, line stacking details, exact extraction region coordinates, and the GRELVG code are not fully specified.",
+ "rediscovery_reason": "Public ALMA data (2017.1.00712.S) with a clear set of 47 spectral lines in Table 1, explicit integrated line intensities, and well-defined quantitative outputs (outer radii, vertical heights, excitation temperatures, and column densities in Table 2).",
+ "source_card": "cards/2022ApJ...937...10L/sonnet/card.md"
+}

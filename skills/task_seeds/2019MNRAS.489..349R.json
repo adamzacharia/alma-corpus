@@ -1,0 +1,219 @@
+{
+ "bibcode": "2019MNRAS.489..349R",
+ "title": "Constraining cold accretion on to supermassive black holes: molecular gas in the cores of eight brightest cluster galaxies revealed by joint CO and CN absorption",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz2138",
+ "arxiv_id": "1907.13526",
+ "fields": [
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz",
+  "astrochemistry"
+ ],
+ "question": "What are the properties and kinematics of cold molecular gas along the line of sight to the mm-bright cores of cool-core brightest cluster galaxies, probed through CO, CN and SiO absorption, and do they fit chaotic cold accretion?",
+ "alma_project_codes": [
+  "2017.1.00629.S",
+  "2016.1.00533.S"
+ ],
+ "data": {
+  "bands": "CO(1-0) and CN around 113-115 GHz; SiO(3-2) near 130 GHz in the rest frame; archival CO(2-1)",
+  "arrays": "not stated",
+  "angular_resolution": "0.35 to 1.97 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previous HI absorption optical depths and limits (e.g. Abell 2390 tau_max=0.084)",
+    "evidence": [
+     {
+      "loc": "3 Target sample and observed lines",
+      "quote": "Against the core of the galaxy, HIabsorption has been detected with $\\tau_{\\textnormal{max}}=0.084 \\pm 0.011$ (cite: Hogan_thesis)."
+     }
+    ]
+   },
+   "citation": "(cite: Hogan_thesis)"
+  },
+  {
+   "what": {
+    "value": "Previous CO(1-2) absorption of Hydra-A (tau_max ~0.9)",
+    "evidence": [
+     {
+      "loc": "3 Target sample and observed lines",
+      "quote": "Previous observations of Hydra-A show extremely strong CO(1-2) absorption against the bright radio core ($\\tau_{\\textnormal{max}} \\sim 0.9$)"
+     }
+    ]
+   },
+   "citation": "(cite: Rose2019)"
+  },
+  {
+   "what": {
+    "value": "Chaotic cold accretion simulation pencil-beam diagnostic and comparison points",
+    "evidence": [
+     {
+      "loc": "8.3 Comparison with Chaotic Cold Accretion Simulations",
+      "quote": "we have followed the same procedure as described in §4 of (cite: Gaspari2018) to compute the pencil-beam points"
+     }
+    ]
+   },
+   "citation": "(cite: Gaspari2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Obtain calibrated data and image cubes",
+   "method": "ALMA-delivered calibrated data; channel maps at maximal spectral resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "CO(1-0) rest frequency 115.271208 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra at continuum position",
+   "method": "Spectra extracted from a region centred on continuum source with size equal to synthesized beam FWHM",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Rest frequencies from intensity-weighted mean of CN hyperfine components: CN-A 113.49485, CN-B 113.16883 GHz"
+   ],
+   "assumptions": [
+    "Redshifts from MUSE/VIMOS/FORS/SDSS give systemic velocity"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit Gaussians to lines with Monte Carlo errors",
+   "method": "Gaussian fits to absorption and emission features; 10 000 noise-resimulated spectra; 1 sigma from 15.865 and 84.135 percentiles; emission fitted and subtracted where clear",
+   "software": [],
+   "key_parameters": [
+    "Noise from rms of the continuum source's spectrum after excluding the visible line region"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive column densities and CO/CN ratio",
+   "method": "Optically thin total column density from velocity-integrated optical depth at assumed Tex of 20, 40, 80 K",
+   "software": [],
+   "key_parameters": [
+    "Tex = 20, 40, 80 K"
+   ],
+   "assumptions": [
+    "Optically thin absorption"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with chaotic cold accretion",
+   "method": "Pencil-beam log sigma_v vs log |v_shift| diagram compared with Gaspari et al. 2018",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detection rate of molecular absorption",
+   "value": "8 of 18 BCGs",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 Molecular absorption",
+     "quote": "From the sample of 18 brightest cluster galaxies observed, we find $\\geq 3 \\sigma$ evidence of molecular absorption in eight."
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption velocities relative to systemic",
+   "value": "-45 to 283",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The absorption regions detected have velocities ranging from -45 to 283 km s$^{-1}$relative to the systemic velocity of the galaxy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO/CN column density ratio range",
+   "value": "~9 to ~44",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Column Density Estimates",
+     "quote": "The CO/CN ratio we find for sources with both CO and CN absorption ranges from $\\sim$ 9 to $\\sim$ 44."
+    }
+   ]
+  },
+  {
+   "quantity": "Hydra-A CO(0-1) absorption A tau_max",
+   "value": "0.22",
+   "uncertainty": "+0.01/-0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "CO(0-1) absorption ‘A’ | $-43.4^{+0.1}_{-0.1}$ | $5.2_{-0.3}^{+0.4}$ | $-15.9_{-0.8}^{+0.8}$ | $0.22^{+0.01}_{-0.01}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log v_shift",
+   "value": "1.9",
+   "uncertainty": "0.5",
+   "units": "dex (km/s)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "8.3 Comparison with Chaotic Cold Accretion Simulations",
+     "quote": "$\\log v_{\\rm shift} \\simeq 1.9 \\pm 0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log sigma_v",
+   "value": "1.6",
+   "uncertainty": "0.5",
+   "units": "dex (km/s)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "8.3 Comparison with Chaotic Cold Accretion Simulations",
+     "quote": "$\\log \\sigma_v \\simeq 1.6 \\pm 0.5$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum image weighting, robust value, cell and image size",
+  "Exact spectral window setup and channel widths for CN windows",
+  "Spectrum extraction details beyond beam-sized aperture (position of aperture centre)",
+  "Range of line-free channels used for noise estimation",
+  "Excitation-temperature choices justification, partition functions, molecular constants used for column densities",
+  "How continuum flux was measured for tau conversion",
+  "Coordinates of targets",
+  "Pipeline version"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Aperture centres and noise windows",
+  "Molecular constants and partition function treatment",
+  "Code for Monte Carlo fits"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear spectral-fitting recipe, but imaging and extraction details are minimal.",
+ "rediscovery_reason": "Public data, simple Gaussian line fitting, numeric results in tables.",
+ "source_card": "cards/2019MNRAS.489..349R/sonnet/card.md"
+}

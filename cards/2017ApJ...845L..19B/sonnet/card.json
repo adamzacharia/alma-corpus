@@ -1,0 +1,762 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...845L..19B",
+  "title": "A First Comparison of Millimeter Continuum and Mg II Ultraviolet Line Emission from the Solar Chromosphere",
+  "year": 2017,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Bastian, T. S.",
+  "n_authors": 7,
+  "arxiv_id": "1706.04532",
+  "doi": "10.3847/2041-8213/aa844c",
+  "heldout": false,
+  "archival_class_ours": "unknown",
+  "alma_projects_obscore": []
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present joint observations of the Sun by the Atacama Large Millimeter/submillimeter Array (ALMA) and the Interface Region Imaging Spectrograph (IRIS)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "sun"
+   ],
+   "targets": [
+    {
+     "name": "NOAA active region 12470",
+     "coordinates": {
+      "value": "approximately N15E05 (heliographic)",
+      "evidence": [
+       {
+        "loc": "2.1",
+        "quote": "band 6 observations of NOAA active region number 12470 on 18 December 2015 from 19:11:41 - 20:09:59 UT when the active region was at approximately N15E05"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How do ALMA 1.25 mm continuum brightness temperature and IRIS Mg II h2v radiation temperature compare in a solar active region, and why do slope and offset differ?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this Letter we present a first comparison of solar observations of the chromosphere in a solar active region made by ALMA in the 1.25 mm band (239 GHz)"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00020.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2011.0.00020.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (239 GHz, 1.25 mm)",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "The mean frequency was 239 GHz, or a wavelength of 1.25 mm."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spectral windows, each 2 GHz wide, centered on 230, 232, 246, 248 GHz",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "The band 6 observations were acquired in 4 spectral windows, each 2 GHz in bandwidth, centered on 230, 232, 246, and 248 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "Mg II h (IRIS)",
+     "transition": "h doublet line",
+     "rest_frequency": "2803.5 Å",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "observations of the Mg II h line at 2803.5Å of AR 12470"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m array plus total power antennas (feathered)",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "The interferometric and TP mapping data were combined using “feathering\" techniques as described by Shimojo et al. (2017)."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "2.4\" x 0.9\" (PA -76.7 deg)",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "has an angular resolution of $2.4\"\\times 0.9\"$ (position angle -76.7$^\\circ$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "149 pointings, 6.048 s each",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "formed from a mosaic of 149 pointings (Nyquist sampled), each pointing of duration 6.048s"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2015 December 18, 19:11:41-20:09:59 UT",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "on 18 December 2015 from 19:11:41 - 20:09:59 UT"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRIS",
+     "provided": {
+      "value": "Mg II h line raster maps, converted to radiation temperature",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "They are comprised of three dense ($0.35\"$) 320-step very large raster scans"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SDO/AIA",
+     "provided": {
+      "value": "differential emission measure for coronal contribution estimate",
+      "evidence": [
+       {
+        "loc": "3",
+        "quote": "We estimated $\\phi(T)$ using measurements by the Solar Dynamics Observatory Atmospheric Imaging Assembly"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Model Mg II h2v formation heights 600-2000 km, peak 1400 km",
+      "evidence": [
+       {
+        "loc": "3",
+        "quote": "forms in the middle chromosphere over a range of heights from 600 to 2,000 km with a peak around 1,400 km (Leenaarts et al., 2013b)"
+       }
+      ]
+     },
+     "citation": "Leenaarts et al. 2013b"
+    },
+    {
+     "what": {
+      "value": "Synthetic 1.3 mm formation height peak 1150 km",
+      "evidence": [
+       {
+        "loc": "3",
+        "quote": "suggest that the radiation mostly originates at similar heights, with a peak at 1150 km (Loukitcheva et al., 2017)"
+       }
+      ]
+     },
+     "citation": "Loukitcheva et al. 2017"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Quiet Sun disk center scaled to 5900 K at 1.25 mm",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "the brightness temperature of the quiet Sun at the center of the solar disk is scaled to 5900 K (1.25 mm)"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "ALMA ≈5% (total power); IRIS ~15%",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "These are expected to be calibrated in absolute terms to $\\approx 5\\%$ (see White et al. 2017)."
+      },
+      {
+       "loc": "2.2",
+       "quote": "absolute calibration of order 15%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Feathering of interferometric and total power maps",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "The interferometric and TP mapping data were combined using “feathering\" techniques as described by Shimojo et al. (2017)."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "IRIS T_rad map convolved with Gaussian to ALMA resolution",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "was then convolved with a Gaussian kernel so that it had the same angular resolution as the corresponding ALMA map"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "2.4\" x 0.9\"",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "has an angular resolution of $2.4\"\\times 0.9\"$ (position angle -76.7$^\\circ$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Solar observing calibration procedures and TP calibration",
+      "evidence": [
+       {
+        "loc": "2.1",
+        "quote": "Calibration of the TP measurements is described by White et al. (2017)"
+       }
+      ]
+     },
+     "from_reference": "White et al. 2017"
+    },
+    {
+     "what": {
+      "value": "Feathering technique",
+      "evidence": [
+       {
+        "loc": "2.1",
+        "quote": "combined using “feathering\" techniques as described by Shimojo et al. (2017)"
+       }
+      ]
+     },
+     "from_reference": "Shimojo et al. (2017)"
+    },
+    {
+     "what": {
+      "value": "Double-Gaussian line model",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "We used a nine-parameter double-Gaussian model (Schmit et al. 2015)"
+       }
+      ]
+     },
+     "from_reference": "Schmit et al. 2015"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration/imaging details (deferred to Shimojo/White)",
+    "Feathering parameters",
+    "Pixel masks for sunspot, quiet, plage regions",
+    "Alignment offsets and how they were determined",
+    "Formula for converting intensity to radiation temperature",
+    "Linear fit method (regression type)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit IRIS Mg II h profiles",
+    "method": {
+     "value": "Nine-parameter double-Gaussian fit; record h2r/h2v peak intensity and wavelength",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "We stored the model fits in separate arrays for the intensities and wavelengths for both the red and blue Mg II h2 peaks."
+      }
+     ]
+    },
+    "software": [
+     "MPFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radiometric calibration to T_rad",
+    "method": {
+     "value": "Convert DN/s to physical intensity (calibration version 004), then radiation temperature",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "We used the latest calibration values to date for this purpose (i.e. version “004”)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Co-register and match resolution",
+    "method": {
+     "value": "Rotate ALMA map by solar position angle; median-fill failed IRIS pixels; interpolate to 0.4\" grid; convolve to ALMA beam; correct offsets",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "the IRIS raster data were interpolated onto a uniform grid ($0.4\"\\times 0.4\"$ pixels)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Pixel-by-pixel correlation and linear fits",
+    "method": {
+     "value": "Scatter plots of T_B vs T_rad, Pearson coefficient and linear slopes for all pixels and for sunspot/quiet/plage masks",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "A linear fit to the data yields a slope of $m=0.57$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "linear fit",
+     "evidence": [
+      {
+       "loc": "Results and Discussion",
+       "quote": "The solid line in Fig. 2 shows a linear fit to sunspot pixels (slope $m=0.4$); the dashed line shows the same for “quiet” regions pixels ($m=0.56$)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Checked calibration, non-simultaneity and coronal contribution (<=2%)",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "found that $\\Delta T_B$(1.25 mm) was no more than 2%"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MPFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Double-Gaussian fit of Mg II h profiles",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "based on MPFIT (Markwardt 2009) to model the line profile"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Pearson correlation, all pixels",
+    "value": "0.78",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3",
+      "quote": "The Pearson correlation coefficient for all pixels is 0.78."
+     }
+    ]
+   },
+   {
+    "quantity": "Slope, all pixels",
+    "value": "0.57",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3",
+      "quote": "A linear fit to the data yields a slope of $m=0.57$."
+     }
+    ]
+   },
+   {
+    "quantity": "Slopes sunspot/quiet/plage",
+    "value": "0.4 / 0.56 / 0.66",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "is 0.4 (sunspot), 0.56 (quiet regions), and 0.66 (plage regions)"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean T_B (1.25 mm)",
+    "value": "7380 (range 5200-8700)",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3",
+      "quote": "approximately 7380 K and 5200-8700 K, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean T_rad (Mg II h2v)",
+    "value": "5470 (range 4500-6500)",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3",
+      "quote": "approximately 5470 K and 4500-6500 K, respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "Do ALMA T_B and IRIS Mg II T_rad correlate?",
+    "experiment": "Pixelwise comparison of matched-resolution maps",
+    "result": "r=0.78, slope 0.57, T_B mean ~35% higher",
+    "finding": "Clear correlation with slope <1 and significant offset",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "While a clear correlation between mm/submm-$\\lambda$ brightness temperature $T_B$ and the Mg II h line radiation temperature $T_{rad}$ is observed the slope is $<1$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the correlation vary by region?",
+    "experiment": "Separate fits for sunspot, quiet, plage masks",
+    "result": "Slopes 0.4, 0.56, 0.66",
+    "finding": "Slope increases with hotter denser gas, possibly due to formation heights or source function coupling",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3",
+      "quote": "The reason for this behavior is not fully understood."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Time variability and coronal contribution cannot explain offsets and slopes",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "While time variability likely increases the scatter in the correlation between the two datasets, it cannot account for the offsets and slopes of the scatter plots."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Pixels are correlated on ALMA beam scale and not corrected for",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "we have not corrected for the fact that pixels are correlated on the scale of ALMA’s resolution"
+      }
+     ]
+    },
+    {
+     "value": "Datasets not strictly simultaneous",
+     "evidence": [
+      {
+       "loc": "3",
+       "quote": "the two data sets not obtained strictly simultaneously"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Fit uncertainties and correlated pixels not accounted for",
+    "Region masks subjective",
+    "Single active region, single epoch"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA science verification data cited by project code",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "ADS/JAO.ALMA #2011.0.00020.SV"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Feathering and calibration details (in Shimojo et al. 2017, White et al. 2017)",
+    "Region masks",
+    "Alignment procedure",
+    "Fit method"
+   ],
+   "estimated_data_volume_inferred": "tens of GB (solar SV mosaic plus TP)",
+   "score_inferred": 3,
+   "score_reason": "Public SV data and simple analysis, but processing details deferred to other papers and masks unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe depends on external papers for calibrated map and IRIS processing; masks unstated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Shimojo et al. 2017",
+     "why": "Solar ALMA observing, feathering"
+    },
+    {
+     "citation": "White et al. 2017",
+     "why": "TP calibration and solar commissioning"
+    },
+    {
+     "citation": "Schmit et al. 2015",
+     "why": "Double-Gaussian line fitting"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": [
+    "ALMA solar science verification",
+    "IRIS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-a93949a5ea9eb9edd19f11420569389b",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:35",
+  "usage": {
+   "input_tokens": 10392,
+   "output_tokens": 5235,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.037173,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 42,
+  "quotes_ok": 42,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2011.0.00020.SV"
+  ],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 31,
+   "rate": 0.47
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:42",
+  "custom_id": "repair-sonnet-a7b5faa024941e18b18f5c6f5d344b74",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "The solid line in Fig. 2 shows a linear fit to sunspot pixels (slope $m=0.4$); the dashed line shows the same for “quiet” regions pixels ($m=0.56$)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

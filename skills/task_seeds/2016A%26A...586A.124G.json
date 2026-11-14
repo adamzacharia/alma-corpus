@@ -1,0 +1,275 @@
+{
+ "bibcode": "2016A&A...586A.124G",
+ "title": "The mysterious morphology of MRC0943-242 as revealed by ALMA and MUSE",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201526858",
+ "arxiv_id": "1510.03442",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What is the spatially resolved distribution of dust, molecular gas and ionised/neutral gas in the z=2.9 radio galaxy MRC0943-242, and where is the star formation relative to the AGN host?",
+ "alma_project_codes": [
+  "2012.1.00039.S"
+ ],
+ "data": {
+  "bands": "Band 6 (235 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.7'' x 0.6'' beam, pa=75 deg (natural weighting)",
+  "sensitivity": "continuum RMS 0.1 mJy; line RMS 1.7 mJy at 10 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ATCA CO(1-0) data reduction and characteristics",
+    "evidence": [
+     {
+      "loc": "3.1.2 Molecular emission lines",
+      "quote": "(see (cite: emonts11) for more details about the data reduction and data characteristics)"
+     }
+    ]
+   },
+   "citation": "(cite: emonts11)"
+  },
+  {
+   "what": {
+    "value": "Herschel/PACS/SPIRE and earlier SED photometry",
+    "evidence": [
+     {
+      "loc": "3.4 Disentangling the SED",
+      "quote": "from previous studies (cite: debreuck10; drouart14)"
+     }
+    ]
+   },
+   "citation": "(cite: debreuck10; drouart14)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass of Yggdrasil from Spitzer SED fit, 1.7e11 Msun",
+    "evidence": [
+     {
+      "loc": "3.3 Stellar mass",
+      "quote": "which is converted to a stellar mass of $1.7\\cdot10^{11}$ M$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: seymour07; debreuck10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "Supplied calibration script, UV continuum subtraction, natural-weighted imaging, primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search and verify CO(8-7) detections",
+   "method": "Moment-0 maps, Gaussian fits to spectra, chance-probability test with 13 moment maps and 81 peaks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit MUSE emission and absorption lines",
+   "method": "HeII Lorentzian for systemic redshift; Voigt profile fits to Lyα and CIV troughs; fluxes integrated within 3 sigma",
+   "software": [
+    "MUSE pipeline",
+    "ZAP"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Decompose SED into AGN and starburst spatially",
+   "method": "Fit separate SEDs for Yggdrasil and Freja+Thor+Odin using ALMA and de-blended Spitzer points, Herschel total as constraint",
+   "software": [
+    "DecompIR"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Kennicutt98 relation for SFR"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate gas and stellar masses",
+   "method": "Ionised mass from Lyα luminosity and volume; neutral shell mass from HI column; molecular mass from CO(1-0) with alpha_CO=0.8",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "filling factor 1e-5; spherical shell for absorber 2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Yggdrasil 235 GHz flux density",
+   "value": "0.8",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Yggdrasil | 09:45:32.769 | -24.28.49.29 | $0.8\\pm0.2$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Odin 235 GHz flux density",
+   "value": "2.0",
+   "uncertainty": "1.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Odin      | 09:45:32.222 | -24.28.55.06 | $2.0\\pm1.0$           |"
+    }
+   ]
+  },
+  {
+   "quantity": "Thor 235 GHz flux density",
+   "value": "1.9",
+   "uncertainty": "0.8",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| Thor      | 09:45:32.386 | -24.28.54.05 | $1.9\\pm0.8$           |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(8-7) line flux Yggdrasil",
+   "value": "0.33",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CO(8–7)    | 921.8                   | $234.94\\pm0.1$               | $0.33\\pm0.07$              | $43\\pm13$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(8-7) line flux Loke",
+   "value": "0.54",
+   "uncertainty": "0.10",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CO(8–7)    | 921.8                   | $234.96\\pm0.1$               | $0.54\\pm0.10$              | $57\\pm17$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "HeII redshift",
+   "value": "2.92296",
+   "uncertainty": "0.00001",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Ionised gas",
+     "quote": "a redshift of $2.92296\\pm0.00001$ and a FWHM of $862\\pm30$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "N_HI absorber 2 (Yggdrasil)",
+   "value": "1.3e19",
+   "uncertainty": "not stated (lower limit)",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Ionised gas",
+     "quote": "$N_{\\text{H{\\scriptsize I}}}$ $=1.3\\cdot10^{19}$ cm$^{-2}$ and a Doppler width of 64 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity",
+   "value": "1.7e13",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Disentangling the SED",
+     "quote": "($L_{\\rm total}^{\\rm IR}=1.7\\times10^{13}$ L$_{\\ensuremath{\\odot}}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR Freja+Thor+Odin",
+   "value": "~1400",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Disentangling the SED",
+     "quote": "have SFR of $\\sim 200$ and $\\sim 1400$ M$_{\\odot}$ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass Loke",
+   "value": "2.3e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Distribution of masses",
+     "quote": "we estimate a molecular gas mass of $2.3\\times10^{10}$ M$_{\\odot}$ for Loke."
+    }
+   ]
+  },
+  {
+   "quantity": "Ionised gas mass Yggdrasil",
+   "value": "5.2e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Distribution of masses",
+     "quote": "find M$_{\\text{ion}}=5.2\\times10^{8}$ M$_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and imaging task parameters (cell, image size, masks)",
+  "Aperture/region definitions for continuum flux extraction",
+  "Details of the SED fit (priors, templates, how the extra starburst was set)",
+  "Line-free channels and the Gaussian fitting procedure",
+  "Number of weblog/QA flags or phase calibrator names"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and clean parameters",
+  "SED fitting details and template settings",
+  "Aperture definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and simple, but SED fitting and imaging details are sparse.",
+ "rediscovery_reason": "Short single-track public ALMA dataset with numeric flux and CO line results that can be redone.",
+ "source_card": "cards/2016A%26A...586A.124G/sonnet/card.md"
+}

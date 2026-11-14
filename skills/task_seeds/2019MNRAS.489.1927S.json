@@ -1,0 +1,383 @@
+{
+ "bibcode": "2019MNRAS.489.1927S",
+ "title": "Testing the blast-wave AGN feedback scenario in MCG-03-58-007",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz2249",
+ "arxiv_id": "1906.00985",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Does the molecular gas in MCG-03-58-007 show a momentum-boosted outflow, as expected from energy-conserving blast-wave AGN feedback, given its X-ray UFO?",
+ "alma_project_codes": [
+  "2016.1.00694.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12-m, 40 antennas",
+  "angular_resolution": "3.3\" x 2.0\" (2.2 x 1.3 kpc)",
+  "sensitivity": "2.2 mJy/beam per 5.2 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "X-ray UFO energetics (Edot 2.4e44 erg/s, pdot 2e35, Mdot 1.5 Msun/yr)",
+    "evidence": [
+     {
+      "loc": "1.1 The target galaxy",
+      "quote": "The kinetic power of the persistent component of the wind is $\\dot{E}_{k1} \\sim 2.4\\cdot10^{44}\\,\\rm erg\\,s^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: braito2018new)"
+  },
+  {
+   "what": {
+    "value": "SFR = 20.1±0.9 Msun/yr and L_IR",
+    "evidence": [
+     {
+      "loc": "1.1 The target galaxy",
+      "quote": "A star formation rate of SFR=$20.1\\pm0.9\\,\\rm M_{\\odot}~yr^{-1}$ was estimated by"
+     }
+    ]
+   },
+   "citation": "(cite: Gruppioni201610.1093/mnras/stw577)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 3.1±2.1 average of nearby star-forming galaxies",
+    "evidence": [
+     {
+      "loc": "2.2 Morphology",
+      "quote": "Such conversion factor is the average of the values calculated in nearby star-forming galaxies by (cite: Sandstrom2013ApJ...777....5S)"
+     }
+    ]
+   },
+   "citation": "(cite: Sandstrom2013ApJ...777....5S)"
+  },
+  {
+   "what": {
+    "value": "outflow alpha_CO = 2.1 (NGC 6240)",
+    "evidence": [
+     {
+      "loc": "3.1 Case I",
+      "quote": "which is the value calculated by (cite: Cicone2018ApJ...863..143C) for the molecular outflow of NGC 6240"
+     }
+    ]
+   },
+   "citation": "(cite: Cicone2018ApJ...863..143C)"
+  },
+  {
+   "what": {
+    "value": "earlier redshift z=0.03220 and SEST CO frequency",
+    "evidence": [
+     {
+      "loc": "2.1",
+      "quote": "older redshift of $z=0.03220$ measured by (cite: Strong2004MNRAS.353.1151S)"
+     }
+    ]
+   },
+   "citation": "(cite: Strong2004MNRAS.353.1151S)"
+  },
+  {
+   "what": {
+    "value": "L_CO-SFR correlation for local SF galaxies",
+    "evidence": [
+     {
+      "loc": "3.1.2 The role of SF feedback",
+      "quote": "we use the $L_{CO}-SFR$ correlation computed for a sample of local SF galaxies (cite: Cicone+17)"
+     }
+    ]
+   },
+   "citation": "(cite: Cicone+17)"
+  },
+  {
+   "what": {
+    "value": "SF wind and SN output predictions",
+    "evidence": [
+     {
+      "loc": "3.1.2 The role of SF feedback",
+      "quote": "Using the theoretical predictions of the stellar winds and SNe output in the ISM (cite: Veilleux2005ARA&A..43..769V)"
+     }
+    ]
+   },
+   "citation": "(cite: Veilleux2005ARA&A..43..769V)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and redshift refinement",
+   "method": "uvcontsub using line-free channels; centroid of CO PV rotation curve taken as systemic velocity",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "PV axis PA = 42 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Total CO spectrum and molecular gas mass",
+   "method": "Multi-Gaussian fit of spectrum in a 25\" aperture; Solomon formula with alpha_CO = 3.1±2.1",
+   "software": [],
+   "key_parameters": [
+    "circular aperture 25\""
+   ],
+   "assumptions": [
+    "alpha_CO = 3.1±2.1 Msun (K km/s pc^2)^-1; H0=70"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model the rotating disk",
+   "method": "3D BAROLO fit of thin rotating disk with 8 rings, geometry (i, PA, centre) fixed from moment maps",
+   "software": [
+    "3D BAROLO",
+    "CASA imsubimage"
+   ],
+   "key_parameters": [
+    "i = 37±10 deg, PA = 42 deg",
+    "fit pixels with S/N >~ 3"
+   ],
+   "assumptions": [
+    "geometrically thin disk dominated by pure rotation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Subtract disk and characterise residuals",
+   "method": "Subtract model cube; integrate residuals over (-222,-148) and (121,195) km/s; fit Gaussians to red/blue spectra",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Outflow energetics and comparison with X-ray UFO",
+   "method": "Biconical model, tau_dyn=R/v_out, Mdot=M/tau, Pdot=Mdot v, Edot=0.5 Mdot v^2; ratios to UFO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "cone axis at 45 deg to line of sight; alpha_CO^out = 2.1 (range 0.8-3.4)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Redshift",
+   "value": "0.03236",
+   "uncertainty": "0.00002",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1",
+     "quote": "we obtain a new redshift estimate of $z=0.03236\\pm0.00002$"
+    }
+   ]
+  },
+  {
+   "quantity": "3-mm continuum flux density",
+   "value": "0.60",
+   "uncertainty": "0.10",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1",
+     "quote": "We measure a continuum flux density of $0.60\\pm0.10$ mJy at $\\nu_{obs}=99\\,\\rm GHz$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) flux",
+   "value": "65",
+   "uncertainty": "4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "65 $\\pm$ 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "9e9 (alpha_CO/3.1)",
+   "uncertainty": "6e9",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "$M_{H2}\\simeq(9 \\pm 6)\\frac{\\alpha_{CO}}{3.1} \\cdot 10^9\\,\\rm M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk CO(1-0) flux",
+   "value": "50",
+   "uncertainty": "3",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3",
+     "quote": "$S^{\\rm disk}_{\\rm CO}=50\\pm3\\,\\rm Jy\\,km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk fraction of total CO",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3",
+     "quote": "This corresponds to 78$\\%$ of the total molecular gas traced by the CO(1-0) emission detected by ALMA."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "37",
+   "uncertainty": "10",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3",
+     "quote": "$i=37\\pm10\\,\\rm deg$"
+    }
+   ]
+  },
+  {
+   "quantity": "Residual red flux",
+   "value": "2.39",
+   "uncertainty": "0.14",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table residuals",
+     "quote": "Red | 157 $\\pm$ 5 | 2.39 $\\pm$ 0.14"
+    }
+   ]
+  },
+  {
+   "quantity": "Residual blue flux",
+   "value": "3.07",
+   "uncertainty": "0.18",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table residuals",
+     "quote": "Blue | -182 $\\pm$ 5 | 3.07 $\\pm$ 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass-loss rate",
+   "value": "54 (alpha_CO/2.1)",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table outflows",
+     "quote": "$54\\frac{\\alpha_{CO}}{2.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow momentum rate",
+   "value": "8e34",
+   "uncertainty": "not stated",
+   "units": "g cm s^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table outflows",
+     "quote": "$8\\cdot 10^{34}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic power",
+   "value": "1.0e42",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table outflows",
+     "quote": "$1.0 \\cdot 10^{42}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pdot_mol/Pdot_UFO",
+   "value": "~0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1",
+     "quote": "The ratio between the momentum rates of the two outflows is $\\dot{P}_{mol}/\\dot{P}_{UFO}\\sim0.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Edot_mol/Edot_UFO",
+   "value": "~4e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.1",
+     "quote": "$\\dot{E}_{mol}/\\dot{E}_{UFO}\\sim4\\cdot10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR within 2 kpc",
+   "value": "10",
+   "uncertainty": "5",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.2",
+     "quote": "SFR$(r<2\\,\\rm kpc) = 10 \\pm 5\\,\\rm M_{\\odot}\\,yr^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean niter/threshold details, deconvolver, image size",
+  "Spectral window used for the line imaging cube and exact velocity gridding (rest frequency)",
+  "3D BAROLO parameter file (free parameters, VDISP, normalization, mask settings, thickness)",
+  "Gaussian fitting details of the multi-component CO spectrum",
+  "Details of SFR(r<2 kpc) scaling from L_CO",
+  "Formula/line luminosity conversion details and uncertainty propagation"
+ ],
+ "missing_for_reproduction": [
+  "3D BAROLO parameter settings",
+  "tclean niter/image size details",
+  "Gaussian fit initial guesses"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single archival-style dataset with clear imaging and analysis steps, but key 3D BAROLO and tclean settings are missing.",
+ "rediscovery_reason": "Single short ALMA dataset with a mostly specified recipe and numeric results (disk flux, residual fluxes, energetics).",
+ "source_card": "cards/2019MNRAS.489.1927S/sonnet/card.md"
+}

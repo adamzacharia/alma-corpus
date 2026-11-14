@@ -1,0 +1,398 @@
+{
+ "bibcode": "2017MNRAS.464.1415M",
+ "title": "Exocometary gas structure, origin and physical properties around β Pictoris through ALMA CO multitransition observations",
+ "year": 2017,
+ "doi": "10.1093/mnras/stw2415",
+ "arxiv_id": "1609.06718",
+ "fields": [
+  "debris_disks",
+  "astrochemistry"
+ ],
+ "question": "What are the structure, origin and physical conditions (electron/H2 density, CO mass, exocometary ice content) of CO gas in the beta Pic debris disk, from ALMA CO J=2-1 combined with archival J=3-2?",
+ "alma_project_codes": [
+  "2012.1.00142.S",
+  "2011.0.00087.S"
+ ],
+ "data": {
+  "bands": "Band 6 (CO J=2-1) new; Band 7 (CO J=3-2) archival",
+  "arrays": "12-m array and ACA (Band 6); 12-m only (Band 7)",
+  "angular_resolution": "0.30''x0.26'' (Band 6); 0.69''x0.55'' (Band 7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk thermodynamical model: temperature profile (80 K at 50 AU, slope -0.8), C II density ~150 cm^-3 at 85 AU, C I column",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "we assume the temperature radial profile predicted by (cite: Kral2016a), i.e. a power law with slope of $-0.8$, normalised to a value of 80 K at 50 AU."
+     }
+    ]
+   },
+   "citation": "(cite: Kral2016a)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass 1.75 Msun",
+    "evidence": [
+     {
+      "loc": "3.3.1",
+      "quote": "Keplerian rotation around a 1.75 M$_{\\odot}$ star (cite: Crifo1997)"
+     }
+    ]
+   },
+   "citation": "(cite: Crifo1997)"
+  },
+  {
+   "what": {
+    "value": "Fractional dust luminosity 2.1e-3 and stellar luminosity 8.7 Lsun",
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "fractional luminosity $L_{\\rm dust}/L_{\\ast}$ of $2.1\\times 10^{-3}$ around a star of 8.7 $L_{\\odot}$ (cite: KennedyWyatt2014)"
+     }
+    ]
+   },
+   "citation": "(cite: KennedyWyatt2014)"
+  },
+  {
+   "what": {
+    "value": "Disk PA 29.3 deg from scattered light",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "corresponding to 29.3$^\\circ$$^{+0.2}_{-0.3}$ (cite: Lagrange2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Lagrange2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and match CO cubes",
+   "method": "CASA calibration, concatenation of ACA+12m, uvcontsub, CLEAN natural weighting; degrade 2-1 to 3-2 resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure integrated fluxes and line ratio",
+   "method": "Spatially integrate primary-beam-corrected moment-0 maps; ratio errors summed in quadrature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit vertical disk structure (spine, scale height)",
+   "method": "1D Gaussian fits to vertical cuts at each midplane position (>5 sigma); H from deconvolving beam",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "300 walkers, 500 steps; uniform priors |y_obs|<20 AU, FWHM_beam<FWHM<80 AU"
+   ],
+   "assumptions": [
+    "Edge-on disk, Gaussian vertical profile"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Map PV diagrams to orbital plane and derive H(R), T(R)",
+   "method": "Keplerian PV-to-radius mapping; H vs R power law; T from hydrostatic equilibrium",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "M*=1.75 Msun, mu=14, vertically isothermal, Keplerian"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Constrain inclination and tilt via chi2 grid",
+   "method": "Model double-Gaussian of front/back flux fractions over grid of i and dPA",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "NLTE line ratio modelling for electron and H2 density",
+   "method": "Compare 3-2/2-1 ratios per PV spaxel with NLTE grid in (Tk, ne) / (Tk, nH2), assuming Kral temperature profile",
+   "software": [],
+   "key_parameters": [
+    "mask highest 10% of ratios (>3.80); spaxels >4 sigma"
+   ],
+   "assumptions": [
+    "Optically thin CO, electrons as only colliders (upper limits)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive CO mass",
+   "method": "Monte Carlo over flux samples (1e4) and line ratio samples (1e8), random (Tk,ne) on ratio contour, upper level population",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Uniform underlying (Tk,ne) distribution"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Exocomet CO+CO2 ice abundance",
+   "method": "Steady-state: CO destruction rate (photodissociation with shielding) divided by solid mass loss rate from collisional cascade",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Steady state; belt 50-150 AU; production rate is lower limit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO J=2-1 integrated flux",
+   "value": "3.5e-20",
+   "uncertainty": "0.4e-20",
+   "units": "W m^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "$(3.5\\pm0.4) \\times10^{-20}$ W m$^{-2}$ for the J=2-1 transition"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=3-2 integrated flux",
+   "value": "6.7e-20",
+   "uncertainty": "0.7e-20",
+   "units": "W m^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "$(6.7\\pm0.7) \\times10^{-20}$ W m$^{-2}$ for the J=3-2 transition"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 3-2/2-1 ratio",
+   "value": "1.9",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "indicating an integrated 3-2/2-1 line ratio of $1.9\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale height at 85 AU",
+   "value": "7.0",
+   "uncertainty": "+/-0.6",
+   "units": "AU",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "H=7.0^{+0.6}_{-0.6} \\times \\left(\\frac{R}{85 \\rm AU}\\right)^{0.75^{+0.02}_{-0.02}}"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale height power-law index",
+   "value": "0.75",
+   "uncertainty": "+/-0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "H=7.0^{+0.6}_{-0.6} \\times \\left(\\frac{R}{85 \\rm AU}\\right)^{0.75^{+0.02}_{-0.02}}"
+    }
+   ]
+  },
+  {
+   "quantity": "Temperature at 85 AU",
+   "value": "2.1e2",
+   "uncertainty": "+/-0.4e2",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "T=\\left(2.1^{+0.4}_{-0.4} \\times 10^{2}\\right) \\times \\left(\\frac{R}{85 \\rm AU}\\right)^{-1.58}"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit inclination / tilt",
+   "value": "i~88 deg, dPA~3 deg",
+   "uncertainty": "i>=86, dPA<=5 reasonable",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "the formal best-fit (i.e. the $\\chi^2$ minimum) is at $i\\sim88^{\\circ}$ and dPA $\\sim3^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron density",
+   "value": "10^2-10^3",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "our measurements can confidently constrain the electron density in the disk to around $10^2$-$10^3$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 density upper limit",
+   "value": "10^3-10^5",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "its density would be between 10$^3$ and 10$^5$ cm$^{-3}$ at radii between 50 and 200 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature",
+   "value": "12",
+   "uncertainty": "4",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "corresponds to an excitation temperature $T_{\\rm exc}=12\\pm4$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO mass",
+   "value": "3.4e-5",
+   "uncertainty": "+0.5/-0.4 e-5",
+   "units": "Earth masses",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "The CO mass range obtained is $3.4^{+0.5}_{-0.4} \\times 10^{-5}$ M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO optical depth at clump (3-2)",
+   "value": "0.27",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "we obtain an optical thickness $\\tau_{3-2}=0.27\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO photodissociation timescale (shielded)",
+   "value": "~300",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2.2",
+     "quote": "we estimate a photodissociation timescale in the clump midplane of $\\sim$300 years"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass loss rate",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "Earth masses/Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2.2",
+     "quote": "yields a CO mass loss rate of 0.11 M$_{\\oplus}$/Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Solid mass loss rate",
+   "value": "1.9",
+   "uncertainty": "not stated",
+   "units": "Earth masses/Myr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2.1",
+     "quote": "The resulting total mass loss rate from the planetesimal belt is 1.9 M$_{\\oplus}$/Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "CO+CO2 ice abundance upper limit",
+   "value": "6%",
+   "uncertainty": "upper limit",
+   "units": "percent by mass",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2.3",
+     "quote": "we obtain an upper limit of 6% on the CO mass abundance"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-CII collision timescale",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "The timescale for CO-C II collision obtained is 0.19 years"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters: cell size, image size, masking, iterations, threshold",
+  "Line-free channels for uvcontsub",
+  "Self-calibration not mentioned",
+  "Exact moment-0 integration region for flux",
+  "Collisional rate files and NLTE code settings not given here",
+  "Dust continuum and astrometric offsets deferred to forthcoming work"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, mask, threshold)",
+  "Line-free channels",
+  "NLTE code and collision data handling",
+  "Moment-0 flux integration region",
+  "Details of Appendix cube degradation parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear analysis recipe, but missing imaging parameters and NLTE code details.",
+ "rediscovery_reason": "Data are archival, fluxes and H(R) fits are numeric and recipe is largely described.",
+ "source_card": "cards/2017MNRAS.464.1415M/sonnet/card.md"
+}

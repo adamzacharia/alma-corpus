@@ -1,0 +1,381 @@
+{
+ "bibcode": "2026A&A...708A.251X",
+ "title": "Linear filament and nested cluster evolution tomography (LANCET): I. Capture the evolution of dense gas in 14-parsec filament G316.8",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202557480",
+ "arxiv_id": "2602.18320",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How does dense gas structure evolve and assemble mass across a single 14-parsec filament (G316.8) spanning young, intermediate, and evolved stages of massive star and cluster formation?",
+ "alma_project_codes": [
+  "2016.1.00909.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, representative frequency 223.8 GHz)",
+  "arrays": "ACA 7m array (118 pointings)",
+  "angular_resolution": "7.4'' x 5.3'' (PA -85.4 deg), ~6'' (0.08 pc); 6.2'' for combined high-resolution column density map",
+  "sensitivity": "~2 mJy beam^-1 (0.3 M_sun mass sensitivity at 20 K); 4 mJy beam^-1 before self-calibration"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Heliocentric distance of G316.8 (2.8 +/- 0.5 kpc)",
+    "evidence": [
+     {
+      "loc": "In situ evolutionary sequence in G316.8 filament",
+      "quote": "On the near side of the Scutum-Centaurus Arm, the G316.8 filament lies at a heliocentric distance of $2.8\\pm0.5$ kpc (cite: Reid2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Reid2019)"
+  },
+  {
+   "what": {
+    "value": "Clump-scale bolometric luminosity-to-mass ratios L_bol/M_clump for the subregions (26 and 156 L_sun/M_sun)",
+    "evidence": [
+     {
+      "loc": "Hierarchical structures and physical properties",
+      "quote": "To gauge the evolutionary stages, the bolometric luminosity-to-mass ratio at clump scale ($L_{\\rm bol}/M_{\\rm clump}$) was retrieved from (cite: Urquhart2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Urquhart2022)"
+  },
+  {
+   "what": {
+    "value": "APEX/ArTéMiS CAFFEINE 350 and 450 um maps",
+    "evidence": [
+     {
+      "loc": "Multi-resolution temperature and column density images",
+      "quote": "We also utilized the 350 and 450 $\\mu$m images from the APEX/ArTéMiS CAFFEINE survey with 8$''$ and 10$''$ resolution, respectively (cite: Mattern2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Mattern2024)"
+  },
+  {
+   "what": {
+    "value": "Herschel Hi-GAL 160, 250, 350, and 500 um maps",
+    "evidence": [
+     {
+      "loc": "Multi-resolution temperature and column density images",
+      "quote": "The datasets include *Herschel* infrared Galactic Plane Survey (cite: Molinari2010; Molinari2016) at PACS 160 $\\mu$m, and SPIRE 250, 350, and 500 $\\mu$m"
+     }
+    ]
+   },
+   "citation": "(cite: Molinari2010; Molinari2016)"
+  },
+  {
+   "what": {
+    "value": "Archival ATCA 24 GHz continuum data",
+    "evidence": [
+     {
+      "loc": "Multi-resolution temperature and column density images",
+      "quote": "Using archived the ATCA 24 GHz data from (cite: Longmore2007), we found that the free-free contamination is at most 0.08 Jy beam$^{-1}$ at 1.3 mm."
+     }
+    ]
+   },
+   "citation": "(cite: Longmore2007)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Construct multi-resolution dust temperature and column density maps",
+   "method": "Fit single-component modified blackbody SEDs pixel-by-pixel at 36.3'' (Herschel 160-500 um) and 18'' (Herschel 160, 250 um + APEX/ArTéMiS 350, 450 um), extrapolate the 18'' SED to 1.3 mm, combine with ACA 7m 1.3 mm continuum in the uv domain using J-comb, convert combined 1.3 mm image to 6.2'' column density using 18'' dust temperature, and merge 6'', 18'', and 36'' maps in the image domain via weighted edge fusion.",
+   "software": [
+    "J-comb"
+   ],
+   "key_parameters": [
+    "36.3'' coarse resolution with 14.0'' pixel size; 18'' medium resolution; 6.2'' high resolution",
+    "uv overlap between 18.2'' and 28.0''"
+   ],
+   "assumptions": [
+    "Single-component graybody emission; Hildebrand (1983) dust opacity kappa_0 = 0.1 cm^2 g^-1 at 300 um (gas+dust), spectral index beta = 2.0, mean molecular weight mu = 2.8",
+    "Dust temperature changes slowly and 1.3 mm emission is purely thermal dust emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure global subregion properties and extract hierarchical dense fragments",
+   "method": "Define subregion ROI where N_H2 > 3e22 cm^-2 on 18'' map to sum cloud mass and FIR luminosity; run astrodendro on the ACA 7m 1.3 mm continuum map to identify hierarchical structures (leaves/fragments) and compute deconvolved sizes and isothermal masses.",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "astrodendro min_value = 3 sigma, min_delta = 1 sigma, min_npix = pixels in half a synthesized beam"
+   ],
+   "assumptions": [
+    "Distance d = 2.8 kpc, deconvolution factor eta = 2.4, leaf dust temperature taken from mean of 18'' temperature map within leaf mask"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute and fit Column Density Probability Distribution Functions (N-PDFs)",
+   "method": "Subtract uniform foreground/background column density measured in a 5'x5' box, bin normalized logarithmic column density eta = ln(N_H2 / <N_H2>) with 0.1 dex bins for quiet and active regions, and fit a piecewise lognormal + 1 or 2 power-law tail (PLT) model using MCMC.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Background N_H2 = 7e21 cm^-2 in 5' x 5' box; bin size = 0.1 dex; intrinsic scatter s_int = 0"
+   ],
+   "assumptions": [
+    "Conversion N_H2 = A_v * 0.94e21 cm^-2 mag^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Perform Delta-variance structural analysis across subregions",
+   "method": "Convolve the multi-resolution H2 column density map with a circularly symmetric wavelet over 50 spatial lags from 0.04 to 2.04 pc, estimate uncertainties via 500 block-bootstrap realizations, and fit a double power-law model over lags 0.1 to 0.9 pc.",
+   "software": [
+    "turbstat"
+   ],
+   "key_parameters": [
+    "Annulus-to-core-diameter ratio = 1.5; 50 lags from 0.04 to 2.04 pc; 500 bootstrap realizations; DPL fit range [0.1, 0.9] pc with fixed break at 0.3 pc"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Cloud mass of Young subregion (M_cloud)",
+   "value": "1.1",
+   "uncertainty": "+/-0.4",
+   "units": "10^4 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "In situ evolutionary sequence in G316.8 filament",
+     "quote": "Y | $4.4\\times1.6$ | $1.1\\pm0.4$ | $0.8 \\pm 0.3$ | $1.6 \\pm 0.5$ | $3.3 \\pm 1.4$ | $14.4 \\pm 0.1$ | $0.7 \\pm 0.1$ | $0.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud mass of Intermediate subregion (M_cloud)",
+   "value": "1.7",
+   "uncertainty": "+/-0.5",
+   "units": "10^4 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "In situ evolutionary sequence in G316.8 filament",
+     "quote": "I | $5.5\\times1.3$ | $1.7 \\pm 0.5$ | $6.1 \\pm 2.4$ | $2.5 \\pm 1.0$ | $6.5 \\pm 2.5$ | $17.5 \\pm 0.1$ | $3.6 \\pm 0.4$ | $26$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud mass of Evolved subregion (M_cloud)",
+   "value": "0.8",
+   "uncertainty": "+/-0.3",
+   "units": "10^4 M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "In situ evolutionary sequence in G316.8 filament",
+     "quote": "E | $2.9\\times1.1$ | $0.8 \\pm 0.3$ | $8.4 \\pm 3.2$ | $2.5 \\pm 1.0$ | $7.5 \\pm 3.1$ | $21.3 \\pm 0.1$ | $10.4 \\pm 1.3$ | $156$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust temperature of Young subregion",
+   "value": "14.4",
+   "uncertainty": "+/-0.1",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "In situ evolutionary sequence in G316.8 filament",
+     "quote": "Y | $4.4\\times1.6$ | $1.1\\pm0.4$ | $0.8 \\pm 0.3$ | $1.6 \\pm 0.5$ | $3.3 \\pm 1.4$ | $14.4 \\pm 0.1$ | $0.7 \\pm 0.1$ | $0.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust temperature of Intermediate subregion",
+   "value": "17.5",
+   "uncertainty": "+/-0.1",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "In situ evolutionary sequence in G316.8 filament",
+     "quote": "I | $5.5\\times1.3$ | $1.7 \\pm 0.5$ | $6.1 \\pm 2.4$ | $2.5 \\pm 1.0$ | $6.5 \\pm 2.5$ | $17.5 \\pm 0.1$ | $3.6 \\pm 0.4$ | $26$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust temperature of Evolved subregion",
+   "value": "21.3",
+   "uncertainty": "+/-0.1",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "In situ evolutionary sequence in G316.8 filament",
+     "quote": "E | $2.9\\times1.1$ | $0.8 \\pm 0.3$ | $8.4 \\pm 3.2$ | $2.5 \\pm 1.0$ | $7.5 \\pm 3.1$ | $21.3 \\pm 0.1$ | $10.4 \\pm 1.3$ | $156$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of identified dendrogram leaves (fragments)",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Hierarchical structures and physical properties",
+     "quote": "A total of 65 leaves were identified and extracted."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum fragment mass in Young subregion",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Linear filament and nested cluster evolution tomography (LANCET)",
+     "quote": "From young to intermediate to evolved, the maximum fragment mass increases from 8 to 160 to 490 $M_\\odot$, while the dense-gas mass fraction ($>0.5$ g cm$^{-2}$) rises from $0.4\\%$ to $2.3\\%$ to $9.6\\%$."
+    },
+    {
+     "loc": "Dense fragments and structural hierarchy",
+     "quote": "From the young, intermediate, and evolved stages, the maximum fragment mass increases from $\\sim$8 to 160 and reaches $490~M_\\odot$, indicating substantial mass accumulation into dense structures as evolution proceeds."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum fragment mass in Intermediate subregion",
+   "value": "160",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Linear filament and nested cluster evolution tomography (LANCET)",
+     "quote": "From young to intermediate to evolved, the maximum fragment mass increases from 8 to 160 to 490 $M_\\odot$, while the dense-gas mass fraction ($>0.5$ g cm$^{-2}$) rises from $0.4\\%$ to $2.3\\%$ to $9.6\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum fragment mass in Evolved subregion (and Leaf ID 1 mass)",
+   "value": "490 (485 in Table 2)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Linear filament and nested cluster evolution tomography (LANCET)",
+     "quote": "From young to intermediate to evolved, the maximum fragment mass increases from 8 to 160 to 490 $M_\\odot$, while the dense-gas mass fraction ($>0.5$ g cm$^{-2}$) rises from $0.4\\%$ to $2.3\\%$ to $9.6\\%$."
+    },
+    {
+     "loc": "Hierarchical structures and physical properties",
+     "quote": "1 | 14:45:20.98 | -59:49:30.4 | 3.513 | 28.0 | 9.9 | -159 | 16.7 | 0.23 | 16.1 | 0.22 | 23.6 | 485 | 369 | E"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dense fragment mass in Young, Intermediate, and Evolved subregions",
+   "value": "50, 391, 766",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dense fragments and structural hierarchy",
+     "quote": "Summing the fragment masses within each subregion yields total dense gas masses of 50, 391, and $766~M_\\odot$ in the young, intermediate, and evolved regions, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Regional dense-gas mass fraction f_dg in Young, Intermediate, and Evolved subregions",
+   "value": "0.4%, 2.3%, 9.6%",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dense fragments and structural hierarchy",
+     "quote": "Defining regional dense gas fraction as $f_{\\rm dg}(\\mathcal{R}) \\equiv \\sum M_{\\rm leaf}/M_{\\rm cloud}(\\mathcal{R})$, we obtain $0.4\\%$, $2.3\\%$, and $9.6\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "N-PDF primary power-law tail slope s_1 in Quiet region",
+   "value": "-1.20",
+   "uncertainty": "+0.08/-0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Column density probability distribution function (N-PDF)",
+     "quote": "| young | $1.16^{+2.38}_{-1.13}$ | $0.59^{+0.28}_{-0.25}$ | $-0.20^{+0.18}_{-0.07}$ | $-1.20^{+0.08}_{-0.08}$ | 2.80 | \\- | 2.7(0.2) | 2.3(0.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "N-PDF primary and secondary power-law tail slopes (s_1, s_2) in Active region",
+   "value": "-1.00, -7.18",
+   "uncertainty": "+0.01/-0.01, +0.76/-0.72",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Column density probability distribution function (N-PDF)",
+     "quote": "| $2.30^{+2.35}_{-2.39}$ | $1.17^{+0.37}_{-0.54}$ | $-0.50^{+0.10}_{-0.07}$ | $-1.00^{+0.01}_{-0.01}$ | $3.15^{+0.03}_{-0.04}$ | $-7.18^{+0.76}_{-0.72}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Delta-variance small-scale slope alpha_1 (Young, Intermediate, Evolved)",
+   "value": "2.7, 1.9, 1.5",
+   "uncertainty": "0.2, 0.1, 0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Column density probability distribution function (N-PDF)",
+     "quote": "| young | $1.16^{+2.38}_{-1.13}$ | $0.59^{+0.28}_{-0.25}$ | $-0.20^{+0.18}_{-0.07}$ | $-1.20^{+0.08}_{-0.08}$ | 2.80 | \\- | 2.7(0.2) | 2.3(0.2) |"
+    },
+    {
+     "loc": "Structural analyses $\\Delta$-variance",
+     "quote": "For the evolved subregion, the DPL has a small-scale slope of 1.5 and a large-scale slope of 1.4. For the intermediate subregion, they are as steep as 1.9 and 2.1. For the young subregion, they are even steeper at 2.7 and 2.3."
+    }
+   ]
+  },
+  {
+   "quantity": "Delta-variance large-scale slope alpha_2 (Young, Intermediate, Evolved)",
+   "value": "2.3, 2.1, 1.4",
+   "uncertainty": "0.2, 0.2, 0.0",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Structural analyses $\\Delta$-variance",
+     "quote": "For the evolved subregion, the DPL has a small-scale slope of 1.5 and a large-scale slope of 1.4. For the intermediate subregion, they are as steep as 1.9 and 2.1. For the young subregion, they are even steeper at 2.7 and 2.3."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges flagged as line emission in SPWs 1 and 2 before continuum channel averaging",
+  "Self-calibration solution interval (solint), S/N threshold for dropping phase solutions, and clean threshold during self-calibration",
+  "tclean deconvolver (e.g., hogbom, multiscale, mtmfs), niter, and stopping threshold",
+  "Exact coordinates of the 5' x 5' background box used for N-PDF foreground/background subtraction and exact polygon vertices defining the Young, Intermediate, Evolved, Quiet, and Active subregions",
+  "Number of tiles (n_tile) used in the block bootstrap for the Delta-variance uncertainty estimation",
+  "Gaussian smoothing kernel width (weighting_smooth parameter) used in the image-domain edge fusion"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel ranges flagged as line emission in SPWs 1-2 prior to continuum imaging",
+  "Self-calibration solution intervals and S/N threshold parameters",
+  "Exact spatial polygon coordinates defining the Young, Intermediate, Evolved, Quiet, and Active subregions and the 5' x 5' background box",
+  "Multi-resolution FITS maps of dust temperature and column density are not stated to be uploaded to CDS (only Table 2 is listed under Data availability)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Calibration, imaging, SED fitting equations, uv/image combination formulations, astrodendro parameters, MCMC likelihood, and Delta-variance parameters are all well documented; only minor boundary coordinates, line-flagging channel ranges, and self-calibration solint details are omitted.",
+ "rediscovery_reason": "Cycle 4 ALMA ACA data (2016.1.00909.S), Herschel Hi-GAL, and APEX/ArTéMiS CAFFEINE maps are all public, and the main results (65 dendrogram fragments, maximum fragment masses, dense gas fractions, N-PDF slopes, and Delta-variance slopes) are quantitative and clearly specified.",
+ "source_card": "cards/2026A%26A...708A.251X/sonnet/card.md"
+}

@@ -1,0 +1,255 @@
+{
+ "bibcode": "2025A&A...699A..62J",
+ "title": "ALMA observation of an evolving magnetized corona in the radio-quiet changing-state active galactic nucleus NGC 1566",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202554491",
+ "arxiv_id": "2505.13242",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What is the origin of the mm continuum emission in the changing-state AGN NGC 1566, and how does it vary with X-ray flux and accretion state?",
+ "alma_project_codes": [
+  "2012.1.00474.S",
+  "2015.1.00925.S",
+  "2017.1.00392.S",
+  "2021.1.01150.S",
+  "2023.1.01182.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz), eight epochs 2014-2023",
+  "arrays": "not stated",
+  "angular_resolution": "beam sizes 0.2'' to 7.3'' (~20-640 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Eddington-ratio dependent bolometric correction",
+    "evidence": [
+     {
+      "loc": "2 Observation and data analysis",
+      "quote": "The bolometric luminosity ($L_{\\rm bol}$) was calculated using Eddington ratio ($\\lambda_{\\rm Edd}$) dependent bolometric correction factors ($\\kappa_{\\rm 14-195~keV}$) of (cite: Gupta2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Gupta2024)"
+  },
+  {
+   "what": {
+    "value": "UVW2 host galaxy flux",
+    "evidence": [
+     {
+      "loc": "Multi-wavelength observations",
+      "quote": "The host galaxy flux was taken from (cite: Gupta2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Gupta2024)"
+  },
+  {
+   "what": {
+    "value": "X-ray corona size 20-40 Rg",
+    "evidence": [
+     {
+      "loc": "3.3.4 Synchrotron emission in X-ray corona",
+      "quote": "The size of the X-ray corona ($R_{\\rm X}$) is estimated to be $R_{\\rm X}\\sim 20-40$ $R_{\\rm g}$ from the broadband X-ray spectral study of NGC 1566 (cite: AJ2021)"
+     }
+    ]
+   },
+   "citation": "(cite: AJ2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum and measure fluxes",
+   "method": "tclean images with all spws, per-spw images, peak flux; Gaussian 2D fit shows unresolved nucleus",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "briggs robust=0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive in-band spectral index",
+   "method": "Power-law fit to fluxes in four spws, F_nu ∝ nu^alpha",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive X-ray fluxes and bolometric luminosity",
+   "method": "BAT/XRT rates converted to 14-150 keV; L_bol from lambda_Edd-dependent bolometric correction",
+   "software": [
+    "XSPEC"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "power law with Gamma = 1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Correlate mm and X-ray flux",
+   "method": "Spearman correlation and linear fit in log space with intrinsic scatter",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Test origin scenarios and estimate source size and magnetic field",
+   "method": "Order-of-magnitude estimates for SF, jet, outflow shock and self-absorbed synchrotron corona (equipartition)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "outflow velocity taken as escape velocity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spearman correlation, F230 vs F14-150keV",
+   "value": "0.54 (p=0.0168)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Relation between mm and X-ray emissions",
+     "quote": "Spearman correlation index of 0.54 and a p-value of 0.0168"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log F230 vs log F14-150",
+   "value": "0.39",
+   "uncertainty": "±0.13",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Relation between mm and X-ray emissions",
+     "quote": "$\\log F_{\\rm 230~GHz} = (0.39 \\pm 0.13) \\log F_{\\rm 14-150~keV} + (-10.62 \\pm 1.34)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter",
+   "value": "0.05",
+   "uncertainty": "1 sigma",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Relation between mm and X-ray emissions",
+     "quote": "with an intrinsic scatter of 0.05 dex ($1\\sigma$ level)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log(F230/F14-150)",
+   "value": "-4.42",
+   "uncertainty": "±0.21",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Relation between mm and X-ray emissions",
+     "quote": "$\\log (F_{\\rm 230~GHz}/F_{\\rm 14-150~keV}) = -4.42 \\pm 0.21$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio for lambda_Edd<1e-2",
+   "value": "-4.01",
+   "uncertainty": "±0.22",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Relation between mm and X-ray emissions",
+     "quote": "for $\\lambda_{\\rm Edd} < 10^{-2}$, the median ratio is found to be $-4.01\\pm 0.22$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio for lambda_Edd>1e-2",
+   "value": "-4.52",
+   "uncertainty": "±0.20",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Relation between mm and X-ray emissions",
+     "quote": "while for $\\lambda_{\\rm Edd} > 10^{-2}$ it is $-4.52\\pm 0.20$"
+    }
+   ]
+  },
+  {
+   "quantity": "Self-absorbed source size",
+   "value": "4-7e-5 pc (~100-200 Rg)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.4 Synchrotron emission in X-ray corona",
+     "quote": "$R_{\\rm mm}\\sim 4-7 \\times 10^{-5}$ pc or $\\sim 100-200$ $R_{\\rm g}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition magnetic field",
+   "value": "100-300",
+   "uncertainty": "not stated",
+   "units": "G",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.4 Synchrotron emission in X-ray corona",
+     "quote": "The equipartition magnetic field ($B_{\\rm eq}$) is found in the range $\\sim 100-300$ G"
+    }
+   ]
+  },
+  {
+   "quantity": "mm flux at peak (2018) and 2023",
+   "value": "~9.8 mJy; ~3.5 mJy",
+   "uncertainty": "±1.0; ±0.4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Lightcurves",
+     "quote": "the mm flux was also observed to increase by a factor of $\\sim 2$ ($\\sim 9.8\\pm1.0$ mJy)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free/continuum channel selection per epoch",
+  "Cell size, image size, masking and cleaning threshold",
+  "Fitting method for the flux-flux relation and the intrinsic scatter",
+  "Black hole mass used for lambda_Edd and Rg",
+  "Exact BAT/XRT fluxes and time-matching to ALMA epochs",
+  "Swift/XRT fit details (the model description is inconsistent: BB vs DISKBB)",
+  "How peak flux and uncertainty were measured (Gaussian fit)"
+ ],
+ "missing_for_reproduction": [
+  "Black hole mass and exact BAT/XRT flux tables",
+  "Regression method for the flux relation",
+  "Time-matching of X-ray to ALMA epochs",
+  "Spectral index fitting details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and simple imaging with robust=0.5 are given, but the fitting and X-ray processing details are partly missing.",
+ "rediscovery_reason": "Data are public, the recipe is simple, and the results are numeric (fluxes, spectral indices, correlation).",
+ "source_card": "cards/2025A%26A...699A..62J/sonnet/card.md"
+}

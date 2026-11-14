@@ -1,0 +1,287 @@
+{
+ "bibcode": "2019ApJ...882....1L",
+ "title": "CO and Fine-structure Lines Reveal Low Metallicity in a Stellar-mass-rich Galaxy at z ∼ 1?",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab3389",
+ "arxiv_id": "1907.08633",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Is the CO-faint, star-forming FR-II galaxy 3C 368 (z=1.131) low-metallicity, and what is its molecular gas mass from CO(4-3), [CI] and dust?",
+ "alma_project_codes": [
+  "2015.1.00914.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.41x0.31 arcsec (CO), 0.39x0.29 (CI), 0.38x0.29 (continuum)",
+  "sensitivity": "120 uJy/beam per 60 km/s channel (CO), 130 (CI), 13 uJy/beam continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SFR ~350 Msun/yr, FIR luminosity 2.0e12 Lsun, dust mass 1.4e8 Msun from SED modeling",
+    "evidence": [
+     {
+      "loc": "3.2.1",
+      "quote": "who used that value to derive an FIR luminosity of 2.0 $\\times$ 10$^{12}$ $L_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: Podigachoski2015)"
+  },
+  {
+   "what": {
+    "value": "Previous ALMA 230 GHz continuum, [OIII] 52um flux, CO(2-1) upper limit, PDR modeling, electron density 1000 cm-3",
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "using our previous observations of the [O iii] 52 $\\ensuremath{\\mu}m$ line (cite: Lamarche2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Lamarche2017)"
+  },
+  {
+   "what": {
+    "value": "Radio continuum at 8.21 and 4.71 GHz; lobe spectral index ~-1.5",
+    "evidence": [
+     {
+      "loc": "3.2.1",
+      "quote": "together with radio continuum observations at 8.21 and 4.71 GHz (observed-frame) (cite: Best1998)"
+     }
+    ]
+   },
+   "citation": "(cite: Best1998)"
+  },
+  {
+   "what": {
+    "value": "Optical line fluxes [OIII] 5007 6.8e-18, [OII] 3727 5.9e-18, Hdelta 2.8e-19 W m-2",
+    "evidence": [
+     {
+      "loc": "3.2.3",
+      "quote": "Adopting an [O iii] 5007 Å  line flux of 6.8 $\\times$ 10$^{-18}$ W m$^{-2}$ (cite: Jackson1997)"
+     }
+    ]
+   },
+   "citation": "(cite: Jackson1997; Best2000)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass 3.6e11 Msun",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| M$_*$ | 3.6 $\\times$ 10$^{11}$ M$_\\odot$ | (cite: Best1998stellarmass) |"
+     }
+    ]
+   },
+   "citation": "(cite: Best1998stellarmass)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure line and continuum fluxes",
+   "method": "Continuum-subtracted moment-0 maps; 2D Gaussian fits; checked by integrating aperture spectra",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Dust slope and radio SED decomposition",
+   "method": "Rayleigh-Jeans index from 480.5 GHz and 205 um points; fit thermal+nonthermal radio SED with alpha_nth fixed at 0.7",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Metallicity from [OIII]52um and free-free; compare R23",
+   "method": "Ionic abundance from line flux/free-free ratio; T4=1, ne/np=1.05, ne=1000 cm-3; R23 compared",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "PDR modeling and PDR mass",
+   "method": "PDR Toolbox fit including CO(4-3) and [CI]; PDR mass following Hailey-Dunsheath 2010",
+   "software": [
+    "PDR Toolbox"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Molecular gas mass by three methods",
+   "method": "CO(4-3) with r43/21>1.3 and metallicity-scaled alpha_CO; [CI] luminosity; gas-to-dust ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO~18 from metallicity (Glover & Mac Low 2011); X_CI=3e-5; Q10=0.6; GDR=540 at 0.3 Zsun"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Dynamical mass",
+   "method": "M_dyn = v_rot^2 r/G with v_rot=(pi/2) v_obs, r=0.5 FWHM from Gaussian fit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(4-3) line flux",
+   "value": "1.08",
+   "uncertainty": "0.14",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We obtain a CO(4-3) line flux of 1.08 $\\pm$ 0.14 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI] 609um line flux",
+   "value": "0.85",
+   "uncertainty": "0.09",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "a [C i] 609 $\\ensuremath{\\mu}m$ line flux of 0.85 $\\pm$ 0.09 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum core flux density at 225.5 GHz",
+   "value": "96",
+   "uncertainty": "21",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "and the core at 96 $\\pm$ 21 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Rayleigh-Jeans index",
+   "value": "3.7",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "of 3.7 $\\pm$ 0.4, or equivalently a dust-emissivity $\\beta$ value"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase metallicity (free-free + [OIII])",
+   "value": "~0.3",
+   "uncertainty": "factor of two",
+   "units": "Zsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "we obtain an estimated [O/H] ratio of 1.2 $\\times$ 10$^{-4}$, or $\\sim$ 0.3 Z$_\\odot$ (cite: Asplund2009), within about a factor of two uncertainty"
+    }
+   ]
+  },
+  {
+   "quantity": "R23",
+   "value": "~12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.3",
+     "quote": "we obtain an R$_{23}$ value of $\\sim$ 12."
+    }
+   ]
+  },
+  {
+   "quantity": "PDR gas mass",
+   "value": "1.7e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "We calculate a PDR gas mass of $\\sim$ 1.7 $\\times$ 10$^{10}$ $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass (metallicity-adjusted alpha_CO)",
+   "value": "6.4e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we obtain a molecular mass of 6.4 $\\times$ 10$^{10}$ $M_{\\odot}$ (see Table 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio",
+   "value": "464",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we obtain a value of $\\delta_{GDR}$ = 464"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "1.5e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "We obtain a dynamical mass of $\\sim$ 1.5 $\\times$ 10$^{11}$ $M_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and moment-map velocity ranges",
+  "CLEAN threshold, masks, image size and cell size",
+  "Self-calibration and flux-scale uncertainty",
+  "Free-free flux density at 230 GHz details and CO(4-3) line width fits",
+  "Exact PDR Toolbox fit procedure and input line fluxes",
+  "Rest frequencies adopted for the lines"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (masks, image size, cell)",
+  "Values of previous-paper measurements"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Key imaging settings stated, but much analysis depends on external numbers and unspecified fits.",
+ "rediscovery_reason": "Archival ALMA project code given, fluxes and masses numeric, recipe fairly clear.",
+ "source_card": "cards/2019ApJ...882....1L/sonnet/card.md"
+}

@@ -1,0 +1,224 @@
+{
+ "bibcode": "2017ApJ...845..175J",
+ "title": "Galaxy Formation through Filamentary Accretion at z = 6.1",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa7d0d",
+ "arxiv_id": "1706.09968",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What is the detailed spatial and kinematic structure of [C II] and dust emission in the z=6.07 LBG WMH5, and does it indicate galaxy assembly via accretion of satellites along a filament?",
+ "alma_project_codes": [
+  "2013.1.00815.S",
+  "2015.1.00834.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.30'' x 0.25'', PA 74 deg",
+  "sensitivity": "continuum 9 uJy/beam; line cube 0.1 mJy/beam per 17 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cycle 2 ALMA observations of WMH5 combined with Cycle 3 data",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we combined these data with the Cycle 2 observations of (cite: will15)."
+     }
+    ]
+   },
+   "citation": "Willott et al. 2015 (cite: will15)"
+  },
+  {
+   "what": {
+    "value": "SFR_SED and SFR_FIR summed to total SFR 76+-11 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "we add SFR$_{SED}$ and SFR$_{FIR}$ of (cite: will15), yielding $76\\pm11$ M$_{\\odot}$ year$^{-1}$."
+     }
+    ]
+   },
+   "citation": "Willott et al. 2015 (cite: will15)"
+  },
+  {
+   "what": {
+    "value": "[CII]/continuum ratios of z~5.5 galaxies HZ4, HZ6, HZ9, HZ10",
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "These four give ratios of $(6\\pm2)\\times10^3$ km s$^{-1}$ (HZ4)[^2]"
+     }
+    ]
+   },
+   "citation": "Capak et al. 2015 (cite: capa15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Combine and reweight Cycle 2 and 3 data, image",
+   "method": "Reweight uv data with statwt, then clean with natural weighting to make continuum image and [CII] cube",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "15.6 MHz ~17 km/s channels; natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit spectra of core and tail components",
+   "method": "1D Gaussian fits to single-pixel spectra at core and tail positions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure [CII] luminosities and SFRs",
+   "method": "2D Gaussian fits to moment-0 maps of core and sub-galaxy velocity ranges; SFR from Vallini et al. eq. 8",
+   "software": [],
+   "key_parameters": [
+    "core 169 to -77 km/s; sub-galaxies -94 to -305 km/s"
+   ],
+   "assumptions": [
+    "Metallicity 1.0 or 0.1 Zsun; flat cosmology (0.692,0.308,0.678)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive [CII]/continuum ratios and L_CII/L_FIR",
+   "method": "Ratio of line to continuum surface brightness at core and tail; L_CII via Solomon+92 eq.1; FIR from greybody",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust=30 K, beta=1.6, FIR 42.5-122.5 um, uniform across source"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust mass",
+   "method": "Bianchi 2013 eq. 1 with 160 um flux density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa0=1.88 m2/kg at 2.4 THz; T=25-100 K, beta=1.2-2.0 range"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] core flux (moment 0)",
+   "value": "0.32",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "a velocity integrated flux density of $0.32\\pm0.03$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII],CORE",
+   "value": "3.2e8",
+   "uncertainty": "0.3e8",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$L_{\\rm [C\\,II],CORE}=(3.2\\pm0.3)\\times10^8\\,L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII],SG",
+   "value": "3.0e8",
+   "uncertainty": "0.4e8",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$L_{\\rm [C\\,II],SG}=(3.0\\pm0.4)\\times10^8\\,L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux density",
+   "value": "0.15",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "an integrated flux density of $0.15\\pm0.03\\,$mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII]/continuum ratio core",
+   "value": "4.3e3",
+   "uncertainty": "0.8e3",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "The line to continuum ratio for the core is then: $(4.3\\pm0.8)\\times10^3$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "4.0e8",
+   "uncertainty": "0.8e8",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "we find a dust mass of $(4.0\\pm0.8)\\times10^8\\,M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SG-1 velocity / FWHM",
+   "value": "-249 / 94",
+   "uncertainty": "5 / 12",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SG-1 | $0.50\\pm0.05$ | $-249\\pm5$ | $94\\pm12$ | $0.05\\pm0.01$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, clean threshold and masks",
+  "Continuum/line channel selection and continuum subtraction method",
+  "Flux calibrators and CASA version used for Cycle 3",
+  "Velocity ranges and fitting details for Gaussian fits; exact Cycle 2 data processing",
+  "Metallicity-SFR calculation details from Vallini eq. 8",
+  "Moment map clipping thresholds"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks, thresholds)",
+  "Channel selection for continuum",
+  "Spectral extraction details and velocity ranges for fits",
+  "CASA version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and main steps described, but imaging details missing.",
+ "rediscovery_reason": "Public data, numeric results from Gaussian fits and simple derived quantities; some imaging choices unstated.",
+ "source_card": "cards/2017ApJ...845..175J/sonnet/card.md"
+}

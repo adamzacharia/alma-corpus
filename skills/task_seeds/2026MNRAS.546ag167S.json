@@ -1,0 +1,614 @@
+{
+ "bibcode": "2026MNRAS.546ag167S",
+ "title": "Under the glare of a luminous quasar, the FIR continuum is still an excellent tracer of the ISM down to the central kiloparsec",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag167",
+ "arxiv_id": "2509.20548",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Whether far-infrared continuum emission measured on galaxy-wide scales in luminous z=2 quasar hosts is primarily attributable to ongoing star formation or significantly enhanced by quasar-heated dust.",
+ "alma_project_codes": [
+  "2017.1.00102.S",
+  "2022.1.00707.S",
+  "2023.1.00185.S",
+  "2024.1.00596.S"
+ ],
+ "data": {
+  "bands": "Band 5, Band 7, Band 9",
+  "arrays": "12m array (42-44 antennas in Band 5)",
+  "angular_resolution": "Band 5: ~0.1 arcsec (high-res) and ~1 arcsec (low-res), combined ~0.2 arcsec; Band 9: 0.30-0.35 arcsec (J1236+0500) and 0.06x0.10 arcsec (J2345-1104); Band 7: 0.9 arcsec",
+  "sensitivity": "J1236+0500 Band 5 CO rms = 0.08 Jy beam^-1 km s^-1; J1236+0500 Band 5 continuum rms = 0.029 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Initial Band 7 850 um continuum fluxes, luminosities, SFRs, black hole masses, and bolometric luminosities of the three quasars",
+    "evidence": [
+     {
+      "loc": "Method / Targets",
+      "quote": "Initial estimates of their SFRs are measured using ALMA continuum observations in Band 7 (Cycle 5; 2017.1.00102.S; PI: A. Schulze) with a spatial resolution of 0.9$^{\\prime\\prime}$ (cite: Schulze2019)."
+     },
+     {
+      "loc": "Method / Targets",
+      "quote": "Their basic properties from the Band 7 data are listed in Table [\\[tab:sample\\]](#tab:sample)."
+     }
+    ]
+   },
+   "citation": "Schulze2019 (cite: Schulze2019)"
+  },
+  {
+   "what": {
+    "value": "Compilation of star-forming galaxies and lower-luminosity AGNs at 1 < z < 1.7 with CO(5-4) and IR luminosity measurements",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Lastly, the dust and CO emission from these three quasar hosts will be compared with a compilation of star-forming galaxies and lower-luminosity AGNs at $1<z<1.7$ (cite: Valentino2021) to conclude on the quasar contribution to the total FIR emission."
+     }
+    ]
+   },
+   "citation": "Valentino2021 (cite: Valentino2021)"
+  },
+  {
+   "what": {
+    "value": "Quasar SED templates (standard, warm dust deficient, hot dust deficient)",
+    "evidence": [
+     {
+      "loc": "Results / SDSS J1236+0500 / Continuum",
+      "quote": "well above the standard quasar template (cite: Lyu2017b), as shown in the top-left panel of Figure [2](#fig:seds)."
+     },
+     {
+      "loc": "Results / SDSS J1236+0500 / Continuum",
+      "quote": "In the top-right panel, the decomposed flux of the central unresolved component in Band 5 and upper limit in band 9 are nearly consistent with emission expected from the quasar model of (cite: Lyu2017a)."
+     }
+    ]
+   },
+   "citation": "Lyu2017a, Lyu2017b (cite: Lyu2017a; Lyu2017b)"
+  },
+  {
+   "what": {
+    "value": "Sample of z~2 quasars with black hole and host stellar masses for comparison on the M_BH - M_* plane",
+    "evidence": [
+     {
+      "loc": "Discussion / Dynamical and inferred stellar masses",
+      "quote": "For reference, we include the sample of quasars at $z\\sim2$ from the (cite: Mechtley2016) study as a reference which generally cover the region of our three quasars."
+     }
+    ]
+   },
+   "citation": "Mechtley2016 (cite: Mechtley2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Coadd visibilities and fit two-component models (host + point source) in the uv-plane",
+   "method": "Coadd high and low resolution Band 5 visibilities using CASA 'concat', export to GILDAS via 'exportuvfits' and 'fits.to.uvt', and perform two-component (elliptical Spergel profile + central point source) fitting in the uv-plane using 'uv_fit' for CO(5-4) and continuum (Bands 5, 7, 9).",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "CO velocity integration ranges (FWHM): 455 km s^-1 (J1236+0500), 220 km s^-1 (J2317-1033), 480 km s^-1 (J2345-1104)",
+    "Continuum Spergel index tested for 3 cases: fixed to CO fit value, fixed to -0.3, and free"
+   ],
+   "assumptions": [
+    "H0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7",
+    "Point-source component traces unresolved quasar/torus emission while extended Spergel component traces the host galaxy"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model 3D gas kinematics of SDSS J1236+0500",
+   "method": "Fit the CO(5-4) data cube with a 3D tilted-ring thin disk model using 3D-Barolo and fit the 1D spectrum with a double Gaussian profile.",
+   "software": [
+    "3D-Barolo"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Thin rotating disk geometry"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct FIR SEDs, derive IR luminosities and SFRs, and evaluate the CO-FIR relation",
+   "method": "Compare decomposed extended and nuclear fluxes across Bands 5, 7, and 9 with modified blackbody models and Lyu et al. (2017) quasar templates; compute L'_CO(5-4), convert to L_TIR via Daddi et al. (2015) and to SFR via Kennicutt & Evans (2012); fit empirical AGN contribution to CO(5-4) following Valentino et al. (2021).",
+   "software": [],
+   "key_parameters": [
+    "Modified blackbody parameters: beta = 1.6, T_dust = 47 K"
+   ],
+   "assumptions": [
+    "Chabrier initial mass function",
+    "Point-source emission originates from the unresolved quasar component while extended emission is heated solely by star formation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate host galaxy dynamical masses and CO Tully-Fisher stellar masses",
+   "method": "Extract 1D CO(5-4) spectra within a 1 arcsec aperture for pixels with S/N > 2, fit double-horn (J1236+0500, J2345-1104) or single Gaussian (J2317-1033) line profiles, and compute M_dyn(R) using MCMC and M_* using the local CO Tully-Fisher relation.",
+   "software": [],
+   "key_parameters": [
+    "Aperture diameter = 1 arcsec; pixel selection threshold S/N > 2"
+   ],
+   "assumptions": [
+    "Rotation-dominated thin disk with inclination cos(i) = b/a and circular velocity v_circ = 0.5 * W_20 / sin(i)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(5-4) host flux (J1236+0500)",
+   "value": "5.82",
+   "uncertainty": "+-0.26",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{CO J=5-4}$ (host) | 5.82$\\pm$0.26 | 2.71$\\pm$0.34 | 1.02$\\pm$0.22 | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) point source flux (J1236+0500)",
+   "value": "0.35",
+   "uncertainty": "+-0.08",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{CO J=5-4}$(point source) | 0.35$\\pm$0.08 | 0.40$\\pm$0.0.09 | 0.28$\\pm$0.15 | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) host effective radius (J1236+0500)",
+   "value": "1.01",
+   "uncertainty": "+-0.08",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$r_{eff, host}$ | 1.01$\\pm$0.08 | 1.17$\\pm$0.33 | 1.09$\\pm$0.50 | kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) luminosity L'_CO (J1236+0500)",
+   "value": "1.98e10",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "L$'_{CO J=5-4}$ | 1.98e10 | 0.47e10 | 0.37e10 | K km s$^{-1}$ pc$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from CO(5-4) (J1236+0500)",
+   "value": "975",
+   "uncertainty": "+-200",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SFR (CO J=5–4) | 975$\\pm$200 | 232$\\pm$55 | 181$\\pm$53 | $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum host flux (J1236+0500)",
+   "value": "0.92",
+   "uncertainty": "+-0.08",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~5}$ (host)$^b$ | 0.92$\\pm$0.08 (0.98, 0.70) | — (0.10$\\pm$0.02, 0.11) | 0.15$\\pm$0.04 (0.15, 0.14) | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum point source flux (J1236+0500)",
+   "value": "0.15",
+   "uncertainty": "+-0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~5}$ (point source)$^b$ | 0.15$\\pm$0.03 (0.11, 0.14) | — (0.08$\\pm$0.01, 0.07) | 0.05$\\pm$0.03 (0.04, 0.07) | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum host effective radius (J1236+0500)",
+   "value": "1.64",
+   "uncertainty": "+-0.23",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$r_{eff, host}$ | 1.64$\\pm$0.23 | 0.72$\\pm$0.32 | $0.92\\pm$0.48 | kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from Band 5 continuum (J1236+0500)",
+   "value": "953",
+   "uncertainty": "+-208",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SFR (Band 5) | 953$\\pm$208 | 104$\\pm$29 | 149$\\pm$50 | $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 continuum host flux (J1236+0500)",
+   "value": "34.57",
+   "uncertainty": "+-1.37",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~9}$ (host) | $34.57\\pm1.37$ |  | $7.66\\pm1.53$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 continuum point source flux (J1236+0500)",
+   "value": "<2.8",
+   "uncertainty": "3 sigma upper limit",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~9}$ (point source) | $<2.8^c$ |  | $1.01\\pm0.41$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 continuum host effective radius (J1236+0500)",
+   "value": "1.02",
+   "uncertainty": "+-0.06",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$r_{eff, host}$ (Band 9) | $1.02\\pm0.06$ |  | $0.81\\pm0.39$ | kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk rotation velocity v_rot (J1236+0500)",
+   "value": "260",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results / SDSS J1236+0500 / Gas kinematics",
+     "quote": "The disk is rotation dominated with $v/\\sigma=6.5$ ($v_{rot}=260$ km s$^{-1}$ and $\\sigma=40$ km s$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk velocity dispersion sigma (J1236+0500)",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results / SDSS J1236+0500 / Gas kinematics",
+     "quote": "The disk is rotation dominated with $v/\\sigma=6.5$ ($v_{rot}=260$ km s$^{-1}$ and $\\sigma=40$ km s$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation-to-dispersion ratio v/sigma (J1236+0500)",
+   "value": "6.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results / SDSS J1236+0500 / Gas kinematics",
+     "quote": "The disk is rotation dominated with $v/\\sigma=6.5$ ($v_{rot}=260$ km s$^{-1}$ and $\\sigma=40$ km s$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) host flux (J2317-1033)",
+   "value": "2.71",
+   "uncertainty": "+-0.34",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{CO J=5-4}$ (host) | 5.82$\\pm$0.26 | 2.71$\\pm$0.34 | 1.02$\\pm$0.22 | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) point source flux (J2317-1033)",
+   "value": "0.40",
+   "uncertainty": "+-0.09",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{CO J=5-4}$(point source) | 0.35$\\pm$0.08 | 0.40$\\pm$0.0.09 | 0.28$\\pm$0.15 | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) host effective radius (J2317-1033)",
+   "value": "1.17",
+   "uncertainty": "+-0.33",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$r_{eff, host}$ | 1.01$\\pm$0.08 | 1.17$\\pm$0.33 | 1.09$\\pm$0.50 | kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) luminosity L'_CO (J2317-1033)",
+   "value": "0.47e10",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "L$'_{CO J=5-4}$ | 1.98e10 | 0.47e10 | 0.37e10 | K km s$^{-1}$ pc$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from CO(5-4) (J2317-1033)",
+   "value": "232",
+   "uncertainty": "+-55",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SFR (CO J=5–4) | 975$\\pm$200 | 232$\\pm$55 | 181$\\pm$53 | $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum host flux (J2317-1033, nu_Spergel = -0.3)",
+   "value": "0.10",
+   "uncertainty": "+-0.02",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~5}$ (host)$^b$ | 0.92$\\pm$0.08 (0.98, 0.70) | — (0.10$\\pm$0.02, 0.11) | 0.15$\\pm$0.04 (0.15, 0.14) | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum point source flux (J2317-1033, nu_Spergel = -0.3)",
+   "value": "0.08",
+   "uncertainty": "+-0.01",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~5}$ (point source)$^b$ | 0.15$\\pm$0.03 (0.11, 0.14) | — (0.08$\\pm$0.01, 0.07) | 0.05$\\pm$0.03 (0.04, 0.07) | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from Band 5 continuum (J2317-1033)",
+   "value": "104",
+   "uncertainty": "+-29",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SFR (Band 5) | 953$\\pm$208 | 104$\\pm$29 | 149$\\pm$50 | $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) host flux (J2345-1104)",
+   "value": "1.02",
+   "uncertainty": "+-0.22",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{CO J=5-4}$ (host) | 5.82$\\pm$0.26 | 2.71$\\pm$0.34 | 1.02$\\pm$0.22 | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) point source flux (J2345-1104)",
+   "value": "0.28",
+   "uncertainty": "+-0.15",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{CO J=5-4}$(point source) | 0.35$\\pm$0.08 | 0.40$\\pm$0.0.09 | 0.28$\\pm$0.15 | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) host effective radius (J2345-1104)",
+   "value": "1.09",
+   "uncertainty": "+-0.50",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$r_{eff, host}$ | 1.01$\\pm$0.08 | 1.17$\\pm$0.33 | 1.09$\\pm$0.50 | kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) luminosity L'_CO (J2345-1104)",
+   "value": "0.37e10",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "L$'_{CO J=5-4}$ | 1.98e10 | 0.47e10 | 0.37e10 | K km s$^{-1}$ pc$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from CO(5-4) (J2345-1104)",
+   "value": "181",
+   "uncertainty": "+-53",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SFR (CO J=5–4) | 975$\\pm$200 | 232$\\pm$55 | 181$\\pm$53 | $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum host flux (J2345-1104)",
+   "value": "0.15",
+   "uncertainty": "+-0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~5}$ (host)$^b$ | 0.92$\\pm$0.08 (0.98, 0.70) | — (0.10$\\pm$0.02, 0.11) | 0.15$\\pm$0.04 (0.15, 0.14) | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum point source flux (J2345-1104)",
+   "value": "0.05",
+   "uncertainty": "+-0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~5}$ (point source)$^b$ | 0.15$\\pm$0.03 (0.11, 0.14) | — (0.08$\\pm$0.01, 0.07) | 0.05$\\pm$0.03 (0.04, 0.07) | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from Band 5 continuum (J2345-1104)",
+   "value": "149",
+   "uncertainty": "+-50",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SFR (Band 5) | 953$\\pm$208 | 104$\\pm$29 | 149$\\pm$50 | $M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 continuum host flux (J2345-1104)",
+   "value": "7.66",
+   "uncertainty": "+-1.53",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~9}$ (host) | $34.57\\pm1.37$ |  | $7.66\\pm1.53$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 continuum point source flux (J2345-1104)",
+   "value": "1.01",
+   "uncertainty": "+-0.41",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "S$_{Band~9}$ (point source) | $<2.8^c$ |  | $1.01\\pm0.41$ | mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 9 continuum host effective radius (J2345-1104)",
+   "value": "0.81",
+   "uncertainty": "+-0.39",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$r_{eff, host}$ (Band 9) | $1.02\\pm0.06$ |  | $0.81\\pm0.39$ | kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit AGN contribution coefficient to CO(5-4)",
+   "value": "0.12",
+   "uncertainty": "+-0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results / CO - FIR relation / Quasar influence on CO (J=5-4)",
+     "quote": "we choose to use the value of $0.12\\pm0.04$ as our best assessment on the quasar contribution to CO (J=5-4) for a given IR luminosity among our bright QSO targets."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA pipeline version used for the Cycle 11 Band 9 data reduction",
+  "Exact frequency/channel ranges excluded for CO(5-4) when constructing the Band 5 continuum visibilities",
+  "Specific relative visibility weighting applied during CASA 'concat' of high and low resolution Band 5 datasets",
+  "Image pixel cell size, image dimensions, and spectral channel width of the cubes input to 3D-Barolo and 1D spectral extraction",
+  "3D-Barolo configuration parameters (number of rings, ring radial spacing, fixed vs free inclination/position angle)",
+  "Exact radius R adopted in the dynamical mass equation M_dyn(R) (e.g., whether R = r_eff or 2*r_eff) and the minor-to-major axis ratio (b/a) values used to compute inclination"
+ ],
+ "missing_for_reproduction": [
+  "Custom scripts for GILDAS uv_fit two-component (Spergel + point source) modeling",
+  "Exact channel ranges used for continuum extraction and line integration in CASA/GILDAS",
+  "3D-Barolo parameter file for the J1236+0500 kinematic fit",
+  "MCMC code and exact input values (inclination axis ratios b/a, W_20, W_50, and radius R) used to compute dynamical and Tully-Fisher masses in Figure 8"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "All four ALMA project codes, CASA pipeline versions, and primary analysis packages (CASA, GILDAS uv_fit, 3D-Barolo) are explicitly stated alongside detailed tabular results, though exact channel masks, 3D-Barolo ring settings, and intermediate kinematic parameters (W20, W50, b/a) are omitted.",
+ "rediscovery_reason": "The ALMA project codes are explicitly identified, the core methodology (CASA concat + GILDAS uv_fit with a Spergel + point source model) is well-defined, and the main results (component fluxes, effective radii, CO luminosities, SFRs, and v/sigma) are numeric and tabulated in Table 2.",
+ "source_card": "cards/2026MNRAS.546ag167S/sonnet/card.md"
+}

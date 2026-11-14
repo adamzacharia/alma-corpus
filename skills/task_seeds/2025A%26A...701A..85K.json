@@ -1,0 +1,343 @@
+{
+ "bibcode": "2025A&A...701A..85K",
+ "title": "Early galaxy evolution: The complex interstellar medium distribution of the z ∼ 7 galaxy A1689-zD1",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202453229",
+ "arxiv_id": "2509.19475",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Resolve the [CII] 158um and [OIII] 88um line and continuum structure and kinematics of the lensed z=7.13 galaxy A1689-zD1 at sub-kpc scales, decompose it into components, and compare line, SFR and mass properties with local and high-z relations",
+ "alma_project_codes": [
+  "2015.1.01406.S",
+  "2017.1.00775.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 6 and 8",
+  "arrays": "not stated",
+  "angular_resolution": "Band 6: 0.29''x0.27'' (PA -80.8 deg); Band 8: 0.33''x0.28'' (PA -87.3 deg); Band 3 (tapered): 0.92''x0.80'' (PA 64 deg)",
+  "sensitivity": "Band 6 cube 0.18-0.2 mJy/beam per 5 km/s channel, combined continuum 6.3 uJy/beam; Band 8 continuum 29 uJy/beam, cube 0.39-0.44 mJy/beam per ~11 km/s channel; Band 3 continuum 11 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Earlier ALMA continuum data combined with the lower-frequency Band 6 data",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA data",
+      "quote": "When combining the lower frequency band with the continuum data from (cite: knudsen17)"
+     }
+    ]
+   },
+   "citation": "(cite: knudsen17)"
+  },
+  {
+   "what": {
+    "value": "Lenstool mass model of Abell 1689 used for magnification",
+    "evidence": [
+     {
+      "loc": "3.4 Gravitational lensing",
+      "quote": "and described in (cite: limousin07)"
+     }
+    ]
+   },
+   "citation": "(cite: limousin07)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature of 41 K (spatially integrated best fit) fixed for the violet and red components",
+    "evidence": [
+     {
+      "loc": "3.6 Disentangling the dust continuum",
+      "quote": "$T_{\\rm dust}=41$ K taken from the spatially integrated best-fit value presented in (cite: akins22)"
+     }
+    ]
+   },
+   "citation": "(cite: akins22)"
+  },
+  {
+   "what": {
+    "value": "NIR spectroscopic redshift from the Lyman break used for comparison",
+    "evidence": [
+     {
+      "loc": "3.2 Redshift",
+      "quote": "the redshift derived from the NIR spectrum of the Lyman-break in (cite: watson15)"
+     }
+    ]
+   },
+   "citation": "(cite: watson15)"
+  },
+  {
+   "what": {
+    "value": "Flux scale for GBT absolute calibration with 3C286",
+    "evidence": [
+     {
+      "loc": "2.2 GBT data",
+      "quote": "3C286 was used for absolute flux calibration (cite: perley17)"
+     }
+    ]
+   },
+   "citation": "(cite: perley17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA Bands 3, 6, 8; subtract continuum",
+   "method": "ALMA pipeline (Band 6) or observatory-delivered calibration (Bands 8 and 3); imaging with Briggs robust 0.5 (Band 6) or natural weighting with taper (Band 3); uvcontsub on [CII] and [OIII] cubes",
+   "software": [
+    "CASA",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "Band 6 robust = 0.5, 5 km/s channels",
+    "Band 8 channels of 15.625 MHz (~11 km/s)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive systemic redshift from line centroids",
+   "method": "Single Gaussian profile fit to each line; mean of the two redshifts as systemic redshift, difference as uncertainty",
+   "software": [],
+   "key_parameters": [
+    "Line redshifts 7.1329 ([CII]) and 7.1334 ([OIII])"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate lensing magnification",
+   "method": "Parametric Lenstool mass model of Abell 1689 evaluated at the source position; statistical error from MCMC samples, systematic error from alternative mass models",
+   "software": [
+    "Lenstool"
+   ],
+   "key_parameters": [
+    "Statistical relative error 19%; systematic relative error 10%"
+   ],
+   "assumptions": [
+    "No significant cluster substructure or cluster member near the source, so magnification varies by less than 10% across the source"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Decompose line cubes into spatial-spectral components",
+   "method": "Iterative per-component procedure on the continuum-subtracted cubes: narrowband image, 2D elliptical Gaussian fit, 1D Gaussian spectrum fit, subtraction of a 3D model; repeated three times, with an arctan velocity-gradient model for extended components",
+   "software": [],
+   "key_parameters": [
+    "Five components (violet, blue, green, yellow, red), blue and red each with two sub-components; components first identified in [CII] and recovered in [OIII]",
+    "Velocity gradients modelled with an empirical arctan model (truncation velocity and radius)"
+   ],
+   "assumptions": [
+    "Choice of decomposition is somewhat arbitrary and driven by data complexity and S/N; inclination fixed to 30 deg for all components (bracketed values are fixed)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Decompose the dust continuum and derive dust temperature and L_IR per component",
+   "method": "Forced-aperture photometry following the [OIII] component model, plus CASA imfit modelling with four components; modified blackbody with beta=1.7 to get T_dust and L_IR; T_dust fixed to 41 K for violet and red",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Violet (red) component not fit in Band 6 (Band 8) maps; photometry taken in a 0.2'' radius aperture on the residual map; positions of faint components fixed, flux density free"
+   ],
+   "assumptions": [
+    "Single modified blackbody with spectral index beta = 1.7; T_dust = 41 K for violet and red"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive total and per-component SFR",
+   "method": "Sum of IR-based (obscured) and UV-based (unobscured) SFR using the ALMA and HST observations; UV luminosity measured in 0.2'' radius apertures, 3 sigma upper limits for components without HST counterparts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Same IR and UV to SFR conversions as Akins et al., based on Murphy et al."
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare line luminosities, ratios and sizes with literature relations",
+   "method": "Per-component and total L[CII], L[OIII], their ratio and SFR placed on SFR-L_line, SFR-L[OIII]/L[CII], Sigma_SFR-Sigma_[CII] and size-velocity dispersion diagrams alongside local and z>6 literature samples",
+   "software": [],
+   "key_parameters": [
+    "Component sizes from 2D Gaussian FWHM of the model; effective radius taken as HWHM"
+   ],
+   "assumptions": [
+    "Plotted errors do not include size uncertainties"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate dynamical masses of components",
+   "method": "Disk formula (Dessauges-Zavadsky et al. 2020 Eq. 4) for the blue component, virial dispersion-dominated formula (Bothwell et al. 2013 Eq. 10) for the others, separately for [CII] and [OIII]; v_circ = 1.763 sigma_0 / sin(i) with i = arccos(FWHM2/FWHM1)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Components may not be virialized, but estimates considered meaningful"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Systemic redshift from [CII] and [OIII]",
+   "value": "7.1332",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Redshift",
+     "quote": "we find A1689-zD1 is at $z=7.1332\\pm0.0005$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total magnification",
+   "value": "9.6",
+   "uncertainty": "0.19 (abstract); 19% statistical, 10% systematic (Sect. 3.4)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "gravitationally lensed ($\\mu = 9.6\\pm0.19$)"
+    },
+    {
+     "loc": "3.4 Gravitational lensing",
+     "quote": "We obtain a statistical relative error of 19%"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line luminosity (lensing corrected)",
+   "value": "5.8e8",
+   "uncertainty": "0.1e8",
+   "units": "Lsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "$L_{\\rm [CII]} = (5.8 \\pm 0.1)\\times10^{8}$ L$_\\odot$ and $L_{\\rm [OIII]} = (1.3 \\pm 0.02)\\times10^{9}$ L$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] line luminosity (lensing corrected)",
+   "value": "1.3e9",
+   "uncertainty": "0.02e9",
+   "units": "Lsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "$L_{\\rm [CII]} = (5.8 \\pm 0.1)\\times10^{8}$ L$_\\odot$ and $L_{\\rm [OIII]} = (1.3 \\pm 0.02)\\times10^{9}$ L$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of [CII] and [OIII] emission recovered by five components",
+   "value": "95% and 97%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5 Decomposition into galaxy components",
+     "quote": "we recovered 95 and 97% of the total emission measured in the \\[C ii\\] and \\[O iii\\] line data, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Component sizes after magnification correction",
+   "value": "0.1-1",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5 Decomposition into galaxy components",
+     "quote": "Correcting the data for gravitational magnification, the extracted components are found to have sizes in the range 0.1–1 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Sum of five components' continuum flux density in Bands 6 and 8",
+   "value": "0.45 mJy (Band 6) and 1.71 mJy (Band 8)",
+   "uncertainty": "0.20 and 0.58 mJy",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 Disentangling the dust continuum",
+     "quote": "The sum of the five components gives $0.45\\pm0.20$ mJy and $1.71\\pm0.58$ mJy in bands 6 and 8, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total SFR (IR plus UV)",
+   "value": "16.5",
+   "uncertainty": "+22/-6.8",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.1 Total SFR",
+     "quote": "obtain a total SFR of $16.5_{-6.8}^{+22}\\,M_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Summed dynamical mass of components",
+   "value": "about 1.5e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Mass of A1689-zD1",
+     "quote": "with a summed dynamical mass about $1.5\\times10^{10}\\,M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dynamical mass of the galaxy (abstract)",
+   "value": "2e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The total dynamical mass of the galaxy ($2\\times10^{10}$ M$_\\odot$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version for each project",
+  "Which of the ten Band 6 executions needed the flux calibration redone, and the flux values adopted for the calibrator",
+  "tclean/imaging parameters beyond robust = 0.5: cell size, image size, deconvolver, masking, threshold, primary-beam correction",
+  "Line-free channels used for uvcontsub and the fit order",
+  "Exact channel/velocity ranges for the narrowband images used in each component fit",
+  "Starting guesses, fit bounds, fixed parameters and stopping criteria of the iterative component fit",
+  "Which parameters were fixed in the imfit continuum decomposition ('some of the other parameters (size, axis ratio, and PA)') and their values",
+  "Aperture sizes used for forced-aperture photometry and for the HST UV luminosity apart from 0.2'' radius",
+  "How the high-pass filtering of the GBT scans was implemented",
+  "Cosmology-based conversion of the Table values from observed to magnification-corrected luminosity (per-component magnification used)"
+ ],
+ "missing_for_reproduction": [
+  "CASA and pipeline versions",
+  "tclean parameters other than robust (cell, image size, masking, threshold, deconvolver)",
+  "Line-free channel selection for uvcontsub",
+  "Component-fit code and initial guesses; imfit fixed parameters",
+  "Exact aperture definitions and aperture photometry background handling",
+  "Lenstool model files and per-component magnification maps used for luminosities",
+  "Which Band 6 executions were corrected for flux calibrator values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes and calibrators are given and key results (line luminosities, redshift, component parameter tables) are numeric, but imaging parameters, CASA versions and the fitting details of the decomposition are missing.",
+ "rediscovery_reason": "The two ALMA projects are named and the headline numbers (redshift, L[CII], L[OIII], component tables) can be re-derived, though exact values depend on unstated imaging and fit settings.",
+ "source_card": "cards/2025A%26A...701A..85K/sonnet/card.md"
+}

@@ -1,0 +1,240 @@
+{
+ "bibcode": "2019AJ....157..219T",
+ "title": "Measurement of CH<SUB>3</SUB>D on Titan at Submillimeter Wavelengths",
+ "year": 2019,
+ "doi": "10.3847/1538-3881/ab19bb",
+ "arxiv_id": "1905.00576",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "Can CH3D be detected in Titan's atmosphere at submillimeter wavelengths with ALMA, and what disk-averaged CH3D abundance and D/H in CH4 does it imply?",
+ "alma_project_codes": [
+  "2013.1.00227.S",
+  "2013.1.01010.S",
+  "2012.1.00688.S"
+ ],
+ "data": {
+  "bands": "Band 8 (~385-500 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "beam 0.767x0.491 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CH4 and N2 vertical abundance profiles",
+    "evidence": [
+     {
+      "loc": "3 Radiative Transfer Modeling",
+      "quote": "We thus include N$_2$ and CH$_4$ vertical abundance profiles from (cite: niemann_10) and (cite: teanby_13)"
+     }
+    ]
+   },
+   "citation": "(cite: niemann_10); (cite: teanby_13)"
+  },
+  {
+   "what": {
+    "value": "CH3D line and partition function parameters from CDMS",
+    "evidence": [
+     {
+      "loc": "3 Radiative Transfer Modeling",
+      "quote": "CH$_3$D spectral line and partition function parameters were obtained from the Cologne Database for Molecular Spectroscopy"
+     }
+    ]
+   },
+   "citation": "(cite: muller_01; womack_96; bray_17)"
+  },
+  {
+   "what": {
+    "value": "Line broadening coefficients from HITRAN 2012",
+    "evidence": [
+     {
+      "loc": "3 Radiative Transfer Modeling",
+      "quote": "Line broadening and temperature dependence coefficients were obtained from the HITRAN 2012 database"
+     }
+    ]
+   },
+   "citation": "(cite: rothman_13)"
+  },
+  {
+   "what": {
+    "value": "HC3N 2015 disk-averaged abundance profile",
+    "evidence": [
+     {
+      "loc": "3 Radiative Transfer Modeling",
+      "quote": "HC$_3$N, using the 2015 disk-averaged abundance profile found in (cite: thelen_19)"
+     }
+    ]
+   },
+   "citation": "(cite: thelen_19)"
+  },
+  {
+   "what": {
+    "value": "Stratospheric temperature profile from contemporaneous ALMA measurements",
+    "evidence": [
+     {
+      "loc": "3 Radiative Transfer Modeling",
+      "quote": "using contemporaneous ALMA measurements from (cite: thelen_18) in the stratosphere and above"
+     }
+    ]
+   },
+   "citation": "(cite: thelen_18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Re-ran archive calibration scripts in CASA with updated Titan flux model; Högbom clean imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "pixel 0.1 arcsec, threshold 10 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract disk-averaged spectrum and convert to radiance",
+   "method": "Mask of pixels with >=90% of continuum flux; convert flux density to radiance using 24 line-of-sight emission angles up to 1200 km",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [
+    "distance 9.038 AU; sub-observer latitude 24.55 deg; Doppler shift -7.5 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model continuum and set offset",
+   "method": "CIA continuum from CH4, H2, N2; temperature profile from ALMA stratosphere plus HASI/radio occultation troposphere; data scaled by 1.047",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit CH3D abundance",
+   "method": "Line-by-line NEMESIS with a constant multiplicative scaling of a priori CH3D profiles (CH4 times D/H from 1.13-1.59e-4); profile shape fixed, other parameters held constant",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [
+    "CO 50 ppm constant"
+   ],
+   "assumptions": [
+    "CH3D profile follows CH4 Huygens GCMS profile shape"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive D/H",
+   "method": "Compare CH3D abundance with GCMS CH4 profile",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3D detection significance, J=2-1 line at 465.235 GHz",
+   "value": "4.6",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "measured at significance levels of $4.6\\sigma$ and $5.7\\sigma$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3D detection significance, line at 465.250 GHz",
+   "value": "5.7",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "measured at significance levels of $4.6\\sigma$ and $5.7\\sigma$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged CH3D volume mixing ratio",
+   "value": "6.157e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "disk-averaged CH$_3$D volume mixing ratio = $6.157\\times10^{-6}$ in Titan’s stratosphere"
+    }
+   ]
+  },
+  {
+   "quantity": "D/H in CH4",
+   "value": "1.033e-4",
+   "uncertainty": "0.081e-4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the resulting value for D/H in CH$_4$ is $(1.033\\pm0.081)\\times10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scale factor applied to data",
+   "value": "1.047",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Radiative Transfer Modeling",
+     "quote": "rectified by multiplying the data by a factor of 1.047"
+    }
+   ]
+  },
+  {
+   "quantity": "New weighted mean Cassini-era D/H",
+   "value": "1.203e-4",
+   "uncertainty": "+0.057/-0.054 e-4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4 Discussion and Conclusions",
+     "quote": "new weighted mean D/H = ($1.203^{+0.057}_{-0.054})\\times10^{-4}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which ALMA execution block/MS and which calibrator/scripts exactly",
+  "Clean mask and number of iterations; weighting scheme",
+  "Line-free channels and continuum subtraction method",
+  "Pixel mask definition details and how noise/significance was computed",
+  "Error treatment behind the +-0.081e-4 D/H",
+  "How the 1.047 scale factor was derived exactly",
+  "Full temperature profile values"
+ ],
+ "missing_for_reproduction": [
+  "Exact clean parameters and masks",
+  "Fitted temperature and abundance profile tables",
+  "Details of uncertainty derivation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and software are named, but several imaging and modeling details are missing or deferred to earlier papers.",
+ "rediscovery_reason": "Data are public, the recipe is mostly described, and the results are numeric, though some details are missing.",
+ "source_card": "cards/2019AJ....157..219T/sonnet/card.md"
+}

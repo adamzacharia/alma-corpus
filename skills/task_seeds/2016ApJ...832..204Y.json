@@ -1,0 +1,184 @@
+{
+ "bibcode": "2016ApJ...832..204Y",
+ "title": "Stacking Spectra in Protoplanetary Disks: Detecting Intensity Profiles from Hidden Molecular Lines in HD 163296",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/832/2/204",
+ "arxiv_id": "1610.01780",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Can aligning spectra by Keplerian velocity before stacking boost S/N of molecular lines in a disk and reveal undetected weak lines and their intensity profiles?",
+ "alma_project_codes": [
+  "2013.1.01268.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' x 0.4''",
+  "sensitivity": "2.4 mJy/beam (DCO+, DCN), 2 mJy/beam (H2CO), 2.9 mJy/beam (N2D+) per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass ~2.5 Msun",
+    "evidence": [
+     {
+      "loc": "3 Demonstration Case: HD 163296",
+      "quote": "a central stellar mass $\\sim$2.5 $M_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   "citation": "Mannings & Sargent 1997; Isella et al. 2007; Hughes et al. 2008; de Gregorio-Monsalvo et al. 2013; Mathews et al. 2013; Rosenfeld et al. 2013"
+  },
+  {
+   "what": {
+    "value": "Inclination ~45 deg and PA ~130 deg",
+    "evidence": [
+     {
+      "loc": "3 Demonstration Case: HD 163296",
+      "quote": "Inclination and position angle are measured to be $\\sim$45$\\ensuremath{^\\circ}$ and $\\sim$130$\\ensuremath{^\\circ}$ (Isella et al. 2007)."
+     }
+    ]
+   },
+   "citation": "Isella et al. 2007 (cite: Isella07)"
+  },
+  {
+   "what": {
+    "value": "Intrinsic line width ΔV_int ~(0.1–0.3)(r/100AU)^q km/s, q from -0.3 to -0.1",
+    "evidence": [
+     {
+      "loc": "2.1 Narrower Line Widths",
+      "quote": "where $q$ ranges from $-0.3$ to $-0.1$ (e.g., Piétu et al. 2007)."
+     }
+    ]
+   },
+   "citation": "Piétu et al. 2007"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes",
+   "method": "Calibrate and CLEAN archival data with natural weighting at 0.1 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Align and stack spectra by Keplerian velocity",
+   "method": "Deproject pixels, compute projected Vk, shift each spectrum by Vk, mirror across minor axis, and sum over radial/azimuthal bins",
+   "software": [],
+   "key_parameters": [
+    "Radial ranges R<300 AU (DCO+, H2CO), R<200 AU (DCN), 100<R<300 AU (N2D+)"
+   ],
+   "assumptions": [
+    "Geometrically thin disk, Keplerian rotation"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive radial intensity profiles and compare three methods",
+   "method": "Radial bins of half beam; mean integrated intensity from moment 0, unaligned stacks, and aligned stacks; uncertainties sigma_a*dv*sqrt(N)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Reconstruct azimuthally resolved moment 0 maps",
+   "method": "Sectors 1.5 beam radially and 45 deg azimuthally for r>0.45''; inner region averaged over 2π",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated flux DCO+ (3–2), aligned",
+   "value": "12.9",
+   "uncertainty": "0.1",
+   "units": "mJy/beam km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results and Discussion",
+     "quote": "are measured to be 12.9$\\pm$0.1 and 4.9$\\pm$0.1 mJy Beam$^{-1}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux H2CO 3_0,3–2_0,2, aligned",
+   "value": "4.9",
+   "uncertainty": "0.1",
+   "units": "mJy/beam km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results and Discussion",
+     "quote": "are measured to be 12.9$\\pm$0.1 and 4.9$\\pm$0.1 mJy Beam$^{-1}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux unaligned DCO+ and H2CO",
+   "value": "11.4 and 4.5",
+   "uncertainty": "0.2 and 0.3",
+   "units": "mJy/beam km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results and Discussion",
+     "quote": "(11.4$\\pm$0.2 and 4.5$\\pm$0.3 mJy Beam$^{-1}$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity increase for DCO+ and H2CO",
+   "value": "~5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results and Discussion",
+     "quote": "the peak intensities of the spectra increase by a factor $\\sim$5"
+    }
+   ]
+  },
+  {
+   "quantity": "S/N gain of profiles vs moment 0 (DCO+, DCN)",
+   "value": "~4–6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 Results and Discussion",
+     "quote": "$\\sim$4–6 times higher than those from moment 0 maps"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "clean threshold, masks, cell and image size",
+  "Continuum subtraction method and line-free channels",
+  "Exact stellar mass, inclination, PA and systemic velocity used for alignment",
+  "Velocity range used for the moment 0 maps beyond 9.3 km/s width",
+  "Handling of pixels where Vk exceeds the velocity band",
+  "Code for the stacking not released"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and clean parameters",
+  "Adopted geometry and systemic velocity",
+  "Stacking code"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and explicit equations, but imaging and adopted parameters are not fully given and no code.",
+ "rediscovery_reason": "Public data, explicit algorithm, and numeric fluxes and S/N gains to compare.",
+ "source_card": "cards/2016ApJ...832..204Y/sonnet/card.md"
+}

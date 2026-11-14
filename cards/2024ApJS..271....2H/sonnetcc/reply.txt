@@ -1,0 +1,540 @@
+{
+"depth": "light",
+"paper_type": "data_release_or_catalog",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "The atlas provides a homogeneous data set of far- and near-ultraviolet maps of galaxies within a distance of 22 Mpc"},
+{"loc": "abstract", "quote": "We present the first statistical measurements of the clumping of the UV emission and compare it to the clumping of molecular gas traced with ALMA."}
+],
+"fields": ["nearby_galaxies", "star_formation"],
+"question": {
+"value": "Build a homogeneous AstroSat UVIT far/near-UV atlas of 31 PHANGS galaxies, check its quality against GALEX, and use it with PHANGS-ALMA CO(2-1) and PHANGS-MUSE Halpha to study extended UV disks, UV vs CO clumping, and what drives the FUV/Halpha ratio.",
+"evidence": [
+{"loc": "Introduction", "quote": "Our main focus is to reduce and assess the quality of the data set and compare it with previous low-resolution observations."},
+{"loc": "Introduction", "quote": "Additionally, we study the variation of the UV and molecular gas clumpiness in different morphological regions of galaxies."}
+]
+},
+"targets": [
+{
+"name": "PHANGS-AstroSat sample of 31 nearby star-forming galaxies (e.g. IC 5332, NGC 0628, NGC 1365, NGC 1566, NGC 6744, NGC 7793)",
+"details": [
+{"loc": "abstract", "quote": "galaxies within a distance of 22 Mpc"},
+{"loc": "Adopted Galaxy Properties table notes", "quote": "Properties are taken from (cite: Leroy2021)."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "D < 22 Mpc; per-galaxy distances tabulated (e.g. NGC 0300 2.09 Mpc, NGC 4654 21.98 Mpc)",
+"distance_source": "Leroy2021 (PHANGS-ALMA sample paper)"
+}
+],
+"alma_project_codes": [],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (CO(2-1) maps from PHANGS-ALMA)", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The emission lines were observed at the rest frequency of $\\nu=230.538$ GHz (Band 6)"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "CO(2-1) at 230.538 GHz; bandwidth 937.5 MHz, channel width 244 kHz, velocity resolution 2.5 km/s", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The emission lines were observed at the rest frequency of $\\nu=230.538$ GHz (Band 6)"},
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "These observations were conducted using a bandwidth of 937.5  MHz with a channel width of $\\Delta \\nu = 244$ kHz."},
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The velocity resolution of 2.5 km s$^{-1}$ is chosen to improve the signal-to-noise ratio and quality of the deconvolution process."}
+]},
+{"field": "angular_resolution", "value": "~1 arcsec (100 pc at 20 Mpc)", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The ALMA data set provides a unique, $\\sim$1$''$ (100 pc at 20 Mpc) view of nearby main-sequence galaxies at GMCs scale."}
+]},
+{"field": "sensitivity", "value": "median 1 sigma noise 6.2 mJy/beam at native resolution (~0.17 K)", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The median of 1$\\sigma$ noise in the cube of all targets is estimated to be 6.2 mJy beam$^{-1}$ at native resolution"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "PHANGS-ALMA CO(2-1) maps taken from the PHANGS-ALMA survey release (Leroy2021)", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "We used CO (2-1) emission line maps from the PHANGS–ALMA project (cite: Leroy2021)."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=2-1", "rest_frequency": "230.538 GHz", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The emission lines were observed at the rest frequency of $\\nu=230.538$ GHz (Band 6)"}
+]}
+],
+"other_facilities": [
+{"name": "AstroSat UVIT (FUV/NUV)", "provided": {"value": "Primary data: UV images of 31 galaxies; 11 from dedicated PHANGS programs (1-3 ks actually acquired), 20 from the AstroSat archive", "evidence": [
+{"loc": "2.2 Observations", "quote": "We observed 11 of the 31 selected galaxies under programs T03-032, T03-033, A05-022, A07-027, A08-003, and A10-021."},
+{"loc": "2.2 Observations", "quote": "However, instrumental fluctuations and orbital accessibility limit the actual time acquired to $1-3$ ks."}
+]}},
+{"name": "VLT/MUSE (PHANGS-MUSE)", "provided": {"value": "Halpha and Hbeta emission-line maps and stellar-population age/mass/metallicity products", "evidence": [
+{"loc": "2.3.2 PHANGS-MUSE", "quote": "We also utilized products from PHANGS-MUSE (program IDs: 1100.B-0651/PI: E. Schinnerer; 095.C-0473/PI: G. Blanc; and 094.C-0623/PI: K. Kreckel)."}
+]}},
+{"name": "GALEX (z0MGS maps)", "provided": {"value": "Background-subtracted, extinction-corrected GALEX UV maps used to check the AstroSat flux scale", "evidence": [
+{"loc": "2.3.3 Literature data sets", "quote": "These GALEX maps are background-subtracted for UV background emission and corrected for foreground Galactic extinction."}
+]}},
+{"name": "Gaia DR3", "provided": {"value": "Stars used for PSF measurement", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "we cross match to objects identified in Gaia Data Release 3 (cite: gaia2)"}
+]}},
+{"name": "HST (PHANGS-HST F275W)", "provided": {"value": "NUV reference for checking astrometric alignment", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "We evaluate the quality of the solution by comparing NUV data (where available)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "PHANGS-ALMA CO(2-1) broad-mask integrated-intensity (zero-moment) maps and uncertainty maps", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "Along with zero-moment maps that we used in this study, the uncertainty maps are also provided based on a three-dimensional noise model (cite: Leroy2021)."}
+]}, "citation": "Leroy2021"},
+{"what": {"value": "Galaxy properties (stellar mass, SFR, distance, inclination, PA)", "evidence": [
+{"loc": "Adopted Galaxy Properties table notes", "quote": "Properties are taken from (cite: Leroy2021)."}
+]}, "citation": "Leroy2021"},
+{"what": {"value": "PHANGS-MUSE emission-line maps (Halpha, Hbeta) and stellar-population fits", "evidence": [
+{"loc": "2.3.2 PHANGS-MUSE", "quote": "We use the emission line maps from (cite: phangs-muse), which are created through the MUSE Data Analysis Pipeline (DAP)"}
+]}, "citation": "phangs-muse"},
+{"what": {"value": "GALEX FUV/NUV and WISE maps for comparison", "evidence": [
+{"loc": "2.3.3 Literature data sets", "quote": "we use the infrared and UV maps of our targets provided by (cite: z0mgs)"}
+]}, "citation": "z0mgs"},
+{"what": {"value": "Foreground color excess E(B-V) per galaxy", "evidence": [
+{"loc": "Table 3 notes", "quote": "Second column: foreground color excess from (cite: sfd98)."}
+]}, "citation": "sfd98"},
+{"what": {"value": "Environment masks (center, bar, spiral arms, interarm, disk)", "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "We use the environment masks from (cite: mask) to measure the clumping factor in different morphological regions of galaxies."}
+]}, "citation": "mask"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "archive_products_used_as_is", "value": "Released PHANGS-ALMA CO moment maps used; no ALMA calibration done in this paper", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "Along with zero-moment maps that we used in this study, the uncertainty maps are also provided based on a three-dimensional noise model (cite: Leroy2021)."}
+]}
+],
+"imaging": [
+{"field": "masking", "value": "High-completeness 'broad' mask, built by convolving cube to lower resolutions", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The broad mask is built by convolving the cube into several lower resolution cubes and then a mask was created."}
+]},
+{"field": "smoothing", "value": "Analysis of FUV and CO at common resolution of 175 pc (also 1 kpc hexagonal apertures)", "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "We restrict our analysis to the regions where FUV maps overlap with the ALMA CO observations and carry out the analysis at a common resolution of 175 pc."}
+]},
+{"field": "final_beam", "value": "~1 arcsec native resolution", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The ALMA data set provides a unique, $\\sim$1$''$ (100 pc at 20 Mpc) view of nearby main-sequence galaxies at GMCs scale."}
+]},
+{"field": "final_rms", "value": "median 1 sigma 6.2 mJy/beam (~0.17 K) at native resolution", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "The median of 1$\\sigma$ noise in the cube of all targets is estimated to be 6.2 mJy beam$^{-1}$ at native resolution"}
+]}
+],
+"inherited": [
+{"what": {"value": "All ALMA CO(2-1) observing, calibration, imaging and masking", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "We used CO (2-1) emission line maps from the PHANGS–ALMA project (cite: Leroy2021)."}
+]}, "from_reference": "(cite: Leroy2021)"},
+{"what": {"value": "Foreground extinction correction procedure", "evidence": [
+{"loc": "3.2 Foreground extinction", "quote": "for foreground extinction following the (cite: z0mgs) procedure"}
+]}, "from_reference": "(cite: z0mgs)"},
+{"what": {"value": "Clumping factor definition", "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "We define the clumping factor following (cite: Leroy_2013; Sun_2022):"}
+]}, "from_reference": "(cite: Leroy_2013; Sun_2022)"},
+{"what": {"value": "Gini coefficient definition", "evidence": [
+{"loc": "5.2 Gini coefficient", "quote": "Following (cite: Davis), we define the parameter as:"}
+]}, "from_reference": "(cite: Davis)"},
+{"what": {"value": "LASSO with 5-fold cross-validation", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "Following (cite: day), we use 5-fold cross-validation (CV) to fine-tune the hyperparameters of the model"}
+]}, "from_reference": "(cite: day)"},
+{"what": {"value": "Astrometric solution in CCDLAB", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "following the approach outlined in (cite: postma20)"}
+]}, "from_reference": "(cite: postma20)"}
+],
+"unstated_but_needed": [
+"ALMA project codes and the PHANGS-ALMA release/version (all ALMA calibration, imaging and masking is deferred to Leroy2021)",
+"Which AstroSat pipeline version (v2.1 or v2.2) and CCDLAB settings were used for each galaxy, and the zero-point and lambda_mean values per UVIT filter",
+"Bounds and starting values and optimizer of the exponential-plus-constant regression, and the fit radius range per galaxy",
+"Per-galaxy annulus radii for the mean-level background and the apertures chosen for NGC 6744",
+"Hexagonal aperture size definition, centers and masking of bright stars for the 1 kpc and 175 pc measurements",
+"LASSO alpha grid, number of bootstrap resamples, how the Halpha EW weighting was applied, and treatment of non-detections/thresholds",
+"How CO integrated intensity was convolved/reprojected to 175 pc and 1 kpc and which noise cut was applied to CO and FUV maps",
+"MUSE product versions and Balmer-decrement E(B-V) recipe, extinction curve for the Halpha correction beyond R_V=3.1",
+"Parameters of the Boquien (2012) FUV attenuation prescription used"
+],
+"analysis_steps": [
+{"order": 1,
+"goal": "Reduce and calibrate UVIT images",
+"method": {"value": "AstroSat Level-1 pipeline, Level-2 in CCDLAB, counts/s converted to flux density with HZ4-based zero points, images reprojected onto cardinal axes with adaptive resampling", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "and the Level-2 data were processed with the CCDLAB software package (cite: postma17)."},
+{"loc": "3 AstroSat Data Processing", "quote": "We align each image along the cardinal directions by reprojecting with the REPROJECT python package"}
+]},
+"software": ["CCDLAB", "REPROJECT"],
+"key_parameters": [
+{"value": "HZ4 white dwarf as photometric calibrator; flux density from CPS times unit conversion factor derived from AB zero point", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "A bright white dwarf (HZ4) was adopted as a photometric calibration source."},
+{"loc": "3 AstroSat Data Processing", "quote": "where UC is the unit conversion factor derived from the zero-point (ZP) magnitude in the AB system as (cite: tandon20)"}
+]},
+{"value": "Final pixel size 0.42 arcsec using adaptive resampling", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "Using the adaptive resampling method in REPROJECT, we can maintain the same pixel scales as the original images."},
+{"loc": "3 AstroSat Data Processing", "quote": "The final images have a pixel size of $0.42\\ensuremath{''}$."}
+]}
+],
+"assumptions": [
+{"value": "Only CPS (Poisson) uncertainty propagated; UC errors taken as small", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "In this study, we only propagate the uncertainty in CPS as the UC errors are taken to be small."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Flux density uncertainty of 5% per filter", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "These uncertainties yield $5\\%$ uncertainty in the flux density for each filter (cite: Singh2021)."}
+]}},
+{"order": 2,
+"goal": "Estimate and subtract the UV background",
+"method": {"value": "Fit radial profile of each galaxy with an exponential disk plus constant background; fall back to a mean-level annulus estimate with Chauvenet rejection where the fit fails", "evidence": [
+{"loc": "3.1 Background subtraction", "quote": "We estimate the background by assuming the galaxy emission profile is an exponential disk (cite: Regan_2001) and include a constant background term:"},
+{"loc": "3.1 Background subtraction", "quote": "We reject bright sources using Chauvenet’s criterion in the annulus data distribution"}
+]},
+"software": ["astropy.stats"],
+"key_parameters": [
+{"value": "Annuli of 500 pc width out to <50 kpc; bar region excluded at 1.3 x R_Bar", "evidence": [
+{"loc": "3.1 Background subtraction", "quote": "We determine the radial profiles by averaging the flux in annuli with widths of 500 pc from the center of the galaxy up to a maximum galactocentric distance of $<50$ kpc."},
+{"loc": "3.1 Background subtraction", "quote": "we exclude the bar region from the radial profile by using a radius of $1.3\\times R_{\\mathrm{Bar}}$"}
+]},
+{"value": "Same exponential model applied to CO with B = 0 to derive CO scale lengths", "evidence": [
+{"loc": "3.1 Background subtraction", "quote": "we apply the same exponential model to the CO emission, fixing $B=0$"}
+]}
+],
+"assumptions": [
+{"value": "Mean-level backgrounds used for NGC 0300, NGC 3621, NGC 5128, NGC 1512 (and NGC 0253); NGC 6744 background from hand-picked 1.5 arcmin apertures", "evidence": [
+{"loc": "3.1 Background subtraction", "quote": "In the cases of NGC 3621 and NGC 5128, we decided not to use the regression to determine the background level due to a number of nearby bright sources."}
+]}
+],
+"fitting": {"value": "Regression of exponential-plus-constant model with parameters confined to an initial range; optimizer and bounds not stated", "evidence": [
+{"loc": "4.2 New candidates", "quote": "We also observe that the obtained parameters of this galaxy, such as FUV scale length, amplitude, and background, are close to being outside of the reasonable range that we confined our initial regression parameters to."}
+]},
+"validation": {"value": "Maximum radius chosen by visual inspection", "evidence": [
+{"loc": "3.1 Background subtraction", "quote": "This maximum distance is chosen through visual inspection of different galaxies to exclude any bright nearby sources."}
+]}},
+{"order": 3,
+"goal": "Correct for Milky Way foreground extinction",
+"method": {"value": "A_lambda = R_lambda E(B-V) with R from Peek & Schiminovich (2013) and SFD98 E(B-V)", "evidence": [
+{"loc": "3.2 Foreground extinction", "quote": "The extinction is estimated using $A_{\\lambda} = R_{\\lambda}\\, E(B-V)$ at the FUV and NUV wavelengths."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Uniform foreground dust across each target", "evidence": [
+{"loc": "3.2 Foreground extinction", "quote": "A uniform foreground dust distribution is expected due to the small angular size of each target."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 4,
+"goal": "Quality assurance: PSF, astrometry, GALEX flux scale",
+"method": {"value": "Stack Gaia-matched point sources and fit a Moffat PSF; check astrometry against HST F275W; compare AstroSat to GALEX at 7.5 arcsec using OLS line fits", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "To measure the PSF, we identify point sources in the image, stack the images, and fit a Moffat PSF model (cite: MoffatProfile) to the resulting image stack."},
+{"loc": "3.3.2 Comparison with GALEX", "quote": "Ordinary Least Squares (OLS) regression, we also fit a line to average of every 30 pixel values"}
+]},
+"software": ["photutils", "scikit-learn", "astropy.stats"],
+"key_parameters": [
+{"value": "Image smoothed with Gaussian of 2 pixel sigma, then DAO Star Finder", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "First, we smooth the image with a Gaussian kernel with a standard deviation of 2 pixels."},
+{"loc": "3.3.1 Resolution and Alignment", "quote": "We then identify point sources using the DAO Star Finder algorithm (cite: Stetson87) as implemented in the PHOTUTILS package (cite: photutils) in PYTHON."}
+]},
+{"value": "GALEX pixels below 5 sigma RMS masked; later masking below 3 sigma for both", "evidence": [
+{"loc": "3.3.2 Comparison with GALEX", "quote": "Pixel values below 5$\\sigma$ RMS are masked using the ASTROPY.STATS.SIGMA-CLIPPED-STATS module on GALEX maps."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "2D Moffat profile to stacked stars; OLS slope and offset of AstroSat vs GALEX", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "We stack the extracted sources on the maximum brightness pixel to form a single representative star image and fit a two-dimensional Moffat profile to the resulting stack."}
+]},
+"validation": {"value": "Astrometry better than 0.4 arcsec vs HST; F148W vs GALEX FUV agree at ~10 percent", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "In all cases, we find better than $0.4''$ accuracy in the astrometric alignment."}
+]}},
+{"order": 5,
+"goal": "Measure FUV and CO scale lengths and identify XUV disk candidates",
+"method": {"value": "Compare FUV and CO exponential scale lengths; apply a FUV surface-brightness threshold to find UV clumps beyond the optical disk", "evidence": [
+{"loc": "4.2 New candidates", "quote": "we measured the scale lengths of FUV emission and CO molecular gas."},
+{"loc": "4.2 New candidates", "quote": "we used a foreground-extinction-corrected, background-subtracted UV surface brightness ($\\mu_\\mathrm{FUV}$=27.25 AB magnitudes arcsec$^{-2}$) as a threshold level to identify FUV clumps in XUV disks."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "mu_FUV = 27.25 AB mag/arcsec^2 threshold, equal to Sigma_SFR = 3e-4 Msun/yr/kpc^2", "evidence": [
+{"loc": "4.2 New candidates", "quote": "This UV surface brightness corresponds to $\\Sigma_\\mathrm{SFR}$= $3\\times10^{-4}$ M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$, which is based on a Salpeter IMF and calibrations from (cite: Kennicutt98)."}
+]}
+],
+"assumptions": [
+{"value": "Salpeter IMF; Thilker (2007) Type 1/Type 2 XUV classification", "evidence": [
+{"loc": "4.2 New candidates", "quote": "Following the prescriptions of (cite: Thilker2007) and (cite: Lemonias2011)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 6,
+"goal": "Measure clumping factor and Gini coefficient of FUV and CO",
+"method": {"value": "Compute clumping factor and Gini coefficient of FUV and CO maps at 175 pc and in 1 kpc hexagonal apertures within environment masks; compare distributions with K-S tests", "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "We use the environment masks from (cite: mask) to measure the clumping factor in different morphological regions of galaxies."},
+{"loc": "5.1 Clumping Factor", "quote": "To analyze the differences between these two distributions further, we applied the Kolmogorov-Smirnov (K-S) statistics."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Common resolution of 175 pc; also 1 kpc hexagonal apertures", "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "carry out the analysis at a common resolution of 175 pc."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Comparison with Sun et al. (2022) CO clumping factor in hexagonal apertures", "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "Our results are in good agreement with (cite: Sun_2022), where they used highly-sensitive ALMA observations of 90 nearby galaxies and reported $c_\\mathrm{CO}=1.9$ within hexagonal apertures."}
+]}},
+{"order": 7,
+"goal": "Regress log FUV/Halpha on physical drivers (LASSO) and simplified models",
+"method": {"value": "LASSO multivariate regression in log space at 175 pc and 1 kpc with E(B-V), I_CO, Halpha EW, stellar age, mass, metallicity and environment flags; simplified one- to three-parameter fits", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "We use the Least Absolute Shrinkage and Selection Operator regression (cite: lasso_paper) to understand how each predictor control the variation of the log ratio."},
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "We aim to predict log FUV/H$\\alpha$ using variables such as E$(B-V)$, $I_\\mathrm{CO}$, H$\\alpha$ EW, stellar age, mass, and metallicity using the panchromatic PHANGS data."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "5-fold cross-validation to tune regularization alpha; Halpha EW used as weighting factor", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "Following (cite: day), we use 5-fold cross-validation (CV) to fine-tune the hyperparameters of the model"},
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "we have incorporated the EW of H$\\alpha$ emission as a weighting factor in the LASSO analysis."}
+]}
+],
+"assumptions": [
+{"value": "Linear relationship in log space between each predictor and the outcome", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "we assume a linear relationship in log space between each predictor and the outcome variable"}
+]}
+],
+"fitting": {"value": "LASSO with cross-validated penalty; coefficient errors from bootstrap resampling", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "we employ a bootstrap resampling method. This approach involves generating multiple bootstrap samples by repeating the same LASSO regression with cross-validation."}
+]},
+"validation": {"value": "Bootstrap standard deviations on coefficients below 0.1 at 1 kpc and below 0.01 at 175 pc", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "Our findings reveal that the standard deviation on $\\alpha_i$ at a scale of 1 kpc is below 0.1 for all predictors."}
+]}},
+{"order": 8,
+"goal": "Dust-correct FUV and Halpha and test age dependence",
+"method": {"value": "Measure UV slope beta from FUV and NUV for five galaxies, correct FUV via Boquien et al. (2012), correct Halpha with Balmer decrement and E(B-V), regress at 1 kpc on age, stellar mass surface density and metallicity, then partial regression residual vs age", "evidence": [
+{"loc": "6.4 Dust attenuation correction to FUV/Halpha", "quote": "Using the available NUV AstroSat observations for five of our targets, we first measure the slope of the UV continuum ($\\beta$) to correct the FUV emission for internal attenuation."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "R_V = 3.1 for Halpha correction", "evidence": [
+{"loc": "6.4 Dust attenuation correction to FUV/Halpha", "quote": "based on a typical value of the total-to-selective value $R_{V}=3.1$ (cite: Calzetti2000; Belfiore)"}
+]}
+],
+"assumptions": [
+{"value": "R_V = 3.1 (Calzetti 2000 curve cited)", "evidence": [
+{"loc": "6.4 Dust attenuation correction to FUV/Halpha", "quote": "based on a typical value of the total-to-selective value $R_{V}=3.1$ (cite: Calzetti2000; Belfiore)"}
+]}
+],
+"fitting": {"value": "Linear regression of attenuation-corrected log ratio on age, Sigma_star, [Z/H]", "evidence": [
+{"loc": "6.4 Dust attenuation correction to FUV/Halpha", "quote": "We found that this model can describe the variation of the dust-attenuation corrected log ratio with an $R^{2} = 0.49$."}
+]},
+"validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "CCDLAB", "version": "not stated", "used_for": {"value": "UVIT Level-2 processing and astrometric solution", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "and the Level-2 data were processed with the CCDLAB software package (cite: postma17)."}
+]}},
+{"name": "AstroSat UVIT pipeline", "version": "v2.1 and v2.2", "used_for": {"value": "Level-1 data products", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "The Level-1 data products were generated using v2.1 and v2.2 of the"}
+]}},
+{"name": "REPROJECT", "version": "not stated", "used_for": {"value": "Reprojecting images to cardinal axes (adaptive resampling) and to GALEX grid", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "We align each image along the cardinal directions by reprojecting with the REPROJECT python package"}
+]}},
+{"name": "photutils (DAO Star Finder)", "version": "not stated", "used_for": {"value": "Point-source detection for PSF measurement", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "We then identify point sources using the DAO Star Finder algorithm (cite: Stetson87) as implemented in the PHOTUTILS package (cite: photutils) in PYTHON."}
+]}},
+{"name": "astropy.stats", "version": "not stated", "used_for": {"value": "MAD standard deviation and sigma-clipped statistics", "evidence": [
+{"loc": "3.3.2 Comparison with GALEX", "quote": "Pixel values below 5$\\sigma$ RMS are masked using the ASTROPY.STATS.SIGMA-CLIPPED-STATS module on GALEX maps."}
+]}},
+{"name": "scikit-learn", "version": "not stated", "used_for": {"value": "OLS regression of AstroSat vs GALEX pixel values", "evidence": [
+{"loc": "3.3.2 Comparison with GALEX", "quote": "Using SKLEARN.LINEAR_MODEL module"}
+]}},
+{"name": "numpy", "version": "not stated", "used_for": {"value": "Listed in Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "numpy (cite: numpy)"}
+]}},
+{"name": "spectral-cube", "version": "not stated", "used_for": {"value": "Listed in Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "spectral-cube (cite: spectral-cube)"}
+]}},
+{"name": "matplotlib", "version": "not stated", "used_for": {"value": "Listed in Software section (plotting implied; not stated)", "evidence": [
+{"loc": "Software", "quote": "and matplotlib (cite: matplotlib)"}
+]}},
+{"name": "ChatGPT", "version": "not stated", "used_for": {"value": "Refining English-language presentation of the paper", "evidence": [
+{"loc": "Acknowledgments", "quote": "HH acknowledges the use of ChatGPT to refine the English-language presentation of the ideas in this paper."}
+]}}
+],
+"results_numeric": [
+{"quantity": "Median resolution of FUV bands", "value": "1.4", "uncertainty": "not stated", "units": "arcsec", "from_step": 4, "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "The median resolution of the FUV bands is $1.4''$ and the median resolution of the NUV bands is $1.2''$."}
+]},
+{"quantity": "Median resolution of NUV bands", "value": "1.2", "uncertainty": "not stated", "units": "arcsec", "from_step": 4, "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "The median resolution of the FUV bands is $1.4''$ and the median resolution of the NUV bands is $1.2''$."}
+]},
+{"quantity": "Flux density uncertainty per filter", "value": "5", "uncertainty": "not stated", "units": "percent", "from_step": 1, "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "These uncertainties yield $5\\%$ uncertainty in the flux density for each filter (cite: Singh2021)."}
+]},
+{"quantity": "Median foreground FUV extinction", "value": "0.21", "uncertainty": "not stated", "units": "mag", "from_step": 3, "evidence": [
+{"loc": "3.2 Foreground extinction", "quote": "resulting in a median foreground of A$_{\\mathrm{FUV}}=0.21$ mag"}
+]},
+{"quantity": "AstroSat F148W vs GALEX FUV slope (median beta) and offset", "value": "beta = 0.92, C = 0.001 MJy/sr", "uncertainty": "not stated", "units": "dimensionless (slope); MJy/sr (offset)", "from_step": 4, "evidence": [
+{"loc": "3.3.2 Comparison with GALEX", "quote": "with a median of $\\beta=0.92$ and with an offset of $C=0.001$ MJy/sr"}
+]},
+{"quantity": "AstroSat N219M vs GALEX NUV slope and offset", "value": "beta = 0.83, C = 0.002 MJy/sr", "uncertainty": "not stated", "units": "dimensionless (slope); MJy/sr (offset)", "from_step": 4, "evidence": [
+{"loc": "3.3.2 Comparison with GALEX", "quote": "In the NUV, we found a median of $\\beta=0.83$ and $C=0.002$ MJy/sr among targets at N219M band"}
+]},
+{"quantity": "Average FUV scale length", "value": "~3500", "uncertainty": "not stated", "units": "pc", "from_step": 5, "evidence": [
+{"loc": "4.2 New candidates", "quote": "On average, the scale length of FUV ($\\gamma_\\mathrm{FUV} \\simeq 3500$ pc) is about twice that of CO molecular gas."}
+]},
+{"quantity": "NGC 6744 FUV and CO scale lengths", "value": "gamma_FUV = 9 kpc; gamma_CO = 3.8 kpc", "uncertainty": "likely underestimated (not quantified)", "units": "kpc", "from_step": 5, "evidence": [
+{"loc": "4.2 New candidates", "quote": "NGC 6744 possesses the largest scale length, with $\\gamma_{\\mathrm{FUV}}=9$ kpc and $\\gamma_{\\mathrm{CO}}=3.8$ kpc."}
+]},
+{"quantity": "Median clumping factor in galaxy centers, FUV and CO", "value": "FUV 1.51; CO 1.35", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "The median of the FUV clumping factor is 1.51, whereas the clumping factor for CO is 1.35 in the center of galaxies."}
+]},
+{"quantity": "K-S statistic FUV vs CO clumping in centers", "value": "0.4 (p = 0.04)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "This analysis resulted in a KS value of 0.4 in the center, indicating a modestly significant difference between the distributions with a p-value of 0.04."}
+]},
+{"quantity": "Median clumping factor in spiral arms, FUV and CO", "value": "FUV 2.7; CO 2.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "the median clumping factor is $c=2.7$ for the FUV and $c=2.5$ for CO."}
+]},
+{"quantity": "Median clumping factor in 1 kpc hexagonal apertures, CO and FUV", "value": "CO 1.7; FUV 1.3", "uncertainty": "0.1 (each)", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "5.1 Clumping Factor", "quote": "the median CO clumping factor is still higher ($c=1.7 \\pm 0.1$) than the FUV values ($c=1.3 \\pm 0.1$)."}
+]},
+{"quantity": "Median Gini coefficient in 1 kpc apertures, CO and FUV", "value": "CO 0.43; FUV 0.3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "5.2 Gini coefficient", "quote": "our measurements of $G_{\\rm CO}=0.43$ are higher than $G_{\\rm FUV}=0.3$"}
+]},
+{"quantity": "Median log(FUV/Halpha) at 1 kpc in hexagonal apertures (uncorrected)", "value": "2.1", "uncertainty": "not stated", "units": "dimensionless (log ratio)", "from_step": 7, "evidence": [
+{"loc": "6.1 Environmental dependency", "quote": "At the coarser 1 kpc resolution, the log ratio exhibits a median of 2.1 within hexagonal apertures for all targets."}
+]},
+{"quantity": "Median log(FUV/Halpha) in galaxy centers", "value": "1.7", "uncertainty": "not stated", "units": "dimensionless (log ratio)", "from_step": 7, "evidence": [
+{"loc": "6.1 Environmental dependency", "quote": "The centers of galaxies have a median of $\\log(\\mathrm{FUV/H}\\alpha) = 1.7$, the lowest among all environments"}
+]},
+{"quantity": "Center log ratio, AGN vs non-AGN galaxies", "value": "AGN 1.13; non-AGN 1.88", "uncertainty": "not stated", "units": "dimensionless (log ratio)", "from_step": 7, "evidence": [
+{"loc": "6.1 Environmental dependency", "quote": "also exhibit a lower log ratio (1.13) compared to non-AGN galaxies (1.88) in the center"}
+]},
+{"quantity": "Full LASSO model R^2 at 175 pc and 1 kpc", "value": "approximately 0.65", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Conclusion", "quote": "achieving approximately $R^{2}\\sim0.65$."}
+]},
+{"quantity": "E(B-V)-only model: coefficient and R^2 at 175 pc", "value": "coefficient approx -1.7; R^2 = 0.5", "uncertainty": "0.01 (Table 5: -1.68 +/- 0.01)", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "6.3.2 Simplified model", "quote": "This resulted in dust reddening coefficients of approximately $-1.7$ at 175 pc scale. The goodness of fit, represented by $R^{2}$, yielded values of 0.5."}
+]},
+{"quantity": "CO-only model R^2 and coefficient", "value": "R^2 = 0.4; coefficient -0.4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "6.3.2 Simplified model", "quote": "a standalone model of CO can predict the log ratio as effectively as a single reddening component, with an $R^{2}$ of 0.4."}
+]},
+{"quantity": "Spearman rank correlation between CO and E(B-V) at kpc scale", "value": "~0.75", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "6.3.2 Simplified model", "quote": "supported by a Spearman rank coefficient of $\\rho \\approx 0.75$"}
+]},
+{"quantity": "Attenuation-corrected model R^2 at 1 kpc (age, Sigma_star, [Z/H])", "value": "0.49", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [
+{"loc": "6.4 Dust attenuation correction to FUV/Halpha", "quote": "We found that this model can describe the variation of the dust-attenuation corrected log ratio with an $R^{2} = 0.49$."}
+]},
+{"quantity": "Attenuation-corrected model coefficients: age, Sigma_star, [Z/H], intercept", "value": "0.84, -1.39, 0.33, alpha_0 = 2.98", "uncertainty": "0.02 each (Table 5)", "units": "dimensionless", "from_step": 8, "evidence": [
+{"loc": "6.4 Dust attenuation correction to FUV/Halpha", "quote": "Our results show coefficients of 0.84 for age, $-1.39$ for the stellar mass surface density, and 0.33 for the stellar metallicity, along with an intercept of $\\alpha_0 = 2.98$"}
+]}
+],
+"findings_qualitative": [
+{"value": "NGC 6744 proposed as a new Type 1 XUV disk and IC 5332 as a Type 2 candidate", "evidence": [
+{"loc": "4.2 New candidates", "quote": "we propose that NGC 6744 is a Type 1 XUV-disk"},
+{"loc": "4.2 New candidates", "quote": "The origin of the IC 5332 XUV emission remains unclear, but this target remains a candidate for an XUV disk."}
+]},
+{"value": "Bars and spiral arms are the most clumped environments", "evidence": [
+{"loc": "abstract", "quote": "We find that bars and spiral arms exhibit the highest degree of clumping"}
+]}
+],
+"claims": [
+{"hypothesis": "The reduced AstroSat UVIT maps have a flux scale consistent with GALEX",
+"experiment": "Convolve and reproject AstroSat maps to GALEX resolution, fit AstroSat vs GALEX pixel values with OLS",
+"result": "F148W vs GALEX FUV median slope 0.92, offset 0.001 MJy/sr; N219M vs GALEX NUV slope 0.83",
+"finding": "Flux scales agree within about 10 percent",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "we compare our estimated flux densities to GALEX observations, finding good agreement."},
+{"loc": "3.3.2 Comparison with GALEX", "quote": "we see a good agreement at the 10 percent level across the galaxy."}
+]},
+{"hypothesis": "Large FUV-to-CO scale length ratios identify new extended UV (XUV) disk galaxies",
+"experiment": "Exponential fits to FUV and CO radial profiles plus a UV surface-brightness threshold",
+"result": "NGC 6744 (gamma_FUV = 9 kpc, gamma_CO = 3.8 kpc) and IC 5332 show FUV-bright structures beyond the optical disk",
+"finding": "NGC 6744 and IC 5332 are new XUV disk candidates",
+"support": "partially",
+"evidence": [
+{"loc": "abstract", "quote": "We find candidate extended UV disks around the galaxies NGC 6744 and IC 5332."},
+{"loc": "4.2 New candidates", "quote": "This scenario might cast doubt on IC 5332 being an XUV-disk galaxy."}
+]},
+{"hypothesis": "FUV emission is clumped differently from molecular gas traced by ALMA CO",
+"experiment": "Clumping factor and Gini coefficient of FUV and CO at 175 pc and 1 kpc in environment masks",
+"result": "Median c(CO) = 1.7 vs c(FUV) = 1.3 in 1 kpc apertures; G(CO) = 0.43 vs G(FUV) = 0.3",
+"finding": "CO is more clumped than FUV overall, except in centers and spiral arms where FUV clumping is slightly higher; bars are most clumped",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "and the molecular gas is even more clumped than the FUV emission in galaxies."},
+{"loc": "5.1 Clumping Factor", "quote": "However, the center and spiral arms are the only regions that are more clumped in FUV relative to the CO."}
+]},
+{"hypothesis": "Dust attenuation and star formation history parameters explain variation in log FUV/Halpha",
+"experiment": "LASSO regression and simplified models at 175 pc and 1 kpc using PHANGS-ALMA and PHANGS-MUSE products",
+"result": "Full model R^2 ~ 0.65; E(B-V) alone gives R^2 = 0.5",
+"finding": "Dust attenuation is the dominant factor controlling the log ratio",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "We report that $\\sim 65$% variation of the $\\log_{10}$(FUV/H$\\alpha$) can be described through a combination of dust attenuation with star formation history parameters."}
+]},
+{"hypothesis": "After dust correction, FUV/Halpha traces stellar population age",
+"experiment": "Correct FUV with UV slope and Halpha with Balmer decrement in five galaxies, remove Sigma_star and metallicity dependence, compare residual with age",
+"result": "Regression with age, Sigma_star, [Z/H] gives R^2 = 0.49; positive residual correlation with age",
+"finding": "A positive correlation emerges between the corrected ratio and stellar age",
+"support": "supported",
+"evidence": [
+{"loc": "Conclusion", "quote": "we find that when the influences of stellar mass and metallicity are excluded from the FUV/H$\\alpha$ log ratio, a positive correlation emerges between this ratio and the age of the stellar population."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Galaxies already in the PHANGS survey were chosen so UV data complement ALMA, MUSE, HST data", "evidence": [
+{"loc": "2.1 Sample Selection", "quote": "To maximize the opportunity for multiwavelength science, we selected galaxies that have been observed as part of the PHANGS survey"}
+]},
+{"field": "why_this_method", "value": "Moffat model chosen for PSF because it describes bright-source PSFs with a core and extended wings", "evidence": [
+{"loc": "3.3.1 Resolution and Alignment", "quote": "We adopt the Moffat PSF model since it appears to characterize the PSF of bright sources well"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Other interpolation and flux-conserving reprojection methods rejected because they produced Moire artifacts", "evidence": [
+{"loc": "3 AstroSat Data Processing", "quote": "Other interpolation and flux conserving methods produced a Moiré artifact pattern in the reprojected image"}
+]},
+{"value": "Radial-profile regression for background rejected for NGC 3621 and NGC 5128 in favour of mean-level estimates", "evidence": [
+{"loc": "3.1 Background subtraction", "quote": "In the cases of NGC 3621 and NGC 5128, we decided not to use the regression to determine the background level due to a number of nearby bright sources."}
+]}
+],
+"limitations_admitted": [
+{"value": "ALMA maps cover only the inner disk", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "ALMA maps only cover the infrared-bright portion of the inner disk ($R_\\mathrm{gal}=5-6\\,$kpc) of our targets."}
+]},
+{"value": "Exponential fit uncertain for NGC 6744; scale-length error likely underestimated", "evidence": [
+{"loc": "4.2 New candidates", "quote": "We note that the radial profile of this galaxy is not exponential, which has resulted in poor regression results, and hence the uncertainty is likely underestimated."}
+]},
+{"value": "Collinearity among regression predictors", "evidence": [
+{"loc": "6.3.1 Drivers of the FUV/Halpha Ratio", "quote": "we anticipate colinearity between parameters, particularly between $E(B-V)$ and CO intensity, or age and metallicity."}
+]},
+{"value": "Gini coefficient in disks inflated by ALMA noise at 175 pc", "evidence": [
+{"loc": "5.2 Gini coefficient", "quote": "We note that the high clumpiness measured by Gini in disks are due to the high level of noise in ALMA data at 175 pc."}
+]}
+],
+"referee_caveats_inferred": [
+"NGC 6744 FUV scale length of 9 kpc is quoted in the text but the table lists no gamma_FUV for it (mean-level/aperture background used)",
+"ALMA is only a comparison data set; no ALMA calibration or imaging is reproduced here, so ALMA-related results depend on Leroy2021 products",
+"LASSO coefficients are affected by collinearity and by the assumed log-linear form, and the age coefficient is counter-intuitive",
+"Quoted regression R^2 and residual values at 175 pc and 1 kpc depend on masks and aperture choices not fully specified"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "AstroSat archival data from the AstroSat archive; reduced atlas released online; ALMA data public status not stated in this paper", "evidence": [
+{"loc": "2.2 Observations", "quote": "We supplement these observations with additional archival data for 20 additional PHANGS targets"},
+{"loc": "Conclusion", "quote": "The PHANGS-AstroSAT atlas is available online"}
+]},
+{"field": "products_in_archive", "value": "PHANGS-ALMA released products (moment maps, masks, uncertainty maps); AstroSat atlas at CANFAR", "evidence": [
+{"loc": "2.3.1 PHANGS-ALMA", "quote": "Final data products are released using two different signal-selection masks"}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"ALMA project codes and PHANGS-ALMA product version",
+"Per-galaxy CCDLAB reduction settings, zero points and pipeline version",
+"Regression bounds and per-galaxy radial fit settings",
+"Exact aperture and masking definitions and noise cuts",
+"LASSO alpha grid and bootstrap count",
+"No analysis code released"
+],
+"estimated_data_volume_inferred": "Tens of GB: AstroSat UVIT images for 31 galaxies plus PHANGS-ALMA CO moment maps and MUSE maps (derived products, not raw visibilities).",
+"score_inferred": 3,
+"score_reason": "Inputs are public derived products and many numeric results are given, but ALMA processing is deferred to another paper, and reduction/fit/mask settings are incompletely specified, with no code released.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA is a minor ancillary input and the AstroSat reduction recipe is not complete enough to redo from the paper alone.",
+"methods_papers": [
+{"citation": "Leroy2021", "why": "PHANGS-ALMA calibration, imaging and masks that this paper inherits"},
+{"citation": "phangs-muse", "why": "Source of MUSE emission-line and stellar-population maps"},
+{"citation": "postma17", "why": "CCDLAB UVIT data processing"},
+{"citation": "tandon20", "why": "UVIT in-orbit calibration"},
+{"citation": "Leroy_2013; Sun_2022", "why": "Clumping factor definition"},
+{"citation": "z0mgs", "why": "GALEX/WISE maps and extinction procedure"}
+],
+"companion_papers": [
+{"citation": "Leroy2021", "why": "PHANGS-ALMA CO(2-1) survey and galaxy sample properties"},
+{"citation": "phangs-hst", "why": "PHANGS-HST UV imaging used for astrometric check"}
+],
+"related_projects_or_surveys": ["PHANGS-ALMA", "PHANGS-MUSE", "PHANGS-HST", "PHANGS-JWST", "z0MGS", "GALEX", "AstroSat UVIT"]
+}

@@ -1,0 +1,197 @@
+{
+ "bibcode": "2014A&A...566A..74L",
+ "title": "ALMA observations of the kinematics and chemistry of disc formation",
+ "year": 2014,
+ "doi": "10.1051/0004-6361/201322651",
+ "arxiv_id": "1405.1416",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Is there a Keplerian disc around the Class 0/I protostar IRS7B in the R CrA cloud, and how does the disc relate to the presence of complex organic molecules in the inner envelope?",
+ "alma_project_codes": [
+  "2011.0.00628.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.42\"x0.37\" (PA ~72 deg)",
+  "sensitivity": "9–10 mJy/beam/channel rms in line-free channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Envelope model (r^-1.5 density, 2.2 Msun mass) adopted for CH3OH modelling",
+    "evidence": [
+     {
+      "loc": "CH3OH modelling",
+      "quote": "The envelope model of (cite: lindberg12) was adopted."
+     }
+    ]
+   },
+   "citation": "(cite: lindberg12)"
+  },
+  {
+   "what": {
+    "value": "CH3OH collision rates from LAMDA",
+    "evidence": [
+     {
+      "loc": "CH3OH modelling",
+      "quote": "CH$_3$OH collision rates from the LAMDA database were used (cite: lamda; rabli10)."
+     }
+    ]
+   },
+   "citation": "(cite: lamda; rabli10)"
+  },
+  {
+   "what": {
+    "value": "Bolometric temperature 89 K and Lbol/Lsmm 48 for IRS7B",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The bolometric temperature is 89 K, and the bolometric/submillimetre luminosity ratio is 48"
+     }
+    ]
+   },
+   "citation": "(cite: lindberg13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum point-source fluxes and disc masses",
+   "method": "Fit point sources in continuum; disc mass from optically thin dust emission",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin, T_dust = 30 K, distance 130 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Build C17O PV diagram",
+   "method": "Fit strongest peak per channel in uv data, derive PA and PV diagram",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "PA -65 deg, centre LSR velocity 6.2 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit Keplerian disc with finite radius vs infall",
+   "method": "Fit Keplerian profile plus linear branch; compare chi2 with v~r^-1 infall; compare against LIME fiducial disc",
+   "software": [
+    "LIME"
+   ],
+   "key_parameters": [
+    "free parameters: central mass and disc radius"
+   ],
+   "assumptions": [
+    "Flat disc, n∝r^-1, T∝r^-0.5, LTE, optically thin, inclination 60 deg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Radiative transfer modelling of CH3OH",
+   "method": "RATRAN models with constant or jump abundance, power-law or flat inner density, compared to observed spectrum",
+   "software": [
+    "RATRAN"
+   ],
+   "key_parameters": [
+    "r_100K ≈ 30 AU; centrifugal radius 100 AU assumed"
+   ],
+   "assumptions": [
+    "Envelope mass 2.2 Msun, r^-1.5 density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "IRS7B disc radius",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "We find the radius of the spatially well-constrained disc to be 0.41$''$ which equals to 50 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Central mass of IRS7B",
+   "value": "2.3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "corresponds to a central mass of $M_{\\star}=2.3~M_{\\odot}$ assuming the most probable inclination of $60\\ensuremath{^\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "IRS7B continuum flux",
+   "value": "432",
+   "uncertainty": "1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| IRS7B | 19:01:56.42 | $-$36:57:28.4 | $432\\pm\\phantom{0}1$ | 0.024 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRS7B disc mass",
+   "value": "0.024",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "which corresponds to a disc mass of $0.024~M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMM 1C continuum flux",
+   "value": "233",
+   "uncertainty": "50",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SMM 1C | 19:01:55.31 | $-$36:57:17.0 | $233\\pm50$ | 0.013 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which spw/channels were line-free for continuum and the continuum bandwidth",
+  "Self-calibration solution intervals and number of iterations",
+  "CASA version and calibration pipeline/manual details",
+  "Cell size, image size, masks and clean thresholds",
+  "Dust opacity and gas-to-dust ratio used for disc mass",
+  "Details of the LIME model (grid, abundance, inclination handling, fitting procedure)",
+  "Fitting details/uncertainties for Keplerian parameters",
+  "Abundance and temperature structure details of RATRAN models"
+ ],
+ "missing_for_reproduction": [
+  "CASA version/calibration scripts",
+  "Imaging parameters beyond robust",
+  "LIME and RATRAN model setups"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and the recipe is simple, but many processing and modelling details are missing and fit uncertainties are not stated.",
+ "rediscovery_reason": "Public Cycle 0 data, with numeric results (disc radius, stellar mass, disc mass) obtainable by a straightforward PV analysis.",
+ "source_card": "cards/2014A%26A...566A..74L/sonnet/card.md"
+}

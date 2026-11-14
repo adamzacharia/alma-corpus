@@ -1,0 +1,280 @@
+{
+ "bibcode": "2017ApJ...844...99L",
+ "title": "An ALMA Survey of CO Isotopologue Emission from Protoplanetary Disks in Chamaeleon I",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa78fc",
+ "arxiv_id": "1706.03320",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Can CO isotopologue (13CO, C18O J=3-2) emission serve as an alternate probe of disk gas mass in Cha I disks, and what gas masses and gas-to-dust ratios result?",
+ "alma_project_codes": [
+  "2013.1.00437.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.7'' x 0.5'' synthesized beam",
+  "sensitivity": "1σ rms 30 (43) mJy/beam for 13CO (C18O) in Cool and 107 (126) mJy/beam in Hot sample at 0.25 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum flux densities, stellar masses, spectral types, phase-center offsets, dust masses",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "continuum flux densities and stellar masses[^4] of our sample are adopted from (cite: pascucci2016)"
+     }
+    ]
+   },
+   "citation": "(cite: pascucci2016)"
+  },
+  {
+   "what": {
+    "value": "Accretion rates",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "Accretion rates are obtained from (cite: manara2016a; manara17)"
+     }
+    ]
+   },
+   "citation": "(cite: manara2016a; manara17)"
+  },
+  {
+   "what": {
+    "value": "Disk model grids for CO luminosity to gas mass conversion (MvD16)",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "MvD16 developed hundreds of full thermal-chemical models that include isotope-selective photodissociation and CO freeze-out."
+     }
+    ]
+   },
+   "citation": "(cite: miotello2016)"
+  },
+  {
+   "what": {
+    "value": "Parametric disk model grids (WB14)",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "we derive the gas mass from WB14 model grids by adopting the same approach described in detail in (cite: ansdell2016)"
+     }
+    ]
+   },
+   "citation": "(cite: WilliamsBest2014); (cite: ansdell2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO cubes",
+   "method": "CASA calibration with NRAO scripts, concat, uvcontsub, clean with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Define extraction region and velocity range by stacking",
+   "method": "Stack images shifted to continuum centroid, weighted by noise; adopt 0.6'' radius (13CO), 0.3'' (C18O), 0-10 km/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "C18O has same velocity range as 13CO"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure flux uncertainties and detection significance",
+   "method": "Standard deviation of fluxes in 20 random apertures in each of six 10 km/s control ranges; mean adopted as uncertainty; 3σ detection threshold",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure fluxes for detections with adapted apertures",
+   "method": "Increase circular aperture in 0.15'' steps on moment-0 map until flux flattens",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit 13CO flux vs stellar mass and continuum",
+   "method": "Bayesian power-law fit F=β M*^α with chi2 likelihood including intrinsic scatter; Linmix and cenken as checks",
+   "software": [
+    "emcee",
+    "Linmix",
+    "R NADA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Convert line luminosities to gas masses",
+   "method": "Fitted functions to median luminosity per mass bin of MvD16 grids (T Tauri, 1 Lsun); WB14 grids matched within uncertainties",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CO-to-H2 ~1e-4 ISM abundance; distance 188 pc; MvD16 T Tauri models with stellar luminosity 1 Lsun"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compute gas-to-dust ratios and compare with Lupus",
+   "method": "Gas mass over dust mass (Td=20 K, 188 pc); Kaplan-Meier and cendiff two-sample tests for Cha I vs Lupus over 10^4 iterations",
+   "software": [
+    "R NADA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust temperature fixed at 20 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "13CO detections",
+   "value": "17 of 93 (12 significant, 5 tentative)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "We detect $^{13}$CO emission from 17 out of 93 sources"
+    }
+   ]
+  },
+  {
+   "quantity": "log F13CO vs log M* slope",
+   "value": "1.16",
+   "uncertainty": "±0.13",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$\\log(F_{13CO}/{\\rm mJy})=1.16 (\\pm0.13)\\times \\log(M_*/M_\\odot)+2.84(\\pm 0.18)$"
+    }
+   ]
+  },
+  {
+   "quantity": "log F13CO vs log Fmm slope",
+   "value": "0.58",
+   "uncertainty": "±0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$\\log(F_{\\rm 13CO}/{\\rm mJy}) = 0.58 (\\pm0.08)\\times \\log(F_{\\rm mm}/{\\rm mJy})+1.71 (\\pm0.16).$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 13CO flux of detections",
+   "value": "574",
+   "uncertainty": "±31",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The mean signals are 574$\\pm$31 mJy km s$^{-1}$ in $^{13}$CO"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 13CO flux of non-detections",
+   "value": "70",
+   "uncertainty": "±15",
+   "units": "mJy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "yields a noise-weighted average line flux of 70$\\pm$15 mJy km s$^{-1}$ in $^{13}$CO"
+    }
+   ]
+  },
+  {
+   "quantity": "log Mgas vs log M* slope (MvD16)",
+   "value": "1.27",
+   "uncertainty": "±0.14",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "log(M$_{\\rm gas}$/M$_{\\rm Jup}$)= 1.27 ($\\pm$0.14)$\\times$log(M$_*$/M$_\\odot$) – 0.76 ($\\pm$0.11)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-to-dust ratio (MvD16)",
+   "value": "~4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "The median value of gas-to-dust ratio is $\\sim 4$ when the gas mass is evaluated from MvD16"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked gas mass Hot sample",
+   "value": "~0.07",
+   "uncertainty": "not stated",
+   "units": "MJup",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "$\\sim$ 0.07 M$_{\\rm Jup}$ (22 M$_{\\rm Earth}$) for the Hot sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Median P value Cha I vs Lupus 13CO flux",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.1",
+     "quote": "with the median P value of 0.25"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and clean parameters (cell size, image size, niter, threshold, mask)",
+  "Line-free channels used in uvcontsub and fit order",
+  "Calibrator names and pipeline details",
+  "Priors ranges and emcee settings (walkers, steps) for the flux-stellar mass fit",
+  "Exact line-luminosity definition and unit conversion for MvD16 fits",
+  "Dust-mass values from Pascucci et al. needed for gas-to-dust ratios"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and clean parameters",
+  "Line-free channels for uvcontsub",
+  "Prior ranges and MCMC settings",
+  "Per-source dust masses from Pascucci et al. 2016"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and flux method well described with tables, but imaging parameters and software versions missing.",
+ "rediscovery_reason": "Public data, a described aperture-photometry recipe, and numeric flux and gas-mass tables.",
+ "source_card": "cards/2017ApJ...844...99L/sonnet/card.md"
+}

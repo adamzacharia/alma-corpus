@@ -1,0 +1,292 @@
+{
+ "bibcode": "2018ApJ...859..150R",
+ "title": "Multiple Stellar Flybys Sculpting the Circumstellar Architecture in RW Aurigae",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac08f",
+ "arxiv_id": "1804.09190",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do high-resolution ALMA maps of RW Aur reveal additional tidal streams and resolved disks, and do they imply multiple stellar fly-bys, given the system's dimming events?",
+ "alma_project_codes": [
+  "2015.1.01506.S",
+  "2016.1.00877.S"
+ ],
+ "data": {
+  "bands": "Band 6 (225 GHz) and Band 7 (338 GHz)",
+  "arrays": "12m array and 7m array (Band 6); Band 7 12m",
+  "angular_resolution": "Band 6 continuum 0.194\"x0.077\"; Band 7 continuum 0.271\"x0.175\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PdBI 122.5 GHz flux densities and earlier A/B fluxes and separation",
+    "evidence": [
+     {
+      "loc": "3.1.1 Spectral Index",
+      "quote": "the PdBI 122.5 GHz continuum flux densities from (cite: Cabrit:2006) are consistent with an extrapolation along these slopes"
+     }
+    ]
+   },
+   "citation": "(cite: Cabrit:2006)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses 1.4 and 0.9 Msun for A and B",
+    "evidence": [
+     {
+      "loc": "5.2 Nature and Morphology of the Tidal Streams",
+      "quote": "Using a mass of 1.4$\\,M_\\Sun$ and 0.9$\\,M_\\Sun$ for RW Aur A and B (cite: Ghez:1997)"
+     }
+    ]
+   },
+   "citation": "(cite: Ghez:1997)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature law T_d(r)=217 K (r/AU)^-0.57",
+    "evidence": [
+     {
+      "loc": "3.1.1 Spectral Index",
+      "quote": "T$_d$(r) = 217 K (r / AU)$^{$-$0.57}$ (cite: Osterloh:1995)"
+     }
+    ]
+   },
+   "citation": "(cite: Osterloh:1995)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit continuum visibilities",
+   "method": "Two elliptical Gaussian disks fit directly to visibilities with emcee and vis_sample",
+   "software": [
+    "emcee",
+    "vis_sample"
+   ],
+   "key_parameters": [
+    "12 parameters; PA, inclination, flux, offset, Gaussian width per disk"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Spectral index and optical depth",
+   "method": "Compare Band 6 and 7 flux densities; compare to blackbody brightness temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk radius 20 AU, inclination 55 deg"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Gas disk kinematics and sizes",
+   "method": "PV diagrams for Keplerian masses; disk radii measured with CASA measurement tool; spectra extracted with elliptical mask",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "PA 41 deg and inclination 55 deg for A"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gas temperature and column density in arm",
+   "method": "Compare 12CO(3-2)/(2-1) ratio and surface brightness to RADEX LVG isothermal slab models",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE densities; CO/H <=1e-4; solar isotopic ratio 89"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Tidal truncation radii",
+   "method": "Monte Carlo of orbital parameters, 10 million samples, 1000 radius bins",
+   "software": [],
+   "key_parameters": [
+    "Separation 1.468\", 140 pc, masses 1.3-1.4 and 0.3-1.0 Msun, e max 1 or 0.7"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Photometric dimming analysis",
+   "method": "Opaque-screen occultation model with sharp leading edge to estimate transverse velocity and width",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Stellar radius 1.6 Rsun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 6 flux density RW Aur A",
+   "value": "36.31",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Disk Flux Density (mJy) | 36.31 $\\pm$ 0.02 | 4.61$\\pm$0.02 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 Gaussian radius A / B",
+   "value": "21.28 / 15.51",
+   "uncertainty": "0.03 / 0.20",
+   "units": "AU",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Disk Gaussian radius (AU) | 21.28 $\\pm$ 0.03 | 15.51 $\\pm$ 0.20 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index A",
+   "value": "2.11",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 Spectral Index",
+     "quote": "2.11$\\pm$0.01 in RW Aur A and 2.39$\\pm$0.07 in RW Aur B"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index B",
+   "value": "2.39",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 Spectral Index",
+     "quote": "2.11$\\pm$0.01 in RW Aur A and 2.39$\\pm$0.07 in RW Aur B"
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas disk radius A / B",
+   "value": "58 / 38",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with CO radii of 58 au and 38 au consistent with tidal truncation"
+    }
+   ]
+  },
+  {
+   "quantity": "A–B separation Band 6",
+   "value": "1.497",
+   "uncertainty": "0.001",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| A–B Separation | 1.497$\\pm$0.001$\\ensuremath{''}$ | — |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination difference A vs B (Band 6)",
+   "value": "12",
+   "uncertainty": "6 sigma",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Modeling",
+     "quote": "the disk inclinations differ by 12$^\\circ$ (6 sigma) in Band 6"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(2-1) integrated flux A / B",
+   "value": "3.42 / 0.86",
+   "uncertainty": "0.03 / 0.03",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 RW Aur B",
+     "quote": "2-1 = 0.86$\\pm$0.03 Jy  km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Tidal arm length",
+   "value": "740",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.3 Tidal Streams",
+     "quote": "we estimate the arm to be $\\sim$740 AU along the spine of the arm"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas temperature in A disk",
+   "value": "~70",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 Gas Properties",
+     "quote": "we find $T_k \\simeq 70$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dimming velocity range",
+   "value": "0.4 to 4.6",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1 Summary",
+     "quote": "we derive a transverse velocity in the range of 0.4 to 4.6  km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method",
+  "Image sizes, cell sizes, clean masks and thresholds",
+  "Exact rest frequencies and velocity ranges for moment maps",
+  "Starting parameter priors and MCMC settings for the uv fit",
+  "Flux scale uncertainty applied",
+  "Stellar mass and orbital priors used in the truncation Monte Carlo",
+  "How disk gas radii were defined (threshold)"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "MCMC priors",
+  "Line-free channels and moment map thresholds"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and the imaging recipe is mostly given, but several imaging and fit details are missing.",
+ "rediscovery_reason": "Public data, numeric continuum-fit and flux results with a stated recipe.",
+ "source_card": "cards/2018ApJ...859..150R/sonnet/card.md"
+}

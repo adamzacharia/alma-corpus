@@ -1,0 +1,468 @@
+{
+ "bibcode": "2024A&A...684A...4U",
+ "title": "Charting circumstellar chemistry of carbon-rich asymptotic giant branch stars. I. ALMA 3 mm spectral surveys",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202346264",
+ "arxiv_id": "2312.10014",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "Obtain a more generalised understanding of the chemistry in C-rich AGB circumstellar envelopes by studying three carbon stars (IRAS 15194-5115, IRAS 15082-4808, IRAS 07454-7112) and observationally test the archetypal status of IRC +10 216.",
+ "alma_project_codes": [
+  "2013.1.00070.S",
+  "2015.1.01271.S",
+  "2011.0.00001.CAL"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12 m array (35-41 antennas)",
+  "angular_resolution": "0.7'' - 1.7'' (main survey); 0.4'' (extended) and 1.3'' (compact) in 2015.1.01271.S",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distance estimates for IRAS 15194-5115, IRAS 15082-4808, IRAS 07454-7112, and IRC +10 216.",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "[(] [a] [)] distance estimates from Andriantsaralaza et al. (2022)"
+     }
+    ]
+   },
+   "citation": "Andriantsaralaza et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Mass-loss rates, circumstellar 12CO/13CO ratios, systemic velocities, and expansion velocities for the three sample stars.",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "[(] [b] [)] mass loss rates from Woods et al. (2003), scaled to the listed distance estimates from Andriantsaralaza et al. (2022); [(] [c] [)] circumstellar [12] CO/ [13] CO ratios derived by Woods et al. (2003) from CO radiative transfer modelling; ( d ) systemic velocities of the sources, from Woods et al. (2003); ( e ) expansion velocities of the source CSEs, from Woods et al. (2003)"
+     }
+    ]
+   },
+   "citation": "Woods et al. (2003)"
+  },
+  {
+   "what": {
+    "value": "12C/13C ratio, systemic velocity, expansion velocity, and isotopic ratios for IRC +10 216.",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "for IRC +10 216 are from Cernicharo et al. (2000)"
+     },
+     {
+      "loc": "Table 8",
+      "quote": "For IRC +10 216, isotopic ratios are taken from [(1)] Cernicharo et al. (2000), [(2)] Kahane et al. (1988), and [(3)] He et al. (2008)."
+     }
+    ]
+   },
+   "citation": "Cernicharo et al. (2000)"
+  },
+  {
+   "what": {
+    "value": "Molecular fractional abundances for IRC +10 216.",
+    "evidence": [
+     {
+      "loc": "Table 7",
+      "quote": "IRC +10 216 abundances are from: [(1)] Agúndez et al. (2012), [(2)] Massalkhi et al. (2018), [(3)] Agundez (2009), [(4)] Daniel et al. (2012), [(5)] Gong et al. (2015), and [(6)] De Beck et al. (2012)."
+     }
+    ]
+   },
+   "citation": "Agúndez et al. (2012); Massalkhi et al. (2018); Agundez (2009); Daniel et al. (2012); Gong et al. (2015); De Beck et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "Isotopologue ratios for IRC +10 216 and solar isotopic ratios.",
+    "evidence": [
+     {
+      "loc": "Table 8",
+      "quote": "For IRC +10 216, isotopic ratios are taken from [(1)] Cernicharo et al. (2000), [(2)] Kahane et al. (1988), and [(3)] He et al. (2008). [(] [b] [)] Solar values are from Asplund et al. (2009)."
+     }
+    ]
+   },
+   "citation": "He et al. (2008); Kahane et al. (1988); Asplund et al. (2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging and subtraction, spectral extraction, and line identification",
+   "method": "Image continuum from line-free channels across 85-116 GHz using multi-frequency synthesis, subtract continuum from visibilities, extract spectra from 12.5'' radius circular apertures centred on continuum peaks (and molecule-specific apertures of radius R_p + 2.5*HWHM), and identify lines using spectroscopic catalogues.",
+   "software": [
+    "CASA",
+    "GILDAS",
+    "Weeds",
+    "CDMS",
+    "Splatalogue"
+   ],
+   "key_parameters": [
+    "Survey aperture radius = 12.5''; molecule-specific aperture radius = R_p + 2.5 * HWHM; detection threshold = 3 sigma"
+   ],
+   "assumptions": [
+    "All observed SiS line emissions are assumed to be primarily thermal in nature."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Assess line variability between observation epochs",
+   "method": "Compare spectra produced from a subset of visibilities sharing the same uv-coverage between the 2015 and 2016 datasets to isolate time-dependent amplitude variations.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Relative calibration uncertainty threshold = ~11%"
+   ],
+   "assumptions": [
+    "Spatial expansion of the circumstellar gas over <=1 yr (~6 mas) is negligible compared to the beam size."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Stack systemic-velocity emission maps to study CSE substructure",
+   "method": "Regrid line cubes to a common 3.3 km/s spectral resolution and velocity grid, and stack systemic-velocity channels across all detected Band 3 transitions per molecule using rms-weighted mean.",
+   "software": [
+    "LineStacker"
+   ],
+   "key_parameters": [
+    "Spectral resolution = 3.3 km/s; no channel averaging; radial cuts at PA = 0 deg and PA = 90 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Determine radial extents (R_i, R_e) of molecular emitting regions via AARPs",
+   "method": "Convolve non-blended line cubes to a common circular beam, average channels within ±20% of v_exp around v_sys, compute azimuthally-averaged radial profiles in concentric rings of width equal to the common beam, average line profiles weighted by inverse squared uncertainty, and fit Gaussians to derive beam-deconvolved inner and outer radii.",
+   "software": [],
+   "key_parameters": [
+    "Velocity range = v_sys ± 0.2 * v_exp; ring width = common restoring beam; centrally-peaked: R_i = 0, R_e = HWHM; shell: R_i, R_e = half-maxima points on either side of peak R_p"
+   ],
+   "assumptions": [
+    "Rarer isotopologues of HCN, CS, SiO, and HC3N are co-spatial with their main counterparts since photodissociation occurs via broadband continuum."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate rotational temperatures and column densities using population diagrams",
+   "method": "For species with >=3 rotational transitions (combining ALMA and APEX lines), perform linear fit of ln(N_u/g_u) vs E_u/k_B with C_tau = 1, compute line optical depths tau_nu, apply optical depth correction factor C_tau, and re-fit to obtain optical-depth-corrected T_rot and N_tot.",
+   "software": [
+    "CDMS"
+   ],
+   "key_parameters": [
+    "Minimum 3 transitions required; optical depth correction factor C_tau = tau / (1 - exp(-tau))"
+   ],
+   "assumptions": [
+    "LTE Boltzmann level populations described by a single rotational temperature T_rot; linear rigid rotor partition functions for all species except asymmetric tops SiC2 and c-C3H2 (interpolated from CDMS); no hyperfine structure for partition functions/degeneracies when summing hyperfine fluxes."
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Calculate molecular fractional abundances and isotopic ratios",
+   "method": "Convert N_tot from population diagrams to fractional abundance f_X = n(X)/n(H2) using Eq. E.6 and AARP radii; for species without population diagrams, compute f_X analytically from the highest-SNR single line using Eq. E.7; derive isotopic ratios from abundance ratios (when population diagrams exist) or line intensity ratios.",
+   "software": [],
+   "key_parameters": [
+    "Assumed T_ex = 40 K (centrally-peaked) and 20 K (shell) for single-line estimates; distances, MLRs, and v_exp from Table 1"
+   ],
+   "assumptions": [
+    "Isotropic, constant mass-loss rate CSE expanding at terminal velocity with r^-2 density distribution; constant fractional abundance between R_i and R_e and zero outside; optically thin lines for single-line estimates; identical excitation conditions for isotopologue transitions."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "3 mm continuum flux density (IRAS 15194-5115)",
+   "value": "3.25",
+   "uncertainty": "± 0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "15194−5115 15:23:05.048 ± 0.004 −51:25:58.95 ± 0.06 3.25 ± 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum flux density (IRAS 15082-4808)",
+   "value": "1.84",
+   "uncertainty": "± 0.04",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "15082−4808 15:11:41.453 ± 0.005 −48:19:58.95 ± 0.08 1.84 ± 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum flux density (IRAS 07454-7112)",
+   "value": "2.17",
+   "uncertainty": "± 0.03",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "07454−7112 07:45:02.456 ± 0.008 −71:19:45.79 ± 0.12 2.17 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Total identified spectral emission features",
+   "value": "311",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. Line detection and identification",
+     "quote": "We detect, above the 3σ noise level, a total of 314 spectral emission features across the three stars, out of which 311 could be identified and assigned to 132 known rotational transitions of 49 molecular species"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO emitting region outer radius R_e (IRAS 15194-5115)",
+   "value": "1.8",
+   "uncertainty": "± 0.1",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "SiO 0.0 0.0 1.8(1) 1.8×10 [16] 0.0 0.0 1.3(1) 2.1×10 [16] 0.0 0.0 0.9(1) 7.6×10 [15]"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO emitting region outer radius R_e (IRAS 15082-4808)",
+   "value": "1.3",
+   "uncertainty": "± 0.1",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "SiO 0.0 0.0 1.8(1) 1.8×10 [16] 0.0 0.0 1.3(1) 2.1×10 [16] 0.0 0.0 0.9(1) 7.6×10 [15]"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO emitting region outer radius R_e (IRAS 07454-7112)",
+   "value": "0.9",
+   "uncertainty": "± 0.1",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "SiO 0.0 0.0 1.8(1) 1.8×10 [16] 0.0 0.0 1.3(1) 2.1×10 [16] 0.0 0.0 0.9(1) 7.6×10 [15]"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN emitting region outer radius R_e (IRAS 15194-5115)",
+   "value": "3.0",
+   "uncertainty": "± 0.2",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "HCN 0.0 0.0 3.0(2) 3.1×10 [16] 0.0 0.0 2.1(1) 3.3×10 [16] 0.0 0.0 1.5(1) 1.3×10 [16]"
+    }
+   ]
+  },
+  {
+   "quantity": "CN shell inner and outer radii R_i, R_e (IRAS 15194-5115)",
+   "value": "4.4, 9.7",
+   "uncertainty": "± 0.7, ± 0.7",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "CN 4.4(7) 4.6×10 [16] 9.7(7) 1.0×10 [17] 2.1(2) 3.3×10 [16] 5.8(2) 9.1×10 [16] 1.1(1) 9.9×10 [15] 3.7(1) 3.3×10 [16]"
+    }
+   ]
+  },
+  {
+   "quantity": "CN shell inner and outer radii R_i, R_e (IRAS 15082-4808)",
+   "value": "2.1, 5.8",
+   "uncertainty": "± 0.2, ± 0.2",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "CN 4.4(7) 4.6×10 [16] 9.7(7) 1.0×10 [17] 2.1(2) 3.3×10 [16] 5.8(2) 9.1×10 [16] 1.1(1) 9.9×10 [15] 3.7(1) 3.3×10 [16]"
+    }
+   ]
+  },
+  {
+   "quantity": "CN shell inner and outer radii R_i, R_e (IRAS 07454-7112)",
+   "value": "1.1, 3.7",
+   "uncertainty": "± 0.1, ± 0.1",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "CN 4.4(7) 4.6×10 [16] 9.7(7) 1.0×10 [17] 2.1(2) 3.3×10 [16] 5.8(2) 9.1×10 [16] 1.1(1) 9.9×10 [15] 3.7(1) 3.3×10 [16]"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO fractional abundance X/H2 (IRAS 15194-5115)",
+   "value": "4.0e-6",
+   "uncertainty": "factor of 3-5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "SiO 4.0(-6) 1.8(-6) 4.6(-6) 1.7(-7) [(1)]"
+    },
+    {
+     "loc": "Table 7",
+     "quote": "We estimate an uncertainty of a factor of 3-5 for the abundances estimated from population diagrams"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO fractional abundance X/H2 (IRAS 15082-4808)",
+   "value": "1.8e-6",
+   "uncertainty": "factor of 3-5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "SiO 4.0(-6) 1.8(-6) 4.6(-6) 1.7(-7) [(1)]"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO fractional abundance X/H2 (IRAS 07454-7112)",
+   "value": "4.6e-6",
+   "uncertainty": "factor of 3-5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "SiO 4.0(-6) 1.8(-6) 4.6(-6) 1.7(-7) [(1)]"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H fractional abundance X/H2 (IRAS 15194-5115, 15082-4808, 07454-7112)",
+   "value": "2.7e-5, 8.5e-6, 3.1e-6",
+   "uncertainty": "factor of 3-5 (15194, 15082); order of magnitude (07454)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "C 2 H 2.7(-5) 8.5(-6) 3.1(-6) [(] [a] [)] 1.3(-5) [(6)]"
+    }
+   ]
+  },
+  {
+   "quantity": "C4H fractional abundance X/H2 (IRAS 15194-5115, 15082-4808, 07454-7112)",
+   "value": "3.6e-6, 9.3e-7, 4.2e-7",
+   "uncertainty": "factor of 3-5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "C 4 H 3.6(-6) 9.3(-7) 4.2(-7) 1.1(-6) [(5)]"
+    }
+   ]
+  },
+  {
+   "quantity": "Average 12C/13C isotopic ratio (IRAS 15194-5115)",
+   "value": "6.4",
+   "uncertainty": "± 0.6",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "Average 6.4(0.6) 31.0(3.5) 21.0(2.2) 45(3) [(1)] 89"
+    }
+   ]
+  },
+  {
+   "quantity": "Average 12C/13C isotopic ratio (IRAS 15082-4808)",
+   "value": "31.0",
+   "uncertainty": "± 3.5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "Average 6.4(0.6) 31.0(3.5) 21.0(2.2) 45(3) [(1)] 89"
+    }
+   ]
+  },
+  {
+   "quantity": "Average 12C/13C isotopic ratio (IRAS 07454-7112)",
+   "value": "21.0",
+   "uncertainty": "± 2.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "Average 6.4(0.6) 31.0(3.5) 21.0(2.2) 45(3) [(1)] 89"
+    }
+   ]
+  },
+  {
+   "quantity": "32S/34S isotopic ratio from SiS (IRAS 15194-5115, 15082-4808, 07454-7112)",
+   "value": "19, 28, 21",
+   "uncertainty": "± 4, ± 8, ± 4",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "32 S/ 34 S SiS 19(4) 28(8) [(] [a] [)] 21(4) 18.9(1.3) [(3)] 22"
+    }
+   ]
+  },
+  {
+   "quantity": "28Si/29Si isotopic ratio from SiS (IRAS 15194-5115, 15082-4808, 07454-7112)",
+   "value": "16.8, 16, 16",
+   "uncertainty": "± 2.1, ± 3, ± 7",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "28 Si/ 29 Si SiS 16.8(2.1) 16(3) [(] [a] [)] 16(7) 17.2(1.1) [(3)] 20"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact multi-scale scales parameter values used in CASA tclean.",
+  "Pixel/cell size and image dimensions (in pixels) used in tclean.",
+  "Specific auto-multithresh parameters (sidelobethreshold, noisethreshold, lownoisethreshold, minbeamfrac) in tclean.",
+  "Exact frequency/channel ranges selected as line-free channels for uv-plane continuum subtraction.",
+  "Exact flux densities and interpolated spectral indices adopted for the quasar flux calibrators J1617-5848 and J1514-4748 at the epochs of observation."
+ ],
+ "missing_for_reproduction": [
+  "Exact flux densities and spectral indices interpolated from the ALMA calibrator catalogue for quasars J1617-5848 and J1514-4748 during manual re-calibration.",
+  "Specific tclean imaging parameters (cell size, imsize, multiscale scales, auto-multithresh thresholds).",
+  "Scripts for AARP extraction, Gaussian deconvolution, and population diagram fitting."
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The reprocessed ALMA image cubes, extracted spectra, and integrated intensity tables (including APEX lines) are publicly released at CDS, and the mathematical recipes for AARPs, population diagrams (Eqs. E.2-E.5), and abundance conversions (Eqs. E.6-E.7) are explicitly written out with all source parameters in Table 1. Minor deductions for unstated tclean imaging parameters (cell size, multiscale scales) and exact quasar flux calibration values.",
+ "rediscovery_reason": "Both raw ALMA data and the authors' reprocessed cubes/spectra are public (ALMA Archive and CDS), and the downstream analysis (Gaussian fits to AARPs for 14 species, optical-depth-corrected population diagrams, and analytical abundance/isotopic ratio calculations) is self-contained and yields extensive numeric tables (Tables 4-8, B.1).",
+ "source_card": "cards/2024A%26A...684A...4U/sonnet/card.md"
+}

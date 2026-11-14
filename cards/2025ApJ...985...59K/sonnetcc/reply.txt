@@ -1,0 +1,234 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "and ALMA observations at 91.5 GHz, 104 GHz, and 345 GHz"},
+{"loc": "The Effects of Correlated Noise", "quote": "We downloaded ALMA data from the ALMA calibrator website."}
+],
+"fields": ["agn_and_quasars"],
+"question": {
+"value": "Whether PKS 2131-021 is a supermassive black hole binary: do the coherent sinusoidal flux-density variations persist through 2023, are they statistically significant against red noise, and do they extend from radio to optical with a monotonic phase shift",
+"evidence": [
+{"loc": "Introduction", "quote": "In this paper, we present further evidence, which we find compelling, supporting the hypothesis of the SMBHB nature of PKS 2131$-$021."},
+{"loc": "abstract", "quote": "We find the coherent sinusoidal intensity variations extend from below 2.7 GHz to optical frequencies"}
+]
+},
+"targets": [
+{
+"name": "PKS 2131-021",
+"details": [
+{"loc": "2.1 The OVRO+Haystack period fit", "quote": "The period for the weighted fit in the $z=1.283$ rest frame of the host galaxy is"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "z = 1.283",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2011.0.00001.CAL", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00001.CAL."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "ALMA light curves at 91.5 GHz, 104 GHz and 345 GHz (continuum flux densities from the calibrator website)", "evidence": [{"loc": "Introduction", "quote": "and ALMA observations at 91.5 GHz, 104 GHz, and 345 GHz"}]},
+{"field": "observing_dates", "value": "ALMA linear polarization shown from 2019 to 2023.5 at 91.5 GHz and 103.5 GHz", "evidence": [{"loc": "5 The Radio Spectrum, Structure, and Polarization of PKS 2131-021", "quote": "The variation in the linear polarization at 91.5 GHz and 103.5 GHz from 2019 to 2023.5 seen by ALMA"}]},
+{"field": "pi_or_archival_as_stated", "value": "Data downloaded from the ALMA calibrator website (not a PI proposal)", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "We downloaded ALMA data from the ALMA calibrator website."}]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "OVRO 40 m Telescope", "provided": {"value": "15 GHz total flux-density monitoring light curve", "evidence": [{"loc": "Introduction", "quote": "The 40 m Telescope of the Owens Valley Radio Observatory (OVRO) has been dedicated to monitoring the total 15 GHz flux densities"}]}},
+{"name": "Haystack", "provided": {"value": "1975-1983 multi-frequency light curves at 2.7, 7.9, 15.5 and 31.4 GHz", "evidence": [{"loc": "Introduction", "quote": "using Haystack observations from 1975–1983 (cite: 1986AJ.....92.1262O) at 2.7 GHz, 7.9 GHz, 15.5 GHz and 31.4 GHz"}]}},
+{"name": "WISE", "provided": {"value": "Infrared 2.8-3.8 and 4.1-5.2 micron light curves", "evidence": [{"loc": "6.1 The 2.8 um-5.2 um emission", "quote": "We have extracted the Wide Field Infrared Explorer (WISE) data in the 2.8–3.8 micron and 4.1–5.2 micron bands."}]}},
+{"name": "Zwicky Transient Facility (ZTF)", "provided": {"value": "Optical g, r, i light curves up to 2023 Sep 9", "evidence": [{"loc": "6.2 The Strong Optical Sinusoidal Emission", "quote": "We have now added another two years of ZTF data up to 2023 Sep 9, so that, all told, the ZTF data now span a full period."}]}},
+{"name": "Swift/XRT", "provided": {"value": "Stacked X-ray spectrum, 20.7 ks net exposure", "evidence": [{"loc": "7 X-ray Observations and Future Prospects", "quote": "We analyzed all available *Swift/XRT* obervations."}]}},
+{"name": "Fermi-LAT", "provided": {"value": "30-day binned gamma-ray light curve, 0.1-100 GeV, from the Fermi light curve repository", "evidence": [{"loc": "8 The gamma-ray Emission", "quote": "to extract the 30-day binned $\\gamma$-ray light curve in the 0.1–100 GeV band"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Haystack 1975-1983 multi-frequency light curves", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "we show the Haystack multifrequency light curves from (cite: 1986AJ.....92.1262O)"}]}, "citation": "(cite: 1986AJ.....92.1262O)"},
+{"what": {"value": "OVRO 40 m 15 GHz blazar monitoring light curve", "evidence": [{"loc": "Introduction", "quote": "The OVRO 40-m Telescope blazar program (cite: Richards2011) is currently the largest radio flux-density monitoring program."}]}, "citation": "(cite: Richards2011)"},
+{"what": {"value": "Planck radio spectrum of PKS 2131-021 at eight epochs", "evidence": [{"loc": "5 The Radio Spectrum, Structure, and Polarization of PKS 2131-021", "quote": "as measured from centimeter to sub-millimeter wavelengths by the Planck observatory at eight different epochs (cite: 2023A&A...669A..92R)"}]}, "citation": "(cite: 2023A&A...669A..92R)"},
+{"what": {"value": "Jet angle to line of sight theta = 3.8 deg from MOJAVE VLBI", "evidence": [{"loc": "9.1 Consistency of the observed light curves with the Kinematic Orbital Model", "quote": "the angle between the jet axis and the line of sight of $\\theta=3.8^\\circ$ (cite: 2021ApJ...923...67H)"}]}, "citation": "(cite: 2021ApJ...923...67H)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Kinematic Orbital (KO) model of aberration from the orbital motion of the jet-producing black hole, used to interpret the light curves", "evidence": [{"loc": "Introduction", "quote": "which ascribes the sinusoidal variations in PKS 2131$-$021 to aberration caused by the orbital motion in an SMBHB of the black hole producing the jet"}]},
+{"value": "Simulated red-noise light curves used to build the noise covariance matrices", "evidence": [{"loc": "Fit of sinusoidal model using simulation-based likelihood", "quote": "but we can use as a proxy the lightcurve simulations."}]}
+],
+"calibration": [
+{"field": "archive_products_used_as_is", "value": "ALMA flux densities taken as downloaded from the ALMA calibrator website", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "We downloaded ALMA data from the ALMA calibrator website."}]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Sine-wave fitting procedure applied to the multi-frequency light curves", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "derived by the procedure presented in Paper 1 and in Appendix"}]}, "from_reference": "Paper 1 (cite: 2022ApJ...926L..35O)"},
+{"what": {"value": "GLS periodogram significance tests and red-noise simulations (PSD and PDF matching)", "evidence": [{"loc": "4 Statistical Significance", "quote": "We refer to Appendix A in Paper 1 for details."}]}, "from_reference": "Paper 1 (cite: 2022ApJ...926L..35O)"},
+{"what": {"value": "WISE-OVRO cross-correlation method", "evidence": [{"loc": "6.1 The 2.8 um-5.2 um emission", "quote": "The cross-correlation between the OVRO and WISE data was performed following (cite: 2014MNRAS.445..437M)."}]}, "from_reference": "(cite: 2014MNRAS.445..437M)"}
+],
+"unstated_but_needed": [
+"Which ALMA calibrator-catalog entries and date ranges were used, and how the three band light curves were selected, averaged or cleaned",
+"How ALMA flux-density uncertainties were treated in the sinusoidal fits (white noise assumed, but no error floor given)",
+"The exact MJD windows for the two fixed-period phase fits (the printed inequalities are garbled in the text)",
+"Where the OVRO 15 GHz, ZTF, WISE and Haystack light-curve tables used in the fits can be retrieved in the versions used",
+"Full GLS test and red-noise simulation recipe (deferred to Paper 1)",
+"MCMC convergence diagnostics and how the noise covariance matrix was thresholded"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "assemble multi-frequency light curves",
+"method": {"value": "ALMA flux densities downloaded from the ALMA calibrator website and combined with OVRO, Haystack, WISE and ZTF light curves", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "We downloaded ALMA data from the ALMA calibrator website."}, {"loc": "Introduction", "quote": "and ALMA observations at 91.5 GHz, 104 GHz, and 345 GHz"}]},
+"software": ["ALMA calibrator website"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "fit a sine wave to OVRO plus Haystack 15 GHz data",
+"method": {"value": "Least-squares sine fit with separate amplitude and offset for OVRO and Haystack; Haystack points up-weighted so the sine aligns across the 19-year gap", "evidence": [{"loc": "2.1 The OVRO+Haystack period fit", "quote": "We allow separate values for $A$ and $S_0$ for the OVRO and Haystack sections of the data."}, {"loc": "2.2 White Noise Model Fit", "quote": "The weights of the OVRO data points are all 1."}]},
+"software": [],
+"key_parameters": [
+{"value": "Haystack weight 850/154 = 5.5", "evidence": [{"loc": "2.2 White Noise Model Fit", "quote": "we have assigned a weight of 850/154 = 5.5 to each of the Haystack observations"}]}
+],
+"assumptions": [
+{"value": "Independent Gaussian noise with intrinsic scatter sigma_0", "evidence": [{"loc": "2.2 White Noise Model Fit", "quote": "First, we treated all noise terms as independent Gaussian noise"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with equal-weight fit and with the period from Paper 1", "evidence": [{"loc": "2.2 White Noise Model Fit", "quote": "This has brought the sine wave into alignment with the Haystack data, with no discernible difference in the fit to the OVRO data."}]}
+},
+{
+"order": 3,
+"goal": "fit the period with a correlated-noise likelihood",
+"method": {"value": "Simulation-based noise covariance matrices; likelihood marginalised over linear parameters; posterior in P and amplitude ratio sampled by MCMC", "evidence": [{"loc": "Fit of sinusoidal model using simulation-based likelihood", "quote": "With this parameterization the only non-linear parameters are $P$ and $A^{HO}$."}]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "4 walkers, burn-in 30 000 samples, 30 000 output samples", "evidence": [{"loc": "Full MCMC search", "quote": "using *emcee* with 4 walkers, a burn-in of 30 000 samples and 30 000 output samples"}]},
+{"value": "Priors P in [1000,3000] and A^HO in [0.1,4]", "evidence": [{"loc": "Likelihood", "quote": "We used $P\\in [1000,3000]$ and $A^{HO}\\in [0.1,4]$ in our fit."}]}
+],
+"assumptions": [
+{"value": "Gaussian noise with covariances N^O and N^H taken from lightcurve simulations", "evidence": [{"loc": "The noise covariance matrix", "quote": "We approximate the noise as Gaussian, with covariances $N^O$ and $N^H$."}]}
+],
+"fitting": {"value": "Gaussian marginalised likelihood, log P = 1/2 a^T A^-1 a + log prior, sampled with emcee", "evidence": [{"loc": "Full MCMC search", "quote": "using *emcee* with 4 walkers, a burn-in of 30 000 samples and 30 000 output samples"}]},
+"validation": {"value": "Noted as sensitive to the noise covariance matrix; error bars likely overestimated", "evidence": [{"loc": "Full MCMC search", "quote": "This fit is quite sensitive to the details of the noise covariance matrix."}]}
+},
+{
+"order": 4,
+"goal": "test significance against red-noise simulations",
+"method": {"value": "Generalized Lomb-Scargle periodogram tests (OVRO peak, Haystack peak and period, phase match) against simulated power-law red-noise light curves, joint probability as product", "evidence": [{"loc": "4 Statistical Significance", "quote": "We model the PDF through the empirical cumulative distribution function of the original light curve."}, {"loc": "4 Statistical Significance", "quote": "We estimate the probability of all three observations as defined in tests 1–3 under the null hypothesis by multiplying the probabilities of the three independent tests."}]},
+"software": ["GLS periodogram"],
+"key_parameters": [
+{"value": "PSD power-law index beta = 2.05", "evidence": [{"loc": "4 Statistical Significance", "quote": "with index $\\beta=2.05$"}]},
+{"value": "10^6 simulations for the OVRO test, 10,000 for the Haystack test", "evidence": [{"loc": "4 Statistical Significance", "quote": "Based on 10,000 simulations we estimate a probability of"}]}
+],
+"assumptions": [
+{"value": "Null hypothesis: light curves come from a power-law red noise process matching the observed PSD and PDF", "evidence": [{"loc": "4 Statistical Significance", "quote": "The null hypothesis is that the light curves originate from a power-law red noise process that reproduces the power spectral density (PSD) and probability density function (PDF)."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "measure phase offsets versus frequency including ALMA bands",
+"method": {"value": "Fit a sinusoid with period fixed from the OVRO 15 GHz fit over the overlap interval, then fit ALMA 91.5, 104 and 345 GHz phases relative to 15 GHz", "evidence": [{"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "We then held this period fixed and carried out the sinusoidal fits to the ALMA 91.5 GHz, 104 GHz, and 345 GHz"}]},
+"software": [],
+"key_parameters": [
+{"value": "Fixed OVRO period P = 2002.9 days for the ALMA-era interval", "evidence": [{"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "we derived a period $P=2002.9$ days"}]}
+],
+"assumptions": [
+{"value": "White noise; non-sinusoidal variations treated as dominated by Type-A (correlated across frequency)", "evidence": [{"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "Fit a phase per light curve using a sinusoidal model with the period fixed at the value for the best fitting OVRO light curve during the period of the overlapping multi-frequency light curves, assuming white noise."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "fit sine waves to the ZTF optical data",
+"method": {"value": "Joint g, r, i sine fit by maximising a log-likelihood with intrinsic scatter; model 1 shared period and phase, model 2 filter-dependent phases", "evidence": [{"loc": "Sine-wave fits to the optical data", "quote": "The best-fit parameters were found by maximizing the log-likelihood function defined as"}, {"loc": "Sine-wave fits to the optical data", "quote": "Subsequently, we relaxed this assumption and allowed the sine phases to depend on the filter (model 2)."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "Maximum likelihood", "evidence": [{"loc": "Sine-wave fits to the optical data", "quote": "The best-fit parameters were found by maximizing the log-likelihood function defined as"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "fit phase shift as a function of frequency",
+"method": {"value": "Linear-logarithmic fit of phase shift to 2.7-345 GHz, plus a quadratic fit to all data", "evidence": [{"loc": "6.4 Coherence of the Periodicity from the Radio to the Optical Emission", "quote": "A linear fit to the 2.7 GHz - 345 GHz data is given by"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC sampling of the period and amplitude-ratio posterior", "evidence": [{"loc": "Full MCMC search", "quote": "using *emcee* with 4 walkers, a burn-in of 30 000 samples and 30 000 output samples"}]}},
+{"name": "Generalized Lomb-Scargle periodogram", "version": "not stated", "used_for": {"value": "Significance tests of the periodicity against simulated red noise", "evidence": [{"loc": "4 Statistical Significance", "quote": "We carried out the generalized Lomb–Scargle (GLS)"}]}},
+{"name": "ALMA calibrator website", "version": "not stated", "used_for": {"value": "Source of the ALMA flux-density light curves", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "We downloaded ALMA data from the ALMA calibrator website."}]}},
+{"name": "Fermi light curve repository", "version": "not stated", "used_for": {"value": "Gamma-ray light curve extraction", "evidence": [{"loc": "8 The gamma-ray Emission", "quote": "to extract the 30-day binned $\\gamma$-ray light curve in the 0.1–100 GeV band"}]}}
+],
+"results_numeric": [
+{"quantity": "Period, weighted OVRO+Haystack white-noise fit", "value": "1739.2", "uncertainty": "1.2", "units": "days", "from_step": 2, "evidence": [{"loc": "2.2 White Noise Model Fit", "quote": "The corresponding period is $P=(1739.2\\pm1.2)$ days"}]},
+{"quantity": "Period, correlated-noise MCMC fit (15 GHz)", "value": "1739.8", "uncertainty": "17.4", "units": "days", "from_step": 3, "evidence": [{"loc": "Full MCMC search", "quote": "Our final fit parameters are $P = 1739.8 \\pm 17.4$ days"}]},
+{"quantity": "Joint probability and significance of rejecting the red-noise null hypothesis", "value": "2.09e-7 (5.06 sigma)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4 Statistical Significance", "quote": "The joint probability is $2.09 \\times 10^{-7}$ ($5.06\\sigma$)."}]},
+{"quantity": "Phase shift of ALMA 91.5 GHz relative to 15 GHz", "value": "-0.073", "uncertainty": "0.005", "units": "fraction of a cycle", "from_step": 5, "evidence": [{"loc": "Table (phase shift with frequency)", "quote": "91.5 GHz | $-0.073$ | 0.005"}]},
+{"quantity": "Phase shift of ALMA 104 GHz relative to 15 GHz", "value": "-0.077", "uncertainty": "0.005", "units": "fraction of a cycle", "from_step": 5, "evidence": [{"loc": "Table (phase shift with frequency)", "quote": "104 GHz | $-0.077$ | 0.005"}]},
+{"quantity": "Phase shift of ALMA 345 GHz relative to 15 GHz", "value": "-0.134", "uncertainty": "0.009", "units": "fraction of a cycle", "from_step": 5, "evidence": [{"loc": "Table (phase shift with frequency)", "quote": "345 GHz | $-0.134$ | 0.009"}]},
+{"quantity": "Optical period from combined ZTF g, r, i sine fit", "value": "1764", "uncertainty": "36", "units": "days", "from_step": 6, "evidence": [{"loc": "6.2 The Strong Optical Sinusoidal Emission", "quote": "yields a period of $P_\\textrm{optical}=(1764  \\pm 36)$ days"}]},
+{"quantity": "Optical phase shift relative to 15 GHz", "value": "-0.352", "uncertainty": "0.008", "units": "fraction of a cycle", "from_step": 6, "evidence": [{"loc": "Table (phase shift with frequency)", "quote": "Optical | $-0.352$ | 0.008"}]},
+{"quantity": "Linear-log fit of phase shift versus frequency, 2.7-345 GHz", "value": "delta phi = 0.020 - 0.116 log10(nu/15), nu in GHz", "uncertainty": "not stated", "units": "fraction of a cycle", "from_step": 7, "evidence": [{"loc": "6.4 Coherence of the Periodicity from the Radio to the Optical Emission", "quote": "\\delta \\phi = 0.020 -0.116 \\log_{10}(\\nu/15)"}]}
+],
+"findings_qualitative": [
+{"value": "The 15 GHz sinusoid continued through 2023 consistent with the Paper 1 prediction, giving 47.9 years of coherence with the Haystack data", "evidence": [{"loc": "2 The Continuation of the 15 GHz Sine Wave Signal in PKS 2131-021", "quote": "The observed 47.9 year continuity, when combined with the Haystack data, is unprecedented in the light curves of blazars."}]},
+{"value": "Phase lag increases monotonically with decreasing frequency from 2.7 GHz through ALMA bands to optical", "evidence": [{"loc": "6.4 Coherence of the Periodicity from the Radio to the Optical Emission", "quote": "The monotonic variation in phase lag with frequency from 2.7 GHz to optical frequencies demonstrates convincingly that the sinusoidal variation is caused by a physical process in the source."}]},
+{"value": "ALMA 91.5 and 103.5 GHz EVPA changes little through the sinusoidal cycle", "evidence": [{"loc": "5 The Radio Spectrum, Structure, and Polarization of PKS 2131-021", "quote": "where it is seen that the EVPA changes little throughout the sinusoidal cycle."}]}
+],
+"claims": [
+{"hypothesis": "The sinusoidal variations are a random fluctuation of red noise", "experiment": "GLS tests of OVRO and Haystack data against simulated red noise matching PSD and PDF", "result": "Joint p-value 2.09e-7 (5.06 sigma)", "finding": "The red-noise null hypothesis is rejected; a physical periodic process is present", "support": "supported", "evidence": [{"loc": "4 Statistical Significance", "quote": "It is highly unlikely that a random process produced the observed periodicity."}]},
+{"hypothesis": "The sinusoidal variation persists in new 15 GHz data without changing the model", "experiment": "Extrapolation of the sine fit to pre-2021 data compared with new OVRO data through 2023", "result": "New data returned to the extrapolated sine curve in 2023", "finding": "The constant long-term period prediction is fulfilled", "support": "supported", "evidence": [{"loc": "2 The Continuation of the 15 GHz Sine Wave Signal in PKS 2131-021", "quote": "thus fulfilling the prediction, from Paper 1, of a constant long-term period"}]},
+{"hypothesis": "The coherent sinusoid extends from radio to optical with a smooth phase shift", "experiment": "Fixed-period sine fits to Haystack, OVRO, ALMA and ZTF light curves with phase relative to 15 GHz", "result": "Phase shifts of -0.073 (91.5 GHz), -0.077 (104 GHz), -0.134 (345 GHz) and -0.352 (optical) of a cycle", "finding": "Monotonic phase lag with frequency from 2.7 GHz to optical", "support": "supported", "evidence": [{"loc": "6.4 Coherence of the Periodicity from the Radio to the Optical Emission", "quote": "The monotonic variation in phase lag with frequency from 2.7 GHz to optical frequencies demonstrates convincingly that the sinusoidal variation is caused by a physical process in the source."}]},
+{"hypothesis": "The periodicity is caused by orbital motion in a supermassive black hole binary", "experiment": "Comparison of the multi-frequency phase shifts and amplitudes with the Kinematic Orbital model", "result": "Data are consistent with the KO model; precessing accretion disk cannot be ruled out", "finding": "SMBHB orbital motion is a distinct possibility but not uniquely established", "support": "partially", "evidence": [{"loc": "11 Conclusion and Future Work", "quote": "Of the remaining options (i) and (ii), neither can be ruled out, but it is clear that orbiting motion in an SMBHB is a distinct possibility."}]}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "Phases fitted per band with a fixed period assuming white noise because non-sinusoidal variations appear dominated by Type-A errors", "evidence": [{"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "We adopt alternative 2 in this paper."}, {"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "If the correlated non-sinusoidal variations are dominated by Type-A errors, as appears to be the case, then we can either:"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Fitting each frequency light curve as a scaled and offset version of the OVRO light curve (not adopted)", "evidence": [{"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "Fit the lightcurve at each frequency as a scaled and offset version of the OVRO light curve"}]},
+{"value": "Optical shift of 612 or 1127 days; 612 days chosen as it continues the monotonic trend", "evidence": [{"loc": "6.2 The Strong Optical Sinusoidal Emission", "quote": "The time shift between the observed maxima in the sine wave fits to the optical light curves and the 15 GHz curve is 612 or 1127 days, depending on the direction of the shift."}]}
+],
+"limitations_admitted": [
+{"value": "Type-A and Type-B variations cannot be reliably distinguished, so a full noise treatment of the phase offsets is not possible", "evidence": [{"loc": "3.1 The Correlated Noise Phase Shift with Frequency", "quote": "we cannot reliably distinguish between Type-A and Type-B variations"}]},
+{"value": "Correlated-noise period fit is sensitive to the noise covariance matrix, with error bars likely overestimated", "evidence": [{"loc": "Full MCMC search", "quote": "This fit is quite sensitive to the details of the noise covariance matrix."}]}
+],
+"referee_caveats_inferred": [
+"ALMA contributes only three calibrator light curves, with no stated calibration, flux scale uncertainty or sampling, so the ALMA phase offsets cannot be checked from the paper alone",
+"White-noise phase uncertainties (0.005 of a cycle) look small compared with the correlated-noise period uncertainty and may be underestimated",
+"ALMA fit window uses a different period (2002.9 d) than the global period (about 1740 d), which is justified only qualitatively",
+"The optical phase direction (612 vs 1127 days) is chosen to continue the monotonic trend, which assumes the conclusion"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA data taken from the public ALMA calibrator website", "evidence": [{"loc": "3 The Effects of Correlated Noise", "quote": "We downloaded ALMA data from the ALMA calibrator website."}]},
+{"field": "products_in_archive", "value": "ALMA calibrator data identifier printed in acknowledgements", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00001.CAL."}]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"ALMA calibrator light-curve selection and flux values used",
+"OVRO, Haystack and ZTF data tables in the exact versions used",
+"Noise covariance simulation and GLS test details from Paper 1",
+"Fit time windows for the ALMA-era phase fit",
+"Code for the fits"
+],
+"estimated_data_volume_inferred": "Negligible for ALMA (calibrator flux-density light curves, kilobytes); the full paper also needs OVRO, ZTF, WISE and Fermi light curves, all small tables",
+"score_inferred": 2,
+"score_reason": "ALMA data are public calibrator light curves, but selection, errors and time windows are not given, key analysis steps are deferred to Paper 1, and no code is released.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA plays a minor role and the recipe depends on Paper 1 and on non-ALMA light curves whose public availability is not stated.",
+"methods_papers": [
+{"citation": "Paper 1 (cite: 2022ApJ...926L..35O)", "why": "Sine-wave fitting procedure, GLS red-noise tests and simulations used here"},
+{"citation": "(cite: Richards2011)", "why": "OVRO 40 m 15 GHz monitoring program"},
+{"citation": "(cite: 2014MNRAS.445..437M)", "why": "Cross-correlation method for WISE versus OVRO"}
+],
+"companion_papers": [
+{"citation": "(cite: 2024arXiv240802645D)", "why": "Another strong SMBHB candidate (PKS J0805-0111) from the OVRO light curve"}
+],
+"related_projects_or_surveys": ["OVRO 40 m blazar monitoring program", "MOJAVE", "Zwicky Transient Facility", "Fermi light curve repository"]
+}

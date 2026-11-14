@@ -1,0 +1,415 @@
+{
+ "bibcode": "2022A&A...665L...7S",
+ "title": "A galaxy group candidate at z ≈ 3.7 in the COSMOS field",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202244661",
+ "arxiv_id": "2209.05895",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "When and where is the earliest maturing phase of galaxy protoclusters and groups taking place, and is HPC1001 a galaxy group at z ≈ 3.7 in the maturing phase?",
+ "alma_project_codes": [
+  "2013.1.00034.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS2020 catalog",
+    "evidence": [
+     {
+      "loc": "Selection",
+      "quote": "we mapped the distance of the fifth neighborhood $\\Sigma_{5th}$ for $i$- and $K_s$-detected sources (${\\rm S/N}_{i}>5$ & $K_s<25$ AB mag) at $z_{\\rm phot}>3$ in the COSMOS2020 catalog (cite: Weaver2022COSMOS2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Weaver2022COSMOS2020)"
+  },
+  {
+   "what": {
+    "value": "COSMOS2015 catalog",
+    "evidence": [
+     {
+      "loc": "Optical+NIR SEDs and photometric redshifts",
+      "quote": "Six of these eight galaxies are also included in the COSMOS2015 catalog (cite: Laigle2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle2016)"
+  },
+  {
+   "what": {
+    "value": "SCUBA2 imaging",
+    "evidence": [
+     {
+      "loc": "FIR, (sub)millimeter, and radio SED",
+      "quote": "HPC1001 was also detected (but barely resolved) in Herschel, SCUBA2 (cite: Simpson2019), and MeerKAT (cite: Jarvis2016mightee) imaging (Fig. 3-left)."
+     }
+    ]
+   },
+   "citation": "(cite: Simpson2019)"
+  },
+  {
+   "what": {
+    "value": "MeerKAT imaging",
+    "evidence": [
+     {
+      "loc": "FIR, (sub)millimeter, and radio SED",
+      "quote": "HPC1001 was also detected (but barely resolved) in Herschel, SCUBA2 (cite: Simpson2019), and MeerKAT (cite: Jarvis2016mightee) imaging (Fig. 3-left)."
+     }
+    ]
+   },
+   "citation": "(cite: Jarvis2016mightee)"
+  },
+  {
+   "what": {
+    "value": "GN20 starburst SED template",
+    "evidence": [
+     {
+      "loc": "FIR, (sub)millimeter, and radio SED",
+      "quote": "The integrated SED (Fig. 3-right) was well fitted by a starburst template (GN20, (cite: Magdis2012SED)) at $z=3.7$ with dust-obscured ${\\rm SFR_{IR}}=743~M_\\odot~yr^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: Magdis2012SED)"
+  },
+  {
+   "what": {
+    "value": "Combined Chandra+XMM-Newton 0.5-2 keV image",
+    "evidence": [
+     {
+      "loc": "Dark matter halo mass",
+      "quote": "we used the background and point source subtracted combined Chandra+XMM-Newton image in the 0.5-2 keV (cite: Gozaliasl2019Xray) to study the X-ray emission of HPC1001."
+     }
+    ]
+   },
+   "citation": "(cite: Gozaliasl2019Xray)"
+  },
+  {
+   "what": {
+    "value": "Literature halo mass data for comparison",
+    "evidence": [
+     {
+      "loc": "Dark matter halo mass",
+      "quote": "In Fig. 4-left, we compared the halo mass of HPC1001 to literature data taken from (cite: Daddi2022Lya)."
+     }
+    ]
+   },
+   "citation": "(cite: Daddi2022Lya)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search for galaxy overdensities at z > 3",
+   "method": "Map the distance to the fifth nearest neighbor (Σ_5th) for i- and Ks-detected sources at z_phot > 3 in the COSMOS2020 catalog using GALCLUSTER",
+   "software": [
+    "GALCLUSTER"
+   ],
+   "key_parameters": [
+    "S/N_i > 5, K_s < 25 AB mag, z_phot > 3, 5th nearest neighbor"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure Optical/NIR photometry, photometric redshifts, and stellar masses of candidate members",
+   "method": "Adopt COSMOS2020/Farmer photometry and LEPHARE SED fitting; repeat THE FARMER photometry adding HPC1001.a and h as priors to deblend in Ks and IRAC images",
+   "software": [
+    "THE FARMER",
+    "LEPHARE",
+    "EAZY"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier initial mass function and H0=73, ΩM=0.27, Λ0=0.73 cosmology"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure ALMA 1.2 mm continuum and integrated FIR-to-radio photometry",
+   "method": "Measure ALMA 1.2 mm continuum using aperture photometry for slightly resolved HPC1001.a and peak fluxes for point-like HPC1001.b, d, and e; measure integrated FIR-to-radio photometry via super-deblending at the fixed position of HPC1001.a",
+   "software": [],
+   "key_parameters": [
+    "Fixed prior position of HPC1001.a for super-deblending"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit FIR-to-radio SED and derive individual and total SFRs, dust masses, and gas fractions",
+   "method": "Fit integrated FIR-to-radio photometry with STARDUST using a GN20 starburst template at z=3.7, then split total SFR_IR and M_dust among the four ALMA sources proportional to their ALMA 1.2 mm flux; compute gas mass from dust mass",
+   "software": [
+    "STARDUST"
+   ],
+   "key_parameters": [
+    "Redshift fixed at z = 3.7 for integrated SED fit"
+   ],
+   "assumptions": [
+    "All ALMA-detected sources share the same SED shape as the integrated SED (GN20 template)",
+    "Optically thick dust emission in HPC1001.a could overestimate dust mass by a factor of two (included in uncertainty)",
+    "Gas-to-dust ratio M_gas = 100 * M_dust with 20% metallicity uncertainty"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate dark matter halo mass and expected baryonic accretion rate",
+   "method": "Estimate halo mass using six independent methods (most massive galaxy M_halo-M_* relation, total stellar mass scaling relations from van der Burg+14 and Shuntov+22, X-ray 0.5-2 keV upper limit in 32'' aperture, galaxy number overdensity with bias factor, and extreme value statistics in 2 deg^2), then apply Daddi+2022 scaling relations for BAR and SFR",
+   "software": [],
+   "key_parameters": [
+    "Completeness limit log(M_*/M_sun) > 9.7 at z=3.7; extrapolation down to 10^7 M_sun; 32'' radius aperture for X-ray; R_vir < 20'', velocity dispersion σ_V = 400 km s^-1, galaxy bias 10-20"
+   ],
+   "assumptions": [
+    "Field galaxy stellar mass function at 3 < z < 4 (Muzzin+2013); Planck cosmology mean density 7.77e-26 kg m^-3; collapsed structure for virial radius"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Overdensity significance of HPC1001 (Σ_5th)",
+   "value": "6.8",
+   "uncertainty": "not stated",
+   "units": "σ",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Selection",
+     "quote": "HPC1001, which is centered at RA 150.4656$\\degree$ and Dec 2.6359$\\degree$, is the highest overdensity with $\\Sigma_{\\rm 5th}$ that is $6.8\\sigma$ larger than the mean density of the COSMOS2020 catalog at $z_{\\rm phot}>3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted average photometric redshift of HPC1001",
+   "value": "3.65",
+   "uncertainty": "±0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Photometric redshifts, measured by four independent methods, fall within a narrow range of $3.5<z<3.9$ and with a weighted average of $z=3.65\\pm0.07$."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.2 mm continuum flux of HPC1001.a",
+   "value": "1.42",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001.a | – | 3.7$^b$ | 1.42$\\pm$0.06 | 10.3$^{+0.2}_{-0.2}$ | – | 429$\\pm$20 | 8.93$^{+0.05}_{-0.35}$ | 4.3$^{+2}_{-4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.2 mm continuum flux of HPC1001.b",
+   "value": "0.35",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001.b | 54765 | 3.56$^{+0.08}_{-0.10}$ | 0.35$\\pm$0.06 | 11.0$^{+0.1}_{-0.1}$ | 110$^{+25}_{-66}$ | 106$\\pm$20 | 8.32$\\pm$0.08 | 0.2$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.2 mm continuum flux of HPC1001.d",
+   "value": "0.32",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001.d | 55311 | 3.54$^{+0.13}_{-0.17}$ | 0.32$\\pm$0.06 | 10.5$^{+0.1}_{-0.1}$ | 64$^{+12}_{-11}$ | 97$\\pm$20 | 8.28$\\pm$0.09 | 0.6$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.2 mm continuum flux of HPC1001.e",
+   "value": "0.38",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001.e | 55655 | 3.67$^{+0.19}_{-0.18}$ | 0.38$\\pm$0.06 | 10.2$^{+0.1}_{-0.1}$ | 50$^{+46}_{-35}$ | 115$\\pm$20 | 8.36$\\pm$0.09 | 1.4$\\pm$0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total ALMA 1.2 mm continuum flux of HPC1001",
+   "value": "2.46",
+   "uncertainty": "±0.05",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001 | – | 3.65$\\pm$0.1 | 2.46$\\pm$0.05 | 11.4$\\pm{0.2}$ | 391$^{+66}_{-97}$ $^d$ | 743$\\pm$3 | 9.17$\\pm$0.05 | – |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total stellar mass log(M_*/M_sun) of HPC1001",
+   "value": "11.4",
+   "uncertainty": "±0.2",
+   "units": "dex (M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001 | – | 3.65$\\pm$0.1 | 2.46$\\pm$0.05 | 11.4$\\pm{0.2}$ | 391$^{+66}_{-97}$ $^d$ | 743$\\pm$3 | 9.17$\\pm$0.05 | – |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust-obscured star formation rate (SFR_IR) of HPC1001",
+   "value": "743",
+   "uncertainty": "±3",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "FIR, (sub)millimeter, and radio SED",
+     "quote": "The integrated SED (Fig. 3-right) was well fitted by a starburst template (GN20, (cite: Magdis2012SED)) at $z=3.7$ with dust-obscured ${\\rm SFR_{IR}}=743~M_\\odot~yr^{-1}$."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001 | – | 3.65$\\pm$0.1 | 2.46$\\pm$0.05 | 11.4$\\pm{0.2}$ | 391$^{+66}_{-97}$ $^d$ | 743$\\pm$3 | 9.17$\\pm$0.05 | – |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass log(M_dust/M_sun) of HPC1001",
+   "value": "9.17",
+   "uncertainty": "±0.05",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001 | – | 3.65$\\pm$0.1 | 2.46$\\pm$0.05 | 11.4$\\pm{0.2}$ | 391$^{+66}_{-97}$ $^d$ | 743$\\pm$3 | 9.17$\\pm$0.05 | – |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total UV+FIR star formation rate of HPC1001",
+   "value": "900",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star formation activity & dust fraction",
+     "quote": "The total UV+FIR star formation rate is ${\\rm SFR_{total}\\approx900~M_\\odot~yr^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted dark matter halo mass log(M_DM/M_sun) of HPC1001",
+   "value": "13",
+   "uncertainty": "0.4",
+   "units": "dex (M_sun)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dark matter halo mass",
+     "quote": "Based on these estimates, we adopted an average halo mass of log$(M_{\\rm DM}/M_\\odot)=13$ with an uncertainty of 0.4 dex that is representative at these faint levels (e.g., (cite: Looser2021; Daddi2022Lya))."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial radius of HPC1001",
+   "value": "140",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dark matter halo mass",
+     "quote": "Assuming the structure is collapsed, the virial radius corresponding to this halo mass would be 140 kpc (cite: Goerdt2010core)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass log(M_*/M_sun) of HPC1001.b",
+   "value": "11.0",
+   "uncertainty": "+0.1/-0.1",
+   "units": "dex (M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001.b | 54765 | 3.56$^{+0.08}_{-0.10}$ | 0.35$\\pm$0.06 | 11.0$^{+0.1}_{-0.1}$ | 110$^{+25}_{-66}$ | 106$\\pm$20 | 8.32$\\pm$0.08 | 0.2$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass log(M_dust/M_sun) of HPC1001.b",
+   "value": "8.32",
+   "uncertainty": "±0.08",
+   "units": "dex (M_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HPC1001.b | 54765 | 3.56$^{+0.08}_{-0.10}$ | 0.35$\\pm$0.06 | 11.0$^{+0.1}_{-0.1}$ | 110$^{+25}_{-66}$ | 106$\\pm$20 | 8.32$\\pm$0.08 | 0.2$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred gas fraction (M_gas/M_*) of HPC1001.b",
+   "value": "0.2",
+   "uncertainty": "±0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star formation activity & dust fraction",
+     "quote": "HPC1001.b would have an inferred gas fraction of $M_{\\rm gas}/M_{*}=0.2\\pm0.1$ and a gas depletion time of 200 Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion time of HPC1001.b",
+   "value": "200",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star formation activity & dust fraction",
+     "quote": "HPC1001.b would have an inferred gas fraction of $M_{\\rm gas}/M_{*}=0.2\\pm0.1$ and a gas depletion time of 200 Myr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging details (CASA version, weighting/robust parameter, synthesized beam size, continuum rms noise level)",
+  "Exact aperture size used to measure ALMA 1.2 mm flux for the resolved source HPC1001.a",
+  "Exact coordinates of the 10 individual member galaxies HPC1001.a through HPC1001.j",
+  "Individual deblended flux measurements in Herschel, SCUBA2, and MeerKAT bands used as input to STARDUST"
+ ],
+ "missing_for_reproduction": [
+  "ALMA imaging parameters (robust weighting, beam size, continuum rms) and whether archive products or custom reduction were used",
+  "Aperture size used for ALMA 1.2 mm photometry of HPC1001.a",
+  "Exact R.A. and Dec. coordinates of HPC1001.a and HPC1001.h (which are not in COSMOS2020)",
+  "Super-deblended FIR/submm/radio flux table used as input for STARDUST"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Publicly available catalogs (COSMOS2020, COSMOS2015), public ALMA archival data (2013.1.00034.S), and open-source selection/fitting codes (GALCLUSTER, STARDUST, THE FARMER, LEPHARE) are used, with COSMOS2020 IDs provided in Table 1. However, ALMA imaging/calibration parameters, exact aperture sizes, and the intermediate deblended FIR photometry table are omitted.",
+ "rediscovery_reason": "Both the COSMOS2020 catalog and ALMA archival dataset 2013.1.00034.S are public, the overdensity search code GALCLUSTER is released on GitHub, and key numeric results (1.2 mm fluxes, photo-z, M_*, SFR_IR, M_dust, halo mass) are clearly tabulated.",
+ "source_card": "cards/2022A%26A...665L...7S/sonnet/card.md"
+}

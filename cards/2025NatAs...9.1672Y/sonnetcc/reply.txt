@@ -1,0 +1,442 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "2.1 Observations", "quote": "The epoch of 2024, currently unpublished, was observed between Dec. 2023 and Aug. 2024 (PI: T. Yoshida, ID: #2023.1.00525.S)."},
+{"loc": "2.1 Observations", "quote": "For the years of 2017 and 2019, we use the archival ALMA data delivered from the DSHARP (cite: andr18) and MAPS (cite: ober21) collaboration, respectively."}
+],
+"fields": ["protoplanetary_disks"],
+"question": {
+"value": "Are the spiral arms in the IM Lup dust disk driven by gravitational instability (moving at the local Keplerian speed) or by a planet (rigid rotation at the companion's orbit), tested by measuring spiral motion over a seven-year ALMA baseline",
+"evidence": [
+{"loc": "1 Introduction", "quote": "A robust way to distinguish the two mechanisms is to characterize the motion of spirals."},
+{"loc": "2.1 Observations", "quote": "resulting in a seven-year time baseline."}
+]
+},
+"targets": [
+{
+"name": "IM Lup",
+"details": [
+{"loc": "1 Introduction", "quote": "located at 158 pc (cite: gaia2022) from the Earth"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "158 pc",
+"distance_source": "Gaia (cite: gaia2022)"
+}
+],
+"alma_project_codes": [
+{"code": "2016.1.00484.L", "evidence": [{"loc": "Declarations", "quote": "The project IDs are 2016.1.00484.L, 2013.1.00226.S, 2013.1.00694.S, 2013.1.00798.S, 2018.1.01055.L, and 2023.1.00525.S."}]},
+{"code": "2013.1.00226.S", "evidence": [{"loc": "Declarations", "quote": "The project IDs are 2016.1.00484.L, 2013.1.00226.S, 2013.1.00694.S, 2013.1.00798.S, 2018.1.01055.L, and 2023.1.00525.S."}]},
+{"code": "2013.1.00694.S", "evidence": [{"loc": "Declarations", "quote": "The project IDs are 2016.1.00484.L, 2013.1.00226.S, 2013.1.00694.S, 2013.1.00798.S, 2018.1.01055.L, and 2023.1.00525.S."}]},
+{"code": "2013.1.00798.S", "evidence": [{"loc": "Declarations", "quote": "The project IDs are 2016.1.00484.L, 2013.1.00226.S, 2013.1.00694.S, 2013.1.00798.S, 2018.1.01055.L, and 2023.1.00525.S."}]},
+{"code": "2018.1.01055.L", "evidence": [{"loc": "Declarations", "quote": "The project IDs are 2016.1.00484.L, 2013.1.00226.S, 2013.1.00694.S, 2013.1.00798.S, 2018.1.01055.L, and 2023.1.00525.S."}]},
+{"code": "2023.1.00525.S", "evidence": [{"loc": "Declarations", "quote": "The project IDs are 2016.1.00484.L, 2013.1.00226.S, 2013.1.00694.S, 2013.1.00798.S, 2018.1.01055.L, and 2023.1.00525.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (2017, 2019a, 2019b); Band 7 (2024)", "evidence": [
+{"loc": "Table 1", "quote": "238.984 | Band 6 | 15-13894 | 2016.1.00484.L (cite: andr18) | 21"},
+{"loc": "Table 1", "quote": "330.172 | Band 7 | 15-2517 | 2023.1.00525.S | 31"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "2017: 238.984 GHz; 2019a: 226.053 GHz; 2019b: 257.029 GHz; 2024: two setups centred ~339 GHz and ~321 GHz, image at representative 330.172 GHz", "evidence": [
+{"loc": "Table 1", "quote": "2019 Aug 13 \\[58708\\] | 226.053 | Band 6 | 15-3638"},
+{"loc": "2.1 Observations", "quote": "The MAPS project observed two different frequency settings at 226 and 257 GHz in 2019."},
+{"loc": "Methods 2.1 2024 image", "quote": "Finally, we CLEANed the data and obtained the image at a representative frequency of 330.172 GHz."}
+]},
+{"field": "arrays", "value": "12-m array (C43-3, C43-4, C43-6 configurations stated for 2024); other epochs not stated", "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "with an extended configuration (C43-6), and on Apr. 30, 2024, and Aug. 24 2024 with a compact configuration (C43-3)"}
+]},
+{"field": "configurations", "value": "2024: C43-6 and C43-3 (first setup), C43-4 (second setup)", "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "with an extended configuration (C43-6), and on Apr. 30, 2024, and Aug. 24 2024 with a compact configuration (C43-3)"},
+{"loc": "Methods 2.1 2024 image", "quote": "observed on May. 29, 2024 with the configuration C43-4, totaling 1.4 hours of integration"}
+]},
+{"field": "baselines", "value": "2017: 15-13894 m; 2019a: 15-3638 m; 2019b: 15-3396 m; 2024: 15-2517 m", "evidence": [
+{"loc": "Table 1", "quote": "Band 6 | 15-13894 | 2016.1.00484.L (cite: andr18) | 21"},
+{"loc": "Table 1", "quote": "Band 6 | 15-3638 | 2018.1.01055.L (cite: ober21) | 28"},
+{"loc": "Table 1", "quote": "Band 6 | 15-3396 | 2018.1.01055.L (cite: ober21) | 26"}
+]},
+{"field": "angular_resolution", "value": "all images matched to a common 150 x 101 mas beam, PA 144.5 deg (circular 150 mas FWHM face-on); native beams 81x81 mas (2017), 110x80 mas (2019a), 110x90 mas (2024)", "evidence": [
+{"loc": "2.1 Observations", "quote": "the beam sizes of all images are arranged to $150 \\times 101$ mas with a position angle of 144.5 deg so that a circular beam with an FWHM of $150$ mas is obtained when the images are deprojected to face-on"},
+{"loc": "Methods 2.1 2024 image", "quote": "The resultant synthesized beam size was $110 \\times 90$ mas with a position angle of $-77$ deg."}
+]},
+{"field": "sensitivity", "value": "RMS before common-beam convolution: 18 (2017), 28 (2019a), 27 (2019b), 29 (2024) uJy/beam; Table 1 noise levels 21, 28, 26, 31 uJy/beam", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "the RMS noise level was 18 ${\\rm \\mu Jy\\ beam^{-1}}$"},
+{"loc": "Methods 2.1 2019 images", "quote": "The RMS noise level was estimated to be $28$ and $27\\ {\\rm \\mu Jy\\ beam^{-1}}$ for 2019a and 2019b, respectively."},
+{"loc": "Methods 2.1 2024 image", "quote": "The RMS noise level was estimated to be $29\\ {\\rm \\mu Jy\\ beam^{-1}}$."}
+]},
+{"field": "time_on_source", "value": "2024 first setup 3.8 h; second setup 1.4 h; other epochs not stated", "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "The total integration time was 3.8 hours."},
+{"loc": "Methods 2.1 2024 image", "quote": "totaling 1.4 hours of integration"}
+]},
+{"field": "observing_dates", "value": "Representative dates: 2017 Oct 10 (MJD 58036), 2019 Aug 13 and Aug 20, 2024 Mar 22; 2024 observations Dec 2023 to Aug 2024", "evidence": [
+{"loc": "Table 1", "quote": "2019 Aug 13 \\[58708\\] | 226.053"},
+{"loc": "2.1 Observations", "quote": "was observed between Dec. 2023 and Aug. 2024"},
+{"loc": "2.1 Observations", "quote": "We determine the representative date of each epoch as the mean observation date of the long-baseline observations"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "2017 and 2019 archival (DSHARP, MAPS); 2024 new PI data (PI T. Yoshida, 2023.1.00525.S)", "evidence": [
+{"loc": "2.1 Observations", "quote": "For the years of 2017 and 2019, we use the archival ALMA data delivered from the DSHARP (cite: andr18) and MAPS (cite: ober21) collaboration, respectively."},
+{"loc": "2.1 Observations", "quote": "(PI: T. Yoshida, ID: #2023.1.00525.S)"}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "Methods 2.1 2024 image", "quote": "Note that the $\\rm ^{12}CO\\ J=3-2$ line was flagged here and will be discussed in a future study."}]},
+{"species": "13CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "Methods 2.1 2024 image", "quote": "the 331 GHz continuum emission, $\\rm ^{12}CO\\ J=3-2$, and $\\rm ^{13}CO\\ J=3-2$ lines"}]},
+{"species": "C18O", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "Methods 2.1 2024 image", "quote": "The second setup targeted the 315 and 328 GHz continuum emission, $\\rm C^{18}O\\ J=3-2$, and $\\rm ^{13}C^{18}O\\ J=3-2$ lines."}]},
+{"species": "13C18O", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "Methods 2.1 2024 image", "quote": "The second setup targeted the 315 and 328 GHz continuum emission, $\\rm C^{18}O\\ J=3-2$, and $\\rm ^{13}C^{18}O\\ J=3-2$ lines."}]}
+],
+"other_facilities": [
+{"name": "DSHARP ALMA Large Program", "provided": {"value": "2017 high-resolution self-calibrated measurement set, original 44x43 mas reference image and spiral ridge positions", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "we used the self-calibrated DSHARP measurement set available on their website (cite: andr18)"},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "the original high spatial resolution ($44\\times43$ mas, PA$=115^\\circ$) DSHARP image that is available as a fits file on the official website"}
+]}},
+{"name": "MAPS ALMA Large Program", "provided": {"value": "2019a and 2019b continuum visibilities (calibrated MAPS continuum data) at 226 and 257 GHz", "evidence": [
+{"loc": "Methods 2.1 2019 images", "quote": "The original continuum visibility data were kindly provided by the MAPS collaboration."},
+{"loc": "Declarations", "quote": "We acknowledge Dr. Anibal Sierra for providing the calibrated MAPS continuum data."}
+]}},
+{"name": "Gaia", "provided": {"value": "distance to IM Lup (158 pc)", "evidence": [{"loc": "1 Introduction", "quote": "located at 158 pc (cite: gaia2022) from the Earth"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Disk geometry used for deprojection and the CLEAN mask: position angle 144.5 deg, inclination 47.5 deg", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "the position angle of 144.5 deg and inclination angle of 47.5 deg (cite: ober21; teag21)"}
+]}, "citation": "(cite: ober21; teag21)"},
+{"what": {"value": "Stellar mass ~1.1 Msun (used for the Keplerian angular velocity profile)", "evidence": [
+{"loc": "1 Introduction", "quote": "with a mass of $M_\\star {\\sim} 1.1\\ M_{\\odot}$ (cite: teag21)"},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "Using the stellar mass of $1.1\\ M_\\odot$ and considering the stellar gravity"}
+]}, "citation": "(cite: teag21)"},
+{"what": {"value": "Spiral ridge positions from the original DSHARP image, overplotted with expected Keplerian motion", "evidence": [
+{"loc": "2.2 Dust rotation curve", "quote": "we plot the spiral ridges specified by (cite: huan18), which uses the original high-resolution DSHARP image taken in 2017"}
+]}, "citation": "(cite: huan18)"},
+{"what": {"value": "Kinematically constrained disk mass of 0.1 Msun and Toomre Q ~1.0-2.5 from CO rotation curves", "evidence": [
+{"loc": "1 Introduction", "quote": "obtained a kinematically-constrained disk mass of 0.1 $M_{\\odot}$ (cite: loda23)"},
+{"loc": "3 Implications and Future Direction", "quote": "the disk mass measurement using the CO rotation curves implies $Q{\\sim}1.0-2.5$ across the whole disk (cite: loda23)"}
+]}, "citation": "(cite: loda23)"},
+{"what": {"value": "Planet-induced spiral case: Keplerian rotation at 117 au (planet position taken from the literature)", "evidence": [
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "The case for GI is shown with the blue lines while the planet-induced case is marked with the orange lines (cite: pint20)."},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "the Keplerian rotation at 117 au"}
+]}, "citation": "(cite: pint20)"},
+{"what": {"value": "DSHARP dust opacity model used for the optically thin frequency-effect test", "evidence": [
+{"loc": "Supplementary Information, Optically thin case", "quote": "We calculated the ratio for the DSHARP dust opacity model (cite: birn2018) for various combinations of maximum dust sizes"}
+]}, "citation": "(cite: birn2018)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Parametric rotation model omega(r) = omega_0 (r/1\")^-gamma + omega_f applied to the DSHARP reference image; two-slab dust opacity model for frequency effect", "evidence": [
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "This parametric form is an assumption, but can be fitted to both cases: GI- and/or planet-induced spirals."},
+{"loc": "Supplementary Information, Optically thin case", "quote": "we consider a model with two homogeneous dust slabs behind and beyond a spiral, where dust size distributions are different"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "2024 data: pipeline calibration followed by manual self-calibration (no automated self-calibration)", "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "The two setups were separately self-calibrated after running the pipeline calibration."},
+{"loc": "Methods 2.1 2024 image", "quote": "Note that we did not apply the automated self-calibration but manually performed it."}
+]},
+{"field": "casa_version", "value": "CASA 6.5.5 (stated for tclean imaging)", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "Common Astronomy Software Applications (CASA, version 6.5.5 (cite: CASA))"}
+]},
+{"field": "archive_products_used_as_is", "value": "2017: DSHARP self-calibrated measurement set; 2019: MAPS continuum visibilities provided by the MAPS collaboration", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "we used the self-calibrated DSHARP measurement set available on their website (cite: andr18)"},
+{"loc": "Methods 2.1 2019 images", "quote": "The original continuum visibility data were kindly provided by the MAPS collaboration."}
+]},
+{"field": "self_calibration", "value": "2024 setup 1: 5 rounds phase-only on short baselines (EB length down to 80 s), then combined with long baselines, 8 more phase-only rounds (EB length to 20 s) and 1 amplitude round (EB length), RMS improved by 1.7; setup 2: 7 phase-only rounds (EB length to 15 s) and 1 amplitude round; one final phase-only round to align phase centre", "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "We performed five rounds of iterative phase-only self-calibration for the short-baseline data."},
+{"loc": "Methods 2.1 2024 image", "quote": "The RMS noise level was improved by a factor of 1.7 before and after self-calibration of the combined data set."},
+{"loc": "Methods 2.1 2024 image", "quote": "We performed seven rounds of phase-only self-calibration with the solution intervals from the execution block (EB) length to 15 s and one round of amplitude self-calibration with the solution intervals of the EB length."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "tclean in CASA (2017 image explicitly)", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "performed imaging by employing the CLEAN algorithm with the $\\tt mtmfs$ deconvolver in the `tclean` task of the Common Astronomy Software Applications"}
+]},
+{"field": "deconvolver", "value": "mtmfs (stated for 2017 image)", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "performed imaging by employing the CLEAN algorithm with the $\\tt mtmfs$ deconvolver in the `tclean` task of the Common Astronomy Software Applications"}
+]},
+{"field": "weighting_robust", "value": "2017: super-uniform, npixels=10; 2019a/b and 2024: Briggs robust = 0 (0.5 used during 2024 self-calibration)", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "We found that the super-uniform weighting with ${\\tt npixels=10}$ achieves this."},
+{"loc": "Methods 2.1 2019 images", "quote": "We made an image with a robust parameter of $0$"},
+{"loc": "Methods 2.1 2024 image", "quote": "We adopted a robust parameter of 0 to achieve the required beam size without significantly losing the sensitivity, while that of 0.5 was used during self-calibration."}
+]},
+{"field": "uv_taper", "value": "2017 only: 0.08 arcsec; none (N/A) for 2019 and 2024", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "we employed ${\\tt uvtaper} = 0\\mbox{\\ensuremath{.\\!\\!^{\\prime\\prime}}}08$"}
+]},
+{"field": "masking", "value": "elliptical CLEAN mask, semi-major axis 2.0 arcsec, PA 144.5 deg, inclination 47.5 deg (2017; geometry used in other epochs)", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "As a CLEAN mask, we adopted an elliptical mask with a semi-major axis of $2.''0$ with the geometrical parameters of the IM Lup disk"}
+]},
+{"field": "array_combination", "value": "2024: self-calibrated short-baseline data combined with long-baseline data; all spectral windows used after flagging lines (setup 2)", "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "Then, we combined the self-calibrated short-baseline with the long-baseline data."}
+]},
+{"field": "smoothing", "value": "all images re-convolved with a Gaussian to the common beam", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "The image was re-convolved with a Gaussian to obtain a common beam size of $150 \\times 101$ mas."}
+]},
+{"field": "final_beam", "value": "150 x 101 mas, PA 144.5 deg (common to all epochs)", "evidence": [
+{"loc": "2.1 Observations", "quote": "the beam sizes of all images are arranged to $150 \\times 101$ mas with a position angle of 144.5 deg"}
+]},
+{"field": "final_rms", "value": "Table 1: 21 (2017), 28 (2019a), 26 (2019b), 31 (2024) uJy/beam; before convolution 18, 28, 27, 29 uJy/beam", "evidence": [
+{"loc": "Table 1", "quote": "Band 6 | 15-13894 | 2016.1.00484.L (cite: andr18) | 21"},
+{"loc": "Table 1", "quote": "Band 7 | 15-2517 | 2023.1.00525.S | 31"}
+]}
+],
+"inherited": [
+{"what": {"value": "2017 data: self-calibrated DSHARP measurement set", "evidence": [{"loc": "Methods 2.1 2017 image", "quote": "we used the self-calibrated DSHARP measurement set available on their website (cite: andr18)"}]}, "from_reference": "(cite: andr18)"},
+{"what": {"value": "2019 data: MAPS continuum visibilities", "evidence": [{"loc": "Methods 2.1 2019 images", "quote": "The MAPS dataset was adopted for the epochs of 2019a and 2019b (cite: ober21; sier21)."}]}, "from_reference": "(cite: ober21; sier21)"},
+{"what": {"value": "Geometrical parameters for deprojection", "evidence": [{"loc": "2.2 Dust rotation curve", "quote": "We deproject the images with known geometrical parameters (cite: ober21; teag21)"}]}, "from_reference": "(cite: ober21; teag21)"},
+{"what": {"value": "Spiral ridge positions", "evidence": [{"loc": "2.2 Dust rotation curve", "quote": "we plot the spiral ridges specified by (cite: huan18)"}]}, "from_reference": "(cite: huan18)"},
+{"what": {"value": "Theory: GI-induced spirals follow local Keplerian motion", "evidence": [{"loc": "1 Introduction", "quote": "Theories predict that the GI-induced spirals follow the local Keplerian motion (cite: coss09)"}]}, "from_reference": "(cite: coss09)"},
+{"what": {"value": "Planet-induced spirals follow Keplerian motion at the companion's radius", "evidence": [{"loc": "1 Introduction", "quote": "while the planet- (or flyby-) induced spirals follow the Keplerian motion at the companion's radius (cite: dong16)"}]}, "from_reference": "(cite: dong16)"},
+{"what": {"value": "m=2 is the dominant spiral mode in IM Lup", "evidence": [{"loc": "Methods 2.2.4 The quantity we measured", "quote": "the high spatial resolution image (cite: huan18) showed that the $m=2$ is likely the dominant mode"}]}, "from_reference": "(cite: huan18)"}
+],
+"unstated_but_needed": [
+"CASA version used for pipeline calibration and self-calibration of the 2024 data, and the pipeline version",
+"Flux, bandpass and phase calibrators and flux-scale handling for 2024; how absolute flux was set",
+"Intermediate self-calibration solution intervals, SNR thresholds, refant and spw/baseline combinations",
+"tclean image size, cell size, niter, threshold, nterms and mask details for 2019 and 2024 images",
+"Line-free channels or flagged channel ranges for the 2024 spectral windows",
+"MAPS continuum visibilities were provided privately; their self-calibration state is not described",
+"Exact definition and computation of sigma_{i-ref} and how the three epochs/offsets (dx, dy) are parameterised per epoch in the likelihood",
+"emcee initialisation and convergence diagnostics; how the reported best-fit and percentiles were obtained",
+"Radius-by-radius analysis: number and width of log radial bins, omega grid, interpolation used for azimuthal shifts",
+"Stellar mass uncertainty and how Keplerian omega at each radius was propagated against the fitted gamma",
+"Analysis code is not public (available on request only)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Image each epoch to a common beam",
+"method": {"value": "CLEAN imaging per epoch with tuned weighting, then re-convolution to a common 150 x 101 mas beam", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "The image was re-convolved with a Gaussian to obtain a common beam size of $150 \\times 101$ mas."},
+{"loc": "Methods 2.1 2017 image", "quote": "Several weighting schemes were tested to reduce the noise level with the required beam size being kept."}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "2017: uvtaper 0.08 arcsec, super-uniform npixels=10; 2019 and 2024: robust 0", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "We found that the super-uniform weighting with ${\\tt npixels=10}$ achieves this."},
+{"loc": "Methods 2.1 2019 images", "quote": "We made an image with a robust parameter of $0$"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Normalise and deproject the images",
+"method": {"value": "Align on the disk centre (elliptical Gaussian fit), deproject, and divide each epoch by the ratio of its azimuthally averaged radial profile to that of 2017; iterate the disk-centre offsets with the image-fitting analysis four times", "evidence": [
+{"loc": "Methods 2.2.1 Image normalization", "quote": "At each radius, the observed images are divided by a ratio of their azimuthally averaged profile to that of the 2017 image."},
+{"loc": "Methods 2.2.1 Image normalization", "quote": "We iterate this procedure four times and check the convergence of the offset parameters."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "PA 144.5 deg, inclination 47.5 deg", "evidence": [{"loc": "Methods 2.2.1 Image normalization", "quote": "the position angle of 144.5 deg and inclination angle of 47.5 deg (cite: ober21; teag21)"}]}
+],
+"assumptions": [
+{"value": "Different frequencies trace the same dust surface density structure, so differences between epochs are temporal", "evidence": [{"loc": "Supplementary Information, Frequency effect", "quote": "we assumed that the different frequencies trace the same dust surface density structure"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Normalised images resemble each other except for a small rotation of the pattern", "evidence": [{"loc": "Methods 2.2.1 Image normalization", "quote": "The normalized images indeed resemble each other except for a small rotation of the pattern"}]}
+},
+{
+"order": 3,
+"goal": "Fit parametric angular velocity profile to the images",
+"method": {"value": "Rotate the deprojected DSHARP reference image (convolved to a 65 mas circular beam) with omega(r) = omega_0 (r/1\")^-gamma + omega_f, re-convolve to 150 mas, and compare to the 2019a, 2019b and 2024 images with a Gaussian log-likelihood, with free offsets (dx, dy) per epoch", "evidence": [
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "The deprojected reference image is rotated according to Equation ([\\[eq:omega\\]](#eq:omega)) and convolved with a Gaussian again to match the common beam size of 150 mas."},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "we can simultaneously treat the effect of the alignment accuracy by taking the offset $(dx, dy)$ as free parameters"}
+]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "Radial range 0.065-0.7 arcsec", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "We only sum up the radial range of $r=0\\mbox{\\ensuremath{.\\!\\!^{\\prime\\prime}}}065-0\\mbox{\\ensuremath{.\\!\\!^{\\prime\\prime}}}7$"}]},
+{"value": "128 walkers, 5000 steps, first 3000 discarded as burn-in", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "We employ 128 walkers and 5000 steps, with the first 3000 steps discarded as burn-in."}]},
+{"value": "Priors: log10 omega_0 ~ U(-4.7, 5.3), log10 omega_f ~ U(-4.7, 5.3), gamma ~ U(-5, 5)", "evidence": [
+{"loc": "Table 3", "quote": "$\\log_{10} \\omega_0$ | $\\mathcal{U}(-4.7, 5.3)$ | $-0.97^{+0.32}_{-0.39}$ | $-0.82$"},
+{"loc": "Table 3", "quote": "$\\gamma$ | $\\mathcal{U}(-5, 5)$ | $1.9^{+0.49}_{-0.44}$"}
+]}
+],
+"assumptions": [
+{"value": "Parametric power-law-plus-floor form for omega(r)", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "This parametric form is an assumption, but can be fitted to both cases: GI- and/or planet-induced spirals."}]},
+{"value": "Self-gravity of the disk neglected for the Keplerian profile", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "Note that we neglect the self-gravity of the disk."}]}
+],
+"fitting": {"value": "emcee MCMC, Gaussian log-likelihood summed over pixels and the three later epochs with sigma = standard deviation of the residual map vs reference; broad non-informative uniform priors", "evidence": [
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "To sample the posterior distribution of the free parameters, we use a Python package `emcee` (cite: emcee) in practice."},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "We adopt broad non-informative priors"}
+]},
+"validation": {"value": "Compared fitted curve with local Keplerian and rigid-body expectations; agreement with the radius-by-radius approach", "evidence": [{"loc": "2.2 Dust rotation curve", "quote": "The motion of the spirals is successfully detected in both approaches, where they agree well with each other."}]}
+},
+{
+"order": 4,
+"goal": "Model-independent radius-by-radius pattern speed",
+"method": {"value": "At each radius, minimise chi^2 over omega summed over all epoch pairs of the azimuthally shifted normalised images; 1 sigma from |chi^2 - min chi^2| = 1, logarithmic radial bins", "evidence": [
+{"loc": "Methods 2.2.3 Radius-by-radius analysis", "quote": "At each $r$, we calculate $\\chi^2$ for various $\\omega$ and find an optimal $\\omega$ that minimizes $\\chi^2$."},
+{"loc": "Methods 2.2.3 Radius-by-radius analysis", "quote": "Here, the radial bin is taken logarithmically."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "sigma_{i,j} = sqrt(sigma_i^2 + sigma_j^2) with sigma_i the standard deviation of epoch i", "evidence": [{"loc": "Methods 2.2.3 Radius-by-radius analysis", "quote": "where $\\sigma_i$ is the standard deviation of epoch $i$"}]}
+],
+"assumptions": [
+{"value": "No assumption on the radial angular velocity profile; measures the pattern speed of the dominant m=2 spirals", "evidence": [{"loc": "Methods 2.2.4 The quantity we measured", "quote": "Therefore, what we measure in our analysis is the pattern speed of the dominant $m=2$ spiral arms."}]}
+],
+"fitting": {"value": "chi^2 minimisation per radius", "evidence": [{"loc": "Methods 2.2.3 Radius-by-radius analysis", "quote": "At each $r$, we calculate $\\chi^2$ for various $\\omega$ and find an optimal $\\omega$ that minimizes $\\chi^2$."}]},
+"validation": {"value": "Uncertainty may be underestimated because of signal correlation with the intensity gradient across radii", "evidence": [{"loc": "Methods 2.2.3 Radius-by-radius analysis", "quote": "it is difficult to accurately estimate the uncertainty of $\\omega$ if there is a signal correlation with intensity gradient across radii"}]}
+},
+{
+"order": 5,
+"goal": "Compare to GI (local Keplerian) and planet-induced (rigid) cases",
+"method": {"value": "Kernel density estimate of the MCMC sample, normalised by its maximum, evaluated at the local-Keplerian parameters and at Keplerian rotation at 117 au; converted to sigma equivalents", "evidence": [
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "We perform the kernel density estimate on the MCMC sample with `scipy.stats.gaussian_kde` (cite: scipy)"},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "showing that the GI-induced scenario is significantly preferable compared to the planet-induced scenario"}
+]},
+"software": ["scipy"],
+"key_parameters": [
+{"value": "GI case omega_kep = 0.19 (r/1\")^-1.5 deg/yr for 1.1 Msun; planet case 0.30 deg/yr", "evidence": [
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "\\omega_{\\rm kep}(r) \\simeq 0.19 \\left( \\frac{r}{1''} \\right)^{-1.5}\\ {\\rm deg\\ yr^{-1}},"},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "\\omega_{\\rm planet}(r) \\simeq 0.30 \\ {\\rm deg\\ yr^{-1}},"}
+]}
+],
+"assumptions": [
+{"value": "Planet-induced spirals rotate rigidly at the Keplerian rate at 117 au", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "the Keplerian rotation at 117 au"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Test whether the frequency difference can mimic motion",
+"method": {"value": "Empirical comparison of epoch pairs (2019a/2019b vs 2024 vs 2017), plus analytic optically thick (z tan i) and optically thin two-slab opacity-centroid limits", "evidence": [
+{"loc": "Supplementary Information, Frequency effect", "quote": "the pairs of 2019a & 2024 and 2019b & 2024 are similar to 2017 & 2024. This means that the frequency effect is minimal."},
+{"loc": "Supplementary Information, Optically thin case", "quote": "we consider a model with two homogeneous dust slabs behind and beyond a spiral, where dust size distributions are different"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "nu_I = 240 GHz and nu_II = 330 GHz; z = 0.05 r for the thick case", "evidence": [
+{"loc": "Supplementary Information, Optically thin case", "quote": "$\\nu_{\\rm I}= 240$ GHz and $\\nu_{\\rm I\\hspace{-1.2pt}I}= 330$ GHz"},
+{"loc": "Supplementary Information, Optically thick case", "quote": "set $z = 0.05r$ (cite: ueda24)"}
+]}
+],
+"assumptions": [
+{"value": "DSHARP dust opacity model; dust size distribution a power law with maximum size a_max; slabs optically thin with same temperature; maximum effect for equal surface densities", "evidence": [
+{"loc": "Supplementary Information, Optically thin case", "quote": "If the two slabs are optically thin and have the same temperature, the centroid of the emission"},
+{"loc": "Supplementary Information, Optically thin case", "quote": "For any combination of the dust sizes, $\\Delta X_{\\rm emis}$ is maximized when $\\Sigma_1 = \\Sigma_2$"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Frequency effect concluded negligible; positional difference ~0.05 arcsec at 30 au is not explained", "evidence": [{"loc": "Supplementary Information, Optically thin case", "quote": "Therefore, we conclude that the apparent positional difference is not due to the frequency effect but to the temporal variation."}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.5.5", "used_for": {"value": "CLEAN imaging with tclean (mtmfs); pipeline calibration and self-calibration of 2024 data", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "Common Astronomy Software Applications (CASA, version 6.5.5 (cite: CASA))"},
+{"loc": "Methods 2.1 2024 image", "quote": "The two setups were separately self-calibrated after running the pipeline calibration."}
+]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC sampling of omega(r) parameters", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "To sample the posterior distribution of the free parameters, we use a Python package `emcee` (cite: emcee) in practice."}]}},
+{"name": "scipy (scipy.stats.gaussian_kde)", "version": "not stated", "used_for": {"value": "Kernel density estimate of the MCMC sample", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "We perform the kernel density estimate on the MCMC sample with `scipy.stats.gaussian_kde` (cite: scipy)"}]}}
+],
+"results_numeric": [
+{"quantity": "Fitted rotation curve omega(r) = omega_0 (r/1\")^-gamma, omega_0", "value": "0.11", "uncertainty": "+0.12/-0.06", "units": "deg/yr at 1 arcsec", "from_step": 3, "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "\\omega(r) = 0.11^{+0.12}_{-0.06} \\left( \\frac{r}{1''} \\right)^{-1.9^{+0.44}_{-0.49}}\\ {\\rm deg\\ yr^{-1}}."}]},
+{"quantity": "Power-law index gamma of omega(r)", "value": "1.9", "uncertainty": "+0.49/-0.44 (Table 3; main text exponent -1.9 with +0.44/-0.49)", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 3", "quote": "$1.9^{+0.49}_{-0.44}$ | $1.75$ | $1.5$"},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "\\omega(r) = 0.11^{+0.12}_{-0.06} \\left( \\frac{r}{1''} \\right)^{-1.9^{+0.44}_{-0.49}}\\ {\\rm deg\\ yr^{-1}}."}
+]},
+{"quantity": "log10 omega_0 (percentiles; best fit -0.82)", "value": "-0.97", "uncertainty": "+0.32/-0.39", "units": "log10 deg/yr", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "$\\log_{10} \\omega_0$ | $\\mathcal{U}(-4.7, 5.3)$ | $-0.97^{+0.32}_{-0.39}$ | $-0.82$"}]},
+{"quantity": "log10 omega_f (floor, upper limit; best fit -3.19)", "value": "<0.04", "uncertainty": "not stated", "units": "log10 deg/yr", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "$\\log_{10} \\omega_f$ | $\\mathcal{U}(-4.7, 5.3)$ | $<0.04$ | $-3.19$"}]},
+{"quantity": "Local Keplerian angular velocity (1.1 Msun)", "value": "0.19 (r/1\")^-1.5", "uncertainty": "not stated", "units": "deg/yr", "from_step": 5, "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "\\omega_{\\rm kep}(r) \\simeq 0.19 \\left( \\frac{r}{1''} \\right)^{-1.5}\\ {\\rm deg\\ yr^{-1}},"}]},
+{"quantity": "Rigid-body (planet-induced, 117 au) angular velocity", "value": "0.30", "uncertainty": "not stated", "units": "deg/yr", "from_step": 5, "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "\\omega_{\\rm planet}(r) \\simeq 0.30 \\ {\\rm deg\\ yr^{-1}},"}]},
+{"quantity": "Deviation of planet-induced case from fit in gamma", "value": "at least 4", "uncertainty": "not stated", "units": "sigma", "from_step": 5, "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "which differs from the constrained rotation curve by at least $4\\sigma$ in $\\gamma$."}]},
+{"quantity": "Normalised KDE probability, local Keplerian vs Keplerian at 117 au", "value": "0.7 and 7e-50", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "return $0.7$ and $7\\times10^{-50}$, respectively. These correspond to 0.9$\\sigma$ and 15$\\sigma$, respectively"}]},
+{"quantity": "Significance equivalents (local Keplerian, planet at 117 au)", "value": "0.9 and 15", "uncertainty": "not stated", "units": "sigma", "from_step": 5, "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "return $0.7$ and $7\\times10^{-50}$, respectively. These correspond to 0.9$\\sigma$ and 15$\\sigma$, respectively"}]},
+{"quantity": "RMS improvement from self-calibration of combined 2024 data", "value": "1.7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "Methods 2.1 2024 image", "quote": "The RMS noise level was improved by a factor of 1.7 before and after self-calibration of the combined data set."}]},
+{"quantity": "2024 image synthesized beam and RMS before common-beam convolution", "value": "110 x 90 mas, PA -77 deg; 29 uJy/beam", "uncertainty": "not stated", "units": "mas; uJy/beam", "from_step": 1, "evidence": [
+{"loc": "Methods 2.1 2024 image", "quote": "The resultant synthesized beam size was $110 \\times 90$ mas with a position angle of $-77$ deg."},
+{"loc": "Methods 2.1 2024 image", "quote": "The RMS noise level was estimated to be $29\\ {\\rm \\mu Jy\\ beam^{-1}}$."}
+]},
+{"quantity": "Maximum ratio of opacity-induced centroid shift to physical slab separation", "value": "~0.24 at a_max = (5.5, 0.21) mm", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Supplementary Information, Optically thin case", "quote": "the ratio takes a somewhat large maximum of ${\\sim}0.24$ when the maximum dust size of the two slabs are $(a_{\\rm max, 1}, a_{\\rm max, 2}) = ( 5.5, 0.21 )\\ {\\rm mm}$"}]},
+{"quantity": "Observed apparent positional difference at 30 au", "value": "~0.05", "uncertainty": "not stated", "units": "arcsec", "from_step": 6, "evidence": [{"loc": "Supplementary Information, Optically thin case", "quote": "the apparent positional difference is ${\\sim} 0\\mbox{\\ensuremath{.\\!\\!^{\\prime\\prime}}}05$ at 30 au from the central star"}]}
+],
+"findings_qualitative": [
+{"value": "Spiral arms are detected in each epoch and the dust rotation curve matches local Keplerian rotation and differs from rigid-body rotation", "evidence": [
+{"loc": "2.1 Observations", "quote": "In each epoch, spiral arms are robustly detected."},
+{"loc": "2.2 Dust rotation curve", "quote": "The dust rotation curve exactly matches the local Keplerian rotation, while it is significantly different from the rigid body rotation."}
+]},
+{"value": "Winding spirals are transient, implying continuous formation and a gravitationally self-regulated disk with Q ~ O(1)", "evidence": [
+{"loc": "3 Implications and Future Direction", "quote": "it is more reasonable to consider that the spirals are continuously formed and diminished"}
+]}
+],
+"claims": [
+{"hypothesis": "IM Lup spirals are GI-driven (local Keplerian pattern speed) rather than planet-driven (rigid rotation)", "experiment": "Measured spiral motion across 2017, 2019a, 2019b and 2024 Band 6/7 continuum images matched to a common beam; fitted a parametric omega(r) with emcee", "result": "omega(r) = 0.11 (r/1\")^-1.9 deg/yr, consistent with Keplerian 0.19 (r/1\")^-1.5 and differing from a rigid 0.30 deg/yr by at least 4 sigma in gamma; KDE probabilities 0.7 vs 7e-50", "finding": "The spirals are consistent with GI-induced motion; planet-induced scenario strongly disfavoured", "support": "supported", "evidence": [
+{"loc": "2.2 Dust rotation curve", "quote": "the detection of the local Keplerian motion of the spirals directly suggests that these spirals are being driven by GI"},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "showing that the GI-induced scenario is significantly preferable compared to the planet-induced scenario"}
+]},
+{"hypothesis": "A model-independent measurement recovers the same rotation curve", "experiment": "Radius-by-radius chi^2 minimisation of azimuthal shifts between all epoch pairs", "result": "Dust rotation curve agrees with the parametric fit", "finding": "Spiral motion is detected in both approaches", "support": "supported", "evidence": [
+{"loc": "2.2 Dust rotation curve", "quote": "The motion of the spirals is successfully detected in both approaches, where they agree well with each other."}
+]},
+{"hypothesis": "The apparent motion is an artefact of observing at different frequencies", "experiment": "Compared epoch pairs and computed optically thick and thin upper limits using the DSHARP opacity model", "result": "Thick-case shift 0.017 arcsec (r/50 au); thin-case ratio at most ~0.24 with fine-tuned dust sizes differing by ~26", "finding": "Frequency effect is negligible; motion is temporal", "support": "supported", "evidence": [
+{"loc": "Supplementary Information, Optically thin case", "quote": "Therefore, we conclude that the apparent positional difference is not due to the frequency effect but to the temporal variation."}
+]},
+{"hypothesis": "GI operates in the primary planet-forming region, possibly aided by infall from the ISM", "experiment": "Interpretation of the rotation curve with literature disk masses and simulations of GI and infall", "result": "m=2 dominance conflicts with q ~ 0.1 for an isolated disk; infall or higher local surface density could resolve this", "finding": "Disk may be gravitationally self-regulated with Q ~ O(1); infall scenario remains untested", "support": "partially", "evidence": [
+{"loc": "3 Implications and Future Direction", "quote": "This may indicate that the disk is gravitationally self-regulated, maintaining the marginally unstable state with $Q {\\sim} \\mathcal{O}(1)$."},
+{"loc": "Methods 3 Comments on spiral pattern speed", "quote": "Although there has been no direct evidence of infall onto the IM Lup disk itself"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Disk already observed several times at high resolution with ALMA, giving a baseline long enough to measure spiral motion", "evidence": [{"loc": "1 Introduction", "quote": "this disk has been observed several times with relatively high spatial resolutions using ALMA, spanning a period large enough to investigate the motion of the spirals"}]},
+{"field": "why_this_method", "value": "Spiral motion discriminates GI (local Keplerian) from planet-driven (rigid) spirals; the radius-by-radius approach needs no assumed profile", "evidence": [
+{"loc": "1 Introduction", "quote": "A robust way to distinguish the two mechanisms is to characterize the motion of spirals."},
+{"loc": "2.2 Dust rotation curve", "quote": "it is advantageous that no assumption of the angular velocity profile is needed"}
+]},
+{"field": "how_they_decided_enough", "value": "Disk-centre offsets iterated four times until the offset parameters converged", "evidence": [{"loc": "Methods 2.2.1 Image normalization", "quote": "We iterate this procedure four times and check the convergence of the offset parameters."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Shadow-induced spirals excluded (no significant shadow in infrared image); planet-induced spirals disfavoured by rigid-rotation test; frequency effect rejected", "evidence": [
+{"loc": "1 Introduction", "quote": "In the infrared image, there is no significant shadow (cite: aven18), excluding the shadow scenario."},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "showing that the GI-induced scenario is significantly preferable compared to the planet-induced scenario"}
+]},
+{"value": "Several weighting schemes were tested for the 2017 image to reduce noise at the required beam size", "evidence": [{"loc": "Methods 2.1 2017 image", "quote": "Several weighting schemes were tested to reduce the noise level with the required beam size being kept."}]}
+],
+"limitations_admitted": [
+{"value": "Parametric omega(r) form is an assumption", "evidence": [{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "This parametric form is an assumption, but can be fitted to both cases: GI- and/or planet-induced spirals."}]},
+{"value": "Radius-by-radius uncertainties are hard to estimate and may be affected by limited resolution", "evidence": [
+{"loc": "2.2 Dust rotation curve", "quote": "Although this approach may be affected by the limited spatial resolution"},
+{"loc": "Methods 2.2.3 Radius-by-radius analysis", "quote": "it is difficult to accurately estimate the uncertainty of $\\omega$ if there is a signal correlation with intensity gradient across radii"}
+]},
+{"value": "Limited resolution may bias toward low azimuthal modes; disk self-gravity neglected; no direct evidence of infall", "evidence": [
+{"loc": "Methods 2.2.4 The quantity we measured", "quote": "Since the observations have a limited spatial resolution, we might be biased to the spirals with low azimuthal modes ($m$) due to smoothing out (cite: dipi14)."},
+{"loc": "Methods 2.2.2 Image-fitting analysis", "quote": "Note that we neglect the self-gravity of the disk."}
+]}
+],
+"referee_caveats_inferred": [
+"Only three independent epochs and one reference image; the radius-by-radius errors are acknowledged to be unreliable",
+"Pattern speed of a possibly stochastic, winding spiral may differ from the local Keplerian even when measured via the chosen metric",
+"Epochs at different frequencies/uv coverage are normalised only through azimuthally averaged profiles",
+"Planet-induced case tested only for a single companion radius of 117 au",
+"Sigma values from KDE of an MCMC sample (e.g. 15 sigma from 7e-50) are not a calibrated hypothesis test"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "All data stated as available on the ALMA science archive", "evidence": [{"loc": "Declarations", "quote": "The data used for this study are available on the ALMA science archive"}]},
+{"field": "products_in_archive", "value": "DSHARP self-calibrated MS and reference FITS image on the DSHARP website; MAPS continuum visibilities supplied by the MAPS collaboration", "evidence": [
+{"loc": "Methods 2.1 2017 image", "quote": "we used the self-calibrated DSHARP measurement set available on their website (cite: andr18)"},
+{"loc": "Methods 2.1 2019 images", "quote": "The original continuum visibility data were kindly provided by the MAPS collaboration."}
+]}
+],
+"code_released": [
+{"value": "Analysis code available only on request", "evidence": [{"loc": "Declarations", "quote": "The codes used for the analysis are available from the corresponding author upon reasonable request."}]}
+],
+"missing_for_reproduction": [
+"Analysis code (on request only)",
+"Private provenance of the MAPS continuum visibilities used for 2019",
+"Self-calibration, calibrator and tclean details for 2024 and 2019 images",
+"Exact likelihood sigma, per-epoch offset parameters and radius-by-radius binning"
+],
+"estimated_data_volume_inferred": "Roughly tens of GB (calibrated MS for DSHARP, MAPS continuum and the 2023.1.00525.S Band 7 data; raw downloads larger)",
+"score_inferred": 3,
+"score_reason": "Data are archive-public and the method with priors and numeric results is described, but code is only on request, the MAPS visibilities were privately provided, and key calibration/imaging settings are unstated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are public and results numeric, but the recipe is incomplete (unstated calibration and imaging settings, private MAPS visibilities, code not released).",
+"methods_papers": [
+{"citation": "(cite: andr18)", "why": "DSHARP data release and 2017 self-calibrated measurement set"},
+{"citation": "(cite: ober21; sier21)", "why": "MAPS data and continuum calibration for 2019 epochs"},
+{"citation": "(cite: huan18)", "why": "DSHARP IM Lup spiral ridges and m=2 dominance"},
+{"citation": "(cite: coss09)", "why": "Theory of GI spiral pattern speeds"},
+{"citation": "(cite: birn2018)", "why": "DSHARP dust opacity model for frequency-effect test"}
+],
+"companion_papers": [
+{"citation": "(cite: loda23)", "why": "Kinematic disk mass of IM Lup used for Q ~ 1"},
+{"citation": "(cite: pint20)", "why": "Planet-induced spiral scenario with planet at 117 au"},
+{"citation": "(cite: ueda24)", "why": "Gravitational self-regulation model of the IM Lup disk"}
+],
+"related_projects_or_surveys": ["DSHARP", "MAPS"]
+}

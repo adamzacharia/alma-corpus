@@ -1,0 +1,3434 @@
+{
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+    {
+      "loc": "Introduction",
+      "quote": "We present the first full orbital solution for the system, combining astrometric and radial velocity (RV) measurements, and forward-model the ALMA visibilities to determine the obliquity of the individual circumstellar disks with the binary orbital plane."
+    }
+  ],
+  "fields": [
+    "protoplanetary_disks",
+    "stellar_physics"
+  ],
+  "question": {
+    "value": "Link circumstellar disk properties and disk-orbit alignment to the precisely known binary orbit of FO Tau.",
+    "evidence": [
+      {
+        "loc": "Introduction",
+        "quote": "We present the first full orbital solution for the system, combining astrometric and radial velocity (RV) measurements, and forward-model the ALMA visibilities to determine the obliquity of the individual circumstellar disks with the binary orbital plane."
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "FO Tau A",
+      "coordinates": "RA 04:14:49.30089, Dec +28:12:29.9844; continuum centroid",
+      "redshift_or_distance": "135^{+4}_{-3} pc",
+      "distance_source": "(cite: Bailer-Jonesetal2021) geometric distance",
+      "details": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "$\\alpha_{\\rm A}$ = 04:14:49.30089, $\\delta_{\\rm A}$ = +28:12:29.9844;"
+        },
+        {
+          "loc": "Literature Photometry & Astrometry",
+          "quote": "The (cite: Bailer-Jonesetal2021) geometric distance is $135^{+4}_{-3}$ pc,"
+        },
+        {
+          "loc": "Literature Photometry & Astrometry",
+          "quote": "Given that these values are in fair agreement, we adopt the geometric distance in our analysis."
+        }
+      ]
+    },
+    {
+      "name": "FO Tau B",
+      "coordinates": "RA 04:14:49.29056, Dec +28:12:29.9957; continuum centroid",
+      "redshift_or_distance": "135^{+4}_{-3} pc",
+      "distance_source": "(cite: Bailer-Jonesetal2021) geometric distance",
+      "details": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "$\\alpha_{\\rm B}$ = 04:14:49.29056, $\\delta_{\\rm B}$ = +28:12:29.9957"
+        },
+        {
+          "loc": "Literature Photometry & Astrometry",
+          "quote": "The (cite: Bailer-Jonesetal2021) geometric distance is $135^{+4}_{-3}$ pc,"
+        },
+        {
+          "loc": "Literature Photometry & Astrometry",
+          "quote": "Given that these values are in fair agreement, we adopt the geometric distance in our analysis."
+        }
+      ]
+    }
+  ],
+  "alma_project_codes": [
+    {
+      "code": "2019.1.01739.S",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "Our ALMA observations of FO Tau took place in Cycle 7 (Project Code 2019.1.01739.S) using Band 6 receivers in dual polarization mode."
+        }
+      ]
+    }
+  ],
+  "data_settings": [
+    {
+      "field": "bands",
+      "value": "Band 6; dual polarization",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "Our ALMA observations of FO Tau took place in Cycle 7 (Project Code 2019.1.01739.S) using Band 6 receivers in dual polarization mode."
+        }
+      ]
+    },
+    {
+      "field": "frequencies_and_spectral_setup",
+      "value": "Continuum: 231.6, 234.0, 245.9 GHz, 31.25 MHz resolution; CO: 230.538 GHz, 938 MHz bandwidth, two-channel resolution 488 kHz (0.64 km s^{-1})",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "Three spectral windows were placed to sample continuum at 231.6, 234.0, and 245.9 GHz, each with a bandwidth of 1.875 GHz sampled at 31.25 MHz resolution."
+        },
+        {
+          "loc": "Observations",
+          "quote": "A fourth spectral window was centered on the $^{12}{\\mathrm{CO}} \\ J=2-1$ transition (230.538 GHz) at the source’s heliocentric velocity"
+        },
+        {
+          "loc": "Observations",
+          "quote": "This CO window covered 938 MHz with a two-channel velocity resolution of 488 kHz (0.64 km s$^{-1}$)."
+        }
+      ]
+    },
+    {
+      "field": "continuum_bandwidth",
+      "value": "Three windows of 1.875 GHz; continuum visibility fits also use the CO-centered window with 0.9 GHz bandwidth",
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "Three are continuum spectral windows with 1.875 GHz of bandwidth, and the fourth is the CO-centered higher resolution spectral window with 0.9 GHz of bandwidth."
+        }
+      ]
+    },
+    {
+      "field": "configurations",
+      "value": "Compact: roughly C6; extended: roughly C8",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "0.1$\\ensuremath{''}$ and 2.1$\\ensuremath{''}$, respectively, in Band 6 (roughly the C6 configuration)."
+        },
+        {
+          "loc": "Observations",
+          "quote": "reaching an angular resolution of 0.034$\\ensuremath{''}$ and maximum recoverable scale of 0.83$\\ensuremath{''}$ (roughly the C8 configuration)."
+        }
+      ]
+    },
+    {
+      "field": "baselines",
+      "value": "Compact: 14 m–3.6 km; extended: 40 m–11.6 km",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "The compact configuration had baselines between 14 m and 3.6 km,"
+        },
+        {
+          "loc": "Observations",
+          "quote": "The extended configuration baselines spanned 40 m to 11.6 km,"
+        }
+      ]
+    },
+    {
+      "field": "angular_resolution",
+      "value": "Compact: 0.1 arcsec; extended: 0.034 arcsec; spatial resolution approximately 5 AU",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "0.1$\\ensuremath{''}$ and 2.1$\\ensuremath{''}$, respectively, in Band 6 (roughly the C6 configuration)."
+        },
+        {
+          "loc": "Observations",
+          "quote": "reaching an angular resolution of 0.034$\\ensuremath{''}$ and maximum recoverable scale of 0.83$\\ensuremath{''}$ (roughly the C8 configuration)."
+        },
+        {
+          "loc": "Observations",
+          "quote": "The angular scales these observations correspond to a spatial resolution of $\\sim$5 AU"
+        }
+      ]
+    },
+    {
+      "field": "max_recoverable_scale",
+      "value": "Compact: 2.1 arcsec; extended: 0.83 arcsec",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "corresponding to an angular resolution and maximum recoverable scale of 0.1$\\ensuremath{''}$ and 2.1$\\ensuremath{''}$, respectively, in Band 6"
+        },
+        {
+          "loc": "Observations",
+          "quote": "reaching an angular resolution of 0.034$\\ensuremath{''}$ and maximum recoverable scale of 0.83$\\ensuremath{''}$"
+        }
+      ]
+    },
+    {
+      "field": "time_on_source",
+      "value": "Compact: 6 minutes; extended: 50 minutes",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "Observations in the compact and extended configurations took place on 2021-07-18–11:17 and 2021-08-22–09:15 with 6 and 50 minute on-source times, respectively, following the standard calibrator observing sequence."
+        }
+      ]
+    },
+    {
+      "field": "observing_dates",
+      "value": "Compact: 2021-07-18–11:17; extended: 2021-08-22–09:15",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "Observations in the compact and extended configurations took place on 2021-07-18–11:17 and 2021-08-22–09:15 with 6 and 50 minute on-source times, respectively, following the standard calibrator observing sequence."
+        }
+      ]
+    },
+    {
+      "field": "pi_or_archival_as_stated",
+      "value": "Our ALMA observations",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "Our ALMA observations of FO Tau took place in Cycle 7 (Project Code 2019.1.01739.S)"
+        }
+      ]
+    }
+  ],
+  "lines_targeted": [
+    {
+      "species": "^{12}CO",
+      "transition": "J=2-1",
+      "rest_frequency": "230.538 GHz",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "A fourth spectral window was centered on the $^{12}{\\mathrm{CO}} \\ J=2-1$ transition (230.538 GHz)"
+        }
+      ]
+    }
+  ],
+  "other_facilities": [
+    {
+      "name": "Keck II / NIRSPEC behind AO",
+      "provided": {
+        "value": "Spatially resolved H-band spectra for stellar characterization and relative RV",
+        "evidence": [
+          {
+            "loc": "Keck – NIRSPEC behind AO",
+            "quote": "FO Tau was observed on UT 2010 December 12 (UTC 09:32:18.66) at the Keck II 10-meter telescope using NIRSPEC (cite: McLeanetal2000) behind the adaptive optics (AO) system."
+          },
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "With angularly-resolved NIRSPEC spectra, we can compute the relative RV of the FO Tau A and B components, which provides a valuable constraint when fitting the orbital solution."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Keck / NIRC2",
+      "provided": {
+        "value": "AO relative astrometry and photometry",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "We obtained three new AO observations of FO Tau using the NIRC2 camera at the Keck Observatory (cite: Wizinowich2000) on UT 2016 Oct 20, 2019 Jan 20, and 2022 Oct 19."
+          },
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "We also obtained AO observations of FO Tau with NIRC2 in the $J$, Hcont, and Kcont filters on UT 2009 Nov 21."
+          }
+        ]
+      }
+    },
+    {
+      "name": "TESS",
+      "provided": {
+        "value": "Sectors 19, 43, 44; 2 minute SAP and PDCSAP light curves",
+        "evidence": [
+          {
+            "loc": "Time-Series Photometry",
+            "quote": "FO Tau was observed by the Transiting Exoplanet Survey Satellite (*TESS*; (cite: Rickeretal2015)) in Sectors 19, 43, and 44 with a 2 minute cadence."
+          },
+          {
+            "loc": "Time-Series Photometry",
+            "quote": "Our analysis makes use of the simple-aperture photometry (SAP) and the pre-search data conditioning simple aperture photometry (cite: SmithKepler2012; StumpeKepler2012; StumpeMultiscale2014) light curves."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Gaia",
+      "provided": {
+        "value": "DR3 astrometry; EDR3 parallax prior stated for the orbit fit",
+        "evidence": [
+          {
+            "loc": "Literature Photometry & Astrometry",
+            "quote": "Our analysis makes use of photometric measurements from the literature and astrometry from *Gaia* DR3."
+          },
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "Gaussian priors are placed on the parallax (*Gaia* EDR3),"
+          }
+        ]
+      }
+    },
+    {
+      "name": "2MASS",
+      "provided": {
+        "value": "Unresolved H-band apparent magnitude",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "Beginning with the unresolved 2MASS $H$-band apparent magnitude (cite: Skrutskie2006),"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HST / STIS",
+      "provided": {
+        "value": "Literature spatially resolved photospheric fluxes at 6100 Å",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "spatially-resolved fluxes at 6100 Å from *HST*-STIS spectra (cite: HartiganKenyon2003),"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Keck Observatory Archive",
+      "provided": {
+        "value": "AO observations available for inspection",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "The AO observations are available for further inspection on the Keck Archive"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MAST",
+      "provided": {
+        "value": "TESS data",
+        "evidence": [
+          {
+            "loc": "Time-Series Photometry",
+            "quote": "All of the *TESS* data used in this paper can be found in MAST:"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Texas Advanced Computing Center (TACC)",
+      "provided": {
+        "value": "HPC resources",
+        "evidence": [
+          {
+            "loc": "acknowledgments",
+            "quote": "The authors acknowledge the Texas Advanced Computing Center (TACC) at The University of Texas at Austin for providing HPC resources that have contributed to the research results reported within this paper"
+          }
+        ]
+      }
+    }
+  ],
+  "external_data_from_literature": [
+    {
+      "what": {
+        "value": "Source heliocentric velocity approximately 16 km/s for spectral-window placement",
+        "evidence": [
+          {
+            "loc": "Observations",
+            "quote": "at the source’s heliocentric velocity ($\\sim$16 km/s; (cite: Kounkeletal2019))."
+          }
+        ]
+      },
+      "citation": "(cite: Kounkeletal2019)"
+    },
+    {
+      "what": {
+        "value": "Geometric distance 135^{+4}_{-3} pc",
+        "evidence": [
+          {
+            "loc": "Literature Photometry & Astrometry",
+            "quote": "The (cite: Bailer-Jonesetal2021) geometric distance is $135^{+4}_{-3}$ pc,"
+          }
+        ]
+      },
+      "citation": "(cite: Bailer-Jonesetal2021)"
+    },
+    {
+      "what": {
+        "value": "Gaia DR3 astrometry, parallax and RUWE",
+        "evidence": [
+          {
+            "loc": "Literature Photometry & Astrometry",
+            "quote": "Our analysis makes use of photometric measurements from the literature and astrometry from *Gaia* DR3."
+          },
+          {
+            "loc": "Table 3",
+            "quote": "$\\varpi$ (mas)                                                          | $7.3\\pm0.2$"
+          },
+          {
+            "loc": "Literature Photometry & Astrometry",
+            "quote": "FO Tau’s RUWE is 11.499, in line with its known binarity."
+          }
+        ]
+      },
+      "citation": "Gaia DR3"
+    },
+    {
+      "what": {
+        "value": "Historical relative astrometry compiled in Table 1",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "Table [1](#tab:AO) presents the astrometric measurements from the literature and this work, which are included in our fit to the FO Tau binary orbit."
+          },
+          {
+            "loc": "Table 1",
+            "quote": "(1) (cite: Leinertetal1993); (2) (cite: Ghezetal1995); (3) (cite: Woitasetal2001); (4) (cite: WhiteGhez2001); (5) (cite: HartiganKenyon2003); (6) (cite: Tamazianetal2002);"
+          },
+          {
+            "loc": "Table 1",
+            "quote": "(8) (cite: Schaeferetal2014); (9) (cite: Akesonetal2019)"
+          }
+        ]
+      },
+      "citation": "(cite: Leinertetal1993); (cite: Ghezetal1995); (cite: Woitasetal2001); (cite: WhiteGhez2001); (cite: HartiganKenyon2003); (cite: Tamazianetal2002); (cite: Schaeferetal2014); (cite: Akesonetal2019)"
+    },
+    {
+      "what": {
+        "value": "Unresolved 2MASS H-band apparent magnitude",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "Beginning with the unresolved 2MASS $H$-band apparent magnitude (cite: Skrutskie2006),"
+          }
+        ]
+      },
+      "citation": "(cite: Skrutskie2006)"
+    },
+    {
+      "what": {
+        "value": "Average visual extinction A_V=1.98±0.20",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "the average visual extinction measured by (cite: Hartiganetal1995) and (cite: HerczegHillenbrand2014) from flux-calibrated, low-resolution optical spectra ($A_V=1.98\\pm0.20$)."
+          }
+        ]
+      },
+      "citation": "(cite: Hartiganetal1995); (cite: HerczegHillenbrand2014)"
+    },
+    {
+      "what": {
+        "value": "Extinction- and accretion-corrected resolved 6100 Å photospheric fluxes",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "spatially-resolved fluxes at 6100 Å from *HST*-STIS spectra (cite: HartiganKenyon2003),"
+          }
+        ]
+      },
+      "citation": "(cite: HartiganKenyon2003)"
+    },
+    {
+      "what": {
+        "value": "Extinction- and accretion-corrected unresolved 7510 Å photospheric flux",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "a spatially unresolved flux at 7510 Å from ground-based spectra (cite: HerczegHillenbrand2014)."
+          }
+        ]
+      },
+      "citation": "(cite: HerczegHillenbrand2014)"
+    },
+    {
+      "what": {
+        "value": "30% H-band veiling uncertainty based on variability",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "A 30% error on the veiling is propagated following the average level of H-band veiling variability found in (cite: Sousaetal2023)."
+          }
+        ]
+      },
+      "citation": "(cite: Sousaetal2023)"
+    },
+    {
+      "what": {
+        "value": "Laboratory atomic transition data from the Vienna Atomic Line Database",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "The spectra are synthesized using laboratory atomic transition data from the Vienna Atomic Line Database (cite: Piskunovetal1995; Ryabchikovaetal2015)"
+          }
+        ]
+      },
+      "citation": "(cite: Piskunovetal1995; Ryabchikovaetal2015)"
+    },
+    {
+      "what": {
+        "value": "Solar and 61 Cyg B standard spectra for synthetic-spectrum calibration",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "The synthetic spectra are then calibrated against the Solar spectrum (cite: Livingston&Wallace1991) and the spectrum of 61 Cyg B (cite: Wallace&Hinkle1996)."
+          }
+        ]
+      },
+      "citation": "(cite: Livingston&Wallace1991); (cite: Wallace&Hinkle1996)"
+    },
+    {
+      "what": {
+        "value": "NextGen atmosphere models",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "along with the NextGen atmosphere models of (cite: Allard&Hauschildt1995)."
+          }
+        ]
+      },
+      "citation": "(cite: Allard&Hauschildt1995)"
+    },
+    {
+      "what": {
+        "value": "BT-Settl (CFIST) atmospheric models",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "with synthetic BT-Settl (CFIST) atmospheric models (cite: Allard2013),"
+          }
+        ]
+      },
+      "citation": "(cite: Allard2013)"
+    },
+    {
+      "what": {
+        "value": "Dartmouth Stellar Evolution Program isochrones",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "interpolating isochrones from the Dartmouth Stellar Evolution Program (cite: Dotteretal2008) using the `scipy griddata` function."
+          }
+        ]
+      },
+      "citation": "(cite: Dotteretal2008)"
+    },
+    {
+      "what": {
+        "value": "Comparison stellar evolution models: MIST, BHAC 2015, DSEP-magnetic and SPOTS",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "MESA Isochrones and Stellar Tracks (cite: Dotteretal2016; Choietal2016), BHAC 2015 (cite: Baraffeetal2015), DSEP-magnetic (cite: Feiden&Chaboyer2012; Feiden&Chaboyer2013; Feiden2016), SPOTS ($f_{spot} =$ 0, 0.17, 0.34, 0.51) (cite: Somersetal2020)"
+          }
+        ]
+      },
+      "citation": "(cite: Dotteretal2016; Choietal2016); (cite: Baraffeetal2015); (cite: Feiden&Chaboyer2012; Feiden&Chaboyer2013; Feiden2016); (cite: Somersetal2020)"
+    },
+    {
+      "what": {
+        "value": "Empirical median NIR RV jitter approximately 400 m s^{-1}",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "we adopt an empirical NIR RV jitter value from the (cite: Crockettetal2012) RV survey of T Tauri stars."
+          },
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "The median NIR jitter of their nine-star sample is $\\sim 400$ m s$^{-1}$, which we add in quadrature to our relative RV error."
+          }
+        ]
+      },
+      "citation": "(cite: Crockettetal2012)"
+    },
+    {
+      "what": {
+        "value": "Geometric distortion solutions; plate scale 9.971±0.004 mas pixel^{-1}; PA subtraction 0.262±0.020 degrees",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "We corrected the binary positions using the geometric distortion solutions published by (cite: Service2016)"
+          },
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "applied a plate scale of 9.971 $\\pm$ 0.004 mas pixel$^{-1}$ and subtracted $0.262\\ensuremath{^\\circ} \\pm 0.020\\ensuremath{^\\circ}$ from the measured position angles."
+          }
+        ]
+      },
+      "citation": "(cite: Service2016)"
+    },
+    {
+      "what": {
+        "value": "Dust opacity 2.3 cm^2 g^{-1} at 230 GHz and luminosity-dependent dust temperature",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "$\\kappa_\\nu$ is the dust opacity (2.3 cm$^2$ g$^{-1}$ at 230 GHz; (cite: Andrewsetal2013))"
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "The dust temperature is computed assuming $T_{\\rm dust} \\sim 25(L_\\star/L_\\odot)^{1/4}$ K (cite: Andrewsetal2013)."
+          }
+        ]
+      },
+      "citation": "(cite: Andrewsetal2013)"
+    },
+    {
+      "what": {
+        "value": "Disk truncation coefficients b and c",
+        "evidence": [
+          {
+            "loc": "Disk Truncation",
+            "quote": "Using the range of $b$ and $c$ coefficient values compiled by (cite: Manaraetal2019), we compute disk truncation radii of 5–6 AU for FO Tau’s orbital parameters."
+          }
+        ]
+      },
+      "citation": "(cite: Manaraetal2019)"
+    }
+  ],
+  "simulations_or_models_as_data": [
+    {
+      "value": "NextGen atmosphere models for H-band spectral synthesis",
+      "evidence": [
+        {
+          "loc": "Modeling High-Resolution NIR Spectra",
+          "quote": "along with the NextGen atmosphere models of (cite: Allard&Hauschildt1995)."
+        }
+      ]
+    },
+    {
+      "value": "BT-Settl (CFIST) atmospheric models for the SED fit",
+      "evidence": [
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "with synthetic BT-Settl (CFIST) atmospheric models (cite: Allard2013), interpolating over effective temperature and log$(g)$ values between 3.0 and 4.5."
+        }
+      ]
+    },
+    {
+      "value": "DSEP isochrones for mass priors; MIST, BHAC 2015, DSEP-magnetic and SPOTS for model-dependence checks",
+      "evidence": [
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "interpolating isochrones from the Dartmouth Stellar Evolution Program (cite: Dotteretal2008) using the `scipy griddata` function."
+        },
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "MESA Isochrones and Stellar Tracks (cite: Dotteretal2016; Choietal2016), BHAC 2015 (cite: Baraffeetal2015), DSEP-magnetic (cite: Feiden&Chaboyer2012; Feiden&Chaboyer2013; Feiden2016), SPOTS ($f_{spot} =$ 0, 0.17, 0.34, 0.51) (cite: Somersetal2020)"
+        }
+      ]
+    }
+  ],
+  "calibration": [
+    {
+      "field": "pipeline_or_manual",
+      "value": "Configurations calibrated separately by the standard ALMA pipeline; fully calibrated measurement sets supplied by the North American ALMA Science Center",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "Extended and compact configurations were calibrated separately by the standard ALMA pipeline (`CASA v6.1.1.15`; (cite: McMullinetal2007)) and provided as a fully-calibrated measurement set by the North American ALMA Science Center."
+        }
+      ]
+    },
+    {
+      "field": "casa_version",
+      "value": "Pipeline: v6.1.1.15; post-processing: v6.5.1.23",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "by the standard ALMA pipeline (`CASA v6.1.1.15`; (cite: McMullinetal2007))"
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "We provide an outline of our procedure below using `CASA v6.5.1.23`."
+        }
+      ]
+    },
+    {
+      "field": "flux_scale_uncertainty",
+      "value": "Additional 5% absolute flux calibration uncertainty in dust masses",
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "Including an additional 5% uncertainty on the ALMA absolute flux calibration,"
+        }
+      ]
+    },
+    {
+      "field": "self_calibration",
+      "value": "Compact phase-only: full duration, 100 s; plateau at 60 s; full-integration amplitude-only. Combined phase-only: full integration, 1500, 1000, 600 s; final amplitude-only iteration rejected",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "Solution intervals of the total duration and of 100 s improved the SNR from 52 to 84 before plateauing at 60 s."
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "One iteration of amplitude-only self calibration over the full integration was then performed, which improved the SNR to 85."
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "Phase-only self-calibration was performed for the full integration, 1500 s, 1000 s, and 600 s, bringing the SNR from to 60 to 150 before leveling out."
+        }
+      ]
+    }
+  ],
+  "imaging": [
+    {
+      "field": "task",
+      "value": "tclean",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "We imaged each data set using `tclean` (Briggs weighting, `robust` = 0) to test the astrometric alignment and flux scaling."
+        }
+      ]
+    },
+    {
+      "field": "weighting_robust",
+      "value": "Continuum: Briggs robust = 0; CO: Briggs robust = 1",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "Final continuum imaging was performed with interactive masking using Briggs weighting (`robust` = 0) with a three sigma cleaning threshold."
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "The resultant combined cube was imaged with interactive masking using Briggs `robust` = 1 weighting"
+        }
+      ]
+    },
+    {
+      "field": "masking",
+      "value": "Broad mask encompassing both stars for compact self-calibration; interactive final masks; three sigma cleaning",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "We imaged the compact configuration with a broad cleaning mask that encompassed both stellar components,"
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "Final continuum imaging was performed with interactive masking using Briggs weighting (`robust` = 0) with a three sigma cleaning threshold."
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "The CO channel maps have a RMS values of 0.9 mJy/beam and are cleaned to a depth of three sigma."
+        }
+      ]
+    },
+    {
+      "field": "continuum_subtraction",
+      "value": "CO: after applying the same self-calibration steps",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "The same self-calibration steps above were applied, followed by continuum subtraction."
+        }
+      ]
+    },
+    {
+      "field": "line_free_channels",
+      "value": "Continuum datasets exclude channels within ±20 km s^{-1} of CO J=2-1 at the systemic velocity",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "removing channels within $\\pm$20 km s$^{-1}$ of the $^{12}{\\mathrm{CO}} \\ J=2-1$ transition at the FO Tau systemic velocity."
+        }
+      ]
+    },
+    {
+      "field": "array_combination",
+      "value": "Combine extended and self-calibrated compact measurement sets; repeat self-calibration",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "We then combined the extended and self-calibrated compact measurement sets and repeated this process."
+        }
+      ]
+    },
+    {
+      "field": "final_beam",
+      "value": "Continuum: 45×22 mas, PA 22 degrees; CO: 79×36 mas, PA 25 degrees",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "This resulted in a synthesized continuum beam of $45\\times22$ mas with a position angle of $22^\\circ$."
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "The synthesized CO beam is $79\\times36$ mas with a position angle of $25^\\circ$."
+        }
+      ]
+    },
+    {
+      "field": "final_rms",
+      "value": "Continuum: 0.03 mJy/beam in imaging section; 0.02 mJy/beam in summary. CO channels: 0.9 mJy/beam",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "The root-mean-square deviation (RMS) of the final image is 0.03 mJy/beam."
+        },
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "The CO channel maps have a RMS values of 0.9 mJy/beam and are cleaned to a depth of three sigma."
+        },
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "We do not find evidence for a circumbinary disk or extended emission detected beyond the binary orbit in dust or CO above an RMS of 0.02 and 0.9 mJy/beam, respectively."
+        }
+      ]
+    }
+  ],
+  "inherited": [
+    {
+      "what": {
+        "value": "DSHARP post-processing for combining configurations and self-calibration",
+        "evidence": [
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "From the pipeline-calibrated data we followed the post-processing procedures developed for the DSHARP program, which focus on combining array configurations and self-calibration."
+          },
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "A full description of this approach with accompanying scripts can be found in (cite: Andrewsetal2018) and the program’s data release web page"
+          }
+        ]
+      },
+      "from_reference": "(cite: Andrewsetal2018); DSHARP data release web page"
+    },
+    {
+      "what": {
+        "value": "PSF-fitting binary astrometry and flux ratios",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "We fit a binary model to the images of FO Tau using the PSF fitting technique described by (cite: Schaeferetal2014)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Schaeferetal2014)"
+    },
+    {
+      "what": {
+        "value": "Effective PSFs from the two binary components for variable 2016 PSF shapes",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "we created an effective PSF for each image using the two components in FO Tau following the approach described by (cite: Schaefer2018),"
+          }
+        ]
+      },
+      "from_reference": "(cite: Schaefer2018)"
+    },
+    {
+      "what": {
+        "value": "Geometric distortion correction",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "We corrected the binary positions using the geometric distortion solutions published by (cite: Service2016)"
+          }
+        ]
+      },
+      "from_reference": "(cite: Service2016)"
+    },
+    {
+      "what": {
+        "value": "2009 PSF-fitting photometry and astrometry using empirical templates",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "The images were processed and analyzed with PSF-fitting photometry following the methods described by (cite: Krausetal2016)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Krausetal2016)"
+    },
+    {
+      "what": {
+        "value": "Atomic-line spectral synthesis procedure",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "following the procedure of (cite: Johns-Krulletal1999; Johns-Krull2007)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Johns-Krulletal1999; Johns-Krull2007)"
+    },
+    {
+      "what": {
+        "value": "H-band extinction law and A_H/A_V=0.19±0.03",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "adopting $A_H/A_V=0.19(\\pm0.03)$ ((cite: Fitzpatrick1999) extinction law, updated in the NIR by (cite: Indebetouwetal2005))"
+          }
+        ]
+      },
+      "from_reference": "(cite: Fitzpatrick1999); (cite: Indebetouwetal2005)"
+    },
+    {
+      "what": {
+        "value": "30% uncertainty on H-band veiling",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "A 30% error on the veiling is propagated following the average level of H-band veiling variability found in (cite: Sousaetal2023)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Sousaetal2023)"
+    },
+    {
+      "what": {
+        "value": "Optical flux-error inflation corresponding to ±0.2 mag extinction",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "corresponding to $\\pm0.2$ magnitudes of extinction using the (cite: Cardellietal1989) law, which are added in quadrature to the quoted errors."
+          }
+        ]
+      },
+      "from_reference": "(cite: Cardellietal1989)"
+    },
+    {
+      "what": {
+        "value": "Spectral-line broadening function implementation",
+        "evidence": [
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "We measure the relative RV by computing the spectral-line broadening function (cite: Rucinski1992) between the primary and secondary spectra."
+          },
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "An in-depth description of the BF, as implemented here, can be found in (cite: Tofflemireetal2019)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Rucinski1992); (cite: Tofflemireetal2019)"
+    },
+    {
+      "what": {
+        "value": "Empirical NIR RV jitter added in quadrature",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "we adopt an empirical NIR RV jitter value from the (cite: Crockettetal2012) RV survey of T Tauri stars."
+          }
+        ]
+      },
+      "from_reference": "(cite: Crockettetal2012)"
+    },
+    {
+      "what": {
+        "value": "Dust opacity and luminosity-dependent dust temperature",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "$\\kappa_\\nu$ is the dust opacity (2.3 cm$^2$ g$^{-1}$ at 230 GHz; (cite: Andrewsetal2013))"
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "The dust temperature is computed assuming $T_{\\rm dust} \\sim 25(L_\\star/L_\\odot)^{1/4}$ K (cite: Andrewsetal2013)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Andrewsetal2013)"
+    },
+    {
+      "what": {
+        "value": "Parametric CO disk model",
+        "evidence": [
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "We adopt the parametric disk model outlined in (cite: Flahertyetal2015)"
+          }
+        ]
+      },
+      "from_reference": "(cite: Flahertyetal2015)"
+    },
+    {
+      "what": {
+        "value": "Hydrostatic temperature and gas-density structure",
+        "evidence": [
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "The model assumes a temperature and gas-density structure in hydrostatic equilibrium (cite: Dartoisetal2003; Rosenfeldetal2013a), and a Keplerian velocity field with modifications from gas pressure support."
+          }
+        ]
+      },
+      "from_reference": "(cite: Dartoisetal2003; Rosenfeldetal2013a)"
+    },
+    {
+      "what": {
+        "value": "Viscous warped-disk alignment damping prescription; dimensionless viscous coefficient approximately 1",
+        "evidence": [
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "Following (cite: Zanazzi&Lai2018), for FO Tau’s nominal parameters, the disk damping rate takes the form"
+          },
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "Here, we have assumed the dimensionless viscous coefficient, $\\mathcal{V}_{\\rm b} \\approx 1$; see Table 1 of (cite: Zanazzi&Lai2018) for justification."
+          }
+        ]
+      },
+      "from_reference": "(cite: Zanazzi&Lai2018)"
+    },
+    {
+      "what": {
+        "value": "Disk truncation equation and coefficient ranges",
+        "evidence": [
+          {
+            "loc": "Disk Truncation",
+            "quote": "(cite: Manaraetal2019) present an equation for the disk truncation radius following the work of (cite: Artymowicz&Lubow1994),"
+          },
+          {
+            "loc": "Disk Truncation",
+            "quote": "Using the range of $b$ and $c$ coefficient values compiled by (cite: Manaraetal2019), we compute disk truncation radii of 5–6 AU for FO Tau’s orbital parameters."
+          }
+        ]
+      },
+      "from_reference": "(cite: Manaraetal2019); (cite: Artymowicz&Lubow1994)"
+    }
+  ],
+  "unstated_but_needed": [
+    "Image cell size, image dimensions and deconvolver.",
+    "Exact interactive clean masks and self-calibration SNR annulus.",
+    "Self-calibration reference antenna, gain-combination settings and solution-application details.",
+    "Continuum-subtraction task, polynomial order and exact fit-channel indices.",
+    "Visibility weighting or rescaling and the likelihood used in the continuum and CO fits.",
+    "Continuum visibility-fit prior bounds and walker initialization.",
+    "CO radiative-transfer spatial grid and numerical resolution.",
+    "Exact truncation-model b and c coefficient values selected from the cited work.",
+    "Full numerical H-band synthesis grid and adjusted atomic line list."
+  ],
+  "analysis_steps": [
+    {
+      "order": 1,
+      "goal": "Prepare self-calibrated continuum and CO data",
+      "method": {
+        "value": "Create continuum datasets excluding ±20 km s^{-1} around CO; align phase centers on FO Tau A; self-calibrate compact data, combine configurations and repeat; apply self-calibration to CO and subtract continuum.",
+        "evidence": [
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "A shift was made to align the phase center of each measurement set on the FO Tau A continuum source."
+          },
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "We then combined the extended and self-calibrated compact measurement sets and repeated this process."
+          },
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "The same self-calibration steps above were applied, followed by continuum subtraction."
+          }
+        ]
+      },
+      "software": [
+        "CASA",
+        "tclean"
+      ],
+      "key_parameters": [
+        {
+          "value": "Compact phase intervals: full duration, 100 s; plateau at 60 s; full-integration amplitude self-calibration",
+          "evidence": [
+            {
+              "loc": "Calibration and Imaging",
+              "quote": "Solution intervals of the total duration and of 100 s improved the SNR from 52 to 84 before plateauing at 60 s."
+            },
+            {
+              "loc": "Calibration and Imaging",
+              "quote": "One iteration of amplitude-only self calibration over the full integration was then performed, which improved the SNR to 85."
+            }
+          ]
+        },
+        {
+          "value": "Combined phase intervals: full integration, 1500, 1000, 600 s; retain last phase-only iteration",
+          "evidence": [
+            {
+              "loc": "Calibration and Imaging",
+              "quote": "Phase-only self-calibration was performed for the full integration, 1500 s, 1000 s, and 600 s, bringing the SNR from to 60 to 150 before leveling out."
+            },
+            {
+              "loc": "Calibration and Imaging",
+              "quote": "An iteration of amplitude-only self-calibration did not significantly improve the data quality, leaving the last iteration of phase-only self-calibration as our fiducial continuum data set."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Check flux scaling and astrometric alignment; stop when SNR fails to improve, flagged solutions exceed 20%, or native 6 s integration is reached",
+        "evidence": [
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "The flux scaling between the data sets was consistent within the uncertainty (flux ratio of $0.999\\pm0.006$)."
+          },
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "the SNR does not improve from the previous iteration, the number of flagged solutions for any time interval exceeds 20%, or we reach the native integration step (6 s)."
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "goal": "Measure continuum fluxes and binary astrometry",
+      "method": {
+        "value": "Fit a two-dimensional Gaussian to each continuum source; derive peak and integrated fluxes and use centroids for binary astrometry and CO disk centers.",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "We fit the continuum map with a two-dimensional Gaussian profile for each component using the `CASA` `imfit` function."
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "The fit provides the peak and integrated fluxes, which are presented in Table [3](#tab:char)."
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "are used to compute a separation and position angle for the fit to the binary orbit (Table [1](#tab:AO); Section [3.3](#orbit)), and to fix the disk centers for our CO visibility modeling"
+          }
+        ]
+      },
+      "software": [
+        "CASA",
+        "imfit"
+      ],
+      "key_parameters": [],
+      "assumptions": [],
+      "fitting": {
+        "value": "Two-dimensional Gaussian profile for each component",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "We fit the continuum map with a two-dimensional Gaussian profile for each component using the `CASA` `imfit` function."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Vary initial guesses; image-plane sizes and projections are not robust",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "Depending on the initial guess provided to the function, the profiles are either narrowly resolved or consistent with point sources, indicating that we cannot robustly measure disk radii or their projections"
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "goal": "Infer dust disk sizes and orientations",
+      "method": {
+        "value": "Forward-model continuum visibilities with an exponentially tapered power-law intensity profile; project each disk with inclination, position angle and positional offset; fit each spectral window separately.",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "we forward model the continuum visibilities with an exponentially tapered power-law intensity profile,"
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "For each disk, this radial profile is modulated by an inclination, position angle, and positional offset resulting in an on-sky model image."
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "To obtain more robust errors, we fit each of the four spectral windows separately."
+          }
+        ]
+      },
+      "software": [
+        "galario",
+        "emcee"
+      ],
+      "key_parameters": [
+        {
+          "value": "I(r)=I_0(r/R_c)^{-gamma_1} exp[-(r/R_c)^{gamma_2}]",
+          "evidence": [
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "I(r) = I_0 \\left(\\frac{r}{R_c}\\right)^{-\\gamma_1} e^{-(r/R_c)^{\\gamma_2}}."
+            }
+          ]
+        },
+        {
+          "value": "Adopt bandwidth-weighted mean and bandwidth-weighted standard deviation across four windows",
+          "evidence": [
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "Our adopted value is computed as the average of these four fits, weighted by their frequency bandwidth."
+            },
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "The uncertainty is the bandwidth-weighted standard deviation."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Exponentially tapered radial profile with sharply decreasing outer emission",
+          "evidence": [
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "This model describes disks with sharply decreasing outer profiles which are seen in wider binary systems (cite: Manaraetal2019),"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "emcee; 80 walkers × 7000 steps; final 3500 steps for estimation; priors and likelihood not stated",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "Complex visibilities at the observed $uv$ baselines are computed using the `galario` package (cite: Tazzarietal2018) and finally fit to our observations using `emcee`."
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "Our fit employs 80 walkers, each taking 7000 steps."
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "The last 3500 steps are used for parameter estimation."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Inspect chains for convergence; compare data, model, residual maps and visibilities",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "inspection of the parameter chains shows clear convergence."
+          },
+          {
+            "loc": "Continuum Disk Modeling",
+            "quote": "It includes a panel or the observed and model visibilities, maps of the data, model and residuals, and the intensity profiles of the best fit models."
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "goal": "Estimate dust mass lower limits",
+      "method": {
+        "value": "M_dust=F_nu d^2/[kappa_nu B_nu(T_dust)] at 230 GHz; treat inferred masses as lower limits",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "M_{\\rm dust} = \\frac{F_\\nu d^2}{\\kappa_\\nu B_\\nu(T_{\\rm dust})},"
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "These values are taken to be lower limits on the total dust mass considering how compact the disks are,"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Additional 5% absolute flux calibration uncertainty",
+          "evidence": [
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "Including an additional 5% uncertainty on the ALMA absolute flux calibration,"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Optically thin dust emission",
+          "evidence": [
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "Under the assumption that the dust emission is optically thin, we can compute a dust mass with the following equation:"
+            }
+          ]
+        },
+        {
+          "value": "kappa_nu=2.3 cm^2 g^{-1} at 230 GHz; T_dust approximately 25(L_star/L_sun)^{1/4} K",
+          "evidence": [
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "$\\kappa_\\nu$ is the dust opacity (2.3 cm$^2$ g$^{-1}$ at 230 GHz; (cite: Andrewsetal2013))"
+            },
+            {
+              "loc": "1.3 mm Continuum",
+              "quote": "The dust temperature is computed assuming $T_{\\rm dust} \\sim 25(L_\\star/L_\\odot)^{1/4}$ K (cite: Andrewsetal2013)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Integrated fluxes agree with lower-resolution measurements",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "The integrated 1.3 mm fluxes are consistent with those from (cite: Akesonetal2019) that were observed with lower angular resolution."
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "goal": "Characterize the stars spectroscopically",
+      "method": {
+        "value": "Fit an H-band synthetic spectral grid spanning effective temperature, projected rotation, magnetic field, surface gravity and veiling",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "To model these spectra, we develop a grid of $H$-band spectra using the Spectroscopy Made Easy spectral synthesis code of (cite: Valenti&Piskunov1996) along with the NextGen atmosphere models of (cite: Allard&Hauschildt1995)."
+          },
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "Our grid covers the range of $T_{\\text{eff}}$, $v$sin$i$, magnetic field strength, surface gravity, and veiling expected for young, low-mass stars."
+          }
+        ]
+      },
+      "software": [
+        "Spectroscopy Made Easy"
+      ],
+      "key_parameters": [
+        {
+          "value": "Adopt conservative 100 K effective-temperature uncertainty",
+          "evidence": [
+            {
+              "loc": "Modeling High-Resolution NIR Spectra",
+              "quote": "Given these effects, a $T_{\\text{eff}}$ uncertainty of 100 K is a more conservative value,"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "NextGen atmospheres; Vienna Atomic Line Database transitions",
+          "evidence": [
+            {
+              "loc": "Modeling High-Resolution NIR Spectra",
+              "quote": "along with the NextGen atmosphere models of (cite: Allard&Hauschildt1995)."
+            },
+            {
+              "loc": "Modeling High-Resolution NIR Spectra",
+              "quote": "The spectra are synthesized using laboratory atomic transition data from the Vienna Atomic Line Database (cite: Piskunovetal1995; Ryabchikovaetal2015)"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Grid-based best fitting; sampler, likelihood and numerical grid bounds not stated",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "Using initial values already spectroscopically estimated, we run our spectra through this grid to obtain estimates for the complete set of desired properties for the young binary component stars in our sample."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Calibrate synthetic spectra against the Sun and 61 Cyg B; adjust oscillator strengths and van der Waals broadening constants",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "The synthetic spectra are then calibrated against the Solar spectrum (cite: Livingston&Wallace1991) and the spectrum of 61 Cyg B (cite: Wallace&Hinkle1996)."
+          },
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "Following an iterative procedure, oscillator strengths and van der Waals broadening constants are adjusted in order to obtain the optimum match of the synthesized spectra to the observed standard spectra."
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "goal": "Derive stellar radii, luminosities and mass priors",
+      "method": {
+        "value": "Correct and split H-band flux, remove veiling; fit resolved and unresolved photospheric measurements with BT-Settl models; derive luminosities and interpolate DSEP isochrones for masses",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "Finally, the veiling measurements from our spatially-resolved, $H$-band spectra (Section [3.1.1](#model_spec), Table [3](#tab:char)) are used to remove the contribution of each disk."
+          },
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "We fit these measurements (two sets of resolved flux values, an unresolved flux, and a magnitude contrast) with synthetic BT-Settl (CFIST) atmospheric models (cite: Allard2013),"
+          },
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "interpolating isochrones from the Dartmouth Stellar Evolution Program (cite: Dotteretal2008) using the `scipy griddata` function."
+          }
+        ]
+      },
+      "software": [
+        "emcee",
+        "scipy"
+      ],
+      "key_parameters": [
+        {
+          "value": "Two temperatures, two radii, shared log(g), distance; log(g) interpolation 3.0–4.5",
+          "evidence": [
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "interpolating over effective temperature and log$(g)$ values between 3.0 and 4.5."
+            },
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "The model has six parameters: a $T_{\\text{eff}}$ and radius for each component, a shared log$(g)$, and a distance."
+            }
+          ]
+        },
+        {
+          "value": "Text adopts orbit mass-ratio prior 1.0±0.1 and total-mass prior N(0.58,0.12); Table 4 instead lists N(1.00,0.05) and N(0.57,0.11)",
+          "evidence": [
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "They correspond to a mass ratio of $1.0\\pm0.1$ and a total mass of $0.58\\pm0.05$ $M_{\\odot}$, taking the median and standard deviation of the distributions."
+            },
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "we adopt the total-mass mean from the DSEP model above and a 1$\\sigma$ width of 20% (i.e., $\\mathcal{N}(0.58,0.12)$) as our prior in the orbit fit."
+            },
+            {
+              "loc": "Table 4",
+              "quote": "$q=M_B/M_A$                           | $\\mathcal{N}(1.00,0.05)$"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "A_H/A_V=0.19±0.03; A_V=1.98±0.20; 30% veiling uncertainty",
+          "evidence": [
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "adopting $A_H/A_V=0.19(\\pm0.03)$"
+            },
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "($A_V=1.98\\pm0.20$)."
+            },
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "A 30% error on the veiling is propagated following the average level of H-band veiling variability found in (cite: Sousaetal2023)."
+            }
+          ]
+        },
+        {
+          "value": "Gaussian temperature and distance priors; spectral temperatures retained for adopted stellar properties",
+          "evidence": [
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "Gaussian priors are placed on the effective temperatures, informed by the $H$-band spectral fit including the inflated uncertainty (Section [3.1.1](#model_spec), Table [3](#tab:char)), and on the distance (Table [3](#tab:char))."
+            },
+            {
+              "loc": "Modeling the Spectral Energy Distribution",
+              "quote": "but adopt the $T_{\\text{eff}}$ value derived in Section [3.1.1](#model_spec)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "emcee with 28 walkers; end when autocorrelation changes <5% or steps exceed 50 autocorrelation times; discard first five autocorrelation times",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "The fit is made within a Markov Chain Monte Carlo (MCMC) framework using `emcee` (cite: Foreman-Mackeyetal2013) with 28 walkers."
+          },
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "The fit ends once the chain auto-correlation changes by less than 5% or the number of steps exceeds the auto-correlation time by a factor of 50."
+          },
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "The first five auto-correlation times are discarded as burn in."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Check coevality; compare seven other stellar evolution models; broaden temperature-radius/luminosity posteriors for systematic uncertainty",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "We confirm that the output component ages are coeval within observed ranges"
+          },
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "For the mass ratio, we find consistent values across seven other stellar evolution models"
+          },
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "We estimate the associated systematic uncertainty on the radius and luminosity values by smoothing the $T_{\\text{eff}}$-$R$ and $T_{\\text{eff}}$-$L$ posteriors with a Gaussian kernel."
+          }
+        ]
+      }
+    },
+    {
+      "order": 7,
+      "goal": "Measure the NIR relative radial velocity",
+      "method": {
+        "value": "Compute primary-secondary broadening functions in four approximately 100 Å telluric-free regions spanning 15450–16280 Å; fit Gaussians and take their mean and standard deviation",
+        "evidence": [
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "We compute the BF for four, $\\sim$100 Å regions using the `saphires` python package (cite: Tofflemireetal2019)."
+          },
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "The regions are devoid of telluric contamination and together span 15450 to 16280 Å."
+          },
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "A Gaussian profile is fit to each region and we take the mean and standard deviation of these measurements as our relative RV and its internal RV uncertainty:"
+          }
+        ]
+      },
+      "software": [
+        "saphires"
+      ],
+      "key_parameters": [
+        {
+          "value": "Add approximately 400 m s^{-1} empirical NIR jitter in quadrature for orbital fitting",
+          "evidence": [
+            {
+              "loc": "Binary Orbital Solution",
+              "quote": "The median NIR jitter of their nine-star sample is $\\sim 400$ m s$^{-1}$, which we add in quadrature to our relative RV error."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Similar component spectra yield a Gaussian broadening function centered on their RV offset",
+          "evidence": [
+            {
+              "loc": "Relative Stellar Radial Velocity",
+              "quote": "the BF of these two spectra returns a Gaussian profile centered at the RV offset between the two spectra with a width of the spectral resolution."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Gaussian profile in each spectral region",
+        "evidence": [
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "A Gaussian profile is fit to each region"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Use scatter among four regions for internal uncertainty",
+        "evidence": [
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "we take the mean and standard deviation of these measurements as our relative RV and its internal RV uncertainty:"
+          }
+        ]
+      }
+    },
+    {
+      "order": 8,
+      "goal": "Measure AO binary astrometry and flux ratios",
+      "method": {
+        "value": "PSF-fit binary images; grid-search separation and flux ratio; correct distortion, plate scale and orientation; average individual-image measurements",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "The procedure uses the PSF star to construct a binary model and searches through a grid of separations and flux ratios to solve for the best fitting binary separation, position angle, and flux ratio."
+          },
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "We corrected the binary positions using the geometric distortion solutions published by (cite: Service2016)"
+          },
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "The positions are averaged over the measurements from individual images, and uncertainties are computed from the standard deviation."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "9.971±0.004 mas pixel^{-1}; subtract 0.262±0.020 degrees from PA",
+          "evidence": [
+            {
+              "loc": "High-Angular Resolution Imaging",
+              "quote": "applied a plate scale of 9.971 $\\pm$ 0.004 mas pixel$^{-1}$ and subtracted $0.262\\ensuremath{^\\circ} \\pm 0.020\\ensuremath{^\\circ}$ from the measured position angles."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "PSF binary grid search; 2009 measurements use iterative empirical-template chi-squared fitting",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "searches through a grid of separations and flux ratios to solve for the best fitting binary separation, position angle, and flux ratio."
+          },
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "by testing the $\\chi^2$ goodness-of-fit for a library of potential empirical templates"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Use image-to-image standard deviations; construct effective PSFs for variable 2016 image shapes",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "The positions are averaged over the measurements from individual images, and uncertainties are computed from the standard deviation."
+          },
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "we created an effective PSF for each image using the two components in FO Tau following the approach described by (cite: Schaefer2018),"
+          }
+        ]
+      }
+    },
+    {
+      "order": 9,
+      "goal": "Obtain an initial binary orbit",
+      "method": {
+        "value": "Fit Table 1 relative astrometry and NIRSPEC relative RV; pass stellar-mass posteriors to CO modeling",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "We perform an initial orbit fit using the relative astrometry data in Table [1](#tab:AO) and the NIRSPEC relative RV."
+          },
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "This fit provides posteriors for the stellar masses, which inform our modeling of the ALMA CO visibilities in Section [4.3](#disk_fit)."
+          }
+        ]
+      },
+      "software": [
+        "orvara"
+      ],
+      "key_parameters": [
+        {
+          "value": "Nine parameters; fit eccentricity and periastron argument as sqrt(e)sin(omega_A), sqrt(e)cos(omega_A)",
+          "evidence": [
+            {
+              "loc": "Binary Orbital Solution",
+              "quote": "The eccentricity and argument of periastron are fit as $\\sqrt{e}$ sin $\\omega_A$ and $\\sqrt{e}$ cos $\\omega_A$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Gaussian parallax, mass-ratio and total-mass priors",
+          "evidence": [
+            {
+              "loc": "Binary Orbital Solution",
+              "quote": "Gaussian priors are placed on the parallax (*Gaia* EDR3), and on the mass ratio ($q$) and total mass ($M_{\\rm total}$) hyper-parameters, following the modeling in Section [3.1.2](#model_flux)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Parallel-tempering MCMC; 10 temperatures, 100 walkers, 5×10^5 steps each; save every 50th step",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "The fit uses a parallel-tempering MCMC framework (cite: Foreman-Mackeyetal2013; Vousdenetal2016) with 10 temperatures, 100 walkers, each taking 5$\\times$10$^5$ steps."
+          },
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "The chains for each parameter are saved every 50th step"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Assess convergence using the SED fit autocorrelation procedure",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "chain convergence is assessed following the method outlined in Section [3.1.2](#model_flux)."
+          }
+        ]
+      }
+    },
+    {
+      "order": 10,
+      "goal": "Map CO emission and inspect extended structures",
+      "method": {
+        "value": "Make integrated-intensity and quadratic-method velocity maps; apply conservative Keplerian binary mask; inspect larger spatial scales for circumbinary emission",
+        "evidence": [
+          {
+            "loc": "$^{12}$CO J = 2–1",
+            "quote": "The right panel provides the intensity weighted velocity map using the `bettermoments` quadratic method (cite: Teague&Foreman-Mackey2018)."
+          },
+          {
+            "loc": "$^{12}$CO J = 2–1",
+            "quote": "In both maps we employ a conservative Keplerian binary mask, based on the disk modeling in Section [4.3](#disk_fit), to suppress background noise for clarity."
+          },
+          {
+            "loc": "$^{12}$CO J = 2–1",
+            "quote": "An examination of CO emission at larger spatial scales did not reveal extended emission beyond the binary orbit that could be indicative of a circumbinary disk."
+          }
+        ]
+      },
+      "software": [
+        "bettermoments"
+      ],
+      "key_parameters": [
+        {
+          "value": "Cloud absorption near 5 and 8 km s^{-1}, LSRK radio",
+          "evidence": [
+            {
+              "loc": "$^{12}$CO J = 2–1",
+              "quote": "The affected velocity channels correspond to $\\sim$5 and 8 km s$^{-1}$ (LSRK radio;"
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Mask removes no emission on the resolution-element scale or larger",
+        "evidence": [
+          {
+            "loc": "$^{12}$CO J = 2–1",
+            "quote": "No emission on the scale of the resolution element or larger is removed by the mask."
+          }
+        ]
+      }
+    },
+    {
+      "order": 11,
+      "goal": "Fit gas disk orientations and systemic velocities",
+      "method": {
+        "value": "Fit continuum-subtracted CO visibilities with two isolated parametric disks centered on continuum centroids; compute LTE line transfer, Hanning-smooth model cubes and sample observed baselines",
+        "evidence": [
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "we fit the continuum subtracted CO visibilities with an isolated disk model for each component, adopting the stellar parameters above and fixing or marginalizing over the more granular disk parameters."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "With the disk structure defined, line radiative transfer is computed along the line of sight assuming local thermodynamic equilibrium with Hanning smoothing applied to the resultant data cube."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "We realize an on-sky model of two disks centered at the locations of the continuum centroids and compute complex visibilities at the observed $uv$ baselines and velocity channels using the `galario` package."
+          }
+        ]
+      },
+      "software": [
+        "disk_model3",
+        "galario",
+        "emcee"
+      ],
+      "key_parameters": [
+        {
+          "value": "Fit −3.0 to 17 km s^{-1}, excluding 5–8 km s^{-1}; 27 fitted channels of 0.635 km s^{-1}",
+          "evidence": [
+            {
+              "loc": "Modeling the CO Gas Disk",
+              "quote": "The fit is made to velocity channels between $-3.0$ and 17 km s$^{-1}$, ignoring channels between 5 and 8 km s$^{-1}$ that have foreground cloud absorption."
+            },
+            {
+              "loc": "Modeling the CO Gas Disk",
+              "quote": "In total, 27 channels are used for the fit, each with a velocity width of 0.635 km s$^{-1}$."
+            }
+          ]
+        },
+        {
+          "value": "Marginalized priors: q_T U(−1,1); M_disk U(10^{-4},0.05) M_sun; R_c U(1,14) AU; T_atm,0 U(20,180) K",
+          "evidence": [
+            {
+              "loc": "Table 6",
+              "quote": "$q_T$                        | $\\mathcal{U}(-1,1)$"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$M_{\\rm disk} (M_\\odot)$     | $\\mathcal{U}(10^{-4},0.05$)"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$T_{\\rm atm,0}$ (K)          | $\\mathcal{U}(20,180)$"
+            }
+          ]
+        },
+        {
+          "value": "Orientation/velocity priors: i U(0,90) degrees; PA U(0,360) degrees; v_sys U(2,12) km s^{-1}",
+          "evidence": [
+            {
+              "loc": "Table 6",
+              "quote": "$i_{\\rm disk} (^\\circ)$      | $\\mathcal{U}(0,90)$"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "PA$_{\\rm disk} (^\\circ)$     | $\\mathcal{U}(0,360)$"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$v_{\\rm sys}$ (km s$^{-1}$)  | $\\mathcal{U}(2,12)$"
+            }
+          ]
+        },
+        {
+          "value": "Model channel grid: first velocity −2.82 km s^{-1}; 0.635 km s^{-1} spacing; 32 channels",
+          "evidence": [
+            {
+              "loc": "Table 6",
+              "quote": "$v_{\\rm min}$ (km s$^{-1}$)  |                             | $-2.82$"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$v_{\\rm step}$ (km s$^{-1}$) |                             | $0.635$"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$n_{\\rm chan}$               |                             | $32$"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Hydrostatic equilibrium; Keplerian rotation modified by gas pressure support; LTE",
+          "evidence": [
+            {
+              "loc": "Modeling the CO Gas Disk",
+              "quote": "The model assumes a temperature and gas-density structure in hydrostatic equilibrium (cite: Dartoisetal2003; Rosenfeldetal2013a), and a Keplerian velocity field with modifications from gas pressure support."
+            },
+            {
+              "loc": "CO Disk Modeling and Parameter Posteriors",
+              "quote": "Radiative transfer assumes local thermodynamic equilibrium with CO level populations set by the Boltzmann equation and a source function approximated by the Planck function."
+            }
+          ]
+        },
+        {
+          "value": "Both disks: stellar mass 0.36 M_sun; distance 135 pc; CO/H_2=10^{-4}",
+          "evidence": [
+            {
+              "loc": "Table 6",
+              "quote": "$M_\\star (M_\\odot)$          |                             | 0.36                | 0.36"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$d$ (pc)                     |                             | $135$               | $135$"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$X_{\\rm CO}$                 |                             | $10^{-4}$           | $10^{-4}$"
+            }
+          ]
+        },
+        {
+          "value": "Surface-density index 1; calculation boundaries 1–100 AU",
+          "evidence": [
+            {
+              "loc": "Table 6",
+              "quote": "$\\gamma$                     |                             | 1                   | 1"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$R_{\\rm in}$ (AU)            |                             | 1                   | 1"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$R_{\\rm out}$ (AU)           |                             | 100                 | 100"
+            }
+          ]
+        },
+        {
+          "value": "Z_q,0=33.9; T_mid,0=17.5 K at 150 AU; turbulence, disk wind and dust radiation unused",
+          "evidence": [
+            {
+              "loc": "Table 6",
+              "quote": "$Z_{q,0}$                    |                             | 33.9                | 33.9"
+            },
+            {
+              "loc": "Table 6",
+              "quote": "$T_{\\rm mid,0}$ (K)          |                             | 17.5                | 17.5"
+            },
+            {
+              "loc": "CO Disk Modeling and Parameter Posteriors",
+              "quote": "The modeling package includes optional parameters for disk turbulence, a parameterized disk wind, and dust radiation, which are not utilized here."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "emcee; 80 walkers × 7000 steps; use last 2000 steps and 68% confidence intervals; likelihood not stated",
+        "evidence": [
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "The model visibilities are fit to ALMA observations in a MCMC framework using `emcee`."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "The fit is made with 80 walkers, each taking 7000 steps."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "We conservatively use only the last 2000 steps to compute parameter values and 68% confidence intervals."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Inspect chains and stability in backward 100-step increments; inspect residual maps; repeat fits with radius upper bounds 8 and 5.5 AU",
+        "evidence": [
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "we assess convergence by visually inspecting the parameter chains and confirming that parameter values are constant in 100 step increments moving backward from the last step."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "Channel maps of our CO observations, the best fit model, and fit residuals can be found in Figure [9](#fig:chan_map)."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "we perform two additional MCMC fits that limit the upper bound of the radius priors to 8 and 5.5 AU."
+          }
+        ]
+      }
+    },
+    {
+      "order": 12,
+      "goal": "Refine the binary orbit with ALMA velocities",
+      "method": {
+        "value": "Add the CO-derived relative systemic velocity as another RV epoch to the orbit fit",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "The disk model, in turn, fits a center of mass velocity for each component, providing an additional relative RV epoch."
+          },
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "Our final fit includes the ALMA relative RV, which breaks degeneracies in the radial component of the orbital motion."
+          }
+        ]
+      },
+      "software": [
+        "orvara"
+      ],
+      "key_parameters": [
+        {
+          "value": "Table 4: mass priors uniform; a log-flat; sin(i) inclination prior; Gaussian parallax N(7.3,0.2) mas",
+          "evidence": [
+            {
+              "loc": "Table 4",
+              "quote": "$M_A \\ (M_\\odot)$                     | Uniform"
+            },
+            {
+              "loc": "Table 4",
+              "quote": "$a$ (AU)                              | 1/$a$ (log flat)"
+            },
+            {
+              "loc": "Table 4",
+              "quote": "$\\varpi$ (mas)                        | $\\mathcal{N}(7.3,0.2)$"
+            }
+          ]
+        },
+        {
+          "value": "Table 4 hyper-priors: total mass N(0.57,0.11) M_sun; q N(1.00,0.05); sin(i) for i in [0,180]",
+          "evidence": [
+            {
+              "loc": "Table 4",
+              "quote": "$M_{\\rm total}=M_A + M_B \\ (M_\\odot)$ | $\\mathcal{N}(0.57,0.11)$"
+            },
+            {
+              "loc": "Table 4",
+              "quote": "$q=M_B/M_A$                           | $\\mathcal{N}(1.00,0.05)$"
+            },
+            {
+              "loc": "Table 4",
+              "quote": "sin $i_{\\rm orbit}$                   | sini $i$, $i \\in [0,180]$"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Ascending node is where the secondary crosses the sky plane toward the observer",
+          "evidence": [
+            {
+              "loc": "Binary Orbital Solution",
+              "quote": "the $\\Omega$ convention used here is the angle measured east from north where the secondary crosses the plane of the sky toward the observer."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Parallel-tempering MCMC; 10 temperatures, 100 walkers, 5×10^5 steps each",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "The fit uses a parallel-tempering MCMC framework (cite: Foreman-Mackeyetal2013; Vousdenetal2016) with 10 temperatures, 100 walkers, each taking 5$\\times$10$^5$ steps."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Autocorrelation convergence assessment; compare orbit with astrometry and RV measurements",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "chain convergence is assessed following the method outlined in Section [3.1.2](#model_flux)."
+          },
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "Figure [5](#fig:orvara) presents our full measurement set as a function of time compared to the orbit fit."
+          }
+        ]
+      }
+    },
+    {
+      "order": 13,
+      "goal": "Evaluate disk-orbit alignment",
+      "method": {
+        "value": "Compute disk-orbit obliquity from inclination and ascending-node posteriors for both allowed rotation directions",
+        "evidence": [
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "A more direct measure of binary and disk orbital planes is their obliquity ($\\Theta$), the angle between the binary and disk angular momentum vectors."
+          },
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "We compute the disk-orbit obliquity for both solutions and present them for FO Tau A and B"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Disk longitude of ascending node is model PA +180 degrees",
+          "evidence": [
+            {
+              "loc": "Modeling the CO Gas Disk",
+              "quote": "the definition of PA in this model is 180$^\\circ$ less than the disk’s longitude of the ascending node, $\\Omega_{\\rm disk}$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Both counterclockwise aligned and clockwise retrograde solutions remain possible",
+          "evidence": [
+            {
+              "loc": "Disk-Orbit Alignment",
+              "quote": "Until then, two solutions exist: an aligned solution in which the disk rotates counter clockwise with the binary orbit, and a misaligned solution where the disk rotates clockwise, retrograde with the binary orbit."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Compare projected inclinations, ascending nodes and random-orientation obliquity distributions",
+        "evidence": [
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "The right panel also includes the distributions of obliquities for random disk orientations in grey, for reference."
+          },
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "it seems unlikely given the consistency between projected inclinations and the longitudes of the ascending node for the orbit and disks."
+          }
+        ]
+      }
+    },
+    {
+      "order": 14,
+      "goal": "Compare disk sizes and alignment with dynamical theory",
+      "method": {
+        "value": "Calculate truncation radii from binary parameters and literature coefficients; compare dust and CO radii and their ratios; evaluate viscous alignment damping",
+        "evidence": [
+          {
+            "loc": "Disk Truncation",
+            "quote": "Using the range of $b$ and $c$ coefficient values compiled by (cite: Manaraetal2019), we compute disk truncation radii of 5–6 AU for FO Tau’s orbital parameters."
+          },
+          {
+            "loc": "Disk Truncation",
+            "quote": "from the critical radius of our CO visibility fit, we compute gas to dust disk radius ratios of $2.6\\pm0.5$ and $2\\pm1$ for FO Tau A and B, respectively."
+          },
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "One mechanism we explore, given the small semi-major axis of the system, is the damping of mutual disk-orbit inclinations through viscous warped disk torques"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Damping normalization: alpha=10^{-2}, h_out=0.1, M_2=0.34 M_sun, M_1=0.35 M_sun, a=22 AU, r_out=7 AU",
+          "evidence": [
+            {
+              "loc": "Disk-Orbit Alignment",
+              "quote": "\\left( \\frac{\\alpha}{10^{-2}} \\right)\n    \\left( \\frac{0.1}{h_{\\rm out}} \\right)^2"
+            },
+            {
+              "loc": "Disk-Orbit Alignment",
+              "quote": "\\left( \\frac{M_2}{0.34 \\ M_\\odot} \\right)^2"
+            },
+            {
+              "loc": "Disk-Orbit Alignment",
+              "quote": "\\left( \\frac{0.35 \\ M_\\odot}{M_1} \\right)^{3/2}\n    \\left( \\frac{22 \\ {\\rm AU}}{a} \\right)^6\n    \\left( \\frac{r_{\\rm out}}{7 \\ {\\rm AU}} \\right)^{9/2}"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Dimensionless viscous coefficient approximately 1",
+          "evidence": [
+            {
+              "loc": "Disk-Orbit Alignment",
+              "quote": "Here, we have assumed the dimensionless viscous coefficient, $\\mathcal{V}_{\\rm b} \\approx 1$;"
+            }
+          ]
+        },
+        {
+          "value": "Gas/dust size comparison uses CO critical radius rather than CO 95% effective radius",
+          "evidence": [
+            {
+              "loc": "Disk Truncation",
+              "quote": "We do not measure the 95% effective radius for the CO disks given the complicated on-sky projection,"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Discuss resolution and non-Keplerian emission as alternatives to oversized gas disks; alignment timescale depends on viscosity and aspect ratio",
+        "evidence": [
+          {
+            "loc": "Disk Truncation",
+            "quote": "they do not have the angular resolution to distinguish whether the fit radii are indeed larger than truncation models predict, or whether our simple model is not capturing more complex emission."
+          },
+          {
+            "loc": "Disk-Orbit Alignment",
+            "quote": "but would quickly exceed it for smaller viscosity values or larger disk aspect ratios."
+          }
+        ]
+      }
+    },
+    {
+      "order": 15,
+      "goal": "Search for stellar rotation in photometry",
+      "method": {
+        "value": "Use Lomb-Scargle periodograms and autocorrelation across all sectors, individual sectors and selected combined subsets; repeat with SAP and PDCSAP",
+        "evidence": [
+          {
+            "loc": "Photometric Variability",
+            "quote": "We use the Lomb-Scargle periodogram (cite: Scargle1982) and auto-correlation function (ACF) to search for periodic behavior in the full three-sector light curve (19, 43, and 44)"
+          },
+          {
+            "loc": "Photometric Variability",
+            "quote": "We repeat the analysis for both the SAP and PDCSAP reductions"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [],
+      "assumptions": [
+        {
+          "value": "Evaluate possible rotation periods with measured v sin i and stellar radii",
+          "evidence": [
+            {
+              "loc": "Photometric Variability",
+              "quote": "Assuming some component of the periodicity is stellar rotation, for the stars’ $v$sin$i$ and radius values, this period range would correspond to inclinations between $\\sim50^\\circ$ to $75^\\circ$."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Require consistent dominant periodogram peaks with positive autocorrelation across temporal subsets; no reliable rotation period recovered",
+        "evidence": [
+          {
+            "loc": "Photometric Variability",
+            "quote": "We do not find a single period across the temporal regions analyzed that has a consistently dominant LSP peak with positive auto-correlation, regardless of the reduction."
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "CASA",
+      "version": "v6.1.1.15; v6.5.1.23",
+      "used_for": {
+        "value": "Pipeline calibration and post-processing",
+        "evidence": [
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "by the standard ALMA pipeline (`CASA v6.1.1.15`; (cite: McMullinetal2007))"
+          },
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "We provide an outline of our procedure below using `CASA v6.5.1.23`."
+          }
+        ]
+      }
+    },
+    {
+      "name": "tclean",
+      "version": "not stated",
+      "used_for": {
+        "value": "Imaging for astrometric alignment and flux-scaling checks",
+        "evidence": [
+          {
+            "loc": "Calibration and Imaging",
+            "quote": "We imaged each data set using `tclean` (Briggs weighting, `robust` = 0) to test the astrometric alignment and flux scaling."
+          }
+        ]
+      }
+    },
+    {
+      "name": "imfit",
+      "version": "not stated",
+      "used_for": {
+        "value": "Two-dimensional Gaussian fits to continuum components",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "We fit the continuum map with a two-dimensional Gaussian profile for each component using the `CASA` `imfit` function."
+          }
+        ]
+      }
+    },
+    {
+      "name": "REDSPEC",
+      "version": "not stated",
+      "used_for": {
+        "value": "NIRSPEC array rectification and spectral extraction",
+        "evidence": [
+          {
+            "loc": "Keck – NIRSPEC behind AO",
+            "quote": "We used the REDSPEC reduction package (cite: Kimetal2015) for the array rectification and spectral extraction."
+          }
+        ]
+      }
+    },
+    {
+      "name": "SPOC pipeline",
+      "version": "not stated",
+      "used_for": {
+        "value": "TESS photometric reduction",
+        "evidence": [
+          {
+            "loc": "Time-Series Photometry",
+            "quote": "The photometry was reduced with the SPOC pipeline (cite: Jenkins2015; Jenkinsetal2016)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Spectroscopy Made Easy",
+      "version": "not stated",
+      "used_for": {
+        "value": "H-band spectral synthesis",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "we develop a grid of $H$-band spectra using the Spectroscopy Made Easy spectral synthesis code of (cite: Valenti&Piskunov1996)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "emcee",
+      "version": "not stated",
+      "used_for": {
+        "value": "SED, continuum-visibility and CO-visibility MCMC fitting",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "The fit is made within a Markov Chain Monte Carlo (MCMC) framework using `emcee` (cite: Foreman-Mackeyetal2013) with 28 walkers."
+          },
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "and finally fit to our observations using `emcee`."
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "The model visibilities are fit to ALMA observations in a MCMC framework using `emcee`."
+          }
+        ]
+      }
+    },
+    {
+      "name": "scipy / griddata",
+      "version": "not stated",
+      "used_for": {
+        "value": "Interpolate stellar evolution isochrones",
+        "evidence": [
+          {
+            "loc": "Modeling the Spectral Energy Distribution",
+            "quote": "interpolating isochrones from the Dartmouth Stellar Evolution Program (cite: Dotteretal2008) using the `scipy griddata` function."
+          }
+        ]
+      }
+    },
+    {
+      "name": "saphires",
+      "version": "not stated",
+      "used_for": {
+        "value": "Spectral broadening functions for relative RV",
+        "evidence": [
+          {
+            "loc": "Relative Stellar Radial Velocity",
+            "quote": "We compute the BF for four, $\\sim$100 Å regions using the `saphires` python package (cite: Tofflemireetal2019)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "orvara",
+      "version": "not stated",
+      "used_for": {
+        "value": "Binary orbit fitting",
+        "evidence": [
+          {
+            "loc": "Binary Orbital Solution",
+            "quote": "We fit the FO Tau orbital solution using the `orvara` python package (cite: Brandtetal2021)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "galario",
+      "version": "not stated",
+      "used_for": {
+        "value": "Compute complex continuum and CO model visibilities at observed baselines",
+        "evidence": [
+          {
+            "loc": "1.3 mm Continuum",
+            "quote": "Complex visibilities at the observed $uv$ baselines are computed using the `galario` package (cite: Tazzarietal2018)"
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "compute complex visibilities at the observed $uv$ baselines and velocity channels using the `galario` package."
+          }
+        ]
+      }
+    },
+    {
+      "name": "bettermoments",
+      "version": "not stated",
+      "used_for": {
+        "value": "Quadratic-method CO velocity map",
+        "evidence": [
+          {
+            "loc": "$^{12}$CO J = 2–1",
+            "quote": "The right panel provides the intensity weighted velocity map using the `bettermoments` quadratic method (cite: Teague&Foreman-Mackey2018)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "disk_model3",
+      "version": "not stated",
+      "used_for": {
+        "value": "Adopted parametric CO disk model",
+        "evidence": [
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "We adopt the parametric disk model outlined in (cite: Flahertyetal2015)"
+          },
+          {
+            "loc": "Modeling the CO Gas Disk",
+            "quote": "https://github.com/kevin-flaherty/disk_model3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "astropy",
+      "version": "not stated",
+      "used_for": {
+        "value": "not stated",
+        "evidence": []
+      }
+    },
+    {
+      "name": "RotBroadInt",
+      "version": "not stated",
+      "used_for": {
+        "value": "not stated",
+        "evidence": []
+      }
+    },
+    {
+      "name": "ColorBrewer",
+      "version": "2.0",
+      "used_for": {
+        "value": "Color-impaired-friendly figure schemes",
+        "evidence": [
+          {
+            "loc": "acknowledgments",
+            "quote": "Figures in this manuscript were created using color-impaired-friendly schemes from ColorBrewer 2.0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vienna Atomic Line Database",
+      "version": "not stated",
+      "used_for": {
+        "value": "Laboratory atomic transition data for spectral synthesis",
+        "evidence": [
+          {
+            "loc": "Modeling High-Resolution NIR Spectra",
+            "quote": "The spectra are synthesized using laboratory atomic transition data from the Vienna Atomic Line Database (cite: Piskunovetal1995; Ryabchikovaetal2015)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Keck Observatory Archive",
+      "version": "not stated",
+      "used_for": {
+        "value": "Access to AO observations",
+        "evidence": [
+          {
+            "loc": "High-Angular Resolution Imaging",
+            "quote": "The AO observations are available for further inspection on the Keck Archive"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MAST",
+      "version": "not stated",
+      "used_for": {
+        "value": "Access to TESS data",
+        "evidence": [
+          {
+            "loc": "Time-Series Photometry",
+            "quote": "All of the *TESS* data used in this paper can be found in MAST:"
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "FO Tau A dynamical mass",
+      "value": "0.346",
+      "uncertainty": "+0.055/-0.049",
+      "units": "M_sun",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$M_A \\ (M_\\odot)$                     | Uniform                   | ${0.346}_{-0.049}^{+0.055}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B dynamical mass",
+      "value": "0.340",
+      "uncertainty": "+0.054/-0.049",
+      "units": "M_sun",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$M_B \\ (M_\\odot)$                     | Uniform                   | ${0.340}_{-0.049}^{+0.054}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary semimajor axis",
+      "value": "22.0",
+      "uncertainty": "+1.9/-1.3",
+      "units": "AU",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$a$ (AU)                              | 1/$a$ (log flat)          | ${22.0}_{-1.3}^{+1.9}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary eccentricity",
+      "value": "0.213",
+      "uncertainty": "+0.040/-0.032",
+      "units": "dimensionless",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$e$                                   |                           | ${0.213}_{-0.032}^{+0.040}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary orbital inclination",
+      "value": "33.0",
+      "uncertainty": "+4.2/-4.8",
+      "units": "degrees",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$i_{\\rm orbit} \\ (^\\circ)$            |                           | ${33.0}_{-4.8}^{+4.2}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary ascending-node position angle",
+      "value": "303.4",
+      "uncertainty": "+6.7/-10",
+      "units": "degrees",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$\\Omega \\ (^\\circ)$                   | Uniform                   | ${303.4}_{-10}^{+6.7}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary period",
+      "value": "124",
+      "uncertainty": "+23/-15",
+      "units": "yr",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$P$ (yr)                              |                           | ${124}_{-15}^{+23}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary total dynamical mass",
+      "value": "0.687",
+      "uncertainty": "+0.10/-0.093",
+      "units": "M_sun",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$M_{\\rm total}=M_A + M_B \\ (M_\\odot)$ | $\\mathcal{N}(0.57,0.11)$  | ${0.687}_{-0.093}^{+0.10}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Binary dynamical mass ratio",
+      "value": "0.99",
+      "uncertainty": "+0.11/-0.11",
+      "units": "dimensionless",
+      "from_step": 12,
+      "evidence": [
+        {
+          "loc": "Table 4",
+          "quote": "$q=M_B/M_A$                           | $\\mathcal{N}(1.00,0.05)$  | ${0.99}_{-0.11}^{+0.11}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A integrated 1.3 mm image-plane flux",
+      "value": "2.96",
+      "uncertainty": "±0.07",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "The integrated 1.3mm fluxes for each component are near equal at $2.96\\pm0.07$ and $2.69\\pm0.07$ mJy for the primary and secondary, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B integrated 1.3 mm image-plane flux",
+      "value": "2.69",
+      "uncertainty": "±0.07",
+      "units": "mJy",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "The integrated 1.3mm fluxes for each component are near equal at $2.96\\pm0.07$ and $2.69\\pm0.07$ mJy for the primary and secondary, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A dust 95% effective radius",
+      "value": "3.7",
+      "uncertainty": "±0.1",
+      "units": "AU",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$R_{\\rm eff,\\ 95\\% \\ dust}$ (AU)                                        | $3.7 \\pm 0.1$                    | $3.6 \\pm 0.5$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B dust 95% effective radius",
+      "value": "3.6",
+      "uncertainty": "±0.5",
+      "units": "AU",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$R_{\\rm eff,\\ 95\\% \\ dust}$ (AU)                                        | $3.7 \\pm 0.1$                    | $3.6 \\pm 0.5$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A dust inclination",
+      "value": "27.3",
+      "uncertainty": "±0.5",
+      "units": "degrees",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$i_{\\rm disk,\\ dust}$ ($^\\circ$)                                        | $27.3 \\pm 0.5$                   | $26 \\pm 1$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B dust inclination",
+      "value": "26",
+      "uncertainty": "±1",
+      "units": "degrees",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$i_{\\rm disk,\\ dust}$ ($^\\circ$)                                        | $27.3 \\pm 0.5$                   | $26 \\pm 1$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A dust position angle",
+      "value": "121",
+      "uncertainty": "±1",
+      "units": "degrees",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "PA$_{\\rm disk,\\ dust}$ ($^\\circ$)                                       | $121 \\pm 1$                      | $121 \\pm 2$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B dust position angle",
+      "value": "121",
+      "uncertainty": "±2",
+      "units": "degrees",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "PA$_{\\rm disk,\\ dust}$ ($^\\circ$)                                       | $121 \\pm 1$                      | $121 \\pm 2$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A optically thin dust mass estimate, interpreted as a lower limit",
+      "value": "5.4×10^{-6}",
+      "uncertainty": "±0.4×10^{-6}",
+      "units": "M_sun",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "we compute dust masses of $5.4(\\pm0.4)\\times10^{-6}$ $M_\\odot$ and $5.1(\\pm0.4)\\times10^{-6}$ $M_\\odot$ for the primary and secondary, respectively."
+        },
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "These values are taken to be lower limits on the total dust mass"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B optically thin dust mass estimate, interpreted as a lower limit",
+      "value": "5.1×10^{-6}",
+      "uncertainty": "±0.4×10^{-6}",
+      "units": "M_sun",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "we compute dust masses of $5.4(\\pm0.4)\\times10^{-6}$ $M_\\odot$ and $5.1(\\pm0.4)\\times10^{-6}$ $M_\\odot$ for the primary and secondary, respectively."
+        },
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "These values are taken to be lower limits on the total dust mass"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A CO inclination",
+      "value": "27",
+      "uncertainty": "+7/-6",
+      "units": "degrees",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 6",
+          "quote": "$i_{\\rm disk} (^\\circ)$      | $\\mathcal{U}(0,90)$         | $27^{+7}_{-6}$      | $40^{+30}_{-20}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B CO inclination",
+      "value": "40",
+      "uncertainty": "+30/-20",
+      "units": "degrees",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 6",
+          "quote": "$i_{\\rm disk} (^\\circ)$      | $\\mathcal{U}(0,90)$         | $27^{+7}_{-6}$      | $40^{+30}_{-20}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A CO position angle",
+      "value": "120",
+      "uncertainty": "+30/-20",
+      "units": "degrees",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 6",
+          "quote": "PA$_{\\rm disk} (^\\circ)$     | $\\mathcal{U}(0,360)$        | $120^{+30}_{-20}$   | $120^{+100}_{-50}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B CO position angle",
+      "value": "120",
+      "uncertainty": "+100/-50",
+      "units": "degrees",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 6",
+          "quote": "PA$_{\\rm disk} (^\\circ)$     | $\\mathcal{U}(0,360)$        | $120^{+30}_{-20}$   | $120^{+100}_{-50}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A CO critical radius",
+      "value": "10",
+      "uncertainty": "±2",
+      "units": "AU",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 6",
+          "quote": "$R_c$ (AU)                   | $\\mathcal{U}(1,14)$         | $10\\pm2$            | $8^{+4}_{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B CO critical radius",
+      "value": "8",
+      "uncertainty": "+4/-3",
+      "units": "AU",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 6",
+          "quote": "$R_c$ (AU)                   | $\\mathcal{U}(1,14)$         | $10\\pm2$            | $8^{+4}_{-3}$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A systemic velocity",
+      "value": "8.2",
+      "uncertainty": "+0.6/-0.5",
+      "units": "km s^{-1} LSRK",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$v_{\\rm sys}$ (km s$^{-1}$ LSRK)                                        | $8.2^{+0.6}_{-0.5}$              | $6 \\pm 2$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B systemic velocity",
+      "value": "6",
+      "uncertainty": "±2",
+      "units": "km s^{-1} LSRK",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$v_{\\rm sys}$ (km s$^{-1}$ LSRK)                                        | $8.2^{+0.6}_{-0.5}$              | $6 \\pm 2$"
+        }
+      ]
+    },
+    {
+      "quantity": "NIRSPEC relative RV, RV_B−RV_A",
+      "value": "-1.8",
+      "uncertainty": "±0.2 internal",
+      "units": "km s^{-1}",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Relative Stellar Radial Velocity",
+          "quote": "$RV_B-RV_A = -1.8\\pm0.2$ km s$^{-1}$."
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A spectroscopic effective temperature",
+      "value": "3475",
+      "uncertainty": "±50; conservative ±100",
+      "units": "K",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$T_{\\text{eff}}$ (K)$^a$                                                | $3475\\pm50(\\pm100)$              | $3450\\pm50(\\pm100)$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B spectroscopic effective temperature",
+      "value": "3450",
+      "uncertainty": "±50; conservative ±100",
+      "units": "K",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$T_{\\text{eff}}$ (K)$^a$                                                | $3475\\pm50(\\pm100)$              | $3450\\pm50(\\pm100)$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A stellar radius",
+      "value": "1.48",
+      "uncertainty": "+0.10/-0.09; systematic-inclusive ±0.19",
+      "units": "R_sun",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$R_\\star$ ($R_\\odot$)$^b$                                               | $1.48^{+0.10}_{-0.09} (\\pm0.19)$ | $1.42\\pm0.09 (\\pm0.18)$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B stellar radius",
+      "value": "1.42",
+      "uncertainty": "±0.09; systematic-inclusive ±0.18",
+      "units": "R_sun",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$R_\\star$ ($R_\\odot$)$^b$                                               | $1.48^{+0.10}_{-0.09} (\\pm0.19)$ | $1.42\\pm0.09 (\\pm0.18)$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A adopted luminosity, Table 3",
+      "value": "0.25",
+      "uncertainty": "±0.02; systematic-inclusive ±0.05",
+      "units": "L_sun",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$L_\\star$ ($L_\\odot$)$^b$                                               | $0.25\\pm0.02 (\\pm0.05)$          | $0.24\\pm0.02 (\\pm 0.05)$"
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B adopted luminosity, Table 3",
+      "value": "0.24",
+      "uncertainty": "±0.02; systematic-inclusive ±0.05",
+      "units": "L_sun",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "$L_\\star$ ($L_\\odot$)$^b$                                               | $0.25\\pm0.02 (\\pm0.05)$          | $0.24\\pm0.02 (\\pm 0.05)$"
+        }
+      ]
+    },
+    {
+      "quantity": "System isochronal age",
+      "value": "1.0",
+      "uncertainty": "±0.3",
+      "units": "Myr",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "find an age of $1.0\\pm0.3$ Myr,"
+        }
+      ]
+    },
+    {
+      "quantity": "Predicted dynamical disk truncation radii",
+      "value": "5–6",
+      "uncertainty": "not stated",
+      "units": "AU",
+      "from_step": 14,
+      "evidence": [
+        {
+          "loc": "Disk Truncation",
+          "quote": "Using the range of $b$ and $c$ coefficient values compiled by (cite: Manaraetal2019), we compute disk truncation radii of 5–6 AU for FO Tau’s orbital parameters."
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau A CO-critical-radius to dust-95%-radius ratio",
+      "value": "2.6",
+      "uncertainty": "±0.5",
+      "units": "dimensionless",
+      "from_step": 14,
+      "evidence": [
+        {
+          "loc": "Disk Truncation",
+          "quote": "we compute gas to dust disk radius ratios of $2.6\\pm0.5$ and $2\\pm1$ for FO Tau A and B, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "FO Tau B CO-critical-radius to dust-95%-radius ratio",
+      "value": "2",
+      "uncertainty": "±1",
+      "units": "dimensionless",
+      "from_step": 14,
+      "evidence": [
+        {
+          "loc": "Disk Truncation",
+          "quote": "we compute gas to dust disk radius ratios of $2.6\\pm0.5$ and $2\\pm1$ for FO Tau A and B, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "Extended CO arc channel velocity",
+      "value": "10.51",
+      "uncertainty": "not stated",
+      "units": "km s^{-1} LSRK",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Extended CO Emission",
+          "quote": "we find an arc of extended emission to the east of the primary disk (LSRK $= 10.51$ km s$^{-1}$)."
+        }
+      ]
+    },
+    {
+      "quantity": "Extended CO arc significance",
+      "value": "entire arc >3; peak >4",
+      "uncertainty": "not stated",
+      "units": "background RMS sigma",
+      "from_step": 11,
+      "evidence": [
+        {
+          "loc": "Extended CO Emission",
+          "quote": "The entire arc is more than $3\\sigma$ above the background RMS noise, with a peak $>4\\sigma$."
+        }
+      ]
+    },
+    {
+      "quantity": "Full-light-curve strongest periodogram peak",
+      "value": "5.9",
+      "uncertainty": "not stated",
+      "units": "d",
+      "from_step": 15,
+      "evidence": [
+        {
+          "loc": "Photometric Variability",
+          "quote": "Analyzing the full light curve, we find the strongest LSP peak at 5.9 d and a single ACF peak at 5.0 d."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Evidence for disk-orbit alignment within measurement uncertainties",
+      "evidence": [
+        {
+          "loc": "Disk-Orbit Alignment",
+          "quote": "We find evidence for alignment among the binary and protoplanetary orbital planes within the uncertainty of our measurements."
+        }
+      ]
+    },
+    {
+      "value": "Compact circumstellar disks; dust unresolved and CO only marginally resolved",
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "The disks are compact and likely truncated by the binary orbit."
+        },
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "Circumstellar dust disks are not resolved in the image plane ($\\sim$5 AU resolution) and the CO gas disks are only marginally resolved."
+        }
+      ]
+    },
+    {
+      "value": "No detected circumbinary dust or CO emission beyond the binary orbit",
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "We do not find evidence for a circumbinary disk or extended emission detected beyond the binary orbit in dust or CO above an RMS of 0.02 and 0.9 mJy/beam, respectively."
+        }
+      ]
+    },
+    {
+      "value": "Keplerian disk models leave an extended CO arc east of the primary",
+      "evidence": [
+        {
+          "loc": "Extended CO Emission",
+          "quote": "In the residual image of the CO visibilities fit (Figure [9](#fig:chan_map), bottom panel set), we find an arc of extended emission to the east of the primary disk"
+        }
+      ]
+    },
+    {
+      "value": "Stellar rotation and stellar-spin alignment cannot be established from TESS",
+      "evidence": [
+        {
+          "loc": "Photometric Variability",
+          "quote": "Given the large amplitude variability and lack of spatial information, it seems most likely that the true stellar rotation periods are unrecoverable from the *TESS* light curves."
+        },
+        {
+          "loc": "Photometric Variability",
+          "quote": "As such we are not able to comment on the alignment of the stellar angular momenta with that of the binary orbit or the protoplanetary disks."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "The circumstellar disk planes align with the binary orbital plane.",
+      "experiment": "Compare continuum and CO visibility-fit orientations with the astrometric and RV orbital solution; compute both obliquity branches.",
+      "result": "Projected inclinations and ascending nodes agree within uncertainty; a retrograde branch remains possible.",
+      "finding": "Evidence favors alignment, but does not uniquely establish it.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "Measuring inclinations of the gas and dust disks with fits made in the $uv$ plane, we find evidence for alignment between both protoplanetary disks and the binary orbit."
+        },
+        {
+          "loc": "Disk-Orbit Alignment",
+          "quote": "Although we cannot strictly rule out the pathological misaligned scenario, it seems unlikely given the consistency between projected inclinations and the longitudes of the ascending node for the orbit and disks."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Binary truncation explains the compact circumstellar disks.",
+      "experiment": "Compare fitted dust and gas radii with truncation predictions using measured orbital parameters.",
+      "result": "Predicted truncation radii are 5–6 AU; dust radii are approximately 4 AU; CO fits favor approximately 8–10 AU.",
+      "finding": "Dust sizes are compatible with truncation and radial drift; gas sizes or emission complexity remain ambiguous.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Disk Truncation",
+          "quote": "Using the range of $b$ and $c$ coefficient values compiled by (cite: Manaraetal2019), we compute disk truncation radii of 5–6 AU for FO Tau’s orbital parameters."
+        },
+        {
+          "loc": "Disk Truncation",
+          "quote": "The dust disk sizes we measure (95% effective radius) are $\\sim$4 AU."
+        },
+        {
+          "loc": "Disk Truncation",
+          "quote": "they do not have the angular resolution to distinguish whether the fit radii are indeed larger than truncation models predict, or whether our simple model is not capturing more complex emission."
+        }
+      ]
+    },
+    {
+      "hypothesis": "FO Tau contains detectable circumbinary dust or CO emission.",
+      "experiment": "Inspect continuum and CO emission on larger spatial scales.",
+      "result": "No emission beyond the binary orbit is detected at the stated sensitivities.",
+      "finding": "No evidence for a circumbinary disk at these detection limits.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "We do not find evidence for a circumbinary disk or extended emission detected beyond the binary orbit in dust or CO above an RMS of 0.02 and 0.9 mJy/beam, respectively."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Two isolated Keplerian disks fully describe the detected CO emission.",
+      "experiment": "Fit two parametric disks and examine channel residuals.",
+      "result": "An eastern arc remains at 10.51 km s^{-1}; its entire extent exceeds 3 sigma and its peak exceeds 4 sigma.",
+      "finding": "The model describes the bulk emission but misses extended structure.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "the model is able to describe the bulk of the CO emission, however, there is extended emission, particularly in the 10.51 km s$^{-1}$ channel that is not described by a Keplerian disk model."
+        },
+        {
+          "loc": "Extended CO Emission",
+          "quote": "The entire arc is more than $3\\sigma$ above the background RMS noise, with a peak $>4\\sigma$."
+        }
+      ]
+    },
+    {
+      "hypothesis": "FO Tau has a near-equal-mass, low-eccentricity binary orbit.",
+      "experiment": "Fit decades of relative astrometry and NIRSPEC plus ALMA relative radial velocities.",
+      "result": "Component masses are approximately 0.35 and 0.34 M_sun; eccentricity is 0.21; semimajor axis is 22 AU.",
+      "finding": "The binary has near-equal masses and low eccentricity relative to comparable young binaries.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "The stars are near-equal mass, with dynamical masses of 0.35 $M_\\odot$ and 0.34 $M_\\odot$for the primary and secondary, respectively."
+        },
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "The orbital eccentricity (0.21) is low compared to other young binaries at similar separations."
+        },
+        {
+          "loc": "Summary & Conclusions",
+          "quote": "FO Tau is a young binary system with a semi-major axis of 22 AU."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Compact and extended configurations probe both circumstellar and circumbinary scales; CO spectral resolution resolves Keplerian rotation while preserving continuum sensitivity",
+      "evidence": [
+        {
+          "loc": "Observations",
+          "quote": "To achieve high angular resolution while maintaining sensitivity to extended emission, observations were made in compact and extended array configurations."
+        },
+        {
+          "loc": "Observations",
+          "quote": "This setting was chosen to yield a velocity resolution required to resolve a Keplerian rotation profile while maintaining a broad bandwidth for continuum sensitivity."
+        },
+        {
+          "loc": "Observations",
+          "quote": "This sensitivity range covers the physical scales of interest for our analysis, specifically probing both circumstellar and circumbinary emission."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Visibility fitting accesses dust properties below image-plane resolution; simplified CO models target inclinations and velocities under resolution and sensitivity limits",
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "To measure continuum disk properties below the image-plane resolution, we forward model the continuum visibilities with an exponentially tapered power-law intensity profile,"
+        },
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "In the present work, we are primarily interested in the individual disk inclinations and their systemic velocities."
+        },
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "the sensitivity and angular resolution of our data limit our ability to constrain a full suite of disk parameters"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Self-calibration stops at SNR plateau, >20% flagged solutions or 6 s integration; expensive visibility fits use visual chain convergence and final chain segments",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "the SNR does not improve from the previous iteration, the number of flagged solutions for any time interval exceeds 20%, or we reach the native integration step (6 s)."
+        },
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "inspection of the parameter chains shows clear convergence."
+        },
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "we assess convergence by visually inspecting the parameter chains and confirming that parameter values are constant in 100 step increments moving backward from the last step."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Combined amplitude-only self-calibration rejected because it did not significantly improve data quality",
+      "evidence": [
+        {
+          "loc": "Calibration and Imaging",
+          "quote": "An iteration of amplitude-only self-calibration did not significantly improve the data quality, leaving the last iteration of phase-only self-calibration as our fiducial continuum data set."
+        }
+      ]
+    },
+    {
+      "value": "CO radius priors capped at 8 and 5.5 AU tested; parameters agree within 68% intervals, but constrained fits miss outer emission",
+      "evidence": [
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "we perform two additional MCMC fits that limit the upper bound of the radius priors to 8 and 5.5 AU."
+        },
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "The disk parameters show some variation, but all have agreement within the 68% confidence interval to the fiducial fit."
+        },
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "The radius-constrained fits are unable to describe the emission at larger radii from the continuum peaks"
+        }
+      ]
+    },
+    {
+      "value": "Retrograde misaligned disk solution retained as an unresolved alternative",
+      "evidence": [
+        {
+          "loc": "Disk-Orbit Alignment",
+          "quote": "Although we cannot strictly rule out the pathological misaligned scenario,"
+        }
+      ]
+    },
+    {
+      "value": "Magnetic and nonmagnetic stellar evolution models compared; broad total-mass prior adopted",
+      "evidence": [
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "the models that include prescriptions for the effect of magnetic fields (DSEP-magnetic, SPOTS $f_{spot} >$ 0) predict masses up to 65% higher."
+        },
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "we adopt the total-mass mean from the DSEP model above and a 1$\\sigma$ width of 20% (i.e., $\\mathcal{N}(0.58,0.12)$) as our prior in the orbit fit."
+        }
+      ]
+    },
+    {
+      "value": "Formation alignment and subsequent viscous evolution cannot be distinguished",
+      "evidence": [
+        {
+          "loc": "Disk-Orbit Alignment",
+          "quote": "The present analysis does not distinguish between formation or subsequent evolution as the source of FO Tau’s disk-orbit alignment."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Dust image-plane radii and projections are not robust",
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "we cannot robustly measure disk radii or their projections (e.g., inclination, position angle) in the image plane."
+        }
+      ]
+    },
+    {
+      "value": "Cloud absorption excludes CO channels between 5 and 8 km s^{-1}",
+      "evidence": [
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "ignoring channels between 5 and 8 km s$^{-1}$ that have foreground cloud absorption."
+        }
+      ]
+    },
+    {
+      "value": "Simple isolated-disk models may bias radii and other parameters when fitting extended emission",
+      "evidence": [
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "the disk radii and other parameters may be affected by our simple disk model attempting to fit extended emission."
+        }
+      ]
+    },
+    {
+      "value": "Near/far disk sides and rotation direction are degenerate",
+      "evidence": [
+        {
+          "loc": "Disk-Orbit Alignment",
+          "quote": "our observation does not reveal the near and far sides of the disks."
+        }
+      ]
+    },
+    {
+      "value": "Compact disks may be optically thick; dust masses are lower limits and no total disk mass is attempted",
+      "evidence": [
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "These values are taken to be lower limits on the total dust mass considering how compact the disks are,"
+        },
+        {
+          "loc": "1.3 mm Continuum",
+          "quote": "We do not attempt to compute a total disk mass for this reason."
+        }
+      ]
+    },
+    {
+      "value": "Stellar parameter uncertainties have model-dependent and astrophysical systematics",
+      "evidence": [
+        {
+          "loc": "Modeling High-Resolution NIR Spectra",
+          "quote": "The primary errors quoted in Table [3](#tab:char) are internal fitting uncertainties and do not include systematic or additional astrophysical sources of error."
+        },
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "The uncertainties of this fit are likely underestimated."
+        }
+      ]
+    },
+    {
+      "value": "Only approximately one quarter of the orbit is traced, requiring informed mass priors",
+      "evidence": [
+        {
+          "loc": "Modeling the Spectral Energy Distribution",
+          "quote": "With only $\\sim$one quarter of the orbit traced with astrometry, the current observational baseline does not precisely constrain the stellar masses on its own."
+        }
+      ]
+    },
+    {
+      "value": "Only one NIR RV epoch prevents direct jitter estimation",
+      "evidence": [
+        {
+          "loc": "Binary Orbital Solution",
+          "quote": "With only one RV epoch we cannot measure a jitter value for either star, nor can we fit for it within the orbital solution."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Resolve conflicting mass priors: text gives total mass N(0.58,0.12) and q uncertainty 0.1; Table 4 gives N(0.57,0.11) and q uncertainty 0.05.",
+    "Resolve the continuum RMS discrepancy: 0.03 mJy/beam in calibration versus 0.02 mJy/beam in the summary.",
+    "The continuum section prints the primary dust radius in pc; Tables 3 and 5 give AU. Use explicitly identified table values for answer keys.",
+    "Secondary luminosity is 0.23 L_sun in the SED text and 0.24 L_sun in Table 3.",
+    "Bandwidth-weighted scatter across four spectral windows does not demonstrate coverage of shared calibration or model systematics.",
+    "CO fits fix both stellar masses at 0.36 M_sun; uncertainty propagation from the orbital masses into disk orientations is not demonstrated.",
+    "Alignment remains branch-dependent because the disk rotation direction is unresolved.",
+    "Gas-to-dust size ratios compare CO critical radii with dust 95% effective radii; population comparisons use a different gas-radius definition."
+  ],
+  "reproducibility": [],
+  "code_released": [
+    {
+      "value": "Adopted CO disk model linked at https://github.com/kevin-flaherty/disk_model3",
+      "evidence": [
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "We adopt the parametric disk model outlined in (cite: Flahertyetal2015)"
+        },
+        {
+          "loc": "Modeling the CO Gas Disk",
+          "quote": "https://github.com/kevin-flaherty/disk_model3"
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "ALMA public-access status and exact downloadable measurement-set identifiers are not stated.",
+    "Paper-specific calibration, imaging and visibility-fit scripts are not supplied in the provided text.",
+    "Resolve inconsistent orbit priors before attempting an exact orbital reproduction.",
+    "Continuum prior bounds, fit likelihoods and visibility-weight handling are absent.",
+    "Exact masks, imaging grid, continuum-subtraction settings and gain-application settings are absent.",
+    "CO model commit, numerical grid and complete computational environment are absent.",
+    "Exact truncation coefficients must be recovered from the cited literature.",
+    "The calibrated stellar synthesis grid and modified atomic line parameters are not provided."
+  ],
+  "estimated_data_volume_inferred": "not stated",
+  "score_inferred": 6,
+  "score_reason": "6/10: project code, CASA versions, self-calibration intervals, imaging weights, model equations, CO priors and numeric results are provided; exact scripts, likelihoods, several numerical settings and consistent orbit priors are missing.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but ALMA public availability is not stated and the supplied recipe has missing settings and conflicting orbital priors.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Andrewsetal2018)",
+      "why": "DSHARP configuration combination and self-calibration procedures."
+    },
+    {
+      "citation": "(cite: Schaeferetal2014); (cite: Schaefer2018); (cite: Krausetal2016)",
+      "why": "AO binary PSF-fitting and empirical-template methods."
+    },
+    {
+      "citation": "(cite: Service2016)",
+      "why": "NIRC2 distortion, plate-scale and orientation corrections."
+    },
+    {
+      "citation": "(cite: Valenti&Piskunov1996); (cite: Johns-Krulletal1999; Johns-Krull2007)",
+      "why": "Spectral synthesis and atomic-line treatment."
+    },
+    {
+      "citation": "(cite: Rucinski1992); (cite: Tofflemireetal2019)",
+      "why": "Broadening-function relative radial velocities."
+    },
+    {
+      "citation": "(cite: Brandtetal2021)",
+      "why": "orvara orbit fitting."
+    },
+    {
+      "citation": "(cite: Foreman-Mackeyetal2013; Vousdenetal2016)",
+      "why": "MCMC and parallel-tempering framework."
+    },
+    {
+      "citation": "(cite: Tazzarietal2018)",
+      "why": "galario model visibility calculations."
+    },
+    {
+      "citation": "(cite: Teague&Foreman-Mackey2018)",
+      "why": "Quadratic-method velocity maps."
+    },
+    {
+      "citation": "(cite: Flahertyetal2015); (cite: Dartoisetal2003; Rosenfeldetal2013a)",
+      "why": "Parametric hydrostatic CO disk structure and radiative-transfer model."
+    },
+    {
+      "citation": "(cite: Andrewsetal2013)",
+      "why": "Dust opacity and temperature prescription."
+    },
+    {
+      "citation": "(cite: Manaraetal2019); (cite: Artymowicz&Lubow1994)",
+      "why": "Disk truncation equation and coefficients."
+    },
+    {
+      "citation": "(cite: Zanazzi&Lai2018)",
+      "why": "Viscous disk-orbit alignment damping."
+    },
+    {
+      "citation": "(cite: Scargle1982)",
+      "why": "Photometric periodicity search."
+    }
+  ],
+  "companion_papers": [],
+  "related_projects_or_surveys": [
+    "DSHARP",
+    "Eight disk-hosting binary systems with known orbital solutions",
+    "TESS",
+    "Gaia DR3",
+    "2MASS"
+  ]
+}

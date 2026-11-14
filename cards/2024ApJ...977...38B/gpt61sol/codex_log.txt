@@ -1,0 +1,424 @@
+shock chemistry"
+        },
+        {
+          "loc": "Low $X_\\text{HCN}$ and $X_\\text{HNC}$",
+          "quote": "our high-$\\zeta$ result is not a product of the neural network, but of the chemical model’s inefficacy at such low abundances."
+        }
+      ]
+    },
+    {
+      "value": "Central cosmic-ray sources and possible suppressed diffusion may explain enhanced nuclear CRIR.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "The high CRIR estimates in the inner CMZ are likely a result of their proximity to supernova remnants and other cosmic-ray-producing sources, as well as potential cosmic-ray diffusion suppression"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "A neural network can replace UCLCHEM in gas-parameter inference.",
+      "experiment": "Train on UCLCHEM abundances, test held-out abundances, and compare inference in regions 26 and 53.",
+      "result": "Mean abundance recovery within 3%; nearly identical inferred parameters; runtimes ∼7% and ∼15% of direct UCLCHEM inference.",
+      "finding": "The emulator reproduces chemical-model inference much faster.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Training Results",
+          "quote": "on average, the neural network model is able to recover molecular abundances within 3% of the chemical model’s values."
+        },
+        {
+          "loc": "Neural Network vs. Chemical Model",
+          "quote": "The final inferred parameter values and their uncertainties derived from `UCLCHEM` and our neural network are nearly identical."
+        },
+        {
+          "loc": "Neural Network vs. Chemical Model",
+          "quote": "The neural network$+$`UltraNest` algorithm completed its explorations of the parameter space in $\\sim7$% and $\\sim15$% of the time it took for `UCLCHEM`$+$`UltraNest` to do the same for regions 26 and 53, respectively."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Dense-gas structure varies between the nucleus and outer CMZ.",
+      "experiment": "Fit regional HCN/HNC intensities and map density, column density, and beam-filling factor.",
+      "result": "Densities are enhanced centrally; inner beam filling ≲0.1 versus outer ≳0.3.",
+      "finding": "Nuclear emission originates from smaller, denser gas components.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Parameter Maps",
+          "quote": "H$_{2}$ volume and column density are enhanced by one to two orders of magnitude in the nucleus of the CMZ"
+        },
+        {
+          "loc": "Column Density, Volume Density, Filling Factor, and Kinetic Temperature",
+          "quote": "In the inner CMZ ($r\\lesssim100$ pc), $\\eta_{ff} \\lesssim 0.1$, while in the outer CMZ ($r \\gtrsim 100$ pc), $\\eta_{ff} \\gtrsim 0.3$."
+        },
+        {
+          "loc": "Column Density, Volume Density, Filling Factor, and Kinetic Temperature",
+          "quote": "The gradients in $n_{\\text{H}_2}$, $N_{\\text{H}_2}$, and $\\eta_{ff}$ are consistent with gas originating from smaller, higher-density and column density regions as one moves from the outer portions of the CMZ toward the nucleus of NGC 253."
+        }
+      ]
+    },
+    {
+      "hypothesis": "CRIR is spatially enhanced in the nucleus.",
+      "experiment": "Infer CRIR from regional HCN/HNC measurements with chemical and radiative-transfer models.",
+      "result": "Nuclear ζ ∼4×10−13 s−1; outer ζ ∼2×10−14 s−1.",
+      "finding": "CRIR increases toward the nucleus.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "We estimate CRIR values of $\\zeta \\sim 4 \\times 10^{-13}$ s$^{-1}$ in the nucleus of the NGC 253 CMZ and $\\zeta \\sim 2 \\times 10^{-14}$ s$^{-1}$ in its outer regions."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The shielded-cloud chemical framework can recover conditions throughout all selected regions.",
+      "experiment": "Inspect high-CRIR outskirts solutions using abundance ratios, absolute abundances, temperatures, and UCLCHEM comparisons.",
+      "result": "24 high-ratio regions also have high CRIR; low-abundance solutions are unreliable.",
+      "finding": "UV/shock chemistry and low-abundance regions prevent reliable CRIR recovery across the entire selected field.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "High $X_\\text{HCN}/X_\\text{HNC}$",
+          "quote": "all 24 regions with $X_{\\text{HCN}}/X_{\\text{HNC}} > 4$ also feature $\\zeta > 5\\times10^{-13}$ s$^{-1}$."
+        },
+        {
+          "loc": "Low $X_\\text{HCN}$ and $X_\\text{HNC}$",
+          "quote": "we determine that parameter results for any regions that correspond to such low abundances are unreliable."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "We are unable to derive CRIR estimates for regions with low HCN and HNC abundance as well as regions likely featuring UV-dominated or shock chemistry"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Molecular-emission CRIR estimates agree with non-thermal emission predictions.",
+      "experiment": "Compare inferred CRIRs with Phan2024 CMZ-averaged transport predictions.",
+      "result": "Outer-CMZ CRIR estimates agree within ∼0.2 dex.",
+      "finding": "The theoretical prediction is consistent with the lowest, outer-CMZ inferred CRIRs.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "The CRIR estimates in the outer CMZ are consistent within $\\sim0.2$ dex with theoretical predictions of the CRIR (cite: Phan2024) derived from CMZ-averaged non-thermal emission."
+        },
+        {
+          "loc": "Comparison of Cosmic-Ray Ionization Rate to Theoretical Predictions",
+          "quote": "This value is included as a reference in Figure [9](#fig:crir_meas) and is consistent with the lowest end of our modeled CRIR range."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Local cosmic-ray sources and suppressed diffusion explain enhanced nuclear CRIR.",
+      "experiment": "Compare spatial CRIR patterns with cosmic-ray sources and published diffusion simulations.",
+      "result": "Central regions contain cosmic-ray-producing sources where CRIR is enhanced.",
+      "finding": "Source proximity and potential diffusion suppression are plausible explanations.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Cosmic Ray Enhancement in Star-forming Regions",
+          "quote": "many of the central regions in NGC 253’s CMZ contain sources that will produce and accelerate cosmic rays, such as supernova remnants and H II regions."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "The high CRIR estimates in the inner CMZ are likely a result of their proximity to supernova remnants and other cosmic-ray-producing sources, as well as potential cosmic-ray diffusion suppression"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "HCN/HNC chemistry is sensitive to cosmic rays in shielded NGC 253 gas.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "(cite: Behrens2022) found that the abundances of HCN and HNC are greatly influenced by cosmic-ray chemistry in the UV-shielded environments of NGC 253."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Chemical-model computation prevented full spatial sampling; a neural-network replacement makes larger regional inference feasible.",
+      "evidence": [
+        {
+          "loc": "Bayesian Inference with Neural Networks",
+          "quote": "the use of a chemical modeling code significantly prolongs this process"
+        },
+        {
+          "loc": "Bayesian Inference with Neural Networks",
+          "quote": "We address this issue by developing a neural network model that can replace and fulfill the role of a chemical model in our Bayesian inference algorithm"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Training stops after 20 non-improving epochs; inference stops after sampling the majority of probability density.",
+      "evidence": [
+        {
+          "loc": "Neural Network Architecture",
+          "quote": "we cease neural network training once the calculated loss has not improved over 20 consecutive epochs"
+        },
+        {
+          "loc": "Implementation with Bayesian Nested Sampling",
+          "quote": "This process concludes when `UltraNest` has sampled the majority of the probability density."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Use 3σ replacements rather than discard incomplete regions or fit fewer than eight transitions.",
+      "evidence": [
+        {
+          "loc": "Region Selection and Moment-0 Maps",
+          "quote": "Rather than removing regions which do not feature a full set of 8 detected transitions for HCN and HNC or, alternatively, constraining models of those regions with fewer than 8 transitions"
+        },
+        {
+          "loc": "Region Selection and Moment-0 Maps",
+          "quote": "we fill in low S/N image pixels with $3\\sigma$ upper-limit integrated intensities."
+        }
+      ]
+    },
+    {
+      "value": "Add density buffer points rather than retain poorly learned parameter-space edges.",
+      "evidence": [
+        {
+          "loc": "Training Results",
+          "quote": "we include additional column and volume density buffer points outside of our desired parameter ranges"
+        }
+      ]
+    },
+    {
+      "value": "Compare two-phase chemistry with phase-2-only modeling.",
+      "evidence": [
+        {
+          "loc": "Comparison of Cosmic-Ray Ionization Rate to Other Measurements",
+          "quote": "demonstrates the differences in the posterior distributions with and without phase 1 modeling for sample regions 26 and 53."
+        }
+      ]
+    },
+    {
+      "value": "Compare older He-scaled collisional rates with newer H2 rates.",
+      "evidence": [
+        {
+          "loc": "New Collisional Rates Analysis",
+          "quote": "These modeled intensities were calculated using both the “old\" (He-based) and “new\" (ortho+para-H$_2$-based) rates"
+        }
+      ]
+    },
+    {
+      "value": "Test inclusion of a free beam-filling factor.",
+      "evidence": [
+        {
+          "loc": "Comparison of Cosmic-Ray Ionization Rate to Other Measurements",
+          "quote": "The addition of this parameter did not greatly change the median CRIR values inferred for any of our test regions"
+        }
+      ]
+    },
+    {
+      "value": "Consider UV radiation, shocks, and low-abundance chemical-model failures as explanations for apparent high-CRIR outskirts.",
+      "evidence": [
+        {
+          "loc": "High $X_\\text{HCN}/X_\\text{HNC}$",
+          "quote": "one explanation for the high CRIR values outside of the inner 5$^{\\prime\\prime}$ is that they are not shielded against UV radiation"
+        },
+        {
+          "loc": "High $X_\\text{HCN}/X_\\text{HNC}$",
+          "quote": "Another possibility is that some of these regions are affected by shocks."
+        },
+        {
+          "loc": "Low $X_\\text{HCN}$ and $X_\\text{HNC}$",
+          "quote": "our high-$\\zeta$ result is not a product of the neural network, but of the chemical model’s inefficacy at such low abundances."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Initial chemical conditions may affect phase-2 starting abundances; varying them requires rebuilding the training set.",
+      "evidence": [
+        {
+          "loc": "Training Dataset",
+          "quote": "the abundances used at the beginning of stage 2 may be sensitive to the initial conditions (e.g. UV field, elemental abundances, mode of collapse)"
+        },
+        {
+          "loc": "Training Dataset",
+          "quote": "varying these parameters would require reconstructing the training datset, which is not a case considered here."
+        }
+      ]
+    },
+    {
+      "value": "The emulator may smooth posterior structure; finer-grid testing remains necessary.",
+      "evidence": [
+        {
+          "loc": "Neural Network vs. Chemical Model",
+          "quote": "the 2D posteriors generated when including the neural network model are somewhat smoother than those produced when our algorithm includes `UCLCHEM`."
+        },
+        {
+          "loc": "Neural Network vs. Chemical Model",
+          "quote": "Further testing is required to determine whether a more finely-spaced grid would more closely resemble the structure seen in the 2D `UCLCHEM` posterior distributions."
+        }
+      ]
+    },
+    {
+      "value": "Kinetic temperature is poorly constrained.",
+      "evidence": [
+        {
+          "loc": "Parameter Maps",
+          "quote": "In general, we do not constrain the kinetic temperature well with our HCN and HNC measurements"
+        }
+      ]
+    },
+    {
+      "value": "The chemical framework is unsuitable for UV-dominated or shocked regions.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "We are unable to derive CRIR estimates for regions with low HCN and HNC abundance as well as regions likely featuring UV-dominated or shock chemistry"
+        }
+      ]
+    },
+    {
+      "value": "The emulator can extrapolate below the chemical grid's reliable abundance threshold.",
+      "evidence": [
+        {
+          "loc": "Low $X_\\text{HCN}$ and $X_\\text{HNC}$",
+          "quote": "it can still extrapolate and produce abundances below the $10^{-12}$ threshold if provided with the relevant parameter values by our nested sampling algorithm."
+        }
+      ]
+    },
+    {
+      "value": "Larger regions mix diffuse and dense gas and complicate comparison with previous GMC measurements.",
+      "evidence": [
+        {
+          "loc": "Comparison of Cosmic-Ray Ionization Rate to Other Measurements",
+          "quote": "the regions we study here are nearly twice as large in diameter and contain $\\sim3.5$ times the area as those investigated in the aforementioned studies."
+        },
+        {
+          "loc": "Comparison of Cosmic-Ray Ionization Rate to Other Measurements",
+          "quote": "the gas parameters being averaged over a larger area, thus likely including both diffuse and dense components"
+        }
+      ]
+    },
+    {
+      "value": "SpectralRadex performs poorly at unrealistically high molecular column densities.",
+      "evidence": [
+        {
+          "loc": "New Collisional Rates Analysis",
+          "quote": "At very high HCN and HNC column densities ($\\gtrsim 10^{18}$ cm$^{-2}$), the predicted HCN and HNC transition intensities and opacities become so large that the `SpectralRadex` models do a poor job of predicting integrated intensities."
+        }
+      ]
+    },
+    {
+      "value": "The timing of observable cosmic-ray suppression of star formation is uncertain.",
+      "evidence": [
+        {
+          "loc": "Cosmic Ray Enhancement in Star-forming Regions",
+          "quote": "It is unclear, though, at exactly what point from the beginning of a starburst phase cosmic-ray feedback is expected to noticeably affect star formation."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The reported training/validation/test percentages sum to 135%; the validation percentage also conflicts with its point count.",
+    "The Conclusions give nuclear n_H2 ∼5×10^5 cm−3, inconsistent with the Parameter Maps maximum of 8×10^4 cm−3 and Table 3's central log-density range.",
+    "The likelihood compares substituted upper-limit intensities as flux measurements; no censored-data likelihood is described.",
+    "Random linewidth replacements introduce stochastic measurement changes without a stated seed or sensitivity test.",
+    "The 15% flux uncertainty is not accompanied by a stated covariance treatment across transitions.",
+    "Agreement with UCLCHEM validates the emulator against its parent model, rather than independently validating the chemical assumptions.",
+    "Diffusion suppression is an interpretation supported by comparisons, rather than a directly fitted or measured diffusion coefficient.",
+    "The supplied text lacks figure captions and numerical posterior tables needed to resolve source-level uncertainties and exclusions."
+  ],
+  "reproducibility": [],
+  "code_released": [
+    {
+      "value": "HERA GitHub link provided",
+      "evidence": [
+        {
+          "loc": "Region Selection and Moment-0 Maps",
+          "quote": "https://github.com/ebehrens97/HERA"
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "Observation/reduction details explicitly delegated to ALCHEMI-ACA and Behrens2022.",
+    "Exact input cubes and region definitions.",
+    "Machine-readable regional measurements mentioned by the paper but absent from the supplied text.",
+    "Full chemical model configuration and precise abundance extraction time.",
+    "Trained neural-network weights, training/inference scripts, software versions, and corrected dataset split.",
+    "Radiative-transfer linewidth and background/geometry settings.",
+    "Numerical UltraNest stopping and sampling configuration.",
+    "Full posterior summaries, numerical uncertainties, and final region rejection list.",
+    "Resolution of the conflicting nuclear volume-density numbers."
+  ],
+  "estimated_data_volume_inferred": "not stated",
+  "score_inferred": 5,
+  "score_reason": "On a 0–10 scale: project codes, transitions, main model grid, neural-network architecture, priors, likelihood, and several validation tests are specified. Reduction is inherited, key executable settings and trained weights are absent, and numerical inconsistencies remain.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The main results are numeric, but public data availability is not stated and the supplied recipe lacks essential reduction, model, and inference settings.",
+  "methods_papers": [
+    {
+      "citation": "(cite: ALCHEMI-ACA)",
+      "why": "ALCHEMI observations and data reduction."
+    },
+    {
+      "citation": "(cite: Behrens2022)",
+      "why": "Integrated-intensity extraction and earlier Bayesian chemical/radiative-transfer inference."
+    },
+    {
+      "citation": "(cite: Holdship2022)",
+      "why": "Earlier Bayesian inference framework and two-phase chemical modeling comparison."
+    },
+    {
+      "citation": "(cite: Holdship2017)",
+      "why": "UCLCHEM chemical modeling code."
+    },
+    {
+      "citation": "(cite: HernandezVera2017)",
+      "why": "Adopted HCN/HNC ortho- and para-H2 collisional excitation rates."
+    },
+    {
+      "citation": "(cite: Dumouchel2010)",
+      "why": "Older He-based collisional rates used in sensitivity comparisons."
+    },
+    {
+      "citation": "(cite: ultranest14; ultranest19; ultranest21)",
+      "why": "Nested sampling and UltraNest implementation."
+    },
+    {
+      "citation": "(cite: heyl2023)",
+      "why": "Numerical unreliability of very low chemical abundances."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: ALCHEMI-ACA)",
+      "why": "Parent ALCHEMI survey and reduction reference."
+    },
+    {
+      "citation": "(cite: Behrens2022)",
+      "why": "Earlier HCN/HNC inference study directly extended and compared here."
+    },
+    {
+      "citation": "(cite: Holdship2022)",
+      "why": "Related ALCHEMI CRIR inference using H3O+ and SO."
+    },
+    {
+      "citation": "(cite: Tanaka2024)",
+      "why": "Related ALCHEMI density and temperature comparisons."
+    },
+    {
+      "citation": "(cite: Butterworth2024)",
+      "why": "Related source-size evidence motivating beam filling."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "ALCHEMI: ALMA Comprehensive High-resolution Extragalactic Molecular Inventory"
+  ]
+}
+tokens used
+77,253

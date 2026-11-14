@@ -1,0 +1,312 @@
+{
+ "bibcode": "2019ApJ...872...92F",
+ "title": "The Planet Formation Potential around a 45 Myr Old Accreting M Dwarf",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaf794",
+ "arxiv_id": "1812.04124",
+ "fields": [
+  "debris_disks",
+  "protoplanetary_disks"
+ ],
+ "question": "Is the 45 Myr old accreting M dwarf W0808 hosting a gas-rich protoplanetary disk or a debris disk, and what is the origin of its cold dust?",
+ "alma_project_codes": [
+  "2017.1.01521.S"
+ ],
+ "data": {
+  "bands": "1.3 mm (~232 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.41\"x0.32\" (natural weighting continuum beam)",
+  "sensitivity": "continuum rms 23 uJy/beam; line rms 1.8 mJy/beam/channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar parameters (Teff, RV, mass, age, spectral type, etc.)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Stellar properties of W0808, drawn from (cite: mur18)."
+     }
+    ]
+   },
+   "citation": "(cite: mur18)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 2.3 g cm^-2 at 1.3mm",
+    "evidence": [
+     {
+      "loc": "3.1 Cold Dust Emission",
+      "quote": "assuming an opacity of 2.3 g cm$^{-2}$ at 1.3mm (cite: bec90)"
+     }
+    ]
+   },
+   "citation": "(cite: bec90)"
+  },
+  {
+   "what": {
+    "value": "Dust masses vs age of M dwarf protoplanetary and debris disks for comparison",
+    "evidence": [
+     {
+      "loc": "3.1 Cold Dust Emission",
+      "quote": "Figure [3](#mass_age) shows dust mass, as derived from sub-mm emission, as a function of age for protoplanetary disks"
+     }
+    ]
+   },
+   "citation": "(cite: ric12; ric14; van16; liu04; mat15; hol17 etc.)"
+  },
+  {
+   "what": {
+    "value": "CO photodissociation rates",
+    "evidence": [
+     {
+      "loc": "3.2 The lack of Gas Emission",
+      "quote": "we utilize the photodissociation rates of (cite: vis09)"
+     }
+    ]
+   },
+   "citation": "(cite: vis09)"
+  },
+  {
+   "what": {
+    "value": "FUV/J-band flux ratio 4e-5",
+    "evidence": [
+     {
+      "loc": "3.2 The lack of Gas Emission",
+      "quote": "we assume the ratio between the FUV and J-band flux densities is 4$\\times$10$^{-5}$"
+     }
+    ]
+   },
+   "citation": "(cite: sch18)"
+  },
+  {
+   "what": {
+    "value": "Template SEDs of extragalactic sources",
+    "evidence": [
+     {
+      "loc": "4.3 Contamination from a background galaxy",
+      "quote": "along with template SEDs for extragalactic sources (cite: kir15)"
+     }
+    ]
+   },
+   "citation": "(cite: kir15)"
+  },
+  {
+   "what": {
+    "value": "Schechter function for background galaxy chance probability",
+    "evidence": [
+     {
+      "loc": "4.3 Contamination from a background galaxy",
+      "quote": "based on the Schechter function of (cite: car15)"
+     }
+    ]
+   },
+   "citation": "(cite: car15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate visibilities and shift phase center",
+   "method": "Standard ALMA calibration script; phase center shifted to Gaia DR2 predicted stellar position",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "J0635-7516 gain and bandpass; J0904-5735 phase"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image continuum and measure flux",
+   "method": "CASA clean with natural weighting on all four spectral windows; point-source fit to visibilities for total flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "derive dust mass",
+   "method": "Optically thin dust mass M_d = F d^2 /(kappa B(T))",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 20 K; opacity 2.3 g cm^-2 at 1.3mm"
+   ],
+   "assumptions": [
+    "Optically thin emission; disk radius <16 au implied by unresolved emission at 101 pc; blackbody grains at 16 au have 20 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CO flux and mass upper limits",
+   "method": "3sigma flux limit assuming uniform ring to 16 au at 45 deg inclination (~1 beam, ~10 channels); LTE mass at 20 K",
+   "software": [],
+   "key_parameters": [
+    "Tex = 20 K; also 1071 K and 237 K"
+   ],
+   "assumptions": [
+    "LTE; NLTE would likely raise the limit"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "CO photodissociation timescale",
+   "method": "Photodissociation rates of Visser et al. with stellar FUV plus Draine interstellar field, with and without self-shielding",
+   "software": [],
+   "key_parameters": [
+    "FUV/J flux density ratio 4e-5; 5e-6 Mearth CO over 30 au diameter for self-shielding"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "assess origin of dust: PR drag, collisions, background galaxy",
+   "method": "Strubbe & Chiang prescriptions for wind drag; SED comparison with z=2 template; Schechter function chance-coincidence probability",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum total flux (point source fit)",
+   "value": "198",
+   "uncertainty": "15",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data",
+     "quote": "a point source fit to the visibilities derives a total flux of 198$\\pm$15 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak flux",
+   "value": "194",
+   "uncertainty": "rms 23 uJy/beam",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data",
+     "quote": "The continuum emission is significantly detected with a peak flux of 194 $\\mu$Jy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "0.057",
+   "uncertainty": "0.006",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Cold Dust Emission",
+     "quote": "We derive a dust mass of 0.057$\\pm$0.006 M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk radius upper limit",
+   "value": "<16",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Cold Dust Emission",
+     "quote": "The emission is unresolved, which implies a disk radius $<$16 au at 101 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) flux 3sigma upper limit",
+   "value": "<10",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 The lack of Gas Emission",
+     "quote": "we derive a 3$\\sigma$ upper limit on the CO(2-1) flux of $<$10 mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cold CO gas mass upper limit (LTE, 20 K)",
+   "value": "<5e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 The lack of Gas Emission",
+     "quote": "upper limit on the cold CO gas mass of $<$5$\\times10^{-6}$ M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO photodissociation timescale close to star (<10 au), no self-shielding",
+   "value": "~12",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 The lack of Gas Emission",
+     "quote": "destroying CO molecules within $\\sim$12 years"
+    }
+   ]
+  },
+  {
+   "quantity": "CO photodissociation timescale with self-shielding, 10-20 au",
+   "value": "150-350",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 The lack of Gas Emission",
+     "quote": "the photo-dissociation timescale increases to 150-350 years between 10 and 20 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Chance probability of background galaxy at 8sigma within 0.5\"",
+   "value": "0.01",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Contamination from a background galaxy",
+     "quote": "there is a 0.01% chance of detecting a background galaxy at 8$\\sigma$ within 0$\\ensuremath{''}$5 of the stellar position"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Clean threshold, masking, cell size and image size",
+  "Spectral channel binning/velocity range used for line cubes",
+  "Exact model and software for the point source visibility fit",
+  "Details of the CO LTE mass calculation (molecular data, partition function)",
+  "Dust temperature/opacity details such as frequency scaling for kappa",
+  "Details of the photodissociation calculation (Draine field scaling, self-shielding setup)",
+  "Details of the stellar wind drag calculation parameters"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "clean parameters (threshold, cell, image size)",
+  "exact point-source fit procedure",
+  "CO LTE mass calculation details"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Simple dataset and recipe with numeric results, but imaging parameters and CASA version unstated.",
+ "rediscovery_reason": "Single archival project, simple recipe, numeric flux and mass results.",
+ "source_card": "cards/2019ApJ...872...92F/sonnet/card.md"
+}

@@ -1,0 +1,371 @@
+{
+ "bibcode": "2021ApJ...909..214L",
+ "title": "Subarcsecond Imaging of the Complex Organic Chemistry in Massive Star-forming Region G10.6-0.4",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abdeb8",
+ "arxiv_id": "2101.07801",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "How is the complex organic molecule (COM) chemistry of the massive star-forming region G10.6-0.4 spatially structured on small scales, and what do the resolved temperature, column density and correlation maps say about COM formation?",
+ "alma_project_codes": [
+  "2015.1.00106.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "synthesized beam 0.14 arcsec (~700 au)",
+  "sensitivity": "typical continuum rms ~0.60-0.65 mJy/beam (~0.79-0.87 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to G10.6 of 4.95 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "at a distance of 4.95 kpc (cite: Sanna14)"
+     }
+    ]
+   },
+   "citation": "Sanna et al. 2014 (cite: Sanna14)"
+  },
+  {
+   "what": {
+    "value": "Expected 12C/13C ratio of 43 at Galactocentric distance 3.9 kpc",
+    "evidence": [
+     {
+      "loc": "Optically Thick CH3CN and Isotopologues",
+      "quote": "This is a factor of two lower than the expected ratio of 43 (cite: Milam05)"
+     }
+    ]
+   },
+   "citation": "Milam et al. 2005 (cite: Milam05)"
+  },
+  {
+   "what": {
+    "value": "Rotational-torsional-vibrational partition function for CH3OCHO",
+    "evidence": [
+     {
+      "loc": "Rotational Temperature and Column Density Derivation",
+      "quote": "we used the complete rotational-torsional-vibrational partition function from (cite: Carvajal19)."
+     }
+    ]
+   },
+   "citation": "Carvajal et al. 2019 (cite: Carvajal19)"
+  },
+  {
+   "what": {
+    "value": "Literature COM column densities and abundances of other massive young stellar objects, used for comparison",
+    "evidence": [
+     {
+      "loc": "Massive Star-forming Regions",
+      "quote": "we compared them against spatially-resolved data from: AFGL 4176 (cite: Bogelund19); G34.26 (cite: Mookerjea07);"
+     }
+    ]
+   },
+   "citation": "Bogelund19, Mookerjea07, Allen17, Guzman18, Feng16, Bonfand17, Bonfand19, Molet19 (as cited in the paper)"
+  },
+  {
+   "what": {
+    "value": "Typical MYSO CH3OCH3/CH3OH ratio of 14%, and CH3CHO/CH3OH trends in resolved vs unresolved MYSOs",
+    "evidence": [
+     {
+      "loc": "CH3OCHO and CH3OCH3",
+      "quote": "Compared to the typical MYSOs ratios of 14% from (cite: Oberg_Faraday)"
+     }
+    ]
+   },
+   "citation": "Oberg et al. 2014 (cite: Oberg_Faraday)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the line cubes",
+   "method": "Calibration by ALMA/NAASC staff, then imaging of data cubes with tclean using Briggs robust 0.5",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5; 0.018 arcsec pixels; cubes trimmed to inner 9 x 7 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Subtract continuum in the image plane",
+   "method": "Per-pixel continuum level from the distribution of channel intensities, following Jorgensen et al. 2016",
+   "software": [],
+   "key_parameters": [
+    "Symmetric Gaussian fit to each pixel's flux density distribution, then a skewed Gaussian over a range defined by that centroid; the new centroid is the continuum level"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure continuum rms per spectral window",
+   "method": "Median over pixels without significant continuum emission, excluding the central 0.06 pc region and the western UC HII region",
+   "software": [],
+   "key_parameters": [
+    "typical continuum rms ~0.60-0.65 mJy/beam (~0.79-0.87 K)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit line profiles pixel by pixel",
+   "method": "Single Gaussian fits to all unblended transitions of each species, with a template line per species setting limits for the other lines",
+   "software": [],
+   "key_parameters": [
+    "Pixel mask at 5 sigma peak intensity within a 10 km/s window around each transition",
+    "Initial template fits: FWHM allowed 1.3 to 15 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive rotational temperature and column density maps",
+   "method": "Pixel-by-pixel rotational diagram with optical depth correction, posterior sampled with emcee",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Initial parameter space 1e14-1e20 cm^-2 and 10-800 K, then a second iteration with narrower species-specific grids",
+    "Partition functions linearly interpolated from catalog values (JPL, CDMS)",
+    "Reported values are the 50th, 16th and 84th percentiles of the marginalized posteriors"
+   ],
+   "assumptions": [
+    "LTE level populations; optical depth correction factor applied; solid angle set by the 0.018 arcsec pixel",
+    "Optically thick lines excluded"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Treat special cases (CH3OCHO, CH3CH2CN, CH3CN)",
+   "method": "CH3OCHO uses CH3OH temperature; CH3CH2CN fit with two temperature components where warranted; optically thick CH3CN replaced by CH3 13CN scaled by a 12C/13C ratio from CH3OH/13CH3OH",
+   "software": [],
+   "key_parameters": [
+    "Median CH3OH/13CH3OH column density ratio of 22.8 adopted as 12C/13C"
+   ],
+   "assumptions": [
+    "13CH3OH uses the CH3OH rotational temperature; HC1 excluded when deriving 13CH3OH column densities"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Quantify spatial correlations between species",
+   "method": "Cross-correlation coefficient between column density maps sampled on a common quarter-beam grid, with and without masking HC1; scatter plots of N vs N and N vs T",
+   "software": [],
+   "key_parameters": [
+    "CH2CHCN excluded from the cross-correlation for lack of independent points"
+   ],
+   "assumptions": [
+    "No fractional abundances relative to H2; column densities compared directly"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare hot cores with literature sources",
+   "method": "Compare HC1 and HC2 fractional abundances and column density ratios with literature MYSOs, Galactic center clouds, comets and low-mass YSOs",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Typical continuum rms",
+   "value": "0.60-0.65 mJy/beam (0.79-0.87 K)",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data Reduction, Continuum Subtraction, and Imaging",
+     "quote": "Overall, we found a typical continuum rms of ${\\sim}0.60$–$0.65$ mJy beam$^{-1}$ (${\\sim}0.79$–$0.87$ K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median CH3OH/13CH3OH column density ratio (adopted 12C/13C)",
+   "value": "22.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optically Thick CH3CN and Isotopologues",
+     "quote": "Overall, we find a median column density ratio of 22.8, which is the value we adopt."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature at HC1",
+   "value": "455",
+   "uncertainty": "+104/-74",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$455^{104}_{74}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density at HC1",
+   "value": "739e16",
+   "uncertainty": "+176/-114 (x1e16)",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$739^{176}_{114}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature at HC2",
+   "value": "196",
+   "uncertainty": "+16/-12",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$196^{16}_{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density at HC2",
+   "value": "301e16",
+   "uncertainty": "+32/-22 (x1e16)",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$301^{32}_{22}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CH2CN primary (cold) component temperature at HC1",
+   "value": "35",
+   "uncertainty": "+4/-3",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$35^{4}_{3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CH2CN secondary (hot) component temperature at HC1",
+   "value": "189",
+   "uncertainty": "+45/-33",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$189^{45}_{33}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Nearly constant CH3OCH3/CH3OH column density ratio",
+   "value": "2%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CH3OCHO and CH3OCH3",
+     "quote": "we identify a nearly constant ratio of CH$_3$OCH$_3$ with respect to CH$_3$OH of 2%"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient, HNCO vs NH2CHO column density",
+   "value": "0.87",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "HNCO and NH2CHO",
+     "quote": "This correlation is strong with a Pearson’s correlation coefficient of $r=0.87$"
+    }
+   ]
+  },
+  {
+   "quantity": "Power law relating N(NH2CHO) to N(HNCO)",
+   "value": "N(NH2CHO) = 0.01 x N(HNCO)^1.09",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "HNCO and NH2CHO",
+     "quote": "It is well-characterized by a single power law given by \\[N$_{\\rm{NH}{_2}\\rm{CHO}}] = 0.01 \\times [\\rm{N}_{\\rm{HNCO}}]^{1.09}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH2CHCN/CH3CH2CN column density ratio at HC1 and HC2",
+   "value": "0.49 (HC1), 0.23 (HC2)",
+   "uncertainty": "0.30 (HC1), 0.04 (HC2)",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Massive Star-forming Regions",
+     "quote": "We find CH$_2$CHCN/CH$_3$CH$_2$CN ratios of 0.49$\\pm$0.30 and 0.23$\\pm$0.04 for HC1 and HC2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Highest cross-correlation (CH2CHCN/HNCO) and its pixel overlap",
+   "value": "0.95 with 7% overlap",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Spatial Column Density Correlations",
+     "quote": "A good example of this is the correlation between CH$_2$CHCN/HNCO, which is the highest correlation observed (0.95), but only has a 7% pixel overlap."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether calibration used the ALMA pipeline or manual scripts, and the pipeline version",
+  "Self-calibration, if any, and its solution intervals",
+  "tclean parameters beyond robust = 0.5 and pixel size: deconvolver, niter, threshold, masking, restoring beam, gridder, spectral axis and velocity frame",
+  "Whether the four spectral windows were imaged separately with a common or per-window restoring beam (Table 1 lists beams per window)",
+  "Which exact unblended lines were used per species in each pixel beyond Table 5, and the line-blending criteria for the template lines",
+  "emcee settings: number of walkers, steps, burn-in, initial positions, and the species-specific narrower second-iteration prior grids",
+  "Noise term and uncertainty model entering the chi-square likelihood for each pixel",
+  "Exact ranges used for the skewed Gaussian continuum fit and any clipping of continuum levels",
+  "Fitting thresholds for the optical depth tau used to exclude lines, and the tau values assumed per species",
+  "Rule for 'highly discontinuous and outlier' pixel exclusion"
+ ],
+ "missing_for_reproduction": [
+  "tclean details (niter, threshold, masks, deconvolver, spectral axis definition)",
+  "emcee configuration and per-species second-iteration prior grids",
+  "Pixel-level quality-cut and outlier exclusion rules",
+  "Per-region spectral extraction coordinates for Table 3"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Observing setup, CASA versions, robust, pixel size, line fit and MCMC approach and the line list (Table 5) are stated, but the tclean details, MCMC settings and exclusion rules are missing.",
+ "rediscovery_reason": "Single public ALMA project, stated recipe for line fitting and rotational diagrams with a full line list, and numeric outputs (Table 3 temperatures and column densities); exact tclean settings must be inferred.",
+ "source_card": "cards/2021ApJ...909..214L/sonnet/card.md"
+}

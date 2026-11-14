@@ -1,0 +1,220 @@
+{
+ "bibcode": "2019ApJ...875..163R",
+ "title": "First Spectral Analysis of a Solar Plasma Eruption Using ALMA",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aafdfb",
+ "arxiv_id": "1902.01319",
+ "fields": [
+  "sun"
+ ],
+ "question": "Can the logarithmic millimetre continuum gradient across ALMA Band 3 sub-bands be used to estimate optical thickness (and hence temperature/emission measure) of a solar plasmoid and an X-ray bright point enhancement?",
+ "alma_project_codes": [
+  "2011.0.00020.SV"
+ ],
+ "data": {
+  "bands": "Band 3 (84–116 GHz), four spectral windows",
+  "arrays": "22x12 m and 9x7 m antennae",
+  "angular_resolution": "elliptical beam, 6.2'' x 2.3''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Free-free Gaunt factor tables",
+    "evidence": [
+     {
+      "loc": "2.1 Isothermal plasma",
+      "quote": "free-free Gaunt factor interpolated from the table of numerically calculated values given by (cite: 2014MNRAS.444..420V)"
+     }
+    ]
+   },
+   "citation": "van Hoof et al. 2014 (cite: 2014MNRAS.444..420V)"
+  },
+  {
+   "what": {
+    "value": "Quiet-Sun model C7 atmosphere for background spectrum gradient",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "we have adopted the quiet-Sun model C7 from (cite: 2008ApJS..175..229A) to give an example continuum spectrum for Band 3"
+     }
+    ]
+   },
+   "citation": "Avrett & Loeser 2008 (cite: 2008ApJS..175..229A)"
+  },
+  {
+   "what": {
+    "value": "Typical Band 3 quiet Sun background brightness temperature 7300±100 K",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "typical value of $\\approx7300\\pm100$ K (cite: 2017SoPh..292...88W)"
+     }
+    ]
+   },
+   "citation": "White et al. 2017 (cite: 2017SoPh..292...88W)"
+  },
+  {
+   "what": {
+    "value": "Flux scale accuracy of 5% for Band 3",
+    "evidence": [
+     {
+      "loc": "3.2 Flux scale accuracy",
+      "quote": "This accuracy limit is said to increase with frequency and is quoted for ALMA Band 3 to be 5%."
+     }
+    ]
+   },
+   "citation": "ALMA Cycle 6 Technical Handbook (cite: ALMA_handbook)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Calibrate with SV reference scripts; synthesise images at 2 s cadence for full band and each of four spectral windows",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Brightness temperature enhancement and errors",
+   "method": "Mean Tb in two boxes per time step; enhancement = enhanced minus background phase (N=29 steps each); noise from XX-YY, plus 5% flux-scale error",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flux scale error normal with 3σ = 5%"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit spectral gradient",
+   "method": "Bayesian linear regression of log E vs log nu with emcee",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "100 chains, 1000 steps including tuning"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive optical thickness and plasma parameters",
+   "method": "Intersect gradient confidence interval with diagnostic curve using alpha (1.04–1.09) and beta bounds; then derive T, EM, density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Isothermal plasma; C7 model background; purely hydrogen plasma; background Tb 7300±100 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Optical thickness, box 1 (90%)",
+   "value": "0.02–2.78",
+   "uncertainty": "90% confidence",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "0.02 $\\leq \\tau_{90\\%\\,\\mathrm{confidence}} \\leq$ 2.78"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical thickness, box 2 (90%)",
+   "value": "0.11–2.78",
+   "uncertainty": "90% confidence",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Box 2: Moving enhancement from plasmoid ejection",
+     "quote": "the optical thickness of the plasmoid ranges from 0.11 – 2.78"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral gradient box 1",
+   "value": "-1.6 to -0.4",
+   "uncertainty": "90% interval",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "the spectral gradient ranges between -1.6 and -0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron temperature box 1",
+   "value": "7370–15300",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "between $\\approx$ 7370 – 15300 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron temperature box 2",
+   "value": "7440–9660",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Box 2: Moving enhancement from plasmoid ejection",
+     "quote": "electron temperature of the plasmoid of $\\sim$7440 – 9660 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Full-band enhancement box 2",
+   "value": "221",
+   "uncertainty": "9.4",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "| Full Band – 100 GHz | 159 $\\pm$ 6.8 | 221 $\\pm$ 9.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Plasmoid electron density",
+   "value": "0.7–3e10",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Box 2: Moving enhancement from plasmoid ejection",
+     "quote": "the electron density of the plasma would be in the range $\\approx$ 0.7 – 3$\\times 10^{10} \\,\\mathrm{cm^{-3}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact box 1 and box 2 pixel/coordinate extents",
+  "Exact time ranges of background and enhanced phases",
+  "Synthesis (tclean) parameters: weighting, cell, imaging software and CASA version",
+  "MCMC burn-in and exact prior widths",
+  "Exact SV scan/execution block used"
+ ],
+ "missing_for_reproduction": [
+  "Box coordinates and phase time ranges",
+  "Imaging parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear statistical method, but box definitions and imaging parameters missing.",
+ "rediscovery_reason": "Public SV data, numeric results, mostly complete recipe.",
+ "source_card": "cards/2019ApJ...875..163R/sonnet/card.md"
+}

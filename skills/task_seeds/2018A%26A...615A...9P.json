@@ -1,0 +1,240 @@
+{
+ "bibcode": "2018A&A...615A...9P",
+ "title": "Distribution of Serpens South protostars revealed with ALMA",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201732372",
+ "arxiv_id": "1804.02405",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Are the protostars in the young Serpens South cluster mass segregated, and is any segregation primordial rather than dynamical?",
+ "alma_project_codes": [
+  "2012.1.00769.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12m array (32 antennas) and 7m array (9 antennas)",
+  "angular_resolution": "0.96\" x 0.59\" (419 x 256 au)",
+  "sensitivity": "rms 0.3-0.8 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "YSO catalog with SED classes used to classify sources",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We use especially the catalog of (cite: Dun15) for classifying sources in this work."
+     }
+    ]
+   },
+   "citation": "(cite: Dun15)"
+  },
+  {
+   "what": {
+    "value": "Distance 436.0±9.2 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "$436.0\\pm9.2$ pc, which we adopt for Serpens South in our study."
+     }
+    ]
+   },
+   "citation": "(cite: Ort17)"
+  },
+  {
+   "what": {
+    "value": "N2H+ CARMA data",
+    "evidence": [
+     {
+      "loc": "2.2 Supplementary data to study dense gas",
+      "quote": "the data were presented in (cite: Fer14)"
+     }
+    ]
+   },
+   "citation": "(cite: Fer14)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make 12m+7m continuum mosaic",
+   "method": "tclean with MFS on line-free channels, combining arrays, primary-beam corrected",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify mm sources and measure fluxes",
+   "method": "2D Gaussian fits to peaks above local 5 sigma, two-Gaussian fits for two blended pairs",
+   "software": [
+    "MIRIAD imfit"
+   ],
+   "key_parameters": [
+    "5 sigma threshold varying with local rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive source masses",
+   "method": "Optically thin dust emission, M = D^2 S/(B(Td) kappa)",
+   "software": [],
+   "key_parameters": [
+    "kappa = 0.0188 cm2/g at 1.3 mm (beta=1)",
+    "Td = 35 K with IR counterpart, 15 K without"
+   ],
+   "assumptions": [
+    "distance 436 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test stability of sources without IR counterpart",
+   "method": "Compare observed density and radius with Bonnor-Ebert critical density and maximum radius",
+   "software": [],
+   "key_parameters": [
+    "T = 15 K, mu = 2.73 mH, M_BE = mm mass"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Mass segregation via MST",
+   "method": "MST length of N most massive sources vs mean over 500 random sets, giving Lambda_MSR",
+   "software": [
+    "scipy csgraph"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Analysis limited to sources without IR counterpart, presumed roughly coeval"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate dynamical segregation timescale",
+   "method": "Spitzer 1969 segregation time with crossing time from N2H+ velocity dispersion",
+   "software": [],
+   "key_parameters": [
+    "v_disp=0.47 km/s, R_hm=0.14 pc, <m>=0.4 Msun, N~100"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of mm sources",
+   "value": "52",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Millimeter continuum source identifications",
+     "quote": "We identified 52 mm sources in our map"
+    }
+   ]
+  },
+  {
+   "quantity": "Source mass range",
+   "value": "0.002 to 0.9",
+   "uncertainty": "factor of a few",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Source masses",
+     "quote": "The masses we measured are in the range of 0.002 to 0.9 $\\mbox{M$_\\odot$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lambda_MSR plateau for 3<=N<=18",
+   "value": "~3.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Minimum Spanning Tree",
+     "quote": "an approximately flat plateau with a mean value of $\\langle\\Lambda_{MSR}\\rangle \\sim3.7$ for $3\\leq N_{MST}\\leq18$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lambda_MSR at N=2",
+   "value": "~43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Minimum Spanning Tree",
+     "quote": "a very large value of the mass segregation ratio for $N_{MST}=2$ ($\\Lambda_{MSR}\\sim43$"
+    }
+   ]
+  },
+  {
+   "quantity": "Crossing time",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Timescale for mass segregation",
+     "quote": "The resulting crossing time is $t_{crossing}=0.6$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Median distance of sources from cluster center",
+   "value": "0.06",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Source masses relative to cluster “center”",
+     "quote": "we measure a median distance from the cluster center of 0.06 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of IR-less sources unstable",
+   "value": "70%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Pre-stellar source stability",
+     "quote": "This corresponds to 70% of the sample of mm sources with no IR counterpart"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration (pipeline vs manual) details",
+  "Clean threshold, cell size, image size, and number of iterations",
+  "Exact cluster center coordinates and the N2H+ weighting",
+  "Mass formula treatment of unresolved sources",
+  "Random seed for the 500 MST random sets",
+  "Whether total or peak flux was used for mass"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibration script",
+  "Imaging parameters beyond robust",
+  "Cluster center coordinates",
+  "Random seeds"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and recipe mostly described with a source table, but many processing details are missing.",
+ "rediscovery_reason": "Public data, simple recipe, and numeric results (52 sources, masses, Lambda_MSR).",
+ "source_card": "cards/2018A%26A...615A...9P/sonnet/card.md"
+}

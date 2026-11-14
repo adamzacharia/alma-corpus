@@ -1,0 +1,284 @@
+{
+ "bibcode": "2018A&A...620A.115B",
+ "title": "Dense-gas tracers and carbon isotopes in five 2.5 &lt; z &lt; 4 lensed dusty star-forming galaxies from the SPT SMG sample",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201833081",
+ "arxiv_id": "1810.04695",
+ "fields": [
+  "high_z_galaxies",
+  "astrochemistry"
+ ],
+ "question": "How much dense, actively star-forming gas (HCN, HCO+, HNC 5-4) and which 13CO/12CO isotopic ratios do lensed SPT dusty star-forming galaxies at 2.5<z<4 show, and how do they compare with local galaxies?",
+ "alma_project_codes": [
+  "2016.1.00065.S",
+  "2011.0.00957.S"
+ ],
+ "data": {
+  "bands": "Band 3 and, when needed, Band 4",
+  "arrays": "not stated",
+  "angular_resolution": "synthesized beams ~2-3.4 arcsec",
+  "sensitivity": "designed for 5 sigma (10 sigma for SPT0125-47) HCN detection using Zhang2014 L'HCN-LIR"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lens magnifications (SPT0551-50 uses the sample median 6.3)",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "The magnifications come from (cite: Spilker2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Spilker2016)"
+  },
+  {
+   "what": {
+    "value": "12CO(4-3) and [CI](1-0) fluxes from redshift-search data",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Data from z-search programs (cite: Weiss2013), fluxes from (cite: Bothwell2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Weiss2013); (cite: Bothwell2016)"
+  },
+  {
+   "what": {
+    "value": "Local LIR-L'HCN(4-3) relation and HCN(4-3) fluxes",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "To test if our galaxies follow the relation of (cite: Zhang2014), we converted the L’$_{\\rm HCN(5-4)}$ of our objects into L’$_{\\rm HCN(4-3)}$"
+     }
+    ]
+   },
+   "citation": "(cite: Zhang2014)"
+  },
+  {
+   "what": {
+    "value": "HCN/HCO+ 5-4 to 4-3 line ratio conversion",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "assuming the line ratio measured in the local Universe by (cite: Mills2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Mills2013)"
+  },
+  {
+   "what": {
+    "value": "Local [CI] and CO(4-3) fluxes",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "We adopted the aperture-corrected integrated \\[CI\\] fluxes published by (cite: Rosenberg2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Rosenberg2015)"
+  },
+  {
+   "what": {
+    "value": "Stacked SPT line ratios incl. CO(4-3)/CO(3-2)",
+    "evidence": [
+     {
+      "loc": "2.7 CO and [CI] lines extracted from ancillary data",
+      "quote": "We derived the expected CO(4-3) flux using the line ratio measured in the stacked spectrum of the SPT SMG sources derived by (cite: Spilker2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Spilker2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image cubes",
+   "method": "Pipeline calibration, manual flagging, CLEAN with natural weighting, channel rebinning",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 sigma clean threshold; rebinning 4/6/8"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra at point-source position",
+   "method": "Fit 2D Gaussian to MFS image of all channels, extract spectrum at centroid",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Dense-gas emission not much more extended than continuum"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit lines and baseline simultaneously",
+   "method": "Gaussian lines plus first-order baseline fitted simultaneously; bootstrap of reshuffled residuals for uncertainties; 3-sigma upper limits = best-fit flux + 3 std",
+   "software": [],
+   "key_parameters": [
+    "FWHM 200-1000 km/s; velocity offset up to 200 km/s; positivity prior on fluxes; 10 000 bootstraps"
+   ],
+   "assumptions": [
+    "Same FWHM and velocity offset for all lines in low-S/N sources"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive unbiased sample means and line ratios",
+   "method": "Combine bootstrap PDFs by random draws (10 000) to get mean luminosity; ratios of mean fluxes weighted by luminosity distance squared; 16th/84th percentiles",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Deblend HNC(5-4) and CN(4-3)",
+   "method": "Joint fit with common width and velocity offset and positivity prior on both, then mean ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compare with local LIR-L'HCN relation and line ratios",
+   "method": "Convert 5-4 to 4-3 with Mills2013 ratios, correct for magnification, compare with Zhang2014 relation, HCO+/HCN, HNC/HCN, HCN/[CI], HCN/CO, 12CO/13CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Local 5-4/4-3 ratio applies; differential lensing negligible; Planck2015 cosmology, Chabrier IMF"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean L'HCN(5-4)",
+   "value": "7.1",
+   "uncertainty": "1.6",
+   "units": "1e8 K km/s pc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Average sample Luminosity L’$_{\\rm HCN(5-4)}\\ensuremath{^{c}}$       | 7.1$\\pm$1.6"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN deficit relative to Zhang2014",
+   "value": "factor 1.6 (0.20 dex); 2.0 (0.30 dex) after LIR homogenization",
+   "uncertainty": "~2 sigma",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "This corresponds to a deficit by a factor of 1.6 (0.20 dex) corresponding to a 2.5 $\\sigma$ difference."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean HCO+(5-4)/HCN(5-4) flux ratio",
+   "value": "1.00",
+   "uncertainty": "+0.23/-0.19",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "1.00$_{-0.19}^{+0.23}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean HNC(5-4)/HCN(5-4) flux ratio",
+   "value": "1.03",
+   "uncertainty": "+0.59/-0.39",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "found a ratio compatible with unity (1.03$_{-0.39}^{+0.59}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean HNC(5-4)/CN(4-3) ratio",
+   "value": "1.60",
+   "uncertainty": "+1.74/-0.82",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.6",
+     "quote": "We found a mean HNC(5-4)/CN(4-3) ratio of 1.60$_{-0.82}^{+1.74}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 12CO(4-3)/13CO(4-3) flux ratio",
+   "value": "26.1",
+   "uncertainty": "+4.5/-3.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "We found a mean ratio of 26.1$_{-3.5}^{+4.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(5-4) line flux SPT0125-47",
+   "value": "0.96",
+   "uncertainty": "0.23",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Line flux I$_{\\rm HCN(5-4)}$ (Jy km/s)                               | \\<0.55           | 0.96$\\pm$0.23"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](1-0) S/N in SPT0125-47",
+   "value": "36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "7",
+     "quote": "The line is detected with an S/N of 36."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size and clean mask details",
+  "Rest frequencies used for lines",
+  "Exact flagging list beyond DA48",
+  "CASA version",
+  "Bootstrap fitting code (not released); fitting optimizer and starting values",
+  "LIR values and uncertainties source tables per source beyond Table 2",
+  "Details of the magnification handling for luminosity conversion"
+ ],
+ "missing_for_reproduction": [
+  "Fitting/bootstrap code",
+  "Imaging parameters (cell, size, masks)",
+  "CASA version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and fitting method described in detail, but code and imaging details are missing, and results rely on external tables.",
+ "rediscovery_reason": "Data from a single program and the recipe is described with numeric line fluxes and ratios as answer keys.",
+ "source_card": "cards/2018A%26A...620A.115B/sonnet/card.md"
+}

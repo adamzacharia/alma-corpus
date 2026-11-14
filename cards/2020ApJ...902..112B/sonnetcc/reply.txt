@@ -1,0 +1,597 @@
+{
+"depth": "full",
+"paper_type": "large_program_or_survey",
+"paper_type_evidence": [
+{"loc": "Observations and Sample", "quote": "The principal data used are the band-6 ALMA observations from the 2016.1.00324.L program over the HUDF."},
+{"loc": "Summary", "quote": "Here we make use of sensitive observations we have obtained from the ALMA large program ASPECS of far-IR continuum light"}
+],
+"fields": ["high_z_galaxies"],
+"question": {
+"value": "How much dust-obscured star formation (infrared excess IRX) do 1362 UV-selected z=1.5-10 galaxies in the HUDF show in the 1.2 mm ASPECS continuum, how does IRX depend on beta and stellar mass, and what does this imply for the high-z cosmic SFR density",
+"evidence": [
+{"loc": "Introduction", "quote": "The purpose of this paper is to leverage these new observations from the ASPECS program to probe dust obscured SFR from 1362 star-forming galaxies at"},
+{"loc": "Introduction", "quote": "a significant aim of the present study will be to obtain improved constraints on the total SFR density of the universe."}
+]
+},
+"targets": [
+{
+"name": "ASPECS footprint in the Hubble Ultra Deep Field (1362 UV-selected z=1.5-10 galaxies)",
+"details": [
+{"loc": "Introduction", "quote": "thanks to the 150 hour ALMA Spectroscopic Survey in the HUDF (ASPECS) large program, obtaining 60 hours of band 3 observations and 90 hours of band 6 observations over the field"},
+{"loc": "Table 3 notes", "quote": "Spectroscopic redshift from the detection of a CO line in the ASPECS ALMA data (Boogaard et al. 2019)."},
+{"loc": "Table 3 notes", "quote": "Spectroscopic redshift available for this source from the MUSE GTO observations over the HUDF (Bacon et al. 2017)."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "z = 1.5-10 (photometric or spectroscopic, per source)",
+"distance_source": "Spectroscopic redshifts from CO lines in ASPECS (Boogaard et al. 2019) or MUSE (Bacon et al. 2017) for some detected sources; otherwise photometric redshifts / dropout selection"
+},
+{
+"name": "18 ALMA-detected (>4 sigma) UV-selected z>1.5 galaxies (Table 3)",
+"details": [
+{"loc": "Table 3", "quote": "$z\\gtrsim 1.5$ $UV$-selected galaxies showing 4$\\sigma$ detections in our deep ALMA continuum observations"}
+],
+"coordinates": "Listed per source in Table 3 (R.A./Dec in sexagesimal)",
+"redshift_or_distance": "z = 1.551 to 3.711 (Table 3)",
+"distance_source": "CO-line spectroscopic z (Boogaard et al. 2019), MUSE (Bacon et al. 2017) or photometric z, flagged per source in Table 3"
+}
+],
+"alma_project_codes": [
+{"code": "2016.1.00324.L", "evidence": [
+{"loc": "Observations and Sample", "quote": "The principal data used are the band-6 ALMA observations from the 2016.1.00324.L program over the HUDF."},
+{"loc": "Acknowledgments", "quote": "This paper makes use of the ALMA data from the program 2016.1.00324.L."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (1.2 mm continuum)", "evidence": [
+{"loc": "Observations and Sample", "quote": "Those observations were obtained through a full frequency scan in band 6 (212 $-$ 272 GHz) with ALMA in its most compact configuration."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Full frequency scan in band 6, 212-272 GHz", "evidence": [
+{"loc": "Observations and Sample", "quote": "Those observations were obtained through a full frequency scan in band 6 (212 $-$ 272 GHz) with ALMA in its most compact configuration."}
+]},
+{"field": "configurations", "value": "most compact configuration", "evidence": [
+{"loc": "Observations and Sample", "quote": "Those observations were obtained through a full frequency scan in band 6 (212 $-$ 272 GHz) with ALMA in its most compact configuration."}
+]},
+{"field": "angular_resolution", "value": "1.53'' x 1.08'' synthesized beam", "evidence": [
+{"loc": "Observations and Sample", "quote": "The peak sensitivity in our 1.2 mm continuum observations is 9.3$\\mu$Jy ($1\\sigma$) per synthesized beam (1.53$''$ $\\times$ 1.08$''$: González-López et al. 2020)."}
+]},
+{"field": "sensitivity", "value": "9.3 uJy/beam (1 sigma, peak sensitivity); 939 of 1362 sources lie where 1 sigma RMS < 20 uJy/beam", "evidence": [
+{"loc": "Observations and Sample", "quote": "The peak sensitivity in our 1.2 mm continuum observations is 9.3$\\mu$Jy ($1\\sigma$) per synthesized beam (1.53$''$ $\\times$ 1.08$''$: González-López et al. 2020)."},
+{"loc": "Results", "quote": "we only consider those sources (939 out of 1362) over the ASPECS field where the $1.2\\,$mm-continuum sensitivities are the highest"}
+]},
+{"field": "time_on_source", "value": "90 hours of band-6 observations in total (60 hours band 3 in the full 150 hour program)", "evidence": [
+{"loc": "Summary", "quote": "using 90 hours of band-6 observations in total."},
+{"loc": "Introduction", "quote": "obtaining 60 hours of band 3 observations and 90 hours of band 6 observations over the field"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Own ASPECS large program data (authors obtained the observations)", "evidence": [
+{"loc": "Summary", "quote": "Here we make use of sensitive observations we have obtained from the ALMA large program ASPECS of far-IR continuum light"}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "HST (ACS/WFC, WFC3/IR) XDF", "provided": {"value": "Optical and near-IR photometry for sample selection, UV slopes and stellar masses", "evidence": [
+{"loc": "Observations and Sample", "quote": "we make use of the XDF reductions (Illingworth et al. 2013), which incorporated all ACS+WFC3/IR data available over the HUDF in 2013."}
+]}},
+{"name": "HST WFC3/UVIS (UVUDF)", "provided": {"value": "0.2-0.4 micron imaging in F225W, F275W, F336W", "evidence": [
+{"loc": "Observations and Sample", "quote": "we made use of the v2 release of the UVUDF epoch 3 data (Teplitz et al. 2013; Rafelski et al. 2015)"}
+]}},
+{"name": "Spitzer/IRAC (GREATS)", "provided": {"value": "Rest-optical photometry for stellar masses", "evidence": [
+{"loc": "Observations and Sample", "quote": "stacks of the IRAC observations over the HUDF from the GREATS program (M. Stefanon et al. 2020: PI: Labbé)."}
+]}},
+{"name": "VLT/HAWK-I HUGS, VLT/ISAAC, PANIC (K-band)", "provided": {"value": "Ground-based K-band photometry", "evidence": [
+{"loc": "Flux Measurements", "quote": "from the VLT/HAWK-I HUGS (Fontana et al. 2014), VLT/ISAAC, and PANIC observations over the HUDF"}
+]}},
+{"name": "VLT/MUSE GTO", "provided": {"value": "Spectroscopic redshifts for some detected sources", "evidence": [
+{"loc": "Table 3 notes", "quote": "Spectroscopic redshift available for this source from the MUSE GTO observations over the HUDF (Bacon et al. 2017)."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "ASPECS 1.2 mm continuum mosaic construction", "evidence": [
+{"loc": "Observations and Sample", "quote": "Our construction of a continuum mosaic from ALMA data is described in González-López et al. (2020)."}
+]}, "citation": "González-López et al. 2020"},
+{"what": {"value": "1.2 mm flux densities and uncertainties of detected sources (from tapered images)", "evidence": [
+{"loc": "Table 3 notes", "quote": "Measurements as in González-López et al. (2020)."},
+{"loc": "Results", "quote": "González-López et al. (2020) make use of flux density measurements made from the tapered images"}
+]}, "citation": "González-López et al. 2020"},
+{"what": {"value": "z~4-8 Lyman-break galaxy samples in the ASPECS region", "evidence": [
+{"loc": "Selections", "quote": "The Bouwens et al. (2015) samples were based on the deep optical ACS and WFC3/IR observations within the HUDF."}
+]}, "citation": "Bouwens et al. 2015"},
+{"what": {"value": "Photometric catalog used to add sources to the samples", "evidence": [
+{"loc": "Selections", "quote": "We also made use of the photometric catalog of Rafelski et al. (2015) and included those sources in our samples, if not present in the other selections."}
+]}, "citation": "Rafelski et al. 2015"},
+{"what": {"value": "CO-line spectroscopic redshifts for ASPECS sources", "evidence": [
+{"loc": "Table 3 notes", "quote": "Spectroscopic redshift from the detection of a CO line in the ASPECS ALMA data (Boogaard et al. 2019)."}
+]}, "citation": "Boogaard et al. 2019"},
+{"what": {"value": "Literature dust-temperature measurements used in the joint T_d(z) fit", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "we present the same observations that Schreiber et al. (2018) consider, and then add to their constraints earlier results from Béthermin et al. (2015)."}
+]}, "citation": "Schreiber et al. 2018; Béthermin et al. 2015 and others listed in the paper"},
+{"what": {"value": "Baseline IRX-stellar mass relation", "evidence": [
+{"loc": "Expected Number of Continuum Detections", "quote": "we take the relation derived in our pilot program (Appendix A from Bouwens et al. 2016)"}
+]}, "citation": "Bouwens et al. 2016"},
+{"what": {"value": "CANDELS z=1.3-2.5 sources with UV slopes and Prospector stellar masses", "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "identified over the five CANDELS fields by 3DHST team (Skelton et al. 2014)"},
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "stellar masses derived by Prospector (Leja et al. 2017, 2019)"}
+]}, "citation": "Skelton et al. 2014; Leja et al. 2017, 2019"},
+{"what": {"value": "z~4-10 CANDELS GOODS-N/S samples used for dust corrections", "evidence": [
+{"loc": "Dust Corrections for z>3 Samples", "quote": "we leverage the large selections of star-forming galaxies Bouwens et al. (2015) identified at"}
+]}, "citation": "Bouwens et al. 2015"},
+{"what": {"value": "UV luminosity functions used for SFR densities", "evidence": [
+{"loc": "Summary", "quote": "LF determinations from Bouwens et al. (2015) to provide updated estimates of the SFR density at"}
+]}, "citation": "Bouwens et al. 2015"},
+{"what": {"value": "Obscured SFR density of ULIRG-like galaxies (Magnelli, AS2UDS, Wang et al.)", "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "As our fiducial estimate of the obscured SFR density from ULIRGs, we adopt the Magnelli et al. (2013) constraints at"}
+]}, "citation": "Magnelli et al. 2013; Dudzevičiūtė et al. 2020; Wang et al. 2019"},
+{"what": {"value": "Average IR excess of ~5 for UV-bright z~3 galaxies", "evidence": [
+{"loc": "Table 7 notes", "quote": "we make use of the finding by e.g. Reddy & Steidel (2004) and Reddy et al. (2010) that the average infrared excess for galaxies brighter than 25.5 mag at"}
+]}, "citation": "Reddy & Steidel 2004; Reddy et al. 2010"},
+{"what": {"value": "IR luminosity to SFR conversion", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "Adopting the Kennicutt (1998) conversion between IR luminosity and the star formation rate (SFR)"}
+]}, "citation": "Kennicutt 1998"}
+],
+"simulations_or_models_as_data": [
+{"value": "Modified blackbody far-IR SED (beta_d = 1.6) with evolving T_d(z) used to convert 1.2 mm flux to L_IR and to predict fluxes", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "As is common practice (e.g., Casey 2012), we will adopt a modified blackbody (MBB) form to model the far-IR spectral energy distributions of galaxies"}
+]}
+],
+"calibration": [],
+"imaging": [
+{"field": "uv_taper", "value": "Flux densities of detected sources measured on tapered images (as in González-López et al. 2020)", "evidence": [
+{"loc": "Results", "quote": "González-López et al. (2020) make use of flux density measurements made from the tapered images"}
+]},
+{"field": "final_beam", "value": "1.53'' x 1.08''", "evidence": [
+{"loc": "Observations and Sample", "quote": "The peak sensitivity in our 1.2 mm continuum observations is 9.3$\\mu$Jy ($1\\sigma$) per synthesized beam (1.53$''$ $\\times$ 1.08$''$: González-López et al. 2020)."}
+]},
+{"field": "final_rms", "value": "9.3 uJy/beam (1 sigma, peak sensitivity)", "evidence": [
+{"loc": "Observations and Sample", "quote": "The peak sensitivity in our 1.2 mm continuum observations is 9.3$\\mu$Jy ($1\\sigma$) per synthesized beam (1.53$''$ $\\times$ 1.08$''$: González-López et al. 2020)."}
+]}
+],
+"inherited": [
+{"what": {"value": "ALMA 1.2 mm continuum mosaic construction", "evidence": [
+{"loc": "Observations and Sample", "quote": "Our construction of a continuum mosaic from ALMA data is described in González-López et al. (2020)."}
+]}, "from_reference": "González-López et al. (2020)"},
+{"what": {"value": "Source flux densities and uncertainties from the continuum images", "evidence": [
+{"loc": "Table 3 notes", "quote": "Measurements as in González-López et al. (2020)."}
+]}, "from_reference": "González-López et al. (2020)"},
+{"what": {"value": "HST photometry procedure", "evidence": [
+{"loc": "Flux Measurements", "quote": "Photometry for sources in our samples is performed in the same way as in the Bouwens et al. (2016) analysis from the ASPECS pilot program."}
+]}, "from_reference": "Bouwens et al. (2016)"},
+{"what": {"value": "Color-color and photometric-redshift selection criteria", "evidence": [
+{"loc": "Selections", "quote": "we have adopted essentially identical color-color and photometric redshift selection criteria to those applied in Bouwens et al. (2016)."}
+]}, "from_reference": "Bouwens et al. (2016)"},
+{"what": {"value": "UV slope fixed for z=8-10 sources", "evidence": [
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "consistent with the results of Bouwens et al. (2014a)."}
+]}, "from_reference": "Bouwens et al. (2014a)"},
+{"what": {"value": "Baseline IRX-stellar mass relation", "evidence": [
+{"loc": "Expected Number of Continuum Detections", "quote": "we take the relation derived in our pilot program (Appendix A from Bouwens et al. 2016)"}
+]}, "from_reference": "Bouwens et al. 2016"},
+{"what": {"value": "CMB correction to the dust SED", "evidence": [
+{"loc": "Expected Number of Continuum Detections", "quote": "following prescriptions given in da Cunha et al. (2013)."}
+]}, "from_reference": "da Cunha et al. (2013)"},
+{"what": {"value": "IRX-beta parameter fitting approach", "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "As in our earlier analysis of the ASPECS pilot data, we formalize this analysis by finding those parameters which best match the stacked IRX results vs."}
+]}, "from_reference": "ASPECS pilot analysis (Bouwens et al. 2016)"},
+{"what": {"value": "Dust-correction method for SFR density", "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "As in the analysis for our pilot study, we apply the dust corrections we derive in the previous section to the"}
+]}, "from_reference": "Bouwens et al. 2016 (pilot study)"},
+{"what": {"value": "UV luminosity to SFR conversion", "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "converted into SFR densities using the Madau & Dickinson (2014) conversion factor"}
+]}, "from_reference": "Madau & Dickinson (2014)"}
+],
+"unstated_but_needed": [
+"The 1.2 mm continuum mosaic itself, its imaging parameters (weighting, taper, cleaning, masking) and calibration are all deferred to Gonzalez-Lopez et al. 2020; the paper gives no CASA version, robust value or uv-taper size",
+"The exact catalog of 1362 sample galaxies with their HST/Spitzer fluxes, betas, FAST stellar masses and redshifts is not tabulated (only the 18 detections in Table 3)",
+"Pixel-level stacking details: positions used, how noise per source is measured, bootstrap resampling count, how undetected sources in the primary-beam edges are handled",
+"Maximum-likelihood fit details for IRX-beta and IRX-mass (likelihood form, treatment of upper limits, optimizer, binning of beta, bootstrap vs formal errors in the fit)",
+"Full list of dust temperature compilation values entering the joint T_d(z) fit and the fit method",
+"FAST grid details (step sizes, library, extinction law) and code version",
+"SExtractor and EAZY configuration parameters and versions",
+"Treatment of sources between z=3.5 and 10 with unconstrained beta other than the fixed -2.2 at z=8-10"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Obtain 1.2 mm continuum flux densities and detections",
+"method": {"value": "Use the ASPECS band-6 continuum mosaic and the tapered-image flux densities of González-López et al. (2020); count sources detected above 4 sigma among the 1362 UV-selected galaxies", "evidence": [
+{"loc": "Results", "quote": "González-López et al. (2020) make use of flux density measurements made from the tapered images"},
+{"loc": "Results", "quote": "over our sensitive ASPECS mosaic shows that 18 of these galaxies are detected at"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "9.3 uJy/beam peak 1-sigma sensitivity; 4 sigma detection threshold", "evidence": [
+{"loc": "Observations and Sample", "quote": "The peak sensitivity in our 1.2 mm continuum observations is 9.3$\\mu$Jy ($1\\sigma$) per synthesized beam (1.53$''$ $\\times$ 1.08$''$: González-López et al. 2020)."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Confirms earlier pilot and Dunlop et al. (2017) detections; compared individual detections against earlier reports", "evidence": [
+{"loc": "Previous Reported Continuum Detections", "quote": "Our new observations confirm all of our previously claimed detections at"}
+]}
+},
+{
+"order": 2,
+"goal": "Select the UV-selected z=1.5-10 galaxy sample and measure HST/Spitzer photometry",
+"method": {"value": "Lyman-break dropout color criteria plus photometric redshifts on HST photometry measured with SExtractor and EAZY; Spitzer/IRAC photometry using HST as a template", "evidence": [
+{"loc": "Selections", "quote": "we utilize both Lyman-break selection criteria as well as a photometric redshift selection to ensure our samples are as comprehensive as possible."},
+{"loc": "Flux Measurements", "quote": "In performing photometry, a simultaneous fit of the flux of a source of interest and its neighbors is performed, the flux from neighboring sources is subtracted, and then aperture photometry on the source of interest is performed."}
+]},
+"software": ["SExtractor", "EAZY"],
+"key_parameters": [
+{"value": "Source detection on sqrt(chi^2) image; Kron factors 1.6 (colors) and 2.5 (total)", "evidence": [
+{"loc": "Flux Measurements", "quote": "color measurements are made in Kron-style (1980) scalable apertures with a Kron factor of 1.6."}
+]},
+{"value": "Stars excluded with SExtractor stellarity; expected low-z contamination 3-8%", "evidence": [
+{"loc": "Selections", "quote": "Potential stars are excluded from our selection using the measured SExtractor (Bertin & Arnouts 1996) stellarity criterion."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Contamination by lower-z galaxies or stars estimated from earlier work", "evidence": [
+{"loc": "Selections", "quote": "The expected contamination levels in these color-selected samples by lower-redshift galaxies (or stars) is estimated to be on the order of 3-8% (e.g., Bouwens et al. 2015)."}
+]}
+},
+{
+"order": 3,
+"goal": "Derive UV slopes beta and stellar masses",
+"method": {"value": "Power-law fit to HST UV photometry for beta (fixed at -2.2 for z=8-10); stellar-population SED fitting with FAST using HST, K-band and Spitzer/IRAC photometry, with nebular-line corrections to IRAC fluxes", "evidence": [
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "we make use of the publicly-available code FAST (Kriek et al. 2009) to perform this fitting."},
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "to account for the impact of nebular emission lines on the observed IRAC fluxes."}
+]},
+"software": ["FAST"],
+"key_parameters": [
+{"value": "e^(-t/tau) star formation history with tau from 1 Gyr to 100 Gyr; rest-frame V extinction 0-2 mag; age from 10 Myr to age of universe", "evidence": [
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "We assume an $e^{-t/\\tau}$ star formation history and allow the $\\tau$ parameter to have any value from 1 Gyr to 100 Gyr."}
+]}
+],
+"assumptions": [
+{"value": "Chabrier (2003) IMF, metallicity 0.2 Zsun", "evidence": [
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "We assume a Chabrier (2003) IMF"},
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "Our fixing the fiducial metallicity to 0.2 $Z_{\\odot}$ is motivated by studies of the metallicity of individual"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "FAST masses compared with MAGPHYS and Prospector masses (Appendix A): FAST ~0.1 dex lower", "evidence": [
+{"loc": "Appendix A", "quote": "with those derived from the MAGPHYS software (da Cunha et al. 2008)"}
+]}
+},
+{
+"order": 4,
+"goal": "Adopt a far-IR SED and dust-temperature evolution to convert 1.2 mm flux to L_IR",
+"method": {"value": "Modified blackbody SED with beta_d=1.6 and redshift-dependent T_d from a joint fit to literature measurements, with CMB correction C_nu; IR luminosity integrated over 8-1000 micron; Kennicutt (1998) conversion to SFR", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "As is common practice (e.g., Casey 2012), we will adopt a modified blackbody (MBB) form to model the far-IR spectral energy distributions of galaxies"},
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "we derive the following relationship between dust temperature and redshift:"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "T_d [K] = (34.6 +/- 0.3) + (3.94 +/- 0.26)(z-2); alternative fixed T_d of 35 K or 50 K", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "T_d [K] = (34.6 \\pm 0.3) + (3.94 \\pm 0.26)(z-2)"}
+]}
+],
+"assumptions": [
+{"value": "Dust emissivity index beta_d = 1.6; light-weighted dust temperatures; CMB effect included", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "all measurements have been converted to their equivalent values using an emissivity index $\\beta_d$ of 1.6 and using the light-weighted dust temperatures"},
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "accounting for the impact of the CMB (e.g., da Cunha et al. 2013: §3.1.1)"}
+]}
+],
+"fitting": {"value": "Joint fit to all dust-temperature measurements (method details not stated)", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "we derive the following relationship between dust temperature and redshift:"}
+]},
+"validation": {"value": "Checked that a mid-IR power-law SED template gives similar conversion factors; derived L_IR agree with MAGPHYS-based values of Aravena et al. (2020) to 0.01 dex in the mean", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "following e.g. Álvarez-Márquez et al.(2016) with a mid-IR power-law, yields similar 1.2mm to IR luminosity conversion factors"},
+{"loc": "Continuum Detections of Individual Sources at 1.2 mm", "quote": "Our derived IR luminosities are just 0.01 dex higher in the mean than those employed by Aravena et al. (2020)"}
+]}
+},
+{
+"order": 5,
+"goal": "Predict and count continuum detections; derive L_IR of detected sources",
+"method": {"value": "Predict 1.2 mm flux for all 1362 galaxies from IRX-mass and IRX-beta relations with the MBB SED and compare predicted >4 sigma counts with the observed 18", "evidence": [
+{"loc": "Expected Number of Continuum Detections", "quote": "Using the above procedure, we calculated the expected flux for our entire sample of 1362"},
+{"loc": "Expected Number of Continuum Detections", "quote": "15, 28, and 8 sources, respectively, are predicted to show"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "IRX_z=0 = 1.7(10^(0.4(1.86(beta+1.85))) - 1); Reddy and SMC variants with dA/dbeta 1.84 and 1.1", "evidence": [
+{"loc": "Expected Number of Continuum Detections", "quote": "IRX_{z=0} = 1.7 (10^{0.4(1.86(\\beta+1.85))} - 1)"}
+]}
+],
+"assumptions": [
+{"value": "IRX relations from z~0-3 valid at higher z (limited evolution)", "evidence": [
+{"loc": "Expected Number of Continuum Detections", "quote": "Given the limited evolution in these relations, we expect the predicted results to be reasonably accurate in estimating the overall numbers from our program."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Observed count of 18 compared with predicted 15 / 28 / 8 (16 if only masses above 10^9.5 Msun are considered)", "evidence": [
+{"loc": "Continuum Detections of Individual Sources at 1.2 mm", "quote": "The total number of"}
+]}
+},
+{
+"order": 6,
+"goal": "Stack the 1.2 mm continuum in bins of stellar mass, beta and UV magnitude",
+"method": {"value": "Image-plane stacking of ALMA continuum maps with inverse-variance weights; flux read off the stack via convolution with the primary beam", "evidence": [
+{"loc": "Stacked constraints on the Infrared Excess", "quote": "the ALMA continuum maps of the relevant sources are mapped onto the same position and stacked in the image plane, weighting each in proportion to the expected 1.2$\\,$mm continuum signal divided by the noise squared (per beam)"},
+{"loc": "Stacked constraints on the Infrared Excess", "quote": "We derive a flux density from the stack based on a convolution of the image stack (3.3$''$$\\times$3.3$''$ aperture) with the primary beam."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Six stellar-mass bins; five beta bins; weights proportional to inverse square of noise", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "We consider six different bins of stellar mass:"},
+{"loc": "Table 9 notes", "quote": "Each source is weighted according to the inverse square of the noise."}
+]}
+],
+"assumptions": [
+{"value": "Individually undetected sources are unresolved at the observed resolution", "evidence": [
+{"loc": "Stacked constraints on the Infrared Excess", "quote": "Individually undetected sources are assumed to be unresolved at the resolution of our observations."}
+]}
+],
+"fitting": {"value": "Bootstrap and formal uncertainties both quoted", "evidence": [
+{"loc": "Table 4 notes", "quote": "Both the bootstrap and formal uncertainties are quoted on the result (presented first and second, respectively)."}
+]},
+"validation": {"value": "Three weighting schemes (UV flux, stellar mass, equal) for the low-mass stack all give non-detection", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "None of the stacks show a significant detection"}
+]}
+},
+{
+"order": 7,
+"goal": "Fit IRX-stellar mass and IRX-beta relations to stacks",
+"method": {"value": "Fit power law IRX_M = (M/M_s)^alpha to z=1.5-3.5 stacks; fit IRX-beta form with dA_UV/dbeta and beta_int by maximum likelihood, with 68% confidence intervals", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "In quantifying the dependence, we made use of the power law relation"},
+{"loc": "Infrared Excess versus beta", "quote": "Our maximum-likelihood derived values for"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "M_s = 10^9.15 (+0.18/-0.16) Msun, alpha = 0.97 +/- 0.17; dA_UV/dbeta = 1.81 (+0.18/-0.14), beta_int = -1.86 (+0.14/-0.10) for M>10^9.5 Msun at z~1.5-3.5", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "arrived at a best-fit value for $M_s$ and $\\alpha$ of $10^{9.15_{-0.16}^{+0.18}}$ $M_{\\odot}$ and 0.97$_{-0.17}^{+0.17}$, respectively."}
+]}
+],
+"assumptions": [
+{"value": "For lower-mass galaxies beta_int fixed to the high-mass value; alternative beta_int of -2.23 and -2.30 also explored", "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "Fixing $\\beta_{int}$ to be the same as for the higher-mass galaxies"}
+]}
+],
+"fitting": {"value": "Maximum likelihood with 68% confidence intervals (likelihood and priors not stated)", "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "then computing 68% confidence intervals on the derived parameters."}
+]},
+"validation": {"value": "Compared with pilot-study and literature relations; PROSPECTOR masses give a steeper relation (Appendix D)", "evidence": [
+{"loc": "Appendix D", "quote": "The derived relationship is significantly steeper than our fiducial determination"}
+]}
+},
+{
+"order": 8,
+"goal": "Derive the beta-stellar mass relation and the bivariate IRX(beta, M)",
+"method": {"value": "Use CANDELS z=1.3-2.5 beta and Prospector masses; find M_s and alpha of the beta-M relation by balancing source counts above and below it; then fit the bivariate form IRX(beta,M) to the ASPECS stacks", "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "compute the square of the difference in the number of sources on each side for each of the six regions, and then minimize the square of the differences."},
+{"loc": "IRX as a Function of Stellar Mass and beta", "quote": "The derived infrared excesses vs. $\\beta$ and stellar mass were then fit using the expression given in Eq."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "beta_int = -2.3 and dA/dbeta = 1.42 fixed; best fit M_s = 10^9.07 Msun, alpha = 0.92", "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "The best-fit values of $M_s$ and $\\alpha$ are 10$^{9.07}$ $M_{\\odot}$ and 0.92, respectively."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Minimization of squared count differences in six regions (beta-M); fit of bivariate form to stack bins (method not detailed)", "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "compute the square of the difference in the number of sources on each side for each of the six regions, and then minimize the square of the differences."}
+]},
+"validation": {"value": "beta-M parameters consistent at 1 sigma with the IRX-mass fit; compared with Alvarez-Marquez et al. (2019) dependence", "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "demonstrating that the IRX-$\\beta$ and IRX-stellar mass relations we derive are essentially equivalent."}
+]}
+},
+{
+"order": 9,
+"goal": "Compare IRX estimators against measured fluxes",
+"method": {"value": "Predict 1.2 mm flux for detected sources and for sources expected at >2 sigma with eight estimators; compute mean, median, scatter and quartiles of observed-minus-predicted", "evidence": [
+{"loc": "Predictive Power of Different Estimators for IRX", "quote": "divided the result by the measurement error $ef_{obs}$, and then determined the average as well as the upper and lower quartiles."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Eight estimators including IRX_M99, IRX_z=0, IRX_SMC, IRX_M,0, IRX_beta, IRX_M, IRX(beta,M) and (IRX_beta IRX_M)^(1/2)", "evidence": [
+{"loc": "Predictive Power of Different Estimators for IRX", "quote": "As one final predictor, we include a comparison against the flux density predicted taking the geometric mean of our derived"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Scatter 0.65-0.81 dex; best for IRX(beta,M) and the geometric mean estimator", "evidence": [
+{"loc": "Predictive Power of Different Estimators for IRX", "quote": "The scatter ranges from 0.65 to 0.81 dex"}
+]}
+},
+{
+"order": 10,
+"goal": "Derive dust corrections and SFR densities at z>=3",
+"method": {"value": "Apply IRX(beta,M) to CANDELS GOODS-N/S samples to get dust corrections per UV-luminosity bin, apply to UV LFs, convert to SFR density, and add ULIRG-like far-IR bright contributions", "evidence": [
+{"loc": "Dust Corrections for z>3 Samples", "quote": "In deriving dust corrections for each bin in $UV$ luminosity, we make use of the stellar masses and $UV$-continuum slopes $\\beta$ derived for our large CANDELS samples"},
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "is to simply include them based on dedicated searches for these sources in the IR."}
+]},
+"software": ["FAST"],
+"key_parameters": [
+{"value": "IRX forced to zero below 10^9 Msun; z~3 average dust correction ~5 for UV-bright galaxies", "evidence": [
+{"loc": "Dust Corrections for z>3 Samples", "quote": "we force the infrared excesses of sources with stellar masses less than 10$^9$ $M_{\\odot}$ to be zero, consistent with our derived observational constraints."}
+]}
+],
+"assumptions": [
+{"value": "Constant SFR for 100 Myr and Chabrier IMF in the UV-to-SFR conversion", "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "This relationship assumes a constant SFR for 100 million years."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "With T_d fixed near 35 K the corrections would be about half as large; ULIRG contribution estimates cross-checked against mass-function-based estimates", "evidence": [
+{"loc": "Dust Corrections for z>3 Samples", "quote": "the dust correction we compute would be approximately half as large."}
+]}
+}
+],
+"software": [
+{"name": "SExtractor", "version": "not stated", "used_for": {"value": "HST photometry (modified version)", "evidence": [
+{"loc": "Flux Measurements", "quote": "fluxes are derived using our own modified version of the SExtractor (Bertin & Arnouts 1996) software."}
+]}},
+{"name": "EAZY", "version": "not stated", "used_for": {"value": "Photometric redshifts for z=1.5-3.5 selection", "evidence": [
+{"loc": "Selections", "quote": "identified by running the EAZY photometric redshift code (Brammer et al. 2008) on our own"}
+]}},
+{"name": "FAST", "version": "not stated", "used_for": {"value": "Stellar masses from SED fitting", "evidence": [
+{"loc": "UV-continuum slopes and Stellar Masses", "quote": "we make use of the publicly-available code FAST (Kriek et al. 2009) to perform this fitting."}
+]}},
+{"name": "Prospector", "version": "not stated", "used_for": {"value": "Alternative stellar masses (Leja et al. 2019 published values) for the CANDELS beta-M relation and a systematic check of the IRX-mass relation", "evidence": [
+{"loc": "Appendix D", "quote": "we made use of the stellar mass estimates that Leja et al. (2019) provide for sources in our sample to"}
+]}},
+{"name": "MAGPHYS", "version": "not stated", "used_for": {"value": "Comparison of FAST masses with MAGPHYS masses used in other ASPECS papers", "evidence": [
+{"loc": "Appendix A", "quote": "with those derived from the MAGPHYS software (da Cunha et al. 2008)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Number of >4 sigma 1.2 mm continuum detections among the 1362 galaxies", "value": "18", "uncertainty": "not stated", "units": "sources", "from_step": 1, "evidence": [
+{"loc": "Results", "quote": "over our sensitive ASPECS mosaic shows that 18 of these galaxies are detected at"}
+]},
+{"quantity": "Detection fraction at >10^10 Msun (sources with sigma < 20 uJy/beam)", "value": "85", "uncertainty": "-18/+7 (Sect. 3.2); -18/+9 (abstract)", "units": "percent", "from_step": 1, "evidence": [
+{"loc": "Results", "quote": "implying a 85$_{-18}^{+7}$% detection fraction at $>$10$^{10}$ $M_{\\odot}$."},
+{"loc": "abstract", "quote": "with the detection fraction rising from 0% at $10^{9.0}$ $M_{\\odot}$ to 85$_{-18}^{+9}$% at $>$10$^{10}$ $M_{\\odot}$."}
+]},
+{"quantity": "Dust temperature evolution intercept at z=2", "value": "34.6", "uncertainty": "0.3", "units": "K", "from_step": 4, "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "T_d [K] = (34.6 \\pm 0.3) + (3.94 \\pm 0.26)(z-2)"}
+]},
+{"quantity": "Dust temperature evolution slope", "value": "3.94", "uncertainty": "0.26", "units": "K per unit redshift", "from_step": 4, "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "T_d [K] = (34.6 \\pm 0.3) + (3.94 \\pm 0.26)(z-2)"}
+]},
+{"quantity": "IR luminosity range of the detected sources", "value": "1.4e11 to 2.6e12", "uncertainty": "not stated", "units": "Lsun", "from_step": 5, "evidence": [
+{"loc": "Continuum Detections of Individual Sources at 1.2 mm", "quote": "range from 1.4 $\\times$10$^{11}$ $L_{\\odot}$ to 2.6 $\\times$ 10$^{12}$ $L_{\\odot}$."}
+]},
+{"quantity": "Mean 1.2 mm flux density of stack of 1253 galaxies below 10^9.25 Msun (unweighted)", "value": "-0.1", "uncertainty": "0.4 and 0.4 (two stated terms)", "units": "uJy/beam", "from_step": 6, "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "in our unweighted stack, the mean continuum flux density is $-$0.1$\\pm$0.4$\\pm$0.4$\\mu$Jy$\\,$beam$^{-1}$."}
+]},
+{"quantity": "4 sigma upper limit on obscured SFR in a typical low-mass galaxy", "value": "<0.6", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 6, "evidence": [
+{"loc": "abstract", "quote": "implying a hard upper limit on the obscured SFR of $<$0.6 $M_{\\odot}$$\\,$yr$^{-1}$ ($4\\sigma$) in a typical low-mass galaxy."}
+]},
+{"quantity": "Obscured SFR of low-mass stack converted at z~4", "value": "0.0", "uncertainty": "0.1", "units": "Msun/yr", "from_step": 6, "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "we derive a SFR of 0.0$\\pm$0.1 $M_{\\odot}$$\\,$yr$^{-1}$."}
+]},
+{"quantity": "IRX-mass characteristic mass M_s (z=1.5-3.5)", "value": "10^9.15", "uncertainty": "+0.18/-0.16 dex", "units": "Msun", "from_step": 7, "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "arrived at a best-fit value for $M_s$ and $\\alpha$ of $10^{9.15_{-0.16}^{+0.18}}$ $M_{\\odot}$ and 0.97$_{-0.17}^{+0.17}$, respectively."}
+]},
+{"quantity": "IRX-mass slope alpha (z=1.5-3.5)", "value": "0.97", "uncertainty": "+/-0.17", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "arrived at a best-fit value for $M_s$ and $\\alpha$ of $10^{9.15_{-0.16}^{+0.18}}$ $M_{\\odot}$ and 0.97$_{-0.17}^{+0.17}$, respectively."}
+]},
+{"quantity": "dA_UV/dbeta for M>10^9.5 Msun, z=1.5-3.5 (beta_int free)", "value": "1.81", "uncertainty": "+0.18/-0.14", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "Our maximum-likelihood derived values for $dA_{UV}/d\\beta$ and $\\beta_{int}$ are 1.81$_{-0.14}^{+0.18}$ and $-1.86_{-0.10}^{+0.14}$"}
+]},
+{"quantity": "beta_int for M>10^9.5 Msun, z=1.5-3.5", "value": "-1.86", "uncertainty": "+0.14/-0.10", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "Our maximum-likelihood derived values for $dA_{UV}/d\\beta$ and $\\beta_{int}$ are 1.81$_{-0.14}^{+0.18}$ and $-1.86_{-0.10}^{+0.14}$"}
+]},
+{"quantity": "dA_UV/dbeta for M<10^9.5 Msun, z=1.5-3.5 (beta_int fixed at -1.86)", "value": "1.12", "uncertainty": "+0.31/-0.30", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "we find a best-fit value for $dA_{UV}/d\\beta$ of 1.12$_{-0.30}^{+0.31}$."}
+]},
+{"quantity": "dA_UV/dbeta with beta_int fixed to -2.23 (z=1.5-3.5, M>10^9.5 Msun)", "value": "1.48", "uncertainty": "+0.09/-0.11", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "the $dA_{UV}/d\\beta$ we recover is 1.48$_{-0.11}^{+0.09}$."}
+]},
+{"quantity": "beta-mass relation characteristic mass (CANDELS z~2)", "value": "10^9.07", "uncertainty": "not stated", "units": "Msun", "from_step": 8, "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "The best-fit values of $M_s$ and $\\alpha$ are 10$^{9.07}$ $M_{\\odot}$ and 0.92, respectively."}
+]},
+{"quantity": "beta-mass relation exponent alpha", "value": "0.92", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "The best-fit values of $M_s$ and $\\alpha$ are 10$^{9.07}$ $M_{\\odot}$ and 0.92, respectively."}
+]},
+{"quantity": "Bivariate IRX(beta,M) dA_UV/dbeta", "value": "1.48", "uncertainty": "0.10", "units": "dimensionless", "from_step": 8, "evidence": [
+{"loc": "IRX as a Function of Stellar Mass and beta", "quote": "The best-fit values we recovered for $dA_{UV}/d\\beta$ and $\\alpha$ were 1.48$\\pm$0.10 and 0.67$\\pm$0.06."}
+]},
+{"quantity": "Bivariate IRX(beta,M) alpha", "value": "0.67", "uncertainty": "0.06", "units": "dimensionless", "from_step": 8, "evidence": [
+{"loc": "IRX as a Function of Stellar Mass and beta", "quote": "The best-fit values we recovered for $dA_{UV}/d\\beta$ and $\\alpha$ were 1.48$\\pm$0.10 and 0.67$\\pm$0.06."}
+]},
+{"quantity": "Scatter between predicted and measured 1.2 mm fluxes across estimators", "value": "0.65 to 0.81", "uncertainty": "not stated", "units": "dex", "from_step": 9, "evidence": [
+{"loc": "Predictive Power of Different Estimators for IRX", "quote": "The scatter ranges from 0.65 to 0.81 dex"}
+]},
+{"quantity": "IRX-mass M_s using Prospector masses", "value": "10^9.63", "uncertainty": "+/-0.12 dex", "units": "Msun", "from_step": 7, "evidence": [
+{"loc": "Appendix D", "quote": "is $10^{9.63_{-0.12}^{+0.12}}$ $M_{\\odot}$ and 1.37$_{-0.15}^{+0.18}$, respectively"}
+]},
+{"quantity": "IRX-mass slope alpha using Prospector masses", "value": "1.37", "uncertainty": "+0.18/-0.15", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "Appendix D", "quote": "is $10^{9.63_{-0.12}^{+0.12}}$ $M_{\\odot}$ and 1.37$_{-0.15}^{+0.18}$, respectively"}
+]},
+{"quantity": "SFR density contribution of ULIRGs at z~2.5 in the ASPECS volume", "value": "0.036", "uncertainty": "0.022", "units": "Msun/yr (as printed)", "from_step": 10, "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "finding 0.036$\\pm$0.022 $M_{\\odot}$$\\,$yr$^{-1}$."}
+]}
+],
+"findings_qualitative": [
+{"value": "The detection fraction rises steeply with stellar mass; galaxies below about 10^9.25 Msun show no dust continuum even in stacks", "evidence": [
+{"loc": "Summary", "quote": "we find that the fraction of detected galaxies in our samples increases sharply with increasing stellar mass"}
+]},
+{"value": "IRX-beta for high-mass z~1.5-3.5 galaxies follows a Calzetti-like relation, low-mass ones an SMC-like relation", "evidence": [
+{"loc": "Summary", "quote": "For lower-mass $z\\sim 1.5$–3.5 galaxies, the IRX-$\\beta$ relation we derive is most consistent with an SMC-like relation."}
+]},
+{"value": "Star formation transitions from mostly unobscured to mostly obscured near z~5", "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "we can see that star formation is mostly unobscured at $z>5$, mostly obscured at $z<5$"}
+]}
+],
+"claims": [
+{"hypothesis": "Does the fraction of UV-selected galaxies detected at 1.2 mm depend on stellar mass?", "experiment": "Count >4 sigma detections among 939 galaxies with 1 sigma < 20 uJy/beam as a function of stellar mass", "result": "Detection fraction rises from 0% at 10^9.0 Msun to 85% above 10^10 Msun", "finding": "Stellar mass is a strong predictor of dust continuum emission", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "We find that the fraction of ALMA-detected galaxies in our $z=1.5$–10 samples increases steeply with stellar mass"}
+]},
+{"hypothesis": "Do low-mass UV-selected galaxies show obscured star formation?", "experiment": "Stack the 1.2 mm continuum of all 1253 galaxies below 10^9.25 Msun", "result": "Mean flux -0.1 +/- 0.4 uJy/beam; obscured SFR <0.6 Msun/yr (4 sigma)", "finding": "Low-mass galaxies have essentially no obscured star formation", "support": "supported", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "This demonstrates, rather dramatically, that faint, UV-selected galaxies show essentially no dust continuum emission"}
+]},
+{"hypothesis": "Which dust law (Calzetti-like or SMC-like) describes the IRX-beta relation at different masses?", "experiment": "Stack by beta and mass at z=1.5-3.5 and fit dA_UV/dbeta and beta_int", "result": "dA_UV/dbeta = 1.81 for >10^9.5 Msun and 1.12 for <10^9.5 Msun", "finding": "Calzetti-like at high mass, SMC-like at low mass, although the two values are consistent within uncertainties", "support": "partially", "evidence": [
+{"loc": "Infrared Excess versus beta", "quote": "This is most consistent with an SMC-like dust curve, but is nevertheless consistent with our constraints on the"}
+]},
+{"hypothesis": "Are the IRX-beta and IRX-stellar mass relations consistent through the beta-mass correlation?", "experiment": "Derive the beta-M relation from CANDELS z~2 galaxies and compare with the IRX-M parameters; fit a bivariate IRX(beta,M)", "result": "beta-M fit M_s = 10^9.07 Msun, alpha = 0.92, consistent at 1 sigma with M_s = 10^9.15 and alpha = 0.97; bivariate alpha = 0.67 +/- 0.06", "finding": "The two relations are essentially equivalent; bivariate form predicts fluxes slightly better", "support": "supported", "evidence": [
+{"loc": "Correlation with Stellar Mass and UV-continuum Slope", "quote": "demonstrating that the IRX-$\\beta$ and IRX-stellar mass relations we derive are essentially equivalent."}
+]},
+{"hypothesis": "Does the IRX-mass relation extend to z=3.5-10?", "experiment": "Stack z=3.5-10 galaxies by mass assuming the evolving dust temperature", "result": "Stacks consistent with z=1.5-3.5, but only a few massive sources; 0.4 dex lower if T_d stays at 35 K", "finding": "No evolution of IRX-mass is required if T_d evolves, but the conclusion depends on the dust temperature adopted", "support": "partially", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "However, we emphasize that this conclusion is sensitive to the dust temperature evolution we adopt."}
+]},
+{"hypothesis": "At what redshift does cosmic star formation shift from unobscured to obscured?", "experiment": "Apply IRX(beta,M)-based dust corrections to UV LFs and add ULIRG-like contributions", "result": "Mostly unobscured at z>5 and mostly obscured at z<5", "finding": "The transition redshift is z~5, higher than the z~4 found earlier", "support": "supported", "evidence": [
+{"loc": "Star Formation Rate Densities at z>=3", "quote": "and $z\\sim5$ marks the approximate transition redshift between the two regimes."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "ASPECS covers the HUDF region with the deepest ancillary data and is sensitive enough to probe low obscured SFRs over a larger area than the pilot", "evidence": [
+{"loc": "Introduction", "quote": "The region chosen for targeting by ASPECS is that region of the HUDF containing the deepest near-IR, optical, X-ray, and radio observations available anywhere on the sky"}
+]},
+{"field": "why_this_method", "value": "Selection and photometry follow the pilot study for consistency with earlier results", "evidence": [
+{"loc": "Selections", "quote": "For consistency with earlier results from our pilot study (Bouwens et al. 2016), we have adopted essentially identical color-color and photometric redshift selection criteria"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Less dust-temperature evolution (35 K fixed) also considered; gives lower IRX at z>3.5 and about half the dust correction", "evidence": [
+{"loc": "Fiducial SED Template and Dust Temperature Evolution", "quote": "Given this, we also consider there being less evolution of the dust temperature of galaxies with cosmic time than in our fiducial models."}
+]},
+{"value": "Prospector stellar masses instead of FAST give a steeper IRX-mass relation", "evidence": [
+{"loc": "Summary", "quote": "we derive a steeper IRX stellar mass relationship."}
+]}
+],
+"limitations_admitted": [
+{"value": "z>3.5 IRX conclusions depend on the assumed dust temperature evolution", "evidence": [
+{"loc": "IRX vs. Stellar Mass", "quote": "However, we emphasize that this conclusion is sensitive to the dust temperature evolution we adopt."}
+]},
+{"value": "Few massive z>3.5 sources in ASPECS to constrain the IRX-mass relation there", "evidence": [
+{"loc": "Comparison with Previous Determinations of the Infrared Excess", "quote": "the ASPECS field only contains a few bright, massive sources to probe this well."}
+]},
+{"value": "Individual-source IRX estimators show at least ~0.65 dex scatter", "evidence": [
+{"loc": "Predictive Power of Different Estimators for IRX", "quote": "tend to show at least $\\sim$0.65 dex scatter for individual sources."}
+]},
+{"value": "IRX-mass relation depends on the stellar population code used for masses", "evidence": [
+{"loc": "Summary", "quote": "the IRX versus stellar mass relation we derive does show some dependence on which stellar population we use to estimate stellar masses."}
+]}
+],
+"referee_caveats_inferred": [
+"Key inputs (continuum mosaic, source fluxes, sample catalog, FAST masses) are not tabulated or released here, so the headline stacking numbers cannot be rederived from the paper alone",
+"Stacking uncertainty is given as bootstrap plus formal error without a stated resampling recipe",
+"z>3.5 IRX results hinge on an adopted, debated T_d(z); results change by 0.4 dex for a fixed 35 K",
+"Maximum-likelihood fits to few stacked bins (some bins have 1-4 sources) are sensitive to bin choices"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"CASA version, calibration and imaging parameters (deferred to González-López et al. 2020)",
+"Source catalog of all 1362 galaxies with redshifts, UV fluxes, beta and masses",
+"Stacking weights, positions and bootstrap procedure in executable detail",
+"Likelihood and optimizer for IRX fits",
+"Compilation of dust-temperature points used in the T_d(z) fit"
+],
+"estimated_data_volume_inferred": "Large: 90 hours of band-6 mosaic data (85 pointings, full 212-272 GHz scan); a reproduction would normally start from the released continuum mosaic (tens of GB if raw, MB for the continuum image)",
+"score_inferred": 3,
+"score_reason": "ALMA program 2016.1.00324.L is identified and many formulas and fit results are given numerically, but the continuum mosaic, source catalogs and HST/Spitzer-derived properties come from companion papers or are not tabulated, and the public status of the data is not stated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The recipe depends on the companion mosaic and an untabulated 1362-galaxy catalog with its own photometry and SED fits, and data availability is not stated in the paper.",
+"methods_papers": [
+{"citation": "González-López et al. 2020", "why": "Continuum mosaic construction and source flux densities"},
+{"citation": "Bouwens et al. 2016", "why": "ASPECS pilot analysis whose selection, photometry and IRX methods are reused"},
+{"citation": "Bouwens et al. 2015", "why": "Lyman-break samples and UV luminosity functions"}
+],
+"companion_papers": [
+{"citation": "Aravena et al. 2020", "why": "Separate analysis of the same detected sources with MAGPHYS SED fits"},
+{"citation": "Boogaard et al. 2019", "why": "CO-line spectroscopic redshifts in ASPECS"},
+{"citation": "Walter et al. 2016", "why": "ASPECS pilot program"}
+],
+"related_projects_or_surveys": ["ASPECS", "ALPINE", "UVUDF", "GREATS", "AS2UDS"]
+}

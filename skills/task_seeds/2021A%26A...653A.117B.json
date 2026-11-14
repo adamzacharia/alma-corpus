@@ -1,0 +1,213 @@
+{
+ "bibcode": "2021A&A...653A.117B",
+ "title": "ORion Alma New GEneration Survey (ORANGES). I. Dust continuum and free-free emission of OMC-2/3 filament protostars",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202141157",
+ "arxiv_id": "2107.10743",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Are the small-scale dust properties and evolutionary status of solar-type protostars in the OMC-2/3 filament affected by nearby HII regions and UV illumination?",
+ "alma_project_codes": [
+  "2016.1.00376.S",
+  "2015.1.00041.S"
+ ],
+ "data": {
+  "bands": "Band 6 (~250 GHz, 246.2 GHz); archival 333 GHz ALMA and 32.9 GHz VLA",
+  "arrays": "12m array, 42 antennas",
+  "angular_resolution": "0.25'' (~100 au); beams 0.32x0.27''",
+  "sensitivity": "rms 44-80 uJy/beam at 246.2 GHz"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "333 GHz and 32.9 GHz cleaned images (robust=2) from Harvard Dataverse",
+    "evidence": [
+     {
+      "loc": "4.2 Archival data at 333 and 32.9 GHz",
+      "quote": "We used the *robust*=2 (equivalent to natural weighting) cleaned images, for both the ALMA and the VLA data."
+     }
+    ]
+   },
+   "citation": "(cite: tobin2019a; tobin2019b)"
+  },
+  {
+   "what": {
+    "value": "Deconvolved source sizes for sources with point-source or unsatisfactory fits",
+    "evidence": [
+     {
+      "loc": "5.3 Specific cases",
+      "quote": "We thus used the deconvolved sizes given in (cite: tobin2020)."
+     }
+    ]
+   },
+   "citation": "(cite: tobin2020)"
+  },
+  {
+   "what": {
+    "value": "HOPS Lbol, Tbol, Menv and classifications",
+    "evidence": [
+     {
+      "loc": "3.3 Previous continuum studies on the sample sources",
+      "quote": "HOPS provided estimates of the sources evolutionary classification based on their bolometric luminosity, $L_{\\text{bol}}$"
+     }
+    ]
+   },
+   "citation": "(cite: megeath2012; fischer2013; furlan2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit source sizes and measure flux densities",
+   "method": "uv-plane fit with point source or 2D Gaussian; size convolved with each beam, flux measured in image plane in that ellipse",
+   "software": [
+    "GILDAS MAPPING"
+   ],
+   "key_parameters": [
+    "theta_obs = sqrt(theta_beam^2 + theta_source^2); 10% calibration error in flux"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive beta and T_SED, tau, N_H2, mass, free-free fraction",
+   "method": "SED method: F=B(Td)(1-exp(-tau))Omega with beta from flux ratios for Td 10-200 K; free-free identified when beta_333-246.2 exceeds beta with 32.9 GHz",
+   "software": [],
+   "key_parameters": [
+    "beta constrained to 0-2 to bound T_SED"
+   ],
+   "assumptions": [
+    "mu=2.8, dust-to-gas R=0.01, kappa0=0.9 cm2/g at 230 GHz, d=393 pc, no free-free at 246.2/333 GHz"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute Trad and compare with Tbol",
+   "method": "Trad = 101 K (Lbol/10Lsun)^1/4 (r/50 au)^-1/2 for single sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Reassess evolutionary classification and test environment dependence",
+   "method": "Combine beta, Td/Tbol, outflow, radio continuum criteria; Pearson correlations vs filament position",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of sources detected / analysed",
+   "value": "28 detected; 16 analysed",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "5.1 Maps",
+     "quote": "In total, we detected 28 sources, of which 18 are located inside the primary beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free emission sources",
+   "value": "5 of 16 (~31%)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "7.2 Free-free emission",
+     "quote": "We clearly found evidence of free-free emission at 32.9 GHz towards 5 out of 16 sources"
+    }
+   ]
+  },
+  {
+   "quantity": "Sources with beta<1",
+   "value": "9/16",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.4",
+     "quote": "The majority of the sources (9/16) have a dust emissivity spectral index $< 1$."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free fraction at 32.9 GHz",
+   "value": "47-100% in free-free sources; <=24% otherwise",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.6",
+     "quote": "the derived free-free emission ranges between 47% and 100%"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope+disk mass range",
+   "value": "2e-4 to 0.1",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.5",
+     "quote": "the derived (envelope + disk) masses range between $2\\times10^{-4}$ M$_\\odot$ and 0.1 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity fraction",
+   "value": "67",
+   "uncertainty": "33%",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "6.1 Source multiplicity",
+     "quote": "which is 67% of the source sample (with a statistical error of 33%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson coefficient beta vs free-free %",
+   "value": "0.81",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7.4 Environment influence",
+     "quote": "with a Pearson correlation coefficient of 0.81 (corresponding to a probability of 66%)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Solution intervals and number of channels per source for self-calibration",
+  "Line-free channel selection for continuum",
+  "CLEAN mask, threshold, cell and image size",
+  "CASA version",
+  "Exact fit starting parameters and which sources use point vs Gaussian in uv_fit",
+  "Weighting scheme for averaging beta and N_H2 across frequencies",
+  "Arbitrary sizes chosen for FIR1a-a and CSO33-b beyond Table values"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solints per source",
+  "CLEAN parameters",
+  "Exact adopted sizes",
+  "Weighting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and equations given, but imaging/self-cal parameters and some sizes are arbitrary or unstated.",
+ "rediscovery_reason": "Public data, analytic method with stated assumptions, numeric tables of results.",
+ "source_card": "cards/2021A%26A...653A.117B/sonnet/card.md"
+}

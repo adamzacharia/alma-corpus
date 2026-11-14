@@ -1,0 +1,278 @@
+{
+ "bibcode": "2017ApJ...839...99P",
+ "title": "A Multi-wavelength Analysis of Dust and Gas in the SR 24S Transition Disk",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa6973",
+ "arxiv_id": "1703.09227",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How do the dust (0.45 and 1.3 mm) and gas (13CO, C18O) distributions in the SR 24S transition disk compare with dust-trapping models, and is the northern companion SR 24N detected?",
+ "alma_project_codes": [
+  "2013.1.00091.S",
+  "2011.0.00724.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) new; 0.45 mm Cycle 0 archival",
+  "arrays": "not stated",
+  "angular_resolution": "0.18\" x 0.12\" (1.3 mm continuum, Briggs); 0.37\" x 0.19\" (0.45 mm)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "0.45 mm Cycle 0 continuum data of SR 24S (project 2011.0.00724.S)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The details of the calibration process for the Cycle 0 data are presented in (cite: perez_L2014)."
+     }
+    ]
+   },
+   "citation": "(cite: marel2015); calibration (cite: perez_L2014)"
+  },
+  {
+   "what": {
+    "value": "Mid-plane temperatures from dust radiative transfer models of SR 24S",
+    "evidence": [
+     {
+      "loc": "4.2 Optical thickness",
+      "quote": "For the physical temperature, we assume the mid-plane values from dust radiative transfer models for SR 24S in (cite: marel2015)."
+     }
+    ]
+   },
+   "citation": "(cite: marel2015)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity at 1.3 mm of ~3 cm2/g",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a dust opacity at 1.3 mm of $\\sim3\\,$cm$^{2}$g$^{-1}$ (cite: andrews2011)"
+     }
+    ]
+   },
+   "citation": "(cite: andrews2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Find disk center, PA and inclination and recenter",
+   "method": "uvmodelfit with Gaussian/disk model on short baselines or all uv; center checked by minimizing scatter of imaginary visibilities; fixvis to recenter",
+   "software": [
+    "CASA uvmodelfit",
+    "fixvis"
+   ],
+   "key_parameters": [
+    "short baselines <~200 kλ or full uv"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and CO lines; derive fluxes, moment maps",
+   "method": "clean with Briggs/natural weighting, uvcontsub, moment-0 maps from -1.35 to 10.8 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dust masses and integrated spectral index",
+   "method": "Optically thin mass formula; alpha_mm from total fluxes at 0.45 and 1.3 mm; SR 24N upper limit from 3 sigma_N in 1\" circle",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "d = 137 pc, kappa(1.3 mm) ~3 cm2/g, T = 20 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Visibility-domain fitting of ring morphology",
+   "method": "Fit real part of visibilities with three axisymmetric ring models (Gaussian, asymmetric Gaussian, Gaussian+power law), separately at each wavelength; PA and i from 1.3 mm fixed for 0.45 mm",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "radial grid 1-500 au in 0.1 au steps; 4000 steps, 1000 walkers, burn-in ~1000 steps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Spectral index profile and optical depth",
+   "method": "Spectral index from best-fit intensity profiles; tau from brightness temperature of de-projected azimuthally averaged image without Rayleigh-Jeans",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Mid-plane temperature from van der Marel et al. 2015 models"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm total flux",
+   "value": "220",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 | 0.18$\\times$0.12 | 1.30 | 15.4 | 220 | 0.06 |"
+    }
+   ]
+  },
+  {
+   "quantity": "0.45 mm total flux",
+   "value": "1885",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0 | 0.37$\\times$0.19 | 0.45 | 278 | 1885 | 1.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated spectral index alpha_mm",
+   "value": "2.02",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\alpha_{\\rm{mm}} = \\ln(F_{\\rm{1.3\\,mm}}/F_{\\rm{0.45\\,mm}}) /\\ln (\\rm{0.45\\,mm}/\\rm{1.3\\,mm}) = 2.02\\pm{0.13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SR 24S dust mass",
+   "value": "3.0e-4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$M_{\\mathrm{dust, SR\\,24S}}\\sim3.0\\times10^{-4}M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "SR 24N dust mass upper limit",
+   "value": "<=0.12",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "$\\lesssim 0.12\\,M_{\\bigoplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass ratio SR 24S/SR 24N",
+   "value": ">~840",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$M_{\\mathrm{dust, SR\\,24S}}/M_{\\mathrm{dust, SR\\,24N}}\\gtrsim840$"
+    }
+   ]
+  },
+  {
+   "quantity": "uvmodelfit PA and inclination (1.3 mm)",
+   "value": "PA 27.8 deg, i 49.8 deg",
+   "uncertainty": "1.3 deg, 2.4 deg",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "$27.8^{\\circ}\\pm{1.3}^{\\circ}$ and $49.8^{\\circ}\\pm{2.4}^{\\circ}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring peak radius, symmetric Gaussian, 1.3 mm",
+   "value": "42.15",
+   "uncertainty": "+2.29/-2.67",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Disk morphology",
+     "quote": "| $1.30$ mm | $42.15^{+2.29}_{-2.67}$ | $21.41^{+2.69}_{-2.04}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring peak radius, symmetric Gaussian, 0.45 mm",
+   "value": "20.66",
+   "uncertainty": "+3.25/-3.17",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Disk morphology",
+     "quote": "| $0.45$ mm | $20.66^{+3.25}_{-3.17}$ | $36.62^{+2.36}_{-2.49}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Region with alpha_mm<2",
+   "value": "32 to 81 au",
+   "uncertainty": "3 and 4 au",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Optical thickness",
+     "quote": "specifically from $32\\pm3$ au to $81\\pm4$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity depletion at 1.3 mm vs 0.45 mm",
+   "value": "~85% vs ~24%",
+   "uncertainty": "not stated",
+   "units": "percent of peak",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the flux is reduced by around 85%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for uvcontsub",
+  "Image size and cell size for clean (pixel sizes only given in the fit section), masks, thresholds, iterations",
+  "CASA version/calibration details of Cycle 0 data",
+  "Temperature profile values taken from van der Marel et al. 2015",
+  "Starting values/initialization of emcee walkers; uv binning of visibilities",
+  "Which channels formed the moment-0 maps beyond velocity range"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges, clean masks and image/cell sizes for imaging",
+  "Cycle 0 calibration details",
+  "Temperature profile from van der Marel et al. 2015"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and fit models/priors well specified, but imaging and Cycle 0 details are missing.",
+ "rediscovery_reason": "ALMA data are archival projects, fitting recipe and priors are given, and main results are numeric (ring parameters, fluxes, alpha_mm).",
+ "source_card": "cards/2017ApJ...839...99P/sonnet/card.md"
+}

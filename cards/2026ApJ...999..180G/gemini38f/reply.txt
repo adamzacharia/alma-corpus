@@ -1,0 +1,1264 @@
+{
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+    {
+      "loc": "2.1 ATOMS survey",
+      "quote": "ALMA data for the protocluster was obtained as a part of the large survey named the ALMA three-millimeter observations of massive star-forming regions survey (ATOMS; Project ID: 2019.1.00685.S; PI: Tie Liu)."
+    },
+    {
+      "loc": "2.2 ASSEMBLE survey",
+      "quote": "The G318.049+00.086 protocluster was also observed as part of the ALMA Survey of Star Formation and Evolution in Massive Protoclusters with Blue Profiles (ASSEMBLE; Project ID: 2017.1.00545.S; PI: Tie Liu)."
+    },
+    {
+      "loc": "2.3 QUARKS survey",
+      "quote": "Furthermore, G318.049+00.086 was observed as part of the Querying Underlying mechanisms of massive star formation with ALMA-Resolved gas Kinematics and Structures (QUARKS) survey, complementing the ATOMS survey with an improved angular resolution (∼ 0.3″)."
+    }
+  ],
+  "fields": [
+    "star_formation",
+    "astrochemistry",
+    "milky_way_ism"
+  ],
+  "question": {
+    "value": "To understand the multi-scale gas dynamics, mass inflow along filaments, and gas infall onto embedded cores in the massive protocluster G318.049+00.086 to distinguish massive star formation scenarios.",
+    "evidence": [
+      {
+        "loc": "1 Introduction",
+        "quote": "In this paper, we studied the multi-scale gas dynamics of a massive protocluster (G318.049+00.086) that has reported evidence of the presence of multiple filaments and several prestellar and protostellar cores to understand the underlying star formation mechanism."
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "G318.049+00.086",
+      "details": [
+        {
+          "loc": "1.1 Selected region",
+          "quote": "The protocluster G318.049+00.086, also known as I14498-5856, is located at a distance of 2.90+0.52-0.47 kpc (cite: 2019ApJ...885..131R) and has a local standard of rest velocity (Vlsr) of -49.82 km s-1 (cite: 2021RAA....21...14Y)."
+        }
+      ],
+      "coordinates": "not stated",
+      "redshift_or_distance": "2.90 +0.52/-0.47 kpc",
+      "distance_source": "2019ApJ...885..131R"
+    }
+  ],
+  "alma_project_codes": [
+    {
+      "code": "2019.1.00685.S",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "ALMA data for the protocluster was obtained as a part of the large survey named the ALMA three-millimeter observations of massive star-forming regions survey (ATOMS; Project ID: 2019.1.00685.S; PI: Tie Liu)."
+        }
+      ]
+    },
+    {
+      "code": "2017.1.00545.S",
+      "evidence": [
+        {
+          "loc": "2.2 ASSEMBLE survey",
+          "quote": "The G318.049+00.086 protocluster was also observed as part of the ALMA Survey of Star Formation and Evolution in Massive Protoclusters with Blue Profiles (ASSEMBLE; Project ID: 2017.1.00545.S; PI: Tie Liu)."
+        }
+      ]
+    }
+  ],
+  "data_settings": [
+    {
+      "field": "bands",
+      "value": "Band 3 (3 mm), Band 6 (1.3 mm), Band 7 (870 µm)",
+      "evidence": [
+        {
+          "loc": "1.1 Selected region",
+          "quote": "Figure 1 represents the 3 mm (left panel) and 1.3 mm (right panel) dust continuum maps of the protocluster obtained from the ATOMS and QUARKS surveys, respectively"
+        },
+        {
+          "loc": "1.1 Selected region",
+          "quote": "Recently, (cite: 2024ApJS..270....9X) identified 16 dense cores in the protocluster using the 870 μm dust continuum map observed using the Atacama Large Millimeter/submillimeter Array"
+        }
+      ]
+    },
+    {
+      "field": "frequencies_and_spectral_setup",
+      "value": "H13CN (1–0) at 86.339918 GHz, H13CO+ (1–0) at 86.754288 GHz, CCH (1–0) at 87.316898 GHz, CS (2–1) at 97.980953 GHz, CH3OH (13_1,12–13_0,13) at 342.729781 GHz, H13CN (4–3) at 345.339760 GHz, 3 mm continuum at ~99.93 GHz",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "The 3 mm (∼99.93 GHz) dust continuum map having a beam size of 2.34″ × 2.16″ is constructed using data from line-free spectral channels."
+        },
+        {
+          "loc": "Table 1",
+          "quote": "H13CN (1–0) 86.339918 0.424 2.34 × 2.16 11.3; H13CO+ (1–0) 86.754288 0.422 2.66 × 2.52 11.1; CCH (1–0) 87.316898 0.419 2.63 × 2.50 11.3; CS (2–1) 97.980953 2.973 2.36 × 2.18 5.0"
+        },
+        {
+          "loc": "Table 1",
+          "quote": "CH3OH (131,12–130,13) 342.729781 0.986 1.11 × 0.82 6.5; H13CN (4–3) 345.339760 0.980 1.08 × 0.80 6.3"
+        }
+      ]
+    },
+    {
+      "field": "arrays",
+      "value": "12-m array and 7-m ACA",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "Calibration of the 12-m array data and ACA data were done separately using the Common Astronomy Software Applications (CASA) package version 5.6 (cite: mcmullin2007asp), and subsequently the visibility data were combined and re-imaged"
+        },
+        {
+          "loc": "2.3 QUARKS survey",
+          "quote": "QUARKS also have ACA observations ((cite: 2024RAA....24f5011X), Quarks paper II). The combine data has MRS of ∼ 8.45″"
+        }
+      ]
+    },
+    {
+      "field": "angular_resolution",
+      "value": "2.34″ × 2.16″ to 2.66″ × 2.52″ (ATOMS Band 3 lines/continuum); 1.08″ × 0.80″ to 1.11″ × 0.82″ (ASSEMBLE Band 7 lines); 0.40″ × 0.34″ (QUARKS 1.3 mm continuum)",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "mm continuum ... 2.34 × 2.16; H13CO+ (1–0) ... 2.66 × 2.52; CH3OH ... 1.11 × 0.82; mm continuum ... 0.40 × 0.34"
+        },
+        {
+          "loc": "2.3 QUARKS survey",
+          "quote": "complementing the ATOMS survey with an improved angular resolution (∼ 0.3″)."
+        }
+      ]
+    },
+    {
+      "field": "max_recoverable_scale",
+      "value": "~87″ (ATOMS 12m+ACA); ~8.45″ (ASSEMBLE 12m); ~8.45″ (QUARKS combine data)",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "The maximum recoverable scale (MRS) of 12m + ACA combine data reaches ∼ 87″ (cite: 2023MNRAS.520.3259X)."
+        },
+        {
+          "loc": "2.2 ASSEMBLE survey",
+          "quote": "The MRS of this data is ∼ 8.45″ (cite: 2023MNRAS.520.3259X)."
+        },
+        {
+          "loc": "2.3 QUARKS survey",
+          "quote": "The combine data has MRS of ∼ 8.45″ (cite: 2024RAA....24f5011X)."
+        }
+      ]
+    },
+    {
+      "field": "sensitivity",
+      "value": "11.1 to 11.3 mJy beam-1 (ATOMS 3 mm lines), 5.0 mJy beam-1 (CS), 6.3 to 6.5 mJy beam-1 (ASSEMBLE lines), rms noise 0.27 K in line-free channels",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "H13CN (1–0) ... 11.3; H13CO+ (1–0) ... 11.1; CCH (1–0) ... 11.3; CS (2–1) ... 5.0; CH3OH ... 6.5; H13CN (4–3) ... 6.3"
+        },
+        {
+          "loc": "3.5 Gas infall rates in cores",
+          "quote": "The S/N ratio was calculated based on an rms noise level of 0.27 K, estimated from the line-free channels using FUNStools."
+        }
+      ]
+    },
+    {
+      "field": "pi_or_archival_as_stated",
+      "value": "ATOMS PI: Tie Liu; ASSEMBLE PI: Tie Liu",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "survey named the ALMA three-millimeter observations of massive star-forming regions survey (ATOMS; Project ID: 2019.1.00685.S; PI: Tie Liu)."
+        },
+        {
+          "loc": "2.2 ASSEMBLE survey",
+          "quote": "Massive Protoclusters with Blue Profiles (ASSEMBLE; Project ID: 2017.1.00545.S; PI: Tie Liu)."
+        }
+      ]
+    }
+  ],
+  "lines_targeted": [
+    {
+      "species": "H13CN",
+      "transition": "(1–0)",
+      "rest_frequency": "86.339918 GHz",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "H13CN | (1–0) | 86.339918"
+        }
+      ]
+    },
+    {
+      "species": "H13CO+",
+      "transition": "(1–0)",
+      "rest_frequency": "86.754288 GHz",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "H13CO+ | (1–0) | 86.754288"
+        }
+      ]
+    },
+    {
+      "species": "CCH",
+      "transition": "(1–0) F(2–1)",
+      "rest_frequency": "87.316898 GHz",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "CCH | (1–0) | 87.316898"
+        },
+        {
+          "loc": "1.1 Selected region",
+          "quote": "using H13CO+ (1–0) and CCH (J=3/2–1/2) F(2–1)"
+        }
+      ]
+    },
+    {
+      "species": "CS",
+      "transition": "(2–1)",
+      "rest_frequency": "97.980953 GHz",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "CS | (2–1) | 97.980953"
+        }
+      ]
+    },
+    {
+      "species": "CH3OH",
+      "transition": "(13_1,12–13_0,13)",
+      "rest_frequency": "342.729781 GHz",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "CH3OH | (131,12–130,13) | 342.729781"
+        }
+      ]
+    },
+    {
+      "species": "H13CN",
+      "transition": "(4–3)",
+      "rest_frequency": "345.339760 GHz",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "H13CN | (4–3) | 345.339760"
+        }
+      ]
+    }
+  ],
+  "other_facilities": [],
+  "external_data_from_literature": [
+    {
+      "what": {
+        "value": "Distance to G318.049+00.086 (2.90 +0.52/-0.47 kpc)",
+        "evidence": [
+          {
+            "loc": "1.1 Selected region",
+            "quote": "The protocluster G318.049+00.086, also known as I14498-5856, is located at a distance of 2.90+0.52-0.47 kpc (cite: 2019ApJ...885..131R)"
+          }
+        ]
+      },
+      "citation": "2019ApJ...885..131R"
+    },
+    {
+      "what": {
+        "value": "Vlsr (-49.82 km/s), global infall velocity (3.77 km/s), and mass infall rate (1.56e4 Msun/Myr)",
+        "evidence": [
+          {
+            "loc": "1.1 Selected region",
+            "quote": "and has a local standard of rest velocity (Vlsr) of -49.82 km s-1 (cite: 2021RAA....21...14Y)."
+          },
+          {
+            "loc": "1.1 Selected region",
+            "quote": "Using the CO (4–3) line, (cite: 2021RAA....21...14Y) also reported that the global infall velocity and mass infall rate for this cluster to be Vin = 3.77 ± 0.07 km s-1 and M˙ in = (1.56 ± 0.03) × 104 M⊙ Myr-1."
+          }
+        ]
+      },
+      "citation": "2021RAA....21...14Y"
+    },
+    {
+      "what": {
+        "value": "Protocluster mass (1023.3 Msun) and dust temperature (26.7 K)",
+        "evidence": [
+          {
+            "loc": "1.1 Selected region",
+            "quote": "The mass and dust temperature (Tdust) of the protocluster are 1023.3 M⊙ and 26.7 K, respectively (cite: 2018MNRAS.473.1059U)."
+          }
+        ]
+      },
+      "citation": "2018MNRAS.473.1059U"
+    },
+    {
+      "what": {
+        "value": "16 dense cores identified in 870 µm continuum, their physical parameters (mass, radius, temperature, surface density) and evolutionary classification",
+        "evidence": [
+          {
+            "loc": "1.1 Selected region",
+            "quote": "Recently, (cite: 2024ApJS..270....9X) identified 16 dense cores in the protocluster using the 870 μm dust continuum map observed using the Atacama Large Millimeter/submillimeter Array (ALMA; see their Figure 2b) and also derived several physical parameters"
+          }
+        ]
+      },
+      "citation": "2024ApJS..270....9X"
+    },
+    {
+      "what": {
+        "value": "CO (3–2) bipolar outflows for core classification",
+        "evidence": [
+          {
+            "loc": "1.1 Selected region",
+            "quote": "Further, they also classified these cores as prestellar core candidates or protostellar cores based on their association with the bipolar outflows traced in the CO (3–2) line by (cite: 2020ApJ...890...44B)."
+          }
+        ]
+      },
+      "citation": "2020ApJ...890...44B"
+    }
+  ],
+  "simulations_or_models_as_data": [],
+  "calibration": [
+    {
+      "field": "pipeline_or_manual",
+      "value": "Separate calibration of 12-m and ACA data using CASA",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "Calibration of the 12-m array data and ACA data were done separately using the Common Astronomy Software Applications (CASA) package version 5.6 (cite: mcmullin2007asp), and subsequently the visibility data were combined and re-imaged"
+        }
+      ]
+    },
+    {
+      "field": "casa_version",
+      "value": "5.6",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "using the Common Astronomy Software Applications (CASA) package version 5.6 (cite: mcmullin2007asp)"
+        }
+      ]
+    }
+  ],
+  "imaging": [
+    {
+      "field": "primary_beam_correction",
+      "value": "All images used in analysis are primary beam corrected",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "All the images used in our analysis are primary beam corrected."
+        }
+      ]
+    },
+    {
+      "field": "line_free_channels",
+      "value": "used for 3 mm and 1.3 mm continuum maps",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "The 3 mm (∼99.93 GHz) dust continuum map having a beam size of 2.34″ × 2.16″ is constructed using data from line-free spectral channels."
+        },
+        {
+          "loc": "2.3 QUARKS survey",
+          "quote": "The corresponding 1.3 mm dust continuum map is prepared from the available line-free spectral channels (cite: 2024RAA....24b5009L)."
+        }
+      ]
+    },
+    {
+      "field": "array_combination",
+      "value": "12m + ACA combined for ATOMS and QUARKS",
+      "evidence": [
+        {
+          "loc": "2.1 ATOMS survey",
+          "quote": "and subsequently the visibility data were combined and re-imaged to recover the extended emission."
+        },
+        {
+          "loc": "2.3 QUARKS survey",
+          "quote": "The combine data has MRS of ∼ 8.45″ (cite: 2024RAA....24f5011X)."
+        }
+      ]
+    },
+    {
+      "field": "final_beam",
+      "value": "3 mm continuum: 2.34″ × 2.16″; H13CO+ (1–0): 2.66″ × 2.52″; CCH (1–0): 2.63″ × 2.50″; 1.3 mm continuum: 0.40″ × 0.34″",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "mm continuum ... 2.34 × 2.16; H13CO+ (1–0) ... 2.66 × 2.52; CCH (1–0) ... 2.63 × 2.50; mm continuum ... 0.40 × 0.34"
+        }
+      ]
+    },
+    {
+      "field": "final_rms",
+      "value": "H13CO+: 11.1 mJy beam-1; CCH: 11.3 mJy beam-1; CS: 5.0 mJy beam-1; CH3OH: 6.5 mJy beam-1; H13CN (4-3): 6.3 mJy beam-1; 0.27 K line rms",
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "H13CN (1–0) ... 11.3; H13CO+ (1–0) ... 11.1; CCH (1–0) ... 11.3; CS (2–1) ... 5.0; CH3OH ... 6.5; H13CN (4–3) ... 6.3"
+        },
+        {
+          "loc": "3.5 Gas infall rates in cores",
+          "quote": "The S/N ratio was calculated based on an rms noise level of 0.27 K, estimated from the line-free channels using FUNStools."
+        }
+      ]
+    }
+  ],
+  "inherited": [
+    {
+      "what": {
+        "value": "FilFinder application to H13CO+ moment 0 map to identify filaments",
+        "evidence": [
+          {
+            "loc": "3.1 Identification of filaments",
+            "quote": "(cite: 2022MNRAS.514.6038Z), as part of the ATOMS survey, identified filamentary structures in this protocluster by applying the Python-based FilFinder algorithm (cite: 2015MNRAS.452.3435K) on the moment-0 map of H13CO+ emission."
+          }
+        ]
+      },
+      "from_reference": "2022MNRAS.514.6038Z"
+    },
+    {
+      "what": {
+        "value": "16 cores, positions, masses, radii, surface densities, and classification into protostellar/prestellar",
+        "evidence": [
+          {
+            "loc": "1.1 Selected region",
+            "quote": "Recently, (cite: 2024ApJS..270....9X) identified 16 dense cores in the protocluster using the 870 μm dust continuum map observed using the Atacama Large Millimeter/submillimeter Array (ALMA; see their Figure 2b) and also derived several physical parameters"
+          }
+        ]
+      },
+      "from_reference": "2024ApJS..270....9X"
+    },
+    {
+      "what": {
+        "value": "Cylindrical mass inflow rate formula for filaments",
+        "evidence": [
+          {
+            "loc": "3.4 Mass inflow rate along the filaments",
+            "quote": "To quantify the mass flow along the filaments, we followed a similar methodology described in (cite: 2013ApJ...766..115K)."
+          }
+        ]
+      },
+      "from_reference": "2013ApJ...766..115K"
+    },
+    {
+      "what": {
+        "value": "Mass infall rate formula for cores from infall velocity and core size/mass",
+        "evidence": [
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "The estimated infall velocities were further used to derive the mass infall rate (M˙ in) of gaseous material following the equation (cite: 2001ApJS..136..703L; 2022ApJ...940..112K; 2025arXiv251116978M):"
+          }
+        ]
+      },
+      "from_reference": "2001ApJS..136..703L"
+    }
+  ],
+  "unstated_but_needed": [
+    "Imaging parameters for QUARKS and ATOMS (e.g. tclean cell size, robust parameter, number of iterations, masking scheme)",
+    "Continuum subtraction method details for line cubes",
+    "Specific parameter bounds and prior distributions for the Hill5 MCMC fitting"
+  ],
+  "analysis_steps": [
+    {
+      "order": 1,
+      "goal": "Identify filamentary structures and skeletons",
+      "method": {
+        "value": "Applied the FilFinder algorithm on the moment-0 map of H13CO+ and on the 1.3 mm QUARKS continuum map to extract skeletons and branches.",
+        "evidence": [
+          {
+            "loc": "3.1 Identification of filaments",
+            "quote": "(cite: 2022MNRAS.514.6038Z), as part of the ATOMS survey, identified filamentary structures in this protocluster by applying the Python-based FilFinder algorithm (cite: 2015MNRAS.452.3435K) on the moment-0 map of H13CO+ emission."
+          },
+          {
+            "loc": "3.1 Identification of filaments",
+            "quote": "We also employed the FilFinder algorithm to the 1.3 mm continuum map obtained in the QUARKS survey, as the continuum emission has good spatial resolution."
+          }
+        ]
+      },
+      "software": [
+        "FilFinder"
+      ],
+      "key_parameters": [
+        {
+          "value": "not stated",
+          "evidence": []
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Filament structures traced by continuum and H13CO+ coincide and trace dense gas pathways",
+          "evidence": [
+            {
+              "loc": "3.1 Identification of filaments",
+              "quote": "We note that the longest filaments obtained from both the emissions strongly coincide with each other."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Comparison and overlay of skeletons derived from H13CO+ and 1.3 mm continuum",
+        "evidence": [
+          {
+            "loc": "3.1 Identification of filaments",
+            "quote": "In Figure 2c, we overlay the filamentary structures obtained from H13CO+ and 1.3 mm continuum emission to examine their spatial correlation."
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "goal": "Derive column density and mass map of the protocluster",
+      "method": {
+        "value": "Derived H13CO+ column density assuming LTE and optically thin emission, masked pixels with integrated intensity < 5sigma, and converted to N(H2) assuming [H13CO+/H2] = 10^-11.",
+        "evidence": [
+          {
+            "loc": "3.2 Column density map",
+            "quote": "To generate the map, we chose the H13CO+ line, and it was derived using the formula obtained under the assumption of local thermodynamic equilibrium and the emission is optically thin"
+          },
+          {
+            "loc": "3.2 Column density map",
+            "quote": "For the construction of the column density map (N(H13CO+)), we considered only the pixels with integrated intensity >5σ in the moment-0 map."
+          },
+          {
+            "loc": "3.2 Column density map",
+            "quote": "Thus, we derived the N(H2) from N(H13CO+) using the mean of the reported abundance ratio of 10-11."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "J = 0, mu = 3.89 D, B = 43.377302 GHz, Tex = Tdust = 26.7 K, Tbg = 2.73 K, [H13CO+/H2] = 10^-11",
+          "evidence": [
+            {
+              "loc": "3.2 Column density map",
+              "quote": "For this H13CO+ (1–0) transition, we used J = 0, μ = 3.89 D, and B = 43.377302 GHz"
+            },
+            {
+              "loc": "3.2 Column density map",
+              "quote": "In this calculation, we assume that Tex is equal to the dust temperature of the clump (Tdust)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "LTE, optically thin H13CO+ emission, Tex equals Tdust, uniform abundance [H13CO+/H2] = 10^-11 across clump",
+          "evidence": [
+            {
+              "loc": "3.2 Column density map",
+              "quote": "under the assumption of local thermodynamic equilibrium and the emission is optically thin"
+            },
+            {
+              "loc": "3.2 Column density map",
+              "quote": "In this calculation, we assume that Tex is equal to the dust temperature of the clump (Tdust)."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Assessed impact of opacity (tau = 0.5-1.5), temperature uncertainty (+/- 10 K), and abundance variations (10^-10 to 10^-12)",
+        "evidence": [
+          {
+            "loc": "3.2 Column density map",
+            "quote": "If we consider H13CO+ has a moderate opacity (τ ∼ 0.5-1.5), the optically thin assumption would underestimate the column density by a factor τ /(1 - e-τ)"
+          },
+          {
+            "loc": "3.2 Column density map",
+            "quote": "A plausible uncertainty of ±10 K to our adopted value introduces an uncertainty of approximately 33% to 36% in the derived N(H2)."
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "goal": "Measure velocity gradients and mass inflow rates along filaments",
+      "method": {
+        "value": "Constructed PV diagrams from H13CO+ centroid velocity along skeletons, performed least-squares linear fits to measure velocity gradients, and calculated mass inflow rate assuming a cylindrical flow model.",
+        "evidence": [
+          {
+            "loc": "3.3 Dynamical properties of filaments",
+            "quote": "The PV diagrams of the filaments were constructed by determining the centroid velocity along each of these filament skeletons."
+          },
+          {
+            "loc": "3.3 Dynamical properties of filaments",
+            "quote": "For estimation of the velocity gradients, we performed least-square fits to different parts of the PV diagrams signifying the filaments"
+          },
+          {
+            "loc": "3.4 Mass inflow rate along the filaments",
+            "quote": "Assuming a simple cylindrical model, the equation for mass inflow rate of the axial flow motion can be written as M˙ ∥ = ∇V∥Mfil / tan α"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "tan(alpha) = 1 (inclination alpha = 45 deg)",
+          "evidence": [
+            {
+              "loc": "3.4 Mass inflow rate along the filaments",
+              "quote": "The mass inflow rates along the filaments F1, F3 and F4 were computed using the estimated filament masses and the velocity gradients (see Table [tab:mass_aacretion]), and assuming the inclination angle (α) of 45◦"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Cylindrical geometry, inclination angle alpha = 45 deg, steady axial mass flow",
+          "evidence": [
+            {
+              "loc": "3.4 Mass inflow rate along the filaments",
+              "quote": "Assuming a simple cylindrical model, the equation for mass inflow rate of the axial flow motion can be written as"
+            },
+            {
+              "loc": "3.4 Mass inflow rate along the filaments",
+              "quote": "We thus assume tan α = 1 in our calculation, and the estimated velocity gradients and mass inflow rates are expected to be uncertain by a factor of 2 when the α changes between 30◦ and 60◦"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Least-squares linear regression to determine slopes in PV diagrams",
+        "evidence": [
+          {
+            "loc": "3.3 Dynamical properties of filaments",
+            "quote": "For estimation of the velocity gradients, we performed least-square fits to different parts of the PV diagrams signifying the filaments (see Figure 5). The slopes of these fits represent the mean velocity gradients."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Evaluated inclination uncertainty between 30 and 60 deg, and checked consistency with previous ATOMS measurements",
+        "evidence": [
+          {
+            "loc": "3.4 Mass inflow rate along the filaments",
+            "quote": "and the estimated velocity gradients and mass inflow rates are expected to be uncertain by a factor of 2 when the α changes between 30◦ and 60◦"
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "goal": "Determine systemic velocity and infall velocity of dense cores",
+      "method": {
+        "value": "Fit single Gaussian profiles to optically thin lines (CH3OH, H13CN 4-3) to measure Vlsr. Fit H13CO+ and CCH spectra with S/N >= 15 using the Hill5 radiative transfer model with MCMC sampling to derive infall velocities.",
+        "evidence": [
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "We fit Gaussians to the average spectra of these optically thin tracers to determine the Vlsr of each core."
+          },
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "The infall velocity of the cores with blue profile was determined by fitting the observed spectral profiles of H13CO+ and CCH with the Hill5 infall model (cite: 2005ApJ...620..800D)."
+          },
+          {
+            "loc": "8 Hill5 Model Fit to the Infall Profiles",
+            "quote": "the fitting was performed by Markov Chain Monte Carlo (MCMC) sampling using the emcee Python package (cite: 2013ascl.soft03002F)."
+          }
+        ]
+      },
+      "software": [
+        "FUNStools",
+        "emcee"
+      ],
+      "key_parameters": [
+        {
+          "value": "S/N threshold >= 15, rms noise level = 0.27 K",
+          "evidence": [
+            {
+              "loc": "3.5 Gas infall rates in cores",
+              "quote": "To reliably determine the infall velocity from the asymmetric line profiles using the Hill5 model, we applied a signal-to-noise (S/N) threshold ≳ 15 to the observed spectra. The S/N ratio was calculated based on an rms noise level of 0.27 K"
+            }
+          ]
+        },
+        {
+          "value": "Five Hill5 free parameters: Tpeak, tau, Vinfall, VLSR, sigma",
+          "evidence": [
+            {
+              "loc": "8 Hill5 Model Fit to the Infall Profiles",
+              "quote": "The optical depth of the core is τ , and its infall velocity is Vinfall, while the systematic velocity of the system is VLSR, and both the regions are assumed to have equal velocity dispersion of σ for the observed molecule. These five parameters were set as free"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Two approaching layers with linearly increasing excitation temperature toward the center; equal velocity dispersion in both regions",
+          "evidence": [
+            {
+              "loc": "8 Hill5 Model Fit to the Infall Profiles",
+              "quote": "The Hill5 model is a simple radiative transfer model used for deriving infall velocity in a contracting molecular cloud by dealing with radiative transfer processes in two approaching layers whose excitation temperatures linearly increase toward the inner region"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "MCMC sampling using emcee in two trials: initial trial with broad parameter range to locate probable region, second trial with refined bounds",
+        "evidence": [
+          {
+            "loc": "8 Hill5 Model Fit to the Infall Profiles",
+            "quote": "the fitting was performed by Markov Chain Monte Carlo (MCMC) sampling using the emcee Python package (cite: 2013ascl.soft03002F). The corner plots were generated to check the posterior probability distributions of parameters for each spectrum."
+          },
+          {
+            "loc": "8 Hill5 Model Fit to the Infall Profiles",
+            "quote": "In the initial trial, we set the parameter range very broad to identify the most probable region across possible local minima. The second trial uses this result to set more reasonable bounds on the parameters for a final fit."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Examined corner plots of posterior distributions; checked consistency between H13CO+ and CCH fits where both were available (cores 10, 11, 12); discarded unreliable fits",
+        "evidence": [
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "Note that for cores where Vin is derived for both the tracers (cores 10, 11 and 12), the obtained values are found to be consistent with each other."
+          },
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "Fit to a few spectra (cores 7, 10, and 14 for H13CO+, and cores 5, 8, 9, 13, and 14 for CCH) were unreliable due to the complex nature of their spectra, and hence, they were excluded from further analysis."
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "goal": "Calculate mass infall rates for cores and compare with filament inflow",
+      "method": {
+        "value": "Calculated mass infall rate as M_dot_in = 3 * M_in / R_in * V_in using adopted core masses and radii.",
+        "evidence": [
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "The estimated infall velocities were further used to derive the mass infall rate (M˙ in) of gaseous material following the equation (cite: 2001ApJS..136..703L; 2022ApJ...940..112K; 2025arXiv251116978M): M˙ in = 3Min/Rin * Vin"
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "M_in and R_in adopted from Xu et al. (2024)",
+          "evidence": [
+            {
+              "loc": "3.5 Gas infall rates in cores",
+              "quote": "where Min is the core mass, and Rin is the core radius, adopted from (cite: 2024ApJS..270....9X)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Uniform spherical core collapse model",
+          "evidence": [
+            {
+              "loc": "3.5 Gas infall rates in cores",
+              "quote": "following the equation (cite: 2001ApJS..136..703L; 2022ApJ...940..112K; 2025arXiv251116978M): M˙ in = 3Min/Rin * Vin"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Compared core mass infall rates to filament inflow rates and tested mass growth timescales",
+        "evidence": [
+          {
+            "loc": "4.3 Possible evolution of the cores",
+            "quote": "Accumulation of a small fraction (∼20-30%) of inflowing gas (see Table [tab:mass_aacretion]) onto the individual core during this timescale may lead to a significant mass growth"
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "CASA",
+      "version": "5.6",
+      "used_for": {
+        "value": "Separate calibration of 12-m and ACA data, combining visibility data and imaging",
+        "evidence": [
+          {
+            "loc": "2.1 ATOMS survey",
+            "quote": "Calibration of the 12-m array data and ACA data were done separately using the Common Astronomy Software Applications (CASA) package version 5.6 (cite: mcmullin2007asp), and subsequently the visibility data were combined and re-imaged"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FilFinder",
+      "version": "not stated",
+      "used_for": {
+        "value": "Identification of filamentary structures and skeletons in H13CO+ moment-0 map and 1.3 mm continuum map",
+        "evidence": [
+          {
+            "loc": "3.1 Identification of filaments",
+            "quote": "identified filamentary structures in this protocluster by applying the Python-based FilFinder algorithm (cite: 2015MNRAS.452.3435K) on the moment-0 map of H13CO+ emission."
+          },
+          {
+            "loc": "3.1 Identification of filaments",
+            "quote": "We also employed the FilFinder algorithm to the 1.3 mm continuum map obtained in the QUARKS survey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FUNStools",
+      "version": "not stated",
+      "used_for": {
+        "value": "Estimating rms noise level from line-free channels",
+        "evidence": [
+          {
+            "loc": "3.5 Gas infall rates in cores",
+            "quote": "The S/N ratio was calculated based on an rms noise level of 0.27 K, estimated from the line-free channels using FUNStools."
+          }
+        ]
+      }
+    },
+    {
+      "name": "emcee",
+      "version": "not stated",
+      "used_for": {
+        "value": "Markov Chain Monte Carlo (MCMC) sampling for fitting the Hill5 infall model to observed line spectra",
+        "evidence": [
+          {
+            "loc": "8 Hill5 Model Fit to the Infall Profiles",
+            "quote": "the fitting was performed by Markov Chain Monte Carlo (MCMC) sampling using the emcee Python package (cite: 2013ascl.soft03002F)."
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "Velocity gradient along filament F1",
+      "value": "17.8",
+      "uncertainty": "1.1",
+      "units": "km s-1 pc-1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F1 | 0.07 | 99±33 | 1414±473 | 17.8±1.1 | 1762±598"
+        }
+      ]
+    },
+    {
+      "quantity": "Velocity gradient along filament F3",
+      "value": "22.1",
+      "uncertainty": "2.0",
+      "units": "km s-1 pc-1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F3 | 0.13 | 227±76 | 1746±585 | 22.1±2.0 | 5017±1735"
+        }
+      ]
+    },
+    {
+      "quantity": "Velocity gradient along filament F4",
+      "value": "10.9",
+      "uncertainty": "0.8",
+      "units": "km s-1 pc-1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F4 | 0.12 | 119±40 | 992±333 | 10.9±0.8 | 1297±445"
+        }
+      ]
+    },
+    {
+      "quantity": "Mass inflow rate along filament F1",
+      "value": "1762",
+      "uncertainty": "598",
+      "units": "Msun Myr-1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F1 | 0.07 | 99±33 | 1414±473 | 17.8±1.1 | 1762±598"
+        }
+      ]
+    },
+    {
+      "quantity": "Mass inflow rate along filament F3",
+      "value": "5017",
+      "uncertainty": "1735",
+      "units": "Msun Myr-1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F3 | 0.13 | 227±76 | 1746±585 | 22.1±2.0 | 5017±1735"
+        }
+      ]
+    },
+    {
+      "quantity": "Mass inflow rate along filament F4",
+      "value": "1297",
+      "uncertainty": "445",
+      "units": "Msun Myr-1",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F4 | 0.12 | 119±40 | 992±333 | 10.9±0.8 | 1297±445"
+        }
+      ]
+    },
+    {
+      "quantity": "Filament F1 mass",
+      "value": "99",
+      "uncertainty": "33",
+      "units": "Msun",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F1 | 0.07 | 99±33"
+        }
+      ]
+    },
+    {
+      "quantity": "Filament F3 mass",
+      "value": "227",
+      "uncertainty": "76",
+      "units": "Msun",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F3 | 0.13 | 227±76"
+        }
+      ]
+    },
+    {
+      "quantity": "Filament F4 mass",
+      "value": "119",
+      "uncertainty": "40",
+      "units": "Msun",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "F4 | 0.12 | 119±40"
+        }
+      ]
+    },
+    {
+      "quantity": "Core 5 infall velocity from H13CO+",
+      "value": "1.05",
+      "uncertainty": "+0.12/-0.11",
+      "units": "km s-1",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "5 | 4.0±2.4 | 4550 | −50.61 | 1.05+0.12−0.11 | - | 54.9±35.1"
+        }
+      ]
+    },
+    {
+      "quantity": "Core 7 infall velocity from CCH",
+      "value": "1.24",
+      "uncertainty": "+0.26/-0.27",
+      "units": "km s-1",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "7 | 9.7±5.2 | 3680 | −50.70 | - | 1.24+0.26−0.27 | - | 196.2±110.9"
+        }
+      ]
+    },
+    {
+      "quantity": "Core 10 infall velocity from H13CO+",
+      "value": "-0.16",
+      "uncertainty": "+0.06/-0.07",
+      "units": "km s-1",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "10 | 6.0±4.1 | 3360 | −49.31 | −0.16+0.06−0.07 | −0.14+0.03−0.03 | −68.9±41.7 | −46.3±31.7"
+        }
+      ]
+    },
+    {
+      "quantity": "Core 7 mass infall rate from CCH",
+      "value": "196.2",
+      "uncertainty": "110.9",
+      "units": "10-5 Msun yr-1",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "7 | 9.7±5.2 | 3680 | −50.70 | - | 1.24+0.26−0.27 | - | 196.2±110.9"
+        }
+      ]
+    },
+    {
+      "quantity": "Core 5 mass infall rate from H13CO+",
+      "value": "54.9",
+      "uncertainty": "35.1",
+      "units": "10-5 Msun yr-1",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "5 | 4.0±2.4 | 4550 | −50.61 | 1.05+0.12−0.11 | - | 54.9±35.1"
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Four filaments (F1–F4) converge into a central hub region forming a hub-filament system.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "Filamentary structures are identified using the 1.3 mm dust continuum map, with four of them converge into a dense central region, forming a hub-filament system (HFS)."
+        }
+      ]
+    },
+    {
+      "value": "Most protostellar cores show blue-asymmetric line profiles indicating infall, while several prestellar cores along filaments show red profiles indicating expansion or mass loss to the hub.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "Investigation of H13CO+ and CCH spectral profiles revealed the majority of the cores having the characteristic blue asymmetric line profiles, typical signature of gravitational collapse. The remaining few cores showed red asymmetric profiles, indicative of gas expansion."
+        }
+      ]
+    },
+    {
+      "value": "Mass infall rates in hub protostellar cores are significantly higher than peripheral cores, supporting competitive accretion where the central gravitational potential funnels mass from less dominant cores.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "Our results are supporting a competitive accretion scenario of massive star formation where gas is expected to be funnelled from less gravitationally dominant cores to the cores located at the gravitationally favorable position."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Filaments in G318.049+00.086 channel mass into the central hub at rates sufficient to facilitate massive star formation.",
+      "experiment": "Derived velocity gradients from PV diagrams along filament skeletons using H13CO+ (1-0) emission and computed mass inflow rates using a cylindrical inflow model with masses from LTE H13CO+ column density.",
+      "result": "Measured velocity gradients of 10.9 to 22.1 km s-1 pc-1 and mass inflow rates of (1.3 to 5.0) x 10^3 Msun Myr-1 along filaments F1, F3, and F4.",
+      "finding": "The mass inflow rates (>10^3 Msun Myr-1) are sufficient to feed the central hub to form massive stars within ~2x10^4 years.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "A mass inflow rate higher than 103 M⊙ Myr-1 along the filaments is indicating that the central hub is capable of forming massive star(s)."
+        },
+        {
+          "loc": "4.3 Possible evolution of the cores",
+          "quote": "With a typical conjecture of mass inflow through the filaments 2 × 104 years at a constant efficiency of 20%, the additional mass accreted by the hub would rise by 35 M⊙... In both cases, the accumulated mass is sufficient to form massive stars within the hub."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Dense cores in the protocluster exhibit localized collapse or expansion consistent with competitive accretion.",
+      "experiment": "Fitted H13CO+ (1-0) and CCH (1-0) spectral profiles using the Hill5 radiative transfer model with MCMC sampling to derive infall velocities and mass infall rates.",
+      "result": "Hub cores exhibit blue-asymmetric profiles with high infall rates (up to ~196 x 10^-5 Msun yr-1), whereas certain filament cores (cores 10, 11, 13) exhibit red-asymmetric profiles with expansion/mass-loss rates up to ~69 x 10^-5 Msun yr-1.",
+      "finding": "Gas is being funneled from less gravitationally dominant filament cores to cores in the central hub potential well, supporting competitive accretion.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "The mass-radius relationship of the cores revealed that the cores with red profiles reside in the massive star formation regime. However, the global velocity gradient along the filaments suggests that these particular cores are losing material to the hub."
+        },
+        {
+          "loc": "Abstract",
+          "quote": "Our results are supporting a competitive accretion scenario of massive star formation where gas is expected to be funnelled from less gravitationally dominant cores to the cores located at the gravitationally favorable position."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "ATOMS Band 3 line data trace large-scale kinematics and dense gas with low optical depth lines; ASSEMBLE Band 7 lines provide optically thin systemic velocities; QUARKS 1.3 mm continuum provides high angular resolution (~0.3″) to identify filament spines.",
+      "evidence": [
+        {
+          "loc": "1.1 Selected region",
+          "quote": "In this paper, we analyzed the filamentary structures traced by the 1.3 mm dust continuum and velocity distribution along their skeletons using H13CO+ (1–0), as well as infalling motions towards the embedded dense cores using H13CO+ (1–0) and CCH"
+        },
+        {
+          "loc": "2.3 QUARKS survey",
+          "quote": "Furthermore, G318.049+00.086 was observed as part of the Querying Underlying mechanisms of massive star formation with ALMA-Resolved gas Kinematics and Structures (QUARKS) survey, complementing the ATOMS survey with an improved angular resolution (∼ 0.3″)."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Hill5 model allows derivation of core infall velocities from asymmetric self-absorbed line profiles via radiative transfer in two approaching layers; FilFinder reliably extracts filament skeletons.",
+      "evidence": [
+        {
+          "loc": "3.5 Gas infall rates in cores",
+          "quote": "The infall velocity of the cores with blue profile was determined by fitting the observed spectral profiles of H13CO+ and CCH with the Hill5 infall model (cite: 2005ApJ...620..800D)."
+        },
+        {
+          "loc": "8 Hill5 Model Fit to the Infall Profiles",
+          "quote": "The Hill5 model is a simple radiative transfer model used for deriving infall velocity in a contracting molecular cloud by dealing with radiative transfer processes in two approaching layers whose excitation temperatures linearly increase toward the inner region"
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Applied an S/N threshold >= 15 based on an rms noise of 0.27 K to select reliable spectra for Hill5 fitting.",
+      "evidence": [
+        {
+          "loc": "3.5 Gas infall rates in cores",
+          "quote": "To reliably determine the infall velocity from the asymmetric line profiles using the Hill5 model, we applied a signal-to-noise (S/N) threshold ≳ 15 to the observed spectra. The S/N ratio was calculated based on an rms noise level of 0.27 K"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Using HCO+ (1-0) or CS (2-1) for core infall was rejected because HCO+ is contaminated by outflows and CS has too coarse spectral resolution (~3 km/s).",
+      "evidence": [
+        {
+          "loc": "3.5 Gas infall rates in cores",
+          "quote": "In general, tracers like HCO+ (1–0) or CS (2–1) are best-served for this purpose. However, in our protocluster, the HCO+ line is significantly contaminated by outflow activities from the embedded protostars, while the CS line has a coarse spectral resolution of about 3 km s-1 that can significantly distort these characteristic features."
+        }
+      ]
+    },
+    {
+      "value": "Cores 1, 2, 3, 4, 15, and 16 were excluded from filament analysis because 15 and 16 were outside the QUARKS FOV, core 1 is away from the main filament, and cores 2, 3, 4 trace extended filamentary material rather than compact cores.",
+      "evidence": [
+        {
+          "loc": "1.1 Selected region",
+          "quote": "Note that cores 15 and 16 are not present within the Field of View (FOV) of the 1.3 mm QUARKS data. Hence, we have not considered these cores in our subsequent analysis. Moreover, cores 1, 2, 3, and 4 are also excluded from further analysis."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "H13CO+ may not be strictly optically thin in dense cores, underestimating the column density by 27% to 93% if tau = 0.5-1.5.",
+      "evidence": [
+        {
+          "loc": "3.2 Column density map",
+          "quote": "The derived N(H2) value represents a lower limit to the true column density, as the assumption of the line to be optically thin is not always valid, specifically in the dense region"
+        },
+        {
+          "loc": "3.2 Column density map",
+          "quote": "If we consider H13CO+ has a moderate opacity (τ ∼ 0.5-1.5), the optically thin assumption would underestimate the column density by a factor τ /(1 - e-τ), corresponding to an increase of approximately ∼ 27%–93%"
+        }
+      ]
+    },
+    {
+      "value": "Assumed abundance [H13CO+/H2] of 10^-11 is uncertain across literature from 10^-10 to 10^-12, varying total mass estimates by up to a factor of 10.",
+      "evidence": [
+        {
+          "loc": "3.2 Column density map",
+          "quote": "While we adopted a representative value of [H13CO+/H2]=10-11, reported values span a wide range from 10-10 to 10-12. Adopting these extreme values would decrease or increase the inferred column density by an order of magnitude, respectively, implying that the total mass estimates could vary by up to a factor of 10."
+        }
+      ]
+    },
+    {
+      "value": "Unknown filament inclination introduces a factor of 2 uncertainty in mass inflow rates when inclination angle varies between 30 and 60 degrees.",
+      "evidence": [
+        {
+          "loc": "3.4 Mass inflow rate along the filaments",
+          "quote": "We thus assume tan α = 1 in our calculation, and the estimated velocity gradients and mass inflow rates are expected to be uncertain by a factor of 2 when the α changes between 30◦ and 60◦ (cite: 2025A&A...704A..64W)."
+        }
+      ]
+    },
+    {
+      "value": "Velocity gradient along filament F2 could not be determined due to large velocity fluctuations.",
+      "evidence": [
+        {
+          "loc": "3.3 Dynamical properties of filaments",
+          "quote": "Note that we were unable to determine a consistent velocity gradient along the filament F2 due to significant velocity fluctuations along this filament."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Core expansion inferred from red-asymmetric profiles could potentially arise from complex foreground cloud motions or internal outflows rather than true expansion/stripping.",
+    "Derivation of H2 column density directly from H13CO+ line intensity relies on a constant Tex equal to clump Tdust and a constant abundance ratio, which likely varies substantially between low-density envelopes and dense cores."
+  ],
+  "reproducibility": [
+    {
+      "field": "data_public_as_stated",
+      "value": "not stated",
+      "evidence": []
+    },
+    {
+      "field": "products_in_archive",
+      "value": "not stated",
+      "evidence": []
+    }
+  ],
+  "code_released": [
+    {
+      "value": "FUNStools available at https://github.com/radioshiny/funstools; emcee available at https://github.com/dfm/emcee",
+      "evidence": [
+        {
+          "loc": "Footnotes 1 and 2",
+          "quote": "https://github.com/radioshiny/funstools; https://github.com/dfm/emcee"
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "QUARKS project code is not printed in the paper text (only survey name cited).",
+    "Specific tclean imaging scripts and exact channel selections used for continuum subtraction.",
+    "Exact MCMC prior bounds and hyperparameter settings used in the second trial of Hill5 fitting."
+  ],
+  "estimated_data_volume_inferred": "50 - 150 GB",
+  "score_inferred": 75,
+  "score_reason": "The paper provides clear quantitative details on the analysis pipeline (FilFinder, LTE column density equations, Hill5 MCMC modeling, cylindrical inflow calculations) and lists numerical results with uncertainties. However, it relies heavily on external core catalogs and reduced data products from prior ATOMS/ASSEMBLE/QUARKS papers, omits the QUARKS ALMA project ID, and does not provide tclean scripts or exact MCMC prior definitions.",
+  "rediscovery_candidate": true,
+  "rediscovery_reason": "All raw ALMA datasets (ATOMS 2019.1.00685.S, ASSEMBLE 2017.1.00545.S, and QUARKS archive data) are public in the ALMA archive. The mathematical formulae for column density, velocity gradient fitting, and mass inflow/infall rates are explicitly stated, allowing straightforward recalculation and reproduction of the main numerical findings.",
+  "methods_papers": [
+    {
+      "citation": "2015MNRAS.452.3435K",
+      "why": "FilFinder algorithm for filament identification"
+    },
+    {
+      "citation": "2005ApJ...620..800D",
+      "why": "Hill5 infall radiative transfer model"
+    },
+    {
+      "citation": "2013ascl.soft03002F",
+      "why": "emcee MCMC implementation"
+    },
+    {
+      "citation": "2013ApJ...766..115K",
+      "why": "Methodology for filament mass inflow rate calculation"
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "2020MNRAS.496.2790L",
+      "why": "ATOMS survey overview and data reduction details"
+    },
+    {
+      "citation": "2024RAA....24b5009L",
+      "why": "QUARKS survey overview and continuum map preparation"
+    },
+    {
+      "citation": "2024RAA....24f5011X",
+      "why": "QUARKS Paper II detailing ACA observations and combination"
+    },
+    {
+      "citation": "2024ApJS..270....9X",
+      "why": "Identification and physical characterization of the 16 dense cores in G318.049+00.086"
+    },
+    {
+      "citation": "2022MNRAS.514.6038Z",
+      "why": "Previous ATOMS filament identification and velocity gradient study"
+    }
+  ],
+  "related_projects_or_surveys": [
+    "ATOMS",
+    "ASSEMBLE",
+    "QUARKS"
+  ]
+}

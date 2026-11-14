@@ -1,0 +1,226 @@
+{
+ "bibcode": "2015A&A...573L...4L",
+ "title": "ALMA observations of α Centauri. First detection of main-sequence stars at 3 mm wavelength",
+ "year": 2015,
+ "doi": "10.1051/0004-6361/201425189",
+ "arxiv_id": "1412.3923",
+ "fields": [
+  "stellar_physics",
+  "sun"
+ ],
+ "question": "Can ALMA resolve the alpha Cen A and B components at mm/submm wavelengths, give their flux ratios, and extend the SED to 3 mm to probe the chromospheric temperature minimum and free-free emission?",
+ "alma_project_codes": [
+  "2013.1.00170.S"
+ ],
+ "data": {
+  "bands": "Band 3 (97.5 GHz), Band 7 (343.5 GHz), Band 9 (679 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "1.72x1.50 (B3), 0.42x0.28 (B7), 0.22x0.16 arcsec (B9)",
+  "sensitivity": "rms 0.02 (B3), 0.2 (B7), 1.0 (B9) mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar radii R_A=1.224, R_B=0.863 Rsun",
+    "evidence": [
+     {
+      "loc": "footnote 4",
+      "quote": "$R_{\\rm A}=1.224\\pm0.003$ $R_{\\odot}$ and $R_{\\rm B}=0.863\\pm0.003$$R_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "Table 4 of (cite: wiegert2014)"
+  },
+  {
+   "what": {
+    "value": "Previous flux ratio B/A = 0.44±0.18 (0.09-70 micron)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Over the wavelength range $0.09 - 70$ $\\mu$m, the ratio was $S_{\\!\\nu}^{\\rm B}/S_{\\!\\nu}^{\\rm A}=0.44\\pm0.18$"
+     }
+    ]
+   },
+   "citation": "(cite: wiegert2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image",
+   "method": "CASA calibration with Ceres/Titan flux scales, quasar gain and bandpass calibrators; imaging with Briggs/natural weighting; B9 self-cal; primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "measure flux densities, ratios and spectral indices",
+   "method": "Fluxes of A and B in each band; B/A ratios; spectral index alpha between bands",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "compute brightness temperatures and compare with photospheres",
+   "method": "Convert flux to T_B with stellar radius plus chromospheric height and compare to photospheric levels",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Chromospheric height ~0.1% of stellar radius, as in the Sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "alpha Cen A flux density Band 3 (3075 um)",
+   "value": "3.373",
+   "uncertainty": "0.011",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$3.373\\pm 0.011$ \\[307\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha Cen B flux density Band 3",
+   "value": "1.585",
+   "uncertainty": "0.016",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.585\\pm 0.016$    \\[99\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha Cen A flux density Band 7",
+   "value": "26.06",
+   "uncertainty": "0.19",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$26.06\\pm 0.19$ \\[137\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha Cen B flux density Band 7",
+   "value": "12.04",
+   "uncertainty": "0.23",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$12.04\\pm 0.23$    \\[52\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha Cen A flux density Band 9",
+   "value": "107.2",
+   "uncertainty": "1.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$107.2\\pm 1.5$      \\[71\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha Cen B flux density Band 9",
+   "value": "57.6",
+   "uncertainty": "4.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$57.6\\pm 4.5$      \\[13\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "flux ratio B/A at 3.1 mm",
+   "value": "0.47",
+   "uncertainty": "0.006",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$=0.47\\pm0.006$ at 3.1 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "flux ratio B/A at 870 um",
+   "value": "0.46",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$=0.46\\pm0.01$ at 870 $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "flux ratio B/A at 440 um",
+   "value": "0.54",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$S_{\\!\\nu}^{\\rm B}/S_{\\!\\nu}^{\\rm A}=0.54\\pm0.04$ at 440 $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "spectral index alpha(7,3) A / B",
+   "value": "1.62 / 1.61",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2.08                 | 1.62                 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Briggs robust value",
+  "Method of flux extraction (aperture vs Gaussian fit) and uncertainties",
+  "Phase/pointing offsets and details of self-cal solint",
+  "Distance to alpha Cen used"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Briggs robust",
+  "flux measurement method",
+  "self-cal parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple measurement and public data, but processing details are sparse.",
+ "rediscovery_reason": "Public data, simple numeric fluxes, though details missing.",
+ "source_card": "cards/2015A%26A...573L...4L/sonnet/card.md"
+}

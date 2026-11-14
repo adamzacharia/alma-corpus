@@ -1,0 +1,560 @@
+{
+ "bibcode": "2021A&A...645A..97Q",
+ "title": "ALMA resolves giant molecular clouds in a tidal dwarf galaxy",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202038955",
+ "arxiv_id": "2011.01287",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How quickly gas condenses into compact structures in a pristine tidal dwarf galaxy, and whether those structures (GMCs) resemble GMCs in the Milky Way and other galaxies",
+ "alma_project_codes": [
+  "2016.1.00648.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz), Cycle 4",
+  "arrays": "12 m array + ACA (7 m array + total power antennas)",
+  "angular_resolution": "12 m: 0.4-0.5 arcsec; 7 m: ~5.4 arcsec; total power: ~28 arcsec; combined cube beam 0.69 x 0.60 arcsec (PA 11 deg), ~45 pc",
+  "sensitivity": "rms ~1 mJy/beam (~56 mK) per 2.5 km/s channel; surface density sensitivity ~3.9 Msun/pc^2 for FWHM = 15 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA HI cube of J1023+1952",
+    "evidence": [
+     {
+      "loc": "2.2.1 VLA H I data",
+      "quote": "To trace atomic gas, we use H I observations from the Very Large Array (VLA), originally published in (cite: 2004ApJ...614..648M)."
+     }
+    ]
+   },
+   "citation": "(cite: 2004ApJ...614..648M)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30 m CO(1-0) observations of the TDG (and global R21 = 0.54 +/- 0.10)",
+    "evidence": [
+     {
+      "loc": "2.2.2 IRAM 30 m data",
+      "quote": "Those single-dish observations were published by (cite: 2008ApJ...685..181L), and they attained a spatial resolution of $22''$."
+     }
+    ]
+   },
+   "citation": "(cite: 2008ApJ...685..181L)"
+  },
+  {
+   "what": {
+    "value": "HST WFC3 F547M map of the TDG and NGC 3227",
+    "evidence": [
+     {
+      "loc": "2.2.3 HST data",
+      "quote": "The map was obtained with the medium-band filter F547M of the WFC3 camera and has been presented in (cite: 2017ApJ...835..271B)."
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...835..271B)"
+  },
+  {
+   "what": {
+    "value": "H-alpha image from the William Herschel Telescope",
+    "evidence": [
+     {
+      "loc": "2.2.4 H$\\alpha$ data",
+      "quote": "We use H$\\alpha$ observations of NGC 3227 from the 4.2 m William Herschel Telescope in La Palma, presented in (cite: 2004ApJ...614..648M)."
+     }
+    ]
+   },
+   "citation": "(cite: 2004ApJ...614..648M)"
+  },
+  {
+   "what": {
+    "value": "Distance of 14.5 +/- 0.6 Mpc",
+    "evidence": [
+     {
+      "loc": "Paper goals and structure",
+      "quote": "We assume a distance of $14.5 \\pm 0.6$ Mpc (cite: 2014ApJ...784L..11Y), based on a new AGN time lag method."
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...784L..11Y)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) conversion factor alpha_CO^2-1 = 4.4 Msun (K km/s pc^2)^-1 (average of resolved nearby galaxy discs)",
+    "evidence": [
+     {
+      "loc": "2.4 Conversion to gas surface densities",
+      "quote": "which is the average value measured by (cite: 2013ApJ...777....5S) directly on the CO(2-1) line for a set of resolved nearby galaxy discs"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJ...777....5S)"
+  },
+  {
+   "what": {
+    "value": "Optically thin HI conversion to column density / surface density (factor 0.0145)",
+    "evidence": [
+     {
+      "loc": "2.4 Conversion to gas surface densities",
+      "quote": "this is equivalent to multiplying by 0.0145 to transform from K km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2016era..book.....C)"
+  },
+  {
+   "what": {
+    "value": "Star-forming knot positions and ages used for the GMC-cluster offset comparison",
+    "evidence": [
+     {
+      "loc": "4.4 Comparison between GMCs and star formation sites",
+      "quote": "Knot 2 was found to be the oldest in (cite: 2008ApJ...685..181L) with ages above $\\sim$100 Myr."
+     }
+    ]
+   },
+   "citation": "(cite: 2008ApJ...685..181L)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image 12 m + 7 m + total power CO(2-1) cube",
+   "method": "Standard calibration, concatenation of 12 m and 7 m visibilities, tclean imaging with the total power cube as model",
+   "software": [
+    "CASA 5.4.1",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Hogbom deconvolution, natural weighting, 2 mJy/beam threshold, 2.5 km/s channels",
+    "Total power baseline: order-1 polynomial in line-free windows 755-855 and 1500-1600 km/s",
+    "Pixel 0.082 arcsec, image 1344 x 1440 pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Mask NGC 3227 and build moment maps of the TDG",
+   "method": "Mask built from smoothed, clipped HI cube; dilated-mask moment maps (4 sigma seed, 1.5 sigma extension) integrated over 1060-1360 km/s",
+   "software": [
+    "CASA 5.4.1"
+   ],
+   "key_parameters": [
+    "HI clipped at 3 sigma_sm with sigma_sm = 1 mJy/beam",
+    "Line-free range 1360-1450 km/s used for pixel-by-pixel rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Convert CO and HI intensities to gas surface densities",
+   "method": "Constant alpha_CO^2-1 for CO(2-1); optically thin HI formula",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO^2-1 = 4.4 Msun (K km/s pc^2)^-1"
+   ],
+   "assumptions": [
+    "Near-solar metallicity of the TDG makes a constant alpha_CO reasonable; includes helium factor 1.36"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure H2/HI ratio, diffuse CO fraction and CO(2-1)/CO(1-0) ratio",
+   "method": "Measurements at matched 6.3 arcsec using 4 sigma dilated masks; diffuse component = (12m+7m+TP) minus 12m+7m channel by channel; R21 from TP CO(2-1) over IRAM CO(1-0) convolved to 28 arcsec",
+   "software": [],
+   "key_parameters": [
+    "North/south split at Dec = 19:51:50"
+   ],
+   "assumptions": [
+    "Extended emission is interpreted as diffuse molecular gas"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Identify GMCs with CPROPS (and SCIMES as cross-check)",
+   "method": "CPROPS segmentation from a 4 sigma mask expanded to 1.5 sigma, local maxima criteria; SCIMES uses the same mask of significance",
+   "software": [
+    "CPROPS",
+    "SCIMES"
+   ],
+   "key_parameters": [
+    "Local maxima must be 2 sigma_rms above the merge level",
+    "Maxima kept only if associated area exceeds one synthesised beam; islands of 1-2 beams not decomposed",
+    "Emission considered where primary beam response >= 20% (~80 x 70 arcsec)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive GMC physical properties (L_CO, R, sigma_v, M_lum, M_vir)",
+   "method": "Intensity-weighted moments from the segmentation; moment extrapolation to 0 K and beam deconvolution; bootstrap for uncertainties; unresolved clouds excluded",
+   "software": [
+    "CPROPS",
+    "SCIMES"
+   ],
+   "key_parameters": [
+    "M_lum = alpha_CO L_CO; M_vir = 1040 sigma_v^2 R (rho proportional to R^-1)",
+    "R = eta sigma_r with eta = 1.91",
+    "CPROPS bootstrap with 1000 iterations"
+   ],
+   "assumptions": [
+    "alpha_CO^2-1 = 4.4 Msun (K km/s pc^2)^-1; distance 14.5 Mpc; density profile rho proportional to R^-1 for virial mass"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit the GMC mass spectrum",
+   "method": "Fit cumulative mass distribution with truncated and non-truncated power laws; truncated version preferred",
+   "software": [],
+   "key_parameters": [
+    "M_GMC = alpha_CO^2-1 L_CO using all CPROPS clouds (extrapolated luminosities); 5 sigma completeness limit 5e4 Msun"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Fit GMC scaling relations (Larson, Heyer plot)",
+   "method": "Linear regression in log-log with ODR and with the Bayesian BayesLineFit, on extrapolated and deconvolved properties; Spearman rank correlation",
+   "software": [
+    "scipy.odr",
+    "BayesLineFit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Compare GMC positions with young star-forming knots and clusters",
+   "method": "Overlay GMCs on astrometry-corrected HST F547M and H-alpha images and measure projected offsets from the knots of Lisenfeld et al. 2008",
+   "software": [],
+   "key_parameters": [
+    "H-alpha astrometry offsets dRA = 0.33 px (0.11 arcsec), dDec = 2.05 px (0.67 arcsec)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Synthesised beam of final cube",
+   "value": "0.69 x 0.60 arcsec, PA = 11 deg (~45 pc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA data: molecular gas emission",
+     "quote": "we obtained an average synthesised beam of $0.69\" \\times 0.60\"$ ($\\mathrm{PA} = 11^\\circ$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Cube rms brightness sensitivity",
+   "value": "~1 mJy/beam (~56 mK)",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA data: molecular gas emission",
+     "quote": "The rms brightness sensitivity of the resulting data cube is $\\sigma_{\\rm rms} \\sim 1$ mJy per beam (${\\approx} 56$ mK)"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass at matched 6.3 arcsec resolution (masked)",
+   "value": "8.6e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "the total molecular gas mass in the TDG is $8.6 \\times 10^7$ M$_\\odot$, very similar to the total amount of atomic gas ($8.4 \\times 10^7$ M$_\\odot$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Total atomic gas mass at matched 6.3 arcsec resolution",
+   "value": "8.4e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "the total molecular gas mass in the TDG is $8.6 \\times 10^7$ M$_\\odot$, very similar to the total amount of atomic gas ($8.4 \\times 10^7$ M$_\\odot$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2/HI mass ratio, north vs south",
+   "value": "1.47 (north), 0.37 (south); ~1 for whole TDG",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.1 Molecular-to-atomic gas ratio",
+     "quote": "the quiescent north has a substantially higher molecular-to-atomic gas ratio (1.47) than the star-forming south (0.37)"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular mass in ALMA cube at native resolution (12m+7m+TP, no mask)",
+   "value": "1.63e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "which is 18% of the total molecular mass (1.63$\\times 10^8$ $M_\\odot$ in the ALMA cube at native resolution, including total power, and without any masks)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO emission that is extended/diffuse",
+   "value": "~80-90%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.2 Diffuse molecular gas",
+     "quote": "it accounts for as much as ${\\sim}80{-}90$% of the molecular emission in the TDG"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of 12m+7m+TP flux inside the mask recovered by 12m+7m",
+   "value": "94%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.2 Diffuse molecular gas",
+     "quote": "the 12m + 7m cube recovers almost the whole flux (94%) in these compact structures"
+    }
+   ]
+  },
+  {
+   "quantity": "Global CO(2-1)/CO(1-0) ratio R21",
+   "value": "0.52",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.3 CO(2-1)/CO(1-0) ratio",
+     "quote": "The average value (masking NGC 3227) is 0.52, in good agreement with the global $R_{21} = 0.54 \\pm 0.10$ found by (cite: 2008ApJ...685..181L)."
+    }
+   ]
+  },
+  {
+   "quantity": "R21 in the south of the TDG",
+   "value": "0.38",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "this becomes particularly extreme towards the south of the TDG ($R_{21} = 0.38$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of GMCs identified with CPROPS",
+   "value": "111 (81 with extrapolated and deconvolved values)",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 GMC properties",
+     "quote": "We find a total of 111 GMCs with CPROPS (out of which 81 have extrapolated and deconvolved values)"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of SCIMES structures",
+   "value": "127 leaves, 49 branches, 26 trunks",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7 Results with SCIMES",
+     "quote": "SCIMES identified a total of 127 leaves, 49 branches, and 26 trunks in the TDG."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas in GMCs (extrapolated)",
+   "value": "3e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "The total molecular gas in GMCs adds up to 3$\\times 10^7$ $M_\\odot$ (extrapolated to perfect sensitivity)"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial masses relative to luminous masses",
+   "value": "~1 dex higher on average",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.3 Virial relation",
+     "quote": "the virial masses in the TDG are on average ${\\sim}1$ dex higher than the luminous masses"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter, north vs south",
+   "value": "~13 (north), ~8 (south)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.3 Virial relation",
+     "quote": "is higher for the clouds in the north (average ${\\sim}13$) than for the clouds in the south (average ${\\sim}8$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud-to-cloud velocity dispersion, north vs south",
+   "value": "~73 (north), ~46 (south)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "the relative cloud-to-cloud velocity dispersion is also higher in the north ($\\sigma_{\\rm cloud-cloud} \\sim 73$ km s$^{-1}$) than in the south ($\\sigma_{\\rm cloud-cloud} \\sim 46$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass spectrum slope gamma (all GMCs, CPROPS)",
+   "value": "-1.76",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 GMC mass spectra",
+     "quote": "Considering all GMCs in the TDG simultaneously (111 clouds), we find a slope of $\\gamma = -1.76 \\pm 0.13$."
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass spectrum slope, south vs north",
+   "value": "-1.30 (south), -1.76 (north)",
+   "uncertainty": "0.19 (south), 0.15 (north)",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 GMC mass spectra",
+     "quote": "the south has a shallower mass spectrum, $\\gamma = -1.30 \\pm 0.19$ instead of $\\gamma = -1.76 \\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass spectrum truncation mass M0",
+   "value": "1.9e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 GMC mass spectra",
+     "quote": "Fitting all GMCs in the TDG, we found a value of $M_0 = 1.9 \\times 10^6$ $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "GMC mass spectrum slope with SCIMES",
+   "value": "-1.84",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "7 Results with SCIMES",
+     "quote": "the slope of the global truncated power-law fit is slightly higher with SCIMES, $\\gamma = -1.84 \\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation slope (ODR, whole TDG)",
+   "value": "2.00",
+   "uncertainty": "0.33",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.3 Size-linewidth relation",
+     "quote": "the slope $\\gamma = 2.00 \\pm 0.33$ is significantly steeper than the canonical Galactic value of $\\sim$0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial relation slope (ODR, whole TDG)",
+   "value": "1.66",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.3 Virial relation",
+     "quote": "The global slope $1.66 \\pm 0.13$ is considerably higher than the ${\\sim}0.8{-}1$ value found in the Milky Way"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size relation slope (ODR, whole TDG)",
+   "value": "2.08",
+   "uncertainty": "0.19",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.3 Mass-size relation",
+     "quote": "with a global slope of $2.08 \\pm 0.19$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA calibration details: pipeline vs manual, calibrators, flux scale and its uncertainty, any self-calibration",
+  "Exact CASA tclean parameters (niter, gain, cleaning mask, startmodel scaling and how the TP cube was combined, spw/channel selection, rest frequency)",
+  "Total-power imaging parameters from Herrera et al. 2020 App. A (gridding, scaling to Jy/beam)",
+  "Continuum subtraction approach (paper only says no continuum was detected) and line-free channels used for the interferometric cube",
+  "Details of the HI-based Boolean mask of NGC 3227 (contiguous region selection), and access to the exact VLA HI cube",
+  "CPROPS input parameters beyond those described (e.g. minimum area/velocity-channel criteria, bootstrap setup); SCIMES parameters (min_value, min_delta, criteria)",
+  "Fitting algorithm and uncertainty method for the truncated power-law cumulative mass spectrum",
+  "How ODR weights and log-space errors were set for the scaling relations, and BayesLineFit priors/settings",
+  "Aperture or contour definition for the 'flux in GMCs' totals and for the diffuse-fraction masks",
+  "How the north/south GMC counts (62/19 vs 82/29) were assigned"
+ ],
+ "missing_for_reproduction": [
+  "Calibration script/choices and flux calibrator",
+  "tclean script and total power combination details",
+  "VLA HI cube and the exact NGC 3227 mask",
+  "CPROPS and SCIMES parameter files",
+  "Final GMC catalogue is only partly printed (truncated table)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters (CASA 5.4.1, Hogbom, natural weighting, pixel and image size) and GMC derivation formulas are given and project code is stated, but calibration details, TP combination steps, CPROPS/SCIMES settings, fit algorithms and the HI cube are not.",
+ "rediscovery_reason": "ALMA data come from a Cycle 4 project that should be public in the archive, the CPROPS recipe and mass-spectrum/scaling fits are largely described, and the results are numeric; the NGC 3227 mask needs the VLA HI data.",
+ "source_card": "cards/2021A%26A...645A..97Q/sonnet/card.md"
+}

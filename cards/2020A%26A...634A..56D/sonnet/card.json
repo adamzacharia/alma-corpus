@@ -1,0 +1,916 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020A&A...634A..56D",
+  "title": "The multi-thermal chromosphere. Inversions of ALMA and IRIS data",
+  "year": 2020,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "da Silva Santos, J. M.",
+  "n_authors": 7,
+  "arxiv_id": "1912.09886",
+  "doi": "10.1051/0004-6361/201937117",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00050.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We use the STiC nonlocal thermodynamic equilibrium (NLTE) inversion code to simultaneously fit real ultraviolet and mm spectra in order to infer the thermodynamic parameters of the plasma."
+   }
+  ],
+  "science": {
+   "fields": [
+    "sun"
+   ],
+   "targets": [
+    {
+     "name": "Plage in active region NOAA 12651",
+     "coordinates": {
+      "value": "IRIS raster initially centered at [x,y]~[-265'', 269''] (helioprojective)",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "ALMA and IRIS co-observed part of a plage on the eastern side of the active region NOAA 12651 at $\\mu\\approx0.92$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "mu ~ 0.92 (solar disk)",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "ALMA and IRIS co-observed part of a plage on the eastern side of the active region NOAA 12651 at $\\mu\\approx0.92$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How do temperature and microturbulence stratification in plage and quiet Sun change when ALMA 1.25 mm continuum is added to NLTE inversions of IRIS NUV spectra, and what do cool holes and hot transient brightenings imply?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We revisit the problem of the stratification of temperature and microturbulence in plage and the quiet Sun, now adding millimeter (mm) continuum observations provided by the Atacama Large Millimiter Array (ALMA)"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00050.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00050.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6, effective wavelength 1.25 mm",
+    "evidence": [
+     {
+      "loc": "2.1 Data reduction and alignment",
+      "quote": "resulting in one brightness temperature map at 2 s cadence corresponding to the central frequency of Band 6 and thus to an effective wavelength of 1.25 mm"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "Mg II",
+     "transition": "h and k (IRIS NUV)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "Along with the Mg II h and k lines we fit two of the UV triplet lines"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Interferometric scans plus Total Power single-dish scans",
+    "evidence": [
+     {
+      "loc": "2.1 Data reduction and alignment",
+      "quote": "consist of five interferometric scans (cite: 2017SoPh..292...87S) and five single-dish scans of the full solar disk with Total Power (TP) antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.8'' maximum ALMA resolution",
+    "evidence": [
+     {
+      "loc": "6.1 Limitations of the inversions",
+      "quote": "maximum ALMA resolution ($\\sim$0.8\")"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "noise ~30 K at most",
+    "evidence": [
+     {
+      "loc": "2.1 Data reduction and alignment",
+      "quote": "The noise level is $\\sim30$ K at most."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "37 min net interferometric time in five scans",
+    "evidence": [
+     {
+      "loc": "2.1 Data reduction and alignment",
+      "quote": "The net interferometric observing time on target spans 37 min divided into five scans"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "22 April 2017, 15:59-16:34 UT",
+    "evidence": [
+     {
+      "loc": "2.1 Data reduction and alignment",
+      "quote": "The observations were carried on 22 April 2017"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRIS",
+     "provided": {
+      "value": "NUV spectra (Mg II h&k, UV triplet, Ni I) and SJI",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "The IRIS data consist of dense (0.349$''$) 16-step rasters"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Hinode/SOT/SP",
+     "provided": {
+      "value": "Fe I 6301/6302 slit scans for context and magnetic field",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "Hinode/SOT/SP (cite: 2008SoPh..249..167T) slit scans of the Fe I 6301 and 6302 Å lines"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SDO AIA/HMI",
+     "provided": {
+      "value": "context images and line-of-sight magnetograms",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "we also use images taken with the Atmospheric Imaging Assembly"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Quiet-Sun disk-center brightness temperature ~5900 K used as TP reference scale",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "the absolute scale is corrected by rescaling the TP maps based on the average value in the disk center region to a reference value of 5900 K"
+       }
+      ]
+     },
+     "citation": "(cite: 2017SoPh..292...88W)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Solar ALMA Pipeline (SoAP2) with self-calibration, multi-scale CLEAN, primary beam correction, TP combination",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "The data are processed with the Solar ALMA Pipeline (SoAP2, Szydlarski et al. in prep)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Calibrated data downloaded from ALMA Archive",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "The calibrated ALMA Band 6 data (as downloaded from the ALMA Archive"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "TP calibration 10-15% (590-885 K); combined likely 3-5%",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "the absolute calibration of the single-dish TP brightness temperatures has an uncertainty of bettween 10 and 15%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "multi-scale CLEAN in CASA",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "via application of the multi-scale CLEAN algorithm by (cite: 2011A&A...532A..71R) as implemented in CASA"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "interferometric combined with TP data",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "combination of the interferometric data with the TP data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA data processing details with SoAP",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "We refer to (cite: Wsubmitted) for more details about data processing with SoAP."
+       }
+      ]
+     },
+     "from_reference": "(cite: Wsubmitted)"
+    },
+    {
+     "what": {
+      "value": "IRIS reduction (flat-field, dark, geometry, wavelength)",
+      "evidence": [
+       {
+        "loc": "2.1 Data reduction and alignment",
+        "quote": "calibrated in wavelength as described in (cite: 2018SoPh..293..149W)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2018SoPh..293..149W)"
+    },
+    {
+     "what": {
+      "value": "Ni I 2814.4 line selection",
+      "evidence": [
+       {
+        "loc": "3.1 Inversion setup",
+        "quote": "a selected photospheric line of Ni I at 2814.4 Å as in (cite: 2016ApJ...830L..30D)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2016ApJ...830L..30D)"
+    }
+   ],
+   "unstated_but_needed": [
+    "SoAP2 parameters (CLEAN scales, self-cal solints, imaging weights, cell size) and CASA version",
+    "Form and values of the ad hoc ALMA weighting function in chi2",
+    "Regularization weights alpha and node positions",
+    "Initial model atmospheres and data weights sigma",
+    "Exact alignment procedure and ALMA PSF treatment",
+    "Selection of pixels for Monte Carlo tests"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Reduce and align ALMA and IRIS data",
+    "method": {
+     "value": "Process ALMA with SoAP2, rescale TP to 5900 K, combine up to 14 ALMA images per IRIS raster, interpolate to common grid, convert Tb to intensity via Planck function",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "Up to 14 ALMA images were then combined to replicate the IRIS rasters"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "SoAP2"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "NLTE inversions of IRIS vs IRIS+ALMA",
+    "method": {
+     "value": "STiC regularized Levenberg-Marquardt inversion of Mg II h&k, UV triplet, Ni I, NUV continuum with and without the 1.25 mm point; NLTE hydrogen ionization, free-free mm opacity",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "which is a regularized Levenberg-Marquardt code for multi-atom NLTE inversions of multiple spectral lines and continua including partial frequency redistribution (PRD) effects"
+      }
+     ]
+    },
+    "software": [
+     "STiC"
+    ],
+    "key_parameters": [
+     {
+      "value": "19 temperature nodes, 9 vturb nodes, 7 vLOS nodes",
+      "evidence": [
+       {
+        "loc": "3.1 Inversion setup",
+        "quote": "We used nine and seven equidistant nodes for $v_{\\rm turb}$ and $v_{\\rm LOS}$, respectively."
+       }
+      ]
+     },
+     {
+      "value": "IRIS instrumental profile Gaussian FWHM 53 mÅ",
+      "evidence": [
+       {
+        "loc": "3.1 Inversion setup",
+        "quote": "Gaussian function with a fullwidth at half maximum of 53 mÅ"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "1D plane-parallel hydrostatic atmosphere; instantaneous NLTE electron densities; cyclotron and synchrotron neglected",
+      "evidence": [
+       {
+        "loc": "6.1 Limitations of the inversions",
+        "quote": "STiC code which assumes a 1D, plane-parallel atmosphere in hydrostatic equilibrium"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimization with regularization penalties and ad hoc ALMA weighting",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "we introduced an *ad hoc* weighting function that ensures that the ALMA data are well fitted"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Monte Carlo tests for overfitting; node-count tests",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "we ran a set of Monte Carlo simulations as explained in Section"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Response functions and uncertainties",
+    "method": {
+     "value": "Numerical temperature response functions; up to 100 Monte Carlo inversions per pixel with random starting atmospheres",
+     "evidence": [
+      {
+       "loc": "3.3 Uncertainties",
+       "quote": "we ran sets of up to $n=100$ Monte Carlo simulations per pixel of synthetic IRIS and ALMA data generated from the best-fit models"
+      }
+     ]
+    },
+    "software": [
+     "STiC"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "68% confidence intervals accurate to <0.5%",
+     "evidence": [
+      {
+       "loc": "3.3 Uncertainties",
+       "quote": "accurate (to <0.5%) 68% confidence intervals on the parameters"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Synthesize CO lines in cool holes",
+    "method": {
+     "value": "LTE vibration-rotation CO lines near 4.67 micron computed from inverted models",
+     "evidence": [
+      {
+       "loc": "4.3 Chromospheric holes",
+       "quote": "We computed a few vibration-rotation CO lines in the commonly observed near-infrared (NIR) range around 4.67 $\\rm \\mu m$ assuming LTE."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "not stated",
+      "evidence": []
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Time evolution of plage subfield",
+    "method": {
+     "value": "Invert 18 time steps (~7.5 min) with IRIS and IRIS+ALMA; compare temperature, vturb, vLOS and Mg II wavelength-time diagrams",
+     "evidence": [
+      {
+       "loc": "4.5 Time evolution of the plage region",
+       "quote": "We inverted 18 time steps, which is about $\\sim7.5$ min (before ALMA pauses for calibration)"
+      }
+     ]
+    },
+    "software": [
+     "STiC"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "STiC",
+    "version": "not stated",
+    "used_for": {
+     "value": "NLTE inversions",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "The inversions were performed with the STockholm Inversion Code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "multi-scale CLEAN within SoAP2",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "as implemented in CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SolarSoft iris_get_response",
+    "version": "not stated",
+    "used_for": {
+     "value": "IRIS radiometric calibration",
+     "evidence": [
+      {
+       "loc": "2.1 Data reduction and alignment",
+       "quote": "using version four of the calibration files obtained using the *iris_get_response* routine in SolarSoft"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SunPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "data analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research has made use of SunPy, an open-source and free community-developed solar data analysis Python package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Mean plage Tb at 1.25 mm",
+    "value": "8500",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Overview",
+      "quote": "The average value for the center of the plage region is $\\sim8500$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Median vturb at logtau=-5, IRIS vs IRIS+ALMA (full FoV)",
+    "value": "~4 and ~2",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.4 Microturbulence: full raster",
+      "quote": "The median values for the entire FoV are approximately $\\sim4\\,\\rm km\\,s^{-1}$ and $\\sim2\\,\\rm km\\,s^{-1}$ for the IRIS and IRIS+ALMA inversions respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Median depth-averaged vturb in plage over time, IRIS vs IRIS+ALMA",
+    "value": "5.5 and 4.8",
+    "uncertainty": "16-84%: 4.4-6.6 and 3.9-5.9",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Time evolution of the plage region",
+      "quote": "$5.5^{6.6}_{4.4}\\rm\\,km\\,s^{-1}$ and $4.8^{5.9}_{3.9}\\rm\\,km\\,s^{-1}$ in the IRIS and IRIS+ALMA inversions"
+     }
+    ]
+   },
+   {
+    "quantity": "Std of 1.25 mm residuals",
+    "value": "3",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2 Temperature maps: full raster",
+      "quote": "The standard deviation of the distribution of the residuals at 1.25 mm is 3%."
+     }
+    ]
+   },
+   {
+    "quantity": "Coolest region Tb: mean and minimum",
+    "value": "~4050 and ~3100",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Overview",
+      "quote": "has an average $T_{\\rm b}\\sim4050$ K and a minimum $T_{\\rm b}\\sim3100$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Shock periodicity in Mg II peaks",
+    "value": "3.5-4",
+    "uncertainty": "not stated",
+    "units": "min",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Time evolution of the plage region",
+      "quote": "we find a shock wave signature in the Mg II peak intensities with periods between 3.5 and 4 min"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "IRIS-only inversions fail to reproduce observed ALMA contrast; adding ALMA increases temperature contrast and lowers microturbulence",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the IRIS+ALMA inversions have increased contrast and temperature range, and tend to favor lower values of microturbulence"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does mm continuum constrain chromospheric temperature and microturbulence in NLTE inversions of real data?",
+    "experiment": "Compare IRIS-only and IRIS+ALMA STiC inversions",
+    "result": "IRIS+ALMA gives higher temperature contrast and lower vturb (median ~2 vs ~4 km/s)",
+    "finding": "ALMA provides a useful constraint on chromospheric temperature and vturb",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We confirm the anticipated constraining potential of ALMA in NLTE inversions of the solar chromosphere."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Cool ALMA holes are chromospheric and could host CO",
+    "experiment": "Inversions with more nodes plus LTE CO synthesis",
+    "result": "Temperature dips at logtau -6 to -5 reproduce cool mm values; CO lines show small chromospheric contribution",
+    "finding": "Localized cool regions may allow CO to form",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the inversions require the existence of localized low-temperature regions in the chromosphere where molecules such as CO could form."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Hot mm brightenings relate to shocks and non-equilibrium ionization",
+    "experiment": "Time series inversions and Mg II wavelength-time diagrams",
+    "result": "~2000 K temperature rise, velocity gradient sign change, 3.5-4 min Mg II shock pattern",
+    "finding": "Shock heating, possibly with non-equilibrium hydrogen ionization",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The hot features could sustain such high temperatures due to non-equilibrium hydrogen ionization effects in a shocked chromosphere"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "LTE hydrogen ionization rejected in favour of NLTE electron densities, which are more uniform and more realistic",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "We compared inversions with LTE and NLTE hydrogen ionization and verified that the NLTE calculations give us much more uniform electron densities"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "STiC cannot treat time-dependent hydrogen ionization; 1D plane-parallel assumption; resolution difference between IRIS and ALMA",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "It is not possible to take these effects into account with STiC or with any other current inversion code to our knowledge."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Ad hoc ALMA weighting may force fits and bias results",
+    "Single field and single raster/short time series limits generality",
+    "Absolute ALMA Tb scale uncertain by up to 10-15%",
+    "Cool holes fit poorly, so CO inference rests on imperfect models"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA calibrated data downloaded from ALMA Archive; STiC on GitHub",
+    "evidence": [
+     {
+      "loc": "2.1 Data reduction and alignment",
+      "quote": "The calibrated ALMA Band 6 data (as downloaded from the ALMA Archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "STiC publicly available on GitHub",
+     "evidence": [
+      {
+       "loc": "3.1 Inversion setup",
+       "quote": "https://github.com/jaimedelacruz/stic"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "SoAP2 pipeline details (in prep)",
+    "Exact ALMA weighting function and regularization weights",
+    "Inversion initial models and node placement"
+   ],
+   "estimated_data_volume_inferred": "tens of GB for ALMA plus IRIS rasters; inversions need heavy HPC",
+   "score_inferred": 3,
+   "score_reason": "Public data and public code, but key parameters (weighting function, regularization, SoAP2 settings) are missing and inversions are very costly.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Inversion recipe lacks key weights and requires large computing; pipeline unpublished."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2016ApJ...830L..30D)",
+     "why": "STiC inversion method"
+    },
+    {
+     "citation": "(cite: 2019A&A...623A..74D)",
+     "why": "STiC regularization"
+    },
+    {
+     "citation": "(cite: 2017SoPh..292...88W)",
+     "why": "ALMA TP calibration"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: PaperI)",
+     "why": "Synthetic experiments with IRIS+ALMA inversions"
+    },
+    {
+     "citation": "(cite: Wsubmitted)",
+     "why": "SoAP data processing"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "SolarALMA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-483cbb3381042076fbb7e5c3f2574bdd",
+  "batch_id": "msgbatch_01NqKwfS6iYgLwrnc8yUVmeA",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:45:06",
+  "usage": {
+   "input_tokens": 32160,
+   "output_tokens": 7599,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.070762,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 53,
+  "quotes_ok": 53,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 41,
+   "rate": 0.532
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:24",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[3].assumptions[0]",
+    "old_value": "LTE"
+   }
+  ],
+  "dropped_items": []
+ }
+}

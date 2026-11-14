@@ -1,0 +1,522 @@
+{
+ "bibcode": "2022ApJ...926..159I",
+ "title": "ALMA Sub-arcsecond-resolution 183 GHz H<SUB>2</SUB>O and Dense Molecular Line Observations of Nearby Ultraluminous Infrared Galaxies",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac3a68",
+ "arxiv_id": "2111.09338",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Investigate the properties of dense molecular gas tracers (HCN, HCO+, and HNC J=2-1) and 183 GHz H2O 3(1,3)-2(2,0) lines in the nuclei of ten nearby (ultra)luminous infrared galaxies with different levels of AGN energetic contributions.",
+ "alma_project_codes": [
+  "2017.1.00022.S",
+  "2017.1.00023.S"
+ ],
+ "data": {
+  "bands": "Band 5 (163-211 GHz) and Band 4 (125-163 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "<= 1'' (0.24''x0.16'' to 1.1''x0.82'')",
+  "sensitivity": "Continuum rms: 0.020-0.23 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAS 12, 25, 60, and 100 um fluxes for the target (U)LIRGs",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(5)–(8): f$_{12}$, f$_{25}$, f$_{60}$, and f$_{100}$ are *IRAS* fluxes at 12 $\\mu$m, 25 $\\mu$m, 60 $\\mu$m, and 100 $\\mu$m, respectively, taken from (cite: kim98) or (cite: san03) or the IRAS Faint Source Catalog (FSC)."
+     }
+    ]
+   },
+   "citation": "(cite: kim98), (cite: san03), IRAS Faint Source Catalog (FSC)"
+  },
+  {
+   "what": {
+    "value": "Redshifts of the target (U)LIRGs adopted from ALMA dense molecular line data",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(2): Redshift adopted from ALMA dense molecular line data (cite: ima16c), which are slightly different from the optically derived ones (cite: kim98) in some cases."
+     }
+    ]
+   },
+   "citation": "(cite: ima16c)"
+  },
+  {
+   "what": {
+    "value": "Arp 220 HC3N J=20-19 to HCN, HCO+, and HNC J=2-1 flux ratios measured with ~13 kpc beam",
+    "evidence": [
+     {
+      "loc": "Table 10",
+      "quote": "Arp 220 data measured with $\\sim$13 kpc beam (cite: gal16) are also added."
+     }
+    ]
+   },
+   "citation": "(cite: gal16)"
+  },
+  {
+   "what": {
+    "value": "Previously obtained ALMA Band 6 and 7 continuum and spectral data for the serendipitous sources near IRAS 13509+0442 and the Superantennae",
+    "evidence": [
+     {
+      "loc": "Serendipitously Detected Continuum Sources",
+      "quote": "For the northern source of IRAS 13509$+$0442, continuum detection ($>$25$\\sigma$) was reported in ALMA band 6 (211–275 GHz) and 7 (275–373 GHz) data (cite: ima16c; ima18b), but no emission line signature was found in the obtained spectra."
+     }
+    ]
+   },
+   "citation": "(cite: ima16c; ima18b)"
+  },
+  {
+   "what": {
+    "value": "Luminosity relations between infrared and J=4-3 lines of HCN and HCO+",
+    "evidence": [
+     {
+      "loc": "Emission Line Luminosity and Nuclear Dense Molecular Gas Mass",
+      "quote": "The previously derived relations at J=4–3 (cite: zha14; tan18) are overplotted for reference."
+     }
+    ]
+   },
+   "citation": "(cite: zha14; tan18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and imaging of continuum and spectral line cubes",
+   "method": "Determine continuum level using line-free channels, subtract continuum in uv-plane with uvcontsub, and image line cubes (binned by 20 channels for ULIRGs and 10 channels for NGC 1614) and line-free continuum with CASA clean.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "clean"
+   ],
+   "key_parameters": [
+    "Briggs weighting, robust = 0.5, gain = 0.1; 20-channel binning (~35 km/s) for ULIRGs, 10-channel binning (~20 km/s) for NGC 1614; pixel scale 0.025''-0.1'' pixel^-1"
+   ],
+   "assumptions": [
+    "<=10% absolute flux calibration uncertainty"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create moment 0, 1, and 2 maps and measure deconvolved emission sizes",
+   "method": "Integrate signals in channels with significant line detection to create moment 0, moment 1, and moment 2 maps at original beam resolution, and measure deconvolved intrinsic emission sizes on moment 0 and continuum maps using CASA task imfit.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Smooth cubes to matched physical scales and extract nuclear spectra",
+   "method": "Convolve data cubes to a common physical beam size (~1 kpc: 1.0, 1.2, or 1.6 kpc for ULIRGs; 200 pc and 1 kpc for NGC 1614; and 2 kpc for ULIRGs) using CASA task imsmooth, and extract spectra at continuum peak positions.",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Target beam sizes: 1 kpc (or 1.2 kpc for IRAS 12112+0305 and IRAS 15250+3609; 1.6 kpc for IRAS 06035-7102), 200 pc and 1 kpc for NGC 1614, and 2 kpc for ULIRGs"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit Gaussian profiles to spectral lines and compute line flux ratios",
+   "method": "Fit single or double Gaussian profiles to extracted spectra at original, ~1 kpc, 2 kpc, and 200 pc beams to measure velocity-integrated fluxes, and calculate flux ratios among HCN, HCO+, HNC J=2-1, 183 GHz H2O, HC3N, and CS lines.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive line luminosities, nuclear dense molecular gas masses, and gas depletion times",
+   "method": "Convert ~1kpc-beam velocity-integrated line fluxes to L_line (L_sun) and L'_line (K km s^-1 pc^2) using Solomon & Vanden Bout (2005) equations, derive dense gas mass M_dense from HCO+ J=2-1 luminosity, and compute lower limits on gas depletion time t_dep = M_dense / SFR.",
+   "software": [],
+   "key_parameters": [
+    "H0 = 71 km s^-1 Mpc^-1, Omega_M = 0.27, Omega_Lambda = 0.73"
+   ],
+   "assumptions": [
+    "HCO+ emission is thermalized and optically thick at J=2-1 and J=1-0; conversion factor alpha_HCO+ = 2-5 M_sun (K km s^-1 pc^2)^-1; SFR (M_sun yr^-1) = 4.5 x 10^-44 L_IR (erg s^-1)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NGC 1614 (1 kpc) HCN J=2-1 integrated flux",
+   "value": "6.8",
+   "uncertainty": "±0.4",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| NGC 1614 | HCN J=2–1 | 4765$\\pm$4 | 27$\\pm$1 | 243$\\pm$10 | 6.8$\\pm$0.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 (1 kpc) HCO+ J=2-1 integrated flux",
+   "value": "12",
+   "uncertainty": "±1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1 kpc, 3.1$''$) | HCO$^{+}$ J=2–1 | 4769$\\pm$4 | 47$\\pm$1 | 252$\\pm$8 | 12$\\pm$1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 (1 kpc) HNC J=2-1 integrated flux",
+   "value": "3.7",
+   "uncertainty": "±0.4",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | HNC J=2–1 | 4766$\\pm$8 | 16$\\pm$1 | 222$\\pm$17 | 3.7$\\pm$0.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 (1.6 kpc) HCN J=2-1 integrated flux",
+   "value": "2.9",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| IRAS 06035$-$7102 | HCN J=2–1 | 23857$\\pm$5 | 7.8$\\pm$0.2 | 371$\\pm$11 | 2.9$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 (1.6 kpc) HCO+ J=2-1 integrated flux",
+   "value": "3.6",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1.6 kpc, 1.1$''$) | HCO$^{+}$ J=2–1 | 23867$\\pm$5 | 8.9$\\pm$0.2 | 404$\\pm$13 | 3.6$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 (1.6 kpc) 183 GHz H2O integrated flux",
+   "value": "0.83",
+   "uncertainty": "±0.18",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 23898$\\pm$29 | 2.0$\\pm$0.2 | 424$\\pm$77 | 0.83$\\pm$0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 08572+3915 (1 kpc) HCN J=2-1 integrated flux",
+   "value": "1.4",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| IRAS 08572$+$3915 | HCN J=2–1 | 17485$\\pm$11 | 3.6$\\pm$0.2 | 383$\\pm$27 | 1.4$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 08572+3915 (1 kpc) HCO+ J=2-1 integrated flux",
+   "value": "1.7",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1 kpc, 0.90$''$) | HCO$^{+}$ J=2–1 | 17388$\\pm$27, 17563$\\pm$31 | 4.9, 4.7 (fix) $^{A}$ | 162$\\pm$23, 185$\\pm$15 | 1.7$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 08572+3915 (1 kpc) 183 GHz H2O integrated flux",
+   "value": "0.75",
+   "uncertainty": "±0.15",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 17351$\\pm$18, 17558$\\pm$15 | 2.2$\\pm$0.3, 2.6$\\pm$0.3 | 133$\\pm$44, 174$\\pm$36 | 0.75$\\pm$0.15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 12112+0305 NE (1.2 kpc) HCN J=2-1 integrated flux",
+   "value": "5.1",
+   "uncertainty": "±0.5",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| IRAS 12112$+$0305 NE | HCN J=2–1 | 21684$\\pm$20, 21942$\\pm$13 | 9.2$\\pm$0.6, 10$\\pm$1 | 289$\\pm$35, 243$\\pm$22 | 5.1$\\pm$0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 12112+0305 NE (1.2 kpc) HCO+ J=2-1 integrated flux",
+   "value": "3.1",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1.2 kpc, 0.87$''$) | HCO$^{+}$ J=2–1 | 21659$\\pm$7, 21957$\\pm$7 | 6.8$\\pm$0.4, 7.6$\\pm$0.4 | 198$\\pm$17, 233$\\pm$22 | 3.1$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 12112+0305 NE (1.2 kpc) 183 GHz H2O integrated flux",
+   "value": "2.1",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 21807$\\pm$5 | 7.8$\\pm$0.3 | 268$\\pm$14 | 2.1$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 15250+3609 (1.2 kpc) HCN J=2-1 integrated flux",
+   "value": "3.4",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| IRAS 15250$+$3609 | HCN J=2–1 | 16582$\\pm$4 | 12$\\pm$1 | 274$\\pm$10 | 3.4$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 15250+3609 (1.2 kpc) HCO+ J=2-1 integrated flux",
+   "value": "1.6",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1.2 kpc, 1.1$''$) | HCO$^{+}$ J=2–1 | 16564$\\pm$7 | 7.1$\\pm$0.5 | 216$\\pm$17 | 1.6$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 15250+3609 (1.2 kpc) 183 GHz H2O integrated flux",
+   "value": "3.4",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 16581$\\pm$5 | 11$\\pm$1 | 313$\\pm$12 | 3.4$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Superantennae (1 kpc) HCN J=2-1 integrated flux",
+   "value": "4.9",
+   "uncertainty": "±0.4",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| Superantennae | HCN J=2–1 | 18539$\\pm$19 | 5.5$\\pm$0.3 | 878$\\pm$54 | 4.9$\\pm$0.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Superantennae (1 kpc) HCO+ J=2-1 integrated flux",
+   "value": "2.9",
+   "uncertainty": "±0.3",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1 kpc, 0.85$''$) | HCO$^{+}$ J=2–1 | 18505$\\pm$21 | 4.3$\\pm$0.3 | 665$\\pm$52 | 2.9$\\pm$0.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Superantennae (1 kpc) 183 GHz H2O integrated flux",
+   "value": "5.1",
+   "uncertainty": "±0.3",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 18215$\\pm$15, 18754$\\pm$20 | 5.8$\\pm$0.3, 5.5$\\pm$0.2 | 391$\\pm$33, 517$\\pm$44 | 5.1$\\pm$0.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 20551-4250 (1 kpc) HCN J=2-1 integrated flux",
+   "value": "4.8",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| IRAS 20551$-$4250 | HCN J=2–1 | 12890$\\pm$1 | 23$\\pm$1 | 202$\\pm$2 | 4.8$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 20551-4250 (1 kpc) HCO+ J=2-1 integrated flux",
+   "value": "7.4",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1 kpc, 1.2$''$) | HCO$^{+}$ J=2–1 | 12887$\\pm$1 | 34$\\pm$1 | 214$\\pm$3 | 7.4$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 20551-4250 (1 kpc) 183 GHz H2O integrated flux",
+   "value": "1.4",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 12887$\\pm$2 | 7.9$\\pm$0.2 | 175$\\pm$5 | 1.4$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 22491-1808 (1 kpc) HCN J=2-1 integrated flux",
+   "value": "5.1",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| IRAS 22491$-$1808 | HCN J=2–1 | 23317$\\pm$5 | 12$\\pm$1 | 434$\\pm$11 | 5.1$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 22491-1808 (1 kpc) HCO+ J=2-1 integrated flux",
+   "value": "3.3",
+   "uncertainty": "±0.2",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| (1 kpc, 0.69$''$) | HCO$^{+}$ J=2–1 | 23285$\\pm$7 | 7.2$\\pm$0.2 | 466$\\pm$16 | 3.3$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 22491-1808 (1 kpc) 183 GHz H2O integrated flux",
+   "value": "1.6",
+   "uncertainty": "±0.1",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | 183 GHz H$_{2}$O | 23323$\\pm$9 | 4.7$\\pm$0.3 | 354$\\pm$23 | 1.6$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear dense molecular gas mass M_dense-HCO+ across sample",
+   "value": "1 to 22",
+   "uncertainty": "range per source (e.g., 1-3 for NGC 1614, 8-22 for IRAS 06035-7102)",
+   "units": "10^8 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 9",
+     "quote": "| NGC 1614 | 0.58$\\pm$0.03 (3.3$\\pm$0.2) | 1.1$\\pm$0.1 (5.8$\\pm$0.2) | 0.32$\\pm$0.03 (1.7$\\pm$0.2) | $<$0.084 ($<$0.43) | 1–3 |"
+    },
+    {
+     "loc": "Table 9",
+     "quote": "| IRAS 06035$-$7102 | 6.2$\\pm$0.2 (35$\\pm$1) | 7.8$\\pm$0.3 (43$\\pm$2) | 3.6$\\pm$0.3 (19$\\pm$2) | 1.9$\\pm$0.4 (9.4$\\pm$2.1) | 8–22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear dense molecular gas depletion time lower limit t_dep",
+   "value": "1-3 x 10^6",
+   "uncertainty": "lower limit",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Emission Line Luminosity and Nuclear Dense Molecular Gas Mass",
+     "quote": "The estimated lower limit of the depletion time (t$_{\\rm dep}$ $\\equiv$ M$_{\\rm dense}$/SFR) is $\\sim$1–3 $\\times$ 10$^{6}$ yr, which is shorter than that derived in dense molecular clouds in our Galaxy and nearby star-forming galaxies, $\\sim$10$^{7-8}$ yr (cite: lad10; zha14; liu16; tan18; jia20),"
+    }
+   ]
+  },
+  {
+   "quantity": "Detection rate of very luminous AGN-origin megamaser 183 GHz H2O emission in AGN-important ULIRGs",
+   "value": "12.5",
+   "uncertainty": "1/8",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary of the 183 GHz H$_{2}$O Emission",
+     "quote": "The detection rate of very luminous AGN-origin megamaser 183 GHz H$_{2}$O emission is low (1/8 = 12.5%)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and ALMA pipeline version used for calibration and imaging",
+  "Clean stopping threshold, maximum number of iterations (niter), and masking strategy in CASA clean",
+  "Exact channel/velocity ranges integrated to create each moment 0, 1, and 2 map",
+  "Polynomial fit order (fitorder) used in uvcontsub",
+  "Exact pixel size chosen per target within the stated 0.025''-0.1'' range"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA and ALMA pipeline versions",
+  "CASA clean stopping threshold, niter, and clean mask definitions",
+  "Exact channel/frequency integration windows used for moment 0, 1, and 2 maps of each line and target",
+  "Exact pixel size used for each individual target image cube"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Observing log, calibrators, continuum frequency windows, weighting (Briggs robust=0.5), channel binning, smoothed physical beam sizes, peak coordinates, and Gaussian fit parameters are all thoroughly tabulated; minor imaging and moment-integration parameters (exact velocity windows, clean thresholds, CASA version) are omitted.",
+ "rediscovery_reason": "Both ALMA Cycle 5 datasets (2017.1.00022.S and 2017.1.00023.S) are public in the ALMA archive, the data reduction uses standard pipeline calibration plus straightforward CASA tasks (uvcontsub, clean, imsmooth, imfit), and all intermediate and final numeric measurements (continuum fluxes, Gaussian line fits at multiple physical apertures, deconvolved sizes, luminosities, and gas masses) are comprehensively tabulated.",
+ "source_card": "cards/2022ApJ...926..159I/sonnet/card.md"
+}

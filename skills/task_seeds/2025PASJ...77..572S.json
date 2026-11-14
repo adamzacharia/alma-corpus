@@ -1,0 +1,217 @@
+{
+ "bibcode": "2025PASJ...77..572S",
+ "title": "ALMA 2D super-resolution imaging survey of Ophiuchus Class I/flat spectrum/II disks. I. Discovery of new disk substructures",
+ "year": 2025,
+ "doi": "10.1093/pasj/psaf026",
+ "arxiv_id": "2503.21060",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do Class I, Flat Spectrum and Class II disks in Ophiuchus show substructures, and when do they appear, as revealed by SpM super-resolution imaging of archival ALMA Band 6 data?",
+ "alma_project_codes": [
+  "2016.1.00545.S",
+  "2016.1.00484.L"
+ ],
+ "data": {
+  "bands": "Band 6 continuum",
+  "arrays": "not stated",
+  "angular_resolution": "CLEAN ~0.30\"x0.22\"; SpM effective 0.02\"-0.2\"",
+  "sensitivity": "sigma = 0.16 mJy/beam in initial CLEAN images"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "L_bol, T_bol and alpha_IR for all systems",
+    "evidence": [
+     {
+      "loc": "2.1 Observation Data: Targets and Reduction",
+      "quote": "We referred to (cite: Dunham_2015) for $L_{\\rm bol}$ and $T_{\\rm bol}$ of all the systems."
+     }
+    ]
+   },
+   "citation": "(cite: Dunham_2015)"
+  },
+  {
+   "what": {
+    "value": "eDisk T_bol and dust disk radii",
+    "evidence": [
+     {
+      "loc": "5.1 Comparison with Targets in eDisk Project",
+      "quote": "The bolometric temperatures $T_{\\rm bol}$ and dust disk radii $R_{\\rm disk}$ for the eDisk samples are taken from (cite: Yen_2024_edisk)."
+     }
+    ]
+   },
+   "citation": "(cite: Yen_2024_edisk)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "CLEAN imaging and self-calibration",
+   "method": "tclean with Briggs robust 0.5, MFS nterm=2; SNR-dependent self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "5 sigma detection, sigma=0.16 mJy/beam; SNR>20 selection"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "SpM super-resolution imaging",
+   "method": "l1+TSV regularized imaging with 10-fold cross validation; Lambda_tsv increased by 10x for 11 sources with patchy structure",
+   "software": [
+    "PRIISM",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure PA and inclination",
+   "method": "2D Gaussian fit to SpM images with MCMC; ellipse fit for 13 ring disks",
+   "software": [
+    "emcee",
+    "astropy"
+   ],
+   "key_parameters": [
+    "2000 iterations, 100 walkers"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Disk radii by curve of growth",
+   "method": "Deproject, azimuthally average, integrate to get R68% and R95%; uncertainty = geometric mean theta_eff/(2 sqrt(2 ln2))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flux converged when difference <0.01%"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Categorize substructures",
+   "method": "Radial and major-axis intensity profiles classified as Smooth, Ring, Inflection, Spiral",
+   "software": [
+    "CASA viewer"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Statistics vs T_bol, R_dust and inclination",
+   "method": "KS tests; Monte Carlo (10000 iterations) KS tests of cos i vs uniform",
+   "software": [
+    "SciPy",
+    "Linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "cos i uniform in 0-1 for random orientation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median resolution improvement of SpM vs CLEAN",
+   "value": "3.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Reconstructed SpM Images",
+     "quote": "The SpM images achieve an effective spatial resolution that is a median of 3.8 times higher than that of the CLEAN images."
+    }
+   ]
+  },
+  {
+   "quantity": "Median R68% and R95%",
+   "value": "18 and 27",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Measurements and Statistical Analysis of Disk Sizes",
+     "quote": "with medians of 18 and 27 au, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk categories",
+   "value": "43 Smooth, 26 Ring, 1 Spiral, 5 Inflection, 3 candidates",
+   "uncertainty": "not stated",
+   "units": "disks",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Categorization of Substructures",
+     "quote": "We classify the disks as follows: 43 ‘Smooth’, 26 ‘Ring’, one ‘Spiral’, and 5 ‘Inflection’."
+    }
+   ]
+  },
+  {
+   "quantity": "Disks with substructures",
+   "value": "32 (41%); 15 new",
+   "uncertainty": "not stated",
+   "units": "disks",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 New Substructure Candidates",
+     "quote": "we detected 32 disks with distinct substructures (‘Ring’, ‘Spiral’, and ‘Inflection’), accounting for 41% of all detected disks"
+    }
+   ]
+  },
+  {
+   "quantity": "KS p-value Class I/FS vs Class II inclination",
+   "value": "3.2e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Selection Bias of Disk Evolutionary Stages",
+     "quote": "The $p$-value is 3.2$\\times10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring probability Class I, FS, II",
+   "value": "40%, 33%, 38%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Categorization of Substructures",
+     "quote": "The probabilities of Class I, Class FS, and Class II disks having ring structures are 40%, 33%, and 38%, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging cell size, image size, mask and clean threshold for tclean",
+  "Grid of (Lambda_l, Lambda_tsv) values tried in SpM CV",
+  "Self-calibration reference antenna/spw combine and per-source solint results",
+  "Per-source flux scaling and gain solutions after self-cal",
+  "Exact visibility weighting/uv range used in PRIISM",
+  "Priors/bounds for the emcee Gaussian fit",
+  "Criteria for disk-center and ring determination in intensity profiles"
+ ],
+ "missing_for_reproduction": [
+  "Hyperparameter grid and masks",
+  "Self-cal details per source",
+  "Category decision thresholds"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and software with tabulated hyperparameters, but many tclean/self-cal and classification details are missing.",
+ "rediscovery_reason": "Public archival data, PRIISM public, hyperparameters and numeric radii tabulated.",
+ "source_card": "cards/2025PASJ...77..572S/sonnet/card.md"
+}

@@ -1,0 +1,276 @@
+{
+ "bibcode": "2020MNRAS.493.4294B",
+ "title": "ALMA uncovers the [C II] emission and warm dust continuum in a z = 8.31 Lyman break galaxy",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa509",
+ "arxiv_id": "2001.02812",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is [C II] detected in the z=8.31 LBG MACS0416_Y1, and what does the 1.5 mm continuum non-detection imply for its dust temperature and emissivity index?",
+ "alma_project_codes": [
+  "2017.1.00225.S",
+  "2013.1.00999.S"
+ ],
+ "data": {
+  "bands": "Band 5",
+  "arrays": "not stated",
+  "angular_resolution": "[C II] map 0.46\" x 0.64\"; continuum 0.59\" x 0.78\"",
+  "sensitivity": "[C II] map rms 9 mJy/beam; continuum rms 6 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "850 um continuum 137 ± 26 uJy and [O III] 88 um line properties",
+    "evidence": [
+     {
+      "loc": "2.1 Target and previous observations",
+      "quote": "The 850 $\\mu$m dust continuum is detected at 137 $\\pm$ 26 $\\mu$Jy"
+     }
+    ]
+   },
+   "citation": "Tamura2019"
+  },
+  {
+   "what": {
+    "value": "Band 6 1.1 mm upper limit <116 uJy (2 sigma)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$S_{\\rm{1140\\mu m}}$$^{\\ddagger}$ | $< 116$ (2$\\sigma$) $\\mu$Jy"
+     }
+    ]
+   },
+   "citation": "GL2017 (project 2013.1.00999.S)"
+  },
+  {
+   "what": {
+    "value": "Magnification mu = 1.43 ± 0.04",
+    "evidence": [
+     {
+      "loc": "2.1 Target and previous observations",
+      "quote": "with only a moderate magnification of $\\mu$ = 1.43 $\\pm$ 0.04 (cite: Kawamata2016)"
+     }
+    ]
+   },
+   "citation": "Kawamata2016"
+  },
+  {
+   "what": {
+    "value": "Delensed UV luminosity 4.5e10 Lsun",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The delensed UV luminosity of MACS0416_Y1 is 4.5 $\\times$ 10$^{10}$ L$_{\\odot}$, taken from (cite: Laporte2015)."
+     }
+    ]
+   },
+   "citation": "Laporte2015"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cube and continuum",
+   "method": "tclean with natural weighting, all configurations combined; cube at 35 km/s; continuum excludes [C II] channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "moment 0 integrated over -140 to +140 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure [C II] position, size, flux",
+   "method": "2D Gaussian fit to naturally-weighted integrated intensity image",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit line profile and luminosity",
+   "method": "Gaussian fit to spectrum from 0.27\" tapered map; L from Solomon et al. 2005 relation with lensing correction",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CMB attenuation of [C II] not corrected; mu = 1.43"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain dust temperature and beta",
+   "method": "Fit single-temperature modified blackbody (normalization free) to 850 um detection plus 1.1 and 1.5 mm upper limits at fixed T and beta; 90% lower limit from Delta chi2 = 2.7 interpolation",
+   "software": [],
+   "key_parameters": [
+    "beta = 1.5, 2.0, 2.5; T from 30 to 130 K"
+   ],
+   "assumptions": [
+    "kappa_850um = 0.15 m2/kg (Draine 2003), nu0 = 353 GHz; CMB heating and contrast corrected"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust mass",
+   "method": "Equation 1 of Magdis et al. 2011",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Dynamical mass from kinematics",
+   "method": "Virial M_dyn = C r_1/2 sigma^2 / G with C = 3.4; velocity field via immoments",
+   "software": [
+    "CASA immoments"
+   ],
+   "key_parameters": [
+    "r_1/2 = deconvolved major axis, 1.15 ± 0.35 kpc"
+   ],
+   "assumptions": [
+    "rotation-dominated system"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C II] integrated flux (apparent)",
+   "value": "130.2",
+   "uncertainty": "20.4",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "130.2 $\\pm$ 20.4 mJy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift",
+   "value": "8.31132",
+   "uncertainty": "0.00037",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "indicating a redshift of 8.31132 $\\pm$ 0.00037"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] FWHM",
+   "value": "191",
+   "uncertainty": "29",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The [C ii] line width (FWHM) is 191 $\\pm$ 29 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity (magnification-corrected)",
+   "value": "1.40e8",
+   "uncertainty": "0.22e8",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We find (1.40 $\\pm$ 0.22) $\\times$ $10^8$ $L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "1.5 mm continuum upper limit",
+   "value": "<18",
+   "uncertainty": "3 sigma",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We find a 3$\\sigma$ upper limit of 18 $\\mu$Jy at 1.5 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III]/[C II] luminosity ratio",
+   "value": "9.3",
+   "uncertainty": "2.6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "resulting in a [O iii]-to-[C ii] luminosity ratio of 9.3 $\\pm$ 2.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass",
+   "value": "1.2e10",
+   "uncertainty": "0.4e10",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "We find a dynamical mass of (1.2 $\\pm$ 0.4) $\\times$ 10$^{10}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "90% lower limit dust temperature (beta=2.0)",
+   "value": "80",
+   "uncertainty": "90% confidence",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "80 | 15.9 | 2.7 **(90%)** | 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II]-[O III] positional offset",
+   "value": "95",
+   "uncertainty": "2 sigma significance",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2.3",
+     "quote": "which is 95 milli-arcseconds offset from the [C ii] emission"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging cell size, image size, masking and clean threshold",
+  "Which spectral windows/channels define the continuum and exact aggregate continuum bandwidth",
+  "Aperture/method for 2D Gaussian fit and tapered spectrum extraction",
+  "Exact measurement of 1.5 mm limit (reference frequency, position used)",
+  "Flux calibrator and flux scale uncertainty",
+  "Whether archive products or re-calibrated data were used",
+  "Details of the grid and step used for the chi-squared temperature scan",
+  "Basis of the 100-120 km/s peak-to-peak velocity gradient measurement"
+ ],
+ "missing_for_reproduction": [
+  "Cell/image size, masking, clean thresholds",
+  "Exact continuum channel selection",
+  "Flux calibrator and flux uncertainty",
+  "Chi-squared grid details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and a simple recipe with key numbers; imaging details are sparse.",
+ "rediscovery_reason": "Public data and simple numeric outputs (flux, line width, upper limit, T limit), though imaging parameters are underspecified.",
+ "source_card": "cards/2020MNRAS.493.4294B/sonnet/card.md"
+}

@@ -1,0 +1,576 @@
+{
+ "bibcode": "2025ApJ...981...49S",
+ "title": "ALMA Observations of Peculiar Embedded Icy Objects",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ada4ad",
+ "arxiv_id": "2501.05008",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "evolved_stars",
+  "milky_way_ism"
+ ],
+ "question": "What is the physical and chemical nature of two peculiar isolated infrared objects with deep ice and dust absorption features discovered by AKARI?",
+ "alma_project_codes": [
+  "2021.1.01126.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~344-360 GHz, 853 um)",
+  "arrays": "12 m main array (45 antennas) and 7 m Morita array / ACA (10 antennas)",
+  "angular_resolution": "0.85''-0.91'' x 0.81''-0.84'' at CO(3-2)",
+  "sensitivity": "0.04-0.05 K in CO and SiO line cubes; ~0.1 mJy/beam (1 sigma) in continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Infrared positions, photometric SEDs, K_S-band magnitudes, and peak optical depths of 9.7 um silicate dust (2.9 +/- 0.3) and 3.0 um H2O ice (4.5 +/- 0.5) absorption features for Object 1 and 2",
+    "evidence": [
+     {
+      "loc": "Targets and Observations",
+      "quote": "Positions of the infrared point-sources measured by AKARI are RA = 14$^\\mathrm{h}$4$^\\mathrm{m}$13.2s and Dec = -61$\\ensuremath{^\\circ}$12$\\ensuremath{'}$40.1$''$ for Object 1 and RA = 14$^\\mathrm{h}$4$^\\mathrm{m}$20.2s and Dec = -61$\\ensuremath{^\\circ}$15$\\ensuremath{'}$49.5$''$ for Object 2 (IRCS), respectively."
+     },
+     {
+      "loc": "Gas column densities and constraint on the source size",
+      "quote": "First, we estimate $N_{\\mathrm{H_2}}$ by using the peak optical depth of the 9.7 $\\mu$m silicate dust absorption ($\tau_{\\mathrm{9.7}}$) and the 3.0 $\\mu$m H$_2$O ice absorption ($\tau_{\\mathrm{3.0}}$), which are measured to be 2.9 $\\pm$ 0.3 and 4.5 $\\pm$ 0.5 for Object 1 (cite: Ona21)."
+     },
+     {
+      "loc": "Prestellar/Protostellar objects",
+      "quote": "cf., the $K_\\mathrm{S}$-band magnitudes of Object 1 and 2 are 10.4 and 11.7 mag, respectively (cite: Ona21)."
+     }
+    ]
+   },
+   "citation": "(cite: Ona21)"
+  },
+  {
+   "what": {
+    "value": "N_SiO / N_CO column density ratios in shock regions, protostellar envelopes, dark clouds, and AGB stars",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: $^{1}$(cite: Bac91), $^{2}$(cite: Taf10), $^{3}$(cite: Dut24), $^{4}$(cite: Ger14), $^{5}$(cite: Ziu89), $^{6}$(cite: Buj94), $^{7}$(cite: Gon03)"
+     }
+    ]
+   },
+   "citation": "(cite: Bac91; Taf10; Dut24; Ger14; Ziu89; Buj94; Gon03)"
+  },
+  {
+   "what": {
+    "value": "Empirical relations between visual extinction A_V and optical depths tau_9.7 and tau_3.0 for Galactic dense cores",
+    "evidence": [
+     {
+      "loc": "Derivation of the H$_2$ column density from $\\tau_{\\mathrm{9.7}}$ and $\\tau_{\\mathrm{3.0}}$",
+      "quote": "according to (cite: Boo11) (assuming $A_V$/$A_K$ = 8.8)."
+     }
+    ]
+   },
+   "citation": "(cite: Boo11)"
+  },
+  {
+   "what": {
+    "value": "Mass absorption coefficient of dust grains coated by thick ice mantles (2.14 cm^2 g^-1 at 853 um)",
+    "evidence": [
+     {
+      "loc": "Derivation of the H$_2$ column density from dust continuum",
+      "quote": "$\\kappa_{\\nu}$ is the mass absorption coefficient of dust grains coated by thick ice mantles taken from (cite: Oss94) and we use 2.14 cm$^2$ g$^{-1}$ at 853 $\\mu$m"
+     }
+    ]
+   },
+   "citation": "(cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "Galactic rotation parameters for kinematic distance calculation",
+    "evidence": [
+     {
+      "loc": "Systemic velocities and kinematic distances",
+      "quote": "We estimate kinematic distances to the icy objects and the surrounding gas using the kinematic distance calculator, which is based on the method described in (cite: Rei09) and the Galactic parameters from (cite: Rei14)."
+     }
+    ]
+   },
+   "citation": "(cite: Rei09; Rei14)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract molecular spectra and measure line parameters",
+   "method": "Extract spectra from a 0.7'' diameter circular aperture centered at the emission peak and perform Gaussian fitting to derive T_br, FWHM (Delta V), V_LSR, and velocity-integrated intensity",
+   "software": [],
+   "key_parameters": [
+    "Aperture diameter = 0.7'' centered at emission peak"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive CO and SiO column densities and SiO/CO ratios",
+   "method": "Calculate total column densities N_CO and N_SiO from integrated intensities using standard optically-thin LTE equations and spectroscopic parameters from CDMS",
+   "software": [],
+   "key_parameters": [
+    "T_rot = 20-50 K (also tested 10 K)",
+    "T_bg = 2.73 K"
+   ],
+   "assumptions": [
+    "Optically-thin emission under Local Thermodynamic Equilibrium (LTE) with T_rot = 20-50 K (excluding T_rot >= 80 K due to non-detection of hot-core tracers)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate kinematic distances and bolometric luminosities",
+   "method": "Input measured systemic velocities into the Reid et al. (2009, 2014) kinematic distance calculator, then integrate available photometric SED data from 2 to 20 um using the derived distances",
+   "software": [
+    "kinematic distance calculator"
+   ],
+   "key_parameters": [
+    "Wavelength integration range = 2 to 20 um"
+   ],
+   "assumptions": [
+    "Objects are co-moving with Galactic rotation; far kinematic distance (9.3 kpc) is adopted for Object 1 based on similarity to Object 2 (13.4 kpc)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive H2 column densities from IR absorption, CO emission, and dust continuum upper limits to constrain source size",
+   "method": "Compare N_H2 derived from 9.7 um silicate and 3.0 um H2O ice optical depths with beam-averaged N_H2 from CO(3-2) and 3-sigma 853 um continuum upper limits to infer beam dilution factors and physical source sizes",
+   "software": [],
+   "key_parameters": [
+    "Beam size = 0.8'' (corresponding to 7400 au at 9.3 kpc and 10700 au at 13.4 kpc)",
+    "3-sigma continuum upper limit = 0.3 mJy/beam (from 1-sigma = 0.1 mJy/beam)"
+   ],
+   "assumptions": [
+    "A_V / A_K = 8.8; foreground A_V (104 mag) is doubled for embedded geometry; N_H / (A_B - A_V) = 5.8 x 10^21 cm^-2 mag^-1; R_V = A_V / (A_B - A_V) = 4; all H in H2 giving N_H2 / A_V = 7.3 x 10^20 cm^-2 mag^-1",
+    "CO/H2 ratio = 10^-4; dust opacity kappa_nu = 2.14 cm^2 g^-1 at 853 um; dust-to-gas mass ratio Z = 0.008; T_d = 20-50 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Object 1 CO(3-2) peak brightness temperature (T_br)",
+   "value": "0.39",
+   "uncertainty": "0.04",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.39 $\\pm$ 0.04 | 9.9 $\\pm$ 1.4 | 3.8 $\\pm$ 0.4 | -26.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 CO(3-2) line width (FWHM)",
+   "value": "9.9",
+   "uncertainty": "1.4",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.39 $\\pm$ 0.04 | 9.9 $\\pm$ 1.4 | 3.8 $\\pm$ 0.4 | -26.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 CO(3-2) integrated intensity",
+   "value": "3.8",
+   "uncertainty": "0.4",
+   "units": "K km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.39 $\\pm$ 0.04 | 9.9 $\\pm$ 1.4 | 3.8 $\\pm$ 0.4 | -26.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 CO(3-2) LSR velocity (V_LSR)",
+   "value": "-26.0",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.39 $\\pm$ 0.04 | 9.9 $\\pm$ 1.4 | 3.8 $\\pm$ 0.4 | -26.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 SiO(8-7) peak brightness temperature (T_br)",
+   "value": "0.17",
+   "uncertainty": "0.04",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.17 $\\pm$ 0.04 | 9.9 $\\pm$ 2.7 | 1.7 $\\pm$ 0.4 | -24.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 SiO(8-7) line width (FWHM)",
+   "value": "9.9",
+   "uncertainty": "2.7",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.17 $\\pm$ 0.04 | 9.9 $\\pm$ 2.7 | 1.7 $\\pm$ 0.4 | -24.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 SiO(8-7) integrated intensity",
+   "value": "1.7",
+   "uncertainty": "0.4",
+   "units": "K km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.17 $\\pm$ 0.04 | 9.9 $\\pm$ 2.7 | 1.7 $\\pm$ 0.4 | -24.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 SiO(8-7) LSR velocity (V_LSR)",
+   "value": "-24.9",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.17 $\\pm$ 0.04 | 9.9 $\\pm$ 2.7 | 1.7 $\\pm$ 0.4 | -24.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 CO(3-2) peak brightness temperature (T_br)",
+   "value": "0.18",
+   "uncertainty": "0.03",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.18 $\\pm$ 0.03 | 14.3 $\\pm$ 3.1 | 2.7 $\\pm$ 0.4 | 29.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 CO(3-2) line width (FWHM)",
+   "value": "14.3",
+   "uncertainty": "3.1",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.18 $\\pm$ 0.03 | 14.3 $\\pm$ 3.1 | 2.7 $\\pm$ 0.4 | 29.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 CO(3-2) integrated intensity",
+   "value": "2.7",
+   "uncertainty": "0.4",
+   "units": "K km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.18 $\\pm$ 0.03 | 14.3 $\\pm$ 3.1 | 2.7 $\\pm$ 0.4 | 29.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 CO(3-2) LSR velocity (V_LSR)",
+   "value": "29.3",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO | 3–2 | 33 | 345.79599 | 0.18 $\\pm$ 0.03 | 14.3 $\\pm$ 3.1 | 2.7 $\\pm$ 0.4 | 29.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 SiO(8-7) peak brightness temperature (T_br)",
+   "value": "0.10",
+   "uncertainty": "0.04",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.10 $\\pm$ 0.04 | 8.3 $\\pm$ 3.7 | 0.9 $\\pm$ 0.3 | 30.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 SiO(8-7) line width (FWHM)",
+   "value": "8.3",
+   "uncertainty": "3.7",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.10 $\\pm$ 0.04 | 8.3 $\\pm$ 3.7 | 0.9 $\\pm$ 0.3 | 30.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 SiO(8-7) integrated intensity",
+   "value": "0.9",
+   "uncertainty": "0.3",
+   "units": "K km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.10 $\\pm$ 0.04 | 8.3 $\\pm$ 3.7 | 0.9 $\\pm$ 0.3 | 30.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 SiO(8-7) LSR velocity (V_LSR)",
+   "value": "30.9",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SiO | 8–7 | 75 | 347.33058 | 0.10 $\\pm$ 0.04 | 8.3 $\\pm$ 3.7 | 0.9 $\\pm$ 0.3 | 30.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-averaged continuum flux 1-sigma upper limit",
+   "value": "<0.1",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Results and analysis",
+     "quote": "A 1$\\sigma$ upper limit on the beam-averaged flux is about 0.1 mJy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 CO column density (N_CO)",
+   "value": "(2.2-1.9) x 10^15",
+   "uncertainty": "range for T_rot = 20-50 K",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SiO/CO ratio",
+     "quote": "The $N_{\\mathrm{CO}}$ is derived to be (2.2–1.9) $\times$ 10$^{15}$ cm$^{-2}$ with $T_\\mathrm{rot}$ = 20–50 K for Object 1 and (1.5–1.3) $\times$ 10$^{15}$ cm$^{-2}$ for Object 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 CO column density (N_CO)",
+   "value": "(1.5-1.3) x 10^15",
+   "uncertainty": "range for T_rot = 20-50 K",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SiO/CO ratio",
+     "quote": "The $N_{\\mathrm{CO}}$ is derived to be (2.2–1.9) $\times$ 10$^{15}$ cm$^{-2}$ with $T_\\mathrm{rot}$ = 20–50 K for Object 1 and (1.5–1.3) $\times$ 10$^{15}$ cm$^{-2}$ for Object 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 SiO column density (N_SiO)",
+   "value": "(9.4-2.5) x 10^12",
+   "uncertainty": "range for T_rot = 20-50 K",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SiO/CO ratio",
+     "quote": "The $N_{\\mathrm{SiO}}$ is derived to be (9.4–2.5) $\times$ 10$^{12}$ cm$^{-2}$ for Object 1 and (4.8–1.2) $\times$ 10$^{12}$ cm$^{-2}$ for Object 2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 SiO column density (N_SiO)",
+   "value": "(4.8-1.2) x 10^12",
+   "uncertainty": "range for T_rot = 20-50 K",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SiO/CO ratio",
+     "quote": "The $N_{\\mathrm{SiO}}$ is derived to be (9.4–2.5) $\times$ 10$^{12}$ cm$^{-2}$ for Object 1 and (4.8–1.2) $\times$ 10$^{12}$ cm$^{-2}$ for Object 2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 N_SiO / N_CO ratio",
+   "value": "(2-4) x 10^-3",
+   "uncertainty": "range for T_rot = 20-50 K",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SiO/CO ratio",
+     "quote": "Thus, the $N_{\\mathrm{SiO}}$/$N_{\\mathrm{CO}}$ ratio is (2–4) $\times$ 10$^{-3}$ in Object 1 and (0.9–3) $\times$ 10$^{-3}$ in Object 2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 N_SiO / N_CO ratio",
+   "value": "(0.9-3) x 10^-3",
+   "uncertainty": "range for T_rot = 20-50 K",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "SiO/CO ratio",
+     "quote": "Thus, the $N_{\\mathrm{SiO}}$/$N_{\\mathrm{CO}}$ ratio is (2–4) $\times$ 10$^{-3}$ in Object 1 and (0.9–3) $\times$ 10$^{-3}$ in Object 2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 kinematic distance (near / far)",
+   "value": "2.0 / 9.3",
+   "uncertainty": "0.5",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Systemic velocities and kinematic distances",
+     "quote": "On the other hand, the systemic velocity of Object 1 ($-$26 km s$^{-1}$ in CO) corresponds to the kinematic distance of 2.0 $\\pm$ 0.5 kpc (near) and 9.3 $\\pm$ 0.5 kpc (far)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 kinematic distance",
+   "value": "13.4",
+   "uncertainty": "0.6",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Systemic velocities and kinematic distances",
+     "quote": "On the other hand, the systemic velocity of Object 2 ($+$29 km s$^{-1}$ in CO) corresponds to the kinematic distance of 13.4 $\\pm$ 0.6 kpc (no near/far ambiguity)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 bolometric luminosity (at 9.3 kpc)",
+   "value": "750",
+   "uncertainty": "not stated",
+   "units": "L_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Luminosities",
+     "quote": "For Object 1, the estimated luminosity is 30 $L_\\odot$ for the near distance (2.0 kpc) and 750 $L_\\odot$ for the far distance (9.3 kpc), while for Object 2, it is 500 $L_\\odot$ for the distance of 13.4 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 bolometric luminosity (at 13.4 kpc)",
+   "value": "500",
+   "uncertainty": "not stated",
+   "units": "L_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Luminosities",
+     "quote": "For Object 1, the estimated luminosity is 30 $L_\\odot$ for the near distance (2.0 kpc) and 750 $L_\\odot$ for the far distance (9.3 kpc), while for Object 2, it is 500 $L_\\odot$ for the distance of 13.4 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 & 2 H2 column density from dust/ice absorption",
+   "value": "2 x 10^23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Dust/ice absorption | 2 $\times$ 10$^{23}$ | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 & 2 H2 column density 3-sigma upper limit from dust continuum",
+   "value": "<(5-2) x 10^21",
+   "uncertainty": "range for T_d = 20-50 K",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Dust emission ($T_{d}$ = 20–50 K)$^{a}$ | $<$5–2 $\times$ 10$^{21}$ | ..."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 1 physical source size (CO beam dilution / continuum upper limit)",
+   "value": "74 (CO) / <740 (continuum)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas column densities and constraint on the source size",
+     "quote": "Considering the above beam dilution, the expected physical sizes of Object 1 and 2 are 74 au and 90 au, respectively."
+    },
+    {
+     "loc": "Gas column densities and constraint on the source size",
+     "quote": "We thus need to assume at least a 10 times smaller source size for the dust emitting region compared to the beam size, which corresponds to 740 au and 1070 au for Object 1 and 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Object 2 physical source size (CO beam dilution / continuum upper limit)",
+   "value": "90 (CO) / <1070 (continuum)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas column densities and constraint on the source size",
+     "quote": "Considering the above beam dilution, the expected physical sizes of Object 1 and 2 are 74 au and 90 au, respectively."
+    },
+    {
+     "loc": "Gas column densities and constraint on the source size",
+     "quote": "We thus need to assume at least a 10 times smaller source size for the dust emitting region compared to the beam size, which corresponds to 740 au and 1070 au for Object 1 and 2."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version used for calibration and imaging",
+  "Pixel cell size and image dimensions used in tclean",
+  "Deconvolver algorithm (e.g., hogbom, multiscale) and stopping threshold/niter in tclean",
+  "Auto-multithresh parameters (sidelobethreshold, noisethreshold, lownoisethreshold, etc.)",
+  "Exact frequency or channel ranges selected as line-free for uvcontsub and aggregate continuum imaging",
+  "Relative visibility weights applied when combining 12 m and 7 m array data in tclean"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and calibration pipeline version",
+  "tclean imaging parameters: cell size, image size, deconvolver, stopping threshold, and auto-multithresh parameters",
+  "Channel/frequency ranges used for uvcontsub and continuum imaging"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The observational setup, spectral extraction aperture (0.7''), Gaussian line parameters, and analytical LTE/dust equations with all constants and databases (CDMS, Oss94, Boo11) are explicitly provided in the text and appendices. Minor imaging parameters (cell size, exact CASA version, line-free channel ranges) are omitted.",
+ "rediscovery_reason": "Public ALMA dataset (2021.1.01126.S) with two well-defined point targets, straightforward imaging/spectral extraction, and explicit analytical equations leading directly to the main numeric results (line fluxes, velocities, column densities, SiO/CO ratios, kinematic distances, and source size constraints).",
+ "source_card": "cards/2025ApJ...981...49S/sonnet/card.md"
+}

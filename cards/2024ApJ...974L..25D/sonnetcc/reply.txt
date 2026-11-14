@@ -1,0 +1,313 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Here, we present high-resolution ($0.07\\ensuremath{''} = 8 \\ \\mathrm{au}$) dust continuum observations of the PDS 70 disk in ALMA Band 3 (3.0 mm)."},
+{"loc": "Observations", "quote": "The ALMA Band 3 observations of PDS 70 were conducted in Cycle 10 as two projects, 2022.1.00893.S (PI: K. Doi) and 2022.1.01477.S (PI: H. Liu)."}
+],
+"fields": ["protoplanetary_disks", "exoplanets"],
+"question": {
+"value": "How is dust distributed in the PDS 70 disk at 3.0 mm compared with Band 7, what do the spectral index and ring eccentricity say about dust accumulation, and what upper limit do they place on the mass of PDS 70c",
+"evidence": [
+{"loc": "Introduction", "quote": "In this study, we characterize the dust distribution of PDS 70 using high-resolution ALMA Band 3 (3.0 mm) continuum observations."},
+{"loc": "abstract", "quote": "We constrain the eccentricity of the outer ring to be $e<0.04$ from the position of the central star and the outer ring."}
+]
+},
+"targets": [
+{
+"name": "PDS 70",
+"details": [
+{"loc": "Introduction", "quote": "a distance of $112.39 \\pm 0.24 \\ \\mathrm{pc}$ (cite: Gaia2023)"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "112.39 +/- 0.24 pc",
+"distance_source": "Gaia Collaboration 2023 (Gaia2023)"
+}
+],
+"alma_project_codes": [
+{"code": "2022.1.00893.S", "evidence": [{"loc": "Observations", "quote": "The ALMA Band 3 observations of PDS 70 were conducted in Cycle 10 as two projects, 2022.1.00893.S (PI: K. Doi) and 2022.1.01477.S (PI: H. Liu)."}]},
+{"code": "2022.1.01477.S", "evidence": [{"loc": "Observations", "quote": "The ALMA Band 3 observations of PDS 70 were conducted in Cycle 10 as two projects, 2022.1.00893.S (PI: K. Doi) and 2022.1.01477.S (PI: H. Liu)."}]},
+{"code": "2015.1.00888.S", "evidence": [{"loc": "Observations", "quote": "These data were obtained by 2015.1.00888.S (PI: E. Akiyama) and 2018.A.00030.S (PI: M. Benisty)."}]},
+{"code": "2018.A.00030.S", "evidence": [{"loc": "Observations", "quote": "These data were obtained by 2015.1.00888.S (PI: E. Akiyama) and 2018.A.00030.S (PI: M. Benisty)."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (3.0 mm, new data); Band 7 (0.87 mm, archival, from Benisty et al. 2021)", "evidence": [
+{"loc": "Introduction", "quote": "Previous high-resolution ALMA observations of PDS 70 have been limited to ALMA Band 7 (0.87 mm)"},
+{"loc": "Observations", "quote": "The Band 7 data are those shown in the left panel of Fig. 1 in (cite: Benisty2021)."}]},
+{"field": "frequencies_and_spectral_setup", "value": "Band 3: four spectral windows centered at 90.5, 92.5, 102.5, 104.5 GHz, 1.875 GHz bandwidth each; MFS central frequency 97.5 GHz. Band 7 central frequency 350.6 GHz", "evidence": [
+{"loc": "Observations", "quote": "Four spectral windows were set at the central frequency of 90.5, 92.5, 102.5, and 104.5 GHz with a bandwidth of 1.875 GHz each to maximize the continuum sensitivity."},
+{"loc": "Observations", "quote": "at the central frequency of 350.6 GHz"}]},
+{"field": "continuum_bandwidth", "value": "4 x 1.875 GHz spectral windows", "evidence": [
+{"loc": "Observations", "quote": "Four spectral windows were set at the central frequency of 90.5, 92.5, 102.5, and 104.5 GHz with a bandwidth of 1.875 GHz each to maximize the continuum sensitivity."}]},
+{"field": "configurations", "value": "Band 3: C5, C6, C8 and C9", "evidence": [
+{"loc": "Observations", "quote": "The observations were performed in four configurations, C5, C6, C8 and C9, on March 26, May 4, July 2 and July 28, 2023"}]},
+{"field": "observing_dates", "value": "Band 3: March 26, May 4, July 2 and July 28, 2023 (Cycle 10)", "evidence": [
+{"loc": "Observations", "quote": "on March 26, May 4, July 2 and July 28, 2023, with on-source integration times of 2600, 756, 5334 and 3193 seconds, respectively."}]},
+{"field": "time_on_source", "value": "Band 3: 2600, 756, 5334 and 3193 s for C5, C6, C8, C9", "evidence": [
+{"loc": "Observations", "quote": "on March 26, May 4, July 2 and July 28, 2023, with on-source integration times of 2600, 756, 5334 and 3193 seconds, respectively."}]},
+{"field": "max_recoverable_scale", "value": "9.83 arcsec (C5, Band 3)", "evidence": [
+{"loc": "Observations", "quote": "The maximum recoverable scale of the C5 observations is $9.83\\ensuremath{''}$, which is sufficient to avoid missing flux."}]},
+{"field": "angular_resolution", "value": "Band 3 beam 0.073\" x 0.066\", PA -64.2 deg; Band 7 beam 0.046\" x 0.035\", PA -53.1 deg", "evidence": [
+{"loc": "Observations", "quote": "The resulting image has a beam size of $0.073\\ensuremath{''} \\times 0.066\\ensuremath{''}$ with a position angle of $-64.2\\ensuremath{^\\circ}$"},
+{"loc": "Observations", "quote": "The resulting image has a beam size of $0.046\\ensuremath{''} \\times 0.035\\ensuremath{''}$ at a position angle of $-53.1\\ensuremath{^\\circ}$"}]},
+{"field": "sensitivity", "value": "Band 3 rms 4.94 uJy/beam; Band 7 rms 12.7 uJy/beam", "evidence": [
+{"loc": "Observations", "quote": "the rms noise level measured in the emission free region is $4.94\\ \\mathrm{\\mu Jy\\ beam^{-1}}$"},
+{"loc": "Observations", "quote": "the rms noise level is $12.7\\ \\mathrm{\\mu Jy\\ beam^{-1}}$ at the central frequency of 350.6 GHz"}]},
+{"field": "pi_or_archival_as_stated", "value": "Band 3: Cycle 10 projects PI K. Doi and PI H. Liu; Band 7: archival 2015.1.00888.S (PI E. Akiyama) and 2018.A.00030.S (PI M. Benisty), calibrated data of Benisty et al. 2021", "evidence": [
+{"loc": "Observations", "quote": "The ALMA Band 3 observations of PDS 70 were conducted in Cycle 10 as two projects, 2022.1.00893.S (PI: K. Doi) and 2022.1.01477.S (PI: H. Liu)."},
+{"loc": "Observations", "quote": "We re-ran `tclean` on the calibrated data of (cite: Benisty2021)"}]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "ALMA Band 7 archival data (Benisty et al. 2021)", "provided": {"value": "Band 7 (0.87 mm) continuum image used for the spectral index and morphology comparison", "evidence": [{"loc": "Observations", "quote": "The Band 7 data are those shown in the left panel of Fig. 1 in (cite: Benisty2021)."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Band 7 calibrated data (2015.1.00888.S, 2018.A.00030.S), reduced by Benisty et al. 2021 and re-imaged here without JvM correction", "evidence": [
+{"loc": "Observations", "quote": "The data reduction is described in (cite: Benisty2021)."},
+{"loc": "Observations", "quote": "without applying the JvM correction (cite: JvM1995), which was applied in (cite: Benisty2021)"}]}, "citation": "Benisty et al. 2021 (cite: Benisty2021)"},
+{"what": {"value": "Band 7 intensity of PDS 70 c, 86 +/- 16 uJy", "evidence": [
+{"loc": "Circumplanetary Disk", "quote": "assuming the Band 7 intensity of PDS 70 c is $86 \\pm 16$ $\\mu$Jy (cite: Benisty2021)"}]}, "citation": "Benisty et al. 2021 (cite: Benisty2021)"},
+{"what": {"value": "Distance to PDS 70, 112.39 +/- 0.24 pc", "evidence": [
+{"loc": "Introduction", "quote": "a distance of $112.39 \\pm 0.24 \\ \\mathrm{pc}$ (cite: Gaia2023)"}]}, "citation": "Gaia Collaboration 2023 (cite: Gaia2023)"},
+{"what": {"value": "Stellar age 5.4 +/- 1.0 Myr", "evidence": [
+{"loc": "Introduction", "quote": "an age of $5.4 \\pm 1.0 \\ \\mathrm{Myr}$ (cite: Muller2018)"}]}, "citation": "Muller et al. 2018 (cite: Muller2018)"},
+{"what": {"value": "Disk inclination 51.7 deg and position angle 160.4 deg fixed in ring fitting", "evidence": [
+{"loc": "Image Fitting", "quote": "We fixed the inclination $i = 51.7^{\\circ}$ and the position angle PA = $160.4^{\\circ}$ based on (cite: Keppler2019)."}]}, "citation": "Keppler et al. 2019 (cite: Keppler2019)"},
+{"what": {"value": "Ring temperature of 16 K for dust mass", "evidence": [
+{"loc": "Ring", "quote": "We assumed a temperature of 16 K for the disk ring, based on the temperature model of (cite: Law2024)."}]}, "citation": "Law et al. 2024 (cite: Law2024)"},
+{"what": {"value": "DSHARP dust opacity model (upper-limit Band 3 kappa_abs = 0.47 cm^2/g)", "evidence": [
+{"loc": "Ring", "quote": "Here, we used the DSHARP dust model for the dust opacity (cite: Birnstiel2018)"}]}, "citation": "Birnstiel et al. 2018 (cite: Birnstiel2018)"},
+{"what": {"value": "Critical planet mass formula (equation 18) for eccentric ring, with M_star = 0.85 Msun and h/r = 0.079", "evidence": [
+{"loc": "Eccentricity and Exoplanet Mass", "quote": "Using their equation (18)[^1], the critical planet mass to induce the eccentricity is"},
+{"loc": "Eccentricity and Exoplanet Mass", "quote": "for the central star mass $M_{\\mathrm{star}} = 0.85 M_{\\odot}$ and the aspect ratio $h/r = 0.079$ (cite: Bae2019)"}]}, "citation": "Tanaka et al. 2022 (cite: Tanaka2022); Bae et al. 2019 (cite: Bae2019)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Tanaka et al. 2022 2D single-planet simulations (empirical critical planet mass for eccentric outer ring) used to convert the ring eccentricity limit to a planet mass limit", "evidence": [
+{"loc": "Eccentricity and Exoplanet Mass", "quote": "A caveat is that the simulation of (cite: Tanaka2022) is a 2D simulation assuming a single planet on a circular orbit"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Pipeline calibration, then further reduction in CASA modular version", "evidence": [
+{"loc": "Observations", "quote": "The pipeline calibration was performed with Common Astronomical Software Applications (CASA) version 6.4.1.12 and the subsequent reduction was performed with CASA modular version 6.6.3.22"}]},
+{"field": "casa_version", "value": "CASA 6.4.1.12 (pipeline calibration); CASA modular 6.6.3.22 (subsequent reduction)", "evidence": [
+{"loc": "Observations", "quote": "The pipeline calibration was performed with Common Astronomical Software Applications (CASA) version 6.4.1.12 and the subsequent reduction was performed with CASA modular version 6.6.3.22"}]},
+{"field": "flux_calibrator", "value": "Amplitude calibrator J1427-4206 (phase calibrator J1407-4302), for all Band 3 observations", "evidence": [
+{"loc": "Observations", "quote": "The phase calibrator was J1407-4302, and the amplitude calibrator was J1427-4206 for all observations."}]},
+{"field": "flux_scale_uncertainty", "value": "5% for Band 3 and 10% for Band 7 (ALMA Technical Handbook)", "evidence": [
+{"loc": "Results", "quote": "when the absolute flux calibration error is 5% for Band 3 and 10% for Band 7"}]},
+{"field": "self_calibration", "value": "Phase-only self-calibration per EB on line-subtracted data; none on the combined data (peak SNR of 21 too low)", "evidence": [
+{"loc": "Observations", "quote": "We subtracted the line emission and then performed phase-only self-calibration for each EB on the line-subtracted data."},
+{"loc": "Observations", "quote": "We did not apply self-calibration to the combined data because it did not improve SNR due to the insufficient peak SNR of 21."}]}
+],
+"imaging": [
+{"field": "task", "value": "tclean, MFS at 97.5 GHz, nterms = 2 (Band 3); Band 7 re-imaged with tclean", "evidence": [
+{"loc": "Observations", "quote": "Imaging was performed with Multi-Frequency Synthesis (MFS) at a central frequency of 97.5 GHz, using `nterms = 2`"},
+{"loc": "Observations", "quote": "We re-ran `tclean` on the calibrated data of (cite: Benisty2021)"}]},
+{"field": "weighting_robust", "value": "Briggs, robust = 0.5 (Band 3)", "evidence": [
+{"loc": "Observations", "quote": "Briggs weighting with a robust parameter of 0.5."}]},
+{"field": "continuum_subtraction", "value": "Line emission subtracted before self-calibration (method not given)", "evidence": [
+{"loc": "Observations", "quote": "We subtracted the line emission and then performed phase-only self-calibration for each EB on the line-subtracted data."}]},
+{"field": "array_combination", "value": "All four Band 3 configuration EBs combined and imaged together", "evidence": [
+{"loc": "Observations", "quote": "The data were then combined and imaged using the `tclean` task."}]},
+{"field": "smoothing", "value": "Band 7 smoothed to the Band 3 beam for the spectral index; both bands smoothed to a circular 0.12\" deprojected beam for azimuthal profiles", "evidence": [
+{"loc": "Results", "quote": "The Band 7 image is smoothed to match the resolution of the Band 3 beam."},
+{"loc": "Ring", "quote": "we further smoothed both images so that the beam became a circular Gaussian after deprojection with a beam size of $0.12\\ensuremath{''}$"}]},
+{"field": "final_beam", "value": "Band 3: 0.073\" x 0.066\", PA -64.2 deg; Band 7: 0.046\" x 0.035\", PA -53.1 deg", "evidence": [
+{"loc": "Observations", "quote": "The resulting image has a beam size of $0.073\\ensuremath{''} \\times 0.066\\ensuremath{''}$ with a position angle of $-64.2\\ensuremath{^\\circ}$"},
+{"loc": "Observations", "quote": "The resulting image has a beam size of $0.046\\ensuremath{''} \\times 0.035\\ensuremath{''}$ at a position angle of $-53.1\\ensuremath{^\\circ}$"}]},
+{"field": "final_rms", "value": "Band 3 4.94 uJy/beam; Band 7 12.7 uJy/beam (15.1 uJy/beam after smoothing to Band 3 beam)", "evidence": [
+{"loc": "Observations", "quote": "the rms noise level measured in the emission free region is $4.94\\ \\mathrm{\\mu Jy\\ beam^{-1}}$"},
+{"loc": "Results", "quote": "The rms noise level of the smoothed Band 7 image is $15.1 \\ \\mathrm{\\mu Jy\\ beam^{-1}}$."}]},
+{"field": "primary_beam_correction", "value": "Band 7 re-imaged without the JvM correction applied in Benisty et al. 2021", "evidence": [
+{"loc": "Observations", "quote": "without applying the JvM correction (cite: JvM1995), which was applied in (cite: Benisty2021)"}]}
+],
+"inherited": [
+{"what": {"value": "Band 7 data reduction/calibration", "evidence": [{"loc": "Observations", "quote": "The data reduction is described in (cite: Benisty2021)."}]}, "from_reference": "Benisty et al. 2021 (cite: Benisty2021)"},
+{"what": {"value": "Ring/central-source image fitting code and method", "evidence": [{"loc": "Image Fitting", "quote": "We perform image fitting using `ring_fit` (cite: Doi2023)"}]}, "from_reference": "Doi & Kataoka 2023 (cite: Doi2023)"},
+{"what": {"value": "Inclination and position angle used for deprojection", "evidence": [{"loc": "Image Fitting", "quote": "We fixed the inclination $i = 51.7^{\\circ}$ and the position angle PA = $160.4^{\\circ}$ based on (cite: Keppler2019)."}]}, "from_reference": "Keppler et al. 2019 (cite: Keppler2019)"},
+{"what": {"value": "Dust temperature model for the ring mass estimate", "evidence": [{"loc": "Ring", "quote": "We assumed a temperature of 16 K for the disk ring, based on the temperature model of (cite: Law2024)."}]}, "from_reference": "Law et al. 2024 (cite: Law2024)"},
+{"what": {"value": "Dust opacity model and size distribution", "evidence": [{"loc": "Ring", "quote": "Here, we used the DSHARP dust model for the dust opacity (cite: Birnstiel2018)"}]}, "from_reference": "Birnstiel et al. 2018 (cite: Birnstiel2018)"},
+{"what": {"value": "Azimuthal profile smoothing to a circular deprojected beam to avoid beam-shape effects", "evidence": [{"loc": "Ring", "quote": "To avoid the effect of the elliptical beam shape on the azimuthal variation of the intensity (cite: Doi2021)"}]}, "from_reference": "Doi & Kataoka 2021 (cite: Doi2021)"}
+],
+"unstated_but_needed": [
+"Line-free channels and the method/order used for continuum (line) subtraction",
+"Self-calibration solution intervals, reference antennas and number of iterations for the per-EB phase-only self-calibration",
+"tclean cell size, image size, clean mask, threshold, number of iterations and deconvolver settings (only nterms = 2, robust = 0.5 and MFS at 97.5 GHz given)",
+"Whether any weight or flux-scale alignment between the four Band 3 EBs was applied before combining",
+"Exact tclean parameters used to re-image the Band 7 data (robust, mask, cell, uv range) and how it was smoothed",
+"Band 3 and Band 7 coordinates of PDS 70 and the phase centre/shift used to align the two images",
+"Deprojection/aperture choices and exact definition of the northwest-peak sector for the 2.5x contrast and spectral index values",
+"Priors and walker initialisation in the ring_fit MCMC (only walkers, steps and burn-in given)",
+"Dust mass calculation details beyond temperature and opacity: the exact flux/integration region and handling of optical depth",
+"Public release status of the Cycle 10 Band 3 data is not stated in the paper"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Calibrate and prepare Band 3 visibilities",
+"method": {"value": "Pipeline calibration, line subtraction, phase-only self-calibration per EB", "evidence": [
+{"loc": "Observations", "quote": "We subtracted the line emission and then performed phase-only self-calibration for each EB on the line-subtracted data."}]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "CASA 6.4.1.12 pipeline; CASA modular 6.6.3.22 for later reduction", "evidence": [{"loc": "Observations", "quote": "The pipeline calibration was performed with Common Astronomical Software Applications (CASA) version 6.4.1.12 and the subsequent reduction was performed with CASA modular version 6.6.3.22"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Self-calibration on the combined data was tested and not applied since it did not improve SNR", "evidence": [{"loc": "Observations", "quote": "We did not apply self-calibration to the combined data because it did not improve SNR due to the insufficient peak SNR of 21."}]}},
+{"order": 2, "goal": "Image Band 3 continuum",
+"method": {"value": "Combine EBs and image with tclean using MFS", "evidence": [{"loc": "Observations", "quote": "The data were then combined and imaged using the `tclean` task."}]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "MFS at 97.5 GHz, nterms = 2, Briggs robust = 0.5", "evidence": [{"loc": "Observations", "quote": "Imaging was performed with Multi-Frequency Synthesis (MFS) at a central frequency of 97.5 GHz, using `nterms = 2` and Briggs weighting with a robust parameter of 0.5."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Re-image Band 7 continuum",
+"method": {"value": "Re-run tclean on the calibrated Band 7 data of Benisty et al. 2021 without JvM correction", "evidence": [{"loc": "Observations", "quote": "We re-ran `tclean` on the calibrated data of (cite: Benisty2021) without applying the JvM correction (cite: JvM1995)"}]},
+"software": ["CASA", "tclean"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 4, "goal": "Fit ring and central source morphology",
+"method": {"value": "Fit Gaussian ring and Gaussian central source models, convolved with the beam, to the images with ring_fit and emcee", "evidence": [{"loc": "Image Fitting", "quote": "We created these model images, smoothed them with the beam, and minimized the residuals between models and observations using `emcee` (cite: Foreman-Mackey2013)."}]},
+"software": ["ring_fit", "emcee"],
+"key_parameters": [
+{"value": "Ring fitted over 35 au < r < 105 au and central source over r < 15 au; also fit excluding the northwest peak (0 to 270 deg)", "evidence": [{"loc": "Image Fitting", "quote": "We fitted the ring in the range of $35\\ \\mathrm{au} < r < 105\\ \\mathrm{au}$ and the central source in the range of $r < 15$ au."}]},
+{"value": "16 walkers, 20,000 steps, first 1,000 steps burn-in", "evidence": [{"loc": "Image Fitting", "quote": "We perform MCMC fitting with 16 walkers and 20,000 steps, excluding the first 1,000 steps as burn-in."}]}
+],
+"assumptions": [
+{"value": "Inclination 51.7 deg and PA 160.4 deg fixed; Gaussian ring and Gaussian central disk profiles", "evidence": [{"loc": "Image Fitting", "quote": "We fixed the inclination $i = 51.7^{\\circ}$ and the position angle PA = $160.4^{\\circ}$ based on (cite: Keppler2019)."}]}
+],
+"fitting": {"value": "emcee MCMC, minimizing residuals between beam-convolved models and images; priors and likelihood not stated", "evidence": [{"loc": "Image Fitting", "quote": "We created these model images, smoothed them with the beam, and minimized the residuals between models and observations using `emcee` (cite: Foreman-Mackey2013)."}]},
+"validation": {"value": "Fit repeated excluding the northwest peak; conclusions do not change", "evidence": [{"loc": "Image Fitting", "quote": "In the main discussion, we use the fitting results for full azimuthal angle, while the conclusions do not change depending on which results are used."}]}},
+{"order": 5, "goal": "Compute Band 7 to Band 3 spectral index map",
+"method": {"value": "Align images on the fitted outer-ring center, smooth Band 7 to the Band 3 beam, compute alpha from the intensity ratio", "evidence": [
+{"loc": "Results", "quote": "The two images are aligned to match the center of the outer ring"},
+{"loc": "Results", "quote": "The Band 7 image is smoothed to match the resolution of the Band 3 beam."}]},
+"software": [],
+"key_parameters": [
+{"value": "Flux calibration error 5% (Band 3) and 10% (Band 7) gives Delta alpha = 0.083", "evidence": [{"loc": "Results", "quote": "when the absolute flux calibration error is 5% for Band 3 and 10% for Band 7"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Uncertainty reported with rms noise only and with flux calibration error", "evidence": [{"loc": "Results", "quote": "unless otherwise noted, the spectral index uncertainty mentioned below only considers the uncertainty due to the rms noise"}]}},
+{"order": 6, "goal": "Extract azimuthal and radial intensity/spectral index profiles",
+"method": {"value": "Azimuthal profile on images smoothed to a circular deprojected 0.12\" beam; azimuthally averaged radial profiles of intensity and spectral index", "evidence": [
+{"loc": "Ring", "quote": "we further smoothed both images so that the beam became a circular Gaussian after deprojection with a beam size of $0.12\\ensuremath{''}$"},
+{"loc": "Ring", "quote": "The upper panel of Figure [3](#fig:PDS70_radial) shows the azimuthally averaged radial profile of the intensity"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Profiles also shown separately for the northwest peak direction and the other directions", "evidence": [{"loc": "Radial Profile", "quote": "Here, we show the radial profiles for the northwest peak direction and the rest directions separately."}]}},
+{"order": 7, "goal": "Estimate lower limit of ring dust mass",
+"method": {"value": "Dust mass from Band 3 emission with a fixed temperature and DSHARP opacity", "evidence": [{"loc": "Ring", "quote": "We estimated the lower limit of the dust mass to be 28 $M_{\\mathrm{Earth}}$ in the entire ring"}]},
+"software": [],
+"key_parameters": [
+{"value": "Temperature 16 K; kappa_abs = 0.47 cm^2/g (Band 3 upper limit); size distribution q = 3.5 from 0.1 um to 3.4 mm", "evidence": [
+{"loc": "Ring", "quote": "We assumed a temperature of 16 K for the disk ring, based on the temperature model of (cite: Law2024)."},
+{"loc": "Ring", "quote": "assuming a power-law size distribution of $q= 3.5$ (cite: Mathis1977; Doi2023) from $0.1 \\ \\mathrm{\\mu m}$ grains to $3.4 \\ \\mathrm{mm}$ grains"}]}
+],
+"assumptions": [
+{"value": "16 K is an upper limit for the temperature; maximum grain size chosen to maximize opacity for a conservative mass", "evidence": [
+{"loc": "Ring", "quote": "This is considered an upper limit model for the temperature, as it is derived from the upper layer of the gas, and the midplane temperature may be lower."},
+{"loc": "Ring", "quote": "in which the maximum dust size was chosen to maximize the opacity for conservative mass estimates"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 8, "goal": "Derive ring eccentricity and PDS 70c mass limit",
+"method": {"value": "Eccentricity from offset between fitted ring center and central point source (e = delta r / r0), mapped to planet mass with the Tanaka et al. 2022 critical mass relation", "evidence": [
+{"loc": "Eccentricity and Exoplanet Mass", "quote": "We can estimate the eccentricity from the offset between the position of the central star and the center of the ring, $\\delta r$, and the semi-major axis $r_0$ as"},
+{"loc": "Image Fitting", "quote": "set the 84th percentile as the upper limit of the deviation of the ring center position"}]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "M_star = 0.85 Msun, h/r = 0.079, alpha_turb = 1e-3", "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "for the central star mass $M_{\\mathrm{star}} = 0.85 M_{\\odot}$ and the aspect ratio $h/r = 0.079$ (cite: Bae2019)"}]}
+],
+"assumptions": [
+{"value": "2D single planet on a circular orbit (Tanaka et al. 2022); alpha_turb = 1e-3; M_crit scales as sqrt(alpha_turb)", "evidence": [
+{"loc": "Eccentricity and Exoplanet Mass", "quote": "A caveat is that the simulation of (cite: Tanaka2022) is a 2D simulation assuming a single planet on a circular orbit"},
+{"loc": "Eccentricity and Exoplanet Mass", "quote": "which is proportional to the square root of the turbulent strength $\\alpha_{\\mathrm{turb}}$"}]}
+],
+"fitting": {"value": "Offset posterior from the ring and central-source MCMC fits; 84th percentile as upper limit", "evidence": [{"loc": "Image Fitting", "quote": "set the 84th percentile as the upper limit of the deviation of the ring center position"}]},
+"validation": {"value": "Band 7 ring-center offset gives a consistent, tighter limit", "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "provides the eccentricity of $e < 0.02$"}]}}
+],
+"software": [
+{"name": "CASA", "version": "6.4.1.12 (pipeline); modular 6.6.3.22", "used_for": {"value": "Pipeline calibration and subsequent reduction", "evidence": [{"loc": "Observations", "quote": "The pipeline calibration was performed with Common Astronomical Software Applications (CASA) version 6.4.1.12 and the subsequent reduction was performed with CASA modular version 6.6.3.22"}]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Imaging Band 3 and re-imaging Band 7 continuum", "evidence": [{"loc": "Observations", "quote": "The data were then combined and imaged using the `tclean` task."}]}},
+{"name": "ring_fit", "version": "not stated", "used_for": {"value": "Fitting ring and central-source morphology", "evidence": [{"loc": "Image Fitting", "quote": "We perform image fitting using `ring_fit` (cite: Doi2023)"}]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC minimization of residuals in image fitting", "evidence": [{"loc": "Image Fitting", "quote": "minimized the residuals between models and observations using `emcee` (cite: Foreman-Mackey2013)"}]}},
+{"name": "astropy", "version": "not stated", "used_for": {"value": "Listed in the software statement; specific use not stated", "evidence": [{"loc": "Acknowledgments", "quote": "Software: *CASA* (cite: McMullin2007), *astropy* (cite: astropy2022), *emcee* (cite: Foreman-Mackey2013), *scipy* (cite: scipy2020),"}]}},
+{"name": "scipy", "version": "not stated", "used_for": {"value": "Listed in the software statement; specific use not stated", "evidence": [{"loc": "Acknowledgments", "quote": "Software: *CASA* (cite: McMullin2007), *astropy* (cite: astropy2022), *emcee* (cite: Foreman-Mackey2013), *scipy* (cite: scipy2020),"}]}}
+],
+"results_numeric": [
+{"quantity": "Northwest peak intensity contrast, Band 3", "value": "2.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Ring", "quote": "In Band 7, the intensity at the northwest peak is 1.3 times larger than in other directions, while it is 2.5 times larger in Band 3."}]},
+{"quantity": "Northwest peak intensity contrast, Band 7", "value": "1.3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Ring", "quote": "In Band 7, the intensity at the northwest peak is 1.3 times larger than in other directions, while it is 2.5 times larger in Band 3."}]},
+{"quantity": "Spectral index at the northwest peak", "value": "2.17", "uncertainty": "+/-0.04 (rms); +/-0.09 (with flux calibration error)", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Results", "quote": "$\\alpha_{\\mathrm{SED}} = 2.17 \\pm 0.04$ with the rms error, and $\\alpha_{\\mathrm{SED}} = 2.17 \\pm 0.09$ with flux calibration error"}]},
+{"quantity": "Spectral index of the central point source", "value": "1.53", "uncertainty": "+/-0.13 (rms); +/-0.15 (with flux calibration error)", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Results", "quote": "$\\alpha_{\\mathrm{SED}} = 1.53 \\pm 0.13$ with the rms error, and $\\alpha_{\\mathrm{SED}} = 1.53 \\pm 0.15$ with flux calibration error"}]},
+{"quantity": "Minimum azimuthally averaged radial spectral index near ring peak", "value": "2.69", "uncertainty": "+/-0.01", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Ring", "quote": "has a minimum value of $\\alpha_{\\mathrm{SED}} = 2.69 \\pm 0.01$ near the radial peak of the ring"}]},
+{"quantity": "Spectral index at inner and outer half-peak radii (r = 0.511\" and 0.770\")", "value": "3.12 (inner), 2.81 (outer)", "uncertainty": "+/-0.05 (inner), +/-0.03 (outer)", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "Ring", "quote": "the spectral index is $\\alpha_{\\mathrm{SED}} = 3.12 \\pm 0.05$ at the inner side and $\\alpha_{\\mathrm{SED}} = 2.81 \\pm 0.03$ at the outer side"}]},
+{"quantity": "Ring width w, Band 3 and Band 7", "value": "8.45 au (Band 3); 11.23 au (Band 7)", "uncertainty": "+0.22/-0.21 (Band 3); +0.03/-0.03 (Band 7)", "units": "au", "from_step": 4, "evidence": [{"loc": "Ring", "quote": "with $w = 8.45_{-0.21}^{+0.22}$ au in Band 3 and $w = 11.23_{-0.03}^{+0.03}$ au in Band 7"}]},
+{"quantity": "Peak flux of the central source in Band 3", "value": "31.1", "uncertainty": "not stated", "units": "uJy", "from_step": 4, "evidence": [{"loc": "Central Source", "quote": "The flux estimated from the peak intensity of the central source in Band 3 is 31.1 $\\mu$Jy."}]},
+{"quantity": "Lower limit of dust mass in the entire ring", "value": "28", "uncertainty": "lower limit", "units": "Earth masses", "from_step": 7, "evidence": [{"loc": "Ring", "quote": "We estimated the lower limit of the dust mass to be 28 $M_{\\mathrm{Earth}}$ in the entire ring"}]},
+{"quantity": "Lower limit of dust mass around the northwest peak (270-360 deg)", "value": "9.3", "uncertainty": "lower limit", "units": "Earth masses", "from_step": 7, "evidence": [{"loc": "Ring", "quote": "and 9.3 $M_{\\mathrm{Earth}}$ even within the narrow range"}]},
+{"quantity": "Lower limit of spectral index of PDS 70 c", "value": "> 1.5", "uncertainty": "3 sigma Band 3 upper limit 15 uJy", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Circumplanetary Disk", "quote": "We put a lower limit on the spectral index of PDS 70 c as $\\alpha_{\\mathrm{SED}} > 1.5$"}]},
+{"quantity": "Ring eccentricity from Band 3 (ring center vs central source)", "value": "< 0.04", "uncertainty": "upper limit", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "indicating that the ring is circular with the eccentricity $e < 0.04$"}]},
+{"quantity": "Ring eccentricity from Band 7", "value": "< 0.02", "uncertainty": "upper limit", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "provides the eccentricity of $e < 0.02$"}]},
+{"quantity": "Upper limit on mass of PDS 70 c for alpha_turb = 1e-3", "value": "< 4.9", "uncertainty": "upper limit", "units": "Jupiter masses", "from_step": 8, "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "These low eccentricities put the mass of PDS 70 c below $4.9 M_{\\mathrm{Jupiter}}$ for $\\alpha_{\\mathrm{turb}} = 10^{-3}$"}]}
+],
+"findings_qualitative": [
+{"value": "Band 3 shows a prominent northwest peak in the ring, a compact central point source, and no circumplanetary disk detection", "evidence": [{"loc": "Results", "quote": "First, the ring exhibits more prominent asymmetric peak in the northwest direction (hereafter, the northwest peak)."}, {"loc": "Results", "quote": "Third, the circumplanetary disk is not detected in Band 3."}]},
+{"value": "The ring is narrower in Band 3 than in Band 7 and the inner shoulder is weaker in Band 3", "evidence": [{"loc": "Ring", "quote": "The upper panel shows that the dust ring width is narrower in Band 3 than in Band 7."}]},
+{"value": "Central Band 3 emission is interpreted as dominated by free-free emission, Band 7 central emission by dust", "evidence": [{"loc": "Central Source", "quote": "Therefore, the compact central emission in Band 3 is dominated by free-free emission"}]}
+],
+"claims": [
+{"hypothesis": "Is dust in the PDS 70 ring accumulated azimuthally as well as radially?", "experiment": "Compare Band 3 and Band 7 azimuthal intensity profiles and the Band 7 to Band 3 spectral index map", "result": "Northwest peak 2.5x brighter than other directions in Band 3 (1.3x in Band 7) with minimum alpha of 2.17", "finding": "Dust is accumulated radially and azimuthally outside the planets, in a vortex-like peak", "support": "supported", "evidence": [{"loc": "Ring", "quote": "Thus, the Band 3 observations reveal that the dust is accumulated in the azimuthal direction at the northwest peak."}]},
+{"hypothesis": "Is there enough dust in the ring to form further planets?", "experiment": "Estimate the dust mass lower limit from Band 3 emission with 16 K and DSHARP opacity", "result": "28 Earth masses in the whole ring and 9.3 Earth masses near the northwest peak", "finding": "Enough dust for additional solid planets or a gas giant core, suggesting inside-out planet formation", "support": "supported", "evidence": [{"loc": "Ring", "quote": "Thus, the dust mass in the ring is sufficient to form a gas giant core of 10 $M_{\\mathrm{Earth}}$ even with conservative estimates"}]},
+{"hypothesis": "Is the outer ring eccentric, and what does that imply for PDS 70 c mass?", "experiment": "Fit ring and central point-source centers in Band 3 and Band 7 and apply the Tanaka et al. 2022 critical mass criterion", "result": "e < 0.04 (Band 3) and e < 0.02 (Band 7)", "finding": "The ring is circular; the mass of PDS 70 c is below 4.9 Jupiter masses for alpha_turb = 1e-3", "support": "supported", "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "Thus, we put a strong upper limit on the planet mass from the new perspective of the disk eccentricity."}]},
+{"hypothesis": "What is the nature of the central emission and are circumplanetary disks detected in Band 3?", "experiment": "Fit central source in both bands, compute the spectral index, and search for point sources at PDS 70 b and c", "result": "Central alpha = 1.53, compact in Band 3 and extended in Band 7; no point source at b or c, alpha > 1.5 for c", "finding": "Band 3 central emission is likely free-free; circumplanetary disk non-detection is consistent with thermal dust spectrum", "support": "partially", "evidence": [{"loc": "Circumplanetary Disk", "quote": "Our Band 3 observations did not detect any point source emission around PDS 70 b or c."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Band 7 may be optically thick; Band 3 is likely more optically thin and reveals the detailed dust distribution", "evidence": [{"loc": "Introduction", "quote": "In this study, we present high-resolution observations at Band 3, which is likely more optically thin compared to Band 7"}]},
+{"field": "why_this_method", "value": "Detecting the central point source in Band 3 fixes the stellar position (the ellipse focus) so ring eccentricity can be measured accurately", "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "The Band 3 observations allow us to accurately estimate the eccentricity by detecting point-source free-free emission at the position of the central star"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Self-calibration of the combined Band 3 data was not applied because it did not improve SNR", "evidence": [{"loc": "Observations", "quote": "We did not apply self-calibration to the combined data because it did not improve SNR due to the insufficient peak SNR of 21."}]},
+{"value": "Narrower ring in Band 3 explained either by larger grains concentrating at the ring center or by Band 7 saturating at high optical depth", "evidence": [{"loc": "Ring", "quote": "The other explanation is that the peak intensity saturates due to the higher optical depth in Band 7 than in Band 3."}]}
+],
+"limitations_admitted": [
+{"value": "The double-peak structure at the northwest peak has an intensity dip below 3 sigma, so it is not conclusive", "evidence": [{"loc": "Ring", "quote": "but the intensity dip between the peaks is less than $3 \\sigma$, making it difficult to conclusively characterize this feature."}]},
+{"value": "The planet-mass limit relies on a 2D single-planet circular-orbit simulation; planet multiplicity, eccentricity or 3D effects may change the disk eccentricity", "evidence": [{"loc": "Eccentricity and Exoplanet Mass", "quote": "A caveat is that the simulation of (cite: Tanaka2022) is a 2D simulation assuming a single planet on a circular orbit"}]},
+{"value": "Gaussian ring model is not a perfect description of the emission", "evidence": [{"loc": "Image Fitting", "quote": "The caveat is that the emission of the object is not perfectly Gaussian"}]}
+],
+"referee_caveats_inferred": [
+"The planet-mass limit depends on alpha_turb = 1e-3 and on the Tanaka et al. 2022 equation (18) chosen as the conservative of two criteria; the h/r of 0.079 comes from a simulation paper",
+"Free-free interpretation of the central source rests on alpha < 2 and an unresolved size with a degenerate width/intensity fit; Liu et al. 2024 find free-free not dominant",
+"Ring center versus central source offset is limited by fit uncertainty of ~1.5 au, so e < 0.04 is a weak constraint relative to the 75 au ring radius",
+"Band 7 and Band 3 images were aligned on the fitted ring center, which could bias the spectral index near the ring if alignment errors exist"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Project codes are given for all data, and the acknowledgment lists ADS/JAO ALMA data; public release status is not stated", "evidence": [{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO. ALMA#2015.1.00888.S, 2018.A.00030, 2022.1.00893.S, and 2022.1.01477.S."}]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"Line-free channels, self-calibration solint and tclean cell/image size/mask/threshold",
+"ring_fit priors and initialisation, and exact sector definitions for the northwest peak",
+"Band 7 re-imaging parameters and image alignment/smoothing procedure"
+],
+"estimated_data_volume_inferred": "Four Band 3 configurations (C5, C6, C8, C9) plus two Band 7 projects; likely a few hundred GB to ~1 TB raw, roughly tens of GB of calibrated MS",
+"score_inferred": 3,
+"score_reason": "Archival project codes and CASA versions given and the main results are numeric, but tclean geometry, mask, self-calibration and line-flagging settings are missing and the ring_fit code release is not stated",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public status is not stated and several imaging and self-calibration settings are missing, although the main results (spectral index, ring width, eccentricity, dust mass) are numeric",
+"methods_papers": [
+{"citation": "Doi & Kataoka 2023 (cite: Doi2023)", "why": "ring_fit image fitting method and dust size distribution"},
+{"citation": "Doi & Kataoka 2021 (cite: Doi2021)", "why": "Beam-shape effect on azimuthal intensity variations"},
+{"citation": "Tanaka et al. 2022 (cite: Tanaka2022)", "why": "Critical planet mass criterion for eccentric outer ring"}
+],
+"companion_papers": [
+{"citation": "Benisty et al. 2021 (cite: Benisty2021)", "why": "Band 7 data reduction and prior high-resolution PDS 70 observations"},
+{"citation": "Liu et al. 2024 (cite: Liu2024)", "why": "Multi-wavelength ALMA and JVLA analysis of PDS 70 from the same Band 3 project family"}
+],
+"related_projects_or_surveys": ["2022.1.00893.S", "2022.1.01477.S", "2015.1.00888.S", "2018.A.00030.S"]
+}

@@ -1,0 +1,310 @@
+{
+ "bibcode": "2019ApJ...871...48P",
+ "title": "High-resolution ALMA Observations of HD 100546: Asymmetric Circumstellar Ring and Circumplanetary Disk Upper Limits",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaf389",
+ "arxiv_id": "1811.10365",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "What is the dust ring structure of the HD 100546 disk at ~4 au resolution, and can compact circumplanetary disk emission be detected at the claimed protoplanet positions?",
+ "alma_project_codes": [
+  "2015.1.00806.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um)",
+  "arrays": "not stated",
+  "angular_resolution": "0.056x0.041 arcsec natural; 0.047x0.031 arcsec Briggs 0.5",
+  "sensitivity": "66 uJy/beam (Briggs), 86 uJy/beam (natural); CO 5.8 mJy/beam/channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination and position angle for deprojection",
+    "evidence": [
+     {
+      "loc": "Maps and brightness profile",
+      "quote": "using the position angle and disk inclination parameters obtained by (cite: Pineda2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Pineda2014)"
+  },
+  {
+   "what": {
+    "value": "Radiative transfer dust temperature profile; T_d,mean=53 K",
+    "evidence": [
+     {
+      "loc": "Maps and brightness profile",
+      "quote": "with an average temperature of $T_{d,mean}=$53 K between 20 and 50 au"
+     }
+    ]
+   },
+   "citation": "(cite: Pineda2014)"
+  },
+  {
+   "what": {
+    "value": "Teff=9800 K and stellar accretion rate",
+    "evidence": [
+     {
+      "loc": "Updated stellar parameters",
+      "quote": "$T_{\\rm eff}=9,800$ K (cite: Fairlamb2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Fairlamb2015)"
+  },
+  {
+   "what": {
+    "value": "CSD mass of 50 MJ",
+    "evidence": [
+     {
+      "loc": "CPD masses and ages",
+      "quote": "the CSD mass of 50 $M_J$ (cite: Pineda2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Pineda2014)"
+  },
+  {
+   "what": {
+    "value": "CPD-CSD-planet mass relation (Eq. 7)",
+    "evidence": [
+     {
+      "loc": "CPD masses and ages",
+      "quote": "using Eq. 7 from (cite: Szulagyi2017_CPD_GAP)"
+     }
+    ]
+   },
+   "citation": "(cite: Szulagyi2017_CPD_GAP)"
+  },
+  {
+   "what": {
+    "value": "APEX CO total flux 191 Jy km/s",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "reported by (cite: Panic_2009-Disk_Models) using APEX of 191 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Panic_2009-Disk_Models)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Update stellar parameters",
+   "method": "PHOENIX photosphere scaled to Gaia distance and compared with Siess PMS tracks",
+   "software": [],
+   "key_parameters": [
+    "Teff=9800 K, Av=0.1"
+   ],
+   "assumptions": [
+    "Tracks with depleted metallicity Z"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and CO",
+   "method": "CASA multiscale clean; natural and Briggs 0.5 continuum; uvcontsub CO cube; Keplerian-mask moment maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Parametric continuum model",
+   "method": "Two concentric Gaussian rings + central Gaussian + vortex sampled on observed visibilities with GALARIO",
+   "software": [
+    "GALARIO",
+    "CASA",
+    "Python"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Radial cuts",
+   "method": "Beam-wide strips along major axis and vortex maximum fitted with 5 Gaussians",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "CPD upper limits",
+   "method": "3-sigma limit on point-like flux converted to mass (optically thin) and radius (optically thick)",
+   "software": [],
+   "key_parameters": [
+    "kappa=0.2 (7mm/lambda) cm2/g; f_d=0.01; T=53 K"
+   ],
+   "assumptions": [
+    "Distance 110.02 pc; dust temperature 53 K (932 K alternative)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Planet mass and inner disk mass",
+   "method": "Szulagyi 2017 CPD-CSD-planet relation; inner disk mass from the same opacity equation at 300 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CSD mass 50 MJ; ongoing accretion"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum rms (Briggs 0.5)",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| rms | ($\\mu$Jy beam$^{-1}$) | 66 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum flux",
+   "value": "1.27",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Total Flux | (Jy) | 1.27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma point source limit at planet positions",
+   "value": "198",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Circumplanetary disk emission",
+     "quote": "3-$\\sigma$ detection limit of 198 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "CPD mass upper limit (optically thin)",
+   "value": "1.44",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Circumplanetary disk upper limits",
+     "quote": "we determine the CPD (dust and gas) mass upper limit in the optically thin case to be 1.44 $M_{\\ensuremath{\\oplus}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CPD radius upper limit (optically thick, 53 K)",
+   "value": "0.44",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Circumplanetary disk upper limits",
+     "quote": "An upper limit for the CPD radius of 0.44 au is obtained"
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass upper limit from CPD-CSD relation",
+   "value": "1.65",
+   "uncertainty": "not stated",
+   "units": "MJ",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "CPD masses and ages",
+     "quote": "we place a planetary mass upper limit of 1.65 $M_J$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "2.2",
+   "uncertainty": "±0.2",
+   "units": "Msun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Updated stellar parameters",
+     "quote": "$M_*=2.2\\pm0.2$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk mass",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Central or inner disk",
+     "quote": "an inner disk mass of 15 $M_{\\ensuremath{\\oplus}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk depletion lifetime",
+   "value": "500",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Central or inner disk",
+     "quote": "is only 500 yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO flux",
+   "value": "190",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "The total flux of the integrated intensity CO cube is 190 Jy km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges and spectral windows",
+  "Multiscale clean scales, cell and image size, mask details",
+  "Phase calibrator/self-cal solint beyond shortest values",
+  "Fit starting values, optimiser and uncertainties for the GALARIO model",
+  "CO rest frequency and spectral setup",
+  "Planet position used for CPD upper limit and its flux measurement method"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels, clean scales, mask and image size",
+  "Starting values and uncertainties for the model fit",
+  "Planet candidate positions used"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public project code and main recipe stated, but many imaging and fitting details are missing.",
+ "rediscovery_reason": "Archive data are available and the results are numeric, though some settings are missing.",
+ "source_card": "cards/2019ApJ...871...48P/sonnet/card.md"
+}

@@ -1,0 +1,697 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...689A.299M",
+  "title": "Prospects of directly using closure traces for imaging in very long baseline interferometry",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Müller, Hendrik",
+  "n_authors": 1,
+  "arxiv_id": "2407.20190",
+  "doi": "10.1051/0004-6361/202450437",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2016.1.01154.V"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "Second, we study the application of closure trace imaging in denser radio interferometers, represented exemplary by ALMA where we reproduce the experiment performed by (cite: Albentosa2023)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "M87 (ALMA observation during EHT 2017 campaign)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can closure traces (gain- and leakage-independent polarimetric closure quantities) be fitted directly to create polarimetric images in VLBI (EHT, ngEHT) and in a denser array such as ALMA?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we explore, how closure traces could be directly fitted to create an image and point out an imaging pipeline that succeeds in the direct imaging from closure traces."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01154.V",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2016.1.01154.V"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Real Data Application",
+      "quote": "The observations were performed in ALMA Band 6, with an array of 33 antennas covering baseline lengths between 15.1 meter and 160.7 meter."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four spectral windows studied by Albentosa2023 at 213.1, 215.1, 227.1, 229.1 GHz; this work uses 227.1 GHz",
+    "evidence": [
+     {
+      "loc": "Real Data Application",
+      "quote": "For this work, we reproduce the image at the third spectral window (227.1 GHz), matching the lower band of the EHT observations."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.1 m to 160.7 m, 33 antennas",
+    "evidence": [
+     {
+      "loc": "Real Data Application",
+      "quote": "with an array of 33 antennas covering baseline lengths between 15.1 meter and 160.7 meter."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "April 6 (2017)",
+    "evidence": [
+     {
+      "loc": "Real Data Application",
+      "quote": "during the EHT campaign in 2017 (cite: eht2019a), at April 6."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "EHT (2017 array, public M87 data of April 11 2017)",
+     "provided": {
+      "value": "Real calibrated M87 polarimetric data and uv-coverage/noise for synthetic observations",
+      "evidence": [
+       {
+        "loc": "Real Data Application",
+        "quote": "We apply our algorithms to the public calibrated M87 observations of the EHT at April 11th in 2017"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ngEHT analysis challenge",
+     "provided": {
+      "value": "EHT+ngEHT configuration synthetic data set for M87",
+      "evidence": [
+       {
+        "loc": "Synthetic Data",
+        "quote": "with a proposed configuration of the ngEHT taken from the ngEHT Analysis challenge (cite: ngehtchallenge)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Reference model-fitting results of ALMA M87 polarization (the experiment reproduced)",
+      "evidence": [
+       {
+        "loc": "Real Data Application",
+        "quote": "we aim to reproduce the numerical experiment performed in (cite: Albentosa2023) which represents the pioneering work that directly fitted closure traces."
+       }
+      ]
+     },
+     "citation": "Albentosa-Ruiz & Marti-Vidal 2023 (cite: Albentosa2023)"
+    },
+    {
+     "what": {
+      "value": "EHT-estimated leakage terms used for calibrated-data comparison reconstruction",
+      "evidence": [
+       {
+        "loc": "Real Data Application",
+        "quote": "were corrected by the detailed and vetted estimates obtained by the EHT (cite: eht2021a)."
+       }
+      ]
+     },
+     "citation": "(cite: eht2021a)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Synthetic ground truths: geometric ring model (42 uas diameter, 0.6 Jy compact flux), GRMHD SgrA* model from ehtim, 3C279-inspired six-Gaussian double source",
+     "evidence": [
+      {
+       "loc": "Synthetic Data",
+       "quote": "It consists of a ring with a diameter of $42\\,\\mu\\mathrm{as}$, and a compact flux of $0.6\\,\\mathrm{Jy}$."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline script on archive data",
+     "evidence": [
+      {
+       "loc": "Real Data Application",
+       "quote": "The data were downloaded from the ALMA archive and calibrated with the ALMA pipeline script."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "time-averaged by 10 seconds after export to uvfits",
+     "evidence": [
+      {
+       "loc": "Real Data Application",
+       "quote": "We exported the measurement sets to the uvfits format and time-averaged the data by 10 seconds"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Closure trace definition and degeneracies",
+      "evidence": [
+       {
+        "loc": "Theory",
+        "quote": "It can be shown now that $Tr_{i,j,k,l}$ is independent of $\\mathbf{J}^{i},\\mathbf{J}^{j},\\mathbf{J}^{k},\\mathbf{J}^{l}$, i.e. independent of gains and leakage terms (cite: Broderick2020b)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Broderick2020b)"
+    },
+    {
+     "what": {
+      "value": "MOEA/D objective set for polarimetric imaging",
+      "evidence": [
+       {
+        "loc": "Imaging Procedure",
+        "quote": "The set-up of MOEA/D for the reconstruction with respect to closure traces consists of solving a multi-objective problem with the following objective functionals (cite: Mus2023b)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Mus2023b)"
+    },
+    {
+     "what": {
+      "value": "MO-PSO algorithm details",
+      "evidence": [
+       {
+        "loc": "Description of the imaging algorithms",
+        "quote": "For more details, we refer to (cite: Mus2023c)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Mus2023c)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA pipeline/CASA version",
+    "Which of the archive execution blocks/scans of 2016.1.01154.V were used and flagging",
+    "Number of pixels, field of view, and regularization/weight settings for the ALMA reconstruction",
+    "MO-PSO swarm size, iterations, and EVPA alignment details for the real-data run",
+    "Total intensity initial guess details for ALMA (pipeline image used)",
+    "Quantitative metric comparing with Albentosa2023"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Prepare ALMA data",
+    "method": {
+     "value": "Download archive data, calibrate with ALMA pipeline, export to uvfits, time-average 10 s",
+     "evidence": [
+      {
+       "loc": "Real Data Application",
+       "quote": "The data were downloaded from the ALMA archive and calibrated with the ALMA pipeline script."
+      }
+     ]
+    },
+    "software": [
+     "MrBeam"
+    ],
+    "key_parameters": [
+     {
+      "value": "10 s averaging; spectral window 227.1 GHz",
+      "evidence": [
+       {
+        "loc": "Real Data Application",
+        "quote": "time-averaged the data by 10 seconds"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Negligible circular polarization",
+      "evidence": [
+       {
+        "loc": "Imaging Procedure",
+        "quote": "We therefore restrict ourselves in this work to situations with negligibly small circular polarization at first instance."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Reconstruct polarization from closure traces",
+    "method": {
+     "value": "MO-PSO multiobjective imaging fitting closure traces, with ALMA pipeline product as initial guess",
+     "evidence": [
+      {
+       "loc": "Real Data Application",
+       "quote": "The pipeline product of ALMA was used as an initial guess. The reconstruction of the polarized structure from the closure traces, was then performed with the MO-PSO algorithm"
+      }
+     ]
+    },
+    "software": [
+     "MrBeam",
+     "ehtim",
+     "pygmo"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Particle swarm over regularization weights; objectives chi2 of closure traces plus R_ms, R_hw, R_ptv",
+     "evidence": [
+      {
+       "loc": "Description of the imaging algorithms",
+       "quote": "by screening the regularization weights with a particle-swarm optimization algorithm, and solving the related weighted sum problem by fast gradient based minimization techniques."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Qualitative comparison with Albentosa2023 model-fitting results",
+     "evidence": [
+      {
+       "loc": "Real Data Application",
+       "quote": "The Stokes I reconstruction, as well as the EVPA structure looks very similar to the reconstructions presented in (cite: Albentosa2023), presenting an interesting cross-verification."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MrBeam",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reconstruction software for closure trace imaging",
+     "evidence": [
+      {
+       "loc": "Real Data Application",
+       "quote": "performed the reconstruction with the software tool MrBeam"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ehtim",
+    "version": "not stated",
+    "used_for": {
+     "value": "Synthetic observations and GRMHD model",
+     "evidence": [
+      {
+       "loc": "Synthetic Data",
+       "quote": "The synthetic observations have been performed by the `ehtim` package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DoG-HiT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Total intensity initial guess and comparison polarimetric imaging",
+     "evidence": [
+      {
+       "loc": "Description of the imaging algorithms",
+       "quote": "we use DoG-HiT as an initial guess for the total intensity structure, and as a comparison, imaging algorithm."
+      }
+     ]
+    }
+   },
+   {
+    "name": "pygmo",
+    "version": "not stated",
+    "used_for": {
+     "value": "Package MrBeam uses (evolutionary algorithms)",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "MrBeam makes explicit use of the following packages: ehtim"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Runtime of ALMA MO-PSO reconstruction",
+    "value": "roughly 30 minutes",
+    "uncertainty": "not stated",
+    "units": "minutes",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Real Data Application",
+      "quote": "The reconstruction was performed on a common notebook in roughly 30 minutes."
+     }
+    ]
+   },
+   {
+    "quantity": "Leakage error level at which closure-trace imaging becomes competitive",
+    "value": "roughly 2%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Effect of leakage inaccuracies",
+      "quote": "The MOEA/D reconstruction becomes competitive for d-term inaccuracies of roughly $2\\%$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Closure traces are not constraining enough for the 2017 EHT to image directly, but work for EHT+ngEHT and likely the 2021 EHT array.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Closure traces are not constraining enough for the current EHT configuration to recover an image directly, mainly due to the small number of antennas."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can closure traces be used directly for polarimetric imaging with ALMA data?",
+    "experiment": "MO-PSO reconstruction of ALMA M87 227.1 GHz data from closure traces",
+    "result": "Stokes I and EVPA structure similar to Albentosa2023",
+    "finding": "Closure trace imaging reproduces model-fitting results and scales to dense arrays",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The recovered structure is similar to the model-fitting approach presented in (cite: Albentosa2023)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is closure trace imaging feasible for EHT arrays?",
+    "experiment": "Synthetic tests with EHT 2017, 2021 and EHT+ngEHT",
+    "result": "2017 EHT largely unsuccessful; EHT+ngEHT competitive with a few percent residual leakage",
+    "finding": "Feasible for denser future arrays",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Closure trace imaging becomes a feasible alternative in this configuration, and indeed produces results that are competitive to a few percent of residual leakages."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Multiobjective evolution samples the multimodal landscape caused by closure trace degeneracies",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "leave local search techniques at risk at falling into local minima, opposed to multiobjective imaging algorithms which navigate the objective landscape globally."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Assumes vanishing circular polarization; MO-PSO does not reproduce multimodality; primary-beam polarization not treated",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "As a remaining limitation, we rely on the assumption of vanishing circular polarization"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "ALMA comparison with Albentosa2023 is purely qualitative",
+    "No uncertainty quantification on reconstructions",
+    "Synthetic data use simplistic noise/gain models"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data accessible from archive; synthetic data on request",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "The data underlying this work are accessible from the ALMA data archive, synthetic data sets will be shared upon reasonable request."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "MrBeam publicly available on GitHub",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "The software used to produce these results is MrBeam, publicly available through github"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "ALMA run parameters (pixel grid, swarm settings, weights)",
+    "pipeline version and EB selection"
+   ],
+   "estimated_data_volume_inferred": "tens of GB (one ALMA Band 6 EHT-campaign observation, single spw used)",
+   "score_inferred": 3,
+   "score_reason": "Code public and data public, but ALMA run parameters and quantitative targets are lacking.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main ALMA result is qualitative image comparison; few numeric results."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Broderick2020b",
+     "why": "defines closure traces"
+    },
+    {
+     "citation": "Mus2023c",
+     "why": "MO-PSO algorithm"
+    },
+    {
+     "citation": "Mueller2023c",
+     "why": "MOEA/D algorithm"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Albentosa2023",
+     "why": "ALMA M87 closure trace model fitting reproduced here"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Event Horizon Telescope",
+    "ngEHT"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-70d8a50180fbdbe1a0bf85a8dbf77562",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:44",
+  "usage": {
+   "input_tokens": 28394,
+   "output_tokens": 5296,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.055481,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 36,
+  "quotes_ok": 36,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 2,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 30,
+   "rate": 0.455
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "bibcode": "2020ApJ...892L..30I",
+ "title": "Time Variations in the Flux Density of Sgr A* at 230 GHz Detected with ALMA",
+ "year": 2020,
+ "doi": "10.3847/2041-8213/ab800d",
+ "arxiv_id": "2003.08601",
+ "fields": [
+  "milky_way_ism",
+  "agn_and_quasars"
+ ],
+ "question": "Does Sgr A* show short-timescale (tens of minutes) variability at 230 GHz, and are there time lags between frequencies or a flux dependence of the spectral index?",
+ "alma_project_codes": [
+  "2017.1.00503.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.04\" x 0.02\" (natural weighting)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Time lag of 30 min between 43 and 22 GHz used to predict expected lag",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Using the time lag $\\Delta T_{\\rm 2-1}$ between $\\nu_2 = 43$ GHz and $\\nu_1 = 22$ GHz of 30 min (cite: Yusef-Zadeh06; Yusef-Zadeh08)"
+     }
+    ]
+   },
+   "citation": "(cite: Yusef-Zadeh06; Yusef-Zadeh08)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate",
+   "method": "standard calibration then iterative phase self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Build light curves",
+   "method": "snapshot images per SPW and imfit flux measurement",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "integration 16-56 s; 44 or 45 snapshots per 70 min epoch"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Variability timescale",
+   "method": "first-order structure function (15 log bins to 60 min) and Lomb-Scargle periodogram",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Time lag between 217.5 and 234.0 GHz",
+   "method": "ZDCF per epoch, quadratic fit to peaks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "p=2 for expected lag"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Spectral index vs flux",
+   "method": "spectral index between 217.5 and 234.0 GHz at all data points vs 217.5 GHz flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean flux density at 234.0 GHz",
+   "value": "2.939",
+   "uncertainty": "0.348",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The average flux densities of 217.5, 219.5, and 234.0 GHz were $2.912\\pm0.331$, $2.914\\pm0.331$, and $2.939\\pm0.348$ Jy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean spectral index 217.5-234.0 GHz",
+   "value": "0.12",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The mean spectral index of all the data is $0.12\\pm0.10$."
+    }
+   ]
+  },
+  {
+   "quantity": "Time lag epoch 6 (234.0 delayed)",
+   "value": "2.6",
+   "uncertainty": "0.3",
+   "units": "min",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The variation during epoch 6 at 234.0 GHz is delayed by $2.6\\pm0.3$ min from that at 217.5 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Time lag epoch 10 (234.0 precedes)",
+   "value": "1.4",
+   "uncertainty": "0.4",
+   "units": "min",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "precedes that at 217.5 GHz by $1.4\\pm0.4$ min"
+    }
+   ]
+  },
+  {
+   "quantity": "Largest flux amplitude (epoch 8)",
+   "value": "14%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The largest amplitude of flux variation (14%) can be seen during epoch 8"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters (cell size, image size, imaging task, uv range)",
+  "Self-calibration solution intervals and number of iterations",
+  "Which scans were flagged",
+  "Fitting model/component used in imfit",
+  "Structure function and Lomb-Scargle details such as frequency grid",
+  "ZDCF binning parameters",
+  "Number of SPW-combination choices for spectral index and the flux-scale correction between epochs"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters",
+  "Imaging parameters",
+  "Flagging list"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and workflow simple, but key imaging and self-cal settings missing.",
+ "rediscovery_reason": "Archive data with a simple recipe and numeric results (flux, lags, indices).",
+ "source_card": "cards/2020ApJ...892L..30I/sonnet/card.md"
+}

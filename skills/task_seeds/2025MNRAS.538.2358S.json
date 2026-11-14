@@ -1,0 +1,577 @@
+{
+ "bibcode": "2025MNRAS.538.2358S",
+ "title": "High angular resolution evidence of dust traps from deep ALMA Band 3 observations of LkCa15",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf393",
+ "arxiv_id": "2503.03336",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "To test the dust trapping mechanism in the transitional disc around LkCa15, constrain its physical dust properties and azimuthal asymmetries at optically thin wavelengths, and evaluate non-dust emission in the inner disc.",
+ "alma_project_codes": [
+  "2022.1.01216.S",
+  "2012.1.00870.S",
+  "2015.1.00118.S",
+  "2018.1.00945.S",
+  "2018.1.01255.S",
+  "2018.1.00350.S"
+ ],
+ "data": {
+  "bands": "Band 3 (97.5 GHz), Band 6 (224 GHz), Band 7 (340 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "60 mas (9.4 au) for CLEAN imaging; 35 mas (5.5 au) for visibility modelling",
+  "sensitivity": "Band 3: 5.4 μJy beam^-1; Band 6: 9.5 μJy beam^-1; Band 7: 20.1 μJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Self-calibrated measurement sets and disc offsets at ALMA Band 6 and Band 7, plus inner disc fluxes at Band 6 and 7",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS",
+      "quote": "We use the self-calibrated measurement sets from Long et al. (2022) and re-image the Band 6/Band 7 data"
+     },
+     {
+      "loc": "3.1 Dust continuum images",
+      "quote": "For the Band 6 and 7 data, we use the offsets reported in Long et al. (2022)."
+     },
+     {
+      "loc": "3.5 Non-dust emission",
+      "quote": "The fluxes in the inner disc are taken from Isella et al. (2014) and Long et al. (2022)"
+     }
+    ]
+   },
+   "citation": "Long et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Inner disc flux at Band 6 and Band 7",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "References: Zapata et al. (2017) for Band X and C. Piétu et al. (2006) for Band 3 at 107 GHz. Long et al. (2020) for the inner disc at Band 7 and 6, and Isella et al. (2014) for Band Q."
+     }
+    ]
+   },
+   "citation": "Long et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Integrated fluxes at VLA Band X (9.10 GHz) and Band C (5.00 GHz)",
+    "evidence": [
+     {
+      "loc": "3.5 Non-dust emission",
+      "quote": "We study the SED of LkCa15 using the integrated fluxes reported in Zapata et al. (2017), and including the resolved flux constraints in this work at ALMA Band 7, 6 and 3."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "References: Zapata et al. (2017) for Band X and C. Piétu et al. (2006) for Band 3 at 107 GHz. Long et al. (2020) for the inner disc at Band 7 and 6, and Isella et al. (2014) for Band Q."
+     }
+    ]
+   },
+   "citation": "Zapata et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Flux constraints from ALMA Band 9 and VLA Band Q observations",
+    "evidence": [
+     {
+      "loc": "3.5 Non-dust emission",
+      "quote": "Additionally, we include the flux constraints from the ALMA Band 9 and VLA Band Q observations presented in Sierra et al. (2024)."
+     }
+    ]
+   },
+   "citation": "Sierra et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Inner disc flux at VLA Band Q (44.0 GHz)",
+    "evidence": [
+     {
+      "loc": "3.5 Non-dust emission",
+      "quote": "The fluxes in the inner disc are taken from Isella et al. (2014) and Long et al. (2022)"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "References: Zapata et al. (2017) for Band X and C. Piétu et al. (2006) for Band 3 at 107 GHz. Long et al. (2020) for the inner disc at Band 7 and 6, and Isella et al. (2014) for Band Q."
+     }
+    ]
+   },
+   "citation": "Isella et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Total flux at 107 GHz (Band 3) and 214 GHz from IRAM PdBI",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS",
+      "quote": "when compared with the fluxes of 140 ± 3 mJy at 214 GHz reported by Piétu et al. (2006) using the IRAM PdBI array"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "References: Zapata et al. (2017) for Band X and C. Piétu et al. (2006) for Band 3 at 107 GHz. Long et al. (2020) for the inner disc at Band 7 and 6, and Isella et al. (2014) for Band Q."
+     }
+    ]
+   },
+   "citation": "Piétu et al. (2006)"
+  },
+  {
+   "what": {
+    "value": "Total газоus disc mass of 0.1 M_sun",
+    "evidence": [
+     {
+      "loc": "4 DUST EVOLUTION MODELS FOR LKCA15",
+      "quote": "γ = 1, R_c = 160 au, and Σ_0 is taken such that the disc mass is 0.1M_⊙ (Jin et al. 2019)."
+     }
+    ]
+   },
+   "citation": "Jin et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate, and image continuum data in Bands 3, 6, and 7, and determine disc geometry and radial profiles",
+   "method": "Iterative phase self-calibration of SB and SB+MB executions in CASA, flux re-scaling of MB visibilities, concatenation with LB executions, multi-scale CLEAN imaging with uv-tapering and imsmooth to a 60 mas circular beam, disc geometry estimation via visibility spread minimization and 10sigma ellipse fitting, and azimuthal averaging of brightness temperature radial profiles",
+   "software": [
+    "CASA",
+    "Gofish"
+   ],
+   "key_parameters": [
+    "robust = 0.0 (Band 3, Band 6), robust = 0.5 (Band 7); circular beam = 60 mas; inc = 50.1 deg, PA = 61.4 deg; DeltaRA = 0 mas, DeltaDec = 0 mas (Band 3)"
+   ],
+   "assumptions": [
+    "Full Planck function (no Rayleigh-Jeans approximation) for brightness temperature"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Perform non-parametric visibility modelling with Frankenstein, fit Gaussian rings to radial profiles, and image azimuthal residuals",
+   "method": "Extract normalized visibilities, fit de-projected visibilities with Frankenstein, convolve radial profiles to a common 35 mas resolution, fit 5 symmetric Gaussian rings to both image-plane and Frankenstein radial profiles, and image visibility residuals (data minus Frankenstein model) in CASA",
+   "software": [
+    "uvplot",
+    "Frankenstein",
+    "Scipy",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Frankenstein hyper-parameters: alpha = 1.3, w_smooth = 10^-1; common resolution = 35 mas (5.5 au)"
+   ],
+   "assumptions": [
+    "Axi-symmetric disc emission for Frankenstein fit; five symmetric Gaussian components (inner disc fixed at r_0 = 0, three main rings, and extended emission)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Constrain radial profiles of dust temperature, dust surface density, and maximum grain size via multi-wavelength SED fitting",
+   "method": "MCMC fitting of multi-wavelength continuum intensities (Bands 3, 6, 7) at each radius (> 0.1 arcsec) using the radiative transfer equation including dust scattering for DSHARP and Ricci opacities",
+   "software": [
+    "emcee",
+    "dsharp_opac",
+    "DustProperties"
+   ],
+   "key_parameters": [
+    "Parameter space: 1 K < T_d < 300 K, 10^-6 g cm^-2 < Sigma_d < 10 g cm^-2, 10 um < a_max < 30 cm; 24 walkers, 10,000 steps; sampled every 1/3 resolution element"
+   ],
+   "assumptions": [
+    "Spherical grains, grain size distribution n(a) da = a^-p da with p = 3, bulk density 1.6 g cm^-3 (DSHARP) or 0.85 g cm^-3 (Ricci), absolute flux uncertainties of 10% (Band 6, 7) and 5% (Band 3)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract integrated and inner-disc fluxes and constrain non-dust (free-free) emission",
+   "method": "Compute total fluxes using curve of growth on image-plane radial profiles, measure Band 3 inner disc flux from peak value and CASA imfit, and extrapolate Band 6-7 dust spectral index to Band 3 to isolate free-free contribution and Band 3 to Band X spectral index limits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Inner disc spectral index alpha_B6-B7 = 2.4 +/- 0.3"
+   ],
+   "assumptions": [
+    "Inner disc emission in Bands 6 and 7 originates purely from dust continuum emission, and total flux at Band X is dominated by the inner disc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Simulate dust evolution and radiative transfer, and analytically evaluate dust trapping efficiency",
+   "method": "Run 1D dust evolution models in Dustpy for 1 Myr with 3 Gaussian gas perturbations, generate synthetic continuum images in RADMC3D convolved to 60 mas, and apply Dullemond et al. (2018) analytical prescriptions to deconvolved Band 3 ring widths",
+   "software": [
+    "Dustpy",
+    "RADMC3D",
+    "Scipy"
+   ],
+   "key_parameters": [
+    "Dustpy: r = 1-300 au (300 log cells), R_c = 160 au, gamma = 1, r_p = 42, 69, 101 au, A_1 = 1, A_2 = 5, A_3 = 3, alpha = 10^-4 or 10^-3, v_frag = 1 or 10 m s^-1, t = 1 Myr; RADMC3D: 64 vertical cells, T_* = 5772 K, 1e7 thermal photons, 5e6 scattering photons"
+   ],
+   "assumptions": [
+    "Stellar mass = 1 M_sun, static gas disc mass = 0.1 M_sun, initial gas-to-dust ratio = 100, initial grain size 0.1-1 um (MMSN), Toomre Q > 2, local gas-to-dust ratio > 1, Epstein regime, Schmidt number = 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disc inclination (from visibility spread minimization)",
+   "value": "50.1",
+   "uncertainty": "+0.4/-0.2",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Dust continuum images",
+     "quote": "This method constrained a inclination and position angle of 50.1^+0.4_-0.2 deg, 61.4^+0.3_-0.4 deg, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle (from visibility spread minimization)",
+   "value": "61.4",
+   "uncertainty": "+0.3/-0.4",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Dust continuum images",
+     "quote": "This method constrained a inclination and position angle of 50.1^+0.4_-0.2 deg, 61.4^+0.3_-0.4 deg, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux at ALMA Band 9 (689 GHz)",
+   "value": "1436.9",
+   "uncertainty": "+/- 72.4",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "689 9 1436.9 ± 72.4 -"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux at ALMA Band 7 (341 GHz)",
+   "value": "418.1",
+   "uncertainty": "+/- 4.7",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2 OBSERVATIONS",
+     "quote": "The total fluxes in our Band 6 and 7 images are 145.6 ± 4.3 mJy and 418.1 ± 4.7 mJy, respectively (Section 3.5)."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "341 7 418.1 ± 4.7 155.8 ± 7.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux at ALMA Band 6 (228 GHz)",
+   "value": "145.6",
+   "uncertainty": "+/- 4.3",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2 OBSERVATIONS",
+     "quote": "The total fluxes in our Band 6 and 7 images are 145.6 ± 4.3 mJy and 418.1 ± 4.7 mJy, respectively (Section 3.5)."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "228 6 145.6 ± 4.3 58.6 ± 4.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux at ALMA Band 3 (97.5 GHz)",
+   "value": "13.2",
+   "uncertainty": "+/- 1.9",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "97.5 3 13.2 ± 1.9 45.4 ± 14.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux at VLA Band Q (44.0 GHz)",
+   "value": "0.82",
+   "uncertainty": "+/- 0.18",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "44.0 Q 0.82 ± 0.18 16.6 ± 3.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disc flux at ALMA Band 3 (97.5 GHz)",
+   "value": "45.4",
+   "uncertainty": "+/- 14.0",
+   "units": "μJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "97.5 3 13.2 ± 1.9 45.4 ± 14.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated free-free flux in inner disc at Band 3",
+   "value": "36.8",
+   "uncertainty": "not stated",
+   "units": "μJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5 Non-dust emission",
+     "quote": "Consequently, the estimated free-free emission in the inner disc at Band 3 is ∼ 36.8 μJy, and the lower limit for the spectral index between Band 3 and Band X (where the total flux is presumably dominated by the inner disc) is α_extrap = -0.1."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disc spectral index alpha_1.3-3mm (Band 3 to Band 6)",
+   "value": "0.30",
+   "uncertainty": "+/- 0.37",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5 Non-dust emission",
+     "quote": "The spectral index between Bands 6 and 7 is 2.4 ± 0.3 (Long et al. 2022), decreasing to α = 0.30 ± 0.37 between Bands 3 and 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disc spectral index alpha_3mm-3cm (Band 3 to Band X)",
+   "value": "-0.1 to 0.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The inner disc shows bright and unresolved emission at 3 mm, exhibiting a spectral index of α_1.3-3mm = 0.3 ± 0.37, and α_3mm-3cm ranging from -0.1 to 0.0."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM vs frequency slope for B42 (Frankenstein fit)",
+   "value": "0.32",
+   "uncertainty": "+/- 0.02",
+   "units": "mas GHz^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Frankenstein fit",
+     "quote": "(radial profiles from the Frankenstein fit), are 0.32 ± 0.02 mas GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM vs frequency slope for B69 (Frankenstein fit)",
+   "value": "0.23",
+   "uncertainty": "+/- 0.03",
+   "units": "mas GHz^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Frankenstein fit",
+     "quote": "for the rings B42, B69, B101 in the bottom right panel (radial profiles from the Frankenstein fit), are 0.32 ± 0.02 mas GHz−1, 0.23 ± 0.03 mas GHz−1, and 0.42 ± 0.02 mas GHz−1"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM vs frequency slope for B101 (Frankenstein fit)",
+   "value": "0.42",
+   "uncertainty": "+/- 0.02",
+   "units": "mas GHz^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Frankenstein fit",
+     "quote": "for the rings B42, B69, B101 in the bottom right panel (radial profiles from the Frankenstein fit), are 0.32 ± 0.02 mas GHz−1, 0.23 ± 0.03 mas GHz−1, and 0.42 ± 0.02 mas GHz−1"
+    }
+   ]
+  },
+  {
+   "quantity": "B42 ring radius (Frankenstein fit, Band 3)",
+   "value": "40.2",
+   "uncertainty": "+/- 0.3",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "r_42 [au] 42.9 ± 0.4 43.5 ± 0.3 44.4 ± 1.0 42.1 ± 0.2 42.6 ± 0.2 40.2 ± 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "B42 ring FWHM (Frankenstein fit, Band 3)",
+   "value": "10.0",
+   "uncertainty": "+/- 0.8",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FWHM_42 [au] 24.1 ± 1.1 22.5 ± 0.9 14.6 ± 2.8 22.2 ± 0.9 17.0 ± 0.6 10.0 ± 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "B69 ring radius (Frankenstein fit, Band 3)",
+   "value": "67.6",
+   "uncertainty": "+/- 0.1",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "r_69 [au] 67.5 ± 0.1 68.0 ± 0.1 67.6 ± 0.1 67.8 ± 0.1 68.2 ± 0.1 67.6 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "B69 ring FWHM (Frankenstein fit, Band 3)",
+   "value": "10.1",
+   "uncertainty": "+/- 0.1",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FWHM_69 [au] 21.1 ± 0.2 19.1 ± 0.1 17.1 ± 0.1 18.7 ± 0.1 15.5 ± 0.1 10.1 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "B101 ring radius (Frankenstein fit, Band 3)",
+   "value": "101.5",
+   "uncertainty": "+/- 0.1",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "r_101 [au] 97.9 ± 0.2 99.3 ± 0.1 100.8 ± 0.1 98.6 ± 0.1 100.0 ± 0.1 101.5 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "B101 ring FWHM (Frankenstein fit, Band 3)",
+   "value": "15.8",
+   "uncertainty": "+/- 0.2",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FWHM_101 [au] 35.4 ± 0.5 29.9 ± 0.4 24.8 ± 0.5 31.8 ± 0.4 24.8 ± 0.3 15.8 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass (DSHARP opacities)",
+   "value": "7.5e-4 (250 M_Earth)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4 Dust properties",
+     "quote": "While the dust mass inferred from the DSHARP opacities is around 7.5 × 10"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass (Ricci opacities)",
+   "value": "0.4e-4 (13 M_Earth)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4 Dust properties",
+     "quote": "for Ricci’s opacities it is an order of magnitude lower: 0.4 × 10"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum grain size at B42, B69, B101 (DSHARP opacities)",
+   "value": "4.5E-1, 5.9E-1, 8.3E-1",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "a_max [cm] 4.5E-1 5.9E-1 8.3E-1 3.7E-2 5.8E-2 4.0E-2"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum grain size at B42, B69, B101 (Ricci opacities)",
+   "value": "3.7E-2, 5.8E-2, 4.0E-2",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "a_max [cm] 4.5E-1 5.9E-1 8.3E-1 3.7E-2 5.8E-2 4.0E-2"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved Band 3 dust ring widths w_d at B42, B69, B101",
+   "value": "3.5, 3.6, 6.3",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Dust trap efficiency",
+     "quote": "The local thermal scale heights (estimated from the temperature of a passively irradiated disc) at B42, B69 and B101 are h_p = 2.2, 4.0, 6.5 au, respectively, while the dust widths at Band 3 are w_d = 3.5, 3.6, 6.3 au, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on turbulent viscosity alpha_turb,min at B42, B69, B101 (DSHARP opacities)",
+   "value": "8.6E-4, 6.7E-4, 5.7E-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "α_turb,min 8.6E-4 6.7E-4 5.7E-3 1.0E-4 9.9E-5 4.1E-4"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image cell size (pixel size) and image dimensions (imsize) used in CASA tclean for Bands 3, 6, and 7",
+  "Clean masking strategy during self-calibration and final imaging",
+  "Reference antenna choices during CASA gaincal self-calibration",
+  "Exact flux scaling factor applied to each of the two MB executions (only stated that MB disagreed by 20%)",
+  "Exact stellar luminosity L_* used in the passively irradiated disc prior temperature formula T_prior = (0.02 L_* / 8 pi sigma_B r^2)^(1/4)"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibrated measurement sets for Bands 3, 6, and 7 (unless requested from authors or re-derived from raw archival data)",
+  "Exact pixel size and image size used in CASA tclean",
+  "Exact stellar luminosity L_* used for the passive disc temperature prior",
+  "Vertical temperature/scale-height profile prescription used to initialize the gas pressure bumps and RADMC3D vertical grid"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The calibration, self-calibration, uv-tapering, Frankenstein hyper-parameters, MCMC priors/bounds, and Dustpy/RADMC3D setup are thoroughly documented, and the dust-property fitting code is on GitHub; minor deductions for unstated tclean cell/imsize and because self-calibrated MS files require author request or full re-reduction from raw archive data.",
+ "rediscovery_reason": "Raw ALMA data are public, the self-calibration and Frankenstein/MCMC analysis steps are well specified with open-source tools (including the author's GitHub code), and key results (ring radii, FWHMs, FWHM-frequency slopes, fluxes, spectral indices, and dust masses) are quantitative.",
+ "source_card": "cards/2025MNRAS.538.2358S/sonnet/card.md"
+}

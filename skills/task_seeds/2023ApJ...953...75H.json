@@ -1,0 +1,583 @@
+{
+ "bibcode": "2023ApJ...953...75H",
+ "title": "Characterizing CO Emitters in the SSA22-AzTEC26 Field",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/ace0c0",
+ "arxiv_id": "2301.09296",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Characterize the physical properties and molecular gas content of four serendipitous CO emitters detected in a blind line search around the SMG SSA22-AzTEC26.",
+ "alma_project_codes": [
+  "2019.1.01102.S",
+  "2021.1.01207.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 7 (3 mm, 2 mm, 860 um)",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3: 3.80'' x 2.45'' to 4.38'' x 3.65''; Band 4: 0.87'' x 0.79'' to 0.96'' x 0.88''; Band 7: 0.63'' x 0.52''",
+  "sensitivity": "Band 3 cube: 0.06-0.18 mJy/beam; Band 4 cube: 0.05-0.09 mJy/beam; Band 7 continuum: 0.09 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Positions of 1.1 mm continuum sources detected by ALMA in the SSA22 field used for astrometry correction",
+    "evidence": [
+     {
+      "loc": "Optical and NIR data",
+      "quote": "The astrometry is corrected by stacking cutout images at the positions of 1.1 mm continuum sources detected by ALMA in the SSA22 field (B. Hatsukade, private communication) and fitting a 2D circular Gaussian profile to the stacked image"
+     }
+    ]
+   },
+   "citation": "B. Hatsukade, private communication"
+  },
+  {
+   "what": {
+    "value": "Multiwavelength images from u to PLW bands in the SSA22 field",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: “-\" means the same as the previous band. 1: K. Mawatari, private communication; 2: (cite: 2011MNRAS.412.2579N); 3: (cite: 2004AJ....128.2073H); 4: (cite: 2009ApJ...692.1287I); 5: (cite: 2012AJ....143...79Y); 6: (cite: 2018PASJ...70S...8A) 7: (cite: 2007MNRAS.379.1599L); 8: (cite: 2009ApJ...692.1561W);"
+     }
+    ]
+   },
+   "citation": "K. Mawatari, private communication; (cite: 2011MNRAS.412.2579N); (cite: 2004AJ....128.2073H); (cite: 2009ApJ...692.1287I); (cite: 2012AJ....143...79Y); (cite: 2018PASJ...70S...8A); (cite: 2007MNRAS.379.1599L); (cite: 2009ApJ...692.1561W); (cite: 2016MNRAS.460.3861K)"
+  },
+  {
+   "what": {
+    "value": "ASPECS-LP CO-selected galaxy sample and PHIBSS1/Tacconi et al. (2018) SFG comparison samples",
+    "evidence": [
+     {
+      "loc": "Stellar Mass and SFR from SED Modeling",
+      "quote": "For comparison, we also show the CO-selected galaxy sample from ASPECS-LP (cite: 2019ApJ...882..140B) that surveyed a larger area at a similar depth."
+     },
+     {
+      "loc": "Comparison with Gas Scaling Relations",
+      "quote": "The SFG sample is collected from (cite: 2018ApJ...853..179T), which uses the (cite: 2015ApJ...800...20G) metallicity-dependent prescription—$\\alpha_\\mathrm{CO}=3.8-12.4$ $M_\\odot$(K km s$^{-1}$ pc$^{2}$)$^{-1}$ for $z=0-4$ and $\\log(M_\\star/M_\\odot)=9-12$."
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...882..140B); (cite: 2018ApJ...853..179T); (cite: 2019ApJ...882..136A)"
+  },
+  {
+   "what": {
+    "value": "JVLA 3 GHz upper limit in the SSA22 field",
+    "evidence": [
+     {
+      "loc": "Caveats of Galaxy 4's SFR Estimate",
+      "quote": "A similar constraint on SFR can be obtained from JVLA 3 GHz observations (cite: 2017ApJ...850..178A) of the SSA22 field."
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJ...850..178A)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce ALMA data and create spectral cubes and continuum images",
+   "method": "Calibrate and image Band 3, 4, and 7 data using CASA tclean with natural weighting and 100 km s^-1 channel width.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting; channel width = 100 km s^-1; minimum PB response = 20%"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Blind search for emission line sources and measure line and continuum fluxes",
+   "method": "Smooth Band 3 cube with 300 km s^-1 FWHM Gaussian filter, mask central SMG, detect positive and negative peaks above S/N = 1.5 with DAOStarFinder, evaluate purity to set S/N > 5.2 threshold, fit 1D Gaussian to spectra and 2D Gaussian to moment-0 maps.",
+   "software": [
+    "photutils"
+   ],
+   "key_parameters": [
+    "Gaussian filter FWHM = 300 km s^-1; detection threshold S/N > 5.2 (purity = 83%, a = 4.72, b = 0.71); moment-0 integration range = +/- FWHM from line center"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract multiwavelength optical, NIR, MIR, and FIR photometry and deblend source 4",
+   "method": "Correct astrometry by stacking at 1.1 mm ALMA positions; measure 2'' aperture photometry in u-to-K with PSFEx aperture correction; deblend source 4 and two neighboring clumps with 2D Sersic modeling in dynesty; perform iterative point-source decomposition for IRAC and prior-based PSF fitting for MIPS and SPIRE.",
+   "software": [
+    "PSFEx",
+    "photutils",
+    "dynesty",
+    "SExtractor"
+   ],
+   "key_parameters": [
+    "Optical/NIR aperture diameter = 2''; 1000 random blank apertures for error; Sersic priors n in [0, 6], Re in [0.1, 5 a_image] pixels (pixel size 0.2''); IRAC association radius = 1''"
+   ],
+   "assumptions": [
+    "Schlegel et al. (1998) dust map and Cardelli et al. (1989) Milky Way extinction curve; two blue neighboring sources near source 4 treated as foreground galaxies."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Determine photometric redshifts, identify spectral lines, and fit UV-to-FIR SEDs",
+   "method": "Model UV-to-FIR SEDs using Prospector methodology implemented with CIGALE models and EAZY to get photometric redshift PDFs, match with candidate CO/[CI] transitions to get spectroscopic redshifts, then refit SEDs at fixed z_CO including ALMA continuum fluxes.",
+   "software": [
+    "prospector",
+    "CIGALE",
+    "EAZY"
+   ],
+   "key_parameters": [
+    "Flat priors: beta in [-0.7, 0.4], E(B-V) in [0, 10], redshift z in [0, 8]; SFR averaged over past 30 Myr"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF; Planck 2018 cosmology; two Noll et al. (2009) / Calzetti et al. (2000) modified dust attenuation curves with old-star attenuation forced smaller than young-star attenuation; nonparametric SFH."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate CO and [CI] line luminosities and derive molecular gas masses",
+   "method": "Convert velocity-integrated line fluxes to line luminosities L' following Solomon & Vanden Bout (2005), convert excited CO to CO(1-0) using normal SFG excitation ratios, and multiply by alpha_CO (and alpha_[CI] for galaxy 1).",
+   "software": [],
+   "key_parameters": [
+    "r_21 = 0.76 +/- 0.09; r_31 = 0.42 +/- 0.07; alpha_CO = 3.6 M_sun (K km s^-1 pc^2)^-1; X_CI = 10^-4.8; Q_10 = 0.35"
+   ],
+   "assumptions": [
+    "Normal SFG CO excitation and conversion factor (also tested SMG-like alpha_CO = 1.36, r_21 = 0.84, r_31 = 0.52, X_CI = 10^-4.2, Q_10 = 0.48)."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Source 1 CO(3-2) observed frequency",
+   "value": "110.698",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 | 22:17:12.36 | 00:26:43.59 | 110.698 | 5.9 | 697$\\pm$153 | 0.569$\\pm$0.075 | $14.8\\pm2.4$ | $90\\pm18$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 CO(3-2) velocity-integrated flux",
+   "value": "0.569",
+   "uncertainty": "0.075",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 | 22:17:12.36 | 00:26:43.59 | 110.698 | 5.9 | 697$\\pm$153 | 0.569$\\pm$0.075 | $14.8\\pm2.4$ | $90\\pm18$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 CO(3-2) FWHM",
+   "value": "697",
+   "uncertainty": "153",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 | 22:17:12.36 | 00:26:43.59 | 110.698 | 5.9 | 697$\\pm$153 | 0.569$\\pm$0.075 | $14.8\\pm2.4$ | $90\\pm18$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 3mm continuum flux density",
+   "value": "14.8",
+   "uncertainty": "2.4",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 | 22:17:12.36 | 00:26:43.59 | 110.698 | 5.9 | 697$\\pm$153 | 0.569$\\pm$0.075 | $14.8\\pm2.4$ | $90\\pm18$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 2mm continuum flux density",
+   "value": "90",
+   "uncertainty": "18",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 | 22:17:12.36 | 00:26:43.59 | 110.698 | 5.9 | 697$\\pm$153 | 0.569$\\pm$0.075 | $14.8\\pm2.4$ | $90\\pm18$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 [CI](1-0) velocity-integrated flux (157.548 GHz)",
+   "value": "0.320",
+   "uncertainty": "0.044",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Source 1 has another line detection at 157.548 GHz, with $S\\Delta v=0.320\\pm0.044$ Jy km s$^{-1}$ and FWHM of $683\\pm201$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 CO(2-1) observed frequency",
+   "value": "109.151",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 | 22:17:13.00 | 00:26:54.06 | 109.151 | 7.8 | 635$\\pm$137 | 0.358$\\pm$0.036 | $<13$ | $39\\pm7.3$ | $0.815\\pm0.194$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 CO(2-1) velocity-integrated flux",
+   "value": "0.358",
+   "uncertainty": "0.036",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 | 22:17:13.00 | 00:26:54.06 | 109.151 | 7.8 | 635$\\pm$137 | 0.358$\\pm$0.036 | $<13$ | $39\\pm7.3$ | $0.815\\pm0.194$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 2mm continuum flux density",
+   "value": "39",
+   "uncertainty": "7.3",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 | 22:17:13.00 | 00:26:54.06 | 109.151 | 7.8 | 635$\\pm$137 | 0.358$\\pm$0.036 | $<13$ | $39\\pm7.3$ | $0.815\\pm0.194$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 860 um continuum flux density",
+   "value": "0.815",
+   "uncertainty": "0.194",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 | 22:17:13.00 | 00:26:54.06 | 109.151 | 7.8 | 635$\\pm$137 | 0.358$\\pm$0.036 | $<13$ | $39\\pm7.3$ | $0.815\\pm0.194$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 3 line observed frequency",
+   "value": "91.785",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 3 | 22:17:15.01 | 00:27:13.32 | 91.785 | 7.3 | 252$\\pm$85 | 0.450$\\pm$0.075 | $21.7\\pm3.1$ | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 3 velocity-integrated line flux",
+   "value": "0.450",
+   "uncertainty": "0.075",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 3 | 22:17:15.01 | 00:27:13.32 | 91.785 | 7.3 | 252$\\pm$85 | 0.450$\\pm$0.075 | $21.7\\pm3.1$ | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 3 3mm continuum flux density",
+   "value": "21.7",
+   "uncertainty": "3.1",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 3 | 22:17:15.01 | 00:27:13.32 | 91.785 | 7.3 | 252$\\pm$85 | 0.450$\\pm$0.075 | $21.7\\pm3.1$ | \\- | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 CO(2-1) observed frequency",
+   "value": "107.414",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 4 | 22:17:11.93 | 00:27:14.82 | 107.414 | 5.5 | 630$\\pm$123 | 0.713$\\pm$0.141 | $<27$ | $<100$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 CO(2-1) velocity-integrated flux",
+   "value": "0.713",
+   "uncertainty": "0.141",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 4 | 22:17:11.93 | 00:27:14.82 | 107.414 | 5.5 | 630$\\pm$123 | 0.713$\\pm$0.141 | $<27$ | $<100$ | \\- |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 CO(3-2) luminosity L'_CO(3-2)",
+   "value": "1.45",
+   "uncertainty": "0.19",
+   "units": "10^10 K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 1 | 3-2 | 2.124 | $1.45\\pm0.19$ | $12.5\\pm1.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 CO-based molecular gas mass M_mol",
+   "value": "12.5",
+   "uncertainty": "1.6",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 1 | 3-2 | 2.124 | $1.45\\pm0.19$ | $12.5\\pm1.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 [CI](1-0)-based molecular gas mass M_mol",
+   "value": "9.4",
+   "uncertainty": "1.3",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Alternatively, galaxy 1 has $M_\\mathrm{mol}=(9.4\\pm1.3)\\times10^{10}M_\\odot$ based on its \\[CI\\](1-0) line luminosity $L'_\\mathrm{[CI](1-0)}=(4.04\\pm0.55)\\times10^9$ K km s$^{-1}$ pc$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 CO(2-1) luminosity L'_CO(2-1)",
+   "value": "0.62",
+   "uncertainty": "0.06",
+   "units": "10^10 K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2 | 2-1 | 1.113 | $0.62\\pm0.06$ | $2.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 CO-based molecular gas mass M_mol",
+   "value": "2.9",
+   "uncertainty": "0.3",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2 | 2-1 | 1.113 | $0.62\\pm0.06$ | $2.9\\pm0.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 CO(2-1) luminosity L'_CO(2-1)",
+   "value": "1.31",
+   "uncertainty": "0.26",
+   "units": "10^10 K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 4 | 2-1 | 1.146 | $1.31\\pm0.26$ | $6.2\\pm1.2$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 CO-based molecular gas mass M_mol",
+   "value": "6.2",
+   "uncertainty": "1.2",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 4 | 2-1 | 1.146 | $1.31\\pm0.26$ | $6.2\\pm1.2$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 stellar mass M_star",
+   "value": "9.73",
+   "uncertainty": "+2.22/-2.47",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 1 | $9.73^{+2.22}_{-2.47}$ | $126^{+37}_{-54}$ | $3.13^{+0.61}_{-0.54}$ | $12.79^{+2.90}_{-4.00}$ | $2.39^{+0.16}_{-0.25}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 star formation rate SFR",
+   "value": "126",
+   "uncertainty": "+37/-54",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 1 | $9.73^{+2.22}_{-2.47}$ | $126^{+37}_{-54}$ | $3.13^{+0.61}_{-0.54}$ | $12.79^{+2.90}_{-4.00}$ | $2.39^{+0.16}_{-0.25}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 stellar mass M_star",
+   "value": "4.60",
+   "uncertainty": "+1.39/-1.00",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2 | $4.60^{+1.39}_{-1.00}$ | $22^{+12}_{-8}$ | $2.35^{+0.54}_{-0.52}$ | $2.97^{+1.36}_{-0.69}$ | $2.15^{+0.29}_{-0.30}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 star formation rate SFR",
+   "value": "22",
+   "uncertainty": "+12/-8",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 2 | $4.60^{+1.39}_{-1.00}$ | $22^{+12}_{-8}$ | $2.35^{+0.54}_{-0.52}$ | $2.97^{+1.36}_{-0.69}$ | $2.15^{+0.29}_{-0.30}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 stellar mass M_star",
+   "value": "21.98",
+   "uncertainty": "+3.92/-3.88",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 4 | $21.98^{+3.92}_{-3.88}$ | $0.7^{+0.8}_{-0.6}$ | $0.27^{+0.92}_{-0.01}$ | $1.27^{+0.29}_{-0.27}$ | $1.28^{+0.18}_{-0.20}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 star formation rate SFR",
+   "value": "0.7",
+   "uncertainty": "+0.8/-0.6",
+   "units": "M_sun yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 4 | $21.98^{+3.92}_{-3.88}$ | $0.7^{+0.8}_{-0.6}$ | $0.27^{+0.92}_{-0.01}$ | $1.27^{+0.29}_{-0.27}$ | $1.28^{+0.18}_{-0.20}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 1 gas ratio mu_mol",
+   "value": "1.28",
+   "uncertainty": "+0.49/-0.29",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison with Gas Scaling Relations",
+     "quote": "At $z>2$, the median gas ratio of PHIBSS1 galaxies is 1.26, comparable with $\\mu_\\mathrm{mol}=1.28_{-0.29}^{+0.49}$ for galaxy 1, as at this redshift their SFR and $M_\\star$ cuts do not bias the sample to galaxies above the MS."
+    }
+   ]
+  },
+  {
+   "quantity": "Source 2 gas ratio mu_mol",
+   "value": "0.63",
+   "uncertainty": "+0.20/-0.15",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison with Gas Scaling Relations",
+     "quote": "This is higher than $\\mu_\\mathrm{mol}=0.63_{-0.15}^{+0.20}$ of galaxy 2 or $0.28_{-0.06}^{+0.09}$ of galaxy 4."
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 gas ratio mu_mol",
+   "value": "0.28",
+   "uncertainty": "+0.09/-0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison with Gas Scaling Relations",
+     "quote": "This is higher than $\\mu_\\mathrm{mol}=0.63_{-0.15}^{+0.20}$ of galaxy 2 or $0.28_{-0.06}^{+0.09}$ of galaxy 4."
+    }
+   ]
+  },
+  {
+   "quantity": "Source 4 star formation efficiency SFE",
+   "value": "1.15e-11",
+   "uncertainty": "+1.44e-11/-0.89e-11",
+   "units": "yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Large Gas Reservoir in a Massive Galaxy below the MS?",
+     "quote": "With the results, we infer a very low star formation efficiency (SFE) of galaxy 4 with SFE$=1/t_\\mathrm{dep}=1.15^{+1.44}_{-0.89}\\times10^{-11}$ yr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version used for calibration and imaging",
+  "Pixel cell size, image dimensions in pixels, and cleaning threshold/stopping criteria in tclean",
+  "Whether continuum subtraction (e.g., uvcontsub) was performed on the spectral cubes before line search",
+  "Exact mask radius or region used to mask the central SMG SSA22-AzTEC26 in the Band 3 cube",
+  "Catalog of 1.1 mm ALMA continuum source positions from B. Hatsukade (private communication) used for astrometric registration and FIR prior deblending",
+  "Proprietary CFHT/MegaCam u-band image from K. Mawatari (private communication)"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, calibration scripts, and tclean imaging parameters (cell size, image size in pixels, stopping criteria)",
+  "Exact mask definition for masking the central SMG SSA22-AzTEC26 in the Band 3 cube",
+  "Private communication datasets: CFHT/MegaCam u-band image (K. Mawatari) and ALMA 1.1 mm source catalog in SSA22 (B. Hatsukade)",
+  "Custom scripts for IRAC point-source decomposition, MIPS/SPIRE Bayesian PSF deblending, and CIGALE/Prospector SED setup"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "ALMA project codes, calibrators, spectral setups, line search algorithm, multiwavelength flux tables (Table 1 and Table 2), and SED fitting priors are clearly documented, allowing full reproduction of the line detection, SED modeling, and gas mass calculations once cubes are imaged; however, some tclean parameters and two private-communication ancillary datasets are not publicly provided.",
+ "rediscovery_reason": "The ALMA datasets (2019.1.01102.S and 2021.1.01207.S) are public in the ALMA archive, the blind line search recipe (100 km/s channel cube, natural weighting, 300 km/s Gaussian smoothing, DAOStarFinder at S/N > 5.2) is explicit, the extracted multiwavelength photometry is tabulated in Table 2, and all key results (frequencies, line fluxes, M_star, SFR, M_mol) are quantitative.",
+ "source_card": "cards/2023ApJ...953...75H/sonnet/card.md"
+}

@@ -1,0 +1,595 @@
+{
+ "bibcode": "2020MNRAS.495.3409S",
+ "title": "An ALMA survey of the brightest sub-millimetre sources in the SCUBA-2-COSMOS field",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1345",
+ "arxiv_id": "2003.05484",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Using ALMA 870-um continuum maps of the brightest SCUBA-2 sources in COSMOS: what is the intrinsic bright-end 870-um number count, how much does blending/multiplicity affect single-dish sources, and what is the photometric redshift distribution of the brightest SMGs",
+ "alma_project_codes": [
+  "2016.1.00463.S",
+  "2013.1.00034.S",
+  "2013.1.01292.S",
+  "2015.1.00568.S",
+  "2015.1.01074.S",
+  "2015.1.00137.S",
+  "2016.1.00478.S",
+  "2016.1.01604.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um, 343 GHz)",
+  "arrays": "12 m array, 46 and 48 antennae",
+  "angular_resolution": "uv-tapered to synthesized beam FWHM ~0.8 arcsec; median beam 0.80 x 0.79 arcsec",
+  "sensitivity": "1-sigma 0.11-0.22 mJy/beam, median 0.19 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "S2COSMOS main source catalogue (183 sources, deboosted/deblended 850-um fluxes) used as the parent sample",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "The final S2COSMOS main source catalogue contains 183 sources with deboosted/deblended"
+     }
+    ]
+   },
+   "citation": "(cite: Simpson19)"
+  },
+  {
+   "what": {
+    "value": "COSMOS2015 optical-to-near-infrared photometry",
+    "evidence": [
+     {
+      "loc": "2.5 Optical-to-Near-infrared imaging",
+      "quote": "The COSMOS2015 catalogue (cite: Laigle16) includes 27-band, optical-to-near-infrared photometry"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle16)"
+  },
+  {
+   "what": {
+    "value": "super-deblended 24-160 um photometry",
+    "evidence": [
+     {
+      "loc": "Far-infrared imaging",
+      "quote": "which contains deblended 24–160"
+     }
+    ]
+   },
+   "citation": "(cite: Jin18)"
+  },
+  {
+   "what": {
+    "value": "VLA 3 GHz source catalogue",
+    "evidence": [
+     {
+      "loc": "Radio",
+      "quote": "we use the source catalogue presented by (cite: Smolcic17), which contains total flux densities for 10,830 sources"
+     }
+    ]
+   },
+   "citation": "(cite: Smolcic17)"
+  },
+  {
+   "what": {
+    "value": "submm number counts used as input flux distribution for simulations",
+    "evidence": [
+     {
+      "loc": "2.3 Flux Estimation",
+      "quote": "is randomly sampled from the parameterised estimate of the sub- / millimetre counts presented by (cite: Hatsukade18)"
+     }
+    ]
+   },
+   "citation": "(cite: Hatsukade18)"
+  },
+  {
+   "what": {
+    "value": "Sersic index n = 1 and size distribution of 154 AS2UDS SMGs",
+    "evidence": [
+     {
+      "loc": "2.3 Flux Estimation",
+      "quote": "the median best-fit value for 154 of the brighter AS2UDS SMGs"
+     }
+    ]
+   },
+   "citation": "(cite: Gullberg19)"
+  },
+  {
+   "what": {
+    "value": "literature 870-um counts (AS2UDS, ALESS) included in the Schechter fit",
+    "evidence": [
+     {
+      "loc": "3.1 Number counts",
+      "quote": "from the AS2UDS and ALESS surveys (cite: Karim13; Stach18)"
+     }
+    ]
+   },
+   "citation": "(cite: Karim13; Stach18)"
+  },
+  {
+   "what": {
+    "value": "lens amplifications of AS2COS 0001.1 and 0001.2 (not corrected for)",
+    "evidence": [
+     {
+      "loc": "3.4 AS2COS 0001.1 & 0001.2",
+      "quote": "as estimated (cite: JimenezAndrade20)"
+     }
+    ]
+   },
+   "citation": "(cite: JimenezAndrade20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and combine measurement sets",
+   "method": "CASA 5.1.1 standard pipeline calibration, visual inspection, concat per target; archival data re-calibrated the same way",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "phase calibrator J 0948+0022 on a 7 min cycle; flux and bandpass on J 1058+0133"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image the continuum maps",
+   "method": "tclean with Briggs weighting, Gaussian uv taper to common ~0.8 arcsec beam, two-step auto-masked clean",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5",
+    "second clean: sources >= 4.25 sigma cleaned to 1 sigma with auto-masking",
+    "map sensitivity estimated by iterative sigma-clipping"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "extract the source catalogue",
+   "method": "SExtractor >2 sigma peaks in non-primary-beam-corrected maps, peak and aperture flux; significance cut set where inverted-map false detections reach zero",
+   "software": [
+    "SExtractor"
+   ],
+   "key_parameters": [
+    "aperture diameter 1.5 x synthesized beam major-axis FWHM",
+    "within primary beam: peak > 4.8 sigma or aperture > 4.9 sigma",
+    "aperture-flux uncertainty from 100 random apertures on source-subtracted maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "measure total flux densities and correct flux boosting",
+   "method": "uv-plane fit of Sersic profiles with proFit + galario + lmfit; correction from simulated injections",
+   "software": [
+    "CASA",
+    "proFit",
+    "galario",
+    "lmfit"
+   ],
+   "key_parameters": [
+    "five free parameters: R.A., Dec., flux density, half-light radius, axial ratio",
+    "optimisation repeated ten times from random starting values; lowest chi-square kept",
+    "boosting correction from running median of recovered/input flux vs detection significance"
+   ],
+   "assumptions": [
+    "Sersic index fixed at n = 1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "estimate completeness of the ALMA survey",
+   "method": "Monte Carlo injection of model sources with random sizes and fluxes into residual maps, then rerun detection and modelling",
+   "software": [],
+   "key_parameters": [
+    "axial ratio uniform 0-1; half-light radius uniform 0.05-0.30 arcsec"
+   ],
+   "assumptions": [
+    "input fluxes sampled from the Hatsukade et al. counts with low flux cut-off 0.05 mJy"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "compare ALMA and SCUBA-2 flux scales with end-to-end simulations",
+   "method": "convolve ALMA model images with the SCUBA-2 beam; compare to observed and deboosted SCUBA-2 fluxes; 100 end-to-end S2COSMOS simulations to separate Eddington bias from line-of-sight multiplicity",
+   "software": [],
+   "key_parameters": [
+    "emitters >= 0.05 mJy injected within 8.7 arcsec of recovered SCUBA-2 positions"
+   ],
+   "assumptions": [
+    "input counts model is the best-fit Schechter parameterisation (no clustering)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "assemble multiwavelength photometry",
+   "method": "cross-match ALMA positions with COSMOS2015, HSC, IRAC (iraclean deblending), MIPS/PACS (super-deblended), SPIRE (prior-based deblending), VLA 3 GHz and Chandra catalogues",
+   "software": [
+    "iraclean",
+    "casa / imfit"
+   ],
+   "key_parameters": [
+    "optical/near-IR matching radius 0.85 arcsec (false-match ~6.6 per cent)",
+    "3 GHz matching radius 1 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "SED fitting and photometric redshifts",
+   "method": "magphys energy-balance SED fitting to the multiwavelength photometry, median of redshift PDF",
+   "software": [
+    "magphys"
+   ],
+   "key_parameters": [
+    "latest magphys version (Battisti et al.), optimised for high-redshift star-forming galaxies, fits redshift"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "derive 870-um number counts and fit a Schechter function",
+   "method": "completeness-corrected cumulative and differential counts over 1.6 deg^2; Schechter fit jointly to AS2COSMOS and literature ALMA counts",
+   "software": [],
+   "key_parameters": [
+    "10^4 catalogue realisations with fluxes perturbed by their uncertainties, combined with Poisson errors"
+   ],
+   "assumptions": [
+    "1.2-mm ASAGAO counts converted to 870 um with a modified blackbody, beta = 1.8, T = 32 K, z = 2.6"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "estimate cosmic variance in the counts",
+   "method": "split AS2COSMOS + AS2UDS into 26 sub-regions of ~0.1 deg^2, combine into 0.1-0.8 deg^2 surveys, subtract Poisson and statistical variance, compare with galform",
+   "software": [
+    "galform"
+   ],
+   "key_parameters": [
+    "10^3 Monte Carlo realisations per sub-field for the statistical uncertainty; Gehrels Poisson errors"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 11,
+   "goal": "measure multiplicity and physical association of SMG pairs",
+   "method": "count SCUBA-2 sources with two or more SMGs (S870 >= 1 mJy) in the ALMA primary beam; compare with the unclustered end-to-end simulation to infer the physically associated fraction",
+   "software": [],
+   "key_parameters": [
+    "primary beam radius 8.7 arcsec"
+   ],
+   "assumptions": [
+    "simulation input has no clustering, so all simulated multiples are line-of-sight chance associations"
+   ]
+  },
+  {
+   "order": 12,
+   "goal": "analyse serendipitous [CII] emission in AS2COS 0001.1 and 0001.2",
+   "method": "taper cube to 0.4 arcsec beam, clean as for continuum, Gaussian fits per spaxel with adaptive binning for kinematic maps; infer association from velocity and projected separation versus a 10^13 Msun NFW halo",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "taper to 0.4 arcsec FWHM synthesized beam; median 1.0 mJy/beam per 32 MHz channel",
+    "adaptive binning to max 1.5 x beam FWHM until SNR > 5"
+   ],
+   "assumptions": [
+    "[CII] is the most likely line identification (later confirmed by CO(5-4) from another paper); lensing amplification not corrected",
+    "pairs in a ~10^13 Msun NFW halo have ~700 km/s velocity separation at ~20 kpc projected separation (following Wardlow et al.)"
+   ]
+  },
+  {
+   "order": 13,
+   "goal": "redshift distribution and redshift-flux trend",
+   "method": "median magphys photometric redshifts for AS2COSMOS and combined AS2COSMOS+AS2UDS, gradient of z with S870",
+   "software": [
+    "magphys"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "number of SMGs detected in the 182 ALMA maps",
+   "value": "260",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 Source Extraction",
+     "quote": "Overall, our pilot survey of 182 S2COSMOS sources yields a sample of 260 AS2COSMOS SMGs"
+    }
+   ]
+  },
+  {
+   "quantity": "median synthesized beam (FWHM)",
+   "value": "0.80 x 0.79",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA Data Reduction",
+     "quote": "the AS2COSMOS pilot sample has a median synthesized beam of 0.80"
+    }
+   ]
+  },
+  {
+   "quantity": "median map sensitivity",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA Data Reduction",
+     "quote": "a median sensitivity of $\\sigma_{870\\mu \\rm m}$ = 0.19 mJy beam"
+    }
+   ]
+  },
+  {
+   "quantity": "flux boosting of a 4.8 sigma source",
+   "value": "15 per cent",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 Flux Estimation",
+     "quote": "On average the recovered flux density of a 4.8 $\\sigma$ source in our simulation is boosted by 15 per cent"
+    }
+   ]
+  },
+  {
+   "quantity": "average aperture correction",
+   "value": "1.44",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.3 Flux Estimation",
+     "quote": "average aperture correction of 1.44 $\\pm$ 0.01"
+    }
+   ]
+  },
+  {
+   "quantity": "median convolved ALMA / deboosted SCUBA-2 flux ratio",
+   "value": "0.99",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "2.4 Completeness and Flux Recovery",
+     "quote": "we find a median ratio of convolved ALMA to deboosted SCUBA-2 flux density of 0.99 $\\pm$ 0.01"
+    }
+   ]
+  },
+  {
+   "quantity": "cumulative 870-um count N(>6.2 mJy)",
+   "value": "130",
+   "uncertainty": "+13/-12",
+   "units": "deg^-2",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "130$^{+13}_{-12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Schechter normalisation N0",
+   "value": "2770",
+   "uncertainty": "+1560/-650",
+   "units": "deg^-2",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.1 Number counts",
+     "quote": "and determine best-fit parameters of $N_{0}$ = 2770$^{+1560}_{-650}$ deg$^{-2}$, $S_{0}$ = $4.2^{+0.5}_{-0.8}$ mJy, and $\\gamma$ = 2.3$^{+0.1}_{-0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Schechter characteristic flux S0",
+   "value": "4.2",
+   "uncertainty": "+0.5/-0.8",
+   "units": "mJy",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.1 Number counts",
+     "quote": "and determine best-fit parameters of $N_{0}$ = 2770$^{+1560}_{-650}$ deg$^{-2}$, $S_{0}$ = $4.2^{+0.5}_{-0.8}$ mJy, and $\\gamma$ = 2.3$^{+0.1}_{-0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Schechter slope gamma",
+   "value": "2.3",
+   "uncertainty": "+0.1/-0.3",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.1 Number counts",
+     "quote": "and determine best-fit parameters of $N_{0}$ = 2770$^{+1560}_{-650}$ deg$^{-2}$, $S_{0}$ = $4.2^{+0.5}_{-0.8}$ mJy, and $\\gamma$ = 2.3$^{+0.1}_{-0.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "total normalised count variance at S870 > 6.2 mJy over 0.1 deg^2",
+   "value": "48",
+   "uncertainty": "6",
+   "units": "per cent",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "3.2 Cosmic Variance",
+     "quote": "decreases from 48 $\\pm$ 6 per cent over survey regions of 0.1 deg$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "multiplicity fraction of SCUBA-2 sources (>= 2 SMGs above 1 mJy)",
+   "value": "34",
+   "uncertainty": "2",
+   "units": "per cent",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "3.3 Multiplicity",
+     "quote": "corresponding to a multiplicity fraction for the sample of 34 $\\pm$ 2 per cent"
+    }
+   ]
+  },
+  {
+   "quantity": "multiplicity rate for combined AS2COSMOS+AS2UDS sources above 12 mJy",
+   "value": "53",
+   "uncertainty": "8",
+   "units": "per cent",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "3.3 Multiplicity",
+     "quote": "there is a statistically-significant increase in the multiplicity rate to 53 $\\pm$ 8 per cent for sources at $>$ 12 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "multiplicity expected from line-of-sight projection in the unclustered simulation",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "3.3 Multiplicity",
+     "quote": "we estimate that 23 per cent of simulated SCUBA-2 sources with flux densities $>$ 6.2 mJy would be classed as multiples"
+    }
+   ]
+  },
+  {
+   "quantity": "excess of secondary SMGs above 3 mJy relative to an unclustered population",
+   "value": "2.6",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "3.3 Multiplicity",
+     "quote": "we estimate that this is a factor of 2.6 $\\pm$ 0.5 $\\times$ higher than expected from an unclustered population"
+    }
+   ]
+  },
+  {
+   "quantity": "redshift of AS2COS 0001.1 and 0001.2 from [CII]",
+   "value": "4.624 and 4.635",
+   "uncertainty": "0.001 each",
+   "units": "dimensionless",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "3.4 AS2COS 0001.1 & 0001.2",
+     "quote": "$z$ = 4.624 $\\pm$ 0.001 and 4.635 $\\pm$ 0.001, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "velocity separation of AS2COS 0001.1 and 0001.2",
+   "value": "590",
+   "uncertainty": "40",
+   "units": "km/s",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "3.4 AS2COS 0001.1 & 0001.2",
+     "quote": "corresponds to a velocity separation of 590 $\\pm$ 40 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "median photometric redshift, full AS2COSMOS sample",
+   "value": "2.68",
+   "uncertainty": "0.07",
+   "units": "dimensionless",
+   "from_step": 13,
+   "evidence": [
+    {
+     "loc": "3.5 Redshift distribution and evolution",
+     "quote": "We determine a median redshift for the full sample of AS2COSMOS SMGs of $z=$ 2.68 $\\pm$ 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "median photometric redshift, S870 > 6.2 mJy",
+   "value": "2.87",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 13,
+   "evidence": [
+    {
+     "loc": "3.5 Redshift distribution and evolution",
+     "quote": "having a median redshift of $z=$ 2.87 $\\pm$ 0.08"
+    }
+   ]
+  },
+  {
+   "quantity": "median photometric redshift of the twenty SMGs above 12 mJy",
+   "value": "3.24",
+   "uncertainty": "0.19",
+   "units": "dimensionless",
+   "from_step": 13,
+   "evidence": [
+    {
+     "loc": "3.5 Redshift distribution and evolution",
+     "quote": "we derive a median redshift of $z=$ 3.24 $\\pm$ 0.19 for the twenty AS2COSMOS SMGs with 870-$\\mu$m fluxes above 12 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "gradient of redshift with 870-um flux, combined AS2COSMOS+AS2UDS",
+   "value": "0.06",
+   "uncertainty": "0.01",
+   "units": "mJy^-1",
+   "from_step": 13,
+   "evidence": [
+    {
+     "loc": "3.5 Redshift distribution and evolution",
+     "quote": "we measurement a gradient of the trend in redshift with 870-$\\mu$m flux of 0.06 $\\pm$ 0.01 mJy$^{-1}$ for the combined sample"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean deconvolver, specmode/gridder, niter and the auto-masking parameters (sidelobethreshold, noisethreshold, etc.) behind the sigma thresholds",
+  "the exact uv-taper applied to each of the 182 maps and the ALMA execution blocks / CASA pipeline versions used for each of the seven archival projects",
+  "which archival project corresponds to which of the 24 archival S2COSMOS sources",
+  "SExtractor configuration (detection kernel, deblending parameters) for the >2 sigma peak search",
+  "galario / lmfit settings (starting-value ranges, tolerances, how multi-source models are assembled) and the exact running-median binning for the flux-boosting correction",
+  "S2COSMOS SCUBA-2 catalogue and per-source deboosting factors (needed from Simpson et al. 2019); full AS2COSMOS catalogue is only in the online journal",
+  "magphys library, star-formation histories, priors, redshift grid and photometric error handling (deferred to Dudzeviciute et al. 2020 / Ikarashi et al. 2020)",
+  "binning and fitting algorithm (likelihood, optimiser) used for the Schechter fit and completeness curve used for the counts",
+  "line-free channel selection and line-fitting procedure for the [CII] cubes; galform light-cone configuration"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters beyond robust, thresholds and pixel scale; per-map uv-taper values",
+  "S2COSMOS SCUBA-2 catalogue/deboosting factors and the end-to-end simulation code from Simpson et al. 2019",
+  "magphys configuration and multiwavelength photometry tables (in Ikarashi et al. 2020)",
+  "mapping between the seven archival projects and the 24 sources, and their pipeline versions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA continuum steps (pipeline, tclean robust 0.5, taper to ~0.8 arcsec, SExtractor thresholds, Sersic uv-fit) and counts/multiplicity numbers are given with numeric results, but the parent catalogue, tclean details, SED-fit settings and several simulation details are deferred to other papers.",
+ "rediscovery_reason": "Archival projects are stated to be public and the continuum imaging, source extraction, flux fitting, counts and multiplicity recipe is largely complete with numeric answers; the SED/photo-z part is not self-contained.",
+ "source_card": "cards/2020MNRAS.495.3409S/sonnet/card.md"
+}

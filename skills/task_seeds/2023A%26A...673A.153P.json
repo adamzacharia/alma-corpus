@@ -1,0 +1,318 @@
+{
+ "bibcode": "2023A&A...673A.153P",
+ "title": "ALMA hints at the presence of turbulent disk galaxies at z &gt; 5",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245603",
+ "arxiv_id": "2304.00036",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Determine whether galaxies in the first billion years of the Universe have already formed a dynamically cold rotating disk similar to their local counterparts.",
+ "alma_project_codes": [
+  "2017.1.01052.S",
+  "2017.1.01471.S",
+  "2018.1.01359.S",
+  "2017.1.00508.S",
+  "2017.1.01451.S",
+  "2017.1.00604.S",
+  "2018.1.00429.S",
+  "2018.1.00085.S",
+  "2019.1.01634.L"
+ ],
+ "data": {
+  "bands": "Bands 5, 6, 7, or 8",
+  "arrays": "not stated",
+  "angular_resolution": "between 0.2'' and 1.5''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses, SFRs, and dust masses of the target sample collected from the literature",
+    "evidence": [
+     {
+      "loc": "Sample properties",
+      "quote": "The values of stellar mass, SFR, and dust mass were obtained from the literature (see Table \\[\\[tab:properties\\]\\](#tab:properties) for details)."
+     },
+     {
+      "loc": "Galaxy properties",
+      "quote": "Table \\[\\[tab:properties\\]\\](#tab:properties) lists the properties collected from the literature of the galaxies analyzed in this work."
+     }
+    ]
+   },
+   "citation": "(cite: Capak:2015; Willott:2015; Matthee:2017; Smit:2018; Harikane:2020; Herrera-Camus:2021; Fudamoto:2021; Bouwens:2022; Dayal:2022; Schouws:2022; Neeleman:2017; Lelli:2021; Gilli:2014; Pavesi:2019; Faisst:2020; Matthee:2019; Sommovigo:2022; Witstok:2022)"
+  },
+  {
+   "what": {
+    "value": "Kinematics and dust masses for comparison samples (ALPINE and DSFG)",
+    "evidence": [
+     {
+      "loc": "Velocity dispersion and $V_{\\rm max}/\\sigma_{\\rm gas}$ evolution with redshift",
+      "quote": "While our $V_{\\rm max}/\\sigma_{\\rm gas}$ ratios agreet with the estimates found for galaxies in the ALPINE survey (cite: Jones:2021), our analysis differs from the results determined in the sample of galaxies studied by (cite: Sharda:2019),(cite: Rizzo:2020), (cite: Rizzo:2021), (cite: Fraternali:2021) and (cite: Lelli:2021), hereafter the dusty star-forming galaxy (DSFG) sample (blue box at $4<z<5$)."
+     },
+     {
+      "loc": "Sample properties",
+      "quote": "The values of $M_{\\rm dust}$ were obtained from (cite: Pozzi:2021) and (cite: Bethermin:2020) for the ALPINE sample, and from (cite: Aravena:2016) for the DSFG."
+     }
+    ]
+   },
+   "citation": "(cite: Jones:2021; Sharda:2019; Rizzo:2020; Rizzo:2021; Fraternali:2021; Lelli:2021; Pozzi:2021; Bethermin:2020; Aravena:2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate moment maps and apply S/N masking",
+   "method": "Pixel-by-pixel Gaussian fitting on the datacube plus a constant for continuum residual to derive zeroth, first, and second moment maps, then mask pixels below S/N thresholds.",
+   "software": [],
+   "key_parameters": [
+    "5 sigma_flux threshold for [C II]; 3 sigma_flux threshold for [O III]; vmin and vmax at 16th and 84th percentiles of best-fitting Gaussian"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct 3D mock datacube kinematic models",
+   "method": "Generate 3D mock datacubes using KINMS with 5x10^5 line-emitting particles for an exponential disk (and optional Sérsic bulge for M* > 10^10 M_sun), convolved with the ALMA PSF.",
+   "software": [
+    "KINMS"
+   ],
+   "key_parameters": [
+    "5x10^5 particles; R0 = 5 kpc for disk mass M_d; Sérsic index n = 4 for bulge"
+   ],
+   "assumptions": [
+    "Thin exponential disk with constant mass-to-light ratio; negligible dark matter contribution within two scale radii; for disk+bulge model, bulge effective radius r_e = 0.5 r_d and bulge mass M_b = M_* from literature."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Method I: 2D kinematic fitting of resolved galaxies",
+   "method": "Three-step MCMC fitting of moment maps using EMCEE: (1) fit flux map for center (x0, y0) and scale radius (r_d) and fix them; (2) fit velocity map for v_sys, inc, PA, and M_rot; (3) fit all three moment maps simultaneously using step 2 results as priors, sampling uncorrelated pixels separated by more than the beam semi-major axis across 100 trials.",
+   "software": [
+    "EMCEE",
+    "KINMS"
+   ],
+   "key_parameters": [
+    "100 random pixel-extraction trials; 50% burn-in phase; median and 16th/84th percentiles for parameters and errors"
+   ],
+   "assumptions": [
+    "Pixels separated by a distance greater than the semi-major axis of the beam are uncorrelated."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Method II: 1D kinematic fitting of spatially integrated spectra for unresolved galaxies",
+   "method": "Fit the flux map to get scale radius r_d and initial inclination constraint; fix M_rot = M_* + M_gas (using alpha_[CII] = 30 M_sun/L_sun); fit spatially integrated spectrum with KINMS model spectrum using MCMC, then divide derived sigma_gas by empirical correction factor of 1.6.",
+   "software": [
+    "EMCEE",
+    "KINMS"
+   ],
+   "key_parameters": [
+    "alpha_[CII] = 30 M_sun/L_sun; correction factor = 1.6 on sigma_gas; flat prior on sigma_gas in [0, 300] km s^-1; flat prior on inc within +/- 3 sigma of flux-map fit"
+   ],
+   "assumptions": [
+    "M_rot = M_* + M_gas; alpha_[CII] = 30 M_sun/L_sun with 0.2 dex uncertainty."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median gas velocity dispersion at z > 5 (Method I)",
+   "value": "67",
+   "uncertainty": "+15/-13",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The values of the velocity dispersion obtained for galaxies at $z>5$ that were studied with method I range between 37 ${\\rm km~s^{-1}}$and 132 ${\\rm km~s^{-1}}$, with a median velocity dispersion of $67^{+15}_{-13}$ ${\\rm km~s^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median V_max / sigma_gas at z > 5 (Method I)",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "For the rotational support, we find a median value of $V_{\\rm max}/\\sigma_{\\rm gas} = 2$ that is compatible with turbulent but still rotationally supported disk galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas velocity dispersion (Method II, corrected)",
+   "value": "60",
+   "uncertainty": "+19/-11",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Galaxies analyzed with method II show a velocity dispersion, corrected by a factor 1.6 (see Sec. [3.6](#sec:method2)), between 37 and 126 km s$^{-1}$ and a median value of $60^{+19}_{-11}$ ${\\rm km~s^{-1}}$, which is compatible with the median value obtained with the other method."
+    }
+   ]
+  },
+  {
+   "quantity": "Median V_max / sigma_gas (Method II)",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The median value of $V_{\\rm max}/\\sigma_{\\rm gas}$ is 3.2, which is slightly higher than the result found with method I."
+    }
+   ]
+  },
+  {
+   "quantity": "DLA0817g [C II] velocity dispersion",
+   "value": "71",
+   "uncertainty": "+5/-5",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| DLA0817g $^{b}$ | \\[C$\\scriptstyle\\rm~II$\\]  | 0.21$\\times$0.15 | I | $4.249$ | $1.13 ^{+0.03} _{-0.03}$ | $41_{-5}^{+5}$ | $108 \\pm 2$ | $10.8_{-0.2}^{+0.2}$ | $358 ^{+94} _{-74}$ | $71^{+5}_{-5}$ | $5.04 ^{+1.81} _{-1.31}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DLA0817g [C II] V_max / sigma_gas",
+   "value": "5.04",
+   "uncertainty": "+1.81/-1.31",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| DLA0817g $^{b}$ | \\[C$\\scriptstyle\\rm~II$\\]  | 0.21$\\times$0.15 | I | $4.249$ | $1.13 ^{+0.03} _{-0.03}$ | $41_{-5}^{+5}$ | $108 \\pm 2$ | $10.8_{-0.2}^{+0.2}$ | $358 ^{+94} _{-74}$ | $71^{+5}_{-5}$ | $5.04 ^{+1.81} _{-1.31}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS 073.1 [C II] velocity dispersion",
+   "value": "54",
+   "uncertainty": "+1/-3",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| ALESS 073.1 $^{b}$ | \\[C$\\scriptstyle\\rm~II$\\]  | 0.17$\\times$0.14 | I | $4.746$ | $1.209 ^{+0.002} _{-0.002}$ | $32 ^{+3} _{-2}$ | $45 ^{+1} _{-1}$ | $10.7_{-0.1}^{+0.1}$ | $324 ^{+91} _{-34}$ | $54 ^{+1} _{-3}$ | $6.00 ^{+1.83} _{-0.91}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS 073.1 [C II] V_max / sigma_gas",
+   "value": "6.00",
+   "uncertainty": "+1.83/-0.91",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| ALESS 073.1 $^{b}$ | \\[C$\\scriptstyle\\rm~II$\\]  | 0.17$\\times$0.14 | I | $4.746$ | $1.209 ^{+0.002} _{-0.002}$ | $32 ^{+3} _{-2}$ | $45 ^{+1} _{-1}$ | $10.7_{-0.1}^{+0.1}$ | $324 ^{+91} _{-34}$ | $54 ^{+1} _{-3}$ | $6.00 ^{+1.83} _{-0.91}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HZ4 [C II] velocity dispersion",
+   "value": "66",
+   "uncertainty": "+3/-3",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| HZ4 | \\[C$\\scriptstyle\\rm~II$\\]  | 0.39$\\times$0.36 | I | $5.534$ | $2.07^{+0.04}_{-0.04}$ | $37^{+6}_{-10}$ | $199^{+5}_{-6}$ | $10.0^{+0.2}_{-0.1}$ | $108 ^{+28} _{-12}$ | $66^{+3}_{-3}$ | $1.64 ^{+0.52} _{-0.25}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HZ4 [C II] V_max / sigma_gas",
+   "value": "1.64",
+   "uncertainty": "+0.52/-0.25",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| HZ4 | \\[C$\\scriptstyle\\rm~II$\\]  | 0.39$\\times$0.36 | I | $5.534$ | $2.07^{+0.04}_{-0.04}$ | $37^{+6}_{-10}$ | $199^{+5}_{-6}$ | $10.0^{+0.2}_{-0.1}$ | $108 ^{+28} _{-12}$ | $66^{+3}_{-3}$ | $1.64 ^{+0.52} _{-0.25}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-30 [C II] velocity dispersion",
+   "value": "68",
+   "uncertainty": "+14/-13",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| COS-30 | \\[C$\\scriptstyle\\rm~II$\\]  | 0.43$\\times$0.34 | I | $6.840$ | $1.3 ^{+0.3}_{-0.3}$ | $52_{-9}^{+8}$ | $73\\pm 5$ | $10.7_{-0.1}^{+0.2}$ | $264 ^{+34} _{-55}$ | $68_{-13}^{+14}$ | $3.88 ^{+1.54} _{-1.33}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-30 [C II] V_max / sigma_gas",
+   "value": "3.88",
+   "uncertainty": "+1.54/-1.33",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| COS-30 | \\[C$\\scriptstyle\\rm~II$\\]  | 0.43$\\times$0.34 | I | $6.840$ | $1.3 ^{+0.3}_{-0.3}$ | $52_{-9}^{+8}$ | $73\\pm 5$ | $10.7_{-0.1}^{+0.2}$ | $264 ^{+34} _{-55}$ | $68_{-13}^{+14}$ | $3.88 ^{+1.54} _{-1.33}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Y-001 [C II] velocity dispersion",
+   "value": "79",
+   "uncertainty": "+11/-18",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| UVISTA-Y-001 | \\[C$\\scriptstyle\\rm~II$\\]  | 1.57$\\times$1.28 | I | $7.660$ | $1.5 ^{+0.1}_{-0.1}$ | $<60$ | $122^{+31}_{-42}$ | $9.8^{+0.8}_{-0.9}$ | $90 ^{+139} _{-59}$ | $79^{+11}_{-18}$ | $1.14 ^{+1.22} _{-0.79}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Y-001 [C II] V_max / sigma_gas",
+   "value": "1.14",
+   "uncertainty": "+1.22/-0.79",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method II: 1D kinematic fitting",
+     "quote": "| UVISTA-Y-001 | \\[C$\\scriptstyle\\rm~II$\\]  | 1.57$\\times$1.28 | I | $7.660$ | $1.5 ^{+0.1}_{-0.1}$ | $<60$ | $122^{+31}_{-42}$ | $9.8^{+0.8}_{-0.9}$ | $90 ^{+139} _{-59}$ | $79^{+11}_{-18}$ | $1.14 ^{+1.22} _{-0.79}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA versions used per target dataset",
+  "Stopping criteria / threshold / niter and masking strategy in CASA tclean",
+  "Whether UV-plane continuum subtraction was performed before tclean or only via the constant term in pixel-by-pixel Gaussian fitting",
+  "Exact spatial aperture definitions used to extract 1D spectra in Method II",
+  "Number of walkers and steps used in EMCEE MCMC runs"
+ ],
+ "missing_for_reproduction": [
+  "Custom wrapper scripts coupling KINMS and EMCEE for Method I (including the 100-trial uncorrelated pixel sampler) and Method II",
+  "Exact tclean parameters (stopping threshold, niter, masking, exact pixel size and channel width chosen per galaxy)",
+  "Exact spatial apertures used for 1D spectrum extraction in Method II"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "All ALMA project codes are listed and public, software packages (CASA, KINMS, EMCEE) and equations are well specified, and full per-target results are tabulated, though custom fitting scripts and exact per-target tclean/aperture settings are not released.",
+ "rediscovery_reason": "Uses public archival ALMA data with explicit project codes, standard public tools (CASA, KINMS, EMCEE), a clearly described 3-step fitting methodology, and complete per-galaxy numerical results in Table 1.",
+ "source_card": "cards/2023A%26A...673A.153P/sonnet/card.md"
+}

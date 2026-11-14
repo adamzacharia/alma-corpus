@@ -1,0 +1,1422 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...984L..14Z",
+  "title": "exoALMA. IX. Regularized Maximum Likelihood Imaging of Non-Keplerian Features",
+  "year": 2025,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Zawadzki, Brianna",
+  "n_authors": 35,
+  "arxiv_id": "2504.19111",
+  "doi": "10.3847/2041-8213/adc434",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.01123.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "The planet-hunting ALMA large program exoALMA observed 15 protoplanetary disks"
+   },
+   {
+    "loc": "abstract",
+    "quote": "This paper presents the exoALMA RML images, obtained by maximizing the likelihood of the visibility data given a model image and subject to regularizer penalties."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "AA Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "HD 135344B",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "J1604",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "J1615",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "J1842",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "LkCa 15",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "SY Cha",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Do regularized maximum likelihood (RML) images made with MPoL independently reproduce the non-Keplerian features (NKFs) seen in the fiducial CLEAN exoALMA images, and how should RML hyperparameters be chosen (cross-validation) for velocity-resolved multi-channel data?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Crucially, in the context of exoALMA, RML images serve as an independent verification of marginal features seen in the fiducial CLEAN images."
+     },
+     {
+      "loc": "abstract",
+      "quote": "best practices for synthesizing RML images of multi-channeled (i.e. velocity-resolved) data remain undefined"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.01123.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.1.01123.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "spectral resolution up to 30.5 kHz (26 m/s); CLEAN and RML cubes here use 100 m/s channels (CS J=7-6 fiducial CLEAN set has 200 m/s)",
+    "evidence": [
+     {
+      "loc": "Source Selection and Data Processing",
+      "quote": "at moderate angular (maximum baselines up to 3697 m) and high spectral (up to 30.5 kHz, 26 m/s) resolution"
+     },
+     {
+      "loc": "Source Selection and Data Processing",
+      "quote": "but with a finer channel spacing than the CS J=7-6 fiducial set of images (which has 200 m/s spacings)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "we present full $^{12}$CO J=3-2, $^{13}$CO J=3-2, and CS J=7-6 image cubes"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "we present full $^{12}$CO J=3-2, $^{13}$CO J=3-2, and CS J=7-6 image cubes"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "J=7-6",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "and CS J=7-6 image cubes, as well as comparisons to the CLEAN images for select channels of interest"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "maximum baselines up to 3697 m",
+    "evidence": [
+     {
+      "loc": "Source Selection and Data Processing",
+      "quote": "at moderate angular (maximum baselines up to 3697 m) and high spectral (up to 30.5 kHz, 26 m/s) resolution"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "fiducial CLEAN beam 0.15''; highest-resolution data about 0.06''",
+    "evidence": [
+     {
+      "loc": "5.1 Resolution and Noise of RML Images",
+      "quote": "We thus generate two sets of beam-convolved RML cubes: one with a circular 0.15$''$ convolution kernel (equivalent to the fiducial CLEAN beam)"
+     },
+     {
+      "loc": "Limitations and Future Work",
+      "quote": "Given that the highest resolution data from the interferometer corresponds to resolutions of about 0.06$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 8 ALMA large program exoALMA (2021.1.01123.L)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The Cycle 8 ALMA large program exoALMA has observed 15 protoplanetary disks"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Fiducial exoALMA calibration and CLEAN image cubes (100 m/s channels, 0.15'' beams) used for comparison",
+      "evidence": [
+       {
+        "loc": "Source Selection and Data Processing",
+        "quote": "The full data calibration and CLEAN imaging procedures are detailed in (cite: Loomis_exoALMA)."
+       }
+      ]
+     },
+     "citation": "(cite: Loomis_exoALMA); (cite: Teague_exoALMA)"
+    },
+    {
+     "what": {
+      "value": "Embedded-planet interpretation and planet masses of the NKFs (e.g. 2 M_Jup AA Tau, J1615, LkCa 15; 1 M_Jup J1842; 5 M_Jup SY Cha) and source selection of NKFs",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "These are the same five sources for which (cite: Pinte_exoALMA) find evidence of embedded protoplanets and place constraints on the planet masses."
+       }
+      ]
+     },
+     "citation": "(cite: Pinte_exoALMA)"
+    },
+    {
+     "what": {
+      "value": "CLEAN-cube emission surfaces and radial temperature profiles used as the comparison for RML",
+      "evidence": [
+       {
+        "loc": "5.2 Emission Surfaces and Temperatures",
+        "quote": "We compared the non-parametric emission surfaces and radial temperature profiles, presented in full in (cite: Galloway_exoALMA), between the CLEAN cubes and the RML cubes."
+       }
+      ]
+     },
+     "citation": "(cite: Galloway_exoALMA)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA cvel2 to LSRK frame, then MPoL RML imaging (not tclean) on gridded visibilities",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "using the `CASA cvel2` task such that the data were in an LSRK reference frame."
+      },
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "We use the RML imaging package `MPoL` for all imaging (cite: mpol_2023; Zawadzki_2023; mpol_2025)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "visibilities averaged onto a Fourier grid, equivalent to uniform weighting (no robust value)",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "averaged the ungridded visibility data to grid cells in the visibility domain before imaging (equivalent to uniform weighting)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.0125'' per pixel (half the fiducial CLEAN pixel)",
+     "evidence": [
+      {
+       "loc": "Limitations and Future Work",
+       "quote": "the pixel size of 0.0125$''$ used in this study"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "1024 x 1024 pixels",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "in this study, all RML images are $1024 \\times 1024$ pixels"
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "both continuum-subtracted and non-continuum-subtracted cubes imaged; subtraction method not stated",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "we generated continuum-subtracted and non-continuum-subtracted RML image cubes of the"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "RML cubes released native (no restoring beam), convolved with 0.05'' and with 0.15'' circular kernels",
+     "evidence": [
+      {
+       "loc": "5.1 Resolution and Noise of RML Images",
+       "quote": "We thus generate two sets of beam-convolved RML cubes"
+      },
+      {
+       "loc": "Conclusions",
+       "quote": "Different versions will be released with the native RML resolution (no beam convolution)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "AA Tau 12CO channel signal-free region: 0.043 mJy/beam (0.15'' RML) vs 3.953 mJy/beam (0.15'' CLEAN)",
+     "evidence": [
+      {
+       "loc": "5.1 Resolution and Noise of RML Images",
+       "quote": "(0.043 mJy/beam and 3.953 mJy/beam, respectively)"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Calibration and fiducial CLEAN imaging of the exoALMA data",
+      "evidence": [
+       {
+        "loc": "Source Selection and Data Processing",
+        "quote": "The full data calibration and CLEAN imaging procedures are detailed in (cite: Loomis_exoALMA)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Loomis_exoALMA)"
+    },
+    {
+     "what": {
+      "value": "Basic RML loss function: entropy + sparsity + TSV regularizers",
+      "evidence": [
+       {
+        "loc": "3 RML Techniques for Image Cubes",
+        "quote": "we adopt the same basic loss function as in (cite: Zawadzki_2023), using a combination of entropy, sparsity, and total squared variation (cite: Kuramochi_2018) regularization."
+       }
+      ]
+     },
+     "from_reference": "(cite: Zawadzki_2023); (cite: Kuramochi_2018)"
+    },
+    {
+     "what": {
+      "value": "RML imaging workflow (random cell cross-validation procedure) adapted for multi-channel data; the citation is blank in the paper text",
+      "evidence": [
+       {
+        "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+        "quote": "we followed the RML workflow laid out in , except adapted for working with multi-channeled data:"
+       }
+      ]
+     },
+     "from_reference": "blank citation in the converted text"
+    },
+    {
+     "what": {
+      "value": "Emission-surface extraction procedure with disksurf",
+      "evidence": [
+       {
+        "loc": "5.2 Emission Surfaces and Temperatures",
+        "quote": "We follow identical procedures to those outlined in Section 3 of (cite: Galloway_exoALMA) to obtain the RML emission surfaces."
+       }
+      ]
+     },
+     "from_reference": "(cite: Galloway_exoALMA) Section 3"
+    },
+    {
+     "what": {
+      "value": "Radial temperature profile derivation from disksurf r-z points",
+      "evidence": [
+       {
+        "loc": "5.2 Emission Surfaces and Temperatures",
+        "quote": "For further details, see Section 4 of (cite: Galloway_exoALMA)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Galloway_exoALMA) Section 4"
+    }
+   ],
+   "unstated_but_needed": [
+    "Optimizer, learning rate, number of iterations, initial image and convergence criterion for the MPoL minimization",
+    "How the per-visibility sigma_i (weights) were derived/rescaled for the likelihood",
+    "Random seed and partition realization for the K=10 CV folds",
+    "Total CLEAN-image flux per source used as the entropy normalization zeta",
+    "Continuum subtraction method and line-free channels used to make the continuum-subtracted measurement sets",
+    "Access path/version of the exoALMA calibrated measurement sets and any self-calibration applied (in Loomis et al.)",
+    "cvel2 parameters (start, width, nchan) and the exact MPoL version/commit",
+    "Implementation of the restoring-beam convolution and of the signal-free region used for RMS",
+    "Disk geometry (inclination, PA, distance, stellar mass) used by disksurf for each source (in Galloway et al.)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Prepare calibrated visibilities",
+    "method": {
+     "value": "Transform each calibrated measurement set to LSRK with CASA cvel2 and regrid to 0.1 km/s channels to match the fiducial CLEAN cubes",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "using the `CASA cvel2` task such that the data were in an LSRK reference frame."
+      },
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "we regridded the data to enable a direct comparison to the fiducial CLEAN images"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "channel width 0.1 km/s",
+      "evidence": [
+       {
+        "loc": "Source Selection and Data Processing",
+        "quote": "The data were regridded to a channel width of $0.1$ km/s"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Export and grid visibilities",
+    "method": {
+     "value": "Export regridded measurement sets as complex visibility arrays for MPoL; average ungridded visibilities onto a 1024x1024 Fourier grid by weighted average",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "We then defined a corresponding $1024 \\times 1024$ Fourier grid and averaged the ungridded visibility data to the Fourier cells using a simple weighted average."
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "pixel size 0.0125'', 1024x1024 image",
+      "evidence": [
+       {
+        "loc": "Limitations and Future Work",
+        "quote": "the pixel size of 0.0125$''$ used in this study"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Verified that gridding does not introduce interpolation artifacts at the data SNR",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "We have verified that this gridding procedure does not introduce interpolation artifacts to the images at the SNR of the data."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Choose regularizer hyperparameters by cross-validation",
+    "method": {
+     "value": "Random-cell 10-fold CV on one representative channel of the continuum-subtracted 12CO J=3-2 data per source; choose the lambda set minimizing the CV score",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "We performed 10-fold CV on the continuum-subtracted"
+      },
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "For each source, we selected a single channel to use for CV by examining the fiducial continuum-subtracted"
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "lambda_ent grid [0, 8e-8, 2e-7, 8e-7, 2e-6, 8e-6, 2e-5]",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "[0, 8e-8, 2e-7, 8e-7, 2e-6, 8e-6, 2e-5"
+       }
+      ]
+     },
+     {
+      "value": "lambda_TSV grid [5e-5, 1e-4, 5e-4, 1e-3, 5e-3, 1e-2]",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "[5e-5, 1e-4, 5e-4, 1e-3, 5e-3, 1e-2"
+       }
+      ]
+     },
+     {
+      "value": "lambda_spa grid [5e-6, 1e-5, 5e-5]",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "[5e-6, 1e-5, 5e-5"
+       }
+      ]
+     },
+     {
+      "value": "K = 10 folds",
+      "evidence": [
+       {
+        "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+        "quote": "We use $K=10$, which has been shown to effectively balance bias and variance in the parameter error estimates"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Grid cells with the highest 1% of gridded weights are included in every subset",
+      "evidence": [
+       {
+        "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+        "quote": "drawing cells without replacement with the minor exception that grid cells with the highest 1% of gridded weight values are included in each subset in order to avoid numerical instabilities that delay or prevent convergence."
+       }
+      ]
+     },
+     {
+      "value": "Hyperparameters from one channel apply to the whole cube; hand tuning after CV not done",
+      "evidence": [
+       {
+        "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+        "quote": "we do not take this optional tuning step and use strictly the hyperparameter values which minimized the CV score for each source."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "CV score is the summed chi^2 of held-out cells against the model fit to training cells",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "This model is then compared to the withheld testing data to quantify the predictive power of the RML model and obtain a CV score"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested on LkCa 15 across 12CO, 13CO, CS, with and without continuum subtraction and 5 channels: optimal values nearly constant across cube",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "The optimal hyperparameter values tended to remain nearly constant throughout a given image cube, with only slight variations from channel to channel or no variation at all."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Synthesize RML image cubes",
+    "method": {
+     "value": "Apply the CV-optimal hyperparameters to the loss function for every channel and image continuum-subtracted and non-continuum-subtracted 12CO, 13CO and CS cubes",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "We applied the hyperparameter values that minimized the CV score at this channel to our loss function"
+      }
+     ]
+    },
+    "software": [
+     "MPoL",
+     "PyTorch"
+    ],
+    "key_parameters": [
+     {
+      "value": "Per-source lambda_ent, lambda_TSV, lambda_spa from Table 2 (see results_numeric)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "AA Tau | $v=7.9$ | 0 | 5e-5 | 1e-5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gaussian, uncorrelated noise across baselines; entropy normalization zeta set to the total flux of the CLEAN image",
+      "evidence": [
+       {
+        "loc": "3 RML Techniques for Image Cubes",
+        "quote": "Assuming that the noise is normally distributed with standard deviation $\\sigma$ and is uncorrelated across baselines"
+       },
+       {
+        "loc": "3.1 The Loss Function",
+        "quote": "Here, $\\zeta$ is a normalization factor which we set equal to the total flux of the CLEAN image."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Optimization: minimize negative log likelihood plus entropy, sparsity (L1) and TSV regularizer penalties",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "RML imaging is an optimization-based imaging framework; the image is obtained by maximizing a likelihood function subject to regularizer penalties."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared to fiducial CLEAN images channel by channel and in zoomed NKF views",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "Each source is summarized with a figure comparing the RML and CLEAN images"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Convolve and compare resolution and noise",
+    "method": {
+     "value": "Produce native, 0.05'' and 0.15'' convolved RML cubes and compare with 0.15'' CLEAN; measure RMS in a signal-free region",
+     "evidence": [
+      {
+       "loc": "5.1 Resolution and Noise of RML Images",
+       "quote": "Taking the extra step to convolve RML images with a restoring beam is a straightforward way to place a firm resolution limit on the image."
+      },
+      {
+       "loc": "5.1 Resolution and Noise of RML Images",
+       "quote": "We thus generate two sets of beam-convolved RML cubes"
+      }
+     ]
+    },
+    "software": [
+     "MPoL"
+    ],
+    "key_parameters": [
+     {
+      "value": "kernels 0.15'' and 0.05'' (circular)",
+      "evidence": [
+       {
+        "loc": "5.1 Resolution and Noise of RML Images",
+        "quote": "We thus generate two sets of beam-convolved RML cubes: one with a circular 0.15$''$ convolution kernel (equivalent to the fiducial CLEAN beam)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "True resolution of a convolved cube estimated by adding native RML resolution and kernel in quadrature; stated resolutions are lower limits",
+      "evidence": [
+       {
+        "loc": "5.1 Resolution and Noise of RML Images",
+        "quote": "the stated resolutions of our beam-convolved RML image cubes are lower limits on the true resolutions of the images."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "No ground-truth image, so optimal restoring beam cannot be identified",
+     "evidence": [
+      {
+       "loc": "5.1 Resolution and Noise of RML Images",
+       "quote": "without a “true” image it is not possible to firmly identify an optimal restoring beam size."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare emission surfaces and temperatures with CLEAN",
+    "method": {
+     "value": "Run disksurf on 0.15'', 100 m/s non-continuum-subtracted RML cubes of AA Tau, J1615, J1842, LkCa 15, SY Cha to get r-z surfaces and brightness temperature profiles; compare with CLEAN-cube results",
+     "evidence": [
+      {
+       "loc": "5.2 Emission Surfaces and Temperatures",
+       "quote": "To compare the two, we used RML cubes of the same spatial and spectral resolution as those used for the CLEAN cube analysis"
+      },
+      {
+       "loc": "5.2 Emission Surfaces and Temperatures",
+       "quote": "We obtain the temperature as a function of radius using the $r-z$ points extracted by `disksurf`."
+      }
+     ]
+    },
+    "software": [
+     "disksurf"
+    ],
+    "key_parameters": [
+     {
+      "value": "five iterations, minimum SNR raised from 1.0 to 5.0 (12CO) and 1.0 to 3.5 (13CO); minimal masking",
+      "evidence": [
+       {
+        "loc": "5.2 Emission Surfaces and Temperatures",
+        "quote": "we do this process over five iterations, each time increasing the minimum signal to noise from 1.0 to 5.0 for"
+       },
+       {
+        "loc": "5.2 Emission Surfaces and Temperatures",
+        "quote": "Minimal masking is applied to the surfaces so that we can assess the differences between CLEAN and RML."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Non-continuum-subtracted cubes used so temperature is not underestimated",
+      "evidence": [
+       {
+        "loc": "5.2 Emission Surfaces and Temperatures",
+        "quote": "We use the non-continuum-subtracted cubes as to not underestimate the temperature."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested temperature sensitivity to beam size by deriving profiles from RML cubes of SY Cha and AA Tau convolved with several kernels",
+     "evidence": [
+      {
+       "loc": "5.2 Emission Surfaces and Temperatures",
+       "quote": "To test this, we derived the temperatures using RML cubes of SY Cha and AA Tau convolved with multiple beam sizes"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MPoL",
+    "version": "not stated",
+    "used_for": {
+     "value": "RML imaging of all cubes, cross-validation",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "We use the RML imaging package `MPoL` for all imaging (cite: mpol_2023; Zawadzki_2023; mpol_2025)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "cvel2 reference-frame transformation and regridding; tclean used for the fiducial CLEAN images",
+     "evidence": [
+      {
+       "loc": "Source Selection and Data Processing",
+       "quote": "using the `CASA cvel2` task such that the data were in an LSRK reference frame."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "fiducial CLEAN comparison images",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "The fiducial exoALMA images were made with CLEAN, as described in (cite: Teague_exoALMA; Loomis_exoALMA)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "disksurf",
+    "version": "not stated",
+    "used_for": {
+     "value": "emission-surface extraction from RML cubes",
+     "evidence": [
+      {
+       "loc": "5.2 Emission Surfaces and Temperatures",
+       "quote": "We utilize the open-source Python package `disksurf`, which obtains emission surfaces via the method first demonstrated in (cite: pinte_IMLup_2018A&A...609A..47P)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyTorch",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "GPUVMEM",
+    "version": "not stated",
+    "used_for": {
+     "value": "Earlier GPU RML package for ALMA disks, named as prior work (not used here)",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "introduced the `GPUVMEM` package which enabled GPU-accelerated RML imaging with a focus on ALMA protoplanetary disk imaging"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "AA Tau CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=7.9 km/s",
+    "value": "0, 5e-5, 1e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "AA Tau | $v=7.9$ | 0 | 5e-5 | 1e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 135344B CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=6.6 km/s",
+    "value": "0, 5e-5, 5e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "HD 135344B | $v=6.6$ | 0 | 5e-5 | 5e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "J1604 CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=4.5 km/s",
+    "value": "0, 1e-4, 5e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "J1604 | $v=4.5$ | 0 | 1e-4 | 5e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "J1615 CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=3.7 km/s",
+    "value": "8e-6, 5e-4, 5e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "J1615 | $v=3.7$ | 8e-6 | 5e-4 | 5e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "J1842 CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=5.1 km/s",
+    "value": "8e-6, 5e-5, 5e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "J1842 | $v=5.1$ | 8e-6 | 5e-5 | 5e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "LkCa 15 CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=6.9 km/s",
+    "value": "0, 5e-4, 1e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "LkCa 15 | $v=6.9$ | 0 | 5e-4 | 1e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "SY Cha CV-optimal (lambda_ent, lambda_TSV, lambda_spa), CV channel v=3.6 km/s",
+    "value": "0, 5e-4, 1e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "SY Cha | $v=3.6$ | 0 | 5e-4 | 1e-5"
+     }
+    ]
+   },
+   {
+    "quantity": "Time for one CV hyperparameter combination",
+    "value": "about 30 minutes on an NVIDIA P100 GPU",
+    "uncertainty": "not stated",
+    "units": "minutes",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+      "quote": "A typical CV procedure for one combination of hyperparameters can take $30$ minutes on a NVIDIA P100 GPU"
+     }
+    ]
+   },
+   {
+    "quantity": "Signal-free RMS, AA Tau 12CO channel: 0.15'' RML vs 0.15'' CLEAN",
+    "value": "0.043 (RML) and 3.953 (CLEAN)",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1 Resolution and Noise of RML Images",
+      "quote": "(0.043 mJy/beam and 3.953 mJy/beam, respectively)"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean 12CO temperature offset RML minus CLEAN (RML lower), maximum in SY Cha inner radii",
+    "value": "about 3 (mean), up to 13",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Emission Surfaces and Temperatures",
+      "quote": "but in some places it becomes as large as 13 K, such as in the inner radial regions of SY Cha."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean 13CO temperature offset, J1615",
+    "value": "1.3",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Emission Surfaces and Temperatures",
+      "quote": "For J1615 in $^{13}$CO J=3-2, the temperature difference, on average, is only 1.3 K."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean 13CO temperature offset, SY Cha",
+    "value": "8",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Emission Surfaces and Temperatures",
+      "quote": "exhibits the largest temperature difference between the CLEAN and RML cubes, with the average offset being 8 K."
+     }
+    ]
+   },
+   {
+    "quantity": "Radial extent of RML emission surfaces beyond CLEAN surfaces (SY Cha 12CO and 13CO)",
+    "value": "over 200",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2 Emission Surfaces and Temperatures",
+      "quote": "whose RML surface extends over 200 au further than that found using the CLEAN cube for both molecules."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "RML images reproduce all features of the CLEAN images for all seven disks, including the NKFs; RML is sharper for AA Tau, HD 135344B, J1842 but slightly more blurred for J1615 and SY Cha",
+    "evidence": [
+     {
+      "loc": "AA Tau",
+      "quote": "The RML images of AA Tau appear sharper than the corresponding CLEAN images."
+     },
+     {
+      "loc": "J1615",
+      "quote": "While the RML images appear slightly more blurred than the CLEAN images for this target, the NKF remains visible in multiple channels."
+     }
+    ]
+   },
+   {
+    "value": "Entropy regularization switched off (lambda_ent = 0) for five of seven disks; only J1615 and J1842 favor lambda_ent = 8e-6",
+    "evidence": [
+     {
+      "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+      "quote": "The two remaining disks, J1615 and J1842, favor a modest degree of entropy regularization"
+     }
+    ]
+   },
+   {
+    "value": "Sparsity regularization strongly suppresses background noise in RML images, so RML RMS is not comparable to CLEAN thermal noise",
+    "evidence": [
+     {
+      "loc": "5.1 Resolution and Noise of RML Images",
+      "quote": "This does not mean that the overall noise in the RML images is truly orders of magnitude better than the corresponding CLEAN products."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "RML imaging independently reproduces the NKFs seen in the 12CO J=3-2 CLEAN images",
+    "experiment": "MPoL RML cubes of 7 exoALMA disks compared channel by channel with fiducial CLEAN cubes",
+    "result": "All features including the NKFs appear in the RML images of all 7 disks",
+    "finding": "NKFs are robust features rather than imaging artifacts",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The RML methods independently and consistently reproduce the features seen in the fiducial CLEAN images, including all NKFs."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CV hyperparameters from one channel can be applied to a full cube and across lines and continuum subtraction",
+    "experiment": "30 CV tests on LkCa 15 across three lines, with and without continuum subtraction, in 5 channels each",
+    "result": "Optimal lambdas nearly constant across channels, lines and continuum subtraction, with minor variations that did not change morphology",
+    "finding": "CV on a single representative channel suffices per source, cutting the computational cost; CV is still recommended once per source",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Using cross-validation (CV) for hyperparameter tuning, we found that the set of hyperparameters which minimized the CV score (corresponding to a model with the highest predictive power) remained stable from channel to channel in a given cube"
+     }
+    ]
+   },
+   {
+    "hypothesis": "RML cubes give the same emission surfaces and temperature profiles as CLEAN cubes",
+    "experiment": "disksurf applied to RML cubes of five disks and compared with CLEAN-cube results",
+    "result": "Surface morphology consistent but RML surfaces extend farther (sometimes 200 au); RML temperatures systematically lower (about 5 K, varying by radius and disk)",
+    "finding": "Broad agreement with offsets likely tied to the lower RML noise and sparsity regularization, needing further study",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "RML methods generally reproduce the azimuthally averaged emission surfaces and temperature profiles found with CLEAN cubes."
+     }
+    ]
+   },
+   {
+    "hypothesis": "RML imaging improves resolution beyond the CLEAN beam",
+    "experiment": "Native and 0.05'' and 0.15'' convolved RML cubes compared with 0.15'' CLEAN, with uniform CV-only hyperparameters",
+    "result": "No clear resolution improvement in all images",
+    "finding": "Super-resolution would need source-specific tuning not done for this uniform sample",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Limitations and Future Work",
+      "quote": "We do not achieve a clear improvement in resolution in all the images presented here."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Seven disks chosen because they show prominent NKFs in 12CO CLEAN images; five from a visual search for kinks plus two with large-scale arcs",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The source selection was motivated by a preliminary visual search for kink-like substructures caused by planets, resulting in an initial sample of five disks"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Multiple imaging techniques recommended for kinematic planet detection; RML gives an independent check on CLEAN",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Thus, recent recommendations for kinematically detecting planets strongly suggest using multiple image synthesis techniques to image the data"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Hand-tuning hyperparameters after CV rejected because it introduces human bias",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "deviating from the set of hyperparameters which minimize the CV score introduces human bias"
+      }
+     ]
+    },
+    {
+     "value": "Per-channel CV not adopted because CV is the most computationally expensive part",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "The CV process is by far the most computationally expensive component of RML imaging"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Hyperparameters fixed strictly at the CV minimum, without hand tuning, to treat all disks uniformly",
+    "evidence": [
+     {
+      "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+      "quote": "we do not take this optional tuning step and use strictly the hyperparameter values which minimized the CV score for each source."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Simple CV may be less effective for non-uniform uv coverage or low SNR; repeated partitioning suggested",
+     "evidence": [
+      {
+       "loc": "3.2 Cross-Validation for Multi-Channeled Data",
+       "quote": "also means that the simple CV procedure used here may not be as effective for observations with less uniform"
+      }
+     ]
+    },
+    {
+     "value": "Resolution of RML images is hard to define; stated convolved resolutions are lower limits",
+     "evidence": [
+      {
+       "loc": "5.1 Resolution and Noise of RML Images",
+       "quote": "the spatial resolution of RML images can be difficult to define precisely"
+      }
+     ]
+    },
+    {
+     "value": "Reasons for emission-surface and temperature differences between CLEAN and RML are unclear",
+     "evidence": [
+      {
+       "loc": "5.2 Emission Surfaces and Temperatures",
+       "quote": "The reasons for these morphological differences are unclear."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Hyperparameter-stability claim rests on CV tests of one source (LkCa 15) only",
+    "No injection-recovery or simulated-NKF test, so detection reliability of RML vs CLEAN is not quantified",
+    "CLEAN and RML share the same calibrated visibilities, so calibration artifacts are not tested",
+    "Single random CV partition per source; entropy normalization uses the CLEAN flux",
+    "NKF agreement is judged by eye, with no quantitative metric"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "RML cubes (12CO, 13CO, CS; with and without continuum subtraction; native, 0.05'' and 0.15'' versions) stated to be publicly released; location not stated",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "For each target, the following data products will be publicly available:"
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "Sample MPoL imaging scripts released on the MPoL GitHub (examples repository)",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "We have also released sample imaging scripts, available directly on the `MPoL` GitHub"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Optimizer settings, iteration counts and initialization for MPoL",
+    "Per-source CLEAN total flux (zeta) and visibility weight treatment",
+    "Continuum subtraction and calibration details (deferred to Loomis et al.)",
+    "Disk geometry inputs for disksurf (deferred to Galloway et al.)",
+    "Exact MPoL version and random seeds for CV partitions"
+   ],
+   "estimated_data_volume_inferred": "Likely several hundred GB to a few TB of calibrated measurement sets for 7 disks and 3 lines, plus tens of GPU-hours per source for CV",
+   "score_inferred": 3,
+   "score_reason": "Loss function, regularizers, grid size, K, hyperparameter grids and per-source optima are all given and sample scripts exist, but optimizer settings, weights, calibrated-data access and calibration details are missing or deferred.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are mostly qualitative (feature recovery) and the recipe lacks optimizer and calibration details; data access is not stated in this paper."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Zawadzki et al. 2023 (cite: Zawadzki_2023)",
+     "why": "RML method and loss function adopted here"
+    },
+    {
+     "citation": "(cite: mpol_2025)",
+     "why": "MPoL software reference"
+    },
+    {
+     "citation": "(cite: Loomis_exoALMA)",
+     "why": "exoALMA calibration and CLEAN imaging"
+    },
+    {
+     "citation": "(cite: Galloway_exoALMA)",
+     "why": "emission surface and temperature procedures"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Teague_exoALMA)",
+     "why": "exoALMA program overview"
+    },
+    {
+     "citation": "(cite: Pinte_exoALMA)",
+     "why": "NKF analysis and planet mass constraints"
+    },
+    {
+     "citation": "(cite: Galloway_exoALMA)",
+     "why": "CLEAN emission surfaces and temperatures for comparison"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "exoALMA (ALMA large program 2021.1.01123.L)",
+    "MPoL",
+    "GPUVMEM"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025ApJ...984L..14Z",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T11:44:26",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 100,
+  "quotes_ok": 100,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 117,
+   "stated": 65,
+   "rate": 0.556
+  },
+  "evidence_ok": true
+ }
+}

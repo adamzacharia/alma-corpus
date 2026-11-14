@@ -1,0 +1,489 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present new Atacama Large Millimeter Array (ALMA) observations towards NGC 4725 B"}
+],
+"fields": ["nearby_galaxies", "star_formation"],
+"question": {
+"value": "Can the strong ~30 GHz anomalous microwave emission (AME) of the compact region NGC 4725 B be produced without an accompanying millimeter dust continuum, i.e. is a spinning dust origin consistent with new ALMA continuum and CO data?",
+"evidence": [
+{"loc": "Introduction", "quote": "how can such a strong 30 GHz excess be produced without an accompanying millimeter dust continuum?"}
+]
+},
+"targets": [
+{
+"name": "NGC 4725 B",
+"details": [
+{"loc": "2 Data and Analysis", "quote": "Located at J2000 $\\alpha =12^\\mathrm{h}50^\\mathrm{m}28.48s, \\delta =+25\\ensuremath{^\\circ}30\\ensuremath{'}22.5\\ensuremath{''}$ (at a galactocentric radius of $\\approx$1.9 kpc)"},
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "of gas at a distance of 11.9 Mpc corresponds to only 26"}
+],
+"coordinates": "J2000 RA 12h50m28.48s, Dec +25d30m22.5s",
+"redshift_or_distance": "d_L = 11.9 Mpc (host galaxy NGC 4725)",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2018.1.01826.S", "evidence": [{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "ALMA data were obtained during Cycle 6 (Project Code: 2018.1.01826.S) in Bands 3, 4, 5, and 6"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Cycle 6; Bands 3, 4, 5, 6; continuum centered at 92, 133, 203, 221 GHz", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "ALMA data were obtained during Cycle 6 (Project Code: 2018.1.01826.S) in Bands 3, 4, 5, and 6"},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "Observations at Bands 3, 4, and 5 were centered at 92, 133, and 203 GHz, respectively, for dedicated continuum imaging"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "4 spws per band (1.875 GHz wide, 31.250 MHz channels); Band 6 fourth spw at 229.612 GHz with 1938.477 kHz resolution for 12CO(2-1); Band 6 continuum at 221 GHz from line-free data", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "observations at each band used 4 spectral windows with a bandwidth of 1.875 GHz and 31.250 MHz spectral channels"},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "the fourth spectral window was tuned to 229.612 GHz with a bandwidth of 1.875 GHz and spectral resolution of 1938.477 kHz"}
+]},
+{"field": "continuum_bandwidth", "value": "1.875 GHz per spectral window, 4 spws per band (3 dedicated continuum spws plus line-free part of the fourth in Band 6)", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "observations at each band used 4 spectral windows with a bandwidth of 1.875 GHz and 31.250 MHz spectral channels"}
+]},
+{"field": "angular_resolution", "value": "Synthesized beams: 0.54x0.37'' (92 GHz), 0.48x0.29'' (133 GHz), 0.69x0.40'' (203 GHz), 0.51x0.34'' (221 GHz), 0.61x0.46'' (CO 2-1, 229.6 GHz)", "evidence": [
+{"loc": "Table 1", "quote": "| 92.0 | $0.54\\ensuremath{''} \\times 0.37\\ensuremath{''}$ | 8.88 | 7.4800 | $139.\\pm   15.$ |"},
+{"loc": "Table 1", "quote": "| 133\\. | $0.48\\ensuremath{''} \\times 0.29\\ensuremath{''}$ | 14.8 | 8.1000 | $106.\\pm   33.$ |"},
+{"loc": "Table 1", "quote": "| 229.6 | $0.61\\ensuremath{''} \\times 0.46\\ensuremath{''}$ | 0.038 | 3.15 | $<$ 0.820 |"}
+]},
+{"field": "max_recoverable_scale", "value": "LAS from ESTIMATEMRS: 6.64'', 5.10'', 5.76'', 4.76'' at 92, 133, 203, 221 GHz", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "the LAS that these images are sensitive to are $\\theta_{\\rm LAS} \\approx 6.64\\ensuremath{''}, 5.10\\ensuremath{''}, 5.76\\ensuremath{''}$, and 4.76$''$ at 92, 133, 203, and 221 GHz respectively."}
+]},
+{"field": "sensitivity", "value": "Point-source rms 8.88, 14.8, 17.2, 13.4 uJy/beam at 92, 133, 203, 221 GHz; CO moment 0 rms 0.038 Jy/beam km/s", "evidence": [
+{"loc": "Table 1", "quote": "| 92.0 | $0.54\\ensuremath{''} \\times 0.37\\ensuremath{''}$ | 8.88 | 7.4800 | $139.\\pm   15.$ |"},
+{"loc": "Table 1", "quote": "| 203\\. | $0.69\\ensuremath{''} \\times 0.40\\ensuremath{''}$ | 17.2 | 1.9800 | $53.7\\pm   32.$ |"},
+{"loc": "Table 1", "quote": "| 221\\. | $0.51\\ensuremath{''} \\times 0.34\\ensuremath{''}$ | 13.4 | 1.8000 | $84.3\\pm   28.$ |"}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "230.5424 GHz", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "at a rest frequency of 230.5424 GHz"}
+]}
+],
+"other_facilities": [
+{"name": "VLA", "provided": {"value": "Continuum data at 1.5, 3, 5.5, 9, 14, 22, 33, 44 GHz (SFRS and other campaigns plus archival VLA/12B-191) combined with ALMA for the SED fit", "evidence": [
+{"loc": "2.1 VLA Data Reduction and Imaging", "quote": "Radio data were obtained as part of multiple campaigns using the VLA"},
+{"loc": "2.1 VLA Data Reduction and Imaging", "quote": "We additionally make use of archival VLA data (VLA/12B-191)"}
+]}},
+{"name": "Spitzer/IRAC", "provided": {"value": "IRAC 8 um image for context of CO; 3.6 um flux density measured (974 uJy)", "evidence": [
+{"loc": "4.1.3 Lack of Millimeter Dust Continuum", "quote": "there appear to be counterparts at the location of NGC 4725 B detected in IRAC maps both at 3.6 and 4.5"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "VLA calibration and imaging details and earlier VLA data on NGC 4725 B", "evidence": [
+{"loc": "2.1 VLA Data Reduction and Imaging", "quote": "Details on the data reduction and imaging procedures can be found in (cite: ejm18a; ejm18c; stl20)."}
+]}, "citation": "(cite: ejm18a; ejm18c; stl20)"},
+{"what": {"value": "Fixed dust parameters beta = 1.55 and T_d = 19.6 K, representative Galactic values", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "which are representative values for dust emission in the Galaxy (cite: Planck_Int_XXII; Planck_2018_XI)"}
+]}, "citation": "(cite: Planck_Int_XXII; Planck_2018_XI)"},
+{"what": {"value": "Synchrotron spectral index alpha = -0.83", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "consistent with similar observations for star-forming galaxies (cite: nkw97; ejm11b)"}
+]}, "citation": "(cite: nkw97; ejm11b)"},
+{"what": {"value": "Functional form for the AME spectrum (log-normal) and W_AME range 0.4 to 0.7", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "(cite: cepeda2020) found that the canonical spinning dust spectra in the representative Galactic environments defined by (cite: dl98b) were well-described by"}
+]}, "citation": "(cite: cepeda2020)"},
+{"what": {"value": "Frequency-dependent VLA primary beam correction factors", "evidence": [
+{"loc": "2.3 Photometry", "quote": "These factors were obtained via the frequency-dependent primary beam correction given in EVLA Memo# 195 (Perley 2016)"}
+]}, "citation": "EVLA Memo# 195 (Perley 2016)"},
+{"what": {"value": "CO(2-1)/CO(1-0) ratio ~0.8 and alpha_CO ~4.3 for molecular gas mass", "evidence": [
+{"loc": "3.3 Associated Molecular Gas", "quote": "(cite: svb05; bwl13), the total nearby molecular gas reservoir is measured to be"}
+]}, "citation": "(cite: heracles09; lzk18; svb05; bwl13)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA calibration pipeline plus prepared manual reduction and imaging scripts", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "The ALMA data were reduced using both the ALMA calibration pipeline with CASA version 5.4.0, as well as prepared manual reduction and imaging scripts."}
+]},
+{"field": "casa_version", "value": "CASA 5.4.0 (calibration); CASA 5.6.1 (imaging)", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "The ALMA data were reduced using both the ALMA calibration pipeline with CASA version 5.4.0, as well as prepared manual reduction and imaging scripts."},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "Calibrated data were imaged using the task TCLEAN in CASA version 5.6.1."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "tclean, multi-frequency synthesis (continuum); mode cube for CO", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "The mode of TCLEAN was set to multi-frequency synthesis (cite: mfs1; mfs2)."},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "Similar to the continuum imaging, the"}
+]},
+{"field": "weighting_robust", "value": "Briggs, robust = 0.5", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "weighting with ROBUST=0.5"}
+]},
+{"field": "deconvolver", "value": "nterms=2 for Bands 3 and 4; nterms=1 for Bands 5 and 6; no multiscale for continuum", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "we set the variable NTERMS=2, which allows the cleaning procedure to also model the spectral index variations on the sky."},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "For continuum imaging of Bands 5 and 6, we instead set the variable NTERMS=1"},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "In all cases of the continuum imaging, we do not make use of the multiscale clean option"}
+]},
+{"field": "multiscale_scales", "value": "CO cube only: multiscale clean with scales ~1 and 3 times the synthesized beam FWHM", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "we also made use of the multiscale clean option (cite: msclean; msmfs) to help deconvolve extended low-intensity line emission"},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "to search for structures with scales $\\approx$1 and 3 times the FWHM of the synthesized beam"}
+]},
+{"field": "line_free_channels", "value": "Band 6 continuum used 3 dedicated continuum spws plus the line-free portion of the fourth spw (channel ranges not given)", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "we imaged the 3 dedicated continuum spectral windows and the line-free portion of the fourth spectral window"}
+]},
+{"field": "primary_beam_correction", "value": "Photometry measured before primary beam correction; corrections negligible except VLA 5.5, 9, 14 GHz (factors 1.011, 1.032, 1.079)", "evidence": [
+{"loc": "2.3 Photometry", "quote": "Photometry was carried out at all frequencies before applying a primary beam correction."}
+]},
+{"field": "smoothing", "value": "All images beam-matched to the 3 GHz beam with imsmooth before photometry", "evidence": [
+{"loc": "2.3 Photometry", "quote": "we first beam-match the data to the lowest resolution beam among all images (i.e., the 3 GHz data) using the CASA task IMSMOOTH"}
+]},
+{"field": "final_beam", "value": "ALMA continuum beams 0.54x0.37'', 0.48x0.29'', 0.69x0.40'', 0.51x0.34'' at 92, 133, 203, 221 GHz; CO 0.61x0.46''", "evidence": [
+{"loc": "Table 1", "quote": "| 92.0 | $0.54\\ensuremath{''} \\times 0.37\\ensuremath{''}$ | 8.88 | 7.4800 | $139.\\pm   15.$ |"},
+{"loc": "Table 1", "quote": "| 229.6 | $0.61\\ensuremath{''} \\times 0.46\\ensuremath{''}$ | 0.038 | 3.15 | $<$ 0.820 |"}
+]},
+{"field": "final_rms", "value": "8.88, 14.8, 17.2, 13.4 uJy/beam (92, 133, 203, 221 GHz); 0.038 Jy/beam km/s (CO moment 0)", "evidence": [
+{"loc": "Table 1", "quote": "| 133\\. | $0.48\\ensuremath{''} \\times 0.29\\ensuremath{''}$ | 14.8 | 8.1000 | $106.\\pm   33.$ |"},
+{"loc": "Table 1", "quote": "| 229.6 | $0.61\\ensuremath{''} \\times 0.46\\ensuremath{''}$ | 0.038 | 3.15 | $<$ 0.820 |"}
+]}
+],
+"inherited": [
+{"what": {"value": "NGC 4725 B properties, data and analysis procedures", "evidence": [
+{"loc": "2 Data and Analysis", "quote": "We refer the reader to (cite: ejm18c) for detailed information on NGC 4725 and NGC 4725 B, along with the associated data and analysis procedures presented in that paper."}
+]}, "from_reference": "(cite: ejm18c)"},
+{"what": {"value": "VLA calibration and data reduction details", "evidence": [
+{"loc": "2.1 VLA Data Reduction and Imaging", "quote": "Details on the data reduction and imaging procedures can be found in (cite: ejm18a; ejm18c; stl20)."}
+]}, "from_reference": "(cite: ejm18a; ejm18c; stl20)"},
+{"what": {"value": "VLA imaging procedure", "evidence": [
+{"loc": "2.1 VLA Data Reduction and Imaging", "quote": "a detailed description of the imaging procedure used here can be found in (cite: ejm18a; stl20)"}
+]}, "from_reference": "(cite: ejm18a; stl20)"},
+{"what": {"value": "Free-free optical depth and Gaunt factor formulae", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "following (cite: draine2011):"}
+]}, "from_reference": "(cite: draine2011)"},
+{"what": {"value": "Conversion of Q(H0) to star formation rate", "evidence": [
+{"loc": "4.1.2 Molecular Gas Properties", "quote": "Using (cite: ejm11b), we convert the value of"}
+]}, "from_reference": "(cite: ejm11b)"},
+{"what": {"value": "Stellar mass from a Kroupa IMF fully populated between 0.1 and 100 Msun", "evidence": [
+{"loc": "4.1.1 Cluster Properties", "quote": "Using a Kroupa initial mass function (cite: pk01) fully populated between 0.1 and 100"}
+]}, "from_reference": "(cite: pk01)"}
+],
+"unstated_but_needed": [
+"Observing dates, array configurations, baselines and time on source for the ALMA execution blocks",
+"Flux, bandpass and phase calibrators and the flux-scale uncertainty",
+"Whether self-calibration was applied",
+"Image size, cell size, masks, clean threshold and number of iterations for continuum and CO imaging",
+"Channel width, velocity range and channel selection used to build the CO moment 0 map and the line-free channel ranges in Band 6",
+"Exact photometry aperture positions and how the 3 sigma upper limits were computed (sigma definition)",
+"Likelihood function, number of walkers, chain length and burn-in for the emcee fit",
+"Which pipeline vs manual scripts were used for which execution block",
+"Absolute flux calibration error treatment in the SED fit"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image ALMA continuum",
+"method": {"value": "ALMA pipeline (CASA 5.4.0) plus manual scripts; tclean MFS imaging in CASA 5.6.1 with Briggs robust=0.5, nterms=2 (Bands 3, 4) or 1 (Bands 5, 6), no multiscale", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "Calibrated data were imaged using the task TCLEAN in CASA version 5.6.1."},
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "weighting with ROBUST=0.5"}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "Band 6 continuum built from 3 dedicated continuum spws plus line-free part of the fourth spw", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "we imaged the 3 dedicated continuum spectral windows and the line-free portion of the fourth spectral window"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Image 12CO(2-1) cube and make moment 0 map",
+"method": {"value": "tclean in cube mode with multiscale clean; moment 0 by integrating over velocity range with line emission", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "The moment 0 map was then created by integrating the spectral cube at each pixel limited to the portion of velocity space associated with line emission."}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "multiscale clean for scales ~1 and 3 times synthesized beam FWHM", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "to search for structures with scales $\\approx$1 and 3 times the FWHM of the synthesized beam"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Beam-match and measure flux densities at all frequencies",
+"method": {"value": "Convolve all images to the 3 GHz beam (imsmooth), fit an elliptical Gaussian with imfit inside an aperture of radius equal to the beam major FWHM; total flux = geometric mean of peak and integrated flux; 3 sigma upper limits for non-detections", "evidence": [
+{"loc": "2.3 Photometry", "quote": "the CASA task IMFIT was used to fit an elliptical Gaussian to the emission within a circular aperture having a radius equal to the FWHM of the synthesized beam major axis"},
+{"loc": "2.3 Photometry", "quote": "we take the total flux density"}
+]},
+"software": ["CASA", "imsmooth", "imfit"],
+"key_parameters": [
+{"value": "Aperture radius 1.85'' (beam-matched 3 GHz beam major axis)", "evidence": [
+{"loc": "2.3 Photometry", "quote": "of the beam matched images (i.e., 1.85"}
+]},
+{"value": "Source treated as unresolved if fitted major axis is not at least 2 sigma larger than beam major axis", "evidence": [
+{"loc": "2.3 Photometry", "quote": "be at least $2\\sigma_{\\phi_{\\rm M}}$ larger than the FWHM of the synthesized beam major axis"}
+]}
+],
+"assumptions": [
+{"value": "Geometric mean of peak and integrated flux chosen because their uncertainties are anti-correlated", "evidence": [
+{"loc": "2.3 Photometry", "quote": "the uncertainties on the peak brightness and integrated flux density from the elliptical Gaussian fitting are anti-correlated (cite: jc97)"}
+]}
+],
+"fitting": {"value": "Elliptical Gaussian fit with IMFIT", "evidence": [
+{"loc": "2.3 Photometry", "quote": "the CASA task IMFIT was used to fit an elliptical Gaussian to the emission"}
+]},
+"validation": {"value": "1.5 GHz IMFIT detection rejected after inspecting the map and treated as a noise feature; 203 GHz kept because the fit converged and a source appears at the location", "evidence": [
+{"loc": "2.3 Photometry", "quote": "it is clear from that map (see Figure [1](#fig:radpan)) that there is nothing co-spatial with NGC 4725 B and that a nearby noise feature is being fit."}
+]}
+},
+{
+"order": 4,
+"goal": "Fit radio-to-millimeter SED with free-free, synchrotron, AME and dust model",
+"method": {"value": "Parametric model of free-free, free-free-absorbed synchrotron power law, log-normal AME and modified blackbody dust; MCMC sampling; default model fixes A_d = 0 (six parameters)", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "We employ a simple parametric model to fit the NGC 4725 B spectrum presented in Figure"},
+{"loc": "3.2 Model Fits", "quote": "we consider this our default model and quote parameter constraints from a six parameter fit fixing $A_d = 0$"}
+]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "T_e fixed at 10^4 K", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "Given the limited number of data points and the relative insensitivity of the spectrum to $T_e$, we fix $T_e = 10^4$ K."}
+]},
+{"value": "alpha = -0.83 fixed for synchrotron", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "We therefore adopt $\\alpha = -0.83$"}
+]},
+{"value": "beta = 1.55 and T_d = 19.6 K fixed for dust", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "we fix $\\beta = 1.55$ and $T_d = 19.6$ K"}
+]},
+{"value": "Seven sampled parameters: EM, D, A_s, A_AME, W_AME, nu_p, A_d", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "Markov Chain Monte Carlo software (cite: emcee) to sample the seven parameters"}
+]}
+],
+"assumptions": [
+{"value": "Pure free-free absorption of synchrotron, AME and dust; optically thin synchrotron power law", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "We model the optically-thin synchrotron emission as a power law and the absorption as pure free-free absorption"}
+]}
+],
+"fitting": {"value": "emcee MCMC with broad uninformative priors: EM, D, A_s, A_AME, A_d positive; 10 < nu_p/GHz < 50; 0 < W_AME < 1; likelihood not stated", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "We use broad, uninformative priors, requiring only that $EM$, $D$, $A_s$, $A_{\\rm AME}$, and $A_d$ be positive, that $10 < \\nu_p/{\\rm GHz} < 50$, and that $0 < W_{\\rm AME} < 1$."}
+]},
+"validation": {"value": "Chi-squared of the A_d = 0 fit compared with the seven-parameter alternative; 1.5 GHz point excluded from fits", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "$\\chi^2 = 9.0$ for a six parameter fit to eleven data points"}
+]}
+},
+{
+"order": 5,
+"goal": "Derive CO luminosity and molecular gas mass",
+"method": {"value": "Integrate CO(2-1) line luminosity of nearest CO feature; convert with a CO(2-1)/CO(1-0) ratio of ~0.8 and alpha_CO ~4.3; 3 sigma upper limit at the position of NGC 4725 B", "evidence": [
+{"loc": "3.3 Associated Molecular Gas", "quote": "(cite: svb05; bwl13), the total nearby molecular gas reservoir is measured to be"},
+{"loc": "3.3 Associated Molecular Gas", "quote": "the corresponding upper limit on the molecular gas mass is"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "CO(2-1)/CO(1-0) brightness temperature ratio ~0.8; alpha_CO ~4.3 Msun (K km/s pc^2)^-1", "evidence": [
+{"loc": "3.3 Associated Molecular Gas", "quote": "brightness temperature ratio of $\\sim$0.8 (cite: heracles09; lzk18)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Infer cluster properties and star formation efficiency",
+"method": {"value": "Use free-free fraction at 14 GHz to get Q(H0), convert to number of O7V stars and stellar mass with a Kroupa IMF, then SFR, gas depletion time and free-fall efficiency", "evidence": [
+{"loc": "4.1.1 Cluster Properties", "quote": "Assuming that $\\approx 50$% of the 14 GHz flux density arises from free-free emission"},
+{"loc": "4.1.2 Molecular Gas Properties", "quote": "This implies a gas depletion time of $t_{\\rm dep} \\gtrsim 113$ Myr."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Nearby CO complex mass (1.2e6 Msun) taken as the mass of the cloud NGC 4725 B formed from; 100 pc gas layer thickness", "evidence": [
+{"loc": "4.1.2 Molecular Gas Properties", "quote": "Assuming a constant 100 pc thickness of the molecular gas layer for this CO complex"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with LEGUS cluster masses and the Whitmore et al. YMC classification", "evidence": [
+{"loc": "4.1.1 Cluster Properties", "quote": "NGC 4725 B is classified as a stage 3"}
+]}
+},
+{
+"order": 7,
+"goal": "Compare AME to millimeter dust emission with Galactic values",
+"method": {"value": "Compute tau_353 limit from the 353 GHz dust flux upper limit and compare the AME-to-tau_353 ratio with the Galactic typical value; also fit only the 203 and 221 GHz data with a modified blackbody", "evidence": [
+{"loc": "4.1.3 Physical Constraints on AME", "quote": "Fitting just the 203 and 221 GHz ALMA observations with the modified blackbody dust model, we derive a 95% upper limit of 520"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Dust temperature 20 K and 1.85'' beam", "evidence": [
+{"loc": "4.1.3 Physical Constraints on AME", "quote": "For an assumed dust temperature of 20 K and 1.85"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.4.0 (ALMA calibration pipeline); 5.6.1 (imaging); 4.6.0, 4.7.0, 5.3.0 (VLA)", "used_for": {"value": "Calibration, tclean imaging, imsmooth, imfit", "evidence": [
+{"loc": "2.2 ALMA Data Reduction and Imaging", "quote": "Calibrated data were imaged using the task TCLEAN in CASA version 5.6.1."},
+{"loc": "2.3 Photometry", "quote": "the CASA task IMFIT was used to fit an elliptical Gaussian to the emission"}
+]}},
+{"name": "CASA Analysis Utilities (estimatemrs)", "version": "not stated", "used_for": {"value": "Computing the largest angular scale (LAS) sensitivity of the images", "evidence": [
+{"loc": "2.1 VLA Data Reduction and Imaging", "quote": "where the calculations have been done with the CASA Analysis Utilities task ESTIMATEMRS"}
+]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC sampling of the SED model parameters", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "Markov Chain Monte Carlo software (cite: emcee) to sample the seven parameters"}
+]}},
+{"name": "SpDust", "version": "not stated", "used_for": {"value": "Named as a possible detailed AME prescription but not used; a simple functional form was adopted instead", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "we pursue instead a simple functional description."}
+]}},
+{"name": "corner", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+{"quantity": "ALMA 92 GHz continuum flux density of NGC 4725 B", "value": "139", "uncertainty": "15", "units": "uJy", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "| 92.0 | $0.54\\ensuremath{''} \\times 0.37\\ensuremath{''}$ | 8.88 | 7.4800 | $139.\\pm   15.$ |"}
+]},
+{"quantity": "ALMA 133 GHz continuum flux density", "value": "106", "uncertainty": "33", "units": "uJy", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "| 133\\. | $0.48\\ensuremath{''} \\times 0.29\\ensuremath{''}$ | 14.8 | 8.1000 | $106.\\pm   33.$ |"}
+]},
+{"quantity": "ALMA 203 GHz continuum flux density (marginal)", "value": "53.7", "uncertainty": "32", "units": "uJy", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "| 203\\. | $0.69\\ensuremath{''} \\times 0.40\\ensuremath{''}$ | 17.2 | 1.9800 | $53.7\\pm   32.$ |"}
+]},
+{"quantity": "ALMA 221 GHz continuum flux density", "value": "84.3", "uncertainty": "28", "units": "uJy", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "| 221\\. | $0.51\\ensuremath{''} \\times 0.34\\ensuremath{''}$ | 13.4 | 1.8000 | $84.3\\pm   28.$ |"}
+]},
+{"quantity": "12CO(2-1) integrated flux 3 sigma upper limit", "value": "< 0.820", "uncertainty": "not stated", "units": "Jy km/s", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "| 229.6 | $0.61\\ensuremath{''} \\times 0.46\\ensuremath{''}$ | 0.038 | 3.15 | $<$ 0.820 |"}
+]},
+{"quantity": "Emission measure (A_d = 0 fit)", "value": "1.46e26", "uncertainty": "0.15e26", "units": "cm^-5", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "$EM = \\left(1.46\\pm0.15\\right)\\times10^{26}\\,$cm$^{-5}$"}
+]},
+{"quantity": "Diameter of free-free emitting region D", "value": "2.30", "uncertainty": "+0.30/-0.49", "units": "pc", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "physical size $D = 2.30^{+0.30}_{-0.49}$ pc"}
+]},
+{"quantity": "AME peak frequency nu_p", "value": "31.6", "uncertainty": "+6.5/-3.0", "units": "GHz", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "peak frequency of $\\nu_p = 31.6^{+6.5}_{-3.0}\\,$GHz and a rather narrow width of $W_{\\rm AME} = 0.32^{+0.20}_{-0.11}$"}
+]},
+{"quantity": "AME width W_AME", "value": "0.32", "uncertainty": "+0.20/-0.11", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "peak frequency of $\\nu_p = 31.6^{+6.5}_{-3.0}\\,$GHz and a rather narrow width of $W_{\\rm AME} = 0.32^{+0.20}_{-0.11}$"}
+]},
+{"quantity": "Synchrotron amplitude A_s (20 GHz)", "value": "95", "uncertainty": "+21/-17", "units": "uJy", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "$A_s = 95^{+21}_{-17}$ $\\mu$Jy and $A_{\\rm AME} = 209^{+47}_{-37}\\,\\mu$Jy"}
+]},
+{"quantity": "AME amplitude A_AME", "value": "209", "uncertainty": "+47/-37", "units": "uJy", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "$A_s = 95^{+21}_{-17}$ $\\mu$Jy and $A_{\\rm AME} = 209^{+47}_{-37}\\,\\mu$Jy"}
+]},
+{"quantity": "Chi-squared of A_d = 0 fit", "value": "9.0 (six parameters, eleven data points)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "$\\chi^2 = 9.0$ for a six parameter fit to eleven data points"}
+]},
+{"quantity": "Free-free optical depth unity frequency", "value": "3.7", "uncertainty": "not stated", "units": "GHz", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "The free-free optical depth is unity at 3.7 GHz."}
+]},
+{"quantity": "Free-free fraction of 30 GHz emission (A_d = 0 fit)", "value": "25%", "uncertainty": "not stated", "units": "percent", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "we find that free-free accounts for only $25\\%$ of the 30 GHz emission, with AME dominating at this frequency."}
+]},
+{"quantity": "95% upper limit on 353 GHz dust flux density (full fit)", "value": "167", "uncertainty": "not stated", "units": "uJy", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "The 95% upper limit on dust emission at 353 GHz is 167"}
+]},
+{"quantity": "Chi-squared of seven-parameter fit with dust", "value": "10.3 (seven parameters, eleven data points)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "3.2 Model Fits", "quote": "$\\chi^2 = 10.3$ fitting seven parameters to eleven data points"}
+]},
+{"quantity": "Nearest CO feature line luminosity L'_CO", "value": "2.2e5", "uncertainty": "0.23e5", "units": "K km/s pc^2", "from_step": 5, "evidence": [
+{"loc": "3.3 Associated Molecular Gas", "quote": "$L_{\\rm CO}^{\\prime}\\approx (2.2\\pm0.23)\\times10^{5}$ K km s$^{-1}$ pc$^{2}$"}
+]},
+{"quantity": "Nearby molecular gas mass", "value": ">~ 1.2e6", "uncertainty": "not stated", "units": "Msun", "from_step": 5, "evidence": [
+{"loc": "3.3 Associated Molecular Gas", "quote": "the total nearby molecular gas reservoir is measured to be $M_{\\rm H2}\\gtrsim 1.2\\times10^{6}\\,M_{\\odot}$."}
+]},
+{"quantity": "Molecular gas mass upper limit at NGC 4725 B (3 sigma)", "value": "<~ 3.8e5", "uncertainty": "not stated", "units": "Msun", "from_step": 5, "evidence": [
+{"loc": "3.3 Associated Molecular Gas", "quote": "the corresponding upper limit on the molecular gas mass is $M_{\\rm H_{2}}\\lesssim 3.8\\times10^5\\,M_{\\odot}$."}
+]},
+{"quantity": "Star formation rate of NGC 4725 B", "value": "0.010", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 6, "evidence": [
+{"loc": "4.1.2 Molecular Gas Properties", "quote": "to a star formation rate of 0.010"}
+]},
+{"quantity": "Stellar mass of NGC 4725 B", "value": "6.4e4", "uncertainty": "not stated", "units": "Msun", "from_step": 6, "evidence": [
+{"loc": "4.1.1 Cluster Properties", "quote": "implies a total stellar mass of $M_{\\star} \\approx 6.4\\times10^{4}\\,M_{\\odot}$ for NGC 4725 B"}
+]},
+{"quantity": "Gas depletion time", "value": ">~ 113", "uncertainty": "not stated", "units": "Myr", "from_step": 6, "evidence": [
+{"loc": "4.1.2 Molecular Gas Properties", "quote": "This implies a gas depletion time of $t_{\\rm dep} \\gtrsim 113$ Myr."}
+]},
+{"quantity": "Upper limit on tau_353", "value": "< 4e-5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [
+{"loc": "4.1.3 Physical Constraints on AME", "quote": "our fit suggests $\\tau_{353} < 4\\times10^{-5}$"}
+]},
+{"quantity": "Conservative 95% upper limit on 353 GHz dust flux from 203 and 221 GHz data only", "value": "520", "uncertainty": "not stated", "units": "uJy", "from_step": 7, "evidence": [
+{"loc": "4.1.3 Physical Constraints on AME", "quote": "we derive a 95% upper limit of 520"}
+]}
+],
+"findings_qualitative": [
+{"value": "NGC 4725 B is detected in the continuum at all four ALMA frequencies, marginally at 203 GHz, but molecular gas is not detected at its exact location", "evidence": [
+{"loc": "abstract", "quote": "NGC 4725 B is detected in the continuum at all frequencies, although the detection at 203 GHz is marginal."},
+{"loc": "abstract", "quote": "While molecular gas is not detected at the exact location of NGC 4725 B"}
+]},
+{"value": "There is no indication of millimeter dust emission associated with NGC 4725 B at the ALMA sensitivity", "evidence": [
+{"loc": "abstract", "quote": "there is surprisingly no indication of millimeter dust emission associated with NGC 4725 B"}
+]}
+],
+"claims": [
+{"hypothesis": "Does NGC 4725 B show millimeter dust emission expected if the 30 GHz excess is spinning dust?", "experiment": "ALMA Band 3-6 continuum imaging combined with VLA data and parametric SED fit with emcee", "result": "Continuum detected at all ALMA bands but the data are consistent with free-free dominated emission; 95% upper limit on 353 GHz dust emission is 167 uJy", "finding": "The lack of millimeter dust emission is difficult to reconcile with a spinning dust origin of the 30 GHz emission", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "However, the lack of millimeter thermal dust emission is difficult to reconcile with a spinning dust origin of the 30 GHz emission."}
+]},
+{"hypothesis": "Is the radio-to-millimeter spectrum described by AME, synchrotron and free-free emission with free-free absorption?", "experiment": "Six or seven parameter MCMC fits to eleven flux densities", "result": "Best fit (A_d = 0) has chi-squared 9.0; nu_p = 31.6 GHz, W_AME = 0.32, free-free optical depth unity at 3.7 GHz", "finding": "The spectrum is best fit by AME, synchrotron and free-free emission that is free-free absorbed below about 6 GHz", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "the spectrum is best fit by a combination of AME, synchrotron, and free-free emission"}
+]},
+{"hypothesis": "Is NGC 4725 B an extremely young massive cluster undergoing feedback?", "experiment": "Estimated Q(H0), stellar mass, SFR and gas depletion time from radio data and CO of the nearest molecular complex", "result": "Stellar mass about 6.4e4 Msun, SFR 0.010 Msun/yr, nearby molecular gas of 1.2e6 Msun", "finding": "NGC 4725 B is consistent with an extremely young massive cluster with active feedback", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "NGC 4725 B is consistent with being an extremely young"}
+]},
+{"hypothesis": "Could NGC 4725 B be a background radio galaxy instead?", "experiment": "Compared with number counts of radio sources and gigahertz-peaked spectrum turnover-size relations", "result": "Rising-spectrum chance probability below 10%; implied magnetic field implausibly large", "finding": "A background radio galaxy is unsatisfactory but cannot be completely ruled out", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "modeling NGC 4725 B as a new class of background radio galaxy is also unsatisfactory."}
+]}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "A simple parametric model was used because of limited data points", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "We employ a simple parametric model to fit the NGC 4725 B spectrum presented in Figure"}
+]},
+{"field": "how_they_decided_enough", "value": "The model without millimeter dust emission is the maximum likelihood solution and is adopted as default", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "The model without millimeter dust emission is the maximum likelihood solution"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Fit with significant thermal dust emission (A_d free) gives a poorer chi-squared and is retained as an alternate scenario", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "the quality of the fit is poorer even with the addition of the extra fitting parameter"}
+]},
+{"value": "1.5 GHz IMFIT detection rejected as a noise feature; newer VLA 15 GHz data and 2013 March 33 GHz data excluded in favor of the 14 GHz archival data", "evidence": [
+{"loc": "2.3 Photometry", "quote": "Consequently, we consider this as a non-detection"}
+]},
+{"value": "Background gigahertz-peaked spectrum radio galaxy considered implausible", "evidence": [
+{"loc": "4.2 A Background Source?", "quote": "Thus, such a scenario seems implausible."}
+]}
+],
+"limitations_admitted": [
+{"value": "The AME functional form is only valid near the peak, not the tails", "evidence": [
+{"loc": "3.1 Parametric Models of the Radio-to-Millimeter Spectrum", "quote": "is unlikely to accurately represent the low or high frequency tails."}
+]},
+{"value": "ALMA interferometric data are insensitive to dust emission on scales larger than about 6 arcsec", "evidence": [
+{"loc": "4.1.4 Lack of Millimeter Dust Continuum", "quote": "it may be present only on much larger spatial scales that are invisible to the ALMA interferometric observations"}
+]},
+{"value": "More observations are needed to constrain the spectral shape above 30 GHz", "evidence": [
+{"loc": "3.2 Model Fits", "quote": "More observations are needed to better constrain the shape of the spectrum, particularly at frequencies above 30 GHz."}
+]}
+],
+"referee_caveats_inferred": [
+"Few free-free and dust parameters are fixed (T_e, beta, T_d, alpha) so conclusions depend on those assumptions",
+"Only eleven flux densities constrain a six or seven parameter model, giving bimodal posteriors",
+"Flux calibration uncertainties of the ALMA and VLA data are not described in the SED fit",
+"Beam-matching to the 3 GHz beam of ~1.85'' discards the higher-resolution information at ALMA bands",
+"AME-to-dust ratio relies on an extrapolated 353 GHz limit from sparse data"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Calibrators, observing dates, array configurations and time on source",
+"Image and cell sizes, masks, thresholds and iteration limits for tclean",
+"CO velocity range for moment 0 and its noise estimation",
+"Likelihood definition, walkers and chain length for the emcee fit",
+"Exact reduction scripts and the VLA archival reduction details (deferred to earlier papers)"
+],
+"estimated_data_volume_inferred": "Roughly tens of GB of ALMA raw data for four Band 3-6 execution blocks (inferred); VLA data additional",
+"score_inferred": 3,
+"score_reason": "ALMA project code and tclean settings (robust 0.5, nterms, CASA versions) are given, and fit results are numeric, but calibrators, image sizes, masks, CO channel range, MCMC likelihood and VLA reductions (deferred to earlier papers) are not stated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state that the data are public, and the SED needs eight VLA datasets reduced as in earlier papers plus unstated imaging and MCMC settings.",
+"methods_papers": [
+{"citation": "(cite: ejm18c)", "why": "Detailed information on NGC 4725 B, its data and analysis procedures"},
+{"citation": "(cite: ejm18a; stl20)", "why": "VLA reduction and imaging procedures for SFRS data"}
+],
+"companion_papers": [
+{"citation": "(cite: ejm18c)", "why": "Original detection and study of AME in NGC 4725 B"}
+],
+"related_projects_or_surveys": ["Star Formation in Radio Survey (SFRS)", "VLA/12B-191"]
+}

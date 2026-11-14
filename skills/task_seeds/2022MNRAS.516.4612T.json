@@ -1,0 +1,432 @@
+{
+ "bibcode": "2022MNRAS.516.4612T",
+ "title": "PHANGS: constraining star formation time-scales using the spatial correlations of star clusters and giant molecular clouds",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac2559",
+ "arxiv_id": "2209.02872",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How long do young star clusters remain associated with their natal giant molecular clouds (GMCs), and how does the hierarchical spatial structure of star clusters and GMCs evolve over time across different galactic environments?",
+ "alma_project_codes": [
+  "2015.1.00956.S",
+  "2017.1.00886.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~1'' (~100 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PHANGS–ALMA native resolution GMC catalogues (positions, velocities, radii, masses, luminosities)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "In addition to CO(2–1) maps, PHANGS–ALMA produces a catalogue of GMCs in each galaxy using the methods detailed by (cite: rosolowsky21) and Hughes et al. (in preparation)."
+     },
+     {
+      "loc": "Data",
+      "quote": "For this study, we use the ‘native resolution’ GMC catalogs which have been constructed with the best available resolution and noise for each galaxy."
+     }
+    ]
+   },
+   "citation": "(cite: rosolowsky21) and Hughes et al. (in preparation)"
+  },
+  {
+   "what": {
+    "value": "PHANGS–HST compact star cluster catalogues (positions, aperture photometry, ages, stellar masses, reddening, classifications)",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "The PHANGS–HST star cluster catalogs provide a robust sample of compact star clusters across 38 nearby spiral galaxies within the PHANGS–ALMA sample (cite: lee22)."
+     },
+     {
+      "loc": "Data",
+      "quote": "The compact star cluster catalogs thus include cluster positions, aperture photometry, ages, stellar masses, and reddening, as well as visual classifications (for a subset of the sample), neural network morphological classifications (cite: wei20; whitmore21), and a variety of concentration index values that indicate the difference in magnitudes for different aperture radii (cite: thilker21; deger22)."
+     }
+    ]
+   },
+   "citation": "(cite: thilker21; deger22; lee22)"
+  },
+  {
+   "what": {
+    "value": "PHANGS environmental masks and best-fit logarithmic spiral arm parameters",
+    "evidence": [
+     {
+      "loc": "4.3 Dependence on Galactic Environment",
+      "quote": "We can study how the galactic environment of the star clusters and GMCs affect the timescales of star formation by using the environmental masks developed by the PHANGS collaboration. Details on how the masks are produced are given in (cite: querejeta21)."
+     },
+     {
+      "loc": "4.3.1 Dependence on Spiral Arm Structure",
+      "quote": "The environmental masks in (cite: querejeta21) provide the slope, $\theta$, and intercept, $\\ln(R_{0})$, of best-fit logarithmic spirals for each of the identified spiral arms which we then used to obtain the spiral arm pitch angles."
+     }
+    ]
+   },
+   "citation": "(cite: querejeta21)"
+  },
+  {
+   "what": {
+    "value": "Theoretical parameter values (separation between star-forming regions, evolutionary timescales) for expected nearest neighbour separations",
+    "evidence": [
+     {
+      "loc": "4.1 Nearest Neighbour Analysis",
+      "quote": "Broadly following the approach described in (cite: kruijssen19) and the parameter values presented in (cite: chevance20), the expected separations are $r_n\\approx 0.443 \\lambda \\sqrt{\tau/t_{\rm gas}}$ where $\\lambda$ is the typical separation between independent star-forming regions, $\tau$ is the evolutionary timescale for star formation overall, and $t_{\rm gas}$ is the timescale for the molecular clouds in particular."
+     }
+    ]
+   },
+   "citation": "(cite: kruijssen19), (cite: chevance20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Filter catalogues to HST and ALMA footprint overlap and perform nearest-neighbour separation analysis",
+   "method": "Identify the overlap region between HST and ALMA footprints, filter star clusters (Classes 1, 2, 3) and GMCs to this region, compute 1st, 2nd, and 3rd nearest-neighbour separations between star clusters and GMC centres (ignoring GMC sizes), split into age bins (<=10 Myr and >10 Myr), and calculate median separations and S/N via 1000 bootstrap samples.",
+   "software": [],
+   "key_parameters": [
+    "Age bin threshold: 10 Myr (also tested 5 Myr)",
+    "1000 bootstrapped samples for median separation standard deviation"
+   ],
+   "assumptions": [
+    "GMC sizes are ignored in the nearest neighbour point-to-point separation analysis"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Associate star clusters with GMCs using GMC radii and derive cloud dispersal timescales",
+   "method": "Classify star clusters by line-of-sight overlap with the closest GMC into radial bins (< 1 R_GMC, 1-2 R_GMC, 2-3 R_GMC, or > 3 R_GMC unassociated) while applying a 10 km/s drift velocity cutoff (v * t(age) < 3 R_GMC). Compute median cluster ages and bootstrap uncertainties for each radial bin across individual galaxies, the ensemble, and PHANGS environmental masks (centre, bar, interarm, spiral arm, disk) as well as spiral arm pitch angle bins.",
+   "software": [],
+   "key_parameters": [
+    "Radial association bins: <1 R_GMC, 1-2 R_GMC, 2-3 R_GMC, >3 R_GMC (unassociated)",
+    "Velocity cutoff: v = 10 km s^-1 such that v * t(age) < 3 R_GMC",
+    "Spiral arm pitch angle split thresholds: 20 degrees and 30 degrees"
+   ],
+   "assumptions": [
+    "A star cluster can only be associated with a single GMC; if aligned with multiple GMCs, the most massive GMC is chosen",
+    "Assumed galactic disk scale height of 100 pc for oblate spheroidal GMC radius modeling in PHANGS-ALMA"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure angular two-point autocorrelation functions and fit power-laws",
+   "method": "Generate random catalogues within the HST-ALMA overlap footprint with similar sample size as real catalogues. Compute 2D angular two-point autocorrelation functions using the Landy & Szalay (1993) estimator via astroML's bootstrap_two_point_angular for all clusters, clusters <= 10 Myr, clusters > 10 Myr, and GMCs. Drop the largest-scale angular bins to avoid edge effects, convert angular scale to parsecs, and fit power-laws using Levenberg-Marquardt non-linear least squares minimization.",
+   "software": [
+    "astroML"
+   ],
+   "key_parameters": [
+    "Number of angular bins: tested 5, 10, 15, 20, and 25; 15 or 20 bins optimal",
+    "Reference spatial scale for amplitude evaluation: 300 pc"
+   ],
+   "assumptions": [
+    "Positions are not deprojected for disk inclination because moderate to low inclinations (<= 60 deg) have minimal impact"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure angular cross-correlation functions between star clusters and GMCs",
+   "method": "Generate random catalogues for both star clusters and GMCs within the overlap region and compute the two-point angular cross-correlation function using the Landy & Szalay (1993) cross-correlation estimator for all clusters, clusters <= 10 Myr, and clusters > 10 Myr with GMCs, dropping the largest angular bins.",
+   "software": [],
+   "key_parameters": [
+    "Number of angular bins: 10 bins chosen (tested 5, 10, 15, 20, and 25)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Timescale for star clusters to become unassociated with GMCs (2 to 3 GMC radii)",
+   "value": "4-6",
+   "uncertainty": "0.5",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find that after $4{-}6$ Myr the star clusters are no longer associated with any gas clouds."
+    },
+    {
+     "loc": "4.2 Star Clusters Associated with GMCs",
+     "quote": "For clusters between 2 and 3 GMC radii, the median ages are no greater than 6 Myr across all galaxies (the range is $4-6$ Myr, with uncertainties for a given galaxy on the order of 0.5 Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean GMC radius across the 11-galaxy sample",
+   "value": "61.5",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "Across the ensemble of galaxies in our sample, the mean GMC radius is 61.5 pc, median is 62 pc, minimum is 8 pc and maximum is 132 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median GMC radius across the 11-galaxy sample (Section 3.1)",
+   "value": "60.5",
+   "uncertainty": "16th-84th percentile range 40.6-79.7",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Associating Star Clusters with GMCs",
+     "quote": "In terms of the typical physical extent of the GMCs in this sample of 11 galaxies, the median radius is 60.5 pc with a $16^{\rm th} {-} 84^{\rm th}$ percentile range of $40.6{-}79.7$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median nearest-neighbour separation between all star clusters and GMCs across sample",
+   "value": "1.8 to 4.9",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Nearest Neighbour Analysis",
+     "quote": "For all star clusters, the median separations $\tilde{\\Delta r}$ to the nearest neighbour GMC range from ${\\sim}1.8\\ensuremath{''}$ (NGC 1559) to $4.9\\ensuremath{''}$ (NGC 4571)."
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble median star cluster age (all clusters)",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble median star cluster age (< 1 R_GMC)",
+   "value": "1",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "Clusters which are closely associated with a GMC (within the GMC radius) are found to be very young with a median age of $1$ Myr for most of the galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble median star cluster age (1 to 2 R_GMC)",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble median star cluster age (2 to 3 R_GMC)",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ensemble median star cluster age (unassociated, > 3 R_GMC)",
+   "value": "46",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ensemble & 19 & (6248) & 01 & (232) & 04 & (666) & 05 & (1041) & 046 & (2526)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median star cluster age in spiral arms (all clusters)",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Spiral Arm & 09 & (1420) & 01 & (93) & 03 & (206) & 05 & (306) & 053 & (388)"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "The median age for all clusters within spiral arms is $9$ Myr, while clusters in interarm regions are ${\\sim}32$ Myr old."
+    }
+   ]
+  },
+  {
+   "quantity": "Median star cluster age in interarm regions (all clusters)",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Inter Arm & 32 & (1654) & 01 & (43) & 03 & (117) & 05 & (180) & 053 & (969)"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "The median age for all clusters within spiral arms is $9$ Myr, while clusters in interarm regions are ${\\sim}32$ Myr old."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated cluster migration timescale out of spiral arms",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Dependence on Galactic Environment",
+     "quote": "The difference in the median ages of spiral and interarm clusters suggests it takes ${\\sim}20$ Myr for clusters to migrate out of the spiral arms."
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation power-law slope alpha for NGC 0628 (SCs <= 10 Myr)",
+   "value": "-0.39",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 0628 | $-$0.28$\\pm$0.02 | $-$0.39$\\pm$0.05 | $-$0.20$\\pm$0.03 | $-$0.24$\\pm$0.04 | 2.20$\\pm$0.20 | 2.46$\\pm$0.35 | 1.86$\\pm$0.37 | 2.15$\\pm$0.19"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation power-law slope alpha for NGC 0628 (SCs > 10 Myr)",
+   "value": "-0.20",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 0628 | $-$0.28$\\pm$0.02 | $-$0.39$\\pm$0.05 | $-$0.20$\\pm$0.03 | $-$0.24$\\pm$0.04 | 2.20$\\pm$0.20 | 2.46$\\pm$0.35 | 1.86$\\pm$0.37 | 2.15$\\pm$0.19"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation power-law slope alpha for NGC 1566 (SCs <= 10 Myr)",
+   "value": "-0.73",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1566 | $-$0.44$\\pm$0.02 | $-$0.73$\\pm$0.05 | $-$0.36$\\pm$0.02 | $-$0.26$\\pm$0.03 | 3.64$\\pm$0.28 | 5.52$\\pm$0.81 | 2.92$\\pm$0.42 | 2.19$\\pm$0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation power-law slope alpha for NGC 1566 (SCs > 10 Myr)",
+   "value": "-0.36",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1566 | $-$0.44$\\pm$0.02 | $-$0.73$\\pm$0.05 | $-$0.36$\\pm$0.02 | $-$0.26$\\pm$0.03 | 3.64$\\pm$0.28 | 5.52$\\pm$0.81 | 2.92$\\pm$0.42 | 2.19$\\pm$0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation power-law slope alpha for NGC 1566 (GMCs)",
+   "value": "-0.26",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1566 | $-$0.44$\\pm$0.02 | $-$0.73$\\pm$0.05 | $-$0.36$\\pm$0.02 | $-$0.26$\\pm$0.03 | 3.64$\\pm$0.28 | 5.52$\\pm$0.81 | 2.92$\\pm$0.42 | 2.19$\\pm$0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation amplitude 1 + omega(theta) at 300 pc for NGC 1566 (SCs <= 10 Myr)",
+   "value": "5.52",
+   "uncertainty": "0.81",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1566 | $-$0.44$\\pm$0.02 | $-$0.73$\\pm$0.05 | $-$0.36$\\pm$0.02 | $-$0.26$\\pm$0.03 | 3.64$\\pm$0.28 | 5.52$\\pm$0.81 | 2.92$\\pm$0.42 | 2.19$\\pm$0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation amplitude 1 + omega(theta) at 300 pc for NGC 1566 (SCs > 10 Myr)",
+   "value": "2.92",
+   "uncertainty": "0.42",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1566 | $-$0.44$\\pm$0.02 | $-$0.73$\\pm$0.05 | $-$0.36$\\pm$0.02 | $-$0.26$\\pm$0.03 | 3.64$\\pm$0.28 | 5.52$\\pm$0.81 | 2.92$\\pm$0.42 | 2.19$\\pm$0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Autocorrelation power-law slope alpha for NGC 3351 (SCs <= 10 Myr)",
+   "value": "-0.84",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 3351 | $-$0.73$\\pm$0.10 | $-$0.84$\\pm$0.15 | $-$0.29$\\pm$0.11 | $-$0.76$\\pm$0.02 | 3.12$\\pm$0.53 | 3.85$\\pm$0.70 | 1.61$\\pm$0.65 | 1.83$\\pm$0.23"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spatial polygon or mask coordinates defining the overlap region between HST and ALMA footprints for each of the 11 galaxies",
+  "Exact sample size of the random catalogues (NR) generated for the autocorrelation and cross-correlation Landy-Szalay estimators",
+  "Exact minimum and maximum angular/spatial separation bounds and specific bins dropped as 'largest-scale angular bins' when fitting the power-laws to the autocorrelation functions",
+  "Whether the star clusters used in the analysis are strictly visually classified Class 1+2+3, neural network classified, or a combination, and exact selection cuts applied per galaxy"
+ ],
+ "missing_for_reproduction": [
+  "Exact HST-ALMA overlap footprint masks/polygons used both to filter the catalogues and to bound the random catalogue generation",
+  "Specific spatial scale ranges (min and max separation in pc or arcsec) over which the Levenberg-Marquardt power-law fits in Table 4 were performed for each galaxy",
+  "Exact version of the PHANGS-ALMA native resolution GMC catalogue (Rosolowsky et al. 2021 vs Hughes et al. in prep)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The analysis operates purely on high-level PHANGS-ALMA GMC and PHANGS-HST star cluster catalogues that are publicly archived, and uses standard estimators (nearest neighbour, Landy-Szalay via astroML). However, exact footprint overlap polygons, exact fitting ranges for the power-law slopes, and analysis scripts are not released.",
+ "rediscovery_reason": "The input star cluster and GMC catalogues are public, the statistical recipe (nearest neighbour, radial association in units of R_GMC with a 10 km/s cutoff, and Landy-Szalay two-point correlation via astroML) is straightforward, and the main results are quantitative tables of median ages and power-law slopes.",
+ "source_card": "cards/2022MNRAS.516.4612T/sonnet/card.md"
+}

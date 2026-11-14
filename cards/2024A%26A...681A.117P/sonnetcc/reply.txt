@@ -1,0 +1,222 @@
+{
+"depth":"light",
+"paper_type":"multi_facility_alma_minor",
+"paper_type_evidence":[
+{"loc":"2.3 Ancillary ALMA data","quote":"We retrieved archival ALMA observations of the $^{12}$CO rotational lines"},
+{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"obtained with the grating/filter pair G395H/F290LP"}
+],
+"fields":["nearby_galaxies","agn_and_quasars"],
+"question":{"value":"Can the CO-to-H2 conversion factor (alpha_CO) of the cold molecular outflow in NGC 3256-S be derived from the JWST/NIRSpec rovibrational CO v=1-0 band, with ALMA rotational CO used as ancillary data?","evidence":[
+{"loc":"Introduction","quote":"Here, we present an alternative method to estimate the"},
+{"loc":"Summary and conclusions","quote":"Using these models, we constrained the column density, kinetic temperature, and"}
+]},
+"targets":[
+{"name":"NGC 3256 S (southern nucleus)","details":[
+{"loc":"1.1 NGC 3256","quote":"NGC 3256 is a nearby ($d$=40 Mpc; $z$=0.00916; 190 pc arcsec$^{-1}$) gas-rich advanced merger"}
+],"coordinates":"not stated","redshift_or_distance":"d = 40 Mpc; z = 0.00916; 190 pc per arcsec","distance_source":"not stated"}
+],
+"alma_project_codes":[
+{"code":"2018.1.00223.S","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"from programs 2018.1.00223.S (PI: K. Sakamoto) and 2015.1.00714.S (PI: K. Sliwa), respectively."}]},
+{"code":"2015.1.00714.S","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"from programs 2018.1.00223.S (PI: K. Sakamoto) and 2015.1.00714.S (PI: K. Sliwa), respectively."}]},
+{"code":"2015.1.00412.S","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"both from program 2015.1.00412.S (PI: N. Harada)"}]}
+],
+"data_settings":[
+{"field":"bands","value":"Band 3 (12CO J=1-0) and Band 6 (J=2-1 transitions)","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"The absolute flux accuracy for Band 3 ($^{12}$CO $J$=1–0) and Band 6 ($J$=2–1 transitions) is 10% and 20%, respectively"}]},
+{"field":"frequencies_and_spectral_setup","value":"12CO J=1-0 115.27 GHz; 12CO J=2-1 230.54 GHz; 13CO J=2-1 220.40 GHz; C18O J=2-1 219.56 GHz","evidence":[
+{"loc":"2.3 Ancillary ALMA data","quote":"rotational lines $J$=1–0 (115.27 GHz) and $J$=2–1 (230.54 GHz)"},
+{"loc":"2.3 Ancillary ALMA data","quote":"$^{13}$CO $J$=2–1 (220.40 GHz) and C$^{18}$O $J$=2–1 (219.56 GHz)"}
+]},
+{"field":"arrays","value":"12-m array (compact and extended configurations combined)","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"We combined data from compact and extended 12-m array configurations to improve the coverage of $uv$-plane."}]},
+{"field":"angular_resolution","value":"12CO cubes smoothed to 0.39 x 0.37 arcsec; 13CO and C18O cubes 0.85 x 0.81 arcsec","evidence":[
+{"loc":"2.3 Ancillary ALMA data","quote":"The $^{12}$CO cubes were smoothed to a common beam with a FWHM of 0.39$''$$\\times$0.37$''$"},
+{"loc":"2.3 Ancillary ALMA data","quote":"The beam FWHM of the $^{13}$CO and C$^{18}$O cubes is 0.85$''$$\\times$0.81$''$."}
+]},
+{"field":"pi_or_archival_as_stated","value":"archival data; PIs K. Sakamoto, K. Sliwa, N. Harada","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"We retrieved archival ALMA observations of the $^{12}$CO rotational lines"}]}
+],
+"lines_targeted":[
+{"species":"12CO","transition":"J=1-0","rest_frequency":"115.27 GHz","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"rotational lines $J$=1–0 (115.27 GHz) and $J$=2–1 (230.54 GHz)"}]},
+{"species":"12CO","transition":"J=2-1","rest_frequency":"230.54 GHz","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"rotational lines $J$=1–0 (115.27 GHz) and $J$=2–1 (230.54 GHz)"}]},
+{"species":"13CO","transition":"J=2-1","rest_frequency":"220.40 GHz","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"$^{13}$CO $J$=2–1 (220.40 GHz) and C$^{18}$O $J$=2–1 (219.56 GHz)"}]},
+{"species":"C18O","transition":"J=2-1","rest_frequency":"219.56 GHz","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"$^{13}$CO $J$=2–1 (220.40 GHz) and C$^{18}$O $J$=2–1 (219.56 GHz)"}]},
+{"species":"12CO (JWST, not ALMA)","transition":"rovibrational v=1-0 band (P and R branches)","rest_frequency":"4.67 micron","evidence":[{"loc":"Introduction","quote":"The 4.67 $\\upmu$m rovibrational CO band has been previously observed in extragalactic objects"}]}
+],
+"other_facilities":[
+{"name":"JWST/NIRSpec IFU (G395H/F290LP), DD-ERS Program 1328","provided":{"value":"Main data: R~1900-3600 integral-field spectroscopy 2.87-5.27 micron with the rovibrational CO v=1-0 bands","evidence":[
+{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"obtained with the grating/filter pair G395H/F290LP"},
+{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"The field of view is 3.1"}
+]}},
+{"name":"JWST/NIRCam (F150W, F200W, F335M)","provided":{"value":"Reference near-IR/PAH 3.3 micron color image","evidence":[{"loc":"2.2 NIRCam imaging","quote":"We downloaded the fully reduced and calibrated F150W (1.50 $\\upmu$m), F200W (1.99 $\\upmu$m), and F335M (3.36 $\\upmu$m) images from the"}]}}
+],
+"external_data_from_literature":[
+{"what":{"value":"CO molecular data used in the rovibrational model","evidence":[{"loc":"4 Rovibrational CO v=1-0 emission model","quote":"We used in our analysis the CO molecular data from (cite: Goorvitch1994) and the collisional coefficients from (cite: Yang2010)."}]},"citation":"(cite: Goorvitch1994)"},
+{"what":{"value":"CO-H2 collisional coefficients","evidence":[{"loc":"4 Rovibrational CO v=1-0 emission model","quote":"We used in our analysis the CO molecular data from (cite: Goorvitch1994) and the collisional coefficients from (cite: Yang2010)."}]},"citation":"(cite: Yang2010)"},
+{"what":{"value":"Case B HI line ratio 7-5/11-6 = 6.43 at 10000 K","evidence":[{"loc":"3.1 Mid-IR continuum, ionized, and molecular gas maps","quote":"the intensity of the H i lines were tied according to the expected case B ratios at 10 000 K (7–5/11–6=6.43; (cite: Storey1995))"}]},"citation":"(cite: Storey1995)"},
+{"what":{"value":"Standard CO abundance [CO/H2] = 3.2e-4 assumed","evidence":[{"loc":"6 Discussion","quote":"We assumed a standard CO abundance of 3.2$\\times$10$^{-4}$ (e.g., (cite: Bolatto2013))"}]},"citation":"(cite: Bolatto2013)"},
+{"what":{"value":"Factor 1.36 for helium and other elements applied to H2 mass","evidence":[{"loc":"5 CO-to-H2 conversion factor","quote":"to account for helium and other elements (cite: Bolatto2013)"}]},"citation":"(cite: Bolatto2013)"},
+{"what":{"value":"Outflow inclination i ~ 80 deg","evidence":[{"loc":"3.1.2 Molecular outflow. H2 and CO emissions","quote":"the outflow direction is close to the plane of the sky ($i\\sim80\\deg$; (cite: Sakamoto2014))"}]},"citation":"(cite: Sakamoto2014)"},
+{"what":{"value":"13CO/C18O abundance ratio 5.6-6.6 for the same region (compared with own value)","evidence":[{"loc":"3.3.2 Optically thin 13CO and C18O v=1-0 bands","quote":"This abundance ratio agrees with that obtained by (cite: Harada2018), 5.6–6.6, for the same region using a slightly larger aperture."}]},"citation":"(cite: Harada2018)"}
+],
+"simulations_or_models_as_data":[
+{"value":"Grid of 125000 RADEX non-LTE models (Tkin 12-50 K, N(CO)/sigma_v 10^16-10^20, nH2 10^2-10^6) used to fit the P(J+2)/R(J) ratios","evidence":[{"loc":"4.1.3 Non-LTE models","quote":"50 log steps for each parameter (125 000 models in total)"}]}
+],
+"calibration":[
+{"field":"casa_version","value":"CASA v6.4.1","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"The data were processed using the ALMA reduction software CASA (v6.4.1; (cite: McMullin2007)) following (cite: Pereira2021)."}]},
+{"field":"flux_scale_uncertainty","value":"10% (Band 3, 12CO 1-0); 20% (Band 6, 12CO 2-1)","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"The absolute flux accuracy for Band 3 ($^{12}$CO $J$=1–0) and Band 6 ($J$=2–1 transitions) is 10% and 20%, respectively"}]}
+],
+"imaging":[
+{"field":"array_combination","value":"compact and extended 12-m configurations combined","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"We combined data from compact and extended 12-m array configurations to improve the coverage of $uv$-plane."}]},
+{"field":"smoothing","value":"12CO cubes smoothed to a common beam with CASA IMSMOOTH","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"using the CASA task IMSMOOTH"}]},
+{"field":"final_beam","value":"12CO 0.39 x 0.37 arcsec; 13CO and C18O 0.85 x 0.81 arcsec","evidence":[
+{"loc":"2.3 Ancillary ALMA data","quote":"The $^{12}$CO cubes were smoothed to a common beam with a FWHM of 0.39$''$$\\times$0.37$''$"},
+{"loc":"2.3 Ancillary ALMA data","quote":"The beam FWHM of the $^{13}$CO and C$^{18}$O cubes is 0.85$''$$\\times$0.81$''$."}
+]}
+],
+"inherited":[
+{"what":{"value":"ALMA data processing with CASA follows an earlier paper","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"The data were processed using the ALMA reduction software CASA (v6.4.1; (cite: McMullin2007)) following (cite: Pereira2021)."}]},"from_reference":"(cite: Pereira2021)"},
+{"what":{"value":"Zeroth moment maps of all CO transitions made with a published method","evidence":[{"loc":"2.3 Ancillary ALMA data","quote":"We calculated the zeroth moment maps of all the CO transitions following the method described in (cite: SanchezGarcia2022)."}]},"from_reference":"(cite: SanchezGarcia2022)"},
+{"what":{"value":"13CO-based mass estimate follows the standard rotational 13CO method","evidence":[{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"it can be used to estimate the mass of the molecular clouds in a similar way to the standard method for the sub-mm/mm $^{13}$CO rotational transitions (e.g., (cite: Papadopoulos2012b))."}]},"from_reference":"(cite: Papadopoulos2012b)"},
+{"what":{"value":"Full radiative transfer check of the v=1 vs v=0 population assumption uses an updated version of an earlier code","evidence":[{"loc":"4.1.3 Non-LTE models","quote":"a grid of full radiative transfer models, created using an updated version of the (cite: GonzalezAlfonso1998) code"}]},"from_reference":"(cite: GonzalezAlfonso1998)"}
+],
+"unstated_but_needed":[
+"CASA tasks and parameters used for ALMA imaging (tclean deconvolver, weighting/robust, cell and image size, masks, uv-range, threshold) are not given; only 'following Pereira2021'",
+"Whether ALMA archive products or a manual reduction script were used, and the CASA pipeline version, are not stated",
+"Moment-map clipping and integration velocity range for the zeroth moment maps are in SanchezGarcia2022, not here",
+"Exact positions of the eight 0.5 arcsec apertures (N1-N5, S1-S3) are only shown in Figure 1",
+"Continuum subtraction approach and line-free channels for the ALMA cubes are not stated",
+"The adopted 12CO/13CO abundance ratio is only given as a normalization (60) in the table header and not justified",
+"Fit procedure details for the Gaussian line fits (optimizer, initial guesses beyond the H2 S(8)/HI 10-6 profiles, error estimation) are not given",
+"Code for the non-LTE grid post-processing and the 2-component chi2 search is not released"
+],
+"analysis_steps":[
+{"order":1,"goal":"Reduce JWST NIRSpec IFU data to spectral cubes","method":{"value":"JWST pipeline Detector1, Spec2 and Spec3 with custom bias and bad-pixel handling; drizzle cube build with 0.1 arcsec spaxels","evidence":[
+{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"We used the Spec3 module to build the two 3D spectral sub-cubes (NIRSpec detectors 1 and 2) from the fully calibrated Spec2 products."}
+]},"software":["JWST Calibration pipeline"],"key_parameters":[
+{"value":"Pipeline version 1.9.4, CRDS context 1063","evidence":[{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"Calibration pipeline (version 1.9.4) together with the calibration context 1063 from the Calibration References Data System (CRDS)."}]}
+],"assumptions":[],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"not stated","evidence":[]}},
+{"order":2,"goal":"Measure ALMA 12CO(1-0) and (2-1) fluxes in the apertures and r21","method":{"value":"Extract spectra of each region from the ALMA cubes, integrate the line profile, and compute r21 in K km/s","evidence":[
+{"loc":"3.4 ALMA rotational 12CO emission","quote":"We extracted the spectra of the each region from the ALMA data cubes and integrated the line profile."},
+{"loc":"3.4 ALMA rotational 12CO emission","quote":"ratio between the fluxes of the CO(2–1) and CO(1–0) transitions"}
+]},"software":["CASA"],"key_parameters":[
+{"value":"Eight circular apertures of 0.5 arcsec diameter (~100 pc)","evidence":[{"loc":"3.3 Spectra from regions with CO v=1-0 in emission","quote":"We extracted the spectra from eight circular apertures"}]}
+],"assumptions":[],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"Flux uncertainties dominated by calibration uncertainties (10% and 20%)","evidence":[{"loc":"Table 4","quote":"The flux uncertainties are dominated by the calibration uncertainties which are 10% for CO(1–0) and 20% for CO(2–1)."}]}},
+{"order":3,"goal":"Fit spaxel spectra to make continuum, ionized, H2 and CO maps","method":{"value":"Per-spaxel fit with linear local continuum and Gaussian profiles, with velocity and dispersion tied within gas phases, over 4.59-4.75 micron","evidence":[
+{"loc":"3.1 Mid-IR continuum, ionized, and molecular gas maps","quote":"For the spectral features we used Gaussian profiles."},
+{"loc":"3.1 Mid-IR continuum, ionized, and molecular gas maps","quote":"We tied the velocity and dispersion for groups of lines tracing the same phase of the gas"}
+]},"software":[],"key_parameters":[
+{"value":"HI 7-5/11-6 tied to case B 6.43; [KIII] 4.62 tied to HI 7-5 with ratio 0.104","evidence":[{"loc":"3.1 Mid-IR continuum, ionized, and molecular gas maps","quote":"We estimated an average $[$K iii$]$4.62 $\\upmu$m/H i 7–5 4.65 $\\upmu$m ratio of 0.104 in this object"}]}
+],"assumptions":[],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"not stated","evidence":[]}},
+{"order":4,"goal":"Extract aperture spectra, subtract nuclear PSF, baseline and fit CO, 13CO, C18O, H2, HI and D-PAH","method":{"value":"Scaled WebbPSF nuclear contribution subtracted; spline baseline subtracted; 13CO and C18O bands modelled from P-branch fluxes assuming optically thin emission and subtracted; then 12CO band fitted together with H2, HI and D_n-PAH Gaussians","evidence":[
+{"loc":"3.3 Spectra from regions with CO v=1-0 in emission","quote":"We calculated this contribution at each wavelength using point-spread functions (PSFs) created with WebbPSF (v1.1.1; (cite: Perrin2014))."},
+{"loc":"3.3.1 Continuum baseline","quote":"we defined a spline-interpolated baseline."},
+{"loc":"3.3.5 12CO v=1-0 band","quote":"we fitted the $^{12}$CO band together with the H$_2$ and H I transitions"}
+]},"software":["WebbPSF"],"key_parameters":[
+{"value":"Spline pivot points at 4.395, 4.530, 4.586, 4.667, 4.845, 4.980 micron","evidence":[{"loc":"3.3.1 Continuum baseline","quote":"The pivot points (4.395, 4.530, 4.586, 4.667, 4.845, and 4.980"}]},
+{"value":"13CO/C18O abundance ratio ~7.4 from 13CO(2-1)/C18O(2-1) (ALMA, r=1 arcsec aperture)","evidence":[{"loc":"3.3.2 Optically thin 13CO and C18O v=1-0 bands","quote":"abundance ratio of $\\sim$7.4"}]}
+],"assumptions":[
+{"value":"13CO and C18O v=1-0 emission optically thin; same excitation temperatures for both","evidence":[{"loc":"3.3.2 Optically thin 13CO and C18O v=1-0 bands","quote":"share the same excitation temperatures and have abundance ratio of"}]}
+],"fitting":{"value":"Single Gaussian per CO transition; two Gaussians for N1 and N2 where a broader second component appears in the residuals","evidence":[{"loc":"3.3.5 12CO v=1-0 band","quote":"Two regions (N1 and N2) show a second broader kinematic component in the residuals."}]},"validation":{"value":"Predicted 13CO R-branch fluxes from P-branch agree with observed spectra in all regions","evidence":[{"loc":"3.3.2 Optically thin 13CO and C18O v=1-0 bands","quote":"agree with the observed spectra for all the regions including region S3"}]}},
+{"order":5,"goal":"Fit P(J+2)/R(J) ratios with a single non-LTE component and derive alpha_CO","method":{"value":"RADEX grid of v=0 populations, v=1 populations assumed proportional (N1,J = k N0,J), line fluxes from radiative transfer equations, fit to low-J ratios, then convert N(H2)/W(CO 1-0) to alpha_CO","evidence":[
+{"loc":"4.1.3 Non-LTE models","quote":"First, we used RADEX (cite: vanderTak2007) to determine the CO"},
+{"loc":"5 CO-to-H2 conversion factor","quote":"Then, the ratio $N({\\rm H_2})$/$W$(CO(1–0)), known as $X_{\\rm CO}$, is converted to $\\alpha_{\\rm CO}$"}
+]},"software":["RADEX"],"key_parameters":[
+{"value":"Grid: 50 log steps per parameter, 125000 models","evidence":[{"loc":"4.1.3 Non-LTE models","quote":"50 log steps for each parameter (125 000 models in total)"}]}
+],"assumptions":[
+{"value":"[CO/H2] = 3.2e-4","evidence":[{"loc":"6 Discussion","quote":"We assumed a standard CO abundance of 3.2$\\times$10$^{-4}$ (e.g., (cite: Bolatto2013))"}]},
+{"value":"Mass multiplied by 1.36 for helium","evidence":[{"loc":"5 CO-to-H2 conversion factor","quote":"to account for helium and other elements (cite: Bolatto2013)"}]}
+],"fitting":{"value":"chi2 fit to the low-J ratios; the highest J included is where chi2 does not significantly increase; 4-6 ratios fitted per region","evidence":[{"loc":"5.1 Single component model","quote":"This single component model can fit between four and six ratios."}]},"validation":{"value":"Compared model r21 and r31 with measured ALMA r21","evidence":[{"loc":"5.1 Single component model","quote":"with a mean ratio of 0.88 $\\pm$ 0.15, that is in good agreement with the models."}]}},
+{"order":6,"goal":"Fit two non-LTE components to all ratios","method":{"value":"chi2 over all pairs of grid models with only the solid-angle ratio free; probability exp(-chi2/2) marginalized for each parameter; alpha_CO weighted by CO(1-0) intensity of each component","evidence":[
+{"loc":"5.2 Two component model","quote":"In total, we explored 56 million combinations of models for each region."},
+{"loc":"5.2 Two component model","quote":"To determine the likelihood function of the parameters, we assigned a probability to each model of"}
+]},"software":["RADEX"],"key_parameters":[
+{"value":"Only nH2 = 1e3, 1e4, 1e5 cm^-3 considered","evidence":[{"loc":"5.2 Two component model","quote":"To limit the number of combinations, we only considered three number densities"}]}
+],"assumptions":[],"fitting":{"value":"Grid search chi2 with likelihood exp(-chi2/2) and marginalization; no sampler","evidence":[{"loc":"5.2 Two component model","quote":"To determine the likelihood function of the parameters, we assigned a probability to each model of"}]},"validation":{"value":"With two components all observed ratios can be fitted","evidence":[{"loc":"5.2 Two component model","quote":"With two components, it is now possible to fit all the observed ratios."}]}},
+{"order":7,"goal":"Derive alpha_CO from the optically thin 13CO v=1-0 band","method":{"value":"Use 13CO (optically thin) and 12CO (optically thick) R(0) transitions to get N(12CO, v=0, J=0)/dv, extrapolate to J=1 and other levels with the single-component excitation temperatures, convert FWHM to sigma_v with extra opacity factor, then compute alpha_CO as above","evidence":[
+{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"we first divided $\\Delta {\\rm v}$ by $\\sim$2.355 to account for the ratio between FWHM and $\\sigma$."},
+{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"by an extra factor between 1.2 and 2.6 (valid for"}
+]},"software":[],"key_parameters":[
+{"value":"Excitation temperature of low-J levels 15-30 K from the single-component fits","evidence":[{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"based on the excitation temperature of the low-$J$ levels, 15–30 K, of these regions"}]}
+],"assumptions":[
+{"value":"Same excitation temperature of v=1 and v=0 levels and same solid angle for 12CO and 13CO; 12CO/13CO abundance uncertain","evidence":[{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"the excitation temperature of the $v$=1 and $v$=0 levels is the same for $^{12}$CO and $^{13}$CO"}]}
+],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"Compared with single and two component results (1.1-2.1 and 1.7-3.2 times lower)","evidence":[{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"The median $\\alpha_{\\rm CO}$ are 1.1–2.1 times lower than those derived using the single component non-LTE model"}]}}
+],
+"software":[
+{"name":"CASA","version":"6.4.1","used_for":{"value":"ALMA data processing and smoothing of 12CO cubes (task IMSMOOTH)","evidence":[
+{"loc":"2.3 Ancillary ALMA data","quote":"The data were processed using the ALMA reduction software CASA (v6.4.1; (cite: McMullin2007)) following (cite: Pereira2021)."},
+{"loc":"2.3 Ancillary ALMA data","quote":"using the CASA task IMSMOOTH"}
+]}},
+{"name":"JWST Calibration pipeline","version":"1.9.4 (CRDS context 1063)","used_for":{"value":"Processing NIRSpec IFU data (Detector1, Spec2, Spec3)","evidence":[{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"Calibration pipeline (version 1.9.4) together with the calibration context 1063 from the Calibration References Data System (CRDS)."}]}},
+{"name":"WebbPSF","version":"v1.1.1","used_for":{"value":"PSFs to subtract the nuclear contribution from aperture spectra","evidence":[{"loc":"3.3 Spectra from regions with CO v=1-0 in emission","quote":"We calculated this contribution at each wavelength using point-spread functions (PSFs) created with WebbPSF (v1.1.1; (cite: Perrin2014))."}]}},
+{"name":"RADEX","version":"not stated","used_for":{"value":"CO v=0 level populations for the non-LTE model grid","evidence":[{"loc":"4.1.3 Non-LTE models","quote":"First, we used RADEX (cite: vanderTak2007) to determine the CO"}]}}
+],
+"results_numeric":[
+{"quantity":"alpha_CO, single non-LTE component, median (mean) over regions, scaled by 3.2e-4/[CO/H2]","value":"0.40 (mean 0.50)","uncertainty":"0.15 (mean 0.30)","units":"Msun (K km/s pc^2)^-1","from_step":5,"evidence":[{"loc":"5.1 Single component model","quote":"with a median (mean) of 0.40 $\\pm$ 0.15 (0.50 $\\pm$ 0.30)"}]},
+{"quantity":"alpha_CO, two non-LTE components, median over regions, scaled by 3.2e-4/[CO/H2]","value":"0.61","uncertainty":"0.17","units":"Msun (K km/s pc^2)^-1","from_step":6,"evidence":[{"loc":"5.2 Two component model","quote":"with a median value of 0.61 $\\pm$ 0.17."}]},
+{"quantity":"alpha_CO from 13CO band, median range, scaled by [3.2e-4/[CO/H2]] x [12CO/13CO]/60","value":"0.19-0.36","uncertainty":"not stated","units":"Msun (K km/s pc^2)^-1","from_step":7,"evidence":[{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"with a median range of 0.19–0.36."}]},
+{"quantity":"Mean Tkin of cold component (two-component fit)","value":"17","uncertainty":"not stated","units":"K","from_step":6,"evidence":[{"loc":"5.2 Two component model","quote":"with a mean $T_{\\rm kin}$ of 17 K"}]},
+{"quantity":"Mean Tkin of warmer component (two-component fit)","value":"30","uncertainty":"not stated","units":"K","from_step":6,"evidence":[{"loc":"5.2 Two component model","quote":"with a mean $T_{\\rm kin}$ of 30 K"}]},
+{"quantity":"Outflow gas temperature gradient from the P(2)/R(0) map","value":">40 K at the central 100 pc to <15 K at ~250 pc","uncertainty":"not stated","units":"K","from_step":5,"evidence":[{"loc":"5.1 Single component model","quote":"the molecular gas cools down from $>$40 K at the central 100 pc to $<$15 K at $\\sim$250 pc."}]},
+{"quantity":"Measured CO(2-1)/CO(1-0) ratio r21 in outflow regions, mean","value":"0.88","uncertainty":"0.15","units":"dimensionless","from_step":2,"evidence":[{"loc":"5.1 Single component model","quote":"with a mean ratio of 0.88 $\\pm$ 0.15"}]},
+{"quantity":"Model r21 and r31 (mean, single component)","value":"r21 = 1.08, r31 = 0.97","uncertainty":"0.09 and 0.16","units":"dimensionless","from_step":5,"evidence":[{"loc":"5.1 Single component model","quote":"The mean ratios are 1.08 $\\pm$ 0.09 and 0.97 $\\pm$ 0.16, respectively."}]},
+{"quantity":"IR radiative pumping rate R_IR","value":"(0.3-4.1)e51","uncertainty":"not stated","units":"s^-1","from_step":0,"evidence":[{"loc":"4.2 Collisions vs. IR radiative pumping","quote":"We find the rates in the range (0.3–4.1)$\\times$10$^{51}$ s$^{-1}$."}]},
+{"quantity":"D_n-PAH band central wavelength","value":"4.6452","uncertainty":"0.0004 (statistical) and 0.0014 (redshift)","units":"micron","from_step":0,"evidence":[{"loc":"3.3.4 The 4.65 micron Dn-PAH profile","quote":"The central wavelength of the best-fit Gaussian is 4.6452 $\\pm$ 0.0004 $\\pm$ 0.0014 $\\upmu$m"}]},
+{"quantity":"D_n-PAH band Gaussian width sigma","value":"0.0091","uncertainty":"0.0003","units":"micron","from_step":0,"evidence":[{"loc":"3.3.4 The 4.65 micron Dn-PAH profile","quote":"The width of this Gaussian profile is $\\sigma$=0.0091 $\\pm$ 0.0003 $\\upmu$m."}]},
+{"quantity":"13CO/C18O abundance ratio","value":"~7.4","uncertainty":"not stated","units":"dimensionless","from_step":4,"evidence":[{"loc":"3.3.2 Optically thin 13CO and C18O v=1-0 bands","quote":"abundance ratio of $\\sim$7.4"}]}
+],
+"findings_qualitative":[
+{"value":"The 12CO v=1-0 emission in the outflow has similar morphology and kinematics to ALMA CO(2-1), so it traces the cold molecular outflow","evidence":[{"loc":"3.1.2 Molecular outflow. H2 and CO emissions","quote":"we conclude that the rovibrational CO emission is related to the cold molecular outflow identified in the ALMA data."}]},
+{"value":"12CO v=1-0 emission is optically thick at low J while 13CO emission is optically thin","evidence":[{"loc":"Summary and conclusions","quote":"while the $^{13}$CO $v$=1–0 emission remains optically thin."}]}
+],
+"claims":[
+{"hypothesis":"Is alpha_CO in the NGC 3256-S molecular outflow lower than the ULIRG-like value usually assumed?","experiment":"Non-LTE fits of P(J+2)/R(J) ratios in eight 0.5 arcsec apertures, single and two components, plus a 13CO-band method","result":"Median alpha_CO 0.40 (single), 0.61 (two components), 0.19-0.36 (13CO), scaled by CO abundance","finding":"alpha_CO in the outflow is 1.3-2 times lower than the ULIRG-like value and much lower than Galactic, most likely because clouds are not virialized","support":"supported","evidence":[{"loc":"Summary and conclusions","quote":"These are 1.3–2 times lower than the ULIRG-like $\\alpha_{\\rm CO}$ typically assumed for outflows."}]},
+{"hypothesis":"Can the CO v=1-0 emission in the outflow be explained by radiative pumping from AGN mid-IR continuum?","experiment":"Classification of R(2) and P(5) absorption/emission per spaxel and rate comparison of IR pumping vs collisions","result":"Both branches in emission above and below the disk; pumping rate small compared with collisions for rotational levels","finding":"AGN-reprocessed 4.7 micron continuum illuminates the outflowing clouds and excites v=1; v=0 excitation is collision dominated","support":"supported","evidence":[{"loc":"3.2 Origin of the rovibrational CO v=1-0 band","quote":"it is possible to explain this CO $v$=1–0 emission if the mid-IR radiation from the AGN is illuminating the cold molecular outflowing gas"}]},
+{"hypothesis":"Is the rotational CO emission from the outflow optically thick?","experiment":"Compare observed P(J+2)/R(J) ratios with optically thin and thick limits and non-LTE models, and 13CO P(2)/R(0)","result":"Low-J ratios follow the thick limit; 13CO P(2)/R(0) consistent with ~1.96 thin limit","finding":"12CO v=1-0 optically thick at low J; 13CO optically thin, so the thin-CO explanation of low alpha_CO does not apply","support":"supported","evidence":[{"loc":"6 Discussion","quote":"However, this explanation does not work for NGC 3256-S since the CO emission from the outflow is optically thick."}]},
+{"hypothesis":"Is there a temperature gradient in the outflow?","experiment":"Map of rotational temperature from the P(2)/R(0) ratio per spaxel assuming optically thick limit","result":"From >40 K in the central 100 pc to <15 K at ~250 pc","finding":"Outflow gas cools with distance from the nucleus, similar to ESO 320-G030","support":"supported","evidence":[{"loc":"Summary and conclusions","quote":"we identify a temperature gradient in the outflow from $>$40 K in the central 100 pc to $<$15 K at 250 pc."}]}
+],
+"reasoning":[
+{"field":"why_this_method","value":"alpha_CO is usually not constrained by observations and a fixed value is assumed, so the rovibrational CO band offers a way to constrain it","evidence":[{"loc":"Introduction","quote":"which in most cases is not constrained by the observations and a fixed value is assumed."}]},
+{"field":"why_this_data","value":"High angular resolution ALMA CO shows the emission is not part of the northern galaxy spiral arms, so it is outflow gas","evidence":[{"loc":"3.1.2 Molecular outflow. H2 and CO emissions","quote":"Thanks to the high angular resolution of the ALMA data, it is clear that this emission is not part of the spiral arms of the northern galaxy"}]},
+{"field":"how_they_decided_enough","value":"Highest J in the single-component fit is chosen where chi2 stops rising when a ratio is added","evidence":[{"loc":"5.1 Single component model","quote":"(i.e., when $\\chi^2$ does not significantly increases when adding that ratio)"}]}
+],
+"alternatives_considered_or_rejected":[
+{"value":"A single non-LTE component cannot reproduce both low and high J ratios, so a second component was added","evidence":[{"loc":"5.1 Single component model","quote":"A single component is not able to simultaneously reproduce the low- and high-$J$ P($J$+2)/R($J$) ratios."}]},
+{"value":"Optically thin CO explanation of low alpha_CO (as in IC 5063) rejected for this outflow","evidence":[{"loc":"6 Discussion","quote":"However, this explanation does not work for NGC 3256-S since the CO emission from the outflow is optically thick."}]}
+],
+"limitations_admitted":[
+{"value":"The CO abundance in molecular outflows is not established and is a major uncertainty for alpha_CO","evidence":[{"loc":"6 Discussion","quote":"The CO abundance in molecular outflows has not been firmly established yet, so this is a major uncertainty for these results."}]},
+{"value":"13CO-based alpha_CO is more uncertain because it depends on 12CO and 13CO abundances in the outflow","evidence":[{"loc":"5.3 Optically thin 13CO v=1-0 band","quote":"are more uncertain than those derived using the single and two component methods"}]}
+],
+"referee_caveats_inferred":[
+"ALMA is ancillary; alpha_CO rests on JWST line ratios and a non-LTE model that assumes v=1 populations scale with v=0",
+"alpha_CO is quoted scaled by the assumed CO abundance, so absolute values are tied to [CO/H2]=3.2e-4",
+"Only eight 0.5 arcsec apertures in one galaxy; no independent check of alpha_CO (e.g. dust or [CI])",
+"ALMA flux uncertainties of 10-20% were not propagated into the alpha_CO error budget as far as stated"
+],
+"reproducibility":[
+{"field":"data_public_as_stated","value":"ALMA data are archival and JWST data come from the public JWST archive","evidence":[
+{"loc":"2.3 Ancillary ALMA data","quote":"We retrieved archival ALMA observations of the $^{12}$CO rotational lines"},
+{"loc":"2.1 JWST NIRSpec integral field spectroscopy","quote":"We downloaded the uncalibrated level 1 data from the"}
+]}
+],
+"code_released":[],
+"missing_for_reproduction":[
+"ALMA imaging parameters (tclean settings, weighting, masks, continuum subtraction) beyond 'following Pereira2021'",
+"Aperture coordinates and exact ALMA integration windows",
+"Custom Python code for fitting the CO/H2/HI line complex and the non-LTE chi2 grid is not released",
+"Choice of 12CO/13CO abundance ratio (60 in table headers) not justified"
+],
+"estimated_data_volume_inferred":"ALMA: likely tens of GB raw for three archival 12-m projects (compact plus extended); JWST NIRSpec cubes about 1-2 GB",
+"score_inferred":2,
+"score_reason":"Scale 1-5. ALMA role is small and under-specified (processing deferred to Pereira2021); the main results rest on JWST data and custom non-LTE code that is not released.",
+"rediscovery_candidate":false,
+"rediscovery_reason":"ALMA is only ancillary and the main alpha_CO results require JWST processing and unreleased fitting code, so the recipe is not complete enough for a straightforward ALMA-based reproduction.",
+"methods_papers":[
+{"citation":"(cite: Pereira2021)","why":"ALMA data processing procedure followed"},
+{"citation":"(cite: SanchezGarcia2022)","why":"Method for zeroth moment maps"}
+],
+"companion_papers":[
+{"citation":"(cite: Sakamoto2014)","why":"CO, HCN and HCO+ rotational emission and outflow of NGC 3256"},
+{"citation":"(cite: Harada2018)","why":"13CO/C18O abundance ratio in the same region"},
+{"citation":"(cite: Pereira2020)","why":"Low-Tkin molecular outflow in ESO 320-G030, compared with this result"}
+],
+"related_projects_or_surveys":["JWST DD-ERS Program 1328 (GOALS DD-ERS team)","ALMA 2015.1.00412.S","ALMA 2015.1.00714.S","ALMA 2018.1.00223.S"]
+}

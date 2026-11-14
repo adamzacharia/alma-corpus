@@ -1,0 +1,929 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...895...84Y",
+  "title": "Super-resolution Imaging of the Protoplanetary Disk HD 142527 Using Sparse Modeling",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Yamaguchi, Masayuki",
+  "n_authors": 10,
+  "arxiv_id": "2004.10989",
+  "doi": "10.3847/1538-4357/ab899f",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00631.S",
+   "2015.1.00425.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "two sets of ALMA archive data at Band 7 ($\\sim$330GHz) were used to investigate the protoplanetary disk around HD 142527"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "HD 142527",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "156 ± 7.5 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "It is a binary system at a distance of 156 $\\pm$ 7.5 pc (cite: gaia2016b; gaia2016a)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: gaia2016b; gaia2016a)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "It is a binary system at a distance of 156 $\\pm$ 7.5 pc (cite: gaia2016b; gaia2016a)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can sparse modeling (l1+TSV) imaging applied to ALMA data reproduce super-resolution structure (finer than the beam) of the HD 142527 disk with higher fidelity than MS-CLEAN?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "it has not yet been applied to ALMA observational data, and it is therefore unknown whether SpM imaging is useful for the reconstruction of super-resolution images based on actual observational data."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 7 (~330 GHz); Data 1 at 343 GHz, Data 2 at 322 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "Two data sets of ALMA observations of the protoplanetary disk around HD 142527 at a frequency of $\\sim$ 330 GHz (ALMA Band 7) are used in our investigation."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Data 1: four 2 GHz SPWs at 336, 338, 348, 350 GHz; Data 2: two 0.5 GHz SPWs (314, 329 GHz) and two 1.9 GHz SPWs (315, 328 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "consisting of four 2 GHz spectral windows centered at 336, 338, 348, and 350 GHz."
+     },
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "two 0.5 GHz spectral windows centered at 314 and 329 GHz and two 1.9 GHz spectral windows centered at 315 and 328 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Data 1: thirty-eight 12 m antennas; Data 2: forty 12 m antennas",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "The observing array consisted of thirty-eight 12 m antennas."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Data 1 max 430 m; Data 2 max 1570 m",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "The data set obtained with the extended array with a maximum baseline length of 1570 m was labeled as *Data 2*."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "MS-CLEAN beams 0.51x0.44 asec (Data 1), 0.20x0.14 asec (Data 2)",
+    "evidence": [
+     {
+      "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+      "quote": "provided the beam size of $0.20 \\times 0.14$ asec at P.A. of $78.1$$^\\circ$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "Data 1: 1.2 h; Data 2: 1.9 h",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "The on-source time of HD 142527 was 1.2 h, and observations were carried out for 3.4 h in total."
+     },
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "The total observing time was 22.5 h with an on-source time of 1.9 h."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Data 1: March 11, 2015; Data 2: July 17, 2015",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Data Set used for Imaging",
+      "quote": "The corresponding observations were carried out on March 11, 2015, at 343 GHz (0.87 mm)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline initial calibration, then phase-only self-calibration with MS-CLEAN models",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "The initial calibration was performed using the ALMA pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "Data 1 were calibrated using version 4.7.2 of the Common Astronomy Software Applications package"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Data 2: Pallas, Ceres, J1427-4206",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "Pallas, Ceres, and J1427-4206 were used for the flux calibration"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase-only (calmode=p); solint 420 to 30 s (Data 1), 360 to 50 s (Data 2)",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "The interval time used to solve the complex gain varied from 420 to 30 s."
+      },
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "The interval of time used to solve the complex gain varied from 360 to 50 s."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "MS-CLEAN (multi-scale Cotton-Schwab CLEAN) for reference images; SpM l1+TSV with MFISTA for SpM images",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "Images were constructed from the data sets using the SpM and the popular multi-scale Cotton-Schwab CLEAN algorithm"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "by adopting Briggs weighting of robust parameter 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "SpM pixel 0.05 asec (Data 1), 0.025 asec (Data 2)",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging with Sparse Modeling",
+       "quote": "A pixel size of $0.05\\: \\times\\: 0.05$ asec was used for Data 1 and $0.025\\: \\times\\: 0.025$ asec for Data 2"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "SpM field of view 5.0 x 5.0 asec",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging with Sparse Modeling",
+       "quote": "$5.0 \\times 5.0$ asec for the field of view"
+      }
+     ]
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "[0, 0.3, 0.9] asec",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "MS-CLEAN performed with scale parameters of \\[0, 0.3, 0.9\\] asec"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.51x0.44 asec PA 58.7 deg (Data 1); 0.20x0.14 asec PA 78.1 deg (Data 2)",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "provided the beam size of $0.51 \\times 0.44$ asec with position angle (P.A.) of 58.7$^\\circ$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "MS-CLEAN 0.32 mJy/beam (Data 1), 0.07 mJy/beam (Data 2)",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "The RMS noise level of the resultant image was $0.07~ \\rm mJy~beam^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data 1 calibration performed in the same manner as the earlier published analysis",
+      "evidence": [
+       {
+        "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+        "quote": "in the same manner as (cite: kataoka2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: kataoka2016)"
+    },
+    {
+     "what": {
+      "value": "l1+TSV SpM imaging formulation",
+      "evidence": [
+       {
+        "loc": "2.3 Imaging with Sparse Modeling",
+        "quote": "SpM utilizing $\\ell _1$+TSV regularization (cite: Kuramochi2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kuramochi2018)"
+    },
+    {
+     "what": {
+      "value": "NRMSE fidelity metric and gradient-domain Prewitt filter",
+      "evidence": [
+       {
+        "loc": "3.2 Fidelity at Multi-resolution",
+        "quote": "the NRMSE of the gradient-domain brightness distribution was also evaluated using the Prewitt filter (cite: Kuramochi2018)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kuramochi2018)"
+    }
+   ],
+   "unstated_but_needed": [
+    "SpM code/implementation used (not named or released)",
+    "Selected optimal (Lambda_l, Lambda_t) per spectral window",
+    "Clean masks, thresholds, iteration counts, cell/image size for MS-CLEAN",
+    "Number of self-cal iterations and exact steps",
+    "Calibrator for Data 1 flux scale",
+    "Frequency ordering/weighting when averaging four SPW images",
+    "Reference position of the star for radial profiles"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and self-calibrate visibilities",
+    "method": {
+     "value": "ALMA pipeline then iterative phase-only self-calibration using MS-CLEAN models",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "we performed iterative self-calibration of the visibility phase (calmode = p)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Total fluxes from visibility amplitude 3.3 Jy vs 3.2 Jy",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "The resultant total fluxes of Data 1 and 2 are derived to be 3.3 Jy and 3.2 Jy, respectively"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "MS-CLEAN imaging",
+    "method": {
+     "value": "MS-CLEAN with Briggs robust 0.5 and scales [0,0.3,0.9] asec",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "The corrected data were imaged using MS-CLEAN performed with scale parameters of \\[0, 0.3, 0.9\\] asec"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "SpM imaging with cross-validation",
+    "method": {
+     "value": "l1+TSV regularized least squares solved with MFISTA on cell-averaged gridded visibilities; one image per spectral window, four averaged",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging with Sparse Modeling",
+       "quote": "a monotonic variant of FISTA (MFISTA) was used"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Grid Lambda_l 1e2-9e2, Lambda_t 3e4-9e5 (16x9) for Data 1; 1e2-1e7 and 1e-3-1e2 (6x6) for Data 2",
+      "evidence": [
+       {
+        "loc": "2.3 Imaging with Sparse Modeling",
+        "quote": "consisting of $(10^{2}, 10^{3}, ..., 10^{7})$ for $\\Lambda_{l}$ and $(10^{-3}, 10^{-2}, ..., 10^{2})$ for $\\Lambda_{t}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Convex optimization; parameters chosen by minimum 10-fold CV error per spectral window",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging with Sparse Modeling",
+       "quote": "the parameter set and corresponding image were selected, minimizing the CVE for each spectral window of each set of data."
+      }
+     ]
+    },
+    "validation": {
+     "value": "10-fold cross validation",
+     "evidence": [
+      {
+       "loc": "2.3 Imaging with Sparse Modeling",
+       "quote": "The optimal parameter set of ($\\Lambda_{l}$, $\\Lambda_{t}$) was determined by 10-fold cross validation (CV)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fidelity versus resolution (NRMSE)",
+    "method": {
+     "value": "Convolve images with beams of fraction R of Data 1 nominal beam; compute NRMSE in image and gradient (Prewitt) domains against Data 2 MS-CLEAN reference; optimal resolution is minimum, worse of two domains",
+     "evidence": [
+      {
+       "loc": "3.2 Fidelity at Multi-resolution",
+       "quote": "The beam size providing the minimum NRMSE may be considered as an optimal resolution"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Data 2 MS-CLEAN at nominal resolution is trusted reference",
+      "evidence": [
+       {
+        "loc": "3.2 Fidelity at Multi-resolution",
+        "quote": "The Data 2 MS-CLEAN at its nominal resolution is therefore the best choice as the reference image."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Ideal NRMSE curve from convolved reference image",
+     "evidence": [
+      {
+       "loc": "3.2 Fidelity at Multi-resolution",
+       "quote": "The solid green line shows the ideal NRMSE curves between the non-convolved and the convolved reference images"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Radial/azimuthal profile comparison and noise/detection threshold",
+    "method": {
+     "value": "Peak and FWHM of radial profiles per PA (10 deg bins); residual maps via DIFMAP; I100 = max intensity in off-source area",
+     "evidence": [
+      {
+       "loc": "4.1.1 Noise Terms in Reconstructed Images",
+       "quote": "A maximum intensity ($\\rm I_{100}$) of $81.6$ and $54.5$ mJy asec$^ {- 2}$ is apparent for Data 1 and 2, respectively."
+      }
+     ]
+    },
+    "software": [
+     "DIFMAP"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Radial structure approximated as Gaussian",
+      "evidence": [
+       {
+        "loc": "3.3 Evaluation of Radial and Azimuthal Structure of the Outer Disk",
+        "quote": "Considering that each radial structure would form a Gaussian distribution"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Residual statistics compared with noise",
+     "evidence": [
+      {
+       "loc": "3.3 Evaluation of Radial and Azimuthal Structure of the Outer Disk",
+       "quote": "The peak and integrated intensity are also consistent; the mean and standard deviation are comparable to the noise levels on the residual maps"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Calibration, MS-CLEAN imaging, self-calibration",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+       "quote": "Data 1 were calibrated using version 4.7.2 of the Common Astronomy Software Applications package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DIFMAP",
+    "version": "not stated",
+    "used_for": {
+     "value": "Residual maps from SpM residual visibilities",
+     "evidence": [
+      {
+       "loc": "4.1.1 Noise Terms in Reconstructed Images",
+       "quote": "The residual maps of SpM were reconstructed from the residual visibilities using the DIFMAP software"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Listed in software section",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy2013; astropy2018), CASA (cite: mcmullin2007), DIFMAP (cite: Shepherd1994), matplotlib (cite: Hunter2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "Plotting",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "matplotlib (cite: Hunter2007)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Optimal resolution Data 1 SpM, image domain",
+    "value": "23 x 16 (41%)",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "23 $\\times$ 16  (41 $\\%$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Optimal resolution Data 1 MS-CLEAN, gradient domain",
+    "value": "34 x 24 (60%)",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "34 $\\times$ 24 (60 $\\%$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Total flux Data 1 / Data 2",
+    "value": "3.3 / 3.2",
+    "uncertainty": "not stated",
+    "units": "Jy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Data Reduction and Imaging with MS-CLEAN",
+      "quote": "The resultant total fluxes of Data 1 and 2 are derived to be 3.3 Jy and 3.2 Jy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Detection threshold I100 Data 1 / Data 2",
+    "value": "81.6 / 54.5",
+    "uncertainty": "not stated",
+    "units": "mJy asec^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1.1 Noise Terms in Reconstructed Images",
+      "quote": "A maximum intensity ($\\rm I_{100}$) of $81.6$ and $54.5$ mJy asec$^ {- 2}$ is apparent for Data 1 and 2, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "SpM residual RMS Data 1 / Data 2",
+    "value": "0.44 / 0.14",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1.1 Noise Terms in Reconstructed Images",
+      "quote": "the SpM residual images have RMS noise of $0.44$ and $0.14$ mJy beam$^{-1}$ for Data 1 and 2, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Data 1 SpM NRMSE plateau at R<=41%",
+    "value": "5-10% image domain, 10-15% gradient domain",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 Fidelity at Multi-resolution",
+      "quote": "with typical ranges of $5-10~\\%$ in the image domain and $10-15~\\%$ in the gradient domain"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Raw SpM images are smooth in the outer disk, while raw MS-CLEAN component maps show compact point-like artifacts",
+    "evidence": [
+     {
+      "loc": "3.1 Images at Different Angular Resolutions",
+      "quote": "consists of more compact point-like features, which are not consistent with each other or with any of the other images"
+     }
+    ]
+   },
+   {
+    "value": "Tentative double-ridge structure at PA 265-270 deg seen only in Data 2 SpM image",
+    "evidence": [
+     {
+      "loc": "4.1.2 Double Ridge-line shown in the Outer Disk",
+      "quote": "The radial profile of the raw Data 2 SpM image only shows a double ridge-like structure at P.A.= $265^{\\circ} - 270^{\\circ}$"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "SpM gives higher fidelity than MS-CLEAN in the super-resolution regime",
+    "experiment": "NRMSE of Data 1 SpM and MS-CLEAN images vs Data 2 MS-CLEAN reference at varying beam sizes",
+    "result": "SpM optimal resolution 41% of nominal vs 55-60% for MS-CLEAN",
+    "finding": "SpM achieves ~3x finer resolution than nominal Data 1",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "This result means that the Data 1 SpM image achieves $\\sim3$ times the higher angular resolution with respect to the nominal resolution of Data 1."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Known disk structures appear in both SpM and CLEAN images",
+    "experiment": "Compare PA profiles of Data 1 SpM and Data 2 MS-CLEAN",
+    "result": "Residuals consistent within ~10% of nominal resolution",
+    "finding": "Radial and azimuthal structure agree well",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Evaluation of Radial and Azimuthal Structure of the Outer Disk",
+      "quote": "Therefore, Figure [5](#fig:pa_profile) indicates that each profile is in good agreement in terms of the radial and azimuthal structure of the outer disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Raw SpM image reveals new substructure",
+    "experiment": "Contours at I100 and radial profiles of raw Data 2 SpM",
+    "result": "Break at PA ~230 deg and double ridge at PA 265-270 deg",
+    "finding": "Possible substructure in horseshoe, needs confirmation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1.2 Double Ridge-line shown in the Outer Disk",
+      "quote": "We caution that there is so far no clear evidence to present the robust degree of the super-resolution of Data 2 for SpM."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Same band, different resolutions allow testing SpM against CLEAN",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "An observational data set covering several different angular resolutions therefore exists in the same frequency band."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "SpM images have larger asymmetric residuals due to self-calibration with MS-CLEAN; degree of super-resolution for Data 2 not established",
+     "evidence": [
+      {
+       "loc": "5 Conclusion",
+       "quote": "SpM images have more asymmetric and larger residuals, while MS-CLEAN images have nearly symmetric residuals distributions."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Reference image is itself a CLEAN image from different data/frequency",
+    "Self-calibration with CLEAN models biases SpM comparison",
+    "Single target; resolution gain may not generalize",
+    "Metrics from one regularization grid, no uncertainties"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data from projects 2015.1.00425.S and 2012.1.00631.S",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "two sets of ALMA archive data at Band 7"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "SpM code not released",
+    "Chosen regularization parameters",
+    "CLEAN masks and self-cal details"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for two Band 7 datasets",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear algorithm, but SpM code, selected parameters and CLEAN details missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires the authors' unreleased SpM code and unspecified selected parameters."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Kuramochi2018)",
+     "why": "l1+TSV SpM imaging method and NRMSE metrics"
+    },
+    {
+     "citation": "(cite: akiyama2017b)",
+     "why": "MFISTA and cross validation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: kataoka2016)",
+     "why": "Published Data 1 and its calibration"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DSHARP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-fb60accd757c2595c4531dd831d239f7",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:32",
+  "usage": {
+   "input_tokens": 24851,
+   "output_tokens": 8498,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.067947,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2012.1.00631.S",
+   "2015.1.00425.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 46,
+   "rate": 0.639
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:53",
+  "custom_id": "repair-sonnet-fc9eebd58dcf09316ba086d9ab887d83",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "The optimal parameter set of ($\\Lambda_{l}$, $\\Lambda_{t}$) was determined by 10-fold cross validation (CV)"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "The solid green line shows the ideal NRMSE curves between the non-convolved and the convolved reference images"
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "The peak and integrated intensity are also consistent; the mean and standard deviation are comparable to the noise levels on the residual maps"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2015.1.00425.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Data Set used for Imaging",
+       "quote": "Data 1 were obtained as part of the project $2015.1.00425$.S, which has already been published in (cite: kataoka2016)."
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2012.1.00631.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Data Set used for Imaging",
+       "quote": "Data 2 were obtained as part of the project $2012.1.00631$.S, which was carried out on July 17, 2015"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

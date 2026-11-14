@@ -1,0 +1,1188 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...617A..23B",
+  "title": "Molecular line study of the S-type AGB star W Aquilae. ALMA observations of CS, SiS, SiO and HCN",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Brunner, M.",
+  "n_authors": 8,
+  "arxiv_id": "1806.01622",
+  "doi": "10.1051/0004-6361/201832724",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00524.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this paper, we present ALMA observations of the molecules CS, SiS, $^{29}$SiO and H$^{13}$CN, as well as four different isotopologs and vibrational states of SiO and SiS around the S-type AGB star W Aql."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "W Aql",
+     "coordinates": {
+      "value": "RA 19:15:23.379 DEC -07:02:50.38 (J2000)",
+      "evidence": [
+       {
+        "loc": "4.3 uv fitting",
+        "quote": "current stellar position of RA 19:15:23.379 and DEC –07:02:50.38 J2000.0 (cite: Ramstedt2017)"
+       },
+       {
+        "loc": "2 W Aql",
+        "quote": "Its distance is 395 pc, derived from the period-magnitude relation (cite: Whitelock2008) and 2MASS $K$ band magnitude (cite: Cutri2003)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "395 pc",
+      "evidence": [
+       {
+        "loc": "4.3 uv fitting",
+        "quote": "current stellar position of RA 19:15:23.379 and DEC –07:02:50.38 J2000.0 (cite: Ramstedt2017)"
+       },
+       {
+        "loc": "2 W Aql",
+        "quote": "Its distance is 395 pc, derived from the period-magnitude relation (cite: Whitelock2008) and 2MASS $K$ band magnitude (cite: Cutri2003)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "period-magnitude relation (Whitelock2008) and 2MASS K magnitude (Cutri2003)",
+      "evidence": [
+       {
+        "loc": "4.3 uv fitting",
+        "quote": "current stellar position of RA 19:15:23.379 and DEC –07:02:50.38 J2000.0 (cite: Ramstedt2017)"
+       },
+       {
+        "loc": "2 W Aql",
+        "quote": "Its distance is 395 pc, derived from the period-magnitude relation (cite: Whitelock2008) and 2MASS $K$ band magnitude (cite: Cutri2003)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the spatial distribution, abundances and radial extent of CS, SiS, 29SiO and H13CN in the circumstellar envelope of the S-type AGB star W Aql, resolved with ALMA?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Section [5](#sec:radtransfer) describes the radiative transfer modeling based on the work of (cite: Danilovich2014), which is improved by the incorporation of the new ALMA data."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00524.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2012.1.00524.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four spectral windows centred at 331, 333, 343 and 345 GHz; 1875 MHz (main array) and 1992.187 MHz (ACA) bandwidth each; 488.281 kHz resolution",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "Four spectral windows, with a bandwidth of 1875 MHz (main array) and 1992.187 MHz (ACA) each, were observed, centered at 331, 333, 343 and 345 GHz, respectively."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CS",
+     "transition": "7-6",
+     "rest_frequency": "342.8829 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CS (7–6)           | 342.8829   | 1              | 7.29"
+      }
+     ]
+    },
+    {
+     "species": "H13CN",
+     "transition": "4-3",
+     "rest_frequency": "345.3398 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "H$^{13}$CN (4–3)   | 345.3398"
+      }
+     ]
+    },
+    {
+     "species": "SiS",
+     "transition": "19-18",
+     "rest_frequency": "344.7795 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiS (19–18)        | 344.7795"
+      }
+     ]
+    },
+    {
+     "species": "29SiO",
+     "transition": "8-7",
+     "rest_frequency": "342.9808 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$^{29}$SiO (8–7)   | 342.9808"
+      }
+     ]
+    },
+    {
+     "species": "SiO v=1",
+     "transition": "8-7",
+     "rest_frequency": "344.9162 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiO v=1 (8–7)      | 344.9162"
+      }
+     ]
+    },
+    {
+     "species": "SiS v=1",
+     "transition": "19-18",
+     "rest_frequency": "343.1010 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiS v=1 (19–18)    | 343.1010"
+      }
+     ]
+    },
+    {
+     "species": "30SiS",
+     "transition": "19-18",
+     "rest_frequency": "332.5503 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$^{30}$SiS (19–18) | 332.5503"
+      }
+     ]
+    },
+    {
+     "species": "SiO v=2",
+     "transition": "8-7",
+     "rest_frequency": "342.5044 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiO v=2 (8–7)      | 342.5044"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m main array, ACA (7 m) and total power",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "combining ALMA main array observations (12 m diameter, long baselines), Atacama Compact Array (ACA) observations (7 m diameter, short baselines) and total power (TP) observations"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.55\" x 0.48\" (PA 86.35 deg)",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "resulting in a beam of 0.55$^{\\prime\\prime\\,} \\times$ 0.48$^{\\prime\\prime\\,}$ (PA 86.35$^\\circ$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "19 arcsec (main array + ACA)",
+    "evidence": [
+     {
+      "loc": "4.3 uv fitting",
+      "quote": "the maximum recoverable scale for the used 12 m main array and ACA configuration is 19$^{\\prime\\prime\\,}$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 10 mJy/beam from line-free channels",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "The rms noise measured from line-free channels is 10 mJy/beam."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Cycle 1, March and April 2014",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "observed in March and April 2014, PI: Sofia Ramstedt"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI Sofia Ramstedt, Cycle 1 binary star sample",
+    "evidence": [
+     {
+      "loc": "3 Observations and data reduction",
+      "quote": "W Aql was observed as part of a sample of binary stars with ALMA in Cycle 1 (observed in March and April 2014, PI: Sofia Ramstedt)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "APEX, IRAM 30m, Herschel/HIFI (archival single-dish)",
+     "provided": {
+      "value": "Archival single-dish line intensities used to discriminate between equally good fits to ALMA data",
+      "evidence": [
+       {
+        "loc": "5.1 Modeling procedure",
+        "quote": "with the integrated flux of the archival single-dish data being used – in most cases – to discriminate between two equally good fits to the ALMA data"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar parameters for radiative transfer modelling (distance, Teff, mass-loss rate, dust/gas ratio, luminosity, mass, expansion velocity, stellar velocity)",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "All parameters are adopted from (cite: Danilovich2014)."
+       }
+      ]
+     },
+     "citation": "(cite: Danilovich2014)"
+    },
+    {
+     "what": {
+      "value": "CO modelling results and mass-loss rate",
+      "evidence": [
+       {
+        "loc": "5.1 Modeling procedure",
+        "quote": "Our model uses the CO modeling results obtained by (cite: Danilovich2014) and refined by (cite: Ramstedt2017)."
+       }
+      ]
+     },
+     "citation": "(cite: Danilovich2014); (cite: Ramstedt2017)"
+    },
+    {
+     "what": {
+      "value": "Archival single-dish line intensities (CS, SiS, 29SiO, H13CN)",
+      "evidence": [
+       {
+        "loc": "List of archival spectral line observations",
+        "quote": "| CS | $3 \\to 2$ | 146.969 | IRAM | 17 | 6.96 | (cite: Danilovich2018) |  |"
+       }
+      ]
+     },
+     "citation": "(cite: Danilovich2018); (cite: Danilovich2014); APEX Archive"
+    },
+    {
+     "what": {
+      "value": "Molecular energy levels, frequencies and collisional rates",
+      "evidence": [
+       {
+        "loc": "5.2.2 SiS",
+        "quote": "The energy levels, transition frequencies and Einstein A coefficients were taken from CDMS (cite: Muller2001; Muller2005)"
+       }
+      ]
+     },
+     "citation": "CDMS (Muller2001; Muller2005); JPL (Pickett1998); Yang2010; Dayou2006; Dumouchel2010"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard calibration with CASA; Ceres flux, J1924-2914 bandpass, J1911-2006 phase",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "Standard calibration was performed with the Common Astronomy Software Application (CASA), using Ceres as flux calibrator and the quasars J1924-2914 and J1911-2006 as bandpass calibrator and phase calibrator, respectively."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ceres",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "using Ceres as flux calibrator"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "Imaging of all spectral lines was carried out with CASA using the CLEAN algorithm with natural weighting"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "using the CLEAN algorithm with natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Iterative masking per channel and line",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "Iterative masking for each spectral channel and molecular line was used to optimize the imaging process with CLEAN."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Main array + ACA combined in visibility plane with antenna-specific weighting; TP feathered in image plane",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The combination of the main array and ACA data is conducted in the visibility plane with antenna-specific weighting, whereas the TP data is combined with the rest of the data via feathering in the image plane."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "Channels binned to 1 km/s (strong lines) and 2 km/s (weak lines)",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "The spectral channels were binned to a velocity resolution of 1 km s$^{-1}$ and 2 km s$^{-1}$ for strong and weak spectral lines, respectively."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.55\" x 0.48\" (PA 86.35 deg)",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "resulting in a beam of 0.55$^{\\prime\\prime\\,} \\times$ 0.48$^{\\prime\\prime\\,}$ (PA 86.35$^\\circ$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "10 mJy/beam",
+     "evidence": [
+      {
+       "loc": "Table 1 notes",
+       "quote": "The rms noise measured from line-free channels is 10 mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Radiative transfer procedure (ALI code) and stellar parameters",
+      "evidence": [
+       {
+        "loc": "5.1 Modeling procedure",
+        "quote": "following the same procedure as described in (cite: Danilovich2014)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Danilovich2014)"
+    },
+    {
+     "what": {
+      "value": "Stellar position",
+      "evidence": [
+       {
+        "loc": "4.3 uv fitting",
+        "quote": "current stellar position of RA 19:15:23.379 and DEC –07:02:50.38 J2000.0 (cite: Ramstedt2017)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Ramstedt2017)"
+    },
+    {
+     "what": {
+      "value": "Velocity profile of the wind",
+      "evidence": [
+       {
+        "loc": "5.2 Modeling results",
+        "quote": "and the velocity profile defined by (cite: Danilovich2014)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Danilovich2014)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version used for calibration and imaging",
+    "CLEAN threshold, mask criteria, cell size and image size",
+    "Line-free channels and continuum subtraction method",
+    "Flux calibration uncertainty and whether archive products were used as is",
+    "uvmultifit settings (initial guesses, channel handling)",
+    "Exact ALI model grid, fitting criterion and how best fit was judged beyond by-eye",
+    "Wind velocity profile parameters; overdensity region choice justification",
+    "Exact feathering procedure and TP scaling"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image and extract line properties",
+    "method": {
+     "value": "CLEAN imaging of combined 12m+ACA+TP data, moment maps and spectra extracted with apertures",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "Imaging of all spectral lines was carried out with CASA using the CLEAN algorithm with natural weighting"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "natural weighting; 1 or 2 km/s channels",
+      "evidence": [
+       {
+        "loc": "3 Observations and data reduction",
+        "quote": "The spectral channels were binned to a velocity resolution of 1 km s$^{-1}$ and 2 km s$^{-1}$ for strong and weak spectral lines, respectively."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit emission size in uv plane",
+    "method": {
+     "value": "Fit circular Gaussian, then Gaussian plus delta function, to visibilities per channel (main array + ACA only)",
+     "evidence": [
+      {
+       "loc": "4.3 uv fitting",
+       "quote": "we use the CASA tool *uvmultifit* (cite: Marti-Vidal2014), to fit geometric flux models to the bright emission regions of all spectral lines."
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Gaussian position, flux density, FWHM; delta component at same position",
+      "evidence": [
+       {
+        "loc": "4.3 uv fitting",
+        "quote": "described by its position (relative to the current stellar position of RA 19:15:23.379 and DEC –07:02:50.38 J2000.0 (cite: Ramstedt2017)), flux density, and FWHM size"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gaussian intensity distribution; uncertainties assume reduced chi2 of 1",
+      "evidence": [
+       {
+        "loc": "Appendix uv-fitting",
+        "quote": "meaning that the reduced $\\chi^2$ can be assumed to be similar to its expected value of unity"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimisation; uncertainties from post-fit covariance matrix",
+     "evidence": [
+      {
+       "loc": "Appendix uv-fitting",
+       "quote": "estimates the uncertainties of the fitted parameters from the curvature of the $\\chi^2$ distribution at its minimum via the diagonal elements of the post-fit covariance matrix"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residual images imaged and checked as Gaussian noise; Monte Carlo exploration of chi2 PDFs",
+     "evidence": [
+      {
+       "loc": "Appendix uv-fitting",
+       "quote": "we have performed a Monte Carlo analysis of our Gaussian source model plus additional delta component across the full parameter space"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Radiative transfer modelling of abundance and e-folding radius",
+    "method": {
+     "value": "ALI non-LTE models with Gaussian abundance profile fitted to ALMA azimuthally averaged radial profiles (0.6\" beam) and 4\" line profiles, using single-dish data to discriminate",
+     "evidence": [
+      {
+       "loc": "5.1 Modeling procedure",
+       "quote": "we used the azimuthally averaged radial profile from the ALMA observations (convolved with a 0.6$^{\\prime\\prime\\,}$ beam) and the ALMA line profiles convolved with a 4$^{\\prime\\prime\\,}$ beam"
+      }
+     ]
+    },
+    "software": [
+     "ALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free parameters f0 and Re per molecule; radial points 0.05\" to 0.75\" in 0.1\" steps",
+      "evidence": [
+       {
+        "loc": "5.1 Modeling procedure",
+        "quote": "The Gaussian models have two free parameters per molecular species: $f_0$, the central fractional abundance, and $R_e$, the $e$-folding radius."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Distance 395 pc, Mdot 3e-6 Msun/yr, L 7500 Lsun, expansion velocity 16.5 km/s, spherical symmetry",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| Gas mass-loss rate         | $3\\times 10^{-6}$  M$_{\\odot}$/yr $^{b}$ |"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Manual best-fit selection; no sampler stated",
+     "evidence": [
+      {
+       "loc": "Modeling results",
+       "quote": "To adjust the H$_2$ number density, we multiplied a section of the smooth-wind radial profile (given by the mass-loss rate determined by (cite: Ramstedt2017), listed in Table [1]"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with archival single-dish line profiles",
+     "evidence": [
+      {
+       "loc": "5.2 Modeling results",
+       "quote": "In general, the ALMA observations are reasonably well described by the models when looking at the radial intensity profiles, as are the single-dish observations."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Add wind overdensity to reproduce radial tail",
+    "method": {
+     "value": "Multiply H2 density in a radial section by integer factors up to 10; pick the one not over-predicting the tail for any molecule",
+     "evidence": [
+      {
+       "loc": "5.2 Modeling results",
+       "quote": "we multiplied a section of the smooth-wind radial profile (given by the mass-loss rate determined by (cite: Ramstedt2017), listed in Table [1](#tab:stellarparameters), and the velocity profile defined by (cite: Danilovich2014)) by integer factors up to 10."
+      }
+     ]
+    },
+    "software": [
+     "ALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "factor of five between 8e15 and 1.5e16 cm",
+      "evidence": [
+       {
+        "loc": "5.2 Modeling results",
+        "quote": "The best fit for all molecules was found for an overdensity of a factor of five between $8\\times 10^{15}$ cm and $1.5\\times 10^{16}$ cm."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive isotopic ratios",
+    "method": {
+     "value": "Ratios of modelled abundances (28SiO/29SiO, 28SiS/30SiS, H12CN/H13CN), using Danilovich2014 abundances for main isotopologues",
+     "evidence": [
+      {
+       "loc": "6.4.1 Silicon",
+       "quote": "Previous models by (cite: Danilovich2014) estimate a $^{28}$SiO abundance of $2.9 \\times 10^{-6}$, which we can use to derive the $^{28}$SiO/$^{29}$SiO ratio, resulting in a value of 11.6."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "SiO and SiS ratios trace the Si isotope ratios; HCN ratio traces 12C/13C",
+      "evidence": [
+       {
+        "loc": "6.4.1 Silicon",
+        "quote": "By assuming that both SiO and SiS ratios are good tracers for the Si ratios"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration and CLEAN imaging",
+     "evidence": [
+      {
+       "loc": "3 Observations and data reduction",
+       "quote": "Standard calibration was performed with the Common Astronomy Software Application (CASA)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvmultifit",
+    "version": "not stated",
+    "used_for": {
+     "value": "uv-plane fitting of Gaussian and delta components",
+     "evidence": [
+      {
+       "loc": "4.3 uv fitting",
+       "quote": "we use the CASA tool *uvmultifit* (cite: Marti-Vidal2014)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Accelerated lambda iteration radiative transfer modelling",
+     "evidence": [
+      {
+       "loc": "5.1 Modeling procedure",
+       "quote": "we used ALI, an accelerated lambda iteration code (cite: Rybicki1991; Maercker2008)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CS f0",
+    "value": "1.20e-6",
+    "uncertainty": "0.05e-6",
+    "units": "relative to H2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| CS         | $(1.20 \\pm 0.05) \\times 10^{-6}$ | $7.0\\times 10^{15}$ | $\\times2$    |"
+     }
+    ]
+   },
+   {
+    "quantity": "CS Re",
+    "value": "7.0e15",
+    "uncertainty": "not stated",
+    "units": "cm",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| CS         | $(1.20 \\pm 0.05) \\times 10^{-6}$ | $7.0\\times 10^{15}$ | $\\times2$    |"
+     }
+    ]
+   },
+   {
+    "quantity": "SiS f0",
+    "value": "1.50e-6",
+    "uncertainty": "0.05e-6",
+    "units": "relative to H2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| SiS        | $(1.50 \\pm 0.05)\\times 10^{-6}$  | $6.0\\times 10^{15}$ | $\\times3$    |"
+     }
+    ]
+   },
+   {
+    "quantity": "SiS Re",
+    "value": "6.0e15",
+    "uncertainty": "not stated",
+    "units": "cm",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| SiS        | $(1.50 \\pm 0.05)\\times 10^{-6}$  | $6.0\\times 10^{15}$ | $\\times3$    |"
+     }
+    ]
+   },
+   {
+    "quantity": "30SiS f0",
+    "value": "1.15e-7",
+    "uncertainty": "0.05e-7",
+    "units": "relative to H2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^{30}$SiS | $(1.15 \\pm 0.05)\\times 10^{-7}$  | $3.5\\times 10^{15}$"
+     }
+    ]
+   },
+   {
+    "quantity": "29SiO f0",
+    "value": "2.50e-7",
+    "uncertainty": "0.10e-7",
+    "units": "relative to H2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^{29}$SiO | $(2.50 \\pm 0.10)\\times 10^{-7}$  | $1.4\\times 10^{16}$"
+     }
+    ]
+   },
+   {
+    "quantity": "29SiO Re",
+    "value": "1.4e16",
+    "uncertainty": "not stated",
+    "units": "cm",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$^{29}$SiO | $(2.50 \\pm 0.10)\\times 10^{-7}$  | $1.4\\times 10^{16}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN f0",
+    "value": "1.75e-7",
+    "uncertainty": "0.05e-7",
+    "units": "relative to H2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "H$^{13}$CN | $(1.75 \\pm 0.05)\\times 10^{-7}$  | $4.7\\times 10^{16}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN Re",
+    "value": "4.7e16 (text and table differ: 4.7e15 in modelling section)",
+    "uncertainty": "not stated",
+    "units": "cm",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6.1 Comparison with previous studies",
+      "quote": "For H$^{13}$CN, we get a radius of $4.7 \\times 10^{16}$ cm"
+     }
+    ]
+   },
+   {
+    "quantity": "28SiO/29SiO ratio",
+    "value": "11.6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4.1 Silicon",
+      "quote": "resulting in a value of 11.6"
+     }
+    ]
+   },
+   {
+    "quantity": "28SiS/30SiS ratio",
+    "value": "13.0",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4.1 Silicon",
+      "quote": "we find the abundance ratio of $^{28}$SiS/$^{30}$SiS =13.0"
+     }
+    ]
+   },
+   {
+    "quantity": "29Si/30Si ratio",
+    "value": "1.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4.1 Silicon",
+      "quote": "which results in a value of 1.1"
+     }
+    ]
+   },
+   {
+    "quantity": "H12CN/H13CN ratio",
+    "value": "17",
+    "uncertainty": "6",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4.2 Carbon",
+      "quote": "we derive a H$^{12}$CN/H$^{13}$CN ratio of $17 \\pm 6$"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind overdensity factor",
+    "value": "5 between 8e15 and 1.5e16 cm",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2 Modeling results",
+      "quote": "The best fit for all molecules was found for an overdensity of a factor of five between $8\\times 10^{15}$ cm and $1.5\\times 10^{16}$ cm."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Line emission is resolved, with a compact component and fainter elongation along NE/SW, the binary orbit direction, matching CO clumps.",
+    "evidence": [
+     {
+      "loc": "4.1 Morphology of spectral line emission",
+      "quote": "The elongation is oriented in the north-east and south-west (NE/SW) directions, which is also the direction of the binary orbit."
+     }
+    ]
+   },
+   {
+    "value": "SiS line shows a strong red-shifted asymmetry near -21 km/s.",
+    "evidence": [
+     {
+      "loc": "4.2 Spectral features",
+      "quote": "Additionally, the SiS line shows a strong asymmetry with an excess in red shifted emission relative to the stellar rest frame at around -21 km s$^{-1}$."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does a Gaussian alone describe the compact emission?",
+    "experiment": "uv fits with Gaussian vs Gaussian plus delta",
+    "result": "Adding a delta component yields significantly better residuals and recovers more flux",
+    "finding": "Compact central component needed in addition to Gaussian",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 uv fitting",
+      "quote": "We succeed in fitting the compact, central emission by adding a delta function to the circular Gaussian, and arrive at significantly better residual images"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can smooth-wind Gaussian abundance models explain the ALMA radial profiles?",
+    "experiment": "Radiative transfer with and without overdensity",
+    "result": "A tail beyond ~1\" needs an overdensity (factor 5)",
+    "finding": "Overdense, binary-induced region improves fits",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2 Modeling results",
+      "quote": "we found that adjusting the wind density over a small region, as could be caused by a binary induced, spiral-like overdensity, for example, greatly improved our model fits to the entire profile."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do 29SiO and H13CN share the radial extent of main isotopologues?",
+    "experiment": "Compare ALMA-derived Re to assumed values",
+    "result": "Rarer isotopologues have larger radii (H13CN about 3x)",
+    "finding": "Assumed identical distributions are not valid",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Conclusions",
+      "quote": "with both rarer isotopologs having a larger radius than previously found for the most common isotopolog counterparts"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "uv fitting avoids deconvolution artefacts",
+    "evidence": [
+     {
+      "loc": "4.3 uv fitting",
+      "quote": "image artefacts are inevitably introduced during deconvolution, it is reasonable to analyze the observations already in the uv plane"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Non-Gaussian abundance profile rejected as unphysical (increasing abundance with radius)",
+     "evidence": [
+      {
+       "loc": "5.2 Modeling results",
+       "quote": "such models that fit the observations well were not physically realistic, with increasing abundances with radius"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Spherical symmetry assumed despite asymmetric emission",
+     "evidence": [
+      {
+       "loc": "6.2 Limitations of radiative transfer models",
+       "quote": "The most obvious limitation of the radiative transfer models is that they assume spherical symmetry"
+      }
+     ]
+    },
+    {
+     "value": "Weak lines too low S/N for uv fitting",
+     "evidence": [
+      {
+       "loc": "4.3 uv fitting",
+       "quote": "the signal-to-noise ratio (S/N) for all weak lines is too low for confident fitting"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Best-fit selection appears manual with no formal uncertainty on Re",
+    "Overdensity abundance scaling for CS and SiS is ad hoc",
+    "Quoted H13CN Re inconsistent between text and table",
+    "Single-dish data taken at different epochs"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code given in acknowledgements",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA$\\#$2012.1.00524.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and CLEAN parameters",
+    "ALI input files and fit procedure",
+    "uvmultifit configuration"
+   ],
+   "estimated_data_volume_inferred": "Likely tens to hundreds of GB (12m+ACA+TP, 4 spectral windows, mosaic)",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear modelling approach, but imaging/ALI details and versions missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Modelling relies on a custom ALI code and inherited setups; imaging parameters are incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Marti-Vidal2014)",
+     "why": "uvmultifit"
+    },
+    {
+     "citation": "(cite: Danilovich2014)",
+     "why": "radiative transfer procedure and parameters"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Ramstedt2017)",
+     "why": "CO observations from the same ALMA project"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 1 binary AGB star sample (PI Ramstedt)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-374911b97abb602dfbac23a7556f7193",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:37",
+  "usage": {
+   "input_tokens": 29271,
+   "output_tokens": 10702,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.083388,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 84,
+  "quotes_ok": 84,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 14,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 81,
+   "stated": 54,
+   "rate": 0.667
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:44",
+  "custom_id": "repair-sonnet-921184f27c950fa00e8646766d52aa66",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "To adjust the H$_2$ number density, we multiplied a section of the smooth-wind radial profile (given by the mass-loss rate determined by (cite: Ramstedt2017), listed in Table [1]"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

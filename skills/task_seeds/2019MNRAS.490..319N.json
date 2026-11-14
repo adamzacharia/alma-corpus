@@ -1,0 +1,254 @@
+{
+ "bibcode": "2019MNRAS.490..319N",
+ "title": "WISDOM project - V. Resolving molecular gas in Keplerian rotation around the supermassive black hole in NGC 0383",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz2598",
+ "arxiv_id": "1909.05884",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the mass of the supermassive black hole in NGC 0383, measured by forward-modelling resolved 12CO(2-1) gas kinematics?",
+ "alma_project_codes": [
+  "2015.1.00419.S",
+  "2016.1.00437.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.18''x0.1'' (58x32 pc)",
+  "sensitivity": "continuum rms 35 uJy/beam; cube rms 0.4 mJy/beam per 10 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar velocity dispersion sigma_e=239±16 km/s",
+    "evidence": [
+     {
+      "loc": "2 Target: NGC 0383",
+      "quote": "$\\sigma_{\\rm e}=239\\pm16$  km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "Bosch2016; Beifiori2009"
+  },
+  {
+   "what": {
+    "value": "IRAM 30-m CO(2-1) flux 74.4±2.8 Jy km/s and CO(1-0) 29.8 Jy km/s",
+    "evidence": [
+     {
+      "loc": "2.2 Line Emission",
+      "quote": "Their CO(2–1) flux is $74.4\\pm2.8$ Jy km s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "OcanaFlaquer2010"
+  },
+  {
+   "what": {
+    "value": "Distance 66.6±9.9 Mpc",
+    "evidence": [
+     {
+      "loc": "2 Target: NGC 0383",
+      "quote": "at a distance of $66.6\\pm9.9$ Mpc (cite: Freedman2001)"
+     }
+    ]
+   },
+   "citation": "Freedman2001"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, combine and image CO cube",
+   "method": "Standard pipeline calibration; combine two configs in CASA; uvcontsub; clean with Briggs 0.5 to 10 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and PVD",
+   "method": "Masked moments with smoothed-cube mask at 0.8 x RMS; PVD from 5-pixel pseudo-slit at PA 142 deg",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Stellar mass model",
+   "method": "MGE fit to HST F160W + 2MASS H image; circular velocity from MGE_CIRCULAR_VELOCITY with M/L=1, scaled and SMBH point mass added",
+   "software": [
+    "MGE_FIT_SECTORS",
+    "MGE_CIRCULAR_VELOCITY"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Stellar mass dominates potential in inner parts; dark matter negligible"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Forward-model cube and fit SMBH mass",
+   "method": "KinMS with gas particles from SkySampler of CLEAN components; MCMC fit to whole cube, 100,000 iterations; linear M/L profile; thin disc",
+   "software": [
+    "KinMS",
+    "KinMS_MCMC",
+    "SkySampler"
+   ],
+   "key_parameters": [
+    "Flat priors, SMBH mass flat in log-space; errors = RMS of line-free channels"
+   ],
+   "assumptions": [
+    "Distance 66.6 Mpc; thin disc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Continuum SED",
+   "method": "Point-source continuum flux plus NED data fitted with power law",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SMBH mass",
+   "value": "4.2e9",
+   "uncertainty": "±0.7e9 (3σ)",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "SMBH mass of $(4.2\\pm0.7)\\times10^{9}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner stellar M/L (F160W)",
+   "value": "2.78",
+   "uncertainty": "0.61 (3σ)",
+   "units": "Msun/Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stellar $M/L$ inner ( M$_{\\odot}$/ L$_{\\odot,\\,\\mathrm{F160W}}$) | 0.01–10 | 2.78 | 0.21 | 0.61"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "37.58",
+   "uncertainty": "3.48 (3σ)",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Inclination ($^\\circ$) | 26–89 | 37.58 | 1.67 | 3.48"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas velocity dispersion",
+   "value": "8.32",
+   "uncertainty": "2.11 (3σ)",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Velocity dispersion (km s$^{-1}$) | 0–15 | 8.32 | 0.72 | 2.11"
+    }
+   ]
+  },
+  {
+   "quantity": "R_SOI",
+   "value": "316",
+   "uncertainty": "±60",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "the latter also yielding an exact $R_{\\rm SOI}=316\\pm60$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(2-1) flux",
+   "value": "87.1",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Line Emission",
+     "quote": "The total CO(2–1) flux is 87.1 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux at 235.33 GHz",
+   "value": "65.2",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.3 Continuum Emission",
+     "quote": "total integrated intensity of 65.2$\\pm$0.1 mJy at a central frequency of 235.33 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "SED power-law index",
+   "value": "-0.66",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.3 Continuum Emission",
+     "quote": "power-law index $\\alpha = -0.66\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "4925",
+   "uncertainty": "±4",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2 note",
+     "quote": "defines a systemic velocity of $V=4925\\pm4$  km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum",
+  "Exact clean mask regions (interactive)",
+  "MCMC prior limits beyond table, convergence/burn-in details",
+  "X_CO and gas mass conversion used for gas disc",
+  "Beam/pixel treatment for KinMS gas particle number",
+  "Whether archive pipeline products were reused as is, and CASA version"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "CASA version",
+  "Interactive clean masks",
+  "Exact MCMC code settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data programmes and code public and method well described, but interactive clean masks and some settings are unspecified.",
+ "rediscovery_reason": "Archival data with named codes, public KinMS code, and numeric results; some imaging details missing.",
+ "source_card": "cards/2019MNRAS.490..319N/sonnet/card.md"
+}

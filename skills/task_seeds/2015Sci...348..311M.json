@@ -1,0 +1,212 @@
+{
+ "bibcode": "2015Sci...348..311M",
+ "title": "A strong magnetic field in the jet base of a supermassive black hole",
+ "year": 2015,
+ "doi": "10.1126/science.aaa1784",
+ "arxiv_id": "1604.01898",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Can Faraday rotation be detected at the jet base of PKS 1830-211 with ALMA, and what does the rotation measure imply for the magnetic field strength?",
+ "alma_project_codes": [
+  "2011.0.00405.S",
+  "2012.1.00056.S",
+  "2013.1.00020.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "sub-arcsecond",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshift z = 2.5 of PKS 1830-211",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "a powerful gravitationally-lensed AGN located at a redshift of $z = 2.5$ (cite: lid99)"
+     }
+    ]
+   },
+   "citation": "(cite: lid99)"
+  },
+  {
+   "what": {
+    "value": "Parsec-scale AGN core magnetic fields of ~0.05-0.10 G used for comparison",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "where the derived magnetic fields have been independently measured to be $\\simeq 0.05-0.10$ Gauss (cite: Gabuzda4; Gabuzda5)"
+     }
+    ]
+   },
+   "citation": "(cite: Gabuzda4; Gabuzda5)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure flux-density ratios of lensed images",
+   "method": "Fit XX and YY visibilities separately with a two-component model, bypassing imaging",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compute polarization ratio Rpol",
+   "method": "Rpol = 1/2 (R_XX/R_YY - 1) with errors by standard propagation from fit covariance matrix",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit rotation measure",
+   "method": "Least-squares fit of Rpol vs lambda^2 and parallactic angle with a cosine model, for three epochs with quasi-simultaneous 250 and 300 GHz data; 100 GHz data excluded",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "RMs and fractional polarization wavelength dependence similar for both lensed images, so p_dif and alpha are constant"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Convert to rest frame and infer magnetic field",
+   "method": "RM_true = (1+z)^2 RM_obs; compare with RM integral n B dl and parsec-scale AGN core RMs to bound B",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "z = 2.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "RM_obs 10 Apr 2012",
+   "value": "9.0",
+   "uncertainty": "0.3",
+   "units": "10^6 rad/m^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "9.0$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "RM_obs 23 May 2012",
+   "value": "9.4",
+   "uncertainty": "0.4",
+   "units": "10^6 rad/m^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "9.4$\\pm$0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "RM_obs 5 May 2014",
+   "value": "25.3",
+   "uncertainty": "0.8",
+   "units": "10^6 rad/m^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "25.3$\\pm$0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "RM_true 10 Apr 2012",
+   "value": "11",
+   "uncertainty": "0.4",
+   "units": "10^7 rad/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "11$\\pm$0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "RM_true 23 May 2012",
+   "value": "11.5",
+   "uncertainty": "0.5",
+   "units": "10^7 rad/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "11.5$\\pm$0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "RM_true 5 May 2014",
+   "value": "31.2",
+   "uncertainty": "1.0",
+   "units": "10^7 rad/m^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "31.2$\\pm$1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "p_dif 10 Apr 2012",
+   "value": "12.6e-3",
+   "uncertainty": "0.4e-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "12.6$\\pm$0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "Max dRpol/dlambda^2 at lambda^2 = 0.8-1.6 mm^2",
+   "value": "70e-3",
+   "uncertainty": "not stated",
+   "units": "mm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "whereas between 0.8 and 1.6 mm$^2$ it is $70\\times 10^{-3}$ mm$^{-2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration pipeline/CASA version and calibrators",
+  "Source models (number of components) used in UVMULTIFIT",
+  "Initial guesses and parameter bounds of the Rpol fit",
+  "How the data were split into parallactic angle segments",
+  "Antenna configurations and baselines",
+  "Which executions belong to which project code"
+ ],
+ "missing_for_reproduction": [
+  "Source model and UVMULTIFIT configuration",
+  "Calibration details",
+  "Parallactic angle segmentation",
+  "Full Rpol-lambda^2 fit initialisation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and tables of Rpol are given and the method is clear, but calibration, source model and fit details are missing.",
+ "rediscovery_reason": "Rpol per epoch is tabulated and the cosine fit is simple, so RM values can be reproduced from the tables, though the archive data reprocessing needs missing details.",
+ "source_card": "cards/2015Sci...348..311M/sonnet/card.md"
+}

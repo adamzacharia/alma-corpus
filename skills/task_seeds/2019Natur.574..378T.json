@@ -1,0 +1,240 @@
+{
+ "bibcode": "2019Natur.574..378T",
+ "title": "Meridional flows in the disk around a young star",
+ "year": 2019,
+ "doi": "10.1038/s41586-019-1642-0",
+ "arxiv_id": "1910.06980",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the three-dimensional gas velocity components (v_phi, v_R, v_Z) in the upper layers of the HD 163296 disk, and do they show meridional flows at the gap locations?",
+ "alma_project_codes": [
+  "2013.1.00366.S",
+  "2013.1.00601.S",
+  "2016.1.00484.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.104'' x 0.095'' (10.5 au x 9.6 au)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination 46.7 +/- 0.1 deg and PA 133.3 deg from continuum ring fits",
+    "evidence": [
+     {
+      "loc": "Deriving an Emission Surface",
+      "quote": "we adopt the inclination and position angle found from continuum(cite: Isella_ea_2018), $i = 46.7\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "citation": "Isella et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Distance 101 pc",
+    "evidence": [
+     {
+      "loc": "Deriving an Emission Surface",
+      "quote": "assuming a source distance of 101 pc(cite: Bailer-Jones_ea_2018)"
+     }
+    ]
+   },
+   "citation": "Bailer-Jones et al. 2018"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Map line centres",
+   "method": "Fit a quadratic to the peak pixel and its two neighbours to get line-centre maps",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit the parametric emission surface",
+   "method": "Fit the Keplerian map with a two-power-law emission surface and 10 free parameters",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "Only pixels at least a beam FWHM apart are used in the likelihood"
+   ],
+   "assumptions": [
+    "Distance 101 pc; inclination prior 46.7 +/- 0.1 deg"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Non-parametric emission surface",
+   "method": "Pinte et al. 2018a method with a Gaussian Process on the raw points",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Circular orbits; i = 46.7 deg, PA = 133.3 deg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure v_phi and v_R in annuli",
+   "method": "Annuli 25 mas wide; random independent pixels; maximise the Gaussian Process likelihood of the shifted and stacked spectra; 20 realisations per annulus",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "Annulus width 25 mas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure v_Z from the line centre",
+   "method": "Resample the stacked spectra to 40 m/s and fit a Gaussian, first to the whole spectrum and then to the line core; the line centre is v_LSR plus v_Z,proj",
+   "software": [
+    "eddy"
+   ],
+   "key_parameters": [
+    "Resampled to 40 m/s, a factor of 16 higher than the original data"
+   ],
+   "assumptions": [
+    "Deprojection with i = 46.7 deg"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Subtract background rotation and convert to Mach number",
+   "method": "Fit a 10th-order polynomial to v_phi as a baseline; derive temperature from the peak brightness with the full Planck law and compute the sound speed",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Line is optically thick; brightness temperature traces gas temperature"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "3D hydrodynamic comparison",
+   "method": "FARGO3D isothermal simulation with three planets for 1.44 Myr",
+   "software": [
+    "FARGO3D"
+   ],
+   "key_parameters": [
+    "Grid 256x36x635; r = 32.1 to 401.5 au; alpha = 1e-3; Mgas = 0.09 Msun"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar mass",
+   "value": "2.022",
+   "uncertainty": "+/-0.004",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Deriving an Emission Surface",
+     "quote": "$M_{\\rm star} = 2.022_{-0.004}^{+0.004}~M_{\\rm sun}$"
+    }
+   ]
+  },
+  {
+   "quantity": "v_LSR",
+   "value": "5.763",
+   "uncertainty": "+/-0.001",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Deriving an Emission Surface",
+     "quote": "$v_{\\rm LSR} = 5.763_{-0.001}^{+0.001}~{\\rm km\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination (fit)",
+   "value": "46.8",
+   "uncertainty": "+/-0.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Deriving an Emission Surface",
+     "quote": "$i = 46.8_{-0.1}^{+0.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Emission surface Z0, phi",
+   "value": "Z0 = 265 mas, phi = 1.29",
+   "uncertainty": "Z0 +/-3 mas; phi +0.04/-0.03",
+   "units": "mas; dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Deriving an Emission Surface",
+     "quote": "$Z_0 = 265_{-3}^{+3}~{\\rm mas}$, $\\varphi = 1.29_{-0.03}^{+0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Statistical uncertainty on v_phi and v_R",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The resulting statistical uncertainties on $v_{\\phi}$ and $v_{R}$ are $\\sim$ ${10}~{\\rm m\\,s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas temperature range",
+   "value": "~90 K inside 30 au to 30 K at 400 au",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "finding values spanning between $\\approx 90$ K in the inner 30 au and dropping to 30 K at 400 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer radial outflow speed",
+   "value": "~30",
+   "uncertainty": "not stated",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the measured $v_{\\rm flow} \\sim 30~{\\rm m\\,s^{-1}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact DSHARP image product (file name, robust weighting) of the 12CO cube",
+  "Choice of Delta V for the line-core fit",
+  "Radial range and number of annuli used, and the polynomial fitting range",
+  "Emission-surface parameters for gas-temperature and sound-speed conversion beyond the description",
+  "FARGO3D setup details such as boundary conditions and the smoothing of the planet potential"
+ ],
+ "missing_for_reproduction": [
+  "Exact DSHARP cube file and Delta V for the line-core fit",
+  "Simulation boundary conditions and planet potential smoothing"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public images and public code with posterior values and settings given; a few details are missing.",
+ "rediscovery_reason": "The data are public, the recipe is largely complete, and the results are numeric.",
+ "source_card": "cards/2019Natur.574..378T/sonnet/card.md"
+}

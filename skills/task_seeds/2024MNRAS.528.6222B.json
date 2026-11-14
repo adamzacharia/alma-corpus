@@ -1,0 +1,342 @@
+{
+ "bibcode": "2024MNRAS.528.6222B",
+ "title": "Characterization of Herschel-selected strong lens candidates through HST and sub-mm/mm observations",
+ "year": 2024,
+ "doi": "10.1093/mnras/stad3381",
+ "arxiv_id": "2311.01158",
+ "fields": [
+  "high_z_galaxies",
+  "other"
+ ],
+ "question": "Confirm the gravitational lensing nature of 281 Herschel-selected candidate strongly lensed dusty star-forming galaxies using HST F110W snapshot observations and archival sub-mm/mm data, and characterize the lens properties and reconstructed near-IR background sources.",
+ "alma_project_codes": [
+  "2018.1.01146.S",
+  "2018.1.00526.S",
+  "2013.1.00749.S",
+  "2019.2.00027.S",
+  "2019.1.00151.S",
+  "2013.1.00118.S",
+  "2016.1.00463.S",
+  "2016.1.00478.S",
+  "2013.1.00358.S",
+  "2018.1.00966.S",
+  "2016.1.01188.S",
+  "2017.1.00027.S",
+  "2017.1.01214.S",
+  "2015.1.01486.S",
+  "2017.1.00043.S",
+  "2013.1.00781.S",
+  "2015.1.01528.S",
+  "2017.1.01694.S",
+  "2019.1.01784.S",
+  "2018.1.00861.S",
+  "2016.1.00284.S",
+  "2021.1.01116.S",
+  "2015.1.00723.S",
+  "2011.0.00539.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 5, Band 6, Band 7, Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "1 to 0.03 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel SPIRE flux densities at 250, 350, and 500 um",
+    "evidence": [
+     {
+      "loc": "2.1 Sample selection",
+      "quote": "For the candidates in the H-ATLAS survey, we use the flux densities coming from Harris et al. (2012), Negrello et al. (2017), and Bakx et al. (2018), when available, if not, we adopt the flux densities published in the H-ATLAS Data Release 1 (DR1, Valiante et al. 2016) or Data Release 2 (DR2, Maddox et al. 2018)."
+     },
+     {
+      "loc": "2.1 Sample selection",
+      "quote": "we use the flux densities coming from Harris et al. (2012), Negrello et al. (2017), and Bakx et al. (2018), when available, if not, we adopt the flux densities published in the H-ATLAS Data Release 1"
+     }
+    ]
+   },
+   "citation": "Harris et al. (2012), Wardlow et al. (2013), Bussmann et al. (2013, 2015), Calanog et al. (2014), Nayyeri et al. (2016), Valiante et al. (2016), Negrello et al. (2017), Bakx et al. (2018), Maddox et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Reduced SMA continuum images and sub-mm source sizes and magnifications for comparison",
+    "evidence": [
+     {
+      "loc": "2.3 Multiwavelength data",
+      "quote": "For the SMA data, we either use the reduced continuum images from Enia et al. (2018), or we download the UV tables from the science archive"
+     },
+     {
+      "loc": "6 DISCUSSION",
+      "quote": "We compare our stellar sizes with the dust ones by Enia et al. (2018), who modelled the SMA sub-mm/mm emission of a sample of 12 lenses similarly selected and partially included in our sample."
+     }
+    ]
+   },
+   "citation": "Enia et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Redshifts of lens candidates and background sources",
+    "evidence": [
+     {
+      "loc": "2.3 Multiwavelength data",
+      "quote": "In addition to these high-resolution observations, we search both previous literature works and the NASA/IPAC Extragalactic Database [5] for the lens candidates and/or potential lenses redshifts."
+     }
+    ]
+   },
+   "citation": "Various literature works (see Table 3) and NASA/IPAC Extragalactic Database"
+  },
+  {
+   "what": {
+    "value": "SLACS sample of confirmed lenses for comparison",
+    "evidence": [
+     {
+      "loc": "6 DISCUSSION",
+      "quote": "We compare the properties of our lenses (i.e., total effective radii, Einstein radii, and total effective surface brightnesses) to those of the SLACS sample of confirmed lenses (Bolton et al. 2008)."
+     }
+    ]
+   },
+   "citation": "Bolton et al. (2008)"
+  },
+  {
+   "what": {
+    "value": "17 local elliptical galaxy SED templates for K-correction",
+    "evidence": [
+     {
+      "loc": "6 DISCUSSION",
+      "quote": "As a template for the ETG SED, we use the 17 local elliptical galaxies available in the Brown Atlas (Brown et al. 2014)."
+     }
+    ]
+   },
+   "citation": "Brown et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Median C31 concentration index for nearby ETGs",
+    "evidence": [
+     {
+      "loc": "4.4 Properties of the lenses",
+      "quote": "which is slightly higher than the median value ⟨𝐶31⟩ = 5.2 ± 0.1 measured by Watkins et al. (2022) for a sample of nearby ETGs observed with Spitzer at 3.6 𝜇m."
+     }
+    ]
+   },
+   "citation": "Watkins et al. (2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce HST WFC3/F110W snapshot observations and apply astrometric correction",
+   "method": "Flatfield correction, background subtraction, cosmic-ray cleaning, distortion correction, rotation, drizzling with 4-point sub-pixel dithering, and matching Gaia eDR3 sources to HST counterparts.",
+   "software": [
+    "AstroDrizzle"
+   ],
+   "key_parameters": [
+    "output pixel size = 0.064 arcsec; FOV = 136 arcsec x 123 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Classify lens candidates via visual inspection and multiwavelength archival data",
+   "method": "Visual inspection of HST images, cross-matching with high-resolution ALMA, SMA, and NOEMA continuum images to identify multiple images/arcs or unlensed DSFGs, and updating classification after lens subtraction.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model and subtract foreground lens surface brightness in HST images",
+   "method": "Residual sky subtraction using source masks and biweight location; PSF construction from stacked smoothed point sources; 2D parametric surface brightness decomposition (Sersic, de Vaucouleurs, Gaussian, exponential disk, PSF) or non-parametric isophotal fitting for edge-on disks; error estimation via Monte Carlo mock galaxy simulations.",
+   "software": [
+    "GASP2D",
+    "GALFIT",
+    "ISOFIT",
+    "CMODEL",
+    "IRAF",
+    "IDL",
+    "photutils",
+    "astropy",
+    "sgolay2"
+   ],
+   "key_parameters": [
+    "Sersic index range [0.3, 10]; effective radius range [0.5 FWHM_PSF, +inf)"
+   ],
+   "assumptions": [
+    "Planck18 cosmology: H0 = 67.7 km s^-1 Mpc^-1, Omega_0,m = 0.31, Omega_0,Lambda = 0.69"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive global lens photometric properties and K-corrections",
+   "method": "Compute curve of growth from 10^4 MC realizations of component parameters to derive R50, mu50, m_F110W, and C31 = R75/R25; measure aperture photometry of lensed background sources at 1.1 um; compute K-corrections using Brown Atlas elliptical templates.",
+   "software": [
+    "ISOFIT",
+    "PySynphot"
+   ],
+   "key_parameters": [
+    "10^4 realizations per galaxy"
+   ],
+   "assumptions": [
+    "Cosmological surface brightness dimming factor (1 + z)^4; 17 local elliptical galaxy SED templates from Brown Atlas"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Perform gravitational lens modelling and background source reconstruction",
+   "method": "Fit singular isothermal ellipsoid (SIE) mass model (plus external shear for S_3, S_19, S_40) and reconstruct background source using a preliminary Sersic parametric fit followed by a Voronoi pixelization with constant regularization.",
+   "software": [
+    "PyAutoLens",
+    "dynesty"
+   ],
+   "key_parameters": [
+    "Voronoi pixelization shape prior [20, 45] pixels; regularization coefficient lambda prior [10^-6, 10^6]; SNR > 3 threshold on source plane for magnification and circularised radius"
+   ],
+   "assumptions": [
+    "Singular Isothermal Ellipsoid (SIE) mass distribution"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of confirmed strongly lensed systems (Class A)",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We confirm 65 systems to be lensed. Of these, 30 are new discoveries."
+    },
+    {
+     "loc": "3 LENS CLASSIFICATION",
+     "quote": "In conclusion, after the visual inspection of the HST images, use of ancillary data, and surface brightness modelling, we are able to assign 65 objects to class A, 67 to class B, 120 to class C, and 29 to class D."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of newly discovered lensed systems",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We confirm 65 systems to be lensed. Of these, 30 are new discoveries."
+    }
+   ]
+  },
+  {
+   "quantity": "Median concentration index <C31> of modelled lenses",
+   "value": "6.8",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Properties of the lenses",
+     "quote": "We measure a median ⟨𝐶31⟩ = 6.8 ± 0.4, which is slightly higher than the median value ⟨𝐶31⟩ = 5.2 ± 0.1 measured by Watkins et al. (2022)"
+    }
+   ]
+  },
+  {
+   "quantity": "Background source circularised radii range (1st to 99th percentile)",
+   "value": "0.34 to 1.30",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "However, the background source circularised radii (between 0.34 kpc and 1.30 kpc) are ∼3 times smaller than the ones measured in the sub-mm/mm for a similarly selected and partially overlapping sample."
+    },
+    {
+     "loc": "6 DISCUSSION",
+     "quote": "The physical sizes of the background sources, measured as the circularised radii of the circles equivalent to the regions of the source plane with SNR > 3, range between 0.34 kpc (1-st percentile) and 1.30 kpc (99-th percentile)."
+    }
+   ]
+  },
+  {
+   "quantity": "Background source magnification median",
+   "value": "5.5",
+   "uncertainty": "2.4 to 15.8 (1st to 99th percentile)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 DISCUSSION",
+     "quote": "At the same time, we find magnifications ranging between 2.4 (1-st percentile) and 15.8 (99-th percentile), with a median of 5.5 for our sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground lens mass within Einstein radius range (1st to 99th percentile)",
+   "value": "9.9e10 to 6.4e11",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 DISCUSSION",
+     "quote": "The mass within the Einstein radii of the foreground lenses ranges between 9.9 × 1010 M⊙ (1-st percentile) and 6.4 × 1011 M⊙ (99-th percentile)."
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground lens mass-to-light ratio in F110W within Einstein radius range",
+   "value": "1.25 to 8.86",
+   "uncertainty": "not stated",
+   "units": "M_sun L_sun^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6 DISCUSSION",
+     "quote": "The mass-to-light ratios in the F110W filter within the Einstein radius range between 1.25 and 8.86 M⊙ L−1 ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius of S_1 (HATLASJ000330.6-321136)",
+   "value": "0.733",
+   "uncertainty": "+0.006/-0.009",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "S_1 HATLASJ000330.6 − 321136 −0.13 +0.03 −0.02 −0.05 +0.01 −0.02 0.733 +0.006 −0.009"
+    }
+   ]
+  },
+  {
+   "quantity": "Einstein radius of S_12 (HERMESJ100144+025709)",
+   "value": "0.930",
+   "uncertainty": "0.002",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "S_12 HERMESJ100144 + 025709 −0.033 +0.003 −0.004 0.042 +0.009 −0.003 0.930 ± 0.002"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA imaging parameters used to produce continuum images from archival SMA UV tables",
+  "Specific ALMA project IDs for some literature-referenced archival ALMA datasets where only author citations are given in text/tables"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel masks used for GASP2D/GALFIT/ISOFIT and PyAutoLens (though shown graphically in figures)",
+  "Specific PyAutoLens configuration scripts",
+  "CASA imaging parameters for the subset of SMA UV tables imaged by the authors"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The primary HST dataset, models, residuals, and PSFs are publicly archived on Zenodo, archival ALMA Stokes I continuum images are used as-is, and the surface brightness and PyAutoLens modelling workflows, priors, and parameters are thoroughly documented with full parameter tables.",
+ "rediscovery_reason": "All reduced HST cutouts, PSFs, and lens-subtracted residuals are hosted on Zenodo, and the PyAutoLens SIE + Voronoi pixelization modelling recipe and priors are explicitly specified with numeric answer keys in Table 7.",
+ "source_card": "cards/2024MNRAS.528.6222B/sonnet/card.md"
+}

@@ -1,0 +1,286 @@
+{
+ "bibcode": "2019ApJ...876..141I",
+ "title": "ALMA Observations of Giant Molecular Clouds in the Starburst Dwarf Galaxy Henize 2-10",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab16cc",
+ "arxiv_id": "1812.02180",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the molecular gas distribution and giant molecular cloud properties in the starburst dwarf Henize 2-10, and how do they compare with Milky Way and other galaxies?",
+ "alma_project_codes": [
+  "2015.1.01569.S",
+  "2015.1.01395.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12-m array, 36 antennas",
+  "angular_resolution": "0.67\" x 0.58\" (28 x 24 pc)",
+  "sensitivity": "3.7 mJy per 1 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 8.7 Mpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "at a distance of $8.7$ Mpc (cite: Tully_1988)"
+     }
+    ]
+   },
+   "citation": "(cite: Tully_1988)"
+  },
+  {
+   "what": {
+    "value": "Metallicity 12+log(O/H)=8.55",
+    "evidence": [
+     {
+      "loc": "3.2 Molecular Mass",
+      "quote": "We take their resulting measurement of $12+\\log(\\rm{O/H})=8.55\\pm0.02$ $(\\sim 0.7\\ensuremath{Z_\\odot})$ to be the most reliable in the literature"
+     }
+    ]
+   },
+   "citation": "(cite: Esteban_2014)"
+  },
+  {
+   "what": {
+    "value": "Comparison GMC catalogs for Milky Way, LMC, NGC 300, IC 10, II Zw 40",
+    "evidence": [
+     {
+      "loc": "4.4 Molecular Clouds in Other Galaxies",
+      "quote": "we compare their scaling relations to those of clouds in a sample of galaxies collected from the literature."
+     }
+    ]
+   },
+   "citation": "(cite: Heyer_2009; Oka_2001; Wong_2011; Faesi_2018; Leroy_2006; Kepley_2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(1-0) cube",
+   "method": "Manual CASA calibration, continuum subtraction in uv, multiscale CLEAN with natural weighting, primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting; 0.1\" pixels; 1 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Global molecular mass and kinematics",
+   "method": "Sum integrated-intensity map to get mass with Galactic XCO; Gaussian fit to spectrum; plane fit to moment 1; PV diagram and dynamical mass",
+   "software": [],
+   "key_parameters": [
+    "masked cube: seed pairs of channels >5 sigma, expand to >1.5 sigma"
+   ],
+   "assumptions": [
+    "XCO = 2e20 cm^-2 (K km/s)^-1, factor 1.36 for helium, distance 8.7 Mpc, edge-on rotation for dynamical mass"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify GMCs and measure properties",
+   "method": "CPROPS with default parameters, modified CLUMPFIND, extrapolation to 0 K, beam and channel deconvolution",
+   "software": [
+    "CPROPS",
+    "CLUMPFIND"
+   ],
+   "key_parameters": [
+    "4 sigma seed, 2 sigma edge, 15 pc x 15 pc x 2 km/s moving box"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.35 Msun (K km/s pc^2)^-1; Mvir=1040 R sigma_v^2 (spherical, rho~R^-1)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Mass spectrum",
+   "method": "Truncated power-law maximum-likelihood fit of cumulative mass distribution above completeness limit",
+   "software": [
+    "mspecfit.pro (IDL)"
+   ],
+   "key_parameters": [
+    "completeness limit 1.1e5 Msun"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Scaling relations and virial analysis",
+   "method": "Pearson correlations, orthogonal distance regression for size-linewidth, bilinear least squares for Mvir-Mlum and Mlum-R; virial alphaCO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Single Milky Way alpha_CO for all clouds"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular mass",
+   "value": "1.2e8",
+   "uncertainty": "0.4e8",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular Mass",
+     "quote": "yields a molecular gas mass of $(1.2\\pm 0.4)\\times 10^8~\\ensuremath{M_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO intensity",
+   "value": "146",
+   "uncertainty": "3",
+   "units": "K km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Dynamics",
+     "quote": "a total integrated CO intensity of $I_{\\rm CO}=146\\pm 3$ K km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within 70 pc (edge-on)",
+   "value": "2.7e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Dynamics",
+     "quote": "of $2.7\\times10^6$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of clouds (resolved/total)",
+   "value": "119 / 178",
+   "uncertainty": "not stated",
+   "units": "clouds",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Distributions of Cloud Properties",
+     "quote": "we identify 178 clouds, of which 59 are unresolved"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass spectrum slope",
+   "value": "-1.54",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 The GMC mass spectrum",
+     "quote": "we derive a slope of $\\gamma=-1.54\\pm 0.10$"
+    }
+   ]
+  },
+  {
+   "quantity": "Truncation mass",
+   "value": "4.7e6",
+   "uncertainty": "0.8e6",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 The GMC mass spectrum",
+     "quote": "a truncation mass of $M_0 = (4.7\\pm 0.8) \\times 10^6$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth slope",
+   "value": "1.31",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6.1 Size-linewidth relation",
+     "quote": "The derived slope is $1.31\\pm0.14$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mvir-Mlum slope",
+   "value": "1.2",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6.2 Virial relation",
+     "quote": "to derive a slope of $1.2\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mlum-R slope",
+   "value": "3.0",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6.3 Mass-size relation",
+     "quote": "yields a slope of $3.0\\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median virial alphaCO",
+   "value": "3.7",
+   "uncertainty": "not stated",
+   "units": "Msun (K km/s pc^2)^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6.2 Virial relation",
+     "quote": "the median value is $3.7$ $M_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median GMC surface density",
+   "value": "180",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.6.3 Mass-size relation",
+     "quote": "The median surface density is $180$ $M_\\odot$ pc$^{-2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Multiscale CLEAN scales, threshold and gain",
+  "Line-free channels used for continuum subtraction",
+  "Cleaning threshold and number of iterations",
+  "Exact masks used in imaging",
+  "How spectra in Figure 1 and moment maps were made (CASA tasks)",
+  "Details of the second project 2015.1.01395.S and whether its data were used",
+  "Flux calibration accuracy and any self-calibration"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN scales, thresholds and mask",
+  "Line-free channel selection",
+  "Cloud table is printed but CPROPS input details beyond defaults are not given"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and well-defined CPROPS analysis with a cloud table, but imaging parameters are underspecified.",
+ "rediscovery_reason": "Data public, CPROPS recipe with defaults and numeric results (cloud counts, slopes) are checkable.",
+ "source_card": "cards/2019ApJ...876..141I/sonnet/card.md"
+}

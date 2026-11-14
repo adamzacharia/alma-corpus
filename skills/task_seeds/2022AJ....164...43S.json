@@ -1,0 +1,477 @@
+{
+ "bibcode": "2022AJ....164...43S",
+ "title": "Molecular Cloud Populations in the Context of Their Host Galaxy Environments: A Multiwavelength Perspective",
+ "year": 2022,
+ "doi": "10.3847/1538-3881/ac74bd",
+ "arxiv_id": "2206.07055",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How do molecular cloud populations depend on local and global properties of the host galaxy, and what are the characteristic timescales relevant to molecular cloud evolution and star formation across 80 PHANGS-ALMA galaxies?",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00886.L",
+  "2018.1.01321.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "interferometric and single dish observations",
+  "angular_resolution": "60, 90, 120, and 150 pc physical scales",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "PHANGS-ALMA CO(2-1) imaging data products (v4) and global galaxy properties",
+    "evidence": [
+     {
+      "loc": "PHANGS–ALMA CO Data",
+      "quote": "We use the PHANGS–ALMA $\\mathrm{CO}\\,(2\\text{--}1)$ imaging data[^1] (cite: Leroy_etal_2021a) to probe molecular gas properties on ${\\lesssim}150$ pc scales."
+     },
+     {
+      "loc": "Pairwise Correlation",
+      "quote": "These global properties are measured by (cite: Leroy_etal_2021a) for all PHANGS-ALMA galaxies."
+     }
+    ]
+   },
+   "citation": "(cite: Leroy_etal_2021a)"
+  },
+  {
+   "what": {
+    "value": "PHANGS-ALMA CPROPS object catalogs",
+    "evidence": [
+     {
+      "loc": "Object-by-object Measurements",
+      "quote": "We extract a set of molecular gas measurements for each object tabulated in the PHANGS–ALMA CPROPS catalogs[^2] (cite: Rosolowsky_etal_2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Rosolowsky_etal_2021)"
+  },
+  {
+   "what": {
+    "value": "Rotation curves, inclination angles, and position angles derived from CO line kinematics",
+    "evidence": [
+     {
+      "loc": "Rotation Curves",
+      "quote": "We use rotation curves derived from CO line kinematics by (cite: Lang_etal_2020) to characterize galactic orbital kinematics (e.g., orbital period and shear) locally within each galaxy."
+     },
+     {
+      "loc": "Galaxy Sample",
+      "quote": "Table notes: (2) distance (cite: Anand_etal_2020); (3) inclination angle (cite: Lang_etal_2020); (4) position angle (cite: Lang_etal_2020);"
+     }
+    ]
+   },
+   "citation": "(cite: Lang_etal_2020)"
+  },
+  {
+   "what": {
+    "value": "Morphological environment masks constructed from near-IR images",
+    "evidence": [
+     {
+      "loc": "Morphological Environment Masks",
+      "quote": "We use the environment masks presented in (cite: Querejeta_etal_2021) to distinguish different morphological regions in each galaxy."
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta_etal_2021)"
+  },
+  {
+   "what": {
+    "value": "Galaxy distances",
+    "evidence": [
+     {
+      "loc": "Galaxy Sample",
+      "quote": "Table notes: (2) distance (cite: Anand_etal_2020);"
+     }
+    ]
+   },
+   "citation": "(cite: Anand_etal_2020)"
+  },
+  {
+   "what": {
+    "value": "Spitzer IRAC 3.6 um images from the S4G survey",
+    "evidence": [
+     {
+      "loc": "Near-IR Data",
+      "quote": "For 61 galaxies in our sample, we use *Spitzer* IRAC $3.6$ $\\mu$m images from the S$^4$G survey (cite: Sheth_etal_2010)."
+     }
+    ]
+   },
+   "citation": "(cite: Sheth_etal_2010)"
+  },
+  {
+   "what": {
+    "value": "WISE and GALEX images from the z0MGS project",
+    "evidence": [
+     {
+      "loc": "Near-IR Data",
+      "quote": "For those without S$^4$G data, we instead use *WISE* W1 band ($3.4$ $\\mu$m) images compiled by the $z0$MGS project (cite: Leroy_etal_2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Leroy_etal_2019)"
+  },
+  {
+   "what": {
+    "value": "Archival HI 21 cm data from THINGS, VIVA, HERACLES, LVHIS, and literature",
+    "evidence": [
+     {
+      "loc": "H I Data",
+      "quote": "The other galaxies have archival data from either large nearby galaxy surveys such as THINGS (cite: Walter_etal_2008), VIVA (cite: Chung_etal_2009), HERACLES (cite: Leroy_etal_2009), LVHIS (cite: Koribalski_etal_2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Walter_etal_2008; Chung_etal_2009; Leroy_etal_2009; Koribalski_etal_2018; Murugeshan_etal_2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive individual molecular cloud and pixel-level physical properties",
+   "method": "Extract object-by-object properties from PHANGS-ALMA CPROPS catalogs and pixel-by-pixel properties from strict CO(2-1) moment maps at 60, 90, 120, and 150 pc resolutions, applying inclination corrections.",
+   "software": [
+    "CPROPS"
+   ],
+   "key_parameters": [
+    "Spatial resolutions: 60, 90, 120, 150 pc"
+   ],
+   "assumptions": [
+    "CO(2-1)-to-CO(1-0) line ratio R_21 = 0.65",
+    "Fiducial metallicity-dependent conversion factor alpha_CO(1-0) = 4.35 * Z'^-1.6 M_sun (K km s^-1 pc^2)^-1",
+    "Molecular gas disk thickness H = 100 pc",
+    "Inclination correction of cos(i) for surface density and (cos(i))^0.5 for velocity dispersion"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Aggregate cloud and environmental properties in kpc-scale apertures and correct for completeness",
+   "method": "Divide each galaxy into 1.5 kpc hexagonal apertures (and 500 pc radial bins). Compute mass-weighted ensemble averages of cloud properties, clumping factor, and area-weighted local environmental metrics. Apply lognormal PDF completeness corrections.",
+   "software": [
+    "MegaTable"
+   ],
+   "key_parameters": [
+    "Hexagonal aperture spacing = 1.5 kpc (projected area 1.95 kpc^2), out to r_gal = 1.5 r_25",
+    "Radial bin width = 500 pc"
+   ],
+   "assumptions": [
+    "Intrinsic CO intensity distribution within each aperture follows a lognormal distribution above a sharp intensity threshold",
+    "Optically thin HI 21 cm emission with 35% helium/heavy elements contribution",
+    "Chabrier IMF for UV+MIR SFR and global stellar mass; Kroupa IMF for Halpha+MIR SFR",
+    "Global mass-metallicity relation with a fixed radial metallicity gradient of -0.1 dex/r_e"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Characterize pairwise correlations and perform variable selection for predictive models",
+   "method": "Calculate Spearman's rank correlation coefficients and variance inflation factors (VIFs) across 871 high-completeness apertures, then perform multivariable linear regression in log space using Lasso regression and BIC model selection.",
+   "software": [
+    "scikit-learn"
+   ],
+   "key_parameters": [
+    "Subsample selection: 871 apertures from 42 galaxies with f_flux > 0.5 and f_area > 0.2",
+    "Noise variance sigma^2 = 0.1 dex^2 for M, R, Sigma, sigma; sigma^2 = 0.25 dex^2 for P_turb and alpha_vir; model selection threshold Delta BIC <= 10"
+   ],
+   "assumptions": [
+    "Gaussian error in logarithmic space for BIC calculation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate characteristic timescales of molecular cloud evolution and star formation",
+   "method": "Calculate mass-weighted harmonic mean free-fall time, turbulence crossing time, and cloud-cloud collision time, alongside orbital time, shearing time, and molecular gas depletion time across apertures, and compute Spearman rank correlations with depletion time.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Spherical symmetry for free-fall time calculation",
+    "Shear-induced cloud-cloud collision model with random spatial distribution of clouds on adjacent circular orbits"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Environmental surface density of molecular gas (disk, aperture-weighted)",
+   "value": "5.4",
+   "uncertainty": "+10.8/-3.7",
+   "units": "M_odot pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sub-galactic Environments Probed by PHANGS–ALMA",
+     "quote": "Weighting all apertures in galaxy disks equally, we find typical surface densities of $\\Sigma_\\mathrm{\\star}=65^{+80}_{-34}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ and $\\Sigma_\\mathrm{mol}=5.4^{+10.8}_{-3.7}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ (panels *e* and *f*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Environmental surface density of molecular gas (disk, molecular gas mass-weighted)",
+   "value": "17",
+   "uncertainty": "+29/-11",
+   "units": "M_odot pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sub-galactic Environments Probed by PHANGS–ALMA",
+     "quote": "we find that most molecular gas mass resides in environments with even higher surface densities ($\\Sigma_\\mathrm{\\star}=110^{+140}_{-60}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$, $\\Sigma_\\mathrm{mol}=17^{+29}_{-11}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$, $\\Sigma_\\mathrm{gas}=28^{+30}_{-15}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Environmental SFR surface density (disk, aperture-weighted)",
+   "value": "3.5e-3",
+   "uncertainty": "+6.8e-3/-2.1e-3",
+   "units": "M_odot yr^-1 kpc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Sub-galactic Environments Probed by PHANGS–ALMA",
+     "quote": "The typical range of SFR surface density of “disk” apertures, when weighted by simple number counts, is $\\Sigma_\\mathrm{SFR}=3.5^{+6.8}_{-2.1}\\times10^{-3}~\\mbox{$\\rm M_\\odot~yr^{-1}~kpc^{-2}$}$ (panel *h*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average molecular cloud mass at 150 pc (disk, mass-weighted)",
+   "value": "6.9e6",
+   "uncertainty": "+10.5e6/-4.5e6",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "The mass-weighted average molecular cloud mass at 150 pc resolution is $6.9^{+10.5}_{-4.5}\\times10^6~\\mbox{$\\rm M_\\odot$}$ for all clouds in galaxy disks (panel *a*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average molecular cloud 3D radius at 150 pc (disk, mass-weighted)",
+   "value": "90",
+   "uncertainty": "+19/-15",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "the mass-weighted cloud effective radius measured at the same resolution spans $90^{+19}_{-15}$ pc, which slightly exceeds half the beam FWHM size (panel *b*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average molecular cloud surface density at 150 pc (disk, mass-weighted)",
+   "value": "78",
+   "uncertainty": "+124/-50",
+   "units": "M_odot pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "At 150 pc resolution, the mass-weighted molecular cloud surface density in galaxy disks is $78^{+124}_{-50}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ from the object-based approach and $33^{+60}_{-22}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ from the pixel-based approach"
+    }
+   ]
+  },
+  {
+   "quantity": "Pixel-based average molecular cloud surface density at 150 pc (disk, mass-weighted)",
+   "value": "33",
+   "uncertainty": "+60/-22",
+   "units": "M_odot pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "At 150 pc resolution, the mass-weighted molecular cloud surface density in galaxy disks is $78^{+124}_{-50}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ from the object-based approach and $33^{+60}_{-22}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ from the pixel-based approach"
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average molecular cloud surface density at 150 pc (center/bar, mass-weighted)",
+   "value": "210",
+   "uncertainty": "+560/-160",
+   "units": "M_odot pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "Compared to the results for disk apertures, the cloud populations in galaxy centers and stellar bars have much higher mass-weighted mean surface densities of $210^{+560}_{-160}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ (object-based) or $200^{+840}_{-160}~\\mbox{$\\rm M_\\odot~pc^{-2}$}$ (pixel-based)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average velocity dispersion at 150 pc (disk, mass-weighted)",
+   "value": "5.8",
+   "uncertainty": "+1.9/-1.5",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "For molecular cloud populations located in galaxy disks, we find mass-weighted average velocity dispersions of $5.8^{+1.9}_{-1.5}~\\mbox{$\\rm km~s^{-1}$}$ (object-based; panel *e*) or $4.7^{+2.2}_{-1.7}~\\mbox{$\\rm km~s^{-1}$}$ (pixel-based; panel *i*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixel-based average velocity dispersion at 150 pc (disk, mass-weighted)",
+   "value": "4.7",
+   "uncertainty": "+2.2/-1.7",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "For molecular cloud populations located in galaxy disks, we find mass-weighted average velocity dispersions of $5.8^{+1.9}_{-1.5}~\\mbox{$\\rm km~s^{-1}$}$ (object-based; panel *e*) or $4.7^{+2.2}_{-1.7}~\\mbox{$\\rm km~s^{-1}$}$ (pixel-based; panel *i*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average turbulent pressure at 150 pc (disk, mass-weighted)",
+   "value": "2.1e5",
+   "uncertainty": "+7.2e5/-1.6e5",
+   "units": "K cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "Molecular clouds in galaxy disks have mass-weighted average turbulent pressure of $2.1^{+7.2}_{-1.6}\\times10^5~\\mbox{$\\rm K~cm^{-3}$}$ (object-based; panel *f*) or $1.1^{+5.4}_{-0.9}\\times10^5~\\mbox{$\\rm K~cm^{-3}$}$ (pixel-based; panel *j*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based average virial parameter at 150 pc (disk, mass-weighted)",
+   "value": "1.1",
+   "uncertainty": "+0.8/-0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "Molecular cloud populations in galaxy disks exhibit a narrow range of mass-weighted average virial parameters: $1.1^{+0.8}_{-0.4}$ (object-based; panel *g*) or $1.6^{+0.9}_{-0.6}$ (pixel-based; panel *k*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pixel-based average virial parameter at 150 pc (disk, mass-weighted)",
+   "value": "1.6",
+   "uncertainty": "+0.9/-0.6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "Molecular cloud populations in galaxy disks exhibit a narrow range of mass-weighted average virial parameters: $1.1^{+0.8}_{-0.4}$ (object-based; panel *g*) or $1.6^{+0.9}_{-0.6}$ (pixel-based; panel *k*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Completeness-corrected molecular gas clumping factor at 150 pc (all apertures, mass-weighted)",
+   "value": "1.9",
+   "uncertainty": "+1.0/-0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Molecular Cloud Populations in PHANGS-ALMA",
+     "quote": "We find a completeness-corrected clumping factor of $1.9^{+1.1}_{-0.4}$ (uniform weight per aperture) or $1.9^{+1.0}_{-0.4}$ (weighted by molecular gas mass in each aperture) across our sample (panel *c*)."
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based population-averaged free-fall time (all apertures, mass-weighted)",
+   "value": "6.6",
+   "uncertainty": "+3.9/-2.0",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$\\bar{t}_\\mathrm{ff,\\,obj}$ \\[Myr\\] | $9.3^{+4.2}_{-3.4}$ | $9.2^{+4.5}_{-3.3}$ | $9.5^{+3.1}_{-3.9}$ | $6.6^{+3.9}_{-2.0}$ | $6.7^{+3.8}_{-1.9}$ | $6.5^{+3.9}_{-2.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based population-averaged turbulence crossing time (all apertures, mass-weighted)",
+   "value": "13.1",
+   "uncertainty": "+6.6/-3.0",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$\\bar{t}_\\mathrm{cr,\\,obj}$ \\[Myr\\] | $15.6^{+7.1}_{-4.2}$ | $16.1^{+7.0}_{-4.1}$ | $14.0^{+7.3}_{-4.1}$ | $13.1^{+6.6}_{-3.0}$ | $13.8^{+6.8}_{-2.9}$ | $11.5^{+5.4}_{-2.0}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Shearing timescale (all apertures, mass-weighted)",
+   "value": "54",
+   "uncertainty": "+24/-20",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$t_\\mathrm{shear}$ \\[Myr\\] | $59^{+25}_{-19}$ | $62^{+23}_{-19}$ | $52^{+32}_{-23}$ | $54^{+24}_{-20}$ | $57^{+22}_{-16}$ | $44^{+29}_{-20}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital timescale (all apertures, mass-weighted)",
+   "value": "140",
+   "uncertainty": "+60/-60",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$t_\\mathrm{orb}$ \\[Myr\\] | $160^{+70}_{-60}$ | $170^{+70}_{-50}$ | $120^{+70}_{-50}$ | $140^{+60}_{-60}$ | $160^{+60}_{-60}$ | $100^{+60}_{-30}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Object-based cloud-cloud collision timescale (all apertures, mass-weighted)",
+   "value": "62",
+   "uncertainty": "+71/-32",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$\\bar{t}_\\mathrm{coll,\\,obj}$ \\[Myr\\] | $74^{+101}_{-37}$ | $85^{+99}_{-45}$ | $57^{+64}_{-31}$ | $62^{+71}_{-32}$ | $73^{+74}_{-38}$ | $45^{+37}_{-24}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas depletion time in timescale sample (all apertures, mass-weighted)",
+   "value": "1.9",
+   "uncertainty": "+0.9/-0.6",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$t_\\mathrm{dep,\\,mol}$ \\[Gyr\\] | $1.8^{+0.9}_{-0.6}$ | $1.7^{+0.8}_{-0.5}$ | $1.9^{+1.0}_{-1.0}$ | $1.9^{+0.9}_{-0.6}$ | $1.8^{+0.8}_{-0.6}$ | $2.0^{+1.0}_{-0.9}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMA calibration and imaging parameters (CASA version, weighting, cleaning thresholds, feathering details) which are deferred to Leroy et al. (2021b)",
+  "Exact CPROPS segmentation and deconvolution parameters which are deferred to Rosolowsky et al. (2021) and Hughes et al. (in prep)",
+  "Details of the universal rotation curve functional fitting in Nofech et al. (in prep)"
+ ],
+ "missing_for_reproduction": [
+  "Access to the unpublished intermediate inputs (e.g., Nofech et al. in prep rotation curve functional fits, Sardone et al. in prep PHANGS-VLA HI maps, Chiang et al. in prep EveryTHINGS HI maps, Razza et al. in prep PHANGS-Halpha maps, Hughes et al. in prep v4 CPROPS catalogs) if attempting to rebuild the MegaTable from raw maps/catalogs rather than starting from the published MegaTable."
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "The paper provides complete, explicit mathematical equations for every derived quantity, correction factor, and statistical model, releases the open-source MegaTable v3.0 code on GitHub/Zenodo, and publishes the full machine-readable tables on CANFAR. Reproduction of all statistical distributions, correlations, Lasso/BIC models, and timescale analyses from the published tables is completely straightforward; only rebuilding the table from scratch is slightly limited by a few 'in prep' ancillary maps/catalogs.",
+ "rediscovery_reason": "The complete multiwavelength aperture database is publicly archived, the analysis pipeline and formulas (completeness corrections, inclination corrections, Spearman correlations, LassoLarsIC variable selection, and timescale derivations) are fully specified, and all key results are quantitative and tabulated.",
+ "source_card": "cards/2022AJ....164...43S/sonnet/card.md"
+}

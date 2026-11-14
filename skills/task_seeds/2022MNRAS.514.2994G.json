@@ -1,0 +1,299 @@
+{
+ "bibcode": "2022MNRAS.514.2994G",
+ "title": "Low levels of sulphur dioxide contamination of Venusian phosphine spectra",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1438",
+ "arxiv_id": "2108.08393",
+ "fields": [
+  "solar_system",
+  "astrochemistry"
+ ],
+ "question": "Could the 1.1 mm absorption features in Venus' atmosphere attributed to phosphine (PH3) be due to sulphur dioxide (SO2) absorption instead, and what is the level of SO2 contamination?",
+ "alma_project_codes": [
+  "2019.A.00023.S",
+  "2018.A.00023.S"
+ ],
+ "data": {
+  "bands": "1.1 mm",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Temperature-pressure profile of the Venus International Reference Atmosphere (VIRA) and altitude and diffusion profiles",
+    "evidence": [
+     {
+      "loc": "3 MODELLING",
+      "quote": "The model uses the temperature-pressure profile of the Venus International Reference Atmosphere (VIRA), with details of the altitude and diffusion profiles listed in Greaves et al. (2020)."
+     }
+    ]
+   },
+   "citation": "Greaves et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Mean-estimate of SO2 pressure-broadening coefficient of 0.18 cm^-1/atm and Case D SO2 abundance profile",
+    "evidence": [
+     {
+      "loc": "3 MODELLING",
+      "quote": "We adopt as pressure-broadening coefficient the mean-estimate of 0.18 cm −1 /atm from Lincowski et al. (2021)."
+     },
+     {
+      "loc": "5.2 Abundances",
+      "quote": "We adapted our simple radiative-transfer code for the SO 2 19(1,19)-18(0,18) transition to use the Case D abundance-profile from Lincowski et al. (2021; we made an empirical fit to the curve in their Figure 1b)."
+     }
+    ]
+   },
+   "citation": "Lincowski et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "SO2 line-strengths via the HITRAN database",
+    "evidence": [
+     {
+      "loc": "3 MODELLING",
+      "quote": "The SO 2 line-strengths are from Underwood et al. (2016, via the HITRAN database), but our code now additionally 4 scales line-strengths for temperature as a function of altitude, as described in Appendix A."
+     }
+    ]
+   },
+   "citation": "Underwood et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Minimum height (60 km) where absorption against the continuum can occur at 346.6 GHz",
+    "evidence": [
+     {
+      "loc": "5.2 Abundances",
+      "quote": "The minimum height where absorption against the continuum can occur at this frequency was taken to be 60 km (Piccialli et al. 2017)."
+     }
+    ]
+   },
+   "citation": "Piccialli et al. (2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-process ALMA datacubes and extract PH3 and SO2 spectra",
+   "method": "Exclude baselines <33m, subtract image-plane polynomial fits (6th-order for narrowband PH3, 3rd-order for wideband SO2), extract spectra from a 97x37 pixel box (49% of disc), divide by similarly-processed continuum signal from the same area, and for wideband SO2 subtract a template line-free spectrum shifted by +145 km/s to suppress quasi-periodic ripple.",
+   "software": [],
+   "key_parameters": [
+    "baselines 33-314m; box size 97x37 pixels (0.16 arcsec/pixel, covering 49% of disc, latitudes <= 40 deg); 6th-order fit (narrowband) and 3rd-order fit (wideband); template shift +145 km/s"
+   ],
+   "assumptions": [
+    "Line and continuum sources are similarly spatially distributed; 22% of continuum survives spatial filtering"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce archival JCMT HARP SO2 spectra",
+   "method": "Download raw archival spectra from HARP, create one-(x,y)-pixel datacubes with makecube in SMURF, manually correct for Venus-Earth velocity-differences in SPLAT, and subtract a 4th-order polynomial trendline fitted outside the line region.",
+   "software": [
+    "SMURF",
+    "SPLAT"
+   ],
+   "key_parameters": [
+    "0.98 MHz spectral resolution; 14 arcsec beam; 4th-order polynomial baseline"
+   ],
+   "assumptions": [
+    "Planet-centre spectrum represents net planetary SO2"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model SO2 line profiles and quantify SO2 contamination of PH3 1-0 spectra",
+   "method": "Calculate 1D semi-analytical pencil-beam radiative transfer models of SO2 transitions from z = 0 to 115 km with temperature-scaled HITRAN line strengths, subtract quadratic baselines from models to match data processing, compare to observed ALMA SO2 13(3,11)-13(2,12) and JCMT SO2 19(1,19)-18(0,18) spectra to constrain SO2 abundance, and predict contaminating SO2 30(9,21)-31(8,24) absorption at the PH3 1-0 frequency.",
+   "software": [
+    "Python3",
+    "J13.py"
+   ],
+   "key_parameters": [
+    "z = 0 to 115 km; pressure-broadening coefficient gamma = 0.18 cm^-1/atm; T0 = 300 K; 1.1 mm continuum altitude = 56 km (60 km at 346.6 GHz); ALMA upper limit model: 3 ppb SO2 at >= 80 km (quadratic subtracted outside +/-10 km/s); JCMT models: 20 ppb at >= 75 km and 25 ppb at >= 80 km (quadratic subtracted over +/-8 km/s)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE); constant representative SO2 abundance above a minimum altitude (or Case D profile for comparison); VIRA temperature-pressure profile; neglect scattering, beam convolution, and limb darkening"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SO2 contamination of ALMA 2019 PH3 1-0 spectrum",
+   "value": "<2",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We also present ALMA 2019 spectra of PH 3 1-0 and an SO 2 transition acquired simultaneously, and infer that SO 2 line-contamination was ≲2% (for the least-noisy half of the planetary disc)."
+    },
+    {
+     "loc": "4.1 ALMA 2019 data",
+     "quote": "Comparing this model to the PH 3 1-0 observation, the SO 2 contamination is <2%, when integrated over ±10 km/s (Figure 3b)."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 contamination of JCMT 2017 PH3 1-0 spectrum",
+   "value": "9-11",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We retrieve a sulphur dioxide observation from the JCMT archive that was simultaneous within a few days of the PH 3 1-0 spectrum obtained in June 2017, and demonstrate via a radiative transfer calculation that contamination of PH 3 by SO 2 was ≈10%."
+    },
+    {
+     "loc": "4.2 JCMT 2017 data",
+     "quote": "The model signal, over ±8 km/s, is only 9-11% of the total absorption seen in the PH 3 1-0 observation."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 2019 PH3 1-0 detection significance (integrated over +/-6 km/s)",
+   "value": "7.7",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 ALMA 2019 data",
+     "quote": "This spectrum has 7.7 sigma confidence when line-integrated over ±6 km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 2019 PH3 1-0 line centroid velocity",
+   "value": "-0.2",
+   "uncertainty": "0.5",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 ALMA 2019 data",
+     "quote": "The line-centroid is at -0.2 ± 0.5 km/s in the Venus-centric PH 3 1-0 reference-frame, fully in agreement with zero as expected if the absorption is dominated by phosphine."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 2019 mesospheric SO2 abundance upper limit (at altitudes >= 80 km)",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "ppb",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 ALMA 2019 data",
+     "quote": "The overlaid grey curve employs 3 ppb of SO 2 at altitudes ≥80 km, to demonstrate that mesospheric sulphur dioxide at greater abundances would likely have been detected (at ≥3-sigma at line-minimum)."
+    },
+    {
+     "loc": "5.2 Abundances",
+     "quote": "Our ≲3 ppb ALMA SO 2 upper-limit from March 2019 lies in the lowest decile of their abundance table, but with correction for spatial-filtering the limit could be higher."
+    }
+   ]
+  },
+  {
+   "quantity": "JCMT 2017 SO2 19(1,19)-18(0,18) line-to-continuum ratio at line minimum (26, 17, and 6 days before PH3 midpoint)",
+   "value": "-0.0043, -0.0029, -0.0044",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 JCMT 2017 data",
+     "quote": "The SO 2 line-continuum ratios were found to be similar, at -0.0043, -0.0029 and -0.0044 at line-minimum respectively, suggesting an SO 2 abundance variation of ∼±20% about the mean."
+    }
+   ]
+  },
+  {
+   "quantity": "JCMT 2017 representative SO2 abundance",
+   "value": "20-25",
+   "uncertainty": "not stated",
+   "units": "ppb",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 JCMT 2017 data",
+     "quote": "The former model is for 20 ppb of SO 2 at ≥75 km and the latter for 25 ppb at ≥80 km."
+    },
+    {
+     "loc": "5.2 Abundances",
+     "quote": "Our 20-25 ppb of SO 2 from JCMT in June 2017 is near the mean, ≈23 ppb, in the Sandor et al. tabulation."
+    }
+   ]
+  },
+  {
+   "quantity": "JCMT 2017 PH3 1-0 detection significance (before and after removing 10% SO2 contamination)",
+   "value": "6.7 (6.0 after removing contamination)",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 JCMT 2017 data",
+     "quote": "The PH 3 1-0 detection shown has 6.7-sigma confidence when integrated over ±8 km/s."
+    },
+    {
+     "loc": "5.1 Contamination",
+     "quote": "The JCMT spectrum has 6.7 sigma confidence, so is at ≈6.0 sigma after removing 10% contamination."
+    }
+   ]
+  },
+  {
+   "quantity": "Contamination-subtracted PH3 1-0 line-to-continuum minimum (ALMA 2019)",
+   "value": "-1.7e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "5.2 Abundances",
+     "quote": "After subtracting contamination and adopting uniform ≈3.5 km/s spectral binning, the line-minimum for JCMT is -2.1e-4 and for ALMA it is -1.7e-4, i.e. a variation of ∼10% around the mean."
+    }
+   ]
+  },
+  {
+   "quantity": "Contamination-subtracted PH3 1-0 line-to-continuum minimum (JCMT 2017)",
+   "value": "-2.1e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.2 Abundances",
+     "quote": "After subtracting contamination and adopting uniform ≈3.5 km/s spectral binning, the line-minimum for JCMT is -2.1e-4 and for ALMA it is -1.7e-4, i.e. a variation of ∼10% around the mean."
+    }
+   ]
+  },
+  {
+   "quantity": "Span of contamination-subtracted PH3 1-0 line-to-continuum absorption depth across epochs",
+   "value": "-1.9e-4",
+   "uncertainty": "0.2e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The two values span -1.9(±0.2) 10 −4 of the continuum signal (which was re-estimated for ALMA), albeit for differing planetary areas."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and specific imaging parameters (e.g., tclean weighting, robust parameter, masking, deconvolver) used in the Greaves et al. (2021a) scripts",
+  "Exact synthesized beam dimensions for the ALMA cubes",
+  "Exact height increment (Delta z) used in the 1D radiative transfer integration"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel coordinates (centre RA/Dec or Venus-centric coordinates) of the 97x37 pixel extraction box in the ALMA datacube",
+  "Exact velocity range and width of the -145 km/s template region used for ripple subtraction in the ALMA wideband SO2 spectrum",
+  "Specific Zenodo DOI/record URL for the processed spectra"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "Raw and re-calibrated ALMA and JCMT data are public, the 1D radiative transfer code is linked directly (with equations fully specified in Appendix A), and the ALMA reduction scripts are available in Greaves et al. (2021a); only minor box-placement and template-window specifics would need to be inferred or retrieved from the companion scripts.",
+ "rediscovery_reason": "Public archival ALMA and JCMT data, released radiative transfer Python code and reduction scripts, and clear numeric answer keys (line depths, detection significances, centroid velocities, and percentage SO2 contamination).",
+ "source_card": "cards/2022MNRAS.514.2994G/sonnet/card.md"
+}

@@ -1,0 +1,188 @@
+{
+ "bibcode": "2015ApJ...800L..14C",
+ "title": "Ethyl Cyanide On Titan: Spectroscopic Detection and Mapping Using Alma",
+ "year": 2015,
+ "doi": "10.1088/2041-8205/800/1/L14",
+ "arxiv_id": "1410.5325",
+ "fields": [
+  "solar_system",
+  "astrochemistry"
+ ],
+ "question": "Is gas-phase ethyl cyanide (C2H5CN) present in Titan's atmosphere, and what are its vertical and spatial distributions compared with HC3N, CH3CN and CH3CCH?",
+ "alma_project_codes": [
+  "2011.0.00319.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "twenty 12-m antennae",
+  "angular_resolution": "0.85'' x 0.67'' at 223.5 GHz",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Titan temperature profile from Cassini CIRS and HASI",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The atmospheric temperature profile was generated from a combination of Cassini CIRS and HASI measurements"
+     }
+    ]
+   },
+   "citation": "(cite: fla05; ful05)"
+  },
+  {
+   "what": {
+    "value": "Line parameters and partition functions from JPL catalog",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Spectral line parameters and partition functions were taken from the JPL catalog."
+     }
+    ]
+   },
+   "citation": "JPL catalog"
+  },
+  {
+   "what": {
+    "value": "Butler-JPL-Horizons 2010 Titan flux model",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "scaled to match the Butler-JPL-Horizons 2010 Titan flux model (see ALMA Memo #594)"
+     }
+    ]
+   },
+   "citation": "ALMA Memo #594"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate, subtract continuum and image",
+   "method": "Archive-calibrated data flux-scaled to Titan model, uvcontsub, clean per channel, Doppler-shift to Titan rest frame",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "extract disk-integrated spectra and identify lines",
+   "method": "Integrate cubes in circular region radius 1.1''; assign with Splatalogue, CDMS, JPL",
+   "software": [
+    "Splatalogue"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "make integrated-line emission maps",
+   "method": "Sum strongest lines per species (six C2H5CN lines 223.9-224.1 GHz) and overlay on continuum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "retrieve C2H5CN vertical profile",
+   "method": "Line-by-line radiative transfer least-squares fits of step and gradient abundance profiles to 223.9-224.2 GHz lines",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [
+    "step z_c 100-400 km; gradient model reference altitude 292 km, slope as fraction of scale height"
+   ],
+   "assumptions": [
+    "Profiles do not vary with latitude/longitude; Lorentzian half-width 0.075 cm-1 atm-1 at 296 K, exponent 0.50; model atmosphere to 1000 km"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "C2H5CN abundance at 292 km (gradient model)",
+   "value": "1.3",
+   "uncertainty": "0.4",
+   "units": "ppb",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The best-fitting abundance at $z_r$ was found to be $1.3 \\pm 0.4$ ppb"
+    }
+   ]
+  },
+  {
+   "quantity": "fractional scale height f_H",
+   "value": "4.6",
+   "uncertainty": "1.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with a retrieved fractional scale height of $f_H = 4.6 \\pm 1.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Vertical column density, gradient model",
+   "value": "3.6e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Gradient      |      1.30       |      292       |   0.97   | $3.6\\times10^{14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density range for good-fit models",
+   "value": "(1-5)e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The models that fit the data well have values in the range $(1-5)\\times10^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak S/N of maps C2H5CN, HC3N, CH3CN, CH3CCH",
+   "value": "15, 40, 17, 29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "C$_2$H$_5$CN: 15, HC$_3$N: 40, CH$_3$CN: 17, CH$_3$CCH: 29."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "uvcontsub line-free channels and fit order",
+  "clean mask and iterations",
+  "Titan-frame velocity handling details",
+  "Specific aerosol and isotopologue abundance values",
+  "Noise estimation for fit uncertainties and the 3 sigma line detection",
+  "Exact lines summed for the C2H5CN map",
+  "Fitting algorithm details within NEMESIS"
+ ],
+ "missing_for_reproduction": [
+  "Atmospheric abundance profiles for aerosols/isotopologues",
+  "uvcontsub channel selection",
+  "NEMESIS configuration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archival data and a clear description of imaging, but retrieval inputs and several settings are not given.",
+ "rediscovery_reason": "Public data, a mostly specified recipe and numeric results (column densities and abundances).",
+ "source_card": "cards/2015ApJ...800L..14C/sonnet/card.md"
+}

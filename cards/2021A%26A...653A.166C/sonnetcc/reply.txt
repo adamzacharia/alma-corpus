@@ -1,0 +1,317 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Observations of C$^{17}$O (1-0), C$^{18}$O (1-0) and $^{12}$CO (2-1) transitions are presented and the spectral profiles are analyzed at envelope radii between 100 and 860 au."},
+{"loc": "Observations and data reduction", "quote": "Observations of the Class 0 protostellar object B335 were carried out with the ALMA interferometer during the cycle 4 observation period"}
+],
+"fields": ["star_formation"],
+"question": {"value": "Investigate the molecular line velocity profiles of the Class 0 protostar B335 and constrain the infall motions in its circumstellar gas, in particular the origin of double-peaked C17O profiles", "evidence": [
+{"loc": "abstract", "quote": "This work aims at investigating the molecular line velocity profiles of the Class 0 protostellar object B335 and attempts to put constraints on the infall motions happening in the circumstellar gas of the object."}
+]},
+"targets": [
+{"name": "B335", "details": [
+{"loc": "Observations and data reduction", "quote": "$\\alpha =$ 19:37:00.9 and $\\delta =$ +07:34:09.6 in J2000 coordinates"},
+{"loc": "Introduction", "quote": "is located at a distance of 164.5 pc, (cite: Watson2020)"}
+], "coordinates": "alpha = 19:37:00.9, delta = +07:34:09.6 (J2000), dust continuum peak", "redshift_or_distance": "164.5 pc", "distance_source": "Watson 2020 (cite: Watson2020)"}
+],
+"alma_project_codes": [
+{"code": "2016.1.01552.S", "evidence": [
+{"loc": "Observations and data reduction", "quote": "as part of the project 2016.1.01552.S (PI. A. Maury)"}
+]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "Rest frequencies: 12CO (2-1) 230.53 GHz, C17O (1-0) 112.359 GHz, C18O (1-0) 109.782 GHz; image spectral resolution 0.20 km/s", "evidence": [
+{"loc": "Table 1", "quote": "| Rest Frequency (GHz) | 230.53 | 112.359 | 109.782 |"},
+{"loc": "Linewidths and kinetic temperature", "quote": "because of the limited spectral resolution (0.2 km s$^{-1}$)"}
+]},
+{"field": "configurations", "value": "C17O and C18O: C40-2 and C40-5 (only C40-2 used for maps); 12CO: C40-1 and C40-4 (combined)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "C$^{17}$O (1-0) and C$^{18}$O (1-0) were targeted using two configurations, C40-2 and C40-5, and $^{12}$CO (2-1) was targeted using C40-1 and C40-4."},
+{"loc": "Observations and data reduction", "quote": "The C$^{17}$O emission was only detected in the most compact configuration (C40-2), therefore only this configuration has been used to produce C$^{17}$O and C$^{18}$O maps"}
+]},
+{"field": "angular_resolution", "value": "Beam 2.6 x 1.9 arcsec (C17O, 12CO after smoothing), 2.7 x 2.0 arcsec (C18O)", "evidence": [
+{"loc": "Table 1", "quote": "| Beam major (arcsec) | 2.6 | 2.6 | 2.7 |"},
+{"loc": "Table 1", "quote": "| Beam minor (arcsec) | 1.9 | 1.9 | 2.0 |"}
+]},
+{"field": "max_recoverable_scale", "value": "LRS = 10.6 arcsec (12CO), 21.9 (C17O), 22.4 (C18O)", "evidence": [
+{"loc": "Table 1", "quote": "| 10.6 | 21.9 | 22.4 |"}
+]},
+{"field": "sensitivity", "value": "RMS 10.0 mJy/beam (C17O), 10.7 mJy/beam (C18O), 2016.9 (12CO, as printed)", "evidence": [
+{"loc": "Table 1", "quote": "| RMS (mJy/beam) | 2016.9 | 10.0 | 10.7 |"}
+]},
+{"field": "observing_dates", "value": "Cycle 4, October 2016 to September 2017", "evidence": [
+{"loc": "Observations and data reduction", "quote": "during the cycle 4 observation period from October 2016 to September 2017"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Project 2016.1.01552.S, PI A. Maury (paper does not say archival)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "as part of the project 2016.1.01552.S (PI. A. Maury)"}
+]}
+],
+"lines_targeted": [
+{"species": "C17O", "transition": "J=1-0", "rest_frequency": "112.359 GHz", "evidence": [{"loc": "Table 1", "quote": "| Rest Frequency (GHz) | 230.53 | 112.359 | 109.782 |"}]},
+{"species": "C18O", "transition": "J=1-0", "rest_frequency": "109.782 GHz", "evidence": [{"loc": "Table 1", "quote": "| Rest Frequency (GHz) | 230.53 | 112.359 | 109.782 |"}]},
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "230.53 GHz", "evidence": [{"loc": "Table 1", "quote": "| Rest Frequency (GHz) | 230.53 | 112.359 | 109.782 |"}]}
+],
+"other_facilities": [
+{"name": "Nobeyama 45 m", "provided": {"value": "Single-dish C18O (1-0) data from Saito et al. 1999, used to estimate the flux recovered by ALMA", "evidence": [
+{"loc": "Possible origins of the observed gas motions", "quote": "comparing it with the 45 m Nobeyama data of the same transition presented in (cite: Saito1999)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "H2 peak column density 3.1e22 cm^-2 at 3600 au, used for the opacity estimate", "evidence": [
+{"loc": "Line opacity estimation", "quote": "3.1 $\\times$ 10$^{22}$ cm$^{-2}$ is the peak column density of H$_{2}$ in B335 at a radius of 3600 au ((cite: Launhardt2013))"}
+]}, "citation": "(cite: Launhardt2013)"},
+{"what": {"value": "C17O abundance relative to H2 of 5e-8", "evidence": [
+{"loc": "Line opacity estimation", "quote": "= 5 $\\times$ 10$^{-8}$ is the C$^{17}$O abundance relative to H$_{2}$ abundance ((cite: Thomas2008))"}
+]}, "citation": "(cite: Thomas2008)"},
+{"what": {"value": "Einstein coefficient A10 = 6.695e-8 s^-1 for C17O J=1-0", "evidence": [
+{"loc": "Line opacity estimation", "quote": "is the Einstein coefficient for the C$^{17}$O J = 1–0 transition ((cite: Hitran2017), (cite: Splatalogue2005))"}
+]}, "citation": "(cite: Hitran2017), (cite: Splatalogue2005)"},
+{"what": {"value": "C18O is a factor of 3.6-3.9 more abundant than C17O", "evidence": [
+{"loc": "Intensity ratio", "quote": "C$^{18}$O is a factor of 3.6-3.9 more abundant than C$^{17}$O ((cite: Penzias1981), (cite: Jorgensen2002))"}
+]}, "citation": "(cite: Penzias1981), (cite: Jorgensen2002)"},
+{"what": {"value": "Dust temperature formula for optically thin regime with central heating, adapted to 164.5 pc, used as gas kinetic temperature", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "formula for dust temperature in an optically thin regime assuming only central heating by the B335 protostar derived by (cite: Shirley2011)"},
+{"loc": "Linewidths and kinetic temperature", "quote": "which we adapted to the new distance of 164.5 pc"}
+]}, "citation": "(cite: Shirley2011); (cite: Evans2015)"},
+{"what": {"value": "Central object mass 0.05-0.26 Msun from infall models", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "which are the predicted values from infall models (see (cite: Yen2015b), (cite: Evans2015), Evans et al. in prep.)"}
+]}, "citation": "(cite: Yen2015b), (cite: Evans2015), Evans et al. in prep."},
+{"what": {"value": "B335 continuum centroid position taken from high resolution maps", "evidence": [
+{"loc": "Observations and data reduction", "quote": "corresponding to the peak of dust continuum obtained from high resolution maps ((cite: Maury2018))"}
+]}, "citation": "(cite: Maury2018)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "standard script for cycle-4 ALMA data", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Calibration of the raw data was done using the standard script for cycle-4 ALMA data using the Common Astronomy Software Applications (CASA) version 5.6.1-8."}
+]},
+{"field": "casa_version", "value": "CASA 5.6.1-8", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Calibration of the raw data was done using the standard script for cycle-4 ALMA data using the Common Astronomy Software Applications (CASA) version 5.6.1-8."}
+]},
+{"field": "archive_products_used_as_is", "value": "Delivered product images used only for a preliminary check; final images made from calibrated visibilities", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Preliminary analysis of the data was done with the product images delivered by ALMA to check if emission was detected and to check the shape of the line profiles."}
+]},
+{"field": "flux_calibrator", "value": "C40-2: J1751+0939; C40-4: J2148+0657; C40-5: J2148+0657", "evidence": [
+{"loc": "Technical details of the ALMA observations", "quote": "| 110.0 | 0.08 | J1751+0939 | J1938+0448 | J1751+0939 |"},
+{"loc": "Technical details of the ALMA observations", "quote": "| 231.0 | 0.09 | J2148+0657 | J1851+0035 | J2148+0657 |"},
+{"loc": "Technical details of the ALMA observations", "quote": "| 110.0 | 0.08 | J2148+0657 | J1938+0448 | J2025+3343 |"}
+]},
+{"field": "self_calibration", "value": "Continuum self-calibrated with CASA; line data calibrated with the continuum self-cal model when possible", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Continuum emission was self-calibrated with CASA. Line emission was calibrated using the self-calibrated model derived from the continuum data when it was possible."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "tCLEAN within CASA", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA"}
+]},
+{"field": "weighting_robust", "value": "Briggs, robust = 2 for C17O and C18O; robust = 1 for 12CO", "evidence": [
+{"loc": "Observations and data reduction", "quote": "using Briggs weighting with robust parameter set to 2 for C$^{17}$O and C$^{18}$O and 1 for $^{12}$CO"}
+]},
+{"field": "array_combination", "value": "C17O/C18O: C40-2 only; 12CO: combination of two configurations", "evidence": [
+{"loc": "Observations and data reduction", "quote": "while $^{12}$CO was detected in both configurations so a combination of the two data sets has been used to produce the maps"}
+]},
+{"field": "smoothing", "value": "12CO maps smoothed to the angular resolution of C17O and C18O", "evidence": [
+{"loc": "Observations and data reduction", "quote": "After imaging, $^{12}$CO maps were smoothed to reach the same angular resolution as C$^{17}$O and C$^{18}$O."}
+]},
+{"field": "final_beam", "value": "2.6 x 1.9 arcsec (C17O), 2.7 x 2.0 arcsec (C18O), 2.6 x 1.9 arcsec (12CO)", "evidence": [
+{"loc": "Table 1", "quote": "| Beam major (arcsec) | 2.6 | 2.6 | 2.7 |"},
+{"loc": "Table 1", "quote": "| Beam minor (arcsec) | 1.9 | 1.9 | 2.0 |"}
+]},
+{"field": "final_rms", "value": "10.0 mJy/beam (C17O), 10.7 mJy/beam (C18O), 2016.9 (12CO, as printed)", "evidence": [
+{"loc": "Table 1", "quote": "| RMS (mJy/beam) | 2016.9 | 10.0 | 10.7 |"}
+]}
+],
+"inherited": [
+{"what": {"value": "Calibration done with the standard ALMA cycle-4 script", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Calibration of the raw data was done using the standard script for cycle-4 ALMA data"}
+]}, "from_reference": "standard script for cycle-4 ALMA data (no citation)"},
+{"what": {"value": "Largest recoverable scale definition", "evidence": [
+{"loc": "Table 1", "quote": "is the minimum baseline of the configuration, in m ((cite: ALMAc4))"}
+]}, "from_reference": "(cite: ALMAc4)"},
+{"what": {"value": "Opacity estimated from H2 column density and a standard C17O abundance", "evidence": [
+{"loc": "Line opacity estimation", "quote": "The maximum opacity at the center of the source has been estimated from the H$_{2}$ column density and assuming a standard C$^{17}$O abundance"}
+]}, "from_reference": "(cite: Jansen1995)"},
+{"what": {"value": "Envelope mass from integrated 110 GHz continuum with standard assumptions", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "and using standard assumptions (see Eq. 4 in (cite: Jorgensen2007))"}
+]}, "from_reference": "Eq. 4 in (cite: Jorgensen2007)"},
+{"what": {"value": "Hyperfine-structure line fitting with the HfS program", "evidence": [
+{"loc": "Modeling of the molecular line profiles", "quote": "The spectrum at each pixel has been modeled using a program that allows to fit the hyperfine structure of spectral lines with multiple velocity components"}
+]}, "from_reference": "(cite: Estalella2017)"},
+{"what": {"value": "Central object mass range and infall rate taken from infall models, partly in prep.", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "which are the predicted values from infall models (see (cite: Yen2015b), (cite: Evans2015), Evans et al. in prep.)"}
+]}, "from_reference": "(cite: Yen2015b), (cite: Evans2015), Evans et al. in prep."}
+],
+"unstated_but_needed": [
+"Self-calibration parameters (continuum channels/spws, solints, number of iterations, solution mode)",
+"How the continuum was formed and which channels were line-free; how continuum was subtracted from line cubes (task, order)",
+"tclean parameters: deconvolver, niter, threshold, masks, cell size, image size, primary-beam correction, spectral gridding",
+"Smoothing kernel and method used to match 12CO to the C17O/C18O beam, and how beam-matched C17O/C18O maps were made",
+"12CO RMS of 2016.9 mJy/beam looks like a unit error; true value not given",
+"Initial guesses, hyperfine component setup and rest frequencies/relative intensities used in HfS, and how the 3 sigma threshold was applied per pixel",
+"Dust opacity, dust temperature and gas-to-dust ratio behind the 'standard assumptions' for envelope mass within 100 and 860 au",
+"Exact regions and apertures used for averaged linewidths, opacities and the missing flux comparison; how the 860 au 3 sigma radius was measured",
+"Which execution blocks and how many were combined for each configuration, and calibration flux scale uncertainty"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Calibrate, self-calibrate and image the lines", "method": {"value": "Standard cycle-4 calibration in CASA, continuum self-calibration, tCLEAN imaging with Briggs weighting, 12CO smoothed to the C17O/C18O resolution", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Calibration of the raw data was done using the standard script for cycle-4 ALMA data using the Common Astronomy Software Applications (CASA) version 5.6.1-8."},
+{"loc": "Observations and data reduction", "quote": "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA"}
+]}, "software": ["CASA", "tclean"], "key_parameters": [
+{"value": "Briggs robust = 2 for C17O and C18O, robust = 1 for 12CO", "evidence": [{"loc": "Observations and data reduction", "quote": "using Briggs weighting with robust parameter set to 2 for C$^{17}$O and C$^{18}$O and 1 for $^{12}$CO"}]},
+{"value": "C17O/C18O maps from C40-2 only; 12CO from two configurations combined", "evidence": [{"loc": "Observations and data reduction", "quote": "The C$^{17}$O emission was only detected in the most compact configuration (C40-2), therefore only this configuration has been used to produce C$^{17}$O and C$^{18}$O maps"}]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Moment maps and per-pixel spectra", "method": {"value": "Moment 0 maps of C17O and 12CO; C17O spectra extracted at every 0.5 arcsec pixel to build a spectral map", "evidence": [
+{"loc": "Results and analysis", "quote": "the C$^{17}$O spectra were taken at every 0.5$''$ pixel of the emission cube, producing a spectral map"}
+]}, "software": [], "key_parameters": [
+{"value": "Mean radius of 3 sigma C17O emission is 860 au", "evidence": [{"loc": "Results and analysis", "quote": "The mean radius of the 3$\\sigma$ emission is 860 au, indicating that it traces the dense envelope."}]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Interferometric filtering of a dip discarded because emission size is of the order of the largest recoverable scale; 12CO moment 0 used to check C17O is not outflow", "evidence": [
+{"loc": "Results and analysis", "quote": "The possibility of the dip being caused by interferometric filtering is discarded since the recovered emission size is of the order of the Largest Recoverable Scale"}
+]}},
+{"order": 3, "goal": "Estimate maximum C17O line opacity from column density", "method": {"value": "Opacity tau0 from A10, nu, peak H2 column density, C17O abundance and linewidth (Jansen 1995 formula)", "evidence": [
+{"loc": "Line opacity estimation", "quote": "The maximum opacity at the center of the source has been estimated from the H$_{2}$ column density and assuming a standard C$^{17}$O abundance"}
+]}, "software": [], "key_parameters": [
+{"value": "Delta V approx 1 km/s average linewidth of the two components together", "evidence": [{"loc": "Line opacity estimation", "quote": "$\\Delta V$ $\\approx$ 1 kms$^{-1}$ is the average observed linewidth for the two components together"}]}
+], "assumptions": [
+{"value": "H2 column density 3.1e22 cm^-2 (peak at 3600 au) and C17O abundance 5e-8", "evidence": [
+{"loc": "Line opacity estimation", "quote": "3.1 $\\times$ 10$^{22}$ cm$^{-2}$ is the peak column density of H$_{2}$ in B335 at a radius of 3600 au ((cite: Launhardt2013))"},
+{"loc": "Line opacity estimation", "quote": "= 5 $\\times$ 10$^{-8}$ is the C$^{17}$O abundance relative to H$_{2}$ abundance ((cite: Thomas2008))"}
+]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 4, "goal": "Compare C17O and C18O integrated intensities", "method": {"value": "Beam-matched C17O and C18O maps; ratio of integrated intensities W(C17O)/W(C18O) compared with the optically thin expectation from abundances", "evidence": [
+{"loc": "Intensity ratio", "quote": "We produced beam-matching maps for C$^{17}$O and C$^{18}$O to compare the gas at similar scales in both isotopes."},
+{"loc": "Intensity ratio", "quote": "where W$_{i}$ is the integrated intensity of each C$^{17}$O and C$^{18}$O individual spectra"}
+]}, "software": [], "key_parameters": [
+{"value": "Integration ranges: C17O 4.8-6.2 and 7.4-9.4 km/s (two hyperfine components); C18O 7.4-9.4 km/s", "evidence": [{"loc": "Intensity ratio", "quote": "Intensities are integrated over the two velocity ranges of 4.8-6.2 km s$^{-1}$ and 7.4-9.4 km s$^{-1}$ for C$^{17}$O"}]}
+], "assumptions": [
+{"value": "C17O and C18O probe similar conditions; differences arise only from opacity; no fractionation or selective photodissociation", "evidence": [{"loc": "Intensity ratio", "quote": "Thus, the only difference in the emission from these two isotopes should result from opacity effects"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Observed ratio agrees with the expected optically thin ratio and no increase toward the center", "evidence": [
+{"loc": "Intensity ratio", "quote": "Our observations are therefore in general agreement with the expected ratio if both transitions are optically thin."}
+]}},
+{"order": 5, "goal": "Fit two-component hyperfine model to C17O spectra", "method": {"value": "HfS fit per pixel with two velocity components (blue and red), giving velocity, linewidth and opacity maps", "evidence": [
+{"loc": "Modeling of the molecular line profiles", "quote": "it was attempted to model the double-peaked profiles with two velocity components, one blue- and another red-shifted"}
+]}, "software": ["HfS"], "key_parameters": [
+{"value": "Per component, four free parameters: linewidth (shared by hyperfine components), main line central velocity, main line peak intensity, optical depth", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "fits simultaneously four independent parameters: the linewidth assumed to be the same for each hyperfine component; the main line central velocity; the main line peak intensity and the optical depth"}]},
+{"value": "Minimum signal-to-noise of 3 sigma for fitting", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "the program is allowed to proceed to fit emission with a minimum signal-to-noise ratio of 3$\\sigma$"}]}
+], "assumptions": [
+{"value": "C17O (1-0) expected to be optically thin", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "Because the C$^{17}$O (1-0) emission is expected to be optically thin"}]}
+], "fitting": {"value": "Parameter space sampled to minimise chi^2 of the residual; no priors stated", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "The fitting procedure samples the space parameters to find the minimum value of the fit residual $\\chi^{2}$."}]}, "validation": {"value": "Fitted opacities compared with the earlier upper limit", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "which is in concordance with the upper limit estimated before"}]}},
+{"order": 6, "goal": "Kinetic temperature, thermal and non-thermal linewidths", "method": {"value": "Tk(r) from a central-heating temperature profile at 100 and 860 au; thermal linewidth for C17O (29.01 amu); non-thermal part from v_obs^2 = v_th^2 + v_nonth^2", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "The gas kinetic temperature was computed for the two radii probed"},
+{"loc": "Linewidths and kinetic temperature", "quote": "The non-thermal contribution of the line has been computed for both velocity components"}
+]}, "software": [], "key_parameters": [
+{"value": "Radii 100 au (about half the FWHM beam) to 860 au", "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "A region enclosing radii from 100 (about half of the FWHM beam) to 860 au has been chosen to analyze the gas kinematics."}]}
+], "assumptions": [
+{"value": "Dust and gas in thermal equilibrium, coupled by collisions at densities above 1e5 cm^-3", "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "The underlying assumption is that dust and gas are expected to be in thermal equilibrium, being coupled via collisions at the densities probed here"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 7, "goal": "Estimate free-fall velocity difference between 100 and 860 au", "method": {"value": "Difference of free-fall velocities v_ff(r1) - v_ff(r2) with enclosed mass = envelope mass (from 110 GHz continuum) plus central object mass", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "We can do a rough estimation of the contribution from infall, by measuring the infall velocity difference from two different radii"},
+{"loc": "Linewidths and kinetic temperature", "quote": "To compute the mass we consider that the total mass at different radii is the sum of the mass in the envelope plus the mass of the central object."}
+]}, "software": [], "key_parameters": [
+{"value": "Central object mass 0.05-0.26 Msun adopted from infall models", "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "which are the predicted values from infall models (see (cite: Yen2015b), (cite: Evans2015), Evans et al. in prep.)"}]}
+], "assumptions": [
+{"value": "Maximum velocity difference along the line of sight occurs at the core center; envelope mass uses standard dust assumptions", "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "The maximum velocity difference along the line-of-sight would occur at the core’s center."}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Non-thermal linewidth compared with the free-fall broadening and found to be of the same order", "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "the non-thermal contribution of the linewidth is of the same order as the broadening due to free-fall motions along the line of sight"}]}},
+{"order": 8, "goal": "Estimate flux missed by the interferometer", "method": {"value": "ALMA C18O map smoothed to the Nobeyama 45 m beam, spectrum over one beam, flux converted to brightness temperature (Rayleigh-Jeans) and compared with single-dish data; C17O missing flux then inferred to be smaller", "evidence": [
+{"loc": "Possible origins of the observed gas motions", "quote": "Our C$^{18}$O map was smoothed to match the beam size of the Nobeyama telescope"},
+{"loc": "Possible origins of the observed gas motions", "quote": "transformed the flux density to brightness temperature using the Rayleigh-Jeans law"}
+]}, "software": [], "key_parameters": [], "assumptions": [
+{"value": "C17O is much more compact than C18O so its missing flux is smaller", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "because C$^{17}$O is expected to be much more compact than C$^{18}$O we expect the missing flux to be much less for the former"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Missing flux judged too small to produce the dip and unable to explain the velocity pattern at the systemic velocity", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "it can not explain the structured velocity pattern we observe in the spectral maps"}]}}
+],
+"software": [
+{"name": "CASA", "version": "5.6.1-8", "used_for": {"value": "Calibration, continuum self-calibration and imaging", "evidence": [{"loc": "Observations and data reduction", "quote": "Calibration of the raw data was done using the standard script for cycle-4 ALMA data using the Common Astronomy Software Applications (CASA) version 5.6.1-8."}]}},
+{"name": "tCLEAN", "version": "not stated", "used_for": {"value": "Final imaging of calibrated visibilities", "evidence": [{"loc": "Observations and data reduction", "quote": "Final images of the data were generated from the calibrated visibilities using the tCLEAN algorithm within CASA"}]}},
+{"name": "HfS", "version": "not stated", "used_for": {"value": "Fitting hyperfine structure of C17O with multiple velocity components and deriving opacity", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "The spectrum at each pixel has been modeled using a program that allows to fit the hyperfine structure of spectral lines with multiple velocity components"}]}}
+],
+"results_numeric": [
+{"quantity": "Mean radius of 3 sigma C17O emission", "value": "860", "uncertainty": "not stated", "units": "au", "from_step": 2, "evidence": [{"loc": "Results and analysis", "quote": "The mean radius of the 3$\\sigma$ emission is 860 au"}]},
+{"quantity": "Peak C17O opacity at the source center (column-density estimate)", "value": "0.77", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Line opacity estimation", "quote": "$\\tau_{0}$ = 0.77, which corresponds to an opacity typical from an optically thin line"}]},
+{"quantity": "Integrated intensity ratio W(C17O)/W(C18O): range and mean", "value": "0.15 to 0.50, mean 0.28", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "Intensity ratio", "quote": "with values ranging from 0.15 to 0.50 and a mean value centered at 0.28"}]},
+{"quantity": "Mean average velocity of blue and red components", "value": "8.1 and 8.6", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "The mean average, velocity for the two components are 8.1 and 8.6 km s$^{-1}$ respectively."}]},
+{"quantity": "Mean velocity dispersion of blue and red components", "value": "0.7 and 0.5", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "show a mean velocity dispersion for the two components of 0.7 and 0.5 km s$^{-1}$"}]},
+{"quantity": "Average opacity of blue and red components from HfS", "value": "0.464 and 0.474", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "is found to be $\\tau_{bs}$ = 0.464 and $\\tau_{rs}$ = 0.474, for the blue- and red-shifted components respectively"}]},
+{"quantity": "Gas kinetic temperature at 100 au and 860 au", "value": "46 and 20", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "with values in range of T$_{k}$(100 au) = 46 K and T$_{k}$(860 au) = 20 K"}]},
+{"quantity": "Thermal C17O linewidth at 100 au and 860 au", "value": "0.27 and 0.17", "uncertainty": "not stated", "units": "km/s", "from_step": 6, "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "(100 au) = 0.27 km s$^{-1}$ and"}, {"loc": "Linewidths and kinetic temperature", "quote": "(860 au) = 0.17 km s$^{-1}$"}]},
+{"quantity": "Observed total FWHM, blue and red components", "value": "0.78 and 0.56", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [{"loc": "Table 2", "quote": "| Observed total | 0.78 | 0.56 |"}]},
+{"quantity": "Non-thermal FWHM at 100 au, blue and red components", "value": "0.73 and 0.48", "uncertainty": "not stated", "units": "km/s", "from_step": 6, "evidence": [{"loc": "Table 2", "quote": "| Non-thermal (100au) | 0.73 | 0.48 |"}]},
+{"quantity": "Non-thermal FWHM at 860 au, blue and red components", "value": "0.76 and 0.52", "uncertainty": "not stated", "units": "km/s", "from_step": 6, "evidence": [{"loc": "Table 2", "quote": "| Non-thermal (860au) | 0.76 | 0.52 |"}]},
+{"quantity": "Envelope mass within 860 au and 100 au", "value": "~0.16 and ~0.012", "uncertainty": "not stated", "units": "Msun", "from_step": 7, "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "$\\sim$0.16 $M_\\odot$ and $\\sim$0.012 $M_\\odot$, respectively"}]},
+{"quantity": "Total enclosed mass within 100 au and 860 au", "value": "0.06-0.16 and 0.27-0.41", "uncertainty": "not stated", "units": "Msun", "from_step": 7, "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "the total mass enclosed within a 100 and 860 au radii are in the 0.06–0.16 $M_\\odot$ and 0.27–0.41 $M_\\odot$ ranges, respectively"}]},
+{"quantity": "Free-fall velocity difference between 100 and 860 au", "value": "0.46 - 1.01", "uncertainty": "not stated", "units": "km/s", "from_step": 7, "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "is 0.46 - 1.01 km s$^{-1}$"}]},
+{"quantity": "Peak single-dish-matched C18O main-beam temperature (ALMA smoothed to 16 arcsec)", "value": "0.79", "uncertainty": "0.08", "units": "K", "from_step": 8, "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "= 0.79 $\\pm$ 0.08 K"}]},
+{"quantity": "Fraction of single-dish C18O flux recovered by ALMA", "value": "around 14", "uncertainty": "not stated", "units": "percent", "from_step": 8, "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "This means that our ALMA observations are recovering around 14 $\\%$ of the total flux detected with single-dish data."}]}
+],
+"findings_qualitative": [
+{"value": "C17O (1-0) shows widespread double-peaked profiles; the blue component dominates in the east and the red in the west", "evidence": [{"loc": "Results and analysis", "quote": "the blue component more intense in the Eastern part of the core, while the red component is dominant in the Western part"}]},
+{"value": "C17O is optically thin, so the two peaks are two distinct velocity components rather than self-absorption", "evidence": [{"loc": "abstract", "quote": "The optical depth of the C$^{17}$O emission has been estimated and found to be less than 1"}]},
+{"value": "Non-thermal linewidths are supersonic", "evidence": [{"loc": "Linewidths and kinetic temperature", "quote": "This means that the non-thermal contribution to the linewidth is supersonic."}]},
+{"value": "Infall, possibly anisotropic along outflow cavity walls, is favoured to explain the velocity field", "evidence": [{"loc": "abstract", "quote": "it is suggested that those are produced by non-isotropic accretion from the envelope into the central source along the outflow cavity walls"}]}
+],
+"claims": [
+{"hypothesis": "Are the two C17O velocity peaks caused by optically thick self-absorption?", "experiment": "Three independent opacity estimates: column density, C17O/C18O intensity ratio and HfS hyperfine fitting", "result": "tau0 = 0.77; ratio 0.15-0.50 (mean 0.28) vs expected 0.25; HfS opacities 0.464 and 0.474", "finding": "The emission is optically thin, so the peaks trace two distinct velocity components", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The optical depth of the C$^{17}$O emission has been estimated and found to be less than 1, suggesting that the two velocity peaks trace two distinct velocity components of the gas in the inner envelope."}
+]},
+{"hypothesis": "Could the velocity pattern come from rotation, outflow or interferometric filtering?", "experiment": "Inspect velocity gradients, compare with 12CO and outflow tracers, estimate missing flux against single-dish data", "result": "No clear equatorial velocity gradient; C17O morphology differs from outflow tracers; missing flux cannot explain the structured pattern", "finding": "Rotation, outflow and filtering are discarded as the main origin", "support": "supported", "evidence": [
+{"loc": "Possible origins of the observed gas motions", "quote": "Our observations do not support this hypothesis as they do not show a clear velocity gradient in the equatorial plane where rotation motions would mostly contribute to the observed velocity field."},
+{"loc": "Possible origins of the observed gas motions", "quote": "Therefore, the kinematic pattern observed in our C$^{17}$O maps cannot be produced by outflow alone"}
+]},
+{"hypothesis": "Are the linewidths of the two components compatible with infall?", "experiment": "Compare non-thermal linewidths with the free-fall velocity difference between 100 and 860 au", "result": "Non-thermal FWHM 0.48-0.76 km/s vs free-fall difference 0.46-1.01 km/s", "finding": "The linewidths are of the same order as free-fall broadening, so infall is possible", "support": "partially", "evidence": [
+{"loc": "Linewidths and kinetic temperature", "quote": "the non-thermal contribution of the linewidth is of the same order as the broadening due to free-fall motions along the line of sight: it is hence possible that the observed velocity pattern is due to infall."}
+]},
+{"hypothesis": "Can isotropic inside-out symmetric collapse explain the observed profiles?", "experiment": "Interpret the optically thin double-peaked profiles and the velocity maps along the outflow cavity walls", "result": "Highest velocities lie along the northern cavity walls at reverse velocities relative to the outflow; profiles are not produced by self-absorption", "finding": "Symmetric inside-out collapse cannot explain them; non-isotropic accretion along the cavity walls is suggested", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "Because inside-out symmetric collapse cannot explain those observed profiles, it is suggested that those are produced by non-isotropic accretion from the envelope into the central source along the outflow cavity walls."},
+{"loc": "Possible origins of the observed gas motions", "quote": "trace accreting gas flowing along the outflow cavity walls, onto the central protostar"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "C17O is a rare isotopologue that traces dense envelope gas and is not expected in outflow cavities", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "C$^{17}$O is a rare isotopologue which is known to trace dense envelope gas and is not expected to be detected in more tenuous outflow cavities."}]},
+{"field": "why_this_method", "value": "Because C17O is expected to be optically thin, a two-velocity-component fit was tried instead of a self-absorbed single component", "evidence": [{"loc": "Modeling of the molecular line profiles", "quote": "Because the C$^{17}$O (1-0) emission is expected to be optically thin, it was attempted to model the double-peaked profiles with two velocity components, one blue- and another red-shifted."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Dip caused by interferometric filtering: discarded", "evidence": [{"loc": "Results and analysis", "quote": "The possibility of the dip being caused by interferometric filtering is discarded since the recovered emission size is of the order of the Largest Recoverable Scale"}]},
+{"value": "Organized core rotation: not supported by the data", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "A possible cause for observing blueshifted and redshifted gas motions in protostellar envelopes could be organized core rotation."}]},
+{"value": "Outflow as the origin: cannot produce the pattern alone", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "Therefore, the kinematic pattern observed in our C$^{17}$O maps cannot be produced by outflow alone"}]}
+],
+"limitations_admitted": [
+{"value": "No clear velocity gradient along the cavity walls could be resolved; better spatial resolution needed", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "no clear velocity gradient could be resolved in the current observations: additional observations with better spatial resolution may allow to test further this hypothesis"}]},
+{"value": "Outflow contamination cannot be completely excluded", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "Although some contamination by the gas from the outflow cannot be completely ruled out"}]},
+{"value": "ALMA data may miss flux; only about 14 percent of C18O single-dish flux recovered", "evidence": [{"loc": "Possible origins of the observed gas motions", "quote": "We also note that while our observation might be missing flux"}]},
+{"value": "Origin of C17O line broadening in the north and south-west is unknown", "evidence": [{"loc": "Intensity ratio", "quote": "The origin of this broadening is unknown"}]}
+],
+"referee_caveats_inferred": [
+"Infall interpretation rests on a rough linewidth comparison with large mass uncertainties; no kinematic model is fitted to the cubes",
+"The opacity estimate uses a standard abundance and an H2 column density at 3600 au, not at the resolved radii",
+"Missing flux of about 14 percent for C18O and an extrapolated 30 percent for C17O is not measured directly",
+"Two-component HfS fits are not tested against alternative models such as a single optically thick component with a dip",
+"The 12CO RMS value in Table 1 appears wrong, and image weighting (robust = 2) differs from file names suggesting robust 0.5"
+],
+"reproducibility": [
+{"field": "products_in_archive", "value": "ALMA delivered product images used only for preliminary checks", "evidence": [{"loc": "Observations and data reduction", "quote": "Preliminary analysis of the data was done with the product images delivered by ALMA to check if emission was detected and to check the shape of the line profiles."}]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Self-calibration, continuum definition and continuum subtraction settings",
+"tclean parameters other than robust (masks, thresholds, cell and image size, spectral grid)",
+"HfS initial guesses and per-pixel acceptance criteria",
+"Dust and gas assumptions for the envelope mass; 'Evans et al. in prep.' values",
+"Corrected 12CO RMS and smoothing details"
+],
+"estimated_data_volume_inferred": "About 4 execution blocks (C40-1, C40-2, C40-4, C40-5), likely tens of GB raw and several GB after splitting the line spws",
+"score_inferred": 3,
+"score_reason": "Project code, lines, configurations, robust values and CASA version are given and numbers are clear, but self-calibration, continuum subtraction, clean settings and HfS setup are missing.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Cycle 4 data from project 2016.1.01552.S (public status not stated in the paper but long past the proprietary period); the recipe is short and the main results (opacities, ratio, linewidths) are numeric.",
+"methods_papers": [
+{"citation": "(cite: Estalella2017)", "why": "HfS program for fitting hyperfine structure used for the two-component fits"},
+{"citation": "(cite: Jorgensen2007)", "why": "Equation 4 used for envelope mass from continuum emission"},
+{"citation": "(cite: Shirley2011)", "why": "Dust temperature formula used for gas kinetic temperature"},
+{"citation": "(cite: Jansen1995)", "why": "Opacity formula from column density"}
+],
+"companion_papers": [
+{"citation": "(cite: Maury2018)", "why": "High resolution B335 dust continuum and magnetic field from related ALMA data; continuum peak position"},
+{"citation": "(cite: Evans2015)", "why": "Infall models and temperature profile for B335"},
+{"citation": "(cite: Yen2015b)", "why": "Earlier ALMA C18O observations of B335 and infall modelling"},
+{"citation": "(cite: Saito1999)", "why": "Nobeyama 45 m C18O (1-0) data used for the missing flux estimate"}
+],
+"related_projects_or_surveys": ["2016.1.01552.S (PI A. Maury)"]
+}

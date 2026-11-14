@@ -1,0 +1,1340 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023PASP..135c4501P",
+  "title": "Data Combination: Interferometry and Single-dish Imaging in Radio Astronomy",
+  "year": 2023,
+  "journal": "Publications of the Astronomical Society of the Pacific",
+  "first_author": "Plunkett, Adele",
+  "n_authors": 14,
+  "arxiv_id": "2303.02177",
+  "doi": "10.1088/1538-3873/acb9bd",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00004.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We test each of these methods in the framework of the CASA data analysis software package on both synthetic continuum and observed spectral datasets."
+   }
+  ],
+  "science": {
+   "fields": [
+    "instrumentation",
+    "nearby_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "Skymodel (simulated multi-scale molecular cloud)",
+     "coordinates": {
+      "value": "(RA,Dec) = (12h00m00.0s, -35d00m0.0s)",
+      "evidence": [
+       {
+        "loc": "4.1 Simulated continuum observations",
+        "quote": "The center coordinate of the field was set as (RA,Dec) $=$ (12h00m00.0s, $-35$d00m0.0s)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "M100 (NGC 4321)",
+     "coordinates": {
+      "value": "RA 12h22m54.900s, Dec +15d49m15.000s (phase center)",
+      "evidence": [
+       {
+        "loc": "4.2 Observational, spectrally resolved data",
+        "quote": "The galaxy M100 (NGC 4321) was observed by ALMA as Science Verification"
+       },
+       {
+        "loc": "Table 5",
+        "quote": "12h22m54.900s"
+       },
+       {
+        "loc": "Table 5",
+        "quote": "+15d49m15.000s"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Which interferometer plus single-dish data combination methods recover the true sky flux best, and how can their performance be quantitatively assessed (new A-par, fidelity, power-spectrum and spectrogram diagnostics)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In this work, we provide an overview of the prominent available methods to combine single dish and interferometric observations."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We develop a set of new assessment tools which are generally applicable to all radio-astronomical cases of data combination."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00004.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00004.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "M100: ALMA Band 3 (CO 1-0, 115.271 GHz); Skymodel: simulated at 115 GHz",
+    "evidence": [
+     {
+      "loc": "4.2 Observational, spectrally resolved data",
+      "quote": "(115.271 GHz, ALMA Band 3) molecular emission"
+     },
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "for an observing frequency of 115 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "M100 cube: 50 channels on CO(1-0) plus 10 baseline channels on each side (70 channels total); skymodel covers 2 GHz bandwidth",
+    "evidence": [
+     {
+      "loc": "4.2 Observational, spectrally resolved data",
+      "quote": "On each side of the spectral line, additional 10 channels are included in the cube to show the spectral baseline."
+     },
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "we covered 2 GHz bandwidth"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.271 GHz",
+     "evidence": [
+      {
+       "loc": "4.2 Observational, spectrally resolved data",
+       "quote": "(115.271 GHz, ALMA Band 3) molecular emission"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "M100: ALMA 12m mosaic (47 pointings), 7m mosaic (23 pointings), SD on-the-fly map; Skymodel: simulated 12m, ACA 7m and SD",
+    "evidence": [
+     {
+      "loc": "4.2 Observational, spectrally resolved data",
+      "quote": "Observations were made of a 47 pointing mosaic with the 12m Array, a 23 pointing mosaic with the 7m Array, and an on-the-fly map with the SD array"
+     },
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "we adopted two configurations for 12m array (C-4 and C-1 in cycle 7) along with ACA 7m and SD"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "Skymodel: 12m configurations C-4 and C-1 (cycle 7); M100 configurations not stated",
+    "evidence": [
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "we adopted two configurations for 12m array (C-4 and C-1 in cycle 7) along with ACA 7m and SD"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Skymodel: 1.2'' (interferometer) and 57'' (SD); M100: 12m Array resolution <2''",
+    "evidence": [
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "The achieved beam sizes are 57$''$ for the SD data and 1.2$''$ for the interferometric data."
+     },
+     {
+      "loc": "4.2 Observational, spectrally resolved data",
+      "quote": "down to the 12m Array resolution of $<2\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "For ALMA 12m nominal configurations (43 antennas) the MRS is approximately a factor 10 larger than the achieved angular resolution (general statement)",
+    "evidence": [
+     {
+      "loc": "Footnote 10",
+      "quote": "For the ALMA 12m nominal configurations with 43 antennas, the MRS is approximately a factor 10 larger than the achieved angular resolution."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "Skymodel (simulated): 1040/1020/3549 minutes for 12m/7m/SD; M100 not stated",
+    "evidence": [
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "Consequently, the total integration time to cover the skymodel image with 12m/7m/SD array is 1040/1020/3549 minutes, respectively."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "M100 is ALMA Science Verification data (featured in a CASA Guide)",
+    "evidence": [
+     {
+      "loc": "4.2 Observational, spectrally resolved data",
+      "quote": "The galaxy M100 (NGC 4321) was observed by ALMA as Science Verification"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Skymodel: synthetic multi-scale molecular cloud with power-law power spectrum plus two bright point sources, 4096^2 pixels of 0.05'' (204.8'' per side), observed with simobserve in CASA 5.6.1 for 12m (C-4, C-1), ACA 7m and SD",
+     "evidence": [
+      {
+       "loc": "4.1 Simulated continuum observations",
+       "quote": "An elegant way of achieving this is to emulate a multi-scale molecular cloud with a power spectrum that follows a power law."
+      },
+      {
+       "loc": "4.1 Simulated continuum observations",
+       "quote": "In addition we insert two bright point sources, one in a bright and one in a faint region."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean (mosaic gridder), 100,000 iterations; same parameters for all combination methods; also sdintimaging, feather",
+     "evidence": [
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "To facilitate the comparison among the combination methods, we fix all `tclean` parameters to common values. We set the number of iterations to 100,000."
+      },
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "in this study we deal exclusively with mosaic maps"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "with robust value of 0.5 (i.e. balance between natural and uniform weighting) for all runs of"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "SD image mask (>0.3 x SD image max) plus additional regions from auto-multithresh with standard parameters",
+     "evidence": [
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "The mask is generated by first utilizing the SD image to mask (include) all regions above 0.3 times the max value in the SD image"
+      },
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "using the standard “auto-multithresh” parameters"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "For assessment, combination results are convolved and regridded to the reference image resolution (SD image or simulated model)",
+     "evidence": [
+      {
+       "loc": "5 Assessment metrics",
+       "quote": "is assumed to be the combination result image convolved to the resolution of the reference image"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Skymodel construction follows an earlier procedure",
+      "evidence": [
+       {
+        "loc": "4.1 Simulated continuum observations",
+        "quote": "We follow the procedure described in (cite: koda2019)."
+       }
+      ]
+     },
+     "from_reference": "(cite: koda2019)"
+    },
+    {
+     "what": {
+      "value": "Simulated array configurations taken from the ALMA Technical Handbook",
+      "evidence": [
+       {
+        "loc": "4.1 Simulated continuum observations",
+        "quote": "Following the ALMA Technical Handbook (cite: remijan2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: remijan2019)"
+    },
+    {
+     "what": {
+      "value": "auto-multithresh masking algorithm and its standard parameters",
+      "evidence": [
+       {
+        "loc": "2 Imaging Interferometric Data with CLEAN",
+        "quote": "using the standard “auto-multithresh” parameters"
+       }
+      ]
+     },
+     "from_reference": "(cite: kepley2020)"
+    },
+    {
+     "what": {
+      "value": "SDINT algorithm details (full details and explanatory diagrams)",
+      "evidence": [
+       {
+        "loc": "3.2 Joint Deconvolution: SDINT",
+        "quote": "We refer the reader to (cite: rau2019) for full details and explanatory diagrams"
+       }
+      ]
+     },
+     "from_reference": "(cite: rau2019)"
+    },
+    {
+     "what": {
+      "value": "TP2VIS method described in detail elsewhere",
+      "evidence": [
+       {
+        "loc": "3.4 TP2VIS",
+        "quote": "TP2VIS is roughly structured in four steps, with much more detail on each available in (cite: koda2019):"
+       }
+      ]
+     },
+     "from_reference": "(cite: koda2019)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibration of the M100 Science Verification data (manual vs pipeline, CASA version, flux scale) and which calibrated products/MS were used",
+    "Actual sdfactor / effdishdiam values for Feather and MACF, sdgain and dishdia for SDINT (paper only says 'standard values')",
+    "sdintimaging deconvolver, scales, thresholds, cell size and image size; tclean cell/imsize and stopping threshold",
+    "Power-law index and normalisation of the skymodel, and level of the added Gaussian noise in the simulated data",
+    "How the SD M100 cube and the skymodel SD image were generated/obtained (beam, units, header fixes) and exact regridding steps",
+    "Line-free channels and any continuum subtraction for M100",
+    "Values of the intermediate reference resolutions used for assessment (2'' versus 1.7'' stated inconsistently) and RMS_mask measurement region",
+    "Number of flux bins and binning scheme for A-par vs flux diagnostics beyond the 10-bin example"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Simulate ALMA observations of the skymodel",
+    "method": {
+     "value": "Run simobserve on the synthetic skymodel for 12m (two configurations), ACA 7m and SD, with multiple fields and days",
+     "evidence": [
+      {
+       "loc": "4.1 Simulated continuum observations",
+       "quote": "we ran the `simobserve` task in CASA version 5.6.1 to create simulated observational data in MeasurementSet format (MSs)"
+      }
+     ]
+    },
+    "software": [
+     "CASA simobserve 5.6.1"
+    ],
+    "key_parameters": [
+     {
+      "value": "12m (7m): 52 (17) fields, each visited 30 (90) times per session, 10 s integration per field",
+      "evidence": [
+       {
+        "loc": "4.1 Simulated continuum observations",
+        "quote": "For 12m (7m) array, there are 52 (17) fields to cover the simulated image and each field is set to be visited 30 (90) times per observing session on different days with the integration time of 10 seconds per field."
+       }
+      ]
+     },
+     {
+      "value": "Skymodel 4096^2 pixels of 0.05'' (204.8'' per side)",
+      "evidence": [
+       {
+        "loc": "4.1 Simulated continuum observations",
+        "quote": "The model has $4,096^2$ pixels with a size of 0.05$''$ each, resulting in an image size of 204.8$''$ each side"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Prepare the M100 SD and interferometer data",
+    "method": {
+     "value": "Header manipulation, axis reordering and regridding of M100 12m/7m/SD data",
+     "evidence": [
+      {
+       "loc": "4.2 Observational, spectrally resolved data",
+       "quote": "This dataset allows us to showcase the necessary preparatory steps of header manipulation, axis reordering, and regridding."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "Python/astropy (DC_script)"
+    ],
+    "key_parameters": [
+     {
+      "value": "Cube of 50 line channels plus 10 baseline channels on each side",
+      "evidence": [
+       {
+        "loc": "4.2 Observational, spectrally resolved data",
+        "quote": "On each side of the spectral line, additional 10 channels are included in the cube to show the spectral baseline."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image interferometer-only data (int-CLEAN)",
+    "method": {
+     "value": "tclean with Briggs weighting, mosaic gridder, 100,000 iterations and SD+auto-multithresh mask",
+     "evidence": [
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "In CASA, CLEAN and its extensions are all accessible via the"
+      },
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "We set the number of iterations to 100,000."
+      }
+     ]
+    },
+    "software": [
+     "CASA 6.1 tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "2 Imaging Interferometric Data with CLEAN",
+        "quote": "with robust value of 0.5 (i.e. balance between natural and uniform weighting) for all runs of"
+       }
+      ]
+     },
+     {
+      "value": "Mask: >0.3 x SD max plus auto-multithresh",
+      "evidence": [
+       {
+        "loc": "2 Imaging Interferometric Data with CLEAN",
+        "quote": "The mask is generated by first utilizing the SD image to mask (include) all regions above 0.3 times the max value in the SD image"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Combine SD and interferometric data with each method",
+    "method": {
+     "value": "Feather, SDINT (sdintimaging), MACF (tclean with SD image as startmodel, then feather) and FSSC applied to skymodel and M100; TP2VIS implemented in the script but not evaluated",
+     "evidence": [
+      {
+       "loc": "3 Combination Methods",
+       "quote": "The methods we present for evaluation are: Feather"
+      },
+      {
+       "loc": "3.4 TP2VIS",
+       "quote": "we decided not to include it in the evaluation section of this paper"
+      }
+     ]
+    },
+    "software": [
+     "CASA 6.1 feather",
+     "CASA 6.1 sdintimaging",
+     "CASA 6.1 tclean",
+     "FSSC Python code",
+     "DC_script"
+    ],
+    "key_parameters": [
+     {
+      "value": "Standard (default-like) values for briggs, sdfactor (Feather, MACF) and sdgain (SDINT); numbers not given",
+      "evidence": [
+       {
+        "loc": "6.4 Single-dish flux recovery",
+        "quote": "For simplicity, our data combinations assumed standard values for reduction parameters such as"
+       }
+      ]
+     },
+     {
+      "value": "MACF: SD image (Jy per pixel) used as tclean startmodel, then feathered with the SD image",
+      "evidence": [
+       {
+        "loc": "3.3 Model-assisted CLEAN plus Feather method (MACF)",
+        "quote": "providing the SD image (in units of Janskys per pixel) as the starting model image"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Flux scales of the interferometer and SD data are aligned; astrometry aligned; images corrected for PB response",
+      "evidence": [
+       {
+        "loc": "3 Combination Methods",
+        "quote": "We assume that flux scales are aligned, but further fine-tuning can be done for specific use cases."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Results compared against the true skymodel (simulation) or the SD cube (M100)",
+     "evidence": [
+      {
+       "loc": "5 Assessment metrics",
+       "quote": "In real observations the emission of any interferometric or data combination map can be compared against its SD counterpart"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Assess image quality with A-par, fidelity, flux vs signal, power spectra and spectrograms",
+    "method": {
+     "value": "Pixel-by-pixel Accuracy parameter A=(I-R)/|R| and Fidelity inside an adaptive assessment mask, at the reference resolution; histograms, A-par vs flux bins, spatial power spectra (median in annuli of 2D FT) and per-channel A-par spectrograms",
+     "evidence": [
+      {
+       "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+       "quote": "In this work, we introduce a new assessment parameter which we call the *Accuracy parameter* (A-par)."
+      },
+      {
+       "loc": "5.4 Power Spectra (PS): spatial scale sensitivity",
+       "quote": "In practice the distribution of power is measured by computing the 2D Fourier transforms of the integrated intensity images and measuring the median in progressively larger annuli."
+      }
+     ]
+    },
+    "software": [
+     "DC_script",
+     "Python/astropy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Assessment mask threshold 3 x RMS_mask (off-source RMS at native resolution), corrected for PB response and for beam ratio",
+      "evidence": [
+       {
+        "loc": "5.1 Assessment mask: definition and adaptive thresholding",
+        "quote": "We define the “mask threshold” at a level of $3\\times RMS_{mask}$, where $RMS_{mask}$ is the off-source noise level of the target (in this case, interferometric) image at its native resolution $\\theta_0$."
+       }
+      ]
+     },
+     {
+      "value": "A-par computed per pixel/voxel after convolving and regridding to the reference image beam and grid",
+      "evidence": [
+       {
+        "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+        "quote": "We calculate both A-par and Fidelity parameters pixel-by-pixel (or voxel in cubes) in our images"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "For the skymodel the reference is the true model; for M100 the reference is the SD cube",
+      "evidence": [
+       {
+        "loc": "7 Summary",
+        "quote": "(in the case of simulated test data) or the original SD image (in the case of a real observation)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Feather used as benchmark combination method",
+     "evidence": [
+      {
+       "loc": "5 Assessment metrics",
+       "quote": "Feather is used as a benchmark of any combination technique presented here, since it is the most common method used in CASA."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare combination methods",
+    "method": {
+     "value": "Compare A-par distributions, flux recovery per signal bin, intensity and A-par power spectra, and M100 spectrograms for int-CLEAN, Feather, SDINT, MACF (FSSC nearly identical to Feather)",
+     "evidence": [
+      {
+       "loc": "6.3 Comparison between data combination methods",
+       "quote": "We quantitatively investigate the performance of the different data combination techniques"
+      },
+      {
+       "loc": "6.3 Comparison between data combination methods",
+       "quote": "The FSSC method is not shown but produced results nearly identical to Feather in this test."
+      }
+     ]
+    },
+    "software": [
+     "DC_script"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.1",
+    "used_for": {
+     "value": "Imaging (tclean) and data combination (feather, sdintimaging) for all combination tests",
+     "evidence": [
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "For actual data analysis work in this study, we use exclusively the CASA (Common Astronomy Software Applications) package (cite: casa2022) version 6.1."
+      }
+     ]
+    }
+   },
+   {
+    "name": "simobserve (CASA)",
+    "version": "5.6.1",
+    "used_for": {
+     "value": "Creating simulated 12m/7m/SD observations of the skymodel",
+     "evidence": [
+      {
+       "loc": "4.1 Simulated continuum observations",
+       "quote": "we ran the `simobserve` task in CASA version 5.6.1 to create simulated observational data in MeasurementSet format (MSs)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "CLEAN imaging of interferometric data, startmodel step of MACF",
+     "evidence": [
+      {
+       "loc": "2 Imaging Interferometric Data with CLEAN",
+       "quote": "In CASA, CLEAN and its extensions are all accessible via the"
+      }
+     ]
+    }
+   },
+   {
+    "name": "feather",
+    "version": "not stated",
+    "used_for": {
+     "value": "Combining high- and low-resolution images in Fourier space (Feather, MACF)",
+     "evidence": [
+      {
+       "loc": "3.1 Feather",
+       "quote": "The algorithm is implemented as a CASA task of the same name."
+      }
+     ]
+    }
+   },
+   {
+    "name": "sdintimaging",
+    "version": "not stated",
+    "used_for": {
+     "value": "SDINT joint deconvolution of SD and interferometer data",
+     "evidence": [
+      {
+       "loc": "3.2 Joint Deconvolution: SDINT",
+       "quote": "permits joint deconvolution of wideband SD and interferometer data"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TP2VIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Included in the accompanying software but not evaluated in the paper",
+     "evidence": [
+      {
+       "loc": "3.4 TP2VIS",
+       "quote": "we decided not to include it in the evaluation section of this paper"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DC_script",
+    "version": "not stated",
+    "used_for": {
+     "value": "Python script running the combination methods and the assessment metrics (github.com/teuben/DataComb)",
+     "evidence": [
+      {
+       "loc": "3.6 Software developed in this study",
+       "quote": "“DC_script” also includes the full set of quality assessment metrics described in this work to evaluate the performance of the different data combination methods"
+      }
+     ]
+    }
+   },
+   {
+    "name": "FSSC Python code (Faridani et al.)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Image-domain short spacing correction incorporated in the script suite",
+     "evidence": [
+      {
+       "loc": "3.5 Faridani’s Short Spacing Correction (FSSC) method",
+       "quote": "they provide a stand-alone Python code that we have also incorporated into our suite of combination methods"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Used within DC_script",
+     "evidence": [
+      {
+       "loc": "3.6 Software developed in this study",
+       "quote": "that runs with Python and incorporates Astropy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "numpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "scipy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "analysisUtils",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Skymodel int-CLEAN A-par (mean, dispersion)",
+    "value": "-0.60",
+    "uncertainty": "0.43 (dispersion)",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+      "quote": "(red histogram; A-par$\\approx-0.60\\pm0.43$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Skymodel Feather A-par (mean, dispersion)",
+    "value": "-0.08",
+    "uncertainty": "0.24 (dispersion)",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+      "quote": "(here Feather, blue histogram; A-par$\\approx -0.08\\pm 0.24$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Skymodel total flux recovered by int-CLEAN",
+    "value": "~32%",
+    "uncertainty": "not stated",
+    "units": "% of reference flux",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+      "quote": "While int-CLEAN only recovers $\\sim$ 32% of the total reference flux, Feather manages to improve these values up to 89%."
+     }
+    ]
+   },
+   {
+    "quantity": "Skymodel total flux recovered by Feather",
+    "value": "~89%",
+    "uncertainty": "not stated",
+    "units": "% of reference flux",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 Accuracy parameter & Fidelity: assessing flux recovery",
+      "quote": "While int-CLEAN only recovers $\\sim$ 32% of the total reference flux, Feather manages to improve these values up to 89%."
+     }
+    ]
+   },
+   {
+    "quantity": "Skymodel total flux recovery by SDINT and MACF",
+    "value": "above ~92%",
+    "uncertainty": "not stated",
+    "units": "% of reference flux",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.3 Comparison between data combination methods",
+      "quote": "The total flux recovery is improved by the SDINT and MACF methods with total flux values above $\\sim$ 92% with respect to the true sky emission."
+     }
+    ]
+   },
+   {
+    "quantity": "Skymodel SDINT A-par dispersion",
+    "value": "0.13",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.3 Comparison between data combination methods",
+      "quote": "While SDINT shows a smaller dispersion of the A-par values ($\\sigma($A-par$)=0.13$"
+     }
+    ]
+   },
+   {
+    "quantity": "Skymodel MACF mean A-par",
+    "value": "-0.08",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.3 Comparison between data combination methods",
+      "quote": "MACF shows a better mean A-par value (A-par = -0.08"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak flux loss of brightest compact skymodel source in int-CLEAN",
+    "value": "~40%",
+    "uncertainty": "not stated",
+    "units": "% of true peak",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.1 The indispensable short-spacing information",
+      "quote": "the peak flux of this source in the interferometric-alone int-CLEAN observations is reduced by a factor of $\\sim$ 40% compared to the true emission in our skymodel"
+     }
+    ]
+   },
+   {
+    "quantity": "M100 int-CLEAN mean A-par over channels",
+    "value": "-0.51",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.6 A-par spectrograms: analysis of spectral cubes",
+      "quote": "with mean 50% flux losses (A-par$=-0.51\\pm0.07$)"
+     }
+    ]
+   },
+   {
+    "quantity": "M100 Feather mean A-par over channels",
+    "value": "-0.07",
+    "uncertainty": "0.04",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.6 A-par spectrograms: analysis of spectral cubes",
+      "quote": "respect to the SD flux per channel (A-par$=-0.07\\pm0.04$)"
+     }
+    ]
+   },
+   {
+    "quantity": "M100 SDINT A-par and dispersion at SD resolution",
+    "value": "|A-par| = -0.11 (as written)",
+    "uncertainty": "sigma(A-par) = 0.06",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.4 Single-dish flux recovery",
+      "quote": "while SDINT shows slightly larger differences with respect to the SD flux ($|$A-par$|=-0.11$ and $\\sigma($ A-par$)=0.06$)"
+     }
+    ]
+   },
+   {
+    "quantity": "M100 Feather and MACF A-par dispersion",
+    "value": "0.04",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "6.4 Single-dish flux recovery",
+      "quote": "both showing narrow A-par distributions ($\\sigma($ A-par$)=0.04$)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Interferometric filtering affects flux recovery at all scales, including compact structures comparable to the beam, not only beyond the MRS",
+    "evidence": [
+     {
+      "loc": "6.1 The indispensable short-spacing information",
+      "quote": "our results clearly demonstrate how the interferometric filtering has a significant impact at all scales"
+     }
+    ]
+   },
+   {
+    "value": "FSSC produced results nearly identical to Feather in the skymodel test",
+    "evidence": [
+     {
+      "loc": "6.3 Comparison between data combination methods",
+      "quote": "The FSSC method is not shown but produced results nearly identical to Feather in this test."
+     }
+    ]
+   },
+   {
+    "value": "Recovered power-spectrum values and slopes in interferometric images should be interpreted with extreme caution",
+    "evidence": [
+     {
+      "loc": "6.3 Flux and A-par power spectra",
+      "quote": "The physical interpretation of the recovered SPS in interferometric observations (e.g. absolute values and changes in the power spectrum slope) should be treated with extreme caution."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does omitting single-dish data cause significant flux and spectral-line errors in interferometric images of resolved sources",
+    "experiment": "Compared int-CLEAN with combined images against the true skymodel and the M100 SD cube using A-par, flux vs signal, power spectra and spectrograms",
+    "result": "int-CLEAN recovers ~32% of the skymodel flux and loses ~50% on average in M100 channels; combination recovers ~89-92%",
+    "finding": "Interferometer-only reductions can miss up to 90% of flux at all scales, and deform line profiles",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Summary",
+      "quote": "Interferometric-alone reductions can miss up to 90% (A-par=-0.9) of the flux depending on the scale and source morphology."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do the tested combination methods all improve over interferometry alone",
+    "experiment": "Applied Feather, SDINT, MACF and FSSC to skymodel and M100",
+    "result": "Feather, SDINT and MACF recover most flux with errors of about 10% or less",
+    "finding": "Any tested combination method is better than interferometric data alone",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Summary",
+      "quote": "Our results on the performance of the tested data combination methods show quantitatively that the application of any method is better than using the interferometric data on its own."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is any one combination method clearly superior",
+    "experiment": "Compared A-par statistics and spectrograms of methods on both datasets",
+    "result": "SDINT and MACF best on the skymodel; Feather and MACF best on M100 at SD resolution",
+    "finding": "Performance varies with target structure; no clear universal winner",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6.4 Single-dish flux recovery",
+      "quote": "While our analysis does not allow to establish the clear superiority of any of the data combination methods in all situations"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the new A-par parameter a better diagnostic than Fidelity",
+    "experiment": "Computed both A-par and Fidelity maps and histograms for the same combinations",
+    "result": "A-par is signed and has a defined optimum, Fidelity is unsigned and has no target value",
+    "finding": "A-par has higher diagnostic value than Fidelity",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Summary",
+      "quote": "We also discuss the commonly used Fidelity parameter, and we find A-par to have higher diagnostic value."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does lacking short-spacing information distort spectral line profiles",
+    "experiment": "Compared M100 spectra from int-CLEAN, Feather and SDINT in two regions",
+    "result": "int-CLEAN spectra show negative features, reduced FWHM and shifted peak",
+    "finding": "Data combination is needed to preserve line fluxes and kinematic information in cubes",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.2 Effects of the short-spacing information in line profiles",
+      "quote": "negative sidelobes can selectively alter different channels (see negative feature in the spectrum) both reducing the line FWHM and shifting the line peak"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Simulated skymodel gives a known truth; M100 chosen as a spectrally resolved real example where flux must be recovered per channel",
+    "evidence": [
+     {
+      "loc": "4.1 Simulated continuum observations",
+      "quote": "Only with simulated observations can the accuracy of the image reconstruction be properly measured, since in that case the “true” intensity distribution on the sky is known."
+     },
+     {
+      "loc": "4.2 Observational, spectrally resolved data",
+      "quote": "we therefore choose the spectrally resolved observation of the galaxy M100 as an example of real observational data"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Feather used as the benchmark method because it is the most common one in CASA",
+    "evidence": [
+     {
+      "loc": "5 Assessment metrics",
+      "quote": "Feather is used as a benchmark of any combination technique presented here, since it is the most common method used in CASA."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "TP2VIS not evaluated because it was less straightforward to use consistently across datasets; included only in the accompanying software",
+     "evidence": [
+      {
+       "loc": "3.4 TP2VIS",
+       "quote": "TP2VIS turned out to be less straight-forward to use effectively and consistently across different datasets"
+      }
+     ]
+    },
+    {
+     "value": "J-comb linear combination technique not explored",
+     "evidence": [
+      {
+       "loc": "Footnote 2",
+       "quote": "is a new linear combination technique that has been benchmarked against both CASA’s `feather` and Miriad’s `immerge` tasks, but is not further explored in this work"
+      }
+     ]
+    },
+    {
+     "value": "Impact of the feather lowpassfiltersd option not investigated",
+     "evidence": [
+      {
+       "loc": "3.1 Feather",
+       "quote": "We did not further investigate the impact of `lowpassfiltersd`."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Test cases exclude bright emission extending beyond the well-characterised primary beam",
+     "evidence": [
+      {
+       "loc": "3 Combination Methods",
+       "quote": "Finally, we use test cases without bright emission that extends or emerges beyond the area of the well-characterised PB-response."
+      }
+     ]
+    },
+    {
+     "value": "At SD resolution the M100 comparison has few voxels per channel, making ~10% differences hard to interpret",
+     "evidence": [
+      {
+       "loc": "6.4 Single-dish flux recovery",
+       "quote": "Comparisons within these 10% variations are however difficult to interpret given the low number statistics available"
+      }
+     ]
+    },
+    {
+     "value": "Standard values were assumed for reduction parameters (briggs, sdfactor, sdgain) for simplicity",
+     "evidence": [
+      {
+       "loc": "6.4 Single-dish flux recovery",
+       "quote": "For simplicity, our data combinations assumed standard values for reduction parameters such as"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Method ranking rests on one simulated skymodel and one galaxy; no repeats or uncertainty on the differences between methods",
+    "Reference for M100 is the SD cube itself, so SD calibration errors and SD-resolution averaging limit the test; ~20 voxels per channel",
+    "Method parameters (sdfactor, sdgain, effdishdiam) were not tuned, so ranking may change with tuning",
+    "M100 calibration and the origin of the SD cube are not described in the paper",
+    "Noise properties of the simulated data are not given, so noise-dependent A-par widths are hard to compare"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Scripts, data to reproduce figures and documentation released on GitHub; M100 is ALMA Science Verification data",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "The script suite for running the combination methods and our evaluation tools, and the data to reproduce the figures in this paper are available from <https://github.com/teuben/DataComb>."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "DC_script and assessment tools at https://github.com/teuben/DataComb",
+     "evidence": [
+      {
+       "loc": "3.6 Software developed in this study",
+       "quote": "The script, data, and documentation are available at <https://github.com/teuben/DataComb>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Numeric values of sdfactor/sdgain/effdishdiam/dishdia and tclean/sdintimaging threshold and cell parameters",
+    "M100 calibration details and which MS/SD products were used",
+    "Skymodel power-law index and noise level; random seeds"
+   ],
+   "estimated_data_volume_inferred": "Roughly tens of GB for the M100 12m+7m+SD cubes and simulated MSs (estimate, not in paper)",
+   "score_inferred": 4,
+   "score_reason": "Public code and data on GitHub plus an explicit recipe and many numeric A-par/flux-recovery results; several tclean/combination parameters and M100 calibration are left to the scripts.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "M100 SV data are public, the methods and metrics are clearly defined and the main results are numeric (A-par means, flux recovery fractions), though exact parameters must come from the released scripts."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: koda2019)",
+     "why": "TP2VIS method and skymodel construction procedure"
+    },
+    {
+     "citation": "(cite: rau2019)",
+     "why": "SDINT algorithm (sdintimaging)"
+    },
+    {
+     "citation": "(cite: faridani2018)",
+     "why": "FSSC image-domain combination method"
+    },
+    {
+     "citation": "(cite: kepley2020)",
+     "why": "auto-multithresh masking algorithm"
+    },
+    {
+     "citation": "(cite: cotton2017)",
+     "why": "Comprehensive discussion of feather"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: mason2020)",
+     "why": "Update on the feathering technique of data combination"
+    },
+    {
+     "citation": "(cite: PHANGS_datareduction)",
+     "why": "ALMA combination in PHANGS data reduction"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Science Verification M100 Band 3 data (2011.0.00004.SV)",
+    "Lorentz Center workshop on interferometer and single-dish data combination (2019)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2023PASP..135c4501P",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T12:35:53",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 97,
+  "quotes_ok": 97,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 104,
+   "stated": 62,
+   "rate": 0.596
+  },
+  "evidence_ok": true
+ }
+}

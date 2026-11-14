@@ -1,0 +1,369 @@
+{
+ "bibcode": "2026MNRAS.549ag781K",
+ "title": "GOALS-JWST: resolved multiphase molecular gas in IRAS 20551-4250 using JWST and ALMA",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag781",
+ "arxiv_id": "2604.18671",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Investigate the nature of the nuclear regions in IRAS 20551-4250, characterise cold and warm molecular gas properties, and infer whether the molecular gas observations provide evidence of feedback from starburst or AGN.",
+ "alma_project_codes": [
+  "2022.1.01262.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "array angular resolution ~0.06 arcsec (TM1) and ~0.26 arcsec (TM2); synthesized beam 0.12x0.10 arcsec^2; smoothed to 0.8 arcsec",
+  "sensitivity": "0.44 mJy/beam per 4.5 km s^-1 channel (in dirty cube)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Warm molecular gas masses for a comparison sub-sample of GOALS ULIRGs derived from Spitzer/IRS spectra.",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The warm molecular gas masses presented in Fig. 15 are taken from (cite: petric18), based on a sub-sample of the parent GOALS galaxies from where IR20551 was selected."
+     }
+    ]
+   },
+   "citation": "(cite: petric18)"
+  },
+  {
+   "what": {
+    "value": "Cold molecular gas masses for the comparison ULIRG sample drawn from integrated CARMA CO(1-0) observations.",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The cold molecular gas masses are drawn from integrated CARMA CO(1–0) observations (cite: alatalo24), who assume an $\\alpha_{\\rm CO}$ value of 1.5, comparable to the value of 1.8 used in this paper for IR20551."
+     }
+    ]
+   },
+   "citation": "(cite: alatalo24)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA CO(2-1) cube and match resolution to JWST/MIRI-MRS",
+   "method": "Recreate calibrated MSs via CASA pipeline, isolate CO(2-1) spectral window, subtract 0th-order continuum with uvcontsub, image both configurations jointly in 4.5 km/s channels with tclean using Briggs robust=2.0, multi-scale then hogbom cleaning, apply primary beam correction, smooth to 0.8 arcsec Gaussian beam and re-grid to MRS.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "channel width = 4.5 km s^-1, robust = 2.0, multiscale scales = [0.1, 0.5, 1.0, 3.0] arcsec, smoothed beam = 0.8 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Reduce JWST/MIRI-MRS IFU data and extract nuclear and integrated spectra",
+   "method": "Run 3-stage JWST pipeline with CRDS context jwst_1256.pmap, cosmic ray shower finding, sigma-clipping of warm pixels on rate files, residual fringe correction, dedicated background subtraction, and pixel_replace; extract R = 0.5 and 1.5 arcsec aperture spectra and stitch continuum across channels.",
+   "software": [
+    "JWST pipeline"
+   ],
+   "key_parameters": [
+    "CRDS = jwst_1256.pmap, find_showers = True, skip_residual_fringe = FALSE, outlier threshold = 99%, pixel_replace = True, aperture radii = 0.5 and 1.5 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model mid-infrared continuum and warm H2 rotational lines S(1)-S(8)",
+   "method": "Model overall mid-IR continuum, PAH emission, and silicate absorption with CAFE; subtract continuum and fit H2 0-0 S(1)-S(8) lines with single Gaussians within +/-0.03 um windows in aperture spectra and spaxel-by-spaxel; apply CAFE extinction corrections and instrumental LSF corrections.",
+   "software": [
+    "CAFE"
+   ],
+   "key_parameters": [
+    "spectral window = +/-0.03 um around line centre, 100 Monte Carlo mock spectra for uncertainties"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit ALMA CO(2-1) emission line profiles and derive non-parametric kinematics",
+   "method": "Extract R = 1.5 arcsec integrated spectrum and spaxel-by-spaxel spectra from ALMA CO(2-1) cube, fit up to two Gaussians selected by BIC, and compute non-parametric v_50, w_80, and total flux.",
+   "software": [],
+   "key_parameters": [
+    "aperture radius = 1.5 arcsec, maximum Gaussians = 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Model VLT/MUSE optical spectra, construct BPT maps, and measure ionised outflow rate",
+   "method": "Subtract stellar continuum using ppxf within LZIFU, fit optical emission lines (Hbeta, [O III]5007, Halpha, [N II]6585, [O I]6300, [S II]6716,6731) with up to 2 Gaussians plus linear continuum, construct [N II] and [O I] BPT maps, compute [O III] v_50 and w_80, and derive ionised gas mass outflow rate.",
+   "software": [
+    "LZIFU",
+    "ppxf"
+   ],
+   "key_parameters": [
+    "aperture radius = 1.5 arcsec, maximum Gaussians = 2, [O III]5007:[O III]4959 = 3:1"
+   ],
+   "assumptions": [
+    "Solar metallicity of the gas; broad Gaussian component represents outflowing gas"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive warm H2 excitation temperatures and warm molecular gas mass",
+   "method": "Construct H2 rotational excitation diagrams from extinction-corrected S(1)-S(8) fluxes in nuclear and integrated apertures and spaxel-by-spaxel; fit two-temperature linear models to excitation diagrams and a continuous power-law temperature distribution (Togi & Smith 2016) to derive warm H2 mass at T >= 200 K.",
+   "software": [],
+   "key_parameters": [
+    "upper temperature bound = 2000 K, lower integration temperature = 200 K, aperture R = 1.5 arcsec"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE) and ortho-para ratio of 3:1"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Calculate cold molecular gas mass from ALMA CO(2-1) and compare cold-to-warm gas ratios",
+   "method": "Calculate CO(2-1) luminosity L'_CO(2-1) within R = 1.5 arcsec using Solomon & Vanden Bout (2005) equation, convert to cold H2 mass using excitation correction r_21 and alpha_CO, and compute integrated and spatially resolved (convolved/rebinned) CO(2-1)/H2 S(2) ratios.",
+   "software": [],
+   "key_parameters": [
+    "aperture radius = 1.5 arcsec, nu_obs ~ 221 GHz"
+   ],
+   "assumptions": [
+    "CO excitation ratio r_21 = 0.4, alpha_CO = 1.8 M_sun K^-1 km^-1 s pc^-2, H0 = 70 km s^-1, Omega_M = 0.3, Omega_Lambda = 0.7"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) line luminosity L'_CO(2-1) (R = 1.5 arcsec)",
+   "value": "2.8e9",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Cold gas to warm gas ratios",
+     "quote": "From the integrated CO transition shown in Fig. 6, we find $L^{\\prime}_{\\rm CO(2-1)} = 2.8\\times10^{9}$ K km s$^{-1}$ pc$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Cold molecular gas mass M_H2^cold (R = 1.5 arcsec)",
+   "value": "1.3e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Cold gas to warm gas ratios",
+     "quote": "Assuming an excitation correction, $r_{21} = 0.4$ (cite: iono09; papadopoulos12; bolatto13), we get a cold molecular gas mass of $M_{\\rm H_{2}}^{\\rm cold} = 1.3 \\times 10^{10}$ M$_{\\odot}$, using an $\\alpha_{\\rm CO}$ conversion factor of 1.8 M$_{\\odot}$ K$^{-1}$ km$^{-1}$ s pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm molecular gas mass M_H2^warm (T >= 200 K, R = 1.5 arcsec)",
+   "value": "6.1e8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "H2 excitation in IR20551",
+     "quote": "We find a power-law index, $n = 4.76\\pm0.16$, consistent with the range observed in ULIRGs (cite: togi16) and approximately $6.1\\times10^{8}$ M$_{\\odot}$ of warm molecular gas is observed at T$\\geq$200 K in aperture R = 1.5 arcsec."
+    }
+   ]
+  },
+  {
+   "quantity": "Warm H2 excitation power-law index n",
+   "value": "4.76",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "H2 excitation in IR20551",
+     "quote": "We find a power-law index, $n = 4.76\\pm0.16$, consistent with the range observed in ULIRGs (cite: togi16)"
+    }
+   ]
+  },
+  {
+   "quantity": "Cold-to-warm molecular gas mass ratio",
+   "value": "~20",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Cold gas to warm gas ratios",
+     "quote": "The ratio of cold-to-warm molecular gas mass is, therefore, approximately 20. In other words, $>$95% of the molecular gas is in cold gas phase."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated v_50 (R = 1.5 arcsec)",
+   "value": "-90",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Resolved CO(2-1) characterisation with ALMA",
+     "quote": "The CO(2-1) line model parameters $v_{50}$ and $w_{80}$ and flux are $-90$ km s$^{-1}$ and 200 km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) integrated w_80 (R = 1.5 arcsec)",
+   "value": "200 (also stated as ~210)",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Resolved CO(2-1) characterisation with ALMA",
+     "quote": "The CO(2-1) line model parameters $v_{50}$ and $w_{80}$ and flux are $-90$ km s$^{-1}$ and 200 km s$^{-1}$, respectively."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "In contrast, the integrated CO(2–1) profile, although asymmetric and requiring two Gaussian components to reproduce, has a significantly narrower width of $w_{80} \\sim 210$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[O III]5007 integrated w_80",
+   "value": "~790",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "[O iii]$\\lambda$5007 in VLT/MUSE data reveal ionised gas outflows with $w_{80}^{\\rm [OIII]} \\sim 790$ km s$^{-1}$ and $\\dot{M}_{\\rm out}^{\\rm[OIII]}<0.01$ M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[O III]5007 ionised gas mass outflow rate",
+   "value": "<0.01",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Warm molecular gas morphology and kinematics",
+     "quote": "Assuming that the broad Gaussian component represents the outflowing gas, we find an ionised gas mass outflow rate of $<$0.01 M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Silicate absorption depth s_9.7um (nuclear, R = 0.5 arcsec)",
+   "value": "-3.22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Ionisation Source in the Central Region of IR20551",
+     "quote": "We find $s_{\\rm 9.7~\\mu m} =$ -3.22 and -2.91 in the nuclear and integrated spectra, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Silicate absorption depth s_9.7um (integrated, R = 1.5 arcsec)",
+   "value": "-2.91",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Ionisation Source in the Central Region of IR20551",
+     "quote": "We find $s_{\\rm 9.7~\\mu m} =$ -3.22 and -2.91 in the nuclear and integrated spectra, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm H2 excitation temperature (two-temperature fit, nuclear / integrated)",
+   "value": "608 / 525",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "H2 excitation in IR20551",
+     "quote": "One a warm molecular gas component at an excitation temperature of $\\sim$608 K and $\\sim$525 K and a hot gas component at an excitation temperature of $\\sim$1350 K and $\\sim$1490 K in the nuclear and integrated spectra, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Hot H2 excitation temperature (two-temperature fit, nuclear / integrated)",
+   "value": "1350 / 1490",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "H2 excitation in IR20551",
+     "quote": "One a warm molecular gas component at an excitation temperature of $\\sim$608 K and $\\sim$525 K and a hot gas component at an excitation temperature of $\\sim$1350 K and $\\sim$1490 K in the nuclear and integrated spectra, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 0-0 S(1) flux (nuclear R=0.5 arcsec / integrated R=1.5 arcsec)",
+   "value": "4.91 / 17.67",
+   "uncertainty": "0.14 / 0.41",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0-0 S(1) | 17.035 | -37 | 217$\\pm$6 | 4.91$\\pm$0.14 | -37 | 221$\\pm$5 | 17.67$\\pm$0.41 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 0-0 S(2) flux (nuclear R=0.5 arcsec / integrated R=1.5 arcsec)",
+   "value": "3.54 / 10.07",
+   "uncertainty": "0.06 / 0.13",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0-0 S(2) | 12.279 | -28 | 182$\\pm$5 | 3.54$\\pm$0.06 | -28 | 189$\\pm$2 | 10.07$\\pm$0.13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 0-0 S(3) flux (nuclear R=0.5 arcsec / integrated R=1.5 arcsec)",
+   "value": "10.32 / 26.91",
+   "uncertainty": "0.12 / 0.25",
+   "units": "10^-14 erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0-0 S(3) | 9.665 | -11 | 228$\\pm$3 | 10.32$\\pm$0.12 | -11 | 212$\\pm$3 | 26.91$\\pm$0.25 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for uvcontsub continuum subtraction in the ALMA CO(2-1) spectral window",
+  "Cell size (pixel scale) and image size (number of pixels) used in tclean for the native ALMA CO(2-1) cube",
+  "auto-multithresh sub-parameters (sidelobethreshold, noisethreshold, lownoisethreshold, minbeamfrac) and manual mask edits",
+  "Exact centre coordinates of the R = 0.5 arcsec and R = 1.5 arcsec extraction apertures",
+  "Value of integrated velocity-integrated flux S_CO * Delta_v in Jy km s^-1 before converting to L'_CO(2-1)",
+  "Outflow radius and velocity assumptions used in the [O III] ionised gas mass outflow rate formula"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel coordinates / RA-Dec centre used for the R = 0.5 and 1.5 arcsec extraction apertures",
+  "Channel selection for uvcontsub continuum subtraction in ALMA Band 6",
+  "Cell size and image dimensions for ALMA tclean",
+  "Custom script used for H2, CO(2-1), and optical multi-Gaussian BIC fitting"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "All raw/archival datasets have explicit programme IDs and public archive availability, software versions (CASA 6.5.4-9, pipeline 2023.1.0.124, CRDS jwst_1256.pmap, CAFE) and major imaging/analysis parameters (channel width, robust=2.0, multiscale scales, cleaning thresholds, aperture radii, conversion factors) are clearly specified. Minor deductions for unstated tclean cell/image size, uvcontsub channel ranges, and custom line-fitting scripts.",
+ "rediscovery_reason": "All ALMA, JWST, VLT/MUSE, and HST datasets are publicly archived with explicit program IDs, the calibration and imaging recipe is well-specified, and key numeric outputs (H2 line fluxes/FWHMs, excitation temperatures, warm and cold gas masses, and kinematic widths) are tabulated and ideal for quantitative verification.",
+ "source_card": "cards/2026MNRAS.549ag781K/sonnet/card.md"
+}

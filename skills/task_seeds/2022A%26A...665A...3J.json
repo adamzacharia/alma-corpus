@@ -1,0 +1,484 @@
+{
+ "bibcode": "2022A&A...665A...3J",
+ "title": "Diagnosing deceivingly cold dusty galaxies at 3.5 &lt; z &lt; 6: A substantial population of compact starbursts with high infrared optical depths",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202243341",
+ "arxiv_id": "2206.10401",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the spectroscopic redshifts, ISM properties, and dust optical depths of six seemingly cold dusty galaxies selected as z_phot > 6 candidates, and are their apparently cold dust temperatures caused by high far-infrared optical depths and CMB effects?",
+ "alma_project_codes": [
+  "2013.1.00118.S",
+  "2016.1.00279.S",
+  "2016.1.00463.S",
+  "2016.1.00478.S",
+  "2018.1.00874.S",
+  "2019.1.01832.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3mm), Band 6 (1mm / 1.2mm), Band 7 (870 um), and ACA 630 um",
+  "arrays": "ALMA 12m array and ACA (Atacama Compact Array)",
+  "angular_resolution": "ALMA 3mm beam for ID9316: 0.41'' x 0.36''; NOEMA 3mm beams: 1.6'' x 1.1'' to 5.7'' x 4.3''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS super-deblended catalog FIR/(sub)mm photometry and radio catalog IDs",
+    "evidence": [
+     {
+      "loc": "Sample, observations, and data reduction",
+      "quote": "Among the five COMSOS sources, ID3117, 5340, 6309, and 7549 were selected from the COSMOS super-deblended catalog (cite: Jin2018cosmos)."
+     }
+    ]
+   },
+   "citation": "(cite: Jin2018cosmos); (cite: Smolcic2017)"
+  },
+  {
+   "what": {
+    "value": "GOODS-North FIR/(sub)mm super-deblended catalog photometry",
+    "evidence": [
+     {
+      "loc": "Sample, observations, and data reduction",
+      "quote": "ID12646 was selected from the FIR/(sub)mm super-deblended catalog in the GOODS-North field (cite: Liu2018) as the source with the highest photometric redshift $z_{\\rm phot,FIR}\\sim6$."
+     }
+    ]
+   },
+   "citation": "(cite: Liu2018)"
+  },
+  {
+   "what": {
+    "value": "1mm and 870 um ALMA photometry for ID9316 from the A3COSMOS catalog",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "The 1mm and 870$\\mu$m ALMA data of ID9316 were well processed as part of the A$^3$COSMOS catalog (cite: Liu2019A3COSMOS). We therefore directly adopt their measurements."
+     }
+    ]
+   },
+   "citation": "(cite: Liu2019A3COSMOS)"
+  },
+  {
+   "what": {
+    "value": "Four analogous cold dusty galaxies at z=4-6 merged with the new six-galaxy sample",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "These six galaxies are used to extend the original sample of (cite: Jin2019alma) to a total of ten, which is used in the remainder of this paper."
+     }
+    ]
+   },
+   "citation": "(cite: Jin2019alma)"
+  },
+  {
+   "what": {
+    "value": "COSMOS2020 NIR/IRAC photometry (The Farmer and Classic) and S-COSMOS IRAC photometry",
+    "evidence": [
+     {
+      "loc": "Near-infrared and IRAC photometry and stellar mass",
+      "quote": "We cross-matched this sample to the deepest wide-field near-infrared(NIR)/IRAC catalogs from COSMOS2020 (cite: Weaver2021cosmos2020)."
+     },
+     {
+      "loc": "Near-infrared and IRAC photometry and stellar mass",
+      "quote": "so for this source we use `Classic` photometry (VISTA and IRAC channel 1), and IRAC channel 2 to 4 photometry from the S-COSMOS catalog (cite: Sanders2007scosmos)."
+     }
+    ]
+   },
+   "citation": "(cite: Weaver2021cosmos2020); (cite: Sanders2007scosmos)"
+  },
+  {
+   "what": {
+    "value": "Comparison galaxy samples for sizes, dust temperatures, and opacities (MS galaxies at z~1.2, GOODS-ALMA, SCUBA2, ALESS, AS2UDS)",
+    "evidence": [
+     {
+      "loc": "Size measurements",
+      "quote": "In Fig. [5](#size_LIR), we compare sizes against a control sample of MS galaxies at $z\\sim1.2$ (cite: Valentino2020CI; Puglisi2019) and from the GOODS-ALMA sample ((cite: Franco2020alma; Gomez-Guijarro2022catalog; Gomez-Guijarro2022))."
+     },
+     {
+      "loc": "Cold dust temperature against high IR surface brightness $T_{\\rm d}$–$\\Sigma_{\\rm IR}$",
+      "quote": "In the right panel of Fig. [6](#Sigma_Td) we also compare with the AS2UDS sample (cite: Stach2019AS2UDS) with quantities calculated by (cite: Gullberg2019) and (cite: Dudzeviciute2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Valentino2020CI; Puglisi2019; Valentino2020CO; Franco2020alma; Gomez-Guijarro2022catalog; Gomez-Guijarro2022; Simpson2017; Hodge2019; Stach2019AS2UDS; Gullberg2019; Dudzeviciute2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities and extract 3mm spectra and continuum fluxes in uv space",
+   "method": "Calibrate ALMA data with observatory CASA script, export to uvfits/uv tables, and extract spectra in uv space with GILDAS (using a fixed Gaussian kernel from continuum for ALMA ID9316, and point-source models at ALMA positions for NOEMA targets)",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "Gaussian kernel determined from continuum (for ID9316 ALMA); point source model at ALMA positions (for NOEMA)"
+   ],
+   "assumptions": [
+    "NOEMA sources are unresolved at 3mm"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Blindly search for emission/absorption lines and measure spectroscopic redshifts and line fluxes",
+   "method": "Sweep through full 3 mm continuum-subtracted spectrum using line-search algorithm from Jin et al. (2019)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "For ID9316 CO(5-4) on the edge of the spectrum, line flux is estimated assuming an identical line profile to CO(4-3)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit FIR/(sub)mm dust SEDs to derive L_IR, beta, T_d, M_d, and lambda_eff",
+   "method": "Fit deblended FIR photometry and ALMA/NOEMA continuum fluxes using three MBB setups: (1) optically thin without CMB, (2) optically thin with CMB correction, and (3) optically thick with CMB correction",
+   "software": [],
+   "key_parameters": [
+    "L_IR integrated over 8-1000 um rest-frame; lambda_eff where optical depth tau = 1"
+   ],
+   "assumptions": [
+    "Radio data points excluded from fit; SFR = L_IR * 10^-10"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure dust continuum FWHM sizes and inclination angles in uv space",
+   "method": "Fit elliptical models to 870 um and/or 1mm ALMA visibilities in uv space following Puglisi et al. (2019) and Valentino et al. (2020)",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "R_e is half of the FWHM size; Sigma_SFR = SFR / (2 * pi * R_e^2)"
+   ],
+   "assumptions": [
+    "Elliptical emission geometry"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure NIR/IRAC photometry and fit stellar SEDs to derive stellar masses",
+   "method": "Cross-match or extract NIR/IRAC photometry using The Farmer with point-like models centered on ALMA positions, then fit stellar SEDs with MICHI2 using BC03 templates and Calzetti attenuation",
+   "software": [
+    "The Farmer",
+    "MICHI2"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier (2003) IMF; separate stellar and dust SED fitting without optical-FIR energy balance"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive and compare gas masses (from dust, dynamics, and [CI]), SFE, Stefan-Boltzmann limits, and 100 um dust opacity",
+   "method": "Compute M_gas,dust via FMR metallicity-dependent G/D ratio; M_gas,dyn from CO line widths, ALMA sizes, inclinations, and stellar masses; M_gas,CI from [CI](1-0) luminosity; and tau_100um = kappa * rho * R_e",
+   "software": [],
+   "key_parameters": [
+    "Dark matter factor = 0.8 in M_dyn,2Re; 20% uncertainty added to M_gas,dust for metallicity variations; kappa from Jones et al. (2013)"
+   ],
+   "assumptions": [
+    "T_exc,CI = T_d,thick; spherical geometry for dust volume density rho; high-J CO(4-3) velocity width and 1mm dust continuum size trace the same region"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spectroscopic redshift of ID3117",
+   "value": "3.545",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3117 | 3.545 | 0.90$\\pm$0.07 | – | 0.71$\\pm$0.08 | – | – | 568 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of ID5340",
+   "value": "3.815",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 5340 | 3.815 | 0.90$\\pm$0.06 | 0.35$\\pm$0.06 | – | – | – | 777 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of ID6309",
+   "value": "4.023",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 6309 | 4.023 | 0.65$\\pm$0.07 | 0.46$\\pm$0.10 | – | – | – | 444 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of ID7549",
+   "value": "4.095",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 7549 | 4.095 | 0.81$\\pm$0.12 | 0.60$\\pm$0.12 | – | – | – | 1008 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of ID9316",
+   "value": "4.072",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9316 | 4.072 | 0.89$\\pm$0.03 | 0.36$\\pm$0.02 | – | 1.16$\\pm$0.05$^a$ | 0.14$\\pm$0.02$^{b}$ | 1056 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of ID12646",
+   "value": "4.147",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 12646 | 4.147 | 0.48$\\pm$0.08 | 0.24$\\pm$0.05 | – | 0.78$\\pm$0.11 | – | 700 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID9316 CO(4-3) line flux",
+   "value": "0.89",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9316 | 4.072 | 0.89$\\pm$0.03 | 0.36$\\pm$0.02 | – | 1.16$\\pm$0.05$^a$ | 0.14$\\pm$0.02$^{b}$ | 1056 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID9316 [CI](1-0) line flux",
+   "value": "0.36",
+   "uncertainty": "0.02",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9316 | 4.072 | 0.89$\\pm$0.03 | 0.36$\\pm$0.02 | – | 1.16$\\pm$0.05$^a$ | 0.14$\\pm$0.02$^{b}$ | 1056 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID9316 H2O(1_10-1_01) absorption line flux",
+   "value": "0.14",
+   "uncertainty": "0.02",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 9316 | 4.072 | 0.89$\\pm$0.03 | 0.36$\\pm$0.02 | – | 1.16$\\pm$0.05$^a$ | 0.14$\\pm$0.02$^{b}$ | 1056 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID3117 870 um continuum flux",
+   "value": "9.85",
+   "uncertainty": "0.17",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 3117 | 0.104$\\pm$0.008$^{(a)}$ | – | 9.85$\\pm$0.17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID5340 870 um continuum flux",
+   "value": "8.63",
+   "uncertainty": "0.17",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 5340 | 0.072$\\pm$0.008$^{(a)}$ | – | 8.63$\\pm$0.17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID6309 870 um continuum flux",
+   "value": "8.62",
+   "uncertainty": "0.19",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 6309 | 0.090$\\pm$0.008$^{(a)}$ | 3.37$\\pm$0.14 | 8.62$\\pm$0.19 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID7549 870 um continuum flux",
+   "value": "11.92",
+   "uncertainty": "0.19",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 7549 | 0.196$\\pm$0.008$^{(a)}$ | 6.03$\\pm$0.12 | 11.92$\\pm$0.19 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ID9316 3mm continuum flux",
+   "value": "0.188",
+   "uncertainty": "0.004",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 9316 | 0.188$\\pm$0.004$^{(b)}$ | 3.47$\\pm$0.31 | 8.99$\\pm$0.42 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature range (optically thin with CMB, five NOEMA sources)",
+   "value": "24-27",
+   "uncertainty": "1-4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 7549 | 4.90$\\pm$0.87 | 2.6$\\pm$0.2 | 2.1$\\pm$0.2 | 2.1$\\pm$0.2 | 22$\\pm$2 | 24$\\pm$3 | 36$\\pm$7 | 38.2$\\pm$4.3 | 61.6$\\pm$1.6 | 25.7$\\pm$5.8 | 200$\\pm$23 |"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| 12646 | 3.50$\\pm$0.61 | 2.5$\\pm$0.2 | 2.2$\\pm$0.2 | 2.2$\\pm$0.2 | 26$\\pm$2 | 27$\\pm$2 | 43$\\pm$9 | 8.8$\\pm$0.9 | 12.9$\\pm$1.8 | 6.1$\\pm$2.5 | 175$\\pm$24 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature range (optically thick with CMB, all six sources)",
+   "value": "30-46",
+   "uncertainty": "6-10",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 3117 | 6.24$\\pm$2.62 | 2.5$\\pm$0.2 | 2.3$\\pm$0.2 | 2.2$\\pm$0.2 | 25$\\pm$4 | 26$\\pm$4 | 30$\\pm$9 | 20.0$\\pm$4.0 | 26.5$\\pm$7.8 | 21.2$\\pm$9.1 | 100$\\pm$23 |"
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| 9316 | 10.01$\\pm$2.48 | 1.8$\\pm$0.1 | 1.6$\\pm$0.1 | 1.6$\\pm$0.2 | 36$\\pm$3 | 37$\\pm$3 | 46$\\pm$8 | 19.0$\\pm$2.2 | 23.1$\\pm$3.4 | 16.5$\\pm$4.4 | 100$\\pm$28 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust continuum FWHM size range",
+   "value": "1.7-3.4",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Size measurements",
+     "quote": "The six sources are well resolved with FWHM sizes in the range of 1.7–3.4 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "ID9316 CO(4-3) angular size",
+   "value": "0.39",
+   "uncertainty": "0.07",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas masses from optically thin dust models are overestimated",
+     "quote": "We were only able to verify this equivalence for the ALMA 3mm-detected ID9316 in our sample, and find that its CO(4-3) size ($0.39''\\pm0.07''$) is in agreement with the dust continuum size (Table 6)."
+    }
+   ]
+  },
+  {
+   "quantity": "Overestimation factor of dust mass using optically thin fits",
+   "value": "2.2",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Caution for gas mass estimates based on dust continuum",
+     "quote": "The dust masses in this work are overestimated by $2.2\\pm0.5$ using optically thin fits"
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame 100 um dust opacity (optically thick case)",
+   "value": "0.5-3.0 (median 1.1)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "High dust opacity at FIR",
+     "quote": "In the optically thick case, as shown by the blue squares, the opacity is systematically lower simply because the dust masses are lower, but it is still high ($0.5<\\tau_{\\rm 100\\mu m}<3.0$ with a median of 1.1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit fraction of optically thick dusty galaxies at z~4 (L_IR > 4e12 L_sun)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "We roughly estimated the abundance of galaxies with optically thick dust, which consists of a substantial population (at least 10%) of dusty star-forming galaxies with $L_{\\rm IR}>4\\times10^{12}~L_{\\odot}$ at $z\\sim4$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used to reproduce ALMA observatory calibration",
+  "Exact GILDAS version and specific tasks/scripts used for uv-plane visibility fitting of spectra, continuum fluxes, and sizes",
+  "Exact spectral channel width used when extracting the ALMA 3mm spectra of ID9316",
+  "Exact parameter grid and priors used in MBB SED fitting and MICHI2 stellar SED fitting"
+ ],
+ "missing_for_reproduction": [
+  "Raw or calibrated NOEMA visibilities for projects S18DI, W20DM, W17EK, W18EY, and W19DQ (only relevant for the 5 NOEMA targets; ID9316 uses public ALMA data)",
+  "Custom GILDAS uv-fitting scripts used for spectral extraction and size measurements",
+  "De-blended multi-wavelength FIR photometry table for the 6 targets (though available in cited Jin et al. 2018 and Liu et al. 2018 catalogs) and newly extracted The Farmer NIR/IRAC flux table"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All ALMA project codes, target coordinates, continuum fluxes, line fluxes, sizes, and derived physical parameters are clearly tabulated, and the ALMA data are public. However, 5 of the 6 line scans are from NOEMA, and the exact GILDAS uv-space fitting scripts and MBB SED fitting implementation details are inherited from earlier papers rather than self-contained.",
+ "rediscovery_reason": "For ID9316 (all-ALMA line scan + continuum) and the ALMA continuum size/flux measurements of ID3117, 5340, 6309, and 7549, all raw data are public in the ALMA archive and the quantitative outputs (z_spec, line fluxes, continuum fluxes, uv sizes, and SED/gas mass parameters) are fully tabulated.",
+ "source_card": "cards/2022A%26A...665A...3J/sonnet/card.md"
+}

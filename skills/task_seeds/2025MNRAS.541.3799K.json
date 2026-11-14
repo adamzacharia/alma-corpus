@@ -1,0 +1,884 @@
+{
+ "bibcode": "2025MNRAS.541.3799K",
+ "title": "Extreme cloud collisions in nearby barred galaxies",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf1080",
+ "arxiv_id": "2507.04530",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism",
+  "star_formation"
+ ],
+ "question": "Confirm the existence of extended velocity features (EVFs) in the dust lanes of nearby barred galaxies and determine their physical origin using PHANGS-ALMA and PHANGS-JWST data.",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00886.L",
+  "2018.1.00484.S",
+  "2018.1.01321.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S",
+  "2019.1.01235.S",
+  "2019.2.00129.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "~1'' (~50-150 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Milky Way CO(1-0) emission maps and PPV data",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The top and bottom panels display the longitude-latitude (l, b) and longitude-velocity (l, vlos) CO(1-0) emission maps respectively from the survey by Bitran et al. (1997)."
+     },
+     {
+      "loc": "3.3 Milky Way spectra",
+      "quote": "Therefore in the MW, we identify both the EVF regions and the bar lanes in the PV diagram using the data from Bitran et al. (1997)."
+     }
+    ]
+   },
+   "citation": "Bitran et al. (1997)"
+  },
+  {
+   "what": {
+    "value": "Galaxy distances",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(2) Distances obtained from Anand et al. (2021)"
+     },
+     {
+      "loc": "3.1 Diagnostic maps and EVF identification",
+      "quote": "Then we convert angular (arcseconds) into physical (kpc) scales assuming the distances from Anand et al. (2021)"
+     }
+    ]
+   },
+   "citation": "Anand et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Physical resolution in native resolution cubes",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(3) Physical resolution in native resolution cube provided in Leroy et al. (2021c);"
+     }
+    ]
+   },
+   "citation": "Leroy et al. (2021c)"
+  },
+  {
+   "what": {
+    "value": "Inclinations and kinematic position angles of the line of nodes (LON)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(4) inclination – “...” indicates that the uncertainties are not provided and (5) kinematic position angle of LON from Lang et al. (2020) when available, otherwise, from Salo et al. (2015)"
+     }
+    ]
+   },
+   "citation": "Lang et al. (2020); Salo et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Position angle of the bar and photometric bar classification",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(6) position angle of the bar provided in the S4G Survey Buta et al. (2015); Herrera-Endoqui et al. (2015) or Salo et al. (2015) ;"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(8) Photometric bar classification in literature obtained from Buta et al. (2015) (NIR) if available or from de Vaucouleurs et al. (1991) (optical);"
+     }
+    ]
+   },
+   "citation": "Buta et al. (2015); Herrera-Endoqui et al. (2015); Salo et al. (2015); de Vaucouleurs et al. (1991)"
+  },
+  {
+   "what": {
+    "value": "CO morphology bar classification (Class A, B, and C)",
+    "evidence": [
+     {
+      "loc": "2.1 PHANGS-ALMA CO(2–1) Survey",
+      "quote": "in this work we use a sample of 29 galaxies from the PHANGS-ALMA dataset, listed in Table 1, all classified as barred, based on their CO(2–1) morphology, by Stuber et al. (2023) (class B and C there)."
+     }
+    ]
+   },
+   "citation": "Stuber et al. (2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Construct diagnostic PP and PV maps and visually identify dust lanes and EVFs",
+   "method": "Rotate each CO(2-1) datacube so the positive half of the line of nodes aligns with the negative x-axis, convert angular scales to physical kpc, integrate over velocity and spatial dimensions to create 1 PP and 2 PV maps, visually enclose bar dust lanes with contours in glue, and visually select compact, broad-lined EVFs in the PV maps.",
+   "software": [
+    "glue",
+    "ASTROPY"
+   ],
+   "key_parameters": [
+    "29 barred galaxies (Class B and C in Stuber et al. 2023) and 13 unbarred test galaxies (Class A and SA)"
+   ],
+   "assumptions": [
+    "Distances from Anand et al. (2021) and PAs of LON and inclinations from Lang et al. (2020) or Salo et al. (2015)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate EVF physical radii and galactocentric distances",
+   "method": "Visually define a circular region on the dust lane in PP space encompassing the EVF, centre on the brightest point, fit a 2D Gaussian to the PP map to get centre coordinates (x, y) and standard deviations (sigma_x, sigma_y), and compute R_EVF and R_cen.",
+   "software": [
+    "ASTROPY"
+   ],
+   "key_parameters": [
+    "eta = sqrt(2 ln 2) = 1.18 in R_EVF = eta * sqrt(sigma_x * sigma_y)"
+   ],
+   "assumptions": [
+    "Surface brightness modelled as a 2D Gaussian; R_EVF is an upper limit for unresolved EVFs"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure EVF velocity dispersion and velocity spread (FWHM)",
+   "method": "Extract the total integrated CO spectrum within R_EVF and fit a 1D Gaussian (single Gaussian for external galaxies, double Gaussian for Milky Way EVFs to account for overlapping components).",
+   "software": [
+    "glue",
+    "ASTROPY"
+   ],
+   "key_parameters": [
+    "Delta v = (2 sqrt(2 ln 2)) sigma_v; MW longitude ranges l = 2.7-3.4 deg (for l=3.2 deg EVF) and l = 5.0-5.6 deg (for l=5.4 deg EVF), latitude unrestricted"
+   ],
+   "assumptions": [
+    "Gaussian spectral line profile"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate EVF molecular masses, virial masses, and virial parameters",
+   "method": "Integrate CO intensity I_CO within R_EVF, multiply by constant alpha_CO to get M_CO, and compute M_vir = 5 sigma_v^2 R_EVF / G and alpha_vir = 2 M_vir / M_CO.",
+   "software": [
+    "ASTROPY"
+   ],
+   "key_parameters": [
+    "alpha_CO = 6.69 M_sun pc^-2 (K km s^-1)^-1; CO(2-1)/CO(1-0) ratio = 0.70; Galactic alpha_CO(1-0) = 4.35 M_sun pc^-2 (K km s^-1)^-1"
+   ],
+   "assumptions": [
+    "Constant Galactic conversion factor alpha_CO = 6.69 M_sun pc^-2 (K km s^-1)^-1; isotropic velocity distribution and spherical uniform density for virial mass"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Inspect JWST 7.7 um images for low-density gas streams and substructure",
+   "method": "Overlay CO(2-1) PP contours on JWST/MIRI F770W (7.7 um) images and visually inspect the bar region and EVF vicinities for resolved clumps and faint gas streams connecting to the EVFs.",
+   "software": [
+    "ASTROPY"
+   ],
+   "key_parameters": [
+    "MIRI 770W filter (7.7 um)"
+   ],
+   "assumptions": [
+    "7.7 um PAH emission traces molecular gas column density away from star-forming regions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Fraction of barred galaxies containing EVFs",
+   "value": "34",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We study a sample of 29 barred galaxies and find that 34% contain one or more EVFs, while the remaining lack obvious signs of EVFs."
+    },
+    {
+     "loc": "4 RESULTS",
+     "quote": "After examining the PP and PV diagrams of the 29 galaxies in our sample, we identified EVFs in 10 out of 29 galaxies, which represents approximately 34% of the total."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of EVFs identified in barred galaxy sample",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 RESULTS",
+     "quote": "In total, we identified 18 EVFs within 10 galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of EVFs associated with faint 7.7 um gas streams",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 JWST gas streams",
+     "quote": "Upon examining the 7.7 µm band observations of all galaxies with EVFs, we find that out of 18 EVF regions, 9 are associated with faint streams extending from the opposite end of the bar toward the EVF location."
+    }
+   ]
+  },
+  {
+   "quantity": "Milky Way EVF (l = 3.2 deg) velocity spread (FWHM)",
+   "value": "70.64",
+   "uncertainty": "±2.07",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Milky Way spectra",
+     "quote": "This yields a FWHM 70.64 ± 2.07 km s−1 for the EVF component"
+    }
+   ]
+  },
+  {
+   "quantity": "Milky Way EVF (l = 5.4 deg) velocity spread (FWHM)",
+   "value": "68.40",
+   "uncertainty": "±4.19",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Milky Way spectra",
+     "quote": "To produce nevertheless an estimate of ∆v, we again fit a double Gaussian and consider the broadest peak to be the EVF, resulting in ∆v = 68.40 ± 4.19 km s−1."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1097 F1 galactocentric distance (R_cen)",
+   "value": "3.53",
+   "uncertainty": "±0.42",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1097 F1 3.53 ± 0.42 0.12 30.86 ± 0.39 72.68 ± 0.91 2.13 ± 0.61 1207 1"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1097 F1 radius (R_EVF)",
+   "value": "0.12",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1097 F1 3.53 ± 0.42 0.12 30.86 ± 0.39 72.68 ± 0.91 2.13 ± 0.61 1207 1"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1097 F1 velocity spread (Delta v)",
+   "value": "72.68",
+   "uncertainty": "±0.91",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1097 F1 3.53 ± 0.42 0.12 30.86 ± 0.39 72.68 ± 0.91 2.13 ± 0.61 1207 1"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1097 F1 CO(2-1) mass (M_CO)",
+   "value": "2.13e5",
+   "uncertainty": "±0.61e5",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1097 F1 3.53 ± 0.42 0.12 30.86 ± 0.39 72.68 ± 0.91 2.13 ± 0.61 1207 1"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1097 F1 virial parameter (alpha_vir)",
+   "value": "1207",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1097 F1 3.53 ± 0.42 0.12 30.86 ± 0.39 72.68 ± 0.91 2.13 ± 0.61 1207 1"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F1 galactocentric distance (R_cen)",
+   "value": "3.56",
+   "uncertainty": "±0.23",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1300 F1 3.56 ± 0.23 0.10 13.33 ± 1.08 31.40 ± 2.55 0.39 ± 0.13 1043 2"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F1 radius (R_EVF)",
+   "value": "0.10",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1300 F1 3.56 ± 0.23 0.10 13.33 ± 1.08 31.40 ± 2.55 0.39 ± 0.13 1043 2"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F1 velocity spread (Delta v)",
+   "value": "31.40",
+   "uncertainty": "±2.55",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1300 F1 3.56 ± 0.23 0.10 13.33 ± 1.08 31.40 ± 2.55 0.39 ± 0.13 1043 2"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F1 CO(2-1) mass (M_CO)",
+   "value": "0.39e5",
+   "uncertainty": "±0.13e5",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1300 F1 3.56 ± 0.23 0.10 13.33 ± 1.08 31.40 ± 2.55 0.39 ± 0.13 1043 2"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F1 virial parameter (alpha_vir)",
+   "value": "1043",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1300 F1 3.56 ± 0.23 0.10 13.33 ± 1.08 31.40 ± 2.55 0.39 ± 0.13 1043 2"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F2 galactocentric distance (R_cen)",
+   "value": "4.77",
+   "uncertainty": "±0.31",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 4.77 ± 0.31 0.12 18.56 ± 0.29 43.70 ± 0.68 2.71 ± 0.64 368 3"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F2 radius (R_EVF)",
+   "value": "0.12",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 4.77 ± 0.31 0.12 18.56 ± 0.29 43.70 ± 0.68 2.71 ± 0.64 368 3"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F2 velocity spread (Delta v)",
+   "value": "43.70",
+   "uncertainty": "±0.68",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 4.77 ± 0.31 0.12 18.56 ± 0.29 43.70 ± 0.68 2.71 ± 0.64 368 3"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F2 CO(2-1) mass (M_CO)",
+   "value": "2.71e5",
+   "uncertainty": "±0.64e5",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 4.77 ± 0.31 0.12 18.56 ± 0.29 43.70 ± 0.68 2.71 ± 0.64 368 3"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1300 F2 virial parameter (alpha_vir)",
+   "value": "368",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 4.77 ± 0.31 0.12 18.56 ± 0.29 43.70 ± 0.68 2.71 ± 0.64 368 3"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1512 F1 velocity spread (Delta v)",
+   "value": "72.13",
+   "uncertainty": "±2.47",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1512 F1 3.00 ± 0.29 0.11 30.63 ± 1.05 72.13 ± 2.47 1.71 ± 0.44 1464 4"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1512 F1 CO(2-1) mass (M_CO)",
+   "value": "1.71e5",
+   "uncertainty": "±0.44e5",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1512 F1 3.00 ± 0.29 0.11 30.63 ± 1.05 72.13 ± 2.47 1.71 ± 0.44 1464 4"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1512 F1 virial parameter (alpha_vir)",
+   "value": "1464",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC1512 F1 3.00 ± 0.29 0.11 30.63 ± 1.05 72.13 ± 2.47 1.71 ± 0.44 1464 4"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2566 F1 velocity spread (Delta v)",
+   "value": "60.97",
+   "uncertainty": "±1.41",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC2566 F1 3.09 ± 0.37 0.15 25.89 ± 0.60 60.97 ± 1.41 4.21 ± 1.27 550 5"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2566 F1 virial parameter (alpha_vir)",
+   "value": "550",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC2566 F1 3.09 ± 0.37 0.15 25.89 ± 0.60 60.97 ± 1.41 4.21 ± 1.27 550 5"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2566 F2 velocity spread (Delta v)",
+   "value": "67.87",
+   "uncertainty": "±1.66",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 3.56 ± 0.42 0.14 28.82 ± 0.70 67.87 ± 1.66 4.72 ± 1.33 565 6"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2566 F2 virial parameter (alpha_vir)",
+   "value": "565",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 3.56 ± 0.42 0.14 28.82 ± 0.70 67.87 ± 1.66 4.72 ± 1.33 565 6"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2903 F1 velocity spread (Delta v)",
+   "value": "71.20",
+   "uncertainty": "±1.08",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC2903 F1 2.92 ± 0.37 0.09 30.24 ± 0.46 71.20 ± 1.08 1.88 ± 0.96 969 7"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2903 F1 virial parameter (alpha_vir)",
+   "value": "969",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC2903 F1 2.92 ± 0.37 0.09 30.24 ± 0.46 71.20 ± 1.08 1.88 ± 0.96 969 7"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2903 F2 velocity spread (Delta v)",
+   "value": "44.31",
+   "uncertainty": "±0.50",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 3.45 ± 0.44 0.07 18.81 ± 0.21 44.31 ± 0.50 1.21 ± 0.68 509 8"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC2903 F2 virial parameter (alpha_vir)",
+   "value": "509",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 3.45 ± 0.44 0.07 18.81 ± 0.21 44.31 ± 0.50 1.21 ± 0.68 509 8"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F1 velocity spread (Delta v)",
+   "value": "59.37",
+   "uncertainty": "±0.64",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC3627 F1 1.08 ± 0.03 0.09 25.21 ± 0.27 59.37 ± 0.64 1.68 ± 0.51 778 9"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F1 virial parameter (alpha_vir)",
+   "value": "778",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC3627 F1 1.08 ± 0.03 0.09 25.21 ± 0.27 59.37 ± 0.64 1.68 ± 0.51 778 9"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F2 velocity spread (Delta v)",
+   "value": "44.71",
+   "uncertainty": "±0.46",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 2.79 ± 0.08 0.08 18.98 ± 0.19 44.71 ± 0.46 1.31 ± 0.45 524 10"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F2 virial parameter (alpha_vir)",
+   "value": "524",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 2.79 ± 0.08 0.08 18.98 ± 0.19 44.71 ± 0.46 1.31 ± 0.45 524 10"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F3 velocity spread (Delta v)",
+   "value": "44.47",
+   "uncertainty": "±0.84",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F3 3.60 ± 0.10 0.09 18.88 ± 0.36 44.47 ± 0.84 1.55 ± 0.55 492 11"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F3 virial parameter (alpha_vir)",
+   "value": "492",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F3 3.60 ± 0.10 0.09 18.88 ± 0.36 44.47 ± 0.84 1.55 ± 0.55 492 11"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F4 velocity spread (Delta v)",
+   "value": "68.72",
+   "uncertainty": "±0.99",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F4 1.37 ± 0.04 0.11 29.18 ± 0.42 68.72 ± 0.99 9.67 ± 2.61 223 12"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC3627 F4 virial parameter (alpha_vir)",
+   "value": "223",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F4 1.37 ± 0.04 0.11 29.18 ± 0.42 68.72 ± 0.99 9.67 ± 2.61 223 12"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4303 F1 velocity spread (Delta v)",
+   "value": "27.08",
+   "uncertainty": "±0.13",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC4303 F1 2.50 ± 0.17 0.14 11.50 ± 0.05 27.08 ± 0.13 5.55 ± 1.52 76 13"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4303 F1 virial parameter (alpha_vir)",
+   "value": "76",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC4303 F1 2.50 ± 0.17 0.14 11.50 ± 0.05 27.08 ± 0.13 5.55 ± 1.52 76 13"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4303 F2 velocity spread (Delta v)",
+   "value": "42.18",
+   "uncertainty": "±0.50",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 0.84 ± 0.06 0.13 17.91 ± 0.21 42.18 ± 0.50 7.11 ± 1.59 140 14"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4303 F2 virial parameter (alpha_vir)",
+   "value": "140",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 0.84 ± 0.06 0.13 17.91 ± 0.21 42.18 ± 0.50 7.11 ± 1.59 140 14"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4535 F1 velocity spread (Delta v)",
+   "value": "49.85",
+   "uncertainty": "±1.49",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC4535 F1 1.17 ± 0.22 0.15 21.17 ± 0.63 49.85 ± 1.49 1.76 ± 0.68 903 15"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4535 F1 virial parameter (alpha_vir)",
+   "value": "903",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC4535 F1 1.17 ± 0.22 0.15 21.17 ± 0.63 49.85 ± 1.49 1.76 ± 0.68 903 15"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4548 F1 velocity spread (Delta v)",
+   "value": "49.56",
+   "uncertainty": "±2.78",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC4548 F1 0.67 ± 0.06 0.14 21.05 ± 1.18 49.56 ± 2.78 0.50 ± 0.13 2925 16"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4548 F1 virial parameter (alpha_vir)",
+   "value": "2925",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC4548 F1 0.67 ± 0.06 0.14 21.05 ± 1.18 49.56 ± 2.78 0.50 ± 0.13 2925 16"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4548 F2 velocity spread (Delta v)",
+   "value": "37.05",
+   "uncertainty": "±1.05",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 3.02 ± 0.25 0.14 15.73 ± 0.45 37.05 ± 1.05 0.86 ± 0.24 932 17"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4548 F2 virial parameter (alpha_vir)",
+   "value": "932",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "F2 3.02 ± 0.25 0.14 15.73 ± 0.45 37.05 ± 1.05 0.86 ± 0.24 932 17"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC5643 F1 velocity spread (Delta v)",
+   "value": "53.36",
+   "uncertainty": "±0.60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC5643 F1 0.73 ± 0.04 0.11 22.66 ± 0.25 53.36 ± 0.60 8.77 ± 1.79 146 18"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC5643 F1 virial parameter (alpha_vir)",
+   "value": "146",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NGC5643 F1 0.73 ± 0.04 0.11 22.66 ± 0.25 53.36 ± 0.60 8.77 ± 1.79 146 18"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact coordinates (RA, Dec or rotated x, y) and aperture radii of the visually defined circular regions used to isolate each EVF before 2D Gaussian fitting",
+  "Exact polygon vertices or contour definitions drawn in glue to isolate the red and blue bar dust lanes",
+  "Galaxy centre coordinates (x_0, y_0) used for each galaxy to compute R_cen",
+  "Specific PHANGS-ALMA data release version and whether native or homogenized resolution cubes and masks (e.g. broad vs strict masks) were used for integration",
+  "Exact method for calculating the uncertainties on M_CO(2-1) reported in Table 2"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates (RA, Dec) or rotated (x, y) coordinates of the 18 EVF centres and the radii of the initial circular extraction apertures",
+  "Polygon region files defining the red and blue dust lanes drawn in glue",
+  "Adopted galaxy centre coordinates (x_0, y_0) for each galaxy",
+  "Specific PHANGS-ALMA cube product type (e.g. native vs. feathered vs. 12m+7m+TP, strict vs. broad mask) used for integrating PP/PV maps and spectra"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All underlying ALMA and JWST high-level datacubes and images are publicly available via CANFAR and MAST, and the mathematical equations for radii, masses, and virial parameters are explicitly given. However, the dust lane masks and initial circular EVF apertures were drawn manually in glue without publishing the exact region coordinates or aperture sizes, though the diagnostic plots and R_cen values allow approximate localization.",
+ "rediscovery_reason": "The PHANGS-ALMA cubes are publicly available, the 18 EVFs are visually marked in the paper's figures with galactocentric radii and physical properties tabulated in Table 2, and the Gaussian fitting and virial equations are straightforward to re-implement.",
+ "source_card": "cards/2025MNRAS.541.3799K/sonnet/card.md"
+}

@@ -1,0 +1,187 @@
+{
+ "bibcode": "2019A&A...629A...6T",
+ "title": "ALMA view of the <SUP>12</SUP>C/<SUP>13</SUP>C isotopic ratio in starburst galaxies",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935603",
+ "arxiv_id": "1906.06638",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "What are the 12C/13C isotope ratios and their spatial variations in the nuclear regions of NGC 253, NGC 1068 and NGC 4945, measured from 12CN and 13CN N=1-0?",
+ "alma_project_codes": [
+  "2013.1.01151.S",
+  "2011.0.00172.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~3 mm)",
+  "arrays": "36–40 12-m antennas",
+  "angular_resolution": "3.6x1.7\" (NGC 253), 4.5x2.2\" (NGC 1068), 3.6x2.3\" (NGC 4945)",
+  "sensitivity": "rms 12CN/13CN: 1–2/0.3–0.7 (NGC 253), 1–2/0.4–0.7 (NGC 1068), 2–4/0.4–0.9 mJy/beam (NGC 4945)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "12CN N=1-0 ALMA data of NGC 253 (project 2011.0.00172.S)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations",
+      "quote": "$^{12}$CN $N$ = 1–0 data of NGC 253 are therefore taken from (cite: Meier2015) in this work."
+     }
+    ]
+   },
+   "citation": "(cite: Meier2015)"
+  },
+  {
+   "what": {
+    "value": "Single-dish 12CN/13CN integrated intensities and 12C/13C ratios for comparison",
+    "evidence": [
+     {
+      "loc": "2.4 Spatial filtering",
+      "quote": "From these observations $^{12}$C/$^{13}$C isotope ratios of 40$\\pm$10, $\\sim$50, and 40–50, respectively, were determined."
+     }
+    ]
+   },
+   "citation": "(cite: Henkel2014; Aladro2013; Nakajima2018; Wang2004)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image data",
+   "method": "CASA 4.2 pipeline calibration and imaging; GILDAS analysis of line images",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Check missing flux",
+   "method": "Reconstruct ALMA data with single-dish beams and compare integrated fluxes with published single-dish values",
+   "software": [],
+   "key_parameters": [
+    "Recovered 12CN/13CN: ~89%/86% NGC 253; ~30%/53% NGC 1068; ~63% 12CN NGC 4945"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make 12CN/13CN ratio maps",
+   "method": "Ratio of velocity-integrated intensities where 13CN detected at S/N >~ 5 sigma",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive 12CN opacity",
+   "method": "From I(3/2-1/2)/I(1/2-1/2) = (1-e^-tau1)/(1-e^-tau2) with tau1 = 2 tau2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "13CN optically thin; LTE"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive 12C/13C",
+   "method": "Opacity-corrected 12CN intensities divided by 1.082 x I(13CN)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE, optically thin 13CN"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12C/13C average NGC 253",
+   "value": "41.6 (range 30–67)",
+   "uncertainty": "±0.2 (error of mean); ~10% systematic",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "range from 30 to 67 with an average of 41.6 $\\pm$ 0.2 in NGC 253"
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C average NGC 1068",
+   "value": "38.3 (range 24–62)",
+   "uncertainty": "±0.4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "from 24 to 62 with an average of 38.3 $\\pm$ 0.4 in NGC 1068"
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C average NGC 4945",
+   "value": "16.9 (range 6–44)",
+   "uncertainty": "±0.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "from 6 to 44 with an average of 16.9 $\\pm$ 0.3 in NGC 4945"
+    }
+   ]
+  },
+  {
+   "quantity": "I(12CN)/I(13CN) average NGC 253 / NGC 1068 / NGC 4945",
+   "value": "30.0 / 31.4 / 11.5",
+   "uncertainty": "±0.2 / 0.3 / 0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 12CN/13CN line ratios",
+     "quote": "an average of 30.0 $\\pm$ 0.2 (errors given here and elsewhere are standard deviations of the mean) in NGC 253"
+    }
+   ]
+  },
+  {
+   "quantity": "tau(12CN 3/2-1/2) average NGC 253 / NGC 1068 / NGC 4945",
+   "value": "1.1 / 0.7 / 0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Opacities",
+     "quote": "the derived optical depths of $^{12}$CN $J$ = 3/2–1/2 are 1.1, 0.7, and 0.8 in NGC 253, NGC 1068, and NGC 4945, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters (weighting, robust, cell size, image size, deconvolver, masks)",
+  "Continuum subtraction and line-free channels",
+  "Velocity integration ranges for each hyperfine group",
+  "Exact CASA pipeline flux/bandpass/phase calibrators",
+  "How 13CN S/N >= 5 sigma masking and pixel sampling were done",
+  "Beam matching/regridding between 12CN and 13CN cubes",
+  "Procedure for convolving ALMA data to single-dish beams for missing flux",
+  "Mapping of 13CN hyperfine group to J components in Eq. 2 per pixel"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and velocity integration windows",
+  "Pipeline products/calibrators",
+  "Single-dish convolution procedure"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple ratio method with stated equations, but imaging and integration details are unspecified.",
+ "rediscovery_reason": "Data are archival ALMA, method is simple closed-form, and results are numeric, though imaging details must be inferred.",
+ "source_card": "cards/2019A%26A...629A...6T/sonnet/card.md"
+}

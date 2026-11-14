@@ -1,0 +1,2287 @@
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (dust-continuum-mass) ===
+---
+name: alma-dust-continuum-mass
+description: "Turn ALMA (sub)mm continuum flux into dust mass, gas mass, column density or an upper limit, with an opacity law, dust temperature, gas-to-dust ratio and distance chosen the way published ALMA papers choose them. Use when converting a continuum flux or brightness to a disk, core, clump, envelope, debris belt, circumstellar shell or galaxy dust/gas mass, when checking someone else's mass, or when stating mass upper limits for non-detections. Built from 385 ALMA papers (2012-2026)."
+---
+
+# Dust and gas masses from (sub)mm continuum
+
+Measures the mass of emitting dust from a continuum flux density under the optically thin, isothermal
+assumption, then (optionally) a gas mass through a gas-to-dust ratio. The answer is only as good as three
+assumed numbers: opacity kappa_nu, dust temperature T_d, and gas-to-dust ratio. The two mistakes that matter
+most: (1) mixing an opacity quoted **per gram of gas** with one quoted **per gram of dust** (a factor 100
+error), and (2) applying the thin formula to emission that is partly optically thick, which only gives a
+**lower limit** (2018A&A...619A.161C, 2015A&A...573L...1O, 2014ApJ...783L..13P).
+
+> Always report kappa_nu (with its reference frequency, beta and whether it is per dust or per gas mass),
+> T_d, distance, gas-to-dust ratio, and the flux you used. A mass without these is not reproducible.
+
+## When to use
+
+- A detected continuum source (disk, core, clump, envelope, belt, shell, galaxy) and you need M_dust, M_gas,
+  N(H2) or n(H2) from its flux or surface brightness.
+- A non-detection: convert an n-sigma flux limit to a mass limit (3 sigma is the usual choice:
+  2015A&A...583A..66H, 2019ApJ...875L...9W, 2017ApJ...842....8M; 2 sigma in 2024ApJ...963....1O).
+- Population work: dust-mass distributions and M_dust vs M_star relations for disk surveys
+  (2016ApJ...828...46A, 2020A&A...633A.114S, 2014ApJ...787...42C).
+- Core and clump fragmentation studies needing core masses, densities and virial parameters
+  (2020ApJ...894L..14L, 2020ApJ...890...76N, 2019ApJ...871..185L).
+- Sanity-checking a mass quoted in a paper or produced by another tool.
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| Emission likely optically thick (bright compact disks, hot cores, inner envelopes, T_b close to T_d) | Radiative transfer model (RADMC-3D, MCFOST, DALI) or state the result as a lower limit (2015A&A...573L...1O, 2017A&A...604A...6S) |
+| Disk structure, settling, gaps, gas and dust together | Full disk modelling: DALI (13 papers in pack aggregates), RADMC-3D (13), MCFOST/mcfost (10) |
+| High-z galaxy with good FIR photometry | SED fit (MAGPHYS 6, CIGALE 5 in the aggregates; STARDUST in 2024A&A...690A..55S) and use its dust mass, with the single-band mass as a cross-check |
+| Gas mass where CO is detected and alpha_CO is defensible | CO-based mass, then compare with the dust route (2021A&A...652A..98G, 2018Sci...362.1034D) |
+| Continuum dominated by free-free, synchrotron or stellar photosphere | Decompose first (SED with radio data); the dust formula on raw flux overestimates mass (2016A&A...591A..73G, 2017MNRAS.468L..87C) |
+| Extended emission resolved out by the interferometer | Combine with ACA/TP or single-dish, or quote the mass as a lower limit (2014ApJ...787...48X, 2016ApJ...832..148V, 2024ApJ...968L..19F) |
+
+## Steps
+
+1. **Define the emitting object and regime.** Decide the aperture or component (whole disk, ring, crescent,
+   core, clump, belt, galaxy). Note whether you need dust mass, gas mass, column density or volume density;
+   each needs extra inputs (gas-to-dust, mu, a size or thickness). Cores in clusters are usually defined with
+   astrodendro or Clumpfind (2020ApJ...894L..14L, 2020ApJ...890...76N).
+2. **Build a clean continuum flux.**
+   - Image line-free continuum (CASA `tclean`, or GILDAS MAPPING; 2024A&A...691A.180F,
+     2021A&A...652A..98G). The cards rarely state which channels were line-free (the pack counts dozens of
+     cards flagging "line-free channels" as not stated), so record yours. Line contamination of continuum is
+     a real limitation (2013ApJ...774L...7M).
+   - Apply primary-beam correction before measuring flux (8 cards flag PB-correction details as unstated).
+   - Measure the flux: aperture inside a contour (5 sigma contour and 50% PB response in
+     2019ApJ...874...89C), 2D Gaussian with `imfit` (CASA imfit in 3 aggregate papers), or a uv-plane fit
+     (`lmfit` on visibilities in 2025ApJ...986L..22R; emcee on visibilities in the fitting aggregates).
+   - Remove non-dust flux: stellar photosphere (F_dust = F_cen - F_star in 2013ApJ...762L..21M),
+     free-free or synchrotron (2017MNRAS.468L..87C, 2016ApJ...821L..16C, 2016A&A...591A..73G), compact
+     companions or central sources by Gaussian subtraction (2014ApJ...796....1T).
+3. **Choose the dust temperature** (Parameter table). Order of preference seen in the pack: a measured
+   temperature (SED fit, NH3 or CH3CN/line rotational temperature) over a luminosity scaling over a fixed
+   fiducial. Examples: SED fit with SciPy least squares (2020ApJ...890...76N), MCMC SED fit
+   (2018MNRAS.475..448T), T_d from gas temperature (2014ApJ...797...27F, 2016ApJ...828..100F), luminosity
+   scaling for disks (2016ApJ...819..102V, 2021A&A...653A..46V), radiative equilibrium at the belt radius
+   for debris disks (2017ApJ...842....8M, 2025A&A...693A.151M).
+4. **Choose the opacity law** kappa_nu = kappa_0 (nu/nu_0)^beta. Pick the convention of the subfield you
+   will be compared with (Parameter table, `references/parameters.md`), and check whether kappa_0 is per gram
+   of dust or per gram of gas.
+5. **Compute the mass** with the full Planck function (general practice; the Rayleigh-Jeans limit is
+   poor at 20 K and 230 GHz, where h nu / k is about 11 K):
+
+   ```
+   M_dust = F_nu d^2 / (kappa_nu B_nu(T_d))                       # optically thin, isothermal
+   M_gas  = (gas-to-dust) x M_dust                                # or use kappa per gram of gas directly
+   N(H2)  = I_nu / (mu_H2 m_H kappa_nu,gas B_nu(T_d))             # I_nu in surface brightness per sr
+   n(H2)  = M_gas / ((4/3) pi r^3 mu_H2 m_H)                      # as in 2020ApJ...894L..14L
+   ```
+
+   Sanity number: with kappa = 2.3 cm2/g at 1.3 mm and T_d = 20 K, 1 mJy at 140 pc is about 0.57 Earth
+   masses of dust; 2015A&A...583A..66H uses exactly M_dust = 0.566 [F_1300/mJy (d/140 pc)^2] M_earth.
+   For high-z sources use the luminosity distance, rest-frame frequency and the (1+z) factor (general
+   practice), and correct for the CMB as 2016ApJ...822...80S, 2017Natur.545..457D, 2017ApJ...851..145M
+   and 2015MNRAS.452...54M do; 2020ApJ...892...66M uses the Kovacs-style thin equation with CMB correction.
+6. **Check optical depth.** Compute tau from the peak brightness temperature against T_d
+   (tau = -ln(1 - T_b/T_d), general practice); 2018A&A...619A.161C did this and found tau about 0.5-0.6,
+   so called its masses lower limits. If tau is not small, report a lower limit or move to RT modelling.
+7. **Convert to gas, if needed.** Gas-to-dust 100 is the default (Parameter table); scale with
+   metallicity for galaxies and the Magellanic Clouds (2020ApJ...892...66M, 2020ApJ...891..164S,
+   2017MNRAS.469.4683C). Cross-check with CO where possible (2021A&A...652A..98G).
+8. **Handle limits and samples.** Convert n-sigma limits with the same kappa and T. For samples with
+   non-detections use survival analysis (Kaplan-Meier in ASURV: 2016ApJ...828...46A) or Bayesian
+   regression with censored data (linmix: 2020A&A...633A.114S).
+9. **Write the error budget** (Verification checks). In the budgets the papers quote, kappa and T_d terms are larger than the flux-calibration term (2014ApJ...787...48X).
+
+## Parameter defaults and ranges
+
+Counts below are my own count of distinct bibcodes in the pack's "Key parameters" and "Assumptions" lines,
+which list 308 of the 385 papers (the lists are truncated), so they are lower bounds.
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| Gas-to-dust (mass) | 100 | 40 to 300 typical; 4594 in a metal-poor dwarf | about 95 use 100 | 100: 2016ApJ...828...46A, 2020ApJ...894L..14L; 141: 2013ApJ...779...96T, 2018ApJ...853..160C; 150: 2019A&A...621A.122B; 90 +/- 25: 2014MNRAS.438.1267S; 300 (LMC, C-rich AGB): 2020ApJ...891..164S, 2024A&A...686A.274V; 40: 2017A&A...597A..99W; 4594: 2020ApJ...892..147S |
+| T_d, disks and cores (fixed) | 20 K | 6 to 30 K for cold gas | 38 use 20 K | 2016ApJ...828...46A, 2019A&A...623A.150V, 2020ApJ...894L..14L; 15 K: 2018A&A...619A.161C, 2017ApJ...838..114K; 6 K: 2024ApJ...968L..19F; 10 K: 2016ApJ...823..160D |
+| T_d, disks (scaled) | 25 K (L*/Lsun)^0.25 | exponent 0.17 to 0.25; 20 K fallback or minimum (2021A&A...653A..46V, 2018ApJ...868L...3M) | 7 use an L scaling | 2016ApJ...819..102V, 2021A&A...653A..46V, 2017ApJ...846...70P; RT-calibrated: 2020ApJ...892..111F, 2024A&A...684A.134R |
+| T_d, protostellar / hot cores | by evolutionary class | 20 / 50 / 100 K; up to 150 to 300 K | (see examples) | 2020A&A...635A...2S, 2018A&A...615A...9P, 2024A&A...690A.185W, 2019A&A...628A..27B, 2020ApJ...892..152H |
+| T_d, high-z galaxies | 35 to 47 K with beta 1.5 to 1.8 | 25 K (mass-weighted) to 100 K (hot DOG) | (see examples) | 47 K/1.6: 2016ApJ...816...37V, 2017Natur.545..457D; 25 K: 2020ApJ...892...66M, 2024ApJ...963....1O; 50-100 K: 2018Sci...362.1034D |
+| T_d, debris belts | radiative equilibrium | 25 to 51 K | (see examples) | 2017ApJ...842....8M, 2025A&A...693A.151M, 2013ApJ...762L..21M |
+| kappa, disks / debris (per dust) | 10 cm2/g at 1000 GHz, beta 1 (2.3 cm2/g at 230 GHz) | 2 to 3.5 cm2/g at 0.9 to 1.3 mm | 16 use the 1000 GHz form; 18 quote 2.3 cm2/g | 2016ApJ...828...46A, 2019A&A...623A.150V, 2017ApJ...842....8M, 2025A&A...693A.151M |
+| kappa, disks, shallow beta | 2.3 cm2/g (nu/230 GHz)^0.4 | beta 0.4 | (see examples) | 2014ApJ...787...42C, 2017ApJ...846...70P, 2018ApJ...869...17L, 2017A&A...597A..32V |
+| kappa, cores (OH94, per dust) | 0.899 cm2/g at 1.3 mm | 0.86 to 1.11 cm2/g at 1.3 mm | 12 | 2020ApJ...894L..14L, 2018ApJ...853..160C, 2017ApJ...849...68S, 2019A&A...621A.122B |
+| kappa, per gas (includes 100) | 0.01 cm2/g at 230 GHz; 0.1 (nu/1000 GHz)^beta | 0.008 to 0.02 cm2/g near 1.3 mm | (see examples) | 2019ApJ...884...48C, 2018MNRAS.475..448T, 2017A&A...600A.141K, 2014ApJ...791...20R, 2018ApJ...855...24P |
+| kappa, galaxies | 0.04 to 0.15 m2/kg near 850 um, beta 1.8 | 0.0431 m2/kg at 352.6 GHz; 0.0865 at 351 GHz | (see examples) | 2020ApJ...892...66M, 2018Sci...362.1034D, 2014MNRAS.438.1267S, 2021A&A...652A..98G |
+| beta | 1 (disks, kappa normalised at 1000 GHz); 1.5 to 1.8 (cores, galaxies) | 0.4 to 2.2 | 21 use 1; 29 use 1.5 to 1.9 | 2016ApJ...828...46A; 2020ApJ...892...66M; 2016ApJ...833..209O |
+| mu (per H2) | 2.8 for N(H2), n(H2), mass | 2.33 to 2.8; 2.37 per free particle | 10 | 2014ApJ...791..108F, 2019A&A...628A..27B, 2024ApJ...962...48J; 2.37: 2016ApJ...823..160D |
+| Upper-limit significance | 3 sigma | 2 to 3 sigma | (see examples) | 2015A&A...583A..66H, 2019ApJ...875L...9W, 2024ApJ...963....1O |
+
+Longer lists by subfield (opacity normalisations, temperature prescriptions, gas-to-dust variants) are in
+`references/parameters.md`.
+
+## Software
+
+From the pack aggregates (software named in the matched steps of all 385 papers):
+
+| Tool | Papers | What it is used for |
+|---|---|---|
+| CASA | 15 (+3 imfit, +1 simobserve) | continuum imaging, `imfit` Gaussian fluxes, simulated observations of models |
+| DALI | 13 | thermochemical disk models giving gas and dust masses together |
+| RADMC-3D / RADMC3D | 13 | dust RT; e.g. turning a flux limit into a disk mass limit (2019MNRAS.488.1005P) |
+| MCFOST / mcfost | 10 | disk RT and SED fitting |
+| emcee | 7 | MCMC for SED and visibility fits |
+| MAGPHYS / magphys | 6 | galaxy SED fits giving dust mass (2020ApJ...892...66M uses its stellar masses) |
+| CIGALE | 5 | galaxy SED fits incl. dust mass (2025ApJ...995L..63L) |
+| LIME | 4 | non-LTE line RT for envelopes and disks |
+| MIRIAD, GILDAS MAPPING | 3, 2 | imaging outside CASA |
+| SciPy | 3 | modified blackbody least squares (2020ApJ...890...76N) |
+| ASURV, linmix / linmix_err | 2, 3 | censored statistics on dust-mass samples |
+
+The simple thin-dust formula itself is almost always custom code; no package dominates.
+
+## Pitfalls
+
+- **Per gas vs per dust opacity.** Many cards quote kappa that already includes gas-to-dust 100
+  (2018MNRAS.475..448T says so explicitly; 2019ApJ...884...48C, 2018ApJ...853..171G). Multiplying again by 100
+  inflates gas mass 100x; using it as a dust opacity inflates dust mass 100x.
+- **Units.** 1 m2/kg = 10 cm2/g (general). Galaxy papers quote m2/kg, disk papers cm2/g.
+- **Optical depth.** Thin masses of bright compact sources are lower limits (2018A&A...619A.161C,
+  2015A&A...573L...1O, 2017A&A...604A...6S, 2016ApJ...832..178V, 2014ApJ...783L..13P). A lower spectral index
+  can come from optical depth, not grain growth (2018A&A...619A.161C).
+- **Temperature dominates.** Factor 2 in T gives about factor 2 in mass (pack validation list);
+  2017ApJ...838..114K finds 10 K gives 2x higher and 25 K about 2x lower masses than 15 K;
+  2020ApJ...894L..14L finds 50 K lowers core masses 3x vs 20 K. 2020ApJ...894L..14L admits T_d at
+  2000 au is unknown. Isothermal fits can make masses upper limits when warm dust dominates
+  (2016MNRAS.457.4536W) or lower limits when cold dust hides (2016ApJ...833L...6C, 2017MNRAS.468L..87C).
+- **Opacity uncertainty is a factor 2 to 5.** Factor 2 (2018ApJ...855...24P, 2015ApJ...808..102K), factor 2-3
+  (2016A&A...593L..14F), factor 3 between Hildebrand and OH94 (2014ApJ...796....1T), factor five
+  (2013ApJ...764L..14Z). Large grains can hide mass, so masses are lower limits (2015ApJ...808...69B,
+  2016MNRAS.458L..29C).
+- **Gas-to-dust is not universal.** It rises at low metallicity (2020ApJ...892...66M, 2020ApJ...892..147S),
+  differs for AGB envelopes (2024A&A...686A.274V), and disk gas masses from dust conflict with CO by about
+  10x (2016ApJ...828...46A). Dust-based gas misses the atomic phase (2020ApJ...892...66M).
+- **Resolved-out flux.** Interferometers miss extended emission: 43% of single-dish flux recovered in
+  2016ApJ...832..148V, ratio 0.53 in 2014ApJ...787...48X, N(H2) 4x low in 2024ApJ...968L..19F.
+- **Contaminating emission.** Free-free, synchrotron, the stellar photosphere and line emission all add to
+  the continuum (2016A&A...591A..73G, 2013ApJ...762L..21M, 2013ApJ...774L...7M).
+- **Distance.** Mass scales as d^2; distance can dominate limit uncertainties (2015A&A...583A..66H) and
+  disputed distances change masses (2014ApJ...791..108F, 2017A&A...603A..10B).
+- **Core definition.** Core boundaries and thresholds change masses by 10-40% (2015MNRAS.449..715W) and are
+  subjective (2013ApJ...779...96T, 2019ApJ...871..185L).
+- **Unstated settings.** Cards most often flag as missing: CASA version (36), self-calibration intervals
+  (18 + 13), line-free channels (12 + 12 + 10 under different wordings), flux-scale uncertainty (9), PB
+  correction (8). State all of these.
+
+## Verification checks
+
+What the papers did:
+
+- **Vary T_d and beta** and report the spread: T 15-35 K gives 25-50% systematic (2020ApJ...892...66M);
+  20-30 K (2018ApJ...854L...4R, 2016ApJ...833...12R); 1.5x T test of tau (2018A&A...619A.161C); 50 K and
+  random-T appendix (2020ApJ...894L..14L); other T prescriptions repeated (2020A&A...633A.114S).
+- **Vary the opacity** (Hildebrand vs OH94: 2014ApJ...796....1T) or bracket with grain size
+  (100 um vs 1 mm grains: 2024ApJ...974..102S).
+- **Explicit error budget**: 30% kappa, 15% flux calibration, about 10% temperature (2014ApJ...787...48X);
+  mass about 40% and column density about 35% (2020ApJ...890...76N).
+- **Optical depth from T_b** (2018A&A...619A.161C).
+- **Independent mass**: CO-based gas mass (2021A&A...652A..98G median offset 0.23 dex;
+  2018Sci...362.1034D), H13CO+ or other tracers, earlier ALMA or single-dish fluxes
+  (2017ApJ...842....8M, 2024ApJ...968L..19F), full SED fit as a sanity check (CIGALE in the aggregates).
+- **Physical plausibility**: 2020ApJ...890L..14T rejected uncoated-grain opacities because they gave a shell
+  mass above the star's possible initial mass.
+- **Detection completeness**: injection-recovery for faint compact sources (2024ApJ...974..102S); 5 sigma
+  mass sensitivity per beam (2020ApJ...894L..14L).
+
+What a careful referee adds:
+
+- Recompute one mass from the quoted F_nu, d, kappa, T (the 0.57 Earth-mass sanity number above).
+- Confirm the opacity is per dust or per gas and that gas-to-dust is applied once.
+- Confirm the flux is PB-corrected, line-free, and free of free-free and stellar flux.
+- Compare the image peak T_b with T_d before accepting "optically thin".
+- Check that limits use the same kappa and T as detections and that censored data are handled with
+  survival analysis.
+
+## Source cards
+
+The full list with titles is in `references/sources.md` (generated). The most informative cards for this
+technique:
+
+- 2016ApJ...828...46A: Lupus disk survey; T 20 K, 10 cm2/g at 1000 GHz, beta 1; ASURV.
+- 2020A&A...633A.114S: brown-dwarf disks; kappa_890 = 2 cm2/g; repeats with other T laws; linmix.
+- 2015A&A...583A..66H: closed-form M_dust = 0.566 F (d/140)^2 M_earth; distance-dominated limits.
+- 2018A&A...619A.161C: crescent mass, tau from T_b, lower limits.
+- 2014ApJ...796....1T: component subtraction; Hildebrand vs OH94 factor 3.
+- 2017ApJ...842....8M: Fomalhaut belt; radiative-equilibrium T; mass limit for a point source.
+- 2025A&A...693A.151M: 74 debris belts; kappa 0.23 m2/kg at 1.33 mm; T(R) law.
+- 2020ApJ...894L..14L: CMZ cores; OH94 0.899 cm2/g; T sensitivity appendix.
+- 2020ApJ...890...76N: clump SED for T and beta; core masses with 40% error.
+- 2020A&A...635A...2S: T_d by evolutionary class (20/50/100 K).
+- 2019A&A...628A..27B: hot-core column densities at 150 K, mu 2.8.
+- 2020ApJ...892...66M: ASPECS stacking; Kovacs thin formula, CMB, metallicity-dependent gas-to-dust.
+- 2018Sci...362.1034D: hot DOG; 50-100 K bracket; dust vs CO gas.
+- 2021A&A...652A..98G: GATOS tori; dust vs CO masses agree to 0.23 dex.
+- 2014ApJ...787...48X: error budget; interferometer/single-dish ratio.
+- 2014MNRAS.438.1267S: SMG dust masses with kappa_870 = 0.15 m2/kg and gas-to-dust 90 +/- 25.
+- 2020ApJ...891..164S: LMC hot core; dust-to-gas scaled by metallicity; three T values.
+- 2020ApJ...890L..14T: AGB shell mass; plausibility rejects an opacity.
+- 2015A&A...573L...1O: red supergiant dust; thin-limit lower limits; resolved-out flux.
+- 2019MNRAS.488.1005P: RT conversion of flux limits to circumplanetary disk mass limits.
+- 2024ApJ...974..102S: spectral index, grain-size-dependent kappa, injection-recovery.
+- 2016ApJ...819..102V: T = 25 (L/Lsun)^0.25 for low-mass disks.
+- 2017ApJ...838..114K: explicit T sensitivity (10 / 15 / 25 K).
+
+=== references/parameters.md ===
+# Parameter choices by subfield (dust-continuum-mass)
+
+All values are copied from the evidence pack (`skills/packs/dust-continuum-mass.md`), "Key parameters" and
+"Assumptions" lists. Those lists are truncated in the pack, so this is a sample, not a census.
+Unit note (general): 1 m2/kg = 10 cm2/g. "per gas" means the opacity already includes a gas-to-dust ratio.
+
+## Opacity normalisations
+
+| Subfield | kappa_0 | nu_0 or lambda | beta | Per | Papers |
+|---|---|---|---|---|---|
+| Protoplanetary disks | 10 cm2/g | 1000 GHz | 1 | dust | 2016ApJ...828...46A, 2019A&A...623A.150V, 2019A&A...628A..85V, 2020A&A...640A..27V, 2018A&A...619A.161C, 2017AJ....153..240A, 2024A&A...684A.134R |
+| Protoplanetary disks | 2.3 cm2/g | 230 GHz | 0.4 | dust | 2014ApJ...787...42C, 2017ApJ...846...70P, 2018ApJ...859...32P, 2018ApJ...869...17L, 2017ApJ...841L..11B, 2017A&A...597A..32V |
+| Protoplanetary disks | 2.7 cm2/g | 885 um | 0.4 | dust | 2016ApJ...819..102V |
+| Protoplanetary disks | 2 cm2/g | 890 um | n/a | dust | 2020A&A...633A.114S |
+| Protoplanetary disks | 3.4 cm2/g | 880 um | n/a | dust | 2015ApJ...805L..17B, 2017ApJ...835...17M |
+| Protoplanetary disks | 0.02 cm2/g | 0.89 to 1.3 mm | n/a | gas | 2014ApJ...791...20R, 2014Natur.514..600D |
+| Disks, grain-size dependent | 0.42 / 1.9 cm2/g | 1.3 mm | n/a | dust (100 um / 1 mm grains) | 2024ApJ...974..102S |
+| Debris disks | 2.3 cm2/g | 1.3 mm | n/a | dust | 2017ApJ...842....8M, 2018ApJ...869...75M |
+| Debris disks | 0.23 m2/kg | 1.33 mm (from 1 m2/kg at 1000 GHz, linear) | 1 | dust | 2025A&A...693A.151M |
+| Debris disks | 2.7 cm2/g | 1.3 mm | n/a | dust | 2013ApJ...762L..21M |
+| White-dwarf debris | 1.7 cm2/g | 870 um | n/a | dust | 2014MNRAS.444.1821F |
+| Dense cores (OH94) | 0.899 cm2/g | 1.3 mm | n/a | dust | 2020ApJ...894L..14L, 2018ApJ...853..160C, 2017ApJ...849...68S, 2018ApJ...869...59W |
+| Dense cores (OH94) | 1.11 cm2/g | 230 GHz | n/a | dust | 2017A&A...604A...6S, 2019A&A...621A.122B |
+| Dense cores | 0.9 cm2/g (lambda/1.3 mm)^beta | 1.3 mm | 1.5 | dust | 2016ApJ...833..209O |
+| Cores / clumps (Hildebrand) | 0.1 cm2/g | 1000 GHz | 0.5 to 1.8 | gas | 2016A&A...596A..88L, 2017A&A...600A.141K, 2018MNRAS.475..448T, 2021A&A...648A..41V |
+| Cores / clumps | 0.01 cm2/g | 230 GHz | n/a | gas | 2019ApJ...884...48C, 2015ApJ...808..102K, 2014ApJ...789L...4T |
+| Cores / clumps | 0.00899 cm2/g | 1.3 mm | n/a | gas | 2018ApJ...855...24P, 2019NatAs...3..517Z |
+| Galactic Centre clouds | 0.04 cm2/g (nu/505 GHz)^1.75 | 505 GHz | 1.75 | gas | 2015MNRAS.449..715W, 2016MNRAS.457.4536W |
+| Galaxies (Li and Draine type) | 0.0431 m2/kg | 352.6 GHz | 1.8 | dust | 2020ApJ...892...66M |
+| Galaxies | 0.0484 m2/kg | 850 um | 1.8 | dust | 2018Sci...362.1034D |
+| Galaxies | 0.15 m2/kg | 870 um | n/a | dust | 2014MNRAS.438.1267S |
+| Galaxies | 0.051 m2/kg | 500 um | 1.8 | dust | 2024ApJ...963....1O |
+| Galaxies | 0.0865 m2/kg | 351 GHz | n/a | dust | 2021A&A...652A..98G |
+| Galaxies | 2.64 m2/kg | 125 um | 1.5 | dust | 2015ApJ...810...91H, 2019ApJ...881...63N |
+| Dwarf galaxies | 1.6 m2/kg | 160 um | 1.7 | dust | 2017MNRAS.468L..87C |
+| AGB / RSG envelopes | 7 cm2/g | mm | n/a | dust | 2018A&A...615A..28D, 2018A&A...616A..34H |
+| AGB envelope (OH94 coated) | 1.8 cm2/g | mm | n/a | dust | 2020ApJ...890L..14T |
+| Comet coma | 0.17 to 0.467 m2/kg | 233 GHz | n/a | dust | 2025ApJ...986L..22R |
+
+## Temperature prescriptions
+
+| Prescription | Papers |
+|---|---|
+| Fixed 20 K for all disks, not scaled with L* | 2016ApJ...828...46A |
+| T = 25 K (L*/Lsun)^0.25 | 2016ApJ...819..102V, 2021A&A...653A..46V (20 K when L* unknown) |
+| T = 25 K (L*/Lsun)^0.17 | 2017ApJ...846...70P |
+| RT-calibrated: flaring angle 0.02, R_subl = 0.07 sqrt(L*) | 2020ApJ...892..111F, 2024A&A...684A.134R |
+| T_d = [zeta L / (4 pi sigma r^2)]^(1/4), zeta = 0.02 at the source radius | 2024ApJ...974..102S |
+| T_d = 38 K (r/100 au)^-0.4 (L_int/Lsun)^0.2 for protostellar disks | 2020A&A...644A..11L |
+| T(R) = 278.3 L*^0.25 R^-0.5 (blackbody grains) for debris belts | 2025A&A...693A.151M |
+| 20 K (no counterpart), 50 K (IR or radio counterpart), 100 K (hot core) | 2020A&A...635A...2S |
+| 35 K with IR counterpart, 15 K without | 2018A&A...615A...9P |
+| T by L/M: 20 K (L/M < 1), 35 K (1 to 10), max(21.1 (L/M)^0.22, 35 K) above 10 | 2024A&A...690A.185W |
+| T_d = 43 (L/Lsun)^0.25 K | 2024A&A...690A..46S |
+| T_d = gas temperature from NH3 or line rotational temperature | 2014ApJ...797...27F, 2016ApJ...828..100F, 2020ApJ...890...76N |
+| Clump SED fit for T_d and beta (22 K / 2.1 prestellar, 28 K / 1.6 protostellar) | 2020ApJ...890...76N |
+| High-z: 47 K, beta 1.6 (quasar hosts) | 2016ApJ...816...37V, 2017Natur.545..457D, 2024ApJ...968....9W |
+| High-z: mass-weighted 25 K | 2020ApJ...892...66M, 2024ApJ...963....1O |
+| High-z: 35 K, beta 1.5 | 2017ApJ...851..145M |
+
+## Gas-to-dust variants
+
+| Value | Context | Papers |
+|---|---|---|
+| 100 | default for disks, cores, many galaxies | 2016ApJ...828...46A, 2020ApJ...894L..14L, 2019A&A...628A..27B |
+| 141 | Draine-type value for cores and clouds | 2013ApJ...779...96T, 2017MNRAS.464L..31H, 2018ApJ...853..160C |
+| 150 to 154 | massive star formation, hot cores | 2017A&A...603A..10B, 2019A&A...621A.122B, 2015ApJ...813L..19J, 2019ApJ...871..170M |
+| 90 +/- 25 | SMGs | 2014MNRAS.438.1267S, 2017ApJ...839...58S, 2018ApJ...859...12G |
+| about 120 from 12+log(O/H) = 8.53 | metallicity-scaled galaxies | 2017MNRAS.469.4683C |
+| 100 at solar metallicity, scaled with mass-metallicity relation | ASPECS stacks | 2020ApJ...892...66M |
+| 300 (dust-to-gas 0.0027) | LMC | 2020ApJ...891..164S |
+| 300 / 167 | C-rich / O-rich AGB envelopes | 2024A&A...686A.274V |
+| 40 | AGB wind model | 2017A&A...597A..99W |
+| 4594 +/- 2848 | extremely metal-poor dwarf DDO 70 | 2020ApJ...892..147S |
+| 75 to 100, tuned to HD | TW Hya disk | 2015ApJ...799..204C |
+
+=== EVIDENCE PACK (dust-continuum-mass) ===
+# Evidence pack: Dust and gas masses from (sub)mm continuum (`dust-continuum-mass`)
+
+Scope: dust (and gas) masses from optically thin continuum flux: opacity law, temperature, gas-to-dust
+
+Built from 385 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `dust mass|(?:gas|disk|disc|core|clump|envelope|total) mass\w* (?:from|using|via|based on) (?:the )?(?:\w+ )?(?:dust|continuum|mm|millimet|submm)|optically thin dust|gas[- ]to[- ]dust`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 178
+- protoplanetary_disks: 150
+- astrochemistry: 79
+- high_z_galaxies: 68
+- milky_way_ism: 50
+- agn_and_quasars: 28
+- nearby_galaxies: 23
+- evolved_stars: 19
+- debris_disks: 15
+- exoplanets: 13
+- stellar_physics: 10
+- galaxy_clusters_and_sz: 5
+- cosmology: 1
+- other: 1
+- solar_system: 1
+
+### Software named in the matched steps
+- CASA: 15
+- DALI: 13
+- RADMC-3D: 11
+- emcee: 7
+- MCFOST: 5
+- MAGPHYS: 5
+- CIGALE: 5
+- mcfost: 5
+- LIME: 4
+- CASA imfit: 3
+- MIRIAD: 3
+- SciPy: 3
+- GILDAS MAPPING: 2
+- ASURV: 2
+- IRAF: 2
+- ALCHEMIC: 2
+- RADMC3D: 2
+- linmix: 2
+- MCMC (custom): 1
+- HIPE: 1
+- Diskfit: 1
+- TORUS: 1
+- DUSTY: 1
+- MoD: 1
+- Monte Carlo radiative transfer (Dullemond et al. 2002): 1
+- Du & Bergin thermo-chemical code: 1
+- Galfit-M: 1
+- Monte Carlo CSE code (Bernes 1979; Schoier & Olofsson 2001): 1
+- RADEX: 1
+- R NADA: 1
+- grasil: 1
+- magphys: 1
+- CASA simobserve: 1
+- MCMax: 1
+- linmix_err: 1
+- CLOUDY: 1
+- Starburst99: 1
+- Python model library: 1
+- FRIED grid: 1
+- code of Agundez et al. 2012: 1
+
+### Fitting methods (most common phrasings)
+- Fit method not specified; errors from range of missing flux: 1
+- chi2 minimization with MCMC; 1 sigma confidence intervals: 1
+- chi^2 minimisation: 1
+- modified Levenberg-Marquardt, 1 sigma errors from covariance matrix: 1
+- By eye; no chi2 or MCMC: 1
+- chi^2 with uncertainties set to max of observed error and 10% of flux; model uncertainties neglected: 1
+- Parameters chosen heuristically, no formal fit: 1
+- chi2 minimisation over grid; errors from 1 sigma chi2 error ellipse: 1
+- Manual iterative adjustment to visual resemblance; no grid or statistical fit: 1
+- not a formal fit: 1
+- Linear least squares on binned averages; Kaplan-Meier for censored size data: 1
+- emcee MCMC on visibilities: 1
+- Affine invariant MCMC (emcee), chains initialized around Andrews et al. 2010 values: 1
+- Greybody fit to Herschel+ALMA for ULASJ1234: Td=31+-4 K, beta=2.5+-0.3 (not adopted): 1
+- Chi2 comparison and F-test: 1
+- Grid search chi2 minimisation, multi-step: 1
+- chi-square minimisation; scaling factor 0.05 to 2 in 1000 steps; 1σ confidence interval: 1
+- Manual parameter tuning, no formal fit: 1
+- linmix_err Bayesian regression: 1
+- Manual fitting; MCMC or chi2 not practical: 1
+- MCMC linear fit including 10% flux uncertainty: 1
+- CIGALE probability distribution function analysis, likelihood-weighted mean: 1
+- Affine-invariant MCMC, likelihood ∝ exp(-chi2/2), uniform priors: 1
+- scipy.optimize.minimize Gaussian fit to mimicked profile: 1
+- maximum likelihood: 1
+- MCMC; priors not stated: 1
+- Iterations until change <5%: 1
+- Manual iterative adjustment, no sampler: 1
+- By-eye, no formal fit: 1
+- Manual adjustment of abundance profiles to match azimuthal averages on average; no formal fit stated: 1
+- MCMC posterior means and 68th percentiles: 1
+- Linear regression in log-log, upper limits excluded: 1
+- Affine-invariant emcee, lnL=-chi^2/2, uniform priors (log-uniform for dust mass); 10 free parameters: 1
+- Manual tuning of parameters to best fit SED: 1
+- 2D Gaussian (imfit): 1
+- MCMC with emcee; posterior medians and 16/84 percentiles: 1
+- by-eye model, r0=0.5'', V_sys=15, v0=7.5 km/s: 1
+- best-fit T_d from two flux densities; 1 sigma ~10 K: 1
+- linmix regression; sub-luminous objects excluded: 1
+- Single MBB SED fit (Feltre et al. 2012 code): 1
+
+### Validation checks used
+- Mass uncertainty factor of five from range of opacities in Ossenkopf & Henning: 1
+- Point source removed test gave 3.9 Jy: 1
+- Compared Sigma_c,mm with Sigma_c,min and Sigma_c,max: 1
+- Agreement with full dust models (Bianchi 2013): 1
+- Compared with Kauffmann & Pillai mass-size relation: 1
+- Compared with CO-derived gas mass of LESS 73: 1
+- error budget: 30% kappa, 15% flux cal, ~10% temperature: 1
+- Compared with H13CO+ derived values: 1
+- Best-fit model visibilities compared with binned data; T_ext variations give consistent results: 1
+- Qualitative agreement, contrast ~100 between rings: 1
+- T_dust and beta uncertainties give ~10% column density uncertainty: 1
+- Compared with Ossenkopf & Henning opacity (factor 3 higher masses): 1
+- Herschel 70 um non-detection rules out uniform T >~50 K: 1
+- results robust to 20% flux calibration error at 0.45 mm: 1
+- Upper limits uncertainty dominated by distance: 1
+- CO would be detected in 90% of models for other disks: 1
+- Compared with 850 um flux, spectral index 2.2±0.6: 1
+- Reproduces HD flux 76.6 vs observed 70.6 Jy km/s: 1
+- M_ISM/M_H2 close to unity for resolved regions: 1
+- Sensitivity to temperature tested (5 K, 25 K): 1
+- CO and dust masses agree: 1
+- Agreement among three methods: 1
+- discussed optical depth: disks marginally optically thick if mean T > 80 K: 1
+- Tested initial T_K of 8 K (age 6.1e4 yr): 1
+- Mass vs threshold tested (5-10e22 changes mass by 10-40%); compared with Immer et al. and L12: 1
+- Small model grid with different cavity radii and delta values; uncertainty within 5 AU and an order of magnitude: 1
+- Compared to Seymour+12 and Drouart+14 IR luminosities: 1
+- DUSTY MLR inherent uncertainty ~30%; luminosities agree with GS16: 1
+- CIGALE full-SED fit as sanity check: 1
+- Sensitivity to T and beta varied by 20%: 1
+- Range across three SED models adopted as uncertainty: 1
+- Inclination uncertainty not included in M_dyn errors: 1
+- Dust mass varies by 1.2 for T=25/35 K and by 2 for beta=1.0/2.0: 1
+- Masses agree with Harvey et al. 2012 within a factor of 3: 1
+- Compared with Remy-Ruyer 2014 gas-to-dust values: 1
+- Compared with Pinte et al. (2016) masses for optically thin ALMA rings B2-B6: 1
+- discussed that T and opacity dominate uncertainty (factor 2 in T gives factor 2 in mass): 1
+- Non-cm detections imply free-free <~0.03 mJy: 1
+- Compared with Cycle 0 1.1 mm results (~10-20% for MMS-2): 1
+- Av compared with SED fit (factor of two difference): 1
+
+### Key parameters and settings (bibcode: value)
+- 2013ApJ...762L..21M: kappa = 2.7 cm^2/g; outer belt T ≈ 25 K
+- 2014ApJ...785..111W: Td=35 K, beta=1.8
+- 2014ApJ...787...42C: kappa=2.3 cm2/g at 230 GHz, beta=0.4, d=145 pc
+- 2014ApJ...787...48X: T=43.0 K, kappa_690GHz = 0.16 m2/kg, D=84 Mpc
+- 2014ApJ...791...20R: R_in = 0.05 AU; free parameters M_disk (Sigma_10AU), p, R_out
+- 2014ApJ...791...20R: Grain size distribution n(a) ∝ a^3, amin 0.1 micron; T_ext = 10 K (5, 15 K tested); T ∝ R^-3/4 beyond R_thin
+- 2014ApJ...791L...6W: initial size 1 μm, alpha=2e-3, M*=2.4 Msun, dust mass 5e-4 Msun
+- 2014ApJ...792L..25V: m_dust 6.6e-4 to 4.5e-2 Msun; eps_CS 3.5e-9 to 3.5e-11; delta 1 to 100
+- 2014ApJ...795L..25R: kappa_3mm = 0.27 cm2/g
+- 2014ApJ...796....1T: Td = 10-42 K, beta=0.5, kappa0.9mm=0.053 cm2/g, d=140 pc
+- 2014ApJ...797...27F: kappa_0 = 0.1 cm2/g at 1000 GHz; beta 1.8 (SM1N), 0.4 (SM1) from SMA/ALMA
+- 2014MNRAS.444.1821F: kappa = 1.7 cm2/g at 870 um
+- 2015A&A...583A..66H: stellar mass 0.5 Msun; other parameters free
+- 2015ApJ...801...82H: Tdust fixed to 100 K or 20 K
+- 2015ApJ...805L..17B: d = 145 pc; kappa(880 um) = 3.4 cm2/g
+- 2015ApJ...813L..19J: Td=190 K, gas-to-dust 154, kappa(1.21 mm)=0.24 cm2/g
+- 2015ApJ...814...22E: T_dust mass-weighted 111 K; opacity 1.48e-2 cm2/g; gas-to-dust 100
+- 2015MNRAS.449..715W: column density threshold 5 x 10^22 cm^-2
+- 2015MNRAS.449..715W: k_nu = 0.04 cm2 g-1 (nu/505 GHz)^1.75
+- 2016A&A...585A..58V: Sigma(r) power law with exponential cutoff, gamma=1
+- 2016A&A...596A..50G: Fitted: luminosity, dust optical depth, dust temperature at inner radius
+- 2016A&A...596A..75S: kappa at 240um 5.17 cm2/g; 100um band excluded from MBB fit
+- 2016ApJ...816...37V: L_FIR 42.5–122.5 um; L_TIR 8–1000 um rest-frame
+- 2016ApJ...816...37V: D=1.5x deconvolved size; i=25, 50 deg; 55 deg and 3±1 kpc for J2348–3054
+- 2016ApJ...819..102V: Disk mass 1e-4 to 1e-7 Msun in 7 log steps; Rout 100 au; Av 0-7; T* 2800-3200 K; R* 0.2-2 Rsun
+- 2016ApJ...821L..16C: T0 ≃ 70-140 K at R0 = 10 au; q = 0.5-0.6
+- 2016ApJ...822...80S: beta=2, optically thin/thick transition at 100 um, CMB included, ignore data shortward of rest-frame 50 um; free: Tdust and dust mass
+- 2016ApJ...823..160D: T_D = 10 K, d = 150 pc, kappa=0.23 cm2/g, mu=2.37
+- 2016ApJ...826...26T: T_d = 10 K; beta = 1.9; kappa(0.87mm)=2.1e-2 cm2/g; d = 140 pc
+- 2016ApJ...827...72S: F/Omega = 0.34 Jy/beam in 0.5" aperture
+- 2016ApJ...827..133L: line-of-sight size 9.5 arcsec (1140 au)
+- 2016ApJ...828...46A: T_dust = 20 K; kappa = 10 cm^2/g at 1000 GHz; beta = 1
+- 2016ApJ...831..101B: Gas-to-dust mass ratio 100; dust size distribution power law exponent 3.5; cosmic ray rate ~1e-19 s^-1; models sampled at 5 Myr (TW Hya) and 1 Myr (DM Tau)
+- 2016ApJ...833L...6C: kappa_870=0.9 cm2/g, beta=1.7; Tdust 33 K (Clouds C, W), 20 K (Cloud E)
+- 2016MNRAS.457.4536W: dust opacity kappa = 0.04 cm2 g-1 (nu/505 GHz)^1.75
+- 2016PASJ...68..103F: Td 50-70 K, beta=1.7, kappa0=0.005 cm/g at 231 GHz
+- 2017A&A...597A..99W: CO levels up to J=40, ground and first vibrationally excited states
+- 2017A&A...599A.101V: M* = 0.74 Msun, R* = 1.05 Rsun
+- 2017A&A...599A.113M: Inclination 10 deg for i<70 deg or unknown; 80 deg otherwise
+- 2017A&A...600A.141K: T = 20 K; d = 420 pc; kappa = 0.1 (nu/1000 GHz)^1.5 cm2/g
+- 2017A&A...601A...5H: 10^5 grid points plus 10^4 boundary points; inclination 82 deg
+- 2017A&A...601L...3P: R = 35 pc; N_H2O = 2e18 or 8e18 x tau100; n_H2 = 3e4 cm-3; Tgas = 150 K
+- 2017A&A...602A..11P: Tex = 30 K
+- 2017A&A...602A..19L: β=1.75 fixed; Te=16000 K
+- 2017A&A...603A..10B: T = 200 K; kappa_438um = 6.3 cm2/g
+- 2017A&A...603A..92V: a=0.1 micron, s=0.5, Td=Tg=100 K, n_g≈9e9 cm^-3
+- 2017A&A...604A...6S: Td = 50 K and 100 K; D = 8.34 kpc; mu = 2.3
+- 2017A&A...606A..17M: Starburst: Delta_MS > 3; MS: 1/3 < Delta_MS <= 3
+- 2017A&A...607A..55V: kappa = 2.7 cm2/g at 0.867 mm; T_dust = 48 K
+- 2017A&A...608A..22A: dV=150 km/s
+- 2017ApJ...834..178Y: Tdust 30 K (100 AU), 20 K (extended), 100 K (IRAS 15398 point source)
+- 2017ApJ...835..228T: Model B d=0.3, Δd=20 au; C d=0.55, Δd=15 au; D d=1, Δd=9.45 au; d0=80 au
+- 2017ApJ...835L..11T: inclination 55.8 deg, distance 139 pc, image (10,000 AU)^2 with 4000^2 pixels
+- 2017ApJ...838..114K: kappa=0.23 cm2/g at 107 GHz; T=15 K; d=140 pc; gas-to-dust 100
+- 2017ApJ...839L..24M: lambda = 1.3 mm
+- 2017ApJ...841..110S: Deconvolved half-power size ~2.3" at 3.3 mm (radius ~2.6e16 cm)
+- 2017ApJ...841L..11B: T_dust = 20, 8.4, 7.5, 5.5 K
+- 2017ApJ...841L..25T: Td=32 K, beta=2.2, kappa850=0.4-1.5
+- 2017ApJ...844..123F: L850/Mgas = (6.7±1.7)e19 erg/s/Hz/Msun; Mgas/Mdust = 140
+- 2017ApJ...846..108C: dark matter fraction 15%; <sin^2 i>=2/3; median sigma 154±5 km/s
+- 2017ApJ...847...92H: d=436 pc, kappa=2 cm2/g, radius 1700 AU
+- 2017ApJ...850L...6A: D_dust 1 cm, D_max 50 km
+- 2017ApJ...851...85B: CO freeze-out below 20 K; photodissociation below 1e21 cm^-2 H2 column, or none
+- 2017ApJ...851...85B: S/N >= 15 threshold for well-constrained R_dust
+- 2017ApJ...851..145M: T_d = 35 K, beta_IR = 1.5
+- 2017ApJ...851L..23C: 100 walkers, 500 steps
+- 2017MNRAS.464L..31H: kappa = 1.26 cm2/g, T_d = 13 K, R_gd = 141
+- 2017MNRAS.465..834Z: C18O flux 0.15 Jy km/s
+- 2017MNRAS.465.4390B: average of (T=47K, beta=1.6) and (T=41K, beta=1.95)
+- 2017MNRAS.467L.120M: Temperature fixed to 80 K where CH3CN too weak
+- 2017MNRAS.468L..87C: T_dust <= 14 K upper limit from PACS 160 um
+- 2018A&A...610A..24F: bin size 30 klambda; s_max=2000 micron; p=3.5; chi=0.2; f_large=0.85
+- 2018A&A...614A..17B: Grain size 0.1 µm, density 1.8 g cm-3, condensation temperature 1500 K, Suh (2000) optical constants
+- 2018A&A...614A.113H: radial velocity 1 km/s, turbulence 1 km/s, temperature power-law index -0.5
+- 2018A&A...615A...9P: kappa = 0.0188 cm2/g at 1.3 mm (beta=1)
+- 2018A&A...615A...9P: Td = 35 K with IR counterpart, 15 K without
+- 2018A&A...615A..28D: Drift velocity forced below 20 km/s
+- 2018A&A...615A..83V: Mstar=0.45 Msun fiducial (0.19 also tested), disk radius 125 AU
+- 2018A&A...615A.141B: r_c=8500 au, q=0.77, T_c=146 K, nu=217 GHz, S_nu=3.10 Jy, n=2
+- 2018A&A...616A..34H: stellar blackbody bandwidth 1.6 GHz around 230.5 GHz
+- 2018A&A...616A..88V: Rc=250 AU, gamma=0.6, Mdisk fixed 0.1 Msun, h_c, psi, f_ls, chi grid
+- 2018A&A...616A.100Y: disks with dust mass <1e-6 Msun excluded
+- 2018A&A...617A..28S: Mdisk 0.066 Msun, Mdot 5e-9 Msun/yr, alpha 0.01, Rout 800 au, Lx 1e31 erg/s, grain 0.1 um
+- 2018A&A...619A.161C: d = 136 pc, T_dust = 15 K, kappa = 10 cm2/g at 1000 GHz, beta = 1
+- 2018A&A...619A.161C: grain size ~3 x lambda
+- 2018A&A...619A.161C: gap width ~20 au at ~68 au, alpha = 1e-3
+- 2018AJ....156..239Z: kappa = 0.015 cm2/g, beta = 1.5, Td = 25 K
+- 2018ApJ...852..122H: kappa=3.3 cm2/g at 290 GHz; gas-to-dust 100; T=15 K for Q
+- 2018ApJ...854..177V: gas-to-dust ratio 100 in outer disk; f_ls=0.85, chi=0.2 fixed; outer grid radius 400 AU
+- 2018ApJ...854L...4R: T_dust varied 20-30 K for uncertainties
+- 2018ApJ...856..118H: L'CO(1-0)/L'CO(2-1)=1.2, alpha_CO(1-0)=4.36 (4.99–7.31 after metallicity correction)
+- 2018ApJ...859..111H: 500 walkers, 1000 iterations; uniform priors on Md, gamma, Rc, H100
+- 2018ApJ...862L...2F: CR ionization 1.3e-17 s^-1; 1% chemical desorption; grain radius 7 micron; UV photodesorption yield 1e-5
+- 2018ApJ...869..126L: kappa = 1.9 cm2/g; DGR 1/100
+- 2018ApJ...869L..46D: kappa_abs = 2.0 cm^2/g at 0.125 cm for a=0.1 cm
+- 2018MNRAS.473..879P: beta=1, kappa=0.023 cm2/g, T=20 K, d=414 pc
+- 2018MNRAS.474.3640M: XDR: 9 models, log n=[3.5-5.5], L(1-100 keV)=4e42 erg/s; shocks v=10-40 km/s, log n=3-6
+- 2018MNRAS.475.5322S: disk radius 90 AU, H~40 AU
+- 2018MNRAS.477.5104C: Teff 4750 K, R*=1.5 Rsun, xi=30 deg
+- 2018MNRAS.478.2505I: Grid resolution 23.3 au
+- 2018PASJ...70...36I: Td=47 K and 35 K, beta=1.6, kappa0=0.4 cm2/g at 250 GHz
+- 2018Sci...362.1034D: Tdust 50–100 K for W2246, 25–50 K for companions/extended
+- 2019A&A...621A.122B: column density T = 1000 K for mm1, mm2; 100 K for others; masses use mean Tb within 4 sigma
+- 2019A&A...622A..75L: Initial H100=10 au, beta=1.1, Mdust=2e-3 Msun, Lambda=0.2, fLGP=0.85, i=36 deg; R_out,LGP=200 au
+- 2019A&A...623A.150V: Mdisk = 100 F d^2/(kappa B(Tdust)), kappa=10 cm2/g at 1000 GHz, beta=1, Tdust=20 K
+- 2019A&A...623L...8B: kappa = 2.63 at 263 GHz, beta = 1, Td = 20 K for most sources
+- 2019A&A...624A...7V: Free parameters per region: Rin, Rout, dust mass, H100au; beta fixed to 1.1; p = -1
+- 2019A&A...624A...7V: Small grains 0.01-0.5 um, large grains 10-1000 um
+- 2019A&A...625A.118K: outer radius 0.3-0.7 R_H; T_irr,star = 19 K at 22 au; kappa 3.5 cm2/g
+- 2019A&A...626A..36D: n=1e6 cm-3 for MM4, MM7, MM8; n=1e5 cm-3 for MM1a, MM3a, MM9, MM6c, MM11a
+- 2019A&A...628A..27B: Td = 150 K, mu_H2 = 2.8, D = 8.34 kpc
+- 2019A&A...628A..85V: beta=1, kappa_1000GHz=10 cm2/g, T=20 K (30 K test), d=414 pc
+- 2019A&A...629A..75B: kappa_HCO+ = 0.2; cavity gas eta = 0.2; kappa_H13CO+ = 2 (<200 au), 6 (>200 au)
+- 2019A&A...629A.146V: d = 123 pc; R* = 4e13 cm; T* = 2330 K; Mdot = 2.7e-5 Msun/yr; vexp 5/11/14.5 km/s; microturbulence 1 km/s; gas-to-dust 300
+- 2019AJ....158...15P: n(s)∝s^-3.5, 1 µm-1 mm; 1e8 photon packages; D_z=10 alpha
+- 2019ApJ...871....5T: r_pk=95 au, sigma_r=10 au, Sigma_d,0=1.84e-2 g cm^-2, h_d=9.8 au, a_max=1 mm, gas Sigma ~ r^-1 for 8-320 au, h_g=13.2 au (r/95 au)^1.25, gas-to-dust 100
+- 2019ApJ...871...85L: uniform priors T_d>1 K, beta in [0.1,20], lambda0 in [1,400] um, alpha in [0.1,20]; extra 15% flux uncertainty
+- 2019ApJ...871..170M: Rgd=150, beta=1.5, Td=35 K, D=3.5 Mpc
+- 2019ApJ...871..185L: 0 or 30 Msun central stellar mass
+- 2019ApJ...871..185L: H(r)=0.05+0.3 sqrt(r/0.3) pc; T=30 K
+- 2019ApJ...872...92F: T_dust = 20 K; opacity 2.3 g cm^-2 at 1.3mm
+- 2019ApJ...874...27T: tau_SFH = 0.3 Gyr; M_tot = 2e10 Msun; (eta_WNM, eta_CNM, eta_MC) = (0.5, 0.3, 0.2)
+- 2019ApJ...874...89C: flux integrated within 5 sigma contour and 50% primary beam response: 42±2 mJy
+- 2019ApJ...875...87D: 50 walkers, 10^5 samples; 0.15 au per pixel
+- 2019ApJ...875L...9W: detection if flux >= 3 rms and position within 1'' of Spitzer position; upper limits at 3 rms
+- 2019ApJ...877..100Y: flaring angle phi = 0.02
+- 2019ApJ...877L..25M: T80au = 360 K
+- 2019ApJ...879...25K: F = 91 mJy, D = 300 pc, kappa = 0.01 cm2/g, Td = 30 K
+- 2019ApJ...879L...2M: Sigma_d,c=0.8 g/cm2, r_c=15 au, gamma=1, reduced 1e6 inside r_cav=60 au and 1e4 inside 10 au
+- 2019ApJ...881...63N: kappa=2.64 m2/kg at 125 um; T_dust=47 K
+- 2019ApJ...882..160Q: epsilon tested at 1.0, 0.5, 0.1, 0.01, 0.001; alpha 0.00001–0.02
+- 2019ApJ...883...98Z: Gas-to-dust ratio 100, chi=0.2 settling, 80% mass in large grains (99% for IM Lup)
+- 2019ApJ...884...48C: kappa_230GHz = 0.01 cm2/g (incl. gas-to-dust 100); mu=2.33
+- 2019MNRAS.482..698C: kappa_1.3mm = 0.023 cm2/g (beta=1), d = 140 pc, T_dust = 20 K
+- 2019MNRAS.482.3135B: 100 walkers, 500 steps, 100-step burn-in
+- 2019MNRAS.485..739M: T = 20-40 K; amax = 1 mm; kappa = 1.15 cm2/g
+- 2019MNRAS.485.2092C: <U>=22; L_IR/Md factor 125; 0.15 dex systematic
+- 2019MNRAS.488.1005P: slope -1; r_c = 0.4 or 0.04 R_Hill; minimum radius r_c/10; aspect ratio 0.1; 2 deg inclination to planet orbit
+- 2019MNRAS.488.1005P: dust size 1 um to 1 cm, exponent -3.5; opacity 2.3 cm2/g at 1.3 mm
+- 2019MNRAS.488.1005P: alpha = 1e-4 and 1e-3; disc temperature 40 K; dissipation 1 Myr; initial solid mass 1e-4 Mp
+- 2019NatAs...3..314L: Tmid(r>0.1")=100 K x sqrt(0.1"/r); gamma=1.5; H/r=0.1; kappa 2.2 cm2/g at 1.3 mm
+- 2019NatAs...3..517Z: Tdust 50-100 K, kappa1.3mm=0.00899 cm2/g, D=1680 pc
+- 2020A&A...633A.126B: kappa 345GHz = 0.02 cm2/g gas; Tdust ~30 K
+- 2020A&A...635A...2S: Td = 20 K (no counterpart), 50 K (IR or radio counterpart), 100 K (hot core)
+- 2020A&A...636A..67A: Tex 50-300 K for HNCO and NH2CHO, 70-400 K for H2CO; FWHM and vLSR constrained by Gaussian fits, vLSR free within ±0.5 km/s
+- 2020A&A...640A..19T: kappa_9mm = 0.28 cm2/g (DIANA); kappa_1.3mm = 2.3 cm2/g; for Orion comparison kappa_1.3mm = 0.9
+- 2020A&A...640A..19T: 0.3 MJ planet solid fraction 27.8 Mearth set at 18% of CDF
+- 2020A&A...640A..27V: d = 414 pc, T = 20 K, kappa(1000 GHz) = 10 cm2/g, beta = 1
+- 2020A&A...641A.155V: includes sources with L_IR>=10^8.5 Lsun and Flag=0.5 upper limits; excludes AGN-dominated galaxies and QSOs
+- 2020A&A...644A..11L: T_d = 38 K (r/100 au)^-0.4 (Lint/Lsun)^0.2
+- 2020A&A...644A..59K: AV = 3 mag; gas-to-dust 124; WD Teff 20 and 60 kK; r=2''; d=0.7 kpc
+- 2020A&A...644A..84M: flux 0.1 Jy at 99.0 GHz
+- 2020A&A...644A.119P: Disk flux 0.29 Jy, ring flux 0.04 Jy
+- 2020ApJ...888L...4T: 10^6 SPH particles, R_in=5 to R_out=150 au, alpha_SS=0.005, 1 mm grains
+- 2020ApJ...890...76N: Apertures of 27" (prestellar) and 20" (protostellar) radius
+- 2020ApJ...890...76N: Core radius from geometric mean of Clumpfind semi-axes
+- 2020ApJ...890..129K: kappa_8.1 = 0.144 cm2/g
+- 2020ApJ...890L..14T: S=267±25 mJy; Td=100 K; kappa=1.8 cm2/g
+- 2020ApJ...891...48H: p = 3.5, 2.5, 1.5; a_min = 0.1 um; Td = 30 K (B40), 18 K (B84)
+- 2020ApJ...891..164S: Td = 20, 60, 150 K tested; 60 K adopted
+- 2020ApJ...892...66M: beta=1.8; kappa=0.0431 m^2/kg at 352.6 GHz
+- 2020ApJ...892..111F: flaring angle 0.02; R_sub=0.07 sqrt(L*) au; kappa 10 cm2/g at 1000 GHz, beta=1; assumed R_inner=5 au for unresolved
+- 2020ApJ...892..152H: nu = 233 GHz, d = 200 pc, kappa = 2 cm2/g, Td = 20 K or 300 K
+- 2020ApJ...894L..14L: T_dust = 20 K, R = 100, kappa = 0.899 cm2/g, d = 8.178 kpc
+- 2020ApJ...895L..18B: disk mass 0.12 Msun, Sigma_c=3 g/cm2, rc=320 AU, gamma=1.0, (h/r)c=0.18, psi=0.1, gas-to-dust 100
+- 2020ApJ...895L..46L: h/r = 0.07, alpha = 1e-3 and 1e-4
+- 2020ApJ...896...35J: >7 sigma pixels, tau held at zero, NH3 abundance 10^-7.5
+- 2020ApJ...896..110L: kappa_98.5GHz = 0.235 cm2/g, beta = 1.5
+- 2020ApJ...898...10T: T_d = 30-100 K; S_0.9mm = 1.40 Jy
+- 2020ApJ...898...36L: planet at 33 au, q=0.002, Rc=80 au, gamma=1, alpha=1e-3, vfrag=10 m/s, 180 size cells 1 um-2 m, 300 radial cells 1-300 au
+- 2020ApJ...901...79A: 0.1 dex added in quadrature to MAGPHYS uncertainties
+- 2020ApJS..251...14H: kappa = 0.867 cm2/g at ~226 GHz; d = 8.178 kpc
+- 2020MNRAS.496..394R: nu0=230.61 GHz, kappa0=0.8 cm2/g, beta=1.0, gas-to-dust 100, r0=690 AU, 15% flux uncertainty
+- 2020MNRAS.496.1834L: remnant age 1100 yr; D = 50 kpc; T_dust = 55 K
+- 2021A&A...648A..41V: kappa = 0.1(nu/1e12 Hz)^beta cm2/g; beta=1.8±0.2 default
+- 2021A&A...652A..98G: T_dust=100 K; kappa_351GHz=0.0865 m^2/kg; gas-to-dust ~100; X_CO=2e20; 3-2/1-0 = 2.9 (tori), 0.7 (FOV), 2.0 (200 pc)
+- 2021A&A...653A..46V: kappa=2.3 cm2/g at 230 GHz; Tdust=25K(L/Lsun)^1/4; 20 K if no luminosity
+- 2021AJ....161..238W: parallel-tempered, 2 temperatures, 50 walkers; 2000 iterations (F814W), 1000 (ALMA); burn-in 100
+- 2021AJ....161..238W: Free: i, H0, dust mass, gamma, beta, p, alpha, Rc; fixed distance 147 pc, Rin 1 au, Rout 191 au
+- 2021ApJ...907L..15S: T = 6.5-10 K
+- 2021ApJ...908....8C: Initial parameters from Zhang19; CO depletion imposed at start; 13CO and C18O from CO/13CO=69, CO/C18O=570
+- 2021ApJ...908..163M: MILES, Salpeter IMF, ages 0.01-3 Gyr, logZ -0.8 to 0.6 step 0.05, Calzetti dust, DL07 LMC model qPAH=2.37%
+- 2023MNRAS.526.4402B: kappa = 10 (nu/1.2 THz)^1.5 -> 1.55 cm2/g at 346.58 GHz; rho ~ r^-1.6; mu=30 (H13CO), 2.37 for c_s
+- 2023MNRAS.526L..41P: 10^6 particles, 11 grain sizes 1 um-1 mm, M*=1.5 Msun, disc 0.01 Msun, H/R=0.1 at 50 au
+- 2023PASJ...75.1105K: distance 140 pc, inclination 45 deg, PA 135 deg, disk mass 0.1 Msun, gas-to-dust 100
+- 2024A&A...682A..56Z: a_min = 0.1 um; a_max = 10, 100, 1000 um; 62.5% silicate + 37.5% graphite
+- 2024A&A...684A.134R: kappa = 10 cm2/g at 1000 GHz, beta = 1.0, flaring angle 0.02, R_subl = 0.07 sqrt(L*)
+- 2024A&A...686A.274V: CW Leo dipole inclined 45 deg, PA 125 deg
+- 2024A&A...686A.274V: turbulent velocity 1 km/s; gas mean particle mass 2.35 AMU
+- 2024A&A...687A.163B: kappa_1.3mm = 0.01 cm2/g
+- 2024A&A...688A.102T: 1.3e8 photon packets; d=145 pc; i=37 deg; PA=97 deg; dust mass fixed to 1e-3 Msun
+- 2024A&A...689A..85G: Gaussian ring I(r)=f exp(-0.5((r-r_k)/sigma_k)^2); gamma_SB2=1
+- 2024A&A...690A..46S: Td = 20 K and 49 K (T=43(L/Lsun)^0.25); κ=2.3 cm2/g; D=138 pc
+- 2024A&A...690A..55S: Exclude sources within 10'' of prior; >3 sigma detections, otherwise 3 sigma upper limits
+- 2024A&A...690A.185W: T = 20 K (L/M<1), 35 K (1-10), max(21.1 L/M^0.22, 35 K) (>10)
+- 2024A&A...691A.180F: R=0.5 pc, Av=1 mag, gas-to-dust 100, 12C/13C=10^1.8
+- 2024AJ....167...94H: T* = 3500 K, R* ~ 7 AU
+- 2024ApJ...961..228S: 5 sigma threshold, sigma = 18 uJy/beam
+- 2024ApJ...962...48J: D=8.34 kpc, mu=2.8, kappa=0.008 cm2/g
+- 2024ApJ...963....1O: beta = 1.8, kappa_500um = 0.051 m^2/kg
+- 2024ApJ...963..134Y: a=140 um, rho_s=3 g/cm3, Sigma_d=1 g/cm2
+- 2024ApJ...964...48T: Td = 30–100 K; kappa(1.3mm)=0.011 cm2/g; d=393 pc
+- 2024ApJ...966...84A: kappa = 2.3(nu/230 GHz) cm2/g; T_dust = 20 K
+- 2024ApJ...966..117X: 10^8 photon packages, modified random walk
+- 2024ApJ...968....9W: T_dust=47 K, beta=1.6; T_ex=100 K for C+
+- 2024ApJ...971..129C: rho_m=1.675 g/cm3, Q>2 for stability
+- 2024ApJ...973...42B: kappa_1.9mm = 0.6 cm2/g scaled from 0.9 at 1.3 mm with beta=1
+- 2024ApJ...974..102S: zeta = 0.02, L* = 0.25 Lsun, T_d=[zeta L/(4 pi sigma r^2)]^(1/4)
+- 2024ApJ...975..235V: p=3.5, amin 0.03 um, amax 1000 um; settling eta=0.5 with a_mix 10, 1, 0.1 um
+- 2024BSRSL..93..601H: Tdust = 21 K, beta = 1.5 and 2.0
+- 2025A&A...693A.151M: t0 = 10 Myr, delta = 13/3, epsilon = 1, D ~2e-8 Myr Mearth au^-13/3
+- 2025A&A...694A..82S: tau_main=500 Myr; q_PAH=0.47; THIMF slope xi=1.8 adopted
+- 2025A&A...695A.257R: kappa=2.3 cm2/g, T=20 K
+- 2025A&A...697A..64V: 30° wedge on major axis; 4 settling levels alpha_z,MCFOST 2e-4 to 0.2
+- 2025ApJ...984L..15P: 12CO abundance 1e-4 relative to H in warm layer; depleted below 20 K by a variable factor
+- 2025ApJ...986L..11S: flaring angle 0.02
+- 2025ApJ...986L..22R: Tss=95±9 K (NEATM) or 60 K (CO)
+- 2025ApJ...989....3D: Uncertainties assigned manually as x3 and x1/3
+- 2025ApJ...989....6K: Mpebble = mass in grains 0.1 mm-10 cm; R90 = radius containing 90% of flux; alpha_mm from B6 and B7 fluxes
+- 2025ApJ...992L..15L: Tdust=15 K; gas-to-dust 100 (3 mm mass), 78 (depletion); kappa 3mm=0.18, 1.3mm=0.9 cm2/g; mu=2.8; Rgc=5.2 kpc
+- 2025ApJ...993..120H: kappa = (nu/100 GHz)^beta, beta=1 giving 2.25 cm2/g
+- 2025ApJ...994..233Y: Sigma=1e21-1e27 g cm^-2 and T=5-400 K grid
+- 2025ApJ...995L..63L: Umax=1e6, beta=2, gamma=0.01, 0.47<qPAH<4.6
+- 2025NatAs...9.1553F: alpha_[CII]=31 Msun/Lsun
+- 2025NatAs...9.1833L: kappa_1.3mm = 0.9 cm2/g; mu=2.8; D=1.3 kpc
+- 2025SciA...11.4512O: T=100 K, kappa=1 cm2/g at 1.3 mm, R_dg=0.01, d=3.1 kpc, mu=2.33, alpha 0.1-1, v_ff=6 km/s, l=500 au
+- 2026ApJ..1001..131C: Temperature correction B_nu(850,25K)/B_nu(850,T_dust): 0.77 (195616), 1.06 (209435)
+
+
+### Assumptions (bibcode: value)
+- 2012A&A...544L...7P: optically thin, gas-to-dust 100, kappa 0.86 cm2/g, T=30 K in formula
+- 2013ApJ...762L..21M: d = 9.91 pc; central peak is star plus dust
+- 2013ApJ...764L..14Z: kappa = 2.2 cm2/g, beta = 0.6, Td = 160 K, d = 120 pc
+- 2013ApJ...774L...7M: Td 400 K, equilibrium range 400-1000 K at 1" with L=7e5 Lsun
+- 2013ApJ...779...96T: kappa_1.338mm = 5.95e-3 cm2/g, gas-to-dust 141, Td = 10+/-3 K, 20% distance error
+- 2014A&A...562A..67G: kappa = 4.0 (nu/1.2 THz)^beta cm2/g, beta=2
+- 2014A&A...567A.125G: kappa_352GHz = 0.09 m^2/kg; gas-to-dust ratio ~60 from Draine et al. 2007 with 12+log(O/H)~8.8
+- 2014A&A...569A..11S: kappa=1.75 cm2/g at 870 um, gas-to-dust 100, mu=2.3, D=2.19 kpc
+- 2014ApJ...783L..13P: T=35 K, gas-to-dust 100, kappa=10 cm^2/g at 450 um for mass
+- 2014ApJ...783L..13P: a=1 mm, rho_s=1 g/cm3, Sigma=10 g/cm2, St~1e-2; gas T=50 K for sound speed
+- 2014ApJ...785..111W: dust-to-gas ratio 0.0052 (Draine 2007); H2/HI ~2
+- 2014ApJ...787...42C: dust-to-gas ratio 0.01
+- 2014ApJ...787...48X: R_pc=100 and 70% of L_IR inside radius
+- 2014ApJ...789L...4T: Td = 10 K, beta = 1, kappa231GHz = 0.01 cm2/g, d = 140 pc
+- 2014ApJ...791...20R: Distance 140 pc; gas-to-dust ratio 100; kappa 0.02 cm2/g_gas at 0.89 mm
+- 2014ApJ...791..108F: gas-to-dust 100:1, mu_H2 = 2.8, single temperature along line of sight
+- 2014ApJ...791L...6W: kappa=10 cm2/g at 300 GHz, Tdust=60 K; 80 K and 40 K for inner/outer rings
+- 2014ApJ...791L...6W: gas-to-dust 100; model extrapolated to 400 AU by power law
+- 2014ApJ...792...34O: Dwarf-galaxy T_dust=27.6 K, beta=1.5; Salpeter IMF; cosmology (0.3,0.7,0.7)
+- 2014ApJ...792L..25V: Same inclination, PA and mass as HD 142527
+- 2014ApJ...795L..25R: gas to dust mass ratio of 100
+- 2014ApJ...796....1T: Gas-to-dust mass ratio of 100, dust opacity from Hildebrand 1983 with beta=0.5
+- 2014ApJ...797...27F: T_d = gas temperature; SM1N 16 K from NH3; SM1 >=30 K; d = 120 pc
+- 2014MNRAS.438.1267S: kappa_870 = 0.15 m^2 kg^-1
+- 2014MNRAS.438.1267S: gas-to-dust ratio 90 ± 25; burst duration 250 Myr
+- 2014MNRAS.444.1821F: Optically thin, circular face-on thin ring
+- 2014Natur.514..600D: gas-to-dust 100, kappa(1.3 mm)=0.02 cm2/g
+- 2015A&A...573L...1O: a_g = 0.2 micron, rho_g = 3.5 g cm^-3, Q = 5.65e-4 (nu/274.6 GHz)^0.7, Tstar = 3490 K
+- 2015A&A...573L...1O: Vd ~60 km/s, T = 200 K
+- 2015A&A...576L..15O: D = 0.7 kpc, kappa230 = 0.5 cm2/g, Td = 45 K, dust-to-gas 200
+- 2015A&A...576L..15O: f_C18O = 4e-7, f_CO = 2e-4, Trot = 30 K
+- 2015A&A...583A..66H: optically thin continuum at mm wavelengths
+- 2015A&A...583A..66H: ISM gas-to-dust ratio 100 as reference
+- 2015A&A...584A..99E: r6-5 = 13 (17-36 for wings), X_CO = 0.8, optically thin dust, kappa = 4.0 (nu/1.2 THz)^-2.0 cm2/g, T_dust = 45 K
+- 2015ApJ...798L..23K: Dust temperature ~10–20 K; opacity 2.3 cm^2/g at 1.3 mm
+- 2015ApJ...799..204C: gas-to-dust ratio 100 for interstellar gas, adjusted to 75-100 to match HD
+- 2015ApJ...801...82H: kappa=0.1 cm2/g at 250 um, gas-to-dust 100, D=420 pc
+- 2015ApJ...803...60S: kappa340 = 0.9 cm2/g (Draine & Lee), Td = 39.4 K
+- 2015ApJ...804...37L: R=100, a=0.1 um, rho=3 g/cm3, Td=20 K large scale, ~30 K within inner 0.3 pc, beta=1 for cores
+- 2015ApJ...805L..17B: T = 20 K for A; 10-20 K for B; gas-to-dust 100
+- 2015ApJ...807L...4F: Dust temperature 20 K
+- 2015ApJ...808...69B: kappa=0.034 cm^2/g, gas-to-dust 100, T_dust=20 K, D=414 pc
+- 2015ApJ...808..102K: kappa0 = 0.01 cm2/g at 230 GHz, gas-to-dust 100, dust and gas temperature equal, scale height not updated from temperature
+- 2015ApJ...810...91H: kappa_d(125 um)=2.64±0.29 m^2/kg, beta=1.5, T_dust=30-40 K
+- 2015ApJ...811..124S: kappa_870=0.077, delta_GDR=72, solar metallicity, gamma=1, 25% dark matter, CO(2-1) thermalized
+- 2015ApJ...812..126C: 1 cm grains, circular cross section, 20 K, fiducial density of water
+- 2015ApJ...812..134H: Td = 50 K, gas-to-dust 100, kappa(345 GHz) = 1.5 cm2/g, distance 450 pc, optically thin
+- 2015ApJ...813L..19J: Dust temperature 190 K from LTE modeling average
+- 2015ApJ...814...22E: Constant infall rate, wind mass loss neglected
+- 2015MNRAS.449..715W: distance 8.4 kpc
+- 2015MNRAS.449..715W: gas-to-dust ratio 100
+- 2015MNRAS.452...54M: Dust temperature 27.6 K (beta=1.5) or 45 K; all sources at z=7 for CMB correction
+- 2016A&A...585A..58V: Gas and dust follow same density profile with varying gas-to-dust ratio
+- 2016A&A...591A..73G: beta=1.5, Td=40 K, delta_MF=1, delta_SB=1
+- 2016A&A...593L..14F: Td=25 K, gas-to-dust ratio 100, beta=2, kappa=0.899 at 230 GHz, d=3.6 kpc
+- 2016A&A...596A..50G: Reference r_gd = 200; distance (50 kpc) assumed
+- 2016A&A...596A..75S: T~40K for ALMA-only dust mass
+- 2016A&A...596A..88L: T=20 K, kappa=0.1 cm2/g (nu/1000GHz)^beta, beta~0.5, d=185 pc
+- 2016ApJ...816...37V: Td=47 K, beta=1.6, tau<<1 at lambda>40 um; Kroupa IMF; emission powered by star formation
+- 2016ApJ...816...37V: Thin inclined disk; gas-to-dust ratio ~100
+- 2016ApJ...819...82S: kappa_d(125 um)=1.875 m2/kg, beta=1.5, T_dust=30 K
+- 2016ApJ...819..102V: Astronomical silicates, amin 0.05 um, amax 1 mm, dn/da ~ a^-3.5, kappa 3.72 cm2/g at 885 um
+- 2016ApJ...819..102V: kappa885 = 2.7 cm2/g, beta = 0.4, T=25 (L/Lsun)^0.25
+- 2016ApJ...821..112K: D=3.5 Mpc, Td=25 K for global disk
+- 2016ApJ...821L..16C: kappa_7mm = 0.13-0.2 cm^2 g^-1; distance 140 pc
+- 2016ApJ...822...80S: calibration uncertainty added: 7% PACS, 10% others
+- 2016ApJ...823..160D: gas-to-dust ratio 100, OH5 dust, optically thin isothermal dust
+- 2016ApJ...826...16E: dust beta=1
+- 2016ApJ...826...16E: d=400 pc, kappa0=2 cm2/g at 1.3 mm, beta=1, T=20 K, gas-to-dust 100
+- 2016ApJ...826...26T: Optically thin, uniform dust temperature
+- 2016ApJ...827...72S: Td = 40 K, Z = 0.0027, mu = 1.41, Ossenkopf & Henning ice-coated opacity
+- 2016ApJ...827..133L: nu^2 opacity dependence; Td 16 K or 11 K
+- 2016ApJ...828...46A: T_dust=20 K, median for Taurus disks; not scaled with L*
+- 2016ApJ...828...46A: T_dust=20 K; distances 145 pc (Upper Sco), 140 pc (Taurus); M*>0.1 Msun
+- 2016ApJ...828..100F: Dust temperature equals gas kinetic temperature, 15 K; thermal dust emission dominates
+- 2016ApJ...831..101B: Same TW Hya UV field used for both systems; 8:2 astrosilicate:graphite
+- 2016ApJ...832..148V: Galactic V-band extinction curve, N_H = 2.05e21 tau_V
+- 2016ApJ...832..158Z: Tdust 30 K, gas-to-dust 100, beta=1, kappa(3mm)=0.9 cm2/g
+- 2016ApJ...832..178V: ISM gas-to-dust ratio 100; emission partially optically thick so lower limit
+- 2016ApJ...833...12R: T_dust = 25 K (20-30 K for uncertainty); gas-to-dust ratio 100
+- 2016ApJ...833...68A: Td=25 K, beta=1.8, delta_GDR=200 for MAGPHYS masses
+- 2016ApJ...833..209O: gas-to-dust 100, kappa=0.9(lambda/1.3mm)^beta cm2/g, beta=1.5; default T 22 K protostellar, 17 K prestellar
+- 2016ApJ...833L...6C: LMC X_CO = 4.7e20 cm-2 (K km/s)-1; R31=7.4
+- 2016MNRAS.457.4536W: isothermal; T = 20 K quiescent GC clouds, 40 K star-forming clouds; gas-to-dust 100
+- 2016MNRAS.458L..29C: ISM grain size distribution with power-law index p = -3.5; optically thin emission; d = 200 pc
+- 2016MNRAS.459.4518H: optically thin dust, distance 512±43 pc
+- 2016PASJ...68..103F: Lbol ≈ LFIR
+- 2016PASJ...68L...7T: Td=20 K, beta=2, Z/Z0=1, mu=2.3, d=8.5 kpc
+- 2016Sci...353.1519P: gas-to-dust ratio 100; kappa 2.4 cm2/g (RT), 2.3 cm2/g (Toomre Q)
+- 2017A&A...597A..32V: T_dust=15 K, gas-to-dust 100, kappa_1.3mm=2.3 with kappa~nu^0.4
+- 2017A&A...597A..99W: [CO]/[H2]=1e-4, turbulent velocity 1 km/s, gas-to-dust 40, distance 4 kpc, constant isotropic smooth mass-loss
+- 2017A&A...599A.113M: kappa = 4.3 cm2/g at 340 GHz (DALI standard)
+- 2017A&A...600A..72F: k=2 cm2/g at 230 GHz; Tdust gap 50 K, cavity 150 K
+- 2017A&A...600A.141K: Gas-to-dust ratio 100; kappa_100GHz = 0.0032 cm2/g
+- 2017A&A...600L...3C: dark matter at most 10% within 6-7 kpc; gas-to-dust ratio 40-100
+- 2017A&A...601A...5H: Gas-to-dust 100; stellar blackbody 3500 K, 2500 Lsun; 12CO/H2 = 1e-4
+- 2017A&A...601L...3P: Gas-to-dust ratio 100 by mass
+- 2017A&A...602A..11P: CO 3-2/1-0 flux ratio = 9 (thermalised)
+- 2017A&A...602A..19L: gas-to-dust ratio 100
+- 2017A&A...602A..19L: gas-to-dust 100, d=353 pc; parameters degenerate
+- 2017A&A...602A..59C: Tdust = 200 K, kappa = 1 cm2/g at 1.4 mm, gas-to-dust 100
+- 2017A&A...603A..10B: gas-to-dust ratio 150; distance 2.2 kpc (1.0 kpc alternative)
+- 2017A&A...603A..92V: gas-to-dust ratio 100
+- 2017A&A...604A...6S: kappa at 230 GHz = 1.11 (Ossenkopf & Henning 1994), optically thin, gas-to-dust 100
+- 2017A&A...606A..17M: Flat LCDM, H0=70, Om=0.30
+- 2017A&A...607A..55V: Dust-to-gas ratio 1:100; distance 325 pc
+- 2017A&A...608A..22A: CO abundance 1e-5 to 1e-4
+- 2017A&A...608A..22A: gas-to-dust ratio 100
+- 2017AJ....153..240A: Tdust = 20 K; kappa = 10 cm2/g at 1000 GHz, beta = 1; d = 385 pc
+- 2017ApJ...834..178Y: kappa=0.009 cm2/g, gas-to-dust 100
+- 2017ApJ...835...17M: kappa=3.4 cm2/g at 870 um; T_dust=24 K (disk A), 18 K (at GQ Lup b); gas-to-dust 100 for total CPD mass
+- 2017ApJ...835..108S: Tdust 80 K scaling; kappa 0.77 cm2/g; dust-to-gas 3.5e-3
+- 2017ApJ...835..228T: Gas-to-dust 100, MRN grains 0.09 µm–1 mm, PAH 1e-9
+- 2017ApJ...835L..11T: kappa_1.3mm ~0.95 cm2/g per dust mass
+- 2017ApJ...835L..13S: excess emission is thermal dust; free-free negligible
+- 2017ApJ...836..223W: T = 20 K, kappa(1.3 mm) = 2.3 cm2/g, distance 150 pc
+- 2017ApJ...838..114K: T=15 K (10 K gives 2x higher masses; 25 K gives ~2x lower)
+- 2017ApJ...839...58S: gas-to-dust 90±25; uniform dust within half-light radius
+- 2017ApJ...839...99P: d = 137 pc, kappa(1.3 mm) ~3 cm2/g, T = 20 K
+- 2017ApJ...839L..24M: uniform gas-to-dust ratio 100; dust and gas temperatures identical
+- 2017ApJ...840...60B: dust opacity 2.9 cm2/g; abundances from Qi et al. 2011
+- 2017ApJ...841..110S: Optically thin dust; 10% of stellar flux reddened to 900 K for disk case
+- 2017ApJ...841..130A: kappa(343 GHz)=1.7 cm2/g; T=80+-10 K
+- 2017ApJ...841L..11B: d = 160 pc; kappa = 2.3 cm2/g at 230 GHz, nu^0.4
+- 2017ApJ...841L..25T: CO J=3-2 thermalized
+- 2017ApJ...842....8M: kappa = 2.3 cm^2/g at 1.3 mm; T ~48 K radiative equilibrium; D = 7.66 pc
+- 2017ApJ...842....8M: Fomalhaut b at ~125 AU, T_dust ~51 K; stellar photospheric radius 1.842 Rsun
+- 2017ApJ...844...99L: Dust temperature fixed at 20 K
+- 2017ApJ...844..123F: Galactic X_CO = 3e20 (alpha_CO = 6.5); alpha_CO=1.4 alternative
+- 2017ApJ...846...70P: d = 140 pc; kappa=2.3 cm2/g (nu/230GHz)^0.4; T_dust≈25 (L/Lsun)^0.17 K
+- 2017ApJ...846..108C: Gas and stars share same half-light radius; constant velocity dispersion
+- 2017ApJ...846L..26W: T = 20 K, kappa = 2.3 cm^2/g, distance 140 pc, optically thin
+- 2017ApJ...847...92H: gas-to-dust ratio 100; optically thin
+- 2017ApJ...847..108W: kappa=0.0182 cm2/g, gas-to-dust ratio 100, dust T 100 and 300 K
+- 2017ApJ...849...68S: X(NH3/H2)=1e-8, mu=2.8, Rgd=100, Ossenkopf & Henning dust opacity 0.899 cm2/g at 1.3 mm, Td=12.1 K, D=400 pc
+- 2017ApJ...850L...2A: Tdust 20-50 K, kappa850=0.035, beta=1, gas-to-dust 100
+- 2017ApJ...850L...6A: kappa_nu = 2 cm^2 g^-1; size distribution power-law index -3.5
+- 2017ApJ...850L..30Y: Td = 50 K; kappa = 0.068 cm2/g
+- 2017ApJ...851...83C: Td = 20 K, kappa = 0.03 cm2/g at 870 um (Hildebrand), gas-to-dust 100:1, d=137 pc
+- 2017ApJ...851...85B: gas-to-dust 100, CO/H2 7e-5, shared temperature structure
+- 2017ApJ...851...85B: Optically thin dust, constant midplane temperature in outer disk; opacity 4.94 cm2/g at 890 um
+- 2017ApJ...851...98T: kappa(850um)=0.383 cm2/g, T_dust=40 K
+- 2017ApJ...851...98T: Flat cosmology H0=70, OmegaM=0.3, OmegaL=0.7
+- 2017ApJ...851..145M: CMB contribution removed; [CII] line contamination negligible
+- 2017ApJ...851L..23C: Gas-to-dust ratio 100, Andrews et al. 2010 parameterization
+- 2017MNRAS.464L..31H: Ossenkopf & Henning thin ice mantle dust, beta = 1.75
+- 2017MNRAS.465..834Z: Dust temperature 20 K; kappa 2.2 cm2/g for dust mass
+- 2017MNRAS.465.4390B: kappa0=0.045 m2/kg at 250 GHz
+- 2017MNRAS.465.4390B: alpha_CO=0.8; gas-to-dust ratio 91
+- 2017MNRAS.467L.120M: Dust to gas ratio 100; kappa = kappa0 (nu/nu0)^beta, kappa0 = 0.5 cm2/g at 230 GHz
+- 2017MNRAS.468.3468G: half-solar metallicity
+- 2017MNRAS.468L..87C: kappa160 = 1.6 m2/kg, beta = 1.7
+- 2017MNRAS.469.2230M: Optically thin dust, kappa 0.009 cm2/g, gas-to-dust 100, Tdust=Tex=110 K
+- 2017MNRAS.469.4683C: delta_GDR ~ 120 from 12+log(O/H)=8.53; Kennicutt 1998 L_IR-SFR, Chabrier IMF
+- 2017NatAs...1E.130Z: kappa consistent with a_max of 1 mm
+- 2017NatAs...1E.172L: Tdust 30 K, gas-to-dust 100, kappa1.3 = 3.5 cm2/g, D=140 pc
+- 2017Natur.545..457D: Tdust=47 K, beta=1.6, CMB-corrected, gas-to-dust ~100, LCDM H0=70, Om=0.3
+- 2018A&A...610A..24F: distance 126 pc, Mstar 0.9, fixed geometry i=35, PA=86
+- 2018A&A...614A..17B: Optically thin dust, full gas-dust coupling
+- 2018A&A...614A.106C: Gas-to-dust ratio 80, Rc=100 AU, Teff=8400 K
+- 2018A&A...614A.113H: gas-to-dust mass ratio 100
+- 2018A&A...614A.113H: 1 Msun central star
+- 2018A&A...615A...9P: distance 436 pc
+- 2018A&A...615A..28D: Optically thin dust, opacity ~7 cm2/g, dust temperature 200-650 K (IK Tau) and 400-1530 K (R Dor)
+- 2018A&A...615A..83V: gas-to-dust 100, CO/H = 1e-4 where T>20 K, Tgas=Tdust
+- 2018A&A...615A..94F: Dust temperature = clump mean gas temperature; gas-to-dust 100; opacity as in Fontani 2016
+- 2018A&A...615A.141B: kappa=0.008 cm2/g, gas-to-dust 100, n=2 intermediate between 2.2 and 1.5
+- 2018A&A...615L..10M: T=20 K, kappa=1.15 cm2/g, d=111 pc, all emission thermal
+- 2018A&A...616A..34H: kappa=7 cm2/g, mean dust temperature ~700 K (T radial power law index -0.5), dust-to-gas 2e-2, mass-loss 1.2e-7 Msun/yr, optically thin
+- 2018A&A...616A..88V: gas-to-dust ratio 100; smooth disks without rings or gaps
+- 2018A&A...616A.110E: local GDR-metallicity relation holds at all redshifts; M_Chabrier=M_Salpeter/1.7
+- 2018A&A...616L..10F: gas-to-dust ratio 100; kappa_300um=10 cm2/g with beta=2; T_dust = host core temperature; D=1.3 kpc
+- 2018A&A...617A..28S: Equal gas and dust temperatures; gas-to-dust 100
+- 2018A&A...619A.161C: Optically thin emission; T_dust = 15 K; kappa with beta=1
+- 2018A&A...619A.161C: rho_pc = 1 g/cm3, St near unity
+- 2018AJ....156..239Z: Distance 200 pc, dust-to-gas 100, optically thin emission (so masses are lower limits)
+- 2018ApJ...852..122H: Vertically isothermal mm dust; ISM beta upper limit 1.7
+- 2018ApJ...853..160C: Td = 20 K uniform; kappa_1.3mm,d=0.899 cm2/g; gas-to-dust 141; d=2.5 kpc
+- 2018ApJ...853..171G: beta=1.75, kappa(3.1mm)=0.0018 cm2/g per gram gas (Ossenkopf1994a), gas-to-dust 100, d=8.4 kpc
+- 2018ApJ...854..177V: Surface density power law gamma=1 with exponential cut-off; gas and dust share profile
+- 2018ApJ...854L...4R: T_dust = 25 K; gas-to-dust 100
+- 2018ApJ...855...24P: Td = 25 K; kappa(1.3mm) = 0.00899 cm2/g; factor-2 opacity uncertainty; d = 388 pc
+- 2018ApJ...856..118H: Td = 25 K; stellar-mass-dependent gas-to-dust ratio per Tacconi2018
+- 2018ApJ...856..147O: Gas-to-dust ratio 100; kappa 5.5 and 2.7 cm2/g at 350/500 um (Ormel et al.)
+- 2018ApJ...859...12G: Td=50 K, beta=1.5, kappa 0.076 m2/kg, GDR 90±25
+- 2018ApJ...859...32P: kappa=2.3 cm2/g (nu/230GHz)^0.4, T=20 K
+- 2018ApJ...859..103W: rho = 1 g/cm3, T*=10500 K, L*=24.2 Lsun, d=111 pc, albedo~0, grain radius = wavelength
+- 2018ApJ...859..111H: Grain sizes 0.1 um to 3 mm, n(a)∝a^-3.5; 30% amorphous carbon/70% astrosilicate; kappa_1.3mm=2.2 cm2/g; Tstar=3859 K, R=0.8 Rsun; Rin 0.05 au; gas-to-dust 100
+- 2018ApJ...860...77E: d=400 pc, T_dust=20 K, beta=1, kappa0=2 cm2/g at 1.3 mm
+- 2018ApJ...861...43P: R21=1; alpha_CO=1
+- 2018ApJ...861...91H: kappa = 10 (nu/1 THz)^beta cm2/g, beta=1, gas-to-dust 100, Td = 30 K, central mass 0.15 Msun
+- 2018ApJ...862L...2F: LTE, gas-to-dust ratio 100, star mass 0.7 Msun
+- 2018ApJ...863...19A: Optically thin, Tdust=20 K, kappa(850um)=0.035, beta=1, gas-to-dust 100 (mass)
+- 2018ApJ...863...19A: LTE, gas T = dust T = 20 K, kappa(850um)=0.035, beta=1, gas-to-dust 100, mean molecular weight 2.37
+- 2018ApJ...864L..25O: kappa = 6.8e-4 cm2/g at 1.2 mm; T = 20-100 K
+- 2018ApJ...868L...3M: minimum disk temperature 20 K, kappa 3 cm2/g, d=150 pc
+- 2018ApJ...868L...5K: d=145 pc, kappa=2.3 cm2/g at 230 GHz, T=100 K, gas-to-dust 100
+- 2018ApJ...869...17L: T_dust = 20 K, optically thin, kappa=2.3 cm2/g (nu/230GHz)^0.4
+- 2018ApJ...869...59W: kappa=0.899 cm2/g, Tdust=15 K, d=140 pc
+- 2018ApJ...869...59W: Envelope T=15 K, C18O abundance 4.8e-7, LTE optically thin
+- 2018ApJ...869...75M: κ=2.3 cm2/g for belt, 1.3 cm2/g for halo micron grains
+- 2018ApJ...869..126L: Tdust 130 K (60-160 K range), kappa uncertain by factor ~2
+- 2018ApJ...869L..46D: Zero albedo, no background intensity
+- 2018MNRAS.473..879P: gas to dust mass ratio of 100
+- 2018MNRAS.474.3640M: Salpeter IMF 1-100 Msun, solar metallicity, continuous SF at 24 Msun/yr, gas-to-dust ratio ≈160, 1-D slab, log NH 19-23
+- 2018MNRAS.474.4039M: Galaxy fraction of Herschel flux = ALMA fraction 0.27
+- 2018MNRAS.474.4347C: d = 414 pc, Tdust = 20 K, kappa = 10(nu/1000 GHz) cm2/g, gas-to-dust 100
+- 2018MNRAS.475..448T: kappa=0.1 cm2/g (nu/THz)^beta, includes gas-to-dust 100
+- 2018MNRAS.475.5322S: beta=1, kappa0=0.035 g cm-2 at 850 um, Tdust=90 K
+- 2018MNRAS.477.5104C: 70% astro-silicates, 30% amorphous carbon, density 2.9 g cm-3, gas-to-dust 100
+- 2018MNRAS.478.2505I: Gas-to-dust mass ratio 100; dust opacity kappa=0.5 (nu/220 GHz)^1.7 cm2/g; LTE
+- 2018MNRAS.481.4931E: CO/H2 ~1e-3 (carbon-rich); oxygen-rich case gives 3.9e-2 Msun
+- 2018Natur.553...51M: alpha_CO = 1.0 Msun (K km/s pc^2)^-1, thermalized CO emission
+- 2018PASJ...70L...6K: kappa_850 = 3.2 cm2/g
+- 2018Sci...362.1034D: beta=1.8, kappa(850µm)=0.0484 m2/kg, gas-to-dust 100, alpha_CO,MW=4.6 and ULIRG=0.8
+- 2019A&A...621A.122B: kappa 1.11 cm2/g at 1.3 mm; gas-to-dust 150; distances 1 and 2.2 kpc
+- 2019A&A...622A..75L: 75% silicate + 25% carbon, Mie opacities, a^-3.5 size distribution, amin 0.01 um, amax 3 mm (LGP), 2 um (SGP); gas-to-dust 100 initially
+- 2019A&A...622A.206M: dust opacity 1 cm2/g at 1.4 mm, gas-to-dust ratio 100, d=3.6 kpc
+- 2019A&A...623A.150V: gas-to-dust ratio 100, optically thin dust
+- 2019A&A...623L...8B: Gas-to-dust ratio 100
+- 2019A&A...624A...7V: Gas-to-dust ratio 100; astronomical silicates; dn(a) ∝ a^-3.5 da
+- 2019A&A...624A..33V: kappa = 2.31 cm2/g at 1.28 mm, astronomical silicate, sizes 0.1-3000 micron, slope -3.5; d=103 pc; Tdust 27 K (disk), 22 K (companion)
+- 2019A&A...625A.118K: CPD inclination equal to disk inclination; accretion rate 1e-8 MJup/yr; r_p 3 RJup
+- 2019A&A...626A..36D: distance 5.2 kpc; Td 100/35 K; Ossenkopf & Henning ice-mantle opacity
+- 2019A&A...627L...6M: gas-to-dust 100, kappa=1.0 cm2/g at 1.3 mm, Td 50-150 K, d=2.2 kpc
+- 2019A&A...628A..27B: gas-to-dust ratio 100; Ossenkopf & Henning opacity without ice mantles, n=1e6
+- 2019A&A...628A..85V: Optically thin dust emission
+- 2019A&A...628A..85V: Fiducial disk 20 Earth masses, 40 AU, gas-to-dust 100, 0.5 Myr exposure
+- 2019A&A...629A..75B: HCO+/H13CO+ = 12C/13C = 69; CO/H = 1.4e-4 above 20 K; gas-to-dust 100; LTE
+- 2019A&A...629A.146V: Spherical envelope, constant expansion velocity, collisions with H2 only
+- 2019A&A...631A..64B: kappa=0.014 cm2/g, Tdust=200 K, d~100 pc
+- 2019AJ....157..237R: gas-to-dust ratio ~100, kappa=0.02 cm2/g at 870 um, isothermal
+- 2019AJ....158...15P: gas-to-dust 33; 30% amorphous carbon, 70% silicates; star 7320 K, 1.5 Rsun
+- 2019ApJ...871....5T: Gas-to-dust mass ratio 100; CO abundance 1e-4; HCO+ 1e-9; turbulence 120 m/s; LTE
+- 2019ApJ...871....5T: Temperature 180 K in cavity
+- 2019ApJ...871...85L: kappa = 2.64 m^2/kg at 125 um; Chabrier IMF
+- 2019ApJ...871..170M: Thermal dust, optically thin; hydrogen dominated by H2
+- 2019ApJ...871..185L: Constant 30 K fiducial, or radial profile; optically thin; gas-to-dust 100; flattened rotating
+- 2019ApJ...871..185L: kappa=0.6 cm2/g, gas-to-dust 100
+- 2019ApJ...872...92F: Optically thin emission; disk radius <16 au implied by unresolved emission at 101 pc; blackbody grains at 16 au have 20 K
+- 2019ApJ...872..112V: T=20 K, kappa=10 cm2/g at 1000 GHz, beta=1, gas-to-dust 100
+- 2019ApJ...872..196S: gas-to-dust 100, Tdust 60 K, beta 1.5, d = 293 pc, optically thin
+- 2019ApJ...872..200H: gas-to-dust 100, kappa 1.89 cm2/g, D=7.5 kpc, mean molecular weight 2.29
+- 2019ApJ...873...73Z: kappa_1.3mm=0.899 cm2/g, gas-to-dust 141, T=30/70/200 K
+- 2019ApJ...873L..19B: Td = 25 K; gas-to-dust 100
+- 2019ApJ...874...27T: T_dust = 50 K (40 K), beta = 1.5, kappa_d(850um) = 0.15 m^2/kg, nu0 = 353 GHz, mu_g = 1.43
+- 2019ApJ...874...27T: Chabrier IMF; no parameter optimisation except baryon mass scaling
+- 2019ApJ...874...89C: Td = 6.5 K, kappa1.3mm = 0.009 cm2/g, D = 135 pc
+- 2019ApJ...875...62Y: Tdust=60 K, kappa1.3mm=2.3 cm2/g, gas-to-dust 100, CO/H2 6e-5, Tgas=60 K, disk radius 70 au, 12C/13C=62
+- 2019ApJ...875...87D: opacity 2.3 cm^2/g; dust in blackbody equilibrium; L*=0.09 Lsun; d=9.725 pc; vertically isothermal
+- 2019ApJ...875L...9W: T_dust = 20 K, kappa_nu = (nu/100 GHz) cm^2/g, optically thin
+- 2019ApJ...877..100Y: dust opacity 3 cm2 g-1, gas-to-dust ratio 100
+- 2019ApJ...877L..25M: beta=1, kappa150=0.59 cm2/g, gas-to-dust 100, Tdust ∝ r^-0.4
+- 2019ApJ...878...16P: kappa=2.3 cm2/g (nu/230GHz)^0.4, T=20 K
+- 2019ApJ...878L...8T: kappa = 2.3 cm2/g at 233 GHz (beta ~0.5), T_dust = 18 K, d = 59.5 pc, uniform background
+- 2019ApJ...879...25K: Gas-to-dust ratio 100; trans-sonic non-thermal velocity ~0.3 km/s at 30 K; cylinder geometry
+- 2019ApJ...879L...2M: overall gas-to-dust ratio of 73
+- 2019ApJ...880...15K: T_dust = 25 K mass-weighted
+- 2019ApJ...880...15K: beta = 1.8, constant gas-to-dust ratio
+- 2019ApJ...881...63N: Optically thin dust; Kennicutt98 SFR relation with Chabrier IMF
+- 2019ApJ...882....1L: alpha_CO~18 from metallicity (Glover & Mac Low 2011); X_CI=3e-5; Q10=0.6; GDR=540 at 0.3 Zsun
+- 2019ApJ...882..160Q: Draine astronomical silicates and graphite, dust-to-gas 0.0065, n(a) ∝ a^-3.5 from 0.005 μm, large grains 1 mm within 0.1H
+- 2019ApJ...883...98Z: MRN size distribution n(a) ∝ a^-3.5; Mie opacities
+- 2019ApJ...883..180H: kappa=2.3(nu/230GHz)^beta cm2/g, beta=0.7; 12C/13C=77
+- 2019ApJ...884...48C: Td 23 K (MM2), 27 K (MM3), 28 K (MM4), 25 K (MM6-8); d=5.5 kpc; optically thin
+- 2019ApJ...886L...4Z: kappa_1.3mm=0.899 cm2/g, gas-to-dust 141, T=30 or 60 K
+- 2019ApJ...887...74F: kappa_1THz=20 cm2/g; lambda_Edd=1; L'CO(5-4)/L'CO(3-2)=0.7
+- 2019ApJ...887..144J: 20% dark matter in dynamical gas mass; T_ex=30 K for [CI]
+- 2019MNRAS.482..698C: Optically thin emission, T=20 K, beta=1, Beckwith opacity, 140 pc
+- 2019MNRAS.482.3135B: beta=1.8; kappa_850=0.077 m^2/kg
+- 2019MNRAS.485..739M: dn/da ∝ a^-3.5
+- 2019MNRAS.485.2092C: Dust temperature as in z=2 MS template
+- 2019MNRAS.486.4114R: kappa = 0.1 (nu/1e12)^beta cm2/g, beta = 1, Tdust = 10 K, gas-to-dust 100, d = 410 pc
+- 2019MNRAS.488.1005P: Disc inclination 30 deg from face on (beta Pic b 85 deg)
+- 2019MNRAS.488.1005P: Star and planet luminosities heat dust; anisotropic scattering included
+- 2019MNRAS.488.1005P: gas-to-dust 100; grain density 1 g/cm3
+- 2019NatAs...3..278K: Opacity 1.7 cm2/g, dust T=160 K
+- 2019NatAs...3..314L: gas-to-dust ratio 100; Tatm/Tmid = 2; beta = 1; gas and dust temperatures equal
+- 2019PASJ...71...71H: kappa0 = 10 cm2 g-1 at 250 um (Hildebrand 1983); using Dunne 2000 doubles M_d
+- 2019PASJ...71...71H: Clumps assumed to have same T_d, beta_d as whole system
+- 2020A&A...633A.114S: kappa(890um)=2 cm2/g, Tdust=20 K
+- 2020A&A...633A.114S: Gas-to-dust ratio 100 for total disk mass
+- 2020A&A...633A.126B: Optically thin continuum; distance 192 pc
+- 2020A&A...635A...2S: kappa = 0.131 cm2/g at 87.6 GHz (Ossenkopf & Henning, beta = 2), gas-to-dust 100, D = 1.3 kpc, mu = 2.3
+- 2020A&A...636A..37D: k_nu=4[nu/1.2THz]^beta, beta=2.0; Td error ~5 K; upper limit 3 rms
+- 2020A&A...636A..67A: LTE; H2CO modeled with source size ~0.15'' below beam
+- 2020A&A...636A..67A: N(H2) from continuum with Tdust=100 K, kappa=1.0 cm2/g, gas-to-dust 100
+- 2020A&A...640A..19T: Distance 293 pc; optically thin emission
+- 2020A&A...640A..27V: Optically thin emission, no free-free contamination, 20 K midplane (40 K tested)
+- 2020A&A...641A.155V: Gas mass from M_dust with metallicity-dependent gas-to-dust ratio log(delta_GDR)=10.54-0.99x(12+log(O/H)); starbursts supersolar (delta_GDR~30); Sigma_SFR=SFR/…
+- 2020A&A...644A..11L: gas-to-dust ratio 100, mu_H2 = 2.8, Ossenkopf & Henning opacity; pixels with scattering or optically thick emission excluded
+- 2020A&A...644A..84M: Td = 150 K, beta = 2.0, k0 = 0.8 cm2/g at 220 GHz, mu = 2.33, gas-to-dust 100
+- 2020A&A...644A.119P: kappa(1.3mm)=2.3 cm2/g, Tdust=20 K, d=121 pc
+- 2020AJ....159...62C: kappa=0.015 cm2/g, beta=1.2, Td=50 K (30 K for source B), dust-to-gas 100, D=2.3 kpc
+- 2020AJ....159..118U: Gas-to-dust ratio 100; disk optically thick at L'
+- 2020AJ....159..288M: κν=2.3 cm2/g, grain temperature ~15 K at 140 au
+- 2020ApJ...888L...4T: Locally isothermal; initial gas mass ~1e-2 Msun; dust mass 1.2e-4 Msun
+- 2020ApJ...889...43Z: Dust temperature equal to gas temperature, 50 K; thickness equal to width
+- 2020ApJ...889...43Z: Td=50 K, gas-to-dust ratio 100
+- 2020ApJ...889..140Y: dust opacity 2.3 cm2/g at 1.3 mm, dust T 20 K, gas-to-dust 100:1
+- 2020ApJ...890...76N: Gas-to-dust ratio 100; kappa 1.85 cm2/g
+- 2020ApJ...890...76N: Rgd=100; k100GHz=0.21 cm2/g; mu_H2=2.8; virial equilibrium for 0.71<alpha<1.4
+- 2020ApJ...890..129K: 8 mm optically thin, negligible free-free, gas-to-dust 100:1, distance 400 pc
+- 2020ApJ...890..130T: T ∝ R^-0.46 from models
+- 2020ApJ...890L..14T: dust-to-gas ratio 100; Ossenkopf & Henning coated silicate grains
+- 2020ApJ...891...48H: Midplane temperature from Macías et al. 2018; DSHARP opacities; gas-to-dust ratio 100 for Toomre Q
+- 2020ApJ...891..164S: Dust-to-gas mass ratio 0.0027 (0.008 scaled by LMC Z~1/3); NH2/AV = 2.8e21; distance = LMC
+- 2020ApJ...891..164S: LMC: Z=1/3, gas-to-dust 300, chi_uv=3
+- 2020ApJ...892...66M: T_dust = 25 K mass-weighted
+- 2020ApJ...892...66M: GDR = 100 at solar metallicity, 12+log(O/H)=8.67; metallicity from mass-metallicity relation
+- 2020ApJ...892..111F: Scattering and free-free emission ignored
+- 2020ApJ...892..111F: mu~2, vertically isothermal; 0.5 dex uncertainty on accretion rates
+- 2020ApJ...892..147S: kappa_160um=13.1 cm2/g; drop factor 2.5+-0.5
+- 2020ApJ...892..152H: Gas-to-dust ratio 100; mean molecular weight 2.8
+- 2020ApJ...892..152H: Constant opacity and dust mass density across the wall
+- 2020ApJ...893..125U: kappa_abs(Band 3)=9.2e-2 cm2/g; T=30 K; stellar mass 0.8 Msun
+- 2020ApJ...894L..14L: Optically thin dust, constant 20 K, gas-to-dust 100
+- 2020ApJ...895..119T: beta = 1.8 for flux scaling
+- 2020ApJ...895L..18B: T_dust = 30 (L/38 Lsun)^1/4 (r/100 AU)^-1/2; kappa 10 cm2/g at 1000 GHz, index 1; d=402 pc
+- 2020ApJ...895L..46L: gas-to-dust ratio 100; gamma = 0.1; max particle size 0.1 mm
+- 2020ApJ...896...35J: kappa(1.21 mm)=0.24 cm2/g; g=154; d=4.2 kpc; OH94 opacity would lower masses by ~4
+- 2020ApJ...896...35J: Optically thin NH3
+- 2020ApJ...896..110L: Gas-to-dust ratio 100
+- 2020ApJ...896..127K: Tdust = 150 K (75-300 K); D = 5.0 kpc; kappa=0.1(250um/lambda)^beta cm2/g, beta=1.85; gas-to-dust 100; starless cores at 15 K
+- 2020ApJ...897L..33J: Tdust=500-1200 K, gas-to-dust ratio 100, kappa=25.8 cm2/g
+- 2020ApJ...898...10T: gas-to-dust 100; kappa_250um=0.1 cm2/g, beta=1.0 giving kappa_0.9mm=0.028; d=140 pc
+- 2020ApJ...898...36L: Gas-to-dust 100, 20% dust lost to drift, disk mass 5.8 MJup
+- 2020ApJ...898...97B: Uniform dust temperature 20 K; dust-to-gas 1:100
+- 2020ApJ...901...79A: two-component graybody, emissivity indices 1.5 (warm) and 2.0 (cold)
+- 2020ApJ...902...78R: kappa = 0.015 (nu/250 GHz)^beta m^2/kg, beta=2; gas-to-dust ratio 100; Kroupa IMF; flat LCDM H0=68.1
+- 2020ApJ...902..141S: T=20 K, kappa=1.84 cm2/g, gas-to-dust 100
+- 2020ApJ...903...94M: Tdust 22 K, gas-to-dust 300, kappa_1.3mm 1 cm2/g
+- 2020ApJS..251...14H: gas-to-dust 100; mu_H2 = 2.8; beta = 1.75
+- 2020MNRAS.494.3828D: half of gas available to form stars
+- 2020MNRAS.496..394R: 15 K for compact core; 45 K for extended emission
+- 2020MNRAS.496.1834L: Small silicate (forsterite) grains, kappa from Mennella et al.
+- 2020MNRAS.497.5454I: beta = 2.0
+- 2020NatAs...4..670A: L_CO(7-6)/L_CO(1-0)=0.24; ULIRG X_CO (Downes1998)
+- 2020NatAs...4..670A: LAB6.1 fraction of FIR luminosity follows 1.2 mm continuum
+- 2020PASP..132h4401T: Dust mass lower limit assuming spherical grains, density 3.5 g/cm3, radius 1.0 um
+- 2021A&A...648A..41V: Distance 150 pc; optically thin; no scattering; masses are lower limits
+- 2021A&A...652A..98G: Galactic X_CO
+- 2021A&A...653A..46V: Optically thin emission; individual Gaia distances, else 198 pc
+- 2021A&A...655A..72S: optically thin dust (later noted as optically thick)
+- 2021AJ....161..238W: Single species amorphous olivine, non-porous grains, a = 0.03-1000 micron, 70 log bins
+- 2021ApJ...907L..15S: kappa = 0.009 cm2/g, gas-to-dust 100, mu_H2 = 2.8, spherical geometry
+- 2021ApJ...908....8C: MRN grain size distribution n(a) ∝ a^-3.5
+- 2023ApJ...956L..35Z: gas-to-dust 100, T 75-150 K, beta=1.1
+- 2023MNRAS.526.4402B: gas-to-dust ratio 100; spherical symmetry; distance 3.8 kpc
+- 2023MNRAS.526L..41P: distance 140 pc, gas-to-dust 100, astrosilicate grains, Tgas=Tdust, CO LTE, turbulent velocity zero
+- 2023PASJ...75.1105K: 12CO abundance 9.83e-5 relative to H2, 13CO 1.49e-6, C18O 2.26e-7
+- 2024A&A...682A..56Z: Spherical grains; gas-to-dust ratio 100; dust temperature equals gas temperature
+- 2024A&A...684A.134R: optically thin emission, no scattering
+- 2024A&A...686A.274V: Spherically symmetric envelope expanding at constant velocity; amorphous carbon opacities (CW Leo), silicate (R Leo); gas-to-dust 300 (CW Leo), 167 (R Leo)
+- 2024A&A...687A.163B: Gas-to-dust 100; Ossenkopf & Henning opacities
+- 2024A&A...688A.102T: DIANA dust: 60% silicates, 15% amorphous carbon, 25% porosity; dn/da ∝ a^-3.5, amin 0.03 um, amax 3.5 mm; Mie+EMT
+- 2024A&A...689A..85G: Dust mass: T_dust 20 K, wavelength 1.33 mm, kappa 2.254 cm2/g, distance 140±10 pc
+- 2024A&A...689A.104D: kappa = 2.3 cm2/g (nu/230 GHz)^0.4, T_dust = 20 K, D=59.5 pc
+- 2024A&A...690A..46S: Optically thin; possibly lower limit
+- 2024A&A...690A..55S: Dust templates of Magdis2012; optically thin dust mass
+- 2024A&A...690A.185W: mu = 2.8, gas-to-dust 150, kappa = 0.899 cm2/g
+- 2024A&A...691A.180F: Isothermal constant-density static cloud
+- 2024A&A...692A.215C: kappa=1.3 cm2/g, beta=1.8, Td=25 K
+- 2024AJ....167...94H: Gas to dust ratio 200; dust optically thin for T_gr so masses for C and D are lower bounds
+- 2024ApJ...961..228S: kappa=2 cm2/g, T_dust=20 K, gas-to-dust 100, d=137 pc
+- 2024ApJ...962...48J: Tdust=Trot; gas-to-dust 100; optically thin dust (tau<0.07)
+- 2024ApJ...963....1O: dust temperature 25 K
+- 2024ApJ...963..134Y: Compact spherical grains; gas-to-dust ratio 3-100
+- 2024ApJ...964...48T: Gas-to-dust mass ratio of 100; thermal dust emission dominates; compact component traces disk with inclination from axis ratio
+- 2024ApJ...966...59S: Optically thin, T_dust = 20 K, kappa = 2.3 cm2/g (nu/230 GHz)^0.4, Gaia DR3 distances, 10% flux calibration error
+- 2024ApJ...966...84A: Optically thin, isothermal dust emission
+- 2024ApJ...966..117X: gas-to-dust ratio 100, isotropic scattering, dusty outflow cavity fiducial
+- 2024ApJ...967...15K: T_dust = 250 K, gas-to-dust 100, k=0.0078 cm2/g, D=2.38 kpc
+- 2024ApJ...968....9W: dust-to-gas ratio 100, molecular fraction 0.75
+- 2024ApJ...968L..19F: Td = Tgas = 6 K; kappa 1.21 cm2/g at 1.16 mm; dust-to-gas 0.008
+- 2024ApJ...971..129C: Sigma_g/Sigma_d=100 for Q profile
+- 2024ApJ...973...42B: T_dust = 30 K, optically thin, d = 125 pc
+- 2024ApJ...974..102S: optically thin emission; p = 2.5 or 3.5
+- 2024ApJ...974..102S: kappa 0.42 and 1.9 cm2/g for 100 um and 1 mm grains; T=21 K; p=3.5
+- 2024ApJ...975..235V: DIANA dust composition, DHS for compact aggregates
+- 2024ApJ...977..198L: T_dust = 47 K, beta = 1.6, optically thin; L_FIR over 42.5-122.5 µm
+- 2024BSRSL..93..601H: gas-to-dust ratio 100; kappa = 10 (nu/1.2 THz)^beta; distance 3.26 kpc
+- 2024MNRAS.529.3601R: Td = 10 K; kappa(1.16 mm)=0.02582 cm2/g; optically thin
+- 2024NatAs...8..587F: H2O/H2 18O optical depth ratio 530
+- 2025A&A...693A.151M: T(R)=278.3 L^0.25 R^-0.5
+- 2025A&A...694A..82S: Dust masses from CIGALE divided by 2 to match carbon/silicate composition (70%/30%) and Draine07 opacities
+- 2025A&A...694A.166C: mu=2.8; kappa=0.24 cm2/g; gas-to-dust ratio from R_GC relation
+- 2025A&A...696A..59P: Dust mass fraction in AGN-B equals 62%; M_dust/M_* = 0.02±0.01
+- 2025A&A...696A.150S: T=20 K, kappa=0.899 cm2/g, gas-to-dust 100
+- 2025A&A...697A..64V: Gas scale height 10 au at 100 au with exponent 1.1; grain sizes 0.005 µm-3 mm, n(a)∝a^-3.5, 100 bins; gas-to-dust 100; Sc=1.5; initial kappa=13.27 cm2/g, T=20(…
+- 2025A&A...697A..64V: Stellar radius artificially increased for GO Tau, GW Lup, HL Tau, Oph163131 to warm models
+- 2025A&A...698A.183D: kappa = 1.7 cm2/g (850 um/lambda)
+- 2025A&A...699A.369V: Td=40 K, kappa(880um)=1.23 cm2/g, beta=2, dust-to-gas 3.5e-3
+- 2025ApJ...984L..15P: Astrosilicate grains, dn ∝ a^-3.5 da, 0.03-1000 micron, gas-to-dust 100; zero turbulent velocity; 1 Myr isochrones
+- 2025ApJ...986L..11S: kappa=2 cm2/g, T~12 K, dust-to-gas 100 for disk mass
+- 2025ApJ...986L..11S: Low viscosity (alpha<0.01), one planet per gap
+- 2025ApJ...986L..22R: Opacities 0.17-0.467 m2/kg; dust at equilibrium temperature
+- 2025ApJ...989....1Z: kappa = 2.3 (nu/230 GHz) cm2/g, Tdust = 20 K; ISM xCO=1e-4 for Ophiuchus
+- 2025ApJ...989....3D: T_dust = 20 K, kappa = 2.3 (nu/230 GHz) cm^2/g
+- 2025ApJ...989....6K: Optically thin emission, T=20 K for observed dust masses
+- 2025ApJ...990...80K: kappa=0.0125 cm2/g (32% uncertainty), Td from Herschel, tau<0.02
+- 2025ApJ...992...55T: Td=7 K, kappa0.8mm=0.01 cm2/g; MC 27 Td=9 K after subtracting 4 mJy disk
+- 2025ApJ...992L..15L: Dust temperature equals NH3 gas temperature
+- 2025ApJ...993...90S: kappa=2.3 cm^2/g, T_dust=20 K, d=160.1 pc, optically thin
+- 2025ApJ...993..120H: gas-to-dust ratio 100; d=156 pc; optically thin
+- 2025ApJ...994..225N: Td = 20 K, kappa230GHz = 0.00529 cm2/g (beta=2), gas-to-dust 100, D = 138 pc, tau<1
+- 2025ApJ...994..233Y: Ossenkopf & Henning dust opacity; d=5.4 kpc; optically thin dust for mass
+- 2025ApJ...995..193Y: Gas-to-dust ratio 100; kappa 0.18/0.9 cm2/g; mu=2.8; D=5.34 kpc
+- 2025ApJ...995..219F: alpha_CO(3-2)~1 Msun/(K km/s pc^2); Tdust=44.7 K (20%); beta=1.8; optically thin; helium factor 1.36
+- 2025ApJ...995L..63L: Chabrier IMF
+- 2025MNRAS.543.2723P: Dust mass: optically thin, kappa=2.3 cm2/g (nu/230GHz)^0.4, T=20 K
+- 2025NatAs...9.1553F: Dark matter negligible in dynamical mass; gas-to-dust ~1e3 for cross-check
+- 2025NatAs...9.1833L: gas-to-dust ratio 100
+- 2025SciA...11.4512O: Optically thin dust, dust-to-gas 0.01, Ossenkopf1994 opacity
+- 2026A&A...705A.100E: Clump kappa300=10 cm2/g, beta=2, gas-to-dust 100; non-deconvolved sizes for surface density
+- 2026ApJ..1001..131C: alpha_nu = 6.7 +/- 1.7e19 erg/s/Hz/Msun; 25 K calibration
+
+
+### Limitations the authors admit
+- 2012A&A...544L...7P: Model has more parameters than can be constrained due to degeneracies
+- 2013ApJ...762L..21M: Spectral index of central peak poorly constrained; inner belt interpretation needs higher resolution
+- 2013ApJ...764L..14Z: Disk mass is only a lower limit with factor of five uncertainty
+- 2013ApJ...774L...7M: Continuum may be contaminated by line emission; noise higher in strong lines
+- 2013ApJ...779...96T: Mass uncertain by a factor of about 2; core size definition arbitrary; kinematic distance to F uncertain
+- 2014A&A...562A..67G: Size measurement needs confirmation at higher resolution; sparse uv sampling
+- 2014A&A...567A.125G: Outflow rate is a lower limit due to limited velocity coverage
+- 2014A&A...567A.125G: Resolution does not resolve kinematics of inner r~50 pc
+- 2014A&A...569A..11S: Extended emission resolved out; H13CO+ linewidths are lower limits; missing flux affects abundances.
+- 2014ApJ...783L..13P: Emission may be partly optically thick so asymmetries may not trace mass; masses are lower limits.
+- 2014ApJ...785..111W: Single-component SFH cannot model multiple bursts; ages and masses uncertain
+- 2014ApJ...787...42C: Dust mass errors exclude opacity uncertainty; upper limits treated inconsistently between samples; multiplicity unknown for most stars
+- 2014ApJ...787...48X: Good map quality only in the central ~3'' due to uv-coverage; astrometric accuracy ~0.1''
+- 2014ApJ...789L...4T: H13CO+ nearly optically thick (~7 K peak), so rarer species are needed
+- 2014ApJ...791...20R: Sample biased toward brightest disks; dust opacity absolute values unconstrained
+- 2014ApJ...791..108F: Mass uncertain by at least a factor of two from opacity; distance conflict; no magnetic or external pressure
+- 2014ApJ...791L...6W: Disk size near largest recoverable scale; imaginary scatter at long baselines may indicate asymmetry needing higher resolution
+- 2014ApJ...792...34O: Single object; may not be representative of LAE population
+- 2014ApJ...792L..25V: Dust-trap effect on gas temperature not modelled
+- 2014ApJ...795L..25R: Core unresolved so density is a lower limit; deviation may be from temperature
+- 2014ApJ...796....1T: Missing flux and outflow complicate other lines near systemic velocity; temperatures in hydrodynamics (isothermal 13.5 K) and radiative transfer (power law) are inconsistent.
+- 2014ApJ...797...27F: Masses uncertain to factors of a few
+- 2014MNRAS.438.1267S: Deblending requiring 250um detection for 350um priors may bias against 250um-faint sources
+- 2014MNRAS.444.1821F: Early, shallow ALMA data with limited antennas; projections assume no further collisional evolution
+- 2014Natur.514..600D: Missing short baselines cause flux loss, precluding quantitative large-scale CO 6-5 analysis
+- 2015A&A...573L...1O: Dust mass of C is a lower limit as it may not be optically thin; much flux is resolved out
+- 2015A&A...576L..15O: Flux lost to missing short spacings; large uncertainties in masses and orbital estimates
+- 2015A&A...583A..66H: Dust mass method has significant uncertainties; ages uncertain; binarity unconfirmed
+- 2015A&A...584A..99E: Resolution insufficient to determine disc rotation axes and properties
+- 2015ApJ...798L..23K: Veiling prevents accurate spectral type/mass determination of the companion
+- 2015ApJ...799..204C: Models under-predict HCO+ emission for lines other than (3-2); causes include asymmetry, CO abundance structure and temperature structure
+- 2015ApJ...801...82H: Missing flux and lack of short baselines; BN outside field of view; flux calibration unreliable for sources outside primary beam; no size correction in SED
+- 2015ApJ...803...60S: alpha_CO very uncertain and held constant
+- 2015ApJ...803...60S: Missing flux for some lines
+- 2015ApJ...804...37L: Kinematic analysis preliminary since arm inclinations unknown
+- 2015ApJ...805L..17B: Limits depend strongly on temperature and gas-to-dust ratio, so disk masses are approximate.
+- 2015ApJ...807L...4F: Collision velocity is a lower limit due to projection; red lobe of N159W-N may be masked
+- 2015ApJ...808...69B: Mass is a lower limit if solids are in large grains
+- 2015ApJ...808...69B: Beam dilution and background brightness limit CO absorption interpretation
+- 2015ApJ...808..102K: Inner radii unreliable due to resolution and decoherence; constant beta assumed; kappa0 uncertain by factor two
+- 2015ApJ...810...91H: Fields centered on z~1.4 galaxies could be biased regions
+- 2015ApJ...811..124S: Systematic uncertainties in alpha_CO ~100% per method
+- 2015ApJ...812..126C: Absolute flux scale uncertain, affecting spectral index and optical depths
+- 2015ApJ...812..134H: Disks unresolved; interaction between disks cannot be disentangled; line data cannot resolve velocity gradients; cloud contamination in 12CO central channels
+- 2015ApJ...813L..19J: Gaussian fit underestimates the actual disk size
+- 2015ApJ...814...22E: Simple spherical models do not perfectly match; abundance profiles are ad hoc
+- 2015MNRAS.449..715W: Mass estimates uncertain due to cloud boundary definition and a factor ~2 systematics; gas temperature measured only for G0.253
+- 2015MNRAS.452...54M: Dust temperature unconstrained from single upper limit; dynamical mass extremely uncertain; B1/B2 marginal; lensing speculative
+- 2016A&A...591A..73G: Continuum from HzRG and companion #10 contaminated by synchrotron, so SFRs are upper limits; single greybody is crude.
+- 2016A&A...593L..14F: Only one turbulence realisation explored; simulations not fine-tuned; deficit of very weak and strong peaks in the data may reflect density profile or temperature assumptions
+- 2016A&A...593L..14F: Mass uncertainty from dust opacity of factor 2-3
+- 2016A&A...596A..50G: Small sample and non-trivial comparison with Galactic stars due to distance uncertainties
+- 2016A&A...596A..75S: Herschel fluxes of the SMG derived through indirect procedure with unverified assumptions; Y-band scatters ~2 sigma from best fit
+- 2016A&A...596A..88L: Detailed radiative transfer disk modelling and SED fitting beyond scope; mass estimates are simple
+- 2016A&A...596A..88L: Dust mass highly sensitive to assumptions
+- 2016ApJ...816...37V: Inclination and peak rotation velocity cannot be independently determined at current resolution
+- 2016ApJ...816...37V: FIR/TIR luminosities strongly model dependent; more photometry needed
+- 2016ApJ...819...82S: Gas masses exclude the factor ~2 uncertainty of the luminosity ratio and alpha_CO
+- 2016ApJ...819...82S: N2 metallicities may be overestimated by 0.1-0.2 dex
+- 2016ApJ...819..102V: Sample biased toward far-IR bright, larger-mass disks; SED fitting insensitive to geometry; opacity uncertainties affect masses
+- 2016ApJ...821..112K: Four lines insufficient to constrain four free parameters; two-phase model still only within 1.5-2 sigma
+- 2016ApJ...821..112K: Different uv-coverages across transitions; 6-5 least well sampled
+- 2016ApJ...821L..16C: Mass estimates are rough; detailed radiative transfer modeling needed; free-free correction adds uncertainty at the center
+- 2016ApJ...822...80S: Single magnification used for lensing correction is a simplification
+- 2016ApJ...822...80S: Not enough high-z size measurements to exclude size evolution
+- 2016ApJ...823..160D: Mass uncertainties dominated by dust temperature and opacity assumptions
+- 2016ApJ...823..160D: Only two simulations; full parameter space needed
+- 2016ApJ...826...16E: Background molecular cloud emission could hide gas from background disks
+- 2016ApJ...826...16E: Cluster membership of new GeMS sources uncertain
+- 2016ApJ...826...26T: Assumed beta and T_d differ from Herschel FTS values; MAMBO-2 loses signal at large radii; MMS-3 only 3 sigma
+- 2016ApJ...827...72S: Trot=100 K assumed for most molecules; SO abundance relies on a single 33SO line; H2CS single low S/N line
+- 2016ApJ...827..133L: Low dynamic range and resolved-out extended emission; 850 um SNR too low for temperature gradient
+- 2016ApJ...828...46A: Gas masses depend inversely on assumed [CO]/[H2] and isotopologue ratios; CO depletion would raise gas masses
+- 2016ApJ...828..100F: SiO abundance unknown, so outflow properties uncertain; ALMA bandpass covers only part of blueshifted range
+- 2016ApJ...831..101B: Depletion parameterization is somewhat arbitrary; DM Tau inner hole not modelled; outer ring sharpness not matched
+- 2016ApJ...832..148V: Only 43% of single-dish flux recovered; missing short spacings
+- 2016ApJ...832..158Z: Specific angular momentum is only an upper limit; envelope model is over-simplified; CO depletion neglected
+- 2016ApJ...832..178V: Launching-point fits uncertain due to scale height and shadowing
+- 2016ApJ...833...12R: Small sample; FIR/radio test on only five SFGs; thermal fraction at 5 cm uncertain
+- 2016ApJ...833...68A: Small area makes counts and EBL fraction subject to cosmic variance.
+- 2016ApJ...833...68A: Flux may be missed for resolved sources given small beam; beta result affected.
+- 2016ApJ...833..209O: Extended filament emission resolved out; cannot rule out deeply embedded low-mass protostars; core sizes assumed compact
+- 2016ApJ...833L...6C: Large structures (>~12") undersampled in Band 7; could matter for dust
+- 2016ApJ...833L...6C: Dust mass may be underestimated since warm dust dominates SED peak; LMC X_CO may overestimate gas
+- 2016MNRAS.457.4536W: Masses are upper limits due to the isothermal assumption; small sample and limited resolution
+- 2016MNRAS.458L..29C: Dust mass relies on ISM grain size distribution assumption that may not hold for large-grain-dominated disc; detailed modelling deferred
+- 2016MNRAS.458L..29C: Red-shifted CO side affected by cloud filtering
+- 2016MNRAS.459.4518H: Single SED point, grain size and surface density unconstrained; dust mass relies on grain assumptions
+- 2016PASJ...68..103F: Beam does not resolve the cloud; higher resolution and sensitivity needed
+- 2016PASJ...68L...7T: Eastern-arm correlation unclear due to FOV limit
+- 2016Sci...353.1519P: Contrast values are lower limits because of possible beam dilution and higher optical depth.
+- 2017A&A...597A..32V: Limited resolution cannot distinguish gap from ring
+- 2017A&A...597A..99W: Wind model made for AGB stars and assumes constant isotropic mass loss; only order-of-magnitude estimate
+- 2017A&A...597A..99W: ISM emission and filtering of extended emission (>30'') cause contamination and negative artefacts
+- 2017A&A...599A.101V: Model underpredicts emission beyond ~60 AU; gas-phase formation of CO and N2 ignored
+- 2017A&A...599A.113M: Four of 10 doubly detected disks are not reproduced by the model grid; full-disk models used for transition disks
+- 2017A&A...600A..72F: Azimuthal asymmetries are low significance (<~3 sigma); model 13CO flux underestimated ~10%
+- 2017A&A...600A.141K: Starless core sample may be incomplete for low-contrast cores due to background filter and may include column density enhancements
+- 2017A&A...600L...3C: Image family association is difficult as velocities overlap
+- 2017A&A...601L...3P: CH2NH blending likely negligible; dust values may be higher in compact region
+- 2017A&A...602A..11P: Galaxy unresolved; outflows could be missed; needs higher resolution
+- 2017A&A...602A..19L: SED models are degenerate and non-unique
+- 2017A&A...602A..59C: Low number statistics; no model fits so stellar masses unconstrained
+- 2017A&A...603A..10B: Mass estimates are lower limits due to optical depth and >99% flux filtered out
+- 2017A&A...603A..10B: Central mass cannot be determined from pv diagrams
+- 2017A&A...603A..92V: Higher resolution needed to map field structure
+- 2017A&A...604A...6S: Interferometer resolves out emission above ~5'', affecting faint-source spectral indices
+- 2017A&A...604A...6S: Optically thick cores give lower-limit masses; assumed temperatures may be low
+- 2017A&A...606A..17M: Gas masses depend on uniform Galactic alpha_CO; may be overestimated by factor >~8 if alpha_CO ~0.8
+- 2017A&A...606A..17M: Selection bias at z>~3 toward warmer, brighter sources
+- 2017A&A...607A..55V: Dust temperature is likely overestimated so dust mass is a lower limit
+- 2017A&A...608A..22A: Decorrelation implies Tb may be higher; short observation limits sensitivity
+- 2017AJ....153..240A: Many upper limits, uncertain stellar properties; gas masses could be underestimated by carbon depletion
+- 2017ApJ...834..178Y: Only three protostars with M*<0.1 Msun; larger low-mass sample required
+- 2017ApJ...834..178Y: Masses and disk radii of IRAS 15398 and IRAS 16253 are lower and upper limits
+- 2017ApJ...835...17M: Gas mass depends inversely on assumed CO/H2 abundance
+- 2017ApJ...835...17M: Higher angular resolution needed to constrain dust edges and substructure
+- 2017ApJ...835..108S: 12CO-based mass may be inaccurate in optically thick or heated gas.
+- 2017ApJ...835..228T: Models do not fully reproduce observed profiles; fiducial model was fit to integrated intensities
+- 2017ApJ...835L..11T: Gap-like structures and absent small-scale outflow not matched
+
+### Settings cards flag as needed but not stated
+- casa version: 36
+- self-calibration solution intervals and number of iterations: 18
+- casa version and pipeline version: 14
+- line-free channels and continuum subtraction method: 13
+- self-calibration solution intervals: 13
+- line-free channels used for continuum: 12
+- line-free channels for continuum subtraction: 12
+- line-free channels used for continuum subtraction: 10
+- image size and cell size: 9
+- flux scale uncertainty: 9
+- primary beam correction details: 8
+- continuum subtraction and line-free channels: 8
+- line-free channel ranges for continuum: 7
+- line-free channels used for uvcontsub: 6
+- line-free channel selection: 6
+- flux calibrator and flux scale uncertainty: 6
+- line-free channels for uvcontsub: 6
+- clean threshold, masks, image size and cell size: 6
+- self-calibration, if any: 5
+- self-calibration solution intervals and number of rounds: 5
+- clean threshold, masks, cell and image size: 5
+- self-calibration solution intervals and reference antenna: 4
+- uvmodelfit starting parameters: 4
+- line-free channel ranges: 4
+- source coordinates: 4
+- casa version and whether pipeline or manual calibration: 4
+- line-free channels and continuum subtraction details: 4
+- line-free channel ranges for continuum subtraction: 4
+- self-calibration usage: 4
+- primary-beam correction details: 4
+- casa version and whether the pipeline or manual calibration was used: 4
+- moment map clipping thresholds: 4
+- line-free channel selection for continuum: 3
+- continuum channel selection / line-free channels: 3
+- continuum-subtraction and line-free channels: 3
+- self-calibration solution interval: 3
+- coordinates of targets: 3
+- rest frequencies of lines: 3
+- line-free channel ranges used for continuum: 3
+- flux calibrators and flux-scale uncertainty: 3
+
+## Paper excerpts (40 of 385, chosen for detail and spread over fields/years)
+
+### 2018A&A...619A.161C: Evidence for a massive dust-trapping vortex connected to spirals. Multi-wavelength analysis of the HD 135344B protoplanetary disk (2018; protoplanetary_disks; observational_alma_primary)
+- question: What is the nature of the asymmetric mm-dust structure in the HD 135344B disk, and does it (a vortex) explain the scattered-light spirals without an outer planet?
+- step 3: Estimate crescent and total dust mass and optical depth
+  - method: Optically thin M = F d^2/(kappa B(T)); brightness temperature gives tau; surface density from tau/kappa [4.1 Dust mass: "Under the assumption of optically thin emission it is possible to convert the observed flux into dust mass."]
+  - parameter: d = 136 pc, T_dust = 15 K, kappa = 10 cm2/g at 1000 GHz, beta = 1 [4.1 Dust mass: "where the distance $d=136\,\rm pc$, the dust temperature $T_{\rm dust}$ at the location of the asymmetry (i.e. $\sim80$ au) is assumed to be 15 K"]
+  - assumption: Optically thin emission; T_dust = 15 K; kappa with beta=1 [4.1 Dust mass: "the dust grain opacity $\kappa_\nu$ is taken as $10\,\rm cm^2 g^{-1}$ at $1000\,\rm GHz$"]
+  - validation: Tested with T_dust higher by factor 1.5 (tau ~0.4) [4.1 Dust mass: "The crescent remains only marginally optically thin even assuming $T_{\rm dust}$ higher by a factor of 1.5, with $\tau_\nu\sim 0.4$."]
+- step 5: Measure azimuthal peak shift and width versus wavelength; infer gas surface density and gas-to-dust ratio
+  - method: Compare fitted crescent theta_V and azimuthal widths across bands; invert Stokes number relation assuming St~1 to get Sigma_gas [4.3 Peak shift: "we can therefore invert Eq. [\[eq:st\]](#eq:st) and obtain an estimate of the gas surface density at the vortex location of $\Sigma_{\rm gas}\approx1\,\rm g\,cm^{-2}$"]
+  - parameter: grain size ~3 x lambda [4.3 Peak shift: "grain size $\sim3\times\lambda$ (cite: 2006ApJ...636.1114D)"]
+  - assumption: rho_pc = 1 g/cm3, St near unity [4.3 Peak shift: "Assuming a typical value of $\rho_{\rm pc}=1\rm \, g\, cm^{-3}$"]
+  - validation: Consistent with Sigma_gas from CO isotopologue modelling [4.3 Peak shift: "This gas surface density is consistent with that obtained by (cite: vdm2016_isot) by modelling the emission from $^{13}$CO and C$^{18}$O."]
+- step 6: Estimate vortex total mass and compare with planet scenarios
+  - method: Dust mass ~50 Mearth times gas-to-dust ratio 1 or 10; gap-planet mass from gap width relation [5.2 Spirals launched by the vortex: "Assuming a value of 10 (cite: 2017ApJ...835..118M; 2017ApJ...850..115S), the total mass for the vortex is $M_{\rm vortex}\approx1.7\,M_{\rm Jupiter}$."]
+  - parameter: gap width ~20 au at ~68 au, alpha = 1e-3 [5.1 Spirals launched by a planet: "a standard viscosity parameter $\alpha = 10^{-3}$"]
+- result: Azimuthal shift of peak between Band 9 and Band 3 = ~50 ± not stated deg [4.3 Peak shift: "we observe a shift of $\sim50^\circ$ between the 1.5 mm grains (traced in Band 9) and 9 mm grains (traced in Band 3)"]
+- result: Crescent dust mass Band 4 / Band 3 = 44 / 52 ± not stated Earth masses [4.1 Dust mass: "The calculated dust masses are $44\,\rm M_{\oplus}$ and $52\,\rm M_{\oplus}$ in Band 4 and Band 3, respectively."]
+- result: Optical depth of crescent = ~0.5-0.6 ± not stated dimensionless [4.1 Dust mass: "gives an optical thickness $\tau_\nu$ of $\sim 0.5-0.6$ at 108 and 155 GHz"]
+- result: Total flux density Band 3 / Band 4 = ~20.0 / ~42.7 ± not stated mJy [4.1 Dust mass: "The total flux densities in Band 3 and Band 4 are $\sim20.0\,\rm mJy$ and ${\sim42.7\,\rm mJy}$, respectively."]
+- result: Central unresolved source flux (Band 4) = ~85 ± not stated uJy [4.1 Dust mass: "has a flux density of $\sim85\,\rm\mu Jy$"]
+- result: Gas surface density at vortex = ~1 ± not stated g cm-2 [4.3 Peak shift: "$\Sigma_{\rm gas}\approx1\,\rm g\,cm^{-2}$"]
+- result: Vortex total mass (gas-to-dust 1) = at least 0.3 ± not stated Jupiter masses [5.2 Spirals launched by the vortex: "gives a total vortex mass of at least $0.3\,M_{\rm Jupiter}$"]
+- result: Vortex total mass (gas-to-dust 10) = 1.7 ± not stated Jupiter masses [5.2 Spirals launched by the vortex: "the total mass for the vortex is $M_{\rm vortex}\approx1.7\,M_{\rm Jupiter}$"]
+- result: Gap-carving planet mass = ~0.2 ± not stated Jupiter masses [5.1 Spirals launched by a planet: "the derived mass for the gap-carving planet is only $\sim0.2\,\rm M_{\rm Jupiter}$"]
+- limitation (authors): Emission only marginally optically thin so masses are lower limits; large uncertainties in opacity and gas surface density [4.1 Dust mass: "These numbers should be regarded as lower limits."]
+- limitation (authors): Spectral index decrease may be due to optical thickness rather than grain growth [4.2 Spectral index distribution: "but can also be due to high optical thickness, or to a combination of both effects"]
+- not stated (card): Self-calibration solution intervals, number of rounds and reference antenna; Line-free channels / continuum selection and any continuum subtraction for Band 3; CASA version and pipeline version; Cell size, image size, mask, clean threshold and number of iterations; MCMC priors and bounds, convergence criteria; meaning of '24000 likelihoods' vs steps; uv-weights and any rescaling used in GALARIO f…
+
+### 2019ApJ...871..185L: Investigating Fragmentation of Gas Structures in OB Cluster-forming Molecular Clump G33.92+0.11 with 1000 au Resolution Observations of ALMA (2019; star_formation, milky_way_ism; observational_alma_primary)
+- question: How do gas structures in the OB cluster-forming clump G33.92+0.11 fragment into YSO candidates, and is the fragmentation consistent with Toomre instability and Jeans lengths?
+- step 3: Toomre Q
+  - method: Enclosed gas mass from 225 GHz flux, assumed T(r); centrifugal balance; Q = kappa cs/(pi G Sigma) [Toomre instability: "We then estimate the enclosed gas mass in radius $r$ based on the observed 225 GHz flux and an assumed gas temperature profile $T(r)$"]
+  - parameter: 0 or 30 Msun central stellar mass [Toomre instability: "(2) there is a total of 30 $M_{\odot}$ of stellar mass embedded at the center of the system."]
+  - assumption: Constant 30 K fiducial, or radial profile; optically thin; gas-to-dust 100; flattened rotating [Toomre instability: "our fiducial analysis assumes a constant 30 K temperature across the entire source."]
+  - validation: CH3CN temperatures broadly consistent with profile [Toomre instability: "These measurements are in general consistent with the temperature model described by Equation"]
+- step 6: Compare linking lengths with Jeans lengths
+  - method: Convert Tb at link midpoints to density with thickness profile H(r); compute Jeans lengths; compare with link lengths and regress log sqrt(Tb) vs log l [Spatial separations of young stellar ob…: "we convert $T_{b}^{\mbox{\scriptsize 225 GHz}}$ to gas volume density $\rho$ based on the assumed radial characteristic thickness profile $H(r)$"]
+  - parameter: H(r)=0.05+0.3 sqrt(r/0.3) pc; T=30 K [Spatial separations of young stellar ob…: "H(r) [pc] = 0.05 + 0.3\times\sqrt{r [pc] / 0.3}."]
+  - assumption: kappa=0.6 cm2/g, gas-to-dust 100 [Spatial separations of young stellar ob…: "assuming $\kappa_{\mbox{\scriptsize 225 GHz}}=$0.6 cm$^{2}$ g$^{-1}$ and gas to dust mass ratio 100"]
+  - fitting: Linear regression in log-log, upper limits excluded [Spatial separations of young stellar ob…: "A linear regression of $\log{(\sqrt{T_{b}^{\mbox{\scriptsize 225 GHz}}})}$ and $\log{(\ell)}$ (without including upper limits)"]
+  - validation: Alternative T and H(r) and alternative catalogues [Spatial separations of young stellar ob…: "for the catalogue directly given by `deodrogram` without any further edits, gives slopes of -0.54 and -0.52, respectively."]
+- result: Regression slope log sqrt(Tb) vs log l, final catalogue = -0.68 ± not stated dimensionless [Spatial separations of young stellar ob…: "gives a slope of -0.68."]
+- limitation (authors): Source catalogue edits are subjective [Identifying candidates of young stellar…: "Our edits to the identified source catalogue is subjective to some extent."]
+- limitation (authors): Thickness H(r) cannot be measured; assumption oversimplified [Spatial separations of young stellar ob…: "This assumption of the thickness of gas structure is likely yet oversimplified."]
+- not stated (card): Calibrator names and flux scale; Line-free channels used for uvcontsub; clean threshold, masks, niter; Weights used to combine ALMA and ACA data; Electron temperature/line width used for the H30alpha free-free model; Details of the CH3CN temperature fit; Dendrogram settings beyond thresholds, and exact manual source edits
+
+### 2016ApJ...816...37V: Bright [C II] and Dust Emission in Three z &gt; 6.6 Quasar Host Galaxies Observed by ALMA (2016; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the [C II] and FIR dust properties, kinematics and dynamical masses of three z>6.6 VIKING quasar hosts, and how do they relate to the quasars' black holes?
+- step 3: Derive FIR/TIR luminosities, SFRs, dust masses
+  - method: Scale modified black body (47 K, beta=1.6) and Arp 220/M82 templates to 158 um continuum; SFR from L_TIR (Murphy+11) and L_[CII] (De Looze+14); dust mass with kappa from Dunne+00 [3.1 [CII] and FIR emission: "SFR$_\mathrm{[CII]}$/$M_\ensuremath{\odot}$ yr$^{-1}$ = $3.0\times10^{-9}$ ($L_\mathrm{[CII]}$/$L_\ensuremath{\odot}$)$^{1.18}$, with an uncertainty of 0.4 dex."]
+  - parameter: L_FIR 42.5–122.5 um; L_TIR 8–1000 um rest-frame [3.1 [CII] and FIR emission: "The total infrared luminosity ($L_{\mathrm{TIR}}$) was computed by integrating the continuum from 8 $\mu$m to 1000 $\mu$m in the rest-frame."]
+  - assumption: Td=47 K, beta=1.6, tau<<1 at lambda>40 um; Kroupa IMF; emission powered by star formation [3.1 [CII] and FIR emission: "our modified black body model has a dust temperature of $T_d=47$ K and a dust emissivity power-law spectral index of $\beta=1.6$"]
+  - validation: Range across three SED models adopted as uncertainty [3.1 [CII] and FIR emission: "We caution that the range of values of $L_{\mathrm{FIR}}$ and $L_{\mathrm{TIR}}$ for the VIKING quasar hosts presented here strongly depends on our choice of models"]
+- step 6: Estimate dynamical masses and compare M_BH to M_dyn
+  - method: M_dyn=1.16e5 v_circ^2 D with v_circ=0.75 FWHM/sin(i), i from axis ratio; compare with Kormendy & Ho relation [4.6 Dynamical mass estimates: "$M_\mathrm{dyn}=1.16\times10^5 v_\mathrm{circ}^2 D$ $M_\ensuremath{\odot}$"]
+  - parameter: D=1.5x deconvolved size; i=25, 50 deg; 55 deg and 3±1 kpc for J2348–3054 [4.6 Dynamical mass estimates: "For the unresolved emission in the host of J2348–3054 we assume an extent of $3\pm1$ kpc."]
+  - assumption: Thin inclined disk; gas-to-dust ratio ~100 [4.6 Dynamical mass estimates: "If we take the local gas-to-dust mass ratio of $\sim$100 (cite: dra07)"]
+  - validation: Inclination uncertainty not included in M_dyn errors [4.6 Dynamical mass estimates: "The uncertainty in these dynamical masses does not include the uncertainties in the inclination angle."]
+- result: Dynamical masses (J2348, J0109, J0305) = 7.2e10, 1.4e11, 4.1e10 ± 3.6e10, 0.4e11, 0.5e10 Msun [4.6 Dynamical mass estimates: "we calculate a dynamical mass of $(7.2\pm3.6)\times10^{10}$ $M_\ensuremath{\odot}$, $(1.4\pm0.4)\times10^{11}$ $M_\ensuremath{\odot}$, and $(4.1\pm0.5)\times10^{10}$ $M_\ensuremath{\odot}$"]
+- result: Mean M_BH/M_dyn at 1e11 Msun = 1.9% (median 1.3%) vs local 0.49% ± not stated percent [4.6 Dynamical mass estimates: "We find a mean of 1.9% and a median of 1.3%, compared to the local value of $0.49^{+0.06}_{-0.05}$%."]
+- limitation (authors): Inclination and peak rotation velocity cannot be independently determined at current resolution [4.4.1 Dynamical Modeling: "with the current data we cannot independently determine the inclination angle and the peak velocity and thus, ultimately, the dynamical mass."]
+- limitation (authors): FIR/TIR luminosities strongly model dependent; more photometry needed [3.1 [CII] and FIR emission: "Additional far-infrared photometry is required to better constrain the shape of the infrared continuum and thus $L_{\mathrm{FIR}}$ and $L_{\mathrm{TIR}}$."]
+- not stated (card): Exact CASA version and calibration/flagging details; Clean threshold, mask, niter, cell and image size; Which channels were treated as line-free and the velocity binning of cubes; Tilted-ring model parameters beyond those given (position angle, inclination grid, scale height, dispersion); Details of line-luminosity and SFR conversions (e.g. formulae for L_[CII]); Selection and values of literatur…
+
+### 2024A&A...691A.180F: CHEMOUT: CHEMical complexity in star-forming regions of the OUTer Galaxy: IV. ALMA observations of organic species at a galactocentric radius of 23 kpc (2024; star_formation, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: What are the spatially resolved molecular emission and abundances of organics in the outer-Galaxy star-forming region WB670 at R_GC 23.4 kpc, and do chemical models reproduce them?
+- step 5: Chemical modelling comparison
+  - method: UCLCHEM static grid of 65536 models; compare column density ratios at 1e6 yr; select 50 lowest-MSE models [5.4 Chemical modelling: "the 50 models with the lowest Mean Squared Error (MSE) are chosen."]
+  - software: UCLCHEM
+  - parameter: R=0.5 pc, Av=1 mag, gas-to-dust 100, 12C/13C=10^1.8 [5.4 Chemical modelling: "Each of the models is ran with an edge visual extinction of $A_v=1.0$ mag, and molecular ratios are computed at $10^6$ years."]
+  - assumption: Isothermal constant-density static cloud [5.4 Chemical modelling: "We considered a "static model", namely an isothermal cloud at constant density with a radius of $R=0.5$ pc"]
+  - fitting: Grid sampled over density, T, zeta, F_UV, initial O and C abundances; ranking by MSE [Table: "| Density $n_\mathrm{H}\;(\mathrm{cm}^{-3})$ | $1 \times 10^3$ | $1 \times 10^7$ | log |"]
+  - validation: Test with gas-to-dust ~3000 at low and high density [5.4 Chemical modelling: "In the low density case, the results do not show any significant differences."]
+- result: Best-model temperature range = 20-45 ± not stated K [5.4 Chemical modelling: "temperatures from 20 to 45 K, radiation fields lower than 5 Habing"]
+- limitation (authors): Tex fixed to CH3OH value for all species; N_tot uncertain up to factor 2 [4.2: "$N_{\rm tot}$ can vary up to a factor 2 depending on the species."]
+- limitation (authors): Static models cannot reproduce all ratios; dynamical models needed [5.4 Chemical modelling: "Overall, it is very unlikely to find a model that fits all ratios well."]
+- not stated (card): Clean parameters in GILDAS (iterations, threshold, masks, pixel size, image size); Continuum-free channels and continuum subtraction method; Spectral line extraction regions definition (regions 1-7 are drawn roughly by eye); Exact beam sizes per band; Which spws used for continuum and total bandwidth; UCLCHEM version, network and initial conditions beyond the table; Details of MSE ratio computati…
+
+### 2020ApJ...890...76N: ALMA Observations of Two Massive and Dense MALT90 Clumps (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: How do massive and dense clumps in prestellar and protostellar phases fragment into cores, and what are the cores' physical and kinematic properties?
+- step 1: Fit clump SEDs for dust temperature and beta
+  - method: Aperture photometry on Herschel and ATLASGAL images; least-squares fit of a modified blackbody to the SED [2 The targets: "A least squares fit to the SED, using the SciPy optimize module in Python ((cite: scipy2019)), gave values of T$_d$ and $\beta$ of 22 K and 2.1 for the prestellar clump"]
+  - software: SciPy
+  - parameter: Apertures of 27" (prestellar) and 20" (protostellar) radius [2 The targets: "circular region with radii of 27$\ensuremath{''}$ and 20$\ensuremath{''}$ for the prestellar and protostellar clumps, respectively"]
+  - assumption: Gas-to-dust ratio 100; kappa 1.85 cm2/g [2 The targets: "a dust absorption coefficient of 1.85 cm$^{2}$ gr$^{-1}$ ((cite: Ossenkopf1994)), and a gas to dust ratio of 100"]
+  - fitting: Least squares; no priors [The targets: "A least squares fit to the SED, using the SciPy optimize module in Python ((cite: scipy2019)), gave values of T$_d$ and $\beta$ of 22 K and 2.1 for the prestellar clump"]
+- step 5: Compute core masses, column densities, virial parameters
+  - method: Optically thin dust mass from 3 mm flux with Trot (clump T otherwise); alpha_vir=Mvir/M with Mvir=5 sigma^2 R/G [4.1.3 Masses: "For cores in which no rotational temperature is available we adopted the temperature of the clump."]
+  - parameter: Core radius from geometric mean of Clumpfind semi-axes [4.1.1 Sizes: "The radius of the cores were computed from the geometric mean of the semi-major and minor axis determined from Clumpfind"]
+  - assumption: Rgd=100; k100GHz=0.21 cm2/g; mu_H2=2.8; virial equilibrium for 0.71<alpha<1.4 [4.1.3 Masses: "We assume $R_{gd}$=100 and $k_{100 GHz}$ = 0.21 cm$^{2}$ g$^{-1}$"]
+  - validation: Mass uncertainty ~40%, column density ~35% [4.1.3 Masses: "The uncertainties in the mass are estimated to be $\sim$40%"]
+- result: Mass of central core mm-6 in AGAL329 = 119 ± ~40% Msun [abstract: "we detected a massive (119 M$_\odot$) central core"]
+- result: Core-to-clump mass fraction, prestellar = 0.06 ± not stated dimensionless [Table 1 (summary): "| $f$($\Sigma$M$_{cores}$/M$_{clump}$) | 0.06 | 0.23 |"]
+- result: Core-to-clump mass fraction, protostellar = 0.23 ± not stated dimensionless [Table 1 (summary): "| $f$($\Sigma$M$_{cores}$/M$_{clump}$) | 0.06 | 0.23 |"]
+- result: Clump dust temperature and beta, prestellar = 22 K, 2.1 ± not stated K, dimensionless [2 The targets: "gave values of T$_d$ and $\beta$ of 22 K and 2.1 for the prestellar clump and 28 K and 1.6 for the protostellar clump"]
+- limitation (authors): Simple infall models fail to reproduce the deep HCO+ absorption [4.5 The massive core: "To reproduce it requires a more sophisticated modeling, which is beyond the scope of this work."]
+- not stated (card): Line-free channels used for continuum subtraction; Cleaning thresholds and number of iterations; Continuum subtraction method for the cubes; Primary-beam correction details; Exact assignment of the 23 and 32 min between 12m and 7m; Flux scale uncertainty; Which quasar calibrates which dataset; Astrodendro and Clumpfind implementation details beyond the thresholds; Fit ranges for the rotational di…
+
+### 2020A&A...633A.114S: Demographics of disks around young very low-mass stars and brown dwarfs in Lupus (2020; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Do disks around brown dwarfs and very low-mass stars in Lupus follow the demographic relations (disk mass, size, accretion) known for disks around stars?
+- step 5: Compute dust masses
+  - method: Optically thin emission, constant kappa and Tdust [4.2 Dust disk masses: "using the simplifying assumption of optically thin emission and using an average temperature of $20$ K"]
+  - assumption: kappa(890um)=2 cm2/g, Tdust=20 K [4.2 Dust disk masses: "constant dust opacity of $\kappa_{890\mu m} = 2$ $\mathrm{cm}^2$ $\mathrm{g}^{-1}$"]
+  - validation: Repeated with Andrews+2013 and van der Plas+2016 Tdust prescriptions [4.2 Dust disk masses: "in Appendix [8] we show the main demographic results of this work using the dust temperature and stellar luminosity relations"]
+- step 6: Demographic comparison BDs vs stars
+  - method: Linear regression with Bayesian linmix including upper limits; Anderson-Darling tests [5.1.1: "obtained following the Bayesian method described in (cite: kelly2007)"]
+  - software: linmix, scipy.stats
+  - assumption: Gas-to-dust ratio 100 for total disk mass [5.1.3: "assuming a gas-to-dust ratio of $100$"]
+  - fitting: linmix regression; sub-luminous objects excluded [5.1.1: "while sub-luminous objects are excluded for the fit"]
+  - validation: Repeated with other Tdust prescriptions [Modeling, Dust disk masses: "Nevertheless, in Appendix [8](#sec:appendix_otherrelations) we show the main demographic results of this work using the dust temperature and stellar luminosity relations from (cite: andrews+2013; vanderplas+2016)."]
+- result: Dust mass of J154518.5-342125 = 2.3 ± 0.2 Earth masses [Table 2: "$8.2_{-1.2}^{+1.0}$ | $13.2_{-2.0}^{+1.7}$ | $2.3 \pm 0.2$"]
+- result: Detected BD dust mass range = 0.2-3.2 ± not stated Earth masses [4.5 Total dust mass results: "The total dust mass for the detected BD disks range between $0.2$ and $3.2$ $M_{\Earth}$."]
+- result: Mstar-Mdust slope (stars+BDs) = 1.69 ± 0.19 dimensionless [5.1.1: "the slope and intercept become $1.69 \pm 0.19$ and $-3.89 \pm 0.13$"]
+- result: Mdust-Macc slope (stars) = 0.69 ± 0.14 dimensionless [5.1.3: "The resulting slope is $\alpha = 0.69 \pm 0.14$, while the intercept is $\beta = -7.26 \pm 0.36$."]
+- result: Median accretion depletion timescale BDs vs stars = 9.5 vs 1.4 ± not stated Myr [5.1.3: "The median value of this timescale for the BD sample is $9.5$ Myr, while for the stellar sub-sample considered is $1.4$ Myr."]
+- result: AD test probability, Mdust/Mstar BD vs stars = 6 ± not stated percent [5.1.1: "obtaining a probability of $6 \%$ that the BD and stellar disk populations are drawn from the same distribution"]
+- result: AD test probability, depletion timescale = 0.6 ± not stated percent [5.1.3: "with only a $0.6 \%$ probability that the BD and stellar disks populations are drawn from the same original distribution"]
+- limitation (authors): Small BD sample and optical thickness may underestimate masses [5.1.1: "We caution that our sample of VLM stars and BDs in Lupus is very limited"]
+- not stated (card): Cell size and image size for tclean; Clean threshold, masks, deconvolver; Line-free channel selection; Priors and bounds of the MCMC fits; CASA pipeline vs manual calibration; Burn-in and how fit convergence was judged; Distance used for conversion of dust mass formula (exact), and Planck function details; Flux-ratio correction details for completion survey
+
+### 2024ApJ...974..102S: Hints of Planet Formation Signatures in a Large-cavity Disk Studied in the AGE-PRO ALMA Large Program (2024; protoplanetary_disks; observational_alma_primary)
+- question: Does the large-cavity disk around J16120 show dust and gas (CO kinematic) signatures of planet formation?
+- step 7: Spectral index, grain size and dust mass
+  - method: alpha from Band 6/7 integrated fluxes, beta=alpha-2, a_max from DSHARP opacities; dust mass from deconvolved profile with scattering solution [4.1: "the opacity spectral index $\beta$ can be estimated as $\beta = \alpha - 2 = 1.3 \pm 0.3$"]
+  - parameter: zeta = 0.02, L* = 0.25 Lsun, T_d=[zeta L/(4 pi sigma r^2)]^(1/4) [4.1: "where $\zeta = 0.02$ is the flaring angle (cite: Huang_2018)"]
+  - assumption: optically thin emission; p = 2.5 or 3.5 [4.1: "for particle size distribution $n(a)da\propto a^{-p}da$"]
+- step 8: Compact source dust mass and kink planet mass
+  - method: Optically thin dust mass from 63 uJy peak at 21 K; planet mass M~v_peak^2 r_extent/G [4.3: "$M_{\rm planet} \sim v_{\rm peak}^2 r_{\rm extent} /G \approx 0.8 \ M_{\rm Jupiter}$"]
+  - assumption: kappa 0.42 and 1.9 cm2/g for 100 um and 1 mm grains; T=21 K; p=3.5 [4.2: "a temperature of 21 K (estimated from the stellar irradiation at the compact emission radius)"]
+  - validation: Injection-recovery test: ~20% recovery at 63 uJy; gap rms 35 uJy/beam [4.2: "the recovery fraction of a CPD with a flux similar to that of the compact emission is $\sim 20\%$"]
+- result: Spectral index Band 6-7 = 3.3 ± 0.3 dimensionless [4.1: "the average spectral index is $\alpha = 3.3 \pm 0.3$"]
+- result: Maximum grain size = 1.6 mm (p=2.5), 4.0 mm (p=3.5) ± not stated mm [4.1: "maximum grain sizes of 1.6 mm and 4.0 mm"]
+- result: Compact source dust mass = 12.9 (100 um) to 2.7 (1 mm) ± not stated Lunar masses [4.2: "this flux corresponds to a dust mass of 12.9 and 2.7 Lunar masses for grain sizes of 100 $\mu$m and 1 mm, respectively"]
+- result: Compact source peak flux = 63 ± not stated uJy [4.2: "The peak flux within one beam centered at the compact source is $\sim 63 \ \mu$Jy."]
+- result: Planet mass upper limit from kink = 0.8 ± not stated Mjup [4.3: "$M_{\rm planet} \sim v_{\rm peak}^2 r_{\rm extent} /G \approx 0.8 \ M_{\rm Jupiter}$"]
+- limitation (authors): Compact source gap rms is enhanced, low effective SNR [4.2: "which reduces the effective SNR of the compact source detection"]
+- limitation (authors): Kink structure only marginally resolved; error bars large [4.3: "Note that this is not the actual size, but an upper limit, as it is only marginally resolved."]
+- not stated (card): Self-calibration solint values beyond 'inf' for LB, and reference antenna/refant; Line-free channels and velocity ranges used for uvcontsub; Image sizes and channel widths for line cubes; Exact EDDY priors, bounds and initial guesses; DISKSURF extraction parameters; Which Frankenstein version and fit radial grid settings (Rmax, N); Rest frequencies used; Mask definition for the faint extra source…
+
+### 2015A&A...583A..66H: Probing the final stages of protoplanetary disk evolution with ALMA (2015; protoplanetary_disks, debris_disks; observational_alma_primary)
+- question: Are weak-line T Tauri stars with IR excess photoevaporating transition disks or young debris disks, based on their dust masses and CO content?
+- step 2: Derive dust masses
+  - method: M_dust = 0.566 [F(1300)/mJy (d/140 pc)^2] Mearth [3.1 Disk dust masses: "M_{\mathrm{dust}}=0.566 \times \left[ \dfrac{F_{\nu}(1300)}{mJy} \left( \dfrac{d}{140 pc} \right)^{2} \right] M_{\oplus}"]
+  - assumption: optically thin continuum at mm wavelengths [3.1 Disk dust masses: "owing to continuum emission being optically thin at mm wavelengths, the dust mass can be estimated by a simple equation"]
+  - validation: Upper limits uncertainty dominated by distance [3.1 Disk dust masses: "we quote the 3 sigma value as our upper limit, with this uncertainty being dominated by the uncertainty in the distance to the system."]
+- step 3: Constrain gas-to-dust ratio from CO non-detection
+  - method: compare 3 sigma limit of 90 mJy km/s to Williams & Best grid [3.2 12CO(2-1) non-detections: "would be readily detectable in $^{12}$CO(2-1) at our $3\sigma$ detection limit of 90 mJy km s$^{-1}$."]
+  - parameter: stellar mass 0.5 Msun; other parameters free [3.2 12CO(2-1) non-detections: "We compare our results to this grid for a stellar mass of 0.5 M$_{\odot}$"]
+  - assumption: ISM gas-to-dust ratio 100 as reference [3.2 12CO(2-1) non-detections: "an ISM gas-to-dust ratio of 100 would imply a gas mass of $\sim 1\,M_{\rm J}$"]
+  - validation: CO would be detected in 90% of models for other disks [3.2 12CO(2-1) non-detections: "the CO emission would still be above our detection threshold for 90% of the models"]
+- result: Dust mass system 17 = 2.09 ± 0.44 Mearth [Table 3: "| 17 | 1.813 | 2.09$\pm$0.44 | 0.10 | $2.6_{-0.5}^{+1.2}$ | 140 |"]
+- result: Dust mass system 14 = 0.45 ± 0.13 Mearth [Table 3: "| 14 | 0.696 | 0.45$\pm$0.13 | 0.17 | $6.9_{-1.7}^{+2.8}$ | 80 |"]
+- result: CO 3 sigma limit = 90 ± not stated mJy km/s [3.2 12CO(2-1) non-detections: "our $3\sigma$ detection limit of 90 mJy km s$^{-1}$"]
+- limitation (authors): Dust mass method has significant uncertainties; ages uncertain; binarity unconfirmed [3.1 Disk dust masses: "This approach has significant uncertainties but is quite standard in the field"]
+- not stated (card): Reduction software/CASA version and pipeline; Image size, cell size, clean masks and thresholds; Synthesized beams and per-source rms values; Channel width and velocity range for CO upper limit (90 mJy km/s); Point-source fit details; Photometry values and fitted blackbody parameters used for SEDs; Flux calibrator model/uncertainty; Extinction values used for de-reddening
+
+### 2014ApJ...796....1T: Angular Momentum Exchange by Gravitational Torques and Infall in the Circumbinary Disk of the Protostellar System L1551 NE (2014; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: Do gravitational torques from the central binary drive angular momentum exchange and infall in the circumbinary disk of L1551 NE, as seen in non-axisymmetric dust features and gas velocities?
+- step 2: Fit protostar components and derive disk masses
+  - method: Gaussian fits to the two compact continuum components, subtract them to isolate the circumbinary disk, then compute masses from M=S d^2/(kappa B(T)) [3.1 0.9-mm Continuum: "we subtracted two Gaussian components with parameters derived from the fit to the two compact dust components"]
+  - parameter: Td = 10-42 K, beta=0.5, kappa0.9mm=0.053 cm2/g, d=140 pc [3.1 0.9-mm Continuum: "With $T_{d}$ = 10 – 42 K and $\kappa_{0.9mm}$ = 0.053 cm$^{2}$ g$^{-1}$"]
+  - assumption: Gas-to-dust mass ratio of 100, dust opacity from Hildebrand 1983 with beta=0.5 [3.1 0.9-mm Continuum: "on the assumption of a gas-to-dust mass ratio of 100"]
+  - validation: Compared with Ossenkopf & Henning opacity (factor 3 higher masses) [3.1 0.9-mm Continuum: "Thus, adopting the dust mass opacity by Ossenkopf & Henning (1994) provides a factor 3 higher masses of the circumstellar and circumbinary disks."]
+- result: Flux density of south-eastern compact component (Source A) = 0.35 ± not stated Jy [3.1 0.9-mm Continuum: "The south-eastern component has a flux density of 0.35 Jy"]
+- result: Flux density of north-western compact component (Source B) = 0.17 ± not stated Jy [3.1 0.9-mm Continuum: "the north-western component a flux density of 0.17 Jy"]
+- result: Circumbinary disk flux density = 0.47 ± not stated Jy [3.1 0.9-mm Continuum: "The flux density of the circumbinary disk in the 0.9 mm continuum as computed from Figure [1](#cont)d is 0.47 Jy"]
+- result: Circumstellar disk mass of Source A = 0.005 - 0.044 ± range from Td 10-42 K Msun [3.1 0.9-mm Continuum: "a mass for the circumstellar disk of Source A is calculated to be $\sim$0.005 - 0.044 $M_{\odot}$"]
+- result: Circumstellar disk mass of Source B = 0.003 - 0.022 ± range from Td 10-42 K Msun [3.1 0.9-mm Continuum: "that of Source B a mass of $\sim$0.003 - 0.022 $M_{\odot}$"]
+- result: Circumbinary disk mass = 0.007 - 0.059 ± range from Td 10-42 K Msun [3.1 0.9-mm Continuum: "corresponding to a mass for the circumbinary disk of $\sim$0.007 - 0.059 $M_{\odot}$"]
+- result: Dust mass opacity at 0.9 mm = 0.053 ± not stated cm2 g-1 [3.1 0.9-mm Continuum: "The dust mass opacity at 0.9 mm is then calculated to be $\kappa_{0.9mm}$ = 0.053 cm$^{2}$ g$^{-1}$."]
+- limitation (authors): Missing flux and outflow complicate other lines near systemic velocity; temperatures in hydrodynamics (isothermal 13.5 K) and radiative transfer (power law) are inconsistent. [2 ALMA Observation and Data Reduction: "Closer to the systemic velocity, the spatial-kinematic structure in the other lines is complicated by the effects of missing flux as well as an outflow (see Appendix A)."]
+- not stated (card): CASA version used for calibration and imaging; Clean threshold, mask, niter, cell and image size, and whether multiscale was used; Line-free channel ranges for continuum and constant continuum level; Details of the Keplerian subtraction implementation and Gaussian fit procedure; Simulation initial conditions, hydrodynamic code (SFUMATO modified) not public; simobserve inputs and noise settings; P…
+
+### 2018A&A...614A.113H: ALMA detection of a tentative nearly edge-on rotating disk around the nearby AGB star R Doradus (2018; evolved_stars; observational_alma_primary)
+- question: Does the spatial offset between blue and red shifted molecular emission in R Dor's inner wind indicate a compact rotating disk, and what are its properties and possible companion?
+- step 3: Disk radiative transfer modelling
+  - method: 3D NLTE LIME model of sub-Keplerian disk, passed through CASA observation simulation, compared to PV diagrams [3: "we aim to reproduce the observed three-dimensional emission distribution by assuming a differentially rotating disk."]
+  - software: LIME, CASA
+  - parameter: radial velocity 1 km/s, turbulence 1 km/s, temperature power-law index -0.5 [3: "The disk temperature is assumed to be a simple power-law with an index of $-$0.5."]
+  - assumption: gas-to-dust mass ratio 100 [3: "with an assumed gas-to-dust mass ratio of 100"]
+  - assumption: 1 Msun central star [3: "with a mass of 1 $\,{\rm M}_\odot$ (cite: Danilovich2017)"]
+  - fitting: Manual parameter tuning, no formal fit [3.1: "whose values have been varied until a reasonable visual resemblance between the model and the data was achieved."]
+  - validation: Visual comparison of PV diagrams; checked LIME level populations for no masing [3: "We found no indication that the optical depth $\tau$ has become negative at any position or iteration"]
+- result: inner rim radius = 6 ± not stated AU [3: "corresponds to an inner rim location of $\sim$6 AU"]
+- result: inclination = 110 ± 20 deg [3.2: "we assume an uncertainty of 20$^\circ$ on the inclination angle"]
+- result: radial density power index p = -2.8 ± ~15% dimensionless [3.2: "we estimate an uncertainty on the slope of $\sim$15% or $p=-3\pm0.5$"]
+- limitation (authors): Parameters tuned visually; no statement on fit quality [3.1: "Hence, we can make no statements about the quality of the ‘fit’."]
+- limitation (authors): Insufficient spatial resolution limits kinematics [3.2: "the insufficient spatial resolution of the data imposes some important limitations on this analysis"]
+- not stated (card): CASA version and imaging parameters (weighting, cell, deconvolution); continuum subtraction and line-free channels; flux calibrator names; LIME settings (number of grid points, photons) and CASA simulation configuration; exact stellar velocity/lsr used and PV extraction details; continuum peak position
+
+### 2017MNRAS.468L..87C: New ALMA constraints on the star-forming interstellar medium at low metallicity: a 50 pc view of the blue compact dwarf galaxy SBS 0335-052 (2017; nearby_galaxies, star_formation, milky_way_ism; observational_alma_primary)
+- question: How much cold molecular gas (CO) and cold dust is present in the very low-metallicity blue compact dwarf SBS 0335-052 at 50 pc resolution?
+- step 4: SED analysis and cold dust mass
+  - method: Subtract free-free from Johnson 2009 S1/S2 models; fit modified black-body to ALMA excess in addition to PACS MBB (59 K, beta=2); F-test for dust excess in S1 [4 Spectral energy distribution: "In addition to the MBB fitted to the PACS observations (59 K, $\beta=2$), we require a second dust component"]
+  - parameter: T_dust <= 14 K upper limit from PACS 160 um [4 Spectral energy distribution: "The PACS 160 $\mu$m measurement puts an upper limit on the dust temperature of $T_{\rm dust} \le 14$ K"]
+  - assumption: kappa160 = 1.6 m2/kg, beta = 1.7 [4 Spectral energy distribution: "we assume common values of $\kappa_{160}=1.6$ m$^2$ kg$^{-1}$ and $\beta=1.7$ (cite: galliano-2011)"]
+  - fitting: Chi2 comparison and F-test [4 Spectral energy distribution: "an F-test indicates that the probability of this dust component is high ($>$98 per cent)"]
+  - validation: Tested with MBB and more realistic dust optics with temperature distribution [4 Spectral energy distribution: "This is valid when employing modified black-body spectra as well as more realistic dust optical properties and a distribution of temperatures (cite: galliano-2011)."]
+- result: Cold dust mass (T<=14 K) = 1.5e5 ± not stated Msun [4 Spectral energy distribution: "which gives a mass $M_{\rm dust}\simeq1.5\times10^5$ M$_{\odot}$"]
+- result: Cold dust mass (T=10 K) = ~3e5 ± not stated Msun [4 Spectral energy distribution: "With a temperature of 10 K, the required mass is $\sim3\times10^5$ M$_{\odot}$."]
+- limitation (authors): Cold dust mass is only an estimate; alternative dust properties would change it [4 Spectral energy distribution: "We note that this cold dust mass is an estimate only."]
+- not stated (card): Reference calibrator names and pipeline/script details; Cell size, image size, clean threshold and masks; Continuum SPW channel selection and CO line-free channels; Details of the beam-constrained 2D ellipse fit; SED fitting method (sampler, priors) and F-test details; Exact conversion of luminosity limit and SFR to alpha_CO limits
+
+### 2020ApJ...892...66M: The ALMA Spectroscopic Survey in the HUDF: The Cosmic Dust and Gas Mass Densities in Galaxies up to z ∼ 3 (2020; high_z_galaxies; large_program_or_survey)
+- question: How do the cosmic dust and gas (H2+HI) mass densities in galaxies, above given stellar masses, evolve with redshift up to z~3, from stacking the ASPECS 1.2 mm map at positions of H-band selected galaxies?
+- step 2: Convert 1.2 mm flux to dust and gas mass
+  - method: Optically thin dust mass equation (Kovacs 2010) with CMB correction; gas mass from metallicity-dependent gas-to-dust ratio [4.1: "In the optically thin approximation, which is almost always valid at the long wavelengths probed by our observations, the dust mass ($M_{\rm dust}$ in $M_{\odot}$) of a galaxy can be inferred"]
+  - parameter: beta=1.8; kappa=0.0431 m^2/kg at 352.6 GHz [4.1: "we adopted $\kappa_{\nu_0} = 0.0431\,$m$^2\,$kg$^{-1}$ with $\nu_{0}=352.6\,$GHz (cite: li_2001)"]
+  - assumption: T_dust = 25 K mass-weighted [4.1: "we used a mass-weighted mean dust temperature of $\langle T\rangle_{\rm M}=T=25\,$K"]
+  - assumption: GDR = 100 at solar metallicity, 12+log(O/H)=8.67; metallicity from mass-metallicity relation [4.1: "is equal to 100 at solar metallicity, $[12+{\rm log(O/H)}]_\odot=8.67$"]
+  - validation: Varied T (15-35 K) and beta (1.5-2.0) to assess systematics [4.1: "a dust temperature range of $T\sim15-35\,$K implies a systematic uncertainty for our dust masses of 25%–50%."]
+- limitation (authors): Pencil-beam survey affected by cosmic variance (~42-58%) [5.3: "our estimates of $\rho_{\rm dust}$ are affected by cosmic variance, which is only partly included in the Poissonian uncertainties."]
+- limitation (authors): Dust-based gas may be biased against atomic phase; low-metallicity GDR relation uncertain [6.1: "This implies that dust-based gas mass estimates might be biased against the dust in the atomic phase."]
+- not stated (card): Exact astrometric-offset-corrected catalogue and MAGPHYS stellar masses/metallicities are not tabulated; MAGPHYS configuration and priors; Stack pixel scale and stamp handling of primary-beam correction; Fitting method (algorithm, priors) for f_dust power-law and joint fits; Method for combined uncertainty on extrapolated M>1e8 densities; Cosmic comoving volume per bin calculation details beyond …
+
+### 2024A&A...690A..55S: NOEMA formIng Cluster survEy (NICE): Characterizing eight massive galaxy groups at 1.5 &lt; z &lt; 4 in the COSMOS field (2024; high_z_galaxies, galaxy_clusters_and_sz; observational_alma_primary)
+- question: Spectroscopically confirm eight massive galaxy group candidates in COSMOS at 1.5<z<4, and measure their integrated SFR, dark matter halo masses and baryonic accretion rates to test whether they are forming clusters
+- step 4: Integrated FIR photometry and SED fit
+  - method: Super-deblending with one SCUBA2 peak prior per group, PSF fitting of Herschel/SCUBA2/MeerKAT maps; STARDUST SED fit; radio extrapolated from IR-radio relation [4.3 Integrated FIR spectral energy dist…: "we fit the integrated FIR spectral energy distribution (SED) using `STARDUST` (cite: Kokorev2021)"]
+  - software: STARDUST
+  - parameter: Exclude sources within 10'' of prior; >3 sigma detections, otherwise 3 sigma upper limits [4.3 Integrated FIR spectral energy dist…: "Only photometric points with a significant detection ($>3\sigma$) were considered in the fitting"]
+  - assumption: Dust templates of Magdis2012; optically thin dust mass [5.2 Integrated FIR properties: "based on dust templates from (cite: Magdis2012SED)"]
+  - fitting: STARDUST fit at group zspec [4.3 Integrated FIR spectral energy dist…: "The fitting was performed at the spectroscopic redshift of each group"]
+  - validation: Residual maps checked; fluxes calibrated by Monte Carlo simulations [4.3 Integrated FIR spectral energy dist…: "the measured fluxes and their uncertainties are then calibrated by Monte Carlo simulations performed on the maps"]
+- result: Integrated IR SFR range = 262-1319 ± not stated Msun/yr [5.2 Integrated FIR properties: "${\rm SFR_{IR}}=(262-1319)\,{\rm M_{\odot}/yr}$"]
+- result: Radio-loud AGN fraction in NICE = 2/9 (22%) ± not stated dimensionless [5.2 Integrated FIR properties: "this gives a radio-loud AGN fraction of 2/9 (i.e. 22%) in the NICE sample"]
+- limitation (authors): Halo mass estimates carry large uncertainties; group centre and concentration degeneracies; interloper contamination [5.4 Baryonic accretion rate: "Given that the dark matter halo estimates are prone to large uncertainties"]
+- limitation (authors): Cold-stream regime scatter based on only six points [6.3 Baryonic accretion: Flattening or n…: "This increased observed scatter is only from six points and would require a larger sample to confirm"]
+- not stated (card): GILDAS/uvfit and mapping parameters and ALMA/NOEMA calibrator and flux-scale details; Line-search threshold implementation and exact line-free channel masks; STARDUST fit configuration and priors beyond the Magdis2012 templates; Stellar mass completeness limits used per group and the numerical stellar mass cuts; Group centre definition parameters, NFW fit grid ranges and prior ranges; Exact super…
+
+### 2014MNRAS.438.1267S: An ALMA survey of sub-millimetre Galaxies in the Extended Chandra Deep Field South: the far-infrared properties of SMGs (2014; high_z_galaxies; multi_facility_alma_minor)
+- question: What are the far-infrared properties (colours, luminosities, dust temperatures, dust and gas masses) of ALMA-located SMGs in the ECDFS, and what do they imply for cosmic star formation and H2 density?
+- step 2: Fit SEDs for L_IR, T_d and dust mass
+  - method: Fit library of 185 templates plus modified black-body to 24um–1.4GHz photometry at photometric redshift; integrate 8–1000 um for L_IR [3.3: "Using the best-fit dust SEDs, we calculate the infrared luminosity ($L_{\rm IR}$) by integrating the rest-frame SED between 8–1000$\mu$m (rest-frame)."]
+  - assumption: kappa_870 = 0.15 m^2 kg^-1 [2.5: "for a dust mass absorption coefficient of $\kappa_{870\mu m}$ = 0.15 m$^2$ kg$^{-1}$"]
+  - fitting: chi^2 minimisation [3.1: "We fit these template SEDs to the 24 $\mu$m–1.4 GHz photometry of the composite SED using a $\chi^2$ minimisation"]
+- step 3: Derive H2 masses and cosmic density contributions
+  - method: Apply gas-to-dust ratio to dust masses; luminosity functions via 1/Vmax; extrapolate to 1 mJy with counts [4.4: "For simplicity, in all of the following analysis, we therefore adopt a single gas-to-dust ratio of $\delta_{\rm GDR}$ = 90 $\pm$ 25."]
+  - assumption: gas-to-dust ratio 90 ± 25; burst duration 250 Myr [4.3: "Assuming the SMGs have a burst duration of 250 Myr, we calculate the duty cycle as a function of redshift"]
+- result: Median L_IR = 3.0e12 ± ±0.3e12 L_sun [4.1: "The median infrared luminosity for the ALESS SMGs is $L_{\rm IR}$ = (3.0 $\pm$ 0.3) $\times$ 10$^{12}$ $L_{\odot}$"]
+- result: Median dust mass = 3.6e8 ± ±0.3e8 M_sun [3.3: "The median dust mass for all of the SMGs in our sample is $M_{\rm d}$ = (3.6 $\pm$ 0.3) $\times$ 10$^{8}$ M$_{\odot}$"]
+- result: Median H2 mass = 4.2e10 ± ±0.4e10 M_sun [4.4: "this suggests a median H$_2$ mass of $M_{\rm H2}$ = (4.2 $\pm$ 0.4) $\times$ 10$^{10}$ M$_{\odot}$ for the ALESS SMGs."]
+- result: Gas depletion timescale = 130 ± ±15 Myr [4.4: "gas depletion time-scale of $M_{\rm H_2}$ / SFR$\sim$ 130 $\pm$ 15 Myr"]
+- limitation (authors): Deblending requiring 250um detection for 350um priors may bias against 250um-faint sources [3.3: "which may bias against galaxies that are faint at 250-$\mu$m and peak at longer wavelengths."]
+- not stated (card): CASA version and calibration/imaging parameters (deferred to Hodge13); Exact SED template library files and fit priors/redshift handling details; Grey-body fit details (fixed beta, wavelengths used) for individual T_d; Bootstrap details for composite SED and luminosity function; Choice of ALMA data products used (archive vs. published catalog)
+
+### 2017ApJ...842....8M: A Complete ALMA Map of the Fomalhaut Debris Disk (2017; debris_disks, stellar_physics; observational_alma_primary)
+- question: What is the complete millimeter structure of the Fomalhaut outer debris disk (geometry, eccentricity, width, azimuthal structure, apocenter glow), and what is the stellar flux at 1.3 mm?
+- step 4: Derive dust mass
+  - method: Optically thin M_dust = F D^2/(kappa B(T)) [3.3 Results of Model Fits: "$M_\text{dust} = F_\nu D^2/(\kappa_\nu B_\nu(T_\text{dust}))$"]
+  - assumption: kappa = 2.3 cm^2/g at 1.3 mm; T ~48 K radiative equilibrium; D = 7.66 pc [3.3 Results of Model Fits: "Given the best fit radial location of the disk, $136.3\pm0.9$ AU, the radiative equilibrium temperature is $\sim48$ K."]
+  - validation: Compared with previous flux measurements [3.3 Results of Model Fits: "consistent with previous flux measurements at slightly shorter wavelengths"]
+- step 7: Limit Fomalhaut b dust mass and stellar brightness temperature
+  - method: 3-sigma point-source upper limit converted to dust mass (optically thin) or clump size (optically thick); stellar flux converted to brightness temperature [4.3 Implications for Fomalhaut b: "We can place a robust $3\sigma$ upper limit on the flux density of $0.042$ mJy, assuming a point source."]
+  - assumption: Fomalhaut b at ~125 AU, T_dust ~51 K; stellar photospheric radius 1.842 Rsun [4.3 Implications for Fomalhaut b: "this location implies a dust temperature of $\sim51$ K"]
+- result: Total dust mass = 0.015 ± 0.010 Earth masses [3.3 Results of Model Fits: "Thus, the total mass of the dust belt is $0.015\pm0.010$ $M_\oplus$."]
+- result: Fomalhaut b 3-sigma flux upper limit = 0.042 ± not stated mJy [4.3 Implications for Fomalhaut b: "We can place a robust $3\sigma$ upper limit on the flux density of $0.042$ mJy, assuming a point source."]
+- result: Fomalhaut b dust mass upper limit = <0.0019 M_Moon (<1.40e23 g) ± not stated Moon masses [4.3 Implications for Fomalhaut b: "The resulting upper limit on the dust mass is $<0.0019$ $M_\text{Moon}$ ($<1.40\times10^{23}$ g)"]
+- result: Stellar brightness temperature at 1.3 mm = <6200 ± not stated K [4.4 Stellar Emission at Millimeter Wave…: "the brightness temperature dips to $<6600$ K and $<6200$ K at 870 $\mu$m and 1.3 mm, respectively."]
+- limitation (authors): Resolution (~10 AU) prevents constraints on edge sharpness; Δa and e_p degenerate; large uncertainty on ω from inclination degeneracy [4.2.2 Determining the Belt Width: "we are unable to place any strong constraints on the sharpness of the disk edges."]
+- limitation (authors): 2D model ignores vertical structure, which could loosen width constraints [3.2 Modeling Approach: "Adding a vertical component to the model would likely loosen the constraints we are able to place on the width of the belt"]
+- not stated (card): CLEAN parameters (cell size, image size, masks, threshold, niter); Mosaic pointing coordinates for the seven fields; Prior ranges and walker/step numbers and burn-in for emcee; Pixel scale, image size and the vertical/radial sampling of the model image and how the primary beam was handled in vissample; Which executions were combined and any relative flux scaling between them; Flux density used fo…
+
+### 2014ApJ...787...48X: ALMA Observations of Warm Molecular Gas and Cold Dust in NGC 34 (2014; nearby_galaxies, agn_and_quasars, star_formation; observational_alma_primary)
+- question: How is warm dense molecular gas and cold dust distributed in the nucleus of NGC 34, how is it related to the starburst and AGN, and is there evidence for a molecular outflow?
+- step 4: Dust mass from 435 um continuum
+  - method: optically thin single-temperature formula M_dust = c^2 f D^2/(2 nu^2 k T kappa) [3.3 Gas Mass and Dust Mass: "The dust mass can be estimated from the continuum flux using the following formula"]
+  - parameter: T=43.0 K, kappa_690GHz = 0.16 m2/kg, D=84 Mpc [3.3 Gas Mass and Dust Mass: "The dust temperature, $\rm T= 43.0\; K$"]
+  - assumption: R_pc=100 and 70% of L_IR inside radius [3.3 Gas Mass and Dust Mass: "70% of the IR luminosity of NGC 34 is inside this radius"]
+  - validation: error budget: 30% kappa, 15% flux cal, ~10% temperature [3.3 Gas Mass and Dust Mass: "Given the 30% error for $\rm \kappa$ (cite: James2002), 15% flux calibration error and $\sim 10\%$ error in the temperature estimate"]
+- result: Dust mass = 10^6.97 ± ±0.13 dex Msun [3.3 Gas Mass and Dust Mass: "$\rm M_{dust} = 10^{6.97\pm 0.13}\; \; M_\ensuremath{\odot}$"]
+- result: Interferometer-to-single-dish continuum ratio = 0.53 ± 0.08 dimensionless [3.2 Dust continuum emission: "interferometer-to-single-dish flux ratio of $\rm 0.53\pm 0.08$"]
+- limitation (authors): Good map quality only in the central ~3'' due to uv-coverage; astrometric accuracy ~0.1'' [2 Observations: "the resulting maps have good quality only in the central region of $\sim 3''$ (limited by the uv-coverage)"]
+- not stated (card): tclean/clean parameters: cell size, image size, masks, iterations, threshold; self-calibration solution intervals and reference data; line-free channels and uvcontsub fit order; how core (r~50 pc) fluxes and Gaussian sizes were measured; how the CO(6-5) disk size and axis ratio were derived (fit method); ALMA project code; rotating-ring model definition and fitting code; how CO(6-5) luminosity an…
+
+### 2018MNRAS.475..448T: Mapping jet-ISM interactions in X-ray binaries with ALMA: a GRS 1915+105 case study (2018; milky_way_ism, star_formation; observational_alma_primary)
+- question: Is IRAS 19132+1035 a site of interaction between the GRS 1915+105 jet and the ISM, and what do the molecular lines say about ISM conditions and jet power?
+- step 2: Fit modified blackbody to SED for dust properties
+  - method: MCMC fit of 22–1110 um spectrum with modified blackbody; ALMA flux excluded [4.1 Continuum Emission: "we fit (using a Markov Chain Monte Carlo (MCMC) algorithm) the broad-band sub-mm through IR (22–1110 $\mu$m; see Table [1](#table:mwemiss)) spectrum"]
+  - assumption: kappa=0.1 cm2/g (nu/THz)^beta, includes gas-to-dust 100 [4.1 Continuum Emission: "Note that this value of the dust opacity includes a gas-to-dust ratio of 100 by mass."]
+  - fitting: MCMC; priors not stated [Results, Continuum Emission from IRAS 1…: "we fit (using a Markov Chain Monte Carlo (MCMC) algorithm) the broad-band sub-mm through IR (22–1110 $\mu$m; see Table [1](#table:mwemiss)) spectrum, with the modified black-body function"]
+- result: Dust temperature = 29.01 ± +0.14/-0.13 K [Table 2: "| $T_{\rm dust}$ | | $29.01^{+0.14}_{-0.13}$ | K |"]
+- result: Dust emissivity index beta = 1.44 ± +0.03/-0.03 dimensionless [Table 2: "| $\beta$ | | $1.44^{+0.03}_{-0.03}$ | |"]
+- result: Molecular mass from dust = 1200 ± +690/-450 Msun [Table 2: "| $M_{\mathrm{mol}}^a$ | | $1200^{+690}_{-450}$ | $M_\odot$ |"]
+- limitation (authors): Distance mismatch between GRS 1915+105 and IRAS source; jet power assumes constant power and density [5.4 Constraints on jet properties: "We have also assumed a constant external density."]
+- limitation (authors): ALMA continuum lacks single-dish data so flux is underestimated [4.1 Continuum Emission: "we do not recover all the flux from the region in these ALMA continuum observations"]
+- not stated (card): Line-free channels and continuum velocity ranges for each line; Channel width/velocity resolution and cube spectral regridding used in final imaging; Clean thresholds, mask, and number of iterations; Final synthesized beams and rms noise per cube; Gaussian fit and MCMC setup (priors, sampler, walkers) for SED and line fits; Regions A-D coordinates and extraction apertures; Manual calibration deta…
+
+### 2020ApJ...891..164S: Chemistry and Physics of a Low-metallicity Hot Core in the Large Magellanic Cloud (2020; astrochemistry, star_formation; observational_alma_primary)
+- question: What are the chemical composition, physical structure and sulfur isotope ratios of a newly discovered hot molecular core around the high-mass YSO ST16 in the LMC, and how do its abundances compare with other LMC and Galactic hot cores?
+- step 4: Derive H2 column density
+  - method: Optically thin dust continuum at 870 and 1200 um; SED fits (Robitaille, Zhang & Tan); 9.7 um silicate depth; average adopted [4.3.4: "we use $N_{\mathrm{H_2}}$ = (5.6 $\pm$ 0.6) $\times$ 10$^{23}$ cm$^{-2}$ as a representative value"]
+  - parameter: Td = 20, 60, 150 K tested; 60 K adopted [4.3.1: "We estimate $N_{\mathrm{H_2}}$ for three different dust temperatures, 20 K, 60 K, and 150 K"]
+  - assumption: Dust-to-gas mass ratio 0.0027 (0.008 scaled by LMC Z~1/3); NH2/AV = 2.8e21; distance = LMC [4.3.1: "We use the dust-to-gas mass ratio of 0.0027 for the LMC, which is obtained by scaling the Galactic value of 0.008"]
+  - fitting: SED: chi2 cutoff (chi2-chi2best)/Ndata<=3 median; best five Zhang&Tan models averaged [4.3.2: "We select the fit results which have $(\chi^2 - \chi^2_{best})/N_{data}$ $\leqq$ 3"]
+  - validation: Consistency among methods [4.3.4: "consistent $N_{\mathrm{H_2}}$ values are obtained by different methods"]
+- step 7: Astrochemical simulations
+  - method: Gas-grain model with cold (1e5 yr, AV 1-5 mag), warm-up (5e4 yr, to 150 K, 6e6 cm-3, AV 100) and post-warm-up (1e5 yr) stages; LMC vs Galactic [Appendix: "The warm-up stage continues up to $t_h = 5 \times 10^4$ years in our model."]
+  - assumption: LMC: Z=1/3, gas-to-dust 300, chi_uv=3 [Table 10: "Gas to dust ratio | 100 (MW), 300 (LMC)"]
+- result: NH2 adopted = 5.6e23 ± 0.6e23 cm-2 [4.3.4: "we use $N_{\mathrm{H_2}}$ = (5.6 $\pm$ 0.6) $\times$ 10$^{23}$ cm$^{-2}$ as a representative value"]
+- result: Gas number density = 3e6 ± not stated cm-3 [4.3.4: "we estimate the average gas number density to be $n_{\mathrm{H_2}}$ = 3 $\times$ 10$^6$ cm$^{-3}$ and the total gas mass to be 100 M$_{\ensuremath{\odot}}$"]
+- result: Continuum 870 um = 10.55 ± 1.06 mJy/beam [4.3.1: "(10.55 $\pm$ 1.06) mJy/beam for 870 $\mu$m"]
+- result: Continuum 1200 um = 3.37 ± 0.34 mJy/beam [4.3.1: "(3.37 $\pm$ 0.34) mJy/beam for 1200 $\mu$m"]
+- limitation (authors): Infall not detected because no optically thick tracer; NH2 includes low-temperature components [5.5: "an infall motion is not seen in the present data, because we do not cover a fully optically thick molecular tracer in this work"]
+- not stated (card): Line-free channel ranges for continuum and uvcontsub fit order; Image size, cell size, clean threshold, mask, niter; Which calibration pipeline version / manual scripts; Source spectral extraction aperture relative to line-fit method details (Gaussian fit software); Rotation-diagram fitting method and treatment of blends; Details of SED photometry compilation and fitting grid; Chemical network co…
+
+### 2015MNRAS.449..715W: Tracing the conversion of gas into stars in Young Massive Cluster Progenitors (2015; milky_way_ism, star_formation; multi_facility_alma_minor)
+- question: Are four extreme quiescent Galactic centre clouds gravitationally bound YMC progenitors, and is their gas distribution compact enough to form an Arches-like cluster?
+- step 1: Dust mass and radius from HiGAL
+  - method: Sum column density maps above 5e22 cm-2 threshold with mean molecular weight 2.8 mH; effective radius as geometric mean of axes [Dust Mass: "we estimate the dust masses of the clouds by assuming a mean molecular weight of 2.8m$_{H}$, multiplying each pixel by its physical area (assuming a distance of 8.4 kpc) and summing over the cloud area."]
+  - parameter: column density threshold 5 x 10^22 cm^-2 [Dust Column Densities & Temperatures: "A column density threshold has been applied such that all pixels below 5 x 10$^{22}$ cm$^{-2}$ are masked."]
+  - assumption: distance 8.4 kpc [Dust Mass: "assuming a distance of 8.4 kpc"]
+  - validation: Mass vs threshold tested (5-10e22 changes mass by 10-40%); compared with Immer et al. and L12 [Dust Mass: "These estimates agree well with those found by (cite: Immer) and L12."]
+- step 4: Mass surface density profiles and comparison with Sgr B2 and Arches
+  - method: Enclosed mass in circular apertures; BGPS fluxes converted to mass with Kauffmann et al. relation at 20 K; stellar mass from UCHII OB stars with Kroupa IMF correction; SFE factor 1/3 [Discussion: "The dust temperature is assumed to be 20 K"]
+  - parameter: k_nu = 0.04 cm2 g-1 (nu/505 GHz)^1.75 [Discussion: "k_{\nu} = 0.04 \rm ~ cm^{2} ~ g^{-1} \left(\frac{\nu}{505 ~ GHz}\right)^{1.75}"]
+  - assumption: gas-to-dust ratio 100 [Discussion: "Note that this contains the explicit assumption that the gas-to-dust ratio is 100."]
+- result: Dust masses of G0.253, d, e, f = 11.9, 7.6, 11.2, 7.3 x10^4 ± systematic factor ~2 Msun [Dust Mass: "We determine the masses of G0.253$+$0.016, ‘d’, ‘e’ and ‘f’ to be 11.9 x 10$^{4}$ M$_{\odot}$, 7.6 x 10$^{4}$ M$_{\odot}$, 11.2 x 10$^{4}$ M$_{\odot}$ and 7.3 x 10$^{4}$ M$_{\odot}$"]
+- result: Effective radii G0.253, d, e, f = 2.9, 3.2, 2.4, 2.0 ± not stated pc [Radius: "We derive effective radii of 2.9 pc, 3.2 pc, 2.4 pc and 2.0 pc, respectively"]
+- result: Radius enclosing 5e4 Msun (G0.253, d, e, f) = 1.0, 1.2, 0.8, 1.0 ± not stated pc [Radius: "1.0 pc, 1.2 pc, 0.8 pc and 1.0 pc, respectively for G0.253$+$0.016, ‘d’, ‘e’ and ‘f’"]
+- result: Total stellar mass in Sgr B2 from 25 UCHII sources = ~3.5e3 ± not stated Msun [Discussion: "Taking all 25 sources in (cite: Gaume), we estimate a total stellar mass of $\sim$ 3.5 x 10$^{3}$ M$_{\odot}$."]
+- limitation (authors): Mass estimates uncertain due to cloud boundary definition and a factor ~2 systematics; gas temperature measured only for G0.253 [Dust Mass: "We note that these mass estimates are necessarily uncertain due to the ambiguity involved in defining a distinct cloud area"]
+- not stated (card): Coefficient k in the virial mass formula; ALMA calibration, imaging and feathering details (deferred to Rathborne et al. 2014b); Hanning smoothing and CASA fit procedure details for spectra; How cloud boundaries were drawn on the column-density maps; Aperture centres and radial bins for profiles
+
+### 2024A&A...686A.274V: Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars (2024; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the large-scale magnetic field morphology and strength in AGB circumstellar envelopes, as traced by non-maser molecular line polarisation (GK effect and radiative alignment) in CW Leo and R Leo?
+- step 4: Polarised radiative transfer modelling
+  - method: PORTAL on converged LIME output with parameterised CSE (density, T, velocity, abundance profiles); compare radiative rates to magnetic precession rate; model radial alignment for CS/H13CN/SiS and dipole/toroidal B for CO of CW Leo, radial … [4 Polarised radiative transfer models: "The modelling of the line polarisation is performed with the PORTAL (POlarised Radiative Transfer Adapted to Lines) code (cite: Lankhaar20)."]
+  - software: PORTAL, LIME 1.9.5
+  - parameter: CW Leo dipole inclined 45 deg, PA 125 deg [4.2 CW Leo: "we assume it to be inclined at 45$^\circ$"]
+  - parameter: turbulent velocity 1 km/s; gas mean particle mass 2.35 AMU [4.1 Circumstellar envelope models: "contained a contribution from a constant turbulent velocity of 1 km s$^{-1}$"]
+  - assumption: Spherically symmetric envelope expanding at constant velocity; amorphous carbon opacities (CW Leo), silicate (R Leo); gas-to-dust 300 (CW Leo), 167 (R Leo) [4.1 Circumstellar envelope models: "In the case of C-rich CSEs, such as CW Leo, we adopted the opacities for amorphous carbon type of dust given by (cite: suh00)"]
+  - validation: Qualitative comparison of predicted and observed polarisation morphology and fractions [4.3 R Leo: "The predicted polarisation morphology appears to be consistent with the observations."]
+- limitation (authors): Spatial filtering resolves out much CO flux, overestimating polarisation fractions by factor 2-3. [2 Observations and data reduction: "this can lead to an overestimate of the polarisation fractions with a factor of $2-3$"]
+- limitation (authors): Circular polarisation of extended lines dominated by beam effects; no test of anisotropic resonant scattering. [5.2 Anisotropic Resonant Scattering: "we cannot directly investigate anisotropic resonance scattering through a study of the circular polarisation."]
+- not stated (card): Exact self-calibration solution interval values and spw/channel selection for continuum; Line-free channels used for uvcontsub and fit order; Image size, cell size, deconvolver, masking and clean threshold; Polarisation calibration script details and leakage solutions; Details of the amplitude re-normalisation correction; PORTAL/LIME setup: grid, number of photons, magnetic field strength used fo…
+
+### 2020ApJ...894L..14L: ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation (2020; milky_way_ism, star_formation; observational_alma_primary)
+- question: Do massive CMZ clouds contain hidden early-phase fragmentation into cores, and is it consistent with thermal Jeans fragmentation and with forming Arches/Quintuplet-like clusters?
+- step 3: Derive core masses, radii, densities
+  - method: Optically thin dust: M = R S d^2/(B(T) kappa); r=(A/pi)^0.5; n(H2)=M/(4 pi r^3/3)/(2.8 mH) [3.2 Physical Properties of the Cores: "The effective core radius $r_\text{c}$ is derived as $(A/\pi)^{1/2}$, where $A$ is the area of the core reported by *astrodendro*."]
+  - parameter: T_dust = 20 K, R = 100, kappa = 0.899 cm2/g, d = 8.178 kpc [3.2 Physical Properties of the Cores: "we assumed a constant $T_\text{dust}$ of 20 K as a fiducial case"]
+  - assumption: Optically thin dust, constant 20 K, gas-to-dust 100 [3.2 Physical Properties of the Cores: "Assuming optically thin dust emission, the core masses were derived as"]
+  - validation: Tested 50 K, flux-dependent and random T_dust in appendix [Appendix: Impact of Varying Dust Temper…: "If we adopt a dust temperature of 50 K, the core masses would decrease by a factor of 3."]
+- result: 5 sigma mass sensitivity = 0.3 ± not stated Msun per beam [3.2 Physical Properties of the Cores: "the 5$\sigma$ mass sensitivity is 0.3 $M_\odot$ per beam given a $T_\text{dust}$ of 20 K"]
+- limitation (authors): Dust temperature at 2000 AU unknown, strongly affects masses [3.2 Physical Properties of the Cores: "$T_\text{dust}$ at 2000 AU scales is unclear."]
+- limitation (authors): Cannot tell whether cores are prestellar or protostellar [3.2 Physical Properties of the Cores: "with the current data we cannot determine whether the cores have collapsed and are mostly protostellar"]
+- not stated (card): Image size and phase centres per field; Line-free channel selection; Which execution blocks and calibrators were used; flux calibrator and flux uncertainty; Cleaning threshold, niter and masks; Exact astrodendro call details beyond min_value/min_delta/min_npix; Modifications made to FragMent; KDE settings for separation distributions; Primary beam correction details and mosaic pointing layout
+
+### 2018Sci...362.1034D: The multiple merger assembly of a hyperluminous obscured quasar at redshift 4.6 (2018; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Is the hyper-luminous obscured quasar W2246−0526 (z=4.6) undergoing a multiple merger, with dusty bridges and tidal tails connecting it to companion galaxies?
+- step 3: Derive dust and gas masses
+  - method: Optically thin modified blackbody scaled to continuum flux; gas = 100 × dust; CO-based gas with alpha_CO [Calculation of Dust and Gas Masses: "we use a modified blackbody function scaled to the continuum flux density of each source"]
+  - parameter: Tdust 50–100 K for W2246, 25–50 K for companions/extended [Calculation of Dust and Gas Masses: "we adopt a reasonable temperature range of T dust = 50–100 K for the Rayleigh-Jeans tail emission"]
+  - assumption: beta=1.8, kappa(850µm)=0.0484 m2/kg, gas-to-dust 100, alpha_CO,MW=4.6 and ULIRG=0.8 [Calculation of Dust and Gas Masses: "We further assume that the dust emission is optically thin, with an emissivity index β = 1.8"]
+  - validation: Dust-based gas compared with CO-based gas and dynamical mass [Calculation of Dust and Gas Masses: "which slightly favors an α CO conversion factor closer to the ULIRG regime"]
+- result: Dust mass of W2246−0526 (central 1″) = 5.6–17 × 10^8 ± not stated Msun [Calculation of Dust and Gas Masses: "This corresponds to a dust mass in the range M dust ~ 5.6–17 × 10 [8 ] M ¤ ( T dust = 100–50 K, respectively)."]
+- result: Total gas mass of system from dust = 1.2–3.6 × 10^11 ± not stated Msun [Calculation of Dust and Gas Masses: "the entire system could contain as much as M gas = 1.2–3.6 × 10 [11 ] M ¤ ."]
+- result: CO(2-1) luminosity = 3.3 ± 0.7 1e7 Lsun [Calculation of Dust and Gas Masses: "L CO(2→1) = 3.3 (±0.7) × 10 [7 ] L ¤"]
+- limitation (authors): U1 may be at a different redshift; stellar mass and SFR uncertain by factor of 2 [Materials and Methods: "both with an uncertainty of a factor of 2"]
+- not stated (card): Line-free channels / how continuum cube was built from SPWs and which channels were discarded; Flux calibration details (pipeline vs manual) and flux scale uncertainty; Mask for extended emission/companions during cleaning; Aperture photometry method for companions and tail; Image size and cell size; Self-calibration use
+
+### 2025A&A...693A.151M: REsolved ALMA and SMA Observations of Nearby Stars (REASONS): A population of 74 resolved planetesimal belts at millimetre wavelengths (2025; debris_disks, exoplanets; large_program_or_survey)
+- question: What are the spatial properties (radius, width, vertical aspect ratio) and evolution of mm-resolved planetesimal belts across a uniformly modelled population of 74 systems?
+- step 4: Derive dust masses and test collisional evolution
+  - method: Mass at 1.33 mm from flux, kappa and blackbody temperature; compare with collisional isochrones with age groups [5.3: "$\kappa_\nu$ is the dust opacity, assumed to be 0.23 m$^2$ kg$^{-1}$, by scaling down 1 m$^2$ kg$^{-1}$ at 1000 GHz linearly"]
+  - parameter: t0 = 10 Myr, delta = 13/3, epsilon = 1, D ~2e-8 Myr Mearth au^-13/3 [5.3: "We find that a good qualitative fit to the data can be found by setting $D\sim2\times10^{-8}$ Myr M$_{\oplus}$ au$^{-13/3}$."]
+  - assumption: T(R)=278.3 L^0.25 R^-0.5 [5.3: "T(R) = 278.3 L_{\star}^{0.25} R^{-0.5},"]
+  - validation: Compared eps=1 with eps=0.4 models [5.3: "we also test models with $\epsilon=0.4$"]
+- result: Mass depletion exponent = ~1 ± not stated dimensionless [5.3: "($\epsilon\sim1$, so Mass$_{\rm 1.33mm}\propto (t-t_0)^{-1}$)"]
+- limitation (authors): Sample biased by flux-density limits; heights may be extracted from azimuthal profile rather than resolved [5.4: "this does not necessarily mean that these belts were all vertically resolved"]
+- not stated (card): Per-target weighting, robust and u-v taper values (only on Zenodo); MCMC prior ranges and exact step counts per system; Line-free channels for continuum subtraction/ CO; Details of bias map selection thresholds per wavelength; Exact photometry compilations used in SED fits
+
+### 2020ApJ...890L..14T: Shaping the Envelope of the Asymptotic Giant Branch Star W43A with a Collimated Fast Jet (2020; evolved_stars; observational_alma_primary)
+- question: How is a collimated jet launched and how does it interact with and shape the circumstellar envelope of the AGB/water-fountain star W43A?
+- step 3: Estimate shell mass and density from continuum
+  - method: Optically thin dust mass M=D^2 S/(kappa B(Td)) [Volume density of the molecular gas in …: "The mass of the gas in the bipolar shell can be estimated assuming optically thin emission and isothermal conditions for the dust."]
+  - parameter: S=267±25 mJy; Td=100 K; kappa=1.8 cm2/g [Volume density of the molecular gas in …: "The flux density of the continuum emission that traces the bipolar shell is 267$\pm$25 mJy."]
+  - assumption: dust-to-gas ratio 100; Ossenkopf & Henning coated silicate grains [Volume density of the molecular gas in …: "and a dust-to-gas ratio value of 100, the mass of the bipolar shell is 2.0$\pm$0.2 solar masses."]
+  - validation: uncoated grains give unrealistically high mass given M<~8 Msun [Volume density of the molecular gas in …: "which are unrealistically high given that the initial mass of the star must be $M$$\lesssim$8$M_{\odot}$."]
+- result: Shell mass = 2.0 ± 0.2 Msun [Volume density of the molecular gas in …: "the mass of the bipolar shell is 2.0$\pm$0.2 solar masses"]
+- result: Shell density = 5.1e8 ± 0.5e8 cm^-3 [Volume density of the molecular gas in …: "$n_{\rm H_{2}, Shell}$=5.1$\pm$0.5$\times$10$^{8}$ cm$^{-3}$"]
+- not stated (card): Line-free channels used for continuum subtraction and the method/order of subtraction; Image size, cell size, and CLEAN masks/thresholds; Rest frequencies and spectral window setup for CO and H2S; Self-calibration, if any; Method for PV-diagram extraction and how velocity offsets and the 75 km/s turnover were measured; Details of how the shell flux density (267 mJy) was defined and shell volume/t…
+
+### 2020ApJ...892..147S: Oversized Gas Clumps in an Extremely Metal-poor Molecular Cloud Revealed by ALMA's Parsec-scale Maps (2020; nearby_galaxies, star_formation, milky_way_ism; observational_alma_primary)
+- question: Does low metallicity suppress gas fragmentation, giving larger CO clumps than Milky Way clumps at the same gas surface density, in the extremely metal-poor galaxy DDO 70?
+- step 3: Derive gas-to-dust ratio
+  - method: DL07 SED fit to diffuse region, GDR = HI/dust, corrected for DL08/MBB and diffuse-to-dense drop of 2.5 [4.2: "we fitted the full infrared SEDs with the DL07 dust model (cite: Draine07) to estimate the dust masses"]
+  - assumption: kappa_160um=13.1 cm2/g; drop factor 2.5+-0.5 [4.3: "We thus adopted a factor of 2.5$\pm$0.5 to correct the above GDR to be 4,594 with a 1-$\sigma$ error of 62%."]
+  - fitting: DL07 model fit [The gas-to-dust (GDR) ratio of DDO 70: "we fitted the full infrared SEDs with the DL07 dust model (cite: Draine07) to estimate the dust masses"]
+  - validation: cross-checked with Roman-Duval17 relations [4.3: "These two equations indicate that the GDR drops by a factor of 2.1-3.2"]
+- result: Diffuse-region GDR = 6078 ± +1000/-1600 dimensionless [4.2: "The GDR of the galaxy is thus derived to be $6078^{+1000}_{-1600}$"]
+- result: Final GDR = 4594 ± 2848 dimensionless [4.3: "By adopting the above final GDR (4594$\pm$2848)"]
+- limitation (authors): Only one cloud, so not statistically significant [5 RESULTS: "our result is not statistically important, given that our observation is only for one cloud."]
+- not stated (card): Clean threshold, niter, mask, cell and image size; CASA version; Line-free channels / continuum subtraction; Sky frequency and spectral setup; Details of clump identification code; Exact measured SMC clump sizes for the CO/dust ratio
+
+### 2019A&A...628A..27B: The complex chemistry of hot cores in Sgr B2(N): influence of cosmic-ray ionization and thermal history (2019; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: What physical history and environmental conditions (cosmic-ray ionization rate, minimum prestellar dust temperature) explain the chemical differences among the Sgr B2(N2-N5) hot cores?
+- step 3: H2 column density and mass from dust continuum
+  - method: Optically thin-corrected dust emission formula with power-law opacity; mass within beam [2.1 Column densities and masses: "We derive column densities from the dust thermal emission measured in the ALMA continuum emission maps toward each source"]
+  - parameter: Td = 150 K, mu_H2 = 2.8, D = 8.34 kpc [2.1 Column densities and masses: "$B_{\nu}(T_{\rm d}$) the Planck function at the dust temperature $T_{\rm d}$ = 150 K"]
+  - assumption: gas-to-dust ratio 100; Ossenkopf & Henning opacity without ice mantles, n=1e6 [2.3 Luminosity and temperature profile: "Assuming the following gas-to-dust mass ratio, $M_{\rm d} = M_{\rm g} / \chi_{\rm d}$ with $\chi_{\rm d}$ = 100"]
+  - validation: Compared with Sanchez-Monge et al. 2017 for N3 [Discussion, Physical properties of Sgr …: "This gives $N_{\rm H_2}$ = 3.7$\times$10$^{24}$ cm$^{-2}$, a factor $\sim$ 4 higher than the value we derived in this paper."]
+- result: N2 density at 6010 au = 1.4e7 ± not stated cm-3 [Conclusions: "We derived gas densities of 1.4$\times$10$^7$ cm$^{-3}$ toward Sgr B2(N2) at a radius of 6010 au"]
+- result: Gas mass N2 within beam = 151 ± 42 Msun [Table 1: "| N2 | 8.01(0.50) | 1.42(0.39) | 151(42)"]
+- limitation (authors): Ages unreliable because the same accretion history is assumed for all sources; no CR attenuation. [5.5 Limitations: "The estimated $t_{\rm source}$ values are unlikely to be accurate"]
+- not stated (card): CASA/pipeline version and calibration details (deferred to Belloche et al. 2016); line-free channels used for baseline subtraction; continuum flux densities of N2, N4, N5 and free-free correction values; exact fitted Weeds parameters for N2 and fit procedure details; MAGICKAL code access and exact fitted accretion-rate relation Mdot(t)
+
+### 2015A&A...573L...1O: ALMA observations of anisotropic dust mass loss in the inner circumstellar environment of the red supergiant VY Canis Majoris (2015; evolved_stars; archival_reuse)
+- question: What are the properties and distribution of dust in the inner circumstellar envelope of the red supergiant VY CMa, and what does it imply for mass-loss mechanisms?
+- step 4: Dust mass and optical depth
+  - method: Optically thin Rayleigh-Jeans dust mass equation with stellar contribution subtracted; temperature from radiative heating [3.2 Properties of the dust: "Equation [\[eq1\]](#eq1) can be re-arranged to find the total mass of dust in each of the two main continuum components."]
+  - assumption: a_g = 0.2 micron, rho_g = 3.5 g cm^-3, Q = 5.65e-4 (nu/274.6 GHz)^0.7, Tstar = 3490 K [3.2 Properties of the dust: "$a_{g} = 0.2\,\mu$m and $\rho _{g}=3.5\,$g cm$^{-3}$"]
+- step 5: Mass-loss rate from resolved-out emission
+  - method: Estimate resolved-out flux vs single-dish, dust mass over 8 arcsec shell at 200 K, divided by timescale [3.3 Dust mass-loss history and mechanis…: "We assume the dust to be extended over the $\sim8\ensuremath{''}$ size of the *HST* image"]
+  - assumption: Vd ~60 km/s, T = 200 K [3.3 Dust mass-loss history and mechanis…: "We assume an average temperature of 200 K throughout the shell."]
+- result: Dust mass of C at 321 GHz = 2.5e-4 ± not stated Msun [3.2 Properties of the dust: "We then derive dust masses of $2.5\times 10^{-4}\,M_{\odot}$ at 321 GHz"]
+- result: Dust mass-loss rate = 5e-6 (Vd/60 km/s) ± not stated Msun/yr [3.3 Dust mass-loss history and mechanis…: "a dust mass-loss rate of $5\times10^{-6}(V_{\rm{d}}/60~$km s$^{-1})\,$M$_{\odot}\,$yr$^{-1}$"]
+- limitation (authors): Dust mass of C is a lower limit as it may not be optically thin; much flux is resolved out [3.2 Properties of the dust: "The main component C may not be fully optically thin at both frequencies and so its dust mass estimates will be lower limits."]
+- not stated (card): CASA version, calibration and imaging parameters (weighting, robust, cell, clean settings); Line-free channel selection; Phase offset corrections beyond the quoted shift, and the beam sizes (in table not provided in the text); Dust temperature structure and masking used for the resolved-out flux estimate
+
+### 2020PASP..132h4401T: Herschel Observations of Disks around Late-type Stars (2020; debris_disks; multi_facility_alma_minor)
+- question: Do late-type (K5-M5) stars show far-infrared excesses at 100 and 160 micron indicating circumstellar disks, and is the TYC 7443-1102-1 Herschel excess a disk or a background source?
+- step 2: SED fitting of star plus blackbody dust
+  - method: PHOENIX star plus blackbody dust, radiative equilibrium, amoeba chi2 minimization [SED Fitting: "The best fit to the complete SED is achieved with the amoeba minimization algorithm by minimizing the $\chi^2$ value"]
+  - software: amoeba
+  - assumption: Dust mass lower limit assuming spherical grains, density 3.5 g/cm3, radius 1.0 um [SED Fitting: "assuming spherical grains with a density of 3.5 g/cm$^3$, and radius of 1.0 $\ensuremath{\mu}m$"]
+  - fitting: Parameter errors by varying each parameter until reduced chi2 changed by one [SED Fitting: "varying each parameter until the reduced chi square value changed by one"]
+- result: TYC 7443-1102-1 SED dust temperature = 27 ± 4 K [TYC 7443-1102-1: "dust temperature and radius of 27$\pm$4 K and 37$\pm$12 AU"]
+- not stated (card): CLEAN threshold, mask, cell and image size; Which window(s) used for continuum and flagging of line channels; Flux calibrator flux scale and uncertainty; Which of the two calibrators was used for which role; Photometric aperture corrections for Herschel; Herschel data reduction pipeline and map-making details
+
+### 2018MNRAS.481.4931E: ALMA reveals the aftermath of a white dwarf-brown dwarf merger in CK Vulpeculae (2018; stellar_physics, evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the dust and molecular gas structures in the inner region of CK Vul, and what do they imply about the origin of the 1670 event?
+- step 4: Estimate gas mass and gas-to-dust ratio
+  - method: Recompute H2 mass from literature CO column density [3.1.2: "Assuming the CO column density in (cite: kaminski-n), and a CO/H$_2$ ratio of $\sim10^{-3}$ (appropriate for carbon–rich AGB winds), we recalculated a H$_2$ mass of $\sim9.8\times10^{-3}$ M$_\odot$."]
+  - assumption: CO/H2 ~1e-3 (carbon-rich); oxygen-rich case gives 3.9e-2 Msun [3.1.2: "If the nebula is considered oxygen–rich, this will give a value $\sim3.9\times10^{-2}$ M$_\odot$."]
+- result: Gas-to-dust ratio = ~50 to 200 ± not stated dimensionless [3.1.2: "the gas–to–dust ratio is $\sim50$ to 200"]
+- limitation (authors): Velocity resolution is modest and dynamical modelling is deferred. [Observations: "We defer modelling of the dynamics of these emission lines to a future, more detailed, paper"]
+- not stated (card): Image size, cell size, masking, deconvolver, cleaning threshold; Spectral cube channel width and rest-frame/velocity settings; Whether tclean used the combined data and any primary beam correction; CASA and pipeline versions; Flux scale uncertainty; Integration ranges and moment/PV extraction details; CO column density value used for H2 mass
+
+### 2019MNRAS.488.1005P: Upper limits on protolunar disc masses using ALMA observations of directly imaged exoplanets (2019; exoplanets, protoplanetary_disks; observational_alma_primary)
+- question: How much circumplanetary (protolunar) dust surrounds young directly-imaged exoplanets, and is it enough to form regular satellite systems (~1e-4 Mp)?
+- step 2: Radiative transfer disc models to convert flux limit to dust mass limit
+  - method: Viscous self-similar surface density disc, vary disc mass until model 1.3 mm flux equals 3 sigma limit, with radmc3d [3 CPD models: "we varied the disc mass until the 3$\sigma$ flux upper limit is matched for each disc"]
+  - software: RADMC-3D
+  - parameter: slope -1; r_c = 0.4 or 0.04 R_Hill; minimum radius r_c/10; aspect ratio 0.1; 2 deg inclination to planet orbit [3 CPD models: "A constant disc vertical aspect ratio of 0.1 is assumed."]
+  - parameter: dust size 1 um to 1 cm, exponent -3.5; opacity 2.3 cm2/g at 1.3 mm [3 CPD models: "This yields an absorption opacity of 2.3 cm$^2$ g$^{-1}$ at 1.3 mm."]
+  - assumption: Disc inclination 30 deg from face on (beta Pic b 85 deg) [3 CPD models: "we assumed disc inclinations of $30\deg$ from face on for all systems"]
+  - assumption: Star and planet luminosities heat dust; anisotropic scattering included [3 CPD models: "The star and planet luminosities are included as energy sources that set the dust temperature."]
+  - validation: Scale-height test for PZ Tel changes flux by <~10%; comparison with Ricci2017b limits [footnote 5: "found that a more realistic scale-height only affects the emitted fluxes by $\ensuremath{\lesssim}$10%"]
+- step 3: Compare to viscous evolution model
+  - method: alpha-disc similarity solution until 1 Myr then exponential decay with truncation at 0.4 R_Hill; compare dust mass vs age [4.1 Viscous evolution: "Therefore, for the evolution after 1 Myr instead we used equation 5 in (cite: Rosotti2018)"]
+  - parameter: alpha = 1e-4 and 1e-3; disc temperature 40 K; dissipation 1 Myr; initial solid mass 1e-4 Mp [4.1 Viscous evolution: "The dashed and dotted lines represent models with $\alpha=10^{-4}$ and $10^{-3}$, respectively."]
+  - assumption: gas-to-dust 100; grain density 1 g/cm3 [4.1 Viscous evolution: "gas-to-dust ratio of 100"]
+- result: Mmax/Mp PZ Tel b (0.4 / 0.04 R_Hill) = 2.5e-7 / 2.0e-7 ± not stated dimensionless [Table 1: "2.5$\times$10$^{-7}$ | 2.0$\times$10$^{-7}$"]
+- result: Mmax/Mp 51 Eri b (0.4 R_Hill) = 2.2e-6 ± not stated dimensionless [Table 1: "2.2$\times$10$^{-6}$"]
+- result: Mmax/Mp AB Pic b (0.4 / 0.04 R_Hill) = 5.0e-6 / 2.4e-6 ± not stated dimensionless [Table 1: "5.0$\times$10$^{-6}$ | 2.4$\times$10$^{-6}$"]
+- result: Mmax/Mp kappa And b (0.4 / 0.04 R_Hill) = 9.0e-7 / 1.4e-6 ± not stated dimensionless [Table 1: "9.0$\times$10$^{-7}$ | 1.4$\times$10$^{-6}$"]
+- result: Dust opacity at 1.3 mm = 2.3 ± not stated cm2 g-1 [3 CPD models: "This yields an absorption opacity of 2.3 cm$^2$ g$^{-1}$ at 1.3 mm."]
+- limitation (authors): System ages uncertain by ~50% [4.1 Viscous evolution: "the age of these systems is uncertain and could vary by $\sim$50%"]
+- limitation (authors): Gas (CO) not analysed [2 Data description: "Searching for low-level gas in these systems is beyond the scope of this paper"]
+- not stated (card): Which observing blocks and how many per target; target phase centres; Measured RMS values per target in uJy (only 3-sigma limits in table); Dust composition fractions and optical constants for astrosilicate, amorphous carbon, water ice; Dust grain internal density and scattering treatment details for radmc3d; Stellar and planetary luminosity inputs and grid resolution for RT; Number of photons an…
+
+### 2025ApJ...995L..63L: ALMA Reveals Diverse Dust-to-gas Mass Ratios and Quenching Modes in Old Quiescent Galaxies (2025; nearby_galaxies, high_z_galaxies; observational_alma_primary)
+- question: Do dust and molecular gas co-evolve in old quiescent galaxies, as traced by the dust-to-molecular gas mass ratio, and is this linked to quenching mode or stellar age?
+- step 3: Derive stellar properties and dust masses by SED fitting
+  - method: CIGALE with BC03, flexible delayed+quenched SFH, CF00 attenuation, DL07 dust, Dn4000 constraint [A.1 SED fitting methodology: "we use the $D_{\rm n}4000$ option in CIGALE and iterate until measured and SED-derived $D_{\rm n}4000$ agree within $\pm 0.1$"]
+  - software: CIGALE
+  - parameter: Umax=1e6, beta=2, gamma=0.01, 0.47<qPAH<4.6 [A.1 SED fitting methodology: "We fix the radiation parameter $U_{\rm max}=10^6$, emission slope ($\beta=2$), and sample different intensities $U_{\rm min}$."]
+  - assumption: Chabrier IMF [A.1 SED fitting methodology: "stellar population synthesis with a (cite: chabrier03) initial mass function (IMF)"]
+  - fitting: Bayesian probability-weighted average values from CIGALE [A.1 SED fitting methodology: "we adopt Bayesian (probability-weighted average) values"]
+  - validation: Mock-object tests; compared with MBB and Scoville methods; non-parametric SFH test [A.2 Inspecting SED fitting systematics: "We use the "mock object" functionality within `CIGALE` to construct a synthetic catalogue"]
+- result: SED fit reduced chi2 (median) = 1.02 ± 0.33 dimensionless [A.1 SED fitting methodology: "median $\chi^{2}=1.02\pm0.33$"]
+- limitation (authors): delta_DGR concerns H2 only, ignoring atomic HI [3 Direct probe of delta_DGR in old QGs: "We note that $\delta_{\rm DGR}$ in this study concerns $\rm H_2$ gas, ignoring atomic HI."]
+- limitation (authors): Mdust uncertain due to assumed Tdust and unknown AGN presence [B Comparison of different methods for d…: "uncertainties remain due to the assumed $T_{\rm dust}$ and limited knowledge about the AGN-presence in our sources"]
+- not stated (card): Which spectral windows were treated as line-free for continuum and the channel ranges used for continuum subtraction; CO cube channel width, velocity range for moment-0, and moment-zero masking/clipping; Cell size, image size, and clean threshold/niter/masks for each source; Flux calibrator and flux-scale uncertainty; any self-calibration; Kron aperture parameters and de-blending details in Photu…
+
+### 2025ApJ...986L..22R: The First Detection of Molecular Activity in the Largest Known Oort Cloud Comet: ALMA Imaging of C/2014 UN271 (Bernardinelli─Bernstein) at 16.6 au from the Sun (2025; solar_system; observational_alma_primary)
+- question: What are the molecular activity drivers, CO outgassing kinematics and continuum (nucleus/dust) properties of the distant active Oort cloud comet C/2014 UN271 at 16.6 au?
+- step 5: Continuum visibility fits: nucleus size and dust coma mass
+  - method: lmfit fits to 233 GHz visibilities with point source, point+1/rho coma, and fixed max coma; NEATM diameters; coma dust mass from flux with opacities [Continuum Modeling: "We used the `lmfit` package to perform least squares fits to the 233 GHz continuum visibilities"]
+  - software: lmfit
+  - parameter: Tss=95±9 K (NEATM) or 60 K (CO) [Continuum Modeling: "The resulting $T_{ss}$ is 95 $\pm$ 9 K on both dates."]
+  - assumption: Opacities 0.17-0.467 m2/kg; dust at equilibrium temperature [Coma Dust Mass: "the derived opacities are in the range $1.70-4.67\times10^{-1}$ m$^2$ kg$^{-1}$"]
+  - fitting: Least squares, chi2 comparison [5: "Based on $\chi^2$ analysis, our March 8 data are best fit by a 101–129 km nucleus"]
+  - validation: Compared with Lellouch et al. nucleus size [5: "Overall, our values are in formal agreement with (cite: Lellouch2022) within 2$\sigma$."]
+- result: Nucleus diameter range = 101-151 ± not stated km [5: "with nominal diameters ranging from 101 km – 151 km"]
+- result: Dust coma mass March 8 = 0.44-1.2 ± 0.08-0.2 1e11 kg [Table 5: "$(0.44\pm0.08$)–$(1.2\pm0.2)$"]
+- limitation (authors): Two-component model is a simplification of the dual-jet geometry; March 17 S/N lower [4.1.1: "Our two-component radiative transfer model is a simplification of this geometry"]
+- not stated (card): Line-free channels and continuum subtraction method; Image pixel/cell size and image size; Exact spectral window frequencies and CO rest frequency; Initial guesses and bounds for lmfit fits; Choice of aperture/extraction for interferometric spectra fitted; Pipeline version; Calibrator catalog data used for polynomial fit details; Phase center coordinates
+
+### 2021A&A...652A..98G: The Galaxy Activity, Torus, and Outflow Survey (GATOS). I. ALMA images of dusty molecular tori in Seyfert galaxies (2021; agn_and_quasars, nearby_galaxies; large_program_or_survey)
+- question: What are the sizes, orientations, masses and gas properties of dusty molecular tori in nearby Seyferts, and does AGN feedback leave an imprint on the radial distribution of molecular gas?
+- step 4: Derive molecular gas masses from dust and CO
+  - method: Modified blackbody dust mass with gas-to-dust 100; CO mass via Bolatto et al. Eq. 3 with 1.36 He factor; compared dust-based and CO-based masses [4.4: "The CO-based molecular gas masses derived from Equation (3) of (cite: Bol13), after including the mass of Helium"]
+  - parameter: T_dust=100 K; kappa_351GHz=0.0865 m^2/kg; gas-to-dust ~100; X_CO=2e20; 3-2/1-0 = 2.9 (tori), 0.7 (FOV), 2.0 (200 pc) [4.4: "We assumed a dust temperature $T_{\rm dust} \sim T_{\rm gas}=100$ K and a dust emissivity $\kappa_{{\rm 351~GHz}}=0.0865$ m$^2$ kg$^{-1}$ (cite: Kla01)"]
+  - assumption: Galactic X_CO [4.4: "we assumed a galactic CO–to–H$_2$ conversion factor ($X_{\rm CO}=2\times10^{20}$mol cm$^{-2}$ (K km s$^{-1}$)$^{-1}$)"]
+  - validation: Dust vs CO masses agree to ~0.23 dex median; Pearson ~0.74 excluding NGC 7213 [4.4: "their median values differ only by $\sim0.23$ dex"]
+- result: Molecular gas mass of extended components, median = ~6e5 ± range ~5e4-1e7 Msun [4.4: "a median value of $\sim6\times10^{5}$M$_{\ensuremath{\odot}}$"]
+- result: Median difference log M_gas(dust) vs M_gas(CO) = 0.23 ± not stated dex [4.4: "their median values differ only by $\sim0.23$ dex"]
+- result: Pearson correlation M_dust vs M_CO (excluding NGC 7213) = ~0.74 ± p~6e-3 dimensionless [4.4: "show Pearson correlation parameters $\sim+0.74$ and two-sided $p$ values $\sim6\times10^{-3}$"]
+- limitation (authors): Common T_dust adopted for all sources; mass estimates depend on assumed conversion factors [4.4: "In the absence of estimates for each galaxy, we were constrained to adopt a common $T_{\rm dust}$ for all sources"]
+- limitation (authors): Spectral index maps only possible for 3 sources [4.3: "meaningful spectral index maps cannot be obtained for the rest of the GATOS galaxies"]
+- limitation (authors): Small-number statistics for orientation and correlations [4.5: "Within the limits imposed by the sparse statistics"]
+- not stated (card): Exact line-free channels / velocity masks per target; CASA version and pipeline details, calibrators; Cell size, image size, deconvolution and cleaning thresholds in GILDAS; How CO/dust masses were integrated (apertures, noise masks); Details of the 1D-Gaussian strip fits (initial guesses); Subtraction of point source in spectral index maps and beam matching details; XSPEC fit priors/start values…
+
+### 2024ApJ...963....1O: "Beads-on-a-string" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster (2024; galaxy_clusters_and_sz, star_formation, agn_and_quasars; multi_facility_alma_minor)
+- question: How do the cooling ICM, an AGN outburst, the warm ionized gas, cold molecular gas and the 'beads on a string' star formation relate in the merging cool-core cluster SDSS 1531?
+- step 4: Constrain continuum and dust mass
+  - method: 2-sigma continuum upper limit converted to dust mass via modified blackbody [3.4.4 Undetected Continuum: "we modeled the emission $S_\nu$ as a modified blackbody using the following equation"]
+  - parameter: beta = 1.8, kappa_500um = 0.051 m^2/kg [3.4.4 Undetected Continuum: "$\kappa_{500 \mu\mathrm{m}} = 0.051$ m$^2$ kg$^{−1}$, and $\beta = 1.8$"]
+  - assumption: dust temperature 25 K [3.4.4 Undetected Continuum: "Assuming a dust temperature of 25 K (cite: davis_wisdom_2017)"]
+- result: Dust mass upper limit = 3.7e8 ± not stated Msun [3.4.4 Undetected Continuum: "we obtain a maximum dust mass of $3.7 \times 10^8$ M$_\odot$"]
+- result: Continuum 2-sigma upper limit = 4.87e-4 ± not stated mJy/beam [3.4.4 Undetected Continuum: "we place $2\sigma$ upper limits of $4.87 \times10^{-4}$ mJy beam$^{-1}$ on the continuum"]
+- limitation (authors): X_CO uncertainty may overestimate molecular mass by a factor of a few [3.4.3 Mass Distribution: "we may overestimate the total molecular mass by a factor of a few"]
+- limitation (authors): Chandra data too shallow to resolve cavity [3.1.1: "the current X-ray data is too shallow to resolve"]
+- not stated (card): Briggs robust value tested; Line-free channels and order used for continuum subtraction; clean threshold, mask, niter, cell and image size; Which of the Compact/Extended execution blocks were combined in the final cube; Aperture definition and four-Gaussian fit initial guesses for spectrum; Rest frequency/velocity frame used for channel binning; Whether archive pipeline products were used or the …
+
+### 2016ApJ...832..148V: Molecular Gas Along a Bright Hα Filament in 2A 0335+096 Revealed by ALMA (2016; galaxy_clusters_and_sz, nearby_galaxies; observational_alma_primary)
+- question: What is the distribution, kinematics and origin of the molecular gas in the 2A 0335+096 BCG and its Halpha filament?
+- step 5: Dust extinction map from HST
+  - method: Core-Sersic model of BCG plus Sersic companion fitted with Galfit-M; I/I0 converted to tau, N_H and dust mass [3.5 Spatial Correlation with Dust Extin…: "we model the 2D distribution of stellar light using the galaxy-fitting code Galfit-M"]
+  - software: Galfit-M, IRAF
+  - assumption: Galactic V-band extinction curve, N_H = 2.05e21 tau_V [3.5 Spatial Correlation with Dust Extin…: "through $N_H = 2.05\ensuremath{\times 10^{21}} \tau_V \hbox{$\rm\; cm^2\,$}$"]
+  - validation: regions confirmed by eye [3.5 Spatial Correlation with Dust Extin…: "These regions were confirmed by eye in the original image."]
+- result: Filament gas-to-dust ratio = 66 ± not stated dimensionless [3.5 Spatial Correlation with Dust Extin…: "the local gas-to-dust ratio is $66$"]
+- result: Total dust mass in table = 173 ± ±8 1e5 Msun [Table 3: "Total | | | | | | $173\pm8$"]
+- limitation (authors): Only 43% of single-dish flux recovered; missing short spacings [3.1 Distribution of Molecular Gas: "implying that over half of the molecular gas is undetected in our observations"]
+- not stated (card): Line-free channel ranges used for continuum imaging; Image size, cell size, clean masks and threshold; Whether the 2015 CO(1-0) execution was fully excluded from the imaged cube (yes, but flux scale details not given); Priors/initial guesses for LMFIT Gaussian fits and number-of-component selection details; Hernquist model free-fall parameters beyond inclination 25 deg and offset -200 km/s; Spati…
+
+### 2024ApJ...968L..19F: Deep Search for Phosphine in a Prestellar Core (2024; astrochemistry, star_formation; observational_alma_primary)
+- question: Can gas-phase PH3 be detected in the prestellar core L1544, and what does its abundance imply for the volatile phosphorus elemental abundance?
+- step 4: H2 column density from dust continuum
+  - method: Optically thin dust emission equation [Appendix: H2 column density: "Based on the standard treatment of optically thin dust emission, we apply the following equation to calculate the H$_2$ column density"]
+  - assumption: Td = Tgas = 6 K; kappa 1.21 cm2/g at 1.16 mm; dust-to-gas 0.008 [Appendix: H2 column density: "we use a canonical value of 0.008 for the solar neighborhood"]
+  - validation: Compared with Crapsi et al. 2005; factor ~4 lower, attributed to resolved-out extended emission [Appendix: H2 column density: "Our $N({\ce{H2}})$ is a factor of $\sim$4 lower than the value obtained by (cite: crapsi05)"]
+- result: N(H2) in examined region = 2.6e22 ± not stated cm^-2 [3 Observational Results: "We estimate the column density of the examined region to be $2.6\times10^{22}$ cm$^{-2}$"]
+- limitation (authors): Collisional rate coefficients for PH3-H2 unavailable; extended continuum emission resolved out may explain lower N(H2) [Appendix: H2 column density: "The contribution from the largely-extended ($>$25") continuum emission that was resolved out in the ACA observations may account for the above discrepancy."]
+- not stated (card): Line-free channels used for continuum and uvcontsub; Image size, cell size, clean threshold/niter; Calibrators and pipeline version; Flux scale uncertainty; Full P chemical network reaction list and rate parameters (partly in Furuya 2023 submitted); Spectral rms in K converted from Jy/beam details
+
+### 2013ApJ...762L..21M: Millimeter Emission Structure in the First ALMA Image of the AU Mic Debris Disk (2013; debris_disks; observational_alma_primary)
+- question: What is the millimeter emission structure of the AU Mic debris disk at 0.6" resolution, including the outer belt profile and a newly seen central peak?
+- step 3: Estimate dust mass and temperature of central peak and outer belt
+  - method: Optically thin dust emission F = kappa B(T) M / d^2 with astrosilicate opacity, n(a)∝a^-3.5, amin=0.2 um, amax 1 um–1 cm; max T constrained by IR SED [4.1 The Central Emission Peak: "we computed the maximum $T$ (and minimum $M_{\rm dust}$) consistent with both the observed millimeter flux density and the infrared SED."]
+  - parameter: kappa = 2.7 cm^2/g; outer belt T ≈ 25 K [4.2 The Outer Dust Belt: "Adopting the opacity used in §4.1 ($\kappa_{\nu}$ = 2.7 cm$^2$ g$^{-1}$), and assuming $T \approx 25$ K (for 35-45 AU)"]
+  - assumption: d = 9.91 pc; central peak is star plus dust [4.1 The Central Emission Peak: "We assume the central peak represents the combined emission from the star and dust, such that $F_{\rm dust} = F_{\rm cen} - F_{\ast} \approx 0.25$ mJy at 1.3 mm."]
+- result: Inner belt dust mass = ~9e23 g (~1% lunar mass) ± not stated g [4.1 The Central Emission Peak: "The corresponding minimum $M_{\rm dust}$ is $\sim$$9 \times 10^{23}$ g, about 1% of the lunar mass."]
+- result: Outer belt dust mass = 7e25 g ± not stated g [4.2 The Outer Dust Belt: "the dust mass of this outer belt is $7 \times 10^{25}$ g (cite: liu04b)"]
+- limitation (authors): Spectral index of central peak poorly constrained; inner belt interpretation needs higher resolution [4.1 The Central Emission Peak: "Unfortunately, the spectral index ($\alpha_{\rm cen}$) constraints are not good enough to be diagnostic."]
+- not stated (card): Flagging details and line/edge channels excluded beyond 'central 112 channels'; Cell size, image size, CLEAN mask and threshold; Neptune flux model used; Number of walkers and burn-in/convergence criteria; Model code (visibility generation) not released; Reweighting procedure details; Dust temperature adopted when computing belt mass from the 7.14 mJy flux in detail
+
+### 2014MNRAS.444.1821F: ALMA and Herschel observations of the prototype dusty and polluted white dwarf G29-38 (2014; stellar_physics, debris_disks, exoplanets; observational_alma_primary)
+- question: Is there an outlying, cold parent planetesimal population at 1-100 AU around the dusty, polluted white dwarf G29-38 that can be detected with ALMA and Herschel?
+- step 4: Derive dust mass limits
+  - method: m(T)=F_nu d^2/(kappa B_nu(T)) using 870 um limit of 0.17 mJy/beam, ring radii up to 60 AU [3.3 Dust Mass Limits: "the adopted upper limit flux of $F_\nu=0.17$ mJy/beam is converted to the dust mass using"]
+  - parameter: kappa = 1.7 cm2/g at 870 um [3.3 Dust Mass Limits: "the average value of dust opacity is adopted here, $\kappa=1.7$ cm$^2$ g$^{-1}$ at 870 $\mu$m"]
+  - assumption: Optically thin, circular face-on thin ring [3.3 Dust Mass Limits: "the calculations assume a simple, circular, and face-on ring of radial thickness much less than the beam size"]
+- result: Cold dust mass ruled out = > 1e24-1e25 ± not stated g [abstract: "generally ruling out cold dust masses greater than $10^{24}-10^{25}$ g"]
+- limitation (authors): Early, shallow ALMA data with limited antennas; projections assume no further collisional evolution [OUTLOOK: "ALMA in early and relatively shallow observations at 870 and 1305 $\mu$m"]
+- not stated (card): CASA version and pipeline version; Imaging parameters (weighting, cell, image size, cleaning) for ALMA images; Combination method for band 6 and 7 data and spectral index assumed; Dust temperature-radius relation details (grain properties, X_lambda); Stellar parameters used for the temperature calculation
+
+### 2025A&A...696A..59P: GA-NIFS: High number of dual active galactic nuclei at z ∼ 3 (2025; agn_and_quasars, high_z_galaxies; multi_facility_alma_minor)
+- question: What fraction of AGNs at 2<z<6 in the GA-NIFS JWST/NIRSpec IFS sample have dual or multiple AGN companions, and how does it compare with cosmological simulations?
+- step 1: ALMA continuum flux split of COS1638
+  - method: Measured total integrated flux and fraction associated with COS1638-B from archival ALMA data [9.1 COS1638 (dual AGN): "we measured a total integrated flux of 11.4 mJy, with 62% of which associated with COS1638-B"]
+  - assumption: Dust mass fraction in AGN-B equals 62%; M_dust/M_* = 0.02±0.01 [5.7 Stellar masses of AGN host galaxies: "Assuming that 62% of the dust mass is due to the AGN-B host, and considering a conservative M$_{dust}$/M$_* = 0.02\pm 0.01$"]
+- result: COS1638 total ALMA ~1 mm integrated flux = 11.4 ± not stated mJy [9.1 COS1638 (dual AGN): "we measured a total integrated flux of 11.4 mJy, with 62% of which associated with COS1638-B"]
+- result: Fraction of ALMA flux from COS1638-B = 62 ± not stated % [9.1 COS1638 (dual AGN): "we measured a total integrated flux of 11.4 mJy, with 62% of which associated with COS1638-B"]
+- limitation (authors): Small sample size prevents conclusions about simulations underestimating dual AGNs [6.3 Dual AGN fraction: "precludes us from conclusively determining whether Horizon-AGN cosmological simulations underestimate the number of dual AGNs at high-$z$"]
+- not stated (card): ALMA band, array configuration, resolution and integration time; ALMA calibration/imaging procedure and CASA version; How the 11.4 mJy flux and 62% split between components were measured (aperture or fit); Observed frequency of the ALMA continuum
+
+### 2016ApJ...828...46A: ALMA Survey of Lupus Protoplanetary Disks. I. Dust and Gas Masses (2016; protoplanetary_disks, exoplanets; large_program_or_survey)
+- question: What are the bulk dust and gas masses of a near-complete sample of Lupus disks, how do they depend on stellar mass, and how do they compare to other regions and to planet formation constraints?
+- step 4: Derive dust masses
+  - method: Optically thin isothermal Hildebrand relation [5.1 Dust Masses: "Assuming dust emission at sub-mm wavelengths is isothermal and optically thin, the sub-mm continuum flux at a given wavelength ($F_{\nu}$) is directly related to the mass of the emitting dust"]
+  - parameter: T_dust = 20 K; kappa = 10 cm^2/g at 1000 GHz; beta = 1 [5.1 Dust Masses: "We took the dust grain opacity, $\kappa_{\nu}$, as 10 cm$^{2}$ g$^{-1}$ at 1000 GHz and used an opacity power-law index of $\beta=1$"]
+  - assumption: T_dust=20 K, median for Taurus disks; not scaled with L* [5.1 Dust Masses: "we do not scale $T_{\rm dust}$ with $L_{\ast}$"]
+  - validation: Opacity argument: Ossenkopf & Henning show kappa cannot account for factor ~10 gas-to-dust discrepancy [6.3 Gas Depletion: "the dust opacity, $\kappa$, used in Equation [\[eqn-mass\]](#eqn-mass) does not change sufficiently to account for the factor of $\sim$10 discrepancy"]
+- step 8: Compare dust mass distributions with Taurus and Upper Sco
+  - method: Kaplan-Meier cumulative distributions and two-sample tests in ASURV; MC two-sample tests matching spectral types (10^4 runs) [6.2 Comparison to Other Regions: "calculated using the Kaplan-Meier estimator in the ASURV package (cite: 1992ASPC...25..245L) to include upper limits"]
+  - software: ASURV
+  - assumption: T_dust=20 K; distances 145 pc (Upper Sco), 140 pc (Taurus); M*>0.1 Msun [6.1 Correlations with Stellar Mass: "We assumed $T_{\rm dust}=20$ K for all disks and adopted distances of 145 pc for Upper Sco"]
+  - validation: Consistent results with Taurus as reference sample [6.2 Comparison to Other Regions: "We found consistent results when using Taurus as the reference sample instead of Lupus."]
+- result: Mean dust mass Lupus / Taurus / Upper Sco = 15 / 15 / 5 ± 3 / 2 / 3 Earth masses [6.2 Comparison to Other Regions: "Lupus and Taurus have consistent mean dust masses ($15\pm3$ $M_{\oplus}$ and $15\pm2$ $M_{\oplus}$, respectively), while Upper Sco has a significantly lower mean dust mass ($5\pm3$ $M_{\oplus}$)"]
+- limitation (authors): Gas masses depend inversely on assumed [CO]/[H2] and isotopologue ratios; CO depletion would raise gas masses [6.3 Gas Depletion: "The main caveat with our derived gas masses is that they depend inversely on the assumed ${\rm [CO]/[H_{2}]}$ molecular abundance"]
+- not stated (card): Number of CLEAN iterations, threshold, cell and image size, masks; Which sources were treated as resolved (robust -1.0); Line-free channels for continuum subtraction and continuum channel selection; Aperture radii for each source and exact upper-limit aperture procedure; Detailed WB14 grid values and the 69 stellar masses (Alcalá et al. in prep); Kelly regression priors/settings and MC mass assig…
+
+## All papers in this technique
+
+- 2012A&A...544L...7P (2012): The first ALMA view of IRAS 16293-2422. Direct detection of infall onto source B and high-resolution kinematics of source A
+- 2013ApJ...762L..21M (2013): Millimeter Emission Structure in the First ALMA Image of the AU Mic Debris Disk
+- 2013ApJ...764L..14Z (2013): ALMA 690 GHz Observations of IRAS 16293-2422B: Infall in a Highly Optically Thick Disk
+- 2013ApJ...774L...7M (2013): ALMA Observations of the Massive Molecular Outflow G331.512-0.103
+- 2013ApJ...779...96T (2013): The Dynamics of Massive Starless Cores with ALMA
+- 2014A&A...562A..67G (2014): ALMA reveals a warm and compact starburst around a heavily obscured supermassive black hole at z = 4.75
+- 2014A&A...567A.125G (2014): Molecular line emission in NGC 1068 imaged with ALMA. I. An AGN-driven outflow in the dense molecular gas
+- 2014A&A...569A..11S (2014): A necklace of dense cores in the high-mass star forming region G35.20-0.74 N: ALMA observations
+- 2014ApJ...783L..13P (2014): Large-scale Asymmetries in the Transitional Disks of SAO 206462 and SR 21
+- 2014ApJ...785..111W (2014): Properties of Submillimeter Galaxies in the CANDELS GOODS-South Field
+- 2014ApJ...787...42C (2014): An ALMA Continuum Survey of Circumstellar Disks in the Upper Scorpius OB Association
+- 2014ApJ...787...48X (2014): ALMA Observations of Warm Molecular Gas and Cold Dust in NGC 34
+- 2014ApJ...789L...4T (2014): ALMA Observations of a High-density Core in Taurus: Dynamical Gas Interaction at the Possible Site of a Multiple Star Formation
+- 2014ApJ...791...20R (2014): Brown Dwarf Disks with ALMA
+- 2014ApJ...791..108F (2014): Distributed Low-mass Star Formation in the IRDC G34.43+00.24
+- 2014ApJ...791L...6W (2014): ALMA Hints at the Presence of two Companions in the Disk around HD 100546
+- 2014ApJ...792...34O (2014): ALMA Observation of 158 μm [C II] Line and Dust Continuum of a z = 7 Normally Star-forming Galaxy in the Epoch of Reionization
+- 2014ApJ...792L..25V (2014): Spatially Resolved HCN J = 4-3 and CS J = 7-6 Emission from the Disk around HD 142527
+- 2014ApJ...795L..25R (2014): Turbulence Sets the Initial Conditions for Star Formation in High-pressure Environments
+- 2014ApJ...796....1T (2014): Angular Momentum Exchange by Gravitational Torques and Infall in the Circumbinary Disk of the Protostellar System L1551 NE
+- 2014ApJ...797...27F (2014): Revealing H<SUB>2</SUB>D<SUP>+</SUP> Depletion and Compact Structure in Starless and Protostellar Cores with ALMA
+- 2014MNRAS.438.1267S (2014): An ALMA survey of sub-millimetre Galaxies in the Extended Chandra Deep Field South: the far-infrared properties of SMGs
+- 2014MNRAS.444.1821F (2014): ALMA and Herschel observations of the prototype dusty and polluted white dwarf G29-38
+- 2014Natur.514..600D (2014): Possible planet formation in the young, low-mass, multiple stellar system GG Tau A
+- 2015A&A...573L...1O (2015): ALMA observations of anisotropic dust mass loss in the inner circumstellar environment of the red supergiant VY Canis Majoris
+- 2015A&A...576L..15O (2015): ALMA view of the circumstellar environment of the post-common-envelope-evolution binary system HD 101584
+- 2015A&A...583A..66H (2015): Probing the final stages of protoplanetary disk evolution with ALMA
+- 2015A&A...584A..99E (2015): The Dragonfly Galaxy. II. ALMA unveils a triple merger and gas exchange in a hyper-luminous radio galaxy at z = 2
+- 2015ApJ...798L..23K (2015): An ALMA Disk Mass for the Candidate Protoplanetary Companion to FW Tau
+- 2015ApJ...799..204C (2015): Constraining the X-Ray and Cosmic-Ray Ionization Chemistry of the TW Hya Protoplanetary Disk: Evidence for a Sub-interstellar Cosmic-Ray Ra…
+- 2015ApJ...801...82H (2015): ALMA Imaging of Millimeter/Submillimeter Continuum Emission in Orion KL
+- 2015ApJ...803...60S (2015): ALMA Multi-line Observations of the IR-bright Merger VV 114
+- 2015ApJ...804...37L (2015): ALMA Resolves the Spiraling Accretion Flow in the Luminous OB Cluster-forming Region G33.92+0.11
+- 2015ApJ...805L..17B (2015): An ALMA Constraint on the GSC 6214-210 B Circum-Substellar Accretion Disk Mass
+- 2015ApJ...807L...4F (2015): High-mass Star Formation Triggered by Collision between CO Filaments in N159 West in the Large Magellanic Cloud
+- 2015ApJ...808...69B (2015): ALMA Observations of the Largest Proto-Planetary Disk in the Orion Nebula, 114-426: A CO Silhouette
+- 2015ApJ...808..102K (2015): Resolving Protoplanetary Disks at Millimeter Wavelengths with CARMA
+- 2015ApJ...810...91H (2015): Optical-Infrared Properties of Faint 1.3 mm Sources Detected with ALMA
+- 2015ApJ...811..124S (2015): Sub-kiloparsec Imaging of Cool Molecular Gas in Two Strongly Lensed Dusty, Star-forming Galaxies
+- 2015ApJ...812..126C (2015): A Compact Concentration of Large Grains in the HD 142527 Protoplanetary Dust Trap
+- 2015ApJ...812..134H (2015): The Early ALMA View of the FU Ori Outburst System
+- 2015ApJ...813L..19J (2015): A Keplerian-like Disk around the Forming O-type Star AFGL 4176
+- 2015ApJ...814...22E (2015): Detection of Infall in the Protostar B335 with ALMA
+- 2015MNRAS.449..715W (2015): Tracing the conversion of gas into stars in Young Massive Cluster Progenitors
+- 2015MNRAS.452...54M (2015): The assembly of `normal' galaxies at z ∼ 7 probed by ALMA
+- 2016A&A...585A..58V (2016): Resolved gas cavities in transitional disks inferred from CO isotopologs with ALMA
+- 2016A&A...591A..73G (2016): ALMA finds dew drops in the dusty spider's web
+- 2016A&A...593L..14F (2016): Magnetically regulated fragmentation of a massive, dense, and turbulent clump
+- 2016A&A...596A..50G (2016): The ALMA detection of CO rotational line emission in AGB stars in the Large Magellanic Cloud
+- 2016A&A...596A..75S (2016): Characterizing elusive, faint dusty star-forming galaxies: a lensed, optically undetected ALMA galaxy at z 3.3
+- 2016A&A...596A..88L (2016): ALMA observations of the <ASTROBJ>Th 28</ASTROBJ> protostellar disk. A new example of counter-rotation between disk and optical jet
+- 2016ApJ...816...37V (2016): Bright [C II] and Dust Emission in Three z &gt; 6.6 Quasar Host Galaxies Observed by ALMA
+- 2016ApJ...819...82S (2016): Properties of the Interstellar Medium in Star-Forming Galaxies at z ~ 1.4 Revealed with ALMA
+- 2016ApJ...819..102V (2016): Dust Masses of Disks around 8 Brown Dwarfs and Very Low-mass Stars in Upper Sco OB1 and Ophiuchus
+- 2016ApJ...821..112K (2016): SMA Observations of the Extended <SUP>12</SUP>CO(J = 6-5) Emission in the Starburst Galaxy NGC 253
+- 2016ApJ...821L..16C (2016): The VLA View of the HL Tau Disk: Disk Mass, Grain Evolution, and Early Planet Formation
+- 2016ApJ...822...80S (2016): The Redshift Distribution of Dusty Star-forming Galaxies from the SPT Survey
+- 2016ApJ...823..160D (2016): An ALMA Search for Substructure, Fragmentation, and Hidden Protostars in Starless Cores in Chamaeleon I
+- 2016ApJ...826...16E (2016): Protoplanetary Disks in the Orion OMC1 Region Imaged with ALMA
+- 2016ApJ...826...26T (2016): Revealing a Detailed Mass Distribution of a High-density Core MC27/L1521F in Taurus with ALMA
+- 2016ApJ...827...72S (2016): The Detection of a Hot Molecular Core in the Large Magellanic Cloud with ALMA
+- 2016ApJ...827..133L (2016): Star Formation and Feedback: A Molecular Outflow-Prestellar Core Interaction in L1689N
+- 2016ApJ...828...46A (2016): ALMA Survey of Lupus Protoplanetary Disks. I. Dust and Gas Masses
+- 2016ApJ...828..100F (2016): Outflow Detection in a 70 μm Dark High-Mass Core
+- 2016ApJ...831..101B (2016): Hydrocarbon Emission Rings in Protoplanetary Disks Induced by Dust Evolution
+- 2016ApJ...832..148V (2016): Molecular Gas Along a Bright Hα Filament in 2A 0335+096 Revealed by ALMA
+- 2016ApJ...832..158Z (2016): ALMA Cycle 1 Observations of the HH46/47 Molecular Outflow: Structure, Entrainment, and Core Impact
+- 2016ApJ...832..178V (2016): Vortices and Spirals in the HD135344B Transition Disk
+- 2016ApJ...833...12R (2016): VLA and ALMA Imaging of Intense Galaxy-wide Star Formation in z ∼ 2 Galaxies
+- 2016ApJ...833...68A (2016): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Continuum Number Counts, Resolved 1.2 mm Extragalactic Background, and Proper…
+- 2016ApJ...833..209O (2016): Dense Core Properties in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA
+- 2016ApJ...833L...6C (2016): ALMA Reveals Potential Localized Dust Enrichment from Massive Star Clusters in II Zw 40
+- 2016MNRAS.457.4536W (2016): Comparing young massive clusters and their progenitor clouds in the Milky Way
+- 2016MNRAS.458L..29C (2016): A ring-like concentration of mm-sized particles in Sz 91
+- 2016MNRAS.459.4518H (2016): The detection of dust around NN Ser
+- 2016PASJ...68..103F (2016): A massive dense gas cloud close to the nucleus of the Seyfert galaxy NGC 1068
+- 2016PASJ...68L...7T (2016): Galactic center mini-spiral by ALMA: Possible origin of the central cluster
+- 2016Sci...353.1519P (2016): Spiral density waves in a young protoplanetary disk
+- 2017A&A...597A..32V (2017): Cavity and other radial substructures in the disk around HD 97048
+- 2017A&A...597A..99W (2017): ALMA Compact Array observations of the Fried Egg nebula. Evidence for large-scale asymmetric mass-loss from the yellow hypergiant IRAS 1716…
+- 2017A&A...599A.101V (2017): Robustness of N<SUB>2</SUB>H<SUP>+</SUP> as tracer of the CO snowline
+- 2017A&A...599A.113M (2017): Lupus disks with faint CO isotopologues: low gas/dust or high carbon depletion?
+- 2017A&A...600A..72F (2017): ALMA unveils rings and gaps in the protoplanetary system <ASTROBJ>HD 169142</ASTROBJ>: signatures of two giant protoplanets
+- 2017A&A...600A.141K (2017): Resolving the fragmentation of high line-mass filaments with ALMA: the integral shaped filament in Orion A
+- 2017A&A...600L...3C (2017): Planck's dusty GEMS. III. A massive lensing galaxy with a bottom-heavy stellar initial mass function at z = 1.5
+- 2017A&A...601A...5H (2017): ALMA observations of the nearby AGB star L<SUB>2</SUB> Puppis. II. Gas disk properties derived from <SUP>12</SUP>CO and <SUP>13</SUP>CO J =…
+- 2017A&A...601L...3P (2017): First detection of the 448 GHz H<SUB>2</SUB>O transition in space
+- 2017A&A...602A..11P (2017): ALMA reveals starburst-like interstellar medium conditions in a compact star-forming galaxy at z 2 using [CI] and CO
+- 2017A&A...602A..19L (2017): A concordant scenario to explain FU Orionis from deep centimeter and millimeter interferometric observations
+- 2017A&A...602A..59C (2017): Chasing discs around O-type (proto)stars: Evidence from ALMA observations
+- 2017A&A...603A..10B (2017): Fragmentation and disk formation in high-mass star formation: The ALMA view of G351.77-0.54 at 0.06'' resolution
+- 2017A&A...603A..92V (2017): Magnetically aligned dust and SiO maser polarisation in the envelope of the red supergiant VY Canis Majoris
+- 2017A&A...604A...6S (2017): The physical and chemical structure of Sagittarius B2. II. Continuum millimeter emission of Sgr B2(M) and Sgr B2(N) with ALMA
+- 2017A&A...606A..17M (2017): An ALMA survey of submillimetre galaxies in the COSMOS field: Physical properties derived from energy balance spectral energy distribution …
+- 2017A&A...607A..55V (2017): An 80 au cavity in the disk around HD 34282
+- 2017A&A...608A..22A (2017): Luminous, pc-scale CO 6-5 emission in the obscured nucleus of NGC 1377
+- 2017AJ....153..240A (2017): An ALMA Survey of Protoplanetary Disks in the σ Orionis Cluster
+- 2017ApJ...834..178Y (2017): Signs of Early-stage Disk Growth Revealed with ALMA
+- 2017ApJ...835...17M (2017): ALMA Measurements of Circumstellar Material in the GQ Lup System
+- 2017ApJ...835..108S (2017): Kinematic Structure of Molecular Gas around High-mass YSO, Papillon Nebula, in N159 East in the Large Magellanic Cloud: A New Perspective w…
+- 2017ApJ...835..228T (2017): A Surface Density Perturbation in the TW Hydrae Disk at 95 au Traced by Molecular Emission
+- 2017ApJ...835L..11T (2017): Grand-design Spiral Arms in a Young Forming Circumstellar Disk
+- 2017ApJ...835L..13S (2017): ALMA Observations of the Water Fountain Pre-planetary Nebula IRAS 16342-3814: High-velocity Bipolar Jets and an Expanding Torus
+- 2017ApJ...836..223W (2017): An ALMA and MagAO Study of the Substellar Companion GQ Lup B*
+- 2017ApJ...838..114K (2017): ALMA Observations of Starless Core Substructure in Ophiuchus
+- 2017ApJ...839...58S (2017): The SCUBA-2 Cosmology Legacy Survey: Multi-wavelength Properties of ALMA-identified Submillimeter Galaxies in UKIDSS UDS
+- 2017ApJ...839...99P (2017): A Multi-wavelength Analysis of Dust and Gas in the SR 24S Transition Disk
+- 2017ApJ...839L..24M (2017): On the Origin of the Spiral Morphology in the Elias 2-27 Circumstellar Disk
+- 2017ApJ...840...60B (2017): A Close-up View of the Young Circumbinary Disk HD 142527
+- 2017ApJ...841..110S (2017): The Coldest Place in the Universe: Probing the Ultra-cold Outflow and Dusty Disk in the Boomerang Nebula
+- 2017ApJ...841..130A (2017): The Luminous Blue Variable RMC 127 as Seen with ALMA and ATCA
+- 2017ApJ...841L..11B (2017): First Millimeter Detection of the Disk around a Young, Isolated, Planetary-mass Object
+- 2017ApJ...841L..25T (2017): Rotating Starburst Cores in Massive Galaxies at z = 2.5
+- 2017ApJ...842....8M (2017): A Complete ALMA Map of the Fomalhaut Debris Disk
+- 2017ApJ...844...99L (2017): An ALMA Survey of CO Isotopologue Emission from Protoplanetary Disks in Chamaeleon I
+- 2017ApJ...844..123F (2017): The Circumgalactic Medium of Submillimeter Galaxies. II. Unobscured QSOs within Dusty Starbursts and QSO Sightlines with Impact Parameters …
+- 2017ApJ...846...70P (2017): Millimeter Spectral Indices and Dust Trapping By Planets in Brown Dwarf Disks
+- 2017ApJ...846..108C (2017): A Spatially Resolved Study of Cold Dust, Molecular Gas, H II Regions, and Stars in the z = 2.12 Submillimeter Galaxy ALESS67.1
+- 2017ApJ...846L..26W (2017): An ALMA Dynamical Mass Estimate of the Proposed Planetary-mass Companion FW Tau C
+- 2017ApJ...847...92H (2017): ALMA Observations of Dust Polarization and Molecular Line Emission from the Class 0 Protostellar Source Serpens SMM1
+- 2017ApJ...847..108W (2017): Discovery of Striking Difference of Molecular-emission-line Richness in the Potential Proto-binary System NGC 2264 CMM3
+- 2017ApJ...849...68S (2017): Very Large Array Ammonia Observations of the HH 111/HH 121 Protostellar System: A Detection of a New Source with a Peculiar Chemistry
+- 2017ApJ...850L...2A (2017): ALMA Observations of SMM11 Reveal an Extremely Young Protostar in Serpens Main Cluster
+- 2017ApJ...850L...6A (2017): ALMA Discovery of Dust Belts around Proxima Centauri
+- 2017ApJ...850L..30Y (2017): ALMA Detection of Bipolar Outflows: Evidence for Low-mass Star Formation within 1 pc of Sgr A*
+- 2017ApJ...851...83C (2017): Protoplanetary Disks in ρ Ophiuchus as Seen from ALMA
+- 2017ApJ...851...85B (2017): Measurement of Circumstellar Disk Sizes in the Upper Scorpius OB Association with ALMA
+- 2017ApJ...851...98T (2017): No Sign of Strong Molecular Gas Outflow in an Infrared-bright Dust-obscured Galaxy with Strong Ionized-gas Outflow
+- 2017ApJ...851..145M (2017): ALMA Reveals Metals yet No Dust within Multiple Components in CR7
+- 2017ApJ...851L..23C (2017): ALMA Observations of Elias 2-24: A Protoplanetary Disk with Multiple Gaps in the Ophiuchus Molecular Cloud
+- 2017MNRAS.464L..31H (2017): Unveiling the early-stage anatomy of a protocluster hub with ALMA
+- 2017MNRAS.465..834Z (2017): The ALMA early science view of FUor/EXor objects - I. Through the looking-glass of V2775 Ori
+- 2017MNRAS.465.4390B (2017): The discovery of gas-rich, dusty starbursts in luminous reddened quasars at z ∼ 2.5 with ALMA
+- 2017MNRAS.466..138K (2017): A merger in the dusty, z = 7.5 galaxy A1689-zD1?
+- 2017MNRAS.467L.120M (2017): The ALMA view of W33A: a spiral filament feeding the candidate disc in MM1-Main
+- 2017MNRAS.468.3468G (2017): Molecular gas on large circumgalactic scales at z = 3.47
+- 2017MNRAS.468L..87C (2017): New ALMA constraints on the star-forming interstellar medium at low metallicity: a 50 pc view of the blue compact dwarf galaxy SBS 0335-052
+- 2017MNRAS.469.2230M (2017): Detection of methyl isocyanate (CH<SUB>3</SUB>NCO) in a solar-type protostar
+- 2017MNRAS.469.4683C (2017): ALMA constraints on star-forming gas in a prototypical z = 1.5 clumpy galaxy: the dearth of CO(5-4) emission from UV-bright clumps
+- 2017NatAs...1E.130Z (2017): Mass inventory of the giant-planet formation zone in a solar nebula analogue
+- 2017NatAs...1E.172L (2017): Formation of wide binaries by turbulent fragmentation
+- 2017Natur.545..457D (2017): Rapidly star-forming galaxies adjacent to quasars at redshifts exceeding 6
+- 2018A&A...610A..24F (2018): ALMA continuum observations of the protoplanetary disk AS 209. Evidence of multiple gaps opened by a single planet
+- 2018A&A...614A..17B (2018): Modelling the carbon AGB star R Sculptoris. Constraining the dust properties in the detached shell based on far-infrared and sub-millimeter…
+- 2018A&A...614A.106C (2018): Probing midplane CO abundance and gas temperature with DCO<SUP>+</SUP> in the protoplanetary disk around HD 169142
+- 2018A&A...614A.113H (2018): ALMA detection of a tentative nearly edge-on rotating disk around the nearby AGB star R Doradus
+- 2018A&A...615A...9P (2018): Distribution of Serpens South protostars revealed with ALMA
+- 2018A&A...615A..28D (2018): ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz
+- 2018A&A...615A..83V (2018): Unveiling the physical conditions of the youngest disks. A warm embedded disk in L1527
+- 2018A&A...615A..94F (2018): Fragmentation properties of massive protocluster gas clumps: an ALMA study
+- 2018A&A...615A.141B (2018): Accelerating infall and rotational spin-up in the hot molecular core G31.41+0.31
+- 2018A&A...615L..10M (2018): Unlocking the secrets of the midplane gas and dust distribution in the young hybrid disc HD 141569
+- 2018A&A...616A..34H (2018): An unusual face-on spiral in the wind of the M-type AGB star EP Aquarii
+- 2018A&A...616A..88V (2018): V1094 Scorpii: A rare giant multi-ringed disk around a T Tauri star
+- 2018A&A...616A.100Y (2018): Stellar masses and disk properties of Lupus young stellar objects traced by velocity-aligned stacked ALMA <SUP>13</SUP>CO and C<SUP>18</SUP…
+- 2018A&A...616A.110E (2018): Starbursts in and out of the star-formation main sequence
+- 2018A&A...616L..10F (2018): ALMA observations of RCW 120 Fragmentation at 0.01 pc scale&amp;star
+- 2018A&A...617A..28S (2018): Chemistry in disks. XI. Sulfur-bearing species as tracers of protoplanetary disk physics and chemistry: the DM Tau case
+- 2018A&A...619A.161C (2018): Evidence for a massive dust-trapping vortex connected to spirals. Multi-wavelength analysis of the HD 135344B protoplanetary disk
+- 2018AJ....156..239Z (2018): ALMA Reveals a Collision between Protostellar Outflows in BHR 71
+- 2018ApJ...852..122H (2018): CO and Dust Properties in the TW Hya Disk from High-resolution ALMA Observations
+- 2018ApJ...853..160C (2018): The Core Mass Function in the Massive Protocluster G286.21+0.17 Revealed by ALMA
+- 2018ApJ...853..171G (2018): Distributed Star Formation throughout the Galactic Center Cloud Sgr B2
+- 2018ApJ...854..177V (2018): New Insights into the Nature of Transition Disks from a Complete Disk Survey of the Lupus Star-forming Region
+- 2018ApJ...854L...4R (2018): Cospatial Star Formation and Supermassive Black Hole Growth in z ∼ 3 Galaxies: Evidence for In Situ Co-evolution
+- 2018ApJ...855...24P (2018): Thermal Jeans Fragmentation within ∼1000 au in OMC-1S
+- 2018ApJ...856..118H (2018): Molecular Gas Reservoirs in Cluster Galaxies at z = 1.46
+- 2018ApJ...856..147O (2018): Gravitationally Unstable Condensations Revealed by ALMA in the TUKH122 Prestellar Core in the Orion A Cloud
+- 2018ApJ...859...12G (2018): The Dust and [C II] Morphologies of Redshift ∼4.5 Sub-millimeter Galaxies at ∼200 pc Resolution: The Absence of Large Clumps in the Interst…
+- 2018ApJ...859...32P (2018): Homogeneous Analysis of the Dust Morphology of Transition Disks Observed with ALMA: Investigating Dust Trapping and the Origin of the Cavit…
+- 2018ApJ...859...35G (2018): The Dual Role of Starbursts and Active Galactic Nuclei in Driving Extreme Molecular Outflows
+- 2018ApJ...859..103W (2018): Extended Millimeter Emission in the HD 141569 Circumstellar Disk Detected with ALMA
+- 2018ApJ...859..111H (2018): The Circumstellar Disk and Asymmetric Outflow of the EX Lup Outburst System
+- 2018ApJ...860...77E (2018): Protoplanetary Disk Properties in the Orion Nebula Cluster: Initial Results from Deep, High-resolution ALMA Observations
+- 2018ApJ...861...43P (2018): Hidden in Plain Sight: A Massive, Dusty Starburst in a Galaxy Protocluster at z = 5.7 in the COSMOS Field
+- 2018ApJ...861...91H (2018): ALMA Observations of Polarized 872 μm Dust Emission from the Protostellar Systems VLA 1623 and L1527
+- 2018ApJ...862L...2F (2018): First Detection of the Simplest Organic Acid in a Protoplanetary Disk
+- 2018ApJ...863...19A (2018): The Distinct Evolutionary Nature of Two Class 0 Protostars in Serpens Main SMM4
+- 2018ApJ...864L..25O (2018): The Co-evolution of Disks and Stars in Embedded Stages: The Case of the Very-low-mass Protostar IRAS 15398-3359
+- 2018ApJ...868L...3M (2018): ALMA Reveals a Misaligned Inner Gas Disk inside the Large Cavity of a Transitional Disk
+- 2018ApJ...868L...5K (2018): A Spatially Resolved au-scale Inner Disk around DM Tau
+- 2018ApJ...869...17L (2018): Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region
+- 2018ApJ...869...59W (2018): Physical and Chemical Conditions of the Protostellar Envelope and the Protoplanetary Disk in HL Tau
+- 2018ApJ...869...75M (2018): ALMA Detection of Extended Millimeter Halos in the HD 32297 and HD 61005 Debris Disks
+- 2018ApJ...869..126L (2018): Forming Super Star Clusters in the Central Starburst of NGC 253
+- 2018ApJ...869L..46D (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). VI. Dust Trapping in Thin-ringed Protoplanetary Disks
+- 2018MNRAS.473..879P (2018): The ALMA early science view of FUor/EXor objects - IV. Misaligned outflows in the complex star-forming environment of V1647 Ori and McNeil'…
+- 2018MNRAS.474.3640M (2018): CO excitation in the Seyfert galaxy NGC 34: stars, shock or AGN driven?
+- 2018MNRAS.474.4039M (2018): ALMA + VLT observations of a damped Lyman-α absorbing galaxy: massive, wide CO emission, gas-rich but with very low SFR
+- 2018MNRAS.474.4347C (2018): The ALMA early science view of FUor/EXor objects - V. Continuum disc masses and sizes
+- 2018MNRAS.475..448T (2018): Mapping jet-ISM interactions in X-ray binaries with ALMA: a GRS 1915+105 case study
+- 2018MNRAS.475.5322S (2018): Deuterated formaldehyde in the low-mass protostar HH212
+- 2018MNRAS.477.5104C (2018): An inner warp in the DoAr 44 T Tauri transition disc
+- 2018MNRAS.478.2505I (2018): Radiative transfer modelling of W33A MM1: 3D structure and dynamics of a complex massive star-forming region
+- 2018MNRAS.481.4931E (2018): ALMA reveals the aftermath of a white dwarf-brown dwarf merger in CK Vulpeculae
+- 2018Natur.553...51M (2018): Galaxy growth in a massive halo in the first billion years of cosmic history
+- 2018PASJ...70...36I (2018): Subaru High-z Exploration of Low-Luminosity Quasars (SHELLQs). III. Star formation properties of the host galaxies at z ≳ 6 studied with AL…
+- 2018PASJ...70L...6K (2018): A high dust emissivity index β for a CO-faint galaxy in a filamentary Lyα nebula at z = 3.1
+- 2018Sci...362.1034D (2018): The multiple merger assembly of a hyperluminous obscured quasar at redshift 4.6
+- 2019A&A...621A.122B (2019): High-mass star formation at sub-50 au scales
+- 2019A&A...622A..75L (2019): Ring structure in the MWC 480 disk revealed by ALMA
+- 2019A&A...622A.206M (2019): A 10-M<SUB>☉</SUB> YSO with a Keplerian disk and a nonthermal radio jet
+- 2019A&A...623A.150V (2019): The ALMA Lupus protoplanetary disk survey: evidence for compact gas disks and molecular rings from CN
+- 2019A&A...623L...8B (2019): Unveiling a cluster of protostellar disks around the massive protostar GGD 27 MM1
+- 2019A&A...624A...7V (2019): Spatial segregation of dust grains in transition disks. SPHERE observations of 2MASS J16083070-3828268 and RXJ1852.3-3700
+- 2019A&A...624A..33V (2019): ALMA study of the HD 100453 AB system and the tidal interaction of the companion with the disk
+- 2019A&A...625A.118K (2019): Highly structured disk around the planet host PDS 70 revealed by high-angular resolution observations with ALMA
+- 2019A&A...626A..36D (2019): ALMA reveals the magnetic field evolution in the high-mass star forming complex G9.62+0.19
+- 2019A&A...627L...6M (2019): Substructures in the Keplerian disc around the O-type (proto-)star G17.64+0.16
+- 2019A&A...628A..27B (2019): The complex chemistry of hot cores in Sgr B2(N): influence of cosmic-ray ionization and thermal history
+- 2019A&A...628A..85V (2019): Disk masses in the Orion Molecular Cloud-2: distinguishing time and environment
+- 2019A&A...629A..75B (2019): First detections of H<SUP>13</SUP>CO<SUP>+</SUP> and HC<SUP>15</SUP>N in the disk around HD 97048. Evidence for a cold gas reservoir in the…
+- 2019A&A...629A.146V (2019): IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS
+- 2019A&A...631A..64B (2019): Kinematics around the B335 protostar down to au scales
+- 2019AJ....157..237R (2019): Constraints on a Putative Planet Sculpting the V4046 Sagittarii Circumbinary Disk
+- 2019AJ....158...15P (2019): Dust Unveils the Formation of a Mini-Neptune Planet in a Protoplanetary Ring
+- 2019ApJ...871....5T (2019): The Flared Gas Structure of the Transitional Disk around Sz 91
+- 2019ApJ...871...85L (2019): The ISM Properties and Gas Kinematics of a Redshift 3 Massive Dusty Star-forming Galaxy
+- 2019ApJ...871..170M (2019): Fire in the Heart: A Characterization of the High Kinetic Temperatures and Heating Sources in the Nucleus of NGC 253
+- 2019ApJ...871..185L (2019): Investigating Fragmentation of Gas Structures in OB Cluster-forming Molecular Clump G33.92+0.11 with 1000 au Resolution Observations of ALMA
+- 2019ApJ...872...92F (2019): The Planet Formation Potential around a 45 Myr Old Accreting M Dwarf
+- 2019ApJ...872..112V (2019): Protoplanetary Disk Rings and Gaps across Ages and Luminosities
+- 2019ApJ...872..196S (2019): Implications of a Hot Atmosphere/Corino from ALMA Observations toward NGC 1333 IRAS 4A1
+- 2019ApJ...872..200H (2019): ALMA Observations of the Massive Molecular Outflow G331.512-0.103. II. Physical Properties, Kinematics, and Geometry Modeling
+- 2019ApJ...873...73Z (2019): An Ordered Envelope-Disk Transition in the Massive Protostellar Source G339.88-1.26
+- 2019ApJ...873L..19B (2019): Extremely Low Molecular Gas Content in a Compact, Quiescent Galaxy at z = 1.522
+- 2019ApJ...874...27T (2019): Detection of the Far-infrared [O III] and Dust Emission in a Galaxy at Redshift 8.312: Early Metal Enrichment in the Heart of the Reionizat…
+- 2019ApJ...874...89C (2019): The Central 1000 au of a Pre-stellar Core Revealed with ALMA. I. 1.3 mm Continuum Observations
+- 2019ApJ...875...62Y (2019): ALMA Observations of Layered Structures due to CO Selective Dissociation in the ρ Ophiuchi A Plane-parallel PDR
+- 2019ApJ...875...87D (2019): The Mass of Stirring Bodies in the AU Mic Debris Disk Inferred from Resolved Vertical Structure
+- 2019ApJ...875L...9W (2019): The Ophiuchus DIsk Survey Employing ALMA (ODISEA): Disk Dust Mass Distributions across Protostellar Evolutionary Classes
+- 2019ApJ...877..100Y (2019): A Tight Relation between Spiral Arm Pitch Angle and Protoplanetary Disk Mass
+- 2019ApJ...877L..25M (2019): The First Bird’s-eye View of a Gravitationally Unstable Accretion Disk in High-mass Star Formation
+- 2019ApJ...878...16P (2019): An Inner Disk in the Large Gap of the Transition Disk SR 24S
+- 2019ApJ...878L...8T (2019): Discovery of An au-scale Excess in Millimeter Emission from the Protoplanetary Disk around TW Hya
+- 2019ApJ...879...25K (2019): Highly Ordered and Pinched Magnetic Fields in the Class 0 Protobinary System L1448 IRS 2
+- 2019ApJ...879L...2M (2019): PDS 70: A Transition Disk Sculpted by a Single Planet
+- 2019ApJ...880...15K (2019): The Molecular Gas Reservoirs of z ∼ 2 Galaxies: A Comparison of CO(1-0) and Dust-based Molecular Gas Masses
+- 2019ApJ...881...63N (2019): An ALMA Multiline Survey of the Interstellar Medium of the Redshift 7.5 Quasar Host Galaxy J1342+0928
+- 2019ApJ...882....1L (2019): CO and Fine-structure Lines Reveal Low Metallicity in a Stellar-mass-rich Galaxy at z ∼ 1?
+- 2019ApJ...882..160Q (2019): Probing CO and N<SUB>2</SUB> Snow Surfaces in Protoplanetary Disks with N<SUB>2</SUB>H<SUP>+</SUP> Emission
+- 2019ApJ...883...98Z (2019): Systematic Variations of CO Gas Abundance with Radius in Gas-rich Protoplanetary Disks
+- 2019ApJ...883..180H (2019): First Subarcsecond Submillimeter-wave [C I] Image of 49 Ceti with ALMA
+- 2019ApJ...884...48C (2019): The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields
+- 2019ApJ...886L...4Z (2019): Discovery of a Photoionized Bipolar Outflow toward the Massive Protostar G45.47+0.05
+- 2019ApJ...887...74F (2019): ALMA Reveals a Gas-rich, Maximum Starburst in the Hyperluminous, Dust-obscured Quasar W0533-3401 at z ∼ 2.9
+- 2019ApJ...887..144J (2019): Discovery of Four Apparently Cold Dusty Galaxies at z = 3.62-5.85 in the COSMOS Field: Direct Evidence of Cosmic Microwave Background Impac…
+- 2019MNRAS.482..698C (2019): The Ophiuchus DIsc Survey Employing ALMA (ODISEA) - I: project description and continuum images at 28 au resolution
+- 2019MNRAS.482.3135B (2019): The relationship between dust and [C I] at z = 1 and beyond
+- 2019MNRAS.485..739M (2019): Asymmetric mid-plane gas in ALMA images of HD 100546
+- 2019MNRAS.485.2092C (2019): Suppressed CO emission and high G/D ratios in z = 2 galaxies with sub-solar gas-phase metallicity
+- 2019MNRAS.486.4114R (2019): ALMA reveals a pseudo-disc in a proto-brown dwarf
+- 2019MNRAS.488.1005P (2019): Upper limits on protolunar disc masses using ALMA observations of directly imaged exoplanets
+- 2019NatAs...3..278K (2019): Publisher Correction: A circumbinary protoplanetary disk in a polar configuration
+- 2019NatAs...3..314L (2019): The ice composition in the disk around V883 Ori revealed by its stellar outburst
+- 2019NatAs...3..517Z (2019): Dynamics of a massive binary at birth
+- 2019PASJ...71...71H (2019): Big Three Dragons: A z = 7.15 Lyman-break galaxy detected in [O III] 88 μm, [C II] 158 μm, and dust continuum with ALMA
+- 2020A&A...633A.114S (2020): Demographics of disks around young very low-mass stars and brown dwarfs in Lupus
+- 2020A&A...633A.126B (2020): The dynamically young outflow of the Class 0 protostar Cha-MMS1
+- 2020A&A...635A...2S (2020): Physical properties of the star-forming clusters in NGC 6334. A study of the continuum dust emission with ALMA
+- 2020A&A...636A..37D (2020): Dust and gas content of high-redshift galaxies hosting obscured AGN in the Chandra Deep Field-South
+- 2020A&A...636A..67A (2020): Exploring the formation pathways of formamide. Near young O-type stars
+- 2020A&A...638A..38T (2020): Constraining the radial drift of millimeter-sized grains in the protoplanetary disks in Lupus
+- 2020A&A...640A..19T (2020): Dust masses of young disks: constraining the initial solid reservoir for planet formation
+- 2020A&A...640A..27V (2020): Protoplanetary disk masses in NGC 2024: Evidence for two populations
+- 2020A&A...641A.155V (2020): CO emission in distant galaxies on and above the main sequence
+- 2020A&A...644A..11L (2020): A statistical analysis of dust polarization properties in ALMA observations of Class 0 protostellar cores
+- 2020A&A...644A..59K (2020): Molecular remnant of Nova 1670 (CK Vulpeculae). I. Properties and enigmatic origin of the gas
+- 2020A&A...644A..84M (2020): The GUAPOS project: G31.41+0.31 Unbiased ALMA sPectral Observational Survey. I. Isomers of C<SUB>2</SUB>H<SUB>4</SUB>O<SUB>2</SUB>
+- 2020A&A...644A.119P (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). III. The interplay between gas and dust in the protoplanetary disk of DG…
+- 2020AJ....159...62C (2020): ALMA Observations of the Extraordinary Carina Pillars: HH 901/902
+- 2020AJ....159..118U (2020): Near-infrared Imaging of a Spiral in the CQ Tau Disk
+- 2020AJ....159..288M (2020): The Big Sibling of AU Mic: A Cold Dust-rich Debris Disk around CP-72 2713 in the β Pic Moving Group
+- 2020ApJ...888L...4T (2020): Long-lived Dust Rings around HD 169142
+- 2020ApJ...889...43Z (2020): Dense Cores, Filaments, and Outflows in the S255IR Region of High-mass Star Formation
+- 2020ApJ...889..140Y (2020): High-resolution Near-infrared Polarimetry and Submillimeter Imaging of FS Tau A: Possible Streamers in Misaligned Circumbinary Disk System
+- 2020ApJ...890...76N (2020): ALMA Observations of Two Massive and Dense MALT90 Clumps
+- 2020ApJ...890..129K (2020): Detection of Irregular, Submillimeter Opaque Structures in the Orion Molecular Clouds: Protostars within 10,000 yr of Formation?
+- 2020ApJ...890..130T (2020): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. II. A Statistical Characterization of Class 0 and Class I P…
+- 2020ApJ...890L..14T (2020): Shaping the Envelope of the Asymptotic Giant Branch Star W43A with a Collimated Fast Jet
+- 2020ApJ...891...48H (2020): A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk
+- 2020ApJ...891..164S (2020): Chemistry and Physics of a Low-metallicity Hot Core in the Large Magellanic Cloud
+- 2020ApJ...892...66M (2020): The ALMA Spectroscopic Survey in the HUDF: The Cosmic Dust and Gas Mass Densities in Galaxies up to z ∼ 3
+- 2020ApJ...892..111F (2020): Dust-depleted Inner Disks in a Large Sample of Transition Disks through Long-baseline ALMA Observations
+- 2020ApJ...892..147S (2020): Oversized Gas Clumps in an Extremely Metal-poor Molecular Cloud Revealed by ALMA's Parsec-scale Maps
+- 2020ApJ...892..152H (2020): Understanding the Origin of the Magnetic Field Morphology in the Wide-binary Protostellar System BHR 71
+- 2020ApJ...893..125U (2020): Scattering-induced Intensity Reduction: Large Mass Content with Small Grains in the Inner Region of the TW Hya disk
+- 2020ApJ...894L..14L (2020): ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation
+- 2020ApJ...895..119T (2020): ALMA ACA and Nobeyama Observations of Two Orion Cores in Deuterated Molecular Lines
+- 2020ApJ...895L..18B (2020): GW Ori: Interactions between a Triple-star System and Its Circumtriple Disk in Action
+- 2020ApJ...895L..46L (2020): Hints of a Population of Solar System Analog Planets from ALMA
+- 2020ApJ...896...35J (2020): A Detailed View of the Circumstellar Environment and Disk of the Forming O-star AFGL 4176
+- 2020ApJ...896..110L (2020): ALMA Observations of NGC 6334S. I. Forming Massive Stars and Clusters in Subsonic and Transonic Filamentary Clouds
+- 2020ApJ...896..127K (2020): Multiple Outflows in the High-mass Cluster-forming Region G25.82-0.17
+- 2020ApJ...897L..33J (2020): The Ionized Warped Disk and Disk Wind of the Massive Protostar Monoceros R2-IRS2 Seen with ALMA
+- 2020ApJ...898...10T (2020): Circumbinary Disks of the Protostellar Binary Systems in the L1551 Region
+- 2020ApJ...898...36L (2020): Dual-wavelength ALMA Observations of Dust Rings in Protoplanetary Disks
+- 2020ApJ...898...97B (2020): An Evolutionary Study of Volatile Chemistry in Protoplanetary Disks
+- 2020ApJ...901...79A (2020): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: The Nature of the Faintest Dusty Star-forming Galaxies
+- 2020ApJ...902...78R (2020): The Complete Redshift Distribution of Dusty Star-forming Galaxies from the SPT-SZ Survey
+- 2020ApJ...902..141S (2020): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. III. Substructures in Protostellar Disks
+- 2020ApJ...903...94M (2020): ALMA Observations of Giant Molecular Clouds in M33. II. Triggered High-mass Star Formation by Multiple Gas Colliding Events at the NGC 604 …
+- 2020ApJS..251...14H (2020): CMZoom. II. Catalog of Compact Submillimeter Dust Continuum Sources in the Milky Way's Central Molecular Zone
+- 2020MNRAS.493.4294B (2020): ALMA uncovers the [C II] emission and warm dust continuum in a z = 8.31 Lyman break galaxy
+- 2020MNRAS.494.3828D (2020): An ALMA survey of the SCUBA-2 CLS UDS field: physical properties of 707 sub-millimetre galaxies
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2020MNRAS.496.1834L (2020): Atacama Compact Array observations of the pulsar-wind nebula of SNR 0540-69.3
+- 2020MNRAS.497.5454I (2020): Multiwavelength investigation of extended green object G19.88-0.53: revealing a protocluster
+- 2020NatAs...4..670A (2020): Infalling gas in a Lyman-α blob
+- 2020PASP..132h4401T (2020): Herschel Observations of Disks around Late-type Stars
+- 2021A&A...648A..41V (2021): Outflows, envelopes, and disks as evolutionary indicators in Lupus young stellar objects
+- 2021A&A...652A..98G (2021): The Galaxy Activity, Torus, and Outflow Survey (GATOS). I. ALMA images of dusty molecular tori in Seyfert galaxies
+- 2021A&A...653A..46V (2021): Probing protoplanetary disk evolution in the Chamaeleon II region
+- 2021A&A...655A..72S (2021): Physical conditions in the warped accretion disk of a massive star. 349 GHz ALMA observations of G023.01‒00.41
+- 2021AJ....161..238W (2021): The Anatomy of an Unusual Edge-on Protoplanetary Disk. I. Dust Settling in a Cold Disk
+- 2021ApJ...907L..15S (2021): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Detection of Extremely High-density Compact Structure of Prestellar Cores and M…
+- 2021ApJ...908....8C (2021): The TW Hya Rosetta Stone Project. III. Resolving the Gaseous Thermal Profile of the Disk
+- 2021ApJ...908..163M (2021): Extremely Low Molecular Gas Content in the Vicinity of a Red Nugget Galaxy at z = 1.91
+- 2023ApJ...956L..35Z (2023): One, Two, Three ... An Explosive Outflow in IRAS 12326-6245 Revealed by ALMA
+- 2023MNRAS.526.4402B (2023): Fragmentation and dynamics of dense gas structures in the proximity of massive young stellar object W42-MME
+- 2023MNRAS.526L..41P (2023): Kinematic and thermal signatures of the directly imaged protoplanet candidate around Elias 2-24
+- 2023PASJ...75.1105K (2023): Kinematic signatures of a low-mass planet with a moderately inclined orbit in a protoplanetary disk
+- 2024A&A...682A..56Z (2024): Exploring the dust grain size and polarization mechanism in the hot and massive Class 0 disk IRAS 16293-2422 B
+- 2024A&A...684A.134R (2024): Correlation between accretion rate and free-free emission in protoplanetary disks. A multiwavelength analysis of central mm/cm emission in …
+- 2024A&A...686A.274V (2024): Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars
+- 2024A&A...687A.163B (2024): ALMA-IMF. XI. The sample of hot core candidates: A rich population of young high-mass protostars unveiled by the emission of methyl formate
+- 2024A&A...688A.102T (2024): Orbital dynamics in the GG Tau A system: Investigating its enigmatic disc
+- 2024A&A...689A..85G (2024): MINDS: A multi-instrument investigation into the molecule-rich JWST-MIRI spectrum of the DF Tau binary system
+- 2024A&A...689A.104D (2024): From traffic jams to roadblocks: The outer regions of TW Hya with ALMA Band 8
+- 2024A&A...690A..46S (2024): Early Planet Formation in Embedded Disks (eDisk): XVI. Asymmetric dust disk driving a multicomponent molecular outflow in the young Class 0…
+- 2024A&A...690A..55S (2024): NOEMA formIng Cluster survEy (NICE): Characterizing eight massive galaxy groups at 1.5 &lt; z &lt; 4 in the COSMOS field
+- 2024A&A...690A.185W (2024): Dynamical accretion flows: ALMAGAL: Flows along filamentary structures in high-mass star-forming clusters
+- 2024A&A...691A.180F (2024): CHEMOUT: CHEMical complexity in star-forming regions of the OUTer Galaxy: IV. ALMA observations of organic species at a galactocentric radi…
+- 2024A&A...692A.215C (2024): Molecular gas budget of strongly magnified low-mass star-forming galaxies at cosmic noon
+- 2024AJ....167...94H (2024): The Hidden Clumps in VY CMa Uncovered by the Atacama Large Millimeter/submillimeter Array
+- 2024ApJ...961..228S (2024): Ring Gap Structure around Class I Protostar WL 17
+- 2024ApJ...962...48J (2024): Thermal Properties of the Hot Core Population in Sagittarius B2 Deep South.
+- 2024ApJ...963....1O (2024): "Beads-on-a-string" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster
+- 2024ApJ...963..134Y (2024): Turbulent Vortex with Moderate Dust Settling Probed by Scattering-induced Polarization in the IRS 48 System
+- 2024ApJ...964...48T (2024): An Extremely Young Protostellar Core, MMS 1/OMC-3: Episodic Mass Ejection History Traced by the Micro SiO Jet
+- 2024ApJ...966...59S (2024): Small and Large Dust Cavities in Disks around Mid-M Stars in Taurus
+- 2024ApJ...966...84A (2024): Molecular Gas Tracers in Young and Old Protoplanetary Disks
+- 2024ApJ...966..117X (2024): Disk Wind Feedback from High-mass Protostars. III. Synthetic CO Line Emission
+- 2024ApJ...967...15K (2024): Infall Motions in the Hot Core Associated with the Hypercompact H II Region G345.0061+01.794 B
+- 2024ApJ...968....9W (2024): A Spatially Resolved [C II] Survey of 31 z ∼ 7 Massive Galaxies Hosting Luminous Quasars
+- 2024ApJ...968L..19F (2024): Deep Search for Phosphine in a Prestellar Core
+- 2024ApJ...971..129C (2024): A Dust-trapping Ring in the Planet-hosting Disk of Elias 2-24
+- 2024ApJ...973...42B (2024): Resolving Twin Jets and Twin Disks with JWST and ALMA: The Young WL 20 Multiple System
+- 2024ApJ...974..102S (2024): Hints of Planet Formation Signatures in a Large-cavity Disk Studied in the AGE-PRO ALMA Large Program
+- 2024ApJ...975..235V (2024): JWST Imaging of Edge-on Protoplanetary Disks. III. Drastic Morphological Transformation Across the Mid-infrared in Oph163131
+- 2024ApJ...977..198L (2024): The SUPERCOLD-CGM Survey. II. [C I](1─0) Emission and the Physical Conditions of Cold Gas in Enormous Lyα Nebulae at z ∼ 2
+- 2024BSRSL..93..601H (2024): Influence of Mid-infrared Galactic Bubble on Surroundings: A Case Study on IRAS 16489-4431
+- 2024MNRAS.529.3601R (2024): Observations of spiral and streamer on a candidate proto-brown dwarf
+- 2024NatAs...8..587F (2024): Resolved ALMA observations of water in the inner astronomical units of the HL Tau disk
+- 2025A&A...693A.151M (2025): REsolved ALMA and SMA Observations of Nearby Stars (REASONS): A population of 74 resolved planetesimal belts at millimetre wavelengths
+- 2025A&A...694A..82S (2025): The ALPINE-ALMA [CII] Survey: Unveiling the baryon evolution in the interstellar medium of z ∼ 5 star-forming galaxies
+- 2025A&A...694A.166C (2025): The ALMA-ATOMS survey: Vibrationally excited HC<SUB>3</SUB>N lines in hot cores
+- 2025A&A...695A.257R (2025): Survey of Orion Disks with ALMA (SODA): III. Disks in wide binary systems in L1641 and L1647
+- 2025A&A...696A..59P (2025): GA-NIFS: High number of dual active galactic nuclei at z ∼ 3
+- 2025A&A...696A.150S (2025): ALMAGAL: II. The ALMA evolutionary study of high-mass protocluster formation in the Galaxy: ALMA data processing and pipeline
+- 2025A&A...697A..64V (2025): Turbulence in protoplanetary disks: A systematic analysis of dust settling in 33 disks
+- 2025A&A...698A.183D (2025): Dust populations from 30 to 1000 au in the debris disk of HD 120326: Panchromatic view with VLT/SPHERE, ALMA, and HST/STIS
+- 2025A&A...699A.369V (2025): Dense clumps survive in the vicinity of R136 in 30 Doradus
+- 2025ApJ...984L..15P (2025): exoALMA. X. Channel Maps Reveal Complex <SUP>12</SUP>CO Abundance Distributions and a Variety of Kinematic Structures with Evidence for Emb…
+- 2025ApJ...986L..11S (2025): Hints of Disk Substructure in the First Brown Dwarf with a Dynamical Mass Constraint
+- 2025ApJ...986L..22R (2025): The First Detection of Molecular Activity in the Largest Known Oort Cloud Comet: ALMA Imaging of C/2014 UN271 (Bernardinelli─Bernstein) at …
+- 2025ApJ...989....1Z (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). I. Program Overview and Summary of First Results
+- 2025ApJ...989....3D (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). III. Dust and Gas Disk Properties in the Lupus Star-forming Region
+- 2025ApJ...989....6K (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). VI. Comparison of Dust Evolution Models to AGE-PRO Observations
+- 2025ApJ...990...80K (2025): Key Physical Parameters Influencing Fragmentation and Multiplicity in Dense Cores of Orion A
+- 2025ApJ...992...55T (2025): Extended and Compact Ortho-H<SUB>2</SUB>D<SUP>+</SUP> Structures Close to the Moment of Star Formation: Evidence from ALMA-ACA Observations…
+- 2025ApJ...992L..15L (2025): A Dense Molecular Ringlike Structure in Gaseous CO Depletion Region G34.74−0.12
+- 2025ApJ...993...90S (2025): ALMA High-resolution Observation for the Transitional Disk Around IRAS 04125+2902
+- 2025ApJ...993..120H (2025): Early Planet Formation in Embedded Disks (eDisk). XVII. A Compact but Structured Keplerian Disk and Large-scale Streamers Revealed in the C…
+- 2025ApJ...994..225N (2025): Unveiling Stellar Feedback and Cloud Structure in the ρ Ophiuchi-A Region Using ALMA and JWST: Discovery of Substellar Cores, C<SUP>18</SUP…
+- 2025ApJ...994..233Y (2025): ALMA-IMF. XX. Core Fragmentation in the W51 High-mass Star-forming Region
+- 2025ApJ...995..193Y (2025): The ALMA-QUARKS Survey: Evidence of a Candidate High-mass Prestellar Core Aside a Bright-rimmed Cloud IRAS 18290-0924
+- 2025ApJ...995..219F (2025): PASSAGES: The Discovery of a Strongly Lensed Protocluster Core Candidate at Cosmic Noon
+- 2025ApJ...995L..63L (2025): ALMA Reveals Diverse Dust-to-gas Mass Ratios and Quenching Modes in Old Quiescent Galaxies
+- 2025MNRAS.543.2723P (2025): Observational constraints on evolution of dust disc properties in Upper Scorpius
+- 2025NatAs...9.1553F (2025): Primordial rotating disk composed of at least 15 dense star-forming clumps at cosmic dawn
+- 2025NatAs...9.1833L (2025): Detection of a septuple stellar system in formation via disk fragmentation
+- 2025SciA...11.4512O (2025): Massive extended streamers feed high-mass young stars
+- 2026A&A...705A.100E (2026): ALMAGAL: V. Relations between the core populations and the parent clump physical properties
+- 2026ApJ..1001..131C (2026): MAGAZ3NE: Far-IR and Radio Insights into the Nature and Properties of Ultramassive Galaxies at z ≳ 3

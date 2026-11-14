@@ -1,0 +1,183 @@
+{
+ "bibcode": "2014PASJ...66...75T",
+ "title": "Distributions of molecules in the circumnuclear disk and surrounding starburst ring in the Seyfert galaxy NGC 1068 observed with ALMA",
+ "year": 2014,
+ "doi": "10.1093/pasj/psu052",
+ "arxiv_id": "1406.0782",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "agn_and_quasars"
+ ],
+ "question": "How are molecules distributed between the circumnuclear disk and the starburst ring of NGC 1068, and what does this say about AGN and starburst effects on molecular abundances?",
+ "alma_project_codes": [
+  "2011.0.00061.S"
+ ],
+ "data": {
+  "bands": "Band 3 (100 GHz region)",
+  "arrays": "16 12m antennas",
+  "angular_resolution": "~4''x2'' (290 pc x 140 pc)",
+  "sensitivity": "rms ~1.1–1.7 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Star formation rates of regions in the starburst ring",
+    "evidence": [
+     {
+      "loc": "4.2 CH3OH",
+      "quote": "we studied the relation of methanol intensity to the star-formation rate (cite: tsai2012) in those regions with relatively strong methanol emission"
+     }
+    ]
+   },
+   "citation": "Tsai et al. 2012 (cite: tsai2012)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30m 13CO flux (12.8 K km/s) and C18O/13CO ratio 0.28",
+    "evidence": [
+     {
+      "loc": "3.4 Comparison of flux with single dish telescopes",
+      "quote": "The corresponding value obtained with the 30m telescope is $\\sim$12.8 K km s$^{-1}$ (cite: aladro2013)"
+     }
+    ]
+   },
+   "citation": "Aladro et al. 2013 (cite: aladro2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make integrated intensity maps",
+   "method": "Moment 0 maps from cubes using all pixel flux values",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra at AGN and SW ring and fit lines",
+   "method": "Spectra from cleaned images (beam-matched, PB-corrected) at the continuum peak and 13CO 3-2 peak; Gaussian fits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure CND and total flux and ratio",
+   "method": "Flux in 10'' circle (CND) and 55'' circle (total) centered on the continuum peak; ratio CND/Total used for classification",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Check flux recovery against single dishes",
+   "method": "Convolve ALMA PB-corrected data to the 45m and 30m beams and compare K km/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "C18O/13CO total flux ratio",
+   "value": "~0.34",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Overview of the images",
+     "quote": "the obtained value is $\\sim$0.34"
+    }
+   ]
+  },
+  {
+   "quantity": "CND/Total flux ratio, 13CO",
+   "value": "0.0217",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.0217$\\pm$0.0005"
+    }
+   ]
+  },
+  {
+   "quantity": "CND/Total flux ratio, CS",
+   "value": "0.37",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.37$\\pm$0.01"
+    }
+   ]
+  },
+  {
+   "quantity": "CND/Total flux ratio, HC3N 12-11",
+   "value": "0.73",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.73$\\pm$0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered 13CO flux vs NRO 45m",
+   "value": "~92",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Comparison of flux with single dish telescopes",
+     "quote": "Therefore, the recovered flux is about 92 %."
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered CS flux vs NRO 45m",
+   "value": "~74",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Comparison of flux with single dish telescopes",
+     "quote": "Therefore, the recovered flux is about 74 %."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging weighting/robust, cell and image size, deconvolver and clean thresholds",
+  "Exact CASA version for cubes made by ARC and the ARC pipeline version",
+  "Line-free channels and mask or velocity range used for moment 0 maps",
+  "Phase center coordinates and the SW ring position (blank in text)",
+  "Aperture centering details and the single-dish beam sizes (blank in text)",
+  "Gaussian fit procedure details"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Moment map velocity ranges",
+  "Phase center and aperture centers"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple flux measurements, but imaging and moment settings are unstated.",
+ "rediscovery_reason": "Data are archival ALMA Cycle 0, and the flux ratios and line parameters are numeric tables that can be redone.",
+ "source_card": "cards/2014PASJ...66...75T/sonnet/card.md"
+}

@@ -1,0 +1,248 @@
+{
+ "bibcode": "2017NatAs...1E.152L",
+ "title": "A rotating protostellar jet launched from the innermost disk of HH 212",
+ "year": 2017,
+ "doi": "10.1038/s41550-017-0152",
+ "arxiv_id": "1706.06343",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Does the HH 212 protostellar jet rotate, and if so, from what disk radius is it launched (does the jet remove angular momentum from the innermost disk)?",
+ "alma_project_codes": [
+  "2012.1.00122.S",
+  "2015.1.00024.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~350 GHz), Cycles 1 and 3",
+  "arrays": "not stated",
+  "angular_resolution": "Cycle 1 ~0.16\" (64 AU); Cycle 3 0.02\" (8 AU); tapered 0.06\" (24 AU)",
+  "sensitivity": "1.6 mJy/beam (~40 K) at 0.02\"; 1.9 mJy/beam (~6 K) at 0.06\""
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "350 GHz dust continuum map of the disk, overlaid",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "on top of the dust continuum map (orange image) of the accretion disk at 352 GHz(cite: Lee2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Lee2017)"
+  },
+  {
+   "what": {
+    "value": "Jet velocity ~115±50 km/s",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "a jet velocity(cite: Lee2015) of $v_j\n\\sim$ 115$\\pm$50 km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: Lee2015)"
+  },
+  {
+   "what": {
+    "value": "Protostellar mass 0.25±0.05 Msun",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "With a protostellar mass of $M_\\ast \\sim$ 0.25$\\pm$0.05 $M_\\odot$(cite: Lee2014; Codella2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Lee2014; Codella2014)"
+  },
+  {
+   "what": {
+    "value": "Jet inclination ~4 deg to plane of sky",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "The jet, lying close ($\\sim$ 4$^\\circ$) to the plane of the sky(cite: Claussen1998)"
+     }
+    ]
+   },
+   "citation": "(cite: Claussen1998)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image SiO jet at 8 AU and 24 AU",
+   "method": "Cycle 3 only for 0.02\" maps; Cycle 1+3 with 0.05\" taper for 0.06\" maps; natural weighting, 0.848 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 2; taper 0.05\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure knot widths",
+   "method": "Gaussian fits to spatial profiles perpendicular to the jet axis, deconvolved by the 8 AU beam",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure velocity gradients across knots",
+   "method": "PV diagrams cut across knots; emission peaks from Gaussian fits; linear least-squares fit; peak position errors = quarter FWHM; >7 sigma detections",
+   "software": [],
+   "key_parameters": [
+    "Peak position uncertainty = a quarter of the FWHM"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Specific angular momentum",
+   "method": "l = m (ΔV)^2/4 from gradient m and velocity range ΔV; mean excluding N3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Jet rotation symmetric about knot center"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive jet launching radius",
+   "method": "Approximate analytic solution of magneto-centrifugal energy and angular momentum conservation (Anderson et al. 2003) with correction terms in eta",
+   "software": [],
+   "key_parameters": [
+    "M*=0.25±0.05 Msun; v_j=115±50 km/s; l_j=10.2±1.0 AU km/s"
+   ],
+   "assumptions": [
+    "Gravitational potential negligible at large distance, jet velocity much larger than rotation, inclination ~4 deg"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Velocity gradient knot N2",
+   "value": "0.363",
+   "uncertainty": "0.040",
+   "units": "AU/(km/s)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "0.363$\\pm$0.040 AU/(km s$^{-1}$) for knot N2"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient knot N3",
+   "value": "0.533",
+   "uncertainty": "0.326",
+   "units": "AU/(km/s)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "0.533$\\pm$0.326 AU/(km s$^{-1}$) for knot N3"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient knot S3",
+   "value": "0.635",
+   "uncertainty": "0.070",
+   "units": "AU/(km/s)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "0.635$\\pm$0.070 AU/(km s$^{-1}$) for knot S3"
+    }
+   ]
+  },
+  {
+   "quantity": "Specific angular momentum N2, N3, S3",
+   "value": "9.4, 9.6, 11.4",
+   "uncertainty": "1.0, 6.0, 1.3",
+   "units": "AU km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "9.4$\\pm$1.0, 9.6$\\pm$6.0, and 11.4$\\pm$1.3 AU km s$^{-1}$ for knots N2, N3, and S3"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean specific angular momentum (excl. N3)",
+   "value": "10.2",
+   "uncertainty": "1.0",
+   "units": "AU km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "the mean specific angular momentum is $l_j \\sim 10.2\\pm1.0$ AU km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet launching radius",
+   "value": "0.05",
+   "uncertainty": "+0.05/-0.02",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "the launching radius of the jet is estimated to be $r_\\textrm{\\scriptsize 0}\\sim$ 0.05$_{-0.02}^{+0.05}$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet position angle",
+   "value": "~23",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "with a position angle measured to be $\\sim$ 23$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity northern / southern jet",
+   "value": "-3 / 4",
+   "uncertainty": "not stated",
+   "units": "km/s LSR",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Mean (or Systemic) Velocities of the Jet",
+     "quote": "with a mean velocity of $\\sim$ 4 km s$^{-1}$ LSR"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Flux/passband/gain calibrator names (only in Supplementary tables not given)",
+  "Deconvolver, clean threshold, masks, cell and image size",
+  "Continuum subtraction and line-free channels",
+  "Self-calibration",
+  "Which CASA version applies to which dataset",
+  "Rest-frame/systemic velocity choice for each knot cut and PV cut widths",
+  "Details of Gaussian peak fitting and error treatment"
+ ],
+ "missing_for_reproduction": [
+  "Calibrator details and imaging parameters beyond weighting/taper",
+  "Peak fitting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple analysis with stated numbers, but imaging details and calibration are sparse.",
+ "rediscovery_reason": "Public ALMA archive data; short recipe with numeric results, though imaging details are missing.",
+ "source_card": "cards/2017NatAs...1E.152L/sonnet/card.md"
+}

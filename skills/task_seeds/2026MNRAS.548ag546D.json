@@ -1,0 +1,516 @@
+{
+ "bibcode": "2026MNRAS.548ag546D",
+ "title": "WISDOM project - XXVIII. Molecular gas measurement of the supermassive black hole mass of the galaxy NGC 1387",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag546",
+ "arxiv_id": "2603.12945",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "Measure the supermassive black hole (SMBH) mass and stellar mass-to-light ratio of the early-type galaxy NGC 1387 using ALMA $^{12}$CO(2–1) molecular gas kinematics.",
+ "alma_project_codes": [
+  "2016.1.00437.S",
+  "2016.2.00053.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m array and 7-m Atacama Compact Array (ACA)",
+  "angular_resolution": "Continuum: 0.09 x 0.06 arcsec (8 x 6 pc); High-res CO cube: 0.13 x 0.10 arcsec (12 x 10 pc); Low-res CO cube: 0.42 x 0.35 arcsec (39 x 33 pc)",
+  "sensitivity": "Continuum: 0.03 mJy beam^-1; High-res CO cube: 0.65 mJy beam^-1 channel^-1 (10 km s^-1 channels); Low-res CO cube: 0.80 mJy beam^-1 channel^-1 (10 km s^-1 channels)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy distance of 19.3 ± 0.8 Mpc from surface brightness fluctuations",
+    "evidence": [
+     {
+      "loc": "NGC 1387",
+      "quote": "Throughout this paper we adopt a distance of $19.3\\pm0.8$ Mpc, calculated using surface brightness fluctuations (cite: Blakeslee_2009)."
+     }
+    ]
+   },
+   "citation": "(cite: Blakeslee_2009)"
+  },
+  {
+   "what": {
+    "value": "Total stellar mass of 4.70 x 10^10 M_sun, i-band absolute magnitude of -21.81, and M/L_i = 1.31 M_sun/L_sun,i",
+    "evidence": [
+     {
+      "loc": "NGC 1387",
+      "quote": "NGC 1387 has a total stellar mass of $4.70 \\times 10^{10}$ M$_\\odot$, derived using an $i$-band absolute magnitude of $-21.81$ and a stellar mass-to-light ratio ($M/L$) in the $i$-band $M/L_i=1.31$ M$_\\odot/\\text{L}_{\\odot,i}$ (cite: Iodice_2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Iodice_2019)"
+  },
+  {
+   "what": {
+    "value": "Effective stellar velocity dispersion sigma_e = 170.2 (+12.2 / -11.4) km s^-1",
+    "evidence": [
+     {
+      "loc": "NGC 1387",
+      "quote": "Adopting $\\sigma_\\text{e}=170.2^{+12.2}_{-11.4}$ km s$^{-1}$ (cite: Wegner_2003), a SMBH mass of $\\approx9^{+4}_{-3}\\times10^7$ M$_\\odot$ is expected."
+     }
+    ]
+   },
+   "citation": "(cite: Wegner_2003)"
+  },
+  {
+   "what": {
+    "value": "M_BH - sigma_e relation",
+    "evidence": [
+     {
+      "loc": "NGC 1387",
+      "quote": "NGC 1387 does not have an existing SMBH mass measurement in the literature, but an estimate can be obtained using the relationship between SMBH mass and stellar velocity dispersion within one effective (i.e. half-light) radius ($M_\\text{BH}$ – $\\sigma_\\text{e}$ relation) of (cite: Bosch_2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Bosch_2016)"
+  },
+  {
+   "what": {
+    "value": "Total corrected CO(2-1) integrated flux of 255 ± 3 Jy km s^-1",
+    "evidence": [
+     {
+      "loc": "Line emission",
+      "quote": "The total flux of NGC 1387 was calculated to be $255\\pm3$ Jy km s$^{-1}$ in (cite: Liang_2024), the companion paper to this work."
+     }
+    ]
+   },
+   "citation": "(cite: Liang_2024)"
+  },
+  {
+   "what": {
+    "value": "Previous continuum flux density measurement of 1.00 ± 0.05 mJy",
+    "evidence": [
+     {
+      "loc": "Continuum emission",
+      "quote": "This continuum flux density is similar to, but inconsistent with, a previous measurement by (cite: WISDOM_XVI) of $1.00\\pm0.05$ mJy."
+     }
+    ]
+   },
+   "citation": "(cite: WISDOM_XVI)"
+  },
+  {
+   "what": {
+    "value": "Circularised MGE parameterisation of the HST WFC3 F160W PSF",
+    "evidence": [
+     {
+      "loc": "Stellar potential",
+      "quote": "These Gaussian components are first convolved with the spatial point spread function (PSF) of the F160W-filter (generated using TINYTIM; (cite: TinyTim)), itself parameterised using a circularised MGE (see Table 6 of (cite: Dominiak_2024_MASSIVE)), to reproduce instrumental effects, before being compared and fit to the *HST* image using the MGEFIT[^8] (cite: Cappellari2002) algorithm."
+     }
+    ]
+   },
+   "citation": "(cite: Dominiak_2024_MASSIVE)"
+  },
+  {
+   "what": {
+    "value": "Solar absolute magnitude of 4.60 mag in F160W (AB system)",
+    "evidence": [
+     {
+      "loc": "Stellar potential",
+      "quote": "The surface brightnesses of the Gaussian components can then be converted to luminosity surface densities using the AB magnitude system with a Solar absolute magnitude of $4.60$ mag (cite: Willmer2018) and a zero-point of $25.94$ mag (cite: WFC3)."
+     }
+    ]
+   },
+   "citation": "(cite: Willmer2018)"
+  },
+  {
+   "what": {
+    "value": "WFC3 F160W AB zero-point of 25.94 mag",
+    "evidence": [
+     {
+      "loc": "Stellar potential",
+      "quote": "The surface brightnesses of the Gaussian components can then be converted to luminosity surface densities using the AB magnitude system with a Solar absolute magnitude of $4.60$ mag (cite: Willmer2018) and a zero-point of $25.94$ mag (cite: WFC3)."
+     }
+    ]
+   },
+   "citation": "(cite: WFC3)"
+  },
+  {
+   "what": {
+    "value": "Galactic extinction of 0.006 mag",
+    "evidence": [
+     {
+      "loc": "Stellar potential",
+      "quote": "We adopt a Galactic extinction of $0.006$ mag (cite: Schlafly_2011) from the NASA/IPAC Extragalactic Database to correct for interstellar reddening."
+     }
+    ]
+   },
+   "citation": "(cite: Schlafly_2011)"
+  },
+  {
+   "what": {
+    "value": "Standard Galactic extinction curve with R_V = 3.1",
+    "evidence": [
+     {
+      "loc": "Systematic uncertainties",
+      "quote": "This is then converted into an $H$-band extinction $A_H$ map by dividing it by the ratio of the total extinctions obtained from the standard Galactic extinction curve with a total-to-selective extinction ratio $R_V=3.1$ (cite: Fitzpatrick_1999), leading to an average $A_H$ of $0.14$ mag with a peak of $0.26$ mag."
+     }
+    ]
+   },
+   "citation": "(cite: Fitzpatrick_1999)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum emission and fit central continuum source",
+   "method": "Combine (u,v) data from all four tracks and image line-free and continuum channels using CASA tclean in multi-frequency synthesis mode, then fit a 2D Gaussian using CASA imfit.",
+   "software": [
+    "CASA",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Briggs weighting robust = 0.5, threshold = 3 x RMS (0.03 mJy beam^-1), pixel scale = 0.02 arcsec pix^-1, image size = 1000 x 1000 pix"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create high-resolution and low-resolution 12CO(2-1) data cubes, moment maps, and PVD",
+   "method": "Subtract continuum in uv-plane with uvcontsub, image cubes in tclean (high-res and tapered low-res), generate masked moment maps with PYMAKEPLOTS, and extract kinematic PA with PAFIT and major-axis PVD.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean",
+    "PYMAKEPLOTS",
+    "PAFIT"
+   ],
+   "key_parameters": [
+    "High-res cube: robust = 0.8, channel width = 10 km s^-1, clean threshold = 1.5 x RMS, 1000x1000 pix at 0.03 arcsec/pix, velocity range 1100-1400 km s^-1, moment mask clip = 2.5 x RMS after 3x beam FWHM smoothing",
+    "Low-res cube: robust = 2.0, uvtaper = 600 kilolambda (~780 m), channel width = 10 km s^-1, 300x300 pix at 0.1 arcsec/pix, moment mask clip = 5 x RMS after 1x beam FWHM smoothing"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Construct stellar gravitational potential via Multi-Gaussian Expansion (MGE) of HST image",
+   "method": "Fit a 2D MGE model to the HST WFC3 F160W image using MGEFIT with PSF convolution from TINYTIM, and deproject to a 3D mass density and circular velocity curve using JAMPY mge_vcirc.",
+   "software": [
+    "TINYTIM",
+    "MGEFIT",
+    "JAMPY"
+   ],
+   "key_parameters": [
+    "PA fixed to 242.5 deg, axial ratio fixed to q' = 0.98 for all 8 Gaussians, Solar absolute magnitude = 4.60 mag (AB), zero-point = 25.94 mag, Galactic extinction = 0.006 mag"
+   ],
+   "assumptions": [
+    "Axisymmetric stellar potential (bar treated as a first-order perturbation), infinitely-thin outer disc to estimate axial ratio q'=0.98, minimum deprojection inclination i = 11.5 deg, spatially-constant stellar M/L"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit low-resolution CO data cube to constrain galaxy inclination prior",
+   "method": "Forward model the low-resolution CO data cube using KINMS and GASTIMATOR (via KINMS_FITTER) with an analytical truncated exponential gas surface brightness profile, then smooth the inclination posterior with SCIKIT-LEARN KDE.",
+   "software": [
+    "KINMS",
+    "GASTIMATOR",
+    "KINMS_FITTER",
+    "JAMPY",
+    "SCIKIT-LEARN"
+   ],
+   "key_parameters": [
+    "11 free parameters (M_BH, M/L, R_0, R_hole, integrated flux, sigma_gas, PA, i, V_sys, RA offset, Dec offset), 200,000 MCMC steps (~10% burn-in), N = 188,777 constraints, uncertainty rescaling factor (2N)^0.25, KDE bandwidth = 0.07"
+   ],
+   "assumptions": [
+    "Infinitely-thin axisymmetric disc with an inner-truncated exponential radial surface brightness profile"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit high-resolution CO data cube using SKYSAMPLER to measure SMBH mass and stellar M/L",
+   "method": "Sample the deconvolved clean components with SKYSAMPLER (5x10^6 particles), deproject with transformClouds, and forward model the high-resolution data cube with KINMS and GASTIMATOR using the KDE inclination prior and fixed continuum centre.",
+   "software": [
+    "KINMS",
+    "SKYSAMPLER",
+    "GASTIMATOR",
+    "KINMS_FITTER",
+    "JAMPY"
+   ],
+   "key_parameters": [
+    "5x10^6 particles, 7 free parameters (log M_BH [7, 11], M/L [0.0, 5.0], sigma_gas [0.0, 50.0], integrated intensity [0, 300], inclination [11.5, 20.0] with KDE prior, PA [0.0, 359.9], V_sys [1100, 1400]), centre fixed to 03h36m57.0335s -35d30m23.682s, 150,000 MCMC steps, N = 347,024 constraints"
+   ],
+   "assumptions": [
+    "Flat axisymmetric rotating gas disc, spatially-constant gas velocity dispersion, spatially-constant stellar M/L, kinematic centre coincident with unresolved continuum source, distance = 19.3 Mpc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Quantify systematic uncertainties on SMBH mass and stellar M/L",
+   "method": "Run alternative dynamical models with (1) a dust-corrected F160W MGE derived using HST F110W-F160W colour excess, (2) fixed MGE axial ratios q' in [0.94, 1.00], and (3) a radially linearly-varying stellar M/L profile.",
+   "software": [
+    "MGEFIT",
+    "JAMPY",
+    "KINMS",
+    "GASTIMATOR",
+    "KINMS_FITTER",
+    "SKYSAMPLER"
+   ],
+   "key_parameters": [
+    "Intrinsic colour (J-H)_int = 0.75 (Vega), Galactic extinction curve R_V = 3.1; axial ratios q' = 0.94, 0.96, 0.98, 1.00; linear M/L radial gradient"
+   ],
+   "assumptions": [
+    "Galactic extinction law with R_V = 3.1; systematic uncertainty bounds defined by maximum upper and minimum lower deviations among all tested model variants"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SMBH mass (M_BH)",
+   "value": "1.10e8",
+   "uncertainty": "+1.71e8/-0.95e8 [stat, 3sigma] +2.45e8/-1.09e8 [sys]",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We infer a SMBH mass of $1.10^{+1.71}_{-0.95}[\\text{stat},3\\sigma]^{+2.45}_{-1.09}[\\text{sys}]\\times 10^8$ M$_\\odot$ and a F160W-filter stellar mass-to-light ratio of $0.90^{+0.44}_{-0.35}[\\text{stat}, 3\\sigma]^{+0.46}_{-0.36}[\\text{sys}]$ M$_\\odot$/L$_{\\odot,\\text{F160W}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Log SMBH mass log(M_BH/M_odot)",
+   "value": "8.04",
+   "uncertainty": "-0.23/+0.18 (1sigma), -0.87/+0.41 (3sigma)",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| $\\log(M_\\text{BH}/\\text{M}_\\odot)$ | $7$ | $\\rightarrow$ | $11$ | $8.04$ | $-0.23,+0.18$ | $-0.87,+0.41$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-to-light ratio (M/L_F160W)",
+   "value": "0.90",
+   "uncertainty": "+0.44/-0.35 [stat, 3sigma] +0.46/-0.36 [sys] (-0.14/+0.16 at 1sigma)",
+   "units": "M_odot/L_odot,F160W",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We infer a SMBH mass of $1.10^{+1.71}_{-0.95}[\\text{stat},3\\sigma]^{+2.45}_{-1.09}[\\text{sys}]\\times 10^8$ M$_\\odot$ and a F160W-filter stellar mass-to-light ratio of $0.90^{+0.44}_{-0.35}[\\text{stat}, 3\\sigma]^{+0.46}_{-0.36}[\\text{sys}]$ M$_\\odot$/L$_{\\odot,\\text{F160W}}$."
+    },
+    {
+     "loc": "Results",
+     "quote": "| Stellar $M/L_{\\text{F160W}}$ (M$_\\odot$/L$_{\\odot,\\text{F160W}}$) | $0.0$ | $\\rightarrow$ | $5.0$ | $0.90$ | $-0.14, +0.16$ | $-0.35,+0.44$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas velocity dispersion",
+   "value": "6.0",
+   "uncertainty": "±0.3 (1sigma), -0.8/+0.9 (3sigma)",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| Velocity dispersion (km s$^{-1}$) | $0.0$ | $\\rightarrow$ | $50.0$ | $6.0$ | $\\pm0.3$ | $-0.8,+0.9$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas disc integrated intensity (model)",
+   "value": "264",
+   "uncertainty": "±9 (1sigma), -26/+25 (3sigma)",
+   "units": "Jy km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| Integrated intensity (Jy km s$^{-1}$) | $0$ | $\\rightarrow$ | $300$ | $264$ | $\\pm9$ | $-26, +25$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination (fiducial high-res model)",
+   "value": "14.2",
+   "uncertainty": "-1.1/+1.3 (1sigma), -2.6/+4.1 (3sigma)",
+   "units": "degree",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| Inclination (degree) | $11.5$ | $\\rightarrow$ | $20.0$ | $14.2$ | $-1.1, +1.3$ | $-2.6, +4.1$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle (fiducial high-res model)",
+   "value": "243.9",
+   "uncertainty": "±0.3 (1sigma), -1.0/+0.9 (3sigma)",
+   "units": "degree",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| Position angle (degree) | $0.0$ | $\\rightarrow$ | $359.9$ | $243.9$ | $\\pm0.3$ | $-1.0, +0.9$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (fiducial high-res model)",
+   "value": "1267.2",
+   "uncertainty": "±0.3 (1sigma), -0.7/+0.8 (3sigma)",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "| Systemic velocity (km s$^{-1}$) | $1100$ | $\\rightarrow$ | $1400$ | $1267.2$ | $\\pm0.3$ | $-0.7, +0.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination (low-res cube fit)",
+   "value": "13.6",
+   "uncertainty": "+0.9/-1.2",
+   "units": "degree",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Low-resolution cube and inclination prior",
+     "quote": "The MCMC chain in that first stage modelling had $200,000$ steps, yielding a best-fitting inclination $i=13.6\\degree^{+0.9}_{-1.2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux density (239.4 GHz)",
+   "value": "1.23",
+   "uncertainty": "±0.06",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "We detect a small central source of continuum emission with an integrated flux density of $1.23\\pm0.06$ mJy and a peak intensity of $1.20\\pm0.03$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity (239.4 GHz)",
+   "value": "1.20",
+   "uncertainty": "±0.03",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "We detect a small central source of continuum emission with an integrated flux density of $1.23\\pm0.06$ mJy and a peak intensity of $1.20\\pm0.03$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum source Right Ascension (J2000.0)",
+   "value": "03h36m57.0335s",
+   "uncertainty": "±0.0001s",
+   "units": "hms",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Right ascension (J2000.0) | $03^{\\text{h}}36^{\\text{m}}57\\rlap{.}^\\text{s}0335\\pm0\\rlap{.}^\\text{s}0001$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum source Declination (J2000.0)",
+   "value": "-35d30m23.682s",
+   "uncertainty": "±0.001 arcsec",
+   "units": "dms",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Declination (J2000.0) | $-35\\degree30\\ensuremath{'}23.682\\ensuremath{''}\\pm0.001\\ensuremath{''}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH sphere of influence radius (best-fit M_BH)",
+   "value": "16 (0.17)",
+   "uncertainty": "not stated",
+   "units": "pc (arcsec)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Best-fitting mass model",
+     "quote": "Using the standard approximation of a SMBH SoI (see Section [2](#section:NGC1387)) and the best-fitting SMBH mass yields $R_\\text{SoI}\\approx16$ pc ($\\approx0.17$ arcsec)."
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of equal mass contribution (R_eq)",
+   "value": "19 (0.20)",
+   "uncertainty": "not stated",
+   "units": "pc (arcsec)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Best-fitting mass model",
+     "quote": "Figure [9](#fig:cummulative mass function) shows this radius of equal mass contribution to be $R_\\text{eq}\\approx19$ pc ($\\approx0.20$ arcsec), slightly larger than $R_\\text{SoI}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Central molecular gas depression radius (R_hole)",
+   "value": "19 (0.2)",
+   "uncertainty": "not stated",
+   "units": "pc (arcsec)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Line emission",
+     "quote": "We also detect a small central depression $\\approx0.2$ arcsec ($\\approx19$ pc) in radius."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass (dust-corrected MGE model)",
+   "value": "1.91e8",
+   "uncertainty": "+1.64e8/-1.22e8",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Systematic uncertainties",
+     "quote": "This leads to a best-fitting SMBH mass of $1.91^{+1.64}_{-1.22}\\times10^8$ M$_\\odot$ and a best-fitting $M/L$ of $0.86_{-0.26}^{+0.28}$ M$_\\odot$/L$_{\\odot,\\text{F160W}}$, representing a $74$ per cent increase of the SMBH mass and a $5$ per cent decrease of the $M/L$ compared to our fiducial model."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass (linearly-varying M/L model)",
+   "value": "4.3e7",
+   "uncertainty": "+11.5e7/-4.2e7",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Systematic uncertainties",
+     "quote": "Keeping all other parameters as before, a model with a radially linearly-varying $M/L$ yields a best-fitting SMBH mass of $4.3^{+11.5}_{-4.2}\\times10^7$ M$_\\odot$, a $61$ per cent decrease compared to out fiducial model, but nevertheless consistent with it within the $3\\sigma$ statistical uncertainties reported in Table [\\[tab:Best Fit\\]](#tab:Best Fit)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact channel ranges or velocity intervals selected as line-free channels in the line spectral window for continuum imaging and uvcontsub.",
+  "How the cleaning masks ('regions containing emission') in tclean were constructed (e.g., auto-multithresh vs. interactive manual masking).",
+  "Exact relative visibility weights applied when combining the three 12-m tracks and one 7-m ACA track.",
+  "Exact HST observation Dataset IDs / Proposal IDs for the WFC3 F160W and F110W images.",
+  "Priors (search ranges) for the additional parameters in the low-resolution cube MCMC fit (specifically R_0, R_hole, and RA/Dec centre offsets)."
+ ],
+ "missing_for_reproduction": [
+  "Exact line-free frequency/channel selections used for continuum imaging and uvcontsub.",
+  "Exact tclean masking procedure (manual vs automated masking parameters).",
+  "Exact HST observation IDs for the WFC3 F160W and F110W images.",
+  "Prior ranges used for R_0, R_hole, and centre offsets in the low-resolution data cube MCMC fit."
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "Raw ALMA project codes and track UIDs are explicitly tabulated, CASA versions and imaging parameters (robust, cell size, image size, taper, channel width, thresholds, smoothing kernels) are thoroughly documented, deprojected MGE parameters are fully tabulated in Table 3, and all modelling codes and priors for the main fit are open-source and explicitly stated. Minor deductions only for unstated line-free channel ranges and low-res cube nuisance priors.",
+ "rediscovery_reason": "Both ALMA datasets (2016.1.00437.S, 2016.2.00053.S) and HST WFC3 images are public, all software tools (CASA, KinMS, GAStimator, KinMS_fitter, skySampler, MGEfit, JamPy) are open-source, the MGE table is provided, and the primary goal is a clear numeric measurement of the SMBH mass and stellar M/L.",
+ "source_card": "cards/2026MNRAS.548ag546D/sonnet/card.md"
+}

@@ -1,0 +1,489 @@
+{
+ "bibcode": "2022FrASS...9.1118D",
+ "title": "A Genetic Algorithm to Model Solar Radio Active Regions From 3D Magnetic Field Extrapolations",
+ "year": 2022,
+ "doi": "10.3389/fspas.2022.911118",
+ "arxiv_id": "2205.03385",
+ "fields": [
+  "sun"
+ ],
+ "question": "Determine the plasma temperature and electron density height profiles in the solar atmosphere of active region NOAA 12470 to reproduce observed radio brightness temperature maps at 17, 100, and 230 GHz.",
+ "alma_project_codes": [
+  "2011.0.00020.SV"
+ ],
+ "data": {
+  "bands": "Band 3 (84–116 GHz), Band 6 (211–275 GHz)",
+  "arrays": "12m diameter antenna (fast-scan single-dish)",
+  "angular_resolution": "25\" at 230 GHz, 58\" at 100 GHz",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Quiet Sun brightness temperatures at 230 GHz (6210 ± 110 K) and 100 GHz (7110 ± 90 K)",
+    "evidence": [
+     {
+      "loc": "Radio maps",
+      "quote": "While the quiet Sun brightness temperature ( $T_\\mathrm{b,QS}$) at 230 GHz is $6210\\pm110$ K (cite: Selhorst2019), the AR 12470 brightness temperature ($T_\\mathrm{b}$) varies from 5800 to 6600 K"
+     },
+     {
+      "loc": "Radio maps",
+      "quote": "At 100 GHz, $T_{qS}=7110\\pm90$ K (cite: Selhorst2019) and AR 12470 showed $T_\\mathrm{b}$ varying from 7200 to 7650 K where $|\\vec{B}|>1500$ G."
+     }
+    ]
+   },
+   "citation": "Selhorst et al. (2019) (cite: Selhorst2019)"
+  },
+  {
+   "what": {
+    "value": "Initial 1D quiet Sun atmospheric seed model (SSC)",
+    "evidence": [
+     {
+      "loc": "Genetic Algorithm Features",
+      "quote": "The atmospheric model developed by (cite: Selhorst2005b) is used as the seed in the genetic algorithm, that changes the seed model to find the best fit for the observational measurements."
+     }
+    ]
+   },
+   "citation": "Selhorst et al. (2005b) (cite: Selhorst2005b)"
+  },
+  {
+   "what": {
+    "value": "Minimum magnetic field intensity of 1500 G to form a sunspot",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The $|\\vec{B}|$ limits used to classify each pixel are based on studies by (cite: Livingston2012), who derived a minimum necessary value of 1500 G for sunspot formation."
+     }
+    ]
+   },
+   "citation": "Livingston et al. (2012) (cite: Livingston2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Prepare, deproject, and co-align magnetogram and radio maps",
+   "method": "Rotate AR in HMI LOS magnetogram to solar disk center, remove solar spherical curvature, correct magnetic field intensities for projection effects, longitudinally rotate radio maps to match magnetogram time, resize radio maps to match magnetogram grid (4096x4096), and crop/resize selected active region area from 1024x1024 to 256x256 pixels (~2\"/pixel).",
+   "software": [
+    "IDL"
+   ],
+   "key_parameters": [
+    "Longitudinal rotation: -0.01 deg (230 GHz), -2.85 deg (100 GHz), 7.31 deg (17 GHz)",
+    "Grid size: 256x256 pixels (~2\" per pixel)"
+   ],
+   "assumptions": [
+    "|B| is 7.5% greater than observed B_z due to heliographic position (17.40°N, 17.68°E)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extrapolate 3D coronal and chromospheric magnetic field from photospheric magnetogram",
+   "method": "Perform linear force-free field (LFF) extrapolation above the photosphere starting from the line-of-sight magnetic field component to generate 3D cubes of Bx, By, Bz and field line positions, and interpolate voxel height resolution to 50 km.",
+   "software": [
+    "IDL"
+   ],
+   "key_parameters": [
+    "Force-free parameter alpha = -0.005",
+    "Minimum photospheric magnetic field |B|_min = 200 G",
+    "Vertical voxel height resolution h_z = 50 km"
+   ],
+   "assumptions": [
+    "Linear force-free field approximation (current density parallel to magnetic field at any point in space)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Classify pixels by photospheric magnetic field strength",
+   "method": "Classify each pixel in the magnetogram into four classes based on photospheric magnetic field intensity |B|_0: umbra, penumbra, plage, and quiet Sun.",
+   "software": [],
+   "key_parameters": [
+    "Umbra: |B| >= 1500 G (~200 pixels); Penumbra: 1000 <= |B_0| < 1500 G (~230 pixels); Plages: 200 <= |B_0| < 1000 G (~27200 pixels); Quiet Sun: |B| <= 200 G (~38000 pixels)"
+   ],
+   "assumptions": [
+    "Pixels with |B| <= 200 G have quiet Sun brightness temperature T_B = T_qS"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit 1D atmospheric temperature and density profiles per pixel via genetic algorithm and radiative transfer",
+   "method": "Run Pikaia genetic algorithm independently for each vertical column (pixel) to modify the seed SSC quiet Sun model via 5 free parameters, compute thermal bremsstrahlung and gyroresonance absorption coefficients and 1D radiative transfer to obtain T_b at 17, 100, and 230 GHz, minimize chi-squared against observations, and average best-fit profiles per class.",
+   "software": [
+    "Pikaia"
+   ],
+   "key_parameters": [
+    "5 free parameters: chromospheric temperature gradient, chromospheric electron density gradient, coronal temperature factor N_T, coronal electron density factor N_n_e, and TR position shift Delta h",
+    "GA settings: full-generation replacement, 10 generations, 100 children per generation, crossover probability = 0.85, variable mutation mode, initial mutation rate = 0.005, mutation rate range = 0.0005 to 0.25",
+    "Gyroresonance harmonics s <= 5 with 10% uncertainty in |B| (3rd harmonic at 2000±200 G, 4th at 1500±150 G, 5th at 1200±120 G)"
+   ],
+   "assumptions": [
+    "Effective ion charge Z = 1.178, only electron-proton collisions considered, densities grouped as (n_e * n_i)^(1/2), plasma fully ionized above 1000 km in SSC model"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Convolve synthetic radio maps with instrumental beams and compare with observations",
+   "method": "Convolve the 2\" resolution GA model brightness temperature maps with 2D Gaussian beams matching observational resolutions (25\" at 230 GHz, 58\" at 100 GHz, 10\" at 17 GHz) and compare average brightness temperatures across umbra, penumbra, plages, and polarized/non-polarized regions.",
+   "software": [],
+   "key_parameters": [
+    "2D Gaussian beam FWHM: 25\" (230 GHz), 58\" (100 GHz), 10\" (17 GHz)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Transition region (TR) height for umbrae",
+   "value": "1080",
+   "uncertainty": "20",
+   "units": "km",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "for umbrae the TR is located at $1080\\pm20$ km above the solar surface;"
+    },
+    {
+     "loc": "Results",
+     "quote": "In the Table [\\[Table_TR\\]](#Table_TR) we present the average height of the transition region (TR), which is one of the five free parameters fitted in the GA process, for each atmospheric class: thus, 1080$\\pm$20 km above the solar surface for umbrae, 1800$\\pm$50 km for penumbrae, and 2000$\\pm$100 km for plages."
+    }
+   ]
+  },
+  {
+   "quantity": "Transition region (TR) height for penumbrae",
+   "value": "1800",
+   "uncertainty": "50",
+   "units": "km",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "for penumbrae, the TR is located at $1800\\pm50$ km;"
+    },
+    {
+     "loc": "Results",
+     "quote": "In the Table [\\[Table_TR\\]](#Table_TR) we present the average height of the transition region (TR), which is one of the five free parameters fitted in the GA process, for each atmospheric class: thus, 1080$\\pm$20 km above the solar surface for umbrae, 1800$\\pm$50 km for penumbrae, and 2000$\\pm$100 km for plages."
+    }
+   ]
+  },
+  {
+   "quantity": "Transition region (TR) height for plages (bright regions outside sunspots)",
+   "value": "2000",
+   "uncertainty": "100",
+   "units": "km",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "and for bright regions outside sunspots, the TR is located at $2000\\pm100$ km."
+    },
+    {
+     "loc": "Results",
+     "quote": "In the Table [\\[Table_TR\\]](#Table_TR) we present the average height of the transition region (TR), which is one of the five free parameters fitted in the GA process, for each atmospheric class: thus, 1080$\\pm$20 km above the solar surface for umbrae, 1800$\\pm$50 km for penumbrae, and 2000$\\pm$100 km for plages."
+    }
+   ]
+  },
+  {
+   "quantity": "Quiet Sun brightness temperature at 17 GHz",
+   "value": "10050",
+   "uncertainty": "120",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Radio maps",
+     "quote": "At 17 GHz, $T_{qS}=10050\\pm 120$ K, and AR 12470 has brightness temperatures varying from $5.3\\times10^4$ to $6.8\\times10^4$ K in the areas with $|\\vec{B}|>1500$ G."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed AR 12470 brightness temperature range at 230 GHz (where |B| > 1500 G)",
+   "value": "5800 to 6600",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Radio maps",
+     "quote": "While the quiet Sun brightness temperature ( $T_\\mathrm{b,QS}$) at 230 GHz is $6210\\pm110$ K (cite: Selhorst2019), the AR 12470 brightness temperature ($T_\\mathrm{b}$) varies from 5800 to 6600 K across locations with magnetic field intensities greater than 1500 G"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed AR 12470 brightness temperature range at 100 GHz (where |B| > 1500 G)",
+   "value": "7200 to 7650",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Radio maps",
+     "quote": "At 100 GHz, $T_{qS}=7110\\pm90$ K (cite: Selhorst2019) and AR 12470 showed $T_\\mathrm{b}$ varying from 7200 to 7650 K where $|\\vec{B}|>1500$ G."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed AR 12470 brightness temperature range at 17 GHz (where |B| > 1500 G)",
+   "value": "5.3e4 to 6.8e4",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Radio maps",
+     "quote": "At 17 GHz, $T_{qS}=10050\\pm 120$ K, and AR 12470 has brightness temperatures varying from $5.3\\times10^4$ to $6.8\\times10^4$ K in the areas with $|\\vec{B}|>1500$ G."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Umbra averaged brightness temperature at 230 GHz",
+   "value": "0.99",
+   "uncertainty": "0.04",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Umbra | $0.99\\pm0.04$ | $0.98\\pm0.01$ | $1.00 \\pm0.01$ | $1.03\\pm0.01$ | $1.02\\pm0.01$ | $1.06\\pm0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Umbra averaged brightness temperature at 230 GHz (2\" resolution)",
+   "value": "0.98",
+   "uncertainty": "0.01",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Umbra | $0.99\\pm0.04$ | $0.98\\pm0.01$ | $1.00 \\pm0.01$ | $1.03\\pm0.01$ | $1.02\\pm0.01$ | $1.06\\pm0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Umbra averaged brightness temperature at 230 GHz (25\" resolution)",
+   "value": "1.00",
+   "uncertainty": "0.01",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Umbra | $0.99\\pm0.04$ | $0.98\\pm0.01$ | $1.00 \\pm0.01$ | $1.03\\pm0.01$ | $1.02\\pm0.01$ | $1.06\\pm0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Umbra averaged brightness temperature at 100 GHz",
+   "value": "1.03",
+   "uncertainty": "0.01",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Umbra | $0.99\\pm0.04$ | $0.98\\pm0.01$ | $1.00 \\pm0.01$ | $1.03\\pm0.01$ | $1.02\\pm0.01$ | $1.06\\pm0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Umbra averaged brightness temperature at 100 GHz (2\" resolution)",
+   "value": "1.02",
+   "uncertainty": "0.01",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Umbra | $0.99\\pm0.04$ | $0.98\\pm0.01$ | $1.00 \\pm0.01$ | $1.03\\pm0.01$ | $1.02\\pm0.01$ | $1.06\\pm0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Umbra averaged brightness temperature at 100 GHz (58\" resolution)",
+   "value": "1.06",
+   "uncertainty": "0.01",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Umbra | $0.99\\pm0.04$ | $0.98\\pm0.01$ | $1.00 \\pm0.01$ | $1.03\\pm0.01$ | $1.02\\pm0.01$ | $1.06\\pm0.01$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Penumbra averaged brightness temperature at 230 GHz",
+   "value": "1.05",
+   "uncertainty": "0.05",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Penumbra | $1.05\\pm0.05$ | $1.04\\pm0.01$ | $1.02 \\pm~0.02$ | $1.05\\pm0.02$ | $1.07\\pm0.01$ | $1.07\\pm0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Penumbra averaged brightness temperature at 230 GHz (25\" resolution)",
+   "value": "1.02",
+   "uncertainty": "0.02",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Penumbra | $1.05\\pm0.05$ | $1.04\\pm0.01$ | $1.02 \\pm~0.02$ | $1.05\\pm0.02$ | $1.07\\pm0.01$ | $1.07\\pm0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Penumbra averaged brightness temperature at 100 GHz",
+   "value": "1.05",
+   "uncertainty": "0.02",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Penumbra | $1.05\\pm0.05$ | $1.04\\pm0.01$ | $1.02 \\pm~0.02$ | $1.05\\pm0.02$ | $1.07\\pm0.01$ | $1.07\\pm0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Penumbra averaged brightness temperature at 100 GHz (58\" resolution)",
+   "value": "1.07",
+   "uncertainty": "0.02",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Penumbra | $1.05\\pm0.05$ | $1.04\\pm0.01$ | $1.02 \\pm~0.02$ | $1.05\\pm0.02$ | $1.07\\pm0.01$ | $1.07\\pm0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Plages averaged brightness temperature at 230 GHz",
+   "value": "1.07",
+   "uncertainty": "0.07",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Plages | $1.07\\pm0.07$ | $1.08\\pm0.05$ | $1.04 \\pm0.04$ | $1.06\\pm0.04$ | $1.10\\pm0.04$ | $1.06\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Plages averaged brightness temperature at 230 GHz (25\" resolution)",
+   "value": "1.04",
+   "uncertainty": "0.04",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Plages | $1.07\\pm0.07$ | $1.08\\pm0.05$ | $1.04 \\pm0.04$ | $1.06\\pm0.04$ | $1.10\\pm0.04$ | $1.06\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Plages averaged brightness temperature at 100 GHz",
+   "value": "1.06",
+   "uncertainty": "0.04",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Plages | $1.07\\pm0.07$ | $1.08\\pm0.05$ | $1.04 \\pm0.04$ | $1.06\\pm0.04$ | $1.10\\pm0.04$ | $1.06\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Plages averaged brightness temperature at 100 GHz (58\" resolution)",
+   "value": "1.06",
+   "uncertainty": "0.03",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Plages | $1.07\\pm0.07$ | $1.08\\pm0.05$ | $1.04 \\pm0.04$ | $1.06\\pm0.04$ | $1.10\\pm0.04$ | $1.06\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Polarized region averaged brightness temperature at 17 GHz",
+   "value": "3.69",
+   "uncertainty": "1.35",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Polarized | $3.69\\pm 1.35$ | $1.06\\pm 0.03$ | $1.06\\pm 0.02$ | $9.41\\pm 3.51$ | $4.08\\pm1.19$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Polarized region averaged brightness temperature at 17 GHz with free-free + gyroresonance (10\" resolution)",
+   "value": "4.08",
+   "uncertainty": "1.19",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Polarized | $3.69\\pm 1.35$ | $1.06\\pm 0.03$ | $1.06\\pm 0.02$ | $9.41\\pm 3.51$ | $4.08\\pm1.19$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Non-polarized region averaged brightness temperature at 17 GHz",
+   "value": "1.58",
+   "uncertainty": "0.32",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Non-polarized | $1.58\\pm 0.32$ | $1.04\\pm 0.06$ | $1.04\\pm 0.06$ | $1.04\\pm 0.06$ | $1.04\\pm 0.05$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Modeled Non-polarized region averaged brightness temperature at 17 GHz with free-free + gyroresonance (10\" resolution)",
+   "value": "1.04",
+   "uncertainty": "0.05",
+   "units": "T_qS",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison of the synthetic and observed radio images",
+     "quote": "| Non-polarized | $1.58\\pm 0.32$ | $1.04\\pm 0.06$ | $1.04\\pm 0.06$ | $1.04\\pm 0.06$ | $1.04\\pm 0.05$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Prior bounds (minimum and maximum values) chosen for each of the five GA free parameters (chromospheric temperature gradient, chromospheric electron density gradient, coronal temperature factor, coronal electron density factor, and TR position shift)",
+  "Exact functional mathematical equations for how the five GA free parameters modify the SSC temperature and density height profiles",
+  "Details of the initial seed parameters used for each distinct AR class (umbrae, penumbrae, plages) to speed up the GA",
+  "Exact formulation of the chi-squared objective function (including observational uncertainty weights for the three frequencies and whether beam convolution is applied before or after pixel-by-pixel chi-squared evaluation)",
+  "Which magneto-ionic mode (o-mode, x-mode, or average of both) was used in the radiative transfer integration to compare with total intensity maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact mathematical equations defining how the 5 free parameters (chromospheric gradients, coronal multipliers, and TR shift) modify the seed SSC height profile",
+  "Minimum and maximum parameter search bounds supplied to Pikaia for each of the 5 free parameters and for each of the 3 AR region classes",
+  "Custom IDL code for the radiative transfer, Pikaia wrapper, and LFF extrapolation (unless using GX Simulator in SolarSoft)",
+  "Exact bounding box coordinates used to crop the 1024x1024 active region area from the full-disk 4096x4096 HMI magnetogram"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "All observational data (ALMA SV, SDO/HMI, NoRH) are public and exact timestamps, rotation angles, grid dimensions, GA hyperparameters, radiative transfer equations, and final tabulated model profiles are provided; however, the exact mathematical parameterization of the 5 GA modifications to the SSC profile and their prior search ranges are not explicitly written out.",
+ "rediscovery_reason": "All input datasets (ALMA SV 2011.0.00020.SV, SDO/HMI, NoRH) are public, the physical equations and GA settings are well specified, and the paper provides clear numeric answer keys (TR heights and region-averaged brightness temperatures).",
+ "source_card": "cards/2022FrASS...9.1118D/sonnet/card.md"
+}

@@ -1,0 +1,428 @@
+ts indicate that such a delicate interplay cannot be obtained with a single planet."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "A single massive inner planet creates the dust cavity while remaining consistent with CO.",
+      "experiment": "Compare joint continuum and CO observations with hydrodynamic and radiative-transfer planet models.",
+      "result": "Continuum-compatible inner masses are 3–5 MJ; CO requires Mp≲1 MJ.",
+      "finding": "A single planet cannot reproduce both tracers under the adopted assumptions.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "the dust continuum emission is consistent with dynamical perturbations from three planets orbiting at 29, 51, and 80 au, with masses of 3-5 $M_\\textrm{J}$, 0.4 $M_\\textrm{J}$, and 0.25 $M_\\textrm{J}$, respectively."
+        },
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "a less massive planet ($M_p \\lesssim 1$ $M_\\textrm{J}$) even in the most conservative case in which CO photodissociation is not considered."
+        },
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Our results indicate that such a delicate interplay cannot be obtained with a single planet."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Three planets can reproduce the observed continuum morphology.",
+      "experiment": "Explore planet masses and orbital radii and compare synthetic continuum visibilities and images.",
+      "result": "Ring locations and cavity morphology are reproduced, but middle/outer-ring intensities are overpredicted by 30%–50%.",
+      "finding": "Three-planet models qualitatively reproduce radial and azimuthal structure without matching the full intensity profile.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Continuum Modeling",
+          "quote": "we use the *chi2image* function from *galario*, which calculates a $\\chi^{2}$ by comparing synthetic images and the observed continuum emission in the visibility space."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "The models reproduce the location of the dust rings and the overall morphology of the dust cavity, but over predict the intensity profile across the middle and outer rings by 30%-50%."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "Overall, the models qualitatively match the observations in that the innermost and middle rings are asymmetric, while the outermost ring is mostly symmetric."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The observed rings share a common disk geometry.",
+      "experiment": "Fit ring/gap ellipses and Gaussian components in image and visibility space.",
+      "result": "Similar centers, inclinations and position angles; consistent image/visibility results.",
+      "finding": "The rings are likely circular, concentric and coplanar.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Disk geometry and properties of the dust rings",
+          "quote": "All the rings and gaps have similar centers, inclinations, and position angles, indicating that these substructures are concentric and coplanar."
+        },
+        {
+          "loc": "Disk geometry and properties of the dust rings",
+          "quote": "The image and visibility fittings deliver consistent results regarding the disk orientation and the ring properties."
+        },
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "The three rings are likely circular and coplanar (based on the same center and inclination) suggesting that the putative planets would be on circular orbits."
+        }
+      ]
+    },
+    {
+      "hypothesis": "A chain of low-mass planets could explain the dust/gas contrast.",
+      "experiment": "Use the failure of single massive-inner-planet models to assess alternative cavity origins.",
+      "result": "The single-planet explanation fails; a low-mass chain remains a proposed explanation.",
+      "finding": "A properly spaced low-mass chain within 30 au could explain the morphology, but is not demonstrated by the presented model grid.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Our results indicate that such a delicate interplay cannot be obtained with a single planet."
+        },
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Alternatively, a chain of properly spaced low-mass planets orbiting within 30 au from the central star could also explain the observed dust and gas morphology, as suggested by (cite: Leemker+2022)."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Gas observations at continuum angular scales test planet–disk interpretations; combine short and long baselines for sensitivity and reduced spatial filtering.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "observations of molecular gas at the same angular scales of the continuum are essential to constrain the distribution of the circumstellar material and test the planet-disk interaction hypothesis."
+        },
+        {
+          "loc": "Data",
+          "quote": "The data were combined to increase sensitivity and reduce the effects of spatial filtering by utilizing the short baselines while retaining the high angular resolution achievable with the more extended configuration."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Radiative transfer is needed to distinguish density structure from optical-depth/vertical-distribution effects; visibility comparison accounts for ALMA resolution and uv sampling.",
+      "evidence": [
+        {
+          "loc": "CO emission",
+          "quote": "the different radial profiles might be caused by radiative transfer effects, such as the different vertical distribution and optical depths of dust and CO emission."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "In this way, we naturally account for the angular resolution and discrete *uv* sampling of ALMA observations."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Choose robust for signal-to-noise/resolution balance; evolve to quasi-steady state; choose thermal photon count for time/noise balance.",
+      "evidence": [
+        {
+          "loc": "Data",
+          "quote": "We find that for the continuum, a *robust* parameter of 0.7 works best to achieve a good balance between signal-to-noise and spatial resolution."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "This allows for the simulations to achieve a quasi-steady state, meaning that the results do not strongly depend on the time frame used for the comparison."
+        },
+        {
+          "loc": "Disk-Planet Models",
+          "quote": "We tried running the thermal calculation with up to $2\\times10^{9}$ photons, but found that $2.5\\times10^{8}$ photons achieved a good balance between computational time and reducing the noise."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Initial planets at 20, 42 and 90 au fail to match the continuum satisfactorily.",
+      "evidence": [
+        {
+          "loc": "Continuum Modeling",
+          "quote": "Overall, none of these models provide a good match to the observations."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "Following these results, we relaxed our assumptions on the planets’ orbital radii and tried several combinations of planets’ masses and orbital radii to reproduce the observed continuum radial profile."
+        }
+      ]
+    },
+    {
+      "value": "Recalculating the temperature after cavity clearing does not rescue a massive-inner-planet model.",
+      "evidence": [
+        {
+          "loc": "CO Modeling",
+          "quote": "As a result, the gas temperature and CO emission within the cavity increase by approximately 10%."
+        },
+        {
+          "loc": "CO Modeling",
+          "quote": "However, this enhancement is insufficient to explain the observed emission in the presence of a massive planet."
+        }
+      ]
+    },
+    {
+      "value": "Lower viscosity would require an even lower inner-planet mass.",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "A lower $\\alpha$ would mean that massive planets would clear more gas within the dust cavity and excite instabilities"
+        },
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Therefore, the inner planet mass would have to be lowered even more to match the observations."
+        }
+      ]
+    },
+    {
+      "value": "Larger grains could allow less massive planets to trap dust without clearing as much gas.",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "A less massive inner planet may still be able to trap these larger dust grains while less effectively clearing a cavity in gas, therefore bringing us closer towards the differences in gas and dust that we observe."
+        }
+      ]
+    },
+    {
+      "value": "Reducing gas surface density at fixed α and grain size makes the gas cavity clearer.",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Doing this while holding $\\alpha$ and $a$ fixed, however, would make the cavity more clear of gas which is the opposite of what we would want."
+        }
+      ]
+    },
+    {
+      "value": "A low-mass planet chain or nonplanetary processes remain possible cavity origins.",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Alternatively, a chain of properly spaced low-mass planets orbiting within 30 au from the central star could also explain the observed dust and gas morphology, as suggested by (cite: Leemker+2022)."
+        },
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "Alternatively, physical processes that do not require the presence of planets could be responsible for LkCa 15’s dust cavity."
+        }
+      ]
+    },
+    {
+      "value": "3D hydrodynamics rejected as computationally unfeasible for the required evolution time.",
+      "evidence": [
+        {
+          "loc": "Disk-Planet Models",
+          "quote": "As we are interested in the evolution of the circumstellar disk on timescales of $10^{3}$ orbits in this study, 3D simulations are computationally unfeasible."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "The model parameter space is not explored fully.",
+      "evidence": [
+        {
+          "loc": "Hydrodynamic and Radiative Transfer Models",
+          "quote": "However, a full exploration of the model parameter space is impossible due to the large computational time required to perform such simulations."
+        }
+      ]
+    },
+    {
+      "value": "Temperature is fixed from the unperturbed disk, and gas temperature is assumed equal to dust temperature.",
+      "evidence": [
+        {
+          "loc": "Hydrodynamic and Radiative Transfer Models",
+          "quote": "Note that we calculate the disk temperature only for the initial unperturbed disk state and assume it to remain constant with time."
+        },
+        {
+          "loc": "Hydrodynamic and Radiative Transfer Models",
+          "quote": "As an additional caveat we calculate only the dust temperature, assuming that it is equal to the gas temperature."
+        }
+      ]
+    },
+    {
+      "value": "Simplified photodissociation omits a complete treatment of shielding, abundances and thermal chemistry.",
+      "evidence": [
+        {
+          "loc": "Photodissociation",
+          "quote": "The prescription for photodissociation that we take from (cite: Rosenfeld+2013) and (cite: Qi+2011) does not fully capture the complexity of this physical process."
+        },
+        {
+          "loc": "Photodissociation",
+          "quote": "Ultimately, in the absence of physical-chemical modeling, full radiative-hydrodynamic calculations, or chemical networks like those of (cite: vantHoff+2017), a number of assumptions had to be made about gas and dust abundances and temperatures."
+        }
+      ]
+    },
+    {
+      "value": "Synthetic compact emission at planets is an artifact of using the circumstellar scale height for circumplanetary material.",
+      "evidence": [
+        {
+          "loc": "Continuum Modeling",
+          "quote": "this feature is caused by an incorrect treatment of the circumplanetary material wherein the material is expanded vertically using the scale height of the PPD rather than the CPD."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "Therefore, these sources of compact emission should be disregarded in the model images."
+        }
+      ]
+    },
+    {
+      "value": "Continuum models overpredict middle/outer-ring brightness and make the inner cavity edge too steep.",
+      "evidence": [
+        {
+          "loc": "Continuum Modeling",
+          "quote": "The models reproduce the location of the dust rings and the overall morphology of the dust cavity, but over predict the intensity profile across the middle and outer rings by 30%-50%."
+        },
+        {
+          "loc": "Continuum Modeling",
+          "quote": "a massive Planet 1 generates a steep increase in the dust intensity profile between 30-40 au, while the observations show a more gradual increase."
+        }
+      ]
+    },
+    {
+      "value": "Outer-disk CO brightness temperatures are overpredicted.",
+      "evidence": [
+        {
+          "loc": "CO Modeling",
+          "quote": "the synthetic models overpredict the CO peak brightness temperature beyond $\\sim$100 au by about 30-50%."
+        }
+      ]
+    },
+    {
+      "value": "The faint continuum morphology depends on robust weighting.",
+      "evidence": [
+        {
+          "loc": "Continuum emission",
+          "quote": "The morphology of this emission varies depending on the robust parameter we use for imaging"
+        }
+      ]
+    },
+    {
+      "value": "Current exoALMA 13CO resolution marginally resolves cavity structure.",
+      "evidence": [
+        {
+          "loc": "Discussion and Conclusion",
+          "quote": "As of now, the exoALMA $^{13}$CO resolution only allows for $\\sim$1-2 beams across the disk cavity meaning that structures will only be marginally resolved at best."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The ≲1 MJ limit is conditional on the explored disk models; no statistical confidence level or marginalized mass posterior is supplied.",
+    "The CO-section reference masses 3.8, 0.5 and 0.3 MJ differ from the continuum configuration’s 3–5, 0.4 and 0.25 MJ.",
+    "The simulation duration is described as 5000 orbits at 25 au, while the appendix describes a snapshot at 5000 innermost-planet orbits.",
+    "Table 1 gives a declination offset of -0.0844 arcsec, while the visibility-fit appendix gives -84.0 mas.",
+    "The text identifies different near-side directions in different passages; reproduce projection conventions explicitly.",
+    "The joint circular/concentric fit imposes shared geometry; the separate ellipse fits provide the more independent geometry check.",
+    "The low-mass planet-chain explanation is proposed rather than tested with a dedicated chain simulation.",
+    "Robust-dependent faint continuum structure and known synthetic CPD artifacts should not be used as secure planet detections."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Calibration/self-calibration scripts, epoch alignment parameters and relative flux factors.",
+    "Full continuum selection, CO subtraction and tclean configurations.",
+    "Versioned software environment and molecular/opacity input files.",
+    "Posterior settings, likelihood and visibility-weight handling for continuum fits.",
+    "Complete hydrodynamic and radiative-transfer input decks and revised model grid.",
+    "Resolution of inconsistent reference planet masses, simulation-time normalization and declination offset.",
+    "Numerical CO comparison statistic and criterion defining the reported planet-mass limit.",
+    "An explicit public-data statement, archive-product inventory and release location for author-generated models or scripts."
+  ],
+  "estimated_data_volume_inferred": "Not estimable from the text; multiple epochs and high spectral resolution are described, but bandwidth, visibility counts and file sizes are absent.",
+  "score_inferred": 6,
+  "score_reason": "6/10: project codes, final imaging metrics, model grids and many physical assumptions are supplied; exact calibration, imaging, fitting and simulation configurations remain incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The main results are numeric and both ALMA project codes are printed, but public availability is not stated and the exact reduction/modeling recipe is incomplete.",
+  "methods_papers": [
+    {
+      "citation": "(cite: Andrews+2018)",
+      "why": "DSHARP relative flux-calibration procedure."
+    },
+    {
+      "citation": "(cite: Huang+2018)",
+      "why": "Continuum ring/gap ellipse-fitting procedure."
+    },
+    {
+      "citation": "(cite: Foreman-Mackey+2013)",
+      "why": "emcee MCMC sampler."
+    },
+    {
+      "citation": "(cite: Tazzari+2018)",
+      "why": "Galario visibility modeling and comparison."
+    },
+    {
+      "citation": "(cite: Li+2005; Li+2009)",
+      "why": "LA-COMPASS hydrodynamic code."
+    },
+    {
+      "citation": "(cite: Dullemond+2012)",
+      "why": "RADMC3D radiative-transfer code."
+    },
+    {
+      "citation": "(cite: Lynden-Bell+1974; Pringle+1981; Hartmann+1998; Isella+2009)",
+      "why": "Initial viscous α-disk surface-density prescription."
+    },
+    {
+      "citation": "(cite: Birnstiel+2018)",
+      "why": "DSHARP dust absorption opacities."
+    },
+    {
+      "citation": "(cite: Youdin+2007)",
+      "why": "Dust-settling scale height."
+    },
+    {
+      "citation": "(cite: Rosenfeld+2013), (cite: Qi+2011), and (cite: Aikawa+1999)",
+      "why": "CO freezeout and photodissociation prescriptions."
+    },
+    {
+      "citation": "(cite: Visser+2009)",
+      "why": "Photodissociation shielding threshold."
+    },
+    {
+      "citation": "(cite: Dipierro+2017)",
+      "why": "Gap-opening criteria guiding the planet-mass grid."
+    },
+    {
+      "citation": "(cite: MRN+1977)",
+      "why": "Grain-size weighting for representative opacity carriers."
+    },
+    {
+      "citation": "(cite: Toomre+1964)",
+      "why": "Stability criterion used to justify omitting disk self-gravity."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: Teague_exoALMA)",
+      "why": "exoALMA program and isotopologue observation context."
+    },
+    {
+      "citation": "(cite: Curone_exoALMA)",
+      "why": "exoALMA-only LkCa 15 continuum data."
+    },
+    {
+      "citation": "(cite: Galloway_exoALMA)",
+      "why": "CO extent and independently derived temperature comparison."
+    },
+    {
+      "citation": "(cite: Longarini_exoALMA; Barraza_exoALMA)",
+      "why": "Possible mechanisms for outer-disk profile modulations."
+    },
+    {
+      "citation": "(cite: Pinte_exoALMA)",
+      "why": "Velocity kinks in the exoALMA sample."
+    },
+    {
+      "citation": "(cite: Stadler_exoALMA)",
+      "why": "Dust-trapping implications of ring widths."
+    },
+    {
+      "citation": "(cite: Long+2022)",
+      "why": "Initial publication of Cycle 6 continuum data and inner-ring planet interpretation."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "exoALMA",
+    "DSHARP"
+  ]
+}
+tokens used
+77,709

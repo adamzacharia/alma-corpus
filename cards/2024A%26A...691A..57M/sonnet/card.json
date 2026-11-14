@@ -1,0 +1,763 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...691A..57M",
+  "title": "SPH modelling of AGB wind morphology in hierarchical triple systems and a comparison to observation of R Aql",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Malfait, J.",
+  "n_authors": 10,
+  "arxiv_id": "2408.16565",
+  "doi": "10.1051/0004-6361/202450844",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.00659.L"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "To investigate if R Aql could be shaped by a triple system, we post-process one of our triple models with a radiative transfer routine, and compare this to data of the ALMA ATOMIUM programme."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "R Aql",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "230 pc",
+      "evidence": [
+       {
+        "loc": "5.1 ALMA observation",
+        "quote": "R Aql is an O-rich AGB star that is located at a distance of $230\\, {\\rm pc}$ from Earth."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Decin et al. 2020 (cite: Decin2020)",
+      "evidence": [
+       {
+        "loc": "5.1 ALMA observation",
+        "quote": "R Aql is an O-rich AGB star that is located at a distance of $230\\, {\\rm pc}$ from Earth."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do coplanar hierarchical triple systems shape AGB outflows, and could R Aql's complex wind be shaped by such a system?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We investigate how triple systems can shape the outflow of Asymptotic Giant Branch (AGB) stars, and characterise the different wind structures that form."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "5 Comparison to R Aql",
+       "quote": "we solely focus on the $^{12}$CO $J=2$$1$ rotational line emission"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "compact, mid and extended; baselines 15-500, 15-1398, 111-13894 m",
+    "evidence": [
+     {
+      "loc": "5.1 ALMA observation",
+      "quote": "three different ALMA antenna array configurations: compact, mid and extended (with baseline ranges of $15-500, 15-1398,$ and $111-13894 \\, {\\rm m}$ respectively)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "restoring beams 40.7x36.0 mas (continuum), 58.3x49.3 mas (CO cube)",
+    "evidence": [
+     {
+      "loc": "5.1 ALMA observation",
+      "quote": "of ($40.7, 36.0, 22.38$) and ($58.3, 49.3, 25.12$) for the continuum and CO cube, respectively"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ATOMIUM ALMA large programme",
+    "evidence": [
+     {
+      "loc": "5.1 ALMA observation",
+      "quote": "R Aql was observed as part of the ATOMIUM ALMA large programme"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "R Aql stellar mass (1.6 Msun), mass-loss rate (~1.1e-6 Msun/yr), distance",
+      "evidence": [
+       {
+        "loc": "5.1 ALMA observation",
+        "quote": "Its mass is estimated to $1.6 \\, M_\\odot$ and its mass-loss rate is $\\sim \\dot{M} = 1.1 \\times 10^{-6} \\, {\\rm{M_\\odot\\,yr^{-1}}}$ (cite: Decin2020)."
+       }
+      ]
+     },
+     "citation": "(cite: Decin2020)"
+    },
+    {
+     "what": {
+      "value": "ATOMIUM combined ALMA data of R Aql",
+      "evidence": [
+       {
+        "loc": "5.1 ALMA observation",
+        "quote": "We refer to (cite: Gottlieb2022) for more details on the observations and data processing."
+       }
+      ]
+     },
+     "citation": "(cite: Gottlieb2022)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "PHANTOM SPH grid of 8 triple and 4 binary AGB wind models; model v08m06 post-processed with MAGRITTE",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "We model a grid of hierarchical triple systems including a wind-launching AGB star, with the smoothed-particle-hydrodynamic PHANTOM code."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "FWHM 0.04 arcsec, combining three configurations",
+     "evidence": [
+      {
+       "loc": "5.1 ALMA observation",
+       "quote": "a combination is made of the data from these three configurations (with a $uv$ taper of FWHM $0.04 \"$"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Numerical input physics of the SPH model",
+      "evidence": [
+       {
+        "loc": "2.1 Input physics SPH model",
+        "quote": "We use the same numerical input physics as described in (cite: Malfait2024), where more details can be found."
+       }
+      ]
+     },
+     "from_reference": "(cite: Malfait2024)"
+    },
+    {
+     "what": {
+      "value": "ALMA observations and data processing",
+      "evidence": [
+       {
+        "loc": "5.1 ALMA observation",
+        "quote": "We refer to (cite: Gottlieb2022) for more details on the observations and data processing."
+       }
+      ]
+     },
+     "from_reference": "(cite: Gottlieb2022)"
+    },
+    {
+     "what": {
+      "value": "Epsilon classification parameter",
+      "evidence": [
+       {
+        "loc": "2.4 Classification parameter and flattening ratio",
+        "quote": "a classification parameter $\\varepsilon$, as proposed by (cite: Maes2021), and applied by (cite: Malfait2021)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Maes2021)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA project code and CASA/pipeline versions for the ATOMIUM R Aql data",
+    "SPH particle number and resolution",
+    "MAGRITTE grid/mesh settings, image resolution and velocity channel setup",
+    "Procedure used to measure arc spacing in observed channel maps",
+    "Why the simulated model was not convolved with the ALMA beam"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Run SPH simulations of triple and binary AGB winds",
+    "method": {
+     "value": "PHANTOM SPH with sink particles and wind injection; free-wind approximation; H I cooling",
+     "evidence": [
+      {
+       "loc": "2.1 Input physics SPH model",
+       "quote": "We perform hydrodynamic simulations of an AGB outflow in a hierarchical triple system with the smoothed-particle hydrodynamics (SPH) code PHANTOM (cite: phantom)."
+      }
+     ]
+    },
+    "software": [
+     "PHANTOM",
+     "REBOUND"
+    ],
+    "key_parameters": [
+     {
+      "value": "M1=1.6, M2=0.4 Msun, ai=5 au, ao=35 au, Mdot=1.1e-6 Msun/yr, T1=2800 K, v_ini 8 or 15 km/s, M3=0.1/0.6/1.2 Msun",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$a_{\\rm{o}}$       | \\[au\\]                        |         $35$         |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "gamma = 1.2, mu = 2.38",
+      "evidence": [
+       {
+        "loc": "2.1 Input physics SPH model",
+        "quote": "We adopt constant values of the polytropic index $\\gamma = 1.2$ and the mean molecular weight $\\mu = 2.38$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mardling & Aarseth stability criterion and REBOUND N-body integration over 1000 outer periods",
+     "evidence": [
+      {
+       "loc": "2.2 Grid setup triples",
+       "quote": "the orbit of all systems is integrated with the REBOUND N-body code (cite: rebound) over $1000$ outer orbital periods $P_{\\rm o}$, to confirm the stability of the orbits."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radiative transfer of model v08m06 to synthetic 12CO(2-1) channel maps",
+    "method": {
+     "value": "MAGRITTE ray-tracer, NLTE, first 40 rotational levels, LAMDA data, viewed at 230 pc and inclination 30 deg",
+     "evidence": [
+      {
+       "loc": "5.2 Comparison to synthetic observation",
+       "quote": "calculations are done in non local thermodynamical equilibrium (NLTE), taking into account the first $40$ rotational transitions."
+      }
+     ]
+    },
+    "software": [
+     "MAGRITTE"
+    ],
+    "key_parameters": [
+     {
+      "value": "micro-turbulence 0.5 km/s; CMB outer boundary",
+      "evidence": [
+       {
+        "loc": "5.2 Comparison to synthetic observation",
+        "quote": "The micro-turbulence is set to $0.5 \\, {\\rm km \\, s^{-1}}$ (cite: Ramstedt2008)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "All mass in H2; [CO/H2] = 3e-4",
+      "evidence": [
+       {
+        "loc": "5.2 Comparison to synthetic observation",
+        "quote": "we assume that all mass is in H$_2$, and the fractional abundance of CO is \\[CO$/$H$_2$\\]$= 3\\times 10^{-4}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Qualitative visual comparison with ATOMIUM channel maps; no ALMA simulator applied",
+     "evidence": [
+      {
+       "loc": "5.2 Comparison to synthetic observation",
+       "quote": "A detailed one-to-one comparison is, however, not feasible, due to the large uncertainty on the selected parameters of the model and the inclination"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "PHANTOM",
+    "version": "not stated",
+    "used_for": {
+     "value": "SPH hydrodynamic simulations",
+     "evidence": [
+      {
+       "loc": "2.1 Input physics SPH model",
+       "quote": "smoothed-particle hydrodynamics (SPH) code PHANTOM (cite: phantom)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "REBOUND",
+    "version": "not stated",
+    "used_for": {
+     "value": "N-body orbit stability test",
+     "evidence": [
+      {
+       "loc": "2.2 Grid setup triples",
+       "quote": "integrated with the REBOUND N-body code (cite: rebound)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGRITTE",
+    "version": "not stated",
+    "used_for": {
+     "value": "NLTE radiative transfer post-processing",
+     "evidence": [
+      {
+       "loc": "5.2 Comparison to synthetic observation",
+       "quote": "we post-process the PHANTOM output of model v08m06 with the MAGRITTE[^1] radiative transfer code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SPLASH",
+    "version": "not stated",
+    "used_for": {
+     "value": "visualisation",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "made using the visualisation tools PLONS[^2] and SPLASH (cite: splash)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PLONS",
+    "version": "not stated",
+    "used_for": {
+     "value": "visualisation",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "made using the visualisation tools PLONS[^2] and SPLASH (cite: splash)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Inner binary orbital period",
+    "value": "7.91",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Grid setup triples",
+      "quote": "The orbital period of the inner binary $M_{\\rm 1}$–$M_{\\rm 2}$ is $P_{\\rm i} = 7.91 \\, {\\rm yrs}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Outer orbital period for M3=0.6 Msun",
+    "value": "128.5",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2 Grid setup triples",
+      "quote": "$P_{\\rm o} = 143.0, 128.5 \\, {\\rm and}\\, 115.8 \\, {\\rm yrs}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Measured flattening ratio, triple v08 models",
+    "value": "~0.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.2 Impact of different wind velocity",
+      "quote": "This measured $R_{\\rm f}$ is approximately $0.5$ for all masses of $M_3$."
+     }
+    ]
+   },
+   {
+    "quantity": "R Aql continuum peak intensity",
+    "value": "18.9",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.1 ALMA observation",
+      "quote": "It consists of one centrally condensed patch of emission with a specific intensity peak of $18.9 \\, {\\rm mJy \\, beam^{-1}}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean radial spacing of observed arcs/spirals in R Aql",
+    "value": "~1.15",
+    "uncertainty": "large (not quantified)",
+    "units": "arcsec",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.2 Comparison to synthetic observation",
+      "quote": "is $\\sim 1.15 \\, {\\rm arcsec}$, indicating that these wind structures travel about $\\sim 265 \\, {\\rm au}$ during one orbital period."
+     }
+    ]
+   },
+   {
+    "quantity": "Implied orbital period from arc spacing (v~10 km/s)",
+    "value": "~126",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.2 Comparison to synthetic observation",
+      "quote": "the time between two structures (corresponding to the orbital period), is $\\sim 126 \\, {\\rm yrs}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Triples produce a large two-edged spiral wake from the outer companion with a waved outer edge, over a snail-shell inner spiral.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A large two-edged spiral wake results behind the outer companion star."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "How does adding a hierarchical outer companion change binary wind morphology?",
+    "experiment": "Grid of PHANTOM triple models compared with binary subsystems",
+    "result": "Large-scale gravity wake with waved outer edge, inner spiral deformed to snail-shell",
+    "finding": "Triple nature produces distinctive wind structures",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "This additional large-scale spiral is a gravity wake behind the outer companion, and has a waved outer edge"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Could R Aql be shaped by a triple system?",
+    "experiment": "MAGRITTE 12CO(2-1) synthetic maps of model v08m06 compared with ATOMIUM data",
+    "result": "Similar global morphology; triple signatures not resolved in channel maps",
+    "finding": "Possible but not demonstrated",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "The morphology of R Aql could be the result of a similar triple system as the ones studied in this work, but no clear direct implications of this are detected"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Test with mu = 1.26 for v08m12 showed no material accumulation, but changed wind velocity strongly",
+     "evidence": [
+      {
+       "loc": "4.2 Impact of different wind velocity",
+       "quote": "We performed a test simulation of this model with $\\mu = 1.26$, which is more suited for atomic gas, and find no accumulation of material."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Parameter space degenerate; no ALMA simulator applied; pulsations missing",
+     "evidence": [
+      {
+       "loc": "5.2 Comparison to synthetic observation",
+       "quote": "the SPH models lack some physics such as the impact of the stellar pulsations, that may affect the wind morphology"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "R Aql comparison is purely qualitative with a single hand-picked model",
+    "Only coplanar circular/limited eccentric orbits, one inclination",
+    "No convolution with ALMA beam or noise",
+    "Simplified equation of state"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Simulation inputs and outputs on Zenodo",
+    "evidence": [
+     {
+      "loc": "2.1 Input physics SPH model",
+      "quote": "The input files and output dumps to reproduce the Phantom simulations and figures in this paper are available online (<https://zenodo.org/records/12795466>)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "MAGRITTE open source on GitHub; plons on GitHub",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "Open source & available online: <https://github.com/Magritte-code/Magritte>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "ALMA project code and reduced ATOMIUM cubes",
+    "MAGRITTE imaging settings"
+   ],
+   "estimated_data_volume_inferred": "Simulations: large (HPC); ALMA data: tens of GB if reprocessed",
+   "score_inferred": 3,
+   "score_reason": "Simulation inputs are public, but the ALMA comparison is qualitative and details are deferred to other papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The ALMA part is qualitative and the main results are simulation morphologies, not numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Malfait et al. 2024 (cite: Malfait2024)",
+     "why": "SPH input physics"
+    },
+    {
+     "citation": "Gottlieb et al. 2022 (cite: Gottlieb2022)",
+     "why": "ATOMIUM data processing"
+    },
+    {
+     "citation": "Maes et al. 2021 (cite: Maes2021)",
+     "why": "epsilon parameter"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Decin et al. 2020 (cite: Decin2020)",
+     "why": "ATOMIUM programme and R Aql"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ATOMIUM"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-9d11b7628cb51c0c9ea057a4d235891e",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:45",
+  "usage": {
+   "input_tokens": 30358,
+   "output_tokens": 5975,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.060839,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 41,
+  "quotes_ok": 41,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2018.1.00659.L"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 31,
+   "rate": 0.456
+  },
+  "evidence_ok": true
+ }
+}

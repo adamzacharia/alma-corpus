@@ -1,0 +1,306 @@
+{
+ "bibcode": "2023A&A...678A.116A",
+ "title": "Tracing obscured galaxy build-up at high redshift using deep radio surveys",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346411",
+ "arxiv_id": "2308.13283",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Explore the morphological and physical properties of high-redshift (z > 3) far-IR and radio-selected galaxies and investigate the interplay of star formation rate and supermassive black hole activity, particularly in merging systems.",
+ "alma_project_codes": [
+  "2019.1.01600.S",
+  "2017.1.01713.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84-116 GHz) and Band 4 (125-163 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~1 arcsec",
+  "sensitivity": "mean continuum sensitivity of ~0.2 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1.4 GHz VLA radio catalogues for COSMOS and ECDF-S",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "Radio data were obtained from both fields at 1.4 GHz with the VLA (cite: 2010ApJS..188..384S; smolcic17; 2013ApJS..205...13M) at an angular resolution of $\\sim 2.5''$."
+     }
+    ]
+   },
+   "citation": "(cite: 2010ApJS..188..384S; smolcic17; 2013ApJS..205...13M)"
+  },
+  {
+   "what": {
+    "value": "HerMES far-IR survey catalogues (250, 350, 500 um)",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "The far-IR wavelength regime, which is necessary for our selection, is available through the Herschel Multi-tiered Extragalactic Survey (cite: hermes)."
+     }
+    ]
+   },
+   "citation": "(cite: hermes)"
+  },
+  {
+   "what": {
+    "value": "Cosmos2015 photometric catalogue fluxes and redshifts",
+    "evidence": [
+     {
+      "loc": "High-redshift candidates",
+      "quote": "For this exploration, we consulted Simbad (cite: 2000A&AS..143....9W), the NED online search tools, and the Cosmos2015 (cite: Laigle16) online catalogue, retrieving redshift values from sources that are within 2 arcsec of our candidates."
+     },
+     {
+      "loc": "SED fitting results",
+      "quote": "The data fluxes from the Cosmos2015 catalogue were used in the analysis, while the radio information as well as any nebular emission component were not taken into consideration."
+     }
+    ]
+   },
+   "citation": "(cite: Laigle16)"
+  },
+  {
+   "what": {
+    "value": "Cosmos2020 and HELP catalogues for photometric redshift and SED property comparisons",
+    "evidence": [
+     {
+      "loc": "Comparison of the retrieved z with photometric catalogues",
+      "quote": "In more detail, the catalogues consist of the Cosmos2015 (cite: Laigle16), the Cosmos2020 (cite: 2022ApJS..258...11W) and the HELP catalogues (cite: 2021MNRAS.507..129S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJS..258...11W; 2021MNRAS.507..129S)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 3 spectroscopic redshifts for CVLA958 and ALESS33",
+    "evidence": [
+     {
+      "loc": "COSMOSVLA J095845.94+024329.2",
+      "quote": "The recent work by (cite: 2021MNRAS.501.3926B) also identified the emission line as due to the CO4-3 rotational transition at band 3 of ALMA, locating this source at $z=3.1755$."
+     },
+     {
+      "loc": "ALESS J033211.34-275211.9",
+      "quote": "while ALMA spectroscopic data (cite: 2021MNRAS.501.3926B) show two clear emission lines (namely the CO4-3 and [CI] lines at $\\sim 98.22\\, GHz$ and $\\sim 104.85\\, GHz$, respectively). This secures the galaxy at $z=3.694$."
+     }
+    ]
+   },
+   "citation": "(cite: 2021MNRAS.501.3926B)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Cross-match radio and far-IR catalogues and select high-z candidates",
+   "method": "Cross-match VLA 1.4 GHz and HerMES catalogues within 18 arcsec, filter for S/N > 5, compact single radio sources (< 10 arcsec), 250/350/500 um flux errors < 50%, f_350um/f_250um > 1, and z > 3 from literature.",
+   "software": [
+    "TOPCAT"
+   ],
+   "key_parameters": [
+    "maximum separation = 18 arcsec, radio S/N > 5, angular size < 10 arcsec, far-IR flux errors < 50%, f_350um/f_250um > 1, redshift match radius = 2 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract mm spectra from IRAM 30m and ALMA observations to determine spectroscopic redshifts",
+   "method": "Scan 3 mm and 2 mm bands with IRAM 30m (removing outliers and correcting platforming) and extract ALMA Band 3 and Band 4 spectra using CASA to identify CO emission lines.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Gaussian filter of 50 km/s and redshift step of 0.01 (for IRAM spectrum search)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Perform multi-wavelength SED fitting to derive physical properties and AGN fractions",
+   "method": "Fit multi-wavelength photometry (excluding radio and nebular emission) using CIGALE to obtain best-fit and Bayesian estimates of stellar mass, SFR_IR, L_IR, AGN fraction, and photometric redshift.",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "sfhdelayed, bc03 (Chabrier IMF), dustatt_2powerlaws, lyc_absorption, dl2014, fritz2006 AGN model, delta_z = 0.1 for photo-z fitting"
+   ],
+   "assumptions": [
+    "Chabrier IMF; cosmology H0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calculate radio luminosities, radio-based SFRs, and q_TIR to assess AGN radio excess",
+   "method": "Compute L_1.4GHz, derive SFR_radio using Bell (2003) equation 6 assuming radio emission is purely from star formation, and compute q_TIR from L_IR (42-122 um) and L_1.4GHz.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Radio spectral index alpha = 0.8 for pure radio synchrotron emission"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detected CO(4-3) emission line frequency for CVLA958 (ALMA 2019.1.01600.S)",
+   "value": "110.5",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "COSMOSVLA J095845.94+024329.2",
+     "quote": "The detected emission line at $\\sim 110.5 \\, GHz$ has a full width at half maximum of $\\sim$0.4 GHz ($\\sim 70.4\\, km/s$), possibly indicating a merging system or an orderly rotating spiral galaxy (cite: 2022ApJ...929..159C)."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of detected CO(4-3) emission line for CVLA958",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "COSMOSVLA J095845.94+024329.2",
+     "quote": "The detected emission line at $\\sim 110.5 \\, GHz$ has a full width at half maximum of $\\sim$0.4 GHz ($\\sim 70.4\\, km/s$), possibly indicating a merging system or an orderly rotating spiral galaxy (cite: 2022ApJ...929..159C)."
+    }
+   ]
+  },
+  {
+   "quantity": "Detected CO(4-3) emission line frequency for CVLA100 (ALMA 2017.1.01713.S)",
+   "value": "107.3",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "COSMOSVLA J100233.16+020626.5",
+     "quote": "ALMA spectroscopic data acquired by our team (project code: 2017.1.01713.S; see Appendix 7 for more details) reveal an emission line at $\\sim 107.3 \\, GHz$, which corresponds to the CO(4-3) emission line with the galaxy located at $z=3.29$."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift of CVLA100 from ALMA CO(4-3) line",
+   "value": "3.29",
+   "uncertainty": "0.39",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "COSMOSVLA J100233.16+020626.5",
+     "quote": "ALMA spectroscopic data acquired by our team (project code: 2017.1.01713.S; see Appendix 7 for more details) reveal an emission line at $\\sim 107.3 \\, GHz$, which corresponds to the CO(4-3) emission line with the galaxy located at $z=3.29$."
+    },
+    {
+     "loc": "COSMOSVLA J095845.94+024329.2",
+     "quote": "| CVLA100 | $3.290 \\pm 0.39^{(p)}$ | $10.36 \\pm 0.52$ | $528 \\pm 96$ | $3391 \\pm 781$ | $60 \\pm 3$ | $6.14 \\pm 1.41$ | $1.98\\pm 0.32$ | $1.93\\pm 0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean redshift <z>",
+   "value": "3.37",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "Overall, our sample has a mean redshift of $<z_{\\rm}>=3.37 \\pm 0.16$, an average stellar mass of $<log(M_{\\rm \\star}/M_{\\odot})>= 11.27 \\pm 0.47$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample average stellar mass <log(M_*/M_sun)>",
+   "value": "11.27",
+   "uncertainty": "0.47",
+   "units": "dex (M_sun)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "Overall, our sample has a mean redshift of $<z_{\\rm}>=3.37 \\pm 0.16$, an average stellar mass of $<log(M_{\\rm \\star}/M_{\\odot})>= 11.27 \\pm 0.47$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean IR luminosity <L_IR,42-122um>",
+   "value": "2.1e39",
+   "uncertainty": "0.67e39",
+   "units": "W",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "$<L_{\\rm IR,42-122\\mu m}>=2.1 \\pm 0.67 \\cdot 10^{39} \\, W$ (total IR luminosity of $<L_{\\rm IR,8-1000\\mu m}>=3.9 \\pm 0.84 \\cdot 10^{39} \\, W \\sim 10^{13}\\, L_{\\odot}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean total IR luminosity <L_IR,8-1000um>",
+   "value": "3.9e39",
+   "uncertainty": "0.84e39",
+   "units": "W",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "$<L_{\\rm IR,42-122\\mu m}>=2.1 \\pm 0.67 \\cdot 10^{39} \\, W$ (total IR luminosity of $<L_{\\rm IR,8-1000\\mu m}>=3.9 \\pm 0.84 \\cdot 10^{39} \\, W \\sim 10^{13}\\, L_{\\odot}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean 1.4 GHz radio luminosity <L_1.4GHz>",
+   "value": "5.77e24",
+   "uncertainty": "1.9e24",
+   "units": "W/Hz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "$<L_{1.4GHz}>=5.77\\pm 1.9 \\cdot 10^{24} \\,W/Hz,$ and a mean star formation rate (derived from the $42-122 \\, \\mu m$ rest-frame IR luminosity of each source) of $<SFR_{\\rm IR}> 1213 \\pm 567\\, M_{\\odot}/yr$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample mean IR star formation rate <SFR_IR>",
+   "value": "1213",
+   "uncertainty": "567",
+   "units": "M_sun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "$<L_{1.4GHz}>=5.77\\pm 1.9 \\cdot 10^{24} \\,W/Hz,$ and a mean star formation rate (derived from the $42-122 \\, \\mu m$ rest-frame IR luminosity of each source) of $<SFR_{\\rm IR}> 1213 \\pm 567\\, M_{\\odot}/yr$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate density lower limit at z > 3",
+   "value": "> 8e-3",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr/Mpc^3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison with previous work",
+     "quote": "This infrequency, along with the complexity of the adopted selection method, will unavoidably provide a less accurate estimation of the SFRD at $z>3$, which can be only considered as a lower limit (cite: 1980ApJ...235..694A), and for our study, this is equal to $SFRD>8 \\cdot 10^{-3}\\, M_{\\odot}/yr/Mpc^3$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration/imaging parameters for ALMA project 2017.1.01713.S and archival project 2019.1.01600.S",
+  "Aperture size or region definition used to extract the ALMA spectra in CASA",
+  "Exact photometric band list and flux table used as input to CIGALE for ECDF-S targets (text only states Cosmos2015 fluxes were used)"
+ ],
+ "missing_for_reproduction": [
+  "Exact multi-wavelength photometric flux tables used as input to CIGALE for all 8 targets (especially ECDF-S targets not in Cosmos2015).",
+  "ALMA calibration, imaging, and spectral extraction parameters (aperture size, weighting, channel averaging) in CASA.",
+  "Custom convolution code used to search for CO lines in IRAM 30m spectra."
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Sample selection criteria and CIGALE model parameter grids are explicitly tabulated, and ALMA project codes are given, but full multi-wavelength input photometry tables for all 8 sources and detailed CASA reduction/extraction parameters are not provided.",
+ "rediscovery_reason": "The catalogue cross-matching, CIGALE SED fitting (with the full parameter grid in Table 2), and ALMA spectral line detections (projects 2017.1.01713.S and 2019.1.01600.S) yield concrete numeric results that can be reproduced from public archives and catalogues.",
+ "source_card": "cards/2023A%26A...678A.116A/sonnet/card.md"
+}

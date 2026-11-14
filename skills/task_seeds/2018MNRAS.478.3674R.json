@@ -1,0 +1,231 @@
+{
+ "bibcode": "2018MNRAS.478.3674R",
+ "title": "ALMA survey of circumstellar discs in the young stellar cluster IC 348",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty1351",
+ "arxiv_id": "1805.07590",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "How do the mm-continuum disk masses of Class II sources in IC 348 compare with those in younger and older regions, accounting for stellar mass?",
+ "alma_project_codes": [
+  "2015.1.01037.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211-275 GHz), 1.3 mm",
+  "arrays": "not stated",
+  "angular_resolution": "~0.8 arcsec (200 au)",
+  "sensitivity": "1σ ~0.15 mJy/beam; 3σ ~0.45 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Target sample and Spitzer IRAC SED-slope classifications",
+    "evidence": [
+     {
+      "loc": "2 Target selection",
+      "quote": "Our sample was selected specifically from the work of (cite: Lada2006), whose sample was based on (cite: Luhman2003), and from (cite: Muench2007)"
+     }
+    ]
+   },
+   "citation": "(cite: Lada2006); (cite: Muench2007)"
+  },
+  {
+   "what": {
+    "value": "Comparison disk samples for Taurus, Lupus, Cha I, sigma Ori, Upper Sco",
+    "evidence": [
+     {
+      "loc": "5.2 Disk Evolution",
+      "quote": "Upper limit inputs for the \"comparison\" samples are as reported in the literature"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2013; Ansdell2016; Ansdell2017; Barenfeld2016; Pascucci2016)"
+  },
+  {
+   "what": {
+    "value": "Spectral types of targets",
+    "evidence": [
+     {
+      "loc": "4.2 Target Properties",
+      "quote": "We derived the stellar properties based on the spectral types taken from (cite: Luhman2003) and (cite: Muench2007)"
+     }
+    ]
+   },
+   "citation": "(cite: Luhman2003); (cite: Muench2007)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure fluxes",
+   "method": "Peak flux and rms with imstat; uvmodelfit point source (non-detections) or elliptical Gaussian (detections); detection S/N>4",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Peak from 4\" radius circle, rms from 4-7\" annulus"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust masses",
+   "method": "M_dust = F d^2 / (kappa B(T_dust))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "d=310 pc, T_dust=20 K, kappa=2.3 cm2/g at 1.33 mm, gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Stacking of non-detections",
+   "method": "Stack 96 non-detections centered on stellar positions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare luminosity distributions across regions",
+   "method": "10^6 Monte Carlo draws by spectral-type bin, CDFs, censored Peto-Prentice tests; comparison samples scaled to 310 pc and 1.3 mm with F∝λ^-2.5",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Spectral type as proxy for stellar mass"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Mdust-Mstar regression",
+   "method": "Bayesian linear regression handling upper limits (Kelly 2007)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Outflow properties of IRAS 03410+3152",
+   "method": "12CO/13CO ratio parabola optical-depth correction; integrate blue/red channels above 4σ outside 3\" mask",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Temperatures 20 and 50 K; no inclination correction"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of continuum detections",
+   "value": "40 of 136",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Detection Criteria",
+     "quote": "we detect 40 out of the 136 IC 348 targets at $>$ 4$~\\sigma$ significance"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked flux of non-detections",
+   "value": "0.14",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1 Non-Detections",
+     "quote": "we find a clear signal of 0.14 $\\pm$ 0.02 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical dust mass of non-detections",
+   "value": "~0.40",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1 Non-Detections",
+     "quote": "the average dust mass of the disks that were not individually detected is only $\\sim$0.40 M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope (IC 348)",
+   "value": "0.90",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 Disk mass vs. Stellar mass",
+     "quote": "$\\beta =$ 0.90 $\\pm$ 0.21 and $\\alpha =$ 0.37 $\\pm$ 0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter (IC 348)",
+   "value": "0.81",
+   "uncertainty": "0.15",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 Disk mass vs. Stellar mass",
+     "quote": "The fitted linear regression for IC 348 provides a large intrinsic scatter of $\\delta =$ 0.81 $\\pm$ 0.15."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinematic age of IRAS 03410+3152",
+   "value": "1800",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.4 CO Emission From IRAS 03410+3152",
+     "quote": "we estimated a kinematic age of 1800 yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Median p (IC 348 vs Taurus)",
+   "value": "2.3e-12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2.2 Continuum Luminosity Distributions",
+     "quote": "medians of $p_{\\phi}=$ 2.3 x 10$^{-12}$ and 5.5 x 10$^{-9}$ for Taurus and Upper Sco"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of CLEAN iterations, threshold, masks, cell and image size",
+  "Line-free channels and continuum subtraction fit order",
+  "Stacking procedure details (weighting, uv vs image plane)",
+  "Flux scale uncertainty",
+  "Bayesian linear regression priors and sampler settings (Kelly 2007 code used?)",
+  "How stellar-mass-bin matching in Monte Carlo used spectral types for comparison samples",
+  "Details of SED fitting and its output",
+  "CASA pipeline version"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond robust=2",
+  "Stacking details",
+  "Monte Carlo and regression code settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are identifiable and the main steps are given, but imaging and stacking details are sparse.",
+ "rediscovery_reason": "Data are likely public, the recipe is mostly stated, and the main results are numeric (detections, stacked flux, dust masses).",
+ "source_card": "cards/2018MNRAS.478.3674R/sonnet/card.md"
+}

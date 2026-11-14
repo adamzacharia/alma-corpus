@@ -1,0 +1,280 @@
+{
+ "bibcode": "2020MNRAS.498.3624L",
+ "title": "Constraints on the electron-to-proton mass ratio variation at the epoch of reionization",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa2635",
+ "arxiv_id": "2008.11143",
+ "fields": [
+  "cosmology",
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Constrain variation of the electron-to-proton mass ratio mu at z > 6 from velocity offsets between [CI]/[CII] fine-structure lines and CO rotational lines in two quasar hosts, and combine with all other Delta mu/mu estimates to test a redshift dependence",
+ "alma_project_codes": [
+  "2015.1.01265.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "J0439+1634 IRAM/NOEMA detections are spatially unresolved despite differing beams",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAM/NOEMA spectra and line parameters of J0439+1634 (Table 1 is the authors' Gaussian refit of these spectra)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "using published IRAM/NOEMA spectra of the most distant gravitationally lensed quasar J0439+1634"
+     }
+    ]
+   },
+   "citation": "Yang J. et al. 2019 (Y19)"
+  },
+  {
+   "what": {
+    "value": "Redshifts, FWHM and channel widths of CO and [CII] lines of J2310+1855 (Table 2 of L20)",
+    "evidence": [
+     {
+      "loc": "3.2 Constraints on mu-variation at z=6.003",
+      "quote": "The detected molecular lines are listed in Table 2 of L20."
+     }
+    ]
+   },
+   "citation": "Li et al. 2020 (L20)"
+  },
+  {
+   "what": {
+    "value": "Delta mu/mu = (-1.3 +/- 7.9)e-5 at z = 6.419 towards J1148+5251, combined into the weighted mean",
+    "evidence": [
+     {
+      "loc": "Description of the data points",
+      "quote": "another high redshift value of $\\Delta\\mu/\\mu$ = $(-1.3\\pm7.9)\\times10^{-5}$ at $z = 6.419$ towards the quasar J1148+5251 (Levshakov et al. 2017)"
+     }
+    ]
+   },
+   "citation": "Levshakov et al. 2017"
+  },
+  {
+   "what": {
+    "value": "Electron mass at recombination m_e,z = (1.0190 +/- 0.0055) m_e,0 used as the z=1100 point of the regression",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Exploiting the value of $m_{{\\rm e},z} = (1.0190\\pm0.0055)m_{\\rm e,0}$ at $z = 1100$ from Hart & Chluba (2020)"
+     }
+    ]
+   },
+   "citation": "Hart & Chluba (2020)"
+  },
+  {
+   "what": {
+    "value": "Compilation of Delta mu/mu measurements from z=0 to z=5.24 (Milky Way, LMC, M33, PKS 1413+135, B0218+357, J0134-0931, PKS1830-211, H2 systems, RXJ0911.4+0551, HLSJ091828.6+514223) used in the regression",
+    "evidence": [
+     {
+      "loc": "Description of the data points",
+      "quote": "The data points shown in Fig. [3](#Fg3) were compiled from the following sources."
+     }
+    ]
+   },
+   "citation": "Levshakov et al. 2013, 2012, 2017, 2019; Kanekar et al. 2010, 2011, 2012, 2015, 2018; Daprà et al. 2017; Ubachs et al. 2016, 2019; Weiß et al. 2012"
+  },
+  {
+   "what": {
+    "value": "Laboratory rest frequencies of CO, [CI] and [CII]",
+    "evidence": [
+     {
+      "loc": "Data and method",
+      "quote": "1036.91239300(50) GHz (Endres et al. 2016)"
+     }
+    ]
+   },
+   "citation": "Endres et al. 2016; Haris & Kramida 2017; Cooksy et al. 1986"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Baseline subtraction and noise estimate",
+   "method": "Baselines fitted by regression to line-free spectral intervals and subtracted; mean rms assigned to whole spectrum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Individual rms uncertainties of the same order, so their mean is used for the whole spectrum"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit line profiles of J0439+1634",
+   "method": "Single-component Gaussian fit to each of [CII], [CI], CO(6-5), CO(7-6), CO(9-8); CO(10-9) excluded because blended",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Alpha is kept fixed, so Delta F/F = -Delta mu/mu"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Delta mu/mu from J0439+1634 at z=6.519",
+   "method": "Average redshifts separately of fine-structure lines and of CO lines, then Delta mu/mu = (<z>_rot - <z>_fs)/(1 + zbar)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Doppler noise is normally distributed with zero mean and finite variance, so averaging over lines gives the signal"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Delta mu/mu from J2310+1855 at z=6.003",
+   "method": "Average five CO redshifts from L20 and compare with [CII] redshift",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "[CII] and CO lines co-spatially distributed (similar widths)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Combine the three z~6 estimates",
+   "method": "Weighted mean of Delta mu/mu at z=6.519, 6.003 and 6.419 (J1148+5251)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Fit redshift dependence of Delta mu/mu",
+   "method": "Regression of power law Delta mu/mu = k_mu (1+z)^p to all compiled points from z=0 to z=1100; exponential alternative also tried",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Electron mass shift at recombination from Hart & Chluba (2020) is real"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Delta mu/mu at z=6.519 (J0439+1634)",
+   "value": "0.0",
+   "uncertainty": "2.7e-5 (1 sigma)",
+   "units": "dimensionless (x1e-5)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "we set a limit on $\\Delta\\mu/\\mu$ $= (0.0 \\pm 2.7)\\times10^{-5}$ at $z = 6.519$."
+    }
+   ]
+  },
+  {
+   "quantity": "Delta mu/mu at z=6.003 (J2310+1855)",
+   "value": "2.3",
+   "uncertainty": "3.4e-5 (1 sigma)",
+   "units": "dimensionless (x1e-5)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "yields $\\Delta\\mu/\\mu$ $= (2.3 \\pm 3.4)\\times10^{-5}$ at $z = 6.003$."
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean Delta mu/mu at zbar=6.3 (three quasars)",
+   "value": "0.7",
+   "uncertainty": "1.2e-5 (1 sigma)",
+   "units": "dimensionless (x1e-5)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "give a mean value of $\\langle \\Delta\\mu/\\mu \\rangle = (0.7 \\pm 1.2)\\times 10^{-5}$ at $\\bar{z} = 6.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law amplitude k_mu",
+   "value": "1.6e-8",
+   "uncertainty": "0.3e-8 (1 sigma)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Possible z-dependence of mu",
+     "quote": "The regression analysis yields $k_\\mu = (1.6 \\pm 0.3)\\times10^{-8}$ and $p = 2.00 \\pm 0.03$ ($1\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law index p",
+   "value": "2.00",
+   "uncertainty": "0.03 (1 sigma)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Possible z-dependence of mu",
+     "quote": "The regression analysis yields $k_\\mu = (1.6 \\pm 0.3)\\times10^{-8}$ and $p = 2.00 \\pm 0.03$ ($1\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean redshift of fine-structure lines of J0439+1634",
+   "value": "6.51885",
+   "uncertainty": "0.00018",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Constraints on mu-variation at z=6.519",
+     "quote": "It gives $\\langle z \\rangle_{\\rm fs} = 6.51885(18)$ and $\\langle z \\rangle_{\\rm rot} = 6.51885(9)$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean redshift of CO lines of J0439+1634",
+   "value": "6.51885",
+   "uncertainty": "0.00009",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Constraints on mu-variation at z=6.519",
+     "quote": "It gives $\\langle z \\rangle_{\\rm fs} = 6.51885(18)$ and $\\langle z \\rangle_{\\rm rot} = 6.51885(9)$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) velocity offset from [CII] in J0439+1634",
+   "value": "20.3",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Constraints on mu-variation at z=6.519",
+     "quote": "with the velocity offset $\\Delta V = 20.3$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "How the weighted mean and its error are computed for combining redshifts and for the final z=6.3 mean (formula, treatment of Doppler noise term)",
+  "How the uncertainty on <z>_fs and <z>_rot and on Delta mu/mu is propagated",
+  "Which individual line redshifts for J0439+1634 are averaged (Table 1 values) and the exact data points and weights, including any systematic terms, entering the regression for k_mu and p",
+  "The regression method (weighted least squares, priors, software) and how the z=1100 point is converted to Delta mu/mu",
+  "Baseline polynomial order and the line-free intervals used for the spectra",
+  "Which L20 CO lines (and which sources of redshifts) make up the five averaged for J2310+1855 and why CO(5-4) NOEMA and CO(6-5) ALMA/NOEMA are both listed",
+  "Calibration, imaging and reduction of the ALMA data (done in L20, not here)"
+ ],
+ "missing_for_reproduction": [
+  "Exact formulas and weights for the weighted means and the regression",
+  "Tabulated line redshifts for J0439+1634 are in Table 1 but flux-density spectra must be taken from Y19",
+  "Compiled Delta mu/mu points for all redshifts are given only in the Appendix text, not a machine-readable table"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Inputs are published tables and a few simple averages and a two-parameter regression, but the weighting and regression details are not given.",
+ "rediscovery_reason": "Data are public via cited papers, recipe is short (average redshifts, difference, weighted mean, fit), and all main results are numeric; weighting conventions must be inferred.",
+ "source_card": "cards/2020MNRAS.498.3624L/sonnet/card.md"
+}

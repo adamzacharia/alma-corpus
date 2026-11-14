@@ -1,0 +1,14 @@
+# Reconciliation: gmc-decomposition-virial
+- SR-01 | FIXED | alpha_CO row and Step 4 now separate adopted conversions (alpha_CO 4.35-8.4 in 3 papers; X 2.0e20-4.35e20 in 3 papers incl. 2018ApJ...867..165B) from virial-derived results (X 5.5e20 in 2020MNRAS.499.2534K, alpha_CO ~28 in 2015Natur.525..218R); count method stated under the table.
+- SR-02 | FIXED | Step 5 and Pitfalls attribute each omitted term per paper; 2016ApJ...833..209O cited only for neglected magnetic fields (pack line 292).
+- SR-03 | FIXED | Software row is now "ODR"; scipy.odr given only as one option, pack does not name the implementation.
+- SR-04 | FIXED | Removed the unattributed "robust catalog in weak lines" rationale for the 8 sigma CLUMPFIND threshold.
+- SR-05 | FIXED | Step 4 gives M = alpha_CO,10 L'_J / R_J1, defines R_J1 as a brightness-temperature luminosity ratio, notes the 1.36 helium convention, and tags each example with its transition (CO(2-1)+R21, CO(1-0), L_CO(1-0) with R32/10 in 2025A&A...699A.369V).
+- SR-06 | FIXED | Step 5 defines a, alpha_5 = a alpha_E, thresholds for each (alpha_E 1/2; alpha_5 a/2a), maps 2020ApJ...894...87C to alpha_5 and 2014ApJ...795L..25R (3k) and 2018ApJ...860..172S (f) to alpha_E-type forms; added a Pitfall and the same note in parameters.md.
+- SR-07 | FIXED | Split into mu_p = 2.33-2.37 (sound speed; 4 papers) and mu_H2 = 2.8 (column to mass; 2 papers) in Step 4 and the table; added the general thermal correction (subtract tracer, add bulk-gas thermal variance) in Step 3.
+- SR-08 | FIXED | Step 3 now starts with component separation: spectrum inspection, two-component fits and DCO+ component matching (2020ApJ...894...87C), Gaussian fits for blends (2025A&A...699A.369V), and a flag/exclude rule.
+- SR-09 | FIXED | Step 6 gives t_ff = sqrt(3 pi/(32 G rho)) with spherical rho and asks for the volume geometry; flags the 2018PASJ...70...73H factor 1.26 without guessing its placement.
+- SR-10 | FIXED | Step 6 adds SFR split by mass among multiple GMCs, IMF sampling, stellar-age and feedback considerations, the ~factor 2 SFR underestimate (pack lines 487, 492, 501), and recommends an SFR uncertainty budget.
+- SR-11 | FIXED | "Not stated" pitfall now lists continuum/line-free channels 11, CASA version 9, flux-scale uncertainty 7, self-cal 5, primary-beam 4, cell size 3 etc. from the pack aggregate (per-wording counts, stated as such), plus a provenance checklist.
+- SR-12 | FIXED | X(1-0) = 2.4, X(2-1) = 3 marked as lacking a unit scale in pack and card (2024ApJ...966...51G card line 138), verify before use; left out of the adopted count.
+- SR-13 | FIXED | Fixed-scale text (Step 2 and When not to use) now says it gives beam-volume properties with matched mass and linewidth and does not measure an unresolved cloud's radius or alpha_vir.

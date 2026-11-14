@@ -1,0 +1,573 @@
+{
+ "bibcode": "2023MNRAS.522...56V",
+ "title": "A systematic survey of millimetre-wavelength flaring variability of young stellar objects in the Orion Nebula Cluster",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad926",
+ "arxiv_id": "2303.15516",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks",
+  "stellar_physics",
+  "transients"
+ ],
+ "question": "What is the occurrence rate and nature of strong, short-term (minutes to days) millimeter-wavelength flaring variability in Young Stellar Objects (YSOs) in the Orion Nebula Cluster, and how do systematic time-sliced imaging effects and flares impact millimeter flux and disk mass measurements?",
+ "alma_project_codes": [
+  "2017.1.01313.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12-m array (average of 48 antennas per epoch; 46-49 antennas)",
+  "angular_resolution": "0.36 x 0.24 arcsec^2 (mean across epochs); 0.35 x 0.24 arcsec^2 (concatenated image)",
+  "sensitivity": "118 to 307 uJy beam^-1 (1.16-h epochs); 42 uJy beam^-1 (concatenated); 290 to 360 uJy beam^-1 (20-min); ~1.0 mJy beam^-1 (8-s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Chandra Orion Ultra-deep Project (COUP) X-ray source catalog",
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "followed by an automatic search only on the position of known X-ray sources in the Chandra Orion Ultra-deep Project (COUP; (cite: get05b))"
+     }
+    ]
+   },
+   "citation": "(cite: get05b)"
+  },
+  {
+   "what": {
+    "value": "VLA cm-wavelength source catalogs of the ONC",
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "known sources detected at cm-wavelengths with the VLA reported by (cite: for16) and (cite: vargas2021)"
+     }
+    ]
+   },
+   "citation": "(cite: for16), (cite: vargas2021)"
+  },
+  {
+   "what": {
+    "value": "CARMA 3-mm source catalog of Orion BN/KL",
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "and millimeter sources reported in (cite: friedel2011), (cite: eisner2016), and (cite: otter2021)."
+     },
+     {
+      "loc": "Source Detection",
+      "quote": "we detect 89 per cent of the 28 millimeter sources within the HPBW primary beam reported in (cite: friedel2011) based on 3 mm CARMA observations"
+     }
+    ]
+   },
+   "citation": "(cite: friedel2011)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1.3-mm and 0.85-mm source catalogs of ONC protoplanetary disks",
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "We also detect the 4 millimeter sources in the field reported in (cite: eisner2016) using 1.3 mm ALMA observations"
+     },
+     {
+      "loc": "Source Detection",
+      "quote": "24 out of 29 sources detected at 0.85 mm that fall within our observed field are detected in our observations (cite: eisner2018)."
+     }
+    ]
+   },
+   "citation": "(cite: eisner2016), (cite: eisner2018)"
+  },
+  {
+   "what": {
+    "value": "ALMA 3-mm source catalog and flux measurements in Orion",
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "Finally, in the ALMA millimeter survey presented in (cite: otter2021) there are 61 within the HPBW primary beam of which 77 per cent have counterparts in our catalog"
+     }
+    ]
+   },
+   "citation": "(cite: otter2021)"
+  },
+  {
+   "what": {
+    "value": "Optical/HST and near-IR catalogs of ONC protoplanetary disks and proplyds",
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "listed as proplyds and detected in optical and/or near-IR bands (cite: ricci2008; hillenbrand2000)."
+     },
+     {
+      "loc": "Source Detection",
+      "quote": "Within this field there are 21 out of the 162 protoplanetary disks reported at optical wavelengths in (cite: vicente2005)"
+     }
+    ]
+   },
+   "citation": "(cite: ricci2008; hillenbrand2000; vicente2005)"
+  },
+  {
+   "what": {
+    "value": "VLBA nonthermal cm counterparts and binary proper motion candidates",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Source from (cite: for16) reported as nonthermal centimeter counterpart in the VLBA follow-up (cite: forbrich2021) are marked with an asterisk symbol in column (11)."
+     },
+     {
+      "loc": "Strong Flaring source ORBS",
+      "quote": "are already 50 per cent of the potential binaries in that VLBA sample (cite: dzib2021)."
+     }
+    ]
+   },
+   "citation": "(cite: forbrich2021; dzib2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Time-sliced and concatenated continuum imaging with spatial filtering",
+   "method": "Image pipeline-calibrated visibilities in Stokes I (and Stokes Q for ORBS) using multi-frequency synthesis (mfs) in CASA TCLEAN with a uv-range cut (>138 klambda) to filter extended emission, creating a concatenated image, 8 epoch images (1.16 h), 24 sub-epoch images (20 min), 17 images (4 min), and 265 high-cadence images (8 s).",
+   "software": [
+    "CASA",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "deconvolver = Hogbom, weighting = Briggs, robust = 0.5",
+    "image size = 2048 x 2048 pixels, pixel size = 0.05 arcsec, pblim = 0.2",
+    "uvrange > 138 klambda (~414 km)"
+   ],
+   "assumptions": [
+    "Extended structures larger than ~1.5 arcsec are thermal dust/nebular emission that do not vary on timescales of minutes to days."
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Simulate ALMA observations to quantify systematic artificial variability",
+   "method": "Generate 100 2D Gaussian constant artificial source models combined with 3 real background cutouts from the concatenated image (300 sky models), simulate visibilities across 7 hour angles (1 h each) using Simobserve, image with Simanalyze, extract fluxes with iterative IMFIT, and compute the variability factor (VF = max/min peak flux density).",
+   "software": [
+    "CASA",
+    "Simobserve",
+    "Simanalyze",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "Source FWHM = 0.1 to 0.9 arcsec; peak flux density = 5 to 100 mJy beam^-1",
+    "Hour angles = -5 h to +1 h (7 observations of 1 h each); pixel size = 0.05 arcsec; image size = 100 x 100 pixels"
+   ],
+   "assumptions": [
+    "Artificial sources have constant intrinsic flux density; measured flux variations arise from the changing synthesized beam interacting with source structure and complex background."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Source detection, photometry, and multiwavelength catalog cross-matching",
+   "method": "Visually inspect the concatenated continuum map and automatically search at positions of known X-ray (COUP), cm (VLA), and mm (CARMA, ALMA) sources; extract peak flux densities and deconvolved sizes using iterative Gaussian fitting (IMFIT) with a 5-sigma detection threshold; cross-match against X-ray, cm, mm, and optical/IR disk catalogs.",
+   "software": [
+    "CASA",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "Detection threshold = 5 sigma; catalog cross-match search radius = 0.5 arcsec (extended to 1.0 arcsec for additional counterparts/disks)"
+   ],
+   "assumptions": [
+    "Distance to the ONC is ~400 pc."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Light curve extraction, variability factor (VF) analysis, and physical flare characterization",
+   "method": "Measure peak flux densities of the 133 catalog sources across the 1-h, 20-min, 4-min, and 8-s time-sliced images using IMFIT (adopting 3x local rms noise as upper limit when S/N < 5); compute VF = S_max / S_min; derive emitting region size upper limit from light travel time of the flare rise and estimate brightness temperature and radio luminosity.",
+   "software": [
+    "CASA",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "Detection threshold = 5 sigma per time bin; non-detection upper limit = 3 sigma (local rms); systematic variability threshold VF = 2"
+   ],
+   "assumptions": [
+    "Light travel time during the ~4 min rise time sets the maximum radius of the flare emitting region (r < 0.5 au); dust mass is directly proportional to flux density at fixed dust temperature (M_dust proportional to S_nu)."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of compact 3-mm sources detected (>=5 sigma)",
+   "value": "133",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Source Detection",
+     "quote": "Due to the presence of noise peaks with S/N levels in the range of $\\sim3-4$, we have enforced a detection threshold of 5$\\sigma$, leading to a total of 133 sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Artificial variability factor (VF) range in full simulations",
+   "value": "1.1 to 2.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Simulated observations to assess systematic artificial variability in a complex region",
+     "quote": "These artificial variability spans a range of 1.1$\\leq$VF$\\leq$2.1 and a median value of VF$=$1.51."
+    }
+   ]
+  },
+  {
+   "quantity": "Median artificial variability factor (VF) in simulations",
+   "value": "1.51",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Simulated observations to assess systematic artificial variability in a complex region",
+     "quote": "These artificial variability spans a range of 1.1$\\leq$VF$\\leq$2.1 and a median value of VF$=$1.51."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum systematic variability factor for actual HA range (-3h20m < HA < +1h)",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Simulated observations to assess systematic artificial variability in a complex region",
+     "quote": "If we limit these simulations to $-$3h20m$<$HA$<+1$h, we then obtain a maximum systematic variability of VF$\\sim$1.6."
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted systematic variability cut-off threshold (VF)",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Simulated observations to assess systematic artificial variability in a complex region",
+     "quote": "a reasonable cut-off for systematic variability that can affect at least a sample of sources given certain conditions (e.g., source size in combination with a complex background) is VF$=$2."
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) average peak flux density in concatenated image",
+   "value": "0.241",
+   "uncertainty": "0.022",
+   "units": "mJy beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "It only appears as a very faint source with an average peak flux density of $0.241\\pm0.022$ mJy beam$^{-1}$ in the concatenated image"
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) peak flux density in Epoch 4 (1-h resolution)",
+   "value": "1.039",
+   "uncertainty": "0.046",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "remaining undetected for more than three hours since the start of the observations to then peak at $1.039\\pm0.046$ mJy beam$^{-1}$ (S/N$\\sim$23) in epoch 4."
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) peak flux density at 20-min resolution",
+   "value": "2.562",
+   "uncertainty": "0.056",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "with a significantly increased VF$\\sim$21$\\pm$4 and a peak flux density of $2.562\\pm0.056$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) variability factor (VF) at 20-min resolution",
+   "value": "21",
+   "uncertainty": "4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "with a significantly increased VF$\\sim$21$\\pm$4 and a peak flux density of $2.562\\pm0.056$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) peak flux density at 4-min resolution",
+   "value": "5.159",
+   "uncertainty": "0.066",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "with similar peak flux density of $5.159\\pm0.066$ mJy beam$^{-1}$ at 4-min time resolution and a maximum of $5.835\\pm0.132$ mJy beam$^{-1}$ at 8-s time resolution"
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) maximum peak flux density at 8-s resolution (second peak)",
+   "value": "5.835",
+   "uncertainty": "0.132",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "with similar peak flux density of $5.159\\pm0.066$ mJy beam$^{-1}$ at 4-min time resolution and a maximum of $5.835\\pm0.132$ mJy beam$^{-1}$ at 8-s time resolution"
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) first peak flux density at 8-s resolution",
+   "value": "4.856",
+   "uncertainty": "0.085",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "The second peak is the maximum already mentioned and the first one just slightly fainter at $4.856\\pm0.085$ mJy beam$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) flare duration",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "min",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "allowing us to constrain the flare duration to $\\sim$10 minutes with a rise time of $\\sim$4 minutes from the first detection (05:26 UTC) until the first peak"
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) flare rise time to first peak",
+   "value": "~4",
+   "uncertainty": "not stated",
+   "units": "min",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "allowing us to constrain the flare duration to $\\sim$10 minutes with a rise time of $\\sim$4 minutes from the first detection (05:26 UTC) until the first peak"
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) emitting region radius upper limit",
+   "value": "<0.5",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "we can estimate an upper limit for the size scale of the emitting region to have a radius r$<$0.5 au."
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) flare brightness temperature lower limit",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "MK",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "the intensity at the first peak would be equivalent to a brightness temperature of 0.5 MK (cite: gue02), which in turn represents a lower limit"
+    }
+   ]
+  },
+  {
+   "quantity": "ORBS (Source 74) flare absolute radio luminosity",
+   "value": "~1e18",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 Hz^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Strong Flaring source ORBS",
+     "quote": "This translates into absolute radio luminosities of $\\sim2\\times10^{14}$ and $\\sim1\\times10^{18}$ ergs s$^{-1}$ Hz$^{-1}$ for Proxima Cen and ORBS flares, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source BN (Source 25) averaged peak flux density",
+   "value": "70.991",
+   "uncertainty": "0.183",
+   "units": "mJy beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Variability distribution in Orion-KL",
+     "quote": "This is the brightest millimeter source in our sample (source 25 in Table [1](#tab:catalog)) with an averaged peak flux density of $70.991\\pm0.183$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Source I (Source 61) averaged peak flux density",
+   "value": "46.475",
+   "uncertainty": "0.190",
+   "units": "mJy beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Variability distribution in Orion-KL",
+     "quote": "Here we report an averaged peak flux density of $46.475\\pm0.190$ mJy beam$^{-1}$ for Source I"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 86 variability factor (VF) at 1-h resolution",
+   "value": "4.1",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "With a VF $=4.1\\pm0.3$ within 7 days (170.2 h) from its 1-h time resolution LC"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 86 variability factor (VF) at 20-min resolution",
+   "value": "10.0",
+   "uncertainty": "0.7",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "This source shows an order of magnitude change in peak flux density (VF$\\sim$10.0$\\pm$0.7) on longer timescales of 7.1 days (171 h)"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 86 maximum peak flux density at 20-min resolution",
+   "value": "2.531",
+   "uncertainty": "0.085",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "revealing three successive peaks at $2.531\\pm0.085$, $2.418\\pm0.047$, and $2.052\\pm0.042$ mJy beam$^{-1}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 87 averaged peak flux density",
+   "value": "0.484",
+   "uncertainty": "0.015",
+   "units": "mJy beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "The averaged peak flux density of source 87 over the 8 epochs is 0.484$\\pm$0.015 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 87 lower limit variability factor (VF) at 1-h resolution",
+   "value": "~5.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "This source shows the largest variability in the sample at 1 h time resolution with a VF$\\sim$5.3 on a timescale of 5 days (120.2 h)"
+    }
+   ]
+  },
+  {
+   "quantity": "Source 87 variability factor (VF) at 20-min resolution",
+   "value": "10.0",
+   "uncertainty": "1.9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "If we then look into the 20-min time resolution LC, its peak within epoch 5 increases to $1.417\\pm0.019$ mJy beam$^{-1}$ leading to a variability of an order of magnitude (VF$=10.0\\pm1.9$) in 5 days."
+    }
+   ]
+  },
+  {
+   "quantity": "Source 87 maximum peak flux density at 20-min resolution",
+   "value": "1.417",
+   "uncertainty": "0.019",
+   "units": "mJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Additional highly variable sources",
+     "quote": "If we then look into the 20-min time resolution LC, its peak within epoch 5 increases to $1.417\\pm0.019$ mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of sources with VF > 2 (within 3 sigma) at 1-h resolution",
+   "value": "~6",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Variability distribution in Orion-KL",
+     "quote": "in the 1-h time resolution data, of the 133 LCs only $\\sim$6 per cent of the sources have VF values above our systematic limit of VF$>$2 within 3$\\sigma$ uncertainty"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of sources with VF > 2 (within 3 sigma) at 20-min resolution",
+   "value": "~20",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Variability distribution in Orion-KL",
+     "quote": "On the other hand, at 20-min time resolution, about $\\sim$20 per cent of the sample, present VF levels above this defined threshold within 3$\\sigma$ uncertainty"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Stopping criteria (niter, threshold) and masking strategy used in CASA TCLEAN for the concatenated, 1-h, 20-min, 4-min, and 8-s images",
+  "Exact box sizes, offset grid values, and convergence criteria used in the iterative CASA IMFIT source extraction wrapper from Vargas-Gonzalez et al. (2021)",
+  "Exact coordinates of the three background cutout regions extracted from the concatenated image for the Simobserve/Simanalyze simulations",
+  "Thermal noise parameters (or atmospheric conditions) input to Simobserve/Simanalyze when generating the 2100 simulated images"
+ ],
+ "missing_for_reproduction": [
+  "TCLEAN stopping threshold and niter parameters for the various time-binnings (concatenated, 1-h, 20-min, 4-min, 8-s)",
+  "Custom iterative IMFIT script parameters (exact box sizes and positional offset grids)",
+  "Exact sky coordinates of the three background cutouts used in the CASA Simobserve/Simanalyze simulations"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "The ALMA project code, CASA version (5.4.1), calibrators, imaging parameters (Hogbom, Briggs robust=0.5, 2048x2048, 0.05 arcsec cell, pblim=0.2, uv cut >138 klambda), time-slicing intervals, and source catalog are all explicitly documented. Minor deductions for unstated TCLEAN stopping thresholds and the unshared iterative IMFIT wrapper script.",
+ "rediscovery_reason": "Public archival ALMA Band 3 continuum dataset (2017.1.01313.S) with a clear, well-specified time-sliced imaging and photometry recipe leading to sharp numeric results (the 10-minute, ~5.8 mJy beam^-1 flare in ORBS and 10x variability in Sources 86 and 87).",
+ "source_card": "cards/2023MNRAS.522...56V/sonnet/card.md"
+}

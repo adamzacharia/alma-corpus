@@ -1,0 +1,379 @@
+{
+ "bibcode": "2022NatCo..13.4574G",
+ "title": "Detection of companion galaxies around hot dust-obscured hyper-luminous galaxy W0410-0913",
+ "year": 2022,
+ "doi": "10.1038/s41467-022-32297-x",
+ "arxiv_id": "2208.03248",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the properties of the circumgalactic environment surrounding the hyper-luminous hot dust-obscured galaxy W0410-0913 on scales of >=100 kpc and the morphological and kinematic structure of its ISM on scales of a few kpc?",
+ "alma_project_codes": [
+  "2017.1.00123.S",
+  "2017.1.00908.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 5",
+  "arrays": "not stated",
+  "angular_resolution": "CO(4-3): 0.7'' x 0.5''; CO(6-5): 0.22'' x 0.18'' (~0.2'', 1.4 kpc); CO(7-6)+[CI]: 0.6'' x 0.4''",
+  "sensitivity": "CO(4-3): 0.7 mJy/beam in 50 km/s; CO(6-5): 0.08 mJy/beam in 60 km/s; CO(7-6)+[CI]: 0.8 mJy/beam in 50 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric luminosity L_bol = 1.68 x 10^14 L_sun of W0410-0913",
+    "evidence": [
+     {
+      "loc": "The rest-frame UV spectrum of W0410-0913",
+      "quote": "This corresponds to a monochromatic luminosity of {\\rm log}(\\lambda L_\\lambda / {\\rm [erg~s^{-1}]}) = 43.8 ^{+0.3}_{-0.7}, which is orders of magnitudes lower than the expected value {\\rm log}(\\lambda L_\\lambda / {\\rm [erg~s^{-1}]}) = 47.3^{+1.1}_{-1.1}, estimated through a standard bolometric correction relation for rest-frame UV luminosities (cite: Runnoe2012), using L_{\\rm bol} = 1.68 \\times 10^{14}  ~ {\\rm L_\\odot} for W0410-0913, as computed from multiwavelength photometry (cite: Tsai2015)."
+     }
+    ]
+   },
+   "citation": "Tsai et al. (cite: Tsai2015)"
+  },
+  {
+   "what": {
+    "value": "Field Lyman-alpha luminosity function Phi_field from MUSE-Wide survey",
+    "evidence": [
+     {
+      "loc": "The physical significance of the overdensity",
+      "quote": "In detail, at the median Lyman-\\alpha luminosity of galaxies in the dense volume, {\\rm log}(L{_{\\rm Ly\\alpha}}/{\\rm L_\\odot}) = 42.2, the MUSE-wide survey (cite: Herenz2019), which observed Lyman-\\alpha-emitters over a large area of >20~ {\\rm arcmin}^2, yields an expected \\Phi_{\\rm field} = 10^{- (2.1^{+0.37}_{-0.47})} ~ {\\rm dlog}(L{_{\\rm Ly\\alpha}}/{\\rm L_\\odot})^{-1} ~ {\\rm Mpc^{-3}}, where the uncertainty represents the errors on the best-fitting Schechter function parameters (cite: Herenz2019)."
+     }
+    ]
+   },
+   "citation": "Herenz et al. (cite: Herenz2019); Drake et al. (cite: Drake2017)"
+  },
+  {
+   "what": {
+    "value": "Clustering bias parameter of Lyman-alpha emitters b = 2.8 ± 0.4",
+    "evidence": [
+     {
+      "loc": "The physical significance of the overdensity",
+      "quote": "By using an updated value of b=2.8\\pm0.4, recently computed through a 3D clustering analysis of hundreds of Lyman-\\alpha emitters at z\\lesssim4 in the large MUSE-Wide survey (cite: HerreroAlonso2021), and consistent with previous similar studies (cite: Kovac2007; Ouchi2018), we obtain an estimate of the matter overdensity in the surroundings of W0410-0913 of \\rho_{\\rm M} = 5^{+7}_{-3}."
+     }
+    ]
+   },
+   "citation": "Herrero Alonso et al. (cite: HerreroAlonso2021)"
+  },
+  {
+   "what": {
+    "value": "Narrow and broad [OIII] lambda 5007 velocity offsets from Keck/NIRES spectrum",
+    "evidence": [
+     {
+      "loc": "The rest-frame UV spectrum of W0410-0913",
+      "quote": "This interpretation is supported by the blueshift of about \\rm  - 1400 ~ km ~ s^{-1} (with respect to the systemic redshift adopted in this work) of the narrow component of the non-resonant line [O III] \\tt \\lambda5007 from a rest-frame optical spectrum of W0410-0913 observed with KECK/NIRES (cite: Finnerty2020)."
+     }
+    ]
+   },
+   "citation": "Finnerty et al. (cite: Finnerty2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image archival ALMA CO and [CI] observations",
+   "method": "Run standard ALMA pipeline calibration in CASA, subtract continuum in visibility space with uvcontsub, and image emission lines with CASA clean using natural weighting",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "clean"
+   ],
+   "key_parameters": [
+    "clean: 500 iterations, SNR threshold of 3, natural weighting",
+    "pixel sizes: 0.1'' (CO(4-3)), 0.03'' (CO(6-5)), 0.1'' (CO(7-6)+[CI]); spectral bins: 50 km/s, 60 km/s, 50 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract integrated ALMA molecular/atomic line spectra and measure systemic redshift and line widths",
+   "method": "Two-iteration extraction: fit Gaussian to spectrum from 1'' circular aperture, collapse channels in [f_cen - FWHM : f_cen + FWHM] to create moment-0 map, then extract final spectra from connected pixels with SNR > 2 in moment-0 map and fit Gaussians",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "1'' circular aperture for initial pass; connected pixels with SNR > 2 in moment-0 map for second pass"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model 3D molecular gas kinematics of W0410-0913 from CO(6-5) datacube",
+   "method": "Isolate signal using 3DBarolo SEARCH tool, derive initial morphological/kinematic guesses from CASA moment-0 2D Gaussian fit and moment-2 map, and fit 12-ring 3D tilted-ring model in two passes using 3DBarolo 3DFIT",
+   "software": [
+    "3DBarolo",
+    "DUCHAMP",
+    "CASA"
+   ],
+   "key_parameters": [
+    "SEARCH thresholds: SNR_upper = 3.5, SNR_lower = 2.0",
+    "12 model rings; ring width = FWHM of minor axis of restoring beam; max radius = 2x FWHM of major axis; scale height = 0.01''; inclination initial guess = 45 deg (bounds 10-80 deg)"
+   ],
+   "assumptions": [
+    "Thin rotating disk with scale height 0.01'', angular scale 1'' = 7.39 kpc at z = 3.631"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Search for companion galaxies in ALMA data via stacking and ALMA OT sensitivity simulations",
+   "method": "Stack ALMA moment-0 maps (collapsed over 300, 400, 500 km/s) at MUSE Ly-alpha companion positions and redshifts; simulate required integration times with ALMA Cycle 8 Observing Tool",
+   "software": [
+    "ALMA Observing Tool"
+   ],
+   "key_parameters": [
+    "Stacked velocity widths: 300, 400, 500 km/s; OT simulation target: SFR = 30 M_sun/yr, size = 1'', line width = 300 km/s"
+   ],
+   "assumptions": [
+    "Tacconi et al. 2018 M_mol-SFR scaling relation, Milky-Way-like alpha_CO = 4.3, and Milky-Way-like CO excitation ladder (Carilli & Walter 2013)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Reduce VLT/MUSE datacubes and analyze UV spectrum, Ly-alpha nebula, companion galaxies, and CGM overdensity",
+   "method": "Reduce MUSE exposures with ESO-MUSE pipeline v2.8.4 and CubExtractor v1.8 (CubeFix, CubeSharp); extract W0410-0913 UV spectrum and Ly-alpha nebula with CubEx; search for Ly-alpha companions via pseudo-NB aperture scanning and CubEx; compute overdensity relative to MUSE-Wide LF and compare with MDPL2 halo density; measure companion SFRs in archival HST WFC3/F160W images",
+   "software": [
+    "ESO-MUSE Pipeline",
+    "CubExtractor",
+    "CubeFix",
+    "CubeSharp",
+    "CubEx"
+   ],
+   "key_parameters": [
+    "CubEx nebula & 3D CGM gas extraction: SNR > 3, spatial Gaussian filter 0.4'' (2 pixels), spectral Gaussian filter 1.25 Angstrom (1 layer); line search: 1'' apertures, SNR > 3 (or CubEx SNR > 4)"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology (Omega_Lambda0 = 0.69, Omega_m0 = 0.31, Omega_b0 = 0.05, H0 = 67.7 km/s/Mpc); linear galaxy bias b = 2.8 ± 0.4; Chabrier IMF for HST SFRs"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Systemic redshift z_CO(6-5) of W0410-0913",
+   "value": "3.631",
+   "uncertainty": "± 0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA data",
+     "quote": "Through a non-linear least-squares Gaussian fit of the CO(6-5) line, which has the highest SNR among the available data, we derive a systemic redshift of z_{\\rm CO(6-5)} = 3.631 \\pm 0.001."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of CO(4-3), CO(6-5), and CO(7-6) lines",
+   "value": "800",
+   "uncertainty": "70",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA data",
+     "quote": "From our Gaussian fit we derive large FWHMs of about 800~{\\rm km~s^{-1}} (with average associated uncertainties of 70~{\\rm km~s^{-1}}) in CO(4-3), CO(6-5) and CO(7-6)."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of [CI] line",
+   "value": "600",
+   "uncertainty": "± 90",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA data",
+     "quote": "[CI] appears to be narrower ({\\rm FWHM} \\sim 600~ \\pm 90~{\\rm km~s^{-1}}), although this might be an effect of spectral blending with the more luminous CO(7-6)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotational velocity v_rot of W0410-0913 (at r ~ 6 kpc)",
+   "value": "500",
+   "uncertainty": "± 70",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA observations of the internal ISM structure",
+     "quote": "We find that, after a declining trend in the inner 1-2 ~ {\\rm kpc}, v_{\\rm rot}(r) follows a flat curve (within the uncertainties) reaching a value of about \\rm  500 ~ km ~ s^{-1} at a radius of \\sim 6 ~ {\\rm kpc}."
+    },
+    {
+     "loc": "Results, ALMA observations of the internal ISM structure",
+     "quote": "reaching a value of about $\\rm  500 ~ km ~ s^{-1}$ at a radius of $\\sim 6 ~ {\\rm kpc}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central velocity dispersion sigma of W0410-0913 (in inner ~1-2 kpc)",
+   "value": "200",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA observations of the internal ISM structure",
+     "quote": "The \\sigma(r) profile instead peaks at the center (about \\rm  200 ~ km ~ s^{-1} in the inner \\sim 1-2 ~ {\\rm kpc}) and slowly declines outward, exhibiting high values of \\rm \\sigma \\gtrsim 100 ~ km ~ s^{-1} up to about 5-6 ~ {\\rm kpc}."
+    }
+   ]
+  },
+  {
+   "quantity": "Average v_rot / sigma ratio of W0410-0913",
+   "value": "3.5",
+   "uncertainty": "± 1.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA observations of the internal ISM structure",
+     "quote": "We find that, at each radius, the rotational velocity is higher than the dispersion velocity, with an average (median) value of v_{\\rm rot}/\\sigma = 3.5 \\pm 1.8 (v_{\\rm rot}/\\sigma = 3.0 \\pm 0.5)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median v_rot / sigma ratio of W0410-0913",
+   "value": "3.0",
+   "uncertainty": "± 0.5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA observations of the internal ISM structure",
+     "quote": "We find that, at each radius, the rotational velocity is higher than the dispersion velocity, with an average (median) value of v_{\\rm rot}/\\sigma = 3.5 \\pm 1.8 (v_{\\rm rot}/\\sigma = 3.0 \\pm 0.5)."
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological position angle of W0410-0913",
+   "value": "133",
+   "uncertainty": "± 5",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematic modeling of the CO(6-5) emission in the ISM of W0410-0913",
+     "quote": "We find morphological and kinematic position angles of 133 \\pm 5^\\circ and 133.8 \\pm 4.9^\\circ respectively, and morphological and kinematic inclination on the plane of the sky of 49.5 \\pm 3.3^\\circ and 50.1 \\pm 13.1^\\circ."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic position angle of W0410-0913",
+   "value": "133.8",
+   "uncertainty": "± 4.9",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematic modeling of the CO(6-5) emission in the ISM of W0410-0913",
+     "quote": "We find morphological and kinematic position angles of 133 \\pm 5^\\circ and 133.8 \\pm 4.9^\\circ respectively, and morphological and kinematic inclination on the plane of the sky of 49.5 \\pm 3.3^\\circ and 50.1 \\pm 13.1^\\circ."
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological inclination of W0410-0913",
+   "value": "49.5",
+   "uncertainty": "± 3.3",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematic modeling of the CO(6-5) emission in the ISM of W0410-0913",
+     "quote": "We find morphological and kinematic position angles of 133 \\pm 5^\\circ and 133.8 \\pm 4.9^\\circ respectively, and morphological and kinematic inclination on the plane of the sky of 49.5 \\pm 3.3^\\circ and 50.1 \\pm 13.1^\\circ."
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic inclination of W0410-0913",
+   "value": "50.1",
+   "uncertainty": "± 13.1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematic modeling of the CO(6-5) emission in the ISM of W0410-0913",
+     "quote": "We find morphological and kinematic position angles of 133 \\pm 5^\\circ and 133.8 \\pm 4.9^\\circ respectively, and morphological and kinematic inclination on the plane of the sky of 49.5 \\pm 3.3^\\circ and 50.1 \\pm 13.1^\\circ."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of Ly-alpha-emitting satellite galaxies around W0410-0913",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "MUSE observations of the circumgalactic environment of W0410-0913",
+     "quote": "Our MUSE observations (reaching a 2 \\sigma surface brightness (SB) limit of 5\\times10^{-19} \\rm{erg ~ s^{-1} cm^{-2} arcsec^{-2}} in a 1 ~ \\rm{arcsec^2} aperture and in a single spectral channel) reveal a high overdensity of 24 Lyman-\\alpha-emitting satellite galaxies associated with W0410-0913 within the MUSE FOV, in a region of about 400 projected physical kpc (diameter-scale) centered around the central massive luminous object (see Figure 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Overdensity factor of Ly-alpha emitters in dense volume (rho_CGM)",
+   "value": "14",
+   "uncertainty": "+16/-8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The physical significance of the overdensity",
+     "quote": "Comparing this value with \\Phi_{\\rm dense}, we find that the circumgalactic environment around W0410-0913 has a denser concentration of Lyman-\\alpha-emitting galaxies than the average volume, with an estimated overdensity factor of \\rho_{\\rm CGM}= \\dfrac{\\Phi_{\\rm dense} }{\\Phi_{\\rm field} } = 14^{+16}_{-8}."
+    }
+   ]
+  },
+  {
+   "quantity": "Underlying matter overdensity around W0410-0913 (rho_M)",
+   "value": "5",
+   "uncertainty": "+7/-3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The physical significance of the overdensity",
+     "quote": "By using an updated value of b=2.8\\pm0.4, recently computed through a 3D clustering analysis of hundreds of Lyman-\\alpha emitters at z\\lesssim4 in the large MUSE-Wide survey (cite: HerreroAlonso2021), and consistent with previous similar studies (cite: Kovac2007; Ouchi2018), we obtain an estimate of the matter overdensity in the surroundings of W0410-0913 of \\rho_{\\rm M} = 5^{+7}_{-3}."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum projected linear size of Ly-alpha nebula associated with W0410-0913",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "MUSE observations of the circumgalactic environment of W0410-0913",
+     "quote": "We find evidence for a small Lyman-\\alpha nebula associated to this line, with a maximum projected linear size of about 30 ~{\\rm kpc}."
+    }
+   ]
+  },
+  {
+   "quantity": "Redshift of broad N V and C IV emission lines in W0410-0913",
+   "value": "3.600",
+   "uncertainty": "± 0.005",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The rest-frame UV spectrum of W0410-0913",
+     "quote": "Similarly to other luminous quasars and other Hot DOGs (cite: DiazSantos2018)^, (cite: Marziani2017), by computing the center of their Gaussian profiles, we measure large blueshifts for both N v and C iv of about \\rm  2000 ~(\\pm 150) ~ km ~ s^{-1} (see Figure 5), corresponding to a redshift of z = 3.600 \\pm 0.005."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA versions used for each ALMA dataset (only stated as following QA reports)",
+  "Line-free frequency channels and polynomial order used in uvcontsub for ALMA continuum subtraction",
+  "Image dimensions (imsize) and clean masking strategy used in CASA clean",
+  "Exact 3DBarolo version and normalization mode (e.g., local vs azimuthal)"
+ ],
+ "missing_for_reproduction": [
+  "CubExtractor software package (not publicly available) for MUSE data reduction and 3D source extraction",
+  "Exact frequency channel ranges used for uvcontsub continuum subtraction in each ALMA band",
+  "Exact CASA version numbers and 3DBarolo parameter file (e.g., NORM parameter, FTYPE, WFUNC)"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "All raw ALMA, MUSE, and HST datasets are public with explicit program IDs, and the ALMA imaging and 3DBarolo kinematic modeling recipes give nearly all key parameters (pixel sizes, channel widths, weighting, clean iterations, SNR thresholds, ring count, and scale height). A minor deduction is due to closed-source CubExtractor for the MUSE part and unstated uvcontsub channel ranges.",
+ "rediscovery_reason": "The ALMA data (2017.1.00123.S and 2017.1.00908.S) and 3DBarolo software are public, the imaging and tilted-ring fitting parameters are explicitly stated in Methods, and the main ALMA outputs (z_CO(6-5), line FWHMs, v_rot, sigma, v_rot/sigma, inclination, and PA) are quantitative.",
+ "source_card": "cards/2022NatCo..13.4574G/sonnet/card.md"
+}

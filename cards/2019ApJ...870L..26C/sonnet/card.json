@@ -1,0 +1,820 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...870L..26C",
+  "title": "ALMA Autocorrelation Spectroscopy of Comets: The HCN/H<SUP>13</SUP>CN Ratio in C/2012 S1 (ISON)",
+  "year": 2019,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Cordiner, M. A.",
+  "n_authors": 14,
+  "arxiv_id": "1901.08676",
+  "doi": "10.3847/2041-8213/aafb05",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2012.A.00033.S",
+   "2013.1.00278.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we present a new technique employing ALMA autocorrelation data (obtained simultaneously with the interferometric observations), effectively treating the entire 12-m array as a collection of single-dish telescopes."
+   }
+  ],
+  "science": {
+   "fields": [
+    "solar_system",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Comet C/2012 S1 (ISON)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "heliocentric 0.54 au, geocentric 0.88 au",
+      "evidence": [
+       {
+        "loc": "2 Observations and Calibration",
+        "quote": "We obtained ALMA observations using the Band 7 receiver on 2013 November 17 at a heliocentric distance of 0.54 au and geocentric distance 0.88 au"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can ALMA main-array autocorrelation spectra recover extended coma emission from comet ISON, and what is the H12CN/H13CN ratio (13C fractionation in cometary HCN)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The need for improved constraints on the $^{13}$C fraction in cometary HCN provides motivation for our present study."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.A.00033.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "It makes use of ALMA data sets ADS/JAO.ALMA#2012.A.00033.S and 2013.1.00278.S."
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00278.S",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "We obtained observations of the protostar IRAS 16293-2422 from the ALMA science archive (project #2013.1.00278.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "2 Observations and Calibration",
+      "quote": "We obtained ALMA observations using the Band 7 receiver on 2013 November 17"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Two settings centered around 350 and 357 GHz; setting 1 HCN and H13CN, setting 2 three CH3OH lines",
+    "evidence": [
+     {
+      "loc": "2 Observations and Calibration",
+      "quote": "The correlator was configured with two frequency settings (centered around 350 and 357 GHz)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H13CN",
+     "transition": "J=4-3",
+     "rest_frequency": "345.340 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| H$^{13}$CN | 1       | 4       | 3          | 345.340         | 41.44     |"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=4-3",
+     "rest_frequency": "354.505 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| HCN        | 1       | 4       | 3          | 354.505         | 42.54     |"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "4_0-3_-1 E, 1_1-0_0 A+, 7_2-6_1 E",
+     "rest_frequency": "350.688, 350.905, 363.740 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| CH$_3$OH   | 2       | $4_{0}$ | $3_{-1}$ E | 350.688         | 36.34     |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "28 active 12-m antennas of the main array",
+    "evidence": [
+     {
+      "loc": "2 Observations and Calibration",
+      "quote": "Twenty-eight 12-m antennas were active and the minimum antenna spacing was 17.3 m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "~5\" (interferometric images); primary beam FWHM 16.4\" at 354 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations and Calibration",
+      "quote": "which corresponds to a maximum recoverable angular scale of $\\sim$5\" in the interferometric images."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "H13CN RMS 1.4 mK; median Tsys 134 K",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The extremely low (1.4 mK) RMS noise level of our H$^{13}$CN spectrum, with only 45 min of observations"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2013 November 17; setting 1 UT 11:31-12:16, setting 2 UT 12:30-13:29",
+    "evidence": [
+     {
+      "loc": "2 Observations and Calibration",
+      "quote": "observed during UT 11:31-12:16 and UT 12:30-13:29, respectively"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "APEX",
+     "provided": {
+      "value": "Archival single-dish HCO+ spectra of IRAS 16293-2422 (13 spectra, 2008-2017) for validating the autocorrelation method",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "we averaged 13 archival HCO$^+$ spectra (observed 2008 to 2017) to produce the comparison spectrum"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Nucleus position used to extract model spectra",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "model spectra were extracted at the nucleus position identified by (cite: cor14)"
+       }
+      ]
+     },
+     "citation": "(cite: cor14)"
+    },
+    {
+     "what": {
+      "value": "Collision rates for HCN and CH3OH from LAMDA",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "Molecular collision rates for HCN and CH$_3$OH were taken from the Leiden Atomic and Molecular Database (cite: sch05)"
+       }
+      ]
+     },
+     "citation": "(cite: sch05)"
+    },
+    {
+     "what": {
+      "value": "Photodissociation rates for HCN and CH3OH",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "Photodissociation rates for HCN and CH$_3$OH were obtained from (cite: cro94)."
+       }
+      ]
+     },
+     "citation": "(cite: cro94)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard CASA calibration with JAO-supplied scripts",
+     "evidence": [
+      {
+       "loc": "2 Observations and Calibration",
+       "quote": "The raw ALMA data were initially subject to standard calibration in CASA (cite: jae08), using the scripts supplied by the Joint ALMA Observatory (JAO)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Savitsky-Golay filter on line-free spectrum, 51-channel window, order 3 polynomial",
+     "evidence": [
+      {
+       "loc": "2 Observations and Calibration",
+       "quote": "using a 51 channel window and polynomial of order 3."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Water production rate Q(H2O)=2e29 s-1",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "A water production rate $Q({\\rm H_2O}) = 2\\times10^{29}$ s$^{-1}$ was used, following (cite: cor14)."
+       }
+      ]
+     },
+     "from_reference": "(cite: cor14)"
+    },
+    {
+     "what": {
+      "value": "Single-dish calibration techniques",
+      "evidence": [
+       {
+        "loc": "2 Observations and Calibration",
+        "quote": "For more details regarding single-dish calibration techniques, see (cite: one02)."
+       }
+      ]
+     },
+     "from_reference": "(cite: one02)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Which scans/antennas were averaged and any flagging or weighting",
+    "Line-free channel ranges for baseline fitting",
+    "Velocity range for line integration",
+    "Opacity tau0 values used",
+    "Model details such as abundance profile and photodissociation scale lengths",
+    "Observation details of the interferometric cross-correlation comparison"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract and calibrate autocorrelation spectra",
+    "method": {
+     "value": "Unflag and extract autocorrelation spectra with plotms; (on-off)/off, times Tsys, opacity correction to TA' scale; average over antennas and scans",
+     "evidence": [
+      {
+       "loc": "2 Observations and Calibration",
+       "quote": "Background-subtracted spectra were produced for each individual antenna by taking the quotient: *(on-off)/off*, then converted to antenna temperatures by multiplying by $T_{sys}$"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "plotms"
+    ],
+    "key_parameters": [
+     {
+      "value": "opacity correction e^tau0/sin(phi)",
+      "evidence": [
+       {
+        "loc": "2 Observations and Calibration",
+        "quote": "A correction for atmospheric opacity of $e^{\\tau_0}/sin(\\phi)$ was applied"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "3C 279 scans serve as sky reference",
+      "evidence": [
+       {
+        "loc": "2 Observations and Calibration",
+        "quote": "which we later used as an improvised off-source position for sky subtraction"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with APEX HCO+ spectra of IRAS 16293-2422; agrees within one standard deviation",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "our ALMA autocorrelation spectrum lies within one standard deviation of the APEX spectra (shaded region), confirming the efficacy of our method."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure line intensities and rotational temperature",
+    "method": {
+     "value": "Integrate lines; rotational diagram of three CH3OH lines",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Using a rotational diagram analysis (cite: boc94), the best-fitting rotational temperature was found to be $T_{rot}=139\\pm29$ K"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Rotational diagram fit",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Using a rotational diagram analysis (cite: boc94), the best-fitting rotational temperature was found to be $T_{rot}=139\\pm29$ K"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Non-LTE radiative transfer modeling for production rates",
+    "method": {
+     "value": "Modified LIME, statistical equilibrium plus Monte Carlo, Haser spherical coma, collisions with H2O and electrons, fluorescent pumping; fit CH3OH for Tkin then derive Q",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "Our model employs a modified version of the Line Modeling Engine (cite: bri10)"
+      }
+     ]
+    },
+    "software": [
+     "LIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "5,000 cells Delaunay grid; expansion velocity 1.1 km/s; Tkin 145 K",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "The model coma is divided into 5,000 cells on an unstructured Delaunay grid with logarithmic radial sampling."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "H13CN photodissociation and pumping rates same as HCN",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "the photodissociation and pumping rates for H$^{13}$CN were assumed to be the same as for HCN"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Simultaneous fit of all detected CH3OH transitions for Tkin",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "The coma kinetic temperature was derived by simultaneously fitting all the detected CH$_3$OH transitions, resulting in $T_{kin}= 145$ K."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Collision rates varied by factor 2 changed line intensities by a few percent; alternative Tkin=100 K model run",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "varying them by a factor of 2 and found that the predicted line intensities changed by only a few percent"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Standard calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations and Calibration",
+       "quote": "standard calibration in CASA (cite: jae08)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "plotms",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extracting autocorrelation spectra",
+     "evidence": [
+      {
+       "loc": "2 Observations and Calibration",
+       "quote": "then extracted using `plotms`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "modified version",
+    "used_for": {
+     "value": "Coma radiative transfer",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "a modified version of the Line Modeling Engine (cite: bri10)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "H12CN/H13CN ratio",
+    "value": "88",
+    "uncertainty": "±18",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "reveal an H$^{12}$CN/H$^{13}$CN ratio of $88 \\pm 18$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH rotational temperature",
+    "value": "139",
+    "uncertainty": "±29",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "$T_{rot}=139\\pm29$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Q(HCN)",
+    "value": "3.0e26",
+    "uncertainty": "±0.1e26",
+    "units": "s-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$(3.0 \\pm 0.1) \\times 10^{26}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Q(H13CN)",
+    "value": "3.4e24",
+    "uncertainty": "±0.7e24",
+    "units": "s-1",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$(3.4 \\pm 0.7)\\times 10^{24}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Ratio with Tkin=100 K",
+    "value": "82",
+    "uncertainty": "±17",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The corresponding H$^{12}$CN/H$^{13}$CN ratio is $82\\pm17$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Autocorrelation gives ~14x line brightness vs interferometer; H13CN not detectable in cross-correlation data",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Note that H$^{13}$CN was not even detectable in the cross-correlation data"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Autocorrelation data recover extended coma emission lost by the interferometer",
+    "experiment": "Combined autocorrelation spectra of 28 antennas compared with interferometric spectra",
+    "result": "14-fold increase in line brightness; first H13CN detection",
+    "finding": "Autocorrelation spectroscopy is a useful new technique for extended sources",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "resulting in a fourteen-fold increase in detected line brightness compared with the interferometer."
+     }
+    ]
+   },
+   {
+    "hypothesis": "HCN in comet ISON shows 13C fractionation",
+    "experiment": "Non-LTE modeling of HCN and H13CN",
+    "result": "ratio 88±18 vs terrestrial 89",
+    "finding": "No significant 13C fractionation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we obtained an H$^{12}$CN/H$^{13}$CN ratio of 88$\\pm$18, which matches the terrestrial value of 89"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Tkin=100 K (Trot=90 K from IRAM) alternative model gives ratio 82±17, same conclusion",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "we ran alternative models using $T_{rot}=90$ K ($T_{kin}=100$ K)"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Ad-hoc use of phase calibrator scans for sky subtraction leaves standing waves and sky lines and high noise",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Our ad-hoc use of phase calibration scans to subtract the sky and telescope background signal is far from ideal"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only three CH3OH lines constrain temperature, which affects Q",
+    "Sky-subtraction residuals and 7 degree reference offset introduce systematics",
+    "Single epoch, single comet"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "This technique has been applied to archival observations of comet C/2012 S1 (ISON)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Radiative transfer code is a modified, unreleased LIME",
+    "Exact scan selection and line-integration windows"
+   ],
+   "estimated_data_volume_inferred": "tens to hundreds of GB (raw 28-antenna Band 7 data with autocorrelations)",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear outline, but the modified model and some processing choices are not given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires custom modified non-LTE model and unspecified processing details."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: bri10)",
+     "why": "LIME radiative transfer code"
+    },
+    {
+     "citation": "(cite: boc94)",
+     "why": "rotational diagram analysis"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: cor14)",
+     "why": "earlier ALMA ISON interferometric analysis"
+    },
+    {
+     "citation": "(cite: cor17)",
+     "why": "further ALMA ISON details"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-af2d17f51d65d474196ab1e01f166459",
+  "batch_id": "msgbatch_01MY66sGvKajpLU4bUBXRVRf",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:58:17",
+  "usage": {
+   "input_tokens": 12221,
+   "output_tokens": 6020,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042928,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 47,
+  "quotes_ok": 47,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 34,
+   "rate": 0.5
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:10",
+  "custom_id": "repair-sonnet-c25a6c0eed43b001ee4c2b28c115095d",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "Using a rotational diagram analysis (cite: boc94), the best-fitting rotational temperature was found to be $T_{rot}=139\\pm29$ K"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

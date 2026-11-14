@@ -1,0 +1,436 @@
+{
+ "bibcode": "2024MNRAS.527.8865B",
+ "title": "FLASH: Faint Lenses from Associated Selection with Herschel",
+ "year": 2024,
+ "doi": "10.1093/mnras/stad3759",
+ "arxiv_id": "2311.17172",
+ "fields": [
+  "high_z_galaxies",
+  "cosmology"
+ ],
+ "question": "Can high-resolution ALMA Band 7 continuum observations confirm the lensing nature of 86 faint Herschel submillimetre sources (S500 = 15-85 mJy) identified through statistical association with foreground VIKING near-infrared galaxies, and what does this imply for the total number of lenses across Herschel surveys?",
+ "alma_project_codes": [
+  "2019.1.01784.S"
+ ],
+ "data": {
+  "bands": "Band 7 (1.1 mm)",
+  "arrays": "12m array (44 to 49 antennas)",
+  "angular_resolution": "~ 0.15 arcsec (0.18 arcsec by 0.14 arcsec untapered; 0.60 arcsec by 0.56 arcsec tapered)",
+  "sensitivity": "72 uJy/beam (untapered continuum); 137 uJy/beam (0.5 arcsec tapered continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "H-ATLAS GAMA-12 sub-mm positions and 250, 350, 500 um photometry",
+    "evidence": [
+     {
+      "loc": "2.2 The FLASH sample: Faint lenses found through Associated Selection from Herschel",
+      "quote": "This survey is based on the H-ATLAS 12-hour equatorial field (Eales et al. 2010; Valiante et al. 2016), which has good coverage with the VIKING NIR and the optical KIDS survey."
+     }
+    ]
+   },
+   "citation": "Valiante et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "VIKING and KiDS 9-band catalogue, positions, Ks magnitudes, photometric redshifts, and stellar masses",
+    "evidence": [
+     {
+      "loc": "2.2 The FLASH sample: Faint lenses found through Associated Selection from Herschel",
+      "quote": "Wright et al. (2019) have used the nine photometric bands of VIKING and KIDS to produce photometric redshifts and stellar masses for the objects detected in the surveys."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Col. 7: The position of the VIKING-identified source from the catalogues described in Wright et al. (2019)"
+     }
+    ]
+   },
+   "citation": "Wright et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Modified blackbody SED template and photometric redshift error relation Delta z = 0.13(1+z) for Herschel sources",
+    "evidence": [
+     {
+      "loc": "2.2 The FLASH sample: Faint lenses found through Associated Selection from Herschel",
+      "quote": "By comparing these redshift estimates and their errors, in combination with the photometric redshifts for the sub-mm sources and their errors (assuming Δ𝑧 = 0.13(1 + 𝑧); Pearson et al. 2013)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Col. 6: Photometric redshift of the Herschel source based on the fitting of the modified black-body template from Pearson et al. (2013)."
+     }
+    ]
+   },
+   "citation": "Pearson et al. (2013)"
+  },
+  {
+   "what": {
+    "value": "500 um source counts from SCUBA-2, Planck, Herschel, and SHALOS",
+    "evidence": [
+     {
+      "loc": "4.4 Total number of lenses in the Herschel catalogue",
+      "quote": "The lensed candidates from the SHALOS method from González-Nuevo et al. (2019) and the VIKING-based selection from Ward et al. (2022) are compared against the non-differentiated selections from Planck (Trombetti et al. 2021), the brightest Herschel galaxies from Negrello et al. (2017), and the recent discovery of a lens among the STUDIES sample (Pearson et al. 2023)."
+     },
+     {
+      "loc": "4.4 Total number of lenses in the Herschel catalogue",
+      "quote": "Surveys from SCUBA-2 at 450 𝜇m from Casey et al. (2013); Chen et al. (2013) and Zavala et al. (2017) explore the lower flux-density regime."
+     }
+    ]
+   },
+   "citation": "González-Nuevo et al. (2019); Ward et al. (2022); Trombetti et al. (2021); Negrello et al. (2017); Pearson et al. (2023); Casey et al. (2013); Chen et al. (2013); Zavala et al. (2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select the FLASH sample of 86 faint Herschel lens candidates",
+   "method": "Start from 35,512 H-ATLAS GAMA-12 sources; remove sources within 10 arcsec of NVSS radio sources; fit modified blackbody SEDs to 250, 350, 500 um fluxes and require z_phot > 2.0; apply VIKING Ks-band likelihood ratio and reliability estimator; require <0.1% (~3.1 sigma) probability that VIKING and Herschel redshifts overlap; select highest reliability sources in 10 mJy S500 bins within 10 degrees of a single phase centre.",
+   "software": [],
+   "key_parameters": [
+    "NVSS exclusion radius < 10 arcsec",
+    "z_phot,submm > 2.0",
+    "Q0 = 0.82",
+    "Redshift overlap probability < 0.1% (~3.1 sigma)"
+   ],
+   "assumptions": [
+    "Submillimetre photometric redshift uncertainty Delta z = 0.13(1 + z)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract 1.1 mm continuum positions and flux densities",
+   "method": "Run CASA IMFIT iteratively on the 0.5 arcsec tapered continuum images until no obvious sources (> 3 sigma) remain in the residual image.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Residual threshold = 3 sigma on 0.5 arcsec tapered image"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Classify lensing grade (A, B, C) via visual morphology, angular separation, and annulus curve-of-growth analysis",
+   "method": "Visually inspect ALMA maps overlaid on VIKING images to identify arcs/rings or offsets between 0.2 and 2 arcsec from the central VIKING galaxy (37 A-grade sources). Then perform an annulus curve-of-growth SNR analysis (Equation 6) with annulus widths of 0.15, 0.3, and 0.5 arcsec out to 5.5 arcsec around the VIKING position to detect faint (> 5 sigma) ring-like features (identifying 3 additional A-grade lenses: FLASH-30, -34, -75). Classify remaining sources into B-grade and C-grade.",
+   "software": [],
+   "key_parameters": [
+    "A-grade angular offset range: 0.2 to 2 arcsec from VIKING galaxy (without bright VIKING counterpart at ALMA position)",
+    "Annulus widths: 0.15, 0.3, and 0.5 arcsec; detection threshold > 5 sigma"
+   ],
+   "assumptions": [
+    "Astrometric accuracy of ALMA and VIKING is < 0.1 arcsec"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Search for spectral line features in tapered ALMA data cubes",
+   "method": "Visually inspect spectra in the 0.5 arcsec tapered data cubes at source extraction positions, then perform per-source aperture photometry to extract emission or absorption lines and compare with sub-mm/VIKING photometric redshifts.",
+   "software": [
+    "redshift-search-graph"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate foreground lensing halo masses and halo-to-stellar mass ratios",
+   "method": "Use the observed weighted-average angular separation between VIKING and ALMA sources as an estimate of the Einstein radius theta_E in a Singular Isothermal Sphere (SIS) model (Equation 7) to compute total lensing mass M and compare with VIKING stellar masses M_*.",
+   "software": [],
+   "key_parameters": [
+    "Halo virial radius definition r_200 = 3M / (4 * pi * 200 * rho_crit(z_l))"
+   ],
+   "assumptions": [
+    "Flat Lambda-CDM cosmology with Omega_m = 0.315, Omega_Lambda = 0.685, h = 0.674",
+    "Single Isothermal Sphere (SIS) mass profile with observed angular separation taken as Einstein radius theta_E"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive cumulative 500 um lensed source counts and extrapolate to full H-ATLAS survey",
+   "method": "Apply the ALMA-confirmed lensing success ratio of FLASH across the reliability-flux regime representative of the 53.56 sq. deg. GAMA-12 field to compute cumulative lensed number counts, correct the lowest two flux bins for 250 um catalogue redshift incompleteness, and extrapolate to the 660 sq. deg. H-ATLAS survey.",
+   "software": [],
+   "key_parameters": [
+    "GAMA-12 field area = 53.56 sq. deg.; total H-ATLAS area = 660 sq. deg."
+   ],
+   "assumptions": [
+    "Complete VIKING-level NIR coverage across the 660 sq. deg. H-ATLAS fields"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Fraction of confirmed A-grade gravitational lenses in FLASH sample",
+   "value": "47",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Our high-resolution observations (0.15 arcsec) confirm 47 per cent of the initial candidates as gravitational lenses, while lensing cannot be excluded across the remaining sample."
+    },
+    {
+     "loc": "5 CONCLUSIONS",
+     "quote": "The ALMA observations are able to confirm 40 (47 per cent) of these sources to be strong lenses (A-grade lens candidates)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of confirmed A-grade gravitational lenses",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Effectiveness of the FLASH method",
+     "quote": "We robustly identify 40 lensed sources (A-grade), at 47 per cent of the total sample."
+    },
+    {
+     "loc": "5 CONCLUSIONS",
+     "quote": "The ALMA observations are able to confirm 40 (47 per cent) of these sources to be strong lenses (A-grade lens candidates)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of B-grade lens candidates",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Effectiveness of the FLASH method",
+     "quote": "In 23 cases, there are some tentative indications of lensing, which cannot be confirmed with current observations (B-grade)."
+    },
+    {
+     "loc": "5 CONCLUSIONS",
+     "quote": "For an additional 23 (27 per cent) sources, there are tentative indications of lensing, however our ALMA observations are not able to conclusively indicate lensing (B-grade lens candidates)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of C-grade lens candidates",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Effectiveness of the FLASH method",
+     "quote": "For the remaining 23 cases, the ALMA observations provide no indications of gravitational lensing (C-grade)."
+    },
+    {
+     "loc": "5 CONCLUSIONS",
+     "quote": "For the final 23 (27 per cent), it remains unclear whether these sources are lensed (C-grade lens candidates)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average foreground lensing halo mass of A-grade candidates (log10 M/M_sun)",
+   "value": "12.9",
+   "uncertainty": "0.5",
+   "units": "dex (log10 M_sun)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find average lensing masses (log 𝑀/𝑀⊙ = 12.9 ± 0.5) in line with previous experiments"
+    },
+    {
+     "loc": "4.3 The lensed galaxies of the FLASH sample",
+     "quote": "The average mass for the A-grade lens candidates is log10 𝑀/𝑀⊙ = 12.9 ± 0.5, and lies approximately one order of magnitude below the C-grade sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Halo-to-stellar mass ratio of A-grade lens candidates",
+   "value": "10^2.2",
+   "uncertainty": "0.1 dex (0.9 dex source-to-source variation)",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 The lensed galaxies of the FLASH sample",
+     "quote": "We estimate the halo-to-stellar mass ratio of our A-grade lens candidates, which is around 10^{2.2±0.1} 𝑀⊙, with a source-to-source variation on the order of 0.9 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Expected number of identifiable gravitational lenses across 660 sq. deg. H-ATLAS field",
+   "value": "3000",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "If we apply our method across the total 660 sqr. deg. H-ATLAS field, it would allow us to robustly identify 3000 gravitational lenses across the 660 square degree Herschel ATLAS fields."
+    },
+    {
+     "loc": "5 CONCLUSIONS",
+     "quote": "Our method will be able to find ∼ 3000 lensed sources over the entire H-ATLAS field"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected number of lenses across full Herschel catalogues if 250 um selection criterion is removed",
+   "value": "7000",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Total number of lenses in the Herschel catalogue",
+     "quote": "Our estimate based on the photometric redshift estimates of the entire Herschel catalogues, the expected number of sources across the full Herschel catalogues could be expanded to 7000 sources (a 2.35× increase if we remove our current 𝜎250 ≈ 7 mJy criterion)."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated completeness C of the FLASH selection",
+   "value": "0.7",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.3 The statistics of the FLASH selection",
+     "quote": "As a result, an initial estimation of the completeness of the FLASH selection is around 𝐶 ≈ 0.82 × 0.8175 ≈ 0.7 ± 0.1."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of ALMA fields with more than one emitter (excluding multiple lensed images)",
+   "value": "47",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.3 Cluster lenses and protoclusters in the FLASH sample",
+     "quote": "47 fields contain more than one emitter (excluding multiple images from lenses), in line with the prediction from random pointings."
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-13 total 1.1 mm continuum flux density",
+   "value": "3.68",
+   "uncertainty": "0.31",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-13 A-grade 3.68 ± 0.31 (11.78𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-27 total 1.1 mm continuum flux density",
+   "value": "1.74",
+   "uncertainty": "0.41",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-27 A-grade 1.74 ± 0.41 (4.27𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-48 total 1.1 mm continuum flux density",
+   "value": "7.69",
+   "uncertainty": "0.44",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-48 A-grade 7.69 ± 0.44 (17.6𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-58 total 1.1 mm continuum flux density",
+   "value": "6.47",
+   "uncertainty": "0.68",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-58 A-grade 6.47 ± 0.68 (9.48𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-73 total 1.1 mm continuum flux density",
+   "value": "14.26",
+   "uncertainty": "0.63",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-73 A-grade 14.26 ± 0.63 (22.49𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-85 total 1.1 mm continuum flux density",
+   "value": "35.19",
+   "uncertainty": "0.99",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-85 A-grade 35.19 ± 0.99 (35.41𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "FLASH-86 total 1.1 mm continuum flux density",
+   "value": "39.77",
+   "uncertainty": "0.52",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "FLASH-86 A-grade 39.77 ± 0.52 (77.12𝜎)"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic redshift of FLASH-86N from CH+(2-1) absorption",
+   "value": "3.965",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.2 Confusion between fore- and background sources",
+     "quote": "The only bright absorption feature is the CH+(2-1) absorption line, confirming its redshift to be 𝑧 = 3.965."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration and imaging",
+  "Exact imaging task (e.g., tclean), deconvolver, stopping criteria, masking, cell size, and image size",
+  "Spectral window setup (bandwidths, channel widths) for the Band 7 observations and tapered data cubes",
+  "Whether primary beam correction was applied to the maps prior to IMFIT flux extraction",
+  "Exact aperture sizes and shapes used for extracting emission/absorption line spectra in the five line-detected sources"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and tclean imaging parameters (cell size, image size, cleaning threshold, masking) for both the robust=2.0 and 0.5 arcsec tapered maps",
+  "Exact definition of the per-field noise sigma and background region used in the annulus curve-of-growth SNR calculation (Equation 6)",
+  "Exact reliability-flux boundary function shown in Figure 11 used to weight and extrapolate the GAMA-12 FLASH detections to the cumulative number counts in Figure 14"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA data are public (2019.1.01784.S), full target and extracted photometry catalogues are provided in Tables 1 and 3, and the imaging (Briggs robust=2.0, 0.5 arcsec taper), flux extraction (CASA IMFIT to 3 sigma), classification criteria, and SIS mass equations are clearly described. Minor deductions for missing CASA/tclean parameters and exact window definitions for the spectral line extractions and number-count extrapolation.",
+ "rediscovery_reason": "Public single-project ALMA dataset (2019.1.01784.S) with a straightforward pipeline+CASA imaging and IMFIT photometry workflow, explicit geometric/morphological lens grading rules, and well-defined numerical benchmarks (1.1 mm flux densities for 86 fields, 47% A-grade lens fraction, and mean log M/M_sun = 12.9 +/- 0.5).",
+ "source_card": "cards/2024MNRAS.527.8865B/sonnet/card.md"
+}

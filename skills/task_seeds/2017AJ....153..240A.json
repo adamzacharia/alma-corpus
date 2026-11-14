@@ -1,0 +1,289 @@
+{
+ "bibcode": "2017AJ....153..240A",
+ "title": "An ALMA Survey of Protoplanetary Disks in the σ Orionis Cluster",
+ "year": 2017,
+ "doi": "10.3847/1538-3881/aa69c0",
+ "arxiv_id": "1703.08546",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "How much dust and gas do protoplanetary disks in the 3-5 Myr sigma Orionis cluster retain, how do they compare to other regions, and does external photoevaporation affect them?",
+ "alma_project_codes": [
+  "2015.1.00089.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm)",
+  "arrays": "12 m, 36 and 37 antennas",
+  "angular_resolution": "0.31\"x0.25\" average beam (~120x95 AU)",
+  "sensitivity": "average continuum rms 0.15 mJy/beam; line rms 13, 14, 11 mJy/beam per 1 km/s channel (12CO, 13CO, C18O)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectral types for most sources",
+    "evidence": [
+     {
+      "loc": "2 SAMPLE",
+      "quote": "Spectral types were primarily taken from the homogenous sample of low-resolution optical spectra analyzed in (cite: 2014ApJ...794...36H)"
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...794...36H)"
+  },
+  {
+   "what": {
+    "value": "WB14 parametrized gas disk model grid for gas masses",
+    "evidence": [
+     {
+      "loc": "5.2 Gas Masses",
+      "quote": "we can still place rough constraints on $M_{\\rm gas}$ by comparing our measured $^{12}$CO and $^{13}$CO line luminosities or upper limits to the WB14 model grid."
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...788...59W)"
+  },
+  {
+   "what": {
+    "value": "DALI model grid for gas masses",
+    "evidence": [
+     {
+      "loc": "Gas Masses",
+      "quote": "Alternatively, one can estimate $M_{\\rm gas}$ by employing the grid of physical-chemical models presented in (cite: 2016A&A...594A..85M) (hereafter M16). Using the code DALI"
+     }
+    ]
+   },
+   "citation": "(cite: 2016A&A...594A..85M)"
+  },
+  {
+   "what": {
+    "value": "Literature (sub-)mm fluxes of other regions for comparison",
+    "evidence": [
+     {
+      "loc": "6.2 Mdust-Mstar Relation",
+      "quote": "we calculate $M_{\\rm dust}$ uniformly across each region by inputting the (sub-)mm continuum fluxes (or $3\\sigma$ upper limits) from the literature into Equation"
+     }
+    ]
+   },
+   "citation": "Ansdell et al. 2016; Pascucci et al. 2016; Barenfeld et al. 2016"
+  },
+  {
+   "what": {
+    "value": "Accretion rates from U-band photometry",
+    "evidence": [
+     {
+      "loc": "6.5 Relation between Mdisk and Macc",
+      "quote": "we combine our ALMA observations with the $U$–band survey of (cite: 2011A&A...525A..47R)"
+     }
+    ]
+   },
+   "citation": "(cite: 2011A&A...525A..47R)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum flux densities",
+   "method": "Fit point-source models (elliptical Gaussian for 5 resolved sources) to visibilities",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "uncertainties scaled by sqrt of reduced chi2; detection >3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect and measure CO lines",
+   "method": "Extract spectra in 0.30\" aperture, find >3 rms in multiple channels, zero-moment maps, curve-of-growth aperture photometry; detection if F>4 sigma",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "non-detections: upper limits 3x image rms, integrate ±1 km/s of known RV or 13 km/s (Group 2)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive stellar masses",
+   "method": "Place sources on HR diagram vs Siess et al. tracks; Teff from SpT, L from J band; MC of 1000 perturbations for uncertainty",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 385 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Convert continuum flux to dust mass",
+   "method": "Optically thin Hildebrand formula, Mdust = F d^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tdust = 20 K; kappa = 10 cm2/g at 1000 GHz, beta = 1; d = 385 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate gas masses",
+   "method": "Compare 12CO and 13CO luminosities to WB14 grid (mean in log space of consistent models, min/max limits); alternatively M16 DALI relations for 13CO/C18O limits",
+   "software": [
+    "DALI (via M16 models)"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "[CO]/[H2]=1e-4 (WB14); [C]/[H]=1.35e-4, 1 Myr (M16); [CO]/[13CO]=70"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Stack non-detections",
+   "method": "Average images in image plane after centering on expected positions, then aperture photometry",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Fit Mdust-Mstar relation and compare regions",
+   "method": "Kelly (2007) Bayesian linear regression with upper limits; Kaplan-Meier means and two-sample tests with ASURV",
+   "software": [
+    "ASURV",
+    "linmix (Kelly 2007)"
+   ],
+   "key_parameters": [
+    "Mstar >= 0.1 Msun"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum detections",
+   "value": "37 of 92",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 1.33 mm Continuum Emission",
+     "quote": "We detect only 37 out of the 92 observed sources at $>3\\sigma$ significance"
+    }
+   ]
+  },
+  {
+   "quantity": "Disks with Mdust>10 Mearth",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "disks",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Dust Masses",
+     "quote": "only 11 disks have $M_{\\rm dust}>10~M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stack of 55 continuum non-detections",
+   "value": "0.05",
+   "uncertainty": "0.03",
+   "units": "mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Stacking Analysis",
+     "quote": "The measured continuum mean signal is 0.05$\\pm$0.03 mJy (1.7$\\sigma$)."
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma average dust mass upper limit of undetected",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "Mearth",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Stacking Analysis",
+     "quote": "This provides a 3$\\sigma$ upper limit on the average dust mass of individually undetected continuum sources of 0.4 $M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdust-Mstar fit slope beta",
+   "value": "2.0",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 Mdust-Mstar Relation",
+     "quote": "$\\alpha=1.0\\pm0.2$, $\\beta=2.0\\pm0.4$, and $\\delta=0.6\\pm0.1$ dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust mass sigma Ori",
+   "value": "7",
+   "uncertainty": "1",
+   "units": "Mearth",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.3 Dust Mass Distributions",
+     "quote": "we find average disk dust masses of $7\\pm1$ $M_{\\oplus}$ for $\\sigma$ Orionis"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas masses of 3 disks detected in 12CO and 13CO",
+   "value": "2–7",
+   "uncertainty": "not stated",
+   "units": "MJup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Gas Masses",
+     "quote": "these values span 2–7 $M_{\\rm Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Transition disk fraction among continuum detections",
+   "value": "16% (6/37)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.4 Transition Disks",
+     "quote": "Thus 16% (6/37) of our ALMA continuum detections are TDs"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum channel selection / line-free channels",
+  "Image size, cell size, clean threshold and masking",
+  "Whether uvmodelfit starting guesses were used",
+  "Integration velocity ranges and aperture radii for each CO detection",
+  "Details of Kelly linmix settings (chains, priors)",
+  "Exact WB14 grid parameters and how the log-mean is computed",
+  "Stacking weighting scheme",
+  "Machine-readable tables only online"
+ ],
+ "missing_for_reproduction": [
+  "Image/cell sizes, masks, clean thresholds",
+  "Line velocity ranges and aperture sizes",
+  "Machine-readable tables (online only)",
+  "linmix settings",
+  "Manara et al. 2017 V-J relation (submitted)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and recipe mostly stated with CASA and clear formulae, but imaging details and several procedure parameters are missing.",
+ "rediscovery_reason": "Public ALMA project, clear photometry and mass formulae, numeric results (detections, dust masses, stacks) can be reproduced.",
+ "source_card": "cards/2017AJ....153..240A/sonnet/card.md"
+}

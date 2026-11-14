@@ -1,0 +1,644 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...879L...2M",
+  "title": "PDS 70: A Transition Disk Sculpted by a Single Planet",
+  "year": 2019,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Muley, Dhruv",
+  "n_authors": 3,
+  "arxiv_id": "1902.07191",
+  "doi": "10.3847/2041-8213/ab24d0",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2015.1.00888.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Using the `PEnGUIn` hydrodynamics code, we simulate the orbital evolution and accretion of PDS 70b in its natal disk."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "exoplanets"
+   ],
+   "targets": [
+    {
+     "name": "PDS 70",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can a single accreting super-Jupiter (PDS 70b) carve the observed ~30 au gas and ~60 au dust cavity of the PDS 70 transition disk?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Could PDS 70b be the cause of this cavity? If so, what can we tell about its properties and evolutionary history from its interaction with the disk?"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00888.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA/2015.1.00888.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (350 GHz continuum and 12CO 3-2)",
+    "evidence": [
+     {
+      "loc": "Radiative transfer modeling",
+      "quote": "We have reduced the ALMA Band 7 observations of (cite: Long18) of the 350 GHz continuum and $^{12}$CO 3–2 emission"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "we model the $^{12}$CO J=3–2 and 350 GHz dust continuum emission of our fiducial simulation"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Data from Long et al. 2018, reduced by the authors",
+    "evidence": [
+     {
+      "loc": "Radiative transfer modeling",
+      "quote": "We have reduced the ALMA Band 7 observations of (cite: Long18)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar mass M* = 0.76 Msun",
+      "evidence": [
+       {
+        "loc": "HYDRODYNAMICS SIMULATIONS",
+        "quote": "Per (cite: Keppler18), we set $M_* = 0.76 \\ M_\\odot$."
+       }
+      ]
+     },
+     "citation": "(cite: Keppler18)"
+    },
+    {
+     "what": {
+      "value": "Planet mass range 2-17 MJ and age ~4.6 Myr",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Evolutionary models place the planet’s mass between 2 and 17 $M_{\\rm J}$ (cite: Muller18)"
+       }
+      ]
+     },
+     "citation": "(cite: Muller18)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "2D PEnGUIn hydrodynamic fiducial run (accreting, migrating planet, 4.6 Myr) plus control runs with fixed 2, 4, 8 MJ planets, post-processed with DALI",
+     "evidence": [
+      {
+       "loc": "HYDRODYNAMICS SIMULATIONS",
+       "quote": "We compare the results to three “control” runs, in which non-accreting planets of 2, 4, and 8 $M_{\\rm J}$ are fixed on circular, 22 au orbits."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Default pipeline scripts",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "reduced the ALMA Band 7 observations of (cite: Long18) of the 350 GHz continuum and $^{12}$CO 3–2 emission using the default pipeline scripts"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "cleaned the data using natural weighting, resulting in a beam size of 0.22”$\\times$0.18”"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.22” x 0.18”",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "resulting in a beam size of 0.22”$\\times$0.18”"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Gas/dust profile extrapolation procedure details",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "More details on this procedure are provided in (cite: vanderMarel16)."
+       }
+      ]
+     },
+     "from_reference": "(cite: vanderMarel16)"
+    },
+    {
+     "what": {
+      "value": "PEnGUIn code identical to earlier work apart from accretion",
+      "evidence": [
+       {
+        "loc": "HYDRODYNAMICS SIMULATIONS",
+        "quote": "the code is identical to that used for (cite: Fung18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Fung18)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA CASA/pipeline version and tclean parameters (cell, image size, masking, continuum subtraction)",
+    "Disk gas surface density profile and temperature/aspect ratio profile of initial condition",
+    "DALI stellar spectrum, luminosity, CO abundance, grain properties, inclination, PA",
+    "How model images were convolved/compared quantitatively to ALMA data",
+    "Simulation code availability"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Run 2D hydrodynamic simulations",
+    "method": {
+     "value": "PEnGUIn with accretion prescription, planet migrating and accreting from 10 Earth masses at 23 au, run to 4.6 Myr; alpha0=0.001, Sigma0=3.86 g/cm2, domain 5-100 au",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "best-fit fiducial model, in which the planet is free to both migrate and accrete, with $\\alpha_0 = 0.001$ and $\\Sigma_0 = \\SI{3.86}{\\gram\\per\\cm\\squared}$"
+      }
+     ]
+    },
+    "software": [
+     "PEnGUIn"
+    ],
+    "key_parameters": [
+     {
+      "value": "960 x 1944 cells, 20 cells per scale height at 22 au",
+      "evidence": [
+       {
+        "loc": "Resolution",
+        "quote": "960 ($r$) $\\times$ 1944 ($\\phi$) cells"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "M* = 0.76 Msun, 2D, fixed boundaries",
+      "evidence": [
+       {
+        "loc": "HYDRODYNAMICS SIMULATIONS",
+        "quote": "Radial boundaries are fixed to their initial values"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Resolution tests +-50% give planet position within 8%",
+     "evidence": [
+      {
+       "loc": "Resolution",
+       "quote": "we find that the position of the planet agrees to within 8%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radiative transfer post-processing and comparison with ALMA",
+    "method": {
+     "value": "DALI models of 12CO 3-2 and 350 GHz continuum using simulated gas surface density and assumed dust profile, compared with ALMA Band 7 data",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "For the gas surface density, we use the output of the fiducial run."
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "Sigma_d,c=0.8 g/cm2, r_c=15 au, gamma=1, reduced 1e6 inside r_cav=60 au and 1e4 inside 10 au",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "with the surface density reduced by a factor of 10$^6$ for $r < r_{\\rm cav}$, and 10$^4$ for $r<$ 10 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "overall gas-to-dust ratio of 73",
+      "evidence": [
+       {
+        "loc": "Radiative transfer modeling",
+        "quote": "this yields an overall gas-to-dust ratio of 73"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Qualitative comparison of SED, continuum ring and CO morphology",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "Figure [2](#fig:dalimodel) shows that the SED and continuum ring closely match the data."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "PEnGUIn",
+    "version": "not stated",
+    "used_for": {
+     "value": "2D GPU hydrodynamics of disk-planet interaction",
+     "evidence": [
+      {
+       "loc": "HYDRODYNAMICS SIMULATIONS",
+       "quote": "We use the graphics processing unit (GPU)-accelerated code `PEnGUIn` (cite: FungThesis15) to simulate disk-planet interaction in 2D."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer / thermochemical post-processing",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "`DALI` is a physical-chemical modeling code (cite: Bruderer13)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Planet eccentricity saturation",
+    "value": "0.25",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Disk-Planet Evolution",
+      "quote": "which eventually saturates at $e_{\\rm p} \\approx 0.25$"
+     }
+    ]
+   },
+   {
+    "quantity": "Planet mass for eccentricity onset",
+    "value": "2.7",
+    "uncertainty": "not stated",
+    "units": "MJ",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table",
+      "quote": "960 $\\times$ 1944 & 5–100 & 1 & 100 & 4600000 & 23 & 21 & 2.7 & Fiducial"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas depleted below 0.01 g/cm2 out to",
+    "value": "30",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the planet has depleted the gas below $\\Sigma = \\SI{0.01}{\\gram\\per\\cm\\squared}$ out to 30 au, and produced a pressure peak at 62 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-to-dust ratio",
+    "value": "73",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Radiative transfer modeling",
+      "quote": "this yields an overall gas-to-dust ratio of 73"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "A single accreting super-Jupiter at 22 au can carve the PDS 70 cavity",
+    "experiment": "2D hydro simulation plus DALI post-processing compared with ALMA",
+    "result": "Gas cleared to ~30 au, pressure peak at 62 au, continuum ring and SED match",
+    "finding": "PDS 70b alone can carve the cavity; the planet grows eccentric (e~0.25)",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions and Discussions",
+      "quote": "the super-Jupiter PDS 70b, located 22 au from its host star, is by itself capable of carving out the ${\\sim}30$ au gas and ${\\sim}60$ au dust cavity"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Fixed circular non-accreting planets (2, 4, 8 MJ) do not reproduce the wide gap",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "likewise, do not reproduce the wide, observed gap"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Model 12CO shows a central peak far stronger than observed, likely from the inner boundary",
+     "evidence": [
+      {
+       "loc": "Radiative transfer modeling",
+       "quote": "it also exhibits a bright central peak, significantly stronger than that found by ALMA"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Comparison with ALMA is qualitative with no fit statistic",
+    "2D, simplistic accretion and fixed boundaries",
+    "Dust profile tuned to the data"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Simulation code and DALI setup not provided",
+    "ALMA imaging parameters"
+   ],
+   "estimated_data_volume_inferred": "tens of GB",
+   "score_inferred": 2,
+   "score_reason": "Theory paper with a minor ALMA component and incomplete setup details.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The main results come from simulations with unreleased code and are not ALMA measurements."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Bruderer13)",
+     "why": "DALI code"
+    },
+    {
+     "citation": "(cite: Fung18)",
+     "why": "PEnGUIn setup"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Long18)",
+     "why": "Source of the ALMA data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4487c82c9db5528146bf07ed7d2989c4",
+  "batch_id": "msgbatch_019YWVxz74gaBdDUmtwUveVm",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:54:02",
+  "usage": {
+   "input_tokens": 19038,
+   "output_tokens": 4487,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.042079,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 31,
+  "quotes_ok": 31,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 62,
+   "stated": 23,
+   "rate": 0.371
+  },
+  "evidence_ok": true
+ }
+}

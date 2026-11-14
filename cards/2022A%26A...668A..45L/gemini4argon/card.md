@@ -1,0 +1,470 @@
+# Physics of ULIRGs with MUSE and ALMA: The PUMA project. IV. No tight relation between cold molecular outflow rates and AGN luminosities
+
+`2022A&A...668A..45L` | Astronomy and Astrophysics 2022 | first author: Lamperti, I. | arXiv: 2209.03380 | DOI: 10.1051/0004-6361/202244054
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: nearby_galaxies, agn_and_quasars, star_formation
+- Question: Determine the prevalence, properties, driving mechanisms (starburst vs. AGN, momentum- vs. energy-driven), and feedback effects of spatially resolved cold molecular outflows in nearby ULIRGs, and compare CO(2-1) outflow properties with OH 119 um outflow signatures.  
+  > "In this work, we present high spatial resolution (0.1-1.0", ∼ 400 pc) ALMA observations of the CO(2-1) line for an unbiased sample of 25 ULIRGs, selected only based on their IR luminosity." (1. Introduction); "The main goals of PUMA are the following: (i) to study the prevalence of outflows in different gas phases (ionised, neutral, and molecular) as a function of the galaxy properties, (ii) to determine the driving mechanisms of the outflows" (1. Introduction); "In Section 5.4, we compare the outflow properties derived from the CO(2-1) data with the ones derived from the OH 119 µm doublet." (1. Introduction)
+- Target **00091-0738 S**: coordinates RA 2.930301 deg, Dec -7.368707 deg  
+  > "00091-0738 S 2.930301 -7.368707 12.33 I 2.3 HII 0.46 SB Y" (Table 1); "00091-0738 S 0.29×0.24 552 100 0.117984 14.4±0.2 9.33 9.26 294±5 303" (Table 2); z/distance z = 0.117984  
+  > "00091-0738 S 2.930301 -7.368707 12.33 I 2.3 HII 0.46 SB Y" (Table 1); "00091-0738 S 0.29×0.24 552 100 0.117984 14.4±0.2 9.33 9.26 294±5 303" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "00091-0738 S 2.930301 -7.368707 12.33 I 2.3 HII 0.46 SB Y" (Table 1); "00091-0738 S 0.29×0.24 552 100 0.117984 14.4±0.2 9.33 9.26 294±5 303" (Table 2)
+- Target **00091-0738 N**: coordinates RA 2.930424 deg, Dec -7.368383 deg  
+  > "N 2.930424 -7.368383 < 10.82" (Table 1); "N 0.118188 12.1± 0.2 9.25 9.18 203±5 300" (Table 2); z/distance z = 0.118188  
+  > "N 2.930424 -7.368383 < 10.82" (Table 1); "N 0.118188 12.1± 0.2 9.25 9.18 203±5 300" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "N 2.930424 -7.368383 < 10.82" (Table 1); "N 0.118188 12.1± 0.2 9.25 9.18 203±5 300" (Table 2)
+- Target **00188-0856**: coordinates RA 5.360472 deg, Dec -8.657220 deg  
+  > "00188-0856 - 5.360472 -8.657220 12.42 M < 0.3 Sy 2 0.50 AGN N" (Table 1); "00188-0856 0.14×0.12 265 69 0.128500 20.6±0.2 9.55 9.48 274±5 268" (Table 2); z/distance z = 0.128500  
+  > "00188-0856 - 5.360472 -8.657220 12.42 M < 0.3 Sy 2 0.50 AGN N" (Table 1); "00188-0856 0.14×0.12 265 69 0.128500 20.6±0.2 9.55 9.48 274±5 268" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "00188-0856 - 5.360472 -8.657220 12.42 M < 0.3 Sy 2 0.50 AGN N" (Table 1); "00188-0856 0.14×0.12 265 69 0.128500 20.6±0.2 9.55 9.48 274±5 268" (Table 2)
+- Target **00509+1225**: coordinates RA 13.395560 deg, Dec 12.693316 deg  
+  > "00509+1225 I Zw 1 - 13.395560 12.693316 11.87 M < 0.2 Sy 1 0.92 AGN N" (Table 1); "00509+1225 0.35×0.31 332 48 0.061112 56.9±0.7 9.29 9.22 376±5 136" (Table 2); z/distance z = 0.061112  
+  > "00509+1225 I Zw 1 - 13.395560 12.693316 11.87 M < 0.2 Sy 1 0.92 AGN N" (Table 1); "00509+1225 0.35×0.31 332 48 0.061112 56.9±0.7 9.29 9.22 376±5 136" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "00509+1225 I Zw 1 - 13.395560 12.693316 11.87 M < 0.2 Sy 1 0.92 AGN N" (Table 1); "00509+1225 0.35×0.31 332 48 0.061112 56.9±0.7 9.29 9.22 376±5 136" (Table 2)
+- Target **01572+0009**: coordinates RA 29.959380 deg, Dec 0.394688 deg  
+  > "01572+0009 Mrk 1014 - 29.959380 0.394688 12.65 M < 0.4 Sy 1 0.65 AGN N" (Table 1); "01572+0009 0.16×0.13 279 69 0.163271 10.8±0.3 9.47 9.40 183±16 306" (Table 2); z/distance z = 0.163271  
+  > "01572+0009 Mrk 1014 - 29.959380 0.394688 12.65 M < 0.4 Sy 1 0.65 AGN N" (Table 1); "01572+0009 0.16×0.13 279 69 0.163271 10.8±0.3 9.47 9.40 183±16 306" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "01572+0009 Mrk 1014 - 29.959380 0.394688 12.65 M < 0.4 Sy 1 0.65 AGN N" (Table 1); "01572+0009 0.16×0.13 279 69 0.163271 10.8±0.3 9.47 9.40 183±16 306" (Table 2)
+- Target **05189-2524**: coordinates RA 80.255834 deg, Dec -25.362582 deg  
+  > "05189-2524 - 80.255834 -25.362582 12.20 M < 0.1 Sy 2 0.72 AGN N" (Table 1); "05189-2524 0.59×0.49 440 34 0.042731 101.1±0.4 9.33 9.26 183±5 93" (Table 2); z/distance z = 0.042731  
+  > "05189-2524 - 80.255834 -25.362582 12.20 M < 0.1 Sy 2 0.72 AGN N" (Table 1); "05189-2524 0.59×0.49 440 34 0.042731 101.1±0.4 9.33 9.26 183±5 93" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "05189-2524 - 80.255834 -25.362582 12.20 M < 0.1 Sy 2 0.72 AGN N" (Table 1); "05189-2524 0.59×0.49 440 34 0.042731 101.1±0.4 9.33 9.26 183±5 93" (Table 2)
+- Target **07251-0248 E**: coordinates RA 111.906721 deg, Dec -2.915070 deg  
+  > "07251-0248 E 111.906721 -2.915070 12.41 I 1.8 HII 0.30 SB Y" (Table 1); "07251-0248 E 0.36×0.31 332 41 0.087787 55" (Table 2); z/distance z = 0.087787  
+  > "07251-0248 E 111.906721 -2.915070 12.41 I 1.8 HII 0.30 SB Y" (Table 1); "07251-0248 E 0.36×0.31 332 41 0.087787 55" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "07251-0248 E 111.906721 -2.915070 12.41 I 1.8 HII 0.30 SB Y" (Table 1); "07251-0248 E 0.36×0.31 332 41 0.087787 55" (Table 2)
+- Target **07251-0248 W**: coordinates RA 111.906385 deg, Dec -2.915106 deg  
+  > "W 111.906385 -2.915106 11.40" (Table 1); "W 0.087817 271" (Table 2); z/distance z = 0.087817  
+  > "W 111.906385 -2.915106 11.40" (Table 1); "W 0.087817 271" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "W 111.906385 -2.915106 11.40" (Table 1); "W 0.087817 271" (Table 2)
+- Target **09022-3615**: coordinates RA 136.052940 deg, Dec -36.450537 deg  
+  > "09022-3615 - 136.052940 -36.450537 12.33 M < 0.1 HII 0.54 AGN N" (Table 1); "09022-3615 0.34×0.30 348 37 0.059577 329.4±0.8 10.14 10.07 376±5 0" (Table 2); z/distance z = 0.059577  
+  > "09022-3615 - 136.052940 -36.450537 12.33 M < 0.1 HII 0.54 AGN N" (Table 1); "09022-3615 0.34×0.30 348 37 0.059577 329.4±0.8 10.14 10.07 376±5 0" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "09022-3615 - 136.052940 -36.450537 12.33 M < 0.1 HII 0.54 AGN N" (Table 1); "09022-3615 0.34×0.30 348 37 0.059577 329.4±0.8 10.14 10.07 376±5 0" (Table 2)
+- Target **10190+1322 E**: coordinates RA 155.428143 deg, Dec 13.115447 deg  
+  > "10190+1322 E 155.428143 13.115447 11.98 I 7.2 HII 0.17 SB N" (Table 1); "10190+1322 E 0.36×0.31 330 49 0.075970 61.2±0.2 9.61 9.54 416±5 250" (Table 2); z/distance z = 0.075970  
+  > "10190+1322 E 155.428143 13.115447 11.98 I 7.2 HII 0.17 SB N" (Table 1); "10190+1322 E 0.36×0.31 330 49 0.075970 61.2±0.2 9.61 9.54 416±5 250" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "10190+1322 E 155.428143 13.115447 11.98 I 7.2 HII 0.17 SB N" (Table 1); "10190+1322 E 0.36×0.31 330 49 0.075970 61.2±0.2 9.61 9.54 416±5 250" (Table 2)
+- Target **10190+1322 W**: coordinates RA 155.427056 deg, Dec 13.114952 deg  
+  > "W 155.427056 13.114952 11.12" (Table 1); "W 0.076626 53.2± 0.8 9.55 9.48 325±5 113" (Table 2); z/distance z = 0.076626  
+  > "W 155.427056 13.114952 11.12" (Table 1); "W 0.076626 53.2± 0.8 9.55 9.48 325±5 113" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "W 155.427056 13.114952 11.12" (Table 1); "W 0.076626 53.2± 0.8 9.55 9.48 325±5 113" (Table 2)
+- Target **11095-0238 NE**: coordinates RA 168.014095 deg, Dec -2.906371 deg  
+  > "11095-0238 NE 168.014095 -2.906371 12.16 I 1.1 LINER 0.44 SB Y" (Table 1); "11095-0238 NE 0.31×0.25 460 121 0.106535 6" (Table 2); z/distance z = 0.106535  
+  > "11095-0238 NE 168.014095 -2.906371 12.16 I 1.1 LINER 0.44 SB Y" (Table 1); "11095-0238 NE 0.31×0.25 460 121 0.106535 6" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "11095-0238 NE 168.014095 -2.906371 12.16 I 1.1 LINER 0.44 SB Y" (Table 1); "11095-0238 NE 0.31×0.25 460 121 0.106535 6" (Table 2)
+- Target **11095-0238 SW**: coordinates RA 168.013994 deg, Dec -2.906468 deg  
+  > "SW 168.013994 -2.906468 11.84" (Table 1); "SW 0.106302" (Table 2); z/distance z = 0.106302  
+  > "SW 168.013994 -2.906468 11.84" (Table 1); "SW 0.106302" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "SW 168.013994 -2.906468 11.84" (Table 1); "SW 0.106302" (Table 2)
+- Target **12071-0444 N**: coordinates RA 182.438000 deg, Dec -5.020377 deg  
+  > "12071-0444 N 182.438000 -5.020377 12.41 I 2.3 Sy 2 0.75 AGN N" (Table 1); "12071-0444 N 0.22×0.16 367 62 0.128969 40.8±0.6 9.86 9.79 183±5 79" (Table 2); z/distance z = 0.128969  
+  > "12071-0444 N 182.438000 -5.020377 12.41 I 2.3 Sy 2 0.75 AGN N" (Table 1); "12071-0444 N 0.22×0.16 367 62 0.128969 40.8±0.6 9.86 9.79 183±5 79" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "12071-0444 N 182.438000 -5.020377 12.41 I 2.3 Sy 2 0.75 AGN N" (Table 1); "12071-0444 N 0.22×0.16 367 62 0.128969 40.8±0.6 9.86 9.79 183±5 79" (Table 2)
+- Target **12071-0444 S**: coordinates RA 182.437998 deg, Dec -5.020812 deg  
+  > "S 182.437998 -5.020812 < 11.66" (Table 1); "S 0.128441 4.6± 0.2 8.92 8.85 335±15 172" (Table 2); z/distance z = 0.128441  
+  > "S 182.437998 -5.020812 < 11.66" (Table 1); "S 0.128441 4.6± 0.2 8.92 8.85 335±15 172" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "S 182.437998 -5.020812 < 11.66" (Table 1); "S 0.128441 4.6± 0.2 8.92 8.85 335±15 172" (Table 2)
+- Target **12112+0305 NE**: coordinates RA 183.441903 deg, Dec 2.811542 deg  
+  > "12112+0305 NE 183.441903 2.811542 12.28 I 4.2 LINER 0.17 SB N" (Table 1); "12112+0305 NE 0.34×0.30 265 74 0.072717 122.3±0.5 9.88 9.81 335±5 80" (Table 2); z/distance z = 0.072717  
+  > "12112+0305 NE 183.441903 2.811542 12.28 I 4.2 LINER 0.17 SB N" (Table 1); "12112+0305 NE 0.34×0.30 265 74 0.072717 122.3±0.5 9.88 9.81 335±5 80" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "12112+0305 NE 183.441903 2.811542 12.28 I 4.2 LINER 0.17 SB N" (Table 1); "12112+0305 NE 0.34×0.30 265 74 0.072717 122.3±0.5 9.88 9.81 335±5 80" (Table 2)
+- Target **12112+0305 SW**: coordinates RA 183.441417 deg, Dec 2.810866 deg  
+  > "SW 183.441417 2.810866 11.27" (Table 1); "SW 0.073203 27.8± 0.4 9.23 9.17 274±5 290" (Table 2); z/distance z = 0.073203  
+  > "SW 183.441417 2.810866 11.27" (Table 1); "SW 0.073203 27.8± 0.4 9.23 9.17 274±5 290" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "SW 183.441417 2.810866 11.27" (Table 1); "SW 0.073203 27.8± 0.4 9.23 9.17 274±5 290" (Table 2)
+- Target **13120-5453**: coordinates RA 198.776347 deg, Dec -55.156339 deg  
+  > "13120-5453 WKK 2031 - 198.776347 -55.156339 12.27 M < 0.1 Sy 2 0.33 AGN N" (Table 1); "13120-5453 0.65×0.65 1065 19 0.031114 650.7±2.1 9.87 9.81 335±5 91" (Table 2); z/distance z = 0.031114  
+  > "13120-5453 WKK 2031 - 198.776347 -55.156339 12.27 M < 0.1 Sy 2 0.33 AGN N" (Table 1); "13120-5453 0.65×0.65 1065 19 0.031114 650.7±2.1 9.87 9.81 335±5 91" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "13120-5453 WKK 2031 - 198.776347 -55.156339 12.27 M < 0.1 Sy 2 0.33 AGN N" (Table 1); "13120-5453 0.65×0.65 1065 19 0.031114 650.7±2.1 9.87 9.81 335±5 91" (Table 2)
+- Target **13451+1232 W**: coordinates RA 206.889004 deg, Dec 12.290064 deg  
+  > "13451+1232 4C+12.50 W 206.889004 12.290064 12.31 I 4.3 Sy 2 0.82 AGN N" (Table 1); "13451+1232 W 0.23×0.17 362 81 0.121680 41.5±0.6 9.82 9.76 386±15 242" (Table 2); z/distance z = 0.121680  
+  > "13451+1232 4C+12.50 W 206.889004 12.290064 12.31 I 4.3 Sy 2 0.82 AGN N" (Table 1); "13451+1232 W 0.23×0.17 362 81 0.121680 41.5±0.6 9.82 9.76 386±15 242" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "13451+1232 4C+12.50 W 206.889004 12.290064 12.31 I 4.3 Sy 2 0.82 AGN N" (Table 1); "13451+1232 W 0.23×0.17 362 81 0.121680 41.5±0.6 9.82 9.76 386±15 242" (Table 2)
+- Target **13451+1232 E**: coordinates RA 206.889583 deg, Dec 12.289944 deg  
+  > "E 206.889583 12.289944 < 10.31" (Table 1); "E 0.121291 2.8± 0.4 8.65 8.58 223±36" (Table 2); z/distance z = 0.121291  
+  > "E 206.889583 12.289944 < 10.31" (Table 1); "E 0.121291 2.8± 0.4 8.65 8.58 223±36" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "E 206.889583 12.289944 < 10.31" (Table 1); "E 0.121291 2.8± 0.4 8.65 8.58 223±36" (Table 2)
+- Target **14348-1447 SW**: coordinates RA 219.409503 deg, Dec -15.006729 deg  
+  > "14348-1447 SW 219.409503 -15.006729 12.21 I 5.5 LINER 0.17 AGN [⋆] Y" (Table 1); "14348-1447 SW 0.35×0.30 345 79 0.082750 116.1±0.6 9.95 9.89 193±5 231" (Table 2); z/distance z = 0.082750  
+  > "14348-1447 SW 219.409503 -15.006729 12.21 I 5.5 LINER 0.17 AGN [⋆] Y" (Table 1); "14348-1447 SW 0.35×0.30 345 79 0.082750 116.1±0.6 9.95 9.89 193±5 231" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "14348-1447 SW 219.409503 -15.006729 12.21 I 5.5 LINER 0.17 AGN [⋆] Y" (Table 1); "14348-1447 SW 0.35×0.30 345 79 0.082750 116.1±0.6 9.95 9.89 193±5 231" (Table 2)
+- Target **14348-1447 NE**: coordinates RA 219.409988 deg, Dec -15.005908 deg  
+  > "NE 219.409988 -15.005908 11.98 SB [⋆]" (Table 1); "NE 0.082351 64.9± 1.0 9.70 9.63 213±5 196" (Table 2); z/distance z = 0.082351  
+  > "NE 219.409988 -15.005908 11.98 SB [⋆]" (Table 1); "NE 0.082351 64.9± 1.0 9.70 9.63 213±5 196" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "NE 219.409988 -15.005908 11.98 SB [⋆]" (Table 1); "NE 0.082351 64.9± 1.0 9.70 9.63 213±5 196" (Table 2)
+- Target **14378-3651**: coordinates RA 220.245888 deg, Dec -37.075537 deg  
+  > "14378-3651 - 220.245888 -37.075537 12.15 M < 0.1 Sy 2 0.21 AGN N" (Table 1); "14378-3651 0.41×0.28 554 47 0.068097 63.7±0.6 9.52 9.45 183±5 211" (Table 2); z/distance z = 0.068097  
+  > "14378-3651 - 220.245888 -37.075537 12.15 M < 0.1 Sy 2 0.21 AGN N" (Table 1); "14378-3651 0.41×0.28 554 47 0.068097 63.7±0.6 9.52 9.45 183±5 211" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "14378-3651 - 220.245888 -37.075537 12.15 M < 0.1 Sy 2 0.21 AGN N" (Table 1); "14378-3651 0.41×0.28 554 47 0.068097 63.7±0.6 9.52 9.45 183±5 211" (Table 2)
+- Target **15327+2340**: coordinates E: RA 233.738722 deg, Dec 23.503135 deg; W: RA 233.738431 deg, Dec 23.503177 deg  
+  > "15327+2340 [⋆⋆] Arp220 E 233.738722 23.503135 11.65 M 0.4 LINER 0.06 SB Y" (Table 1); "W 233.738431 23.503177 12.04" (Table 1); "15327+2340 1.28×0.81 2145 2 0.018120 1693.7±3.5 9.84 9.77 477±5 41" (Table 2); z/distance z = 0.018120  
+  > "15327+2340 [⋆⋆] Arp220 E 233.738722 23.503135 11.65 M 0.4 LINER 0.06 SB Y" (Table 1); "W 233.738431 23.503177 12.04" (Table 1); "15327+2340 1.28×0.81 2145 2 0.018120 1693.7±3.5 9.84 9.77 477±5 41" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "15327+2340 [⋆⋆] Arp220 E 233.738722 23.503135 11.65 M 0.4 LINER 0.06 SB Y" (Table 1); "W 233.738431 23.503177 12.04" (Table 1); "15327+2340 1.28×0.81 2145 2 0.018120 1693.7±3.5 9.84 9.77 477±5 41" (Table 2)
+- Target **16090-0139**: coordinates RA 242.918411 deg, Dec -1.785098 deg  
+  > "16090-0139 - 242.918411 -1.785098 12.62 M < 0.7 HII 0.41 SB Y" (Table 1); "16090-0139 0.20×0.17 436 49 0.133690 75.5±1.0 10.15 10.09 345±10 181" (Table 2); z/distance z = 0.133690  
+  > "16090-0139 - 242.918411 -1.785098 12.62 M < 0.7 HII 0.41 SB Y" (Table 1); "16090-0139 0.20×0.17 436 49 0.133690 75.5±1.0 10.15 10.09 345±10 181" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "16090-0139 - 242.918411 -1.785098 12.62 M < 0.7 HII 0.41 SB Y" (Table 1); "16090-0139 0.20×0.17 436 49 0.133690 75.5±1.0 10.15 10.09 345±10 181" (Table 2)
+- Target **16156+0146 NW**: coordinates RA 244.539016 deg, Dec 1.656043 deg  
+  > "16156+0146 NW 244.539016 1.656043 12.14 I 8.3 Sy 2 0.70 AGN Y" (Table 1); "16156+0146 NW 0.24×0.16 498 76 0.132985 6.2±0.3 9.06 8.99 223±25 323" (Table 2); z/distance z = 0.132985  
+  > "16156+0146 NW 244.539016 1.656043 12.14 I 8.3 Sy 2 0.70 AGN Y" (Table 1); "16156+0146 NW 0.24×0.16 498 76 0.132985 6.2±0.3 9.06 8.99 223±25 323" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "16156+0146 NW 244.539016 1.656043 12.14 I 8.3 Sy 2 0.70 AGN Y" (Table 1); "16156+0146 NW 0.24×0.16 498 76 0.132985 6.2±0.3 9.06 8.99 223±25 323" (Table 2)
+- Target **16156+0146 SE**: coordinates RA 244.539754 deg, Dec 1.655458 deg  
+  > "SE 244.539754 1.655458 < 11.54" (Table 1); z/distance _not stated_; distance from _not stated_
+- Target **17208-0014**: coordinates RA 260.841481 deg, Dec -0.283582 deg  
+  > "17208-0014 - 260.841481 -0.283582 12.43 M < 0.1 LINER 0.00 SB Y" (Table 1); "17208-0014 0.47×0.47 1043 7 0.042800 551.4±2.5 10.06 10.00 427±5 109" (Table 2); z/distance z = 0.042800  
+  > "17208-0014 - 260.841481 -0.283582 12.43 M < 0.1 LINER 0.00 SB Y" (Table 1); "17208-0014 0.47×0.47 1043 7 0.042800 551.4±2.5 10.06 10.00 427±5 109" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "17208-0014 - 260.841481 -0.283582 12.43 M < 0.1 LINER 0.00 SB Y" (Table 1); "17208-0014 0.47×0.47 1043 7 0.042800 551.4±2.5 10.06 10.00 427±5 109" (Table 2)
+- Target **19297-0406 N**: coordinates RA 293.092955 deg, Dec -4.000286 deg  
+  > "19297-0406 N 293.092955 -4.000286 12.45 I 1.1 HII 0.23 SB Y" (Table 1); "19297-0406 N 0.34×0.31 282 89 0.085407 230" (Table 2); z/distance z = 0.085407  
+  > "19297-0406 N 293.092955 -4.000286 12.45 I 1.1 HII 0.23 SB Y" (Table 1); "19297-0406 N 0.34×0.31 282 89 0.085407 230" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "19297-0406 N 293.092955 -4.000286 12.45 I 1.1 HII 0.23 SB Y" (Table 1); "19297-0406 N 0.34×0.31 282 89 0.085407 230" (Table 2)
+- Target **19297-0406 S**: coordinates RA 293.092904 deg, Dec -4.000500 deg  
+  > "S 293.092904 -4.000500 < 10.45" (Table 1); "S 0.085785" (Table 2); z/distance z = 0.085785  
+  > "S 293.092904 -4.000500 < 10.45" (Table 1); "S 0.085785" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "S 293.092904 -4.000500 < 10.45" (Table 1); "S 0.085785" (Table 2)
+- Target **19542+1110**: coordinates RA 299.149103 deg, Dec 11.318064 deg  
+  > "19542+1110 - 299.149103 11.318064 12.09 M < 0.1 LINER 0.26 SB N" (Table 1); "19542+1110 0.40×0.34 368 44 0.062479 40.9±0.3 9.28 9.21 274±5 229" (Table 2); z/distance z = 0.062479  
+  > "19542+1110 - 299.149103 11.318064 12.09 M < 0.1 LINER 0.26 SB N" (Table 1); "19542+1110 0.40×0.34 368 44 0.062479 40.9±0.3 9.28 9.21 274±5 229" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "19542+1110 - 299.149103 11.318064 12.09 M < 0.1 LINER 0.26 SB N" (Table 1); "19542+1110 0.40×0.34 368 44 0.062479 40.9±0.3 9.28 9.21 274±5 229" (Table 2)
+- Target **20087-0308**: coordinates RA 302.849441 deg, Dec -2.997422 deg  
+  > "20087-0308 - 302.849441 -2.997422 12.47 M < 0.9 LINER 0.20 SB N" (Table 1); "20087-0308 0.31×0.25 287 192 0.105461 94.6±0.3 10.05 9.98 528±5 250" (Table 2); z/distance z = 0.105461  
+  > "20087-0308 - 302.849441 -2.997422 12.47 M < 0.9 LINER 0.20 SB N" (Table 1); "20087-0308 0.31×0.25 287 192 0.105461 94.6±0.3 10.05 9.98 528±5 250" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "20087-0308 - 302.849441 -2.997422 12.47 M < 0.9 LINER 0.20 SB N" (Table 1); "20087-0308 0.31×0.25 287 192 0.105461 94.6±0.3 10.05 9.98 528±5 250" (Table 2)
+- Target **20100-4156 SE**: coordinates RA 303.373149 deg, Dec -41.793113 deg  
+  > "20100-4156 SE 303.373149 -41.793113 12.65 I 6.5 LINER 0.26 SB Y" (Table 1); "20100-4156 SE 0.20×0.14 336 49 0.129848 31.3±0.3 9.74 9.68 376±5 228" (Table 2); z/distance z = 0.129848  
+  > "20100-4156 SE 303.373149 -41.793113 12.65 I 6.5 LINER 0.26 SB Y" (Table 1); "20100-4156 SE 0.20×0.14 336 49 0.129848 31.3±0.3 9.74 9.68 376±5 228" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "20100-4156 SE 303.373149 -41.793113 12.65 I 6.5 LINER 0.26 SB Y" (Table 1); "20100-4156 SE 0.20×0.14 336 49 0.129848 31.3±0.3 9.74 9.68 376±5 228" (Table 2)
+- Target **20100-4156 NW**: coordinates RA 303.372813 deg, Dec -41.792383 deg  
+  > "NW 303.372813 -41.792383 < 10.96" (Table 1); "NW 0.129740 2.2± 0.2 8.59 8.52 111±6 268" (Table 2); z/distance z = 0.129740  
+  > "NW 303.372813 -41.792383 < 10.96" (Table 1); "NW 0.129740 2.2± 0.2 8.59 8.52 111±6 268" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "NW 303.372813 -41.792383 < 10.96" (Table 1); "NW 0.129740 2.2± 0.2 8.59 8.52 111±6 268" (Table 2)
+- Target **20414-1651**: coordinates RA 311.075663 deg, Dec -16.671340 deg  
+  > "20414-1651 - 311.075663 -16.671340 12.24 M < 0.2 HII 0.00 SB N" (Table 1); "20414-1651 0.24×0.18 375 47 0.086874 51.4±0.6 9.62 9.56 427±5 59" (Table 2); z/distance z = 0.086874  
+  > "20414-1651 - 311.075663 -16.671340 12.24 M < 0.2 HII 0.00 SB N" (Table 1); "20414-1651 0.24×0.18 375 47 0.086874 51.4±0.6 9.62 9.56 427±5 59" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "20414-1651 - 311.075663 -16.671340 12.24 M < 0.2 HII 0.00 SB N" (Table 1); "20414-1651 0.24×0.18 375 47 0.086874 51.4±0.6 9.62 9.56 427±5 59" (Table 2)
+- Target **22491-1808 E**: coordinates RA 342.955620 deg, Dec -17.873368 deg  
+  > "22491-1808 E 342.955620 -17.873368 12.22 I 2.7 HII 0.15 SB Y" (Table 1); "22491-1808 E 0.44×0.33 342 58 0.077742 59.4±0.2 9.59 9.52 284±5 348" (Table 2); z/distance z = 0.077742  
+  > "22491-1808 E 342.955620 -17.873368 12.22 I 2.7 HII 0.15 SB Y" (Table 1); "22491-1808 E 0.44×0.33 342 58 0.077742 59.4±0.2 9.59 9.52 284±5 348" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "22491-1808 E 342.955620 -17.873368 12.22 I 2.7 HII 0.15 SB Y" (Table 1); "22491-1808 E 0.44×0.33 342 58 0.077742 59.4±0.2 9.59 9.52 284±5 348" (Table 2)
+- Target **22491-1808 W**: coordinates RA 342.955158 deg, Dec -17.873239 deg  
+  > "W 342.955158 -17.873239 < 10.53" (Table 1); "W 0.077560 4.1± 0.2 8.40 8.34 121±5" (Table 2); z/distance z = 0.077560  
+  > "W 342.955158 -17.873239 < 10.53" (Table 1); "W 0.077560 4.1± 0.2 8.40 8.34 121±5" (Table 2); distance from CO(2-1) moment 1 at ALMA continuum peak  
+  > "W 342.955158 -17.873239 < 10.53" (Table 1); "W 0.077560 4.1± 0.2 8.40 8.34 121±5" (Table 2)
+
+## Data provenance
+
+- ALMA projects: 2015.1.00263.S, 2016.1.00170.S, 2018.1.00486.S, 2018.1.00699.S, 2016.1.00777.S, 2015.1.00113.S
+- bands: Band 5 or Band 6  
+  > "Depending on the redshift of the targets, the CO(2-1) transition falls in Band 5 or Band 6." (3. Observations and data reduction)
+- frequencies and spectral setup: CO(2-1) 230.538 GHz rest frequency, ~220-250 GHz continuum, 10 km s^-1 channel width  
+  > "In this work, we analyse ALMA 12-m array CO(2-1) 230.538 GHz observations of the 25 ULIRGs systems in the PUMA sample." (3. Observations and data reduction); "Examples of the ALMA ∼ 220 − 250 GHz continuum and CO(2-1) moment maps" (Figure 2 caption); "(4) 1σ line rms sensitivity per 10 km s [−][1] channel." (Table 2)
+- continuum bandwidth: _not stated_
+- arrays: 12-m array  
+  > "In this work, we analyse ALMA 12-m array CO(2-1) 230.538 GHz observations of the 25 ULIRGs systems in the PUMA sample." (3. Observations and data reduction)
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: 0.13-1.05 arcsec (0.14x0.12 to 1.28x0.81 arcsec in Table 2; ~400-500 pc)  
+  > "has been selected for each target so that it corresponds to a similar physical spatial resolution for all targets (∼ 400 − 500 pc). As a result, the synthesised beam FWHM are in the range 0.13 − 1.05"." (3 Observations and data reduction)
+- max recoverable scale: ~10 times the beam FWHM  
+  > "The maximum recoverable scales are ∼ 10 times the beam FWHM." (3. Observations and data reduction)
+- sensitivity: 265 to 2145 uJy beam^-1 per 10 km s^-1 channel  
+  > "00188-0856 0.14×0.12 265 69 0.128500" (Table 2); "15327+2340 1.28×0.81 2145 2 0.018120" (Table 2); "(4) 1σ line rms sensitivity per 10 km s [−][1] channel." (Table 2)
+- time on source: 2 to 192 min  
+  > "15327+2340 1.28×0.81 2145 2 0.018120" (Table 2); "20087-0308 0.31×0.25 287 192 0.105461" (Table 2); "(5) Integration time on source." (Table 2)
+- observing dates: between 2015 and 2021  
+  > "The observations were taken between 2015 and 2021." (3. Observations and data reduction)
+- pi or archival as stated: PI: M. Pereira-Santaella for 23 systems; archival for 13120-5453 (PI: K. Sliwa) and 15327+2340 (PI: N. Scoville)  
+  > "Most of these observations were carried out as part of our programmes 2015.1.00263.S, 2016.1.00170.S, 2018.1.00486.S, and 2018.1.00699.S (PI: M. Pereira-Santaella)." (3. Observations and data reduction); "Additionally, we use archival data for 13120-5453 and 15327+2340 (Arp 220), from programmes 2016.1.00777.S (PI: K. Sliwa) and 2015.1.00113.S (PI: N. Scoville), respectively." (3. Observations and data reduction)
+- Line: CO 2-1 (230.538 GHz)
+- Other facility **Herschel/PACS**: Archival spectra of the OH 119 um doublet transition for 22/25 ULIRG systems  
+  > "We collect archival _Herschel_ /PACS spectra of the OH 119µm doublet transition (hereafter OH) for 22/25 of our ULIRGs systems" (4.7 Analysis of the OH 119 µm spectra)
+- Other facility **VLT/MUSE**: Optical integral field spectroscopy from the PUMA survey providing stellar and ionised gas kinematics, PAs, effective radii, and dynamical masses  
+  > "The PUMA survey combines VLT/MUSE optical integrated field spectroscopy and ALMA CO(2-1) and continuum observations to study the multiphase (ionised, neutral, and molecular) properties of outflows in ULIRGs." (1. Introduction); "We compare these PAs with the ones of the stellar and ionised gas (traced by Hα) disks presented in Perna et al. (2022)." (4.3. Comparison of position angles of the molecular gas, stellar and ionised gas disks)
+- External data: Individual nuclear infrared luminosities and ALMA continuum fluxes  
+  > "The individual nuclei have luminosities from log _L_ _IR_ / _L_ ⊙ < 10.5 to log _L_ _IR_ / _L_ ⊙ = 12.7, based on the relative contribution of the nuclei to the total ALMA continuum fluxes" (2 Sample) [from Pereira-Santaella et al. (2021)]
+- External data: Optical nuclear activity classification, MIR AGN fraction (alpha_AGN), and NIR/optical HST nuclear coordinates  
+  > "If the continuum is not detected, the coordinates are measured from the NIR or optical HST (see Perna et al. 2021)." (Table 1); "(9) Nuclear activity classification based on optical spectroscopy (see Perna et al. 2021). (10) Fraction of AGN contribution to _L_ _bol_ derived from the 30µm to 15µm flux ratio (see Perna et al. 2021)." (Table 1) [from Perna et al. (2021)]
+- External data: Position angles of stellar and ionised gas disks, mean dynamical mass, and mean effective radius  
+  > "We compare these PAs with the ones of the stellar and ionised gas (traced by Hα) disks presented in Perna et al. (2022)." (4.3. Comparison of position angles of the molecular gas, stellar and ionised gas disks); "As truncating radius we assume two times the average effective radius ⟨ _R_ _e_ ⟩ = 2 kpc (Perna et al. 2022)." (5.3.3 Outflow launching mechanism) [from Perna et al. (2022)]
+- External data: Molecular outflow properties and SFRs for 20 nearby main-sequence candidate outflow galaxies from PHANGS-ALMA  
+  > "To increase the dynamic range of SFR, we include in this figure also the 20 galaxies with candidate outflows from the Physics at High Angular resolution in Nearby GalaxieS (PHANGS [2] ) ALMA survey (Leroy et al. 2021a; Stuber et al. 2021)." (5.3.2. Outflow energetics) [from Leroy et al. (2021a); Stuber et al. (2021)]
+- External data: Literature CO molecular outflow measurements for comparison samples  
+  > "There are 12 objects in common with our sample, with data published by Cicone et al. (2014) Barcos-Muñoz et al. (2018), Gowardhan et al. (2018), Pereira-Santaella et al. (2018), and Lutz et al. (2020)." (4.6.1. Comparison with Lutz et al. (2020)); "We also compared the _M_ _out_ and _M_ [˙] _out_ of our sample with the values reported by Fluetsch et al. (2019) for a sample of 45 local ( _z_ < 0.2) star-forming galaxies" (4.6.2. Comparison with Fluetsch et al. (2019)); "Figure 16 shows _M_ ˙ _out_ as a function of _L_ _AGN_ for our sample, together with the sample from Cicone et al. (2014), Lutz et al. (2020), the nearby (non-ULIRGs) AGN from Stuber et al. (2021), and the nearby ( _z_ < 0.13) type 2 AGN from Ramos Almeida et al. (2022)." (5.3.1. Outflow and AGN properties) [from Cicone et al. (2014); Barcos-Muñoz et al. (2018); Gowardhan et al. (2018); Pereira-Santaella et al. (2018); Fluetsch et al. (2019); Lutz et al. (2020); Ramos Almeida et al. (2022)]
+- External data: Herschel/PACS OH 119 um spectra for 20 of the 22 ULIRG systems  
+  > "The majority of the spectra (20/22) were published in Veilleux et al. (2013), Spoon et al. (2013), and González-Alfonso et al. (2017); 11095-0238 and 13451+1232 are not presented in these works but were found in the _Herschel_ archive." (4.7. Analysis of the OH 119 µm spectra) [from Veilleux et al. (2013); Spoon et al. (2013); González-Alfonso et al. (2017)]
+- Simulation/model as data: 3D models of biconical outflows based on Bae & Woo (2016) with half opening angle 40 deg, v_max = 750 km s^-1, R_out = 2 kpc, four radial velocity profiles, and inclinations of 10, 40, 70, and 90 deg, used to test biases in outflow measurements.  
+  > "To test how much this effect could affect our measurements of the outflow properties, we consider 3D models of biconical outflows based on the models presented by Bae & Woo (2016)." (4.5.2. Caveats: Methods to measure outflow parameters); "We simulate a biconcal outflow with a half opening angle of 40 [◦] . The maximum velocity of the outflow is 750 km s [−][1] and the maximum outflow extension is _R_ _out_ = 2 kpc." (Appendix A: Simulations of biconical outflows)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: _not stated_
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: Applied to 13451+1232 (4C+12.50): five rounds of phase self-calibration and one round of amplitude self-calibration  
+  > "Given that for this source the continuum is strong enough, we decide to apply self-calibration to these data in order to increase the signal-to-noise. We apply five rounds of phase self-calibration and one round of amplitude self-calibration." (3. Observations and data reduction)
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: _not stated_
+- weighting robust: _not stated_
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: First-order polynomial in the uv plane for 13451+1232; for others, following Pereira-Santaella et al. (2021)  
+  > "Due to the steep slope of its continuum, we use a first-order polynomial to subtract the continuum from the CO(2-1) spectral window in the _uv_ plane." (3. Observations and data reduction)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: 0.13-1.05 arcsec (0.14x0.12 to 1.28x0.81 arcsec in Table 2)  
+  > "As a result, the synthesised beam FWHM are in the range 0.13 − 1.05"." (3. Observations and data reduction)
+- final rms: 265 to 2145 uJy beam^-1 per 10 km s^-1 channel  
+  > "00188-0856 0.14×0.12 265 69 0.128500" (Table 2); "15327+2340 1.28×0.81 2145 2 0.018120" (Table 2); "(4) 1σ line rms sensitivity per 10 km s [−][1] channel." (Table 2)
+
+### Inherited from earlier work
+
+- ALMA data reduction and imaging procedure  
+  > "The data-reduction is described in detail in the PUMA II paper (Pereira-Santaella et al. 2021)." (3. Observations and data reduction); "For the rest of the data-reduction, we follow the same procedure as presented in Pereira-Santaella et al. (2021)." (3. Observations and data reduction) [from Pereira-Santaella et al. (2021)]
+- Spectro-astrometry methodology to identify high-velocity decoupled gas  
+  > "We follow a similar methodology to the one used by García-Burillo et al. (2015) and Pereira-Santaella et al. (2018)." (4.2. Spectro-astrometry) [from García-Burillo et al. (2015); Pereira-Santaella et al. (2018)]
+- Outflow radius definition from 2D Gaussian fit to high-velocity maps  
+  > "This method is analogous to the method used by Lutz et al. (2020), although applied here to higher spatial resolution data (400 pc vs. 700 pc), which is enough to resolve the outflow structure." (4.5. Measurements of the outflow properties and energetics) [from Lutz et al. (2020)]
+- OH 119 um line profile fitting method  
+  > "We fit the line profile following the method used by Veilleux et al. (2013), and we check that our derived parameters are consistent with their results." (4.7. Analysis of the OH 119 µm spectra) [from Veilleux et al. (2013)]
+- Supernova momentum and kinetic energy injection calculation  
+  > "We follow Pereira-Santaella et al. (2018) to calculate the total momentum injected by supernova explosions." (5.3.2. Outflow energetics) [from Pereira-Santaella et al. (2018)]
+- Escape velocity formula for a truncated isothermal sphere gravitational model  
+  > "We use equation (7) in Arribas et al. (2014) to estimate the average escape velocity for our sample at the average outflow radius _r_ = 1 kpc." (5.3.4. Escape fractions) [from Arribas et al. (2014)]
+- Compact obscured nuclei (CON) classification method using PAH equivalent width ratios  
+  > "(12) Objects classified as compact obscured nuclei (CONs) using ratios of the equivalent widths of different polycyclic aromatic hydrocarbons (PAHs) based on the method by García-Bernete et al. (2022)." (Table 1) [from García-Bernete et al. (2022)]
+
+### Not stated but needed to reproduce (our reading)
+
+- CASA version and pipeline version used for calibration and imaging (deferred to Pereira-Santaella et al. 2021)
+- Deconvolver, weighting scheme/robust parameter, cell size, image size, and cleaning thresholds used in ALMA imaging (deferred to Pereira-Santaella et al. 2021)
+- Solution intervals and S/N thresholds for the five phase and one amplitude self-calibration rounds on 13451+1232
+- Exact line-free frequency/velocity channels used for uv-plane continuum subtraction
+- Exact S/N masking threshold (between 3.5 and 5) applied to each individual target cube when generating moment maps
+- Exact velocity channel binning per target used in the spectro-astrometry analysis to reach S/N >= 5
+
+## Analysis recipe
+
+1. **Generate CO(2-1) moment maps and peak emission maps, and determine systemic redshifts**: Mask pixels in each velocity channel with S/N < 3.5-5 (noise from MAD); smooth each channel with a 3-pixel Gaussian kernel and mask pixels with S/N < 0.4 in the smoothed image to remove isolated spurious emission; compute moments 0, 1, and 2 from masked cubes and peak map from original cubes; set zero velocity from moment 1 at continuum peak.  
+  > "Specifically, for each velocity channel, we masked spaxels with S/N < 3.5 − 5 depending on the overall S/N of the observations." (4.1. CO(2-1) moment maps); "For each spectral channel, we applied a Gaussian kernel with a size of three pixels to smooth the channel image and then we masked individual pixels with S/N < 0.4 in the smoothed image." (4.1. CO(2-1) moment maps); "We define the zero velocity (and consequently the redshift) based on the moment 1 velocity at the position of the continuum peak." (4.1. CO(2-1) moment maps)
+   - parameter: Channel S/N threshold = 3.5-5 (using MAD)  
+  > "Specifically, for each velocity channel, we masked spaxels with S/N < 3.5 − 5 depending on the overall S/N of the observations." (4.1. CO(2-1) moment maps)
+   - parameter: Smoothing Gaussian kernel = 3 pixels; smoothed S/N threshold = 0.4  
+  > "For each spectral channel, we applied a Gaussian kernel with a size of three pixels to smooth the channel image and then we masked individual pixels with S/N < 0.4 in the smoothed image." (4.1. CO(2-1) moment maps)
+   - assumption: Radio velocity definition used throughout  
+  > "Throughout this paper, we use the radio velocity definition." (4.1. CO(2-1) moment maps)
+   - fitting: _not stated_
+   - validation: CO(2-1) redshifts compared and found in good agreement with previously reported redshifts.  
+  > "The CO(2-1) redshifts (reported in Table 2) are in good agreement with previously reported redshifts." (4.1. CO(2-1) moment maps)
+2. **Perform spectro-astrometry to determine disk kinematic major axis and identify decoupled high-velocity outflow gas**: Bin velocity channels to achieve S/N >= 5; fit a 2D Gaussian to a 5x5 spaxel region around the peak spaxel (or full emission for targets with central dips) to get sub-pixel centroids; perform linear bisector fits to low-velocity (|v| < 300 km s^-1) centroids for the kinematic major axis PA and to high-velocity (|v| > 300 km s^-1) centroids for the outflow axis.  
+  > "We binned together the velocity channels in order to achieve a minimum S/N of five, necessary to reliably determine the position of the peak of the emission." (4.2. Spectro-astrometry); "Then, we consider a region of 5 × 5 spaxels centred on the maximum spaxel and we perform a 2D Gaussian fit." (4.2. Spectro-astrometry); "We perform a linear bisector fit of the centroids of the low-velocity channels, to determine the orientation of the kinematic major axis (see dashed line in Fig. 3, 4, and E.1). As low-velocity channels, we consider absolute velocities | _v_ | < 300 km s [−][1] ." (4.2. Spectro-astrometry)
+   - parameter: Minimum binned channel S/N = 5; fitting box = 5x5 spaxels  
+  > "We binned together the velocity channels in order to achieve a minimum S/N of five, necessary to reliably determine the position of the peak of the emission. To determine the peak position in each binned channel, we first identify the spaxel with the highest flux. Then, we consider a region of 5 × 5 spaxels centred on the maximum spaxel and we perform a 2D Gaussian fit." (4.2. Spectro-astrometry)
+   - parameter: Velocity threshold separating low- and high-velocity channels: |v| = 300 km s^-1  
+  > "As low-velocity channels, we consider absolute velocities | _v_ | < 300 km s [−][1] ." (4.2. Spectro-astrometry); "In general, we consider as high-velocity the channels with | _v_ | > 300 km s [−][1]" (4.2. Spectro-astrometry)
+   - assumption: Centroid uncertainty delta_x = FWHM_beam / (2 * S/N) following Condon (1997)  
+  > "The uncertainties on the centroids are calculated as ∆ _x_ = _FWHM_ _beam_ /(2 × _S_ / _N_ ), where _FWHM_ _beam_ is the beam size and S/N is the signal-to-noise ratio of the binned channel (Condon 1997)." (4.2. Spectro-astrometry)
+   - fitting: 2D Gaussian fit for channel centroids; linear bisector fit for kinematic major axis and outflow axis  
+  > "Then, we consider a region of 5 × 5 spaxels centred on the maximum spaxel and we perform a 2D Gaussian fit." (4.2. Spectro-astrometry); "We perform a linear bisector fit of the centroids of the low-velocity channels, to determine the orientation of the kinematic major axis" (4.2. Spectro-astrometry)
+   - validation: Compare derived CO kinematic major axis PAs with stellar and ionised gas disk PAs from MUSE (Perna et al. 2022).  
+  > "We compare these PAs with the ones of the stellar and ionised gas (traced by Hα) disks presented in Perna et al. (2022)." (4.3. Comparison of position angles of the molecular gas, stellar and ionised gas disks)
+3. **Define outflow velocity ranges and measure outflow sizes, velocities, masses, and energetics**: Define [v_min, v_max] for blue and red wings where centroids deviate from rotation and integrated map S/N peaks; fit beam-convolved 2D Gaussian to integrated high-velocity maps to get R_out; extract spectrum within observed R_out and integrate flux in [v_min, v_max] to get F_out, L'_CO, and M_out; compute flux-weighted v_out, mass outflow rate M_dot_out, momentum rate, kinetic luminosity, and escape fraction.  
+  > "Outflow size : to measure the outflow radius, we fit a 2D Gaussian model to the high-velocity maps, obtained integrating the flux over the high-velocity channels (see bottom left panel in Fig. 3), separately for the blue and red part." (4.5. Measurements of the outflow properties and energetics); "we extract the central spectrum from a radius equal to the observed _R_ _out_ (not deconvolved from the beam) and we integrate the flux in the highvelocity channels between _v_ _min_ and _v_ _max_" (4.5 Measurements of the outflow properties and energetics); "Mean outflow velocity : We calculate the mean velocity of the outflow separately for the blue- and red-shifted high-velocity wings, by taking the flux-weighted mean of the velocity in the channels identified as part of the blue-shifted (or red-shifted) emission" (4.5. Measurements of the outflow properties and energetics)
+   - parameter: |v_min| = 180-450 km s^-1; |v_max| = 300-800 km s^-1  
+  > "The _v_ _min_ values are in the range | _v_ _min_ | = 180 − 450 km s [−][1] ." (4.4. Outflow velocity range definition); "The _v_ _max_ values are in the range | _v_ _max_ | = 300 − 800 km s [−][1] ." (4.4. Outflow velocity range definition)
+   - parameter: Median values for 3-sigma upper limits: <v_out> = 390 km s^-1, <R_out> = 0.52 kpc  
+  > "where ⟨ _v_ _out_ ⟩ = 390 km s [−][1] and ⟨ _R_ _out_ ⟩ = 0.52 kpc are the median outflow velocity and radius of our sample." (4.5. Measurements of the outflow properties and energetics)
+   - assumption: Cosmology: Omega_Lambda = 0.7, Omega_M = 0.3, H_0 = 70 km s^-1 Mpc^-1  
+  > "Throughout this work, we assume a cosmological model with Ω λ = 0.7, Ω M = 0.3, and _H_ 0 = 70 km s [−][1] Mpc [−][1] ." (1. Introduction)
+   - assumption: Line luminosity ratio r_21 = L'_CO(2-1)/L'_CO(1-0) = 0.91 and ULIRG CO-to-H2 conversion factor alpha_CO = 0.78 M_sun (K km s^-1 pc^2)^-1  
+  > "We convert the CO(2-1) luminosity to CO(1-0) luminosity using _r_ 21 = _L_ CO(2-1) [′] [/] _[L]_ CO(1-0) [′] [=] [0][.][91] [(][Bolatto] [et] [al.] [2013b][).] [Then] [we] multiply it by the ULIRGs-like CO-to-H 2 conversion factor α= 0.78 M ⊙ /(K km s [−][1] pc [2] ), to obtain the outflow molecular (H 2 ) gas mass _M_ _out_ ." (4.5. Measurements of the outflow properties and energetics)
+   - assumption: Constant mass outflow rate over dynamical time t = R_out / v_out (volume density proportional to R^-2)  
+  > "We note that this formula corresponds to the assumption that the outflow has started at a point in the past (− _t_ = − _R_ _out_ / _v_ _out_ ) and has continued with a constant _M_ [˙] _out_ (Rupke et al. 2005b; Veilleux et al. 2005; Lutz et al. 2020)." (4.5. Measurements of the outflow properties and energetics)
+   - assumption: Average isotropic inclination corrections for sample means: 1/<sin(i)> = 1.27 for velocity, 1/<cos(i)> = 2 for radius, unity for dynamical time  
+  > "Following Law et al. (2009), who considered the average for a collection of objects oriented isotropically in space, the average correction for the velocities is 1/ ⟨sin( _i_ )⟩ = 1/0.79 = 1.27. Analogously, we calculated the average correction for the radius: 1/ ⟨cos( _i_ )⟩ = 2." (4.5.1. Inclination corrections); "However, the average inclination correction for the dynamical time ( _t_ _dyn_ = _R_ _out_ / _v_ _out_ ∝ _M_ _out_ / _M_ [˙] _out_ ) is unity (see Cicone et al. 2015)." (4.5.1. Inclination corrections)
+   - assumption: Truncated isothermal sphere for escape velocity with <M_dyn> = 3.9e10 M_sun, r = 1 kpc, truncation radius = 2 * <R_e> = 4 kpc  
+  > "which is assumed to be a truncated isothermal sphere (e.g. Veilleux et al. 2005). We use equation (7) in Arribas et al. (2014) to estimate the average escape velocity for our sample at the average outflow radius _r_ = 1 kpc." (5.3.3 Outflow launching mechanism); "As truncating radius we assume two times the average effective radius ⟨ _R_ _e_ ⟩ = 2 kpc (Perna et al. 2022)." (5.3.4. Escape fractions)
+   - fitting: Beam-convolved 2D Gaussian fit to integrated high-velocity channel maps  
+  > "To take into account the beam size and obtain the ‘intrinsic radius’, we convolve our model with a 2D Gaussian with the shape of the ALMA beam, and we fit this ‘convolved model’ to the maps." (4.5. Measurements of the outflow properties and energetics)
+   - validation: Tested biases using 3D biconical outflow simulations, subtraction of Gaussian fits to disk rotation, alternative maximum velocity definitions (v_max,FWHM and v_max,FW10), and comparisons with Lutz et al. (2020) and Fluetsch et al. (2019).  
+  > "To test how much this effect could affect our measurements of the outflow properties, we consider 3D models of biconical outflows based on the models presented by Bae & Woo (2016)." (4.5.2. Caveats: Methods to measure outflow parameters); "we consider 3D models of biconical outflows based on the models presented by Bae & Woo (2016)." (4.5.2 Caveats: Methods to measure outflow parameters)
+4. **Fit archival Herschel/PACS OH 119 um doublet profiles and derive percentile velocities**: Extract spectra from central 9.4"x9.4" spaxel with point-source aperture correction; normalise to linear continuum fit; fit two double-Gaussian components (systemic+outflow in absorption, emission, or P-Cygni) convolved with instrumental resolution; derive v_50, v_84, and v_98 percentile velocities and estimate errors with 50 Monte Carlo iterations.  
+  > "We extract the spectra from the central 9.4 [′′] × 9.4 [′′] spaxel and apply the point source aperture correction." (4.7. Analysis of the OH 119 µm spectra); "For the absorption profiles, we fit a model with two Gaussians (one for the systemic and one for the outflow) for each line of the OH doublet." (4.7. Analysis of the OH 119 µm spectra); "We repeat this procedure 50 times and we use the 16th and 84th percentiles of the distribution of best-fit parameters to estimate the 1σ uncertainties on the derived parameters." (4.7. Analysis of the OH 119 µm spectra)
+   - parameter: Lambda-doublet rest-frame separation = 0.208 um; Herschel/PACS instrumental resolution FWHM ~ 270 km s^-1; 50 Monte Carlo realisations  
+  > "The separation between the two lines of the Λ-doublet is fixed to 0.208 µm (in rest-frame) and the amplitude and width of the two lines were tied to be the same in each component. We convolve our model with the _Herschel_ /PACS instrumental resolution (FWHM∼ 270 km s [−][1], Veilleux et al. 2013), to recover the intrinsic shape of the line." (4.7. Analysis of the OH 119 µm spectra); "We repeat this procedure 50 times and we use the 16th and 84th percentiles of the distribution of best-fit parameters to estimate the 1σ uncertainties on the derived parameters." (4.7. Analysis of the OH 119 µm spectra)
+   - assumption: Zero velocity of OH spectra set to the CO(2-1) redshift; model absorption constrained not to be deeper than observed absorption  
+  > "We set the zero velocity of the OH spectra based on the redshift of CO (see Table 1), so that we can directly compare the outflow velocities of the two tracers." (4.7. Analysis of the OH 119 µm spectra); "We add as an additional constraint that the model absorption can not be deeper than the observed absorption (similar to Veilleux et al. 2013)" (4.7. Analysis of the OH 119 µm spectra)
+   - fitting: Convolved multi-Gaussian fitting with 50 Monte Carlo noise realisations for 16th-84th percentile uncertainties  
+  > "We repeat this procedure 50 times and we use the 16th and 84th percentiles of the distribution of best-fit parameters to estimate the 1σ uncertainties on the derived parameters." (4.7 Analysis of the OH 119 µm spectra)
+   - validation: Checked that derived OH parameters are consistent with Veilleux et al. (2013) for the 14 overlapping ULIRGs.  
+  > "We fit the line profile following the method used by Veilleux et al. (2013), and we check that our derived parameters are consistent with their results." (4.7. Analysis of the OH 119 µm spectra)
+5. **Perform statistical two-sample tests and MCMC linear bisector fits for outflow scaling relations**: Compare outflow parameter distributions across AGN/SB and merger/interacting subsamples using survival analysis two-sample tests (Gehan, Logrank, Peto-Prentice) in ASURV; fit linear bisector relations between outflow properties, SFR, and v_out (including PHANGS-ALMA) using MCMC in PyStan.  
+  > "To test whether two samples have different distributions, we perform a Two Sample test using the survival analysis package ASURV (Feigelson & Nelson 1985) which allows us to take into account upper limits." (5.2.2. Outflow quantities); "We fit a linear relation between these two quantities using the Monte Carlo Markov-Chain (MCMC) implementation PyStan" (5.3.3. Outflow launching mechanism); "We run the fitting algorithm to find the best parameters that minimise ϵ _y_ and ϵ _x_, and then we perform a bisector fit." (Appendix B: Bisector fit methodology)
+   - software: ASURV, PyStan
+   - parameter: MCMC settings: 2000 steps, 4 chains; systematic uncertainties: 0.1 dex on log v_out, 0.3 dex on log M_out, log M_dot_out, log eta, and log(M_out/R_out)  
+  > "For the outflow velocity, we estimate a typical uncertainty of 0.1 dex, while for _M_ _out_ and _M_ [˙] _out_ we adopt a typical uncertainty of 0.3 dex." (4.5.2. Caveats: Methods to measure outflow parameters); "We run the algorithm for 2000 steps with 4 chains as ‘burn-in’ phase." (Appendix B: Bisector fit methodology)
+   - assumption: SFR from L_IR (after removing AGN fraction alpha_AGN) using Kennicutt & Evans (2012) relation with Kroupa & Weidner (2003) IMF; SNe momentum and energy from Kim & Ostriker (2015) and Leitherer et al. (1999)  
+  > "The SFR has been estimated from the IR luminosity, using the Kennicutt & Evans (2012) relation (with Kroupa & Weidner (2003) initial mass function (IMF)) after removing the fraction of luminosity associated with the AGN (α _AGN_ )." (5.3.2. Outflow energetics); "The SFR has been estimated from the IR luminosity, using the Kennicutt & Evans (2012) relation (with Kroupa & Weidner (2003) initial mass function (IMF)) after removing the fraction of luminosity associated with the AGN (α _AGN_ )." (5.3 Outflow energetics)
+   - fitting: MCMC linear bisector fit with intrinsic scatter and normal noise distribution in PyStan; best fit from median and 16th-84th percentiles of posterior  
+  > "Considering two generic quantities _x_ and _y_, we fit a linear relation between them using the Monte Carlo Markov-Chain (MCMC) implementation PyStan [5] . We assume that the noise is normal distributed." (Appendix B: Bisector fit methodology); "We derive the best fit values and the corresponding 1σ uncertainties from the median and the 16th-84th percentiles, respectively, of the marginalised posterior distributions of the parameters." (Appendix B: Bisector fit methodology)
+   - validation: Monitor MCMC convergence by checking effective sample size N_eff = N_iter / tau_int > 10.  
+  > "We check that the number of effective samples is > 10, which indicate that the algorithm has converged (Gelman et al. 2004)." (Appendix B: Bisector fit methodology)
+
+## Software
+
+- **ASURV** : Survival analysis two-sample tests (Gehan, Logrank, Peto-Prentice) accounting for upper limits  
+  > "To test whether two samples have different distributions, we perform a Two Sample test using the survival analysis package ASURV (Feigelson & Nelson 1985) which allows us to take into account upper limits." (5.2.2. Outflow quantities)
+- **PyStan** 2.17.1.0: Monte Carlo Markov-Chain (MCMC) linear bisector fitting of scaling relations  
+  > "We fit a linear relation between these two quantities using the Monte Carlo Markov-Chain (MCMC) implementation PyStan" (5.3.3. Outflow launching mechanism); "This research used the `TOPCAT` tool for catalogue cross-matching (Taylor 2005) and the `Stan` interface for Python `PyStan` (Stan Development Team 2018)." (Acknowledgements); "Stan Development Team. 2018, PyStan: the Python interface to Stan, Version 2.17.1.0" (References)
+- **Astropy** : General astronomical data analysis  
+  > "This research made use of Astropy, a community-developed core Python package for Astronomy (The Astropy Collaboration et al. 2013), `Matplotlib` (Hunter 2007), `NumPy` (Van Der Walt et al. 2011)." (Acknowledgements)
+- **Matplotlib** : Plotting and visualisation  
+  > "This research made use of Astropy, a community-developed core Python package for Astronomy (The Astropy Collaboration et al. 2013), `Matplotlib` (Hunter 2007), `NumPy` (Van Der Walt et al. 2011)." (Acknowledgements)
+- **NumPy** : Numerical calculations  
+  > "This research made use of Astropy, a community-developed core Python package for Astronomy (The Astropy Collaboration et al. 2013), `Matplotlib` (Hunter 2007), `NumPy` (Van Der Walt et al. 2011)." (Acknowledgements)
+- **TOPCAT** : Catalogue cross-matching  
+  > "This research used the `TOPCAT` tool for catalogue cross-matching (Taylor 2005) and the `Stan` interface for Python `PyStan` (Stan Development Team 2018)." (Acknowledgements)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Outflow detection rate in nuclei with log L_IR/L_sun > 11.8 | 77 | ±7 | % | 3 | We detect an outflow, defined as high-velocity (/ _v_ / - 300 km s [−][1] ) CO(2-1) emission which deviates from the main rotation, in 20/26 of the nuclei with log _L_ _IR_ / _L_ ⊙ - 11.8 (77 ± 7% [1] ). |
+| Outflow detection rate in starburst-dominated nuclei (log L_IR/L_sun > 11.8) | 93 | ±4 | % | 3 | The percentage of detections in SB (93 ± 4%, 14/15) is higher than in AGN (55 ± 14%, 6/11). |
+| Outflow detection rate in AGN-dominated nuclei (log L_IR/L_sun > 11.8) | 55 | ±14 | % | 3 | The percentage of detections in SB (93 ± 4%, 14/15) is higher than in AGN (55 ± 14%, 6/11). |
+| Mean inclination-corrected outflow velocity (v_out) | 485 | ±16 | km s^-1 | 3 | We measure projected outflow velocities of ∼ 260 − 490 km s [−][1], with a mean outflow velocity (corrected for inclination) of 485±16 km s [−][1] .; mean: 485 ± 16 1.07 ± 0.08 10 ± 2 78 ± 16 |
+| Mean inclination-corrected outflow radius (R_out) | 1.07 | ±0.08 | kpc | 3 | mean: 485 ± 16 1.07 ± 0.08 10 ± 2 78 ± 16 |
+| Observed outflow radius range (R_out) | 0.17-0.94 | not stated | kpc | 3 | Outflow radii are in the range 0.17-0.94 kpc and the mean inclination-corrected outflow radius is 1.1±0.1 kpc. |
+| Mean molecular outflow mass (M_out) | 10 | ±2 | 10^7 M_sun | 3 | The outflow masses are between 1−35×10 [7] M ⊙, with an average of (10±2)×10 [7] M ⊙ .; mean: 485 ± 16 1.07 ± 0.08 10 ± 2 78 ± 16 |
+| Mean molecular mass outflow rate (M_dot_out) | 78 | ±16 | M_sun yr^-1 | 3 | The mass outflow rates are in the range 6 − 302 M ⊙ yr [−][1], with an average outflow rate of 78 ± 16 M ⊙ yr [−][1] .; mean: 485 ± 16 1.07 ± 0.08 10 ± 2 78 ± 16 |
+| Mass-loading factor range (eta = M_dot_out / SFR) | 0.1-1 | not stated | dimensionless | 3 | mass-loading factors η = _M_ [˙] _out_ / _S FR_ = 0.1−1, and an average outflow mass escape fraction of 45±6%. |
+| Outflow dynamical time range (t_dyn = R_out / v_out) | 0.45-2.77 | not stated | Myr | 3 | We find molecular outflow dynamical times ( _t_ _dyn_ = _R_ _out_ / _v_ _out_ ) in the range 0.45 − 2.77 Myr. The mean _t_ _dyn_, based on the mean observed _R_ _out_ and _v_ _out_, is 1.37 Myr |
+| Median molecular outflow depletion time (t_dep = M(H2)_tot / M_dot_out) | 75 | range 15-644 | Myr | 3 | The outflow depletion times ( _t_ _dep_ = _M_ ( _H_ 2 ) _tot_ / _M_ [˙] _out_ ) in our sample are in the range 15 − 644 Myr, with a median of 75 Myr. |
+| Mean ratio of mass outflow rate to total IR luminosity (M_dot_out / L_IR) | 3.8e-11 | ±0.6e-11 | M_sun yr^-1 L_sun^-1 | 3 | The average for the total sample is _M_ _out_ / _L_ _IR_ = (3.8 ± 0.6) × 10 [−][11] M ⊙ _yr_ [−][1] _L_ ⊙ [−][1] . |
+| Mean outflow mass escape fraction (<f_esc>) | 45 | ±6 | % | 3 | will escape to the circumgalactic medium, with mean escape fraction ⟨ _f_ _esc_ ⟩ = 45 ± 6%. |
+| Mean escape mass outflow rate (<M_dot_esc>) | 40 | ±10 | M_sun yr^-1 | 3 | The escape outflow rates are in the range 1-173 M ⊙ yr [−][1], with an average ⟨ _M_ [˙] _esc_ ⟩ = 40 ± 10 M ⊙ yr [−][1] . |
+| Slope of log L_out vs log SFR relation | 1.3 | ±0.05 | dimensionless | 5 | log _L_ _out_ [erg s [−][1] ] = (39.4±0.08)+(1.3±0.05) log _S FR_ [M ⊙ yr [−][1] ]. |
+| Slope of log eta vs log v_out relation (alpha) | -1.43 | ±0.28 | dimensionless | 5 | The best linear bisector fit gives a slope α = −1.43 ± 0.28 (σ _intr_ = 0.35). |
+| Slope of log v_out vs log SFR relation | 0.25 | ±0.01 | dimensionless | 5 | log _v_ _out_ ∝ (0.25 ± 0.01) · log _S FR_ . |
+| Slope of log(M_out/R_out) vs log v_out relation | 2.61 | ±0.25 | dimensionless | 5 | The best linear bisector fit relation has a slope of 2.61 ± 0.25, which implies α = −0.39.; From this analysis, we derived a slope α = −0.39 ± 0.25, which is more consistent with the momentum-driven than with the energy-driven scenario (see Sec 5.3.3, Fig. 20). |
+
+## Qualitative findings
+
+- Position angles of the CO(2-1) kinematic major axis generally agree within ~20 deg with stellar and ionised gas disk PAs measured on larger scales from MUSE.  
+  > "Overall, there is a general agreement between these measurements, with differences within ∼ 20 [◦], hence it is consistent with what observed in non-interacting galaxies (see Perna et al. 2022)." (4.3. Comparison of position angles of the molecular gas, stellar and ionised gas disks)
+- Outflows oriented perpendicular to the kinematic major axis (angle 90 +- 20 deg) are found exclusively in starburst-dominated nuclei (6/14), mostly in early interacting systems (5/6).  
+  > "We find that in six nuclei the outflow direction is nearly perpendicular (angle 90 ± 20 [◦] ) to the kinematic major axis." (5.2.1. Outflow detection rate and direction); "All these nuclei are SB dominated." (5.2.1. Outflow detection rate and direction); "The majority of the nuclei with perpendicular outflow (5/6) are interacting systems." (5.2.1. Outflow detection rate and direction)
+- There are no statistically significant differences in the distributions of outflow properties (v_out, R_out, M_out, M_dot_out, eta) between AGN and starburst nuclei, or between advanced mergers and interacting systems.  
+  > "We find that the distributions of the outflow properties of AGN and SB are not significantly different according to the Gehan’s, Logrank and Peto-Prentice’s Two Sample Tests ( _p_ -value=0.2-0.7). Similarly, we do not find significant differences between mergers and interacting systems ( _p_ -value=0.2-0.9)." (5.2.2. Outflow quantities)
+- Escaping molecular gas represents less than 5% (mean 1%) of the total H2 reservoir, implying that cold molecular outflows are unlikely to quench star formation by removing the gas reservoir.  
+  > "The escape _M_ ( _H_ 2 ) _esc_ is < 5% of the total _M_ ( _H_ 2 ), with a mean of 1%." (5.3.4. Escape fractions); "Thus, it is unlikely that these outflows are able to impact star-formation by removing gas from the molecular gas reservoir." (6. Discussion)
+
+## Claim tuples
+
+- H: Cold molecular mass outflow rates and mass-loading factors in ULIRGs correlate tightly with AGN luminosity and AGN fraction as reported in earlier literature. | E: Measure spatially resolved CO(2-1) mass outflow rates and mass-loading factors across an unbiased sample of 25 ULIRG systems (38 nuclei) selected only by IR luminosity, and compare with MIR/optical AGN fractions and AGN luminosities. | R: No correlation is found between mass-loading factor eta and AGN fraction alpha_AGN (Spearman r = 0.27, p = 0.28), and M_dot_out spans up to 1.2 dex at a given AGN luminosity, lying below the Cicone et al. (2014) relation. | F: ULIRGs do not follow a tight M_dot_out vs L_AGN relation; previous scaling relations likely trace only the upper boundary of the most extreme outflows. | **refuted**
+- H: Cold molecular outflow detection rates and orientations in ULIRGs depend on the dominant nuclear power source (starburst vs AGN) and merger stage. | E: Perform spectro-astrometry on ALMA CO(2-1) cubes for 26 ULIRG nuclei with log L_IR/L_sun > 11.8 to detect decoupled high-velocity (>300 km s^-1) gas and measure its projected angle relative to the kinematic major axis. | R: Outflows are detected in 93 +- 4% (14/15) of SB nuclei versus 55 +- 14% (6/11) of AGN nuclei; 6/14 SB outflows are perpendicular to the kinematic major axis (5/6 in interacting SBs), whereas AGN outflows show no preferred orientation. | F: Outflow detection rates are higher in starbursts than in AGN, and perpendicular outflows occur mainly in interacting starbursts, likely because SB outflows follow the path of least resistance perpendicular to the disk while AGN outflows can have any orientation or be compact. | **supported**
+- H: Cold molecular outflows in ULIRGs and nearby star-forming galaxies are momentum-driven rather than energy-driven. | E: Combine the PUMA ULIRG sample with the PHANGS-ALMA main-sequence outflow sample to fit the scaling relations between v_out, SFR, eta, and M_out/R_out using MCMC bisector regression. | R: v_out correlates with SFR as v_out propto SFR^(0.25 +- 0.01) (r = 0.84, p < 0.01); using this relation, log(M_out/R_out) vs log v_out has a slope of 2.61 +- 0.25, corresponding to alpha = -0.39 +- 0.25 in eta propto v_out^alpha, consistent within 1 sigma with momentum-driven (alpha = -1) and inconsistent with energy-driven (alpha = -2). Also, outflow momentum rates are all below total SNe momentum injection. | F: The molecular outflows are consistent with being momentum-driven and can be powered by supernovae. | **supported**
+- H: CO(2-1) emission and OH 119 um absorption/emission trace the same molecular outflow velocities. | E: Fit archival Herschel/PACS OH 119 um doublet profiles for 22 PUMA systems to derive v_98 percentile velocities and compare with CO(2-1) outflow velocities (v_out and v_max). | R: Among 17 targets with outflow detections in at least one tracer (out of 20 nuclei with OH absorption/P-Cygni), 13 (76%) show outflows in both CO and OH (|v| > 300 km s^-1), 3 (18%) show outflows only in CO, and 1 (00188-0856) shows an outflow only in OH; |v_98(OH) - v_max(CO)| anti-correlates weakly with R_out (r = -0.4) and correlates with alpha_AGN (r = 0.51). | F: CO and OH detect the same outflow in most targets, but velocity discrepancies arise because OH absorption requires a far-IR continuum background, making it sensitive to outflow collimation and geometry, or extreme ionisation lowering CO abundance. | **partially**
+
+## Reasoning
+
+- Why this data: High spatial resolution (~400 pc) ALMA CO(2-1) observations of an unbiased, IR-luminosity-selected sample of 25 ULIRGs are needed to spatially resolve outflow radii and avoid the bias toward extreme outflows present in prior pre-selected samples; PHANGS-ALMA is added to increase the L_IR/SFR dynamic range.  
+  > "In most cases, the targeted objects were selected based on the presence of an outflow, which was detected through previous low-resolution observations. This could introduce a bias in the samples, in which only ULIRGs with the most-extreme outflows are selected. In this work, we present high spatial resolution (0.1-1.0", ∼ 400 pc) ALMA observations of the CO(2-1) line for an unbiased sample of 25 ULIRGs, selected only based on their IR luminosity." (1. Introduction); "In our analysis, we include a sample of nearby main-sequence galaxies (SFR = 0.3 − 17 M ⊙ yr [−][1] ) with detected molecular outflows from the PHANGS-ALMA survey to increase the _L_ _IR_ dynamic range." (abstract)
+- Why this method: Spectro-astrometry and integration of only high-velocity (|v| > 300 km s^-1) flux-weighted channels avoids the strong parameter degeneracies of multi-Gaussian fitting to asymmetric/self-absorbed line cores; fitting M_out/R_out vs v_out using the v_out-SFR relation reduces scatter compared to fitting eta vs v_out directly.  
+  > "Since the resolution of the observations allows us to determine the position of the gas and to identify the gas that is not following the galaxy rotation, we prefer to consider only the gas with high velocities as part of the outflow. Moreover, most of the line profiles of our targets cannot be well fitted using a simple model with only one or two Gaussians" (4.5. Measurements of the outflow properties and energetics); "We decide to use this ‘flux-weighted velocity’ to calculate the mass outflow rate, because it is independent from the modelling of the emission line profile and it gives more weight to the velocities at which most of the emission takes place." (4.5. Measurements of the outflow properties and energetics)
+- Alternative: Subtracting rotating disk emission by fitting central velocity channels with 1-3 Gaussians and measuring outflow in the residuals (tested in Sec. 4.5.2; rejected for main analysis as it underestimates outflow flux at low projected velocities and suffers from complex core profiles).  
+  > "A possible method (used for example by Pereira-Santaella et al. 2018) consists in subtracting the flux belonging to the rotating disk, by fitting the central velocity channels with one or two Gaussians and then considering only the flux in the residuals as part of the outflow. However, this method may underestimate the outflow mass" (4.5. Measurements of the outflow properties and energetics); "To test how large this contribution could be, we subtract from the spectra the flux due to rotation estimated by modelling the core of the emission profile" (4.5.2 Caveats: Methods to measure outflow parameters)
+- Alternative: Fitting the line profile with a systemic Gaussian plus a broad outflow Gaussian component and integrating the full broad component (as in Fluetsch et al. 2019; rejected because it overestimates outflow mass by assuming large low-velocity outflow flux and suffers from multi-Gaussian degeneracy).  
+  > "An alternative method used in the literature consists in fitting the line profile using a systemic Gaussian component and a broader Gaussian component for the outflow (e.g. Fluetsch et al. 2019). This method may be overestimating the flux of the outflowing gas, since it considers that a large portion of the outflowing gas is at low velocities." (4.5. Measurements of the outflow properties and energetics); "We decide to avoid the methods based on the fit of the emission line profile with multiple Gaussian components, because the components are degenerate and this will introduce further uncertainties in the measurements." (4.5.2. Caveats: Methods to measure outflow parameters)
+- Alternative: Using maximum outflow velocity definitions (v_max,FWHM or v_max,FW10) instead of flux-weighted v_out (tested in Sec. 4.5.2; rejected because they rely on degenerate multi-Gaussian fits).  
+  > "We consider two definition of the maximum velocity. Both definition require the fit of the line profile with multiple Gaussian components: a broad component for the outflow, and other components for the systemic emission." (4.5.2. Caveats: Methods to measure outflow parameters); "We decide to avoid the methods based on the fit of the emission line profile with multiple Gaussian components, because the components are degenerate and this will introduce further uncertainties in the measurements." (4.5.2. Caveats: Methods to measure outflow parameters)
+- Alternative: Using maximum 3-sigma extent R_3sigma instead of 2D Gaussian radius R_out to compute outflow mass and mass outflow rate (tested; gives M_dot_out within 8% of R_out method because larger M_out is offset by larger radius).  
+  > "Given that most of the outflow flux is located within _R_ _out_, we decide to use _R_ _out_ to compute the mass outflow rate and the energetics." (4.5. Measurements of the outflow properties and energetics); "If we were to use _R_ 3σ and the outflow flux within this radius, we would obtain very similar values (less than 8% smaller, −0.04 dex) compared to the _M_ [˙] _out_ estimated using _R_ _out_ ." (4.5. Measurements of the outflow properties and energetics)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Observations measure only projected velocities along the line of sight, missing high-velocity gas moving in the plane of the sky and low-projected-velocity outflowing gas (|v| < v_min) that overlaps with disk rotation.  
+  > "One caveat of our analysis is that since we are observing projected velocities, we are not sensitive to high velocity gas in the plane of the sky. Additionally, with our method we are not considering outflowing gas with low projected velocities, that is with velocities _v_ such that _v_ _min_ ( _blue_ ) < _v_ < _v_ _min_ ( _red_ ), because it overlaps with the velocities of the rotating disk." (4.4. Outflow velocity range definition)
+- Limitation (authors): Due to limited S/N in individual velocity channels, R_out cannot be measured channel-by-channel.  
+  > "Due to the limited S/N of the single channels, it is not possible to measure the radius in each channel, which would give a more accurate measurement to derive the mass outflow rate." (4.5. Measurements of the outflow properties and energetics)
+- Limitation (authors): Individual target outflow radii and velocities cannot be corrected for inclination because outflow inclination angles relative to the line of sight and disk are unknown for most of the sample.  
+  > "We do not attempt to correct the outflow radii and velocities of the single targets for the inclination, since this information is not available for all objects." (4.5.1. Inclination corrections)
+- Limitation (authors): Defining v_max where the integrated map S/N peaks may exclude diffuse high-velocity emission below 3 sigma, potentially underestimating v_out.  
+  > "In selecting _v_ _max_ based on the S/N of the integrated high-velocity maps, it is possible that we are excluding diffuse high-velocity flux which is below the 3σ level. In this way, we may underestimate _v_ _out_, especially for cases in which the outflow velocity increases radially." (4.5.2. Caveats: Methods to measure outflow parameters)
+- Limitation (authors): Uncertainties on M_dot_out are dominated by the uncertain CO-to-H2 conversion factor (alpha_CO, up to 0.7 dex) and assumed outflow geometry (factor of 3 between constant-rate vs constant-density spherical/conical assumptions).  
+  > "Assuming that the outflowing gas fills a spherical or multi-conical volume with a constant average volume density, would increase _M_ [˙] _out_ by a factor of three (e.g. Maiolino et al. 2012; Cicone et al. 2014; Lutz et al. 2020)." (4.5. Measurements of the outflow properties and energetics); "The uncertainties on _M_ [˙] _out_ are dominated by the uncertainties on the α _CO_ conversion factor, which can be up to 0.7 dex (Papadopoulos et al. 2012; Bolatto et al. 2013b; Pereira-Santaella et al. 2020), and on the outflow geometry." (4.5.2. Caveats: Methods to measure outflow parameters)
+- Limitation (authors): Herschel/PACS OH 119 um spectra have a large beam (~20 arcsec, extracted from 9.4"x9.4" spaxel) that blends both nuclei in interacting systems.  
+  > "One possible caveat of this analysis is the fact that the OH spectrum includes the nuclear region with a beam size ∼ 20 arcsec [4] . For the interacting systems, these include the two nuclei." (5.4. OH vs. CO outflow properties)
+- Caveat (inferred, ours): The selection of velocity channels included in the kinematic major axis and outflow axis bisector fits involves subjective visual exclusion of 'deviating' channels, which may affect reproducibility of position angles and v_min.
+- Caveat (inferred, ours): Combining PUMA ULIRGs (using r_21 = 0.91 and 2D Gaussian R_out) with PHANGS-ALMA main-sequence galaxies (using r_21 = 0.65 and channel-by-channel flux-weighted R_out) introduces a small methodological offset across the two ends of the SFR scaling relations.
+- Caveat (inferred, ours): Escape fraction estimates use a single sample-averaged dynamical mass (<M_dyn> = 3.9e10 M_sun) and effective radius (<R_e> = 2 kpc) for all targets rather than individual host galaxy potentials.
+
+## Reproducibility
+
+- Data public (paper): ALMA project codes and Herschel/PACS archival usage are stated; public availability of reduced cubes is not explicitly stated  
+  > "Most of these observations were carried out as part of our programmes 2015.1.00263.S, 2016.1.00170.S, 2018.1.00486.S, and 2018.1.00699.S (PI: M. Pereira-Santaella). Additionally, we use archival data for 13120-5453 and 15327+2340 (Arp 220), from programmes 2016.1.00777.S (PI: K. Sliwa) and 2015.1.00113.S (PI: N. Scoville), respectively." (3. Observations and data reduction); "We collect archival _Herschel_ /PACS spectra of the OH 119µm doublet transition (hereafter OH) for 22/25 of our ULIRGs systems" (4.7. Analysis of the OH 119 µm spectra)
+- Products in archive: _not stated_
+- Missing: Detailed ALMA imaging parameters (CASA version, robust weighting, uv-tapering, cleaning thresholds) which are only in Pereira-Santaella et al. (2021)
+- Missing: Exact per-target S/N thresholds (within 3.5-5) used for channel masking prior to moment map creation
+- Missing: Exact velocity channel groupings and excluded outlier channels used in the spectro-astrometry bisector fits for each target
+- Missing: Self-calibration solution intervals and parameters for 13451+1232
+- Data volume (inferred): ~50-150 GB of raw ALMA visibilities across 6 project codes (25 targets), plus ~5-10 GB of reduced spectral cubes and Herschel/PACS 1D spectra
+- Score (inferred): 7/5, All ALMA project codes, target coordinates, redshifts, integration times, beam sizes, sensitivities, and exact outflow velocity windows [v_min, v_max] are tabulated, and the analysis equations and MCMC fitting procedure are thoroughly documented; however, core ALMA calibration/imaging parameters are deferred to Paper II (Pereira-Santaella et al. 2021) and some channel-selection steps in spectro-astrometry are manual.
+- Rediscovery candidate: yes, All six ALMA project codes are public in the ALMA archive, Table 3 provides the exact velocity integration windows [v_min, v_max] for every outflow detection, and the main results (outflow masses, radii, velocities, outflow rates, and scaling slopes) are fully numeric.
+
+## Links
+
+- Method: García-Burillo et al. (2015) (Spectro-astrometry method used to decouple high-velocity outflow gas from disk rotation)
+- Method: Pereira-Santaella et al. (2018) (Spectro-astrometry methodology, supernova momentum/energy injection formalism, and prior analysis of three PUMA targets)
+- Method: Lutz et al. (2020) (Outflow radius definition from beam-deconvolved 2D Gaussian fitting of high-velocity channel maps)
+- Method: Veilleux et al. (2013) (Fitting methodology and percentile velocity definitions for Herschel/PACS OH 119 um doublet spectra)
+- Method: Arribas et al. (2014) (Truncated isothermal sphere gravitational model equation used to compute outflow escape velocities)
+- Method: Bae & Woo (2016) (3D biconical outflow models used to simulate and quantify velocity-cut biases)
+- Method: Feigelson & Nelson (1985) (ASURV survival analysis two-sample tests for censored data)
+- Method: García-Bernete et al. (2022) (PAH equivalent width ratio method used to classify compact obscured nuclei (CONs))
+- Companion: Perna et al. (2020) (Detailed MUSE analysis of Arp 220 within the PUMA project)
+- Companion: Perna et al. (2021) (PUMA I paper presenting MUSE ionised gas spatial distribution, stellar kinematics, optical classifications, and MIR AGN fractions)
+- Companion: Pereira-Santaella et al. (2021) (PUMA II paper presenting the ALMA 220 GHz continuum analysis and ALMA data reduction procedure)
+- Companion: Perna et al. (2022) (PUMA III paper presenting MUSE ionised gas and stellar disk kinematics, position angles, effective radii, and dynamical masses)
+- Related: PUMA (Physics of ULIRGs with MUSE and ALMA)
+- Related: PHANGS-ALMA (Physics at High Angular resolution in Nearby GalaxieS)
+
+## Checks
+
+```json
+{
+ "quotes": 394,
+ "quotes_ok": 394,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 25,
+ "unsupported_facts": 0,
+ "project_codes": 6,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 18,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 219,
+  "stated": 193,
+  "rate": 0.881
+ },
+ "evidence_ok": true
+}
+```

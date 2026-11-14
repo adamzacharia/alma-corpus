@@ -1,0 +1,153 @@
+{
+ "bibcode": "2013ApJ...768L..38H",
+ "title": "Submillimeter H<SUB>2</SUB>O Maser in Circinus Galaxy—a New Probe for the Circumnuclear Region of Active Galactic Nuclei",
+ "year": 2013,
+ "doi": "10.1088/2041-8205/768/2/L38",
+ "arxiv_id": "1305.0076",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Is there 321 GHz H2O maser emission in the Circinus galaxy, and how does it compare with the known 22 GHz maser?",
+ "alma_project_codes": [
+  "2011.0.00121.S"
+ ],
+ "data": {
+  "bands": "Band 7 (321 GHz line)",
+  "arrays": "18 antennas",
+  "angular_resolution": "0.66 x 0.51 arcsec, PA -17 deg",
+  "sensitivity": "line rms ~9–11 mJy/beam per channel; continuum rms ~0.8 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Enclosed mass 1.7e6 Msun and Keplerian disk model for 22 GHz maser",
+    "evidence": [
+     {
+      "loc": "4.3 Possible Detection of High-velocity Gas",
+      "quote": "by calculation based on a Keplerian ($v$ $\\propto$ $r^{-0.5}$) rotation disk model in Greenhill et al. (2003a, 2003b)"
+     }
+    ]
+   },
+   "citation": "Greenhill et al. 2003a, 2003b (cite: linc03a; linc03b)"
+  },
+  {
+   "what": {
+    "value": "Optical nucleus position from NED",
+    "evidence": [
+     {
+      "loc": "3 RESULTS",
+      "quote": "(primary from NED)"
+     }
+    ]
+   },
+   "citation": "NED"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "CASA calibration, continuum subtraction in uv, natural-weighted CLEAN cube",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search for line emission and measure spectra and positions",
+   "method": "Searched within 18 arcsec field over VLSR -430 to +1290 km/s; Gaussian-fitted peak positions",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate radius of high-velocity feature",
+   "method": "Keplerian v∝r^-0.5 scaling from the Greenhill disk model",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Black hole mass 1.7e6 Msun; Keplerian rotation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak line flux density",
+   "value": "131",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 RESULTS",
+     "quote": "peak flux density of which is 131 mJy beam$^{-1}$  at $V$$_{\\rm LSR}$=531.1 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity",
+   "value": "~14",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 RESULTS",
+     "quote": "The total integrated intensity estimated from all the detected H$_{2}$O$\\;$emission is $\\sim$14 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum total flux density",
+   "value": "55",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 RESULTS",
+     "quote": "The detected nuclear continuum with the total flux density of 55 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of high-velocity feature",
+   "value": "~0.018",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Possible Detection of High-velocity Gas",
+     "quote": "it is located at a radius of $\\sim$ 0.018 pc"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Line-free channel ranges",
+  "Clean threshold, cell and image size, masking",
+  "Flux density of Titan model and phase-reference solutions",
+  "Which antennas/baselines and any flagging",
+  "Number of channels averaged or velocity resolution of images",
+  "Details of Gaussian fits"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and scripts",
+  "line-free channels",
+  "imaging parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single public dataset and simple analysis, but sparse processing details.",
+ "rediscovery_reason": "Public Cycle 0 data, simple recipe, numeric line and continuum results.",
+ "source_card": "cards/2013ApJ...768L..38H/sonnet/card.md"
+}

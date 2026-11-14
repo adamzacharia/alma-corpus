@@ -1,0 +1,346 @@
+{
+ "bibcode": "2017ApJ...837..146V",
+ "title": "The Compact, ∼1 kpc Host Galaxy of a Quasar at a Redshift of 7.1",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa62ac",
+ "arxiv_id": "1702.03852",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the size, structure, kinematics, heating source and dynamical mass of the host galaxy of the z=7.1 quasar J1120+0641, as seen at ~1 kpc resolution in [C II] and dust continuum?",
+ "alma_project_codes": [
+  "2012.1.00882.S"
+ ],
+ "data": {
+  "bands": "[C II] at 235.07 GHz observed; continuum at 227 GHz (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.23x0.22 arcsec (robust=0.5); 0.31x0.29 arcsec natural",
+  "sensitivity": "0.15 mJy/beam per 20 MHz (full, natural); 0.17 mJy/beam per 20 MHz (robust=0.5)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Earlier PdBI [C II] flux 1.03±0.14 Jy km/s and S235GHz=0.61±0.16 mJy, for comparison",
+    "evidence": [
+     {
+      "loc": "3.2. [C II ] Emission Line",
+      "quote": "is consistent with the value of F [CII] = 1.03±0.14Jy km s [−][1] published by Venemans et al. (2012)"
+     }
+    ]
+   },
+   "citation": "Venemans et al. 2012"
+  },
+  {
+   "what": {
+    "value": "Black hole mass (2.4±0.2)e9 Msun",
+    "evidence": [
+     {
+      "loc": "4.4. Dynamical Mass Estimate",
+      "quote": "the black hole with a mass of M BH = (2.4 ± 0.2) × 10 [9] M ⊙ [2] (De Rosa et al. 2014)"
+     }
+    ]
+   },
+   "citation": "De Rosa et al. 2014"
+  },
+  {
+   "what": {
+    "value": "PDR and XDR [C II]/[C I] model line ratios",
+    "evidence": [
+     {
+      "loc": "4.1. Origin of the Heating Radiation",
+      "quote": "In PDR models, the [C II ]/[C I ] ratio covers a large range from ∼3–50, depending on the density and strength of the UV radiation field"
+     }
+    ]
+   },
+   "citation": "Kaufman et al. 1999; Meijerink et al. 2007"
+  },
+  {
+   "what": {
+    "value": "SFR-L_TIR scaling relation",
+    "evidence": [
+     {
+      "loc": "4.2. Infrared Luminosity and Star-Formation Rates",
+      "quote": "SFR TIR = L TIR /6.7 × 10 [9]"
+     }
+    ]
+   },
+   "citation": "Murphy et al. 2011"
+  },
+  {
+   "what": {
+    "value": "[C II] SFR conversion for high-z sources",
+    "evidence": [
+     {
+      "loc": "4.2. Infrared Luminosity and Star-Formation Rates",
+      "quote": "Applying the [C II ] SFR conversion for high redshift sources from De Looze et al. (2014)"
+     }
+    ]
+   },
+   "citation": "De Looze et al. 2014"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make continuum map and measure flux",
+   "method": "Average channels >=0.75 GHz from [C II]; taper to 1.9 arcsec for total flux; aperture photometry",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure [C II] line",
+   "method": "Tapered cube to 1.9 arcsec, extract peak-pixel spectrum, fit Gaussian+constant",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Size and structure",
+   "method": "2D Gaussian fits to continuum map and to [C II] map averaged over 600 km/s; aperture photometry; red/blue maps",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Upper limits on CO and [C I]",
+   "method": "uvcontsub, average over 400 km/s, 3 sigma limits corrected for line wings",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Heating source and luminosities",
+   "method": "Intrinsic line fluxes corrected for CMB contrast; compare [C II]/[C I] with PDR/XDR models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_gas = T_dust; Td = 47, 41 or 30 K; constant dust temperature"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "FIR luminosity, SFR, dust and gas mass",
+   "method": "Optically thin modified blackbody, FIR 42.5-122.5 um, TIR 8-1000 um, SFR from Murphy+2011; dust mass with kappa from Dunne+2000; gas mass from CO limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta=1.6 or 1.95; alpha_CO = 0.8 Msun/(K km/s pc2); L'CO(1-0)=L'CO(2-1)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Dynamical mass",
+   "method": "Virial theorem Mdyn = 3R sigma^2/2G, R=4.3 kpc, sigma from tapered spectrum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "No ordered rotation, so virial rather than disk model"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C II] line flux",
+   "value": "1.11",
+   "uncertainty": "0.10",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F [CII] [Jy km s [−][1] ] 1.11±0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] FWHM",
+   "value": "400",
+   "uncertainty": "45",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM [CII] [km s [−][1] ] 400±45"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift",
+   "value": "7.0851",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "z [CII] 7.0851±0.0005"
+    }
+   ]
+  },
+  {
+   "quantity": "S227GHz total continuum (tapered)",
+   "value": "0.53",
+   "uncertainty": "0.04",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "S 227 GHz [mJy] 0.53±0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum deconvolved size",
+   "value": "(0.23±0.03)x(0.16±0.03) arcsec = (1.24±0.14)x(0.83±0.14) kpc",
+   "uncertainty": "as given",
+   "units": "arcsec / kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "size continuum [a] [arcsec [2] ] (0.23±0.03)×(0.16±0.03)"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] deconvolved size",
+   "value": "(0.31±0.05)x(0.27±0.05) arcsec = (1.65±0.29)x(1.44±0.26) kpc",
+   "uncertainty": "as given",
+   "units": "arcsec / kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "size [C II ] emission [a] [arcsec [2] ] (0.31±0.05)×(0.27±0.05)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) 3 sigma upper limit",
+   "value": "<0.034",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F CO(2−1) [Jy km s [−][1] ] <0.034"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) and [C I] 3 sigma upper limit",
+   "value": "<0.20",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "F CO(7−6) [Jy km s [−][1] ] <0.20"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR (Td=47 K, beta=1.6)",
+   "value": "1.5e12",
+   "uncertainty": "0.1e12",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "L FIR [L ⊙ ] (1.3 ± 0.1) × 10 [12] (1.5 ± 0.1) × 10 [12]"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from TIR",
+   "value": "105–340",
+   "uncertainty": "dominated by SED shape",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2. Infrared Luminosity and Star-Formation Rates",
+     "quote": "We estimate a SFR of 105–340 M ⊙ yr [−][1] (Table 2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass upper limit",
+   "value": "4.3e10",
+   "uncertainty": "0.9e10",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4. Dynamical Mass Estimate",
+     "quote": "(4.3 ± 0.9) × 10 [10] M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "Central dynamical mass",
+   "value": "1.2e10",
+   "uncertainty": "0.2e10",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4. Dynamical Mass Estimate",
+     "quote": "M dyn,centre = (1.2 ± 0.2) × 10 [10] M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II]/[C I] lower limit",
+   "value": ">8.7 to >13.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "L [CII] /L [CI] >13.0 >10.6 >10.1 >8.7"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibrator names and flux scale for ALMA data",
+  "CASA version and whether the pipeline or manual scripts were used",
+  "Image size, cell size and clean threshold/masking for ALMA",
+  "Exact channel selection for the continuum map",
+  "Exact imfit settings and aperture photometry procedure",
+  "Details of the Gaussian+constant line fit",
+  "Procedure for deriving the dust mass uncertainties and the [C II] SFR range",
+  "Details of the PdBI reduction"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibration details",
+  "Image size/cell size and clean parameters",
+  "Calibrator list"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and analysis simple, but calibration/imaging details are sparse.",
+ "rediscovery_reason": "Data from a single project, simple analysis, numeric results; imaging parameters are partly given (robust 0.5, taper 1.9 arcsec).",
+ "source_card": "cards/2017ApJ...837..146V/sonnet/card.md"
+}

@@ -1,0 +1,967 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...874...53B",
+  "title": "Environmental Effect on the Interstellar Medium in Galaxies across the Cosmic Web at z = 0.73",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Betti, S. K.",
+  "n_authors": 7,
+  "arxiv_id": "1902.08216",
+  "doi": "10.3847/1538-4357/ab07b3",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00055.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present new ALMA dust continuum observations of 101 $\\log(\\mathrm{M}_* / \\mathrm{M}_\\odot) > 9.5$ galaxies in the COSMOS field to study the effect of environment on the interstellar medium at $z\\sim0.7$."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "101 COSMOS galaxies at z=0.72-0.76 (zCOSMOS spectroscopic, Herschel-detected)",
+     "coordinates": {
+      "value": "individual RA/Dec in Table 2 (e.g. 150.7695, 2.4400 deg for ID 65511)",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "the spectroscopic redshift range $z = 0.72-0.76$ was selected as it shows a known large scale structure (LSS) in COSMOS"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| 65511        | 2            | 150.76950070 | 2.44000006   | 0.746"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 0.72-0.76",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "the spectroscopic redshift range $z = 0.72-0.76$ was selected as it shows a known large scale structure (LSS) in COSMOS"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| 65511        | 2            | 150.76950070 | 2.44000006   | 0.746"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "zCOSMOS spectroscopic redshifts (Lilly2007)",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "the spectroscopic redshift range $z = 0.72-0.76$ was selected as it shows a known large scale structure (LSS) in COSMOS"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| 65511        | 2            | 150.76950070 | 2.44000006   | 0.746"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How does local galaxy environment (density) affect the ISM mass, gas fraction and depletion time of star-forming galaxies at z~0.73 in the COSMOS large-scale structure?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Using the ALMA observations, we calculate the total ISM mass ($\\mathrm{M}_{\\mathrm{ISM}}$) and look for depletion as a function of galaxy density"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00055.S",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "We measure the dust continuum for our sample with ALMA Cycle 3 observations (2015.1.00055.S; PI Pope)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "Both science goals were observed in Band 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "SG1 345.7 GHz, bandwidth 7.475 GHz; SG2 342.3 GHz, bandwidth 7.425 GHz",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "SG1 observations taken between January $2 - 5$, 2016 ($\\nu=345.7\\,$GHz, bandwidth of 7.475 GHz)"
+     },
+     {
+      "loc": "3 Observations",
+      "quote": "($\\nu=342.3\\,$GHz, bandwidth of 7.425 GHz)"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.9\"x0.5\" (SG1), 1.0\"x0.8\" (SG2)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "0.21 mJy/beam with a beam size of $1.0\\ensuremath{''} \\times 0.8\\ensuremath{''}$ for SG2"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1 sigma rms 0.15 mJy/beam (SG1), 0.21 mJy/beam (SG2)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The average 1$\\sigma$ rms sensitivity achieved is 0.15 mJy/beam with a beam size of $0.9\\ensuremath{''} \\times 0.5\\ensuremath{''}$ for SG1"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "3 minutes per galaxy",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "On source integration time for both science goals was 3 minutes per galaxy."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "SG1 Jan 2-5 2016; SG2 Jan 26-Apr 27 2016",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "SG2 observations taken between January 26 $-$ April 27, 2016"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 3, PI Pope",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "ALMA Cycle 3 observations (2015.1.00055.S; PI Pope)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel PACS/SPIRE and Spitzer MIPS",
+     "provided": {
+      "value": "100 um/24 um photometry for L_IR and sample selection",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "which includes fluxes at 24 $\\mu$m (Spitzer/MIPS) and 100 $\\mu$m (*Herschel*/PACS)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "zCOSMOS (VLT-VIMOS)",
+     "provided": {
+      "value": "spectroscopic redshifts",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "spectroscopic redshifts obtained from the VLT-VIMOS zCOSMOS survey"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Projected 2D local galaxy density maps",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "The local galaxy densities were determined from projected 2D density maps published by (cite: Scoville2013)"
+       }
+      ]
+     },
+     "citation": "(cite: Scoville2013)"
+    },
+    {
+     "what": {
+      "value": "Stellar masses and photometric catalog (COSMOS2015)",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "We show the distribution of stellar mass and local galaxy density of these targets compared to the overall COSMOS sample from (cite: Laigle2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Laigle2016)"
+    },
+    {
+     "what": {
+      "value": "SFR_UV and comparison L_IR",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "All 101 target galaxies have corresponding SFR$_\\mathrm{UV}$ from (cite: Lee2015)."
+       }
+      ]
+     },
+     "citation": "(cite: Lee2015)"
+    },
+    {
+     "what": {
+      "value": "Herschel PACS fluxes",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "We used the IR photometry for our 101 sources from the PEP PACS catalogs (cite: Lutz2011)"
+       }
+      ]
+     },
+     "citation": "(cite: Lutz2011)"
+    },
+    {
+     "what": {
+      "value": "Visual morphological classifications",
+      "evidence": [
+       {
+        "loc": "6.4.2 Mergers and Morphology",
+        "quote": "Using the visual morphological classifications from (cite: Kartaltepe2015) for our galaxies"
+       }
+      ]
+     },
+     "citation": "(cite: Kartaltepe2015)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "SG1 delivered calibrated data used; SG2 manually recalibrated in CASA due to pipeline flagging issues",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "We used the delivered calibrated data for SG1, but had to manually recalibrate SG2 with the Common Astronomy Software Application (cite: McMullin2007) due to issued flagged by the pipeline reduction."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "SG1 delivered calibrated data used as is",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "We used the delivered calibrated data for SG1"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "we made continuum maps and primary beam corrected continuum maps with the CASA task CLEAN using natural weighting and a threshold of 0.4 mJy ($2-3\\sigma$)"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "using natural weighting and a threshold of 0.4 mJy"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "Gaussian uv-taper on SG1 to match SG2 beam",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "with a Gaussian uv-taper for the higher resolution SG1 in order to match the beam size of SG2"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "0.12 arcsec",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The maps have a pixel scale of $0.12\\ensuremath{''}$."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "primary beam corrected maps made",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "continuum maps and primary beam corrected continuum maps"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "SG1 tapered to match SG2 (~1.0\"x0.8\")",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "in order to match the beam size of SG2"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "SG1 tapered average 0.16 mJy/beam",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The average rms of the SG1 tapered images is 0.16 mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ISM mass from RJ dust continuum, calibration alpha_850 and T_d = 25 K",
+      "evidence": [
+       {
+        "loc": "4.2 ISM Mass",
+        "quote": "Following (cite: Scoville2014; Scoville2016), we assume the temperature to be $T_d = 25$ K"
+       }
+      ]
+     },
+     "from_reference": "(cite: Scoville2014; Scoville2016)"
+    },
+    {
+     "what": {
+      "value": "Detection criterion (>2 sigma integrated or 3 sigma peak)",
+      "evidence": [
+       {
+        "loc": "4.1 Flux Measurements",
+        "quote": "Similar to (cite: Scoville2014), a detection requires a $> 2\\sigma$ integrated aperture flux measurement"
+       }
+      ]
+     },
+     "from_reference": "(cite: Scoville2014)"
+    },
+    {
+     "what": {
+      "value": "SFR_IR conversion",
+      "evidence": [
+       {
+        "loc": "2 Sample",
+        "quote": "we calculate SFR$_{\\mathrm{IR}}$ using the relation from (cite: Arnouts2013), who adopted the relation from (cite: Bell2005)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Arnouts2013)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version used for recalibration and imaging",
+    "Details of the SG2 manual recalibration (flags, calibrators)",
+    "Flux calibrator and flux scale uncertainty",
+    "Number of clean iterations and masking",
+    "Exact uv-taper size",
+    "Rule for choosing density-bin boundaries from the boxcar average",
+    "How stellar masses and uncertainties were assigned per bin",
+    "Gamma_0 definition used in the ISM mass equation"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Select sample and derive L_IR/SFR",
+    "method": {
+     "value": "Select zCOSMOS galaxies z=0.72-0.76 with S100>5 mJy; fit Kirkpatrick2015 SFG template to 24/100 um photometry; SFR_IR=8.6e-11 L_IR plus SFR_UV",
+     "evidence": [
+      {
+       "loc": "2 Sample",
+       "quote": "we fit the available IR photometry to the (cite: Kirkpatrick2015) spectral energy distribution (SED) templates"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Chabrier IMF; flat LCDM Om=0.307, H0=67.7",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "$H_0 = 67.7$ km s$^{-1}$ Mpc$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared L_IR with Lee2015: 15% mean difference, no density dependence",
+     "evidence": [
+      {
+       "loc": "2 Sample",
+       "quote": "The average percent difference in L$_\\mathrm{IR}$ for the 80 matches was 15$\\%$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image continuum",
+    "method": {
+     "value": "CLEAN natural weighting, 0.4 mJy threshold; taper SG1 to SG2 beam",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "using natural weighting and a threshold of 0.4 mJy ($2-3\\sigma$)"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure aperture and peak fluxes",
+    "method": {
+     "value": "Integrated flux in 0.54\" radius aperture on primary-beam-corrected map, divided by pixels/beam (~66.14); noise from 100 random apertures; detection >2 sigma integrated or 3 sigma peak",
+     "evidence": [
+      {
+       "loc": "4.1 Flux Measurements",
+       "quote": "We find an optimal aperture with radius $0.54\\ensuremath{''}$, which is used for all individual flux measurements."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "aperture radius 0.54\"; 100 random apertures",
+      "evidence": [
+       {
+        "loc": "4.1 Flux Measurements",
+        "quote": "taking the standard deviation of integrated flux measurements in 100 random apertures of the same size offset from the source"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Aperture radius chosen by maximizing S/N per annulus",
+     "evidence": [
+      {
+       "loc": "4.1 Flux Measurements",
+       "quote": "we calculate the S/N per annuli for increasing aperture radii in order to determine the aperture radius which encloses the maximum signal and least noise"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Convert flux to ISM mass",
+    "method": {
+     "value": "Scoville RJ dust-continuum formula with alpha_850=6.7e19 erg/s/Hz/Msun, Gamma_RJ correction",
+     "evidence": [
+      {
+       "loc": "4.2 ISM Mass",
+       "quote": "$$\\alpha_{850 \\mu m} = \\frac{L_{\\nu 850\\ \\mu m}}{M_{ISM}} = 6.7 \\times 10^{19} \\ \\mathrm{erg} \\ \\mathrm{s}^{-1} \\ \\mathrm{Hz}^{-1}  \\ M_{\\odot}^{-1}.$$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T_d = 25 K; optically thin RJ tail; lambda_rest > 250 um",
+      "evidence": [
+       {
+        "loc": "4.2 ISM Mass",
+        "quote": "we assume the temperature to be $T_d = 25$ K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Stack by density bin",
+    "method": {
+     "value": "Weighted-mean (inverse-variance) and median stacks in three density bins chosen via sliding boxcar average of 8 samples; M_ISM from bin mean z, nu, d_L",
+     "evidence": [
+      {
+       "loc": "4.3 Stacking Analysis",
+       "quote": "In Figure [5](#boxcarStacks), we plot a sliding box average of 8 samples; the sample separates into three 3 groups: $0.16-1.2$, $1.2-2.6$, $2.6-10.5$ galaxies Mpc$^{-2}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Bootstrap with 5000 realizations; comparable uncertainties to map-based; 2D Anderson-Darling tests between bins",
+     "evidence": [
+      {
+       "loc": "4.4 Stacking Noise Estimates",
+       "quote": "We repeated the stacking process and total aperture flux measurement for $N = 5000$ realizations using randomly selected sources in each density bin with replacement."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive gas fraction and depletion time",
+    "method": {
+     "value": "f_gas = M_ISM/(M_ISM+M*); tau = M_ISM/SFR; compare with Tacconi2018/Carilli2013 redshift evolution",
+     "evidence": [
+      {
+       "loc": "5.2.2 Depletion time",
+       "quote": "the depletion time ($\\tau=1/ {\\rm SFE} =  \\mathrm{M}_\\mathrm{ISM} / \\mathrm{SFR}$)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "manual recalibration of SG2, cleaning and imaging",
+     "evidence": [
+      {
+       "loc": "3 Observations",
+       "quote": "The data was then cleaned and imaged with CASA."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "listed in Software section",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "astropy (cite: Astropy-CollaborationRobitaille:2013), CASA (cite: McMullin2007)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of significant detections",
+    "value": "68 of 101",
+    "uncertainty": "not stated",
+    "units": "galaxies",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Flux Measurements",
+      "quote": "Of the 101 galaxies, 68 are significantly detected in our ALMA band 7 data."
+     }
+    ]
+   },
+   {
+    "quantity": "Optimal aperture radius",
+    "value": "0.54",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Flux Measurements",
+      "quote": "We find an optimal aperture with radius $0.54\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_ISM ratio intermediate/low density",
+    "value": "1.5",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "galaxies at intermediate densities have ISM masses higher by a factor of $1.5 \\pm 0.2$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_ISM ratio high/low density",
+    "value": "0.7",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "galaxies in the highest density bin have ISM masses lower by a factor of $0.7 \\pm 0.2$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_ISM decrease intermediate to high",
+    "value": "2.1",
+    "uncertainty": "0.6",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "the ISM mass decreases by a factor of $2.1 \\pm 0.6$ ($\\sim 2\\sigma$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Weighted-mean stacked M_ISM, low/intermediate/high density",
+    "value": "0.78 / 1.16 / 0.55",
+    "uncertainty": "0.07 / 0.11 / 0.15",
+    "units": "1e10 Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 0.78 $\\pm$ 0.07                    | 0.17 $\\pm$ 0.02"
+     }
+    ]
+   },
+   {
+    "quantity": "Depletion time",
+    "value": "210",
+    "uncertainty": "71",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2.2",
+      "quote": "$\\tau = 210 \\pm 71$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "Anderson-Darling statistic intermediate vs high",
+    "value": "2.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "we find a AD statistic of 2.5 between the mm fluxes in the intermediate and high densities bins"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Gas fraction change from intermediate to high density at fixed z equals 2-3 Gyr of cosmic evolution",
+    "evidence": [
+     {
+      "loc": "6.2",
+      "quote": "at $z=0.73$ it takes a galaxy $2-3$ Gyrs to experience a decrease in the gas fraction by a factor of 1.8"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "ISM mass depends on environment at z~0.73",
+    "experiment": "Stack ALMA Band 7 continuum in three density bins; convert to M_ISM",
+    "result": "M_ISM elevated at intermediate density (1.5x, ~2.5 sigma), lower at high density (0.7x)",
+    "finding": "ISM mass has a modest dependence on environment",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\mathrm{M}_{\\mathrm{ISM}}$ is found to have a small dependence on environment"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Depletion time varies with environment",
+    "experiment": "tau = M_ISM/SFR for stacks",
+    "result": "tau ~ 210 Myr across all densities",
+    "finding": "Depletion time constant",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2.2",
+      "quote": "relatively constant with density, $\\tau = 210 \\pm 71$ Myr"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Environmental processes drive gas loss at high density",
+    "experiment": "Compare gas fraction drop with evolution with redshift",
+    "result": "Drop by factor 1.8 equals 2-3 Gyr of evolution",
+    "finding": "Mergers and ram pressure stripping/strangulation likely play a role",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6",
+      "quote": "These results are suggestive and more observations of the ISM in intermediate and high density galaxies are needed to test these ideas."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Dust continuum avoids poorly constrained CO-to-H2 conversion and is cheaper than CO",
+    "evidence": [
+     {
+      "loc": "4.2 ISM Mass",
+      "quote": "estimating the ISM mass from CO lines is expensive and uncertain due to the poorly constrained conversion from CO to H$_{2}$"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Large stellar mass uncertainties reduce significance of f_gas trend; merger fraction differences not significant",
+     "evidence": [
+      {
+       "loc": "5.2.1",
+       "quote": "though the uncertainties in stellar mass decrease the significance of this trend"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only ~2.5 sigma significance for key trends; density bin boundaries chosen from data",
+    "Single T_d=25 K and alpha_850 calibration assumed for all densities",
+    "Projected 2D density used as proxy for true environment",
+    "Many non-detections stacked; sample selected by 100 um flux"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data cited by project code; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA $\\#$2015.1.00055.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and recalibration details",
+    "Gamma_0 definition",
+    "Stellar masses per galaxy (from Laigle2016 catalog)"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB (101 short Band 7 pointings, continuum)",
+   "score_inferred": 3,
+   "score_reason": "Data and aperture/stacking recipe largely specified, but calibration details and CASA version missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are an ALMA project with stated code, aperture photometry and stacking recipe are numeric and fairly complete, with the Table 2 values as answer keys."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Scoville2014; Scoville2016)",
+     "why": "ISM mass from RJ dust continuum calibration"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Darvish2018b)",
+     "why": "Environment dependence of gas fraction using Scoville2017 sample"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "COSMOS",
+    "zCOSMOS",
+    "PEP (Herschel)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-944fadb197dddd64b70d259ce9a9b57f",
+  "batch_id": "msgbatch_019YWVxz74gaBdDUmtwUveVm",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:54:03",
+  "usage": {
+   "input_tokens": 43625,
+   "output_tokens": 8415,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.086306,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 65,
+  "quotes_ok": 65,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 48,
+   "rate": 0.615
+  },
+  "evidence_ok": true
+ }
+}

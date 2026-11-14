@@ -1,0 +1,441 @@
+{
+ "bibcode": "2021Sci...372.1201T",
+ "title": "Spiral morphology in an intensely star-forming disk galaxy more than 12 billion years ago",
+ "year": 2021,
+ "doi": "10.1126/science.abe9680",
+ "arxiv_id": "2108.02206",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "When in cosmic history did the distinct internal structures of spiral galaxies (stellar bulge, rotating disk, and spiral arms) form, and are they present in an intensely star-forming galaxy at z = 4.41?",
+ "alma_project_codes": [
+  "2017.1.00394.S"
+ ],
+ "data": {
+  "bands": "Band 7 (275 - 373 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "[C II]: 0.20\" x 0.16\" (~1.33 x 1.11 kpc); dust continuum: 0.17\" x 0.14\" (~1.16 x 0.95 kpc)",
+  "sensitivity": "[C II]: ~0.35 mJy beam^-1 per 20 km s^-1 channel; dust continuum: ~0.036 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshift z = 4.4074 ± 0.0015",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "BRI 1335-0417 (QSO J1338-0432), a galaxy at redshift _z_ = 4.4074 ± 0.0015 ( _11_ ), 1.4 Gyr after the Big Bang."
+     }
+    ]
+   },
+   "citation": "Guilloteau et al. 1997 (11)"
+  },
+  {
+   "what": {
+    "value": "Far-infrared luminosity of 3.1 x 10^13 L_sun",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "It is classified as a Hyper Luminous InfraRed Galaxy (HyLIRG) with a luminosity of 3.1 ´ 10 [13] _L_ ⊙ ( _L_ ⊙ is the luminosity of the Sun) at far-infrared wavelengths ( _12_ )"
+     }
+    ]
+   },
+   "citation": "Carilli et al. 2002 (12)"
+  },
+  {
+   "what": {
+    "value": "Star formation rate of 5 ± 1 x 10^3 M_sun yr^-1",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "and a high star formation rate of 5 ± 1 ´ 10 [3] _M_ ⊙ yr [-1] ( _M_ ⊙ is the mass of the Sun), estimated from modeling the spectral energy distribution ( _13_ )."
+     }
+    ]
+   },
+   "citation": "Wagg et al. 2014 (13)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass M_gas = 5.1 x 10^10 M_sun (or 5 x 10^10 M_sun) from CO (J=2->1)",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "mass of the disk 4.9 -2.5 × 10 _M_ ⨀ is consistent with the molecular gas mass of 5.1 × 10 _M_ ⨀ ( _16_ ) estimated from the CO ( _J_ =2→1) luminosity"
+     },
+     {
+      "loc": "Toomre Q parameter",
+      "quote": "Because the total gas mass is traced by the [C II ] line ( _63_, _64_ ), we estimated the surface density of the gas _Σ_ gas by using the total molecular gas mass ( _M_ gas = 5 ´ 10 [10] 𝑀 ⨀ ) ( _16_ ) and the [C II ] line distribution we observed."
+     }
+    ]
+   },
+   "citation": "Jones et al. 2016 (16)"
+  },
+  {
+   "what": {
+    "value": "Central black hole mass M_BH ~ 6 x 10^9 M_sun",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "The mass of the central black hole in BRI 1335-0417 has previously been estimated as _M_ BH ~ 6 ´ 10 [9] _M_ ⨀ ( _26_ ), although there are systematic effects that could bias this value ( _27_ )."
+     }
+    ]
+   },
+   "citation": "Shields et al. 2006 (26)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image dust continuum and [C II] line cube, and generate moment maps",
+   "method": "Calibrate visibilities with CASA pipeline, identify line-free channels with hif_findcont, image continuum and UV-subtracted [C II] cube with tclean, and generate moment maps using the masked moment method.",
+   "software": [
+    "CASA",
+    "tclean",
+    "hif_findcont",
+    "uvcontsub",
+    "KinMS"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.0 (continuum) and 0.5 ([C II]); channel width = 20 km s^-1; clean threshold = 1.5x rms (continuum) and 1.0x rms ([C II]); moment mask threshold = 7.5x rms in smoothed cube"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure disk position angle, inclination, and scale radius",
+   "method": "Measure kinematic position angle from central 0.5\" of [C II] moment 1 map using PaFit, then fit 2D Sérsic and exponential profiles to dust continuum and [C II] moment 0 images using GALFIT.",
+   "software": [
+    "PaFit",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "Central 0.5\" region used for PaFit"
+   ],
+   "assumptions": [
+    "Thin disk relation q = cos(i) used to convert dust continuum axis ratio to inclination"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Decompose [C II] intensity into logarithmic spiral modes via Fourier analysis",
+   "method": "Deproject [C II] moment 0 image to face-on using scikit-image and compute Fourier amplitudes A(p, m) for m = 1, 2, 3, 4 logarithmic spirals.",
+   "software": [
+    "scikit-image"
+   ],
+   "key_parameters": [
+    "PA = 4.5°, inclination = 37.8°; radial annulus 1.6 kpc to 7.2 kpc; m = 1, 2, 3, 4; bilinear spline interpolation"
+   ],
+   "assumptions": [
+    "Polar coordinate center is the peak intensity pixel in the [C II] image"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract PVD, measure intrinsic velocity dispersion and rotational support",
+   "method": "Extract PVD along kinematic major axis (PA = 4.5°) averaged over one beam width (3 pixels), fit line profiles with Gauss-Hermite h3 and h4 polynomials to measure velocity dispersion, and derive intrinsic velocity dispersion and v_rot from outer disk.",
+   "software": [],
+   "key_parameters": [
+    "PVD extraction width = 1 beam (3 pixels); SNR > 4 in at least 4 velocity channels required for profile fitting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "3D gas dynamical modeling of bulge and disk masses",
+   "method": "Generate gas particles from CLEAN components using SkySampler, build 3D dynamical model cubes in KinMS with a spherical de Vaucouleurs bulge + thick pressure-supported exponential disk gravitational potential, and fit directly to the observed cube via MCMC using emcee.",
+   "software": [
+    "KinMS",
+    "SkySampler",
+    "emcee",
+    "CASA"
+   ],
+   "key_parameters": [
+    "R_d = 1.83 kpc; velocity range -390 to +370 km s^-1; N ~ 4 x 10^4 constraints (dof = 42400); 8 free parameters; 180 walkers, 4000 steps, 600 burn-in steps"
+   ],
+   "assumptions": [
+    "Dark matter halo excluded within 5 kpc; black hole mass included in spherical de Vaucouleurs bulge; axisymmetric exponential disk with R_d = 1.83 kpc; isotropic spatially uniform velocity dispersion; hydrostatic asymmetric drift and disk thickness correction"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compute spatially resolved Toomre Q parameter of the gas disk",
+   "method": "Calculate Toomre Q parameter pixel-by-pixel from epicyclic frequency, intrinsic velocity dispersion, and gas surface density scaled from [C II] distribution and CO(2-1) total molecular gas mass.",
+   "software": [],
+   "key_parameters": [
+    "M_gas = 5 x 10^10 M_sun; SNR > 4 in at least 4 velocity channels"
+   ],
+   "assumptions": [
+    "[C II] intensity distribution traces total gas surface density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Intrinsic velocity dispersion (sigma_v)",
+   "value": "71",
+   "uncertainty": "+14/-11",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We estimate an intrinsic velocity dispersion 𝜎 𝑣 of 71 -11 km s (Fig. 1F)"
+    },
+    {
+     "loc": "Figure 1 caption",
+     "quote": "The red dashed line shows the estimated intrinsic velocity dispersion of 71 #-1114 km s -1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination-corrected rotational velocity at r = 0.3\" (v_rot)",
+   "value": "179",
+   "uncertainty": "+25/-18",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We estimate the inclination-corrected rotational velocity _v_ rot is 179 -18 km s at radius of 0.3\", calculated using the flat part of the PVD (Fig. 1E)."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational-to-dispersion ratio (v_rot / sigma_v)",
+   "value": "2.5",
+   "uncertainty": "+0.6/-0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "2.5 -0.4 indicates that the [C II ] gas disk of this galaxy is rotation-dominated."
+    }
+   ]
+  },
+  {
+   "quantity": "Spiral pitch angle (m = 2 mode)",
+   "value": "26.7",
+   "uncertainty": "+4.1/-1.6",
+   "units": "degree",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 3 caption",
+     "quote": "The _m_ = 2 mode has the strongest peak at a pitch angle of 26.7 +4.1-1.6 ° (dashed vertical line)."
+    },
+    {
+     "loc": "Figure 3 caption",
+     "quote": "The _m_ = 2 mode has the strongest peak at a pitch angle of 26.7 +4.1-1.6 ° (dashed vertical line)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fourier parameter p for m = 2 mode",
+   "value": "-4.0",
+   "uncertainty": "+0.6/-0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Materials, Spiral structure",
+     "quote": "The strongest peak is seen in _m_ = 2 at _p_ = - 4.0 +0.6-0.3, corresponding to spiral arms"
+    }
+   ]
+  },
+  {
+   "quantity": "Signal-to-noise ratio of m = 2 Fourier mode",
+   "value": "6.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The amplitude of the _m_ =2 signal is 6.0 times the noise, while the other modes _m_ =1, 3, 4 are have signal-to-noise ratios of 4.0, 2.5 and 2.4 respectively (Fig. 3A)."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle from PaFit (Gamma)",
+   "value": "4.5",
+   "uncertainty": "±3.7",
+   "units": "degree",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The size and inclination of the disk",
+     "quote": "The estimated position angle is 4.5 ± 3.7° (95% confidence interval)."
+    },
+    {
+     "loc": "Table S1",
+     "quote": "Disk position angle G (°) 4.5 ± 3.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination from GALFIT dust continuum axis ratio (i)",
+   "value": "37.8",
+   "uncertainty": "+2.4/-3.3",
+   "units": "degree",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The size and inclination of the disk",
+     "quote": "From the estimated axis ratio ( _q_ ) of the dust continuum image, the inclination of the disk _i_ = 37.8 +2.4-3.3 ° was calculated with equation _q_ = cos( _i_ )"
+    },
+    {
+     "loc": "Table S1",
+     "quote": "Disk inclination _i_ (°) 37.8 +2.4-3.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Sérsic index of [C II] line intensity distribution",
+   "value": "0.87",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The size and inclination of the disk",
+     "quote": "As G ALFIT outputs, the measured Sérsic index is _n_ = 0.87 ± 0.02 (close to exponential _n_ =1) from the [C II ] line intensity distribution, while it is _n_ = 2.48 ± 0.05 from the distribution of the dust continuum emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Sérsic index of dust continuum distribution",
+   "value": "2.48",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The size and inclination of the disk",
+     "quote": "As G ALFIT outputs, the measured Sérsic index is _n_ = 0.87 ± 0.02 (close to exponential _n_ =1) from the [C II ] line intensity distribution, while it is _n_ = 2.48 ± 0.05 from the distribution of the dust continuum emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk scale radius (R_d)",
+   "value": "1.83",
+   "uncertainty": "±0.04",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The size and inclination of the disk",
+     "quote": "We therefore fitted a 2D exponential function to the [C II ] line intensity image, resulting in a diskscale radius _R_ d = 1.83 ± 0.04 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Central compact mass (M_bulge)",
+   "value": "8.9",
+   "uncertainty": "+20.9/-3.7",
+   "units": "10^9 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "Central compact mass (10 [.] 𝑀 ⨀ ) _M_ bulge [10 [-9], 10 [4] ] 8.9 -3.7, +20.9"
+    },
+    {
+     "loc": "main text",
+     "quote": "The best-fitting effective radius of the compact structure _R_ e is less than 1.3kpc (at 95% confidence interval) and its mass is 5.2 × 10 [9] to 3.0 × 10 [10] _M_ ⨀ depending on the value of _R_ e ."
+    }
+   ]
+  },
+  {
+   "quantity": "Central compact mass effective radius (R_e)",
+   "value": "<1.33",
+   "uncertainty": "95% confidence interval",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "_R_ e - (<1.33)"
+    },
+    {
+     "loc": "main text",
+     "quote": "The best-fitting effective radius of the compact structure _R_ e is less than 1.3kpc (at 95% confidence interval)"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass (M_disk)",
+   "value": "4.9",
+   "uncertainty": "+1.7/-2.5",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "Disk mass (10 [/0] 𝑀 ⨀ ) _M_ disk [10 [-10], 10 [3] ] 4.9 -2.5, +1.7"
+    },
+    {
+     "loc": "main text",
+     "quote": "mass of the disk 4.9 -2.5 × 10 _M_ ⨀ is consistent with the molecular gas mass of 5.1 × 10 _M_ ⨀"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical model disk position angle (Gamma)",
+   "value": "7.6",
+   "uncertainty": "+7.3/-7.1",
+   "units": "degree",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "Position angle (degree) G [-20, 20] 7.6 -7.1, +7.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical model disk inclination (i)",
+   "value": "37.3",
+   "uncertainty": "+3.0/-3.1",
+   "units": "degree",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table S2",
+     "quote": "Inclination angle (degree) _i_ (37.8, ±1.6) 37.3 -3.1, +3.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q parameter in outer disk (R > 0.2\")",
+   "value": "< 1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We find _Q_ is less than 1 throughout the outer part of the disk (Fig. S6), indicating the gas disk is susceptible to gravitational collapse, star formation ( _7_ – _9_ ) and spontaneous formation of spiral structure ( _3_, _24_ )."
+    },
+    {
+     "loc": "Figure S6 caption",
+     "quote": "Over the outer part of the disk (at the radius of _R_ - 0.2\"), _Q_ is < 1, implying that the gas disk is unstable against the perturbations."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel size (cellsize in arcsec) and image dimensions in pixels used in tclean",
+  "Exact frequency ranges of the line-free channels selected by hif_findcont and around 352.3 GHz",
+  "Exact velocity range integrated to create the [C II] moment 0 map"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python scripts tying SkySampler, KinMS, and emcee together with the asymmetric drift and disk thickness corrections",
+  "Exact pixel cell size in arcseconds and image size in pixels used in tclean",
+  "Exact channel masks used in tclean and uvcontsub"
+ ],
+ "reproducibility_score": 90,
+ "score_reason": "Archival ALMA project code is stated and public, processed FITS cubes and model cubes are directly included as supplementary data (Data S1-S4), and the CASA imaging, Fourier spiral decomposition, and KinMS+emcee dynamical modeling equations, priors, and settings are thoroughly documented.",
+ "rediscovery_reason": "Public single-project ALMA dataset (2017.1.00394.S) with a complete, well-specified analysis recipe and clear quantitative targets (spiral pitch angle, v_rot/sigma_v, and dynamical bulge/disk masses).",
+ "source_card": "cards/2021Sci...372.1201T/sonnet/card.md"
+}

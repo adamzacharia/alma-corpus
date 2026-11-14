@@ -1,0 +1,304 @@
+{
+ "bibcode": "2019ApJ...874...89C",
+ "title": "The Central 1000 au of a Pre-stellar Core Revealed with ALMA. I. 1.3 mm Continuum Observations",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab0700",
+ "arxiv_id": "1902.05299",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What is the structure of the central ~1000 au of the pre-stellar core L1544 in 1.3 mm dust continuum, and is there real fragmentation or are substructures interferometric artefacts?",
+ "alma_project_codes": [
+  "2013.1.01195.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12-m (Main) array and 7-m (ACA)",
+  "angular_resolution": "2.05\"x1.61\" (277 au x 217 au), PA 59.5 deg",
+  "sensitivity": "36 uJy/beam rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "L1544 density profile n0=1.6e6 cm-3, Rflat=17.3\", alpha=2.6",
+    "evidence": [
+     {
+      "loc": "4.3 Structure derived from single dish observations",
+      "quote": "$n_0$ = 1.6$\\times$10$^6$ cm$^{-3}$, $R_{\\rm flat}$ = 17.3$^{\\prime\\prime}$ ($\\equiv$2336 au), and $\\alpha$ = 2.6"
+     }
+    ]
+   },
+   "citation": "Chacon-Tanarro et al. 2019 (cite: CPC19)"
+  },
+  {
+   "what": {
+    "value": "Bonnor-Ebert sphere model of L1544 with temperature gradient",
+    "evidence": [
+     {
+      "loc": "4.1 The centrally concentrated Bonnor-Ebert sphere",
+      "quote": "The model is generated using the physical parameters found by (cite: KC10) and refined by (cite: KRC14)"
+     }
+    ]
+   },
+   "citation": "Keto & Caselli 2010 (cite: KC10); Keto et al. 2014 (cite: KRC14)"
+  },
+  {
+   "what": {
+    "value": "dust temperature 6.5 K",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "Assuming a dust temperature $T_d$ = 6.5 K (cite: CCW07; KC10)"
+     }
+    ]
+   },
+   "citation": "Crapsi et al. 2007 (cite: CCW07); Keto & Caselli 2010"
+  },
+  {
+   "what": {
+    "value": "dust opacity 0.009 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "a dust opacity at 1.3 mm $\\kappa_{\\rm 1.3mm}$ = 0.009 cm$^2$ g$^{-1}$ (cite: OH94)"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning 1994 (cite: OH94)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and jointly image ACA+12m continuum",
+   "method": "Calibrate in CASA, reweight with statwt, joint multi-scale mfs clean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, taper 1.5\", scales [0,2,6,18]\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive kernel radius, mass and density",
+   "method": "Kernel radius from 5 sigma contour; mass from optically thin dust emission formula; mean H2 density from sphere",
+   "software": [],
+   "key_parameters": [
+    "flux integrated within 5 sigma contour and 50% primary beam response: 42±2 mJy"
+   ],
+   "assumptions": [
+    "Td = 6.5 K, kappa1.3mm = 0.009 cm2/g, D = 135 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Characterise fragments and Jeans stability",
+   "method": "Mass within 11 sigma contour in 12m map; Jeans length for isothermal cloud",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T = 6.5 K, uniform spherical kernel density 4.5e-18 g/cm3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simulated observations of Bonnor-Ebert model",
+   "method": "simobserve of model image for ACA and 12m, imaged with same parameters",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit smooth elongated model and test substructure",
+   "method": "Fit F(r)=F0/(1+(r/Rflat)^alpha) with elliptical radius by chi2 minimisation over 50% PB region; simulate observations, residuals; 100 simulations with different hour angles using baselines >13 klambda, natural weighting",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "100 models, Cycle 1 configuration 2, baselines >13 klambda"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Simulated observations of single-dish-derived model",
+   "method": "Simulated ALMA observations of spherical profile from Chacon-Tanarro et al.",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "MHD/HD simulations and synthetic ALMA observations",
+   "method": "ZeusTW non-ideal MHD and HD turbulent simulations; RADMC-3D temperature; simulated ALMA 12m observations at peak densities 2e6, 5e6, 1e7 cm-3",
+   "software": [
+    "ZeusTW",
+    "RADMC-3D",
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "Mc=8.1 Msun, Rc=5e4 au, B0≈14.8 uG, Mach 5 turbulence, tilt 45 deg"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Kernel radius",
+   "value": "10.3 (1446 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "derived from the area within the 5 $\\sigma$ contour of the combined map is 10.3$''$  (1446 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Kernel flux",
+   "value": "42",
+   "uncertainty": "2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "(42$\\pm$2 mJy, taking into account a 5% calibration error)"
+    }
+   ]
+  },
+  {
+   "quantity": "Kernel mass",
+   "value": "0.100",
+   "uncertainty": "0.005 (about 50% with distance and opacity)",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "we find $M_{\\rm ker}$ = 0.100$\\pm$0.005 M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average H2 number density in kernel",
+   "value": "1.00e6",
+   "uncertainty": "0.05e6",
+   "units": "cm-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "(1.00$\\pm$0.05)$\\times$10$^{6}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fragment total mass (11 sigma contour)",
+   "value": "0.003",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "is 0.003 M$_{\\odot}$ (3 M$_{\\rm J}$), i.e. each fragment is about 1 M$_{\\rm J}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans length of kernel",
+   "value": "3200",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the Jeans length of the kernel is about 3200 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit smooth model Rflat",
+   "value": "10.84 (1463 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$R_{\\rm flat}$=10.84$^{\\prime\\prime}$ (equivalent to 1463 au), $\\alpha$=2.32, $AR$=1.83"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit smooth model alpha",
+   "value": "2.32",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$\\alpha$=2.32, $AR$=1.83, position angle PA=166$^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit model F0",
+   "value": "0.772",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$F_0$=0.772 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kernel original orientation angle phi",
+   "value": "≈45",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Hydro- and Magneto-hydro simulations",
+     "quote": "which yields $\\phi\\approx45^{\\circ}$ for the kernel of L1544"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and cell size",
+  "Clean threshold, masks and iteration count",
+  "Whether continuum channels were selected/line-free; no continuum subtraction details",
+  "Pointing/phase centre coordinates",
+  "Simulation inputs: simobserve integration times, precipitable water vapour, thermal noise settings",
+  "How the 5-sigma contour area was converted to a radius (elliptical vs circular)",
+  "Details of the MHD/HD simulation resolution and RADMC-3D dust/opacity setup",
+  "Which of the 7-m and 12-m executions were used and their flux scale values"
+ ],
+ "missing_for_reproduction": [
+  "Cell/image size, clean threshold, masks",
+  "simobserve noise and integration settings",
+  "Simulation snapshots and MHD setup details",
+  "Model input maps"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Data public and imaging parameters mostly given with numeric results, but several imaging and simulation settings are missing.",
+ "rediscovery_reason": "Public data, stated imaging recipe, numeric kernel mass/radius/density results.",
+ "source_card": "cards/2019ApJ...874...89C/sonnet/card.md"
+}

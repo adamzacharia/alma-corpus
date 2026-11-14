@@ -1,0 +1,1984 @@
+{
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+    {
+      "loc": "Conclusions",
+      "quote": "We present observations of a stellar occultation by Titan obtained with Keck on 2022-09-05, together with ALMA data of the satellite one day later."
+    }
+  ],
+  "fields": [
+    "solar_system"
+  ],
+  "question": {
+    "value": "Which ALMA-derived or GCM zonal wind profiles reproduce the resolved occultation light distributions around Titan?",
+    "evidence": [
+      {
+        "loc": "Introduction",
+        "quote": "We use a forward model to compare our occultation data to a wind field derived from the ALMA Doppler shift measurements, as well as to wind fields from an existing GCM simulation for Titan’s middle atmosphere."
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "Titan",
+      "details": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "For plotting purposes, the data were projected onto a spatial grid in the plane of the sky, according to Titan’s geocentric distance of 8.94 au."
+        },
+        {
+          "loc": "Occultation data reduction and processing",
+          "quote": "by using the plate scale of the observations and the distance between Titan and Earth (taken from JPL HORIZONS)."
+        }
+      ],
+      "coordinates": "not stated",
+      "redshift_or_distance": "geocentric distance of 8.94 au",
+      "distance_source": "JPL HORIZONS for occultation offsets"
+    }
+  ],
+  "alma_project_codes": [],
+  "data_settings": [
+    {
+      "field": "bands",
+      "value": "Band 9 (602–720 GHz; ~0.42–0.5 mm)",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "using the Band 9 (602–720 GHz; $\\sim0.42$–0.5 mm) receivers"
+        }
+      ]
+    },
+    {
+      "field": "frequencies_and_spectral_setup",
+      "value": "4 CH3CN J=35-34 lines at 643.1–643.3 GHz; 4 J=36-35 lines at 661.4–661.7 GHz; 122 kHz (55–57 m s^-1)",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "covering 4 lines of the CH$_3$CN $J=35-34$ rotational band (between 643.1–643.3 GHz) and 4 lines of the $J=36-35$ band (between 661.4–661.7 GHz)."
+        },
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "The correlator was set to a spectral resolution of 122 kHz, corresponding to $\\Delta{v}=55$–57 m s$^{-1}$."
+        }
+      ]
+    },
+    {
+      "field": "angular_resolution",
+      "value": "0.21'' × 0.18'' FWHM restoring beam",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "Image restoration was performed for both CH$_3$CN bands using the smallest common elliptical Gaussian beam, of FWHM $0.21'' \\times 0.18''$."
+        }
+      ]
+    },
+    {
+      "field": "observing_dates",
+      "value": "UT 2022-09-06, 02:29–05:48",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "ALMA observations of Titan were obtained on UT 2022-09-06 between 02:29–05:48 (less than 24 hours after the occultation observation)"
+        }
+      ]
+    }
+  ],
+  "lines_targeted": [
+    {
+      "species": "CH3CN",
+      "transition": "J=35-34; 4 lines",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "covering 4 lines of the CH$_3$CN $J=35-34$ rotational band (between 643.1–643.3 GHz)"
+        }
+      ]
+    },
+    {
+      "species": "CH3CN",
+      "transition": "J=36-35; 4 lines",
+      "rest_frequency": "not stated",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "4 lines of the $J=36-35$ band (between 661.4–661.7 GHz)."
+        }
+      ]
+    }
+  ],
+  "other_facilities": [
+    {
+      "name": "Keck II/NIRC2",
+      "provided": {
+        "value": "Spatially resolved occultation images on September 5, 2022; Kp filter",
+        "evidence": [
+          {
+            "loc": "Adaptive optics imaging of the stellar occultation",
+            "quote": "We collected data from 7:51 to 10:21 UTC (second quarter-night) on September 5, 2022 using the NIRC2 instrument on Keck II."
+          },
+          {
+            "loc": "Adaptive optics imaging of the stellar occultation",
+            "quote": "Data were collected in the Kp filter (1.90-2.35 $\\mu$m) with frame size of 512 $\\times$ 512 pixels."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Gemini-North/NIRI",
+      "provided": {
+        "value": "Concurrent spatially resolved occultation images; timing accuracy limited to 0.5 seconds",
+        "evidence": [
+          {
+            "loc": "Adaptive optics imaging of the stellar occultation",
+            "quote": "Spatially-resolved occultation data were concurrently collected with the NIRI instrument on the Gemini-North telescope, also at a cadence of roughly one frame per nine seconds."
+          },
+          {
+            "loc": "Adaptive optics imaging of the stellar occultation",
+            "quote": "However, the Gemini images have time stamps that are only accurate to 0.5 seconds (compared to tens of microseconds for the Keck time stamps)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Huygens/HASI",
+      "provided": {
+        "value": "Reference temperature profile for the occultation forward model",
+        "evidence": [
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "In this paper we use the Huygens/HASI profile as our starting reference for Titan’s atmosphere"
+          }
+        ]
+      }
+    }
+  ],
+  "external_data_from_literature": [
+    {
+      "what": {
+        "value": "Huygens/HASI temperature profile",
+        "evidence": [
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "In this paper we use the Huygens/HASI profile as our starting reference for Titan’s atmosphere"
+          },
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "(cite: fulchignoni_situ_2005)"
+          }
+        ]
+      },
+      "citation": "(cite: fulchignoni_situ_2005)"
+    },
+    {
+      "what": {
+        "value": "TAM seasonal zonal wind simulations",
+        "evidence": [
+          {
+            "loc": "Titan’s zonal winds simulated with General Circulation Models",
+            "quote": "The seasonal cycle of the zonal winds simulated by (cite: lombardo_heat_2023) closely resembles the seasonality inferred from thermal wind measurements; we make use of these simulations."
+          }
+        ]
+      },
+      "citation": "(cite: lombardo_heat_2023)"
+    },
+    {
+      "what": {
+        "value": "CH3CN abundance profile for the a priori atmospheric state",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "updated to incorporate the more recent CH$_3$CN abundance profile from (cite: nosowitz_improved_2025) for the *a priori* atmospheric state."
+          }
+        ]
+      },
+      "citation": "(cite: nosowitz_improved_2025)"
+    },
+    {
+      "what": {
+        "value": "Atmospheric temperature profile for ALMA radiative transfer modeling",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The atmospheric temperature profile was obtained from (cite: 2020ApJ...903L..22T)."
+          }
+        ]
+      },
+      "citation": "(cite: 2020ApJ...903L..22T)"
+    },
+    {
+      "what": {
+        "value": "Seasonally Varying Radiative Species Dataset (SVRS), used in the updated TAM simulations",
+        "evidence": [
+          {
+            "loc": "Titan’s zonal winds simulated with General Circulation Models",
+            "quote": "an observationally driven database of Titan’s atmospheric composition and aerosol opacity (the Seasonally Varying Radiative Species Dataset \\[SVRS\\], (cite: lombardo_influence_2023)) to calculate realistic radiative heating rates"
+          }
+        ]
+      },
+      "citation": "(cite: lombardo_influence_2023)"
+    }
+  ],
+  "simulations_or_models_as_data": [
+    {
+      "value": "36 snapshots of 2D TAM zonal wind profiles over a Titan year",
+      "evidence": [
+        {
+          "loc": "Forward model input from GCM zonal wind profiles",
+          "quote": "We used 36 snapshots of 2D zonal wind profiles over a Titan year derived from simulations with TAM."
+        }
+      ]
+    },
+    {
+      "value": "Original 36 GCM profiles and 1 ALMA profile, plus doubled and halved magnitudes: 111 input profiles",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "Input profiles include the original 36 GCM and 1 ALMA inputs (that are shown above), and the same 37 profiles with both halved and doubled magnitudes (total of 111 input profiles)."
+        }
+      ]
+    },
+    {
+      "value": "Butler-JPL-Horizons 2012 Titan model included with CASA",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "Additional self-calibration of the phases was performed with respect to the Butler-JPL-Horizons 2012 Titan model included with CASA"
+        }
+      ]
+    }
+  ],
+  "calibration": [
+    {
+      "field": "pipeline_or_manual",
+      "value": "Flagged and calibrated in CASA using standard scripts supplied by the Joint ALMA Observatory",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "The interferometric data were flagged and calibrated in the Common Astronomy Software Applications (CASA) package (cite: casa_2008) using standard scripts supplied by the Joint ALMA Observatory."
+        }
+      ]
+    },
+    {
+      "field": "flux_scale_uncertainty",
+      "value": "as much as approximately 10%, due to uncertainty in the amplitude calibrator flux",
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "errors on the ALMA flux scale (which may be as much as $\\approx10$%, due to uncertainty in the amplitude calibrator flux)"
+        }
+      ]
+    },
+    {
+      "field": "self_calibration",
+      "value": "Phase self-calibration against Butler-JPL-Horizons 2012 Titan model; adjacent continuum windows centered at 649 and 666 GHz",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "Additional self-calibration of the phases was performed with respect to the Butler-JPL-Horizons 2012 Titan model included with CASA"
+        },
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "using separate continuum windows adjacent to the main spectral windows of interest (centered at 649 GHz and 666 GHz, respectively)."
+        }
+      ]
+    }
+  ],
+  "imaging": [
+    {
+      "field": "task",
+      "value": "CASA tclean, per channel; threshold twice the RMS noise",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "The spectral image data were deconvolved (per channel) using the CASA `tclean` Hogböm algorithm with Briggs weighting (robust = 0.5) and a threshold twice the RMS noise"
+        }
+      ]
+    },
+    {
+      "field": "deconvolver",
+      "value": "Hogböm",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "using the CASA `tclean` Hogböm algorithm"
+        }
+      ]
+    },
+    {
+      "field": "weighting_robust",
+      "value": "Briggs weighting (robust = 0.5)",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "with Briggs weighting (robust = 0.5)"
+        }
+      ]
+    },
+    {
+      "field": "continuum_subtraction",
+      "value": "Visibility-domain 2nd order polynomial fit to line-free (pseudo-)continuum regions in each spectral window",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "Prior to imaging, the Titan continuum was subtracted from the interferometric visibility data using a 2nd order polynomial fit to the line-free (pseudo-)continuum regions in each spectral window."
+        }
+      ]
+    },
+    {
+      "field": "final_beam",
+      "value": "Smallest common elliptical Gaussian beam; FWHM 0.21'' × 0.18'' for both bands",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "Image restoration was performed for both CH$_3$CN bands using the smallest common elliptical Gaussian beam, of FWHM $0.21'' \\times 0.18''$."
+        }
+      ]
+    },
+    {
+      "field": "final_rms",
+      "value": "σ=29 mJy at 643 GHz and 38 mJy at 662 GHz",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "$\\sigma=29$ mJy at 643 GHz and 38 mJy at 662 GHz"
+        }
+      ]
+    }
+  ],
+  "inherited": [
+    {
+      "what": {
+        "value": "Latitudinal wind retrieval strategy based on spectral-line Doppler shifts",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "We followed a similar strategy to (cite: cordiner_detection_2020) to retrieve the latitudinal wind velocity profile based on fits to the observed spectral lines to determine their Doppler shifts."
+          }
+        ]
+      },
+      "from_reference": "(cite: cordiner_detection_2020)"
+    },
+    {
+      "what": {
+        "value": "Use of Moffat profiles instead of Gaussian or Voigt line shapes",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "which was found by (cite: light2024measurements) to provide a significantly better fit to the CH$_3$CN lineshapes than Gaussian or Voigt functions, especially in the presence of pressure-broadened Lorentzian line wings."
+          }
+        ]
+      },
+      "from_reference": "(cite: light2024measurements)"
+    },
+    {
+      "what": {
+        "value": "NEMESIS atmospheric modeling strategy, with an updated CH3CN a priori profile",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "We followed a similar modeling strategy to (cite: thelen2019abundance), updated to incorporate the more recent CH$_3$CN abundance profile from (cite: nosowitz_improved_2025) for the *a priori* atmospheric state."
+          }
+        ]
+      },
+      "from_reference": "(cite: thelen2019abundance)"
+    },
+    {
+      "what": {
+        "value": "Wind contribution weighting using the spectral-line gradient",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "to provide weighting according to the frequencies contributing most to the retrieved line Doppler shifts (see *e.g.* (cite: lellouch2019intense)), which were then averaged and peak-normalized."
+          }
+        ]
+      },
+      "from_reference": "(cite: lellouch2019intense)"
+    },
+    {
+      "what": {
+        "value": "Simplified 3D radiative transfer Doppler-map deconvolution; modified atmWindMapGaussFit for a continuously variable latitudinal profile",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "We therefore followed a similar method to (cite: cordiner_detection_2020) to model the Doppler map and extract a latitudinal wind speed profile using a simplified 3D radiative transfer model."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The `atmWindMapGaussFit` code of (cite: cordiner_detection_2020) was modified to allow a continuously variable wind speed as a function of latitude ($v(l)$), instead of the Gaussian profile previously assumed by those authors."
+          }
+        ]
+      },
+      "from_reference": "(cite: cordiner_detection_2020)"
+    },
+    {
+      "what": {
+        "value": "Convert zonal winds into radial distortions using Equations 4.16–4.26",
+        "evidence": [
+          {
+            "loc": "Deriving level surface distortions from zonal winds",
+            "quote": "In order to incorporate a zonal wind profile into the description of Titan’s atmospheric density structure, we follow the methodology conducted by (cite: bouchez_seasonal_2004) (Equations 4.16-4.26)."
+          }
+        ]
+      },
+      "from_reference": "(cite: bouchez_seasonal_2004)"
+    },
+    {
+      "what": {
+        "value": "Seasonal TAM wind simulations used as forward-model inputs",
+        "evidence": [
+          {
+            "loc": "Titan’s zonal winds simulated with General Circulation Models",
+            "quote": "The seasonal cycle of the zonal winds simulated by (cite: lombardo_heat_2023) closely resembles the seasonality inferred from thermal wind measurements; we make use of these simulations."
+          }
+        ]
+      },
+      "from_reference": "(cite: lombardo_heat_2023)"
+    }
+  ],
+  "unstated_but_needed": [
+    "ALMA project identifier and dataset identifiers.",
+    "Antenna configuration, baselines, on-source integration time and complete spectral-window/channel layout.",
+    "CASA and calibration-script versions, detailed flagging and calibrator identities.",
+    "Phase self-calibration solution intervals, iteration count and solution-selection criteria.",
+    "Exact line-free channels used for the polynomial continuum subtraction.",
+    "Image cell size, dimensions, cleaning masks and maximum iteration count.",
+    "Individual CH3CN transition identities, adopted rest frequencies and frequency/velocity reference convention.",
+    "Exact Doppler zero-point correction and the pixel-selection rule used to average velocities inside the limb.",
+    "Moffat initialization, bounds and MPFIT configuration.",
+    "NEMESIS opacity inputs, retrieval regularization and full prior/error settings.",
+    "Modified atmWindMapGaussFit source and full 3D emissivity/geometry configuration.",
+    "Keck plate scale, orientation calibration, selected PSF frame and Richardson-Lucy iteration count.",
+    "Hydrostatic pressure boundary condition, reference co-latitude and exact reference-radius convention.",
+    "Forward-model spatial grid, effective wavelength, PSF prescription and numerical integration settings beyond the stated chord sampling.",
+    "Exact lightspot extraction regions, usable-frame list, Gaussian fit settings and angular wrap handling."
+  ],
+  "analysis_steps": [
+    {
+      "order": 1,
+      "goal": "Isolate occultation starlight",
+      "method": {
+        "value": "Reduce Keck images, Richardson-Lucy deconvolve, align disks and subtract median disk emission",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Reduction steps included median sky subtraction, application of a flat field, construction of a bad pixel map and subsequent bad pixel removal, cosmic ray removal, and flux calibration using the photometric standard stars."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "For image deconvolution, we used the richardson_lucy function from the skimage.restoration image restoration module by Scikit-Image (cite: van_der_walt_scikit-image_2014)."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "we determined the median disk emission (calculated from the reduced, deconvolved, and stacked frames) and subtracted it from all of the frames so that only refracted starlight along the limb was visible in each frame."
+          }
+        ]
+      },
+      "software": [
+        "nirc2reduce",
+        "Scikit-Image",
+        "image_registration"
+      ],
+      "key_parameters": [
+        {
+          "value": "Universal PSF from the frame with the sharpest star",
+          "evidence": [
+            {
+              "loc": "Occultation data reduction and processing",
+              "quote": "We ultimately used a universal PSF derived from the frame with the sharpest star, as this gave the sharpest deconvolved disks."
+            }
+          ]
+        },
+        {
+          "value": "Fit a circle to minimum radial gradients; align fitted disk centers",
+          "evidence": [
+            {
+              "loc": "Occultation data reduction and processing",
+              "quote": "Then, a circle was fit to the minimum radial gradient values for all angles around the circle"
+            },
+            {
+              "loc": "Occultation data reduction and processing",
+              "quote": "the images were then aligned so that the (x,y) coordinates of the center of the fitted circles were stacked on top of each other."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "Circle fit to minimum radial gradient values",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Then, a circle was fit to the minimum radial gradient values for all angles around the circle"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compare PSFs on pre- and post-occultation frames; choose the sharpest deconvolved disks",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "To find the best PSF for deconvolution, we studied the effectiveness of different PSFs in frames before and after occultation, when the occulted star was in the frame alongside Titan."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "We ultimately used a universal PSF derived from the frame with the sharpest star, as this gave the sharpest deconvolved disks."
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "goal": "Determine the occultation trajectory",
+      "method": {
+        "value": "Fit star centroids outside occultation, subtract fitted Titan centers and linearly interpolate x/y offsets through occultation",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Two one-dimensional Gaussians led to centroids with the least variability."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Titan-star offsets were calculated for all pre- and post-occultation frames by taking the difference of the star centroid and the fitted circle center for Titan’s disk."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Linear fits were applied to both the x- and y- directions (as a function of time) in order to interpolate the x- and y-offsets during the frames when the star was not visible"
+          }
+        ]
+      },
+      "software": [
+        "JPL HORIZONS"
+      ],
+      "key_parameters": [
+        {
+          "value": "9×9 pixel star subframe for x; 11×11 for y",
+          "evidence": [
+            {
+              "loc": "Occultation data reduction and processing",
+              "quote": "the star was isolated in a 9$\\times$9 pixel subframe (x-direction) or an 11$\\times$11 pixel subframe (y-direction)."
+            }
+          ]
+        },
+        {
+          "value": "Convert detector offsets using plate scale and JPL HORIZONS Titan–Earth distance",
+          "evidence": [
+            {
+              "loc": "Occultation data reduction and processing",
+              "quote": "by using the plate scale of the observations and the distance between Titan and Earth (taken from JPL HORIZONS)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "Two one-dimensional Gaussians for stellar centroids; linear fits to x/y offsets versus time",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Two one-dimensional Gaussians led to centroids with the least variability."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Linear fits were applied to both the x- and y- directions (as a function of time)"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Choose subframe widths and centroid method with the lowest variability",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "These star subframe widths were selected based on which led to the lowest variability in centroid fitting."
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Two one-dimensional Gaussians led to centroids with the least variability."
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "goal": "Measure ALMA Doppler shifts",
+      "method": {
+        "value": "Simultaneously fit eight CH3CN lines with Moffat functions in every image pixel",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The Gaussian line fitting method was updated to use the Moffat function (cite: moffat1969theoretical) instead"
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "All eight CH$_3$CN spectral lines were fitted simultaneously for all pixels in the ALMA images, using a Levenberg-Marquardt least-squares minimization routine written in Python, based on the MPFIT package (cite: markwardt2009non)."
+          }
+        ]
+      },
+      "software": [
+        "Python",
+        "MPFIT"
+      ],
+      "key_parameters": [
+        {
+          "value": "Common variable velocity offset across all lines; other Moffat parameters independent for each line",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "All parameters of the Moffat function were allowed to vary independently for each line, apart from the velocity offset parameter, for which a common (variable) value was used for all lines."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "Levenberg-Marquardt least squares; Doppler uncertainties from covariance-matrix diagonal elements",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "using a Levenberg-Marquardt least-squares minimization routine written in Python, based on the MPFIT package (cite: markwardt2009non)."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The uncertainty on the Doppler shift for each pixel was derived from the diagonal elements of the covariance matrix."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Moffat functions reproduce observed line profiles within the noise",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "We found that the Moffat function was able to fully reproduce our observed line profiles (within the noise), resulting in a more accurate determination of the line Doppler shift than the conventional Gaussian fitting method."
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "goal": "Correct the Doppler zero point",
+      "method": {
+        "value": "Average fitted line-of-sight velocities inside Titan’s limb and subtract the resulting zero-point shift from individual pixels",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The magnitude of the shift was calculated by taking the average of the fitted line-of-sight velocities inside Titan’s limb."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "This “zero point shift” was then subtracted from the individual pixel Doppler shifts for the subsequent data analysis steps."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Approximately +30 m s^-1 offset",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "A significant ($\\approx+30$ m s$^{-1}$) offset in the spectral line Doppler shifts was identified at the center of Titan’s disk (and along the direction of its polar axis)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Zonal winds symmetric with respect to Titan’s polar axis",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "Our ALMA data analysis here therefore also inherently assumes that the zonal winds are symmetric with respect to Titan’s polar axis."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "not stated",
+        "evidence": []
+      }
+    },
+    {
+      "order": 5,
+      "goal": "Determine ALMA altitude sensitivity",
+      "method": {
+        "value": "NEMESIS radiative transfer and CH3CN abundance retrieval; derive wind contribution from altitude functional derivatives weighted by the spectral-line gradient",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "we used the Non-linear optimal Estimator for MultivariatE spectral analySIS (NEMESIS) to generate a detailed radiative transfer model for the observed CH$_3$CN emission"
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "This abundance profile formed the basis of our “wind contribution function” calculation, which was obtained from the corresponding NEMESIS functional derivatives ($dQ/dz$) of flux with respect to altitude, as a function of frequency."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The $dQ/dz$ values were convolved with the gradient of the (continuum-subtracted) model spectral line profile, to provide weighting according to the frequencies contributing most to the retrieved line Doppler shifts"
+          }
+        ]
+      },
+      "software": [
+        "CASA",
+        "tclean",
+        "NEMESIS"
+      ],
+      "key_parameters": [
+        {
+          "value": "Re-image calibrated cubes before continuum subtraction; extract disk-averaged spectra with 1.5'' diameter aperture",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "The calibrated ALMA data cubes were re-imaged prior to continuum subtraction"
+            },
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "Disk-averaged spectra were then extracted using a circular aperture with a diameter of 1.5$''$"
+            }
+          ]
+        },
+        {
+          "value": "35 annuli; emission angles 0–75 degrees; tangential altitude up to 1050 km",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "Titan’s disk (plus atmosphere) was divided into 35 annuli corresponding to emission angles between 0-75 degrees, covering the center of Titan up to a tangential altitude of 1050 km"
+            }
+          ]
+        },
+        {
+          "value": "Model vertical extent 1200 km; negligible emission above 1000 km",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "the vertical extent of our model was 1200 km, but emission is negligible above 1000 km"
+            }
+          ]
+        },
+        {
+          "value": "Scale observed data, including continuum, by 0.982",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."
+            }
+          ]
+        },
+        {
+          "value": "Average and peak-normalize the weighted contribution functions",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "which were then averaged and peak-normalized."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Atmospheric temperature profile from (cite: 2020ApJ...903L..22T)",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "The atmospheric temperature profile was obtained from (cite: 2020ApJ...903L..22T)."
+            }
+          ]
+        },
+        {
+          "value": "A priori CH3CN abundance profile from (cite: nosowitz_improved_2025)",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "updated to incorporate the more recent CH$_3$CN abundance profile from (cite: nosowitz_improved_2025) for the *a priori* atmospheric state."
+            }
+          ]
+        },
+        {
+          "value": "J=36-35 has the same altitude sensitivity range because line opacities and energy levels are similar",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "Due to the similarity of the line opacities and energy levels, this range is also applicable to the $J=36-35$ band."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Continuously retrieve CH3CN abundance at each altitude against J=35-34 line profiles",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The CH$_3$CN abundance profile was continuously retrieved at each altitude to obtain a fit to the observed $J=35-34$ spectral line profiles."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Continuum matching after the 0.982 scaling",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "goal": "Retrieve intrinsic latitudinal winds",
+      "method": {
+        "value": "Fit a simplified 3D radiative transfer Doppler map with modified atmWindMapGaussFit to account for beam-smearing and axial tilt",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "Due to the effects of beam-smearing, combined with Titan’s axial tilt, extraction of the intrinsic zonal wind field requires deconvolution of the Doppler shift data."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "We therefore followed a similar method to (cite: cordiner_detection_2020) to model the Doppler map and extract a latitudinal wind speed profile using a simplified 3D radiative transfer model."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The `atmWindMapGaussFit` code of (cite: cordiner_detection_2020) was modified to allow a continuously variable wind speed as a function of latitude ($v(l)$), instead of the Gaussian profile previously assumed by those authors."
+          }
+        ]
+      },
+      "software": [
+        "atmWindMapGaussFit",
+        "MPFIT"
+      ],
+      "key_parameters": [
+        {
+          "value": "Seven latitude points separated by 30 degrees",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "Seven latitudinal points (with $\\Delta{(l)}=30^{\\circ}$ separation) were found to produce a good fit to the observed Doppler map"
+            }
+          ]
+        },
+        {
+          "value": "Segmented linear interpolation, smoothed with Gaussian FWHM equal to point spacing",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "by a segmented linear function. This function was then smoothed by a Gaussian function of FWHM equal to the spacing between the points."
+            }
+          ]
+        },
+        {
+          "value": "Exponential taper with 1 degree scale length; zero wind at poles",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "An exponential taper was applied at the ends of the $v(l)$ profile (with an exponential smoothing scale length of 1$^{\\circ}$), to ensure a velocity of zero at the poles."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Zonal winds symmetric with respect to Titan’s polar axis",
+          "evidence": [
+            {
+              "loc": "ALMA wind retrieval",
+              "quote": "Our ALMA data analysis here therefore also inherently assumes that the zonal winds are symmetric with respect to Titan’s polar axis."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Optimize each velocity point with MPFIT least squares and associated error estimates",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "Each velocity point $v_i$ was then optimized using MPFIT, to obtain the least-squares solution and associated error estimates."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Experiment with point counts; seven points give a good Doppler-map fit while remaining constrained by the data",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "To maximize the information content in the $v(l)$ retrieval, we experimented in fitting the observations with profiles incorporating different numbers of variable latitudinal points $i$."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "Seven latitudinal points (with $\\Delta{(l)}=30^{\\circ}$ separation) were found to produce a good fit to the observed Doppler map, while still allowing the retrieved profile to be well constrained by the data"
+          }
+        ]
+      }
+    },
+    {
+      "order": 7,
+      "goal": "Construct wind-distorted atmospheres",
+      "method": {
+        "value": "Use HASI temperature, integral hydrostatic equilibrium and ideal gas law; distort density and refractivity profiles using ALMA or TAM winds",
+        "evidence": [
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "Calculate the pressure profile from $T(r)$ using the law of hydrostatic equilibrium and the assumption of a nitrogen atmosphere"
+          },
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "Calculate the number density profile, $N(r)$, from $T(r)$ and $P(r)$, using the ideal gas law."
+          },
+          {
+            "loc": "Forward model input from GCM zonal wind profiles",
+            "quote": "we chose to apply the radial distortions derived from zonal wind profiles in each GCM snapshot"
+          }
+        ]
+      },
+      "software": [
+        "Titan Atmospheric Model (TAM)"
+      ],
+      "key_parameters": [
+        {
+          "value": "Integral form of hydrostatic equilibrium",
+          "evidence": [
+            {
+              "loc": "Forward model input from GCM zonal wind profiles",
+              "quote": "We use the integral form of hydrostatic equilibrium in our forward model exploring modifications to surfaces of level pressure exerted by zonal winds."
+            }
+          ]
+        },
+        {
+          "value": "Reference altitude corresponding to the ALMA contribution-function peak",
+          "evidence": [
+            {
+              "loc": "Deriving level surface distortions from zonal winds",
+              "quote": "A reference altitude $r(P,\\phi_0)$ at reference co-latitude $\\phi_0$ is used, in our case corresponding to the peak altitude from the ALMA contribution function."
+            }
+          ]
+        },
+        {
+          "value": "GCM wind profiles displayed at reference altitude 307 km",
+          "evidence": [
+            {
+              "loc": "Forward model input from GCM zonal wind profiles",
+              "quote": "for a reference altitude (307 km)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "HASI temperature profile; nitrogen atmosphere",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "In this paper we use the Huygens/HASI profile as our starting reference for Titan’s atmosphere"
+            },
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "Calculate the pressure profile from $T(r)$ using the law of hydrostatic equilibrium and the assumption of a nitrogen atmosphere"
+            }
+          ]
+        },
+        {
+          "value": "No imposed equatorial symmetry; uniform winds at each latitude, with no longitudinal variation",
+          "evidence": [
+            {
+              "loc": "Variation in radial distortion profiles",
+              "quote": "Our forward model does not impose equatorial symmetry; however, we do assume that any given latitude will experience uniform winds throughout (i.e. we assume no longitudinal variations in wind speeds)."
+            }
+          ]
+        },
+        {
+          "value": "Nearly spherical level surfaces allow radius and gravity to be removed from the latitude integral",
+          "evidence": [
+            {
+              "loc": "Deriving level surface distortions from zonal winds",
+              "quote": "Radius $r$ and gravitational acceleration $g$ can be removed from the integral when the surfaces are nearly spherical"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Scaling HASI temperatures by TAM latitude differences produced negligible changes",
+        "evidence": [
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "We also considered scaling the HASI profile by the latitudinal temperature differences simulated in the TAM GCM, but found the differences in the results to be negligible when compared to using the HASI profile without GCM scaling."
+          }
+        ]
+      }
+    },
+    {
+      "order": 8,
+      "goal": "Simulate resolved occultation images",
+      "method": {
+        "value": "Calculate refractivity, integrate along chords, derive bending angles from phase-delay gradients, trace stellar rays and convolve with a PSF",
+        "evidence": [
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "We calculate the refractivity through $N_2$ gas at standard temperature and pressure, then scale that refractivity by the ratio of the actual number density to Loschmidt’s number"
+          },
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "Calculate bending angles from the gradient of the phase delay screen"
+          },
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "We convolve the traced light locations with an appropriate PSF to produce an image that we can compare to the AO observations."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Line-of-sight steps of 1 km; chord length 8000 km",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "We use step sizes of 1 km and a chord length of 8000 km, since number densities at distances of 4000 km (and beyond) from Titan’s center are negligible."
+            }
+          ]
+        },
+        {
+          "value": "ν_STP = 29.06×10^-5 (1 + 7.7×10^-3/λ²), with λ in μm",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "\\nu_{STP} = 29.06 \\times 10^{-5} (1 + \\frac{7.7 \\times 10^{-3}}{\\lambda^2})"
+            },
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "where $\\lambda$ is the wavelength in $\\mu$m"
+            }
+          ]
+        },
+        {
+          "value": "Loschmidt’s number 2.687×10^19 particles per cm³; STP 273.15 K and 1 atmosphere",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "Standard Temperature and Pressure: 273.15 K and 1 atmosphere"
+            },
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "Loschmidt’s number ($N_{LOS}$) is $2.687 \\times 10^{19}$ particles per cm$^3$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "2-D screens perpendicular to the line of sight",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "Approximate Titan and its atmosphere as 2-D screens perpendicular to the observer’s line of sight"
+            }
+          ]
+        },
+        {
+          "value": "Neglect seasonal haze effects at the probed altitudes and observing wavelengths",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "While we considered the effect of Titan’s seasonally variable haze, we determined the effect was negligible due to the high altitudes that are probed by occultations and the wavelength range that the occultation was observed in."
+            }
+          ]
+        },
+        {
+          "value": "Applying isobar distortions to bending-angle fields introduces undetectable errors over small temperature ranges",
+          "evidence": [
+            {
+              "loc": "Forward modeling of a stellar occultation",
+              "quote": "Although isobars and isopycnals are not identical, applying the isobar distortions to the bending angle fields over small temperature ranges gives undetectable errors."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "2-D screen approximation justified by bending angles of about 2 μrad",
+        "evidence": [
+          {
+            "loc": "Forward modeling of a stellar occultation",
+            "quote": "the bending angles we detect are only about 2 $\\mu$rad, so that each detectable ray essentially travels straight through Titan’s atmosphere."
+          }
+        ]
+      }
+    },
+    {
+      "order": 9,
+      "goal": "Compare observed and simulated lightspots",
+      "method": {
+        "value": "Sum limb light versus angle, Gaussian-fit ingress/egress spot angles and rank input atmospheres by angular sum of squared errors",
+        "evidence": [
+          {
+            "loc": "Quantifying refracted lightspot patterns",
+            "quote": "Quantitative comparisons were carried out by plotting the summed distribution of light around the limb in both data and model images as a function of $\\theta$"
+          },
+          {
+            "loc": "Quantifying refracted lightspot patterns",
+            "quote": "finding the sum of squared errors (SSE) between data and model $\\theta$ values for the ingress spot and the egress spot in data frames where the lightspots could be isolated."
+          },
+          {
+            "loc": "Quantifying refracted lightspot patterns",
+            "quote": "$\\theta$ values for data and model were determined with Gaussian fitting (cite: matthew_newville_built-fitting_2024)."
+          }
+        ]
+      },
+      "software": [
+        "Built-in Fitting Models in the models module"
+      ],
+      "key_parameters": [
+        {
+          "value": "θ=0 degrees in the positive x-direction",
+          "evidence": [
+            {
+              "loc": "Quantifying refracted lightspot patterns",
+              "quote": "with $\\theta = 0^{\\circ}$ in the positive x-direction"
+            }
+          ]
+        },
+        {
+          "value": "46 occultation frames; ingress spot in 22, egress spot in 18, both spots in 10",
+          "evidence": [
+            {
+              "loc": "Quantifying refracted lightspot patterns",
+              "quote": "we collected 46 frames covering the entirety of the occultation."
+            },
+            {
+              "loc": "Quantifying refracted lightspot patterns",
+              "quote": "We identified an “ingress lightspot\" (appearing along the limb near the point of star ingress) in 22 of the 46 frames"
+            },
+            {
+              "loc": "Quantifying refracted lightspot patterns",
+              "quote": "an “egress lightspot\" (appearing along the limb near the point of star egress) in 18 of the 46 frames"
+            }
+          ]
+        },
+        {
+          "value": "Original, doubled and halved 37-profile sets; 111 input profiles",
+          "evidence": [
+            {
+              "loc": "Table 2",
+              "quote": "Input profiles include the original 36 GCM and 1 ALMA inputs (that are shown above), and the same 37 profiles with both halved and doubled magnitudes (total of 111 input profiles)."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "Gaussian fits to lightspot angles; SSE comparison for ingress, egress and both combined",
+        "evidence": [
+          {
+            "loc": "Quantifying refracted lightspot patterns",
+            "quote": "$\\theta$ values for data and model were determined with Gaussian fitting (cite: matthew_newville_built-fitting_2024)."
+          },
+          {
+            "loc": "Table 1",
+            "quote": "Sum of squared errors table of the closest model-data matches for both ingress and egress spots combined, ingress spots alone, and egress spots alone."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compare ingress and egress separately and test doubled/halved wind magnitudes",
+        "evidence": [
+          {
+            "loc": "Data versus model: overall",
+            "quote": "After determining the combined best match, we probed each individual lightspot to see what distinct trends appeared at ingress and egress."
+          },
+          {
+            "loc": "Forward model input from GCM zonal wind profiles",
+            "quote": "we ran the forward model with both doubled and halved zonal wind speeds from each of the GCM snapshots to determine the effect of increased and decreased atmospheric distortion on the correspondence between the data and the model."
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "CASA",
+      "version": "not stated",
+      "used_for": {
+        "value": "ALMA flagging, calibration, phase self-calibration and imaging",
+        "evidence": [
+          {
+            "loc": "ALMA observations and data reduction",
+            "quote": "The interferometric data were flagged and calibrated in the Common Astronomy Software Applications (CASA) package (cite: casa_2008) using standard scripts supplied by the Joint ALMA Observatory."
+          },
+          {
+            "loc": "ALMA observations and data reduction",
+            "quote": "Additional self-calibration of the phases was performed with respect to the Butler-JPL-Horizons 2012 Titan model included with CASA"
+          },
+          {
+            "loc": "ALMA observations and data reduction",
+            "quote": "using the CASA `tclean` Hogböm algorithm"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tclean",
+      "version": "not stated",
+      "used_for": {
+        "value": "Per-channel spectral-image deconvolution",
+        "evidence": [
+          {
+            "loc": "ALMA observations and data reduction",
+            "quote": "The spectral image data were deconvolved (per channel) using the CASA `tclean` Hogböm algorithm"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Python",
+      "version": "not stated",
+      "used_for": {
+        "value": "Levenberg-Marquardt spectral-line fitting routine",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "using a Levenberg-Marquardt least-squares minimization routine written in Python, based on the MPFIT package (cite: markwardt2009non)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "MPFIT",
+      "version": "not stated",
+      "used_for": {
+        "value": "Spectral-line Doppler fitting and optimization of latitudinal wind points",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "using a Levenberg-Marquardt least-squares minimization routine written in Python, based on the MPFIT package (cite: markwardt2009non)."
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "Each velocity point $v_i$ was then optimized using MPFIT, to obtain the least-squares solution and associated error estimates."
+          }
+        ]
+      }
+    },
+    {
+      "name": "NEMESIS",
+      "version": "not stated",
+      "used_for": {
+        "value": "CH3CN radiative transfer, abundance retrieval and wind contribution functions",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "we used the Non-linear optimal Estimator for MultivariatE spectral analySIS (NEMESIS) to generate a detailed radiative transfer model for the observed CH$_3$CN emission"
+          },
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "This abundance profile formed the basis of our “wind contribution function” calculation, which was obtained from the corresponding NEMESIS functional derivatives ($dQ/dz$) of flux with respect to altitude, as a function of frequency."
+          }
+        ]
+      }
+    },
+    {
+      "name": "atmWindMapGaussFit",
+      "version": "not stated",
+      "used_for": {
+        "value": "Modified Doppler-map retrieval with continuously variable wind speed versus latitude",
+        "evidence": [
+          {
+            "loc": "ALMA wind retrieval",
+            "quote": "The `atmWindMapGaussFit` code of (cite: cordiner_detection_2020) was modified to allow a continuously variable wind speed as a function of latitude ($v(l)$), instead of the Gaussian profile previously assumed by those authors."
+          }
+        ]
+      }
+    },
+    {
+      "name": "nirc2reduce",
+      "version": "not stated",
+      "used_for": {
+        "value": "Keck/NIRC2 data reduction",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "We reduced Keck/NIRC2 data using the `nirc2reduce` Python package (cite: molter_emolternirc2_reduce_2024)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scikit-Image; skimage.restoration.richardson_lucy",
+      "version": "not stated",
+      "used_for": {
+        "value": "Richardson-Lucy image deconvolution",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "For image deconvolution, we used the richardson_lucy function from the skimage.restoration image restoration module by Scikit-Image (cite: van_der_walt_scikit-image_2014)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "image_registration; fft_tools.shift.shift2d",
+      "version": "not stated",
+      "used_for": {
+        "value": "Align image centers for stacking",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "Using the shift2d function from the fft_tools.shift module of the image_registration package by PyPI (cite: ginsburg_image-registration_2023)"
+          },
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "the images were then aligned so that the (x,y) coordinates of the center of the fitted circles were stacked on top of each other."
+          }
+        ]
+      }
+    },
+    {
+      "name": "JPL HORIZONS",
+      "version": "not stated",
+      "used_for": {
+        "value": "Titan–Earth distance for occultation offset conversion",
+        "evidence": [
+          {
+            "loc": "Occultation data reduction and processing",
+            "quote": "by using the plate scale of the observations and the distance between Titan and Earth (taken from JPL HORIZONS)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Titan Atmospheric Model (TAM)",
+      "version": "not stated",
+      "used_for": {
+        "value": "GCM wind-profile snapshots for occultation forward models",
+        "evidence": [
+          {
+            "loc": "Titan’s zonal winds simulated with General Circulation Models",
+            "quote": "The Titan Atmospheric Model (cite: lora_gcm_2015) is a three-dimensional GCM"
+          },
+          {
+            "loc": "Forward model input from GCM zonal wind profiles",
+            "quote": "We used 36 snapshots of 2D zonal wind profiles over a Titan year derived from simulations with TAM."
+          }
+        ]
+      }
+    },
+    {
+      "name": "TitanWRF",
+      "version": "not stated",
+      "used_for": {
+        "value": "Earlier Titan GCM discussed as background",
+        "evidence": [
+          {
+            "loc": "Titan’s zonal winds simulated with General Circulation Models",
+            "quote": "TitanWRF, a three-dimensional GCM reported by (cite: newman_stratospheric_2011), which utilized a higher model top and modified diffusion scheme, simulated faster zonal winds"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Built-in Fitting Models in the models module",
+      "version": "not stated",
+      "used_for": {
+        "value": "Gaussian fitting of data and model lightspot angles",
+        "evidence": [
+          {
+            "loc": "Quantifying refracted lightspot patterns",
+            "quote": "$\\theta$ values for data and model were determined with Gaussian fitting (cite: matthew_newville_built-fitting_2024)."
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "Spectral-line Doppler zero-point offset",
+      "value": "approximately +30",
+      "uncertainty": "not stated",
+      "units": "m s^-1",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "A significant ($\\approx+30$ m s$^{-1}$) offset in the spectral line Doppler shifts was identified at the center of Titan’s disk (and along the direction of its polar axis)."
+        }
+      ]
+    },
+    {
+      "quantity": "ALMA continuum scaling factor",
+      "value": "0.982",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "The observed ALMA data (including the continuum) were scaled by a constant factor of 0.982 to produce a match between the modeled and observed continuum levels."
+        }
+      ]
+    },
+    {
+      "quantity": "Average CH3CN emission altitude",
+      "value": "303",
+      "uncertainty": "not stated",
+      "units": "km",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "The corresponding average emission altitude is 303 km, with sensitivity to winds primarily in the range $\\sim150$-450 km."
+        }
+      ]
+    },
+    {
+      "quantity": "Primary ALMA wind sensitivity altitude range",
+      "value": "~150-450",
+      "uncertainty": "not stated",
+      "units": "km",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "The corresponding average emission altitude is 303 km, with sensitivity to winds primarily in the range $\\sim150$-450 km."
+        }
+      ]
+    },
+    {
+      "quantity": "Peak ALMA-derived wind speed",
+      "value": "just under 200",
+      "uncertainty": "not stated",
+      "units": "m/s",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "On the better model match to the ingress than egress data",
+          "quote": "The best match for the ingress lightspot was observed with the ALMA data with a peak wind speed just under 200 m/s, higher than nearly all of the zonal wind profiles simulated by the GCM."
+        }
+      ]
+    },
+    {
+      "quantity": "Best combined original-amplitude GCM solar longitude",
+      "value": "120",
+      "uncertainty": "not stated",
+      "units": "degrees",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Data versus model: overall",
+          "quote": "the overall best match to the occultation data was for the input GCM atmosphere corresponding to $L_s = 120^{\\circ}$"
+        }
+      ]
+    },
+    {
+      "quantity": "Combined SSE for original L_s 120-degree GCM profile",
+      "value": "570.5",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "| $L_s 120^o$ | 570.5 |    ALMA     | 42.6 | $L_s 120^o$ | 496.7 |"
+        }
+      ]
+    },
+    {
+      "quantity": "Egress SSE for original L_s 120-degree GCM profile",
+      "value": "496.7",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "| $L_s 120^o$ | 570.5 |    ALMA     | 42.6 | $L_s 120^o$ | 496.7 |"
+        }
+      ]
+    },
+    {
+      "quantity": "Ingress SSE for original ALMA profile",
+      "value": "42.6",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 1",
+          "quote": "| $L_s 120^o$ | 570.5 |    ALMA     | 42.6 | $L_s 120^o$ | 496.7 |"
+        }
+      ]
+    },
+    {
+      "quantity": "Combined SSE for original ALMA profile",
+      "value": "664.3",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "|       ALMA       |    664.3     |    42.6     |   621.7    |"
+        }
+      ]
+    },
+    {
+      "quantity": "Egress SSE for original ALMA profile",
+      "value": "621.7",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 3",
+          "quote": "|       ALMA       |    664.3     |    42.6     |   621.7    |"
+        }
+      ]
+    },
+    {
+      "quantity": "Best combined SSE across all amplitudes: 0.5× L_s 110-degree GCM profile",
+      "value": "512.8",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| 0.5 $\\times L_s 110^o$ | 512.8 | 2 $\\times L_s 270^o$ | 26.0 | 0.5 $\\times L_s 110^o$ | 428.1 |"
+        }
+      ]
+    },
+    {
+      "quantity": "Best egress SSE across all amplitudes: 0.5× L_s 110-degree GCM profile",
+      "value": "428.1",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| 0.5 $\\times L_s 110^o$ | 512.8 | 2 $\\times L_s 270^o$ | 26.0 | 0.5 $\\times L_s 110^o$ | 428.1 |"
+        }
+      ]
+    },
+    {
+      "quantity": "Best ingress SSE across all amplitudes: 2× L_s 270-degree GCM profile",
+      "value": "26.0",
+      "uncertainty": "not stated",
+      "units": "not stated",
+      "from_step": 9,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| 0.5 $\\times L_s 110^o$ | 512.8 | 2 $\\times L_s 270^o$ | 26.0 | 0.5 $\\times L_s 110^o$ | 428.1 |"
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Occultation data support stronger winds in the southern hemisphere during late northern summer",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "Our data support the presence of stronger winds in the southern hemisphere during late northern summer."
+        }
+      ]
+    },
+    {
+      "value": "Original ALMA profile best matches ingress, but not ingress and egress combined",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "The ALMA wind profile provides the best match to the occultation data when only the ingress data were considered, but is not the best match when data from ingress and egress are combined."
+        }
+      ]
+    },
+    {
+      "value": "Halving GCM winds slightly improves overall matches, mainly through egress",
+      "evidence": [
+        {
+          "loc": "Data versus model: overall",
+          "quote": "Halving the wind speed magnitudes from the GCM led to slightly improved matches"
+        },
+        {
+          "loc": "Data versus model: overall",
+          "quote": "Halving the wind speed profiles did not improve the matches for the ingress spot, but generally led to better matches for the egress spot in many cases"
+        }
+      ]
+    },
+    {
+      "value": "No tested forward model reproduces the mid-event limb arcs",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Finally, the mid-event frame shows wider arcs on both the north and south limbs in a pattern that we were unable to reproduce with any of our forward models."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Titan has stronger southern-hemisphere winds during late northern summer",
+      "experiment": "Compare observed occultation limb light with wind-distorted forward models and inspect the mid-event geometry",
+      "result": "Best-matching profiles have southern wind peaks; the mid-event geometry is consistent with stronger southern winds",
+      "finding": "The data support stronger southern-hemisphere winds",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "On the better model match to the ingress than egress data",
+          "quote": "In both original magnitude and half-magnitude cases, the best-matching profiles had the same shape (peak winds at southern latitudes)."
+        },
+        {
+          "loc": "Level Surface Contours and the Mid-Event Frame: Evidence for a Southern Stratospheric Jet",
+          "quote": "The implication is that Titan’s atmosphere is shaped like an egg with the pointy end near the north pole, a pattern that is consistent with stronger winds in the southern hemisphere."
+        }
+      ]
+    },
+    {
+      "hypothesis": "A seasonal GCM profile can match the resolved occultation data",
+      "experiment": "Rank original-amplitude GCM and ALMA forward models by combined ingress/egress SSE",
+      "result": "L_s 120 degrees gives combined SSE 570.5",
+      "finding": "L_s 120 degrees is the best original-amplitude profile, with nearby seasonal profiles close behind",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Data versus model: overall",
+          "quote": "the overall best match to the occultation data was for the input GCM atmosphere corresponding to $L_s = 120^{\\circ}$, closely followed by those corresponding to $L_s = 110^{\\circ}$, $L_s = 130^{\\circ}$, and $L_s = 100^{\\circ}$."
+        },
+        {
+          "loc": "Table 1",
+          "quote": "| $L_s 120^o$ | 570.5 |    ALMA     | 42.6 | $L_s 120^o$ | 496.7 |"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Lower peak GCM wind speeds improve agreement with the occultation",
+      "experiment": "Repeat forward models with halved and doubled wind magnitudes",
+      "result": "Halved profiles slightly improve combined matches; doubled profiles give poorer combined matches",
+      "finding": "Lower winds are favored by egress and combined comparisons, but not by ingress alone",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Data versus model: overall",
+          "quote": "When evaluated across all residuals (ingress and egress lightspots, all frames), it was apparent that doubled wind speeds led to poorer matches across all simulations."
+        },
+        {
+          "loc": "Data versus model: overall",
+          "quote": "Halving the wind speed profiles did not improve the matches for the ingress spot, but generally led to better matches for the egress spot in many cases"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Near-concurrent ALMA winds predict the occultation lightspot behavior",
+      "experiment": "Use the ALMA wind profile as an occultation forward-model atmosphere",
+      "result": "ALMA is the best original-profile ingress match, but has poorer egress agreement",
+      "finding": "The techniques are complementary, with agreement dependent on the lightspot considered",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "The ALMA wind profile provides the best match to the occultation data when only the ingress data were considered, but is not the best match when data from ingress and egress are combined."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "The strength of the match between the ingress lightspot observations and the atmospheric model derived from ALMA interferometry supports the complementarity of (optical) occultation and (radio) Doppler mapping techniques for zonal wind investigations."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The tested ALMA and GCM atmospheres reproduce the mid-event light distribution",
+      "experiment": "Compare simulated limb light with the observed mid-event arcs",
+      "result": "All tested forward models fail to reproduce the observed pattern",
+      "finding": "The tested atmosphere family does not explain the complete occultation morphology",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Finally, the mid-event frame shows wider arcs on both the north and south limbs in a pattern that we were unable to reproduce with any of our forward models."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Near-concurrent occultation and ALMA observations probe complementary middle-atmosphere altitudes",
+      "evidence": [
+        {
+          "loc": "ALMA observations and data reduction",
+          "quote": "ALMA observations of Titan were obtained on UT 2022-09-06 between 02:29–05:48 (less than 24 hours after the occultation observation)"
+        },
+        {
+          "loc": "Introduction",
+          "quote": "The altitude ranges for these three methods are complementary"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Moffat functions fit CH3CN line wings better; HASI preserves vertical resolution missing from TAM density profiles",
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "which was found by (cite: light2024measurements) to provide a significantly better fit to the CH$_3$CN lineshapes than Gaussian or Voigt functions, especially in the presence of pressure-broadened Lorentzian line wings."
+        },
+        {
+          "loc": "Forward model input from GCM zonal wind profiles",
+          "quote": "The limited vertical resolution in TAM 2D density profiles means the resulting refractivity profiles lack the necessary resolution across occultation-relevant altitudes."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Seven latitude points balance Doppler-map fit quality and constrained wind-profile errors",
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "Seven latitudinal points (with $\\Delta{(l)}=30^{\\circ}$ separation) were found to produce a good fit to the observed Doppler map, while still allowing the retrieved profile to be well constrained by the data"
+        },
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "keeping the resulting $v(l)$ errors reasonably small with respect to variations in the retrieved profile"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Frame-dependent stellar PSFs and Gaussian PSFs considered; universal sharpest-star PSF selected",
+      "evidence": [
+        {
+          "loc": "Occultation data reduction and processing",
+          "quote": "a frame-to-frame PSF of the star (where the PSF varied by frame), a universal PSF where the sharpest star (as determined by the lowest width of distributed light) was used as PSF for all frames"
+        },
+        {
+          "loc": "Occultation data reduction and processing",
+          "quote": "a frame-to-frame Gaussian, and a universal Gaussian."
+        },
+        {
+          "loc": "Occultation data reduction and processing",
+          "quote": "We ultimately used a universal PSF derived from the frame with the sharpest star, as this gave the sharpest deconvolved disks."
+        }
+      ]
+    },
+    {
+      "value": "Two-dimensional Gaussian, center of mass and quadratic centroid methods considered; two one-dimensional Gaussians selected",
+      "evidence": [
+        {
+          "loc": "Occultation data reduction and processing",
+          "quote": "including two one-dimensional Gaussians, a two-dimensional Gaussian, center of mass, and a quadratic polynomial."
+        },
+        {
+          "loc": "Occultation data reduction and processing",
+          "quote": "Two one-dimensional Gaussians led to centroids with the least variability."
+        }
+      ]
+    },
+    {
+      "value": "HASI temperature scaling by TAM latitude differences had negligible effects",
+      "evidence": [
+        {
+          "loc": "Forward modeling of a stellar occultation",
+          "quote": "We also considered scaling the HASI profile by the latitudinal temperature differences simulated in the TAM GCM, but found the differences in the results to be negligible when compared to using the HASI profile without GCM scaling."
+        }
+      ]
+    },
+    {
+      "value": "Direct use of TAM density profiles replaced by wind-distorted HASI refractivity profiles",
+      "evidence": [
+        {
+          "loc": "Forward model input from GCM zonal wind profiles",
+          "quote": "The limited vertical resolution in TAM 2D density profiles means the resulting refractivity profiles lack the necessary resolution across occultation-relevant altitudes."
+        },
+        {
+          "loc": "Forward model input from GCM zonal wind profiles",
+          "quote": "we chose to apply the radial distortions derived from zonal wind profiles in each GCM snapshot"
+        }
+      ]
+    },
+    {
+      "value": "Doubled and halved wind magnitudes tested",
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "Input profiles include the original 36 GCM and 1 ALMA inputs (that are shown above), and the same 37 profiles with both halved and doubled magnitudes (total of 111 input profiles)."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "ALMA rubidium-maser cable-routing error likely introduced an unknown frequency shift and slight spectral broadening",
+      "evidence": [
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "an error in the cable routing of the ALMA rubidium maser at the time of our observations, which is likely to have introduced an erroneous and unknown frequency shift in our observations"
+        },
+        {
+          "loc": "ALMA wind retrieval",
+          "quote": "accompanied by a slight broadening of the spectral lines by a few tens of meters per second (R. Loomis, private communication)."
+        }
+      ]
+    },
+    {
+      "value": "ALMA winds are not vertically resolved; equatorial-jet contributions cannot be isolated",
+      "evidence": [
+        {
+          "loc": "Comparison between GCM, occultation, and ALMA zonal winds",
+          "quote": "As the ALMA wind profile is not vertically resolved, isolating the contribution of the equatorial jet from the contributions of winds at lower altitudes that contribute more heavily to the CH$_3$CN profile is not possible."
+        }
+      ]
+    },
+    {
+      "value": "GCM and ALMA forward-model inputs differ in vertical treatment",
+      "evidence": [
+        {
+          "loc": "Comparison between GCM, occultation, and ALMA zonal winds",
+          "quote": "the implementations of ALMA and GCM profiles into our forward model varied slightly due to GCM simulations being altitudinally resolved while ALMA retrieved wind speeds are averaged over an altitude contribution function"
+        }
+      ]
+    },
+    {
+      "value": "Best combined fit is driven by the poorer-fitting egress lightspot; untested wind shapes may fit better",
+      "evidence": [
+        {
+          "loc": "On the better model match to the ingress than egress data",
+          "quote": "The best match was driven by the degree of data-model overlap observed for the egress lightspot"
+        },
+        {
+          "loc": "On the better model match to the ingress than egress data",
+          "quote": "It is additionally possible that a zonal wind profile that varies distinctly from all simulated GCM profiles would provide a better match to the data."
+        }
+      ]
+    },
+    {
+      "value": "Longitudinal symmetry excludes possible localized atmospheric events",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "assuming longitudinal symmetry excludes possible localized events that could be happening in the atmosphere regions probed by ingress and egress, such as planetary-scale waves."
+        }
+      ]
+    },
+    {
+      "value": "HASI lacks temporal and latitudinal resolution",
+      "evidence": [
+        {
+          "loc": "Forward modeling of a stellar occultation",
+          "quote": "While the HASI temperature profile lacks temporal and latitudinal resolution, it offers unparalleled altitudinal resolution"
+        }
+      ]
+    },
+    {
+      "value": "Omitting methane overestimates bending angles by roughly 0.5% under the stated 1.5% methane assumption",
+      "evidence": [
+        {
+          "loc": "Forward modeling of a stellar occultation",
+          "quote": "Omitting methane leads to an overestimation of roughly 0.5% in bending angles, assuming a constant 1.5% concentration of methane at relevant occultation altitudes"
+        }
+      ]
+    },
+    {
+      "value": "Mid-event arcs are not reproduced by any tested forward model",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Finally, the mid-event frame shows wider arcs on both the north and south limbs in a pattern that we were unable to reproduce with any of our forward models."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "The approximate Doppler zero-point correction has no stated uncertainty propagation into the retrieved wind profile.",
+    "Angular SSE ranks models without a stated error-weighted likelihood or significance test.",
+    "The preferred original-amplitude profile differs from the preferred profile across all tested amplitudes; answer keys must distinguish those searches.",
+    "Table 2 reports 29.0 for doubled L_s 240-degree ingress SSE, whereas Table 4 reports 28.9.",
+    "The 303 km average emission altitude, contribution-function peak reference and 307 km GCM reference should not be treated as interchangeable.",
+    "Failure at mid-event limits interpretation of the best-ranked profile as a complete atmospheric solution.",
+    "The source of the specific 8.94 au ALMA plotting distance is not explicitly identified."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Paper-stated ALMA project code, dataset identifiers and public-access statement.",
+    "Raw/reduced Keck frames, timestamps, selected PSF and frame-selection table.",
+    "Exact ALMA calibration, self-calibration, continuum subtraction and imaging scripts.",
+    "Modified wind-retrieval and occultation forward-model source with software versions.",
+    "Machine-readable retrieved ALMA wind profile and numerical error estimates.",
+    "The exact TAM snapshots, HASI profile and NEMESIS atmospheric/opacity inputs used.",
+    "Pressure boundary condition, complete viewing geometry, detector calibration and numerical grids.",
+    "Lightspot angle measurements, uncertainties and full comparison settings."
+  ],
+  "estimated_data_volume_inferred": "Indeterminate from the text: ALMA antenna count, integration sampling and complete channel counts are absent.",
+  "score_inferred": 5,
+  "score_reason": "The paper gives a substantial retrieval and forward-model recipe with numeric comparison tables, but lacks dataset identifiers, software versions, exact processing settings and a release of the modified analysis code and numerical inputs.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The supplied paper does not state public data availability or an ALMA project code, and essential custom-code inputs and settings remain unspecified despite numeric results.",
+  "methods_papers": [
+    {
+      "citation": "(cite: cordiner_detection_2020)",
+      "why": "Doppler wind retrieval strategy and original atmWindMapGaussFit code."
+    },
+    {
+      "citation": "(cite: light2024measurements)",
+      "why": "Moffat line-profile fitting for CH3CN."
+    },
+    {
+      "citation": "(cite: moffat1969theoretical)",
+      "why": "Moffat function."
+    },
+    {
+      "citation": "(cite: markwardt2009non)",
+      "why": "MPFIT least-squares optimization."
+    },
+    {
+      "citation": "(cite: 2008JQSRT.109.1136I)",
+      "why": "NEMESIS radiative transfer and retrieval."
+    },
+    {
+      "citation": "(cite: thelen2019abundance)",
+      "why": "Inherited atmospheric spectral-modeling strategy."
+    },
+    {
+      "citation": "(cite: lellouch2019intense)",
+      "why": "Wind contribution-function frequency weighting."
+    },
+    {
+      "citation": "(cite: bouchez_seasonal_2004)",
+      "why": "Conversion of zonal winds to level-surface distortions, Equations 4.16–4.26."
+    },
+    {
+      "citation": "(cite: Richardson_deconv; lucy_deconv)",
+      "why": "Richardson-Lucy image deconvolution."
+    },
+    {
+      "citation": "(cite: molter_emolternirc2_reduce_2024)",
+      "why": "NIRC2 reduction package."
+    },
+    {
+      "citation": "(cite: van_der_walt_scikit-image_2014)",
+      "why": "Scikit-Image deconvolution implementation."
+    },
+    {
+      "citation": "(cite: ginsburg_image-registration_2023)",
+      "why": "Image alignment using shift2d."
+    },
+    {
+      "citation": "(cite: matthew_newville_built-fitting_2024)",
+      "why": "Gaussian fits to lightspot angular distributions."
+    },
+    {
+      "citation": "(cite: casa_2008)",
+      "why": "ALMA calibration and imaging software."
+    }
+  ],
+  "companion_papers": [],
+  "related_projects_or_surveys": []
+}

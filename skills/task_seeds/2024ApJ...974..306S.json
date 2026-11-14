@@ -1,0 +1,484 @@
+{
+ "bibcode": "2024ApJ...974..306S",
+ "title": "Constraints on the Physical Origin of Large Cavities in Transition Disks from Multiwavelength Dust Continuum Emission",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad7460",
+ "arxiv_id": "2408.15407",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What physical mechanism (companion, dead zone, enhanced grain growth) carves the large cavities in six transition disks, judged from radial profiles of dust surface density, maximum grain size and temperature from multi-wavelength ALMA and VLA continuum",
+ "alma_project_codes": [
+  "2011.0.00320.S",
+  "2011.0.00724.S",
+  "2011.0.00742.S",
+  "2012.1.00870.S",
+  "2013.1.00091.S",
+  "2013.1.00157.S",
+  "2013.1.00498.S",
+  "2015.1.00296.S",
+  "2015.1.00888.S",
+  "2015.1.01137.S",
+  "2016.1.00565.S",
+  "2016.1.01042.S",
+  "2018.1.00350.S",
+  "2018.1.01255.S",
+  "2018.1.01755.S"
+ ],
+ "data": {
+  "bands": "ALMA Bands 3, 4, 6, 7, 8, 9 (per disk, see table) and VLA Bands Q and Ka; Band 9 or 7 optically thick, VLA Q or Ka optically thin",
+  "arrays": "not stated",
+  "angular_resolution": "Beam sizes of tens and hundreds of milli-arcseconds; e.g. CQTau Band 7 674 x 469 mas, PA 15 deg",
+  "sensitivity": "Per dataset rms noise in Observations table, e.g. CQTau Band 7 530.0 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distances (Gaia)",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "The distances are taken from (cite: Gaia_2020), and the luminosity and mass of the star from:"
+     }
+    ]
+   },
+   "citation": "Gaia Collaboration 2020 (cite: Gaia_2020)"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosity and mass of each source (Table 1)",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "The distances are taken from (cite: Gaia_2020), and the luminosity and mass of the star from:"
+     }
+    ]
+   },
+   "citation": "(cite: Natta_2006; Espaillat_2010; Wahhaj_2010; Andrews_2011; Manara_2014; vanderMarel_2015; Ubeira_2019; Francis_2020)"
+  },
+  {
+   "what": {
+    "value": "Dust albedo and absorption opacity coefficient used in the SED model",
+    "evidence": [
+     {
+      "loc": "4 Constraints on Dust Properties",
+      "quote": "are taken from (cite: Birnstiel_2018), and the dust grains are assumed to follow a particle size distribution"
+     }
+    ]
+   },
+   "citation": "(cite: Birnstiel_2018)"
+  },
+  {
+   "what": {
+    "value": "Dust cavity sizes of the six disks",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "with cavity sizes of approximately 50 au, 31 au, 76 au, 30 au, 35 au, and 25 au, respectively (cite: Pinilla_2014; Francis_2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Pinilla_2014; Francis_2020)"
+  },
+  {
+   "what": {
+    "value": "Gas cavity constraints for the discussion of cavity origin",
+    "evidence": [
+     {
+      "loc": "5.2 Disks with dust traps as a possible origin of the cavity",
+      "quote": "In the following, we discuss the results obtained from disks where both a dust trap (identified in this work) and gas cavities (from the literature) have been inferred."
+     }
+    ]
+   },
+   "citation": "Section 5 references, e.g. (cite: Wolfer_2023; vanderMarel_2015)"
+  },
+  {
+   "what": {
+    "value": "Compact free-free emission reported at centimeter wavelengths, used to motivate the point-source component",
+    "evidence": [
+     {
+      "loc": "3.2 Parametric fit",
+      "quote": "simulating the expected compact free-free emission at these long wavelengths reported by previous centimeter observations of UXTau A, LkCa15, RXJ1615, and SR24S in (cite: Zapata_2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Zapata_2017)"
+  },
+  {
+   "what": {
+    "value": "Dust properties of GMAur and Sz91 compared in the cavity-origin table",
+    "evidence": [
+     {
+      "loc": "6 Does the origin of a large cavity depend on the disk mass?",
+      "quote": "The dust properties in the disks around GMAur (cite: Sierra_2021) and Sz91 (cite: Mauco_2021) show dust surface density maxima at the position of the rings"
+     }
+    ]
+   },
+   "citation": "(cite: Sierra_2021; Mauco_2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate ALMA data and obtain calibrated VLA data",
+   "method": "Iterative phase self-calibration with decreasing solution interval, then one amplitude self-cal; calibrated VLA data taken from Disks@EVLA",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Iterate while SNR improves by at least 5%; solint decreases by a factor of 3 per iteration"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum with multi-scale CLEAN",
+   "method": "CASA tclean, multi-scale CLEAN, mask on disk emission",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Scales: point source, 1, 2, 3 times beam FWHM; robust 0.5 (ALMA) / 2.0 (VLA)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract visibilities, de-project, and fit disk center and geometry",
+   "method": "De-project visibilities by rotating baselines by the PA and stretching along the minor axis by cos(i); fit inclination/PA by minimizing visibility scatter in annuli; fit center by minimizing imaginary part or a 2D Gaussian on a tapered image",
+   "software": [
+    "Frankenstein",
+    "uvplot",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Geometry fixed for all wavelengths of a disk, taken from Band 6, 3, 6, 7, 6, 6 for CQTau, UXTau A, LkCa15, RXJ1615, SR24S, DMTau"
+   ],
+   "assumptions": [
+    "Azimuthal emission symmetry"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit non-parametric radial brightness profiles to visibilities",
+   "method": "Frankenstein fit of the real part of the de-projected visibilities (Fourier-Bessel series) in logarithmic brightness space; hyper-parameters alpha and w_smooth chosen by visual inspection from a grid",
+   "software": [
+    "Frankenstein"
+   ],
+   "key_parameters": [
+    "Grid of alpha = 1.05-1.30 and log10(w_smooth) = -4 to -1; chosen pairs per dataset in the visibility table",
+    "Fit in logarithmic brightness space; low-SNR VLA data fitted on visibilities binned at 10 klambda"
+   ],
+   "assumptions": [
+    "Imaginary part of the visibilities not used because of the azimuthal symmetry assumption"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit parametric models to VLA visibilities",
+   "method": "Sum of Gaussian rings at fixed radii plus a central point source (free-free), visibilities via Hankel transform, fitted to the non-binned VLA visibilities",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "64 walkers and 10000 steps; ring radii fixed from ALMA profiles (RXJ1615 outer ring radius free)"
+   ],
+   "assumptions": [
+    "Emission from spinning nanometer-size dust does not contribute"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Build common-resolution radial profiles with uncertainties",
+   "method": "Image-plane profiles from GoFish for comparison; visibility-fit profiles convolved to the lowest resolution of each disk; azimuthal-asymmetry errors from the image plane added in quadrature to the visibility-fit errors; intrinsic resolution of each fit from delta-ring tests",
+   "software": [
+    "GoFish",
+    "Frankenstein"
+   ],
+   "key_parameters": [
+    "Band 9 data excluded from the multi-wavelength analysis, and low-resolution datasets excluded"
+   ],
+   "assumptions": [
+    "Filling factor of 1 everywhere for image-plane profiles"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit the multi-wavelength SED at each radius",
+   "method": "Fit intensity of a scattering-corrected emergent-intensity model at each radius for maximum grain size, dust surface density and dust temperature",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "24 walkers and 10000 steps; log-spaced ranges 300 um <= a_max <= 30 cm, 1e-6 <= Sigma_d <= 10 g cm^-2, 3 <= T_d <= 300 K",
+    "Absolute flux uncertainty 5% (Bands 3, 4), 10% (Bands 6, 7), 20% (Bands 8, 9) included in the intensity errors"
+   ],
+   "assumptions": [
+    "Particle size distribution n(a) ~ a^-p with p fixed to 3.0 and minimum grain size 0.05 um",
+    "Opacities and albedo from Birnstiel et al. 2018; spherical compact grains",
+    "Temperature prior centered on a passively irradiated disk with width 50 K"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Derive dust masses",
+   "method": "Integrate the fitted dust surface density profiles",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Test radial smearing on the inferred dust properties",
+   "method": "Build a DMTau-like model profile, compute convolved intensities at the observed bands, refit the SED and compare to the input convolved profiles",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Model convolved at the DMTau resolution of 120 mas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "Compare dust property profiles with cavity-origin signatures",
+   "method": "Qualitative comparison of Sigma_d, a_max and T_d profiles (peaks at ring, decreasing a_max with radius) with signatures of dust traps vs grain growth plus pressure bump, combined with literature gas cavities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "UXTau A main ring peak radius (visibility fit)",
+   "value": "0.236 arcsec (33.0 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Disks with dust traps as a possible origin of the cavity",
+     "quote": "we confirm the ring-shaped structure, with a peak at $0.236^{\\prime \\prime}$ (33.0 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "CQTau ring peak radius (visibility fit)",
+   "value": "0.3 arcsec (44.8 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 CQTau",
+     "quote": "we confirm the ring shape structure at Band 7, 6, and Ka, with a peak at $0.3^{\\prime \\prime}$ (44.8 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "SR24S ring peak radii",
+   "value": "0.254 arcsec (29.0 au) and 0.441 arcsec (50.3 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 SR24S",
+     "quote": "with peaks at $\\sim 0.254^{\\prime \\prime}$ (29.0 au), $0.441^{\\prime \\prime}$ (50.3 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "RXJ1615 Band 7 prominent ring peak radius",
+   "value": "0.158 arcsec (24.6 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 RXJ1615",
+     "quote": "an asymmetric ring with a prominent peak at $0.158^{\\prime \\prime}$ (24.6 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "RXJ1615 outer ring radius from Band Q parametric fit",
+   "value": "0.73",
+   "uncertainty": "+0.05/-0.08",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 RXJ1615",
+     "quote": "The best-fit radial position for the outer ring is $0.73^{+0.05}_{-0.08}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LkCa15 fourth faint outer ring radius",
+   "value": "1.070 arcsec (168.2 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 LkCa15",
+     "quote": "We note a fourth faint outer ring at 1.070$^{\\prime \\prime}$ (168.2 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass CQTau",
+   "value": "804",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of physical mechanisms (Section 6)",
+     "quote": "$M_{\\rm dust} [M_{\\oplus}]$ | 804 | 663 | 247 | 232 | 185 | 305 | 245 | 31.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass UXTau A",
+   "value": "663",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of physical mechanisms (Section 6)",
+     "quote": "$M_{\\rm dust} [M_{\\oplus}]$ | 804 | 663 | 247 | 232 | 185 | 305 | 245 | 31.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass LkCa15",
+   "value": "247",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of physical mechanisms (Section 6)",
+     "quote": "$M_{\\rm dust} [M_{\\oplus}]$ | 804 | 663 | 247 | 232 | 185 | 305 | 245 | 31.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass RXJ1615",
+   "value": "232",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of physical mechanisms (Section 6)",
+     "quote": "$M_{\\rm dust} [M_{\\oplus}]$ | 804 | 663 | 247 | 232 | 185 | 305 | 245 | 31.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass SR24S",
+   "value": "185",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of physical mechanisms (Section 6)",
+     "quote": "$M_{\\rm dust} [M_{\\oplus}]$ | 804 | 663 | 247 | 232 | 185 | 305 | 245 | 31.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass DMTau",
+   "value": "305",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table of physical mechanisms (Section 6)",
+     "quote": "$M_{\\rm dust} [M_{\\oplus}]$ | 804 | 663 | 247 | 232 | 185 | 305 | 245 | 31.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free flux of LkCa15, RXJ1615, SR24S",
+   "value": "17.8, 44.7, 11.0",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "9.2 Parametric Models at VLA wavelengths",
+     "quote": "The free-free flux (last column) for LkCa15, RXJ1615, and SR24S is 17.8, 44.7, and 11.0 $\\mu$Jy respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free flux of UXTau A",
+   "value": "0.05",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "9.2 Parametric Models at VLA wavelengths",
+     "quote": "Our free-free flux estimation for UXTau A is only 0.05 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Point-source flux upper limit at longest VLA wavelengths in CQTau and UXTau A",
+   "value": "<~7",
+   "uncertainty": "upper limit",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7 Conclusions",
+     "quote": "consistent with a notably low flux (upper limit of $\\lesssim 7\\ \\mu$Jy) in both disks"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic angular resolution of the LkCa15 Band 6 visibility fit",
+   "value": "21.5",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "8.3 The effects of thermal noise when resolving two delta rings",
+     "quote": "the visibility fit is able to resolve both rings, with a FWHM of 21.5 mas"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Initial ALMA calibration route (pipeline vs manual, pipeline version) and which archive products or MOUS each dataset used before self-calibration",
+  "Self-calibration specifics: reference antenna, absolute solint values per dataset, number of iterations, SNR/threshold definition, flagging and gaincal parameters other than combine",
+  "tclean parameters: mask definition per dataset, niter/threshold, cell size, image size, nterms, gridder",
+  "Line-free channel selection and treatment of line contamination when forming continuum (especially Bands 6, 7 and 9)",
+  "Frankenstein version and the remaining fit settings (maximum fitting radius, number of radial points, binning of ALMA data, weights)",
+  "uvtaper values and which datasets used the Gaussian-fit centering",
+  "Priors and initial values for the parametric MCMC fits, burn-in and convergence criteria for both MCMC analyses",
+  "Whether any flux-scale rescaling between datasets was applied beyond the quoted calibration uncertainties",
+  "Exact VLA data products and version obtained from the Disks@EVLA site",
+  "Details of how the radial profiles were sampled and convolved (kernel, radial grid) before the SED fit"
+ ],
+ "missing_for_reproduction": [
+  "Raw-to-self-calibrated recipe details (initial calibration route, per-dataset solints, reference antenna, flags)",
+  "tclean mask, cell and image sizes, thresholds",
+  "Line-free channels per dataset",
+  "MCMC priors for parametric fits and convergence criteria",
+  "Exact ring-radius choices and Frankenstein settings beyond the table"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the main modeling steps (Frankenstein hyper-parameters, SED model, ranges, MCMC sizes, flux errors) are given, but initial calibration, imaging masks, line-free channels and several priors are unstated, and the work spans 26 datasets.",
+ "rediscovery_reason": "Public ALMA and VLA data, a mostly complete visibility-modeling and SED-fitting recipe, and numeric outputs (ring radii, dust masses, free-free fluxes), though it is a heavy multi-dataset job.",
+ "source_card": "cards/2024ApJ...974..306S/sonnet/card.md"
+}

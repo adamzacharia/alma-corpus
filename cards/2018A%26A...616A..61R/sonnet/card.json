@@ -1,0 +1,956 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...616A..61R",
+  "title": "CO envelope of the symbiotic star R Aquarii seen by ALMA",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Ramstedt, S.",
+  "n_authors": 6,
+  "arxiv_id": "1806.04979",
+  "doi": "10.1051/0004-6361/201833394",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00524.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this paper we present the first resolved CO line observations of the circumstellar envelope (CSE) around R Aqr."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "R Aqr",
+     "coordinates": {
+      "value": "23:43:49.491 -15:17:04.648 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| R Aqr  | 23:43:49.491 | -15:17:04.648 | 95.3$\\pm$0.6 mJy |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At 218 pc (cite: minetal14), R Aqr is the closest symbiotic star"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "218 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| R Aqr  | 23:43:49.491 | -15:17:04.648 | 95.3$\\pm$0.6 mJy |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At 218 pc (cite: minetal14), R Aqr is the closest symbiotic star"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Min et al. 2014 (cite: minetal14)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| R Aqr  | 23:43:49.491 | -15:17:04.648 | 95.3$\\pm$0.6 mJy |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At 218 pc (cite: minetal14), R Aqr is the closest symbiotic star"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the spatial and kinematic distribution of CO gas in the envelope of the symbiotic star R Aqr, and what does it imply for the average mass-loss rate and dynamics?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper we present the first resolved CO line observations of the circumstellar envelope (CSE) around R Aqr."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00524.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2012.1.00524.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "~345 GHz (Band 7), spectral windows at 331, 333, 343, 345 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The correlator was set up with four $\\sim$2 GHz wide spectral windows centered on 331, 333, 343, and 345 GHz."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2, v=0",
+     "rest_frequency": "345.796 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{12}$CO $J$=3-2, $v$=0 |  | 345.796 | 570 | 5.4 |"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=3-2",
+     "rest_frequency": "330.588 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{13}$CO $J$=3-2, $v$=0 |  | 330.588 | 120 | 0.70 |"
+      }
+     ]
+    },
+    {
+     "species": "28SiO",
+     "transition": "J=8-7, v=1",
+     "rest_frequency": "342.504 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| $^{28}$SiO $J$=8-7, $v$=1 |  | 342.504 | 140 | 1.1 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "main array, 36 12 m antennas; no ACA or total power",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The R Aqr system was observed on 21 May 2015 with 36 main-array 12 m antennas."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "21 m to 539 m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The longest baseline of the main array was 539 m, and the shortest was 21 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.38\"x0.33\", PA 77.4 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The full width at half-maximum beam width of the final images is 0.38$''$$\\times$0.33$''$ with a position angle of 77.4$^{\\circ}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "just over 5 arcsec at 345 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "corresponding to a maximum recoverable scale of just over 5$''$ at 345 GHz."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 4.0 mJy/beam in emission-free channels (2 km/s)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The rms noise level reaches 4.0 mJy/beam in the emission-free channels."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "48.15 min",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The total on-source observing time was 48.15 mins."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "21 May 2015",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The R Aqr system was observed on 21 May 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLT-SPHERE/ZIMPOL",
+     "provided": {
+      "value": "Halpha image of inner jet and stars, overplotted",
+      "evidence": [
+       {
+        "loc": "5 Molecular emission in context",
+        "quote": "the different molecular features are overplotted on the H$\\alpha$ VLT-SPHERE/ZIMPOL image of the inner jet and the two stars (cite: schmetal17)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Orbital parameters of the binary (inclination 70 deg, semimajor axis ~6 AU, radial velocities, periastron timing)",
+      "evidence": [
+       {
+        "loc": "3.3 Wind variations along the orbit",
+        "quote": "They derived an orbit inclination of 70$^{\\circ}$ from the pole and a semimajor axis of the Mira orbit on the order of 6 AU."
+       }
+      ]
+     },
+     "citation": "Gromadzki & Mikolajewska 2009 (cite: grommiko09)"
+    },
+    {
+     "what": {
+      "value": "Previous CO(2-1) mass-loss rate 9e-6 Msun/yr with size 2e14 cm and CO abundance 5e-4",
+      "evidence": [
+       {
+        "loc": "3.1 Average mass-loss rate",
+        "quote": "they estimated a mass-loss rate of $\\dot{M}$=9$\\times$10$^{-6}$ M$_{\\odot}$ yr$^{-1}$."
+       }
+      ]
+     },
+     "citation": "Bujarrabal et al. 2010 (cite: bujaetal10)"
+    },
+    {
+     "what": {
+      "value": "Distance 218 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "At 218 pc (cite: minetal14), R Aqr is the closest symbiotic star"
+       }
+      ]
+     },
+     "citation": "Min et al. 2014 (cite: minetal14)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Idealized thin optically thin plate with radial or Keplerian velocity field viewed 20 deg below edge-on, for PV and moment-1 illustration",
+     "evidence": [
+      {
+       "loc": "3.4 Can rotation be detected?",
+       "quote": "Figure [4](#pv) shows the expected emission distribution from an infinitesimally thin, uniform, optically thin round plate viewed from an angle of 20$^{\\circ}$ below edge-on"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard calibration in CASA; Ceres flux rescaled relative to pipeline reduction",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Standard calibration and imaging was performed using the Common Astronomy Software Applications package (cite: mcmuetal07)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1 (used to check Ceres fluxes)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The Ceres fluxes for the observing epoch were checked in CASA 5.1.1 and was found to be 13% lower than adopted in the pipeline reduction."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ceres (amplitude, bandpass: Ceres and J2348-1631); phase J2348-1631",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Ceres and quasar J2348-1631 were used as amplitude and bandpass calibrators."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "could still be of order 20%",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we caution that the absolute flux calibration error using Ceres could still be on the order of 20% ."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum subtracted from channels covering 12CO(3-2) before averaging to 2 km/s",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The continuum was subtracted from the channels covering the $^{12}$CO $J$ = 3 $\\rightarrow$ 2 (henceforth referred to as CO(3-2)) line emission before spectral averaging to 2 km s$^{-1}$"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "continuum image from emission-free channels across all spectral windows (channels not listed)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "A continuum image was made from the emission-free channels across all spectral windows."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "cube smoothed to 0.4\" with imsmooth for brightness profile",
+     "evidence": [
+      {
+       "loc": "3.1 Average mass-loss rate",
+       "quote": "first smoothing the whole image cube to 0.4$''$ resolution using the CASA task `imsmooth`."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.38\"x0.33\", PA 77.4 deg",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The full width at half-maximum beam width of the final images is 0.38$''$$\\times$0.33$''$ with a position angle of 77.4$^{\\circ}$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "4.0 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The rms noise level reaches 4.0 mJy/beam in the emission-free channels."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Scaling of outer (e-folding) radius to CO(3-2) half-brightness radius (~1.4) and mass-loss rate scaling R_e^-1.82 taken from earlier radiative transfer modeling",
+      "evidence": [
+       {
+        "loc": "3.1 Average mass-loss rate",
+        "quote": "From previous radiative transfer modeling results (cite: ramsetal08), we estimate that the outer radius (defined as the e-folding radius, $R_{\\rm{e}}$) will scale as $\\sim$1.4 times the CO(3-2) half-brightness radius"
+       }
+      ]
+     },
+     "from_reference": "Ramstedt et al. 2008 (cite: ramsetal08)"
+    },
+    {
+     "what": {
+      "value": "Flux scale based on solar system flux models",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "additional flux uncertainties exist that are based on the accuracy of the solar system flux models[^1]."
+       }
+      ]
+     },
+     "from_reference": "Butler 2012, ALMA Memo 594"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging parameters for tclean (weighting, robust, cell size, image size, deconvolver, masking)",
+    "Line-free channel ranges for continuum and continuum subtraction",
+    "Whether archive or pipeline products were used and the pipeline version",
+    "Exact flux rescaling procedure applied to the cubes",
+    "Details of the e-folding radius to mass-loss conversion (other parameters held fixed, e.g. CO abundance, expansion velocity, luminosity)",
+    "PV slit width and extraction details",
+    "Rest frequencies / velocity reference used for the LSR velocity"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "measure continuum position and flux",
+    "method": {
+     "value": "Image fitting of the continuum image made from emission-free channels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The position and flux at 338 GHz was determined from image fitting and is given in Table [1](#cont)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Ceres flux checked, scaled by 13%; calibrator J2348-1631 compared with ALMA calibrator catalog",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Based on an investigation of the fluxes derived for J2348-1631 compared with the monitoring in the ALMA calibrator catalog"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "measure line fluxes and profiles",
+    "method": {
+     "value": "Spectra at 2 km/s resolution measured in a 3\" aperture centered on continuum peak",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The line is generated at 2 km s$^{-1}$ spectral resolution and measured with an 3$''$ aperture centered on the peak of the continuum emission."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "estimate CO envelope outer radius and average mass-loss rate",
+    "method": {
+     "value": "Smooth cube to 0.4\", measure brightness every 0.2\" N,S,E,W out to 2.0\", average, find radius of non-detection; scale to e-folding radius and mass-loss rate",
+     "evidence": [
+      {
+       "loc": "3.1 Average mass-loss rate",
+       "quote": "The line emission was then measured every 0.2$''$ (and integrated) north, south, east, and west from the brightest pixel out to 2.0$''$"
+      }
+     ]
+    },
+    "software": [
+     "CASA imsmooth"
+    ],
+    "key_parameters": [
+     {
+      "value": "R_e = 1.4 x half-brightness radius; Mdot scales as R_e^-1.82",
+      "evidence": [
+       {
+        "loc": "3.1 Average mass-loss rate",
+        "quote": "the mass-loss rate will scale as $R_{\\rm{e}}^{-1.82}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Distance 218 pc; spherical symmetric standard model scaling from earlier work",
+      "evidence": [
+       {
+        "loc": "3.1 Average mass-loss rate",
+        "quote": "The standard model used to estimate mass-loss rates from CO lines (cite: schoolof01; debeetal10) is build for a spherically symmetric, isotropically expanding, homogeneous CSE"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Bujarrabal et al. 2010 estimate",
+     "evidence": [
+      {
+       "loc": "3.1 Average mass-loss rate",
+       "quote": "By assuming that the size of the emitting region is 2$\\times$10$^{14}$ cm and a CO fractional abundance of 5$\\times$10$^{-4}$, they estimated a mass-loss rate of $\\dot{M}$=9$\\times$10$^{-6}$ M$_{\\odot}$ yr$^{-1}$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "interpret channel maps and orbital wind variations",
+    "method": {
+     "value": "Qualitative comparison of channel map components with orbit of Gromadzki & Mikolajewska and a ring-formation scenario; dynamical timescales from sizes and velocities",
+     "evidence": [
+      {
+       "loc": "3.3 Wind variations along the orbit",
+       "quote": "A relatively short-term (on the order of tens of years) increase in the mass-loss rate along the equator plane would create an expanding ring around the Mira star."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Constant expansion velocity (14 km/s); orbit inclination 70 deg",
+      "evidence": [
+       {
+        "loc": "3.3 Wind variations along the orbit",
+        "quote": "Assuming a constant expansion velocity, this means that the ring would have been created from approximately 70 to 30 years ago"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "test for rotation with PV diagram",
+    "method": {
+     "value": "East-west thin-slit PV diagram compared with idealized thin plate model with radial or Keplerian velocity",
+     "evidence": [
+      {
+       "loc": "3.4 Can rotation be detected?",
+       "quote": "The middle panel in Figure [3](#bright) shows a PV diagram of the CO(3-2) emission from R Aqr produced using a thin slit along the east-west direction."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Disk aligned with orbital plane, viewed 20 deg below edge-on",
+      "evidence": [
+       {
+        "loc": "3.4 Can rotation be detected?",
+        "quote": "viewed from an angle of 20$^{\\circ}$ below edge-on (the expected viewing angle of a disk aligned with the orbital plane in the R Aqr system)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Authors state rotation cannot be established with the resolution",
+     "evidence": [
+      {
+       "loc": "3.4 Can rotation be detected?",
+       "quote": "However, with the resolution of the data, we cannot with certainty determine whether rotation is present in the molecular gas around R Aqr."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1 (flux check)",
+    "used_for": {
+     "value": "Calibration, imaging, continuum subtraction, imsmooth",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Standard calibration and imaging was performed using the Common Astronomy Software Applications package (cite: mcmuetal07)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum flux density at 338 GHz",
+    "value": "95.3",
+    "uncertainty": "0.6 (formal fit; ~20% flux scale)",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| R Aqr  | 23:43:49.491 | -15:17:04.648 | 95.3$\\pm$0.6 mJy |"
+     }
+    ]
+   },
+   {
+    "quantity": "12CO(3-2) v=0 integrated flux",
+    "value": "5.4",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $^{12}$CO $J$=3-2, $v$=0 |  | 345.796 | 570 | 5.4 |"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) outer radius",
+    "value": "0.8 arcsec (~170 AU at 218 pc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Average mass-loss rate",
+      "quote": "the outer radius (where the CO(3-2) line emission is no longer detected) is 0.8$''$, which corresponds to about 170 AU at 218 pc."
+     }
+    ]
+   },
+   {
+    "quantity": "Average mass-loss rate",
+    "value": "2e-7",
+    "uncertainty": "order of magnitude",
+    "units": "Msun/yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Average mass-loss rate",
+      "quote": "the mass-loss rate will then be on the order of $\\dot{M}$=2$\\times$10$^{-7}$ M$_{\\odot}$ yr$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical timescale of CSE",
+    "value": "about 40",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Wind variations along the orbit",
+      "quote": "the dynamical timescale for the creation of the CSE is about 40 yr"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) peak LSR velocity",
+    "value": "-24",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The CO(3-2) line emission peaks at a local standard of rest (LSR) velocity of $v_{\\rm{LSR}}$=-24 km s$^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Only 12CO(3-2) is spatially resolved; other lines are unresolved and show absorption between -17 and 0 km/s",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Only the $^{12}$CO(3-2) line emission is spatially resolved. All the other detected lines show unresolved emission."
+     }
+    ]
+   },
+   {
+    "value": "A bright spot ~7\" south of the continuum peak at -22 km/s relative to system velocity",
+    "evidence": [
+     {
+      "loc": "Material moving perpendicular to the orbit",
+      "quote": "We also report the detection of a bright (12$\\sigma$) spot some distance ($\\sim$7$''$) south of the continuum peak"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "What is the extent of the CO envelope and the implied average mass-loss rate?",
+    "experiment": "Radial brightness profile of CO(3-2) from smoothed cube, scaled with earlier models",
+    "result": "Outer radius 0.8\" (~170 AU); Mdot ~2e-7 Msun/yr",
+    "finding": "The CO envelope is larger than previously assumed, giving a lower average mass-loss rate than Bujarrabal et al.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "The extent of the CO gas distribution is larger than previously estimated, giving a new, slightly lower estimate of the average mass-loss rate"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can the velocity-resolved structures be linked to orbital-phase mass-loss variations?",
+    "experiment": "Compared channel map components with the orbit of Gromadzki & Mikolajewska",
+    "result": "Ring-like structure consistent with enhanced mass loss ~100-50 yr ago plus central recent CSE",
+    "finding": "A plausible but tentative scenario",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5 Conclusions",
+      "quote": "One suggestion given is that an episode of increased mass loss ($\\sim$100-50 yr ago) has created an extended ring-like structure in the orbital plane"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is rotation of the molecular gas detected?",
+    "experiment": "East-west PV diagram compared with idealized disk models",
+    "result": "Emission consistent with rotation in orbital sense, but degenerate with expansion at this resolution",
+    "finding": "Rotation cannot be established",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.4 Can rotation be detected?",
+      "quote": "we cannot with certainty determine whether rotation is present in the molecular gas around R Aqr."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Part of a sample of binary AGB stars observed with ALMA to constrain hydrodynamical models",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "R Aqr is part of a small sample of binary AGB stars observed with ALMA to provide observational constraints for hydrodynamical models"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Shift and brightness dip could instead be due to arcs shaped by the hot companion",
+     "evidence": [
+      {
+       "loc": "3.3 Wind variations along the orbit",
+       "quote": "could also be explained by the hot binary companion shaping arcs (with material flowing along them)"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Beam ~0.3\" too coarse for firm conclusions on dynamics",
+     "evidence": [
+      {
+       "loc": "5 Conclusions",
+       "quote": "with a beam of about 0.3$''$, it would be bold to try to draw any firm conclusions about the dynamical history of molecular gas of the system"
+      }
+     ]
+    },
+    {
+     "value": "Flux recovery cannot be evaluated; absolute flux error up to ~20%",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "no data exist that can be used to evaluate whether the total flux was recovered by the interferometer"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mass-loss rate rests on scaling from unrelated model grids with a non-spherical, young CSE",
+    "No uncertainty on outer radius or mass-loss rate",
+    "Ring scenario is qualitative with no fitting",
+    "Single short observation, no total power"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data cited by ALMA project code 2012.1.00524.S",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00524.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "tclean parameters, weighting",
+    "Line-free channel selection",
+    "Exact flux rescaling",
+    "Mass-loss scaling input parameters"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw, single execution block",
+   "score_inferred": 3,
+   "score_reason": "Public data and simple analysis, but imaging parameters and mass-loss derivation details are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe is incomplete and main results are partly qualitative."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Ramstedt et al. 2008 (cite: ramsetal08)",
+     "why": "Scaling of outer radius and mass-loss rate"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Khouri et al. 2016 (cite: khouetal16)",
+     "why": "Analysis of vibrationally excited CO in the same data set"
+    },
+    {
+     "citation": "Brunner et al. 2018 (cite: brunetal18)",
+     "why": "Other lines in the same data set"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA binary AGB star sample (Mira, W Aql, pi1 Gru)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ab8c72226d7d39636f31873abe03684b",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:54",
+  "usage": {
+   "input_tokens": 11569,
+   "output_tokens": 8515,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.054751,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 65,
+  "quotes_ok": 65,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 75,
+   "stated": 48,
+   "rate": 0.64
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T03:04:10",
+  "custom_id": "repair-sonnet-2d1fee19277815d033d58eb381077af0",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "By assuming that the size of the emitting region is 2$\\times$10$^{14}$ cm and a CO fractional abundance of 5$\\times$10$^{-4}$, they estimated a mass-loss rate of $\\dot{M}$=9$\\times$10$^{-6}$ M$_{\\odot}$ yr$^{-1}$."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

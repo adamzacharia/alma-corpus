@@ -1,0 +1,467 @@
+{
+ "bibcode": "2021A&A...646A.178S",
+ "title": "Detection of H<SUB>2</SUB>O and OH<SUP>+</SUP> in z &gt; 3 hot dust-obscured galaxies",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202037888",
+ "arxiv_id": "2011.09991",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Are H2O and OH+ emission lines detected in z>3 Hot DOGs, and what do their luminosities, profiles, extents and line ratios say about excitation by star formation versus AGN?",
+ "alma_project_codes": [
+  "2017.1.00123.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "Beams 0.53\" x 0.32\" (W0149+2350) and 0.67\" x 0.52\" (W0410-0913)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(4-3) detections, molecular gas masses and wide CO line widths of the two sources",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "were selected to be among the most starbursting Hot DOGs, with massive molecular gas reservoirs discovered in CO(4$-$3) (Fan et al. 2018)"
+     },
+     {
+      "loc": "Results",
+      "quote": "Based on the total gas masses estimated by (cite: Fan18)"
+     }
+    ]
+   },
+   "citation": "Fan et al. 2018 (cite: Fan18)"
+  },
+  {
+   "what": {
+    "value": "SED decomposition: AGN torus dust temperature 450 K and star-formation dust temperatures 51 K and 63 K; AGN fractions of the IR luminosity (87% and 77%)",
+    "evidence": [
+     {
+      "loc": "The H2O and OH+ line ratios of Hot DOGs",
+      "quote": "similar to what is found for our Hot DOGs with 87% and 77% in W0149$+$2350 and W0410$-$0913, respectively (cite: Fan16b)"
+     },
+     {
+      "loc": "Excitation of the H2O and OH+ emission",
+      "quote": "we expect an AGN torus dust temperature of 450 K, and a dust temperature due to star-formation of 51 K and 63 K"
+     }
+    ]
+   },
+   "citation": "Tsai et al. 2015 (cite: Tsai15); Fan et al. 2016b (cite: Fan16b)"
+  },
+  {
+   "what": {
+    "value": "Literature H2O and L_IR comparison samples (low and high-z ULIRGs, SMGs, AGN) for Fig. 6",
+    "evidence": [
+     {
+      "loc": "The H2O-IR luminosity ratio of Hot DOGs",
+      "quote": "Here we compare the two detected Hot-DOGs of this paper to low and high-$z$ ultra-luminous IR galaxies (ULIRGs), sub-millimetre galaxies (SMGs) and AGN in the literature."
+     }
+    ]
+   },
+   "citation": "(cite: Yang13; Yang16; Jarugula19) and others as listed in the text"
+  },
+  {
+   "what": {
+    "value": "Mrk231 line ratios: H2O(2_02-1_11)/CO(4-3) and H2O(3_12-3_03)/CO(4-3) of 0.4, OH+/H2O(3_12-3_03) of 0.65",
+    "evidence": [
+     {
+      "loc": "The H2O and OH+ line ratios of Hot DOGs",
+      "quote": "line ratios of 0.4 (cite: vanderWerf10; Papadopoulos07), and an $\\rm OH^+(1_{1}-0_{1})/H_2O(3_{12}-3_{03})$ ratio of 0.65 (cite: vanderWerf10; Liu17)"
+     }
+    ]
+   },
+   "citation": "(cite: vanderWerf10; Papadopoulos07; Liu17)"
+  },
+  {
+   "what": {
+    "value": "H2O excitation modelling results for nearby galaxies (cold, warm, hot ISM components)",
+    "evidence": [
+     {
+      "loc": "Excitation of the H2O and OH+ emission",
+      "quote": "used modelling to determine the physical conditions and excitation mechanisms needed for the H$_2$O transitions of low, medium, and high energy transition"
+     }
+    ]
+   },
+   "citation": "Liu et al. 2017 (cite: Liu17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce, image and continuum-subtract the cubes",
+   "method": "Pipeline-reduced data, natural-weighted imaging, continuum subtraction with line-free channels, 60 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Channel width 60 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate emission extent and extract spectra",
+   "method": "Moment-0 map of each line, imfit for size estimate, spectrum extracted from a region equal to two times the size estimate",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Region = 2x imfit size"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit line profiles and derive fluxes and luminosities",
+   "method": "Single versus double Gaussian fits to H2O; for W0410-0913 a simultaneous fit of a double Gaussian CO(9-8) and a single Gaussian OH+; integrated flux for lower limit when truncated (W0149+2350)",
+   "software": [],
+   "key_parameters": [
+    "Central velocity of each CO component restricted within 400 km/s and of OH+ within 200 km/s of expected value"
+   ],
+   "assumptions": [
+    "OH+ assumed to be in emission based on the observed spectrum"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare spatial extents of H2O, CO(9-8) and OH+",
+   "method": "Velocity-limited moment-0 maps (-300 to 750 km/s for W0149+2350, -500 to 500 km/s for W0410-0913) fitted with imfit, sizes converted to kpc",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Constrain H2O excitation with radiative transfer",
+   "method": "Non-LTE RADEX modelling using peak fluxes of H2O and CO(9-8)",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "CO column densities 1e16-1e17 cm^-2"
+   ],
+   "assumptions": [
+    "Spherical symmetry; AGN torus dust temperature 450 K, star-formation dust temperatures 51 K and 63 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare line-to-IR luminosity and line ratios with literature",
+   "method": "L_H2O/L_IR (using L_IR,tot and L_IR,SF) and H2O/CO, OH+/H2O ratios compared with ULIRGs, SMGs, AGN and Mrk231",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Only sources with the same H2O transition are compared"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L_H2O(2_02-1_11) in W0149+2350 (total)",
+   "value": ">2.2e8",
+   "uncertainty": "lower limit",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "line luminosities of $L_{\\rm H_2O(2_{02}-1_{11})} > 2.2\\times10^8 L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O(3_12-3_03) in W0410-0913 (total)",
+   "value": "8.73e8",
+   "uncertainty": "1.44e8",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$8.73\\pm 1.44$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_OH+(1_1-0_1) in W0410-0913",
+   "value": "6.92e8",
+   "uncertainty": "1.55e8",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$6.92\\pm1.55$"
+    },
+    {
+     "loc": "abstract",
+     "quote": "a line luminosity of $L_{\\rm OH^+(1_{1}-0_{1})} = 6.92\\times10^8 L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-0_1) FWHM in W0410-0913",
+   "value": "1000",
+   "uncertainty": "196",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1000\\pm196$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_int OH+(1_1-0_1) in W0410-0913",
+   "value": "2.78",
+   "uncertainty": "0.62",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$2.78\\pm0.62$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_int H2O(3_12-3_03) in W0410-0913 (total)",
+   "value": "3.30",
+   "uncertainty": "0.54",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$3.30\\pm0.54$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_int H2O(2_02-1_11) in W0149+2350 (total)",
+   "value": ">1.12",
+   "uncertainty": "lower limit",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$>$1.12"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O extent in W0149+2350",
+   "value": "2.3",
+   "uncertainty": "0.6",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2O(2_02-1_11) in W0149+2350",
+     "quote": "We find that the H$_2$O emission of W0149$+$2350 extends across $2.3\\pm0.6$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) extent in W0149+2350",
+   "value": "3.3",
+   "uncertainty": "0.5",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2O(2_02-1_11) in W0149+2350",
+     "quote": "while the CO(9$-$8) emission extends across $3.3\\pm0.5$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+ extent in W0410-0913",
+   "value": "9.3",
+   "uncertainty": "2.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2O(3_12-3_03) and OH+(1_1-0_1) in W0410-0913",
+     "quote": "The OH$^+$ is extended across $9.3\\pm2.1$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) extent in W0410-0913",
+   "value": "5.7",
+   "uncertainty": "0.6",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2O(3_12-3_03) and OH+(1_1-0_1) in W0410-0913",
+     "quote": "similar to the CO($9-8$) emission extending over $5.7\\pm0.6$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O extent in W0410-0913",
+   "value": "3.0",
+   "uncertainty": "0.6",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "H2O(3_12-3_03) and OH+(1_1-0_1) in W0410-0913",
+     "quote": "while the H$_2$O is more compact covering $3.0\\pm0.6$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O(2_02-1_11)/CO(9-8) ratio in W0149+2350",
+   "value": ">0.5",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O and OH+ line ratios of Hot DOGs",
+     "quote": "the $H_2O(2_{02}-1_{11})$/CO(9$-$8) ratio is $>0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O(2_02-1_11)/CO(4-3) ratio in W0149+2350",
+   "value": ">1.4",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O and OH+ line ratios of Hot DOGs",
+     "quote": "the ratio of $H_2O(2_{02}-1_{11})$/CO(4$-$3) is $>1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O(3_12-3_03)/CO(9-8) ratio in W0410-0913",
+   "value": "0.8",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O and OH+ line ratios of Hot DOGs",
+     "quote": "we calculate line ratios of $\\rm H_2O(3_{12}-3_{03})/CO(9-8) = 0.8\\pm0.2$, $\\rm H_2O(3_{12}-3_{03})/CO(4-3) = 0.6\\pm0.1$, and $\\rm OH^+(1_{1}-0_{1})/H_2O(3_{12}-3_{03}) = 0.8\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O(3_12-3_03)/CO(4-3) ratio in W0410-0913",
+   "value": "0.6",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O and OH+ line ratios of Hot DOGs",
+     "quote": "we calculate line ratios of $\\rm H_2O(3_{12}-3_{03})/CO(9-8) = 0.8\\pm0.2$, $\\rm H_2O(3_{12}-3_{03})/CO(4-3) = 0.6\\pm0.1$, and $\\rm OH^+(1_{1}-0_{1})/H_2O(3_{12}-3_{03}) = 0.8\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "OH+(1_1-0_1)/H2O(3_12-3_03) ratio in W0410-0913",
+   "value": "0.8",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O and OH+ line ratios of Hot DOGs",
+     "quote": "we calculate line ratios of $\\rm H_2O(3_{12}-3_{03})/CO(9-8) = 0.8\\pm0.2$, $\\rm H_2O(3_{12}-3_{03})/CO(4-3) = 0.6\\pm0.1$, and $\\rm OH^+(1_{1}-0_{1})/H_2O(3_{12}-3_{03}) = 0.8\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O(2_02-1_11)/L_IR,tot in W0149+2350",
+   "value": ">0.25e-5",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O-IR luminosity ratio of Hot DOGs",
+     "quote": "$L_{\\rm H_2O(2_{02}-1_{11})}$/$L_{\\rm IR, tot} > 0.25\\times10^{-5}$ (solid star)"
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O(2_02-1_11)/L_IR,SF in W0149+2350",
+   "value": ">2e-5",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O-IR luminosity ratio of Hot DOGs",
+     "quote": "$L_{\\rm H_2O(2_{02}-1_{11})}$/$L_{\\rm IR,SF} > 2\\times10^{-5}$ (hollow star)"
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O(3_12-3_03)/L_IR,tot in W0410-0913",
+   "value": "0.44e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O-IR luminosity ratio of Hot DOGs",
+     "quote": "$L_{\\rm H_2O(3_{12}-3_{03})}$/$L_{\\rm IR,tot} = 0.44\\times10^{-5}$ (solid star)"
+    }
+   ]
+  },
+  {
+   "quantity": "L_H2O(3_12-3_03)/L_IR,SF in W0410-0913",
+   "value": "1.86e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The H2O-IR luminosity ratio of Hot DOGs",
+     "quote": "$L_{\\rm H_2O(3_{12}-3_{03})}$/$L_{\\rm IR,SF} = 1.86\\times10^{-5}$ (hollow star)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and pipeline versions",
+  "Which tclean parameters were used (deconvolver, niter, threshold, cell size, image size, mask)",
+  "Which channels were treated as line-free and the polynomial order of the continuum subtraction",
+  "Formula and constants used to convert integrated fluxes to line luminosities in Lsun and to kpc sizes (WMAP7 parameters not given)",
+  "How the 'two times the size estimate' extraction region was defined (ellipse, orientation, centre)",
+  "Initial guesses, bounds and error method of the Gaussian fits (except the central-velocity ranges for W0410-0913)",
+  "How the lower limit on the truncated W0149+2350 line flux was integrated",
+  "RADEX input details: line width, kinetic temperature grid, density grid, background temperature",
+  "Whether the L_IR values in Table 1 are 8-1000 micron and how L_IR,tot was formed",
+  "Literature comparison sample values plotted in Fig. 6"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact imaging parameters",
+  "Line-free channel selection and continuum subtraction order",
+  "Line luminosity conversion formula and cosmology parameters",
+  "Fit starting values and uncertainty method",
+  "RADEX grid and input parameters",
+  "Literature comparison values for Fig. 6"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and pipeline use are stated and the analysis recipe (natural weighting, moment-0 plus imfit, Gaussian fits) is outlined with numeric tables, but imaging settings, fit setup, luminosity conversion and RADEX inputs are missing, and public availability of the data is not stated.",
+ "rediscovery_reason": "Project code is printed and the archive links it to the paper, and the key results are numeric line luminosities, sizes and ratios, although the recipe has gaps that require reader choices.",
+ "source_card": "cards/2021A%26A...646A.178S/sonnet/card.md"
+}

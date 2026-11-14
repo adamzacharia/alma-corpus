@@ -1,0 +1,282 @@
+{
+ "bibcode": "2015ApJ...811...39I",
+ "title": "ALMA Observations of the Submillimeter Dense Molecular Gas Tracers in the Luminous Type-1 Active Nucleus of NGC 7469",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/811/1/39",
+ "arxiv_id": "1508.05946",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "How are submillimeter dense gas tracers (HCN, HCO+, CS 4-3/7-6) distributed in NGC 7469, and do the line ratios at the AGN support the submm-HCN enhancement and constrain AGN heating effects?",
+ "alma_project_codes": [
+  "2012.1.00165.S"
+ ],
+ "data": {
+  "bands": "Band 7 (350 GHz band, 860 um continuum)",
+  "arrays": "not stated",
+  "angular_resolution": "0.50'' x 0.40'' (165 x 132 pc)",
+  "sensitivity": "line rms 0.55-0.58 mJy/beam at 20 km/s; continuum rms 0.09 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio, MIR and NIR nuclear fluxes for SED (4.9, 8.4, 14.9 GHz; 11.8, 18.7 um; J, H, K)",
+    "evidence": [
+     {
+      "loc": "3 860 um continuum emission",
+      "quote": "8.4 GHz and 14.9 GHz from (cite: 2010MNRAS.401.2599O), 11.8 $\\mu$m and 18.7 $\\mu$m from (cite: 2010MNRAS.402..879R)"
+     }
+    ]
+   },
+   "citation": "Wilson 1991; Orienti & Prieto 2010; Reunanen 2010; Genzel 1995"
+  },
+  {
+   "what": {
+    "value": "NGC 1097 R_HCN/HCO+ = 2.0±0.2 used for comparison",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "is only as half as that at the CND of NGC 1097 (2.0$\\pm$0.2; )"
+     }
+    ]
+   },
+   "citation": "Izumi et al. 2013 (cite: 2013PASJ...65..100I)"
+  },
+  {
+   "what": {
+    "value": "HCN(4-3)/HCN(1-0) = 0.6±0.2 from NGC 1068",
+    "evidence": [
+     {
+      "loc": "4.3 Dense molecular gas mass",
+      "quote": "assuming HCN(4-3)/HCN(1-0) = 0.6$\\pm$0.2 in the brightness temperature unit"
+     }
+    ]
+   },
+   "citation": "Viti et al. 2014 (cite: 2014A&A...570A..28V)"
+  },
+  {
+   "what": {
+    "value": "HCN(1-0)-to-dense gas mass conversion factor of 10",
+    "evidence": [
+     {
+      "loc": "4.3 Dense molecular gas mass",
+      "quote": "assuming a conversion factor from $L'_{\\rm HCN(1-0)}$ to $M_{\\rm dense}$ to be 10, which is derived for AGNs by (cite: 2008ApJ...677..262K)"
+     }
+    ]
+   },
+   "citation": "Krips et al. 2008 (cite: 2008ApJ...677..262K)"
+  },
+  {
+   "what": {
+    "value": "APEX HCO+(4-3) flux for missing-flux check",
+    "evidence": [
+     {
+      "loc": "5",
+      "quote": "we recovered only 54$\\pm$16 % of the HCO$^+$(4-3) flux measured by APEX ((cite: 2014ApJ...784L..31Z))"
+     }
+    ]
+   },
+   "citation": "Zhang et al. 2014 (cite: 2014ApJ...784L..31Z)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "CASA CLEAN with natural weighting; uv-plane continuum subtraction; primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "gain 0.1, threshold 1.0 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Continuum SED and thermal/nonthermal origin",
+   "method": "Fit synchrotron power law to cm data, extrapolate to 860 um; compare LSB/USB fluxes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and line ratios",
+   "method": "Spectra from single beam at positions A-D; Gaussian fits to get integrated intensities and ratios",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Moment maps and CND size",
+   "method": "MIRIAD MOMENT zeroth moment without clipping; 2D Gaussian fit to HCN map with Monte Carlo errors (10^3 realizations)",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Dense gas mass and dynamical mass",
+   "method": "Convert L'HCN(4-3) to HCN(1-0), apply conversion factor 10; Keplerian thin-disk M_dyn",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCN(4-3)/HCN(1-0)=0.6±0.2; conversion factor 10; i=45 deg; FWHM~200 km/s"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "XDR size toy model",
+   "method": "1D slab X-ray attenuation with photoelectric cross sections; compare X-ray and UV heating rates",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha=1.0, Ec=100 keV, 30% X-ray heating efficiency, G0=10^2.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "860 um continuum peak at AGN",
+   "value": "5.19",
+   "uncertainty": "0.09",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3",
+     "quote": "is 5.19$\\pm$0.09 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "cm synchrotron spectral index",
+   "value": "-0.62",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3",
+     "quote": "$\\alpha$ = -0.62$\\pm$0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "R_HCN/HCO+ at AGN (A)",
+   "value": "1.11",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "1.11$\\pm$0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "R_HCN/CS at AGN (A)",
+   "value": "9.50",
+   "uncertainty": "2.87",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "9.50$\\pm$2.87"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dense in CND",
+   "value": "9.3e7",
+   "uncertainty": "3.1e7",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$M_{\\rm dense}$ = (9.3$\\pm$3.1) $\\times$ 10$^7$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dyn of CND",
+   "value": "7.6e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "we obtain $M_{\\rm dyn}$ = 7.6 $\\times$ 10$^8$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "dense gas fraction",
+   "value": "~12%",
+   "uncertainty": "factor ~3",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "$f_{\\rm gas}$ $\\sim$ 12%"
+    }
+   ]
+  },
+  {
+   "quantity": "CND HCN(4-3) size",
+   "value": "244.2x194.7",
+   "uncertainty": "9.9, 6.6",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5",
+     "quote": "(244.2$\\pm$9.9) $\\times$ (194.7$\\pm$6.6) pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "XDR size",
+   "value": "~42",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "A. The size of an XDR",
+     "quote": "which is $r$ $\\sim$ 42 pc in this case"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN mask, iteration count and cleaning region",
+  "line-free channel selection for continuum",
+  "spectral window to channel mapping and CASA clean spw/width settings",
+  "flux density of J2232+117 adopted",
+  "Exact apertures/regions for CND integration of luminosities",
+  "Which MIRIAD and CASA commands for Gaussian fitting of spectra"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN masks and iterations",
+  "exact extraction apertures",
+  "line-free channel ranges"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and key settings given, but clean details and apertures missing.",
+ "rediscovery_reason": "Single ALMA project, numeric line ratios and masses, reasonably simple recipe.",
+ "source_card": "cards/2015ApJ...811...39I/sonnet/card.md"
+}

@@ -1,0 +1,338 @@
+# Evidence for extended gaseous reservoirs around AGN at cosmic noon from ALMA CO(3-2) observations
+
+`2023MNRAS.518..691J` | Monthly Notices of the Royal Astronomical Society 2023 | first author: Jones, G. C. | arXiv: 2210.13370 | DOI: 10.1093/mnras/stac3088
+
+Card schema 1.0 | model gemini-4-argon | depth full | type archival_reuse
+
+## Science
+
+- Fields: high_z_galaxies, agn_and_quasars
+- Question: Whether energetic, outflowing z ~ 2.0-2.5 AGN host galaxies exhibit extended reservoirs of molecular gas in the circumgalactic medium traced by ALMA CO(3-2) emission.  
+  > "In this work, we examine the CO(3-2) emission of a set of seven $z\sim2.0-2.5$ AGN host galaxies, as observed with ALMA." (Abstract); "In this work, we perform a stacking analysis of the ALMA CO(3-2) data in order to investigate whether these energetic, outflowing sources exhibit extended reservoirs of molecular gas." (Introduction)
+- Target **CID_346**: coordinates 09:59:43.41 +02:07:07.44  
+  > "| CID$\_$346 | 09:59:43.41 | +02:07:07.44 | 2.219 | y | $2.2198(1)$ | 2016.1.00798.S | y | BL | $(1.22''\times1.12''),51^{\circ}$ | 0.6 |" (Table 1); z/distance z_spec = 2.219, z_CO = 2.2198(1)  
+  > "| CID$\_$346 | 09:59:43.41 | +02:07:07.44 | 2.219 | y | $2.2198(1)$ | 2016.1.00798.S | y | BL | $(1.22''\times1.12''),51^{\circ}$ | 0.6 |" (Table 1); distance from (cite: circ21)  
+  > "| CID$\_$346 | 09:59:43.41 | +02:07:07.44 | 2.219 | y | $2.2198(1)$ | 2016.1.00798.S | y | BL | $(1.22''\times1.12''),51^{\circ}$ | 0.6 |" (Table 1)
+- Target **X_N_44_64**: coordinates 02:27:01.46 -04:05:06.73  
+  > "| X$\_$N$\_$44$\_$64 | 02:27:01.46 | -04:05:06.73 | 2.252 | y | $2.245(1)$ | 2016.1.00798.S | n | BL | $(1.23''\times1.14''),-63^{\circ}$ | 0.7 |" (Table 1); z/distance z_spec = 2.252, z_CO = 2.245(1)  
+  > "| X$\_$N$\_$44$\_$64 | 02:27:01.46 | -04:05:06.73 | 2.252 | y | $2.245(1)$ | 2016.1.00798.S | n | BL | $(1.23''\times1.14''),-63^{\circ}$ | 0.7 |" (Table 1); distance from (cite: circ21)  
+  > "| X$\_$N$\_$44$\_$64 | 02:27:01.46 | -04:05:06.73 | 2.252 | y | $2.245(1)$ | 2016.1.00798.S | n | BL | $(1.23''\times1.14''),-63^{\circ}$ | 0.7 |" (Table 1)
+- Target **X_N_81_44**: coordinates 02:17:30.95 -04:18:23.66  
+  > "| X$\_$N$\_$81$\_$44 | 02:17:30.95 | -04:18:23.66 | 2.311 | y | $2.2950(3)$ | 2016.1.00798.S | n | BL | $(1.38''\times1.14''),66^{\circ}$ | 0.5 |" (Table 1); z/distance z_spec = 2.311, z_CO = 2.2950(3)  
+  > "| X$\_$N$\_$81$\_$44 | 02:17:30.95 | -04:18:23.66 | 2.311 | y | $2.2950(3)$ | 2016.1.00798.S | n | BL | $(1.38''\times1.14''),66^{\circ}$ | 0.5 |" (Table 1); distance from (cite: circ21)  
+  > "| X$\_$N$\_$81$\_$44 | 02:17:30.95 | -04:18:23.66 | 2.311 | y | $2.2950(3)$ | 2016.1.00798.S | n | BL | $(1.38''\times1.14''),66^{\circ}$ | 0.5 |" (Table 1)
+- Target **LID_206**: coordinates 10:01:15.56 +02:37:43.44  
+  > "| LID$\_$206 | 10:01:15.56 | +02:37:43.44 | 2.330 | y | $2.3326(2)$ | 2016.1.00798.S | y | BL | $(1.53''\times1.17''),-70^{\circ}$ | 0.4 |" (Table 1); z/distance z_spec = 2.330, z_CO = 2.3326(2)  
+  > "| LID$\_$206 | 10:01:15.56 | +02:37:43.44 | 2.330 | y | $2.3326(2)$ | 2016.1.00798.S | y | BL | $(1.53''\times1.17''),-70^{\circ}$ | 0.4 |" (Table 1); distance from (cite: circ21)  
+  > "| LID$\_$206 | 10:01:15.56 | +02:37:43.44 | 2.330 | y | $2.3326(2)$ | 2016.1.00798.S | y | BL | $(1.53''\times1.17''),-70^{\circ}$ | 0.4 |" (Table 1)
+- Target **X_N_53_3**: coordinates 02:20:29.84 -02:56:23.41  
+  > "| X$\_$N$\_$53$\_$3 | 02:20:29.84 | -02:56:23.41 | 2.434 | y | $2.433(3)$ | 2016.1.00798.S | n | BL | $(1.38''\times1.19''),62^{\circ}$ | 0.5 |" (Table 1); z/distance z_spec = 2.434, z_CO = 2.433(3)  
+  > "| X$\_$N$\_$53$\_$3 | 02:20:29.84 | -02:56:23.41 | 2.434 | y | $2.433(3)$ | 2016.1.00798.S | n | BL | $(1.38''\times1.19''),62^{\circ}$ | 0.5 |" (Table 1); distance from (cite: circ21)  
+  > "| X$\_$N$\_$53$\_$3 | 02:20:29.84 | -02:56:23.41 | 2.434 | y | $2.433(3)$ | 2016.1.00798.S | n | BL | $(1.38''\times1.19''),62^{\circ}$ | 0.5 |" (Table 1)
+- Target **CID_166**: coordinates 09:58:58.68 +02:01:39.22  
+  > "| CID$\_$166 | 09:58:58.68 | +02:01:39.22 | 2.448 | y | $2.461(1)$ | 2016.1.00798.S | y | BL | $(1.30''\times0.88''),65^{\circ}$ | 0.3 |" (Table 1); z/distance z_spec = 2.448, z_CO = 2.461(1)  
+  > "| CID$\_$166 | 09:58:58.68 | +02:01:39.22 | 2.448 | y | $2.461(1)$ | 2016.1.00798.S | y | BL | $(1.30''\times0.88''),65^{\circ}$ | 0.3 |" (Table 1); distance from (cite: circ21)  
+  > "| CID$\_$166 | 09:58:58.68 | +02:01:39.22 | 2.448 | y | $2.461(1)$ | 2016.1.00798.S | y | BL | $(1.30''\times0.88''),65^{\circ}$ | 0.3 |" (Table 1)
+- Target **CID_451**: coordinates 10:00:00.61 +02:15:31.06  
+  > "| CID$\_$451 | 10:00:00.61 | +02:15:31.06 | 2.450 | y | $2.4450(3)$ | 2017.1.00893.S | y | NL | $(1.61''\times1.39''),-55^{\circ}$ | 0.3 |" (Table 1); z/distance z_spec = 2.450, z_CO = 2.4450(3)  
+  > "| CID$\_$451 | 10:00:00.61 | +02:15:31.06 | 2.450 | y | $2.4450(3)$ | 2017.1.00893.S | y | NL | $(1.61''\times1.39''),-55^{\circ}$ | 0.3 |" (Table 1); distance from (cite: circ21)  
+  > "| CID$\_$451 | 10:00:00.61 | +02:15:31.06 | 2.450 | y | $2.4450(3)$ | 2017.1.00893.S | y | NL | $(1.61''\times1.39''),-55^{\circ}$ | 0.3 |" (Table 1)
+- Target **X_N_6_27**: coordinates 02:23:06.32 -03:39:11.07  
+  > "| X$\_$N$\_$6$\_$27 | 02:23:06.32 | -03:39:11.07 | 2.263 | n$^b$ | $-$ | 2016.1.00798.S | n | BL | $-$ | $-$ |" (Table 1); "However, we do detect emission at $105.405$ GHz ($z=2.2806$), or $\sim1500$ km s$^{-1}$ from the redshift expected from previous spectroscopic redshifts." (X_N_6_27 Re-Analysis); z/distance z_spec = 2.263, z = 2.2806  
+  > "| X$\_$N$\_$6$\_$27 | 02:23:06.32 | -03:39:11.07 | 2.263 | n$^b$ | $-$ | 2016.1.00798.S | n | BL | $-$ | $-$ |" (Table 1); "However, we do detect emission at $105.405$ GHz ($z=2.2806$), or $\sim1500$ km s$^{-1}$ from the redshift expected from previous spectroscopic redshifts." (X_N_6_27 Re-Analysis); distance from this work / (cite: circ21)  
+  > "| X$\_$N$\_$6$\_$27 | 02:23:06.32 | -03:39:11.07 | 2.263 | n$^b$ | $-$ | 2016.1.00798.S | n | BL | $-$ | $-$ |" (Table 1); "However, we do detect emission at $105.405$ GHz ($z=2.2806$), or $\sim1500$ km s$^{-1}$ from the redshift expected from previous spectroscopic redshifts." (X_N_6_27 Re-Analysis)
+- Target **24 SUPER sources (continuum stack)**: coordinates see Table 1  
+  > "For the remaining 24 sources in our sample (see Table [\[basictab\]](#basictab)), we create continuum maps by using the CASA task TCLEAN in ‘MFS’ mode, selecting the line-free channels (see Section [2](#obsdat))." (FIR Continuum stacking); "Using the average redshift of this sample ($z\sim2.3$), this implies an upper limit on the continuum size of $\lesssim0.6''\sim5$ kpc." (FIR Continuum stacking); z/distance z = 2.121 - 2.501 (average z ~ 2.3)  
+  > "For the remaining 24 sources in our sample (see Table [\[basictab\]](#basictab)), we create continuum maps by using the CASA task TCLEAN in ‘MFS’ mode, selecting the line-free channels (see Section [2](#obsdat))." (FIR Continuum stacking); "Using the average redshift of this sample ($z\sim2.3$), this implies an upper limit on the continuum size of $\lesssim0.6''\sim5$ kpc." (FIR Continuum stacking); distance from (cite: circ21)  
+  > "For the remaining 24 sources in our sample (see Table [\[basictab\]](#basictab)), we create continuum maps by using the CASA task TCLEAN in ‘MFS’ mode, selecting the line-free channels (see Section [2](#obsdat))." (FIR Continuum stacking); "Using the average redshift of this sample ($z\sim2.3$), this implies an upper limit on the continuum size of $\lesssim0.6''\sim5$ kpc." (FIR Continuum stacking)
+
+## Data provenance
+
+- ALMA projects: 2016.1.00798.S, 2017.1.00893.S, 2021.1.00327.S
+- bands: Band 3 (rest-frame ~870 um)  
+  > "It is also possible to examine the rest-frame FIR continuum emission ($\nu_{rest}\sim870\,\mu$m)." (FIR Continuum stacking); "The observations in this previous work featured a higher spatial resolution ($\sim0.2''\sim2$ kpc) and sampled a brighter region of the FIR SED (i.e., ALMA band 7 rather than band 3), so it is encouraging that our results are in agreement." (FIR Continuum stacking)
+- frequencies and spectral setup: Channel width ~7.812 MHz (~25 km s^-1); X_N_6_27 CO(3-2) detected at 105.405 GHz  
+  > "The channel width is kept to its intrinsic value of $\sim7.812$ MHz (roughly 25 km s$^{-1}$)." (Observations and Data Reduction); "However, we do detect emission at $105.405$ GHz ($z=2.2806$), or $\sim1500$ km s$^{-1}$ from the redshift expected from previous spectroscopic redshifts." (X_N_6_27 Re-Analysis)
+- continuum bandwidth: _not stated_
+- arrays: _not stated_
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: ~1'' for main sample (0.88'' to 1.61''); ~2'' for new X_N_6_27 observations  
+  > "This process resulted in seven continuum-free data cubes with similar synthesized beam sizes ($\sim1''$) and RMS noise levels ($\sim0.3-0.6$ mJy beam$^{-1}$; see Table [\[basictab\]](#basictab))." (Observations and Data Reduction); "However, new ALMA observations of X_N_6_27 are complete, and feature a slightly larger synthesized beam size ($\sim2''$) compared to previous observations ($\sim1''$)." (X_N_6_27 Re-Analysis)
+- max recoverable scale: _not stated_
+- sensitivity: ~0.3-0.7 mJy beam^-1 per ~25 km s^-1 channel  
+  > "This process resulted in seven continuum-free data cubes with similar synthesized beam sizes ($\sim1''$) and RMS noise levels ($\sim0.3-0.6$ mJy beam$^{-1}$; see Table [\[basictab\]](#basictab))." (Observations and Data Reduction); "| X$\_$N$\_$44$\_$64 | 02:27:01.46 | -04:05:06.73 | 2.252 | y | $2.245(1)$ | 2016.1.00798.S | n | BL | $(1.23''\times1.14''),-63^{\circ}$ | 0.7 |" (Table 1)
+- time on source: ~9 minutes (original X_N_6_27); ~2.8 hours (new X_N_6_27 observations)  
+  > "The total on-source time is much longer ($\sim2.8$ hours vs. $\sim9$ minutes), resulting in a lower noise level." (X_N_6_27 Re-Analysis)
+- observing dates: Cycle 4 or 5 (2016.1.00798.S, 2017.1.00893.S)  
+  > "Each of these ALMA projects was executed in Cycle 4 or 5, so their data are now public." (Observations and Data Reduction)
+- pi or archival as stated: Archival public data (PI: V. Mainieri for 2016.1.00798.S and 2017.1.00893.S; PI: R. Maiolino for 2021.1.00327.S)  
+  > "In this project, we wish to examine $z\sim2.1-2.5$ QSO host galaxies observed in CO(3-2) emission as part of ALMA projects 2016.1.00798.S and 2017.1.00893.S (PI: V. Mainieri; (cite: circ21))." (Observations and Data Reduction); "Following the success of the SUPER-ALMA programs (2016.1.00798.S, 2017.1.00893.S; PI V. Mainieri), a new ALMA program was proposed to perform deeper observations of the CO(3-2) emission of the nine sources previously detected in (cite: circ21) (2021.1.00327.S; PI: R. Maiolino)." (X_N_6_27 Re-Analysis)
+- Line: CO 3-2 (not stated)
+- Other facility **HST/ACS (IPAC COSMOS server)**: F814W (i-band) 15'' x 15'' image cutouts for 21 SUPER sources in the COSMOS field  
+  > "We choose to analyze the HST/ACS F814W (i-band) data for each of these sources." (HST stacking); "Each i-band image was downloaded from the IPAC COSMOS server, using the central positions given by (cite: circ21) as the centre of a $15''\times15''$ cutout." (HST stacking)
+- External data: Source positions, spectroscopic and CO redshifts (z_spec, z_CO), integrated CO flux densities (I_CO), CO FWHMs, line rest frequencies, SFRs, and stellar masses  
+  > "To take this idea into account, we first assumed the CO(3-2) redshift reported by (cite: circ21) ($z_{CO}$ in Table [\[basictab\]](#basictab)) and took a range of $\pm800$ km s$^{-1}$." (Observations and Data Reduction); "The integrated CO flux density of each source ($I_{CO}\equiv S\Delta v$) is taken from (cite: circ21), and each weight is set to the inverse of this value: $w_n=1/I_{CO,n}$." (Stacking Method) [from (cite: circ21)]
+- External data: HST/ACS F814W circular PSF FWHM of 0.095''  
+  > "These images have cell sizes of $0.03''$, and we assume a circular PSF of FWHM $0.095''$ (cite: koek07)." (HST stacking) [from (cite: koek07)]
+- Simulation/model as data: 100x100 pixel pure Gaussian noise test images convolved with the 2-D Gaussian beam (repeated 100 times) to characterize beam-dependent radial profile RMS  
+  > "To determine the true behaviour of noise, we created a test image of 100$\times$100 pixels ($0.2''/$px) of pure Gaussian noise (noise level RMS$_1$), and convolved this with the 2-D Gaussian beam of the $\pm100$ km s$^{-1}$, InvV-weighted moment zero map of Figure [1](#bigbig) ($1.38''\times1.24''$ at $0.82^{\circ}$)." (Uncertainty in radial surface brightness profiles); "Radial profiles of this convolved image are then taken, and the RMS in each annulus is calculated. This process is repeated 100 times." (Uncertainty in radial surface brightness profiles)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: ALMA staff calibration pipeline / scripts; CASA SPLIT and CONCAT used to extract and combine target MSs  
+  > "The raw science data models (SDMs) were passed through a calibration pipeline created by ALMA staff, resulting in calibrated measurement sets (MSs) for each individual observation." (Observations and Data Reduction); "Because of this, we created new MSs containing only calibrated visibilities of the target source (CASA SPLIT). Some sources were observed over two executions, so their individual MSs were joined into one (CASA CONCAT)." (Observations and Data Reduction); "The data from these observations were downloaded from the ALMA archive, and were calibrated using the scripts provided by ALMA staff." (X_N_6_27 Re-Analysis)
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: No, re-imaged starting from calibrated visibilities  
+  > "Since our science goals require homogeneity of the data, we chose to reanalyze each dataset, beginning at the visibilities." (Observations and Data Reduction)
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: _not stated_
+
+### Imaging
+
+- task: CASA tclean ('cube' mode for CO line cubes; 'MFS' mode for FIR continuum maps)  
+  > "These continuum-free visibilites are imaged using CASA tclean in ‘cube’ mode with natural weighting and $0.2''$ cells to create a ‘dirty’ line cube." (Observations and Data Reduction); "For the remaining 24 sources in our sample (see Table [\[basictab\]](#basictab)), we create continuum maps by using the CASA task TCLEAN in ‘MFS’ mode, selecting the line-free channels (see Section [2](#obsdat))." (FIR Continuum stacking)
+- deconvolver: _not stated_
+- weighting robust: natural weighting  
+  > "These continuum-free visibilites are imaged using CASA tclean in ‘cube’ mode with natural weighting and $0.2''$ cells to create a ‘dirty’ line cube." (Observations and Data Reduction)
+- uv taper: _not stated_
+- cell size: 0.2''  
+  > "These continuum-free visibilites are imaged using CASA tclean in ‘cube’ mode with natural weighting and $0.2''$ cells to create a ‘dirty’ line cube." (Observations and Data Reduction)
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: CASA UVCONTSUB with a first order model fit to all line-free channels  
+  > "We then use the CASA task UVCONTSUB to fit the source visibilities with a first order model using all line-free channels and to subtract this model from the data, resulting in a ‘continuum-free’ MS." (Observations and Data Reduction)
+- line free channels: Channels outside +/- 800 km s^-1 of z_CO (or z_spec for CO-undetected sources in continuum imaging)  
+  > "To take this idea into account, we first assumed the CO(3-2) redshift reported by (cite: circ21) ($z_{CO}$ in Table [\[basictab\]](#basictab)) and took a range of $\pm800$ km s$^{-1}$." (Observations and Data Reduction); "Each continuum image was made by excluding CO emission based on either $z_{CO}$ (if it was known) or $z_{spec}$." (FIR Continuum stacking)
+- primary beam correction: No primary beam correction applied to X_N_6_27 preliminary data cube (not stated for main cubes)  
+  > "As a first step, we produce a data cube with no primary beam correction or cleaning." (X_N_6_27 Re-Analysis)
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: Individual CO cubes: (1.22''x1.12'') to (1.61''x1.39''); Stacked InvV +/-100 km s^-1 moment 0 map: 1.38'' x 1.24'' at 0.82 deg (or 0.58 deg)  
+  > "| CID$\_$346 | 09:59:43.41 | +02:07:07.44 | 2.219 | y | $2.2198(1)$ | 2016.1.00798.S | y | BL | $(1.22''\times1.12''),51^{\circ}$ | 0.6 |" (Table 1); "| CID$\_$451 | 10:00:00.61 | +02:15:31.06 | 2.450 | y | $2.4450(3)$ | 2017.1.00893.S | y | NL | $(1.61''\times1.39''),-55^{\circ}$ | 0.3 |" (Table 1); "To determine the true behaviour of noise, we created a test image of 100$\times$100 pixels ($0.2''/$px) of pure Gaussian noise (noise level RMS$_1$), and convolved this with the 2-D Gaussian beam of the $\pm100$ km s$^{-1}$, InvV-weighted moment zero map of Figure [1](#bigbig) ($1.38''\times1.24''$ at $0.82^{\circ}$)." (Uncertainty in radial surface brightness profiles)
+- final rms: 0.3 - 0.7 mJy beam^-1 per channel  
+  > "This process resulted in seven continuum-free data cubes with similar synthesized beam sizes ($\sim1''$) and RMS noise levels ($\sim0.3-0.6$ mJy beam$^{-1}$; see Table [\[basictab\]](#basictab))." (Observations and Data Reduction); "| X$\_$N$\_$44$\_$64 | 02:27:01.46 | -04:05:06.73 | 2.252 | y | $2.245(1)$ | 2016.1.00798.S | n | BL | $(1.23''\times1.14''),-63^{\circ}$ | 0.7 |" (Table 1)
+
+### Inherited from earlier work
+
+- Exclusion of CID_1057 due to uncertain redshift; CO redshifts (z_CO), line rest frequencies, and integrated CO fluxes (I_CO)  
+  > "Following (cite: circ21), we exclude CID$\_$1057 due to an uncertain redshift." (Observations and Data Reduction); "The rest frequency of the line is set to the value found by (cite: circ21)." (Observations and Data Reduction); "The integrated CO flux density of each source ($I_{CO}\equiv S\Delta v$) is taken from (cite: circ21), and each weight is set to the inverse of this value: $w_n=1/I_{CO,n}$." (Stacking Method) [from (cite: circ21)]
+- 3-D spectral cube stacking formalism (Equations 1 and 2)  
+  > "Note that this form is similar to past stacking analyses (e.g., (cite: delh13; bisc19; gino20; joll20))." (Stacking Method); "The data cubes of the high-SFR subsample are stacked in three dimensions in a nearly identical way to this work, and a moment 0 map is made for \[-200,+200\] km s$^{-1}$." (Comparison to other detections of extended gas emission) [from (cite: delh13; bisc19; gino20; joll20)]
+- Likelihood function for radial profile fitting (Equation 5)  
+  > "We adopt the likelihood function of (cite: niko09):" (Methods) [from (cite: niko09)]
+- Convolving HST stacked image with the ALMA synthesized beam for direct comparison  
+  > "Finally, we follow a similar approach to past comparisons of ALMA and HST data (e.g., (cite: fuji19)) and explore the effect of convolving the high-resolution HST data (PSF$\sim0.095''$) with the ALMA beam ($1.38\times1.24$ at $0.58^{\circ}$)." (HST stacking) [from (cite: fuji19)]
+
+### Not stated but needed to reproduce (our reading)
+
+- CASA software version and ALMA pipeline version used for calibration and imaging
+- tclean deconvolver algorithm (e.g. hogbom, clark) and whether any clean mask was used during cleaning down to 3x RMS
+- Exact number of edge channels excluded per spectral window when trimming with IMSUBIMAGE
+- Exact velocity ranges used per source when creating individual moment 0 maps for the 2-D Moment 0 stack
+
+## Analysis recipe
+
+1. **Create homogeneous continuum-free CO(3-2) data cubes and MFS continuum maps**: Extract calibrated target visibilities with CASA SPLIT and combine multi-execution MSs with CONCAT. Subtract a 1st-order continuum model fitted to line-free channels (outside +/- 800 km/s of z_CO) using UVCONTSUB. Image line cubes in tclean ('cube' mode, natural weighting, 0.2'' cell size, ~7.812 MHz channels) to make dirty cubes, trim to the CO sideband excluding SPW edge channels with IMSUBIMAGE, compute channel RMS via sigma-clipping, and re-run tclean cleaning down to 3x dirty RMS. Image continuum for 24 non-companion sources using tclean in 'MFS' mode on line-free channels down to 3x RMS.  
+  > "We then use the CASA task UVCONTSUB to fit the source visibilities with a first order model using all line-free channels and to subtract this model from the data, resulting in a ‘continuum-free’ MS." (Observations and Data Reduction); "The tclean task is then repeated, but the image is cleaned down to $3\times$ the RMS of the ‘dirty’ image, creating a final ‘clean’ line cube." (Observations and Data Reduction); "For the remaining 24 sources in our sample (see Table [\[basictab\]](#basictab)), we create continuum maps by using the CASA task TCLEAN in ‘MFS’ mode, selecting the line-free channels (see Section [2](#obsdat))." (FIR Continuum stacking)
+   - software: CASA, SPLIT, CONCAT, UVCONTSUB, tclean, IMSUBIMAGE, astropy, SIGMA_CLIPPED_STATS
+   - parameter: Line-free range: outside +/- 800 km s^-1 of z_CO; cell size = 0.2''; channel width ~7.812 MHz (~25 km s^-1); natural weighting; sigma clipping S/N_upper = 3; clean threshold = 3x dirty RMS  
+  > "These continuum-free visibilites are imaged using CASA tclean in ‘cube’ mode with natural weighting and $0.2''$ cells to create a ‘dirty’ line cube. The channel width is kept to its intrinsic value of $\sim7.812$ MHz (roughly 25 km s$^{-1}$)." (Observations and Data Reduction); "The RMS noise level of the channel of this cube is calculated using sigma clipping (using astropy SIGMA_CLIPPED_STATS with $S/N_{upper}=3$; (cite: astr13; astr18))." (Observations and Data Reduction)
+   - assumption: Any broad CO(3-2) outflow emission is contained within +/- 800 km s^-1 of z_CO  
+  > "To take this idea into account, we first assumed the CO(3-2) redshift reported by (cite: circ21) ($z_{CO}$ in Table [\[basictab\]](#basictab)) and took a range of $\pm800$ km s$^{-1}$." (Observations and Data Reduction)
+   - fitting: 1st order UV continuum polynomial fit in UVCONTSUB  
+  > "We then use the CASA task UVCONTSUB to fit the source visibilities with a first order model using all line-free channels and to subtract this model from the data, resulting in a ‘continuum-free’ MS." (Observations and Data Reduction)
+   - validation: Re-analysis of deeper 2021.1.00327.S data for X_N_6_27 to verify non-detection in original data  
+  > "While further analysis of these sources (including a more thorough cleaning process) is deferred to a future work, we may state that the CO(3-2) emission line of this source is not detected in the original SUPER-ALMA data, so we do not include it in our analysis." (X_N_6_27 Re-Analysis)
+2. **3-D stacking of CO(3-2) cubes, PSF stacking, and moment 0 map creation**: Cut out central 100x100 pixels (20''x20'') of the 7 CO-detected cubes and rebin spectrally onto a -3000 to +3000 km s^-1 grid (240 channels of 25 km s^-1) by fractional velocity bin overlap (Eqs. 1-2) using four weighting schemes (InvV, Norm, InNo, None). Stack median channel synthesized beams in 2-D with identical weights (Eq. 3) and fit a 2-D Gaussian to define the effective PSF. Collapse the 4 stacked cubes over 5 velocity ranges (+/-100 x [1,2,3,4,5] km s^-1) using CASA immoments to create 20 moment 0 maps.  
+  > "To begin, we initialize an empty cube with spatial dimensions of 100$\times$100 pixels ($20''\times20''$, with $0.2''$/pixel) and a spectral axis that covers from -3000$<$v$<$3000 km s$^{-1}$ in 240 channels of width 25 km s$^{-1}$." (Stacking Method); "This stacked PSF is then fit with a 2-D Gaussian, and the best-fit major axis, minor axis, and position angle are set as the PSF (i.e., synthesized beam) for each channel of the stacked cube." (Stacking Method); "We use each of the four weighting schemes to create a separate stacked cube (CASA immoments). These cubes are then collapsed over five velocity ranges ($\pm100\times[1,2,3,4,5]$ km s$^{-1}$), resulting in 20 moment zero maps (see left panels of Figure [1](#bigbig))." (Stacking Method)
+   - software: CASA, immoments
+   - parameter: Grid: 100x100 pixels (20''x20'', 0.2''/pixel), 240 channels (-3000 to 3000 km s^-1, width 25 km s^-1); z_stack = 2.337; collapse velocity ranges: +/-100, +/-200, +/-300, +/-400, +/-500 km s^-1  
+  > "The redshift of the stacked cube is set to be the average of the input galaxy redshifts (i.e., $z_{stack}=2.337$)." (Stacking Method)
+   - assumption: Each galaxy is centered at the phase center (offsets between rest-frame UV and CO(3-2) centroids are < 1 pixel)  
+  > "In each case we assume that the galaxy is centred at the phase centre, which was selected based on rest-frame UV data." (Stacking Method); "Since the difference in rest-frame UV and CO(3-2) positions are $<1$ px for all sources, this has minimal effect on our analyses." (Stacking Method)
+   - fitting: 2-D Gaussian fit to the stacked PSF  
+  > "This stacked PSF is then fit with a 2-D Gaussian, and the best-fit major axis, minor axis, and position angle are set as the PSF (i.e., synthesized beam) for each channel of the stacked cube." (Stacking Method)
+   - validation: Comparison across four weighting schemes (InvV, Norm, InNo, None) and five velocity integration windows  
+  > "For moment zero maps created with the same velocity range but different weighting schemes (i.e., plots in the same row), the spatial distribution of emission shows only slight variations between weighting schemes." (Initial Results)
+3. **2-D stacking of HST/ACS F814W images, individual CO(3-2) moment 0 maps, and FIR continuum maps**: Stack 21 HST/ACS F814W cutouts (after fitting 2-D Gaussians to align on central emission centroids, and excluding 3 companion sources; also split into 11 NL and 10 BL AGN, and convolve with ALMA beam), 7 individual CO(3-2) moment 0 maps, and 24 FIR MFS continuum maps in 2-D using Eq. 3.  
+  > "Thus, we use equation [\[psfeq\]](#psfeq) with the ‘inverse variance’ weighting scheme (InvV). We fit a 2-D Gaussian to the central emission of each input image and set the centre of each galaxy as the best-fit centroid, in order to account for offsets between gas and stellar emission." (HST stacking); "These moment 0 maps may then be stacked in 2-D space, using equation [\[psfeq\]](#psfeq)." (Moment 0 map stacking); "Since many of these sources are not detected in FIR continuum emission, we may only consider the ‘None’ and ‘InvV’ weighting schemes." (FIR Continuum stacking)
+   - software: scipy, CURVE_FIT
+   - parameter: HST cutout size = 15''x15'', cell size = 0.03'', circular PSF FWHM = 0.095'', radial bin width = 2 pixels; InvV weighting  
+  > "These images have cell sizes of $0.03''$, and we assume a circular PSF of FWHM $0.095''$ (cite: koek07)." (HST stacking); "A radial profile is then taken, using annuli that are 2 pixels wide." (HST stacking)
+   - assumption: Circular PSF of FWHM 0.095'' for HST/ACS F814W  
+  > "These images have cell sizes of $0.03''$, and we assume a circular PSF of FWHM $0.095''$ (cite: koek07)." (HST stacking)
+   - fitting: 2-D Gaussian centroiding and 2-component Gaussian fit to HST radial profile using scipy CURVE_FIT; 2-D Gaussian size fits to individual CO moment 0 maps  
+  > "To illustrate this, we performed a two-component Gaussian fit to the observed brightness profile (using scipy CURVE_FIT)." (HST stacking); "Results of fitting 2-D Gaussian models to the CO(3-2) moment map of each source." (Table 3 caption)
+   - validation: Confirmed that stacking moment 0 maps created over a uniform |v| <= 100 km s^-1 range reproduces the 3-D Cube Stack result; compared NL vs BL HST subsamples and HST image convolved with ALMA beam  
+  > "On the other hand, if we create and stack moment zero maps using a uniform range of $|v|\leq100$ km s$^{-1}$, we recover a nearly identical image to the ‘Cube Stack’ result." (Moment 0 map stacking)
+4. **Extract radial surface brightness profiles and evaluate deviation from PSF**: Fit a 2-D Gaussian to find the brightness-weighted center of each moment 0 / stacked map, then compute mean surface brightness in circular annuli of width 1 pixel out to r_max (the bin before the first negative-intensity bin). Assign uncertainty in each bin as the maximum of the bin standard deviation and a simulated beam-dependent RMS level. Normalize profile and uncertainty by peak mean value and calculate chi^2 against the normalized PSF radial profile (Eq. 4).  
+  > "We begin by finding the brightness-weighted spatial center by fitting a 2-D Gaussian to this emission. We then examine the emission in circular bins of width 1 pixel centered on this spatial position." (Method); "In order to determine the uncertainty on the mean in a bin, we take the maximum value of two values: the standard deviation in the bin and a beam-dependent RMS noise level (see Appendix [7](#uncanpp) for full details)." (Method); "To determine this $\mathrm{r_{max}}$, we determine the smallest bin that features a negative intensity (i.e., $r_n$), and set $\mathrm{r_{max}}$ to the radius of the previous bin (i.e., $r_{n-1}$) ." (Method)
+   - parameter: Annulus width = 1 pixel (0.2'' for ALMA); r_max = radius prior to first negative bin; 100 Monte Carlo noise realizations for beam-dependent RMS  
+  > "Radial profiles of this convolved image are then taken, and the RMS in each annulus is calculated. This process is repeated 100 times." (Uncertainty in radial surface brightness profiles)
+   - assumption: Noise is spatially correlated on the scale of the synthesized beam  
+  > "Primarily, the noise per pixel is not independent, but is spatially correlated on the scale of the beam." (Uncertainty in radial surface brightness profiles)
+   - fitting: 2-D Gaussian fit to find brightness-weighted center; chi^2 calculation against PSF profile  
+  > "Here, we treat the radial profile of the PSF as the ‘model’ value and calculate the $\chi^2$ between the observed radial profile and the PSF." (Initial Results)
+   - validation: 100 Monte Carlo simulations of pure Gaussian noise convolved with the synthesized beam to validate radial uncertainty behavior  
+  > "To determine the true behaviour of noise, we created a test image of 100$\times$100 pixels ($0.2''/$px) of pure Gaussian noise (noise level RMS$_1$), and convolved this with the 2-D Gaussian beam of the $\pm100$ km s$^{-1}$, InvV-weighted moment zero map of Figure [1](#bigbig) ($1.38''\times1.24''$ at $0.82^{\circ}$)." (Uncertainty in radial surface brightness profiles)
+5. **Bayesian radial profile fitting with 1-component and 2-component 2-D circular Gaussian models**: Generate 1-component and 2-component 2-D circular Gaussian models, convolve with the representative PSF of the map, extract and normalize the model radial profile to unity at the center, and fit to the observed radial profile using MultiNest / PyMultiNest. Compare models using chi^2, reduced chi^2, and Bayes factor K = Z_1 / Z_2.  
+  > "To begin, we create a 2-D circular Gaussian model with arbitrary amplitude and set width (HWHM$_{\mathrm{G1}}$). This model is convolved with the representative PSF of a moment 0 map, and a radial profile of the convolved image is extracted." (Methods); "By using the Bayesian inference code MultiNest ((cite: fero09)) and its python wrapper (PyMultiNest; (cite: buch14)), we find the best-fit intrinsic FWHM of the model so that the difference between the radial profiles is minimized." (Methods)
+   - software: MultiNest, PyMultiNest
+   - parameter: 1-Gaussian prior: log10(HWHM_G1/['']) uniform in [-2, 0.5]; 2-Gaussian priors: log10(HWHM_G1/['']) uniform in [-2, 0], log10(HWHM_G2/['']) uniform in [0, 0.5], log10(f_12) uniform in [-3.5, 0)  
+  > "We wish to explore a range of intrinsic widths, so we fit for log$_{10}($HWHM$_{\mathrm{G1}})$ (where the HWHM is in units of arcseconds) and set the prior to a uniform distribution between \[-2,0.5\], corresponding to angular scales \[$0.01'',\sim3''$\]." (Methods); "The prior distributions for the two log$_{10}$(HWHM) variables are set to uniform distributions: \[-2,0\] (or \[$0.01'',1''$\]) for log$_{10}($HWHM$_{\mathrm{G1}})$ and \[0,0.5\] (or \[$1'',\sim3''$\]) for log$_{10}($HWHM$_{\mathrm{G2}})$. We adopt a uniform distribution between \[-3.5,0) for $\mathrm{log_{10}(f_{12})}$." (Methods)
+   - assumption: Circular 2-D Gaussian intrinsic source morphology; neither model preferred a priori in Bayes factor  
+  > "While it would be possible to assume a general elliptical Gaussian (or 2-D Sérsic profile; (cite: sers63)) and determine the intrinsic axis ratio and intrinsic position angle of the moment 0 map, we simply wish to search for the existence of diffuse emission, and thus proceed with a simpler 2-D circular Gaussian model." (Methods); "When considering two models, we may use their relative Bayesian evidences to calculate the Bayes factor: $$\begin{equation} K=\frac{Z_1}{Z_2} \end{equation}$$ where we assume that neither model is preferred *a priori*." (Goodness of Fit)
+   - fitting: Nested sampling with MultiNest / PyMultiNest using Gaussian log-likelihood (Eq. 5) and uniform log-space priors  
+  > "By using the Bayesian inference code MultiNest ((cite: fero09)) and its python wrapper (PyMultiNest; (cite: buch14)), we find the best-fit intrinsic FWHM of the model so that the difference between the radial profiles is minimized." (Methods)
+   - validation: Evaluated chi^2, reduced chi^2, Bayesian evidence ln(Z), Bayes factor K, and posterior covariance corner plots  
+  > "These three tests agree that the two-component model is preferred over an unresolved source or the single-component model, with little evidence for overfitting and slight evidence for overestimated uncertainties." (Goodness of Fit)
+6. **Order-of-magnitude molecular gas mass estimation for host and extended CGM reservoir**: Estimate host molecular gas mass from representative L'_CO(3-2), r_31, and alpha_CO, and estimate extended CGM molecular gas mass from the ratio of integrated flux densities derived from the 2-Gaussian fit parameters and Milky Way-like r_31 and alpha_CO.  
+  > "As a very basic estimate of the host galaxy gas mass, we may consider a representative L’$_{CO(3-2)}\sim10^{10}$ K km s$^{-1}$ pc$^{2}$ (cite: circ21), $r_{31}\sim0.97$ (cite: cariw13), and $\alpha_{CO}\sim0.8\,$M$_{\odot}\,$K$^{-1}\,$km$^{-1}\,$s$\,$pc$^{-2}$ (appropriate for high-*z* QSO host galaxies; (cite: deca22))." (Gas Mass); "Taking the best-fit FWHMs and relative peak intensity from Table [\[pmntable\]](#pmntable), we find that the integrated flux density (S$\Delta v_{CO}$) of the extended component is $\sim2\times$ that of the host galaxy. Using the Milky Way-like values of $r_{31}=0.27$ ((cite: cariw13)) and $\alpha_{CO}\sim4.3$ ((cite: bola13)), we find log$_{10}(M_{H_2,CGM}$/M$_{\odot})\sim10.4$." (Gas Mass)
+   - parameter: L'_CO(3-2) ~ 10^10 K km s^-1 pc^2; Host: r_31 ~ 0.97, alpha_CO ~ 0.8 M_sun K^-1 km^-1 s pc^-2; Extended CGM: r_31 = 0.27, alpha_CO ~ 4.3 M_sun K^-1 km^-1 s pc^-2  
+  > "As a very basic estimate of the host galaxy gas mass, we may consider a representative L’$_{CO(3-2)}\sim10^{10}$ K km s$^{-1}$ pc$^{2}$ (cite: circ21), $r_{31}\sim0.97$ (cite: cariw13), and $\alpha_{CO}\sim0.8\,$M$_{\odot}\,$K$^{-1}\,$km$^{-1}\,$s$\,$pc$^{-2}$ (appropriate for high-*z* QSO host galaxies; (cite: deca22))." (Gas Mass); "Using the Milky Way-like values of $r_{31}=0.27$ ((cite: cariw13)) and $\alpha_{CO}\sim4.3$ ((cite: bola13)), we find log$_{10}(M_{H_2,CGM}$/M$_{\odot})\sim10.4$." (Gas Mass)
+   - assumption: QSO-like conversion factors (r_31 ~ 0.97, alpha_CO ~ 0.8) for the host galaxy and Milky Way-like values (r_31 = 0.27, alpha_CO ~ 4.3) for the extended component  
+  > "Using the Milky Way-like values of $r_{31}=0.27$ ((cite: cariw13)) and $\alpha_{CO}\sim4.3$ ((cite: bola13)), we find log$_{10}(M_{H_2,CGM}$/M$_{\odot})\sim10.4$. However, we emphasize that this value is highly uncertain because of the issues discussed above." (Gas Mass)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CASA** : Visibility splitting (SPLIT), concatenation (CONCAT), continuum subtraction (UVCONTSUB), cube and MFS continuum imaging (tclean), spectral window trimming (IMSUBIMAGE), and moment map generation (immoments)  
+  > "Because of this, we created new MSs containing only calibrated visibilities of the target source (CASA SPLIT). Some sources were observed over two executions, so their individual MSs were joined into one (CASA CONCAT)." (Observations and Data Reduction); "We then use the CASA task UVCONTSUB to fit the source visibilities with a first order model using all line-free channels and to subtract this model from the data, resulting in a ‘continuum-free’ MS. These continuum-free visibilites are imaged using CASA tclean in ‘cube’ mode with natural weighting and $0.2''$ cells to create a ‘dirty’ line cube." (Observations and Data Reduction); "We use each of the four weighting schemes to create a separate stacked cube (CASA immoments)." (Stacking Method)
+- **astropy** : Calculating channel RMS noise of dirty cubes using SIGMA_CLIPPED_STATS  
+  > "The RMS noise level of the channel of this cube is calculated using sigma clipping (using astropy SIGMA_CLIPPED_STATS with $S/N_{upper}=3$; (cite: astr13; astr18))." (Observations and Data Reduction)
+- **MultiNest** : Bayesian inference nested sampling to fit 1-Gaussian and 2-Gaussian models to radial brightness profiles and compute Bayesian evidence  
+  > "By using the Bayesian inference code MultiNest ((cite: fero09)) and its python wrapper (PyMultiNest; (cite: buch14)), we find the best-fit intrinsic FWHM of the model so that the difference between the radial profiles is minimized." (Methods)
+- **PyMultiNest** : Python wrapper for MultiNest used in radial profile fitting  
+  > "By using the Bayesian inference code MultiNest ((cite: fero09)) and its python wrapper (PyMultiNest; (cite: buch14)), we find the best-fit intrinsic FWHM of the model so that the difference between the radial profiles is minimized." (Methods)
+- **scipy** : Two-component Gaussian fitting to the HST/ACS F814W radial brightness profile via CURVE_FIT  
+  > "To illustrate this, we performed a two-component Gaussian fit to the observed brightness profile (using scipy CURVE_FIT)." (HST stacking)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Cube Stack (Two Gaussian) central component HWHM_G1 (angular) | 0.09 | +0.15/-0.06 | arcsec | 5 | This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc.; The single-Gaussian model returns an intrinsic (i.e., deconvolved) source radius of HWHM$=0.47^{+0.07}_{-0.06}"=3.89^{+0.58}_{-0.50}$ kpc, while the two-Gaussian model returns a bright central source (HWHM$=0.09^{+0.15}_{-0.06}"=0.76^{+1.19}_{-0.46}$ kpc) and a weaker extended component (HWHM$=1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc). |
+| Cube Stack (Two Gaussian) central component HWHM_G1 (physical) | 0.76 | +1.19/-0.46 | kpc | 5 | This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc. |
+| Cube Stack (Two Gaussian) extended component HWHM_G2 (angular) | 1.66 | +0.58/-0.43 | arcsec | 5 | This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc. |
+| Cube Stack (Two Gaussian) extended component HWHM_G2 (physical) | 13.49 | +4.71/-3.49 | kpc | 5 | This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc. |
+| Cube Stack (Two Gaussian) relative amplitude f_12 | 0.005 | +0.004/-0.002 | dimensionless | 5 | This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc. |
+| Cube Stack (One Gaussian) HWHM_G1 (angular) | 0.47 | +0.07/-0.06 | arcsec | 5 | The single-Gaussian model returns an intrinsic (i.e., deconvolved) source radius of HWHM$=0.47^{+0.07}_{-0.06}"=3.89^{+0.58}_{-0.50}$ kpc, while the two-Gaussian model returns a bright central source (HWHM$=0.09^{+0.15}_{-0.06}"=0.76^{+1.19}_{-0.46}$ kpc) and a weaker extended component (HWHM$=1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc). |
+| Cube Stack (One Gaussian) HWHM_G1 (physical) | 3.89 | +0.58/-0.50 | kpc | 5 | The single-Gaussian model returns an intrinsic (i.e., deconvolved) source radius of HWHM$=0.47^{+0.07}_{-0.06}"=3.89^{+0.58}_{-0.50}$ kpc, while the two-Gaussian model returns a bright central source (HWHM$=0.09^{+0.15}_{-0.06}"=0.76^{+1.19}_{-0.46}$ kpc) and a weaker extended component (HWHM$=1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc). |
+| Cube Stack (Two Gaussian) log10(HWHM_G1/['']) | -1.03 | 0.41 | dex | 5 | /  / Two Gaussian / $-1.03\pm0.41, -0.12\pm0.41$ / $0.22\pm0.13, 1.13\pm0.13$ / $-2.27\pm0.23$ / 0.58 / 0.05 / $42.47\pm0.07$ / |
+| Cube Stack (Two Gaussian) log10(HWHM_G2/['']) | 0.22 | 0.13 | dex | 5 | /  / Two Gaussian / $-1.03\pm0.41, -0.12\pm0.41$ / $0.22\pm0.13, 1.13\pm0.13$ / $-2.27\pm0.23$ / 0.58 / 0.05 / $42.47\pm0.07$ / |
+| Cube Stack (Two Gaussian) log10(f_12) | -2.27 | 0.23 | dex | 5 | /  / Two Gaussian / $-1.03\pm0.41, -0.12\pm0.41$ / $0.22\pm0.13, 1.13\pm0.13$ / $-2.27\pm0.23$ / 0.58 / 0.05 / $42.47\pm0.07$ / |
+| Bayes factor K favoring Two Gaussian over One Gaussian for Cube Stack | 27 | not stated | dimensionless | 5 | We find that the Two Gaussian model is strongly favored ($K\sim27$). |
+| Moment 0 Stack (Two Gaussian) log10(HWHM_G1/['']) | -0.95 | 0.25 | dex | 5 | /  / Two Gaussian / $-0.95\pm0.25, -0.04\pm0.25$ / $0.28\pm0.14, 1.19\pm0.14$ / $-2.88\pm0.36$ / 3.16 / 0.26 / $50.83\pm0.07$ / |
+| Moment 0 Stack (Two Gaussian) log10(HWHM_G2/['']) | 0.28 | 0.14 | dex | 5 | /  / Two Gaussian / $-0.95\pm0.25, -0.04\pm0.25$ / $0.28\pm0.14, 1.19\pm0.14$ / $-2.88\pm0.36$ / 3.16 / 0.26 / $50.83\pm0.07$ / |
+| Moment 0 Stack (Two Gaussian) log10(f_12) | -2.88 | 0.36 | dex | 5 | /  / Two Gaussian / $-0.95\pm0.25, -0.04\pm0.25$ / $0.28\pm0.14, 1.19\pm0.14$ / $-2.88\pm0.36$ / 3.16 / 0.26 / $50.83\pm0.07$ / |
+| FIR Continuum Stack size upper limit | <= 0.6'' (~5 kpc) | not stated | arcsec (kpc) | 5 | Using the average redshift of this sample ($z\sim2.3$), this implies an upper limit on the continuum size of $\lesssim0.6''\sim5$ kpc. |
+| Estimated host galaxy molecular gas mass log10(M_H2,Host / M_sun) | 9.89 | not stated | dex | 6 | This results in log$_{10}(M_{H_2,Host}$/M$_{\odot})\sim9.89$. |
+| Estimated extended CGM molecular gas mass log10(M_H2,CGM / M_sun) | 10.4 | not stated | dex | 6 | Using the Milky Way-like values of $r_{31}=0.27$ ((cite: cariw13)) and $\alpha_{CO}\sim4.3$ ((cite: bola13)), we find log$_{10}(M_{H_2,CGM}$/M$_{\odot})\sim10.4$. |
+| X_N_6_27 revised CO(3-2) observed frequency and redshift | 105.405 GHz (z = 2.2806) | not stated | GHz | 1 | However, we do detect emission at $105.405$ GHz ($z=2.2806$), or $\sim1500$ km s$^{-1}$ from the redshift expected from previous spectroscopic redshifts. |
+
+## Qualitative findings
+
+- A 3-D stack of CO(3-2) emission from seven z ~ 2.0-2.5 AGN host galaxies reveals a compact central component (HWHM ~ 0.8 kpc) surrounded by a weak, spatially extended molecular gas reservoir (HWHM ~ 13.5 kpc, amplitude ~ 0.005 of peak).  
+  > "Through a three-dimensional stacking analysis we find evidence for extended CO emission of radius $r\sim13$ kpc." (Abstract); "This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}"=13.49^{+4.71}_{-3.49}$ kpc." (Goodness of Fit)
+- Stacked HST/ACS F814W rest-frame UV images show complex small-scale morphology out to r ~ 5-10 kpc for both narrow-line and broad-line AGN, but no extended emission at the r ~ 13 kpc scale of the CO reservoir.  
+  > "We extend this analysis to the HST/ACS i-band images of the sample galaxies, finding a complex small-scale ($r<10$ kpc) morphology but no robust evidence for extended emission." (Abstract); "A similar stacking and radial profile analysis is run on HST/ACS i-band SUPER galaxies, finding evidence for complex behaviour for $r\lesssim10$ kpc but no emission at the CO-derived radius of $r\sim13$ kpc. If the sample is split into NL and BL AGN, then this behaviour is present for both subsamples." (Conclusions)
+- The 2-D stack of rest-frame FIR (~870 um) continuum emission across 24 SUPER sources is unresolved and best fit by a point source (r <= 5 kpc).  
+  > "We find that a point source returns the best fit, implying that the emission is unresolved. Using the average redshift of this sample ($z\sim2.3$), this implies an upper limit on the continuum size of $\lesssim0.6''\sim5$ kpc." (FIR Continuum stacking)
+- The extended CO(3-2) emission is most likely an enriched molecular gas reservoir populated by past AGN- or starburst-driven outflows rather than discrete satellite galaxies or pristine cosmological filaments.  
+  > "In summary, we find it unlikely that the extended emission is caused by a gaseous filament or individual satellite galaxies. The observed outflows feature sufficient velocities to populate an enriched gaseous reservoir at the observed radius." (How was the extended gaseous reservoir formed?); "Based on our analyses of the ALMA CO(3-2) and HST/ACS i-band emission, we conclude that the most likely case is that this emission represents processed material ejected from the host galaxy by past outflows." (Conclusions)
+
+## Claim tuples
+
+- H: Energetic, outflowing z ~ 2.0-2.5 AGN host galaxies from the SUPER sample are surrounded by an extended molecular gas reservoir in their circumgalactic medium. | E: Perform 3-D image-plane stacking of homogeneous ALMA CO(3-2) data cubes for 7 AGN host galaxies, collapse over +/-100 km s^-1, extract radial surface brightness profiles, and fit 1- and 2-component 2-D circular Gaussian models convolved with the stacked PSF using PyMultiNest. | R: The 2-Gaussian model is strongly preferred (chi^2 = 0.58 vs 4.14, Bayes factor K ~ 27), yielding a compact core of HWHM = 0.76 (+1.19/-0.46) kpc and an extended component of HWHM = 13.49 (+4.71/-3.49) kpc with relative peak amplitude 0.005 (+0.004/-0.002). | F: AGN host galaxies at cosmic noon possess an extended, low-surface-brightness molecular gas reservoir on ~13 kpc scales. | **supported**
+- H: The extended CO(3-2) emission traces a circumgalactic gas reservoir that is morphologically distinct from the stellar and dust components of the host galaxies. | E: Perform 2-D inverse-variance stacking and radial profile analysis on HST/ACS F814W rest-frame UV images (21 sources, plus NL/BL subsets) and ALMA rest-frame ~870 um FIR continuum maps (24 sources). | R: The HST stack shows complex structure within r < 10 kpc and no significant emission beyond ~7.5-10 kpc; the FIR continuum stack is unresolved (best fit by the PSF, r <= 5 kpc). | F: The r ~ 13 kpc molecular gas reservoir extends well beyond both the young stellar distribution and the dust continuum, indicating a multi-layered structure and a distinct CGM component. | **supported**
+- H: The extended CO(3-2) reservoir was formed by processed gas ejected via past outflows rather than discrete satellite galaxies, infalling pristine filaments, or inside-out disk growth. | E: Compare the HST F814W stack (to test for satellite stellar light), observed [OIII] outflow velocities (~650-2700 km s^-1) and travel timescales (~13 Myr at 1000 km s^-1), and expected low density/metallicity of cosmic filaments. | R: No extended stellar halo is seen in the unconvolved HST stack to support satellites, filaments are too metal-poor/diffuse to emit strongly in CO, and observed outflow velocities can easily reach ~13 kpc within ~13 Myr, though convolving HST with the ALMA beam and inside-out star formation leave some ambiguity. | F: Past AGN- or starburst-driven outflows are the most likely origin of the extended molecular reservoir, though inside-out growth cannot be completely ruled out without higher-sensitivity observations. | **partially**
+
+## Reasoning
+
+- Why this data: SUPER AGN host galaxies at z ~ 2.0-2.5 have well-characterized multiwavelength properties and ubiquitous [OIII] outflows, and were observed in CO(3-2) with ALMA; re-analyzing from raw visibilities ensures homogeneous data cubes for stacking.  
+  > "SINFONI observations of the \[O III\]$\lambda$5007 line in 21 of these sources reveal evidence for outflows in every observed source (cite: kakk20), with large outflow velocities ($\sim10^3$ km s$^{-1}$)." (Introduction); "Since our science goals require homogeneity of the data, we chose to reanalyze each dataset, beginning at the visibilities." (Observations and Data Reduction)
+- Why this method: Individual CO(3-2) detections have low S/N (< 5 sigma), requiring 3-D cube stacking to reach the sensitivity needed for faint extended emission; image-plane stacking allows inspection for discrete companions and 2-D circular Gaussian fitting with PSF convolution measures intrinsic deconvolved sizes.  
+  > "While each of the sources in our subsample have been detected in CO(3-2) emission, most of them have relatively low significance (i.e., $<5\sigma$ in integrated intensity). Since we wish to search for low-level emission, we require higher S/N, and thus must perform stacking of each data cube." (Stacking Method); "This is where image-plane stacking is useful, as we may examine the full 2-D distribution of flux and search for discrete emission that may signal a satellite galaxy." (Stacking Assumptions)
+- Alternative: Realigning each CO(3-2) cube to a 2-D Gaussian centroid of its moment 0 map prior to stacking (rejected because low S/N ~ 3-4 of individual sources would skew centroids toward noise peaks, and UV-to-CO offsets are < 1 pixel)  
+  > "As an alternative, it is theoretically possible to fit each ALMA CO(3-2) moment zero map with a 2-D Gaussian model, and realign each cube to the resulting spatial centroid. But since multiple sources in this sample feature low integrated CO S/N values ($\sim3-4$), this approach is likely to be skewed by noise peaks." (Stacking Method)
+- Alternative: Stacking CO-undetected sources (rejected because large velocity offsets up to ~1500 km s^-1 between z_spec and z_CO mean the true systemic CO velocity is unknown)  
+  > "Note that we do not attempt to stack sources undetected in CO(3-2) emission. This is due to large differences between previously determined $z_{spec}$ values and the redshift of CO emission of SUPER sources (i.e., up to $\sim1500$ km s$^{-1}$, see Table [\[basictab\]](#basictab))." (Stacking Method)
+- Alternative: Fitting elliptical 2-D Gaussian or 2-D Sersic models to the stacked CO moment 0 map (rejected in favor of circular 2-D Gaussians because stacking averages out non-axisymmetric features)  
+  > "While it would be possible to assume a general elliptical Gaussian (or 2-D Sérsic profile; (cite: sers63)) and determine the intrinsic axis ratio and intrinsic position angle of the moment 0 map, we simply wish to search for the existence of diffuse emission, and thus proceed with a simpler 2-D circular Gaussian model." (Methods)
+- Alternative: Visibility-plane stacking (discussed as an alternative that avoids cleaning and sidelobe issues, deferred to future work)  
+  > "While these factors result in a greatly lessened effect of sidelobes in our analysis, we note that the best way to ensure their absence is to switch from the image plane to visibility-based analysis (e.g., (cite: fuji19), Scholtz et al. submitted)." (Stacking Assumptions)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Molecular gas mass of the extended CGM component cannot be tightly constrained because the CO excitation ratio r_31 and conversion factor alpha_CO are unknown for high-z AGN CGM.  
+  > "Because $r_{31}$ and $\alpha_{CO}$ have not been derived for the CGM of AGN host galaxies at cosmic noon, we are not able to place precise constraints on M$_{H_2,CGM}$." (Gas Mass)
+- Limitation (authors): Convolving the stacked HST image with the coarse ALMA beam produces a radial profile that is also best fit by a two-Gaussian model (r ~ 1 kpc and r ~ 18 kpc), making it ambiguous whether the extended HST profile under convolution is due to resolution effects or discrete foreground/satellite companions at ~1-2''.  
+  > "In summary, our test of convolving the HST stacked image to the ALMA resolution reveals a radial brightness distribution is deviates from a single resolved source, but it is not clear if this is due to resolution effects or the presence of foreground galaxies." (HST stacking)
+- Limitation (authors): Cleaning down to a 3-sigma threshold in image-plane analysis does not remove PSF sidelobes below 3-sigma, which could affect low-level extended emission.  
+  > "Since we use a threshold of $3\sigma$ (see Section [2](#obsdat)), it is possible that we have not fully subtracted the sidelobes of the PSF." (Stacking Assumptions)
+- Limitation (authors): Reduced chi^2 values are sub-unity due to conservative uncertainty estimates on the radial profile bins, and the low number of radial bins precludes using AIC or BIC.  
+  > "We note that the two-component model has a $\chi^2$ value that is sub-unity, which usually indicates overfitting. However, this is likely due to our conservative uncertainty limits (see Appendix [7](#uncanpp))." (Goodness of Fit); "Due to the low number of data points, we are not able to use the Bayesian Information Criterion (BIC) or Akaike Information Criterion (AIC; e.g., (cite: lidd07; conc19))." (Footnote 2)
+- Caveat (inferred, ours): The extended CO(3-2) signal is only strongly favored by the Bayesian evidence in a single narrow velocity slice (+/-100 km s^-1) under inverse-variance weighting (which allows the brightest sources to dominate), while the 2-D stack of full-linewidth moment 0 maps yields an inconclusive Bayes factor (K ~ 2).
+- Caveat (inferred, ours): Because image-plane cleaning stops at 3x RMS and the extended component has a peak amplitude of only ~0.5% of the central component, uncleaned PSF sidelobes of the central emission sit entirely below the clean threshold and are not deconvolved.
+- Caveat (inferred, ours): When the HST F814W stack is convolved with the ~1.3'' ALMA beam, it also prefers a two-Gaussian fit with an outer component of r ~ 18 kpc, raising the caveat that beam-smearing of compact clumpy structure or nearby companions at 1-2'' could mimic an extended halo at ~1.3'' resolution.
+
+## Reproducibility
+
+- Data public (paper): Publicly available from the ALMA data archive and IPAC COSMOS server  
+  > "Each of these ALMA projects was executed in Cycle 4 or 5, so their data are now public." (Observations and Data Reduction); "The data analysed in this work are available from the ALMA data archive (<https://almascience.nrao.edu/asax/>) and the IPAC COSMOS server (<https://irsa.ipac.caltech.edu/data/COSMOS/index_cutouts.html>)." (Data Availability)
+- Products in archive: Raw SDMs and calibration scripts available in ALMA archive; HST cutouts available in IPAC COSMOS archive  
+  > "The data analysed in this work are available from the ALMA data archive (<https://almascience.nrao.edu/asax/>) and the IPAC COSMOS server (<https://irsa.ipac.caltech.edu/data/COSMOS/index_cutouts.html>)." (Data Availability); "The data from these observations were downloaded from the ALMA archive, and were calibrated using the scripts provided by ALMA staff." (X_N_6_27 Re-Analysis)
+- Code: _not stated_
+- Missing: Custom Python scripts used for 3-D velocity-bin-overlap cube stacking, 2-D PSF stacking, Monte Carlo noise simulation, radial profile extraction, and PyMultiNest model fitting
+- Missing: CASA and pipeline versions
+- Missing: Exact channel ranges trimmed by IMSUBIMAGE for each of the 7 cubes
+- Missing: Exact velocity integration windows used for each of the 7 individual sources in the 2-D Moment 0 stack
+- Data volume (inferred): ~50-150 GB of raw ALMA visibilities across 28 targets in 2016.1.00798.S and 2017.1.00893.S plus 1 target in 2021.1.00327.S; <1 GB for trimmed 100x100x240 image cubes and HST cutouts.
+- Score (inferred): 78/5, All raw ALMA and HST data are public, the target sample and exclusions are explicitly tabulated, imaging parameters (cell size, weighting, channel width, continuum subtraction, clean threshold) are clearly specified, and the mathematical equations for 3-D stacking, PSF stacking, likelihood, and priors are given in full. Minor deductions for unreleased custom stacking/fitting scripts and unstated CASA version / per-source moment-0 velocity windows.
+- Rediscovery candidate: yes, Public archival ALMA and COSMOS HST datasets with a clear, self-contained mathematical recipe from visibility continuum subtraction and cube imaging to 3-D stacking and PyMultiNest 1G/2G radial profile fitting, yielding specific numeric HWHM and Bayes factor answer keys.
+
+## Links
+
+- Method: (cite: delh13; bisc19; gino20; joll20) (3-D spectral cube stacking formalism (Equations 1 and 2))
+- Method: (cite: niko09) (Log-likelihood function used for Bayesian radial profile fitting (Equation 5))
+- Method: (cite: fero09; buch14) (MultiNest and PyMultiNest nested sampling framework for model fitting and Bayesian evidence)
+- Method: (cite: fuji19) (Convolving high-resolution HST stack with the ALMA synthesized beam to test resolution effects)
+- Companion: (cite: circ18) (SUPER survey overview paper introducing the SINFONI AGN sample)
+- Companion: (cite: kakk20) (SUPER survey SINFONI [OIII] outflow analysis for the sample)
+- Companion: (cite: circ21) (Original presentation of the SUPER-ALMA CO(3-2) observations, redshifts, and fluxes)
+- Companion: (cite: lamp21) (ALMA Band 7 high-resolution FIR continuum and SINFONI ionized gas sizes of SUPER sources)
+- Related: SUPER (A SINFONI Survey for Unveiling the Physics and Effect of Radiative feedback)
+- Related: COSMOS
+- Related: XMM-XXL
+- Related: ALPINE
+- Related: REBELS
+
+## Checks
+
+```json
+{
+ "quotes": 189,
+ "quotes_ok": 189,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 15,
+ "unsupported_facts": 0,
+ "project_codes": 3,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 18,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 123,
+  "stated": 102,
+  "rate": 0.829
+ },
+ "evidence_ok": true
+}
+```

@@ -1,0 +1,1957 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021A&A...646A..72H",
+  "title": "Resolved molecular line observations reveal an inherited molecular layer in the young disk around TMC1A",
+  "year": 2021,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Harsono, D.",
+  "n_authors": 7,
+  "arxiv_id": "2010.13722",
+  "doi": "10.1051/0004-6361/202038697",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2015.1.01549.S",
+   "2016.1.00711.S",
+   "2017.1.00212.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observations",
+    "quote": "TMC1A was observed during long baselines campaigns (LBC, 16 km) of the Atacama Large Millimeter/submillimeter Array (ALMA) on three occasions."
+   },
+   {
+    "loc": "6 Summary and Conclusions",
+    "quote": "This paper presents spatially resolved observations of dust and gas with ALMA toward the young disk around TMC1A."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "TMC1A (IRAS 04365+2535)",
+     "coordinates": {
+      "value": "J2000 04h39m35.203s +25d41m44.21s (phase center from UVFIT of continuum visibilities)",
+      "evidence": [
+       {
+        "loc": "2.3 Self-calibration and combined ALMA data",
+        "quote": "The phase center of J2000 04h39m35.203s +25d41m44.21s is determined by fitting an elliptical Gaussian to the continuum visibilities with CASA task UVFIT."
+       },
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "or 30 au at 140 pc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "2.3 Self-calibration and combined ALMA data",
+        "quote": "The phase center of J2000 04h39m35.203s +25d41m44.21s is determined by fitting an elliptical Gaussian to the continuum visibilities with CASA task UVFIT."
+       },
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "or 30 au at 140 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Determine the molecular abundance structure of the young Class 0/I-type (Stage I) disk around TMC1A on au scales, to understand its chemical structure, whether planet-forming material enters the disk unaltered, and what drives accretion.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We aim to determine the molecular abundance structure of the young disk around the TMC1A protostar on au scales in order to understand its chemical structure and any possible implications for disk formation."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01549.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "2015.1.01549.S (PI: van der Wiel)"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00711.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "2016.1.00711.S (PI: van der Wiel)"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00212.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "2017.1.00212.S (PI: Bjerkeli)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "2016.1.00711.S: four spectral windows, three narrow ones centered on HCN 3-2 (265.8861800 GHz), HCO+ 3-2 (267.8527094 GHz) and SO 5_6-4_5 (251.82577000 GHz) plus one 1.8 GHz wide window at 253.2 GHz for continuum; 2017.1.00212.S: four 1.8 GHz broadband continuum windows (lines not clearly detected); 2015.1.01549.S tuned to CO and isotopologs",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations: 2016.1.00711.S",
+      "quote": "Four spectral windows were utilized in this program."
+     },
+     {
+      "loc": "2.1 ALMA observations: 2016.1.00711.S",
+      "quote": "A wide spectral window (1.8 GHz) was centered at 253.2 GHz to measure the dust continuum."
+     },
+     {
+      "loc": "2.2 ALMA observations: 2017.1.00212.S",
+      "quote": "Four broadband continuum spectral windows (1.8 GHz) were used in this program."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO and isotopologs (species names missing from converted text)",
+     "transition": "2-1 (three lines in tables)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "tuned to frequencies of CO and its isotopologs"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=3-2",
+     "rest_frequency": "265.8861800 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "Three narrow high resolution windows were centered on HCN"
+      },
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "(265.8861800 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=3-2",
+     "rest_frequency": "267.8527094 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "(267.8527094 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "N_J = 5_6 - 4_5",
+     "rest_frequency": "251.82577000 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "(251.82577000 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "DCN",
+     "transition": "3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.2 Molecular gas observations",
+       "quote": "DCN $3-2$"
+      }
+     ]
+    },
+    {
+     "species": "HCN (vibrationally excited, v2=1)",
+     "transition": "rotational lines (e,f), upper limits",
+     "rest_frequency": "265.8527 GHz and 267.1993 GHz",
+     "evidence": [
+      {
+       "loc": "Appendix: Molecular lines: vibrational transitions",
+       "quote": "rotational transitions at 265.8527 GHz and 267.1993 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "1.8 GHz wide continuum windows",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations: 2016.1.00711.S",
+      "quote": "A wide spectral window (1.8 GHz) was centered at 253.2 GHz to measure the dust continuum."
+     },
+     {
+      "loc": "2.2 ALMA observations: 2017.1.00212.S",
+      "quote": "Four broadband continuum spectral windows (1.8 GHz) were used in this program."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ALMA long baseline campaigns (LBC, 16 km), three occasions",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "TMC1A was observed during long baselines campaigns (LBC, 16 km) of the Atacama Large Millimeter/submillimeter Array (ALMA) on three occasions."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "40 m to 12 km (2016.1.00711.S); 40 m to 16.2 km (2017.1.00212.S and Table for 2015.1.01549.S)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations: 2016.1.00711.S",
+      "quote": "The baseline coverage was between 40 m and 12 km"
+     },
+     {
+      "loc": "2.2 ALMA observations: 2017.1.00212.S",
+      "quote": "The baseline coverage was between 40 m and 16.2 km"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Continuum beams about 0.028-0.049 arcsec x 0.018-0.032 arcsec (220-260 GHz); line beams about 0.12-0.13 arcsec x 0.10-0.11 arcsec after 0.08 arcsec taper",
+    "evidence": [
+     {
+      "loc": "Table of observed continuum and line properties",
+      "quote": "$0.028\\times 0.018, 0$"
+     },
+     {
+      "loc": "Table of observed continuum and line properties",
+      "quote": "$0.049\\times 0.032, 11$"
+     },
+     {
+      "loc": "Table of observed continuum and line properties",
+      "quote": "$0.13 \\times 0.10$, 32"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~0.5 arcsec (~70 au)",
+    "evidence": [
+     {
+      "loc": "5.2 Molecular abundances in the TMC1A disk.",
+      "quote": "they are only sensitive up to a maximum recoverable scale of $\\sim 0.5\\ensuremath{''}$ ($\\sim$ 70 au)"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "noise per spectral resolution element tabulated for each line and continuum (values in the line and continuum table)",
+    "evidence": [
+     {
+      "loc": "2.3 Self-calibration and combined ALMA data",
+      "quote": "along with the noise level per spectral resolution element"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2015.1.01549.S: Oct 16, 23, 30 2015; 2016.1.00711.S: Sep 22 and 23 2017; 2017.1.00212.S: Oct 19 2017",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations: 2016.1.00711.S",
+      "quote": "ALMA observed TMC1A on September 22 and 23 in 2017."
+     },
+     {
+      "loc": "2.2 ALMA observations: 2017.1.00212.S",
+      "quote": "This ALMA project was executed on October 19 2017."
+     },
+     {
+      "loc": "Table of observation log",
+      "quote": "Oct 30, 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI programs: 2015.1.01549.S and 2016.1.00711.S (PI van der Wiel), 2017.1.00212.S (PI Bjerkeli); first data set previously published",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We have concatenated three LBC projects: 2015.1.01549.S (PI: van der Wiel), 2016.1.00711.S (PI: van der Wiel), and 2017.1.00212.S (PI: Bjerkeli)."
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "The first data set (2015.1.01549.S, tuned to frequencies of CO and its isotopologs) was published in (cite: bjerkeli2016) and (cite: harsono18)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "NOEMA (project V064 and X065)",
+     "provided": {
+      "value": "203 GHz p-H2O 3_1,3-2_2,0 line and 203/220 GHz continuum, presented in an earlier paper",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "observations taken with the NOrthern Extended Millimeter Array (NOEMA), and which are presented in (cite: harsono20)"
+       },
+       {
+        "loc": "Acknowledgements",
+        "quote": "This work uses observations carried out under project number V064 and X065 with the IRAM NOEMA Interferometer/PdBI."
+       }
+      ]
+     }
+    },
+    {
+     "name": "SMA and earlier NOEMA data",
+     "provided": {
+      "value": "Continuum visibilities at other frequencies compared in Fig. 2",
+      "evidence": [
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "including the Sub-millimeter Array (SMA) data from (cite: prosac09) and NOEMA data from (cite: harsono14)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT CRIRES",
+     "provided": {
+      "value": "Fundamental vibrational CO lines for comparison with HCN v2=1 spectra",
+      "evidence": [
+       {
+        "loc": "Appendix: Molecular lines: vibrational transitions",
+        "quote": "we also present the fundamental vibrational CO lines taken with CRIRES on the VLT (cite: herczeg11)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Water 203 GHz NOEMA data and upper limit N(H2O)/N(H2) < 1e-6 used as the sub-mm water column",
+      "evidence": [
+       {
+        "loc": "5.2 Molecular abundances in the TMC1A disk.",
+        "quote": "adopted from the upper limit in (cite: harsono20)"
+       }
+      ]
+     },
+     "citation": "(cite: harsono20)"
+    },
+    {
+     "what": {
+      "value": "SMA continuum visibilities, scaled to 1.3 mm with S_nu proportional to nu^2.5",
+      "evidence": [
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "The binned SMA data are scaled to 1.3 mm using a frequency dependence of $S_{\\nu} \\propto \\nu^{2.5}$."
+       }
+      ]
+     },
+     "citation": "(cite: prosac09)"
+    },
+    {
+     "what": {
+      "value": "Earlier NOEMA continuum visibilities",
+      "evidence": [
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "including the Sub-millimeter Array (SMA) data from (cite: prosac09) and NOEMA data from (cite: harsono14)"
+       }
+      ]
+     },
+     "citation": "(cite: harsono14)"
+    },
+    {
+     "what": {
+      "value": "VLT CRIRES fundamental CO spectra",
+      "evidence": [
+       {
+        "loc": "Appendix: Molecular lines: vibrational transitions",
+        "quote": "we also present the fundamental vibrational CO lines taken with CRIRES on the VLT (cite: herczeg11)"
+       }
+      ]
+     },
+     "citation": "(cite: herczeg11)"
+    },
+    {
+     "what": {
+      "value": "Rest line frequencies from JPL and CDMS catalogs",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observations: 2016.1.00711.S",
+        "quote": "Rest line frequencies are obtained from the JPL (cite: JPLdb) and CDMS catalogs (cite: cdms1; cdms2)."
+       }
+      ]
+     },
+     "citation": "(cite: JPLdb); (cite: cdms1; cdms2)"
+    },
+    {
+     "what": {
+      "value": "CO collisional rate coefficients from LAMDA",
+      "evidence": [
+       {
+        "loc": "4.1 Molecular column density of the disk",
+        "quote": "adopt the CO collisional rate coefficients from (cite: corates), obtained from the Leiden Atomic and Molecular Database (LAMDA; (cite: lamda))"
+       }
+      ]
+     },
+     "citation": "(cite: corates); (cite: lamda)"
+    },
+    {
+     "what": {
+      "value": "ISM isotopic ratios 12C:13C = 70 and 16O:18O = 540",
+      "evidence": [
+       {
+        "loc": "5.2 Molecular abundances in the TMC1A disk.",
+        "quote": "Adopting the ISM isotopic ratios of $\\ce{^{12}C}:\\ce{^{13}C} = 70$ and $\\ce{^{16}O}:\\ce{^{18}O} = 540$ (cite: wilson94)"
+       }
+      ]
+     },
+     "citation": "(cite: wilson94)"
+    },
+    {
+     "what": {
+      "value": "CO gas abundance relative to H2 of 1e-4",
+      "evidence": [
+       {
+        "loc": "5.2 Molecular abundances in the TMC1A disk.",
+        "quote": "$10^{-4}$ relative to (cite: harsono14; vanthoff18b; kzhang20)"
+       }
+      ]
+     },
+     "citation": "(cite: harsono14; vanthoff18b; kzhang20)"
+    },
+    {
+     "what": {
+      "value": "Reduced reaction network linking CO to HCO+ and electrons, with rate coefficients from KIDA",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "lists the reaction network from (cite: aikawa15) that we employ here"
+       }
+      ]
+     },
+     "citation": "(cite: aikawa15); (cite: kida)"
+    },
+    {
+     "what": {
+      "value": "Bolometric luminosity L_bol = 2.7 L_sun",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "From the bolometric luminosity of TMC1A ($L_{\\rm bol} = 2.7$ $L_{\\odot}$, (cite: kristensen12))"
+       }
+      ]
+     },
+     "citation": "(cite: kristensen12)"
+    },
+    {
+     "what": {
+      "value": "100 au radius gaseous Keplerian disk",
+      "evidence": [
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "smaller than the 100 au radius gaseous Keplerian disk (cite: harsono14)"
+       }
+      ]
+     },
+     "citation": "(cite: harsono14)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Pipeline: Cycle 4 pipeline (2016.1.00711.S) and Cycle 5 pipeline (2017.1.00212.S); first data set calibration described in earlier paper",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "The data were calibrated using the Cycle 4 pipeline of CASA 4.7.2 (cite: CASA)."
+      },
+      {
+       "loc": "2.2 ALMA observations: 2017.1.00212.S",
+       "quote": "The data was calibrated using the Cycle 5 pipeline of CASA 5.1.1."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2 (2016.1.00711.S); CASA 5.1.1 (2017.1.00212.S); CASA 5.4.1 (self-calibration)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "The data were calibrated using the Cycle 4 pipeline of CASA 4.7.2 (cite: CASA)."
+      },
+      {
+       "loc": "2.2 ALMA observations: 2017.1.00212.S",
+       "quote": "The data was calibrated using the Cycle 5 pipeline of CASA 5.1.1."
+      },
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "was performed with CASA 5.4.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "Cycle 4 pipeline; Cycle 5 pipeline",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "The data were calibrated using the Cycle 4 pipeline of CASA 4.7.2 (cite: CASA)."
+      },
+      {
+       "loc": "2.2 ALMA observations: 2017.1.00212.S",
+       "quote": "The data was calibrated using the Cycle 5 pipeline of CASA 5.1.1."
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0433+2905 (2015.1.01549.S); J0510+1800 (2016.1.00711.S, 2017.1.00212.S)",
+     "evidence": [
+      {
+       "loc": "Table of observation log",
+       "quote": "J0510+1800 | J0440+2728 | J0433+2905"
+      },
+      {
+       "loc": "Table of observation log",
+       "quote": "J0510+1800 | J0438+3004 | J0510+1800"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "within 10% (from NOEMA vs ALMA comparison at 220 GHz)",
+     "evidence": [
+      {
+       "loc": "3.1 Spatially resolved dust continuum",
+       "quote": "the uncertainty in the absolute flux density is within 10%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Simultaneous phase and amplitude self-calibration of the concatenated data using line-free channels in each spectral window (CASA 5.4.1); phase solutions from broadband windows applied to narrow windows; solution intervals not stated",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The concatenated data allows for simultaneous phase and amplitude self-calibrations to produce better flux calibration across the three data sets."
+      },
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "This self-calibration is based on the line-free channels in each spectral window"
+      },
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The phase solutions obtained from the broadband windows are applied across the narrow spectral windows."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "TCLEAN (continuum imaging)",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The imaging of the continuum is performed with TCLEAN using Briggs weighting (cite: briggs95) to minimize the side lobes."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs weighting (robust value not stated)",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The imaging of the continuum is performed with TCLEAN using Briggs weighting (cite: briggs95) to minimize the side lobes."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.08 arcsec spatial taper for line cubes",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The spectral lines are imaged at 0.3 km s$^{-1}$ velocity resolution including a spatial tapering at 0.08$''$"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "HCN and DCN analysed with a proxy mask from another line cube: pixels (x,y,v) above 3 sigma; upper limits from a spatial mask over the dust continuum",
+     "evidence": [
+      {
+       "loc": "3.2 Molecular gas observations",
+       "quote": "by taking pixels ($x,y,v$) that are $>3 \\sigma$"
+      },
+      {
+       "loc": "3.2 Molecular gas observations",
+       "quote": "The upper limits are calculated using a spatial mask ($x,y$) over the dust continuum emission"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "UVCONTSUB in the (u,v) plane for line spectral windows",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "Spectral windows containing the targeted molecular lines are continuum subtracted in the (u,v) plane with the task UVCONTSUB."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Three ALMA projects concatenated into one measurement set with CONCAT",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "We combined these ALMA projects into a single measurement set using the CASA task CONCAT to improve the $S/N$ of the dust continuum model."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "noise level per spectral resolution element listed per line in the line table; 0.3 km/s channels",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "along with the noise level per spectral resolution element"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging and calibration of the first ALMA data set (2015.1.01549.S) and the NOEMA data are not described here",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "we refer to (cite: harsono18; harsono20) for details on the imaging and calibration of the first ALMA data set and the NOEMA data, respectively"
+       }
+      ]
+     },
+     "from_reference": "(cite: harsono18; harsono20)"
+    },
+    {
+     "what": {
+      "value": "Phase center of each measurement fixed to the earlier value",
+      "evidence": [
+       {
+        "loc": "2.3 Self-calibration and combined ALMA data",
+        "quote": "We fixed the phase center of each measurement to the value obtained in (cite: harsono18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: harsono18)"
+    },
+    {
+     "what": {
+      "value": "Upper limits computed following earlier method, with a Gaussian linewidth of 1 km/s",
+      "evidence": [
+       {
+        "loc": "3.2 Molecular gas observations",
+        "quote": "following the methods outlined in (cite: carney19) assuming a Gaussian linewidth of 1 km s$^{-1}$ (see (cite: harsono20))"
+       }
+      ]
+     },
+     "from_reference": "(cite: carney19); (cite: harsono20)"
+    },
+    {
+     "what": {
+      "value": "Chemical model linking CO to HCO+ and the electron density formula",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "A simple chemical model that links CO to  and can be found in (cite: aikawa15)."
+       }
+      ]
+     },
+     "from_reference": "(cite: aikawa15)"
+    },
+    {
+     "what": {
+      "value": "MRI criteria (magnetic Reynolds number and ion-neutral collision rate Am)",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "is the radial distance from the star normalized to 1 au (cite: perezbecker11)"
+       }
+      ]
+     },
+     "from_reference": "(cite: perezbecker11)"
+    },
+    {
+     "what": {
+      "value": "Midplane temperature power-law index of -0.4 to -0.5",
+      "evidence": [
+       {
+        "loc": "4.2 Temperature structure of the disk",
+        "quote": "using a power-law in radius with an index between -0.4 to -0.5 (cite: chiang97; vanthoff18b)"
+       }
+      ]
+     },
+     "from_reference": "(cite: chiang97; vanthoff18b)"
+    },
+    {
+     "what": {
+      "value": "Relation between midplane water snowline and disk accretion rate",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "The relation between the midplane water snowline and the disk accretion rate in embedded disks was explored in (cite: harsono15b)."
+       }
+      ]
+     },
+     "from_reference": "(cite: harsono15b)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Briggs robust value and any weighting differences between continuum and line imaging",
+    "TCLEAN deconvolver, cell size, image size, clean threshold, masks and number of iterations",
+    "Exact form of the 0.08 arcsec taper (uvtaper type and parameters)",
+    "Line-free channel ranges used for self-calibration and UVCONTSUB",
+    "Self-calibration solution intervals, number of rounds and reference antenna",
+    "Flux values adopted for the flux calibrators and calibration of the first data set (only referred to earlier papers)",
+    "Which spectral windows/frequency ranges define each continuum image at 220, 230, 240 and 260 GHz",
+    "Priors, initial walker positions and parameter bounds for the GALARIO/emcee fits",
+    "Species names for the CO isotopolog lines and for table rows (lost in the text); which transition each table frequency belongs to",
+    "RADEX grid ranges, assumed linewidth and background used for the non-LTE slab models",
+    "Exact apertures/bins for azimuthal averaging of line intensities and column densities",
+    "Envelope abundance values and Solar System comparison values used in the abundance-comparison figure",
+    "Deprojection geometry (distance, inclination, PA) and exact points used for the by-eye temperature power law",
+    "Definition of disk-integrated spectra regions (Keplerian-disk mask) used for DCN/HCN"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Combine and self-calibrate the three ALMA data sets",
+    "method": {
+     "value": "Concatenate the three projects, self-calibrate (phase and amplitude) using line-free channels, fix phase center via UVFIT",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "We combined these ALMA projects into a single measurement set using the CASA task CONCAT to improve the $S/N$ of the dust continuum model."
+      },
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "This self-calibration is based on the line-free channels in each spectral window"
+      }
+     ]
+    },
+    "software": [
+     "CASA 5.4.1",
+     "CONCAT",
+     "UVFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Phase center J2000 04h39m35.203s +25d41m44.21s from fitting an elliptical Gaussian to continuum visibilities",
+      "evidence": [
+       {
+        "loc": "2.3 Self-calibration and combined ALMA data",
+        "quote": "The phase center of J2000 04h39m35.203s +25d41m44.21s is determined by fitting an elliptical Gaussian to the continuum visibilities with CASA task UVFIT."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image continuum and line cubes",
+    "method": {
+     "value": "TCLEAN with Briggs weighting for continuum; UVCONTSUB for line windows; line cubes at 0.3 km/s with 0.08 arcsec taper",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The imaging of the continuum is performed with TCLEAN using Briggs weighting (cite: briggs95) to minimize the side lobes."
+      },
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The spectral lines are imaged at 0.3 km s$^{-1}$ velocity resolution including a spatial tapering at 0.08$''$"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "TCLEAN",
+     "UVCONTSUB"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit Gaussian intensity profiles to continuum visibilities",
+    "method": {
+     "value": "GALARIO synthetic visibilities of a Gaussian intensity profile fitted to observed visibilities at each frequency",
+     "evidence": [
+      {
+       "loc": "3.1 Spatially resolved dust continuum",
+       "quote": "GALARIO calculates the synthetic (u,v) visibilities given an intensity profile and makes it possible to fit Gaussian intensity profiles to the observed visibilities"
+      }
+     ]
+    },
+    "software": [
+     "GALARIO",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free parameters: peak intensity, size, inclination, position angle, position offset",
+      "evidence": [
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "The free parameters are the peak intensity $I$ in Jy sr$^{-1}$, size of the emitting region, inclination $i$, position angle $PA$, and position offset."
+       }
+      ]
+     },
+     {
+      "value": "First run 60 walkers and 1000 steps; second run 120 walkers, 10000 steps; best fit = mean of last 1000 steps of walkers with acceptance ratio >20%",
+      "evidence": [
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "a first run is performed with 60 walkers ($10 \\times$ free parameters) and 1000 steps."
+       },
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "This second run is performed with 10000 steps to obtain the final set of best-fit parameters."
+       },
+       {
+        "loc": "3.1 Spatially resolved dust continuum",
+        "quote": "taking the mean of the last 1000 steps of the walkers with acceptance ratios greater than 20%"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "emcee MCMC with chi^2-based exploration; priors and likelihood form not stated",
+     "evidence": [
+      {
+       "loc": "3.1 Spatially resolved dust continuum",
+       "quote": "Each walker explores the parameter space by gradually stepping into a region with the lowest $\\chi^2$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared integrated flux density of NOEMA and ALMA at 220 GHz; flux scale uncertainty within 10%",
+     "evidence": [
+      {
+       "loc": "3.1 Spatially resolved dust continuum",
+       "quote": "the uncertainty in the absolute flux density is within 10%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure line integrated flux densities, upper limits and proxy-masked spectra",
+    "method": {
+     "value": "Sum pixels above 3 sigma for flux densities; upper limits from a spatial mask over the continuum assuming 1 km/s Gaussian linewidth; DCN/HCN spectra extracted with proxy mask from a line cube",
+     "evidence": [
+      {
+       "loc": "3.2 Molecular gas observations",
+       "quote": "The tabulated integrated flux densities are calculated considering pixels whose intensities $> 3 \\sigma$ over the entire image."
+      },
+      {
+       "loc": "3.2 Molecular gas observations",
+       "quote": "a proxy mask is created from the  spectral cube by taking pixels ($x,y,v$) that are $>3 \\sigma$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Gaussian linewidth of 1 km/s for upper limits",
+      "evidence": [
+       {
+        "loc": "3.2 Molecular gas observations",
+        "quote": "assuming a Gaussian linewidth of 1 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive molecular column densities (optically thin LTE and non-LTE slab)",
+    "method": {
+     "value": "Optically thin thermalized emission with fixed Tex, checked with RADEX non-LTE slab models using LAMDA collisional rates",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "the molecular column density of the emitting gas can be determined by assuming a thermalized, optically thin layer of emission"
+      },
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "A non-LTE radiative transfer calculation of a slab using RADEX (cite: radex) is also performed as a check on the column density and excitation temperature."
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "LAMDA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Excitation temperature 30 K adopted in the optically thin case",
+      "evidence": [
+       {
+        "loc": "4.1 Molecular column density of the disk",
+        "quote": "In the optically thin approximation, adopting an excitation temperature of 30 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "T_gas = T_dust for the emitting region of the optically thin CO isotopolog, justifying 30 K",
+      "evidence": [
+       {
+        "loc": "4.1 Molecular column density of the disk",
+        "quote": "A temperature of 30 K is usually adopted to convert the dust thermal emission to dust mass"
+       }
+      ]
+     },
+     {
+      "value": "Single collisional partner H2, ortho-to-para ratio ignored for HCN, HCO+ and SO rates",
+      "evidence": [
+       {
+        "loc": "4.1 Molecular column density of the disk",
+        "quote": "All of these rates consider a single collisional partner, H$_2$, without taking into account its ortho-to-para ratio."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Optically thin limit compared with non-LTE slab results for the optically thin CO isotopolog and the other molecules",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "Therefore, the optically thin limit provides a reasonable estimate for the  emitting layer."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Constrain DCN/HCN ratio",
+    "method": {
+     "value": "Disk-averaged HCN column density and upper limit for DCN from spectra summed over the Keplerian disk, for Tex 15-50 K",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "For a range of excitation temperatures between 15 to 50 K, an average value of $N_{\\ce{HCN}} \\sim 1.1 \\times 10^{12}$ cm$^{-2}$ is derived for the TMC1A disk."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Disk-averaged HCN spectrum checked against azimuthally averaged values",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "As a check, we determined that the physical conditions derived from the averaged HCN spectrum are similar to the azimuthally-averaged values in the previous section."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Estimate the disk temperature structure",
+    "method": {
+     "value": "Continuum and line peak brightness temperatures vs deprojected radius in high-velocity channels; by-eye power-law fit",
+     "evidence": [
+      {
+       "loc": "4.2 Temperature structure of the disk",
+       "quote": "Using the high-velocity channels ($1 < v < 4$ km s$^{-1}$ and $9< v <12$ km s$^{-1}$; to avoid resolved-out emission near the systemic velocity)"
+      },
+      {
+       "loc": "4.2 Temperature structure of the disk",
+       "quote": "We find that, by eye, a temperature profile given by"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Dust emission optically thick within the inner 30 au so continuum brightness temperature traces the temperature profile",
+      "evidence": [
+       {
+        "loc": "4.2 Temperature structure of the disk",
+        "quote": "If the dust emission is optically thick within the inner 30 au, however, the peak continuum brightness temperature gives indications on the disk’s temperature profile."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "By-eye comparison, no formal fit",
+     "evidence": [
+      {
+       "loc": "4.2 Temperature structure of the disk",
+       "quote": "We find that, by eye, a temperature profile given by"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Profile checked against dust brightness temperature, CO peak and Lbol-based inner temperature",
+     "evidence": [
+      {
+       "loc": "4.2 Temperature structure of the disk",
+       "quote": "It reproduces the dust brightness temperature profile in the inner 30 au and intersects the peak of the  emission."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Derive molecular abundances relative to CO and H2",
+    "method": {
+     "value": "Column density ratios to 13CO or C18O converted with ISM isotopic ratios, then scaled with X_CO = 1e-4",
+     "evidence": [
+      {
+       "loc": "5.2 Molecular abundances in the TMC1A disk.",
+       "quote": "Adopting the ISM isotopic ratios of $\\ce{^{12}C}:\\ce{^{13}C} = 70$ and $\\ce{^{16}O}:\\ce{^{18}O} = 540$ (cite: wilson94)"
+      },
+      {
+       "loc": "5.2 Molecular abundances in the TMC1A disk.",
+       "quote": "$10^{-4}$ relative to (cite: harsono14; vanthoff18b; kzhang20)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO gas abundance close to canonical ISM value 1e-4 relative to H2",
+      "evidence": [
+       {
+        "loc": "5.2 Molecular abundances in the TMC1A disk.",
+        "quote": "$10^{-4}$ relative to (cite: harsono14; vanthoff18b; kzhang20)"
+       }
+      ]
+     },
+     {
+      "value": "Abundances valid only for inner warm envelope and disk layers above the dust photosphere",
+      "evidence": [
+       {
+        "loc": "5.2 Molecular abundances in the TMC1A disk.",
+        "quote": "these abundance fractions are valid in the emitting regions of the inner warm envelope and the layers of the young disk above the dust photosphere"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with protostellar envelope, Class II disks and Solar System objects",
+     "evidence": [
+      {
+       "loc": "5.2 Molecular abundances in the TMC1A disk.",
+       "quote": "Remarkably, the gas abundance ratios in the disk around TMC1A are similar to its protostellar envelope"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Estimate ionization fraction and test MRI activity",
+    "method": {
+     "value": "Reduced CO-HCO+ chemical network solved for equilibrium abundance with cosmic-ray ionization rate; magnetic Reynolds number and Am evaluated",
+     "evidence": [
+      {
+       "loc": "5.3 Accretion processes in a young disk",
+       "quote": "We compute the electron number density from the cosmic ray (CR) ionization rate"
+      },
+      {
+       "loc": "5.3 Accretion processes in a young disk",
+       "quote": "we estimate that $R_{\\rm e} > 10^{6}$ and $Am < 0.1$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Fixed CO abundance 1e-4 and a second species abundance 3e-6 relative to H2; range of densities, temperatures and zeta explored",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "We adopt a fixed CO abundance of $10^{-4}$ and a abundance of $3 \\times 10^{-6}$ relative to"
+       },
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "A range of densities, temperature, and $\\zeta$ values are explored to investigate the effect on the resulting  abundance."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "HCO+ taken as the dominant ion",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "Here, we assume that  is the dominant ion."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Dependence on temperature tested (variance less than a factor of 2 between 20 and 100 K)",
+     "evidence": [
+      {
+       "loc": "5.3 Accretion processes in a young disk",
+       "quote": "the variance in  abundance is less than a factor of 2 for temperatures between 20 and 100 K"
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Infer current stellar accretion rate from water snow surface",
+    "method": {
+     "value": "Water snow surface location from the brightness temperature profile combined with the snowline-accretion relation and Lbol",
+     "evidence": [
+      {
+       "loc": "5.3 Accretion processes in a young disk",
+       "quote": "We use the brightness temperature profile in Fig. [10](#fig:TMC1Atemp) to estimate that the water snow surface in TMC1A is located at $\\simeq$10 au"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Observed brightness temperature profile traces the irradiated disk surface",
+      "evidence": [
+       {
+        "loc": "5.3 Accretion processes in a young disk",
+        "quote": "likely traces the irradiated disk surface"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Noted as higher than Lbol-based and large-scale values; 2D physical structure needed",
+     "evidence": [
+      {
+       "loc": "5.3 Accretion processes in a young disk",
+       "quote": "A more detailed 2D physical structure (cite: cleeves13; cleeves17) of the disk+envelope is, however, required to more accurately assess these values."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2 (2016.1.00711.S pipeline); 5.1.1 (2017.1.00212.S pipeline); 5.4.1 (self-calibration)",
+    "used_for": {
+     "value": "Calibration, concatenation, self-calibration, imaging and uv-plane continuum subtraction",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations: 2016.1.00711.S",
+       "quote": "The data were calibrated using the Cycle 4 pipeline of CASA 4.7.2 (cite: CASA)."
+      },
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "was performed with CASA 5.4.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CONCAT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Combine the three ALMA projects into one measurement set",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "using the CASA task CONCAT"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Phase center from elliptical Gaussian fit to continuum visibilities",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "fitting an elliptical Gaussian to the continuum visibilities with CASA task UVFIT"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TCLEAN",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum imaging with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "The imaging of the continuum is performed with TCLEAN using Briggs weighting"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVCONTSUB",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum subtraction in the uv plane for line windows",
+     "evidence": [
+      {
+       "loc": "2.3 Self-calibration and combined ALMA data",
+       "quote": "continuum subtracted in the (u,v) plane with the task UVCONTSUB"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALARIO",
+    "version": "not stated",
+    "used_for": {
+     "value": "Synthetic visibilities for Gaussian intensity profile fits to continuum",
+     "evidence": [
+      {
+       "loc": "3.1 Spatially resolved dust continuum",
+       "quote": "GALARIO calculates the synthetic (u,v) visibilities given an intensity profile"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC exploration of continuum model parameters",
+     "evidence": [
+      {
+       "loc": "3.1 Spatially resolved dust continuum",
+       "quote": "The Markov Chain Monte Carlo (MCMC) Python package EMCEE (cite: emcee) is used to efficiently explore a wide range of parameters."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE slab radiative transfer check of column densities and excitation",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "A non-LTE radiative transfer calculation of a slab using RADEX (cite: radex) is also performed as a check on the column density and excitation temperature."
+      }
+     ]
+    }
+   },
+   {
+    "name": "LAMDA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Collisional rate coefficients for RADEX",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "The non-LTE radiative transfer calculations for HCN, , and SO lines also use the LAMDA collisional rate coefficients."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy, numpy, matplotlib, casacore",
+    "version": "not stated",
+    "used_for": {
+     "value": "Python analysis and plotting; casacore to handle CASA measurement sets and images",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made use of Astropy community-developed Python package for Astronomy (cite: astropy18), numpy, matplotlib (cite: Hunter2007), and python package CASACORE to handle CASA products (images and measurement sets)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk inclination from continuum Gaussian fits",
+    "value": "50",
+    "uncertainty": "+/- 3",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Spatially resolved dust continuum",
+      "quote": "the TMC1A protostellar system is inclined at 50$^{\\circ} \\pm 3$ with a position angle of 75$^{\\circ}\\pm 4$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk position angle (Section 3.1 value)",
+    "value": "75",
+    "uncertainty": "+/- 4",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Spatially resolved dust continuum",
+      "quote": "the TMC1A protostellar system is inclined at 50$^{\\circ} \\pm 3$ with a position angle of 75$^{\\circ}\\pm 4$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk position angle (Summary value, differs from Section 3.1)",
+    "value": "76",
+    "uncertainty": "+/- 4",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6 Summary and Conclusions",
+      "quote": "$i=50^{\\circ} \\pm 3^{\\circ}$ and $PA = 76^{\\circ} \\pm 4^{\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust disk FWHM size",
+    "value": "0.23 arcsec (30 au at 140 pc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Spatially resolved dust continuum",
+      "quote": "or 30 au at 140 pc"
+     }
+    ]
+   },
+   {
+    "quantity": "Absolute flux density uncertainty from NOEMA vs ALMA at 220 GHz",
+    "value": "within 10",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Spatially resolved dust continuum",
+      "quote": "the uncertainty in the absolute flux density is within 10%"
+     }
+    ]
+   },
+   {
+    "quantity": "Column density of the optically thin CO isotopolog (C18O) from RADEX",
+    "value": "1e15 to 1e16",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Molecular column density of the disk",
+      "quote": "The $N_{\\rm{C^{18}O}}$ is between $10^{15}$ to $10^{16}$  cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Optically thin column densities of HCN, HCO+ and SO (Tex = 30 K)",
+    "value": "N_HCN = 5e12 to 1e13; N_HCO+ = 5e12 to 1e13; N_SO = 1e14 to 6e14",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Molecular column density of the disk",
+      "quote": "$N_{\\ce{HCN}} = 5 \\times 10^{12} - 10^{13}$ cm$^{-2}$, $N_{\\ce{HCO^{+}}} = 5 \\times 10^{12} - 10^{13}$ cm$^{-2}$, and $N_{\\ce{SO}} = 10^{14} - 6 \\times 10^{14}$ cm$^{-2}$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged HCN column density",
+    "value": "1.1e12",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1 Molecular column density of the disk",
+      "quote": "an average value of $N_{\\ce{HCN}} \\sim 1.1 \\times 10^{12}$ cm$^{-2}$ is derived for the TMC1A disk"
+     }
+    ]
+   },
+   {
+    "quantity": "DCN column density upper limit",
+    "value": "<3e11",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1 Molecular column density of the disk",
+      "quote": "upper limit for the DCN column density of $\\sim 3 \\times 10^{11}$ cm$^{-2}$, resulting in a DCN$/$HCN ratio of $<$0.3"
+     }
+    ]
+   },
+   {
+    "quantity": "DCN/HCN upper limit (HCN at 8-10 km/s)",
+    "value": "<0.26",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1 Molecular column density of the disk",
+      "quote": "the upper limit of DCN$/$HCN is then $<0.26$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk temperature profile",
+    "value": "T = 2000 x (R/0.1 au)^-0.6",
+    "uncertainty": "not stated (by eye)",
+    "units": "K",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Temperature structure of the disk",
+      "quote": "a temperature profile given by $2000 \\times \\left ( R/0.1 \\ {\\rm au} \\right )^{-0.6}$ seems to be consistent with our dust and gas observations of TMC1A"
+     }
+    ]
+   },
+   {
+    "quantity": "Column density ratios N_HCO+/N_13CO and N_SO/N_13CO",
+    "value": "1e-4 to 1e-3 and 1e-3 to 1e-1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.2 Molecular abundances in the TMC1A disk.",
+      "quote": "$N_{\\rm HCO^{+}}/N_{\\rm ^{13}CO} \\sim 10^{-4} - 10^{-3}$ and $N_{\\rm SO}/N_{\\rm ^{13}CO} = 10^{-3} - 10^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk abundances relative to H2 (X_CO = 1e-4)",
+    "value": "X_HCO+ = 1e-10 to 1e-9; X_HCN = 1e-11 to 1e-9; X_SO = 1e-9 to 1e-7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.2 Molecular abundances in the TMC1A disk.",
+      "quote": "we estimate abundances of $X_{\\ce{HCO^{+}}} = 10^{-10}$–$10^{-9}$, $X_{\\ce{HCN}} = 10^{-11}$–$10^{-9}$ and $X_{\\ce{SO}} = 10^{-9}$–$10^{-7}$ in the disk of TMC1A"
+     }
+    ]
+   },
+   {
+    "quantity": "Cosmic-ray ionization rate reproducing the observed HCO+ abundance (n = 1e6 cm^-3, T = 20 K)",
+    "value": "~1e-17",
+    "uncertainty": "not stated",
+    "units": "s^-1",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "5.3 Accretion processes in a young disk",
+      "quote": "can be reproduced with $\\zeta \\sim 10^{-17}$ s$^{-1}$, densities of $10^{6}$ cm$^{-3}$, and a gas temperature of 20 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Magnetic Reynolds number and ion-neutral collision parameter Am",
+    "value": "R_e > 1e6; Am < 0.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "5.3 Accretion processes in a young disk",
+      "quote": "we estimate that $R_{\\rm e} > 10^{6}$ and $Am < 0.1$"
+     }
+    ]
+   },
+   {
+    "quantity": "Water snow surface location",
+    "value": "~10 au (T < 160 K)",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "5.3 Accretion processes in a young disk",
+      "quote": "the water snow surface in TMC1A is located at $\\simeq$10 au (i.e. where $T < 160$ K)"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar accretion rate (current)",
+    "value": "~1e-6 (upper bound from non-detection of water line <~1e-5)",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "5.3 Accretion processes in a young disk",
+      "quote": "we infer that the stellar accretion rate is $\\lesssim 10^{-5}$ M$_{\\odot}$ yr$^{-1}$ in TMC1A"
+     },
+     {
+      "loc": "5.3 Accretion processes in a young disk",
+      "quote": "we estimate that the current stellar accretion rate is close to $10^{-6}$ M$_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN v2=1 peak flux density upper limit per line",
+    "value": "0.9",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Appendix: Molecular lines: vibrational transitions",
+      "quote": "The peak flux density of each line has a 0.9 mJy upper limit."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "HCN emission peaks toward the outflow cavity region and toward the red-shifted part of the Keplerian disk; the narrow HCN line traces the disk-envelope transition region",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "HCN emission peaks toward the outflow cavity region connected with the CO disk wind and toward the red-shifted part of the Keplerian disk."
+     },
+     {
+      "loc": "5.1 Physical components of embedded protostars traced by molecular lines",
+      "quote": "Therefore, we conclude that the HCN line traces the disk-envelope transition region."
+     }
+    ]
+   },
+   {
+    "value": "SO traces the infalling, warm inner envelope along the outflow cavity wall, not an accretion shock or disk wind",
+    "evidence": [
+     {
+      "loc": "5.1 Physical components of embedded protostars traced by molecular lines",
+      "quote": "indicates that it originates from the infalling, warm inner envelope along the line of sight"
+     }
+    ]
+   },
+   {
+    "value": "The warm disk shows no CO freeze-out region in the inner 100 au",
+    "evidence": [
+     {
+      "loc": "4.2 Temperature structure of the disk",
+      "quote": "does not have a CO freeze-out region ($T_{\\rm dust} = 30$ K) in the inner 100 au of the disk"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Planet-forming material enters the young disk from the envelope chemically unaltered",
+    "experiment": "Compared disk-averaged abundance ratios of HCO+, HCN and SO derived from resolved ALMA lines with the protostellar envelope values",
+    "result": "Gas abundance ratios in the disk are similar to those of the protostellar envelope",
+    "finding": "The observed molecular layer of the disk is composed of unaltered infalling gas, implying smooth transport without strong shocks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Abundance comparisons between the disk and its surrounding envelope for several molecular species reveal that the bulk of planet-forming material enters the disk unaltered."
+     },
+     {
+      "loc": "5.2 Molecular abundances in the TMC1A disk.",
+      "quote": "Remarkably, the gas abundance ratios in the disk around TMC1A are similar to its protostellar envelope"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Accretion in the TMC1A disk is driven by the magneto-rotational instability",
+    "experiment": "Used HCO+ abundance and a reduced chemical network to infer the ionization fraction, then evaluated magnetic Reynolds number and Am",
+    "result": "R_e > 1e6 and Am < 0.1 with zeta ~ 1e-17 s^-1 at n = 1e6 cm^-3",
+    "finding": "MRI is likely not active in the observed molecular layer; other mechanisms (winds, GI, hydrodynamical instabilities) are needed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "find values that imply that the accretion process is not driven by the magneto-rotational instability"
+     },
+     {
+      "loc": "5.3 Accretion processes in a young disk",
+      "quote": "MRI is likely not active in the observed molecular layer"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The disk orientation can be constrained from resolved dust continuum",
+    "experiment": "Gaussian intensity profile fits to continuum visibilities at five frequencies with GALARIO and emcee",
+    "result": "Inclination 50 +/- 3 deg and position angle about 75-76 deg",
+    "finding": "The dust disk is detected at 203-260 GHz and its orientation is tightly constrained",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Summary and Conclusions",
+      "quote": "$i=50^{\\circ} \\pm 3^{\\circ}$ and $PA = 76^{\\circ} \\pm 4^{\\circ}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The molecular abundances of the young disk resemble those of Class II disks but differ from Solar System objects",
+    "experiment": "Compared derived abundances and ratios with Class II disks and comets/Titan from the literature",
+    "result": "Similar to the envelope and Class II disks; discrepancies relative to Solar System objects",
+    "finding": "Differences trace chemical evolution during disk and planet formation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The molecular abundances averaged over the TMC1A disk are similar to its protostellar envelope and other, older Class II disks. We meanwhile find a discrepancy between the young disk’s molecular abundances relative to Solar System objects."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Resolved HCN emission can be assigned to disk or envelope components",
+    "experiment": "Compared HCN spectra, channel maps and moment maps with CO isotopolog and HCO+ emission",
+    "result": "Two HCN peaks: west (red-shifted, co-spatial with disk tracers) and north (outflow cavity wall)",
+    "finding": "The western red-shifted HCN comes from the surface of the Keplerian disk; the northern emission traces envelope near the outflow cavity wall",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Summary and Conclusions",
+      "quote": "Two HCN emission peaks are located to the west on the red-shifted side of the disk and to the north of the blue-shifted side of the disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The DCN/HCN ratio in the TMC1A disk can be constrained",
+    "experiment": "Proxy-masked spectra and column densities from the HCN and DCN 3-2 lines",
+    "result": "DCN not detected; DCN/HCN < 0.3 (< 0.26 for 8-10 km/s)",
+    "finding": "Upper limits are consistent with other young stellar objects and Solar System objects",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.2 Molecular abundances in the TMC1A disk.",
+      "quote": "Our upper limits to the DCN/HCN fraction in the TMC1A disk are, meanwhile, consistent with other various young stellar objects and Solar System objects."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "TMC1A has a favorable inclination and simple geometry with a well-defined disk, making it a laboratory for the abundances of simple molecules on ~15 au scales",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "The relatively simple geometry of TMC1A with its well-defined disk, makes it an ideal laboratory for determining the distribution and abundances of common, simple molecules"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Optically thin LTE column densities as a zeroth-order estimate, checked with non-LTE radiative transfer",
+    "evidence": [
+     {
+      "loc": "4.1 Molecular column density of the disk",
+      "quote": "To zeroth order, the molecular column density of the emitting gas can be determined by assuming a thermalized, optically thin layer of emission"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Accretion shock origin of SO rejected because of narrow line profile and low peak temperatures",
+     "evidence": [
+      {
+       "loc": "5.1 Physical components of embedded protostars traced by molecular lines",
+       "quote": "rule out an accretion shock origin (cite: sakai14nat)"
+      }
+     ]
+    },
+    {
+     "value": "Disk wind origin of SO excluded because SO and CO emission are not co-spatial",
+     "evidence": [
+      {
+       "loc": "5.1 Physical components of embedded protostars traced by molecular lines",
+       "quote": "it excludes a disk wind origin for SO (cite: tabone17) for TMC1A"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Much of the large-scale emission is filtered out; one line cannot be imaged",
+     "evidence": [
+      {
+       "loc": "6 Summary and Conclusions",
+       "quote": "emission cannot be imaged because it is mostly filtered out"
+      }
+     ]
+    },
+    {
+     "value": "Optically thick lines give lower limits to the total column density",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "This implies that the derived column densities are lower limits to the total column density of the gas that is present in the system."
+      }
+     ]
+    },
+    {
+     "value": "Envelope material contaminates some lines of sight, so disk abundances are approximate",
+     "evidence": [
+      {
+       "loc": "5.2 Molecular abundances in the TMC1A disk.",
+       "quote": "Although some envelope material is contaminating the detected emission, it is still useful to calculate the relative abundances for the disk"
+      }
+     ]
+    },
+    {
+     "value": "A detailed 2D physical and chemical model is needed to place the emission exactly; beyond scope",
+     "evidence": [
+      {
+       "loc": "5.1 Physical components of embedded protostars traced by molecular lines",
+       "quote": "A detailed 2D physical and chemical model is required to quantify the exact location of the molecular emission, but this is beyond the scope of the current work."
+      }
+     ]
+    },
+    {
+     "value": "Non-LTE collisional rates use a single H2 partner without ortho-to-para ratio",
+     "evidence": [
+      {
+       "loc": "4.1 Molecular column density of the disk",
+       "quote": "All of these rates consider a single collisional partner, H$_2$, without taking into account its ortho-to-para ratio."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Abundances rest on one assumed Tex (30 K) and a CO abundance of 1e-4 with ISM isotopic ratios; uncertainties are quoted only as ranges spanning orders of magnitude",
+    "No formal error budget for column densities; by-eye temperature profile",
+    "Strong spatial filtering (about 90% of CO-isotopolog flux lost vs lower resolution) biases abundance ratios, especially SO/CO",
+    "Disk/envelope separation is qualitative (spectra and moment maps), not from a physical model",
+    "PA quoted as 75 in Sect. 3.1 and 76 in Summary; HCO+ frequency in text (267.8527) differs from the table (267.5576)"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Briggs robust, clean parameters, masks and taper details",
+    "Self-calibration parameters and line-free channel ranges",
+    "Calibrator flux values and first-data-set processing (deferred to earlier papers)",
+    "RADEX grids and linewidths, binning for azimuthal averages",
+    "Envelope and Solar System comparison values used in the abundance figure",
+    "No stated public release of scripts or reduced products"
+   ],
+   "estimated_data_volume_inferred": "Seven ALMA long-baseline execution blocks over three projects; roughly 100-300 GB raw, 20-60 GB calibrated measurement sets",
+   "score_inferred": 3,
+   "score_reason": "Three ALMA projects are named and the continuum fitting recipe and column-density method are described with numeric results, but imaging settings (robust, masks, cleaning), self-calibration details and key comparison values are missing or deferred to earlier papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Project codes are given but the data release status is not stated in the paper and the imaging and self-calibration recipe is too incomplete to redo the line cubes and flux densities exactly."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: harsono18)",
+     "why": "Imaging and calibration of the first ALMA data set and the phase center"
+    },
+    {
+     "citation": "(cite: harsono20)",
+     "why": "NOEMA data processing and the water upper limit"
+    },
+    {
+     "citation": "(cite: galario)",
+     "why": "GALARIO visibility modelling code"
+    },
+    {
+     "citation": "(cite: aikawa15)",
+     "why": "Reduced chemical network for the HCO+ and ionization calculation"
+    },
+    {
+     "citation": "(cite: carney19)",
+     "why": "Method for line upper limits"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: bjerkeli2016)",
+     "why": "Earlier publication of the 2015.1.01549.S CO data and disk wind"
+    },
+    {
+     "citation": "(cite: harsono18)",
+     "why": "Earlier Keplerian disk analysis of TMC1A"
+    },
+    {
+     "citation": "(cite: harsono14)",
+     "why": "Earlier lower-resolution molecular and continuum study of TMC1A"
+    },
+    {
+     "citation": "(cite: vanthoff20)",
+     "why": "Recent observations also indicating lack of CO freeze-out in the TMC1A disk"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA long baseline campaigns (LBC)",
+    "2015.1.01549.S",
+    "2016.1.00711.S",
+    "2017.1.00212.S",
+    "NOEMA projects V064 and X065"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2021A%26A...646A..72H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T07:49:57",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 171,
+  "quotes_ok": 171,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 18,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 127,
+   "stated": 100,
+   "rate": 0.787
+  },
+  "evidence_ok": true
+ }
+}

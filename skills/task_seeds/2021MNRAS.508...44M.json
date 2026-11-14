@@ -1,0 +1,211 @@
+{
+ "bibcode": "2021MNRAS.508...44M",
+ "title": "ALMA and NOEMA constraints on synchrotron nebular emission from embryonic superluminous supernova remnants and radio-gamma-ray connection",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab2506",
+ "arxiv_id": "2105.05239",
+ "fields": [
+  "transients"
+ ],
+ "question": "Test the pulsar/magnetar-driven scenario for super-luminous supernovae by searching for non-thermal synchrotron emission from nascent pulsar wind nebulae using high-frequency radio observations with ALMA and NOEMA.",
+ "alma_project_codes": [
+  "2017.1.00975.S",
+  "2018.1.01295.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~3 mm), Band 6 (~1.3 mm)",
+  "arrays": "43 to 48 antennas",
+  "angular_resolution": "SN 2015bn: 1.87\"x1.55\" (B3), 1.02\"x0.64\" (B6); SN 2016ard: 3.17\"x2.23\" (B3), 1.27\"x0.94\" (B6); SN 2017egm: 2.69\"x0.92\" (B3), 1.17\"x0.35\" (B6)",
+  "sensitivity": "3-sigma upper limits: SN 2015bn: 87.4 uJy (97.1 GHz), 123 uJy (233.0 GHz); SN 2016ard: 26.0 uJy (97.5 GHz), 15.1 uJy (233.0 GHz); SN 2017egm: 134 uJy (97.5 GHz), 151 uJy (233.0 GHz)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Open Supernovae Catalog and V-band optical light curve data and spin-down parameters for SN 2015bn",
+    "evidence": [
+     {
+      "loc": "ALMA and NOEMA observations",
+      "quote": "Working from the Open Supernovae Catalog (cite: OpenSN17), (cite: OKM18) investigated the detectability of radio and millimetre emission from the recent brightest 6 SLSNe with good quality data of SN light curves."
+     },
+     {
+      "loc": "ALMA and NOEMA observations",
+      "quote": "We adopt the values of $B_{*}$, $P_i$ and $M_{\\rm ej}$ obtained by (cite: OKM18) with the V band data."
+     }
+    ]
+   },
+   "citation": "(cite: OpenSN17), (cite: OKM18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA and NOEMA observations and derive upper limits",
+   "method": "Calibrate and image ALMA Band 3 and Band 6 data using the ALMA Pipeline in CASA and NOEMA Band 1 data using GILDAS to produce Stokes I images, then measure RMS within 5 arcsec to obtain 3-sigma upper limits.",
+   "software": [
+    "CASA",
+    "ALMA Pipeline",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "5 arcsec aperture for RMS measurement; 3-sigma threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine central engine spin-down and ejecta parameters from SN optical light curves",
+   "method": "Model optical light curves of the SLSNe to extract dipole magnetic field B_*, initial spin period P_i, and ejecta mass M_ej.",
+   "software": [],
+   "key_parameters": [
+    "P_i = 1 ms and P_i = P_max"
+   ],
+   "assumptions": [
+    "K = 0.1 cm^2 g^-1, M_Ni = 0.1 M_sun, E_ej = 10^51 erg, neutron star radius = 12 km"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate time-dependent non-thermal PWN spectra and light curves and compare with radio/mm limits",
+   "method": "Solve coupled kinetic equations for electrons/positrons and photons in the expanding PWN and SN ejecta including electromagnetic cascades, synchrotron self-absorption, Razin-Tsytovich suppression, and free-free absorption for three magnetization models.",
+   "software": [],
+   "key_parameters": [
+    "Crab-motivated: epsilon_B = 0.003, gamma_b = 6e5, q_1 = 1.5; Low-magnetization: epsilon_B = 10^-6, gamma_b = 10^3, q_1 = 1; High-magnetization: epsilon_B = 0.5, gamma_b = 10^7, q_1 = 1; q_2 = 2.5"
+   ],
+   "assumptions": [
+    "Cosmological parameters h=0.7, Omega_m=0.3, Omega_Lambda=0.7; epsilon_e = 1 - epsilon_B; c_B = 0; gamma_e in [10^3, 10^7]; two cases with and without free-free absorption in singly-ionized CO ejecta"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SN 2015bn 97.1 GHz flux density 3-sigma upper limit",
+   "value": "87.4",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2015bn | 58218 | 333 | 97.1 | 87.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2015bn 233.0 GHz flux density 3-sigma upper limit",
+   "value": "123",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 58216 | 666 | 233.0 | 123 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2016ard 97.5 GHz flux density 3-sigma upper limit",
+   "value": "26.0",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2016ard | 58317-58318 | 5746 | 97.5 | 26.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2016ard 233.0 GHz flux density 3-sigma upper limit",
+   "value": "15.1",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 58292-58297 | 28123 | 233.0 | 15.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2017egm 97.5 GHz flux density 3-sigma upper limit",
+   "value": "134",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2017egm | 58591 | 1182 | 97.5 | 134 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2017egm 233.0 GHz flux density 3-sigma upper limit",
+   "value": "151",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | 58587 | 2331 | 233.0 | 151 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2017egm 86.3 GHz (NOEMA) flux density 3-sigma upper limit",
+   "value": "40.4",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| (total) | 58342-58385 | 40300 | 86.3 | 40.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SN 2017egm 101.7 GHz (NOEMA) flux density 3-sigma upper limit",
+   "value": "43.5",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| | (58365: avg) | 40300 | 101.7 | 43.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Constraint on microphysical parameters from 230 GHz non-detections",
+   "value": "1",
+   "uncertainty": "upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Model implications",
+     "quote": "\\gamma_{b,5.8}^{-1/2}\\epsilon_{B,-2.5}^{-1/8}{(1+Y_{\\rm IC})}^{-1}\\lesssim1."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Weighting scheme and robust parameter used in ALMA pipeline imaging",
+  "Specific calibrator sources used for flux, bandpass, and phase calibration",
+  "Exact numerical solver details and time-stepping for the coupled PWN kinetic equations"
+ ],
+ "missing_for_reproduction": [
+  "Source code for the time-dependent PWN kinetic equation solver",
+  "Exact imaging weighting/robust parameters (though standard ALMA Pipeline products were used)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "The ALMA observational results are straightforward 3-sigma continuum upper limits obtained directly from standard ALMA Pipeline products (exact CASA and pipeline versions are given). The theoretical model equations and parameters are well-specified, though the custom numerical code is not released.",
+ "rediscovery_reason": "The ALMA project codes, CASA/pipeline versions, target coordinates, integration times, beam sizes, and 3-sigma continuum upper limits within a 5 arcsec aperture are all explicitly stated, making the observational measurements directly reproducible from public ALMA archive data.",
+ "source_card": "cards/2021MNRAS.508...44M/sonnet/card.md"
+}

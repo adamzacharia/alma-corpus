@@ -1,0 +1,432 @@
+{
+ "bibcode": "2025A&A...693A.237I",
+ "title": "The ALMA-CRISTAL Survey: Spatial extent of [CII] line emission in star-forming galaxies at z = 4−6",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202451811",
+ "arxiv_id": "2408.03374",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Investigate the spatial extent, structure, and physical origin of [C II] line emission in star-forming galaxies at z = 4-6, including a search for an extended secondary halo component.",
+ "alma_project_codes": [
+  "2021.1.00280.L",
+  "2017.1.00428.L",
+  "2018.1.01605.S",
+  "2018.1.01359.S",
+  "2019.1.01075.S",
+  "2019.1.00226.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "ALMA 12m array",
+  "angular_resolution": "compact: 0.29\" - 1.00\"; extended: 0.07\" - 0.35\"; synthesized cube: 0.3\" - 0.5\"",
+  "sensitivity": "1 sigma ~ 0.1 - 0.2 mJy per 20 km/s channel bin"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Rest-frame UV sizes (Re,UV), FIR continuum sizes (Re,FIR), and obscured star formation rates (SFR_IR)",
+    "evidence": [
+     {
+      "loc": "3.2.2. Rest-frame UV and FIR continuum emission",
+      "quote": "To evaluate the spatial extent of [C ii] line emission, we refer to two continuum size measurements (observing wavelengths of 1.6 µm and 870 µm), which were both performed in Mitsuhashi et al. (2024)."
+     },
+     {
+      "loc": "4.3.1 Outflows",
+      "quote": "who convert FIR continuum flux ( _S_ 158 µm ) into IR luminosity ( _L_ IR ) and then into obscured SFR (SFR IR ) following the same method as Béthermin et al. (2020)."
+     }
+    ]
+   },
+   "citation": "Mitsuhashi et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Lyman-alpha equivalent widths (EW_Lya)",
+    "evidence": [
+     {
+      "loc": "4.4. Connection to Ly α and H α emission",
+      "quote": "The values of EW Lyα are presented in the catalogs of both Faisst et al. (2020) and Cassata et al. (2020). Since Cassata et al. (2020) report the EW Lyα value only for the galaxies with [C ii] line detection in the ALPINE Survey, we adopt the values from Faisst et al. (2020) to increase the sample size."
+     }
+    ]
+   },
+   "citation": "Faisst et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "[C II] surface density and [C II]-to-UV size ratio for ALPINE galaxies",
+    "evidence": [
+     {
+      "loc": "Figure 11 caption",
+      "quote": "Small purple circles shown in the top left and bottom right panels are the ALPINE galaxies in which [C ii] surface density, [C ii]-to-UV size ratio (Fujimoto et al. 2020), and Lyα EW (Faisst et al. 2020) are available."
+     }
+    ]
+   },
+   "citation": "Fujimoto et al. (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Classify galaxies by multiplicity",
+   "method": "Visual classification into four categories (single, pair, multiple-UV, multiple-[C II]) based on HST/WFC3 F160W rest-frame UV images and ALMA [C II] line distributions.",
+   "software": [],
+   "key_parameters": [
+    "projected angular separation < ~3 arcsec and velocity offset < 300 km/s for pairs; FIR S/N < 5 or overlapping UV blobs for multiple-UV"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract [C II] spectra and create velocity-binned visibility datasets",
+   "method": "Extract 1D spectrum in a 1-arcsec aperture from the 20 km/s data cube, fit a 1D Gaussian (double Gaussian for CRISTAL-22a) to define the +-2 sigma (95% flux) velocity range, subtract continuum in uv-plane, and bin visibilities over this velocity range into a single channel.",
+   "software": [
+    "CASA/tclean",
+    "scipy (curve_fit)",
+    "CASA/uvcontsub",
+    "CASA/mstransform"
+   ],
+   "key_parameters": [
+    "1-arcsec aperture; 20 km/s channel width; +-2 sigma velocity range (95% flux); nchan = 1"
+   ],
+   "assumptions": [
+    "Single Gaussian line profile (double Gaussian for CRISTAL-22a)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure [C II] structural parameters via visibility modeling",
+   "method": "Fit binned [C II] visibilities directly with 2D exponential disk models (1-component for single/multiple-UV, 2-component for pair/multiple-[C II]) and convert major-axis FWHM and axis ratio to circularized effective radius Re,[CII] and luminosity L_[CII].",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "Sérsic index n = 1 (exponential disk); 6 free parameters (R.A., Decl., total flux density, major-axis FWHM, minor-to-major axis ratio q, position angle); q fixed to 1 when peak S/N < 8"
+   ],
+   "assumptions": [
+    "2D exponential disk profile (n = 1); standard LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare [C II] sizes with rest-frame UV and FIR continuum sizes",
+   "method": "Calculate ratios of circularized [C II] effective radii to rest-frame UV (HST F160W GALFIT) and FIR (ALMA Band-7 UVMULTIFIT) effective radii from Mitsuhashi et al. (2024) and compare across multiplicity classes.",
+   "software": [
+    "GALFIT",
+    "SExtractor",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "Excluded CRISTAL-21 from FIR size comparison due to unreliable FIR size measurement"
+   ],
+   "assumptions": [
+    "Single Sérsic n = 1 profile for UV (except CRISTAL-13) and circular exponential disk for FIR continuum"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test for a secondary extended [C II] halo component via visibility stacking",
+   "method": "Extract real part of visibilities for 16 single galaxies (excluding CRISTAL-23c), stack visibilities and normalized residual visibilities, and perform single-component and concentric double-component ('galaxy' + 'halo') exponential disk fits.",
+   "software": [
+    "casatool ms (getdata)",
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "16 single galaxies; 20 klambda and 100 klambda uv-distance bins; average redshift z = 5.22"
+   ],
+   "assumptions": [
+    "Two concentric exponential disk components for double-component fit; average redshift z = 5.22"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Measure radial surface density profiles of stacked [C II] and FIR continuum",
+   "method": "Shift phase centers to [C II] peaks, stack visibilities of 10 single galaxies detected in both [C II] and FIR using CASA/concat, image with CASA/tclean, and extract radial surface density profiles and their ratio Sigma_[CII]/Sigma_IR.",
+   "software": [
+    "CASA/concat",
+    "CASA/tclean"
+   ],
+   "key_parameters": [
+    "10 single galaxies; natural weighting; cleaned down to 1.5 sigma with 3\" aperture mask; z = 5.22"
+   ],
+   "assumptions": [
+    "Average redshift z = 5.22"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Analyze correlations of [C II] properties with SFR surface density and Lyman-alpha equivalent width",
+   "method": "Perform linear regression fitting and Spearman's rank correlation tests between [C II] size, size ratios, and surface densities against Sigma_SFR_IR and rest-frame EW_Lya.",
+   "software": [],
+   "key_parameters": [
+    "Rest-frame EW_Lya obtained by multiplying observed-frame EW_Lya by (1 + z)^-1"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Average [C II] effective radius <Re,[CII]>",
+   "value": "1.90",
+   "uncertainty": "0.77",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1. [C ii ] line emission",
+     "quote": "We calculate an average value and standard deviation of the [C ii] sizes of ⟨_R_ _e_,[CII]⟩ = 1.90 ± 0.77 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Average [C II]-to-UV size ratio <Re,[CII]/Re,UV> (entire sample)",
+   "value": "2.90",
+   "uncertainty": "1.40",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Size comparison",
+     "quote": "The size ratio (_R_ _e_,[CII] /_R_ _e_,UV) ranges from 0.94 (CRISTAL-16) to 5.03 (CRISTAL-20) with the average value and standard deviation of ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 2.90 ± 1.40."
+    }
+   ]
+  },
+  {
+   "quantity": "Average [C II]-to-FIR size ratio <Re,[CII]/Re,FIR> (entire sample)",
+   "value": "1.54",
+   "uncertainty": "0.63",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Size comparison",
+     "quote": "We calculate the average size ratio and standard deviation of ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.54 ± 0.63."
+    }
+   ]
+  },
+  {
+   "quantity": "Average [C II]-to-UV size ratio <Re,[CII]/Re,UV> (single galaxies)",
+   "value": "3.21",
+   "uncertainty": "1.42",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Size comparison",
+     "quote": "For galaxies classified as single, we derive ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 3.21 ± 1.42 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.62 ± 0.69, while for pair systems we find ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 2.38 ± 1.22 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.36 ± 0.45."
+    }
+   ]
+  },
+  {
+   "quantity": "Average [C II]-to-FIR size ratio <Re,[CII]/Re,FIR> (single galaxies)",
+   "value": "1.62",
+   "uncertainty": "0.69",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Size comparison",
+     "quote": "For galaxies classified as single, we derive ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 3.21 ± 1.42 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.62 ± 0.69, while for pair systems we find ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 2.38 ± 1.22 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.36 ± 0.45."
+    }
+   ]
+  },
+  {
+   "quantity": "Average [C II]-to-UV size ratio <Re,[CII]/Re,UV> (pair systems)",
+   "value": "2.38",
+   "uncertainty": "1.22",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Size comparison",
+     "quote": "For galaxies classified as single, we derive ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 3.21 ± 1.42 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.62 ± 0.69, while for pair systems we find ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 2.38 ± 1.22 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.36 ± 0.45."
+    }
+   ]
+  },
+  {
+   "quantity": "Average [C II]-to-FIR size ratio <Re,[CII]/Re,FIR> (pair systems)",
+   "value": "1.36",
+   "uncertainty": "0.45",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Size comparison",
+     "quote": "For galaxies classified as single, we derive ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 3.21 ± 1.42 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.62 ± 0.69, while for pair systems we find ⟨_R_ _e_,[CII] /_R_ _e_,UV⟩ = 2.38 ± 1.22 and ⟨_R_ _e_,[CII] /_R_ _e_,FIR⟩ = 1.36 ± 0.45."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked visibility single-component [C II] effective radius Re,[CII]",
+   "value": "1.97",
+   "uncertainty": "0.10",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Constituent of [C ii] line emission",
+     "quote": "The model is characterized by an effective radius of _R_ _e_,[CII] = 1.97 ± 0.10 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked visibility double-component galaxy effective radius Re,gal",
+   "value": "1.91",
+   "uncertainty": "0.20",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Constituent of [C ii ] line emission",
+     "quote": "The brighter component (1.68 ± 0.23 mJy; hereafter “galaxy” component) has a radius of _R_ _e_,gal = 1.91 ± 0.20 kpc, which is similar to the best-fit single component."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked visibility double-component halo effective radius Re,halo",
+   "value": "9.17",
+   "uncertainty": "28.2",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Constituent of [C ii ] line emission",
+     "quote": "The other component (0.16 ± 0.27 mJy; hereafter “halo” component) has an extended radius of _R_ _e_,halo = 9.17 ± 28.2 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked visibility halo flux fraction",
+   "value": "8.7",
+   "uncertainty": "13.4",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2. Constituent of [C ii ] line emission",
+     "quote": "The flux of the “halo” component constitutes 8.7 ± 13.4 % of the total flux"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked image [C II] effective radius Re,[CII]",
+   "value": "1.97",
+   "uncertainty": "0.17",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.3. [C ii ] deficit in the central region of galaxies",
+     "quote": "Both [C ii] line and FIR continuum emission exhibit an extended structure beyond the PSF Gaussian profile with an effective radius of 1.97 ± 0.17 kpc and 1.53 ± 0.22 kpc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked image FIR continuum effective radius Re,FIR",
+   "value": "1.53",
+   "uncertainty": "0.22",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.3. [C ii ] deficit in the central region of galaxies",
+     "quote": "Both [C ii] line and FIR continuum emission exhibit an extended structure beyond the PSF Gaussian profile with an effective radius of 1.97 ± 0.17 kpc and 1.53 ± 0.22 kpc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-01a [C II] effective radius Re,[CII]",
+   "value": "3.05",
+   "uncertainty": "1.19",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-01a 10:00:54.508 2:34:34.46 0.68 ± 0.16 789 3.05 ± 1.19 0.59 ± 0.27 21 ± 24 8.62"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-02 [C II] effective radius Re,[CII]",
+   "value": "2.58",
+   "uncertainty": "0.28",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-02 10:00:21.499 2:35:11.01 2.63 ± 0.16 533 2.58 ± 0.28 0.52 ± 0.07 153 ± 5 9.31"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-05 [C II] effective radius Re,[CII]",
+   "value": "1.57",
+   "uncertainty": "0.28",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-05 10:00:09.422 2:20:13.84 0.94 ± 0.08 523 1.57 ± 0.28 0.31 ± 0.08 160 ± 5 8.90"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-24 [C II] effective radius Re,[CII]",
+   "value": "3.00",
+   "uncertainty": "1.03",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-24 10:00:02.715 2:37:39.99 14.76 ± 2.50 1291 3.00 ± 1.03 0.74 ± 0.25 92 ± 31 9.96"
+    }
+   ]
+  },
+  {
+   "quantity": "CRISTAL-25 [C II] effective radius Re,[CII]",
+   "value": "2.45",
+   "uncertainty": "0.35",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CRISTAL-25 10:01:12.502 2:18:52.55 3.35 ± 0.19 477 2.45 ± 0.35 0.65 ± 0.10 35 ± 10 9.32"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient (log10 Sigma_[CII] vs log10 EW_Lya)",
+   "value": "-0.51",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Connection to Lyα and Hα emission",
+     "quote": "with a Spearman’s rank correlation coefficient of −0.51 and a _p_ value of 0.039."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for data reduction and analysis",
+  "Calibration procedure (pipeline vs manual) and self-calibration details for CRISTAL survey data",
+  "Which specific targets used Briggs (R = 0.5) vs Natural (R = 2.0) weighting for initial spectrum extraction",
+  "Exact frequency channel ranges used for continuum subtraction in uvcontsub for each target",
+  "Exact central frequencies (nu_0) used for spectral binning of each target",
+  "Image size and cell size used in tclean for cubes and stacked images"
+ ],
+ "missing_for_reproduction": [
+  "Exact central frequencies (nu_0) and channel ranges used for uvcontsub and mstransform spectral binning for each of the 34 components",
+  "Calibrated measurement sets and data reduction scripts from Herrera-Camus et al. (in prep)",
+  "Target-by-target specification of whether Briggs (R = 0.5) or Natural (R = 2.0) weighting was used for the cube from which the 1D spectrum was extracted"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The visibility modeling methodology (1\" aperture spectrum extraction, +-2 sigma Gaussian line width definition, single-channel binning via mstransform, and 2D exponential disk fitting via UVMULTIFIT) is clearly described and all output parameters are tabulated in Table 1 and B.1, though basic calibration details are deferred to an in-prep survey overview paper and exact per-source continuum-subtraction/central frequencies are not listed.",
+ "rediscovery_reason": "All six ALMA project codes are public in the archive, the uv-plane modeling recipe using standard tools (CASA, scipy, UVMULTIFIT) is explicit, and complete numeric answer keys (fluxes, velocity widths, radii, axis ratios, position angles) are provided for 33 components.",
+ "source_card": "cards/2025A%26A...693A.237I/sonnet/card.md"
+}

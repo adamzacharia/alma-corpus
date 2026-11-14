@@ -1,0 +1,402 @@
+{
+ "bibcode": "2021MNRAS.500.3802H",
+ "title": "Centrally concentrated molecular gas driving galactic-scale ionized gas outflows in star-forming galaxies",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3512",
+ "arxiv_id": "2011.03566",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Why do some main-sequence star-forming galaxies reach the star-formation rate surface density threshold to launch large-scale ionised gas winds while other similar galaxies matched in inclination, mass, and total SFR do not?",
+ "alma_project_codes": [
+  "2011.0.01234.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "1'' (~0.5 - 1 kpc)",
+  "sensitivity": "0.8 M_sun pc^-2 molecular gas mass surface density"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "xCOLD GASS survey catalogue used to construct the global control sample",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "In Section 3.1, we use a control sample derived solely from xCOLD GASS (referred to as the “xCOLD GASS controls”) for the interpretation of the global/integrated results (i.e. we do not include the original, viable ALMA controls)."
+     }
+    ]
+   },
+   "citation": "xCOLD GASS survey (cite: saintonge17)"
+  },
+  {
+   "what": {
+    "value": "GAMA DR2/DR3 catalogue global properties, spectroscopic redshifts, MAGPHYS M_* and SFR, and SersicCatAllv07 ellipticities",
+    "evidence": [
+     {
+      "loc": "Global Molecular Gas Contents",
+      "quote": "We extract additional global properties for our objects (e.g. $NUV-r$) from the Galaxy And Mass Assembly (GAMA) DR2/DR3 catalogue (cite: liske15; baldry18) with their respective uncertainties to supplement the interpretation of our results."
+     },
+     {
+      "loc": "Spatially Resolved Observations",
+      "quote": "Spaxel areas $\\rm A_{\\rm spaxel}$ are corrected for inclination ($i$) using the GAMA survey ellipticity values from SersicCatAllv07 (cite: kelvin12), such that the spaxel areas equate to:"
+     }
+    ]
+   },
+   "citation": "(cite: liske15; baldry18), (cite: kelvin12)"
+  },
+  {
+   "what": {
+    "value": "SAMI edge-on outflow-type galaxy identifications",
+    "evidence": [
+     {
+      "loc": "IRAM-30m sample and observations",
+      "quote": "From the sample of 15 edge-on SAMI Galaxy Survey galaxies identified by (cite: ho16) as having large-scale winds, we select the 11 objects with $\\log (\\rm M_{*} /M_{\\odot}) > 9.2$ in order to avoid low metallicity objects, where $\\rm \\upalpha_{CO}$ (i.e. the CO-$\\rm H_2$ conversion function) could be large."
+     }
+    ]
+   },
+   "citation": "(cite: ho16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Clean ALMA data cubes and extract global CO(1-0) spectra",
+   "method": "Clean dirty cubes interactively over ~50 channels centred on peak CO(1-0) emission using tclean. Smooth trimmed cubes spatially with a 2D Gaussian kernel (sigma_smooth = 1.5 spaxels), collapse spectrally, threshold at >1 sigma within an ~200x200 spaxel spatial region to build a spatial aperture mask, apply to original trimmed cube, and collapse spatially to extract integrated spectra.",
+   "software": [
+    "CASA",
+    "tclean",
+    "astropy.convolution",
+    "spectres"
+   ],
+   "key_parameters": [
+    "~50 channels centred on peak of CO(1) emission",
+    "sigma_smooth = 1.5 spaxels",
+    "mask threshold > 1 sigma within ~200 x 200 spaxels"
+   ],
+   "assumptions": [
+    "Systemic velocity defined from GAMA spectroscopic redshift"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure integrated CO(1-0) fluxes, luminosities, and global molecular gas masses and compare with xCOLD GASS controls",
+   "method": "Numerically integrate global ALMA CO(1-0) profiles over channels with signal >3 sigma of line-free noise. Convert S_CO to L_CO following Solomon et al. (1997) and multiply by variable alpha_CO from Accurso et al. (2017). Compare global gas fraction and SFE with matched xCOLD GASS control pairs using swing plots.",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [
+    "signal detection threshold > 3 sigma; 300 km s^-1 velocity range for non-detections (S/N < 3)",
+    "xCOLD GASS control matching: 0.3 dex box in SFR and M_*, i > 50 deg, non-AGN, random 80% subsampling"
+   ],
+   "assumptions": [
+    "Standard LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m0 = 0.3, Omega_Lambda = 0.7 and Chabrier (2003) IMF",
+    "Variable alpha_CO from Accurso et al. (2017) using Pettini & Pagel (2004) metallicity calibration from 3'' SAMI apertures and MAGPHYS M_* and SFR"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct CO(1-0) moment maps (zeroth, first, second) and position-velocity diagrams",
+   "method": "Smooth cubes spectrally by a factor of 4 and spatially by a factor of 1.5 with a 2D Gaussian kernel, mask values below 3 sigma of the smoothed noise in the unsmoothed cube over a ~22''x22'' box and ~45-50 channels, and collapse along spectral axis to get Moment 0, 1, and 2 maps. Rotate cube by SAMI position angle and collapse perpendicular to disk across a slit containing 95% of CO(1) emission to make PVDs.",
+   "software": [
+    "astropy.convolution"
+   ],
+   "key_parameters": [
+    "spatial box ~22'' x 22'', channel range ~45 - 50 channels",
+    "spectral smoothing factor = 4, spatial smoothing factor = 1.5, mask threshold = 3 sigma",
+    "PVD slit width enclosing 95% of CO(1) emission (e.g. 1.6'', 2.4'', 2.0'' for GAMA593680, GAMA106389, GAMA417678)"
+   ],
+   "assumptions": [
+    "Position angle taken from SAMI Galaxy Survey catalogues"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute spatially resolved surface density maps and radial profiles of SFR, molecular gas, SFE, and gas fraction",
+   "method": "Create SAMI SFR maps from BPT star-forming masked, extinction-corrected H-alpha maps. Degrade ALMA Moment 0 maps to SAMI PSF resolution via 2D Gaussian convolution and re-bin both ALMA and SAMI maps to SAMI PSF scale (~1 kpc) using 25 grid offsets (5 in RA x 5 in Dec). Correct spaxel areas for inclination, divide maps to form SFE and f_MH2, and bin spaxels by value and by galactocentric radius normalised by r_eff.",
+   "software": [
+    "astropy.convolution",
+    "astropy.cosmology"
+   ],
+   "key_parameters": [
+    "25 re-binning grid offsets (5 in RA x 5 in Dec, 0 - 0.8 x bin size) to scale spaxels to sigma_PSF (~2'', ~1 kpc)",
+    "SAMI control selection boxes: 0.6 x 0.7 dex in SFR-M_* around low-M_* (<10) and high-M_* (>10) outflow-types"
+   ],
+   "assumptions": [
+    "SFR = 7.9 x 10^-42 L[Halpha_cor,mask]",
+    "Leroy et al. (2013) relation used to convert Sigma_SFR into Sigma_CO,H2 for SAMI controls",
+    "Inclination correction factor 1/cos(i) from GAMA SersicCatAllv07 ellipticity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 106389",
+   "value": "8.33",
+   "uncertainty": "0.73",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 106389 | 33 | 1 | 169 | $8.33\\pm 0.73$ | 0.04012 | $6.13 \\pm 0.57$ | $-0.92 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA CO(1-0) luminosity L'_CO10 of GAMA 106389",
+   "value": "6.13",
+   "uncertainty": "0.57",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 106389 | 33 | 1 | 169 | $8.33\\pm 0.73$ | 0.04012 | $6.13 \\pm 0.57$ | $-0.92 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA molecular gas mass fraction log(M_H2/M_*) of GAMA 106389",
+   "value": "-0.92",
+   "uncertainty": "0.20",
+   "units": "dex",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 106389 | 33 | 1 | 169 | $8.33\\pm 0.73$ | 0.04012 | $6.13 \\pm 0.57$ | $-0.92 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 228432",
+   "value": "2.43",
+   "uncertainty": "0.46",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 228432 | 15 | 1 | 83 | $2.43\\pm 0.46$ | 0.02984 | $0.98 \\pm 0.19$ | $-0.34 \\pm 0.22$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 238125",
+   "value": "2.23",
+   "uncertainty": "0.44",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 238125 | 14 | 1 | 77 | $2.23\\pm 0.44$ | 0.02581 | $0.68 \\pm 0.14$ | $-0.94 \\pm 0.23$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 31452",
+   "value": "2.18",
+   "uncertainty": "0.35",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 31452 | 19 | 1 | 59 | $2.18\\pm 0.35$ | 0.02029 | $0.40 \\pm 0.08$ | $-1.08 \\pm 0.22$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 417678",
+   "value": "12.09",
+   "uncertainty": "0.70",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 417678$^{\\ast}$ | 53 | 1 | 140 | $12.09\\pm 0.70$ | 0.03946 | $8.63 \\pm 0.59$ | $-0.75 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 574200",
+   "value": "1.81",
+   "uncertainty": "0.30",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 574200 | 18 | 1 | 69 | $1.81\\pm 0.30$ | 0.02867 | $0.67 \\pm 0.12$ | $-0.71 \\pm 0.22$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 593680",
+   "value": "42.04",
+   "uncertainty": "1.40",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 593680 | 100 | 1 | 165 | $42.04\\pm 1.40$ | 0.03003 | $17.24 \\pm 1.16$ | $-0.71 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA CO(1-0) luminosity L'_CO10 of GAMA 593680",
+   "value": "17.24",
+   "uncertainty": "1.16",
+   "units": "10^8 K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 593680 | 100 | 1 | 165 | $42.04\\pm 1.40$ | 0.03003 | $17.24 \\pm 1.16$ | $-0.71 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 618906",
+   "value": "3.02",
+   "uncertainty": "0.56",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 618906$^{\\ast}$ | 10 | 1 | 184 | $3.02\\pm 0.56$ | 0.05648 | $4.45  \\pm 0.83$ | $-1.85 \\pm 0.21$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 348116",
+   "value": "8.85",
+   "uncertainty": "1.06",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 348116$^{\\ast}{}^{\\star}$ | 23 | 1 | 196 | $8.85\\pm 1.06$ | 0.05036 | $10.34 \\pm 1.26$ | $-0.99 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 496966",
+   "value": "3.82",
+   "uncertainty": "0.70",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 496966$^{\\ast}$ | 12 | 1 | 159 | $3.82\\pm 0.70$ | 0.05413 | $5.17  \\pm 0.95$ | $-1.24 \\pm 0.21$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 570227",
+   "value": "8.45",
+   "uncertainty": "0.91",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 570227$^{\\ast}{}^{\\star}$ | 27 | 1 | 208 | $8.45\\pm 0.91$ | 0.04332 | $7.30  \\pm 0.81$ | $-1.15 \\pm 0.20$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 618935",
+   "value": "0.57",
+   "uncertainty": "0.21",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 618935 | 4 | 1 | 70 | $0.57\\pm 0.21$ | 0.03436 | $0.31  \\pm 0.12$ | $-1.46 \\pm 0.26$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA integrated CO(1-0) flux S_CO of GAMA 623679",
+   "value": "2.75",
+   "uncertainty": "0.62",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 623679$^{\\ast}$ | 10 | 1 | 106 | $2.75\\pm 0.62$ | 0.05635 | $4.04  \\pm 0.92$ | $-1.07 \\pm 0.22$ |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median difference in molecular gas fraction (Delta f_MH2) between ALMA outflow-types and xCOLD GASS controls",
+   "value": "0.05",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Global Molecular Gas Contents",
+     "quote": "The median “swing” position is $0.05 \\pm 0.04$, meaning the outflow-types are only marginally more gas-rich compared to their control counterparts."
+    }
+   ]
+  },
+  {
+   "quantity": "Median difference in star-formation efficiency (Delta SFE) between ALMA outflow-types and xCOLD GASS controls",
+   "value": "0.006",
+   "uncertainty": "0.03",
+   "units": "10^-8 yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Global Molecular Gas Contents",
+     "quote": "We find no statistically significant average “swing” across the galaxy pairs in this analysis (a median position of $(0.006 \\pm 0.03)\\ \\times \\ 10^{-8}\\  \\rm yr^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum beam-smeared CO(1-0) velocity dispersion in outflow-type galaxies",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spatially Resolved Observations",
+     "quote": "Furthermore, in the second moment maps in Appendix 8 we observe that the beam-smeared velocity dispersion does not exceed $\\approx 80$ km s$^{-1}$ in the cases of the outflow-type galaxies, far below that typically measured along lines of sight towards molecular outflows."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging",
+  "tclean weighting scheme and robust parameter",
+  "tclean cell size (spaxel angular size in the native ALMA cubes) and image size",
+  "tclean stopping threshold and number of iterations",
+  "Exact ALMA array configuration and baseline lengths",
+  "Note that the printed ALMA project code in Acknowledgements (2011.0.01234.S) is the standard template placeholder, while the actual Cycle 5 project linked by the archive is 2017.1.00601.S"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA project code in the paper text (printed as placeholder 2011.0.01234.S instead of 2017.1.00601.S)",
+  "Hand-drawn interactive tclean masks and hand-selected IRAM spectral integration windows",
+  "Custom Python subroutines used for moment map extraction, PVD rotation/slit collapsing, and 25-offset grid re-binning",
+  "Exact tclean imaging parameters (cell size, weighting/robust, stopping threshold)",
+  "Pixel-matched GAMA VST-KiDS/VISTA-VIKING stellar mass maps (not part of standard public ALMA/SAMI cubes)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Raw ALMA, SAMI, GAMA, and xCOLD GASS datasets are public and the mathematical equations for flux, luminosity, moment maps, beam degradation, and re-binning are explicitly written out, but key tclean parameters, interactive masks, and custom analysis scripts are not released, and the ALMA project code in the text is a template placeholder.",
+ "rediscovery_reason": "The ALMA data (2017.1.00601.S) and SAMI/GAMA catalogs are public, and Table 2 provides exact per-galaxy integrated CO(1-0) fluxes, linewidths, redshifts, luminosities, and gas fractions for all 16 galaxies that serve as a quantitative benchmark.",
+ "source_card": "cards/2021MNRAS.500.3802H/sonnet/card.md"
+}

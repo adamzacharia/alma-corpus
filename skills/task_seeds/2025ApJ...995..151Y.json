@@ -1,0 +1,198 @@
+{
+ "bibcode": "2025ApJ...995..151Y",
+ "title": "Molecular Gas and Star Formation in Dwarf Galaxies Observed by the Atacama Large Millimeter/submillimeter Array",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ae1fff",
+ "arxiv_id": "2511.21187",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "Do dwarf galaxies follow the molecular star formation law of massive spirals, and is their star formation regulated by gravitational stability (Toomre Q)?",
+ "alma_project_codes": [
+  "2015.1.00820.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "1.33'' to 2.93''",
+  "sensitivity": "channel rms 38-72 mK at 2 km/s resolution"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Rotation velocities V_rot used for kappa",
+    "evidence": [
+     {
+      "loc": "3.3 Gravitational Instability",
+      "quote": "$V_{\\rm rot}$ is the rotational velocity obtained from (cite: 2022MNRAS.512.1012C)"
+     }
+    ]
+   },
+   "citation": "(cite: 2022MNRAS.512.1012C)"
+  },
+  {
+   "what": {
+    "value": "z0MGS convolved NUV, 12um, 3.4um images",
+    "evidence": [
+     {
+      "loc": "2.4 12 um and NUV",
+      "quote": "(cite: Leroy_2019) convolved both sets of images to a common Gaussian PSF of 7.5$''$"
+     }
+    ]
+   },
+   "citation": "(cite: Leroy_2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(1-0)",
+   "method": "ALMA scripts calibration, TCLEAN imaging, IMPBCOR, 3 sigma masking on 6'' smoothed map",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5; 2 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Convolve to common 7.5'' resolution",
+   "method": "Convolve CO cubes and 3.6um images to 7.5'' Gaussian PSF",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive surface density maps",
+   "method": "Sigma_H2 from I_CO; Sigma_SFR from NUV+12um; Sigma_star from 3.4/3.6um",
+   "software": [],
+   "key_parameters": [
+    "cos i correction; helium factor 1.36"
+   ],
+   "assumptions": [
+    "X_CO = 2e20 cm^-2 [K km/s]^-1; alpha_CO = 4.35",
+    "Constant mass-to-light ratio 0.35 Msun/Lsun"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Radial profiles",
+   "method": "Concentric elliptical annuli of 7.5'' width; error bars are standard deviation in annulus",
+   "software": [
+    "GIPSY"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit molecular SFL and SFE",
+   "method": "Least-squares power-law fit of Sigma_SFR vs Sigma_H2 per galaxy; SFE = Sigma_SFR/Sigma_H2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compute Toomre Q_tot",
+   "method": "Two-component thick-disk Q from gas and stars",
+   "software": [],
+   "key_parameters": [
+    "sigma_g = 5 km/s; sigma_star,r = 30 km/s"
+   ],
+   "assumptions": [
+    "Q_g from H2 only; sigma_z/sigma_r = 0.6 stars, 1 gas"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean molecular SFL slope, all six",
+   "value": "0.81",
+   "uncertainty": "0.18",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular SFL",
+     "quote": "The resulting power-law indices range from 0.62 to 1.08, with a mean slope of N = 0.81$\\pm$0.18."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean slope, four galaxies with 3+ points",
+   "value": "0.87",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular SFL",
+     "quote": "yields a mean slope of N = 0.87$\\pm$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean slope including 1 sigma points",
+   "value": "0.73",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular SFL",
+     "quote": "yielding an average index of N$=0.73\\pm 0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFE_H2 range",
+   "value": "0.9 to 4.1",
+   "uncertainty": "not stated",
+   "units": "Gyr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Molecular SFL",
+     "quote": "the SFE$_{\\rm H_2}$ values range from 0.9 Gyr$^{-1}$ to 4.1 Gyr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Q_tot range",
+   "value": "0.9 to 1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 Gravitational Instability",
+     "quote": "The $Q_{\\rm tot}$ values range from 0.9 to 1.5"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Spectral setup and observing details (dates, configurations, time on source)",
+  "Imaging cell size, image size, channel width, clean threshold, masks",
+  "Line-free channels and whether continuum was subtracted",
+  "Moment map generation method",
+  "Radial profile center and exact annulus handling, and how fits were done (weighting)",
+  "Rotation curve values used for kappa",
+  "How the 7.5'' convolution kernel was set for the CO data (beam handling)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, clean threshold, masks)",
+  "Rotation curves from Cai et al. 2022",
+  "Exact radial bin centers and fit details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and main equations given, but imaging details and rotation curves missing; results are numeric but few.",
+ "rediscovery_reason": "Data public, recipe mostly explicit, results are numeric slopes and Q values.",
+ "source_card": "cards/2025ApJ...995..151Y/sonnet/card.md"
+}

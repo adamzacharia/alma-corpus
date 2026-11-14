@@ -1,0 +1,315 @@
+{
+ "bibcode": "2018A&A...620A.152F",
+ "title": "GOODS-ALMA: 1.1 mm galaxy survey. I. Source catalog and optically dark galaxies",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201832928",
+ "arxiv_id": "1803.00157",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Which galaxies does a blind, contiguous 69 arcmin2 ALMA 1.1 mm survey of GOODS-South detect, and what are their counterparts (including HST-dark galaxies), redshifts, masses, AGN fraction and number counts?",
+ "alma_project_codes": [
+  "2015.1.00543.S"
+ ],
+ "data": {
+  "bands": "Band 6, 1.1 mm (264.9 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "native ~0.24 arcsec; tapered to 0.29 and 0.60 arcsec circular beams",
+  "sensitivity": "rms 0.18 mJy/beam in 0.60 arcsec mosaic"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HUDF 1.3 mm ALMA catalogue for cross-checking detections",
+    "evidence": [
+     {
+      "loc": "2.4.3 Complementary ALMA data",
+      "quote": "The ALMA image of the full HUDF reaches a $\\sigma_{1.3mm}$ = 35 $\\mu$Jy (cite: Dunlop2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Dunlop2017)"
+  },
+  {
+   "what": {
+    "value": "Redshifts and stellar masses from ZFOURGE",
+    "evidence": [
+     {
+      "loc": "2.4.1 Optical/near-infrared imaging",
+      "quote": "We use the stellar masses and redshifts from the ZFOURGE catalogue, except when spectroscopic redshifts are available."
+     }
+    ]
+   },
+   "citation": "(cite: Straatman2016)"
+  },
+  {
+   "what": {
+    "value": "X-ray catalogue and AGN classification",
+    "evidence": [
+     {
+      "loc": "7.3 AGN",
+      "quote": "We find an X-ray counterpart for 65% of them (13/20) in the 7 Msec X-ray survey of GOODS–*South* with *Chandra* (cite: Luo2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Luo2017)"
+  },
+  {
+   "what": {
+    "value": "SIDES simulation number counts for comparison",
+    "evidence": [
+     {
+      "loc": "5.4 Cumulative and differential number counts",
+      "quote": "We compare our results with an empirical model that predicts the number counts at far-IR and millimetre wavelengths, developed by (cite: Bethermin2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Bethermin2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, average and image the mosaics",
+   "method": "CASA calibration with ALMA scripts, average to 120 s and 8 channels, CLEAN MFS dirty maps per slice with u,v tapers, combine with noise-weighted mean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "tapered beams 0.29 and 0.60 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Build noise map",
+   "method": "k-sigma clipping std in 100x100 pixel box every 4 pixels, 3 iterations, 3 sigma clip",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Detect sources and set thresholds",
+   "method": "BLOBCAT flood fill on SNR map of 0.60 arcsec mosaic; scan sigma_p 4-6 and sigma_f 2.5-4; require purity (Np-Nn)/Np >= 0.8 from inverted map",
+   "software": [
+    "BLOBCAT"
+   ],
+   "key_parameters": [
+    "sigma_p = 4.8, sigma_f = 2.7"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure fluxes and sizes",
+   "method": "Blobcat peak, Galfit PSF fitting, PyBDSM, uvmodelfit; stacking; point-source assumption with corrections for AGS17 and AGS18",
+   "software": [
+    "BLOBCAT",
+    "Galfit",
+    "PyBDSM",
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "sources point-like in 0.60 arcsec mosaic"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Correct HST astrometry and identify counterparts",
+   "method": "Cross-match Guo2013 with Pan-STARRS/GAIA within 0.5 arcsec, subtract median offset iteratively 3 times, then match counterparts within 0.6 arcsec; Monte Carlo chance-association probability",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Completeness, flux boosting, effective area, number counts",
+   "method": "Inject 300 artificial sources per run, 100 runs per flux 0.5-2.4 mJy, sizes FWHM 0.2-0.9 arcsec; deboost; correct purity, completeness and effective area; fit DPL and Schechter functions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "ALMA sizes 1.4 times smaller than HST H-band sizes"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive galaxy properties and AGN fraction",
+   "method": "Redshift and mass distributions from ZFOURGE; UVJ selection of SFGs; X-ray AGN criteria; EAZY and FAST for AGS4",
+   "software": [
+    "EAZY",
+    "FAST",
+    "Le PHARE"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Salpeter IMF, flat LCDM H0=70, Om=0.7"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of main-catalogue detections",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Creation of the catalogue",
+     "quote": "we obtain a total of 20 detections down to a flux density limit of $S_{1.1mm}$ $\\approx$ 880 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected spurious sources",
+   "value": "4",
+   "uncertainty": "±2",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Creation of the catalogue",
+     "quote": "suggests the presence of 4$\\pm$2"
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift",
+   "value": "2.92",
+   "uncertainty": "±0.20",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.1 Redshift distribution",
+     "quote": "The median redshift of our sample is 2.92$\\pm$0.20"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean redshift",
+   "value": "3.03",
+   "uncertainty": "±0.17",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.1 Redshift distribution",
+     "quote": "The mean redshift of the sample is $z$ = 3.03$\\pm$0.17"
+    }
+   ]
+  },
+  {
+   "quantity": "Median stellar mass",
+   "value": "1.1e11",
+   "uncertainty": "±0.4e11",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "8 Summary and Conclusions",
+     "quote": "M$_{\\star}$ = (1.1$\\pm$0.4) $\\times$ 10$^{11}$ M$_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HST-dark fraction",
+   "value": "20% (4/20)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "7 HST-dark galaxies",
+     "quote": "we have detected 20% HST–dark galaxies (4 out of 20 robust detections)"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN fraction in mass-z box for ALMA sources",
+   "value": "50% (8/16) vs 14% (23/160)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.3 AGN",
+     "quote": "we find that 50% of the ALMA sources host an AGN (8/16) as compared to only 14% (23/160)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median HST-ALMA astrometric offset",
+   "value": "-94 mas RA, +262 mas Dec",
+   "uncertainty": "±42, ±50 mas",
+   "units": "mas",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Astrometric correction",
+     "quote": "corrected by $-$94$\\pm$42 mas in right ascension, $\\alpha$, and 262$\\pm$50 mas in declination"
+    }
+   ]
+  },
+  {
+   "quantity": "Completeness at 1.2 mJy for point sources",
+   "value": "94",
+   "uncertainty": "±1%",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1 Completeness",
+     "quote": "at 1.2 mJy, our sample is 94$\\pm$1% complete for point sources"
+    }
+   ]
+  },
+  {
+   "quantity": "EBL fraction resolved at 0.8 mJy",
+   "value": "13.5",
+   "uncertainty": "+9.0/-8.6",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.5 Contribution to the cosmic infrared background",
+     "quote": "We have resolved only 13.5$_{-8.6}^{+9.0}$% of the EBL into individual galaxies at 0.8 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Median compact size from uvmodelfit",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "arcsec FWHM",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.5 Galaxy sizes",
+     "quote": "The median size of our sample of 20 galaxies is 0$''$18"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version",
+  "Exact CLEAN/tclean parameters (cell, image size, uv-taper values, weighting)",
+  "Primary-beam cutoff and sub-mosaic combination details",
+  "Exact BLOBCAT settings beyond sigma_p and sigma_f",
+  "Flux scale uncertainty and self-calibration",
+  "Details of FAST/EAZY fits (templates, priors)",
+  "Astrometric offset table for each galaxy"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Full tclean/CLEAN parameters and taper values",
+  "Astrometric correction offset maps",
+  "Photometric catalogue inputs from ZFOURGE and CANDELS"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public project and detection thresholds given, but imaging parameters and CASA version are missing",
+ "rediscovery_reason": "Data from a single project and detection recipe (taper, BLOBCAT thresholds) are stated, with numeric catalogue results",
+ "source_card": "cards/2018A%26A...620A.152F/sonnet/card.md"
+}

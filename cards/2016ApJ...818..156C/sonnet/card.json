@@ -1,0 +1,1200 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...818..156C",
+  "title": "A Disk-based Dynamical Constraint on the Mass of the Young Binary DQ Tau",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Czekala, I.",
+  "n_authors": 7,
+  "arxiv_id": "1601.03806",
+  "doi": "10.3847/0004-637X/818/2/156",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00496.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present new ALMA observations of CO $J$=2$-$1 line emission from the DQ Tau circumbinary disk."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "DQ Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "145 +/- 20 pc prior; fit d = 155 +/- 15 pc",
+      "evidence": [
+       {
+        "loc": "3.1 CO Disk Modeling",
+        "quote": "We choose a conservative Gaussian prior on the distance with a mean of 145 pc and a width ($\\sigma$) of 20 pc, meant to represent the range of possible distances to sources in the Taurus clouds (cite: torres10)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Taurus distance prior from Torres et al. 2010",
+      "evidence": [
+       {
+        "loc": "3.1 CO Disk Modeling",
+        "quote": "We choose a conservative Gaussian prior on the distance with a mean of 145 pc and a width ($\\sigma$) of 20 pc, meant to represent the range of possible distances to sources in the Taurus clouds (cite: torres10)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the dynamical mass of the DQ Tau binary from its circumbinary CO disk, and does it agree with the spectroscopic orbit mass and pre-MS models?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These data are used to tomographically reconstruct the Keplerian disk velocity field in a forward-modeling inference framework, and thereby provide a dynamical constraint on the mass of the DQ Tau binary"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00496.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: 2012.1.00496.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm, 232 GHz continuum)",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "employing the Band 6 receivers to cover the CO, $^{13}$CO, and C$^{18}$O $J$=2$-$1 transitions in 61, 61, and 122 kHz channels, respectively"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "same setup as Czekala et al. 2015; CO, 13CO, C18O J=2-1 with 61, 61, 122 kHz channels",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "The observations were configured with the same spectral setup as in (cite: czekala15)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The $^{12}$CO (hereafter CO) and $^{13}$CO $J$=2$-$1 transitions were imaged in 0.1 km s$^{-1}$-wide channels"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The peak S/N is 35 for CO, but only 7 for $^{13}$CO."
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "the line is only marginally detected (S/N$\\sim$3) in a few of these channels"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "34 12 m antennas, separations 21 to 540 m",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "using 34 of its 12 m antennas with separations ranging from 21 to 540 m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.8\" x 0.6\" at P.A. 145 deg",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "restoring with a synthesized beam with FWHM = $0.8\\ensuremath{''}\\times0.6\\ensuremath{''}$ (at P.A. = 145$^\\circ$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum 70 uJy/beam; CO and 13CO 8 mJy/beam per 0.1 km/s channel; C18O ~4 mJy/beam per 0.2 km/s channel",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "The RMS noise level is 70 $\\mu$Jy beam$^{-1}$"
+     },
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "reach an RMS noise level of 8 mJy beam$^{-1}$ in each channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~28 minutes",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "The total on-source integration time was $\\sim$28 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2015 May 24",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "ALMA observed the DQ Tau system on 2015 May 24"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "CfA optical spectrographs and TRES (FLWO 1.5 m)",
+     "provided": {
+      "value": "Radial velocities for the updated orbital solution",
+      "evidence": [
+       {
+        "loc": "2.2 Optical Spectroscopy",
+        "quote": "The first set consists of 30 spectra obtained at the Harvard-Smithsonian Center for Astrophysics (CfA) between 1984 and 2005"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Lick, Keck, McDonald",
+     "provided": {
+      "value": "22 RV differences from Mathieu et al. 1997",
+      "evidence": [
+       {
+        "loc": "2.2 Optical Spectroscopy",
+        "quote": "collected with instruments at the Lick Observatory, the Keck Observatory, and the McDonald Observatory"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "BVRIJ photometry used for the HR-diagram fit",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison to Pre-MS Evolution Models",
+        "quote": "we explored a two-component fit to the $BVRIJ$ photometry compiled by (cite: rydgren84), (cite: kolotilov89), and (cite: skrutskie06) (cite: andrews13)."
+       }
+      ]
+     },
+     "citation": "Rydgren 1984; Kolotilov 1989; Skrutskie 2006; Andrews 2013"
+    },
+    {
+     "what": {
+      "value": "LKM RV differences reconstructed from Table 1 of Mathieu et al. 1997",
+      "evidence": [
+       {
+        "loc": "3.2 An Updated Spectroscopic Orbital Solution",
+        "quote": "We therefore reconstructed the original velocity differences trivially from the primary and secondary “measurements” reported by (cite: mathieu97) in their Table 1."
+       }
+      ]
+     },
+     "citation": "(cite: mathieu97)"
+    },
+    {
+     "what": {
+      "value": "Infrared interferometry astrometric constraint used to enforce i > 90 deg",
+      "evidence": [
+       {
+        "loc": "Footnote 3",
+        "quote": "we employ the astrometric constraint made by (cite: boden09) from infrared interferometry measurements to enforce $i > 90\\ensuremath{^\\circ}$ in our analysis."
+       }
+      ]
+     },
+     "citation": "(cite: boden09)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "BT-Settl synthetic photometry and pre-MS evolutionary models (Siess, Dotter, Tognelli, Baraffe)",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison to Pre-MS Evolution Models",
+       "quote": "The adopted model magnitudes were interpolated for a given {$T_{\\rm eff}$, $\\log g$} from the BT-Settl synthetic photometry catalog (cite: allard03) for solar metallicity."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard techniques with CASA",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The visibilities were calibrated using standard techniques with the `CASA` software package (v4.3)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v4.3",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The visibilities were calibrated using standard techniques with the `CASA` software package (v4.3)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0423-0120 (also bandpass)",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The bright quasar J0423$-$0120 was also observed to calibrate the bandpass behavior and absolute flux levels."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "phase and amplitude self-cal on bright continuum",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "After a phase and amplitude self-calibration based on the bright continuum, the spectral line visibilities were time-averaged (to 30 s intervals) and continuum-subtracted."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "CLEAN",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "deconvolving with the `CLEAN` algorithm"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "assuming a Briggs robust weighting parameter of 0.5, to balance S/N and resolution"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "done in visibility domain after self-cal",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "the spectral line visibilities were time-averaged (to 30 s intervals) and continuum-subtracted."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.8\" x 0.6\", PA 145 deg",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "restoring with a synthesized beam with FWHM = $0.8\\ensuremath{''}\\times0.6\\ensuremath{''}$ (at P.A. = 145$^\\circ$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum 70 uJy/beam; CO 8 mJy/beam per channel",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The RMS noise level is 70 $\\mu$Jy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Spectral setup identical to AK Sco observations",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter Interferometry",
+        "quote": "The observations were configured with the same spectral setup as in (cite: czekala15)"
+       }
+      ]
+     },
+     "from_reference": "(cite: czekala15)"
+    },
+    {
+     "what": {
+      "value": "Disk forward-modeling framework",
+      "evidence": [
+       {
+        "loc": "3.1 CO Disk Modeling",
+        "quote": "We analyze the CO $J$=2$-$1 line emission using the framework detailed in (cite: czekala15) and (cite: rosenfeld12)."
+       }
+      ]
+     },
+     "from_reference": "(cite: czekala15); (cite: rosenfeld12)"
+    },
+    {
+     "what": {
+      "value": "Surface density profile follows the Lynden-Bell & Pringle similarity solution",
+      "evidence": [
+       {
+        "loc": "3.1 CO Disk Modeling",
+        "quote": "We assume the standard (cite: lynden-bell74) similarity solution describes the radial surface density profile of the gas"
+       }
+      ]
+     },
+     "from_reference": "(cite: lynden-bell74)"
+    },
+    {
+     "what": {
+      "value": "RV zero-point corrections",
+      "evidence": [
+       {
+        "loc": "2.2 Optical Spectroscopy",
+        "quote": "small run-to-run corrections were applied in the manner described by (cite: latham92)"
+       }
+      ]
+     },
+     "from_reference": "(cite: latham92)"
+    },
+    {
+     "what": {
+      "value": "Component masses and ages from HR diagram",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison to Pre-MS Evolution Models",
+        "quote": "we followed the formalism of (cite: jorgensen05) to derive component masses and ages"
+       }
+      ]
+     },
+     "from_reference": "(cite: jorgensen05)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels and continuum subtraction method details",
+    "Which 23 CO channels were excluded (only marked in a figure)",
+    "MCMC settings: walkers, steps, burn-in, convergence",
+    "Image size and cell size, CLEAN masks and threshold",
+    "Rest frequencies, grid and model setup for RADMC-3D (e.g. outer radius, resolution)",
+    "Prior bounds on uniform parameters",
+    "Source coordinates"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image ALMA data",
+    "method": {
+     "value": "CASA calibration, self-calibration on continuum, time-averaging to 30 s, continuum subtraction, CLEAN imaging with robust 0.5",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "After a phase and amplitude self-calibration based on the bright continuum, the spectral line visibilities were time-averaged (to 30 s intervals) and continuum-subtracted."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5; 0.1 km/s channels for CO",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter Interferometry",
+        "quote": "assuming a Briggs robust weighting parameter of 0.5, to balance S/N and resolution"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Forward-model CO visibilities of Keplerian disk",
+    "method": {
+     "value": "Parametric disk model, LTE excitation, RADMC-3D ray tracing, Fourier transform to data uv points, chi2 likelihood, 23 contaminated channels excluded",
+     "evidence": [
+      {
+       "loc": "3.1 CO Disk Modeling",
+       "quote": "We then use the `RADMC-3D` radiative transfer code (cite: dullemond12) to ray-trace spectral images, which are Fourier transformed and sampled at the same spatial frequencies as the data."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "p fixed to 1; 12-dimensional posterior",
+      "evidence": [
+       {
+        "loc": "3.1 CO Disk Modeling",
+        "quote": "For computational expediency, we fix $p = 1$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Vertically isothermal, radial power-law temperature, hydrostatic equilibrium, Keplerian rotation, LTE",
+      "evidence": [
+       {
+        "loc": "3.1 CO Disk Modeling",
+        "quote": "We simplify the scenario by assuming a vertically isothermal structure, with a radial power-law temperature profile"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Ensemble MCMC; uniform priors except sin(i)/2 on inclination and Gaussian distance prior 145+/-20 pc; i>90 deg enforced",
+     "evidence": [
+      {
+       "loc": "3.1 CO Disk Modeling",
+       "quote": "employing uniform (uninformative) priors on all parameters except for $i_d$ and $d$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Model compared with data in channel maps",
+     "evidence": [
+      {
+       "loc": "3.1 CO Disk Modeling",
+       "quote": "A comparison of the data with the model is shown in the form of channel maps in Figure [\\[fig:results\\]](#fig:results)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure RVs from CfA spectra",
+    "method": {
+     "value": "TODCOR two-dimensional cross-correlation with PHOENIX synthetic templates, equal temperatures assumed",
+     "evidence": [
+      {
+       "loc": "2.2 Optical Spectroscopy",
+       "quote": "using the two-dimensional cross-correlation technique TODCOR (cite: zucker94), with templates taken from a library of synthetic spectra based on PHOENIX model atmospheres"
+      }
+     ]
+    },
+    "software": [
+     "TODCOR"
+    ],
+    "key_parameters": [
+     {
+      "value": "Teff ~4000 K, vsini 14 and 11 km/s, solar metallicity, logg 3.5-4.5",
+      "evidence": [
+       {
+        "loc": "2.2 Optical Spectroscopy",
+        "quote": "The best matches to the DQ Tau spectra were found for temperatures of $\\sim$4000 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "vsini consistent with Nguyen et al. 2012",
+     "evidence": [
+      {
+       "loc": "2.2 Optical Spectroscopy",
+       "quote": "These latter values are similar to the measurements of (cite: nguyen12)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit updated spectroscopic orbit",
+    "method": {
+     "value": "Weighted least-squares joint fit of 33 CfA RV pairs and 22 LKM RV differences; uncertainties iteratively adjusted to reduced chi2 near unity",
+     "evidence": [
+      {
+       "loc": "3.2 An Updated Spectroscopic Orbital Solution",
+       "quote": "The 22 RV differences were combined in a weighted least-squares fit with our 33 pairs of primary/secondary velocities"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "common gamma adopted",
+      "evidence": [
+       {
+        "loc": "3.2 An Updated Spectroscopic Orbital Solution",
+        "quote": "Consequently, the final fit assumed a common value of $\\gamma$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with CfA-only fit and Mathieu et al. 1997",
+     "evidence": [
+      {
+       "loc": "3.2 An Updated Spectroscopic Orbital Solution",
+       "quote": "Our results in Table [3](#table:orbit) are generally consistent with those of (cite: mathieu97), but with uncertainties typically reduced by factors of 2–5."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Combine disk and RV constraints",
+    "method": {
+     "value": "Joint posterior of M and i assuming coplanarity; dynamical distance; mutual inclination",
+     "evidence": [
+      {
+       "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+       "quote": "If we assume that the binary and disk orbital planes are exactly aligned ($i = i_d$), the joint constraints from the RV and ALMA data indicate $M_\\ast = 1.21\\pm0.26\\,M_\\odot$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Disk and binary planes coplanar for combined mass",
+      "evidence": [
+       {
+        "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+        "quote": "If we assume that the binary and disk orbital planes are exactly aligned ($i = i_d$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare with pre-MS models",
+    "method": {
+     "value": "Two-component BVRIJ photometric fit with BT-Settl, then masses and ages from pre-MS tracks assuming coevality",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison to Pre-MS Evolution Models",
+       "quote": "we followed the formalism of (cite: jorgensen05) to derive component masses and ages {$\\tau$, $M_1$, $M_2$} from the predictions of pre-MS evolutionary models in the HR diagram"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "logg = 4.0 fixed; RV mass ratio prior 0.93+/-0.05; Teff prior 3900+/-250 K; R_V = 3.1",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison to Pre-MS Evolution Models",
+        "quote": "we adopted a Gaussian prior with mean of 3900 K and dispersion of 250 K on $T_1$ and $T_2$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Coeval stars, normal pre-MS evolution",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison to Pre-MS Evolution Models",
+        "quote": "We note that this analysis is under the assumption of coevality of the two stars, which may not necessarily be true."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 likelihood with per-band jitter terms",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison to Pre-MS Evolution Models",
+       "quote": "The model quality for a given set of parameters was determined with a $\\chi^2$ likelihood function and a reasonable set of priors."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Different model sets give consistent predictions",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison to Pre-MS Evolution Models",
+       "quote": "make consistent predictions within the (considerable) uncertainties"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3",
+    "used_for": {
+     "value": "Calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter Interferometry",
+       "quote": "The visibilities were calibrated using standard techniques with the `CASA` software package (v4.3)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "Ray-tracing model spectral images",
+     "evidence": [
+      {
+       "loc": "3.1 CO Disk Modeling",
+       "quote": "We then use the `RADMC-3D` radiative transfer code (cite: dullemond12) to ray-trace spectral images"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee (ensemble MCMC sampler)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Exploring posterior",
+     "evidence": [
+      {
+       "loc": "3.1 CO Disk Modeling",
+       "quote": "We explore the 12-dimensional posterior-space with an ensemble MCMC sampler (cite: foreman-mackey13)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TODCOR",
+    "version": "not stated",
+    "used_for": {
+     "value": "Measuring component RVs",
+     "evidence": [
+      {
+       "loc": "2.2 Optical Spectroscopy",
+       "quote": "using the two-dimensional cross-correlation technique TODCOR (cite: zucker94)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "triangle.py",
+    "version": "not stated",
+    "used_for": {
+     "value": "Corner plot",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "Figure [\\[fig:triangle\\]](#fig:triangle) was generated with the `triangle.py` code (cite: foreman-mackey14)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Julia",
+    "version": "not stated",
+    "used_for": {
+     "value": "Programming language for analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made extensive use of the Julia programming language (cite: julia12)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "General analysis",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made extensive use of the Julia programming language (cite: julia12) and Astropy software package (cite: astropy13)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk-based binary mass",
+    "value": "1.27",
+    "uncertainty": "+0.46/-0.27",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$1.27_{-0.27}^{+0.46}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk inclination",
+    "value": "160",
+    "uncertainty": "3",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$i_d$ (${}^\\circ$)                   | 160      | 3"
+     }
+    ]
+   },
+   {
+    "quantity": "M/d",
+    "value": "0.0086",
+    "uncertainty": "+0.0021/-0.0018",
+    "units": "Msun/pc",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 CO Disk Modeling",
+      "quote": "$M_{\\ast}/d = 0.0086_{-0.0018}^{+0.0021}\\,M_{\\odot}$ pc$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M sin^2 i_d",
+    "value": "0.164",
+    "uncertainty": "0.016",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+      "quote": "$M_\\ast\\, \\sin^2 i_d = 0.164\\pm0.016\\,M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Spectroscopic (M1+M2) sin^3 i",
+    "value": "0.0674",
+    "uncertainty": "0.0033",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$(M_1+M_2) \\sin^3 i$ ($M_{\\ensuremath{\\odot}}$) |  0.0674 $\\pm$ 0.0033"
+     }
+    ]
+   },
+   {
+    "quantity": "Orbital period",
+    "value": "15.80158",
+    "uncertainty": "0.00066",
+    "units": "days",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "15.80158 $\\pm$ 0.00066"
+     }
+    ]
+   },
+   {
+    "quantity": "Eccentricity",
+    "value": "0.568",
+    "uncertainty": "0.013",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "0.568 $\\pm$ 0.013"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass ratio",
+    "value": "0.936",
+    "uncertainty": "0.051",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "0.936 $\\pm$ 0.051"
+     }
+    ]
+   },
+   {
+    "quantity": "Combined system mass",
+    "value": "1.21",
+    "uncertainty": "0.26",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+      "quote": "$M_\\ast = 1.21\\pm0.26\\,M_\\odot$ and $i = 158\\pm2\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical distance",
+    "value": "184",
+    "uncertainty": "26",
+    "units": "pc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+      "quote": "we estimate $d_{\\rm dyn}= 184\\pm26$ pc"
+     }
+    ]
+   },
+   {
+    "quantity": "Mutual inclination psi",
+    "value": "-1.3",
+    "uncertainty": "1.1",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+      "quote": "$\\psi \\equiv i - i_d = -1.3 \\pm 1.1\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Pre-MS model total mass",
+    "value": "1.20",
+    "uncertainty": "0.16",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Comparison to Pre-MS Evolution Models",
+      "quote": "indicating a total binary mass of $1.20\\pm0.16\\,M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum integrated flux density",
+    "value": "79",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter Interferometry",
+      "quote": "peak intensity of $\\sim$68 mJy beam$^{-1}$ and integrated flux density of 79 mJy"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Disk-based and RV-based masses agree and the disk and binary planes are aligned within 3 deg",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the disk and binary orbital planes are aligned within 3$^\\circ$ (at 3 $\\sigma$ confidence)"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Disk-based dynamical mass agrees with the binary orbit mass for DQ Tau",
+    "experiment": "Forward-model ALMA CO 2-1 and compare with updated RV orbit",
+    "result": "M = 1.27 +0.46/-0.27 Msun from disk; M sin^3 i = 0.0674 Msun from orbit",
+    "finding": "Constraints agree well within 1 sigma",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+      "quote": "Figure [\\[fig:triangle\\]](#fig:triangle) confirms that the ALMA disk-based and RV binary-based constraints are in good agreement (well within 1 $\\sigma$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Disk and binary orbital planes are coplanar",
+    "experiment": "Joint posterior of disk and binary inclinations",
+    "result": "psi = -1.3 +/- 1.1 deg",
+    "finding": "Aligned within 3 deg",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and Context",
+      "quote": "we also find that the disk and binary orbital planes are aligned within 3$^\\circ$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Pre-MS models reproduce the dynamical mass",
+    "experiment": "Photometric HR-diagram placement and tracks",
+    "result": "Total mass 1.20 +/- 0.16 Msun",
+    "finding": "Consistent, but limited by component uncertainties",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.2 Comparison to Pre-MS Evolution Models",
+      "quote": "in good agreement with the dynamical constraints from the ALMA and RV data"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "DQ Tau is a cooler, younger equal-mass binary, an important supplementary test",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "An important supplementary test would employ a cooler and younger binary."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mass precision limited by face-on geometry and cloud contamination",
+     "evidence": [
+      {
+       "loc": "Summary and Context",
+       "quote": "the dynamical mass precision is limited by an unfortunate combination of two factors"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mass depends on a distance prior; the dynamical distance is imprecise.",
+    "23 channels excluded for cloud contamination may bias the fit.",
+    "Fixed p=1 and simple thermal structure.",
+    "Systemic velocity differs between disk and orbit."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Posterior samples and code are public; ALMA project code listed",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Samples from the posterior are published at <https://figshare.com/articles/MCMC_Samples/2063424>"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Open-source MIT code at github.com/iancze/JudithExcalibur",
+     "evidence": [
+      {
+       "loc": "Footnote 1",
+       "quote": "The code used to perform the analysis described here is open source and freely available under an MIT license at <https://github.com/iancze/JudithExcalibur>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Excluded channel list",
+    "MCMC configuration",
+    "CLEAN parameters",
+    "Optical spectra not available except RV table"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB raw ALMA data for one 28-minute execution",
+   "score_inferred": 4,
+   "score_reason": "Code and posteriors public and a clear recipe, but some imaging and MCMC details are missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are public in the ALMA archive, code is released and the results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Czekala et al. 2015 (cite: czekala15)",
+     "why": "Disk modeling framework and spectral setup"
+    },
+    {
+     "citation": "Rosenfeld et al. 2012 (cite: rosenfeld12)",
+     "why": "Disk modeling framework"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Mathieu et al. 1997 (cite: mathieu97)",
+     "why": "Original orbital solution and RV data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-bdf239d0019d810b5f268653fb1f5836",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:18",
+  "usage": {
+   "input_tokens": 19056,
+   "output_tokens": 10971,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.074518,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 84,
+  "quotes_ok": 84,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 90,
+   "stated": 62,
+   "rate": 0.689
+  },
+  "evidence_ok": true
+ }
+}

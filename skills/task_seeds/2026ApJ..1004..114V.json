@@ -1,0 +1,366 @@
+{
+ "bibcode": "2026ApJ..1004..114V",
+ "title": "JWST's PEARLS: A Clumpy Ring Galaxy at z = 4.0148",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae7103",
+ "arxiv_id": "2603.11575",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Whether a ring-like galaxy candidate at z_spec = 4.0148 on the periphery of MACS0416 is a high-redshift collisional ring galaxy or a galaxy-galaxy strong gravitational lens.",
+ "alma_project_codes": [
+  "2018.1.00035.L"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "1.48'' x 0.86''",
+  "sensitivity": "53 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic redshift z_spec = 4.0148 and NIRSpec PRISM spectrum from CANUCS Data Release 1",
+    "evidence": [
+     {
+      "loc": "2. OBSERVATIONS",
+      "quote": "cataloged as CANUCS 3100560 in the CAnadian NIRISS Unbiased Cluster Survey (Sarrouh et al. 2026) with a spectroscopic redshift _z_ spec = 4 _._ 0148."
+     },
+     {
+      "loc": "2. OBSERVATIONS",
+      "quote": "We also make use of a publicly available NIRSpec PRISM spectrum of the source from the CANUCS Data Release 1, as detailed in Sarrouh et al. (2026)."
+     }
+    ]
+   },
+   "citation": "Sarrouh et al. (2026)"
+  },
+  {
+   "what": {
+    "value": "Reduced ALMA Band 6 continuum mosaic of MACS0416 from ALCS",
+    "evidence": [
+     {
+      "loc": "2. OBSERVATIONS",
+      "quote": "MACS0416 was also observed as part of an ALMA Large Program (2018.1.00035.L; PI: K. Kohno), the ALMA Lensing Cluster Survey (ALCS; Fujimoto et al. 2024), using the Band 6 receiver."
+     },
+     {
+      "loc": "2. OBSERVATIONS",
+      "quote": "Reduced data products for the cluster have been made available on the ALCS website"
+     }
+    ]
+   },
+   "citation": "Fujimoto et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Catalog of local ring galaxies from the GALAXY CRUISE survey",
+    "evidence": [
+     {
+      "loc": "5.1. Comparison to high-redshift ring galaxy candidates",
+      "quote": "For the local galaxy sample, we utilize a catalog of ring galaxies from the GALAXY CRUISE survey (Shimakawa et al. 2024)"
+     }
+    ]
+   },
+   "citation": "Shimakawa et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "SFR and stellar masses of local galaxies from the GALEX-SDSS-WISE Legacy Catalog (GSWLC)",
+    "evidence": [
+     {
+      "loc": "5.1. Comparison to high-redshift ring galaxy candidates",
+      "quote": "We then crossmatch these galaxies to the GALEX-SDSS-WISE Legacy Catalog (GSWLC; Salim et al. 2016, 2018) for SFR and stellar masses derived from `CIGALE` (Boquien et al. 2019)"
+     }
+    ]
+   },
+   "citation": "Salim et al. (2016, 2018)"
+  },
+  {
+   "what": {
+    "value": "Comparison samples of strong gravitational lenses (SLACS, BELLS, SL2S, AGEL, PEARLS NEP, COWLS)",
+    "evidence": [
+     {
+      "loc": "Figure 7 caption",
+      "quote": "Source versus lens redshift for a sample of well-characterized, optically selected strong lensing systems (SLACS, BELLS, SL2S; Bolton et al. 2008; Brownstein et al. 2012; Sonnenfeld et al. 2013, respectively) as compiled in Tan et al. (2024)"
+     },
+     {
+      "loc": "Figure 7 caption",
+      "quote": "along with a recent release of strong lenses from the AGEL survey (Barone et al. 2026) and JWST-selected lenses in the PEARLS NEP time domain field (Ferrami et al. 2026)."
+     },
+     {
+      "loc": "Figure 7 caption",
+      "quote": "and over 400 candidate gravitationally lensed systems in the COWLS program (Nightingale et al. 2025)."
+     }
+    ]
+   },
+   "citation": "Tan et al. (2024); Barone et al. (2026); Ferrami et al. (2026); Nightingale et al. (2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure ring radius and ALMA dust continuum flux and mass",
+   "method": "Fit an ellipse around the ring in CARTA to estimate the radius; measure the 261.3 GHz continuum flux density from the ALCS map, scale it to 870 um, and convert to dust mass using a scaling relation.",
+   "software": [
+    "CARTA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust emissivity spectral index beta = 1.8",
+    "Redshift-independent dust mass scaling relation from Dudzeviciute et al. (2020)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "PSF matching and multi-band aperture photometry",
+   "method": "Generate and resample HST ACS and JWST NIRCam PSFs to 0.02'', create matching kernels to convolve all bands to the F444W resolution (FWHM ~ 0.16''), and extract photometry in apertures for the center, three clumps, and total system.",
+   "software": [
+    "stpsf",
+    "photutils"
+   ],
+   "key_parameters": [
+    "Aperture radius = 0.08'' for clumps A, B, C and center; 0.48'' for total system"
+   ],
+   "assumptions": [
+    "5% systematic error added in quadrature to photometric measurements"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "SED modeling of the CRG, clumps, and nearby companions",
+   "method": "Fit multi-band HST and JWST photometry using bagpipes with a delayed star-formation history model (with both free redshift and fixed z = 4.0148); subtract foreground galaxy light in F277W using GALFIT to place apertures and fit SEDs of five faint companions.",
+   "software": [
+    "bagpipes",
+    "nautilus",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "Six delayed SFH parameters: log10(M_*/M_sun), SFR, A_V, system age, metallicity (Z/Z_sun), ionization parameter (U)",
+    "GALFIT single Sersic profile: R_e ~ 0.21'', n ~ 1.2, b/a ~ 0.7"
+   ],
+   "assumptions": [
+    "Calzetti et al. (2000) dust attenuation law",
+    "Flat LCDM cosmology (H0 = 67.7 km s^-1, Omega_0 = 0.31, T_cmb = 2.725 K)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test gravitational lensing hypothesis via ring subtraction, foreground SED fitting, and Einstein mass calculation",
+   "method": "Subtract 1.1x F182M from F200W to isolate central emission, derive a flux correction factor of 1.87, fit central photometry in bagpipes as a foreground lens (0.1 < z < 2.0), and compute projected Einstein mass and stellar-to-total mass ratio.",
+   "software": [
+    "bagpipes"
+   ],
+   "key_parameters": [
+    "Einstein radius theta_E = 0.25'' (and conservative 0.2''), source redshift z = 4.0148, lens redshift z = 1.66"
+   ],
+   "assumptions": [
+    "Thin lens approximation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 261.3 GHz dust continuum flux density",
+   "value": "240",
+   "uncertainty": "80",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2. OBSERVATIONS",
+     "quote": "After correcting for the beam factor, we obtain a flux density of 240 _±_ 80 _µ_ Jy for the dust continuum."
+    }
+   ]
+  },
+  {
+   "quantity": "Scaled 870 um flux density (S_870um)",
+   "value": "0.7",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "We scale the 1.15mm flux density to an 870 _µ_ m flux density assuming _β_ = 1 _._ 8, yielding _S_ 870 _µ_ m = 0 _._ 7 _±_ 0 _._ 2 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (M_dust)",
+   "value": "9e7",
+   "uncertainty": "4e7",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "which we convert into a dust mass using the redshift-independent scaling relation in Dudzeviˇci¯ut˙e et al. (2020) to obtain _M_ dust = (9 _±_ 4) _×_ 10 [7] _M_ _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring angular radius",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The galaxy exhibits a complex morphology, including three bright clumps along an apparent ring with radius _≈_ 0 _._ 25 _[′′]_ _≃_ 1 _._ 8 kpc."
+    },
+    {
+     "loc": "3. RESULTS",
+     "quote": "We estimate that the ring has a radius of _≈_ 0 _._ 25 _[′′]_ by roughly fitting an ellipse around the ring using the `CARTA` software (Comrie et al. 2021)."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring physical radius",
+   "value": "1.8",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The galaxy exhibits a complex morphology, including three bright clumps along an apparent ring with radius _≈_ 0 _._ 25 _[′′]_ _≃_ 1 _._ 8 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Total star-formation rate (fixed z = 4.0148)",
+   "value": "140",
+   "uncertainty": "+20/-30",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "It has a total SFR = 140 [+20] _−_ 30 [M] _[⊙]_ [yr] _[−]_ [1] [and] [log(] _[M]_ _[∗]_ _[/]_ [M] _[⊙]_ [) = 10] _[.]_ [41] [+0] _−_ 0 _[.]_ _._ [11] 13 [,]"
+    },
+    {
+     "loc": "4. ANALYSIS",
+     "quote": "In this case, we find a total star-formation rate (SFR) = 140 _−_ [+20] 30 [M] _[⊙]_ [yr] _[−]_ [1] [and] log 10 ( _M_ _⋆_ _/_ M _⊙_ ) = 10 _._ 41 [+0] _−_ 0 _[.]_ _._ [11] 13 [.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Total stellar mass log10(M_*/M_sun) (fixed z = 4.0148)",
+   "value": "10.41",
+   "uncertainty": "+0.11/-0.13",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4. ANALYSIS",
+     "quote": "In this case, we find a total star-formation rate (SFR) = 140 _−_ [+20] 30 [M] _[⊙]_ [yr] _[−]_ [1] [and] log 10 ( _M_ _⋆_ _/_ M _⊙_ ) = 10 _._ 41 [+0] _−_ 0 _[.]_ _._ [11] 13 [.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Total photometric redshift (z_phot, free z fit)",
+   "value": "3.92",
+   "uncertainty": "+0.10/-0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4. ANALYSIS",
+     "quote": "the fitted redshift of the total system ( _z_ phot = 3 _._ 92 [+0] _−_ 0 _[.]_ _._ [10] 07 [),]"
+    }
+   ]
+  },
+  {
+   "quantity": "Central component stellar mass log10(M_*/M_sun) (fixed z = 4.0148)",
+   "value": "9.86",
+   "uncertainty": "+0.04/-0.05",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Center — 9 _._ 86 [+0] _−_ 0 _[.]_ _._ [04] 05 11 [+2] _−_ 2 1 _._ 36 [+0] _−_ 0 _[.]_ _._ [09] 11 1200 [+200] _−_ 300 0 _._ 24 [+0] _−_ 0 _[.]_ _._ [18] 08"
+    }
+   ]
+  },
+  {
+   "quantity": "Central component age (fixed z = 4.0148)",
+   "value": "1.2",
+   "uncertainty": "+0.2/-0.3",
+   "units": "Gyr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4. ANALYSIS",
+     "quote": "the central emission is much older (1 _._ 0 [+0] _−_ 0 _[.]_ _._ [3] 3 [–1] _[.]_ [2] _−_ [+0] 0 _[.]_ _._ [2] 3 [Gyr] [for] [the] [fitted] vs. fixed-redshift models, respectively) than the clumps along the ring"
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground lens scenario photometric redshift (z_fit)",
+   "value": "1.66",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Is this system a gravitational lens?",
+     "quote": "The resulting fit yields _z_ fit = 1 _._ 66 _±_ 0 _._ 01; in this scenario, the “foreground” galaxy has a log( _M_ _⋆_ _/_ M _⊙_ ) = 9 _._ 14 _±_ 0 _._ 02 and SFR = 3 _._ 2 [+0] _−_ 0 _[.]_ _._ [1] 2 [M] _[⊙]_ [yr] _[−]_ [1] [,] [respectively.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Foreground lens scenario stellar mass log(M_*/M_sun)",
+   "value": "9.14",
+   "uncertainty": "0.02",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Is this system a gravitational lens?",
+     "quote": "The resulting fit yields _z_ fit = 1 _._ 66 _±_ 0 _._ 01; in this scenario, the “foreground” galaxy has a log( _M_ _⋆_ _/_ M _⊙_ ) = 9 _._ 14 _±_ 0 _._ 02 and SFR = 3 _._ 2 [+0] _−_ 0 _[.]_ _._ [1] 2 [M] _[⊙]_ [yr] _[−]_ [1] [,] [respectively.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected Einstein mass (M_E for theta_E = 0.25'')",
+   "value": "3.9e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Is this system a gravitational lens?",
+     "quote": "A source redshift _z_ = 4 _._ 0148, lens redshift _z_ = 1 _._ 66, and Einstein radius _θ_ _E_ = 0 _._ 25 _[′′]_ implies a projected _M_ _E_ = 3 _._ 9 _×_ 10 [10] _M_ _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar-to-total mass ratio in lens scenario (theta_E = 0.25'')",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Is this system a gravitational lens?",
+     "quote": "Dividing the stellar mass determined above ( _M_ _⋆_ = 1.4 _×_ 10 [9] _M_ _⊙_ ) by the projected mass implies a stellarto-total mass ratio _≈_ 0 _._ 04."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact definition and value of the 'beam factor' (primary beam correction or aperture correction) applied to the ALMA map to obtain the 240 +/- 80 uJy continuum flux density",
+  "Method used to extract the ALMA continuum flux density (peak pixel value, aperture photometry, or 2D Gaussian fitting)",
+  "Gravitational magnification factor from the MACS0416 cluster at the position of the CRG, and whether any derived quantities (stellar mass, SFR, dust mass) were corrected for cluster lensing"
+ ],
+ "missing_for_reproduction": [
+  "Exact aperture coordinates (RA, Dec) for clumps A, B, C, the central aperture, and the five faint companion apertures",
+  "Exact parameter priors and ranges used in the bagpipes delayed-SFH models (besides redshift and foreground lens age)",
+  "Exact definition of the beam factor correction and flux extraction method applied to the ALCS ALMA continuum map"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "All archival data products (MAST JWST/HST mosaics, CANUCS DR1 spectrum, ALCS ALMA continuum map) are publicly available, and the extracted multi-band aperture photometry is tabulated directly in Table 2, making the bagpipes SED fits and lensing calculations straightforward to reproduce despite minor unstated priors and ALMA flux extraction details.",
+ "rediscovery_reason": "All underlying datasets and the extracted multi-band photometry (Table 2) are public, the software stack (bagpipes, photutils, stpsf, GALFIT, CARTA) is open-source, and the main claims rely on quantitative numeric results (photometric redshifts, stellar masses, SFRs, dust mass, and Einstein mass ratio).",
+ "source_card": "cards/2026ApJ..1004..114V/sonnet/card.md"
+}

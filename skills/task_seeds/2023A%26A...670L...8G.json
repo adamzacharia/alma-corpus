@@ -1,0 +1,383 @@
+{
+ "bibcode": "2023A&A...670L...8G",
+ "title": "Reflections on nebulae around young stars. A systematic search for late-stage infall of material onto Class II disks",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245254",
+ "arxiv_id": "2301.02994",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Can the association of Class II sources with nearby reflection nebulae (RNe) be used to systematically identify disks undergoing late-stage infall of ambient cloud material?",
+ "alma_project_codes": [
+  "2019.1.01135.S",
+  "2019.1.01792.S",
+  "2015.1.00192.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 7 (archival search); Band 6 for re-imaged S CrA and HD 97048",
+  "arrays": "not stated",
+  "angular_resolution": "typical 0.7''",
+  "sensitivity": "< 2.3 mJy beam^-1 (over 10 km s^-1 channel width), corresponding to ~100 mK"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalogue of 913 reflection nebulae",
+    "evidence": [
+     {
+      "loc": "Class II sources near reflection nebulae",
+      "quote": "As a first step, we compiled a catalogue of RNe using the published lists in (cite: Magakian2003) and (cite: Connelley2007)."
+     },
+     {
+      "loc": "Class II sources near reflection nebulae",
+      "quote": "(cite: Magakian2003) merged previously published RNe catalogues and presented a final list of 913 objects."
+     }
+    ]
+   },
+   "citation": "(cite: Magakian2003)"
+  },
+  {
+   "what": {
+    "value": "Catalogue of 106 reflection nebulae around nearby protostars at 2.2 um and their angular sizes",
+    "evidence": [
+     {
+      "loc": "Class II sources near reflection nebulae",
+      "quote": "(cite: Connelley2007) surveyed 197 nearby, mostly Class I, protostars at $2.2\\,\\mu$m using the University of Hawaii 2.2 m telescope. They detected 106 RNe, out of which 41 were reported as new discoveries."
+     },
+     {
+      "loc": "Discussion",
+      "quote": "(cite: Connelley2007) provided angular sizes and distances for RNe in their catalogue, which correspond to a mean radius $\\sim10^4$ au."
+     }
+    ]
+   },
+   "citation": "(cite: Connelley2007)"
+  },
+  {
+   "what": {
+    "value": "All-sky catalogue of 133980 Class I/II YSOs and WISE/2MASS photometry",
+    "evidence": [
+     {
+      "loc": "Class II sources near reflection nebulae",
+      "quote": "For this we started with the all-sky catalogue of 133980 Class I/II sources reported in (cite: Marton2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Marton2016)"
+  },
+  {
+   "what": {
+    "value": "List of 2966 YSOs and infrared spectral indices (alpha and extinction-corrected alpha') from Spitzer surveys",
+    "evidence": [
+     {
+      "loc": "Class II sources near reflection nebulae",
+      "quote": "For a more complete sample of nearby YSOs, we also used the list of 2966 YSOs identified using Spitzer’s ’cores to disks’ and ’Gould Belt’ surveys, as reported in (cite: Dunham2015)."
+     },
+     {
+      "loc": "Class II sources near reflection nebulae",
+      "quote": "The spectral indices, $\\alpha$, or slope of the spectral energy distributions in the infrared regime ($\\sim2$–$25~\\mu$m) were given in the (cite: Dunham2015) catalogue."
+     }
+    ]
+   },
+   "citation": "(cite: Dunham2015)"
+  },
+  {
+   "what": {
+    "value": "Median coordinates and distances of nearby star-forming regions",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The median coordinates and distances are from (cite: Zucker2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Zucker2020)"
+  },
+  {
+   "what": {
+    "value": "Published ALMA CO observations of HD 142527 showing non-Keplerian spiral structures",
+    "evidence": [
+     {
+      "loc": "ALMA archive search:",
+      "quote": "These data have been published and show non-Keplerian spiral structures extending to $\\sim700$ au, beyond the disk radius of $\\sim200$–$300$ au (cite: Christiaens2014; Garg2021), as shown in Figure 3 (panel a)."
+     }
+    ]
+   },
+   "citation": "(cite: Christiaens2014; Garg2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Check known Class II sources with large-scale CO structures for reflection nebulosity",
+   "method": "Visual inspection and literature check of archival optical and NIR images (DSS, Pan-STARRS, HST) around five Class II sources known to have kilo-au CO structures (AB Aur, SU Aur, RU Lup, GM Aur, DO Tau)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compile and merge catalogues of reflection nebulae (RNe) in nearby star-forming regions",
+   "method": "Merge published RNe catalogues from Magakian (2003) and Connelley et al. (2007), remove duplicates using a 30'' cross-matching radius, and filter for sources within circular boundaries of eight nearby star-forming regions",
+   "software": [],
+   "key_parameters": [
+    "Cross-matching radius = 30''",
+    "SFR circular boundaries defined by central coordinates and radii in Table 1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compile YSO catalogue and classify Class II sources via infrared spectral indices",
+   "method": "Merge YSO catalogues from Marton et al. (2016) and Dunham et al. (2015) using a 5'' cross-matching radius, filter to SFR boundaries, compute infrared spectral index alpha (2-25 um) from WISE and 2MASS K-band photometry for Marton-only sources, apply median extinction correction of -0.31 to get alpha', and select Class II sources with -1.6 <= alpha' < -0.3",
+   "software": [],
+   "key_parameters": [
+    "YSO cross-matching radius = 5''",
+    "Discard sources with alpha fitting uncertainties > 0.6",
+    "Class II criterion: -1.6 <= alpha' < -0.3"
+   ],
+   "assumptions": [
+    "Uniform extinction correction factor of -0.31 applied to alpha for sources only in Marton et al. (2016)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Cross-match Class II sources with RNe to identify late-infall candidates and compute association fractions",
+   "method": "Cross-match the 2562 Class II sources with the 141 RNe in the SFRs using a projected distance threshold of ~2000 au (Bondi-Hoyle accretion scale), and evaluate cumulative association fractions as a function of offset distance",
+   "software": [],
+   "key_parameters": [
+    "Distance threshold L_BH ~ 2000 au"
+   ],
+   "assumptions": [
+    "Bondi-Hoyle length scale L_BH = 2GM_*/v^2 with M_* = 1 M_sun and v = 1 km s^-1",
+    "Median SFR distances from Zucker et al. (2020) used for physical scale conversion"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Query ALMA Science Archive and select adequate datasets for nearby candidate sources",
+   "method": "Search ALMA Science Archive for Band 6 and Band 7 observations of the 16 candidates in SFRs at d <= 200 pc, filtering for LAS >= 1000 au, rms noise < 2.3 mJy beam^-1 (over 10 km s^-1), and coverage of 12CO lines",
+   "software": [],
+   "key_parameters": [
+    "Distance d <= 200 pc",
+    "LAS >= 1000 au",
+    "rms noise < 2.3 mJy beam^-1 over 10 km s^-1 channel width"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Image 12CO (2-1) ALMA data and produce moment and channel maps for S CrA and HD 97048",
+   "method": "Apply standard pipeline calibration, image 12CO (2-1) emission in CASA 6.4 using Briggs weighting (robust=0.5), 0.05'' cell size, and auto-multithresh masking, then compute moment 0, moment 1, and channel maps to identify kilo-au streamers",
+   "software": [
+    "CASA 6.4"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "cell size = 0.05''",
+    "masking = auto-multithresh with default parameters"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Merged reflection nebulae (RNe) catalogue size",
+   "value": "1009",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "After removing duplicates, we merged the two catalogues to have a final sample of 1009 RNe."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of RNe within the 8 studied star-forming regions",
+   "value": "141",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "We found 141 sources from our catalogue of 1009 RNe within these region boundaries."
+    }
+   ]
+  },
+  {
+   "quantity": "Total YSOs in merged catalogue",
+   "value": "136165",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "Our final catalogue consists of 136165 YSOs of which 4930 lie within the SFR boundaries."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of YSOs within the 8 studied star-forming regions",
+   "value": "4930",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "Our final catalogue consists of 136165 YSOs of which 4930 lie within the SFR boundaries."
+    }
+   ]
+  },
+  {
+   "quantity": "Median extinction correction factor for spectral index (alpha' - alpha)",
+   "value": "-0.31",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "In order to estimate extinction-corrected spectral indices ($\\alpha'$), we computed a correction factor of -0.31 as the median of differences between all the $\\alpha'$ and $\\alpha$ values reported in (cite: Dunham2015)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of Class II sources within the 8 studied star-forming regions",
+   "value": "2562",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "Following the same classification criteria as (cite: Dunham2015), that is $-1.6 \\leq \\alpha' < -0.3$, 2562 out of 4930 YSOs in our SFRs were classified as Class II sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of late-infall Class II candidates within ~2000 au of an RN",
+   "value": "21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Class II sources near reflection nebulae",
+     "quote": "The 21 late-infall Class II candidates that we found using this threshold are listed in Appendix 8."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of Class II candidates near RNe in nearby SFRs (d <= 200 pc)",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMA archive search:",
+     "quote": "To target higher-quality observations, we focussed on nearby SFRs ($d \\lesssim$ 200 pc), where 16 out of the 21 Class II disks near RNe are located."
+    }
+   ]
+  },
+  {
+   "quantity": "Total archival ALMA Band 6 and 7 observations found for the 16 nearby candidates",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMA archive search:",
+     "quote": "We found a total of 66 Band 6 and 7 observations for 16 sources in our sample, as shown in Figure 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of archival ALMA observations with LAS >= 1000 au",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMA archive search:",
+     "quote": "Among these datasets, we found 13 observations with the largest angular scale (LAS) corresponding to at least 1000 au to recover the expected large-scale structures (cite: Kuffmeier2020)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of archival ALMA observations meeting both LAS >= 1000 au and rms < 2.3 mJy/beam thresholds",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMA archive search:",
+     "quote": "We selected a subset of five observations with rms noise (over a channel width of $10$ km s$^{-1}$) smaller than a $2.3$ mJy beam$^{-1}$, equal to the line sensitivity reported in the ALMA archive for SU Aur observations (cite: Ginski2021)."
+    }
+   ]
+  },
+  {
+   "quantity": "Length scale of primary CO streamer discovered around S CrA",
+   "value": "1000",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "ALMA archive search:",
+     "quote": "For S CrA, at least one $\\sim1000$ au streamer is clearly visible (solid cyan line), north-west of the binary disks (green contours), as seen in the moment 0 map (Figure 3, panel b, middle panel)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of Class II sources within ~10^4 au of RNe in Taurus, Lupus, Corona Australis, and Chamaeleon",
+   "value": "5-10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "For at least four SFRs (Taurus, Lupus, Corona Aurstralis, and Chamaeleon), $\\sim5$–$10\\%$ of Class II sources are close-enough ($\\lesssim 10^4$ au) to RNe."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of Class II sources within ~4x10^4 au of RNe in Corona Australis",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "If the threshold is slightly increased to $\\lesssim 4\\times 10^4$ au, $\\sim50\\%$ of Class II sources in Corona Aurstralis would be associated with a RN, and therefore potentially accreting material from the ambient cloud."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether continuum subtraction (e.g., uvcontsub) was performed prior to imaging the 12CO (2-1) line in S CrA and HD 97048, and which channels were used as line-free",
+  "Image size (imsize), spectral channel width, and velocity range used during CASA imaging of S CrA and HD 97048",
+  "Stopping threshold / niter for tclean during imaging of S CrA and HD 97048",
+  "Final synthesized beam dimensions and position angles, and final per-channel rms noise achieved in the re-imaged S CrA and HD 97048 cubes",
+  "Velocity ranges and intensity clipping thresholds used to compute the moment 0 and moment 1 maps for S CrA and HD 97048"
+ ],
+ "missing_for_reproduction": [
+  "Exact SED fitting procedure (wavelengths/bands included and weighting) used to compute spectral index alpha for the Marton et al. (2016) sources",
+  "Exact tclean parameters in CASA 6.4 for S CrA and HD 97048 beyond robust=0.5, cell=0.05'', and default auto-multithresh (specifically imsize, spectral binning, stopping threshold, and whether continuum subtraction was applied)",
+  "Velocity integration ranges and any flux clipping thresholds used to generate the moment 0 and moment 1 maps in Figure 3"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Catalogues and archival ALMA project codes are public and clearly identified, cross-matching radii and selection thresholds are explicitly stated, and core CASA 6.4 imaging parameters (Briggs robust=0.5, cell size 0.05'', default auto-multithresh) are given, though minor imaging/moment-map details (continuum subtraction, velocity integration windows, imsize) are omitted.",
+ "rediscovery_reason": "All input catalogues (Magakian 2003, Connelley 2007, Marton 2016, Dunham 2015, Zucker 2020) and ALMA datasets (2015.1.00192.S, 2019.1.01792.S) are public, the catalog cross-matching recipe has exact numeric answer keys (1009 RNe, 141 in SFRs, 4930 YSOs, 2562 Class II, 21 candidates), and the S CrA streamer can be directly re-imaged from standard pipeline products.",
+ "source_card": "cards/2023A%26A...670L...8G/sonnet/card.md"
+}

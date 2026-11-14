@@ -1,0 +1,756 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+ {"loc": "abstract", "quote": "We present new ALMA observations of the V892 Tau circumbinary disc at a twice higher angular and spectral resolution."}
+],
+"fields": ["protoplanetary_disks", "exoplanets"],
+"question": {
+ "value": "Constrain the orbit of the companion V892 Tau NE and determine the resulting circumbinary disc dynamics",
+ "evidence": [
+  {"loc": "abstract", "quote": "The goal of this paper is to constrain the orbit of V892 Tau NE and to determine the resulting circumbinary disc dynamics."}
+ ]
+},
+"targets": [
+ {
+  "name": "V892 Tau",
+  "details": [
+   {"loc": "1 Introduction", "quote": "parallax measurements result in distances of $d=134.5\\pm 1.5$ pc and $d=131.3\\pm 5.0$ pc, respectively, for V892 Tau and V892 Tau NE"},
+   {"loc": "4.3 Disc extent", "quote": "that corresponds to $194$ au with the adopted distance of $d=134.5$ pc"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "d = 134.5 +/- 1.5 pc",
+  "distance_source": "Gaia DR3 parallax"
+ },
+ {
+  "name": "V892 Tau NE",
+  "details": [
+   {"loc": "1 Introduction", "quote": "The M3 star V892 Tau NE is projected at $4\\ensuremath{''}$ north-east"},
+   {"loc": "1 Introduction", "quote": "parallax measurements result in distances of $d=134.5\\pm 1.5$ pc and $d=131.3\\pm 5.0$ pc, respectively, for V892 Tau and V892 Tau NE"}
+  ],
+  "coordinates": "not stated (projected 4 arcsec north-east of the inner binary)",
+  "redshift_or_distance": "d = 131.3 +/- 5.0 pc",
+  "distance_source": "Gaia DR3 parallax"
+ }
+],
+"alma_project_codes": [
+ {"code": "2021.1.01137.S", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The triple system V892 Tau was observed with ALMA in the context of the ALMA programme 2021.1.01137.S (PI: J. Miley) in Band 6."}
+ ]},
+ {"code": "2013.1.00498.S", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "has been acquired in the context of the ALMA programm $2013.1.00498.S$ in 2013"}
+ ]}
+],
+"data_settings": [
+ {"field": "bands", "value": "Band 6 (1.3 mm continuum)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The triple system V892 Tau was observed with ALMA in the context of the ALMA programme 2021.1.01137.S (PI: J. Miley) in Band 6."},
+  {"loc": "2.2 Dust disc", "quote": "Figure [2](#fig:obs_cont) shows the ALMA $1.3$ mm continuum image and a deprojected brightness radial profile."}
+ ]},
+ {"field": "frequencies_and_spectral_setup", "value": "4 SPWs per dataset: continuum at 217.875 and 233.000 GHz; 12CO(2-1) SPW at 230.538 GHz (3840 channels of 122 kHz); 13CO(2-1) SPW at 220.000 GHz (3840 channels of 488 kHz)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "Each dataset contains four spectral windows (SPWs) with two of them set up for continuum detection centred at $217.875$ and $233.000$ GHz"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The other two SPWs were centred at $230.538$ and $220.000$ GHz targeting the $^{12}$CO (2-1) and $^{13}$CO (2-1) transitions, each containing 3840 channels of $122$ kHz and $488$ kHz widths, respectively."}
+ ]},
+ {"field": "continuum_bandwidth", "value": "2 GHz per continuum SPW, 128 channels", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "with $2$ GHz of bandwidth distributed over 128 channels."}
+ ]},
+ {"field": "baselines", "value": "SB: 15-1997 m; LB: 64-8283 m (42 antennas each)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "with the first session covered shorter baselines spanning $15-1997$ m"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The second session used a more extended configuration also with $42$ antennas spanning baselines from $64$ m to $8283$ m"}
+ ]},
+ {"field": "angular_resolution", "value": "Continuum beam 0.11'' x 0.06'' at 224 GHz (robust -0.5); 12CO(2-1) beam 0.17'' x 0.11''", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The resulting beam size is $0.11\\ensuremath{''} \\times 0.06\\ensuremath{''}$ at a central frequency of $224$ GHz."},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "giving a resulting beam size of $0.17\\ensuremath{''} \\times 0.11\\ensuremath{''}$."}
+ ]},
+ {"field": "max_recoverable_scale", "value": "2.27'' (12CO), from the 5th percentile of the shortest baseline lengths", "evidence": [
+  {"loc": "2.3 CO emission", "quote": "with a maximum recoverable scale of the observational setup estimated at $2.27\\ensuremath{''}$ using the $5^{th}$ percentile of the shortest baseline lengths."}
+ ]},
+ {"field": "sensitivity", "value": "Continuum RMS 90 uJy (combined OLD+SB+LB)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "which resulted in a RMS of $90 \\mu$Jy"}
+ ]},
+ {"field": "time_on_source", "value": "approximately 18.5 minutes total on-source", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The total on-source time reached approximately $18.5$ minutes."}
+ ]},
+ {"field": "observing_dates", "value": "OLD: 2013 programme; LB: end-2021; SB: mid-2022", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "A second one has been acquired in end-2021 with longer baselines (LB) being covered during the ALMA programm $2021.1.01137.S$."},
+  {"loc": "Appendix: Data combination", "quote": "A third dataset has been acquired mid-2022 in the context of the same ALMA programm and covering shorter baselines (SB)."}
+ ]},
+ {"field": "pi_or_archival_as_stated", "value": "New data from 2021.1.01137.S (PI: J. Miley) combined with archival 2013.1.00498.S data (OLD), all downloaded from the ALMA archive", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The raw visibility data were downloaded from the ALMA archive"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We downloaded the data used in  from the ALMA archive and re-calibrated it thanks to the ALMA reduction pipeline."}
+ ]}
+],
+"lines_targeted": [
+ {"species": "12CO", "transition": "J=2-1", "rest_frequency": "230.538 GHz (SPW centre)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The other two SPWs were centred at $230.538$ and $220.000$ GHz targeting the $^{12}$CO (2-1) and $^{13}$CO (2-1) transitions"}
+ ]},
+ {"species": "13CO", "transition": "J=2-1", "rest_frequency": "not stated", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The other two SPWs were centred at $230.538$ and $220.000$ GHz targeting the $^{12}$CO (2-1) and $^{13}$CO (2-1) transitions"}
+ ]}
+],
+"other_facilities": [
+ {"name": "Gaia DR3", "provided": {"value": "Parallax distances of V892 Tau and V892 Tau NE and projected separation of the companion", "evidence": [
+  {"loc": "1 Introduction", "quote": "parallax measurements result in distances of $d=134.5\\pm 1.5$ pc and $d=131.3\\pm 5.0$ pc, respectively, for V892 Tau and V892 Tau NE"}
+ ]}}
+],
+"external_data_from_literature": [
+ {"what": {"value": "Observed inner-binary orbital parameters and mass (a_in, e_in, i_in, Omega_in, omega_in) used as the observational column of Table 1 and to set up the simulations", "evidence": [
+   {"loc": "Table 1 notes", "quote": "The observational values are taken from ."},
+   {"loc": "1 Introduction", "quote": "The eccentric inner binary has been resolved and its orbit tightly constrained"}
+  ]}, "citation": "(cite: Long+2021) [inferred from the introduction; the citation key is blank in the Table 1 note]"},
+ {"what": {"value": "Disc tilt with respect to the inner binary, Delta = 8.0 +/- 4.2 deg or 113.3 +/- 3.0 deg, assumed for the disc", "evidence": [
+   {"loc": "1 Introduction", "quote": "The tilt of the disc with respect to the inner binary is measured at $\\Delta = 8.0 \\pm 4.2 \\degree$ or $\\Delta = 113.3 \\pm 3.0 \\degree$"},
+   {"loc": "4.5 Inclination and orientation of the disc", "quote": "Thus, we assumed the disc to have the same tilt as previously calculated."}
+  ]}, "citation": "(cite: Long+2021)"},
+ {"what": {"value": "Gaia DR3 parallax distances", "evidence": [
+   {"loc": "1 Introduction", "quote": "parallax measurements result in distances of $d=134.5\\pm 1.5$ pc and $d=131.3\\pm 5.0$ pc, respectively, for V892 Tau and V892 Tau NE"}
+  ]}, "citation": "(cite: GaiaDR3)"},
+ {"what": {"value": "Mass of V892 Tau NE assumed to be 0.5 Msun", "evidence": [
+   {"loc": "3.2 Hydrodynamical simulations", "quote": "We assumed the mass of V892 Tau NE to be $0.5$ M$_\\odot$, which is in agreement with the mass of similar M3 stars (cite: Luhman+2007; Flores+2022)."}
+  ]}, "citation": "(cite: Luhman+2007; Flores+2022)"},
+ {"what": {"value": "Pre-main-sequence stellar temperatures and luminosities for the sink-particle stars (age 3 Myr)", "evidence": [
+   {"loc": "3.3 Radiative transfer and post-processing", "quote": "temperature and luminosity chosen in agreement with their mass at an age of $3$ Myr (cite: Siess+2000)"}
+  ]}, "citation": "(cite: Siess+2000)"},
+ {"what": {"value": "Estimated age of the system (~2 Myr)", "evidence": [
+   {"loc": "3.3 Radiative transfer and post-processing", "quote": "consistent with an estimated age of the system of $\\sim 2$ Myr (cite: KucukAkkaya2010)"}
+  ]}, "citation": "(cite: KucukAkkaya2010)"},
+ {"what": {"value": "Astrosilicate dust opacities", "evidence": [
+   {"loc": "3.3 Radiative transfer and post-processing", "quote": "They were assumed compact and following opacity laws of astrosilicates (cite: WeingartnerDraine2001)"}
+  ]}, "citation": "(cite: WeingartnerDraine2001)"},
+ {"what": {"value": "von Zeipel-Kozai-Lidov timescale of ~90 P_out at 100 au", "evidence": [
+   {"loc": "4.8 Stability of future planets", "quote": "with a characteristic timescale of $\\sim 90$ P$_{out}$ at $100$ au (cite: Ceppi+2023)"}
+  ]}, "citation": "(cite: Ceppi+2023)"}
+],
+"simulations_or_models_as_data": [
+ {"value": "Five 3D SPH (Phantom) simulations (ref, e05, i30, i60, ei60) of the triple system with a circumbinary disc, post-processed with MCFOST and simalma into synthetic 12CO(2-1) observations to compare with ALMA", "evidence": [
+  {"loc": "3.2 Hydrodynamical simulations", "quote": "From there we modelled the V892 Tau system as a triple system in five numerical setups, with a different orbit for the outer companion each time"},
+  {"loc": "abstract", "quote": "The simulation outputs were then post-processed to build synthetic maps that we compared to the observations."}
+ ]},
+ {"value": "Five rebound N-body simulations with 10 test particles tracing the disc, matching the SPH setups", "evidence": [
+  {"loc": "3.4 N-body simulations", "quote": "Five simulations were performed with the same parameters as the SPH setups *ref, e05, i30, i60*, and *ei60*, respectively."}
+ ]}
+],
+"calibration": [
+ {"field": "pipeline_or_manual", "value": "SB/LB: calibrated with the ALMA-staff scripts; OLD: re-calibrated with the ALMA reduction pipeline", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The raw visibility data were downloaded from the ALMA archive and subsequently calibrated using the available scripts provided by ALMA staff"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We downloaded the data used in  from the ALMA archive and re-calibrated it thanks to the ALMA reduction pipeline."}
+ ]},
+ {"field": "casa_version", "value": "CASA 6.2.1.7 for calibration; CASA v6.5.3 for the combined tclean", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "using the required CASA (cite: McMullin2007) 6.2.1.7 version"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We then created a combined continuum model with *tclean* in CASA v6.5.3 from the three datasets"}
+ ]},
+ {"field": "flux_calibrator", "value": "J0435+2532 (band-pass and amplitude calibrator); J0438+3004 (phase calibrator)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The band-pass and amplitude calibrator for the observations was J$0435+2532$, and J$0438+3004$ was used as the phase calibrator."}
+ ]},
+ {"field": "self_calibration", "value": "Phase-only self-cal on line-free continuum; solint reduced to integration time (6.05 s SB, 2.02 s LB; OLD down to 6.05 s); second round on a common model of the three datasets", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We performed several phase self-calibration rounds on each continuum dataset until the solution interval was tuned down to the integration time of $6.05$ s for the SB dataset and of $2.02$ s for the LB dataset."},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "Then, we reduced the data and performed phase self-calibration rounds on the continuum data with solution intervals down to the integration time of $6.05$ s."},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "On the basis of that common model, the individual datasets were self-calibrated in phase a second time."}
+ ]}
+],
+"imaging": [
+ {"field": "task", "value": "tclean in CASA (continuum and 12CO cube)", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We then created a combined continuum model with *tclean* in CASA v6.5.3 from the three datasets, using a Briggs weighting with a robust parameter of $0.5$ (cite: Briggs)."}
+ ]},
+ {"field": "weighting_robust", "value": "Briggs; robust 0.5 for the common continuum model; robust -0.5 for the final continuum image; robust 0.5 for the 12CO cube", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The resulting datasets were combined to create a final continuum image with *tclean* using a Briggs weighting with a robust of $-0.5$"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "An image cube of the $^{12}$CO (2-1) line emission was then created combining the three datasets using a Briggs weighting with a robust of $0.5$ and a channel width of $0.5$ km s$^{-1}$"}
+ ]},
+ {"field": "continuum_subtraction", "value": "uvcontsub, polynomial fit to line-free channels", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "from which the continuum emission was subtracted by fitting a polynomial function to line-free channels using the *uvcontsub* task"}
+ ]},
+ {"field": "array_combination", "value": "OLD, SB and LB combined in the visibility plane; datasets centred with phaseshift on the cavity centre and flux-rescaled to a common reference", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "Before doing so, the observations were centred together with the *phaseshift* task using the centre of the cavity as a common reference."},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The SB and LB visibility amplitudes were scaled with respect to the one of OLD to make sure the fluxes of all the datasets were consistent altogether before combination."}
+ ]},
+ {"field": "smoothing", "value": "Spectral smoothing of the 12CO MS to a common 0.5 km/s resolution in tclean", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "Finally, the $^{12}$CO datacube was created using the *tclean* task, that ensures a spectral smoothing of the MS to a common spectral resolution of $0.5$ km s$^{-1}$."}
+ ]},
+ {"field": "final_beam", "value": "Continuum 0.11'' x 0.06''; 12CO 0.17'' x 0.11''", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The resulting beam size is $0.11\\ensuremath{''} \\times 0.06\\ensuremath{''}$ at a central frequency of $224$ GHz."},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "giving a resulting beam size of $0.17\\ensuremath{''} \\times 0.11\\ensuremath{''}$."}
+ ]},
+ {"field": "final_rms", "value": "Continuum 90 uJy", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "which resulted in a RMS of $90 \\mu$Jy"}
+ ]}
+],
+"inherited": [
+ {"what": {"value": "Flux-scale matching of SB, LB and OLD with estimate_scale_flux and rescale_flux from the DSHARP reduction_utils.py", "evidence": [
+   {"loc": "2.1 Data calibration, reduction, and combination", "quote": "we used the functions *estimate_scale_flux* and *rescale_flux* of the *reduction_utils.py* python script from the DSHARP project"}
+  ]}, "from_reference": "DSHARP project reduction_utils.py (footnote: https://almascience.eso.org/almadata/lp/DSHARP/)"},
+ {"what": {"value": "Initial values of the Discminer MCMC taken from earlier results for orientation and kinematic parameters", "evidence": [
+   {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "The initial values of the MCMC sampling were chosen in agreement with the values derived in when possible, namely for the orientation and kinematic parameters."}
+  ]}, "from_reference": "earlier analysis of the OLD data (citation not preserved in the paper text)"},
+ {"what": {"value": "Disc tilt with respect to the inner binary assumed equal to the previously calculated value", "evidence": [
+   {"loc": "4.5 Inclination and orientation of the disc", "quote": "Thus, we assumed the disc to have the same tilt as previously calculated."}
+  ]}, "from_reference": "earlier analysis of the OLD data (citation not preserved in the paper text)"},
+ {"what": {"value": "Simulated disc aspect ratio H/r = 0.055 at 100 au and sound-speed exponent q = 0.185 set from the fitted temperature profile of earlier work", "evidence": [
+   {"loc": "3.2 Hydrodynamical simulations", "quote": "The aspect ratio $H/r=0.055$ at the reference radius $R_0=100$ au and the sound speed exponent $q=0.185$ were set to match the fitted temperature profile in ."}
+  ]}, "from_reference": "earlier analysis of the OLD data (citation not preserved in the paper text)"},
+ {"what": {"value": "Inner binary orbital parameters and mass in the simulations set from earlier observations", "evidence": [
+   {"loc": "3.2 Hydrodynamical simulations", "quote": "its other orbital parameters and its mass were set in line with the observations"}
+  ]}, "from_reference": "earlier analysis (citation not preserved in the paper text; Table 1 observational column)"},
+ {"what": {"value": "Expected binary-system disc precession timescale computed with Eq. 6 of Gonzalez et al. 2020", "evidence": [
+   {"loc": "5.2 Oscillations and precession", "quote": "following Eq. 6 from (cite: Gonzalez+2020) derived from (cite: Bate+2000) and (cite: Terquem+1998)"}
+  ]}, "from_reference": "(cite: Gonzalez+2020), derived from (cite: Bate+2000) and (cite: Terquem+1998)"},
+ {"what": {"value": "Discminer model and fitting method", "evidence": [
+   {"loc": "3.1 Discminer", "quote": "we used the python package Discminer (cite: DiscminerI; DiscminerII) to fit the $^{12}$CO (2-1) line emission and kinematics channel by channel by a Keplarian disc model."}
+  ]}, "from_reference": "(cite: DiscminerI; DiscminerII)"}
+],
+"unstated_but_needed": [
+ "tclean cell size, image size, deconvolver, niter, threshold and cleaning masks for the continuum and 12CO images",
+ "Line-free channel ranges and polynomial order used in uvcontsub",
+ "Number of self-calibration rounds, intermediate solints and S/N thresholds, and the DSHARP flux-rescaling factors actually applied",
+ "Sky coordinates of V892 Tau and V892 Tau NE and the phase centre/common-reference position used in phaseshift",
+ "Discminer version, prior distributions (only search ranges are in Table 5) and initial walker positions",
+ "Rest frequency of 13CO and whether 13CO was used at all",
+ "Phantom version/commit, setup/input files, initial orbital phases of the inner and outer binaries, and viscosity prescription details beyond alpha_SS in Table 1",
+ "MCFOST version and parameter file, plus simalma configuration files and antenna lists",
+ "Noise level used for the 3-sigma clipping of the moment maps and the exact velocity range masked for cloud absorption",
+ "Exact fitting setup (starting values, weights) for the tilt and PA damped-oscillation fits"
+],
+"analysis_steps": [
+ {
+  "order": 1,
+  "goal": "Calibrate and self-calibrate each dataset",
+  "method": {"value": "Archive calibration scripts (SB, LB) or ALMA pipeline (OLD), then phase self-calibration of continuum built from line-free channels", "evidence": [
+   {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The data were self-calibrated after the line-free channels were combined altogether to create continuum datasets."}
+  ]},
+  "software": ["CASA", "gaincal", "applycal", "tclean"],
+  "key_parameters": [
+   {"value": "Solint reduced to the integration time: 6.05 s (SB), 2.02 s (LB)", "evidence": [
+    {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We performed several phase self-calibration rounds on each continuum dataset until the solution interval was tuned down to the integration time of $6.05$ s for the SB dataset and of $2.02$ s for the LB dataset."}
+   ]},
+   {"value": "First round uses combined SPWs, combined polarisations and infinite solint; later rounds decombine SPWs and polarisations", "evidence": [
+    {"loc": "Appendix: Data combination", "quote": "The first calibration tables were created for combined SPWs, combined polarisation and a infinite solution interval to maximise the S/N."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "RMS must decrease between rounds without loss of total flux or peak intensity", "evidence": [
+   {"loc": "Appendix: Data combination", "quote": "We ensured that the RMS was decreasing between the rounds without any decrease of the total flux and peak intensity."}
+  ]}
+ },
+ {
+  "order": 2,
+  "goal": "Rescale fluxes and combine the three datasets into a continuum image",
+  "method": {"value": "Flux rescaling to OLD, common continuum model with tclean (robust 0.5), second phase self-cal, final tclean with robust -0.5", "evidence": [
+   {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We then created a combined continuum model with *tclean* in CASA v6.5.3 from the three datasets, using a Briggs weighting with a robust parameter of $0.5$ (cite: Briggs)."},
+   {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The resulting datasets were combined to create a final continuum image with *tclean* using a Briggs weighting with a robust of $-0.5$"}
+  ]},
+  "software": ["CASA", "tclean", "phaseshift", "reduction_utils.py (DSHARP)"],
+  "key_parameters": [
+   {"value": "Datasets centred on the cavity centre with phaseshift; second-round gaincal solint two times the integration time, combined SPWs, independent polarisations", "evidence": [
+    {"loc": "Appendix: Data combination", "quote": "Before doing so, the observations were centred together with the *phaseshift* task using the centre of the cavity as a common reference."},
+    {"loc": "Appendix: Data combination", "quote": "The *gaincal* parameters were turned down to a solution interval of two times the integration time, combined SPWs and independent polarisations."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Calibration stopped before the RMS stopped decreasing; combined data centred consistently", "evidence": [
+   {"loc": "Appendix: Data combination", "quote": "The calibration were stopped before the RMS stopped decreasing between the rounds."}
+  ]}
+ },
+ {
+  "order": 3,
+  "goal": "Continuum-subtract and image the 12CO(2-1) cube",
+  "method": {"value": "Apply continuum self-cal tables to the gas MS, uvcontsub, scale to common flux, tclean cube with 0.5 km/s channels", "evidence": [
+   {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We also applied the resulting self-calibration tables to the gas observations"},
+   {"loc": "Appendix: Data combination", "quote": "The resulting gas MS were scaled to a common flux reference using the same correction factors that the continuum MS."}
+  ]},
+  "software": ["CASA", "uvcontsub", "tclean"],
+  "key_parameters": [
+   {"value": "Briggs robust 0.5, channel width 0.5 km/s", "evidence": [
+    {"loc": "2.1 Data calibration, reduction, and combination", "quote": "An image cube of the $^{12}$CO (2-1) line emission was then created combining the three datasets using a Briggs weighting with a robust of $0.5$ and a channel width of $0.5$ km s$^{-1}$"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}
+ },
+ {
+  "order": 4,
+  "goal": "Measure continuum disc geometry, cavity and extent",
+  "method": {"value": "Deprojected radial brightness profile; cavity radius at half peak intensity; R90 from encircled flux; i and PA best-fitted", "evidence": [
+   {"loc": "2.2 Dust disc", "quote": "that is defined as the radius at which the intensity first reaches half of its peak level with an incertitude taken as the difference with quarter peak radius."},
+   {"loc": "2.2 Dust disc", "quote": "The inclination $i$ and the position angle $PA$ of the disc are respectively best-fitted to"}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Cavity radius defined at half the peak intensity, uncertainty = difference with quarter-peak radius", "evidence": [
+    {"loc": "2.2 Dust disc", "quote": "that is defined as the radius at which the intensity first reaches half of its peak level with an incertitude taken as the difference with quarter peak radius."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Compared with earlier measurements: 18% north-south asymmetry consistent with the reported 20%", "evidence": [
+   {"loc": "2.2 Dust disc", "quote": "This trend was also found in and is consistent with the reported value of $20\\%$."}
+  ]}
+ },
+ {
+  "order": 5,
+  "goal": "Fit a Keplerian disc model to the 12CO cube with Discminer",
+  "method": {"value": "Channel-by-channel image-plane fit of a Keplerian disc model with exponentially tapered emission surfaces, power-law peak intensity and line width, with MCMC", "evidence": [
+   {"loc": "3.1 Discminer", "quote": "we used the python package Discminer (cite: DiscminerI; DiscminerII) to fit the $^{12}$CO (2-1) line emission and kinematics channel by channel by a Keplarian disc model."},
+   {"loc": "3.1 Discminer", "quote": "Discminer then fits the previous model to the data in the image plane channel by channel thanks to MCMC sampling using emcee (cite: emcee)."}
+  ]},
+  "software": ["Discminer", "emcee"],
+  "key_parameters": [
+   {"value": "256 walkers, 40000 steps, first 6300 steps burn-in", "evidence": [
+    {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "Following the need of a precise model, we initialised $256$ walkers with a total of $40000$ steps."},
+    {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "The first $6300$ steps are considered as a burn-in phase where the walkers explore the parameter space."}
+   ]},
+   {"value": "Reference radius r0 = 100 au; search ranges per parameter listed in Table 5", "evidence": [
+    {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "The reference radius $r_0$ was taken as $100$ au."},
+    {"loc": "Table 5", "quote": "Parameters of the best-fit model found by Discminer to the $^{12}$CO (2-1) emission."}
+   ]},
+   {"value": "PA defined from north to the blueshifted semi-major axis", "evidence": [
+    {"loc": "3.1 Discminer", "quote": "In this work, the PA was defined as the angle from the northern axis to the blueshifted semi-major axis."}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Thin disc with Keplerian rotation, initial emission surfaces set to a thin disc", "evidence": [
+    {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "The initial values of the parameters defining the emission surfaces were set to initialise a thin disc, in agreement with the observations."}
+   ]}
+  ],
+  "fitting": {"value": "emcee MCMC; best-fit = median of posteriors, errors = 16th and 84th percentiles", "evidence": [
+   {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "The best-fit parameters are taken as the median of the posterior distributions. The errorbars are the $16$ and $84$ percentiles of the posterior distributions."}
+  ]},
+  "validation": {"value": "Chains converged before end of sampling; autocorrelation length 106 steps", "evidence": [
+   {"loc": "Appendix: Gas emission fitting with Discminer", "quote": "The chains reached convergence well before the end of the sampling and the resulting auto-correlation length was $106$ steps."}
+  ]}
+ },
+ {
+  "order": 6,
+  "goal": "Build moment maps and residuals from data and best-fit model",
+  "method": {"value": "Moment 0, peak temperature (moment 8), peak velocity (moment 9) and line-width maps from data and model channels, with residual maps by subtraction", "evidence": [
+   {"loc": "3.1 Discminer", "quote": "First, a moment 0 map was computed by integrating the intensity in each pixel along the velocity axis."},
+   {"loc": "3.1 Discminer", "quote": "Residual maps were built by subtracting the masked model moment maps to the data moment maps."}
+  ]},
+  "software": ["Discminer"],
+  "key_parameters": [
+   {"value": "3-sigma clipping for data moment maps; same mask applied to model maps", "evidence": [
+    {"loc": "3.1 Discminer", "quote": "We applied a $3\\sigma$ clipping in the building of data moment maps."},
+    {"loc": "3.1 Discminer", "quote": "The same mask delimiting the detected disc area was applied to the model moment maps."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}
+ },
+ {
+  "order": 7,
+  "goal": "Run SPH simulations of the triple system with a circumbinary disc",
+  "method": {"value": "3D SPH with Phantom, central binary + disc + outer companion on five orbits (ref, e05, i30, i60, ei60)", "evidence": [
+   {"loc": "3.2 Hydrodynamical simulations", "quote": "we performed 3D hydrodynamical simulations using the Phantom (cite: Price+2018-phantom) smoothed particle hydrodynamics (SPH, e.g. (cite: Monaghan1992)) code."},
+   {"loc": "3.2 Hydrodynamical simulations", "quote": "From there we modelled the V892 Tau system as a triple system in five numerical setups, with a different orbit for the outer companion each time"}
+  ]},
+  "software": ["Phantom"],
+  "key_parameters": [
+   {"value": "1e6 SPH particles, Sigma ~ r^-p with p = 1", "evidence": [
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "The model used of $10^6$ SPH particles distributed in the disc according to a surface density distribution $\\Sigma \\propto r^{-p}$ with $p=1$"}
+   ]},
+   {"value": "Disc from 14 au to 200 au, total mass 0.06 Msun", "evidence": [
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "that extends initially from $14$ au to $200$ au for a total disc mass of $0.06$ M$_{\\odot}$"}
+   ]},
+   {"value": "Sink accretion radii 1 au (inner binary stars) and 10 au (outer star)", "evidence": [
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "We modelled the stars as sink particles (cite: Bate+1995) with accretion radii of $1$ au for the two components of the inner binary and of $10$ au for the outer star."}
+   ]},
+   {"value": "Evolved for 50 P_out with P_out = 4375 yr; a_out = 500 au, omega_out = 180 deg", "evidence": [
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "We evolved the hydrodynamical simulations for $50$ P$_{out}$, with $P_{out}=4375$ yrs the period of the outer binary"},
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "we assumed the semi-major axis to be $a_{out}=500$ au"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Disc inclination positive (54.6 deg), SE side nearest; inner binary coplanar and prograde with the disc", "evidence": [
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "We assumed that inclination to be positive and of $54.6\\degree$, meaning the closest side to the observer was the SE side."},
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "The inner binary was initialised coplanar in a prograde configuration with respect to the disc"}
+   ]},
+   {"value": "Companion mass 0.5 Msun; companion assumed near apoastron", "evidence": [
+    {"loc": "3.2 Hydrodynamical simulations", "quote": "We accordingly set the argument of the periapsis to $\\omega_{out}=180\\degree$."}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Simulations considered near equilibrium because the bulk disc size is stable over the last 20 companion orbits", "evidence": [
+   {"loc": "5.5 Limitations and caveats", "quote": "our simulations reached a state close to this equilibrium, as the size of the bulk of the disc does not significantly change in the last $20$ orbits of the companion."}
+  ]}
+ },
+ {
+  "order": 8,
+  "goal": "Fit tilt and PA evolution of the simulated discs and search for a warp",
+  "method": {"value": "Damped-oscillation model for tilt and linear-plus-sinusoid model for PA, fitted to the evolution of particle-averaged tilt and PA", "evidence": [
+   {"loc": "4.5 Inclination and orientation of the disc", "quote": "For the inclined setups *i30*, *i60,* and *ei60,* we fitted the inclination of the disc with a damped oscillations model"},
+   {"loc": "4.5 Inclination and orientation of the disc", "quote": "The PA is fitted by a linear model on the top of which are sinusoidal oscillations"}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Tilt and PA from the average over SPH particles between the inner disc border and 200 au", "evidence": [
+    {"loc": "4.5 Inclination and orientation of the disc", "quote": "averaging the tilt and PA of all the SPH particles tilt and PA having a semi-major axis between the inner border of the disc and $200$ au"}
+   ]},
+   {"value": "First 15 outer-companion orbits excluded from the fit", "evidence": [
+    {"loc": "4.5 Inclination and orientation of the disc", "quote": "We exclude at least the first $15$ orbits of the outer companion of the fitting process to neglect that effect."}
+   ]},
+   {"value": "Warp search: disc binned in semi-major axis from the cavity edge to 200 au, error = std of particle tilt in each bin", "evidence": [
+    {"loc": "4.6 Disc warp", "quote": "the disc was binned in semi-major axis from the inner cavity edge $r_{in}$ to $r = 200$ au"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "Non-linear least squares", "evidence": [
+   {"loc": "4.5 Inclination and orientation of the disc", "quote": "The model is adjusted to the simulation data using a non-linear least squares method."}
+  ]},
+  "validation": {"value": "Fit admitted to describe ei60 poorly; comparison of fitted values with observed tilt", "evidence": [
+   {"loc": "4.5 Inclination and orientation of the disc", "quote": "We also note that our model does not account well for the *ei60* disc dynamics where the oscillations are quickly damped"}
+  ]}
+ },
+ {
+  "order": 9,
+  "goal": "Radiative transfer and synthetic ALMA observations of the simulations",
+  "method": {"value": "MCFOST radiative transfer on a Voronoi grid (one cell per SPH particle) to make 12CO(2-1) cubes, then simalma and tclean with the same parameters as the observations", "evidence": [
+   {"loc": "3.3 Radiative transfer and post-processing", "quote": "We used the radiative transfer code MCFOST (cite: Pinte+2006; Pinte+2009) that employs a Voronoi tesselation to build a grid based on the SPH particle distribution, with one cell per SPH particle."},
+   {"loc": "3.3 Radiative transfer and post-processing", "quote": "Using the *simalma* task, Measurement Sets (MS) were generated from the radiatively processed data with the right sampling of the *uv* plane."}
+  ]},
+  "software": ["MCFOST", "CASA", "simalma", "tclean"],
+  "key_parameters": [
+   {"value": "100 grain sizes 0.03-1000 um; 1.28e8 photon packets for temperature, 1.28e6 for images", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "We used $100$ grain sizes from $0.03\\mu$m to $1000 \\mu$m logarithmically spaced in scale."},
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "$1.28\\times10^8$ photons packets were used to compute the 3D temperature using a Monte-Carlo approach"}
+   ]},
+   {"value": "Channel maps at 0.075 km/s from -15 to 15 km/s, shifted to v_sys = 7.86 km/s", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "$^{12}$CO (2-1) channel maps were produced with a $0.075$ km s$^{-1}$ resolution from $-15$ km s$^{-1}$ to $15$ km s$^{-1}$."},
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "The velocity axis was then shifted from the systemic velocity $v_{sys}=7.86$ km s$^{-1}$."}
+   ]},
+   {"value": "Integration times 9.25 min (SB, LB) and 8 min (OLD); PWV = 0.6 mm; Hanning smoothing", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "The integration times were set to $9.25$ minutes for the synthetic SB and LB sets, and to $8$ minutes for the synthetic dataset matching the OLD set."},
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "The precipitable water vapour index $PWV=0.6$ mm was also chosen in line with the observing conditions."}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Dust follows gas; astrosilicates, Mie scattering; dust-to-gas 0.01; grain-size power law -3.5", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "Since our SPH simulations contains gas particles only, the dust spatial distribution is assumed to follow the gas distribution."},
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "assuming a typical power-law of exponent $-3.5$ (cite: Mathis1977), and all over the grid to have a dust to gas mass ratio of $0.01$"}
+   ]},
+   {"value": "12CO/H2 abundance 1e-4, zero turbulent velocity, freeze-out temperature 20 K", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "We adopted a uniform value of $1\\times10^{-4}$ for the $^{12}$CO abundance compared to H$_2$."},
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "The turbulent velocity was set to zero and the freeze-out temperature below which the grid cells do not emit, to $20$ K."}
+   ]},
+   {"value": "Disc manually rotated back to average i = 54.6 deg and PA = 53 deg before post-processing", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "the disc was manually moved back to an average inclination of $54.6\\degree$ and an average PA of $53\\degree$ before the post-processing."}
+   ]},
+   {"value": "Stars radiate as isotropic black bodies, e.g. 3 Msun components at 10745 K and 72 Lsun", "evidence": [
+    {"loc": "3.3 Radiative transfer and post-processing", "quote": "This way each $3$ M$_{\\odot}$ component of the inner binary had a temperature of $10745$ K and a luminosity of $72$ L$_{\\odot}$"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Synthetic data imaged with the exact same tclean parameters as the observations", "evidence": [
+   {"loc": "3.3 Radiative transfer and post-processing", "quote": "The $3$ synthetic datasets had their continuum subtracted before being imaged together with the exact same *tclean* parameters used in the imaging process of the observations"}
+  ]}
+ },
+ {
+  "order": 10,
+  "goal": "Compare data and synthetic observations to constrain the companion orbit",
+  "method": {"value": "Qualitative comparison of channel maps, moment maps, radial intensity profiles/R90 and tilt between data and the five simulations", "evidence": [
+   {"loc": "4.1 Channel maps", "quote": "The closest match is made with the synthetic channels built from *e05*: the emission pattern is comparable to the data in terms of size, morphology, and intensity."},
+   {"loc": "4.3 Disc extent", "quote": "In the end, the observations are in better agreement with the *e05* simulation as both show comparable disc sizes."}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Constraints suggested on companion eccentricity and mutual inclination", "evidence": [
+    {"loc": "4.7 The orbit of V892 Tau NE", "quote": "we suggest constraints on the parameter eccentricity and mutual inclination of V892 Tau NE of $0.2<e<0.5$ and $30\\degree < \\Delta i < 60\\degree$ respectively."}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Only five orbital configurations sampled; comparison is not a formal fit", "evidence": [
+    {"loc": "5.5 Limitations and caveats", "quote": "The main limitation of our work is the low number of orbital configurations tested."}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Binary-only and flyby comparison simulations used to test whether the triple configuration is required", "evidence": [
+   {"loc": "Appendix: Binary-only simulations", "quote": "The three additional simulations *IB*, *OB30* and *OB60* show that the dynamical behaviour of the V892 Tau disc can not be reproduced by a binary system only."}
+  ]}
+ },
+ {
+  "order": 11,
+  "goal": "N-body stability of putative planets in the ei60 configuration",
+  "method": {"value": "rebound N-body integration of 3 stars plus massless test particles tracing the disc", "evidence": [
+   {"loc": "3.4 N-body simulations", "quote": "Additionally, we performed N-body simulations using the code rebound (cite: rebound)."},
+   {"loc": "3.4 N-body simulations", "quote": "The system is then integrated with an *ias15* integrator (cite: ias15) during $2000$ periods of the outer binary, corresponding to $\\sim 9$ Myr."}
+  ]},
+  "software": ["rebound"],
+  "key_parameters": [
+   {"value": "10 test particles with semi-major axes 14.2-200 au", "evidence": [
+    {"loc": "3.4 N-body simulations", "quote": "the disc was modelled using 10 test particles with the same inclination and position angle as the disc in the SPH setups."},
+    {"loc": "3.4 N-body simulations", "quote": "The test particles semi-major axis extended from $14.2$ au to $200$ au, corresponding to the borders of the disc."}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Test particles have zero eccentricity and mass; initial mutual inclination of 8 deg with the inner binary", "evidence": [
+    {"loc": "3.4 N-body simulations", "quote": "Their eccentricity and mass were set to zero."},
+    {"loc": "3.4 N-body simulations", "quote": "the test particles start the simulation with a mutual inclination of $8\\degree$ with the inner binary."}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}
+ }
+],
+"software": [
+ {"name": "CASA", "version": "6.2.1.7 (calibration); v6.5.3 (combined tclean)", "used_for": {"value": "Calibration, self-calibration, imaging and synthetic observations", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "using the required CASA (cite: McMullin2007) 6.2.1.7 version"},
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "We then created a combined continuum model with *tclean* in CASA v6.5.3 from the three datasets"}
+ ]}},
+ {"name": "tclean", "version": "not stated", "used_for": {"value": "Continuum and 12CO imaging of the combined data and of the synthetic data", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The resulting datasets were combined to create a final continuum image with *tclean* using a Briggs weighting with a robust of $-0.5$"}
+ ]}},
+ {"name": "uvcontsub", "version": "not stated", "used_for": {"value": "Continuum subtraction of the gas MS", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "by fitting a polynomial function to line-free channels using the *uvcontsub* task"}
+ ]}},
+ {"name": "gaincal / applycal", "version": "not stated", "used_for": {"value": "Phase self-calibration rounds", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "Using the *gaincal* and *applycal*, self-calibration rounds in phase were conducted on the continuum data."}
+ ]}},
+ {"name": "phaseshift", "version": "not stated", "used_for": {"value": "Centring the datasets on the cavity centre before combination", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "the observations were centred together with the *phaseshift* task using the centre of the cavity as a common reference."}
+ ]}},
+ {"name": "simalma", "version": "not stated", "used_for": {"value": "Generating synthetic measurement sets from the MCFOST cubes", "evidence": [
+  {"loc": "3.3 Radiative transfer and post-processing", "quote": "Using the *simalma* task, Measurement Sets (MS) were generated from the radiatively processed data with the right sampling of the *uv* plane."}
+ ]}},
+ {"name": "reduction_utils.py (DSHARP)", "version": "not stated", "used_for": {"value": "Flux-scale estimation and rescaling between datasets", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "we used the functions *estimate_scale_flux* and *rescale_flux* of the *reduction_utils.py* python script from the DSHARP project"}
+ ]}},
+ {"name": "Discminer", "version": "not stated", "used_for": {"value": "Keplerian disc model fit to the 12CO cube, moment maps and rotation curve", "evidence": [
+  {"loc": "3.1 Discminer", "quote": "we used the python package Discminer (cite: DiscminerI; DiscminerII) to fit the $^{12}$CO (2-1) line emission and kinematics channel by channel by a Keplarian disc model."}
+ ]}},
+ {"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC sampling in the Discminer fit", "evidence": [
+  {"loc": "3.1 Discminer", "quote": "thanks to MCMC sampling using emcee (cite: emcee)."}
+ ]}},
+ {"name": "Phantom", "version": "not stated", "used_for": {"value": "3D SPH hydrodynamical simulations", "evidence": [
+  {"loc": "3.2 Hydrodynamical simulations", "quote": "we performed 3D hydrodynamical simulations using the Phantom (cite: Price+2018-phantom) smoothed particle hydrodynamics"}
+ ]}},
+ {"name": "MCFOST", "version": "not stated", "used_for": {"value": "Radiative transfer post-processing of SPH outputs", "evidence": [
+  {"loc": "3.3 Radiative transfer and post-processing", "quote": "We used the radiative transfer code MCFOST (cite: Pinte+2006; Pinte+2009)"}
+ ]}},
+ {"name": "rebound", "version": "not stated", "used_for": {"value": "N-body simulations with the ias15 integrator", "evidence": [
+  {"loc": "3.4 N-body simulations", "quote": "Additionally, we performed N-body simulations using the code rebound (cite: rebound)."}
+ ]}},
+ {"name": "Splash", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+ {"name": "Sarracen", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+ {"name": "Numpy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+ {"name": "Matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+ {"quantity": "Peak S/N after self-calibration (SB; LB)", "value": "582; 233", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "giving a peak S/N of $582$ and $233,$ respectively."}
+ ]},
+ {"quantity": "Continuum image RMS (combined)", "value": "90", "uncertainty": "not stated", "units": "uJy/beam", "from_step": 2, "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "which resulted in a RMS of $90 \\mu$Jy"}
+ ]},
+ {"quantity": "Continuum beam", "value": "0.11 x 0.06", "uncertainty": "not stated", "units": "arcsec", "from_step": 2, "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The resulting beam size is $0.11\\ensuremath{''} \\times 0.06\\ensuremath{''}$ at a central frequency of $224$ GHz."}
+ ]},
+ {"quantity": "12CO(2-1) beam", "value": "0.17 x 0.11", "uncertainty": "not stated", "units": "arcsec", "from_step": 3, "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "giving a resulting beam size of $0.17\\ensuremath{''} \\times 0.11\\ensuremath{''}$."}
+ ]},
+ {"quantity": "12CO(2-1) disc R90 and integrated flux", "value": "R90 = 1.45 arcsec; flux = 15.8 Jy km/s", "uncertainty": "+/-0.02 arcsec; +/-0.1 Jy km/s", "units": "arcsec; Jy km/s", "from_step": 3, "evidence": [
+  {"loc": "2.3 CO emission", "quote": "and a flux of $15.8$ Jy km s$^{-1}$"},
+  {"loc": "Table 1", "quote": "$15.8\\pm0.1$"},
+  {"loc": "Table 1", "quote": "$1.45\\pm0.02$"}
+ ]},
+ {"quantity": "Cavity radius (dust)", "value": "0.14", "uncertainty": "+/-0.02", "units": "arcsec", "from_step": 4, "evidence": [
+  {"loc": "2.2 Dust disc", "quote": "We found a cavity radius of $R_{cav} = 0.14\\pm 0.02\\ensuremath{''}$"}
+ ]},
+ {"quantity": "Dust disc R90 (deprojected)", "value": "0.38", "uncertainty": "+/-0.01", "units": "arcsec", "from_step": 4, "evidence": [
+  {"loc": "2.2 Dust disc", "quote": "The dusty disc has a deprojected radius of $R_{90\\%} = 0.38\\pm0.01\\ensuremath{''}$"}
+ ]},
+ {"quantity": "Continuum disc inclination and position angle", "value": "i = 54.0; PA = 51.5", "uncertainty": "+/-1.8; +/-0.5", "units": "deg", "from_step": 4, "evidence": [
+  {"loc": "2.2 Dust disc", "quote": "$i=54.0 \\pm 1.8\\degree$ and $PA=51.5\\pm0.5\\degree$"}
+ ]},
+ {"quantity": "North-south continuum brightness asymmetry", "value": "18", "uncertainty": "not stated", "units": "percent", "from_step": 4, "evidence": [
+  {"loc": "2.2 Dust disc", "quote": "the northern side of the disc along the minor axis is $18\\%$ brighter than its southern side."}
+ ]},
+ {"quantity": "Significance of unresolved emission in the cavity", "value": "30", "uncertainty": "not stated", "units": "sigma", "from_step": 4, "evidence": [
+  {"loc": "2.2 Dust disc", "quote": "We confirm the detection of unresolved emission in the cavity with a $30\\sigma$ significance."}
+ ]},
+ {"quantity": "Discminer best-fit inclination", "value": "54.7", "uncertainty": "+0.07/-0.40", "units": "deg", "from_step": 5, "evidence": [
+  {"loc": "4.1 Channel maps", "quote": "The best-fit inclination $i=54.7\\degree$, position angle $PA=53.6\\degree$"},
+  {"loc": "Table 5", "quote": "$54.7 ^{+0.07\\circ}_{-0.40}$"}
+ ]},
+ {"quantity": "Discminer best-fit position angle", "value": "53.6", "uncertainty": "+0.07/-0.11", "units": "deg", "from_step": 5, "evidence": [
+  {"loc": "4.1 Channel maps", "quote": "The best-fit inclination $i=54.7\\degree$, position angle $PA=53.6\\degree$"},
+  {"loc": "Table 5", "quote": "$53.6 ^{+0.07\\circ}_{-0.11}$"}
+ ]},
+ {"quantity": "Dynamical mass of the central binary", "value": "5.99", "uncertainty": "+0.03/-0.01", "units": "Msun", "from_step": 5, "evidence": [
+  {"loc": "4.1 Channel maps", "quote": "and dynamical mass $M_*=5.99$ M$_{\\odot}$"},
+  {"loc": "Table 5", "quote": "$5.99 ^{+0.03}_{-0.01}$"}
+ ]},
+ {"quantity": "Systemic velocity", "value": "7.86", "uncertainty": "+0.01/-0.01", "units": "km/s", "from_step": 5, "evidence": [
+  {"loc": "4.1 Channel maps", "quote": "at $v_{sys}=7.86$ km s$^{-1}$"},
+  {"loc": "Table 5", "quote": "$7.86 ^{+0.01}_{-0.01}$"}
+ ]},
+ {"quantity": "12CO emission surface aspect ratio z/r at 100 au", "value": "~0.16", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+  {"loc": "4.6 Disc warp", "quote": "emission surface aspect ratio of z/r$\\sim$0.16 at 100 au"}
+ ]},
+ {"quantity": "Peak brightness temperature of the gas disc", "value": "up to ~110", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [
+  {"loc": "4.2 Disc morphology", "quote": "with a peak brightness temperatures found up to a few $110$ K"}
+ ]},
+ {"quantity": "Asymptotic disc tilt a1 for i30 / i60 / ei60", "value": "5.71 / 8.21 / 3.47", "uncertainty": "+/-0.10 / +/-0.05 / +/-0.11", "units": "deg", "from_step": 8, "evidence": [
+  {"loc": "Table 3", "quote": "$5.71\\pm 0.10$"},
+  {"loc": "Table 3", "quote": "$8.21\\pm 0.05$"},
+  {"loc": "Table 3", "quote": "$3.47\\pm 0.11$"}
+ ]},
+ {"quantity": "Precession timescale for i30 / i60 / ei60", "value": "1619 / 923 / 1003", "uncertainty": "~100 P_out", "units": "P_out", "from_step": 8, "evidence": [
+  {"loc": "4.5 Inclination and orientation of the disc", "quote": "The $b_2$ parameter of the PA model can be converted into a precession timescale of $1619$ P$_{out}$, $923$ P$_{out}$ and $1003$ P$_{out}$ for *i30*, *i60*, and *ei60*, respectively."},
+  {"loc": "4.5 Inclination and orientation of the disc", "quote": "The uncertainty of the fit for these values is around $100$ P$_{out}$."}
+ ]},
+ {"quantity": "Tilt damping time for i30 / i60 / ei60", "value": "85 / 226 / 19", "uncertainty": "<20 P_out", "units": "P_out", "from_step": 8, "evidence": [
+  {"loc": "4.5 Inclination and orientation of the disc", "quote": "The $a_3$ parameter of the tilt model can be converted into a damping time that is $85$ P$_{out}$, $226$ P$_{out}$ and $19$ P$_{out}$"},
+  {"loc": "4.5 Inclination and orientation of the disc", "quote": "The incertitude on these values is $<20$ P$_{out}$."}
+ ]},
+ {"quantity": "Tilt oscillation period for i30 / i60 / ei60", "value": "14.8 / 19.3 / 10.1", "uncertainty": "<0.2 P_out", "units": "P_out", "from_step": 8, "evidence": [
+  {"loc": "4.5 Inclination and orientation of the disc", "quote": "that is fitted on the tilt profile to $14.8$ P$_{out}$ for *i30*, $19.3$ P$_{out}$ for *i60* and $10.1$ P$_{out}$ for *ei60*"},
+  {"loc": "4.5 Inclination and orientation of the disc", "quote": "The uncertainty of the fit for these values is of $<0.2$ P$_{out}$."}
+ ]},
+ {"quantity": "Cavity semi-major axis at t = 50 P_out (i30; i60)", "value": "45; 44", "uncertainty": "not stated", "units": "au", "from_step": 8, "evidence": [
+  {"loc": "4.6 Disc warp", "quote": "At $t=50$ P$_{out}$, $a_{cav}=45$ au for *i30* and $a_{cav}=44$ au for *i60*."}
+ ]},
+ {"quantity": "Synthetic moment 0 flux relative to data", "value": "~3x higher", "uncertainty": "not stated", "units": "dimensionless", "from_step": 10, "evidence": [
+  {"loc": "4.2 Disc morphology", "quote": "The synthetic moment 0 maps have generally a higher flux than the data by approximately a factor $3$"}
+ ]},
+ {"quantity": "Companion eccentricity range suggested", "value": "0.2 < e < 0.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 10, "evidence": [
+  {"loc": "4.7 The orbit of V892 Tau NE", "quote": "we suggest constraints on the parameter eccentricity and mutual inclination of V892 Tau NE of $0.2<e<0.5$ and $30\\degree < \\Delta i < 60\\degree$ respectively."}
+ ]},
+ {"quantity": "Companion mutual inclination range suggested", "value": "30 < Delta i < 60", "uncertainty": "not stated", "units": "deg", "from_step": 10, "evidence": [
+  {"loc": "4.7 The orbit of V892 Tau NE", "quote": "we suggest constraints on the parameter eccentricity and mutual inclination of V892 Tau NE of $0.2<e<0.5$ and $30\\degree < \\Delta i < 60\\degree$ respectively."}
+ ]},
+ {"quantity": "Binary-only (OB30; OB60) measured disc precession timescale", "value": "189; 195", "uncertainty": "+/-1 P_out", "units": "P_out", "from_step": 0, "evidence": [
+  {"loc": "Appendix: Binary-only simulations", "quote": "We measure a precession rate of $t_{prec}= 189\\pm1$ P$_{out}$ and $t_{prec}= 195\\pm1$ P$_{out}$ respectively"}
+ ]},
+ {"quantity": "Stable test-particle semi-major axis range in ei60 N-body", "value": "40-80", "uncertainty": "not stated", "units": "au", "from_step": 11, "evidence": [
+  {"loc": "4.8 Stability of future planets", "quote": "Particles in between $a = 40$ au and $a = 80$ au remained stable during the simulation."}
+ ]}
+],
+"findings_qualitative": [
+ {"value": "No continuum emission detected near V892 Tau NE", "evidence": [
+  {"loc": "2.2 Dust disc", "quote": "no emission is detected from the vicinity of V892 Tau NE in the $1.3$ mm continuum."}
+ ]},
+ {"value": "Trailing two-arm spirals seen in velocity residuals as tentative evidence of disc-companion interaction", "evidence": [
+  {"loc": "4.4 Spiral arms and kinematics", "quote": "we present this given geometry of trailing spirals in the disc as a tentative evidence of CBD-companion interactions."}
+ ]},
+ {"value": "Observations best matched by the e05 simulation in disc size", "evidence": [
+  {"loc": "4.3 Disc extent", "quote": "In the end, the observations are in better agreement with the *e05* simulation as both show comparable disc sizes."}
+ ]},
+ {"value": "Warp can neither be confirmed nor ruled out", "evidence": [
+  {"loc": "4.6 Disc warp", "quote": "the combined dataset used in this work can not robustly rule out nor confirm the presence of a warp in the disc."}
+ ]}
+],
+"claims": [
+ {"hypothesis": "Does the 12CO disc show non-Keplerian features tracing interaction with V892 Tau NE?", "experiment": "Keplerian Discminer model of the 12CO cube and residual moment maps compared with simulations", "result": "Arc-like residuals and spiral-like velocity residuals; simulations reproduce some but spirals remain tentative", "finding": "Features are interpreted as ongoing interaction with the companion, with spirals only tentative", "support": "partially", "evidence": [
+  {"loc": "abstract", "quote": "The $^{12}$CO emission of the disc shows clear non-Keplerian features such as spiral arms."},
+  {"loc": "4.4 Spiral arms and kinematics", "quote": "we present this given geometry of trailing spirals in the disc as a tentative evidence of CBD-companion interactions."}
+ ]},
+ {"hypothesis": "What orbit of V892 Tau NE reproduces the disc extent and tilt?", "experiment": "Grid of five SPH orbits post-processed to synthetic maps and compared with ALMA data", "result": "e05 best matches the disc extent; i60 best matches the tilt; suggested 0.2<e<0.5 and 30<Delta i<60 deg", "finding": "A bound, mildly eccentric, misaligned companion explains most disc features", "support": "partially", "evidence": [
+  {"loc": "abstract", "quote": "Our simulations indicate that an eccentricity of $e\\sim0.5$ of the companion is needed to reproduce the observed disc extent"},
+  {"loc": "4.7 The orbit of V892 Tau NE", "quote": "we suggest constraints on the parameter eccentricity and mutual inclination of V892 Tau NE of $0.2<e<0.5$ and $30\\degree < \\Delta i < 60\\degree$ respectively."}
+ ]},
+ {"hypothesis": "Can the disc dynamical state be explained by a binary-system model alone?", "experiment": "Binary-only SPH simulations (IB, OB30, OB60) compared with the triple-system runs", "result": "Binary-only runs show linear precession and no oscillating equilibrium tilt", "finding": "The triplicity of the system is needed to explain the disc dynamics", "support": "supported", "evidence": [
+  {"loc": "6 Conclusion", "quote": "Remarkably, the observed dynamical state of the disc cannot be explained using binary system models alone."}
+ ]},
+ {"hypothesis": "Would circumbinary planets be stable in the likely orbital configuration?", "experiment": "N-body integration with test particles in the ei60 configuration", "result": "Particles at 20 au and at >=100 au are ejected; 40-80 au remain stable but with large oscillations", "finding": "Planets are expected to be unstable in the inner and outer disc once gas dissipates", "support": "supported", "evidence": [
+  {"loc": "6 Conclusion", "quote": "Any surviving planet should have an intermediate semi-major axis between $40$ au and $80$ au"}
+ ]},
+ {"hypothesis": "Is the disc warped?", "experiment": "Radial tilt profile in simulations; residual maps of the data", "result": "Simulated warps only a few degrees and damp; data residuals consistent with a warp", "finding": "The data neither conclusively support nor refute a warp", "support": "partially", "evidence": [
+  {"loc": "6 Conclusion", "quote": "Finally, the data neither conclusively support nor refute the existence of a warp in the disc."}
+ ]},
+ {"hypothesis": "Was V892 Tau NE a flyby rather than a bound companion?", "experiment": "Inspecting the disc after the first orbit of the companion in the simulations", "result": "Prominent spirals and misalignment of 1-2 deg after one orbit, unlike the subtle observed spirals and 8 deg tilt", "finding": "A flyby is unlikely", "support": "supported", "evidence": [
+  {"loc": "4.7 The orbit of V892 Tau NE", "quote": "the subtle observed spiral patterns and the disc tilt of $\\sim 8\\deg$ suggest that a flyby event is unlikely to have happened in V892 Tau."}
+ ]}
+],
+"reasoning": [
+ {"field": "why_this_data", "value": "New observations at twice higher angular and spectral resolution, combined with archival data", "evidence": [
+  {"loc": "abstract", "quote": "We present new ALMA observations of the V892 Tau circumbinary disc at a twice higher angular and spectral resolution."},
+  {"loc": "1 Introduction", "quote": "here we present new ALMA observations of V892 Tau that we combined with archival data."}
+ ]},
+ {"field": "why_this_method", "value": "Forward modelling of disc morphology and kinematics with hydrodynamics gives orbit constraints independent of astrometry", "evidence": [
+  {"loc": "1 Introduction", "quote": "it provides constrains independent from astrometric measurements, and it can help to discriminate between available orbits."}
+ ]},
+ {"field": "how_they_decided_enough", "value": "Self-cal stopped when RMS stopped decreasing; simulations deemed long enough when bulk disc size was stable over the last 20 orbits", "evidence": [
+  {"loc": "Appendix: Data combination", "quote": "The calibration were stopped before the RMS stopped decreasing between the rounds."},
+  {"loc": "5.5 Limitations and caveats", "quote": "as the size of the bulk of the disc does not significantly change in the last $20$ orbits of the companion."}
+ ]}
+],
+"alternatives_considered_or_rejected": [
+ {"value": "Unbound (inner-binary-only) scenario rejected because a coplanar disc does not precess", "evidence": [
+  {"loc": "4.7 The orbit of V892 Tau NE", "quote": "It means that the inner binary alone cannot explain the observed disc tilt, which allows us to rule out the unbound scenario."}
+ ]},
+ {"value": "Flyby scenario judged unlikely", "evidence": [
+  {"loc": "4.7 The orbit of V892 Tau NE", "quote": "the subtle observed spiral patterns and the disc tilt of $\\sim 8\\deg$ suggest that a flyby event is unlikely to have happened in V892 Tau."}
+ ]},
+ {"value": "Gravitational instability rejected as the origin of the spirals (disc mass too low)", "evidence": [
+  {"loc": "4.4 Spiral arms and kinematics", "quote": "which is not the case of the V892 Tau CBD where $M_{disc} \\sim 0.01 M_*$."}
+ ]},
+ {"value": "Negative-inclination Discminer fit tested but gave an almost identical outer-disc model, so orientation remained ambiguous", "evidence": [
+  {"loc": "Appendix: Inclination sign of the disc", "quote": "The resulting fitted values were similar to the original model apart from the inclination sign."}
+ ]}
+],
+"limitations_admitted": [
+ {"value": "Few orbital configurations tested", "evidence": [
+  {"loc": "5.5 Limitations and caveats", "quote": "The main limitation of our work is the low number of orbital configurations tested."}
+ ]},
+ {"value": "Gas-only simulations; dust dynamics not consistent", "evidence": [
+  {"loc": "5.5 Limitations and caveats", "quote": "We used gas only simulations for computational reasons."}
+ ]},
+ {"value": "Inner system not reproduced because of numerical resolution", "evidence": [
+  {"loc": "5.5 Limitations and caveats", "quote": "Due to a lack of numerical resolution, the inner system is not well reproduced in our simulations."}
+ ]},
+ {"value": "Cloud absorption affects central velocities", "evidence": [
+  {"loc": "2.3 CO emission", "quote": "The data suffer from absorption by cloud material at the systemic velocity around $8$ km s$^{-1}$."}
+ ]},
+ {"value": "Simulated discs manually rotated back to the observed orientation before post-processing", "evidence": [
+  {"loc": "Appendix: Manual rotation of the disc before post-processing", "quote": "We are aware of the discrepancy between the observed orientation of the disc and the orientation at the end of the simulations."}
+ ]}
+],
+"referee_caveats_inferred": [
+ "Orbit constraints rest on a qualitative visual comparison with five simulations, with no likelihood or goodness-of-fit metric.",
+ "Initial conditions were fixed (coplanar disc, omega_out = 180 deg, a_out = 500 au, M_out = 0.5 Msun, inner-binary orbital phase) so the constraints on e and Delta i are degenerate with these choices.",
+ "Synthetic fluxes are ~3x above the data, and the disc is rotated by hand to the observed orientation, weakening quantitative comparison.",
+ "The inclination sign of the disc is ambiguous, which changes the inferred geometry and orbit.",
+ "Gas-only simulations may bias the extent and spirals relative to dust-coupled behaviour."
+],
+"reproducibility": [
+ {"field": "data_public_as_stated", "value": "Raw visibilities downloaded from the ALMA archive; processed data on request", "evidence": [
+  {"loc": "2.1 Data calibration, reduction, and combination", "quote": "The raw visibility data were downloaded from the ALMA archive"},
+  {"loc": "Acknowledgements", "quote": "The data underlying this article will be shared on reasonable request to the corresponding author."}
+ ]}
+],
+"code_released": [
+ {"value": "Phantom is public (github.com/danieljprice/phantom)", "evidence": [
+  {"loc": "Acknowledgements", "quote": "The code Phantom used in this work is publicly available at <https://github.com/danieljprice/phantom>."}
+ ]},
+ {"value": "Discminer is open source (github.com/andizq/discminer)", "evidence": [
+  {"loc": "Acknowledgements", "quote": "The Discminer code used in this study is open source and can be found at <https://github.com/andizq/discminer>."}
+ ]},
+ {"value": "Hydrodynamical simulation outputs on Zenodo", "evidence": [
+  {"loc": "Footnote 1", "quote": "Outputs of the hydrodynamical simulations underlying this article are available at <https://zenodo.org/records/11350568>"}
+ ]}
+],
+"missing_for_reproduction": [
+ "tclean imaging parameters (cell, image size, masks, niter, thresholds) and line-free channel ranges",
+ "Self-calibration round-by-round settings and flux-rescaling factors",
+ "Discminer version, priors and run configuration beyond search ranges",
+ "Phantom input files and versions, MCFOST parameter files, simalma configuration",
+ "Exact criteria for judging which simulation best matches the data"
+],
+"estimated_data_volume_inferred": "Hundreds of GB raw for three ALMA Band 6 datasets (3840-channel line SPWs, up to 8.3 km baselines); tens of GB after calibration; several GB for the simulation outputs",
+"score_inferred": 3,
+"score_reason": "ALMA data are public and the processing chain is outlined, but many imaging and self-calibration settings are missing; the simulation side has public code and Zenodo outputs yet the orbit comparison is qualitative.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are public, but the SPH plus radiative-transfer pipeline is costly and under-specified, and the main constraints are qualitative.",
+"methods_papers": [
+ {"citation": "(cite: DiscminerI; DiscminerII)", "why": "Discminer disc-model fitting code and method"},
+ {"citation": "DSHARP project reduction_utils.py", "why": "Flux-scale rescaling between datasets"},
+ {"citation": "(cite: Price+2018-phantom)", "why": "Phantom SPH code"},
+ {"citation": "(cite: Pinte+2006; Pinte+2009)", "why": "MCFOST radiative transfer"}
+],
+"companion_papers": [
+ {"citation": "(cite: Long+2021)", "why": "Earlier analysis of the archival (OLD) Band 6 data, with inner-binary orbit and disc tilt"},
+ {"citation": "(cite: Vides+2023)", "why": "Near-IR interferometry of the inner binary and circumprimary disc"},
+ {"citation": "(cite: Ceppi+2023)", "why": "Timescales for polar alignment and von Zeipel-Kozai-Lidov in triple systems"}
+],
+"related_projects_or_surveys": ["ALMA 2013.1.00498.S", "ALMA 2021.1.01137.S", "DSHARP"]
+}

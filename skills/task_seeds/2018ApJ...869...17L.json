@@ -1,0 +1,281 @@
+{
+ "bibcode": "2018ApJ...869...17L",
+ "title": "Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aae8e1",
+ "arxiv_id": "1810.06044",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the properties and likely origins (planets vs condensation fronts) of dust gaps and rings in 12 Taurus disks with substructure from an unbiased high-resolution ALMA 1.33 mm survey?",
+ "alma_project_codes": [
+  "2016.1.01164.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.12'' (typical beam 0.14''x0.11'')",
+  "sensitivity": "median continuum rms 0.05 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Pre-ALMA 1.33 mm fluxes for Taurus disks (comparison; fluxes for the other 20 disks in dust mass plot)",
+    "evidence": [
+     {
+      "loc": "4.1 Source Properties",
+      "quote": "adopted from (cite: andrews2013) for the other Taurus members"
+     }
+    ]
+   },
+   "citation": "(cite: andrews2013)"
+  },
+  {
+   "what": {
+    "value": "Spectral types and stellar luminosities (updated to Gaia distances)",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "Spectral type and stellar luminosity are adopted from the listed references ((cite: herczeg2014) and Liu et al. submitted)"
+     }
+    ]
+   },
+   "citation": "(cite: herczeg2014); Liu et al. submitted"
+  },
+  {
+   "what": {
+    "value": "Condensation temperatures for N2, CO and clathrate ice",
+    "evidence": [
+     {
+      "loc": "4.3.2 Condensation Fronts",
+      "quote": "The condensation temperatures, adopted from (cite: zhang2015)"
+     }
+    ]
+   },
+   "citation": "(cite: zhang2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate, image continuum",
+   "method": "CASA pipeline-script calibration, phase and amplitude self-calibration, TCLEAN imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust +0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Select disks with substructure",
+   "method": "Fit elliptical Gaussian with IMFIT for major axis; inspect radial profile; reduced chi2 of Gaussian fit to radial profile within central 1.5''; highest chi2 chosen",
+   "software": [
+    "CASA IMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit visibilities with axisymmetric radial intensity models",
+   "method": "Central Gaussian or exponentially tapered power-law plus radial Gaussian rings; Fourier transformed with Galario; MCMC fit with emcee",
+   "software": [
+    "Galario",
+    "emcee",
+    "CASA IMFIT"
+   ],
+   "key_parameters": [
+    "100 walkers, 5000 steps, burn-in ~2000; second run 5000 more steps; posterior from last 1000 steps; radial grid 0.0001''-4'' step 0.001''",
+    "Uniform priors: ±20 deg for i and PA, ±0.5 arcsec for offsets"
+   ],
+   "assumptions": [
+    "Axisymmetry"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive flux, R_eff, gap and ring properties",
+   "method": "Integrate best-fit profile; R_eff at 90% flux; gap location at local minimum; gap width full width at half depth; contrast ratio ring peak/gap; uncertainties from 100 chain samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Dust masses",
+   "method": "Optically thin M_dust = D^2 F / (kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust = 20 K, optically thin, kappa=2.3 cm2/g (nu/230GHz)^0.4"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare gaps with planet-disk interaction expectations",
+   "method": "Normalized ring-gap distance vs gap location and stellar mass; planet mass via 4 R_Hill and Rosotti et al. 2016 diagnostic",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha=1e-4 or 1e-2; simulations for 1 Msun star rescaled by mass ratio"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare gap locations with ice lines",
+   "method": "Midplane temperature from Kenyon & Hartmann irradiated flared disk; ice line radii for N2, CO, clathrate; RADMC-3D check",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "N2 12-15 K, CO 23-28 K, clathrate CO+N2 41-46 K"
+   ],
+   "assumptions": [
+    "flaring angle 0.05; photospheric luminosity only"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Typical beam size",
+   "value": "0.14x0.11",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Observations and Data Reduction",
+     "quote": "a typical beam size of $0.14''\\times0.11''$"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 total 1.33 mm flux",
+   "value": "267.76",
+   "uncertainty": "+0.18/-0.21",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| MWC 480 | 267.76$_{-0.21}^{+0.18}$ | 104.97$_{-0.16}^{+0.16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CI Tau effective radius",
+   "value": "173.8",
+   "uncertainty": "+0.47/-0.32",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| CI Tau | 142.4$_{-0.24}^{+0.15}$ | 173.8$_{-0.32}^{+0.47}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "RY Tau flux",
+   "value": "210.39",
+   "uncertainty": "+0.09/-0.1",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| RY Tau | 210.39$_{-0.1}^{+0.09}$ | 60.8$_{-0.13}^{+0.0}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of gap-ring pairs analyzed",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of Gaps and Rings",
+     "quote": "We analyze a total of 19 gap and ring pairs"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap locations range",
+   "value": "10-120",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of Gaps and Rings",
+     "quote": "gaps are located from 10 to 120 au with no preferred distance"
+    }
+   ]
+  },
+  {
+   "quantity": "Normalized gap-ring distance",
+   "value": "0.2-0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 Planet-disk Interactions",
+     "quote": "The normalized gap-ring distance is typically 0.2–0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass for alpha=1e-4 at diagnostic 0.25",
+   "value": "~15 (0.05 MJ)",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 Planet-disk Interactions",
+     "quote": "the diagnostic of 0.25 corresponds to a planet mass $\\sim$ 15 M$_\\oplus$ (0.05 M$_{\\rm J}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaps near ice lines",
+   "value": "5 near CO; 2 near clathrate CO+N2; 1 near N2; 7 unrelated",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 Condensation Fronts",
+     "quote": "The other seven gaps are unrelated to any of the ice lines we consider here."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which spectral channels/line-free channels were used for continuum",
+  "Image size, cell size, clean threshold, masking and deconvolver for TCLEAN",
+  "Self-calibration solution intervals for amplitude and the per-target number of rounds",
+  "Prior ranges for ring/Gaussian amplitudes, locations and widths in the MCMC",
+  "Initial guesses for each disk's model components",
+  "Details of the uv-data averaging/binning for the Galario fits",
+  "Gap-ring pair selection details for the well-resolved criteria",
+  "Flux uncertainty on dust masses and distance uncertainty treatment",
+  "Details of the RADMC-3D setup beyond footnote (dust composition, grain sizes)"
+ ],
+ "missing_for_reproduction": [
+  "Full TCLEAN parameters and self-cal solints",
+  "MCMC initial guesses and ring priors per disk",
+  "Full-sample paper details for selection",
+  "RADMC-3D setup details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and well-described fitting approach with named tools, but imaging and per-disk fit details missing.",
+ "rediscovery_reason": "Data are public, the visibility-fitting recipe is largely specified, and results are numeric (Table 3 and 4).",
+ "source_card": "cards/2018ApJ...869...17L/sonnet/card.md"
+}

@@ -1,0 +1,320 @@
+{
+ "bibcode": "2018A&A...619A..39F",
+ "title": "The dense molecular gas in the z ∼ 6 QSO SDSS J231038.88+185519.7 resolved by ALMA",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201833174",
+ "arxiv_id": "1804.05566",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Resolve the dense molecular gas (CO(6-5)) and 3.3 mm continuum in the z~6 QSO J2310+1855 host to derive gas, dynamical and BH masses and compare CO(6-5) with [CII].",
+ "alma_project_codes": [
+  "2015.1.00584.S",
+  "2015.1.00997.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO(6-5), continuum); [CII] data separately; band 6 data also scanned",
+  "arrays": "[CII]: ALMA 12-m array",
+  "angular_resolution": "Band 3 natural: 0.6x0.4 arcsec PA=-6 deg; Briggs: 0.51x0.28 arcsec; [CII]: 0.9x0.6 arcsec PA=49 deg",
+  "sensitivity": "Continuum 5.4 μJy/beam; 0.13 mJy/beam per 23.7 km/s channel; [CII] 0.20 mJy/beam per 100 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "FIR luminosity used for SFR",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "derived from $\\rm L_{FIR}$ (from W13) and the Kennicutt & Evans (2012) relation."
+     }
+    ]
+   },
+   "citation": "Wang et al. 2013 (W13)"
+  },
+  {
+   "what": {
+    "value": "CO(6-5)/CO(2-1) ratio ~0.9 adopted",
+    "evidence": [
+     {
+      "loc": "3.3 BH mass, gas mass, and dynamical mass",
+      "quote": "Since there is no measurement of lower J CO transition for J2310+1855, we adopt the same ratio."
+     }
+    ]
+   },
+   "citation": "Stefan et al. (2015); Wang et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "ASPECS molecular line number counts and CO luminosity function for expected emitters",
+    "evidence": [
+     {
+      "loc": "3.4 Search for other line or continuum emitters.",
+      "quote": "In their work, they provide molecular emission line number counts, and the CO luminosity function"
+     }
+    ]
+   },
+   "citation": "Walter et al. (2016), Decarli et al. 2016"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes and continuum",
+   "method": "Calibrate in CASA, convert to GILDAS, clean with hogbom, natural weighting",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "threshold 0.5x noise per channel; 23.7 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit sizes and fluxes in uv plane",
+   "method": "Fit visibilities with point source, circular and elliptical Gaussians; elliptical best",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "line visibilities averaged over -500 to 500 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Spectrum and kinematics",
+   "method": "Extract spectrum with ≥2σ mask, single Gaussian fit, moment maps, PV diagrams; derive inclination, v_rot, sigma",
+   "software": [],
+   "key_parameters": [
+    "PV slit 0.5 arcsec, PA=30 deg"
+   ],
+   "assumptions": [
+    "Velocity gradient due to rotating disk; i=cos^-1(minor/major); v_rot=1.3 Δv/2 sin i; sigma from outer parts"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CO/[CII] comparison",
+   "method": "Compare CO and [CII] cubes at same beam and registered frame; ratio maps, spectra, PV",
+   "software": [],
+   "key_parameters": [
+    "spectra from 0.5 arcsec radius region"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "BH mass from C IV",
+   "method": "Single-Gaussian fit to C IV in X-SHOOTER spectrum, Coatman et al. calibration with L1350",
+   "software": [
+    "ESO pipeline",
+    "Molecfit"
+   ],
+   "key_parameters": [
+    "z=6.0025 systemic"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Gas and dynamical masses",
+   "method": "L'CO from Solomon & Vanden Bout relation; M(H2) with alpha_CO; Mdyn sin^2 i = 1.16e5 (0.75 FWHM)^2 D",
+   "software": [],
+   "key_parameters": [
+    "D=2.9 kpc"
+   ],
+   "assumptions": [
+    "L'CO(6-5)=0.9 L'CO(2-1); thermalized; alpha_CO=0.8"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Search for other emitters",
+   "method": "Scan cubes at 47.4 km/s, ≥3 contiguous channels, ≥4.5σ; compare with ASPECS counts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "91.5 GHz continuum flux density",
+   "value": "416",
+   "uncertainty": "±33",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The 3.3 mm continuum",
+     "quote": "The 91.5 GHz continuum flux density is $416\\pm33~ \\rm \\mu Jy$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) size (FWHM)",
+   "value": "(0.33±0.06)x(0.20±0.04)",
+   "uncertainty": "as given",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 CO(6-5) emission line",
+     "quote": "$(0.33\\pm0.06) \\times (0.20\\pm 0.04)$ arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) integrated flux (uv fit)",
+   "value": "1.26",
+   "uncertainty": "±0.06",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$Sdv_{\\rm CO(6-5)}$ | $1.26\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "z_CO",
+   "value": "6.0028",
+   "uncertainty": "±0.0003",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 CO(6-5) emission line",
+     "quote": "$z_{CO}=6.0028\\pm0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO line FWHM",
+   "value": "361",
+   "uncertainty": "±9",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 CO(6-5) emission line",
+     "quote": "FWHM$=361\\pm9$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO(6-5)/[CII] ratio",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 [CII] and the CO(6-5)/[CII] ratio",
+     "quote": "with a velocity-averaged mean ratio of 0.19"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO(6-5)",
+   "value": "4.3e10",
+   "uncertainty": "±0.1e10",
+   "units": "K km/s pc^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$(4.3\\pm0.1)\\times 10^{10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M(H2)",
+   "value": "3.2e10",
+   "uncertainty": "±0.2e10",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 BH mass, gas mass, and dynamical mass",
+     "quote": "we find a molecular gas mass of $\\rm M(H_2)=(3.2 \\pm0.2) \\times 10^{10}"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdyn sin^2(i)",
+   "value": "2.4e10",
+   "uncertainty": "±0.5e10",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 BH mass, gas mass, and dynamical mass",
+     "quote": "We find $\\rm M_{dyn} \\times sin^2(i) = (2.4\\pm0.5) \\times 10^{10}~ M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "BH mass (C IV)",
+   "value": "1.8e9",
+   "uncertainty": "±0.5e9",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 BH mass, gas mass, and dynamical mass",
+     "quote": "we derive a $\\rm M_{BH} = (1.8\\pm 0.5) \\times 10^{9}~ M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "53",
+   "uncertainty": "lower limit 25 deg",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 CO(6-5) emission line",
+     "quote": "$i\\rm= cos^{-1}~ (minor/major) = 53$ deg"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas fraction M(H2)/M*",
+   "value": "4.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "we derive a molecular gas fraction of $\\mu=M(H_2)/M^*\\approx4.4$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value",
+  "CASA version and calibration details for band 3 data",
+  "Image/cell sizes",
+  "Exact mask regions for spectrum extraction beyond ≥2σ",
+  "Bolometric luminosity details/1450 Å magnitude source",
+  "Stellar mass uncertainty treatment",
+  "Band 6 data project/details used in emitter search"
+ ],
+ "missing_for_reproduction": [
+  "Robust parameter for Briggs imaging",
+  "Band 3 CASA version",
+  "Band 6 data details",
+  "Mask definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear formulas, but calibration and imaging details are limited.",
+ "rediscovery_reason": "Archival ALMA data with mostly numeric results and simple fits and formulas.",
+ "source_card": "cards/2018A%26A...619A..39F/sonnet/card.md"
+}

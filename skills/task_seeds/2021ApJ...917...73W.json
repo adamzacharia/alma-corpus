@@ -1,0 +1,456 @@
+{
+ "bibcode": "2021ApJ...917...73W",
+ "title": "Rapid Variability of Sgr A* across the Electromagnetic Spectrum",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac0891",
+ "arxiv_id": "2011.09582",
+ "fields": [
+  "agn_and_quasars",
+  "milky_way_ism"
+ ],
+ "question": "Put the statistical properties of Sgr A*'s rapid variability across submillimeter, near-infrared, and X-ray wavelengths into the context of a single radiative model and determine the X-ray power spectral density.",
+ "alma_project_codes": [
+  "2015.A.00021.S",
+  "2011.0.00887.S",
+  "2017.1.00503.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2.12, 2.18, and 4.5 um NIR monitoring datasets",
+    "evidence": [
+     {
+      "loc": "Near Infrared",
+      "quote": "The NIR dataset used in this analysis is a combination of the extensive 2.12, 2.18, and 4.5 $\\mu$m data of (cite: 2018ApJ...863...15W) and the 2.12 $\\mu$m dataset of (cite: 2019ApJ...882L..27D)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...863...15W); (cite: 2019ApJ...882L..27D)"
+  },
+  {
+   "what": {
+    "value": "32 epochs of 345 GHz APEX/LABOCA data",
+    "evidence": [
+     {
+      "loc": "APEX Data",
+      "quote": "We used 32 epochs (6641 minutes) of 345 GHz data from the LABOCA bolometer at the APEX telescope (cite: 2017A&A...601A..80S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2017A&A...601A..80S)"
+  },
+  {
+   "what": {
+    "value": "One epoch of 343 GHz SMA data",
+    "evidence": [
+     {
+      "loc": "SMA Data",
+      "quote": "We include one published (365 minutes—(cite: 2018ApJ...864...58F)) epoch of 343 GHz data and four new epochs (1573 minutes) of 230 GHz data from the Submillimeter Array (SMA)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...864...58F)"
+  },
+  {
+   "what": {
+    "value": "10 epochs of 70-minute ALMA light curves at 234 GHz",
+    "evidence": [
+     {
+      "loc": "ALMA Data",
+      "quote": "The remaining 10 ALMA epochs are 70-minute light curves at 234 GHz (cite: 2020ApJ...892L..30I)."
+     }
+    ]
+   },
+   "citation": "(cite: 2020ApJ...892L..30I)"
+  },
+  {
+   "what": {
+    "value": "Intrinsic K-band flux density distribution and fraction of positive flux densities from VLTI/GRAVITY",
+    "evidence": [
+     {
+      "loc": "The Distance Function",
+      "quote": "This value was derived from the most recent analysis of the intrinsic flux density distribution from the VLTI/GRAVITY interferometer ((cite: 2020A&A...638A...2G))."
+     }
+    ]
+   },
+   "citation": "(cite: 2020A&A...638A...2G)"
+  },
+  {
+   "what": {
+    "value": "Ratio of observed NIR flux densities at M and K bands R_obs = 12 +/- 0.5",
+    "evidence": [
+     {
+      "loc": "The Distance Function",
+      "quote": "At an average (observed) flux density $S_{{K}} = 0.15$ mJy, (cite: 2018ApJ...863...15W) found the ratio of (observed) NIR flux densities at $M$ and $K$ bands to be $\\Re_{\\rm{obs}} = 12 \\pm 0.5$."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...863...15W)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract submillimeter (ALMA, SMA, APEX) and X-ray (Chandra) light curves",
+   "method": "Image ALMA data in 3-minute time bins with uniform weighting using task clean and measure peak flux densities and off-source RMS; vector-average SMA visibilities for baselines > 35-40 klambda; fit Gaussian point source in residual APEX maps; extract unbinned 2-8 keV Chandra photons within 1.25 arcsec aperture and barycenter-correct arrival times.",
+   "software": [
+    "CASA",
+    "clean",
+    "CIAO",
+    "CALDB"
+   ],
+   "key_parameters": [
+    "3 minutes averaging time for ALMA light curves",
+    "1.25'' extraction radius and 2000-8000 eV energy range for Chandra",
+    "Baselines > 35-40 klambda for SMA"
+   ],
+   "assumptions": [
+    "Sgr A* is compact with flat visibility as a function of baseline length at mm wavelengths"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Cross-correlate simultaneous submm (230 GHz) and NIR (4.5 um) light curves",
+   "method": "Compute discrete cross-correlation (DCC) function on raw and Hanning-smoothed logarithmic 4.5 um light curves with 230 GHz light curves using the Edelson & Krolik (1988) algorithm as implemented by Robertson et al. (2015).",
+   "software": [],
+   "key_parameters": [
+    "Hanning smoothing kernel size of 61 minutes"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Determine the X-ray power spectral density (PSD) via Approximate Bayesian Computation (ABC)",
+   "method": "Forward-model X-ray count-rate light curves from a broken power-law PSD and log-normal PDF with constant background, pileup correction, and 1-minute Poisson sampling; compare to observed Chandra first-order structure functions using weighted L2 norm distance in ABC.",
+   "software": [
+    "C++",
+    "MPI"
+   ],
+   "key_parameters": [
+    "1-minute Poisson binning; pileup applied for count rates > 0.02 cps; structure function bin weights w_i = 1 (and w_i = 3 for the wide bin at large lags)"
+   ],
+   "assumptions": [
+    "Log-normal PDF for X-ray flux densities; broken power-law PSD with low-frequency slope gamma_0 = 0; effective area e_I = 1 for ACIS-S/HETG"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit single-zone synchrotron-SSC radiative model to submm, NIR, and X-ray variability",
+   "method": "Simulate coupled slow and fast log-normal red-noise processes from shared Gaussian random numbers to drive optically thin synchrotron flux, cyclic magnetic field and source size evolution (injection, compression, expansion), self-absorption, cooling cutoff, and SSC X-ray emission; fit to eight structure functions, VLT K-band skewness and positive fraction, and M/K flux ratio via ABC.",
+   "software": [
+    "C++",
+    "MPI",
+    "Python 3",
+    "SED Animation"
+   ],
+   "key_parameters": [
+    "230 GHz structure function restricted to time lags < 50 minutes; VLT positive flux fraction target = 0.9; VLT skewness target = 3.44; M/K ratio R_obs = 12 +/- 0.5"
+   ],
+   "assumptions": [
+    "Single homogeneous spherical/slab synchrotron-SSC zone; R_S = 1.2e10 m; D_s = 2.523e20 m; A_K = 2.46 mag; A_M = 1.00 mag; X-ray extinction factor k_X = 3.39; slab-to-sphere volume factor 1.5 for electron density",
+    "Steady X-ray background equal for all three Chandra detector modes (chi_I = chi_G = chi_S)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Submm (230 GHz) to NIR (4.5 um) cross-correlation time lag",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "minutes",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Simultaneous NIR and Submm Observations",
+     "quote": "Both DCCs have their maxima at time lags of 20–30 minutes, positive lag meaning that the 4.5 $\\mu$m data led the submm."
+    },
+    {
+     "loc": "Timing and cross-correlation properties",
+     "quote": "The cross-correlation in Figure 3 shows a pronounced peak at ${\\sim}27$ min."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum cross-correlation coefficient R (raw 230 GHz and 4.5 um)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Timing and cross-correlation properties",
+     "quote": "The observed light curves have a maximum correlation $R = 0.21$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum cross-correlation coefficient R (230 GHz and log of low-pass-filtered 4.5 um)",
+   "value": "0.43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Timing and cross-correlation properties",
+     "quote": "This results in a significant increase of the correlation to $\\rm{R}=0.43$."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray PSD slope (gamma, log-normal model)",
+   "value": "> 2.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\gamma$ | flat on \\[0.2, 6.0\\] | $> 2.0$ | PSD slope |"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray PSD correlation frequency (f_b, log-normal model)",
+   "value": "4.0",
+   "uncertainty": "+1.0/-1.0",
+   "units": "10^-3 minutes^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $f_{b}$ \\[$10^{-3} \\cdot \\rm{minutes}^{-1}$\\] | flat on \\[1.0, 600.0\\] | $\\phantom{-}4.0^{+1.0}_{-1.0}$ | correlation frequency |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law index of electron energy distribution (gamma_e)",
+   "value": "2.95",
+   "uncertainty": "+0.21/-0.19",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\gamma_{e}$ | flat on \\[1.5, 4.0\\] | $\\phantom{-}2.95^{+0.21}_{-0.19}$ | power-law index of electron energy distribution |"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum magnetic flux density (B_0)",
+   "value": "8.5",
+   "uncertainty": "+1.8/-1.4",
+   "units": "G",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $B_0$ \\[G\\] | log flat on \\[$10^{-2}$, $10^3$\\] | $\\phantom{-}8.5^{+1.8}_{-1.4}$ | minimum magnetic flux density |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum physical source diameter (L_0)",
+   "value": "2.7",
+   "uncertainty": "±0.3",
+   "units": "R_S",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L_0$ \\[$R_S$\\] | log flat on \\[$10^{-2}$, $10^3$\\] | $\\phantom{-}2.7\\pm{0.3}$ | maximum physical source diameter |"
+    }
+   ]
+  },
+  {
+   "quantity": "PSD slope of slow Gaussian process (gamma_slow)",
+   "value": "4.9",
+   "uncertainty": "±0.8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\gamma_{\\rm{slow}}$ | flat on \\[1.2, 6.5\\] | $\\phantom{-}4.9\\pm{0.8}$ | PSD slope of slow Gaussian process |"
+    }
+   ]
+  },
+  {
+   "quantity": "PSD slope of fast Gaussian process (gamma_fast)",
+   "value": "2.1",
+   "uncertainty": "+0.4/-0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\gamma_{\\rm{fast}}$ | flat on \\[1.2, 9.5\\] | $\\phantom{-}2.1^{+0.4}_{-0.3}$ | PSD slope of fast Gaussian process |"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation frequency of slow Gaussian process (f_b,slow)",
+   "value": "0.74",
+   "uncertainty": "+0.13/-0.12",
+   "units": "10^-2 minutes^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $f_{b,\\rm{slow}}$ \\[$10^{-2} \\cdot \\rm{minutes}^{-1}$\\] | flat on \\[0.001, 2.0\\] | $\\phantom{-}0.74^{+0.13}_{-0.12}$ | correlation frequency of slow Gaussian process |"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation frequency of fast Gaussian process (f_b,fast)",
+   "value": "1.21",
+   "uncertainty": "+0.29/-0.27",
+   "units": "10^-2 minutes^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $f_{b,\\rm{fast}}$ \\[$10^{-2} \\cdot \\rm{minutes}^{-1}$\\] | flat on \\[0.001, 2.0\\] | $\\phantom{-}1.21^{+0.29}_{-0.27}$ | correlation frequency of fast Gaussian process |"
+    }
+   ]
+  },
+  {
+   "quantity": "Measurement noise of 230 GHz (SMA and ALMA) observations (sigma_230GHz)",
+   "value": "0.08",
+   "uncertainty": "±0.01",
+   "units": "Jy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\sigma_{230\\,\\mathrm{GHz}}$ \\[Jy\\] | Gaussian ($\\mu = 0.15$, $\\sigma=0.1$) | $\\phantom{-}0.08\\pm{0.01}$ | measurement noise of the 230 GHz (SMA and ALMA) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Measurement noise of 345 GHz (APEX and SMA) observations (sigma_345GHz)",
+   "value": "0.10",
+   "uncertainty": "±0.01",
+   "units": "Jy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\sigma_{345\\,\\mathrm{GHz}}$ \\[Jy\\] | Gaussian ($\\mu = 0.1$, $\\sigma=0.1$) | $\\phantom{-}0.10\\pm{0.01}$ | measurement noise of the 345 GHz (APEX and SMA) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-dependent magnetic flux density B(t)",
+   "value": "12.7",
+   "uncertainty": "+4.1/-2.9",
+   "units": "G",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $B(t)$ \\[G\\] | | $\\phantom{-}12.7^{+4.1}_{-2.9}$ | time-dependent magnetic flux density |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-dependent source size L(t)",
+   "value": "2.20",
+   "uncertainty": "+0.32/-0.30",
+   "units": "R_S",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L(t)$ \\[$R_S$\\] | | $\\phantom{-}2.20^{+0.32}_{-0.30}$ | time-dependent source size |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-dependent electron density n_e(t)",
+   "value": "4.3",
+   "uncertainty": "+6.9/-2.7",
+   "units": "10^7 cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $n_e(t)$ \\[$10^7$ cm$^{-3}$\\] | | $\\phantom{-}4.3^{+6.9}_{-2.7}$ | time-dependent electron density |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-dependent NIR spectral index alpha_NIR(t)",
+   "value": "-1.65",
+   "uncertainty": "+0.29/-0.30",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\alpha_{\\rm{NIR}}(t)$ | | $-1.65^{+0.29}_{-0.30}$ | time-dependent NIR spectral index (2.2 to 4.5 $\\ensuremath{\\mu}m$) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-dependent self-absorption turnover frequency nu_m(t)",
+   "value": "308",
+   "uncertainty": "+96/-75",
+   "units": "GHz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\nu_m(t)$ \\[GHz\\] | | $\\phantom{-}308^{+96}_{-75}$ | time-dependent self-absorption turnover |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-dependent cooling cutoff frequency nu_2(t)",
+   "value": "54",
+   "uncertainty": "+111/-29",
+   "units": "THz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $\\nu_2(t)$ \\[THz\\] | | $\\phantom{-}54^{+111}_{-29}$ | time-dependent cooling cutoff frequency |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median brightness temperature at self-absorption turnover (T_b)",
+   "value": "1.8e10",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SED and Adiabatic expansion",
+     "quote": "The median brightness temperature at the self-absorption turnover $T_b = 1.8\\times10^{10}$ K."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for the 2016 ALMA observations",
+  "Which specific spectral windows and channels were excluded due to suspicious absorption features in the 2016 ALMA data",
+  "Whether self-calibration was performed on the 2016 ALMA observations",
+  "Image cell size, image dimensions, stopping threshold, and number of clean iterations for the ALMA clean task",
+  "Synthesized beam size and exact off-source RMS values for each 3-minute ALMA time bin"
+ ],
+ "missing_for_reproduction": [
+  "The C++/MPI source code used to run the Approximate Bayesian Computation (ABC) fits on the MPIfR cluster",
+  "Exact CASA version and spectral window flagging list for the 2016 ALMA observations",
+  "Exact clean imaging parameters (cell size, image size, stopping criteria) for the 2016 ALMA light curve extraction"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The authors publicly release the extracted light curves, the 5,000-particle ABC posterior chain, and the Python forward-modeling and visualization code (doi:10.17617/1.kctx3s25), and clearly write all model equations and priors. However, the C++/MPI ABC fitting code (which took ~10^6 CPU hours) is not released, and some low-level ALMA imaging/flagging parameters are omitted.",
+ "rediscovery_reason": "Raw ALMA data are public in the archive, the extracted light curves and Python forward model are publicly archived with a DOI, and the main results (cross-correlation time lags, structure functions, and Bayesian model parameters) are quantitative.",
+ "source_card": "cards/2021ApJ...917...73W/sonnet/card.md"
+}
